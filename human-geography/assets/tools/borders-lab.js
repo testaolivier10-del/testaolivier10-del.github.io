@@ -558,7 +558,16 @@
     }
     function studio(pane, s){
       LS = s;
-      T.studioPane(pane, s, { stage: [$('.bl-fig')], dock: [$('.bl-ctl')], why: [$('.bl-say')], details: [$('.bl-more')] });
+      var sp = T.studioPane(pane, s, { stage: [$('.bl-fig')], dock: [$('.bl-ctl')], why: [$('.bl-say')], details: [$('.bl-more')] });
+      // Standard frame: the scene is the stage's picker, and the one line on what to do follows it.
+      if(sp.std){
+        sp.picker(sScene.select, { label: 'Show' });
+        var TODO = { types: $('.bt-cue-t') ? $('.bt-cue-t').innerHTML : '', shapes: 'Pick a shape and read the challenge it usually brings.', forces: 'Tap scenes to add forces that pull the country together or apart.',
+          sea: 'Move the ship out from the coast and read what the state may do there.', real: 'Pick a real boundary and read how it is often classed.' };
+        var td = function(){ sp.todo(TODO[scene] || TODO.types); };
+        ['click', 'change'].forEach(function(t){ s.root.addEventListener(t, function(){ setTimeout(td, 0); }, true); });
+        td();
+      }
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       sync(); draw(); words();

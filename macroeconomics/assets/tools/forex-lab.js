@@ -51,7 +51,7 @@
   function explore(host){
     var pairs = F.PAIRS.filter(function(p){ return ['euro|dollar', 'dollar|euro', 'peso|dollar', 'pound|euro', 'dollar|pound', 'rupee|dollar'].indexOf(p[0] + '|' + p[1]) > -1; });
     var st = { pair: pairs[0], d: 0, s: 0, shock: null, anim: null, panel: 'x', nums: true };
-    var LS = null, sp = null;
+    var LS = null, sp = null, pk = null;
     host.innerHTML =
       '<figure class="fxl-fig">' +
         '<div class="fxl-tabs" role="group" aria-label="Which market"><button type="button" class="tchip fxl-tab on" data-p="x" aria-pressed="true"></button><button type="button" class="tchip fxl-tab" data-p="y" aria-pressed="false"></button><button type="button" class="tchip fxl-tab" data-p="z" aria-pressed="false">Trade</button></div>' +
@@ -255,7 +255,7 @@
     function reset(){ stopAnim(); st.d = 0; st.s = 0; st.shock = null; var s = $('#fxl-shock'); if(s) s.value = ''; draw(); }
     host.querySelector('.fxl-reset').addEventListener('click', reset);
     host.querySelector('#fxl-pair').addEventListener('change', function(e){
-      st.pair = pairs[+e.target.value]; var keep = st.shock; heads(); buildSelect(); if(keep) $('#fxl-shock').value = keep; draw();
+      st.pair = pairs[+e.target.value]; var keep = st.shock; heads(); buildSelect(); if(keep) $('#fxl-shock').value = keep; if(pk) pk.rebuild(); draw();
       if(sp) sp.setup(cap(pl(st.pair[0])) + ' and ' + pl(st.pair[1]));
     });
     host.querySelector('#fxl-num').addEventListener('change', function(e){ st.nums = e.target.checked; draw(); });
@@ -309,10 +309,16 @@
 
     function studio(pane, s){
       LS = s;
+      if(T.isStd(s)) sel.removeAttribute('data-ls-primary');
       sp = T.studioPane(pane, s, { stage: [fig], dock: [host.querySelector('.fxl-ctl')], setup: 'Currencies', moreLabel: 'Currencies and rates', why: [host.querySelector('.fxl-say')], details: [host.querySelector('.fxl-nums')] });
       sp.setup(cap(pl(st.pair[0])) + ' and ' + pl(st.pair[1]));
+      // Standard frame: "What changes?" is the stage's picker (rebuilt with the currencies); Start over at the foot.
+      if(T.isStd(s)){
+        pk = sp.picker(function(){ return sel.querySelector('select'); }, { label: 'What changes?', blankLabel: 'Pick what changes', hide: sel });
+        sp.foot([host.querySelector('.fxl-reset') || $('.fxl-reset')]);
+      }
       draw(); fit();
-      if(s.mode() === 'explore') T.hintSlot(s, sel.querySelector('select'), 'Start here: pick what changes', { before: sel });
+      if(s.mode() === 'explore') T.hintSlot(s, pk ? pk.el : sel.querySelector('select'), 'Start here: pick what changes', { before: sel });
     }
     draw(); fit();
     return { studio: studio, stop: stopAnim };

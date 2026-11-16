@@ -327,7 +327,15 @@
     }
     function studio(pane, s){
       LS = s;
-      T.studioPane(pane, s, { stage: [$('.dl-fig')], dock: [$('.dl-ctl')], why: [$('.dl-say')], details: [$('.dl-more')] });
+      var sp = T.studioPane(pane, s, { stage: [$('.dl-fig')], dock: [$('.dl-ctl')], why: [$('.dl-say')], details: [$('.dl-more')] });
+      // Standard frame: the scene is the stage's picker, and the one line on what to do follows it.
+      if(sp.std){
+        sp.chips($('.dl-scene'), { label: 'Show', attr: 'data-k', sel: '.tchip' });
+        var TODO = { diffusion: $('.bt-cue-t') ? $('.bt-cue-t').innerHTML : '', migration: 'Pick a migration idea, then press Play and watch who moves.' };
+        var td = function(){ sp.todo(TODO[scene] || TODO.diffusion); };
+        s.root.addEventListener('click', function(){ setTimeout(td, 0); }, true);
+        td();
+      }
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       sync(); draw(); words();

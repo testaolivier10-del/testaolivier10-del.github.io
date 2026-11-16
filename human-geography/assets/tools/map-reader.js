@@ -193,7 +193,9 @@
     host.addEventListener('click', onClick);
     function studio(pane, s){
       LS = s;
-      T.studioPane(pane, s, { stage: [$('.hug-mr-stage')], dock: [$('.hug-mr-ctl')], why: [$('.hug-mr-say')], details: [$('.hug-mr-nums')] });
+      var sp = T.studioPane(pane, s, { stage: [$('.hug-mr-stage')], dock: [$('.hug-mr-ctl')], why: [$('.hug-mr-say')], details: [$('.hug-mr-nums')] });
+      // Standard frame: the map type is the stage's picker.
+      if(sp.picker) sp.picker(tsel.select, { label: 'Map type' });
       host.removeEventListener('click', onClick); s.root.addEventListener('click', onClick);
       draw();
     }

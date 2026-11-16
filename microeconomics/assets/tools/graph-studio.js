@@ -313,6 +313,8 @@
       host.removeEventListener('click', onClick);
       LS.setupRow = sp;
       sp.setup('Practice this graph');
+      // Standard frame: the graph is the stage's picker; "What happens" stays in the panel as the task to try.
+      if(sp.picker) sp.picker(R.gsel, { label: 'Graph', hide: R.gsel.parentNode });
       update();
       if(s.mode() === 'explore') T.hintSlot(s, R.scen, 'Start here: pick what happens, then act on the graph', { before: R.scen.parentNode, cls: 'mic-tipslot gs-tipslot' });
     }
@@ -348,6 +350,9 @@
       if(about){ about.open = true; s.add('about', about, only); }
     } else { fr.pick.insertBefore(bar, fr.pick.firstChild); }
     gsel.addEventListener('change', function(){ ctxSel = gsel.value; code = 0; draw(true); });
+    // Standard frame: the graph is the stage's picker in Test yourself (the kind stays in More options).
+    var std = T.isStd(s);
+    if(std) T.selectPicker(s, gsel, { mode: 'quiz', label: 'Graph', hide: gsel.parentNode });
 
     /* The code says which context and kind: (context index * 8 + kind) * 100000 + seed. */
     function decode(n){
@@ -376,6 +381,7 @@
       var sp0 = GS.freeSpec(ctx.graph, data); sp0.do = [];
       stage.innerHTML = '<figure class="gs-qfig"><div class="gs-host"><div class="mic-gr-stage">' + G.svg(sp0, {}) + '</div></div></figure>'; why.innerHTML = ''; det.innerHTML = '';
       if(s){ s.caption('The PPC and supply-and-demand drills are free, and Explore draws this graph for everyone.', 'quiz'); s.pills([{ html: 'Premium', tone: 'accent' }], 'left', 'quiz'); }
+      if(std){ s.done(false, 'quiz'); s.task({ kicker: 'Test yourself', title: esc(ctxName(ctx).replace(/ \(Premium\)$/, '')) + ' drills are part of Premium', todo: 'Pick another graph above, or practice supply and demand.' }, 'quiz'); }
     }
 
     function draw(focus){
@@ -401,6 +407,7 @@
         area.querySelector('.bt-prob-head h2').classList.add('sr-only');
         why.innerHTML = '<h3 class="ls-title-l">Worked solution</h3><p class="ls-sub">It appears here once every step is answered.</p>';
         s.caption(esc(p.setting ? p.setting + ' ' : '') + esc(p.cause), 'quiz'); s.pills([], 'left', 'quiz');
+        if(std){ s.done(false, 'quiz'); s.task({ kicker: 'Test yourself', title: esc(head), todo: 'Score each rubric point in turn, then Check.' }, 'quiz'); }
       } else area.insertBefore(fig, steps);
       function paintRubric(cur){
         rub.innerHTML = p.steps.map(function(x, i){
@@ -429,7 +436,7 @@
         var g2 = show(i);
         var f = el('form', 'bt-part cd-step gs-step');
         f.setAttribute('novalidate', ''); f.setAttribute('aria-labelledby', sid + '-l');
-        var hd = '<p class="cd-label" id="' + sid + '-l"><span class="cd-n">Step ' + (i + 1) + ' of ' + p.steps.length + '</span> ' + esc(x.label) + '</p>' + (x.hint ? '<p class="bt-small gs-hint">' + esc(x.hint) + '</p>' : '');
+        var hd = '<p class="cd-label" id="' + sid + '-l"><span class="cd-n">Step ' + (i + 1) + ' of ' + p.steps.length + '</span> ' + esc(x.label) + '</p>' + (x.hint && !std ? '<p class="bt-small gs-hint">' + esc(x.hint) + '</p>' : '');
         var body = '';
         if(x.kind === 'choice'){
           var ord = x.fixed ? x.options.map(function(o, k){ return k; }) : window.ApMicroQuestions.shuffle(x.options.map(function(o, k){ return k; }));
@@ -441,8 +448,10 @@
         steps.appendChild(f);
         if(x.kind === 'graph') liftControls(gh, f.querySelector('.gs-stepctl'));
         var fb = f.querySelector('.cd-fb');
+        // Standard frame: the step's hint behind Hint, the answer after one wrong Check.
+        var lad = T.stepLadder(s, f, x.hint ? esc(x.hint) : '', function(){ reveal(); });
         f.addEventListener('submit', function(e){ e.preventDefault(); check(); });
-        function lockStep(){ done = true; f.querySelectorAll('input').forEach(function(q){ q.disabled = true; }); if(g2 && g2.lock) g2.lock(); }
+        function lockStep(){ if(lad && lad.row.parentNode) lad.row.parentNode.removeChild(lad.row); done = true; f.querySelectorAll('input').forEach(function(q){ q.disabled = true; }); if(g2 && g2.lock) g2.lock(); }
         function next(right){
           if(firsts[x.key] === undefined) firsts[x.key] = right;
           var bt = baseTask(x.key);
@@ -524,8 +533,8 @@
           }
           f.classList.add('is-wrong');
           if(s) s.pills([{ html: esc(TASK[baseTask(x.key)]) + ': not yet', tone: 'warn' }], 'left', 'quiz');
-          fb.innerHTML = '<span class="mic-mark no">Not yet</span> ' + esc(note) + '<div class="bt-actions"><button type="button" class="bt-btn cd-show">Show the answer</button></div>';
-          fb.querySelector('.cd-show').addEventListener('click', reveal);
+          fb.innerHTML = '<span class="mic-mark no">Not yet</span> ' + esc(note) + (lad ? '' : '<div class="bt-actions"><button type="button" class="bt-btn cd-show">Show the answer</button></div>');
+          if(lad) lad.attempt(); else fb.querySelector('.cd-show').addEventListener('click', reveal);
           if(firsts[x.key] === undefined) firsts[x.key] = false;
           paintRubric(i);
         }
@@ -556,6 +565,7 @@
           s.pills([{ html: right + ' of ' + results.length + ' points', tone: right === results.length ? 'good' : 'warn' }], 'left', 'quiz');
           s.caption('<b>' + right + ' of ' + results.length + ' rubric points right the first time.</b> The worked solution is under Explanation.', 'quiz');
           var again = nx.querySelector('.cd-again'); again.classList.add('ls-btn', 'ls-pri'); again.focus();
+          T.doneCard(s, 'quiz', { right: right, total: results.length, unit: 'rubric points', p: p, again: again, area: area, esc: true });
         } else sol.querySelector('h3').focus();
       }
       step(0);

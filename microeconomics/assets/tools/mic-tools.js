@@ -46,7 +46,30 @@
 (function(){
   'use strict';
   var M = window.ApMicroMath, Q = window.ApMicroQuestions;
-  var uid = 0, unitMap = {};
+  var uid = 0, unitMap = {}, curSlug = '', kitMenu = [];
+  /* The standard frame (docs/tools-frame-2026-11.md): each tool's one line in the bar (LEDE) and the question its
+     Explore task asks (TASK). The shared lock screen reads the line too (LevlStudio.stdKit, tool-studio.js adopt). */
+  var LEDE = {
+    "cost-lab": "Hire workers one at a time and build the cost curves.",
+    "elasticity-lab": "See how price, income and other prices change what people buy.",
+    "externality-lab": "Find the loss from an externality and the policy that fixes it.",
+    "factor-lab": "See how a firm decides how many workers to hire.",
+    "firm-market": "Compare profit in each market structure, short run and long run.",
+    "game-lab": "Find dominant strategies and Nash equilibria in a payoff matrix.",
+    "graph-studio": "Shift, mark and shade the curves on every graph the micro exam uses.",
+    "surplus-lab": "See how each policy changes surplus and deadweight loss."
+  },
+    TASK = {
+    "cost-lab": "Why does MC cross AVC and ATC at their lowest points?",
+    "elasticity-lab": "When does a lower price bring in more total revenue?",
+    "externality-lab": "What tax or subsidy brings the market to the efficient quantity?",
+    "factor-lab": "Why does a firm hire until MRP equals MRC?",
+    "firm-market": "Why does profit change from the short run to the long run?",
+    "game-lab": "Would either firm switch on its own?",
+    "graph-studio": "What does each event do to the graph?",
+    "surplus-lab": "Who gains, who loses, and what is lost?"
+  };
+  if(window.LevlStudio && window.LevlStudio.stdKit) window.LevlStudio.stdKit({ lede: LEDE });
   function nid(p){ return (p || 'bt') + '-' + (++uid); }
   function esc(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
   /* Plain text of a node or an HTML string: each formula reads as its TeX's
@@ -103,6 +126,7 @@
       // Tool Studio (docs/tools-calm.md): pages.json `studio: true` puts
       // data-studio on #app. modes() and drill() then place their parts in
       // the frame; a trainer's explore view places its own (o.studio).
+      curSlug = slug;
       var studio = app.getAttribute('data-studio') && window.LevlStudio ? studioFrame(app, slug) : null;
       fn(app, data);
       if(studio) studioRest(app, studio);
@@ -570,10 +594,19 @@
     var area = fr.area;
     // Only the kinds this page has content for (contexts unlock with their units).
     var kinds = (o.types || []).filter(function(t){ type = t.value; var n = pickable().length; type = ''; return n > 0; });
+    var kp = null;
     if(kinds.length > 1){
-      kindPicker(fr.pick, { label: o.typeLabel || 'Problem type', options: kinds, onChange: function(v){ type = v; seed = freshSeed(); draw(true); } });
+      kp = kindPicker(fr.pick, { label: o.typeLabel || 'Problem type', options: kinds, onChange: function(v){ type = v; seed = freshSeed(); draw(true); } });
     }
     var sd = studioDrill(app, area, o);
+    // Standard frame: the kind of problem is the scenario picker on the stage (same choices, same handler);
+    // the select in More options steps aside, so the choice is never shown twice.
+    if(sd && sd.std && kp){
+      kp.el.hidden = true;
+      var kMore = kp.el.closest('.cd-more'); if(kMore && !o.before) kMore.hidden = true;
+      sd.st.picker({ label: o.typeLabel || 'Problem type', items: [{ value: '', label: o.mixedLabel || 'Any kind' }].concat(kinds.map(function(k){ return { value: k.value, label: k.label }; })),
+        value: '', onChange: function(v){ kp.select.value = v; type = v; seed = freshSeed(); draw(true); } }, 'quiz');
+    }
     function pickable(){ return contexts.filter(function(c){ return !type || (c.types ? c.types.indexOf(type) > -1 : c.mode ? c.mode === type : c.kind === type); }); }
     function pickCtx(r){ var ok = pickable(); return r.pick(ok.length ? ok : contexts); }
     function draw(focus){
@@ -595,7 +628,7 @@
         el.className = 'bt-part cd-step';
         el.setAttribute('novalidate', '');
         el.setAttribute('aria-labelledby', sid + '-l');
-        var head = '<p class="cd-label" id="' + sid + '-l"><span class="cd-n">Step ' + (i + 1) + ' of ' + p.steps.length + '</span> ' + s.label + '</p>' + (s.hint ? '<p class="bt-small" id="' + sid + '-h">' + s.hint + '</p>' : '');
+        var head = '<p class="cd-label" id="' + sid + '-l"><span class="cd-n">Step ' + (i + 1) + ' of ' + p.steps.length + '</span> ' + s.label + '</p>' + (s.hint && !(sd && sd.std) ? '<p class="bt-small" id="' + sid + '-h">' + s.hint + '</p>' : '');
         var body = '';
         if(s.kind === 'num' || s.kind === 'vol'){
           body = '<div class="bt-num-row cd-num"><label class="sr-only" for="' + sid + '-i">' + esc(String(s.label).replace(/<[^>]+>/g, '')) + '</label><input type="text" id="' + sid + '-i" inputmode="decimal" autocomplete="off" spellcheck="false"' + (s.hint ? ' aria-describedby="' + sid + '-h"' : '') + '>' + (s.unit ? '<span class="bt-unit">' + esc(s.unit) + '</span>' : '') + '</div>';
@@ -617,6 +650,16 @@
         }
         el.innerHTML = head + body + '<div class="bt-actions"><button type="submit" class="btn-press sm">Check</button></div><div class="cd-fb" role="status" aria-live="polite"></div>';
         host.appendChild(el);
+        // Standard frame: the hint ladder. The step's hint is one tap away (instant); the answer opens after one
+        // real try (a wrong Check), as "Show the answer" did before.
+        var lad = null;
+        if(sd && sd.std){
+          lad = sd.st.hints({ hints: s.hint ? [s.hint] : [], answer: { label: 'Show the answer', onShow: function(){ reveal(); return ''; } }, gate: 1 });
+          lad.card.id = sid + '-h';
+          var acts0 = el.querySelector('.bt-actions');
+          el.insertBefore(lad.card, acts0);
+          el.insertBefore(lad.row, acts0.nextSibling);
+        }
         var rowInputs = [];
         if(s.kind === 'row' || s.kind === 'coef'){
           rowsAll('[data-row="' + s.row + '"] [data-i]').forEach(function(td){
@@ -653,6 +696,7 @@
         el.addEventListener('submit', function(e){ e.preventDefault(); check(); });
         function lock(){
           done = true;
+          if(lad && lad.row.parentNode) lad.row.parentNode.removeChild(lad.row);
           el.querySelectorAll('input').forEach(function(x){ if(x.type === 'radio' || x.type === 'range') x.disabled = true; else x.readOnly = true; });
           rowInputs.forEach(function(x){ if(x) x.readOnly = true; });
           if(gr) gr.lock();
@@ -722,8 +766,8 @@
           }
           el.classList.add('is-wrong');
           fb.innerHTML = '<span class="mic-mark no">Not yet</span>' + (notes.length ? '<ul class="cd-notes">' + notes.map(function(n){ return '<li>' + n + '</li>'; }).join('') + '</ul>' : s.kind === 'vol' ? ' That is not where this point is. Look at the shape of the curve again.' : ' Recheck the arithmetic.') +
-            '<div class="bt-actions"><button type="button" class="bt-btn cd-show">Show the answer</button></div>';
-          fb.querySelector('.cd-show').addEventListener('click', reveal);
+            (lad ? '' : '<div class="bt-actions"><button type="button" class="bt-btn cd-show">Show the answer</button></div>');
+          if(lad) lad.attempt(); else fb.querySelector('.cd-show').addEventListener('click', reveal);
         }
       }
       function finish(){
@@ -737,7 +781,7 @@
         nx.innerHTML = '<p class="bt-result" role="status">' + right + ' of ' + results.length + (results.length === 1 ? ' step' : ' steps') + ' right the first time.</p><div class="bt-actions"><button type="button" class="btn-press sm cd-again">' + esc(o.newLabel || 'New problem') + '</button>' + report(slug + ':' + p.ctx) + '</div>';
         nx.querySelector('.cd-again').addEventListener('click', function(){ seed = freshSeed(); draw(true); });
         keepGoing(nx, { topic: p.topic, also: results.filter(function(x){ return !x.correct; }).map(function(x){ return x.topic; }) });
-        if(sd){ sd.done(right, results.length); return; }
+        if(sd){ sd.done(right, results.length, p); return; }
         sol.querySelector('h3').focus();
       }
       step(0);
@@ -829,7 +873,12 @@
       // the second tab and its dock button, named for what is in it
       // the second tab and its dock button: a tool names it with
       // data-details-title on #app (set before mount); default "Numbers & setup".
-      detailsTitle: app.getAttribute('data-details-title') || 'Details',
+      detailsTitle: app.getAttribute('data-details-title') || 'Help and reference',
+      // The standard frame (docs/tools-frame-2026-11.md, F5): the name and one line in the bar, the modes
+      // there too, Share, "?" for the reference and settings; the task, picker and hint ladder (std below).
+      std: true, lede: LEDE[slug] || (lede ? lede.textContent : ''),
+      // The finished card links the worked solution; the sheet no longer opens over it by itself.
+      autoSolution: false,
       menu: {
         copyLink: function(){
           var code = s.mode() === 'quiz' ? s.root.querySelector('.ls-drill-det .bt-code b') : null;
@@ -860,7 +909,9 @@
     s.add('dock', area, only);
     if(more) s.add('details', more, only);
     if(about){ about.open = true; s.add('about', about, only); }
+    var std = isStd(s);
     return {
+      std: std, st: s,
       fresh: function(p){
         stage.innerHTML = ''; det.innerHTML = '<h3 class="ls-title-l">This problem</h3>';
         why.innerHTML = '<h3 class="ls-title-l">Worked solution</h3><p class="ls-sub">It appears here once every step is answered.</p>';
@@ -895,14 +946,28 @@
         // The caption keeps each formula as rendered math (p̂, x̄, H₀), not its
         // plain reading ("p-hat", "H_0"); a studioAsk caption is cut from the text.
         s.caption(onStage ? esc(o.studioCaption || (nSteps > 1 ? 'Answer one step at a time.' : stage.querySelector('.cd-pics') ? 'Tap the picture that fits, then Check.' : 'Answer, then Check.')) : o.studioAsk ? esc(text) : capHtml(ctx), m); s.pills([], 'left', m);
+        if(std){
+          var h2t = area.querySelector('.bt-prob-head h2');
+          s.done(false, m);
+          s.task({ kicker: 'Test yourself', title: h2t ? esc(h2t.textContent) : 'Practice problem', todo: nSteps > 1 ? 'Answer the ' + nSteps + ' steps one at a time, then Check each.' : (stage.querySelector('.cd-pics') ? 'Tap the picture that fits, then Check.' : 'Answer, then Check.') }, m);
+        }
       },
-      done: function(right, total){
+      done: function(right, total, p){
         var sol = area.querySelector(':scope > .bt-solution');
         if(sol){ why.innerHTML = ''; why.appendChild(sol); }
         s.pills([{ html: right + ' of ' + total + ' right', tone: right === total ? 'good' : 'warn' }], 'left', m);
         s.caption('<b>' + (total === 1 ? (right ? 'Right the first time.' : 'Not right the first time.') : right + ' of ' + total + ' steps right the first time.') + '</b> The worked solution is under Explanation.', m);
         var again = area.querySelector('.cd-again');
         if(again){ again.classList.add('ls-btn', 'ls-pri'); again.focus(); }
+        // Standard frame: the finished card. Its takeaway is the worked solution's last line (the conclusion);
+        // "See your answers" gives the side panel back (steps, result, Keep going), nothing is hidden for good.
+        if(std){
+          var t = p && topicOf(p.topic), sl = p && p.solution && p.solution.length ? String(p.solution[p.solution.length - 1]).replace(/^\s*(\u2192|&rarr;)\s*/, '') : '';
+          var links = [{ label: 'Worked solution', open: 'why' }, { label: 'See your answers', onClick: function(){ s.done(false, m); var r = area.querySelector('.bt-result'); if(r) s.reveal(r); } }];
+          if(t && t.built) links.push({ label: 'Read the lesson: ' + t.title, href: base() + 'lessons/' + t.id + '.html' });
+          s.done({ kicker: right === total ? 'All right the first time' : 'Finished', title: total === 1 ? (right ? 'Right the first time.' : 'Not right the first time.') : right + ' of ' + total + ' steps right the first time',
+            text: sl, next: again ? { label: again.textContent, onClick: function(){ again.click(); } } : null, links: links }, m);
+        }
       }
     };
   }
@@ -922,7 +987,7 @@
      Returns { setup(text), open() }: the Setup row's value, and reopening
      the Why disclosures after a redraw. */
   function studioPane(pane, s, o){
-    var only = { mode: o.mode || 'explore' }, q = function(sel){ return pane.querySelector(sel); };
+    var only = { mode: o.mode || 'explore' }, q = function(sel){ return pane.querySelector(sel); }, std = isStd(s);
     function box(cls, els){ var d = document.createElement('div'); d.className = cls; (els || []).forEach(function(e){ if(e) d.appendChild(e); }); return d; }
     s.add('stage', box('mic-ls-stage', o.stage), only);
     var dock = [box('mic-ls-dock', o.dock)], row = null;
@@ -933,11 +998,23 @@
       row.innerHTML = '<span><span class="ls-k">' + esc(o.setup) + '</span><span class="ls-v"></span></span>' + window.LevlStudio.icon('more');
       row.setAttribute('aria-label', o.setup + ': ' + (o.moreLabel || 'more options') + ' (opens Details)');
       row.addEventListener('click', function(){ s.open('details', more.querySelector('summary')); });
-      dock.push(row);
+      // Standard frame: settings live behind the menu (and in "?"), not in the dock.
+      if(std) addMenu(s, { label: o.moreLabel || 'More options', onClick: function(){ s.open('details', more.querySelector('summary')); } });
+      else dock.push(row);
     }
     s.add('dock', dock, only);
     // The "Start here" cue reads as the first line of Why.
-    var why = box('ls-sec mic-ls-why', [pane.querySelector('.bt-cue')].concat(o.why || []));
+    // Standard frame: the cue is the task's one line on what to do (so it is not repeated in Why).
+    var cueEl = pane.querySelector('.bt-cue');
+    if(std){
+      if(cueEl) cueEl.hidden = true;
+      var cueTodo = function(){ return o.todo || (cueEl ? (cueEl.querySelector('.bt-cue-t') || cueEl).innerHTML : ''); };
+      s.task({ kicker: o.kicker || 'Explore', title: o.task || TASK[curSlug] || '', todo: cueTodo() }, only.mode);
+      // A tool that rewrites its cue (a new view, a new case) rewrites the task's line with it.
+      if(cueEl && !o.todo && window.MutationObserver) new MutationObserver(function(){ s.task({ kicker: o.kicker || 'Explore', title: o.task || TASK[curSlug] || '', todo: cueTodo() }, only.mode); })
+        .observe(cueEl, { childList: true, subtree: true, characterData: true });
+    }
+    var why = box('ls-sec mic-ls-why', [std ? null : cueEl].concat(o.why || []));
     s.add('why', why, only);
     var det = box('ls-sec mic-ls-det', o.details);
     if(more){
@@ -954,8 +1031,95 @@
     openAll();
     return {
       setup: function(t){ if(row){ row.querySelector('.ls-v').textContent = t; row.setAttribute('aria-label', o.setup + ': ' + t + '. ' + (o.moreLabel || 'More options') + ' (opens Details)'); } },
-      open: openAll, why: why, details: det
+      open: openAll, why: why, details: det,
+      // Standard frame helpers: a scenario select or chip row as the stage's one picker; Undo / Reset at the stage foot.
+      picker: function(sel, po){ return selectPicker(s, sel, Object.assign({ mode: only.mode }, po || {})); },
+      chips: function(boxEl, po){ return chipPicker(s, boxEl, Object.assign({ mode: only.mode }, po || {})); },
+      foot: function(els){ if(std) s.add('foot', els, only); return this; },
+      task: function(t){ if(std) s.task(t, only.mode); return this; },
+      // the one line on what to do, for a tool whose first move changes with its view
+      todo: function(tx){ if(std) s.task({ kicker: o.kicker || 'Explore', title: o.task || TASK[curSlug] || '', todo: tx }, only.mode); return this; },
+      std: std
     };
+  }
+
+  /* ------------------------------------------- the standard frame (F5) */
+  /* docs/tools-frame-2026-11.md. isStd(s): the studio is on the standard frame. addMenu(s, item): one more menu
+     item (settings). selectPicker(s, select, o) and chipPicker(s, box, o): a tool's scenario select or chip row
+     becomes the stage's ONE grouped picker (s.picker); the tool's own control stays in the page, out of sight, and a
+     pick sets it and fires its change (or clicks the chip), so the tool's handlers, state and links are unchanged;
+     the picker follows the control after any action. o: { label, mode, blankLabel, count }. */
+  function isStd(s){ return !!(s && s.root && s.root.classList.contains('ls-std')); }
+  function addMenu(s, it){
+    if(kitMenu.some(function(x){ return x.label === it.label; })) return;
+    kitMenu.push(it); s.menu({ items: kitMenu.slice() });
+  }
+  // The tool's own control steps aside (hidden, and out of the phone's pinned band).
+  function hideCtl(el){ el.hidden = true; el.style.display = 'none'; el.removeAttribute('data-ls-primary'); }
+  function follow(s, sync){
+    ['click', 'change', 'keyup', 'pointerup'].forEach(function(t){ s.root.addEventListener(t, function(){ setTimeout(sync, 0); }, true); });
+  }
+  function selectPicker(s, selArg, o){
+    // selArg: the select, or a function returning it (a tool that rebuilds its select: then call rebuild()).
+    var get = typeof selArg === 'function' ? selArg : function(){ return selArg; }, sel0 = get();
+    if(!isStd(s) || !sel0) return null;
+    o = o || {};
+    function item(op){ var it = { value: op.value, label: op.value === '' && o.blankLabel ? o.blankLabel : op.textContent.replace(/…$/, '').trim() }; if(o.noSub) it.sub = ''; return it; }
+    function groupsOf(sel){
+      var groups = [], loose = [];
+      Array.prototype.forEach.call(sel.children, function(c){
+        if(c.tagName === 'OPTGROUP') groups.push({ label: c.label, items: Array.prototype.map.call(c.querySelectorAll('option'), item) });
+        else if(c.tagName === 'OPTION' && !(o.noBlank && c.value === '')) loose.push(item(c));
+      });
+      if(loose.length) groups.unshift({ label: '', items: loose });
+      return groups;
+    }
+    var lab = sel0.labels && sel0.labels[0] ? sel0.labels[0].textContent.trim() : 'Choose';
+    var po = { label: o.label || lab, groups: groupsOf(sel0), value: sel0.value, count: o.count, onChange: function(v){
+      var sel = get(); sel.value = v; sel.dispatchEvent(new Event('input', { bubbles: true })); sel.dispatchEvent(new Event('change', { bubbles: true }));
+    } };
+    var p = s.picker(po, o.mode);
+    hideCtl(o.hide || sel0.closest('.bt-ctl') || sel0);
+    function sync(){ var sel = get(); if(sel && String(p.value()) !== String(sel.value)) p.value(sel.value); }
+    follow(s, sync);
+    p.rebuild = function(){ var sel = get(); po.groups = groupsOf(sel); po.value = sel.value; p.set(po); };
+    p.sync = sync;
+    return p;
+  }
+  function chipPicker(s, boxEl, o){
+    if(!isStd(s) || !boxEl) return null;
+    o = o || {};
+    var attr = o.attr || 'data-k';
+    var btns = Array.prototype.slice.call(boxEl.querySelectorAll(o.sel || 'button[' + attr + ']'));
+    function on(){ return btns.filter(function(b){ return b.classList.contains('on') || b.getAttribute('aria-pressed') === 'true' || b.getAttribute('aria-checked') === 'true'; })[0]; }
+    var groups = o.groups ? o.groups(btns) : [{ label: '', items: btns.map(function(b){ return { value: b.getAttribute(attr), label: (b.getAttribute('data-label') || b.textContent).trim() }; }) }];
+    var cur = on();
+    var p = s.picker({ label: o.label || 'Choose', groups: groups, value: cur ? cur.getAttribute(attr) : null, count: o.count, onChange: function(v){
+      var b = btns.filter(function(x){ return x.getAttribute(attr) === String(v); })[0]; if(b) b.click();
+    } }, o.mode);
+    hideCtl(o.hide || boxEl);
+    function sync(){ var b = on(); if(b && String(p.value()) !== b.getAttribute(attr)) p.value(b.getAttribute(attr)); }
+    follow(s, sync);
+    p.sync = sync;
+    return p;
+  }
+  /* For a tool with its own step drill (graph studio): the same hint ladder and finished card as drill().
+     stepLadder(s, form, hint, reveal) -> the ladder (null off the standard frame); call .attempt() after a wrong
+     Check and remove .row when the step locks. doneCard(s, mode, { right, total, unit, p, again, area }). */
+  function stepLadder(s, f, hint, reveal){
+    if(!isStd(s)) return null;
+    var lad = s.hints({ hints: hint ? [hint] : [], answer: { label: 'Show the answer', onShow: function(){ reveal(); return ''; } }, gate: 1 });
+    var a = f.querySelector('.bt-actions');
+    f.insertBefore(lad.card, a); f.insertBefore(lad.row, a.nextSibling);
+    return lad;
+  }
+  function doneCard(s, m, o){
+    if(!isStd(s)) return;
+    var t = o.p && topicOf(o.p.topic), sol = o.p && o.p.solution && o.p.solution.length ? String(o.p.solution[o.p.solution.length - 1]).replace(/^\s*(\u2192|&rarr;)\s*/, '') : '';
+    var links = [{ label: 'Worked solution', open: 'why' }, { label: 'See your answers', onClick: function(){ s.done(false, m); var r = o.area && o.area.querySelector('.bt-result'); if(r) s.reveal(r); } }];
+    if(t && t.built) links.push({ label: 'Read the lesson: ' + t.title, href: base() + 'lessons/' + t.id + '.html' });
+    s.done({ kicker: o.right === o.total ? 'All right the first time' : 'Finished', title: o.right + ' of ' + o.total + ' ' + (o.unit || 'steps') + ' right the first time',
+      text: o.esc ? esc(sol) : sol, next: o.again ? { label: o.again.textContent, onClick: function(){ o.again.click(); } } : null, links: links }, m);
   }
   /* The first-run tip in its own slot (Phase 3, shared from the trainers'
      copies: T2, T3). opts may be the old fourth argument, a `before` node. */
@@ -980,7 +1144,7 @@
   function sayHead(el){ var h = el && el.querySelector('.bt-say-h'); return h ? h.innerHTML : ''; }
 
   window.ApMicroTools = {
-    studioOf: studioOf, studioPane: studioPane, sayHead: sayHead, hintSlot: hintSlot,
+    studioOf: studioOf, studioPane: studioPane, sayHead: sayHead, hintSlot: hintSlot, isStd: isStd, addMenu: addMenu, stepLadder: stepLadder, doneCard: doneCard, selectPicker: selectPicker, chipPicker: chipPicker,
     modes: modes, reduced: reduced, cue: cue, moreHtml: moreHtml, explain: explain,
     esc: esc, F: F, nid: nid, mount: mount, frame: frame, kindPicker: kindPicker, keepGoing: keepGoing, slider: slider, choiceSelect: choiceSelect, announcer: announcer,
     plot: plot, niceMax: niceMax, niceStep: niceStep, dataTable: dataTable, wrapTables: wrapTables, box: box,

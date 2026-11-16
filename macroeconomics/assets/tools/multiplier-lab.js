@@ -247,6 +247,8 @@
       det.innerHTML = r.det;
       if(LS){ var row = LS.root.querySelector('.mac-ls-setup'); if(row) row.hidden = st.view !== 'gap';
         if(r.head !== lastCap){ LS.caption(r.head, 'explore'); lastCap = r.head; } LS.pills(r.pills || [], 'left', 'explore'); if(pane) pane.setup(st.gkind === 'recessionary' ? 'Recessionary, ' + usd(st.gsize) + ' billion' : 'Inflationary, ' + usd(st.gsize) + ' billion'); }
+      // Standard frame: the one line on what to do follows the view.
+      if(pane && pane.todo) pane.todo({ ripple: 'Tap an MPC. Every round of spending changes, and so does the total.', gap: 'Slide the change until the gap closes.', money: 'Pick what happens and watch each bank lend.' }[st.view]);
       if(full) say(r.head.replace(/<[^>]+>/g, ''));
     }
     function drawRipple(){

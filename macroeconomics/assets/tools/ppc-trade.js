@@ -103,7 +103,7 @@
     }
     st.t = mid(); buildT();
 
-    var lastCap = '';
+    var lastCap = '', SP = null;
     function update(full){
       Object.keys(figs).forEach(function(k){ figs[k].hidden = k !== st.view; });
       Object.keys(groups).forEach(function(k){ groups[k].hidden = k !== st.view; });
@@ -112,6 +112,8 @@
       T.explain(sayEl, r.head, r.body);
       det.innerHTML = r.det + data.howItWorks;
       if(LS){ if(r.head !== lastCap){ LS.caption(r.head, 'explore'); lastCap = r.head; } LS.pills(r.pills || [], 'left', 'explore'); }
+      // Standard frame: the one line on what to do follows the view (the cue was written for the first view only).
+      if(SP && SP.todo) SP.todo(st.view === 'ppc' ? 'Slide to make more robots. Watch how many pizzas each extra 10 robots costs.' : 'Turn on Specialize and trade, then move the terms of trade.');
       if(full) say(r.head.replace(/<[^>]+>/g, ''));
     }
 
@@ -287,7 +289,7 @@
     if(window.ResizeObserver){ var k0 = ''; new ResizeObserver(function(){ var k = stageEl.clientWidth + 'x' + stageEl.clientHeight; if(k !== k0){ k0 = k; update(false); } }).observe(stageEl); }
     function studio(p, s){
       LS = s;
-      T.studioPane(p, s, { stage: [stageEl], dock: [ctl], why: [sayEl], details: [det] });
+      SP = T.studioPane(p, s, { stage: [stageEl], dock: [ctl], why: [sayEl], details: [det] });
       lastCap = ''; update(true);
       var tgt = st.view === 'ppc' ? xSl.input : onSeg.el.querySelector('[data-v="on"]');
       if(s.mode() === 'explore' && tgt) T.hintSlot(s, tgt, st.view === 'ppc' ? 'Slide to make more robots' : 'Turn trade on');

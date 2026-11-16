@@ -346,8 +346,11 @@
       LS = s;
       sp = T.studioPane(pane, s, { stage: [fig], dock: [host.querySelector('.adl-ctl')], setup: 'Shocks', moreLabel: 'Shocks and graph marks', why: [host.querySelector('.adl-say')], details: [host.querySelector('.adl-nums')] });
       sp.setup('One at a time');
+      // Standard frame: the shock menu is the stage's picker; Start over sits at the stage's foot.
+      var pk = sp.picker ? sp.picker(select, { label: 'Shock the economy', blankLabel: 'Pick a shock' }) : null;
+      if(sp.foot) sp.foot([resetBtn]);
       draw(); fit();
-      if(s.mode() === 'explore') T.hintSlot(s, select, 'Start here: pick a shock', { before: sel });
+      if(s.mode() === 'explore') T.hintSlot(s, pk ? pk.el : select, 'Start here: pick a shock', { before: sel });
     }
     draw(); fit();
     return { studio: studio, stop: stopAnim };

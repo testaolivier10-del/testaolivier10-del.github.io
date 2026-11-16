@@ -315,6 +315,8 @@
       LS = s;
       sp = T.studioPane(pane, s, { stage: [fig], dock: [host.querySelector('.cl-ctl')], setup: 'Curves', moreLabel: 'Curves to draw and start over', why: [sayEl], details: [numsEl] });
       sp.setup('MC, ATC, AVC, AFC');
+      // Standard frame: Start over at the stage's foot (it was only in More options).
+      if(sp.std) sp.foot([host.querySelector('.cl-reset') || s.root.querySelector('.cl-reset')]);
       draw(); fit();
       if(s.mode() === 'explore') T.hintSlot(s, hire, 'Start here: hire the first worker', { before: hire.parentNode });
     }
