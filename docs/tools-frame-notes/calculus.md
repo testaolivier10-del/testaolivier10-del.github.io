@@ -66,3 +66,20 @@ sight hides its line).
 1. Parametric motion "Slope of a parametric curve": the quiz plot's axes run to ±60, so the curve is a sliver.
 2. Rule drills: after a wrong expression step the small yours vs right graph can be nearly empty.
 3. On a phone the quiz figure is small (the shared quiz layout shrinks the stage to its content).
+
+## Accuracy check (F6b, 2026-11-16)
+Checked every `STD` task question and takeaway, the curve analyzer relative maximum method and the two integration
+methods cues against the tools and `docs/apcalc-authoring-guide.md` / `docs/apcalcbc-authoring-guide.md`.
+- Correct as written: all task questions; the existing takeaways; the relative maximum method (f′ from positive to
+  negative); both integration cues.
+- Per problem type: a tool's one takeaway did not fit every kind its drill deals (a volume line after an area
+  problem, a secant line after "Where is f not differentiable?"). New per type lines:
+  - accumulation netgraph, tank; area-volume areaX, areaY, areaCross (the old line stays for the volume kinds);
+    limit-explorer continuity, ivt; motion-lab turn; riemann-sums overunder (the old line), context, sigma, tosum,
+    and a new default for sums from a table ("Add height × width for each subinterval (the average of the two ends
+    for a trapezoid)."); slope-fields separate, concavity, exp; tangent-tracer whichgraph, sketch, tanline, notdiff.
+  - BC: euler-logistic overunder, logistic; integration-methods improper; parametric-motion slope, second, position;
+    polar-lab coords, between; series-lab sum, partial, absolute; taylor-lab coef, maclaurin, lagrange, altbound.
+  Each is the standard statement (for example "Euler steps underestimate where the solution is concave up and
+  overestimate where it is concave down.", "For an alternating series that meets the test, the error is at most the
+  first term left out."). AB and BC builds stay byte-identical (`--check`).

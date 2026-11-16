@@ -278,7 +278,7 @@
     groups.jobs.querySelector('.ind-reset').addEventListener('click', onJobs);
 
     var lastCap = '', SP = null;
-    var TODO = { gdp: 'Tap Next transaction and watch where it goes.', prices: 'Move the year and compare the two baskets.', real: 'Move the year: the same goods at two sets of prices.', jobs: 'Pick what happens and watch people move.' };
+    var TODO = { gdp: 'Tap Next transaction and watch where it goes.', prices: 'Move the year and compare what the same basket costs then and in the base year.', real: 'Move the year: the same goods at two sets of prices.', jobs: 'Pick what happens and watch people move.' };
     function update(full){
       Object.keys(figs).forEach(function(k){ figs[k].hidden = k !== st.view; });
       Object.keys(groups).forEach(function(k){ groups[k].hidden = k !== st.view; });

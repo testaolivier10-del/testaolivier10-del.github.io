@@ -20,3 +20,28 @@ Kit change (`human-geography/assets/tools/hug-tools.js`) is the same as AP Macro
 - FRQ coach: the rubric line and sample can be revealed before writing. The standard opens answers after one try; locking it would take away something it does today, so it is unchanged. Gate it?
 - Map reader shows a "Map" pill that repeats the picker's choice. Drop the pill?
 - Some finished-card takeaways are short out of context (for example "Chile is the usual example." on an elongated shape). They are the authored last solution line; better takeaways per problem type would need writing.
+
+## Accuracy check (F6b, 2026-11-16)
+Checked `LEDE`, `TASK`, the scene lines, the model studio card and every drill type's takeaway (generated per context
+and type) against the tools and `docs/aphug-authoring-guide.md` (named real places, neutral and dated, plain words).
+- Correct as written: seven of eight `LEDE` lines, all `TASK` lines, every scene line ("often classed" stays neutral),
+  "Every piece is in its place".
+- Changed: scale-lab lede "See how the same data change with the scale of the map." to "See what changes with the scale
+  of analysis, and what map scale means." (the tool teaches that the scale of analysis is the data's scale, not the
+  map's size; the old line merged the two).
+- Takeaways: new own lines (`TAKE` in hug-tools.js), answering the owner's question above:
+  - borders shape, one line per shape, each with its challenge and the course's example (for elongated: "An elongated
+    state has far ends that are hard to reach and govern from the capital. Chile is the usual example.").
+  - borders boundary (began "It still divides..."): "A boundary that still divides two states controls who and what
+    crosses." or "A relict boundary no longer divides states, but its traces stay in the cultural landscape."
+  - borders forces: the verdict in front ("Centripetal: it unifies the state. Stronger cultural cohesion: ...").
+  - city models (began "A limit: It..."): the model's name in front ("Sector model (Hoyt). A limit: ...").
+  - diffusion diffusion: the type in front ("Stimulus diffusion. A real case: In India, ...").
+  - diffusion migration ("Factor 3 is a political cause." alone): the definition only ("Political causes are about
+    laws, governments, rights, conflict and borders.").
+  - frq coach part: the verb's demand ("Explain: Say how or why, with every link of the chain ..."); verbs: "Each task
+    verb asks for something different: do what the verb asks, about the place or data in the question."; earns: "A
+    point is earned by doing what the task verb asks, with the place or data the question names."
+  - model studio (every model; began "A limit. It..."): "Demographic transition model. One limit: It leaves out
+    migration."
+  - Kept: sea, city rings, bidrent, central, ranksize, diffusion mixed, kinds, ravenstein, population, scale.

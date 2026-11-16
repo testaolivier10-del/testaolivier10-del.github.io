@@ -31,3 +31,11 @@ Free-body diagrams finished card: "Diagram, equation and answer all right on the
 
 ## Questions for the owner (nothing removed)
 1. Same as chem: the hidden selects behind the new dropdowns stay in the page; delete later?
+
+## Accuracy check (F6b, 2026-11-16)
+Checked against the tools and `docs/apphys-authoring-guide.md`.
+- Correct as written: all eleven `STD_ASK` questions and the free-body finished card line.
+- Judgment, unchanged: rotation-lab asks "Which shape wins a rolling race, and why?", which fits its opening scene
+  (Rolling race); its Spinning stool and Orbit scenes are about angular momentum. Torque balance's Inertia race is
+  likewise outside its question. Both questions are correct; a per scene question would need the task to follow the
+  scene (the physics kit sets one question per tool).

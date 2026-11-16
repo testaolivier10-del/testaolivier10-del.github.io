@@ -219,7 +219,7 @@
       if(doneFor === key) return;
       doneFor = key;
       var i = ctxs.indexOf(ctx), nx = ctxs[(i + 1) % ctxs.length];
-      LS.done({ kicker: 'All 7 points', title: 'Every point earned.', text: 'A claim, two pieces of cited evidence, and each one explained with a concept and linked back to the claim.',
+      LS.done({ kicker: 'All 7 points', title: 'Every point earned.', text: 'A claim, evidence from two different sources, and each piece explained with a different psychology concept and linked back to the claim.',
         next: ctxs.length > 1 ? { label: 'Next question', onClick: function(){ LS.done(false, 'explore'); pick.set(nx.id); pick.select.dispatchEvent(new Event('change', { bubbles: true })); } } : null,
         links: [{ label: 'Your answer, as a reader sees it', onClick: function(){ LS.done(false, 'explore'); LS.open('details'); } }, { label: 'Keep working on this answer', onClick: function(){ LS.done(false, 'explore'); } }] }, 'explore');
     }

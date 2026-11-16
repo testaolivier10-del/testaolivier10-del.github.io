@@ -570,6 +570,38 @@
     if(c.answer < 0 && x < 0) return (x < c.answer ? 'Too large a decrease.' : 'Too small a decrease.') + ' Use the method, then check again.';
     return (x > c.answer ? 'Too high.' : 'Too low.') + ' Use the method, then check again.';
   }
+  /* Finished card takeaways (accuracy check F6b): the worked solution's last line, unless it reads oddly on its
+     own (a pronoun, a bare result); then TAKE[slug][type] gives the problem type its own short line: a string, or
+     function(p, last, sol) on plain text ('' keeps the last line). */
+  var TAKE = {
+    'air-pollution': {
+      reduce: function(p, last, sol){ var m = /emissions of ([^.]+)\./.exec(plainText(p.text || '')); return m && sol.length > 1 ? m[1].charAt(0).toUpperCase() + m[1].slice(1) + '. ' + sol[0] + ' Acid rain: ' + (/^It causes/.test(last) ? 'yes.' : 'no, that comes from SO₂ and NOx.') : ''; },
+      pct: 'Percent change = (new − old) ÷ old × 100; a negative result is a decrease.' },
+    'calculation-studio': {
+      'pct-change': 'Percent change = (new − old) ÷ old × 100: put brackets around new − old.',
+      doubling: 'Doubling time ≈ 70 ÷ the growth rate in percent. Read whether the question asks for a number of years or a year.',
+      convert: 'Write each conversion factor so the unit you want to cancel is on the bottom.',
+      emissions: 'Chain the factors so each unit cancels, leaving only the unit the question asks for.' },
+    'energy-chain': {
+      chain: 'In a thermal power plant most of the energy is lost as waste heat at the turbine, rejected to the cooling water.',
+      fuel: 'A power plant turns only part of its fuel energy into electricity; the rest leaves as waste heat.',
+      heatrate: 'A lower heat rate means a more efficient plant: less fuel energy for each kWh.' },
+    'energy-flow': {
+      tenpct: 'Only about 10% of the energy passes to each next level; the rest leaves the chain, mostly as heat from cellular respiration.',
+      reverse: 'To work down a food chain, divide by the transfer efficiency at each level (by 0.1 for the 10% rule).',
+      efficiency: 'Transfer efficiency = energy at the higher level ÷ energy at the level below × 100.',
+      web: 'A change in one population spreads through the food web, to what it eats and to what eats it.' },
+    'population-growth': {
+      project: 'Exponential growth (a J-curve) keeps going only while resources are unlimited; real populations meet a carrying capacity.',
+      logistic: 'Logistic growth (an S-curve) starts like exponential growth, then slows as limiting resources take hold near the carrying capacity.' },
+    'earth-climate': { shadow: 'Air rising over a mountain cools and drops its rain on the windward side, so the far side is a dry rain shadow.' },
+    'soil-texture': { percolation: 'Water percolates fast through sandy soil and slowly through soil with more silt and clay.' }
+  };
+  function takeOwn(slug, p){
+    var own = p && TAKE[slug] && TAKE[slug][p.type];
+    if(typeof own === 'function'){ var sol = (p.solution || []).filter(Boolean).map(function(l){ return plainText(String(l)); }); own = own(p, sol[sol.length - 1] || '', sol); }
+    return own || '';
+  }
   function drill(app, data, o){
     var slug = o.slug, gid = nid('dr'), contexts = data.contexts || [];
     var type = '', seed = seedFromUrl() || freshSeed();
@@ -1001,11 +1033,12 @@
         if(kg) why.appendChild(kg);
         s.caption('<b>' + (total === 1 ? (right ? 'Right the first time.' : 'Not right the first time.') + '</b>' : right + ' of ' + total + ' steps right the first time.</b>'), m);
         var t = topicOf(p && p.topic), solL = (p && p.solution || []).filter(Boolean), first = solL.length ? String(solL[solL.length - 1]) : '', firstT = plainText(first); // the last line: the conclusion
-        first = first.replace(/^\s*(Right|Correct|Yes)[.!]\s*/i, '').replace(/^\s*(?:[A-F](?:\([iv]+\))?|Step \d+|Part [A-F])[.:]\s*/, '');   // an option's own "Right." reads oddly after a miss
+        first = first.replace(/^\s*(Right|Correct|Yes)[.!]\s*/i, '').replace(/^\s*(?:[A-F](?:\([iv]+\))?|Step \d+|Part [A-F])[.:]\s*/, '').replace(/^So,?\s+([a-z])/, function(x, c){ return c.toUpperCase(); });   // an option's own "Right." reads oddly after a miss
+        var own = takeOwn(o.slug, p);
         var links = [{ label: 'Worked solution', open: 'why' }, { label: 'See your steps', onClick: function(){ s.done(false, m); if(again) again.focus({ preventScroll: true }); } }];
         if(t && t.built) links.push({ label: 'Read the lesson: ' + t.title, href: base() + 'lessons/' + t.id + '.html' });
         s.done({ kicker: right === total ? 'Done' : 'Finished', title: total === 1 ? (right ? 'Right the first time.' : 'Not right the first time.') : right + ' of ' + total + ' steps right the first time.',
-          text: p && p.takeaway ? p.takeaway : firstT && firstT.length <= 220 ? first : '',
+          text: p && p.takeaway ? p.takeaway : own ? esc(own) : firstT && firstT.length <= 220 ? first : '',
           next: { label: o.newLabel || 'New problem', onClick: function(){ if(again) again.click(); } }, links: links }, m);
       }
     };

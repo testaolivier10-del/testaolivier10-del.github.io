@@ -61,3 +61,20 @@ and links (`?seed=`), recording to mastery and the review queue, keyboard on the
 1. The Explore views (Greenhouse / Ozone / Ocean pH / Sea level, Seasons / Winds / ...) stay as a segmented row
    in the panel, not bar modes: the bar keeps Explore / Test yourself. Fine?
 2. The hidden original scenario controls stay in the page (the dropdown drives them). Fine to delete later?
+
+## Accuracy check (F6b, 2026-11-16)
+Checked the 12 task titles, the population growth todo, "Settings: Efficiency, respiration, scale" and every drill
+type's finished card takeaway (generated per context and type) against the tools and `docs/apenv-authoring-guide.md`.
+- Correct as written: all 12 task titles (climate keeps the greenhouse effect and ozone depletion apart), the todo, the
+  settings line.
+- Takeaways: new own lines (`TAKE` in env-tools.js) where the last line read oddly alone:
+  - air-pollution reduce (began "It causes acid rain."): the pollutant, its fix and "Acid rain: yes." or "Acid rain:
+    no, that comes from SO₂ and NOx."; pct: "Percent change = (new − old) ÷ old × 100; a negative result is a
+    decrease."
+  - calculation-studio pct-change and doubling (began "Readers want the brackets", "Readers take the point off"):
+    the formula with the habit; convert and emissions (a bare "= 984.1 L/day."): the unit-cancelling rule.
+  - energy-chain chain, fuel ("The other 55% leaves the plant as waste heat."), heatrate.
+  - energy-flow tenpct ("The other 99.9% left the chain"), reverse and efficiency (a bare "= 16%."), web.
+  - population-growth project and logistic (began "This J-curve", "This S-curve").
+  - earth-climate shadow (began "Its water fell"); soil-texture percolation ("A slow rate: more silt and clay.").
+  - Kept: every other type (age structure, cycles, dose-response, climate, soil, water pollution and the rest).

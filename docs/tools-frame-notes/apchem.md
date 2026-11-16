@@ -40,3 +40,13 @@ Finished cards: "Every step right on the first try.", "The worked solution shows
 
 ## Questions for the owner (nothing removed)
 1. The hidden Problem type selects (behind the new dropdown) and the hidden "Start here" cues stay in the page; fine to delete that markup later?
+
+## Accuracy check (F6b, 2026-11-16)
+Checked against the tools and `docs/apchem-authoring-guide.md`.
+- Correct as written: equilibrium-kinetics, ice-table-drills, particle-diagrams, periodic-trends-pes (Coulomb's law is
+  how the course explains every trend), q-vs-k, titration-curve-reader (the owner's mockup question; the tool shows the
+  jump at the equivalence point), units-sig-figs; "Give the value with its units and the right significant figures.";
+  all six finished card lines.
+- Changed: buffer-drills "Why does a buffer’s pH barely move?" to "Why does a buffer’s pH barely move when you add acid
+  or base?" (the claim is about adding small amounts of acid or base, which is what the tool does; it says what the
+  pH resists).

@@ -85,3 +85,11 @@ locked and unlocked (premium.js with LAUNCHED false, test only).
    you pick by). Keep?
 3. The calm frame's caption is now empty in most NREMT tools (the task head says it). Fine to drop the empty caption
    row from the shared CSS later (F6)?
+
+## Accuracy check (F6b, 2026-11-16)
+Checked every new task head, todo, kicker and finished card label in the NREMT studio lines (PR #217) for EMT practice
+and for matching the tool.
+- Correct as written, all of them. They are instructions only ("Tap a region to mark it burned.", "Say it out loud,
+  then tick it.", "Tap it on the model. Not sure? Hint, or Show me highlights it.", "Drag a step into the chart, or tap
+  it and then its place. Two steps belong to other protocols."); the medical content they point to (the Rule of Nines,
+  drug cards, sound descriptions, the structure's `location` line) is unchanged existing copy. Nothing changed.
