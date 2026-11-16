@@ -195,11 +195,14 @@
     var ctxs = data.contexts, gid = T.nid('us'), only = '', seed = 0;
     var fr = T.frame(app, data, { noun: 'tool', hid: gid + '-h', howTitle: data.howItWorksTitle }), area = fr.area;
     var kinds = ctxs.map(function(c){ return c.kind; }).filter(function(k, i, a){ return a.indexOf(k) === i; });
+    var kp = null;
     if(kinds.length > 1){
-      T.kindPicker(fr.pick, { label: 'Habit', mixed: 'Any habit', options: kinds.map(function(k){ return { value: k, label: KIND[k] }; }), onChange: function(v){ only = v; draw(true, true); } });
+      kp = T.kindPicker(fr.pick, { label: 'Habit', mixed: 'Any habit', options: kinds.map(function(k){ return { value: k, label: KIND[k] }; }), onChange: function(v){ only = v; draw(true, true); } });
     }
     function fresh(){ return 10000 + Math.floor(Math.random() * 89999); }
     var st = studioQuiz();
+    // The standard frame: the habit is the stage's dropdown (the select stays in Details, out of sight).
+    if(kp) T.stdPicker(kp, { label: 'Habit', mode: 'quiz', count: false });
     /* Tool Studio: the question on the stage; the answer box and Check in
        the dock; the verdict as a pill and the caption, the full feedback in
        Why; the problem code and the kind of habit in Details. */
@@ -208,6 +211,7 @@
       if(!S) return null;
       var only = app.classList.contains('bt-pane-quiz') ? { mode: 'quiz' } : null, m = only && only.mode;
       var stage = document.createElement('div'), why = document.createElement('div'), det = document.createElement('div');
+      var std = S.root.classList.contains('ls-std');
       stage.className = 'ls-drill-stage us-ls-q'; why.className = 'ls-sec ls-drill-why'; det.className = 'ls-sec ls-drill-det';
       S.add('stage', stage, only); S.add('why', why, only); S.add('details', det, only);
       var more = app.querySelector(':scope > .cd-more'), about = app.querySelector(':scope > .bt-about');
@@ -222,7 +226,12 @@
           var stem = area.querySelector('.chem-q-stem'); if(stem){ stem.classList.add('ls-drill-text'); stage.appendChild(stem); }
           var code = area.querySelector('.bt-code'); if(code) det.appendChild(code);
           var h2 = area.querySelector('.bt-prob-head h2'); if(h2) h2.classList.add('sr-only');
-          S.caption('Give the value with its units and the right significant figures.', m);
+          if(std){
+            S.done(false, m);
+            why.innerHTML = '';
+            S.task({ kicker: 'Test yourself', title: 'Give the value with its units and the right significant figures.' }, m);
+            S.caption('', m);
+          } else S.caption('Give the value with its units and the right significant figures.', m);
           S.pills([{ html: esc(KIND[ctxs.filter(function(c){ return area.querySelector('[data-qid*=":' + c.id + ':"]'); }).map(function(c){ return c.kind; })[0]] || 'Units and significant figures'), tone: 'ghost' }], 'left', m);
         },
         done: function(r){
@@ -230,8 +239,20 @@
           if(fb){ why.innerHTML = ''; fb.removeAttribute('aria-live'); why.appendChild(fb); }
           var word = v ? v.textContent : r.correct ? 'Correct.' : 'Not quite.';
           S.pills([{ html: esc(word.replace(/\.$/, '')), tone: r.correct ? 'good' : r.score > 0 ? 'warn' : 'bad' }], 'left', m);
+          var again = area.querySelector('.us-again');
+          if(std){
+            // The finished card: the verdict, New problem, the feedback (Explanation, Keep going under it), your answer, the lesson.
+            var keep = area.querySelector('.bt-next .bt-keep'), les = keep && keep.querySelector('a[href*="lessons/"]');
+            if(keep) why.appendChild(keep);
+            if(again) again.classList.add('ls-btn', 'ls-pri');
+            S.done({ kicker: r.correct ? 'Solved' : 'Finished', title: esc(word), text: r.correct ? 'Value, unit and significant figures all right.' : 'What went wrong, and the answer, are in the full explanation.',
+              next: again ? { label: 'New problem', onClick: function(){ again.click(); } } : null,
+              links: [{ label: 'Full explanation', open: 'why' }, { label: 'Review your answer', onClick: function(){ S.done(false, m); } }]
+                .concat(les ? [{ label: 'Read the lesson: ' + les.textContent.replace(/^\s*Lesson\s*/, '').trim(), href: les.getAttribute('href') }] : []) }, m);
+            return;
+          }
           S.caption('<b>' + esc(word) + '</b> ' + (r.correct ? 'The reasoning is under Why.' : 'What went wrong, and the answer, are under Why.'), m);
-          var again = area.querySelector('.us-again'); if(again){ again.classList.add('ls-btn', 'ls-pri'); again.focus(); }
+          if(again){ again.classList.add('ls-btn', 'ls-pri'); again.focus(); }
         }
       };
     }

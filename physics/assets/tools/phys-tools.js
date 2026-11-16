@@ -46,6 +46,14 @@
   function nid(p){ return (p || 'bt') + '-' + (++uid); }
   function esc(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
   function F(x, d){ var s = M.fixed(x, d == null ? 2 : d); return s.charAt(0) === '-' ? '−' + s.slice(1) : s; }
+  /* html with <sub>/<sup> -> plain text with Unicode sub- and superscripts (a native dropdown shows no markup). */
+  var SUB = { '0': '₀', '1': '₁', '2': '₂', '3': '₃', '4': '₄', '5': '₅', '6': '₆', '7': '₇', '8': '₈', '9': '₉', '+': '₊', '-': '₋', '−': '₋' };
+  var SUP = { '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴', '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹', '+': '⁺', '-': '⁻', '−': '⁻' };
+  function plainText(h){
+    var d = document.createElement('div');
+    d.innerHTML = String(h).replace(/<(sub|sup)>([^<]*)<\/\1>/g, function(m0, t, x){ var map = t === 'sub' ? SUB : SUP; return x.split('').map(function(c){ return map[c] || c; }).join(''); });
+    return d.textContent.replace(/\s+/g, ' ').trim();
+  }
   function core(){ return window.ApPhysCore; }
   function base(){ return window.ApPhysBase || '../'; }
   function report(id){ return window.LevlReport ? '<span class="bt-report">' + window.LevlReport.button('apphys', id) + '</span>' : ''; }
@@ -77,6 +85,31 @@
     });
   }
 
+  /* stdPicker(sel, { label, mode, count }): a scenario select (choiceSelect's result) becomes the standard frame's ONE
+     dropdown at the stage's top left (docs/tools-frame-2026-11.md). The select stays, out of sight, and drives the tool
+     as before: a pick sets it and fires its change; a change the tool makes is followed. No std studio: nothing. */
+  function stdPicker(sel, o){
+    var S = window.LevlStudio && window.LevlStudio.get();
+    if(!sel || !S || !S.picker || !S.root.classList.contains('ls-std')) return null;
+    o = o || {};
+    var se = sel.select || sel;
+    function groups(){
+      var gs = [], loose = [];
+      Array.prototype.forEach.call(se.children, function(c){
+        if(c.tagName === 'OPTGROUP') gs.push({ label: c.label, items: Array.prototype.map.call(c.children, function(x){ return { value: x.value, label: x.textContent }; }) });
+        else loose.push({ value: c.value, label: c.textContent });
+      });
+      return loose.length ? [{ label: '', items: loose }].concat(gs) : gs;
+    }
+    var p = S.picker({ label: o.label || 'Choose', count: o.count !== false, groups: groups(), value: se.value, onChange: function(v){
+      se.value = v;
+      se.dispatchEvent(new Event('change', { bubbles: true }));
+    } }, o.mode);
+    se.addEventListener('change', function(){ p.value(se.value); });
+    if(sel.set){ var set0 = sel.set; sel.set = function(v){ set0(v); p.value(se.value); }; }
+    if(sel.el) sel.el.hidden = true;
+    return p;
+  }
   /* ------------------------------------------------------- controls */
   function decimalsOf(step){ var s = String(step); return s.indexOf('.') < 0 ? 0 : s.length - s.indexOf('.') - 1; }
   function slider(o){
@@ -503,10 +536,13 @@
     var area = fr.area;
     // Only the kinds this page has content for (contexts unlock with their units).
     var kinds = (o.types || []).filter(function(t){ type = t.value; var n = pickable().length; type = ''; return n > 0; });
+    var kp = null;
     if(kinds.length > 1){
-      kindPicker(fr.pick, { label: o.typeLabel || 'Problem type', options: kinds, onChange: function(v){ type = v; seed = freshSeed(); draw(true); } });
+      kp = kindPicker(fr.pick, { label: o.typeLabel || 'Problem type', options: kinds, onChange: function(v){ type = v; seed = freshSeed(); draw(true); } });
     }
     var sd = studioDrill(app, area, o);
+    // The standard frame: the kind of problem is the scenario picker on the stage (the select it drives stays, out of sight).
+    if(sd && sd.std && kp) sd.picker(kp, kinds, o.typeLabel || 'Problem type', function(v){ type = v; seed = freshSeed(); draw(true); });
     function pickable(){ return contexts.filter(function(c){ return !type || (c.types ? c.types.indexOf(type) > -1 : c.mode ? c.mode === type : c.kind === type); }); }
     function pickCtx(r){ var ok = pickable(); return r.pick(ok.length ? ok : contexts); }
     function draw(focus){
@@ -544,6 +580,9 @@
         }
         el.innerHTML = head + body + '<div class="bt-actions"><button type="submit" class="btn-press sm">Check</button></div><div class="cd-fb" role="status" aria-live="polite"></div>';
         host.appendChild(el);
+        // The standard frame: the step's hint is the first rung of the hint ladder (instant, on request) and Show
+        // the answer its last, open after one real try (docs/tools-frame-2026-11.md).
+        var lad = sd && sd.std ? sd.ladder(el, s.hint, function(){ reveal(); }) : null;
         var rowInputs = [];
         if(s.kind === 'row' || s.kind === 'coef'){
           rowsAll('[data-row="' + s.row + '"] [data-i]').forEach(function(td){
@@ -568,6 +607,7 @@
         el.addEventListener('submit', function(e){ e.preventDefault(); check(); });
         function lock(){
           done = true;
+          if(lad){ lad.row.remove(); lad.card.classList.add('bt-lad-done'); }
           el.querySelectorAll('input').forEach(function(x){ if(x.type === 'radio' || x.type === 'range') x.disabled = true; else x.readOnly = true; });
           rowInputs.forEach(function(x){ if(x) x.readOnly = true; });
           if(s.row) row1('[data-row="' + s.row + '"]').classList.remove('is-active');
@@ -623,8 +663,8 @@
           }
           el.classList.add('is-wrong');
           fb.innerHTML = '<span class="phys-mark no">Not yet</span>' + (notes.length ? '<ul class="cd-notes">' + notes.map(function(n){ return '<li>' + n + '</li>'; }).join('') + '</ul>' : s.kind === 'vol' ? ' That is not where this point is. Look at the shape of the curve again.' : ' Recheck the arithmetic.') +
-            '<div class="bt-actions"><button type="button" class="bt-btn cd-show">Show the answer</button></div>';
-          fb.querySelector('.cd-show').addEventListener('click', reveal);
+            (lad ? '' : '<div class="bt-actions"><button type="button" class="bt-btn cd-show">Show the answer</button></div>');
+          if(lad) lad.attempt(); else fb.querySelector('.cd-show').addEventListener('click', reveal);
         }
       }
       function finish(){
@@ -638,7 +678,7 @@
         nx.innerHTML = '<p class="bt-result" role="status">' + right + ' of ' + results.length + (results.length === 1 ? ' step' : ' steps') + ' right the first time.</p><div class="bt-actions"><button type="button" class="btn-press sm cd-again">' + esc(o.newLabel || 'New problem') + '</button>' + report(slug + ':' + p.ctx) + '</div>';
         nx.querySelector('.cd-again').addEventListener('click', function(){ seed = freshSeed(); draw(true); });
         keepGoing(nx, { topic: p.topic, also: results.filter(function(x){ return !x.correct; }).map(function(x){ return x.topic; }) });
-        if(sd){ sd.done(right, results.length); return; }
+        if(sd){ sd.done(right, results.length, p); return; }
         sol.querySelector('h3').focus();
       }
       step(0);
@@ -691,6 +731,7 @@
       st.modes({ el: bar, value: start });
       // After the switch, so the arrangement knows the mode it opens on.
       if(o.studio && o.studio.explore) o.studio.explore(ex, st);
+      stdExplore(st, eb.textContent.trim());
     }
     show(start, false);
     return { explore: ex, quiz: qz, show: show, bar: bar };
@@ -716,22 +757,56 @@
        About   "About this drill"
      A drill's tool code must reach its figure through its own references
      (not app.querySelector), since the figure moves to the stage. */
+  /* The standard frame (docs/tools-frame-2026-11.md, F3): in Explore the side panel's head asks the question the
+     tool answers; the tool's "Start here" cue is the line on what to do (studioPane). New copy: listed in
+     docs/tools-frame-notes/ for the accuracy check. */
+  var STD_ASK = {
+    'collision-lab': 'What is conserved when two carts collide?',
+    'energy-bar-charts': 'Where does the energy go?',
+    'fluids-tank': 'Why does an object float or sink?',
+    'lab-design': 'What should you plot to get a straight line?',
+    'free-body-diagrams': 'Which forces act on the object, and do they balance?',
+    'oscillator-lab': 'What sets the period of an oscillator?',
+    'motion-graphs': 'How do the position, velocity and acceleration graphs fit together?',
+    'projectile-lab': 'How does a launch split into horizontal and vertical motion?',
+    'scaling-drills': 'If one quantity doubles, what happens to the other?',
+    'rotation-lab': 'Which shape wins a rolling race, and why?',
+    'torque-balance': 'Where must a mass hang to balance the stick?'
+  };
+  var curSlug = '';
+  /* A task title from a problem's text: long text reads as text, not a headline. */
+  function longT(h){ return String(h || '').replace(/<[^>]+>/g, '').length > 60 ? '<span class="bt-tt-long">' + h + '</span>' : h; }
+  function stdExplore(s, kicker){
+    if(!s || !s.root.classList.contains('ls-std')) return;
+    // A tool that arranges itself (no studioPane) may still have its cue somewhere in the frame.
+    var c2 = !s.lsCue && s.root.querySelector('.bt-cue:not([hidden])');
+    if(c2 && !c2.closest('[data-ls-only]:not([data-ls-only~="explore"])')){
+      var k2 = c2.querySelector('.bt-cue-k'), t2 = c2.querySelector('.bt-cue-t');
+      s.lsCue = t2 ? t2.innerHTML : c2.innerHTML.replace(k2 ? k2.outerHTML : '', '').trim();
+      c2.hidden = true;
+    }
+    var ask = STD_ASK[curSlug], cue = s.lsCue || '';
+    if(ask || cue) s.task({ kicker: kicker || 'Explore', title: esc(ask || '') || cue, todo: ask ? cue : '' }, 'explore');
+  }
   function studioOf(app){
     var s = window.LevlStudio && window.LevlStudio.get();
     var root = document.getElementById('app');
     return s && root && root.getAttribute('data-studio') && root.contains(app) ? s : null;
   }
   function studioFrame(app, slug){
+    curSlug = slug;
     var main = app.parentNode, h1 = main.querySelector('.phys-hero h1'), lede = main.querySelector('.phys-hero .lede');
     main.classList.add('ls-host');
     var s = window.LevlStudio.mount({
       title: h1 ? h1.textContent : slug, course: 'AP® Physics 1', back: base() + 'tools.html', home: base(), slug: 'apphys-' + slug,
       host: app,
-      // the second tab and its dock button, named for what is in it
-      // the second tab and its dock button: a tool names it with
-      // data-details-title on #app (set before mount); default "Numbers & setup".
+      // The standard frame (docs/tools-frame-2026-11.md, F3): name and one line in the bar, the modes there too,
+      // Share, "?" for the numbers, settings and reference (also in the menu, as the settings).
+      std: true, lede: lede ? lede.textContent.trim() : '',
+      // the second tab: a tool names it with data-details-title on #app (set before mount); default "Numbers & setup".
       detailsTitle: app.getAttribute('data-details-title') || 'Numbers & setup',
       menu: {
+        items: [{ label: 'Settings and numbers', icon: 'sliders', onClick: function(){ s.open('details'); } }],
         copyLink: function(){
           var code = s.mode() === 'quiz' ? s.root.querySelector('.ls-drill-det .bt-code b') : null;
           return location.origin + location.pathname + (code ? '?seed=' + code.textContent : '');
@@ -761,10 +836,31 @@
     s.add('dock', area, only);
     if(more) s.add('details', more, only);
     if(about){ about.open = true; s.add('about', about, only); }
+    var std = s.root.classList.contains('ls-std');
     return {
+      std: std,
+      /* The kind picker (kindPicker's select) as the stage's scenario dropdown, in this mode. */
+      picker: function(kp, kinds, label, onChange){
+        var items = [{ value: '', label: 'Any kind' }].concat(kinds.map(function(k){ return { value: k.value, label: plainText(k.label) }; }));
+        s.picker({ label: label, items: items, value: kp.value(), onChange: function(v){ kp.set(v); onChange(v); } }, m);
+        kp.el.hidden = true;
+        var mo = kp.el.closest('.bt-more');
+        if(mo && !Array.prototype.some.call(mo.querySelectorAll('.bt-more-b input, .bt-more-b select, .bt-more-b button, .bt-more-b a'), function(x){ return !x.closest('[hidden]'); })) mo.hidden = true;
+      },
+      /* A step's hint ladder: its hint (moved out of the step's head) first, Show the answer after one try. */
+      ladder: function(el, hint, show){
+        var hp = el.querySelector('.cd-label + .bt-small');
+        if(hp){ hp.remove(); el.querySelectorAll('[aria-describedby]').forEach(function(x){ x.removeAttribute('aria-describedby'); }); }
+        var lad = s.hints({ hints: hint ? [hint] : [], answer: { label: 'Show the answer', onShow: function(){ show(); return ''; } } });
+        lad.card.classList.add('cd-hintc'); lad.row.classList.add('cd-hintr');
+        el.insertBefore(lad.card, el.querySelector('.bt-actions'));
+        el.appendChild(lad.row);
+        return lad;
+      },
       fresh: function(p){
         stage.innerHTML = ''; det.innerHTML = '<h3 class="ls-title-l">This problem</h3>';
-        why.innerHTML = '<h3 class="ls-title-l">Worked solution</h3><p class="ls-sub">It appears here once every step is answered.</p>';
+        why.innerHTML = std ? '' : '<h3 class="ls-title-l">Worked solution</h3><p class="ls-sub">It appears here once every step is answered.</p>';
+        if(std) s.done(false, m);
         var extra = area.querySelector(':scope > .cd-extra'), fig = extra && (extra.children.length || extra.textContent.trim());
         var ctx = area.querySelector(':scope > .bt-context'), text = ctx ? Array.prototype.map.call(ctx.childNodes, function(n){ return n.textContent; }).join(' ').replace(/\s+/g, ' ').trim() : '';
         // The problem is read on the stage when there is no figure, or when
@@ -793,14 +889,35 @@
           var ask = ss.filter(function(x){ return /\?\s*$/.test(x); }).pop() || ss[ss.length - 1];
           text = (eqT ? eqT.replace(/\s+K\s*=/, ', K =') + '. ' : '') + ask.trim();
         }
-        s.caption(onStage ? esc(o.studioCaption || (nSteps > 1 ? 'Answer one step at a time.' : stage.querySelector('.cd-pics') ? 'Tap the picture that fits, then Check.' : 'Answer, then Check.')) : esc(text), m); s.pills([], 'left', m);
+        var todo = o.studioCaption || (nSteps > 1 ? 'Answer one step at a time.' : stage.querySelector('.cd-pics') ? 'Tap the picture that fits, then Check.' : 'Answer, then Check.');
+        if(std){
+          // The side panel's head: the kind of problem, the question (when it is not already on the stage), what to do.
+          var kick = h2 ? h2.textContent.trim() : 'Practice problem';
+          s.task({ kicker: kick, title: onStage || text === todo ? esc(todo) : longT(esc(text)), todo: onStage || text === todo ? '' : todo }, m);
+          s.caption('', m);
+        } else s.caption(onStage ? esc(todo) : esc(text), m);
+        s.pills([], 'left', m);
       },
-      done: function(right, total){
+      done: function(right, total, p){
         var sol = area.querySelector(':scope > .bt-solution');
         if(sol){ why.innerHTML = ''; why.appendChild(sol); }
         s.pills([{ html: right + ' of ' + total + ' right', tone: right === total ? 'good' : 'warn' }], 'left', m);
-        s.caption('<b>' + (total === 1 ? (right ? 'Right the first time.' : 'Not right the first time.') : right + ' of ' + total + ' steps right the first time.') + '</b> The worked solution is under Why.', m);
+        var head = total === 1 ? (right ? 'Right the first time.' : 'Not right the first time.') : right + ' of ' + total + ' steps right the first time.';
         var again = area.querySelector('.cd-again');
+        if(std){
+          // The finished card: the score, New problem, then the worked solution (with Keep going under it), your
+          // steps again, and the lesson.
+          s.caption('<b>' + head + '</b> The worked solution is under Explanation.', m);
+          var keep = area.querySelector('.bt-next .bt-keep'), les = keep && keep.querySelector('a[href*="lessons/"]');
+          if(keep) why.appendChild(keep);
+          var links = [{ label: 'Full explanation', open: 'why' }, { label: 'Review your steps', onClick: function(){ s.done(false, m); if(again) again.focus(); } }];
+          if(les) links.push({ label: 'Read the lesson: ' + les.textContent.replace(/^Lesson/, '').trim(), href: les.getAttribute('href') });
+          if(again) again.classList.add('ls-btn', 'ls-pri');
+          s.done({ kicker: right === total ? 'Solved' : 'Finished', title: esc(head), text: right === total ? 'Every step right on the first try.' : 'The worked solution shows each step.',
+            next: again ? { label: again.textContent, onClick: function(){ again.click(); } } : null, links: links }, m);
+          return;
+        }
+        s.caption('<b>' + head + '</b> The worked solution is under Why.', m);
         if(again){ again.classList.add('ls-btn', 'ls-pri'); again.focus(); }
       }
     };
@@ -835,8 +952,14 @@
       dock.push(row);
     }
     s.add('dock', dock, only);
-    // The "Start here" cue reads as the first line of Why.
-    var why = box('ls-sec phys-ls-why', [pane.querySelector('.bt-cue')].concat(o.why || []));
+    // The "Start here" cue reads as the first line of Why. The standard frame: it is the task's "what to do" line,
+    // under the question the tool asks (stdExplore, after the arrangement), and the cue itself stays out of sight.
+    var cueEl = pane.querySelector('.bt-cue');
+    if(s.root.classList.contains('ls-std') && cueEl){
+      s.lsCue = (cueEl.querySelector('.bt-cue-t') || cueEl).innerHTML;
+      cueEl.hidden = true; cueEl = null;
+    }
+    var why = box('ls-sec phys-ls-why', [cueEl].concat(o.why || []));
     s.add('why', why, only);
     var det = box('ls-sec phys-ls-det', o.details);
     if(more){
@@ -860,6 +983,7 @@
   function sayHead(el){ var h = el && el.querySelector('.bt-say-h'); return h ? h.innerHTML : ''; }
 
   window.ApPhysTools = {
+    stdPicker: stdPicker,
     studioOf: studioOf, studioPane: studioPane, sayHead: sayHead,
     modes: modes, reduced: reduced, cue: cue, moreHtml: moreHtml, explain: explain,
     esc: esc, F: F, nid: nid, mount: mount, frame: frame, kindPicker: kindPicker, keepGoing: keepGoing, slider: slider, choiceSelect: choiceSelect, announcer: announcer,

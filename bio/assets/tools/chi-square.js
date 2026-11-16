@@ -142,6 +142,7 @@
     var start = Math.max(0, ctxs.map(function(x){ return x.cats.length; }).indexOf(3));
     var pick = T.choiceSelect({ label: 'The test', options: ctxs.map(function(x, i){ return { value: i, label: x.cats.join(' / ') + ' (' + x.cats.length + ' categories)' }; }), value: start, onChange: function(i){ var before = c.cats.length; load(+i); if(c.cats.length > before) done('df'); } });
     sec.querySelector('.sk-pick').appendChild(pick.el);
+    T.stdPicker(pick, { label: 'The test', mode: 'explore' });
     function load(i){
       c = ctxs[i];
       obs = M.apportion(c.props, N0);

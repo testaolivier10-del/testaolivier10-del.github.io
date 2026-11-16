@@ -497,6 +497,9 @@ html.ls-page{scroll-padding-bottom:calc(var(--ls-act-h, 0px) + var(--ls-pbar-h, 
 @media (max-width:999.98px){
   .ls-std .ls-bar{flex-wrap:wrap;height:auto;min-height:52px;row-gap:2px;padding-bottom:6px;}
   .ls-std .ls-bar .ls-modes{order:9;flex:1 0 100%;padding:0 4px;}
+  /* A long name shrinks (ellipsis) instead of wrapping the bar's buttons onto a row of their own. */
+  .ls-std .ls-tblock{flex:1 1 0;}
+  .ls-std .ls-tblock + .ls-sp{flex:0 0 0;}
   .ls-std .ls-bar .ls-modes > .ls-seg{width:100%;}
   .ls-std .ls-bar .ls-modes > .ls-seg > *{flex:1 1 0;padding:0 8px;}
 }

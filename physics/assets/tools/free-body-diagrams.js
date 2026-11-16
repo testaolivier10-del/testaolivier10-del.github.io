@@ -310,6 +310,7 @@
     var svg = q('.fb-svg'), root = q('.fb-root'), live = T.announcer(q('.fb-live')), title = q('#fbx-d');
     var pickSel = T.choiceSelect({ label: 'Scene', options: scenes.map(function(s){ return { value: s, label: FB.SCENES[s].name }; }), value: sc, onChange: function(v){ stop(true); sc = v; sel = -1; controls(); draw(); } });
     q('.fb-pick').appendChild(pickSel.el);
+    T.stdPicker(pickSel, { label: 'Scene', mode: 'explore' });
     start = T.cue('Drag a slider and watch the forces change. Then press Run.');
     q('.fb-main').appendChild(start.el);
     var runB = q('.fb-run'), compB = q('.fb-comp-b');
@@ -545,7 +546,9 @@
       var pk = T.choiceSelect({ label: 'Scenes to practice', options: [{ value: '', label: 'Any scene' }].concat(allScenes.map(function(s){ return { value: s, label: FB.SCENES[s].name }; })), value: '',
         onChange: function(v){ only = v; seed = freshSeed(); load(true); } });
       $('.fb-qpick').appendChild(pk.el);
+      T.stdPicker(pk, { label: 'Scene', mode: 'quiz', count: false });
     }
+    var std = !!(LS && LS.root.classList.contains('ls-std'));
     if(LS){
       var o = { mode: 'quiz' };
       var stg = document.createElement('div'); stg.className = 'fb-ls-qstage'; stg.appendChild($('.fb-qstage'));
@@ -570,7 +573,8 @@
       sc2 = scaleOf(mx);
       $('.fb-qtext').innerHTML = '<p>' + p.text + '</p>';
       $('.fb-code').innerHTML = 'Problem code <b>' + seed + '</b> <a href="?seed=' + seed + '">Link to this problem</a>';
-      $('.fb-qwhy').innerHTML = '<h3 class="ls-title-l">Worked solution</h3><p class="ls-sub">It appears here once every step is answered.</p>';
+      $('.fb-qwhy').innerHTML = std ? '' : '<h3 class="ls-title-l">Worked solution</h3><p class="ls-sub">It appears here once every step is answered.</p>';
+      if(std) LS.done(false, 'quiz');
       bg.innerHTML = defs('fbq') + '<g class="fb-muted">' + view.g + '</g><circle class="fb-dot" cx="' + n1(view.dot.x) + '" cy="' + n1(view.dot.y) + '" r="5"/>';
       nextEl.innerHTML = ''; doneEl.hidden = true; doneEl.innerHTML = '';
       if(LS){ LS.pills([], 'left', 'quiz'); LS.pills([], 'right', 'quiz'); }
@@ -825,10 +829,25 @@
       nextEl.querySelector('.fb-again').addEventListener('click', function(){ seed = freshSeed(); load(true); });
       T.keepGoing(nextEl, { topic: p.topic, also: results.filter(function(x){ return !x.correct; }).map(function(x){ return x.topic; }) });
       if(LS){ LS.pills([{ html: right + ' of ' + results.length + ' right', tone: right === results.length ? 'good' : 'warn' }], 'left', 'quiz'); }
+      if(std){
+        // The finished card: the score, New problem, the worked solution (Keep going under it), your steps, the lesson.
+        var keep = nextEl.querySelector('.bt-keep'), les = keep && keep.querySelector('a[href*="lessons/"]'), again = nextEl.querySelector('.fb-again');
+        if(keep) $('.fb-qwhy').appendChild(keep);
+        LS.done({ kicker: right === results.length ? 'Solved' : 'Finished', title: esc(right + ' of ' + results.length + ' steps right the first time.'),
+          text: right === results.length ? 'Diagram, equation and answer all right on the first try.' : 'The worked solution shows each step.',
+          next: { label: 'New problem', onClick: function(){ again.click(); } },
+          links: [{ label: 'Full explanation', open: 'why' }, { label: 'Review your steps', onClick: function(){ LS.done(false, 'quiz'); } }]
+            .concat(les ? [{ label: 'Read the lesson: ' + les.textContent.replace(/^\s*Lesson\s*/, '').trim(), href: les.getAttribute('href') }] : []) }, 'quiz');
+        return;
+      }
       caption('<b>' + right + ' of ' + results.length + ' steps right the first time.</b> The worked solution is under Why.');
       nextEl.querySelector('.fb-again').focus();
     }
-    function caption(h){ if(LS) LS.caption(h, 'quiz'); else { var c = $('.fb-qcap'); if(c) c.innerHTML = h; } }
+    function caption(h){
+      // The standard frame: the problem heads the side panel (the step's own label says what to do).
+      if(std && p){ LS.task({ kicker: FB.SCENES[p.scene] ? FB.SCENES[p.scene].name : 'Test yourself', title: '<span class="bt-tt-long">' + h + '</span>' }, 'quiz'); LS.caption('', 'quiz'); return; }
+      if(LS) LS.caption(h, 'quiz'); else { var c = $('.fb-qcap'); if(c) c.innerHTML = h; }
+    }
     if(!LS) $('.fb-qstage').insertAdjacentHTML('afterend', '<p class="tx-where fb-qcap"></p>');
     load(false);
   }
