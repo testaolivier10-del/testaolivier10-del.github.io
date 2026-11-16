@@ -386,5 +386,9 @@
     return s;
   }
 
+  // Locked Premium tools are mounted by tool-studio.js itself (adopt): tell it this course is on the standard frame.
+  function stdKit(){ if(window.LevlStudio && window.LevlStudio.stdKit) window.LevlStudio.stdKit({ lede: LEDE }); }
+  stdKit();
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', stdKit);
   window.AnpToolKit = { strip: strip, picker: picker, bodyName: bodyName, a3dId: a3dId, A3D: A3D, body3d: body3d, status: status, first: first, why: why, more: more, about: about, studio: studio, BODY: BODY, ALIAS: ALIAS };
 })();
