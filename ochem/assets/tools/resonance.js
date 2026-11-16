@@ -895,7 +895,7 @@
       { label: 'More species', items: SPECIES.slice(FIRST).map(function(x){ return { value: x.id, label: x.label }; }) }]; };
     var hints = studio.hints({ hints: [
         'Look for a lone pair or a π bond next to another π bond, or next to an atom that is short of electrons.',
-        'Move a pair one place over, into the neighboring bond, and push the π bond it meets onto the far atom. Atoms stay put; only electrons move.'
+        'Move a pair one place over: a lone pair into the bond beside it, or a π bond toward its neighbor. If an atom would then pass an octet, move one of its π bonds on too. Atoms stay put; only electrons move.'
       ], answer: { label: 'Show me one I’m missing', onShow: function(){ byId('resReveal').click(); return ''; } } });
     byId('resReveal').hidden = true;
     act.classList.add('ls-push');
@@ -958,7 +958,7 @@
     if(!left && mine && studio.done){
       var i = SPECIES.indexOf(current), Kit = window.OchemStudioKit;
       studio.done({ kicker: 'All found', title: 'All ' + target.length + ' forms of ' + name + '.',
-        text: 'The real ' + name.toLowerCase() + ' is a blend of them, most like the best form. The full explanation ranks them.',
+        text: 'The real ' + name.toLowerCase() + ' is one blend of them, closest to the most stable forms. The full explanation ranks them.',
         next: { label: 'Next molecule', onClick: function(){ select(SPECIES[(i + 1) % SPECIES.length]); } },
         links: [{ label: 'Start over', onClick: function(){ byId('resReset').click(); } }].concat(Kit ? Kit.extras({ topic: 'resonance' }) : [])
       }, 'hunt');

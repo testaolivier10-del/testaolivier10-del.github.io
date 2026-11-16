@@ -797,7 +797,7 @@
       take:[ 'Ionization comes first in SN1.', 'The C–Br bond breaks on its own and bromide leaves with both electrons. The carbocation meets its nucleophile in a separate step.' ] },
     { id:'protonate', label:'Protonate a C=O', mol:'fischer-protonation', goal:'Acid catalysis, step 1: put the proton on the carbonyl oxygen.',
       steps:[ [['o1','ha'], ['bond:ac-ha','ac']] ],
-      hints:[[ 'The carbonyl oxygen has lone pairs to give.', 'One lone pair takes the acid’s proton, and the acid’s bond to that proton breaks onto the acid.' ]],
+      hints:[[ 'The carbonyl oxygen has lone pairs to give.', 'One lone pair takes a proton from hydronium, and that O–H bond breaks onto its oxygen, which leaves as water.' ]],
       take:[ 'Acid makes the carbonyl a better electrophile.', 'A lone pair on oxygen takes the proton. The positive oxygen pulls electrons away from the carbonyl carbon, so even a weak nucleophile can attack it next.' ] },
     { id:'aldol', label:'Aldol addition', mol:'enolate-plus-acetone', goal:'The enolate carbon attacks the second carbonyl; give the alkoxide.',
       steps:[ [['ca','c2'], ['bond:c2-o2','o2']] ],
@@ -813,7 +813,7 @@
       stepGoals:[ 'The enolate adds to the ester carbonyl.', 'Collapse the intermediate and expel ethoxide.' ],
       steps:[ [['ca','c2'], ['bond:c2-o2','o2']], [['o2','bond:c2-o2'], ['bond:c2-o3','o3']] ],
       hints:[[ 'The enolate’s carbon is the nucleophile.', 'It adds to the ester’s carbonyl carbon, and the C=O pi bond moves onto oxygen.' ],
-             [ 'The negative oxygen pushes a lone pair back down to remake C=O.', 'The bond to the ethoxy oxygen breaks, and ethoxide leaves.' ]],
+             [ 'The negative oxygen pushes a lone pair back down to remake C=O.', 'The C–OEt bond on that same carbon breaks, and ethoxide leaves.' ]],
       take:[ 'Add, then eliminate, again.', 'The enolate adds to the ester carbonyl and the intermediate collapses to push out ethoxide: acyl substitution with a carbon nucleophile.' ] }
   ];
   var chal = { on:false, def:null, i:0, states:[], wrong:0, right:0, total:0, verdict:null, shown:0 };

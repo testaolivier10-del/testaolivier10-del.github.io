@@ -1171,7 +1171,7 @@
     if(fin){
       var n = S.mode === 'fwd' ? S.steps.length : S.bsteps.length, best = dist(S.P, S.P.start);
       studio.done({ kicker: 'Solved', title: esc(S.P.targetMol.m.name) + ' in ' + plural(n, 'step') + '.',
-        text: (n === best ? 'That is the shortest route.' : 'The shortest route takes ' + best + '; the full explanation has it.') +
+        text: (n === best ? 'That is the shortest route.' : 'The shortest route takes ' + plural(best, 'step') + '; the full explanation has it.') +
           (S.misses ? ' ' + S.misses + (S.misses === 1 ? ' miss' : ' misses') + ' on the way.' : ' No misses.'),
         next: { label: 'Next problem', onClick: nextProblem },
         links: (S.mode === 'fwd' ? [{ label: 'Solve it backward', onClick: function(){ setProblem(S.P, 'back'); studio.mode('back'); render(); sync(); } }] : [])
