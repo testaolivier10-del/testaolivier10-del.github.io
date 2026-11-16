@@ -441,6 +441,8 @@ document.addEventListener('DOMContentLoaded', function(){
   studio.modes({ el: sw, value: cur() });
   if(window.NremtFormularyCards && window.NremtFormularyCards.render) window.NremtFormularyCards.render();
   var INTRO = '<p>An EMT carries a very short formulary, and the contraindications matter more than the indications: the exam tests what stops you, not what starts you. Each card is one patient and one drug. The reason after your call is the exact line on that drug&rsquo;s card in Details.</p>';
+  // "Not this time. Give oxygen: in suspected CO poisoning ..." -> "Give oxygen." (the whole line is in the dock and Why).
+  function shortCall(t){ var x = String(t).replace(/^\s*(Right|Not this time)\.?\s*/i, ''); var m = /^[^:.;]+/.exec(x); return (m ? m[0] : x).trim() + '.'; }
   function paint(){
     var m = cur();
     studio.mode(m);
@@ -448,11 +450,13 @@ document.addEventListener('DOMContentLoaded', function(){
       var fb = $('drillFb'), ps = fb ? fb.querySelectorAll('p') : [];
       if(ps.length){
         var ok = /Correct/.test(ps[0].textContent);
-        studio.caption('<b>' + ps[0].textContent + '</b> Why? has the explanation.', 'drill');
+        studio.task({ kicker: ok ? 'Right' : 'Not quite', tone: ok ? 'good' : 'bad', title: ps[0].textContent, todo: 'Explanation has the reason.' }, 'drill');
+        studio.caption('', 'drill');
         studio.pills([{ html: ok ? 'Correct' : 'Not quite', tone: ok ? 'good' : 'bad' }], 'right', 'drill');
         why.innerHTML = '<h3 class="ls-title-l">' + ps[0].textContent + '</h3>' + (ps[1] ? '<p>' + ps[1].innerHTML + '</p>' : '');
       } else {
-        studio.caption('Questions from the bank on the seven drugs. Pick an answer.', 'drill');
+        studio.task({ kicker: 'Question drill', title: 'Pick an answer.', todo: 'Questions from the bank on the seven drugs.' }, 'drill');
+        studio.caption('', 'drill');
         studio.pills([], 'right', 'drill');
         why.innerHTML = '<h3 class="ls-title-l">Question drill</h3><p>Pharmacology questions from the practice bank, one at a time. A miss goes to your Review list, where it comes back with the rest of Practice.</p>';
       }
@@ -460,17 +464,30 @@ document.addEventListener('DOMContentLoaded', function(){
     }
     var w = $('gwWhy'), v = w && w.querySelector('.gw-verdict'), end = gw.querySelector('.gw-end');
     if(end){
-      studio.caption('<b>Deck done.</b> ' + (end.querySelector('p') ? end.querySelector('p').textContent : ''), 'gw');
+      studio.caption('', 'gw');
       studio.pills([], 'left', 'gw');
+      /* The finished card: the score, then Again; Drill my misses when there are some. The deck's own list of
+         misses stays on the stage beside it. */
+      var n = end.querySelector('.gw-end-n'), again = $('gwAgain'), dr = $('gwDrill');
+      studio.done({ kicker: 'Deck done', title: (n ? n.textContent.replace(' / ', ' of ') : '') + ' calls right',
+        text: end.querySelector('p') ? end.querySelector('p').textContent : '',
+        // As on the deck's own end: with misses, Drill my misses leads and Deal a new deck follows.
+        next: dr ? { label: dr.textContent.trim(), onClick: function(){ var b = $('gwDrill'); if(b) b.click(); } }
+          : { label: again ? again.textContent.trim() : 'Again', onClick: function(){ var b = $('gwAgain'); if(b) b.click(); } },
+        links: (dr ? [{ label: again ? again.textContent.trim() : 'Deal a new deck', onClick: function(){ var b = $('gwAgain'); if(b) b.click(); } }] : [])
+          .concat([{ label: 'The seven drug cards', open: 'details', focus: ref }, { label: 'Question drill', onClick: function(){ var b = sw.querySelector('[data-mode="drill"]'); if(b) b.click(); } }]) }, 'gw');
       return;
     }
-    var q = $('gwQ');
+    studio.done(false, 'gw');
+    var q = $('gwQ'), cnt = gw.querySelector('.gw-count, .gw-n');
     if(v){
-      studio.caption(v.innerHTML + ' <span class="tmuted">Why? has the dose.</span>', 'gw');
+      studio.task({ kicker: v.classList.contains('ok') ? 'Right' : 'Not this time', tone: v.classList.contains('ok') ? 'good' : 'bad', title: shortCall(v.textContent), todo: 'The line that decides it is below. Explanation has the dose.' }, 'gw');
+      studio.caption('', 'gw');
       studio.pills([{ html: v.classList.contains('ok') ? 'Right' : 'Not this time', tone: v.classList.contains('ok') ? 'good' : 'bad' }], 'right', 'gw');
       why.innerHTML = '<h3 class="ls-title-l">' + v.textContent + '</h3>' + [].filter.call(w.children, function(x){ return !x.classList.contains('gw-verdict') && !x.classList.contains('gw-after'); }).map(function(x){ return x.outerHTML; }).join('') + INTRO;
     } else {
-      studio.caption((q ? '<b>' + q.textContent + '</b> ' : '') + 'Swipe the card, or tap below.', 'gw');
+      studio.task({ kicker: 'Give or withhold?', title: q ? q.textContent : 'Give or withhold?', todo: 'Swipe the card, or tap below.' }, 'gw');
+      studio.caption('', 'gw');
       studio.pills([], 'right', 'gw');
       why.innerHTML = '<h3 class="ls-title-l">Give or withhold?</h3>' + INTRO;
     }

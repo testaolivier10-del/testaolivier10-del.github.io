@@ -125,3 +125,9 @@
 }
 .nx-scenario-sim .picker-cats[hidden]{display:none}
 .nx-scenario-sim .picker-all{grid-column:1/-1;justify-self:center;min-height:48px;padding:0 22px;border:0;border-radius:999px;background:var(--surface2);color:var(--cink);font:800 var(--ls-m) var(--font-ui)}
+/* Standard frame (F2): the call picker and the pills take their own row at the stage's top (top left), so nothing
+   floats over the monitor's bar or the What happened banner. */
+.nx-scenario-sim.ls-std .ls-pills{position:static;padding:14px 14px 0;}
+@media (min-width:1000px){ .nx-scenario-sim.ls-std .ls-pills{padding:20px 22px 0;} }
+@media (max-width:640px){ .nx-scenario-sim.ls-std .ls-pills{padding:8px 8px 0;} }
+.nx-scenario-sim.ls-std .ls-stage:has(.ls-pills .ls-pill) .sim-ls-views{max-width:none;}

@@ -472,6 +472,14 @@
         if(sec.scrollIntoView) sec.scrollIntoView({ block: 'start' });
         S.caption('<b>' + score.right + ' of ' + score.total + '</b> right on this loop.' + (score.right < score.total ? ' Missed parts are in your review queue.' : ' The finished loop is on the left.'), 'test');
         S.pills([{ html: score.right + ' of ' + score.total, tone: score.right === score.total ? 'good' : 'warn' }], 'right', 'test');
+        /* The finished card (standard frame): the score, then the loop's own buttons (Next loop, Build it again, All
+           loops); the finished loop and the slots stay on the stage. */
+        if(S.done){
+          var bt = function(sel){ var b = sec.querySelector(sel); return b ? { label: b.textContent.trim(), onClick: function(){ b.click(); } } : null; };
+          S.done({ kicker: 'Loop built', title: score.right + ' of ' + score.total + ' right on this loop',
+            text: score.right < score.total ? 'Missed parts are in your review queue.' : 'Every part in its place.',
+            next: bt('.fl-next') || bt('.fl-again'), links: [bt('.fl-next') ? bt('.fl-again') : null, bt('.fl-list-btn')].filter(Boolean) }, 'test');
+        }
       }
       var nx = sec.querySelector('.fl-next');
       if(nx) nx.addEventListener('click', function(){ qi++; renderLoop(); window.scrollTo(0, 0); });

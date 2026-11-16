@@ -181,6 +181,12 @@
     dock.innerHTML = '<div class="ls-row rc-acts"><button type="button" class="ls-btn rc-practice">Score a patient</button><button type="button" class="ls-btn rc-reset">Reset</button></div>';
     dock.appendChild(prac);
 
+    /* The side panel's head (the standard frame, docs/tools-frame-2026-11.md): what this card reads now, or the
+       practice task; without s.task (the calm frame) it is the caption, as before. */
+    function head(m, kicker, title, todo, tone){
+      if(studio.task){ studio.task({ kicker: kicker, title: title, todo: todo, tone: tone }, m); studio.caption('', m); }
+      else studio.caption('<b>' + title + '</b> ' + (todo || ''), m);
+    }
     function paintGcs(){
       gcs.querySelectorAll('.rc-opt').forEach(function(b){ var on = gsel[b.dataset.k] === +b.dataset.n; b.classList.toggle('on', on); b.setAttribute('aria-checked', on ? 'true' : 'false'); });
       var t = gsel.E + gsel.V + gsel.M, r = gcsRead(t);
@@ -188,7 +194,7 @@
       gcs.querySelector('#rcGcsParts').textContent = 'E' + gsel.E + ' V' + gsel.V + ' M' + gsel.M;
       gcs.querySelector('.rc-total').setAttribute('data-tone', r.tone);
       if(mode === 'gcs' && !practicing){
-        studio.caption('<b>GCS ' + t + ' (E' + gsel.E + ' V' + gsel.V + ' M' + gsel.M + ').</b> ' + r.h + ': ' + r.p, 'gcs');
+        head('gcs', 'Glasgow Coma Scale', 'GCS ' + t + ' (E' + gsel.E + ' V' + gsel.V + ' M' + gsel.M + ').', r.h + ': ' + r.p);
         studio.pills([{ html: 'GCS ' + t, tone: r.tone === 'good' ? 'good' : r.tone === 'bad' ? 'bad' : 'warn' }], 'right', 'gcs');
       }
     }
@@ -199,7 +205,7 @@
       ap.querySelector('.rc-total').setAttribute('data-tone', r.tone);
       if(mode === 'apgar' && !practicing){
         var trap = asel[0] === 1 ? ' <span class="tmuted">Pink body, blue hands and feet scores 1: that is acrocyanosis.</span>' : '';
-        studio.caption('<b>APGAR ' + t + '.</b> ' + r.h + '. ' + r.p + trap, 'apgar');
+        head('apgar', 'APGAR', 'APGAR ' + t + '.', r.h + '. ' + r.p + trap);
         studio.pills([{ html: 'APGAR ' + t, tone: r.tone === 'good' ? 'good' : r.tone === 'bad' ? 'bad' : 'warn' }], 'right', 'apgar');
       }
     }
@@ -219,7 +225,7 @@
       var rows = ['A', 'B', 'C'].filter(function(k){ return psel[k]; }).map(function(k){ var i = 'ABC'.indexOf(k), p = PAT[i]; return p ? '<li><b>' + esc(p.side) + ':</b> ' + esc(p.look) + '. <span class="tmuted">Abnormal suggests ' + esc(p.means.charAt(0).toLowerCase() + p.means.slice(1)) + '.</span></li>' : ''; });
       pat.querySelector('.rc-pat-read').innerHTML = rows.length ? '<ul>' + rows.join('') + '</ul>' : '<p class="tmuted">Tap a side of the triangle to mark it abnormal.</p>';
       if(mode === 'pat' && !practicing){
-        studio.caption('<b>' + r.h + '.</b> ' + r.p, 'pat');
+        head('pat', 'Pediatric assessment triangle', r.h + '.', r.p);
         studio.pills([{ html: r.h, tone: r.tone === 'good' ? 'good' : r.tone === 'bad' ? 'bad' : 'warn' }], 'right', 'pat');
       }
     }
@@ -272,7 +278,7 @@
         '<p class="rc-hint" hidden></p><div class="rc-verdict" role="status" aria-live="polite"></div>' +
         '<div class="ls-row rc-prac-acts"><button type="button" class="ls-btn rc-hintb">Hint</button><button type="button" class="ls-btn ls-pri rc-check">Check</button></div>' +
         '<div class="ls-row rc-prac-acts2" hidden><button type="button" class="ls-btn rc-show">Show the answer</button><button type="button" class="ls-btn ls-pri rc-next">Next patient</button></div>';
-      studio.caption(mode === 'pat' ? '<b>From the doorway:</b> tap each side of the triangle that looks abnormal, then Check.' : '<b>Score this patient:</b> tap one answer in each ' + (mode === 'gcs' ? 'column' : 'row') + ', then Check.', mode);
+      head(mode, 'Score a patient', mode === 'pat' ? 'From the doorway:' : 'Score this patient.', mode === 'pat' ? 'Tap each side of the triangle that looks abnormal, then Check.' : 'Tap one answer in each ' + (mode === 'gcs' ? 'column' : 'row') + ', then Check.');
       studio.pills([{ html: 'Practice', tone: 'accent' }], 'right', mode);
       pracState();
     }
@@ -350,6 +356,8 @@
         prac.querySelector('.rc-show').hidden = !wrong;
         if(wrong){ prac.querySelector('.rc-show').focus(); } else prac.querySelector('.rc-next').focus();
         studio.pills([{ html: wrong ? 'Not quite' : 'Right', tone: wrong ? 'bad' : 'good' }], 'right', mode);
+        head(mode, wrong ? 'Not quite' : 'Right', wrong ? wrong + ' ' + (mode === 'pat' ? 'side' : 'part') + (wrong === 1 ? '' : 's') + ' off, marked in red.' : 'Right.',
+          wrong ? 'Change ' + (wrong === 1 ? 'it' : 'them') + ' and Check again, or show the answer.' : 'Next patient when you are ready.', wrong ? 'bad' : 'good');
         if(window.LevlSound) window.LevlSound.answer(!wrong);
         if(window.NremtToolResults) window.NremtToolResults.record({ tool: 'reference-cards', id: mode + ':' + pcase.t.slice(0, 40), correct: !wrong,
           label: (mode === 'gcs' ? 'GCS' : mode === 'apgar' ? 'APGAR' : 'Pediatric triangle') + ': score a patient', href: 'reference-cards.html#' + (mode === 'pat' ? 'pat' : mode) });
@@ -385,7 +393,7 @@
       stage.setAttribute('data-mode', m);
       dock.querySelector('.rc-acts').hidden = m === 'vitals';
       if(practicing){ practicing = false; prac.hidden = true; dock.querySelector('.rc-practice').textContent = 'Score a patient'; dock.querySelector('.rc-practice').setAttribute('aria-pressed', 'false'); dock.querySelector('.rc-reset').hidden = false; reset(); }
-      if(m === 'vitals'){ studio.caption('Slide to an age, then type a vital sign to check it against that row.', 'vitals'); studio.pills([], 'right', 'vitals'); }
+      if(m === 'vitals'){ head('vitals', 'Vital signs by age', 'Slide to an age.', 'Then type a vital sign to check it against that row.'); studio.pills([], 'right', 'vitals'); }
       paintGcs(); paintAp(); paintPat();
     }
     reset();

@@ -494,6 +494,7 @@ document.addEventListener('DOMContentLoaded', function(){
   const $ = id => document.getElementById(id);
   const studio = window.NremtStudio ? window.NremtStudio.mount({
     title: 'Body map', slug: 'body-map', detailsTitle: 'View options & terms',
+    lede: 'Tap any part of the body to see what it does and what goes wrong.',
     modes: { items: [{ value: 'anatomy', label: '3D anatomy' }, { value: 'burns', label: 'Burns' }],
       value: params.get('mode') === 'burns' ? 'burns' : 'anatomy', onChange: v => setBmMode(v, true) },
     caption: 'Tap any part of the body to learn what it does. Drag to turn it.',
@@ -501,10 +502,10 @@ document.addEventListener('DOMContentLoaded', function(){
   let anchor = null;
   if (studio) {
     document.querySelector('.bm-modes').hidden = true;
-    const row = document.createElement('div'); row.className = 'ls-row bm-ls-row';
-    const reset = document.createElement('button'); reset.type = 'button'; reset.className = 'ls-btn'; reset.textContent = 'Reset view';
-    reset.addEventListener('click', () => $('resetBtn').click());
-    $('huntToggle').classList.add('ls-btn'); row.append($('huntToggle'), reset);
+    // Quiz me is the dock's one action; Reset view is on the model itself (top right), so the dock no longer
+    // repeats it (standard frame: never the same control twice). #resetBtn stays under "?" with the view options.
+    const row = document.createElement('div'); row.className = 'ls-row bm-ls-row ls-push';
+    $('huntToggle').classList.add('ls-btn'); row.append($('huntToggle'));
     // A point on the chest for the first-run hint: "tap the body".
     anchor = document.createElement('span'); anchor.className = 'bm-ls-anchor'; anchor.setAttribute('aria-hidden', 'true');
     $('bodyViewer').appendChild(anchor);
@@ -514,7 +515,9 @@ document.addEventListener('DOMContentLoaded', function(){
     const view = document.createElement('div'); view.className = 'ls-sec';
     view.innerHTML = '<h3 class="ls-h">View</h3>';
     view.append(...document.querySelector('.bm-more-in').children);
-    const byName = document.querySelector('.bm-browse'); byName.open = true;
+    // Pick a part by name: one grouped dropdown on the stage (by body system); the old list stays in the page,
+    // out of sight, and a pick clicks its button, so the viewer's own handler runs (bodyPicker below).
+    const byName = document.querySelector('.bm-browse'); byName.open = true; byName.hidden = true;
     studio.add('details', [view, byName], { mode: 'anatomy' });
     const terms = document.createElement('div'); terms.className = 'ls-sec';
     terms.innerHTML = '<h3 class="ls-h">Directional and positional terms</h3>'; terms.append($('termsCard'));
@@ -557,13 +560,17 @@ document.addEventListener('DOMContentLoaded', function(){
     const cap = () => {
       const quizOn = quiz.getAttribute('aria-pressed') === 'true';
       if (quizOn) {
-        const kind = qpanel.querySelector(':scope > .bn-k'), tally = qpanel.querySelector('.bn-tally');
-        studio.caption('<b>' + (kind ? kind.textContent : 'Quiz') + '.</b>' + (tally ? ' ' + tally.textContent + '.' : ''), 'burns');
+        const kind = qpanel.querySelector(':scope > .bn-k'), tally = qpanel.querySelector('.bn-tally'), qs = qpanel.querySelector(':scope > strong');
+        const paintQ = !!qpanel.querySelector('.bn-check') || /paint/i.test(kind ? kind.textContent : '');
+        studio.task({ kicker: (kind ? kind.textContent : 'Quiz') + (tally ? ' · ' + tally.textContent : ''), title: qs ? qs.innerHTML : 'Quiz',
+          todo: qpanel.querySelector('.bn-verdict') ? '' : paintQ ? 'Paint the regions, then Check.' : 'Pick the total.' }, 'burns');
+        studio.caption('', 'burns');
         const v = qpanel.querySelector('.bn-verdict');
         studio.pills(v ? [{ html: v.textContent, tone: v.classList.contains('ok') ? 'good' : 'bad' }] : [], 'right', 'burns');
       } else {
         studio.pills([], 'right', 'burns');
-        studio.caption(info.innerHTML.replace(/<\/?p>/g, '') || 'Tap a region to mark it burned, or drag across several.', 'burns');
+        studio.task({ kicker: 'Explore', title: 'Tap a region to mark it burned.', todo: 'Drag across several. The total is on the figures.' }, 'burns');
+        studio.caption(info.innerHTML.replace(/<\/?p>/g, ''), 'burns');
       }
     };
     [info, qpanel].forEach(el => new MutationObserver(cap).observe(el, { childList: true, subtree: true, characterData: true }));
@@ -577,6 +584,7 @@ document.addEventListener('DOMContentLoaded', function(){
   if (params.get('mode') === 'burns') setBmMode('burns');
 
   if (!window.LevlBodyViewer) return;
+  let bodyPick = null;
   const viewer = window.LevlBodyViewer.mount(document.getElementById('bodyViewer'), {
     list: document.getElementById('landmarkList'),
     info: document.getElementById('infoPanel'),
@@ -584,13 +592,42 @@ document.addEventListener('DOMContentLoaded', function(){
     hint: false, // the cue above the model already says what to do
     placeholder: '<p class="info-placeholder">Tap a part of the model and what it is shows here.</p>',
     onSelect: studio ? (key, c) => {
+      if (bodyPick) bodyPick.value(c ? key : '');
       if (viewer && viewer.hunt.active()) return;
-      if (!c) { studio.pills([], 'left', 'anatomy'); studio.caption('Tap any part of the body to learn what it does. Drag to turn it.', 'anatomy'); return; }
+      if (!c) { studio.pills([], 'left', 'anatomy'); exploreTask(); return; }
       const first = String(c.funct || '').split(/(?<=\.)\s/)[0];
-      studio.pills([{ html: c.name }], 'left', 'anatomy');
-      studio.caption('<b>' + c.name + '.</b> ' + first, 'anatomy');
+      studio.task({ kicker: 'You tapped', title: c.name, todo: first }, 'anatomy');
+      studio.caption('', 'anatomy');
     } : undefined,
   });
+  /* The standard frame (docs/tools-frame-2026-11.md): the side panel's head says what to do, or what you tapped
+     (its full card is under Explanation). */
+  function exploreTask(){
+    if (!studio) return;
+    studio.task({ kicker: 'Explore', title: 'Tap any part of the body.', todo: 'Drag to turn it; pinch or scroll to zoom. Or pick a part by name, top left.' }, 'anatomy');
+    studio.caption('', 'anatomy');
+  }
+  /* Pick a part by name: the viewer's own list (#landmarkList), grouped by body system, as one dropdown on the
+     stage. It follows the list when a system filter changes what is in play. */
+  function pickGroups(){
+    const labels = window.LevlBodyViewer.SYSTEM_LABELS || {}, by = {}, order = [];
+    document.querySelectorAll('#landmarkList button[data-key]').forEach(b => {
+      const c = viewer.info(b.dataset.key), sys = c && c.system ? (labels[c.system] || c.system) : 'Other';
+      if (!by[sys]) { by[sys] = []; order.push(sys); }
+      by[sys].push({ value: b.dataset.key, label: b.textContent.trim() });
+    });
+    return [{ items: [{ value: '', label: 'Find a part', sub: 'by name' }] }].concat(order.sort().map(g => ({ label: g, items: by[g] })));
+  }
+  if (studio && studio.picker) {
+    exploreTask();
+    const onPick = v => {
+      const b = v && document.querySelector('#landmarkList button[data-key="' + v + '"]');
+      if (b) b.click();
+    };
+    bodyPick = studio.picker({ label: 'Find a part by name', value: '', groups: pickGroups(), onChange: onPick }, 'anatomy');
+    new MutationObserver(() => bodyPick.set({ label: 'Find a part by name', value: bodyPick.value(), groups: pickGroups(), onChange: onPick }))
+      .observe(document.getElementById('landmarkList'), { childList: true });
+  }
   if (studio) studio.hint({ target: anchor, text: 'Tap any part of the body', key: 'nremt-body-map' });
 
   const toggle = document.getElementById('huntToggle');
@@ -644,19 +681,19 @@ document.addEventListener('DOMContentLoaded', function(){
       if (!again) R.cur.res = r.correct ? 'ok' : 'no';
       if (r.correct) {
         nudge(again ? '<b>Found it on the second try.</b> It still counts as a miss for this round, so it comes back in Drill my misses.' : '');
-        if (studio) studio.caption('<b>Yes, the ' + r.name + '.</b> Next when you are ready.', 'anatomy');
+        if (studio) studio.task({ kicker: again ? 'Found it' : 'Right', tone: 'good', title: 'Yes, the ' + r.name + '.', todo: 'Next when you are ready.' }, 'anatomy');
       } else {
         const c = viewer.info(r.key), where = c && c.location ? c.location.replace(/\s*$/, '').replace(/([^.])$/, '$1.') : '';
         const sys = c && window.LevlBodyViewer.SYSTEM_LABELS ? window.LevlBodyViewer.SYSTEM_LABELS[c.system] : '';
         nudge('<b>You tapped the ' + (r.pickedName || 'wrong part') + '.</b> ' + (where ? '<b>Where to look:</b> ' + where + ' ' : '') +
           (sys ? '(' + sys + ' layer.) ' : '') + '<br><button type="button" class="bm-retry">Try again</button>');
-        if (studio) studio.caption('<b>Not the ' + (r.pickedName || 'right part') + '.</b> Turn the model and try once more, or Show me.', 'anatomy');
+        if (studio) { studio.task({ kicker: 'Not quite', tone: 'bad', title: 'That is the ' + (r.pickedName || 'wrong part') + '.', todo: 'Turn the model and try once more, or Show me.' }, 'anatomy'); if (bmHints) { R.cur.nudged = true; bmHints.reset(); } }
       }
       paintRound();
     },
     onStop(){
       setToggle(false); R.cur = null; round.hidden = true; nudge(''); panel.classList.remove('bm-done');
-      if (studio) { studio.pills([], 'left', 'anatomy'); studio.caption('Tap any part of the body to learn what it does. Drag to turn it.', 'anatomy'); }
+      if (studio) { studio.pills([], 'left', 'anatomy'); studio.done(false, 'anatomy'); exploreTask(); if (bmHints) bmHints.reset(); }
     },
   });
   function ask(key){
@@ -665,7 +702,7 @@ document.addEventListener('DOMContentLoaded', function(){
     nudge('');
     viewer.hunt.start(huntOpts(key));
     paintRound();
-    if (studio) studio.caption('<b>Find it on the model</b> and tap it. Not sure? Show me highlights it.', 'anatomy');
+    askTask(key);
   }
   function finishQuestion(){
     if (!R.cur) return;
@@ -684,7 +721,48 @@ document.addEventListener('DOMContentLoaded', function(){
       '<p>' + (missed.length ? 'Missed or shown: find each again, or drill them as a round.' : 'Every one found first try.') + '</p>' +
       (missed.length ? '<ul class="bm-sum-list">' + missed.map(x => '<li><span>' + nameOf(x.key) + '</span><button type="button" data-again="' + x.key + '">Find it</button></li>').join('') + '</ul>' : '') +
       '<div class="bm-sum-acts">' + (missed.length ? '<button type="button" class="bm-drill">Drill my misses</button>' : '') + '<button type="button" class="bm-new">New round</button></div></div>';
-    if (studio) { studio.caption('<b>' + right + ' of ' + R.results.length + '.</b> ' + (missed.length ? 'The misses are listed below.' : 'A clean round.'), 'anatomy'); studio.pills([{ html: right + ' / ' + R.results.length, tone: right === R.results.length ? 'good' : 'accent' }], 'left', 'anatomy'); }
+    if (studio) {
+      studio.pills([{ html: right + ' / ' + R.results.length, tone: right === R.results.length ? 'good' : 'accent' }], 'left', 'anatomy');
+      /* The finished card: the score, the misses by name, then New round; Drill my misses and Find it for each
+         miss are its links (the same buttons as the summary, which stays in the page under it). */
+      const sum = round.querySelector('.bm-round-sum');
+      const click = sel => () => { const b = sum.querySelector(sel); if (b) b.click(); };
+      studio.done({ kicker: 'Round done', title: right + ' of ' + R.results.length + ' found first try',
+        text: missed.length ? 'Missed or shown: ' + missed.map(x => nameOf(x.key)).join(', ') + '.' : 'Every one found first try.',
+        next: { label: 'New round', onClick: click('.bm-new') },
+        links: (missed.length > 1 ? [{ label: 'Drill my misses', onClick: click('.bm-drill') }] : [])
+          .concat(missed.map(x => ({ label: 'Find the ' + nameOf(x.key) + ' again', onClick: click('[data-again="' + x.key + '"]') })))
+          .concat([{ label: 'Stop the quiz and explore', onClick: () => toggle.click() }]) }, 'anatomy');
+    }
+  }
+  /* The question in the side panel's head (the hunt panel's own heading is hidden under it, body-map.css), and
+     the hint ladder: one hint, where to look, then Show me stays where it always was. */
+  function askTask(key, again){
+    if (!studio) return;
+    const c = viewer.info(key), sys = c && window.LevlBodyViewer.SYSTEM_LABELS ? window.LevlBodyViewer.SYSTEM_LABELS[c.system] : '';
+    studio.done(false, 'anatomy');
+    // The count and the score are on the round's bar just under this.
+    studio.task({ kicker: (again ? 'Once more' : R.missedOnly ? 'Your misses' : 'Quiz') + (sys ? ' · ' + sys : ''),
+      title: 'Find the ' + nameOf(key) + '.', todo: 'Tap it on the model. Not sure? Hint, or Show me highlights it.' }, 'anatomy');
+    if (bmHints && !again) bmHints.reset();
+  }
+  const bmHints = studio && studio.hints ? studio.hints({ label: 'Hint', hints: () => {
+    // After a miss the nudge already says where to look, so the ladder steps aside until the next question.
+    const c = R.cur && !R.cur.nudged && viewer.info(R.cur.key);
+    return c && c.location ? ['<b>Where to look:</b> ' + c.location] : [];
+  } }) : null;
+  if (bmHints) {
+    studio.add('dock', bmHints.card, { mode: 'anatomy' });
+    panel.parentNode.insertBefore(bmHints.card, panel);
+    bmHints.row.classList.add('bm-hintrow');
+    studio.add('dock', bmHints.row, { mode: 'anatomy' });
+    panel.parentNode.insertBefore(bmHints.row, panel.nextSibling);
+    // Only while a question is open.
+    const showRow = () => { bmHints.row.classList.toggle('bm-off', !viewer.hunt.active() || round.hidden); };
+    new MutationObserver(showRow).observe(panel, { childList: true, attributes: true, attributeFilter: ['hidden'] });
+    showRow();
+    // Quiz me (Stop the quiz) at the dock's foot, under the question.
+    const qrow = document.querySelector('.bm-ls-row'); if (qrow) qrow.parentNode.appendChild(qrow);
   }
   function startRound(keys, missedOnly){
     R.queue = keys.slice(); R.results = []; R.missedOnly = !!missedOnly;
@@ -702,10 +780,10 @@ document.addEventListener('DOMContentLoaded', function(){
   }, true);
   round.addEventListener('click', e => {
     if (e.target.closest('.bm-retry')) {
-      R.retrying = true; nudge('');
+      R.retrying = true; nudge(''); R.cur.nudged = false;
       viewer.reset();
       viewer.hunt.start(huntOpts(R.cur.key));
-      if (studio) studio.caption('<b>Once more:</b> find the ' + nameOf(R.cur.key) + '.', 'anatomy');
+      askTask(R.cur.key, true);
       return;
     }
     const again = e.target.closest('[data-again]');

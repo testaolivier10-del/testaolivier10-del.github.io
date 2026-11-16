@@ -494,7 +494,9 @@ document.addEventListener('DOMContentLoaded', function(){
     var st = pick ? 'pick' : live ? 'run' : 'done';
     studio.root.setAttribute('data-run', st);
     if(st === 'pick'){
-      studio.caption('Pick a station. Say each phase out loud and tick it; the clock runs.');
+      studio.task({ kicker: 'Station run', title: 'Pick a station.', todo: 'Then say each phase out loud and tick it; the clock runs.' });
+      studio.caption('');
+      studio.done(false);
       studio.pills([]);
       why.innerHTML = INTRO;
       return;
@@ -509,11 +511,20 @@ document.addEventListener('DOMContentLoaded', function(){
       [].filter.call(c.children, function(x){ return x.tagName !== 'H3'; }).map(function(x){ return '<p>' + x.innerHTML + '</p>'; }).join('') : '') +
       (pc ? '<p class="ls-sub">' + pc.innerHTML + '</p>' : '');
     if(st === 'run'){
-      studio.caption('<b>Say it out loud,</b> then tick it. Finish when the station is done.');
+      studio.done(false);
+      studio.task({ kicker: name && name.firstChild ? name.firstChild.textContent.trim() : 'Station', title: 'Say it out loud, then tick it.', todo: 'Finish the run when the station is done.' });
+      studio.caption('');
     } else {
       var v = run.querySelector('.run-result__row .v');
-      studio.caption('<b>Your run.</b> No score: your program&rsquo;s sheet decides.');
+      studio.caption('');
       studio.pills(v ? [{ html: v.textContent.split(' against')[0], k: 'Time', tone: v.classList.contains('over') ? 'bad' : 'readout' }] : []);
+      /* The finished card: the time and phases, what to look at, Run it again; the full result stays on the stage. */
+      var rows = run.querySelectorAll('.run-result__row .v'), crit = run.querySelector('.run-flagbox');
+      studio.done({ kicker: 'Run done', title: (rows[1] ? rows[1].textContent + ' phases ticked' : 'Your run'),
+        text: (v ? 'Time ' + v.textContent + '. ' : '') + (crit ? 'Check the flagged items in your result.' : 'No critical item missed.') + ' No score: your program&rsquo;s sheet decides.',
+        next: { label: 'Run it again', onClick: function(){ var b = document.getElementById('runAgain'); if(b) b.click(); } },
+        links: [{ label: 'Pick another station', onClick: function(){ var b = document.getElementById('runOther'); if(b) b.click(); } },
+          { label: 'How the stations are scored', open: 'details', focus: guide }] });
     }
   }
   /* One phase at a time: the shared stepper over the run's checkboxes. A tick

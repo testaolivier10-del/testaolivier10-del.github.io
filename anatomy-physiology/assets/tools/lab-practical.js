@@ -331,6 +331,23 @@
      structure's info, the figure tabs, the answer box, the feedback and Next
      are the dock, the set picker last. Quiz settings and the set's chapter
      go to Details. Lists, setup and results fill the stage on their own. */
+  /* The finished card (standard frame, docs/tools-frame-2026-11.md): a quiz or practical's results put the score
+     in the side panel with the same next actions as the results' own Next step block (which stays on the stage,
+     with the breakdown and every station). */
+  function studioDone(root){
+    if(!ST.done) return;
+    var sc = ST.stage.querySelector('.lp-score') || root.querySelector('.lp-score');
+    if(!sc){ ST.done(false); return; }
+    setTimeout(function(){
+      var n = sc.querySelector('.lp-score-n'), sub = sc.querySelector('.anp-small');
+      var also = [].slice.call(ST.stage.querySelectorAll('.levl-next__also [data-n]')), go = ST.stage.querySelector('.levl-next__go');
+      var fwd = function(el){ return { label: el.textContent.trim(), onClick: function(){ el.click(); } }; };
+      ST.done({ kicker: 'Results', title: (n ? n.textContent.replace(' / ', ' of ') : '') + ' ' + (sub ? sub.textContent.replace(/\s*\(.*$/, '') : 'right'),
+        text: sub && /\(/.test(sub.textContent) ? sub.textContent.replace(/^[^(]*/, '').replace(/[()]/g, '') : 'The breakdown is with your results.',
+        next: also[0] ? fwd(also[0]) : go ? fwd(go) : { label: 'Back to Explore', onClick: function(){ location.hash = '#explore'; } },
+        links: (also[0] && go ? [fwd(go)] : []).concat(also.slice(1).map(fwd)) });
+    }, 60);
+  }
   function studioPaint(){
     var root = app.querySelector('.lp');
     var kids = [].slice.call(root.children), dock = [], stage = [], det = [], pick = null, cap = null, credits = [];
@@ -407,6 +424,7 @@
     credits.forEach(function(c){ ST.put('about', c); });
     if(pick) ST.put('dock', pick);
     ST.stage.scrollTop = 0;
+    studioDone(root);
     root.classList.toggle('lp-ls-fill', !root.querySelector('.lp-figure'));
     ST.root.classList.toggle('lp-ls-list', !ST.stage.querySelector('.lp-ls-fig'));
     fitWidth();
