@@ -252,7 +252,9 @@
       draw(); words(); incDraw();
       // The policy row has moved into the studio's dock by now: find it there.
       var pols = (s.root && s.root.querySelector('.sl-pols')) || host.querySelector('.sl-pols') || pane.querySelector('.sl-pols');
-      if(s.mode() === 'explore' && pols) T.hintSlot(s, pols, 'Start here: pick a policy', { before: pols });
+      // Standard frame: the policy is the stage's picker.
+      var pk = sp.chips && pols ? sp.chips(pols, { label: 'Policy', attr: 'data-p', sel: '.sl-pol' }) : null;
+      if(s.mode() === 'explore' && pols) T.hintSlot(s, pk ? pk.el : pols, 'Start here: pick a policy', { before: pols });
     }
     buildSlider(); draw(); words(); incDraw();
     return { studio: studio, stop: stop };

@@ -204,7 +204,9 @@
 
     function studio(pane, s){
       LS = s;
-      T.studioPane(pane, s, { stage: [$('.rl-fig')], dock: [$('.rl-ctl')], why: [$('.rl-say')], details: [$('.rl-nums')] });
+      var sp = T.studioPane(pane, s, { stage: [$('.rl-fig')], dock: [$('.rl-ctl')], why: [$('.rl-say')], details: [$('.rl-nums')] });
+      // Standard frame: Start over at the stage's foot (it was only in More options).
+      if(sp.std) sp.foot([$('.rl-reset')]);
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       sync(); redraw();

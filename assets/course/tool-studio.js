@@ -1674,6 +1674,7 @@
      inside the [data-studio] mount). Then the studio is built here around the
      card, so a locked tool opens as the tool screen too: the bar (back to the
      tools, ?, the menu) and the card, never the course page. */
+  var stdKit = null;
   function adopt(){
     if(current) return;
     var card = document.querySelector('[data-studio] .premium-lock');
@@ -1684,7 +1685,11 @@
     var tools = Array.prototype.filter.call(crumbs, function(a){ return /tools\.html$/.test(a.getAttribute('href') || ''); })[0];
     var home = crumbs.length > 1 ? crumbs[1] : null;
     var rep = document.querySelector('[data-report-course][data-report-question]');
+    // A course kit on the standard frame says so (LevlStudio.stdKit, with each tool's one line), so its
+    // locked tools get the same bar as its open ones (docs/tools-frame-2026-11.md).
+    var sd = stdKit, slug0 = mountEl.getAttribute('data-slug') || '';
     var s = mount({
+      std: !!sd, lede: sd && sd.lede ? sd.lede[slug0] || '' : '',
       title: h1 ? h1.textContent.trim() : document.title, course: home ? home.textContent.trim() : '',
       back: tools ? tools.getAttribute('href') : '../tools.html', home: home ? home.getAttribute('href') : '../',
       slug: mountEl.getAttribute('data-slug') || '', host: mountEl,
@@ -1700,5 +1705,5 @@
   if(document.readyState !== 'complete'){ document.addEventListener('DOMContentLoaded', later); window.addEventListener('load', adopt); }
   else later();
 
-  window.LevlStudio = { mount: mount, stepper: stepper, on: function(){ return !!current; }, get: function(){ return current; }, icon: icon };
+  window.LevlStudio = { mount: mount, stepper: stepper, stdKit: function(k){ stdKit = k || null; }, on: function(){ return !!current; }, get: function(){ return current; }, icon: icon };
 })();

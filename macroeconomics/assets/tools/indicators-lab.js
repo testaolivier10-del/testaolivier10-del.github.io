@@ -277,7 +277,8 @@
     yrsBtn.addEventListener('click', function(){ var pl = figs.prices.querySelector('.ind-plots'), open = pl.hidden; pl.hidden = !open; yrsBtn.setAttribute('aria-expanded', String(open)); yrsBtn.textContent = open ? 'Hide the years' : 'See every year'; figs.prices.classList.toggle('is-yrs', open); touch(); update(false); });
     groups.jobs.querySelector('.ind-reset').addEventListener('click', onJobs);
 
-    var lastCap = '';
+    var lastCap = '', SP = null;
+    var TODO = { gdp: 'Tap Next transaction and watch where it goes.', prices: 'Move the year and compare the two baskets.', real: 'Move the year: the same goods at two sets of prices.', jobs: 'Pick what happens and watch people move.' };
     function update(full){
       Object.keys(figs).forEach(function(k){ figs[k].hidden = k !== st.view; });
       Object.keys(groups).forEach(function(k){ groups[k].hidden = k !== st.view; });
@@ -286,6 +287,8 @@
       T.explain(sayEl, r.head, r.body);
       det.innerHTML = r.det + data.howItWorks;
       if(LS){ if(r.head !== lastCap){ LS.caption(r.head, 'explore'); lastCap = r.head; } LS.pills([], 'left', 'explore'); }
+      // Standard frame: the one line on what to do follows the view.
+      if(SP && SP.todo) SP.todo(TODO[st.view]);
       if(full) say(r.head.replace(/<[^>]+>/g, ''));
     }
 
@@ -378,7 +381,7 @@
     if(window.ResizeObserver){ var k0 = ''; new ResizeObserver(function(){ var k = stageEl.clientWidth + 'x' + stageEl.clientHeight; if(k !== k0){ k0 = k; update(false); } }).observe(stageEl); }
     function studio(p, s){
       LS = s;
-      T.studioPane(p, s, { stage: [stageEl], dock: [ctl], why: [sayEl], details: [det] });
+      SP = T.studioPane(p, s, { stage: [stageEl], dock: [ctl], why: [sayEl], details: [det] });
       lastCap = ''; update(true);
       if(s.mode() === 'explore' && st.view === 'gdp') T.hintSlot(s, nextBtn, 'Tap to add a transaction');
     }

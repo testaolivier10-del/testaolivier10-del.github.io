@@ -169,11 +169,16 @@
     function drawAll(){ drawStage(); drawStrip(); drawCard(); words(); }
     function studio(pane, s){
       LS = s;
-      var sp = T.studioPane(pane, s, { stage: [$('.hug-fc-fig')], dock: [$('.hug-fc-ctl')], setup: 'Question', moreLabel: 'Choose a question', why: [$('.hug-fc-say')], details: [$('.hug-fc-ref')] });
+      // Standard frame: the question is the stage's picker, so More options (which held only it) steps aside.
+      var std = T.isStd(s);
+      if(std){ var mo = host.querySelector('.hug-fc-pick'); mo = mo && mo.closest('details'); if(mo) mo.hidden = true; }
+      var sp = T.studioPane(pane, s, { stage: [$('.hug-fc-fig')], dock: [$('.hug-fc-ctl')], setup: std ? null : 'Question', moreLabel: 'Choose a question', why: [$('.hug-fc-say')], details: [$('.hug-fc-ref')] });
       s.root.addEventListener('click', onClick); host.removeEventListener('click', onClick);
       s.root.addEventListener('change', onChange); host.removeEventListener('change', onChange);
       LS.setupRow = sp;
       sp.setup(ctx.title);
+      // Standard frame: the question is the stage's picker (it was behind More options).
+      if(sp.picker) sp.picker(pick.select, { label: 'Question' });
       drawAll();
       if(s.mode() === 'explore') T.hintSlot(s, s.root.querySelector('.hug-fc-strip'), 'Start here: read the verb', { cls: 'hug-fc-tipslot', before: s.root.querySelector('.hug-fc-pcard') });
     }

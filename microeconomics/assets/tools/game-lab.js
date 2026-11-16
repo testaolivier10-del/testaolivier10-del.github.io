@@ -263,7 +263,9 @@
 
     function studio(pane, s){
       LS = s;
-      T.studioPane(pane, s, { stage: [$('.gl-fig')], dock: [$('.gl-ctl')], why: [$('.gl-say')], details: [$('.gl-det')] });
+      var sp = T.studioPane(pane, s, { stage: [$('.gl-fig')], dock: [$('.gl-ctl')], why: [$('.gl-say')], details: [$('.gl-det')] });
+      // Standard frame: the game is the stage's picker.
+      if(sp.chips) sp.chips($('.gl-games'), { label: 'Game', attr: 'data-g', sel: '.gl-game' });
       s.root.addEventListener('click', onClick); host.removeEventListener('click', onClick);
       s.root.addEventListener('input', onInput); host.removeEventListener('input', onInput);
       redraw();

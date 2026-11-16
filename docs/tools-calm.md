@@ -81,6 +81,8 @@ the stage's top left), `s.hints(o)` (hint ladder: first hint instant, Next hint,
 `attempt()`), `s.done(o, mode)` (finished card: takeaway, Next, then Full explanation, Check yourself, the lesson),
 region `'foot'` for Undo / Reset and `.ls-push` for the dock's foot. Full signatures in the tool-studio.js header.
 Ochem uses all of it (`tool-shell.js` mounts std; `OchemStudioKit.extras()`, `.chipPicker()`, `.menuItems`).
+A course kit that calls `LevlStudio.stdKit({ lede: { slug: line } })` gets the std bar on its shared lock screen too
+(`adopt`, F5b: AP Macro, AP Micro, AP Human Geography kits).
 
 ### Switching a tool on (per course frame; P1)
 - **Ochem:** `studio: true` in `ochem/assets/tools-registry.js`, then `node scripts/build-tool-pages.mjs` (adds the

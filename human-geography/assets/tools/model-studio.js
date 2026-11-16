@@ -254,8 +254,13 @@
       R.fb.innerHTML = g.correct ? '<span class="hug-mark ok">Correct</span> Every piece is in its place.' : '<span class="hug-mark no">Not yet</span> ' + esc(g.slip) + ' (' + g.right + ' of ' + g.total + ' in place.) Press Start over to try again.';
       caption(g.correct ? '<b>Built.</b> ' + esc(ctx.claim) : '<b>' + g.right + ' of ' + g.total + ' in place.</b> ' + esc(g.slip));
       if(LS) LS.pills([{ html: g.right + ' of ' + g.total + ' in place', tone: g.correct ? 'good' : 'warn' }], 'left', 'explore');
+      // Standard frame: a correct build ends the challenge, so its finished card shows (Build it again brings the panel back).
+      if(g.correct && LS && T.isStd(LS)) LS.done({ kicker: 'Built', title: 'Every piece is in its place', text: esc(ctx.claim),
+        next: { label: 'Test yourself on this model', onClick: function(){ LS.done(false, 'explore'); drill(); } },
+        links: [{ label: 'Full explanation', open: 'why' }, { label: 'Build it again', onClick: function(){ LS.done(false, 'explore'); buildPane(); setView('build'); } }, { label: 'See it built', onClick: function(){ LS.done(false, 'explore'); setView('see'); } }] }, 'explore');
     }
     function setView(v){
+      if(LS && T.isStd(LS)) LS.done(false, 'explore');
       view = v; R.fig.setAttribute('data-view', v);
       // A drawing made from numbers starts again as the rule (not the primate-city switch).
       if(ctx.build){ R.fig.innerHTML = modelFig(ctx, model); liftNote(); sizeFig(); if(LS && LS.fit) setTimeout(function(){ LS.fit(); }, 0); }
@@ -310,6 +315,8 @@
       LS = s;
       R.cap.classList.add('sr-only'); R.cap.removeAttribute('aria-live');
       var sp = T.studioPane(pane, s, { stage: [R.stage], dock: [R.ctl], why: [R.say], details: [R.nums] });
+      // Standard frame: the model is the stage's picker.
+      if(sp.picker) sp.picker(R.pick, { label: 'Model', hide: R.pick.parentNode, noSub: true });
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       LS.setupRow = sp;

@@ -318,7 +318,16 @@
     }
     function studio(pane, s){
       LS = s;
-      T.studioPane(pane, s, { stage: [$('.cl-fig')], dock: [$('.cl-ctl')], why: [$('.cl-say')], details: [$('.cl-more')] });
+      var sp = T.studioPane(pane, s, { stage: [$('.cl-fig')], dock: [$('.cl-ctl')], why: [$('.cl-say')], details: [$('.cl-more')] });
+      // Standard frame: the scene is the stage's picker, and the one line on what to do follows it.
+      if(sp.std){
+        sp.chips($('.cl-scene'), { label: 'Show', attr: 'data-k', sel: '.tchip' });
+        var TODO = { bid: $('.bt-cue-t') ? $('.bt-cue-t').innerHTML : '', models: 'Pick a model, then pick a second one to compare side by side.', central: 'Pick a good and see which places can offer it.',
+          rank: 'Compare a country that follows the rule with one that has a primate city.' };
+        var td = function(){ sp.todo(TODO[scene] || TODO.bid); };
+        s.root.addEventListener('click', function(){ setTimeout(td, 0); }, true);
+        td();
+      }
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       sync(); draw(); words();

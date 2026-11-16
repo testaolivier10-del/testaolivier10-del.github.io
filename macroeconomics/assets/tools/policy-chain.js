@@ -210,7 +210,9 @@
 
     function studio(pane, s){
       LS = s;
-      T.studioPane(pane, s, { stage: [$('.pc-fig')], dock: [$('.pc-ctl')], why: [$('.pc-say')], details: [$('.pc-write')] });
+      var sp = T.studioPane(pane, s, { stage: [$('.pc-fig')], dock: [$('.pc-ctl')], why: [$('.pc-say')], details: [$('.pc-write')] });
+      // Standard frame: the chain is the stage's picker.
+      if(sp.picker) sp.picker($('.pc-fsel'), { label: 'Chain', hide: $('.pc-fams') });
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       sync();
