@@ -168,6 +168,8 @@
   }
 
   var tor = TORSIONALS[0];
+  // The preset showing (its id), or '' for a molecule built here.
+  var torOn = TORSIONALS[0].id;
   var theta = 60;
 
   /* Cosine interpolation between the six declared points. Flat at each node,
@@ -364,7 +366,7 @@
     tor = nq.mol; theta = nq.deg;
     nq.pick = null; nq.done = false; nq.hint = false;
     document.getElementById('cfAngle').value = theta;
-    document.getElementById('cfTorPicker').querySelectorAll('.tchip').forEach(function(x){ x.classList.toggle('on', x.getAttribute('data-id') === tor.id); });
+    torOn = tor.id;
     renderNewman();
   }
   function nqSame(t){ return Math.abs(energyAt(t) - energyAt(nq.deg)) < 0.05; }
@@ -935,7 +937,6 @@
         '<button type="button" data-mode="newman" class="on">Newman &amp; torsion</button>' +
         '<button type="button" data-mode="chair">Cyclohexane chairs</button>' +
       '</div>' +
-      '<p class="tool-step" id="cfStep"></p>' +
     '</div>' +
 
     '<div id="cfNewman">' +
@@ -949,7 +950,6 @@
           '<button type="button" data-ntask="predict" aria-pressed="false">Predict first</button>' +
         '</div>' +
         '<div id="cfNq" class="cf-nq" hidden></div>' +
-        '<div class="tchips" id="cfTorPicker"></div>' +
         '<div id="cfTorBuild" hidden></div>' +
       '</div>' +
       '<div class="tsplit">' +
@@ -1024,33 +1024,18 @@
       });
       document.getElementById('cfNewman').hidden = mode !== 'newman';
       document.getElementById('cfChair').hidden = mode !== 'chair';
-      setStep(mode);
     });
   });
-  function setStep(mode){
-    document.getElementById('cfStep').innerHTML = mode === 'chair'
-      ? '<b>Pick a ring, then tap any group to flip the chair</b> and see which chair costs less.'
-      : '<b>Drag the slider to turn the bond</b> and watch the energy curve.';
-  }
-  setStep('newman');
 
   // --- newman wiring
-  document.getElementById('cfTorPicker').innerHTML = TORSIONALS.map(function(t){
-    return '<button type="button" class="tchip" data-id="' + esc(t.id) + '">' + esc(t.name) + '</button>';
-  }).join('');
-  document.getElementById('cfTorPicker').querySelectorAll('.tchip').forEach(function(b){
-    b.addEventListener('click', function(){
-      if(nq.on && !nq.done) return;
-      TORSIONALS.forEach(function(t){ if(t.id === b.getAttribute('data-id')) tor = t; });
-      document.getElementById('cfTorPicker').querySelectorAll('.tchip').forEach(function(x){
-        x.classList.toggle('on', x === b);
-      });
-      renderNewman();
-      // The Newman projection is below the picker: on a phone, take the student to it.
-      if(window.OchemShowWork) window.OchemShowWork(document.getElementById('cfAngleOut').closest('.tpanel'));
-    });
-  });
-  document.getElementById('cfTorPicker').querySelector('.tchip').classList.add('on');
+  function pickTor(id){
+    if(nq.on && !nq.done) return;
+    TORSIONALS.forEach(function(t){ if(t.id === id) tor = t; });
+    torOn = id;
+    renderNewman();
+    // On a phone, take the student to the Newman projection.
+    if(window.OchemShowWork) window.OchemShowWork(document.getElementById('cfAngleOut').closest('.tpanel'));
+  }
 
   document.getElementById('cfAngle').addEventListener('input', function(e){
     // In Predict first the drawing is the question: the slider waits until it is answered.
@@ -1110,7 +1095,7 @@
         if(el.getAttribute('data-side') === 'f') custFront[i] = el.value;
         else custBack[i] = el.value;
         tor = customTorsion(custFront, custBack);
-        document.getElementById('cfTorPicker').querySelectorAll('.tchip').forEach(function(x){ x.classList.remove('on'); });
+        torOn = '';
         renderNewman();
       });
     });
@@ -1125,7 +1110,7 @@
     if(open){
       renderTorBuild();
       tor = customTorsion(custFront, custBack);
-      document.getElementById('cfTorPicker').querySelectorAll('.tchip').forEach(function(x){ x.classList.remove('on'); });
+      torOn = '';
       renderNewman();
     }
   });
@@ -1240,23 +1225,20 @@
     angleBox.appendChild(slider);
     var snaps = root.querySelector('[data-snap]').parentNode; snaps.classList.add('cf-ls-snaps');
     angleBox.appendChild(snaps);
-    /* Pass 3 (cleanup 2026-11-11): the nine molecules are one select; the
-       chips stay (hidden) and the select clicks them, so every path the chips
-       had is the same. "Build your own" sits beside it. */
-    var torChips = byId('cfTorPicker'); torChips.classList.add('cf-chips-off');
+    /* Pass 3 (cleanup 2026-11-11): the nine molecules are one select; "Build your own" sits beside it. */
     var torToggle = byId('cfTorBuildToggle');
     var torPick = mk('cf-ls-mol', '<p class="ls-lbl"><label for="cfTorSel">Molecule</label></p>');
     var torSel = document.createElement('select'); torSel.id = 'cfTorSel'; torSel.className = 'tselect';
     torSel.innerHTML = TORSIONALS.map(function(t){ return '<option value="' + esc(t.id) + '">' + esc(t.name) + '</option>'; }).join('') +
       '<option value="" hidden>Your own</option>';
     torSel.addEventListener('change', function(){
-      var b = torChips.querySelector('.tchip[data-id="' + torSel.value + '"]');
-      if(!b) return;
+      var id = torSel.value;
+      if(!TORSIONALS.some(function(t){ return t.id === id; })) return;
       if(!byId('cfTorBuild').hidden) torToggle.click();
-      b.click();
+      pickTor(id);
     });
     var torRow = mk('cf-ls-molrow'); torRow.appendChild(torSel); torRow.appendChild(torToggle);
-    torPick.appendChild(torRow); torPick.appendChild(torChips);
+    torPick.appendChild(torRow);
     var chairPics = mk('cf-ls-chairs');
     chairPics.appendChild(root.querySelector('.cf-pair')); chairPics.appendChild(byId('cfMeter')); chairPics.appendChild(byId('cfFlipSay'));
     var chairTask = byId('cfChairTask'); var taskBox = mk('cf-ls-task'); taskBox.appendChild(chairTask);
@@ -1287,10 +1269,9 @@
     if(!ls) return;
     // Predict first: the question and its buttons replace the slider until answered.
     if(lsAngle) lsAngle.hidden = nq.on && !nq.done;
-    var tp = document.getElementById('cfTorPicker'); if(tp) tp.hidden = nq.on;
-    var tw = tp && tp.closest('.cf-ls-mol'); if(tw) tw.hidden = nq.on;
     var tsel = document.getElementById('cfTorSel');
-    if(tsel){ var onChip = tp.querySelector('.tchip.on'); tsel.value = onChip ? onChip.getAttribute('data-id') : ''; }
+    var tw = tsel && tsel.closest('.cf-ls-mol'); if(tw) tw.hidden = nq.on;
+    if(tsel) tsel.value = torOn;
     if(nq.on){
       var okq = nq.done && nq.pick !== null && nqSame(nq.pick);
       studio.caption(nq.done ? '<b>' + (nq.pick === null ? 'The answer is on the curve.' : okq ? 'Right.' : 'Not that one.') + '</b> Green is where it sits' + (nq.pick !== null && !okq ? ', red is your pick' : '') + '. Explanation has the reasoning.'
@@ -1364,9 +1345,7 @@
       }
     } else if(q.tor){
       TORSIONALS.forEach(function(t){ if(t.id === q.tor) tor = t; });
-      document.getElementById('cfTorPicker').querySelectorAll('.tchip').forEach(function(x){
-        x.classList.toggle('on', x.getAttribute('data-id') === q.tor);
-      });
+      torOn = TORSIONALS.some(function(t){ return t.id === q.tor; }) ? q.tor : '';
     }
     if(q.deg){
       theta = Math.max(0, Math.min(360, parseInt(q.deg, 10) || 60));
