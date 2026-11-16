@@ -39,3 +39,12 @@ Checked against the tools and `docs/apphys-authoring-guide.md`.
   (Rolling race); its Spinning stool and Orbit scenes are about angular momentum. Torque balance's Inertia race is
   likewise outside its question. Both questions are correct; a per scene question would need the task to follow the
   scene (the physics kit sets one question per tool).
+
+## F8 accuracy check (2026-11-16)
+- Rotation lab Orbit scene: the question asked about "a planet ... closest to the star", but the scene is a satellite
+  launched around Earth. Now "Why does a satellite move fastest when it is closest to Earth?" (true at every launch
+  speed except exactly 1 × the circular speed, where the orbit is a circle and the speed is constant). What to do "Set the launch speed, then press Launch."
+  matches the slider and button.
+- Stool ("Why does pulling the weights in make the stool spin faster?"; "Slide the dumbbells in or out, then press
+  Spin.") and inertia race ("Two wheels, same mass: which one speeds up faster, and why?"; "Move each wheel's sliders
+  in or out, then press Race."): correct (smaller I, same torque, larger angular acceleration).

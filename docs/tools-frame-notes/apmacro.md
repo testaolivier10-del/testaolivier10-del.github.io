@@ -64,3 +64,10 @@ type) against the tools and `docs/apmacro-authoring-guide.md` (causal chains wit
   - graph studio: a last line that starts with This, That or It ("That is economic growth...") gets the shift line in
     front of it ("With better technology, the production possibilities curve shifts out. That is economic growth...").
   - Any takeaway starting "So" drops it.
+
+## F8 accuracy check (2026-11-16, against `docs/apmacro-authoring-guide.md`)
+- adas-lab phillips, multiplier-lab gap ("divide it by the right multiplier", the guide's divide the gap rule),
+  policy-chain open: correct, kept.
+- indicators-lab gdp-calc: "financial trades" was vague and intermediate goods (the double counting rule the tool's
+  flour item teaches) were missing. Now: "GDP counts the final goods and services produced in the country this year;
+  intermediate goods, used goods, transfer payments and stock or bond purchases are left out."

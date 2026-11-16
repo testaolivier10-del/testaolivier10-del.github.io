@@ -34,7 +34,7 @@
    right, so same-origin is what is enforced.
 
    Ignoring them was not enough: they are now BLOCKED before they leave the
-   browser. The one intermittent failure this check ever produced was two
+   browser (in its resolver since 2026-11-16, see BLOCK_ARGS; it was page.route). The one intermittent failure this check ever produced was two
    lesson pages timing out at page.goto — 'load' waits for every subresource,
    and a third-party script that hangs holds the whole page past 30 s. That
    is exactly the kind of failure the paragraph above says must not fail the
@@ -136,7 +136,16 @@ const pages = walk(ROOT).filter((f) => !isRedirectStub(f)).map((f) => '/' + rela
 pages.sort();
 
 const server = await serve(PORT);
-const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined });
+/* Third-party hosts are blocked in the browser's own resolver, not with page.route (2026-11-16). A function
+   route makes Playwright intercept EVERY request, same-origin ones too, and hold each one until this Node
+   process (which is also serving the files and handling every page event) answers it. With 8 pages at once on
+   a busy runner, one page in about 3,400 now and then never reached 'load', on a different notes or lesson
+   page each time (bio feedback, calculus-bc concavity, candidates-test, chem, precalculus, APES: PRs #212 to
+   #220), even on the 60 s retry. The resolver rule fails every outside host at once (as offline would) with no
+   interception, and the proxy flag keeps a CI or sandbox proxy out of the loop. Nothing the check judges
+   changes: same-origin requests, errors and ids are watched exactly as before. */
+const BLOCK_ARGS = ['--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE localhost, EXCLUDE 127.0.0.1', '--no-proxy-server'];
+const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined, args: BLOCK_ARGS });
 
 console.log(`Loading ${pages.length} pages in Chromium.\n`);
 
@@ -149,14 +158,25 @@ const CONCURRENCY = 8;
 const results = [];
 
 async function visit(path) {
+  const first = await visitOnce(path, 30000);
+  if (!first.timedOut) return first;
+  const again = await visitOnce(path, 60000);
+  if (!again.timedOut) return again;
+  again.problems.push(`navigation: 'load' not reached (30 s, then 60 s in a fresh context); still open: ${again.open.join(', ') || 'no same-origin request'}`);
+  return { path, problems: again.problems };
+}
+
+async function visitOnce(path, ms) {
   const ctx = await browser.newContext();
   const page = await ctx.newPage();
   const problems = [];
   const sameOrigin = (url) => url.startsWith(ORIGIN);
 
-  // Everything off this origin is dropped at the route. See the header: the
-  // check never judged these requests, and letting them run made it flaky.
-  await page.route((url) => !sameOrigin(url.href), (route) => route.abort('blockedbyclient'));
+  // Everything off this origin fails in the resolver (BLOCK_ARGS above). See the header: the check never
+  // judged these requests, and letting them run made it flaky.
+  const pending = new Set();
+  page.on('request', (r) => { if (sameOrigin(r.url())) pending.add(r); });
+  page.on('requestfinished', (r) => pending.delete(r));
 
   page.on('pageerror', (e) => problems.push(`uncaught exception: ${e.message.split('\n')[0]}`));
   page.on('console', (m) => {
@@ -169,6 +189,7 @@ async function visit(path) {
     problems.push(`console.error: ${text.slice(0, 200)}`);
   });
   page.on('requestfailed', (r) => {
+    pending.delete(r);
     if (sameOrigin(r.url())) problems.push(`request failed: ${r.url().slice(ORIGIN.length)} (${r.failure()?.errorText})`);
   });
   page.on('response', (r) => {
@@ -176,14 +197,17 @@ async function visit(path) {
   });
 
   try {
-    /* One retry on a navigation timeout: with 8 pages loading at once on a busy CI runner, a same-origin
-       page sometimes misses 30 s (PRs #102 and #104 failed on a different page each run, and every one
-       passed locally). A page that times out twice still fails. */
+    /* A navigation timeout is retried once, in a fresh context (see visit() below), and a second timeout
+       fails the page and names the same-origin requests still open, so a real hang can be read from the log. */
     try {
-      await page.goto(ORIGIN + path, { waitUntil: 'load', timeout: 30000 });
+      await page.goto(ORIGIN + path, { waitUntil: 'load', timeout: ms });
     } catch (e) {
-      if (!/Timeout/.test(String(e && e.message))) throw e;
-      await page.goto(ORIGIN + path, { waitUntil: 'load', timeout: 60000 });
+      if (/Timeout/.test(String(e && e.message))) {
+        const open = [...pending].map((r) => r.url().slice(ORIGIN.length)).slice(0, 5);
+        await ctx.close();
+        return { path, problems, timedOut: true, open };
+      }
+      throw e;
     }
     // Deferred scripts have run by 'load', but this site's per-page bootstraps
     // wait for DOMContentLoaded and then render. Give that work a moment to

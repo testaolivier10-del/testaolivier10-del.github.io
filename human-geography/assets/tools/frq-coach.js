@@ -15,6 +15,7 @@
      3. the rubric line and a full-credit sample, revealed on request;
      4. "Which answer earns the point?": the sample against an answer that
         misses the verb's demand, Select then Check, with the slip named.
+        Like the sample in 3, it opens only after a try (4 letters in step 1).
    Drafts are kept on this device (aphug_frqcoach_v1).
    Test yourself: ApHugTools.drill over the model's generate(). */
 (function(){
@@ -96,7 +97,11 @@
       drafts[key()] = ta.value; save(drafts);
       flags(ta.value);
       // F6 (owner): the rubric line opens any time; the full-credit sample only after a real try at writing.
-      var lock = $('.hug-fc-lock'); if(lock && tried()){ lock.outerHTML = sampleHtml(); say('A full-credit answer is open under the rubric line.'); }
+      // F8: step 3 (the sample against a weak answer) waits for the same try.
+      var lock = $('.hug-fc-lock'), lock3 = $('.hug-fc-lock3'), msg = [];
+      if(lock && tried()){ lock.outerHTML = sampleHtml(); msg.push('A full-credit answer is open under the rubric line.'); }
+      if(lock3 && tried()){ $('.hug-fc-s3').innerHTML = earnHtml(); msg.push('Step 3 is open: which answer earns the point?'); }
+      if(msg.length) say(msg.join(' '));
       var sb = $('.hug-fc-show'); if(sb) sb.textContent = showLabel();
     }
     function tried(){ return ((drafts[key()] || '').match(/[A-Za-z]/g) || []).length >= 4; }
@@ -105,6 +110,14 @@
       var p = part();
       return tried() ? '<p class="hug-fc-rk">A full-credit answer</p><p class="hug-fc-sample">' + esc(p.sample) + '</p>'
         : '<p class="bt-small hug-fc-lock">A full-credit answer opens once you write yours in step 1.</p>';
+    }
+    // Step 3 shows the sample as one of its two options, so it waits for the same try as the sample (F8).
+    function earnHtml(){
+      var p = part(), s = state(), opts = [p.sample, p.weak];
+      if(!tried()) return '<p class="hug-fc-sh"><span class="hug-fc-n">3</span> Which answer earns the point?</p><p class="bt-small hug-fc-lock3">Two answers to compare open once you write yours in step 1.</p>';
+      return '<fieldset class="hug-fc-earn"><legend class="hug-fc-sh"><span class="hug-fc-n">3</span> Which answer earns the point?</legend>' +
+        s.order.map(function(o){ var id = nid + '-e' + k + '-' + o; return '<div class="bt-radio hug-fc-opt"><input type="radio" name="' + nid + '-earn" id="' + id + '" value="' + o + '"' + (s.pick === o ? ' checked' : '') + '><label for="' + id + '">' + esc(opts[o]) + '</label></div>'; }).join('') +
+        '</fieldset><div class="bt-actions"><button type="button" class="btn-press sm hug-fc-check">Check</button></div><div class="hug-fc-efb" role="status" aria-live="polite"></div>';
     }
     function flags(text){
       var G = window.ApHugGrade, ul = $('.hug-fc-flags'), p = part();
@@ -121,6 +134,7 @@
     function hintOf(r){ return { mechanism: 'Give the link: a cause, then "because" or "so", then its effect.', both: 'Say it about both things: "whereas", "both", "but".', degree: 'Open with the degree: "To a moderate degree,".', scale: 'Name the scale: global, regional, national or local.' }[r]; }
     function check(){
       var s = state(), p = part(), fb = $('.hug-fc-efb');
+      if(!fb) return;
       if(s.pick < 0){ fb.innerHTML = '<span class="bt-small">Choose an answer first.</span>'; return; }
       s.checked = true;
       var ok = s.pick === 0;
@@ -144,7 +158,6 @@
     }
     function drawCard(){
       var p = part(), v = F.VERBS[p.verb], s = state(), el = $('.hug-fc-pcard'), tid = nid + '-w' + k;
-      var opts = [p.sample, p.weak];
       el.innerHTML = '<div class="hug-fc-verbcard"><p class="hug-fc-vk">Part ' + p.label + ' asks you to</p><p class="hug-fc-vn">' + esc(v.name) + '</p><p class="hug-fc-vd">' + esc(v.demand) + '</p></div>' +
         '<div class="hug-fc-step"><label class="hug-fc-sh" for="' + tid + '"><span class="hug-fc-n">1</span> Write your answer</label>' +
           (LINKS[p.verb].length ? '<div class="hug-fc-ins-row" role="group" aria-label="Add a link word">' + LINKS[p.verb].map(function(w){ return '<button type="button" class="hug-fc-ins" data-w="' + esc(w) + '">' + esc(w) + '</button>'; }).join('') + '</div>' : '') +
@@ -153,9 +166,7 @@
         '<div class="hug-fc-step"><p class="hug-fc-sh"><span class="hug-fc-n">2</span> Check it against the rubric</p>' +
           (s.shown ? '<div class="hug-fc-rub" tabindex="-1"><p class="hug-fc-rk">Rubric line (1 point)</p><p>' + esc(p.rubric) + '</p>' + sampleHtml() + '</div>'
             : '<button type="button" class="bt-btn hug-fc-show">' + showLabel() + '</button>') + '</div>' +
-        '<div class="hug-fc-step"><fieldset class="hug-fc-earn"><legend class="hug-fc-sh"><span class="hug-fc-n">3</span> Which answer earns the point?</legend>' +
-          s.order.map(function(o){ var id = nid + '-e' + k + '-' + o; return '<div class="bt-radio hug-fc-opt"><input type="radio" name="' + nid + '-earn" id="' + id + '" value="' + o + '"' + (s.pick === o ? ' checked' : '') + '><label for="' + id + '">' + esc(opts[o]) + '</label></div>'; }).join('') +
-          '</fieldset><div class="bt-actions"><button type="button" class="btn-press sm hug-fc-check">Check</button></div><div class="hug-fc-efb" role="status" aria-live="polite"></div></div>' +
+        '<div class="hug-fc-step hug-fc-s3">' + earnHtml() + '</div>' +
         '<div class="hug-fc-act"><button type="button" class="bt-btn hug-fc-next">Next part</button></div>';
       var ta = el.querySelector('textarea');
       ta.addEventListener('input', onWrite);

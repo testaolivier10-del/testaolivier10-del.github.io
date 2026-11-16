@@ -90,3 +90,9 @@ Each "what to do" line names a control the tool has (its own first-run hint or l
   also invites selection, mutation and gene flow).
 - Changed: operons "Tap a sugar to change the medium..." to "Tap a sugar (or tryptophan) to change the medium..." (the
   trp operon's chip is tryptophan, not a sugar). The tool's own first-run hint still says "Tap a sugar"; left as it is.
+
+## F8 (2026-11-16)
+- Tree reading: the default caption repeated the task's what to do line word for word ("Tap two or more names on the
+  tree..."; in Build "Check two or more pieces..."). Both defaults are dropped: with nothing to report the caption row
+  is not drawn and Explanation sits at the end of the what to do line; a result (for example "The most recent common
+  ancestor of Lancelet and Lamprey is node 1") still shows in the caption. Seen at 390 and 1440, light and dark.

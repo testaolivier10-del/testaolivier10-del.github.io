@@ -289,8 +289,11 @@ try {
 
 const PORT = Number(process.env.CHECK_A11Y_PORT) || 8731;
 const server = await serve(PORT);
+// Outside hosts (the Supabase SDK, analytics) fail at once in the resolver, as offline would, so no page waits
+// on a network this check does not judge (same rule as scripts/check-console.mjs, 2026-11-16).
 const browser = await chromium.launch({
   executablePath: process.env.CHROMIUM_PATH || undefined,
+  args: ['--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE localhost, EXCLUDE 127.0.0.1', '--no-proxy-server'],
 });
 
 let failures = 0;

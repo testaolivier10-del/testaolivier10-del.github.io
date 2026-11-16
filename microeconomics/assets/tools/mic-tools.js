@@ -85,7 +85,7 @@
     'game-lab': {
       best: function(p, last){ return lastSentence(last).replace(/^So,?\s+/, ''); },
       change: function(p, last){ return lastSentence(last).replace(/^So,?\s+/, ''); } },
-    'cost-lab': { shutdown: 'In the short run a firm shuts down only if price is below minimum AVC; between AVC and ATC it produces at a loss.' },
+    'cost-lab': { shutdown: 'In the short run a firm shuts down only if price is below minimum AVC; between minimum AVC and minimum ATC it produces at a loss.' },
     'factor-lab': { hire: 'A firm hires until MRP equals MRC; in a competitive labor market MRC is the wage.' },
     'surplus-lab': { control: 'A binding price ceiling or floor cuts the quantity traded below equilibrium and creates deadweight loss.', trade: 'Trade at the world price raises total surplus, even though one side of the domestic market loses.', tariff: 'A tariff raises the domestic price, cuts imports and creates deadweight loss.' }
   };
