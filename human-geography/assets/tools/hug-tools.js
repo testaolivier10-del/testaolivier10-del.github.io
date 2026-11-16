@@ -94,7 +94,7 @@
       verbs: 'Each task verb asks for something different: do what the verb asks, about the place or data in the question.',
       earns: 'A point is earned by doing what the task verb asks, with the place or data the question names.' },
     'model-studio': { '*': function(p, last){ return p.title ? p.title + '. ' + last.replace(/^A limit\.\s*/, 'One limit: ') : ''; } },
-    'population-lab': { cohort: 'A bulge or a gap at one age comes from an event, such as a baby boom, a drop in births, or people moving in or out, and it moves up the pyramid as that group ages.' }
+    'population-lab': { cohort: 'A bulge or a gap at one age usually comes from an event, such as a baby boom, a drop in births, a war, or people moving in or out, and it moves up the pyramid as that group ages.' }
   };
   function takeaway(p, html){
     var own = p && TAKE[curSlug] && (TAKE[curSlug][p.type] || TAKE[curSlug]['*']);

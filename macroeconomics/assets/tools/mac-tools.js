@@ -80,7 +80,7 @@
       var w = sol.filter(function(l){ return /^With /.test(l); })[0];
       return (w ? w.replace(/\s*\(Also accepted:[^)]*\)\.?$/, '') : sol[sol.length - 2] || '') + ' ' + last;
     } },
-    'indicators-lab': { 'gdp-calc': 'GDP counts final goods and services produced this year; transfer payments, used goods and financial trades are left out.',
+    'indicators-lab': { 'gdp-calc': 'GDP counts the final goods and services produced in the country this year; intermediate goods, used goods, transfer payments and stock or bond purchases are left out.',
       'gdp-count': 'GDP counts the market value of new final goods and services made inside the country this year.',
       utype: 'Frictional is searching between jobs, structural is a mismatch of skills or place, and cyclical comes from a downturn.' },
     'multiplier-lab': { gap: 'To close a gap, divide it by the right multiplier (spending or tax) to find the change needed.',

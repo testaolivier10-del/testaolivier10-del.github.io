@@ -38,3 +38,9 @@ and `docs/apmicro-authoring-guide.md`.
     fare.").
   - graph studio: same rule as macro (This, That or It gets the shift line in front).
   - A leading "So" is dropped (elasticity income and cross, externality quantity, game nash).
+
+## F8 accuracy check (2026-11-16, against `docs/apmicro-authoring-guide.md`)
+- cost-lab shutdown: "between AVC and ATC" now "between minimum AVC and minimum ATC" (the guide: shutdown at minimum
+  AVC, not minimum ATC).
+- externality-lab public, factor-lab hire (MRP = MRC; MRC is the wage in a competitive labor market), surplus-lab
+  control, trade, tariff: correct, kept.

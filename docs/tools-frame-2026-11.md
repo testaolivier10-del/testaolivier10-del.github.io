@@ -60,6 +60,11 @@ card), a Share button in the bar on desktop, the "what to do" line under the tas
 | F5 | APES, AP Psych, AP Macro, AP Micro, AP Human Geography | F5a done 2026-11-16: APES (12) and AP Psych (10) on the std frame through `env-tools.js` / `psy-tools.js` (task, kinds dropdown, hint ladder per step, finished card, `stagePick` for scenario selects and chips); notes in `docs/tools-frame-notes/apes.md` and `psychology.md`. F5b done 2026-11-16: AP Macro, AP Micro, AP Human Geography (24 tools) through `mac-tools.js` / `mic-tools.js` / `hug-tools.js`; notes in `docs/tools-frame-notes/apmacro.md`, `apmicro.md`, `aphug.md` |
 | F6 | Fresh-eyes pass on every tool, fixes, done | F6a done 2026-11-16: every item of the F6 decisions below except the accuracy check (F6b, in parallel): shared picker search, empty caption row, phone quiz figure size, Reset to the stage foot in Bio / Chem / Physics, calc parametric axes and rule drill window, HuG FRQ sample gate and Map pill, takeaways per problem type (Macro, Micro, HuG), policy chain row. Checked in every course at 390 and 1440, light and dark; AB and Macro builds byte-identical |
 | F7 | Follow-ups after F6a (five small items) | done 2026-11-16: see "F7 follow-ups" below |
+| F8 | Final wrap up | done 2026-11-16: FRQ coach step 3 waits for a try; tree reading's duplicate caption dropped; the flaky "every page loads" CI step fixed; accuracy check of the F6a and F7 copy (verdicts in the course notes); see "F8 wrap up" below |
+
+**Project status: done (2026-11-16).** Every tool in every course is on the standard frame. Left for later: the hidden
+original scenario controls (ochem, APES, Psych and others, kept in the page out of sight behind the pickers) could be
+removed in a cleanup pass.
 
 ## F6 decisions (owner, 2026-11-16) and what F6a did
 - HuG FRQ coach: the rubric line opens any time (before writing too); the full-credit sample opens only after a real
@@ -115,3 +120,22 @@ New copy for an accuracy check: the stats lab line ("From a z table, about 2.3% 
 about the 2nd percentile (the rule's 2.5% is a close estimate).") and caption; the three scene questions and their
 lines (stool: "Why does pulling the weights in make the stool spin faster?"; orbit: "Why does a planet move fastest
 when it is closest to the star?"; race: "Two wheels, same mass: which one speeds up faster, and why?").
+
+## F8 wrap up (2026-11-16)
+- HuG FRQ coach: step 3 ("Which answer earns the point?") offers the sample as one of its two answers, so it now waits
+  for the same try as the sample (four letters in step 1), as the standard asks (full answer after one real attempt).
+  Answers the F6a question (1).
+- Bio tree reading: the caption's default line repeated the task's what to do line (Read and Build); both defaults are
+  dropped, so the empty caption row is not drawn. Results still show in the caption. Answers the F6a question (2).
+- CI, "every page loads without a runtime error" (`scripts/check-console.mjs`, in the accessibility job): one notes or
+  lesson page in about 3,400 now and then missed 'load' on both tries (30 s, then 60 s), a different page each run.
+  Cause: third parties were blocked with a function `page.route`, which makes Playwright intercept every request,
+  same-origin ones too, and hold each until the Node process (also the file server and the event handler for 8
+  pages at once) answers. Now outside hosts fail in Chromium's resolver (`--host-resolver-rules`, `--no-proxy-server`)
+  with no interception; a timed out page is retried once in a fresh context; a page that misses twice fails and
+  names the same-origin requests still open. Same-origin requests, errors and ids are judged as before.
+  `check-a11y.mjs` gets the same launch rule so axe never waits on an outside host.
+- Accuracy check of the F6a and F7 copy: verdicts in `docs/tools-frame-notes/apmacro.md`, `apmicro.md`, `aphug.md`,
+  `psychology.md`, `apphys.md`. Fixed: GDP takeaway (adds intermediate goods; "stock or bond purchases" for
+  "financial trades"), shutdown takeaway ("minimum AVC and minimum ATC"), cohort takeaway ("usually", "a war"),
+  rotation lab Orbit question (the scene is a satellite around Earth, not a planet and a star). Everything else correct.

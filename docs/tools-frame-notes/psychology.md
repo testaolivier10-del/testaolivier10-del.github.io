@@ -71,3 +71,9 @@ type's finished card takeaway (generated per context and type) against the tools
   spaced retrieval practice flattens the forgetting curve." A leading "So" is dropped (neuron drug, stats rule).
 - For an expert: stats-lab rule problems say "about the 3rd percentile: about 2.5% of scores are lower" at z = −2 (the
   68-95-99.7 rule gives 2.5%; the table gives 2.3%, the 2nd percentile). Not new copy; left as it is.
+
+## F8 accuracy check (2026-11-16)
+- Stats lab F7 line ("From a z table, about 2.3% of scores are lower, so ... is at about the 2nd percentile (the
+  rule's 2.5% is a close estimate).") and the curve caption: correct. The table value is rounded to 0.1% and the
+  percentile to a whole number held to 1st to 99th (z = −1: 15.9%, 16th; z = +2: 97.7%, 98th); the band sums in the
+  rule step (0.15, 2.35, 13.5, 34) are right.

@@ -432,9 +432,10 @@
       // The tree choice is a setting (Details); the dock keeps the pieces
       // and the questions, each one scrolling row on a phone.
       { mode: 'read', label: 'Read a tree', stage: ['.tr-figwrap'], stageAlso: ['.tr-chips'], dock: ['.tr-tips'], live: '.tr-result',
-        caption: function(g){ return g.live ? T.esc(T.firstSentence(g.live)) : 'Tap two or more names on the tree, then ask a question about them.'; },
+        // F8: no default caption; the task's what to do line already says this (an empty caption row is not drawn).
+        caption: function(g){ return g.live ? T.esc(T.firstSentence(g.live)) : ''; },
         why: ['.tr-about', '.tr-hint', '.tr-desc'], hint: { target: '.tr-tipg .tr-tip', text: 'Tap a name to select it' } },
       { mode: 'build', label: 'Build a tree', stage: ['.tb-out'], stageAlso: ['.tb-table'], dock: ['.tb-pieces'], live: '.tb-status',
-        caption: function(g){ return g.live ? T.esc(T.firstSentence(g.live)) : 'Check two or more pieces that share a derived character, then join them.'; } }
+        caption: function(g){ return g.live ? T.esc(T.firstSentence(g.live)) : ''; } }
     ] } });
 })();

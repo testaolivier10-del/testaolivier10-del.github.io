@@ -45,3 +45,16 @@ and type) against the tools and `docs/aphug-authoring-guide.md` (named real plac
   - model studio (every model; began "A limit. It..."): "Demographic transition model. One limit: It leaves out
     migration."
   - Kept: sea, city rings, bidrent, central, ranksize, diffusion mixed, kinds, ravenstein, population, scale.
+
+## F8 (2026-11-16): final wrap up
+- FRQ coach step 3 ("Which answer earns the point?") now waits for the same try as the sample (four letters in step 1):
+  before that it shows its heading and "Two answers to compare open once you write yours in step 1." It opens in
+  place as the student types (with a spoken line); a part already tried opens at once. Seen at 390 and 1440, light
+  and dark: locked, open, wrong answer, next part (locks again), back to part A (open, answer and feedback kept).
+- Accuracy check (F8) against `docs/aphug-authoring-guide.md`:
+  - population-lab cohort takeaway: correct; made precise to "usually comes from an event, such as a baby boom, a drop
+    in births, a war, or people moving in or out" (deaths in a war also leave a gap).
+  - FRQ coach lines "Show the rubric line", "Show the rubric line and a sample", "A full-credit answer opens once you
+    write yours in step 1." and the new "Two answers to compare open once you write yours in step 1.": correct (the
+    gate is four letters in step 1); plain words.
+  - Shared search panel lines "Type to search" and "Nothing matches. Try fewer letters.": correct.
