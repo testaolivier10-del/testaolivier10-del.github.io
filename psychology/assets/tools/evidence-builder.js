@@ -190,6 +190,7 @@
       T.explain($('.eb-say'), head, why);
       if(LS){
         LS.caption(s.total === 7 ? '<b>Every point earned.</b> Try another claim or question.' : '<b>Part ' + PART[part].label + ', ' + esc(PART[part].name.toLowerCase()) + '.</b> ' + esc(s.notes[part]), 'explore');
+        finished(s.total === 7);
         if(LS.why) LS.why.querySelectorAll('details.bt-why').forEach(function(d){ d.open = true; });
       }
     }
@@ -208,14 +209,30 @@
       var W = { write: { cite: true, concept: ctx.concepts.map(function(c){ return c.name.replace(/^the /, ''); }), restricted: ctx.restricted.map(function(r){ return r.name.replace(/^the /, ''); }), mechanism: true } };
       ul.innerHTML = G.flags(W, text).map(function(f){ return '<li class="' + (f.ok ? 'is-ok' : 'is-no') + '"><span class="psy-mark ' + (f.ok ? 'ok' : 'no') + '">' + ({ cite: 'Citation', concept: 'Concept', restricted: 'Restricted', mechanism: 'Link' }[f.rule] || f.rule) + '</span> ' + (f.ok ? ({ cite: 'A source is cited.', concept: 'A psychology concept is named.', mechanism: 'The link is stated.' }[f.rule] || 'OK') : esc(f.hint)) + '</li>'; }).join('');
     }
+    /* The standard frame's finished card, once per answer that earns all 7 points (docs/tools-frame-2026-11.md):
+       the next question, your answer as a reader sees it, and the answer itself to keep working on. */
+    var doneFor = '';
+    function finished(full){
+      if(!LS || !T.isStd(LS)) return;
+      var key = ctx.id + ':' + seed;
+      if(!full){ LS.done(false, 'explore'); return; }
+      if(doneFor === key) return;
+      doneFor = key;
+      var i = ctxs.indexOf(ctx), nx = ctxs[(i + 1) % ctxs.length];
+      LS.done({ kicker: 'All 7 points', title: 'Every point earned.', text: 'A claim, two pieces of cited evidence, and each one explained with a concept and linked back to the claim.',
+        next: ctxs.length > 1 ? { label: 'Next question', onClick: function(){ LS.done(false, 'explore'); pick.set(nx.id); pick.select.dispatchEvent(new Event('change', { bubbles: true })); } } : null,
+        links: [{ label: 'Your answer, as a reader sees it', onClick: function(){ LS.done(false, 'explore'); LS.open('details'); } }, { label: 'Keep working on this answer', onClick: function(){ LS.done(false, 'explore'); } }] }, 'explore');
+    }
     function drawAll(){ drawStage(); drawParts(); drawCard(); words(); nums2(); }
     function studio(pane, s){
       LS = s;
-      var sp = T.studioPane(pane, s, { stage: [$('.eb-fig')], dock: [$('.eb-ctl')], setup: 'Question', moreLabel: 'Choose a question', why: [$('.eb-say')], details: [$('.eb-nums')] });
+      var sp = T.studioPane(pane, s, { task: { title: 'Back a claim with evidence from two sources.' }, stage: [$('.eb-fig')], dock: [$('.eb-ctl')], setup: T.isStd(s) ? 'Settings' : 'Question', moreLabel: T.isStd(s) ? 'New numbers, start over' : 'Choose a question', why: [$('.eb-say')], details: [$('.eb-nums')] });
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       LS.setupRow = sp;
-      sp.setup(ctx.title);
+      // The standard frame: the questions are the scenario dropdown on the stage.
+      var std = !!T.stagePick(s, pick.el, { label: 'Question' });
+      sp.setup(std ? 'New numbers, or start the answer over' : ctx.title);
       drawAll();
       if(s.mode() === 'explore') ApPsychTools.hintSlot(s, s.root.querySelector('.eb-claim') || s.root.querySelector('.eb-parts'), 'Start here: pick a claim', { cls: 'eb-tipslot' });
       var w = window.innerWidth, t = null;

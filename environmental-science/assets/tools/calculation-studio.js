@@ -228,7 +228,9 @@
     host.addEventListener('click', onClick);
     function studio(pane, s){
       LS = s;
-      T.studioPane(pane, s, { stage: [$('.cs-stage')], dock: [$('.cs-ctl')], why: [$('.cs-say')], details: [$('.cs-nums')] });
+      T.studioPane(pane, s, { task: { title: 'Cancel units to set up a calculation.' }, stage: [$('.cs-stage')], dock: [$('.cs-ctl')], why: [$('.cs-say')], details: [$('.cs-nums')] });
+      // The standard frame: the scenarios are one dropdown on the stage.
+      T.stagePick(s, $('.cs-scns'), { label: 'Scenario' });
       host.removeEventListener('click', onClick); host.removeEventListener('keydown', onKey);
       s.root.addEventListener('click', onClick); s.root.addEventListener('keydown', onKey);
       draw();

@@ -638,7 +638,7 @@
     }
     function studio(pane, s){
       LS = s;
-      var sp = T.studioPane(pane, s, { stage: [$('.dv-fig')], dock: [$('.dv-ctl')], setup: 'Timeline', moreLabel: 'Timeline lanes', why: [$('.dv-say')], details: [$('.dv-nums')] });
+      var sp = T.studioPane(pane, s, { task: { title: 'Follow development across a lifetime.' }, stage: [$('.dv-fig')], dock: [$('.dv-ctl')], setup: 'Timeline', moreLabel: 'Timeline lanes', why: [$('.dv-say')], details: [$('.dv-nums')] });
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       LS.setupRow = sp;

@@ -352,7 +352,7 @@
     }
     function studio(pane, s){
       LS = s;
-      T.studioPane(pane, s, { stage: [$('.st-fig')], dock: [$('.st-ctl')], primary: [sl.sand.el, sl.silt.el, sl.clay.el], primaryLoose: true, why: [$('.st-say')], details: [$('.st-nums')], moreLabel: 'Example soils and particle sizes' });
+      T.studioPane(pane, s, { task: { title: 'Name a soil from its sand, silt and clay.' }, stage: [$('.st-fig')], dock: [$('.st-ctl')], primary: [sl.sand.el, sl.silt.el, sl.clay.el], primaryLoose: true, why: [$('.st-say')], details: [$('.st-nums')], moreLabel: 'Example soils and particle sizes' });
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       render();

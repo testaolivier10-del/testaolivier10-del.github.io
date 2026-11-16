@@ -187,7 +187,7 @@
         b.setAttribute('aria-pressed', String(v === variant)); b.disabled = !ok; b.hidden = !ok;
       });
       var paper = $('.as-paper'); if(paper) light(paper, part);
-      if(LS && LS.setupRow) LS.setupRow.setup(ctx.title);
+      if(LS && LS.setupRow) LS.setupRow.setup(T.isStd(LS) ? 'Run it again with new numbers' : ctx.title);
     }
     function card(){
       var P = A.parts(ctx, st)[part], a = ASK[part], pp = PART[part];
@@ -232,10 +232,12 @@
     }
     function studio(pane, s){
       LS = s;
-      var sp = T.studioPane(pane, s, { stage: [$('.as-fig')], dock: [$('.as-ctl')], setup: 'Study', moreLabel: 'Choose a study', why: [$('.as-say')], details: [$('.as-nums')] });
+      var sp = T.studioPane(pane, s, { task: { title: 'Find each part of a research study.' }, stage: [$('.as-fig')], dock: [$('.as-ctl')], setup: T.isStd(s) ? 'Settings' : 'Study', moreLabel: T.isStd(s) ? 'Run it again' : 'Choose a study', why: [$('.as-say')], details: [$('.as-nums')] });
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       LS.setupRow = sp;
+      // The standard frame: the studies are the scenario dropdown on the stage.
+      T.stagePick(s, pick.el, { label: 'Study' });
       draw();
       if(s.mode() === 'explore') ApPsychTools.hintSlot(s, s.root.querySelector('.as-parts'), 'Start here: tap a part, A to F', { cls: 'as-tipslot' });
       var w = window.innerWidth, t = null;

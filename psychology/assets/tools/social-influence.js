@@ -529,7 +529,7 @@
     }
     function studio(pane, s){
       LS = s;
-      var sp = T.studioPane(pane, s, { stage: [$('.si-fig')], dock: [$('.si-ctl')], setup: 'Show', moreLabel: 'Graph', why: [$('.si-say')], details: [$('.si-nums')] });
+      var sp = T.studioPane(pane, s, { task: { title: 'See how the situation changes what people do.' }, stage: [$('.si-fig')], dock: [$('.si-ctl')], setup: 'Show', moreLabel: 'Graph', why: [$('.si-say')], details: [$('.si-nums')] });
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       LS.setupRow = sp; sp.setup('Scene and results');

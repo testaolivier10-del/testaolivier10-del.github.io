@@ -392,7 +392,7 @@
 
     function studio(pane, s){
       LS = s;
-      var sp = T.studioPane(pane, s, { stage: [$('.dr-fig')], dock: [$('.dr-ctl')], primary: [sDose.el, sF.el, sA.el], setup: 'Showing', moreLabel: 'Compare chemicals', why: [$('.dr-say')], details: [$('.dr-nums')] });
+      var sp = T.studioPane(pane, s, { task: { title: 'Read a dose-response curve.' }, stage: [$('.dr-fig')], dock: [$('.dr-ctl')], primary: [sDose.el, sF.el, sA.el], setup: 'Showing', moreLabel: 'Compare chemicals', why: [$('.dr-say')], details: [$('.dr-nums')] });
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       LS.setupRow = sp;

@@ -532,6 +532,20 @@
   var coefText = function(x){ return M.coefText ? M.coefText(x) : String(x); };
   function numOf(raw){ return Q.parseNumber(String(raw || '').replace(/%\s*$/, '')); }
   function shownNum(c, d){ return d != null ? F(c.answer, d) : M.fmt(c.answer, 3); }
+  /* One method hint per step, for the standard frame's hint ladder: the step's own hint, else the tool's
+     (o.method(step, problem) -> html), else one for the kind of step. It says how to get there, never the
+     answer. */
+  function methodOf(s, p, o){
+    var m = s.hint || (o.method && o.method(s, p)) || '';
+    if(m) return m;
+    var lab = String(s.label || '').replace(/<[^>]+>/g, '');
+    if(s.kind === 'unit') return 'Work the number out first, keeping every digit until the end. Then write the unit the question asks for.';
+    if(/table/i.test(lab)) return 'Find the row and column you need in the table, then read the value where they meet.';
+    if(s.kind === 'vol' || /^read\b|graph|curve/i.test(lab)) return 'Find the point on the picture first, then read straight across (or down) to the axis and use its scale.';
+    if(s.kind === 'num') return 'Find the numbers you need in the problem or on the picture, then do one operation at a time.';
+    if(s.kind === 'choice') return 'Find the key detail in the scenario first. Rule out the options it does not fit, then pick the one that matches the definition.';
+    return 'Use the details in the problem, one step at a time.';
+  }
   function drill(app, data, o){
     var slug = o.slug, gid = nid('dr'), contexts = data.contexts || [];
     var type = '', seed = seedFromUrl() || freshSeed();
@@ -539,10 +553,15 @@
     var area = fr.area;
     // Only the kinds this page has content for (contexts unlock with their units).
     var kinds = (o.types || []).filter(function(t){ type = t.value; var n = pickable().length; type = ''; return n > 0; });
-    if(kinds.length > 1){
+    var sd = studioDrill(app, area, o);
+    // The standard frame: the kinds are the scenario dropdown on the stage
+    // (docs/tools-frame-2026-11.md); otherwise the picker behind More options.
+    if(kinds.length > 1 && sd && sd.std){
+      sd.picker({ label: o.typeLabel || 'Problem type', items: [{ value: '', label: 'Any kind' }].concat(kinds.map(function(k){ return { value: k.value, label: k.label }; })), value: '',
+        onChange: function(v){ type = v; seed = freshSeed(); draw(true); } });
+    } else if(kinds.length > 1){
       kindPicker(fr.pick, { label: o.typeLabel || 'Problem type', options: kinds, onChange: function(v){ type = v; seed = freshSeed(); draw(true); } });
     }
-    var sd = studioDrill(app, area, o);
     function pickable(){ return contexts.filter(function(c){ return !type || (c.types ? c.types.indexOf(type) > -1 : c.mode ? c.mode === type : c.kind === type); }); }
     function pickCtx(r){ var ok = pickable(); return r.pick(ok.length ? ok : contexts); }
     function draw(focus){
@@ -584,6 +603,18 @@
         }
         el.innerHTML = head + body + '<div class="bt-actions"><button type="submit" class="btn-press sm">Check</button></div><div class="cd-fb" role="status" aria-live="polite"></div>';
         host.appendChild(el);
+        // The standard frame's hint ladder (docs/tools-frame-2026-11.md): the step's method (its own hint, else
+        // one for the kind of step) is the first hint, one tap away; "Show the answer" opens after one real
+        // (wrong) try, as before.
+        var lad = sd && sd.std ? sd.hints({ hints: [methodOf(s, p, o)], answer: { label: 'Show the answer', onShow: function(){ reveal(); return ''; } } }) : null;
+        if(lad){
+          var own = el.querySelector('#' + sid + '-h');
+          if(own) own.remove();
+          lad.card.id = sid + '-h';
+          el.querySelector('.cd-label').after(lad.card);
+          el.querySelector('.bt-actions').after(lad.row);
+          lad.row.querySelector('.ls-hint-b').addEventListener('click', function(){ event('appsych-drill-hint', { tool: slug, step: s.key }); });
+        }
         var rowInputs = [];
         if(s.kind === 'row' || s.kind === 'coef'){
           rowsAll('[data-row="' + s.row + '"] [data-i]').forEach(function(td){
@@ -608,6 +639,7 @@
         el.addEventListener('submit', function(e){ e.preventDefault(); check(); });
         function lock(){
           done = true;
+          if(lad) lad.row.remove();
           el.querySelectorAll('input').forEach(function(x){ if(x.type === 'radio' || x.type === 'range') x.disabled = true; else x.readOnly = true; });
           rowInputs.forEach(function(x){ if(x) x.readOnly = true; });
           if(s.row) row1('[data-row="' + s.row + '"]').classList.remove('is-active');
@@ -669,9 +701,10 @@
             return;
           }
           el.classList.add('is-wrong');
-          fb.innerHTML = '<span class="psy-mark no">Not yet</span>' + (notes.length ? '<ul class="cd-notes">' + notes.map(function(n){ return '<li>' + n + '</li>'; }).join('') + '</ul>' : s.kind === 'vol' ? ' That is not where this point is. Look at the shape of the curve again.' : ' Recheck the arithmetic.') +
-            '<div class="bt-actions"><button type="button" class="bt-btn cd-show">Show the answer</button></div>';
-          fb.querySelector('.cd-show').addEventListener('click', reveal);
+          if(lad){ if(!lad.shown()) lad.row.querySelector('.ls-hint-b').click(); lad.attempt(); }
+          fb.innerHTML = '<span class="psy-mark no">Not yet</span>' + (notes.length ? '<ul class="cd-notes">' + notes.map(function(n){ return '<li>' + n + '</li>'; }).join('') + '</ul>' : s.kind === 'vol' ? ' That is not where this point is. Look at the shape of the curve again.' : s.kind === 'choice' ? ' Not this one. Use the hint, then check again.' : ' Recheck the arithmetic.') +
+            (lad ? '' : '<div class="bt-actions"><button type="button" class="bt-btn cd-show">Show the answer</button></div>');
+          if(!lad) fb.querySelector('.cd-show').addEventListener('click', reveal);
         }
       }
       function finish(){
@@ -684,8 +717,8 @@
         var nx = area.querySelector('.bt-next');
         nx.innerHTML = '<p class="bt-result" role="status">' + right + ' of ' + results.length + (results.length === 1 ? ' step' : ' steps') + ' right the first time.</p><div class="bt-actions"><button type="button" class="btn-press sm cd-again">' + esc(o.newLabel || 'New problem') + '</button>' + report(slug + ':' + p.ctx) + '</div>';
         nx.querySelector('.cd-again').addEventListener('click', function(){ seed = freshSeed(); draw(true); });
-        keepGoing(nx, { topic: p.topic, also: results.filter(function(x){ return !x.correct; }).map(function(x){ return x.topic; }) });
-        if(sd){ sd.done(right, results.length); return; }
+        var kg = keepGoing(nx, { topic: p.topic, also: results.filter(function(x){ return !x.correct; }).map(function(x){ return x.topic; }) });
+        if(sd){ sd.done(right, results.length, p, kg); return; }
         sol.querySelector('h3').focus();
       }
       step(0);
@@ -774,6 +807,11 @@
     var s = window.LevlStudio.mount({
       title: h1 ? h1.textContent : slug, course: 'AP® Psychology', back: base() + 'tools.html', home: base(), slug: 'appsych-' + slug,
       host: app,
+      // The standard frame (docs/tools-frame-2026-11.md): the name and its one line in the bar, the modes there
+      // too, Share, and "?" for the second tab: the numbers, settings and how it works.
+      std: true, lede: lede ? lede.textContent.trim() : '',
+      // The finished card offers the worked solution; the sheet does not open over it by itself.
+      autoSolution: false,
       // the second tab and its dock button, named for what is in it
       // the second tab and its dock button: a tool names it with
       // data-details-title on #app (set before mount); default "Numbers & setup".
@@ -795,10 +833,12 @@
     if(draft) s.add('about', draft);
     app.hidden = true;
   }
+  function isStd(s){ return !!(s && s.root && s.root.classList.contains('ls-std') && s.task); }
   function studioDrill(app, area, o){
     o = o || {};
     var s = studioOf(app);
     if(!s) return null;
+    var std = isStd(s);
     var only = app.classList.contains('bt-pane-quiz') ? { mode: 'quiz' } : null, m = only && only.mode;
     var stage = document.createElement('div'), why = document.createElement('div'), det = document.createElement('div');
     stage.className = 'ls-drill-stage'; why.className = 'ls-sec ls-drill-why'; det.className = 'ls-sec ls-drill-det';
@@ -809,9 +849,19 @@
     if(more) s.add('details', more, only);
     if(about){ about.open = true; s.add('about', about, only); }
     return {
+      stage: stage, std: std,
+      picker: function(po){ return s.picker(po, m); },
+      hints: function(ho){ return s.hints(ho); },
       fresh: function(p){
+        if(std){
+          s.done(false, m);
+          var nS = (p.steps || []).length;
+          s.task({ kicker: 'Test yourself', title: esc(o.title ? o.title(p) : 'Practice problem'),
+            todo: nS > 1 ? 'Answer one step at a time, then Check.' : 'Answer, then Check.' }, m);
+        }
         stage.innerHTML = ''; det.innerHTML = '<h3 class="ls-title-l">This problem</h3>';
-        why.innerHTML = '<h3 class="ls-title-l">Worked solution</h3><p class="ls-sub">It appears here once every step is answered.</p>';
+        // std: Why stays empty (and its button hidden) until the problem is done.
+        why.innerHTML = std ? '' : '<h3 class="ls-title-l">Worked solution</h3><p class="ls-sub">It appears here once every step is answered.</p>';
         var extra = area.querySelector(':scope > .cd-extra'), fig = extra && (extra.children.length || extra.textContent.trim());
         var ctx = area.querySelector(':scope > .bt-context'), text = ctx ? Array.prototype.map.call(ctx.childNodes, plainText).join(' ').replace(/\s+/g, ' ').trim() : '';
         // The problem is read on the stage when there is no figure, or when
@@ -842,15 +892,29 @@
         }
         // The caption keeps each formula as rendered math (p̂, x̄, H₀), not its
         // plain reading ("p-hat", "H_0"); a studioAsk caption is cut from the text.
-        s.caption(onStage ? esc(o.studioCaption || (nSteps > 1 ? 'Answer one step at a time.' : stage.querySelector('.cd-pics') ? 'Tap the picture that fits, then Check.' : 'Answer, then Check.')) : o.studioAsk ? esc(text) : capHtml(ctx), m); s.pills([], 'left', m);
+        // std: what to do is the task's line, so a problem read on the stage needs no caption.
+        s.caption(onStage ? (std && !o.studioCaption ? '' : esc(o.studioCaption || (nSteps > 1 ? 'Answer one step at a time.' : stage.querySelector('.cd-pics') ? 'Tap the picture that fits, then Check.' : 'Answer, then Check.'))) : o.studioAsk ? esc(text) : capHtml(ctx), m); s.pills([], 'left', m);
+        if(std && onStage && stage.querySelector('.cd-pics')) s.task({ kicker: 'Test yourself', title: esc(o.title ? o.title(p) : 'Practice problem'), todo: 'Tap the picture that fits, then Check.' }, m);
       },
-      done: function(right, total){
+      done: function(right, total, p, kg){
         var sol = area.querySelector(':scope > .bt-solution');
         if(sol){ why.innerHTML = ''; why.appendChild(sol); }
         s.pills([{ html: right + ' of ' + total + ' right', tone: right === total ? 'good' : 'warn' }], 'left', m);
         s.caption('<b>' + (total === 1 ? (right ? 'Right the first time.' : 'Not right the first time.') : right + ' of ' + total + ' steps right the first time.') + '</b> The worked solution is under Explanation.', m);
         var again = area.querySelector('.cd-again');
         if(again){ again.classList.add('ls-btn', 'ls-pri'); again.focus(); }
+        if(!std) return;
+        // The standard frame: the finished card (takeaway, New problem, then the worked solution, the steps as
+        // answered and the lesson). Keep going (lesson, notes, glossary) follows the worked solution.
+        if(kg) why.appendChild(kg);
+        s.caption('<b>' + (total === 1 ? (right ? 'Right the first time.' : 'Not right the first time.') + '</b>' : right + ' of ' + total + ' steps right the first time.</b>'), m);
+        var t = topicOf(p && p.topic), solL = (p && p.solution || []).filter(Boolean), first = solL.length ? String(solL[solL.length - 1]) : '', firstT = plainText(first); // the last line: the conclusion
+        first = first.replace(/^\s*(Right|Correct|Yes)[.!]\s*/i, '').replace(/^\s*(?:[A-F](?:\([iv]+\))?|Step \d+|Part [A-F])[.:]\s*/, '');   // an option's own "Right." reads oddly after a miss
+        var links = [{ label: 'Worked solution', open: 'why' }, { label: 'See your steps', onClick: function(){ s.done(false, m); if(again) again.focus({ preventScroll: true }); } }];
+        if(t && t.built) links.push({ label: 'Read the lesson: ' + t.title, href: base() + 'lessons/' + t.id + '.html' });
+        s.done({ kicker: right === total ? 'Done' : 'Finished', title: total === 1 ? (right ? 'Right the first time.' : 'Not right the first time.') : right + ' of ' + total + ' steps right the first time.',
+          text: p && p.takeaway ? p.takeaway : firstT && firstT.length <= 220 ? first : '',
+          next: { label: o.newLabel || 'New problem', onClick: function(){ if(again) again.click(); } }, links: links }, m);
       }
     };
   }
@@ -871,6 +935,7 @@
      the Why disclosures after a redraw. */
   function studioPane(pane, s, o){
     var only = { mode: o.mode || 'explore' }, q = function(sel){ return pane.querySelector(sel); };
+    var cue0 = pane.querySelector('.bt-cue');   // before the dock moves (the cue usually sits in it)
     function box(cls, els){ var d = document.createElement('div'); d.className = cls; (els || []).forEach(function(e){ if(e) d.appendChild(e); }); return d; }
     s.add('stage', box('psy-ls-stage', o.stage), only);
     var dock = [box('psy-ls-dock', o.dock)], row = null;
@@ -884,8 +949,17 @@
       dock.push(row);
     }
     s.add('dock', dock, only);
-    // The "Start here" cue reads as the first line of Why.
-    var why = box('ls-sec psy-ls-why', [pane.querySelector('.bt-cue')].concat(o.why || []));
+    // The "Start here" cue reads as the first line of Why; in the standard frame it is the task's "what to do"
+    // line instead (o.task: { title, todo }; the cue is the todo when the tool gives none).
+    var cueEl = pane.querySelector('.bt-cue');
+    if(isStd(s)){
+      cueEl = cue0;
+      var cueT = cueEl && cueEl.querySelector('.bt-cue-t'), tk = o.task || {};
+      s.task({ kicker: tk.kicker || 'Explore', title: tk.title || '', todo: tk.todo || (cueT ? cueT.innerHTML : '') }, only.mode);
+      if(cueEl) cueEl.remove();
+      cueEl = null;
+    }
+    var why = box('ls-sec psy-ls-why', [cueEl].concat(o.why || []));
     s.add('why', why, only);
     var det = box('ls-sec psy-ls-det', o.details);
     if(more){
@@ -901,8 +975,9 @@
     function openAll(){ why.querySelectorAll('details.bt-why').forEach(function(d){ d.open = true; }); }
     openAll();
     return {
+      task: function(t){ if(isStd(s)) s.task(Object.assign({ kicker: 'Explore' }, t), only.mode); },
       setup: function(t){ if(row){ row.querySelector('.ls-v').textContent = t; row.setAttribute('aria-label', o.setup + ': ' + t + '. ' + (o.moreLabel || 'More options') + ' (opens Details)'); } },
-      open: openAll, why: why, details: det
+      open: openAll, why: why, details: det, row: row
     };
   }
   /* The first-run tip in its own slot (Phase 3, shared from the trainers'
@@ -930,11 +1005,59 @@
     // opened for it any more; `before` and `cls` are kept for callers and ignored (tool review pass 3).
     function now(){ return s.hint({ target: target, text: text }); }
   }
+  /* stagePick(s, src, o): the standard frame's scenario dropdown (docs/tools-frame-2026-11.md), top left of the
+     stage, for a tool's own <select> (or the .bt-ctl holding one) or row of [aria-pressed] chips. The tool's
+     control stays in the page, out of sight: a pick drives it (a change event, or a click on the chip), so the
+     tool's own handler runs, and the dropdown follows it. It shows only in o.mode (default 'explore') and only
+     while the tool's control would show (a view that hides its group hides the dropdown too).
+     o: { label, mode, sub(value) -> text, when() -> false to hide it }. Returns the picker, or null outside the standard frame. */
+  function stagePick(s, src, o){
+    if(!isStd(s) || !src || !s.picker) return null;
+    o = o || {};
+    var sel = src.tagName === 'SELECT' ? src : src.querySelector('select'), btns = null;
+    var hostEl = sel ? (sel.closest('.bt-ctl') || sel) : src;
+    var lab = o.label || (sel && sel.id && document.querySelector('label[for="' + sel.id + '"]') ? document.querySelector('label[for="' + sel.id + '"]').textContent : src.getAttribute('aria-label')) || 'Choose';
+    function items(){
+      if(sel) return [].map.call(sel.options, function(op){ return { value: op.value, label: op.textContent, sub: o.sub ? o.sub(op.value) : '' }; });
+      btns = [].slice.call(src.querySelectorAll('button[aria-pressed]'));
+      return btns.map(function(b, i){ return { value: String(i), label: b.textContent.trim(), sub: o.sub ? o.sub(String(i)) : '' }; });
+    }
+    function now(){ if(sel) return sel.value; var k = -1; btns.forEach(function(b, i){ if(b.getAttribute('aria-pressed') === 'true') k = i; }); return String(Math.max(0, k)); }
+    var its = items();
+    function onCh(v){
+      if(sel){ sel.value = v; sel.dispatchEvent(new Event('change', { bubbles: true })); }
+      else if(btns[+v] && btns[+v].getAttribute('aria-pressed') !== 'true') btns[+v].click();
+    }
+    var p = s.picker({ label: lab, items: its, value: now(), onChange: onCh }, o.mode || 'explore');
+    hostEl.hidden = true;
+    hostEl.setAttribute('data-ls-picked', '');
+    var mode = o.mode || 'explore';
+    function shown(){
+      for(var a = hostEl.parentElement; a && a !== s.root; a = a.parentElement){
+        if(a.hidden) return false;
+        if(/(^| )(ls-dock-body|ls-det-body|ls-why-panel|ls-stage-body|ls-about-body)( |$)/.test(a.className)) break;
+      }
+      return true;
+    }
+    var busy = false;
+    function paint(){
+      if(busy) return; busy = true;
+      if(!sel){ var n = src.querySelectorAll('button[aria-pressed]').length; if(n !== btns.length) p.set({ label: lab, items: items(), value: now(), onChange: onCh }); }
+      if(String(p.value()) !== String(now())) p.value(now());
+      var off = s.mode() !== mode || !shown() || (o.when ? !o.when() : false);
+      p.el.classList.toggle('ls-off', off);
+      busy = false;
+    }
+    if(window.MutationObserver) new MutationObserver(paint).observe(s.root, { subtree: true, attributes: true, attributeFilter: ['hidden', 'aria-pressed', 'data-mode'] });
+    if(sel) sel.addEventListener('change', paint);
+    paint();
+    return p;
+  }
   /* The "head" line of an explain() box as plain caption html. */
   function sayHead(el){ var h = el && el.querySelector('.bt-say-h'); return h ? h.innerHTML : ''; }
 
   window.ApPsychTools = {
-    studioOf: studioOf, studioPane: studioPane, sayHead: sayHead, hintSlot: hintSlot,
+    studioOf: studioOf, studioPane: studioPane, isStd: isStd, stagePick: stagePick, sayHead: sayHead, hintSlot: hintSlot,
     modes: modes, reduced: reduced, cue: cue, moreHtml: moreHtml, explain: explain,
     esc: esc, F: F, nid: nid, mount: mount, frame: frame, kindPicker: kindPicker, keepGoing: keepGoing, slider: slider, choiceSelect: choiceSelect, announcer: announcer,
     plot: plot, niceMax: niceMax, niceStep: niceStep, dataTable: dataTable, wrapTables: wrapTables, box: box,

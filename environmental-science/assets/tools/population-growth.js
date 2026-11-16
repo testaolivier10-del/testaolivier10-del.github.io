@@ -398,9 +398,11 @@
       var n0b = $('.pg-n0'), lab = document.createElement('p');
       lab.className = 'ls-lbl'; lab.textContent = 'Growth model';
       n0b.parentNode.insertBefore(lab, n0b); n0b.parentNode.insertBefore($('.pg-models'), n0b); n0b.parentNode.insertBefore($('.pg-sl-k'), n0b);
-      setupRow = T.studioPane(pane, s, { stage: [$('.pg-stage')], dock: [$('.pg-ctl')], primary: [slR.el, $('.pg-g .pg-act')], why: [$('.pg-say')], details: [$('.pg-nums')], setup: 'Model', moreLabel: 'Growth model, carrying capacity, start size' });
+      setupRow = T.studioPane(pane, s, { task: { title: 'Watch a population grow toward what its habitat can hold.', todo: T.isStd(s) ? 'Press Play. Then pick Exponential or Overshoot from the menu over the graph and compare the curves.' : '' }, stage: [$('.pg-stage')], dock: [$('.pg-ctl')], primary: [slR.el, $('.pg-g .pg-act')], why: [$('.pg-say')], details: [$('.pg-nums')], setup: 'Model', moreLabel: 'Growth model, carrying capacity, start size' });
       // The Setup row opens Details on these settings: they come first there.
       var mo = s.root.querySelector('.env-ls-det details.bt-more'); if(mo) mo.parentNode.insertBefore(mo, mo.parentNode.firstChild);
+      // The standard frame: the three growth models are the dropdown on the stage (Growth view only).
+      if(T.stagePick(s, $('.pg-models'), { label: 'Growth model', when: function(){ return !$('.pg-g').hidden; } })) lab.hidden = true;
       host.removeEventListener('click', onClick); s.root.addEventListener('click', onClick);
       draw();
       if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.pg-play'), text: 'Start here: press Play' });

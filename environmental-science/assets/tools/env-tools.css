@@ -376,3 +376,8 @@ body[data-app^="tool-"] .env-hero .eyebrow{margin-bottom:4px;}
 .ls-root .ls-drill-pics .cd-n{display:none;}
 .ls-root .ls-drill-pics .cd-step{margin:0;padding:0;background:none;box-shadow:none;border:0;}
 .ls-root .ls-drill-pics .bt-actions .btn-press{width:100%;}
+/* The standard frame on a phone, Explore (docs/tools-frame-2026-11.md): the task's title stays; its kicker
+   repeats the mode switch and its "what to do" line repeats the first-run hint on the pinned band, so both
+   step aside to keep the picture and the main control on the first screen. */
+.ls-root.ls-phone[data-mode="explore"] .ls-dock > .ls-task:not(.ls-donew) > .ls-task-k,
+.ls-root.ls-phone[data-mode="explore"] .ls-dock > .ls-task:not(.ls-donew) > .ls-task-d{display:none;}

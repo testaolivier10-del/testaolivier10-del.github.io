@@ -147,6 +147,8 @@
       root.querySelectorAll('.sl-views button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === view)); });
       ['curve', 'center', 'corr'].forEach(function(k){ var g = $('.sl-grp-' + k), o = $('.sl-o-' + k); if(g) g.hidden = k !== view; if(o) o.hidden = k !== view; });
       if(LS && LS.setupRow) LS.setupRow.setup(view === 'curve' ? SC().name : view === 'center' ? SET().name : SL.PAIRS[pair].x);
+      // The standard frame: the dropdown shows the choice; the row stays only where it holds more (the fit line).
+      if(LS && LS.setupRow && LS.setupRow.row && T.isStd(LS)){ LS.setupRow.row.hidden = view !== 'corr'; if(view === 'corr') LS.setupRow.setup('Line of best fit'); }
     }
 
     /* --------------------------- the drag: on the curve or the dot plot */
@@ -429,10 +431,12 @@
 
     function studio(pane, s){
       LS = s;
-      var sp = T.studioPane(pane, s, { stage: [$('.sl-fig')], dock: [$('.sl-ctl')], setup: 'Setup', moreLabel: 'Test, data set and variables', why: [$('.sl-say')], details: [$('.sl-nums')] });
+      var sp = T.studioPane(pane, s, { task: { title: 'Read percentiles, centers and correlations.' }, stage: [$('.sl-fig')], dock: [$('.sl-ctl')], setup: 'Setup', moreLabel: 'Test, data set and variables', why: [$('.sl-say')], details: [$('.sl-nums')] });
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       LS.setupRow = sp;
+      // The standard frame: the test, the data set and the variables are each view's dropdown on the stage.
+      T.stagePick(s, selScale.el, { label: 'Test' }); T.stagePick(s, selSet.el, { label: 'Data set' }); T.stagePick(s, selPair.el, { label: 'Variables' });
       syncView(); redraw();
       if(s.mode() === 'explore') s.hint({ target: handle, text: 'Start here: drag the score along the curve', inside: false });
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(redraw, 60); }).observe($('.sl-fig')); }

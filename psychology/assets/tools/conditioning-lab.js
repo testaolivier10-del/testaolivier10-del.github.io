@@ -574,7 +574,7 @@
 
     function studio(pane, s){
       LS = s;
-      var sp = T.studioPane(pane, s, { stage: [$('.cl-fig')], dock: [$('.cl-ctl')], setup: 'Setup', moreLabel: 'Demo and comparison', why: [$('.cl-say')], details: [$('.cl-nums')] });
+      var sp = T.studioPane(pane, s, { task: { title: 'Watch learning by association and by consequences.' }, stage: [$('.cl-fig')], dock: [$('.cl-ctl')], setup: 'Setup', moreLabel: 'Demo and comparison', why: [$('.cl-say')], details: [$('.cl-nums')] });
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       LS.setupRow = sp;

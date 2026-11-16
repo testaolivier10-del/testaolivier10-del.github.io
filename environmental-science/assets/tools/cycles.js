@@ -575,7 +575,7 @@
       // row that says which changes are on; the dock keeps the four cycles.
       var pl = $('.cy-procs').previousElementSibling, ppl = $('.cy-changes').previousElementSibling;
       pl.parentNode.insertBefore(ppl, pl); pl.parentNode.insertBefore($('.cy-changes'), pl);
-      setupRow = T.studioPane(pane, s, { stage: [$('.cy-fig'), $('.cy-trend')], dock: [$('.cy-ctl')], primary: [$('.cy-run')], why: [$('.cy-say')], details: [$('.cy-nums')], setup: 'People', moreLabel: 'What people change, every process, units' });
+      setupRow = T.studioPane(pane, s, { task: { title: 'Follow an element as it moves through its cycle.' }, stage: [$('.cy-fig'), $('.cy-trend')], dock: [$('.cy-ctl')], primary: [$('.cy-run')], why: [$('.cy-say')], details: [$('.cy-nums')], setup: 'People', moreLabel: 'What people change, every process, units' });
       var mo = s.root.querySelector('.env-ls-det details.bt-more'); if(mo) mo.parentNode.insertBefore(mo, mo.parentNode.firstChild);
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);

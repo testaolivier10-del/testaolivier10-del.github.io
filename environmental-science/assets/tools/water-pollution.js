@@ -557,7 +557,7 @@
 
     function studio(pane, s){
       LS = s;
-      var sp = T.studioPane(pane, s, { stage: [$('.wp-fig')], dock: [$('.wp-ctl')], primary: [sLevel.el, $('.wp-grp-act'), sWarm.el, sStage.el], setup: 'Settings', moreLabel: 'Lake and river temperature', why: [$('.wp-say')], details: [$('.wp-nums')] });
+      var sp = T.studioPane(pane, s, { task: { title: 'Follow nutrient pollution from a field to a dead zone.' }, stage: [$('.wp-fig')], dock: [$('.wp-ctl')], primary: [sLevel.el, $('.wp-grp-act'), sWarm.el, sStage.el], setup: 'Settings', moreLabel: 'Lake and river temperature', why: [$('.wp-say')], details: [$('.wp-nums')] });
       s.root.addEventListener('click', onClick);
       host.removeEventListener('click', onClick);
       LS.setupRow = sp;

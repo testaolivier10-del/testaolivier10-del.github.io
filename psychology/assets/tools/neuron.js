@@ -329,6 +329,8 @@
       sGap.el.hidden = mode !== 'pair';
       var b = $('.nr-play'); if(b && !anim) b.textContent = view === 'fire' ? 'Stimulate' : 'Release';
       if(LS && LS.setupRow) LS.setupRow.setup(view === 'fire' ? PATTERNS.filter(function(x){ return x.value === mode; })[0].label + (mode === 'pair' ? ', ' + gap + ' ms apart' : '') : ntName(nt));
+      // The standard frame: in Synapse the dropdown shows the neurotransmitter, so the row (which held only that) goes.
+      if(LS && LS.setupRow && LS.setupRow.row && T.isStd(LS)) LS.setupRow.row.hidden = view !== 'fire';
     }
     function stop(){ if(anim){ anim.stop(); anim = null; } var b = $('.nr-play'); if(b) b.textContent = view === 'fire' ? 'Stimulate' : 'Release'; }
     function play(){
@@ -472,10 +474,12 @@
 
     function studio(pane, s){
       LS = s;
-      var sp = T.studioPane(pane, s, { stage: [$('.nr-fig')], dock: [$('.nr-ctl')], setup: 'Settings', moreLabel: 'Stimulus pattern and neurotransmitter', why: [$('.nr-say')], details: [$('.nr-nums')] });
+      var sp = T.studioPane(pane, s, { task: { title: 'Fire a neuron, then see what happens at the synapse.' }, stage: [$('.nr-fig')], dock: [$('.nr-ctl')], setup: 'Settings', moreLabel: 'Stimulus pattern and neurotransmitter', why: [$('.nr-say')], details: [$('.nr-nums')] });
       s.root.addEventListener('click', onClick); s.root.addEventListener('keydown', onKey);
       host.removeEventListener('click', onClick); host.removeEventListener('keydown', onKey);
       LS.setupRow = sp;
+      // The standard frame: the neurotransmitter is the Synapse view's dropdown on the stage.
+      T.stagePick(s, sNt.el, { label: 'Neurotransmitter' });
       syncView(); draw(); words();
       if(s.mode() === 'explore') ApPsychTools.hintSlot(s, s.root.querySelector('.nr-play'), 'Start here: fire the neuron', { cls: 'nr-tipslot' });
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(function(){ draw(); }, 60); }).observe($('.nr-fig')); }
