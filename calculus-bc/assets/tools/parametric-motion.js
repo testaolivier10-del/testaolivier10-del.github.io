@@ -390,9 +390,17 @@
     var f = p.fig, sz = size || figSize(560, 380), xs = path.map(function(q){ return q[0]; }), ys = path.map(function(q){ return q[1]; });
     var x0 = Math.min.apply(null, xs), x1 = Math.max.apply(null, xs), y0 = Math.min.apply(null, ys), y1 = Math.max.apply(null, ys);
     if(!f.rel){ x0 = Math.min(x0, 0); x1 = Math.max(x1, 0); y0 = Math.min(y0, 0); y1 = Math.max(y1, 0); }
+    var pw = sz[0] - 48, ph = sz[1] - 40, wx = Math.max(x1 - x0, 1e-9), wy = Math.max(y1 - y0, 1e-9), ar = (wx / wy) / (pw / ph);
+    var label = f.label + ', for t from ' + PM.n(f.a, 2) + ' to ' + PM.n(f.b, 2);
+    /* F6: a path far taller than wide (or wider than tall) on equal axes was a sliver (axes to +-60 for a path
+       a few units wide): then each axis fits the path on its own. Near the frame's shape, equal axes stay. */
+    if(ar > 2.5 || ar < 0.4){
+      var px = Math.max(wx * 0.08, 0.25), py = Math.max(wy * 0.08, 0.25);
+      return { label: label, width: sz[0], height: sz[1], x: [x0 - px, x1 + px], y: [y0 - py, y1 + py], xLabel: 'x', yLabel: 'y', curves: [], points: [] };
+    }
     var pad = Math.max(x1 - x0, y1 - y0, 1) * 0.1; x0 -= pad; x1 += pad; y0 -= pad; y1 += pad;
-    var pw = sz[0] - 48, ph = sz[1] - 40, k = Math.min(pw / (x1 - x0), ph / (y1 - y0)), cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
-    return { label: f.label + ', for t from ' + PM.n(f.a, 2) + ' to ' + PM.n(f.b, 2), width: sz[0], height: sz[1], x: [cx - pw / 2 / k, cx + pw / 2 / k], y: [cy - ph / 2 / k, cy + ph / 2 / k], xLabel: 'x', yLabel: 'y', curves: [], points: [] };
+    var k = Math.min(pw / (x1 - x0), ph / (y1 - y0)), cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
+    return { label: label, width: sz[0], height: sz[1], x: [cx - pw / 2 / k, cx + pw / 2 / k], y: [cy - ph / 2 / k, cy + ph / 2 / k], xLabel: 'x', yLabel: 'y', curves: [], points: [] };
   }
   function pathSvg(Fr, p, path, hidden){
     if(hidden) return '<g class="pm-fig" aria-hidden="true"><circle class="pm-fmark" cx="' + r1(Fr.sx(path[0][0])) + '" cy="' + r1(Fr.sy(path[0][1])) + '" r="6"/><text class="pm-flab" x="' + r1(Fr.sx(path[0][0]) + 9) + '" y="' + r1(Fr.sy(path[0][1]) - 9) + '" paint-order="stroke">start, t = ' + esc(PM.n(path[0][2], 2)) + '</text></g>';

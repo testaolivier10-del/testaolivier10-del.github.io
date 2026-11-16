@@ -129,7 +129,7 @@
         '<div class="ls-seg pc-vars" role="group" aria-label="Version"></div>' +
         '<div class="ls-seg pc-dirs" role="group" aria-label="Direction"></div>' +
         '<div class="pc-go"><button type="button" class="ls-btn pc-back">Back</button><button type="button" class="ls-btn ls-pri pc-next">Next link</button></div>' +
-        '<button type="button" class="ls-linkrow pc-writebtn"><span><span class="ls-k">Write it out</span><span class="ls-v">the chain as a sentence, then in your words</span></span></button>' +
+        '<button type="button" class="ls-linkrow pc-writebtn"><span><span class="ls-k">Write it out</span><span class="ls-v">a sentence, then your words</span></span></button>' +
       '</div>' +
       '<div class="pc-say"></div>' +
       '<div class="pc-write"></div><p class="sr-only pc-live"></p></section>';

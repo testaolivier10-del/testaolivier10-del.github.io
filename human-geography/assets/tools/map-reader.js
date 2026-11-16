@@ -168,7 +168,8 @@
       if(pic) pic.setAttribute('aria-label', (x.spec && x.spec.label ? x.spec.label : 'Cartogram of Country A') + '. ' + head);
       if(LS){
         LS.caption('<b>' + esc(head) + '</b>', 'explore');
-        LS.pills([{ k: 'Map', html: esc(K.short), tone: 'accent' }], 'left', 'explore');
+        // F6: in the standard frame the stage picker already names the map, so no Map pill (redundancy).
+        LS.pills(T.isStd && T.isStd(LS) ? [] : [{ k: 'Map', html: esc(K.short), tone: 'accent' }], 'left', 'explore');
         LS.pills([{ k: 'Place', html: esc(bid === 'country-a' ? 'Country A' : BASE_NAMES[bid]), tone: 'readout' }], 'right', 'explore');
       }
     }

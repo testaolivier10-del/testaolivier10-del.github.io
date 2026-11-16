@@ -238,5 +238,5 @@
     explore(app, data);
     T.skillTool(app, data, { slug: 'chi-square', kind: 'chi', stage: stage });
     app.insertAdjacentHTML('beforeend', critTable());
-  });
+  }, { studio: { foot: ['.sk-reset'] } });
 })();

@@ -89,6 +89,14 @@ wrapping the bar's buttons; the shell does not open Why by itself on a solution 
 tool opens in the std bar when its mount carries `data-ls-std` (the course core sets it; `adopt`).
 AP Calculus AB and BC, AP Precalculus and AP Statistics mount std from their kits (`calc-tools.js`, `pcalc-tools.js`,
 `stat-tools.js`: `stagePick`, `chipPick`, `STD` copy; docs/tools-frame-notes/calculus.md).
+F6 (2026-11-16) added four shared pieces, all backward compatible: (1) a list over 30 choices in `s.picker` opens a
+search panel (field at the top, the same groups below, type to filter, arrows / Enter / Escape; `search: true |
+false` forces it); the same panel is `LevlStudio.searchSelect(select, host?, { label })` for a tool's own long
+select (ochem acid-base); the select stays in the page and gets its `change` as before. (2) std: an empty caption row
+is not drawn; its Explanation button moves to the end of the task's what to do line (same node). (3) `s.toFoot(els)`
+moves a tool's own Reset / Start over to the stage foot; it shows only while the row it came from shows. (4) On a
+phone a quiz stage with a figure keeps at least about 40% of the screen (was 30%). The calc kit also has
+`ApCalcTools.bothWindow(fs, a, b)` (a y window that shows the right curve and yours) and clips curve marks to the plot.
 
 ### Switching a tool on (per course frame; P1)
 - **Ochem:** `studio: true` in `ochem/assets/tools-registry.js`, then `node scripts/build-tool-pages.mjs` (adds the

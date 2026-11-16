@@ -644,6 +644,8 @@
   elRight.innerHTML = options(right);
   elLeft.addEventListener('change', function(){ left = byId(elLeft.value); resetPair(); });
   elRight.addEventListener('change', function(){ right = byId(elRight.value); resetPair(); });
+  // F6: 39 acids each: the lists open with a search field (shared, tool-studio.js).
+  if(window.LevlStudio && LevlStudio.searchSelect){ LevlStudio.searchSelect(elLeft, null, { label: 'Acid A' }); LevlStudio.searchSelect(elRight, null, { label: 'Acid B' }); }
   /* A fresh pair at random, close enough in pKa (within 8 units) that the
      call takes thought, never the same compound twice. */
   function newPair(){

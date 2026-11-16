@@ -243,6 +243,6 @@
     T.skillTool(app, data, { slug: 'rates', kind: 'rates', stage: stage });
   }, {
     // Tool Studio (docs/tools-calm.md; bio-tools.js studioArrange)
-    studio: { hint: { target: '.rt-pt', text: 'Tap a point, then another' },
+    studio: { foot: ['.rt-clear'], hint: { target: '.rt-pt', text: 'Tap a point, then another' },
       caption: function(g){ return g.live ? T.esc(g.live) : 'Tap any two points to draw the slope triangle: the rate is <b>Δy / Δt</b>.'; } } });
 })();

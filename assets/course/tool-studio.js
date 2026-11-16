@@ -100,7 +100,10 @@
      s.picker({ label, groups: [{ label, items: [{ value, label, sub }] }] | items, value, onChange(v, item),
                 count }, mode?) -> { el, select, value(v?), set(o) }   the scenario picker: ONE native
                                     dropdown, groups kept, top left of the stage; shows the pick and its
-                                    sub ("2 of 7" with count, else its group)
+                                    sub ("2 of 7" with count, else its group). A list over 30 opens a
+                                    search panel instead (F6; o.search true / false forces it)
+     s.toFoot(els)                  a tool's own Reset / Start over to the stage's foot; shown only while
+                                    the row it came from shows (F6)
      s.hints({ hints: [..] | fn, answer: { label, onShow() -> html? }, gate: 1, label })
                 -> { card, row, attempt(), reset(list?), shown(), paint() }   the hint ladder: the first
                                     hint instant, then Next hint; the answer button opens after `gate`
@@ -110,6 +113,9 @@
                                     steps aside, untouched); not for the landing screen
      s.add('foot', els, { mode })   Undo / Reset at the stage's foot, clear of Enlarge
      .ls-push on a dock child       it sits at the dock's foot on a desktop (the actions)
+   LevlStudio.searchSelect(select, host?, { label }) -> { sync(), open(), close(), el }
+     A long native select opens a panel with a search field and its groups (type to filter); a pick sets the
+     select and fires its change. With no host the select is wrapped and stays the face (F6).
    LevlStudio.stepper(container, opts) -> { go(i, focus?), refresh(), review(on) }
      One step at a time over existing graded inputs. opts:
        items   selector (inside container) of the step elements
@@ -199,12 +205,145 @@
     plus: '<path d="M12 5v14M5 12h14"/>',
     minus: '<path d="M5 12h14"/>',
     restart: '<path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4.5h4.5"/>',
+    search: '<circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/>',
     rotate: '<rect x="3" y="8" width="13" height="12" rx="2"/><path d="M14 3a7 7 0 0 1 7 7M18.5 7.5L21 10l2.5-2.5"/>'
   };
   function mq(q){ try{ return matchMedia(q); }catch(e){ return null; } }
   // A phone in either orientation (the .ls-phone hook; docs/tools-calm.md).
   var PHONE = '(max-width: 640px), (max-width: 999.98px) and (max-height: 540px)';
   function icon(n, cls){ return '<svg class="ls-i' + (cls ? ' ' + cls : '') + '" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' + ICON[n] + '</svg>'; }
+
+  /* F6: a long list (over about 30 choices) is hard to scan in a native dropdown. searchSelect(sel, host, o)
+     lays a button over host (the visible face of sel); it opens a panel with a search field at the top and the
+     same groups below (type to filter by name or group; arrows, Enter, Escape). A pick sets sel.value and fires
+     its 'change', so the tool's own handler runs as before; sel stays in the page. Returns { sync(), open(),
+     close(), el }. s.picker uses it by itself for a list over 30 (o.search true / false forces it). */
+  var SEARCH_AT = 30;
+  function norm(t){ t = String(t || '').toLowerCase(); try{ t = t.normalize('NFD').replace(/[̀-ͯ]/g, ''); }catch(e){} return t; }
+  function searchSelect(sel, host, o){
+    o = o || {};
+    if(!host){
+      // A select of the tool's own: it stays the face (wrapped, so the button can lie over it).
+      host = document.createElement('span'); host.className = 'ls-srchw';
+      sel.parentNode.insertBefore(host, sel); host.appendChild(sel);
+    }
+    var btn = document.createElement('button'), panel = null, inp = null, lb = null, opts = [], act = -1, lid = nid('pl');
+    btn.type = 'button'; btn.className = 'ls-pick-btn';
+    btn.setAttribute('aria-haspopup', 'listbox'); btn.setAttribute('aria-expanded', 'false');
+    sel.tabIndex = -1; sel.setAttribute('aria-hidden', 'true'); sel.classList.add('ls-pick-off');
+    host.classList.add('ls-pick-srch');
+    host.appendChild(btn);
+    function sync(){
+      var o2 = sel.options[sel.selectedIndex];
+      btn.setAttribute('aria-label', (sel.getAttribute('aria-label') || o.label || 'Choose') + ': ' + (o2 ? o2.textContent : '') + '. Search the list');
+    }
+    function items(){
+      var out = [];
+      Array.prototype.forEach.call(sel.children, function(c){
+        if(c.tagName === 'OPTGROUP') Array.prototype.forEach.call(c.children, function(op){ out.push({ op: op, g: c.label }); });
+        else if(c.tagName === 'OPTION') out.push({ op: c, g: '' });
+      });
+      return out;
+    }
+    function render(){
+      var words = norm(inp.value).split(/\s+/).filter(Boolean), last = null, h = '', n = 0;
+      opts = [];
+      items().forEach(function(it){
+        if(it.op.hidden) return;
+        var hay = norm(it.op.textContent + ' ' + it.g);
+        if(!words.every(function(w){ return hay.indexOf(w) >= 0; })) return;
+        if(it.g && it.g !== last){ h += '<li class="ls-pickp-g" role="presentation">' + esc(it.g) + '</li>'; }
+        last = it.g;
+        var i = opts.length, cur = it.op.value === sel.value;
+        opts.push(it.op);
+        h += '<li class="ls-pickp-o' + (it.op.disabled ? ' is-off' : '') + '" role="option" id="' + lid + '-' + i + '" data-i="' + i + '" aria-selected="' + cur + '"' + (it.op.disabled ? ' aria-disabled="true"' : '') + '>' +
+          '<span>' + esc(it.op.textContent) + '</span>' + (cur ? icon('check') : '') + '</li>';
+        n++;
+      });
+      lb.innerHTML = h || '<li class="ls-pickp-none" role="presentation">Nothing matches. Try fewer letters.</li>';
+      // The count shows only while filtering (a kit's own "2 of 7" may leave out special entries).
+      panel.querySelector('.ls-pickp-n').textContent = words.length ? n + ' found' : '';
+      var ci = -1; opts.forEach(function(op, i){ if(op.value === sel.value) ci = i; });
+      setAct(words.length ? (opts.length ? 0 : -1) : ci, true);
+    }
+    function setAct(i, center){
+      var old = lb.querySelector('.is-act'); if(old) old.classList.remove('is-act');
+      act = i;
+      var li = i >= 0 ? lb.querySelector('[data-i="' + i + '"]') : null;
+      if(li){ li.classList.add('is-act'); inp.setAttribute('aria-activedescendant', li.id);
+        var lt = li.offsetTop, lh = li.offsetHeight;
+        if(center) lb.scrollTop = Math.max(0, lt - lb.clientHeight / 2 + lh / 2);
+        else if(lt < lb.scrollTop) lb.scrollTop = lt; else if(lt + lh > lb.scrollTop + lb.clientHeight) lb.scrollTop = lt + lh - lb.clientHeight;
+      } else inp.removeAttribute('aria-activedescendant');
+    }
+    function pick(i){
+      var op = opts[i]; if(!op || op.disabled) return;
+      close(true);
+      if(sel.value !== op.value){ sel.value = op.value; sel.dispatchEvent(new Event('input', { bubbles: true })); sel.dispatchEvent(new Event('change', { bubbles: true })); }
+      sync();
+    }
+    function place(){
+      if(!panel) return;
+      var r = host.getBoundingClientRect(), vw = document.documentElement.clientWidth, vh = innerHeight;
+      var w = Math.min(Math.max(r.width, 340), 460, vw - 16), left = Math.max(8, Math.min(r.left, vw - w - 8));
+      var below = vh - r.bottom - 12, above = r.top - 12, up = below < 280 && above > below;
+      var mh = Math.max(200, Math.min(520, up ? above : below));
+      panel.style.left = left + 'px'; panel.style.width = w + 'px'; panel.style.maxHeight = mh + 'px';
+      if(up){ panel.style.top = ''; panel.style.bottom = (vh - r.top + 6) + 'px'; }
+      else { panel.style.bottom = ''; panel.style.top = (r.bottom + 6) + 'px'; }
+    }
+    function outside(e){ if(panel && !panel.contains(e.target) && !host.contains(e.target)) close(false); }
+    function onScroll(e){ if(panel && !(e.target && e.target.nodeType === 1 && panel.contains(e.target))) place(); }
+    function open(kb){
+      if(panel || sel.disabled) return;
+      sync();
+      panel = document.createElement('div');
+      panel.className = 'ls-pickp';
+      panel.setAttribute('role', 'dialog');
+      panel.setAttribute('aria-label', sel.getAttribute('aria-label') || o.label || 'Choose');
+      panel.innerHTML = '<div class="ls-pickp-h">' + icon('search') + '<input type="search" class="ls-pickp-q" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-controls="' + lid + '" autocomplete="off" spellcheck="false" placeholder="Type to search">' +
+        '<span class="ls-pickp-n" aria-live="polite"></span></div><ul class="ls-pickp-l" role="listbox" id="' + lid + '"></ul>';
+      (host.closest('.ls-root') || document.body).appendChild(panel);
+      inp = panel.querySelector('input'); lb = panel.querySelector('ul');
+      inp.setAttribute('aria-label', 'Search: ' + (sel.getAttribute('aria-label') || o.label || 'the list'));
+      inp.addEventListener('input', render);
+      inp.addEventListener('keydown', function(e){
+        var k = e.key;
+        if(k === 'ArrowDown' || k === 'ArrowUp'){ e.preventDefault(); if(opts.length) setAct(act < 0 ? 0 : (act + (k === 'ArrowDown' ? 1 : -1) + opts.length) % opts.length); }
+        else if(k === 'Home' && !inp.value || k === 'PageUp'){ e.preventDefault(); if(opts.length) setAct(0); }
+        else if(k === 'End' && !inp.value || k === 'PageDown'){ e.preventDefault(); if(opts.length) setAct(opts.length - 1); }
+        else if(k === 'Enter'){ e.preventDefault(); if(act >= 0) pick(act); }
+        else if(k === 'Escape'){ e.preventDefault(); e.stopPropagation(); close(true); }
+        else if(k === 'Tab'){ close(false); }
+      });
+      lb.addEventListener('click', function(e){ var li = e.target.closest('[data-i]'); if(li) pick(+li.getAttribute('data-i')); });
+      lb.addEventListener('mousemove', function(e){ var li = e.target.closest('[data-i]'); if(li && +li.getAttribute('data-i') !== act) setAct(+li.getAttribute('data-i')); });
+      render(); place();
+      btn.setAttribute('aria-expanded', 'true');
+      document.addEventListener('pointerdown', outside, true);
+      window.addEventListener('scroll', onScroll, true);
+      window.addEventListener('resize', place);
+      // A touch screen shows the whole list first (the keyboard would cover it); a tap on the field searches.
+      var coarse = false; try{ coarse = matchMedia('(pointer: coarse)').matches; }catch(e){}
+      if(kb || !coarse) inp.focus(); else { panel.tabIndex = -1; panel.focus({ preventScroll: true }); }
+    }
+    function close(back){
+      if(!panel) return;
+      document.removeEventListener('pointerdown', outside, true);
+      window.removeEventListener('scroll', onScroll, true);
+      window.removeEventListener('resize', place);
+      panel.remove(); panel = null; act = -1;
+      btn.setAttribute('aria-expanded', 'false');
+      if(back) btn.focus({ preventScroll: true });
+    }
+    var byKey = false;
+    btn.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown'){ e.preventDefault(); byKey = true; panel ? close(true) : open(true); } });
+    btn.addEventListener('click', function(){ if(byKey){ byKey = false; return; } panel ? close(false) : open(false); });
+    sel.addEventListener('change', sync);
+    btn.addEventListener('focus', sync);
+    sync();
+    return { el: btn, sync: sync, open: function(){ open(true); }, close: function(){ close(false); } };
+  }
 
   var current = null;
 
@@ -310,6 +449,38 @@
       if(mode) paintMode();
       return s;
     };
+    /* s.toFoot(els) (F6): a tool's own Reset / Start over moves to the stage's foot (Undo / Reset bottom left, as in
+       every course). It stays the same node, and shows only while the row it came from shows (that row's mode, its
+       scenario, the tool's own hidden on the button), so nothing else about it changes. */
+    var footed = [], footT = 0;
+    function paintFoot(){
+      footT = 0;
+      footed.forEach(function(f){
+        var x = f.from;
+        while(x && x.parentElement && getComputedStyle(x).display === 'contents') x = x.parentElement; // a box-less row
+        var on = !!x && x.isConnected && x.getClientRects().length > 0 && !x.closest('.ls-off, [hidden]');
+        f.el.classList.toggle('ls-foot-off', !on);
+      });
+    }
+    function queueFoot(){ if(!footT) footT = requestAnimationFrame(paintFoot); }
+    s.toFoot = function(els){
+      if(!std || !regions.foot) return s;
+      list(els).forEach(function(el){
+        if(!el || footed.some(function(f){ return f.el === el; })) return;
+        var from = el.parentNode;
+        regions.foot.appendChild(el);
+        // A row left empty may hide itself (:empty): follow the nearest box that still holds something.
+        while(from && from.parentNode && !from.children.length && from !== dockBody) from = from.parentNode;
+        footed.push({ el: el, from: from });
+      });
+      if(footed.length && !s._footObs && window.MutationObserver){
+        s._footObs = new MutationObserver(queueFoot);
+        s._footObs.observe(q('.ls-dock'), { subtree: true, attributes: true, attributeFilter: ['hidden', 'class', 'style'] });
+        window.addEventListener('resize', queueFoot);
+      }
+      paintFoot();
+      return s;
+    };
     /* The second tab is named for what it holds, and gets its own button in
        the dock, so settings and data are never found by tapping "Why?". */
     var detTitle = opts.detailsTitle || '', detBtn = q('.ls-detbtn'), detTab = q('.ls-tabs [data-tab=details]');
@@ -342,7 +513,7 @@
       if(modeBtns) modeBtns.forEach(function(b){ var on = b.getAttribute('data-v') === v; b.setAttribute('aria-pressed', String(on)); b.classList.toggle('on', on); });
       paintMode();
       if(capEl){ showCap(); showPills(); }
-      if(std){ showTask(); showDone(); paintWhy(); }
+      if(std){ showTask(); showDone(); paintWhy(); placeWhy(); }
       if(current === s){ fitN = 0; fitRevUntil = Date.now() + 2500; queueFit(30); queueTidy(true); }
       return s;
     };
@@ -382,7 +553,7 @@
        showing now (or to the page when there are no modes). */
     var capBy = {}, pillBy = {};
     function key(m){ return m || mode || '*'; }
-    function showCap(){ var h = capBy[key()]; if(h == null) h = capBy['*'] || ''; capEl.innerHTML = h; q('.ls-cap').classList.toggle('is-empty', !h); capEl.classList.remove('is-full'); paintMore(); }
+    function showCap(){ var h = capBy[key()]; if(h == null) h = capBy['*'] || ''; capEl.innerHTML = h; q('.ls-cap').classList.toggle('is-empty', !h); capEl.classList.remove('is-full'); paintMore(); if(placeWhy) placeWhy(); }
     // A phone shows three lines of the caption; a tap (or "More") shows the rest (screen readers get it all).
     var capMore = q('.ls-capmore');
     function paintMore(){
@@ -431,13 +602,21 @@
       taskEl.querySelector('.ls-task-t').innerHTML = t.title || '';
       var d = taskEl.querySelector('.ls-task-d'); d.innerHTML = t.todo || ''; d.hidden = !t.todo;
     }
-    s.task = function(t, m){ taskBy[key(m)] = t || null; if(key(m) === key() || key(m) === '*') showTask(); return s; };
+    s.task = function(t, m){ taskBy[key(m)] = t || null; if(key(m) === key() || key(m) === '*'){ showTask(); placeWhy(); } return s; };
     // std: the dock's Explanation button shows only while Why holds something.
     function paintWhy(){
       if(!std || !whyBtn) return;
       whyBtn.hidden = !Array.prototype.some.call(whyP.children, function(c){ return !c.hidden && !c.classList.contains('ls-off') && c.textContent.trim(); });
     }
     if(std && window.MutationObserver) new MutationObserver(paintWhy).observe(whyP, { childList: true, subtree: true, attributes: true, attributeFilter: ['hidden', 'class'] });
+    /* std (F6): with no caption showing, the caption row is not drawn; the Explanation button moves to the end of
+       the task's "what to do" line (same node, so its listener stays) and back when a caption returns. */
+    function placeWhy(){
+      if(!std || !whyBtn || !taskEl) return;
+      var capRow = q('.ls-cap'), empty = capRow.classList.contains('is-empty');
+      var home = empty && !taskEl.hidden ? taskEl : capRow;
+      if(whyBtn.parentNode !== home) home.appendChild(whyBtn);
+    }
 
     /* s.picker({ label, groups: [{ label, items: [{ value, label, sub }] }] | items, value, onChange(v, item), count },
        mode?) -> { el, value(v?), set(o) }: the scenario picker, ONE dropdown at the stage's top left that keeps the
@@ -461,7 +640,9 @@
         w.querySelector('.ls-pick-t').textContent = it.label;
         var sub = it.sub != null ? it.sub : o.count ? (flat.indexOf(it) + 1) + ' of ' + flat.length : (it.group || '');
         var sb = w.querySelector('.ls-pick-s'); sb.textContent = sub; sb.hidden = !sub;
+        if(srch) srch.sync();
       }
+      var srch = null;
       function build(x){
         o = x; flat = [];
         var gs = x.groups || [{ items: x.items || [] }];
@@ -471,6 +652,9 @@
         }).join('');
         cur = x.value != null ? x.value : (flat[0] && flat[0].value);
         paint();
+        // F6: a long list opens with a search field (o.search true / false forces it either way).
+        if(!srch && (x.search === true || x.search !== false && flat.length > SEARCH_AT)) srch = searchSelect(sel, w, { label: x.label });
+        if(srch) srch.sync();
       }
       sel.addEventListener('change', function(){
         cur = sel.value; paint();
@@ -919,6 +1103,8 @@
       fitT = 0;
       var quiz = isQuiz();
       root.classList.toggle('ls-quiz', quiz);
+      /* F6: a figure in a quiz keeps at least about 40% of a phone's height (it was 30%, where a graph read too
+         small); the answer is then brought into view by the scroll below, as before. */
       paintPrimary();
       var kind = '', sh = null;
       if(portrait() && !big){
@@ -928,7 +1114,7 @@
           // From the stage's height now (no reset, so a tool that redraws on
           // resize settles): what it must give up for the dock to fit.
           var rows = actRows(), cur = stg.getBoundingClientRect().height, need = -1e4, lim = innerHeight + window.scrollY - 8;
-          var full = Math.max(300, Math.round(innerHeight * 0.62)), floor = quiz ? Math.min(240, Math.round(innerHeight * 0.3)) : Math.max(300, Math.round(innerHeight * 0.45));
+          var full = Math.max(300, Math.round(innerHeight * 0.62)), floor = quiz ? Math.min(340, Math.round(innerHeight * 0.4)) : Math.max(300, Math.round(innerHeight * 0.45));
           rows.forEach(function(r){ need = Math.max(need, naturalBottom(r) - lim); });
           if(quiz){
             var inp = answerEl() || Array.prototype.filter.call(dockBody.querySelectorAll('input:not([type=hidden]):not([type=checkbox]):not([type=range]):not([type=search]), select, textarea'), function(el){ return shown(el) && !el.closest('details:not([open])'); })[0];
@@ -1712,5 +1898,5 @@
   if(document.readyState !== 'complete'){ document.addEventListener('DOMContentLoaded', later); window.addEventListener('load', adopt); }
   else later();
 
-  window.LevlStudio = { mount: mount, stepper: stepper, stdKit: function(k){ stdKit = k || null; }, on: function(){ return !!current; }, get: function(){ return current; }, icon: icon };
+  window.LevlStudio = { mount: mount, stepper: stepper, searchSelect: searchSelect, stdKit: function(k){ stdKit = k || null; }, on: function(){ return !!current; }, get: function(){ return current; }, icon: icon };
 })();

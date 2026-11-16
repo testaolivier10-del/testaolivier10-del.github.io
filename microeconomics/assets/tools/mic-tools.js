@@ -80,11 +80,14 @@
       var w = sol.filter(function(l){ return /^With /.test(l); })[0];
       return (w ? w.replace(/\s*\(Also accepted:[^)]*\)\.?$/, '') : sol[sol.length - 2] || '') + ' ' + last;
     } },
-    'externality-lab': { fix: 'A per-unit tax on a negative externality, or a subsidy for a positive one, moves the market to the efficient quantity and removes the deadweight loss.' },
+    'externality-lab': { public: 'A public good is nonrival and nonexcludable, so free riders leave the market making too little of it.', fix: 'A per-unit tax on a negative externality, or a subsidy for a positive one, moves the market to the efficient quantity and removes the deadweight loss.' },
     'firm-market': { longrun: 'In the long run, entry or exit shifts market supply until price equals minimum ATC and economic profit is zero.' },
     'game-lab': {
       best: function(p, last){ return lastSentence(last).replace(/^So,?\s+/, ''); },
-      change: function(p, last){ return lastSentence(last).replace(/^So,?\s+/, ''); } }
+      change: function(p, last){ return lastSentence(last).replace(/^So,?\s+/, ''); } },
+    'cost-lab': { shutdown: 'In the short run a firm shuts down only if price is below minimum AVC; between AVC and ATC it produces at a loss.' },
+    'factor-lab': { hire: 'A firm hires until MRP equals MRC; in a competitive labor market MRC is the wage.' },
+    'surplus-lab': { control: 'A binding price ceiling or floor cuts the quantity traded below equilibrium and creates deadweight loss.', trade: 'Trade at the world price raises total surplus, even though one side of the domestic market loses.', tariff: 'A tariff raises the domestic price, cuts imports and creates deadweight loss.' }
   };
   function takeaway(p, html){
     var own = p && TAKE[curSlug] && (TAKE[curSlug][p.type] || TAKE[curSlug]['*']);

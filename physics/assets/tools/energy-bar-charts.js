@@ -511,6 +511,7 @@
     function studio(p, s){
       LS = s;
       T.studioPane(pane, s, { stage: [$('.eb-stage')], dock: [ctl], moreLabel: 'Track, friction, mass, g and time', why: [start.el, $('.eb-say')], details: [$('.eb-nums')] });
+      if(s.toFoot) s.toFoot(btns.querySelector('.eb-reset')); // F6: Reset at the stage's foot
       draw();
       // Redraw at the new box shape when the window turns or Enlarge opens or zooms.
       var rq = 0; window.addEventListener('resize', function(){ if(rq) return; rq = requestAnimationFrame(function(){ rq = 0; draw(); }); });

@@ -585,6 +585,7 @@
       var dock = document.createElement('div'); dock.className = 'phys-ls-dock mg-ls-dock';
       dock.appendChild($('.mg-ctl'));
       s.add('dock', dock, o);
+      if(s.toFoot) s.toFoot(dock.querySelector('.mg-reset')); // F6: Start over at the stage's foot
       var why = document.createElement('div'); why.className = 'ls-sec phys-ls-why mg-ls-why';
       why.appendChild($('.mg-say')); why.appendChild($('.mg-cur'));
       s.add('why', why, o);

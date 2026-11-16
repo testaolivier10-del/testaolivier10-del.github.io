@@ -577,7 +577,7 @@
       var a = anchor || (x > (X0 + X1) / 2 ? 'end' : 'start');
       return '<text class="cd-' + who + ' cd-mlab" x="' + r1(x + (a === 'end' ? -6 : a === 'start' ? 6 : 0)) + '" y="' + r1(y) + '" text-anchor="' + a + '" paint-order="stroke">' + esc(s) + '</text>';
     }
-    var out = [];
+    var out = [], clipId = '';
     (list || []).forEach(function(m){
       var w = m.who === 'right' ? 'right' : 'yours';
       if(m.curve){
@@ -587,7 +587,11 @@
           if(!isFinite(y) || y < Fr.y[0] - (Fr.y[1] - Fr.y[0]) * 2 || y > Fr.y[1] + (Fr.y[1] - Fr.y[0]) * 2 || (last != null && Math.abs(y - last) > (Fr.y[1] - Fr.y[0]))){ pen = false; last = isFinite(y) ? y : null; continue; }
           d += (pen ? 'L' : 'M') + r1(Fr.sx(x)) + ' ' + r1(Fr.sy(y)); pen = true; last = y;
         }
-        if(d) out.push('<path class="cd-' + w + '" d="' + d + '"/>');
+        // F6: clipped to the plot (a curve may run up to twice the window past it and spill over the labels).
+        if(d){
+          if(!clipId){ clipId = nid('cdclip'); out.unshift('<clipPath id="' + clipId + '"><rect x="' + r1(X0) + '" y="' + r1(Y0 - 2) + '" width="' + r1(X1 - X0) + '" height="' + r1(Y1 - Y0 + 4) + '"/></clipPath>'); }
+          out.push('<path class="cd-' + w + '" clip-path="url(#' + clipId + ')" d="' + d + '"/>');
+        }
         if(m.label){ var lx = a + (b - a) * (w === 'right' ? 0.82 : 0.62), ly = m.curve(lx); if(isFinite(ly)) out.push(txt(Fr.sx(lx), Fr.sy(ly) - 8, m.label, w)); }
       } else if(m.line || m.tangent){
         var p0, p1;
@@ -748,6 +752,38 @@
     var g = '<g class="cd-gauge calc-plot" aria-hidden="true"' + (o.x != null ? ' transform="translate(' + o.x + ' ' + o.y + ')"' : '') + '>' + out.join('') + '</g>';
     return o.x != null ? g : '<svg class="calc-plot cd-gauge-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(list.map(function(m){ return (m.who === 'right' ? 'right: ' : 'yours: ') + numText(m.v); }).join(', ')) + '">' + g + '</svg>';
   }
+  /* F6: a y window that shows the right curve AND yours (fs[0] the right one). Pooling every value let a far-off
+     try flatten the right curve (or the axis swallow both), so the plot read nearly empty. Each curve gets its
+     own range (spikes clipped); when the two are on very different scales, the window is the right curve's,
+     widened until yours shows over a good stretch, and the whole of both only when yours never comes near. */
+  function bothWindow(fs, a, b){
+    function rng(f){
+      var v = [];
+      for(var i = 0; i <= 160; i++){ var y = f(a + (b - a) * i / 160); if(isFinite(y)) v.push(y); }
+      if(!v.length) return null;
+      v.sort(function(p, q){ return p - q; });
+      return { lo: v[Math.floor(v.length * 0.04)], hi: v[Math.ceil(v.length * 0.96) - 1], v: v };
+    }
+    var rs = fs.map(rng).filter(Boolean);
+    if(!rs.length) return [-5, 5];
+    function span(r){ return Math.max(r.hi - r.lo, 1e-6); }
+    var lo = Math.min.apply(null, rs.map(function(r){ return r.lo; })), hi = Math.max.apply(null, rs.map(function(r){ return r.hi; }));
+    var R = rs[0];
+    if(rs.length > 1 && hi - lo > 8 * Math.min(span(rs[0]), span(rs[1])) && hi - lo > 1.5 * span(R)){
+      // Very different scales: the right curve's range, widened (up to 5 times) to take in yours where it can.
+      var c = (R.lo + R.hi) / 2, h0 = Math.max(span(R), 1) / 2, Y = rs[1];
+      for(var m = 1.5; m <= 5.01; m += 0.5){
+        var l = c - h0 * m, u = c + h0 * m, inn = Y.v.filter(function(y){ return y >= l && y <= u; }).length;
+        // Yours over a good stretch, or (at the widest) over a short one: it leaves the window where the two part.
+        if(inn >= Y.v.length * 0.3 || m > 4.9 && inn >= Y.v.length * 0.08){ lo = l; hi = u; break; }
+      }
+    }
+    if(hi - lo < 1){ lo -= 0.5; hi += 0.5; }
+    var pad = (hi - lo) * 0.12; lo -= pad; hi += pad;
+    // The x-axis is kept in view when that costs at most half again the height.
+    if(lo > 0 && lo < (hi - lo) * 0.5) lo = 0; else if(hi < 0 && -hi < (hi - lo) * 0.5) hi = 0;
+    return [lo, hi];
+  }
   /* A typed or found number as the student sees it. */
   function numText(v){ return isFinite(v) ? M.fmt(M.round(v, 3), 4).replace(/^-/, '−') : '?'; }
   /* A small "yours against the right one" graph of an expression step, for
@@ -758,20 +794,17 @@
     if(!P || !E || E.vars.length !== 1 || !t.fn) return '';
     var key = fnOf(E.answer, E.vars); if(!key) return '';
     var dom = E.domain && E.domain.length === 2 && isFinite(E.domain[0]) ? E.domain : [-3, 3];
-    var a = dom[0], b = dom[1], vals = [];
+    var a = dom[0], b = dom[1], n = 0;
     if(!(b > a)) return '';
     var same = true;
     for(var i = 0; i <= 120; i++){
       var x = a + (b - a) * i / 120, k = key(x), y = t.fn(x);
-      if(isFinite(k)) vals.push(k); if(isFinite(y)) vals.push(y);
+      if(isFinite(k)) n++; if(isFinite(y)) n++;
       if(isFinite(k) && isFinite(y) && Math.abs(k - y) > 1e-6 * Math.max(1, Math.abs(k))) same = false;
     }
-    if(vals.length < 10) return '';
-    vals.sort(function(p, q){ return p - q; });
-    var lo = vals[Math.floor(vals.length * 0.03)], hi = vals[Math.ceil(vals.length * 0.97) - 1];
-    if(hi - lo < 1e-6){ lo -= 1; hi += 1; }
-    var pad = (hi - lo) * 0.12; lo = Math.min(lo - pad, 0); hi = Math.max(hi + pad, 0);
-    var v = E.vars[0], spec = { label: 'Your expression and the right one, graphed for ' + v + ' from ' + M.fmt(a, 3) + ' to ' + M.fmt(b, 3), width: 320, height: 170, x: [a, b], y: [lo, hi], xLabel: v, yLabel: '' };
+    if(n < 10) return '';
+    var win = bothWindow([key, t.fn], a, b);
+    var v = E.vars[0], spec = { label: 'Your expression and the right one, graphed for ' + v + ' from ' + M.fmt(a, 3) + ' to ' + M.fmt(b, 3), width: 320, height: 170, x: [a, b], y: win, xLabel: v, yLabel: '' };
     var svg;
     try{ svg = P.svg(spec); }catch(e){ return ''; }
     var Fr = P.frame(spec);
@@ -1400,6 +1433,7 @@
   function sayHead(el){ var h = el && el.querySelector('.bt-say-h'); return h ? h.innerHTML : ''; }
 
   window.ApCalcTools = {
+    bothWindow: bothWindow,
     isStd: isStd, stagePick: stagePick, chipPick: chipPick,
     studioOf: studioOf, studioPane: studioPane, sayHead: sayHead,
     modes: modes, reduced: reduced, cue: cue, moreHtml: moreHtml, explain: explain,

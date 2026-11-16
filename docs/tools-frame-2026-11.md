@@ -58,4 +58,42 @@ card), a Share button in the bar on desktop, the "what to do" line under the tas
 | F3 | AP Bio, AP Chem, AP Physics 1 | done 2026-11-16: all 38 tools on the `std` frame from the course layers (`bio-tools.js`, `chem-tools.js`, `phys-tools.js`): explore question and line, stage dropdowns, step and part hint ladders, finished cards, std lock screens; notes in `docs/tools-frame-notes/apbio.md`, `apchem.md`, `apphys.md` |
 | F4 | AP Calc AB, AP Calc BC, AP Precalc, AP Stats | done 2026-11-16: all 36 tools on `std` through the three course kits (stage dropdowns, hint ladder, finished card); notes in `docs/tools-frame-notes/calculus.md`, `precalculus.md`, `statistics.md` |
 | F5 | APES, AP Psych, AP Macro, AP Micro, AP Human Geography | F5a done 2026-11-16: APES (12) and AP Psych (10) on the std frame through `env-tools.js` / `psy-tools.js` (task, kinds dropdown, hint ladder per step, finished card, `stagePick` for scenario selects and chips); notes in `docs/tools-frame-notes/apes.md` and `psychology.md`. F5b done 2026-11-16: AP Macro, AP Micro, AP Human Geography (24 tools) through `mac-tools.js` / `mic-tools.js` / `hug-tools.js`; notes in `docs/tools-frame-notes/apmacro.md`, `apmicro.md`, `aphug.md` |
-| F6 | Fresh-eyes pass on every tool, fixes, done | not started |
+| F6 | Fresh-eyes pass on every tool, fixes, done | F6a done 2026-11-16: every item of the F6 decisions below except the accuracy check (F6b, in parallel): shared picker search, empty caption row, phone quiz figure size, Reset to the stage foot in Bio / Chem / Physics, calc parametric axes and rule drill window, HuG FRQ sample gate and Map pill, takeaways per problem type (Macro, Micro, HuG), policy chain row. Checked in every course at 390 and 1440, light and dark; AB and Macro builds byte-identical |
+
+## F6 decisions (owner, 2026-11-16) and what F6a did
+- HuG FRQ coach: the rubric line opens any time (before writing too); the full-credit sample opens only after a real
+  try (four letters written in step 1). Done (`frq-coach.js`: "Show the rubric line", then the sample in place).
+- HuG Map reader: no "Map" pill in the std frame (the picker names the map). Done.
+- Macro / Micro / HuG finished cards: a short takeaway per problem type where the last solution line reads oddly out
+  of context. Done: `TAKE` maps in `mac-tools.js`, `mic-tools.js`, `hug-tools.js` (slug:type, slug:* for all types of
+  a tool); every other type keeps its last line. Also fixed "a inflationary gap" (adas-lab model, two lines).
+- Micro Firm and market shock select: left as is.
+- Macro Policy chain "Write it out" row: value now "a sentence, then your words" (fits 390 px).
+- APES / Psych: views stay a button row in the side panel; Psych formulas stay the first hint (no change needed).
+- Hidden original scenario controls (ochem, APES, Psych, others): left in place.
+- Accuracy check of all F1 to F5 copy: F6b (separate pass), not this one.
+- Bio / Chem / Physics: Reset and Start over to the stage foot (`s.toFoot`) in chi-square, descriptive stats, rates
+  (Clear the triangles), Simpson, tree reading (Clear the selection, Start over), buffer drills, titration, collision,
+  energy bar charts, motion graphs, rotation lab (both), torque balance. Left beside its part: scaling drills "Reset
+  to × 1" (it resets the panel's sliders only); "Clear runs", "Clear data" and "Start over at equilibrium" (in the
+  reference sheet, they clear a log or a setting there).
+- NREMT station run and scenarios keep card lists; lab practical and 3D anatomy keep four modes: no change.
+- Long pickers: shared search panel for any picker list over 30 (A&P pathways 208, predict 379, calculators 90, lab
+  practical 85, graphs 78, feedback loops 51; NREMT body map 71; ochem synthesis 36; physics scaling drills 31) and
+  ochem acid-base's two acid lists (39 each, `LevlStudio.searchSelect`). Groups kept; the select stays.
+- Std frame: an empty caption row is not drawn; Explanation moves to the end of the task's what to do line.
+- No punctuation pass over course content.
+- Calc parametric motion quiz: a path far taller than wide (or wider) gets each axis fitted on its own; near the
+  frame's shape equal axes stay (`figSpec`).
+- Calc rule drills: the yours vs right graph (piece steps and f' under the tree) uses `bothWindow` (each curve's own
+  range; on very different scales the right curve's window widened until yours shows); curve marks are clipped to
+  the plot; the f' plot under the tree is no longer held to 320 px wide.
+- Phone quiz figure: a quiz stage with a figure keeps at least about 40% of the screen height (was 30%).
+
+New copy for the accuracy check (F6a): the takeaways in the three `TAKE` maps; the FRQ coach lines "Show the rubric
+line" and "A full-credit answer opens once you write yours in step 1."; the search panel's "Type to search" and
+"Nothing matches. Try fewer letters."
+
+Questions for the owner (F6a): (1) FRQ coach step 3 ("Which answer earns the point?") lists the sample as one of its
+two options before any writing, so the sample can still be read early; gate step 3 behind a try too? (2) Tree reading
+shows the same line as its task's what to do and as its caption ("Tap two or more names on the tree..."); drop one?
