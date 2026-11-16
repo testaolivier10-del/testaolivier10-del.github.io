@@ -820,7 +820,10 @@
     if(S.hint >= 3) out.push('Use ' + rxText(e) + ' (' + lcName(e.name) + ').');
     return out;
   }
-  function hint(){ if(S.hint < 3) S.hint++; if(S.hint >= 3) S.usedReagentHint = true; render(); }
+  /* The third hint names the reagents, which is the answer: it opens after one real try on this problem (a
+     pick, right or wrong), like every tool's full answer (docs/tools-frame-2026-11.md). */
+  function tried(){ return S.misses > 0 || S.steps.length > 0 || S.bsteps.length > 0; }
+  function hint(){ if(S.hint < 3 && (S.hint < 2 || tried())) S.hint++; if(S.hint >= 3) S.usedReagentHint = true; render(); }
 
   /* ---- Backward ------------------------------------------------------------ */
 
@@ -1062,12 +1065,14 @@
       }
     }
     if(!S.done && !S.bdone && !(S.mode === 'fwd' && S.dead)){
-      acts.push('<button type="button" class="tchip" data-act="hint">' + (S.hint ? (S.hint < 3 ? 'Another hint' : 'Hints shown') : 'Hint') + '</button>');
+      var gated = S.hint === 2 && !tried();
+      if(!gated) acts.push('<button type="button" class="tchip" data-act="hint">' + (S.hint ? (S.hint < 3 ? 'Another hint' : 'Hints shown') : 'Hint') + '</button>');
     }
     // In the studio the Problems sheet has its own button under the dock.
     if(!studio) acts.push('<button type="button" class="tchip tchip--ghost" data-act="list">Problems</button>');
     if(hints && hints.length && !S.done && !S.bdone && !S.dead){
-      note = '<div class="tnote tnote--info sy-hint"><span class="tnote__k">Hint ' + S.hint + ' of 3</span>' + hints.map(esc).join(' ') + '</div>' + note;
+      note = '<div class="tnote tnote--info sy-hint"><span class="tnote__k">Hint ' + S.hint + ' of 3</span>' + hints.map(esc).join(' ') +
+        (S.hint === 2 && !tried() ? '<br><span class="tmuted">Make a pick, and the last hint (the reagents) opens.</span>' : '') + '</div>' + note;
     }
     el.Ask.innerHTML = ask; el.Ask.hidden = !ask;
     el.Tiles.innerHTML = tl; el.Tiles.hidden = !tl;
@@ -1133,14 +1138,14 @@
     if(!studio) return;
     var P = S.P, cap, pills = [];
     if(S.mode === 'fwd'){
-      if(S.done){ cap = '<b>Made it.</b> ' + esc(P.targetMol.m.name) + ' in ' + plural(S.steps.length, 'step') + '. Why? has the route, step by step.'; pills.push({ html: 'Solved', tone: 'good' }); }
+      if(S.done){ cap = '<b>Made it.</b> ' + esc(P.targetMol.m.name) + ' in ' + plural(S.steps.length, 'step') + '. Explanation has the route, step by step.'; pills.push({ html: 'Solved', tone: 'good' }); }
       else if(S.dead){ cap = '<b>Dead end.</b> ' + esc(S.dead.text); pills.push({ html: 'Dead end', tone: 'bad' }); }
       else {
         cap = '<b>Make ' + esc(P.targetMol.m.name) + ' from ' + esc(P.start.mol.name) + '.</b> ' + (S.steps.length ? 'Step ' + (S.steps.length + 1) + ': pick the next reagents.' : 'Pick the reagents for the first step.');
         pills.push({ html: plural(S.steps.length, 'step') + ' so far', tone: 'ghost' });
       }
     } else {
-      if(S.bdone){ cap = '<b>Back to the start.</b> Why? has the route read forward.'; pills.push({ html: 'Solved', tone: 'good' }); }
+      if(S.bdone){ cap = '<b>Back to the start.</b> Explanation has the route read forward.'; pills.push({ html: 'Solved', tone: 'good' }); }
       else { cap = '<b>Work back from ' + esc(P.targetMol.m.name) + ' to ' + esc(P.start.mol.name) + '.</b> Pick what the molecule on the right was made from.'; pills.push({ html: 'Backward', tone: 'ghost' }); }
     }
     studio.caption(cap, S.mode);
@@ -1148,9 +1153,36 @@
     studio.pills(S.misses ? [{ html: S.misses + (S.misses === 1 ? ' miss' : ' misses'), tone: 'ghost' }] : [], 'right', S.mode);
   }
 
+  /* The standard frame (F1): the problem in one dropdown on the stage (by chapter; the Problems sheet keeps
+     the chapter filter, the ticks and Random route), and the finished card after a solve. */
+  var stdPick = null;
+  function studioStd(){
+    if(!studio || !studio.picker) return;
+    var groups = [], d = load();
+    pool().forEach(function(P){
+      var g = groups.filter(function(x){ return x.ch === P.ch; })[0];
+      if(!g){ g = { ch: P.ch, label: 'Chapter ' + P.ch, items: [] }; groups.push(g); }
+      g.items.push({ value: P.id, label: P.start.mol.name + ' to ' + P.targetMol.m.name + (d.solved[P.id] ? ' ✓' : '') });
+    });
+    if(!byId(S.P.id)) groups.unshift({ label: 'Random', items: [{ value: S.P.id, label: S.P.start.mol.name + ' to ' + S.P.targetMol.m.name }] });
+    var o = { label: 'Problem', groups: groups, value: S.P.id, onChange: function(v){ var P = byId(v); if(P){ setProblem(P); render(); sync(); } } };
+    if(stdPick) stdPick.set(o); else stdPick = studio.picker(o);
+    var fin = S.mode === 'fwd' ? S.done : S.bdone, Kit = window.OchemStudioKit;
+    if(fin){
+      var n = S.mode === 'fwd' ? S.steps.length : S.bsteps.length, best = dist(S.P, S.P.start);
+      studio.done({ kicker: 'Solved', title: esc(S.P.targetMol.m.name) + ' in ' + plural(n, 'step') + '.',
+        text: (n === best ? 'That is the shortest route.' : 'The shortest route takes ' + best + '; the full explanation has it.') +
+          (S.misses ? ' ' + S.misses + (S.misses === 1 ? ' miss' : ' misses') + ' on the way.' : ' No misses.'),
+        next: { label: 'Next problem', onClick: nextProblem },
+        links: (S.mode === 'fwd' ? [{ label: 'Solve it backward', onClick: function(){ setProblem(S.P, 'back'); studio.mode('back'); render(); sync(); } }] : [])
+          .concat([{ label: 'All problems', open: 'details' }]).concat(Kit ? Kit.extras() : [])
+      }, S.mode);
+    } else studio.done(false, S.mode);
+  }
+
   function render(moved){
     if(!S.P) return;
-    renderStage(); renderDock(); renderWhy(); renderProbs(); caption();
+    renderStage(); renderDock(); renderWhy(); renderProbs(); caption(); studioStd();
     if(!studio){ root.querySelectorAll('.sy-seg button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-m') === S.mode)); }); }
     if(moved){
       var f = el.Tiles.querySelector('.sy-tile:not(.is-no)') || el.Acts.querySelector('.btn-press') || el.Acts.querySelector('button');

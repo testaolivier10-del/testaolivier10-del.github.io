@@ -1348,6 +1348,11 @@
     studio.add('stage', puzStage, { mode: 'puzzle' });
     studio.add('stage', refStage, { mode: 'ref' });
     studio.add('dock', [view, spPick, $('spMore')], { mode: 'predict' });
+    // The standard frame (F1): the compounds in one grouped dropdown on the stage; drawing your own keeps its disclosure.
+    if(Kit.chipPicker){
+      Kit.chipPicker([{ el: spPick, label: 'Start here' }, { el: $('spPicker2'), label: 'More compounds' }], { label: 'Compound', mode: 'predict' });
+      $('spMore').querySelector('summary').textContent = 'Draw your own';
+    }
     studio.add('dock', ansBox, { mode: 'puzzle' });
     studio.add('dock', formula, { mode: 'ref' });
     studio.add('why', [$('spPredicted'), whyPeak], { mode: 'predict' });
@@ -1441,7 +1446,7 @@
     } else {
       var ok = puzzleGuess === c.id;
       left.unshift({ html: ok ? 'Correct' : 'It was ' + esc(c.name), tone: ok ? 'good' : 'bad' });
-      cap = '<b>' + (ok ? 'Correct: ' : 'It was ') + esc(c.name) + ', ' + esc(c.structure) + '.</b> Why? goes peak by peak.';
+      cap = '<b>' + (ok ? 'Correct: ' : 'It was ') + esc(c.name) + ', ' + esc(c.structure) + '.</b> Explanation goes peak by peak.';
     }
     studio.caption(cap, 'puzzle');
     studio.pills(left, 'left', 'puzzle');

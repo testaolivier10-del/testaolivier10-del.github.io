@@ -702,6 +702,8 @@
     var v3Mode = Kit.seg(byId('v3Task'), 'data-task');
     studio.add('stage', stage);
     studio.add('dock', [srcBox, elPicker, elBuild], { mode: 'explore' });
+    // The standard frame (F1): every molecule in one dropdown on the stage, in its groups.
+    if(Kit.chipPicker) Kit.chipPicker([{ el: elPicker, label: 'Molecules' }], { label: 'Molecule', mode: 'explore' });
     studio.add('dock', byId('v3Quiz'), { mode: 'predict' });
     studio.add('why', [elBMsg, elNote, elAnal]);
     var detFirst = studio.details.firstChild;
@@ -771,7 +773,7 @@
       // The verdict, in full, is in Why; the stage and the caption carry it.
       var ok = verdict.classList.contains('tnote--good');
       var k = verdict.querySelector('.tnote__k').textContent;
-      studio.caption('<b>' + (ok ? 'Right. ' : 'Not quite. ') + esc(k) + '.</b> Why? has the reasoning.', 'predict');
+      studio.caption('<b>' + (ok ? 'Right. ' : 'Not quite. ') + esc(k) + '.</b> Explanation has the reasoning.', 'predict');
       studio.pills([{ html: ok ? 'Right' : 'Not quite', tone: ok ? 'good' : 'bad' }, { html: task.score.right + ' of ' + task.score.total + ' right', tone: 'ghost' }], 'left', 'predict');
       var vb = document.getElementById('v3LsVerdict');
       if(!vb){ vb = document.createElement('div'); vb.id = 'v3LsVerdict'; studio.why.insertBefore(vb, studio.why.firstChild); }

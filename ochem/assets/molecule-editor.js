@@ -81,7 +81,8 @@
     var maxArrows = config.maxArrows === undefined ? 4 : config.maxArrows;
     var locked = false;          // set by markResult so feedback can't be edited over
     var status = '';
-    var marks = {};              // {correct:[], wrong:[]} arrow indices after grading
+    // {correct:[], wrong:[]} arrow indices: after grading (locked), or config.marks, which go at the next edit
+    var marks = config.marks || {};
 
     function state(){ return { arrows: arrows.slice() }; }
 
@@ -147,6 +148,7 @@
           var undoing = b.getAttribute('data-act') === 'undo';
           if(undoing) arrows.pop();
           else arrows = [];
+          marks = {};
           pending = null;
           status = undoing
             ? 'Arrow removed. ' + arrows.length + (arrows.length === 1 ? ' arrow' : ' arrows') + ' left.'
@@ -174,7 +176,7 @@
           e.stopPropagation();
           var i = parseInt(g.getAttribute('data-arrow'), 10);
           if(isNaN(i)) return;
-          arrows.splice(i, 1); pending = null; status = '';
+          arrows.splice(i, 1); pending = null; status = ''; marks = {};
           render();
           if(config.onChange) config.onChange(state(), api);
         });
@@ -206,7 +208,7 @@
         pending = null; render(); return;
       }
       arrows.push(next);
-      pending = null;
+      pending = null; marks = {};
       // Announced, because completing an arrow changes the picture and nothing
       // else tells a screen-reader user that the second pick landed.
       status = 'Arrow drawn. ' + arrows.length +
