@@ -796,7 +796,7 @@
      to do first (the first-run hint still rings the control itself). Keyed by tool, then by mode for a tool with two
      explore views. New copy: listed in docs/tools-frame-notes/apbio.md for the accuracy check. */
   var STD = {
-    'chi-square': { ask: 'When is a gap between observed and expected too big to be chance?', todo: 'Drag a bar away from its dashed box and watch χ² pass the critical value.' },
+    'chi-square': { ask: 'When is a gap between observed and expected too big to be chance?', todo: 'Drag a bar away from its dashed box and watch χ² grow.' },
     'confidence-intervals': { ask: 'When do two groups really differ?', todo: 'Drag a bar and watch the error bars overlap or pull apart.' },
     'descriptive-stats': { ask: 'How does one data point move the mean, median and spread?', todo: 'Drag a dot sideways and watch the numbers change.' },
     'hardy-weinberg': { ask: 'How do allele frequencies set genotype frequencies?', todo: 'Drag the corner to change p and q.' },

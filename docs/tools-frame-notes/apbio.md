@@ -52,7 +52,7 @@ Explore tasks below are new copy (accuracy check list at the end). "Same" = noth
 
 ## New copy for the accuracy check
 Explore questions and "what to do" lines (`STD` in `bio-tools.js`):
-chi-square: "When is a gap between observed and expected too big to be chance?" / "Drag a bar away from its dashed box and watch χ² pass the critical value."
+chi-square: "When is a gap between observed and expected too big to be chance?" / "Drag a bar away from its dashed box and watch χ² grow."
 confidence-intervals: "When do two groups really differ?" / "Drag a bar and watch the error bars overlap or pull apart."
 descriptive-stats: "How does one data point move the mean, median and spread?" / "Drag a dot sideways and watch the numbers change."
 hardy-weinberg: "How do allele frequencies set genotype frequencies?" / "Drag the corner to change p and q."
