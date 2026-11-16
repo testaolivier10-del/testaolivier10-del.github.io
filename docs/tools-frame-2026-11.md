@@ -59,6 +59,7 @@ card), a Share button in the bar on desktop, the "what to do" line under the tas
 | F4 | AP Calc AB, AP Calc BC, AP Precalc, AP Stats | done 2026-11-16: all 36 tools on `std` through the three course kits (stage dropdowns, hint ladder, finished card); notes in `docs/tools-frame-notes/calculus.md`, `precalculus.md`, `statistics.md` |
 | F5 | APES, AP Psych, AP Macro, AP Micro, AP Human Geography | F5a done 2026-11-16: APES (12) and AP Psych (10) on the std frame through `env-tools.js` / `psy-tools.js` (task, kinds dropdown, hint ladder per step, finished card, `stagePick` for scenario selects and chips); notes in `docs/tools-frame-notes/apes.md` and `psychology.md`. F5b done 2026-11-16: AP Macro, AP Micro, AP Human Geography (24 tools) through `mac-tools.js` / `mic-tools.js` / `hug-tools.js`; notes in `docs/tools-frame-notes/apmacro.md`, `apmicro.md`, `aphug.md` |
 | F6 | Fresh-eyes pass on every tool, fixes, done | F6a done 2026-11-16: every item of the F6 decisions below except the accuracy check (F6b, in parallel): shared picker search, empty caption row, phone quiz figure size, Reset to the stage foot in Bio / Chem / Physics, calc parametric axes and rule drill window, HuG FRQ sample gate and Map pill, takeaways per problem type (Macro, Micro, HuG), policy chain row. Checked in every course at 390 and 1440, light and dark; AB and Macro builds byte-identical |
+| F7 | Follow-ups after F6a (five small items) | done 2026-11-16: see "F7 follow-ups" below |
 
 ## F6 decisions (owner, 2026-11-16) and what F6a did
 - HuG FRQ coach: the rubric line opens any time (before writing too); the full-credit sample opens only after a real
@@ -99,3 +100,18 @@ line" and "A full-credit answer opens once you write yours in step 1."; the sear
 Questions for the owner (F6a): (1) FRQ coach step 3 ("Which answer earns the point?") lists the sample as one of its
 two options before any writing, so the sample can still be read early; gate step 3 behind a try too? (2) Tree reading
 shows the same line as its task's what to do and as its caption ("Tap two or more names on the tree..."); drop one?
+
+## F7 follow-ups (2026-11-16)
+- AP Psych stats lab: every stated percentile uses the normal table, not the 68-95-99.7 rule (z = −2: about 2.3%,
+  the 2nd percentile). The rule drill keeps its rule step; its last line gives the z table value and calls the
+  rule's value a close estimate. Explore caption and the Percentile pill use the curve value too.
+- AP Psych brain map: possessive names take no article ("Broca’s area", not "The Broca’s area"), in the model
+  (`the(k)`) and the page (`theN(k)`); the page no longer lowercases them either.
+- AP Physics 1: `ApPhysTools.sceneAsk(s, ask, todo)` lets a scene set its own Explore question; rotation lab (stool,
+  orbit) and torque balance (inertia race) use it; the first scene keeps the tool's question.
+- AP Micro game lab: the strategy "Do not" is "Don't advertise" (data, model, built tool data).
+- AP Bio operons: first-run hint "Tap a sugar (or tryptophan) to change the medium".
+New copy for an accuracy check: the stats lab line ("From a z table, about 2.3% of scores are lower, so ... is at
+about the 2nd percentile (the rule's 2.5% is a close estimate).") and caption; the three scene questions and their
+lines (stool: "Why does pulling the weights in make the stool spin faster?"; orbit: "Why does a planet move fastest
+when it is closest to the star?"; race: "Two wheels, same mass: which one speeds up faster, and why?").

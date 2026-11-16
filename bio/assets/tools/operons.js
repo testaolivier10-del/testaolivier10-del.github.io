@@ -527,7 +527,7 @@
   }, {
     // Tool Studio (docs/tools-calm.md; bio-tools.js studioSim)
     studio: { sim: true, modeLabels: { quiz: 'Mutant quiz' }, primary: 0, dock: ['.os-chal', '.bt-modes', '.op-taphint'], stage: ['.op-stagefig'], stageAlso: ['.op-quizfig', '.op-tray'], live: '.op-explain', why: ['.op-further'],
-      hint: { target: '.op-chip', text: 'Tap a sugar to change the medium' },
+      hint: { target: '.op-chip', text: 'Tap a sugar (or tryptophan) to change the medium' },
       // Readout rows by label: the trp operon has no CAP row, so row numbers shift.
       caption: function(g){ if(quizOn()) return '<b>Which strain is X?</b> Compare what it makes in each medium with what a normal cell would make.'; return '<b>Repressor ' + T.esc(roBy(g, 'Repressor')) + '.</b> RNA polymerase ' + T.esc(roBy(g, 'RNA polymerase')) + '.'; },
       pills: function(g){ if(quizOn()) return []; return [{ k: 'mRNA', html: roBy(g, 'mRNA at'), tone: 'readout' }]; },

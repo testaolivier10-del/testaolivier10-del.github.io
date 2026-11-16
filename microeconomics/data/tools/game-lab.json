@@ -9,7 +9,7 @@
     { "id": "fares", "topic": "oligopoly-game-theory", "story": "Two airlines on one route each choose a low or a high fare. Payoffs are weekly profits in thousands of dollars.",
       "players": [{ "name": "Alpha Air", "strategies": ["Low fare", "High fare"] }, { "name": "Beta Jet", "strategies": ["Low fare", "High fare"] }] },
     { "id": "ads", "topic": "oligopoly-game-theory", "story": "Two snack makers decide whether to run a national ad campaign. Payoffs are monthly profits in thousands of dollars.",
-      "players": [{ "name": "Crunchy", "strategies": ["Advertise", "Do not"] }, { "name": "Snackwell", "strategies": ["Advertise", "Do not"] }] },
+      "players": [{ "name": "Crunchy", "strategies": ["Advertise", "Don't advertise"] }, { "name": "Snackwell", "strategies": ["Advertise", "Don't advertise"] }] },
     { "id": "output", "topic": "oligopoly-game-theory", "story": "Two copper mines that sell to the same buyers each pick a production level. Payoffs are monthly profits in thousands of dollars.",
       "players": [{ "name": "Redrock", "strategies": ["Produce more", "Produce less"] }, { "name": "Ironvale", "strategies": ["Produce more", "Produce less"] }] },
     { "id": "launch", "topic": "oligopoly-game-theory", "story": "Two game studios each choose whether to release a new console this year or wait. Payoffs are yearly profits in thousands of dollars.",
