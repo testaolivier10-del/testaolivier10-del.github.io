@@ -183,7 +183,7 @@
     function speak(){ var fe = F.f(xe), pe = TL.poly(F, c, n, xe), b = bandAt(xe); say('Degree ' + n + ' about ' + num(c, 1) + '. At x = ' + num(xe, 2) + ' the error is ' + sig(Math.abs(fe - pe)) + (b != null ? ', bound ' + sig(b) + '.' : '.')); }
     function studio(pane, s){
       LS = s;
-      var sp = T.studioPane(pane, s, { stage: [$('.tl-fig')], dock: [$('.tl-ctl')], why: [$('.tl-say')], details: [$('.tl-nums'), $('.tl-coefs')], moreLabel: 'Where the error is measured' });
+      var sp = T.studioPane(pane, s, { chips: { box: '.tl-chips', chip: '.tl-chip', label: 'Function' }, stage: [$('.tl-fig')], dock: [$('.tl-ctl')], why: [$('.tl-say')], details: [$('.tl-nums'), $('.tl-coefs')], moreLabel: 'Where the error is measured' });
       syncBand(); build();
       if(s.mode() === 'explore') s.hint({ target: nSl.input, text: 'Add terms' });
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(build, 60); }).observe($('.tl-plot')); }

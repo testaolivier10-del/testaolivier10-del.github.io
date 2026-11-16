@@ -256,3 +256,5 @@ one rubric line per point and full-credit samples (the AI grader hook only when 
       the three free trainers (function lab, rate of change, unit circle).
 - [ ] Merge the PR (after the Worker line, if Premium goes on sale with the merge).
 - [ ] Optional: an AP® Precalculus teacher reviews the course (the "not yet reviewed" note stays until then).
+
+- 2026-11-16 (tools frame F4): every tool uses the standard tool frame (stage dropdown, hint ladder, finished card) from its course kit; notes in `docs/tools-frame-notes/`.

@@ -407,6 +407,8 @@
       var o = { mode: 'explore' };
       s.add('stage', div('pcalc-ls-stage sb-ls-stage', [host.querySelector('.sb-stage')]), o);
       s.add('dock', div('pcalc-ls-dock sb-ls-dock', [ctl]), o);
+      // The standard frame: the scenario is the stage's dropdown (the select stays, hidden, and keeps driving the tool).
+      if(T.isStd(s)) T.stagePick(s, sitSel.select, { label: 'Situation', mode: 'explore', count: true });
       s.add('why', div('ls-sec pcalc-ls-why', [cue.el, say]), o);
       s.add('details', div('ls-sec pcalc-ls-det', [det]), o);
       lastCap = ''; L = null; draw();

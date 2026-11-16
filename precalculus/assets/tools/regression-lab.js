@@ -206,6 +206,8 @@
       s.add('stage', stage, o);
       var dock = document.createElement('div'); dock.className = 'pcalc-ls-dock rl-ls-dock'; dock.appendChild(host.querySelector('.rl-ctl'));
       s.add('dock', dock, o);
+      // The standard frame: the scenario is the stage's dropdown (the select stays, hidden, and keeps driving the tool).
+      if(T.isStd(s)) T.stagePick(s, setSel.select, { label: 'Data', mode: 'explore', count: true });
       var why = document.createElement('div'); why.className = 'ls-sec pcalc-ls-why rl-ls-why'; why.appendChild(cue.el); why.appendChild(host.querySelector('.rl-say'));
       s.add('why', why, o);
       why.querySelectorAll('details.bt-why').forEach(function(d){ d.open = true; });

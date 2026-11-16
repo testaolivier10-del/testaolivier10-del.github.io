@@ -241,3 +241,5 @@ slip is named). FRQs self-scored with one rubric line per point and full-credit 
 - [x] (2026-11-01) Owner said go ahead with the proposed defaults; no AB-holder discount for now. Was: confirm the identity (violet accent, cover, icon, headline, ranks), the free tier (Units 1 and 2, "Math you
       need", 9.1-9.3), the free trainer `series-lab`, and whether AB pass holders get a discount on BC.
 - [ ] Optional: an AP® Calculus BC teacher reviews the course (the "not yet reviewed" note stays until then).
+
+- 2026-11-16 (tools frame F4): every tool uses the standard tool frame (stage dropdown, hint ladder, finished card) from its course kit; notes in `docs/tools-frame-notes/`.

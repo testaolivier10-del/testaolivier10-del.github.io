@@ -127,7 +127,8 @@
     }).join('') + '</select>';
     var s = el.querySelector('select');
     s.addEventListener('change', function(){ if(o.onChange) o.onChange(s.value); });
-    return { el: el, select: s, value: function(){ return s.value; }, set: function(v){ s.value = v; } };
+    // set() tells a stage dropdown that mirrors the select (stagePick) through 'ls-sync'.
+    return { el: el, select: s, value: function(){ return s.value; }, set: function(v){ s.value = v; try{ s.dispatchEvent(new Event('ls-sync')); }catch(e){} } };
   }
   function announcer(el){
     var t = null;
@@ -225,8 +226,10 @@
   /* cue(text) -> { el, done() }: the one first step, written next to the
      control it names ("Drag the slider to add base"). done() quiets it after
      the first action, so it stays as a label but stops shouting. */
+  var cues = [];
   function cue(text){
     var el = document.createElement('p');
+    cues.push(el);
     el.className = 'bt-cue';
     el.innerHTML = '<span class="bt-cue-k">Start here</span> <span class="bt-cue-t">' + text + '</span>';
     return { el: el, done: function(){ el.classList.add('is-done'); } };
@@ -791,9 +794,12 @@
     var area = fr.area;
     // Only the kinds this page has content for (contexts unlock with their units).
     var kinds = (o.types || []).filter(function(t){ type = t.value; var n = pickable().length; type = ''; return n > 0; });
+    var st = studioOf(app), std = isStd(st), kp = null;
     if(kinds.length > 1){
-      kindPicker(fr.pick, { label: o.typeLabel || 'Problem type', options: kinds, onChange: function(v){ type = v; seed = freshSeed(); draw(true); } });
+      kp = kindPicker(fr.pick, { label: o.typeLabel || 'Problem type', options: kinds, onChange: function(v){ type = v; seed = freshSeed(); draw(true); } });
     }
+    // The standard frame: the kind of problem is the stage's one dropdown (the select stays, hidden, in More options).
+    if(std && kp) stagePick(st, kp.select, { label: o.typeLabel || 'Problem type', mode: app.classList.contains('bt-pane-quiz') ? 'quiz' : null });
     var sd = studioDrill(app, area, o);
     function pickable(){ return contexts.filter(function(c){ return !type || (c.types ? c.types.indexOf(type) > -1 : c.mode ? c.mode === type : c.kind === type); }); }
     function pickCtx(r){ var ok = pickable(); return r.pick(ok.length ? ok : contexts); }
@@ -842,6 +848,9 @@
         }
         el.innerHTML = head + body + '<div class="bt-actions"><button type="submit" class="btn-press sm">' + esc(s.checkLabel || 'Check') + '</button></div><div class="cd-fb" role="status" aria-live="polite"></div>';
         host.appendChild(el);
+        // The standard frame's hint ladder: the method at once (Hint), Show the answer after one real try.
+        var lad = std ? st.hints({ hints: function(){ var m = ''; try{ m = methodOf(); }catch(e){} return m ? [m] : []; }, answer: { label: 'Show the answer', onShow: function(){ reveal(); return ''; } } }) : null;
+        if(lad){ el.querySelector('.bt-actions').appendChild(lad.row); el.insertBefore(lad.card, el.querySelector('.cd-fb')); }
         if(cu && cu.init) cu.init(el);
         // the figure can show which part this step works on
         if(o.onStart) try{ o.onStart(s, api); }catch(e){ try{ console.error(e); }catch(x){} }
@@ -973,6 +982,14 @@
           var meth = methodOf();
           // An expression the tool's figure has no place for gets its own small graph: yours against the right one.
           var xp = s.kind === 'expr' && !drew && t ? exprPlot(s, t) : '';
+          if(lad){
+            lad.attempt();
+            fb.innerHTML = '<span class="pcalc-mark no">Not yet</span>' + (notes.length ? '<ul class="cd-notes">' + notes.map(function(n){ return '<li>' + n + '</li>'; }).join('') + '</ul>' : s.kind === 'vol' ? ' That is not where this point is. Look at the shape of the curve again.' : '') +
+              (drew ? '<p class="cd-onpic">' + esc(drewNote || (s.kind === 'choice' ? 'The picture shows your choice.' : s.kind === 'custom' ? 'The numbered marks on the picture show what to fix.' : 'The picture shows your answer, dashed.')) + '</p>' : xp) +
+              '<p class="bt-small cd-again-hint">Change your answer and Check again.' + (lad.shown() ? '' : ' Hint has the method.') + '</p>';
+            if(sd) sd.wrong(drew);
+            return;
+          }
           fb.innerHTML = '<span class="pcalc-mark no">Not yet</span>' + (notes.length ? '<ul class="cd-notes">' + notes.map(function(n){ return '<li>' + n + '</li>'; }).join('') + '</ul>' : s.kind === 'vol' ? ' That is not where this point is. Look at the shape of the curve again.' : '') +
             (drew ? '<p class="cd-onpic">' + esc(drewNote || (s.kind === 'choice' ? 'The picture shows your choice.' : s.kind === 'custom' ? 'The numbered marks on the picture show what to fix.' : 'The picture shows your answer, dashed.')) + '</p>' : xp) +
             (meth ? '<p class="cd-method"><span class="cd-method-k">Method</span> ' + meth + '</p>' : '') +
@@ -1033,7 +1050,7 @@
       if(o.onShow) o.onShow(m);
     }
     bar.addEventListener('click', function(e){ var b = e.target.closest('.bt-mode'); if(b) show(b.getAttribute('data-m'), true); });
-    var st = studioOf(app);
+    var st = studioOf(app), c0 = cues.length;
     o.explore(ex);
     var start = 'explore';
     try{
@@ -1046,6 +1063,7 @@
       st.modes({ el: bar, value: start });
       // After the switch, so the arrangement knows the mode it opens on.
       if(o.studio && o.studio.explore) o.studio.explore(ex, st);
+      if(isStd(st)) stdExplore(st, o.slug, cues.slice(c0));
     }
     show(start, false);
     return { explore: ex, quiz: qz, show: show, bar: bar };
@@ -1081,7 +1099,7 @@
     main.classList.add('ls-host');
     var s = window.LevlStudio.mount({
       title: h1 ? h1.textContent : slug, course: 'AP® Precalculus', back: base() + 'tools.html', home: base(), slug: 'apprecalc-' + slug,
-      host: app,
+      host: app, std: true, lede: lede ? lede.textContent : '', autoSolution: false,
       // the second tab and its dock button, named for what is in it
       // the second tab and its dock button: a tool names it with
       // data-details-title on #app (set before mount); default "Numbers & setup".
@@ -1116,10 +1134,13 @@
     s.add('dock', area, only);
     if(more) s.add('details', more, only);
     if(about){ about.open = true; s.add('about', about, only); }
+    var cur = null;
     return {
       fresh: function(p){
+        cur = p;
         stage.innerHTML = ''; det.innerHTML = '<h3 class="ls-title-l">This problem</h3>';
-        why.innerHTML = '<h3 class="ls-title-l">Worked solution</h3><p class="ls-sub">It appears here once every step is answered.</p>';
+        // std: Why stays empty (and its button hidden) until the worked solution is in.
+        why.innerHTML = isStd(s) ? '' : '<h3 class="ls-title-l">Worked solution</h3><p class="ls-sub">It appears here once every step is answered.</p>';
         var extra = area.querySelector(':scope > .cd-extra'), fig = extra && (extra.children.length || extra.textContent.trim());
         var ctx = area.querySelector(':scope > .bt-context'), text = ctx ? Array.prototype.map.call(ctx.childNodes, plainText).join(' ').replace(/\s+/g, ' ').trim() : '';
         // The problem is read on the stage when there is no figure, or when
@@ -1150,7 +1171,14 @@
           var ask = ss.filter(function(x){ return /\?\s*$/.test(x); }).pop() || ss[ss.length - 1];
           text = (eqT ? eqT.replace(/\s+K\s*=/, ', K =') + '. ' : '') + ask.trim();
         }
-        s.caption(onStage ? esc(o.studioCaption || (nSteps > 1 ? 'Answer one step at a time.' : stage.querySelector('.cd-pics') ? 'Tap the picture that fits, then Check.' : 'Answer, then Check.')) : esc(text), m); s.pills([], 'left', m);
+        var todo = o.studioCaption || (nSteps > 1 ? 'Answer one step at a time.' : stage.querySelector('.cd-pics') ? 'Tap the picture that fits, then Check.' : 'Answer, then Check.');
+        if(isStd(s)){
+          s.done(false, m);
+          s.task({ kicker: 'Problem', title: esc(h2 ? h2.textContent : 'Practice problem'), todo: esc(todo) }, m);
+          s.caption(onStage ? '' : esc(text), m); s.pills([], 'left', m);
+          return;
+        }
+        s.caption(onStage ? esc(todo) : esc(text), m); s.pills([], 'left', m);
       },
       // A wrong try: the pill says so (the step's own feedback has the note and the method).
       wrong: function(drew){ s.pills([{ html: drew ? 'Not yet: see the picture' : 'Not yet', tone: 'warn' }], 'left', m); },
@@ -1166,6 +1194,7 @@
         // sheet on a phone, the drawer on a desktop); closing it returns
         // to New problem, which has focus first.
         if(again){ again.classList.add('ls-btn', 'ls-pri'); again.focus({ preventScroll: true }); }
+        if(isStd(s)) stdDone(s, area, o, right, total, m, cur && cur.type);
       }
     };
   }
@@ -1185,6 +1214,9 @@
      the Why disclosures after a redraw. */
   function studioPane(pane, s, o){
     var only = { mode: o.mode || 'explore' }, q = function(sel){ return pane.querySelector(sel); };
+    // The standard frame: o.chips { box, chip, attr, label }, a row of scenario chips, is the stage's dropdown.
+    var cbox = o.chips && isStd(s) ? (typeof o.chips.box === 'string' ? q(o.chips.box) : o.chips.box) : null;
+    if(cbox) chipPick(s, cbox, { label: o.chips.label, chip: o.chips.chip, attr: o.chips.attr, groups: o.chips.groups, mode: only.mode });
     function box(cls, els){ var d = document.createElement('div'); d.className = cls; (els || []).forEach(function(e){ if(e) d.appendChild(e); }); return d; }
     s.add('stage', box('pcalc-ls-stage', o.stage), only);
     var dock = [box('pcalc-ls-dock', o.dock)], row = null;
@@ -1197,6 +1229,9 @@
       row.addEventListener('click', function(){ s.open('details', more.querySelector('summary')); });
       dock.push(row);
     }
+    // The standard frame: the scenario is the stage's one dropdown, so the Setup row goes.
+    var pk = null, psel = o.setup && more && isStd(s) ? (o.pickSel || more.querySelector('select')) : null;
+    if(psel){ pk = stagePick(s, psel, { label: o.setup, mode: only.mode, count: true }); row.hidden = true; }
     s.add('dock', dock, only);
     // The "Start here" cue reads as the first line of Why.
     var why = box('ls-sec pcalc-ls-why', [pane.querySelector('.bt-cue')].concat(o.why || []));
@@ -1215,14 +1250,127 @@
     function openAll(){ why.querySelectorAll('details.bt-why').forEach(function(d){ d.open = true; }); }
     openAll();
     return {
-      setup: function(t){ if(row){ row.querySelector('.ls-v').textContent = t; row.setAttribute('aria-label', o.setup + ': ' + t + '. ' + (o.moreLabel || 'More options') + ' (opens Details)'); } },
+      setup: function(t){ if(pk) pk.sync(); if(row){ row.querySelector('.ls-v').textContent = t; row.setAttribute('aria-label', o.setup + ': ' + t + '. ' + (o.moreLabel || 'More options') + ' (opens Details)'); } },
       open: openAll, why: why, details: det
     };
+  }
+  /* ---------------------------------------------- the standard frame */
+  /* docs/tools-frame-2026-11.md (F4; per tool notes in docs/tools-frame-notes/precalculus.md). studioFrame mounts
+     std: the bar's one line is the page's lede; Explore's head is the tool's question (STD.task) over its "Start
+     here" cue (the cue's own line hides, so it is not said twice); a scenario select becomes the stage's one
+     dropdown (stagePick; the select stays in More options, hidden, and keeps driving the tool); a drill problem
+     gets the hint ladder (the method at once, Show the answer after one real try) and ends on the finished card
+     (STD.takeaway, New problem, the worked solution, the steps, the lesson). */
+  var STD = {
+    'exp-log-lab': { task: 'How do exponentials and logs behave?', takeaway: {
+      table: 'Equal differences over equal steps mean linear; equal ratios mean exponential.',
+      model: 'Two points give the growth factor: divide the outputs, then take the root for the gap in x.',
+      inverse: 'y = b^x and y = log_b x undo each other: (a, c) on one graph means (c, a) on the other.',
+      rules: 'log(uv) = log u + log v, log(u/v) = log u − log v, and log(u^k) = k log u.',
+      semilog: 'Exponential data plotted with log₁₀ y falls on a line whose slope is log₁₀ b.',
+      '*': 'A linear function adds the same amount over equal steps; an exponential function multiplies by the same factor.' } },
+    'function-lab': { task: 'What does each parameter do to the graph?', takeaway: {
+      rational: 'A vertical asymptote x = a means f(x) → ±∞ as x → a from at least one side; a horizontal asymptote y = c means f(x) → c as x → ∞ or −∞.',
+      exponential: 'For y = a·b^x + d, the horizontal asymptote is y = d.',
+      '*': 'A change inside the function acts on the inputs (sideways); a change outside acts on the outputs (up and down).' } },
+    'polar-graphs': { task: 'How does r change as θ turns?', takeaway: 'r is the distance from the pole at each angle θ; a negative r is plotted in the opposite direction.' },
+    'poly-rational': { task: 'What does each factor do to the graph?', takeaway: 'A numerator factor gives a zero, a factor left in the denominator gives a vertical asymptote, and a factor that cancels completely gives a hole.' },
+    'rate-of-change': { task: 'How do secant slopes show concavity?', takeaway: 'When the average rates of change over equal steps increase, the graph is concave up; when they decrease, concave down.' },
+    'regression-lab': { task: 'Which model fits the data?', takeaway: 'A good model leaves a residual plot with no pattern.' },
+    'sinusoid-builder': { task: 'Which a, d, period and shift fit the points?', takeaway: 'The amplitude is half of (max − min), the midline is their average, and the period is the length of one full cycle.' },
+    'symbolic-steps': { task: 'Is the rewrite equal to the original?', takeaway: {
+      'single-power': 'Multiply exponents for a power of a power; add them for a product of powers with the same base.',
+      'single-log': 'A sum of logs is the log of a product, and a coefficient in front of a log becomes an exponent.',
+      'exp-eq': 'Take the log of both sides to bring the variable down from the exponent.',
+      'log-eq': 'Rewrite log_b M = c as M = b^c, then check each answer in the original logs.',
+      'quad-ex': 'Let u = e^x, solve the quadratic, and keep only positive u, since e^x > 0.',
+      'inv-trig': 'arcsin and arctan give angles in [−π/2, π/2]; arccos gives angles in [0, π].',
+      'trig-eq': 'Find the reference angle, then every angle in the interval where the function has that sign.',
+      'trig-id': 'Match the expression to one identity, then read off the single function and its angle.',
+      '*': 'A correct rewrite has the same value as the original at every input in the domain.' } },
+    'unit-circle': { task: 'How do sine and cosine come from the circle?', takeaway: {
+      radian: 'An angle of θ radians cuts an arc of length θ on the unit circle, so one full turn is 2π.',
+      '*': 'At angle θ on the unit circle, the point is (cos θ, sin θ).' } },
+    'vectors-matrices': { task: 'How do parameters and matrices move points?', takeaway: {
+      param: 'A parametric path gives x and y as functions of t: each t gives one point.',
+      prates: 'The average rate of change of x(t) on [a, b] is (x(b) − x(a)) ÷ (b − a), and the same for y(t).',
+      vectors: 'Add vectors component by component; a scalar multiplies every component.',
+      transform: 'A 2 × 2 matrix sends each point to a new point; its columns are where (1, 0) and (0, 1) go.',
+      inverse: 'A 2 × 2 matrix has an inverse exactly when its determinant is not 0.',
+      '*': 'A 2 × 2 matrix sends each point to a new point; its columns are where (1, 0) and (0, 1) go.' } }
+  };
+  function isStd(s){ return !!(s && s.task && s.root && s.root.classList.contains('ls-std')); }
+  function stdExplore(s, slug, list){
+    var t = STD[slug] || {}, c = list[0], tt = c && c.querySelector('.bt-cue-t');
+    list.forEach(function(x){ x.classList.add('ls-std-cue'); });
+    function paint(){ s.task({ kicker: 'Explore', title: esc(t.task || ''), todo: tt ? tt.innerHTML : '' }, 'explore'); }
+    paint();
+    // A tool that rewrites its cue (a new function, a new view) rewrites the line.
+    if(tt && window.MutationObserver) new MutationObserver(paint).observe(tt, { childList: true, characterData: true, subtree: true });
+  }
+  /* chipPick(s, box, { label | label(), mode, chip: '.x-chip', groups(buttons, items) }) -> picker: a row of
+     scenario chips as the stage's one dropdown. The chips stay in the page, hidden; a pick clicks its chip, so the
+     tool's own handler runs; the dropdown follows when the tool rebuilds the chips or presses one itself. */
+  function chipPick(s, box, o){
+    o = o || {};
+    function btns(){ return Array.prototype.slice.call(box.querySelectorAll(o.chip || 'button[data-id]')); }
+    function idOf(b, i){ return b.getAttribute(o.attr || 'data-id') || String(i); }
+    function spec(){
+      var bs = btns(), on = bs.filter(function(b){ return b.getAttribute('aria-pressed') === 'true' || b.classList.contains('is-on'); })[0];
+      var items = bs.map(function(b, i){ return { value: idOf(b, i), label: (b.getAttribute('aria-label') || b.textContent).replace(/\s+/g, ' ').trim() }; });
+      return { label: (typeof o.label === 'function' ? o.label() : o.label) || box.getAttribute('aria-label') || 'Choose',
+        groups: o.groups ? o.groups(bs, items) : [{ label: '', items: items }], value: on ? idOf(on, bs.indexOf(on)) : null, count: !o.groups,
+        onChange: function(v){ var b = btns().filter(function(x, i){ return idOf(x, i) === String(v); })[0]; if(b) b.click(); } };
+    }
+    var p = s.picker(spec(), o.mode || undefined), tm = 0;
+    box.classList.add('ls-std-moved');
+    if(window.MutationObserver) new MutationObserver(function(){ clearTimeout(tm); tm = setTimeout(function(){ p.set(spec()); }, 0); })
+      .observe(box, { childList: true, subtree: true, attributes: true, attributeFilter: ['aria-pressed', 'class'] });
+    return p;
+  }
+  /* stagePick(s, select, { label, mode }) -> { picker, sync() }: a tool's own select as the stage's one grouped
+     dropdown (optgroups kept). A pick sets the select and fires its change, so the tool's handler runs as before;
+     the select's own control is hidden. sync() after the tool rebuilds or sets the select itself. */
+  function stagePick(s, sel, o){
+    function opt(x){ return { value: x.value, label: x.textContent }; }
+    function spec(){
+      var gs = [], loose = [];
+      Array.prototype.forEach.call(sel.children, function(c){
+        if(c.tagName === 'OPTGROUP') gs.push({ label: c.label, items: Array.prototype.map.call(c.children, opt) });
+        else if(c.tagName === 'OPTION') loose.push(opt(c));
+      });
+      if(loose.length) gs.unshift({ label: '', items: loose });
+      return { label: o.label, groups: gs, value: sel.value, count: o.count && gs.length === 1, onChange: function(v){
+        if(sel.value === String(v)) return;
+        sel.value = v; sel.dispatchEvent(new Event('change', { bubbles: true }));
+      } };
+    }
+    var p = s.picker(spec(), o.mode || undefined);
+    sel.addEventListener('change', function(){ p.value(sel.value); });
+    sel.addEventListener('ls-sync', function(){ p.value(sel.value); });
+    (sel.closest('.bt-ctl') || sel).classList.add('ls-std-moved');
+    return { picker: p, sync: function(){ p.set(spec()); } };
+  }
+  /* The finished card for a drill problem (the dock's steps step aside; "Review your steps" brings them back). */
+  function stdDone(s, area, o, right, total, m, type){
+    var t = STD[o.slug] || {}, tk = t.takeaway && typeof t.takeaway === 'object' ? t.takeaway[type] || t.takeaway['*'] || '' : t.takeaway, again = area.querySelector('.cd-again'), steps = area.querySelector('.cd-steps');
+    var links = [{ label: 'Worked solution', open: 'why' }, { label: 'Review your steps', onClick: function(){
+      s.done(false, m);
+      var f = steps && steps.querySelector('.cd-step'); if(f && f.scrollIntoView) f.scrollIntoView({ block: 'nearest' });
+      if(again) again.focus({ preventScroll: true });
+    } }];
+    Array.prototype.slice.call(area.querySelectorAll('.bt-keep-links a')).slice(0, 2).forEach(function(a){
+      var k = a.querySelector('.bt-keep-k');
+      links.push({ label: (k ? k.textContent + ': ' : '') + a.textContent.replace(k ? k.textContent : '', '').trim(), href: a.getAttribute('href') });
+    });
+    s.done({ kicker: 'Finished', title: total === 1 ? (right ? 'Right the first time' : 'Not right the first time') : right + ' of ' + total + ' steps right the first time',
+      text: tk ? esc(tk) : '', next: again ? { label: again.textContent, onClick: function(){ again.click(); } } : null, links: links }, m);
   }
   /* The "head" line of an explain() box as plain caption html. */
   function sayHead(el){ var h = el && el.querySelector('.bt-say-h'); return h ? h.innerHTML : ''; }
 
   window.ApPrecalcTools = {
+    isStd: isStd, stagePick: stagePick, chipPick: chipPick,
     studioOf: studioOf, studioPane: studioPane, sayHead: sayHead,
     modes: modes, reduced: reduced, cue: cue, moreHtml: moreHtml, explain: explain,
     esc: esc, F: F, nid: nid, mount: mount, frame: frame, kindPicker: kindPicker, keepGoing: keepGoing, slider: slider, choiceSelect: choiceSelect, announcer: announcer,

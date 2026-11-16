@@ -175,7 +175,9 @@
     comp: 'Let θ be the inner angle; draw a right triangle from the given ratio and choose the sign from θ\'s quadrant.',
     k: 'Factor out what the identity needs: 2 sin x cos x = sin(2x).',
     n: 'Use the double-angle or Pythagorean identity on this part only.',
-    d: 'cos(2x) = 2cos²x − 1.'
+    d: 'cos(2x) = 2cos²x − 1.',
+    // A trig rewrite's last step: the identity it matches (the power and log rules above do not apply).
+    idA: 'Match the expression to one identity: sin(a ± b) = sin a cos b ± cos a sin b, cos(a + b) = cos a cos b − sin a sin b, or a double-angle identity.'
   };
   function quiz(host, data){
     var cur = null;
@@ -186,7 +188,7 @@
       extra: function(el, p){ cur = p.fig ? figure(el, p) : null; },
       onStep: function(s){ if(cur) cur.done(s.key); },
       onTry: function(s, t){ if(!cur || t.ok || t.shown) return false; return cur.yours(s.key, t.value); },
-      method: function(s, p){ return (p.type === 'trig-eq' && METHOD['t' + s.key]) || METHOD[s.key] || ''; }
+      method: function(s, p){ return (p.type === 'trig-eq' && METHOD['t' + s.key]) || (p.type === 'trig-id' && s.key === 'A' && METHOD.idA) || METHOD[s.key] || ''; }
     });
   }
   function figure(el, p){

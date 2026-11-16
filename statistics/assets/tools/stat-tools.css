@@ -345,3 +345,11 @@ body[data-app^="tool-"] .stat-hero .eyebrow{margin-bottom:4px;}
 .ls-root .ls-drill-pics .cd-n{display:none;}
 .ls-root .ls-drill-pics .cd-step{margin:0;padding:0;background:none;box-shadow:none;border:0;}
 .ls-root .ls-drill-pics .bt-actions .btn-press{width:100%;}
+
+/* The standard frame (docs/tools-frame-2026-11.md, F4): the "Start here" cue is the side panel's "what to do"
+   line, and a scenario select is the stage's dropdown, so their own copies hide (they stay in the page). */
+.ls-std .bt-cue.ls-std-cue,.ls-std .ls-std-moved{display:none;}
+.ls-std .cd-step .bt-actions{flex-wrap:wrap;}
+.ls-std .cd-step .bt-actions > .ls-hintr{flex:1 1 220px;}
+.ls-std .cd-step .ls-hintc{margin:10px 0 0;}
+@media (max-width:640px){ .ls-std .cd-step .bt-actions > .ls-hintr{flex:1 1 100%;} }

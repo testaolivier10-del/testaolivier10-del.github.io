@@ -80,6 +80,9 @@
   });
 
   /* =========================================================== explore */
+  var CUE = { parts: 'Drag the bound b along the x-axis: the two areas of the parts picture always fill the rectangle uv.',
+    pf: 'Move x and watch the two simple fractions add up to the whole one.',
+    imp: 'Move b toward the limit and watch whether the area settles to a number.' };
   var SCENES = [{ id: 'parts', label: 'Parts' }, { id: 'pf', label: 'Partial fractions' }, { id: 'imp', label: 'Improper' }];
   var PCHIP = { xex: 'x eˣ', xcos: 'x cos x', lnx: 'ln x', xlnx: 'x ln x', x2ex: 'x² eˣ' };
   var ICHIP = { p2: '1/x² to ∞', p1: '1/x to ∞', ph: '1/√x to ∞', ex: 'e⁻ˣ to ∞', z2: '1/√x near 0', z1: '1/x² near 0' };
@@ -109,6 +112,8 @@
       scene = s;
       $$('.im-scene').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-s') === s)); });
       var row = $('.im-swaprow'); if(row) row.hidden = s !== 'parts';
+      // The first step names this scene's own slider (it named the parts picture in every scene).
+      cue.el.querySelector('.bt-cue-t').textContent = CUE[s] || CUE.parts;
       chips(); sliderFor(); draw();
     }
     function chips(){
@@ -283,7 +288,7 @@
     }
     function studio(pane, s){
       LS = s;
-      var sp = T.studioPane(pane, s, { stage: [$('.im-fig')], dock: [$('.im-ctl')], why: [$('.im-say')], details: [$('.im-nums')], moreLabel: 'Swap u and dv, keyboard' });
+      var sp = T.studioPane(pane, s, { chips: { box: '.im-chips', chip: '.im-chip', label: 'Integral' }, stage: [$('.im-fig')], dock: [$('.im-ctl')], why: [$('.im-say')], details: [$('.im-nums')], moreLabel: 'Swap u and dv, keyboard' });
       draw();
       if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.im-handle'), text: 'Drag the bound b' });
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(draw, 60); }).observe($('.im-fig')); }

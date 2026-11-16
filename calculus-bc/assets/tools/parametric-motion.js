@@ -350,6 +350,8 @@
       s.add('stage', stage, o);
       var dock = document.createElement('div'); dock.className = 'calc-ls-dock pm-ls-dock'; dock.appendChild(host.querySelector('.pm-ctl'));
       s.add('dock', dock, o);
+      // The standard frame: the scenario is the stage's dropdown (the chips stay, hidden, and keep driving the tool).
+      if(T.isStd(s)) T.chipPick(s, chips, { label: 'Path', mode: 'explore', chip: '.pm-chip' });
       var why = document.createElement('div'); why.className = 'ls-sec calc-ls-why pm-ls-why'; why.appendChild(cue.el); why.appendChild(host.querySelector('.pm-say'));
       s.add('why', why, o);
       why.querySelectorAll('details.bt-why').forEach(function(d){ d.open = true; });

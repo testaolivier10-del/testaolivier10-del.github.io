@@ -90,7 +90,11 @@
     if(!sets.length) sets = EL.DATASET_ORDER.slice();
     var st = { view: views[0], a: 2, m: 3, b: 1.5, k: 3, ib: 2, t: 1, fold: 0, rule: 'product', rb: 2, u: 2, v: 4, kp: 3, set: sets[0], logy: 0, touched: false };
     var LS = null, anim = null;
-    var cue = T.cue('Move the sliders and watch the table: one column adds the same amount, the other multiplies by the same factor.');
+    var VIEW_CUE = { ratios: 'Move the sliders and watch the table: one column adds the same amount, the other multiplies by the same factor.',
+      inverse: 'Change the base, then tap Reflect in y = x: the log graph is the mirror image of the exponential.',
+      rules: 'Pick a rule, then move u and v: both sides of the rule keep the same value.',
+      semilog: 'Pick a data set, then switch the vertical axis to log₁₀ y: exponential data falls on a line.' };
+    var cue = T.cue(VIEW_CUE.ratios);
     host.innerHTML =
       '<section class="bt-problem el-card" aria-label="Exponential and log lab">' +
         '<div class="el-stage">' +
@@ -153,6 +157,8 @@
     }
     function setView(v){
       pause(); st.view = v; st.fold = 0;
+      // The first step names this view's own controls (it named the Ratios sliders in every view).
+      cue.el.querySelector('.bt-cue-t').textContent = VIEW_CUE[v] || VIEW_CUE.ratios;
       if(viewsEl) viewsEl.querySelectorAll('.bt-mode').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === v)); });
       controls(); draw(true);
     }

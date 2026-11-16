@@ -473,6 +473,8 @@
       s.add('stage', stage, o);
       var dock = document.createElement('div'); dock.className = 'calc-ls-dock ca-ls-dock'; dock.appendChild(host.querySelector('.ca-ctl'));
       s.add('dock', dock, o);
+      // The standard frame: the function (or the scene) is the stage's dropdown.
+      if(T.isStd(s)) T.chipPick(s, chips, { label: function(){ return st.view === 'curves' ? 'Function' : 'Scene'; }, mode: 'explore', chip: '.ca-chip' });
       var why = document.createElement('div'); why.className = 'ls-sec calc-ls-why ca-ls-why'; why.appendChild(cue.el); why.appendChild(host.querySelector('.ca-say'));
       s.add('why', why, o);
       why.querySelectorAll('details.bt-why').forEach(function(d){ d.open = true; });
@@ -549,7 +551,8 @@
         var s = studioNow();
         if(s) setTimeout(function(){ s.caption(String(p.text).replace(/<\/?p[^>]*>/g, ' ').trim(), 'quiz'); }, 0);
       },
-      method: function(s, p){ return s.key === 'x' && p.type === 'optimize' ? 'Set the derivative of the objective equal to 0 and solve, inside the domain.' : METHOD[s.key]; },
+      // The f′-graph problem's 'max' step asks for a relative maximum (a choice), not the absolute maximum value.
+      method: function(s, p){ return s.key === 'x' && p.type === 'optimize' ? 'Set the derivative of the objective equal to 0 and solve, inside the domain.' : s.key === 'max' && s.kind === 'choice' ? 'Look for the x-values where the graph of f′ crosses the axis from above to below: f′ changes from positive to negative there.' : METHOD[s.key]; },
       onTry: function(s, t, api){
         var o = MARKS[kind] || {}; o = Object.assign({ v: api.problem.scene === 'can' ? 'r' : 'x', f: api.problem.fig.f }, o);
         return T.tryOn(function(){ return fig; }, o)(s, t);
