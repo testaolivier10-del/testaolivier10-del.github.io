@@ -325,6 +325,8 @@
     function studio(pane, s){
       LS = s;
       T.studioPane(pane, s, { stage: [el.stage], dock: [el.chips, el.zoom], why: [el.why], details: [el.det] });
+      // The standard frame: the function is the stage's dropdown.
+      if(T.isStd(s)){ T.stagePick(s, el.chips.querySelector('select'), { label: 'Function', mode: 'explore', count: true }); el.chips.classList.add('ls-std-moved'); }
       if(s.mode() === 'explore') s.hint({ target: el.range, text: 'Drag to zoom in' });
       render(true);
       redraw();

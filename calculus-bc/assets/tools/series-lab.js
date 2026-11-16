@@ -228,7 +228,7 @@
       T.moreHtml('<div class="sl-more-b"></div><p class="bt-small">Keyboard: every chip and slider is reachable with Tab; arrow keys move a slider (the minus and plus buttons step it). In Power series, the marker on the number line follows the x slider.</p>', 'more terms, the term values') +
       '<div class="sl-nums"></div><p class="sr-only sl-live"></p></section>';
     var say = T.announcer($('.sl-live'));
-    var cue = T.cue('Add terms with the slider and watch the partial sums settle, or not. Past 40 it jumps by ×10, up to a million terms. Then open Why for the test that decides it.');
+    var cue = T.cue('Add terms with the slider and watch the partial sums settle, or not. Past 40 it jumps by ×10, up to a million terms. Then open Explanation for the test that decides it.');
     $('.sl-ctl').insertBefore(cue.el, $('.sl-ctl').firstChild);
     function act(){ if(!touched){ touched = true; cue.done(); } }
     var nSl = T.slider({ label: 'Terms added, N', min: 1, max: NIDX_MAX, step: 1, value: N, decimals: 0, onInput: function(v){ act(); N = idxToN(v); nOut(); draw(); sayNum(); } });
@@ -359,7 +359,7 @@
     function sayPow(){ var at = S.powerAt(Pw, x, mN); say('x = ' + T.F(x, 2) + '. Ratio test limit ' + (isFinite(at.L) ? T.F(at.L, 3) : 'infinite') + (at.where === 'lo' || at.where === 'hi' ? ': an endpoint, tested on its own.' : at.L < 1 ? ': converges.' : ': diverges.')); }
     function studio(pane, s){
       LS = s;
-      var sp = T.studioPane(pane, s, { stage: [$('.sl-fig')], dock: [$('.sl-ctl')], why: [$('.sl-say'), $('.sl-boardbox')], details: [$('.sl-nums')], moreLabel: 'More terms, the term values' });
+      var sp = T.studioPane(pane, s, { chips: { box: '.sl-chips', chip: '.sl-chip', label: 'Series' }, stage: [$('.sl-fig')], dock: [$('.sl-ctl')], why: [$('.sl-say'), $('.sl-boardbox')], details: [$('.sl-nums')], moreLabel: 'More terms, the term values' });
       draw();
       if(s.mode() === 'explore') s.hint({ target: nSl.input, text: 'Add terms' });
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(draw, 60); }).observe($('.sl-plot')); }

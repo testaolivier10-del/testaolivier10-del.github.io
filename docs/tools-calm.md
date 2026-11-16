@@ -87,6 +87,8 @@ F3 (AP Bio, Chem, Physics 1) added three small std-only shared changes: the firs
 is out of sight (a mode switch in the bar is not "use"); a long name on a phone shrinks with an ellipsis instead of
 wrapping the bar's buttons; the shell does not open Why by itself on a solution while a finished card shows. A locked
 tool opens in the std bar when its mount carries `data-ls-std` (the course core sets it; `adopt`).
+AP Calculus AB and BC, AP Precalculus and AP Statistics mount std from their kits (`calc-tools.js`, `pcalc-tools.js`,
+`stat-tools.js`: `stagePick`, `chipPick`, `STD` copy; docs/tools-frame-notes/calculus.md).
 
 ### Switching a tool on (per course frame; P1)
 - **Ochem:** `studio: true` in `ochem/assets/tools-registry.js`, then `node scripts/build-tool-pages.mjs` (adds the

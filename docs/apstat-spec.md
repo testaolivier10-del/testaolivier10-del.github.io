@@ -354,3 +354,5 @@ and the normal approximation to the binomial; `frq-scoring`; `set-format`).
 - [ ] Remove `onSale: false` from `COURSES.apstat`; bump the `sw.js` cache (v82 at launch, so v83); grant owner access.
 - [ ] Merge the PR (this puts AP® Statistics Premium on sale).
 - [ ] Optional: an AP® Statistics teacher reviews the course (the Beta note stays until then).
+
+- 2026-11-16 (tools frame F4): every tool uses the standard tool frame (stage dropdown, hint ladder, finished card) from its course kit; notes in `docs/tools-frame-notes/`.

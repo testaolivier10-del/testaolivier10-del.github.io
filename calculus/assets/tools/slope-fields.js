@@ -293,7 +293,7 @@
     }
     function studio(pane, s){
       LS = s;
-      var sp = T.studioPane(pane, s, { stage: [$('.sf-fig')], dock: [$('.sf-ctl')], why: [$('.sf-say')], details: [$('.sf-nums'), $('.sf-steps')], moreLabel: 'Field density, room temperature' });
+      var sp = T.studioPane(pane, s, { chips: { box: '.sf-chips', chip: '.sf-chip', label: 'Differential equation' }, stage: [$('.sf-fig')], dock: [$('.sf-ctl')], why: [$('.sf-say')], details: [$('.sf-nums'), $('.sf-steps')], moreLabel: 'Field density, room temperature' });
       build();
       if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.sf-handle'), text: 'Drag the starting point' });
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(build, 60); }).observe($('.sf-plot')); }

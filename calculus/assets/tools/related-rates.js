@@ -462,6 +462,8 @@
       s.add('stage', stage, o);
       var dock = document.createElement('div'); dock.className = 'calc-ls-dock rr-ls-dock'; dock.appendChild(host.querySelector('.rr-ctl'));
       s.add('dock', dock, o);
+      // The standard frame: the scene is the stage's dropdown.
+      if(T.isStd(s)) T.chipPick(s, chips, { label: 'Scene', mode: 'explore', chip: '.rr-sc', attr: 'data-s' });
       var why = document.createElement('div'); why.className = 'ls-sec calc-ls-why rr-ls-why'; why.appendChild(cue.el); why.appendChild(host.querySelector('.rr-say'));
       s.add('why', why, o);
       why.querySelectorAll('details.bt-why').forEach(function(d){ d.open = true; });

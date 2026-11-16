@@ -375,3 +375,11 @@ body[data-app^="tool-"] .calc-hero .eyebrow{margin-bottom:4px;}
 :root[data-theme="dark"] .calc-plot text.cd-pos{fill:#8FD0F5;} :root[data-theme="dark"] .calc-plot text.cd-neg{fill:#F29A5C;}
 .ls-root.ls-phone .calc-plot .cd-mlab{font-size:13px;}
 :root[data-theme="dark"] .calc-plot text.cd-mlab{stroke:var(--white);}
+
+/* The standard frame (docs/tools-frame-2026-11.md, F4): the "Start here" cue is the side panel's "what to do"
+   line, and a scenario select is the stage's dropdown, so their own copies hide (they stay in the page). */
+.ls-std .bt-cue.ls-std-cue,.ls-std .ls-std-moved{display:none;}
+.ls-std .cd-step .bt-actions{flex-wrap:wrap;}
+.ls-std .cd-step .bt-actions > .ls-hintr{flex:1 1 220px;}
+.ls-std .cd-step .ls-hintc{margin:10px 0 0;}
+@media (max-width:640px){ .ls-std .cd-step .bt-actions > .ls-hintr{flex:1 1 100%;} }

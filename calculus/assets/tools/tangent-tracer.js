@@ -359,7 +359,8 @@
       } else if(c.kind === 'smooth'){
         head = isFinite(sec) ? 'Secant slope <b>' + F3(sec) + '</b>. As h → 0 it closes in on <b>f′(' + A + ') = ' + F3(slope) + '</b>.' : 'Q is off the graph: f(' + sv(a + S.h) + ') is not defined. Move Q to the other side.';
         // First visit: the one thing to do first.
-        if(S.fresh && isFinite(sec)) head = '<b>Start here:</b> slide h toward 0. The secant slope, now <b>' + F3(sec) + '</b>, closes in on f′(' + A + ').';
+        // The standard frame's task line already says to slide h, so the caption keeps only the reading.
+        if(S.fresh && isFinite(sec)) head = (LS && T.isStd(LS) ? '' : '<b>Start here:</b> slide h toward 0. ') + 'The secant slope, now <b>' + F3(sec) + '</b>, closes in on f′(' + A + ').';
         if(S.tan && tanEq) head = 'Tangent line at x = ' + A + ': <b>' + tx('$' + tanEq.tex + '$') + '</b>. Its slope is f′(' + A + ') = ' + F3(slope) + '.';
         if(!S.fresh || S.tan) right.push({ html: 'f′(' + A + ') = ' + F3(slope), tone: 'good' });   // pass 2: the limit shows once the student acts, not before
       } else if(c.kind === 'corner'){
@@ -588,6 +589,8 @@
       s.add('stage', stage, o);
       var dock = q('.tt-dock'); dock.classList.add('tt-ls-dock');
       s.add('dock', dock, o);
+      // The standard frame: the function is the stage's dropdown (Your own f keeps its box in the dock).
+      if(T.isStd(s)) T.stagePick(s, pick.select, { label: 'Function', mode: 'explore', count: true });
       var w = el('div', 'ls-sec tt-ls-why'); w.appendChild(q('.tt-why')); s.add('why', w, o);
       var d = el('div', 'ls-sec tt-ls-det'); d.appendChild(q('.tt-det'));
       Array.prototype.slice.call(pane.querySelectorAll(':scope > *')).forEach(function(k){ if(k.textContent.trim()) d.appendChild(k); });
@@ -637,20 +640,7 @@
       });
       return p;
     }
-    T.drill(host, data, { slug: SLUG, noun: 'drill', typeLabel: 'Kind of problem',
-      types: TT.TYPES.map(function(t){ return { value: t.value, label: t.label }; }),
-      generate: function(r, ctx, type){ return texify(TT.generate(r, ctx, type)); },
-      title: function(p){ var t = TT.TYPES.filter(function(x){ return x.value === p.type; })[0]; return t ? t.label : 'Practice problem'; },
-      detailsHtml: '<details class="tt-keys"><summary>Keyboard</summary><p class="bt-small">Sketch steps: Tab to a point, then ↑ ↓ move it (Page Up and Page Down move it farther), 0 puts it on the axis, Enter keeps it where it is. Every other step is a form: Tab, type or choose, then Enter.</p></details>',
-      extra: function(el, p){ Q.p = p; Q.figState = { marks: {}, typed: null, mine: {} }; buildFig(el); },
-      onStep: function(s){ afterStep(s); },
-      onInput: function(s, raw){ if(s.line){ var g = raw ? T.fnOf(raw, ['x']) : null; Q.figState.typed = g; redrawFig(); } },
-      onTry: function(s, t){ return tryOn(s, t); },
-      note: function(s, t){ return s.kind === 'expr' && s.line && t.raw ? lineNote(t.raw, s.line) : ''; },
-      method: function(s, p){ return p.type === 'tanline' && s.key === 'slope' && s.kind === 'num' ? 'Differentiate f, then put x = a into f′.' : METHOD[p.type + '.' + s.key] || METHOD[s.key] || ''; },
-      custom: function(s){ return sketchStep(s); }
-    });
-
+    // Defined before the drill starts: the hint ladder reads the method as the first problem is drawn.
     var METHOD = {
       'estimate.slope': 'Count the grid squares between the two marked points on the tangent line: rise (up or down) over run (across).',
       compare: 'Picture the tangent line at B: is it steeper upward than the one at a, or less steep? Compare slopes, not heights.',
@@ -669,6 +659,21 @@
       continuous: 'Continuous means no hole and no jump: you can draw through that x without lifting the pencil.'
     };
     METHOD['tanline.value'] = METHOD.value;
+
+    T.drill(host, data, { slug: SLUG, noun: 'drill', typeLabel: 'Kind of problem',
+      types: TT.TYPES.map(function(t){ return { value: t.value, label: t.label }; }),
+      generate: function(r, ctx, type){ return texify(TT.generate(r, ctx, type)); },
+      title: function(p){ var t = TT.TYPES.filter(function(x){ return x.value === p.type; })[0]; return t ? t.label : 'Practice problem'; },
+      detailsHtml: '<details class="tt-keys"><summary>Keyboard</summary><p class="bt-small">Sketch steps: Tab to a point, then ↑ ↓ move it (Page Up and Page Down move it farther), 0 puts it on the axis, Enter keeps it where it is. Every other step is a form: Tab, type or choose, then Enter.</p></details>',
+      extra: function(el, p){ Q.p = p; Q.figState = { marks: {}, typed: null, mine: {} }; buildFig(el); },
+      onStep: function(s){ afterStep(s); },
+      onInput: function(s, raw){ if(s.line){ var g = raw ? T.fnOf(raw, ['x']) : null; Q.figState.typed = g; redrawFig(); } },
+      onTry: function(s, t){ return tryOn(s, t); },
+      note: function(s, t){ return s.kind === 'expr' && s.line && t.raw ? lineNote(t.raw, s.line) : ''; },
+      method: function(s, p){ return p.type === 'tanline' && s.key === 'slope' && s.kind === 'num' ? 'Differentiate f, then put x = a into f′.' : METHOD[p.type + '.' + s.key] || METHOD[s.key] || ''; },
+      custom: function(s){ return sketchStep(s); }
+    });
+
 
     /* ---------------- the stage figure ---------------- */
     function buildFig(host2){

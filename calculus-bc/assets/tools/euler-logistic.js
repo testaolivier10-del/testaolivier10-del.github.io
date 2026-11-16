@@ -301,7 +301,7 @@
     function relayout(){ if(scene === 'euler') build(); else drawLog(); }
     function studio(pane, s){
       LS = s;
-      var sp = T.studioPane(pane, s, { stage: [$('.el-fig')], dock: [$('.el-ctl')], why: [$('.el-say')], details: [$('.el-nums')], moreLabel: 'Step triangles, keyboard' });
+      var sp = T.studioPane(pane, s, { chips: { box: '.el-chips', chip: '.el-chip' }, stage: [$('.el-fig')], dock: [$('.el-ctl')], why: [$('.el-say')], details: [$('.el-nums')], moreLabel: 'Step triangles, keyboard' });
       relayout();
       if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.el-handle'), text: 'Drag the starting point' });
       if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(relayout, 60); }).observe($('.el-fig')); }

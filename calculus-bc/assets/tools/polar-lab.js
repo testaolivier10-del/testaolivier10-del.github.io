@@ -380,6 +380,9 @@
       s.add('stage', stage, o);
       var dock = document.createElement('div'); dock.className = 'calc-ls-dock pl-ls-dock'; dock.appendChild(host.querySelector('.pl-ctl'));
       s.add('dock', dock, o);
+      // The standard frame: the scenario is the stage's dropdown (the chips stay, hidden, and keep driving the tool).
+      if(T.isStd(s)) T.chipPick(s, chips, { label: function(){ return st.mode === 'two' ? 'Two curves' : 'Curve'; }, mode: 'explore', chip: '.pl-chip' });
+      if(T.isStd(s) && chips.closest('.pl-pick')) chips.closest('.pl-pick').classList.add('ls-std-moved');
       var why = document.createElement('div'); why.className = 'ls-sec calc-ls-why pl-ls-why'; why.appendChild(cue.el); why.appendChild(host.querySelector('.pl-say'));
       s.add('why', why, o);
       why.querySelectorAll('details.bt-why').forEach(function(d){ d.open = true; });

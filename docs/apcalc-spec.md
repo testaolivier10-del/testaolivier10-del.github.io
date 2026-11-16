@@ -249,3 +249,5 @@ a tool's data file exists and its topic is published.
   unit weights, the 2027 scaling and score cut-offs, which trainers are free, the calculator link, form 2's two
   particle-motion questions, notes that print item answers, lesson weight, tool polish).
 - Optional: an AP® Calculus AB teacher to review the course (the Beta note stays until then).
+
+- 2026-11-16 (tools frame F4): every tool uses the standard tool frame (stage dropdown, hint ladder, finished card) from its course kit; notes in `docs/tools-frame-notes/`.

@@ -307,8 +307,11 @@
       if(m === 'between' && !(S.a < S.b)){ S.a = S.mu - S.sd; S.b = S.mu + S.sd; }
       draw();
     }
+    var dpk = null;
+    function dval(){ return S.dist === 'binom' ? 'b:' + (S.bs && S.bs.id) : 'n:' + (S.ns && S.ns.id); }
     function setDist(v){
       S.dist = v; distSeg.set(v);
+      if(dpk) dpk.value(dval());
       q('.da-dn').hidden = v !== 'normal'; q('.da-db').hidden = v !== 'binom';
       det.querySelector('.da-detn').hidden = v !== 'normal'; det.querySelector('.da-detb').hidden = v !== 'binom';
       if(LS && LS.hint && v === 'binom' && kSl) {}
@@ -490,6 +493,19 @@
       Array.prototype.slice.call(pane.querySelectorAll(':scope > *')).forEach(function(k){ if(k.textContent.trim() && !k.classList.contains('da-ex')) d.appendChild(k); });
       s.add('details', d, o);
       boot();
+      // The standard frame: every study, normal and binomial, in one grouped dropdown on the stage; a pick sets the
+      // distribution too (the two selects stay in Details, hidden, and follow).
+      if(T.isStd(s)){
+        var gs = [];
+        if(NS.length) gs.push({ label: 'Normal', items: NS.map(function(x){ return { value: 'n:' + x.id, label: x.name }; }) });
+        if(BS.length) gs.push({ label: 'Binomial', items: BS.map(function(x){ return { value: 'b:' + x.id, label: x.name }; }) });
+        dpk = s.picker({ label: 'Study', groups: gs, value: dval(), onChange: function(v){
+          act(); var id = v.slice(2), bin = v.charAt(0) === 'b';
+          if(bin) setBs(BS.filter(function(x){ return x.id === id; })[0]); else setNs(NS.filter(function(x){ return x.id === id; })[0]);
+          setDist(bin ? 'binom' : 'normal');
+        } }, 'explore');
+        [npick, bpick].forEach(function(x){ if(x) x.el.classList.add('ls-std-moved'); });
+      }
       if(s.mode() === 'explore') s.hint({ target: h1, text: 'Drag the boundary' });
     }
     function boot(){

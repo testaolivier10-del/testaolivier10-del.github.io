@@ -144,7 +144,8 @@
     }).join('') + '</select>';
     var s = el.querySelector('select');
     s.addEventListener('change', function(){ if(o.onChange) o.onChange(s.value); });
-    return { el: el, select: s, value: function(){ return s.value; }, set: function(v){ s.value = v; } };
+    // set() tells a stage dropdown that mirrors the select (stagePick) through 'ls-sync'.
+    return { el: el, select: s, value: function(){ return s.value; }, set: function(v){ s.value = v; try{ s.dispatchEvent(new Event('ls-sync')); }catch(e){} } };
   }
   function announcer(el){
     var t = null;
@@ -242,8 +243,10 @@
   /* cue(text) -> { el, done() }: the one first step, written next to the
      control it names ("Drag the slider to add base"). done() quiets it after
      the first action, so it stays as a label but stops shouting. */
+  var cues = [];
   function cue(text){
     var el = document.createElement('p');
+    cues.push(el);
     el.className = 'bt-cue';
     el.innerHTML = '<span class="bt-cue-k">Start here</span> <span class="bt-cue-t">' + text + '</span>';
     return { el: el, done: function(){ el.classList.add('is-done'); } };
@@ -554,9 +557,12 @@
     var area = fr.area;
     // Only the kinds this page has content for (contexts unlock with their units).
     var kinds = (o.types || []).filter(function(t){ type = t.value; var n = pickable().length; type = ''; return n > 0; });
+    var st = studioOf(app), std = isStd(st), kp = null;
     if(kinds.length > 1){
-      kindPicker(fr.pick, { label: o.typeLabel || 'Problem type', options: kinds, onChange: function(v){ type = v; seed = freshSeed(); draw(true); } });
+      kp = kindPicker(fr.pick, { label: o.typeLabel || 'Problem type', options: kinds, onChange: function(v){ type = v; seed = freshSeed(); draw(true); } });
     }
+    // The standard frame: the kind of problem is the stage's one dropdown (the select stays, hidden, in More options).
+    if(std && kp) stagePick(st, kp.select, { label: o.typeLabel || 'Problem type', mode: app.classList.contains('bt-pane-quiz') ? 'quiz' : null });
     var sd = studioDrill(app, area, o);
     function pickable(){ return contexts.filter(function(c){ return !type || (c.types ? c.types.indexOf(type) > -1 : c.mode ? c.mode === type : c.kind === type); }); }
     function pickCtx(r){ var ok = pickable(); return r.pick(ok.length ? ok : contexts); }
@@ -602,6 +608,9 @@
         }
         el.innerHTML = head + body + '<div class="bt-actions"><button type="submit" class="btn-press sm">Check</button></div><div class="cd-fb" role="status" aria-live="polite"></div>';
         host.appendChild(el);
+        // The standard frame's hint ladder: the method at once (Hint), Show the answer after one real try.
+        var lad = std ? st.hints({ hints: function(){ var m = ''; try{ m = methodText(); }catch(e){} return m ? [m] : []; }, answer: { label: 'Show the answer', onShow: function(){ reveal(); return ''; } } }) : null;
+        if(lad){ el.querySelector('.bt-actions').appendChild(lad.row); el.insertBefore(lad.card, el.querySelector('.cd-fb')); }
         var rowInputs = [];
         if(s.kind === 'row' || s.kind === 'coef'){
           rowsAll('[data-row="' + s.row + '"] [data-i]').forEach(function(td){
@@ -639,9 +648,9 @@
         api.answer = input ? function(v, d){ if(done) return; input.value = typeof v === 'number' ? (d != null ? M.fixed(v, d) : String(v)) : String(v); input.classList.remove('is-wrong', 'is-right'); input.dispatchEvent(new Event('input', { bubbles: true })); } : null;
         api.choose = s.kind === 'choice' ? function(k){ if(done) return; var c = el.querySelector('input[value="' + k + '"]'); if(c){ c.checked = true; c.dispatchEvent(new Event('change', { bubbles: true })); } } : null;
         if(o.onStepStart) o.onStepStart(s, api);
+        function methodText(){ var m = o.method ? o.method(s, p) : null; return m || s.method || METHOD[s.kind] || ''; }
         function methodHint(){
-          var m = o.method ? o.method(s, p) : null;
-          m = m || s.method || METHOD[s.kind] || '';
+          var m = methodText();
           return m ? '<p class="cd-method"><span class="cd-method-k">Method</span> ' + m + '</p>' : '';
         }
         function tell(v, right, shown){ if(o.onTry) try{ o.onTry(s, { value: v, right: right, shown: !!shown }, api); }catch(e){ try{ console.error(e); }catch(x){} } }
@@ -716,6 +725,13 @@
           // First miss: the slip it matches and one method hint. Show the
           // answer is offered from the second miss, so the hint gets a try.
           var generic = s.kind === 'vol' ? ' That is not where this point is. Look at the shape of the curve again.' : s.kind === 'choice' ? '' : ' Not this value.';
+          if(lad){
+            lad.attempt();
+            fb.innerHTML = '<span class="stat-mark no">Not yet</span>' + (notes.length ? '<ul class="cd-notes">' + notes.map(function(n){ return '<li>' + n + '</li>'; }).join('') + '</ul>' : generic) +
+              '<p class="bt-small cd-again-t">Change your answer and Check again.' + (lad.shown() ? '' : ' Hint has the method.') + '</p>';
+            if(sd) sd.wrong();
+            return;
+          }
           fb.innerHTML = '<span class="stat-mark no">Not yet</span>' + (notes.length ? '<ul class="cd-notes">' + notes.map(function(n){ return '<li>' + n + '</li>'; }).join('') + '</ul>' : generic) +
             methodHint() +
             (tries > 1 ? '<div class="bt-actions"><button type="button" class="bt-btn cd-show">Show the answer</button></div>' : '<p class="bt-small cd-again-t">Try again with the method above.</p>');
@@ -773,7 +789,7 @@
       if(o.onShow) o.onShow(m);
     }
     bar.addEventListener('click', function(e){ var b = e.target.closest('.bt-mode'); if(b) show(b.getAttribute('data-m'), true); });
-    var st = studioOf(app);
+    var st = studioOf(app), c0 = cues.length;
     o.explore(ex);
     var start = 'explore';
     try{
@@ -786,6 +802,7 @@
       st.modes({ el: bar, value: start });
       // After the switch, so the arrangement knows the mode it opens on.
       if(o.studio && o.studio.explore) o.studio.explore(ex, st);
+      if(isStd(st)) stdExplore(st, o.slug, cues.slice(c0));
     }
     show(start, false);
     return { explore: ex, quiz: qz, show: show, bar: bar };
@@ -821,7 +838,7 @@
     main.classList.add('ls-host');
     var s = window.LevlStudio.mount({
       title: h1 ? h1.textContent : slug, course: 'AP® Statistics', back: base() + 'tools.html', home: base(), slug: 'apstat-' + slug,
-      host: app,
+      host: app, std: true, lede: lede ? lede.textContent : '', autoSolution: false,
       // the second tab and its dock button, named for what is in it
       // the second tab and its dock button: a tool names it with
       // data-details-title on #app (set before mount); default "Numbers & setup".
@@ -856,10 +873,13 @@
     s.add('dock', area, only);
     if(more) s.add('details', more, only);
     if(about){ about.open = true; s.add('about', about, only); }
+    var cur = null;
     return {
       fresh: function(p){
+        cur = p;
         stage.innerHTML = ''; det.innerHTML = '<h3 class="ls-title-l">This problem</h3>';
-        why.innerHTML = '<h3 class="ls-title-l">Worked solution</h3><p class="ls-sub">It appears here once every step is answered.</p>';
+        // std: Why stays empty (and its button hidden) until the worked solution is in.
+        why.innerHTML = isStd(s) ? '' : '<h3 class="ls-title-l">Worked solution</h3><p class="ls-sub">It appears here once every step is answered.</p>';
         var extra = area.querySelector(':scope > .cd-extra'), fig = extra && (extra.children.length || extra.textContent.trim());
         var ctx = area.querySelector(':scope > .bt-context'), text = ctx ? Array.prototype.map.call(ctx.childNodes, plainText).join(' ').replace(/\s+/g, ' ').trim() : '';
         // The problem is read on the stage when there is no figure, or when
@@ -890,8 +910,17 @@
         }
         // The caption keeps each formula as rendered math (p̂, x̄, H₀), not its
         // plain reading ("p-hat", "H_0"); a studioAsk caption is cut from the text.
-        s.caption(onStage ? esc(o.studioCaption || (nSteps > 1 ? 'Answer one step at a time.' : stage.querySelector('.cd-pics') ? 'Tap the picture that fits, then Check.' : 'Answer, then Check.')) : o.studioAsk ? esc(text) : capHtml(ctx), m); s.pills([], 'left', m);
+        var todo = o.studioCaption || (nSteps > 1 ? 'Answer one step at a time.' : stage.querySelector('.cd-pics') ? 'Tap the picture that fits, then Check.' : 'Answer, then Check.');
+        if(isStd(s)){
+          s.done(false, m);
+          s.task({ kicker: 'Problem', title: esc(h2 ? h2.textContent : 'Practice problem'), todo: esc(todo) }, m);
+          s.caption(onStage ? '' : o.studioAsk ? esc(text) : capHtml(ctx), m); s.pills([], 'left', m);
+          return;
+        }
+        s.caption(onStage ? esc(todo) : o.studioAsk ? esc(text) : capHtml(ctx), m); s.pills([], 'left', m);
       },
+      // A wrong try in the standard frame: the pill says so on the stage (the step's own feedback has the note).
+      wrong: function(){ s.pills([{ html: 'Not yet', tone: 'warn' }], 'left', m); },
       done: function(right, total){
         var sol = area.querySelector(':scope > .bt-solution');
         if(sol){ why.innerHTML = ''; why.appendChild(sol); }
@@ -900,6 +929,7 @@
         var again = area.querySelector('.cd-again');
         // Focus New problem first, so closing the sheet comes back to it.
         if(again){ again.classList.add('ls-btn', 'ls-pri'); again.focus({ preventScroll: true }); }
+        if(isStd(s)) stdDone(s, area, o, right, total, m, cur && cur.type);
         // The studio opens the worked solution by itself, once (audit X6):
         // the sheet on a phone, the drawer on a desktop. New problem stays in the dock.
       }
@@ -922,6 +952,9 @@
      the Why disclosures after a redraw. */
   function studioPane(pane, s, o){
     var only = { mode: o.mode || 'explore' }, q = function(sel){ return pane.querySelector(sel); };
+    // The standard frame: o.chips { box, chip, attr, label }, a row of scenario chips, is the stage's dropdown.
+    var cbox = o.chips && isStd(s) ? (typeof o.chips.box === 'string' ? q(o.chips.box) : o.chips.box) : null;
+    if(cbox) chipPick(s, cbox, { label: o.chips.label, chip: o.chips.chip, attr: o.chips.attr, groups: o.chips.groups, mode: only.mode });
     function box(cls, els){ var d = document.createElement('div'); d.className = cls; (els || []).forEach(function(e){ if(e) d.appendChild(e); }); return d; }
     s.add('stage', box('stat-ls-stage', o.stage), only);
     var dock = [box('stat-ls-dock', o.dock)], row = null;
@@ -933,6 +966,13 @@
       row.setAttribute('aria-label', o.setup + ': ' + (o.moreLabel || 'more options') + ' (opens Details)');
       row.addEventListener('click', function(){ s.open('details', more.querySelector('summary')); });
       dock.push(row);
+    }
+    // The standard frame: the scenario is the stage's one dropdown, so the Setup row goes.
+    var pk = null, psel = o.setup && more && isStd(s) ? (o.pickSel || more.querySelector('select')) : null;
+    if(psel){ pk = stagePick(s, psel, { label: o.setup, mode: only.mode, count: true }); row.hidden = true; }
+    else if(o.setup && more && isStd(s)){
+      var rset = more.querySelector('fieldset');
+      if(rset && rset.querySelector('input[type=radio]')){ pk = radioPick(s, rset, { label: o.setup, mode: only.mode }); row.hidden = true; }
     }
     s.add('dock', dock, only);
     // The "Start here" cue reads as the first line of Why.
@@ -952,14 +992,115 @@
     function openAll(){ why.querySelectorAll('details.bt-why').forEach(function(d){ d.open = true; }); }
     openAll();
     return {
-      setup: function(t){ if(row){ row.querySelector('.ls-v').textContent = t; row.setAttribute('aria-label', o.setup + ': ' + t + '. ' + (o.moreLabel || 'More options') + ' (opens Details)'); } },
+      setup: function(t){ if(pk) pk.sync(); if(row){ row.querySelector('.ls-v').textContent = t; row.setAttribute('aria-label', o.setup + ': ' + t + '. ' + (o.moreLabel || 'More options') + ' (opens Details)'); } },
       open: openAll, why: why, details: det
     };
+  }
+  /* ---------------------------------------------- the standard frame */
+  /* docs/tools-frame-2026-11.md (F4; per tool notes in docs/tools-frame-notes/statistics.md). studioFrame mounts
+     std: the bar's one line is the page's lede; Explore's head is the tool's question (STD.task) over its "Start
+     here" cue (the cue's own line hides, so it is not said twice); a scenario select becomes the stage's one
+     dropdown (stagePick; the select stays in More options, hidden, and keeps driving the tool); a drill problem
+     gets the hint ladder (the method at once, Show the answer after one real try) and ends on the finished card
+     (STD.takeaway, New problem, the worked solution, the steps, the lesson). */
+  var STD = {
+    'chi-square-lab': { task: 'Which cells drive χ²?', takeaway: 'Each cell adds (observed − expected)² ÷ expected, so the cells farthest from their expected counts add the most to χ².' },
+    'ci-capture': { task: 'What does the confidence level mean?', takeaway: 'About C% of intervals made this way capture the true parameter; any one interval either does or does not.' },
+    'data-explorer': { task: 'Which summaries resist an outlier?', takeaway: 'The median and IQR resist outliers; the mean and standard deviation do not.' },
+    'design-randomizer': { task: 'What does random assignment do?', takeaway: 'Random assignment tends to balance other variables across groups, so a convincing difference can show cause and effect.' },
+    'distribution-areas': { task: 'What probability is shaded?', takeaway: 'For a continuous distribution, a probability is the area under the curve over that interval.' },
+    'p-value-explorer': { task: 'Where does a p-value come from?', takeaway: 'The p-value is the probability of a result at least as extreme as the one observed, assuming H₀ is true.' },
+    'probability-trees': { task: 'How do a tree, a table and a Venn diagram show the same events?', takeaway: 'Multiply along a path of branches for "and"; add the paths that fit for "or".' },
+    'regression-lab': { task: 'How does one point move the line and r?', takeaway: 'A point far from the others in x can pull the line toward it and change r a lot.' },
+    'sampling-distributions': { task: 'How does a statistic vary from sample to sample?', takeaway: 'Larger samples give statistics that vary less around the parameter.' },
+    'sampling-lab': { task: 'How does each method pick its sample?', takeaway: 'Random selection is what lets a sample stand for the population.' }
+  };
+  function isStd(s){ return !!(s && s.task && s.root && s.root.classList.contains('ls-std')); }
+  function stdExplore(s, slug, list){
+    var t = STD[slug] || {}, c = list[0], tt = c && c.querySelector('.bt-cue-t');
+    list.forEach(function(x){ x.classList.add('ls-std-cue'); });
+    function paint(){ s.task({ kicker: 'Explore', title: esc(t.task || ''), todo: tt ? tt.innerHTML : '' }, 'explore'); }
+    paint();
+    // A tool that rewrites its cue (a new function, a new view) rewrites the line.
+    if(tt && window.MutationObserver) new MutationObserver(paint).observe(tt, { childList: true, characterData: true, subtree: true });
+  }
+  /* radioPick(s, fieldset, { label, mode }) -> { sync() }: a set of scenario radios as the stage's one dropdown
+     (a pick checks its radio and fires change, so the tool's handler runs; the radios stay, hidden). */
+  function radioPick(s, set, o){
+    function rs(){ return Array.prototype.slice.call(set.querySelectorAll('input[type=radio]')); }
+    function spec(){
+      var on = rs().filter(function(r){ return r.checked; })[0];
+      return { label: o.label, value: on ? on.value : null, count: true, groups: [{ label: '', items: rs().map(function(r){ return { value: r.value, label: (r.closest('label') || r.parentNode).textContent.replace(/\s+/g, ' ').trim() }; }) }],
+        onChange: function(v){ var r = rs().filter(function(x){ return x.value === String(v); })[0]; if(r && !r.checked){ r.checked = true; r.dispatchEvent(new Event('change', { bubbles: true })); } } };
+    }
+    var p = s.picker(spec(), o.mode || undefined);
+    set.addEventListener('change', function(){ p.value((rs().filter(function(r){ return r.checked; })[0] || {}).value); });
+    set.classList.add('ls-std-moved');
+    return { picker: p, sync: function(){ p.set(spec()); } };
+  }
+  /* chipPick(s, box, { label | label(), mode, chip: '.x-chip', groups(buttons, items) }) -> picker: a row of
+     scenario chips as the stage's one dropdown. The chips stay in the page, hidden; a pick clicks its chip, so the
+     tool's own handler runs; the dropdown follows when the tool rebuilds the chips or presses one itself. */
+  function chipPick(s, box, o){
+    o = o || {};
+    function btns(){ return Array.prototype.slice.call(box.querySelectorAll(o.chip || 'button[data-id]')); }
+    function idOf(b, i){ return b.getAttribute(o.attr || 'data-id') || String(i); }
+    function spec(){
+      var bs = btns(), on = bs.filter(function(b){ return b.getAttribute('aria-pressed') === 'true' || b.classList.contains('is-on'); })[0];
+      var items = bs.map(function(b, i){ return { value: idOf(b, i), label: (b.getAttribute('aria-label') || b.textContent).replace(/\s+/g, ' ').trim() }; });
+      return { label: (typeof o.label === 'function' ? o.label() : o.label) || box.getAttribute('aria-label') || 'Choose',
+        groups: o.groups ? o.groups(bs, items) : [{ label: '', items: items }], value: on ? idOf(on, bs.indexOf(on)) : null, count: !o.groups,
+        onChange: function(v){ var b = btns().filter(function(x, i){ return idOf(x, i) === String(v); })[0]; if(b) b.click(); } };
+    }
+    var p = s.picker(spec(), o.mode || undefined), tm = 0;
+    box.classList.add('ls-std-moved');
+    if(window.MutationObserver) new MutationObserver(function(){ clearTimeout(tm); tm = setTimeout(function(){ p.set(spec()); }, 0); })
+      .observe(box, { childList: true, subtree: true, attributes: true, attributeFilter: ['aria-pressed', 'class'] });
+    return p;
+  }
+  /* stagePick(s, select, { label, mode }) -> { picker, sync() }: a tool's own select as the stage's one grouped
+     dropdown (optgroups kept). A pick sets the select and fires its change, so the tool's handler runs as before;
+     the select's own control is hidden. sync() after the tool rebuilds or sets the select itself. */
+  function stagePick(s, sel, o){
+    function opt(x){ return { value: x.value, label: x.textContent }; }
+    function spec(){
+      var gs = [], loose = [];
+      Array.prototype.forEach.call(sel.children, function(c){
+        if(c.tagName === 'OPTGROUP') gs.push({ label: c.label, items: Array.prototype.map.call(c.children, opt) });
+        else if(c.tagName === 'OPTION') loose.push(opt(c));
+      });
+      if(loose.length) gs.unshift({ label: '', items: loose });
+      return { label: o.label, groups: gs, value: sel.value, count: o.count && gs.length === 1, onChange: function(v){
+        if(sel.value === String(v)) return;
+        sel.value = v; sel.dispatchEvent(new Event('change', { bubbles: true }));
+      } };
+    }
+    var p = s.picker(spec(), o.mode || undefined);
+    sel.addEventListener('change', function(){ p.value(sel.value); });
+    sel.addEventListener('ls-sync', function(){ p.value(sel.value); });
+    (sel.closest('.bt-ctl') || sel).classList.add('ls-std-moved');
+    return { picker: p, sync: function(){ p.set(spec()); } };
+  }
+  /* The finished card for a drill problem (the dock's steps step aside; "Review your steps" brings them back). */
+  function stdDone(s, area, o, right, total, m, type){
+    var t = STD[o.slug] || {}, tk = t.takeaway && typeof t.takeaway === 'object' ? t.takeaway[type] || t.takeaway['*'] || '' : t.takeaway, again = area.querySelector('.cd-again'), steps = area.querySelector('.cd-steps');
+    var links = [{ label: 'Worked solution', open: 'why' }, { label: 'Review your steps', onClick: function(){
+      s.done(false, m);
+      var f = steps && steps.querySelector('.cd-step'); if(f && f.scrollIntoView) f.scrollIntoView({ block: 'nearest' });
+      if(again) again.focus({ preventScroll: true });
+    } }];
+    Array.prototype.slice.call(area.querySelectorAll('.bt-keep-links a')).slice(0, 2).forEach(function(a){
+      var k = a.querySelector('.bt-keep-k');
+      links.push({ label: (k ? k.textContent + ': ' : '') + a.textContent.replace(k ? k.textContent : '', '').trim(), href: a.getAttribute('href') });
+    });
+    s.done({ kicker: 'Finished', title: total === 1 ? (right ? 'Right the first time' : 'Not right the first time') : right + ' of ' + total + ' steps right the first time',
+      text: tk ? esc(tk) : '', next: again ? { label: again.textContent, onClick: function(){ again.click(); } } : null, links: links }, m);
   }
   /* The "head" line of an explain() box as plain caption html. */
   function sayHead(el){ var h = el && el.querySelector('.bt-say-h'); return h ? h.innerHTML : ''; }
 
   window.ApStatTools = {
+    isStd: isStd, stagePick: stagePick, chipPick: chipPick,
     studioOf: studioOf, studioPane: studioPane, sayHead: sayHead,
     modes: modes, reduced: reduced, cue: cue, moreHtml: moreHtml, explain: explain,
     esc: esc, F: F, nid: nid, mount: mount, frame: frame, kindPicker: kindPicker, keepGoing: keepGoing, slider: slider, choiceSelect: choiceSelect, announcer: announcer,

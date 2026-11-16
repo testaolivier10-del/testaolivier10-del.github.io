@@ -527,6 +527,8 @@
       var stage = el('div', 'pv-ls-stage'); stage.appendChild(q('.pv-stage'));
       s.add('stage', stage, o);
       var dock = q('.pv-dock'); dock.classList.add('pv-ls-dock'); s.add('dock', dock, o);
+      // The standard frame: the study is the stage's dropdown (the select stays, hidden, and keeps driving the tool).
+      if(T.isStd(s)) T.stagePick(s, pick.select, { label: 'Study', mode: 'explore', count: true });
       var w = el('div', 'ls-sec pv-ls-why'); w.appendChild(start.el); w.appendChild(whyEl); s.add('why', w, o);
       var d = el('div', 'ls-sec pv-ls-det'); d.appendChild(det);
       Array.prototype.slice.call(pane.querySelectorAll(':scope > *')).forEach(function(k){ if(k.textContent.trim() && !k.classList.contains('pv-ex')) d.appendChild(k); });

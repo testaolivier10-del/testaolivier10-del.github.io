@@ -81,7 +81,7 @@
     var card = host.querySelector('.ml-card');
     card.insertBefore(cue.el, card.querySelector('.ml-say'));
     var track = host.querySelector('.ml-track'), graphs = host.querySelector('.ml-graphs'), gwrap = host.querySelector('.ml-graphs-wrap');
-    var chips = host.querySelector('.ml-chips'), modesEl = host.querySelector('.ml-modes'), playBtn = host.querySelector('.ml-play');
+    var picker = null, chips = host.querySelector('.ml-chips'), modesEl = host.querySelector('.ml-modes'), playBtn = host.querySelector('.ml-play');
     var say = T.announcer(host.querySelector('.ml-live'));
     var slider = T.slider({ label: 'Time t', min: 0, max: 5, step: 0.01, value: 0, unit: 's', decimals: 2, onInput: function(v){ pause(); setT(v); } });
     host.querySelector('.ml-slot').appendChild(slider.el);
@@ -109,6 +109,7 @@
       var m = mo();
       if(modesEl) modesEl.querySelectorAll('.bt-mode').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-g') === m.mode)); });
       chipsFor(m.mode);
+      if(picker) picker.value(id);
       slider.input.max = String(m.T); slider.set(0);
       gwrap.setAttribute('aria-valuemax', M.fixed(m.T, 2));
       gl = null; tl = null; draw(true);
@@ -347,6 +348,15 @@
       s.add('stage', stage, o);
       var dock = document.createElement('div'); dock.className = 'calc-ls-dock ml-ls-dock'; dock.appendChild(host.querySelector('.ml-ctl'));
       s.add('dock', dock, o);
+      // The standard frame: every motion in one dropdown on the stage, grouped by what is given (the chips only
+      // hold the current group's motions, so the picker sets the motion itself).
+      if(T.isStd(s)){
+        var grp = function(g){ return ids.filter(function(id){ return ML.MOTIONS[id].mode === g; }).map(function(id){ return { value: id, label: ML.MOTIONS[id].name }; }); };
+        var gs = [{ label: 'Position given', items: grp('x') }, { label: 'Velocity given', items: grp('v') }].filter(function(g){ return g.items.length; });
+        if(gs.length < 2) gs = [{ label: '', items: ids.map(function(id){ return { value: id, label: ML.MOTIONS[id].name }; }) }];
+        picker = s.picker({ label: 'Motion', groups: gs, value: st.id, onChange: function(id){ touch(); setMotion(id); } }, 'explore');
+        chips.classList.add('ls-std-moved');
+      }
       var why = document.createElement('div'); why.className = 'ls-sec calc-ls-why ml-ls-why'; why.appendChild(cue.el); why.appendChild(host.querySelector('.ml-say'));
       s.add('why', why, o);
       why.querySelectorAll('details.bt-why').forEach(function(d){ d.open = true; });
