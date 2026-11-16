@@ -83,6 +83,10 @@ region `'foot'` for Undo / Reset and `.ls-push` for the dock's foot. Full signat
 Ochem uses all of it (`tool-shell.js` mounts std; `OchemStudioKit.extras()`, `.chipPicker()`, `.menuItems`).
 A course kit that calls `LevlStudio.stdKit({ lede: { slug: line } })` gets the std bar on its shared lock screen too
 (`adopt`, F5b: AP Macro, AP Micro, AP Human Geography kits).
+F3 (AP Bio, Chem, Physics 1) added three small std-only shared changes: the first-run hint line hides while its target
+is out of sight (a mode switch in the bar is not "use"); a long name on a phone shrinks with an ellipsis instead of
+wrapping the bar's buttons; the shell does not open Why by itself on a solution while a finished card shows. A locked
+tool opens in the std bar when its mount carries `data-ls-std` (the course core sets it; `adopt`).
 
 ### Switching a tool on (per course frame; P1)
 - **Ochem:** `studio: true` in `ochem/assets/tools-registry.js`, then `node scripts/build-tool-pages.mjs` (adds the

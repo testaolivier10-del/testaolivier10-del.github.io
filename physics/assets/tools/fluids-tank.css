@@ -142,3 +142,6 @@
   .ft-view:has(.ft-panel > .ft-fbdfig:only-child) .ft-scene{justify-content:flex-end;}
   .ft-view:has(.ft-panel > .ft-fbdfig:only-child) .ft-panel{flex:0.7 1 0;}
 }
+/* The standard frame: Scene is the stage's dropdown, so Fluid has the row to itself. */
+.ft-scenesel:not(:has(> :not([hidden]))){display:none;}
+.ft-pair:has(> .ft-scenesel > [hidden]){grid-template-columns:1fr;}

@@ -227,7 +227,8 @@
     if(!P) return;
     var was = locked();
     try{ P.onChange(function(){ if(locked() !== was) reloadForAccess(); }); }catch(e){}
-    if(f && was && WHOLE[f]){ app.removeAttribute('id'); app.innerHTML = gate(f, app.getAttribute('data-slug')); }
+    // data-ls-std: the lock opens in the tools' standard frame (name and one line in the bar; tool-studio.js adopt).
+    if(f && was && WHOLE[f]){ app.removeAttribute('id'); app.setAttribute('data-ls-std', ''); app.innerHTML = gate(f, app.getAttribute('data-slug')); }
   }
 
   function pct(v){ return Math.round((v || 0) * 100) + '%'; }

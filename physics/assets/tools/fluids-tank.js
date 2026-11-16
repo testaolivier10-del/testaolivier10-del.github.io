@@ -348,6 +348,7 @@
     /* -------- controls */
     var sceneSel = T.choiceSelect({ label: 'Scene', options: scenes.map(function(x){ return { value: x.id, label: x.label }; }), value: st.scene, onChange: function(v){ touched(); setScene(v); } });
     host.querySelector('.ft-scenesel').appendChild(sceneSel.el);
+    T.stdPicker(sceneSel, { label: 'Scene', mode: 'explore' });
     var fluidSel = T.choiceSelect({ label: 'Fluid', options: Object.keys(FT.FLUIDS).map(function(k){ return { value: k, label: FT.FLUIDS[k].name }; }), value: st.fluid, onChange: function(v){ touched(); st.fluid = v; if(st.scene === 'float') drop(); else draw(); } });
     host.querySelector('.ft-fluidsel').appendChild(fluidSel.el);
     var objSel = T.choiceSelect({ label: 'Object', value: st.obj, options: Object.keys(FT.OBJECTS).map(function(k){ return { value: k, label: FT.OBJECTS[k].name }; }),

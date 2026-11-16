@@ -37,6 +37,7 @@
       '<section class="bt-card gb-feedback" aria-labelledby="' + gid + '-fh" hidden><h2 id="' + gid + '-fh" tabindex="-1">How your graph did</h2><div class="gb-fb" role="status" aria-live="polite"></div></section>');
     var pick = T.choiceSelect({ label: 'Data set', options: data.datasets.map(function(d){ return { value: d.id, label: d.title }; }), value: data.datasets[0].id, onChange: function(v){ load(v); } });
     app.querySelector('.gb-pick').appendChild(pick.el);
+    T.stdPicker(pick, { label: 'Data set' });
     var form = app.querySelector('form.gb-steps'), body = form.querySelector('.gb-body'), fbCard = app.querySelector('.gb-feedback');
     form.addEventListener('submit', function(e){ e.preventDefault(); check(); });
 
@@ -373,16 +374,34 @@
       // text is), so the stage keeps the table and the grid.
       var ctx = stage.querySelector('.ls-gb-table .bt-context');
       var t = (say && say.textContent) || (ctx && ctx.textContent.replace(/\s+/g, ' ').trim()) || 'Build the graph from the data, one step at a time. Check it on the last step.';
-      s.caption(T.esc(t));
+      if(std){
+        // The standard frame: the data set heads the side panel, with the one line on what to do.
+        ['data', 'free'].forEach(function(md){
+          var free = md === 'free';
+          s.task({ kicker: free ? 'Free plot' : 'Plot the data', title: '<span class="bt-tt-long">' + T.esc(t) + '</span>',
+            todo: free ? 'Sketch any graph of these data; it is not checked.' : 'Answer one step at a time, then check your graph.' }, md);
+          s.caption('', md);
+        });
+      } else s.caption(T.esc(t));
     }
+    var std = s.root.classList.contains('ls-std');
     if(window.MutationObserver){
       new MutationObserver(arrange).observe(body, { childList: true });
       new MutationObserver(cap).observe(stage, { childList: true, subtree: true, characterData: true });
       new MutationObserver(cap).observe(data, { childList: true, subtree: true, characterData: true });
       new MutationObserver(function(){
-        if(fb.hidden){ s.pills([]); return; }
+        if(fb.hidden){ s.pills([]); if(std) s.done(false, 'data'); return; }
         var m = /(\d+) of (\d+)/.exec(fb.textContent);
         if(m) s.pills([{ html: m[1] + ' of ' + m[2] + ' criteria met', tone: m[1] === m[2] ? 'good' : 'warn' }]);
+        if(std && m){
+          // The finished card: the score, the next data set, what to fix (Why), fix this graph, the lesson.
+          var sel = s.root.querySelector('.gb-pick select'), les = fb.querySelector('.bt-keep a[href*="lessons/"]'), all = m[1] === m[2];
+          s.done({ kicker: all ? 'Solved' : 'Checked', title: T.esc(m[1] + ' of ' + m[2] + ' criteria met.'), text: all ? 'This graph earns full credit.' : 'What to fix is in the full explanation.',
+            next: sel ? { label: 'Next data set', onClick: function(){ sel.selectedIndex = (sel.selectedIndex + 1) % sel.options.length; sel.dispatchEvent(new Event('change', { bubbles: true })); } } : null,
+            links: [{ label: all ? 'Full explanation' : 'What to fix', open: 'why' }, { label: all ? 'Review your graph' : 'Fix your graph', onClick: function(){ s.done(false, 'data'); } }]
+              .concat(les ? [{ label: 'Read the lesson: ' + les.textContent.replace(/^\s*Lesson\s*/, '').trim(), href: les.getAttribute('href') }] : []) }, 'data');
+          return;
+        }
         s.caption((m ? '<b>' + m[1] + ' of ' + m[2] + ' criteria met.</b> ' : '') + 'What to fix is under Why.');
         s.open('why', fb.querySelector('h2'));
       }).observe(fb, { attributes: true, attributeFilter: ['hidden'], childList: true, subtree: true });

@@ -349,3 +349,8 @@ body[data-app^="tool-"] .phys-hero .eyebrow{margin-bottom:4px;}
 .ls-root .ls-drill-pics .cd-n{display:none;}
 .ls-root .ls-drill-pics .cd-step{margin:0;padding:0;background:none;box-shadow:none;border:0;}
 .ls-root .ls-drill-pics .bt-actions .btn-press{width:100%;}
+
+/* The standard frame (docs/tools-frame-2026-11.md, F3): in a problem, the question in the side panel's head reads
+   as text, not a headline (it can be a few lines long). */
+.ls-std.ls-quiz .ls-dock .ls-task:not(.ls-donew) .ls-task-t{font-weight:700;font-size:var(--ls-m);line-height:1.45;letter-spacing:0;}
+.bt-tt-long{display:block;font-size:var(--ls-m);font-weight:700;line-height:1.45;letter-spacing:0;}

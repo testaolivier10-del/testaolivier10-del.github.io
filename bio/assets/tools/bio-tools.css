@@ -1654,3 +1654,9 @@
 /* Pass 2: osmosis specimen chips wrap instead of scrolling out of view ("Di..." was cut off). */
 .ls-root .os-pick-row{flex-wrap:wrap;overflow:visible;}
 .ls-root .os-play{flex-wrap:wrap;}
+
+/* The standard frame (docs/tools-frame-2026-11.md, F3): in a problem, the question in the side panel's head reads
+   as text, not a headline (it can be a few lines long). */
+.ls-std.ls-quiz .ls-dock .ls-task:not(.ls-donew) .ls-task-t{font-weight:700;font-size:var(--ls-m);line-height:1.45;letter-spacing:0;}
+.bt-tt-long{display:block;font-size:var(--ls-m);font-weight:700;line-height:1.45;letter-spacing:0;}
+.ls-root .ls-donew a.ls-done-a{color:var(--ink);text-decoration:none;}

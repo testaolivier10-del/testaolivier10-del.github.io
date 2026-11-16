@@ -348,6 +348,31 @@
     return LS && LS.keepHost ? LS.keepHost(lastHit.target) : null;
   }
 
+  /* stdPicker(sel, { label, mode, count }): a scenario select (choiceSelect's result) becomes the standard frame's ONE
+     dropdown at the stage's top left (docs/tools-frame-2026-11.md). The select stays, out of sight, and drives the tool
+     as before: a pick sets it and fires its change; a change the tool makes is followed. No std studio: nothing. */
+  function stdPicker(sel, o){
+    var S = window.LevlStudio && window.LevlStudio.get();
+    if(!sel || !S || !S.picker || !S.root.classList.contains('ls-std')) return null;
+    o = o || {};
+    var se = sel.select || sel;
+    function groups(){
+      var gs = [], loose = [];
+      Array.prototype.forEach.call(se.children, function(c){
+        if(c.tagName === 'OPTGROUP') gs.push({ label: c.label, items: Array.prototype.map.call(c.children, function(x){ return { value: x.value, label: x.textContent }; }) });
+        else loose.push({ value: c.value, label: c.textContent });
+      });
+      return loose.length ? [{ label: '', items: loose }].concat(gs) : gs;
+    }
+    var p = S.picker({ label: o.label || 'Choose', count: o.count !== false, groups: groups(), value: se.value, onChange: function(v){
+      se.value = v;
+      se.dispatchEvent(new Event('change', { bubbles: true }));
+    } }, o.mode);
+    se.addEventListener('change', function(){ p.value(se.value); });
+    if(sel.set){ var set0 = sel.set; sel.set = function(v){ set0(v); p.value(se.value); }; }
+    if(sel.el) sel.el.hidden = true;
+    return p;
+  }
   /* ------------------------------------------------------- controls */
   function decimalsOf(step){ var s = String(step); return s.indexOf('.') < 0 ? 0 : s.length - s.indexOf('.') - 1; }
   function slider(o){
@@ -596,6 +621,21 @@
     // drawing sol.chart (confidence intervals).
     var stageFn = o.stage || (o.chart ? function(host, s){ host.innerHTML = s.sol.chart ? '<div class="bt-chart">' + o.chart(s.sol.chart, s.input) + '</div>' : ''; } : null);
     app.querySelectorAll('.bt-modes input').forEach(function(r){ r.addEventListener('change', function(){ mode = r.value; at = 0; draw(true); }); });
+    // The standard frame's scenario picker (studioPractice puts it on the stage): new numbers, or a problem of the
+    // worked set. The radios above stay (in Details) and follow it.
+    area.lsPick = {
+      groups: [contexts.length ? { label: 'Practice', items: [{ value: 'practice', label: 'New numbers', sub: 'Practice' }] } : null,
+        problems.length ? { label: 'Worked set', items: problems.map(function(pr, i){ return { value: 'set:' + i, label: 'Worked problem ' + (i + 1), sub: (i + 1) + ' of ' + problems.length }; }) } : null].filter(Boolean),
+      value: function(){ return mode === 'set' ? 'set:' + at : 'practice'; },
+      onChange: function(v){
+        var m = /^set:(\d+)$/.exec(v);
+        mode = m ? 'set' : 'practice'; if(m) at = +m[1]; else seed = freshSeed();
+        app.querySelectorAll('.bt-modes input').forEach(function(r){ r.checked = r.value === mode; });
+        var LS = window.LevlStudio && window.LevlStudio.get();
+        if(LS) LS.root.querySelectorAll('.bt-modes input').forEach(function(r){ r.checked = r.value === mode; });
+        draw(true);
+      }
+    };
 
     function current(){
       if(mode === 'set'){ var pr = problems[at]; return { input: pr.input, topic: pr.topic, unit: pr.unit, cid: pr.id, title: 'Problem ' + (at + 1) + ' of ' + problems.length, text: pr.text || pr.input.text }; }
@@ -613,7 +653,9 @@
     // the answer. The first try is what is recorded. The next part appears
     // once this one is right or shown; after the last, the worked solution.
     function draw(focus, retry){
-      var cur = current(), sol = P.solve[kind](cur.input), finished = false, first = {}, at = 0;
+      // (No local `at` here: one shadowed the worked set's index, so Next problem showed problem 1 again.)
+      var cur = current(), sol = P.solve[kind](cur.input), finished = false, first = {};
+      if(area.lsSync) area.lsSync();
       area.innerHTML = '<div class="bt-prob-head"><h2 id="' + gid + '-h">' + esc(cur.title) + '</h2>' + (cur.code ? '<p class="bt-code">Problem code <b>' + cur.code + '</b> <a href="?seed=' + cur.code + '">Link to this problem</a></p>' : '') + '</div>' +
         '<div class="bt-context">' + (cur.text || '') + '</div>' + (sol.table ? wrapTables(sol.table) : '') +
         '<form class="bt-parts bt-parts-step" novalidate></form>' +
@@ -651,8 +693,17 @@
         fb.setAttribute('role', 'status'); fb.setAttribute('aria-live', 'polite');
         fb.insertAdjacentHTML('beforebegin', '<div class="bt-actions bt-part-act"><button type="button" class="btn-press sm bt-pcheck">Check</button></div>');
         var btn = el.querySelector('.bt-pcheck');
+        // The standard frame: the part's method hint is the hint ladder's first rung (instant, on request) and Show
+        // the answer its last, open after one real try (docs/tools-frame-2026-11.md).
+        var LS = window.LevlStudio && window.LevlStudio.get(), lad = null;
+        if(LS && LS.hints && LS.root.classList.contains('ls-std') && app.getAttribute('data-studio')){
+          lad = LS.hints({ hints: p.hint ? [escLabel(p.hint)] : [], answer: { label: 'Show the answer', onShow: function(){ reveal(); return ''; } } });
+          el.insertBefore(lad.card, el.querySelector('.bt-part-act'));
+          el.appendChild(lad.row);
+        }
         function lock(){
           locked = true;
+          if(lad){ lad.row.remove(); var ln = lad.card.querySelector('.ls-hint-n'); if(ln) ln.remove(); }
           el.querySelectorAll('input').forEach(function(x){ if(x.type === 'text') x.readOnly = true; else x.disabled = true; });
           var act = el.querySelector('.bt-part-act'); if(act) act.remove();
         }
@@ -694,9 +745,9 @@
           // A right number rounded the wrong way: say so (it is not a method slip).
           if(!why && p.type === 'num'){ var xx = Q.parseNumber(el.querySelector('input').value); if(Math.abs(xx - p.answer) <= Math.max(p.tol * 10, Math.abs(p.answer) * 0.03)) why = 'Close. Recheck the arithmetic and round only at the end, to ' + (p.d === 0 ? 'a whole number' : p.d + ' decimal place' + (p.d === 1 ? '' : 's')) + '.'; }
           fb.innerHTML = '<span class="bio-mark no">Not yet</span>' + (why ? ' ' + escLabel(why) : '') +
-            (p.hint ? '<p class="bt-hint-m"><b>Method:</b> ' + escLabel(p.hint) + '</p>' : '') +
-            '<div class="bt-actions"><button type="button" class="bt-btn bt-show">Show the answer</button></div>';
-          fb.querySelector('.bt-show').addEventListener('click', reveal);
+            (p.hint && !(lad && lad.shown()) ? '<p class="bt-hint-m"><b>Method:</b> ' + escLabel(p.hint) + '</p>' : '') +
+            (lad ? '' : '<div class="bt-actions"><button type="button" class="bt-btn bt-show">Show the answer</button></div>');
+          if(lad) lad.attempt(); else fb.querySelector('.bt-show').addEventListener('click', reveal);
           event('apbio-skill-step', { tool: slug, part: p.key, slip: why ? 1 : 0 });
         });
         el.addEventListener('keydown', function(e){ if(e.key === 'Enter' && e.target.type === 'text'){ e.preventDefault(); btn.click(); } });
@@ -719,7 +770,7 @@
         var nx = area.querySelector('.bt-next');
         var redo = right < sol.parts.length ? '<button type="button" class="btn-press sm bt-redo">Try this one again</button> ' : '';
         nx.innerHTML = redo + (mode === 'practice' ? '<button type="button" class="btn-press sm bt-again">New problem</button>'
-          : (at < problems.length - 1 ? '<button type="button" class="btn-press sm bt-again">Next problem</button>' : '<p>That is the whole set. Switch to Practice for new numbers.</p>'));
+          : (at < problems.length - 1 ? '<button type="button" class="btn-press sm bt-again">Next problem</button>' : '<p>That is the whole set. ' + (area.lsSync ? 'Pick New numbers in the problem list for fresh ones.' : 'Switch to Practice for new numbers.') + '</p>'));
         var again = nx.querySelector('.bt-again');
         if(again) again.addEventListener('click', function(){ if(mode === 'practice') seed = freshSeed(); else at++; draw(true); });
         var redoBtn = nx.querySelector('.bt-redo');
@@ -738,6 +789,44 @@
       if(focus){ var h = area.querySelector('h2'); h.setAttribute('tabindex', '-1'); h.focus(); }
     }
     draw(false);
+  }
+
+  /* ------------------------------------------- the standard frame (F3) */
+  /* docs/tools-frame-2026-11.md: in Explore the side panel's head asks the question the tool answers and says what
+     to do first (the first-run hint still rings the control itself). Keyed by tool, then by mode for a tool with two
+     explore views. New copy: listed in docs/tools-frame-notes/apbio.md for the accuracy check. */
+  var STD = {
+    'chi-square': { ask: 'When is a gap between observed and expected too big to be chance?', todo: 'Drag a bar away from its dashed box and watch χ² pass the critical value.' },
+    'confidence-intervals': { ask: 'When do two groups really differ?', todo: 'Drag a bar and watch the error bars overlap or pull apart.' },
+    'descriptive-stats': { ask: 'How does one data point move the mean, median and spread?', todo: 'Drag a dot sideways and watch the numbers change.' },
+    'hardy-weinberg': { ask: 'How do allele frequencies set genotype frequencies?', todo: 'Drag the corner to change p and q.' },
+    'rates': { ask: 'How fast is it changing between two points?', todo: 'Tap a point on the graph, then a second one.' },
+    'simpson-diversity': { ask: 'What makes a community more diverse?', todo: 'Plant trees in the quadrat and watch the index.' },
+    'water-potential': { ask: 'Which way will water move?', todo: 'Slide the beaker concentration and compare ψ inside and out.' },
+    'osmosis': { ask: 'Which way does water move, and why?', todo: 'Slide the beaker concentration, then press Play.' },
+    'enzyme-activity': { ask: 'What limits how fast an enzyme works?', todo: 'Slide the substrate concentration, then try an inhibitor.' },
+    'cell-cycle-checkpoints': { ask: 'What stops a damaged cell from dividing?', todo: 'Tap a checkpoint on the ring, then add DNA damage.' },
+    'energy-flow': { ask: 'Why is so little energy left at the top of a food chain?', todo: 'Tap a level to see where its energy goes.' },
+    'hardy-weinberg-drift': { ask: 'What changes allele frequencies from one generation to the next?', todo: 'Press Draw generations, then change the population size.' },
+    'meiosis-nondisjunction': { ask: 'Where do extra or missing chromosomes come from?', todo: 'Step through meiosis, then make one pair fail to separate.' },
+    'operons': { ask: 'When are the lac and trp genes switched on?', todo: 'Tap a sugar to change the medium and watch the operon.' },
+    'population-growth': { ask: 'What slows a growing population?', todo: 'Press Play the years, then switch to logistic growth.' },
+    'signal-transduction-amplification': { ask: 'How does one hormone molecule cause a big response, and how does it stop?', todo: 'Press Play and follow the signal down the cascade.' },
+    'tree-reading': {
+      read: { ask: 'Which species are most closely related?', todo: 'Tap two or more names on the tree, then ask a question about them.' },
+      build: { ask: 'Which groups share a derived character?', todo: 'Check two or more pieces that share a derived character, then join them.' }
+    }
+  };
+  function isStd(s){ return !!(s && s.root && s.root.classList.contains('ls-std')); }
+  /* A task title from a live caption: long text reads as text, not a headline. */
+  function longT(h){ return String(h || '').replace(/<[^>]+>/g, '').length > 60 ? '<span class="bt-tt-long">' + h + '</span>' : h; }
+  function stdExplore(s, slug, mode){
+    var c = STD[slug];
+    if(!isStd(s) || !c) return false;
+    if(mode && c[mode]) c = c[mode];
+    if(!c.ask) return false;
+    s.task({ kicker: 'Explore', title: esc(c.ask), todo: esc(c.todo) }, mode || null);
+    return true;
   }
 
   /* ------------------------------------------------ Tool Studio frame */
@@ -763,7 +852,10 @@
     var s = window.LevlStudio.mount({
       title: h1 ? h1.textContent : slug, course: 'AP® Biology', back: base() + 'tools.html', home: base(), slug: 'apbio-' + slug,
       host: app,
-      // the second tab and its dock button, named for what is in it
+      // The standard frame (docs/tools-frame-2026-11.md, F3): name and one line in the bar, the modes there too,
+      // Share, "?" for the data, settings and reference (also in the menu, as the settings).
+      std: true, lede: lede ? lede.textContent.trim() : '',
+      // the second tab, named for what is in it
       detailsTitle: ({ 'chi-square': 'Problem & critical values', 'confidence-intervals': 'Problem, formulas & settings',
         'descriptive-stats': 'Problem & formulas', 'hardy-weinberg': 'Problem & equations', 'rates': 'Problem & formulas',
         'simpson-diversity': 'Problem & formula', 'water-potential': 'Problem & formulas', 'graph-builder': 'What full credit needs',
@@ -774,6 +866,7 @@
           return code ? location.origin + location.pathname + '?seed=' + code.textContent : location.origin + location.pathname;
         },
         report: { course: 'apbio', id: 'tool:' + slug },
+        items: [{ label: 'Data and settings', icon: 'sliders', onClick: function(){ s.open('details'); } }],
         note: { label: 'Note.', html: 'Made by Olivier Testa. It follows the published course framework and open textbooks: <a href="' + base() + '../sources.html">Sources</a>' }
       }
     });
@@ -815,6 +908,7 @@
       // The card's own lookups (sec.querySelector) still find its parts.
       studioVirtual(explore, parts);
       if(o.caption || o.pills) studioMirror(s, explore, parts, { live: o.live || '.sk-say', caption: o.caption, pills: o.pills, pillsR: o.pillsR }, only && only.mode, null);
+      stdExplore(s, slug, only && only.mode);
     }
     if(area) studioPractice(s, area, modes, explore ? { mode: 'practice' } : null);
     Array.prototype.slice.call(app.children).forEach(function(k){ if(!k.classList.contains('bt-loading')) s.add('details', k); });
@@ -829,12 +923,20 @@
     if(modes){ modes.classList.add('ls-prac-set'); s.add('details', modes, only); }
     area.classList.add('ls-prac');
     s.add('dock', area, only);
-    var m = only && only.mode;
+    var m = only && only.mode, std = s.root.classList.contains('ls-std'), pick = null;
+    // The standard frame: new numbers or a worked problem, from one dropdown on the stage (skillTool's area.lsPick).
+    if(std && area.lsPick && s.picker){
+      var lp = area.lsPick;
+      pick = s.picker({ label: 'Problem', groups: lp.groups, value: lp.value(), onChange: lp.onChange }, m);
+      area.lsSync = function(){ pick.value(lp.value()); };
+      if(modes) modes.hidden = true;
+    }
     function fresh(){
       var slot = area.querySelector(':scope > .bt-stage-slot');
       if(!slot) return;
       stage.innerHTML = '';
-      why.innerHTML = '<h3 class="ls-title-l">Worked solution</h3><p class="ls-sub">It appears here after you check your answers.</p>';
+      why.innerHTML = std ? '' : '<h3 class="ls-title-l">Worked solution</h3><p class="ls-sub">It appears here after you check your answers.</p>';
+      if(std) s.done(false, m);
       stage.appendChild(slot);
       // The problem text becomes the caption; its data table goes on the
       // stage under the figure (the numbers to work from stay in sight);
@@ -854,7 +956,13 @@
       if(form) window.LevlStudio.stepper(form, { items: ':scope > .bt-part', submit: ':scope > .bt-form-report', label: 'Part',
         total: function(){ return form.classList.contains('bt-parts-step') ? +(area.getAttribute('data-parts') || 0) : 0; },
         done: function(){ return form.classList.contains('bt-finished'); } });
-      s.caption(esc(text), m); s.pills([], 'left', m);
+      if(std){
+        var n = +(area.getAttribute('data-parts') || 0);
+        s.task({ kicker: pick ? (pick.value() === 'practice' ? 'Practice problem' : 'Worked problem') : 'Problem', title: longT(esc(text)),
+          todo: n > 1 ? 'Answer one part at a time.' : 'Answer, then Check.' }, m);
+        s.caption('', m);
+      } else s.caption(esc(text), m);
+      s.pills([], 'left', m);
     }
     function checked(){
       var sol = area.querySelector(':scope > .bt-solution'), res = area.querySelector('.bt-result'), t = res ? res.textContent : '';
@@ -863,9 +971,26 @@
       why.appendChild(sol);
       var mm = /(\d+) of (\d+)/.exec(t);
       if(mm) s.pills([{ html: mm[1] + ' of ' + mm[2] + ' right', tone: mm[1] === mm[2] ? 'good' : 'warn' }], 'left', m);
-      s.caption((mm ? '<b>' + mm[1] + ' of ' + mm[2] + ' parts right the first time.</b> ' : '') + 'The worked solution is under Why.', m);
       var nx = area.querySelector('.bt-next .btn-press');
       if(nx) nx.classList.add('ls-btn', 'ls-pri');
+      if(std){
+        // The finished card: the score, Next (a new or the next problem), then the worked solution (Keep going under
+        // it), this problem again, your answers, the lesson.
+        s.caption((mm ? '<b>' + mm[1] + ' of ' + mm[2] + ' parts right the first time.</b> ' : '') + 'The worked solution is under Explanation.', m);
+        var keep = area.querySelector('.bt-keep'), les = keep && keep.querySelector('a[href*="lessons/"]');
+        if(keep) why.appendChild(keep);
+        var again = area.querySelector('.bt-next .bt-again'), redo = area.querySelector('.bt-next .bt-redo'), endP = area.querySelector('.bt-next p');
+        var links = [{ label: 'Full explanation', open: 'why' }];
+        if(redo) links.push({ label: 'Try this one again', onClick: function(){ redo.click(); } });
+        links.push({ label: 'Review your answers', onClick: function(){ s.done(false, m); } });
+        if(les) links.push({ label: 'Read the lesson: ' + les.textContent.replace(/^\s*Lesson\s*/, '').trim(), href: les.getAttribute('href') });
+        var all = mm && mm[1] === mm[2];
+        s.done({ kicker: all ? 'Solved' : 'Finished', title: mm ? esc(mm[1] + ' of ' + mm[2] + ' parts right the first time.') : 'Finished.',
+          text: all ? 'Every part right on the first try.' : endP ? esc(endP.textContent) : 'The worked solution shows each part.',
+          next: again ? { label: again.textContent, onClick: function(){ again.click(); } } : null, links: links }, m);
+        return;
+      }
+      s.caption((mm ? '<b>' + mm[1] + ' of ' + mm[2] + ' parts right the first time.</b> ' : '') + 'The worked solution is under Why.', m);
     }
     if(window.MutationObserver) new MutationObserver(fresh).observe(area, { childList: true });
     area.addEventListener('bt-skill-done', function(){ setTimeout(checked, 0); });
@@ -950,6 +1075,9 @@
     var all = simModes.map(function(m){ return m.value; }).join(' ');
     var items = simModes.map(function(m){ return { value: m.value, label: m.label }; });
     if(hasQ) items.push({ value: 'questions', label: o.questionsLabel || 'Questions' });
+    // The standard frame: Explore (each explore view) asks its question and says what to do first.
+    if(o.cards) simModes.forEach(function(m){ stdExplore(s, slug, m.value); });
+    else stdExplore(s, slug, many ? simModes[0].value : null);
     var start = simModes[0].value;
     simModes.forEach(function(m){ if(m.btn && m.btn.getAttribute('aria-pressed') === 'true') start = m.value; });
     if(hasQ && /^#(questions|frq)\b/.test(location.hash)) start = 'questions';
@@ -1022,7 +1150,7 @@
         mo.observe(ctl, { childList: true });
       }
     }
-    dockEls.forEach(function(x){ if(x.classList.contains('bt-buttons')) x.classList.add('ls-scroll'); s.add('dock', take(x), only); if(x.classList.contains('os-chal')) chalSteps(x); });
+    dockEls.forEach(function(x){ if(x.classList.contains('bt-buttons')) x.classList.add('ls-scroll'); s.add('dock', take(x), only); if(x.classList.contains('os-chal')){ chalSteps(x); chalDone(s, x); } });
     var why = document.createElement('div'); why.className = 'ls-sec ls-sim-why';
     whyEls.forEach(function(x){ why.appendChild(take(x)); });
     s.add('why', why, only);
@@ -1102,6 +1230,8 @@
       if(roEl && roEl.hidden && !cfg.pillsAlways){ if(pl) pl = []; if(pr) pr = []; }
       // Caption and pills are kept per studio mode: set them for each of this card's modes.
       (m ? m.split(' ') : [null]).forEach(function(mm){
+        // (The standard frame keeps a challenge mode's live line as the caption, beside its Explanation: its
+        // challenge box below is the task.)
         if(cap != null) s.caption(cap, mm);
         if(pl) s.pills(pl, 'left', mm);
         if(pr) s.pills(pr, 'right', mm);
@@ -1135,6 +1265,30 @@
     if(window.MutationObserver) new MutationObserver(wrap).observe(box, { childList: true });
     wrap();
   }
+  /* The standard frame: a challenge round that ends (its feedback with a Next button, .os-chal-fb .os-next) gets the
+     finished card: the verdict, the reason, Next, then the result again, the explanation and the lesson. A new round
+     (the Next button gone) takes it away. The feedback itself stays in the box, under the card. */
+  function chalDone(s, box){
+    if(!isStd(s) || !window.MutationObserver) return;
+    var shown = null;
+    function check(){
+      var fb = box.querySelector('.os-chal-fb'), nx = fb && fb.querySelector('.os-next');
+      if(!nx){ if(shown){ s.done(false, shown); shown = null; } return; }
+      if(shown) return;
+      shown = s.mode();
+      var marks = Array.prototype.slice.call(fb.querySelectorAll('.bio-mark')), ok = marks.filter(function(m){ return m.classList.contains('ok'); }).length;
+      var c = fb.cloneNode(true);
+      Array.prototype.forEach.call(c.querySelectorAll('.bio-mark, .bt-actions, .bt-report'), function(x){ x.remove(); });
+      var ps = c.querySelectorAll('p'), text = (ps.length ? Array.prototype.map.call(ps, function(x){ return x.textContent; }).join(' ') : c.textContent).replace(/\s+/g, ' ').trim();
+      var title = marks.length > 1 ? (ok === marks.length ? 'All ' + marks.length + ' right.' : ok + ' of ' + marks.length + ' right.') : marks.length ? marks[0].textContent.trim() + '.' : 'Done.';
+      var keep = s.root.querySelector('.ls-keephost .bt-keep a[href*="lessons/"]');
+      s.done({ kicker: ok === marks.length && marks.length ? 'Right' : 'Finished', title: esc(title), text: esc(text),
+        next: { label: nx.textContent, onClick: function(){ nx.click(); } },
+        links: [{ label: 'See the result again', onClick: function(){ var m = shown; shown = 'seen'; s.done(false, m); } }, { label: 'Full explanation', open: 'why' }]
+          .concat(keep ? [{ label: 'Read the lesson: ' + keep.textContent.replace(/^\s*Lesson\s*/, '').trim(), href: keep.getAttribute('href') }] : []) }, shown);
+    }
+    new MutationObserver(function(){ requestAnimationFrame(check); }).observe(box, { childList: true, subtree: true });
+  }
   function studioQuestions(s, qcard, frq, only, o){
     var stage = document.createElement('div'), dock = document.createElement('div');
     stage.className = 'ls-q-stage'; dock.className = 'ls-qs';
@@ -1166,9 +1320,11 @@
       // The FRQs say "Use Table 1 above": the stimulus stays on the stage under the FRQ heading (tool review 2026-11).
       stims.forEach(function(x){ x.hidden = false; });
       if(head) head.hidden = !inFrq;
-      s.caption(review ? 'Tick each rubric point your answer earns, then save your score.'
+      var msg = review ? 'Tick each rubric point your answer earns, then save your score.'
         : inFrq ? 'Write your answer in your own words; the rubric and a sample answer come after the last part.'
-        : 'Answer from the data shown. Each answer is checked right away.', m);
+        : 'Answer from the data shown. Each answer is checked right away.';
+      if(isStd(s)){ s.task({ kicker: review ? 'Score your answer' : inFrq ? 'Free response' : 'Questions', title: esc(msg) }, m); s.caption('', m); }
+      else s.caption(msg, m);
     }
     if(window.MutationObserver) new MutationObserver(function(){ requestAnimationFrame(sync); }).observe(dock, { subtree: true, attributes: true, attributeFilter: ['class'] });
     sync();
@@ -1176,6 +1332,7 @@
   }
 
   window.ApBioTools = {
+    stdPicker: stdPicker,
     studioVirtual: studioVirtual, studioKeep: studioKeep, firstSentence: firstSentence,
     esc: esc, F: F, nid: nid, mount: mount, slider: slider, choiceSelect: choiceSelect, announcer: announcer,
     plot: plot, barPath: barPath, niceMax: niceMax, niceStep: niceStep, dataTable: dataTable, wrapTables: wrapTables, box: box,

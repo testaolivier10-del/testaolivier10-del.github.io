@@ -582,6 +582,7 @@
     dock.insertBefore(cue.el, dock.firstChild);
     var relSel = T.choiceSelect({ label: 'Relation', options: keys.map(function(k){ var r = SD.REL[k]; return { value: k, label: r.Y.name.charAt(0).toUpperCase() + r.Y.name.slice(1) + ': ' + r.formula.replace(/_/g, '') }; }), value: st.rel, onChange: function(v){ setRel(v); } });
     host.querySelector('.sd-relsel').appendChild(relSel.el);
+    T.stdPicker(relSel, { label: 'Relation', mode: 'explore' });
     view.querySelectorAll('.sd-vtoggle button').forEach(function(b){ b.addEventListener('click', function(){ var v = b.getAttribute('data-v'); view.classList.toggle('show-pic', v === 'pic'); view.classList.toggle('show-bar', v === 'bar'); view.querySelectorAll('.sd-vtoggle button').forEach(function(x){ var on = x === b; x.setAttribute('aria-pressed', String(on)); x.classList.toggle('on', on); }); }); });
     host.querySelector('.sd-reset').addEventListener('click', function(){ sliders.forEach(function(x){ x.sl.set(1); st.k[x.v.sym] = 1; }); t = 0; draw(); });
     function range(p){ var a = Math.abs(p) || 1; return { min: Math.max(0.25, Math.pow(16, -1 / a)), max: Math.min(4, Math.pow(16, 1 / a)) }; }

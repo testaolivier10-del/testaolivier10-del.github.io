@@ -190,6 +190,14 @@
       var msg = c.textContent.replace(/\s+/g, ' ').trim();
       LS.pills(mark ? [{ html: mark.textContent, tone: mark.classList.contains('ok') ? 'good' : /Shown/.test(mark.textContent) ? 'warn' : 'bad' }] : [], 'left', 'explore');
       LS.caption(mark ? '<b>' + esc(mark.textContent) + '.</b> ' + esc(msg) : msg ? esc(msg) : esc(instruction()), 'explore');
+      // The standard frame: a box that is right (or shown) ends the problem: the finished card, with New problem first.
+      if(!LS.root.classList.contains('ls-std')) return;
+      var end = mark && (mark.classList.contains('ok') || /Shown/.test(mark.textContent));
+      if(!end){ LS.done(false, 'explore'); return; }
+      var nb = $('.pb-new');
+      LS.done({ kicker: mark.classList.contains('ok') ? 'Solved' : 'Finished', title: mark.classList.contains('ok') ? 'Your box is right.' : 'The answer is shown.', text: esc(msg),
+        next: nb ? { label: 'New problem', onClick: function(){ nb.click(); } } : null,
+        links: [{ label: 'See your box', onClick: function(){ LS.done(false, 'explore'); } }, { label: 'Atom tally', open: 'details' }] }, 'explore');
     }
     function instruction(){ var t = $('.pb-text .bt-small'); return t ? t.textContent : ''; }
     /* Tool Studio arrangement: the equation and the two boxes on the stage;

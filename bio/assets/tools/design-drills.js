@@ -47,6 +47,7 @@
     var scSel = T.choiceSelect({ label: 'Scenario', options: scen.map(function(s, i){ return { value: s.id, label: (i + 1) + '. ' + s.title }; }), value: scen[0].id, onChange: function(v){ draw(v, true); } });
     var drSel = T.choiceSelect({ label: 'Drills', options: [{ value: '', label: 'All drills' }].concat(drills.map(function(d){ return { value: d.id, label: d.name }; })), value: '', onChange: function(v){ only = v; draw(scSel.value(), true); } });
     pick.appendChild(scSel.el); pick.appendChild(drSel.el);
+    T.stdPicker(scSel, { label: 'Scenario', count: false });
     function shuffle(n){ var a = []; for(var i = 0; i < n; i++) a.push(i); for(var j = n - 1; j > 0; j--){ var k = Math.floor(Math.random() * (j + 1)); var t = a[j]; a[j] = a[k]; a[k] = t; } return a; }
     function topicOf(key){ return (data.partTopics || {})[key]; }
 
@@ -727,6 +728,8 @@
       stage.innerHTML = '';
       Array.prototype.slice.call(host.querySelectorAll(':scope > h2, :scope > .dr-schem, :scope > .bt-context, :scope > .table-wrap')).forEach(function(x){ stage.appendChild(x); });
       var h2 = stage.querySelector('h2'); if(h2) h2.classList.add('ls-title-l');
+      // The standard frame: the stage's dropdown already names the experiment.
+      if(h2 && s.root.classList.contains('ls-std')) h2.classList.add('sr-only');
       // pass 3 (2026-11-11): the picture carries the setup; its full paragraph opens on tap
       var ctxEl = stage.querySelector(':scope > .bt-context');
       if(ctxEl){ var rd = document.createElement('details'); rd.className = 'bt-data dr-readsetup'; rd.innerHTML = '<summary>Read the setup</summary>'; ctxEl.parentNode.insertBefore(rd, ctxEl); rd.appendChild(ctxEl); }
@@ -743,14 +746,35 @@
       wrap = w; dock.appendChild(w);
       window.LevlStudio.stepper(w, { items: ':scope > .dr-sec, :scope > .bt-frq', label: 'Drill' });
       if(window.MutationObserver) new MutationObserver(follow).observe(w, { subtree: true, attributes: true, attributeFilter: ['class'] });
-      s.caption('Look at the experiment, then answer one drill at a time.');
+      if(std){
+        // The standard frame: the side panel's head says what to do; the finished card comes when every drill is done.
+        s.done(false);
+        s.task({ kicker: 'Experiment ' + (scenSel ? (scenSel.selectedIndex + 1) + ' of ' + scenSel.options.length : ''), title: 'Look at the experiment, then answer one drill at a time.' });
+        s.caption('');
+      } else s.caption('Look at the experiment, then answer one drill at a time.');
       s.pills([]);
+    }
+    var std = s.root.classList.contains('ls-std'), scenSel = s.root.querySelector('.dr-pick select') || app.querySelector('.dr-pick select');
+    /* Every drill of this experiment checked (and each written answer has its rubric): the finished card. */
+    function finished(){
+      if(!std || !wrap) return;
+      var secs = wrap.querySelectorAll(':scope > .dr-sec'), frqs = wrap.querySelectorAll(':scope > .bt-frq'), r = 0, n = 0, all = true;
+      Array.prototype.forEach.call(secs, function(x){ var m = /(\d+) of (\d+)/.exec((x.querySelector('.bt-result') || {}).textContent || ''); if(!m){ all = false; return; } r += +m[1]; n += +m[2]; });
+      Array.prototype.forEach.call(frqs, function(f){ if(!f.querySelector('.bt-rubric')) all = false; });
+      if(!all || !secs.length) return;
+      var les = wrap.querySelector('.bt-keep a[href*="lessons/"]');
+      s.done({ kicker: r === n ? 'Solved' : 'Finished', title: T.esc(r + ' of ' + n + ' right on this experiment.'),
+        text: frqs.length ? 'Score your written answers with their rubrics.' : 'The feedback is under each answer.',
+        next: scenSel ? { label: 'Next experiment', onClick: function(){ scenSel.selectedIndex = (scenSel.selectedIndex + 1) % scenSel.options.length; scenSel.dispatchEvent(new Event('change', { bubbles: true })); } } : null,
+        links: [{ label: 'Review your answers', onClick: function(){ s.done(false); } }, { label: 'How the drills work', open: 'why' }]
+          .concat(les ? [{ label: 'Read the lesson: ' + les.textContent.replace(/^\s*Lesson\s*/, '').trim(), href: les.getAttribute('href') }] : []) });
     }
     // Feedback lands on the stage: the last checked drill's score as a pill.
     dock.addEventListener('submit', function(){ setTimeout(function(){
       var r = Array.prototype.filter.call(dock.querySelectorAll('.dr-sec:not(.ls-step-off) .bt-result'), function(x){ return x.textContent; })[0];
       var m = r && /(\d+) of (\d+)/.exec(r.textContent);
       if(m){ s.pills([{ html: m[1] + ' of ' + m[2] + ' right', tone: m[1] === m[2] ? 'good' : 'warn' }]); s.caption('<b>' + T.esc(r.textContent) + '</b> The feedback is under each answer. Next goes on to the next drill.'); }
+      finished();
     }, 0); });
     if(window.MutationObserver) new MutationObserver(arrange).observe(host, { childList: true });
     arrange();

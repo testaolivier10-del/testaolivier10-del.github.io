@@ -1226,7 +1226,8 @@
         var el = n.matches('.bt-solution, [data-ls-solution]') ? n : n.querySelector('.bt-solution, [data-ls-solution]');
         if(el && el.textContent.trim() && el.textContent !== solLast) hit = el;
       }); });
-      if(!hit || !isQuiz() || sheetOpen || big) return;
+      // std: a finished card on show leads to the solution itself (its Full explanation), so the sheet stays shut.
+      if(!hit || !isQuiz() || sheetOpen || big || (std && doneBy[key()])) return;
       solLast = hit.textContent;
       hit.hidden = false;
       // A phone: the sheet (focus moves into it, Close brings it back). A
@@ -1235,7 +1236,7 @@
       // On a phone focus goes to the solution's heading, so a screen reader
       // starts there; closing returns to what had focus (New problem).
       setTimeout(function(){
-        if(sheetOpen || !whyP.contains(hit) || !isQuiz()) return;
+        if(sheetOpen || !whyP.contains(hit) || !isQuiz() || (std && doneBy[key()])) return;
         var h = hit.querySelector('h2, h3, h4');
         if(h && !h.hasAttribute('tabindex')) h.setAttribute('tabindex', '-1');
         s.open('why', h || null, wide());
@@ -1513,6 +1514,10 @@
         if(t && t !== target){ describe(target, false); target = t; describe(target, true); }
       }
       if(!document.contains(target)){ ring.style.display = 'none'; return; }
+      // A target out of sight (another mode showing: std puts the switch in the bar, where a tap is not use) hides the line too.
+      var seen = !!target.getClientRects().length;
+      tip.style.display = seen ? '' : 'none';
+      if(!seen){ ring.style.display = 'none'; return; }
       if(!tip.isConnected || tip.parentNode !== spot().parent) put();
       // A control's wrapper (label, slider, value) rings only its slider or field, so the label and value stay clear.
       var rt0 = target;
@@ -1686,10 +1691,12 @@
     var home = crumbs.length > 1 ? crumbs[1] : null;
     var rep = document.querySelector('[data-report-course][data-report-question]');
     // A course kit on the standard frame says so (LevlStudio.stdKit, with each tool's one line), so its
-    // locked tools get the same bar as its open ones (docs/tools-frame-2026-11.md).
+    // locked tools get the same bar as its open ones (docs/tools-frame-2026-11.md). Or the mount carries
+    // data-ls-std (the AP Bio, Chem and Physics cores set it) and the one line is the page's .lede.
     var sd = stdKit, slug0 = mountEl.getAttribute('data-slug') || '';
+    var dstd = mountEl.hasAttribute('data-ls-std'), ledeEl = dstd ? main.querySelector('.lede') : null;
     var s = mount({
-      std: !!sd, lede: sd && sd.lede ? sd.lede[slug0] || '' : '',
+      std: !!sd || dstd, lede: sd && sd.lede && sd.lede[slug0] ? sd.lede[slug0] : ledeEl ? ledeEl.textContent.trim() : '',
       title: h1 ? h1.textContent.trim() : document.title, course: home ? home.textContent.trim() : '',
       back: tools ? tools.getAttribute('href') : '../tools.html', home: home ? home.getAttribute('href') : '../',
       slug: mountEl.getAttribute('data-slug') || '', host: mountEl,
