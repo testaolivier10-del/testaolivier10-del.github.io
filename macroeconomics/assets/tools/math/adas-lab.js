@@ -123,7 +123,7 @@
       solution: [
         sh.link,
         outText(o['price level'], o.output) + ' at the new short-run equilibrium E2.',
-        'Real GDP is ' + (st.gap === 'recessionary' ? 'below' : 'above') + ' full employment (LRAS): a ' + st.gap + ' gap, with unemployment ' + (st.gap === 'recessionary' ? 'above' : 'below') + ' the natural rate.'
+        'Real GDP is ' + (st.gap === 'recessionary' ? 'below' : 'above') + ' full employment (LRAS): ' + (st.gap === 'inflationary' ? 'an ' : 'a ') + st.gap + ' gap, with unemployment ' + (st.gap === 'recessionary' ? 'above' : 'below') + ' the natural rate.'
       ],
       answer: { curve: sh.curve, dir: sh.dir, outcome: o, gap: st.gap }, shock: sh.id
     };
@@ -168,7 +168,7 @@
         choice('unemp', 'When the adjustment is over, where is unemployment?', u, 0, uWhy, '1.A')
       ],
       solution: [
-        'In a ' + st.gap + ' gap unemployment is ' + (rec ? 'above' : 'below') + ' the natural rate, so nominal wages and input prices ' + (rec ? 'fall' : 'rise') + ' as contracts renew.',
+        'In ' + (rec ? 'a ' : 'an ') + st.gap + ' gap unemployment is ' + (rec ? 'above' : 'below') + ' the natural rate, so nominal wages and input prices ' + (rec ? 'fall' : 'rise') + ' as contracts renew.',
         (rec ? 'Lower' : 'Higher') + ' costs shift SRAS ' + (rec ? 'right' : 'left') + ' (AD does not move: no policy).',
         outText(pl, y) + ', until AD, SRAS and LRAS meet at full employment and unemployment is back at the natural rate.'
       ],

@@ -22,3 +22,15 @@ problem type dropdown, hint ladder, finished card with per problem type takeaway
   exponential), symbolic-steps (all 8 kinds), vectors-matrices (5 kinds), unit-circle (radian).
 - Symbolic steps `METHOD.idA` (trig identity hint).
 - Exp-log lab cues: inverse, rules, semilog.
+
+## Accuracy check (F6b, 2026-11-16)
+Checked every `STD` takeaway, `METHOD.idA` and the exp-log cues against the tools and `docs/apprecalc-authoring-guide.md`
+(limit notation, rate and concavity wording, no calculus words).
+- Correct as written: all task questions, `METHOD.idA`, the exp-log cues, and the takeaways not listed here.
+- Changed: function-lab rational used "f(x) → ±∞ as x → a" and "f(x) → c", the shorthand the guide forbids. Now: "x = a
+  is a vertical asymptote when a one-sided limit of f(x) as x approaches a is ∞ or −∞; y = c is a horizontal asymptote
+  when the limit of f(x) as x → ∞ or x → −∞ is c."
+- Changed: poly-rational "A numerator factor gives a zero" to "A numerator factor that does not cancel gives a zero" (a
+  cancelled factor gives a hole, as the same line says).
+- Changed: symbolic-steps inv-trig "arcsin and arctan give angles in [−π/2, π/2]" to "arcsin gives angles in [−π/2,
+  π/2], arctan in (−π/2, π/2), and arccos in [0, π]" (arctan never reaches ±π/2).

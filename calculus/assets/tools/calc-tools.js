@@ -1261,27 +1261,73 @@
      gets the hint ladder (the method at once, Show the answer after one real try) and ends on the finished card
      (STD.takeaway, New problem, the worked solution, the steps, the lesson). AB and BC share this table. */
   var STD = {
-    'accumulation': { task: 'How does the area under f build g?', takeaway: 'g(x) adds up the signed area under f from a to x, so g′(x) = f(x).' },
-    'area-volume': { task: 'How does a slice become a volume?', takeaway: 'A volume is the integral of one slice\'s area across the region.' },
+    'accumulation': { task: 'How does the area under f build g?', takeaway: {
+      netgraph: 'Net change is the integral of the rate: the signed area under its graph.',
+      tank: 'The amount at the end is the starting amount plus the integral of rate in minus rate out.',
+      '*': 'g(x) adds up the signed area under f from a to x, so g′(x) = f(x).' } },
+    'area-volume': { task: 'How does a slice become a volume?', takeaway: {
+      areaX: 'The area between two curves is the integral of top minus bottom across the region.',
+      areaY: 'With horizontal slices, integrate right minus left over the y-interval.',
+      areaCross: 'Where the curves cross, split the integral so each piece is top minus bottom.',
+      '*': 'A volume is the integral of one slice\'s area across the region.' } },
     'curve-analyzer': { task: 'How do f′ and f″ shape the graph of f?', takeaway: {
       optimize: 'Write the quantity in one variable, then find where its derivative changes sign inside the domain.',
       '*': 'The sign of f′ says where f rises or falls; the sign of f″ says how it bends.' } },
-    'limit-explorer': { task: 'What value does f(x) approach?', takeaway: 'A limit is the value f(x) approaches, which need not be f(a).' },
+    'limit-explorer': { task: 'What value does f(x) approach?', takeaway: {
+      continuity: 'f is continuous at a when f(a) is defined, the limit exists, and the two are equal.',
+      ivt: 'If f is continuous on [a, b], it takes every value between f(a) and f(b) somewhere in the interval.',
+      '*': 'A limit is the value f(x) approaches, which need not be f(a).' } },
     'motion-lab': { task: 'How do x, v and a fit together?', takeaway: {
+      turn: 'The particle changes direction where v(t) changes sign, not just where it is 0.',
       dist: 'Displacement is the integral of v(t); total distance is the integral of |v(t)|.',
       graph: 'Displacement is the integral of v(t); total distance is the integral of |v(t)|.',
       '*': 'Velocity is the slope of position; the particle speeds up when v and a have the same sign.' } },
     'related-rates': { task: 'How are the rates linked?', takeaway: 'Differentiate the equation that links the quantities, then put in the values at that moment.' },
-    'riemann-sums': { task: 'When is a sum over or under the area?', takeaway: 'Increasing or decreasing decides left and right sums; concavity decides midpoint and trapezoid sums.' },
+    'riemann-sums': { task: 'When is a sum over or under the area?', takeaway: {
+      overunder: 'Increasing or decreasing decides left and right sums; concavity decides midpoint and trapezoid sums.',
+      context: 'A sum of rate × time estimates the total change, in the rate\'s units times the time\'s units.',
+      sigma: 'As n grows, the Riemann sum approaches the definite integral, with Δx = (b − a)/n.',
+      tosum: 'As n grows, the Riemann sum approaches the definite integral, with Δx = (b − a)/n.',
+      '*': 'Add height × width for each subinterval (the average of the two ends for a trapezoid).' } },
     'rule-drills': { task: 'Which rule comes first?', takeaway: 'The last operation you would do to evaluate the function names the rule to use first.' },
-    'slope-fields': { task: 'How does the field pick out a solution?', takeaway: 'Each segment\'s slope is dy/dx at that point, and a solution curve follows the segments.' },
-    'tangent-tracer': { task: 'What does the secant become as h goes to 0?', takeaway: 'As h goes to 0, the secant\'s slope approaches the derivative: the tangent\'s slope.' },
-    'euler-logistic': { task: 'How close do Euler steps get?', takeaway: 'Each Euler step follows the tangent line; smaller steps stay closer to the true solution.' },
-    'integration-methods': { task: 'How does each method break the integral down?', takeaway: 'Pick the method from the integrand\'s form, then check the answer by differentiating it.' },
-    'parametric-motion': { task: 'How do x(t) and y(t) move the particle?', takeaway: 'Speed is √((dx/dt)² + (dy/dt)²), and distance traveled is the integral of speed.' },
-    'polar-lab': { task: 'How does sweeping θ build the area?', takeaway: 'Polar area is ½∫r² dθ over the angles that trace the region once.' },
-    'series-lab': { task: 'Does the series converge?', takeaway: 'Name the test and check its conditions; for a power series, test each endpoint on its own.' },
-    'taylor-lab': { task: 'How do more terms improve the fit?', takeaway: 'More terms usually fit better near the center, and the error bound caps how far off the estimate can be.' }
+    'slope-fields': { task: 'How does the field pick out a solution?', takeaway: {
+      separate: 'Separate the variables, integrate both sides, then use the initial condition to find C.',
+      concavity: 'Differentiate dy/dx to get d²y/dx², then put in the point and the slope there.',
+      exp: 'dy/dt = ky gives y = y₀e^(kt): the rate of change is proportional to the amount.',
+      '*': 'Each segment\'s slope is dy/dx at that point, and a solution curve follows the segments.' } },
+    'tangent-tracer': { task: 'What does the secant become as h goes to 0?', takeaway: {
+      whichgraph: 'The graph of f′ shows f\'s slope at each x: 0 at f\'s peaks and valleys, positive where f rises.',
+      sketch: 'The graph of f′ shows f\'s slope at each x: 0 at f\'s peaks and valleys, positive where f rises.',
+      tanline: 'The tangent line at x = a is y = f(a) + f′(a)(x − a).',
+      notdiff: 'f is not differentiable where it has a corner, a cusp, a vertical tangent or a break.',
+      '*': 'As h goes to 0, the secant\'s slope approaches the derivative: the tangent\'s slope.' } },
+    'euler-logistic': { task: 'How close do Euler steps get?', takeaway: {
+      overunder: 'Euler steps underestimate where the solution is concave up and overestimate where it is concave down.',
+      logistic: 'A logistic model grows fastest at half the carrying capacity and levels off toward it.',
+      '*': 'Each Euler step follows the tangent line; smaller steps stay closer to the true solution.' } },
+    'integration-methods': { task: 'How does each method break the integral down?', takeaway: {
+      improper: 'An improper integral is a limit: it converges when that limit is a finite number.',
+      '*': 'Pick the method from the integrand\'s form, then check the answer by differentiating it.' } },
+    'parametric-motion': { task: 'How do x(t) and y(t) move the particle?', takeaway: {
+      slope: 'The slope is dy/dx = (dy/dt) ÷ (dx/dt), where dx/dt is not 0.',
+      second: 'd²y/dx² is the t-derivative of dy/dx, divided by dx/dt.',
+      position: 'Position is the starting point plus the integral of each velocity component.',
+      '*': 'Speed is √((dx/dt)² + (dy/dt)²), and distance traveled is the integral of speed.' } },
+    'polar-lab': { task: 'How does sweeping θ build the area?', takeaway: {
+      coords: 'x = r cos θ and y = r sin θ turn a polar point into x and y.',
+      between: 'The area between two polar curves is ½∫(R² − r²) dθ, outer radius R and inner radius r.',
+      '*': 'Polar area is ½∫r² dθ over the angles that trace the region once.' } },
+    'series-lab': { task: 'Does the series converge?', takeaway: {
+      sum: 'A geometric series converges to a ÷ (1 − r) when |r| < 1, and diverges otherwise.',
+      partial: 'A series converges when its partial sums approach a finite limit.',
+      absolute: 'Absolute convergence: the series of absolute values converges. Conditional: only the series itself does.',
+      '*': 'Name the test and check its conditions; for a power series, test each endpoint on its own.' } },
+    'taylor-lab': { task: 'How do more terms improve the fit?', takeaway: {
+      coef: 'The coefficient of (x − a)ⁿ is f⁽ⁿ⁾(a) ÷ n!.',
+      maclaurin: 'A Maclaurin series is a Taylor series at 0: the coefficient of xⁿ is f⁽ⁿ⁾(0) ÷ n!.',
+      lagrange: 'The Lagrange error is at most max|f⁽ⁿ⁺¹⁾| × |x − a|ⁿ⁺¹ ÷ (n + 1)!.',
+      altbound: 'For an alternating series that meets the test, the error is at most the first term left out.',
+      '*': 'More terms usually fit better near the center, and the error bound caps how far off the estimate can be.' } }
   };
   function isStd(s){ return !!(s && s.task && s.root && s.root.classList.contains('ls-std')); }
   function stdExplore(s, slug, list){

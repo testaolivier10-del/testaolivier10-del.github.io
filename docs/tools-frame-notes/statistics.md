@@ -18,3 +18,17 @@ plus `radioPick` for a scenario chosen by radio buttons (interval capture's popu
 
 ## New copy for an accuracy check
 Takeaways in `STD` in stat-tools.js (all ten).
+
+## Accuracy check (F6b, 2026-11-16)
+Checked the ten takeaways and task questions against the tools and the conclusion templates in
+`docs/apstat-authoring-guide.md`.
+- Correct as written: all task questions; the takeaways for chi-square, data explorer, design, distribution areas,
+  p-value (conditions on H₀), probability trees, regression, sampling distributions and sampling lab.
+- Changed: ci-capture now uses the guide's level template: "If we took many random samples and built a C% interval from
+  each, about C% of the intervals would capture the true parameter."
+- Per problem type (each tool had one line for every kind its drill deals): chi-square chooser; ci-capture claim (the
+  template "convincing evidence ... only when every value in it agrees"); data-explorer describe, zscore;
+  design-randomizer scope (the scope of inference template), confound, variables; distribution-areas inverse,
+  empirical; p-value errors (Type I, Type II, power); probability-trees table, rules (the general addition rule);
+  regression describe, correlation, predict (extrapolation), residual (actual minus predicted), lsrl (through (x̄, ȳ),
+  b = r × s_y ÷ s_x); sampling-distributions estimator; sampling-lab bias. Each kind not listed keeps the tool's line.

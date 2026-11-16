@@ -74,3 +74,19 @@ Finished cards: "Every part right on the first try.", "The worked solution shows
 ## Questions for the owner (nothing removed)
 1. The Practice / Worked set radios still sit in Details (hidden) behind the new dropdown; fine to delete that markup later?
 2. Reset buttons stay in the dock beside their action (see judgment); move them to the stage foot anyway?
+
+## Accuracy check (F6b, 2026-11-16)
+Checked every string in "New copy for the accuracy check" against the tool, the course and `docs/apbio-authoring-guide.md`.
+Each "what to do" line names a control the tool has (its own first-run hint or lead says the same).
+- Correct as written: chi-square, confidence-intervals, descriptive-stats, rates, simpson-diversity, water-potential,
+  osmosis, enzyme-activity, cell-cycle-checkpoints, energy-flow, meiosis-nondisjunction, population-growth,
+  signal-transduction-amplification, tree-reading (both views); all six finished card lines; the graph builder free
+  plot line; "Experiment n of 16 / Look at the experiment, then answer one drill at a time."
+- Changed: hardy-weinberg "How do allele frequencies set genotype frequencies?" to "In Hardy-Weinberg equilibrium, how
+  do allele frequencies set genotype frequencies?" (they only set them under the equilibrium's conditions, which is
+  what the square models).
+- Changed: hardy-weinberg-drift "What changes allele frequencies from one generation to the next?" to "How can chance
+  alone change allele frequencies from one generation to the next?" (the tool shows drift only; the old question
+  also invites selection, mutation and gene flow).
+- Changed: operons "Tap a sugar to change the medium..." to "Tap a sugar (or tryptophan) to change the medium..." (the
+  trp operon's chip is tryptophan, not a sugar). The tool's own first-run hint still says "Tap a sugar"; left as it is.

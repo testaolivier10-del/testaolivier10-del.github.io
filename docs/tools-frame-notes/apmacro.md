@@ -36,3 +36,31 @@ Bar lines and task questions: `LEDE` and `TASK` in mac-tools.js. View lines: ind
 - Explore views (indicators, multiplier, ppc) stay a segmented control rather than the picker: each view has its own controls, and 2 to 4 short choices may stay segmented.
 - No finished card in Explore (policy chain end, AD-AS long run): they are explorations, not problems.
 - Question: the "Write it out" row in policy chain is a long label that ends in an ellipsis on a phone (unchanged). Shorten its value?
+
+## Accuracy check (F6b, 2026-11-16)
+Checked `LEDE`, `TASK`, the view lines and every drill type's finished card takeaway (generated for each context and
+type) against the tools and `docs/apmacro-authoring-guide.md` (causal chains with every link, ample reserves).
+- Correct as written: all eight `LEDE` and `TASK` lines; indicators view lines for Real and Jobs; both multiplier lines.
+- Changed: indicators Prices view "Move the year and compare the two baskets." to "Move the year and compare what the
+  same basket costs then and in the base year." (the CPI prices one fixed basket in two years; "two baskets" is the
+  misconception the view teaches against).
+- Fixed (content bug seen in a takeaway): AD-AS "a inflationary gap" to "an inflationary gap" (`math/adas-lab.js`,
+  two lines).
+- Takeaways: the solution's last line reads well alone for adas, forex, policy chain, ppc (point, oc, input, terms),
+  reserves (tool, shift), indicators (gdp-calc, unemp, cpi, real), multiplier (multiplier, gap). New own lines
+  (`TAKE` in mac-tools.js) where the last line read oddly alone:
+  - indicators gdp-count (was the last item of a list): "GDP counts the market value of new final goods and services
+    made inside the country this year."
+  - indicators utype (same): "Frictional is searching between jobs, structural is a mismatch of skills or place, and
+    cyclical comes from a downturn."
+  - multiplier total (began "This is the largest change"): "The multiplier gives the largest possible change: rising
+    prices and other leakages make the real effect smaller."
+  - multiplier money (began "This is the limited-reserves model"): "The money multiplier belongs to the
+    limited-reserves model; with ample reserves the Fed sets its rate with administered rates instead."
+  - reserves multiplier (began "It is a maximum"): "In the limited-reserves model the money multiplier is a maximum:
+    excess reserves banks keep and cash people hold make the real change smaller."
+  - ppc output (a caveat about absolute advantage): "Comparative advantage, the lower opportunity cost, decides who
+    should make what; absolute advantage does not."
+  - graph studio: a last line that starts with This, That or It ("That is economic growth...") gets the shift line in
+    front of it ("With better technology, the production possibilities curve shifts out. That is economic growth...").
+  - Any takeaway starting "So" drops it.

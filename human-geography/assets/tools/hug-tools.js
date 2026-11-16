@@ -57,7 +57,7 @@
     "map-reader": "Read six kinds of maps and see what each one can hide.",
     "model-studio": "See each model built one place at a time, then build it yourself.",
     "population-lab": "Steer a country through the demographic transition.",
-    "scale-lab": "See how the same data change with the scale of the map."
+    "scale-lab": "See what changes with the scale of analysis, and what map scale means."
   },
     TASK = {
     "borders-lab": "What shapes a boundary and the state inside it?",
@@ -70,6 +70,37 @@
     "scale-lab": "What do the data show at this scale, and what do they hide?"
   };
   if(window.LevlStudio && window.LevlStudio.stdKit) window.LevlStudio.stdKit({ lede: LEDE });
+  /* Finished card takeaways (accuracy check F6b): the worked solution's last line, unless it reads oddly on its
+     own (a pronoun, a list's last item, a bare number); then TAKE[slug][type] (or '*') gives the problem type its
+     own short line: a string, or function(p, last, sol) on plain text ('' keeps the last line). */
+  function lastSentence(t){ var a = String(t).replace(/([.!?])\s+(?=[A-Z])/g, '$1\u0001').split('\u0001'); return a[a.length - 1]; }
+  var TAKE = {
+    'borders-lab': {
+      shape: function(p){ return ({
+        compact: 'A compact state has short distances, so it is easier to govern and connect. Poland is often given as an example.',
+        elongated: 'An elongated state has far ends that are hard to reach and govern from the capital. Chile is the usual example.',
+        prorupted: 'A prorupted state has an arm that is hard to defend and connect, though it may reach a river, a sea or a resource. Thailand and Namibia are often given as examples.',
+        perforated: 'A perforated state surrounds another state, which depends on it for trade and transport. South Africa, which surrounds Lesotho, is the usual example.',
+        fragmented: 'A fragmented state is in pieces that are hard to connect, so trade, travel and a shared identity are harder. Indonesia and the Philippines are often given as examples.'
+      })[p.given && p.given.shape] || ''; },
+      boundary: function(p){ return p.given && p.given.extra === 'relict' ? 'A relict boundary no longer divides states, but its traces stay in the cultural landscape.' : 'A boundary that still divides two states controls who and what crosses.'; },
+      forces: function(p, last, sol){ return sol.length > 1 ? sol[0] + ' ' + last : ''; } },
+    'city-lab': { models: function(p, last, sol){ return sol.length > 1 ? sol[0].split(':')[0] + '. ' + last : ''; } },
+    'diffusion-lab': {
+      diffusion: function(p, last, sol){ return sol.length > 1 ? sol[1].split('. ')[0] + '. ' + last.replace(/^A real case of the same type:/, 'A real case:') : ''; },
+      migration: function(p, last){ return lastSentence(last); } },
+    'frq-coach': {
+      part: function(p, last, sol){ return sol[0] || ''; },
+      verbs: 'Each task verb asks for something different: do what the verb asks, about the place or data in the question.',
+      earns: 'A point is earned by doing what the task verb asks, with the place or data the question names.' },
+    'model-studio': { '*': function(p, last){ return p.title ? p.title + '. ' + last.replace(/^A limit\.\s*/, 'One limit: ') : ''; } }
+  };
+  function takeaway(p, html){
+    var own = p && TAKE[curSlug] && (TAKE[curSlug][p.type] || TAKE[curSlug]['*']);
+    if(typeof own === 'function'){ var sol = (p.solution || []).map(function(l){ return plainText(String(l)); }); own = own(p, sol[sol.length - 1] || '', sol); }
+    if(own) return esc(own);
+    return String(html || '').replace(/^So,?\s+([a-z])/, function(m, c){ return c.toUpperCase(); });
+  }
   function nid(p){ return (p || 'bt') + '-' + (++uid); }
   function esc(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
   /* Plain text of a node or an HTML string: each formula reads as its TeX's
@@ -926,7 +957,7 @@
           var links = [{ label: 'Worked solution', open: 'why' }, { label: 'See your answers', onClick: function(){ s.done(false, m); var r = area.querySelector('.bt-result'); if(r) s.reveal(r); } }];
           if(t && t.built) links.push({ label: 'Read the lesson: ' + t.title, href: base() + 'lessons/' + t.id + '.html' });
           s.done({ kicker: right === total ? 'All right the first time' : 'Finished', title: total === 1 ? (right ? 'Right the first time.' : 'Not right the first time.') : right + ' of ' + total + ' steps right the first time',
-            text: sl, next: again ? { label: again.textContent, onClick: function(){ again.click(); } } : null, links: links }, m);
+            text: takeaway(p, sl), next: again ? { label: again.textContent, onClick: function(){ again.click(); } } : null, links: links }, m);
         }
       }
     };
@@ -1079,7 +1110,7 @@
     var links = [{ label: 'Worked solution', open: 'why' }, { label: 'See your answers', onClick: function(){ s.done(false, m); var r = o.area && o.area.querySelector('.bt-result'); if(r) s.reveal(r); } }];
     if(t && t.built) links.push({ label: 'Read the lesson: ' + t.title, href: base() + 'lessons/' + t.id + '.html' });
     s.done({ kicker: o.right === o.total ? 'All right the first time' : 'Finished', title: o.right + ' of ' + o.total + ' ' + (o.unit || 'steps') + ' right the first time',
-      text: o.esc ? esc(sol) : sol, next: o.again ? { label: o.again.textContent, onClick: function(){ o.again.click(); } } : null, links: links }, m);
+      text: takeaway(o.p, o.esc ? esc(sol) : sol), next: o.again ? { label: o.again.textContent, onClick: function(){ o.again.click(); } } : null, links: links }, m);
   }
   /* The first-run tip in its own slot (Phase 3, shared from the trainers'
      copies: T2, T3). opts may be the old fourth argument, a `before` node. */

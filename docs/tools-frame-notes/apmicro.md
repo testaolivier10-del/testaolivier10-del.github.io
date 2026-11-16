@@ -22,3 +22,19 @@ ATC at their lowest points?").
 
 ## Questions
 - Firm and market: the shock select could be the stage picker in perfect competition only; left in the panel because the picker cannot follow a view inside a mode. Fine?
+
+## Accuracy check (F6b, 2026-11-16)
+Checked `LEDE`, `TASK` and every drill type's finished card takeaway (generated per context and type) against the tools
+and `docs/apmicro-authoring-guide.md`.
+- Correct as written: all eight `LEDE` and `TASK` lines (MC crosses AVC and ATC at their minimums; hire to MRP = MRC).
+- Takeaways read well alone for cost, elasticity, externality (quantity, dwl, public), factor, firm (quantity,
+  shutdown, monopoly, monocomp), game (dominant, nash), surplus, and most graph studio scenarios. New own lines (`TAKE`
+  in mic-tools.js):
+  - externality fix (began "It shifts supply left to MSC"): "A per-unit tax on a negative externality, or a subsidy
+    for a positive one, moves the market to the efficient quantity and removes the deadweight loss."
+  - firm-market longrun ("The market quantity is smaller, with fewer firms." alone): "In the long run, entry or exit
+    shifts market supply until price equals minimum ATC and economic profit is zero."
+  - game best and change (a 250 character comparison): its last sentence only ("Beta Jet's dominant strategy is Low
+    fare.").
+  - graph studio: same rule as macro (This, That or It gets the shift line in front).
+  - A leading "So" is dropped (elasticity income and cross, externality quantity, game nash).

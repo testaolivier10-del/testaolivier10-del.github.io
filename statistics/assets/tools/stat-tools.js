@@ -1004,16 +1004,45 @@
      gets the hint ladder (the method at once, Show the answer after one real try) and ends on the finished card
      (STD.takeaway, New problem, the worked solution, the steps, the lesson). */
   var STD = {
-    'chi-square-lab': { task: 'Which cells drive χ²?', takeaway: 'Each cell adds (observed − expected)² ÷ expected, so the cells farthest from their expected counts add the most to χ².' },
-    'ci-capture': { task: 'What does the confidence level mean?', takeaway: 'About C% of intervals made this way capture the true parameter; any one interval either does or does not.' },
-    'data-explorer': { task: 'Which summaries resist an outlier?', takeaway: 'The median and IQR resist outliers; the mean and standard deviation do not.' },
-    'design-randomizer': { task: 'What does random assignment do?', takeaway: 'Random assignment tends to balance other variables across groups, so a convincing difference can show cause and effect.' },
-    'distribution-areas': { task: 'What probability is shaded?', takeaway: 'A probability is the shaded part: the area under a normal curve, or the sum of the binomial bars that fit the event.' },
-    'p-value-explorer': { task: 'Where does a p-value come from?', takeaway: 'The p-value is the probability of a result at least as extreme as the one observed, assuming H₀ is true.' },
-    'probability-trees': { task: 'How do a tree, a table and a Venn diagram show the same events?', takeaway: 'Multiply along a path of branches for "and"; add the paths that fit for "or".' },
-    'regression-lab': { task: 'How does one point move the line and r?', takeaway: 'A point far from the others in x can pull the line toward it and change r a lot.' },
-    'sampling-distributions': { task: 'How does a statistic vary from sample to sample?', takeaway: 'Larger samples give statistics that vary less around the parameter.' },
-    'sampling-lab': { task: 'How does each method pick its sample?', takeaway: 'Random selection is what lets a sample stand for the population.' }
+    'chi-square-lab': { task: 'Which cells drive χ²?', takeaway: {
+      chooser: 'Homogeneity compares one variable across several populations or treatments; independence asks whether two variables in one sample are related.',
+      '*': 'Each cell adds (observed − expected)² ÷ expected, so the cells farthest from their expected counts add the most to χ².' } },
+    'ci-capture': { task: 'What does the confidence level mean?', takeaway: {
+      claim: 'An interval gives convincing evidence for a claim only when every value in it agrees with the claim.',
+      '*': 'If we took many random samples and built a C% interval from each, about C% of the intervals would capture the true parameter.' } },
+    'data-explorer': { task: 'Which summaries resist an outlier?', takeaway: {
+      describe: 'Describe shape, center, spread and unusual features, in context and with numbers.',
+      zscore: 'A z-score says how many standard deviations a value is above or below the mean.',
+      '*': 'The median and IQR resist outliers; the mean and standard deviation do not.' } },
+    'design-randomizer': { task: 'What does random assignment do?', takeaway: {
+      scope: 'Random sampling allows generalizing to the population; random assignment allows a cause-and-effect conclusion.',
+      confound: 'A confounding variable is linked to the explanatory variable and affects the response, so their effects cannot be told apart.',
+      variables: 'The explanatory variable is what differs between the groups; the response variable is what is measured.',
+      '*': 'Random assignment tends to balance other variables across groups, so a convincing difference can show cause and effect.' } },
+    'distribution-areas': { task: 'What probability is shaded?', takeaway: {
+      inverse: 'An inverse normal turns an area into a boundary: the value with that area to its left.',
+      empirical: 'About 68%, 95% and 99.7% of a normal distribution lie within 1, 2 and 3 standard deviations of the mean.',
+      '*': 'A probability is the shaded part: the area under a normal curve, or the sum of the binomial bars that fit the event.' } },
+    'p-value-explorer': { task: 'Where does a p-value come from?', takeaway: {
+      errors: 'A Type I error is rejecting a true H₀; a Type II error is failing to reject a false H₀. Power is the probability of rejecting a false H₀.',
+      '*': 'The p-value is the probability of a result at least as extreme as the one observed, assuming H₀ is true.' } },
+    'probability-trees': { task: 'How do a tree, a table and a Venn diagram show the same events?', takeaway: {
+      table: 'A conditional probability uses only the row or column of the event you are given.',
+      rules: 'P(A or B) = P(A) + P(B) − P(A and B); multiply P(A) × P(B) for "and" only when A and B are independent.',
+      '*': 'Multiply along a path of branches for "and"; add the paths that fit for "or".' } },
+    'regression-lab': { task: 'How does one point move the line and r?', takeaway: {
+      describe: 'Describe the direction, form and strength of the relationship, and any unusual points, in context.',
+      correlation: 'r measures only the direction and strength of a linear relationship.',
+      predict: 'Put x into the least-squares line for a predicted y; predicting far outside the x-values in the data (extrapolation) is risky.',
+      residual: 'A residual is actual minus predicted: positive means the point is above the line.',
+      lsrl: 'The least-squares line passes through (x̄, ȳ) with slope b = r × s_y ÷ s_x.',
+      '*': 'A point far from the others in x can pull the line toward it and change r a lot.' } },
+    'sampling-distributions': { task: 'How does a statistic vary from sample to sample?', takeaway: {
+      estimator: 'An unbiased estimator is centered on the parameter; a larger sample makes it vary less.',
+      '*': 'Larger samples give statistics that vary less around the parameter.' } },
+    'sampling-lab': { task: 'How does each method pick its sample?', takeaway: {
+      bias: 'Bias comes from how the sample is chosen or how the question is asked; a larger sample does not fix it.',
+      '*': 'Random selection is what lets a sample stand for the population.' } }
   };
   function isStd(s){ return !!(s && s.task && s.root && s.root.classList.contains('ls-std')); }
   function stdExplore(s, slug, list){

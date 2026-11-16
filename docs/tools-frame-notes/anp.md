@@ -42,3 +42,11 @@ Only the one line per tool in `LEDE` (tool-kit.js) and the finished cards' fixed
    distinct; they are. Keep?
 2. Very long lists (pathways 208, predict scenarios, calculators 89) are now a native dropdown with "Search all" as a
    choice. Fine, or should the searchable list stay visible?
+
+## Accuracy check (F6b, 2026-11-16)
+Checked the eight `LEDE` lines and the three finished card lines against the tools.
+- Correct as written: calculators, graphs, pathways, lab-practical, predict, word-roots, anatomy-3d; "Every part in its
+  place.", "A clean sweep. Try a higher level next.", "Missed structures glow on the model...".
+- Changed: feedback-loops "See how the body pulls a variable back to its set point." to "See how feedback loops pull a
+  variable back to its set point, or push it further." (the builder has 5 positive loops, such as labor and clotting,
+  which amplify the change instead of reversing it).

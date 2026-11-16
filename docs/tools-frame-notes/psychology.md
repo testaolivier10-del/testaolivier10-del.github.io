@@ -50,3 +50,24 @@ Psychology only:
 1. The step hints that used to show under every step (the formula) are now one tap away as the first hint. Keep
    that (it matches APES and the spec) or show formulas always?
 2. Views (Classical / Schedules / Consequences, Detect / Weber / Color / Perceive...) stay segmented in the panel.
+
+## Accuracy check (F6b, 2026-11-16)
+Checked the 10 task titles, the `methodOf` lines, the wrong choice line, the evidence builder card and every drill
+type's finished card takeaway (generated per context and type) against the tools and `docs/appsych-authoring-guide.md`.
+- Correct as written: the 10 task titles, every `methodOf` line, "Not this one. Use the hint, then check again.",
+  "Every point earned."
+- Changed: evidence builder card "A claim, two pieces of cited evidence, and each one explained with a concept and
+  linked back to the claim." to "A claim, evidence from two different sources, and each piece explained with a
+  different psychology concept and linked back to the claim." (the EBQ rubric: C(i) evidence from a different source,
+  C(ii) a different concept).
+- Fixed (content bug seen in a takeaway): brain map wrote "the wernicke’s area", "the broca’s area" and "wernicke’s
+  aphasia"; names now keep their capital (`lc` in `math/brain-map.js`).
+- Takeaways: new own lines (`TAKE` in psy-tools.js) where the last line read oddly alone: brain-map lesion ("Damage
+  there: ..." now names the part: "Damage to the hippocampus: anterograde amnesia: ..."); conditioning operant (a bare
+  "Positive punishment."): "Positive adds something and negative takes something away; reinforcement makes a behavior
+  more likely, punishment less likely."; development adultcog (began "It tends to..."): "Fluid intelligence tends to
+  decline from early adulthood, crystallized intelligence holds steady or grows, and dementia is a disease, not normal
+  aging."; memory forgetting ("Spaced retrieval practice flattens it."): "Forgetting is fastest soon after learning;
+  spaced retrieval practice flattens the forgetting curve." A leading "So" is dropped (neuron drug, stats rule).
+- For an expert: stats-lab rule problems say "about the 3rd percentile: about 2.5% of scores are lower" at z = −2 (the
+  68-95-99.7 rule gives 2.5%; the table gives 2.3%, the 2nd percentile). Not new copy; left as it is.

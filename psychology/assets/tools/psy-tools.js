@@ -546,6 +546,20 @@
     if(s.kind === 'choice') return 'Find the key detail in the scenario first. Rule out the options it does not fit, then pick the one that matches the definition.';
     return 'Use the details in the problem, one step at a time.';
   }
+  /* Finished card takeaways (accuracy check F6b): the worked solution's last line, unless it reads oddly on its
+     own (a pronoun, a bare result); then TAKE[slug][type] gives the problem type its own short line: a string, or
+     function(p, last, sol) on plain text ('' keeps the last line). */
+  var TAKE = {
+    'brain-map': { lesion: function(p, last, sol){ var nm = sol.length > 1 ? sol[0].split(':')[0].replace(/^The /, '') : ''; return nm ? 'Damage to ' + (/^(Broca|Wernicke)/.test(nm) ? '' : 'the ') + nm + ': ' + last.replace(/^Damage there:\s*/, '') : ''; } },
+    'conditioning-lab': { operant: 'Positive adds something and negative takes something away; reinforcement makes a behavior more likely, punishment less likely.' },
+    'development': { adultcog: 'Fluid intelligence tends to decline from early adulthood, crystallized intelligence holds steady or grows, and dementia is a disease, not normal aging.' },
+    'memory-lab': { forgetting: 'Forgetting is fastest soon after learning; spaced retrieval practice flattens the forgetting curve.' }
+  };
+  function takeOwn(slug, p){
+    var own = p && TAKE[slug] && TAKE[slug][p.type];
+    if(typeof own === 'function'){ var sol = (p.solution || []).filter(Boolean).map(function(l){ return plainText(String(l)); }); own = own(p, sol[sol.length - 1] || '', sol); }
+    return own || '';
+  }
   function drill(app, data, o){
     var slug = o.slug, gid = nid('dr'), contexts = data.contexts || [];
     var type = '', seed = seedFromUrl() || freshSeed();
@@ -909,11 +923,12 @@
         if(kg) why.appendChild(kg);
         s.caption('<b>' + (total === 1 ? (right ? 'Right the first time.' : 'Not right the first time.') + '</b>' : right + ' of ' + total + ' steps right the first time.</b>'), m);
         var t = topicOf(p && p.topic), solL = (p && p.solution || []).filter(Boolean), first = solL.length ? String(solL[solL.length - 1]) : '', firstT = plainText(first); // the last line: the conclusion
-        first = first.replace(/^\s*(Right|Correct|Yes)[.!]\s*/i, '').replace(/^\s*(?:[A-F](?:\([iv]+\))?|Step \d+|Part [A-F])[.:]\s*/, '');   // an option's own "Right." reads oddly after a miss
+        first = first.replace(/^\s*(Right|Correct|Yes)[.!]\s*/i, '').replace(/^\s*(?:[A-F](?:\([iv]+\))?|Step \d+|Part [A-F])[.:]\s*/, '').replace(/^So,?\s+([a-z])/, function(x, c){ return c.toUpperCase(); });   // an option's own "Right." reads oddly after a miss
+        var own = takeOwn(o.slug, p);
         var links = [{ label: 'Worked solution', open: 'why' }, { label: 'See your steps', onClick: function(){ s.done(false, m); if(again) again.focus({ preventScroll: true }); } }];
         if(t && t.built) links.push({ label: 'Read the lesson: ' + t.title, href: base() + 'lessons/' + t.id + '.html' });
         s.done({ kicker: right === total ? 'Done' : 'Finished', title: total === 1 ? (right ? 'Right the first time.' : 'Not right the first time.') : right + ' of ' + total + ' steps right the first time.',
-          text: p && p.takeaway ? p.takeaway : firstT && firstT.length <= 220 ? first : '',
+          text: p && p.takeaway ? p.takeaway : own ? esc(own) : firstT && firstT.length <= 220 ? first : '',
           next: { label: o.newLabel || 'New problem', onClick: function(){ if(again) again.click(); } }, links: links }, m);
       }
     };

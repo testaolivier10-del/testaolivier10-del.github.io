@@ -313,7 +313,7 @@
   var S = null;
   // One line on what each tool is for (the bar under the name).
   var LEDE = {
-    'feedback-loops': 'See how the body pulls a variable back to its set point.',
+    'feedback-loops': 'See how feedback loops pull a variable back to its set point, or push it further.',
     calculators: 'Change the numbers and watch the body respond.',
     graphs: 'Read the curves of physiology, one point at a time.',
     pathways: 'Follow a pathway step by step, in order.',

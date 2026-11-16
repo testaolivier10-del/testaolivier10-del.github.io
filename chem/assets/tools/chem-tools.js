@@ -787,7 +787,7 @@
      tool answers; the tool's "Start here" cue is the line on what to do (studioPane). New copy: listed in
      docs/tools-frame-notes/ for the accuracy check. */
   var STD_ASK = {
-    'buffer-drills': 'Why does a buffer’s pH barely move?',
+    'buffer-drills': 'Why does a buffer’s pH barely move when you add acid or base?',
     'equilibrium-kinetics': 'Which way does an equilibrium shift, and how fast does it get there?',
     'ice-table-drills': 'How far does a reaction go before Q equals K?',
     'particle-diagrams': 'What does this change look like, particle by particle?',

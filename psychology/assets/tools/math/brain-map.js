@@ -125,7 +125,7 @@
     return step(key, label, { kind: 'choice', options: opts.map(function(x){ return x[0]; }), why: opts.map(function(x){ return x[1]; }), correct: 0 });
   }
   function nm(k){ return REGIONS[k].name; }
-  function lc(s){ return s.charAt(0).toLowerCase() + s.slice(1); }
+  function lc(s){ return /^(Broca|Wernicke)/.test(s) ? s : s.charAt(0).toLowerCase() + s.slice(1); }   // names keep their capital
   /* Three distractors a student would confuse with the key. */
   var NEAR = {
     prefrontal: ['motor', 'hippocampus', 'amygdala', 'parietal'], frontal: ['parietal', 'temporal', 'occipital'],

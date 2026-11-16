@@ -70,6 +70,31 @@
     "reserves-lab": "How does a Fed tool change interest rates, spending and output?"
   };
   if(window.LevlStudio && window.LevlStudio.stdKit) window.LevlStudio.stdKit({ lede: LEDE });
+  /* Finished card takeaways (accuracy check F6b): the worked solution's last line, unless it reads oddly on its
+     own (a pronoun, a list's last item, a bare number); then TAKE[slug][type] (or '*') gives the problem type its
+     own short line: a string, or function(p, last, sol) on plain text ('' keeps the last line). */
+  function lastSentence(t){ var a = String(t).replace(/([.!?])\s+(?=[A-Z])/g, '$1\u0001').split('\u0001'); return a[a.length - 1]; }
+  var TAKE = {
+    'graph-studio': { '*': function(p, last, sol){
+      if(!/^(This|That|It|These|They)\b/.test(last)) return '';
+      var w = sol.filter(function(l){ return /^With /.test(l); })[0];
+      return (w ? w.replace(/\s*\(Also accepted:[^)]*\)\.?$/, '') : sol[sol.length - 2] || '') + ' ' + last;
+    } },
+    'indicators-lab': {
+      'gdp-count': 'GDP counts the market value of new final goods and services made inside the country this year.',
+      utype: 'Frictional is searching between jobs, structural is a mismatch of skills or place, and cyclical comes from a downturn.' },
+    'multiplier-lab': {
+      total: 'The multiplier gives the largest possible change: rising prices and other leakages make the real effect smaller.',
+      money: 'The money multiplier belongs to the limited-reserves model; with ample reserves the Fed sets its rate with administered rates instead.' },
+    'ppc-trade': { output: 'Comparative advantage, the lower opportunity cost, decides who should make what; absolute advantage does not.' },
+    'reserves-lab': { multiplier: 'In the limited-reserves model the money multiplier is a maximum: excess reserves banks keep and cash people hold make the real change smaller.' }
+  };
+  function takeaway(p, html){
+    var own = p && TAKE[curSlug] && (TAKE[curSlug][p.type] || TAKE[curSlug]['*']);
+    if(typeof own === 'function'){ var sol = (p.solution || []).map(function(l){ return plainText(String(l)); }); own = own(p, sol[sol.length - 1] || '', sol); }
+    if(own) return esc(own);
+    return String(html || '').replace(/^So,?\s+([a-z])/, function(m, c){ return c.toUpperCase(); });
+  }
   function nid(p){ return (p || 'bt') + '-' + (++uid); }
   function esc(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
   /* Plain text of a node or an HTML string: each formula reads as its TeX's
@@ -956,7 +981,7 @@
           var links = [{ label: 'Worked solution', open: 'why' }, { label: 'See your answers', onClick: function(){ s.done(false, m); var r = area.querySelector('.bt-result'); if(r) s.reveal(r); } }];
           if(t && t.built) links.push({ label: 'Read the lesson: ' + t.title, href: base() + 'lessons/' + t.id + '.html' });
           s.done({ kicker: right === total ? 'All right the first time' : 'Finished', title: total === 1 ? (right ? 'Right the first time.' : 'Not right the first time.') : right + ' of ' + total + ' steps right the first time',
-            text: sl, next: again ? { label: again.textContent, onClick: function(){ again.click(); } } : null, links: links }, m);
+            text: takeaway(p, sl), next: again ? { label: again.textContent, onClick: function(){ again.click(); } } : null, links: links }, m);
         }
       }
     };
@@ -1109,7 +1134,7 @@
     var links = [{ label: 'Worked solution', open: 'why' }, { label: 'See your answers', onClick: function(){ s.done(false, m); var r = o.area && o.area.querySelector('.bt-result'); if(r) s.reveal(r); } }];
     if(t && t.built) links.push({ label: 'Read the lesson: ' + t.title, href: base() + 'lessons/' + t.id + '.html' });
     s.done({ kicker: o.right === o.total ? 'All right the first time' : 'Finished', title: o.right + ' of ' + o.total + ' ' + (o.unit || 'steps') + ' right the first time',
-      text: o.esc ? esc(sol) : sol, next: o.again ? { label: o.again.textContent, onClick: function(){ o.again.click(); } } : null, links: links }, m);
+      text: takeaway(o.p, o.esc ? esc(sol) : sol), next: o.again ? { label: o.again.textContent, onClick: function(){ o.again.click(); } } : null, links: links }, m);
   }
   /* The first-run tip in its own slot (Phase 3, shared from the trainers'
      copies: T2, T3). opts may be the old fourth argument, a `before` node. */
