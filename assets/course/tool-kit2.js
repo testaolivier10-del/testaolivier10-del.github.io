@@ -4,8 +4,11 @@
 
    The v2 pattern, two modes (owner, 2026-11-16; docs/tools-v2-water-pollution-brief.md "Owner round: play vs quiz"):
    EXPLORE is for playing with it: no side panel (the stage goes full width), nothing locked or graded; compact
-   chapter tabs, the picture with its controls ON it, Play and a thin progress line (K.progress: only the current
-   step's name), one short caption and a simple graph; at most about 25 words and 3 controls outside the picture.
+   chapter tabs, a one line purpose ("See how ...") with a small "Show me how" link, the picture with its controls ON
+   it and labels that say what each is and how to use it ("Fertilizer: drag to add more"), Play and a thin progress
+   line (K.progress: only the current step's name), one short caption that becomes a takeaway sentence when a run
+   ends, and a simple graph with a plain title; at most about 35 words and 3 controls (plus the link) outside the
+   picture. A skippable first-visit tour (K.tour) points at the real controls (owner round 2, 2026-11-17).
    TEST YOURSELF is where you get quizzed: one question at a time in the side panel, on the same stage (add .tk2-qs
    to the root while it is), with the hint ladder (s.hints) and the finished card (s.done). The predict, readout,
    challenge, timeline and speed pieces below are kept for tools not yet moved. "?" opens the reference as a sheet
@@ -69,6 +72,13 @@
                                     strings or { name, short }: short is the name a phone shows under the dot),
                                     blank(on) (dots only, for an explain back). scrub: onEnd(v). challenges:
                                     done.more() -> html under the recap (first tries).
+   K.tour({ key, label, steps: [{ id, text, target() }], onClose(had) }) -> { start(force), stop(), did(id), active(), place() }
+                                    "Show me how" (owner round 2, every tool): 3 short callouts in order, each pointing
+                                    at a real control (target() returns an element or a viewport rect), Next / Skip,
+                                    Esc closes. No overlay: the page stays live, and the tool calls did(id) when the
+                                    student does a step's action, so the tour moves on. Once per device on its own
+                                    (localStorage 'tk2t:' + key); start(true) re-opens it (a "Show me how" link,
+                                    class tk2-how, beside the purpose line, and one at the top of "?").
    K.reduced()                      motion off (site toggle or the OS setting).
    K.used(key) / K.markUsed(key)    the first-time hint store (localStorage 'tk2h:' + key). A control with a key pulses
                                     until first used; chip: false keeps the pulse but drops the "Drag" / "Tap" chip
@@ -217,7 +227,7 @@
     b.type = 'button'; b.setAttribute('aria-label', o.label);
     if(o.pressed != null) b.setAttribute('aria-pressed', String(!!o.pressed));
     layer.el.appendChild(b);
-    var box = o.box, done = firstHint(b, o.key, o.hint || 'Tap');
+    var box = o.box, done = firstHint(b, o.key, o.hint || 'Tap', o.chip === false);
     function paint(){ var k = layer.scale(); b.style.left = box[0] * k + 'px'; b.style.top = box[1] * k + 'px'; b.style.width = box[2] * k + 'px'; b.style.height = box[3] * k + 'px'; }
     b.addEventListener('click', function(){ done(); if(o.onClick) o.onClick(); });
     paint();
@@ -563,6 +573,93 @@
     });
     paint();
     return { el: box, reset: function(){ got = []; fb.textContent = ''; paint(); } };
+  };
+
+  /* ------------------------------------------------------------ "Show me how": a skippable first-visit tour */
+  /* K.tour({ key, label, steps: [{ id, text, target() -> Element | { left, top, width, height } (viewport px) }],
+             onClose() }) -> { start(force), stop(), did(id), active() }
+     Small callouts, one at a time, each pointing at a real control (owner round 2, 2026-11-16: every tool). It never
+     blocks: there is no overlay, the page stays live, and when the student does the step's action the tool calls
+     did(id) and the tour moves on (or closes after the last). Next / Skip on each callout; Esc closes it. Shown once
+     per device on its own (localStorage 'tk2t:' + key, set the moment it shows); start(true) re-opens it (the tool's
+     "Show me how" link, the "?" sheet). A tour that starts on its own does not move focus; one the student opened
+     focuses its Next button. */
+  K.tour = function(o){
+    var cur = -1, box = null, ring = null, raf = 0, timer = 0, manual = false;
+    function seen(){ try{ return !!localStorage.getItem('tk2t:' + o.key); }catch(e){ return false; } }
+    function mark(){ try{ localStorage.setItem('tk2t:' + o.key, '1'); }catch(e){} }
+    function rectOf(t){
+      if(!t) return null;
+      if(t.getBoundingClientRect){ if(t.offsetParent === null && t.getClientRects().length === 0) return null; var r = t.getBoundingClientRect(); return r.width || r.height ? r : null; }
+      return t;
+    }
+    function build(){
+      box = el('div', 'tk2-tour');
+      box.setAttribute('role', 'dialog'); box.setAttribute('aria-label', o.label || 'Show me how');
+      box.innerHTML = '<span class="tk2-tour-ar" aria-hidden="true"></span><p class="tk2-tour-n"></p><p class="tk2-tour-t" aria-live="polite"></p>' +
+        '<div class="tk2-tour-b"><button type="button" class="tk2-tour-skip">Skip</button><button type="button" class="tk2-tour-next"></button></div>';
+      ring = el('div', 'tk2-tour-ring'); ring.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(ring); document.body.appendChild(box);
+      box.querySelector('.tk2-tour-skip').addEventListener('click', function(){ stop(); });
+      box.querySelector('.tk2-tour-next').addEventListener('click', function(){ go(cur + 1, true); });
+      box.addEventListener('keydown', function(e){ if(e.key === 'Escape'){ e.stopPropagation(); stop(true); } });
+    }
+    function place(){
+      raf = 0;
+      if(cur < 0 || !box) return;
+      var st = o.steps[cur], r = rectOf(st.target());
+      if(!r){ box.style.visibility = 'hidden'; ring.style.visibility = 'hidden'; return; }
+      box.style.visibility = ''; ring.style.visibility = '';
+      var vw = document.documentElement.clientWidth, vh = window.innerHeight, pad = 6;
+      ring.style.left = (r.left - pad) + 'px'; ring.style.top = (r.top - pad) + 'px'; ring.style.width = (r.width + pad * 2) + 'px'; ring.style.height = (r.height + pad * 2) + 'px';
+      var bw = box.offsetWidth, bh = box.offsetHeight, gap = 14, below = vh - r.bottom, above = r.top;
+      var side = below >= bh + gap + 8 || below >= above ? 'below' : 'above';
+      var top = side === 'below' ? r.bottom + gap : r.top - gap - bh;
+      top = clamp(top, 8, Math.max(8, vh - bh - 8));
+      var cx = r.left + r.width / 2, left = clamp(cx - bw / 2, 8, Math.max(8, vw - bw - 8));
+      box.style.left = left + 'px'; box.style.top = top + 'px';
+      box.setAttribute('data-side', side);
+      box.querySelector('.tk2-tour-ar').style.left = clamp(cx - left, 18, bw - 18) + 'px';
+    }
+    function later(){ if(!raf) raf = requestAnimationFrame(place); }
+    function go(i, byNext){
+      clearTimeout(timer);
+      if(i >= o.steps.length){ stop(); return; }
+      cur = i;
+      if(!box) build();
+      var st = o.steps[i], last = i === o.steps.length - 1;
+      box.querySelector('.tk2-tour-n').textContent = 'Show me how: ' + (i + 1) + ' of ' + o.steps.length;
+      box.querySelector('.tk2-tour-t').textContent = st.text;
+      box.querySelector('.tk2-tour-next').textContent = last ? 'Done' : 'Next';
+      box.querySelector('.tk2-tour-skip').hidden = last;
+      // bring the target into view when the student moved the tour on (never on its own first show)
+      var t = st.target();
+      if((byNext || manual) && t && t.scrollIntoView && t.getBoundingClientRect){ var r = t.getBoundingClientRect(); if(r.top < 0 || r.bottom > window.innerHeight) t.scrollIntoView({ block: 'center', behavior: reduced() ? 'auto' : 'smooth' }); }
+      place(); setTimeout(place, 320);
+      if(byNext || manual){ var nb = box.querySelector('.tk2-tour-next'); try{ nb.focus({ preventScroll: true }); }catch(e){} }
+    }
+    function stop(keyed){
+      clearTimeout(timer);
+      if(cur < 0) return;
+      var had = box && box.contains(document.activeElement);
+      cur = -1;
+      if(box){ box.remove(); ring.remove(); box = null; ring = null; }
+      window.removeEventListener('resize', later); window.removeEventListener('scroll', later, true);
+      document.removeEventListener('keydown', esc_);
+      if(o.onClose) o.onClose(had || keyed);
+    }
+    function esc_(e){ if(e.key === 'Escape' && cur >= 0 && !document.querySelector('.ls-root.is-sheet')) stop(); }
+    function start(force){
+      if(!force && seen()) return false;
+      mark(); manual = !!force;
+      window.addEventListener('resize', later); window.addEventListener('scroll', later, true);
+      document.addEventListener('keydown', esc_);
+      go(0, false);
+      return true;
+    }
+    return { start: start, stop: function(){ stop(); }, active: function(){ return cur >= 0; }, place: later,
+      // the student did a step's action: move on after a beat (so the result can be seen first)
+      did: function(id){ if(cur < 0) return; var k = -1; o.steps.forEach(function(s, i){ if(s.id === id && i >= cur) k = k < 0 ? i : k; }); if(k < 0) return; clearTimeout(timer); timer = setTimeout(function(){ go(k + 1, false); }, 900); } };
   };
 
   /* ------------------------------------------------------------ "?" as a real dialog (K.on) */

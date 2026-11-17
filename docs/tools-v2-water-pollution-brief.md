@@ -406,3 +406,84 @@ and the first question) at 390 and 1440, light and dark; no console errors; no h
 scripts/test/apenv-*.test.mjs`, `check-apenv-content --check`, `build-apenv --check`, `check-site`, `check-weight
 --check`. Preview: `node scripts/tool-preview.mjs` to `wp-v2/index.html`; shots in `wp-v2/shots/` (01 to 05 Explore,
 06 to 15 Test yourself, each at 1440, 768 and 390, light and dark).
+
+## Owner round 2: clarity and visuals (2026-11-17)
+The owner on the play vs quiz version: "better but still having issues like understanding what each aspect is and how
+to use them and what I'm supposed to do as the user and what I'm supposed to be understanding", and "visuals can be
+better still". Explore stays free play (nothing locked or graded) and uncluttered; only what answers a real question
+was added, in very few words.
+
+### The rules for every tool (agreed with the owner)
+1. **A purpose line.** One plain sentence at the top of each chapter's stage says what to understand ("See how
+   fertilizer on a farm can kill the fish in a lake."). A small "Show me how" link sits beside it.
+2. **Labels that say what and how.** Every control on the picture is named with how to use it ("Fertilizer: drag to
+   add more", "Lake temperature: drag", "Hot water: drag", "Tap a tank to stop treatment there"); the kit's one off
+   "Drag" / "Tap" chip is dropped where a label says it. The value a student watches is named in words ("Oxygen at the
+   bottom") with the line that makes it meaningful ("Fish need about 5 or more"). Things in the picture get tiny names
+   while they are there ("runoff", "algae", "dead algae sink", "bacteria use up oxygen"), on soft pills so they stay
+   clean over the art. The graph's title is a plain sentence ("Oxygen at the bottom of the lake, day by day"). A step's
+   name shows once (on the progress line); the picture names things, not steps.
+3. **A skippable first-visit tour.** "Show me how": 3 short callouts in order, each pointing at the real control
+   (drag this, press Play, watch this), Next / Skip, Esc closes. It never blocks (no overlay; doing the step moves it
+   on), shows once per device per chapter (localStorage `tk2t:`, in try/catch), and re-opens from the link and from
+   "?". Shared as `K.tour` in `assets/course/tool-kit2.js` (`.tk2-tour`, `.tk2-how` in its CSS).
+4. **A takeaway at the end.** When a run reaches its end (the recovery after the low, or day 60), one sentence in place
+   of the caption says what should have been understood, on a tinted line with a bulb. Explore only (in a question it
+   would give answers away).
+
+### What changed
+- Purpose lines: ch1 "See how fertilizer on a farm can kill the fish in a lake.", ch2 "See why warm water from a
+  power plant can push trout out.", ch3 "See which treatment step keeps sewage from harming the lake below."
+- Takeaways (`TAKE`, chosen from the run so they are always true): ch1 dead zone "The fish left or died because
+  bacteria breaking down the dead algae used up most of the oxygen."; no dead zone but below 5 mg/L "A smaller bloom:
+  decomposers pulled the oxygen down, but not into a dead zone."; otherwise "This little fertilizer makes only a small
+  bloom, so the fish stay healthy." Ch2, once the downstream water cannot hold 9.5 mg/L: "Heat alone made the river
+  hold less oxygen, too little for young trout, so they moved away." Ch3 secondary: "Nitrogen and phosphorus left
+  after secondary fed a bloom, and its decay used up most of the oxygen."; raw or primary: "Bacteria breaking down the
+  leftover sewage and dead algae used up most of the lake's oxygen."; tertiary or disinfection: "Tertiary treatment
+  removed most nitrogen and phosphorus, so the lake below stayed healthy."
+- Tours: ch1 drag the sacks, press Play, watch the oxygen at the bottom (the card on the lake); ch2 drag the hot water
+  handle, compare upstream and downstream, read the curve; ch3 tap a tank, press Play, watch the lake below.
+- Labels and graph: as in rule 2. The faint "Most it holds" line left the chapter 1 and 3 graphs (word budget; the
+  starting value already shows it); "Young trout need 9.5 mg/L" carries its unit. The step callouts on the picture
+  were replaced by the names of things; "Dead zone: fish leave or die" stays (it is a state you can see).
+- Visuals: sky with soft clouds, a pale far ridge, haze and a tree line on the far shore; the field in cross section
+  with a dark topsoil band, wavy soil layers, stones that grow with depth, roots, tilled furrows and two crop rows;
+  bigger fertilizer bags (shaded, gathered top, ground shadow, green band over the N-P-K label; a pile when the field
+  is narrow); during rain water runs across the field and down the slope as a muddy stream with flowing streaks and
+  fertilizer specks, fanning into a brown plume under the surface; light rays that fade with depth; a wavy surface
+  line with glints; a lake bed in bands that follow the basin with sand specks; reeds at the shore; the bloom as a
+  floating mat that spreads from the inflow, thickens with strands hanging under it, then thins and browns; algae
+  brown and sink (they settle away from the slope); a dead layer with a flaky top; fish turn cleanly, pitch with their
+  bob and beat their tails with their speed. Ch2: power line on pylons, a banded chimney stack, a lined turbine hall
+  with a door, a shaded cooling tower, grass tufts, a lit band near the river's surface and a grassy bank edge.
+  Ch3: houses in a few colours with chimneys and trees, a paved yard under the tanks, concrete rims, and the lake
+  below cut into the earth. Everything uses the theme tokens and the tool's role colours, light and dark.
+- Kit: `K.tour`; `K.tap` honours `chip: false` (as `K.drag` did).
+
+### Landing counts (Playwright, Explore, each chapter; outside the picture; the frame bar is not counted)
+Words: every word shown, numbers and tick labels not counted ("mg/L" is one word). Controls: tab stops outside the
+picture (the three tabs are one stop).
+
+| Landing | Words (about 35 or fewer) | Controls |
+| --- | --- | --- |
+| 1 Fertilizer runoff (1440, 768) | 36 | 3 (tabs, Play, progress line) and the Show me how link |
+| 1 Fertilizer runoff (390) | 35 | same |
+| 2 Hot water (1440, 768) | 34 | 1 (tabs) and the link |
+| 2 Hot water (390) | 33 | same |
+| 3 Sewage (1440, 768) | 35 | 3 and the link |
+| 3 Sewage (390) | 34 | same |
+
+Chapter 1's words: the tabs (5), the purpose line (13), "Show me how", "Play", the graph title (9), "mg/L: dead zone",
+"days". The owner's own purpose line and graph title are 22 of them; the landing caption is empty (the labels and the
+tour say what to do), so nothing else was cut.
+
+### Checks run (this round)
+Playwright (Chromium; `assets/premium.js` routed to `has(course) { return true; ...` on a local `http.server`) at
+390x844, 768x1024 and 1440x900, light and dark: each chapter's landing with its tour (each step), the tour gone after
+reload, re-opened from "?", mid play (days 2, 5, 7, 11, 15, 22), the end with its takeaway, chapter 2 at +10 °C,
+chapter 3 stopped after secondary (day 12 and day 50), Test yourself (first question and answer), keyboard (tabs, the
+link, the sacks by arrow keys, Play), reduced motion; no horizontal scroll; no console errors from the tool (only the
+blocked outside requests of the page itself). `node --test scripts/test/apenv-*.test.mjs` (186 pass),
+`check-apenv-content --check`, `build-apenv --check`, `check-site`, `check-weight --check`. Preview: `wp-v2/index.html`;
+shots in `wp-v2/shots/` (01 to 17 Explore, 20 to 21 Test yourself, at 1440, 768 and 390, light and dark).

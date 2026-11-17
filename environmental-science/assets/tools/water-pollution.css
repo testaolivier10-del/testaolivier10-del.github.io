@@ -372,3 +372,78 @@ body.ls-on .env-crumb{display:none;}
 .wp2-msg:empty,.wp2-qok:empty,.wp2-qact:empty{display:none;}
 .wp2-msg .tk2-note:focus,.wp2-qok .tk2-ok-t:focus{outline:none;}
 .wp2-qact{display:flex;gap:8px;}
+
+/* ====================================================================== owner round 2: clarity and visuals (2026-11-17)
+   A purpose line per chapter with the "Show me how" link, labels on the picture that say what and how, a takeaway
+   when a run ends, and the scenes redrawn. */
+.wp2-head{display:flex;align-items:center;justify-content:space-between;gap:4px 12px;flex-wrap:wrap;margin:-2px 0 -2px;}
+.wp2-purpose{margin:0;flex:1 1 260px;font:800 16.5px/1.35 var(--font-ui);color:var(--ink);}
+.wp2-head .tk2-how{flex:none;margin-left:auto;}
+.wp2-stage .tk2-how::before{content:"";width:16px;height:16px;border-radius:50%;border:2px solid currentColor;flex:none;
+  background:radial-gradient(circle at 50% 50%, currentColor 0 2.5px, transparent 3px);}
+.ls-root[data-mode="quiz"] .wp2-head{display:none;}
+/* the caption keeps its line, so the picture never jumps when it appears */
+.wp2-cap{min-height:calc(1.4em + 16px);}
+.wp2-cap.is-empty{visibility:hidden;}
+.wp2-cap.is-take{display:flex;gap:8px;align-items:flex-start;padding:8px 12px;border-radius:12px;background:var(--ctint);color:var(--ink);font-weight:800;}
+.wp2-cap.is-take::before{content:"";flex:none;width:18px;height:18px;margin-top:1px;border-radius:50%;background:var(--cink);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2a7 7 0 0 0-4 12.7V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.3A7 7 0 0 0 12 2zm-3 18h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1z'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2a7 7 0 0 0-4 12.7V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.3A7 7 0 0 0 12 2zm-3 18h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1z'/%3E%3C/svg%3E") center/contain no-repeat;}
+@media (max-width:640px){ .wp2-purpose{font-size:15.5px;flex-basis:200px;} .wp2-head .tk2-how{min-height:32px;} }
+.wp2-howref{margin:0 0 12px;font-size:14.5px;}
+.wp2-howref .tk2-how{min-height:32px;padding:0;}
+/* labels on the picture: the name in ink, the "how" in the course colour */
+.wp2-lab .is-how,.wp2-lab.is-how{fill:var(--cink);}
+.wp2-lab.is-val{font-size:14px;font-weight:900;}
+.wp2-chip-h{font:700 11px var(--font-ui);fill:var(--muted);}
+/* field */
+.wp2-root{fill:none;stroke:#6F5236;stroke-width:1;opacity:.5;stroke-linecap:round;}
+:root[data-theme="dark"] .wp2-root{stroke:#A08A66;opacity:.35;}
+.wp2-crop.is-back path{stroke:#86B35A;stroke-width:1.6;opacity:.75;}
+:root[data-theme="dark"] .wp2-crop.is-back path{stroke:#55803A;}
+.wp2-sack-sh{fill:rgba(40,30,10,.22);}
+.wp2-sack-shade{fill:rgba(70,50,20,.14);}
+.wp2-sack-g{fill:#3E8E3A;}
+.wp2-sack-bag{stroke-width:1.4;}
+.wp2-reed{fill:none;stroke:#5E7F35;stroke-width:2;stroke-linecap:round;}
+.wp2-reedh{fill:#7A5A32;}
+:root[data-theme="dark"] .wp2-reed{stroke:#6E9A45;}
+/* lake */
+.wp2-deadf{fill:#5E4424;opacity:.75;}
+:root[data-theme="dark"] .wp2-deadf{fill:#B08A5C;opacity:.6;}
+.wp2-surf{stroke-width:2;opacity:.85;stroke-linejoin:round;}
+.wp2-glint{fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;}
+:root[data-theme="dark"] .wp2-glint{stroke:#9FC4DD;}
+/* river and plant */
+.wp2-tower{fill:url(#wpTow);}
+.wp2-tw0{stop-color:#B4BCBF;} .wp2-tw1{stop-color:#E1E5E6;} .wp2-tw2{stop-color:#A3ACB0;}
+:root[data-theme="dark"] .wp2-tw0{stop-color:#4A5458;} :root[data-theme="dark"] .wp2-tw1{stop-color:#6A7478;} :root[data-theme="dark"] .wp2-tw2{stop-color:#424C50;}
+.wp2-stack{fill:#C9CED0;stroke:#9AA3A6;stroke-width:1;}
+.wp2-stackb{fill:#C8553D;}
+.wp2-bline{stroke:#7B8A90;stroke-width:1;opacity:.35;}
+.wp2-door{fill:#6A7478;}
+.wp2-pylon{fill:none;stroke:#7E8B8F;stroke-width:1.4;stroke-linejoin:round;opacity:.8;}
+.wp2-wire{fill:none;stroke:#7E8B8F;stroke-width:1;opacity:.6;}
+:root[data-theme="dark"] .wp2-pylon,:root[data-theme="dark"] .wp2-wire{stroke:#8FA0A6;opacity:.5;}
+.wp2-tuft{fill:none;stroke:#4E7F33;stroke-width:1.2;stroke-linecap:round;opacity:.3;}
+/* sewage plant */
+.wp2-yard{fill:#C9C3B4;opacity:.55;}
+:root[data-theme="dark"] .wp2-yard{fill:#4A4639;}
+.wp2-rim{fill:#A4ABAD;}
+:root[data-theme="dark"] .wp2-rim{fill:#6A7478;}
+.wp2-tank.is-off .wp2-rim{fill:#C9CED0;}
+.wp2-chim{fill:#8A6A55;}
+/* labels on pills: clean over fish, algae and water */
+.wp2-pill rect{fill:var(--white);fill-opacity:.92;stroke:var(--line);stroke-width:1;}
+.wp2-pill text{font:800 12.5px var(--font-ui);fill:var(--ink);}
+.wp2-name text{font-style:italic;font-size:12px;}
+.wp2-name.is-alg text{fill:var(--wp-alg-ink);} .wp2-name.is-dead text{fill:#6A4A22;} .wp2-name.is-nut text{fill:#8A5A00;}
+:root[data-theme="dark"] .wp2-name.is-dead text{fill:#E2C29A;} :root[data-theme="dark"] .wp2-name.is-nut text{fill:#F6CF75;}
+.wp2-call{stroke:none;} .wp2-call text{font:900 14px var(--font-ui);fill:var(--ink);stroke:none;}
+.wp2-call.is-ph text{font-size:12.5px;}
+.wp2-call.is-bad rect{fill:var(--wp-bad);fill-opacity:1;stroke:none;}
+.wp2-call.is-bad text{fill:#fff;font-size:16px;}
+.wp2-call.is-ph.is-bad text{font-size:14px;}
+:root[data-theme="dark"] .wp2-call.is-bad rect{fill:#B8473A;}
+.wp2-cap{padding:8px 12px;border-radius:12px;}
+@media (max-width:640px){ .wp2-cap{padding:6px 10px;min-height:calc(1.4em + 12px);} }

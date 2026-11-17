@@ -5,9 +5,13 @@
 
    Two modes (owner round 2026-11-16, the rule for every tool): EXPLORE is for playing with it, TEST YOURSELF is
    where you get quizzed.
-   Explore: nothing locked, nothing graded, no side panel. The stage, full width: compact chapter tabs, the scene
-   with its controls ON it, Play and a thin progress line that names only the current step, one short caption (one
-   sentence, at most about 15 words) and a simple graph (oxygen is the one axis; algae a faint shape).
+   Explore: nothing locked, nothing graded, no side panel. The stage, full width: compact chapter tabs, a purpose
+   line (PURPOSE) with a small "Show me how" link, the scene with its controls ON it and labels that say what and how
+   ("Fertilizer: drag to add more", "Lake temperature: drag", "Hot water: drag", "Tap a tank to stop treatment
+   there"), Play and a thin progress line that names only the current step, one short caption (one sentence, at most
+   about 15 words; a takeaway, TAKE, once a run ends) and a simple graph with a plain title (oxygen is the one axis;
+   algae a faint shape). First visit to each chapter: a three step "Show me how" tour (K.tour), never shown again,
+   re-opened from the link and from "?" (owner round 2, 2026-11-17).
      1 Fertilizer runoff  drag the fertilizer sacks (0 to 5); the lake's small thermometer (10 to 30 °C) is a quiet
                           handle; Play (or the progress line, or a drag along the graph): rain washes the fertilizer
                           in, the surface turns green, the algae die, turn brown and sink, decomposers multiply, the
@@ -119,17 +123,23 @@
     return { cur: cur, rec: rec, o: o };
   }
 
-  /* A fertilizer bag: a filled sack with a folded, stitched top and a printed label (N-P-K), so it reads as fertilizer. */
+  /* A fertilizer bag: a plump filled sack with a gathered, stitched top, shading on its right side, a shadow on the
+     ground and a printed orange label (N-P-K) under a green band, so it reads as a bag of fertilizer at any size. */
   function sack(x, y, w, P0){
-    var h = w * 1.3, lab = w >= 31;
+    var h = w * 1.22, lab = w >= 31;
+    function P(a, b){ return n1(a) + ' ' + n1(b); }
+    var body = 'M' + P(-w * 0.5, 0) + ' C' + P(-w * 0.62, -h * 0.3) + ' ' + P(-w * 0.55, -h * 0.72) + ' ' + P(-w * 0.42, -h * 0.86) +
+      ' L' + P(w * 0.42, -h * 0.86) + ' C' + P(w * 0.55, -h * 0.72) + ' ' + P(w * 0.62, -h * 0.3) + ' ' + P(w * 0.5, 0) + ' Q' + P(0, h * 0.06) + ' ' + P(-w * 0.5, 0) + 'Z';
     return '<g class="wp2-sack" transform="translate(' + n1(x) + ' ' + n1(y) + ')">' +
-      '<path class="wp2-sack-bag" d="M' + n1(-w * 0.5) + ' 0 C' + n1(-w * 0.56) + ' ' + n1(-h * 0.35) + ' ' + n1(-w * 0.5) + ' ' + n1(-h * 0.78) + ' ' + n1(-w * 0.44) + ' ' + n1(-h * 0.88) +
-        ' L' + n1(w * 0.44) + ' ' + n1(-h * 0.88) + ' C' + n1(w * 0.5) + ' ' + n1(-h * 0.78) + ' ' + n1(w * 0.56) + ' ' + n1(-h * 0.35) + ' ' + n1(w * 0.5) + ' 0Z"/>' +
-      '<path class="wp2-sack-top" d="M' + n1(-w * 0.46) + ' ' + n1(-h * 0.86) + ' L' + n1(-w * 0.4) + ' ' + n1(-h) + ' L' + n1(w * 0.4) + ' ' + n1(-h) + ' L' + n1(w * 0.46) + ' ' + n1(-h * 0.86) + 'Z"/>' +
-      '<path class="wp2-sack-st" d="M' + n1(-w * 0.4) + ' ' + n1(-h * 0.93) + ' H' + n1(w * 0.4) + '"/>' +
-      '<rect class="wp2-sack-b" x="' + n1(-w * 0.38) + '" y="' + n1(-h * 0.66) + '" width="' + n1(w * 0.76) + '" height="' + n1(h * 0.38) + '" rx="2"/>' +
-      (lab ? '<text class="wp2-sack-t" x="0" y="' + n1(-h * 0.41) + '" text-anchor="middle" font-size="' + n1(Math.min(9, w * 0.3)) + '">N-P-K</text>'
-        : '<text class="wp2-sack-t" x="0" y="' + n1(-h * 0.41) + '" text-anchor="middle" font-size="' + n1(w * 0.33) + '">NPK</text>') + '</g>';
+      '<ellipse class="wp2-sack-sh" cx="' + n1(w * 0.06) + '" cy="1" rx="' + n1(w * 0.62) + '" ry="' + n1(Math.max(2, w * 0.09)) + '"/>' +
+      '<path class="wp2-sack-bag" d="' + body + '"/>' +
+      '<path class="wp2-sack-shade" d="M' + P(w * 0.2, -h * 0.86) + ' L' + P(w * 0.42, -h * 0.86) + ' C' + P(w * 0.55, -h * 0.72) + ' ' + P(w * 0.62, -h * 0.3) + ' ' + P(w * 0.5, 0) + ' Q' + P(w * 0.36, h * 0.035) + ' ' + P(w * 0.24, h * 0.03) + ' C' + P(w * 0.36, -h * 0.3) + ' ' + P(w * 0.32, -h * 0.66) + ' ' + P(w * 0.2, -h * 0.86) + 'Z"/>' +
+      '<path class="wp2-sack-top" d="M' + P(-w * 0.42, -h * 0.85) + ' L' + P(-w * 0.5, -h) + ' Q' + P(-w * 0.32, -h * 0.94) + ' ' + P(-w * 0.16, -h * 1.0) + ' Q' + P(0, -h * 0.93) + ' ' + P(w * 0.16, -h * 1.0) + ' Q' + P(w * 0.32, -h * 0.94) + ' ' + P(w * 0.5, -h) + ' L' + P(w * 0.42, -h * 0.85) + 'Z"/>' +
+      '<path class="wp2-sack-st" d="M' + P(-w * 0.42, -h * 0.88) + ' H' + n1(w * 0.42) + '"/>' +
+      '<rect class="wp2-sack-g" x="' + n1(-w * 0.36) + '" y="' + n1(-h * 0.68) + '" width="' + n1(w * 0.72) + '" height="' + n1(h * 0.09) + '" rx="1.5"/>' +
+      '<rect class="wp2-sack-b" x="' + n1(-w * 0.36) + '" y="' + n1(-h * 0.58) + '" width="' + n1(w * 0.72) + '" height="' + n1(h * 0.32) + '" rx="2.5"/>' +
+      (lab ? '<text class="wp2-sack-t" x="0" y="' + n1(-h * 0.36) + '" text-anchor="middle" font-size="' + n1(Math.min(11, w * 0.24)) + '">N-P-K</text>'
+        : '<text class="wp2-sack-t" x="0" y="' + n1(-h * 0.36) + '" text-anchor="middle" font-size="' + n1(w * 0.3) + '">NPK</text>') + '</g>';
   }
   /* One tank in cutaway; on: used; i: 0 raw inflow, 1 primary, 2 secondary, 3 tertiary, 4 disinfection. */
   function tankArt0(tk, i, on, t, P0, ph, moving, noDoes){
@@ -158,6 +168,7 @@
       for(var u = 0; u < 3; u++){ var uy = wl + (y1 - wl) * (0.25 + u * 0.27); out.push('<rect class="wp2-uv" x="' + n1(x0 + 7) + '" y="' + n1(uy - 3) + '" width="' + n1(ww - 14) + '" height="6" rx="3"/>'); }
     }
     out.push('<path class="wp2-wall" d="M' + n1(x0) + ' ' + n1(y0) + ' V' + n1(y1) + ' H' + n1(x1) + ' V' + n1(y0) + '"/>');
+    out.push('<rect class="wp2-rim" x="' + n1(x0 - 4) + '" y="' + n1(y0 - 3) + '" width="' + n1(ww + 8) + '" height="6" rx="2"/>');
     out.push('</g>');
     // names under the tank (and what it does)
     var nm = i ? SEW_NAMES[i] : (ph ? 'Raw' : 'Raw sewage'), nmS = ph && i === 4 ? 'Disinfect' : nm;
@@ -190,6 +201,18 @@
   var REC_CAP = 'The dead algae are used up, so oxygen comes back from the air.';
   var SEW_CAP = ['Treated water carries leftover nitrogen, phosphorus and organic matter into the lake.'].concat(CAP.slice(1));
   var SEW_BOD_CAP = 'Bacteria eat the sewage’s organic matter, so oxygen falls before any bloom.';
+  /* What to understand (owner round 2: clarity): one plain purpose line per chapter, and one takeaway sentence when a
+     run reaches its end. */
+  var PURPOSE = { fert: 'See how fertilizer on a farm can kill the fish in a lake.',
+    heat: 'See why warm water from a power plant can push trout out.',
+    sew: 'See which treatment step keeps sewage from harming the lake below.' };
+  var TAKE = { fert: 'The fish left or died because bacteria breaking down the dead algae used up most of the oxygen.',
+    fertMid: 'A smaller bloom: decomposers pulled the oxygen down, but not into a dead zone.',
+    fertLow: 'This little fertilizer makes only a small bloom, so the fish stay healthy.',
+    heat: 'Heat alone made the river hold less oxygen, too little for young trout, so they moved away.',
+    sec: 'Nitrogen and phosphorus left after secondary fed a bloom, and its decay used up most of the oxygen.',
+    sewBad: 'Bacteria breaking down the leftover sewage and dead algae used up most of the lake’s oxygen.',
+    sewOk: 'Tertiary treatment removed most nitrogen and phosphorus, so the lake below stayed healthy.' };
 
   /* ================================================================ Explore (free play) and the questions on it */
   function explore(host, data, getModes){
@@ -203,6 +226,13 @@
     var stage = document.createElement('div'); stage.className = 'wp2-stage';
     var tabs = K.tabs({ label: 'Chapters', items: CH, value: S.ch, onChange: function(v){ setCh(v); } });
     stage.appendChild(tabs.el);
+    // what to understand: one plain purpose line per chapter, and the "Show me how" tour link beside it
+    var head = document.createElement('div'); head.className = 'wp2-head';
+    var purpose = document.createElement('p'); purpose.className = 'wp2-purpose';
+    var howB = document.createElement('button'); howB.type = 'button'; howB.className = 'tk2-how'; howB.textContent = 'Show me how';
+    howB.addEventListener('click', function(){ startTour(true); });
+    head.appendChild(purpose); head.appendChild(howB);
+    stage.appendChild(head);
     var sceneBox = document.createElement('div'); sceneBox.className = 'wp2-scene'; sceneBox.id = nid + '-sc';
     sceneBox.innerHTML = '<svg class="wp2-svg" role="img" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"><g class="wp2-static"></g><g class="wp2-dyn"></g></svg>';
     stage.appendChild(sceneBox);
@@ -218,7 +248,7 @@
       get: function(){ return S.ch === 'sew' ? S.sday : S.day; },
       set: function(v){ if(S.ch === 'sew') setSday(v, 'play'); else setDay(v, 'play'); },
       onHold: function(v){ words(); var i = W.stageAt(rNow(), v), nm = S.ch === 'sew' ? SEW_STEPS : STEP_NAMES; if(i >= 0 && !S.blank) say(nm[i] + '. ' + (S.ch === 'sew' ? SEW_CAP : CAP)[i]); },
-      labels: { play: 'Play', pause: 'Pause', again: 'Replay' }, onEnd: function(){ if(S.ch === 'sew') setSday(W.LAKE_DAYS, 'play'); else setDay(W.LAKE_DAYS, 'play'); afterRun(); } });
+      before: function(){ tourDid('play'); }, labels: { play: 'Play', pause: 'Pause', again: 'Replay' }, onEnd: function(){ if(S.ch === 'sew') setSday(W.LAKE_DAYS, 'play'); else setDay(W.LAKE_DAYS, 'play'); afterRun(); } });
     player.el.setAttribute('aria-label', 'Play the 60 days');
     var prog = K.progress({ label: 'Day, 0 to 60', min: 0, max: W.LAKE_DAYS, step: 1, value: 0,
       valuetext: function(v){ return dayText(v); }, onStart: function(){ player.stop(); },
@@ -238,25 +268,53 @@
     stage.appendChild(live);
     host.appendChild(stage);
 
-    /* ---- on-picture controls (placed by each scene's layout) */
-    var cSacks = K.drag(layer, { key: 'apenv-wp-sacks', label: 'Fertilizer sacks on the field', min: 0, max: 5, step: 1, value: S.sacks, track: [0, 0, 1, 0], hint: 'Drag',
+    /* ---- on-picture controls (placed by each scene's layout). Each one's label on the picture says what it is and
+       how to use it ("Fertilizer: drag to add more"), so the kit's one-off "Drag" / "Tap" chip is not needed. */
+    var cSacks = K.drag(layer, { key: 'apenv-wp-sacks', label: 'Fertilizer sacks on the field', min: 0, max: 5, step: 1, value: S.sacks, track: [0, 0, 1, 0], chip: false,
       valuetext: function(v){ return sk(v) + ' of fertilizer'; }, tag: function(v){ return sk(v); },
-      onInput: function(v){ player.stop(); S.sacks = v; newRun(); } });
-    // the lake's thermometer: changeable but quiet (a small knob at the top of its column; its value is written on the picture)
-    var cTemp = K.drag(layer, { quiet: true, label: 'Lake temperature', min: 10, max: 30, step: 1, value: S.tLake, track: [0, 1, 0, 0],
+      onInput: function(v){ player.stop(); S.sacks = v; newRun(); tourDid('sacks'); } });
+    // the lake's thermometer: a plain knob at the top of its column, named on the picture ("Lake temperature: drag")
+    var cTemp = K.drag(layer, { label: 'Lake temperature', min: 10, max: 30, step: 1, value: S.tLake, track: [0, 1, 0, 0],
       valuetext: function(v){ return 'Lake at ' + v + ' degrees Celsius'; }, tag: function(v){ return S.q && S.q.loudTemp ? v + ' °C' : ''; },
       onInput: function(v){ player.stop(); S.tLake = v; newRun(); }, onEnd: function(){ if(QZ) QZ.changed('temp'); } });
-    var cWarm = K.drag(layer, { key: 'apenv-wp-warm', label: 'How much warmer the outflow makes the river downstream', min: 0, max: 15, step: 1, value: S.warm, track: [0, 1, 0, 0], hint: 'Drag',
+    var cWarm = K.drag(layer, { key: 'apenv-wp-warm', label: 'Hot water: how much warmer the outflow makes the river downstream', min: 0, max: 15, step: 1, value: S.warm, track: [0, 1, 0, 0], chip: false,
       valuetext: function(v){ return 'Downstream ' + v + ' degrees warmer, ' + (S.up + v) + ' degrees Celsius'; }, tag: function(v){ return '+' + v + ' °C'; }, tagSide: 'left',
-      onInput: function(v){ S.warm = v; heatChanged(); } });
+      onInput: function(v){ S.warm = v; heatChanged(); }, onEnd: function(){ tourDid('warm'); } });
     var cTanks = [0, 1, 2, 3, 4].map(function(i){
-      return K.tap(layer, { key: i === 1 ? 'apenv-wp-tank' : null, label: i ? 'Stop after ' + SEW_NAMES[i].toLowerCase() + ' treatment' : 'No treatment: raw sewage to the lake', box: [0, 0, 1, 1], pressed: i === S.stage, hint: 'Tap',
-        onClick: function(){ setStage(i); } });
+      return K.tap(layer, { key: i === 1 ? 'apenv-wp-tank' : null, label: i ? 'Stop after ' + SEW_NAMES[i].toLowerCase() + ' treatment' : 'No treatment: raw sewage to the lake', box: [0, 0, 1, 1], pressed: i === S.stage, chip: false,
+        onClick: function(){ setStage(i); tourDid('tank'); } });
     });
+
+    /* ---- what to do: "Show me how", three pointers per chapter at the real controls, once per device (K.tour) */
+    function knobOf(c){ return c.el.querySelector('.tk2-knob'); }
+    function inSvg(sel){ return function(){ var e = sceneBox.querySelector(sel); return e || sceneBox; }; }
+    var TOURS = {
+      fert: [{ id: 'sacks', text: 'Drag the fertilizer sacks to add more.', target: function(){ return knobOf(cSacks); } },
+        { id: 'play', text: 'Press Play to run 60 days after a storm.', target: function(){ return player.el; } },
+        { id: 'watch', text: 'Watch the oxygen at the bottom fall, here and on the graph below.', target: inSvg('.wp2-chip rect') }],
+      heat: [{ id: 'warm', text: 'Drag the hot water handle up to warm the river.', target: function(){ return knobOf(cWarm); } },
+        { id: 'look', text: 'Compare how much oxygen the water can hold upstream and downstream.', target: inSvg('.wp2-panel.is-dn') },
+        { id: 'graph', text: 'The curve: the warmer the water, the less oxygen it can hold.', target: function(){ return graphBox; } }],
+      sew: [{ id: 'tank', text: 'Tap a tank to stop treatment there.', target: function(){ return cTanks[2].el; } },
+        { id: 'play', text: 'Press Play to see what reaches the lake below.', target: function(){ return player.el; } },
+        { id: 'watch', text: 'Watch the lake below: its oxygen is here and on the graph.', target: inSvg('.wp2-chip rect') }]
+    };
+    var tours = {};
+    ['fert', 'heat', 'sew'].forEach(function(c){ tours[c] = K.tour({ key: 'apenv-wp-' + c, label: 'Show me how', steps: TOURS[c], onClose: function(had){ if(had) try{ howB.focus({ preventScroll: true }); }catch(e){} } }); });
+    function tourDid(id){ var t = tours[S.ch]; if(t && t.active()) t.did(id); }
+    function stopTours(){ Object.keys(tours).forEach(function(c){ tours[c].stop(); }); }
+    function startTour(force){
+      if(S.mode !== 'explore' || inQuiz()) return;
+      stopTours();
+      if(force){ tours[S.ch].start(true); return; }
+      clearTimeout(startTour.tm);
+      startTour.tm = setTimeout(function(){ if(S.mode === 'explore' && !inQuiz() && !(LS && LS.root && LS.root.classList.contains('is-sheet'))) tours[S.ch].start(false); }, 700);
+    }
 
     /* ---- "?": the reference for the chapter, and the setting */
     var ref = document.createElement('div'); ref.className = 'ls-sec wp2-ref';
     host.appendChild(ref);
+    ref.addEventListener('click', function(e){ if(e.target.closest('[data-how]')){ if(LS && LS.close) LS.close(); setTimeout(function(){ startTour(true); }, 280); } });
     var sUp = T.slider({ label: 'River temperature upstream', min: 5, max: 20, step: 1, value: S.up, unit: '°C', onInput: function(v){ S.up = v; heatChanged(); } });
     var setBox = document.createElement('div'); setBox.className = 'wp2-set'; setBox.appendChild(sUp.el);
 
@@ -288,7 +346,7 @@
       if(how !== 'play'){ say(sewDayLine()); if(!player.playing()) player.paint(); }
       if(!looping) draw();
     }
-    function afterRun(){ var r = rNow(); say((S.ch === 'sew' ? sewDayLine() : dayLine()) + ' Lowest ' + F(r.min) + ' mg/L on day ' + r.minDay + '.'); }
+    function afterRun(){ tourDid('watch'); var r = rNow(); say((S.ch === 'sew' ? sewDayLine() : dayLine()) + ' Lowest ' + F(r.min) + ' mg/L on day ' + r.minDay + '.'); }
     function onScrub(v){
       if(S.ch === 'fert') setDay(v, 'scrub');
       else if(S.ch === 'heat'){ var w = clamp(Math.round(v - S.up), 0, 15); if(w !== S.warm && !(S.q && S.q.hideWarm)){ S.warm = w; cWarm.value(w); heatChanged(); } }
@@ -309,18 +367,19 @@
     }
     function setCh(v){
       if(v === S.ch) return;
-      player.stop(); player.reset(); S.ch = v; layoutNow(); syncCh();
+      player.stop(); player.reset(); S.ch = v; stopTours(); layoutNow(); syncCh(); startTour(false);
       say({ fert: 'Chapter 1, fertilizer runoff. ', heat: 'Chapter 2, hot water. ', sew: 'Chapter 3, sewage. ' }[v] + (v === 'fert' ? dayLine() : v === 'heat' ? heatLine() : sewLine()));
     }
     function syncCh(){
       var c = S.ch, q = S.q || {};
       stage.setAttribute('data-ch', c);
+      purpose.textContent = PURPOSE[c];
       if(tabs.value() !== c) tabs.value(c);
       bar.hidden = c === 'heat' || !!q.hideTime;
       cSacks.hide(c !== 'fert' || !!q.hideSacks);
       // in a question the lake's temperature is fixed, except where the question is about it
       cTemp.hide(c !== 'fert' || (inQuiz() && !q.loudTemp));
-      cTemp.el.classList.toggle('is-quiet', !q.loudTemp);
+      cTemp.el.classList.toggle('is-quiet', inQuiz() && !q.loudTemp);
       cWarm.hide(c !== 'heat' || !!q.hideWarm);
       cTanks.forEach(function(t){ t.el.hidden = c !== 'sew' || !!q.hideTaps; });
       var r = rNow();
@@ -347,26 +406,38 @@
     function heatCap(){
       var h = heatPts();
       if(S.q && S.q.hideWarm) return '';
-      if(S.warm === 0) return inQuiz() ? '' : 'Drag the handle on the pipe to warm the river.';
+      if(S.warm === 0) return '';
+      if(!inQuiz() && h.d1 < TROUT) return TAKE.heat;
       return 'Warmer water holds less oxygen: ' + F(pctLess(h), 0) + '% less downstream' + (h.d1 < TROUT ? ', too little for young trout.' : '.');
     }
+    /* The takeaway: once a run reaches its end (the recovery after the low, or day 60), one sentence in place of the
+       caption says what the student should have understood (Explore only: in a question it would give answers away). */
+    function takeaway(c, r){
+      if(c === 'sew') return r.hypoxicDays > 0 ? (S.stage === 2 ? TAKE.sec : TAKE.sewBad) : TAKE.sewOk;
+      return r.hypoxicDays > 0 ? TAKE.fert : r.min < HEALTHY ? TAKE.fertMid : TAKE.fertLow;
+    }
     function words(){
-      var c = S.ch, nm = '', line = '';
-      if(c === 'heat') line = heatCap();
+      var c = S.ch, nm = '', line = '', take = false;
+      if(c === 'heat'){ line = heatCap(); take = line === TAKE.heat; }
       else {
         var r = rNow(), d = c === 'sew' ? S.sday : S.day, ph = phase(r, d), names = c === 'sew' ? SEW_STEPS : STEP_NAMES, caps = c === 'sew' ? SEW_CAP : CAP;
+        var end = !inQuiz() && d > 0.01 && (ph.rec || d >= W.LAKE_DAYS - 0.01);
         if(c === 'fert' && S.sacks === 0){ nm = ''; line = 'No fertilizer, so nothing feeds the algae and the chain never starts.'; }
-        else if(d < 0.01 && !player.playing()){ nm = ''; line = inQuiz() ? '' : c === 'sew' ? 'Tap a tank, then press Play.' : 'Drag the sacks, then press Play.'; }
+        else if(d < 0.01 && !player.playing()){ nm = ''; line = ''; }
+        else if(end){ nm = ph.rec ? 'Recovery' : ph.cur >= 0 ? names[ph.cur] : ''; line = takeaway(c, r); take = true; }
         else if(ph.rec){ nm = 'Recovery'; line = REC_CAP; }
         else if(ph.cur < 0){ nm = ''; }
         else { nm = names[ph.cur]; line = c === 'sew' && ph.cur < 2 && r.bod > 30 ? SEW_BOD_CAP : caps[ph.cur]; }
       }
       // putting the steps in order (Test yourself): nothing on the stage names them
-      if(S.blank){ nm = ''; line = ''; }
+      if(S.blank){ nm = ''; line = ''; take = false; }
       prog.name(nm);
       if(cap.textContent !== line) cap.textContent = line;
-      cap.classList.toggle('is-bad', !S.blank && c !== 'heat' && phase(rNow(), c === 'sew' ? S.sday : S.day).o < W.HYPOXIC);
-      cap.hidden = !line;
+      cap.classList.toggle('is-take', take);
+      cap.classList.toggle('is-bad', !take && !S.blank && c !== 'heat' && phase(rNow(), c === 'sew' ? S.sday : S.day).o < W.HYPOXIC);
+      cap.classList.toggle('is-empty', !line);
+      if(take && !words.took){ words.took = true; tourDid('watch'); }
+      if(!take) words.took = false;
       prog.input.setAttribute('aria-valuetext', dayText(c === 'sew' ? S.sday : S.day));
     }
 
@@ -676,7 +747,7 @@
       gStatic.innerHTML = S.ch === 'fert' ? staticFert(G) : S.ch === 'heat' ? staticHeat(G) : staticSew(G);
       if(S.ch === 'fert'){
         // phone: the sacks stand in a pile, so the knob runs along the soil just under the field (tag to its right)
-        if(G.ph) cSacks.place([G.sx0 + 6, G.plat + 30, G.sx1, G.plat + 30], 'right'); else cSacks.place([G.sx0, G.plat - 2, G.sx1, G.plat - 2], null);
+        if(G.pile) cSacks.place([G.sx0 + 6, G.plat + 30, G.sx1, G.plat + 30], 'right'); else cSacks.place([G.sx0, G.plat - 2, G.sx1, G.plat - 2], null);
         cTemp.place([G.thX, G.thY10, G.thX, G.thY30]);
       } else if(S.ch === 'heat') cWarm.place([G.vX, G.vY0, G.vX, G.vY1]);
       else G.tanks.forEach(function(tk, i){ cTanks[i].place([tk.x - 3, tk.y - 3, tk.w + 6, tk.h + 6]); });
@@ -711,17 +782,32 @@
     function skyAndHills(g, Wd, H, horizon){
       var P0 = g.P;
       return '<linearGradient id="wpSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + P0.sky0 + '"/><stop offset="1" stop-color="' + P0.sky1 + '"/></linearGradient>' +
-        '<radialGradient id="wpSun"><stop offset="0" stop-color="' + P0.sun + '" stop-opacity=".55"/><stop offset="1" stop-color="' + P0.sun + '" stop-opacity="0"/></radialGradient>';
+        '<radialGradient id="wpSun"><stop offset="0" stop-color="' + P0.sun + '" stop-opacity=".55"/><stop offset="1" stop-color="' + P0.sun + '" stop-opacity="0"/></radialGradient>' +
+        // light rays under the surface: bright at the top, gone by the bottom
+        '<linearGradient id="wpRay" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>' +
+        '<linearGradient id="wpHaze" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + P0.sky1 + '" stop-opacity="0"/><stop offset="1" stop-color="' + P0.sky1 + '" stop-opacity=".55"/></linearGradient>';
+    }
+    /* Soft fair weather clouds (static), a few per scene. */
+    function clouds(Wd, y, P0, list){
+      var c = dark() ? '#3A5266' : '#FFFFFF', op = dark() ? 0.5 : 0.85;
+      return list.map(function(q){
+        var x = Wd * q[0], yy = y * q[1], k = q[2];
+        return '<g opacity="' + op + '" fill="' + c + '"><ellipse cx="' + n1(x) + '" cy="' + n1(yy) + '" rx="' + n1(26 * k) + '" ry="' + n1(8 * k) + '"/>' +
+          '<ellipse cx="' + n1(x - 12 * k) + '" cy="' + n1(yy - 5 * k) + '" rx="' + n1(13 * k) + '" ry="' + n1(9 * k) + '"/><ellipse cx="' + n1(x + 7 * k) + '" cy="' + n1(yy - 8 * k) + '" rx="' + n1(15 * k) + '" ry="' + n1(11 * k) + '"/></g>';
+      }).join('');
     }
     function hills(Wd, horizon, P0, H){
       var a = horizon, out = '';
-      out += '<path fill="' + P0.far + '" d="M0 ' + n1(a - H * 0.06) + ' C' + n1(Wd * 0.18) + ' ' + n1(a - H * 0.14) + ' ' + n1(Wd * 0.32) + ' ' + n1(a - H * 0.03) + ' ' + n1(Wd * 0.5) + ' ' + n1(a - H * 0.09) + ' S' + n1(Wd * 0.82) + ' ' + n1(a - H * 0.16) + ' ' + Wd + ' ' + n1(a - H * 0.07) + ' V' + n1(a + 2) + ' H0Z"/>';
-      out += '<path fill="' + P0.near + '" d="M0 ' + n1(a - H * 0.015) + ' C' + n1(Wd * 0.22) + ' ' + n1(a - H * 0.07) + ' ' + n1(Wd * 0.4) + ' ' + n1(a + 1) + ' ' + n1(Wd * 0.62) + ' ' + n1(a - H * 0.045) + ' S' + n1(Wd * 0.9) + ' ' + n1(a - H * 0.02) + ' ' + Wd + ' ' + n1(a - H * 0.035) + ' V' + n1(a + 2) + ' H0Z"/>';
-      // a few far trees on the near hills
-      var r = M.rng(41);
-      for(var i = 0; i < Math.round(Wd / 70); i++){
-        var x = Wd * (0.38 + 0.6 * r()), y = a - H * 0.02 - r() * H * 0.02, s = 5 + r() * 5;
-        out += '<path fill="' + P0.grass2 + '" opacity=".75" d="M' + n1(x) + ' ' + n1(y - s * 2.2) + ' C' + n1(x + s) + ' ' + n1(y - s * 1.6) + ' ' + n1(x + s * 1.1) + ' ' + n1(y - s * 0.2) + ' ' + n1(x) + ' ' + n1(y) + ' C' + n1(x - s * 1.1) + ' ' + n1(y - s * 0.2) + ' ' + n1(x - s) + ' ' + n1(y - s * 1.6) + ' ' + n1(x) + ' ' + n1(y - s * 2.2) + 'Z"/>';
+      // three layers: a pale far ridge, the hills, and a dark tree line along the far shore
+      out += '<path fill="' + P0.far + '" opacity=".75" d="M0 ' + n1(a - H * 0.1) + ' C' + n1(Wd * 0.12) + ' ' + n1(a - H * 0.17) + ' ' + n1(Wd * 0.3) + ' ' + n1(a - H * 0.08) + ' ' + n1(Wd * 0.46) + ' ' + n1(a - H * 0.14) + ' S' + n1(Wd * 0.78) + ' ' + n1(a - H * 0.2) + ' ' + Wd + ' ' + n1(a - H * 0.11) + ' V' + n1(a + 2) + ' H0Z"/>';
+      out += '<path fill="' + P0.far + '" d="M0 ' + n1(a - H * 0.06) + ' C' + n1(Wd * 0.18) + ' ' + n1(a - H * 0.12) + ' ' + n1(Wd * 0.32) + ' ' + n1(a - H * 0.03) + ' ' + n1(Wd * 0.5) + ' ' + n1(a - H * 0.08) + ' S' + n1(Wd * 0.82) + ' ' + n1(a - H * 0.13) + ' ' + Wd + ' ' + n1(a - H * 0.06) + ' V' + n1(a + 2) + ' H0Z"/>';
+      out += '<rect y="' + n1(a - H * 0.2) + '" width="' + Wd + '" height="' + n1(H * 0.2) + '" fill="url(#wpHaze)"/>';
+      out += '<path fill="' + P0.near + '" d="M0 ' + n1(a - H * 0.015) + ' C' + n1(Wd * 0.22) + ' ' + n1(a - H * 0.06) + ' ' + n1(Wd * 0.4) + ' ' + n1(a + 1) + ' ' + n1(Wd * 0.62) + ' ' + n1(a - H * 0.04) + ' S' + n1(Wd * 0.9) + ' ' + n1(a - H * 0.02) + ' ' + Wd + ' ' + n1(a - H * 0.03) + ' V' + n1(a + 2) + ' H0Z"/>';
+      // rounded trees along the far shore, in two greens, smaller toward the back
+      var r = M.rng(41), n = Math.round(Wd / 34);
+      for(var i = 0; i < n; i++){
+        var x = Wd * (0.36 + 0.64 * r()), y = a + 1 - r() * H * 0.012, s = 4 + r() * 5, tc = r() > 0.5 ? P0.grass2 : P0.grass;
+        out += '<path fill="' + tc + '" opacity=".9" d="M' + n1(x) + ' ' + n1(y - s * 2.4) + ' C' + n1(x + s * 1.1) + ' ' + n1(y - s * 2.2) + ' ' + n1(x + s * 1.2) + ' ' + n1(y - s * 0.4) + ' ' + n1(x) + ' ' + n1(y) + ' C' + n1(x - s * 1.2) + ' ' + n1(y - s * 0.4) + ' ' + n1(x - s * 1.1) + ' ' + n1(y - s * 2.2) + ' ' + n1(x) + ' ' + n1(y - s * 2.4) + 'Z"/>';
       }
       return out;
     }
@@ -778,10 +864,14 @@
     function bedArt(L, P0){
       var out = '', w = L.x1 - L.x0;
       // silt band along the bed
+      // bands that follow the basin from the shore down and across (no straight edges)
       var pts = [], i, x;
-      for(i = 0; i <= 40; i++){ x = L.x0 + w * (0.06 + 0.94 * i / 40); pts.push([x, bedY(L, x)]); }
-      out += '<path fill="' + P0.silt + '" d="M' + pts.map(function(p){ return n1(p[0]) + ' ' + n1(p[1] - 3); }).join(' L') + ' L' + n1(L.x1 + 2) + ' ' + n1(L.bed + 12) + ' L' + n1(L.x0 + w * 0.06) + ' ' + n1(L.bed + 12) + 'Z"/>';
-      out += '<path fill="' + P0.bed + '" d="M' + pts.map(function(p){ return n1(p[0]) + ' ' + n1(p[1] + 1); }).join(' L') + ' L' + n1(L.x1 + 2) + ' ' + n1(L.bed + 14) + ' L' + n1(L.x0 + w * 0.06) + ' ' + n1(L.bed + 14) + 'Z"/>';
+      for(i = 0; i <= 48; i++){ x = L.x0 + w * (0.005 + 0.995 * i / 48); pts.push([x, bedY(L, x)]); }
+      function band(t0, t1){ return 'M' + pts.map(function(p){ return n1(p[0]) + ' ' + n1(p[1] + t0); }).join(' L') + ' L' + n1(L.x1 + 2) + ' ' + n1(pts[pts.length - 1][1] + t1) + ' L' + pts.slice().reverse().map(function(p){ return n1(p[0]) + ' ' + n1(p[1] + t1); }).join(' L') + 'Z'; }
+      out += '<path fill="' + P0.silt + '" d="' + band(-3, 10) + '"/>';
+      out += '<path fill="' + P0.bed + '" d="' + band(1, 16) + '"/>';
+      // sand speckles in the silt
+      for(i = 0; i < Math.round(w / 9); i++){ var sx2 = L.x0 + w * (0.08 + 0.9 * ((i * 0.618) % 1)), sy2 = bedY(L, sx2) + 3 + (i % 4) * 2.5; out += '<circle cx="' + n1(sx2) + '" cy="' + n1(sy2) + '" r="' + (0.8 + (i % 3) * 0.4) + '" fill="' + P0.bed2 + '" opacity=".6"/>'; }
       R_PEB.forEach(function(p, k){
         var px = L.x0 + w * (0.12 + 0.86 * p[0]), py = bedY(L, px) + 1 + p[1] * 3, rx = 1.6 + p[2] * 3.2;
         out += '<ellipse cx="' + n1(px) + '" cy="' + n1(py) + '" rx="' + n1(rx) + '" ry="' + n1(rx * 0.62) + '" fill="' + (k % 3 ? P0.bed2 : P0.soil) + '" opacity=".85"/>';
@@ -803,10 +893,10 @@
       out.push('<g clip-path="url(#' + id + ')">');
       out.push('<rect x="' + n1(L.x0 - 4) + '" y="' + n1(L.surf) + '" width="' + n1(w + 8) + '" height="' + n1(L.bed - L.surf + 12) + '" fill="url(#' + id + 'w)"/>');
       // light from the surface, dimmed by the bloom
-      var lo = 0.2 * (1 - film) * (dark() ? 0.55 : 1);
-      if(lo > 0.01) for(var k = 0; k < 4; k++){
-        var rx = L.x0 + w * (0.22 + k * 0.2) + Math.sin(t * 0.3 + k) * 6, dep = (L.bed - L.surf) * (0.95 - film * 0.5);
-        out.push('<path fill="#fff" opacity="' + (lo * (k % 2 ? 0.7 : 1)).toFixed(3) + '" d="M' + n1(rx) + ' ' + n1(L.surf) + ' L' + n1(rx + 26) + ' ' + n1(L.surf) + ' L' + n1(rx + 8 + dep * 0.3) + ' ' + n1(L.surf + dep) + ' L' + n1(rx - 14 + dep * 0.3) + ' ' + n1(L.surf + dep) + 'Z"/>');
+      var lo = 0.3 * (1 - film) * (dark() ? 0.5 : 1);
+      if(lo > 0.01) for(var k = 0; k < 5; k++){
+        var rx = L.x0 + w * (0.16 + k * 0.17) + Math.sin(t * 0.3 + k) * 6, dep = (L.bed - L.surf) * (0.98 - film * 0.5), rw = 18 + (k % 3) * 9;
+        out.push('<path fill="url(#wpRay)" opacity="' + (lo * (k % 2 ? 0.6 : 1)).toFixed(3) + '" d="M' + n1(rx) + ' ' + n1(L.surf) + ' L' + n1(rx + rw) + ' ' + n1(L.surf) + ' L' + n1(rx + rw * 0.4 + dep * 0.32) + ' ' + n1(L.surf + dep) + ' L' + n1(rx - rw * 0.5 + dep * 0.32) + ' ' + n1(L.surf + dep) + 'Z"/>');
       }
       // oxygen in the bottom water: round bubbles with a shine, fewer as it falls (none in a dead zone)
       var nb = Math.round(clamp((o - 1) / 8.5, 0, 1) * 18), span = L.bed - L.mid - 6, br = L.small ? 0.75 : 1;
@@ -824,8 +914,12 @@
       var dl = clamp(Dd / 24, 0, 1.1) * 12;
       if(dl > 0.6){
         var pts = [], i, x;
-        for(i = 0; i <= 30; i++){ x = L.x0 + w * (0.1 + 0.9 * i / 30); pts.push([x, bedY(L, x) - 2 - dl * (0.75 + 0.25 * Math.sin(i * 1.7))]); }
-        out.push('<path class="wp2-deadl" d="M' + n1(L.x0 + w * 0.1) + ' ' + n1(bedY(L, L.x0 + w * 0.1)) + ' L' + pts.map(function(pp){ return n1(pp[0]) + ' ' + n1(pp[1]); }).join(' L') + ' L' + n1(L.x1 + 2) + ' ' + n1(L.bed + 14) + ' L' + n1(L.x0 + w * 0.1) + ' ' + n1(L.bed + 14) + 'Z"/>');
+        for(i = 0; i <= 30; i++){ x = L.x0 + w * (0.15 + 0.85 * i / 30); pts.push([x, bedY(L, x) - 2 - dl * (0.75 + 0.25 * Math.sin(i * 1.7)) * sstep(0, 3, i)]); }
+        out.push('<path class="wp2-deadl" d="M' + n1(L.x0 + w * 0.15) + ' ' + n1(bedY(L, L.x0 + w * 0.15)) + ' L' + pts.map(function(pp){ return n1(pp[0]) + ' ' + n1(pp[1]); }).join(' L') + ' L' + n1(L.x1 + 2) + ' ' + n1(L.bed + 14) + ' L' + n1(L.x0 + w * 0.15) + ' ' + n1(L.bed + 14) + 'Z"/>');
+        // its top: a fluffy edge of dead algae flakes, more as it thickens
+        for(i = 0; i < Math.round(dl * 3.2); i++){ var fp = R_PEB[i % R_PEB.length], fx2 = L.x0 + w * (0.2 + 0.78 * ((fp[0] + i * 0.37) % 1)), fy2 = bedY(L, fx2) - 2 - dl * (0.6 + 0.35 * fp[1]);
+          out.push('<ellipse class="wp2-deadf" cx="' + n1(fx2) + '" cy="' + n1(fy2) + '" rx="' + n1(1.4 + fp[2] * 2) + '" ry="' + n1(1 + fp[3]) + '"/>'); }
+        res.deadPt = [L.x0 + w * (L.small ? 0.8 : 0.74), bedY(L, L.x0 + w * (L.small ? 0.8 : 0.74)) - 2 - dl];
       }
       // decomposers (aerobic bacteria): more where there is more to eat, faster in warm water
       var fT = Math.pow(1.07, r.T - 20), nd = Math.round(clamp(Dd * fT / 28, 0, 1.25) * 34), bestB = null;
@@ -843,7 +937,7 @@
       // algae clumps: grow toward the peak near the surface, then die one by one, turn brown, sink and settle
       var alg = P0.alg, bro = P0.brown;
       for(var a = 0; a < r.nA; a++){
-        var pa = R_ALG[a % R_ALG.length], ax = L.x0 + 18 + pa[0] * (w - 70), ay0 = L.surf + 4 + pa[1] * pa[1] * pa[1] * (L.mid - L.surf - 8), dd = r.deaths[a], vis, col, ay = ay0, op = 1;
+        var pa = R_ALG[a % R_ALG.length], ax = L.x0 + w * 0.13 + pa[0] * (w * 0.87 - 52), ay0 = L.surf + 4 + pa[1] * pa[1] * pa[1] * (L.mid - L.surf - 8), dd = r.deaths[a], vis, col, ay = ay0, op = 1;
         if(d <= r.peakDay) vis = A >= r.peakA * (a + 0.5) / r.nA;
         else vis = true;
         if(!vis) continue;
@@ -852,6 +946,8 @@
         if(sinkP >= 1) op = clamp(Dd / (r.Dmax * 0.45 || 1), 0, 1);
         if(op < 0.05) continue;
         if(dying > 0.5 && sinkP < 1) res.brown = true;
+        if(dying < 0.2 && sinkP === 0 && ax > L.x0 + w * 0.3 && ax < L.x0 + w * 0.62 && (!res.algPt || ay < res.algPt[1])) res.algPt = [ax, ay];
+        if(sinkP > 0.3 && sinkP < 0.85 && ax > L.x0 + w * 0.32 && ax < L.x0 + w * 0.7) res.sinkPt = [ax, ay];
         col = mixA(alg, bro, dying);
         var sc = (L.small ? 0.8 : 1) * (0.8 + pa[3] * 0.6), wob = sinkP > 0 && sinkP < 1 ? Math.sin(t * 3 + a) * 2 : Math.sin(t * 0.8 + a) * 1.2;
         var c1 = mix(col, col, 0), c2 = mix(mixA(col, [20, 60, 20], 0.35 * (1 - dying)), col, 0), hi = mix(mixA(P0.algHi, bro, dying), P0.algHi, 0);
@@ -868,15 +964,15 @@
         tDepth = o >= HEALTHY ? base : o >= 2.6 ? lerp(0.06 + rr[1] * 0.08, base, sstep(2.6, HEALTHY, o)) : 0.04;
         st.td = tDepth; st.to = tOut; if(st.d == null || !looping){ st.d = tDepth; st.o = tOut; }
         // the fish's swimming range ends short of the thermometer (if the lake has one), so they never bunch there
-        var u = t * (0.25 + rr[2] * 0.15) + rr[3] * 6.28, ax2 = w * (0.08 + rr[1] * 0.08), xR = L.noGo ? Math.min(L.x0 + w * fR, L.noGo[0] - 26) : L.x0 + w * fR;
+        var u = t * (0.17 + rr[2] * 0.1) + rr[3] * 6.28, ax2 = w * (0.08 + rr[1] * 0.08), xR = L.noGo ? Math.min(L.x0 + w * fR, L.noGo[0] - 26) : L.x0 + w * fR;
         var cxF = L.x0 + w * 0.24 + ax2 + Math.max(0, xR - (L.x0 + w * 0.24) - 2 * ax2) * rr[0];
-        var cu = Math.cos(u), out_ = st.o, fx = cxF + ax2 * Math.sin(u) + out_ * (w * 0.75 + 60), dir = out_ > 0.25 ? 1 : (cu >= 0 ? 1 : -1);
-        var sx = dir * Math.max(0.28, out_ > 0.25 ? 1 : Math.sqrt(Math.abs(cu)));
-        var depthY = L.surf + 10 + st.d * (bedY(L, fx) - L.surf - 26), fy = depthY + Math.sin(t * 1.3 + i * 2) * 2.2;
+        var cu = Math.cos(u), out_ = st.o, fx = cxF + ax2 * Math.sin(u) + out_ * (w * 0.75 + 60), turn = Math.tanh(cu * 5), dir = out_ > 0.25 ? 1 : (turn >= 0 ? 1 : -1);
+        var sx = out_ > 0.25 ? 1 : dir * Math.max(0.16, Math.abs(turn));
+        var bob = t * 0.9 + i * 2, depthY = L.surf + 10 + st.d * (bedY(L, fx) - L.surf - 26), fy = depthY + Math.sin(bob) * 3;
         // leaving: each fish drops to its own lane below the thermometer's bulb and swims out at the right edge
         if(L.noGo && out_ > 0.02){ var by_ = bedY(L, Math.min(fx, L.x1 - 4)), lane = L.noGo[1] + 8 + i * Math.max(4, Math.min(9, (by_ - L.noGo[1] - 24) / 5)); fy = lerp(fy, Math.min(lane, by_ - 14), sstep(0, 0.25, out_)); }
         var gasp = o < 3.2 && st.d < 0.15;
-        var tail = Math.sin(t * (gasp ? 10 : 6.5) + i) * (8 + 8 * Math.abs(cu)), tilt = gasp ? -16 * dir : Math.sin(u * 2) * 3;
+        var tail = Math.sin(t * (gasp ? 10 : 4.5 + 3 * Math.abs(cu)) + i) * (5 + 7 * Math.abs(cu)), tilt = gasp ? -16 * dir : -Math.cos(bob) * 5 * dir;
         var s = L.small ? 0.62 : (0.75 + rr[2] * 0.25) * (L.fishS || 1);
         if(fx < L.x1 + 30) out.push(fishSvg(fx, fy, s, sx, tail, tilt, 'fish', 1));
         if(gasp && fx < L.x1){ var rp = (t * 0.9 + i * 0.37) % 1; out.push('<ellipse cx="' + n1(fx + 14 * s * dir) + '" cy="' + n1(L.surf + 1) + '" rx="' + n1(3 + rp * 10) + '" ry="' + n1(1 + rp * 2) + '" fill="none" stroke="#fff" stroke-width="1.2" opacity="' + (0.8 * (1 - rp)).toFixed(2) + '"/>'); }
@@ -888,15 +984,29 @@
       }
       // the algae mat on the surface: thick and green at the bloom, thinning and browning as it dies back
       if(film > 0.04){
-        var mp = [], j, th = film * (1 - browned * 0.6) * (L.small ? 12 : 20);
-        for(j = 0; j <= 40; j++){ var xx = L.x0 + w * (0.02 + 0.98 * j / 40); mp.push(n1(xx) + ' ' + n1(L.surf + 1.5 + th * (0.6 + 0.4 * Math.sin(j * 2.3 + t * 0.5) * Math.sin(j * 0.7)))); }
-        var matC = mixA(P0.mat, P0.brown, browned * 0.8);
-        out.push('<path fill="' + mix(matC, matC, 0) + '" opacity="' + (0.55 + film * 0.4).toFixed(2) + '" d="M' + n1(L.x0) + ' ' + n1(L.surf) + ' L' + mp.join(' L') + ' L' + n1(L.x1 + 2) + ' ' + n1(L.surf) + 'Z"/>');
-        for(j = 0; j < Math.round(film * (1 - browned) * 46); j++){ var sp = R_ALG[(j * 7) % R_ALG.length]; out.push('<circle cx="' + n1(L.x0 + 6 + sp[0] * (w - 10)) + '" cy="' + n1(L.surf + 1.5 + sp[1] * th * 0.8) + '" r="' + n1(1.2 + sp[2] * 1.8) + '" fill="' + mix(P0.algHi, P0.algHi, 0) + '" opacity=".75"/>'); }
+        var mp = [], up = [], j, th = film * (1 - browned * 0.55) * (L.small ? 14 : 28), cov = clamp(film * 1.25, 0, 1) * (1 - browned * 0.35);
+        // the mat covers more of the lake as it thickens (from the inflow side), and sits a little proud of the surface
+        var mx1 = L.x0 + w * (0.08 + 0.92 * cov);
+        for(j = 0; j <= 44; j++){ var xx = L.x0 + (mx1 - L.x0) * j / 44, edge = sstep(0, 0.12, j / 44) * (1 - sstep(0.86, 1, j / 44));
+          var wob = Math.sin(j * 2.3 + t * 0.5) * Math.sin(j * 0.7);
+          mp.push(n1(xx) + ' ' + n1(L.surf + 1 + th * edge * (0.65 + 0.35 * wob)));
+          up.push(n1(xx) + ' ' + n1(L.surf - th * 0.16 * edge * (0.5 + 0.5 * Math.sin(j * 1.9 + 1)))); }
+        var matC = mixA(P0.mat, P0.brown, browned * 0.8), matD = mixA(matC, [20, 40, 10], 0.35), matH = mixA(P0.algHi, P0.brown, browned * 0.7);
+        out.push('<path fill="' + mix(matD, matD, 0) + '" opacity="' + (0.6 + film * 0.35).toFixed(2) + '" d="M' + up[0] + ' L' + mp.join(' L') + ' L' + up.slice().reverse().join(' L') + 'Z"/>');
+        out.push('<path fill="' + mix(matC, matC, 0) + '" opacity="' + (0.7 + film * 0.3).toFixed(2) + '" d="M' + up[0] + ' L' + mp.map(function(q){ var a = q.split(' '); return a[0] + ' ' + n1(L.surf + (+a[1] - L.surf) * 0.62); }).join(' L') + ' L' + up.slice().reverse().join(' L') + 'Z"/>');
+        // strands hanging under the mat
+        for(j = 0; j < Math.round(film * 16); j++){ var sp0 = R_ALG[(j * 11) % R_ALG.length], hx = L.x0 + 10 + sp0[0] * (mx1 - L.x0 - 20), hl = th * (0.6 + sp0[1]);
+          out.push('<path fill="none" stroke="' + mix(matC, matC, 0) + '" stroke-width="1.6" stroke-linecap="round" opacity=".7" d="M' + n1(hx) + ' ' + n1(L.surf + th * 0.5) + ' q' + n1(Math.sin(t + j) * 3) + ' ' + n1(hl * 0.5) + ' 0 ' + n1(hl) + '"/>'); }
+        for(j = 0; j < Math.round(film * (1 - browned * 0.5) * 50); j++){ var sp = R_ALG[(j * 7) % R_ALG.length]; out.push('<circle cx="' + n1(L.x0 + 6 + sp[0] * (mx1 - L.x0 - 10)) + '" cy="' + n1(L.surf - th * 0.08 + sp[1] * th * 0.5) + '" r="' + n1(1.2 + sp[2] * 2) + '" fill="' + mix(matH, matH, 0) + '" opacity=".8"/>'); }
+        if(film > 0.25) res.matPt = [L.x0 + (mx1 - L.x0) * 0.5, L.surf - th * 0.2];
       }
       out.push('</g>');
       // the surface line, with a glint
-      out.push('<path class="wp2-surf" d="M' + n1(L.x0) + ' ' + n1(L.surf) + ' H' + n1(L.x1 + 2) + '"/>');
+      var wv = [], nW = Math.max(8, Math.round(w / 26));
+      for(var z = 0; z <= nW; z++){ var wx = L.x0 + w * z / nW; wv.push(n1(wx) + ' ' + n1(L.surf + Math.sin(z * 1.7 + t * 1.2) * 0.9)); }
+      out.push('<path class="wp2-surf" d="M' + wv.join(' L') + '"/>');
+      for(z = 0; z < Math.round(w / 90); z++){ var gx = L.x0 + w * ((z * 0.37 + 0.12) % 1), ga = 0.5 + 0.5 * Math.sin(t * 0.8 + z * 2.1);
+        out.push('<path class="wp2-glint" opacity="' + (ga * (1 - film)).toFixed(2) + '" d="M' + n1(gx) + ' ' + n1(L.surf + 3) + ' h' + n1(10 + (z % 3) * 6) + '"/>'); }
       res.svg = out.join('');
       return res;
     }
@@ -913,6 +1023,7 @@
       g.L = { x0: g.lakeL, x1: Wd, surf: g.surf, bed: g.bed, mid: g.surf + (g.bed - g.surf) * 0.42, fishS: ph ? 1 : 1.35, fishR: ph ? 0.72 : 0.8 };
       g.L.basin = lakeBasin(g.lakeL, Wd, g.surf, g.bed, Wd);
       g.sx0 = ph ? 10 : 14; g.sx1 = g.platR - (ph ? 8 : 22);
+      g.pile = ph || g.sx1 - g.sx0 < 240;   // a narrow field: the sacks stand in a pile and the knob runs in the soil under it
       g.thX = Wd - (ph ? 22 : 36); g.thTop = g.surf - Math.round(H * 0.2); g.thBulb = g.surf + Math.round((g.bed - g.surf) * 0.28);
       g.thY10 = g.thBulb - 16; g.thY30 = g.thTop + 8;
       g.L.noGo = [g.thX - (ph ? 30 : 40), g.thBulb + (ph ? 18 : 24)];   // fish keep out of the box round the thermometer
@@ -921,101 +1032,152 @@
     }
     function staticFert(g){
       var P0 = g.P, Wd = g.W, H = g.H, s = g.slope, out = '<defs>' + skyAndHills(g, Wd, H) + fishDefs() +
-        '<linearGradient id="wpSoil" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + P0.soil + '"/><stop offset="1" stop-color="' + P0.soil3 + '"/></linearGradient></defs>';
+        '<linearGradient id="wpSoil" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + P0.soil + '"/><stop offset=".55" stop-color="' + P0.soil2 + '"/><stop offset="1" stop-color="' + P0.soil3 + '"/></linearGradient>';
+      // the field in cross-section: soil under a planted plateau that slopes down to the shore
+      var soil = 'M0 ' + n1(g.plat) + ' H' + n1(s[0]) + ' C' + s.slice(2).map(n1).join(' ') + ' C' + n1(g.lakeL + (Wd - g.lakeL) * 0.04) + ' ' + n1(g.surf + (g.bed - g.surf) * 0.5) + ' ' + n1(g.lakeL + (Wd - g.lakeL) * 0.07) + ' ' + n1(g.bed - 2) + ' ' + n1(g.lakeL + (Wd - g.lakeL) * 0.17) + ' ' + n1(g.bed) + ' V' + H + ' H0Z';
+      out += '<clipPath id="wpSoilC"><path d="' + soil + '"/></clipPath></defs>';
       out += '<rect width="' + Wd + '" height="' + (g.surf + 4) + '" fill="url(#wpSky)"/>';
       out += sunOrMoon(Wd * (g.ph ? 0.7 : 0.74), Math.max(26, g.plat * 0.32), P0);
+      out += clouds(Wd, g.surf, P0, g.ph ? [[0.88, 0.2, 0.7]] : [[0.56, 0.2, 1], [0.92, 0.3, 0.8]]);
       out += hills(Wd, g.surf, P0, H);
       out += lakeStatic(g.L, P0, 'wpLk1');
-      // the field: soil in cross-section under a grassy plateau that slopes to the shore
-      var soil = 'M0 ' + n1(g.plat) + ' H' + n1(s[0]) + ' C' + s.slice(2).map(n1).join(' ') + ' C' + n1(g.lakeL + (Wd - g.lakeL) * 0.04) + ' ' + n1(g.surf + (g.bed - g.surf) * 0.5) + ' ' + n1(g.lakeL + (Wd - g.lakeL) * 0.07) + ' ' + n1(g.bed - 2) + ' ' + n1(g.lakeL + (Wd - g.lakeL) * 0.17) + ' ' + n1(g.bed) + ' V' + H + ' H0Z';
-      out += '<path d="' + soil + '" fill="url(#wpSoil)"/>';
-      for(var k = 1; k < 4; k++){ var y = g.plat + (H - g.plat) * k / 4; out += '<path d="M0 ' + n1(y) + ' C' + n1(g.platR * 0.4) + ' ' + n1(y - 4) + ' ' + n1(g.platR * 0.8) + ' ' + n1(y + 5) + ' ' + n1(Math.min(g.lakeL - 4, g.platR + 30 + k * 6)) + ' ' + n1(y + 2) + '" fill="none" stroke="' + P0.soil2 + '" stroke-width="1.2" opacity=".5"/>'; }
-      out += '<path d="M0 ' + n1(g.plat) + ' H' + n1(s[0]) + ' C' + s.slice(2).map(n1).join(' ') + '" fill="none" stroke="' + P0.grass + '" stroke-width="7" stroke-linecap="round"/>';
-      out += '<path d="M0 ' + n1(g.plat - 2) + ' H' + n1(s[0]) + '" fill="none" stroke="' + P0.grass2 + '" stroke-width="2" opacity=".6"/>';
-      // corn rows behind the sacks
-      for(var x = 10; x < g.platR - 6; x += (g.ph ? 11 : 13)){
-        var hh = (g.ph ? 15 : 19) + ((x * 7) % 7);
-        out += '<g class="wp2-crop"><path d="M' + x + ' ' + n1(g.plat - 3) + ' V' + n1(g.plat - hh) + '"/><path d="M' + x + ' ' + n1(g.plat - hh * 0.45) + ' q-7 -3 -9 -10 M' + x + ' ' + n1(g.plat - hh * 0.65) + ' q7 -3 9 -10 M' + x + ' ' + n1(g.plat - hh * 0.85) + ' q-5 -3 -6 -8"/></g>';
-      }
-      // the field's name sits low in the soil, clear of the sacks' handle and its hint
-      out += '<text class="wp2-lab" x="12" y="' + n1(g.plat + (H - g.plat) * 0.62) + '">Farm field</text>';
       out += bedArt(g.L, P0);
+      out += '<path d="' + soil + '" fill="url(#wpSoil)"/>';
+      out += '<g clip-path="url(#wpSoilC)">';
+      // topsoil: a dark band under the field, then wavy layers, stones and a few roots
+      out += '<path fill="' + P0.soil3 + '" opacity=".38" d="M0 ' + n1(g.plat) + ' H' + n1(s[0]) + ' C' + s.slice(2).map(n1).join(' ') + ' V' + n1(g.surf + 14) + ' C' + n1(s[4]) + ' ' + n1(s[5] + 16) + ' ' + n1(s[2]) + ' ' + n1(s[3] + 16) + ' ' + n1(s[0] - 10) + ' ' + n1(g.plat + 16) + ' H0Z"/>';
+      // layers of soil, each a wavy band: topsoil, a sandy layer, clay, then stony subsoil (depth you can read)
+      var bands = [[0.2, P0.silt, 0.32], [0.46, P0.soil3, 0.22], [0.72, P0.bed2, 0.3]], X1 = Wd;
+      bands.forEach(function(bd, k){ var y = g.plat + 18 + (H - g.plat - 18) * bd[0], hh = (H - g.plat) * 0.13;
+        out += '<path fill="' + bd[1] + '" opacity="' + bd[2] + '" d="M0 ' + n1(y) + ' C' + n1(X1 * 0.3) + ' ' + n1(y - 6) + ' ' + n1(X1 * 0.6) + ' ' + n1(y + 7) + ' ' + n1(X1) + ' ' + n1(y + 1) + ' V' + n1(y + hh + 4) + ' C' + n1(X1 * 0.6) + ' ' + n1(y + hh + 10) + ' ' + n1(X1 * 0.3) + ' ' + n1(y + hh - 4) + ' 0 ' + n1(y + hh) + 'Z"/>'; });
+      for(var k = 1; k < 5; k++){ var y = g.plat + 16 + (H - g.plat - 16) * k / 5; out += '<path d="M0 ' + n1(y) + ' C' + n1(Wd * 0.3) + ' ' + n1(y - 5) + ' ' + n1(Wd * 0.62) + ' ' + n1(y + 6) + ' ' + n1(Wd) + ' ' + n1(y + 1) + '" fill="none" stroke="' + P0.soil3 + '" stroke-width="1.2" stroke-dasharray="' + (k % 2 ? '14 6' : '30 8 4 8') + '" opacity=".4"/>'; }
+      var rr = M.rng(53);
+      for(var q = 0; q < Math.round(g.lakeL / 7); q++){ var px = rr() * (g.lakeL + 20), py = g.plat + 22 + rr() * (H - g.plat - 24), pr = (1.5 + rr() * 3.6) * (1 + (py - g.plat) / (H - g.plat) * 0.8);
+        out += '<ellipse cx="' + n1(px) + '" cy="' + n1(py) + '" rx="' + n1(pr) + '" ry="' + n1(pr * 0.66) + '" fill="' + (q % 3 ? P0.soil3 : P0.silt) + '" opacity="' + (q % 3 ? 0.5 : 0.75) + '"/>'; }
+      for(var x = 8; x < g.platR - 10; x += (g.ph ? 22 : 26)){ out += '<path class="wp2-root" d="M' + x + ' ' + n1(g.plat + 2) + ' q-3 8 -1 16 M' + x + ' ' + n1(g.plat + 6) + ' q5 6 7 11 M' + x + ' ' + n1(g.plat + 5) + ' q-6 4 -9 8"/>'; }
+      out += '</g>';
+      // the surface: tilled furrows, then the grass edge down the slope
+      out += '<path d="M0 ' + n1(g.plat + 2) + ' H' + n1(s[0] - 4) + '" fill="none" stroke="' + P0.soil3 + '" stroke-width="5" stroke-dasharray="9 5" opacity=".55"/>';
+      out += '<path d="M' + n1(s[0] - 8) + ' ' + n1(g.plat) + ' H' + n1(s[0]) + ' C' + s.slice(2).map(n1).join(' ') + '" fill="none" stroke="' + P0.grass + '" stroke-width="6" stroke-linecap="round"/>';
+      out += '<path d="M0 ' + n1(g.plat - 1) + ' H' + n1(s[0]) + '" fill="none" stroke="' + P0.grass2 + '" stroke-width="2" opacity=".5"/>';
+      // crop rows: a paler back row, then the front row of young corn with leaves
+      var gap = g.ph ? 12 : 15;
+      for(x = 6 + gap / 2; x < g.platR - 4; x += gap){ var hb = (g.ph ? 12 : 16) + ((x * 5) % 5); out += '<g class="wp2-crop is-back"><path d="M' + n1(x) + ' ' + n1(g.plat - 4) + ' V' + n1(g.plat - 4 - hb) + ' M' + n1(x) + ' ' + n1(g.plat - 4 - hb * 0.5) + ' q-6 -2 -8 -8 M' + n1(x) + ' ' + n1(g.plat - 4 - hb * 0.7) + ' q6 -2 8 -8"/></g>'; }
+      for(x = 8; x < g.platR - 6; x += gap){
+        var hh = (g.ph ? 16 : 21) + ((x * 7) % 7);
+        out += '<g class="wp2-crop"><path d="M' + x + ' ' + n1(g.plat - 1) + ' V' + n1(g.plat - hh) + '"/><path d="M' + x + ' ' + n1(g.plat - hh * 0.4) + ' q-8 -2 -11 -10 M' + x + ' ' + n1(g.plat - hh * 0.62) + ' q8 -3 10 -11 M' + x + ' ' + n1(g.plat - hh * 0.84) + ' q-5 -3 -6 -9"/></g>';
+      }
       return out;
     }
     function cubic(s, f){ var u = 1 - f; return [u * u * u * s[0] + 3 * u * u * f * s[2] + 3 * u * f * f * s[4] + f * f * f * s[6], u * u * u * s[1] + 3 * u * u * f * s[3] + 3 * u * f * f * s[5] + f * f * f * s[7]]; }
     function dynFert(g, t){
-      var P0 = g.P, out = [], d = S.day, s = g.slope;
+      var P0 = g.P, out = [], d = S.day, s = g.slope, lab = !S.blank;
       // storm: a cloud over the field, rain while the runoff runs
       var rain = d > 0 && d < 5 ? 1 : d >= 5 && d < 7 ? 1 - (d - 5) / 2 : 0, cloudOp = d > 0 && d < 7 ? sstep(0, 0.4, d) * (1 - sstep(5, 7, d)) : 0;
       if(cloudOp > 0.01){
-        var cx = Math.max(56, g.platR * 0.3), cy = Math.max(26, g.plat * 0.3);
+        var cx = Math.max(64, g.platR * 0.42), cy = Math.max(26, g.plat * 0.3), cw = g.ph ? 0.8 : 1.15;
         out.push('<g opacity="' + cloudOp.toFixed(2) + '">');
-        if(rain > 0) R_RAIN.forEach(function(p, k){ var rx = cx - 44 + p[0] * 88, ry = cy + 10 + ((t * 160 + p[1] * 120) % Math.max(20, g.plat - cy - 6)); out.push('<path stroke="' + P0.rain + '" stroke-width="1.5" stroke-linecap="round" opacity="' + (0.75 * rain).toFixed(2) + '" d="M' + n1(rx) + ' ' + n1(ry) + ' l-2 7"/>'); });
-        out.push('<g fill="' + P0.cloud + '"><ellipse cx="' + n1(cx) + '" cy="' + n1(cy) + '" rx="40" ry="15"/><ellipse cx="' + n1(cx - 24) + '" cy="' + n1(cy + 4) + '" rx="22" ry="12"/><ellipse cx="' + n1(cx + 26) + '" cy="' + n1(cy + 5) + '" rx="20" ry="11"/><ellipse cx="' + n1(cx - 6) + '" cy="' + n1(cy - 9) + '" rx="22" ry="13" fill="' + P0.cloud2 + '"/></g></g>');
+        if(rain > 0) R_RAIN.forEach(function(p, k){ var rx = cx - 52 * cw + p[0] * 104 * cw, ry = cy + 10 + ((t * 160 + p[1] * 120) % Math.max(20, g.plat - cy - 6)); out.push('<path stroke="' + P0.rain + '" stroke-width="1.6" stroke-linecap="round" opacity="' + (0.8 * rain).toFixed(2) + '" d="M' + n1(rx) + ' ' + n1(ry) + ' l-2.4 8"/>'); });
+        out.push('<g fill="' + P0.cloud + '" transform="translate(' + n1(cx) + ' ' + n1(cy) + ') scale(' + cw + ')"><ellipse cx="0" cy="0" rx="46" ry="16"/><ellipse cx="-28" cy="4" rx="24" ry="13"/><ellipse cx="30" cy="5" rx="22" ry="12"/><ellipse cx="-6" cy="-10" rx="25" ry="15" fill="' + P0.cloud2 + '"/><ellipse cx="16" cy="-6" rx="16" ry="11" fill="' + P0.cloud2 + '"/></g></g>');
       }
-      // fertilizer granules on the field, washed off by the rain
-      var left = 1 - sstep(0.3, 4, d), ng = Math.round(S.sacks * 7 * left);
-      for(var k = 0; k < ng; k++){ var p = R_NUT[k % R_NUT.length], gx = 8 + p[0] * (g.platR - 4), gy = g.plat + 1 + p[1] * 3; out.push('<circle cx="' + n1(gx) + '" cy="' + n1(gy) + '" r="1.8" fill="' + P0.nut + '"/>'); }
-      // the sacks, in a row left of the knob (they overlap a little when the field is narrow)
+      // fertilizer granules scattered on the field, washed off by the rain
+      var left = 1 - sstep(0.3, 4, d), ng = Math.round(S.sacks * 9 * left);
+      for(var k = 0; k < ng; k++){ var p = R_NUT[k % R_NUT.length], gx = 10 + ((p[0] + k * 0.13) % 1) * (g.platR - 8), gy = g.plat + 0.5 + p[1] * 3; out.push('<circle cx="' + n1(gx) + '" cy="' + n1(gy) + '" r="1.9" fill="' + P0.nut + '"/>'); }
+      // the sacks: a row on the field (a pile on a phone)
       var span = g.sx1 - g.sx0, sw;
-      if(g.ph){
-        // a pile: three on the ground, two on top
-        sw = 30;
-        for(var i = 0; i < S.sacks; i++){ var row = i < 3 ? 0 : 1, col = row ? i - 3 : i; out.push(sack(g.sx0 + sw * 0.5 + col * (sw + 3) + row * (sw + 3) * 0.5, g.plat - 1 - row * sw * 1.12, sw, P0)); }
+      if(g.pile){
+        sw = g.ph ? 34 : 38;
+        for(var i = 0; i < S.sacks; i++){ var row = i < 3 ? 0 : 1, col = row ? i - 3 : i; out.push(sack(g.sx0 + sw * 0.5 + col * (sw + 3) + row * (sw + 3) * 0.5, g.plat - 1 - row * sw * 1.08, sw, P0)); }
       } else {
-        sw = Math.min(32, span / 5 * 0.86);
+        sw = Math.min(46, span / 5 * 0.88);
         for(var j = 0; j < S.sacks; j++) out.push(sack(g.sx0 + sw * 0.5 + (span - sw) * j / 5, g.plat - 1, sw, P0));
       }
-      // runoff stream down the slope
+      // runoff: water carrying fertilizer runs across the field and down the slope into the lake, thicker with more sacks
       var ro = S.sacks > 0 ? sstep(0, 0.6, d) * (1 - sstep(4.5, 7, d)) : 0;
       if(ro > 0.02){
-        var path = 'M' + n1(s[0] - 6) + ' ' + n1(s[1] + 1) + ' C' + n1(s[2]) + ' ' + n1(s[3] + 1) + ' ' + n1(s[4]) + ' ' + n1(s[5] + 1) + ' ' + n1(s[6] + 6) + ' ' + n1(s[7] + 2);
-        out.push('<path d="' + path + '" fill="none" stroke="' + P0.soil2 + '" stroke-width="' + n1(3 + S.sacks * 1.6) + '" stroke-linecap="round" opacity="' + (0.85 * ro).toFixed(2) + '"/>');
-        out.push('<path d="' + path + '" fill="none" stroke="' + P0.nut + '" stroke-width="' + n1(1.5 + S.sacks * 0.7) + '" stroke-linecap="round" stroke-dasharray="3 6" stroke-dashoffset="' + n1(-t * 30) + '" opacity="' + ro.toFixed(2) + '"/>');
+        var path = 'M' + n1(s[0] - 4) + ' ' + n1(s[1] - 1) + ' C' + n1(s[2]) + ' ' + n1(s[3] - 1) + ' ' + n1(s[4]) + ' ' + n1(s[5] - 1) + ' ' + n1(s[6] + 8) + ' ' + n1(s[7] + 1);
+        var wide = 4 + S.sacks * 2.2;
+        out.push('<path d="M0 ' + n1(g.plat - 1) + ' H' + n1(s[0]) + '" fill="none" stroke="' + P0.rain + '" stroke-width="3" opacity="' + (0.55 * ro).toFixed(2) + '"/>');
+        out.push('<path d="M0 ' + n1(g.plat - 1) + ' H' + n1(s[0]) + '" fill="none" stroke="' + P0.nut + '" stroke-width="2" stroke-dasharray="2 10" stroke-dashoffset="' + n1(-t * 40) + '" opacity="' + (0.9 * ro).toFixed(2) + '"/>');
+        out.push('<path d="' + path + '" fill="none" stroke="' + P0.soil2 + '" stroke-width="' + n1(wide + 3) + '" stroke-linecap="round" opacity="' + (0.5 * ro).toFixed(2) + '"/>');
+        out.push('<path d="' + path + '" fill="none" stroke="' + mix(mixA(P0.top, P0.brown, 0.55), P0.top, 0) + '" stroke-width="' + n1(wide) + '" stroke-linecap="round" opacity="' + (0.9 * ro).toFixed(2) + '"/>');
+        out.push('<path d="' + path + '" fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="6 14" stroke-dashoffset="' + n1(-t * 60) + '" opacity="' + (0.6 * ro).toFixed(2) + '"/>');
+        // fertilizer specks riding the flow
+        var nP = 6 + S.sacks * 3;
+        for(var q = 0; q < nP; q++){ var f = (t * 0.45 + q / nP) % 1, pt = cubic([s[0] - 4, s[1] - 1, s[2], s[3] - 1, s[4], s[5] - 1, s[6] + 8, s[7] + 1], f), off = (R_NUT[q % R_NUT.length][1] - 0.5) * wide * 0.6;
+          out.push('<circle cx="' + n1(pt[0]) + '" cy="' + n1(pt[1] + off) + '" r="2" fill="' + P0.nut + '" opacity="' + ro.toFixed(2) + '"/>'); }
+        // where it enters: a muddy plume fanning out under the surface
+        var pl = ro * (0.35 + S.sacks * 0.09), px0 = s[6] + 6, pw = (g.W - g.lakeL) * (0.18 + 0.05 * S.sacks) * sstep(0, 2, d);
+        out.push('<path fill="' + mix(mixA(P0.top, P0.brown, 0.6), P0.top, 0) + '" opacity="' + (0.45 * pl).toFixed(2) + '" d="M' + n1(px0) + ' ' + n1(g.surf + 1) + ' C' + n1(px0 + pw * 0.4) + ' ' + n1(g.surf + 2) + ' ' + n1(px0 + pw * 0.8) + ' ' + n1(g.surf + 8) + ' ' + n1(px0 + pw) + ' ' + n1(g.surf + 4) + ' C' + n1(px0 + pw * 0.7) + ' ' + n1(g.surf + 22) + ' ' + n1(px0 + pw * 0.3) + ' ' + n1(g.surf + 26) + ' ' + n1(px0 + 4) + ' ' + n1(g.surf + 18) + 'Z"/>');
       }
       var lk = lakeDyn(g.L, run, d, t, P0, 'wpLk1', 'f1', g.ph ? 3 : 5);
       out.push(lk.svg);
-      // the lake thermometer (its handle appears for challenge 2; until then it shows the lake's temperature)
+      // reeds at the near shore, swaying
+      for(var rd = 0; rd < (g.ph ? 4 : 7); rd++){ var rx2 = g.lakeL + 6 + rd * (g.ph ? 5 : 6), rh = (g.ph ? 16 : 24) + (rd % 3) * 6, sw2 = Math.sin(t * 0.8 + rd) * 2.5;
+        out.push('<path class="wp2-reed" d="M' + n1(rx2) + ' ' + n1(g.surf + 6) + ' Q' + n1(rx2 + sw2 * 0.5) + ' ' + n1(g.surf - rh * 0.5) + ' ' + n1(rx2 + sw2) + ' ' + n1(g.surf - rh) + '"/>' + (rd % 2 ? '<ellipse class="wp2-reedh" cx="' + n1(rx2 + sw2) + '" cy="' + n1(g.surf - rh + 4) + '" rx="1.8" ry="5"/>' : '')); }
+      // the lake thermometer, and its label: what it is and how to use it
       var tf = (S.tLake - 10) / 20, ty = lerp(g.thY10, g.thY30, tf);
       out.push('<g class="wp2-thermo"><rect x="' + n1(g.thX - 5) + '" y="' + n1(g.thTop) + '" width="10" height="' + n1(g.thBulb - g.thTop) + '" rx="5"/><circle cx="' + n1(g.thX) + '" cy="' + n1(g.thBulb) + '" r="9"/>' +
         '<rect class="wp2-thermo-c" x="' + n1(g.thX - 2.2) + '" y="' + n1(ty) + '" width="4.4" height="' + n1(g.thBulb - ty) + '"/><circle class="wp2-thermo-c" cx="' + n1(g.thX) + '" cy="' + n1(g.thBulb) + '" r="6.4"/></g>');
-      if(!(S.q && S.q.loudTemp)) out.push('<text class="wp2-lab" x="' + n1(g.thX - 12) + '" y="' + n1(g.thTop + 12) + '" text-anchor="end">Lake ' + S.tLake + ' °C</text>');
-      // labels: the bottom water's oxygen (anchored to the bed), and the step the day is in, where it happens
+      if(!(S.q && S.q.loudTemp)){
+        var tlx = g.thX - (g.ph ? 24 : 28), tly = g.thTop + 8;
+        out.push(inQuiz() ? '<text class="wp2-lab" x="' + n1(tlx) + '" y="' + n1(tly) + '" text-anchor="end">Lake ' + S.tLake + ' °C</text>'
+          : g.ph ? '<text class="wp2-lab" x="' + n1(tlx) + '" y="' + n1(tly) + '" text-anchor="end">Lake temperature</text><text class="wp2-lab is-how" x="' + n1(tlx) + '" y="' + n1(tly + 16) + '" text-anchor="end">' + S.tLake + ' °C: drag</text>'
+          : '<text class="wp2-lab" x="' + n1(tlx) + '" y="' + n1(tly) + '" text-anchor="end">Lake temperature: <tspan class="is-how">drag</tspan></text><text class="wp2-lab is-val" x="' + n1(tlx) + '" y="' + n1(tly + 17) + '" text-anchor="end">' + S.tLake + ' °C</text>');
+      }
+      // the fertilizer's label: what it is and how to use it (in the soil under the field, clear of the sacks)
+      if(!inQuiz()){
+        var flx = g.sx0 - 2, fly = g.pile ? g.plat + 66 : g.plat + 40;
+        out.push(g.pile ? '<text class="wp2-lab" x="' + n1(flx) + '" y="' + n1(fly) + '">Fertilizer:</text><text class="wp2-lab is-how" x="' + n1(flx) + '" y="' + n1(fly + 16) + '">drag to add more</text>'
+          : '<text class="wp2-lab" x="' + n1(flx) + '" y="' + n1(fly) + '">Fertilizer: <tspan class="is-how">drag to add more</tspan></text>');
+      }
+      // the bottom water's oxygen, on the lake (anchored to the bed), with what fish need
       var ph = phase(run, d), o = ph.o, st = status(o), L = g.L, w = L.x1 - L.x0, cx2 = L.x0 + w * (g.ph ? 0.6 : 0.56);
-      var bx = L.x0 + w * (g.ph ? 0.14 : 0.16), byB = bedY(L, bx + 30);
-      out.push(chip(bx, byB - (g.ph ? 46 : 52), 'Bottom water', fO(o) + ' mg/L', st.tone, g.ph, [bx + 30, byB - 10], st.status));
-      if(S.sacks > 0 && d > 0 && !S.blank){
-        var cur = ph.cur, lab = null, pos = null, lead = null;
-        if(ph.rec){ lab = 'Oxygen comes back from the air'; pos = [cx2, L.mid - 8]; }
-        else if(cur === 0){ lab = 'Runoff carries nutrients in'; pos = [L.x0 + 16, L.surf - 12, 'start']; }
-        else if(cur === 1){ lab = 'Algae bloom: the surface turns green'; pos = [cx2, L.surf + (L.mid - L.surf) * 0.62]; }
-        else if(cur === 2){ if(lk.brown) { lab = 'Algae die, turn brown and sink'; pos = [cx2, L.mid - 2]; } else { lab = 'Algae bloom: the surface turns green'; pos = [cx2, L.surf + (L.mid - L.surf) * 0.62]; } }
-        else if(cur === 3 || cur === 4){
-          lab = cur === 3 ? 'Decomposer bacteria use oxygen' : 'Oxygen drops in the bottom water';
-          pos = [cx2, L.mid - 4];
-          if(lk.bac) lead = [cx2, L.mid + 2, lk.bac[0], lk.bac[1]];
+      var bx = L.x0 + w * (g.ph ? 0.12 : 0.16), byB = bedY(L, bx + 30);
+      out.push(chip(bx, byB - (g.ph ? 52 : 60), 'Oxygen at the bottom', fO(o) + ' mg/L', st.tone, g.ph, [bx + 30, byB - 10], st.status, 'Fish need about 5 or more'));
+      // small names on the things themselves, only while they are there: runoff, algae, dead algae, bacteria
+      if(lab && S.sacks > 0 && d > 0){
+        var cur = ph.cur;
+        if(ro > 0.3) out.push(tag(s[4] + 10, s[5] - 16, 'runoff', 'start', 'nut'));
+        if(!ph.rec && cur <= 2 && lk.matPt && !lk.brown) out.push(tag(lk.matPt[0], lk.matPt[1] - 10, 'algae', 'middle', 'alg'));
+        if(lk.brown && lk.sinkPt && cur <= 3) out.push(tag(lk.sinkPt[0] + 10, lk.sinkPt[1] + 4, 'dead algae sink', 'start', 'dead'));
+        else if(lk.deadPt && !ph.rec && cur >= 3 && cur <= 4) out.push(tag(lk.deadPt[0], lk.deadPt[1] - 8, 'dead algae', 'middle', 'dead'));
+        if((cur === 3 || cur === 4) && lk.bac && !ph.rec){
+          var lx = cx2, ly = L.mid + (L.bed - L.mid) * 0.18;
+          out.push('<path class="wp2-lead" d="M' + n1(lx) + ' ' + n1(ly + 4) + ' L' + n1(lk.bac[0]) + ' ' + n1(lk.bac[1]) + '"/><circle class="wp2-lead-d" cx="' + n1(lk.bac[0]) + '" cy="' + n1(lk.bac[1]) + '" r="2.4"/>');
+          out.push(callout(lx, ly, 'bacteria use up oxygen', '', 'middle', g.ph));
         }
-        else if(cur === 5 && o < W.HYPOXIC){ lab = 'Dead zone: fish leave or die'; pos = [cx2, g.ph ? L.mid - 4 : L.mid + (L.bed - L.mid) * 0.36]; }
-        else if(cur === 5){ lab = 'Oxygen drops in the bottom water'; pos = [cx2, L.mid - 4]; }
-        if(lead) out.push('<path class="wp2-lead" d="M' + n1(lead[0]) + ' ' + n1(lead[1]) + ' L' + n1(lead[2]) + ' ' + n1(lead[3]) + '"/><circle class="wp2-lead-d" cx="' + n1(lead[2]) + '" cy="' + n1(lead[3]) + '" r="2.4"/>');
-        if(lab && g.ph) lab = { 'Runoff carries nutrients in': 'Runoff carries nutrients', 'Algae bloom: the surface turns green': 'Algae bloom', 'Algae die, turn brown and sink': 'Algae die and sink',
-          'Decomposer bacteria use oxygen': 'Decomposers use oxygen', 'Oxygen drops in the bottom water': 'Oxygen drops', 'Dead zone: fish leave or die': 'Dead zone', 'Oxygen comes back from the air': 'Oxygen comes back' }[lab] || lab;
-        if(lab) out.push(callout(pos[0], pos[1], lab, cur === 5 && !ph.rec && o < W.HYPOXIC ? 'bad' : '', pos[2] || 'middle', g.ph));
+        if(cur === 5 && !ph.rec && o < W.HYPOXIC) out.push(callout(g.ph ? L.x0 + w * 0.42 : cx2, g.ph || w < 640 ? L.mid - 6 : L.mid + (L.bed - L.mid) * 0.3, g.ph ? 'Dead zone' : 'Dead zone: fish leave or die', 'bad', 'middle', g.ph));
       }
       return out.join('');
     }
+    /* A small name on a thing in the picture ("algae"), in its role colour, with a halo. */
+    function tag(x, y, text, anchor, role){
+      return pill(x, y, text, anchor, 'wp2-name is-' + role, 6.9, 20);
+    }
+    /* A label on a soft pill, so it stays clean over fish, algae or water. y is the text's middle. */
+    function pill(x, y, text, anchor, cls, cw, h){
+      var w = Math.round(text.length * cw + 16), x0 = anchor === 'middle' ? x - w / 2 : anchor === 'end' ? x - w : x;
+      if(G) x0 = clamp(x0, 4, G.W - w - 4);
+      return '<g class="wp2-pill ' + cls + '"><rect x="' + n1(x0) + '" y="' + n1(y - h / 2) + '" width="' + w + '" height="' + h + '" rx="' + n1(h / 2) + '"/>' +
+        '<text x="' + n1(x0 + w / 2) + '" y="' + n1(y + h * 0.17) + '" text-anchor="middle">' + esc(text) + '</text></g>';
+    }
     /* A value card in the scene (the readout's number, the same value); lead: [x, y] a short line to what it measures. */
-    function chip(x, y, k, v, tone, ph, lead, stw){
-      // the status word sits right after the value; the card is as wide as the two need
-      var vw = v.length * (ph ? 8 : 8.6), sw = stw ? stw.length * (ph ? 6.9 : 7.2) : 0, w = Math.max(ph ? 96 : 112, Math.round(18 + vw + (stw ? 8 + sw : 0))), h = ph ? 38 : 42, out = '<g class="wp2-chip">';
+    function chip(x, y, k, v, tone, ph, lead, stw, hint){
+      // the status word sits right after the value; a third, small line says what fish need
+      var vw = v.length * (ph ? 8 : 8.6), sw = stw ? stw.length * (ph ? 6.9 : 7.2) : 0, kw = k.length * (ph ? 6.6 : 6.9), hw = hint ? hint.length * (ph ? 6 : 6.3) : 0;
+      var w = Math.round(Math.max(ph ? 96 : 112, 18 + vw + (stw ? 8 + sw : 0), 18 + kw, 18 + hw)), h = (ph ? 38 : 42) + (hint ? (ph ? 14 : 15) : 0), y0 = y - h / 2, out = '<g class="wp2-chip">';
       if(lead) out += '<path class="wp2-lead" d="M' + n1(x + w * 0.5) + ' ' + n1(y + h / 2) + ' L' + n1(lead[0]) + ' ' + n1(lead[1]) + '"/><circle class="wp2-lead-d" cx="' + n1(lead[0]) + '" cy="' + n1(lead[1]) + '" r="2.6"/>';
-      return out + '<rect x="' + n1(x) + '" y="' + n1(y - h / 2) + '" width="' + w + '" height="' + h + '" rx="9"/>' +
-        '<text class="wp2-chip-k" x="' + n1(x + 9) + '" y="' + n1(y - h / 2 + (ph ? 14 : 15)) + '">' + esc(k) + '</text>' +
-        '<text class="wp2-chip-v' + (tone === 'bad' ? ' is-bad' : '') + '" x="' + n1(x + 9) + '" y="' + n1(y + h / 2 - (ph ? 7 : 8)) + '">' + esc(v) + '</text>' +
-        (stw ? '<text class="wp2-chip-s is-' + tone + '" x="' + n1(x + 9 + vw + 8) + '" y="' + n1(y + h / 2 - (ph ? 7 : 8)) + '">' + esc(stw) + '</text>' : '') + '</g>';
+      var vy = y0 + (ph ? 31 : 34);
+      return out + '<rect x="' + n1(x) + '" y="' + n1(y0) + '" width="' + w + '" height="' + h + '" rx="9"/>' +
+        '<text class="wp2-chip-k" x="' + n1(x + 9) + '" y="' + n1(y0 + (ph ? 14 : 15)) + '">' + esc(k) + '</text>' +
+        '<text class="wp2-chip-v' + (tone === 'bad' ? ' is-bad' : '') + '" x="' + n1(x + 9) + '" y="' + n1(vy) + '">' + esc(v) + '</text>' +
+        (stw ? '<text class="wp2-chip-s is-' + tone + '" x="' + n1(x + 9 + vw + 8) + '" y="' + n1(vy) + '">' + esc(stw) + '</text>' : '') +
+        (hint ? '<text class="wp2-chip-h" x="' + n1(x + 9) + '" y="' + n1(vy + (ph ? 14 : 15)) + '">' + esc(hint) + '</text>' : '') + '</g>';
     }
     function callout(x, y, text, tone, anchor, ph){
-      return '<text class="wp2-call' + (tone ? ' is-' + tone : '') + (ph ? ' is-ph' : '') + '" x="' + n1(x) + '" y="' + n1(y) + '" text-anchor="' + anchor + '">' + esc(text) + '</text>';
+      var bad = tone === 'bad';
+      return pill(x, y - (bad ? 6 : 5), text, anchor, 'wp2-call' + (tone ? ' is-' + tone : '') + (ph ? ' is-ph' : ''), bad ? (ph ? 8.4 : 9.4) : (ph ? 7.4 : 8.2), bad ? (ph ? 26 : 30) : (ph ? 23 : 26));
     }
 
     /* --------------------------------------------------- chapter 2: a power plant on a trout river */
@@ -1035,20 +1197,36 @@
     function staticHeat(g){
       var P0 = g.P, Wd = g.W, H = g.H, out = '<defs>' + skyAndHills(g, Wd, H) + fishDefs() +
         '<linearGradient id="wpBank" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + P0.near + '"/><stop offset="1" stop-color="' + P0.grass2 + '"/></linearGradient>' +
-        '<linearGradient id="wpRiv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + mix(P0.top, P0.top, 0) + '"/><stop offset="1" stop-color="' + mix(P0.deep, P0.deep, 0) + '"/></linearGradient></defs>';
+        '<linearGradient id="wpRiv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + mix(P0.top, P0.top, 0) + '"/><stop offset="1" stop-color="' + mix(P0.deep, P0.deep, 0) + '"/></linearGradient>' +
+        '<linearGradient id="wpTow" x1="0" y1="0" x2="1" y2="0"><stop offset="0" class="wp2-tw0"/><stop offset=".4" class="wp2-tw1"/><stop offset="1" class="wp2-tw2"/></linearGradient></defs>';
       out += '<rect width="' + Wd + '" height="' + (g.hor + 4) + '" fill="url(#wpSky)"/>';
       if(!g.ph) out += sunOrMoon(Wd * 0.62, 30, P0);
+      out += clouds(Wd, g.hor, P0, g.ph ? [[0.5, 0.45, 0.6]] : [[0.3, 0.4, 0.9], [0.74, 0.5, 0.7]]);
       out += hills(Wd, g.hor, P0, H);
+      // a power line on pylons across the far hills (where the plant's electricity goes)
+      var py0 = g.hor - H * 0.02, pyl = function(x, s){ return '<path class="wp2-pylon" d="M' + n1(x - 7 * s) + ' ' + n1(py0) + ' L' + n1(x) + ' ' + n1(py0 - 34 * s) + ' L' + n1(x + 7 * s) + ' ' + n1(py0) + ' M' + n1(x - 4.5 * s) + ' ' + n1(py0 - 12 * s) + ' L' + n1(x + 4.5 * s) + ' ' + n1(py0 - 12 * s) + ' M' + n1(x - 10 * s) + ' ' + n1(py0 - 26 * s) + ' H' + n1(x + 10 * s) + ' M' + n1(x - 3 * s) + ' ' + n1(py0 - 22 * s) + ' L' + n1(x + 5 * s) + ' ' + n1(py0 - 12 * s) + '"/>'; };
+      if(!g.ph){ var pxs = [Wd * 0.66, Wd * 0.8, Wd * 0.94]; out += pxs.map(function(x, i){ return pyl(x, 1 - i * 0.12); }).join('') + '<path class="wp2-wire" d="M' + n1(g.bx1) + ' ' + n1(g.btop - 6) + ' Q' + n1((g.bx1 + pxs[0]) / 2) + ' ' + n1(py0 - 14) + ' ' + n1(pxs[0] + 10) + ' ' + n1(py0 - 26) + ' Q' + n1((pxs[0] + pxs[1]) / 2) + ' ' + n1(py0 - 16) + ' ' + n1(pxs[1] + 8.8) + ' ' + n1(py0 - 23) + ' Q' + n1((pxs[1] + pxs[2]) / 2) + ' ' + n1(py0 - 14) + ' ' + n1(pxs[2] + 7.6) + ' ' + n1(py0 - 20) + '"/>'; }
       out += '<rect y="' + n1(g.hor) + '" width="' + Wd + '" height="' + n1(g.surf - g.hor + 2) + '" fill="url(#wpBank)"/>';
+      // grass tufts along the bank top and its edge
+      for(var gt = 0; gt < Math.round(Wd / 22); gt++){ var gx = (gt * 47.3 + 11) % Wd, gy = g.hor + 10 + ((gt * 29) % Math.max(10, g.bank - g.hor - 20));
+        if(gx > g.bx0 - g.bw * 0.6 && gx < g.pipeX + 20 && gy > g.btop - 10) continue;
+        out += '<path class="wp2-tuft" d="M' + n1(gx - 4) + ' ' + n1(gy) + ' l2 -6 M' + n1(gx) + ' ' + n1(gy) + ' l0 -8 M' + n1(gx + 4) + ' ' + n1(gy) + ' l-2 -6"/>'; }
       // the river in cutaway: water, then its stony bed
       out += '<rect y="' + n1(g.surf) + '" width="' + Wd + '" height="' + n1(g.bed - g.surf) + '" fill="url(#wpRiv)"/>';
+      out += '<rect y="' + n1(g.surf) + '" width="' + Wd + '" height="' + n1((g.bed - g.surf) * 0.22) + '" fill="#fff" opacity="' + (dark() ? 0.05 : 0.12) + '"/>';
+      out += '<path fill="' + P0.grass2 + '" d="M0 ' + n1(g.surf + 1) + ' H' + Wd + ' V' + n1(g.surf - 5) + ' C' + n1(Wd * 0.7) + ' ' + n1(g.surf - 2) + ' ' + n1(Wd * 0.3) + ' ' + n1(g.surf - 7) + ' 0 ' + n1(g.surf - 4) + 'Z"/>';
       out += '<path fill="' + P0.bed + '" d="M0 ' + n1(g.bed - 4) + ' C' + n1(Wd * 0.25) + ' ' + n1(g.bed - 9) + ' ' + n1(Wd * 0.5) + ' ' + n1(g.bed + 1) + ' ' + n1(Wd * 0.75) + ' ' + n1(g.bed - 6) + ' S' + n1(Wd * 0.95) + ' ' + n1(g.bed - 2) + ' ' + Wd + ' ' + n1(g.bed - 5) + ' V' + H + ' H0Z"/>';
       for(var k = 0; k < Math.round(Wd / 18); k++){ var x = (k * 37.3) % Wd, r = 2 + (k * 13 % 5); out += '<ellipse cx="' + n1(x) + '" cy="' + n1(g.bed - 3 + (k % 3)) + '" rx="' + r + '" ry="' + n1(r * 0.6) + '" fill="' + (k % 2 ? P0.bed2 : P0.conc2) + '"/>'; }
       // the plant: building, cooling tower, intake (upstream) and outflow (downstream) pipes
       var tw = g.bw * 0.62, tx = g.bx0 - tw * 0.15, th = g.bh * 1.55;
       out += '<path class="wp2-tower" d="M' + n1(tx - tw / 2) + ' ' + n1(g.bank) + ' C' + n1(tx - tw * 0.28) + ' ' + n1(g.bank - th * 0.5) + ' ' + n1(tx - tw * 0.3) + ' ' + n1(g.bank - th * 0.8) + ' ' + n1(tx - tw * 0.36) + ' ' + n1(g.bank - th) +
         ' H' + n1(tx + tw * 0.36) + ' C' + n1(tx + tw * 0.3) + ' ' + n1(g.bank - th * 0.8) + ' ' + n1(tx + tw * 0.28) + ' ' + n1(g.bank - th * 0.5) + ' ' + n1(tx + tw / 2) + ' ' + n1(g.bank) + 'Z"/>';
+      // a chimney stack with red and white bands, then the turbine hall
+      var stx = g.bx1 - g.bw * 0.2, sth = g.bh * 0.9;
+      out += '<rect class="wp2-stack" x="' + n1(stx - 5) + '" y="' + n1(g.btop - sth) + '" width="10" height="' + n1(sth) + '"/>' + [0.08, 0.3].map(function(f){ return '<rect class="wp2-stackb" x="' + n1(stx - 5) + '" y="' + n1(g.btop - sth * (1 - f)) + '" width="10" height="' + n1(sth * 0.1) + '"/>'; }).join('');
       out += '<rect class="wp2-bldg" x="' + n1(g.bx0) + '" y="' + n1(g.btop) + '" width="' + n1(g.bw) + '" height="' + n1(g.bh) + '" rx="3"/>';
+      for(var bl = 1; bl < 6; bl++) out += '<path class="wp2-bline" d="M' + n1(g.bx0 + 2) + ' ' + n1(g.btop + g.bh * bl / 6) + ' H' + n1(g.bx1 - 2) + '"/>';
+      out += '<rect class="wp2-door" x="' + n1(g.bx1 - g.bw * 0.2) + '" y="' + n1(g.btop + g.bh * 0.62) + '" width="' + n1(g.bw * 0.12) + '" height="' + n1(g.bh * 0.38) + '" rx="1.5"/>';
       out += '<path class="wp2-roof" d="M' + n1(g.bx0 - 3) + ' ' + n1(g.btop) + ' H' + n1(g.bx1 + 3) + ' V' + n1(g.btop + 6) + ' H' + n1(g.bx0 - 3) + 'Z"/>';
       for(var wi = 0; wi < 3; wi++) out += '<rect class="wp2-win" x="' + n1(g.bx0 + g.bw * (0.14 + wi * 0.27)) + '" y="' + n1(g.btop + g.bh * 0.3) + '" width="' + n1(g.bw * 0.16) + '" height="' + n1(g.bh * 0.22) + '" rx="1.5"/>';
       // a narrow building: the sign starts at its left edge, clear of the handle's first time "Drag" chip
@@ -1061,6 +1239,10 @@
       out += '<path class="wp2-pipe is-warm" d="M' + n1(g.vX) + ' ' + n1(g.pipeY) + ' V' + n1(g.vY0 + 2) + '" stroke-width="4"/>';
       out += '<rect class="wp2-vscale" x="' + n1(g.vX - 5) + '" y="' + n1(g.vY1) + '" width="10" height="' + n1(g.vY0 - g.vY1) + '" rx="5"/>';
       [0, 5, 10, 15].forEach(function(v){ var y = lerp(g.vY0, g.vY1, v / 15); out += '<path class="wp2-tick" d="M' + n1(g.vX + 8) + ' ' + n1(y) + ' h6"/><text class="wp2-tk" x="' + n1(g.vX + 17) + '" y="' + n1(y + 4) + '">+' + v + '</text>'; });
+      // its label: what it is and how to use it (right of the scale's numbers)
+      var hlx = g.vX + (g.ph ? 44 : 48), hly = g.vY1 + 10;
+      if(!inQuiz()) out += g.ph ? '<text class="wp2-lab" x="' + n1(hlx) + '" y="' + n1(hly) + '">Hot water:</text><text class="wp2-lab is-how" x="' + n1(hlx) + '" y="' + n1(hly + 16) + '">drag</text>'
+        : '<text class="wp2-lab" x="' + n1(hlx) + '" y="' + n1(hly) + '">Hot water: <tspan class="is-how">drag</tspan></text>';
       // zone names on the bank
       // flow arrow on the water: the river runs left to right
       out += '<path class="wp2-flowa" d="M' + n1(Wd * 0.03) + ' ' + n1(g.surf + 16) + ' h' + (g.ph ? 26 : 36) + ' m-7 -5 l7 5 l-7 5"/>';
@@ -1074,7 +1256,7 @@
       var pw = g.pw, ph_ = g.pH, x0 = x - pw / 2, y0 = g.ph ? 8 : Math.max(g.hor + 6, g.bank - ph_ - 10), out = '', gx0 = x0 + 12, gx1 = x0 + pw - 12, gy = y0 + ph_ - 50, bh = g.ph ? 14 : 16;
       var gv = function(v){ return gx0 + (gx1 - gx0) * clamp(v / 14, 0, 1); }, low = cap < TROUT;
       out += '<path class="wp2-post" d="M' + n1(x) + ' ' + n1(y0 + ph_) + ' V' + n1(g.bed - 6) + '"/><circle class="wp2-probe" cx="' + n1(x) + '" cy="' + n1(g.bed - 10) + '" r="4"/>';
-      out += '<rect class="wp2-panel' + (low ? ' is-low' : '') + '" x="' + n1(x0) + '" y="' + n1(y0) + '" width="' + pw + '" height="' + ph_ + '" rx="12"/>';
+      out += '<rect class="wp2-panel' + (low ? ' is-low' : '') + (warm != null && name === 'Downstream' ? ' is-dn' : '') + '" x="' + n1(x0) + '" y="' + n1(y0) + '" width="' + pw + '" height="' + ph_ + '" rx="12"/>';
       out += '<text class="wp2-pk' + (g.ph ? ' is-sm' : '') + '" x="' + n1(x0 + (g.ph ? 9 : 12)) + '" y="' + n1(y0 + 19) + '">' + esc(name) + '</text>';
       // thermometer glyph and the temperature, top right
       var tx = x0 + pw - 66, tt = y0 + 7, tb = y0 + 22;
@@ -1145,22 +1327,35 @@
     function staticSew(g){
       var P0 = g.P, Wd = g.W, H = g.H, out = '<defs>' + skyAndHills(g, Wd, H) + fishDefs() + '<linearGradient id="wpBank" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + P0.near + '"/><stop offset="1" stop-color="' + P0.grass2 + '"/></linearGradient></defs>';
       out += '<rect width="' + Wd + '" height="' + (g.hor + 4) + '" fill="url(#wpSky)"/>';
+      out += clouds(Wd, g.hor, P0, g.ph ? [[0.62, 0.5, 0.6]] : [[0.42, 0.45, 0.9], [0.84, 0.55, 0.7]]);
       out += hills(Wd, g.hor, P0, H);
       out += '<rect y="' + n1(g.hor) + '" width="' + Wd + '" height="' + n1(H - g.hor) + '" fill="url(#wpBank)"/>';
-      // town: a few houses on the left of the horizon
-      var hx = g.ph ? 10 : 16, hy = g.hor + (g.ph ? 20 : 26);
+      // the plant's yard: a paved strip the tanks stand on
+      var yard0 = g.tTop + g.tH + (g.ph ? 2 : 4);
+      out += '<rect class="wp2-yard" x="' + n1(g.px0 - 4) + '" y="' + n1(g.tTop + g.tH * 0.5) + '" width="' + n1(g.px1 - g.px0 + 8) + '" height="' + n1(yard0 - g.tTop - g.tH * 0.5 + 6) + '" rx="6"/>';
+      // town: houses in a few colours with chimneys, and trees between them
+      var hx = g.ph ? 10 : 16, hy = g.hor + (g.ph ? 20 : 26), HC = ['#E8DCC8', '#D9E4EC', '#F0D9C4', '#E2E8D0'], RC = ['#B5654A', '#6F7F8E', '#9C5A3C', '#7E6A52'];
       for(var k = 0; k < (g.ph ? 3 : 4); k++){
         var x = hx + k * (g.ph ? 26 : 30), w = g.ph ? 20 : 24, h = (g.ph ? 14 : 18) + (k % 2) * 4, y = hy - (k % 2) * 3;
-        out += '<rect class="wp2-house" x="' + x + '" y="' + n1(y - h) + '" width="' + w + '" height="' + h + '"/><path class="wp2-hroof" d="M' + (x - 3) + ' ' + n1(y - h) + ' L' + n1(x + w / 2) + ' ' + n1(y - h - w * 0.5) + ' L' + (x + w + 3) + ' ' + n1(y - h) + 'Z"/>' +
+        if(k % 2 === 0) out += '<rect class="wp2-chim" x="' + n1(x + w * 0.66) + '" y="' + n1(y - h - w * 0.42) + '" width="' + n1(w * 0.14) + '" height="' + n1(w * 0.3) + '"/>';
+        out += '<rect class="wp2-house" x="' + x + '" y="' + n1(y - h) + '" width="' + w + '" height="' + h + '" style="fill:' + (dark() ? '#8C8070' : HC[k % 4]) + '"/><path class="wp2-hroof" style="fill:' + RC[k % 4] + '" d="M' + (x - 3) + ' ' + n1(y - h) + ' L' + n1(x + w / 2) + ' ' + n1(y - h - w * 0.5) + ' L' + (x + w + 3) + ' ' + n1(y - h) + 'Z"/>' +
           '<rect class="wp2-win" x="' + n1(x + w * 0.35) + '" y="' + n1(y - h * 0.65) + '" width="' + n1(w * 0.3) + '" height="' + n1(h * 0.3) + '"/>';
+        if(k < (g.ph ? 2 : 3)){ var tx2 = x + w + (g.ph ? 3 : 3), ts = g.ph ? 4 : 5; out += '<path fill="' + P0.grass2 + '" d="M' + n1(tx2) + ' ' + n1(y - ts * 3.2) + ' C' + n1(tx2 + ts) + ' ' + n1(y - ts * 3) + ' ' + n1(tx2 + ts * 1.2) + ' ' + n1(y - ts * 0.6) + ' ' + n1(tx2) + ' ' + n1(y) + ' C' + n1(tx2 - ts * 1.2) + ' ' + n1(y - ts * 0.6) + ' ' + n1(tx2 - ts) + ' ' + n1(y - ts * 3) + ' ' + n1(tx2) + ' ' + n1(y - ts * 3.2) + 'Z"/>'; }
       }
       out += '<text class="wp2-lab" x="' + n1(hx + (g.ph ? 84 : 124)) + '" y="' + n1(hy - (g.ph ? 26 : 30)) + '">Town</text>';
       // sewer from the town down to the plant
       var raw = g.tanks[0];
       out += '<path class="wp2-pipe is-sew" d="M' + n1(hx + 40) + ' ' + n1(hy) + ' V' + n1(g.pipeY - (g.ph ? 16 : 22)) + ' H' + n1(raw.x + raw.w * 0.5) + ' V' + n1(raw.y + 4) + '"/>';
       // the lake below: water and bed (its life is drawn each frame)
+      // the lake below sits in a cut of earth (cross-section), under the bank
+      var LK = g.lake;
+      out += '<linearGradient id="wpSoil3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + P0.soil + '"/><stop offset="1" stop-color="' + P0.soil3 + '"/></linearGradient>';
+      out += '<path fill="url(#wpSoil3)" d="M' + n1(LK.x0 - 26) + ' ' + n1(LK.surf - 1) + ' C' + n1(LK.x0 - 16) + ' ' + n1(LK.surf + (LK.bed - LK.surf) * 0.4) + ' ' + n1(LK.x0 - 40) + ' ' + n1(H - 30) + ' ' + n1(LK.x0 - 58) + ' ' + H + ' H' + Wd + ' V' + n1(LK.surf - 1) + 'Z"/>';
+      out += '<path fill="none" stroke="' + P0.grass + '" stroke-width="4" stroke-linecap="round" d="M' + n1(LK.x0 - 40) + ' ' + n1(LK.surf - 1) + ' H' + n1(LK.x0 + 4) + '"/>';
       out += lakeStatic(g.lake, P0, 'wpLk3') + bedArt(g.lake, P0);
       out += '<text class="wp2-lab" x="' + n1(g.lake.x0 + (g.lake.x1 - g.lake.x0) * 0.55) + '" y="' + n1(g.lake.surf - 10) + '" text-anchor="middle">Lake below</text>';
+      // the tanks' label: what they are and how to use them (above the plant, clear of the bypass line)
+      if(!inQuiz()){ var t1 = g.tanks[1], t4 = g.tanks[4]; out += '<text class="wp2-lab" x="' + n1(g.ph ? Wd - 8 : (t1.x + t4.x + t4.w) / 2) + '" y="' + n1(g.tTop - (g.ph ? 36 : 44)) + '" text-anchor="' + (g.ph ? 'end' : 'middle') + '"><tspan class="is-how">Tap a tank</tspan> to stop treatment there</text>'; }
       return out;
     }
     function tankArt(tk, i, on, t, P0, ph){ return tankArt0(tk, i, on, t, P0, ph, looping, !!(S.q && S.q.hideDoes)); }
@@ -1185,7 +1380,7 @@
       var lk = lakeDyn(L, sew, S.sday, t, P0, 'wpLk3', 's3', 3);
       out.push(lk.svg);
       var ph = phase(sew, S.sday), o = ph.o, st = status(o), cxL = L.x0 + (L.x1 - L.x0) * (g.ph ? 0.32 : 0.24), byL = bedY(L, cxL + 30);
-      out.push(chip(cxL, byL - (g.ph ? 40 : 46), 'Bottom water', fO(o) + ' mg/L', st.tone, g.ph, [cxL + 30, byL - 8], st.status));
+      out.push(chip(cxL, byL - (g.ph ? 52 : 58), 'Oxygen at the bottom', fO(o) + ' mg/L', st.tone, g.ph, [cxL + 30, byL - 8], st.status, 'Fish need about 5 or more'));
       if(S.sday > 0 && ph.cur === 5 && o < W.HYPOXIC) out.push(callout(L.x0 + (L.x1 - L.x0) * 0.58, L.surf + (L.bed - L.surf) * 0.3, 'Dead zone', 'bad', 'middle', true));
       return out.join('');
     }
@@ -1219,13 +1414,11 @@
         if(upto > cd + 1e-9 && of.length > 1) out.push('<polyline class="wp2-g-do is-fut" points="' + of.join(' ') + '"/>');
         if(op.length > 1) out.push('<polyline class="wp2-g-do" points="' + op.join(' ') + '"/>');
         if(inQuiz() && seen < W.LAKE_DAYS) out.push('<rect class="wp2-g-fog" x="' + n1(x(Math.max(seen, 0)) + 1) + '" y="' + n1(top) + '" width="' + n1(Math.max(0, R - x(Math.max(seen, 0)) - 1)) + '" height="' + n1(bot - top) + '"/>');
-        var satY = y(r.osat), hypY = y(2);
-        out.push(ln(L, satY, R, satY, 'wp2-g-sat'));
-        out.push(tx(R - 4, satY - 5, 'Most it holds', 'wp2-g-satt', 'end'));
+        var hypY = y(2);
         out.push(tx(R - 4, hypY - 5, '2 mg/L: dead zone', 'wp2-g-hypt', 'end'));
         out.push(ln(L, bot, R, bot, 'wp2-g-axis') + ln(L, top, L, bot, 'wp2-g-axis'));
         out.push('<circle class="wp2-g-dot" cx="' + n1(x(cd)) + '" cy="' + n1(y(at(r.O, cd))) + '" r="5"/>');
-        out.push(tx(L, 16, (S.ch === 'sew' ? 'Lake below: oxygen (mg/L)' : 'Bottom oxygen (mg/L)'), 'wp2-g-ax is-oxy'));
+        out.push(tx(L, 16, (S.ch === 'sew' ? 'Oxygen at the bottom of the lake below, day by day' : 'Oxygen at the bottom of the lake, day by day'), 'wp2-g-ax is-oxy'));
         scrub.place([L, top, R, bot], 0, W.LAKE_DAYS); scrub.value(Math.round(cur));
         gsvg.setAttribute('aria-label', (S.ch === 'sew' ? 'Lake below the plant: ' : '') + 'bottom-water oxygen over 60 days on a 0 to 12 mg/L scale, with the algae as a faint shape and a line at 2 mg/L. ' +
           (upto > 0 ? 'Lowest ' + F(Math.min.apply(null, r.O.slice(0, Math.floor(upto) + 1))) + ' mg/L.' : 'Not played yet.'));
@@ -1233,7 +1426,7 @@
         var h = heatPts(), xs = function(t){ return L + t / 35 * (R - L); }, ys = function(v){ return bot - v / 16 * (bot - top); };
         for(var a = 0; a <= 16; a += 4) out.push(ln(L, ys(a), R, ys(a), 'wp2-g-grid') + tx(L - 6, ys(a) + 4, a, 'wp2-g-tk', 'end'));
         for(var b = 0; b <= 35; b += 5) out.push(tx(xs(b), bot + 16, b === 35 ? '35 °C' : b, 'wp2-g-tk', b === 35 ? 'end' : 'middle'));
-        out.push(ln(L, ys(TROUT), R, ys(TROUT), 'wp2-g-trout') + tx(R - 4, ys(TROUT) - 6, 'Young trout need ' + TROUT, 'wp2-g-troutt', 'end'));
+        out.push(ln(L, ys(TROUT), R, ys(TROUT), 'wp2-g-trout') + tx(R - 4, ys(TROUT) - 6, 'Young trout need ' + TROUT + ' mg/L', 'wp2-g-troutt', 'end'));
         out.push('<polyline class="wp2-g-osat" points="' + W.OSAT.map(function(q){ return n1(xs(q[0])) + ',' + n1(ys(q[1])); }).join(' ') + '"/>');
         out.push(ln(L, bot, R, bot, 'wp2-g-axis') + ln(L, top, L, bot, 'wp2-g-axis'));
         out.push('<circle class="wp2-g-up" cx="' + n1(xs(h.t0)) + '" cy="' + n1(ys(h.d0)) + '" r="6"/>');
@@ -1242,7 +1435,7 @@
           out.push('<circle class="wp2-g-dn' + (h.d1 < TROUT ? ' is-bad' : '') + '" cx="' + n1(xs(h.t1)) + '" cy="' + n1(ys(h.d1)) + '" r="6"/>');
           out.push(tx(xs(h.t1) + (xs(h.t1) > R - 130 ? -10 : 12), ys(h.d1) + 22, 'Downstream ' + F(h.d1), 'wp2-g-val is-heat', xs(h.t1) > R - 130 ? 'end' : 'start'));
         }
-        out.push(tx(L, 16, 'Oxygen water can hold (mg/L)', 'wp2-g-ax is-oxy'));
+        out.push(tx(L, 16, 'Most oxygen the river can hold, by temperature', 'wp2-g-ax is-oxy'));
         scrub.place([xs(h.t0), top, xs(h.t0 + 15), bot], h.t0, h.t0 + 15);
         scrub.value(h.t1);
         gsvg.setAttribute('aria-label', 'Saturation curve: the most oxygen fresh water can hold against temperature (USGS). Upstream ' + h.t0 + ' °C, ' + F(h.d0) + ' mg/L; downstream ' + h.t1 + ' °C, ' + F(h.d1) + ' mg/L. Young trout need ' + TROUT + ' mg/L.');
@@ -1292,7 +1485,7 @@
           '<h3 class="ls-title-l">Share of the raw load still in the water</h3><div class="table-wrap" tabindex="0" role="region" aria-label="Sewage treatment by stage"><table class="ls-tbl"><thead><tr><th scope="col">After</th>' + W.SEWAGE.parts.map(function(p){ return '<th scope="col">' + esc(p.name) + '</th>'; }).join('') + '</tr></thead><tbody>' +
           W.SEWAGE.stages.map(function(s, i){ return '<tr' + (i === S.stage ? ' class="hl"' : '') + '><th scope="row">' + esc(s.name) + '</th>' + W.SEWAGE.parts.map(function(p){ return '<td class="r">' + (s.left[p.k] < 1 ? s.left[p.k] : Math.round(s.left[p.k])) + '%</td>'; }).join('') + '</tr>'; }).join('') + '</tbody></table></div>' + src;
       }
-      ref.innerHTML = h;
+      ref.innerHTML = '<p class="wp2-howref"><button type="button" class="tk2-how" data-how>Show me how</button> to use this chapter, step by step.</p>' + h;
       if(c === 'heat'){ var hs = ref.querySelector('.wp2-set-h'); if(hs) hs.parentNode.insertBefore(setBox, hs.nextSibling); }
       else if(setBox.parentNode) setBox.parentNode.removeChild(setBox);
     }
@@ -1313,14 +1506,15 @@
       if(window.ResizeObserver){ var tm = null, re = function(){ clearTimeout(tm); tm = setTimeout(layoutNow, 50); }; new ResizeObserver(re).observe(sceneBox); new ResizeObserver(re).observe(graphBox); }
       try{ new MutationObserver(function(){ layoutNow(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] }); }catch(e){}
       loop(true);
+      startTour(false);
     }
     syncCh(); words(); refHtml();
     return {
       studio: studio, quiz: quiz,
       shown: function(m){
         S.mode = m; player.stop();
-        if(m === 'explore'){ if(QZ) QZ.leave(); visible = true; syncCh(); }
-        else { visible = !!(QZ && QZ.scene()); if(QZ) QZ.enter(); }
+        if(m === 'explore'){ if(QZ) QZ.leave(); visible = true; syncCh(); if(LS) startTour(false); }
+        else { stopTours(); visible = !!(QZ && QZ.scene()); if(QZ) QZ.enter(); }
         loop(visible); if(visible) setTimeout(layoutNow, 30);
       }
     };

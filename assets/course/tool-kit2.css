@@ -334,3 +334,29 @@
   .ls-root.tk2.tk2-qs[data-mode="quiz"] .ls-dock{order:-1;}
   .ls-root.tk2.tk2-qs[data-mode="quiz"] .ls-enl{display:none;}
 }
+
+/* ---------------------------------------------------------------- "Show me how" (K.tour): a skippable first-visit tour
+   A small callout pointing at a real control, and a soft ring round it. No overlay: the page stays live under it. */
+.tk2-tour{position:fixed;z-index:60;width:min(280px,calc(100vw - 16px));padding:12px 14px 10px;border-radius:14px;background:var(--ink);color:var(--paper);
+  box-shadow:0 10px 30px rgba(11,26,51,.28);font-family:var(--font-ui);animation:tk2-tour-in .22s ease-out;}
+.tk2-tour-ar{position:absolute;width:14px;height:14px;background:var(--ink);transform:translateX(-50%) rotate(45deg);border-radius:2px;}
+.tk2-tour[data-side="below"] .tk2-tour-ar{top:-6px;}
+.tk2-tour[data-side="above"] .tk2-tour-ar{bottom:-6px;}
+.tk2-tour-n{margin:0 0 3px;font:800 12px/1.3 var(--font-ui);opacity:.75;}
+.tk2-tour-t{margin:0;font:700 15.5px/1.38 var(--font-ui);}
+.tk2-tour-b{display:flex;justify-content:flex-end;gap:6px;margin-top:8px;}
+.tk2-tour-b button{min-height:44px;padding:0 14px;border-radius:999px;border:0;font:800 14px var(--font-ui);cursor:pointer;}
+.tk2-tour-skip{background:transparent;color:var(--paper);text-decoration:underline;text-underline-offset:3px;}
+.tk2-tour-next{background:var(--paper);color:var(--ink);}
+.tk2-tour-b button[hidden]{display:none;}
+.tk2-tour-b button:focus-visible{outline:3px solid var(--paper);outline-offset:2px;}
+.tk2-tour-ring{position:fixed;z-index:59;pointer-events:none;border-radius:14px;border:3px solid var(--cink);box-shadow:0 0 0 4px color-mix(in srgb, var(--cink) 22%, transparent);
+  animation:tk2-tour-ring 1.6s ease-in-out infinite;}
+@keyframes tk2-tour-in{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:none;}}
+@keyframes tk2-tour-ring{0%,100%{box-shadow:0 0 0 3px color-mix(in srgb, var(--cink) 25%, transparent);}50%{box-shadow:0 0 0 9px color-mix(in srgb, var(--cink) 0%, transparent);}}
+@media (prefers-reduced-motion: reduce){ .tk2-tour,.tk2-tour-ring{animation:none;} }
+/* the small "Show me how" link next to a stage's purpose line */
+.tk2-how{display:inline-flex;align-items:center;gap:5px;min-height:36px;padding:0 4px;border:0;background:none;color:var(--cink);font:800 14px var(--font-ui);
+  text-decoration:underline;text-underline-offset:3px;cursor:pointer;white-space:nowrap;}
+.tk2-how:focus-visible{outline:3px solid var(--cink);outline-offset:2px;border-radius:6px;}
+@media (max-width:640px){ .tk2-tour{width:min(250px,calc(100vw - 16px));padding:10px 12px 8px;} .tk2-tour-t{font-size:14.5px;} .tk2-tour-b{margin-top:6px;} .tk2-tour-b button{min-height:44px;} }
