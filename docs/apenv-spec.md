@@ -317,6 +317,14 @@ emissions savings; LD50 read from a curve; biomagnification factors; TFR and rep
     the wind (Betz), not heat; the J-curve ends at the top edge with an arrow; the deer herd is drawn on its island;
     Test yourself figures fill the stage (`ApEnvTools.figSize`, `o.refit`). Pave land and the nitrogen amounts in
     Cycles now say they are an exaggerated case and a sketch (`docs/apenv-needs-author.md`).
+17. (2026-11-16, `docs/tools-v2-water-pollution-brief.md`, Build notes) **Tools v2 flagship: Water pollution.** Explore
+    rebuilt on the shared v2 kit (`assets/course/tool-kit2.js` and `.css`, opted in by `"kit2": true` in pages.json):
+    three named chapters on the stage (Fertilizer runoff, Hot water, Sewage), controls on the picture (sacks, lake
+    thermometer, outflow handle, tappable tanks), a named six step timeline and a scrubbable graph sharing the day,
+    and a side panel with only the goal, Predict, a live Readout and one Challenge at a time; "?" is a sheet over the
+    stage. New numbers, each cited in "?": 5 mg/L "Healthy" line (Chesapeake Bay Program), 9.5 mg/L for young trout
+    (EPA 1986 coldwater criteria), the sewage to lake mapping (a teaching scaling of W.SEWAGE). The model file and the
+    drills are unchanged. Not merged: waiting for the owner.
 
 ## 9. Open items for the owner
 

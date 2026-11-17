@@ -203,6 +203,9 @@ scripts/lib/apenv-tool-checks/<slug>.mjs              the validator for data/too
 scripts/test/apenv-tool-<slug>.test.mjs               its tests
 ```
 
+A tool with `"kit2": true` in pages.json also loads the shared v2 kit (`assets/course/tool-kit2.css` and `.js`, API in
+its header; `docs/tools-v2-water-pollution-brief.md`). Water pollution is the first.
+
 Slugs and topics: `calculation-studio` (math-percents), `energy-flow`, `cycles` (carbon-cycle),
 `population-growth`, `age-structure`, `soil-texture` (soil-properties), `earth-climate` (el-nino-la-nina),
 `energy-chain` (fossil-fuels), `air-pollution` (photochemical-smog), `water-pollution` (eutrophication),

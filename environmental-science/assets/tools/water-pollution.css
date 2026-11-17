@@ -149,3 +149,165 @@ body.ls-on .env-crumb{display:none;}
 :root[data-theme="dark"] .wp-swim{stroke:#C9D3D1;}
 .wp-try{stroke:var(--bad-text);stroke-width:2;stroke-dasharray:6 4;}
 .wp-try-t{fill:var(--bad-text);font:800 12.5px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:3px;}
+
+/* ====================================================================== Explore v2 (docs/tools-v2-water-pollution-brief.md)
+   The stage: chapter tabs, the scene (svg + the kit's control layer), the timeline bar (chapter 1) and the graph. */
+.wp2-stage{--wp-oxy:#0072B2;--wp-oxy-ink:#005A8C;--wp-alg:#009E73;--wp-alg-ink:#00704F;--wp-heat:#D55E00;--wp-heat-ink:#A84A00;--wp-bad:#A83B2C;--wp-dead:#8A5A2B;
+  display:flex;flex-direction:column;gap:10px;min-height:0;flex:1 1 auto;}
+:root[data-theme="dark"] .wp2-stage{--wp-oxy:#6CB8EC;--wp-oxy-ink:#8FCBF2;--wp-alg:#4FD1AA;--wp-alg-ink:#7BE0C1;--wp-heat:#FF9A5C;--wp-heat-ink:#FFB385;--wp-bad:#FF8E7E;--wp-dead:#C9A27A;}
+.wp2-scene{position:relative;flex:1 1 auto;min-height:280px;border-radius:18px;overflow:hidden;background:var(--surface2);}
+.wp2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+.wp2-bar{display:flex;align-items:center;gap:14px;flex:none;}
+.wp2-bar[hidden]{display:none;}
+.wp2-barl{display:flex;flex-direction:column;align-items:center;gap:2px;flex:none;}
+.wp2-day{margin:0;font:700 12.5px var(--font-ui);color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums;}
+.wp2-day b{font-weight:900;color:var(--ink);}
+.wp2-bar .tk2-tl{flex:1 1 auto;min-width:0;}
+.wp2-graph{position:relative;flex:0 0 clamp(178px,25vh,236px);border-radius:16px;background:var(--white);}
+.wp2-gsvg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+@media (max-width:999.98px){
+  .wp2-scene{flex:none;height:min(60vw,440px);min-height:300px;}
+  .wp2-stage[data-ch="sew"] .wp2-scene{height:min(70vw,500px);}
+  .wp2-graph{flex:none;height:210px;}
+}
+@media (max-width:640px){
+  .wp2-stage{gap:8px;}
+  .wp2-scene{height:max(300px,min(86vw,360px));border-radius:14px;}
+  .wp2-stage[data-ch="heat"] .wp2-scene{height:max(300px,min(84vw,350px));}
+  .wp2-stage[data-ch="sew"] .wp2-scene{height:max(440px,min(124vw,500px));}
+  .wp2-bar{flex-direction:column;align-items:stretch;gap:8px;}
+  .wp2-barl{flex-direction:row;justify-content:space-between;}
+  .wp2-graph{height:200px;}
+}
+.wp2-panel{display:flex;flex-direction:column;gap:12px;}
+.wp2-panel > [hidden]{display:none !important;}
+.wp2-set{margin:4px 0 8px;}
+.wp2-src{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:14px;line-height:1.45;}
+
+/* scene text: one size family; a halo keeps it readable over any part of the picture */
+.wp2-lab{font:800 13px var(--font-ui);fill:var(--ink);paint-order:stroke;stroke:var(--white);stroke-width:3.5px;stroke-linejoin:round;}
+.wp2-tk{font:700 11.5px var(--font-ui);fill:var(--muted);font-variant-numeric:tabular-nums;paint-order:stroke;stroke:var(--white);stroke-width:3px;stroke-linejoin:round;}
+.wp2-val{font:900 13px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:3.5px;stroke-linejoin:round;font-variant-numeric:tabular-nums;}
+.wp2-val.is-oxy{fill:var(--wp-oxy-ink);} .wp2-val.is-heat{fill:var(--wp-heat-ink);} .wp2-val.is-bad{fill:var(--wp-bad);}
+.wp2-call{font:900 15px var(--font-ui);fill:var(--ink);paint-order:stroke;stroke:var(--white);stroke-width:4px;stroke-linejoin:round;}
+.wp2-call.is-ph{font-size:13.5px;}
+.wp2-call.is-bad{fill:var(--wp-bad);font-size:18px;}
+.wp2-call.is-ph.is-bad{font-size:16px;}
+.wp2-chip rect{fill:var(--white);fill-opacity:.94;stroke:var(--line);stroke-width:1;}
+.wp2-chip-k{font:800 11.5px var(--font-ui);fill:var(--muted);}
+.wp2-chip-v{font:900 14.5px var(--font-ui);fill:var(--wp-oxy-ink);font-variant-numeric:tabular-nums;}
+.wp2-chip-v.is-bad{fill:var(--wp-bad);}
+/* field and lake */
+.wp2-crop path{fill:none;stroke:#5C8F35;stroke-width:2;stroke-linecap:round;}
+:root[data-theme="dark"] .wp2-crop path{stroke:#6E9F4A;}
+.wp2-sack path:first-child{fill:#EDE3CC;stroke:#9A8662;stroke-width:1.2;}
+.wp2-sack-b{fill:#E69F00;opacity:.85;}
+.wp2-sack-t{fill:none;stroke:#9A8662;stroke-width:1.4;stroke-linecap:round;}
+:root[data-theme="dark"] .wp2-sack path:first-child{fill:#CFC3A6;stroke:#6E6048;}
+.wp2-wbase{fill:#2C6C9C;}
+:root[data-theme="dark"] .wp2-wbase{fill:#163C5A;}
+.wp2-surf{fill:none;stroke:#fff;stroke-width:1.6;opacity:.7;}
+:root[data-theme="dark"] .wp2-surf{opacity:.35;}
+.wp2-weed{fill:none;stroke:#3F7F45;stroke-width:2.2;stroke-linecap:round;opacity:.8;}
+.wp2-deadl{fill:#7A5A32;opacity:.9;}
+:root[data-theme="dark"] .wp2-deadl{fill:#8E6C44;}
+.wp2-bac{fill:#B5509A;}
+:root[data-theme="dark"] .wp2-bac{fill:#E08CC8;}
+.wp2-thermo > rect:first-child,.wp2-thermo > circle:nth-child(2){fill:#fff;stroke:#7B8A90;stroke-width:1.4;}
+:root[data-theme="dark"] .wp2-thermo > rect:first-child,:root[data-theme="dark"] .wp2-thermo > circle:nth-child(2){fill:#DDE6EA;}
+.wp2-thermo-c{fill:#D55E00;}
+.wp2-thermo-c.is-warm{fill:#E8452C;}
+/* fish */
+.wp2-f0{stop-color:#4E6E74;} .wp2-f1{stop-color:#A9C2C4;} .wp2-f2{stop-color:#EEF3F1;}
+.wp2-t0{stop-color:#5D6B3A;} .wp2-t1{stop-color:#B9A97A;} .wp2-t2{stop-color:#F2EEDF;}
+.wp2-fb{stroke:#2E4448;stroke-width:.9;}
+.wp2-fin{fill:#6E8C90;stroke:#2E4448;stroke-width:.8;}
+.wp2-fish.is-trout .wp2-fin{fill:#8C8A5A;}
+.wp2-pec{fill:#C9D8D6;}
+.wp2-gill{fill:none;stroke:#2E4448;stroke-width:.8;opacity:.6;}
+.wp2-eye{fill:#fff;} .wp2-pupil{fill:#14201E;}
+.wp2-stripe{fill:none;stroke:#D98A8A;stroke-width:2.6;stroke-linecap:round;opacity:.85;}
+.wp2-spots circle{fill:#3E4426;}
+/* river and plant */
+.wp2-tower{fill:#C9CED0;stroke:#9AA3A6;stroke-width:1.2;}
+.wp2-bldg{fill:#AEB8BC;stroke:#7B8A90;stroke-width:1.2;}
+.wp2-roof{fill:#7B8A90;}
+.wp2-win{fill:#F3D27A;opacity:.85;}
+:root[data-theme="dark"] .wp2-tower{fill:#5A6468;stroke:#465054;} :root[data-theme="dark"] .wp2-bldg{fill:#4F5B60;stroke:#3C474B;}
+.wp2-steam{fill:#fff;}
+:root[data-theme="dark"] .wp2-steam{fill:#AFC0C8;}
+.wp2-pipe{fill:none;stroke:#7B8A90;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;}
+.wp2-pipe.is-warm{stroke:#B86A4A;}
+.wp2-pipe.is-sew{stroke:#8A7A66;}
+.wp2-pipe.is-off{stroke:#B9C0C2;opacity:.45;}
+.wp2-pipe.is-bypass{stroke:#A0623C;stroke-dasharray:10 5;stroke-linecap:butt;}
+.wp2-flowp{fill:none;stroke:#fff;stroke-width:2;stroke-dasharray:3 9;stroke-linecap:round;opacity:.75;}
+.wp2-flow{fill:none;stroke:#fff;stroke-width:1.4;stroke-linecap:round;opacity:.35;}
+.wp2-vscale{fill:#fff;stroke:#B86A4A;stroke-width:1.4;}
+:root[data-theme="dark"] .wp2-vscale{fill:#2A2420;}
+.wp2-tick{stroke:var(--muted);stroke-width:1.4;}
+.wp2-post{stroke:#7B8A90;stroke-width:3;}
+.wp2-gauge{fill:#fff;stroke:#7B8A90;stroke-width:1.4;}
+:root[data-theme="dark"] .wp2-gauge{fill:#DDE6EA;}
+.wp2-gauge-f{fill:#0072B2;}
+.wp2-gauge-f.is-low{fill:#D1594A;}
+.wp2-troutl{stroke:var(--ink);stroke-width:2;}
+/* plant tanks */
+.wp2-tank-in{fill:#E3EEF3;}
+:root[data-theme="dark"] .wp2-tank-in{fill:#1F3138;}
+.wp2-wall{fill:none;stroke:#7B8A90;stroke-width:5;stroke-linejoin:round;stroke-linecap:round;}
+.wp2-tank{transition:opacity .25s;}
+.wp2-tank.is-off{opacity:.28;filter:grayscale(1);}
+.wp2-uv{fill:#C3A3E0;}
+.wp2-house{fill:#E8DCC8;stroke:#9A8662;stroke-width:1;}
+.wp2-hroof{fill:#B5654A;}
+:root[data-theme="dark"] .wp2-house{fill:#8C8070;}
+.wp2-tname{font:900 13px var(--font-ui);fill:var(--ink);}
+.wp2-tname.is-ph{font-size:12px;}
+.wp2-tdoes{font:700 11.5px var(--font-ui);fill:var(--muted);}
+.wp2-tname.is-off,.wp2-tdoes.is-off{opacity:.55;}
+.wp2-bylab{fill:#A0623C;font-weight:800;}
+:root[data-theme="dark"] .wp2-bylab{fill:#E0A27A;}
+/* the graph */
+.wp2-g-grid{stroke:var(--line);stroke-width:1;}
+.wp2-g-axis{stroke:var(--ink);stroke-width:1.4;opacity:.7;}
+.wp2-g-tk{font:700 11.5px var(--font-ui);fill:var(--muted);font-variant-numeric:tabular-nums;}
+.wp2-g-ax{font:800 12.5px var(--font-ui);fill:var(--ink);}
+.wp2-g-ax.is-oxy{fill:var(--wp-oxy-ink);} .wp2-g-ax.is-alg{fill:var(--wp-alg-ink);}
+.wp2-g-hyp{fill:var(--wp-bad);fill-opacity:.1;}
+.wp2-g-hypt{font:800 11.5px var(--font-ui);fill:var(--wp-bad);paint-order:stroke;stroke:var(--white);stroke-width:3px;}
+.wp2-g-sat{stroke:var(--wp-oxy);stroke-width:1.3;stroke-dasharray:4 4;opacity:.8;}
+.wp2-g-satt{font:800 11.5px var(--font-ui);fill:var(--wp-oxy-ink);paint-order:stroke;stroke:var(--white);stroke-width:3px;}
+.wp2-g-alg{fill:var(--wp-alg);fill-opacity:.2;}
+.wp2-g-algl{fill:none;stroke:var(--wp-alg);stroke-width:1.6;}
+.wp2-g-do{fill:none;stroke:var(--wp-oxy);stroke-width:3.2;stroke-linejoin:round;stroke-linecap:round;}
+.wp2-g-dot{fill:var(--wp-oxy);stroke:var(--white);stroke-width:2.5;}
+.wp2-g-adot{fill:var(--wp-alg);stroke:var(--white);stroke-width:2;}
+.wp2-g-val{font:900 13px var(--font-ui);fill:var(--wp-oxy-ink);paint-order:stroke;stroke:var(--white);stroke-width:3.5px;font-variant-numeric:tabular-nums;}
+.wp2-g-val.is-bad{fill:var(--wp-bad);} .wp2-g-val.is-heat{fill:var(--wp-heat-ink);} .wp2-g-val.is-oxy{fill:var(--wp-oxy-ink);}
+.wp2-g-fog{fill:var(--surface2);opacity:.75;}
+.wp2-g-fogt{font:800 13px var(--font-ui);fill:var(--muted);}
+.wp2-g-osat{fill:none;stroke:var(--wp-oxy);stroke-width:3;stroke-linejoin:round;}
+.wp2-g-pt{fill:var(--wp-oxy);}
+.wp2-g-trout{stroke:#5D6B3A;stroke-width:1.6;stroke-dasharray:5 4;}
+:root[data-theme="dark"] .wp2-g-trout{stroke:#C9C08A;}
+.wp2-g-troutt{font:800 11.5px var(--font-ui);fill:var(--ink);paint-order:stroke;stroke:var(--white);stroke-width:3px;}
+.wp2-g-band{fill:var(--wp-heat);fill-opacity:.07;}
+.wp2-g-up{fill:var(--wp-oxy);stroke:var(--white);stroke-width:2.5;}
+.wp2-g-dn{fill:var(--wp-heat);stroke:var(--white);stroke-width:2.5;}
+.wp2-g-dn.is-bad{fill:var(--wp-bad);}
+.wp2-panel{fill:var(--white);fill-opacity:.95;stroke:var(--line);stroke-width:1.2;}
+.wp2-panel.is-low{stroke:var(--wp-bad);stroke-width:2;}
+.wp2-pk{font:900 12.5px var(--font-ui);fill:var(--muted);}
+.wp2-pv{font:900 15px var(--font-ui);font-variant-numeric:tabular-nums;}
+.wp2-pv.is-heat{fill:var(--wp-heat-ink);} .wp2-pv.is-oxy{fill:var(--wp-oxy-ink);} .wp2-pv.is-bad{fill:var(--wp-bad);}
+.wp2-tg{fill:#fff;stroke:#7B8A90;stroke-width:1.2;}
+.wp2-gbar{fill:var(--track);}
+.wp2-gbar-f{fill:var(--wp-oxy);}
+.wp2-gbar-f.is-low{fill:var(--wp-bad);}
+.wp2-probe{fill:#7B8A90;}
+.wp2-flowa{fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;opacity:.8;}
+.wp2-ref p{margin:0 0 10px;}
+.wp2-ref h3{margin:16px 0 8px;}
+.wp2-ref h3:first-child{margin-top:0;}
+.wp2-chain{margin:0 0 10px;padding-left:22px;display:flex;flex-direction:column;gap:4px;font-size:15px;line-height:1.45;}
