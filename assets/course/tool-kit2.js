@@ -47,9 +47,13 @@
                                     one challenge at a time with a check mark when met, then Next challenge.
    K.timeline({ label, steps: [{ name, tone }], onPick(i) }) -> { el, set({ reached: [], current, sub: [], off: [] }),
                                     flash(i, tone) }   named steps that light as the day reaches them; a tap jumps.
-   K.progress({ label, min, max, step, value, valuetext(v), onInput(v), onStart() }) -> { el, input, value(v?), name(t), marks([v]) }
+   K.progress({ label, min, max, step, value, valuetext(v), onInput(v), onStart(), lowLabel, onLow(v) })
+                -> { el, input, value(v?), name(t), marks([v]), low(v | null, ariaLabel) }
                                     the thin progress line under the scene (a real range: tap, drag, arrow keys) with
                                     only the current step's name above it and faint unlabeled ticks at the steps.
+                                    low(): ONE derived value shown as a mark (a notch on the bar and a small labeled
+                                    button under it; a tap calls onLow). A setting never moves the handle: it moves
+                                    the mark.
    K.scrub(host, { key, label, min, max, step, value, valuetext(v), onInput(v), onStart(), rect: [x0, y0, x1, y1], chip, knob })
                 -> { el, input, value(v?, fire), place(rect, min?, max?) }   the graph's cursor: drag anywhere on
                                     the plot (or the knob, or arrow keys) and the scene follows. The knob sits
@@ -485,6 +489,7 @@
     w.innerHTML = '<span class="tk2-prog-n" aria-hidden="true"></span><span class="tk2-prog-l"><span class="tk2-prog-t" aria-hidden="true"><i class="tk2-prog-f"></i></span>' +
       '<input class="tk2-prog-in" type="range" id="' + id + '" min="' + min + '" max="' + max + '" step="' + (o.step || 'any') + '" value="' + val + '" aria-label="' + esc(o.label || 'Progress') + '"></span>';
     var inp = w.querySelector('input'), fill = w.querySelector('.tk2-prog-f'), nm = w.querySelector('.tk2-prog-n'), track = w.querySelector('.tk2-prog-t');
+    var lowB = null, lowM = null, lowV = null;
     function paint(){ var f = clamp((val - min) / (max - min || 1), 0, 1); fill.style.width = (f * 100).toFixed(2) + '%'; w.style.setProperty('--tk2-f', f.toFixed(4)); inp.setAttribute('aria-valuetext', o.valuetext ? o.valuetext(val) : String(val)); }
     inp.addEventListener('pointerdown', function(){ if(o.onStart) o.onStart(); });
     inp.addEventListener('keydown', function(){ if(o.onStart) o.onStart(); });
@@ -493,7 +498,26 @@
     return { el: w, input: inp,
       value: function(v){ if(v === undefined) return val; val = clamp(v, min, max); inp.value = val; paint(); },
       name: function(t){ if(nm.textContent !== (t || '')) nm.textContent = t || ''; },
-      marks: function(list){ track.querySelectorAll('.tk2-prog-m').forEach(function(m){ m.remove(); }); (list || []).forEach(function(v){ var m = el('b', 'tk2-prog-m'); m.style.left = (clamp((v - min) / (max - min || 1), 0, 1) * 100).toFixed(2) + '%'; track.appendChild(m); }); } };
+      marks: function(list){ track.querySelectorAll('.tk2-prog-m').forEach(function(m){ m.remove(); }); (list || []).forEach(function(v){ var m = el('b', 'tk2-prog-m'); m.style.left = (clamp((v - min) / (max - min || 1), 0, 1) * 100).toFixed(2) + '%'; track.appendChild(m); }); },
+      /* low(v, ariaLabel): a derived value (say the day of a run's lowest point) as a mark, never by moving the handle:
+         a notch on the bar and, under it, a small real button with a tiny label (o.lowLabel); a tap calls o.onLow(v).
+         low(null) removes it. Both sit where the thumb's center is at v (the thumb stops half its width from each end). */
+      low: function(v, aria){
+        if(v == null){ if(lowB){ lowB.hidden = true; lowM.hidden = true; } lowV = null; w.classList.remove('has-low'); return; }
+        if(!lowB){
+          lowM = el('b', 'tk2-prog-lm'); lowM.setAttribute('aria-hidden', 'true'); track.parentNode.insertBefore(lowM, inp);
+          lowB = el('button', 'tk2-prog-low'); lowB.type = 'button';
+          lowB.innerHTML = '<i aria-hidden="true"></i><span aria-hidden="true">' + esc(o.lowLabel || 'lowest') + '</span>';
+          lowB.addEventListener('click', function(){ if(lowV != null && o.onLow) o.onLow(lowV); });
+          track.parentNode.appendChild(lowB);
+        }
+        if(v !== lowV || lowB.hidden){
+          lowV = v; lowB.hidden = false; lowM.hidden = false; w.classList.add('has-low');
+          var f = clamp((v - min) / (max - min || 1), 0, 1).toFixed(4);
+          lowB.style.setProperty('--tk2-lf', f); lowM.style.setProperty('--tk2-lf', f);
+        }
+        if(aria && lowB.getAttribute('aria-label') !== aria) lowB.setAttribute('aria-label', aria);
+      } };
   };
 
   /* ------------------------------------------------------------ Play / Pause */

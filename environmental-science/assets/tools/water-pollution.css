@@ -548,3 +548,9 @@ body.ls-on .env-crumb{display:none;}
 .wp2-pipe.is-bypass{stroke:#8A5A2B;}
 .wp2-bylab{fill:#6A4A22;}
 :root[data-theme="dark"] .wp2-bylab{fill:#E2C29A;}
+/* Owner round 4: controls never move each other. The lowest oxygen day is a mark (time bar and graph), in oxygen blue. */
+.wp2-bar{--tk2-low:var(--wp-oxy);--tk2-low-ink:var(--wp-oxy-ink);}
+.wp2-bar .tk2-prog.has-low ~ .tk2-play{margin-bottom:22px;}
+.wp2-chip-l{font:700 11px var(--font-ui);fill:var(--wp-oxy-ink);font-variant-numeric:tabular-nums;}
+.wp2-g-low{fill:var(--white);stroke:var(--wp-oxy);stroke-width:2;}
+.wp2-g-low.is-dz{stroke:var(--wp-bad);}

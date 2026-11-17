@@ -396,6 +396,21 @@
   box-shadow:0 0 0 3px var(--cink),0 2px 6px rgba(11,26,51,.35);}
 @media (pointer:coarse){ .tk2-prog.is-big .tk2-prog-l{height:44px;} .tk2-prog.is-big .tk2-prog-in::-webkit-slider-runnable-track{height:44px;}
   .tk2-prog.is-big .tk2-prog-in::-webkit-slider-thumb{margin-top:7px;width:30px;height:30px;} }
+/* A derived value on the bar (K.progress low()): a notch on the track and a small labeled button under it. It moves
+   when a setting changes; the handle never does. Quiet, but distinct from the faint step ticks. */
+.tk2-prog{--tk2-th:14px;}
+.tk2-prog.is-big{--tk2-th:30px;}
+.tk2-prog.has-low{padding-bottom:22px;}
+.tk2-prog-lm,.tk2-prog-low{position:absolute;left:calc(var(--tk2-th) / 2 + var(--tk2-lf, 0) * (100% - var(--tk2-th)));}
+.tk2-prog-lm{top:50%;width:4px;height:10px;margin:-5px 0 0 -2px;border-radius:2px;background:var(--tk2-low, var(--cink));box-shadow:0 0 0 1.5px var(--white);pointer-events:none;}
+.tk2-prog.is-big .tk2-prog-lm{height:18px;margin-top:-9px;}
+.tk2-prog-lm[hidden],.tk2-prog-low[hidden]{display:none;}
+.tk2-prog-low{top:calc(100% - 3px);transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:2px;min-width:44px;min-height:24px;margin:0;padding:0 4px;border:0;border-radius:6px;background:none;
+  font:800 11px/1 var(--font-ui);letter-spacing:.01em;color:var(--tk2-low-ink, var(--muted));cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.tk2-prog-low i{display:block;width:0;height:0;border:5px solid transparent;border-top-width:0;border-bottom:7px solid var(--tk2-low, var(--cink));}
+.tk2-prog-low:hover span{text-decoration:underline;}
+.tk2-prog-low:focus-visible{outline:3px solid var(--cink);outline-offset:1px;}
+@media (pointer:coarse){ .tk2-prog{--tk2-th:18px;} .tk2-prog.is-big{--tk2-th:30px;} .tk2-prog-low::after{content:"";position:absolute;inset:-4px -8px -8px;} }
 /* Play as the small secondary button beside the time bar. */
 .tk2-play.is-sm{min-height:44px;min-width:0;padding:0 14px 0 10px;background:var(--white);color:var(--cink);box-shadow:inset 0 0 0 2px var(--cink);font-size:14px;font-weight:800;}
 .tk2-play.is-sm .tk2-i{width:16px;height:16px;}

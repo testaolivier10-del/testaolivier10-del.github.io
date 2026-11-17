@@ -11,7 +11,7 @@
    button, one line under the picture and a simple graph (oxygen is the one axis; algae a faint shape).
    INSTANT RESPONSE (owner round 3, 2026-11-17, from the PhET interview studies, Red Blob Games and Bret Victor):
    changing a control changes the lake and the graph that instant, with no Play. While a control is dragged, and after
-   it is let go until the time bar is touched, the scene shows that run's worst day (the lowest oxygen; run.worst) and
+   it is let go until the time bar is touched, the scene shows the new setting ON THE DAY THE TIME BAR IS AT and
    the graph its whole curve; the setting before the change stays as a faint line ("before: 2 sacks") and the oxygen
    card says "was 6.3". The line under the picture is then the CAUSE LINE, the chain in a few words with one colour
    per idea ("4 sacks → big bloom → dead algae rot → oxygen 0.0 → dead zone 21 days"); a step's caption shows only
@@ -64,6 +64,12 @@
               organic matter (BOD) left goes in as an oxygen demand on day 0 (W.lake's third argument, W.BOD_D).
               A teaching mapping, not a measured one ("?" says so). */
   var HEALTHY = 5, TROUT = 9.5, SEW_T = 20, ALG_MAX = 160, Y_MAX = 12;
+  /* The day Explore opens on (owner round 4): partway through, where a change of setting shows. Chapter 1: the default
+     run's lowest oxygen (1 sack at 20 °C, day 17; at 20 °C every sack count is at or near its low there). Chapter 3:
+     day 16, the low with all four tanks, and well inside the dead zone when treatment stops earlier. */
+  var DAY0 = { fert: 17, sew: 16 };
+  /* The day of a run's lowest oxygen (the mark on the time bar and the graph); none when nothing feeds the algae. */
+  function lowDay(r){ return r.stages[0] == null ? null : r.minDay; }
   function SEW_LEVEL(i){ return 5 * W.SEWAGE.stages[i].left.nutrients / 100; }
   var SEW_RUNS = {};   // runs are cached: a drag never recomputes one it has already shown
   function sewRun(i){ return SEW_RUNS[i] || (SEW_RUNS[i] = prep(W.lake(SEW_LEVEL(i), SEW_T, W.SEWAGE.stages[i].left.bod))); }
@@ -124,11 +130,6 @@
     run.nA = nA; run.deaths = deaths; run.Dmax = Dmax;
     var fh = -1; for(var j = 0; j < run.O.length; j++) if(run.O[j] < W.HYPOXIC){ fh = j; break; }
     run.firstHyp = fh;
-    // the day the instant view shows: the lowest oxygen; on a floor of 0 mg/L, a few days into the dead zone (the
-    // oxygen is just as low there), so what the dead zone does to the fish is in the picture
-    var wd = run.stages[0] == null ? 0 : run.minDay;
-    if(fh > -1){ var w3 = Math.min(W.LAKE_DAYS, Math.max(wd, fh + 3)); if(run.O[w3] - run.min < 0.05) wd = w3; }
-    run.worst = wd;
     return run;
   }
   /* The step a run is in on a day, with recovery: once the low is past and the water is back above 2 mg/L, the
@@ -231,7 +232,7 @@
 
   /* ================================================================ Explore (free play) and the questions on it */
   function explore(host, data, getModes){
-    var S = { ch: 'fert', sacks: 1, tLake: 20, inst: true, day: 0, seen: 0, up: 10, warm: 0, stage: 4, sday: 0, sseen: 0, clock: 0, mode: 'explore', q: null, blank: false };
+    var S = { ch: 'fert', sacks: 1, tLake: 20, inst: true, day: DAY0.fert, seen: W.LAKE_DAYS, up: 10, warm: 0, stage: 4, sday: DAY0.sew, sseen: W.LAKE_DAYS, clock: 0, mode: 'explore', q: null, blank: false };
     try{ var q0 = new URLSearchParams(location.search).get('ch'); if(q0 === 'heat' || q0 === 'sew') S.ch = q0; }catch(e){}
     var RUNS = {};
     function lakeRun(n, t){ var k = n + '|' + t; return RUNS[k] || (RUNS[k] = prep(W.lake(n, t))); }
@@ -269,7 +270,9 @@
     player.el.classList.add('is-sm');
     var prog = K.progress({ big: true, label: 'Day, 0 to 60', min: 0, max: W.LAKE_DAYS, step: 1, value: 0,
       valuetext: function(v){ return dayText(v); }, onStart: function(){ player.stop(); },
-      onInput: function(v){ if(S.ch === 'sew') setSday(v, 'prog'); else setDay(v, 'prog'); } });
+      onInput: function(v){ if(S.ch === 'sew') setSday(v, 'prog'); else setDay(v, 'prog'); },
+      // the mark for the lowest oxygen day: a tap takes the handle there (the only way the mark moves the handle)
+      lowLabel: 'lowest', onLow: function(v){ player.stop(); if(S.ch === 'sew') setSday(v, 'tap'); else setDay(v, 'tap'); } });
     bar.appendChild(prog.el); bar.appendChild(player.el);
     stage.appendChild(bar);
     // under the picture: the cause line (instant view) or the step's caption (time view), and one optional teaser
@@ -347,16 +350,19 @@
     [sceneBox, bar].forEach(function(n){ ['pointerdown', 'input', 'click'].forEach(function(ev){ n.addEventListener(ev, function(){ if(S.mode === 'explore') hideCue(true); }, true); }); });
 
     /* ---- instant view (owner round 3). While a control is dragged, and after it is let go until the time bar is
-       touched, the lake shows that run's worst day (the lowest oxygen) and the graph its whole curve: change a thing,
-       see what it does, no Play needed. The setting before the change stays as a faint line ("before: 2 sacks"). */
+       touched, the lake shows the new setting and the graph its whole curve: change a thing, see what it does, no
+       Play needed. The setting before the change stays as a faint line ("before: 2 sacks").
+       CONTROLS NEVER MOVE EACH OTHER (owner round 4): a change of setting never moves the day. The lake shows the new
+       setting on the day the time bar is at; where the lowest oxygen falls is a MARK on the bar and the graph, which
+       shifts with the setting while the handle stays put. Only the student (time bar, graph, the mark's button) and
+       Watch it happen move the day. */
     function expl(){ return S.mode === 'explore' && !inQuiz(); }
     function instOn(){ return expl() && S.inst && S.ch !== 'heat'; }
-    function worstDay(r){ return r.worst; }
-    function pin(){
+    // into the instant view: the whole run counts as seen; the day is left where it is
+    function instView(){
       if(!instOn()) return;
-      var d = worstDay(rNow());
-      if(S.ch === 'sew'){ S.sday = d; S.sseen = W.LAKE_DAYS; } else { S.day = d; S.seen = W.LAKE_DAYS; }
-      prog.value(d); scrub.value(d); player.paint();
+      if(S.ch === 'sew') S.sseen = W.LAKE_DAYS; else S.seen = W.LAKE_DAYS;
+      player.paint();
     }
     var prev = null, gest = null;
     function snap(){
@@ -438,9 +444,9 @@
     /* ------------------------------------------------------- state changes */
     function newRun(){
       run = lakeRun(S.sacks, S.tLake);
-      // Explore jumps to the instant view (the run's worst day, its whole curve); a question starts its run from day 0
+      // Explore goes to the instant view (this run on the same day, its whole curve); a question starts its run from day 0
       if(inQuiz()){ S.seen = 0; S.day = 0; player.reset(); prog.value(0); }
-      else if(S.mode === 'explore'){ S.inst = true; player.reset(); pin(); }
+      else if(S.mode === 'explore'){ S.inst = true; player.reset(); instView(); }
       if(S.ch === 'fert') prog.marks(run.stages.filter(function(d){ return d != null; }));
       dirtyG = true; words(); if(!gest) refHtml(); if(QZ) QZ.changed('run'); draw();   // mid drag the "?" sheet waits for gEnd
       // Explore says the cause line once, when the drag ends (gEnd), not at every step of it
@@ -476,7 +482,7 @@
     function setStage(i){
       S.stage = i;
       sew = sewRun(i); player.stop(); player.reset();
-      if(expl()){ S.inst = true; pin(); } else { S.sday = 0; S.sseen = 0; prog.value(0); }
+      if(expl()){ S.inst = true; instView(); } else { S.sday = 0; S.sseen = 0; prog.value(0); }
       if(S.ch === 'sew') prog.marks(sew.stages.filter(function(d){ return d != null; }));
       cTanks.forEach(function(t, k){ t.pressed(k === i); });
       dirtyG = true; words(); refHtml(); if(QZ) QZ.changed('stage'); if(!expl()) say(sewLine()); if(!looping) draw();
@@ -489,7 +495,7 @@
     }
     function setCh(v){
       if(v === S.ch) return;
-      player.stop(); player.reset(); S.ch = v; stopTours(); prev = null; gest = null; S.inst = true; pin(); layoutNow(); syncCh(); showCue();
+      player.stop(); player.reset(); S.ch = v; stopTours(); prev = null; gest = null; S.inst = true; instView(); layoutNow(); syncCh(); showCue();
       say({ fert: 'Chapter 1, fertilizer runoff. ', heat: 'Chapter 2, hot water. ', sew: 'Chapter 3, sewage. ' }[v] + causeText());
     }
     function syncCh(){
@@ -539,8 +545,18 @@
       if(c === 'sew') return r.hypoxicDays > 0 ? (S.stage === 2 ? TAKE.sec : TAKE.sewBad) : TAKE.sewOk;
       return r.hypoxicDays > 0 ? TAKE.fert : r.min < HEALTHY ? TAKE.fertMid : TAKE.fertLow;
     }
+    // the step a day is in, by name (the time bar's name line)
+    function stepName(c, r, d){
+      if(r.stages[0] == null || d < 0.01) return '';
+      var ph = phase(r, d);
+      return ph.rec ? 'Recovery' : ph.cur < 0 ? '' : (c === 'sew' ? SEW_STEPS : STEP_NAMES)[ph.cur];
+    }
+    // Explore: "Day 17: Oxygen drops"; "lowest oxygen" only when the handle is on that day
+    function barName(d, nm){ var ld = lowDay(rNow()); return 'Day ' + Math.round(d) + (ld != null && Math.round(d) === ld ? ': lowest oxygen' : nm ? ': ' + nm : ''); }
     function words(){
       var c = S.ch, nm = '', line = '', take = false, d0 = c === 'sew' ? S.sday : S.day;
+      var ld = expl() && c !== 'heat' ? lowDay(rNow()) : null;
+      prog.low(ld, ld == null ? '' : 'Go to the lowest oxygen day, day ' + ld);
       // Explore, instant view (and chapter 2, which has no time): the cause line for this setting
       var cz = expl() && (c === 'heat' || instOn());
       cap.classList.toggle('is-cause', cz);
@@ -549,7 +565,7 @@
         if(words.last !== hz){ words.last = hz; cap.innerHTML = hz; }
         cap.classList.remove('is-take', 'is-bad', 'is-empty'); words.took = false;
         var rz = rNow();
-        prog.name(c === 'heat' ? '' : 'Day ' + Math.round(d0) + (rz.stages[0] == null ? '' : ': lowest oxygen'));
+        prog.name(c === 'heat' ? '' : barName(d0, stepName(c, rz, d0)));
         if(c !== 'heat') prog.input.setAttribute('aria-valuetext', dayText(d0));
         return;
       }
@@ -566,7 +582,7 @@
       }
       // putting the steps in order (Test yourself): nothing on the stage names them
       if(S.blank){ nm = ''; line = ''; take = false; }
-      prog.name(expl() && c !== 'heat' ? 'Day ' + Math.round(d0) + (nm ? ': ' + nm : '') : nm);
+      prog.name(expl() && c !== 'heat' ? barName(d0, nm) : nm);
       if(words.last !== line){ words.last = line; cap.textContent = line; }
       cap.classList.toggle('is-take', take);
       cap.classList.toggle('is-bad', !take && !S.blank && c !== 'heat' && phase(rNow(), c === 'sew' ? S.sday : S.day).o < W.HYPOXIC);
@@ -897,8 +913,8 @@
       if(!G) return;
       var t = S.clock;
       gDyn.innerHTML = S.ch === 'fert' ? dynFert(G, t) : S.ch === 'heat' ? dynHeat(G, t) : dynSew(G, t);
-      var al = S.ch === 'fert' ? 'A farm field above a lake. ' + (instOn() ? causeText() : dayLine() + (S.blank ? '' : ' ' + STEP_LONG[Math.max(0, W.stageAt(run, S.day))]))
-        : S.ch === 'heat' ? 'A power plant on a trout river, upstream on the left, downstream on the right. ' + heatLine() : 'A town, a sewage plant and the lake below. ' + sewLine() + (instOn() ? ' ' + causeText() : '');
+      var al = S.ch === 'fert' ? 'A farm field above a lake. ' + (instOn() ? dayLine() + ' ' + causeText() : dayLine() + (S.blank ? '' : ' ' + STEP_LONG[Math.max(0, W.stageAt(run, S.day))]))
+        : S.ch === 'heat' ? 'A power plant on a trout river, upstream on the left, downstream on the right. ' + heatLine() : 'A town, a sewage plant and the lake below. ' + sewLine() + (instOn() ? ' ' + sewDayLine() + ' ' + causeText() : '');
       if(draw.al !== al){ draw.al = al; svg.setAttribute('aria-label', al); }
       if(dirtyG){ dirtyG = false; graph(); }
     }
@@ -1267,8 +1283,10 @@
       // the bottom water's oxygen, on the lake (anchored to the bed), with what fish need
       var ph = phase(run, d), o = ph.o, st = status(o), L = g.L, w = L.x1 - L.x0, cx2 = L.x0 + w * (g.ph ? 0.6 : 0.56);
       var bx = L.x0 + w * (g.ph ? 0.12 : 0.16), byB = bedY(L, bx + 30);
-      var was = iv && pv && pv.run && fO(pv.run.min) !== fO(o) ? 'was ' + fO(pv.run.min) : '';
-      out.push(chip(bx, byB - (g.ph ? 56 : 64) - (was ? 7 : 0), 'Oxygen', fO(o) + ' mg/L', st.tone, g.ph, [bx + 30, byB - 10], st.status, 'fish need 5+', was));
+      // the card shows the day the time bar is at (it matches the picture); the instant view adds the run's lowest
+      var lowL = iv && lowDay(run) != null ? 'lowest: ' + fO(run.min) + ' on day ' + run.minDay : '';
+      var was = iv && pv && pv.run && fO(pv.run.min) !== fO(run.min) ? 'was ' + fO(pv.run.min) : '';
+      out.push(chip(bx, byB - (g.ph ? 56 : 64) - (was ? 7 : 0) - (lowL ? 7 : 0), 'Oxygen', fO(o) + ' mg/L', st.tone, g.ph, [bx + 30, byB - 10], st.status, 'fish need 5+', was, lowL));
       // small names on the things themselves, only while they are there: runoff, algae, dead algae, bacteria
       if(lab && iv){
         // instant view: the worst day, with the few names that carry the chain
@@ -1313,10 +1331,10 @@
         '<text x="' + n1(x0 + w / 2) + '" y="' + n1(y + h * 0.17) + '" text-anchor="middle">' + esc(text) + '</text></g>';
     }
     /* A value card in the scene (the readout's number, the same value); lead: [x, y] a short line to what it measures. */
-    function chip(x, y, k, v, tone, ph, lead, stw, hint, was){
+    function chip(x, y, k, v, tone, ph, lead, stw, hint, was, low){
       // the status word sits right after the value; a third, small line says what fish need
-      var vw = v.length * (ph ? 8.6 : 9.6), sw = stw ? stw.length * (ph ? 6.9 : 7.2) : 0, kw = k.length * (ph ? 7.6 : 8.2), hw = hint ? hint.length * (ph ? 6 : 6.3) : 0;
-      var w = Math.round(Math.max(ph ? 96 : 112, 18 + vw + (stw ? 8 + sw : 0), 18 + kw, 18 + hw)), h = (ph ? 40 : 46) + (hint ? (ph ? 14 : 15) : 0) + (was ? 15 : 0), y0 = y - h / 2, out = '<g class="wp2-chip">';
+      var vw = v.length * (ph ? 8.6 : 9.6), sw = stw ? stw.length * (ph ? 6.9 : 7.2) : 0, kw = k.length * (ph ? 7.6 : 8.2), hw = Math.max(hint ? hint.length * (ph ? 6 : 6.3) : 0, low ? low.length * (ph ? 5.6 : 5.9) : 0);
+      var w = Math.round(Math.max(ph ? 96 : 112, 18 + vw + (stw ? 8 + sw : 0), 18 + kw, 18 + hw)), h = (ph ? 40 : 46) + (hint ? (ph ? 14 : 15) : 0) + (low ? 15 : 0) + (was ? 15 : 0), y0 = y - h / 2, out = '<g class="wp2-chip">';
       if(lead) out += '<path class="wp2-lead" d="M' + n1(x + w * 0.5) + ' ' + n1(y + h / 2) + ' L' + n1(lead[0]) + ' ' + n1(lead[1]) + '"/><circle class="wp2-lead-d" cx="' + n1(lead[0]) + '" cy="' + n1(lead[1]) + '" r="2.6"/>';
       var vy = y0 + (ph ? 33 : 38);
       return out + '<rect x="' + n1(x) + '" y="' + n1(y0) + '" width="' + w + '" height="' + h + '" rx="9"/>' +
@@ -1324,7 +1342,8 @@
         '<text class="wp2-chip-v' + (tone === 'bad' ? ' is-bad' : '') + '" x="' + n1(x + 9) + '" y="' + n1(vy) + '">' + esc(v) + '</text>' +
         (stw ? '<text class="wp2-chip-s is-' + tone + '" x="' + n1(x + 9 + vw + 8) + '" y="' + n1(vy) + '">' + esc(stw) + '</text>' : '') +
         (hint ? '<text class="wp2-chip-h" x="' + n1(x + 9) + '" y="' + n1(vy + (ph ? 14 : 15)) + '">' + esc(hint) + '</text>' : '') +
-        (was ? '<text class="wp2-chip-w" x="' + n1(x + 9) + '" y="' + n1(vy + (ph ? 14 : 15) + (hint ? 15 : 0)) + '">' + esc(was) + '</text>' : '') + '</g>';
+        (low ? '<text class="wp2-chip-l" x="' + n1(x + 9) + '" y="' + n1(vy + (ph ? 14 : 15) + (hint ? 15 : 0)) + '">' + esc(low) + '</text>' : '') +
+        (was ? '<text class="wp2-chip-w" x="' + n1(x + 9) + '" y="' + n1(vy + (ph ? 14 : 15) + (hint ? 15 : 0) + (low ? 15 : 0)) + '">' + esc(was) + '</text>' : '') + '</g>';
     }
     function callout(x, y, text, tone, anchor, ph){
       var bad = tone === 'bad';
@@ -1528,8 +1547,9 @@
       var lk = lakeDyn(L, sew, S.sday, t, P0, 'wpLk3', 's3', 3);
       out.push(lk.svg);
       var ph = phase(sew, S.sday), o = ph.o, st = status(o), cxL = L.x0 + (L.x1 - L.x0) * (g.ph ? 0.32 : 0.24), byL = bedY(L, cxL + 30);
-      var pv = prevOn(), was = instOn() && pv && pv.run && fO(pv.run.min) !== fO(o) ? 'was ' + fO(pv.run.min) : '';
-      out.push(chip(cxL, byL - (g.ph ? 56 : 62) - (was ? 7 : 0), 'Oxygen', fO(o) + ' mg/L', st.tone, g.ph, [cxL + 30, byL - 8], st.status, 'fish need 5+', was));
+      var pv = prevOn(), lowL = instOn() && lowDay(sew) != null ? 'lowest: ' + fO(sew.min) + ' on day ' + sew.minDay : '';
+      var was = instOn() && pv && pv.run && fO(pv.run.min) !== fO(sew.min) ? 'was ' + fO(pv.run.min) : '';
+      out.push(chip(cxL, byL - (g.ph ? 56 : 62) - (was ? 7 : 0) - (lowL ? 7 : 0), 'Oxygen', fO(o) + ' mg/L', st.tone, g.ph, [cxL + 30, byL - 8], st.status, 'fish need 5+', was, lowL));
       if(S.sday > 0 && ph.cur === 5 && o < W.HYPOXIC) out.push(callout(L.x0 + (L.x1 - L.x0) * (g.ph ? 0.5 : 0.66), L.surf + (L.bed - L.surf) * (g.ph ? 0.14 : 0.24), 'Dead zone', 'bad', 'middle', true));
       return out.join('');
     }
@@ -1594,6 +1614,9 @@
         var hypY = y(2);
         out.push(tx(R - 4, hypY - 5, ex ? 'dead zone' : '2 mg/L: dead zone', 'wp2-g-hypt', 'end'));
         out.push(ln(L, bot, R, bot, 'wp2-g-axis') + ln(L, top, L, bot, 'wp2-g-axis'));
+        // Explore: a small ring where this setting's oxygen is lowest (the same mark as on the time bar)
+        var gl = ex ? lowDay(r) : null;
+        if(gl != null) out.push('<circle class="wp2-g-low' + (r.min < W.HYPOXIC ? ' is-dz' : '') + '" cx="' + n1(x(gl)) + '" cy="' + n1(y(r.min)) + '" r="4.5"/>');
         out.push('<circle class="wp2-g-dot' + (ex && at(r.O, cd) < W.HYPOXIC ? ' is-dz' : '') + '" cx="' + n1(x(cd)) + '" cy="' + n1(y(at(r.O, cd))) + '" r="' + (ex ? 6 : 5) + '"/>');
         out.push(tx(L, 16, ex ? 'Oxygen (mg/L)' : (S.ch === 'sew' ? 'Oxygen at the bottom of the lake below, day by day' : 'Oxygen at the bottom of the lake, day by day'), 'wp2-g-ax is-oxy'));
         scrub.place([L, top, R, bot], 0, W.LAKE_DAYS); scrub.value(Math.round(cur));
@@ -1697,7 +1720,7 @@
         S.mode = m; player.stop();
         player.labels(m === 'explore' ? { play: 'Watch it happen', again: 'Watch again' } : { play: 'Play', again: 'Replay' });
         player.el.classList.toggle('is-sm', m === 'explore');
-        if(m === 'explore'){ if(QZ) QZ.leave(); visible = true; prev = null; gest = null; S.inst = true; run = lakeRun(S.sacks, S.tLake); pin(); syncCh(); if(LS) startTour(false); }
+        if(m === 'explore'){ if(QZ) QZ.leave(); visible = true; prev = null; gest = null; S.inst = true; S.day = DAY0.fert; S.sday = DAY0.sew; run = lakeRun(S.sacks, S.tLake); instView(); syncCh(); if(LS) startTour(false); }
         else { stopTours(); hideCue(false); tease.hidden = true; visible = !!(QZ && QZ.scene()); if(QZ) QZ.enter(); }
         loop(visible); if(visible) setTimeout(layoutNow, 30);
       }

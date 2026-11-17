@@ -608,3 +608,50 @@ yourself).
   bloom itself is seen on the graph's green shape and by dragging the time bar, not in the instant picture.
 - Tab color is the course color (dark olive in light mode); a brighter accent would need a new token.
 - A real screen reader pass (VoiceOver, TalkBack) and a real phone were not possible here.
+
+## Owner round 4: controls never move each other (2026-11-17)
+Owner: "Some of the sliders adjust other sliders?" In round 3 a change of fertilizer, lake temperature or tank made
+the time bar jump to that run's worst day. A control that moves by itself is confusing. This replaces that part of
+round 3 rule 1 ("the picture shows that run's result (here its worst day)") and the round 3 open point about it.
+
+### The rule for every tool
+**One control never moves another.** A handle moves only when the student moves it (or presses a button whose
+job is to play it). A value that depends on another control is shown as a **mark** (a notch, a dot, a small label),
+never by moving a handle. The mark may be a button that takes the handle there when tapped.
+
+### What changed here
+- **The day stays put.** Only the time bar, a drag on the graph, the "lowest" mark's button and Watch it happen move
+  the day (`setDay`, `setSday`). `pin()` and `run.worst` are gone; `instView()` only switches to the cause line and
+  the whole curve. After a scrub, a pause or the end of a run, the next change of setting keeps the day and shows the
+  whole curve with the faint "before" curve.
+- **Explore opens partway through** (`DAY0`): chapter 1 on day 17 (the default run's lowest oxygen; at 20 °C every
+  sack count is at or near its low there), chapter 3 on day 16 (the low with all 4 tanks, inside the dead zone when
+  treatment stops earlier). Each chapter keeps its own day; coming back from Test yourself resets both.
+- **The lake shows the new setting on the handle's day**, redrawn while dragging (runs are cached as before).
+- **The "lowest" mark** (`K.progress` `low(v, ariaLabel)`, `lowLabel`, `onLow`; `lowDay(run)` = `run.minDay`): a blue
+  notch on the bar and a small triangle with "lowest" under it, at the thumb's true position for that day; a ring on
+  the graph's curve at the same day. It shifts as the setting changes. It is a real button ("Go to the lowest oxygen
+  day, day N"); a tap moves the handle there. No mark at 0 sacks (nothing to find), in chapter 2 or in Test yourself.
+- **Name line**: the handle's day and step ("Day 17: Oxygen drops"); "Day 16: lowest oxygen" only on that day.
+- **Oxygen card**: the oxygen on the handle's day (it matches the picture). In the instant view a small blue line
+  "lowest: 0.0 on day 9", and "was 6.3" still compares the lowest values. The cause line still describes the whole run.
+- **Watch it happen**: from day 0 after a change of setting (from the handle's day after a scrub or a pause, as
+  before); the handle stays where it stops. Chapter 2 and Test yourself are unchanged.
+- One more tab stop outside the picture in chapters 1 and 3 (the mark's button), and one more word ("lowest").
+
+### Checks run (this round)
+Playwright (Chromium, same setup) at 390x844, 768x1024 and 1440x900, light and dark, 319 assertions passing: the time
+input's value does not change while the sacks or the thermometer are dragged by mouse (checked mid drag), by keyboard,
+or when a tank is tapped or pressed with Enter; the mark and the graph's ring move and the graph's cursor does not;
+the scene and the card change mid drag; scrub (keys, mouse, graph drag) then a change keeps the day and draws the
+whole curve; the mark's button moves the handle onto the mark (within 2 px); Watch it happen from day 0, pause keeps
+the day, the end stays on day 60, a change after either keeps the day; chapter 2 has no bar; Test yourself (no mark,
+first question, the run plays); back to Explore on day 17; no horizontal scroll; no console errors; axe-core on the
+stage, no serious or critical issue. `node --test scripts/test/apenv-*.test.mjs` (186 pass), `check-apenv-content
+--check`, `build-apenv --check`, `check-site`, `check-weight --check`. Shots: all of 01 to 09, 11, 13 to 17, 20, 21
+redone; new 02 "middrag", 22 (handle on the mark) and 23 (day 6, then 3 sacks).
+
+### Open points
+- With the handle far from the low (say day 60) the lake can look healthy while the cause line says "dead zone 21
+  days". The card's "lowest" line and the mark carry it; the owner may want the picture to hint at it too.
+- The instant view still keeps the runoff stream running on any day (round 3), so it also runs on day 40.
