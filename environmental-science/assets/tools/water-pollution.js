@@ -300,15 +300,15 @@
         { id: 'watch', text: 'Watch the lake below: its oxygen is here and on the graph.', target: inSvg('.wp2-chip rect') }]
     };
     var tours = {};
-    ['fert', 'heat', 'sew'].forEach(function(c){ tours[c] = K.tour({ key: 'apenv-wp-' + c, label: 'Show me how', steps: TOURS[c], onClose: function(had){ if(had) try{ howB.focus({ preventScroll: true }); }catch(e){} } }); });
+    ['fert', 'heat', 'sew'].forEach(function(c){ tours[c] = K.tour({ key: 'apenv-wp-' + c, label: 'Show me how', steps: TOURS[c], onClose: function(had){ draw(); if(had) try{ howB.focus({ preventScroll: true }); }catch(e){} } }); });
     function tourDid(id){ var t = tours[S.ch]; if(t && t.active()) t.did(id); }
     function stopTours(){ Object.keys(tours).forEach(function(c){ tours[c].stop(); }); }
     function startTour(force){
       if(S.mode !== 'explore' || inQuiz()) return;
       stopTours();
-      if(force){ tours[S.ch].start(true); return; }
+      if(force){ tours[S.ch].start(true); draw(); return; }
       clearTimeout(startTour.tm);
-      startTour.tm = setTimeout(function(){ if(S.mode === 'explore' && !inQuiz() && !(LS && LS.root && LS.root.classList.contains('is-sheet'))) tours[S.ch].start(false); }, 700);
+      startTour.tm = setTimeout(function(){ if(S.mode === 'explore' && !inQuiz() && !(LS && LS.root && LS.root.classList.contains('is-sheet'))) { tours[S.ch].start(false); draw(); } }, 700);
     }
 
     /* ---- "?": the reference for the chapter, and the setting */
@@ -1126,7 +1126,8 @@
           : '<text class="wp2-lab" x="' + n1(tlx) + '" y="' + n1(tly) + '" text-anchor="end">Lake temperature: <tspan class="is-how">drag</tspan></text><text class="wp2-lab is-val" x="' + n1(tlx) + '" y="' + n1(tly + 17) + '" text-anchor="end">' + S.tLake + ' °C</text>');
       }
       // the fertilizer's label: what it is and how to use it (in the soil under the field, clear of the sacks)
-      if(!inQuiz()){
+      // hidden while the tour is open: its first pointer says the same thing and would sit on top of it
+      if(!inQuiz() && !(typeof tours !== 'undefined' && tours.fert && tours.fert.active())){
         var flx = g.sx0 - 2, fly = g.pile ? g.plat + 66 : g.plat + 40;
         out.push(g.pile ? '<text class="wp2-lab" x="' + n1(flx) + '" y="' + n1(fly) + '">Fertilizer:</text><text class="wp2-lab is-how" x="' + n1(flx) + '" y="' + n1(fly + 16) + '">drag to add more</text>'
           : '<text class="wp2-lab" x="' + n1(flx) + '" y="' + n1(fly) + '">Fertilizer: <tspan class="is-how">drag to add more</tspan></text>');
@@ -1139,8 +1140,9 @@
       if(lab && S.sacks > 0 && d > 0){
         var cur = ph.cur;
         if(ro > 0.3) out.push(tag(s[4] + 10, s[5] - 16, 'runoff', 'start', 'nut'));
-        if(!ph.rec && cur <= 2 && lk.matPt && !lk.brown) out.push(tag(lk.matPt[0], lk.matPt[1] - 10, 'algae', 'middle', 'alg'));
-        if(lk.brown && lk.sinkPt && cur <= 3) out.push(tag(lk.sinkPt[0] + 10, lk.sinkPt[1] + 4, 'dead algae sink', 'start', 'dead'));
+        if(!ph.rec && cur <= 2 && lk.matPt && !lk.brown) out.push(tag(g.ph ? L.x0 + w * 0.66 : lk.matPt[0], lk.matPt[1] - 10, 'algae', 'middle', 'alg'));
+        // fixed spot (it used to follow one sinking clump and jumped as clumps changed)
+        if(lk.brown && cur <= 3) out.push(tag(L.x0 + w * (g.ph ? 0.6 : 0.5), g.ph ? L.mid - 4 : L.mid + (L.bed - L.mid) * 0.42, 'dead algae sink \u2193', 'middle', 'dead'));
         else if(lk.deadPt && !ph.rec && cur >= 3 && cur <= 4) out.push(tag(lk.deadPt[0], lk.deadPt[1] - 8, 'dead algae', 'middle', 'dead'));
         if((cur === 3 || cur === 4) && lk.bac && !ph.rec){
           var lx = cx2, ly = L.mid + (L.bed - L.mid) * 0.18;
