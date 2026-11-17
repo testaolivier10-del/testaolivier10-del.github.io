@@ -79,6 +79,15 @@
                                     student does a step's action, so the tour moves on. Once per device on its own
                                     (localStorage 'tk2t:' + key); start(true) re-opens it (a "Show me how" link,
                                     class tk2-how, beside the purpose line, and one at the top of "?").
+   K.cue(layer, { key, text, at() -> [x, y] (picture units), side })  -> { show(), hide(used), place(), active() }
+                                    The ONE first-visit cue (owner round 3, every tool): a short message at the first
+                                    control that names it ("Drag the fertilizer"). It sits still, never blocks, and
+                                    hide(true) (the first interaction anywhere on the stage) removes it for good on
+                                    this device (localStorage 'tk2c:' + key). It replaces the automatic tour; K.tour
+                                    opens only from its "Show me how" link and from "?".
+   tabs: big (large, filled, the first thing to notice after the picture). progress: big (a bar thick enough to grab,
+                                    a 28 px thumb). player: labels({ play, again }) renames it per mode; class is-sm
+                                    is the small secondary look ("Watch it happen" beside the time bar).
    K.reduced()                      motion off (site toggle or the OS setting).
    K.used(key) / K.markUsed(key)    the first-time hint store (localStorage 'tk2h:' + key). A control with a key pulses
                                     until first used; chip: false keeps the pulse but drops the "Drag" / "Tap" chip
@@ -118,7 +127,7 @@
 
   /* ------------------------------------------------------------ chapter tabs */
   K.tabs = function(o){
-    var box = el('div', 'tk2-tabs'), cur = o.value;
+    var box = el('div', 'tk2-tabs' + (o.big ? ' is-big' : '')), cur = o.value;
     box.setAttribute('role', 'tablist'); box.setAttribute('aria-label', o.label || 'Chapters'); box.setAttribute('data-ls-allchips', '');
     o.items.forEach(function(it, i){
       var b = el('button', 'tk2-tab', '<span class="tk2-tab-n" aria-hidden="true">' + (i + 1) + '</span><span class="tk2-tab-t">' + esc(it.label) + '</span>' +
@@ -472,7 +481,7 @@
      One thin line under the scene: a real range input (tap or drag anywhere on it, or arrow keys), the part played
      filled in, faint unlabeled ticks at the steps (marks), and ONLY the current step's name above it. */
   K.progress = function(o){
-    var id = nid('pg'), w = el('div', 'tk2-prog'), val = o.value, min = o.min, max = o.max;
+    var id = nid('pg'), w = el('div', 'tk2-prog' + (o.big ? ' is-big' : '')), val = o.value, min = o.min, max = o.max;
     w.innerHTML = '<span class="tk2-prog-n" aria-hidden="true"></span><span class="tk2-prog-l"><span class="tk2-prog-t" aria-hidden="true"><i class="tk2-prog-f"></i></span>' +
       '<input class="tk2-prog-in" type="range" id="' + id + '" min="' + min + '" max="' + max + '" step="' + (o.step || 'any') + '" value="' + val + '" aria-label="' + esc(o.label || 'Progress') + '"></span>';
     var inp = w.querySelector('input'), fill = w.querySelector('.tk2-prog-f'), nm = w.querySelector('.tk2-prog-n'), track = w.querySelector('.tk2-prog-t');
@@ -529,6 +538,7 @@
     paint();
     return { el: b, toggle: function(){ if(on) stop(); else start(); }, stop: stop, start: start, playing: function(){ return on; }, paint: paint,
       rate: function(x){ if(x === undefined) return rate; rate = x; }, reset: function(){ held = null; holdLeft = 0; },
+      labels: function(x){ Object.assign(L, x || {}); paint(); },
       holding: function(){ return on && holdLeft > 0 ? held : null; } };
   };
 
@@ -660,6 +670,34 @@
     return { start: start, stop: function(){ stop(); }, active: function(){ return cur >= 0; }, place: later,
       // the student did a step's action: move on after a beat (so the result can be seen first)
       did: function(id){ if(cur < 0) return; var k = -1; o.steps.forEach(function(s, i){ if(s.id === id && i >= cur) k = k < 0 ? i : k; }); if(k < 0) return; clearTimeout(timer); timer = setTimeout(function(){ go(k + 1, false); }, 900); } };
+  };
+
+  /* ------------------------------------------------------------ the one first-visit cue */
+  K.cue = function(layer, o){
+    var b = null, on = false;
+    function seen(){ try{ return !!localStorage.getItem('tk2c:' + o.key); }catch(e){ return false; } }
+    function place(){
+      if(!b) return;
+      var p = o.at(), k = layer.scale();
+      b.style.left = (p[0] * k) + 'px'; b.style.top = (p[1] * k) + 'px';
+      // keep the bubble inside the picture: slide it along its arrow when it would stick out
+      b.style.setProperty('--tk2-cue-dx', '0px');
+      var r = b.getBoundingClientRect(), h = layer.el.getBoundingClientRect(), dx = r.left < h.left + 4 ? h.left + 4 - r.left : r.right > h.right - 4 ? h.right - 4 - r.right : 0;
+      b.style.setProperty('--tk2-cue-dx', dx.toFixed(1) + 'px');
+    }
+    function show(){
+      if(on || seen()) return false;
+      b = el('div', 'tk2-cue is-' + (o.side || 'below'), '<span class="tk2-cue-ar"></span>' + icon('hand') + '<span>' + esc(o.text) + '</span>');
+      b.setAttribute('aria-hidden', 'true');
+      layer.el.appendChild(b); on = true; place();
+      return true;
+    }
+    function hide(usedIt){
+      if(usedIt && on) try{ localStorage.setItem('tk2c:' + o.key, '1'); }catch(e){}
+      if(b){ b.remove(); b = null; }
+      on = false;
+    }
+    return { show: show, hide: hide, place: place, active: function(){ return on; } };
   };
 
   /* ------------------------------------------------------------ "?" as a real dialog (K.on) */

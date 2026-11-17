@@ -487,3 +487,124 @@ link, the sacks by arrow keys, Play), reduced motion; no horizontal scroll; no c
 blocked outside requests of the page itself). `node --test scripts/test/apenv-*.test.mjs` (186 pass),
 `check-apenv-content --check`, `build-apenv --check`, `check-site`, `check-weight --check`. Preview: `wp-v2/index.html`;
 shots in `wp-v2/shots/` (01 to 17 Explore, 20 to 21 Test yourself, at 1440, 768 and 390, light and dark).
+
+## Owner round 3: instant response (research) (2026-11-17)
+The owner approved these changes ("build it"). They come from the PhET interview studies (students grab the picture
+first and rarely find Play; they read only 1 to 3 word labels attached to a control and miss small grey tabs; they
+learn by changing a thing and seeing the result, not by watching; one "wiggle me" cue works better than a tour; color
+beats labels; every visual detail is read as meaningful; extremes should respond), Red Blob Games (a slider the
+learner controls beats a played animation; compare) and Bret Victor (immediate response; compare). Explore stays free
+play with no side panel; Test yourself is unchanged (it keeps the played run).
+
+### The rules for every tool
+1. **Instant response.** Changing a control changes the picture and the graph that instant, with no Play. While a
+   control is dragged, and after it is let go until the time bar is touched, the picture shows that run's result (here
+   its worst day) and the graph the whole curve. Time is a bar to drag, big enough to grab, with the current step's
+   name; Play is a small secondary button beside it ("Watch it happen"). Runs are cached, so a drag never recomputes.
+2. **Compare.** The setting before the change stays as a faint line with a tiny label ("before: 2 sacks"), and the
+   value card says "was 6.3" while the value differs. Cleared on a chapter change.
+3. **A cause line.** Under the picture, the chain for this setting in a few words with arrows, live as you drag, from
+   the real model numbers. It replaces the caption in the instant view; a step's caption shows only while the time
+   bar is dragged or the run plays; the end takeaway stays.
+4. **Labels of 1 to 3 words, attached to the control**, on a pill in the idea's color. No "drag to..." text: the
+   handle look and the cue carry it. The purpose line is about 8 words.
+5. **One cue, not a tour.** A first visit shows one still message at the first control that names it ("Drag the
+   fertilizer"). It leaves at the first interaction on the stage, once per chapter per device (`K.cue`, localStorage
+   `tk2c:`). "Show me how" (the three pointers) opens only from its link and from "?".
+6. **Tabs big, filled and colored**: the first thing to notice after the picture; compact on a phone (`K.tabs` big).
+7. **One color per idea, everywhere** (scene, card, graph, labels, cause line). Here: oxygen blue, algae green, dead
+   matter and bacteria brown, fertilizer and nutrients amber, heat vermillion, red for the dead zone only. Status
+   words and "too little for trout" are plain ink.
+8. **No decoration a student could misread.** The background is a calm location cue only.
+9. **Extremes respond.** The largest setting must look like a disaster, the smallest clean and calm.
+10. **One optional, ungraded teaser per chapter**, one small line beside the cause line, reachable in the model, with
+    a quiet check mark when met. No lock, no score, a cross hides it; the next follows at the next change; at most 3.
+Limits on an Explore landing: no side panel; about 30 words outside the picture (see the count below); controls
+outside the picture: tabs, time bar, Play, Show me how (and the teaser's cross).
+
+### What changed
+- **Instant view** (`water-pollution.js`: `instOn`, `pin`, `run.worst`): Explore opens in it (1 sack, a calm lake).
+  Dragging the sacks or the lake thermometer, or tapping a tank, shows that run's worst day at once: the lowest
+  oxygen (on a floor of 0 mg/L, three days into the dead zone, where it is just as low, so the dead fish show). The
+  runoff stream keeps running in this view, so what the sacks do stays in the picture. Touching the time bar, the
+  graph or Watch it happen switches to the time view (rain, bloom, die off, day by day); the next change of a control
+  returns to the instant view. `lakeRun` and `sewRun` cache every run (a sweep of 6 settings is 5 model runs, then 0).
+- **Time bar** (`K.progress` big): a 12 px bar with a 30 px thumb, "Day 16: lowest oxygen" or "Day 6: Algae bloom"
+  above it. **Watch it happen** (`K.player`, class `is-sm`, `labels()`): small and outlined, right of the bar (above
+  its right end on a phone); it plays from day 0. Test yourself still shows "Play".
+- **Compare**: `prev` (the setting when the change began; a drag is one change, a key press is one change). The graph
+  draws its curve faint and dashed with "before: 1 sack", "before: 20 °C", "before: secondary" or (chapter 2) a faint
+  ring with "before: +10 °C"; the oxygen card and the downstream station add "was 6.3".
+- **Cause line** (`cause`, `causeHtml`, `causeText`): chapter 1 "4 sacks → big bloom → dead algae rot → oxygen 0.0 →
+  dead zone 21 days" (with "+ 30 °C lake" when the lake is not at 20 °C; "fish stressed" or "fish healthy" with no
+  dead zone); chapter 2 "+10 °C → river holds 9.1 mg/L → too little for trout"; chapter 3 "Stops after secondary →
+  nutrients left → big bloom → dead algae rot → oxygen 0.0 → dead zone 21 days", "No treatment → sewage rots → ...",
+  "All 4 tanks → nutrients removed → small bloom → oxygen 6.5 → fish healthy". Bloom words by the peak: none, small,
+  bloom, big, huge. The live region says it once when a drag ends (not at every step of the drag).
+- **Labels**: "Fertilizer", "Lake temperature" (its value under it), "Hot water", the tank names; the card is
+  "Oxygen", value, status word, "fish need 5+", "was ...". "Tap a tank to stop treatment there" is gone.
+- **Purpose lines**: "How farm fertilizer kills a lake's fish", "How heat alone drives trout from a river", "Which
+  sewage treatment step saves the lake below".
+- **Cue** (`K.cue`): "Drag the fertilizer", "Drag the hot water", "Tap a tank". The tour no longer opens by itself.
+- **Tabs** (`K.tabs` big): filled course color when selected, a 2.5 px colored outline otherwise, 50 px (46 on a phone).
+- **Color audit**: oxygen bubbles are blue (bigger, fewer as oxygen falls, none in a dead zone) and so are the
+  aeration bubbles in the secondary tank; bacteria are brown (were pink); the runoff is blue water carrying amber
+  fertilizer (was muddy brown); the sack's green band is amber; status words are ink (Healthy was green, Stressed
+  amber); chapter 2's low oxygen bar, value and "too little" are blue and ink (were red), the trout line ink (was
+  olive), the bypass pipe brown (was red brown); windows are grey (were amber); the stack's bands grey (were red).
+  The graph: the part of the curve below 2 mg/L and a bar along its days are red.
+- **Removed or quieted**: the sun, its glare, the moon and stars, light rays in the water, surface glints, steam from
+  the cooling tower (white puffs read as pollution), fainter clouds, flow ripples and roots.
+- **Extremes**: 5 sacks at 30 °C: a thick browning mat, a dead layer up to 26 px, three dead fish on the bed, dark
+  water, no bubbles, 28 days in red on the graph. 0 sacks: no stream, no algae, 20 bubbles, fish spread out. +15 °C:
+  the plume, "trout left" in the empty water downstream. Raw sewage: the lake below is a dead zone for 39 days.
+- **Teasers** (`TZ`; progress in localStorage `wp2tz:<chapter>`), each checked against the model:
+  chapter 1 "Can you keep the fish alive with 4 sacks?" (no dead zone at 14 °C or cooler), "Can just 2 sacks make a
+  dead zone?" (from 25 °C up), "Make a dead zone that lasts 4 weeks." (5 sacks from 21 °C up); chapter 2 "Find the
+  warmest outflow the trout can take." (+8 °C with the river at 10 °C; skipped when the upstream setting makes it
+  impossible), "Make the river hold a fifth less oxygen." (+11 °C or more); chapter 3 "Find the fewest tanks that keep
+  the fish alive." (tertiary), "Make a dead zone in the first 10 days." (raw or primary).
+- **Fixed on the way**: the graph was letterboxed when its box was under 200 px tall (desktop), so the day cursor sat
+  about 15 px left of the curve's dot; the knob at 0 sacks was cut by the picture's edge; the time bar's step ticks
+  did not follow a new run; the chapter 3 lake is wider.
+- Kit (`assets/course/tool-kit2.js`, `.css`): `K.cue`; `K.tabs` big; `K.progress` big; `K.player` `labels()` and
+  the `is-sm` look. All opt in; no other tool uses the kit yet.
+
+### Landing counts (Playwright, Explore, each chapter; outside the picture; the frame bar is not counted)
+| Landing | Words | Tab stops outside the picture |
+| --- | --- | --- |
+| 1 Fertilizer runoff (1440, 768) | 43 | 5: tabs, Show me how, time bar, Watch it happen, the teaser's cross |
+| 1 Fertilizer runoff (390) | 42 | same |
+| 2 Hot water (1440, 768) | 40 | 3: tabs, Show me how, the teaser's cross |
+| 2 Hot water (390) | 39 | same |
+| 3 Sewage (1440, 768) | 45 | 5 |
+| 3 Sewage (390) | 44 | same |
+
+**Over the limit of about 30, and why.** Chapter 1's words: the tabs (5), the purpose line (7), "Show me how" (3),
+"Day: lowest oxygen" (3), "Watch it happen" (3), the cause line (9), the teaser (8), and on the graph "Oxygen (mg/L)",
+"dead zone", "days" (5). The pieces the owner asked for by name (tabs, purpose, cause line, teaser, Show me how,
+Watch it happen) are 35 of them. To get near 30 the owner would have to drop one: the teaser (8) is the easiest.
+
+### Checks run (this round)
+Playwright (Chromium; `assets/premium.js` routed to `has(course) { return true; ...`, service workers blocked, a local
+`http.server`) at 390x844, 768x1024 and 1440x900, light and dark, 110 screenshots, every assertion passing: each
+chapter's landing with its cue; the scene and the graph change while the sacks or the hot water handle are held mid
+drag and at once on a tank tap; the cause line, the faint "before" line and "was" during the drag; the live region
+says the cause line when the drag ends; 5 sacks at 30 °C (red bar, 3 dead fish, no bubbles) and 0 sacks (no red, 12 or
+more bubbles); every teaser met and the next one shown, the cross hides them; the time bar by mouse and by arrow
+keys (step captions); Watch it happen from day 0, the takeaway at day 60; a sack change by keyboard (valuetext, live
+region); Show me how on request, Esc; after a reload no cue and no tour; chapter 2 at +10 and +15 °C; chapter 3
+secondary, raw (day 4 by the time bar) and tertiary; Test yourself (first question, answer, the run plays, "Play"),
+back to Explore in the instant view; reduced motion (the instant view, then each press is the next step); no
+horizontal scroll; no console errors. axe-core on the stage: no serious or critical issue (3 chapters, 390 and 1440,
+light and dark). Drag cost: a scene write is about 2.5 ms (worst 19 ms), a graph write 0.3 ms; frames while dragging
+ran at about 20 ms against 17 ms idle in headless Chromium. `node --test scripts/test/apenv-*.test.mjs` (186 pass),
+`check-apenv-content --check`, `build-apenv --check`, `check-site`, `check-weight --check`. Preview:
+`wp-v2/index.html`; shots in `wp-v2/shots/` (01 to 09 chapter 1, 10 to 12 chapter 2, 13 to 17 chapter 3, 20 to 21 Test
+yourself).
+
+### Open points
+- The word count (above). The instant view shows the worst day, when the bloom has mostly died back: the green
+  bloom itself is seen on the graph's green shape and by dragging the time bar, not in the instant picture.
+- Tab color is the course color (dark olive in light mode); a brighter accent would need a new token.
+- A real screen reader pass (VoiceOver, TalkBack) and a real phone were not possible here.

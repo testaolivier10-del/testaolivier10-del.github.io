@@ -360,3 +360,58 @@
   text-decoration:underline;text-underline-offset:3px;cursor:pointer;white-space:nowrap;}
 .tk2-how:focus-visible{outline:3px solid var(--cink);outline-offset:2px;border-radius:6px;}
 @media (max-width:640px){ .tk2-tour{width:min(250px,calc(100vw - 16px));padding:10px 12px 8px;} .tk2-tour-t{font-size:14.5px;} .tk2-tour-b{margin-top:6px;} .tk2-tour-b button{min-height:44px;} }
+
+/* ---------------------------------------------------------------- owner round 3: instant response (research) */
+/* Big chapter tabs (K.tabs big): filled, coloured, the first thing to notice after the picture; compact on a phone. */
+.tk2-tabs.is-big{gap:8px;padding:0;background:none;border-radius:0;overflow:visible;flex-wrap:nowrap;}
+.tk2-tabs.is-big .tk2-tab{min-height:50px;padding:0 20px 0 14px;font-size:17px;font-weight:900;color:var(--cink);background:var(--white);
+  box-shadow:inset 0 0 0 2.5px var(--cink);transition:transform .12s ease;}
+.tk2-tabs.is-big .tk2-tab:hover{background:var(--ctint);color:var(--cink);transform:translateY(-1px);}
+.tk2-tabs.is-big .tk2-tab-n{width:26px;height:26px;font-size:14px;background:var(--cink);color:var(--white);}
+.tk2-tabs.is-big .tk2-tab[aria-selected="true"]{background:var(--cink);color:var(--white);box-shadow:0 6px 14px rgba(20,40,35,.22);}
+.tk2-tabs.is-big .tk2-tab[aria-selected="true"] .tk2-tab-n{background:var(--white);color:var(--cink);}
+:root[data-theme="dark"] .tk2-tabs.is-big .tk2-tab{background:transparent;}
+:root[data-theme="dark"] .tk2-tabs.is-big .tk2-tab-n{color:#111D31;}
+:root[data-theme="dark"] .tk2-tabs.is-big .tk2-tab[aria-selected="true"]{background:var(--cink);color:#111D31;}
+:root[data-theme="dark"] .tk2-tabs.is-big .tk2-tab[aria-selected="true"] .tk2-tab-n{background:#111D31;color:var(--cink);}
+@media (max-width:640px){
+  .tk2-tabs.is-big{gap:5px;}
+  .tk2-tabs.is-big .tk2-tab{min-height:46px;padding:0 6px;font-size:14.5px;gap:5px;}
+  .tk2-tabs.is-big .tk2-tab-n{width:21px;height:21px;font-size:12px;}
+}
+@media (prefers-reduced-motion: reduce){ .tk2-tabs.is-big .tk2-tab{transition:none;} }
+/* The time bar (K.progress big): thick enough to grab, a 28 px thumb with a grip, the day and step name above it. */
+.tk2-prog.is-big .tk2-prog-n{min-height:20px;font-size:14.5px;}
+.tk2-prog.is-big .tk2-prog-l{height:36px;}
+.tk2-prog.is-big .tk2-prog-t{height:12px;margin-top:-6px;border-radius:8px;box-shadow:inset 0 0 0 1.5px color-mix(in srgb, var(--cink) 30%, transparent);}
+.tk2-prog.is-big .tk2-prog-f{border-radius:8px;}
+.tk2-prog.is-big .tk2-prog-m{width:3px;height:12px;margin:-6px 0 0 -1.5px;border-radius:2px;background:color-mix(in srgb, var(--cink) 40%, transparent);}
+.tk2-prog.is-big .tk2-prog-in{cursor:grab;}
+.tk2-prog.is-big .tk2-prog-in:active{cursor:grabbing;}
+.tk2-prog.is-big .tk2-prog-in::-webkit-slider-runnable-track{height:36px;}
+.tk2-prog.is-big .tk2-prog-in::-moz-range-track{height:36px;}
+.tk2-prog.is-big .tk2-prog-in::-webkit-slider-thumb{width:30px;height:30px;margin-top:3px;background:var(--white) radial-gradient(circle,var(--cink) 0 4px,transparent 5px);
+  box-shadow:0 0 0 3px var(--cink),0 2px 6px rgba(11,26,51,.35);}
+.tk2-prog.is-big .tk2-prog-in::-moz-range-thumb{width:30px;height:30px;background:var(--white) radial-gradient(circle,var(--cink) 0 4px,transparent 5px);
+  box-shadow:0 0 0 3px var(--cink),0 2px 6px rgba(11,26,51,.35);}
+@media (pointer:coarse){ .tk2-prog.is-big .tk2-prog-l{height:44px;} .tk2-prog.is-big .tk2-prog-in::-webkit-slider-runnable-track{height:44px;}
+  .tk2-prog.is-big .tk2-prog-in::-webkit-slider-thumb{margin-top:7px;width:30px;height:30px;} }
+/* Play as the small secondary button beside the time bar. */
+.tk2-play.is-sm{min-height:44px;min-width:0;padding:0 14px 0 10px;background:var(--white);color:var(--cink);box-shadow:inset 0 0 0 2px var(--cink);font-size:14px;font-weight:800;}
+.tk2-play.is-sm .tk2-i{width:16px;height:16px;}
+.tk2-play.is-sm.is-on{background:var(--ctint);}
+:root[data-theme="dark"] .tk2-play.is-sm,:root[data-theme="dark"] .tk2-play.is-sm:not(.is-on){background:transparent;color:var(--cink);}
+/* The one cue (K.cue): a still message at the first control. */
+.tk2-cue{position:absolute;z-index:4;display:inline-flex;align-items:center;gap:7px;padding:9px 14px 9px 11px;border-radius:14px;background:var(--ink);color:var(--paper);
+  font:900 15.5px/1.2 var(--font-ui);white-space:nowrap;pointer-events:none;box-shadow:0 8px 22px rgba(11,26,51,.3);}
+.tk2-cue .tk2-i{width:19px;height:19px;flex:none;}
+.tk2-cue-ar{position:absolute;width:14px;height:14px;background:var(--ink);border-radius:2px;}
+.tk2-cue.is-below{transform:translate(calc(-50% + var(--tk2-cue-dx,0px)),30px);}
+.tk2-cue.is-below .tk2-cue-ar{top:-6px;left:calc(50% - var(--tk2-cue-dx,0px));transform:translateX(-50%) rotate(45deg);}
+.tk2-cue.is-above{transform:translate(calc(-50% + var(--tk2-cue-dx,0px)),calc(-100% - 30px));}
+.tk2-cue.is-above .tk2-cue-ar{bottom:-6px;left:calc(50% - var(--tk2-cue-dx,0px));transform:translateX(-50%) rotate(45deg);}
+.tk2-cue.is-right{transform:translate(30px,-50%);}
+.tk2-cue.is-right .tk2-cue-ar{left:-6px;top:50%;transform:translateY(-50%) rotate(45deg);}
+.tk2-cue.is-left{transform:translate(calc(-100% - 30px),-50%);}
+.tk2-cue.is-left .tk2-cue-ar{right:-6px;top:50%;transform:translateY(-50%) rotate(45deg);}
+@media (max-width:640px){ .tk2-cue{font-size:14.5px;padding:8px 12px 8px 9px;} }

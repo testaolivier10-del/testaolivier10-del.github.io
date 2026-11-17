@@ -447,3 +447,104 @@ body.ls-on .env-crumb{display:none;}
 :root[data-theme="dark"] .wp2-call.is-bad rect{fill:#B8473A;}
 .wp2-cap{padding:8px 12px;border-radius:12px;}
 @media (max-width:640px){ .wp2-cap{padding:6px 10px;min-height:calc(1.4em + 12px);} }
+
+/* ---- owner round 3: instant response (docs/tools-v2-water-pollution-brief.md). One colour per idea, everywhere:
+   oxygen blue, algae green, dead matter and bacteria brown, fertilizer and nutrients amber, heat vermillion, and
+   red for the dead zone only. Status words and "too little for trout" are plain ink. */
+.wp2-stage{--wp-nut:#E69F00;--wp-nut-ink:#8A5A00;--wp-dead-ink:#6A4A22;}
+:root[data-theme="dark"] .wp2-stage{--wp-nut:#F3C04F;--wp-nut-ink:#F6CF75;--wp-dead-ink:#E2C29A;}
+.wp2-head{margin:0;}
+.wp2-purpose{font-size:17px;}
+.wp2-bar{align-items:flex-end;gap:12px;}
+.ls-root[data-mode="quiz"] .wp2-bar .tk2-play{order:-1;}
+.wp2-lines{display:flex;align-items:center;justify-content:space-between;gap:6px 18px;flex-wrap:wrap;flex:none;}
+.wp2-lines .wp2-cap{flex:1 1 380px;}
+.wp2-cap.is-cause{display:flex;flex-wrap:wrap;align-items:center;gap:6px 6px;padding:4px 0;min-height:0;font-size:16px;font-weight:900;}
+.wp2-cz{display:inline-block;padding:4px 11px;border-radius:999px;white-space:nowrap;border:2px solid currentColor;background:var(--white);font-variant-numeric:tabular-nums;}
+.wp2-cz.is-nut{color:var(--wp-nut-ink);background:color-mix(in srgb, var(--wp-nut) 20%, var(--white));}
+.wp2-cz.is-alg{color:var(--wp-alg-ink);background:color-mix(in srgb, var(--wp-alg) 16%, var(--white));}
+.wp2-cz.is-dead{color:var(--wp-dead-ink);background:color-mix(in srgb, var(--wp-dead) 18%, var(--white));}
+.wp2-cz.is-oxy{color:var(--wp-oxy-ink);background:color-mix(in srgb, var(--wp-oxy) 13%, var(--white));}
+.wp2-cz.is-heat{color:var(--wp-heat-ink);background:color-mix(in srgb, var(--wp-heat) 14%, var(--white));}
+.wp2-cz.is-bad{color:#fff;background:var(--wp-bad);border-color:var(--wp-bad);}
+:root[data-theme="dark"] .wp2-cz.is-bad{color:#1B0F0C;}
+.wp2-cz.is-ink{color:var(--ink);border-color:color-mix(in srgb, var(--ink) 35%, transparent);}
+.wp2-cz-a{color:var(--muted);font-weight:900;font-size:17px;}
+/* the teaser: one small optional line; a quiet check mark when met; a cross hides them */
+.wp2-tz{display:inline-flex;align-items:center;gap:6px;margin:0;flex:0 1 auto;font:700 14px/1.3 var(--font-ui);color:var(--muted);}
+.wp2-tz[hidden]{display:none;}
+.wp2-tz-t::before{content:"";display:inline-block;width:8px;height:8px;margin-right:7px;border-radius:50%;box-shadow:0 0 0 2px var(--cink);vertical-align:1px;}
+.wp2-tz.is-done .wp2-tz-t{color:var(--ink);}
+.wp2-tz-ok{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--cink);color:var(--white);}
+.wp2-tz-ok[hidden]{display:none;}
+.wp2-tz-ok .tk2-i{width:13px;height:13px;stroke-width:3.4;}
+:root[data-theme="dark"] .wp2-tz-ok{color:#111D31;}
+.wp2-tz-x{width:28px;height:28px;margin:-2px -6px -2px 0;border:0;border-radius:50%;background:none;color:var(--muted);font:700 18px/1 var(--font-ui);cursor:pointer;}
+.wp2-tz-x:hover{background:var(--track);color:var(--ink);}
+.wp2-tz-x:focus-visible{outline:3px solid var(--cink);outline-offset:1px;}
+@media (pointer:coarse){ .wp2-tz-x{width:40px;height:40px;margin:-8px -10px -8px 0;} }
+@media (max-width:640px){
+  .wp2-cap.is-cause{font-size:14px;gap:4px 4px;}
+  .wp2-cz{padding:3px 8px;border-width:1.5px;}
+  .wp2-cz-a{font-size:14px;}
+  .wp2-tz{font-size:13.5px;}
+  .wp2-purpose{font-size:15.5px;}
+}
+/* labels attached to a control: 1 to 3 words, in the idea's colour */
+.wp2-lab.is-ctl{font-size:14.5px;font-weight:900;}
+.wp2-lab.is-nut{fill:var(--wp-nut-ink);} .wp2-lab.is-heat{fill:var(--wp-heat-ink);}
+/* the oxygen card */
+.wp2-chip rect{stroke:var(--wp-oxy);stroke-width:2;fill-opacity:.96;}
+.wp2-chip-k{font:900 13px var(--font-ui);fill:var(--wp-oxy-ink);}
+.wp2-chip-v{font-size:16px;}
+.wp2-chip-s.is-good,.wp2-chip-s.is-warn,:root[data-theme="dark"] .wp2-chip-s.is-good,:root[data-theme="dark"] .wp2-chip-s.is-warn{fill:var(--ink);}
+.wp2-chip-w{font:700 11.5px var(--font-ui);fill:var(--muted);font-style:italic;font-variant-numeric:tabular-nums;}
+/* oxygen is blue: bubbles in the bottom water */
+.wp2-bub{fill:#8FD0FF;fill-opacity:.55;stroke:#D8EEFF;stroke-width:1.5;}
+.wp2-bub-s{fill:#fff;opacity:.9;}
+.wp2-name.is-oxy text{fill:var(--wp-oxy-ink);}
+/* dead matter and the bacteria that eat it are brown */
+.wp2-bac{fill:#E3BE8E;stroke:#4A3014;stroke-width:1;}
+:root[data-theme="dark"] .wp2-bac{fill:#E9CDA6;stroke:#2E1E0C;}
+.wp2-call.is-dead text{fill:var(--wp-dead-ink);}
+.wp2-call.is-dead rect{stroke:var(--wp-dead);stroke-width:1.6;}
+/* amber is fertilizer only: no amber windows; no green or red on things that are not algae or a dead zone */
+.wp2-win{fill:#DCE6EC;opacity:.9;}
+:root[data-theme="dark"] .wp2-win{fill:#9DB0BC;}
+.wp2-sack-g{fill:#B97A00;}
+.wp2-stackb{fill:#8C979B;}
+.wp2-flow{opacity:.2;}
+.wp2-panel.is-low{stroke:var(--ink);stroke-width:2;}
+.wp2-gbar-f.is-low{fill:var(--wp-oxy);}
+.wp2-pv.is-bad{fill:var(--wp-oxy-ink);}
+.wp2-pk2.is-bad{fill:var(--ink);font-weight:900;}
+.wp2-g-dn.is-bad{fill:var(--wp-heat);}
+.wp2-g-trout{stroke:var(--ink);opacity:.6;}
+:root[data-theme="dark"] .wp2-g-trout{stroke:var(--ink);}
+.wp2-cap.is-bad{color:var(--ink);}
+:root[data-theme="dark"] .wp2-cap.is-bad{color:var(--ink);}
+/* the graph: the dead zone in red, the setting before as a faint line */
+.wp2-g-do.is-dz{stroke:var(--wp-bad);stroke-width:4;}
+.wp2-g-dot.is-dz{fill:var(--wp-bad);}
+.wp2-g-dzbar{fill:var(--wp-bad);}
+.wp2-g-hyp{fill-opacity:.13;}
+.wp2-g-prev{fill:none;stroke:var(--wp-oxy);stroke-width:2;stroke-dasharray:2 5;stroke-linecap:round;opacity:.55;}
+.wp2-g-prevt{font:700 11.5px var(--font-ui);font-style:italic;fill:var(--wp-oxy-ink);opacity:.85;paint-order:stroke;stroke:var(--white);stroke-width:3px;}
+.wp2-g-pv{fill:none;stroke:var(--wp-heat);stroke-width:2;stroke-dasharray:2 3;opacity:.7;}
+.wp2-g-ax{font-size:13.5px;}
+/* quieter ground: the lake is the subject */
+.wp2-root{opacity:.25;}
+.wp2-ctl rect{fill:var(--white);fill-opacity:.96;stroke-width:2;}
+.wp2-ctl text{font:900 14px var(--font-ui);}
+.wp2-ctl.is-nut rect{stroke:var(--wp-nut);} .wp2-ctl.is-nut text{fill:var(--wp-nut-ink);}
+.wp2-ctl.is-heat rect{stroke:var(--wp-heat);} .wp2-ctl.is-heat text{fill:var(--wp-heat-ink);}
+.wp2-bub{fill-opacity:.7;}
+@media (max-width:640px){
+  .wp2-bar{display:block;position:relative;}
+  .wp2-bar .tk2-play.is-sm{position:absolute;right:0;top:0;min-height:40px;}
+  .ls-root[data-mode="explore"] .wp2-bar .tk2-prog-n{min-height:44px;display:flex;align-items:center;padding-right:168px;}
+}
+.wp2-g-do.is-fut.is-ghost{stroke-dasharray:none;stroke-width:2.4;opacity:.3;}
+.wp2-pipe.is-bypass{stroke:#8A5A2B;}
+.wp2-bylab{fill:#6A4A22;}
+:root[data-theme="dark"] .wp2-bylab{fill:#E2C29A;}
