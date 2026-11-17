@@ -1664,8 +1664,7 @@
 
   function pageTheme() {
     var t = document.documentElement.getAttribute('data-theme');
-    if (t === 'dark' || t === 'light') return t;
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    return t === 'dark' ? 'dark' : 'light';
   }
 
   /* The webhook that records the pass can land a few seconds after payment,

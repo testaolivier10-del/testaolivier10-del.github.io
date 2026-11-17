@@ -4,7 +4,6 @@
 .ap-card{display:grid;gap:14px;}
 :root{--ap-m:#0072B2;--ap-f:#D55E00;--ap-young:#009E73;--ap-old:#7A4F9E;--ap-b:#474A10;--ap-d:#B8336A;--ap-gap:rgba(0,158,115,.16);}
 :root[data-theme="dark"]{--ap-m:#6CB8EC;--ap-f:#FF9A5C;--ap-young:#4FD1AA;--ap-old:#C3A3E0;--ap-b:#DCDB98;--ap-d:#F08DB5;--ap-gap:rgba(79,209,170,.16);}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--ap-m:#6CB8EC;--ap-f:#FF9A5C;--ap-young:#4FD1AA;--ap-old:#C3A3E0;--ap-b:#DCDB98;--ap-d:#F08DB5;--ap-gap:rgba(79,209,170,.16);}}
 .ap-stage{display:flex;flex-direction:column;gap:8px;min-height:0;}
 .ls-root .ap-stage{flex:1;}
 .ap-fig{position:relative;flex:1;min-height:320px;}
