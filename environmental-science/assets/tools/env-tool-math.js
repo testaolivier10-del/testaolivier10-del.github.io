@@ -95,10 +95,13 @@
     if(near(x, A, r, ab)) return { ok: true };
     for(var i = 0; i < c.mistakes.length; i++) if(near(x, c.mistakes[i].value, r, ab)) return { ok: false, why: c.mistakes[i].why };
     if(!A) return { ok: false };
-    if(near(x * 100, A, r, ab)) return { ok: false, why: 'Your number is 100 times too small. A percent is the fraction times 100.' };
-    if(near(x / 100, A, r, ab)) return { ok: false, why: 'Your number is 100 times too large. Multiply by 100 only once.' };
-    if(near(x / 1000, A, r, ab) || near(x * 1000, A, r, ab)) return { ok: false, why: 'Off by a factor of 1000. Check a metric prefix (k, M, m) or "thousand".' };
-    if(near(-x, A, r, ab)) return { ok: false, why: 'The size is right but the sign is wrong. Check the order of the subtraction (new minus old).' };
+    // A factor slip (x100, /100, x1000, sign) is named only when it is clear: its tolerance is at most a tenth of
+    // the answer, so a wide reading tolerance (0.35 mg/L on 0.2) never calls 7 "100 times too large".
+    var fab = ab ? Math.min(ab, 0.1 * Math.abs(A)) : ab;
+    if(near(x * 100, A, r, fab)) return { ok: false, why: 'Your number is 100 times too small. A percent is the fraction times 100.' };
+    if(near(x / 100, A, r, fab)) return { ok: false, why: 'Your number is 100 times too large. Multiply by 100 only once.' };
+    if(near(x / 1000, A, r, fab) || near(x * 1000, A, r, fab)) return { ok: false, why: 'Off by a factor of 1000. Check a metric prefix (k, M, m) or "thousand".' };
+    if(near(-x, A, r, fab)) return { ok: false, why: 'The size is right but the sign is wrong. Check the order of the subtraction (new minus old).' };
     // "Close" only within twice the tolerance, and never more than a quarter
     // of the answer away (tool-audit X5: 0 was "close" to 1.4).
     // A wrong method that lands near the key (dropped from the list above) is named, not called close.

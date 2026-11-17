@@ -636,7 +636,7 @@
       area.innerHTML = '<div class="bt-prob-head"><h2 id="' + gid + '-h" tabindex="-1">' + esc(o.title ? o.title(p) : 'Practice problem') + '</h2><p class="bt-code">Problem code <b>' + seed + '</b> <a href="?seed=' + seed + '">Link to this problem</a></p></div>' +
         '<div class="bt-context">' + p.text + '</div><div class="cd-extra"></div><div class="cd-steps"></div>' +
         '<div class="bt-solution" hidden></div><div class="bt-next"></div>';
-      var api = { area: area, problem: p }, exEl = area.querySelector('.cd-extra'), lastTry = null;
+      var api = { area: area, problem: p }, exEl = area.querySelector('.cd-extra'), lastTry = null, firstTry = null;
       curApi = api;
       /* The try card on the stage, beside the figure: the student's answer
          against the right one (after Show the answer, or a later right try).
@@ -663,7 +663,7 @@
       function step(i){
         if(i >= p.steps.length) return finish();
         var s = p.steps[i], sid = gid + '-s' + i, tries = 0, done = false;
-        lastTry = null;
+        lastTry = null; firstTry = null;
         var el = document.createElement('form');
         el.className = 'bt-part cd-step';
         el.setAttribute('novalidate', '');
@@ -765,7 +765,7 @@
           else { var c = el.querySelector('input[value="' + s.correct + '"]'); if(c) c.checked = true; }
           el.classList.add('is-shown');
           fb.innerHTML = '<span class="env-mark no">Shown</span> The answer is filled in. ' + (s.kind === 'choice' ? s.why[s.correct] : '');
-          tryCard(s, lastTry, true);
+          tryCard(s, firstTry, true);
           lock(); next(false);
         }
         function check(){
@@ -810,12 +810,12 @@
           if(ok){
             el.classList.add('is-right');
             fb.innerHTML = '<span class="env-mark ok">Correct</span> ' + (s.kind === 'choice' ? notes[0] : '');
-            if(lastTry) tryCard(s, lastTry, true, true); else clearTry();   // the first try is the wrong one kept, not this right one
+            if(firstTry) tryCard(s, firstTry, true, true); else clearTry();   // the first wrong try, kept once (never the latest, never this right one)
             lock(); next(tries === 1);
             return;
           }
           el.classList.add('is-wrong');
-          lastTry = att;
+          lastTry = att; if(!firstTry) firstTry = att;
           // The wrong answer goes on the picture (the tool's own mark, else a
           // card on the stage); the method hint opens with the feedback, and
           // "Show the answer" sits after it.

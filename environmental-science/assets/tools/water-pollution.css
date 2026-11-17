@@ -376,3 +376,21 @@ body.ls-on .env-crumb{display:none;}
 .wp2-tdoes.is-q{fill:#5A6670;}
 .wp2-qfig .wp2-tname{font-size:13.5px;}
 .wp2-pv.is-sm{font-size:13px;} .wp2-pk.is-sm{font-size:12px;}
+/* second review round */
+.wp2-deadfish .wp2-fb{fill:#B9C2C0;}
+.wp2-deadfish .wp2-fin{fill:#9AA4A2;}
+:root[data-theme="dark"] .wp2-deadfish .wp2-fb{fill:#8E9896;}
+.wp2-why.is-blank{color:var(--muted);}
+.wp2-linkb{display:none;}
+@media (max-width:999.98px){ .wp2-linkb{display:flex;flex-wrap:wrap;gap:6px;} .wp2-linkb .tk2-btn{border-radius:12px;padding:0 12px;font-size:14.5px;} }
+.wp2-msg .wp2-again{min-height:30px;margin-left:6px;font-size:14px;}
+@media (pointer:coarse){ .wp2-msg .wp2-again{min-height:44px;} }
+.wp2-qh:focus{outline:none;}
+.wp2-cb .tk2-btn.is-ok{box-shadow:inset 0 0 0 2px var(--good);color:var(--good-text);opacity:1;}
+.wp2-cb .tk2-btn.is-no:disabled{opacity:.8;}
+.tk2-chal-b .wp2-linkb{display:none;}
+@media (max-width:999.98px){ .tk2-chal-b .wp2-linkb{display:flex;} }
+.wp2-done1{display:flex;gap:6px;align-items:flex-start;font-weight:700;}
+.wp2-done1 .tk2-i{color:var(--good-text);width:18px;height:18px;margin-top:1px;}
+:root[data-theme="dark"] .wp2-done1 .tk2-i{color:#7FD9A2;}
+.wp2-msg .tk2-note:focus{outline:none;}

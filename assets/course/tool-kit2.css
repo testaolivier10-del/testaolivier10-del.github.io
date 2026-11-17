@@ -125,6 +125,9 @@
 .tk2-sn{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--white);box-shadow:inset 0 0 0 2px var(--line);font:900 14px var(--font-ui);color:var(--muted);transition:background .25s,color .25s,box-shadow .25s;}
 .tk2-sm{display:flex;flex-direction:column;align-items:center;gap:1px;min-width:0;}
 .tk2-snm{display:block;max-width:100%;}
+.tk2-sns{display:none;}
+.tk2-tl.is-blank .tk2-sm,.tk2-tl.is-blank .tk2-sns{visibility:hidden;}
+.tk2-tl.is-blank .tk2-tl-i .tk2-sn{background:var(--white);color:var(--muted);box-shadow:inset 0 0 0 2px var(--line);}
 .tk2-sd{display:block;font-weight:700;font-size:12px;color:var(--muted);min-height:14px;}
 .tk2-tl-i.is-on .tk2-sn{background:color-mix(in srgb, var(--cink) 14%, var(--white));color:var(--cink);box-shadow:inset 0 0 0 2px var(--cink);}
 .tk2-tl-i.is-on .tk2-step{color:var(--ink);}
@@ -144,6 +147,8 @@
   /* phone: one row of numbered steps; the names stay as each button's accessible name (and the tool writes the
      current step's name and why under the row) */
   .tk2-tl .tk2-sm{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;}
+  .tk2-sns{display:block;font:800 11.5px/1.15 var(--font-ui);color:inherit;max-width:100%;overflow-wrap:anywhere;}
+  .tk2-tl-i.is-cur .tk2-sns{color:var(--ink);font-weight:900;}
   .tk2-step{min-height:44px;padding:2px 0;}
   .tk2-sn{width:36px;height:36px;font-size:14px;}
   .tk2-tl-i + .tk2-tl-i::before{top:20px;}
@@ -279,3 +284,8 @@
 @media (prefers-reduced-motion: reduce){ .tk2-ord-b.is-no{animation:none;} }
 .tk2-predict:not(.is-fold) .tk2-sum-v{display:none;}
 .ls-root.tk2 .ls-sheet-t:focus{outline:none;}
+
+.tk2-more{display:block;margin-top:6px;font-weight:700;font-size:14px;}
+.tk2-more i{font-style:normal;font-weight:900;}
+.tk2-more .is-ok{color:var(--good-text);} .tk2-more .is-no{color:var(--bad-text);}
+:root[data-theme="dark"] .tk2-more .is-ok{color:#7FD9A2;} :root[data-theme="dark"] .tk2-more .is-no{color:#FF9E91;}

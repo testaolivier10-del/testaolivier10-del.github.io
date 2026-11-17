@@ -55,7 +55,10 @@
    K.order({ items, why(i, pos), onDone() }) -> { el, reset() }   explain back: tap the steps in order.
    predict extras: nudge(html) (Play pressed before a prediction), fold(on) (once settled: one line and a Why
                                     button). challenges extras: done.title, onAll(), onReset(). drag extras: onEnd(v)
-                                    (pointer up or a key's change), place(track, tagSide). timeline: names(list).
+                                    (pointer up or a key's change), place(track, tagSide). timeline: names(list of
+                                    strings or { name, short }: short is the name a phone shows under the dot),
+                                    blank(on) (dots only, for an explain back). scrub: onEnd(v). challenges:
+                                    done.more() -> html under the recap (first tries).
    K.reduced()                      motion off (site toggle or the OS setting).
    K.used(key) / K.markUsed(key)    the first-time hint store (localStorage 'tk2h:' + key). A control with a key pulses
                                     until first used; chip: false keeps the pulse but drops the "Drag" / "Tap" chip
@@ -80,7 +83,8 @@
     play: '<path d="M8 5.5v13l11-6.5z" fill="currentColor" stroke="none"/>',
     pause: '<path d="M8 5h3v14H8zM13 5h3v14h-3z" fill="currentColor" stroke="none"/>',
     again: '<path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4.5h4.5"/>',
-    arrows: '<path d="M4 12h16M8 8l-4 4 4 4M16 8l4 4-4 4"/>'
+    arrows: '<path d="M4 12h16M8 8l-4 4 4 4M16 8l4 4-4 4"/>',
+    dot: '<circle cx="12" cy="12" r="4" fill="currentColor" stroke="none"/>'
   };
   function icon(n, cls){ return '<svg class="tk2-i' + (cls ? ' ' + cls : '') + '" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' + ICON[n] + '</svg>'; }
 
@@ -305,6 +309,7 @@
       if(all){
         head.textContent = 'Challenges';
         txt.innerHTML = '<span class="tk2-alldone">' + icon('check') + '<span>' + (o.done && o.done.title ? '<b>' + esc(o.done.title) + '</b> ' : '') + esc(o.done && o.done.text || 'All done.') + '</span></span>';
+        if(o.done && o.done.more){ var mo = o.done.more(); if(mo) txt.insertAdjacentHTML('beforeend', '<span class="tk2-more">' + mo + '</span>'); }
         if(o.onAll) setTimeout(o.onAll, 0);
         body.innerHTML = ''; ok.innerHTML = '';
         if(o.done && o.done.action){ var b = el('button', 'tk2-btn tk2-btn-pri', esc(o.done.action.label)); b.type = 'button'; b.addEventListener('click', o.done.action.onClick); ok.appendChild(b); }
@@ -328,7 +333,9 @@
     }
     function show(){ if(o.onShow && cur < o.items.length) o.onShow(o.items[cur]); fit(); }
     // keep the card's foot (its answer or Next button) in view when the side panel scrolls on its own (never the page)
+    var ready = false;
     function fit(){
+      if(!ready || c.hidden || !c.offsetParent) return;
       var sc = c.closest('.ls-dock'); if(!sc || sc.scrollHeight <= sc.clientHeight + 2) return;
       setTimeout(function(){ var r = c.getBoundingClientRect(), R = sc.getBoundingClientRect(); if(r.bottom > R.bottom) sc.scrollTop += Math.min(r.bottom - R.bottom + 10, r.top - R.top); }, 30);
     }
@@ -350,7 +357,7 @@
       show: function(id){ var i = o.items.map(function(x){ return x.id; }).indexOf(id); if(i > -1){ cur = i; paint(); show(); } },
       reset: function(){ met = {}; save(); cur = 0; if(o.onReset) o.onReset(); paint(); show(); }
     };
-    setTimeout(show, 0);
+    setTimeout(function(){ show(); ready = true; }, 0);
     return api;
   };
 
@@ -360,24 +367,28 @@
     ol.setAttribute('aria-label', o.label || 'Steps'); ol.setAttribute('data-ls-allchips', '');
     ol.innerHTML = o.steps.map(function(s, i){
       return '<li class="tk2-tl-i' + (s.tone ? ' is-' + s.tone : '') + '"><button type="button" class="tk2-step" data-i="' + i + '">' +
-        '<span class="tk2-sn" aria-hidden="true">' + (i + 1) + '</span><span class="tk2-sm"><span class="tk2-snm">' + esc(s.name) + '</span><span class="tk2-sd"></span></span></button></li>';
+        '<span class="tk2-sn" aria-hidden="true">' + (i + 1) + '</span><span class="tk2-sm"><span class="tk2-snm">' + esc(s.name) + '</span><span class="tk2-sd"></span></span>' +
+        '<span class="tk2-sns" aria-hidden="true">' + esc(s.short || s.name) + '</span></button></li>';
     }).join('');
     var btns = [].slice.call(ol.querySelectorAll('.tk2-step'));
     ol.addEventListener('click', function(e){ var b = e.target.closest('.tk2-step'); if(b && o.onPick) o.onPick(+b.getAttribute('data-i')); });
     function paint(){
+      ol.classList.toggle('is-blank', !!st.blank);
       btns.forEach(function(b, i){
         var li = b.parentNode, on = !!st.reached[i], cur = st.current === i;
         li.classList.toggle('is-on', on); li.classList.toggle('is-cur', cur);
         b.setAttribute('aria-current', cur ? 'step' : 'false');
         var sub = st.sub[i] || '';
         b.querySelector('.tk2-sd').textContent = sub;
-        b.setAttribute('aria-label', (i + 1) + '. ' + o.steps[i].name + (sub ? ', ' + sub : '') + (cur ? ', now' : on ? ', reached' : ''));
+        b.setAttribute('aria-label', st.blank ? 'Step ' + (i + 1) : (i + 1) + '. ' + o.steps[i].name + (sub ? ', ' + sub : '') + (cur ? ', now' : on ? ', reached' : ''));
         b.setAttribute('aria-disabled', String(!!st.off[i]));
       });
     }
     paint();
     return { el: ol, set: function(x){ Object.assign(st, x); paint(); },
-      names: function(list){ list.forEach(function(n, i){ o.steps[i].name = n; var b = btns[i]; if(b) b.querySelector('.tk2-snm').textContent = n; }); paint(); },
+      // names(list): strings, or { name, short } (short: the name a phone shows under the dot)
+      names: function(list){ list.forEach(function(n, i){ var nm = typeof n === 'string' ? n : n.name, sh = typeof n === 'string' ? n : (n.short || n.name); o.steps[i].name = nm; o.steps[i].short = sh; var b = btns[i]; if(b){ b.querySelector('.tk2-snm').textContent = nm; b.querySelector('.tk2-sns').textContent = sh; } }); paint(); },
+      blank: function(on){ st.blank = !!on; paint(); },
       flash: function(i, tone){ var li = btns[i] && btns[i].parentNode; if(!li) return; li.classList.remove('is-flash-good', 'is-flash-bad'); void li.offsetWidth; li.classList.add('is-flash-' + tone); setTimeout(function(){ li.classList.remove('is-flash-' + tone); }, 1400); } };
   };
 
@@ -417,7 +428,8 @@
       done(); w.classList.add('is-drag'); if(o.onStart) o.onStart(); inp.focus({ preventScroll: true }); set(fromPt(e), true);
     }
     function move(e){ if(e.pointerId === pid) set(fromPt(e), true); }
-    function up(e){ if(e.pointerId !== pid) return; pid = null; w.classList.remove('is-drag'); }
+    function up(e){ if(e.pointerId !== pid) return; pid = null; w.classList.remove('is-drag'); if(o.onEnd) o.onEnd(val); }
+    inp.addEventListener('change', function(){ if(pid == null && o.onEnd) o.onEnd(val); });
     [hit, knob].forEach(function(t){ t.addEventListener('pointerdown', down); t.addEventListener('pointermove', move); t.addEventListener('pointerup', up); t.addEventListener('pointercancel', up); });
     paint();
     return { el: w, input: inp, value: function(v, fire){ if(v === undefined) return val; set(v, fire); },
@@ -481,7 +493,7 @@
   K.tries = function(o){
     var ul = el('ul', 'tk2-tries'), list = [];
     ul.setAttribute('aria-label', (o && o.label) || 'Tried so far');
-    function paint(){ ul.innerHTML = list.map(function(x){ return '<li class="is-' + (x.tone || 'info') + '">' + icon(x.tone === 'bad' ? 'cross' : 'check') + '<span>' + x.html + '</span></li>'; }).join(''); ul.hidden = !list.length; }
+    function paint(){ ul.innerHTML = list.map(function(x){ return '<li class="is-' + (x.tone || 'info') + '">' + icon(x.tone === 'bad' ? 'cross' : x.tone === 'good' ? 'check' : 'dot') + '<span>' + x.html + '</span></li>'; }).join(''); ul.hidden = !list.length; }
     paint();
     return { el: ul,
       add: function(key, html, tone){ list = list.filter(function(x){ return x.key !== key; }); list.push({ key: key, html: html, tone: tone }); list.sort(function(a, b){ return (a.sort || 0) - (b.sort || 0); }); paint(); },

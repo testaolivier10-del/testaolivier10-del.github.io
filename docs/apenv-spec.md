@@ -329,7 +329,10 @@ emissions savings; LD50 read from a curve; biomagnification factors; TFR and rep
     last run drawn faint; chapter 3 plays the lake below. Model change: `W.lake(level, T, bod)`, the organic matter
     (BOD) left after each sewage stage is an oxygen demand on day 0 (`W.BOD_D`, a teaching scale, cited in "?"), so
     primary and secondary differ honestly; every other caller is unchanged (unit test and validator check it). Drill
-    figures redrawn in the Explore's style. Not merged: waiting for the owner.
+    figures redrawn in the Explore's style. Second review round: predictions gate every first action, the explain
+    back hides the names and ends with a cause question, first tries are counted, phone timeline names; shared fix in
+    env-tool-math.js and env-grade.js (a factor slip is named only when clear) and env-tools.js (first try kept once).
+    Not merged: waiting for the owner.
 
 ## 9. Open items for the owner
 

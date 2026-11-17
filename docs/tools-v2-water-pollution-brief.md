@@ -241,3 +241,33 @@ Esc), Test yourself (every drill type, the first try repro), keyboard only, redu
 axe-core: no serious or critical issue in any chapter at 390 and 1440, light and dark; no console errors; no
 horizontal scroll. `node --test scripts/test/apenv-*.test.mjs`, `check-apenv-content --check`, `build-apenv --check`,
 `check-site`, `check-weight --check`.
+
+## Second review round (2026-11-16, `/home/claude/review-wp2/REVIEW.md`: N1 to N12 and the partial 2, 7, 16, 17, 26, 33)
+Scores before: clarity 8, teaches 8, interactivity 9, visual 8, phone 7, a11y 8.
+- N1 (and 7): while the explain back is open the timeline's step names and the step line are hidden (dots only,
+  `timeline.blank`), and the scene's step labels too; the task is "from memory", then a cause question that cannot be
+  copied: "Why does the oxygen low come days after the bloom?" (3 choices, a reason for each wrong one).
+- N2: on a phone the timeline shows short names under its dots (Runoff, Bloom, Algae die, Decomposers, O₂ drops, Dead
+  zone; `steps[i].short`), and the "which link" challenge has six named buttons below 1000 px.
+- N3 (and 2): one rule (`gate`) for every chapter's first action (Play, Check, dragging the graph, the outflow handle,
+  a tank): the first time, with no prediction, it only says "Predict first: tap one" (Predict sits under the scene on
+  a phone and tablet); the next try acts. A drag is one try until it is let go (or 0.7 s without input). The tank
+  pills ("removes N and P") stay hidden until the sewage prediction is made. Chapter 1's Check also needs the chain
+  watched once with Play (to the dead zone or day 21), so the chapter cannot end without Play.
+- N4 (and 16): shared, all APES tools: a factor slip (×100, ÷100, ×1000, sign) is named only when its tolerance is at
+  most a tenth of the answer (`env-tool-math.js` diagnose, `env-grade.js` numeric), so 7 against 0.2 mg/L now says
+  "too high"; the first try card keeps the first wrong answer once (`env-tools.js`). Checked on Population growth too.
+- N5: every multiple choice challenge (longer or shorter, why longer, which link, the order and its cause question,
+  percent, after secondary): a wrong pick shows its reason and locks the choices until "Try again"; the first answer
+  is kept (localStorage `wp2first:<chapter>`) and the chapter recap lists the first tries with ticks.
+- N6: when the second warm run is in, focus moves to the new question. N9: that question is "At 30 °C, is the dead
+  zone longer or shorter?" first, then "Why".
+- N7: each held step during Play is announced once in the readout's live region ("Step 3, Algae die. ...").
+- N8 (and 26): fish keep out of a box round the thermometer; a fish lies belly up on the bed once the lake has been a
+  dead zone for a day; the dead zone label reads "Dead zone: fish leave or die".
+- N10: the algae axis runs to 160 times day 0 (ticks to 120), so raw sewage's bloom (about 114) stays inside.
+- N11 (and 17): a chapter link opens with the side panel at the top; the kit only keeps a card in view after the
+  student acts. N12: "Check: no treatment"; tried rows use a cross (bad), a check (good) or a dot (neutral, the warm
+  slots); "Already run at 20 °C" instead of a check button for a run already in; the percent drill's dead zone note
+  sits under the axis; the nutrient load drill is a field with bags sloping to a stream in its channel; drill tanks
+  are named under the tank like the scene (33).
