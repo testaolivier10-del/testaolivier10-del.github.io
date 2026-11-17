@@ -159,7 +159,15 @@ dashed course colour outline and a hand badge; a soft pulse until first used (on
   stage value is the one heat alone can break (about 18 °C), and it is the honest reason trout need cold water.
 - Sewage to lake: N and P left after the last stage (W.SEWAGE, EPA typical values) × 5 = the ch1 runoff level
   (raw 5, primary 4.25, secondary 3.5, tertiary and disinfection 0.75), lake at 20 °C. A teaching scaling, said so
-  in "?". With it, secondary gives a dead zone (lowest 0.2 mg/L) and tertiary does not (6.9 mg/L).
+  in "?".
+- Sewage organic matter (review round): the BOD left (W.SEWAGE: raw 100%, primary 65%, secondary 15%, tertiary and
+  disinfection 5%) enters the lake model on day 0 as dead organic matter, `W.BOD_D` = 30 relative units at 100%
+  (`W.lake(level, T, bod)`). BOD is the oxygen bacteria use to break organic matter down (USGS, "Biological oxygen
+  demand (BOD) and water"; EPA, "Indicators: dissolved oxygen"). 30 is a teaching scale chosen so the stages differ
+  the way the textbook says: raw sewage drives a 20 °C lake below 2 mg/L by day 8 (39 days hypoxic), primary sags it
+  to about 3.4 mg/L by day 8 (32 days), secondary barely dips it in the first days and the bloom chain does the rest
+  (21 days), tertiary keeps it out of a dead zone (lowest 6.5 mg/L). Left out (every other caller, the drills),
+  nothing changes. The unit test and the validator check the order and that `bod` 0 is the old model.
 - Upstream river default 10 °C (a cold trout stream; was 15 °C in v1, still a setting 5 to 20 °C).
 
 ### Checks run
@@ -171,11 +179,65 @@ scripts/test/apenv-*.test.mjs` (184 pass), `check-apenv-content --check` (tools 
 `check-site`, `check-weight --check` (no budget raised: tool pages are not in the weight list).
 
 ### Open points / not done
-- The drills' figures were not redrawn with the new scene (they were already drawn from each problem's numbers); a
-  later pass could put the station panel or the lake vignette into the thermal and chain figures.
 - Fish are drawn and animated by hand (no sprites); with reduced motion they hold still in place.
-- The phone stage is tall (scene, timeline, graph), so the panel starts below the graph: the first screen shows the
-  tabs, the scene with its controls and Play, as the brief's phone order asks.
+- The phone stage is tall (scene, timeline, graph), so the readout and challenge start below the graph; the goal
+  sits above the tabs and Predict sits under Play until it is answered.
 - The kit's hidden range inputs carry the keyboard; screen reader names come from `label` and `valuetext`. A real
   screen reader pass (VoiceOver, TalkBack) was not possible here.
 - The upstream river setting and the challenge reset sit under "?"; nothing else is hidden.
+
+## Review round (2026-11-16, `/home/claude/review-wp/REVIEW.md`, 38 issues, all addressed)
+Scores before: clarity 7, teaches 6, interactivity 8, visual 7, phone 6, a11y 7. What changed (issue numbers):
+- Pacing (1): Play runs about 1.15 days a second until the dead zone (or the low) and holds 2.4 s at each step's day
+  (and just after day 0 for the runoff); a line under the scene names the step and gives its one line why, framed
+  while held; then 6 days a second. A 1x/2x toggle. Reduced motion: each press goes to the next step.
+- Challenges (2, 3, 4, 8, 15, 20, 21): nothing solves itself. "Find the most" (sacks, outflow) and "fewest stages" are
+  committed checks: a Check button plays that run to day 60 (or reads that outflow), shows its worst day, and keeps
+  a list of what was tried; met only when both sides of the boundary were checked, quoting the student's own runs.
+  Ch1 challenge 2 sets 3 sacks, shows the thermometer, needs both runs (20 and 30 °C) seen to day 60, then asks WHY
+  it is longer (3 choices; a wrong one is disabled with its reason): no 50/50 guess. Ch1 cannot finish without
+  seeing dead zone runs (challenges 1 and 2 need them). Ch2's "% less" line hides while its percent challenge is open.
+  Ch3 "after secondary" needs the lake below played to day 60 first. After a challenge is met only its success
+  shows. Chapter done cards: a one sentence recap; ch1 adds "Explain it back: tap the six steps in order" (K.order).
+- Panel at 1440x900 (3, 17): Predict folds to one line ("You predicted: leave or die. Held." + Why) once the next
+  challenge opens or a check is made; readout cards one line labels and shorter; the dock was checked to have no
+  overflow through every challenge (with and without a prediction). A skipped prediction settles as "No prediction
+  this time" with the same teaching sentence.
+- Phone (4, 22 to 27): the goal line sits above the tabs (the dock's copy is hidden below 1000 px); Predict sits under
+  Play until answered and Play first nudges it; graph plot 186 px tall; timeline one row of six numbered steps (names
+  stay as accessible names; the step line under it names the current one); hot water tag left of the handle, the
+  handle stands on the outflow pipe's elbow, "Power plant" is a sign on the building; the lake chip says "Bottom
+  water"; graph labels move clear of the line labels; sacks stand in a pile with the knob in the soil under them.
+- Numbers (5, 12, 13, 14, 9): one rule (phase) drives the scene label, timeline and readout (dead zone only below
+  2 mg/L; recovery after the low); oxygen written with two decimals between 1.95 and 2.05; algae everywhere as
+  "× day 0" (readout, a right axis 0 to 120 on the graph, the "?" table), "a bloom" only near the peak; the graph
+  is fixed at 0 to 12 mg/L with the last run drawn faint and named under it; the hot water verdict follows the
+  handle; "Dead zone: N days, by day D".
+- Sewage (5, 6): BOD as an oxygen demand (above), readout "BOD left"; chapter 3 has Play, the step line and the
+  timeline ("Outfall" first) for the lake below, holding at each step like chapter 1.
+- Visuals (7, 28 to 34): fertilizer bags with a stitched top and an N-P-K label; the surface turns green and a mat
+  forms, thinning and browning as the bloom dies; algae turn brown before they sink (so "Algae die" shows brown);
+  a key under the scene (algae, dead algae, decomposer bacteria, oxygen, nutrients) and a leader from "Decomposer
+  bacteria use oxygen" to a bacterium; bigger oxygen bubbles with a shine, none in a dead zone; the "Bottom water"
+  card has a leader to the bed; station gauges 16 px bars with a tall trout tick and "Can hold"; a moon (no sun) in
+  dark mode; tank labels dark on white pills (12 px), readable when skipped; the lake thermometer is a control only
+  from challenge 2 on (drawn, "Lake 20 °C", before that).
+- Accuracy (8, 10, 11): "uses up most of the oxygen"; the bloom also respires at night (in the wrong step reason and
+  "?"); trout: "Young trout need at least 9.5 mg/L. Above about 18 °C, the river cannot hold that much even when
+  full" ("?"), the challenge hint does not give the answer away.
+- "?" (35, 37): a real dialog (role dialog, aria-modal, focus to its title, Tab kept inside, Esc and focus return);
+  the sheet is titled per chapter (How the lake / river / plant works) with no second title in the body; the
+  sewage stages are a numbered list; the lake below's mapping is a bullet list.
+- Test yourself (16, 33, 36, 38): the first try card keeps the wrong answer (env-tools.js, shared, a plain bug fix);
+  number and unit boxes each have a visible label (env-tools, shared); specific hints for every choice step and the
+  three bare "Round to 0.1" unit steps; figures redrawn in the Explore's style (the lake graph with its right algae
+  axis, the saturation curve, the plant's tanks with BOD pills, a field with fertilizer bags and a stream).
+
+### Checks run (review round)
+Playwright (Chromium) at 390x844, 768x1024 and 1440x900, light and dark: every chapter before and after predicting,
+Play before a prediction, full plays (timings logged: holds of about 2.4 to 3 s per step, about 34 s for 60 days),
+every challenge done properly and attempted wrongly, a sweep that must not solve, "?" open (dialog, focus, Tab trap,
+Esc), Test yourself (every drill type, the first try repro), keyboard only, reduced motion (Next step, To the end);
+axe-core: no serious or critical issue in any chapter at 390 and 1440, light and dark; no console errors; no
+horizontal scroll. `node --test scripts/test/apenv-*.test.mjs`, `check-apenv-content --check`, `build-apenv --check`,
+`check-site`, `check-weight --check`.

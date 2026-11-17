@@ -323,8 +323,13 @@ emissions savings; LD50 read from a curve; biomagnification factors; TFR and rep
     thermometer, outflow handle, tappable tanks), a named six step timeline and a scrubbable graph sharing the day,
     and a side panel with only the goal, Predict, a live Readout and one Challenge at a time; "?" is a sheet over the
     stage. New numbers, each cited in "?": 5 mg/L "Healthy" line (Chesapeake Bay Program), 9.5 mg/L for young trout
-    (EPA 1986 coldwater criteria), the sewage to lake mapping (a teaching scaling of W.SEWAGE). The model file and the
-    drills are unchanged. Not merged: waiting for the owner.
+    (EPA 1986 coldwater criteria), the sewage to lake mapping (a teaching scaling of W.SEWAGE). Review round
+    (2026-11-16, all 38 issues of the independent review): Play holds about 2.4 s at each step with its why; challenges
+    need committed checks and real runs; a chapter done card with an explain back; one fixed graph scale with the
+    last run drawn faint; chapter 3 plays the lake below. Model change: `W.lake(level, T, bod)`, the organic matter
+    (BOD) left after each sewage stage is an oxygen demand on day 0 (`W.BOD_D`, a teaching scale, cited in "?"), so
+    primary and secondary differ honestly; every other caller is unchanged (unit test and validator check it). Drill
+    figures redrawn in the Explore's style. Not merged: waiting for the owner.
 
 ## 9. Open items for the owner
 

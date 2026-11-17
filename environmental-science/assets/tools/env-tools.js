@@ -682,7 +682,7 @@
           body = '<div class="bt-num-row cd-expr"><label class="sr-only" for="' + sid + '-i">' + esc(String(s.label).replace(/<[^>]+>/g, '')) + '</label><input type="text" id="' + sid + '-i" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="' + sid + '-p"></div>' +
             '<div class="cd-expr-preview env-expr-preview" id="' + sid + '-p" aria-live="polite"></div>';
         } else if(s.kind === 'unit'){
-          body = '<div class="bt-num-row cd-num cd-unit"><label class="sr-only" for="' + sid + '-i">' + esc(String(s.label).replace(/<[^>]+>/g, '')) + '</label><input type="text" id="' + sid + '-i" inputmode="decimal" autocomplete="off" spellcheck="false"><label class="bt-small" for="' + sid + '-u">Unit</label><input type="text" class="cd-u" id="' + sid + '-u" autocomplete="off" spellcheck="false"></div>';
+          body = '<div class="bt-num-row cd-num cd-unit"><span class="cd-fld"><label class="bt-small cd-fl" for="' + sid + '-i">Number</label><input type="text" id="' + sid + '-i" inputmode="decimal" autocomplete="off" spellcheck="false" aria-label="' + esc(String(s.label).replace(/<[^>]+>/g, '')) + ': number"></span><span class="cd-fld cd-fld-u"><label class="bt-small cd-fl" for="' + sid + '-u">Unit</label><input type="text" class="cd-u" id="' + sid + '-u" autocomplete="off" spellcheck="false"></span></div>';
         } else if(s.kind === 'choice'){
           var order = s.fixed ? s.options.map(function(x, k){ return k; }) : Q.shuffle(s.options.map(function(x, k){ return k; }));
           body = '<fieldset class="cd-opts' + (s.optionsHtml ? ' cd-pics' : '') + '"><legend class="sr-only">' + esc(String(s.label).replace(/<[^>]+>/g, '')) + '</legend>' + order.map(function(k, n){
@@ -810,7 +810,7 @@
           if(ok){
             el.classList.add('is-right');
             fb.innerHTML = '<span class="env-mark ok">Correct</span> ' + (s.kind === 'choice' ? notes[0] : '');
-            if(lastTry) tryCard(s, att, true, true); else clearTry();
+            if(lastTry) tryCard(s, lastTry, true, true); else clearTry();   // the first try is the wrong one kept, not this right one
             lock(); next(tries === 1);
             return;
           }

@@ -42,9 +42,20 @@
                 -> { el, input, value(v?, fire), place(rect, min?, max?) }   the graph's cursor: drag anywhere on
                                     the plot (or the knob, or arrow keys) and the scene follows. The knob sits
                                     14 px above the plot's top (leave about 30 px of margin there).
-   K.player({ min, max, speed, get(), set(v), onEnd(), labels: { play, pause, again } })
-                -> { el, toggle(), stop(), playing() }   Play / Pause on the stage (requestAnimationFrame; with
-                                    reduced motion Play jumps to the end).
+   K.player({ min, max, speed (number, or function(v) for a pace that changes), get(), set(v), onEnd(),
+              stops() -> [values], hold (s), onHold(v), before() -> false to not start, labels: { play, pause, again, next, rest } })
+                -> { el, toggle(), stop(), start(), playing(), paint(), rate(x), reset(), holding() }
+                                    Play / Pause on the stage (requestAnimationFrame). At each stop it holds `hold`
+                                    seconds (a step can be watched and read); with reduced motion each press goes to
+                                    the next stop ("Next step"), then to the end.
+   K.speed({ label, onChange(x) }) -> { el }    a 1x / 2x toggle (pass x to player.rate).
+   K.tries({ label }) -> { el, add(key, html, tone), has(key), get(key), clear() }   the values a challenge has
+                                    checked ("2 sacks: no dead zone"), so a boundary is found by committed checks,
+                                    never by sweeping a control.
+   K.order({ items, why(i, pos), onDone() }) -> { el, reset() }   explain back: tap the steps in order.
+   predict extras: nudge(html) (Play pressed before a prediction), fold(on) (once settled: one line and a Why
+                                    button). challenges extras: done.title, onAll(), onReset(). drag extras: onEnd(v)
+                                    (pointer up or a key's change), place(track, tagSide). timeline: names(list).
    K.reduced()                      motion off (site toggle or the OS setting).
    K.used(key) / K.markUsed(key)    the first-time hint store (localStorage 'tk2h:' + key). A control with a key pulses
                                     until first used; chip: false keeps the pulse but drops the "Drag" / "Tap" chip
@@ -77,7 +88,7 @@
 
   /* ------------------------------------------------------------ opt in */
   K.on = function(s){
-    if(s && s.root) s.root.classList.add('tk2');
+    if(s && s.root){ s.root.classList.add('tk2'); sheetDialog(s); }
     return s;
   };
 
@@ -162,6 +173,8 @@
       if(fire && ch && o.onInput) o.onInput(v);
     }
     inp.addEventListener('input', function(){ done(); set(+inp.value, true); });
+    // a key press or a released drag ends a change (o.onEnd: grade or record it then, not on every step of a drag)
+    inp.addEventListener('change', function(){ if(pid == null && o.onEnd) o.onEnd(val); });
     inp.addEventListener('focus', function(){ w.classList.add('is-focus'); });
     inp.addEventListener('blur', function(){ w.classList.remove('is-focus'); });
     var pid = null;
@@ -181,7 +194,7 @@
     [knob, groove].forEach(function(t){ t.addEventListener('pointerdown', down); t.addEventListener('pointermove', move); t.addEventListener('pointerup', up); t.addEventListener('pointercancel', up); });
     paint();
     return { el: w, input: inp, value: function(v, fire){ if(v === undefined) return val; set(v, fire); },
-      place: function(t){ if(t) track = t; paint(); }, hide: function(on){ w.hidden = !!on; } };
+      place: function(t, side){ if(t) track = t; if(side !== undefined) o.tagSide = side; paint(); }, hide: function(on){ w.hidden = !!on; } };
   };
 
   /* ------------------------------------------------------------ a tappable part of the picture */
@@ -202,8 +215,10 @@
     var c = el('section', 'tk2-card tk2-predict'), hid = nid('pr'), pick = null, settled = false;
     c.setAttribute('aria-labelledby', hid);
     c.innerHTML = '<h3 class="tk2-k" id="' + hid + '">Predict</h3><p class="tk2-q"></p><div class="tk2-opts" role="group" data-ls-allchips></div><p class="tk2-then" hidden></p>' +
-      '<p class="tk2-verdict" role="status" hidden></p>';
-    var q = c.querySelector('.tk2-q'), ops = c.querySelector('.tk2-opts'), then = c.querySelector('.tk2-then'), ver = c.querySelector('.tk2-verdict');
+      '<p class="tk2-sum" hidden></p><p class="tk2-verdict" role="status" hidden></p>';
+    var q = c.querySelector('.tk2-q'), ops = c.querySelector('.tk2-opts'), then = c.querySelector('.tk2-then'), ver = c.querySelector('.tk2-verdict'), sum = c.querySelector('.tk2-sum'), sumB = null, folded = false, heldV = null;
+    // fold(true): once settled, only the one line "You predicted: ... Held." with a Why button (keeps the panel short)
+    function fold(on){ folded = !!on; c.classList.toggle('is-fold', folded && settled); if(sumB){ sumB.setAttribute('aria-expanded', String(!folded)); sumB.textContent = folded ? 'Why' : 'Hide why'; } }
     function build(){
       q.textContent = o.q; ops.setAttribute('aria-label', 'Your prediction');
       ops.innerHTML = o.choices.map(function(ch){ return '<button type="button" class="tk2-opt" data-v="' + esc(ch.value) + '" aria-pressed="false">' + esc(ch.label) + '</button>'; }).join('');
@@ -222,14 +237,25 @@
       picked: function(){ return pick; },
       note: function(html){ then.innerHTML = html; then.hidden = !html; },
       settled: function(){ return settled; },
+      // once settled the card folds to "You predicted: ..." and the verdict (the question and choices step aside)
       result: function(held, html){
         settled = true; c.classList.add('is-done'); then.hidden = true;
+        var pk = o.choices.filter(function(ch){ return String(ch.value) === String(pick); })[0];
+        heldV = held;
+        sum.innerHTML = (pk ? 'You predicted: <b>' + esc(pk.label) + '</b>' : 'No prediction made') + '<span class="tk2-sum-v">' + (held === true ? '. Held.' : held === false ? '. Not quite.' : pk ? '.' : '') + '</span>' +
+          ' <button type="button" class="tk2-link tk2-sum-b" aria-expanded="true">Hide why</button>';
+        sum.hidden = false; sumB = sum.querySelector('.tk2-sum-b'); sumB.addEventListener('click', function(){ fold(!c.classList.contains('is-fold')); });
+        c.classList.toggle('is-fold', folded);
+        sumB.setAttribute('aria-expanded', String(!folded)); sumB.textContent = folded ? 'Why' : 'Hide why';
         ops.querySelectorAll('.tk2-opt').forEach(function(x){ x.disabled = true; x.classList.toggle('is-right', x.getAttribute('data-v') === o.answer); });
         ver.className = 'tk2-verdict ' + (held === true ? 'is-good' : held === false ? 'is-bad' : 'is-warn');
         ver.innerHTML = (held === true ? icon('check') : held === false ? icon('cross') : '') + '<span>' + html + '</span>';
         ver.hidden = false;
       },
-      reset: function(nq){ if(nq) o = Object.assign({}, o, nq); pick = null; settled = false; c.classList.remove('is-picked', 'is-done'); then.hidden = true; ver.hidden = true; build(); }
+      fold: fold,
+      reset: function(nq){ if(nq) o = Object.assign({}, o, nq); pick = null; settled = false; folded = false; c.classList.remove('is-picked', 'is-done', 'is-fold'); then.hidden = true; ver.hidden = true; sum.hidden = true; build(); },
+      // draw the eye to the choices (Play pressed before a prediction): a short pulse and focus on the first choice
+      nudge: function(html){ if(html){ then.innerHTML = html; then.hidden = false; } c.classList.remove('is-nudge'); void c.offsetWidth; c.classList.add('is-nudge'); var f = ops.querySelector('.tk2-opt'); if(f) try{ f.focus({ preventScroll: true }); }catch(e){} }
     };
   };
 
@@ -265,6 +291,7 @@
   /* ------------------------------------------------------------ challenges, one at a time */
   K.challenges = function(o){
     var c = el('section', 'tk2-card tk2-chal'), hid = nid('ch'), met = {}, cur = 0;
+    c.setAttribute('data-ls-allchips', '');
     try{ met = JSON.parse(localStorage.getItem('tk2c:' + o.store) || '{}') || {}; }catch(e){ met = {}; }
     c.setAttribute('aria-labelledby', hid);
     c.innerHTML = '<div class="tk2-chal-h"><h3 class="tk2-k" id="' + hid + '">Challenge</h3><span class="tk2-dots" aria-hidden="true"></span></div>' +
@@ -277,11 +304,12 @@
       dots.innerHTML = o.items.map(function(it, i){ return '<i class="' + (met[it.id] ? 'is-met' : '') + (i === cur ? ' is-cur' : '') + '"></i>'; }).join('');
       if(all){
         head.textContent = 'Challenges';
-        txt.innerHTML = '<span class="tk2-alldone">' + icon('check') + '<span>' + esc(o.done && o.done.text || 'All done.') + '</span></span>';
+        txt.innerHTML = '<span class="tk2-alldone">' + icon('check') + '<span>' + (o.done && o.done.title ? '<b>' + esc(o.done.title) + '</b> ' : '') + esc(o.done && o.done.text || 'All done.') + '</span></span>';
+        if(o.onAll) setTimeout(o.onAll, 0);
         body.innerHTML = ''; ok.innerHTML = '';
         if(o.done && o.done.action){ var b = el('button', 'tk2-btn tk2-btn-pri', esc(o.done.action.label)); b.type = 'button'; b.addEventListener('click', o.done.action.onClick); ok.appendChild(b); }
         var again = el('button', 'tk2-link', 'Try them again'); again.type = 'button';
-        again.addEventListener('click', function(){ met = {}; save(); cur = 0; paint(); show(); });
+        again.addEventListener('click', function(){ met = {}; save(); cur = 0; if(o.onReset) o.onReset(); paint(); show(); });
         ok.appendChild(again);
         c.classList.add('is-all'); c.classList.remove('is-met');
         return;
@@ -298,7 +326,12 @@
         ok.appendChild(nx);
       } else ok.innerHTML = '';
     }
-    function show(){ if(o.onShow && cur < o.items.length) o.onShow(o.items[cur]); }
+    function show(){ if(o.onShow && cur < o.items.length) o.onShow(o.items[cur]); fit(); }
+    // keep the card's foot (its answer or Next button) in view when the side panel scrolls on its own (never the page)
+    function fit(){
+      var sc = c.closest('.ls-dock'); if(!sc || sc.scrollHeight <= sc.clientHeight + 2) return;
+      setTimeout(function(){ var r = c.getBoundingClientRect(), R = sc.getBoundingClientRect(); if(r.bottom > R.bottom) sc.scrollTop += Math.min(r.bottom - R.bottom + 10, r.top - R.top); }, 30);
+    }
     cur = first(); if(cur < 0) cur = o.items.length;
     paint();
     var api = {
@@ -309,13 +342,13 @@
         if(met[id]) return false;
         met[id] = html || true; save();
         var i = o.items.findIndex ? o.items.findIndex(function(x){ return x.id === id; }) : -1;
-        if(i === cur){ body.innerHTML = ''; paint(); c.classList.remove('is-pop'); void c.offsetWidth; c.classList.add('is-pop'); }
+        if(i === cur){ body.innerHTML = ''; paint(); c.classList.remove('is-pop'); void c.offsetWidth; c.classList.add('is-pop'); fit(); }
         else paint();
         return true;
       },
       body: function(x){ body.innerHTML = ''; if(x == null) return body; if(typeof x === 'string') body.innerHTML = x; else body.appendChild(x); return body; },
       show: function(id){ var i = o.items.map(function(x){ return x.id; }).indexOf(id); if(i > -1){ cur = i; paint(); show(); } },
-      reset: function(){ met = {}; save(); cur = 0; paint(); show(); }
+      reset: function(){ met = {}; save(); cur = 0; if(o.onReset) o.onReset(); paint(); show(); }
     };
     setTimeout(show, 0);
     return api;
@@ -344,6 +377,7 @@
     }
     paint();
     return { el: ol, set: function(x){ Object.assign(st, x); paint(); },
+      names: function(list){ list.forEach(function(n, i){ o.steps[i].name = n; var b = btns[i]; if(b) b.querySelector('.tk2-snm').textContent = n; }); paint(); },
       flash: function(i, tone){ var li = btns[i] && btns[i].parentNode; if(!li) return; li.classList.remove('is-flash-good', 'is-flash-bad'); void li.offsetWidth; li.classList.add('is-flash-' + tone); setTimeout(function(){ li.classList.remove('is-flash-' + tone); }, 1400); } };
   };
 
@@ -392,34 +426,121 @@
 
   /* ------------------------------------------------------------ Play / Pause */
   K.player = function(o){
-    var L = Object.assign({ play: 'Play', pause: 'Pause', again: 'Play again' }, o.labels || {});
+    var L = Object.assign({ play: 'Play', pause: 'Pause', again: 'Play again', next: 'Next step', rest: 'To the end' }, o.labels || {});
     var b = el('button', 'tk2-play'); b.type = 'button';
-    var raf = 0, last = 0, on = false;
+    var raf = 0, last = 0, on = false, rate = 1, holdLeft = 0, held = null;
+    function stops(){ return (o.stops ? o.stops() : []).filter(function(x){ return x != null && x > o.min && x < o.max; }).sort(function(a, c){ return a - c; }); }
+    function speedAt(v){ return typeof o.speed === 'function' ? o.speed(v) : o.speed; }
     function paint(){
-      var end = o.get() >= o.max - 1e-9;
-      b.innerHTML = icon(on ? 'pause' : end ? 'again' : 'play') + '<span>' + esc(on ? L.pause : end ? L.again : L.play) + '</span>';
+      var end = o.get() >= o.max - 1e-9, step = reduced() && stops().some(function(x){ return x > o.get() + 1e-6; });
+      b.innerHTML = icon(on ? 'pause' : end ? 'again' : 'play') + '<span>' + esc(on ? L.pause : end ? L.again : reduced() && o.get() > o.min ? (step ? L.next : L.rest) : L.play) + '</span>';
       b.setAttribute('aria-pressed', String(on));
       b.classList.toggle('is-on', on);
     }
     function frame(t){
       if(!on) return;
       var dt = last ? Math.min(0.1, (t - last) / 1000) : 0; last = t;
-      var v = Math.min(o.max, o.get() + dt * o.speed);
+      if(holdLeft > 0){ holdLeft -= dt * rate; raf = requestAnimationFrame(frame); return; }
+      var v0 = o.get(), v = Math.min(o.max, v0 + dt * speedAt(v0) * rate);
+      // a step on the way: stop there and hold it (o.hold seconds), so it can be watched and read
+      var st = stops().filter(function(x){ return x > v0 + 1e-6 && x <= v && x !== held; })[0];
+      if(st != null){ v = st; held = st; holdLeft = o.hold || 0; if(o.onHold) o.onHold(st); }
       o.set(v);
       if(v >= o.max){ stop(); if(o.onEnd) o.onEnd(); return; }
       raf = requestAnimationFrame(frame);
     }
     function start(){
-      if(o.get() >= o.max - 1e-9) o.set(o.min);
-      if(reduced()){ o.set(o.max); paint(); if(o.onEnd) o.onEnd(); return; }
-      on = true; last = 0; paint(); raf = requestAnimationFrame(frame);
+      if(o.before && o.before() === false) return;
+      if(o.get() >= o.max - 1e-9){ o.set(o.min); held = null; }
+      if(reduced()){
+        // no motion: each press goes to the next step and stays there
+        var nx = stops().filter(function(x){ return x > o.get() + 1e-6; })[0];
+        o.set(nx != null ? nx : o.max); if(nx != null && o.onHold) o.onHold(nx);
+        paint(); if(nx == null && o.onEnd) o.onEnd(); return;
+      }
+      on = true; last = 0; holdLeft = 0; paint(); raf = requestAnimationFrame(frame);
       if(o.onStart) o.onStart();
     }
     function stop(){ on = false; cancelAnimationFrame(raf); paint(); }
     b.addEventListener('click', function(){ if(on) stop(); else start(); });
     paint();
-    return { el: b, toggle: function(){ if(on) stop(); else start(); }, stop: stop, start: start, playing: function(){ return on; }, paint: paint };
+    return { el: b, toggle: function(){ if(on) stop(); else start(); }, stop: stop, start: start, playing: function(){ return on; }, paint: paint,
+      rate: function(x){ if(x === undefined) return rate; rate = x; }, reset: function(){ held = null; holdLeft = 0; },
+      holding: function(){ return on && holdLeft > 0 ? held : null; } };
   };
+
+  /* ------------------------------------------------------------ speed toggle (1x / 2x) */
+  K.speed = function(o){
+    var b = el('button', 'tk2-speed', '1×'); b.type = 'button';
+    b.setAttribute('aria-label', o.label || 'Faster'); b.setAttribute('aria-pressed', 'false');
+    b.addEventListener('click', function(){ var on = b.getAttribute('aria-pressed') !== 'true'; b.setAttribute('aria-pressed', String(on)); b.textContent = on ? '2×' : '1×'; if(o.onChange) o.onChange(on ? 2 : 1); });
+    return { el: b };
+  };
+
+  /* ------------------------------------------------------------ values tried (a challenge's committed checks) */
+  K.tries = function(o){
+    var ul = el('ul', 'tk2-tries'), list = [];
+    ul.setAttribute('aria-label', (o && o.label) || 'Tried so far');
+    function paint(){ ul.innerHTML = list.map(function(x){ return '<li class="is-' + (x.tone || 'info') + '">' + icon(x.tone === 'bad' ? 'cross' : 'check') + '<span>' + x.html + '</span></li>'; }).join(''); ul.hidden = !list.length; }
+    paint();
+    return { el: ul,
+      add: function(key, html, tone){ list = list.filter(function(x){ return x.key !== key; }); list.push({ key: key, html: html, tone: tone }); list.sort(function(a, b){ return (a.sort || 0) - (b.sort || 0); }); paint(); },
+      has: function(key){ return list.some(function(x){ return x.key === key; }); },
+      get: function(key){ return list.filter(function(x){ return x.key === key; })[0] || null; },
+      clear: function(){ list = []; paint(); }, paint: paint };
+  };
+
+  /* ------------------------------------------------------------ explain back: put the steps in order */
+  K.order = function(o){
+    var box = el('div', 'tk2-order'), got = [], order = o.items.map(function(x, i){ return i; });
+    // a fixed shuffle that is never already in order
+    for(var i = order.length - 1; i > 0; i--){ var j = (i * 7 + 3) % (i + 1), t = order[i]; order[i] = order[j]; order[j] = t; }
+    if(order.every(function(x, i){ return x === i; })) order.reverse();
+    box.innerHTML = '<ol class="tk2-ord-got" aria-label="Your order"></ol><div class="tk2-ord-pool" role="group" aria-label="Tap the next step" data-ls-allchips></div><p class="tk2-ord-fb" role="status"></p>';
+    var gotEl = box.querySelector('.tk2-ord-got'), pool = box.querySelector('.tk2-ord-pool'), fb = box.querySelector('.tk2-ord-fb');
+    function paint(){
+      gotEl.innerHTML = got.map(function(i){ return '<li>' + esc(o.items[i]) + '</li>'; }).join('') + (got.length < o.items.length ? '<li class="is-next" aria-hidden="true">?</li>' : '');
+      pool.innerHTML = order.filter(function(i){ return got.indexOf(i) < 0; }).map(function(i){ return '<button type="button" class="tk2-btn tk2-ord-b" data-i="' + i + '">' + esc(o.items[i]) + '</button>'; }).join('');
+    }
+    pool.addEventListener('click', function(e){
+      var b = e.target.closest('.tk2-ord-b'); if(!b) return;
+      var i = +b.getAttribute('data-i');
+      if(i === got.length){ got.push(i); fb.textContent = ''; paint(); var f = pool.querySelector('button'); if(f) f.focus(); if(got.length === o.items.length && o.onDone) o.onDone(); }
+      else { fb.textContent = o.why ? o.why(i, got.length) : 'Not next. What has to happen first?'; b.classList.remove('is-no'); void b.offsetWidth; b.classList.add('is-no'); }
+    });
+    paint();
+    return { el: box, reset: function(){ got = []; fb.textContent = ''; paint(); } };
+  };
+
+  /* ------------------------------------------------------------ "?" as a real dialog (K.on) */
+  function sheetDialog(s){
+    var sheet = s.root.querySelector('.ls-sheet'), back = null;
+    if(!sheet) return;
+    function open(){ return s.root.classList.contains('is-sheet') && !sheet.hidden; }
+    var was = false;
+    function sync(){
+      var on = open() && s.root.getAttribute('data-mode') === 'explore';
+      if(on === was) return; was = on;
+      if(on){
+        back = document.activeElement;
+        sheet.setAttribute('role', 'dialog'); sheet.setAttribute('aria-modal', 'true');
+        var h = sheet.querySelector('.ls-sheet-t'); if(h){ h.tabIndex = -1; setTimeout(function(){ h.focus({ preventScroll: true }); }, 30); }
+      } else {
+        sheet.removeAttribute('role'); sheet.removeAttribute('aria-modal');
+        if(back && document.contains(back) && !s.root.querySelector('.ls-sheet').contains(document.activeElement)) try{ back.focus({ preventScroll: true }); }catch(e){}
+        back = null;
+      }
+    }
+    sheet.addEventListener('keydown', function(e){
+      if(e.key !== 'Tab' || !was) return;
+      var f = [].slice.call(sheet.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),select,textarea,[tabindex]:not([tabindex="-1"])')).filter(function(x){ return x.offsetParent !== null; });
+      if(!f.length) return;
+      var a = f[0], z = f[f.length - 1];
+      if(e.shiftKey && (document.activeElement === a || !sheet.contains(document.activeElement) || document.activeElement === sheet.querySelector('.ls-sheet-t'))){ e.preventDefault(); z.focus(); }
+      else if(!e.shiftKey && document.activeElement === z){ e.preventDefault(); a.focus(); }
+    });
+    if(window.MutationObserver){ var mo = new MutationObserver(sync); mo.observe(s.root, { attributes: true, attributeFilter: ['class', 'data-mode'] }); mo.observe(sheet, { attributes: true, attributeFilter: ['hidden'] }); }
+  }
 
   window.LevlKit2 = K;
 })();

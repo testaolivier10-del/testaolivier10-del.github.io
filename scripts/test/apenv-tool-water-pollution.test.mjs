@@ -111,3 +111,19 @@ test('water-pollution: each sewage stage only removes, and only tertiary takes m
   assert.ok(S[2].left.nutrients > 50 && S[3].left.nutrients < 50, 'nitrogen and phosphorus come out in tertiary treatment');
   assert.ok(S[4].left.pathogens < S[3].left.pathogens / 10, 'disinfection kills pathogens');
 });
+
+test('water-pollution: sewage organic matter (BOD) is an oxygen demand on the lake below, ordered by stage', () => {
+  // left out, the lake is unchanged (every other caller)
+  assert.deepEqual(W.lake(3, 20, 0).O, W.lake(3, 20).O);
+  // BOD alone (no nutrients) pulls the oxygen down, and more BOD pulls it lower and sooner
+  assert.ok(W.lake(0, 20, 100).min < W.lake(0, 20, 50).min && W.lake(0, 20, 50).min < W.lake(0, 20).min);
+  const S = W.SEWAGE.stages, run = i => W.lake(5 * S[i].left.nutrients / 100, 20, S[i].left.bod);
+  const early = r => Math.min(...r.O.slice(0, 9));   // days 0 to 8
+  // raw < primary < secondary in the first week (secondary removes the organic matter), and in days hypoxic
+  assert.ok(early(run(0)) < early(run(1)) && early(run(1)) < early(run(2)), 'the early oxygen sag shrinks stage by stage');
+  assert.ok(early(run(0)) < W.HYPOXIC, 'raw sewage makes a dead zone by day 8, before the bloom chain');
+  assert.ok(Math.min(...run(2).O.slice(0, 6)) > 7, 'secondary effluent barely dips the oxygen in the first days');
+  assert.ok(run(0).hypoxicDays > run(1).hypoxicDays && run(1).hypoxicDays > run(2).hypoxicDays && run(2).hypoxicDays > 0, 'each stage shortens the dead zone; secondary still has one');
+  assert.equal(run(3).hypoxicDays, 0, 'tertiary (N and P removed) keeps the lake below out of a dead zone');
+  assert.ok(run(2).peakDay < run(2).minDay, 'after secondary the chain still runs: bloom, then the oxygen low');
+});
