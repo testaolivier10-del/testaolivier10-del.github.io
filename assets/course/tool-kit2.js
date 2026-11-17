@@ -2,10 +2,14 @@
    Science Water pollution). Opt in per tool: a page loads tool-kit2.css and tool-kit2.js after tool-studio.*, and
    the tool calls LevlKit2.on(s). Nothing else on the site changes behavior.
 
-   The v2 pattern: the STAGE holds the chapters (named tabs on its top), the picture with its controls ON it, a named
-   step timeline and a graph that share one cursor; the SIDE PANEL holds only the loop for the chapter: the goal (the
-   studio's s.task), Predict, a live Readout and one Challenge at a time. "?" opens the reference as a sheet over
-   the stage (desktop) instead of a third column.
+   The v2 pattern, two modes (owner, 2026-11-16; docs/tools-v2-water-pollution-brief.md "Owner round: play vs quiz"):
+   EXPLORE is for playing with it: no side panel (the stage goes full width), nothing locked or graded; compact
+   chapter tabs, the picture with its controls ON it, Play and a thin progress line (K.progress: only the current
+   step's name), one short caption and a simple graph; at most about 25 words and 3 controls outside the picture.
+   TEST YOURSELF is where you get quizzed: one question at a time in the side panel, on the same stage (add .tk2-qs
+   to the root while it is), with the hint ladder (s.hints) and the finished card (s.done). The predict, readout,
+   challenge, timeline and speed pieces below are kept for tools not yet moved. "?" opens the reference as a sheet
+   over the stage (desktop) instead of a third column.
 
    One look for "you can change this" (the translatable part): a white knob with a course-colour ring and an arrow
    along the way it moves (drag), or a dashed course-colour outline with a hand badge (tap); a soft pulse and a small
@@ -23,7 +27,9 @@
    K.layer(host) -> { el, scale(), map(x, y) }   a layer over a picture for the controls; host is the positioned box
                                     that holds the svg. scale() = shown px per viewBox unit (the svg's own width).
    K.drag(layer, { key, label, min, max, step, value, valuetext(v), track: [x0, y0, x1, y1], onInput(v), hint,
-           chip, tag(v), tagSide }) -> { el, input, value(v?, fire), place(track), hide(on) }
+           chip, tag(v), tagSide, quiet }) -> { el, input, value(v?, fire), place(track), hide(on) }
+                                    quiet: a setting, not the thing to touch first (small plain knob, no pulse or chip;
+                                    toggle .is-quiet on el to make it loud for a moment)
                                     a knob on the picture that moves along a track (viewBox units); its value is a
                                     real range input. tag(v): a short text beside the knob ("3 sacks").
    K.tap(layer, { key, label, box: [x, y, w, h], pressed, onClick, hint, chip }) -> { el, place(box), pressed(on?) }
@@ -38,10 +44,14 @@
                                     one challenge at a time with a check mark when met, then Next challenge.
    K.timeline({ label, steps: [{ name, tone }], onPick(i) }) -> { el, set({ reached: [], current, sub: [], off: [] }),
                                     flash(i, tone) }   named steps that light as the day reaches them; a tap jumps.
-   K.scrub(host, { key, label, min, max, step, value, valuetext(v), onInput(v), onStart(), rect: [x0, y0, x1, y1], chip })
+   K.progress({ label, min, max, step, value, valuetext(v), onInput(v), onStart() }) -> { el, input, value(v?), name(t), marks([v]) }
+                                    the thin progress line under the scene (a real range: tap, drag, arrow keys) with
+                                    only the current step's name above it and faint unlabeled ticks at the steps.
+   K.scrub(host, { key, label, min, max, step, value, valuetext(v), onInput(v), onStart(), rect: [x0, y0, x1, y1], chip, knob })
                 -> { el, input, value(v?, fire), place(rect, min?, max?) }   the graph's cursor: drag anywhere on
                                     the plot (or the knob, or arrow keys) and the scene follows. The knob sits
-                                    14 px above the plot's top (leave about 30 px of margin there).
+                                    14 px above the plot's top (leave about 30 px of margin there). knob: false: no
+                                    knob and no tab stop (pointer only), when another control sets the same value.
    K.player({ min, max, speed (number, or function(v) for a pace that changes), get(), set(v), onEnd(),
               stops() -> [values], hold (s), onHold(v), before() -> false to not start, labels: { play, pause, again, next, rest } })
                 -> { el, toggle(), stop(), start(), playing(), paint(), rate(x), reset(), holding() }
@@ -142,14 +152,14 @@
   /* ------------------------------------------------------------ a knob that drags along a track */
   K.drag = function(layer, o){
     var id = nid('dr'), step = o.step || 1, val = o.value, track = o.track;
-    var w = el('div', 'tk2-drag');
+    var w = el('div', 'tk2-drag' + (o.quiet ? ' is-quiet' : ''));
     w.innerHTML = '<span class="tk2-groove" aria-hidden="true"></span>' +
       '<span class="tk2-knob" aria-hidden="true"><span class="tk2-dot">' + icon('arrows', 'tk2-ar') + '</span></span>' +
       '<span class="tk2-tag" aria-hidden="true"></span>' +
       '<input class="tk2-in" type="range" id="' + id + '" min="' + o.min + '" max="' + o.max + '" step="' + step + '" value="' + val + '" aria-label="' + esc(o.label) + '">';
     layer.el.appendChild(w);
     var inp = w.querySelector('input'), knob = w.querySelector('.tk2-knob'), groove = w.querySelector('.tk2-groove'), tag = w.querySelector('.tk2-tag');
-    var done = firstHint(w, o.key, o.hint || 'Drag', o.chip === false);
+    var done = o.quiet ? function(){} : firstHint(w, o.key, o.hint || 'Drag', o.chip === false);
     function frac(v){ return (v - o.min) / (o.max - o.min); }
     function paint(){
       var k = layer.scale(), x0 = track[0] * k, y0 = track[1] * k, x1 = track[2] * k, y1 = track[3] * k, f = frac(val);
@@ -409,7 +419,9 @@
       '<input class="tk2-in" type="range" id="' + id + '" min="' + min + '" max="' + max + '" step="' + step + '" value="' + val + '" aria-label="' + esc(o.label) + '">';
     host.appendChild(w);
     var inp = w.querySelector('input'), hit = w.querySelector('.tk2-hit'), cur = w.querySelector('.tk2-cur'), knob = w.querySelector('.tk2-knob');
-    var done = firstHint(w, o.key, o.hint || 'Drag', o.chip === false);
+    // knob: false: no knob and no tab stop (pointer only), for a graph whose value another control already sets
+    if(o.knob === false){ w.classList.add('is-bare'); knob.hidden = true; inp.tabIndex = -1; inp.setAttribute('aria-hidden', 'true'); }
+    var done = o.knob === false ? function(){} : firstHint(w, o.key, o.hint || 'Drag', o.chip === false);
     function sc(){ var s = host.querySelector('svg'), vb = s && s.viewBox && s.viewBox.baseVal; if(!vb || !vb.width) return 1; var ww = s.getBoundingClientRect().width; return ww ? ww / vb.width : 1; }
     function paint(){
       var k = sc(), x0 = rect[0] * k, y0 = rect[1] * k, x1 = rect[2] * k, y1 = rect[3] * k, x = x0 + (x1 - x0) * ((val - min) / (max - min || 1));
@@ -442,6 +454,27 @@
     paint();
     return { el: w, input: inp, value: function(v, fire){ if(v === undefined) return val; set(v, fire); },
       place: function(r, mn, mx){ if(r) rect = r; if(mn != null){ min = mn; inp.min = mn; } if(mx != null){ max = mx; inp.max = mx; } paint(); } };
+  };
+
+
+  /* ------------------------------------------------------------ the thin progress line (Explore) */
+  /* K.progress({ label, min, max, step, value, valuetext(v), onInput(v), onStart() }) -> { el, input, value(v?), name(text), marks(list) }
+     One thin line under the scene: a real range input (tap or drag anywhere on it, or arrow keys), the part played
+     filled in, faint unlabeled ticks at the steps (marks), and ONLY the current step's name above it. */
+  K.progress = function(o){
+    var id = nid('pg'), w = el('div', 'tk2-prog'), val = o.value, min = o.min, max = o.max;
+    w.innerHTML = '<span class="tk2-prog-n" aria-hidden="true"></span><span class="tk2-prog-l"><span class="tk2-prog-t" aria-hidden="true"><i class="tk2-prog-f"></i></span>' +
+      '<input class="tk2-prog-in" type="range" id="' + id + '" min="' + min + '" max="' + max + '" step="' + (o.step || 'any') + '" value="' + val + '" aria-label="' + esc(o.label || 'Progress') + '"></span>';
+    var inp = w.querySelector('input'), fill = w.querySelector('.tk2-prog-f'), nm = w.querySelector('.tk2-prog-n'), track = w.querySelector('.tk2-prog-t');
+    function paint(){ var f = clamp((val - min) / (max - min || 1), 0, 1); fill.style.width = (f * 100).toFixed(2) + '%'; w.style.setProperty('--tk2-f', f.toFixed(4)); inp.setAttribute('aria-valuetext', o.valuetext ? o.valuetext(val) : String(val)); }
+    inp.addEventListener('pointerdown', function(){ if(o.onStart) o.onStart(); });
+    inp.addEventListener('keydown', function(){ if(o.onStart) o.onStart(); });
+    inp.addEventListener('input', function(){ val = +inp.value; paint(); if(o.onInput) o.onInput(val); });
+    paint();
+    return { el: w, input: inp,
+      value: function(v){ if(v === undefined) return val; val = clamp(v, min, max); inp.value = val; paint(); },
+      name: function(t){ if(nm.textContent !== (t || '')) nm.textContent = t || ''; },
+      marks: function(list){ track.querySelectorAll('.tk2-prog-m').forEach(function(m){ m.remove(); }); (list || []).forEach(function(v){ var m = el('b', 'tk2-prog-m'); m.style.left = (clamp((v - min) / (max - min || 1), 0, 1) * 100).toFixed(2) + '%'; track.appendChild(m); }); } };
   };
 
   /* ------------------------------------------------------------ Play / Pause */

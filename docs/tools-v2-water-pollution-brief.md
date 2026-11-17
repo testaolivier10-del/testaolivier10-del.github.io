@@ -315,3 +315,94 @@ dark phone blank timeline, fish at 30 °C on days 6 to 30, the load figure, redu
 critical issue in any chapter at 390, 768 and 1440, light and dark; no horizontal scroll; no console errors; other
 APES tools' Test yourself smoke run. `node --test scripts/test/apenv-*.test.mjs` (186 pass), `check-apenv-content
 --check`, `build-apenv --check`, `check-site`, `check-weight --check`.
+
+## Owner round: play vs quiz (2026-11-16)
+The owner on the first load (`wp-v2/shots/01-first-load-1440-light.png` of the third round): "there is just way too
+much going on", "I thought these were interactive, why are we having it be a test in order to use it?", and after
+the first cut "there is still too much going on". Review rounds kept adding; this round removes and moves. The
+science, the model, the scene art and the drills are unchanged.
+
+### The rule for every tool (agreed with the owner)
+Two modes. **EXPLORE is for playing with it. TEST YOURSELF is where you get quizzed.**
+- Explore: everything works the moment you land; nothing locked, nothing graded. No predict first, no watch first,
+  no locked choices, no Check, no challenges, no predictions, no recaps, no explain back.
+- Explore landing holds only: compact chapter tabs, the big scene with its on-picture controls, Play, a thin progress
+  line under the scene that shows ONLY the current step's name (tap or drag it to move the day; faint unlabeled ticks
+  at the steps), one caption of one sentence (at most about 15 words) on what is happening now, and a simple graph.
+- Hard limits on the Explore landing: no side panel (the stage is full width; a phone stacks it), at most about 25
+  words of text outside the picture, at most 3 controls outside the picture (tabs, Play, the progress line).
+- Not in Explore: a color key (label things on the picture where they first appear, briefly), readout cards (one
+  number at most, on the picture, with its status word), speed buttons (in the ⋯ menu), instruction bars, goal
+  headings, a second graph axis (a second quantity is a faint shape with no scale), long labels on graph lines.
+- A setting that is not the thing to touch first is quiet (a small plain handle on the picture, no pulse, no chip).
+- Test yourself: the predictions (as questions that then show the run), the challenges, the recaps and first try
+  counts, and the drills. One question at a time on the same scene, the hint ladder, "Show the answer" after one try,
+  a finished card. Finding a limit is graded by committed checks on both sides of it.
+
+### What changed
+- Explore (`water-pollution.js`): the side panel, Predict, the readout cards, the challenges, the gate, the six step
+  timeline, the step "why" bar, the color key, the speed button, the goal line, the faint last run and its caption
+  and the graph's right axis are gone. The stage: tabs (compact, left), the scene, Play with `K.progress`, one caption
+  (`CAP`, `REC_CAP`, `SEW_CAP`, `SEW_BOD_CAP`, the hot water line), the graph. Changing the sacks or the lake keeps the
+  day (see the change at once). The graph: one axis (oxygen, 0 to 12 mg/L), the algae a faint shape scaled to its
+  own peak, the whole run drawn (solid to the day, faint after), "Most it holds" faint and dashed, "2 mg/L: dead zone"
+  on the shaded band; a drag along it still moves the day (pointer only, no knob: `K.scrub` knob false). The bottom
+  water card on the lake carries the status word (Healthy, Stressed, Dead zone). The lake thermometer is a quiet
+  handle (`K.drag` quiet) with its temperature written beside it. Speed is "Play twice as fast" in the ⋯ menu.
+- Test yourself: one dropdown on the stage, "What to practice": Questions on the picture (1 Fertilizer runoff, 2 Hot
+  water, 3 Sewage) and Practice problems (the drill's kinds). The questions use the Explore stage (tabs step aside)
+  and the side panel shows one question: the task head holds the question, the card its choices or Check, the tries,
+  the hint ladder (`s.hints`), then the answer and Next. Chapter 1 (7): the prediction (4 sacks; then the run plays),
+  the most sacks (Check, both sides), longer or shorter at 30 °C (two checked runs, then choose), why longer, which
+  link uses the oxygen (six named steps; a pick moves the lake to that step), the six steps in order from memory
+  (nothing on the stage names them while it is open), why the low comes late. Chapter 2 (3): the prediction (then
+  the outflow goes to +10 °C), the warmest outflow for young trout (Check, both sides), percent less at +10 °C.
+  Chapter 3 (3): the prediction (tank labels hidden until answered; then tertiary is shown), after secondary (play
+  the lake below, choose), fewest stages (Check, both sides). A wrong choice is crossed out with its reason and the
+  others stay open; checks are not wrong answers; "Show the answer" opens after one try and counts as not first
+  try. Each chapter ends with the finished card: the recap, "Right on the first try: n of m" and the list, Next
+  chapter (or Practice problems), "Do these questions again". In a question the graph shows only the days already
+  played, so it never gives the answer away. `?seed=` links open on the practice problems as before.
+- Kit: `K.progress` (the thin line), `K.drag` quiet, `K.scrub` knob false; Explore has no dock (`.ls-dock` hidden, the
+  stage spans the grid); `.tk2-qs` on the root while Test yourself uses the stage (on a phone or tablet the question
+  comes first, then the picture, no scroll inside the stage). The header states the two mode rule.
+- Shared, opt in: `ApEnvTools.drill(..., { pickerPre })` puts a tool's own entries first in the drill's dropdown and
+  returns `{ picker, fresh }`; other tools are unchanged (Population growth, Air pollution, Dose response and Cycles
+  smoke run in the browser).
+
+### Landing counts (Playwright, Explore, each chapter; outside the picture)
+Words: every word shown ("mg/L" is one word; numbers and tick labels are not counted). Controls outside the picture:
+tab stops in the stage outside the scene (the three tabs are one tab stop). Blocks: what the stage shows besides the
+scene.
+
+| Landing | Words (≤ about 25) | Controls (≤ 3) | Blocks outside the picture |
+| --- | --- | --- | --- |
+| 1 Fertilizer runoff, 1440 and 768 | 22 | 3: tabs, Play, progress line | tabs, Play + progress line, caption, graph |
+| 1 Fertilizer runoff, 390 | 21 | 3 | same |
+| 2 Hot water, 1440 and 768 | 24 | 1: tabs (no time here; the handle is on the picture) | tabs, caption, graph |
+| 2 Hot water, 390 | 23 | 1 | same |
+| 3 Sewage, 1440 and 768 | 23 | 3 | tabs, Play + progress line, caption, graph |
+| 3 Sewage, 390 | 22 | 3 | same |
+
+The words, chapter 1: "Fertilizer runoff, Hot water, Sewage" (5; "Fertilizer, Hot water, Sewage" on a phone), "Play",
+"Drag the sacks, then press Play." (6), and on the graph "Bottom oxygen (mg/L)", "Most it holds", "2 mg/L: dead
+zone", "60 days". Chapter 2: the tabs, "Drag the handle on the pipe to warm the river.", "Oxygen water can hold
+(mg/L)", "Young trout need 9.5", "Upstream 11.3", "35 °C". Chapter 3: the tabs, "Play", "Tap a tank, then press
+Play.", "Lake below: oxygen (mg/L)" and the same line labels. The progress line is empty at day 0 (it names a step
+once there is one). The shared frame bar above the stage (tool name, course, one line lede, Explore | Test yourself,
+Ask the tutor, Share, ?, ⋯) is the same on every tool and not counted; at 390 it shows the name and the two modes.
+Looked at as the owner would and removed after the first count: "Day 0" on the progress line, "below" on the 2 mg/L
+label, "can" in "Most it can hold", "outflow" in the hot water line, "stop treatment there" in the sewage line, the
+long graph titles.
+
+### Checks run (this round)
+Playwright (Chromium; `assets/premium.js` routed to `has() { return true; ...`) at 390x844, 768x1024 and 1440x900,
+light and dark: each chapter's landing (counts above), mid play in chapters 1 and 3, Test yourself (the prediction
+before and after, a check, the two warm runs, a wrong link with a hint, the order from memory, the chapter card, the
+trout check, after secondary playing, a practice problem; every question of every chapter answered or revealed in a
+scripted run); keyboard only (tabs, sacks, thermometer, Play, progress line; a question answered and Next by keys);
+reduced motion (each Play press is the next step); axe-core: no serious or critical issue (Explore, every chapter,
+and the first question) at 390 and 1440, light and dark; no console errors; no horizontal scroll. `node --test
+scripts/test/apenv-*.test.mjs`, `check-apenv-content --check`, `build-apenv --check`, `check-site`, `check-weight
+--check`. Preview: `node scripts/tool-preview.mjs` to `wp-v2/index.html`; shots in `wp-v2/shots/` (01 to 05 Explore,
+06 to 15 Test yourself, each at 1440, 768 and 390, light and dark).

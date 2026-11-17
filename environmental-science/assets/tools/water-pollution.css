@@ -157,12 +157,13 @@ body.ls-on .env-crumb{display:none;}
 :root[data-theme="dark"] .wp2-stage{--wp-oxy:#6CB8EC;--wp-oxy-ink:#8FCBF2;--wp-alg:#4FD1AA;--wp-alg-ink:#7BE0C1;--wp-heat:#FF9A5C;--wp-heat-ink:#FFB385;--wp-bad:#FF8E7E;--wp-dead:#C9A27A;}
 .wp2-scene{position:relative;flex:1 1 auto;min-height:280px;border-radius:18px;overflow:hidden;background:var(--surface2);}
 .wp2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
-.wp2-bar{display:flex;align-items:center;gap:14px;flex:none;}
+.wp2-bar{display:flex;align-items:flex-end;gap:14px;flex:none;}
 .wp2-bar[hidden]{display:none;}
-.wp2-barl{display:flex;flex-direction:column;align-items:center;gap:2px;flex:none;}
-.wp2-day{margin:0;font:700 12.5px var(--font-ui);color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums;}
-.wp2-day b{font-weight:900;color:var(--ink);}
-.wp2-bar .tk2-tl{flex:1 1 auto;min-width:0;}
+.wp2-bar .tk2-play{flex:none;}
+.wp2-cap{margin:0;flex:none;font:600 15px/1.4 var(--font-ui);color:var(--ink);}
+.wp2-cap[hidden]{display:none;}
+.wp2-cap.is-bad{color:var(--bad-text);font-weight:800;}
+:root[data-theme="dark"] .wp2-cap.is-bad{color:#FF9E91;}
 .wp2-graph{position:relative;flex:0 0 clamp(178px,25vh,236px);border-radius:16px;background:var(--white);}
 .wp2-gsvg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
 @media (max-width:999.98px){
@@ -175,51 +176,10 @@ body.ls-on .env-crumb{display:none;}
   .wp2-scene{height:max(300px,min(86vw,360px));border-radius:14px;}
   .wp2-stage[data-ch="heat"] .wp2-scene{height:max(380px,min(104vw,420px));}
   .wp2-stage[data-ch="sew"] .wp2-scene{height:max(440px,min(124vw,500px));}
-  .wp2-bar{flex-direction:column;align-items:stretch;gap:6px;}
-  .wp2-barl{flex-direction:row;justify-content:space-between;align-items:center;}
+  .wp2-bar{gap:10px;}
+  .wp2-bar .tk2-play{min-width:96px;}
   .wp2-graph{height:266px;}
 }
-/* the goal, on the stage only where the side panel sits below it (phone and tablet) */
-.wp2-goal{display:none;margin:0;font:700 14.5px/1.35 var(--font-ui);color:var(--ink);}
-.wp2-goal b{font-weight:900;}
-.wp2-goal span{color:var(--cink);font-weight:800;}
-@media (max-width:999.98px){
-  .wp2-goal{display:block;}
-  .ls-root.tk2[data-mode="explore"] .ls-dock > .ls-task:has(~ .ls-dock-body .wp2-panel){display:none;}
-}
-.wp2-barb{display:flex;align-items:center;gap:6px;}
-.wp2-why{margin:0;min-height:2.8em;padding:8px 12px;border-radius:12px;background:var(--surface2);font:600 14.5px/1.4 var(--font-ui);color:var(--ink);transition:box-shadow .25s,background .25s;}
-.wp2-why b{font-weight:900;color:var(--cink);}
-.wp2-why[hidden],.wp2-legend[hidden],.wp2-predslot[hidden],.wp2-ghost[hidden]{display:none;}
-.wp2-why.is-hold{box-shadow:inset 0 0 0 2px var(--cink);background:var(--ctint);}
-.wp2-why.is-bad b{color:var(--bad-text);}
-.wp2-why-x{display:block;margin-top:2px;color:var(--muted);font-weight:700;}
-:root[data-theme="dark"] .wp2-why.is-bad b{color:#FF9E91;}
-@media (prefers-reduced-motion: reduce){ .wp2-why{transition:none;} }
-.wp2-legend{list-style:none;display:flex;flex-wrap:wrap;gap:4px 14px;margin:-4px 2px 0;padding:0;font:700 12.5px/1.3 var(--font-ui);color:var(--muted);}
-.wp2-legend li{display:inline-flex;align-items:center;gap:5px;}
-.wp2-legend i{display:inline-block;width:10px;height:10px;border-radius:50%;}
-.wp2-legend i.is-alg{background:#56962C;} .wp2-legend i.is-dead{background:#7A5A32;} .wp2-legend i.is-nut{background:#E69F00;}
-.wp2-legend i.is-bac{width:13px;height:5px;border-radius:3px;background:#B5509A;}
-.wp2-legend i.is-bub{background:transparent;box-shadow:inset 0 0 0 2px #2C6C9C;}
-:root[data-theme="dark"] .wp2-legend i.is-bac{background:#E08CC8;} :root[data-theme="dark"] .wp2-legend i.is-bub{box-shadow:inset 0 0 0 2px #9CCBEF;}
-.wp2-predslot .tk2-predict{background:var(--surface2);}
-.wp2-ghost{margin:-4px 4px 0;font:700 12.5px var(--font-ui);color:var(--muted);display:flex;align-items:center;gap:6px;}
-.wp2-ghost i{display:inline-block;width:20px;border-top:2.5px dashed var(--muted);opacity:.8;}
-.wp2-cb{display:flex;flex-direction:column;gap:8px;align-items:flex-start;}
-.wp2-cb > p{margin:0;}
-.wp2-cb .tk2-tries,.wp2-cb .tk2-order,.wp2-cb .wp2-q,.wp2-cb .wp2-msg{align-self:stretch;}
-.wp2-msg:empty{display:none;}
-.wp2-q[hidden]{display:none;}
-.wp2-q{display:flex;flex-direction:column;gap:6px;}
-.wp2-q p{margin:0;}
-.wp2-q .tk2-row{flex-direction:column;align-items:stretch;}
-.wp2-q .tk2-btn{justify-content:flex-start;text-align:left;border-radius:12px;padding:5px 14px;font-size:14.5px;}
-.wp2-cb .tk2-row .tk2-btn{border-radius:12px;}
-.wp2-set3{color:var(--cink);font-weight:800;}
-.wp2-ordh{color:var(--muted);font-weight:700;}
-.wp2-panel{display:flex;flex-direction:column;gap:12px;}
-.wp2-panel > [hidden]{display:none !important;}
 .wp2-set{margin:4px 0 8px;}
 .wp2-src{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:14px;line-height:1.45;}
 
@@ -369,10 +329,6 @@ body.ls-on .env-crumb{display:none;}
 .wp2-lab.is-sm{font-size:11.5px;}
 .wp2-pk2{font:800 12px var(--font-ui);fill:var(--muted);}
 .wp2-pk2.is-bad{fill:var(--wp-bad);}
-.wp2-g-ghost{fill:none;stroke:var(--muted);stroke-width:2;stroke-dasharray:5 4;opacity:.65;}
-.wp2-g-tk.is-alg{fill:var(--wp-alg-ink);}
-.wp2-g-axis.is-alg{stroke:var(--wp-alg);opacity:.5;}
-.wp2-cb [hidden]{display:none !important;}
 .wp2-tdoes.is-q{fill:#5A6670;}
 .wp2-qfig .wp2-tname{font-size:13.5px;}
 .wp2-pv.is-sm{font-size:13px;} .wp2-pk.is-sm{font-size:12px;}
@@ -380,21 +336,39 @@ body.ls-on .env-crumb{display:none;}
 .wp2-deadfish .wp2-fb{fill:#B9C2C0;}
 .wp2-deadfish .wp2-fin{fill:#9AA4A2;}
 :root[data-theme="dark"] .wp2-deadfish .wp2-fb{fill:#8E9896;}
-.wp2-why.is-blank{color:var(--muted);}
-.wp2-linkb{display:none;}
-@media (max-width:999.98px){ .wp2-linkb{display:flex;flex-wrap:wrap;gap:6px;} .wp2-linkb .tk2-btn{border-radius:12px;padding:0 12px;font-size:14.5px;} }
-.wp2-msg .wp2-again{min-height:30px;margin-left:6px;font-size:14px;}
-@media (pointer:coarse){ .wp2-msg .wp2-again{min-height:44px;} }
-.wp2-qh:focus{outline:none;}
-.wp2-cb .tk2-btn.is-ok{box-shadow:inset 0 0 0 2px var(--good);color:var(--good-text);opacity:1;}
-.wp2-cb .tk2-btn.is-no:disabled{opacity:.8;}
-.tk2-chal-b .wp2-linkb{display:none;}
-@media (max-width:999.98px){ .tk2-chal-b .wp2-linkb{display:flex;} }
-.wp2-done1{display:flex;gap:6px;align-items:flex-start;font-weight:700;}
-.wp2-done1 .tk2-i{color:var(--good-text);width:18px;height:18px;margin-top:1px;}
-:root[data-theme="dark"] .wp2-done1 .tk2-i{color:#7FD9A2;}
-.wp2-msg .tk2-note:focus{outline:none;}
-/* third review: the lock is said in words; a locked timeline tap gets its own line */
-.wp2-msg .wp2-lockl{display:block;margin-top:4px;font-weight:800;}
-.wp2-msg .wp2-lockn{margin:6px 0 0;font:800 14px/1.4 var(--font-ui);color:var(--cink);}
-.wp2-msg .wp2-lockn:empty{display:none;}
+
+
+/* ====================================================================== owner round: play vs quiz (2026-11-16)
+   Explore: tabs, the scene, Play with the thin progress line, one caption, a simple graph. Test yourself: the same
+   stage (tabs step aside; the dropdown picks the chapter) and one question at a time in the side panel. */
+.wp2-stage .tk2-tabs{margin:0;align-self:flex-start;max-width:100%;}
+.wp2-stage .tk2-tab{flex:0 0 auto;min-height:40px;font-size:14.5px;}
+@media (max-width:640px){ .wp2-stage .tk2-tabs{align-self:stretch;} .wp2-stage .tk2-tab{flex:1 1 0;} }
+.wp2-chip-s{font:900 12.5px var(--font-ui);}
+.wp2-chip-s.is-good{fill:var(--good-text);} .wp2-chip-s.is-warn{fill:var(--amber-text);} .wp2-chip-s.is-bad{fill:var(--wp-bad);}
+:root[data-theme="dark"] .wp2-chip-s.is-good{fill:#7FD9A2;} :root[data-theme="dark"] .wp2-chip-s.is-warn{fill:#F4CD86;}
+.wp2-g-do.is-fut{stroke-width:2;stroke-dasharray:3 5;opacity:.45;}
+.wp2-g-alg{fill:var(--wp-alg);fill-opacity:.16;}
+.wp2-g-sat{opacity:.45;}
+.wp2-g-satt{opacity:.8;font-weight:700;}
+@media (min-width:1000px){ .wp2-graph{flex:0 0 clamp(150px,21vh,210px);} }
+.ls-root[data-mode="quiz"] .wp2-stage .tk2-tabs{display:none;}
+.ls-root[data-mode="quiz"][data-wpq="drill"] :is(.wp2-stage,.wp2-qcard,.wp2-ref){display:none !important;}
+.ls-root[data-mode="quiz"][data-wpq="scene"] :is(.ls-drill-stage,.ls-drill,.ls-drill-why,.ls-drill-det,.cd-more,.cd-try){display:none !important;}
+.ls-root[data-mode="quiz"][data-wpq="scene"] .ls-why{display:none !important;}
+/* the question card (the task head above it holds the question) */
+.wp2-qcard{display:flex;flex-direction:column;gap:10px;}
+.wp2-qcard:empty{display:none;}
+.wp2-qb{display:flex;flex-direction:column;gap:8px;align-items:flex-start;}
+.wp2-qb > *{align-self:stretch;}
+.wp2-qb > .tk2-btn{align-self:flex-start;}
+.wp2-qb [hidden]{display:none !important;}
+.wp2-mc{display:flex;flex-direction:column;align-items:stretch;gap:6px;}
+.wp2-mc .tk2-btn{justify-content:flex-start;text-align:left;border-radius:12px;padding:6px 14px;font-size:15px;}
+.wp2-mc.wp2-linkb{flex-direction:row;flex-wrap:wrap;}
+.wp2-mc.wp2-linkb .tk2-btn{flex:1 1 auto;}
+.wp2-mc .tk2-btn.is-no{text-decoration:line-through;opacity:.8;}
+.wp2-q{display:flex;flex-direction:column;gap:6px;}
+.wp2-msg:empty,.wp2-qok:empty,.wp2-qact:empty{display:none;}
+.wp2-msg .tk2-note:focus,.wp2-qok .tk2-ok-t:focus{outline:none;}
+.wp2-qact{display:flex;gap:8px;}

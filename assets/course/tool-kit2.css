@@ -292,3 +292,45 @@
 .tk2-more .is-ok{color:var(--good-text);} .tk2-more .is-no{color:var(--bad-text);}
 :root[data-theme="dark"] .tk2-more .is-ok{color:#7FD9A2;} :root[data-theme="dark"] .tk2-more .is-no{color:#FF9E91;}
 .tk2-ok-t:focus:not(:focus-visible){outline:none;}
+
+/* ---------------------------------------------------------------- Explore: play, not a quiz (owner round 2026-11-16)
+   Explore has no side panel: the stage takes the full width (phone: it stacks). Test yourself keeps the dock. */
+@media (min-width:1000px){
+  .ls-root.tk2[data-mode="explore"] .ls-main,.ls-root.tk2[data-mode="explore"].is-sheet .ls-main{grid-template-columns:minmax(0,1fr);}
+}
+.ls-root.tk2[data-mode="explore"] .ls-dock{display:none;}
+/* the graph's cursor without a knob (pointer only; the progress line or a handle on the picture is the keyboard's) */
+.tk2-scrub.is-bare .tk2-knob{display:none;}
+.tk2-scrub.is-bare .tk2-cur{border-left-width:1.5px;opacity:.55;}
+/* a quiet handle (a setting on the picture, not the thing to touch first): small plain knob, no groove, no arrow */
+.tk2-drag.is-quiet .tk2-groove::before{display:none;}
+.tk2-drag.is-quiet .tk2-dot{width:16px;height:16px;box-shadow:0 0 0 2px color-mix(in srgb, var(--muted) 70%, transparent),0 1px 3px rgba(11,26,51,.25);}
+.tk2-drag.is-quiet .tk2-ar{display:none;}
+.tk2-drag.is-quiet.is-focus .tk2-dot{box-shadow:0 0 0 3px var(--cink),0 0 0 5px var(--white),0 0 0 8px var(--cink);}
+
+/* ---------------------------------------------------------------- the thin progress line (K.progress) */
+.tk2-prog{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:2px;}
+.tk2-prog-n{min-height:18px;font:900 14px/1.25 var(--font-ui);color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.tk2-prog-l{position:relative;display:block;height:24px;}
+.tk2-prog-t{position:absolute;left:0;right:0;top:50%;height:4px;margin-top:-2px;border-radius:4px;background:var(--track);}
+.tk2-prog-f{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--cink);}
+.tk2-prog-m{position:absolute;top:50%;width:4px;height:4px;margin:-2px 0 0 -2px;border-radius:50%;background:color-mix(in srgb, var(--muted) 55%, transparent);}
+.tk2-prog-in{position:absolute;inset:0;width:100%;height:100%;margin:0;background:transparent;-webkit-appearance:none;appearance:none;cursor:pointer;}
+.tk2-prog-in::-webkit-slider-runnable-track{height:24px;background:transparent;}
+.tk2-prog-in::-moz-range-track{height:24px;background:transparent;}
+.tk2-prog-in::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;margin-top:5px;border-radius:50%;background:var(--white);box-shadow:0 0 0 2.5px var(--cink),0 1px 3px rgba(11,26,51,.3);}
+.tk2-prog-in::-moz-range-thumb{width:14px;height:14px;border:0;border-radius:50%;background:var(--white);box-shadow:0 0 0 2.5px var(--cink),0 1px 3px rgba(11,26,51,.3);}
+.tk2-prog-in:focus-visible{outline:3px solid var(--cink);outline-offset:2px;border-radius:8px;}
+@media (pointer:coarse){ .tk2-prog-l{height:44px;} .tk2-prog-in::-webkit-slider-runnable-track{height:44px;} .tk2-prog-in::-webkit-slider-thumb{margin-top:15px;width:18px;height:18px;} }
+/* Test yourself on the same stage (the tool adds .tk2-qs to the root while its questions use the picture): the stage
+   lays out as in Explore; on a phone or tablet the question comes first, then the picture (no scroll inside the stage). */
+.ls-root.tk2.tk2-qs[data-mode="quiz"] .ls-stage-body{display:flex;flex-direction:column;min-height:0;}
+.ls-root.tk2.tk2-qs[data-mode="quiz"] .ls-pills:not(:has(*:not(:empty))){display:none;}
+@media (max-width:999.98px){
+  .ls-root.tk2.tk2-qs[data-mode="quiz"]{height:auto;}
+  .ls-root.tk2.tk2-qs[data-mode="quiz"] .ls-main{height:auto;flex:none;}
+  .ls-root.tk2.tk2-qs[data-mode="quiz"] .ls-stage:not(.is-big){flex:none;height:auto;min-height:0;}
+  .ls-root.tk2.tk2-qs[data-mode="quiz"] .ls-stage:not(.is-big) .ls-stage-body{flex:none;overflow:visible;}
+  .ls-root.tk2.tk2-qs[data-mode="quiz"] .ls-dock{order:-1;}
+  .ls-root.tk2.tk2-qs[data-mode="quiz"] .ls-enl{display:none;}
+}

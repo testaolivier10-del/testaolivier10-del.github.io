@@ -1,31 +1,31 @@
 /* Water pollution trainer page, v2 (docs/tools-v2-water-pollution-brief.md: the flagship of the v2 tool pattern;
    docs/apenv-spec.md section 6). OWNED BY THIS TOOL ONLY. Mounts into #app with ApEnvTools.mount; the model is
    ApEnvMath.waterPollution (environmental-science/assets/tools/math/water-pollution.js), the content
-   environmental-science/data/tools/water-pollution.json. The frame is ApEnvTools.modes (Explore, then Test yourself)
-   on the Tool Studio; Explore is built from the shared v2 kit (assets/course/tool-kit2.js, LevlKit2).
+   environmental-science/data/tools/water-pollution.json. Built from the shared v2 kit (assets/course/tool-kit2.js).
 
-   Explore: three chapters, named tabs on the stage.
-     1 Fertilizer runoff  a farm field over a lake. Drag the fertilizer sacks (0 to 5) and the lake's thermometer
-                          (10 to 30 °C) on the picture, press Play (or drag along the graph): rain washes the
-                          fertilizer in, the surface turns green, the algae die, turn brown and sink, decomposers
-                          multiply on the bed, the bottom water's oxygen bubbles thin out and darken, the fish rise,
-                          gasp at the surface and leave below 2 mg/L, and come back as the air puts oxygen back.
-                          The six named links light on the timeline as the day reaches them; the graph (bottom
-                          oxygen, algae, 2 mg/L and saturation) shares the day cursor and is revealed as days pass.
-     2 Hot water          a power plant on a trout river. Drag the handle on the outflow pipe (+0 to +15 °C):
-                          the plume warms the river below the plant; a thermometer and an oxygen gauge each side
-                          show what the water can hold (USGS); the trout stay or swim up out of the warm water.
-                          The graph is the saturation curve with both points; dragging along it sets the outflow.
-     3 Sewage             town, plant and the lake below. Tap a tank to make it the last stage used: the
-                          skipped tanks grey out, a bypass pipe carries the flow round them, and the lake below
-                          runs the chapter 1 model with the nitrogen and phosphorus left (scaled to a runoff
-                          level, SEW_LEVEL); its oxygen graph and picture share a cursor.
-   Side panel (each chapter): the goal (s.task), Predict, a live Readout and one Challenge at a time.
-   "?": how the model works, the sources, the tables and the settings, as a sheet over the stage.
+   Two modes (owner round 2026-11-16, the rule for every tool): EXPLORE is for playing with it, TEST YOURSELF is
+   where you get quizzed.
+   Explore: nothing locked, nothing graded, no side panel. The stage, full width: compact chapter tabs, the scene
+   with its controls ON it, Play and a thin progress line that names only the current step, one short caption (one
+   sentence, at most about 15 words) and a simple graph (oxygen is the one axis; algae a faint shape).
+     1 Fertilizer runoff  drag the fertilizer sacks (0 to 5); the lake's small thermometer (10 to 30 °C) is a quiet
+                          handle; Play (or the progress line, or a drag along the graph): rain washes the fertilizer
+                          in, the surface turns green, the algae die, turn brown and sink, decomposers multiply, the
+                          bottom water's oxygen falls (one number on the lake with its status word), the fish rise,
+                          gasp and leave below 2 mg/L, and come back as the air puts oxygen back.
+     2 Hot water          drag the handle on the outflow pipe (+0 to +15 °C): the plume warms the river; a gauge
+                          each side shows what the water can hold (USGS); the trout stay or swim up out of it.
+     3 Sewage             tap a tank to make it the last stage used; the lake below runs the chapter 1 model with
+                          the N, P and organic matter left (SEW_LEVEL, BOD).
+   Test yourself: a dropdown on the stage picks the chapter's questions on the picture or the practice problems
+   (the drill). Questions, one at a time on the same scene: the predictions (then the run plays), the challenges
+   (most sacks, warmer lake, which link uses the oxygen, the steps in order, why late, trout, percent, after
+   secondary, fewest stages), each with the hint ladder and "Show the answer" after a try; a chapter ends with a
+   card: the recap and the first tries. Finding a limit is graded by committed checks (Check) on both sides of it.
+   "?": how the model works, the sources, the tables and the setting, as a sheet over the stage.
    Colors by role (oxygen blue, algae green, dead matter brown, nutrients orange, heat vermillion; Okabe-Ito,
    lighter in dark mode). Every value is also written, so color is never the only cue.
-   Reduced motion: no ambient motion; Play jumps to the end; the scene still shows every state.
-   Test yourself: ApEnvTools.drill over the model's generate(), with a figure drawn from the problem's numbers. */
+   Reduced motion: no ambient motion; each Play press goes to the next step. */
 (function(){
   'use strict';
   var T = window.ApEnvTools, M = window.ApEnvMath, K = window.LevlKit2;
@@ -54,6 +54,7 @@
   function sewRun(i){ return prep(W.lake(SEW_LEVEL(i), SEW_T, W.SEWAGE.stages[i].left.bod)); }
   var CH = [{ value: 'fert', label: 'Fertilizer runoff', short: 'Fertilizer' }, { value: 'heat', label: 'Hot water' }, { value: 'sew', label: 'Sewage' }];
   var STEPS = [{ name: 'Runoff' }, { name: 'Algae bloom' }, { name: 'Algae die' }, { name: 'Decomposers feed' }, { name: 'Oxygen drops' }, { name: 'Dead zone', tone: 'bad' }];
+  var STEP_NAMES = STEPS.map(function(x){ return x.name; });
   var STEP_LONG = ['Rain washes fertilizer off the field. Nitrate and phosphate reach the lake.',
     'Nitrate and phosphate usually limit algae. With more of them, algae multiply and turn the surface green.',
     'The bloom shades itself and runs out of nutrients. Huge numbers of algae die, turn brown and sink.',
@@ -61,9 +62,6 @@
     'Decomposers use oxygen faster than the air can put it back into the bottom water.',
     'Below 2 mg/L the water is hypoxic: fish leave or die. This is a dead zone.'];
   var SEW_STEPS = ['Outfall', 'Algae bloom', 'Algae die', 'Decomposers feed', 'Oxygen drops', 'Dead zone'];
-  // the names a phone shows under the timeline's dots (short enough for six in a row)
-  var SHORT = ['Runoff', 'Bloom', 'Algae die', 'Decom\u00ADposers', 'O\u2082 drops', 'Dead zone'], SHORT_SEW = ['Outfall'].concat(SHORT.slice(1));
-  function tlNames(c){ var n = c === 'sew' ? SEW_STEPS : STEPS.map(function(x){ return x.name; }), sh = c === 'sew' ? SHORT_SEW : SHORT; return n.map(function(x, i){ return { name: x, short: sh[i] }; }); }
   var SEW_LONG = ['Treated water leaves the plant for the lake, with whatever N, P and organic matter the plant left in it.',
     STEP_LONG[1], STEP_LONG[2],
     'Aerobic bacteria break down the dead algae, and any organic matter (BOD) the plant left, using oxygen as they respire.',
@@ -79,7 +77,6 @@
   /* Oxygen as written everywhere (readout, scene, graph, words): one decimal, but two right around the 2 mg/L line,
      so a value just under it never reads "2.0" next to "Dead zone". */
   function fO(o){ return o >= 1.95 && o < 2.05 ? T.F(o, 2) : T.F(o, 1); }
-  function narrow(){ try{ return matchMedia('(max-width: 999.98px)').matches; }catch(e){ return false; } }
 
   /* Colors for the picture (the CSS role colors are in water-pollution.css; these are the blends JS computes). */
   var PAL = {
@@ -178,24 +175,32 @@
     var ex = null, modes = null;
     modes = T.modes(app, { slug: 'water-pollution',
       explore: function(host){ ex = explore(host, data, function(){ return modes; }); },
-      quiz: function(host){ quiz(host, data); },
-      onShow: function(m){ if(ex) ex.shown(m === 'explore'); },
+      quiz: function(host){ ex.quiz(host, data); },
+      onShow: function(m){ if(ex) ex.shown(m); },
       studio: { explore: function(pane, s){ ex.studio(pane, s); } } });
   });
 
-  /* ================================================================ Explore */
+  /* Captions: one sentence each, at most about 15 words (owner round: play vs quiz). */
+  var CAP = ['Rain washes fertilizer off the field and into the lake.',
+    'Nitrate and phosphate feed algae; they multiply and turn the surface green.',
+    'The bloom runs out of nutrients; the algae die, turn brown and sink.',
+    'Bacteria on the bottom break down the dead algae and use oxygen.',
+    'Decomposers use oxygen faster than the air can put it back.',
+    'Below 2 mg/L the water is a dead zone: fish leave or die.'];
+  var REC_CAP = 'The dead algae are used up, so oxygen comes back from the air.';
+  var SEW_CAP = ['Treated water carries leftover nitrogen, phosphorus and organic matter into the lake.'].concat(CAP.slice(1));
+  var SEW_BOD_CAP = 'Bacteria eat the sewage’s organic matter, so oxygen falls before any bloom.';
+
+  /* ================================================================ Explore (free play) and the questions on it */
   function explore(host, data, getModes){
-    var S = { ch: 'fert', sacks: 3, tLake: 20, day: 0, seen: 0, up: 10, warm: 0, stage: 4, sday: 0, sseen: 0, clock: 0, tapped: false, sawDead: false, skipPredict: {} };
+    var S = { ch: 'fert', sacks: 3, tLake: 20, day: 0, seen: 0, up: 10, warm: 0, stage: 4, sday: 0, sseen: 0, clock: 0, mode: 'explore', q: null, blank: false };
     try{ var q0 = new URLSearchParams(location.search).get('ch'); if(q0 === 'heat' || q0 === 'sew') S.ch = q0; }catch(e){}
     var run = prep(W.lake(S.sacks, S.tLake)), sew = sewRun(S.stage);
-    var ghost = { fert: null, sew: null };          // the last run, drawn faint on the graph
-    var runs = { warm: {} };                         // chapter 1 challenge 2: days in a dead zone per temperature, from runs seen to day 60
-    var LS = null, visible = true, nid = T.nid('wp');
+    var LS = null, visible = true, nid = T.nid('wp'), QZ = null, fast = false;
+    function inQuiz(){ return S.mode === 'quiz' && !!S.q; }
 
-    /* ---- the stage: goal (phone), tabs, scene with its controls, step line, timeline, graph */
+    /* ---- the stage: tabs, the scene with its controls on it, Play and the progress line, one caption, the graph */
     var stage = document.createElement('div'); stage.className = 'wp2-stage';
-    var goalEl = document.createElement('div'); goalEl.className = 'wp2-goal'; goalEl.setAttribute('aria-hidden', 'true');
-    stage.appendChild(goalEl);
     var tabs = K.tabs({ label: 'Chapters', items: CH, value: S.ch, onChange: function(v){ setCh(v); } });
     stage.appendChild(tabs.el);
     var sceneBox = document.createElement('div'); sceneBox.className = 'wp2-scene'; sceneBox.id = nid + '-sc';
@@ -204,141 +209,72 @@
     var svg = sceneBox.querySelector('svg'), gStatic = svg.querySelector('.wp2-static'), gDyn = svg.querySelector('.wp2-dyn');
     var layer = K.layer(sceneBox);
     tabs.el.querySelectorAll('.tk2-tab').forEach(function(b){ b.setAttribute('aria-controls', sceneBox.id); });
-    // a key to what the small things in the lake are (algae, dead algae, decomposers, oxygen, nutrients)
-    var legend = document.createElement('ul'); legend.className = 'wp2-legend'; legend.setAttribute('aria-label', 'Key to the lake');
-    legend.innerHTML = '<li><i class="is-alg"></i>Algae</li><li><i class="is-dead"></i>Dead algae</li><li><i class="is-bac"></i>Decomposer bacteria</li><li><i class="is-bub"></i>Oxygen</li><li><i class="is-nut"></i>Nitrate and phosphate</li>';
-    stage.appendChild(legend);
     var bar = document.createElement('div'); bar.className = 'wp2-bar';
-    var player = K.player({ min: 0, max: W.LAKE_DAYS, hold: 2.4,
-      speed: function(v){ var r = S.ch === 'sew' ? sew : run, end = r.firstHyp > -1 ? r.firstHyp + 2 : (r.stages[4] != null ? r.stages[4] + 4 : 18); return v < end ? 1.15 : 6; },
-      // a hold at each step's day (and one just after day 0 for the runoff itself), so each link can be watched
-      stops: function(){ var r = S.ch === 'sew' ? sew : run; if(r.stages[0] == null) return []; return [0.6].concat(r.stages.filter(function(d){ return d != null && d > 0.6; })).filter(function(d, i, a){ return a.indexOf(d) === i; }); },
+    function rNow(){ return S.ch === 'sew' ? sew : run; }
+    var player = K.player({ min: 0, max: W.LAKE_DAYS, hold: 2,
+      speed: function(v){ var r = rNow(), end = r.firstHyp > -1 ? r.firstHyp + 2 : (r.stages[4] != null ? r.stages[4] + 4 : 18); return v < end ? 1.15 : 6; },
+      // a short hold at each step's day (and one just after day 0 for the runoff itself), so each link can be seen
+      stops: function(){ var r = rNow(); if(r.stages[0] == null) return []; return [0.6].concat(r.stages.filter(function(d){ return d != null && d > 0.6; })).filter(function(d, i, a){ return a.indexOf(d) === i; }); },
       get: function(){ return S.ch === 'sew' ? S.sday : S.day; },
       set: function(v){ if(S.ch === 'sew') setSday(v, 'play'); else setDay(v, 'play'); },
-      before: function(){ return beforePlay(); },
-      onHold: function(v){ words(); var r = S.ch === 'sew' ? sew : run, i = W.stageAt(r, v), nm = S.ch === 'sew' ? SEW_STEPS : STEPS.map(function(x){ return x.name; }), lg = S.ch === 'sew' ? SEW_LONG : STEP_LONG; if(i >= 0) say('Step ' + (i + 1) + ', ' + nm[i] + '. ' + lg[i]); },
+      onHold: function(v){ words(); var i = W.stageAt(rNow(), v), nm = S.ch === 'sew' ? SEW_STEPS : STEP_NAMES; if(i >= 0 && !S.blank) say(nm[i] + '. ' + (S.ch === 'sew' ? SEW_CAP : CAP)[i]); },
       labels: { play: 'Play', pause: 'Pause', again: 'Replay' }, onEnd: function(){ if(S.ch === 'sew') setSday(W.LAKE_DAYS, 'play'); else setDay(W.LAKE_DAYS, 'play'); afterRun(); } });
-    player.el.setAttribute('aria-label', 'Play the 60 days, step by step');
-    var speedB = K.speed({ label: 'Play twice as fast', onChange: function(x){ player.rate(x); } });
-    var dayLab = document.createElement('p'); dayLab.className = 'wp2-day'; dayLab.setAttribute('aria-hidden', 'true');
-    var tl = K.timeline({ label: 'The chain, step by step', steps: STEPS.map(function(x, i){ return { name: x.name, short: SHORT[i], tone: x.tone }; }), onPick: pickStep });
-    var barL = document.createElement('div'); barL.className = 'wp2-barl';
-    var barB = document.createElement('div'); barB.className = 'wp2-barb'; barB.appendChild(player.el); barB.appendChild(speedB.el);
-    barL.appendChild(barB); barL.appendChild(dayLab);
-    bar.appendChild(barL); bar.appendChild(tl.el);
+    player.el.setAttribute('aria-label', 'Play the 60 days');
+    var prog = K.progress({ label: 'Day, 0 to 60', min: 0, max: W.LAKE_DAYS, step: 1, value: 0,
+      valuetext: function(v){ return dayText(v); }, onStart: function(){ player.stop(); },
+      onInput: function(v){ if(S.ch === 'sew') setSday(v, 'prog'); else setDay(v, 'prog'); } });
+    bar.appendChild(player.el); bar.appendChild(prog.el);
     stage.appendChild(bar);
-    // the step the day is in, named, with its one line why (held about 2 s at each step during Play)
-    var whyEl = document.createElement('p'); whyEl.className = 'wp2-why';
-    stage.appendChild(whyEl);
-    var predSlot = document.createElement('div'); predSlot.className = 'wp2-predslot';
-    stage.appendChild(predSlot);
+    var cap = document.createElement('p'); cap.className = 'wp2-cap';
+    stage.appendChild(cap);
     var graphBox = document.createElement('div'); graphBox.className = 'wp2-graph';
     graphBox.innerHTML = '<svg class="wp2-gsvg" role="img" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"></svg>';
     stage.appendChild(graphBox);
-    var ghostEl = document.createElement('p'); ghostEl.className = 'wp2-ghost'; ghostEl.hidden = true;
-    stage.appendChild(ghostEl);
     var gsvg = graphBox.querySelector('svg');
-    var scrub = K.scrub(graphBox, { key: 'apenv-wp-graph', chip: false, label: 'Day on the graph', min: 0, max: W.LAKE_DAYS, step: 1, value: 0, rect: [0, 0, 10, 10],
-      valuetext: function(v){ return scrubText(v); }, onStart: function(){ player.stop(); }, onEnd: function(){ gateEnd(S.ch); },
-      onInput: function(v){ if(!gate(S.ch, true, 'move along the graph')){ scrub.value(S.ch === 'fert' ? Math.round(S.day) : S.ch === 'sew' ? Math.round(S.sday) : S.up + S.warm); return; } onScrub(v); } });
+    // the graph follows a drag too (pointer only: the progress line, or the handle on the pipe, is the keyboard's)
+    var scrub = K.scrub(graphBox, { knob: false, label: 'Day on the graph', min: 0, max: W.LAKE_DAYS, step: 1, value: 0, rect: [0, 0, 10, 10],
+      onStart: function(){ player.stop(); }, onInput: function(v){ onScrub(v); } });
+    var live = document.createElement('p'); live.className = 'tk2-sr'; live.setAttribute('aria-live', 'polite');
+    stage.appendChild(live);
     host.appendChild(stage);
 
     /* ---- on-picture controls (placed by each scene's layout) */
     var cSacks = K.drag(layer, { key: 'apenv-wp-sacks', label: 'Fertilizer sacks on the field', min: 0, max: 5, step: 1, value: S.sacks, track: [0, 0, 1, 0], hint: 'Drag',
       valuetext: function(v){ return sk(v) + ' of fertilizer'; }, tag: function(v){ return sk(v); },
       onInput: function(v){ player.stop(); S.sacks = v; newRun(); } });
-    // the lake's thermometer is a control only for challenge 2 (and after); before that it is drawn, at 20 °C
-    var cTemp = K.drag(layer, { key: 'apenv-wp-laket', label: 'Lake temperature', min: 10, max: 30, step: 1, value: S.tLake, track: [0, 1, 0, 0], hint: 'Drag',
-      valuetext: function(v){ return 'Lake at ' + v + ' degrees Celsius'; }, tag: function(v){ return v + ' °C'; },
-      onInput: function(v){ player.stop(); S.tLake = v; newRun(); } });
+    // the lake's thermometer: changeable but quiet (a small knob at the top of its column; its value is written on the picture)
+    var cTemp = K.drag(layer, { quiet: true, label: 'Lake temperature', min: 10, max: 30, step: 1, value: S.tLake, track: [0, 1, 0, 0],
+      valuetext: function(v){ return 'Lake at ' + v + ' degrees Celsius'; }, tag: function(v){ return S.q && S.q.loudTemp ? v + ' °C' : ''; },
+      onInput: function(v){ player.stop(); S.tLake = v; newRun(); }, onEnd: function(){ if(QZ) QZ.changed('temp'); } });
     var cWarm = K.drag(layer, { key: 'apenv-wp-warm', label: 'How much warmer the outflow makes the river downstream', min: 0, max: 15, step: 1, value: S.warm, track: [0, 1, 0, 0], hint: 'Drag',
       valuetext: function(v){ return 'Downstream ' + v + ' degrees warmer, ' + (S.up + v) + ' degrees Celsius'; }, tag: function(v){ return '+' + v + ' °C'; }, tagSide: 'left',
-      onInput: function(v){ if(!gate('heat', true, 'move the outflow handle')){ cWarm.value(S.warm); return; } S.warm = v; heatChanged(); }, onEnd: function(){ gateEnd('heat'); heatSettled(); } });
+      onInput: function(v){ S.warm = v; heatChanged(); } });
     var cTanks = [0, 1, 2, 3, 4].map(function(i){
       return K.tap(layer, { key: i === 1 ? 'apenv-wp-tank' : null, label: i ? 'Stop after ' + SEW_NAMES[i].toLowerCase() + ' treatment' : 'No treatment: raw sewage to the lake', box: [0, 0, 1, 1], pressed: i === S.stage, hint: 'Tap',
-        onClick: function(){ if(gate('sew', false, 'tap a tank')){ gateClear(); setStage(i); } } });
+        onClick: function(){ setStage(i); } });
     });
 
-    /* ---- the side panel: one loop per chapter */
-    var panel = document.createElement('div'); panel.className = 'wp2-panel';
-    var read = K.readout({ items: [] });
-    var P = {}, C = {}, TR = { fert: K.tries({ label: 'Runs you checked' }), heat: K.tries({ label: 'Outflows you checked' }), sew: K.tries({ label: 'Plants you checked' }) };
-    P.fert = K.predict({ q: 'Heavy fertilizer runoff reaches the lake. Three weeks later, the fish...', answer: 'leave',
-      choices: [{ value: 'better', label: 'do better: more food' }, { value: 'same', label: 'are about the same' }, { value: 'leave', label: 'leave or die' }],
-      then: 'Now press Play under the lake.', onPick: function(){ gateClear(); placePredict(); goalNow(); if(S.seen >= 21) judgeFert(); } });
-    P.heat = K.predict({ q: 'The plant adds only heat, no chemicals. Downstream, the river can hold...', answer: 'less',
-      choices: [{ value: 'more', label: 'more oxygen' }, { value: 'same', label: 'the same oxygen' }, { value: 'less', label: 'less oxygen' }],
-      then: 'Now drag the handle on the outflow pipe.', onPick: function(){ gateClear(); placePredict(); goalNow(); if(S.warm > 0) judgeHeat(); } });
-    P.sew = K.predict({ q: 'Which stage removes most of the nitrogen and phosphorus?', answer: '3',
-      choices: [{ value: '1', label: 'Primary' }, { value: '2', label: 'Secondary' }, { value: '3', label: 'Tertiary' }],
-      then: 'Now tap the tanks and watch the N and P left.', onPick: function(){ gateClear(); placePredict(); goalNow(); if(S.tapped) judgeSew(); } });
-    C.fert = K.challenges({ store: 'apenv-wp-fert2', items: [
-        { id: 'safe', text: 'Find the most fertilizer the lake can take without a dead zone.' },
-        { id: 'warm', text: 'Keep 3 sacks. Does a warmer lake have a longer or a shorter dead zone?' },
-        { id: 'link', text: 'Which link in the chain uses up most of the oxygen? Tap it on the timeline.' },
-        { id: 'order', text: 'Explain it back: the six steps in order, then why the low comes late.' }],
-      onAll: function(){ P.fert.fold(true); goalNow(); tempShown(); },
-      done: { more: function(){ return recapFirsts('fert'); }, title: 'Chapter 1 done.', text: 'Fertilizer feeds an algal bloom; when the algae die, decomposers use up the oxygen breaking them down, and below 2 mg/L the lake is a dead zone.',
-        action: { label: 'Next: 2 Hot water', onClick: function(){ tabs.value('heat'); setCh('heat', true); } } },
-      onReset: function(){ firstClear('fert'); TR.fert.clear(); runs.warm = {}; },
-      onShow: function(it){ P.fert.fold(it.id !== 'safe'); chalBody('fert', it); goalNow(); } });
-    C.heat = K.challenges({ store: 'apenv-wp-heat2', items: [
-        { id: 'trout', text: 'Find the warmest outflow that keeps the river downstream liveable for young trout.' },
-        { id: 'pct', text: 'Set the outflow to +10 °C. By about what percent does the oxygen the river can hold fall?' }],
-      onAll: function(){ P.heat.fold(true); goalNow(); },
-      done: { more: function(){ return recapFirsts('heat'); }, title: 'Chapter 2 done.', text: 'Heat alone, with no chemical added, lowers the oxygen water can hold, so cold water fish such as trout lose the river below the plant.',
-        action: { label: 'Next: 3 Sewage', onClick: function(){ tabs.value('sew'); setCh('sew', true); } } },
-      onReset: function(){ firstClear('heat'); TR.heat.clear(); },
-      onShow: function(it){ P.heat.fold(it.id !== 'trout'); chalBody('heat', it); goalNow(); words(); } });
-    C.sew = K.challenges({ store: 'apenv-wp-sew2', items: [
-        { id: 'secondary', text: 'Stop after secondary treatment and play the lake below. What happens?' },
-        { id: 'fewest', text: 'Use the fewest stages that keep the lake below out of a dead zone.' }],
-      onAll: function(){ P.sew.fold(true); goalNow(); },
-      done: { more: function(){ return recapFirsts('sew'); }, title: 'All three chapters done.', text: 'Sewage brings the same N and P as fertilizer, plus organic matter that uses oxygen directly: secondary treatment removes the organic matter, tertiary the N and P that start the bloom chain.',
-        action: { label: 'Test yourself', onClick: function(){ var m = getModes(); if(m) m.show('quiz', true); } } },
-      onReset: function(){ firstClear('sew'); TR.sew.clear(); },
-      onShow: function(it){ P.sew.fold(it.id !== 'secondary'); chalBody('sew', it); goalNow(); } });
-    ['fert', 'heat', 'sew'].forEach(function(k){ P[k].el.setAttribute('data-ch', k); C[k].el.setAttribute('data-ch', k); });
-    panel.appendChild(P.fert.el); panel.appendChild(P.heat.el); panel.appendChild(P.sew.el);
-    panel.appendChild(read.el);
-    panel.appendChild(C.fert.el); panel.appendChild(C.heat.el); panel.appendChild(C.sew.el);
-    host.appendChild(panel);
-
-    /* ---- "?": the reference for the chapter, and the settings */
+    /* ---- "?": the reference for the chapter, and the setting */
     var ref = document.createElement('div'); ref.className = 'ls-sec wp2-ref';
     host.appendChild(ref);
-    var sUp = T.slider({ label: 'River temperature upstream', min: 5, max: 20, step: 1, value: S.up, unit: '°C', onInput: function(v){ S.up = v; TR.heat.clear(); heatChanged(true); } });
+    var sUp = T.slider({ label: 'River temperature upstream', min: 5, max: 20, step: 1, value: S.up, unit: '°C', onInput: function(v){ S.up = v; heatChanged(); } });
     var setBox = document.createElement('div'); setBox.className = 'wp2-set'; setBox.appendChild(sUp.el);
 
     /* ------------------------------------------------------- state changes */
     function newRun(){
-      if(S.seen > 0) ghost.fert = { O: run.O, upto: S.seen, label: sk(run.level) + ', ' + run.T + ' °C' };
       run = prep(W.lake(S.sacks, S.tLake));
-      // challenge 2 compares 3 sacks at 20 °C with 30 °C: the faint line is the other one of those two runs once it
-      // has been run to day 60 (never a run with other sacks)
-      warmGhost();
-      S.seen = 0; S.day = 0; player.reset();
-      dirtyG = true; words(); refHtml(); chalSync(); draw();
-      say(sk(S.sacks) + ', lake at ' + S.tLake + ' °C. Press Play, or drag along the graph.');
-    }
-    function warmGhost(){
-      var cw_ = C.fert && C.fert.current();
-      if(!cw_ || cw_.id !== 'warm' || C.fert.isMet('warm')) return;
-      var oT = S.tLake === 30 ? 20 : S.tLake === 20 ? 30 : 20;
-      ghost.fert = S.sacks === 3 && runs.warm[oT] != null ? { O: prep(W.lake(3, oT)).O, upto: W.LAKE_DAYS, label: sk(3) + ', ' + oT + ' °C', cap: 'your run with ' + sk(3) + ' at ' + oT + ' °C, to compare' } : null;
-      dirtyG = true;
+      // Explore keeps the day (change a thing, see it at once); a question starts its run from day 0
+      if(inQuiz()){ S.seen = 0; S.day = 0; player.reset(); prog.value(0); }
+      dirtyG = true; words(); refHtml(); if(QZ) QZ.changed('run'); draw();
+      say(sk(S.sacks) + ', lake at ' + S.tLake + ' °C. ' + dayLine());
     }
     function setDay(v, how){
       S.day = clamp(v, 0, W.LAKE_DAYS);
-      // the chain counts as watched once Play or a drag along the graph reaches the dead zone (or day 21)
-      if((how === 'play' || how === 'scrub') && !S.watched && S.day >= Math.min(21, run.firstHyp > -1 ? run.firstHyp : 21)){ S.watched = true; chalSync(); if(CB.fert && CB.fert.msg && /turns into Check/.test(CB.fert.msg.textContent)) msg('fert', 'Chain watched. Now change the sacks and press Check.', true); }
-      if(S.day > S.seen){ S.seen = S.day; dirtyG = true; }
-      if(run.firstHyp > -1 && S.seen >= run.firstHyp) S.sawDead = true;
+      if(S.day > S.seen) S.seen = S.day;
       if(how !== 'scrub') scrub.value(Math.round(S.day));
-      dirtyG = true;
-      if(S.seen >= 21 && !P.fert.settled() && (P.fert.picked() || S.skipPredict.fert || S.seen >= W.LAKE_DAYS - 1e-9)) judgeFert();
-      if(S.seen >= W.LAKE_DAYS - 1e-9) seenAll();
-      words();
+      if(how !== 'prog') prog.value(S.day);
+      dirtyG = true; words();
+      if(S.seen >= W.LAKE_DAYS - 1e-9 && QZ) QZ.changed('seen');
       if(how !== 'play'){ say(dayLine()); if(!player.playing()) player.paint(); }
       if(!looping) draw();
     }
@@ -346,489 +282,388 @@
       S.sday = clamp(v, 0, W.LAKE_DAYS);
       if(S.sday > S.sseen) S.sseen = S.sday;
       if(how !== 'scrub') scrub.value(Math.round(S.sday));
+      if(how !== 'prog') prog.value(S.sday);
       dirtyG = true; words();
-      if(S.sseen >= W.LAKE_DAYS - 1e-9) chalSync();
+      if(S.sseen >= W.LAKE_DAYS - 1e-9 && QZ) QZ.changed('seen');
       if(how !== 'play'){ say(sewDayLine()); if(!player.playing()) player.paint(); }
       if(!looping) draw();
     }
-    // a run seen to day 60 (Play or the graph): chapter 1 challenge 2 keeps it
-    function seenAll(){
-      if(S.sacks === 3 && (S.tLake === 20 || S.tLake === 30)){ runs.warm[S.tLake] = run.hypoxicDays; }
-      chalSync();
-    }
-    function afterRun(){ if(S.ch === 'sew') say(sewDayLine() + ' Lowest ' + F(sew.min) + ' mg/L on day ' + sew.minDay + '.'); else say(dayLine() + ' Lowest ' + F(run.min) + ' mg/L on day ' + run.minDay + '.'); }
+    function afterRun(){ var r = rNow(); say((S.ch === 'sew' ? sewDayLine() : dayLine()) + ' Lowest ' + F(r.min) + ' mg/L on day ' + r.minDay + '.'); }
     function onScrub(v){
       if(S.ch === 'fert') setDay(v, 'scrub');
-      else if(S.ch === 'heat'){ var w = clamp(Math.round(v - S.up), 0, 15); if(w !== S.warm){ S.warm = w; cWarm.value(w); heatChanged(); } }
+      else if(S.ch === 'heat'){ var w = clamp(Math.round(v - S.up), 0, 15); if(w !== S.warm && !(S.q && S.q.hideWarm)){ S.warm = w; cWarm.value(w); heatChanged(); } }
       else setSday(v, 'scrub');
     }
-    function scrubText(v){
-      if(S.ch === 'fert') return 'Day ' + v + ', bottom water ' + fO(at(run.O, v)) + ' milligrams per liter';
-      if(S.ch === 'heat') return v + ' degrees Celsius downstream, holds ' + F(W.osat(v)) + ' milligrams per liter';
-      return 'Lake below, day ' + v + ', bottom water ' + fO(at(sew.O, v)) + ' milligrams per liter';
-    }
-    /* One rule for every chapter's first action (Play, Check, the graph, the outflow handle, a tank): the first time,
-       with no prediction yet, it does nothing but point at Predict ("Predict first: tap one"); the next try acts. A
-       drag counts as one try until it is let go (gateEnd). */
-    /* what: the action just tried, named in the nudge ("press Play again"); near: a message line next to that
-       control. When Predict is off screen and the control has a line of its own (Check in the challenge card on a
-       phone), the nudge is shown there with a "Go to Predict" link instead of scrolling the page away. */
-    function gate(c, drag, what, near){
-      var p = P[c], k = S.skipPredict[c];
-      if(p.picked() || p.settled() || k === true) return true;
-      if(!k){
-        S.skipPredict[c] = 'pending'; placePredict(true);
-        var again = what || 'press Play', line = 'Predict first: tap one. (Or ' + again + ' again to skip.)';
-        var r = p.el.getBoundingClientRect(), vh = window.innerHeight || 800, seen = r.top >= 0 && r.bottom <= vh;
-        if(!seen && near){
-          p.nudge(line, true);
-          near.innerHTML = note('<b>Predict first.</b> Tap one of the three choices in Predict. (Or ' + esc(again) + ' again to skip.)', true);
-          var go = btn('Go to Predict', function(){ try{ p.el.scrollIntoView({ block: 'center', behavior: K.reduced() ? 'auto' : 'smooth' }); }catch(e){} var f = p.el.querySelector('.tk2-opt'); if(f) f.focus({ preventScroll: true }); });
-          go.className = 'tk2-link wp2-again'; near.querySelector('.tk2-note').appendChild(go);
-          S.gateNear = near;
-          try{ near.scrollIntoView({ block: 'nearest', behavior: K.reduced() ? 'auto' : 'smooth' }); }catch(e){}
-        } else {
-          p.nudge(line);
-          // a phone or tablet: bring Predict into view gently, only as far as needed
-          if(!seen) try{ p.el.scrollIntoView({ block: 'nearest', behavior: K.reduced() ? 'auto' : 'smooth' }); }catch(e){}
-        }
-      }
-      // a drag (or a key held on a handle) is one try: it ends at release, or after a short pause
-      if(!drag) gateEnd(c); else { clearTimeout(gateT[c]); gateT[c] = setTimeout(function(){ gateEnd(c); }, 700); }
-      return false;
-    }
-    var gateT = {};
-    function gateEnd(c){ if(S.skipPredict[c] === 'pending') S.skipPredict[c] = true; }
-    // the gate's line next to a Check button goes once a prediction is made (or the next try acts)
-    function gateClear(){ if(S.gateNear){ if(S.gateNear.querySelector('.wp2-again') && /Predict first/.test(S.gateNear.textContent)) S.gateNear.innerHTML = ''; S.gateNear = null; } }
-    function beforePlay(){
-      if(!gate(S.ch, false, 'press Play')) return false;
-      gateClear();
-      if(S.ch === 'fert' && S.seen >= W.LAKE_DAYS - 1e-9 && S.day >= W.LAKE_DAYS - 1e-9){ S.day = 0; }
-      return true;
-    }
-    function heatChanged(fromSetting){
-      if(fromSetting){ S.warm = clamp(S.warm, 0, 15); }
-      dirtyG = true; words(); refHtml();
-      if(P.heat.settled()) judgeHeat();
-      chalSync(); say(heatLine()); if(!looping) draw();
-    }
-    function heatSettled(){
-      if(S.warm > 0 && P.heat.picked()) judgeHeat();
-      else if(S.warm > 0 && !P.heat.settled()){ P.heat.result(null, ''); judgeHeat(); }
-    }
+    function heatChanged(){ dirtyG = true; words(); refHtml(); if(QZ) QZ.changed('warm'); say(heatLine()); if(!looping) draw(); }
     function setStage(i){
-      if(S.sseen > 0) ghost.sew = { O: sew.O, upto: S.sseen, label: SEW_NAMES[S.stage] };
-      S.stage = i; S.tapped = true;
-      sew = sewRun(i); S.sday = 0; S.sseen = 0; player.stop(); player.reset();
+      S.stage = i;
+      sew = sewRun(i); S.sday = 0; S.sseen = 0; player.stop(); player.reset(); prog.value(0);
       cTanks.forEach(function(t, k){ t.pressed(k === i); });
-      dirtyG = true; words(); refHtml();
-      if(!P.sew.settled()){ if(P.sew.picked()) judgeSew(); else { var L3 = W.SEWAGE.stages; P.sew.result(null, '<b>No prediction this time.</b> Tertiary treatment removes most of the N and P (' + L3[2].left.nutrients + '% left after secondary, ' + L3[3].left.nutrients + '% after tertiary).'); P.sew.fold(true); placePredict(); } }
-      chalSync(); say(sewLine()); if(!looping) draw();
+      dirtyG = true; words(); refHtml(); if(QZ) QZ.changed('stage'); say(sewLine()); if(!looping) draw();
     }
-    function pickStep(i){
-      var r = S.ch === 'sew' ? sew : run, day = r.stages[i];
-      var cur = C.fert.current();
-      var lk = S.ch === 'fert' && cur && cur.id === 'link' && !C.fert.isMet('link') ? answerLink(i) : null;
-      if(day == null){ say((S.ch === 'sew' ? SEW_STEPS : STEPS.map(function(x){ return x.name; }))[i] + ' is not reached in this run.'); return; }
+    // Check (Test yourself): play the run to day 60 at once and show its worst day
+    function revealRun(){
       player.stop();
-      if(S.ch === 'sew') setSday(day, 'tap'); else setDay(day, 'tap');
-      // a phone: the challenge card is far below, so the locked line also shows under the timeline
-      if(lk === 'locked' && narrow()) whyEl.insertAdjacentHTML('beforeend', ' <span class="wp2-why-x">Locked for a moment: read the hint in the challenge below, then press Try again.</span>');
+      if(S.ch === 'sew'){ S.sseen = W.LAKE_DAYS; setSday(sew.minDay, 'tap'); }
+      else { S.seen = W.LAKE_DAYS; setDay(run.minDay, 'tap'); }
     }
-    function setCh(v, focus){
+    function setCh(v){
       if(v === S.ch) return;
       player.stop(); player.reset(); S.ch = v; layoutNow(); syncCh();
       say({ fert: 'Chapter 1, fertilizer runoff. ', heat: 'Chapter 2, hot water. ', sew: 'Chapter 3, sewage. ' }[v] + (v === 'fert' ? dayLine() : v === 'heat' ? heatLine() : sewLine()));
-      if(focus){ var t = tabs.el.querySelector('[aria-selected="true"]'); if(t) t.focus(); }
     }
     function syncCh(){
-      var c = S.ch;
+      var c = S.ch, q = S.q || {};
       stage.setAttribute('data-ch', c);
-      panel.querySelectorAll('[data-ch]').forEach(function(e){ e.hidden = e.getAttribute('data-ch') !== c; });
-      bar.hidden = c === 'heat'; whyEl.hidden = c === 'heat'; legend.hidden = c === 'heat';
-      tl.names(tlNames(c));
-      // the explain back hides chapter 1's step names only; every other chapter keeps its names
-      tl.blank(S.blank && c === 'fert'); whyEl.classList.toggle('is-blank', !!S.blank && c === 'fert');
-      tl.el.setAttribute('aria-label', c === 'sew' ? 'The chain in the lake below, step by step' : 'The chain, step by step');
-      cSacks.hide(c !== 'fert'); cWarm.hide(c !== 'heat'); cTanks.forEach(function(t){ t.el.hidden = c !== 'sew'; });
-      tempShown();
-      read.items(c === 'fert' ? [{ k: 'o', label: 'Bottom O₂' }, { k: 'a', label: 'Algae' }, { k: 'z', label: 'Dead zone' }]
-        : c === 'heat' ? [{ k: 'u', label: 'Upstream' }, { k: 'd', label: 'Downstream' }]
-        : [{ k: 'n', label: 'N and P left' }, { k: 'b', label: 'BOD left' }, { k: 'o', label: 'Lake below' }], c === 'fert' ? 'Right now' : c === 'heat' ? 'Most oxygen the river can hold' : 'After the plant');
-      var sp = c === 'fert' ? { min: 0, max: W.LAKE_DAYS, v: Math.round(S.day), l: 'Day on the graph' } : c === 'heat' ? { min: S.up, max: S.up + 15, v: S.up + S.warm, l: 'Temperature downstream, on the graph' } : { min: 0, max: W.LAKE_DAYS, v: S.sday, l: 'Day in the lake below, on the graph' };
-      scrub.input.setAttribute('aria-label', sp.l);
+      if(tabs.value() !== c) tabs.value(c);
+      bar.hidden = c === 'heat' || !!q.hideTime;
+      cSacks.hide(c !== 'fert' || !!q.hideSacks);
+      // in a question the lake's temperature is fixed, except where the question is about it
+      cTemp.hide(c !== 'fert' || (inQuiz() && !q.loudTemp));
+      cTemp.el.classList.toggle('is-quiet', !q.loudTemp);
+      cWarm.hide(c !== 'heat' || !!q.hideWarm);
+      cTanks.forEach(function(t){ t.el.hidden = c !== 'sew' || !!q.hideTaps; });
+      var r = rNow();
+      prog.marks(c === 'heat' ? [] : r.stages.filter(function(d){ return d != null; }));
+      prog.value(c === 'sew' ? S.sday : S.day);
+      prog.input.setAttribute('aria-label', c === 'sew' ? 'Day in the lake below, 0 to 60' : 'Day, 0 to 60');
+      var sp = c === 'heat' ? { min: S.up, max: S.up + 15, v: S.up + S.warm } : { min: 0, max: W.LAKE_DAYS, v: Math.round(c === 'sew' ? S.sday : S.day) };
       scrub.place(null, sp.min, sp.max); scrub.value(sp.v);
-      placePredict();
       if(LS && LS.detailsTitle) LS.detailsTitle(c === 'fert' ? 'How the lake works' : c === 'heat' ? 'How the river works' : 'How the plant works');
-      goalNow(true);
-      try{ var u = new URL(location.href); if(c === 'fert') u.searchParams.delete('ch'); else u.searchParams.set('ch', c); history.replaceState(history.state, '', u); }catch(e){}
+      try{ if(S.mode === 'explore'){ var u = new URL(location.href); if(c === 'fert') u.searchParams.delete('ch'); else u.searchParams.set('ch', c); history.replaceState(history.state, '', u); } }catch(e){}
       dirtyG = true; words(); refHtml(); draw();
     }
-    // the thermometer's handle: only once challenge 2 is open (or met); until then the lake's thermometer is drawn
-    function tempShown(){
-      var on = S.ch === 'fert' && (C.fert.isMet('warm') || (C.fert.current() && C.fert.current().id === 'warm') || !C.fert.current());
-      cTemp.hide(!on); S.tempOn = on;
-      if(!on && S.tLake !== 20 && S.ch === 'fert'){ S.tLake = 20; cTemp.value(20); run = prep(W.lake(S.sacks, 20)); S.seen = 0; S.day = 0; }
-    }
-    // Predict lives under Play on a phone or tablet until it is answered (so it comes before the run), else in the panel
-    function placePredict(force){
-      ['fert', 'heat', 'sew'].forEach(function(k){
-        var p = P[k], under = narrow() && !p.picked() && !p.settled();
-        var host_ = under ? predSlot : panel;
-        if(p.el.parentNode !== host_){ if(host_ === panel) panel.insertBefore(p.el, read.el); else predSlot.appendChild(p.el); }
-        p.el.hidden = k !== S.ch;
-      });
-      predSlot.hidden = !predSlot.querySelector('.tk2-predict:not([hidden])');
-    }
-    var goalKey = '';
-    function goalNow(force){
-      var c = S.ch, cur = C[c].current(), p = P[c], g;
-      var title = c === 'fert' ? 'Follow fertilizer from a field to the fish.' : c === 'heat' ? 'See what heat alone does to a river.' : 'Find the stage that protects the lake below.';
-      var todo;
-      if(!cur) todo = c === 'sew' ? 'All chapters done. Try Test yourself.' : 'Chapter done. Next: ' + (c === 'fert' ? '2 Hot water.' : '3 Sewage.');
-      else if(!p.picked() && !p.settled()) todo = c === 'heat' ? 'Pick a prediction, then drag the handle on the outflow pipe.' : c === 'sew' ? 'Pick a prediction, then tap a tank.' : 'Pick a prediction, then press Play.';
-      else if(c === 'fert' && S.seen < 21 && !P.fert.settled() && !C.fert.isMet('safe')) todo = 'Press Play and watch each step of the chain.';
-      else if(c === 'fert' && cur.id === 'safe' && !S.watched) todo = 'Press Play once and watch the chain. Then use Check.';
-      else if(c === 'sew' && S.sseen < 1 && cur.id === 'secondary' && S.stage === 2) todo = 'Press Play under the lake and watch the chain.';
-      else todo = { safe: 'Change the sacks, then press Check.', warm: 'Run the lake at 20 °C and at 30 °C.', link: 'Tap the step that uses up the oxygen.', order: 'Put the six steps in order.',
-        trout: 'Drag the outflow handle, then press Check.', pct: 'Set +10 °C and read both gauges.', secondary: 'Tap Secondary, then press Play under the lake.', fewest: 'Tap a tank, then press Check.' }[cur.id];
-      g = { kicker: 'Goal', title: title, todo: todo };
-      var key = c + '|' + todo;
-      if(key === goalKey && !force) return;
-      goalKey = key;
-      goalEl.innerHTML = '<b>' + esc(title) + '</b> <span>' + esc(todo) + '</span>';
-      if(LS) LS.task(g, 'explore');
-    }
 
-    /* ------------------------------------------------------- words: readout, step line, announcements */
-    function say(t){ read.say(t); }
+    /* ------------------------------------------------------- words: the progress line's name, the caption, announcements */
+    function say(t){ live.textContent = ''; setTimeout(function(){ live.textContent = t; }, 20); }
     function oNow(){ return at(run.O, S.day); }
+    function dayText(v){ var o = at(rNow().O, v); return (S.ch === 'sew' ? 'Lake below, day ' : 'Day ') + Math.round(v) + ', bottom water ' + fO(o) + ' milligrams per liter, ' + status(o).status.toLowerCase(); }
     function dayLine(){ var o = oNow(), st = status(o); return 'Day ' + Math.round(S.day) + ': bottom water ' + fO(o) + ' mg/L, ' + st.status.toLowerCase() + '.'; }
     function heatPts(){ var t0 = S.up, t1 = S.up + S.warm; return { t0: t0, t1: t1, d0: r1(W.osat(t0)), d1: r1(W.osat(t1)) }; }
     function pctLess(h){ return Math.abs(M.Calc().percentChange(h.d0, h.d1)); }
     function heatLine(){ var h = heatPts(); return 'Upstream ' + h.t0 + ' °C holds up to ' + F(h.d0) + ' mg/L. Downstream ' + h.t1 + ' °C holds up to ' + F(h.d1) + ' mg/L.' + (h.d1 < TROUT ? ' Less than young trout need.' : ''); }
-    function sewLine(){ var lf = W.SEWAGE.stages[S.stage].left; return (S.stage ? 'Treated through ' + SEW_NAMES[S.stage].toLowerCase() : 'No treatment') + ': ' + lf.nutrients + '% of the nitrogen and phosphorus and ' + lf.bod + '% of the organic matter left. Press Play to follow the lake below.'; }
+    function sewLine(){ var lf = W.SEWAGE.stages[S.stage].left; return (S.stage ? 'Treated through ' + SEW_NAMES[S.stage].toLowerCase() : 'No treatment') + ': ' + lf.nutrients + '% of the nitrogen and phosphorus and ' + lf.bod + '% of the organic matter left.'; }
     function sewDayLine(){ var o = at(sew.O, S.sday); return 'Lake below, day ' + Math.round(S.sday) + ': bottom water ' + fO(o) + ' mg/L, ' + status(o).status.toLowerCase() + '.'; }
-    function deadSoFar(r, d){ var n = 0; for(var i = 0; i <= Math.floor(d); i++) if(r.O[i] < W.HYPOXIC) n++; return n; }
-    function algSub(r, d){
-      var A = at(r.A, d), q = A / r.A[0];
-      if(q > 3 && A >= 0.5 * r.peakA) return d <= r.peakDay ? 'a bloom' : 'bloom dying';
-      if(d > r.peakDay && q > 1.5) return 'after bloom';
-      return '';
+    function heatCap(){
+      var h = heatPts();
+      if(S.q && S.q.hideWarm) return '';
+      if(S.warm === 0) return inQuiz() ? '' : 'Drag the handle on the pipe to warm the river.';
+      return 'Warmer water holds less oxygen: ' + F(pctLess(h), 0) + '% less downstream' + (h.d1 < TROUT ? ', too little for young trout.' : '.');
     }
     function words(){
-      var c = S.ch;
-      if(c === 'fert'){
-        var o = oNow(), a = at(run.A, S.day) / run.A[0];
-        read.set('o', Object.assign({ value: fO(o), unit: 'mg/L' }, status(o)));
-        read.set('a', { value: a < 10 ? F(a) : String(Math.round(a)), unit: '× day 0', sub: algSub(run, S.day) });
-        var z = deadSoFar(run, S.day);
-        read.set('z', { value: String(z), unit: z === 1 ? 'day' : 'days', sub: S.day < 0.5 && S.seen < 0.5 ? 'press Play' : 'by day ' + Math.round(S.day) });
-        dayLab.innerHTML = '<b>Day ' + Math.round(S.day) + '</b> of 60';
-        stepUi(run, S.day, S.seen, STEP_LONG, STEPS.map(function(x){ return x.name; }), S.sacks > 0);
-      } else if(c === 'heat'){
-        var h = heatPts(), pc = C.heat.current(), hidePct = pc && pc.id === 'pct' && !C.heat.isMet('pct');
-        read.set('u', { value: F(h.d0), unit: 'mg/L', sub: 'at ' + h.t0 + ' °C' });
-        read.set('d', Object.assign({ value: F(h.d1), unit: 'mg/L', sub: 'at ' + h.t1 + ' °C' + (h.t1 > h.t0 && !hidePct ? ', ' + F(pctLess(h), 0) + '% less' : '') },
-          h.d1 >= TROUT ? { status: 'Trout can breed', tone: 'good' } : { status: 'Too little for trout', tone: 'bad' }));
-      } else {
-        var lf = W.SEWAGE.stages[S.stage].left, so = at(sew.O, S.sday);
-        read.set('n', { value: String(lf.nutrients), unit: '%', status: lf.nutrients > 50 ? 'Feeds algae' : 'Removed', tone: lf.nutrients > 50 ? 'warn' : 'good' });
-        read.set('b', { value: String(lf.bod), unit: '%', status: lf.bod > 30 ? 'Uses oxygen' : 'Removed', tone: lf.bod > 30 ? 'warn' : 'good' });
-        read.set('o', Object.assign({ value: fO(so), unit: 'mg/L' }, status(so)));
-        dayLab.innerHTML = '<b>Day ' + Math.round(S.sday) + '</b> of 60';
-        stepUi(sew, S.sday, S.sseen, SEW_LONG, SEW_STEPS, true);
+      var c = S.ch, nm = '', line = '';
+      if(c === 'heat') line = heatCap();
+      else {
+        var r = rNow(), d = c === 'sew' ? S.sday : S.day, ph = phase(r, d), names = c === 'sew' ? SEW_STEPS : STEP_NAMES, caps = c === 'sew' ? SEW_CAP : CAP;
+        if(c === 'fert' && S.sacks === 0){ nm = ''; line = 'No fertilizer, so nothing feeds the algae and the chain never starts.'; }
+        else if(d < 0.01 && !player.playing()){ nm = ''; line = inQuiz() ? '' : c === 'sew' ? 'Tap a tank, then press Play.' : 'Drag the sacks, then press Play.'; }
+        else if(ph.rec){ nm = 'Recovery'; line = REC_CAP; }
+        else if(ph.cur < 0){ nm = ''; }
+        else { nm = names[ph.cur]; line = c === 'sew' && ph.cur < 2 && r.bod > 30 ? SEW_BOD_CAP : caps[ph.cur]; }
       }
-      goalNow();
-    }
-    // the timeline and the step line, from one rule (phase) shared with the scene
-    function stepUi(r, d, seen, LONG, NAMES, any){
-      var ph = phase(r, d), held = player.holding();
-      var reached = r.stages.map(function(x){ return x != null && d >= x - 1e-9; });
-      tl.set({ reached: reached, current: ph.rec ? -1 : ph.cur, sub: r.stages.map(function(x){ return x == null ? (seen >= W.LAKE_DAYS - 1e-9 ? 'not reached' : '') : seen >= x ? 'day ' + x : ''; }), off: r.stages.map(function(x){ return x == null; }) });
-      var h;
-      if(!any) h = '<b>No fertilizer.</b> Nothing feeds the algae, so the chain never starts.';
-      else if(d < 0.01 && seen < 0.5) h = '<b>Press Play</b> to watch the chain one step at a time, or tap a step.';
-      else if(ph.rec) h = '<b>Recovery.</b> ' + REC_LONG;
-      else if(ph.cur < 0) h = '';
-      else h = '<b>' + (ph.cur + 1) + ' ' + esc(NAMES[ph.cur]) + '.</b> ' + esc(LONG[ph.cur]);
-      if(S.ch === 'sew' && !ph.rec && ph.cur >= 0 && ph.cur < 2 && r.bod > 30 && d > 0.5) h += ' <span class="wp2-why-x">Bacteria are already eating the sewage’s organic matter, so the oxygen falls even before the bloom.</span>';
-      if(S.blank && S.ch === 'fert') h = '<b>Explain it back.</b> The step names are hidden until you have put them in order.';
-      whyEl.innerHTML = h;
-      whyEl.classList.toggle('is-hold', held != null);
-      whyEl.classList.toggle('is-bad', !ph.rec && ph.cur === 5 && ph.o < W.HYPOXIC);
+      // putting the steps in order (Test yourself): nothing on the stage names them
+      if(S.blank){ nm = ''; line = ''; }
+      prog.name(nm);
+      if(cap.textContent !== line) cap.textContent = line;
+      cap.classList.toggle('is-bad', !S.blank && c !== 'heat' && phase(rNow(), c === 'sew' ? S.sday : S.day).o < W.HYPOXIC);
+      cap.hidden = !line;
+      prog.input.setAttribute('aria-valuetext', dayText(c === 'sew' ? S.sday : S.day));
     }
 
-    /* ------------------------------------------------------- predictions */
-    function judgeFert(){
-      var p = P.fert.picked(), hyp = false;
-      if(!p){ var lw = Math.min.apply(null, run.O.slice(0, 22)); P.fert.result(null, '<b>No prediction this time.</b> ' + (lw < W.HYPOXIC ? 'The bottom water fell to ' + F(lw) + ' mg/L, a dead zone: decomposers breaking down the dead algae used up the oxygen.' : 'The lowest bottom oxygen by day 21 was ' + F(lw) + ' mg/L.')); placePredict(); goalNow(); return; } for(var i = 0; i <= 21; i++) if(run.O[i] < W.HYPOXIC) hyp = true;
-      var lowest = Math.min.apply(null, run.O.slice(0, 22));
-      // the prediction is about heavy runoff: a light run does not settle it
-      if(S.sacks < 3 && !hyp){ P.fert.note('This run has only ' + sk(S.sacks) + ' (lowest ' + F(lowest) + ' mg/L). To test your prediction, set 3 or more and play past day 21.'); return; }
-      if(hyp) P.fert.result(p === 'leave', (p === 'leave' ? '<b>Held.</b> ' : '<b>Not quite.</b> ') + 'The bottom water fell to ' + F(lowest) + ' mg/L, a dead zone: decomposers breaking down the dead algae used up the oxygen.');
-      else if(lowest >= HEALTHY) P.fert.result(p === 'same', (p === 'same' ? '<b>Held</b> in this cold lake. ' : '<b>Not in this cold lake.</b> ') + 'At ' + S.tLake + ' °C the oxygen never fell below ' + F(lowest) + ' mg/L: cold water holds more oxygen, and decomposers work slower.');
-      else P.fert.result(null, '<b>Partly.</b> The oxygen fell to ' + F(lowest) + ' mg/L: stressed, not a dead zone. Decomposers used oxygen, but not enough to go below 2 mg/L.');
-      goalNow();
-    }
-    function judgeHeat(){
-      var p = P.heat.picked(), h = heatPts(), held = p ? p === 'less' : null, lead = !p ? '<b>No prediction this time.</b> ' : held ? '<b>Held.</b> ' : '<b>Not quite.</b> ';
-      if(!p && !P.heat.settled()) return;
-      if(S.warm === 0){ if(P.heat.settled()) P.heat.result(held, lead + 'With no warm water both sides hold ' + F(h.d0) + ' mg/L. Drag the handle up to see the difference.'); return; }
-      P.heat.result(held, lead + 'At ' + h.t1 + ' °C the river can hold only ' + F(h.d1) + ' mg/L, ' + F(pctLess(h), 0) + '% less than upstream at ' + h.t0 + ' °C: warmer water holds less gas.');
-      goalNow();
-    }
-    function judgeSew(){
-      var p = P.sew.picked(), L = W.SEWAGE.stages;
-      P.sew.result(p === '3', (p === '3' ? '<b>Right.</b> ' : '<b>Not quite.</b> ') + 'Tertiary treatment takes N and P from ' + L[2].left.nutrients + '% left to ' + L[3].left.nutrients + '%. Primary and secondary leave most of them, so they feed algae downstream.');
-      goalNow();
-    }
-
-    /* ------------------------------------------------------- challenges */
+    /* ======================================================= Test yourself: the questions on the picture
+       One question at a time on the same scene (the chapter tabs step aside; the dropdown at the stage's top left
+       picks the chapter's questions or the practice problems). Each has the hint ladder; "Show the answer" opens
+       after one try; a wrong choice is crossed out with its reason; the first try is kept for the chapter's card. */
+    var runsWarm = {};   // the warm question: days in a dead zone per temperature, from runs checked to day 60
+    function maxSafe(Tc){ var best = -1; for(var l = 0; l <= 5; l++) if(W.lake(l, Tc).hypoxicDays === 0) best = l; else break; return best; }
+    function trBest(){ var best = -1; for(var w = 0; w <= 15; w++) if(r1(W.osat(S.up + w)) >= TROUT) best = w; return best; }
+    function fewest(){ for(var k = 0; k <= 4; k++) if(sewRun(k).hypoxicDays === 0) return k; return 4; }
     function note(html, info){ return '<p class="tk2-note' + (info ? ' is-info' : '') + '">' + html + '</p>'; }
     function btn(label, onClick, cls){ var b = document.createElement('button'); b.type = 'button'; b.className = 'tk2-btn' + (cls ? ' ' + cls : ''); b.innerHTML = label; b.addEventListener('click', function(){ onClick(b); }); return b; }
-    function btnRow(list, onPick){
-      var row = document.createElement('div'); row.className = 'tk2-row'; row.setAttribute('data-ls-allchips', '');
-      list.forEach(function(x){ var b = btn(esc(x.label), function(bb){ onPick(x.v, bb); }); b.setAttribute('data-v', x.v); row.appendChild(b); });
-      return row;
-    }
-    function maxSafe(Tc){ var best = -1; for(var l = 0; l <= 5; l++) if(W.lake(l, Tc).hypoxicDays === 0) best = l; else break; return best; }
-    var CB = {};   // the open challenge's live bits (its check button, its message line)
-    function msg(c, html, info){ var m = CB[c] && CB[c].msg; if(m) m.innerHTML = html ? note(html, info) : ''; }
-    /* First tries on the multiple choice questions, kept per device and shown in the chapter's recap. */
-    var FIRST = {}, QNAME = { warmLS: 'Longer or shorter', warmWhy: 'Why longer', link: 'Which link uses the oxygen', order: 'The six steps in order', cause: 'Why the low comes late', pct: 'Percent less', secondary: 'After secondary' };
-    ['fert', 'heat', 'sew'].forEach(function(c){ try{ FIRST[c] = JSON.parse(localStorage.getItem('wp2first:' + c) || '{}') || {}; }catch(e){ FIRST[c] = {}; } });
-    function first(c, id, ok){ if(FIRST[c][id] != null) return; FIRST[c][id] = !!ok; try{ localStorage.setItem('wp2first:' + c, JSON.stringify(FIRST[c])); }catch(e){} }
-    function firstClear(c){ FIRST[c] = {}; try{ localStorage.removeItem('wp2first:' + c); }catch(e){} }
-    function recapFirsts(c){
-      var ks = Object.keys(FIRST[c]); if(!ks.length) return '';
-      var n = ks.filter(function(k){ return FIRST[c][k]; }).length;
-      return 'Right on the first try: ' + n + ' of ' + ks.length + '. ' + ks.map(function(k){ return '<i class="is-' + (FIRST[c][k] ? 'ok' : 'no') + '">' + (FIRST[c][k] ? '✓' : '✗') + '</i> ' + esc(QNAME[k] || k); }).join(', ') + '.';
-    }
-    /* A multiple choice question: a wrong pick shows its reason and locks the choices until the student presses
-       "Try again" (read the reason first; no rapid guessing). The first answer is kept for the recap. */
-    function mcq(c, id, list, right, why, onRight, ready){
-      var wrap = document.createElement('div'), lock = false;
-      var row = btnRow(list, function(v, b){
-        if(lock) return;
-        if(ready && !ready()) return;
-        first(c, id, v === right);
-        if(v === right){ onRight(); return; }
-        b.disabled = true; b.classList.add('is-no');
-        // two choices: nothing to lock (only one is left). Show the reason and leave the other choice to tap.
-        if(list.length < 3){
-          msg(c, why[v]);
-          var m2 = CB[c] && CB[c].msg, p2 = m2 && m2.querySelector('.tk2-note'); if(p2){ p2.tabIndex = -1; p2.focus({ preventScroll: true }); }
-          return;
-        }
-        lock = true;
-        row.querySelectorAll('button').forEach(function(x){ x.disabled = true; });
-        msg(c, why[v] + ' <span class="wp2-lockl">Read this, then press Try again.</span>');
-        var m = CB[c] && CB[c].msg; if(!m) return;
-        var again = btn('Try again', function(){ lock = false; msg(c, ''); row.querySelectorAll('button:not(.is-no)').forEach(function(x){ x.disabled = false; }); var f = row.querySelector('button:not(:disabled)'); if(f) f.focus(); chalSync(); });
-        again.className = 'tk2-link wp2-again'; var nt = m.querySelector('.tk2-note'); (nt || m).appendChild(again);
-        var p = m.querySelector('.tk2-note'); if(p){ p.tabIndex = -1; p.focus({ preventScroll: true }); }
-        try{ again.scrollIntoView({ block: 'nearest' }); }catch(e){}
-      });
-      wrap.appendChild(row); wrap.row = row; wrap.locked = function(){ return lock; };
-      return wrap;
-    }
-    function chalBody(c, it){
-      var Cc = C[c]; CB[c] = {};
-      // only chapter 1's explain back hides the step names; another chapter's card never touches them
-      if(c === 'fert'){ S.blank = false; tl.blank(false); whyEl.classList.remove('is-blank'); }
-      if(!it){ tempShown(); return; }
-      var box = document.createElement('div'); box.className = 'wp2-cb';
-      var m = document.createElement('div'); m.className = 'wp2-msg'; CB[c].msg = m;
-      if(c === 'fert'){
-        if(it.id === 'safe'){
-          box.innerHTML = '<p class="wp2-intro">Press Play once and watch the chain. Then change the sacks on the field and press Check: it plays that run to day 60 and keeps the result.</p>';
-          var cb = btn('', function(){ checkSafe(); }, 'tk2-btn-pri'); CB.fert.check = cb; box.appendChild(cb);
-          box.appendChild(TR.fert.el); box.appendChild(m);
-        } else if(it.id === 'warm'){
-          if(S.sacks !== 3){ S.sacks = 3; cSacks.value(3); newRun(); box.innerHTML = '<p class="wp2-set3">The field is set to 3 sacks again.</p>'; }
-          warmGhost();
-          box.insertAdjacentHTML('beforeend', '<p class="wp2-wi">Drag the thermometer on the lake to 20 °C, then 30 °C. Play each run to day 60, or press Check.</p>');
-          var cw = btn('', function(){ if(gate('fert', false, 'press Check', CB.fert.msg)){ gateClear(); revealRun(); } }, 'tk2-btn-pri'); CB.fert.check = cw; box.appendChild(cw); CB.fert.intro = box.querySelector('.wp2-wi');
-          var slots = document.createElement('ul'); slots.className = 'tk2-tries wp2-slots'; CB.fert.slots = slots; box.appendChild(slots);
-          // first: longer or shorter? then: why?
-          var q = document.createElement('div'); q.className = 'wp2-q'; CB.fert.q = q; q.hidden = true;
-          q.innerHTML = '<p class="wp2-qh" tabindex="-1"><b>At 30 °C, is the dead zone longer or shorter?</b></p>';
-          var q2 = document.createElement('div'); q2.className = 'wp2-q'; q2.hidden = true;
-          q2.innerHTML = '<p class="wp2-qh" tabindex="-1"><b>Why is it longer at 30 °C?</b></p>';
-          q.appendChild(mcq('fert', 'warmLS', [{ v: 'longer', label: 'Longer' }, { v: 'shorter', label: 'Shorter' }], 'longer',
-            { shorter: 'Not shorter. Compare your two runs above: how many days below 2 mg/L at 20 °C, and at 30 °C? Then tap the other answer.' },
-            function(){ q.innerHTML = '<p class="wp2-done1">' + K.icon('check') + '<span><b>Longer</b> at 30 °C: ' + runs.warm[30] + ' days against ' + runs.warm[20] + '.</span></p>'; msg('fert', ''); slots.hidden = true; CB.fert.slots = null; q2.hidden = false; var h = q2.querySelector('.wp2-qh'); if(h) h.focus({ preventScroll: true }); }));
-          q2.appendChild(mcq('fert', 'warmWhy', [{ v: 'b', label: 'Warm water washes more of the fertilizer down into the lake.' }, { v: 'a', label: 'Warm water holds less oxygen; decomposers use it faster.' }, { v: 'c', label: 'Heat kills the bacteria that break down the dead algae.' }], 'a',
-            { b: 'Both runs had 3 sacks. What does heat do to oxygen and to bacteria?', c: 'Heat speeds decomposers up. And how much oxygen can warm water hold?' },
-            function(){ ghost.fert = null; dirtyG = true; Cc.met('warm', 'Longer: ' + runs.warm[20] + ' days in a dead zone at 20 °C, ' + runs.warm[30] + ' days at 30 °C in your runs. Warm water holds less oxygen to start with, and decomposers work faster, so they use it up sooner.'); }));
-          box.appendChild(q); box.appendChild(q2); box.appendChild(m);
-        } else if(it.id === 'link'){
-          // the timeline is the answer pad; a phone (or anyone) can also use the six named buttons here
-          box.appendChild(m); m.innerHTML = note(narrow() ? 'Tap one of these steps (or a dot under the lake).' : 'Tap one of the six steps under the lake.', true);
-          var lk = document.createElement('div'); lk.className = 'tk2-row wp2-linkb'; lk.setAttribute('data-ls-allchips', '');
-          STEPS.forEach(function(st, i){ var b = btn(esc(st.name), function(){ pickStep(i); }); b.setAttribute('data-i', i); lk.appendChild(b); });
-          CB.fert.links = lk; box.insertBefore(lk, m);
-        } else if(it.id === 'order'){
-          // explain back: the step names leave the timeline and the step line while this is open (nothing to copy)
-          S.blank = true; tl.blank(S.ch === 'fert'); whyEl.classList.toggle('is-blank', S.ch === 'fert');
-          var names = STEPS.map(function(x){ return x.name; }), ordWrong = false;
-          var cq = document.createElement('div'); cq.className = 'wp2-q'; cq.hidden = true;
-          cq.innerHTML = '<p class="wp2-qh" tabindex="-1"><b>Why does the oxygen low come days after the bloom?</b></p>';
-          cq.appendChild(mcq('fert', 'cause', [{ v: 'b', label: 'The fertilizer takes days to sink from the surface to the bottom water.' }, { v: 'a', label: 'The algae die first; then decomposers use oxygen breaking them down.' }, { v: 'c', label: 'The fish use it up over the weeks as more of them crowd together.' }], 'a',
+    function setSacks(n){ S.sacks = n; cSacks.value(n); }
+    function setTemp(t){ S.tLake = t; cTemp.value(t); }
+    function setWarm(w){ S.warm = w; cWarm.value(w); }
+    var ORDER_NAMES = STEP_NAMES.slice();
+    /* A question: { id, name (for the card), text, todo, flags, setup(), build(box, api), sync(what), hints, answer() -> html } */
+    var QS = {
+      fert: [
+        { id: 'predict', name: 'Your prediction', text: 'Heavy fertilizer runoff (4 sacks) reaches the lake. Three weeks later, the fish...', todo: 'Pick one. Then watch the run.',
+          flags: { hideTime: true, hideSacks: true },
+          setup: function(){ setSacks(4); setTemp(20); newRun(); },
+          build: function(box, api){ api.mc([{ v: 'better', label: 'do better: more food' }, { v: 'same', label: 'stay about the same' }, { v: 'leave', label: 'leave or die' }], 'leave',
+            { better: 'Fertilizer feeds algae, not fish. What happens to the water when that much algae dies?', same: 'The bloom does not last. Its death changes the bottom water a lot.' },
+            function(){ return predFert(); }); },
+          after: function(){ S.q.hideTime = false; syncCh(); setDay(0, 'tap'); player.reset(); player.start(); },
+          hints: ['Fertilizer is food for algae, not for fish.', 'A huge bloom dies within days. Think about what breaking down all those dead algae uses up.'],
+          answer: function(){ return predFert(); } },
+        { id: 'safe', name: 'The most sacks', text: 'Find the most fertilizer the lake can take without a dead zone.', todo: 'Set the sacks on the field, then press Check.',
+          setup: function(){ setTemp(20); newRun(); TRf.clear(); },
+          build: function(box, api){
+            var cb = btn('', function(){ checkSafe(api); }, 'tk2-btn-pri'); api.own.check = cb; box.appendChild(cb); box.appendChild(TRf.el); },
+          sync: function(api){ if(api.own.check) api.own.check.textContent = 'Check ' + sk(S.sacks); },
+          hints: ['Check an amount. A dead zone means too many sacks; none means the lake can take it.', 'You need two checks side by side: the most sacks with no dead zone, and one more sack that makes one.'],
+          answer: function(){ var b = maxSafe(20); setSacks(b); newRun(); revealRun(); return safeText(b, 20); } },
+        { id: 'warm', name: 'Longer or shorter when warm', text: 'Keep 3 sacks. Is the dead zone longer or shorter in a 30 °C lake than in a 20 °C lake?', todo: 'Drag the thermometer on the lake to 20 °C, press Check, then 30 °C.',
+          flags: { hideSacks: true, loudTemp: true },
+          setup: function(){ setSacks(3); setTemp(20); newRun(); runsWarm = {}; },
+          build: function(box, api){
+            var cw = btn('', function(){ if(S.tLake !== 20 && S.tLake !== 30) return; revealRun(); runsWarm[S.tLake] = run.hypoxicDays; api.attempt(true); api.sync(); }, 'tk2-btn-pri'); api.own.check = cw; box.appendChild(cw);
+            var slots = document.createElement('ul'); slots.className = 'tk2-tries wp2-slots'; api.own.slots = slots; box.appendChild(slots);
+            var q = document.createElement('div'); q.className = 'wp2-q'; q.hidden = true; api.own.q = q; box.appendChild(q);
+            q.appendChild(api.mc([{ v: 'longer', label: 'Longer' }, { v: 'shorter', label: 'Shorter' }], 'longer',
+              { shorter: 'Not shorter. Compare your two runs: how many days below 2 mg/L at 20 °C, and at 30 °C?' },
+              function(){ return warmText(); }, true)); },
+          sync: function(api){
+            var o = api.own, both = runsWarm[20] != null && runsWarm[30] != null, done_ = runsWarm[S.tLake] != null;
+            var had = !!o.check && document.activeElement === o.check;
+            if(o.check){ o.check.hidden = both; o.check.disabled = (S.tLake !== 20 && S.tLake !== 30) || done_; o.check.textContent = S.tLake !== 20 && S.tLake !== 30 ? 'Set 20 °C or 30 °C' : done_ ? 'Already checked at ' + S.tLake + ' °C' : 'Check this run (' + S.tLake + ' °C)'; }
+            if(o.slots) o.slots.innerHTML = [20, 30].map(function(t){ var v = runsWarm[t]; return '<li class="is-info">' + K.icon(v == null ? 'arrows' : 'dot') + '<span><b>' + t + ' °C:</b> ' + (v == null ? 'not checked yet' : v + ' days in a dead zone') + '</span></li>'; }).join('');
+            if(o.q && o.q.hidden && both){ o.q.hidden = false; var f = o.q.querySelector('button'); if(f && (had || document.activeElement === document.body)) f.focus(); } },
+          hints: ['Drag the thermometer on the lake to 20 °C and press Check. Then do the same at 30 °C.', 'Compare the days below 2 mg/L in your two runs.'],
+          answer: function(){ runsWarm[20] = W.lake(3, 20).hypoxicDays; runsWarm[30] = W.lake(3, 30).hypoxicDays; setTemp(30); newRun(); revealRun(); return warmText(); } },
+        { id: 'warmWhy', name: 'Why longer when warm', text: 'Why is the dead zone longer at 30 °C?', todo: 'Pick one.',
+          flags: { hideSacks: true },
+          setup: function(){ setSacks(3); setTemp(30); newRun(); revealRun(); },
+          build: function(box, api){ api.mc([{ v: 'b', label: 'Warm water washes more of the fertilizer down into the lake.' }, { v: 'a', label: 'Warm water holds less oxygen; decomposers use it faster.' }, { v: 'c', label: 'Heat kills the bacteria that break down the dead algae.' }], 'a',
+            { b: 'Both runs had 3 sacks, so the fertilizer was the same. What does heat do to oxygen and to bacteria?', c: 'Heat speeds decomposers up. And how much oxygen can warm water hold?' },
+            function(){ return WHY_WARM; }); },
+          hints: ['Both runs had the same 3 sacks, so the fertilizer is not the difference.', 'How much oxygen can warm water hold? Do bacteria work faster or slower when warm?'],
+          answer: function(){ return WHY_WARM; } },
+        { id: 'link', name: 'Which link uses the oxygen', text: 'Which link in the chain uses up most of the oxygen?', todo: 'Tap a step. The lake shows that step.',
+          setup: function(){ setSacks(4); setTemp(20); newRun(); revealRun(); setDay(0, 'tap'); },
+          build: function(box, api){
+            var why = ['Runoff brings the nutrients. Nitrate and phosphate do not use up oxygen themselves.',
+              'Living algae mostly make oxygen by day (a dense bloom uses some at night). The big drop comes later.',
+              'Close. Dead algae sink, but the oxygen is used by what breaks them down next.', '',
+              'That is the result. Which step causes the drop?', 'That is the end of the chain. Which step uses up the oxygen?'];
+            var mc = api.mc(STEP_NAMES.map(function(n, i){ return { v: String(i), label: n }; }), '3', { 0: why[0], 1: why[1], 2: why[2], 4: why[4], 5: why[5] },
+              function(){ return LINK_TEXT; }, false, function(v){ var dd = run.stages[+v]; if(dd != null){ player.stop(); setDay(dd, 'tap'); } });
+            mc.classList.add('wp2-linkb'); },
+          hints: ['Living algae make oxygen by day. The drop comes after they die.', 'What breaks the dead algae down on the bottom, and what does it use as it respires?'],
+          answer: function(){ setDay(run.stages[3], 'tap'); return LINK_TEXT; } },
+        { id: 'order', name: 'The six steps in order', text: 'Put the six steps of the chain in order.', todo: 'From memory: tap the first step, then the next.',
+          blank: true,
+          setup: function(){ setSacks(4); setTemp(20); newRun(); },
+          build: function(box, api){
+            var wrong = false;
+            var ord = K.order({ items: ORDER_NAMES, why: function(i, pos){ wrong = true; api.attempt(); return ORDER_NAMES[i] + ' comes later. ' + (pos ? 'What happens right after ' + ORDER_NAMES[pos - 1].toLowerCase() + '?' : 'What starts the chain?'); },
+              onDone: function(){ api.first(!wrong); S.blank = false; words(); draw(); api.finish(ORDER_TEXT); } });
+            box.appendChild(ord.el); },
+          hints: ['It starts on the field and ends with the fish.', 'Algae must bloom before they can die, and die before decomposers can feed on them.'],
+          answer: function(){ S.blank = false; words(); draw(); return ORDER_TEXT; } },
+        { id: 'cause', name: 'Why the low comes late', text: 'Why does the oxygen low come days after the bloom?', todo: 'Pick one.',
+          setup: function(){ setSacks(4); setTemp(20); newRun(); revealRun(); },
+          build: function(box, api){ api.mc([{ v: 'b', label: 'The fertilizer takes days to sink from the surface to the bottom water.' }, { v: 'a', label: 'The algae die first; then decomposers use oxygen breaking them down.' }, { v: 'c', label: 'The fish use it up over the weeks as more of them crowd together.' }], 'a',
             { b: 'The nutrients feed algae near the surface, and nitrate and phosphate do not use oxygen. What uses it, and when can that start?', c: 'Fish use a little, but they leave as it falls. Which living things multiply on the bottom after the die off?' },
-            function(){ Cc.met('order', 'In order: runoff, algae bloom, algae die, decomposers feed, oxygen drops, dead zone. The low comes late because the algae have to die first, and the decomposers then use the oxygen as they break them down.'); }));
-          var ord = K.order({ items: names, why: function(i, pos){ ordWrong = true; return names[i] + ' comes later. ' + (pos ? 'What happens right after ' + names[pos - 1].toLowerCase() + '?' : 'What starts the chain?'); },
-            onDone: function(){ first('fert', 'order', !ordWrong); ord.el.hidden = true; var oh = box.querySelector('.wp2-ordh'); if(oh) oh.outerHTML = '<p class="wp2-done1">' + K.icon('check') + '<span>The six steps are in order.</span></p>'; tl.blank(false); whyEl.classList.remove('is-blank'); S.blank = false; words(); if(!looping) draw(); cq.hidden = false; var h = cq.querySelector('.wp2-qh'); if(h) h.focus({ preventScroll: true }); } });
-          box.innerHTML = '<p class="wp2-ordh">From memory: tap the first step, then the next, until all six are in order.</p>';
-          box.appendChild(ord.el); box.appendChild(cq); box.appendChild(m);
-        }
-      } else if(c === 'heat'){
-        if(it.id === 'trout'){
-          box.innerHTML = '<p class="wp2-intro">Young trout need at least ' + TROUT + ' mg/L. Warm the river until even full water cannot hold that much. Press Check at each outflow you want to test.</p>';
-          var ct = btn('', function(){ checkTrout(); }, 'tk2-btn-pri'); CB.heat.check = ct; box.appendChild(ct);
-          box.appendChild(TR.heat.el); box.appendChild(m);
-        } else if(it.id === 'pct'){
-          box.innerHTML = '<p class="wp2-pct-hint"></p>'; CB.heat.hint = box.firstChild;
-          var h10 = { d0: r1(W.osat(S.up)), d1: r1(W.osat(S.up + 10)) }, pc = pctLess(h10), right = Math.round(pc / 5) * 5;
-          var lo = Math.max(5, Math.round(right / 2 / 5) * 5); if(lo === right) lo = Math.max(5, right - 10);
-          var hi = Math.round(right * 2.5 / 5) * 5; if(hi === right) hi = right + 15;
-          var opts = [right, lo, hi].map(function(v){ return { v: v, label: 'About ' + v + '% less' }; }).sort(function(a, b){ return a.v - b.v; });
-          var wrongP = {}; opts.forEach(function(o){ if(o.v !== right) wrongP[o.v] = 'Not ' + o.v + '%. Put the two gauge values in: (' + F(h10.d1) + ' − ' + F(h10.d0) + ') / ' + F(h10.d0) + ' × 100. Work it out, then pick.'; });
-          var mq = mcq('heat', 'pct', opts, right, wrongP, function(){ C.heat.met('pct', 'About ' + right + '% less. (' + F(h10.d1) + ' − ' + F(h10.d0) + ') / ' + F(h10.d0) + ' × 100 = ' + T.F(M.Calc().percentChange(h10.d0, h10.d1), 1) + '%.'); },
-            function(){ if(S.warm !== 10){ msg('heat', 'Drag the outflow handle to +10 °C first.', true); return false; } return true; });
-          CB.heat.row = mq.row; CB.heat.mq = mq; box.appendChild(mq); box.appendChild(m);
-        }
-      } else {
-        if(it.id === 'secondary'){
-          box.innerHTML = '<p class="wp2-sec-hint"></p>'; CB.sew.hint = box.firstChild;
-          var sq = mcq('sew', 'secondary', [{ v: 'ok', label: 'It stays healthy' }, { v: 'fast', label: 'Oxygen falls at once, with no bloom' }, { v: 'dead', label: 'A bloom, then a dead zone' }], 'dead',
-            { ok: 'Not quite. Look at the lake’s oxygen line: where does it go after the bloom?', fast: 'That is what organic matter (BOD) does, and secondary removed most of it. Look at the algae first: what do the N and P left do?' },
-            function(){ C.sew.met('secondary', 'A bloom, then a dead zone. Secondary removed most of the organic matter (' + W.SEWAGE.stages[2].left.bod + '% left), so the oxygen did not fall at once, but ' + W.SEWAGE.stages[2].left.nutrients + '% of the N and P still reached the lake: algae bloomed and died, and decomposers pulled the bottom water down to ' + F(sew.min) + ' mg/L.'); });
-          CB.sew.row = sq.row; CB.sew.mq = sq; box.appendChild(sq); box.appendChild(m);
-        } else {
-          box.innerHTML = '<p class="wp2-intro">Tap a tank to stop the treatment there, then press Check. It plays the lake below to day 60 and keeps the result.</p>';
-          var cs = btn('', function(){ checkFewest(); }, 'tk2-btn-pri'); CB.sew.check = cs; box.appendChild(cs);
-          box.appendChild(TR.sew.el); box.appendChild(m);
-        }
-      }
-      Cc.body(box);
-      tempShown(); chalSync(); dirtyG = true; words(); if(!looping) draw();
-    }
-    // keep the open challenge's buttons and lines in step with the scene (never solves it: only Check or an answer does)
-    function chalSync(){ ['fert', 'heat', 'sew'].forEach(chalSync1); }
-    function chalSync1(c){
-      var cur = C[c] && C[c].current(), cb = CB[c] || {};
-      if(!cur || C[c].isMet(cur.id)) return;
-      if(c === 'fert'){
-        if(cur.id === 'safe' && cb.check) cb.check.innerHTML = S.watched ? 'Check ' + esc(sk(S.sacks)) : K.icon('play') + '<span>Watch the chain first</span>';
-        if(cur.id === 'warm'){
-          var done_ = runs.warm[S.tLake] != null && S.sacks === 3;
-          if(cb.check){
-            cb.check.disabled = S.sacks !== 3 || (S.tLake !== 20 && S.tLake !== 30) || done_;
-            cb.check.innerHTML = S.sacks !== 3 ? 'Set 3 sacks first' : S.tLake !== 20 && S.tLake !== 30 ? 'Set 20 °C or 30 °C' : done_ ? 'Already run at ' + S.tLake + ' °C' : 'Check this run (' + S.tLake + ' °C)';
-          }
-          if(cb.slots) cb.slots.innerHTML = [20, 30].map(function(t){ var v = runs.warm[t]; return '<li class="is-info">' + K.icon(v == null ? 'arrows' : 'dot') + '<span><b>' + t + ' °C:</b> ' + (v == null ? 'not run to day 60 yet' : v + ' days in a dead zone') + '</span></li>'; }).join('');
-          var both = runs.warm[20] != null && runs.warm[30] != null;
-          var had = cb.check && (document.activeElement === cb.check);
-          if(cb.q && cb.q.hidden && both){ cb.q.hidden = false; if(had || document.activeElement === document.body){ var qh = cb.q.querySelector('.wp2-qh'); if(qh) setTimeout(function(){ qh.focus({ preventScroll: false }); }, 0); } }
-          if(cb.check) cb.check.hidden = both; if(cb.intro) cb.intro.hidden = both;
-          var s3 = CB.fert.q && CB.fert.q.parentNode && CB.fert.q.parentNode.querySelector('.wp2-set3'); if(s3 && both) s3.hidden = true;
-        }
-      } else if(c === 'heat'){
-        if(cur.id === 'trout' && cb.check) cb.check.innerHTML = 'Check +' + S.warm + ' °C';
-        if(cur.id === 'pct' && cb.hint) cb.hint.textContent = S.warm === 10 ? 'Read both gauges, then pick.' : 'Drag the outflow handle to +10 °C first.';
-        if(cur.id === 'pct' && cb.row && !(cb.mq && cb.mq.locked())) cb.row.querySelectorAll('button:not(.is-no)').forEach(function(b){ b.disabled = S.warm !== 10; });
-        if(cur.id === 'pct' && cb.mq) cb.mq.hidden = S.warm !== 10 && !cb.mq.locked();
-      } else {
-        if(cur.id === 'secondary'){
-          var ready = S.stage === 2 && S.sseen >= W.LAKE_DAYS - 1e-9;
-          if(cb.hint) cb.hint.textContent = S.stage !== 2 ? 'Tap the secondary tank first.' : ready ? 'Look at the lake below and its graph, then pick.' : 'Now press Play under the lake (or drag along its graph to day 60).';
-          if(cb.row && !(cb.mq && cb.mq.locked())) cb.row.querySelectorAll('button:not(.is-no)').forEach(function(b){ b.disabled = !ready; });
-          if(cb.mq) cb.mq.hidden = S.stage !== 2;   // the choices appear with the secondary tank (enabled once its lake is played)
-        }
-        if(cur.id === 'fewest' && cb.check) cb.check.innerHTML = S.stage ? 'Check: stop after ' + esc(SEW_NAMES[S.stage].toLowerCase()) : 'Check: no treatment';
-      }
-    }
-    // Check: play the run to day 60 at once and show its worst day
-    function revealRun(){
-      player.stop();
-      if(S.ch === 'sew'){ S.sseen = W.LAKE_DAYS; setSday(sew.minDay, 'tap'); }
-      else { S.seen = W.LAKE_DAYS; seenAll(); setDay(run.minDay, 'tap'); }
-    }
-    function tidy(c){ P[c].fold(true); var it = C[c].el.querySelector('.wp2-intro'); if(it && TR[c].el.children.length) it.hidden = true; }
-    function checkSafe(){
-      if(!gate('fert', false, S.watched ? 'press Check' : 'press Watch the chain', CB.fert.msg)) return;
-      gateClear();
-      // the chain is watched once (Play, or the graph to the dead zone) before Check may jump to the ends of runs:
-      // until then this button is "Watch the chain first" and plays it from day 0
-      if(!S.watched){ watchChain(); return; }
+            function(){ return CAUSE_TEXT; }); },
+          hints: ['Look at the graph: the algae peak first, the oxygen low comes later.', 'Something has to happen to the algae before the bacteria on the bottom have food.'],
+          answer: function(){ return CAUSE_TEXT; } }
+      ],
+      heat: [
+        { id: 'predict', name: 'Your prediction', text: 'The plant adds only heat, no chemicals. Downstream, the river can hold...', todo: 'Pick one. Then watch the outflow warm the river.',
+          flags: { hideWarm: true },
+          setup: function(){ setWarm(0); heatChanged(); },
+          build: function(box, api){ api.mc([{ v: 'more', label: 'more oxygen' }, { v: 'same', label: 'the same oxygen' }, { v: 'less', label: 'less oxygen' }], 'less',
+            { more: 'Warm water does not gain gas. Think of a warm soda: does it keep its fizz?', same: 'Heat alone changes how much gas water can hold, with nothing added.' },
+            function(){ return predHeat(); }); },
+          after: function(){ S.q.hideWarm = false; setWarm(10); syncCh(); heatChanged(); },
+          hints: ['Think of a warm soda: does it keep its gas?', 'Saturation is the most oxygen water can hold. It changes with temperature.'],
+          answer: function(){ return predHeat(); } },
+        { id: 'trout', name: 'Warmest outflow for trout', text: 'Find the warmest outflow that keeps the river below the plant liveable for young trout.', todo: 'Drag the handle on the outflow pipe, then press Check.',
+          setup: function(){ setWarm(0); heatChanged(); TRh.clear(); },
+          build: function(box, api){ var cb = btn('', function(){ checkTrout(api); }, 'tk2-btn-pri'); api.own.check = cb; box.appendChild(cb); box.appendChild(TRh.el); },
+          sync: function(api){ if(api.own.check) api.own.check.textContent = 'Check +' + S.warm + ' °C'; },
+          hints: ['Young trout need at least ' + TROUT + ' mg/L. Read the Downstream gauge after each Check.', 'You need two checks one degree apart: the warmest that is enough, and one degree warmer that is not.'],
+          answer: function(){ var b = trBest(); setWarm(Math.max(0, b)); heatChanged(); return troutText(b); } },
+        { id: 'pct', name: 'Percent less', text: 'The outflow is set to +10 °C. By about what percent does the oxygen the river can hold fall?', todo: 'Read both gauges, then pick.',
+          flags: { hideWarm: true },
+          setup: function(){ setWarm(10); heatChanged(); },
+          build: function(box, api){
+            var h = heatPts(), pc = pctLess(h), right = Math.round(pc / 5) * 5;
+            var lo = Math.max(5, Math.round(right / 2 / 5) * 5); if(lo === right) lo = Math.max(5, right - 10);
+            var hi = Math.round(right * 2.5 / 5) * 5; if(hi === right) hi = right + 15;
+            var opts = [right, lo, hi].map(function(v){ return { v: String(v), label: 'About ' + v + '% less' }; }).sort(function(a, b){ return a.v - b.v; }), wr = {};
+            opts.forEach(function(o){ if(+o.v !== right) wr[o.v] = 'Not ' + o.v + '%. Put the two gauge values in: (' + F(h.d1) + ' − ' + F(h.d0) + ') / ' + F(h.d0) + ' × 100.'; });
+            api.mc(opts, String(right), wr, function(){ return pctText(); }); },
+          hints: ['Percent change = (new − old) / old × 100.', 'Use the Upstream and Downstream gauge values.'],
+          answer: function(){ return pctText(); } }
+      ],
+      sew: [
+        { id: 'predict', name: 'Your prediction', text: 'Which stage removes most of the nitrogen and phosphorus?', todo: 'Pick one. Then see what each tank leaves.',
+          flags: { hideDoes: true, hideTaps: true, hideTime: true },
+          setup: function(){ setStage(4); },
+          build: function(box, api){ api.mc([{ v: '1', label: 'Primary' }, { v: '2', label: 'Secondary' }, { v: '3', label: 'Tertiary' }], '3',
+            { 1: 'Primary lets solids settle out. Nitrate and phosphate are dissolved, so they stay in the water.', 2: 'Secondary bacteria eat organic matter (BOD), but most of the N and P passes through.' },
+            function(){ return predSew(); }); },
+          after: function(){ S.q.hideDoes = false; S.q.hideTaps = false; S.q.hideTime = false; setStage(3); syncCh(); },
+          hints: ['Primary settles solids; secondary uses bacteria on organic matter.', 'Which stage is there to remove the nutrients that feed algae?'],
+          answer: function(){ return predSew(); } },
+        { id: 'secondary', name: 'After secondary', text: 'The plant stops after secondary treatment. What happens in the lake below?', todo: 'Press Play to watch the lake below, then pick.',
+          flags: { hideTaps: true },
+          setup: function(){ setStage(2); },
+          build: function(box, api){ api.mc([{ v: 'ok', label: 'It stays healthy' }, { v: 'fast', label: 'Oxygen falls at once, with no bloom' }, { v: 'dead', label: 'A bloom, then a dead zone' }], 'dead',
+            { ok: 'Look at the lake’s oxygen line: where does it go after the bloom?', fast: 'That is what organic matter (BOD) does, and secondary removed most of it. What do the N and P left do?' },
+            function(){ return secText(); }); },
+          hints: ['Secondary removes most organic matter but little N and P.', 'N and P feed algae. What did that do in chapter 1?'],
+          answer: function(){ S.sseen = W.LAKE_DAYS; setSday(sew.minDay, 'tap'); return secText(); } },
+        { id: 'fewest', name: 'Fewest stages', text: 'Use the fewest stages that keep the lake below out of a dead zone.', todo: 'Tap a tank to stop there, then press Check.',
+          setup: function(){ setStage(1); TRs.clear(); },
+          build: function(box, api){ var cb = btn('', function(){ checkFewest(api); }, 'tk2-btn-pri'); api.own.check = cb; box.appendChild(cb); box.appendChild(TRs.el); },
+          sync: function(api){ if(api.own.check) api.own.check.textContent = S.stage ? 'Check: stop after ' + SEW_NAMES[S.stage].toLowerCase() : 'Check: no treatment'; },
+          hints: ['Start with few stages and add one until there is no dead zone.', 'You need the fewest stages with no dead zone, and one fewer that makes one.'],
+          answer: function(){ var f = fewest(); setStage(f); revealRun(); return fewText(f); } }
+      ]
+    };
+    var TRf = K.tries({ label: 'Runs you checked' }), TRh = K.tries({ label: 'Outflows you checked' }), TRs = K.tries({ label: 'Plants you checked' });
+    var WHY_WARM = 'Warm water holds less oxygen to start with, and decomposers work faster, so they use it up sooner.';
+    var LINK_TEXT = 'Decomposers. Aerobic bacteria use most of the oxygen as they break down the dead algae, so the low comes days after the bloom.';
+    var ORDER_TEXT = 'Runoff, algae bloom, algae die, decomposers feed, oxygen drops, dead zone.';
+    var CAUSE_TEXT = 'The algae have to die first. Decomposers then use the oxygen as they break them down, so the low comes days after the bloom.';
+    function predFert(){ return 'Leave or die. Watch the run: the bloom dies, decomposers use up the oxygen, and the bottom water falls below 2 mg/L, a dead zone.'; }
+    function safeText(best, Tc){ var rb = W.lake(best, Tc), rn = best < 5 ? W.lake(best + 1, Tc) : null; return sk(best) + ' is the most. With ' + sk(best) + ' the oxygen bottoms out at ' + F(rb.min) + ' mg/L; ' + (rn ? 'with ' + sk(best + 1) + ' it falls below 2 mg/L for ' + rn.hypoxicDays + ' days.' : 'even the most runoff here makes no dead zone.'); }
+    function warmText(){ return 'Longer: ' + runsWarm[30] + ' days in a dead zone at 30 °C, against ' + runsWarm[20] + ' at 20 °C.'; }
+    function predHeat(){ var h = { t0: S.up, t1: S.up + 10, d0: r1(W.osat(S.up)), d1: r1(W.osat(S.up + 10)) }; return 'Less oxygen. At ' + h.t1 + ' °C the river can hold only ' + F(h.d1) + ' mg/L, ' + F(pctLess(h), 0) + '% less than at ' + h.t0 + ' °C: warmer water holds less gas.'; }
+    function troutText(b){ if(b < 0) return 'None: even with no warm water, a river at ' + S.up + ' °C cannot hold ' + TROUT + ' mg/L.'; return '+' + b + ' °C is the warmest: at ' + (S.up + b) + ' °C full water holds ' + F(r1(W.osat(S.up + b))) + ' mg/L, just enough.' + (b < 15 ? ' At +' + (b + 1) + ' °C it holds ' + F(r1(W.osat(S.up + b + 1))) + ', less than young trout need.' : ''); }
+    function pctText(){ var h = heatPts(); return 'About ' + Math.round(pctLess(h) / 5) * 5 + '% less. (' + F(h.d1) + ' − ' + F(h.d0) + ') / ' + F(h.d0) + ' × 100 = ' + T.F(M.Calc().percentChange(h.d0, h.d1), 1) + '%.'; }
+    function predSew(){ var L = W.SEWAGE.stages; return 'Tertiary. It takes N and P from ' + L[2].left.nutrients + '% left to ' + L[3].left.nutrients + '%. Primary and secondary leave most of them to feed algae downstream.'; }
+    function secText(){ var L = W.SEWAGE.stages[2].left, r = sewRun(2); return 'A bloom, then a dead zone. Secondary removed most of the organic matter (' + L.bod + '% left), but ' + L.nutrients + '% of the N and P reached the lake: algae bloomed and died, and decomposers pulled the bottom water down to ' + F(r.min) + ' mg/L.'; }
+    function fewText(f){ return SEW_NAMES[f] + ': ' + f + ' stages. It takes N and P down to ' + W.SEWAGE.stages[f].left.nutrients + '%, and the lake below stays above 2 mg/L (lowest ' + F(sewRun(f).min) + ' mg/L). Stopping one stage sooner still gave a dead zone.'; }
+    function checkSafe(api){
       revealRun();
       var Tc = S.tLake, key = S.sacks + '@' + Tc, dead = run.hypoxicDays > 0;
-      TR.fert.add(key, '<b>' + sk(S.sacks) + (Tc !== 20 ? ' at ' + Tc + ' °C' : '') + ':</b> ' + (dead ? 'a dead zone for ' + run.hypoxicDays + ' days' : 'lowest ' + F(run.min) + ' mg/L, no dead zone'), dead ? 'bad' : 'good');
-      tidy('fert');
-      var best = maxSafe(Tc), a = TR.fert.get(best + '@' + Tc), b = TR.fert.get((best + 1) + '@' + Tc);
-      if(best >= 0 && a && (best === 5 || b)){
-        var rb = W.lake(best, Tc), rn = best < 5 ? W.lake(best + 1, Tc) : null;
-        C.fert.met('safe', sk(best) + ' is the most. With ' + sk(best) + ' the oxygen bottoms out at ' + F(rb.min) + ' mg/L; ' + (rn ? 'with ' + sk(best + 1) + ' it falls below 2 mg/L for ' + rn.hypoxicDays + ' days.' : 'even the most runoff here makes no dead zone.'));
-        return;
-      }
-      if(dead) msg('fert', 'That made a dead zone. Try fewer sacks.');
-      else if(S.sacks < best) msg('fert', 'No dead zone with ' + sk(S.sacks) + '. Can the lake take more?', true);
-      else msg('fert', 'No dead zone. Is it the most? Check one more sack.', true);
+      TRf.add(key, '<b>' + sk(S.sacks) + ':</b> ' + (dead ? 'a dead zone for ' + run.hypoxicDays + ' days' : 'lowest ' + F(run.min) + ' mg/L, no dead zone'), dead ? 'bad' : 'good');
+      var best = maxSafe(Tc), a = TRf.get(best + '@' + Tc), b = TRf.get((best + 1) + '@' + Tc);
+      if(best >= 0 && a && (best === 5 || b)){ api.first(true); api.finish(safeText(best, Tc)); return; }
+      api.attempt(true);
+      if(dead) api.msg('That made a dead zone. Try fewer sacks.');
+      else if(S.sacks < best) api.msg('No dead zone with ' + sk(S.sacks) + '. Can the lake take more?', true);
+      else api.msg('No dead zone. Is it the most? Check one more sack.', true);
     }
-    function watchChain(){
-      // reduced motion: each press is the next step (like Play there), so a second press goes on, never back to day 0
-      var rm = K.reduced();
-      if(!(rm && S.day > 0)){ player.stop(); setDay(0, 'tap'); player.reset(); }
-      msg('fert', rm ? 'Each press shows the next step of the chain under the lake (or use Next step). When it reaches the dead zone, this button turns into Check.' : 'The chain is playing under the lake. When it reaches the dead zone, this button turns into Check.', true);
-      if(narrow()){ var r = sceneBox.getBoundingClientRect(); if(r.top < 0 || r.top > (window.innerHeight || 800) * 0.5) try{ sceneBox.scrollIntoView({ block: 'start', behavior: K.reduced() ? 'auto' : 'smooth' }); }catch(e){} }
-      player.start();
+    function checkTrout(api){
+      var h = heatPts(), ok = h.d1 >= TROUT, best = trBest();
+      TRh.add(String(S.warm), '<b>+' + S.warm + ' °C (' + h.t1 + ' °C):</b> holds ' + F(h.d1) + ' mg/L, ' + (ok ? 'enough for young trout' : 'less than young trout need'), ok ? 'good' : 'bad');
+      if(best < 0){ api.first(true); api.finish(troutText(best)); return; }
+      if(TRh.has(String(best)) && (best === 15 || TRh.has(String(best + 1)))){ api.first(true); api.finish(troutText(best)); return; }
+      api.attempt(true);
+      api.msg(ok ? (S.warm < best ? 'Still enough. Can the river take warmer water?' : 'Enough. Is it the warmest? Check one degree warmer.') : 'Too warm for young trout. Try a cooler outflow.', ok);
     }
-    function checkTrout(){
-      if(!gate('heat', false, 'press Check', CB.heat.msg)) return;
-      gateClear();
-      var h = heatPts(), ok = h.d1 >= TROUT, key = String(S.warm);
-      TR.heat.add(key, '<b>+' + S.warm + ' °C (' + h.t1 + ' °C):</b> holds ' + F(h.d1) + ' mg/L, ' + (ok ? 'enough for young trout' : 'less than young trout need'), ok ? 'good' : 'bad');
-      tidy('heat');
-      var best = -1; for(var w = 0; w <= 15; w++) if(r1(W.osat(S.up + w)) >= TROUT) best = w;
-      if(best < 0){ msg('heat', 'Even with no warm water, a river at ' + S.up + ' °C cannot hold ' + TROUT + ' mg/L. Set it cooler under “?”.', true); return; }
-      if(TR.heat.has(String(best)) && (best === 15 || TR.heat.has(String(best + 1)))){
-        C.heat.met('trout', '+' + best + ' °C is the warmest: at ' + (S.up + best) + ' °C full water holds ' + F(r1(W.osat(S.up + best))) + ' mg/L, just enough.' + (best < 15 ? ' At +' + (best + 1) + ' °C it holds ' + F(r1(W.osat(S.up + best + 1))) + ', less than young trout need.' : ''));
-        return;
-      }
-      msg('heat', ok ? (S.warm < best ? 'Still enough. Can the river take warmer water?' : 'Enough. Is it the warmest? Check one degree warmer.') : 'Too warm for young trout. Try a cooler outflow.', ok);
-    }
-    function checkFewest(){
-      if(!gate('sew', false, 'press Check', CB.sew.msg)) return;
-      gateClear();
+    function checkFewest(api){
       revealRun();
-      var i = S.stage, dead = sew.hypoxicDays > 0;
-      TR.sew.add(String(i), '<b>' + esc(SEW_NAMES[i]) + ':</b> ' + (dead ? 'a dead zone for ' + sew.hypoxicDays + ' days' : 'lowest ' + F(sew.min) + ' mg/L, no dead zone'), dead ? 'bad' : 'good');
-      tidy('sew');
-      var few = -1; for(var k = 0; k <= 4; k++) if(sewRun(k).hypoxicDays === 0){ few = k; break; }
-      if(TR.sew.has(String(few)) && TR.sew.has(String(few - 1))){
-        C.sew.met('fewest', 'Tertiary: three stages. It takes N and P down to ' + W.SEWAGE.stages[few].left.nutrients + '%, and the lake below stays above 2 mg/L (lowest ' + F(sewRun(few).min) + ' mg/L). Stopping after secondary still gave a dead zone. Disinfection kills germs but does not change N and P.');
-        return;
-      }
-      msg('sew', dead ? 'Still a dead zone below. Add a stage.' : i > few ? 'No dead zone, but can you use fewer stages?' : 'No dead zone. Is it the fewest? Check one stage less.', !dead);
+      var i = S.stage, dead = sew.hypoxicDays > 0, few = fewest();
+      TRs.add(String(i), '<b>' + esc(SEW_NAMES[i]) + ':</b> ' + (dead ? 'a dead zone for ' + sew.hypoxicDays + ' days' : 'lowest ' + F(sew.min) + ' mg/L, no dead zone'), dead ? 'bad' : 'good');
+      if(TRs.has(String(few)) && TRs.has(String(few - 1))){ api.first(true); api.finish(fewText(few)); return; }
+      api.attempt(true);
+      api.msg(dead ? 'Still a dead zone below. Add a stage.' : i > few ? 'No dead zone, but can you use fewer stages?' : 'No dead zone. Is it the fewest? Check one stage less.', !dead);
     }
-    var linkLock = false;
-    function answerLink(i){
-      // locked after a wrong step: say so (a tap still moves the scene to that step's day)
-      if(linkLock){ var mm = CB.fert && CB.fert.msg; if(mm){ var ln = mm.querySelector('.wp2-lockn'); if(!ln){ ln = document.createElement('p'); ln.className = 'wp2-lockn'; ln.setAttribute('role', 'status'); mm.appendChild(ln); } ln.textContent = ''; setTimeout(function(){ ln.textContent = 'Locked for a moment: read the hint above, then press Try again.'; if(!narrow()) try{ ln.scrollIntoView({ block: 'nearest' }); }catch(e){} }, 30); } return 'locked'; }
-      var why = ['Runoff brings the nutrients. Nitrate and phosphate do not use up oxygen themselves.',
-        'Living algae mostly make oxygen by day (a dense bloom uses some at night). The big drop comes later. Which step causes it?',
-        'Close. Dead algae sink, but the oxygen is used by what breaks them down next.',
-        '', 'That is the result. Which step causes the drop?', 'That is the end of the chain. Which step uses up the oxygen?'];
-      first('fert', 'link', i === 3);
-      if(i === 3){ tl.flash(3, 'good'); C.fert.met('link', 'Decomposers. Aerobic bacteria use most of the oxygen as they break down the dead algae, so the low comes days after the bloom.'); return; }
-      tl.flash(i, 'bad'); linkLock = true;
-      var lb = CB.fert.links; if(lb){ var wb = lb.querySelector('[data-i="' + i + '"]'); if(wb){ wb.classList.add('is-no'); wb.disabled = true; } lb.querySelectorAll('button').forEach(function(x){ x.disabled = true; }); }
-      msg('fert', '<b>' + esc(STEPS[i].name) + ':</b> ' + why[i] + ' Look at the scene on that step’s day (it is showing now). <span class="wp2-lockl">Read this, then press Try again.</span>');
-      var m = CB.fert.msg;
-      if(m){ var again = btn('Try again', function(){ linkLock = false; msg('fert', ''); if(lb) lb.querySelectorAll('button:not(.is-no)').forEach(function(x){ x.disabled = false; }); }); again.className = 'tk2-link wp2-again'; var nt = m.querySelector('.tk2-note'); (nt || m).appendChild(again); var p = m.querySelector('.tk2-note'); if(p){ p.tabIndex = -1; p.focus({ preventScroll: true }); } try{ again.scrollIntoView({ block: 'nearest' }); }catch(e){} }
+    var RECAP = { fert: 'Fertilizer feeds an algal bloom; when the algae die, decomposers use up the oxygen breaking them down, and below 2 mg/L the lake is a dead zone.',
+      heat: 'Heat alone, with no chemical added, lowers the oxygen water can hold, so cold water fish such as trout lose the river below the plant.',
+      sew: 'Sewage brings the same N and P as fertilizer, plus organic matter that uses oxygen directly: secondary treatment removes the organic matter, tertiary the N and P.' };
+    var CHN = { fert: '1 Fertilizer runoff', heat: '2 Hot water', sew: '3 Sewage' };
+
+    function runner(dr, view0){
+      var card = document.createElement('div'); card.className = 'wp2-qcard';
+      if(LS) LS.add('dock', card, { mode: 'quiz' }); else host.appendChild(card);
+      var view = view0, ch = S.ch, idx = { fert: 0, heat: 0, sew: 0 }, firsts = { fert: {}, heat: {}, sew: {} }, cur = null;
+      function setView(v){ view = v; if(LS){ LS.root.setAttribute('data-wpq', v); LS.root.classList.toggle('tk2-qs', v === 'scene'); } }
+      setView(view);
+      function clearQ(){ player.stop(); S.q = null; S.blank = false; }
+      function open(c){
+        setView('scene'); ch = c; S.mode = 'quiz'; visible = true;
+        if(dr && dr.picker) dr.picker.value('q:' + c);
+        if(S.ch !== c){ player.stop(); player.reset(); S.ch = c; tabs.value(c); }
+        layoutNow(); loop(true);
+        if(idx[c] >= QS[c].length) finishCard(c); else show(c, idx[c]);
+      }
+      function toDrill(){ setView('drill'); clearQ(); cur = null; card.innerHTML = ''; visible = false; loop(false); }
+      function show(c, i){
+        var q = QS[c][i];
+        clearQ();
+        S.q = Object.assign({}, q.flags || {}); S.blank = !!q.blank;
+        if(LS){ LS.done(false, 'quiz'); LS.pills([], 'left', 'quiz'); LS.caption('', 'quiz');
+          LS.task({ kicker: 'Question ' + (i + 1) + ' of ' + QS[c].length, title: esc(q.text), todo: esc(q.todo) }, 'quiz'); }
+        card.innerHTML = '';
+        var body = document.createElement('div'); body.className = 'wp2-qb';
+        var msgEl = document.createElement('div'); msgEl.className = 'wp2-msg'; msgEl.setAttribute('role', 'status');
+        var okEl = document.createElement('div'); okEl.className = 'wp2-qok';
+        var act = document.createElement('div'); act.className = 'wp2-qact';
+        var lad = LS ? LS.hints({ hints: q.hints, answer: { label: 'Show the answer', onShow: function(){ reveal(); return ''; } } }) : null;
+        card.appendChild(body); card.appendChild(msgEl); if(lad) card.appendChild(lad.card); card.appendChild(okEl); if(lad) card.appendChild(lad.row); card.appendChild(act);
+        cur = { q: q, c: c, i: i, done: false, lad: lad, body: body, msg: msgEl, ok: okEl, act: act };
+        var api = cur.api = {
+          own: {},
+          first: function(ok){ if(firsts[c][q.id] == null) firsts[c][q.id] = !!ok; },
+          attempt: function(neutral){ if(!neutral) api.first(false); if(lad) lad.attempt(); },
+          msg: function(html, info){ msgEl.innerHTML = html ? note(html, info) : ''; },
+          sync: function(){ if(q.sync) q.sync(api); },
+          finish: function(html){ finish(html); },
+          // choices: a wrong one is crossed out with its reason; the right one finishes the question
+          mc: function(list, right, why, text, keep, onPick){
+            var row = document.createElement('div'); row.className = 'tk2-row wp2-mc'; row.setAttribute('role', 'group'); row.setAttribute('aria-label', 'Choices'); row.setAttribute('data-ls-allchips', '');
+            list.forEach(function(x){
+              var b = btn(esc(x.label), function(){
+                if(cur.done || b.disabled) return;
+                if(onPick) onPick(x.v);
+                if(x.v === right){ api.first(true); finish(text()); return; }
+                api.attempt(); b.disabled = true; b.classList.add('is-no'); b.setAttribute('aria-label', x.label + ', not right');
+                api.msg((why[x.v] || 'Not this one.') + ' Try another.');
+              });
+              b.setAttribute('data-v', x.v); row.appendChild(b);
+            });
+            if(!keep) body.appendChild(row);
+            return row;
+          }
+        };
+        if(q.setup) q.setup();
+        syncCh(); layoutNow();
+        q.build(body, api);
+        api.sync();
+      }
+      function reveal(){
+        if(!cur || cur.done) return;
+        cur.api.first(false);
+        finish(cur.q.answer(), true);
+      }
+      function finish(html, shown){
+        if(!cur || cur.done) return;
+        var q = cur.q, c = cur.c, i = cur.i;
+        cur.done = true;
+        cur.body.querySelectorAll('button').forEach(function(b){ b.disabled = true; });
+        cur.msg.innerHTML = '';
+        if(cur.lad){ cur.lad.row.hidden = true; cur.lad.card.hidden = true; }
+        cur.ok.innerHTML = '<p class="tk2-ok-t" tabindex="-1">' + K.icon('check') + '<span>' + (shown ? '<b>The answer.</b> ' : '') + html + '</span></p>';
+        var last = i + 1 >= QS[c].length;
+        var nx = btn(last ? 'Finish' : 'Next question', function(){ idx[c] = i + 1; if(last) finishCard(c); else show(c, i + 1); }, 'tk2-btn-pri');
+        cur.act.innerHTML = ''; cur.act.appendChild(nx);
+        var t = cur.ok.querySelector('.tk2-ok-t'); if(t) try{ t.focus({ preventScroll: true }); }catch(e){}
+        if(q.after) q.after();
+      }
+      function finishCard(c){
+        clearQ(); cur = null; card.innerHTML = '';
+        syncCh();
+        var ks = QS[c].map(function(q){ return q.id; }).filter(function(k){ return firsts[c][k] != null; }), n = ks.filter(function(k){ return firsts[c][k]; }).length;
+        var list = QS[c].filter(function(q){ return firsts[c][q.id] != null; }).map(function(q){ var ok = firsts[c][q.id]; return '<i class="is-' + (ok ? 'ok' : 'no') + '">' + (ok ? '✓' : '✗') + '</i> ' + esc(q.name); }).join(', ');
+        var nextC = c === 'fert' ? 'heat' : c === 'heat' ? 'sew' : null;
+        if(LS){
+          LS.task(null, 'quiz');
+          LS.done({ kicker: 'Done', title: 'Right on the first try: ' + n + ' of ' + ks.length + '.', text: esc(RECAP[c]) + (list ? '<span class="tk2-more">' + list + '.</span>' : ''),
+            next: nextC ? { label: 'Next: ' + CHN[nextC] + ' questions', onClick: function(){ open(nextC); } } : { label: 'Practice problems', onClick: function(){ if(dr && dr.picker) dr.picker.value(''); toDrill(); if(dr) dr.fresh(); } },
+            links: [{ label: 'Do these questions again', onClick: function(){ idx[c] = 0; firsts[c] = {}; open(c); } }] }, 'quiz');
+        }
+      }
+      return {
+        open: open, toDrill: toDrill,
+        scene: function(){ return view === 'scene'; },
+        enter: function(){ if(view === 'scene') open(ch); },
+        leave: function(){ clearQ(); },
+        changed: function(){ if(cur && !cur.done && S.mode === 'quiz') cur.api.sync(); }
+      };
+    }
+    function quiz(qhost, d){
+      var view = /[?&]seed=/.test(location.search) ? 'drill' : 'scene';
+      var dr = drill(qhost, d, { label: 'What to practice', value: view === 'scene' ? 'q:' + S.ch : '', drillGroup: 'Practice problems',
+        groups: [{ label: 'Questions on the picture', items: [{ value: 'q:fert', label: '1 Fertilizer runoff' }, { value: 'q:heat', label: '2 Hot water' }, { value: 'q:sew', label: '3 Sewage' }] }],
+        own: function(v){ return /^q:/.test(String(v)); }, onPick: function(v){ QZ.open(String(v).slice(2)); }, onDrill: function(){ QZ.toDrill(); } });
+      QZ = runner(dr, view);
     }
     /* ======================================================= the picture */
     var G = null, GG = null, dirtyG = true, looping = false, raf = 0, lastT = 0, FISH = {};
@@ -854,7 +689,7 @@
       if(!G) return;
       var t = S.clock;
       gDyn.innerHTML = S.ch === 'fert' ? dynFert(G, t) : S.ch === 'heat' ? dynHeat(G, t) : dynSew(G, t);
-      svg.setAttribute('aria-label', S.ch === 'fert' ? 'A farm field above a lake. ' + dayLine() + ' ' + STEP_LONG[Math.max(0, W.stageAt(run, S.day))]
+      svg.setAttribute('aria-label', S.ch === 'fert' ? 'A farm field above a lake. ' + dayLine() + (S.blank ? '' : ' ' + STEP_LONG[Math.max(0, W.stageAt(run, S.day))])
         : S.ch === 'heat' ? 'A power plant on a trout river, upstream on the left, downstream on the right. ' + heatLine() : 'A town, a sewage plant and the lake below. ' + sewLine());
       if(dirtyG){ dirtyG = false; graph(); }
     }
@@ -1144,11 +979,11 @@
       var tf = (S.tLake - 10) / 20, ty = lerp(g.thY10, g.thY30, tf);
       out.push('<g class="wp2-thermo"><rect x="' + n1(g.thX - 5) + '" y="' + n1(g.thTop) + '" width="10" height="' + n1(g.thBulb - g.thTop) + '" rx="5"/><circle cx="' + n1(g.thX) + '" cy="' + n1(g.thBulb) + '" r="9"/>' +
         '<rect class="wp2-thermo-c" x="' + n1(g.thX - 2.2) + '" y="' + n1(ty) + '" width="4.4" height="' + n1(g.thBulb - ty) + '"/><circle class="wp2-thermo-c" cx="' + n1(g.thX) + '" cy="' + n1(g.thBulb) + '" r="6.4"/></g>');
-      if(!S.tempOn) out.push('<text class="wp2-lab" x="' + n1(g.thX - 12) + '" y="' + n1(g.thTop + 12) + '" text-anchor="end">Lake ' + S.tLake + ' °C</text>');
+      if(!(S.q && S.q.loudTemp)) out.push('<text class="wp2-lab" x="' + n1(g.thX - 12) + '" y="' + n1(g.thTop + 12) + '" text-anchor="end">Lake ' + S.tLake + ' °C</text>');
       // labels: the bottom water's oxygen (anchored to the bed), and the step the day is in, where it happens
       var ph = phase(run, d), o = ph.o, st = status(o), L = g.L, w = L.x1 - L.x0, cx2 = L.x0 + w * (g.ph ? 0.6 : 0.56);
       var bx = L.x0 + w * (g.ph ? 0.14 : 0.16), byB = bedY(L, bx + 30);
-      out.push(chip(bx, byB - (g.ph ? 46 : 52), 'Bottom water', fO(o) + ' mg/L', st.tone, g.ph, [bx + 30, byB - 10]));
+      out.push(chip(bx, byB - (g.ph ? 46 : 52), 'Bottom water', fO(o) + ' mg/L', st.tone, g.ph, [bx + 30, byB - 10], st.status));
       if(S.sacks > 0 && d > 0 && !S.blank){
         var cur = ph.cur, lab = null, pos = null, lead = null;
         if(ph.rec){ lab = 'Oxygen comes back from the air'; pos = [cx2, L.mid - 8]; }
@@ -1170,12 +1005,14 @@
       return out.join('');
     }
     /* A value card in the scene (the readout's number, the same value); lead: [x, y] a short line to what it measures. */
-    function chip(x, y, k, v, tone, ph, lead){
-      var w = ph ? 96 : 112, h = ph ? 38 : 42, out = '<g class="wp2-chip">';
+    function chip(x, y, k, v, tone, ph, lead, stw){
+      // the status word sits right after the value; the card is as wide as the two need
+      var vw = v.length * (ph ? 8 : 8.6), sw = stw ? stw.length * (ph ? 6.9 : 7.2) : 0, w = Math.max(ph ? 96 : 112, Math.round(18 + vw + (stw ? 8 + sw : 0))), h = ph ? 38 : 42, out = '<g class="wp2-chip">';
       if(lead) out += '<path class="wp2-lead" d="M' + n1(x + w * 0.5) + ' ' + n1(y + h / 2) + ' L' + n1(lead[0]) + ' ' + n1(lead[1]) + '"/><circle class="wp2-lead-d" cx="' + n1(lead[0]) + '" cy="' + n1(lead[1]) + '" r="2.6"/>';
       return out + '<rect x="' + n1(x) + '" y="' + n1(y - h / 2) + '" width="' + w + '" height="' + h + '" rx="9"/>' +
         '<text class="wp2-chip-k" x="' + n1(x + 9) + '" y="' + n1(y - h / 2 + (ph ? 14 : 15)) + '">' + esc(k) + '</text>' +
-        '<text class="wp2-chip-v' + (tone === 'bad' ? ' is-bad' : '') + '" x="' + n1(x + 9) + '" y="' + n1(y + h / 2 - (ph ? 7 : 8)) + '">' + esc(v) + '</text></g>';
+        '<text class="wp2-chip-v' + (tone === 'bad' ? ' is-bad' : '') + '" x="' + n1(x + 9) + '" y="' + n1(y + h / 2 - (ph ? 7 : 8)) + '">' + esc(v) + '</text>' +
+        (stw ? '<text class="wp2-chip-s is-' + tone + '" x="' + n1(x + 9 + vw + 8) + '" y="' + n1(y + h / 2 - (ph ? 7 : 8)) + '">' + esc(stw) + '</text>' : '') + '</g>';
     }
     function callout(x, y, text, tone, anchor, ph){
       return '<text class="wp2-call' + (tone ? ' is-' + tone : '') + (ph ? ' is-ph' : '') + '" x="' + n1(x) + '" y="' + n1(y) + '" text-anchor="' + anchor + '">' + esc(text) + '</text>';
@@ -1214,7 +1051,9 @@
       out += '<rect class="wp2-bldg" x="' + n1(g.bx0) + '" y="' + n1(g.btop) + '" width="' + n1(g.bw) + '" height="' + n1(g.bh) + '" rx="3"/>';
       out += '<path class="wp2-roof" d="M' + n1(g.bx0 - 3) + ' ' + n1(g.btop) + ' H' + n1(g.bx1 + 3) + ' V' + n1(g.btop + 6) + ' H' + n1(g.bx0 - 3) + 'Z"/>';
       for(var wi = 0; wi < 3; wi++) out += '<rect class="wp2-win" x="' + n1(g.bx0 + g.bw * (0.14 + wi * 0.27)) + '" y="' + n1(g.btop + g.bh * 0.3) + '" width="' + n1(g.bw * 0.16) + '" height="' + n1(g.bh * 0.22) + '" rx="1.5"/>';
-      out += '<text class="wp2-lab' + (g.ph ? ' is-sm' : '') + '" x="' + n1(g.pcx) + '" y="' + n1(g.btop + g.bh * 0.86) + '" text-anchor="middle">Power plant</text>';
+      // a narrow building: the sign starts at its left edge, clear of the handle's first time "Drag" chip
+      var signL = g.bw < 140;
+      out += '<text class="wp2-lab' + (g.ph ? ' is-sm' : '') + '" x="' + n1(signL ? g.bx0 + 4 : g.pcx) + '" y="' + n1(g.btop + g.bh * 0.86) + '" text-anchor="' + (signL ? 'start' : 'middle') + '">Power plant</text>';
       var ix = g.bx0 + g.bw * 0.2;
       out += '<path class="wp2-pipe" d="M' + n1(ix) + ' ' + n1(g.bank - 2) + ' V' + n1(g.surf + 18) + '"/>';
       out += '<path class="wp2-pipe is-warm" d="M' + n1(g.bx1) + ' ' + n1(g.pipeY) + ' H' + n1(g.pipeX) + ' V' + n1(g.surf + 10) + '"/>';
@@ -1324,7 +1163,7 @@
       out += '<text class="wp2-lab" x="' + n1(g.lake.x0 + (g.lake.x1 - g.lake.x0) * 0.55) + '" y="' + n1(g.lake.surf - 10) + '" text-anchor="middle">Lake below</text>';
       return out;
     }
-    function tankArt(tk, i, on, t, P0, ph){ return tankArt0(tk, i, on, t, P0, ph, looping, !P.sew.picked() && !P.sew.settled()); }
+    function tankArt(tk, i, on, t, P0, ph){ return tankArt0(tk, i, on, t, P0, ph, looping, !!(S.q && S.q.hideDoes)); }
     function dynSew(g, t){
       var P0 = g.P, out = [], last = S.stage, tk = g.tanks;
       // pipes between used tanks; the bypass over the skipped ones
@@ -1346,7 +1185,7 @@
       var lk = lakeDyn(L, sew, S.sday, t, P0, 'wpLk3', 's3', 3);
       out.push(lk.svg);
       var ph = phase(sew, S.sday), o = ph.o, st = status(o), cxL = L.x0 + (L.x1 - L.x0) * (g.ph ? 0.32 : 0.24), byL = bedY(L, cxL + 30);
-      out.push(chip(cxL, byL - (g.ph ? 40 : 46), 'Bottom water', fO(o) + ' mg/L', st.tone, g.ph, [cxL + 30, byL - 8]));
+      out.push(chip(cxL, byL - (g.ph ? 40 : 46), 'Bottom water', fO(o) + ' mg/L', st.tone, g.ph, [cxL + 30, byL - 8], st.status));
       if(S.sday > 0 && ph.cur === 5 && o < W.HYPOXIC) out.push(callout(L.x0 + (L.x1 - L.x0) * 0.58, L.surf + (L.bed - L.surf) * 0.3, 'Dead zone', 'bad', 'middle', true));
       return out.join('');
     }
@@ -1354,77 +1193,59 @@
     /* ======================================================= the graph (shares the cursor with the scene) */
     function graph(){
       if(!GG) return;
-      var Wg = GG.W, Hg = GG.H, ph = Wg < 560, L = ph ? 34 : 46, R = Wg - (ph ? 12 : 22), top = ph ? 50 : 58, bot = Hg - (ph ? 30 : 32), out = [];
+      var Wg = GG.W, Hg = GG.H, ph = Wg < 560, L = ph ? 30 : 40, R = Wg - (ph ? 12 : 18), top = 28, bot = Hg - 26, out = [];
       function ln(x1, y1, x2, y2, cls){ return '<line class="' + cls + '" x1="' + n1(x1) + '" y1="' + n1(y1) + '" x2="' + n1(x2) + '" y2="' + n1(y2) + '"/>'; }
       function tx(x, y, s, cls, a){ return '<text class="' + cls + '" x="' + n1(x) + '" y="' + n1(y) + '"' + (a ? ' text-anchor="' + a + '"' : '') + '>' + s + '</text>'; }
-      if(S.ch === 'fert' || S.ch === 'sew'){
-        // one fixed scale for every run (0 to 12 mg/L; algae 0 to 120 times day 0 on the right), so runs compare
-        R = Wg - (ph ? 34 : 50);
-        var r = S.ch === 'fert' ? run : sew, seen = S.ch === 'fert' ? S.seen : S.sseen, cur = S.ch === 'fert' ? S.day : S.sday, gh = ghost[S.ch];
-        var yMax = Y_MAX, x = function(d){ return L + d / W.LAKE_DAYS * (R - L); }, y = function(v){ return bot - clamp(v, 0, yMax) / yMax * (bot - top); }, ya = function(v){ return bot - clamp(v / r.A[0] / ALG_MAX, 0, 1) * (bot - top); };
+      if(S.ch !== 'heat'){
+        /* One axis, oxygen (0 to 12 mg/L for every run). The algae are a faint shape with no scale, so the lag between
+           the bloom and the oxygen low shows. Explore draws the whole run (faint after the day); a question shows only
+           the days already played, so it never gives an answer away. */
+        var r = rNow(), cur = S.ch === 'sew' ? S.sday : S.day, seen = S.ch === 'sew' ? S.sseen : S.seen, upto = inQuiz() ? Math.min(seen, W.LAKE_DAYS) : W.LAKE_DAYS;
+        var yMax = Y_MAX, x = function(d){ return L + d / W.LAKE_DAYS * (R - L); }, y = function(v){ return bot - clamp(v, 0, yMax) / yMax * (bot - top); };
+        var aMax = Math.max(r.peakA, r.A[0] * 4), ya = function(v){ return bot - clamp(v / aMax, 0, 1) * (bot - top) * 0.6; };
         out.push('<rect class="wp2-g-hyp" x="' + n1(L) + '" y="' + n1(y(2)) + '" width="' + n1(R - L) + '" height="' + n1(bot - y(2)) + '"/>');
-        // the top line (12) has no number: the cursor's knob sits over that corner
-        for(var v = 0; v <= yMax; v += ph ? 4 : 2) out.push(ln(L, y(v), R, y(v), 'wp2-g-grid') + (v < yMax ? tx(L - 6, y(v) + 4, v, 'wp2-g-tk', 'end') : ''));
-        for(var av = 0; av < ALG_MAX; av += 40) out.push(tx(R + 6, bot - av / ALG_MAX * (bot - top) + 4, av, 'wp2-g-tk is-alg', 'start'));
-        for(var dd = 0; dd <= 60; dd += 10) out.push(tx(x(dd), bot + 15, dd, 'wp2-g-tk', 'middle'));
-        out.push(tx(R, bot + (ph ? 28 : 29), 'Day', 'wp2-g-ax', 'end'));
-        // the last run, faint (what changed?)
-        if(gh && gh.upto > 0){ var gp = []; for(var gi = 0; gi <= Math.min(60, Math.round(gh.upto)); gi++) gp.push(n1(x(gi)) + ',' + n1(y(gh.O[gi]))); out.push('<polyline class="wp2-g-ghost" points="' + gp.join(' ') + '"/>'); }
-        var sv = Math.round(Math.min(seen, W.LAKE_DAYS));
-        if(sv > 0){
-          var ap = [], op = [];
-          for(var i = 0; i <= sv; i++){ ap.push(n1(x(i)) + ',' + n1(ya(r.A[i]))); op.push(n1(x(i)) + ',' + n1(y(r.O[i]))); }
-          if(seen > sv && sv < 60){ ap.push(n1(x(seen)) + ',' + n1(ya(at(r.A, seen)))); op.push(n1(x(seen)) + ',' + n1(y(at(r.O, seen)))); }
-          out.push('<polygon class="wp2-g-alg" points="' + n1(x(0)) + ',' + n1(bot) + ' ' + ap.join(' ') + ' ' + n1(x(Math.min(seen, 60))) + ',' + n1(bot) + '"/>');
-          out.push('<polyline class="wp2-g-algl" points="' + ap.join(' ') + '"/>');
-          out.push('<polyline class="wp2-g-do" points="' + op.join(' ') + '"/>');
-        } else out.push('<circle class="wp2-g-dot" cx="' + n1(x(0)) + '" cy="' + n1(y(r.O[0])) + '" r="4"/>');
-        if(seen < 60){
-          out.push('<rect class="wp2-g-fog" x="' + n1(x(Math.max(seen, 0)) + 1) + '" y="' + n1(top) + '" width="' + n1(Math.max(0, R - x(Math.max(seen, 0)) - 1)) + '" height="' + n1(bot - top) + '"/>');
-          if(seen < 0.5) out.push(tx((x(Math.max(seen, 0)) + R) / 2, (top + bot) / 2 + 4, ph ? 'Press Play or drag here' : 'Press Play, or drag along the graph', 'wp2-g-fogt', 'middle'));
-        }
+        for(var v = 0; v <= yMax; v += 4) out.push(ln(L, y(v), R, y(v), 'wp2-g-grid') + tx(L - 6, y(v) + 4, v, 'wp2-g-tk', 'end'));
+        for(var dd = 0; dd <= 60; dd += 20) out.push(tx(x(dd), bot + 16, dd === 60 ? '60 days' : dd, 'wp2-g-tk', dd === 60 ? 'end' : 'middle'));
+        var n = Math.floor(upto), ap = [], op = [], of = [];
+        for(var i = 0; i <= n; i++){ ap.push(n1(x(i)) + ',' + n1(ya(r.A[i]))); }
+        if(upto > n){ ap.push(n1(x(upto)) + ',' + n1(ya(at(r.A, upto)))); }
+        if(upto > 0) out.push('<polygon class="wp2-g-alg" points="' + n1(x(0)) + ',' + n1(bot) + ' ' + ap.join(' ') + ' ' + n1(x(upto)) + ',' + n1(bot) + '"/>');
+        // oxygen: solid up to the day, faint after it
+        var cd = Math.min(cur, upto);
+        for(var j = 0; j <= Math.floor(cd); j++) op.push(n1(x(j)) + ',' + n1(y(r.O[j])));
+        op.push(n1(x(cd)) + ',' + n1(y(at(r.O, cd))));
+        of.push(n1(x(cd)) + ',' + n1(y(at(r.O, cd))));
+        for(var k = Math.floor(cd) + 1; k <= n; k++) of.push(n1(x(k)) + ',' + n1(y(r.O[k])));
+        if(upto > cd + 1e-9 && of.length > 1) out.push('<polyline class="wp2-g-do is-fut" points="' + of.join(' ') + '"/>');
+        if(op.length > 1) out.push('<polyline class="wp2-g-do" points="' + op.join(' ') + '"/>');
+        if(inQuiz() && seen < W.LAKE_DAYS) out.push('<rect class="wp2-g-fog" x="' + n1(x(Math.max(seen, 0)) + 1) + '" y="' + n1(top) + '" width="' + n1(Math.max(0, R - x(Math.max(seen, 0)) - 1)) + '" height="' + n1(bot - top) + '"/>');
         var satY = y(r.osat), hypY = y(2);
         out.push(ln(L, satY, R, satY, 'wp2-g-sat'));
-        out.push(tx(R - 4, satY - 5, (ph ? 'Most it holds: ' : 'Most it can hold: ') + F(r.osat), 'wp2-g-satt', 'end'));
-        out.push(tx(R - 4, hypY - 5, ph ? 'Dead zone below 2' : '2 mg/L: dead zone below', 'wp2-g-hypt', 'end'));
-        out.push(ln(L, bot, R, bot, 'wp2-g-axis') + ln(L, top, L, bot, 'wp2-g-axis') + ln(R, top, R, bot, 'wp2-g-axis is-alg'));
-        // the cursor's value, placed clear of the line labels at the right and of the axis
-        if(cur <= seen + 1e-9){
-          var ov = at(r.O, cur), cx = x(cur), cy = y(ov), lw = 64, right = cx < R - lw - 14;
-          var ly = cy - 9;
-          if(ly < top + 12) ly = cy + 20;
-          if(ly > bot - 6) ly = cy - 9;
-          var lx0 = right ? cx + 9 : cx - 9 - lw, lx1 = lx0 + lw, labW = ph ? 112 : 150;
-          [satY - 5, hypY - 5].forEach(function(yy){ if(Math.abs(ly - yy) < 14 && lx1 > R - 4 - labW){ ly = yy > cy ? yy - 16 : yy + 18; } });
-          ly = clamp(ly, top + 12, bot - 6);
-          out.push('<circle class="wp2-g-dot" cx="' + n1(cx) + '" cy="' + n1(cy) + '" r="5"/><circle class="wp2-g-adot" cx="' + n1(cx) + '" cy="' + n1(ya(at(r.A, cur))) + '" r="4"/>');
-          out.push('<text class="wp2-g-val' + (ov < 2 ? ' is-bad' : '') + '" x="' + n1(right ? cx + 9 : cx - 9) + '" y="' + n1(ly) + '" text-anchor="' + (right ? 'start' : 'end') + '">' + fO(ov) + ' mg/L</text>');
-        }
-        out.push(tx(L, ph ? 14 : 16, ph ? (S.ch === 'sew' ? 'Lake below: O₂, mg/L' : 'Bottom oxygen, mg/L') : (S.ch === 'sew' ? 'Lake below: ' : '') + 'Bottom oxygen (mg/L)', 'wp2-g-ax is-oxy'));
-        out.push('<rect class="wp2-g-alg" x="' + n1(Wg - (ph ? 138 : 158)) + '" y="' + n1(ph ? 5 : 7) + '" width="14" height="10" rx="2"/>' + tx(Wg - 4, ph ? 14 : 16, 'Algae, × day 0', 'wp2-g-ax is-alg', 'end'));
+        out.push(tx(R - 4, satY - 5, 'Most it holds', 'wp2-g-satt', 'end'));
+        out.push(tx(R - 4, hypY - 5, '2 mg/L: dead zone', 'wp2-g-hypt', 'end'));
+        out.push(ln(L, bot, R, bot, 'wp2-g-axis') + ln(L, top, L, bot, 'wp2-g-axis'));
+        out.push('<circle class="wp2-g-dot" cx="' + n1(x(cd)) + '" cy="' + n1(y(at(r.O, cd))) + '" r="5"/>');
+        out.push(tx(L, 16, (S.ch === 'sew' ? 'Lake below: oxygen (mg/L)' : 'Bottom oxygen (mg/L)'), 'wp2-g-ax is-oxy'));
         scrub.place([L, top, R, bot], 0, W.LAKE_DAYS); scrub.value(Math.round(cur));
-        gsvg.setAttribute('aria-label', (S.ch === 'sew' ? 'Lake below the plant: ' : '') + 'bottom-water oxygen over 60 days on a 0 to 12 mg/L scale, with the algae shaded (times its day 0 amount, right axis) and a line at 2 mg/L.' + (sv ? ' Lowest so far ' + F(Math.min.apply(null, r.O.slice(0, sv + 1))) + ' mg/L.' : ' Not run yet.') + (gh && gh.upto > 0 ? ' A faint line shows your last run, ' + gh.label + '.' : ''));
-        ghostEl.hidden = !(gh && gh.upto > 0);
-        if(gh && gh.upto > 0) ghostEl.innerHTML = '<i aria-hidden="true"></i>Faint line: ' + (gh.cap ? esc(gh.cap) : 'your last run (' + esc(gh.label) + ')');
+        gsvg.setAttribute('aria-label', (S.ch === 'sew' ? 'Lake below the plant: ' : '') + 'bottom-water oxygen over 60 days on a 0 to 12 mg/L scale, with the algae as a faint shape and a line at 2 mg/L. ' +
+          (upto > 0 ? 'Lowest ' + F(Math.min.apply(null, r.O.slice(0, Math.floor(upto) + 1))) + ' mg/L.' : 'Not played yet.'));
       } else {
-        ghostEl.hidden = true;
         var h = heatPts(), xs = function(t){ return L + t / 35 * (R - L); }, ys = function(v){ return bot - v / 16 * (bot - top); };
         for(var a = 0; a <= 16; a += 4) out.push(ln(L, ys(a), R, ys(a), 'wp2-g-grid') + tx(L - 6, ys(a) + 4, a, 'wp2-g-tk', 'end'));
-        for(var b = 0; b <= 35; b += 5) out.push(tx(xs(b), bot + 15, b, 'wp2-g-tk', 'middle'));
-        out.push(tx(R, bot + (ph ? 28 : 29), 'Temperature (°C)', 'wp2-g-ax', 'end'));
-        out.push('<rect class="wp2-g-band" x="' + n1(xs(h.t0)) + '" y="' + n1(top) + '" width="' + n1(xs(h.t0 + 15) - xs(h.t0)) + '" height="' + n1(bot - top) + '"/>');
+        for(var b = 0; b <= 35; b += 5) out.push(tx(xs(b), bot + 16, b === 35 ? '35 °C' : b, 'wp2-g-tk', b === 35 ? 'end' : 'middle'));
         out.push(ln(L, ys(TROUT), R, ys(TROUT), 'wp2-g-trout') + tx(R - 4, ys(TROUT) - 6, 'Young trout need ' + TROUT, 'wp2-g-troutt', 'end'));
         out.push('<polyline class="wp2-g-osat" points="' + W.OSAT.map(function(q){ return n1(xs(q[0])) + ',' + n1(ys(q[1])); }).join(' ') + '"/>');
-        W.OSAT.forEach(function(q){ out.push('<circle class="wp2-g-pt" cx="' + n1(xs(q[0])) + '" cy="' + n1(ys(q[1])) + '" r="2.6"/>'); });
         out.push(ln(L, bot, R, bot, 'wp2-g-axis') + ln(L, top, L, bot, 'wp2-g-axis'));
         out.push('<circle class="wp2-g-up" cx="' + n1(xs(h.t0)) + '" cy="' + n1(ys(h.d0)) + '" r="6"/>');
-        out.push(tx(xs(h.t0) + 9, ys(h.d0) - 11, 'Upstream: ' + F(h.d0), 'wp2-g-val is-oxy', 'start'));
-        out.push('<circle class="wp2-g-dn' + (h.d1 < TROUT ? ' is-bad' : '') + '" cx="' + n1(xs(h.t1)) + '" cy="' + n1(ys(h.d1)) + '" r="6"/>');
-        if(S.warm > 0) out.push(tx(xs(h.t1) + (xs(h.t1) > R - 150 ? -10 : 12), ys(h.d1) + 22, 'Downstream: ' + F(h.d1), 'wp2-g-val is-heat', xs(h.t1) > R - 150 ? 'end' : 'start'));
-        out.push(tx(L, ph ? 14 : 16, 'Most oxygen fresh water can hold (mg/L), USGS', 'wp2-g-ax is-oxy'));
+        out.push(tx(xs(h.t0) + 9, ys(h.d0) - 11, 'Upstream ' + F(h.d0), 'wp2-g-val is-oxy', 'start'));
+        if(S.warm > 0){
+          out.push('<circle class="wp2-g-dn' + (h.d1 < TROUT ? ' is-bad' : '') + '" cx="' + n1(xs(h.t1)) + '" cy="' + n1(ys(h.d1)) + '" r="6"/>');
+          out.push(tx(xs(h.t1) + (xs(h.t1) > R - 130 ? -10 : 12), ys(h.d1) + 22, 'Downstream ' + F(h.d1), 'wp2-g-val is-heat', xs(h.t1) > R - 130 ? 'end' : 'start'));
+        }
+        out.push(tx(L, 16, 'Oxygen water can hold (mg/L)', 'wp2-g-ax is-oxy'));
         scrub.place([xs(h.t0), top, xs(h.t0 + 15), bot], h.t0, h.t0 + 15);
         scrub.value(h.t1);
-        gsvg.setAttribute('aria-label', 'Saturation curve: the most oxygen fresh water can hold against temperature. Upstream ' + h.t0 + ' °C, ' + F(h.d0) + ' mg/L; downstream ' + h.t1 + ' °C, ' + F(h.d1) + ' mg/L. Young trout need ' + TROUT + ' mg/L.');
+        gsvg.setAttribute('aria-label', 'Saturation curve: the most oxygen fresh water can hold against temperature (USGS). Upstream ' + h.t0 + ' °C, ' + F(h.d0) + ' mg/L; downstream ' + h.t1 + ' °C, ' + F(h.d1) + ' mg/L. Young trout need ' + TROUT + ' mg/L.');
       }
       gsvg.innerHTML = out.join('');
     }
@@ -1446,7 +1267,7 @@
           '<p><b>Why the oxygen falls late.</b> Living algae make oxygen by day. Most of the drop comes after they die, when bacteria decompose them on the bottom, and the bottom water mixes little with the air. A dense bloom also uses some oxygen at night (it respires in the dark), which can cause night time dips; this model leaves that out and counts the decomposers, which use most of it.</p>' +
           '<p><b>Warm lakes suffer more.</b> At ' + S.tLake + ' °C water holds at most ' + F(run.osat) + ' mg/L, and decomposers work faster when it is warm.</p>' +
           '<p><b>Do not mix up.</b> Fertilizers (nitrate, phosphate) cause eutrophication; pesticides are a different pollutant. Thermal pollution is heat (chapter 2).</p>' +
-          '<h3 class="ls-title-l">The lake, day by day</h3><p class="bt-small">' + sk(S.sacks) + ', lake at ' + S.tLake + ' °C. Nutrients and dead algae in relative units; algae as times its day 0 amount (the graph’s right axis); oxygen in mg/L.</p>' +
+          '<h3 class="ls-title-l">The lake, day by day</h3><p class="bt-small">' + sk(S.sacks) + ', lake at ' + S.tLake + ' °C. Nutrients and dead algae in relative units; algae as times its day 0 amount; oxygen in mg/L.</p>' +
           '<div class="table-wrap" tabindex="0" role="region" aria-label="Lake model by day"><table class="ls-tbl"><thead><tr><th scope="col">Day</th><th scope="col">Nutrients</th><th scope="col">Algae</th><th scope="col">Dead algae</th><th scope="col">Bottom oxygen</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
           '<p class="bt-small">Lowest bottom oxygen ' + F(run.min) + ' mg/L on day ' + run.minDay + '. Days below 2 mg/L: ' + run.hypoxicDays + '.</p>' + src;
       } else if(c === 'heat'){
@@ -1471,36 +1292,42 @@
           '<h3 class="ls-title-l">Share of the raw load still in the water</h3><div class="table-wrap" tabindex="0" role="region" aria-label="Sewage treatment by stage"><table class="ls-tbl"><thead><tr><th scope="col">After</th>' + W.SEWAGE.parts.map(function(p){ return '<th scope="col">' + esc(p.name) + '</th>'; }).join('') + '</tr></thead><tbody>' +
           W.SEWAGE.stages.map(function(s, i){ return '<tr' + (i === S.stage ? ' class="hl"' : '') + '><th scope="row">' + esc(s.name) + '</th>' + W.SEWAGE.parts.map(function(p){ return '<td class="r">' + (s.left[p.k] < 1 ? s.left[p.k] : Math.round(s.left[p.k])) + '%</td>'; }).join('') + '</tr>'; }).join('') + '</tbody></table></div>' + src;
       }
-      h += '<p class="bt-small wp2-reset"><button type="button" class="tk2-link" data-wp-reset>Start this chapter’s challenges again</button></p>';
       ref.innerHTML = h;
       if(c === 'heat'){ var hs = ref.querySelector('.wp2-set-h'); if(hs) hs.parentNode.insertBefore(setBox, hs.nextSibling); }
       else if(setBox.parentNode) setBox.parentNode.removeChild(setBox);
     }
-    ref.addEventListener('click', function(e){ if(e.target.closest('[data-wp-reset]')){ C[S.ch].reset(); tempShown(); if(LS) LS.close(); } });
 
     /* ======================================================= placing it in the studio */
+    function speedItem(){ return { icon: 'sliders', label: fast ? 'Play at normal speed' : 'Play twice as fast', onClick: function(){ fast = !fast; player.rate(fast ? 2 : 1); if(LS) LS.menu({ items: [speedItem()] }); } }; }
     function studio(pane, s){
       LS = s;
       K.on(s);
+      // Explore: the stage alone, full width (no side panel). Test yourself's questions use the same stage and "?".
       s.add('stage', stage, { mode: 'explore' });
-      s.add('dock', panel, { mode: 'explore' });
       s.add('details', ref, { mode: 'explore' });
+      stage.setAttribute('data-ls-only', 'explore quiz'); ref.setAttribute('data-ls-only', 'explore quiz');
       var ab = pane.querySelector('details.tool-about, .tool-about'); if(ab) s.add('about', ab, { mode: 'explore' });
+      s.menu({ items: [speedItem()] });
+      s.mode(s.mode());
       syncCh(); layoutNow();
-      var dk = s.root.querySelector('.ls-dock'); [60, 300, 900].forEach(function(ms){ setTimeout(function(){ if(dk && !dk.contains(document.activeElement)) dk.scrollTop = 0; }, ms); });
-      if(window.ResizeObserver){ var tm = null, re = function(){ clearTimeout(tm); tm = setTimeout(function(){ placePredict(); layoutNow(); }, 50); }; new ResizeObserver(re).observe(sceneBox); new ResizeObserver(re).observe(graphBox); }
+      if(window.ResizeObserver){ var tm = null, re = function(){ clearTimeout(tm); tm = setTimeout(layoutNow, 50); }; new ResizeObserver(re).observe(sceneBox); new ResizeObserver(re).observe(graphBox); }
       try{ new MutationObserver(function(){ layoutNow(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] }); }catch(e){}
       loop(true);
     }
     syncCh(); words(); refHtml();
     return {
-      studio: studio,
-      shown: function(on){ visible = on; if(!on) player.stop(); loop(on); if(on) setTimeout(layoutNow, 30); }
+      studio: studio, quiz: quiz,
+      shown: function(m){
+        S.mode = m; player.stop();
+        if(m === 'explore'){ if(QZ) QZ.leave(); visible = true; syncCh(); }
+        else { visible = !!(QZ && QZ.scene()); if(QZ) QZ.enter(); }
+        loop(visible); if(visible) setTimeout(layoutNow, 30);
+      }
     };
   }
-  /* ------------------------------------------------------ test yourself */
-  function quiz(host, data){
-    T.drill(host, data, { slug: 'water-pollution', noun: 'drill',
+  /* ------------------------------------------------------ test yourself: the practice problems (the drill) */
+  function drill(host, data, pre){
+    return T.drill(host, data, { slug: 'water-pollution', noun: 'drill', pickerPre: pre,
       generate: function(r, ctx, type){ return W.generate(r, ctx, type); },
       types: [{ value: 'chain', label: 'Read the oxygen graph' }, { value: 'dochange', label: 'Percent change in oxygen' }, { value: 'thermal', label: 'Thermal pollution' }, { value: 'sewage', label: 'Sewage treatment' }, { value: 'load', label: 'Nutrient load' }],
       typeLabel: 'Kind of problem',

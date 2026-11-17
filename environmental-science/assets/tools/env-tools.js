@@ -612,9 +612,15 @@
     var sd = studioDrill(app, area, o), curApi = null;
     // The standard frame: the kinds are the scenario dropdown on the stage
     // (docs/tools-frame-2026-11.md); otherwise the picker behind More options.
+    /* o.pickerPre (opt in, Water pollution): { groups: [{ label, items }], label, drillGroup, value, own(v) -> true,
+       onPick(v), onDrill() }: the tool's own entries (its questions on the picture) come first in the same dropdown;
+       picking one calls onPick and leaves the drill as it is; picking a kind calls onDrill, then draws a problem. */
+    var pre = o.pickerPre || null, pk = null;
     if(kinds.length > 1 && sd && sd.std){
-      sd.picker({ label: o.typeLabel || 'Problem type', items: [{ value: '', label: 'Any kind' }].concat(kinds.map(function(k){ return { value: k.value, label: k.label }; })), value: '',
-        onChange: function(v){ type = v; seed = freshSeed(); draw(true); } });
+      var dItems = [{ value: '', label: 'Any kind' }].concat(kinds.map(function(k){ return { value: k.value, label: k.label }; }));
+      pk = sd.picker({ label: (pre && pre.label) || o.typeLabel || 'Problem type', value: pre && pre.value != null ? pre.value : '',
+        groups: pre ? pre.groups.concat([{ label: pre.drillGroup || 'Practice problems', items: dItems }]) : undefined, items: pre ? undefined : dItems,
+        onChange: function(v){ if(pre && pre.own(v)){ pre.onPick(v); return; } if(pre && pre.onDrill) pre.onDrill(v); type = v; seed = freshSeed(); draw(true); } });
     } else if(kinds.length > 1){
       kindPicker(fr.pick, { label: o.typeLabel || 'Problem type', options: kinds, onChange: function(v){ type = v; seed = freshSeed(); draw(true); } });
     }
@@ -848,6 +854,7 @@
       if(focus) area.querySelector('h2').focus();
     }
     draw(false);
+    return { picker: pk, fresh: function(){ seed = freshSeed(); draw(true); } };
   }
 
   /* ------------------------------------------- explore / test yourself */

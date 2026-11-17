@@ -332,7 +332,11 @@ emissions savings; LD50 read from a curve; biomagnification factors; TFR and rep
     figures redrawn in the Explore's style. Second review round: predictions gate every first action, the explain
     back hides the names and ends with a cause question, first tries are counted, phone timeline names; shared fix in
     env-tool-math.js and env-grade.js (a factor slip is named only when clear) and env-tools.js (first try kept once).
-    Not merged: waiting for the owner.
+    Owner round (2026-11-16, brief "Owner round: play vs quiz"): two modes. Explore is free play with no side panel,
+    no gates and no grading (tabs, the scene, Play and a thin progress line, one caption, a simple graph); every
+    prediction, challenge, recap and first try count moved to Test yourself, one question at a time on the same
+    scene, picked with the practice problems in one dropdown (`pickerPre`, an opt in on `ApEnvTools.drill`, which now
+    returns `{ picker, fresh }`). Not merged: waiting for the owner.
 
 ## 9. Open items for the owner
 
