@@ -271,3 +271,47 @@ Scores before: clarity 8, teaches 8, interactivity 9, visual 8, phone 7, a11y 8.
   slots); "Already run at 20 °C" instead of a check button for a run already in; the percent drill's dead zone note
   sits under the axis; the nutrient load drill is a field with bags sloping to a stream in its channel; drill tanks
   are named under the tank like the scene (33).
+
+## Third review round (2026-11-16, `/home/claude/review-wp2/REVIEW3.md`: R1 to R8 and the partial N8)
+Scores before: clarity 8, teaches 9, interactivity 9, visual 8, phone 8, a11y 8. Rule kept for every tool: guide,
+never frustrate (no two blocks in a row, every block says the exact next action).
+- R1: until the chain has been watched, chapter 1's first Check button reads "Watch the chain first" (play icon) and
+  pressing it plays the chain from day 0 (with reduced motion each press is the next step, never back to day 0); a
+  line under it says it turns into Check at the dead zone. Play or a drag along the graph that reaches the dead zone
+  (or day 21) counts as watched. The card intro: "Press Play once and watch the chain. Then change the sacks ...";
+  the goal line says the same. Before a prediction it blocks once ("Predict first"), then acts.
+- R2: the gate's nudge names the action just tried ("(Or press Play again to skip.)", "press Check", "press Watch the
+  chain", "move along the graph", "move the outflow handle", "tap a tank"). Two option questions (longer or shorter)
+  never lock: a wrong pick shows its reason, is crossed out, and the other answer stays tappable. Three or more
+  choices still lock, and the reason ends "Read this, then press Try again."; a timeline tap while the link question
+  is locked adds "Locked for a moment: read the hint above, then press Try again." (a status line; on a phone the
+  same words also show under the timeline, since the card is far below).
+- R3: only chapter 1's card touches the timeline's hidden names (other chapters' cards used to clear or keep the
+  flag); `syncCh` shows names in every other chapter. The blank step number on dark: the blank disc rule outweighed
+  the current step's background while the dark current step colour still applied (navy on navy); a dark blank rule
+  keeps the number muted and readable (kit CSS).
+- R4 (kit): `challenges.met` moves focus to the success line (tabindex -1) when focus was in the card or already
+  lost; Tab then reaches Next challenge. A timeline tap keeps its focus.
+- R5: in challenge 2 the faint line is the other one of the two 3 sack runs (20 or 30 °C) once that run is in, with
+  the caption "Faint line: your run with 3 sacks at 20 °C, to compare"; no faint line before; cleared when met.
+- R6: the two "why" questions have options of near equal length, the right one never the longest (56/59/55 and
+  68/71/65 characters; authoring guide: similar lengths).
+- R7 (shared, opt in): `env-tool-math.js` diagnose uses a cell's own `close` line when it has one, else the old
+  rounding line, so no other tool changes (unit test checks both). Water pollution's two graph readings carry one:
+  "Close. Read the lowest point of the blue curve to 0.1 mg/L." and "Close. Read the curve right above T °C, to
+  0.1 mg/L." Other APES tools' drills were run in the browser: no errors.
+- R8: on a phone, when Predict is off screen and the control has a line of its own (a Check button), the nudge is
+  shown next to the button with a "Go to Predict" link (the page does not jump; focus stays); Play and the stage
+  controls bring Predict, which sits just under them, into view gently. The nutrient load figure's label is
+  "Water flowing in: N L/day" (the water is a creek, lake or reservoir by context, so the label names the flow).
+- N8: the fish's swimming range ends short of the thermometer, and fish leaving drop into their own lanes below its
+  bulb before swimming out at the right edge; nothing pushes them onto the bulb any more.
+
+### Checks run (third round)
+Playwright (Chromium) at 390x844, 768x1024 and 1440x900, light and dark: Check before predicting and before watching
+(one block, then it plays), the graph scrub path, every challenge met by keyboard with the focus logged (success
+line each time), the two option question, the locked timeline tap, chapter 3 after leaving the explain back open,
+dark phone blank timeline, fish at 30 °C on days 6 to 30, the load figure, reduced motion; axe-core: no serious or
+critical issue in any chapter at 390, 768 and 1440, light and dark; no horizontal scroll; no console errors; other
+APES tools' Test yourself smoke run. `node --test scripts/test/apenv-*.test.mjs` (186 pass), `check-apenv-content
+--check`, `build-apenv --check`, `check-site`, `check-weight --check`.

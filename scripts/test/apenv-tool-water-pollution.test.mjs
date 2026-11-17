@@ -127,3 +127,14 @@ test('water-pollution: sewage organic matter (BOD) is an oxygen demand on the la
   assert.equal(run(3).hypoxicDays, 0, 'tertiary (N and P removed) keeps the lake below out of a dead zone');
   assert.ok(run(2).peakDay < run(2).minDay, 'after secondary the chain still runs: bloom, then the oxygen low');
 });
+
+test('water-pollution: a graph reading that is close says how to read it, never how to round (third review R7)', () => {
+  const c = data.contexts.find(x => x.types.includes('chain'));
+  const p = W.generate(M.rng(7), c, 'chain'), s = p.steps.find(x => x.key === 'lowest');
+  const A = s.cell.answer, g = M.diagnose(s.cell, Math.round((A - 0.4) * 10) / 10);
+  assert.equal(g.ok, false);
+  assert.match(g.why, /Read the lowest point of the blue curve/);
+  assert.doesNotMatch(g.why, /round/i);
+  // every other cell keeps the shared rounding line
+  assert.match(M.diagnose(M.cell(2.4, 1e-6, [], 0.35), 2).why, /Keep every digit/);
+});

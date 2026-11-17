@@ -108,7 +108,9 @@
     var nm = (c.near || []).filter(function(m){ return near(x, m.value, r, ab); })[0];
     if(nm) return { ok: false, why: nm.why };
     // No 2% floor: a year 36 off was "close" to 2066.
-    if(near(x, A, 2 * r, 2 * (ab || 0)) && Math.abs(x - A) <= 0.25 * Math.abs(A)) return { ok: false, why: 'Close. Keep every digit until the last step, then round.' };
+    // A cell may carry its own "close" line (c.close): a reading from a graph has no steps to round, so the
+    // rounding advice would be wrong there. Without it every tool keeps the rounding line.
+    if(near(x, A, 2 * r, 2 * (ab || 0)) && Math.abs(x - A) <= 0.25 * Math.abs(A)) return { ok: false, why: c.close || 'Close. Keep every digit until the last step, then round.' };
     return { ok: false };
   }
 

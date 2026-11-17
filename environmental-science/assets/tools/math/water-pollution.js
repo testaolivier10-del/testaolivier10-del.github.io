@@ -153,7 +153,9 @@
   function num(key, label, answer, d, o){
     o = o || {};
     var abs = Math.max(o.abs || 0, 0.6 * Math.pow(10, -d));
-    return step(key, label, { kind: 'num', d: d, unit: o.unit, hint: o.hint, cell: M.cell(answer, 1e-6, o.mistakes || [], abs) });
+    var c = M.cell(answer, 1e-6, o.mistakes || [], abs);
+    if(o.close) c.close = o.close;   // a graph reading: say how to read it, not how to round
+    return step(key, label, { kind: 'num', d: d, unit: o.unit, hint: o.hint, cell: c });
   }
   var CHINT = {
     bloom: 'Nitrate and phosphate are nutrients. Which living thing in the lake uses nutrients to grow?',
@@ -196,7 +198,7 @@
         ['The nitrate poisons the fish.', 'At these levels the harm is indirect: the nutrients feed algae, and the chain ends with too little oxygen.'],
         ['The water warms up.', 'That is thermal pollution, which is heat. Fertilizer adds nutrients, not heat.']
       ]),
-      num('lowest', 'Read the graph: what is the lowest dissolved oxygen in the bottom water?', mins, 1, { unit: 'mg/L', abs: 0.35, hint: 'To the nearest 0.1 mg/L. Read the bottom of the blue curve.' }),
+      num('lowest', 'Read the graph: what is the lowest dissolved oxygen in the bottom water?', mins, 1, { unit: 'mg/L', abs: 0.35, hint: 'To the nearest 0.1 mg/L. Read the bottom of the blue curve.', close: 'Close. Read the lowest point of the blue curve to 0.1 mg/L.' }),
       choice('lag', 'The oxygen low comes about ' + Math.max(1, Math.round(run.minDay - run.peakDay)) + ' days after the algae peak. Why the delay?', [
         ['The algae must die and sink before decomposers can break them down, and decomposition takes days.', 'Right. Oxygen falls while bacteria respire as they decompose the dead algae, so the low lags the bloom.'],
         ['Living algae use up the oxygen at night, and that takes days to add up.', 'Living algae make more oxygen than they use. The big drop comes from decomposing the dead bloom.'],
@@ -264,7 +266,7 @@
     var d0 = osat(t0), d1 = osat(t1), ans = pc(d0, d1);
     var text = '<p>' + c.lead + ' Water that cooled the plant is returned to the ' + (c.water || 'river') + ', warming it from ' + t0 + ' °C to ' + t1 + ' °C. The graph gives the most dissolved oxygen fresh water can hold at each temperature (USGS values).</p>';
     var steps = [
-      num('read', 'Read the graph: how much oxygen can the water hold at ' + t0 + ' °C?', d0, 1, { unit: 'mg/L', hint: 'Find ' + t0 + ' °C on the curve.', mistakes: [{ value: d1, why: 'That is the value at ' + t1 + ' °C. Start from the cooler water, before the plant warms it.' }] }),
+      num('read', 'Read the graph: how much oxygen can the water hold at ' + t0 + ' °C?', d0, 1, { unit: 'mg/L', hint: 'Find ' + t0 + ' °C on the curve.', close: 'Close. Read the curve right above ' + t0 + ' °C, to 0.1 mg/L.', mistakes: [{ value: d1, why: 'That is the value at ' + t1 + ' °C. Start from the cooler water, before the plant warms it.' }] }),
       setup('setup', 'Write the setup for the percent change in oxygen the water can hold, ' + t0 + ' °C to ' + t1 + ' °C.', '(' + f(d1, 1) + ' - ' + f(d0, 1) + ') / ' + f(d0, 1) + ' * 100', { mustUse: [f(d0, 1), f(d1, 1)], hint: 'Read both values from the table first.',
         mistakes: [{ expr: '(' + f(d0, 1) + ' - ' + f(d1, 1) + ') / ' + f(d0, 1) + ' * 100', why: 'Percent change is new minus old, so a loss comes out negative.' },
           { expr: '(' + f(d1, 1) + ' - ' + f(d0, 1) + ') / ' + f(d1, 1) + ' * 100', why: 'Divide by the old value, the oxygen at ' + t0 + ' °C.' }] }),

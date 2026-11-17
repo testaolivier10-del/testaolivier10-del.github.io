@@ -53,7 +53,7 @@
                                     checked ("2 sacks: no dead zone"), so a boundary is found by committed checks,
                                     never by sweeping a control.
    K.order({ items, why(i, pos), onDone() }) -> { el, reset() }   explain back: tap the steps in order.
-   predict extras: nudge(html) (Play pressed before a prediction), fold(on) (once settled: one line and a Why
+   predict extras: nudge(html, noFocus) (Play pressed before a prediction), fold(on) (once settled: one line and a Why
                                     button). challenges extras: done.title, onAll(), onReset(). drag extras: onEnd(v)
                                     (pointer up or a key's change), place(track, tagSide). timeline: names(list of
                                     strings or { name, short }: short is the name a phone shows under the dot),
@@ -259,7 +259,8 @@
       fold: fold,
       reset: function(nq){ if(nq) o = Object.assign({}, o, nq); pick = null; settled = false; folded = false; c.classList.remove('is-picked', 'is-done', 'is-fold'); then.hidden = true; ver.hidden = true; sum.hidden = true; build(); },
       // draw the eye to the choices (Play pressed before a prediction): a short pulse and focus on the first choice
-      nudge: function(html){ if(html){ then.innerHTML = html; then.hidden = false; } c.classList.remove('is-nudge'); void c.offsetWidth; c.classList.add('is-nudge'); var f = ops.querySelector('.tk2-opt'); if(f) try{ f.focus({ preventScroll: true }); }catch(e){} }
+      // noFocus: the student is told next to the control they used (focus stays there)
+      nudge: function(html, noFocus){ if(html){ then.innerHTML = html; then.hidden = false; } c.classList.remove('is-nudge'); void c.offsetWidth; c.classList.add('is-nudge'); var f = ops.querySelector('.tk2-opt'); if(f && !noFocus) try{ f.focus({ preventScroll: true }); }catch(e){} }
     };
   };
 
@@ -349,7 +350,14 @@
         if(met[id]) return false;
         met[id] = html || true; save();
         var i = o.items.findIndex ? o.items.findIndex(function(x){ return x.id === id; }) : -1;
-        if(i === cur){ body.innerHTML = ''; paint(); c.classList.remove('is-pop'); void c.offsetWidth; c.classList.add('is-pop'); fit(); }
+        if(i === cur){
+          // the answer's buttons go with the body: if focus was in the card (or already lost), it moves to the
+          // success line, so a keyboard or screen reader user stays here (Tab then reaches Next challenge)
+          var ae = document.activeElement, had = !ae || ae === document.body || c.contains(ae);
+          body.innerHTML = ''; paint(); c.classList.remove('is-pop'); void c.offsetWidth; c.classList.add('is-pop'); fit();
+          var okt = ok.querySelector('.tk2-ok-t');
+          if(had && okt){ okt.tabIndex = -1; try{ okt.focus({ preventScroll: true }); }catch(e){} }
+        }
         else paint();
         return true;
       },

@@ -136,6 +136,8 @@
 .tk2-tl-i.is-bad.is-cur .tk2-sn{background:var(--bad);color:#fff;box-shadow:0 0 0 4px color-mix(in srgb, var(--bad) 25%, transparent);}
 .tk2-tl-i.is-bad.is-on .tk2-step{color:var(--bad-text);}
 :root[data-theme="dark"] .tk2-tl-i.is-cur .tk2-sn{color:#111D31;}
+/* explain back (blank): every number stays readable, the dark current-step colour must not apply to the plain disc */
+:root[data-theme="dark"] .tk2-tl.is-blank .tk2-tl-i .tk2-sn{color:var(--muted);}
 .tk2-step[aria-disabled="true"]{cursor:default;}
 .tk2-step[aria-disabled="true"] .tk2-snm{opacity:.75;}
 .tk2-tl-i.is-flash-good .tk2-sn{animation:tk2-ok .9s ease 2;background:var(--good);color:#fff;box-shadow:none;}
@@ -289,3 +291,4 @@
 .tk2-more i{font-style:normal;font-weight:900;}
 .tk2-more .is-ok{color:var(--good-text);} .tk2-more .is-no{color:var(--bad-text);}
 :root[data-theme="dark"] .tk2-more .is-ok{color:#7FD9A2;} :root[data-theme="dark"] .tk2-more .is-no{color:#FF9E91;}
+.tk2-ok-t:focus:not(:focus-visible){outline:none;}

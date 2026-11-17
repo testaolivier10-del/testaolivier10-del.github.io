@@ -394,3 +394,7 @@ body.ls-on .env-crumb{display:none;}
 .wp2-done1 .tk2-i{color:var(--good-text);width:18px;height:18px;margin-top:1px;}
 :root[data-theme="dark"] .wp2-done1 .tk2-i{color:#7FD9A2;}
 .wp2-msg .tk2-note:focus{outline:none;}
+/* third review: the lock is said in words; a locked timeline tap gets its own line */
+.wp2-msg .wp2-lockl{display:block;margin-top:4px;font-weight:800;}
+.wp2-msg .wp2-lockn{margin:6px 0 0;font:800 14px/1.4 var(--font-ui);color:var(--cink);}
+.wp2-msg .wp2-lockn:empty{display:none;}
