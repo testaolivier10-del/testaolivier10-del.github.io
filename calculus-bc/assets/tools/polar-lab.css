@@ -3,7 +3,6 @@
    (blue), the swept area, the current slice (amber), the toward/away bands, light and dark. */
 .pl-card,.ls-root{--pl-r:#6D28D9;--pl-R:#0072B2;--pl-faint:#B9AED6;--pl-faintR:#9CC3DE;--pl-area:rgba(109,40,217,.13);--pl-slice:rgba(230,159,0,.55);--pl-up:rgba(0,158,115,.14);--pl-dn:#8A9A95;--pl-tan:#D55E00;--pl-bg:#FBFBFE;--pl-grid:#E3E5EE;}
 :root[data-theme="dark"] .pl-card,:root[data-theme="dark"] .ls-root{--pl-r:#B79CFF;--pl-R:#6BB4E8;--pl-faint:#4E4670;--pl-faintR:#2F5470;--pl-area:rgba(183,156,255,.16);--pl-slice:rgba(240,190,80,.5);--pl-up:rgba(82,207,166,.12);--pl-dn:#6F807A;--pl-tan:#F29A5C;--pl-bg:#141822;--pl-grid:#262C3A;}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .pl-card,:root:not([data-theme="light"]) .ls-root{--pl-r:#B79CFF;--pl-R:#6BB4E8;--pl-faint:#4E4670;--pl-faintR:#2F5470;--pl-area:rgba(183,156,255,.16);--pl-slice:rgba(240,190,80,.5);--pl-up:rgba(82,207,166,.12);--pl-dn:#6F807A;--pl-tan:#F29A5C;--pl-bg:#141822;--pl-grid:#262C3A;}}
 
 .pl-stage{display:flex;flex-direction:column;gap:6px;min-height:0;flex:1;}
 .pl-plane-wrap{position:relative;flex:1 1 0;min-height:260px;border-radius:12px;}

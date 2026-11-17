@@ -272,19 +272,8 @@
     else document.documentElement.removeAttribute('data-theme');
     try{ localStorage.setItem(THEME_KEY, mode); }catch(e){}
   }
-  /* With nothing saved, the inline script in every <head> takes the OS
-     setting (prefers-color-scheme) before first paint, so there is no flash.
-     Follow the OS when it changes too, until the student picks a theme. */
-  try{
-    var darkQuery = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
-    if(darkQuery && darkQuery.addEventListener) darkQuery.addEventListener('change', function(e){
-      var saved = null;
-      try{ saved = localStorage.getItem(THEME_KEY); }catch(err){}
-      if(saved) return;
-      if(e.matches) document.documentElement.setAttribute('data-theme', 'dark');
-      else document.documentElement.removeAttribute('data-theme');
-    });
-  }catch(e){}
+  /* The site opens light; dark only when the student picks it in the menu
+     (owner 2026-11-16). The device setting is not followed. */
 
   /* Both rows are measured, not assumed: row 2 wraps to a second line on a
      tablet and scrolls sideways on a phone, and an exam timer parked at a

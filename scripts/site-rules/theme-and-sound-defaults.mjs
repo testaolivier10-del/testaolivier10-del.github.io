@@ -1,10 +1,9 @@
-/* Dark mode follows the OS when nothing is saved, and answer sounds start off.
+/* The site opens light unless dark was picked, and answer sounds start off.
 
-   Guards two audit 2026-10 rows:
-   - "Dark mode ignores the OS setting everywhere": every page's first-paint
-     theme script (the inline one in <head> that reads nremt_theme) must also
-     read prefers-color-scheme, so a reader whose OS is dark gets the dark
-     theme with no flash. Generators that write pages are checked too.
+   - Light by default (owner 2026-11-16, reversing the audit 2026-10 row that
+     followed the OS): every page's first-paint theme script (the inline one
+     in <head> that reads nremt_theme) turns dark on only for a saved "dark"
+     and must not read prefers-color-scheme. Generators are checked too.
    - "Sounds on by default": assets/chime.js must start disabled and play only
      after an explicit 'on' is saved. */
 import { readFileSync, existsSync } from 'node:fs';
@@ -19,8 +18,8 @@ export default function themeAndSoundDefaults({ ROOT, fail, htmlFiles }) {
   for (const [file, rel] of sources) {
     const text = readFileSync(file, 'utf8');
     for (const m of text.matchAll(THEME_READ)) {
-      if (!/prefers-color-scheme: ?dark/.test(m[0])) {
-        fail(`${rel}: the first-paint theme script does not fall back to prefers-color-scheme when no theme is saved`);
+      if (/prefers-color-scheme/.test(m[0])) {
+        fail(`${rel}: the first-paint theme script follows the device setting; the site opens light unless dark was picked`);
         break;
       }
     }

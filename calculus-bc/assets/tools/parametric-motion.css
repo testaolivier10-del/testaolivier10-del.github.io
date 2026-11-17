@@ -3,7 +3,6 @@
    (green), tangent (vermillion) and the distance under the speed graph, light and dark. */
 .pm-card,.ls-root{--pm-path:#6D28D9;--pm-faint:#B9AED6;--pm-v:#0072B2;--pm-a:#007A5A;--pm-tan:#D55E00;--pm-dist:rgba(109,40,217,.16);--pm-bg:#FBFBFE;--pm-grid:#E6E8F0;--pm-ground:rgba(120,110,90,.12);}
 :root[data-theme="dark"] .pm-card,:root[data-theme="dark"] .ls-root{--pm-path:#B79CFF;--pm-faint:#4E4670;--pm-v:#6BB4E8;--pm-a:#52CFA6;--pm-tan:#F29A5C;--pm-dist:rgba(183,156,255,.20);--pm-bg:#141822;--pm-grid:#252B38;--pm-ground:rgba(200,190,160,.08);}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .pm-card,:root:not([data-theme="light"]) .ls-root{--pm-path:#B79CFF;--pm-faint:#4E4670;--pm-v:#6BB4E8;--pm-a:#52CFA6;--pm-tan:#F29A5C;--pm-dist:rgba(183,156,255,.20);--pm-bg:#141822;--pm-grid:#252B38;--pm-ground:rgba(200,190,160,.08);}}
 
 .pm-stage{display:flex;flex-direction:column;gap:6px;min-height:0;flex:1;}
 .pm-plane-wrap{position:relative;flex:1 1 0;min-height:240px;border-radius:12px;}

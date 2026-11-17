@@ -9,9 +9,6 @@
 :root[data-theme="dark"]{--cs-p1:#6CB8EC;--cs-p2:#FF9A5C;--cs-p3:#4FD1AA;--cs-p4:#E7A5CA;--cs-p5:#C3A3E0;
   --cs-sky:#1E2A31;--cs-ground:#3A4527;--cs-steel:#A9B6B3;--cs-smoke:#59605F;--cs-bldg:#4A4438;--cs-win:#E9C44A;--cs-roof:#B5694F;
   --cs-water:#6CB8EC;--cs-heat:#C9835A;--cs-bio:#6FA458;--cs-q:#6E7775;}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--cs-p1:#6CB8EC;--cs-p2:#FF9A5C;--cs-p3:#4FD1AA;--cs-p4:#E7A5CA;--cs-p5:#C3A3E0;
-  --cs-sky:#1E2A31;--cs-ground:#3A4527;--cs-steel:#A9B6B3;--cs-smoke:#59605F;--cs-bldg:#4A4438;--cs-win:#E9C44A;--cs-roof:#B5694F;
-  --cs-water:#6CB8EC;--cs-heat:#C9835A;--cs-bio:#6FA458;--cs-q:#6E7775;}}
 
 /* ------------------------------------------------------------- stage */
 .cs-stage{display:flex;flex-direction:column;gap:clamp(10px,2.4vh,22px);min-height:0;}

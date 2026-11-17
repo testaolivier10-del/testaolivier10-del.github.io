@@ -5,7 +5,6 @@
 .hug-pl-card{display:grid;gap:14px;}
 :root{--hug-pl-m:#0B5E6B;--hug-pl-f:#C24E00;--hug-pl-young:#00805C;--hug-pl-old:#7A4F9E;--hug-pl-b:#474A10;--hug-pl-d:#B8336A;--hug-pl-gap:rgba(0,158,115,.15);}
 :root[data-theme="dark"]{--hug-pl-m:#8CCFD9;--hug-pl-f:#F29A5C;--hug-pl-young:#4FD1AA;--hug-pl-old:#C3A3E0;--hug-pl-b:#DCDB98;--hug-pl-d:#F08DB5;--hug-pl-gap:rgba(79,209,170,.16);}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--hug-pl-m:#8CCFD9;--hug-pl-f:#F29A5C;--hug-pl-young:#4FD1AA;--hug-pl-old:#C3A3E0;--hug-pl-b:#DCDB98;--hug-pl-d:#F08DB5;--hug-pl-gap:rgba(79,209,170,.16);}}
 .hug-pl-stage{display:flex;flex-direction:column;gap:8px;min-height:0;}
 .ls-root .hug-pl-stage{flex:1;}
 /* In the tool stage the pyramid takes the height left under the summary pills (at least 230 px), so a phone stage

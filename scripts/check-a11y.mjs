@@ -545,17 +545,18 @@ await interaction('Atomic structure step 4: keyboard path to Continue', async (p
   return ok ? '' : 'seven electrons placed by keyboard, but Continue stayed disabled';
 });
 
-// Dark mode is the OS default for many readers now that the theme follows
-// prefers-color-scheme (audit 2026-10), so contrast is checked there too, on
-// the pages where axe found dark-only failures.
+// Dark mode is a choice in the account menu (the site opens light, owner
+// 2026-11-16), so contrast is checked with dark picked too, on the pages
+// where axe found dark-only failures.
 for (const p of ['/ochem/learn.html', '/nremt/dashboard.html', '/ochem/dashboard.html', '/ochem/', '/']) {
   await interaction(`Dark-mode contrast: ${p}`, async (page) => {
+    await page.addInitScript(() => { try { localStorage.setItem('nremt_theme', 'dark'); } catch (e) {} });
     await page.goto(url(p));
     // The tutor tip fades in at 1.2 s over 0.18 s; sampling mid-fade reads a
     // blended colour as a contrast failure, so wait until it has settled.
     await page.waitForTimeout(1600);
     const dark = await page.evaluate(() => document.documentElement.getAttribute('data-theme'));
-    if (dark !== 'dark') return 'the page did not follow prefers-color-scheme: dark';
+    if (dark !== 'dark') return 'the page did not open dark with dark picked';
     await page.addScriptTag({ content: axeSource });
     const v = await page.evaluate(async () => (await window.axe.run(document, { runOnly: { type: 'rule', values: ['color-contrast'] } })).violations);
     if (!v.length) return '';

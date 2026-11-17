@@ -37,11 +37,6 @@
 :root[data-theme="dark"] .as-graph .as-g1{fill:color-mix(in srgb, #FF9A5C 30%, transparent);stroke:#FF9A5C;}
 :root[data-theme="dark"] .as-graph .as-g2{fill:color-mix(in srgb, #4FD1AA 30%, transparent);stroke:#4FD1AA;}
 :root[data-theme="dark"] .as-graph .as-trend{stroke:#FF9A5C;}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]) .as-graph .as-g1{fill:color-mix(in srgb, #FF9A5C 30%, transparent);stroke:#FF9A5C;}
-  :root:not([data-theme="light"]) .as-graph .as-g2{fill:color-mix(in srgb, #4FD1AA 30%, transparent);stroke:#4FD1AA;}
-  :root:not([data-theme="light"]) .as-graph .as-trend{stroke:#FF9A5C;}
-}
 
 /* Where each part is answered: a quiet underline everywhere, a highlight on the part shown. */
 .as-hl{border-radius:4px;transition:background-color .25s,box-shadow .25s;-webkit-box-decoration-break:clone;box-decoration-break:clone;}

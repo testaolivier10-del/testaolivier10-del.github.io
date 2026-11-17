@@ -41,11 +41,6 @@
 :root[data-theme="dark"] .eb-graph .eb-g1{fill:color-mix(in srgb, #FF9A5C 30%, transparent);stroke:#FF9A5C;}
 :root[data-theme="dark"] .eb-graph .eb-g2{fill:color-mix(in srgb, #4FD1AA 30%, transparent);stroke:#4FD1AA;}
 :root[data-theme="dark"] .eb-graph .eb-trend{stroke:#FF9A5C;}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]) .eb-graph .eb-g1{fill:color-mix(in srgb, #FF9A5C 30%, transparent);stroke:#FF9A5C;}
-  :root:not([data-theme="light"]) .eb-graph .eb-g2{fill:color-mix(in srgb, #4FD1AA 30%, transparent);stroke:#4FD1AA;}
-  :root:not([data-theme="light"]) .eb-graph .eb-trend{stroke:#FF9A5C;}
-}
 
 /* The dock: the part strip and the builder card. */
 .eb-ctl{display:flex;flex-direction:column;gap:12px;min-width:0;}
