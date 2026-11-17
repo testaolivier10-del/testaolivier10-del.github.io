@@ -317,6 +317,32 @@ emissions savings; LD50 read from a curve; biomagnification factors; TFR and rep
     the wind (Betz), not heat; the J-curve ends at the top edge with an arrow; the deer herd is drawn on its island;
     Test yourself figures fill the stage (`ApEnvTools.figSize`, `o.refit`). Pave land and the nitrogen amounts in
     Cycles now say they are an exaggerated case and a sketch (`docs/apenv-needs-author.md`).
+17. (2026-11-16, `docs/tools-v2-water-pollution-brief.md`, Build notes) **Tools v2 flagship: Water pollution.** Explore
+    rebuilt on the shared v2 kit (`assets/course/tool-kit2.js` and `.css`, opted in by `"kit2": true` in pages.json):
+    three named chapters on the stage (Fertilizer runoff, Hot water, Sewage), controls on the picture (sacks, lake
+    thermometer, outflow handle, tappable tanks), a named six step timeline and a scrubbable graph sharing the day,
+    and a side panel with only the goal, Predict, a live Readout and one Challenge at a time; "?" is a sheet over the
+    stage. New numbers, each cited in "?": 5 mg/L "Healthy" line (Chesapeake Bay Program), 9.5 mg/L for young trout
+    (EPA 1986 coldwater criteria), the sewage to lake mapping (a teaching scaling of W.SEWAGE). Review round
+    (2026-11-16, all 38 issues of the independent review): Play holds about 2.4 s at each step with its why; challenges
+    need committed checks and real runs; a chapter done card with an explain back; one fixed graph scale with the
+    last run drawn faint; chapter 3 plays the lake below. Model change: `W.lake(level, T, bod)`, the organic matter
+    (BOD) left after each sewage stage is an oxygen demand on day 0 (`W.BOD_D`, a teaching scale, cited in "?"), so
+    primary and secondary differ honestly; every other caller is unchanged (unit test and validator check it). Drill
+    figures redrawn in the Explore's style. Second review round: predictions gate every first action, the explain
+    back hides the names and ends with a cause question, first tries are counted, phone timeline names; shared fix in
+    env-tool-math.js and env-grade.js (a factor slip is named only when clear) and env-tools.js (first try kept once).
+    Owner round (2026-11-16, brief "Owner round: play vs quiz"): two modes. Explore is free play with no side panel,
+    no gates and no grading (tabs, the scene, Play and a thin progress line, one caption, a simple graph); every
+    prediction, challenge, recap and first try count moved to Test yourself, one question at a time on the same
+    scene, picked with the practice problems in one dropdown (`pickerPre`, an opt in on `ApEnvTools.drill`, which now
+    returns `{ picker, fresh }`). Owner rounds 2 to 4 (2026-11-17: clarity and visuals, instant response, controls
+    never move each other) are in the brief.
+18. (2026-11-17, owner: "it's the standard", "go ahead") **Water pollution v2 is live and is the standard for every
+    tool.** The 11 rules and the process are `docs/tools-v2-standard.md`; the next tools are rebuilt to them, each
+    with its own brief. Finishing touches before the merge (brief, "Shipped"): a three line oxygen card, "Over 60
+    days:" before the cause line, "Before the bloom" and "Recovered" on far days, Watch it happen always from day 0,
+    the runoff stream only on the model's runoff days. Still Premium; the lock screen is unchanged.
 
 ## 9. Open items for the owner
 

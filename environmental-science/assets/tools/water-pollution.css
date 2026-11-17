@@ -149,3 +149,409 @@ body.ls-on .env-crumb{display:none;}
 :root[data-theme="dark"] .wp-swim{stroke:#C9D3D1;}
 .wp-try{stroke:var(--bad-text);stroke-width:2;stroke-dasharray:6 4;}
 .wp-try-t{fill:var(--bad-text);font:800 12.5px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:3px;}
+
+/* ====================================================================== Explore v2 (docs/tools-v2-water-pollution-brief.md)
+   The stage: chapter tabs, the scene (svg + the kit's control layer), the timeline bar (chapter 1) and the graph. */
+.wp2-stage{--wp-oxy:#0072B2;--wp-oxy-ink:#005A8C;--wp-alg:#009E73;--wp-alg-ink:#00704F;--wp-heat:#D55E00;--wp-heat-ink:#A84A00;--wp-bad:#A83B2C;--wp-dead:#8A5A2B;
+  display:flex;flex-direction:column;gap:10px;min-height:0;flex:1 1 auto;}
+:root[data-theme="dark"] .wp2-stage{--wp-oxy:#6CB8EC;--wp-oxy-ink:#8FCBF2;--wp-alg:#4FD1AA;--wp-alg-ink:#7BE0C1;--wp-heat:#FF9A5C;--wp-heat-ink:#FFB385;--wp-bad:#FF8E7E;--wp-dead:#C9A27A;}
+.wp2-scene{position:relative;flex:1 1 auto;min-height:280px;border-radius:18px;overflow:hidden;background:var(--surface2);}
+.wp2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+.wp2-bar{display:flex;align-items:flex-end;gap:14px;flex:none;}
+.wp2-bar[hidden]{display:none;}
+.wp2-bar .tk2-play{flex:none;}
+.wp2-cap{margin:0;flex:none;font:600 15px/1.4 var(--font-ui);color:var(--ink);}
+.wp2-cap[hidden]{display:none;}
+.wp2-cap.is-bad{color:var(--bad-text);font-weight:800;}
+:root[data-theme="dark"] .wp2-cap.is-bad{color:#FF9E91;}
+.wp2-graph{position:relative;flex:0 0 clamp(178px,25vh,236px);border-radius:16px;background:var(--white);}
+.wp2-gsvg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+@media (max-width:999.98px){
+  .wp2-scene{flex:none;height:min(60vw,440px);min-height:300px;}
+  .wp2-stage[data-ch="sew"] .wp2-scene{height:min(70vw,500px);}
+  .wp2-graph{flex:none;height:250px;}
+}
+@media (max-width:640px){
+  .wp2-stage{gap:8px;}
+  .wp2-scene{height:max(300px,min(86vw,360px));border-radius:14px;}
+  .wp2-stage[data-ch="heat"] .wp2-scene{height:max(380px,min(104vw,420px));}
+  .wp2-stage[data-ch="sew"] .wp2-scene{height:max(440px,min(124vw,500px));}
+  .wp2-bar{gap:10px;}
+  .wp2-bar .tk2-play{min-width:96px;}
+  .wp2-graph{height:266px;}
+}
+.wp2-set{margin:4px 0 8px;}
+.wp2-src{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:14px;line-height:1.45;}
+
+/* scene text: one size family; a halo keeps it readable over any part of the picture */
+.wp2-lab{font:800 13px var(--font-ui);fill:var(--ink);paint-order:stroke;stroke:var(--white);stroke-width:3.5px;stroke-linejoin:round;}
+.wp2-tk{font:700 11.5px var(--font-ui);fill:var(--muted);font-variant-numeric:tabular-nums;paint-order:stroke;stroke:var(--white);stroke-width:3px;stroke-linejoin:round;}
+.wp2-val{font:900 13px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:3.5px;stroke-linejoin:round;font-variant-numeric:tabular-nums;}
+.wp2-val.is-oxy{fill:var(--wp-oxy-ink);} .wp2-val.is-heat{fill:var(--wp-heat-ink);} .wp2-val.is-bad{fill:var(--wp-bad);}
+.wp2-call{font:900 15px var(--font-ui);fill:var(--ink);paint-order:stroke;stroke:var(--white);stroke-width:4px;stroke-linejoin:round;}
+.wp2-call.is-ph{font-size:13.5px;}
+.wp2-call.is-bad{fill:var(--wp-bad);font-size:18px;}
+.wp2-call.is-ph.is-bad{font-size:16px;}
+.wp2-chip rect{fill:var(--white);fill-opacity:.94;stroke:var(--line);stroke-width:1;}
+.wp2-chip-k{font:800 11.5px var(--font-ui);fill:var(--muted);}
+.wp2-chip-v{font:900 14.5px var(--font-ui);fill:var(--wp-oxy-ink);font-variant-numeric:tabular-nums;}
+.wp2-chip-v.is-bad{fill:var(--wp-bad);}
+/* field and lake */
+.wp2-crop path{fill:none;stroke:#5C8F35;stroke-width:2;stroke-linecap:round;}
+:root[data-theme="dark"] .wp2-crop path{stroke:#6E9F4A;}
+.wp2-sack-bag{fill:#F2ECDD;stroke:#6E5E40;stroke-width:1.3;stroke-linejoin:round;}
+.wp2-sack-top{fill:#DCD2BA;stroke:#6E5E40;stroke-width:1.2;stroke-linejoin:round;}
+.wp2-sack-st{fill:none;stroke:#6E5E40;stroke-width:1;stroke-dasharray:1.6 1.6;}
+.wp2-sack-b{fill:#E69F00;}
+.wp2-sack-t{fill:#2A1E05;font-family:var(--font-ui);font-weight:900;letter-spacing:-.02em;}
+:root[data-theme="dark"] .wp2-sack-bag{fill:#E2DAC6;} :root[data-theme="dark"] .wp2-sack-top{fill:#C9BFA6;}
+.wp2-wbase{fill:#2C6C9C;}
+:root[data-theme="dark"] .wp2-wbase{fill:#163C5A;}
+.wp2-surf{fill:none;stroke:#fff;stroke-width:1.6;opacity:.7;}
+:root[data-theme="dark"] .wp2-surf{opacity:.35;}
+.wp2-weed{fill:none;stroke:#3F7F45;stroke-width:2.2;stroke-linecap:round;opacity:.8;}
+.wp2-deadl{fill:#7A5A32;opacity:.9;}
+:root[data-theme="dark"] .wp2-deadl{fill:#8E6C44;}
+.wp2-bac{fill:#B5509A;}
+:root[data-theme="dark"] .wp2-bac{fill:#E08CC8;}
+.wp2-thermo > rect:first-child,.wp2-thermo > circle:nth-child(2){fill:#fff;stroke:#7B8A90;stroke-width:1.4;}
+:root[data-theme="dark"] .wp2-thermo > rect:first-child,:root[data-theme="dark"] .wp2-thermo > circle:nth-child(2){fill:#DDE6EA;}
+.wp2-thermo-c{fill:#D55E00;}
+.wp2-thermo-c.is-warm{fill:#E8452C;}
+/* fish */
+.wp2-f0{stop-color:#4E6E74;} .wp2-f1{stop-color:#A9C2C4;} .wp2-f2{stop-color:#EEF3F1;}
+.wp2-t0{stop-color:#5D6B3A;} .wp2-t1{stop-color:#B9A97A;} .wp2-t2{stop-color:#F2EEDF;}
+.wp2-fb{stroke:#2E4448;stroke-width:.9;}
+.wp2-fin{fill:#6E8C90;stroke:#2E4448;stroke-width:.8;}
+.wp2-fish.is-trout .wp2-fin{fill:#8C8A5A;}
+.wp2-pec{fill:#C9D8D6;}
+.wp2-gill{fill:none;stroke:#2E4448;stroke-width:.8;opacity:.6;}
+.wp2-eye{fill:#fff;} .wp2-pupil{fill:#14201E;}
+.wp2-stripe{fill:none;stroke:#D98A8A;stroke-width:2.6;stroke-linecap:round;opacity:.85;}
+.wp2-spots circle{fill:#3E4426;}
+/* river and plant */
+.wp2-tower{fill:#C9CED0;stroke:#9AA3A6;stroke-width:1.2;}
+.wp2-bldg{fill:#AEB8BC;stroke:#7B8A90;stroke-width:1.2;}
+.wp2-roof{fill:#7B8A90;}
+.wp2-win{fill:#F3D27A;opacity:.85;}
+:root[data-theme="dark"] .wp2-tower{fill:#5A6468;stroke:#465054;} :root[data-theme="dark"] .wp2-bldg{fill:#4F5B60;stroke:#3C474B;}
+.wp2-steam{fill:#fff;}
+:root[data-theme="dark"] .wp2-steam{fill:#AFC0C8;}
+.wp2-pipe{fill:none;stroke:#7B8A90;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;}
+.wp2-pipe.is-warm{stroke:#B86A4A;}
+.wp2-pipe.is-sew{stroke:#8A7A66;}
+.wp2-pipe.is-off{stroke:#B9C0C2;opacity:.45;}
+.wp2-pipe.is-bypass{stroke:#A0623C;stroke-dasharray:10 5;stroke-linecap:butt;}
+.wp2-flowp{fill:none;stroke:#fff;stroke-width:2;stroke-dasharray:3 9;stroke-linecap:round;opacity:.75;}
+.wp2-flow{fill:none;stroke:#fff;stroke-width:1.4;stroke-linecap:round;opacity:.35;}
+.wp2-vscale{fill:#fff;stroke:#B86A4A;stroke-width:1.4;}
+:root[data-theme="dark"] .wp2-vscale{fill:#2A2420;}
+.wp2-tick{stroke:var(--muted);stroke-width:1.4;}
+.wp2-post{stroke:#7B8A90;stroke-width:3;}
+.wp2-gauge{fill:#fff;stroke:#7B8A90;stroke-width:1.4;}
+:root[data-theme="dark"] .wp2-gauge{fill:#DDE6EA;}
+.wp2-gauge-f{fill:#0072B2;}
+.wp2-gauge-f.is-low{fill:#D1594A;}
+.wp2-troutl{stroke:var(--ink);stroke-width:2;}
+/* plant tanks */
+.wp2-tank-in{fill:#E3EEF3;}
+:root[data-theme="dark"] .wp2-tank-in{fill:#1F3138;}
+.wp2-wall{fill:none;stroke:#7B8A90;stroke-width:5;stroke-linejoin:round;stroke-linecap:round;}
+.wp2-tank{transition:opacity .25s;}
+.wp2-tank.is-off{opacity:.28;filter:grayscale(1);}
+.wp2-uv{fill:#C3A3E0;}
+.wp2-house{fill:#E8DCC8;stroke:#9A8662;stroke-width:1;}
+.wp2-hroof{fill:#B5654A;}
+:root[data-theme="dark"] .wp2-house{fill:#8C8070;}
+.wp2-tname{font:900 13px var(--font-ui);fill:var(--ink);}
+.wp2-tname.is-ph{font-size:12px;}
+.wp2-tdoes{font:700 11.5px var(--font-ui);fill:var(--muted);}
+.wp2-tname.is-off,.wp2-tdoes.is-off{opacity:.55;}
+.wp2-bylab{fill:#A0623C;font-weight:800;}
+:root[data-theme="dark"] .wp2-bylab{fill:#E0A27A;}
+/* the graph */
+.wp2-g-grid{stroke:var(--line);stroke-width:1;}
+.wp2-g-axis{stroke:var(--ink);stroke-width:1.4;opacity:.7;}
+.wp2-g-tk{font:700 11.5px var(--font-ui);fill:var(--muted);font-variant-numeric:tabular-nums;}
+.wp2-g-ax{font:800 12.5px var(--font-ui);fill:var(--ink);}
+.wp2-g-ax.is-oxy{fill:var(--wp-oxy-ink);} .wp2-g-ax.is-alg{fill:var(--wp-alg-ink);}
+.wp2-g-hyp{fill:var(--wp-bad);fill-opacity:.1;}
+.wp2-g-hypt{font:800 11.5px var(--font-ui);fill:var(--wp-bad);paint-order:stroke;stroke:var(--white);stroke-width:3px;}
+.wp2-g-sat{stroke:var(--wp-oxy);stroke-width:1.3;stroke-dasharray:4 4;opacity:.8;}
+.wp2-g-satt{font:800 11.5px var(--font-ui);fill:var(--wp-oxy-ink);paint-order:stroke;stroke:var(--white);stroke-width:3px;}
+.wp2-g-alg{fill:var(--wp-alg);fill-opacity:.2;}
+.wp2-g-algl{fill:none;stroke:var(--wp-alg);stroke-width:1.6;}
+.wp2-g-do{fill:none;stroke:var(--wp-oxy);stroke-width:3.2;stroke-linejoin:round;stroke-linecap:round;}
+.wp2-g-dot{fill:var(--wp-oxy);stroke:var(--white);stroke-width:2.5;}
+.wp2-g-adot{fill:var(--wp-alg);stroke:var(--white);stroke-width:2;}
+.wp2-g-val{font:900 13px var(--font-ui);fill:var(--wp-oxy-ink);paint-order:stroke;stroke:var(--white);stroke-width:3.5px;font-variant-numeric:tabular-nums;}
+.wp2-g-val.is-bad{fill:var(--wp-bad);} .wp2-g-val.is-heat{fill:var(--wp-heat-ink);} .wp2-g-val.is-oxy{fill:var(--wp-oxy-ink);}
+.wp2-g-fog{fill:var(--surface2);opacity:.75;}
+.wp2-g-fogt{font:800 13px var(--font-ui);fill:var(--muted);}
+.wp2-g-osat{fill:none;stroke:var(--wp-oxy);stroke-width:3;stroke-linejoin:round;}
+.wp2-g-pt{fill:var(--wp-oxy);}
+.wp2-g-trout{stroke:#5D6B3A;stroke-width:1.6;stroke-dasharray:5 4;}
+:root[data-theme="dark"] .wp2-g-trout{stroke:#C9C08A;}
+.wp2-g-troutt{font:800 11.5px var(--font-ui);fill:var(--ink);paint-order:stroke;stroke:var(--white);stroke-width:3px;}
+.wp2-g-band{fill:var(--wp-heat);fill-opacity:.07;}
+.wp2-g-up{fill:var(--wp-oxy);stroke:var(--white);stroke-width:2.5;}
+.wp2-g-dn{fill:var(--wp-heat);stroke:var(--white);stroke-width:2.5;}
+.wp2-g-dn.is-bad{fill:var(--wp-bad);}
+.wp2-panel{fill:var(--white);fill-opacity:.95;stroke:var(--line);stroke-width:1.2;}
+.wp2-panel.is-low{stroke:var(--wp-bad);stroke-width:2;}
+.wp2-pk{font:900 12.5px var(--font-ui);fill:var(--muted);}
+.wp2-pv{font:900 15px var(--font-ui);font-variant-numeric:tabular-nums;}
+.wp2-pv.is-heat{fill:var(--wp-heat-ink);} .wp2-pv.is-oxy{fill:var(--wp-oxy-ink);} .wp2-pv.is-bad{fill:var(--wp-bad);}
+.wp2-tg{fill:#fff;stroke:#7B8A90;stroke-width:1.2;}
+.wp2-gbar{fill:var(--track);}
+.wp2-gbar-f{fill:var(--wp-oxy);}
+.wp2-gbar-f.is-low{fill:var(--wp-bad);}
+.wp2-probe{fill:#7B8A90;}
+.wp2-flowa{fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;opacity:.8;}
+.wp2-ref p{margin:0 0 10px;}
+.wp2-ref h3{margin:16px 0 8px;}
+.wp2-ref h3:first-child{margin-top:0;}
+.wp2-stages{margin:0 0 10px;padding-left:22px;display:flex;flex-direction:column;gap:6px;font-size:15px;line-height:1.45;}
+.wp2-chain{margin:0 0 10px;padding-left:22px;display:flex;flex-direction:column;gap:4px;font-size:15px;line-height:1.45;}
+
+/* tools v2 review fixes (2026-11-16): leaders, bubbles, pills, ghost line, right axis */
+.wp2-lead{fill:none;stroke:var(--ink);stroke-width:1.4;opacity:.75;}
+.wp2-lead-d{fill:var(--ink);opacity:.8;}
+:root[data-theme="dark"] .wp2-lead,:root[data-theme="dark"] .wp2-lead-d{stroke:#E8EEF4;fill:#E8EEF4;}
+.wp2-bub{fill:rgba(255,255,255,.12);stroke-width:1.6;}
+.wp2-tpill{fill:#fff;stroke:#7B8A90;stroke-width:1;}
+.wp2-tpill.is-off{fill:#EEF1F2;stroke-dasharray:3 2;}
+.wp2-tdoes{font:800 12px var(--font-ui);fill:#1F2A33;}
+.wp2-tdoes.is-off{fill:#3E4A52;opacity:1;}
+.wp2-tname.is-off{opacity:.75;}
+:root[data-theme="dark"] .wp2-tpill{fill:#E8EEF2;stroke:#AAB6BC;}
+:root[data-theme="dark"] .wp2-tpill.is-off{fill:#C9D1D6;}
+.wp2-lab.is-sm{font-size:11.5px;}
+.wp2-pk2{font:800 12px var(--font-ui);fill:var(--muted);}
+.wp2-pk2.is-bad{fill:var(--wp-bad);}
+.wp2-tdoes.is-q{fill:#5A6670;}
+.wp2-qfig .wp2-tname{font-size:13.5px;}
+.wp2-pv.is-sm{font-size:13px;} .wp2-pk.is-sm{font-size:12px;}
+/* second review round */
+.wp2-deadfish .wp2-fb{fill:#B9C2C0;}
+.wp2-deadfish .wp2-fin{fill:#9AA4A2;}
+:root[data-theme="dark"] .wp2-deadfish .wp2-fb{fill:#8E9896;}
+
+
+/* ====================================================================== owner round: play vs quiz (2026-11-16)
+   Explore: tabs, the scene, Play with the thin progress line, one caption, a simple graph. Test yourself: the same
+   stage (tabs step aside; the dropdown picks the chapter) and one question at a time in the side panel. */
+.wp2-stage .tk2-tabs{margin:0;align-self:flex-start;max-width:100%;}
+.wp2-stage .tk2-tab{flex:0 0 auto;min-height:40px;font-size:14.5px;}
+@media (max-width:640px){ .wp2-stage .tk2-tabs{align-self:stretch;} .wp2-stage .tk2-tab{flex:1 1 0;} }
+.wp2-chip-s{font:900 12.5px var(--font-ui);}
+.wp2-chip-s.is-good{fill:var(--good-text);} .wp2-chip-s.is-warn{fill:var(--amber-text);} .wp2-chip-s.is-bad{fill:var(--wp-bad);}
+:root[data-theme="dark"] .wp2-chip-s.is-good{fill:#7FD9A2;} :root[data-theme="dark"] .wp2-chip-s.is-warn{fill:#F4CD86;}
+.wp2-g-do.is-fut{stroke-width:2;stroke-dasharray:3 5;opacity:.45;}
+.wp2-g-alg{fill:var(--wp-alg);fill-opacity:.16;}
+.wp2-g-sat{opacity:.45;}
+.wp2-g-satt{opacity:.8;font-weight:700;}
+@media (min-width:1000px){ .wp2-graph{flex:0 0 clamp(150px,21vh,210px);} }
+.ls-root[data-mode="quiz"] .wp2-stage .tk2-tabs{display:none;}
+.ls-root[data-mode="quiz"][data-wpq="drill"] :is(.wp2-stage,.wp2-qcard,.wp2-ref){display:none !important;}
+.ls-root[data-mode="quiz"][data-wpq="scene"] :is(.ls-drill-stage,.ls-drill,.ls-drill-why,.ls-drill-det,.cd-more,.cd-try){display:none !important;}
+.ls-root[data-mode="quiz"][data-wpq="scene"] .ls-why{display:none !important;}
+/* the question card (the task head above it holds the question) */
+.wp2-qcard{display:flex;flex-direction:column;gap:10px;}
+.wp2-qcard:empty{display:none;}
+.wp2-qb{display:flex;flex-direction:column;gap:8px;align-items:flex-start;}
+.wp2-qb > *{align-self:stretch;}
+.wp2-qb > .tk2-btn{align-self:flex-start;}
+.wp2-qb [hidden]{display:none !important;}
+.wp2-mc{display:flex;flex-direction:column;align-items:stretch;gap:6px;}
+.wp2-mc .tk2-btn{justify-content:flex-start;text-align:left;border-radius:12px;padding:6px 14px;font-size:15px;}
+.wp2-mc.wp2-linkb{flex-direction:row;flex-wrap:wrap;}
+.wp2-mc.wp2-linkb .tk2-btn{flex:1 1 auto;}
+.wp2-mc .tk2-btn.is-no{text-decoration:line-through;opacity:.8;}
+.wp2-q{display:flex;flex-direction:column;gap:6px;}
+.wp2-msg:empty,.wp2-qok:empty,.wp2-qact:empty{display:none;}
+.wp2-msg .tk2-note:focus,.wp2-qok .tk2-ok-t:focus{outline:none;}
+.wp2-qact{display:flex;gap:8px;}
+
+/* ====================================================================== owner round 2: clarity and visuals (2026-11-17)
+   A purpose line per chapter with the "Show me how" link, labels on the picture that say what and how, a takeaway
+   when a run ends, and the scenes redrawn. */
+.wp2-head{display:flex;align-items:center;justify-content:space-between;gap:4px 12px;flex-wrap:wrap;margin:-2px 0 -2px;}
+.wp2-purpose{margin:0;flex:1 1 260px;font:800 16.5px/1.35 var(--font-ui);color:var(--ink);}
+.wp2-head .tk2-how{flex:none;margin-left:auto;}
+.wp2-stage .tk2-how::before{content:"";width:16px;height:16px;border-radius:50%;border:2px solid currentColor;flex:none;
+  background:radial-gradient(circle at 50% 50%, currentColor 0 2.5px, transparent 3px);}
+.ls-root[data-mode="quiz"] .wp2-head{display:none;}
+/* the caption keeps its line, so the picture never jumps when it appears */
+.wp2-cap{min-height:calc(1.4em + 16px);}
+.wp2-cap.is-empty{visibility:hidden;}
+.wp2-cap.is-take{display:flex;gap:8px;align-items:flex-start;padding:8px 12px;border-radius:12px;background:var(--ctint);color:var(--ink);font-weight:800;}
+.wp2-cap.is-take::before{content:"";flex:none;width:18px;height:18px;margin-top:1px;border-radius:50%;background:var(--cink);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2a7 7 0 0 0-4 12.7V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.3A7 7 0 0 0 12 2zm-3 18h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1z'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2a7 7 0 0 0-4 12.7V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.3A7 7 0 0 0 12 2zm-3 18h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1z'/%3E%3C/svg%3E") center/contain no-repeat;}
+@media (max-width:640px){ .wp2-purpose{font-size:15.5px;flex-basis:200px;} .wp2-head .tk2-how{min-height:32px;} }
+.wp2-howref{margin:0 0 12px;font-size:14.5px;}
+.wp2-howref .tk2-how{min-height:32px;padding:0;}
+/* labels on the picture: the name in ink, the "how" in the course colour */
+.wp2-lab .is-how,.wp2-lab.is-how{fill:var(--cink);}
+.wp2-lab.is-val{font-size:14px;font-weight:900;}
+.wp2-chip-h{font:700 11px var(--font-ui);fill:var(--muted);}
+/* field */
+.wp2-root{fill:none;stroke:#6F5236;stroke-width:1;opacity:.5;stroke-linecap:round;}
+:root[data-theme="dark"] .wp2-root{stroke:#A08A66;opacity:.35;}
+.wp2-crop.is-back path{stroke:#86B35A;stroke-width:1.6;opacity:.75;}
+:root[data-theme="dark"] .wp2-crop.is-back path{stroke:#55803A;}
+.wp2-sack-sh{fill:rgba(40,30,10,.22);}
+.wp2-sack-shade{fill:rgba(70,50,20,.14);}
+.wp2-sack-g{fill:#3E8E3A;}
+.wp2-sack-bag{stroke-width:1.4;}
+.wp2-reed{fill:none;stroke:#5E7F35;stroke-width:2;stroke-linecap:round;}
+.wp2-reedh{fill:#7A5A32;}
+:root[data-theme="dark"] .wp2-reed{stroke:#6E9A45;}
+/* lake */
+.wp2-deadf{fill:#5E4424;opacity:.75;}
+:root[data-theme="dark"] .wp2-deadf{fill:#B08A5C;opacity:.6;}
+.wp2-surf{stroke-width:2;opacity:.85;stroke-linejoin:round;}
+.wp2-glint{fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;}
+:root[data-theme="dark"] .wp2-glint{stroke:#9FC4DD;}
+/* river and plant */
+.wp2-tower{fill:url(#wpTow);}
+.wp2-tw0{stop-color:#B4BCBF;} .wp2-tw1{stop-color:#E1E5E6;} .wp2-tw2{stop-color:#A3ACB0;}
+:root[data-theme="dark"] .wp2-tw0{stop-color:#4A5458;} :root[data-theme="dark"] .wp2-tw1{stop-color:#6A7478;} :root[data-theme="dark"] .wp2-tw2{stop-color:#424C50;}
+.wp2-stack{fill:#C9CED0;stroke:#9AA3A6;stroke-width:1;}
+.wp2-stackb{fill:#C8553D;}
+.wp2-bline{stroke:#7B8A90;stroke-width:1;opacity:.35;}
+.wp2-door{fill:#6A7478;}
+.wp2-pylon{fill:none;stroke:#7E8B8F;stroke-width:1.4;stroke-linejoin:round;opacity:.8;}
+.wp2-wire{fill:none;stroke:#7E8B8F;stroke-width:1;opacity:.6;}
+:root[data-theme="dark"] .wp2-pylon,:root[data-theme="dark"] .wp2-wire{stroke:#8FA0A6;opacity:.5;}
+.wp2-tuft{fill:none;stroke:#4E7F33;stroke-width:1.2;stroke-linecap:round;opacity:.3;}
+/* sewage plant */
+.wp2-yard{fill:#C9C3B4;opacity:.55;}
+:root[data-theme="dark"] .wp2-yard{fill:#4A4639;}
+.wp2-rim{fill:#A4ABAD;}
+:root[data-theme="dark"] .wp2-rim{fill:#6A7478;}
+.wp2-tank.is-off .wp2-rim{fill:#C9CED0;}
+.wp2-chim{fill:#8A6A55;}
+/* labels on pills: clean over fish, algae and water */
+.wp2-pill rect{fill:var(--white);fill-opacity:.92;stroke:var(--line);stroke-width:1;}
+.wp2-pill text{font:800 12.5px var(--font-ui);fill:var(--ink);}
+.wp2-name text{font-style:italic;font-size:12px;}
+.wp2-name.is-alg text{fill:var(--wp-alg-ink);} .wp2-name.is-dead text{fill:#6A4A22;} .wp2-name.is-nut text{fill:#8A5A00;}
+:root[data-theme="dark"] .wp2-name.is-dead text{fill:#E2C29A;} :root[data-theme="dark"] .wp2-name.is-nut text{fill:#F6CF75;}
+.wp2-call{stroke:none;} .wp2-call text{font:900 14px var(--font-ui);fill:var(--ink);stroke:none;}
+.wp2-call.is-ph text{font-size:12.5px;}
+.wp2-call.is-bad rect{fill:var(--wp-bad);fill-opacity:1;stroke:none;}
+.wp2-call.is-bad text{fill:#fff;font-size:16px;}
+.wp2-call.is-ph.is-bad text{font-size:14px;}
+:root[data-theme="dark"] .wp2-call.is-bad rect{fill:#B8473A;}
+.wp2-cap{padding:8px 12px;border-radius:12px;}
+@media (max-width:640px){ .wp2-cap{padding:6px 10px;min-height:calc(1.4em + 12px);} }
+
+/* ---- owner round 3: instant response (docs/tools-v2-water-pollution-brief.md). One colour per idea, everywhere:
+   oxygen blue, algae green, dead matter and bacteria brown, fertilizer and nutrients amber, heat vermillion, and
+   red for the dead zone only. Status words and "too little for trout" are plain ink. */
+.wp2-stage{--wp-nut:#E69F00;--wp-nut-ink:#8A5A00;--wp-dead-ink:#6A4A22;}
+:root[data-theme="dark"] .wp2-stage{--wp-nut:#F3C04F;--wp-nut-ink:#F6CF75;--wp-dead-ink:#E2C29A;}
+.wp2-head{margin:0;}
+.wp2-purpose{font-size:17px;}
+.wp2-bar{align-items:flex-end;gap:12px;}
+.ls-root[data-mode="quiz"] .wp2-bar .tk2-play{order:-1;}
+.wp2-lines{display:flex;align-items:center;justify-content:space-between;gap:6px 18px;flex-wrap:wrap;flex:none;}
+.wp2-lines .wp2-cap{flex:1 1 380px;}
+.wp2-cap.is-cause{display:flex;flex-wrap:wrap;align-items:center;gap:6px 6px;padding:4px 0;min-height:0;font-size:16px;font-weight:900;}
+.wp2-cz{display:inline-block;padding:4px 11px;border-radius:999px;white-space:nowrap;border:2px solid currentColor;background:var(--white);font-variant-numeric:tabular-nums;}
+.wp2-cz.is-nut{color:var(--wp-nut-ink);background:color-mix(in srgb, var(--wp-nut) 20%, var(--white));}
+.wp2-cz.is-alg{color:var(--wp-alg-ink);background:color-mix(in srgb, var(--wp-alg) 16%, var(--white));}
+.wp2-cz.is-dead{color:var(--wp-dead-ink);background:color-mix(in srgb, var(--wp-dead) 18%, var(--white));}
+.wp2-cz.is-oxy{color:var(--wp-oxy-ink);background:color-mix(in srgb, var(--wp-oxy) 13%, var(--white));}
+.wp2-cz.is-heat{color:var(--wp-heat-ink);background:color-mix(in srgb, var(--wp-heat) 14%, var(--white));}
+.wp2-cz.is-bad{color:#fff;background:var(--wp-bad);border-color:var(--wp-bad);}
+:root[data-theme="dark"] .wp2-cz.is-bad{color:#1B0F0C;}
+.wp2-cz.is-ink{color:var(--ink);border-color:color-mix(in srgb, var(--ink) 35%, transparent);}
+.wp2-cz-a{color:var(--muted);font-weight:900;font-size:17px;}
+.wp2-cz-pre{color:var(--muted);font-weight:800;font-size:12.5px;white-space:nowrap;margin-right:2px;}
+/* the teaser: one small optional line; a quiet check mark when met; a cross hides them */
+.wp2-tz{display:inline-flex;align-items:center;gap:6px;margin:0;flex:0 1 auto;font:700 14px/1.3 var(--font-ui);color:var(--muted);}
+.wp2-tz[hidden]{display:none;}
+.wp2-tz-t::before{content:"";display:inline-block;width:8px;height:8px;margin-right:7px;border-radius:50%;box-shadow:0 0 0 2px var(--cink);vertical-align:1px;}
+.wp2-tz.is-done .wp2-tz-t{color:var(--ink);}
+.wp2-tz-ok{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--cink);color:var(--white);}
+.wp2-tz-ok[hidden]{display:none;}
+.wp2-tz-ok .tk2-i{width:13px;height:13px;stroke-width:3.4;}
+:root[data-theme="dark"] .wp2-tz-ok{color:#111D31;}
+.wp2-tz-x{width:28px;height:28px;margin:-2px -6px -2px 0;border:0;border-radius:50%;background:none;color:var(--muted);font:700 18px/1 var(--font-ui);cursor:pointer;}
+.wp2-tz-x:hover{background:var(--track);color:var(--ink);}
+.wp2-tz-x:focus-visible{outline:3px solid var(--cink);outline-offset:1px;}
+@media (pointer:coarse){ .wp2-tz-x{width:40px;height:40px;margin:-8px -10px -8px 0;} }
+@media (max-width:640px){
+  .wp2-cap.is-cause{font-size:14px;gap:4px 4px;}
+  .wp2-cz{padding:3px 8px;border-width:1.5px;}
+  .wp2-cz-a{font-size:14px;}
+  .wp2-tz{font-size:13.5px;}
+  .wp2-purpose{font-size:15.5px;}
+}
+/* labels attached to a control: 1 to 3 words, in the idea's colour */
+.wp2-lab.is-ctl{font-size:14.5px;font-weight:900;}
+.wp2-lab.is-nut{fill:var(--wp-nut-ink);} .wp2-lab.is-heat{fill:var(--wp-heat-ink);}
+/* the oxygen card */
+.wp2-chip rect{stroke:var(--wp-oxy);stroke-width:2;fill-opacity:.96;}
+.wp2-chip-k{font:900 13px var(--font-ui);fill:var(--wp-oxy-ink);}
+.wp2-chip-v{font-size:16px;}
+.wp2-chip-s.is-good,.wp2-chip-s.is-warn,:root[data-theme="dark"] .wp2-chip-s.is-good,:root[data-theme="dark"] .wp2-chip-s.is-warn{fill:var(--ink);}
+.wp2-chip-w{font:700 11.5px var(--font-ui);fill:var(--muted);font-style:italic;font-variant-numeric:tabular-nums;}
+/* oxygen is blue: bubbles in the bottom water */
+.wp2-bub{fill:#8FD0FF;fill-opacity:.55;stroke:#D8EEFF;stroke-width:1.5;}
+.wp2-bub-s{fill:#fff;opacity:.9;}
+.wp2-name.is-oxy text{fill:var(--wp-oxy-ink);}
+/* dead matter and the bacteria that eat it are brown */
+.wp2-bac{fill:#E3BE8E;stroke:#4A3014;stroke-width:1;}
+:root[data-theme="dark"] .wp2-bac{fill:#E9CDA6;stroke:#2E1E0C;}
+.wp2-call.is-dead text{fill:var(--wp-dead-ink);}
+.wp2-call.is-dead rect{stroke:var(--wp-dead);stroke-width:1.6;}
+/* amber is fertilizer only: no amber windows; no green or red on things that are not algae or a dead zone */
+.wp2-win{fill:#DCE6EC;opacity:.9;}
+:root[data-theme="dark"] .wp2-win{fill:#9DB0BC;}
+.wp2-sack-g{fill:#B97A00;}
+.wp2-stackb{fill:#8C979B;}
+.wp2-flow{opacity:.2;}
+.wp2-panel.is-low{stroke:var(--ink);stroke-width:2;}
+.wp2-gbar-f.is-low{fill:var(--wp-oxy);}
+.wp2-pv.is-bad{fill:var(--wp-oxy-ink);}
+.wp2-pk2.is-bad{fill:var(--ink);font-weight:900;}
+.wp2-g-dn.is-bad{fill:var(--wp-heat);}
+.wp2-g-trout{stroke:var(--ink);opacity:.6;}
+:root[data-theme="dark"] .wp2-g-trout{stroke:var(--ink);}
+.wp2-cap.is-bad{color:var(--ink);}
+:root[data-theme="dark"] .wp2-cap.is-bad{color:var(--ink);}
+/* the graph: the dead zone in red, the setting before as a faint line */
+.wp2-g-do.is-dz{stroke:var(--wp-bad);stroke-width:4;}
+.wp2-g-dot.is-dz{fill:var(--wp-bad);}
+.wp2-g-dzbar{fill:var(--wp-bad);}
+.wp2-g-hyp{fill-opacity:.13;}
+.wp2-g-prev{fill:none;stroke:var(--wp-oxy);stroke-width:2;stroke-dasharray:2 5;stroke-linecap:round;opacity:.55;}
+.wp2-g-prevt{font:700 11.5px var(--font-ui);font-style:italic;fill:var(--wp-oxy-ink);opacity:.85;paint-order:stroke;stroke:var(--white);stroke-width:3px;}
+.wp2-g-pv{fill:none;stroke:var(--wp-heat);stroke-width:2;stroke-dasharray:2 3;opacity:.7;}
+.wp2-g-ax{font-size:13.5px;}
+/* quieter ground: the lake is the subject */
+.wp2-root{opacity:.25;}
+.wp2-ctl rect{fill:var(--white);fill-opacity:.96;stroke-width:2;}
+.wp2-ctl text{font:900 14px var(--font-ui);}
+.wp2-ctl.is-nut rect{stroke:var(--wp-nut);} .wp2-ctl.is-nut text{fill:var(--wp-nut-ink);}
+.wp2-ctl.is-heat rect{stroke:var(--wp-heat);} .wp2-ctl.is-heat text{fill:var(--wp-heat-ink);}
+.wp2-bub{fill-opacity:.7;}
+@media (max-width:640px){
+  .wp2-bar{display:block;position:relative;}
+  .wp2-bar .tk2-play.is-sm{position:absolute;right:0;top:0;min-height:40px;}
+  .ls-root[data-mode="explore"] .wp2-bar .tk2-prog-n{min-height:44px;display:flex;align-items:center;padding-right:168px;}
+}
+.wp2-g-do.is-fut.is-ghost{stroke-dasharray:none;stroke-width:2.4;opacity:.3;}
+.wp2-pipe.is-bypass{stroke:#8A5A2B;}
+.wp2-bylab{fill:#6A4A22;}
+:root[data-theme="dark"] .wp2-bylab{fill:#E2C29A;}
+/* Owner round 4: controls never move each other. The lowest oxygen day is a mark (time bar and graph), in oxygen blue. */
+.wp2-bar{--tk2-low:var(--wp-oxy);--tk2-low-ink:var(--wp-oxy-ink);}
+.wp2-bar .tk2-prog.has-low ~ .tk2-play{margin-bottom:22px;}
+.wp2-chip-l{font:700 11px var(--font-ui);fill:var(--wp-oxy-ink);font-variant-numeric:tabular-nums;}
+.wp2-g-low{fill:var(--white);stroke:var(--wp-oxy);stroke-width:2;}
+.wp2-g-low.is-dz{stroke:var(--wp-bad);}

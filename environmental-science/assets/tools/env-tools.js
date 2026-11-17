@@ -612,9 +612,15 @@
     var sd = studioDrill(app, area, o), curApi = null;
     // The standard frame: the kinds are the scenario dropdown on the stage
     // (docs/tools-frame-2026-11.md); otherwise the picker behind More options.
+    /* o.pickerPre (opt in, Water pollution): { groups: [{ label, items }], label, drillGroup, value, own(v) -> true,
+       onPick(v), onDrill() }: the tool's own entries (its questions on the picture) come first in the same dropdown;
+       picking one calls onPick and leaves the drill as it is; picking a kind calls onDrill, then draws a problem. */
+    var pre = o.pickerPre || null, pk = null;
     if(kinds.length > 1 && sd && sd.std){
-      sd.picker({ label: o.typeLabel || 'Problem type', items: [{ value: '', label: 'Any kind' }].concat(kinds.map(function(k){ return { value: k.value, label: k.label }; })), value: '',
-        onChange: function(v){ type = v; seed = freshSeed(); draw(true); } });
+      var dItems = [{ value: '', label: 'Any kind' }].concat(kinds.map(function(k){ return { value: k.value, label: k.label }; }));
+      pk = sd.picker({ label: (pre && pre.label) || o.typeLabel || 'Problem type', value: pre && pre.value != null ? pre.value : '',
+        groups: pre ? pre.groups.concat([{ label: pre.drillGroup || 'Practice problems', items: dItems }]) : undefined, items: pre ? undefined : dItems,
+        onChange: function(v){ if(pre && pre.own(v)){ pre.onPick(v); return; } if(pre && pre.onDrill) pre.onDrill(v); type = v; seed = freshSeed(); draw(true); } });
     } else if(kinds.length > 1){
       kindPicker(fr.pick, { label: o.typeLabel || 'Problem type', options: kinds, onChange: function(v){ type = v; seed = freshSeed(); draw(true); } });
     }
@@ -636,7 +642,7 @@
       area.innerHTML = '<div class="bt-prob-head"><h2 id="' + gid + '-h" tabindex="-1">' + esc(o.title ? o.title(p) : 'Practice problem') + '</h2><p class="bt-code">Problem code <b>' + seed + '</b> <a href="?seed=' + seed + '">Link to this problem</a></p></div>' +
         '<div class="bt-context">' + p.text + '</div><div class="cd-extra"></div><div class="cd-steps"></div>' +
         '<div class="bt-solution" hidden></div><div class="bt-next"></div>';
-      var api = { area: area, problem: p }, exEl = area.querySelector('.cd-extra'), lastTry = null;
+      var api = { area: area, problem: p }, exEl = area.querySelector('.cd-extra'), lastTry = null, firstTry = null;
       curApi = api;
       /* The try card on the stage, beside the figure: the student's answer
          against the right one (after Show the answer, or a later right try).
@@ -663,7 +669,7 @@
       function step(i){
         if(i >= p.steps.length) return finish();
         var s = p.steps[i], sid = gid + '-s' + i, tries = 0, done = false;
-        lastTry = null;
+        lastTry = null; firstTry = null;
         var el = document.createElement('form');
         el.className = 'bt-part cd-step';
         el.setAttribute('novalidate', '');
@@ -682,7 +688,7 @@
           body = '<div class="bt-num-row cd-expr"><label class="sr-only" for="' + sid + '-i">' + esc(String(s.label).replace(/<[^>]+>/g, '')) + '</label><input type="text" id="' + sid + '-i" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="' + sid + '-p"></div>' +
             '<div class="cd-expr-preview env-expr-preview" id="' + sid + '-p" aria-live="polite"></div>';
         } else if(s.kind === 'unit'){
-          body = '<div class="bt-num-row cd-num cd-unit"><label class="sr-only" for="' + sid + '-i">' + esc(String(s.label).replace(/<[^>]+>/g, '')) + '</label><input type="text" id="' + sid + '-i" inputmode="decimal" autocomplete="off" spellcheck="false"><label class="bt-small" for="' + sid + '-u">Unit</label><input type="text" class="cd-u" id="' + sid + '-u" autocomplete="off" spellcheck="false"></div>';
+          body = '<div class="bt-num-row cd-num cd-unit"><span class="cd-fld"><label class="bt-small cd-fl" for="' + sid + '-i">Number</label><input type="text" id="' + sid + '-i" inputmode="decimal" autocomplete="off" spellcheck="false" aria-label="' + esc(String(s.label).replace(/<[^>]+>/g, '')) + ': number"></span><span class="cd-fld cd-fld-u"><label class="bt-small cd-fl" for="' + sid + '-u">Unit</label><input type="text" class="cd-u" id="' + sid + '-u" autocomplete="off" spellcheck="false"></span></div>';
         } else if(s.kind === 'choice'){
           var order = s.fixed ? s.options.map(function(x, k){ return k; }) : Q.shuffle(s.options.map(function(x, k){ return k; }));
           body = '<fieldset class="cd-opts' + (s.optionsHtml ? ' cd-pics' : '') + '"><legend class="sr-only">' + esc(String(s.label).replace(/<[^>]+>/g, '')) + '</legend>' + order.map(function(k, n){
@@ -765,7 +771,7 @@
           else { var c = el.querySelector('input[value="' + s.correct + '"]'); if(c) c.checked = true; }
           el.classList.add('is-shown');
           fb.innerHTML = '<span class="env-mark no">Shown</span> The answer is filled in. ' + (s.kind === 'choice' ? s.why[s.correct] : '');
-          tryCard(s, lastTry, true);
+          tryCard(s, firstTry, true);
           lock(); next(false);
         }
         function check(){
@@ -810,12 +816,12 @@
           if(ok){
             el.classList.add('is-right');
             fb.innerHTML = '<span class="env-mark ok">Correct</span> ' + (s.kind === 'choice' ? notes[0] : '');
-            if(lastTry) tryCard(s, att, true, true); else clearTry();
+            if(firstTry) tryCard(s, firstTry, true, true); else clearTry();   // the first wrong try, kept once (never the latest, never this right one)
             lock(); next(tries === 1);
             return;
           }
           el.classList.add('is-wrong');
-          lastTry = att;
+          lastTry = att; if(!firstTry) firstTry = att;
           // The wrong answer goes on the picture (the tool's own mark, else a
           // card on the stage); the method hint opens with the feedback, and
           // "Show the answer" sits after it.
@@ -848,6 +854,7 @@
       if(focus) area.querySelector('h2').focus();
     }
     draw(false);
+    return { picker: pk, fresh: function(){ seed = freshSeed(); draw(true); } };
   }
 
   /* ------------------------------------------- explore / test yourself */

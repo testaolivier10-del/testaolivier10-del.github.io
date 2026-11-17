@@ -241,8 +241,9 @@
    "title": "Water Pollution",
    "desc": "The eutrophication chain step by step with a dissolved oxygen graph, thermal pollution and oxygen against temperature, and the stages of sewage treatment.",
    "blurb": "Add fertilizer to a lake and follow the oxygen down.",
-   "lede": "Add nutrients and follow the chain to a dead zone.",
+   "lede": "Follow fertilizer, hot water and sewage to the fish.",
    "studio": true,
+   "kit2": true,
    "premium": "tools"
   },
   {

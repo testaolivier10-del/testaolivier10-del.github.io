@@ -985,8 +985,8 @@ ${toolBand({ key: 'apenv', up: '../../', slug: t.slug, title: t.name, hand: esc(
     : `<p class="env-soon">This tool arrives with its unit. Meanwhile, read the <a href="../learn.html">free notes</a>.</p>`}</div>
 </main>
 ${footer(depth, `tool:${t.slug}`)}
-<link rel="stylesheet" href="${depth}assets/tools/env-tools.css">${existsSync(join(ROOT, 'environmental-science', 'assets', 'tools', `${t.slug}.css`)) ? `\n<link rel="stylesheet" href="${depth}assets/tools/${t.slug}.css">` : ''}${t.studio ? `\n<link rel="stylesheet" href="${depth}../assets/course/tool-studio.css">` : ''}
-${tail({ depth, section: 'tools', extra, premium: true, site: t.studio ? ['course/tool-studio.js'] : [] })}
+<link rel="stylesheet" href="${depth}assets/tools/env-tools.css">${existsSync(join(ROOT, 'environmental-science', 'assets', 'tools', `${t.slug}.css`)) ? `\n<link rel="stylesheet" href="${depth}assets/tools/${t.slug}.css">` : ''}${t.studio ? `\n<link rel="stylesheet" href="${depth}../assets/course/tool-studio.css">` : ''}${t.kit2 ? `\n<link rel="stylesheet" href="${depth}../assets/course/tool-kit2.css">` : ''}
+${tail({ depth, section: 'tools', extra, premium: true, site: t.studio ? ['course/tool-studio.js', ...(t.kit2 ? ['course/tool-kit2.js'] : [])] : [] })}
 </body>
 </html>
 `;

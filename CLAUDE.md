@@ -218,6 +218,12 @@ the fixes for it, and three builds (NREMT exam item types and adaptive exam, och
 banks, precalculus figures, the tool audit of the four newer courses in `docs/tool-audit-2026-11.md`) and what is
 next (audit of the other banks, ochem per-option lines, tool rebuild mockups).
 
+## Tools v2 (the standard for every tool, 2026-11-17)
+
+`docs/tools-v2-standard.md` holds the 11 rules and the process (owner approved; it supersedes the frame only
+standard in `docs/tools-frame-2026-11.md`); read it before building or rebuilding any tool. Flagship and worked
+example: `docs/tools-v2-water-pollution-brief.md`. Kit: `assets/course/tool-kit2.js` (opt in).
+
 ## Tool visuals (2026-11)
 
 `docs/tool-visuals-2026-11.md` is the status file: what the owner means by better tool visuals (the picture shows

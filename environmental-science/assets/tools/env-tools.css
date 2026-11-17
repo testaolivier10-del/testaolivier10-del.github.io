@@ -381,3 +381,9 @@ body[data-app^="tool-"] .env-hero .eyebrow{margin-bottom:4px;}
    step aside to keep the picture and the main control on the first screen. */
 .ls-root.ls-phone[data-mode="explore"] .ls-dock > .ls-task:not(.ls-donew) > .ls-task-k,
 .ls-root.ls-phone[data-mode="explore"] .ls-dock > .ls-task:not(.ls-donew) > .ls-task-d{display:none;}
+/* A number and its unit: each box has its own visible label (tools v2 review, issue 38). */
+.cd-unit{display:flex;gap:10px;align-items:flex-end;flex-wrap:nowrap;}
+.cd-fld{display:flex;flex-direction:column;gap:4px;flex:1 1 auto;min-width:0;}
+.cd-fld > input{width:100%;}
+.cd-fld-u{flex:0 0 112px;}
+.cd-fl{font-weight:800;color:var(--ink);}

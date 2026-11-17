@@ -16,7 +16,7 @@
                  mg/L, every 5 °C (USGS DO tables, rounded to 0.1 mg/L).
                  Warmer water holds less gas: thermal pollution is heat.
      osat(T)     read off that table by straight lines between its points
-     lake(level, T)
+     lake(level, T, bod)
                  a small daily model of one lake after one pulse of
                  fertilizer runoff: nutrients feed an algal bloom, the algae
                  die, decomposers (aerobic bacteria) respire as they break the
@@ -25,6 +25,9 @@
                  which is lower in warm water. Units: day, mg/L for oxygen,
                  relative units for nutrients, algae and dead matter (an
                  explanatory model, not a forecast; Details says so).
+                 bod (optional, % of raw sewage's organic matter): an oxygen demand on
+                 day 0 (BOD_D relative units of dead organic matter at 100%), for the
+                 Explore's lake below the sewage plant; left out, nothing changes.
                  -> { days, O, A, D, N, base, stages, min, minDay, peakDay, hypoxicDays }
      HYPOXIC     2 mg/L: the usual line for a dead zone (NOAA, EPA)
      CHAIN       the six links: nutrients, bloom, die-off, decomposition,
@@ -61,11 +64,19 @@
      Daily values from a fixed-step integration (dt 0.02 day), so the same
      inputs always give the same curve. */
   var LAKE_DAYS = 60;
-  function lake(level, T){
+  /* bod (optional, 0 to 100): organic matter that arrives with the nutrients, as % of raw sewage's BOD. It joins
+     the dead organic matter pool on day 0 (BOD_D relative units at 100%), so decomposers start using oxygen at
+     once, which is what BOD measures (USGS, "Biological oxygen demand (BOD) and water"). Chapter 3 of the tool
+     passes W.SEWAGE's BOD left; every other caller leaves it out (no change). BOD_D = 30 is a teaching scale:
+     raw sewage then pulls a 20 °C lake into a dead zone by day 8, ahead of the bloom chain, primary effluent
+     sags it to about 3.4 mg/L by day 8, and secondary effluent barely dips it (the bloom chain does the rest). */
+  var BOD_D = 30;
+  function lake(level, T, bod){
     level = Math.max(0, Math.min(5, +level || 0));
     T = T == null ? 20 : T;
+    var bodD = Math.max(0, Math.min(100, +bod || 0)) / 100 * BOD_D;
     var Os = osat(T), fT = Math.pow(1.07, T - 20), K = 0.15, y = 0.1, dt = 0.02, per = Math.round(1 / dt);
-    var N = 0.1 + level, A = 0.4, D = 0.4, O = Os * 0.92;
+    var N = 0.1 + level, A = 0.4, D = 0.4 + bodD, O = Os * 0.92;
     var days = [], Os_ = [], As = [], Ds = [], Ns = [];
     for(var i = 0; i <= LAKE_DAYS * per; i++){
       if(i % per === 0){ days.push(i / per); Os_.push(O); As.push(A); Ds.push(D); Ns.push(N); }
@@ -78,7 +89,7 @@
       D += (die - dec) * dt;
       O += (0.12 * (Os - O) - 0.55 * dec) * dt; if(O < 0) O = 0;
     }
-    var r = { level: level, T: T, osat: Os, days: days, O: Os_, A: As, D: Ds, N: Ns };
+    var r = { level: level, T: T, bod: +bod || 0, osat: Os, days: days, O: Os_, A: As, D: Ds, N: Ns };
     var mi = 0, pa = 0, pd = 0;
     for(var k = 1; k < days.length; k++){ if(Os_[k] < Os_[mi] - 1e-9) mi = k; if(As[k] > As[pa]) pa = k; if(Ds[k] > Ds[pd]) pd = k; }
     r.min = Os_[mi]; r.minDay = days[mi]; r.peakDay = days[pa]; r.peakA = As[pa]; r.deadDay = days[pd];
@@ -142,10 +153,20 @@
   function num(key, label, answer, d, o){
     o = o || {};
     var abs = Math.max(o.abs || 0, 0.6 * Math.pow(10, -d));
-    return step(key, label, { kind: 'num', d: d, unit: o.unit, hint: o.hint, cell: M.cell(answer, 1e-6, o.mistakes || [], abs) });
+    var c = M.cell(answer, 1e-6, o.mistakes || [], abs);
+    if(o.close) c.close = o.close;   // a graph reading: say how to read it, not how to round
+    return step(key, label, { kind: 'num', d: d, unit: o.unit, hint: o.hint, cell: c });
   }
+  var CHINT = {
+    bloom: 'Nitrate and phosphate are nutrients. Which living thing in the lake uses nutrients to grow?',
+    lag: 'Find the algae peak and the oxygen low on the graph. What has to happen to the algae before bacteria can break them down?',
+    dead: 'Compare the lowest point of the oxygen curve with the 2 mg/L line.',
+    hyp: 'Compare the reading with 2 mg/L, the line for hypoxic water.',
+    why: 'Think of a warm soda going flat: does warm water hold gas better or worse?',
+    stage: 'Primary is physical, secondary is biological, tertiary removes nutrients, disinfection kills germs. Match the question to one of them.'
+  };
   function choice(key, label, opts){
-    return step(key, label, { kind: 'choice', options: opts.map(function(x){ return x[0]; }), why: opts.map(function(x){ return x[1]; }), correct: 0 });
+    return step(key, label, { kind: 'choice', hint: CHINT[key], options: opts.map(function(x){ return x[0]; }), why: opts.map(function(x){ return x[1]; }), correct: 0 });
   }
   // A mistake that would read as the key (a 50% cut: removed = left) is dropped.
   function unit(key, label, answer, u, o){
@@ -177,7 +198,7 @@
         ['The nitrate poisons the fish.', 'At these levels the harm is indirect: the nutrients feed algae, and the chain ends with too little oxygen.'],
         ['The water warms up.', 'That is thermal pollution, which is heat. Fertilizer adds nutrients, not heat.']
       ]),
-      num('lowest', 'Read the graph: what is the lowest dissolved oxygen in the bottom water?', mins, 1, { unit: 'mg/L', abs: 0.35, hint: 'To the nearest 0.1 mg/L. Read the bottom of the blue curve.' }),
+      num('lowest', 'Read the graph: what is the lowest dissolved oxygen in the bottom water?', mins, 1, { unit: 'mg/L', abs: 0.35, hint: 'To the nearest 0.1 mg/L. Read the bottom of the blue curve.', close: 'Close. Read the lowest point of the blue curve to 0.1 mg/L.' }),
       choice('lag', 'The oxygen low comes about ' + Math.max(1, Math.round(run.minDay - run.peakDay)) + ' days after the algae peak. Why the delay?', [
         ['The algae must die and sink before decomposers can break them down, and decomposition takes days.', 'Right. Oxygen falls while bacteria respire as they decompose the dead algae, so the low lags the bloom.'],
         ['Living algae use up the oxygen at night, and that takes days to add up.', 'Living algae make more oxygen than they use. The big drop comes from decomposing the dead bloom.'],
@@ -245,11 +266,11 @@
     var d0 = osat(t0), d1 = osat(t1), ans = pc(d0, d1);
     var text = '<p>' + c.lead + ' Water that cooled the plant is returned to the ' + (c.water || 'river') + ', warming it from ' + t0 + ' °C to ' + t1 + ' °C. The graph gives the most dissolved oxygen fresh water can hold at each temperature (USGS values).</p>';
     var steps = [
-      num('read', 'Read the graph: how much oxygen can the water hold at ' + t0 + ' °C?', d0, 1, { unit: 'mg/L', hint: 'Find ' + t0 + ' °C on the curve.', mistakes: [{ value: d1, why: 'That is the value at ' + t1 + ' °C. Start from the cooler water, before the plant warms it.' }] }),
+      num('read', 'Read the graph: how much oxygen can the water hold at ' + t0 + ' °C?', d0, 1, { unit: 'mg/L', hint: 'Find ' + t0 + ' °C on the curve.', close: 'Close. Read the curve right above ' + t0 + ' °C, to 0.1 mg/L.', mistakes: [{ value: d1, why: 'That is the value at ' + t1 + ' °C. Start from the cooler water, before the plant warms it.' }] }),
       setup('setup', 'Write the setup for the percent change in oxygen the water can hold, ' + t0 + ' °C to ' + t1 + ' °C.', '(' + f(d1, 1) + ' - ' + f(d0, 1) + ') / ' + f(d0, 1) + ' * 100', { mustUse: [f(d0, 1), f(d1, 1)], hint: 'Read both values from the table first.',
         mistakes: [{ expr: '(' + f(d0, 1) + ' - ' + f(d1, 1) + ') / ' + f(d0, 1) + ' * 100', why: 'Percent change is new minus old, so a loss comes out negative.' },
           { expr: '(' + f(d1, 1) + ' - ' + f(d0, 1) + ') / ' + f(d1, 1) + ' * 100', why: 'Divide by the old value, the oxygen at ' + t0 + ' °C.' }] }),
-      unit('answer', 'Now the answer with its unit.', ans, '%', { places: 1, hint: 'Round to 0.1.', mistakes: [{ value: E({ fn: 'mul', args: [ans, -1] }), why: 'Warmer water holds less oxygen, so the change is negative.' }] }),
+      unit('answer', 'Now the answer with its unit.', ans, '%', { places: 1, hint: 'Work out your setup. Warm water holds less, so expect a negative change. Round to 0.1 and write %.', mistakes: [{ value: E({ fn: 'mul', args: [ans, -1] }), why: 'Warmer water holds less oxygen, so the change is negative.' }] }),
       choice('why', 'Why does the warm water hold less oxygen?', [
         ['Gases dissolve less in warmer water, so oxygen leaves it.', 'Right. Thermal pollution is heat itself: warmer water holds less dissolved oxygen, while fish need more as their metabolism speeds up.'],
         ['The plant adds chemicals that use up the oxygen.', 'Thermal pollution is heat, not chemicals. The same water, only warmer, holds less oxygen.'],
@@ -290,7 +311,7 @@
         mistakes: [{ expr: bod + ' * (1 - ' + (p2 / 100) + ')', why: 'Secondary treatment works on what primary treatment left (' + f(a1, 1) + ' mg/L), not on the raw ' + bod + ' mg/L.' },
           { expr: bod + ' * (1 - ' + (p1 / 100) + ' - ' + (p2 / 100) + ')', why: 'Percent removals in a row multiply; they do not add. Each stage removes a share of what is left.' },
           { expr: f(a1, 1) + ' * ' + (p2 / 100), why: 'That is the BOD removed in secondary treatment. Keep the ' + (100 - p2) + '% that is left.' }] }),
-      unit('after2a', 'Now the answer with its unit.', a2, 'mg/L', { hint: 'Round to 0.1.' }),
+      unit('after2a', 'Now the answer with its unit.', a2, 'mg/L', { hint: 'Work out your setup: the BOD after primary times the share secondary leaves (' + (100 - p2) + '%). Round to 0.1 and write mg/L.' }),
       choice('stage', Q[0], opts)
     ];
     var sol = [
@@ -311,7 +332,7 @@
     var steps = [
       setup('loadset', 'Write the setup for the nitrate load in kg per day, with units that cancel.', key, { unit: 'kg/day', mustUse: [String(conc), String(flow)], hint: 'mg/L × L/day gives mg/day; then × 1 kg / 1,000,000 mg.',
         mistakes: [{ expr: conc + ' mg/L * ' + flow + ' L/day', why: 'That is the load in mg per day. Convert to kg with × 1 kg / 1,000,000 mg.' }] }),
-      unit('load', 'Now the load with its unit.', load, 'kg/day', { units: ['kg/d', 'kilograms per day'], places: 1, hint: 'Round to 0.1.' }),
+      unit('load', 'Now the load with its unit.', load, 'kg/day', { units: ['kg/d', 'kilograms per day'], places: 1, hint: 'Work out your setup: mg/L × L/day ÷ 1,000,000. Round to 0.1 and write kg/day.' }),
       unit('reduce', c.fix + ' would cut the nitrate reaching the water by ' + cut + '%. How much nitrate would still arrive each day?', after, 'kg/day', { units: ['kg/d'], places: 1, hint: 'Cutting ' + cut + '% leaves ' + (100 - cut) + '%.',
         mistakes: [{ value: E({ fn: 'percentOf', args: [cut, load] }), why: 'That is the amount removed. The question asks what still arrives: ' + (100 - cut) + '% of the load.' }] })
     ];
@@ -325,7 +346,7 @@
 
   var GEN = { chain: genChain, dochange: genDoChange, thermal: genThermal, sewage: genSewage, load: genLoad };
   M.register('waterPollution', {
-    OSAT: OSAT, osat: osat, HYPOXIC: HYPOXIC, LAKE_DAYS: LAKE_DAYS, lake: lake, stageAt: stageAt, CHAIN: CHAIN, SEWAGE: SEWAGE,
+    OSAT: OSAT, osat: osat, HYPOXIC: HYPOXIC, LAKE_DAYS: LAKE_DAYS, lake: lake, BOD_D: BOD_D, stageAt: stageAt, CHAIN: CHAIN, SEWAGE: SEWAGE,
     TYPES: Object.keys(GEN),
     generate: function(r, ctx, type){
       var types = ctx.types || Object.keys(GEN);

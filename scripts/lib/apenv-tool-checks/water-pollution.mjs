@@ -76,6 +76,13 @@ export function check(data, map) {
     for (const c of data.contexts || []) for (const t of c.types || []) if (!TYPES.includes(t)) errs.push(`context ${c.id}: unknown type ${t}`);
     if (!data.explore || !Array.isArray(data.explore.temps) || !data.explore.temps.every(t => t in USGS)) errs.push('explore.temps must be USGS table temperatures');
     for (const [t, v] of model.OSAT) if (USGS[t] !== v) errs.push(`model OSAT at ${t} °C is ${v}, USGS ${USGS[t]}`);
+    // The Explore's lake below the sewage plant: organic matter (BOD) left is an oxygen demand, so each stage up to
+    // secondary must leave the lake no worse off, tertiary must end the dead zone, and leaving bod out changes nothing.
+    const St = model.SEWAGE.stages, sewRun = i => model.lake(5 * St[i].left.nutrients / 100, 20, St[i].left.bod);
+    if (JSON.stringify(model.lake(3, 20, 0).O) !== JSON.stringify(model.lake(3, 20).O)) errs.push('lake(level, T, 0) differs from lake(level, T)');
+    for (let i = 1; i < St.length; i++) if (St[i].left.bod > St[i - 1].left.bod) errs.push(`sewage stage ${St[i].k} adds organic matter`);
+    for (let i = 1; i <= 2; i++) if (!(sewRun(i).hypoxicDays < sewRun(i - 1).hypoxicDays)) errs.push(`lake below: stopping after ${St[i].k} is not better than after ${St[i - 1].k}`);
+    if (sewRun(3).hypoxicDays !== 0) errs.push('lake below: tertiary treatment still leaves a dead zone');
     sweep(data, errs, (r, c, t) => model.generate(r, c, t), (p, c, w) => recheck(p, c, w, errs), c => c.types || TYPES);
   }
   return errs;

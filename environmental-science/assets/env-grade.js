@@ -233,8 +233,8 @@
       var unitSaid = notes.length && /right in/.test(notes[0]);
       if(mistake) notes.unshift(mistake.why);
       else if(unitSaid){ /* the unit note already explains the number */ }
-      else if(A && near(v * 100, A, tol)) notes.unshift('Value: your number is 100 times too small. A percent is the fraction times 100: (new − old) / old × 100.');
-      else if(A && near(v / 100, A, tol)) notes.unshift('Value: your number is 100 times too large. Check that you multiplied by 100 only once.');
+      else if(A && near(v * 100, A, Math.min(tol, 0.1 * Math.abs(A)))) notes.unshift('Value: your number is 100 times too small. A percent is the fraction times 100: (new − old) / old × 100.');
+      else if(A && near(v / 100, A, Math.min(tol, 0.1 * Math.abs(A)))) notes.unshift('Value: your number is 100 times too large. Check that you multiplied by 100 only once.');
       else if(A && (near(v / 1000, A, tol) || near(v * 1000, A, tol))) notes.unshift('Value: off by a factor of 1000. Check a prefix (k, M, m) or the word "thousand".');
       else if(A && (near(v / 1e6, A, tol) || near(v * 1e6, A, tol))) notes.unshift('Value: off by a factor of a million. Check "million" or the power of ten (× 10^6).');
       else if(A && (near(v / 1e9, A, tol) || near(v * 1e9, A, tol))) notes.unshift('Value: off by a factor of a billion. Check "billion" or the power of ten (× 10^9).');

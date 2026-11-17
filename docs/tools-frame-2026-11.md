@@ -139,3 +139,11 @@ when it is closest to the star?"; race: "Two wheels, same mass: which one speeds
   `psychology.md`, `apphys.md`. Fixed: GDP takeaway (adds intermediate goods; "stock or bond purchases" for
   "financial trades"), shutdown takeaway ("minimum AVC and minimum ATC"), cohort takeaway ("usually", "a war"),
   rotation lab Orbit question (the scene is a satellite around Earth, not a planet and a star). Everything else correct.
+
+## Tools v2 (2026-11-17): the standard after this one
+The owner approved the rebuilt AP® Environmental Science Water pollution tool as the standard for every tool. The
+v2 standard (`docs/tools-v2-standard.md`, 11 rules and the process) supersedes the frame only standard above: the
+frame in this file stays (top bar, modes, "?", "…"), and v2 decides what goes inside it (one idea, the student acts,
+instant response, two modes with one job each, controls that never move each other, nothing extra on screen). The
+flagship's brief with every owner round is `docs/tools-v2-water-pollution-brief.md`. Rebuild the other tools to v2
+one at a time, each with its own brief.

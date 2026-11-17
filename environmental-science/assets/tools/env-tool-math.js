@@ -95,17 +95,22 @@
     if(near(x, A, r, ab)) return { ok: true };
     for(var i = 0; i < c.mistakes.length; i++) if(near(x, c.mistakes[i].value, r, ab)) return { ok: false, why: c.mistakes[i].why };
     if(!A) return { ok: false };
-    if(near(x * 100, A, r, ab)) return { ok: false, why: 'Your number is 100 times too small. A percent is the fraction times 100.' };
-    if(near(x / 100, A, r, ab)) return { ok: false, why: 'Your number is 100 times too large. Multiply by 100 only once.' };
-    if(near(x / 1000, A, r, ab) || near(x * 1000, A, r, ab)) return { ok: false, why: 'Off by a factor of 1000. Check a metric prefix (k, M, m) or "thousand".' };
-    if(near(-x, A, r, ab)) return { ok: false, why: 'The size is right but the sign is wrong. Check the order of the subtraction (new minus old).' };
+    // A factor slip (x100, /100, x1000, sign) is named only when it is clear: its tolerance is at most a tenth of
+    // the answer, so a wide reading tolerance (0.35 mg/L on 0.2) never calls 7 "100 times too large".
+    var fab = ab ? Math.min(ab, 0.1 * Math.abs(A)) : ab;
+    if(near(x * 100, A, r, fab)) return { ok: false, why: 'Your number is 100 times too small. A percent is the fraction times 100.' };
+    if(near(x / 100, A, r, fab)) return { ok: false, why: 'Your number is 100 times too large. Multiply by 100 only once.' };
+    if(near(x / 1000, A, r, fab) || near(x * 1000, A, r, fab)) return { ok: false, why: 'Off by a factor of 1000. Check a metric prefix (k, M, m) or "thousand".' };
+    if(near(-x, A, r, fab)) return { ok: false, why: 'The size is right but the sign is wrong. Check the order of the subtraction (new minus old).' };
     // "Close" only within twice the tolerance, and never more than a quarter
     // of the answer away (tool-audit X5: 0 was "close" to 1.4).
     // A wrong method that lands near the key (dropped from the list above) is named, not called close.
     var nm = (c.near || []).filter(function(m){ return near(x, m.value, r, ab); })[0];
     if(nm) return { ok: false, why: nm.why };
     // No 2% floor: a year 36 off was "close" to 2066.
-    if(near(x, A, 2 * r, 2 * (ab || 0)) && Math.abs(x - A) <= 0.25 * Math.abs(A)) return { ok: false, why: 'Close. Keep every digit until the last step, then round.' };
+    // A cell may carry its own "close" line (c.close): a reading from a graph has no steps to round, so the
+    // rounding advice would be wrong there. Without it every tool keeps the rounding line.
+    if(near(x, A, 2 * r, 2 * (ab || 0)) && Math.abs(x - A) <= 0.25 * Math.abs(A)) return { ok: false, why: c.close || 'Close. Keep every digit until the last step, then round.' };
     return { ok: false };
   }
 
