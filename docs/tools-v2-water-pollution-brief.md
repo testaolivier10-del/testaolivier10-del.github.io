@@ -1,4 +1,6 @@
-# Tools v2, flagship: APES Water pollution (brief, 2026-11-16)
+# Tools v2, flagship: APES Water pollution (brief, 2026-11-16; shipped 2026-11-17)
+
+Shipped: see the last section. The rules that came out of it, for every tool: `docs/tools-v2-standard.md`.
 
 ## Why (owner, 2026-11-16)
 After the frame round the owner still finds tools hard: "hard to figure out what you are supposed to be manipulating
@@ -655,3 +657,41 @@ redone; new 02 "middrag", 22 (handle on the mark) and 23 (day 6, then 3 sacks).
 - With the handle far from the low (say day 60) the lake can look healthy while the cause line says "dead zone 21
   days". The card's "lowest" line and the mark carry it; the owner may want the picture to hint at it too.
 - The instant view still keeps the runoff stream running on any day (round 3), so it also runs on day 40.
+
+## Shipped (2026-11-17)
+Owner after round 4: "I think that's good", "it's the standard", "go ahead" (finishing touches, make it live, then
+roll the standard to other tools). The standard is `docs/tools-v2-standard.md` (11 rules and the process). This
+closes both open points of round 4.
+
+### Finishing touches (Explore)
+- **Oxygen card, three lines**: "Oxygen", the value with its status word for the handle's day, and in the instant
+  view "lowest: X on day N". "fish need 5+" is off the card in Explore (the fact stays in "?", Sources; Test yourself
+  keeps the line) and "was ..." is gone (the faint "before" curve compares). Both lake cards (chapters 1 and 3).
+- **Far from the low** (`barName`, `cardStatus`, `causePre`): the cause line starts with a tiny grey "Over 60 days:"
+  (chapters 1 and 3; the live region says it too), so it reads as the whole run. The name line says "Day 0: Before
+  the bloom" on day 0 when a bloom is coming, and "Recovered" (was "Recovery") once the lake is back to 5 mg/L or
+  more after the low; on those days the card's status word is "Recovered" instead of "Healthy" when the run had a
+  dead zone. Between 2 and 5 mg/L after the low it still says "Recovery" with "Stressed". Checked on days 0, 3, 8,
+  12, 17, 25, 30, 40 and 60.
+- **The "lowest" mark** lands on the run's lowest day: the name line says "lowest oxygen", the card "Dead zone" and
+  the scene shows the "Dead zone" label (dead fish may come a few days later; nothing contradicts).
+- **Watch it happen always starts from day 0** in Explore, also after a scrub or a pause (with reduced motion each
+  press is still the next step). Test yourself is unchanged.
+- **The runoff stream runs only on the days the model has runoff** (about days 0 to 7), in every view; so do the
+  granules on the field. Not on day 40.
+- Also fixed: at tablet widths the long words under the sewage tanks overlapped; the short words are used whenever
+  the longest would not fit.
+- Left as it is: chapter 2's downstream card still says "was 11.3" beside the faint "before" ring (the owner's note
+  was about the oxygen card); on a phone the cause line can take three rows with the new label.
+
+### Checks run
+Rebased on `origin/main` (no conflicts). `node --test scripts/test/apenv-*.test.mjs` (186 pass), `check-apenv-content
+--check`, `build-apenv --check`, `check-site`, `check-weight --check`, `build-apmacro --check`, `build-apcalc --check`.
+Playwright (Chromium, service workers blocked, local server) at 390x844, 768x1024 and 1440x900, light and dark: the
+three Explore chapters (landing cue, drag, 5 sacks at 30 °C, day 60, 0 sacks, a tank by keyboard), keyboard on the
+sacks, the time bar, the mark and Watch it happen, Show me how and Esc, "?", Test yourself (the three question sets
+and the five drills), back to Explore, no sideways scroll, no console errors. The Premium lock screen (the real
+`premium.js`, not unlocked) has the same text and look as on `main` at every size and theme. Air pollution, Dose
+and response, Population growth and (not APES) the Microeconomics cost lab load and work at 390 and 1440 and do not
+load the kit.
+

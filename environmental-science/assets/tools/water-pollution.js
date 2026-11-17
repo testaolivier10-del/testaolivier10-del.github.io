@@ -12,8 +12,8 @@
    INSTANT RESPONSE (owner round 3, 2026-11-17, from the PhET interview studies, Red Blob Games and Bret Victor):
    changing a control changes the lake and the graph that instant, with no Play. While a control is dragged, and after
    it is let go until the time bar is touched, the scene shows the new setting ON THE DAY THE TIME BAR IS AT and
-   the graph its whole curve; the setting before the change stays as a faint line ("before: 2 sacks") and the oxygen
-   card says "was 6.3". The line under the picture is then the CAUSE LINE, the chain in a few words with one colour
+   the graph its whole curve; the setting before the change stays as a faint line ("before: 2 sacks"). The oxygen
+   card is three lines (name, value and status, "lowest: X on day N"). The line under the picture is then the CAUSE LINE, the chain in a few words with one colour
    per idea ("4 sacks → big bloom → dead algae rot → oxygen 0.0 → dead zone 21 days"); a step's caption shows only
    while the time bar is dragged or the run plays, and a takeaway (TAKE) when a run ends. One optional, ungraded
    teaser sits beside it (TZ). A first visit gets ONE cue at the first control ("Drag the fertilizer", K.cue), gone at
@@ -191,8 +191,9 @@
     var nm = i ? SEW_NAMES[i] : (ph ? 'Raw' : 'Raw sewage'), nmS = ph && i === 4 ? 'Disinfect' : nm;
     out.push('<text class="wp2-tname' + (on ? '' : ' is-off') + (ph ? ' is-ph' : '') + '" x="' + n1(cx) + '" y="' + n1(y1 + (ph ? 16 : 18)) + '" text-anchor="middle">' + esc(nmS) + '</text>');
     // what the tank does, dark text on a white pill (readable on the green bank, and on a skipped tank too)
+    // (the short words when the longest, "bacteria eat waste", would not fit under a tank)
     if(i && !noDoes){
-      var dt = ph ? SEW_DOES_S[i] : SEW_DOES[i], pw = Math.min(ww + (ph ? 6 : 8), dt.length * (ph ? 6.6 : 7) + 14), py = y1 + (ph ? 22 : 25);
+      var dt = ph || 18 * 7 + 14 > ww + 8 ? SEW_DOES_S[i] : SEW_DOES[i], pw = Math.min(ww + (ph ? 6 : 8), dt.length * (ph ? 6.6 : 7) + 14), py = y1 + (ph ? 22 : 25);
       out.push('<rect class="wp2-tpill' + (on ? '' : ' is-off') + '" x="' + n1(cx - pw / 2) + '" y="' + n1(py) + '" width="' + n1(pw) + '" height="' + (ph ? 17 : 19) + '" rx="' + (ph ? 8.5 : 9.5) + '"/>' +
         '<text class="wp2-tdoes' + (on ? '' : ' is-off') + '" x="' + n1(cx) + '" y="' + n1(py + (ph ? 12.5 : 14)) + '" text-anchor="middle">' + esc(dt) + '</text>');
     }
@@ -266,7 +267,7 @@
       get: function(){ return S.ch === 'sew' ? S.sday : S.day; },
       set: function(v){ if(S.ch === 'sew') setSday(v, 'play'); else setDay(v, 'play'); },
       onHold: function(v){ words(); var i = W.stageAt(rNow(), v), nm = S.ch === 'sew' ? SEW_STEPS : STEP_NAMES; if(i >= 0 && !S.blank) say(nm[i] + '. ' + (S.ch === 'sew' ? SEW_CAP : CAP)[i]); },
-      before: function(){ tourDid('play'); if(instOn()){ S.inst = false; if(S.ch === 'sew') setSday(0, 'tap'); else setDay(0, 'tap'); player.reset(); } }, labels: { play: 'Watch it happen', pause: 'Pause', again: 'Watch again' }, onEnd: function(){ if(S.ch === 'sew') setSday(W.LAKE_DAYS, 'play'); else setDay(W.LAKE_DAYS, 'play'); afterRun(); } });
+      before: function(){ tourDid('play'); if(expl() && (instOn() || !K.reduced())){ S.inst = false; if(S.ch === 'sew') setSday(0, 'tap'); else setDay(0, 'tap'); player.reset(); } }, labels: { play: 'Watch it happen', pause: 'Pause', again: 'Watch again' }, onEnd: function(){ if(S.ch === 'sew') setSday(W.LAKE_DAYS, 'play'); else setDay(W.LAKE_DAYS, 'play'); afterRun(); } });
     player.el.classList.add('is-sm');
     var prog = K.progress({ big: true, label: 'Day, 0 to 60', min: 0, max: W.LAKE_DAYS, step: 1, value: 0,
       valuetext: function(v){ return dayText(v); }, onStart: function(){ player.stop(); },
@@ -399,8 +400,10 @@
       out.push(oxySeg(run), endSeg(run));
       return out;
     }
-    function causeText(){ return cause().map(function(x, i){ return (i ? (x.join === '+' ? ' and ' : ', then ') : '') + (x.say || x.t); }).join('') + '.'; }
-    function causeHtml(){ return cause().map(function(x, i){ return (i ? '<span class="wp2-cz-a" aria-hidden="true">' + (x.join === '+' ? '+' : '\u2192') + '</span>' : '') + '<span class="wp2-cz is-' + x.role + '">' + esc(x.t) + '</span>'; }).join(''); }
+    // the chain is about the whole run, whatever day the time bar is on: a tiny label says so (not chapter 2: no time)
+    function causePre(){ return S.ch === 'heat' ? '' : 'Over ' + W.LAKE_DAYS + ' days:'; }
+    function causeText(){ return (causePre() ? causePre() + ' ' : '') + cause().map(function(x, i){ return (i ? (x.join === '+' ? ' and ' : ', then ') : '') + (x.say || x.t); }).join('') + '.'; }
+    function causeHtml(){ return (causePre() ? '<span class="wp2-cz-pre">' + causePre() + '</span>' : '') + cause().map(function(x, i){ return (i ? '<span class="wp2-cz-a" aria-hidden="true">' + (x.join === '+' ? '+' : '\u2192') + '</span>' : '') + '<span class="wp2-cz is-' + x.role + '">' + esc(x.t) + '</span>'; }).join(''); }
 
     /* ---- teasers: one optional, ungraded line per chapter (at most three, one at a time). Nothing is locked and
        nothing is scored: a quiet check mark when it is met, the next one at the next change, a cross to hide them.
@@ -552,7 +555,15 @@
       return ph.rec ? 'Recovery' : ph.cur < 0 ? '' : (c === 'sew' ? SEW_STEPS : STEP_NAMES)[ph.cur];
     }
     // Explore: "Day 17: Oxygen drops"; "lowest oxygen" only when the handle is on that day
-    function barName(d, nm){ var ld = lowDay(rNow()); return 'Day ' + Math.round(d) + (ld != null && Math.round(d) === ld ? ': lowest oxygen' : nm ? ': ' + nm : ''); }
+    // Far from the low the lake looks fine: day 0 says "Before the bloom", a healthy lake after the low "Recovered"
+    function barName(d, nm){
+      var r = rNow(), ld = lowDay(r);
+      if(!nm && d < 0.01 && ld != null && r.peakA >= 2) nm = 'Before the bloom';
+      else if(nm === 'Recovery' && at(r.O, d) >= HEALTHY) nm = 'Recovered';
+      return 'Day ' + Math.round(d) + (ld != null && Math.round(d) === ld ? ': lowest oxygen' : nm ? ': ' + nm : '');
+    }
+    // the card's status word: "Recovered" (not "Healthy") once a run that had a dead zone is healthy again
+    function cardStatus(r, ph, st){ return expl() && ph.rec && ph.o >= HEALTHY && r.hypoxicDays > 0 ? 'Recovered' : st.status; }
     function words(){
       var c = S.ch, nm = '', line = '', take = false, d0 = c === 'sew' ? S.sday : S.day;
       var ld = expl() && c !== 'heat' ? lowDay(rNow()) : null;
@@ -1225,7 +1236,7 @@
     }
     function cubic(s, f){ var u = 1 - f; return [u * u * u * s[0] + 3 * u * u * f * s[2] + 3 * u * f * f * s[4] + f * f * f * s[6], u * u * u * s[1] + 3 * u * u * f * s[3] + 3 * u * f * f * s[5] + f * f * f * s[7]]; }
     function dynFert(g, t){
-      var P0 = g.P, out = [], d = S.day, s = g.slope, lab = !S.blank, iv = instOn(), pv = prevOn();
+      var P0 = g.P, out = [], d = S.day, s = g.slope, lab = !S.blank, iv = instOn();
       // storm: a cloud over the field, rain while the runoff runs
       var rain = d > 0 && d < 5 ? 1 : d >= 5 && d < 7 ? 1 - (d - 5) / 2 : 0, cloudOp = d > 0 && d < 7 ? sstep(0, 0.4, d) * (1 - sstep(5, 7, d)) : 0;
       if(cloudOp > 0.01){
@@ -1235,7 +1246,7 @@
         out.push('<g fill="' + P0.cloud + '" transform="translate(' + n1(cx) + ' ' + n1(cy) + ') scale(' + cw + ')"><ellipse cx="0" cy="0" rx="46" ry="16"/><ellipse cx="-28" cy="4" rx="24" ry="13"/><ellipse cx="30" cy="5" rx="22" ry="12"/><ellipse cx="-6" cy="-10" rx="25" ry="15" fill="' + P0.cloud2 + '"/><ellipse cx="16" cy="-6" rx="16" ry="11" fill="' + P0.cloud2 + '"/></g></g>');
       }
       // fertilizer granules scattered on the field, washed off by the rain
-      var left = iv ? 0.6 : 1 - sstep(0.3, 4, d), ng = Math.round(S.sacks * 9 * left);
+      var left = 1 - sstep(0.3, 4, d), ng = Math.round(S.sacks * 9 * left);
       for(var k = 0; k < ng; k++){ var p = R_NUT[k % R_NUT.length], gx = 10 + ((p[0] + k * 0.13) % 1) * (g.platR - 8), gy = g.plat + 0.5 + p[1] * 3; out.push('<circle cx="' + n1(gx) + '" cy="' + n1(gy) + '" r="1.9" fill="' + P0.nut + '"/>'); }
       // the sacks: a row on the field (a pile on a phone)
       var span = g.sx1 - g.sx0, sw;
@@ -1247,8 +1258,8 @@
         for(var j = 0; j < S.sacks; j++) out.push(sack(g.sx0 + sw * 0.5 + (span - sw) * j / 5, g.plat - 1, sw, P0));
       }
       // runoff: water carrying fertilizer runs across the field and down the slope into the lake, thicker with more sacks
-      // (the instant view keeps the stream running, so what the sacks do to the lake stays in the picture)
-      var ro = S.sacks > 0 ? (iv ? 1 : sstep(0, 0.6, d) * (1 - sstep(4.5, 7, d))) : 0;
+      // (only on the days the runoff runs in the model, in every view)
+      var ro = S.sacks > 0 ? sstep(0, 0.6, d) * (1 - sstep(4.5, 7, d)) : 0;
       if(ro > 0.02){
         var path = 'M' + n1(s[0] - 4) + ' ' + n1(s[1] - 1) + ' C' + n1(s[2]) + ' ' + n1(s[3] - 1) + ' ' + n1(s[4]) + ' ' + n1(s[5] - 1) + ' ' + n1(s[6] + 8) + ' ' + n1(s[7] + 1);
         var wide = 4 + S.sacks * 2.2;
@@ -1284,9 +1295,10 @@
       var ph = phase(run, d), o = ph.o, st = status(o), L = g.L, w = L.x1 - L.x0, cx2 = L.x0 + w * (g.ph ? 0.6 : 0.56);
       var bx = L.x0 + w * (g.ph ? 0.12 : 0.16), byB = bedY(L, bx + 30);
       // the card shows the day the time bar is at (it matches the picture); the instant view adds the run's lowest
+      // Explore: three lines at most (name, value with its status word, the lowest); what fish need is in "?"
       var lowL = iv && lowDay(run) != null ? 'lowest: ' + fO(run.min) + ' on day ' + run.minDay : '';
-      var was = iv && pv && pv.run && fO(pv.run.min) !== fO(run.min) ? 'was ' + fO(pv.run.min) : '';
-      out.push(chip(bx, byB - (g.ph ? 56 : 64) - (was ? 7 : 0) - (lowL ? 7 : 0), 'Oxygen', fO(o) + ' mg/L', st.tone, g.ph, [bx + 30, byB - 10], st.status, 'fish need 5+', was, lowL));
+      var hintF = expl() ? '' : 'fish need 5+';
+      out.push(chip(bx, byB - (g.ph ? 56 : 64) + (hintF ? 0 : 7) - (lowL ? 7 : 0), 'Oxygen', fO(o) + ' mg/L', st.tone, g.ph, [bx + 30, byB - 10], cardStatus(run, ph, st), hintF, '', lowL));
       // small names on the things themselves, only while they are there: runoff, algae, dead algae, bacteria
       if(lab && iv){
         // instant view: the worst day, with the few names that carry the chain
@@ -1547,9 +1559,9 @@
       var lk = lakeDyn(L, sew, S.sday, t, P0, 'wpLk3', 's3', 3);
       out.push(lk.svg);
       var ph = phase(sew, S.sday), o = ph.o, st = status(o), cxL = L.x0 + (L.x1 - L.x0) * (g.ph ? 0.32 : 0.24), byL = bedY(L, cxL + 30);
-      var pv = prevOn(), lowL = instOn() && lowDay(sew) != null ? 'lowest: ' + fO(sew.min) + ' on day ' + sew.minDay : '';
-      var was = instOn() && pv && pv.run && fO(pv.run.min) !== fO(sew.min) ? 'was ' + fO(pv.run.min) : '';
-      out.push(chip(cxL, byL - (g.ph ? 56 : 62) - (was ? 7 : 0) - (lowL ? 7 : 0), 'Oxygen', fO(o) + ' mg/L', st.tone, g.ph, [cxL + 30, byL - 8], st.status, 'fish need 5+', was, lowL));
+      var lowL = instOn() && lowDay(sew) != null ? 'lowest: ' + fO(sew.min) + ' on day ' + sew.minDay : '';
+      var hintS = expl() ? '' : 'fish need 5+';
+      out.push(chip(cxL, byL - (g.ph ? 56 : 62) + (hintS ? 0 : 7) - (lowL ? 7 : 0), 'Oxygen', fO(o) + ' mg/L', st.tone, g.ph, [cxL + 30, byL - 8], cardStatus(sew, ph, st), hintS, '', lowL));
       if(S.sday > 0 && ph.cur === 5 && o < W.HYPOXIC) out.push(callout(L.x0 + (L.x1 - L.x0) * (g.ph ? 0.5 : 0.66), L.surf + (L.bed - L.surf) * (g.ph ? 0.14 : 0.24), 'Dead zone', 'bad', 'middle', true));
       return out.join('');
     }
