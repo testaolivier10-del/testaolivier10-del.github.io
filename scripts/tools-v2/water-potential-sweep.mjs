@@ -73,11 +73,14 @@ const probe = (mode) => {
     if (a.k && c.k && a.k === c.k) continue;                     // a sum and the word that hangs from it
     if (hit(a.r, c.r)) out.push('overlap: ' + a.n + ' and ' + c.n);
   }
+  // the word hangs from its sum's edge, but keeps a real gap (4 px) from every number and name in that sum
+  words.forEach(wd => { const g = document.querySelector('[data-card="' + wd.k + '"]'); if (!g) return;
+    [...g.querySelectorAll('text')].forEach(t => { const x = R(t); if (hit(wd.r, { l: x.l - 4, r: x.r + 4, t: x.t - 4, b: x.b + 4 }, 0)) out.push(wd.n + ' touches "' + t.textContent + '" in its sum'); }); });
   // every text of a sum is inside its box, and the name does not run into a number
   q('.wp2-card').forEach(g => { const b = R(g.querySelector('.wp2-cardbg')), ts = [...g.querySelectorAll('text')].map(R); ts.forEach(t => { if (t.l < b.l + 2 || t.r > b.r - 2 || t.t < b.t || t.b > b.b + 1) out.push('a sum’s text leaves its box (' + g.getAttribute('data-card') + ')'); });
     for (let i = 0; i < ts.length; i++) for (let j = i + 1; j < ts.length; j++) if (hit(ts[i], ts[j], 1.5)) out.push('texts collide inside a sum (' + g.getAttribute('data-card') + ')'); });
   // the cell's own sum may sit in its vacuole; the other labels stay off the cell
-  [...cards.filter(c => c.k === 'out'), ...words.filter(c => c.k === 'out'), ...tags, ...texts].forEach(x => { if (hit(x.r, cell, 2)) out.push(x.n + ' on the cell'); });
+  [...cards.filter(c => c.k === 'out'), ...words.filter(c => c.k === 'out'), ...pills, ...tags, ...texts].forEach(x => { if (hit(x.r, cell, 2)) out.push(x.n + ' on the cell'); });
   const flow = q('.wp2-flowg path, .wp2-flowg circle').map(R);
   flow.forEach(f => { inS(f, 'a water arrow'); cards.forEach(c => { if (hit(f, c.r, 1)) out.push('a water arrow crosses ' + c.n); }); [...tags, ...knobs].forEach(c => { if (hit(f, c.r, 1)) out.push('a water arrow under ' + c.n); }); });
   q('.wp2-push, .wp2-push-h').map(R).forEach(f => { if (f.l < cell.l - 1 || f.r > cell.r + 1 || f.t < cell.t - 1 || f.b > cell.b + 1) out.push('a push arrow leaves the cell'); });
@@ -97,7 +100,7 @@ const probe = (mode) => {
   if (mode === 'explore' || mode === 'checked') {
     const want = Math.abs(ct - ot) < 0.005 ? 'none' : ot > ct ? 'in' : 'out';
     if (dir !== want) out.push('arrows say ' + dir + ', numbers say ' + want);
-    if (!cause.includes(want === 'in' ? 'water moves in' : want === 'out' ? 'water moves out' : 'no net water movement')) out.push('cause line disagrees: ' + cause);
+    if (!cause.includes(want === 'in' ? 'water moves in' : want === 'out' ? 'water moves out' : 'no net movement')) out.push('cause line disagrees: ' + cause);
     if (!w1 || !w2 || w1.n !== 'word "' + (want === 'none' ? 'equal' : want === 'in' ? 'lower' : 'higher') + '"' || w2.n !== 'word "' + (want === 'none' ? 'equal' : want === 'in' ? 'higher' : 'lower') + '"') out.push('the words disagree with the numbers');
   }
   if (mode === 'explore') {
@@ -141,7 +144,7 @@ for (const w of WIDTHS) {
     await setIn(page, '.wp2-kp input', p); await setIn(page, '.wp2-ks input', c); await page.waitForTimeout(650);
     // the numbers count with the picture: wait for them to land (a slow headless frame rate at wide widths), at most 3 s
     const t0 = Date.now();
-    await page.waitForFunction(pv => { const e = document.querySelector('[data-card="cell"] [data-v="p"]'); return !e || Math.abs(parseFloat(e.textContent.replace('\u2212', '-')) - pv) < 0.001; }, p, { timeout: 3000 }).catch(() => {});
+    for (let t = 0; t < 30; t++) { if (await page.evaluate(pv => { const e = document.querySelector('[data-card="cell"] [data-v="p"]'); return !e || Math.abs(parseFloat(e.textContent.replace('\u2212', '-')) - pv) < 0.001; }, p)) break; await page.waitForTimeout(100); }
     settle[w] = Math.max(settle[w] || 0, Date.now() - t0 + 650);
     await check('explore', `pressure ${p}, solute ${c}`);
     if ((p === 2 && c === 0.2) || (p === 4.9 && c === 0.2) || (p === 9.8 && c === 1) || (p === 0 && c === 0.7) || (p === 9.8 && c === 0)) await shot(page, `${W4}-1-p${p}-c${c}.png`);
@@ -157,11 +160,19 @@ for (const w of WIDTHS) {
       const txt = part.locator('input[type=text]');
       if (await txt.count()) { await txt.fill('-3'); if (i === 0) { await page.waitForTimeout(120); await check('typed', `problem ${pick}, a typed value`); } }
       else await part.locator('input[type=radio]').first().check({ force: true });
+      // watch every change from here on: a word or a seen cause line before the arrows exist is a failure
+      await page.evaluate(() => { if (window.__early) return; window.__early = [];
+        const look = () => { const flow = document.querySelector('.wp2-flowg'), cz = document.querySelector('.tk2-cause');
+          const words = document.querySelectorAll('.wp2-word').length, seen = cz && !cz.closest('[hidden]') && !cz.hidden && getComputedStyle(cz).visibility !== 'hidden' && cz.textContent.trim();
+          if (!flow && (words || seen)) window.__early.push((words ? 'words' : '') + (seen ? ' cause line' : '')); };
+        new MutationObserver(look).observe(document.querySelector('.wp2'), { subtree: true, childList: true, attributes: true, attributeFilter: ['hidden', 'style'] }); });
       await part.locator('.bt-pcheck').click(); await page.waitForTimeout(120);
       const show = page.locator('.ls-dock button:has-text("Show the answer")');
       if (await show.count()) { await show.first().click(); await page.waitForTimeout(120); }
     }
     await page.waitForTimeout(w <= 640 ? 2600 : 900);
+    const early = await page.evaluate(() => { const e = window.__early || []; window.__early = []; return [...new Set(e)]; }); checks++;
+    early.forEach(m => fails.push(`${w} problem ${pick}: ${m} before the arrows`));
     await check('checked', `problem ${pick}, checked`);
     await shot(page, `${W4}-2-problem-${pick.replace(':', '')}.png`);
   }

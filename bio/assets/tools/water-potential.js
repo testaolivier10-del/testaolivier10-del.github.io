@@ -97,10 +97,10 @@
         return { p: p, cellS: CELL_S, cell: cell, outS: so, out: so, d: 1, dir: cell === so ? 'none' : so > cell ? 'in' : 'out', gap: Math.abs(cell - so) };
       }
       function target(){ var p = S.p, so = outS(S.c), cell = r1(CELL_S + p); return { p: p, cell: cell, out: so, dir: cell === so ? 'none' : so > cell ? 'in' : 'out' }; }
-      function dirWords(d){ return d === 'in' ? 'water moves in' : d === 'out' ? 'water moves out' : 'no net water movement'; }
+      function dirWords(d){ return d === 'in' ? 'water moves in' : d === 'out' ? 'water moves out' : 'no net movement'; }
       function chainOf(m){
         var d = m.d;
-        return [{ t: 'Cell ψ ' + sg(m.cell, d), role: 'water', say: 'the cell’s water potential is ' + sg(m.cell, d) + ' bar' },
+        return [{ t: 'Cell ψ ' + sg(m.cell, d) + ' bar', role: 'water', say: 'the cell’s water potential is ' + sg(m.cell, d) + ' bar' },
           { t: (m.dir === 'none' ? 'equal to ' : m.dir === 'in' ? 'lower than ' : 'higher than ') + sg(m.out, d) + ' outside', role: 'ink' },
           { t: dirWords(m.dir), role: 'water' }];
       }
@@ -175,23 +175,28 @@
         var BX = gx + gw, BW = Wd - 2 * BX, BY = air, BH = Math.max(200, H - BY - ctl), y1 = BY + BH, R0 = BX + BW;
         var fs = ph ? 12 : 14.5, fsS = ph ? 11.5 : 13, rowH = ph ? fs + 5 : fs + 7.5, wt = ph ? 7 : 10, band = ph ? 11 : 17;
         var cw = ph ? Math.min(146, Math.floor((BW - 32) / 2)) : clamp(BW * 0.18, 200, 236);
-        var ch = (ph ? 8 : 11) + fs * 0.8 + rowH + (ph ? 1 : 3) + rowH + (ph ? 6 : 7) + fs + (ph ? 5 : 7) + (ph ? 8 : 11), wordH = fsS + 10;
+        var wordH = fsS + 10;
+        // the card's foot leaves room for the word that hangs on its edge: its top stays 6 px under the total's glyphs
+        var ch = (ph ? 8 : 11) + fs * 0.8 + rowH + (ph ? 1 : 3) + rowH + (ph ? 6 : 7) + fs + (ph ? 5 : 7) + Math.ceil(wordH / 2 - 3 + 0.25 * (fs + 2) + 6);
         var vx = R0 - (ph ? 36 : 70), rightLim = ex ? vx - (ph ? 30 : 60) : R0 - 10;   // the solute track, on the beaker's right wall
         // Roomy stage: the cell fills the height and carries its sum inside its vacuole. Otherwise the sums sit in a
         // band above and the cell stands under its own.
         var cellBot = y1 - (ph ? 12 : 20), top0 = BY + (ph ? 14 : 20), hh = (cellBot - top0) / 2 / 1.05, hw = Math.min(clamp(BW * 0.22, 170, 330), hh * 1.45);
         hh = Math.min(hh, hw * 0.95);
-        var cxIn = BX + Math.max(BW * 0.27, hw * 1.05 + 30);
-        var inside = !ph && 2 * (hw - wt - band) * 0.8 >= cw + 30 && 2 * (hh - wt - band) >= ch + wordH + 150 && cxIn + hw * 1.05 + 126 + cw + 8 <= (ex ? vx - 40 : R0), cardY, cellTop;
+        var cxIn = BX + Math.max(BW * 0.27, hw * 1.05 + 30), lane = 8 + pillW('no net movement', fsS) + 10;   // the water's pill between the cell and the outside sum
+        var inside = !ph && 2 * (hw - wt - band) * 0.8 >= cw + 30 && 2 * (hh - wt - band) >= ch + wordH + 150 && cxIn + hw * 1.05 + lane + cw + 8 <= (ex ? vx - 40 : R0), cardY, cellTop;
         if(inside){ cellTop = top0; cardY = (top0 + cellBot) / 2 - hh + wt + band + 18; }
         else {
           cardY = top0; cellTop = cardY + ch + wordH / 2 + (ph ? 12 : 16); hh = (cellBot - cellTop) / 2 / 1.05;
-          hw = ph ? Math.min(BW * 0.25, hh * 1.1) : Math.min(clamp(BW * 0.2, 150, 300), hh * 1.5);
+          // under the sums the cell takes the width it can (a wider brick), keeping room on its right for the
+          // water arrows and their pill before the solute knob
+          var room = rightLim - pillW('no net movement', fsS) - 10 - BX, cap = Math.min((room - 30) / 2.1, (room - BW * 0.27) / 1.05);
+          hw = ph ? Math.min(BW * 0.25, hh * 1.1) : Math.min(cap, Math.max(Math.min(clamp(BW * 0.2, 150, 300), hh * 1.5), Math.min(330, hh * 1.9)));
           hh = Math.min(hh, hw * (ph ? 1.45 : 0.95));
         }
         var cx = ph ? BX + 8 + hw * 1.05 : BX + Math.max(BW * 0.27, hw * 1.05 + 30), cy = (cellTop + cellBot) / 2, k = Math.min(hh / 120, ph ? 9 : 1.9);
         var xr = cx + hw * 1.05, c1 = clamp(cx - cw / 2, BX + 6, R0);
-        var c2 = ph ? R0 - 6 - cw : clamp((xr + (ex ? vx - 20 : R0)) / 2 - cw / 2, Math.max(c1 + cw + 16, inside ? xr + 126 : 0), R0 - 8 - cw);
+        var c2 = ph ? R0 - 6 - cw : clamp((xr + (ex ? vx - 20 : R0)) / 2 - cw / 2, Math.max(c1 + cw + 16, inside ? xr + lane : 0), R0 - 8 - cw);
         c2 = Math.min(c2, R0 - 8 - cw); c1 = Math.min(c1, c2 - cw - 12);
         var tx0 = ph ? BX + 26 : Math.max(BX + 30, cx - hw * 1.4), tx1 = ph ? R0 - 26 : Math.min(R0 - 40, Math.max(cx + hw * 1.4, tx0 + 420));
         var vy0 = y1 - (ph ? 50 : 62), clear = c2 + cw + 12 < vx - 34, vy1 = Math.max(clear ? BY + 62 : cardY + ch + wordH / 2 + (ph ? 58 : 70), vy0 - (ph ? 190 : 300));
@@ -208,6 +213,13 @@
         var ang = Math.atan2(ty - fy, tx - fx), hl = 6 + sw * 0.9, bx = tx - Math.cos(ang) * hl, by = ty - Math.sin(ang) * hl;
         return '<path class="' + cls + '" stroke-width="' + n1(sw) + '" d="M' + n1(fx) + ' ' + n1(fy) + 'L' + n1(bx) + ' ' + n1(by) + '"/>' +
           '<path class="' + cls + '-h" d="M' + n1(tx) + ' ' + n1(ty) + 'L' + n1(bx + Math.sin(ang) * hl * 0.75) + ' ' + n1(by - Math.cos(ang) * hl * 0.75) + 'L' + n1(bx - Math.sin(ang) * hl * 0.75) + ' ' + n1(by + Math.cos(ang) * hl * 0.75) + 'Z"/>';
+      }
+      /* Equal water potential: water still crosses both ways at the same rate. One thin line, a head at each end. */
+      function both(x0, y0, x1, y1, cls){
+        var ang = Math.atan2(y1 - y0, x1 - x0), hl = 8, c = Math.cos(ang), s = Math.sin(ang), hw = hl * 0.62;
+        var head = function(tx, ty, sg){ var bx = tx - sg * c * hl, by = ty - sg * s * hl; return 'M' + n1(tx) + ' ' + n1(ty) + 'L' + n1(bx + s * hw) + ' ' + n1(by - c * hw) + 'L' + n1(bx - s * hw) + ' ' + n1(by + c * hw) + 'Z'; };
+        return '<path class="' + cls + '" d="M' + n1(x0 + c * hl * 0.8) + ' ' + n1(y0 + s * hl * 0.8) + 'L' + n1(x1 - c * hl * 0.8) + ' ' + n1(y1 - s * hl * 0.8) + '"/>' +
+          '<path class="' + cls + '-h" d="' + head(x1, y1, 1) + head(x0, y0, -1) + '"/>';
       }
       /* A written sum: the name of the place, its two parts and, under a rule, the total with one word. */
       function card(x, y, title, rows, total, word, key){
@@ -256,7 +268,7 @@
           tot1: { v: t1v.v + (t1v.v === '?' ? '' : ' bar'), mine: t1v.mine },
           rows2: [{ k: 'Solute ψs', v: chk ? sg(sS, 2) : '?', role: 'sol', id: 's' }, { k: 'Pressure ψp', v: chk ? '0.0' : '?', role: 'press', id: 'p' }],
           tot2: { v: t2v.v + (t2v.v === '?' ? '' : ' bar'), mine: t2v.mine },
-          w1: !chk ? '' : dir === 'none' ? 'equal' : dir === 'in' ? 'lower' : 'higher', w2: !chk ? '' : dir === 'none' ? 'equal' : dir === 'in' ? 'higher' : 'lower' };
+          w1: !chk || view.reveal <= 0 ? '' : dir === 'none' ? 'equal' : dir === 'in' ? 'lower' : 'higher', w2: !chk || view.reveal <= 0 ? '' : dir === 'none' ? 'equal' : dir === 'in' ? 'higher' : 'lower' };
       }
       /* The scene that does not change with the controls: the vessel of solution across the whole stage (air, a
          surface, depth), its glass with the graduations the solute knob rides on, the bench and the controls' names. */
@@ -299,7 +311,7 @@
         // solute outside: particles at the same density rule as the cell sap, never on the cell, a card or the rail
         var POOL = g.pool, kd = Math.max(k, 1.15), area = BW * BH / (kd * kd), nf = Math.min(POOL.length, sc.osmOut * KD * area), nOut = Math.ceil(nf - 1e-9), dr = 2.6 * Math.sqrt(kd), dots = [];
         var wy = cy - (g.ph ? 0.2 : 0.32) * g.hh - (g.ph ? 24 : 30), sp = pillW('Solute outside', g.fsS), spx = Math.min(g.vx + sp / 2, R0 - 6);
-        var keep = [[g.c2, g.cardY, g.c2 + g.cw, g.cardY + g.ch + g.wordH / 2 + 2], [g.xr, wy - 20, g.xr + 16 + pillW('no net flow', g.fsS), wy + 12]];
+        var keep = [[g.c2, g.cardY, g.c2 + g.cw, g.cardY + g.ch + g.wordH / 2 + 2], [g.xr, wy - 20, g.xr + 16 + pillW('no net movement', g.fsS), wy + 12]];
         if(!g.inside) keep.push([g.c1, g.cardY, g.c1 + g.cw, g.cardY + g.ch + g.wordH / 2 + 2]);
         if(g.ex) keep.push([g.vx - 32, g.vy1 - 54, g.vx + 32, g.vy0 + 22], [spx - sp, g.vy0 + (g.ph ? 32 : 36) - g.wordH / 2, spx, g.vy0 + (g.ph ? 32 : 36) + g.wordH / 2]);
         var hit = function(x, y, m){ for(var z = 0; z < keep.length; z++){ var q = keep[z]; if(x > q[0] - m && x < q[2] + m && y > q[1] - m && y < q[3] + m) return true; } return false; };
@@ -353,12 +365,12 @@
           var sw = Math.min(15, 1.6 + sc.gap * 0.8) * clamp(k, 0.85, 1.35) * (0.35 + 0.65 * sc.reveal), ax0 = xr + (g.ph ? 40 : 58) + sw * 0.5, ax1 = xr - wt - (g.ph ? 14 : 22);
           ys.forEach(function(f){
             var ay = cy + f * g.hh;
-            if(sc.dir === 'none'){ fl.push('<path class="wp2-eq" d="M' + n1(ax0) + ' ' + n1(ay) + 'H' + n1(ax1) + '"/>'); return; }
+            if(sc.dir === 'none'){ fl.push(both(ax0, ay, ax1, ay, 'wp2-eq')); return; }
             var inn = sc.dir === 'in', fx = inn ? ax0 : ax1, tx = inn ? ax1 : ax0;
             fl.push(arrow(fx, ay, tx, ay, sw, 'wp2-flow'));
             if(tw && !K.reduced()){ var phs = (view.clock / 640) % 1; for(var w = 0; w < 2; w++){ var u = (phs + w / 2) % 1; fl.push('<circle class="wp2-w" cx="' + n1(fx + (tx - fx) * u * 0.78) + '" cy="' + n1(ay) + '" r="' + n1(2.2 + sw * 0.13) + '"/>'); } }
           });
-          var wtxt = sc.dir === 'none' ? 'no net flow' : sc.dir === 'in' ? 'water in' : 'water out';
+          var wtxt = sc.dir === 'none' ? 'no net movement' : sc.dir === 'in' ? 'water in' : 'water out';
           fl.push(pill(Math.min(g.xr + 8, g.rightLim - pillW(wtxt, g.fsS)), wy, wtxt, 'is-water', 'start', g.fsS));
           p.push('<g class="wp2-flowg" data-dir="' + sc.dir + '" opacity="' + sc.reveal.toFixed(2) + '">' + fl.join('') + '</g>');
         }
@@ -377,6 +389,7 @@
           }
         }
         put('sums', p.join(''));
+        if(causeWait && sc.dir && sc.reveal > 0) holdCause(false);
         var al = sc.ex ? 'A plant cell in an open beaker of ' + F(view.c, 2) + ' molar ' + EX.outside.solute + '. ' + sentence(sc.m)
           : 'The problem’s ' + sc.t1.toLowerCase() + ' in a beaker of ' + sc.t2 + '.' + (sc.chk ? ' Cell water potential ' + sg(sc.m.cell, 2) + ' bar, outside ' + sg(sc.m.out, 2) + ' bar: ' + dirWords(sc.dir) + '.' : ' The sums fill in as you answer.');
         if(draw.al !== al){ draw.al = al; svg.setAttribute('aria-label', al); }
@@ -425,18 +438,20 @@
         try{ sceneBox.scrollIntoView({ block: 'center', behavior: K.reduced() ? 'auto' : 'smooth' }); }catch(e){ return false; }
         return true;
       }
-      var lastPhase = '', lastProb = null;
+      var lastPhase = '', lastProb = null, causeWait = false;
+      // the result's cause line keeps its place but stays unseen until the arrows draw (the words wait the same way)
+      function holdCause(on){ causeWait = on; cause.el.style.visibility = on ? 'hidden' : ''; }
       function problemStage(host, s){
         host.hidden = true;                      // the tool draws on its own picture, not in the skill tool's slot
         var fresh = s.input !== lastProb, done = s.phase === 'checked' && lastPhase !== 'checked';
         prob = s; lastProb = s.input; lastPhase = s.phase;
         if(S.mode !== 'quiz') return;
-        if(fresh){ stopTween(); snap(); cause.el.hidden = true; }
+        if(fresh){ stopTween(); snap(); holdCause(false); cause.el.hidden = true; }
         if(done){
           var m = sceneNow().m; cause.set(chainOf(m)); cause.el.hidden = false;
           if(K.reduced() || !window.requestAnimationFrame){ var old = gDyn.innerHTML; view.reveal = 1; draw(); crossFade(old); return; }
           var away = toScene(), me = s;
-          view.reveal = 0; draw();
+          holdCause(true); view.reveal = 0; draw();
           setTimeout(function(){ if(prob !== me) return; flowUntil = now() + 1100; if(!tw){ lastTs = 0; tw = requestAnimationFrame(tick); } }, away ? 450 : 0);
           // on a phone the answers are above the picture: come back to them once the arrows are in
           if(away && ctx.studio) setTimeout(function(){ if(prob !== me) return; var d = ctx.studio.root.querySelector('.ls-dock'); try{ if(d) d.scrollIntoView({ block: 'start', behavior: 'smooth' }); }catch(e){} }, 1700);
@@ -452,6 +467,7 @@
         var ex = S.mode === 'explore';
         stage.setAttribute('data-view', ex ? 'explore' : 'problem');
         head.el.hidden = !ex; cP.hide(!ex); cC.hide(!ex);
+        holdCause(false);
         if(ex){ prev = null; gest = null; cause.el.hidden = false; snap(); wKey = ''; syncWords(); refHtml(); }
         else { hideCue(false); snap(); var sc = sceneNow(); cause.el.hidden = !(sc && sc.chk); if(sc && sc.chk) cause.set(chainOf(sc.m)); }
         setTimeout(function(){ layoutNow(); if(ex && !tour.active()) cue.show(); }, 30);

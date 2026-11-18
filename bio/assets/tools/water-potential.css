@@ -18,6 +18,8 @@
 .wp2[data-view="problem"] .wp2-scene{min-height:340px;}
 @media (max-width:1023px){ .wp2[data-view="problem"] .wp2-scene{height:min(62vw,440px);min-height:340px;} }
 @media (max-width:640px){ .wp2[data-view="problem"] .wp2-scene{height:max(350px,min(100vw,390px));} }
+/* Between phone and desktop the sums sit in a band above the cell: a taller stage gives the cell that height back. */
+@media (min-width:521px) and (max-width:1023px){ .wp2-scene{height:min(86vw,600px);} .wp2[data-view="problem"] .wp2-scene{height:min(72vw,500px);} }
 .wp2-lines{display:flex;align-items:center;justify-content:space-between;gap:6px 18px;flex-wrap:wrap;flex:none;}
 .wp2 .tk2-cz.is-water{--cz:var(--wp-water);--cz-ink:var(--wp-water-ink);}
 /* the two knobs, each in its idea's colour */
@@ -66,7 +68,7 @@
 .wp2-flow,.wp2-push{fill:none;stroke-linecap:round;}
 .wp2-flow{stroke:var(--wp-water);} .wp2-flow-h{fill:var(--wp-water);}
 .wp2-push{stroke:var(--wp-wall-ink);} .wp2-push-h{fill:var(--wp-wall-ink);}
-.wp2-eq{stroke:var(--wp-water);stroke-opacity:.6;stroke-width:2.5;stroke-dasharray:3 6;stroke-linecap:round;fill:none;}
+.wp2-eq{stroke:var(--wp-water);stroke-width:2;stroke-linecap:round;fill:none;} .wp2-eq-h{fill:var(--wp-water);}
 .wp2-w{fill:#fff;stroke:var(--wp-water);stroke-width:1.4;}
 .wp2-pill rect{fill:var(--white);fill-opacity:.96;stroke-width:1.6;stroke:color-mix(in srgb, var(--ink) 30%, transparent);}
 .wp2-pill text{font-weight:900;fill:var(--ink);}
