@@ -118,5 +118,32 @@ twine, and the cue on a first visit.
   tools without `kit2`. `?seed=` opens that part. Other skills tools on the kit can use it as is.
 - `scripts/tools-v2/hardy-weinberg-sweep.mjs`: the sweep (the first in that folder).
 
-## Checks run
-See the end of this file ("Checks"), filled in at the end of the build.
+## Checks run (2026-11-18)
+- `node --test scripts/test/apbio-*.test.mjs` (72 pass), `check-apbio-content --check` (0 failing; the validator
+  checks every stop of the bed and every target), `build-apbio --check`, `check-site`, `check-weight --check`,
+  `build-apmacro --check`, `build-apcalc --check`.
+- `scripts/check-tool-use.mjs` (with `CHROMIUM_PATH`): Hardy-Weinberg reports frame v2. The check expected Osmosis on
+  the old frame (stale since Osmosis was rebuilt); it now lists Osmosis and Hardy-Weinberg as v2, and NREMT
+  Flowcharts stays the old frame example.
+- The sweep, `node scripts/tools-v2/hardy-weinberg-sweep.mjs`: 57,338 checks, 0 failed (p = 0 to 1 and the
+  target planted and in bloom, at 360, 390, 430, 600, 768, 820, 1024, 1280, 1440, 1920; dark at 390, 768, 1440).
+- Playwright at 390x844 (touch), 768x1024 and 1440x900, light and dark, 258 assertions passing: opens at p = 0.7
+  with the cue; a real touch drag (CDP touch events) on the phone and a mouse drag elsewhere move the bed, frames
+  mid drag and mid change, and the plants, signs and cause line agree once settled; the cue leaves; End, Home and
+  arrows; Show me how and Esc; Test yourself: the planted bed gives nothing away, a wrong answer is marked, the
+  knob locks, Show the answer, Try again, a right answer is marked, Next target, the first try is recorded as
+  `hardy-weinberg:target-q16`; the dropdown to Problems and back; back to Explore keeps the setting; reduced motion
+  shows the whole result within 320 ms; `#practice`, `#target` and `?seed=` open the right part (the seeded code
+  sits in the problem's details as before); no sideways scroll; no console errors.
+- Chi-square, Descriptive statistics, Water potential, Simpson diversity, Hardy-Weinberg drift and Osmosis load
+  with no errors, and the skills tools still open their problems at `#practice` (the adapter change).
+- Preview: `node scripts/tool-preview.mjs bio/tools/hardy-weinberg.html /mnt/user-data/outputs/hardy-weinberg-v2/index.html`
+  opens from disk with no errors. Shots, mid animation frames and the contact sheets are in
+  `/mnt/user-data/outputs/hardy-weinberg-v2/shots/`; set beside the flagship and Osmosis at 1440.
+
+## Not done, and what I am not happy with
+- No real phone, no screen reader pass, no real students.
+- On a wide desktop each plant is narrow inside its cell, so the bed reads as columns of plants with soil between
+  them; on a phone the bed is tall and narrow. Both are clean in the sweep, but the plants could be fuller.
+- The bed is a sorted model, not a scattered population (said in "?"; open point hw-explore-snapdragons).
+- The 100 plants are 100 SVG groups; fine on the devices tested, not measured on a slow phone.
