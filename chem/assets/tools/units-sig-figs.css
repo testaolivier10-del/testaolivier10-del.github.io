@@ -146,3 +146,9 @@
 .us3-lenspad{position:absolute;border-radius:50%;cursor:ns-resize;touch-action:none;}
 .us3-lenspad.is-drag{cursor:grabbing;}
 @media (max-width:640px){ .us3 .tk2-cause{min-height:68px;align-content:flex-start;} }
+/* a unit that does not simplify (a turned over card) wraps inside its card and the tag */
+.us3-u.is-mix,.us3-tag-u.is-mix{font-size:13.5px;line-height:1.15;overflow-wrap:anywhere;text-align:center;max-width:100%;}
+.us3-card.is-res .us3-u.is-mix{font-size:13.5px;}
+.us3-card.is-res .us3-h{max-width:100%;}
+.us3-card.is-res .us3-v{white-space:normal;font-size:15px;}
+.us3-card.is-res.is-stale,.us3-tag.is-stale{opacity:.35;transition:opacity .15s;}

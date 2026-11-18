@@ -49,7 +49,7 @@ async function open(o) {
   await page.waitForTimeout(500);
   return { page, errs };
 }
-const shot = (page, name) => SHOTS ? page.locator('.us3').screenshot({ path: join(SHOTS, name) }) : null;
+const shot = async (page, name) => { if (!SHOTS) return; const vis = await page.locator('.us3').isVisible(); return vis ? page.locator('.us3').screenshot({ path: join(SHOTS, name) }) : page.screenshot({ path: join(SHOTS, name) }); };
 /* Runs in the page. */
 const probe = (o) => {
   const R = e => { const r = e.getBoundingClientRect(); return { l: r.left, t: r.top, r: r.right, b: r.bottom, w: r.width, h: r.height }; };

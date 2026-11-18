@@ -108,6 +108,11 @@
         layoutCards(red);
         clearTimeout(busyT);
         if(red){ crossFade(); strikes(r, true); settle(r); return; }
+        // what no longer holds goes at once: strikes that do not cancel now, and the old result (faded, and gone
+        // from the cause line) until the new one is drawn
+        unstrike(r); resEl.classList.add('is-stale'); tagEl.classList.add('is-stale');
+        var still = r.pairs.filter(function(p){ return shownRes.pairs.some(function(o){ return o.u === p.u && o.a.card === p.a.card && o.b.card === p.b.card && o.a.half === p.a.half; }); });
+        cause.set(still.length ? still.map(function(p){ return { t: p.u + ' cancels', role: 'u-' + uKey(p.u) }; }) : [{ t: S.chain.length ? 'checking units' : CV.start.v + ' ' + CV.start.u + ' of ' + CV.start.what, role: S.chain.length ? 'ink' : 'u-' + uKey(CV.start.u) }], S.chain.length ? '' : 'Start:');
         stage.classList.add('is-moving');
         busyT = setTimeout(function(){
           if(my !== seq) return;
@@ -131,8 +136,15 @@
         });
         return fresh;
       }
+      function unstrike(r){
+        var want = {};
+        r.pairs.forEach(function(p){ [p.a, p.b].forEach(function(x){ want[x.card + ':' + x.half] = 1; }); });
+        [{ el: startEl, card: 0 }].concat(S.chain.map(function(c, i){ return { el: CEL[c.id], card: i + 1 }; })).forEach(function(x){
+          ['top', 'bot'].forEach(function(h){ var u = x.el.querySelector('.us3-' + h + ' .us3-u'); if(u && !want[x.card + ':' + h] && u.classList.contains('is-x')){ u.style.transitionDelay = '0ms'; u.classList.remove('is-x'); } });
+        });
+      }
       function settle(r){
-        shownRes = r;
+        shownRes = r; resEl.classList.remove('is-stale'); tagEl.classList.remove('is-stale');
         resEl.hidden = !S.chain.length;
         var resU = resEl.querySelector('.us3-u');
         resEl.querySelector('.us3-v').textContent = U.sigText(r.value, r.sf);
@@ -417,7 +429,7 @@
           var sF = vScale(from) + (sScale(from) - vScale(from)) * sw, sT = sScale(to) + (vScale(to) - sScale(to)) * sw;
           var xF = mX(from) + (g.sx - mX(from)) * sw, xT = g.sx + (mX(to) - g.sx) * sw;
           var drain = clamp((f - 0.05) / 0.6, 0, 1), fill = clamp((f - 0.25) / 0.7, 0, 1);
-          p.push(vesselSvg(from, xF, sF, S.v * (1 - ease(drain)), false, 1));
+          p.push(vesselSvg(from, xF, sF, S.v * (1 - ease(drain)), false, 1 - 0.55 * sw));
           p.push(vesselSvg(to, xT, sT, S.v * ease(fill), true, 1));
         }
         // the name of the vessel being read, on the bench under it
@@ -444,7 +456,7 @@
           p.push('<rect class="us3-band" x="' + x0 + '" y="' + yv(r.high) + '" width="' + (R * 0.2) + '" height="' + (yv(r.low) - yv(r.high)) + '"/>');
           var lo = Math.floor((S.v - span / 2) / inst.every) * inst.every, step2 = inst.every === 1 ? 1 : inst.every;
           for(var mv = lo; mv <= S.v + span / 2 + inst.every; mv += step2){
-            if(mv < 0 || mv > 50) continue;
+            if(mv <= 0 || mv > 50) continue;
             var yy = yv(mv), big = mv % 10 === 0 || inst.every >= 10, L = big ? R * 0.42 : mv % 5 === 0 ? R * 0.32 : R * 0.24;
             p.push('<path class="us3-lmark' + (big ? ' is-major' : '') + '" d="M' + x0 + ' ' + yy.toFixed(1) + 'H' + (x0 + L).toFixed(1) + '"/>');
             if(Math.abs(yy - ly) < R * 0.66) p.push('<text class="us3-lnum" x="' + (x0 + L + 6).toFixed(1) + '" y="' + (yy + 6).toFixed(1) + '">' + mv + '</text>');
