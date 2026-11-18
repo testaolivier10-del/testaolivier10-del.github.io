@@ -40,6 +40,37 @@ export function check(data, map) {
   const bIn = run(bag, { inC: 1, outC: 0 }), bOut = run(bag, { inC: 0, outC: 1 }), bEq = run(bag, { inC: 0.4, outC: 0.4 });
   if (!(bIn.pct > 0 && bOut.pct < 0 && Math.abs(bEq.pct) < 1e-9)) errs.push('a bag gains mass when its sucrose is stronger than the beaker’s, loses it when weaker, and is unchanged when equal');
   if (Math.abs(M.psiS(1, 0.3, 22) - -(0.3 * 0.0831 * 295)) > 1e-9) errs.push('ψs must be −iCRT with R = 0.0831 and T = °C + 273');
+  // Explore (tools v2, docs/tools-v2-osmosis-brief.md): where each cell settles, by the model
+  const ex = data.explore;
+  if (!ex || !Array.isArray(ex.cells) || ex.cells.length < 2) errs.push('explore: cells (a plant cell and an animal cell) are required');
+  else {
+    if (i(ex.solute) !== 1) errs.push('explore: the solute must be one that does not split (i = 1), so the three words follow the molarity');
+    if (!(ex.outside && ex.outside.max > 0 && ex.outside.step > 0 && ex.outside.value <= ex.outside.max)) errs.push('explore: outside {max, step, value} is required');
+    const cell = c => ({ ...(c.system ? sys(c.system) : c), T: c.T });
+    const E = (c, C) => O.equilibrium(cell(c), { outC: C, outI: 1, T: c.T });
+    const plant = ex.cells.find(c => cell(c).kind === 'plant'), animal = ex.cells.find(c => cell(c).kind === 'animal');
+    if (!plant || !animal) errs.push('explore: one plant cell and one animal cell');
+    else {
+      for (const c of [plant, animal]) {
+        const sy = cell(c), iso = sy.osmIn;
+        if (!c.tab || !(c.T > 0)) errs.push(`explore ${c.id}: tab and T are required`);
+        const e0 = E(c, iso);
+        if (e0.startDir !== 'none' || Math.abs(e0.W - 1) > 1e-6) errs.push(`explore ${c.id}: no net movement in the isotonic solution (${iso} M)`);
+        if (Math.abs(iso / ex.outside.step - Math.round(iso / ex.outside.step)) > 1e-9) errs.push(`explore ${c.id}: the isotonic concentration must be a stop of the control`);
+        const lo = E(c, Math.max(0, iso - ex.outside.step)), hi = E(c, iso + ex.outside.step);
+        if (!(lo.startDir === 'in' && lo.W > 1)) errs.push(`explore ${c.id}: water moves in from a hypotonic solution`);
+        if (!(hi.startDir === 'out' && hi.W < 1 && Math.abs(hi.end.psi - hi.psiO) < 1e-6)) errs.push(`explore ${c.id}: water moves out into a hypertonic solution until ψ is equal`);
+      }
+      const p0 = E(plant, 0), pIso = E(plant, cell(plant).osmIn), pHi = E(plant, ex.outside.max);
+      if (!(p0.state === 'turgid' && !p0.lysed && p0.end.psiP > 0 && Math.abs(p0.end.psi) < 1e-6)) errs.push('explore: the plant cell in pure water ends turgid with ψ = 0 (the wall pushes back)');
+      if (pIso.state !== 'flaccid') errs.push('explore: the plant cell is flaccid in the isotonic solution');
+      if (pHi.state !== 'plasmolyzed') errs.push('explore: the plant cell plasmolyzes in the strongest solution');
+      const a0 = E(animal, 0), aIso = E(animal, cell(animal).osmIn), aHi = E(animal, ex.outside.max);
+      if (!a0.lysed) errs.push('explore: the animal cell bursts in pure water');
+      if (aIso.state !== 'normal' || aHi.state !== 'shriveled') errs.push('explore: the animal cell is normal in the isotonic solution and shriveled in the strongest');
+      if (cell(plant).osmIn !== cell(animal).osmIn) errs.push('explore: both cells must be isotonic with the same solution, so a tab change compares them');
+    }
+  }
   // the stimulus table, recomputed
   for (const [sid, s] of Object.entries(data.stimuli || {})) for (const t of s.tables || []) {
     const ck = t.check, sy = sys(ck?.system);

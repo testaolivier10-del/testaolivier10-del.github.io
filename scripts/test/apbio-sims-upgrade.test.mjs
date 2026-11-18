@@ -84,3 +84,22 @@ test('HW drift Guess N: the SD cutoffs the quiz uses separate N = 100 from N = 1
   // most draws pass (so the redraw loop ends fast), and the bands do not meet
   assert.ok(ok100 >= 15 && ok1000 >= 15, `${ok100} ${ok1000}`);
 });
+
+test('osmosis equilibrium (tools v2 Explore): agrees with a long simulate, and lysis', () => {
+  const os = data('osmosis');
+  for (const sys of os.systems) {
+    for (const outC of [0, 0.1, 0.3, 0.45, 0.8, 1]) {
+      const c = { outC, outI: 1, inC: 0.4, inI: 1, T: sys.defaults.T };
+      const e = M.osmosis.equilibrium(sys, c);
+      const r = M.osmosis.simulate(sys, { ...c, t: sys.kind === 'bag' ? 2000000 : sys.time.max * 40 });
+      assert.equal(e.lysed, r.lysed, `${sys.id} ${outC}: lysed`);
+      assert.equal(e.startDir, r.startDir);
+      if (!e.lysed) assert.ok(Math.abs(e.W - r.W) < 0.01, `${sys.id} ${outC}: W ${e.W} vs ${r.W}`);
+      if (!e.lysed) assert.ok(Math.abs(e.end.psi - e.psiO) < 1e-6, `${sys.id} ${outC}: ψ equal at equilibrium`);
+    }
+  }
+  const plant = os.explore.cells.find(c => c.kind === 'plant');
+  assert.equal(M.osmosis.equilibrium(plant, { outC: 0.3, outI: 1, T: plant.T }).state, 'flaccid');
+  assert.equal(M.osmosis.equilibrium(plant, { outC: 0, outI: 1, T: plant.T }).state, 'turgid');
+  assert.equal(M.osmosis.equilibrium(plant, { outC: 0.35, outI: 1, T: plant.T }).state, 'plasmolyzed');
+});
