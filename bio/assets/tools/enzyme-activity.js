@@ -66,7 +66,7 @@
     for(var j = 0; j <= n; j++){
       var f = j / n, a = j * 0.62 + seed, rad = 0.18 + 0.62 * Math.sqrt(f);
       var cx = Math.cos(a) * rad, cy = Math.sin(a) * rad;
-      var lx = (f - 0.5) * 1.85 + 0.16 * Math.sin(j * 0.55 + seed), ly = 0.4 * Math.sin(j * 0.8 + ph + seed) + 0.22 * Math.sin(j * 0.31 + ph * 0.7);
+      var lx = (f - 0.5) * 1.7 + 0.18 * Math.sin(j * 0.55 + seed), ly = 0.5 * Math.sin(j * 0.8 + ph + seed) + 0.3 * Math.sin(j * 0.31 + ph * 0.7 + seed);
       pts.push([cx + (lx - cx) * u, cy + (ly - cy) * u]);
     }
     return pts;
@@ -386,10 +386,15 @@
           setA(e.g, 'opacity', e.fade.toFixed(2));
           var fo = 1 - ss(0.3, 0.85, u);
           setA(e.el.fold, 'opacity', fo.toFixed(2));
-          setA(e.el.fold, 'transform', u > 0 ? 'rotate(' + n1(e.ang * 57.3) + ') scale(' + (1 + 0.4 * u).toFixed(3) + ' ' + (1 - 0.28 * u).toFixed(3) + ') rotate(' + n1(-e.ang * 57.3) + ')' : '');
+          setA(e.el.fold, 'transform', u > 0 ? 'rotate(' + n1(e.ang * 57.3) + ') scale(' + (1 + 0.1 * u).toFixed(3) + ' ' + (1 - 0.3 * u).toFixed(3) + ') rotate(' + n1(-e.ang * 57.3) + ')' : '');
           setA(e.el.sh, 'opacity', fo.toFixed(2));
           var to = ss(0.12, 0.6, u); setA(e.el.tangle, 'opacity', to.toFixed(2));
-          if(u > 0){ var cp = smooth(chainPts(e.seed, ss(0, 1, u), still() ? 0 : e.ph * 0.5).map(function(p){ return local(e, p[0], p[1]); }), true); e.el.ce.setAttribute('d', cp); e.el.cc.setAttribute('d', cp); }
+          if(u > 0){
+            // the loose chain fills about the space the folded enzyme took, never more, so it stays in the solution
+            var us = ss(0, 1, u), cw0 = chainPts(e.seed, us, still() ? 0 : e.ph * 0.5).map(function(p){ return local(e, p[0], p[1]); }), mx = 0, my = 0, tg = R * (0.8 + 0.2 * us);
+            cw0.forEach(function(p){ mx = Math.max(mx, Math.abs(p[0])); my = Math.max(my, Math.abs(p[1])); });
+            var cp = smooth(cw0.map(function(p){ return [p[0] * tg / Math.max(mx, 1), p[1] * tg / Math.max(my, 1)]; }), true); e.el.ce.setAttribute('d', cp); e.el.cc.setAttribute('d', cp);
+          }
           setA(e.g, 'data-st', e.fold < 0.45 ? 'den' : e.inh && e.inh.mode === 'docked' ? 'inh' : e.pinch > 0.6 ? 'mis' : 'ok');
           setA(e.el.pos, 'opacity', String(now.show.ph ? (now.acid ? 1 : (1 - e.pinch).toFixed(2)) : 0));
           setA(e.el.neg, 'opacity', String(now.show.ph ? (now.acid ? (1 - e.pinch).toFixed(2) : 1) : 0));
@@ -545,7 +550,7 @@
         var ph = Wd < 520, ex = S.mode === 'explore', inh = ex && S.tab === 'inh';
         var ctl = ex ? (inh ? 154 : 104) : 0, y1 = H - ctl, top = ph ? 42 : 46, lh = ph ? 28 : 32;
         var cols = Wd < 520 ? 2 : Wd < 1100 ? 3 : 4, rows = 2, N = cols * rows, cw = (Wd - 20) / cols, ch = (y1 - top - 10) / rows;
-        var R = Math.max(22, Math.min(cw * 0.29, (ch - lh) / 2.26));
+        var R = Math.max(22, Math.min(cw * 0.315, (ch - lh) / 2.26));
         var half = Math.min(400, (Wd - (ph ? 84 : 150)) / 2), fsS = ph ? 11.5 : 13, qw = 17 * fsS * 0.56 + 18;
         return { W: Wd, H: H, ph: ph, ex: ex, inh: inh, y1: y1, top: top, lh: lh, cols: cols, N: N, cw: cw, ch: ch, cx0: 10, cy0: top, R: R, nMax: clamp(Math.round(0.4 * (Wd - 20) * (y1 - top) / (R * R)), 10, 40),
           tx0: Wd / 2 - half, tx1: Wd / 2 + half, ty: y1 + 50, qx0: Wd / 2 - half + qw + 22, qy: y1 + 126, fs: ph ? 13 : 15, fsS: fsS, gw: ph ? 112 : 170 };
