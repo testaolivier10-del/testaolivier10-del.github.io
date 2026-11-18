@@ -47,7 +47,11 @@ and, for NREMT, from the plan table in `assets/premium.js` (only the scenario si
 ## 1 and 2. Inventory, ranked by use
 
 ### Where the numbers come from, and how far to trust them
-- **There is no tool event.** Nothing records a tool being used (no open, first touch, mode or time event in
+- **Since 2026-11-17 there is one** (owner approved question 7): `tool-open`, `tool-touch`, `tool-mode` and `tool-use`
+  in Umami, from the shared studio, for all 145 tools. How to read them: docs/analytics-plan.md, "Tool use"
+  (`scripts/tool-use-report.mjs`). Order later waves by `tool-touch`, and compare each rebuilt tool's `old` and `v2`
+  lines. The numbers below are from before it.
+- **There was no tool event when this was written.** Nothing recorded a tool being used (no open, first touch, mode or time event in
   `assets/analytics.js`; `question_stats` holds exam and practice answers by course, not tool activity). Umami has
   page views per URL but no API key is reachable from a session, so it was not read.
 - **Used here: `page_views` in Supabase** (one row per path per day, written by `track_pageview` on every page load),
@@ -575,7 +579,7 @@ Listed for the owner to decide; nothing here is decided.
 6. **Order.** This plan goes by opens, which favors the older courses (AP Bio, A&P, Ochem, NREMT). Alternatives:
    the rest of APES next (cheapest: same code layer as the flagship, wave 10 here), or the AP courses with Premium on
    sale first, or free tools first (56 of 145: what a visitor sees before paying). Which?
-7. **Measure real use.** May a `tool-use` event be added (tool, first touch, mode, seconds band; no identity) so
+7. **Measure real use.** ANSWERED 2026-11-17: yes, built (docs/analytics-plan.md, "Tool use"). Was: May a `tool-use` event be added (tool, first touch, mode, seconds band; no identity) so
    later waves are ordered by use and each rebuilt tool can be compared before and after? Today only page opens exist.
 8. **Body map.** It was "framed only" in round F2 as the owner's favorite. Does v2 change it (wave 2), or is it left
    alone apart from the frame?

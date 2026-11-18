@@ -444,6 +444,10 @@ jobs:
           cat console.log
           grep -E "FAIL|SERIOUS|CRITICAL|uncaught|navigation:|duplicate id|failed request|Error" console.log | head -40 | sed 's/^/::error::/'
           exit 1
+      # The anonymous "was the tool used" events (docs/analytics-plan.md): once each per visit on an old-frame
+      # tool, the v2 flagship and an NREMT tool, and nothing at all from an automated browser such as this job's.
+      - name: tool use events fire once, and never under automation
+        run: node scripts/check-tool-use.mjs --check
       # Words a student can actually read: no table columns running together,
       # no figure labels overlapping, cut off or crossed by a line. A full
       # sweep takes most of an hour, so CI checks the pages and figures this

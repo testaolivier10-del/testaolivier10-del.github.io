@@ -269,7 +269,8 @@
 
   function courseOf(path){
     for(var i = 0; i < COURSE_LIST.length; i++){
-      if(path.indexOf('/' + COURSE_LIST[i].dir) > -1) return COURSE_LIST[i].key;
+      // A whole folder name: '/calculus' alone also matched '/calculus-bc' (found by the tool-use check, 2026-11-17).
+      if((path + '/').indexOf('/' + COURSE_LIST[i].dir + '/') > -1) return COURSE_LIST[i].key;
     }
     return 'site';
   }

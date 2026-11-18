@@ -57,6 +57,54 @@ Umami already got `premium-*` funnel events from `assets/premium.js`.
   any event by `src`; `purchase` by `src` and `ref`.
 - Umami counts before 2026-10-20 include the bots; do not compare them with later weeks.
 
+## Tool use (2026-11-17)
+
+Owner approved 2026-11-17: "which tool, whether someone actually touched it, which mode, a rough time band; no
+identity". Before this only page opens existed (`page_views`), so the tools v2 rollout could not rank by use or
+compare a tool before and after its rebuild (docs/tools-v2-rollout.md, question 7).
+
+One hook covers all 145 tools, old frame and v2: `watchUse` in `assets/course/tool-studio.js`, started by
+`LevlStudio.mount` on any `<course>/tools/<page>` and by `nremt/assets/nremt-studio.js` for the 8 NREMT tools
+(`opts.use`, and `LevlStudio.use` for the slim reference cards). No tool file was edited; a new tool is counted
+with no extra step. Formula sheets and other slim pages are not tools and are not counted.
+
+| Event | When | Data |
+|---|---|---|
+| `tool-open` | 1.5 s after the tool is on screen (once per page view) | `tool`, `course`, `frame`, `locked` |
+| `tool-touch` | the first finished press or real key inside the stage, dock or side panel (once) | `tool`, `course`, `frame`, `mode` |
+| `tool-mode` | a mode switch the student made (at most 6 per page view) | `tool`, `course`, `frame`, `mode`, `row` |
+| `tool-use` | the first time the page is hidden, as a beacon (once) | `tool`, `course`, `frame`, `touched`, `time`, `mode`, `locked`, `row` |
+
+- `tool` is `<course key>/<page name>` (`apenv/water-pollution`, `nremt/flowcharts`). `frame` is `v2` when the page
+  loads `tool-kit2.js`, else `old`: a rebuilt tool keeps its name and changes frame, which is the before and after.
+- `time` is one of `<10s`, `10-60s`, `1-5m`, `5m+`, from the mount to the first time the page is hidden. A phone
+  student who leaves the tab and comes back is counted to the first leave only, so the bands run a little short.
+- `mode` is the tool's own mode name (`explore`, `quiz`, `test`, `predict`, `read`...; names are not yet the same
+  in every course) or `none`. `locked` is `yes` when a visitor without the pass saw the lock card (never a touch).
+- `row` repeats the facts in one value (`apenv/water-pollution v2 yes 1-5m`; for `tool-mode`, `tool mode`), because
+  Umami lists one property at a time.
+- Not a touch: the bar, the mode switch, "?", the sheets, Enlarge and zoom, links out, Tab and bare modifier keys,
+  browser shortcuts, and a finger that only scrolls (it ends in `pointercancel`).
+- Identity: the events carry no user id, account id or free text, and nothing is stored by us (no table, no Worker
+  change). They go the way every Umami event goes, so the opt-out, Do Not Track, the owner's browsers, automation
+  (`navigator.webdriver`, headless) and the Worker's bot filter all apply. One limit to know: Umami puts every event
+  in a visit (its daily visitor hash), and a signed-in visit carries the `acct` tag from the table above. The tool
+  events add nothing to that, but they sit in the same visit. If the owner wants them fully apart from any visit,
+  the other design is a per-day tally in Supabase like `question_stats` (a migration and no bot filter by network).
+- Also fixed: `courseOf` in `assets/analytics.js` matched `/calculus` inside `/calculus-bc`, so every AP® Calculus BC
+  event (`read`, `share`, `heard-from`...) was labeled `apcalc` until 2026-11-17.
+
+How to read it:
+- Umami dashboard, Events: `tool-touch` by `tool` is the ranking by real use; `tool-open` by `tool` is opens;
+  `tool-use` by `row` is the whole table (tool, frame, touched, time band); `tool-mode` by `row` is which modes.
+- `UMAMI_API_KEY=... node scripts/tool-use-report.mjs --days 30` prints one line per tool, most touched first, with
+  touch rate and time bands, old and v2 apart (`--from`, `--to`, `--course apenv`, `--json`). The key is the
+  owner's (Umami Cloud, Settings, API keys); sessions have none, and the script was not run against the live
+  account. Counts start 2026-11-17: compare a rebuilt tool with its own weeks after that date, not with `page_views`.
+- Checks: `scripts/test/tool-use.test.mjs` (bands, touch rules, once each, the report) and
+  `scripts/check-tool-use.mjs` in the browser job (an old-frame tool, the v2 flagship, an NREMT tool; nothing sent
+  under automation, so CI runs never count).
+
 ## AI FRQ grader counts
 
 `frq_grade_counts` (migration 2026-10l, not applied yet): anonymous daily counts per course of which grader
@@ -76,3 +124,4 @@ answered an FRQ (claude, backup, none, cached) with Claude's token sums. The wee
 - 2026-10-20: built, tests added (`analytics-depth`, `worker-umami`, one in `worker-premium`); full local CI green.
 - 2026-10-25: the Singapore crawler came back from a network not on the ASN list (330 of 519 Umami visitors in a week); dropped by fingerprint (country plus screen) in the Worker. Answer timing fixed: one Check grading several parts gave the first part all the time and the rest 0 seconds; the time is now shared across answers that arrive within 1.5 s (`answer()` in `assets/analytics.js`). AP® Bio skill tools: a Try this one again button after Check (its answers are not tallied twice; `apbio-skill-check` carries `retry`), and tapping a locked answer says why (most of the week's rage clicks).
 - 2026-10-20: migration 2026-10j applied to the live database (table empty until the site change is merged), plus `revoke all on question_stats from anon, authenticated`.
+- 2026-11-17: tool use events (`tool-open`, `tool-touch`, `tool-mode`, `tool-use`) from the shared studio; all 145 tool pages checked in a browser to send `tool-open` once; `courseOf` no longer labels AP® Calculus BC as AB.
