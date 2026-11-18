@@ -112,7 +112,7 @@ const probe = (mode) => {
   if (document.documentElement.scrollWidth > innerWidth) out.push('sideways scroll');
   return { out, share, causeH: causeVis ? Math.round(R(causeEl).h) : null };
 };
-let checks = 0, states = 0; const fails = [], minShare = {};
+let checks = 0, states = 0; const fails = [], minShare = {}, settle = {};
 const setIn = (page, sel, v) => page.locator(sel).evaluate((el, val) => { el.value = val; el.dispatchEvent(new Event('input', { bubbles: true })); el.dispatchEvent(new Event('change', { bubbles: true })); }, v);
 for (const w of WIDTHS) {
   const h = w <= 430 ? 844 : w <= 820 ? 1024 : w >= 1920 ? 1080 : 900, W4 = String(w).padStart(4, '0');
@@ -139,6 +139,10 @@ for (const w of WIDTHS) {
   };
   for (const p of [2, 0, 4.9, 7, 9.8]) for (const c of [0.2, 0, 0.4, 0.7, 1]) {
     await setIn(page, '.wp2-kp input', p); await setIn(page, '.wp2-ks input', c); await page.waitForTimeout(650);
+    // the numbers count with the picture: wait for them to land (a slow headless frame rate at wide widths), at most 3 s
+    const t0 = Date.now();
+    await page.waitForFunction(pv => { const e = document.querySelector('[data-card="cell"] [data-v="p"]'); return !e || Math.abs(parseFloat(e.textContent.replace('\u2212', '-')) - pv) < 0.001; }, p, { timeout: 3000 }).catch(() => {});
+    settle[w] = Math.max(settle[w] || 0, Date.now() - t0 + 650);
     await check('explore', `pressure ${p}, solute ${c}`);
     if ((p === 2 && c === 0.2) || (p === 4.9 && c === 0.2) || (p === 9.8 && c === 1) || (p === 0 && c === 0.7) || (p === 9.8 && c === 0)) await shot(page, `${W4}-1-p${p}-c${c}.png`);
   }
@@ -168,7 +172,7 @@ for (const w of WIDTHS) {
 }
 await browser.close();
 const uniq = [...new Set(fails)];
-console.log(`states ${states}, checks ${checks}, failures ${uniq.length}`); console.log('cell share of the stage (min):', JSON.stringify(minShare));
+console.log(`states ${states}, checks ${checks}, failures ${uniq.length}`); console.log('cell share of the stage (min):', JSON.stringify(minShare)); console.log('slowest settle ms:', JSON.stringify(settle));
 const kinds = {}; uniq.forEach(f => { const k = f.replace(/^\d+ [^:]*: /, '').replace(/".*?"/g, '""').replace(/[-\d.,]+/g, '#'); kinds[k] = (kinds[k] || 0) + 1; });
 console.log(Object.entries(kinds).sort((a, c) => c[1] - a[1]).slice(0, 25).map(([k, n]) => n + ' x ' + k).join('\n'));
 console.log(uniq.slice(0, 40).join('\n'));
