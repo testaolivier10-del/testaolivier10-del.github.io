@@ -230,6 +230,16 @@ problem on every scored thing.
 
 **One tool = one entry in `pages.json` `tools[]` + one script + one data file + one validator.**
 
+**Tools v2 (`docs/tools-v2-standard.md`).** A rebuilt tool has `"kit2": true` beside `"studio": true` in
+`pages.json`: the page then also loads the shared kit (`assets/course/tool-kit2.css`, `.js`) and, if it exists,
+the tool's own stylesheet `bio/assets/tools/<slug>.css`. The tool builds its stage with the kit and calls
+`T.mount(slug, fn, { studio: { kit2: o } })` (o, or a function of the mount's ctx that returns it):
+`{ stage, ref, parts: [{ value, label, dock, task }], questionsLabel, onShow(mode, part) }`.
+`ApBioTools.studioKit2` (the course adapter) sets the two modes (Explore: the stage alone, full width; Test
+yourself: one dropdown for its parts, the question in the side panel), puts `ref` behind "?" and reuses the
+stimulus questions and mini FRQ as the last part. First tool: Osmosis (`docs/tools-v2-osmosis-brief.md`); its
+Explore reads `explore` in its data file and `ApBioMath.osmosis.equilibrium`.
+
 | Piece | Path |
 |---|---|
 | entry | `bio/data/pages.json` `tools[]`: `{ slug, kind: simulator, skill or drill, name, title, desc, blurb, premium? }` |

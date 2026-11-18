@@ -34,6 +34,9 @@ possible.
   `environmental-science/assets/tools/water-pollution.js` and `.css`.
 - Kit: `assets/course/tool-kit2.js`, `assets/course/tool-kit2.css`. A page opts in (for AP® Environmental Science,
   `"kit2": true` in `environmental-science/data/pages.json`); no other tool loads it until it is rebuilt.
+  AP® Biology opts in the same way (`"kit2": true` in `bio/data/pages.json`); its adapter is `ApBioTools.studioKit2`
+  in `bio/assets/tools/bio-tools.js` (a tool hands over its stage, its "?" reference and its Test yourself parts).
+  The purpose line and the cause line are in the kit (`K.head`, `K.cause`).
 - One file preview of a tool page to open from disk: `node scripts/tool-preview.mjs <page.html> <out.html>`.
 - Write one brief per rebuilt tool under `docs/` (name it `tools-v2-<tool>-brief.md`) and list it here.
 
@@ -42,3 +45,4 @@ possible.
 | Tool | State | Brief |
 | --- | --- | --- |
 | AP® Environmental Science, Water pollution | Shipped 2026-11-17 | `docs/tools-v2-water-pollution-brief.md` |
+| AP® Biology, Osmosis | Built 2026-11-17, waiting for the owner's look (not merged) | `docs/tools-v2-osmosis-brief.md` |

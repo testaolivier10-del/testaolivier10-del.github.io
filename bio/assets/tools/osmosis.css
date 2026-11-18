@@ -1,0 +1,73 @@
+/* Osmosis, tools v2 (bio/assets/tools/osmosis.js; docs/tools-v2-osmosis-brief.md). Loaded only by the osmosis page
+   (bio/data/pages.json "kit2": true). One colour per idea, everywhere: water blue, solute amber, the wall and its
+   push green, red for a burst cell only (Okabe-Ito, lighter in dark mode). */
+.os2{--os-water:#0072B2;--os-water-ink:#005A8C;--os-sol:#E69F00;--os-sol-ink:#8A5A00;--os-wall:#009E73;--os-wall-ink:#00704F;--os-bad:#A83B2C;
+  --os-liq:#EAF4FB;--os-cyto:#F6F3DF;--os-vac:#CFE6F5;--os-rbc:#D9604F;--os-rbc-edge:#A83B2C;--os-glass:#8FA3B8;
+  display:flex;flex-direction:column;gap:10px;min-height:0;flex:1 1 auto;}
+:root[data-theme="dark"] .os2{--os-water:#56B4E9;--os-water-ink:#8CCBF2;--os-sol:#F3C04F;--os-sol-ink:#F6CF75;--os-wall:#3CC79E;--os-wall-ink:#7BDDBF;--os-bad:#E0705F;
+  --os-liq:#16293D;--os-cyto:#3A3B2C;--os-vac:#234A66;--os-rbc:#C8574A;--os-rbc-edge:#F09A8D;--os-glass:#6F8499;}
+.os2[hidden]{display:none;}
+.os2 .tk2-tabs{margin:0;align-self:flex-start;max-width:100%;}
+.os2 [hidden]{display:none !important;}
+.os2-scene{position:relative;flex:1 1 auto;min-height:330px;border-radius:18px;overflow:hidden;background:var(--surface2);}
+.os2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+@media (max-width:1023px){ .os2-scene{flex:none;height:min(64vw,470px);min-height:340px;} }
+@media (max-width:640px){ .os2-scene{height:max(360px,min(98vw,400px));border-radius:14px;} .os2{gap:8px;} }
+.os2-lines{display:flex;align-items:center;justify-content:space-between;gap:6px 18px;flex-wrap:wrap;flex:none;}
+.os2-lines .tk2-play{flex:none;margin-left:auto;}
+.os2-clock{margin:0;font:800 14px var(--font-mono);color:var(--muted);min-height:1.4em;}
+.os2 .tk2-cz.is-sol{--cz:var(--os-sol);--cz-ink:var(--os-sol-ink);}
+.os2 .tk2-cz.is-water{--cz:var(--os-water);--cz-ink:var(--os-water-ink);}
+.os2 .tk2-cz.is-wall{--cz:var(--os-wall);--cz-ink:var(--os-wall-ink);}
+.os2 .tk2-cz.is-bad{--cz:var(--os-bad);}
+.os2 .tk2-tag{background:var(--os-sol-ink);}
+:root[data-theme="dark"] .os2 .tk2-tag{color:#1B1405;}
+/* the picture */
+.os2-glass{fill:none;stroke:var(--os-glass);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;}
+.os2-sol{fill:var(--os-liq);}
+.os2-menis{fill:none;stroke:var(--os-water);stroke-opacity:.45;stroke-width:2;}
+.os2-dots circle{fill:var(--os-sol);stroke:var(--os-sol-ink);stroke-width:.7;}
+.os2-wall{fill:color-mix(in srgb, var(--os-wall) 55%, var(--os-liq));}
+.os2-wall.is-taut{fill:color-mix(in srgb, var(--os-wall) 82%, var(--os-liq));}
+.os2-walledge{fill:none;stroke:var(--os-wall-ink);stroke-width:1.4;}
+.os2-cyto{fill:var(--os-cyto);stroke:var(--ink);stroke-width:1.7;}
+.os2-vac{fill:var(--os-vac);stroke:var(--os-water);stroke-opacity:.5;stroke-width:1;}
+.os2-nuc{fill:color-mix(in srgb, var(--ink) 30%, var(--os-cyto));stroke:var(--ink);stroke-opacity:.5;stroke-width:1;}
+.os2-rbc{fill:var(--os-rbc);stroke:var(--os-rbc-edge);stroke-width:1.8;}
+.os2-pallor{fill:#fff;fill-opacity:.32;}
+.os2-hb{fill:var(--os-rbc);fill-opacity:.28;}
+.os2-ghostcell{fill:none;stroke:var(--os-rbc-edge);stroke-width:2.2;stroke-dasharray:7 5;stroke-linecap:round;}
+.os2-bag{fill:color-mix(in srgb, var(--os-vac) 55%, transparent);stroke:var(--ink);stroke-opacity:.7;stroke-width:1.6;}
+.os2-bag.is-taut{stroke-opacity:1;stroke-width:2;}
+.os2-crease{fill:none;stroke:var(--ink);stroke-opacity:.35;stroke-width:1;}
+.os2-bagend{fill:color-mix(in srgb, var(--ink) 18%, var(--os-liq));stroke:var(--ink);stroke-opacity:.6;stroke-width:1;}
+.os2-knot{fill:var(--ink);fill-opacity:.7;}
+.os2-string{stroke:var(--ink);stroke-opacity:.55;stroke-width:1.2;fill:none;}
+.os2-before{fill:none;stroke:var(--ink);stroke-opacity:.55;stroke-width:1.3;stroke-dasharray:5 4;vector-effect:non-scaling-stroke;}
+.os2-flow,.os2-push{fill:none;stroke-linecap:round;}
+.os2-flow{stroke:var(--os-water);} .os2-flow-h{fill:var(--os-water);}
+.os2-push{stroke:var(--os-wall-ink);} .os2-push-h{fill:var(--os-wall-ink);}
+.os2-eq{stroke:var(--os-water);stroke-opacity:.55;stroke-width:2.5;stroke-dasharray:3 6;stroke-linecap:round;fill:none;}
+.os2-w{fill:#fff;stroke:var(--os-water);stroke-width:1.4;}
+.os2-lead{stroke:var(--ink);stroke-opacity:.55;stroke-width:1.1;fill:none;}
+.os2-pill rect{fill:var(--white);fill-opacity:.94;stroke-width:1.6;stroke:color-mix(in srgb, var(--ink) 30%, transparent);}
+.os2-pill text{font-weight:900;fill:var(--ink);}
+.os2-pill.is-sol rect{stroke:var(--os-sol);} .os2-pill.is-sol text{fill:var(--os-sol-ink);}
+.os2-pill.is-water rect{stroke:var(--os-water);} .os2-pill.is-water text{fill:var(--os-water-ink);}
+.os2-pill.is-wall rect{stroke:var(--os-wall);} .os2-pill.is-wall text{fill:var(--os-wall-ink);}
+.os2-pill.is-bad rect{fill:var(--os-bad);fill-opacity:1;stroke:var(--os-bad);} .os2-pill.is-bad text{fill:#fff;}
+:root[data-theme="dark"] .os2-pill.is-bad text{fill:#1B0F0C;}
+.os2-pill.is-big rect{stroke-width:2.2;}
+.os2-end,.os2-name,.os2-markt{fill:var(--muted);font-weight:800;}
+.os2-name{fill:var(--ink);}
+.os2-mark{stroke:var(--muted);stroke-width:2.5;stroke-linecap:round;}
+/* "?" */
+.os2-ref .bt-readout{margin:6px 0 10px;}
+.os2-howref{margin:0 0 6px;font:600 14.5px/1.4 var(--font-ui);color:var(--muted);}
+.os2-words{margin:0 0 10px;padding-left:20px;display:flex;flex-direction:column;gap:4px;font-size:15px;line-height:1.45;}
+.os2-calc{font-weight:800;white-space:nowrap;}
+/* Test yourself on the picture: only the scene and the clock */
+.os2-predict{display:grid;gap:12px;}
+.os2-predict[hidden]{display:none;}
+.os2-hint{margin:0;}
+.os2-go .btn-press{min-height:44px;}
