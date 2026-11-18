@@ -456,3 +456,6 @@
   .tk2-purpose{font-size:15.5px;flex-basis:200px;} .tk2-head .tk2-how{min-height:32px;}
   .tk2-cause{font-size:14px;gap:4px;} .tk2-cz{padding:3px 8px;border-width:1.5px;} .tk2-cz-a{font-size:14px;}
 }
+/* A phone's cause line keeps the height of two rows of pills, so the page under a dragging finger never changes
+   height when the chain goes from one row to two (review of the Conformation Lab, 2026-11-17). */
+@media (max-width:640px){ .tk2-cause{min-height:70px;align-content:flex-start;} }

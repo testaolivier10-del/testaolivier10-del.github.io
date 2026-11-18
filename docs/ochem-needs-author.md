@@ -1124,3 +1124,60 @@ with HI is in the roadmap but a route through an ether is never offered. Confirm
 ### synth-mixtures: Hg²⁺ hydration of pent-2-yne
 Shown as "pentan-2-one and pentan-3-one (a mixture)" and drawn as pentan-2-one only. Fine as a dead-end display;
 change the drawing if the owner prefers no structure for a mixture.
+
+## Conformation Lab, tools v2 (2026-11-17)
+
+The rebuild (`docs/tools-v2-conformations-brief.md`) kept every number the old tool had. Points for a person, from
+its accuracy pass:
+
+### conf-v2-butane-eclipsed: 3.6 or 3.8 kcal/mol for butane's CH₃ over H eclipsed shape
+The preset's curve says 3.6 kcal/mol at 120° and 240° (Wade, Carey: about 15 kJ/mol). OpenStax and McMurry print
+16 kJ/mol (3.8), which is also what the tool's own builder formula gives (1.4 + 1.4 + 1.0), so butane built by hand
+in "Build your own molecule" reads 3.8 where the preset reads 3.6. A comment in `conformations.js` still says the
+formula "reproduces butane exactly". No question's right answer changes (the barrier question uses 4.6).
+- **Status:** open, owner decision: keep 3.6, or move the preset to 3.8 to match OpenStax and the builder.
+
+### conf-v2-eclipsed-wording: CH₃ eclipsing H is called torsional strain only
+The cause line says "Bonds eclipsed: torsional strain" at butane's 120° and at propane's peaks. McMurry calls a
+CH₃/H eclipsing interaction "mostly torsional strain"; some texts add a small steric part. Steric strain is named
+only where two non-hydrogen groups are within 60° of each other.
+- **Status:** open, low risk.
+
+### conf-v2-glycol: "hydrogen bond" on ethylene glycol's gauche shape
+The picture draws a dotted line between the two OH groups at 60° and the cause line says "OH groups close: hydrogen
+bond". The note behind "?" already says the same orbital effect as in 1,2-difluoroethane also favors gauche. Some
+computational work argues the intramolecular contact is too bent to count as a true hydrogen bond and that the
+gauche effect is the main cause. If the owner prefers, both molecules can say "gauche effect".
+- **Status:** open.
+
+### conf-v2-flip-path: the ring flip is drawn without the twist
+The flip goes chair, half chair, boat, half chair, chair (one end swings down, then the other swings up), never
+through a flat ring. The real low point between the half chairs is the twist boat (about 5.5 kcal/mol above the
+chair); the plain boat (about 7) is the top of a small hump between two twist boats. The picture shows the plain
+boat and the sheet behind "?" says the twist is left out. The half chair is drawn with five ring carbons in a plane.
+New numbers on the page: half chair "about 10 to 11", boat "about 7", twist boat "about 5.5" kcal/mol (OpenStax
+Organic Chemistry 4.5).
+- **Status:** open; add the twist if the owner wants the path exact.
+
+### conf-v2-halogens: "they repel" for two halogens or two OH groups
+For Cl, Br, F, OH and OMe pairs the picture and the cause line say the groups "repel" (crowding plus dipoles)
+instead of "steric strain", which is kept for carbon groups. For 1,2-difluoroethane and ethylene glycol no
+repulsion is drawn at gauche at all, since gauche is their lowest shape; it is drawn only when the two groups
+eclipse.
+- **Status:** open, low risk.
+
+### conf-v2-vicinal: every pair of groups on neighboring ring carbons pays a flat 0.9 kcal/mol gauche cost
+`chairEnergy()` adds 0.9 kcal/mol for two groups on neighboring ring carbons unless both are axial. 0.9 is the
+measured CH₃/CH₃ value (OpenStax Organic Chemistry 4.8); since review recheck 2 it is also used, as a flat estimate
+and labelled so in the term table, for every other pair (ethyl, isopropyl, tert-butyl, phenyl, OH, halogens), so
+that Explore and the drill never say a trans-1,2 diequatorial chair "costs 0.00". Real values differ by pair (and
+for two polar groups a dipole term can outweigh it: see "tools-review-dihalide"). The chair that wins is the same as
+without the term for every ring the drill draws (unit tested over all of them). In the ring builder two small
+groups can now tip toward diaxial: trans-1,2 F/F reads diaxial 0.5 against diequatorial 0.9.
+- **Status:** open, owner decision: per-pair values, keep the flat estimate, or cost CH₃/CH₃ only.
+
+### conf-v2-fluorine: F's A-value is 0.25
+The tool had 0.15; the lessons print 0.25 (`ochem/notes/axial-equatorial.html`). The tool now uses 0.25. Published
+values run from about 0.15 to 0.4.
+- **Status:** decided for the owner in review round 1; reverse by changing `SUBS.F.a` and the unit test.
+

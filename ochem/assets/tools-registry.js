@@ -105,7 +105,8 @@
       teaches: 'Torsional strain, A-values, chair flips',
       topic: ['conformational-analysis', 'newman', 'ring-flips'],
       terms: ['newman-projection', 'torsional-strain', 'gauche', 'a-value'],
-      studio: true
+      studio: true,
+      kit2: true     // tools v2 (docs/tools-v2-standard.md): the page also loads the shared kit and the tool's own CSS
     },
     {
       slug: 'reaction-predictor',
