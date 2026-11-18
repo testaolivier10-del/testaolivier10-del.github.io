@@ -98,11 +98,12 @@
       }, true); });
       var st = opts.stage ? stageSlot(opts.stage, { slug: slug, data: data }) : null;
       if(st){ app.appendChild(st.host); scopes.forEach(function(sc){ ['input', 'change'].forEach(function(t){ sc.addEventListener(t, function(){ st.redraw(); }); }); }); }
-      fn(app, data, { stage: st ? st.host : null, redraw: st ? st.redraw : function(){}, studio: studio });
+      var ctx = { stage: st ? st.host : null, redraw: st ? st.redraw : function(){}, studio: studio };
+      fn(app, data, ctx);
       if(st) st.redraw();
       if(studio){
         var so = opts.studio || {};
-        if(so.arrange) so.arrange(app, studio, slug, so); else if(so.sim) studioSim(app, studio, slug, so); else studioArrange(app, studio, slug, so);
+        if(so.kit2 && window.LevlKit2) studioKit2(app, studio, slug, typeof so.kit2 === 'function' ? so.kit2(ctx) : so.kit2); else if(so.arrange) so.arrange(app, studio, slug, so); else if(so.sim) studioSim(app, studio, slug, so); else studioArrange(app, studio, slug, so);
         // F6: a Reset / Start over that resets the stage goes to the stage's foot, as in the other courses.
         if(so.foot && studio.toFoot) studio.toFoot(studio.root.querySelectorAll(so.foot.join(', ')));
         return;
@@ -861,7 +862,7 @@
       detailsTitle: ({ 'chi-square': 'Problem & critical values', 'confidence-intervals': 'Problem, formulas & settings',
         'descriptive-stats': 'Problem & formulas', 'hardy-weinberg': 'Problem & equations', 'rates': 'Problem & formulas',
         'simpson-diversity': 'Problem & formula', 'water-potential': 'Problem & formulas', 'graph-builder': 'What full credit needs',
-        'tree-reading': 'Trees & characters', 'design-drills': 'All drills' })[slug] || 'Data & settings',
+        'tree-reading': 'Trees & characters', 'design-drills': 'All drills', 'osmosis': 'Numbers & how it works' })[slug] || 'Data & settings',
       menu: {
         copyLink: function(){
           var code = s.mode() === 'practice' ? s.root.querySelector('.ls-prac-code .bt-code b') : null;
@@ -1330,11 +1331,81 @@
     }
     if(window.MutationObserver) new MutationObserver(function(){ requestAnimationFrame(sync); }).observe(dock, { subtree: true, attributes: true, attributeFilter: ['class'] });
     sync();
+    // kit2: the questions share Test yourself with other parts, so the task head is set again when they come back.
+    if(st) st.resync = function(){ last = null; sync(); };
     return st;
   }
 
+  /* studioKit2(app, s, slug, o): the tools v2 arrangement (docs/tools-v2-standard.md), this course layer's adapter
+     for the shared kit (assets/course/tool-kit2.js, loaded by a page with "kit2": true in bio/data/pages.json).
+     T.mount(slug, fn, { studio: { kit2: o } }); the tool builds its own stage with the kit and hands it over:
+       o.stage    element   the picture with its controls on it and the lines around it. EXPLORE shows it alone,
+                            full width (no side panel, nothing graded).
+       o.ref      element   the reference behind "?" (how the model works, numbers, links).
+       o.parts    [{ value, label, dock: element, task: { kicker, title, todo } | fn }]   TEST YOURSELF parts that
+                            ask on the same picture: the question goes in the side panel (dock).
+       o.questionsLabel     the name of the part that holds the page's stimulus questions and mini FRQ (they keep
+                            their own stage: the stimulus), when the tool built them (T.questions, T.frq).
+       o.onShow(mode, part) after every switch: mode 'explore' | 'quiz', part the Test yourself part or null.
+     Two modes only: Explore and Test yourself. With more than one part, ONE dropdown on the stage ("What to
+     practice") picks it. #predict..., #questions and #frq open Test yourself on that part, as the old links did.
+     Returns { mode(), part(), go(mode, part) }; also at s.kit2. */
+  function studioKit2(app, s, slug, o){
+    var K = window.LevlKit2;
+    K.on(s);
+    var kids = Array.prototype.slice.call(app.children);
+    var qcard = kids.filter(function(k){ return k.classList.contains('bt-card') && k.querySelector('.bt-qs'); })[0] || null;
+    var frq = kids.filter(function(k){ return k.classList.contains('bt-frq'); })[0] || null;
+    ['.bt-draft', '.bt-intro'].forEach(function(sel){ kids.forEach(function(k){ if(k.matches(sel)) s.add('about', k); }); });
+    kids.forEach(function(k){ if(k.matches('details.bt-how')){ k.open = true; s.add('about', k); } });
+    studioKeep(s);
+    var parts = (o.parts || []).slice(), hasQ = !!(qcard || frq);
+    if(hasQ) parts.push({ value: 'questions', label: o.questionsLabel || 'Questions', questions: true });
+    var quizOn = parts.length > 0, cur = { mode: 'explore', part: parts[0] ? parts[0].value : null };
+    function partOf(v){ return parts.filter(function(p){ return p.value === v; })[0] || parts[0] || null; }
+    s.add('stage', o.stage, quizOn ? { mode: 'explore quiz' } : null);
+    if(o.ref) s.add('details', o.ref);
+    parts.forEach(function(p){ if(p.dock) s.add('dock', p.dock, { mode: 'quiz' }); });
+    var qst = null, qStage = null, qDock = null;
+    if(hasQ){
+      qst = studioQuestions(s, qcard, frq, { mode: 'quiz' }, o);
+      qStage = s.root.querySelector('.ls-q-stage'); qDock = s.root.querySelector('.ls-qs');
+    }
+    var pick = parts.length > 1 ? s.picker({ label: 'What to practice', items: parts.map(function(p){ return { value: p.value, label: p.label }; }), value: cur.part,
+      onChange: function(v){ show('quiz', v, true); } }, 'quiz') : null;
+    function show(mode, part, user){
+      var p = partOf(part), quiz = mode === 'quiz' && !!p, pic = !quiz || !p.questions;
+      cur = { mode: quiz ? 'quiz' : 'explore', part: p ? p.value : null };
+      if(s.mode() !== cur.mode) s.mode(cur.mode);
+      o.stage.hidden = !pic;
+      s.root.classList.toggle('tk2-qs', quiz && pic);
+      parts.forEach(function(x){ if(x.dock) x.dock.hidden = !(quiz && x === p); });
+      if(qStage) qStage.hidden = !(quiz && p.questions);
+      if(qDock) qDock.hidden = !(quiz && p.questions);
+      if(pick && quiz && pick.value() !== p.value) pick.value(p.value);
+      if(quiz){
+        if(p.questions){ if(qst && qst.resync) qst.resync(); }
+        else { s.task(typeof p.task === 'function' ? p.task() : p.task || null, 'quiz'); s.caption('', 'quiz'); }
+      }
+      if(o.onShow) o.onShow(cur.mode, quiz ? cur.part : null);
+      if(user) event('apbio-tool-mode', { tool: slug, mode: quiz ? cur.part : 'explore' });
+    }
+    if(quizOn) s.modes({ items: [{ value: 'explore', label: 'Explore' }, { value: 'quiz', label: 'Test yourself' }], value: 'explore',
+      onChange: function(v){ show(v, cur.part, true); } });
+    // Whatever the tool left in #app goes behind "?".
+    Array.prototype.slice.call(app.children).forEach(function(k){ if(!k.classList.contains('bt-loading')) s.add('details', k); });
+    app.hidden = true;
+    var h = location.hash, start = { mode: 'explore', part: cur.part };
+    if(hasQ && /^#(questions|frq)\b/.test(h)) start = { mode: 'quiz', part: 'questions' };
+    else parts.forEach(function(p){ if(!p.questions && new RegExp('^#' + p.value + '\\b').test(h)) start = { mode: 'quiz', part: p.value }; });
+    s.mode(start.mode);
+    show(start.mode, start.part, false);
+    s.kit2 = { mode: function(){ return cur.mode; }, part: function(){ return cur.part; }, go: function(m, p){ show(m, p == null ? cur.part : p, false); } };
+    return s.kit2;
+  }
+
   window.ApBioTools = {
-    stdPicker: stdPicker,
+    stdPicker: stdPicker, studioKit2: studioKit2,
     studioVirtual: studioVirtual, studioKeep: studioKeep, firstSentence: firstSentence,
     esc: esc, F: F, nid: nid, mount: mount, slider: slider, choiceSelect: choiceSelect, announcer: announcer,
     plot: plot, barPath: barPath, niceMax: niceMax, niceStep: niceStep, dataTable: dataTable, wrapTables: wrapTables, box: box,

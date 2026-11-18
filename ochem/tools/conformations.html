@@ -127,51 +127,10 @@
 <!-- tool-studio:start -->
 <link rel="stylesheet" href="../../assets/course/tool-studio.css">
 <script src="../../assets/course/tool-studio.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/tool-kit2.css">
+<script src="../../assets/course/tool-kit2.js" defer></script>
+<link rel="stylesheet" href="../assets/tools/conformations.css">
 <!-- tool-studio:end -->
-<style>
-/* Pass 3: the molecules are one select beside "Build your own". */
-.cf-ls .cf-chips-off{display:none !important;}
-.cf-ls .cf-ls-mol .ls-lbl{margin:0 0 6px;}
-.cf-ls .cf-ls-molrow{display:flex;gap:8px;align-items:center;}
-.cf-ls .cf-ls-molrow .tselect{flex:1;min-width:0;min-height:48px;border-radius:14px;font:700 var(--ls-m) var(--font-ui);}
-.cf-ls .cf-ls-molrow .tchip{flex:none;min-height:44px;}
-.cf-stage{
-    background:var(--paper);border:var(--bw) solid var(--line-soft);border-radius:var(--radius);
-    padding:8px;margin-bottom:14px;user-select:none;
-  }
-  .cf-stage svg{width:100%;height:auto;display:block;max-width:340px;margin:0 auto;}
-  .nm-lab{font:800 13px var(--font-ui);fill:var(--ink);}
-  .nm-lab--back{fill:var(--muted);}
-  .cf-curve{background:var(--paper);border:var(--bw) solid var(--line-soft);border-radius:var(--radius);padding:8px;}
-  .cf-curve svg{width:100%;height:auto;display:block;}
-  .cf-axis{font:700 9.5px var(--font-mono);fill:var(--muted);}
-  /* Phone pass (2026-10-13): the Newman projection is height-limited (scale ~0.78) and the energy curve ~0.94, so
-     their labels grow to read at least 12 px. */
-  .ls-root.ls-phone .nm-lab{font-size:16px;}
-  .ls-root.ls-phone .cf-axis{font-size:13px;}
-  /* Held sideways the stage is short: the projection keeps a readable height and the stage scrolls to the curve. */
-  @media (orientation:landscape){
-    .ls-root.ls-phone .cf-ls-newman{flex:none;}
-    .ls-root.ls-phone .cf-ls-newman > .cf-stage{flex:none;height:250px;}
-    .ls-root.ls-phone .cf-ls-newman > .cf-curve{flex:none;}
-  }
-  .v3-stage{
-    background:var(--paper);border:var(--bw) solid var(--line-soft);border-radius:var(--radius);
-    touch-action:none;cursor:grab;user-select:none;
-  }
-  .v3-stage.is-dragging{cursor:grabbing;}
-  .v3-stage svg{width:100%;height:auto;display:block;max-width:420px;margin:0 auto;}
-  .cf-ring{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:10px;
-    margin-top:16px;padding-top:16px;border-top:1px solid var(--line-soft);
-  }
-  .cf-slot{display:flex;flex-direction:column;gap:5px;}
-  .cf-slot > label{font:900 10.5px var(--font-ui);letter-spacing:.05em;color:var(--muted);}
-  .cf-slot .tselect{font-size:12px;padding:6px 8px;}
-  .cf-face{align-self:start;}
-  .cf-face button{padding:4px 12px;font-size:11px;}
-  .cf-face button:disabled{opacity:.4;cursor:default;}
-</style>
 </head>
 <body>
 <header id="site-header"></header>

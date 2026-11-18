@@ -290,7 +290,7 @@ Totals: restyle 44, rework 90, rebuild 10, in progress 1.
 
 | Tool (use rank) | Grp | One idea | Main control today | Wrong today | Landing | Size |
 |---|---|---|---|---|---|---|
-| conformations (2) | P | Turning a bond changes the energy | Dihedral slider in the side panel | Slider is far from the Newman projection and the energy curve it moves; chairs are a second lesson behind a mode. Modes: Newman & torsion / Cyclohexane chairs. | 19 / 47 · 16 · 0 + 1 | rework |
+| conformations (2) | P | Turning a bond changes the energy | Dihedral slider in the side panel | Slider is far from the Newman projection and the energy curve it moves; chairs are a second lesson behind a mode. Modes: Newman & torsion / Cyclohexane chairs. | 19 / 47 · 16 · 0 + 1 | rework: built 2026-11-17, `docs/tools-v2-conformations-brief.md` (independent review in progress) |
 | resonance (17) | B | Moving electrons gives another valid structure | Tap a lone pair or pi bond, then where it goes | Control is on the molecule. Landing is a task (find the forms), not free play; 26 controls. Modes: Find the forms / Compare two. | 51 / 35 · 26 · 0 + 0 | restyle |
 | arrow-pusher (18) | B | Electrons move from a source to a sink | Tap a lone pair or bond, then where it goes | Control is on the molecule. 29 controls visible. Modes: Explore / Build / Challenge. | 42 / 32 · 29 · 0 + 0 | restyle |
 | viewer-3d (19) | X | Electron groups set the shape and the bond angle | Drag to turn the molecule; tap an atom | Control is on the picture. Side panel text; Build your own behind a switch. Modes: Explore / Predict shape. | 48 / 30 · 15 · 0 + 0 | restyle |
@@ -317,7 +317,7 @@ Totals: restyle 44, rework 90, rebuild 10, in progress 1.
 
 | Tool (use rank) | Grp | One idea | Main control today | Wrong today | Landing | Size |
 |---|---|---|---|---|---|---|
-| osmosis (1) | P | Water moves toward the lower water potential | Beaker concentration slider in the panel | Slider in the panel; nothing moves until Play. Modes: Explore / Predict / Questions. | 33 / 73 · 18 · 0 + 1 | rework |
+| osmosis (1) | P | Water moves toward the lower water potential | Beaker concentration slider in the panel | Slider in the panel; nothing moves until Play. Modes: Explore / Predict / Questions. | 33 / 73 · 18 · 0 + 1 | rework: built 2026-11-17, `docs/tools-v2-osmosis-brief.md` (owner's look pending) |
 | water-potential (5) | P | Water moves from higher to lower water potential | Two sliders in the panel | Sliders in the panel. Same idea as Osmosis (the calculation version). Modes: Explore / Practice. | 47 / 59 · 15 · 0 + 2 | rework |
 | simpson-diversity (11) | P | More species in more even numbers means more diversity | Tap the quadrat to plant a tree | Control is on the picture. Modes: Explore / Practice. | 26 / 45 · 16 · 0 + 0 | restyle |
 | design-drills (13) | R | Naming the variables, controls and claims of an experiment | Tap an answer choice | No free play: a drill with Check on landing; 118 words in the panel. No mode switch. | 143 / 118 · 18 · 0 + 0 | rework |
@@ -563,6 +563,14 @@ Listed for the owner to decide; nothing here is decided.
 - Reference pages more than tools: NREMT mnemonics, reference-cards and formulary (cards to read).
 - Typing tools with no picture to manipulate: AP Calc AB rule-drills, AP Precalc symbolic-steps.
 - Marked "beyond the exam": AP Precalc vectors-matrices.
+
+## Owner decisions, 2026-11-17 (after the first Osmosis rounds)
+- **Similar tools stay separate**: more tools, each more specific. No merges (this answers question 2 below; the
+  merge table is kept only as a note of which tools must not teach the same screen).
+- **No per tool owner review.** The standard and an independent fresh eyes review replace his look
+  (`docs/tools-v2-standard.md`, "Process per tool"); decisions made for him are logged in
+  `docs/tools-v2-owner-log.md`. This answers question 9.
+- **All 145 tools are in scope** (the 137 `tools/` pages and the 8 NREMT tools). This answers question 1.
 
 ## 6. Open questions for the owner
 1. **137 or 145?** The 8 NREMT tools are outside the 137 `tools/` pages. This plan includes them (4 of the 16 most

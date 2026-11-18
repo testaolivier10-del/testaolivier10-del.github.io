@@ -393,6 +393,12 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    `assets/theme.css`, white text 6.6:1, dark mode 12.3:1).
 31. (2026-10-20, `docs/frq-grader.md`) **AI FRQ grader, built and OFF.** "Grade my answer" beside the rubric self-score on each FRQ page (shared `assets/course/frq-grader.js`, Worker `/frq/grade`): Premium only, 10 a day, Claude then the Workers AI backup then the self-score, each point quoting the student's words. Self-scoring stays the default and is never removed; the grader is an estimate the student can overrule. Turned on only after its accuracy eval passes.
 32. (2026-10-26) **No Beta label.** Owner: "the label of beta should be removed". The Beta pill, badges and wording are gone site-wide and the course status is `live`; the "not yet reviewed by" note stays on every page and its site rule still checks it, and the course home's FAQ asks "Has this course been reviewed?".
+33. (2026-11-17, `docs/tools-v2-osmosis-brief.md`) **Osmosis rebuilt to tools v2** (branch
+   `claude/tools-v2-osmosis`, waiting for the owner's look). Explore: one control on the picture (solute outside),
+   two tabs (plant cell, animal cell), the settled result at once, a cause line; Test yourself keeps the Predict
+   challenges and the potato core questions and FRQ. New: `ApBioTools.studioKit2` (the course's kit adapter),
+   `"kit2": true` in `pages.json`, `ApBioMath.osmosis.equilibrium`, an `explore` block in the tool's data. Still
+   free. What Explore no longer does is listed as owner questions in the brief.
 
 ## 4. Map format (Phase 0)
 
