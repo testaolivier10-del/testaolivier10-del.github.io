@@ -201,7 +201,7 @@ Slugs: `limit-explorer`, `tangent-tracer`, `rule-drills`, `related-rates`, `moti
 the validators recompute every number with the code students run.
 
 `ApCalcTools` (`tools/calc-tools.js`) is the physics framework (frame, modes, `studioPane`, `drill`,
-`keepGoing`, `cue`, `explain`, `slider`, `questions`, `frq`), plus an **`expr` drill step**: a step
+`keepGoing`, `cue`, `explain`, `slider`, `questions`, `frq`, and `studioKit2`, the tools v2 adapter a trainer opts into with `"kit2": true` in `data/pages.json` and `modes({ studio: { kit2 } })`), plus an **`expr` drill step**: a step
 `{ expr: { answer, vars, domain, mode, mistakes } }` gets a text box with the live preview and is graded
 by `ApCalcMath.diagnoseExpr`.
 

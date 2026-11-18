@@ -25,9 +25,10 @@ const MIME = {
   '.mp3': 'audio/mpeg', '.ico': 'image/x-icon',
 };
 const TOOLS = [
-  { path: '/bio/tools/osmosis.html', tool: 'apbio/osmosis', frame: 'old' },
+  { path: '/bio/tools/osmosis.html', tool: 'apbio/osmosis', frame: 'v2' },
   { path: '/environmental-science/tools/water-pollution.html', tool: 'apenv/water-pollution', frame: 'v2', premium: true },
   { path: '/nremt/flowcharts.html', tool: 'nremt/flowcharts', frame: 'old' },
+  { path: '/calculus/tools/tangent-tracer.html', tool: 'apcalc/tangent-tracer', frame: 'v2' },
 ];
 const FIELDS = { 'tool-open': ['tool', 'course', 'frame', 'locked'], 'tool-touch': ['tool', 'course', 'frame', 'mode'],
   'tool-mode': ['tool', 'course', 'frame', 'mode', 'row'], 'tool-use': ['tool', 'course', 'frame', 'touched', 'time', 'mode', 'locked', 'row'] };

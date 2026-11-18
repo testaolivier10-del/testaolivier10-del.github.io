@@ -47,7 +47,7 @@ shrinks, so the limit is seen, not only read in a table.
   road), arrow keys move it along x (Shift: ten steps), Home and End go to the ends; a corner, cusp or jump is a
   stop the keys land on and a drag snaps to.
 - **Picture:** the curve is a road through a landscape (sky, a hillside that fades below the road, the graph's
-  grid and labelled axes kept exact: the road's centre line IS y = f(x)). A small car sits on the road at P,
+  grid and labelled axes kept exact: the road's center line IS y = f(x)). A small car sits on the road at P,
   turned to the tangent; the tangent line runs across in orange with a bold arrow ahead of the car (the direction
   you are heading), and a rise and run triangle with run 1 (or 0.5, 0.2 when 1 would leave the picture) and its
   rise. Below, on graph paper with the same x, a pen draws f′ (blue ink) wherever P has been; an orange bar from
@@ -105,3 +105,55 @@ shrinks, so the limit is seen, not only read in a table.
 | Twelve shelf functions | The curve picker beside "Show me how" (both tabs) |
 | Type your own function | "?" ("Your own curve": the same forgiving input, with the preview) |
 | Keyboard notes | "?" |
+
+## What is on screen in Explore (counted; Playwright, opening state at 1440)
+Outside the picture: 2 tabs, the purpose line (10 words), the curve picker, "Show me how", the cause line (3 pills:
+"f rising at x = 1 → slope 2 → f′(1) = 2"), "Drive across". That is 5 controls and about 20 words. No side panel,
+no table, no readout cards.
+On the picture: the road with its car, 1 main control (P's knob with its tag "slope 2"), the labels "y = f(x)",
+"tangent", "run 1", "rise 2" and "f′(x), the slope of f", the pen and its orange bar, the axes; the cue (first visit).
+Only while true: "from the left" / "from the right", "vertical tangent", "cusp", "jump", "no value" under the pen.
+Tab 2: Q's knob with "h = 1", the flag, "secant", "tangent", "h", "Δy"; the magnifier and its "zoom ×N" only while
+Q is within about 64 px of P and the glass magnifies at least twice; P is a quiet knob.
+
+## Decisions made for the owner (also in `docs/tools-v2-owner-log.md`)
+- Two tabs: "Slope at a point" (P, the derivative as the slope and the f′ graph) and "Secant to tangent" (Q, the limit).
+- The curve is drawn as a road with a car on it; the grid, axes and tick labels stay, so the math is exact.
+- The hillside under the road fades out in about 60 px and never reaches the axis (so it cannot be read as an area).
+- P and Q stay where the curve is inside its own window (the old P could leave the picture and be hidden).
+- The h slider is gone: Q is dragged on the road, the magnifier replaces the zoom buttons, "Slide Q in" replaces h → 0.
+- "Show all of f′ (dotted)" and "Clear the f′ trace" are gone (a dotted ghost reads as a real part; a new curve or
+  Drive across clears and redraws the ink).
+- Typed curves moved into "?" ("Type your own…" in the picker opens it).
+- The table of secant slopes, the limit with the numbers, the values at P and both formulas moved into "?".
+- The tool's About text was reworded for the new Explore; title, description, blurb and URL unchanged.
+- At a point with no slope the car keeps the heading of the side it came from.
+
+## What was built
+- `calculus/assets/tools/tangent-tracer.js`: Explore rewritten (`explore()`); Test yourself (`quiz()`) unchanged.
+  `calculus/assets/tools/tangent-tracer.css`: the v2 styles appended (the old ones stay for the quiz figures).
+- The adapter `ApCalcTools.studioKit2` (`calculus/assets/tools/calc-tools.js`) and `"kit2": true` for this tool in
+  `calculus/data/pages.json`; `scripts/build-apcalc.mjs` then adds `tool-kit2.css` and `tool-kit2.js` (only this
+  page changed; BC pages unchanged; both builds `--check` clean).
+- `K.handle` in `assets/course/tool-kit2.js` (documented in its header) and `.tk2-handle` in `tool-kit2.css`.
+- `scripts/tools-v2/tangent-tracer-sweep.mjs`; `scripts/check-tool-use.mjs` now lists this tool (frame v2) and
+  Osmosis as v2 (the list said "old", so the check failed on this branch before).
+
+## Checks run (2026-11-18)
+`node --test scripts/test/apcalc-*.test.mjs` (156 pass), `apcalcbc-*` (71 pass), `check-apcalc-content --check`,
+`build-apcalc --check`, `build-apcalcbc --check`, `build-apmacro --check`, `check-site`, `check-weight --check`,
+`check-tool-use` (this page reports frame v2). Sweep: 1040 states at 10 widths, 12394 checks, 0 failures (road panel
+46 to 53 percent of the stage). Browser checks at 390 (real touch drag through CDP), 768 and 1440, light and dark: 193
+assertions passing: opening state and cue, drag mid frames, keys (arrows, Home, End, the corner stop), Drive across
+frames and its takeaway, the tab keeps the curve and P, Page Down on Q, the magnifier and Q's knob in it, a drag in
+the glass, Slide Q in and back, "?" with the table, Test yourself (a wrong answer, Show the answer, the record id
+`tangent-tracer:` stored, a right answer moves to the next step), back to Explore, deep links `#quiz` and `?seed=`,
+reduced motion (results at once), no sideways scroll, no console errors. Preview:
+`/mnt/user-data/outputs/tangent-tracer-v2/index.html`, shots in `shots/`.
+
+## Not done, and what I am not happy with
+- The picture is still a graph with a road on it (the grid has to stay for exact slopes); less of a scene than the lake.
+- P's knob covers the car's rear wheel; the car is small on a phone.
+- With reduced motion the site gives every property a 0.01 ms transition, so a knob reads its new place a frame late.
+- The phone keeps two rows for the cause line, so a one row line leaves a gap above the button.
+- No real phone, no screen reader pass, no real students; the independent review is next.

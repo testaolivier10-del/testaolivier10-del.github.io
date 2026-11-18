@@ -5,7 +5,7 @@
    (calc-plot.js), math is ApCalcTex (calc-math.js). Styles: tangent-tracer.css.
 
    EXPLORE (free play, nothing graded, no side panel): two tabs, one idea each.
-     1 Slope at a point: the curve is a road (its centre line IS y = f(x) on the graph's grid). Drag P along it: a car
+     1 Slope at a point: the curve is a road (its center line IS y = f(x) on the graph's grid). Drag P along it: a car
        turned to the tangent, the tangent line and the heading arrow, the rise over a run of 1 (or less), the slope
        on P's knob; below, on graph paper with the same x, a pen draws f′ wherever P has been and an orange bar is
        the slope now. At a corner, cusp, vertical tangent, jump or end the one-sided directions are drawn, the pen
@@ -145,7 +145,7 @@
          run show the slope, and on the graph paper below a pen draws f′ wherever P has been.
        2 Secant to tangent: drag Q toward P; the secant turns into the tangent; a magnifier keeps Q in view as h
          shrinks, so a smooth curve looks straight and a corner stays a corner.
-     The road's centre line IS y = f(x) on the graph's own grid: every line and number comes from the function the
+     The road's center line IS y = f(x) on the graph's own grid: every line and number comes from the function the
      picker names (TT.FUNCS, or a typed one through ApCalcExpr). The reference ("?") holds the numbers, the table of
      secant slopes, the limit with the numbers, the formulas, your own curve and the keys. */
   function explore(host, data){
@@ -325,7 +325,7 @@
     function block(x, y, r){ boxes.push([x - r, y - r, x + r, y + r]); }
 
     /* ---------------------------------------------------- drawn things */
-    /* The car, nose along +x, wheels on the road; origin at P on the centre line. */
+    /* The car, nose along +x, wheels on the road; origin at P on the center line. */
     function car(L, rw, cls){
       var wr = L * 0.13, cy = -rw / 2 - wr + 2.5, bb = cy + wr * 0.15, bt = bb - L * 0.24, ct = bt - L * 0.2;
       return '<g class="tt2-car ' + (cls || '') + '">' +
@@ -732,7 +732,7 @@
       tagSide: function(){ return tagSideQ(); },
       bounds: function(){ return G ? (qInLens() ? [LENS.cx - LENS.R, 0, LENS.cx + LENS.R, 0] : [G.A.L + 2, G.A.T, G.A.R - 2, G.A.B]) : null; },
       onStart: function(){
-        userActs(); S.qIn = qInLens();
+        userActs(); S.qIn = S.tab === 'secant' && LENS.show > 0.5 && lensWanted();
         if(S.qIn){ LENS.frozen = LENS.w; var Lm = lensMap({ cx: LENS.cx, cy: LENS.cy, R: LENS.R }), q = qPoint(); LENS.q0 = [Lm.sx(q.x) - LENS.cx, Lm.sy(q.y) - LENS.cy]; LENS.h0 = S.h; }
       },
       onInput: function(v){ setH(v); },
@@ -793,7 +793,9 @@
       if(v === S.tab) return;
       fade();
       drive.stop(); slide.stop(); tour.stop(); tour2.stop();
-      S.tab = v; S.took = null; LENS.show = 0; LENS.w = lensTarget();
+      S.tab = v; S.took = null;
+      if(v === 'secant' && validH(S.h) == null){ var hh = [-S.h, S.h / 2, -S.h / 2, S.h / 10, -S.h / 10].filter(function(x){ return validH(x) != null; })[0]; if(hh != null){ S.h = hh; hq.value(hh); } }
+      LENS.show = 0; LENS.w = lensTarget();
       head.purpose(v === 'slope' ? 'The derivative is the slope of the curve at each point.' : 'The secant turns into the tangent as h goes to 0.');
       drive.el.hidden = v !== 'slope'; slide.el.hidden = v !== 'secant';
       hq.hide(v !== 'secant');
@@ -879,6 +881,7 @@
     }
     function slideEnd(){
       if(SL.out){ S.slideV = 0; slide.paint(); S.took = null; wKey = ''; words(); say(cause.text()); refLater(); return; }
+      if(Math.abs(S.h) > TT.HMIN * 1.01){ S.slideV = 0; slide.paint(); wKey = ''; words(); return; }
       S.slideV = 1; slide.paint();
       var c = S.cls || {}, A = sv(S.a), m = slopeNow();
       if(c.kind === 'smooth' && isFinite(m)) S.took = 'As h → 0 the secant slopes close in on f′(' + A + ') = ' + fmtN(m) + ', the tangent’s slope.';
@@ -983,7 +986,7 @@
         '<h3 class="ls-title-l">Your own curve</h3><div class="tt2-own"><div class="tt-ownrow"><span class="tt-ownl" aria-hidden="true">' + mm('f(x) =') + '</span><label class="sr-only" for="' + id + '-own">Type a function of x</label>' +
         '<input type="text" id="' + id + '-own" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="x^3 - 2x"><button type="button" class="bt-btn tt-owngo">Graph it</button></div>' +
         '<div class="calc-expr-preview tt-ownp" aria-live="polite"><span class="bt-small">Try x^3 - 2x, sin(2x), |x - 1| or sqrt(x).</span></div></div>' +
-        '<p class="bt-small">How it is drawn: the centre line of the road is exactly y = f(x) on the grid; the car is turned to the tangent; the tool computes slopes from the exact derivatives of the curves in the list and checks each side of P separately; for a typed function it uses difference quotients with very small h. The magnifier keeps Q halfway out from P, so its zoom grows as h shrinks.</p>' +
+        '<p class="bt-small">How it is drawn: the center line of the road is exactly y = f(x) on the grid; the car is turned to the tangent; the tool computes slopes from the exact derivatives of the curves in the list and checks each side of P separately; for a typed function it uses difference quotients with very small h. The magnifier keeps Q halfway out from P, so its zoom grows as h shrinks.</p>' +
         '<details class="tt-keys"><summary>Keyboard</summary><p class="bt-small">Tab to P: ← → move it along the curve (Shift: ten steps), Home and End go to the ends; a corner, cusp or jump is a stop. Tab to Q (Secant to tangent): ← → move it, Page Down makes h ten times smaller, Page Up ten times bigger, Home and End put it at h = −1 and h = 1.</p></details>' +
         '<p class="tool-about-n">Notes for this topic: <a href="../notes/derivative-definition.html">The Derivative and Its Notation</a></p>';
       ref.innerHTML = html;
@@ -1030,7 +1033,7 @@
       shown: shown, stop: function(){ drive.stop(); slide.stop(); },
       redraw: function(){ layout(); },
       // for the sweep test and the browser checks only
-      _t: { FUNCS: TT.FUNCS, S: S, LENS: LENS, G: function(){ return G; }, hp: hp, hq: hq, drive: drive, slide: slide, cause: cause, setF: setF, setTab: setTab, moveP: function(v){ hp.value(v, true); }, setH: function(v){ hq.value(v, true); } }
+      _t: { FUNCS: TT.FUNCS, S: S, LENS: LENS, G: function(){ return G; }, hp: hp, hq: hq, drive: drive, slide: slide, cause: cause, setF: setF, setTab: setTab, moveP: function(v){ hp.value(v, true); }, setH: function(v){ if(validH(v) != null) hq.value(v, true); } }
     };
   }
 

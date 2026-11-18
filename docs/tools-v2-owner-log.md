@@ -27,3 +27,10 @@ in each tool's brief.
 | 2026-11-18 | AP Bio Osmosis | Drawn areas follow the model (cell and vacuole by water, protoplast by mass) | Inside and outside crowding must match once settled | `shape()` |
 | 2026-11-18 | AP Bio Osmosis | Potato challenges say "24 hours"; Replay sits in the feedback; a phone scrolls the picture into view for a run | Reviewer | Test yourself, Predict |
 
+| 2026-11-18 | AP Calc AB Tangent tracer | Two tabs: Slope at a point (P) and Secant to tangent (Q) | One idea per tab (what a derivative is; how it is defined) | `docs/tools-v2-tangent-tracer-brief.md` |
+| 2026-11-18 | AP Calc AB Tangent tracer | The curve is a road with a car whose heading is the tangent; grid and axes kept | A real thing traced, the math still exact | Same brief |
+| 2026-11-18 | AP Calc AB Tangent tracer | h slider removed: drag Q on the road, a magnifier replaces the zoom buttons, "Slide Q in" replaces h → 0 | The idea's control goes on the picture | Same brief |
+| 2026-11-18 | AP Calc AB Tangent tracer | "Show all of f′ (dotted)" and "Clear the trace" removed | A dotted ghost reads as a real part; Drive across draws all of f′ | Same brief |
+| 2026-11-18 | AP Calc AB Tangent tracer | Typed curves, the secant slope table, the limit with numbers, values at P and the formulas moved to "?" | Nothing extra on screen | "?" |
+| 2026-11-18 | AP Calc AB Tangent tracer | P and Q stay where the curve is inside its window | The car, knob and tag are always seen | `inWin()` in the tool |
+| 2026-11-18 | AP Calc AB Tangent tracer | About text reworded; title, description, blurb, URL unchanged | It described the old Explore | `calculus/data/tools/tangent-tracer.json` |
