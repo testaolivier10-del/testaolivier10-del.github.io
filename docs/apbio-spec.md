@@ -399,6 +399,13 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    challenges and the potato core questions and FRQ. New: `ApBioTools.studioKit2` (the course's kit adapter),
    `"kit2": true` in `pages.json`, `ApBioMath.osmosis.equilibrium`, an `explore` block in the tool's data. Still
    free. What Explore no longer does is listed as owner questions in the brief.
+34. (2026-11-18, `docs/tools-v2-hardy-weinberg-brief.md`) **Hardy-Weinberg rebuilt to tools v2** (branch
+   `claude/tools-v2-hardy-weinberg`, collects on `claude/tools-v2-all`, waiting for the independent review).
+   Explore: a bed of 100 snapdragons whose pollen and eggs carry R or W, one knob for p on the picture, three signs
+   that count the plants and a cause line with p², 2pq and q². Test yourself: "Set the alleles" (targets on a bed
+   that is not in bloom) and the unchanged calculations. New: an `explore` block and `targets` in the tool's data,
+   a `practice` part in `ApBioTools.studioKit2`, the first sweep in `scripts/tools-v2/`. Still free. Decisions made
+   for the owner are in `docs/tools-v2-owner-log.md`.
 
 ## 4. Map format (Phase 0)
 

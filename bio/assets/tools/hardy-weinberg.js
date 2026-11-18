@@ -20,7 +20,7 @@
    TEST YOURSELF, one dropdown on the stage:
      "Set the alleles" (the old Explore's "Try this" targets, now checked): the bed is planted but not in bloom;
        set p for the target, then let it bloom. Recorded as hardy-weinberg:target-<id>.
-     "Calculations" (ApBioTools.skillTool, unchanged in content, grading and record ids): new numbers every time or
+     "Problems" (the calculations: ApBioTools.skillTool, unchanged in content, grading and record ids): new numbers every time or
        the worked set; the figure shows the problem's individuals as pairs of alleles and the gene pool square split
        at the p the student types.
    "?": the numbers behind this setting, every setting in a table, any p to three decimals, the five conditions.
@@ -253,9 +253,9 @@
       function geo(Wd, H){
         var ph = Wd < 520, fs = ph ? 12.5 : 14.5, fsS = ph ? 10.5 : 12.5, tokR = ph ? 9.5 : Wd < 900 ? 11 : 12.5, tb = ph ? 5 : 8, fb = ph ? 9 : 13;
         var eL = ph ? 47 : 78, mr = ph ? 27 : 34, labY = (fs + 10) / 2 + 5, tokY = labY + (fs + 10) / 2 + 5 + tokR, by0 = tokY + tokR + 8 + 17 + tb / 2;
-        var signH = ph ? 27 : 32, by1 = H - (fb + 9 + signH + 7), BH = by1 - by0, avail = Wd - eL - mr, BW = Math.min(avail, BH * 2.05), bx0 = eL + (avail - BW) / 2;
-        var rh = BH / (N + 0.16), cw = BW / N, hP = Math.min(rh * 1.12, cw * 2), sy = hP / 60, wide = cw / rh > 1.55;
-        var sx = wide ? clamp(cw * 0.36 / 22, sy * 0.9, sy * 1.42) : clamp(cw * 0.47 / 18, sy * 0.7, sy * 1.2);
+        var signH = ph ? 27 : 32, by1 = H - (fb + 9 + signH + 7), BH = by1 - by0, avail = Wd - eL - mr, BW = Math.min(avail, BH * 2.4), bx0 = eL + (avail - BW) / 2;
+        var rh = BH / (N + 0.16), cw = BW / N, hP = Math.min(rh * 1.12, cw * 2), sy = hP / 60, wide = cw / rh > 1.35;
+        var sx = wide ? clamp(cw * 0.37 / 22, sy * 0.9, sy * 1.55) : clamp(cw * 0.47 / 18, sy * 0.7, sy * 1.2);
         return { W: Wd, H: H, ph: ph, fs: fs, fsS: fsS, tokR: tokR, tb: tb, fb: fb, labY: labY, tokY: tokY, by0: by0, by1: by1, BH: BH, BW: BW, bx0: bx0, bx1: bx0 + BW, rh: rh, cw: cw,
           rows: by0 + 0.16 * rh, sx: sx, sy: sy, wide: wide, ty: by0 - tb / 2, eggX: bx0 - tb - tokR - (ph ? 17 : 12), signH: signH, signY: by1 + fb + 9 + signH / 2 };
       }
@@ -455,7 +455,7 @@
       T.skillTool(app, data, { slug: SLUG, kind: 'hw', stage: pstage });
       ctx.kit2 = { stage: stage, ref: ref,
         parts: [{ value: 'target', label: 'Set the alleles', dock: dock, task: { kicker: 'Set the alleles', title: 'Hit the target', todo: 'Drag the knob on the bed, then let it bloom.' } },
-          { value: 'practice', label: 'Calculations', practice: { area: app.querySelector('.bt-problem'), modes: app.querySelector('.bt-modes') } }],
+          { value: 'practice', label: 'Problems', practice: { area: app.querySelector('.bt-problem'), modes: app.querySelector('.bt-modes') } }],
         onShow: function(m, p){ shown_(m, p); } };
       cause.set(chain()); refHtml();
       // Without the frame (no Tool Studio on the page) the stage still works on its own, above the calculations.

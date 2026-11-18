@@ -26,4 +26,13 @@ in each tool's brief.
 | 2026-11-18 | AP Bio Osmosis | Reviewer's idea to keep the first two cause pills through a reversal was not taken | They would name a cause that points against the arrows | Review round 1 in the brief |
 | 2026-11-18 | AP Bio Osmosis | Drawn areas follow the model (cell and vacuole by water, protoplast by mass) | Inside and outside crowding must match once settled | `shape()` |
 | 2026-11-18 | AP Bio Osmosis | Potato challenges say "24 hours"; Replay sits in the feedback; a phone scrolls the picture into view for a run | Reviewer | Test yourself, Predict |
-
+| 2026-11-18 | AP Bio Hardy-Weinberg | Explore shows snapdragons (incomplete dominance: red, pink, white), not a dominant and recessive trait | All three genotypes can be seen and counted without a key | Carriers are in Test yourself (target 3, the recessive problems). Reverse: `explore` in the tool's data |
+| 2026-11-18 | AP Bio Hardy-Weinberg | The bed is sorted into four plots, not scattered like a real population | So the shares can be counted and the plots are p by p, p by q, q by q | Said in "?" |
+| 2026-11-18 | AP Bio Hardy-Weinberg | p moves in steps of 0.1 (was 0.01) | Every plant is a whole plant, so the picture and the numbers never disagree | "Any p" to 0.01 in "?" |
+| 2026-11-18 | AP Bio Hardy-Weinberg | The panel slider, the five number readout and the key left Explore | The slider repeated the control on the picture; the signs and the cause line carry the numbers | "?" (this setting, every setting, any p) |
+| 2026-11-18 | AP Bio Hardy-Weinberg | The three "Try this" targets are now checked questions on a bed that is not in bloom, plus two new ones | Explore is free play; a target you can sweep to is not a test | Test yourself, "Set the alleles"; recorded as `hardy-weinberg:target-<id>` |
+| 2026-11-18 | AP Bio Hardy-Weinberg | No "Watch it happen" and no "before" tick | The change is short and is seen on every drag; fewer things on screen | Add `K.player` if wanted |
+| 2026-11-18 | AP Bio Hardy-Weinberg | Alleles are written R and W on the picture | Superscripts do not fit an allele drawn 20 px wide | C^R and C^W in "?" |
+| 2026-11-18 | AP Bio Hardy-Weinberg | In Problems (the calculations) each individual is a pair of alleles (was a circle, dotted circle or square); the egg and sperm glyphs went | The same allele colours as Explore; "every individual carries two" is drawn | `pstage()` in `bio/assets/tools/hardy-weinberg.js` |
+| 2026-11-18 | AP Bio Hardy-Weinberg | The hub blurb and the About intro were reworded; title, description, tag and URL unchanged | They described the old Explore | `bio/data/pages.json`, the tool's data |
+| 2026-11-18 | AP Bio Hardy-Weinberg | The biology kit adapter gained a "practice" part for skills tools | So generated problems stay in Test yourself beside other parts | `studioKit2` and `studioPractice` in `bio-tools.js` |

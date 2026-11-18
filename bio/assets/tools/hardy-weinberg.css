@@ -120,3 +120,4 @@
 .hw2f-k b{display:grid;place-items:center;width:10px;height:10px;border-radius:50%;border:1px solid var(--hw-w-edge);font:900 8px/1 var(--font-ui);color:var(--ink);}
 .hw2f-k b.is-p{border-color:#7C1218;}
 .hw2-planted[hidden]{display:none;}
+.hw2-ref .bt-readout dt{text-transform:none;letter-spacing:0;font-size:13px;}

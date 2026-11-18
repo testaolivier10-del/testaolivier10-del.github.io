@@ -114,7 +114,15 @@ async function open(w, dark) {
   await page.waitForTimeout(600);
   return { ctx, page, errs };
 }
-async function settle(page) { await page.waitForFunction(() => document.querySelectorAll('.hw2 .tk2-cause .tk2-cz').length === 5 || document.querySelector('.hw2 .tk2-cause').offsetParent === null, null, { timeout: 5000 }).catch(() => {}); await page.waitForTimeout(380); }
+async function settle(page) {
+  // (no waitForFunction: the page's Content Security Policy refuses the string it evaluates)
+  for (let i = 0; i < 60; i++) {
+    const done = await page.evaluate(() => { const c = document.querySelector('.hw2 .tk2-cause'); return c.offsetParent === null || c.querySelectorAll('.tk2-cz').length === 5; });
+    if (done) break;
+    await page.waitForTimeout(50);
+  }
+  await page.waitForTimeout(120);
+}
 
 const sheets = [];
 for (const w of WIDTHS) for (const dark of (DARK.includes(w) ? [false, true] : [false])) {
@@ -133,7 +141,6 @@ for (const w of WIDTHS) for (const dark of (DARK.includes(w) ? [false, true] : [
     await settle(page);
     m = await page.evaluate(measure);
     check(m, `${tag0} p=${n / 10}`, n, { explore: true }); heights.add(Math.round(m.cause.h));
-    // mid change: the line's box keeps its height
     if (!dark || n % 5 === 0) shots.push({ t: 'p = ' + (n / 10).toFixed(1), b: await scene.screenshot() });
   }
   // a change in progress: the box of the cause line does not jump
@@ -150,13 +157,14 @@ for (const w of WIDTHS) for (const dark of (DARK.includes(w) ? [false, true] : [
   ok(m.colors[3] === 100 && m.signs.length === 0, `${tag0}: the planted bed gives the answer away (${m.colors}, ${m.signs.length} signs)`);
   shots.push({ t: 'Test yourself: planted', b: await scene.screenshot() });
   await page.locator('.hw2-go button').click();
+  await page.waitForTimeout(380);   // mid bloom (a phone scrolls the picture into view first when it is off screen)
+  const sb = await scene.boundingBox();
+  ok(sb.y >= -1 && sb.y + sb.height <= (page.viewportSize().height + 1), `${tag0}: the picture is not in view during the bloom`);
   await page.waitForSelector('.hw2-fb .bio-mark', { timeout: 6000 });
-  await page.waitForTimeout(500);
+  await page.waitForTimeout(400);
   m = await page.evaluate(measure);
   check(m, `${tag0} target in bloom`, 5);
   ok(m.colors[3] === 0 && m.signs.length === 3, `${tag0}: the bed did not bloom`);
-  const sb = await scene.boundingBox();
-  ok(sb.y >= -1 && sb.y + sb.height <= (page.viewportSize().height + 1), `${tag0}: the picture is not in view after the bloom`);
   shots.push({ t: 'Test yourself: in bloom', b: await scene.screenshot() });
   ok(errs.length === 0, `${tag0}: console errors: ${errs.join(' | ')}`);
   sheets.push({ tag: tag0, w, shots });

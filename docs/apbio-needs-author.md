@@ -711,3 +711,9 @@ These stay open:
 - **osmosis-burst-new-cell** (logged, owner round 2). A burst red blood cell does not heal: when the solute is
   raised again the old cell fades and a new cell goes into the new solution, marked "new cell" for about two
   seconds. Teacher: confirm the wording.
+- **hw-explore-snapdragons** (logged, tools v2, 2026-11-18). The rebuilt Hardy-Weinberg tool's Explore draws 100
+  snapdragons (RR red, RW pink, WW white; incomplete dominance) sorted into the four plots of the gene pool square,
+  with the same p in pollen and eggs, in steps of 0.1. Teacher: confirm that (1) writing the alleles R and W on the
+  picture (C^R and C^W in "?") is acceptable, (2) a sorted bed is clear enough as a model of a randomly mating
+  population (the note in "?" says real plants are scattered), and (3) leaving the hidden carrier of a recessive
+  trait to Test yourself is right for free play.
