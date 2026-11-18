@@ -313,7 +313,7 @@
         var rf = now.rate / now.prof.Vmax, free = ofKind('sub').filter(function(p){ return p.mode === 'free' && p.op > 0.6; });
         // how many working sites hold substrate follows the model (S/(Km + S)): at high substrate nearly every site
         // is full on every frame, and the next substrate waits at the mouth while products leave
-        var W = ENZ.filter(working), nb = Math.round(now.occ * W.length), busy = W.filter(inSite), flying = W.filter(function(e){ return e.sub && !inSite(e); }).length;
+        var W = ENZ.filter(working), nb = Math.min(W.length, Math.round(now.occ * W.length + 0.25)), busy = W.filter(inSite), flying = W.filter(function(e){ return e.sub && !inSite(e); }).length;
         fillT += dt;
         if(busy.length < nb && busy.length + flying < nb + 2 && fillT > 0.05){
           var cand = W.filter(function(e){ return !e.sub && e.cool <= 0; });

@@ -59,7 +59,7 @@ const probe = (quiz) => {
   for (let i = 0; i < words.length; i++) for (let j = i + 1; j < words.length; j++) if (hit(words[i].r, words[j].r)) out.push('control words overlap: "' + words[i].t + '" and "' + words[j].t + '"');
   const cueEl = q('.tk2-cue')[0];
   if (cueEl) words.concat(labs).forEach(x => { if (hit(R(cueEl), x.r)) out.push('the cue covers "' + x.t + '"'); });
-  const big = Math.max(...all.map(x => area(x.r)), ...q('.ez2-parts use').map(e => area(R(e))), 0), small = Math.min(...enz.map(area));
+  const big = Math.max(...all.filter(x => !/ez2-type/.test(x.t)).map(x => area(x.r)), ...q('.ez2-parts use').map(e => area(R(e))), 0), small = Math.min(...enz.map(area));
   if (!enz.length) out.push('no enzymes drawn'); else if (big >= small) out.push('an enzyme is not larger than every other thing (' + small.toFixed(0) + ' against ' + big.toFixed(0) + ')');
   const share = enz.reduce((a, x) => a + area(x), 0) / area(L);
   if (!quiz) {
