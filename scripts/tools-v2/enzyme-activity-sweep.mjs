@@ -5,6 +5,7 @@
        the inhibitor switch), and every molecule stays in the solution;
      - no two labels overlap each other, the rate bar, the switch or the control's own words;
      - the enzymes are the largest objects in the picture and together at least a set share of the solution;
+     - at 2 and 20 mM the share of working sites drawn holding substrate is within 0.15 of the model's S/(Km + S);
      - on a phone the cause line is at most two rows and its box keeps one height;
      - no sideways scroll, no console errors.
 
@@ -54,7 +55,7 @@ const probe = (quiz) => {
   ctl.forEach(x => inB(x.r, S, 'control "' + x.t + '"'));
   const all = labs.concat(boxes);
   for (let i = 0; i < all.length; i++) for (let j = i + 1; j < all.length; j++) if (hit(all[i].r, all[j].r)) out.push('labels overlap: "' + all[i].t + '" and "' + all[j].t + '"');
-  const words = q('.ez2-ctlname rect, .ez2-end, .ez2 .tk2-tag').map(e => ({ t: (e.textContent || e.parentNode.textContent).trim(), r: R(e) }));
+  const words = q('.ez2-ctlname rect, .ez2-end, .ez2 .tk2-tag, .ez2-type, .ez2 .tk2-drag.is-quiet .tk2-dot').map(e => ({ t: (e.textContent || e.parentNode.textContent).trim() || 'quiet knob', r: R(e) }));
   for (let i = 0; i < words.length; i++) for (let j = i + 1; j < words.length; j++) if (hit(words[i].r, words[j].r)) out.push('control words overlap: "' + words[i].t + '" and "' + words[j].t + '"');
   const cueEl = q('.tk2-cue')[0];
   if (cueEl) words.concat(labs).forEach(x => { if (hit(R(cueEl), x.r)) out.push('the cue covers "' + x.t + '"'); });
@@ -95,6 +96,13 @@ for (const w of WIDTHS) {
   const run = async (tab, list, wait) => { for (const [v, shot] of list) { await setIn(main, v); await page.waitForTimeout(wait); await check(`${tab} ${v}`, false, shot); } };
   await check('opening (with the cue)', false, '1-open');
   await run('substrate', [[0, '1-sub-0'], [0.5], [2], [8], [20, '1-sub-20']], 700);
+  // saturation is drawn: the share of working sites holding substrate follows the model's S/(Km + S)
+  for (const v of [2, 20]) {
+    await setIn(main, v); await page.waitForTimeout(2200); let a = 0, n = 0;
+    for (let k = 0; k < 15; k++) { const r = await page.evaluate(() => [...document.querySelectorAll('.ez2-e')].map(g => g.getAttribute('data-sub'))); r.forEach(x => { if (x !== '-') { n++; if (x === '1') a++; } }); await page.waitForTimeout(70); }
+    checks++; const want = v / (2 + v), got = a / Math.max(1, n);
+    if (Math.abs(got - want) > 0.15) fails.push(`${w} substrate ${v} mM: ${got.toFixed(2)} of working sites drawn full, the model's share is ${want.toFixed(2)}`);
+  }
   await page.getByRole('tab', { name: /Temperature/ }).click(); await page.waitForTimeout(500);
   await run('temperature', [[37], [0, '2-temp-0'], [20], [41, '2-temp-41'], [45], [50, '2-temp-50'], [60], [70, '2-temp-70'], [20, '2-temp-back']], 1250);
   await page.getByRole('tab', { name: /pH/ }).click(); await page.waitForTimeout(500);

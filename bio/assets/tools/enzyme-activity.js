@@ -238,7 +238,7 @@
       function ofKind(k){ return PARTS.filter(function(p){ return k === 'inh' ? p.kind !== 'sub' : p.kind === k; }); }
       /* How many of each to draw: substrate by its concentration; inhibitor by its own, and always enough to bind. */
       function counts(){
-        var c = now.c, nS = c.S > 0 ? Math.max(1, Math.round(Math.pow(c.S / data.substrate.max, 0.75) * G.nMax)) : 0, zz = M.enzyme.states(now.prof, c), nI = c.inhibitor !== 'none' && c.I > 0 ? Math.max(Math.round((c.inhibitor === 'competitive' ? zz.inhibitor : zz.allosteric) * G.N) + 2, Math.round(c.I / data.inhibitor.max * G.nMax * 0.4)) : 0;
+        var c = now.c, nS = c.S > 0 ? Math.max(Math.round((now.occ || 0) * G.N) + 3, Math.round(Math.pow(c.S / data.substrate.max, 0.75) * G.nMax)) : 0, zz = M.enzyme.states(now.prof, c), nI = c.inhibitor !== 'none' && c.I > 0 ? Math.max(Math.round((c.inhibitor === 'competitive' ? zz.inhibitor : zz.allosteric) * G.N) + 2, Math.round(c.I / data.inhibitor.max * G.nMax * 0.4)) : 0;
         return { sub: nS, inh: nI };
       }
       function setCount(kind, n, instant){
@@ -258,7 +258,8 @@
         now.z = z; now.D = D; now.dT = dT; now.acid = now.c.pH < M.enzyme.optimumPH(now.prof);
         // the share of working sites that hold substrate: S/(Km + S) (the same with either inhibitor, among the sites
         // the inhibitor leaves free); fewer when cold, as fewer collisions happen
-        now.occ = now.c.S > 0 ? now.c.S / (now.prof.Km + now.c.S) * Math.min(1, z.motion) : 0;
+        var cold = S.mode === 'explore' && S.tab === 'temp' ? Math.min(1, z.motion / M.enzyme.states(now.prof, Object.assign({}, now.c, { T: FX.T })).motion) : 1;
+        now.occ = now.c.S > 0 ? now.c.S / (now.prof.Km + now.c.S) * cold : 0;
         ENZ.forEach(function(e){
           var qi = (e.qi + rot) % 1;
           e.want = e.q > 1 - D + 1e-9 ? 'den' : e.q > z.phOk + 1e-9 ? 'mis' : (now.c.inhibitor !== 'none' && now.c.I > 0 && qi < fi) ? 'inh' : 'ok';
@@ -269,6 +270,7 @@
         if((!what || what === 'sub') && e.sub){ var p = e.sub; e.sub = null; p.e = null; if(p.mode !== 'out'){ p.mode = 'free'; var a = e.ang + (rnd() - 0.5); p.vx = Math.cos(a); p.vy = Math.sin(a); } }
         if((!what || what === 'inh') && e.inh){ var q = e.inh; e.inh = null; q.e = null; if(q.mode !== 'out'){ q.mode = 'free'; var b = e.ang + (q.kind === 'competitive' ? 0 : Math.PI) + (rnd() - 0.5); q.vx = Math.cos(b); q.vy = Math.sin(b); } }
       }
+      function inSite(e){ var p = e.sub; return !!p && (p.mode === 'cat' || p.mode === 'held' || (p.mode === 'fly' && p.t >= p.d1)); }
       function working(e){ return !e.den && !e.repl && e.fold > 0.95 && e.want === 'ok' && !e.inh && e.pinch < 0.1; }
       function dockPt(e, kind){ return kind === 'non' || kind === 'noncompetitive' ? world(e, -1.02, 0) : world(e, 0.67, 0); }
       function nearest(list, x, y, e){
@@ -276,7 +278,7 @@
         list.forEach(function(p){ var dx = p.x - x, dy = p.y - y, d = dx * dx + dy * dy; if(e){ var bx = p.x - e.x, by = p.y - e.y; if(bx * (x - e.x) + by * (y - e.y) < 0) d += 9 * G.R * G.R; } if(d < bd){ bd = d; best = p; } });
         return best;
       }
-      function send(p, e, mode){ p.mode = mode; p.e = e; p.t = 0; p.x0 = p.x; p.y0 = p.y; p.r0 = p.rot; var a = mode === 'toInh' && p.kind !== 'competitive' ? world(e, -1.5, 0) : world(e, 1.4, 0); p.ax = a[0]; p.ay = a[1]; p.d1 = clamp(Math.hypot(a[0] - p.x, a[1] - p.y) / (G.R * 3.2 * speedF()), 0.16, 0.9); }
+      function send(p, e, mode){ p.mode = mode; p.e = e; p.t = 0; p.x0 = p.x; p.y0 = p.y; p.r0 = p.rot; var a = mode === 'toInh' && p.kind !== 'competitive' ? world(e, -1.5, 0) : world(e, 1.4, 0); p.ax = a[0]; p.ay = a[1]; p.d1 = clamp(Math.hypot(a[0] - p.x, a[1] - p.y) / (G.R * 3.2 * speedF()), 0.16, mode === 'try' || mode === 'toInh' ? 0.9 : 0.55); }
       function spawnProducts(e){
         [['ph', 0.5, -1], ['pt', 0.82, 1]].forEach(function(o){
           var w = world(e, o[1], 0), a = e.ang + o[2] * (0.35 + rnd() * 0.5), u = sv('use', 'ez2-part'); u.setAttribute('href', '#ez2-' + o[0]); gParts.appendChild(u);
@@ -311,16 +313,18 @@
         var rf = now.rate / now.prof.Vmax, free = ofKind('sub').filter(function(p){ return p.mode === 'free' && p.op > 0.6; });
         // how many working sites hold substrate follows the model (S/(Km + S)): at high substrate nearly every site
         // is full on every frame, and the next substrate waits at the mouth while products leave
-        var W = ENZ.filter(working), nb = Math.round(now.occ * W.length), busy = W.filter(function(e){ return e.sub; });
+        var W = ENZ.filter(working), nb = Math.round(now.occ * W.length), busy = W.filter(inSite), flying = W.filter(function(e){ return e.sub && !inSite(e); }).length;
         fillT += dt;
-        if(busy.length < nb && fillT > 0.06){
+        if(busy.length < nb && busy.length + flying < nb + 2 && fillT > 0.05){
           var cand = W.filter(function(e){ return !e.sub && e.cool <= 0; });
           if(cand.length && (free.length || cand.some(function(e){ return e.next; }))){
             fillT = 0; var e0 = cand.filter(function(e){ return e.next; })[0] || cand[Math.floor(rnd() * cand.length)];
-            if(e0.next && e0.next.mode === 'wait'){ var nx = e0.next; e0.next = null; e0.sub = nx; nx.mode = 'fly'; nx.hold = true; nx.t = nx.d1; }
+            if(e0.next && e0.next.mode === 'wait'){ var nx = e0.next; e0.next = null; e0.sub = nx; nx.mode = 'fly'; nx.hold = true; }
             else if(free.length){ var mm0 = world(e0, 1.4, 0), s0 = nearest(free, mm0[0], mm0[1], e0); free.splice(free.indexOf(s0), 1); e0.sub = s0; send(s0, e0, 'fly'); s0.hold = true; }
           }
         } else if(busy.length > nb){ var h0 = W.filter(function(e){ return e.sub && e.sub.mode === 'held'; })[0]; if(h0) release(h0, 'sub'); }
+        // at high substrate the next substrate is already waiting at the mouth of a full site
+        if(now.occ >= 0.5 && free.length){ var hw = W.filter(function(e){ return e.sub && !e.next && (e.sub.mode === 'held' || e.sub.mode === 'cat'); })[0]; if(hw){ var mw0 = world(hw, 1.4, 0), sw0 = nearest(free, mw0[0], mw0[1], hw); free.splice(free.indexOf(sw0), 1); hw.next = sw0; send(sw0, hw, 'wait'); } }
         acc = Math.min(1.5, acc + rf * G.N / 0.78 * dt);
         while(acc >= 1){
           var held = W.filter(function(e){ return e.sub && e.sub.mode === 'held'; });
@@ -353,8 +357,8 @@
             ENZ.forEach(function(z){ var rr = (z.fold < 0.5 ? 0.55 : 1.16) * R, dx = p.x - z.x, dy = p.y - z.y, d2 = dx * dx + dy * dy; if(d2 < rr * rr && z.fade > 0.5){ var dd = Math.sqrt(d2) || 1; p.x = z.x + dx / dd * rr; p.y = z.y + dy / dd * rr; var dot = p.vx * dx / dd + p.vy * dy / dd; if(dot < 0){ p.vx -= 2 * dot * dx / dd; p.vy -= 2 * dot * dy / dd; } } });
           } else if(p.mode === 'wait'){
             if(!e || e.next !== p){ p.mode = 'free'; p.e = null; return; }
-            p.t += dt; var kw = Math.min(1, p.t / p.d1), ew = kw * kw * (3 - 2 * kw), drw = ((e.ang - p.r0) % TAU + TAU + Math.PI) % TAU - Math.PI;
-            p.x = p.x0 + (p.ax - p.x0) * ew + (kw >= 1 ? Math.sin(p.t * 7) * R * 0.03 : 0); p.y = p.y0 + (p.ay - p.y0) * ew; p.rot = p.r0 + drw * ew;
+            p.t = Math.min(p.d1, p.t + dt); var kw = Math.min(1, p.t / p.d1), ew = kw * kw * (3 - 2 * kw), drw = ((e.ang - p.r0) % TAU + TAU + Math.PI) % TAU - Math.PI;
+            p.x = p.x0 + (p.ax - p.x0) * ew + (kw >= 1 ? Math.sin(clock * 7) * R * 0.03 : 0); p.y = p.y0 + (p.ay - p.y0) * ew; p.rot = p.r0 + drw * ew;
           } else if(p.mode === 'fly' || p.mode === 'toInh' || p.mode === 'try'){
             if(!e || e.repl || (p.mode !== 'try' && e.den)){ if(e) release(e, p.kind === 'sub' ? 'sub' : 'inh'); p.mode = 'free'; p.e = null; return; }
             p.t += dt;
@@ -376,7 +380,7 @@
             if(p.t > 0.34 / Math.max(0.6, sf)){
               spawnProducts(e); e.sub = null; e.cool = 0; p.e = null; p.mode = 'free'; p.op = 0; place(p, true);
               // the substrate waiting at the mouth moves straight in
-              if(e.next && e.next.mode === 'wait' && e.next.t >= e.next.d1 && working(e)){ var nq = e.next; e.next = null; e.sub = nq; nq.mode = 'fly'; nq.hold = true; nq.t = nq.d1; }
+              if(e.next && e.next.mode === 'wait' && working(e)){ var nq = e.next; e.next = null; e.sub = nq; nq.mode = 'fly'; nq.hold = true; }
             }
           } else if(p.mode === 'held'){ var dkh = dockPt(e, 'sub'); p.x = dkh[0]; p.y = dkh[1]; p.rot = e.ang;
           } else if(p.mode === 'docked'){ var dk3 = dockPt(e, p.kind); p.x = dk3[0]; p.y = dk3[1]; p.rot = p.kind === 'competitive' ? e.ang : e.ang + Math.PI; }
@@ -441,7 +445,7 @@
             cw0.forEach(function(p){ mx = Math.max(mx, Math.abs(p[0])); my = Math.max(my, Math.abs(p[1])); });
             var cp = smooth(cw0.map(function(p){ return [p[0] * tg / Math.max(mx, 1), p[1] * tg / Math.max(my, 1)]; }), true); e.el.ce.setAttribute('d', cp); e.el.cc.setAttribute('d', cp);
           }
-          setA(e.g, 'data-sub', working(e) ? (e.sub && (e.sub.mode === 'cat' || e.sub.mode === 'held') ? '1' : '0') : '-');
+          setA(e.g, 'data-sub', working(e) ? (inSite(e) ? '1' : '0') : '-');
           setA(e.g, 'data-st', e.fold < 0.2 ? 'den' : e.inh && e.inh.mode === 'docked' ? 'inh' : e.pinch > 0.6 ? 'mis' : 'ok');
           setA(e.el.pos, 'opacity', String(now.show.ph ? (now.acid ? 1 : (1 - e.pinch).toFixed(2)) : 0));
           setA(e.el.neg, 'opacity', String(now.show.ph ? (now.acid ? (1 - e.pinch).toFixed(2) : 1) : 0));
