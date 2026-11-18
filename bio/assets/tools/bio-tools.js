@@ -865,7 +865,7 @@
         'tree-reading': 'Trees & characters', 'design-drills': 'All drills', 'osmosis': 'Numbers & how it works' })[slug] || 'Data & settings',
       menu: {
         copyLink: function(){
-          var code = s.mode() === 'practice' ? s.root.querySelector('.ls-prac-code .bt-code b') : null;
+          var code = s.mode() === 'practice' || s.mode() === 'quiz' ? s.root.querySelector('.ls-prac-code:not([hidden]) .bt-code b') : null;
           return code ? location.origin + location.pathname + '?seed=' + code.textContent : location.origin + location.pathname;
         },
         report: { course: 'apbio', id: 'tool:' + slug },
@@ -919,16 +919,17 @@
     var h = o.hint || (explore ? { target: '.sk-grip', text: 'Drag a bar up or down' } : null);
     if(h && s.mode() !== 'practice') s.hint(h);
   }
-  function studioPractice(s, area, modes, only){
+  function studioPractice(s, area, modes, only, x){
     var stage = document.createElement('div'), why = document.createElement('div'), det = document.createElement('div');
     stage.className = 'ls-prac-stage'; why.className = 'ls-sec ls-prac-why'; det.className = 'ls-sec ls-prac-code';
     s.add('stage', stage, only); s.add('why', why, only); s.add('details', det, only);
     if(modes){ modes.classList.add('ls-prac-set'); s.add('details', modes, only); }
     area.classList.add('ls-prac');
     s.add('dock', area, only);
-    var m = only && only.mode, std = s.root.classList.contains('ls-std'), pick = null;
+    var m = only && only.mode, std = s.root.classList.contains('ls-std'), pick = null, lastTask = null;
     // The standard frame: new numbers or a worked problem, from one dropdown on the stage (skillTool's area.lsPick).
-    if(std && area.lsPick && s.picker){
+    if(x && x.noPick){ if(modes) modes.hidden = true; }
+    else if(std && area.lsPick && s.picker){
       var lp = area.lsPick;
       pick = s.picker({ label: 'Problem', groups: lp.groups, value: lp.value(), onChange: lp.onChange }, m);
       area.lsSync = function(){ pick.value(lp.value()); };
@@ -961,8 +962,10 @@
         done: function(){ return form.classList.contains('bt-finished'); } });
       if(std){
         var n = +(area.getAttribute('data-parts') || 0);
-        s.task({ kicker: pick ? (pick.value() === 'practice' ? 'Practice problem' : 'Worked problem') : 'Problem', title: longT(esc(text)),
-          todo: n > 1 ? 'Answer one part at a time.' : 'Answer, then Check.' }, m);
+        var pv = pick ? pick.value() : x && x.noPick && area.lsPick ? area.lsPick.value() : null;
+        lastTask = { kicker: pv ? (pv === 'practice' ? 'Practice problem' : 'Worked problem') : 'Problem', title: longT(esc(text)),
+          todo: n > 1 ? 'Answer one part at a time.' : 'Answer, then Check.' };
+        s.task(lastTask, m);
         s.caption('', m);
       } else s.caption(esc(text), m);
       s.pills([], 'left', m);
@@ -998,6 +1001,8 @@
     if(window.MutationObserver) new MutationObserver(fresh).observe(area, { childList: true });
     area.addEventListener('bt-skill-done', function(){ setTimeout(checked, 0); });
     fresh();
+    // kit2: practice shares Test yourself with other parts; the adapter hides these and sets the task head again.
+    return { nodes: [stage, why, det, area], resync: function(){ if(std && lastTask){ s.task(lastTask, m); s.caption('', m); } } };
   }
 
   /* ------------------------------------------ Tool Studio: simulators */
@@ -1346,6 +1351,10 @@
                             ask on the same picture: the question goes in the side panel (dock).
        o.questionsLabel     the name of the part that holds the page's stimulus questions and mini FRQ (they keep
                             their own stage: the stimulus), when the tool built them (T.questions, T.frq).
+       A skills tool's practice problems (T.skillTool) are a part too, with their own stage (the problem's figure):
+                            { value: 'practice', label, practice: true } in o.parts places it (first when left out).
+                            Its problems (new numbers, each worked problem) are choices of the same one dropdown,
+                            and ?seed=... opens it.
        o.onShow(mode, part) after every switch: mode 'explore' | 'quiz', part the Test yourself part or null.
      Two modes only: Explore and Test yourself. With more than one part, ONE dropdown on the stage ("What to
      practice") picks it. #predict..., #questions and #frq open Test yourself on that part, as the old links did.
@@ -1360,6 +1369,10 @@
     kids.forEach(function(k){ if(k.matches('details.bt-how')){ k.open = true; s.add('about', k); } });
     studioKeep(s);
     var parts = (o.parts || []).slice(), hasQ = !!(qcard || frq);
+    var area = kids.filter(function(k){ return k.classList.contains('bt-problem'); })[0] || null, pmodes = kids.filter(function(k){ return k.classList.contains('bt-modes'); })[0] || null;
+    var pp = parts.filter(function(p){ return p.practice; })[0] || null;
+    if(area && !pp){ pp = { value: 'practice', label: o.practiceLabel || 'Practice problems', practice: true }; parts.unshift(pp); }
+    if(!area && pp){ parts.splice(parts.indexOf(pp), 1); pp = null; }
     if(hasQ) parts.push({ value: 'questions', label: o.questionsLabel || 'Questions', questions: true });
     var quizOn = parts.length > 0, cur = { mode: 'explore', part: parts[0] ? parts[0].value : null };
     function partOf(v){ return parts.filter(function(p){ return p.value === v; })[0] || parts[0] || null; }
@@ -1371,10 +1384,21 @@
       qst = studioQuestions(s, qcard, frq, { mode: 'quiz' }, o);
       qStage = s.root.querySelector('.ls-q-stage'); qDock = s.root.querySelector('.ls-qs');
     }
-    var pick = parts.length > 1 ? s.picker({ label: 'What to practice', items: parts.map(function(p){ return { value: p.value, label: p.label }; }), value: cur.part,
-      onChange: function(v){ show('quiz', v, true); } }, 'quiz') : null;
+    var prac = pp ? studioPractice(s, area, pmodes, { mode: 'quiz' }, { noPick: true }) : null, lp = pp && area.lsPick || null;
+    function isProb(v){ return !!lp && (v === 'practice' || /^set:/.test(v)); }
+    function pickVal(p){ return p.practice && lp ? lp.value() : p.value; }
+    var pick = null;
+    if(lp && (parts.length > 1 || lp.groups.length > 1 || lp.groups[0] && lp.groups[0].items.length > 1)){
+      // one dropdown: each problem of the practice part, then the other parts
+      var others = parts.filter(function(p){ return !p.practice; });
+      pick = s.picker({ label: 'What to practice', groups: [{ label: pp.label, items: [].concat.apply([], lp.groups.map(function(g){ return g.items; })) }]
+          .concat(others.length ? [{ label: o.othersLabel || 'More', items: others.map(function(p){ return { value: p.value, label: p.label }; }) }] : []), value: pickVal(partOf(cur.part)),
+        onChange: function(v){ if(isProb(v)){ show('quiz', pp.value, true); lp.onChange(v); pick.value(v); } else show('quiz', v, true); } }, 'quiz');
+      area.lsSync = function(){ if(cur.part === pp.value && pick.value() !== lp.value()) pick.value(lp.value()); };
+    } else if(parts.length > 1) pick = s.picker({ label: 'What to practice', items: parts.map(function(p){ return { value: p.value, label: p.label }; }), value: cur.part,
+      onChange: function(v){ show('quiz', v, true); } }, 'quiz');
     function show(mode, part, user){
-      var p = partOf(part), quiz = mode === 'quiz' && !!p, pic = !quiz || !p.questions;
+      var p = partOf(part), quiz = mode === 'quiz' && !!p, pic = !quiz || !(p.questions || p.practice), left = cur.part;
       cur = { mode: quiz ? 'quiz' : 'explore', part: p ? p.value : null };
       if(s.mode() !== cur.mode) s.mode(cur.mode);
       o.stage.hidden = !pic;
@@ -1382,9 +1406,11 @@
       parts.forEach(function(x){ if(x.dock) x.dock.hidden = !(quiz && x === p); });
       if(qStage) qStage.hidden = !(quiz && p.questions);
       if(qDock) qDock.hidden = !(quiz && p.questions);
-      if(pick && quiz && pick.value() !== p.value) pick.value(p.value);
+      if(prac){ prac.nodes.forEach(function(x){ x.hidden = !(quiz && p.practice); }); if(quiz && !p.practice && left === pp.value && s.done) s.done(false, 'quiz'); }
+      if(pick && quiz && pick.value() !== pickVal(p)) pick.value(pickVal(p));
       if(quiz){
-        if(p.questions){ if(qst && qst.resync) qst.resync(); }
+        if(p.practice){ prac.resync(); }
+        else if(p.questions){ if(qst && qst.resync) qst.resync(); }
         else { s.task(typeof p.task === 'function' ? p.task() : p.task || null, 'quiz'); s.caption('', 'quiz'); }
       }
       if(o.onShow) o.onShow(cur.mode, quiz ? cur.part : null);
@@ -1398,6 +1424,7 @@
     var h = location.hash, start = { mode: 'explore', part: cur.part };
     if(hasQ && /^#(questions|frq)\b/.test(h)) start = { mode: 'quiz', part: 'questions' };
     else parts.forEach(function(p){ if(!p.questions && new RegExp('^#' + p.value + '\\b').test(h)) start = { mode: 'quiz', part: p.value }; });
+    if(pp && seedFromUrl()) start = { mode: 'quiz', part: pp.value };
     s.mode(start.mode);
     show(start.mode, start.part, false);
     s.kit2 = { mode: function(){ return cur.mode; }, part: function(){ return cur.part; }, go: function(m, p){ show(m, p == null ? cur.part : p, false); } };
