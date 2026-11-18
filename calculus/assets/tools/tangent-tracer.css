@@ -207,3 +207,91 @@
 .tt-vt td.is-yours{box-shadow:inset 0 0 0 2px #D55E00;}
 .cd-pics .tt-pic svg{display:block;width:100%;height:auto;}
 .tt-skhow{margin:0;}
+
+/* ================================================================== tools v2 Explore (docs/tools-v2-tangent-tracer-brief.md)
+   One colour per idea, everywhere: the road and f ink, the slope and the tangent orange (s4), f′ blue (s2), the
+   secant purple (s5), "does not exist" the warning red. Lighter in dark mode. */
+.tt2{--tt-slope:#D55E00;--tt-slope-ink:#A84800;--tt-fp:#0072B2;--tt-fp-ink:#005A8C;--tt-sec:#7A4F9E;--tt-sec-ink:#5E3A7E;--tt-bad:#A83B2C;
+  --tt-sky0:#CFE6F7;--tt-sky1:#F5FAFE;--tt-grid:rgba(40,70,110,.13);--tt-hill:#6E9C52;--tt-road:#4A5058;--tt-shoulder:#C9BD9F;--tt-lane:#F7EBC4;
+  --tt-paper:#FBF8EF;--tt-pgrid:rgba(0,114,178,.16);--tt-car:#D55E00;--tt-car-dk:#8E3E00;--tt-glass:#DCEBF6;--tt-tire:#222831;
+  display:flex;flex-direction:column;gap:10px;min-height:0;flex:1 1 auto;}
+:root[data-theme="dark"] .tt2{--tt-slope:#F29A5C;--tt-slope-ink:#F6B98C;--tt-fp:#6BB4E8;--tt-fp-ink:#9BCDF0;--tt-sec:#C3A3E0;--tt-sec-ink:#D8C2EC;--tt-bad:#E0705F;
+  --tt-sky0:#0F2338;--tt-sky1:#1A3450;--tt-grid:rgba(200,220,245,.12);--tt-hill:#4E7A3A;--tt-road:#262B31;--tt-shoulder:#6B6352;--tt-lane:#E8D9A8;
+  --tt-paper:#1B2230;--tt-pgrid:rgba(107,180,232,.16);--tt-car:#E07A2E;--tt-car-dk:#7A3505;--tt-glass:#9FC3E0;--tt-tire:#0B0F14;}
+.tt2[hidden],.tt2 [hidden]{display:none !important;}
+.tt2 .tk2-tabs{margin:0;align-self:flex-start;max-width:100%;}
+.tt2 .tk2-head{gap:6px 12px;}
+.tt2-pick{display:inline-flex;align-items:center;gap:8px;flex:none;font:800 14px var(--font-ui);color:var(--muted);}
+.tt2-sel{min-height:38px;max-width:240px;padding:4px 30px 4px 10px;border:1.5px solid var(--line);border-radius:10px;background-color:var(--white);color:var(--ink);font:800 14px var(--font-ui);}
+.tt2-sel:focus-visible{outline:3px solid var(--cink);outline-offset:1px;}
+.tt2-scene{position:relative;flex:1 1 auto;min-height:440px;border-radius:18px;overflow:hidden;background:var(--surface2);}
+.tt2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;touch-action:pan-y;}
+@media (max-width:1023px){ .tt2-scene{flex:none;height:min(78vw,600px);min-height:420px;} }
+@media (max-width:640px){ .tt2-scene{height:max(440px,min(128vw,540px));border-radius:14px;} .tt2{gap:8px;} .tt2-pick-k{display:none;} .tt2-sel{max-width:190px;font-size:13.5px;} }
+.tt2-lines{display:flex;align-items:center;justify-content:space-between;gap:6px 18px;flex-wrap:wrap;flex:none;}
+.tt2-lines .tk2-play{flex:none;margin-left:auto;}
+.tt2 .tk2-cz.is-road{--cz:var(--tt-road);--cz-ink:var(--ink);}
+.tt2 .tk2-cz.is-slope{--cz:var(--tt-slope);--cz-ink:var(--tt-slope-ink);}
+.tt2 .tk2-cz.is-fp{--cz:var(--tt-fp);--cz-ink:var(--tt-fp-ink);}
+.tt2 .tk2-cz.is-sec{--cz:var(--tt-sec);--cz-ink:var(--tt-sec-ink);}
+.tt2 .tk2-cz.is-bad{--cz:var(--tt-bad);}
+.tt2 .tk2-tag{background:var(--tt-slope-ink);}
+:root[data-theme="dark"] .tt2 .tk2-tag{color:#1B0E03;}
+.tt2 .tk2-handle.is-quiet.is-new .tk2-dot::after{display:none;}
+.tt2 .tk2-handle.is-glide .tk2-knob,.tt2 .tk2-handle.is-glide .tk2-tag{transition:left .32s ease,top .32s ease;}
+@media (prefers-reduced-motion: reduce){ .tt2 .tk2-handle.is-glide .tk2-knob,.tt2 .tk2-handle.is-glide .tk2-tag{transition:none;} }
+/* the picture */
+.tt2s-sky0{stop-color:var(--tt-sky0);} .tt2s-sky1{stop-color:var(--tt-sky1);}
+.tt2-grid line{stroke:var(--tt-grid);stroke-width:1;}
+.tt2-pgrid line{stroke:var(--tt-pgrid);stroke-width:1;}
+.tt2-axis line{stroke:var(--ink);stroke-opacity:.72;stroke-width:1.3;}
+.tt2-ticks text{font:700 11.5px var(--font-ui);fill:var(--muted);}
+.tt2-frame{fill:none;stroke:var(--line);stroke-width:1;}
+.tt2-paper{fill:var(--tt-paper);}
+.tt2-hill{fill:var(--tt-hill);stroke:none;}
+.tt2-hill.h1{fill-opacity:.42;} .tt2-hill.h2{fill-opacity:.24;} .tt2-hill.h3{fill-opacity:.1;}
+.tt2-shoulder{fill:none;stroke:var(--tt-shoulder);stroke-linejoin:round;stroke-linecap:round;}
+.tt2-road{fill:none;stroke:var(--tt-road);stroke-linejoin:round;stroke-linecap:round;}
+.tt2-lane{fill:none;stroke:var(--tt-lane);stroke-width:2;stroke-linejoin:round;stroke-linecap:round;}
+.tt2-end{fill:var(--tt-lane);stroke:var(--tt-road);stroke-width:2.5;}
+.tt2-end.is-open{fill:var(--tt-road);stroke:var(--tt-lane);}
+.tt2-tan{stroke:var(--tt-slope);stroke-width:2.4;stroke-linecap:round;}
+.tt2-tan.is-thin{stroke-width:1.8;stroke-opacity:.9;}
+.tt2-tan.is-half{stroke-width:2.6;}
+.tt2-head{stroke:var(--tt-slope);stroke-width:5;stroke-linecap:round;fill:none;}
+.tt2-headtip{fill:var(--tt-slope);}
+.tt2-tri{fill:none;stroke:var(--tt-slope);stroke-width:2;stroke-opacity:.85;}
+.tt2-sec{stroke:var(--tt-sec);stroke-width:2.4;stroke-linecap:round;}
+.tt2-stri{fill:none;stroke:var(--tt-sec);stroke-width:1.8;stroke-opacity:.8;}
+.tt2-flag line{stroke:var(--ink);stroke-width:2;stroke-linecap:round;}
+.tt2-flag path{fill:var(--tt-sec);}
+.tt2-car-b{fill:var(--tt-car);stroke:var(--tt-car-dk);stroke-width:1.2;stroke-linejoin:round;}
+.tt2-car-w{fill:var(--tt-glass);stroke:var(--tt-car-dk);stroke-width:.8;}
+.tt2-car-l{fill:#FFE9A8;}
+.tt2-car-t{fill:var(--tt-tire);}
+.tt2-car-h{fill:#C9CED6;}
+.tt2-guide{stroke:var(--ink);stroke-opacity:.28;stroke-width:1.2;}
+.tt2-bar{stroke:var(--tt-slope);stroke-width:5;stroke-linecap:round;stroke-opacity:.8;}
+.tt2-ink{stroke:var(--tt-fp) !important;stroke-width:3 !important;}
+.tt2-inkdot{color:var(--tt-fp);stroke:var(--tt-fp);}
+.tt2-off{fill:var(--tt-slope);}
+.tt2-pen-b{fill:#2E3A4B;stroke:#11161E;stroke-width:1;}
+.tt2-pen-n{fill:var(--tt-fp);}
+.tt2-pen-c{fill:#C9A227;}
+:root[data-theme="dark"] .tt2-pen-b{fill:#B8C4D4;stroke:#E8EEF6;}
+.tt2-pen.is-up{opacity:.85;}
+.tt2-lab{font:800 13px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:3.5px;stroke-linejoin:round;}
+.tt2-c4{fill:var(--tt-slope-ink);} .tt2-c5{fill:var(--tt-sec-ink);} .tt2-c2{fill:var(--tt-fp-ink);} .tt2-cbad{fill:var(--tt-bad);} .tt2-croad{fill:var(--ink);}
+.tt2-zoom{fill:var(--ink);font-size:12.5px;}
+/* the magnifier */
+.tt2-lens-bg{fill:var(--tt-sky1);}
+.tt2-lens-rim{fill:none;stroke:#5C6673;stroke-width:6;}
+:root[data-theme="dark"] .tt2-lens-rim{stroke:#9AA6B6;}
+.tt2-lens-h{stroke:#5C6673;stroke-width:9;stroke-linecap:round;}
+:root[data-theme="dark"] .tt2-lens-h{stroke:#9AA6B6;}
+.tt2-ring{fill:none;stroke:#5C6673;stroke-width:2;}
+.tt2-beam{stroke:#5C6673;stroke-opacity:.45;stroke-width:1.3;fill:none;}
+.tt2-pdot{fill:var(--white);stroke:var(--ink);stroke-width:2.5;}
+.tt2-qdot{fill:var(--white);stroke:var(--tt-sec);stroke-width:3;}
+.tt2-ref .tt2-howref{margin:0 0 10px;}
+.tt2-fade{pointer-events:none;}

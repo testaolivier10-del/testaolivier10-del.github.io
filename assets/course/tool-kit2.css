@@ -103,6 +103,7 @@
 /* a draggable point on the picture (K.handle): the knob's look, placed by the tool */
 .tk2-handle{position:absolute;inset:0;pointer-events:none;}
 .tk2-handle > .tk2-knob{pointer-events:auto;outline:none;}
+.ls-root .tk2-handle > .tk2-knob:focus-visible,.tk2-handle > .tk2-knob:focus-visible{outline:none;}
 .tk2-handle.is-drag .tk2-knob{cursor:grabbing;}
 .tk2-handle.is-focus .tk2-dot{box-shadow:0 0 0 3px var(--cink),0 0 0 6px var(--white),0 0 0 9px var(--cink);}
 .tk2-handle.is-quiet .tk2-dot{width:18px;height:18px;box-shadow:0 0 0 2.5px color-mix(in srgb, var(--ink) 60%, transparent),0 1px 3px rgba(11,26,51,.25);}

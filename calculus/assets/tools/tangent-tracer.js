@@ -1,34 +1,28 @@
-/* Tangent tracer (simulator, the course's flagship trainer; docs/apcalc-spec.md
-   section 6). OWNED BY THIS TOOL ONLY. The model is ApCalcMath.tangentTracer
-   (calculus/assets/tools/math/tangent-tracer.js); curves are sampled with
-   ApCalcPlot (calc-plot.js), math is ApCalcTex (calc-math.js), the frame is
-   ApCalcTools.modes on the Tool Studio. Styles: tangent-tracer.css.
+/* Tangent tracer, tools v2 (docs/tools-v2-tangent-tracer-brief.md; the standard: docs/tools-v2-standard.md). The
+   first AP® Calculus AB tool on the shared kit (assets/course/tool-kit2.js), through the course adapter
+   ApCalcTools.studioKit2, and the first graph explorer: its points are K.handle. OWNED BY THIS TOOL ONLY. The model
+   is ApCalcMath.tangentTracer (calculus/assets/tools/math/tangent-tracer.js); curves are sampled with ApCalcPlot
+   (calc-plot.js), math is ApCalcTex (calc-math.js). Styles: tangent-tracer.css.
 
-   Explore: one stage, two linked graphs sharing x. Top: f, the point P, a
-   second point Q at distance h, the secant through them with its rise and
-   run, and (on tap) the tangent line. Bottom: the graph of f′, drawn by the
-   student as P moves (or by "Trace f′", which sweeps P across), with the
-   current secant slope closing in on f′(a). The dock: the function, the h
-   slider (log scale, both sides, toward 0 in the middle), h → 0, Tangent,
-   Trace f′, and the table of difference quotients for h = ±1 ... ±0.001.
-   At a corner, cusp, vertical tangent or jump the two one-sided slopes are
-   shown and the caption says why f′(a) does not exist. "Why?" holds the
-   limit definition with the numbers; "Numbers & view" the zoom (a smooth
-   curve looks straight under it, a corner does not), the f′ formula and the
-   values at P. Typed functions go through ApCalcExpr (no eval).
+   EXPLORE (free play, nothing graded, no side panel): two tabs, one idea each.
+     1 Slope at a point: the curve is a road (its centre line IS y = f(x) on the graph's grid). Drag P along it: a car
+       turned to the tangent, the tangent line and the heading arrow, the rise over a run of 1 (or less), the slope
+       on P's knob; below, on graph paper with the same x, a pen draws f′ wherever P has been and an orange bar is
+       the slope now. At a corner, cusp, vertical tangent, jump or end the one-sided directions are drawn, the pen
+       lifts and the cause line says why f′ does not exist. "Drive across" draws all of f′.
+     2 Secant to tangent: drag Q toward P from either side; the secant (purple) turns into the tangent (orange); a
+       magnifier keeps Q halfway out from P as h shrinks (its zoom follows h), and Q's knob moves into it. "Slide Q
+       in" takes h to 0.001.
+     The cause line (K.cause) says why, live; the curve picker sits by "Show me how"; "?" holds the numbers at P, the
+     table of secant slopes, the limit with the numbers, the formulas, your own typed curve and the keys.
+     Colours: the road and f in ink, the slope and the tangent orange (s4), f′ blue (s2), the secant purple (s5),
+     "does not exist" in the warning red.
 
-   Colours are the course's: f s1 (crimson), f′ s2 (blue), the tangent s4
-   (orange), the secant s5 (purple). Every curve and number comes from the
-   function the tool names.
-
-   Test yourself: seeded problems from tangentTracer.generate (six kinds:
-   estimate f′(a) from a tangent line; a difference quotient from a table
-   with units; which graph is f′; SKETCH f′ from f, graded point by point
-   with named misses; write the tangent line, typed and drawn live on the
-   graph; where f is not differentiable and why), on the shared drill
-   (ApCalcTools.drill: one step at a time, method hint, Show the answer)
-   like the other nine trainers; the figure on the stage shows each try,
-   first tries recorded as tangent-tracer:<context>:<step>. */
+   TEST YOURSELF (unchanged): seeded problems from tangentTracer.generate (six kinds: estimate f′(a) from a tangent
+   line; a difference quotient from a table with units; which graph is f′; SKETCH f′ from f, graded point by point
+   with named misses; write the tangent line, typed and drawn live on the graph; where f is not differentiable and
+   why), on the shared drill (ApCalcTools.drill: one step at a time, method hint, Show the answer); the figure on the
+   stage shows each try, first tries recorded as tangent-tracer:<context>:<step>. */
 (function(){
   'use strict';
   var T = window.ApCalcTools, M = window.ApCalcMath, P = window.ApCalcPlot;
@@ -145,473 +139,829 @@
     return [M.round(mid - span / 2, 1), M.round(mid + span / 2, 1)];
   }
 
-  /* =============================================================== EXPLORE */
+  /* ======================================================= EXPLORE (tools v2) */
+  /* docs/tools-v2-tangent-tracer-brief.md. Two tabs, one idea each:
+       1 Slope at a point: drag P (K.handle) along the road; the car on it points along the tangent, the rise and
+         run show the slope, and on the graph paper below a pen draws f′ wherever P has been.
+       2 Secant to tangent: drag Q toward P; the secant turns into the tangent; a magnifier keeps Q in view as h
+         shrinks, so a smooth curve looks straight and a corner stays a corner.
+     The road's centre line IS y = f(x) on the graph's own grid: every line and number comes from the function the
+     picker names (TT.FUNCS, or a typed one through ApCalcExpr). The reference ("?") holds the numbers, the table of
+     secant slopes, the limit with the numbers, the formulas, your own curve and the keys. */
   function explore(host, data){
-    var id = 'tt' + (++uid);
-    var S = { F: null, a: 1, h: 1, tan: false, zoom: 1, trace: [], all: false, cls: null, drag: null, anim: null, view: null, hSide: 1, fresh: true };
-    host.innerHTML = '<section class="bt-problem tt-ex" aria-labelledby="' + id + '-h"><h2 id="' + id + '-h" class="sr-only">Explore: the secant becomes the tangent</h2>' +
-      '<div class="tt-stage"><svg class="calc-plot tt-svg" role="group" aria-labelledby="' + id + '-d"><title id="' + id + '-d">Graphs of f and f′</title><defs class="tt-defs"></defs><g class="tt-bg"></g>' +
-      '<g class="tt-hp calc-plot-handle tt-handle" tabindex="0" role="slider" aria-label="Point P on the curve"><circle class="tt-hit" r="24"/><circle class="calc-plot-halo" r="17"/><circle class="tt-pdot" r="8"/></g>' +
-      '<g class="tt-hq calc-plot-handle tt-handle" tabindex="0" role="slider" aria-label="Point Q, the second point of the secant"><circle class="tt-hit" r="22"/><circle class="calc-plot-halo" r="14"/><circle class="tt-qdot" r="6.5"/></g></svg></div>' +
-      '<p class="sr-only tt-live"></p>' +
-      '<div class="tt-dock"><div class="tt-fpick"></div><div class="tt-own" hidden></div>' +
-      '<div class="tt-hctl"><div class="tt-hrow"><label for="' + id + '-hs" class="tt-hlab">Distance <i>h</i> from P to Q</label><output class="tt-hout" for="' + id + '-hs" aria-hidden="true"></output></div>' +
-      '<input type="range" id="' + id + '-hs" class="tt-hs" min="-1000" max="1000" step="1" value="1000">' +
-      '<div class="tt-ruler" aria-hidden="true"></div></div>' +
-      '<div class="tt-btns"><button type="button" class="bt-btn tt-shrink">h → 0</button><button type="button" class="bt-btn tt-tan" aria-pressed="false">Tangent</button><button type="button" class="bt-btn tt-trace" aria-pressed="false">Trace f′</button></div>' +
-      '<details class="tt-dqd"><summary>Secant slopes as h → 0</summary><div class="tt-dqw"></div></details></div>' +
-      '<div class="tt-why"></div><div class="tt-det"></div></section>';
-    var LS = null;
-    var q = function(s){ return host.querySelector(s) || (LS ? LS.root.querySelector(s) : null); };
-    var svg = q('.tt-svg'), bg = q('.tt-bg'), defs = q('.tt-defs'), hp = q('.tt-hp'), hq = q('.tt-hq'), title = q('#' + id + '-d');
-    var live = T.announcer(q('.tt-live')), hs = q('.tt-hs'), hout = q('.tt-hout');
-    var shrinkB = q('.tt-shrink'), tanB = q('.tt-tan'), traceB = q('.tt-trace');
-    var start = T.cue('Drag P along the curve, then slide h toward 0.');
-    q('.tt-dock').insertBefore(start.el, q('.tt-dock').firstChild);
+    var K = window.LevlKit2, id = 'tt' + (++uid);
+    var S = { F: TT.FUNCS.quad, tab: 'slope', a: 1, h: 1, dir: 1, trace: [], cls: null, mode: 'explore', took: null,
+      driveV: 0, slideV: 0, slideIn: true, qIn: false, ready: false };
+    var LENS = { show: 0, w: 1, frozen: null, cx: 0, cy: 0, R: 0 };
+    var G = null, LS = null;
+    function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
+    function now(){ return window.performance ? performance.now() : Date.now(); }
+    // A number as students read it: real minus, at most d decimals (2 by default), ∞ for an infinite slope.
+    function fmtN(v, d){
+      if(!isFinite(v)) return v > 0 ? '∞' : v < 0 ? '−∞' : '—';
+      var s = String(+(+v).toFixed(d == null ? 2 : d)); if(s === '-0') s = '0';
+      return s.replace('-', '−');
+    }
+    function hText(h){ return fmtN(h, Math.abs(h) < 0.0095 ? 4 : Math.abs(h) < 0.095 ? 3 : 2); }
 
-    /* --- the function picker --- */
-    var opts = TT.ORDER.map(function(k){ return { value: k, label: TT.FUNCS[k].name }; }).concat([{ value: 'custom', label: 'Type your own…' }]);
-    var pick = T.choiceSelect({ label: 'Function', options: opts, value: 'quad', onChange: function(v){ if(v === 'custom'){ own.hidden = false; ownIn.focus(); return; } own.hidden = true; setF(TT.FUNCS[v]); } });
-    pick.el.classList.add('bt-inline');
-    q('.tt-fpick').appendChild(pick.el);
-    var own = q('.tt-own');
-    own.innerHTML = '<div class="tt-ownrow"><span class="tt-ownl" aria-hidden="true">' + mm('f(x) =') + '</span><label class="sr-only" for="' + id + '-own">Type a function of x</label>' +
-      '<input type="text" id="' + id + '-own" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="x^3 - 2x" aria-describedby="' + id + '-op"><button type="button" class="bt-btn tt-owngo">Graph it</button></div>' +
-      '<div class="calc-expr-preview tt-ownp" id="' + id + '-op" aria-live="polite"></div>';
-    var ownIn = own.querySelector('input'), ownP = own.querySelector('.tt-ownp'), ownT = null;
-    ownIn.addEventListener('input', function(){
-      clearTimeout(ownT);
-      ownT = setTimeout(function(){
-        var v = ownIn.value.trim(), r = v ? M.read(v, { vars: ['x'] }) : null;
-        ownP.innerHTML = !r ? '<span class="bt-small">Try x^3 - 2x, sin(2x), |x - 1| or sqrt(x).</span>' : r.ok ? '<span class="bt-small">Reads as</span> ' + mm('f(x) = ' + r.tex) : '<span class="calc-expr-err">' + esc(r.error) + '</span>';
-      }, 120);
-    });
-    function goOwn(){
-      var c = TT.custom(ownIn.value);
-      if(!c.ok){ ownP.innerHTML = '<span class="calc-expr-err">' + esc(c.error || 'Type a function of x.') + '</span>'; return; }
-      c.y = autoY(c.f, -4, 4); c.dy = autoY(c.dn, -4, 4, 0.08); c.a = 1; c.h = 1;
-      if(!isFinite(c.f(c.a))){ for(var x = -4; x <= 4; x += 0.25) if(isFinite(c.f(x)) && isFinite(c.f(x + 0.5))){ c.a = x; break; } }
-      setF(c);
-    }
-    own.querySelector('.tt-owngo').addEventListener('click', goOwn);
-    ownIn.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); goOwn(); } });
+    /* ---------------------------------------------------- the stage */
+    var stage = el('div', 'tt2');
+    var tabs = K.tabs({ label: 'What to explore', big: true, value: S.tab,
+      items: [{ value: 'slope', label: 'Slope at a point', short: 'Slope' }, { value: 'secant', label: 'Secant to tangent', short: 'Secant' }],
+      onChange: function(v){ setTab(v); } });
+    stage.appendChild(tabs.el);
+    var head = K.head({ purpose: '', how: { label: 'Show me how', onClick: function(){ startTour(); } } });
+    var pickWrap = el('label', 'tt2-pick'), pick = el('select', 'tt2-sel');
+    pickWrap.innerHTML = '<span class="tt2-pick-k">Curve</span>';
+    pick.setAttribute('aria-label', 'Curve');
+    TT.ORDER.forEach(function(k){ var op = document.createElement('option'); op.value = k; op.textContent = TT.FUNCS[k].name; pick.appendChild(op); });
+    var opOwn = document.createElement('option'); opOwn.value = 'own'; opOwn.textContent = 'Type your own…'; pick.appendChild(opOwn);
+    pick.value = 'quad';
+    pickWrap.appendChild(pick);
+    head.el.insertBefore(pickWrap, head.how);
+    stage.appendChild(head.el);
+    var scene = el('div', 'tt2-scene'); scene.id = id + '-scene';
+    scene.innerHTML = '<svg class="tt2-svg calc-plot" role="img" aria-label="" xmlns="' + NS + '" data-ls-text="keep"><defs></defs><g class="tt2-static"></g><g class="tt2-dyn"></g></svg>';
+    stage.appendChild(scene);
+    tabs.el.querySelectorAll('.tk2-tab').forEach(function(b){ b.setAttribute('aria-controls', scene.id); });
+    var svg = scene.querySelector('svg'), defs = svg.querySelector('defs'), gS = svg.querySelector('.tt2-static'), gD = svg.querySelector('.tt2-dyn');
+    var layer = K.layer(scene);
+    var lines = el('div', 'tt2-lines'), cause = K.cause({ label: 'Why' });
+    lines.appendChild(cause.el);
+    var drive = K.player({ min: 0, max: 1, speed: 1 / 6, labels: { play: 'Drive across', pause: 'Pause', again: 'Drive again', rest: 'Drive across' },
+      get: function(){ return S.driveV; }, set: function(v){ driveTo(v); },
+      before: function(){ return driveStart(); }, onEnd: function(){ driveEnd(); } });
+    var slide = K.player({ min: 0, max: 1, speed: 1 / 2.6, labels: { play: 'Slide Q in', pause: 'Pause', again: 'Back to h = 1', rest: 'Slide Q in' },
+      get: function(){ return S.slideV; }, set: function(v){ slideTo(v); },
+      before: function(){ return slideStart(); }, onEnd: function(){ slideEnd(); } });
+    drive.el.classList.add('is-sm'); slide.el.classList.add('is-sm');
+    lines.appendChild(drive.el); lines.appendChild(slide.el);
+    stage.appendChild(lines);
+    var live = el('p', 'tk2-sr'); live.setAttribute('aria-live', 'polite'); stage.appendChild(live);
+    function say(t){ live.textContent = ''; setTimeout(function(){ live.textContent = t; }, 40); }
 
-    /* --- state changes --- */
-    function setF(F){
-      stopAnim();
-      S.F = F; S.a = F.a; S.h = F.h || 1; S.trace = []; S.zoom = 1; S.view = null; S.hSide = S.h < 0 ? -1 : 1;
-      addVisit(S.a, S.a);
-      ruler(); syncH(); zoomBtns(); recompute(); draw(); details();
+    /* ---------------------------------------------------- the curve and its view */
+    function view(){
+      var F = S.F;
+      return { x: F.x, y: F.y || [-5, 5], dy: F.dy || [-5, 5] };
     }
-    function hmax(){ var F = S.F; return Math.min(TT.HMAX, (F.x[1] - F.x[0]) / 3); }
-    // Labels under the slider, placed on its log scale.
-    function ruler(){
-      var mx = hmax(), lo = Math.log10(TT.HMIN), hi = Math.log10(mx);
-      q('.tt-ruler').innerHTML = [-1, -0.1, -0.01, 0, 0.01, 0.1, 1].filter(function(v){ return Math.abs(v) <= mx; }).map(function(v){
-        var pc = v === 0 ? 50 : 50 + (v < 0 ? -50 : 50) * (Math.log10(Math.abs(v)) - lo) / (hi - lo);
-        return '<span' + (v === 0 ? ' class="is-zero"' : '') + ' style="left:' + pc.toFixed(1) + '%">' + sv(v) + '</span>';
-      }).join('');
-    }
-    function syncH(){ hs.value = String(TT.sOf(S.h, hmax())); var t = 'h = ' + sv(S.h); hout.textContent = t; hs.setAttribute('aria-valuetext', t + (S.h > 0 ? ', Q to the right of P' : ', Q to the left of P')); }
-    function setH(h, quiet){
-      var mx = hmax();
-      if(!isFinite(h) || h === 0) h = S.hSide * TT.HMIN;
-      h = Math.max(-mx, Math.min(mx, h));
-      if(Math.abs(h) < TT.HMIN) h = (h < 0 ? -1 : 1) * TT.HMIN;
-      S.h = h; S.hSide = h < 0 ? -1 : 1;
-      syncH(); if(!quiet){ draw(); }
-    }
-    hs.addEventListener('input', function(){ stopAnim(); act(); var v = +hs.value; setH(v === 0 ? S.hSide * TT.HMIN : TT.hOf(v, hmax()), true); syncH(); draw(); });
+    function fa(){ return S.F.f(S.a); }
+    function slopeNow(){ return (S.cls || {}).kind === 'smooth' ? TT.slopeAt(S.F, S.a) : NaN; }
+    function dfun(){ var F = S.F; return F.d ? function(x){ return F.d(x); } : F.dn; }
+    function specials(){ var F = S.F; return (F.special || []).map(function(s){ return s.x; }).concat(F.join != null ? [F.join] : []); }
+    function recompute(){ S.cls = TT.classify(S.F.f, S.a); }
     function addVisit(x0, x1){
-      var lo = Math.min(x0, x1), hi = Math.max(x0, x1), out = [], merged = [lo, hi];
-      S.trace.forEach(function(iv){ if(iv[1] < merged[0] - 1e-9 || iv[0] > merged[1] + 1e-9) out.push(iv); else { merged[0] = Math.min(merged[0], iv[0]); merged[1] = Math.max(merged[1], iv[1]); } });
-      out.push(merged); out.sort(function(p, r){ return p[0] - r[0]; });
+      var lo = Math.min(x0, x1), hi = Math.max(x0, x1), out = [], m = [lo, hi];
+      S.trace.forEach(function(iv){ if(iv[1] < m[0] - 1e-9 || iv[0] > m[1] + 1e-9) out.push(iv); else { m[0] = Math.min(m[0], iv[0]); m[1] = Math.max(m[1], iv[1]); } });
+      out.push(m); out.sort(function(p, q){ return p[0] - q[0]; });
       S.trace = out;
     }
     function visited(x){ return S.trace.some(function(iv){ return x >= iv[0] - 1e-9 && x <= iv[1] + 1e-9 && iv[1] - iv[0] > 1e-6; }); }
-    function setA(a, from){
-      var F = S.F;
-      if(!isFinite(F.f(a))) return false;
-      var old = S.a; S.a = a;
-      if(from !== 'jump') addVisit(old, a); else addVisit(a, a);
-      recompute();
-      return true;
-    }
-    function recompute(){ S.cls = TT.classify(S.F.f, S.a); }
-    function act(){ if(S.fresh){ S.fresh = false; start.done(); if(G) say0(); } }
-    function say0(){ var F = S.F, a = S.a; say(TT.dq(F.f, a, S.h), (S.cls || {}).kind === 'smooth' ? TT.slopeAt(F, a) : NaN, F.f(a), F.f(a + S.h)); }
 
-    /* --- the view: zoomed windows follow P --- */
-    function windows(){
-      var F = S.F, x = F.x, y = F.y || [-5, 5], z = S.zoom;
-      if(z === 1) return { x: x, y: y };
-      if(!S.view || S.view.z !== z){
-        var hx = (x[1] - x[0]) / 2 / z, hy = (y[1] - y[0]) / 2 / z, fa = F.f(S.a);
-        S.view = { z: z, x: [S.a - hx, S.a + hx], y: [fa - hy, fa + hy] };
+    /* ---------------------------------------------------- geometry */
+    function geo(W, H){
+      var narrow = W < 560, pl = narrow ? 30 : 42, pr = narrow ? 24 : 26, pt = 10, V = view(), g = { W: W, H: H, narrow: narrow };
+      if(S.tab === 'slope'){
+        var gap = narrow ? 30 : 34, avail = H - pt - 20 - gap, aH = Math.round(avail * 0.6);
+        g.A = frameOf(V.x, V.y, pl, pt, W - pl - pr, aH);
+        g.B = frameOf(V.x, V.dy, pl, pt + aH + gap, W - pl - pr, avail - aH);
+      } else g.A = frameOf(V.x, V.y, pl, pt, W - pl - pr, H - pt - 22);
+      g.kx = g.A.W / (V.x[1] - V.x[0]); g.ky = g.A.H / (V.y[1] - V.y[0]);
+      g.rw = narrow ? 10 : 13;
+      g.car = clamp(W * 0.05, 40, 60);
+      return g;
+    }
+    /* The road as runs of pixel points: broken where f is undefined or jumps, with the exact special points in. */
+    function runsOf(f, A, lo, hi){
+      lo = lo == null ? A.x[0] : Math.max(lo, A.x[0]); hi = hi == null ? A.x[1] : Math.min(hi, A.x[1]);
+      var n = Math.max(80, Math.round((A.sx(hi) - A.sx(lo)) / 2)), xs = [], sp = specials(), jumps = (S.F.special || []).filter(function(s){ return s.kind === 'jump'; }).map(function(s){ return s.x; });
+      for(var i = 0; i <= n; i++) xs.push(lo + (hi - lo) * i / n);
+      sp.forEach(function(x){ if(x > lo && x < hi){ xs.push(x); xs.push(x - 1e-9); } });
+      xs.sort(function(p, q){ return p - q; });
+      var out = [], run = [], ymin = A.T - 60, ymax = A.B + 60;
+      function end(){ if(run.length > 1) out.push(run); run = []; }
+      for(var j = 0; j < xs.length; j++){
+        var x = xs[j], y = f(x);
+        if(!isFinite(y)){ end(); continue; }
+        if(run.length && jumps.some(function(jx){ return run[run.length - 1].x < jx && x >= jx; })) end();
+        run.push({ x: x, X: A.sx(x), Y: clamp(A.sy(y), ymin, ymax) });
       }
-      return S.view;
+      end();
+      return out;
     }
-    function recenter(){ if(S.zoom > 1){ S.view = null; } }
+    function pathOfRun(r, dy){ return 'M' + r.map(function(p){ return r1(p.X) + ' ' + r1(p.Y + (dy || 0)); }).join('L'); }
+    function bandOf(r, d0, d1){ return pathOfRun(r, d0) + 'L' + r.slice().reverse().map(function(p){ return r1(p.X) + ' ' + r1(p.Y + d1); }).join('L') + 'Z'; }
+    /* The direction of the road at x in picture units (radians), from a slope m. */
+    function angOf(m, dir){
+      if(!isFinite(m)) return (m > 0 ? -1 : 1) * Math.PI / 2 * (dir < 0 ? -1 : 1);
+      return Math.atan2(-m * G.ky, G.kx);
+    }
 
-    /* --- drawing --- */
-    var G = null;
-    function layout(w, h){
-      var narrow = w < 520, pl = narrow ? 34 : 42, pr = 12, pt = 8, gap = narrow ? 20 : 24;
-      var avail = h - pt - 16 - gap - 16, topH = Math.round(avail * 0.6), botH = avail - topH;
-      // Pass 3 (judge c): until f′ has something to show (Tangent, Trace f′, a traced stretch), f has the whole stage.
-      if(!fpVis()) topH = avail + 16 + gap - 6;
-      var W = Math.max(40, w - pl - pr), V = windows(), F = S.F;
-      var top = frameOf(V.x, V.y, pl, pt, W, topH);
-      var dy = F.dy || [-5, 5];
-      var bot = frameOf(V.x, dy, pl, pt + topH + 16 + gap, W, botH);
-      return { w: w, h: h, top: top, bot: bot, narrow: narrow };
+    /* ---------------------------------------------------- the static picture: sky, grid, hillside, road, paper */
+    function gridOf(F, cls){
+      var nx = Math.max(3, Math.round(F.W / 70)), ny = Math.max(3, Math.round(F.H / 46)), piX = S.F.piX && (F.x[1] - F.x[0]) > 3;
+      var xt = piX ? P.piTicks(F.x[0], F.x[1]) : P.ticks(F.x[0], F.x[1], nx), yt = P.ticks(F.y[0], F.y[1], ny);
+      for(var k0 = ny + 1; yt.length < 3 && k0 < 12; k0++) yt = P.ticks(F.y[0], F.y[1], k0);
+      for(var k1 = nx + 1; xt.length < 3 && k1 < 14 && !piX; k1++) xt = P.ticks(F.x[0], F.x[1], k1);
+      if(piX && xt.length > nx + 2) xt = xt.filter(function(v){ return Math.abs(Math.round(v / Math.PI) * Math.PI - v) < 1e-9; });
+      var o = ['<g class="' + cls + '">'];
+      xt.forEach(function(v){ var p = r1(F.sx(v)); o.push('<line x1="' + p + '" y1="' + F.T + '" x2="' + p + '" y2="' + F.B + '"/>'); });
+      yt.forEach(function(v){ var p = r1(F.sy(v)); o.push('<line x1="' + F.L + '" y1="' + p + '" x2="' + F.R + '" y2="' + p + '"/>'); });
+      o.push('</g>');
+      var ax = F.y[0] <= 0 && F.y[1] >= 0 ? F.sy(0) : null, ay = F.x[0] <= 0 && F.x[1] >= 0 ? F.sx(0) : null;
+      o.push('<g class="tt2-axis">' + (ax != null ? '<line x1="' + F.L + '" y1="' + r1(ax) + '" x2="' + F.R + '" y2="' + r1(ax) + '"/>' : '') + (ay != null ? '<line x1="' + r1(ay) + '" y1="' + F.T + '" x2="' + r1(ay) + '" y2="' + F.B + '"/>' : '') + '</g>');
+      var lab = [], lx = piX ? piLabel : tickLabel;
+      xt.forEach(function(v){ var px = F.sx(v); if(px < F.L - 0.5 || px > F.R + 0.5) return; lab.push('<text x="' + r1(px) + '" y="' + r1(F.B + 14) + '" text-anchor="middle">' + lx(v) + '</text>'); });
+      yt.forEach(function(v){ var py = F.sy(v); if(py < F.T + 6 || py > F.B + 0.5) return; lab.push('<text x="' + r1(F.L - 5) + '" y="' + r1(py + 4) + '" text-anchor="end">' + tickLabel(v) + '</text>'); });
+      o.push('<g class="tt2-ticks">' + lab.join('') + '</g>');
+      return o.join('');
     }
-    function fpVis(){ return !!(S.fpOn || S.all || S.trace.some(function(iv){ return iv[1] - iv[0] > 1e-6; })); }
-    var sized = null, lastVis = null;
-    function draw(){
-      if(!S.F || !sized) return;
-      var dims = sized.size(); if(!dims[0]) return;
-      var w = Math.round(dims[0]), h = Math.round(dims[1]);
-      if(w < 60 || h < 60) return;
-      G = layout(w, h);
-      svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h); svg.setAttribute('width', w); svg.setAttribute('height', h);
-      var F = S.F, A = G.top, B = G.bot, a = S.a, hh = S.h, fa = F.f(a), xq = a + hh, fq = F.f(xq), sec = TT.dq(F.f, a, hh);
-      var c = S.cls || { kind: 'smooth' }, slope = c.kind === 'smooth' ? TT.slopeAt(F, a) : NaN;
-      var dfun = F.d ? function(x){ return F.d(x); } : F.dn;
-      var o = [], c1 = id + '-c1', c2 = id + '-c2';
-      defs.innerHTML = clipDef(c1, A) + clipDef(c2, B);
-      // Top: f
-      o.push(axesOf(A, { piX: F.piX }));
-      o.push('<text class="tt-ptitle tt-c1" x="' + (A.L + 8) + '" y="' + (A.T + 16) + '">y = f(x)</text>');
-      o.push('<g clip-path="url(#' + c1 + ')">');
-      o.push(curvePath(F.f, A, null, null, 's1 tt-f'));
-      (F.dots || []).forEach(function(d){ o.push(dot(A, d.at[0], d.at[1], 's1', 4.5, d.open)); });
-      var tanOn = S.tan || (S.anim && S.anim.kind === 'trace');
-      if(tanOn){
-        if(c.kind === 'smooth' && isFinite(slope)) o.push(lineAcross(A, a, fa, slope, 'tt-tanl s4'));
-        else if(c.kind === 'vertical' || c.kind === 'cusp') o.push(lineAcross(A, a, fa, Infinity, 'tt-tanl s4 is-half'));
-        else if(c.kind === 'corner'){
-          if(isFinite(c.L)) o.push(lineAcross(A, a, fa, c.L, 'tt-tanl s4 is-half', '', null, a));
-          if(isFinite(c.R)) o.push(lineAcross(A, a, fa, c.R, 'tt-tanl s4 is-half', '', a, null));
+    function drawStatic(){
+      var A = G.A, B = G.B, F = S.F, o = [];
+      defs.innerHTML = clipDef(id + '-cA', A) + (B ? clipDef(id + '-cB', B) : '') +
+        '<linearGradient id="' + id + '-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="tt2s-sky0"/><stop offset="1" class="tt2s-sky1"/></linearGradient>' +
+        '<clipPath id="' + id + '-cL"><circle cx="0" cy="0" r="1"/></clipPath>';
+      o.push('<rect class="tt2-sky" x="' + A.L + '" y="' + A.T + '" width="' + r1(A.W) + '" height="' + r1(A.H) + '" fill="url(#' + id + '-sky)"/>');
+      o.push(gridOf(A, 'tt2-grid'));
+      var runs = runsOf(F.f, A), rw = G.rw;
+      o.push('<g clip-path="url(#' + id + '-cA)">');
+      // the hillside under the road: three soft bands that fade (not an area down to the axis)
+      runs.forEach(function(r){ o.push('<path class="tt2-hill h1" d="' + bandOf(r, rw * 0.4, rw * 0.4 + 16) + '"/><path class="tt2-hill h2" d="' + bandOf(r, rw * 0.4 + 16, rw * 0.4 + 36) + '"/><path class="tt2-hill h3" d="' + bandOf(r, rw * 0.4 + 36, rw * 0.4 + 62) + '"/>'); });
+      runs.forEach(function(r){ var d = pathOfRun(r); o.push('<path class="tt2-shoulder" style="stroke-width:' + (rw + 6) + 'px" d="' + d + '"/><path class="tt2-road" style="stroke-width:' + rw + 'px" d="' + d + '"/><path class="tt2-lane" d="' + d + '"/>'); });
+      (F.dots || []).forEach(function(d){ o.push('<circle class="tt2-end' + (d.open ? ' is-open' : '') + '" cx="' + r1(A.sx(d.at[0])) + '" cy="' + r1(A.sy(d.at[1])) + '" r="' + (rw * 0.42 + 1).toFixed(1) + '"/>'); });
+      (F.special || []).filter(function(s){ return s.kind === 'endpoint'; }).forEach(function(s){ var y = F.f(s.x); if(isFinite(y)) o.push('<circle class="tt2-end" cx="' + r1(A.sx(s.x)) + '" cy="' + r1(A.sy(y)) + '" r="' + (rw * 0.42 + 1).toFixed(1) + '"/>'); });
+      o.push('</g>');
+      o.push('<rect class="tt2-frame" x="' + A.L + '" y="' + A.T + '" width="' + r1(A.W) + '" height="' + r1(A.H) + '"/>');
+      if(B){
+        o.push('<rect class="tt2-paper" x="' + B.L + '" y="' + B.T + '" width="' + r1(B.W) + '" height="' + r1(B.H) + '"/>');
+        o.push(gridOf(B, 'tt2-pgrid'));
+        o.push('<rect class="tt2-frame" x="' + B.L + '" y="' + B.T + '" width="' + r1(B.W) + '" height="' + r1(B.H) + '"/>');
+      }
+      gS.innerHTML = o.join('');
+    }
+
+    /* ---------------------------------------------------- labels that never overlap */
+    var boxes = [];
+    function free(b){ return boxes.every(function(q){ return b[2] < q[0] || b[0] > q[2] || b[3] < q[1] || b[1] > q[3]; }); }
+    function inside(b, F){ return b[0] >= F.L + 2 && b[2] <= F.R - 2 && b[1] >= F.T + 2 && b[3] <= F.B - 2; }
+    function tw(t, size){ return t.length * size * 0.56 + 6; }
+    /* Put text at the first candidate [x, y, anchor] that is inside the frame and clear of everything placed. */
+    function label(o, t, cls, cands, F, size){
+      size = size || 13;
+      for(var i = 0; i < cands.length; i++){
+        var c = cands[i], w = tw(t, size), x0 = c[2] === 'end' ? c[0] - w : c[2] === 'middle' ? c[0] - w / 2 : c[0], b = [x0 - 2, c[1] - size, x0 + w + 2, c[1] + 4];
+        if(inside(b, F) && free(b)){ boxes.push(b); o.push('<text class="tt2-lab ' + cls + '" x="' + r1(c[0]) + '" y="' + r1(c[1]) + '" text-anchor="' + (c[2] || 'start') + '">' + esc(t) + '</text>'); return true; }
+      }
+      return false;
+    }
+    function block(x, y, r){ boxes.push([x - r, y - r, x + r, y + r]); }
+
+    /* ---------------------------------------------------- drawn things */
+    /* The car, nose along +x, wheels on the road; origin at P on the centre line. */
+    function car(L, rw, cls){
+      var wr = L * 0.13, cy = -rw / 2 - wr + 2.5, bb = cy + wr * 0.15, bt = bb - L * 0.24, ct = bt - L * 0.2;
+      return '<g class="tt2-car ' + (cls || '') + '">' +
+        '<path class="tt2-car-b" d="M' + r1(-L / 2) + ' ' + r1(bb) + 'L' + r1(L / 2) + ' ' + r1(bb) + 'Q' + r1(L / 2 + 2) + ' ' + r1(bt) + ' ' + r1(L * 0.36) + ' ' + r1(bt) + 'L' + r1(L * 0.2) + ' ' + r1(bt) +
+          'L' + r1(L * 0.08) + ' ' + r1(ct) + 'L' + r1(-L * 0.26) + ' ' + r1(ct) + 'L' + r1(-L * 0.38) + ' ' + r1(bt) + 'L' + r1(-L / 2 + 2) + ' ' + r1(bt) + 'Q' + r1(-L / 2) + ' ' + r1(bt) + ' ' + r1(-L / 2) + ' ' + r1(bb + (bt - bb) * 0.4) + 'Z"/>' +
+        '<path class="tt2-car-w" d="M' + r1(L * 0.03) + ' ' + r1(bt - 1.5) + 'L' + r1(L * 0.13) + ' ' + r1(bt - 1.5) + 'L' + r1(L * 0.05) + ' ' + r1(ct + 2.5) + 'L' + r1(-L * 0.08) + ' ' + r1(ct + 2.5) + 'Z' +
+          'M' + r1(-L * 0.12) + ' ' + r1(bt - 1.5) + 'L' + r1(-L * 0.12) + ' ' + r1(ct + 2.5) + 'L' + r1(-L * 0.24) + ' ' + r1(ct + 2.5) + 'L' + r1(-L * 0.32) + ' ' + r1(bt - 1.5) + 'Z"/>' +
+        '<rect class="tt2-car-l" x="' + r1(L / 2 - 4) + '" y="' + r1(bt + 3) + '" width="4" height="' + r1(L * 0.07) + '" rx="1.5"/>' +
+        [-0.3, 0.3].map(function(k){ return '<circle class="tt2-car-t" cx="' + r1(L * k) + '" cy="' + r1(cy) + '" r="' + r1(wr) + '"/><circle class="tt2-car-h" cx="' + r1(L * k) + '" cy="' + r1(cy) + '" r="' + r1(wr * 0.42) + '"/>'; }).join('') +
+        '</g>';
+    }
+    function carAt(o, px, py, ang, dir){
+      o.push('<g transform="translate(' + r1(px) + ' ' + r1(py) + ') rotate(' + (ang * 180 / Math.PI).toFixed(2) + ')' + (dir < 0 ? ' scale(-1 1)' : '') + '">' + car(G.car, G.rw) + '</g>');
+      block(px, py - G.car * 0.25, G.car * 0.55);
+    }
+    /* A line y = y0 + m (x - x0) across frame F (or a vertical line when m is infinite), on [lo, hi]. */
+    function across(F, x0, y0, m, cls, lo, hi){ return lineAcross(F, x0, y0, m, cls, '', lo, hi); }
+    /* The ends of that line inside F, as pixel points, for its label. */
+    function endsIn(F, x0, y0, m){
+      if(!isFinite(m)) return [[F.sx(x0), F.T + 16], [F.sx(x0), F.B - 8]];
+      var pts = [], xa = F.x[0], xb = F.x[1];
+      var ya = y0 + m * (xa - x0), yb = y0 + m * (xb - x0);
+      function clip(x, y){ if(y > F.y[1]){ x = x0 + (F.y[1] - y0) / m; y = F.y[1]; } else if(y < F.y[0]){ x = x0 + (F.y[0] - y0) / m; y = F.y[0]; } return [F.sx(x), F.sy(y)]; }
+      pts.push(clip(xa, ya)); pts.push(clip(xb, yb));
+      return pts;
+    }
+    function lineLabel(o, F, x0, y0, m, t, cls, px, py){
+      var e = endsIn(F, x0, y0, m), c = [];
+      e.sort(function(p, q){ return Math.hypot(q[0] - px, q[1] - py) - Math.hypot(p[0] - px, p[1] - py); });
+      e.forEach(function(p){
+        var f = 0.86, x = px + (p[0] - px) * f, y = py + (p[1] - py) * f, right = p[0] > px;
+        c.push([x, y - 8, right ? 'end' : 'start'], [x, y + 18, right ? 'end' : 'start']);
+        f = 0.6; x = px + (p[0] - px) * f; y = py + (p[1] - py) * f;
+        c.push([x, y - 8, right ? 'end' : 'start'], [x, y + 18, right ? 'end' : 'start']);
+      });
+      return label(o, t, cls, c, F);
+    }
+    function arrowHead(x, y, ang, s){
+      var a1 = ang + Math.PI * 0.83, a2 = ang - Math.PI * 0.83;
+      return 'M' + r1(x) + ' ' + r1(y) + 'L' + r1(x + Math.cos(a1) * s) + ' ' + r1(y + Math.sin(a1) * s) + 'L' + r1(x + Math.cos(a2) * s) + ' ' + r1(y + Math.sin(a2) * s) + 'Z';
+    }
+    /* The pen that draws f′, its tip at (x, y) on the paper. */
+    function pen(x, y, lifted){
+      var dy = lifted ? -16 : 0;
+      return '<g class="tt2-pen' + (lifted ? ' is-up' : '') + '" transform="translate(' + r1(x) + ' ' + r1(y + dy) + ') rotate(-38)">' +
+        '<path class="tt2-pen-b" d="M0 0L5 -12L5 -46Q5 -50 0 -50Q-5 -50 -5 -46L-5 -12Z"/><path class="tt2-pen-n" d="M0 0L5 -12L-5 -12Z"/><rect class="tt2-pen-c" x="-5" y="-36" width="10" height="5"/></g>';
+    }
+    function niceRun(A, a, m){
+      var opts = [1, 0.5, 0.25, 0.2, 0.1, 2];
+      for(var i = 0; i < opts.length; i++){
+        var r = opts[i];
+        for(var s = 1; s >= -1; s -= 2){
+          var x1 = a + s * r, y0 = S.F.f(a), y1 = y0 + m * s * r, runPx = Math.abs(A.sx(x1) - A.sx(a)), risePx = Math.abs(A.sy(y1) - A.sy(y0));
+          if(x1 < A.x[0] || x1 > A.x[1] || runPx < 34 || runPx > A.W * 0.4 || risePx > A.H * 0.5 || A.sy(y1) < A.T + 4 || A.sy(y1) > A.B - 4) continue;
+          return { r: r, s: s };
         }
       }
-      var showSec = !(S.anim && S.anim.kind === 'trace');
-      var oneSided = c.kind !== 'smooth' && c.kind !== 'undefined';
-      if(showSec){
-        // At a corner, cusp, jump or vertical tangent: both secants (Q on each side).
-        var sides = oneSided ? [-Math.abs(hh), Math.abs(hh)] : [hh];
-        sides.forEach(function(hv){
-          var xv = a + hv, fv = F.f(xv), sl = TT.dq(F.f, a, hv);
-          if(!isFinite(fv)) return;
-          o.push(oneSided ? lineAcross(A, a, fa, sl, 'tt-secl s5' + (hv !== hh ? ' is-other' : ''), '', hv < 0 ? null : a, hv < 0 ? a : null) : lineAcross(A, a, fa, sl, 'tt-secl s5'));
-          if(hv === hh){
-            var px = A.sx(xv), py0 = A.sy(fa), py1 = A.sy(fv);
-            o.push('<path class="tt-tri s5" d="M' + r1(A.sx(a)) + ' ' + r1(py0) + 'H' + r1(px) + 'V' + r1(py1) + '"/>');
-            if(Math.abs(px - A.sx(a)) > 34) o.push('<text class="tt-tril tt-c5" x="' + r1((A.sx(a) + px) / 2) + '" y="' + r1(py0 + (py1 > py0 ? -6 : 15)) + '" text-anchor="middle">h</text>');
-            if(Math.abs(py1 - py0) > 30) o.push('<text class="tt-tril tt-c5" x="' + r1(px + (hv > 0 ? 6 : -6)) + '" y="' + r1((py0 + py1) / 2 + 4) + '" text-anchor="' + (hv > 0 ? 'start' : 'end') + '">' + (G.narrow ? 'Δy' : 'f(a + h) − f(a)') + '</text>');
-          } else o.push(dot(A, xv, fv, 's5', 4, true));
+      return null;
+    }
+
+    /* ---------------------------------------------------- the moving picture */
+    function draw(){
+      if(!G || !S.ready) return;
+      boxes = [];
+      var A = G.A, B = G.B, F = S.F, a = S.a, y0 = fa(), c = S.cls || { kind: 'smooth' }, m = slopeNow(), o = [];
+      var Px = A.sx(a), Py = A.sy(y0);
+      block(Px, Py, 22);
+      if(S.tab === 'slope'){ var ts = tagSideP(); boxes.push(ts === 'down' ? [Px - 48, Py + 16, Px + 48, Py + 52] : ts === 'right' ? [Px + 16, Py - 16, Px + 110, Py + 16] : [Px - 110, Py - 16, Px - 16, Py + 16]); }
+      var dir = S.dir;
+      if(S.tab === 'slope'){
+        // the f′ paper: the ink where P has been, the slope now as a bar, the pen
+        var df = dfun();
+        o.push('<g clip-path="url(#' + id + '-cB)">');
+        S.trace.forEach(function(iv){ if(iv[1] - iv[0] > 1e-6) o.push(curvePath(df, B, iv[0], iv[1], 'tt2-ink')); });
+        (F.special || []).forEach(function(sp){
+          if(!(visited(sp.x) || Math.abs(sp.x - a) < 1e-9)) return;
+          if(sp.kind === 'corner') o.push(dot(B, sp.x, sp.L, 'tt2-inkdot', 4.5, true) + dot(B, sp.x, sp.R, 'tt2-inkdot', 4.5, true));
+          if(sp.kind === 'jump' && isFinite(sp.R)) o.push(dot(B, sp.x, sp.R, 'tt2-inkdot', 4.5, true));
         });
+        o.push('</g>');
+        var gx = r1(Px);
+        if(Px >= A.L && Px <= A.R) o.push('<line class="tt2-guide" x1="' + gx + '" y1="' + r1(clamp(Py, A.T, A.B)) + '" x2="' + gx + '" y2="' + B.B + '"/>');
+        var smooth = c.kind === 'smooth' && isFinite(m);
+        if(smooth){
+          var b0 = clamp(B.sy(0), B.T, B.B), b1 = clamp(B.sy(m), B.T, B.B);
+          o.push('<line class="tt2-bar" x1="' + gx + '" y1="' + r1(b0) + '" x2="' + gx + '" y2="' + r1(b1) + '"/>');
+          o.push(pen(Px, b1, false));
+          if(B.sy(m) < B.T || B.sy(m) > B.B) o.push('<path class="tt2-off" d="' + arrowHead(Px + 12, B.sy(m) < B.T ? B.T + 2 : B.B - 2, B.sy(m) < B.T ? -Math.PI / 2 : Math.PI / 2, 8) + '"/>');
+        } else o.push(pen(Px, clamp(B.sy(0), B.T + 20, B.B), true));
+        boxes.push([B.L, B.T, B.L + 150, B.T + 22]);
+        o.push('<text class="tt2-lab tt2-c2" x="' + (B.L + 8) + '" y="' + (B.T + 17) + '">' + (G.narrow ? 'f′(x): slope of f' : 'f′(x), the slope of f') + '</text>');
+        if(!smooth) label(o, 'no value', 'tt2-cbad', [[Px + 14, clamp(B.sy(0), B.T + 16, B.B) - 14, 'start'], [Px - 14, clamp(B.sy(0), B.T + 16, B.B) - 14, 'end']], B, 12.5);
+        // on the road: the tangent, the heading, the rise and run, the car
+        o.push('<g clip-path="url(#' + id + '-cA)">');
+        if(smooth){
+          o.push(across(A, a, y0, m, 'tt2-tan'));
+          var ang = angOf(m) + (dir < 0 ? Math.PI : 0), u = [Math.cos(ang), Math.sin(ang)], s0 = G.car * 0.5 + 6, s1 = G.car * 0.5 + (G.narrow ? 44 : 64);
+          o.push('<path class="tt2-head" d="M' + r1(Px + u[0] * s0) + ' ' + r1(Py + u[1] * s0) + 'L' + r1(Px + u[0] * (s1 - 6)) + ' ' + r1(Py + u[1] * (s1 - 6)) + '"/><path class="tt2-headtip" d="' + arrowHead(Px + u[0] * s1, Py + u[1] * s1, ang, 11) + '"/>');
+          block(Px + u[0] * (s1 - 10), Py + u[1] * (s1 - 10), 12);
+          var rr = niceRun(A, a, m);
+          if(rr){
+            var x1 = a + rr.s * rr.r, X1 = A.sx(x1), Y1 = A.sy(y0 + m * rr.s * rr.r);
+            o.push('<path class="tt2-tri" d="M' + r1(Px) + ' ' + r1(Py) + 'H' + r1(X1) + 'V' + r1(Y1) + '"/>');
+            S.tri = { run: rr.r, rise: m * rr.r };
+          } else S.tri = null;
+        } else {
+          S.tri = null;
+          if(c.kind === 'corner'){
+            if(isFinite(c.L)) o.push(across(A, a, y0, c.L, 'tt2-tan is-half', null, a));
+            if(isFinite(c.R)) o.push(across(A, a, y0, c.R, 'tt2-tan is-half', a, null));
+          } else if(c.kind === 'vertical' || c.kind === 'cusp') o.push(across(A, a, y0, Infinity, 'tt2-tan is-half'));
+        }
+        var cm = smooth ? m : c.kind === 'corner' || c.kind === 'vertical' || c.kind === 'cusp' ? (dir < 0 ? c.R : c.L) : c.kind === 'endpoint' ? (isFinite(c.R) || Math.abs(c.R) === Infinity ? c.R : c.L) : (isFinite(c.R) ? c.R : c.L);
+        if(!isFinite(cm) && !(Math.abs(cm) === Infinity)) cm = 0;
+        carAt(o, Px, Py, angOf(cm, dir), dir);
+        o.push('</g>');
+        // labels on the road (after the shapes, placed clear of them)
+        if(smooth){
+          if(S.tri){
+            var tx1 = A.sx(a + S.tri.run * (rr.s)), ty0 = Py, ty1 = A.sy(y0 + m * rr.s * rr.r), rs = rr.s;
+            label(o, 'run ' + fmtN(S.tri.run), 'tt2-c4', [[(Px + tx1) / 2, ty1 < ty0 ? ty0 + 17 : ty0 - 8, 'middle'], [(Px + tx1) / 2, ty1 < ty0 ? ty0 - 8 : ty0 + 17, 'middle']], A, 12.5);
+            if(Math.abs(ty1 - ty0) > 14) label(o, 'rise ' + fmtN(S.tri.rise), 'tt2-c4', [[tx1 + (rs > 0 ? 7 : -7), (ty0 + ty1) / 2 + 4, rs > 0 ? 'start' : 'end'], [tx1 + (rs > 0 ? -7 : 7), (ty0 + ty1) / 2 + 4, rs > 0 ? 'end' : 'start']], A, 12.5);
+          }
+          lineLabel(o, A, a, y0, m, 'tangent', 'tt2-c4', Px, Py);
+        } else if(c.kind === 'corner'){
+          if(isFinite(c.L)) label(o, 'from the left', 'tt2-c4', [[A.sx(a - (A.x[1] - A.x[0]) * 0.12), A.sy(y0 - c.L * (A.x[1] - A.x[0]) * 0.12) - 10, 'middle'], [A.sx(a - (A.x[1] - A.x[0]) * 0.12), A.sy(y0 - c.L * (A.x[1] - A.x[0]) * 0.12) + 20, 'middle']], A, 12.5);
+          if(isFinite(c.R)) label(o, 'from the right', 'tt2-c4', [[A.sx(a + (A.x[1] - A.x[0]) * 0.12), A.sy(y0 + c.R * (A.x[1] - A.x[0]) * 0.12) - 10, 'middle'], [A.sx(a + (A.x[1] - A.x[0]) * 0.12), A.sy(y0 + c.R * (A.x[1] - A.x[0]) * 0.12) + 20, 'middle']], A, 12.5);
+        } else if(c.kind === 'vertical' || c.kind === 'cusp') label(o, c.kind === 'cusp' ? 'cusp' : 'vertical tangent', 'tt2-c4', [[Px + 10, A.T + 18, 'start'], [Px - 10, A.T + 18, 'end']], A, 12.5);
+        else if(c.kind === 'jump') label(o, 'jump', 'tt2-cbad', [[Px + 14, Py + 24, 'start'], [Px - 14, Py + 24, 'end']], A, 12.5);
+        roadLabel(o);
+      } else {
+        drawSecant(o, A, a, y0, m, c, Px, Py);
       }
+      gD.innerHTML = o.join('');
+      svg.setAttribute('aria-label', picText());
+      hp.place(); if(hq) hq.place();
+      if(cue.active()) cue.place();
+      words();
+    }
+    function tagSideP(){
+      if(!G) return 'down';
+      var y = G.A.sy(fa()), x = G.A.sx(S.a);
+      if(y < G.A.B - 50 && x > G.A.L + 44 && x < G.A.R - 44) return 'down';
+      return x < G.A.R - 130 ? 'right' : 'left';
+    }
+    function roadLabel(o){
+      var A = G.A, F = S.F, xs = [0.9, 0.1, 0.75, 0.25], pa = (S.a - A.x[0]) / (A.x[1] - A.x[0]);
+      xs.sort(function(p, q){ return Math.abs(q - pa) - Math.abs(p - pa); });
+      for(var i = 0; i < xs.length; i++){
+        var x = A.x[0] + (A.x[1] - A.x[0]) * xs[i], y = F.f(x);
+        if(!isFinite(y) || y < A.y[0] || y > A.y[1]) continue;
+        var X = A.sx(x), Y = A.sy(y), d = (F.f(x + 1e-4) - y) / 1e-4, steep = isFinite(d) && Math.abs(d * G.ky / G.kx) > 0.7;
+        var c = steep ? (d < 0 ? [[X + G.rw + 10, Y + 4, 'start'], [X - G.rw - 10, Y + 4, 'end']] : [[X - G.rw - 10, Y + 4, 'end'], [X + G.rw + 10, Y + 4, 'start']]) : [[X, Y - G.rw - 8, 'middle'], [X, Y + G.rw + 20, 'middle']];
+        if(label(o, 'y = f(x)', 'tt2-croad', c, A, 13)) return;
+      }
+    }
+
+    /* Tab 2: the secant through P and Q, the tangent it closes in on, and the magnifier. */
+    function qPoint(){ var x = S.a + S.h, y = S.F.f(x); return { x: x, y: y, ok: isFinite(y) && x >= G.A.x[0] && x <= G.A.x[1] }; }
+    function lensWanted(){
+      if(S.tab !== 'secant' || !G) return false;
+      var q = qPoint(); if(!q.ok) return false;
+      return Math.hypot(G.A.sx(q.x) - G.A.sx(S.a), G.A.sy(q.y) - G.A.sy(fa())) < 64;
+    }
+    function lensGeo(){
+      var A = G.A, R = clamp(Math.min(A.W, A.H) * 0.25, 70, 132), Px = A.sx(S.a), Py = A.sy(fa());
+      var cands = [[A.R - R - 16, A.T + R + 16], [A.L + R + 16, A.T + R + 16], [A.R - R - 16, A.B - R - 16], [A.L + R + 16, A.B - R - 16]];
+      cands.sort(function(p, q){ return Math.hypot(q[0] - Px, q[1] - Py) - Math.hypot(p[0] - Px, p[1] - Py); });
+      return { cx: cands[0][0], cy: cands[0][1], R: R };
+    }
+    function lensMap(L){
+      var px = L.R / LENS.w, py = px * G.ky / G.kx, a = S.a, y0 = fa();
+      return { sx: function(x){ return L.cx + (x - a) * px; }, sy: function(y){ return L.cy - (y - y0) * py; }, px: px, py: py };
+    }
+    function drawSecant(o, A, a, y0, m, c, Px, Py){
+      var F = S.F, q = qPoint(), sec = q.ok ? (q.y - y0) / S.h : NaN, smooth = c.kind === 'smooth' && isFinite(m);
+      o.push('<g clip-path="url(#' + id + '-cA)">');
+      if(smooth) o.push(across(A, a, y0, m, 'tt2-tan is-thin'));
+      if(q.ok && isFinite(sec)){
+        o.push(across(A, a, y0, sec, 'tt2-sec'));
+        var Qx = A.sx(q.x), Qy = A.sy(q.y);
+        if(Math.abs(Qx - Px) > 6) o.push('<path class="tt2-stri" d="M' + r1(Px) + ' ' + r1(Py) + 'H' + r1(Qx) + 'V' + r1(Qy) + '"/>');
+        o.push('<g class="tt2-flag" transform="translate(' + r1(Qx) + ' ' + r1(Qy) + ')"><line x1="0" y1="0" x2="0" y2="-38"/><path d="M0 -38L18 -32L0 -26Z"/></g>');
+      }
+      carAt(o, Px, Py, angOf(smooth ? m : isFinite(c.R) ? c.R : isFinite(c.L) ? c.L : 0, 1), 1);
       o.push('</g>');
-      // guide from P down to f′
-      var fpCut = o.length, gx = r1(A.sx(a));
-      if(gx >= A.L && gx <= A.R) o.push('<line class="tt-guide-v" x1="' + gx + '" y1="' + r1(Math.min(A.B, Math.max(A.T, A.sy(fa)))) + '" x2="' + gx + '" y2="' + B.B + '"/>');
-      // Bottom: f′
-      o.push(axesOf(B, { piX: F.piX }));
-      o.push('<text class="tt-ptitle tt-c2" x="' + (B.L + 8) + '" y="' + (B.T + 16) + '">' + (G.narrow ? 'y = f′(x)' : 'y = f′(x), the slope of f') + '</text>');
-      o.push('<g clip-path="url(#' + c2 + ')">');
-      if(S.all) o.push(curvePath(dfun, B, null, null, 's2 tt-ghost'));
-      S.trace.forEach(function(iv){ if(iv[1] - iv[0] > 1e-6) o.push(curvePath(dfun, B, iv[0], iv[1], 's2 tt-fp')); });
-      (F.special || []).forEach(function(sp){
-        if(!(S.all || visited(sp.x) || Math.abs(sp.x - a) < 1e-9)) return;
-        if(sp.kind === 'corner'){ o.push(dot(B, sp.x, sp.L, 's2', 4.5, true) + dot(B, sp.x, sp.R, 's2', 4.5, true)); }
-        else if(sp.kind === 'jump'){ o.push(dot(B, sp.x, sp.R, 's2', 4.5, true)); o.push('<line class="calc-plot-asym" x1="' + r1(B.sx(sp.x)) + '" y1="' + B.T + '" x2="' + r1(B.sx(sp.x)) + '" y2="' + B.B + '"/>'); }
-        else o.push('<line class="calc-plot-asym" x1="' + r1(B.sx(sp.x)) + '" y1="' + B.T + '" x2="' + r1(B.sx(sp.x)) + '" y2="' + B.B + '"/>');
-      });
-      if(isFinite(sec) && showSec && !oneSided) o.push('<path class="tt-secmark s5" d="M' + r1(B.sx(a)) + ' ' + r1(B.sy(sec) - 6) + 'l6 6l-6 6l-6 -6z"/>');
-      if(c.kind === 'smooth' && isFinite(slope)) o.push(dot(B, a, slope, 's2 tt-now', 5.5));
-      else if(c.kind === 'corner'){ if(isFinite(c.L)) o.push(dot(B, a, c.L, 's2', 5, true)); if(isFinite(c.R)) o.push(dot(B, a, c.R, 's2', 5, true)); }
-      o.push('</g>');
-      if(!fpVis()) o.length = fpCut;
-      bg.innerHTML = o.join('');
-      // handles
-      var pIn = isFinite(fa) && fa >= A.y[0] && fa <= A.y[1] && a >= A.x[0] && a <= A.x[1];
-      hp.setAttribute('transform', 'translate(' + r1(A.sx(a)) + ' ' + r1(A.sy(Math.max(A.y[0], Math.min(A.y[1], fa)))) + ')');
-      hp.classList.toggle('is-off', !pIn);
-      // Q sits on P when h is tiny: then only P shows (h stays on the slider).
-      var qIn = isFinite(fq) && fq >= A.y[0] && fq <= A.y[1] && xq >= A.x[0] && xq <= A.x[1] && showSec && Math.hypot(A.sx(xq) - A.sx(a), A.sy(fq) - A.sy(fa)) > 9;
-      hq.style.display = qIn ? '' : 'none';
-      if(qIn) hq.setAttribute('transform', 'translate(' + r1(A.sx(xq)) + ' ' + r1(A.sy(fq)) + ')');
-      hp.setAttribute('aria-valuemin', n(F.x[0])); hp.setAttribute('aria-valuemax', n(F.x[1])); hp.setAttribute('aria-valuenow', n(a));
-      hp.setAttribute('aria-valuetext', 'x = ' + sv(a) + ', f(x) = ' + F3(fa));
-      hq.setAttribute('aria-valuetext', 'h = ' + sv(hh) + (isFinite(fq) ? ', f(a + h) = ' + F3(fq) : ', not on the graph'));
-      hq.setAttribute('aria-valuenow', n(hh)); hq.setAttribute('aria-valuemin', n(-hmax())); hq.setAttribute('aria-valuemax', n(hmax()));
-      say(sec, slope, fa, fq);
-      table();
-    }
-
-    /* --- words: caption, pills, live region, the table --- */
-    var say = function(sec, slope, fa, fq){
-      var F = S.F, a = S.a, c = S.cls || { kind: 'smooth' }, A = sv(a), head, right = [], left = [];   // pass 2: h shows beside its slider, not again on the picture
-      var tanEq = c.kind === 'smooth' && isFinite(slope) ? TT.line(+M.round(a, 6), +M.round(fa, 6), +M.round(slope, 3)) : null;
-      if(S.anim && S.anim.kind === 'trace'){
-        head = 'Tracing f′: P sweeps across, and the slope of f at each x is plotted below as the height of f′.';
-      } else if(c.kind === 'smooth'){
-        head = isFinite(sec) ? 'Secant slope <b>' + F3(sec) + '</b>. As h → 0 it closes in on <b>f′(' + A + ') = ' + F3(slope) + '</b>.' : 'Q is off the graph: f(' + sv(a + S.h) + ') is not defined. Move Q to the other side.';
-        // First visit: the one thing to do first.
-        // The standard frame's task line already says to slide h, so the caption keeps only the reading.
-        if(S.fresh && isFinite(sec)) head = (LS && T.isStd(LS) ? '' : '<b>Start here:</b> slide h toward 0. ') + 'The secant slope, now <b>' + F3(sec) + '</b>, closes in on f′(' + A + ').';
-        if(S.tan && tanEq) head = 'Tangent line at x = ' + A + ': <b>' + tx('$' + tanEq.tex + '$') + '</b>. Its slope is f′(' + A + ') = ' + F3(slope) + '.';
-        if(!S.fresh || S.tan) right.push({ html: 'f′(' + A + ') = ' + F3(slope), tone: 'good' });   // pass 2: the limit shows once the student acts, not before
-      } else if(c.kind === 'corner'){
-        head = 'At x = ' + A + ' the slope from the left is <b>' + F3(c.L) + '</b> and from the right <b>' + F3(c.R) + '</b>. They disagree, so f′(' + A + ') does not exist: a corner.';
-        right.push({ html: 'f′(' + A + ') does not exist', tone: 'warn' });
-      } else if(c.kind === 'vertical'){
-        head = 'At x = ' + A + ' the secant slopes grow without bound from both sides: the tangent is vertical, so f′(' + A + ') does not exist.';
-        right.push({ html: 'vertical tangent', tone: 'warn' });
-      } else if(c.kind === 'cusp'){
-        head = 'At x = ' + A + ' the slopes head to <b>−∞</b> from one side and <b>+∞</b> from the other: a cusp. f′(' + A + ') does not exist.';
-        right.push({ html: 'cusp: no f′(' + A + ')', tone: 'warn' });
-      } else if(c.kind === 'jump'){
-        head = 'f jumps at x = ' + A + ', so it is not continuous there. From the jumping side the secant slopes blow up: f′(' + A + ') does not exist.';
-        right.push({ html: 'not continuous', tone: 'warn' });
-      } else if(c.kind === 'endpoint'){
-        head = 'P is at the end of the domain: Q can only be on one side' + (Math.abs(c.L) === Infinity || Math.abs(c.R) === Infinity ? ', and there the slopes grow without bound. f′(' + A + ') does not exist.' : '.');
-        right.push({ html: 'end of the domain', tone: 'warn' });
-      } else head = 'f is not defined at x = ' + A + '.';
-      if(isFinite(sec) && c.kind === 'smooth' && !(S.anim && S.anim.kind === 'trace')) left.push({ k: 'secant', html: F3(sec), tone: 'accent' });
-      if(LS){ LS.caption(head, 'explore'); LS.pills(left, 'left', 'explore'); LS.pills(right, 'right', 'explore'); }
-      else { var cap = q('.tt-cap'); if(cap) cap.innerHTML = head; }
-      title.textContent = (F.custom ? 'Your function ' : '') + plain('$' + F.tex + '$') + '. P at x = ' + A + ', Q at h = ' + sv(S.h) + '. ' + plain(head.replace(/<[^>]+>/g, ''));
-      if(!S.drag && !S.anim) live(plain(head.replace(/<[^>]+>/g, '')));
-      whyLater();
-    };
-    function table(){
-      var F = S.F, a = S.a, rows = TT.table(F.f, a), c = S.cls || {}, ah = Math.abs(S.h);
-      var near = rows.reduce(function(b, r, i){ return Math.abs(Math.log10(r.h / ah)) < Math.abs(Math.log10(rows[b].h / ah)) ? i : b; }, 0);
-      var lim = c.kind === 'smooth' ? 'f′(' + sv(a) + ') = ' + F3(TT.slopeAt(F, a)) : c.kind === 'corner' ? F3(c.L) + ' and ' + F3(c.R) + ': they disagree' : c.kind === 'vertical' || c.kind === 'cusp' || c.kind === 'jump' || c.kind === 'endpoint' ? 'no finite limit' : '—';
-      q('.tt-dqw').innerHTML = '<div class="table-wrap" tabindex="0" role="region" aria-label="Secant slopes closing in"><table class="tt-dq"><caption>Slopes ' + mm('\\frac{f(a+h)-f(a)}{h}') + ' at a = ' + esc(sv(a)) + '</caption>' +
-        '<thead><tr><th scope="col">|h|</th><th scope="col">Q on the left</th><th scope="col">Q on the right</th></tr></thead><tbody>' +
-        rows.map(function(r, i){ return '<tr' + (i === near ? ' class="is-now"' : '') + '><th scope="row">' + n(r.h) + '</th><td' + (i === near && S.h < 0 ? ' class="is-side"' : '') + '>' + F3(r.left) + '</td><td' + (i === near && S.h > 0 ? ' class="is-side"' : '') + '>' + F3(r.right) + '</td></tr>'; }).join('') +
-        '</tbody><tfoot><tr><th scope="row">h → 0</th><td colspan="2">' + esc(lim) + '</td></tr></tfoot></table></div>';
-    }
-
-    /* --- Why and Details (rebuilt when idle) --- */
-    var whyT = null;
-    function whyLater(){ clearTimeout(whyT); whyT = setTimeout(why, S.drag || S.anim ? 260 : 40); }
-    function why(){
-      var F = S.F, a = S.a, h = S.h, fa = F.f(a), fq = F.f(a + h), c = S.cls || {}, sec = TT.dq(F.f, a, h), A = texN(a), H = texN(h);
-      var aph = h < 0 ? A + ' - ' + texN(-h) : A + ' + ' + H;
-      var html = '<h3 class="ls-title-l">The slope of the secant line</h3><p>Q is ' + (h > 0 ? 'to the right' : 'to the left') + ' of P, at distance h = ' + esc(sv(h)) + '. The secant through P and Q has slope</p>' +
-        (isFinite(sec) ? mm('\\frac{f(' + aph + ') - f(' + A + ')}{' + H + '} = \\frac{' + texN(fq) + ' - ' + paren(fa) + '}{' + H + '} \\approx ' + texN(sec), true) : '<p>Q is off the graph here: f(a + h) is not defined.</p>');
-      html += '<h3 class="ls-title-l">The derivative is the limit as h → 0</h3>';
-      if(c.kind === 'smooth'){
-        var m = TT.slopeAt(F, a), L = TT.line(+M.round(a, 6), +M.round(fa, 6), +M.round(m, 3));
-        html += mm("f'(" + A + ') = \\lim_{h \\to 0} \\frac{f(' + A + ' + h) - f(' + A + ')}{h} \\approx ' + texN(m), true) +
-          '<p>Slide h toward 0 from either side: the secant slopes in the table close in on the same number, so the limit exists. That number is the slope of the tangent line.</p>' +
-          '<h3 class="ls-title-l">The tangent line</h3><p>Through P with slope f′(' + esc(sv(a)) + '):</p>' + mm('y = f(a) + f\'(a)(x - a)', true) + mm(L.tex, true);
-      } else if(c.kind === 'corner'){
-        html += oneSidedTex(A, c) +
-          '<p>The one-sided limits disagree, so the two-sided limit does not exist and f is not differentiable at x = ' + esc(sv(a)) + '. f is still continuous here: continuous does not mean differentiable.</p>';
-      } else if(c.kind === 'vertical' || c.kind === 'cusp'){
-        html += oneSidedTex(A, c) +
-          '<p>' + (c.kind === 'vertical' ? 'The secants get steeper and steeper from both sides: the tangent line is vertical, and a vertical line has no slope.' : 'The two sides of the point get infinitely steep in opposite directions: a cusp.') + ' So f′(' + esc(sv(a)) + ') does not exist, though f is continuous here.</p>';
-      } else if(c.kind === 'jump'){
-        html += '<p>f is not continuous at x = ' + esc(sv(a)) + ': the graph jumps. From the side of the jump, f(a + h) − f(a) does not shrink while h does, so the quotient blows up. A differentiable function must be continuous.</p>';
-      } else if(c.kind === 'endpoint'){
-        html += '<p>Only one side of P is on the graph, so the two-sided limit cannot exist. ' + (Math.abs(c.R) === Infinity || Math.abs(c.L) === Infinity ? 'And from that side the slopes grow without bound: the graph starts with a vertical tangent.' : '') + '</p>';
+      if(q.ok && isFinite(sec)){
+        var Qx2 = A.sx(q.x), Qy2 = A.sy(q.y);
+        block(Qx2, Qy2, 20); block(Qx2 + 9, Qy2 - 32, 12);
+        if(!qInLens()) boxes.push([Qx2 - 44, Qy2 + 16, Qx2 + 44, Qy2 + 52]);
+        if(Math.abs(Qx2 - Px) > 40) label(o, 'h', 'tt2-c5', [[(Px + Qx2) / 2, Qy2 < Py ? Py + 17 : Py - 8, 'middle'], [(Px + Qx2) / 2, Qy2 < Py ? Py - 8 : Py + 17, 'middle']], A, 13);
+        if(Math.abs(Qy2 - Py) > 30) label(o, 'Δy', 'tt2-c5', [[Qx2 + (S.h > 0 ? 9 : -9), (Py + Qy2) / 2 + 4, S.h > 0 ? 'start' : 'end'], [Qx2 + (S.h > 0 ? -9 : 9), (Py + Qy2) / 2 + 4, S.h > 0 ? 'end' : 'start']], A, 13);
       }
-      html += '<h3 class="ls-title-l">The graph of f′</h3><p>The lower graph has the slope of the upper one as its height. Where f rises, f′ is above the axis; where f falls, below; at a peak or valley of f, f′ = 0. Move P (or press Trace f′) and it draws itself.</p>' +
-        '<p class="bt-small">Zoom in at P (under Numbers &amp; view): a differentiable curve looks more and more like its tangent line. A corner stays a corner.</p>';
-      var w = q('.tt-why'); if(w) w.innerHTML = html;
-      details();
-    }
-    function oneSidedTex(A, c){
-      return mm('\\lim_{h \\to 0^-} \\frac{f(' + A + ' + h) - f(' + A + ')}{h} = ' + texN(c.L), true) + mm('\\lim_{h \\to 0^+} \\frac{f(' + A + ' + h) - f(' + A + ')}{h} = ' + texN(c.R), true);
-    }
-    var zoomSeg = null;
-    function details(){
-      var d = q('.tt-det'); if(!d || !S.F) return;
-      var F = S.F, a = S.a, fa = F.f(a), c = S.cls || {}, m = c.kind === 'smooth' ? TT.slopeAt(F, a) : NaN;
-      var nums = q('.tt-nums');
-      if(!nums){
-        d.innerHTML = '<h3 class="ls-title-l">View</h3><div class="tt-zoom" role="group" aria-label="Zoom in at P"><span class="tt-zl">Zoom in at P</span>' + [1, 4, 16, 64].map(function(z){ return '<button type="button" class="bt-btn tt-z" data-z="' + z + '" aria-pressed="false">×' + z + '</button>'; }).join('') + '</div>' +
-          '<div class="bt-check-row"><input type="checkbox" id="' + id + '-all"><label for="' + id + '-all">Show all of f′ (dotted)</label></div>' +
-          '<div class="bt-buttons"><button type="button" class="bt-btn tt-clear">Clear the f′ trace</button></div>' +
-          '<h3 class="ls-title-l">Numbers at P</h3><div class="tt-nums"></div><div class="tt-fd"></div>' +
-          '<details class="tt-keys"><summary>Keyboard</summary><p class="bt-small">Tab to P: ← → move it along the curve (Shift: farther), Home and End jump to the ends. Tab to Q: ← → move it, Page Down sends h ten times closer to 0. On the h slider, the arrow keys move h; the middle of the slider is h = 0.</p></details>';
-        nums = q('.tt-nums');
-        zoomSeg = d.querySelector('.tt-zoom');
-        zoomSeg.addEventListener('click', function(e){ var b = e.target.closest('[data-z]'); if(!b) return; stopAnim(); S.zoom = +b.getAttribute('data-z'); S.view = null; zoomBtns(); draw(); });
-        d.querySelector('#' + id + '-all').addEventListener('change', function(){ S.all = this.checked; draw(); });
-        d.querySelector('.tt-clear').addEventListener('click', function(){ S.trace = []; addVisit(S.a, S.a); draw(); });
-        zoomBtns();
+      // the magnifier
+      var Lg = lensGeo();
+      if(LENS.show > 0.01 && q.ok){
+        LENS.cx = Lg.cx; LENS.cy = Lg.cy; LENS.R = Lg.R;
+        var k = 0.6 + 0.4 * LENS.show, R = Lg.R, Lm = lensMap(Lg);
+        boxes.push([Lg.cx - R - 8, Lg.cy - R - 8, Lg.cx + R + 8, Lg.cy + R + 30]);
+        var g = ['<g class="tt2-lens" style="opacity:' + LENS.show.toFixed(3) + '" transform="translate(' + r1(Lg.cx) + ' ' + r1(Lg.cy) + ') scale(' + k.toFixed(3) + ') translate(' + r1(-Lg.cx) + ' ' + r1(-Lg.cy) + ')">'];
+        // the two lines from the small ring at P to the glass
+        var d = Math.hypot(Lg.cx - Px, Lg.cy - Py), ux = (Lg.cx - Px) / d, uy = (Lg.cy - Py) / d;
+        g.push('<circle class="tt2-ring" cx="' + r1(Px) + '" cy="' + r1(Py) + '" r="15"/>');
+        g.push('<path class="tt2-beam" d="M' + r1(Px - uy * 15) + ' ' + r1(Py + ux * 15) + 'L' + r1(Lg.cx - uy * R) + ' ' + r1(Lg.cy + ux * R) + 'M' + r1(Px + uy * 15) + ' ' + r1(Py - ux * 15) + 'L' + r1(Lg.cx + uy * R) + ' ' + r1(Lg.cy - ux * R) + '"/>');
+        var hx = Lg.cx + R * 0.72 * (Lg.cx < A.L + A.W / 2 ? -1 : 1), hy = Lg.cy + R * 0.72 * (Lg.cy < A.T + A.H / 2 ? 1 : -1);
+        g.push('<line class="tt2-lens-h" x1="' + r1(hx) + '" y1="' + r1(hy) + '" x2="' + r1(Lg.cx + (hx - Lg.cx) * 1.5) + '" y2="' + r1(Lg.cy + (hy - Lg.cy) * 1.5) + '"/>');
+        g.push('<circle class="tt2-lens-bg" cx="' + r1(Lg.cx) + '" cy="' + r1(Lg.cy) + '" r="' + r1(R) + '"/>');
+        g.push('<g clip-path="url(#' + id + '-cL)">');
+        // the road inside, at this zoom
+        var Fz = { x: [a - LENS.w * 1.05, a + LENS.w * 1.05] }, pts = [], pieces = [], jumpsX = (F.special || []).filter(function(s){ return s.kind === 'jump'; }).map(function(s){ return s.x; });
+        var n = 120, xs = [];
+        for(var i = 0; i <= n; i++) xs.push(Fz.x[0] + (Fz.x[1] - Fz.x[0]) * i / n);
+        specials().forEach(function(x){ if(x > Fz.x[0] && x < Fz.x[1]){ xs.push(x); xs.push(x - 1e-12); } });
+        xs.push(a); xs.sort(function(p, q2){ return p - q2; });
+        xs.forEach(function(x){
+          var y = F.f(x);
+          if(!isFinite(y)){ if(pts.length > 1) pieces.push(pts); pts = []; return; }
+          if(pts.length && jumpsX.some(function(jx){ return pts[pts.length - 1][2] < jx && x >= jx; })){ if(pts.length > 1) pieces.push(pts); pts = []; }
+          pts.push([Lm.sx(x), clamp(Lm.sy(y), Lg.cy - R * 3, Lg.cy + R * 3), x]);
+        });
+        if(pts.length > 1) pieces.push(pts);
+        pieces.forEach(function(pc){
+          var dd = 'M' + pc.map(function(p){ return r1(p[0]) + ' ' + r1(p[1]); }).join('L');
+          g.push('<path class="tt2-shoulder" style="stroke-width:' + (G.rw + 6) + 'px" d="' + dd + '"/><path class="tt2-road" style="stroke-width:' + G.rw + 'px" d="' + dd + '"/><path class="tt2-lane" d="' + dd + '"/>');
+        });
+        var Lf = { x: Fz.x, y: [y0 - R / Lm.py * 1.2, y0 + R / Lm.py * 1.2], T: Lg.cy - R, B: Lg.cy + R, L: Lg.cx - R, R: Lg.cx + R, sx: Lm.sx, sy: Lm.sy };
+        if(smooth) g.push(lineAcross(Lf, a, y0, m, 'tt2-tan is-thin'));
+        if(isFinite(sec)) g.push(lineAcross(Lf, a, y0, sec, 'tt2-sec'));
+        g.push('<circle class="tt2-pdot" cx="' + r1(Lg.cx) + '" cy="' + r1(Lg.cy) + '" r="5"/>');
+        if(isFinite(sec) && !S.qIn) g.push('<circle class="tt2-qdot" cx="' + r1(Lm.sx(q.x)) + '" cy="' + r1(Lm.sy(q.y)) + '" r="5"/>');
+        g.push('</g>');
+        g.push('<circle class="tt2-lens-rim" cx="' + r1(Lg.cx) + '" cy="' + r1(Lg.cy) + '" r="' + r1(R) + '"/>');
+        var z = (R / LENS.w) / G.kx, zt = '×' + (z >= 10 ? String(+z.toPrecision(2)) : String(Math.max(1, Math.round(z))));
+        g.push('<text class="tt2-lab tt2-zoom" x="' + r1(Lg.cx) + '" y="' + r1(Lg.cy + R + 19) + '" text-anchor="middle">' + esc('zoom ' + zt) + '</text>');
+        g.push('</g>');
+        o.push(g.join(''));
+        // the clip circle follows the glass
+        var cc = defs.querySelector('#' + id + '-cL circle'); if(cc){ cc.setAttribute('cx', r1(Lg.cx)); cc.setAttribute('cy', r1(Lg.cy)); cc.setAttribute('r', r1(R)); }
       }
-      var rows = [['a', sv(a)], ['f(a)', F3(fa)], ['h', sv(S.h)], ['f(a + h)', F3(F.f(a + S.h))], ['Secant slope', F3(TT.dq(F.f, a, S.h))],
-        ["f′(a)", c.kind === 'smooth' ? F3(m) : 'does not exist'], ['Tangent line', c.kind === 'smooth' ? '' : '—']];
-      nums.innerHTML = '<table class="ls-tbl tt-ntbl"><caption class="sr-only">Values at P</caption><tbody>' + rows.map(function(r){ return '<tr><th scope="row">' + r[0] + '</th><td class="r">' + (r[0] === 'Tangent line' && c.kind === 'smooth' ? mm(TT.line(+M.round(a, 6), +M.round(fa, 6), +M.round(m, 3)).tex) : esc(r[1])) + '</td></tr>'; }).join('') + '</tbody></table>';
-      q('.tt-fd').innerHTML = '<h3 class="ls-title-l">The function</h3>' + mm(F.tex, true) + (F.dTex ? '<p class="bt-small">Its derivative (the rules come in topics 2.5 to 2.7):</p>' + mm(F.dTex, true) : '<p class="bt-small">The tool estimates f′ numerically for a typed function (central differences) and checks each side of P separately.</p>');
+      // labels last
+      if(q.ok && isFinite(sec)) lineLabel(o, A, a, y0, sec, 'secant', 'tt2-c5', Px, Py);
+      if(smooth) lineLabel(o, A, a, y0, m, 'tangent', 'tt2-c4', Px, Py);
+      roadLabel(o);
     }
-    function zoomBtns(){ if(!zoomSeg) return; zoomSeg.querySelectorAll('[data-z]').forEach(function(b){ b.setAttribute('aria-pressed', String(+b.getAttribute('data-z') === S.zoom)); }); }
+    function picText(){
+      var F = S.F, A = sv(S.a), c = S.cls || {};
+      var t = (F.custom ? 'Your curve ' : 'The curve ') + plain('$' + F.tex + '$') + ', drawn as a road. P at x = ' + A + '. ';
+      return t + cause.text();
+    }
 
-    /* --- pointer --- */
-    function local(e){ var r = svg.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; }
-    function snapA(a, F, px){
-      var A = G.top, best = null;
-      (F.special || []).concat(F.join != null ? [{ x: F.join }] : []).forEach(function(sp){ if(Math.abs(A.sx(sp.x) - A.sx(a)) <= (px || 12) && (!best || Math.abs(sp.x - a) < Math.abs(best - a))) best = sp.x; });
+    /* ---------------------------------------------------- the cause line (and the words on the knobs) */
+    var wKey = '';
+    function words(){
+      var c = S.cls || { kind: 'smooth' }, A = sv(S.a), m = slopeNow(), parts = [];
+      if(S.tab === 'slope'){
+        if(c.kind === 'smooth' && isFinite(m)){
+          var w = fmtN(m) === '0' ? 'f flat' : m > 0 ? 'f rising' : 'f falling';
+          parts = [{ t: w + ' at x = ' + A, role: 'road' }, { t: 'slope ' + fmtN(m), role: 'slope' }, { t: 'f′(' + A + ') = ' + fmtN(m), role: 'fp', say: 'so f prime of ' + A + ' is ' + fmtN(m) }];
+        } else parts = brokenParts(c, A);
+      } else {
+        var q = qPoint(), sec = q.ok ? (q.y - fa()) / S.h : NaN;
+        if(!q.ok || !isFinite(sec)) parts = [{ t: 'Q is off the road', role: 'sec' }, { t: 'move Q to the other side', role: 'ink' }];
+        else {
+          parts = [{ t: 'h = ' + hText(S.h), role: 'sec' }, { t: 'secant slope ' + fmtN(sec, Math.abs(S.h) < 0.095 ? 3 : 2), role: 'sec' }];
+          if(c.kind === 'smooth' && isFinite(m)){ if(Math.abs(sec - m) < 0.005) parts.push({ t: 'almost the tangent, slope ' + fmtN(m), role: 'slope' }); }
+          else if(Math.abs(S.h) <= 0.1) parts.push({ t: 'no tangent slope at x = ' + A, role: 'bad' });
+        }
+      }
+      var k = JSON.stringify(parts) + '|' + (S.took || '');
+      if(k === wKey) return;
+      wKey = k;
+      if(S.took) cause.take(S.took); else cause.set(parts);
+    }
+    function brokenParts(c, A){
+      var dne = { t: 'f′(' + A + ') does not exist', role: 'bad' };
+      if(c.kind === 'corner') return [{ t: 'left slope ' + fmtN(c.L), role: 'slope' }, { t: 'right slope ' + fmtN(c.R), role: 'slope', join: '+' }, { t: 'they disagree', role: 'ink' }, dne];
+      if(c.kind === 'cusp') return [{ t: 'left slope ' + fmtN(c.L), role: 'slope' }, { t: 'right slope ' + fmtN(c.R), role: 'slope', join: '+' }, { t: 'a cusp', role: 'ink' }, dne];
+      if(c.kind === 'vertical') return [{ t: 'tangent is vertical', role: 'slope' }, { t: 'no slope', role: 'ink' }, dne];
+      if(c.kind === 'jump') return [{ t: 'f jumps at x = ' + A, role: 'road' }, { t: 'not continuous', role: 'ink' }, dne];
+      if(c.kind === 'endpoint') return [{ t: 'the road ends at x = ' + A, role: 'road' }, { t: 'one side only', role: 'ink' }, dne];
+      return [{ t: 'f is not defined at x = ' + A, role: 'bad' }];
+    }
+
+    /* ---------------------------------------------------- the two knobs */
+    function snapA(a, px){
+      var A = G.A, best = null;
+      specials().forEach(function(x){ if(Math.abs(A.sx(x) - A.sx(a)) <= (px || 12) && (best == null || Math.abs(x - a) < Math.abs(best - a))) best = x; });
       if(best != null) return best;
-      var span = A.x[1] - A.x[0], st = span > 4 ? 0.01 : span > 0.4 ? 0.001 : 0.0001;
+      var span = A.x[1] - A.x[0], st = span > 4 ? 0.01 : 0.001;
       return M.round(Math.round(a / st) * st, 5);
     }
-    function clampA(a){ var V = G.top.x; return Math.max(V[0], Math.min(V[1], a)); }
-    function nearestValid(a){
+    function validA(a){
       var F = S.F;
+      a = clamp(a, F.x[0], F.x[1]);
       if(isFinite(F.f(a))) return a;
       var lo = S.a, hi = a;
       if(!isFinite(F.f(lo))) return null;
       for(var k = 0; k < 40; k++){ var mid = (lo + hi) / 2; if(isFinite(F.f(mid))) lo = mid; else hi = mid; }
-      return lo;
+      return M.round(lo, 4);
     }
-    svg.addEventListener('pointerdown', function(e){
-      if(!G) return;
-      stopAnim(); act();
-      var p = local(e), A = G.top, B = G.bot, ap = { x: A.sx(S.a), y: A.sy(S.F.f(S.a)) };
-      var xq = S.a + S.h, fq = S.F.f(xq), qp = { x: A.sx(xq), y: A.sy(fq) };
-      var dP = Math.hypot(p.x - ap.x, p.y - ap.y), dQ = isFinite(fq) ? Math.hypot(p.x - qp.x, p.y - qp.y) : 1e9;
-      var inTop = p.y >= A.T - 10 && p.y <= A.B + 10, inBot = p.y >= B.T - 10 && p.y <= B.B + 10;
-      if(dQ < 24 && dQ < dP) S.drag = { what: 'q' };
-      else if(dP < 26) S.drag = { what: 'p' };
-      else if(inTop || inBot){ S.drag = { what: 'p' }; moveP(p.x); }
-      else return;
-      (S.drag.what === 'q' ? hq : hp).classList.add('is-drag');
-      try{ svg.setPointerCapture(e.pointerId); }catch(x){}
-      e.preventDefault();
-    });
-    function moveP(px){
-      var a = snapA(clampA(G.top.ix(px)), S.F), v = nearestValid(a);
-      if(v == null) return;
-      if(v !== a) v = M.round(v, 4);
-      if(setA(v)) draw();
+    function stepA(){ var span = S.F.x[1] - S.F.x[0], st = span / 120; return st > 0.04 ? 0.05 : st > 0.004 ? 0.005 : 0.0005; }
+    var hp = K.handle(layer, { key: 'apcalc-tangent-tracer-p', label: 'Point P on the curve', value: S.a, chip: false,
+      at: function(v){ if(!G) return null; var y = S.F.f(v); return isFinite(y) && y >= G.A.y[0] && y <= G.A.y[1] ? [G.A.sx(v), G.A.sy(y)] : null; },
+      dir: function(v){ if(!G) return 0; var m = slopeNow(); return angOf(isFinite(m) ? m : 0) * 180 / Math.PI; },
+      pick: function(x){ if(!G) return null; var v = validA(snapA(G.A.ix(x))); return v; },
+      keys: function(v, k, big){
+        var st = stepA(), to = null, F = S.F;
+        if(k === 'ArrowRight' || k === 'ArrowUp') to = v + st * (big ? 10 : 1);
+        else if(k === 'ArrowLeft' || k === 'ArrowDown') to = v - st * (big ? 10 : 1);
+        else if(k === 'PageUp') to = v + st * 10; else if(k === 'PageDown') to = v - st * 10;
+        else if(k === 'Home') to = F.x[0]; else if(k === 'End') to = F.x[1];
+        else return null;
+        var sp = specials().filter(function(x){ return (x - v) * (x - to) < 0 || Math.abs(x - to) < st / 2; });
+        if(sp.length) to = sp.sort(function(p, q){ return Math.abs(p - v) - Math.abs(q - v); })[0];
+        else to = M.round(Math.round(to / st) * st, 5);
+        if(k === 'Home' || k === 'End'){ to = k === 'Home' ? F.x[0] : F.x[1]; for(var i = 0; i < 400 && !isFinite(F.f(to)); i++) to += (k === 'Home' ? 1 : -1) * (F.x[1] - F.x[0]) / 400; to = M.round(to, 4); }
+        return validA(to);
+      },
+      valuetext: function(v){ var c = S.cls || {}, m = slopeNow(); return 'x = ' + sv(v) + ', f(x) = ' + fmtN(S.F.f(v), 3) + (c.kind === 'smooth' && isFinite(m) ? ', slope ' + fmtN(m) : ', no slope here'); },
+      tag: function(){ if(S.tab !== 'slope') return ''; var c = S.cls || {}, m = slopeNow(); return c.kind === 'smooth' && isFinite(m) ? 'slope ' + fmtN(m) : 'no slope'; },
+      tagSide: function(){ return tagSideP(); },
+      onStart: function(){ userActs(); },
+      onInput: function(v){ moveP(v); },
+      onEnd: function(){ say(cause.text()); refLater(); } });
+    var hq = K.handle(layer, { key: 'apcalc-tangent-tracer-q', label: 'Point Q, the second point of the secant: h is the distance from P', value: S.h, chip: true, hint: 'Drag',
+      at: function(v){
+        if(!G || S.tab !== 'secant') return null;
+        var x = S.a + v, y = S.F.f(x);
+        if(!isFinite(y)) return null;
+        if(qInLens()){ var Lm = lensMap({ cx: LENS.cx, cy: LENS.cy, R: LENS.R }); return [Lm.sx(x), Lm.sy(y)]; }
+        return x >= G.A.x[0] && x <= G.A.x[1] && y >= G.A.y[0] && y <= G.A.y[1] ? [G.A.sx(x), G.A.sy(y)] : null;
+      },
+      dir: function(){ var q = qPoint(), sec = q.ok ? (q.y - fa()) / S.h : 0; return G ? angOf(isFinite(sec) ? sec : 0) * 180 / Math.PI : 0; },
+      pick: function(x){
+        if(!G) return null;
+        var h;
+        if(S.qIn){ var px = LENS.R / LENS.frozen; h = clamp((x - LENS.cx) / px, -LENS.frozen, LENS.frozen); }
+        else h = G.A.ix(x) - S.a;
+        return validH(snapH(h));
+      },
+      keys: function(v, k, big){
+        var ah = Math.abs(v), sg = v < 0 ? -1 : 1, st = ah > 0.2 ? 0.05 : ah > 0.02 ? 0.005 : ah > 0.002 ? 0.0005 : 0.0001, to = null;
+        if(k === 'ArrowRight' || k === 'ArrowUp') to = v + st * (big ? 10 : 1);
+        else if(k === 'ArrowLeft' || k === 'ArrowDown') to = v - st * (big ? 10 : 1);
+        else if(k === 'PageDown') to = v / 10; else if(k === 'PageUp') to = v * 10;
+        else if(k === 'Home') to = -1; else if(k === 'End') to = 1;
+        else return null;
+        if(to * v <= 0 && k.indexOf('Arrow') === 0) to = -sg * TT.HMIN;
+        return validH(snapH(to));
+      },
+      valuetext: function(v){ var q = qPoint(), sec = q.ok ? (q.y - fa()) / v : NaN; return 'h = ' + hText(v) + (v > 0 ? ', Q to the right of P' : ', Q to the left of P') + (isFinite(sec) ? ', secant slope ' + fmtN(sec, 3) : ', Q is off the curve'); },
+      tag: function(v){ return S.tab === 'secant' ? 'h = ' + hText(v) : ''; },
+      tagSide: function(){ return 'down'; },
+      onStart: function(){ userActs(); S.qIn = qInLens(); if(S.qIn) LENS.frozen = LENS.w; },
+      onInput: function(v){ setH(v); },
+      onEnd: function(){ var was = S.qIn; S.qIn = false; LENS.frozen = null; if(was || lensWanted()) glide(); kick(); say(cause.text()); refLater(); } });
+    function qInLens(){ return S.tab === 'secant' && LENS.show > 0.5 && (S.qIn || (!hq || !hq.dragging() ? lensWanted() : false)); }
+    function snapH(h){
+      var ah = Math.abs(h), sg = h < 0 ? -1 : 1;
+      if(!isFinite(h)) return S.h;
+      if(ah < TT.HMIN) return sg * TT.HMIN;
+      var p = Math.pow(10, Math.floor(Math.log10(ah)) - 1);
+      return sg * M.round(Math.round(ah / p) * p, 6);
     }
-    svg.addEventListener('pointermove', function(e){
-      if(!S.drag || !G) return;
-      var p = local(e);
-      if(S.drag.what === 'p') moveP(p.x);
-      else {
-        var xq = G.top.ix(p.x), h = xq - S.a, ah = Math.abs(h);
-        h = (h < 0 ? -1 : 1) * (ah < 0.0105 ? M.round(ah, 3) : ah < 0.105 ? M.round(ah, 3) : M.round(ah, 2));
-        setH(h);
+    function hmax(){ return Math.min(TT.HMAX * 2, (S.F.x[1] - S.F.x[0]) * 0.8); }
+    function validH(h){
+      h = clamp(h, -hmax(), hmax());
+      var x = S.a + h, y = S.F.f(x);
+      if(!isFinite(y) || x < S.F.x[0] || x > S.F.x[1]) return null;
+      return h;
+    }
+    function glide(){ hq.el.classList.add('is-glide'); setTimeout(function(){ hq.el.classList.remove('is-glide'); }, 340); }
+
+    /* ---------------------------------------------------- changes */
+    function userActs(){
+      hideCue(true);
+      if(drive.playing()) drive.stop();
+      if(slide.playing()) slide.stop();
+      S.took = null;
+    }
+    function moveP(v, quiet){
+      var old = S.a;
+      if(v === old && S.cls) return;
+      if(v !== old) S.dir = v > old ? 1 : -1;
+      S.a = v;
+      addVisit(old, v);
+      recompute();
+      if(S.tab === 'secant' && validH(S.h) == null){ var hh = validH(-S.h); if(hh != null){ S.h = hh; hq.value(hh); } }
+      if(!quiet){ S.driveV = 0; drive.paint(); tourDid('drag'); }
+      kick(); draw(); refLater();
+    }
+    function setH(h){
+      S.h = h;
+      S.slideV = Math.abs(h) <= TT.HMIN * 1.01 ? 1 : 0; slide.paint();
+      tourDid('dragq');
+      kick(); draw(); refLater();
+    }
+    function setF(F, how){
+      fade();
+      drive.stop(); slide.stop();
+      S.F = F; S.a = F.a; S.h = F.h || 1; S.trace = []; S.dir = 1; S.took = null; S.driveV = 0; S.slideV = 0;
+      LENS.show = 0; LENS.w = 2.2 * Math.abs(S.h);
+      recompute(); addVisit(S.a, S.a);
+      hp.value(S.a); hq.value(S.h);
+      layout(); drive.paint(); slide.paint();
+      refHtml();
+      if(how !== 'quiet') say('Curve: ' + (F.custom ? 'your function, ' : '') + plain('$' + F.tex + '$') + '. ' + cause.text());
+    }
+    function setTab(v){
+      if(v === S.tab) return;
+      fade();
+      drive.stop(); slide.stop(); tour.stop(); tour2.stop();
+      S.tab = v; S.took = null; LENS.show = 0; LENS.w = 2.2 * Math.abs(S.h);
+      head.purpose(v === 'slope' ? 'The derivative is the slope of the curve at each point.' : 'The secant turns into the tangent as h goes to 0.');
+      drive.el.hidden = v !== 'slope'; slide.el.hidden = v !== 'secant';
+      hq.hide(v !== 'secant');
+      hp.el.classList.toggle('is-quiet', v === 'secant');
+      layout(); kick();
+      say(v === 'slope' ? 'Slope at a point. ' + cause.text() : 'Secant to tangent. ' + cause.text());
+    }
+    /* A short cross fade of the picture that was there (a new curve, a tab, a result shown at once). */
+    function fade(){
+      if(!S.ready || !G) return;
+      var old = gS.innerHTML + gD.innerHTML;
+      if(!old) return;
+      var g = document.createElementNS(NS, 'g'); g.setAttribute('class', 'tt2-fade'); g.innerHTML = old; svg.appendChild(g);
+      var done = function(){ if(g.parentNode) g.parentNode.removeChild(g); };
+      if(g.animate){ var an = g.animate([{ opacity: 1 }, { opacity: 0 }], { duration: K.reduced() ? 240 : 300, easing: 'ease-out' }); an.onfinish = done; setTimeout(done, 500); } else done();
+    }
+
+    /* ---------------------------------------------------- the one loop: the magnifier grows in, zooms and leaves */
+    var raf = 0, lastT = 0;
+    function kick(){ if(!raf && S.ready) { lastT = 0; raf = requestAnimationFrame(frame); } }
+    function frame(t){
+      raf = 0;
+      var dt = lastT ? Math.min(0.05, (t - lastT) / 1000) : 0.016; lastT = t;
+      var want = lensWanted() ? 1 : 0, red = K.reduced(), busy = false;
+      if(red) LENS.show = want;
+      else if(Math.abs(LENS.show - want) > 0.001){ LENS.show += (want - LENS.show) * Math.min(1, dt * 12); if(Math.abs(LENS.show - want) < 0.01) LENS.show = want; busy = true; }
+      var target = LENS.frozen != null ? LENS.frozen : 2.2 * Math.abs(S.h);
+      if(LENS.show === 0 || red || slide.playing()) LENS.w = target;
+      else if(Math.abs(Math.log(LENS.w / target)) > 0.002){ LENS.w = Math.exp(Math.log(LENS.w) + (Math.log(target) - Math.log(LENS.w)) * Math.min(1, dt * 9)); busy = true; }
+      else LENS.w = target;
+      draw();
+      if(busy) raf = requestAnimationFrame(frame);
+    }
+
+    /* ---------------------------------------------------- Drive across (tab 1) and Slide Q in (tab 2) */
+    var D = { x0: 0, x1: 0 };
+    function driveStart(){
+      userActs(); hideCue(true); tourDid('drive');
+      var F = S.F, x0 = F.x[0], x1 = F.x[1];
+      for(var i = 0; i <= 400 && !isFinite(F.f(x0)); i++) x0 += (F.x[1] - F.x[0]) / 400;
+      for(var j = 0; j <= 400 && !isFinite(F.f(x1)); j++) x1 -= (F.x[1] - F.x[0]) / 400;
+      var pad = (F.x[1] - F.x[0]) * 0.01;
+      D = { x0: M.round(x0, 4), x1: M.round(x1, 4), lo: M.round(x0, 4), hi: M.round(x1, 4) };
+      if(K.reduced()) fade();
+      S.trace = []; S.driveV = 0; S.dir = 1;
+      S.a = D.x0; recompute(); addVisit(S.a, S.a); hp.value(S.a);
+      return true;
+    }
+    function driveTo(v){
+      S.driveV = v;
+      var a = M.round(D.x0 + (D.x1 - D.x0) * v, 4);
+      // land exactly on a corner or jump on the way, so the drive shows it
+      var sp = specials().filter(function(x){ return (x - S.a) * (x - a) < 0; });
+      if(sp.length) a = sp[0];
+      if(!isFinite(S.F.f(a))) a = validA(a);
+      if(a == null) return;
+      hp.value(a); moveP(a, true);
+    }
+    function driveEnd(){
+      S.driveV = 1; drive.paint(); addVisit(D.lo, D.hi); draw();
+      var sp = (S.F.special || []).map(function(s){ return s.kind; }), kinds = { corner: 'corner', cusp: 'cusp', vertical: 'vertical tangent', jump: 'jump', endpoint: 'end' };
+      var extra = sp.filter(function(k){ return k !== 'endpoint'; }).map(function(k){ return kinds[k]; });
+      S.took = extra.length ? 'f′ is the slope of f. At the ' + extra.join(' and ') + ' f has no slope, so f′ has no value.' : 'f′ is the slope of f: above the axis where f rises, below where it falls.';
+      wKey = ''; words(); say(S.took); refLater();
+    }
+    var SL = { h0: 1, side: 1, out: false };
+    function slideStart(){
+      userActs(); hideCue(true); tourDid('slide');
+      var ah = Math.abs(S.h);
+      SL = { side: S.h < 0 ? -1 : 1, out: ah <= TT.HMIN * 1.01, h0: ah };
+      if(SL.out){ var back = validH(SL.side * 1) != null ? 1 : Math.min(1, hmax()); SL.h0 = back; }
+      if(K.reduced()) fade();
+      S.slideV = 0;
+      return true;
+    }
+    function slideTo(v){
+      S.slideV = v;
+      var h = SL.out ? SL.side * TT.HMIN * Math.pow(SL.h0 / TT.HMIN, v) : SL.side * SL.h0 * Math.pow(TT.HMIN / SL.h0, v);
+      h = snapH(h);
+      if(validH(h) == null) return;
+      S.h = h; hq.value(h);
+      LENS.w = 2.2 * Math.abs(h);
+      kick(); draw();
+    }
+    function slideEnd(){
+      if(SL.out){ S.slideV = 0; slide.paint(); S.took = null; wKey = ''; words(); say(cause.text()); refLater(); return; }
+      S.slideV = 1; slide.paint();
+      var c = S.cls || {}, A = sv(S.a), m = slopeNow();
+      if(c.kind === 'smooth' && isFinite(m)) S.took = 'As h → 0 the secant slopes close in on f′(' + A + ') = ' + fmtN(m) + ', the tangent’s slope.';
+      else if(c.kind === 'corner') S.took = 'The two sides close in on ' + fmtN(c.L) + ' and ' + fmtN(c.R) + ': they disagree, so f′(' + A + ') does not exist.';
+      else S.took = 'The secant slopes do not close in on one number: f′(' + A + ') does not exist.';
+      wKey = ''; words(); say(S.took); refLater();
+    }
+
+    /* ---------------------------------------------------- the first visit cue and "Show me how" */
+    var cue = K.cue(layer, { key: 'apcalc-tangent-tracer', text: 'Drag P along the road', side: 'left',
+      at: function(){ return G ? [G.A.sx(S.a) - 16, G.A.sy(fa())] : [0, 0]; } });
+    function hideCue(used){ if(cue.active()) cue.hide(used); }
+    stage.addEventListener('keydown', function(e){ if(/^(Arrow|Page|Home|End)/.test(e.key)) hideCue(true); }, true);
+    var tour = K.tour({ key: 'apcalc-tangent-tracer', label: 'Show me how', steps: [
+      { id: 'drag', text: 'Drag P along the road. The car points along the tangent.', target: function(){ return hp.knob; } },
+      { id: 'read', text: 'The slope is on P, and the pen draws it below as the height of f′.', target: function(){ return G ? rectOf(G.B) : scene; } },
+      { id: 'drive', text: 'Press Drive across to draw all of f′.', target: function(){ return drive.el; } }],
+      onClose: function(had){ if(had) try{ head.how.focus({ preventScroll: true }); }catch(e){} } });
+    var tour2 = K.tour({ key: 'apcalc-tangent-tracer-2', label: 'Show me how', steps: [
+      { id: 'dragq', text: 'Drag Q toward P. The secant through them turns.', target: function(){ return hq.knob; } },
+      { id: 'look', text: 'Close in, the magnifier shows the secant and the tangent becoming one line.', target: function(){ return scene; } },
+      { id: 'slide', text: 'Press Slide Q in to take h all the way to 0.001.', target: function(){ return slide.el; } }],
+      onClose: function(had){ if(had) try{ head.how.focus({ preventScroll: true }); }catch(e){} } });
+    function rectOf(F){ var r = scene.getBoundingClientRect(), k = layer.scale(); return { left: r.left + F.L * k, top: r.top + F.T * k, width: F.W * k, height: F.H * k, right: r.left + F.R * k, bottom: r.top + F.B * k }; }
+    function tourDid(x){ [tour, tour2].forEach(function(t){ if(t.active()) t.did(x); }); }
+    function startTour(){ if(S.mode !== 'explore') return; hideCue(false); (S.tab === 'slope' ? tour : tour2).start(true); }
+
+    /* ---------------------------------------------------- presses on the picture */
+    scene.addEventListener('pointerdown', function(e){
+      if(!G || e.target.closest('.tk2-knob, .tk2-cue, button')) return;
+      if(e.pointerType === 'mouse' && e.button !== 0) return;
+      var r = scene.getBoundingClientRect(), k = layer.scale() || 1, x = (e.clientX - r.left) / k, y = (e.clientY - r.top) / k, A = G.A, B = G.B;
+      hideCue(true);
+      var inA = x >= A.L - 6 && x <= A.R + 6 && y >= A.T - 6 && y <= A.B + 6, xv = A.ix(x), fy = S.F.f(xv), nearRoad = isFinite(fy) && Math.abs(A.sy(fy) - y) < 30;
+      if(S.tab === 'slope'){
+        var inB = B && x >= B.L - 6 && x <= B.R + 6 && y >= B.T - 6 && y <= B.B + 6;
+        if((inA && nearRoad) || inB) hp.grab(e);
+      } else if(inA && nearRoad){
+        if(Math.abs(x - A.sx(S.a)) < 18) hp.grab(e); else hq.grab(e);
       }
     });
-    function endDrag(){
-      if(!S.drag) return;
-      hp.classList.remove('is-drag'); hq.classList.remove('is-drag');
-      S.drag = null;
-      if(S.zoom > 1){ recenter(); }
-      draw();
-    }
-    svg.addEventListener('pointerup', endDrag); svg.addEventListener('pointercancel', endDrag);
 
-    /* --- keyboard on the handles --- */
-    hp.addEventListener('keydown', function(e){
-      var k = e.key, F = S.F, V = G ? G.top.x : F.x, span = V[1] - V[0], st = span / (S.zoom > 1 ? 80 : 120);
-      st = st > 0.04 ? 0.05 : st > 0.004 ? 0.005 : 0.0005;
-      var to = null;
-      if(k === 'ArrowRight' || k === 'ArrowUp') to = S.a + st * (e.shiftKey ? 10 : 1);
-      else if(k === 'ArrowLeft' || k === 'ArrowDown') to = S.a - st * (e.shiftKey ? 10 : 1);
-      else if(k === 'PageUp') to = S.a + st * 10; else if(k === 'PageDown') to = S.a - st * 10;
-      else if(k === 'Home') to = V[0]; else if(k === 'End') to = V[1];
-      else return;
-      e.preventDefault(); stopAnim(); act();
-      // Land on a special point when the step crosses it.
-      var sp = (F.special || []).map(function(s){ return s.x; }).concat(F.join != null ? [F.join] : []).filter(function(x){ return (x - S.a) * (x - to) < 0 || Math.abs(x - to) < st / 2; });
-      if(sp.length) to = sp.sort(function(p, r){ return Math.abs(p - S.a) - Math.abs(r - S.a); })[0];
-      else to = M.round(Math.round(to / st) * st, 5);
-      to = Math.max(F.x[0], Math.min(F.x[1], to));
-      var v = nearestValid(to); if(v == null) return;
-      setA(v); if(S.zoom > 1) recenter(); draw();
-      live(plain(hp.getAttribute('aria-valuetext')) + '. ' + plain(S.cls && S.cls.kind !== 'smooth' ? 'f′ does not exist here.' : 'Slope ' + F3(TT.slopeAt(S.F, S.a)) + '.'));
+    /* ---------------------------------------------------- the picker and your own curve */
+    pick.addEventListener('change', function(){
+      userActs();
+      if(pick.value === 'own'){ pick.value = S.F.custom ? 'custom' : S.F.id; if(LS){ LS.open('details'); setTimeout(function(){ var i = ref.querySelector('.tt2-own input'); if(i) i.focus(); }, 80); } return; }
+      if(pick.value === 'custom') return;
+      setF(TT.FUNCS[pick.value]);
     });
-    hq.addEventListener('keydown', function(e){
-      var k = e.key, h = S.h, st = 0.05;
-      if(k === 'ArrowRight' || k === 'ArrowUp') h = h + st * (e.shiftKey ? 10 : 1);
-      else if(k === 'ArrowLeft' || k === 'ArrowDown') h = h - st * (e.shiftKey ? 10 : 1);
-      else if(k === 'PageDown') h = h / 10; else if(k === 'PageUp') h = h * 10;
-      else return;
-      e.preventDefault(); stopAnim(); act();
-      if(S.h * h <= 0) h = (h < 0 ? -1 : 1) * TT.HMIN;
-      setH(M.round(h, 4));
-      live('h = ' + sv(S.h) + '. Secant slope ' + F3(TT.dq(S.F.f, S.a, S.h)) + '.');
-    });
-
-    /* --- buttons --- */
-    tanB.addEventListener('click', function(){ act(); S.fpOn = true; S.tan = !S.tan; tanB.setAttribute('aria-pressed', String(S.tan)); draw(); });
-    shrinkB.addEventListener('click', function(){
-      act();
-      if(S.anim && S.anim.kind === 'shrink'){ stopAnim(); return; }
-      stopAnim();
-      var side = S.h < 0 ? -1 : 1, h0 = Math.abs(S.h) <= TT.HMIN * 1.5 ? Math.min(1, hmax()) : Math.abs(S.h), dur = 2.6;
-      S.anim = { kind: 'shrink', loop: P.loop(function(dt, t){ setH(side * h0 * Math.pow(TT.HMIN / h0, Math.min(1, t / dur)), true); syncH(); draw(); }, {
-        duration: dur, still: function(){ setH(side * TT.HMIN, true); syncH(); draw(); }, onEnd: function(){ S.anim = null; shrinkB.textContent = 'h → 0'; setH(side * TT.HMIN, true); syncH(); draw(); } }) };
-      shrinkB.textContent = 'Stop';
-      S.anim.loop.start();
-    });
-    traceB.addEventListener('click', function(){ S.fpOn = true;
-      act();
-      if(S.anim && S.anim.kind === 'trace'){ stopAnim(); return; }
-      stopAnim();
-      var F = S.F; S.zoom = 1; S.view = null; zoomBtns();
-      var x0 = F.x[0], x1 = F.x[1], dur = 6;
-      for(var i = 0; i <= 200 && !isFinite(F.f(x0)); i++) x0 += (x1 - F.x[0]) / 200;
-      S.trace = []; S.h = (S.h < 0 ? -1 : 1) * TT.HMIN; syncH();
-      setA(x0, 'jump');
-      S.anim = { kind: 'trace', loop: P.loop(function(dt, t){ var a = x0 + (x1 - x0) * Math.min(1, t / dur); a = M.round(a, 4); if(isFinite(F.f(a))){ setA(a); } draw(); }, {
-        duration: dur, still: function(){ setA(x1); draw(); }, onEnd: function(){ S.anim = null; traceB.setAttribute('aria-pressed', 'false'); traceB.textContent = 'Trace f′'; setA(M.round(x1, 4)); draw(); live('Traced: the blue graph is f′. Each of its heights is a slope of f.'); } }) };
-      traceB.setAttribute('aria-pressed', 'true'); traceB.textContent = 'Stop';
-      S.anim.loop.start();
-    });
-    function stopAnim(){
-      if(!S.anim) return;
-      var k = S.anim.kind; S.anim.loop.stop(); S.anim = null;
-      if(k === 'shrink') shrinkB.textContent = 'h → 0';
-      if(k === 'trace'){ traceB.setAttribute('aria-pressed', 'false'); traceB.textContent = 'Trace f′'; }
-      draw();
+    var ownT = null;
+    function goOwn(inp, out){
+      var c = TT.custom(inp.value);
+      if(!c.ok){ out.innerHTML = '<span class="calc-expr-err">' + esc(c.error || 'Type a function of x.') + '</span>'; return; }
+      c.y = autoY(c.f, -4, 4); c.dy = autoY(c.dn, -4, 4, 0.08); c.a = 1; c.h = 1;
+      if(!isFinite(c.f(c.a))){ for(var x = -4; x <= 4; x += 0.25) if(isFinite(c.f(x)) && isFinite(c.f(x + 0.5))){ c.a = x; break; } }
+      var o = pick.querySelector('option[value="custom"]');
+      if(!o){ o = document.createElement('option'); o.value = 'custom'; pick.insertBefore(o, opOwn); }
+      o.textContent = 'Your function';
+      pick.value = 'custom';
+      if(LS) LS.close();
+      setF(c);
     }
 
-    /* --- Tool Studio: the graphs on the stage; the function, h, the
-       buttons and the table in the dock; the reasoning in Why; zoom,
-       numbers and the formula in Details. --- */
-    function studio(pane, s){
-      LS = s;
-      if(s.detailsTitle) s.detailsTitle('Numbers & view');
-      var o = { mode: 'explore' };
-      var stage = el('div', 'tt-ls-stage'); stage.appendChild(q('.tt-stage')); stage.appendChild(q('.tt-live'));
-      s.add('stage', stage, o);
-      var dock = q('.tt-dock'); dock.classList.add('tt-ls-dock');
-      s.add('dock', dock, o);
-      // The standard frame: the function is the stage's dropdown (Your own f keeps its box in the dock).
-      if(T.isStd(s)) T.stagePick(s, pick.select, { label: 'Function', mode: 'explore', count: true });
-      var w = el('div', 'ls-sec tt-ls-why'); w.appendChild(q('.tt-why')); s.add('why', w, o);
-      var d = el('div', 'ls-sec tt-ls-det'); d.appendChild(q('.tt-det'));
-      Array.prototype.slice.call(pane.querySelectorAll(':scope > *')).forEach(function(k){ if(k.textContent.trim()) d.appendChild(k); });
-      s.add('details', d, o);
-      boot();
-      // The tip points at the whole h control (label, slider and ruler), so it
-      // sits above or below it and never over the "Distance h" label (audit 2026-10).
-      if(s.mode() === 'explore') s.hint({ target: q('.tt-hctl'), text: 'Slide h toward 0', round: 14 });
+    /* ---------------------------------------------------- "?": the numbers, the table, the limit, your own curve */
+    var ref = el('div', 'ls-sec tt2-ref'), refT = null;
+    function refLater(){ clearTimeout(refT); refT = setTimeout(refHtml, hp.dragging() || hq.dragging() || drive.playing() || slide.playing() ? 300 : 60); }
+    function refHtml(){
+      var F = S.F, a = S.a, y0 = fa(), c = S.cls || {}, m = slopeNow(), h = S.h, fq = F.f(a + h), sec = TT.dq(F.f, a, h), A = texN(a), H = texN(h);
+      var own = ref.querySelector('.tt2-own'), keep = own ? own.querySelector('input').value : '';
+      var aph = h < 0 ? A + ' - ' + texN(-h) : A + ' + ' + H;
+      var rows = [['a', sv(a)], ['f(a)', F3(y0)], ['h', hText(h)], ['f(a + h)', F3(fq)], ['Secant slope', F3(sec)], ['f′(a)', c.kind === 'smooth' ? F3(m) : 'does not exist']];
+      var tab = TT.table(F.f, a), lim = c.kind === 'smooth' ? 'f′(' + sv(a) + ') = ' + F3(m) : c.kind === 'corner' ? F3(c.L) + ' and ' + F3(c.R) + ': they disagree' : c.kind === 'undefined' ? '—' : 'no finite limit';
+      var html = '<p class="tt2-howref"><button type="button" class="tk2-how" data-how>Show me how</button> to use it, step by step.</p>' +
+        '<h3 class="ls-title-l">This point</h3><table class="ls-tbl tt-ntbl"><caption class="sr-only">Values at P</caption><tbody>' + rows.map(function(r){ return '<tr><th scope="row">' + r[0] + '</th><td class="r">' + esc(r[1]) + '</td></tr>'; }).join('') +
+        (c.kind === 'smooth' ? '<tr><th scope="row">Tangent line</th><td class="r">' + mm(TT.line(+M.round(a, 6), +M.round(y0, 6), +M.round(m, 3)).tex) + '</td></tr>' : '') + '</tbody></table>' +
+        '<h3 class="ls-title-l">Secant slopes as h → 0</h3><div class="table-wrap" tabindex="0" role="region" aria-label="Secant slopes closing in"><table class="tt-dq"><caption>Slopes ' + mm('\\frac{f(a+h)-f(a)}{h}') + ' at a = ' + esc(sv(a)) + '</caption>' +
+        '<thead><tr><th scope="col">|h|</th><th scope="col">Q on the left</th><th scope="col">Q on the right</th></tr></thead><tbody>' +
+        tab.map(function(r){ return '<tr><th scope="row">' + n(r.h) + '</th><td>' + F3(r.left) + '</td><td>' + F3(r.right) + '</td></tr>'; }).join('') +
+        '</tbody><tfoot><tr><th scope="row">h → 0</th><td colspan="2">' + esc(lim) + '</td></tr></tfoot></table></div>' +
+        '<h3 class="ls-title-l">The slope of the secant line</h3><p>Q is ' + (h > 0 ? 'to the right' : 'to the left') + ' of P, at distance h = ' + esc(hText(h)) + '. The secant through P and Q has slope</p>' +
+        (isFinite(sec) ? mm('\\frac{f(' + aph + ') - f(' + A + ')}{' + H + '} = \\frac{' + texN(fq) + ' - ' + paren(y0) + '}{' + H + '} \\approx ' + texN(sec), true) : '<p>Q is off the graph here: f(a + h) is not defined.</p>') +
+        '<h3 class="ls-title-l">The derivative is the limit as h → 0</h3>';
+      if(c.kind === 'smooth'){
+        html += mm("f'(" + A + ') = \\lim_{h \\to 0} \\frac{f(' + A + ' + h) - f(' + A + ')}{h} \\approx ' + texN(m), true) +
+          '<p>From either side the secant slopes close in on the same number, so the limit exists. That number is the slope of the tangent line, and the height of f′ at x = ' + esc(sv(a)) + '.</p>';
+      } else if(c.kind === 'corner' || c.kind === 'vertical' || c.kind === 'cusp'){
+        html += mm('\\lim_{h \\to 0^-} \\frac{f(' + A + ' + h) - f(' + A + ')}{h} = ' + texN(c.L), true) + mm('\\lim_{h \\to 0^+} \\frac{f(' + A + ' + h) - f(' + A + ')}{h} = ' + texN(c.R), true) +
+          '<p>' + (c.kind === 'corner' ? 'The one-sided limits disagree, so the two-sided limit does not exist.' : c.kind === 'vertical' ? 'The secants get steeper and steeper from both sides: the tangent is vertical, and a vertical line has no slope.' : 'The two sides get infinitely steep in opposite directions: a cusp.') +
+          ' f is not differentiable at x = ' + esc(sv(a)) + ', though it is continuous there: continuous does not mean differentiable.</p>';
+      } else if(c.kind === 'jump') html += '<p>f is not continuous at x = ' + esc(sv(a)) + ': the road breaks. From the side of the jump, f(a + h) − f(a) does not shrink while h does, so the quotient blows up. A differentiable function must be continuous.</p>';
+      else if(c.kind === 'endpoint') html += '<p>Only one side of P is on the curve, so the two-sided limit cannot exist.' + (Math.abs(c.R) === Infinity || Math.abs(c.L) === Infinity ? ' From that side the slopes grow without bound: the road starts with a vertical tangent.' : '') + '</p>';
+      html += '<h3 class="ls-title-l">The graph of f′</h3><p>The graph paper under the road has the slope of f as its height. Where f rises, f′ is above the axis; where f falls, below; at a peak or valley of f, f′ = 0.</p>' +
+        '<h3 class="ls-title-l">The curve</h3>' + mm(F.tex, true) + (F.dTex ? '<p class="bt-small">Its derivative (the rules come in topics 2.5 to 2.7):</p>' + mm(F.dTex, true) : '<p class="bt-small">For a typed function the tool estimates f′ with central differences and checks each side of P separately.</p>') +
+        '<h3 class="ls-title-l">Your own curve</h3><div class="tt2-own"><div class="tt-ownrow"><span class="tt-ownl" aria-hidden="true">' + mm('f(x) =') + '</span><label class="sr-only" for="' + id + '-own">Type a function of x</label>' +
+        '<input type="text" id="' + id + '-own" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="x^3 - 2x"><button type="button" class="bt-btn tt-owngo">Graph it</button></div>' +
+        '<div class="calc-expr-preview tt-ownp" aria-live="polite"><span class="bt-small">Try x^3 - 2x, sin(2x), |x - 1| or sqrt(x).</span></div></div>' +
+        '<p class="bt-small">How it is drawn: the centre line of the road is exactly y = f(x) on the grid; the car is turned to the tangent; the tool computes slopes from the exact derivatives of the curves in the list and checks each side of P separately; for a typed function it uses difference quotients with very small h. The magnifier keeps Q halfway out from P, so its zoom grows as h shrinks.</p>' +
+        '<details class="tt-keys"><summary>Keyboard</summary><p class="bt-small">Tab to P: ← → move it along the curve (Shift: ten steps), Home and End go to the ends; a corner, cusp or jump is a stop. Tab to Q (Secant to tangent): ← → move it, Page Down makes h ten times smaller, Page Up ten times bigger, Home and End put it at h = −1 and h = 1.</p></details>' +
+        '<p class="tool-about-n">Notes for this topic: <a href="../notes/derivative-definition.html">The Derivative and Its Notation</a></p>';
+      ref.innerHTML = html;
+      var inp = ref.querySelector('.tt2-own input'), out = ref.querySelector('.tt-ownp');
+      if(keep) inp.value = keep;
+      inp.addEventListener('input', function(){
+        clearTimeout(ownT);
+        ownT = setTimeout(function(){ var v = inp.value.trim(), r = v ? M.read(v, { vars: ['x'] }) : null; out.innerHTML = !r ? '<span class="bt-small">Try x^3 - 2x, sin(2x), |x - 1| or sqrt(x).</span>' : r.ok ? '<span class="bt-small">Reads as</span> ' + mm('f(x) = ' + r.tex) : '<span class="calc-expr-err">' + esc(r.error) + '</span>'; }, 120);
+      });
+      inp.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); goOwn(inp, out); } });
+      ref.querySelector('.tt-owngo').addEventListener('click', function(){ goOwn(inp, out); });
     }
+    ref.addEventListener('click', function(e){ var b = e.target.closest('[data-how]'); if(!b) return; if(LS) LS.close(); setTimeout(startTour, 60); });
+
+    /* ---------------------------------------------------- layout */
+    var lastWH = '';
+    function layout(){
+      if(stage.hidden || !stage.isConnected) return;
+      var r = scene.getBoundingClientRect(), W = Math.round(r.width), H = Math.round(r.height);
+      if(W < 200 || H < 200) return;
+      svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.setAttribute('width', W); svg.setAttribute('height', H);
+      G = geo(W, H); lastWH = W + 'x' + H;
+      drawStatic(); draw();
+    }
+    if(window.ResizeObserver){ var rt = 0; new ResizeObserver(function(){ var r = scene.getBoundingClientRect(); if(Math.round(r.width) + 'x' + Math.round(r.height) === lastWH) return; cancelAnimationFrame(rt); rt = requestAnimationFrame(layout); }).observe(scene); }
+    else window.addEventListener('resize', layout);
+
     function boot(){
-      // On a phone the stage needs the room: the table starts folded.
-      // Pass 2: the secant-slope table starts closed at every width (one tap opens it).
-      q('.tt-dqd').addEventListener('toggle', function(){ if(sized) setTimeout(sized.redraw, 30); });
-      sized = fit(q('.tt-stage'), function(){ draw(); });
-      setF(TT.FUNCS.quad);
+      S.ready = true;
+      recompute(); addVisit(S.a, S.a);
+      head.purpose('The derivative is the slope of the curve at each point.');
+      slide.el.hidden = true; hq.hide(true);
+      refHtml(); layout();
+      setTimeout(function(){ layout(); if(S.mode === 'explore' && !tour.active()) cue.show(); }, 60);
     }
-    if(!(window.LevlStudio && T.studioOf(host))){
-      q('.tt-stage').insertAdjacentHTML('afterend', '<p class="tx-where tt-cap"></p>');
-      boot();
+    function shown(m){
+      S.mode = m;
+      if(m !== 'explore'){ drive.stop(); slide.stop(); tour.stop(); tour2.stop(); hideCue(false); return; }
+      setTimeout(function(){ layout(); if(!tour.active() && !tour2.active()) cue.show(); }, 40);
     }
-    return { studio: studio, stop: function(){ stopAnim(); }, redraw: function(){ if(sized) sized.redraw(); } };
+    return {
+      kit2: function(pane, s){ LS = s; boot(); return { stage: stage, ref: ref }; },
+      plain: function(){ host.appendChild(stage); host.appendChild(ref); boot(); },
+      shown: shown, stop: function(){ drive.stop(); slide.stop(); },
+      redraw: function(){ layout(); },
+      // for the sweep test and the browser checks only
+      _t: { S: S, LENS: LENS, G: function(){ return G; }, hp: hp, hq: hq, drive: drive, slide: slide, cause: cause, setF: setF, setTab: setTab, moveP: function(v){ hp.value(v, true); }, setH: function(v){ hq.value(v, true); } }
+    };
   }
 
   /* ========================================================= TEST YOURSELF */
@@ -925,16 +1275,28 @@
     return { redraw: redrawFig };
   }
 
-  T.mount(SLUG, function(app, data){
-    var ex = null, qz = null;
-    T.modes(app, { slug: SLUG, labels: ['Explore', 'Test yourself'],
-      explore: function(host){ ex = explore(host, data); },
-      quiz: function(host){ qz = quiz(host, data); },
-      onShow: function(m){
-        if(m !== 'explore' && ex) ex.stop();
-        // A pane that was hidden has no size: draw it again once it shows.
-        setTimeout(function(){ if(m === 'explore' && ex) ex.redraw(); if(m === 'quiz' && qz) qz.redraw(); }, 30);
-      },
-      studio: { explore: function(pane, s){ ex.studio(pane, s); } } });
-  });
+  function boot(){
+    T.mount(SLUG, function(app, data){
+      var ex = null, qz = null, kit = !!(window.LevlKit2 && window.LevlStudio && app.getAttribute('data-studio'));
+      var md = T.modes(app, { slug: SLUG, labels: ['Explore', 'Test yourself'],
+        explore: function(host){ ex = explore(host, data); window.ApCalcTangentTracer = ex._t; },
+        quiz: function(host){ qz = quiz(host, data); },
+        onShow: function(m){
+          if(ex) ex.shown(m);
+          // A pane that was hidden has no size: draw it again once it shows.
+          setTimeout(function(){ if(m === 'explore' && ex) ex.redraw(); if(m === 'quiz' && qz) qz.redraw(); }, 30);
+        },
+        studio: kit ? { kit2: function(pane, s){ return ex.kit2(pane, s); } } : {} });
+      // Without the frame (no Tool Studio, or no kit) the stage still works on its own, above Test yourself.
+      if(!kit || !T.studioOf(app)) ex.plain();
+      return md;
+    });
+  }
+  /* The page loads the kit (pages.json "kit2": true). A cached copy of the old page would not: fetch it then. */
+  if(window.LevlKit2) boot();
+  else {
+    var up = (window.ApCalcBase || '../') + '../assets/course/';
+    var l = document.createElement('link'); l.rel = 'stylesheet'; l.href = up + 'tool-kit2.css'; document.head.appendChild(l);
+    var sc = document.createElement('script'); sc.src = up + 'tool-kit2.js'; sc.onload = boot; sc.onerror = boot; document.head.appendChild(sc);
+  }
 })();
