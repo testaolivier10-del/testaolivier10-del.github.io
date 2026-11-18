@@ -91,7 +91,7 @@ function measure() {
   const cause = document.querySelector('.hw2 .tk2-cause'), cz = Array.from(cause.querySelectorAll('.tk2-cz'));
   const rows = new Set(cz.map(e => Math.round(e.getBoundingClientRect().top)));
   const txt = e => e.textContent.replace(/\s+/g, ' ').trim();
-  return { S, labels, toks, knob: knob && knob.offsetParent ? R(knob) : null, cue: cue ? R(cue) : null, frame, soil, plants,
+  return { S, labels, toks, knob: knob && knob.offsetParent ? (b => ({ x: b.x - 7, y: b.y - 7, r: b.r + 7, b: b.b + 7, w: b.w + 14, h: b.h + 14 }))(R(knob)) : null, /* the dot and its two rings */ cue: cue ? R(cue) : null, frame, soil, plants,
     cause: { h: cause.getBoundingClientRect().height, rows: rows.size, text: cz.map(txt), hidden: cause.offsetParent === null },
     signs: signEls.map(e => txt(e)), signText, car: q('.hw2-car .hw2-pill').filter(vis).map(e => txt(e)), sp: document.querySelector('.hw2').getAttribute('data-sp'), nR: q('.hw2-top .hw2-tok.is-r:not(.is-egg)').length, nRe: q('.hw2-top .hw2-tok.is-r.is-egg').length,
     colors: ['g0', 'g1', 'g2', 'is-sprout'].map(c => scene.querySelectorAll('.hw2-p > use.' + c + ':not(.is-out)').length),
@@ -109,7 +109,8 @@ function check(m, tag, n, opts = {}) {
   m.labels.forEach(l => m.toks.forEach(t => ok(!hit(l, t, 1), `${tag}: ${l.k} overlaps an allele`)));
   if (m.cue) m.labels.forEach(l => ok(!hit(m.cue, l, 0.5), `${tag}: the cue covers ${l.k}`));
   if (m.knob) m.labels.forEach(l => ok(!hit(m.knob, l, 0.5), `${tag}: the knob covers ${l.k}`));
-  if (m.knob) m.toks.forEach(t => ok(!hit(m.knob, t, 1.5), `${tag}: the knob covers an allele`));
+  // the knob and an allele are both round: compare centres (with the knob's rings)
+  if (m.knob) m.toks.forEach(t => ok(Math.hypot((m.knob.x + m.knob.r) / 2 - (t.x + t.r) / 2, (m.knob.y + m.knob.b) / 2 - (t.y + t.b) / 2) > m.knob.w / 2 + Math.max(t.w, t.h) / 2 - 1, `${tag}: the knob covers an allele`));
   // the bed is the largest thing: most of the picture, and larger than any control or line outside it
   const bed = m.frame.w * m.frame.h;
   ok(bed > 0.5 * S.w * S.h, `${tag}: the bed is only ${(100 * bed / (S.w * S.h)).toFixed(0)}% of the picture`);

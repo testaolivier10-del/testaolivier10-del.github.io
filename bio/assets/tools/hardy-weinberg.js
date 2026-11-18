@@ -392,7 +392,8 @@
         h.push('<path class="hw2-edge" d="M' + n1(fx + 3) + ' ' + n1(g.by0 - g.tb + 1.2) + 'H' + n1(fx + fw - 3) + '"/>');
         // the two captions of the gene pool
         h.push('<text class="hw2-cap" x="' + n1(g.bx0 - (g.ph ? 2 : 8)) + '" y="' + n1(g.tokY + g.fsS * 0.36) + '" text-anchor="end" style="font-size:' + g.fsS + 'px">pollen</text>');
-        h.push('<text class="hw2-cap" x="' + n1(g.eggX) + '" y="' + n1(g.ty + g.fsS * 0.36) + '" text-anchor="middle" style="font-size:' + g.fsS + 'px">eggs</text>');
+        // "eggs" right under the last egg (at the head of the column the knob covers it when p = 0)
+        h.push('<text class="hw2-cap" x="' + n1(g.eggX) + '" y="' + n1(g.rows + (N - 0.5) * g.rh + g.tokR * 0.94 + 3 + g.fsS * 0.8) + '" text-anchor="middle" style="font-size:' + g.fsS + 'px">eggs</text>');
         gStatic.innerHTML = h.join('');
       }
       function tok(x, y, isA, egg, cls){

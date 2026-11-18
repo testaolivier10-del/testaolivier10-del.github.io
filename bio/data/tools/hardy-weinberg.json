@@ -22,7 +22,7 @@
     "note": "The bed is a model: 100 snapdragons sorted so they can be counted. In a real population the same shares are scattered at random. R and W stand for the snapdragon alleles C<sup>R</sup> and C<sup>W</sup>; flower color shows incomplete dominance, so RR plants are red, RW plants are pink and WW plants are white."
   },
   "pea": {
-    "about": "Test yourself, the targets about a hidden recessive (sp: \"pea\"): a bed of pea plants, flower colour with complete dominance (OpenStax 12.2: purple dominant over white). AA and Aa plants are both purple; only aa plants show white.",
+    "about": "Test yourself, the targets about a hidden recessive (sp: \"pea\"): a bed of pea plants, flower color with complete dominance (OpenStax 12.2: purple dominant over white). AA and Aa plants are both purple; only aa plants show white.",
     "A": "A",
     "a": "a",
     "phen": [
