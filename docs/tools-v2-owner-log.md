@@ -68,3 +68,9 @@ in each tool's brief.
 | 2026-11-18 | Ochem Conformation Lab | Shorter cause pills ("Eclipsed: torsional strain", "CH₃ on CH₃: steric", "strain 1.7 kcal/mol"); "almost no / almost all molecules" at the extremes | Two rows at 360 px | `chainBond()`, `chainChair()`; screen readers get the long form |
 | 2026-11-18 | Ochem Conformation Lab | A name with no clear spot on the picture is left out | Never laid over another name or a group | `placer()`; the cause line still says it |
 | 2026-11-18 | Ochem Conformation Lab | Below 1100 px the two end chairs are small, without letters, on the bench; below 1000 px the hill is under the model | The ring or model keeps the stage | `layoutNow()` |
+| 2026-11-18 | AP Bio Energy flow | The picture is a drawn grassland chain of four (grasses, grasshoppers, frogs, snakes); one drawn per 10 kcal, so counts are the energy | One idea, read without a chart (rule 12) | `docs/tools-v2-bio-energy-flow-brief.md` |
+| 2026-11-18 | AP Bio Energy flow | Two controls on the picture (share passed on, sunlight); respiration shares, number of levels and ecosystem are fixed in Explore | One main control (rule 11) | "?" states the fixed values; restore the sliders in Test yourself or a later tool |
+| 2026-11-18 | AP Bio Energy flow | Biomagnification (8.7) moves from a mode to "?" | Different idea from 8.2 | "?" section; a separate tool can come later |
+| 2026-11-18 | AP Bio Energy flow | The runs table is dropped; a series table for shares 5 to 20% is in "?" | Explore records nothing | `refHtml()` |
+| 2026-11-18 | AP Bio Energy flow | The cause line says "lost as heat" for all not passed on (AP shorthand); "?" splits heat and decomposers | Short cause line | `docs/apbio-needs-author.md` energy-flow-model |
+| 2026-11-18 | AP Bio Energy flow | The grass's own respiration plume carries no "heat" word | Its colour matches every labelled plume; a word there crowds the first step on phones | `draw()` in energy-flow.js |

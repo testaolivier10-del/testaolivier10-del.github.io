@@ -66,6 +66,7 @@ decision made on the owner's behalf, so he can skim it later and reverse any of 
 | --- | --- | --- |
 | AP® Environmental Science, Water pollution | Shipped 2026-11-17 | `docs/tools-v2-water-pollution-brief.md` |
 | AP® Biology, Osmosis | Built 2026-11-17, waiting for the independent review (not merged) | `docs/tools-v2-osmosis-brief.md` |
-| AP® Biology, Simpson's diversity index | Built 2026-11-18, waiting for the independent review (not merged) | `docs/tools-v2-simpson-diversity-brief.md` |
-| AP® Biology, Water potential | Built 2026-11-18, waiting for the independent review (not merged) | `docs/tools-v2-water-potential-brief.md` |
-| Organic Chemistry, Conformation Lab | Built 2026-11-17, in independent review (on `claude/tools-v2-conformations`) | `docs/tools-v2-conformations-brief.md` |
+| AP® Biology, Simpson's diversity index | Built 2026-11-18. Review PASS 2026-11-18; shipped to the collecting branch `claude/tools-v2-all` (not on main) | `docs/tools-v2-simpson-diversity-brief.md` |
+| AP® Biology, Water potential | Built 2026-11-18. Review PASS 2026-11-18; shipped to the collecting branch `claude/tools-v2-all` (not on main) | `docs/tools-v2-water-potential-brief.md` |
+| Organic Chemistry, Conformation Lab | Built 2026-11-17. Review PASS 2026-11-18; shipped to the collecting branch `claude/tools-v2-all` (not on main) | `docs/tools-v2-conformations-brief.md` |
+| AP® Biology, Energy flow | Built 2026-11-18. Review PASS 2026-11-18; shipped to the collecting branch `claude/tools-v2-all` (not on main) | `docs/tools-v2-bio-energy-flow-brief.md` |
