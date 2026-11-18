@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /* The "was the tool used" events in a real browser (docs/analytics-plan.md, "Tool use"; the code is watchUse in
    assets/course/tool-studio.js). Three tools, one of each kind of mount:
-     - an old-frame course tool (AP Biology, Osmosis),
+     - an old-frame course tool (AP Biology, Water potential) and two rebuilt ones (Osmosis, Simpson diversity),
      - the tools v2 flagship (AP Environmental Science, Water pollution, with Premium answered "yes" here only),
      - an NREMT tool (Flowcharts; the body map draws in 3D, too slow for a headless check), which is not in a tools/ folder.
    For each: a visitor opens it, presses on the stage several times, switches mode when the tool has modes, and
@@ -25,8 +25,10 @@ const MIME = {
   '.mp3': 'audio/mpeg', '.ico': 'image/x-icon',
 };
 const TOOLS = [
-  { path: '/bio/tools/osmosis.html', tool: 'apbio/osmosis', frame: 'old' },
+  { path: '/bio/tools/water-potential.html', tool: 'apbio/water-potential', frame: 'old' },
+  { path: '/bio/tools/osmosis.html', tool: 'apbio/osmosis', frame: 'v2' },
   { path: '/environmental-science/tools/water-pollution.html', tool: 'apenv/water-pollution', frame: 'v2', premium: true },
+  { path: '/bio/tools/simpson-diversity.html', tool: 'apbio/simpson-diversity', frame: 'v2' },
   { path: '/nremt/flowcharts.html', tool: 'nremt/flowcharts', frame: 'old' },
 ];
 const FIELDS = { 'tool-open': ['tool', 'course', 'frame', 'locked'], 'tool-touch': ['tool', 'course', 'frame', 'mode'],
