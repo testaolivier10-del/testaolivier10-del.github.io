@@ -40,6 +40,9 @@ review round: `docs/tools-v2-water-pollution-brief.md`, `docs/tools-v2-osmosis-b
    - On a phone, a run started below the picture scrolls the picture into view.
    - The first visit cue never covers a label or number.
    - Reduced motion gets a short cross fade and the full result at once.
+   - Do not edit `scripts/check-tool-use.mjs` (its samples are fixed so branches never conflict); to check your tool
+     reports frame v2, run it with a local copy of the list. Do not redefine the kit's phone cause line height.
+   - Run long sweeps one width per process (one process for all ten widths can pass ten minutes).
 5. Keep a sweep test in the repo, `scripts/tools-v2/<tool>-sweep.mjs` (copy the pattern of the first one in
    that folder if present): every preset or landmark state at widths 360, 390, 430, 600, 768, 820, 1024, 1280,
    1440, 1920; assert nothing clipped, no label overlap, the acted-on object is the largest thing, cause line at
