@@ -43,7 +43,7 @@
     var P = [], sd = 20261118, rnd = function(){ sd = (sd + 0x6D2B79F5) | 0; var t = Math.imul(sd ^ (sd >>> 15), 1 | sd); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
     for(var i = 0; i < 1000; i++){
       var best = null, bd = -1;
-      for(var c = 0; c < 8; c++){
+      for(var c = 0, nc = 8 + i / 14; c < nc; c++){
         var x = rnd(), y = rnd(), d = 9;
         for(var j = 0; j < P.length; j++){ var dx = (x - P[j][0]) * key, dy = y - P[j][1], q = dx * dx + dy * dy; if(q < d) d = q; }
         if(d > bd){ bd = d; best = [x, y]; }
@@ -77,9 +77,12 @@
       var head = K.head({ purpose: 'Solute plus pressure decides which way water moves', how: { label: 'Show me how', onClick: function(){ startTour(); } } });
       stage.appendChild(head.el);
       var sceneBox = document.createElement('div'); sceneBox.className = 'wp2-scene'; sceneBox.id = T.nid('wp2');
-      sceneBox.innerHTML = '<svg class="wp2-svg" role="img" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"><g class="wp2-static"></g><g class="wp2-dyn"></g></svg>';
+      sceneBox.innerHTML = '<svg class="wp2-svg" role="img" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"><g class="wp2-static"></g><g class="wp2-dyn"><g class="wp2-l-dots"></g><g class="wp2-l-cell"></g><g class="wp2-l-flow"></g><g class="wp2-l-sums"></g></g></svg>';
       stage.appendChild(sceneBox);
       var svg = sceneBox.querySelector('svg'), gStatic = svg.querySelector('.wp2-static'), gDyn = svg.querySelector('.wp2-dyn'), layer = K.layer(sceneBox), G = null;
+      // four layers, each rewritten only when it changes (a pressure drag does not redraw a thousand particles)
+      var LAY = {}; ['dots', 'cell', 'flow', 'sums'].forEach(function(k){ LAY[k] = { el: gDyn.querySelector('.wp2-l-' + k), html: null }; });
+      function put(k, html){ var L = LAY[k]; if(L.html !== html){ L.html = html; L.el.innerHTML = html; } }
       var lines = document.createElement('div'); lines.className = 'wp2-lines';
       var cause = K.cause({ label: 'Why' });
       lines.appendChild(cause.el);
@@ -155,9 +158,9 @@
         if(!tw){ lastTs = 0; tw = requestAnimationFrame(tick); }
       }
       function tick(ts){
-        var dt = lastTs ? Math.min(120, ts - lastTs) : 16, go = false, f = 1 - Math.exp(-dt / 110); lastTs = ts; view.clock = ts;
+        var dt = lastTs ? Math.min(120, ts - lastTs) : 16, go = false, f = 1 - Math.exp(-dt / 90); lastTs = ts; view.clock = ts;
         var tp = S.mode === 'explore' ? S.p : sceneP(), tc = S.mode === 'explore' ? S.c : 0;
-        if(Math.abs(tp - view.p) > 0.03){ view.p += (tp - view.p) * f; go = true; } else view.p = tp;
+        if(Math.abs(tp - view.p) > 0.045){ view.p += (tp - view.p) * f; go = true; } else view.p = tp;
         if(Math.abs(tc - view.c) > 0.004){ view.c += (tc - view.c) * f; go = true; } else view.c = tc;
         if(view.reveal < 1){ view.reveal = Math.min(1, view.reveal + dt / 420); go = true; }
         if(!go && now() < flowUntil) go = true;   // the drops run on for a moment after a change, then rest
@@ -178,7 +181,8 @@
         // band above and the cell stands under its own.
         var cellBot = y1 - (ph ? 12 : 20), top0 = BY + (ph ? 14 : 20), hh = (cellBot - top0) / 2 / 1.05, hw = Math.min(clamp(BW * 0.22, 170, 330), hh * 1.45);
         hh = Math.min(hh, hw * 0.95);
-        var inside = !ph && 2 * (hw - wt - band) * 0.8 >= cw + 30 && 2 * (hh - wt - band) >= ch + wordH + 120, cardY, cellTop;
+        var cxIn = BX + Math.max(BW * 0.27, hw * 1.05 + 30);
+        var inside = !ph && 2 * (hw - wt - band) * 0.8 >= cw + 30 && 2 * (hh - wt - band) >= ch + wordH + 150 && cxIn + hw * 1.05 + 126 + cw + 8 <= (ex ? vx - 40 : R0), cardY, cellTop;
         if(inside){ cellTop = top0; cardY = (top0 + cellBot) / 2 - hh + wt + band + 18; }
         else {
           cardY = top0; cellTop = cardY + ch + wordH / 2 + (ph ? 12 : 16); hh = (cellBot - cellTop) / 2 / 1.05;
@@ -187,9 +191,10 @@
         }
         var cx = ph ? BX + 8 + hw * 1.05 : BX + Math.max(BW * 0.27, hw * 1.05 + 30), cy = (cellTop + cellBot) / 2, k = Math.min(hh / 120, ph ? 9 : 1.9);
         var xr = cx + hw * 1.05, c1 = clamp(cx - cw / 2, BX + 6, R0);
-        var c2 = ph ? R0 - 6 - cw : clamp((xr + (ex ? vx - 20 : R0)) / 2 - cw / 2, Math.max(c1 + cw + 16, xr + 24), R0 - 8 - cw);
+        var c2 = ph ? R0 - 6 - cw : clamp((xr + (ex ? vx - 20 : R0)) / 2 - cw / 2, Math.max(c1 + cw + 16, inside ? xr + 126 : 0), R0 - 8 - cw);
+        c2 = Math.min(c2, R0 - 8 - cw); c1 = Math.min(c1, c2 - cw - 12);
         var tx0 = ph ? BX + 26 : Math.max(BX + 30, cx - hw * 1.4), tx1 = ph ? R0 - 26 : Math.min(R0 - 40, Math.max(cx + hw * 1.4, tx0 + 420));
-        var vy0 = y1 - (ph ? 50 : 62), vy1 = Math.max(cardY + ch + wordH / 2 + (ph ? 58 : 70), vy0 - (ph ? 190 : 300));
+        var vy0 = y1 - (ph ? 50 : 62), clear = c2 + cw + 12 < vx - 34, vy1 = Math.max(clear ? BY + 62 : cardY + ch + wordH / 2 + (ph ? 58 : 70), vy0 - (ph ? 190 : 300));
         return { W: Wd, H: H, ph: ph, ex: ex, gx: gx, gw: gw, BX: BX, BY: BY, BW: BW, BH: BH, y1: y1, R0: R0, fs: fs, fsS: fsS, rowH: rowH, cw: cw, ch: ch, cardY: cardY, inside: inside, wordH: wordH,
           c1: c1, c2: c2, vx: vx, vy0: vy0, vy1: vy1, cx: cx, cy: cy, hw: hw, hh: hh, k: k, wt: wt, band: band, xr: xr, rightLim: rightLim,
           tx0: tx0, tx1: tx1, ty: y1 + (ph ? 48 : 50), pool: poolFor((BW - 24) / (BH - 28)) };
@@ -292,11 +297,11 @@
         var tg = clamp(sc.p / PMAX, 0, 1), n = 5.4 - 2.3 * tg, grow = 1 + 0.05 * tg, hw = g.hw * grow, hh = g.hh * grow, wt = g.wt;
         var ihw = hw - wt - 1.4, ihh = hh - wt - 1.4, vhw = ihw - g.band, vhh = ihh - g.band, vn = Math.max(2.6, n - 1.5);
         // solute outside: particles at the same density rule as the cell sap, never on the cell, a card or the rail
-        var POOL = g.pool, area = BW * BH / (k * k), nf = Math.min(POOL.length, sc.osmOut * KD * area), nOut = Math.ceil(nf - 1e-9), dr = Math.max(2.6, 2.9 * Math.sqrt(k)), dots = [];
+        var POOL = g.pool, kd = Math.max(k, 1.15), area = BW * BH / (kd * kd), nf = Math.min(POOL.length, sc.osmOut * KD * area), nOut = Math.ceil(nf - 1e-9), dr = 2.6 * Math.sqrt(kd), dots = [];
         var wy = cy - (g.ph ? 0.2 : 0.32) * g.hh - (g.ph ? 24 : 30), sp = pillW('Solute outside', g.fsS), spx = Math.min(g.vx + sp / 2, R0 - 6);
         var keep = [[g.c2, g.cardY, g.c2 + g.cw, g.cardY + g.ch + g.wordH / 2 + 2], [g.xr, wy - 20, g.xr + 16 + pillW('no net flow', g.fsS), wy + 12]];
         if(!g.inside) keep.push([g.c1, g.cardY, g.c1 + g.cw, g.cardY + g.ch + g.wordH / 2 + 2]);
-        if(g.ex) keep.push([g.vx - 26, g.vy1 - 52, g.vx + 26, g.vy0 + 22], [spx - sp, g.vy0 + (g.ph ? 32 : 36) - g.wordH / 2, spx, g.vy0 + (g.ph ? 32 : 36) + g.wordH / 2]);
+        if(g.ex) keep.push([g.vx - 32, g.vy1 - 54, g.vx + 32, g.vy0 + 22], [spx - sp, g.vy0 + (g.ph ? 32 : 36) - g.wordH / 2, spx, g.vy0 + (g.ph ? 32 : 36) + g.wordH / 2]);
         var hit = function(x, y, m){ for(var z = 0; z < keep.length; z++){ var q = keep[z]; if(x > q[0] - m && x < q[2] + m && y > q[1] - m && y < q[3] + m) return true; } return false; };
         for(var i = 0; i < nOut; i++){
           var qx = BX + 12 + POOL[i][0] * (BW - 24), qy = BY + 16 + POOL[i][1] * (BH - 28);
@@ -304,7 +309,7 @@
           if(hit(qx, qy, dr + 2)) continue;
           dots.push('<circle cx="' + n1(qx) + '" cy="' + n1(qy) + '" r="' + n1(dr) + '"' + (i === nOut - 1 && nf < nOut ? ' opacity="' + (nf - (nOut - 1)).toFixed(2) + '"' : '') + '/>');
         }
-        p.push('<g class="wp2-dots" data-n="' + dots.length + '" clip-path="url(#wp2c-liq)">' + dots.join('') + '</g>');
+        put('dots', '<g class="wp2-dots" data-n="' + dots.length + '" clip-path="url(#wp2c-liq)">' + dots.join('') + '</g>');
         // the cell: a wall with thickness, the membrane just inside it, cytoplasm, chloroplasts, a nucleus, the vacuole
         var outer = ringPath(cx, cy, hw, hh, n, 88), inner = ringPath(cx, cy, hw - wt, hh - wt, n, 88), mid = ringPath(cx, cy, hw - wt / 2, hh - wt / 2, n, 88);
         p.push('<g class="wp2-cell">');
@@ -323,7 +328,7 @@
         p.push('<path class="wp2-vacshine" d="M' + n1(cx + s0[0]) + ' ' + n1(cy + s0[1]) + 'Q' + n1(cx + s1[0]) + ' ' + n1(cy + s1[1]) + ' ' + n1(cx + s2[0]) + ' ' + n1(cy + s2[1]) + '"/>');
         p.push('<path class="wp2-memb" d="' + memb + '"/>');
         // the cell sap's solute, in the vacuole: a fixed amount
-        var nIn = Math.min(160, Math.round(sc.osmIn * KD * Math.PI * (g.hw - wt - g.band) * (g.hh - wt - g.band) / (k * k) * 1.06)), ind = [];
+        var nIn = Math.min(160, Math.round(sc.osmIn * KD * Math.PI * (g.hw - wt - g.band) * (g.hh - wt - g.band) / (kd * kd) * 1.06)), ind = [];
         for(var j = 0; j < nIn; j++){
           var da = j * 2.39996 + 0.6, dq = Math.sqrt((j + 0.5) / nIn) * 0.9, c0 = Math.cos(da), s0b = Math.sin(da), e = 2 / Math.max(vn, 2.6) * 0.5 + 0.5;
           var ix = cx + (vhw - dr - 2) * dq * (c0 < 0 ? -1 : 1) * Math.pow(Math.abs(c0), e), iy = cy + (vhh - dr - 2) * dq * (s0b < 0 ? -1 : 1) * Math.pow(Math.abs(s0b), e);
@@ -341,6 +346,7 @@
           });
         }
         p.push('</g>');
+        put('cell', p.join('')); p = [];
         // water: arrows across the wall from the higher total to the lower one, as wide as the difference
         var xr = cx + hw, ys = g.ph ? [-0.2, 0.2] : [-0.32, 0, 0.32], fl = [];
         if(sc.dir && sc.reveal > 0){
@@ -356,6 +362,7 @@
           fl.push(pill(Math.min(g.xr + 8, g.rightLim - pillW(wtxt, g.fsS)), wy, wtxt, 'is-water', 'start', g.fsS));
           p.push('<g class="wp2-flowg" data-dir="' + sc.dir + '" opacity="' + sc.reveal.toFixed(2) + '">' + fl.join('') + '</g>');
         }
+        put('flow', p.join('')); p = [];
         // the two written sums
         p.push(card(g.c1, g.cardY, sc.t1, sc.rows1, sc.tot1, sc.w1, 'cell'));
         p.push(card(g.c2, g.cardY, sc.t2, sc.rows2, sc.tot2, sc.w2, 'out'));
@@ -365,11 +372,11 @@
             var bx = g.tx0 + (g.tx1 - g.tx0) * (prev.v / PMAX), kx = g.tx0 + (g.tx1 - g.tx0) * (S.p / PMAX);
             p.push('<path class="wp2-mark" d="M' + n1(bx) + ' ' + n1(g.ty - 9) + 'V' + n1(g.ty + 9) + '"/>' + (Math.abs(bx - kx) > 62 ? '<text class="wp2-markt" x="' + n1(bx) + '" y="' + n1(g.ty - 13) + '" text-anchor="middle" style="font-size:' + (g.fsS - 1) + 'px">before</text>' : ''));
           } else {
-            var by = g.vy0 + (g.vy1 - g.vy0) * (prev.v / CMAX), ky = g.vy0 + (g.vy1 - g.vy0) * (S.c / CMAX);
-            p.push('<path class="wp2-mark is-v" d="M' + n1(g.vx - 11) + ' ' + n1(by) + 'h22"/>' + (Math.abs(by - ky) > 30 ? '<text class="wp2-markt is-v" x="' + n1(g.vx - 15) + '" y="' + n1(by + 4) + '" text-anchor="end" style="font-size:' + (g.fsS - 1) + 'px">before</text>' : ''));
+            var by = g.vy0 + (g.vy1 - g.vy0) * (prev.v / CMAX);   // on the wall's scale the tick alone (no room for a word beside the water's label)
+            p.push('<path class="wp2-mark is-v" d="M' + n1(g.vx - 13) + ' ' + n1(by) + 'h26"/>');
           }
         }
-        gDyn.innerHTML = p.join('');
+        put('sums', p.join(''));
         var al = sc.ex ? 'A plant cell in an open beaker of ' + F(view.c, 2) + ' molar ' + EX.outside.solute + '. ' + sentence(sc.m)
           : 'The problem’s ' + sc.t1.toLowerCase() + ' in a beaker of ' + sc.t2 + '.' + (sc.chk ? ' Cell water potential ' + sg(sc.m.cell, 2) + ' bar, outside ' + sg(sc.m.out, 2) + ' bar: ' + dirWords(sc.dir) + '.' : ' The sums fill in as you answer.');
         if(draw.al !== al){ draw.al = al; svg.setAttribute('aria-label', al); }
