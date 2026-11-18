@@ -399,6 +399,11 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    challenges and the potato core questions and FRQ. New: `ApBioTools.studioKit2` (the course's kit adapter),
    `"kit2": true` in `pages.json`, `ApBioMath.osmosis.equilibrium`, an `explore` block in the tool's data. Still
    free. What Explore no longer does is listed as owner questions in the brief.
+34. (2026-11-18, `docs/tools-v2-simpson-diversity-brief.md`) **Simpson's diversity index rebuilt to tools v2**
+   (branch `claude/tools-v2-simpson-diversity`, waiting for the independent review). Explore: a drawn woodland plot,
+   a tray of five trees and Cut on the picture, a D gauge with the most D can be with that many species, a cause
+   line, Even it out. Test yourself: Calculate D (the old Practice, unchanged) and Build a community (the old goals).
+   New `explore` block in the tool's data, checked by the content check; still free.
 
 ## 4. Map format (Phase 0)
 
