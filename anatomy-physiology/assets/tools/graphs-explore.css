@@ -196,6 +196,8 @@
 
 /* five tabs on a phone: the names without their numbers */
 @media (max-width:640px){
-  .gx .tk2-tab{padding:0 4px;font-size:13px;}
-  .gx .tk2-tab-n{display:none;}
+  .gx .tk2-tabs.is-big{gap:4px;}
+  .gx .tk2-tabs.is-big .tk2-tab{padding:0 4px;font-size:13.5px;min-height:46px;}
+  .gx .tk2-tabs.is-big .tk2-tab-n{display:none;}
 }
+@media (max-width:380px){ .gx .tk2-tabs.is-big .tk2-tab{font-size:12.5px;padding:0 2px;} }

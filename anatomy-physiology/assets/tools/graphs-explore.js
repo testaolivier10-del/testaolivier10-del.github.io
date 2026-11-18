@@ -274,7 +274,7 @@
         s += readout(E, 132, floor - 52, n0(V), 'mL', 'air');
         s += lab(E, 404, Math.min(floor - 70, 230), 'Lungs', 'air', { to: [372, Math.min(floor - 100, 200)] });
         s += lab(E, 444, floor + 22, 'Diaphragm', 'mus', { to: [410, floor + 8] });
-        if(V < 1500) s += lab(E, 132, floor - 92, 'Residual air', 'rv');
+        if(V < 1500) s += lab(E, 132, floor - 18, 'Residual air', 'rv');
         return s;
       },
       words: function(E, t){
@@ -391,7 +391,7 @@
     // channel states from the moment of the recording (course notes, action potential basics): Na+ channels open fast
     // at threshold, inactivate near the peak and reset once repolarized; K+ channels open slowly, about when Na+ ones
     // shut, and are slow to close (the hyperpolarization)
-    function naOpen(t){ return ramp(t, 2.95, 3.08) * (1 - inact(t)); }
+    function naOpen(t){ return ramp(t, 2.95, 3.08) * (1 - ramp(t, 3.38, 3.56)); }   // open, then inactivated (and closed again once reset)
     function inact(t){ return ramp(t, 3.38, 3.56) * (1 - ramp(t, 4.4, 5.0)); }
     function kOpen(t){ return ramp(t, 3.3, 3.62) * (1 - ramp(t, 4.9, 6.7)); }
     var NA = [116, 336], KK = [226, 446], MY = 200, MH = 54;   // channel x places, membrane middle and thickness
@@ -472,10 +472,10 @@
       words: function(E, t){
         var V = this.V(t), na = naOpen(t), h = inact(t), kk = kOpen(t);
         if(na > 0.5) return [{ t: 'Threshold reached', role: 'v' }, { t: 'Na⁺ channels open', role: 'na', say: 'sodium channels open' }, { t: 'Na⁺ rushes in', role: 'na', say: 'sodium rushes in' }, { t: 'Depolarization', role: 'phase' }];
-        if(h > 0.5 && kk > 0.5 && V > -70) return [{ t: 'Na⁺ channels plugged', role: 'na', say: 'sodium channels inactivate' }, { t: 'K⁺ channels open', role: 'k', join: '+', say: 'potassium channels open' }, { t: 'K⁺ flows out', role: 'k', say: 'potassium flows out' }, { t: 'Repolarization', role: 'phase' }];
+        if(h > 0.5 && kk > 0.5 && V > -70) return [{ t: 'Na⁺ channels plugged', role: 'na', say: 'sodium channels inactivate' }, { t: 'K⁺ channels open', role: 'k', join: '+', say: 'potassium channels open' }, { t: 'K⁺ out', role: 'k', say: 'potassium flows out' }, { t: 'Repolarization', role: 'phase' }];
         if(V < -71.2 && kk > 0.05) return [{ t: 'K⁺ channels slow to close', role: 'k', say: 'potassium channels are slow to close' }, { t: 'extra K⁺ out', role: 'k', say: 'extra potassium leaves' }, { t: 'Hyperpolarization', role: 'phase' }];
         if(t >= 0.4 && t <= 2.1 && V > -69.5) return [{ t: 'Weak stimulus', role: 'v' }, { t: 'small depolarization', role: 'v' }, { t: 'below threshold', role: 'v' }, { t: 'Graded potential', role: 'phase' }];
-        if(t > 2.35 && t < 3.0 && V > -69.5) return [{ t: 'Stronger stimulus', role: 'v' }, { t: 'depolarizes toward threshold', role: 'v' }, { t: 'Graded potential', role: 'phase' }];
+        if(t > 2.35 && t < 3.0 && V > -69.5) return [{ t: 'Stronger stimulus', role: 'v' }, { t: 'nears threshold', role: 'v', say: 'the membrane depolarizes toward threshold' }, { t: 'Graded potential', role: 'phase' }];
         return [{ t: 'Voltage-gated channels shut', role: 'side', say: 'the voltage-gated channels are shut' }, { t: 'inside more negative', role: 'v', say: 'the inside is more negative than the outside' }, { t: 'Resting potential', role: 'phase' }];
       },
       say: function(E, t){ return 'At ' + t.toFixed(2) + ' ms the inside is at ' + Math.round(this.V(t)) + ' millivolts. ' + E.text(t); }
@@ -547,7 +547,7 @@
         s += '<path class="gx-mline" d="M' + CX + ',110 V290"/>';
         // overlap brackets would be numbers: the tension is the readout
         s += readout(E, CX, 388, Math.round(T) + '%', 'of max tension', 'xb');
-        s += lab(E, Math.max(42, zl - 4), 66, 'Z disc', 'z', { to: [zl, 104] });
+        s += lab(E, 8, 66, 'Z disc', 'z', { to: [zl, 104], anchor: 'start' });
         s += lab(E, CX, 40, 'Thick filament', 'myo', { to: [CX + tl * U * 0.45, ROWS[0] - 4] });
         s += lab(E, Math.min(PW - 66, zr + 8), 330, 'Thin filament', 'actin', { to: [zr - 30, TROWS[3] + 2] });
         if(attached) s += lab(E, Math.max(70, zl - 10), 330, 'Cross-bridges', 'xb', { to: [ok[0].px + (ok[0].side > 0 ? -6 : 6), ok[0].ty - ok[0].up * 5] });
@@ -622,7 +622,7 @@
     function panelOf(sc){ var g = sc.g, k = 0; g.panels.forEach(function(p, i){ (p.series || []).forEach(function(se){ if(se.id === sc.series[0].id) k = i; }); }); return g.panels[k]; }
     function plot(){
       var sc = cur, g = sc.g, p = panelOf(sc), r = plotBox.getBoundingClientRect(), w = Math.max(240, Math.round(r.width)), h = Math.max(180, Math.round(r.height));
-      var phone = w < 420, ML = phone ? 60 : 64, MR = 12, MT = 50, MB = 40;
+      var phone = w < 420, ML = phone ? 60 : 64, MR = 26, MT = 50, MB = 40;
       var x0 = ML, x1 = w - MR, y0 = MT, y1 = h - MB, X = g.x, Y = p.y;
       function sx(x){ return x0 + (x - X.min) / (X.max - X.min) * (x1 - x0); }
       function sy(v){ return y1 - (v - Y.min) / (Y.max - Y.min) * (y1 - y0); }
@@ -636,7 +636,7 @@
       yt.forEach(function(v){ s += '<path class="gx-grid" d="M' + x0 + ',' + sy(v).toFixed(1) + 'H' + x1 + '"/><text class="gx-tick" x="' + (x0 - 6) + '" y="' + sy(v).toFixed(1) + '" dy="0.34em" text-anchor="end">' + minus(v >= 1000 ? n0(v) : v) + '</text>'; });
       var xt = (X.ticks || []).filter(function(v){ return v >= X.min && v <= X.max; });
       if(phone && xt.length > 6) xt = xt.filter(function(v, i){ return i % 2 === 0; });
-      xt.forEach(function(v){ s += '<path class="gx-xt" d="M' + sx(v).toFixed(1) + ',' + y1 + 'v5"/><text class="gx-tick" x="' + sx(v).toFixed(1) + '" y="' + (y1 + 18) + '" text-anchor="middle">' + minus(v) + '</text>'; });
+      xt.forEach(function(v, i){ var first = !i && v === X.min; s += '<path class="gx-xt" d="M' + sx(v).toFixed(1) + ',' + y1 + 'v5"/><text class="gx-tick" x="' + (sx(v) + (first ? -2 : 0)).toFixed(1) + '" y="' + (y1 + 18) + '" text-anchor="' + (first ? 'start' : 'middle') + '">' + minus(v) + '</text>'; });
       s += '<path class="gx-axis" d="M' + x0 + ',' + y0 + 'V' + y1 + 'H' + x1 + '"/>';
       s += '<text class="gx-alab" x="' + ((x0 + x1) / 2) + '" y="' + (h - 6) + '" text-anchor="middle">' + esc(sc.xName + ' (' + sc.xUnit + ')') + '</text>';
       var yl = Y.label + (Y.unit ? ' (' + Y.unit + ')' : '');
@@ -655,7 +655,7 @@
         var bx = a === 'start' ? sx(lx) : a === 'end' ? sx(lx) - tw : sx(lx) - tw / 2;
         if(bx < x0 + 2){ bx = x0 + 2; a = 'start'; lx = X.min + (bx - x0) / (x1 - x0) * (X.max - X.min); }
         if(bx + tw > x1 - 2){ bx = x1 - 2 - tw; a = 'start'; }
-        ly = clamp(ly, y0 + 12, y1 - 4);
+        ly = clamp(ly, y0 + 26, y1 - 4);   // clear of the knob and the first-visit cue above the plot
         placed.forEach(function(q){ if(Math.abs(q - ly) < 14) ly = q + 15; });
         placed.push(ly);
         s += '<text class="gx-cname is-' + se.role + '" x="' + bx.toFixed(1) + '" y="' + ly.toFixed(1) + '" text-anchor="start">' + esc(se.label) + '</text>';

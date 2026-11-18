@@ -42,7 +42,7 @@ for (const w of WIDTHS) {
   page.on('pageerror', (e) => errs.push(e.message));
   page.on('console', (m) => { if (m.type() === 'error' && !/ERR_FAILED|net::/.test(m.text())) errs.push(m.text()); });
   await page.goto(`http://127.0.0.1:${PORT}/anatomy-physiology/tools/graphs.html`, { waitUntil: 'load' });
-  await page.waitForFunction(() => window.AnpGraphExplore && window.AnpGraphExplore.current && document.querySelector('.gx-gsvg text'), null, { timeout: 15000 });
+  for (let i = 0; i < 150 && !(await page.evaluate(() => !!(window.AnpGraphExplore && window.AnpGraphExplore.current && document.querySelector('.gx-gsvg text')))); i++) await page.waitForTimeout(100);
   await page.waitForTimeout(500);
 
   // the first visit cue covers no label or number
