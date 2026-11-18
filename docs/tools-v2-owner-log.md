@@ -35,3 +35,8 @@ in each tool's brief.
 | 2026-11-18 | AP Bio Enzyme activity | Run one trial, Run a series, the runs table and the live rate graph left Explore | Explore is free play on the picture | Curve and table in "?"; brief, question 3 |
 | 2026-11-18 | AP Bio Enzyme activity | Temperature capped at 70 °C (was 100); the substrate knob opens at 2 mM, half the top rate | Capped ranges; a drag either way does something | `explore` in the tool's data |
 | 2026-11-18 | AP Bio Enzyme activity | The hub blurb and the About intro were reworded and "run trials and" was cut from the description; title and URL unchanged | They described the old Explore | `bio/data/pages.json`, the tool's data |
+| 2026-11-18 | AP Bio Enzyme activity | Drawn site occupancy follows the model (S/(Km + S)); substrate waits at the mouth at high substrate; turnover follows the rate | Saturation must be seen (review round 1) | `step()`; brief, Review round 1 |
+| 2026-11-18 | AP Bio Enzyme activity | "Optimum temperature" only within 1.5 °C of 40.5 °C; "Warm" below it, "Just past best" just above, "Too hot" under 0.9 of the best | The label must sit where the rate peaks | `chain()`, `term()` |
+| 2026-11-18 | AP Bio Enzyme activity | The rate bar and rate word follow the enzymes as drawn; the line names "new enzyme added" while denatured ones are swapped | No word or bar ahead of the picture (rule 14) | `barTarget()`, `chain()` |
+| 2026-11-18 | AP Bio Enzyme activity | The inhibitor switch moved onto the bench under the Inhibitor name | Connected controls stay together (rule 11) | `geo()`, CSS `.ez2-type` |
+| 2026-11-18 | AP Bio Enzyme activity | "?" on the Temperature and pH tabs also draws Enzymes B and C | Pepsin and the thermophile are exam staples; no new control | `refHtml()` |

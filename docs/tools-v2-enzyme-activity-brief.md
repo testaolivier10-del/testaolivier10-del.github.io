@@ -160,3 +160,41 @@ Also one line each in `docs/tools-v2-owner-log.md`.
   FRQ; the old tool ignored `#frq`), the real locked state (Premium card), no console errors.
 - Preview: `/mnt/user-data/outputs/enzyme-activity-v2/index.html`; shots in `.../shots/` (sweep shots and contact
   sheets in `shots/sweep/`). No shared file changed, so `build-apcalc` and `build-apmacro` were not needed.
+
+## Review round 1 (2026-11-18): BLOCK, all items fixed
+Rebased on `claude/tools-v2-all` (the kit now keeps a phone's cause line two rows tall, so the tool's own rule was
+dropped; `scripts/check-tool-use.mjs` untouched).
+
+Must fix:
+1. **Saturation drawn.** The share of working sites holding substrate follows the model, S/(Km + S) (the same among
+   the sites an inhibitor leaves free; on the Temperature tab scaled down with the collision rate when cold). A
+   site that fills keeps its substrate until a reaction (`held`); at high substrate the next substrate waits at the
+   mouth and slides in as the products leave; only the turnover pace follows the rate. Measured (frames test, 1440):
+   1 mM 0.28 against 0.33, 2 mM 0.39 against 0.50, 5 mM 0.62 against 0.71, 20 mM 0.86 against 0.91. The sweep
+   checks 2 and 20 mM at every width (within 0.15).
+2. **Optimum temperature at 40.5 °C.** "Optimum temperature", "Best temperature" and "top rate" only within 1.5 °C
+   of the model's optimum. From 30 °C up to it: "Warm → faster collisions"; just past it while the rate is still
+   at least 0.9 of the best and nothing is drawn unfolded: "Just past best → fast collisions". "Too hot" only below
+   0.9 of the best.
+3. **Words and bar follow the picture.** The bar moves from where it was to the model's rate only as far as the
+   enzymes are drawn changed (unfolding, fading in, site bending, inhibitor docked); the rate word reads the drawn
+   bar. While unfolded enzymes are swapped: "Denatured stay unfolded", then "→ new enzyme added → rate" while the
+   new ones are marked. The inhibitor tab says "Inhibitor added" until an inhibitor is drawn bound.
+4. **Reduced motion keeps "new enzyme"** through a whole drag (`settle()` keeps a future `newUntil`).
+5. **A replacement that denatures again** loses "new enzyme" and shows "denatured".
+6. **Layout by the solution's shape:** 2 by N/2 or N/2 by 2, whichever gives the larger enzymes (Test yourself at
+   1024 is now 2 columns by 3 rows).
+
+Should fix: "denatured" waits until the folded body is gone (fold under 0.2); free particles bounce off the walls;
+the Competitive / Noncompetitive switch sits on the bench right under the Inhibitor name (bench 196 px on that tab);
+the opening line says "Some substrate → about half the sites busy" until the knob is moved; Predict's explanation
+uses the saturation sentence only when the answer is "about the same"; the dark shadow is lighter; on the
+Temperature and pH tabs "?" draws Enzymes B and C beside A (each at its own usual conditions, in the table too).
+"How this model works" no longer calls unfolding instant and reversible (and the old "Runs" item is gone); the
+"?" note adds that in a real test tube the rate would stay low.
+
+Checks: sweep 42 states and about 297 checks at each of the ten widths, one width per process, 0 failures
+(1920 run alone: under five parallel browsers it lags and the occupancy sample falls short). New kept test
+`scripts/tools-v2/enzyme-activity-frames.mjs` (frame by frame, items 1, 3, 4 and 5 and the pH 2 to 13 drag):
+0 failures at 390, 1440 and 1920. AP® Biology content, build `--check`, 72 unit tests, `check-site`,
+`check-weight`, `check-tool-use` with a local list (frame v2) pass. Playwright at 390, 768, 1440 light and dark.
