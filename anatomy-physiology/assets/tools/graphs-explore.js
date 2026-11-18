@@ -754,7 +754,7 @@
     var tour = K.tour({ key: 'anp-graphs', label: 'Show me how', steps: [
       { id: 'drag', text: 'Drag along the graph. The picture follows the moment you are on.', target: function(){ return scrub ? scrub.el.querySelector('.tk2-knob') : plotBox; } },
       { id: 'read', text: 'Watch the part change: what it does is what the curve records.', target: function(){ return scene.querySelector('.gx-pic'); } },
-      { id: 'why', text: 'The line below says why, in the colours of the parts.', target: function(){ return cause.el; } }],
+      { id: 'why', text: 'The line below says why, in the colors of the parts.', target: function(){ return cause.el; } }],
       onClose: function(had){ if(had) try{ head.how.focus({ preventScroll: true }); }catch(e){} } });
     function tourDid(id){ if(tour.active()) tour.did(id); }
     function startTour(){ hideCue(false); tour.start(true); }
