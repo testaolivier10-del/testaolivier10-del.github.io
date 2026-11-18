@@ -190,7 +190,7 @@
       var it = flat.filter(function(f){ return f.id === v; })[0];
       if(it && it.href) location.href = it.href; else if(opts.onPick) opts.onPick(v);
     } };
-    if(!S._pick) S._pick = S.picker(o); else S._pick.set(o);
+    if(!S._pick) S._pick = S.picker(o, S.kit2 ? 'quiz' : undefined); else S._pick.set(o);
     S._pick.el.classList.remove('ls-off');
     return true;
   }
@@ -386,9 +386,38 @@
     return s;
   }
 
+  /* kit2(s, o): the tools v2 arrangement (docs/tools-v2-standard.md), this course's adapter for the shared kit
+     (assets/course/tool-kit2.js; a tool with "kit2": true in data/pages.json loads it). Same pattern as AP Biology's
+     ApBioTools.studioKit2 and Organic Chemistry's OchemStudioKit.kit2. s is the studio from studio() above; the tool
+     builds its own Explore stage with the kit and hands it over:
+       o.stage   element   the picture with its controls on it and the lines around it. EXPLORE shows it alone, full
+                           width (no side panel, nothing graded).
+       o.ref     element   the reference behind "?" while Explore shows (Test yourself keeps the tool's own Details).
+       o.onShow(mode)      after every switch: 'explore' | 'quiz'.
+     Test yourself ('quiz') is whatever the tool puts in the studio with { mode: 'quiz' }: one question at a time in the
+     side panel beside its own stage (class tk2-qs). Two modes only. Returns { mode(), go(mode) }; also at s.kit2. */
+  function kit2(s, o){
+    var K = window.LevlKit2;
+    if(!s || !K) return null;
+    K.on(s);
+    var cur = 'explore';
+    s.add('stage', o.stage, { mode: 'explore' });
+    if(o.ref) s.add('details', o.ref, { mode: 'explore' });
+    function show(m, user){
+      cur = m === 'quiz' ? 'quiz' : 'explore';
+      if(s.mode() !== cur) s.mode(cur);
+      s.root.classList.toggle('tk2-qs', cur === 'quiz');
+      if(o.onShow) o.onShow(cur, !!user);
+    }
+    s.modes({ items: [{ value: 'explore', label: 'Explore' }, { value: 'quiz', label: 'Test yourself' }], value: 'explore',
+      onChange: function(v){ show(v, true); } });
+    s.kit2 = { mode: function(){ return cur; }, go: function(m){ show(m, false); } };
+    return s.kit2;
+  }
+
   // Locked Premium tools are mounted by tool-studio.js itself (adopt): tell it this course is on the standard frame.
   function stdKit(){ if(window.LevlStudio && window.LevlStudio.stdKit) window.LevlStudio.stdKit({ lede: LEDE }); }
   stdKit();
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', stdKit);
-  window.AnpToolKit = { strip: strip, picker: picker, bodyName: bodyName, a3dId: a3dId, A3D: A3D, body3d: body3d, status: status, first: first, why: why, more: more, about: about, studio: studio, BODY: BODY, ALIAS: ALIAS };
+  window.AnpToolKit = { strip: strip, picker: picker, bodyName: bodyName, a3dId: a3dId, A3D: A3D, body3d: body3d, status: status, first: first, why: why, more: more, about: about, studio: studio, kit2: kit2, BODY: BODY, ALIAS: ALIAS };
 })();
