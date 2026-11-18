@@ -692,3 +692,17 @@ These stay open:
 - **rates-tangent-estimate** (logged). The rates tool's draggable tangent shows a centered
   difference between neighbouring data points ("rate ≈"), so near t = 0 it underestimates the
   initial rate of a slowing reaction. Labelled "about"; confirm that is enough.
+- **osmosis-explore-plant-cell** (logged, tools v2, 2026-11-17). The rebuilt Osmosis tool's Explore uses an
+  idealized plant cell (cell sap 0.30 osmol/L, just full, ψp = 0 in the isotonic solution, wall stiffness 60 bar),
+  so it is flaccid at 0.30 M, turgid below and plasmolyzed from the next stop up (0.35 M), as textbooks draw it.
+  Real tissue (and the potato core in the tool's questions) starts slightly turgid, so its "no change" solution
+  is a little weaker than its cell sap and it passes through a flaccid range before plasmolysis. Owner or teacher:
+  is the idealized cell right for free play, or should Explore use the potato core's numbers?
+- **osmosis-tonicity-words** (open, 2.7). The tool names the solution hypotonic, isotonic or hypertonic by its
+  solute concentration against the cell's. For a walled cell with turgor, "isotonic" (equal solute) and "no net
+  water movement" (equal water potential) are not the same solution; textbooks and AP materials use the words
+  both ways. Meanwhile: Explore's two cells are built so the two meanings fall on the same stop (0.30 M), and the
+  Predict challenges ask for direction and state, never for the word.
+- **osmosis-arrows-settled** (logged). Once the cell has settled, the Explore picture keeps the arrows and says
+  "water moved in" or "water moved out" (past tense); at equilibrium there is no net movement, which the replay
+  shows (the arrows thin to nothing). Confirm the past tense label is clear enough, or drop the settled arrows.

@@ -313,7 +313,7 @@ Totals: restyle 44, rework 90, rebuild 10, in progress 1.
 
 | Tool (use rank) | Grp | One idea | Main control today | Wrong today | Landing | Size |
 |---|---|---|---|---|---|---|
-| osmosis (1) | P | Water moves toward the lower water potential | Beaker concentration slider in the panel | Slider in the panel; nothing moves until Play. Modes: Explore / Predict / Questions. | 33 / 73 · 18 · 0 + 1 | rework |
+| osmosis (1) | P | Water moves toward the lower water potential | Beaker concentration slider in the panel | Slider in the panel; nothing moves until Play. Modes: Explore / Predict / Questions. | 33 / 73 · 18 · 0 + 1 | rework: built 2026-11-17, `docs/tools-v2-osmosis-brief.md` (owner's look pending) |
 | water-potential (5) | P | Water moves from higher to lower water potential | Two sliders in the panel | Sliders in the panel. Same idea as Osmosis (the calculation version). Modes: Explore / Practice. | 47 / 59 · 15 · 0 + 2 | rework |
 | simpson-diversity (11) | P | More species in more even numbers means more diversity | Tap the quadrat to plant a tree | Control is on the picture. Modes: Explore / Practice. | 26 / 45 · 16 · 0 + 0 | restyle |
 | design-drills (13) | R | Naming the variables, controls and claims of an experiment | Tap an answer choice | No free play: a drill with Check on landing; 118 words in the panel. No mode switch. | 143 / 118 · 18 · 0 + 0 | rework |
