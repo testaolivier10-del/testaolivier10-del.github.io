@@ -5,7 +5,11 @@
    animal stands on its own level's ground, the counts drawn match the numbers written, the cause line is at most two
    rows on a phone with the same height in every state, and the page does not scroll sideways.
    The tool is Premium: here only, assets/premium.js is answered with has() returning true. Nothing leaves the machine.
-   Usage: node scripts/tools-v2/bio-energy-flow-sweep.mjs [--shots <dir>]   (needs playwright) */
+   Heat against passed on: at every step the drawn heat (the three wisps, their height summed) is (1 - share) / share
+   times the drawn gold arrow, on the same stroke width; no plume is too small to see; "heat" is written only beside a
+   plume taller than the word.
+   Usage: node scripts/tools-v2/bio-energy-flow-sweep.mjs [--width <px>] [--shots <dir>]   (needs playwright;
+   run one width per process: for w in 360 390 430 600 768 820 1024 1280 1440 1920; do node ... --width $w; done) */
 import { createServer } from 'node:http';
 import { readFileSync, existsSync, statSync, createReadStream, mkdirSync } from 'node:fs';
 import { dirname, extname, resolve, join } from 'node:path';
@@ -36,7 +40,9 @@ const server = createServer((req, res) => {
 await new Promise(r => server.listen(0, r));
 const ORIGIN = 'http://localhost:' + server.address().port;
 
-const WIDTHS = [360, 390, 430, 600, 768, 820, 1024, 1280, 1440, 1920];
+const ALL = [360, 390, 430, 600, 768, 820, 1024, 1280, 1440, 1920];
+// one width per process keeps each run short: --width 390 (the default runs all ten)
+const wi = process.argv.indexOf('--width'), WIDTHS = wi > 0 ? [+process.argv[wi + 1]] : ALL;
 const DARK = new Set([390, 768, 1440]);
 // [name, share passed on (%), sunlight (GPP)]
 const STATES = [['default', 10, 20000], ['share-5', 5, 20000], ['share-20', 20, 20000], ['sun-low', 10, 10000], ['sun-high', 10, 30000], ['least', 5, 10000], ['most', 20, 30000], ['one-snake-edge', 15, 15000]];
@@ -87,6 +93,15 @@ for (const w of WIDTHS) for (const dark of DARK.has(w) ? [false, true] : [false]
         document.querySelectorAll('.ef2-lay.is-' + k + ' .ef2-o.is-on').forEach(e => { n++; const b = box(e); if (b.l < g.l - 9 || b.r > g.r + 9 || b.b > g.b + 1 || b.t < g.t - 1) off++; });
         out.counts.push(n); if (off) out.issues.push(off + ' ' + k + ' off its ground');
       });
+      // heat against passed on, step by step, measured from what is drawn
+      out.steps = [].map.call(document.querySelectorAll('.ef2-step'), g => {
+        const j = +g.dataset.j, heat = [...g.querySelectorAll('.ef2-heat')], heads = [...g.querySelectorAll('.ef2-heat-h')];
+        const hs = heat.map((e, k) => { const a = e.getBoundingClientRect(), b = heads[k] ? heads[k].getBoundingClientRect() : a; return Math.max(a.bottom, b.bottom) - Math.min(a.top, b.top); });
+        const ps = g.querySelector('.ef2-pass'), ph = g.querySelector('.ef2-pass-h');
+        const al = ps && ph ? Math.max(ps.getBoundingClientRect().right, ph.getBoundingClientRect().right) - Math.min(ps.getBoundingClientRect().left, ph.getBoundingClientRect().left) : 0;
+        return { j, lh: hs.reduce((a, b) => a + b, 0), hmin: hs.length ? Math.min(...hs) : 0, al, swH: heat[0] ? +heat[0].getAttribute('stroke-width') : 0, swA: ps ? +ps.getAttribute('stroke-width') : 0, hr: heat.length ? Math.max(...heat.concat(heads).map(e => e.getBoundingClientRect().right)) : -1e9 };
+      });
+      out.words = [].map.call(document.querySelectorAll('.ef2-heat-t'), t => { const b = t.getBoundingClientRect(); return { l: b.left, t: b.top, b: b.bottom, h: b.height }; });
       out.vals = [].map.call(document.querySelectorAll('.ef2-top .ef2-val'), e => parseFloat(e.textContent.replace(/,/g, '')));
       out.none = !!document.querySelector('.ef2-pill.is-none');
       // the picture is the largest thing
@@ -104,6 +119,24 @@ for (const w of WIDTHS) for (const dark of DARK.has(w) ? [false, true] : [false]
     if (w <= 640 && r.rows > 2) bad(where, 'cause line has ' + r.rows + ' rows');
     if (w <= 640) heights.add(r.ch);
     r.vals.forEach((v, i) => { const want = Math.floor(v / 10 + 1e-6); if (v >= 99.5 ? Math.abs(r.counts[i] - want) > 0 : r.counts[i] !== want && Math.abs(v / 10 - Math.round(v / 10)) > 0.06) bad(where, 'level ' + i + ' draws ' + r.counts[i] + ' for ' + v + ' kcal'); });
+    const share = eff / 100, want = (1 - share) / share;
+    r.steps.filter(st => st.j > 0).forEach(st => {
+      checks += 3;
+      if (!st.al || !st.lh) { bad(where, 'step ' + st.j + ': heat ' + st.lh.toFixed(1) + ' px, arrow ' + st.al.toFixed(1) + ' px'); return; }
+      const ratio = st.lh / st.al;
+      if (ratio < want * 0.75 || ratio > want * 1.33) bad(where, 'step ' + st.j + ': heat is ' + ratio.toFixed(1) + ' times the arrow, want ' + want.toFixed(1));
+      if (st.swH !== st.swA) bad(where, 'step ' + st.j + ': heat and arrow on different widths (' + st.swH + ', ' + st.swA + ')');
+      if (st.hmin < 12) bad(where, 'step ' + st.j + ': a heat wisp only ' + st.hmin.toFixed(1) + ' px tall');
+    });
+    const st0 = r.steps.find(st => st.j === 0); checks++;
+    if (!st0 || st0.lh < 3 * 10) bad(where, 'the grass\'s own heat is not drawn (' + (st0 ? st0.lh.toFixed(1) : 'none') + ')');
+    r.words.forEach(wd => {
+      checks++;
+      // the plume just left of the word, at its height
+      const near = r.steps.filter(st => st.j > 0 && st.hr <= wd.l + 2 && st.hr > wd.l - 40);
+      if (!near.length || Math.max(...near.map(st => st.hmin)) < wd.h * 1.2) bad(where, '"heat" written beside a plume smaller than the word');
+    });
+    if (r.words.length !== r.steps.filter(st => st.j > 0).length) bad(where, r.words.length + ' "heat" words for ' + (r.steps.length - 1) + ' steps');
     if (r.none !== (r.counts[3] === 0)) bad(where, '"too little energy" shown: ' + r.none + ' with ' + r.counts[3] + ' snakes');
     if (!new RegExp('→' + r.counts[3] + ' snakes?$').test(r.cause)) bad(where, 'cause line "' + r.cause + '" against ' + r.counts[3] + ' snakes drawn');
     if (SHOTS) await page.locator('.ef2').screenshot({ path: join(SHOTS, `sweep-${String(w).padStart(4, '0')}${dark ? '-dark' : ''}-${name}.png`) });

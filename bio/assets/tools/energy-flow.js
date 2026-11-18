@@ -73,7 +73,7 @@
       function disp(v){ return v >= 99.5 ? Math.round(v) : v >= 9.95 ? Math.round(v) : Math.round(v * 10) / 10; }
       function count(e){ return Math.floor(disp(e) / PER + 1e-6); }
       var MAXE = (function(){ var s = sim(EX.gpp.max, EX.eff.max); return s.levels.map(function(L){ return L.stored; }); })();
-      var MAXN = MAXE.map(count), HMAX = MAXE[0] * (1 - EX.eff.min);
+      var MAXN = MAXE.map(count);
       function fmt(v){ var d = disp(v); return v >= 9.95 ? d.toLocaleString('en-US') : d.toFixed(1); }
       function pct(){ return Math.round(S.eff * 100); }
       function nOf(i, n){ return n.toLocaleString('en-US') + ' ' + ONE[i][n === 1 ? 0 : 1]; }
@@ -200,7 +200,7 @@
         if(!busy()){ var n = count(view.e[NL - 1]); p.push({ t: nOf(NL - 1, n), role: 'ink', say: 'the top of the chain has ' + nOf(NL - 1, n) }); }
         return p;
       }
-      function flowing(){ return view.play == null || (!!G && G.pmax * Math.sqrt(clamp(view.h[1] / HMAX, 0, 1)) >= 2.5); }   // the same test plume() uses to draw the heat
+      function flowing(){ return view.play == null || (!!G && stepLens(1).lh / 3 >= 2.5); }   // the same test plume() uses to draw the heat
       function words(){ if(took) cause.take(takeaway()); else cause.set(chain()); }
       function syncWords(){
         var k = fmt(view.e[0]) + '|' + S.eff + '|' + busy() + '|' + flowing() + '|' + count(view.e[NL - 1]) + '|' + took;
@@ -216,7 +216,7 @@
         var two = false;
         for(i = 0; i < NL; i++){ var need = wid(ORG[i], fs) + wid('15,000 kcal', fs) + 34; if(need > bx[i + 1] - bx[i] - 8) two = true; }
         var lb = two ? fs * 2 + 22 : fs + 24, yB = H - ctl, gy1 = yB - lb;
-        var sky = ph ? 118 : clamp(Math.round((yB - lb) * 0.34), 124, 190), gy0 = sky, back = ph ? 24 : 30;
+        var sky = ph ? 118 : clamp(Math.round((yB - lb) * 0.38), 158, 205), gy0 = sky, back = ph ? 24 : 30;
         var sunR = ph ? 19 : 30, sunX = ph ? 34 : 70, sunY = ph ? 34 : 62;
         var sx0 = sunX + sunR + (ph ? 30 : 46), slen = clamp(W * 0.17, 84, 190), sy = ph ? 28 : 46;
         var half = Math.min(380, (W - (ph ? 70 : 170)) / 2);
@@ -337,17 +337,37 @@
         p.push('<text class="ef2-sunname" x="' + n1((g.sx0 + g.sx1) / 2) + '" y="' + n1(g.sy + (g.ph ? 40 : 42)) + '" text-anchor="middle" style="font-size:' + (g.ph ? 12 : 13.5) + 'px">Sunlight</text>');
         gStatic.innerHTML = p.join('');
       }
-      function plume(x, y0, h, ph){
-        var s = Math.sqrt(clamp(h / HMAX, 0, 1)), Hp = G.pmax * s, wp = Hp * 0.6, out = '';
+      /* ONE MEASURE PER STEP (review round 1): the energy entering a step is a band of length L. The part passed on
+         is the gold arrow, L x share long; the part lost is the heat, L x (1 - share) long, split into three wisps
+         rising from the ground; both have the same stroke width. So the heat is always drawn (1 - share) / share times
+         the arrow (9 times at 10%), at every step and every width. The band's width shows the energy entering the
+         step (narrower up the chain, never thinner than a visible minimum). */
+      function bandL(){ return 3 * G.pmax / (1 - EX.eff.min); }
+      function bandW(base){ var r = Math.pow(clamp(base / EX.gpp.max, 0, 1), 0.4); return clamp(r * (G.ph ? 8.5 : 12), G.ph ? 2 : 2.4, G.ph ? 8.5 : 12); }
+      function stepLens(j){   // j = 1..NL-1: heat and arrow lengths for the energy entering step j; j = 0: the grass's own respiration
+        if(j === 0){ var f0 = view.play != null && view.e[0] < tg0() ? clamp(view.e[0] / tg0(), 0, 1) : 1; return { sw: bandW(S.gpp), lh: bandL() * D.prodResp * f0, la: 0 }; }
+        var base = view.e[j - 1];
+        if(!(base > 0)) return { sw: 0, lh: 0, la: 0 };
+        return { sw: bandW(base), lh: bandL() * clamp(view.h[j] / base, 0, 1), la: bandL() * clamp(view.e[j] / base, 0, 1) };
+      }
+      function tg0(){ return target()[0] || 1; }
+      function plume(x, y0, len, sw, ph){
+        var Hp = len / 3, out = '';
         if(Hp < 2.5) return { html: '', top: y0, w: 0, Hp: 0 };
-        var sw = clamp(1.1 + 3.1 * s, 1.1, 4.2), nW = Hp < 14 ? 1 : 3;
-        for(var k = 0; k < nW; k++){
-          var ox = nW === 1 ? 0 : (k - 1) * wp * 0.36, top = Hp * (k === 1 || nW === 1 ? 1 : 0.8), amp = Math.max(1.2, wp * 0.085), seg = Math.max(2, Math.round(top / 9)), d = '';
-          for(var q = 0; q <= seg; q++){ var yy = y0 - (top - sw * 2.2) * q / seg, xx = x + ox + amp * Math.sin(q / seg * Math.PI * 2.4 + k * 2 + ph) * Math.min(1, q / 2); d += (q ? 'L' : 'M') + n1(xx) + ' ' + n1(yy); }
-          var tx = x + ox + amp * Math.sin(Math.PI * 2.4 + k * 2 + ph), ty = y0 - top, hw = sw * 1.5 + 1.2;
-          out += '<path class="ef2-heat" stroke-width="' + n1(sw) + '" d="' + d + '"/><path class="ef2-heat-h" d="M' + n1(tx) + ' ' + n1(ty) + 'l' + n1(-hw) + ' ' + n1(hw * 1.5) + 'h' + n1(hw * 2) + 'Z"/>';
+        var gap = clamp(sw * 1.9 + 7, 10, 30), amp = Math.max(1.2, sw * 0.45 + 1.2);
+        for(var k = 0; k < 3; k++){
+          var ox = (k - 1) * gap, seg = Math.max(2, Math.round(Hp / 9)), hw = Math.min(sw * 0.9 + 3, Hp * 0.45), d = '';
+          for(var q = 0; q <= seg; q++){ var yy = y0 - (Hp - hw) * q / seg, xx = x + ox + amp * Math.sin(q / seg * Math.PI * 2.4 + k * 2 + ph) * Math.min(1, q / 2); d += (q ? 'L' : 'M') + n1(xx) + ' ' + n1(yy); }
+          var tx = x + ox + amp * Math.sin(Math.PI * 2.4 + k * 2 + ph), ty = y0 - Hp, hh = Math.max(sw * 0.75 + 2.5, 4);
+          out += '<path class="ef2-heat" stroke-width="' + n1(sw) + '" d="' + d + '"/><path class="ef2-heat-h" d="M' + n1(tx) + ' ' + n1(ty) + 'l' + n1(-hh) + ' ' + n1(hw) + 'h' + n1(hh * 2) + 'Z"/>';
         }
-        return { html: out, top: y0 - Hp, w: wp, Hp: Hp };
+        return { html: out, top: y0 - Hp, w: gap * 2 + sw + amp * 2, Hp: Hp };
+      }
+      function heatWord(x, pl, y0){
+        var fsH = G.ph ? 11.5 : 13;
+        // the word only beside a plume taller than the word itself
+        if(pl.Hp < fsH * 1.6) return '';
+        return '<text class="ef2-heat-t" x="' + n1(x + pl.w / 2 + 5) + '" y="' + n1(Math.min(y0 - 5, y0 - pl.Hp * 0.55 + 4)) + '" style="font-size:' + fsH + 'px">heat</text>';
       }
       function draw(){
         if(!G) return;
@@ -364,20 +384,22 @@
           draw.rk = rk; gRays.innerHTML = rays; gRays.setAttribute('opacity', (0.12 + 0.88 * sunF).toFixed(2));
           var glow = gStatic.querySelector('.ef2-sunglow'); if(glow) glow.setAttribute('opacity', (0.3 + 0.7 * sunF).toFixed(2));
         }
-        // each step: most of the energy leaves as heat (up), a little goes on (the gold arrow)
+        // the grass's own respiration: half of what it captures leaves as heat before anything is eaten
+        var z0p = g.zones[0], l0 = stepLens(0), x0p = z0p.x0 + (z0p.x1 - z0p.x0) * (g.ph ? 0.5 : 0.62), pl0 = plume(x0p, g.gy0 + g.back * 0.4, l0.lh, l0.sw, ph);
+        p.push('<g class="ef2-step" data-j="0" data-lh="' + n1(pl0.Hp * 3) + '">' + pl0.html + '</g>');   // unlabelled: the same colour as every "heat" beside it
+        // each step: most of the energy leaves as heat (up), a little goes on (the gold arrow), on one measure
         for(var j = 1; j < NL; j++){
-          var x = g.bx[j], pl = plume(x, g.gy0 - 1, view.h[j], ph + j);
-          p.push(pl.html);
-          if(pl.Hp > 0){
-            var lx = x + pl.w * 0.5 + 6, ly = Math.min(g.gy0 - 5, g.gy0 - pl.Hp * 0.5 + 4);
-            p.push('<text class="ef2-heat-t" x="' + n1(lx) + '" y="' + n1(ly) + '" style="font-size:' + (g.ph ? 11.5 : 13) + 'px">heat</text>');
+          var x = g.bx[j], L = stepLens(j), pl = plume(x, g.gy0 - 1, L.lh, L.sw, ph + j), ay = g.gy0 + (g.ph ? 12 : 15), arr = '';
+          if(L.la >= 1){
+            var aw = L.sw, hl = Math.min(aw * 0.9 + 4, L.la * 0.6), x0 = x - (g.ph ? 3 : 5), x1 = x0 + L.la;
+            arr = '<path class="ef2-pass" stroke-width="' + n1(aw) + '" d="M' + n1(x0) + ' ' + ay + 'H' + n1(Math.max(x0, x1 - hl)) + '"/><path class="ef2-pass-h" d="M' + n1(x1) + ' ' + ay + 'l' + n1(-hl) + ' ' + n1(-aw / 2 - 2.5) + 'v' + n1(aw + 5) + 'Z"/>';
+            if(live && !K.reduced()){ var u = (view.clock / 520 + j * 0.3) % 1; arr += '<circle class="ef2-spark" cx="' + n1(x0 + Math.max(0, x1 - x0 - hl) * u) + '" cy="' + ay + '" r="' + n1(Math.max(1.4, aw * 0.3)) + '"/>'; }
           }
-          var pass = view.e[j], ay = g.gy0 + (g.ph ? 12 : 15);
-          if(pass > 0.05){
-            var aw = clamp(Math.sqrt(pass / MAXE[1]) * (g.ph ? 9 : 14), 1.6, 14), hl = aw * 0.8 + 5, x0 = x - (g.ph ? 5 : 8), x1 = x0 + g.al;
-            p.push('<path class="ef2-pass" stroke-width="' + n1(aw) + '" d="M' + n1(x0) + ' ' + ay + 'H' + n1(x1 - hl) + '"/><path class="ef2-pass-h" d="M' + n1(x1) + ' ' + ay + 'l' + n1(-hl) + ' ' + n1(-hl * 0.72 - aw * 0.2) + 'v' + n1(hl * 1.44 + aw * 0.4) + 'Z"/>');
-            if(live && !K.reduced()){ var u = (view.clock / 520 + j * 0.3) % 1; p.push('<circle class="ef2-spark" cx="' + n1(x0 + (x1 - x0 - hl) * u) + '" cy="' + ay + '" r="' + n1(Math.max(1.6, aw * 0.3)) + '"/>'); }
-            p.push(pill(x - (g.ph ? 5 : 8) + g.al + 4 + (g.ph ? 17 : 22), ay, [{ t: pct() + '%', b: 1 }], 'is-energy is-chip', g.ph ? 10.5 : 12.5, x - 2, g.zones[j].x1));
+          p.push('<g class="ef2-step" data-j="' + j + '" data-la="' + n1(L.la) + '" data-lh="' + n1(pl.Hp * 3) + '">' + pl.html + arr + '</g>');
+          p.push(heatWord(x, pl, g.gy0 - 1));
+          if(L.la >= 1){
+            var fsC = g.ph ? 10.5 : 12.5, cw = wid(pct() + '%', fsC) + (g.ph ? 13 : 20);
+            p.push(pill(x0 + L.la + 4 + cw / 2, ay, [{ t: pct() + '%', b: 1 }], 'is-energy is-chip', fsC, x - 2, g.zones[j].x1));
           }
         }
         // each level's name and the energy it stores, under it; they wait for the picture in the replay
@@ -449,7 +471,7 @@
           '<div><dt>All heat from respiration</dt><dd>' + num(s.heat) + '</dd></div><div><dt>To decomposers</dt><dd>' + num(s.decomp) + '</dd></div></dl>' +
           '<p class="bt-small">' + esc(EX.note) + '</p>' +
           '<h3 class="ls-title-l">Where each level’s energy goes</h3>' +
-          T.dataTable(['Trophic level', 'Takes in (kcal/m²/yr)', 'Lost as heat in respiration', 'Not eaten or absorbed: to decomposers', 'Stored in new tissue', 'Drawn in the picture', 'Biomass (g/m²)'], L.map(function(x, i){
+          T.dataTable(['Trophic level', 'Takes in (kcal/m²/yr)', 'Lost as heat in respiration', 'Of its stored energy, not eaten: to decomposers', 'Stored in new tissue', 'Drawn in the picture', 'Biomass (g/m²)'], L.map(function(x, i){
             return [esc(NAMES[i] + ' (' + ORG[i].toLowerCase() + ')'), i ? sig(x.inE) : num(x.inE) + ' (GPP)', sig(x.heat), sig(x.decomp), sig(x.stored), String(count(x.stored)), sig(x.biomass)]; }), 'Every level at this setting') +
           '<p class="bt-small">Of the energy a level stores, ' + p + '% ends up stored in the next level. The other ' + (100 - p) + '% is lost on the way: part is never eaten or absorbed and goes to decomposers, and the level that eats the rest uses ' + Math.round(D.resp * 100) + '% of what it absorbs in cellular respiration. Decomposers respire too, so all of it leaves the ecosystem as heat in the end, which is why the picture draws the whole loss as heat. The grass also loses ' + Math.round(D.prodResp * 100) + '% of the energy it captures as heat from its own respiration before any animal eats.</p>' +
           '<h3 class="ls-title-l">The pyramids</h3><div class="bt-stage two ef-stage"><div class="bt-fig">' + pyramid('Energy stored (kcal/m²/yr)', 'kcal', 'en', L.map(function(x){ return x.stored; }), ORG) + '</div><div class="bt-fig">' +

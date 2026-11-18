@@ -24,7 +24,6 @@
 @media (max-width:640px){ .ef2-scene{height:max(450px,min(125vw,500px));border-radius:14px;} .ef2{gap:8px;} }
 .ef2-lines{display:flex;align-items:center;justify-content:space-between;gap:6px 18px;flex-wrap:wrap;flex:none;}
 .ef2-lines .tk2-play{flex:none;margin-left:auto;}
-@media (max-width:640px){ .ef2-lines .tk2-cause{min-height:calc(2 * (1.4em + 8px) + 12px);align-content:flex-start;flex-basis:100%;} .ef2-lines .tk2-cause.is-take{min-height:calc(2 * (19.6px + 8px) + 12px);} }
 .ef2 .tk2-cz.is-energy{--cz:var(--ef-en);--cz-ink:var(--ef-en-ink);}
 .ef2 .tk2-cz.is-heat{--cz:var(--ef-heat);--cz-ink:var(--ef-heat-ink);}
 .ef2 .tk2-tag{background:var(--ef-en-ink);}

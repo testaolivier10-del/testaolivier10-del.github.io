@@ -23,7 +23,7 @@
     "gpp": {"min": 10000, "max": 30000, "step": 5000, "value": 20000},
     "eff": {"min": 0.05, "max": 0.2, "step": 0.01, "value": 0.1},
     "names": [["grass plant", "grass plants"], ["grasshopper", "grasshoppers"], ["frog", "frogs"], ["snake", "snakes"]],
-    "note": "The picture draws one grass plant or one animal for every 10 kcal/m²/yr a level stores, so the counts show the energy. Real numbers of animals fall even faster up a food chain, because animals higher up are usually larger. The grass uses half of the energy it captures in its own respiration, and consumers use 80% of what they absorb; both are fixed here. All values are illustrative."
+    "note": "The picture draws one grass plant or one animal for every 10 kcal/m²/yr a level stores, so the counts show the energy. Real numbers need not follow energy: one tree can feed thousands of insects, so a pyramid of numbers can be inverted; a pyramid of energy never is. The grass uses half of the energy it captures in its own respiration, and consumers use 80% of what they absorb; both are fixed here. All values are illustrative."
   },
   "ranges": {
     "gpp": {
