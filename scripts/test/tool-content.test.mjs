@@ -337,6 +337,145 @@ test('the comparator answers from the measured pKa, never from the rules', () =>
 
 /* ====================================================================== */
 /* The quizzes                                                             */
+/* Tools v2 (docs/tools-v2-conformations-brief.md): the picture, its labels and the line under it all read one
+   model, so the model is what is checked. */
+function confModel(){
+  return browser({ OchemToolQuiz: { mount(){ return {}; }, shuffle: a => a, esc: x => String(x) }, OchemTools: null })
+    .load(...CORE, 'ochem/assets/tools/conformations.js').OchemConformationModel;
+}
+const chainText = c => c.map(x => x.t).join(' | ');
+
+test('conformations v2: every landmark is named from the groups and the declared energies', () => {
+  const M = confModel();
+  // butane: syn > eclipsed > gauche > anti, with the strain named for each
+  const b = d => M.bond('butane', d);
+  assert.equal(b(180).conf.key, 'anti');   assert.match(chainText(b(180).chain), /Staggered \| CH₃ groups far apart \| 0\.0 kcal\/mol, lowest/);
+  assert.equal(b(60).conf.key, 'gauche');  assert.match(chainText(b(60).chain), /Staggered \| CH₃ groups close: steric strain \| 0\.9 kcal\/mol$/);
+  assert.equal(b(300).conf.key, 'gauche');
+  assert.equal(b(120).conf.key, 'eclipsed'); assert.match(chainText(b(120).chain), /^Eclipsed: torsional strain \| 3\.6 kcal\/mol$/);
+  assert.equal(b(0).conf.key, 'syn');      assert.match(chainText(b(0).chain), /^Eclipsed: torsional strain \| CH₃ on CH₃: steric \| 4\.6 kcal\/mol, highest$/);
+  assert.equal(b(360).conf.key, 'syn');
+  assert.ok(b(0).up > b(120).up && b(120).up > b(60).up && b(60).up > b(180).up, 'butane: syn > eclipsed > gauche > anti');
+  // a name holds within 10 degrees of its landmark and nowhere else
+  assert.equal(b(68).conf.key, 'gauche'); assert.equal(b(71).conf.key, 'between'); assert.match(chainText(b(90).chain), /^Part way \| /);
+  // ethane and propane have no pair of big groups: staggered and eclipsed only, no steric words anywhere
+  for(const id of ['ethane', 'propane']) for(let d = 0; d < 360; d += 60){
+    const r = M.bond(id, d);
+    assert.equal(r.conf.key, d % 120 === 0 ? 'eclipsed' : 'staggered', `${id} at ${d}`);
+    assert.ok(!/steric|repel/.test(chainText(r.chain)), `${id} at ${d}: ${chainText(r.chain)}`);
+  }
+  // where gauche wins, nothing calls gauche strained or anti the lowest
+  for(const id of ['difluoroethane', 'ethylene-glycol']){
+    const g = M.bond(id, 60), a = M.bond(id, 180);
+    assert.match(chainText(g.chain), id === 'difluoroethane' ? /gauche effect \| 0\.0 kcal\/mol, lowest/ : /hydrogen bond \| 0\.0 kcal\/mol, lowest/);
+    assert.ok(!/steric|repel/.test(chainText(g.chain)) && !/lowest/.test(chainText(a.chain)), id);
+    assert.ok(g.steric.every(w => w === 0), `${id}: no crowding drawn at gauche`);
+    assert.ok(!/lowest energy shape and where/.test(a.describe.detail) && /not the lowest/.test(a.describe.detail), `${id}: anti is not called the minimum`);
+  }
+  // halogens crowd by repelling, not "steric strain"; every chain ends on an energy that matches the curve
+  assert.match(chainText(M.bond('dichloroethane', 60).chain), /Cl groups close: they repel/);
+  for(const t of M.torsionals) for(let d = 0; d < 360; d += 60){
+    const r = M.bond(t.id, d), last = r.chain[r.chain.length - 1].t;
+    assert.ok(last.startsWith(t.energies[d / 60].toFixed(1) + ' kcal/mol'), `${t.id} at ${d}: ${last}`);
+    assert.equal(/highest/.test(last), t.energies[d / 60] === Math.max(...t.energies), `${t.id} at ${d}: highest`);
+    assert.equal(/lowest/.test(last), t.energies[d / 60] === 0, `${t.id} at ${d}: lowest`);
+    assert.ok(!/undefined|NaN/.test(chainText(r.chain) + r.describe.name + r.describe.detail));
+  }
+  // 2-methylbutane has two CH3 on one carbon: its wells are counted, not called anti
+  assert.equal(M.bond('methylbutane', 180).conf.key, 'staggered');
+  // ... and the line counts the close pairs, so a red strain pill never leads to "0.0, lowest"
+  assert.equal(chainText(M.bond('methylbutane', 180).chain), 'Staggered | 1 CH₃ pair close | 0.0 kcal/mol, lowest');
+  assert.equal(chainText(M.bond('methylbutane', 300).chain), 'Staggered | 1 CH₃ pair close | 0.0 kcal/mol, lowest');
+  assert.equal(chainText(M.bond('methylbutane', 60).chain), 'Staggered | 2 CH₃ pairs close: steric strain | 0.9 kcal/mol');
+  assert.equal(M.bond('methylbutane', 180).chain[1].role, 'ink');
+  // "highest" and "lowest" only where the number shown is the extreme
+  assert.ok(!/lowest/.test(chainText(M.bond('butane', 186).chain)) && /lowest/.test(chainText(M.bond('butane', 181).chain)));
+  assert.ok(!/highest/.test(chainText(M.bond('butane', 351).chain)) && /highest/.test(chainText(M.bond('butane', 359).chain)));
+  assert.match(M.bond('methylbutane', 60).describe.detail, /2 pairs of big groups 60° apart/);
+});
+
+test('conformations v2: the ring flip keeps every bond length, swaps every position and keeps every face', () => {
+  const M = confModel(), d = (a, b) => Math.hypot(a.x - b.x, a.y - b.y, a.z - b.z);
+  const ringOf = (...e) => { const r = [null, null, null, null, null, null]; e.forEach(([i, k, f]) => { r[i] = [k, f]; }); return r; };
+  const r1 = ringOf([0, 'Me', 'up']);
+  for(let p = 0; p <= 1.0001; p += 0.05){
+    const g = M.chair(r1, p).geo;
+    for(let i = 0; i < 6; i++) assert.ok(Math.abs(d(g.C[i], g.C[(i + 1) % 6]) - 1.53) < 0.012, `C-C at p=${p.toFixed(2)}: ${d(g.C[i], g.C[(i + 1) % 6])}`);
+    assert.equal(g.atoms.length, 12);
+    // never flat: some carbon is always well off the mean plane
+    assert.ok(Math.max(...g.C.map(c => Math.abs(c.z))) > 0.2, `flat ring at p=${p.toFixed(2)}`);
+  }
+  const A = M.chair(r1, 0).geo, B = M.chair(r1, 1).geo;
+  for(let i = 0; i < 12; i++){
+    assert.equal(A.atoms[i].carbon, B.atoms[i].carbon); assert.equal(A.atoms[i].face, B.atoms[i].face);
+    assert.notEqual(A.atoms[i].isAxial, B.atoms[i].isAxial, 'a flip swaps axial and equatorial at every position');
+  }
+  for(const g of [A, B]) for(let c = 0; c < 6; c++){
+    const two = g.atoms.filter(a => a.carbon === c);
+    assert.equal(two.filter(a => a.isAxial).length, 1, 'one axial and one equatorial on each carbon');
+    const ax = two.find(a => a.isAxial), eq = two.find(a => !a.isAxial);
+    assert.ok(ax.axness > 0.93 && eq.axness < 0.45, `axial is along the ring axis, equatorial is not (${ax.axness}, ${eq.axness})`);
+    // axial positions alternate up and down around the ring
+    assert.equal(ax.face, g.atoms.find(a => a.carbon === (c + 2) % 6 && a.isAxial).face);
+    assert.notEqual(ax.face, g.atoms.find(a => a.carbon === (c + 1) % 6 && a.isAxial).face);
+  }
+  // the classic results fall out of the geometry
+  const best = ring => { const pr = M.chair(ring, 0).pair; return Math.min(pr.a.total, pr.b.total); };
+  const worst = ring => { const pr = M.chair(ring, 0).pair; return Math.max(pr.a.total, pr.b.total); };
+  // 1,2-dimethyl rings pay the gauche CH3/CH3 cost tab 1 teaches (OpenStax 4.8: trans ee 3.8 kJ/mol, each cis chair 11.4)
+  assert.equal(best(ringOf([0, 'Me', 'up'], [1, 'Me', 'down'])), 0.9, 'trans-1,2: diequatorial, one gauche pair');
+  assert.equal(worst(ringOf([0, 'Me', 'up'], [1, 'Me', 'down'])), 3.4, 'trans-1,2 diaxial: two A-values, the methyls anti');
+  { const t12 = M.chair(ringOf([0, 'Me', 'up'], [1, 'Me', 'down']), 0), ee = t12.pair.a.total < t12.pair.b.total ? 0 : 1;
+    assert.equal(chainText(M.chair(ringOf([0, 'Me', 'up'], [1, 'Me', 'down']), ee).chain), 'Both equatorial | gauche: 0.9 kcal/mol | 98.55% of molecules');
+    assert.equal(best(ringOf([0, 'Me', 'up'], [1, 'Et', 'down'])), 0.9, 'any two neighboring groups pay the flat gauche estimate');
+    assert.equal(best(ringOf([0, 'Ph', 'up'], [1, 'Br', 'down'])), 0.9, 'a carbon group beside anything pays it');
+    assert.equal(best(ringOf([0, 'Me', 'up'], [1, 'OH', 'down'])), 0.9, 'CH3/OH: one carbon group is enough');
+    // two polar neighbors are not costed and not drawn as strained (tab 1 teaches F/F and OH/OH prefer gauche)
+    for(const [g, ax] of [['F', 0.5], ['OH', 1.74], ['Cl', 0.86]]){
+      const r = ringOf([0, g, 'up'], [1, g, 'down']), pr = M.chair(r, 0).pair, ee = pr.a.axial.length ? pr.b : pr.a, aa = pr.a.axial.length ? pr.a : pr.b;
+      assert.equal(ee.total, 0, `${g}/${g} diequatorial: no cost`); assert.equal(ee.gauche.length, 0, `${g}/${g}: no glow pair`); assert.equal(ee.polar.length, 1);
+      assert.ok(Math.abs(aa.total - ax) < 1e-9, `${g}/${g} diaxial: the two A-values only (${aa.total})`);
+      assert.ok(ee.terms.some(t => /two polar neighbors, not estimated here/.test(t.text) && t.kcal === 0));
+      const end = pr.a.axial.length ? 1 : 0;
+      assert.match(chainText(M.chair(r, end).chain), /^Both equatorial \| no strain \| /);
+    } }
+  /* The drill (Find the stable chair) draws one or two groups from eight, cis or trans, 1,2 / 1,3 / 1,4, never two
+     halogens on neighboring carbons, and skips ties. For every such ring the better chair is the one it was
+     before the gauche term existed (the term is the same in both chairs of a cis ring, and never outweighs two
+     A-values in a trans one), so no answer changed. */
+  { const G8 = ['Me', 'Et', 'iPr', 'tBu', 'Ph', 'OH', 'Cl', 'Br'], hal = k => /^(Cl|Br|F)$/.test(k); let n = 0;
+    const plain = e => e.total - 0.9 * e.gauche.length;
+    for(const g1 of G8) for(const f1 of ['up', 'down']) for(const pos of [1, 2, 3]) for(const g2 of G8) for(const f2 of ['up', 'down']){
+      if(pos === 1 && hal(g1) && hal(g2)) continue;
+      const pr = M.chair(ringOf([0, g1, f1], [pos, g2, f2]), 0).pair;
+      if(Math.abs(pr.a.total - pr.b.total) < 0.2) continue;
+      n++;
+      assert.ok(Math.abs(plain(pr.a) - plain(pr.b)) >= 0.2 - 1e-9 && (pr.a.total < pr.b.total) === (plain(pr.a) < plain(pr.b)), `${g1} ${f1} C1, ${g2} ${f2} C${pos + 1}: the winner moved`);
+    }
+    assert.ok(n > 500, `only ${n} drill rings checked`); }
+  assert.equal(best(ringOf([0, 'Me', 'up'], [2, 'Me', 'up'])), 0, 'cis-1,3: diequatorial');
+  assert.equal(best(ringOf([0, 'Me', 'up'], [3, 'Me', 'down'])), 0, 'trans-1,4: diequatorial');
+  assert.equal(best(ringOf([0, 'Me', 'up'], [1, 'Me', 'up'])), 2.6, 'cis-1,2: one axial and one gauche pair in either chair');
+  assert.equal(worst(ringOf([0, 'Me', 'up'], [1, 'Me', 'up'])), 2.6);
+  assert.equal(best(ringOf([0, 'Me', 'up'], [2, 'Me', 'down'])), 1.7, 'trans-1,3: one axial in either chair');
+  assert.equal(worst(ringOf([0, 'Me', 'up'], [2, 'Me', 'up'])), 1.7 * 2 + 1.6, 'cis-1,3 diaxial pays the extra 1,3 term');
+  // methylcyclohexane: 1.70 kcal/mol is about 95 : 5 at room temperature; the words follow
+  const m0 = M.chair(r1, 0), m1 = M.chair(r1, 1);
+  assert.equal(m0.state, 'CH₃ axial'); assert.equal(m1.state, 'CH₃ equatorial');
+  assert.match(chainText(m0.chain), /^CH₃ axial \| strain 1\.7 kcal\/mol \| 5\.4% of molecules$/);
+  assert.match(chainText(m1.chain), /^CH₃ equatorial \| no strain \| 94\.6% of molecules$/);
+  assert.equal(chainText(M.chair(r1, 0.25).chain), 'Half chair | high energy'); assert.equal(chainText(M.chair(r1, 0.5).chain), 'Boat | high energy');
+  // "high energy" only from half chair to half chair: near either end the ring is still a chair and says so
+  for(let i = 0; i <= 100; i++){
+    const p = i / 100, t = chainText(M.chair(r1, p).chain), high = /high energy/.test(t);
+    assert.equal(high, i >= 13 && i <= 87, `p=${p.toFixed(2)}: ${t}`);
+    if(!high) assert.match(t, p < 0.5 ? /^CH₃ axial/ : /^CH₃ equatorial/);
+  }
+  // the methyl's bond is already (or still) mostly axial wherever the words say axial, so the glow has something to follow
+  for(const p of [0, 0.05, 0.1, 0.12]){ const a = M.chair(r1, p).geo.atoms.find(x => x.subKey === 'Me'); assert.ok(a.isAxial && a.axness > 0.8, `p=${p}: axness ${a.axness}`); }
+  assert.match(chainText(M.chair(ringOf(), 0).chain), /both chairs the same/);
+});
+
 /* ====================================================================== */
 
 /* Every tool's quiz generator, driven the way the shell drives it. The rule

@@ -66,6 +66,12 @@ const LD_END = '<!-- tool-ld:end -->';
 const STUDIO_START = '<!-- tool-studio:start -->';
 const STUDIO_END = '<!-- tool-studio:end -->';
 const STUDIO_HTML = '<link rel="stylesheet" href="../../assets/course/tool-studio.css">\n<script src="../../assets/course/tool-studio.js" defer></script>';
+/* A tool with `kit2: true` (tools v2, docs/tools-v2-standard.md) also loads the shared kit, after the studio, and
+   its own stylesheet (ochem/assets/tools/<slug>.css) when it has one. */
+const studioHtml = (tool) => STUDIO_HTML + (tool.kit2
+  ? '\n<link rel="stylesheet" href="../../assets/course/tool-kit2.css">\n<script src="../../assets/course/tool-kit2.js" defer></script>' +
+    (existsSync(join(ROOT, 'ochem', 'assets', 'tools', `${tool.slug}.css`)) ? `\n<link rel="stylesheet" href="../assets/tools/${tool.slug}.css">` : '')
+  : '');
 
 /* The last line of every tool page's head, and so the place the structured
    data is inserted the first time. */
@@ -287,7 +293,7 @@ for (const tool of tools) {
   let next = splice(current, LD_START, LD_END, ldBlock, FONTS_LINK);
   if (next === null) { broken.push(`${tool.slug}: no place to put the structured data`); continue; }
 
-  if (tool.studio) next = splice(next, STUDIO_START, STUDIO_END, STUDIO_HTML, LD_END);
+  if (tool.studio) next = splice(next, STUDIO_START, STUDIO_END, studioHtml(tool), LD_END);
   else if (next.includes(STUDIO_START)) next = next.slice(0, next.indexOf(STUDIO_START) - 1) + next.slice(next.indexOf(STUDIO_END) + STUDIO_END.length);
 
   next = splice(next, TOP_START, TOP_END, topHtml(tool), '<div class="tool-top" id="tool-top">');

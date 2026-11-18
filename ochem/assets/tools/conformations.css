@@ -1,0 +1,167 @@
+/* Conformation Lab, tools v2 (ochem/assets/tools/conformations.js; docs/tools-v2-conformations-brief.md). Loaded
+   only by the conformations page (`kit2: true` in tools-registry.js). One colour per idea, everywhere (scene,
+   labels, cause line; Okabe-Ito, lighter in dark mode): torsional strain amber, crowding (steric strain) red, a
+   relaxed shape and an equatorial bond green, an axial bond blue, energy in the course colour. */
+.cf2{--cf-tors:#E69F00;--cf-tors-ink:#8A5A00;--cf-steric:#C8452F;--cf-steric-ink:#9B2E1E;--cf-eq:#009E73;--cf-eq-ink:#00704F;--cf-ax:#0072B2;--cf-ax-ink:#005A8C;
+  --cf-e:#4B3BA8;--cf-e-ink:#3B2D8C;
+  --cf-bg0:#F6F4FC;--cf-bg1:#E6E2F3;--cf-bn0:#D9D4E8;--cf-bn1:#C9C3DC;--cf-bn-edge:#B1A9CB;--cf-bn-ink:#4A4366;
+  --cf-hl0:#B9AEEA;--cf-hl1:#E3DEF6;--cf-stick:#DADDE6;--cf-stick-edge:#2B2F3A;
+  display:flex;flex-direction:column;gap:10px;min-height:0;flex:1 1 auto;}
+:root[data-theme="dark"] .cf2{--cf-tors:#F0B63C;--cf-tors-ink:#F6CF75;--cf-steric:#E8705C;--cf-steric-ink:#F5A090;--cf-eq:#2FB88F;--cf-eq-ink:#8BE3C8;--cf-ax:#56B4E9;--cf-ax-ink:#9AD3F5;
+  --cf-e:#A99BF0;--cf-e-ink:#C9C0F2;
+  --cf-bg0:#1C2036;--cf-bg1:#141729;--cf-bn0:#272B47;--cf-bn1:#1D2038;--cf-bn-edge:#3B4066;--cf-bn-ink:#C9C4E4;
+  --cf-hl0:#5A4FA8;--cf-hl1:#2A2850;--cf-stick:#AEB4C4;--cf-stick-edge:#0C0E14;}
+.cf2[hidden]{display:none;}
+.cf2 [hidden]{display:none !important;}
+.cf2 .tk2-tabs{margin:0;align-self:flex-start;max-width:100%;}
+.cf2-scene{position:relative;flex:1 1 auto;min-height:440px;border-radius:18px;overflow:hidden;background:var(--cf-bg1);}
+.cf2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+@media (max-width:1023px){ .cf2-scene{flex:none;height:min(62vw,500px);min-height:430px;} }
+@media (min-width:641px) and (max-width:1023px){ .cf2[data-tab="newman"] .cf2-scene{height:620px;} }
+@media (max-width:640px){ .cf2-scene{height:552px;min-height:0;border-radius:14px;} .cf2[data-tab="chair"] .cf2-scene{height:560px;} .cf2{gap:8px;} }
+.cf2-lines{display:flex;align-items:center;justify-content:space-between;gap:6px 18px;flex-wrap:wrap;flex:none;}
+.cf2-lines .tk2-play{flex:none;margin-left:auto;}
+.cf2 .tk2-cause{transition:opacity .15s ease;} .cf2 .tk2-cause.is-wait{opacity:.3;}
+.cf2 .tk2-cz.is-tors{--cz:var(--cf-tors);--cz-ink:var(--cf-tors-ink);}
+.cf2 .tk2-cz.is-steric{--cz:var(--cf-steric);--cz-ink:var(--cf-steric-ink);}
+.cf2 .tk2-cz.is-calm,.cf2 .tk2-cz.is-eq{--cz:var(--cf-eq);--cz-ink:var(--cf-eq-ink);}
+.cf2 .tk2-cz.is-ax{--cz:var(--cf-ax);--cz-ink:var(--cf-ax-ink);}
+.cf2 .tk2-cz.is-energy{--cz:var(--cf-e);--cz-ink:var(--cf-e-ink);}
+
+/* the backdrop: a lit studio wall, and a bench the model's shadow falls on and the energy hill rises from */
+.cf2-bg{fill:url(#cf2g-bg);}
+.cf2-bench{fill:url(#cf2g-bench);} .cf2-benchedge{stroke:var(--cf-bn-edge);stroke-width:1.5;}
+.cf2-shadow{fill:url(#cf2g-sh);}
+.cf2s-bg0{stop-color:var(--cf-bg0);} .cf2s-bg1{stop-color:var(--cf-bg1);}
+.cf2s-bn0{stop-color:var(--cf-bn0);} .cf2s-bn1{stop-color:var(--cf-bn1);}
+.cf2s-sh0{stop-color:#1B1838;stop-opacity:.34;} .cf2s-sh1{stop-color:#1B1838;stop-opacity:0;}
+:root[data-theme="dark"] .cf2s-sh0{stop-color:#000;stop-opacity:.55;} :root[data-theme="dark"] .cf2s-sh1{stop-color:#000;}
+
+/* balls and sticks */
+.cf2s-c0{stop-color:#8A90A0;} .cf2s-c1{stop-color:#3E4350;} .cf2s-c2{stop-color:#15171D;}
+.cf2s-h0{stop-color:#FFFFFF;} .cf2s-h1{stop-color:#EEF0F5;} .cf2s-h2{stop-color:#AEB5C6;}
+.cf2s-r0{stop-color:#9FB6BC;} .cf2s-r1{stop-color:#4F6D74;} .cf2s-r2{stop-color:#253B41;}
+.cf2s-o0{stop-color:#F6A295;} .cf2s-o1{stop-color:#D1594A;} .cf2s-o2{stop-color:#7E2A20;}
+.cf2s-x0{stop-color:#B4E3A8;} .cf2s-x1{stop-color:#5FA85A;} .cf2s-x2{stop-color:#2C6229;}
+.cf2s-b0{stop-color:#DDA27C;} .cf2s-b1{stop-color:#A0522D;} .cf2s-b2{stop-color:#5A2A13;}
+.cf2s-e0{stop-color:#CFC6FF;} .cf2s-e1{stop-color:var(--cf-e);} .cf2s-e2{stop-color:#241A66;}
+:root[data-theme="dark"] .cf2s-e2{stop-color:#4B3BA8;}
+.cf2-ball{stroke:var(--cf-stick-edge);stroke-width:1.2;}
+.cf2-shine{fill:#fff;fill-opacity:.5;pointer-events:none;}
+.cf2-al{font-weight:900;pointer-events:none;fill:#fff;}
+.cf2-al.is-h{fill:#2A2D38;}
+.cf2-al.is-c{fill:#fff;fill-opacity:.92;}
+.cf2-bo{stroke:var(--cf-stick-edge);stroke-linecap:round;}
+.cf2-bi{stroke:var(--cf-stick);stroke-linecap:round;}
+/* the stand that holds the bond model: a base on the bench and a clear post to the front carbon */
+.cf2-base{fill:var(--cf-bn-edge);stroke:var(--cf-bn-ink);stroke-opacity:.35;stroke-width:1;}
+.cf2-post{stroke:color-mix(in srgb, var(--cf-bn-ink) 38%, transparent);stroke-linecap:round;}
+/* strain, drawn: the plane two eclipsed bonds share, the glow of two crowded groups, a hydrogen bond */
+.cf2-tors{fill:var(--cf-tors);stroke:var(--cf-tors-ink);stroke-width:1.2;stroke-linejoin:round;}
+.cf2-halo{fill:url(#cf2g-halo);pointer-events:none;}
+.cf2s-ha0{stop-color:var(--cf-steric);stop-opacity:.62;} .cf2s-ha1{stop-color:var(--cf-steric);stop-opacity:0;}
+.cf2-burst{stroke:var(--cf-steric);stroke-width:2.6;stroke-linecap:round;}
+.cf2-hb{stroke:var(--cf-eq);stroke-width:3.5;stroke-dasharray:2 7;stroke-linecap:round;}
+/* the Newman projection in the corner (and, in a question, in the model's place) */
+.cf2-inset-bg{fill:var(--white);fill-opacity:.72;stroke:var(--cf-bn-edge);stroke-width:3;}
+.cf2 .nm-lab{font:800 15px var(--font-ui);fill:var(--ink);}
+.cf2 .cf2-inset .nm-lab{font-size:23px;}
+.cf2 .nm-lab--back{fill:var(--muted);}
+
+/* the energy hill */
+.cf2-grid{stroke:var(--cf-bn-edge);stroke-opacity:.55;stroke-width:1;stroke-dasharray:2 5;}
+.cf2-ax{font:800 12px var(--font-mono);fill:var(--cf-bn-ink);}
+.cf2-axt{font:800 13px var(--font-ui);fill:var(--cf-bn-ink);}
+.cf2-hill{fill:url(#cf2g-hill);}
+.cf2s-hl0{stop-color:var(--cf-hl0);} .cf2s-hl1{stop-color:var(--cf-hl1);}
+.cf2-strata{stroke:#fff;stroke-opacity:.34;stroke-width:1.4;}
+:root[data-theme="dark"] .cf2-strata{stroke-opacity:.1;}
+.cf2-curve{fill:none;stroke:var(--cf-e);stroke-width:4;stroke-linejoin:round;stroke-linecap:round;}
+.cf2-ghost{fill:none;stroke:var(--cf-e);stroke-opacity:.55;stroke-width:2;stroke-dasharray:5 6;}
+.cf2-tick{stroke:var(--cf-bn-ink);stroke-opacity:.6;stroke-width:1.4;}
+.cf2-drop{stroke:var(--cf-e);stroke-width:2;stroke-dasharray:3 4;}
+.cf2-marker{stroke:var(--cf-stick-edge);stroke-width:1.2;}
+.cf2-mshadow{fill:#1B1838;fill-opacity:.25;}
+.cf2 .cf2-scrub .tk2-cur{display:none;}
+.cf2 .cf2-scrub .tk2-hit{cursor:ew-resize;}
+
+/* names on the picture: small pills in the idea's colour, attached to what they name */
+.cf2-labs{position:absolute;inset:0;pointer-events:none;}
+.cf2-lab{position:absolute;transform:translate(-50%,-50%);padding:2px 9px;border-radius:999px;white-space:nowrap;font:800 12.5px/1.35 var(--font-ui);
+  background:color-mix(in srgb, var(--white) 90%, transparent);color:var(--ink);box-shadow:0 1px 3px rgba(20,16,50,.16);}
+.cf2-lab.is-tors{color:var(--cf-tors-ink);box-shadow:inset 0 0 0 1.5px var(--cf-tors),0 1px 3px rgba(20,16,50,.16);}
+.cf2-lab.is-steric{color:var(--cf-steric-ink);box-shadow:inset 0 0 0 1.5px var(--cf-steric),0 1px 3px rgba(20,16,50,.16);}
+.cf2-lab.is-calm,.cf2-lab.is-eq{color:var(--cf-eq-ink);box-shadow:inset 0 0 0 1.5px var(--cf-eq),0 1px 3px rgba(20,16,50,.16);}
+.cf2-lab.is-ax{color:var(--cf-ax-ink);box-shadow:inset 0 0 0 1.5px var(--cf-ax),0 1px 3px rgba(20,16,50,.16);}
+.cf2-lab.is-state{font-size:15px;font-weight:900;padding:4px 14px;background:var(--white);box-shadow:inset 0 0 0 1.5px color-mix(in srgb, var(--ink) 30%, transparent),0 2px 6px rgba(20,16,50,.14);}
+.cf2-lab.is-state i{font-style:normal;font-weight:800;color:var(--muted);margin-left:4px;font-variant-numeric:tabular-nums;}
+.cf2-lab.is-state.is-dim{color:var(--muted);font-weight:800;box-shadow:inset 0 0 0 1.5px var(--line);}
+.cf2-lab.is-etag{background:var(--cf-e);color:#fff;font-weight:900;font-size:13px;font-variant-numeric:tabular-nums;}
+:root[data-theme="dark"] .cf2-lab.is-etag{color:#15122E;}
+.cf2-lab.is-cap{background:none;box-shadow:none;color:var(--cf-bn-ink);font-size:11.5px;padding:0;}
+.cf2-lab.is-share{background:none;box-shadow:none;color:var(--cf-bn-ink);font:900 17px var(--font-ui);font-variant-numeric:tabular-nums;padding:0;}
+.cf2-lab.is-share.is-win{color:var(--cf-eq-ink);}
+
+/* controls on the picture */
+.cf2-turnhit{position:absolute;border-radius:28px;cursor:grab;touch-action:none;}
+.cf2-turnhit.is-drag{cursor:grabbing;}
+.cf2 .cf2-turn .tk2-knob{pointer-events:auto;}
+.cf2 .tk2-tag{background:var(--cink);}
+.cf2-node{position:absolute;width:30px;height:30px;margin:-15px 0 0 -15px;padding:0;border:0;border-radius:50%;background:none;cursor:pointer;z-index:3;}
+.cf2-node::before{content:"";position:absolute;left:50%;top:50%;width:11px;height:11px;margin:-5.5px 0 0 -5.5px;border-radius:50%;background:var(--white);box-shadow:0 0 0 2.5px var(--cf-e);transition:transform .12s ease;}
+.cf2-node:hover::before{transform:scale(1.35);}
+.cf2-node:focus-visible{outline:3px solid var(--cink);outline-offset:1px;}
+.cf2-node.is-ask{width:44px;height:44px;margin:-22px 0 0 -22px;}
+.cf2-node.is-ask::before{width:20px;height:20px;margin:-10px 0 0 -10px;background:var(--ctint);box-shadow:0 0 0 3px var(--cink);}
+.cf2-node.is-ask.is-ok::before{background:var(--good-text,#1f8a3b);box-shadow:0 0 0 3px var(--white),0 0 0 5px var(--good-text,#1f8a3b);}
+.cf2-node.is-ask.is-no::before{background:var(--bad-text,#c62828);box-shadow:0 0 0 3px var(--white),0 0 0 5px var(--bad-text,#c62828);}
+.cf2-node:disabled{cursor:default;}
+.cf2-pick{position:absolute;left:12px;top:12px;display:flex;align-items:center;gap:8px;z-index:4;font:900 13px var(--font-ui);color:var(--cf-bn-ink);}
+.cf2-pick select{min-height:40px;max-width:210px;padding:0 30px 0 12px;border-radius:999px;border:1.5px solid var(--cf-bn-edge);background-color:var(--white);color:var(--ink);font:800 14px var(--font-ui);cursor:pointer;}
+.cf2-pick select:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.cf2-camhit{position:absolute;cursor:grab;touch-action:none;border-radius:18px;}
+.cf2-camhit.is-drag{cursor:grabbing;}
+.cf2-camhit:focus-visible,.cf2-thumbhit:focus-visible{outline:3px solid var(--cink);outline-offset:-3px;}
+.cf2-thumbhit{position:absolute;padding:0;border:0;background:none;border-radius:16px;cursor:pointer;}
+.cf2-thumbbox{fill:var(--white);fill-opacity:.45;stroke:var(--cink);stroke-opacity:.55;stroke-width:2;}
+.cf2-thumb{opacity:.78;} .cf2-thumb.is-here{opacity:1;}
+.cf2 .cf2-flip .tk2-groove::before{background:color-mix(in srgb, var(--cf-bn-ink) 45%, transparent);}
+@media (max-width:640px){
+  .cf2-lab{font-size:12px;padding:2px 7px;} .cf2-lab.is-state{font-size:14px;padding:3px 12px;} .cf2-lab.is-share{font-size:15px;}
+  .cf2-pick span{display:none;} .cf2-pick{left:8px;top:8px;} .cf2-pick select{max-width:176px;} .cf2[data-tab="chair"] .cf2-pick select{max-width:250px;}
+  .cf2-ax{font-size:11.5px;}
+}
+
+/* Test yourself: the question in the side panel */
+.cf-nq{display:flex;flex-direction:column;gap:8px;margin:0 0 10px;}
+.cf-nq__q{margin:0;font:600 15px/1.4 var(--font-ui);}
+.cf-nq .trow,.cf-chal .trow{margin:0;display:flex;gap:10px;flex-wrap:wrap;}
+.cf-chal__q{margin:0 0 10px;font:600 15px/1.45 var(--font-ui);color:var(--ink);}
+.cf-chal .btn-press{flex:1;}
+.cf-chal .btn-press:disabled{opacity:.5;cursor:default;}
+.cf-chal .tnote{margin-bottom:0;}
+
+/* "?": numbers, builders, the key */
+.cf2-ref{display:flex;flex-direction:column;gap:12px;margin-bottom:16px;}
+.cf2-ref-how{margin:0;}
+.cf2-ref-h{margin:6px 0 8px;font:900 15px/1.3 var(--font-ui);color:var(--ink);}
+.cf2-ref-key p{margin:0 0 9px;font:500 14px/1.5 var(--font-ui);color:var(--ink);}
+.cf2-sw{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:6px;vertical-align:-2px;}
+.cf2-sw.is-tors{background:var(--cf-tors);} .cf2-sw.is-steric{background:var(--cf-steric);} .cf2-sw.is-ax{background:var(--cf-ax);} .cf2-sw.is-eq{background:var(--cf-eq);}
+.ls-sheet .cf2-ref{--cf-tors:#E69F00;--cf-steric:#C8452F;--cf-eq:#009E73;--cf-ax:#0072B2;}
+.cf-torbuild{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.cf-torbuild__k{font:900 12px var(--font-ui);color:var(--muted);margin-bottom:6px;}
+.cf-torbuild select{width:100%;margin-bottom:6px;min-height:44px;}
+.cf-ring{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:10px;}
+.cf-slot{display:flex;flex-direction:column;gap:5px;}
+.cf-slot > label{font:900 12px var(--font-ui);color:var(--muted);}
+.cf-slot .tselect{min-height:44px;}
+.cf-face{align-self:start;}
+.cf-face button{min-height:44px;padding:4px 14px;}
+.cf-face button:disabled{opacity:.4;cursor:default;}
+@media (max-width:520px){ .cf-torbuild{grid-template-columns:1fr;} }
+/* A drill on a desktop: the stage beside the question is narrower, so the picture is kept to the height its width
+   can fill instead of standing at the bottom of a tall empty wall. */
+@media (min-width:1000px){ .cf2.is-drill .cf2-scene{flex:none;height:min(500px,62vh);min-height:400px;} }
+/* A narrow phone: the pills of the line under the picture are a size smaller, so every chain fits two rows. */
+@media (max-width:420px){ .cf2 .tk2-cause{font-size:13px;gap:3px;} .cf2 .tk2-cz{padding:2px 7px;} .cf2 .tk2-cz-a{font-size:13px;} }
