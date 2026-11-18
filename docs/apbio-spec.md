@@ -404,6 +404,11 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    a tray of five trees and Cut on the picture, a D gauge with the most D can be with that many species, a cause
    line, Even it out. Test yourself: Calculate D (the old Practice, unchanged) and Build a community (the old goals).
    New `explore` block in the tool's data, checked by the content check; still free.
+35. (2026-11-18, `docs/tools-v2-water-potential-brief.md`) **Water potential rebuilt to tools v2** (branch
+   `claude/tools-v2-water-potential`, waiting for the independent review). Explore: a plant cell in an open beaker,
+   a written sum on each (solute plus pressure, the total and a word), "Pressure in the cell" as the main knob and
+   "Solute outside" as a quiet second one, water arrows and a cause line that follow at once. Test yourself is the
+   old Practice mode, unchanged. Still free. What moved is listed in the brief and the owner log.
 
 ## 4. Map format (Phase 0)
 

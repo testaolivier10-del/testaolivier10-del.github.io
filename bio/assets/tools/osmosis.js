@@ -402,6 +402,13 @@
         var w = text.length * fs * 0.56 + 18, h = fs + 10, x0 = anchor === 'start' ? x : anchor === 'end' ? x - w : x - w / 2;
         return '<g class="os2-pill ' + cls + '"><rect x="' + n1(x0) + '" y="' + n1(y - h / 2) + '" width="' + n1(w) + '" height="' + n1(h) + '" rx="' + n1(h / 2) + '"/><text x="' + n1(x0 + w / 2) + '" y="' + n1(y + fs * 0.36) + '" text-anchor="middle" style="font-size:' + fs + 'px">' + esc(text) + '</text></g>';
       }
+      /* Equal water potential: water still crosses both ways at the same rate. One thin line, a head at each end. */
+      function both(x0, y0, x1, y1, cls){
+        var ang = Math.atan2(y1 - y0, x1 - x0), hl = 8, c = Math.cos(ang), s = Math.sin(ang), hw = hl * 0.62;
+        var head = function(tx, ty, sg){ var bx = tx - sg * c * hl, by = ty - sg * s * hl; return 'M' + n1(tx) + ' ' + n1(ty) + 'L' + n1(bx + s * hw) + ' ' + n1(by - c * hw) + 'L' + n1(bx - s * hw) + ' ' + n1(by + c * hw) + 'Z'; };
+        return '<path class="' + cls + '" d="M' + n1(x0 + c * hl * 0.8) + ' ' + n1(y0 + s * hl * 0.8) + 'L' + n1(x1 - c * hl * 0.8) + ' ' + n1(y1 - s * hl * 0.8) + '"/>' +
+          '<path class="' + cls + '-h" d="' + head(x1, y1, 1) + head(x0, y0, -1) + '"/>';
+      }
       function arrow(fx, fy, tx, ty, sw, cls){
         var ang = Math.atan2(ty - fy, tx - fx), hl = 7 + sw * 0.8, bx = tx - Math.cos(ang) * hl, by = ty - Math.sin(ang) * hl;
         return '<path class="' + cls + '" stroke-width="' + n1(sw) + '" d="M' + n1(fx) + ' ' + n1(fy) + 'L' + n1(bx) + ' ' + n1(by) + '"/>' +
@@ -498,7 +505,7 @@
           if(n === 2 && o.noTop) return;
           var ax0 = cx + d[0] * (o.ex * k + 44 + sw), ay0 = cy + d[1] * (o.ey * k + 38 + sw), ax1 = cx + d[0] * (o.ex * k + 9), ay1 = cy + d[1] * (o.ey * k + 7);
           if(n > 1){ var lim = n === 2 ? BY + 12 : y1 - G.fs - 32; if(n === 2 ? ay0 < lim : ay0 > lim) ay0 = lim; if(Math.abs(ay1 - ay0) < 18) return; }
-          if(dir === 'none'){ p.push('<path class="os2-eq" d="M' + n1(ax0) + ' ' + n1(ay0) + 'L' + n1(ax1) + ' ' + n1(ay1) + '"/>'); return; }
+          if(dir === 'none'){ p.push(both(ax0, ay0, ax1, ay1, 'os2-eq')); return; }
           var inn = dir === 'in', fx = inn ? ax0 : ax1, fy = inn ? ay0 : ay1, tx = inn ? ax1 : ax0, ty = inn ? ay1 : ay0;
           p.push(arrow(fx, fy, tx, ty, sw, 'os2-flow'));
           if(live && !K.reduced()){ var phs = ((sc.challenge ? chal.clock || 0 : view.clock) / 620) % 1; for(var w = 0; w < 3; w++){ var u = (phs + w / 3) % 1; p.push('<circle class="os2-w" cx="' + n1(fx + (tx - fx) * u * 0.8) + '" cy="' + n1(fy + (ty - fy) * u * 0.8) + '" r="' + n1(2.4 + sw * 0.14) + '"/>'); } }

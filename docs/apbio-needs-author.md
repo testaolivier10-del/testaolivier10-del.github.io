@@ -711,3 +711,9 @@ These stay open:
 - **osmosis-burst-new-cell** (logged, owner round 2). A burst red blood cell does not heal: when the solute is
   raised again the old cell fades and a new cell goes into the new solution, marked "new cell" for about two
   seconds. Teacher: confirm the wording.
+- **water-potential-explore-fixed-sap** (logged, tools v2, 2026-11-18). The rebuilt Water potential tool's Explore
+  holds the cell's solute potential at −9.8 bar (0.40 M sucrose at 22 °C, rounded to 0.1 bar before adding) while
+  the student drags the pressure from 0 to 9.8 bar. A real cell's sap is diluted a little as it takes up water and
+  turgor rises; textbooks and the lab manual hold ψs fixed for a walled cell, whose volume changes by a few percent.
+  Pressure stops at 9.8 bar, where the cell's total reaches 0, the value of pure water. Teacher: confirm holding ψs
+  fixed is right for free play (the practice problems are unchanged and keep 0.01 bar).

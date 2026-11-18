@@ -861,7 +861,7 @@
       // the second tab, named for what is in it
       detailsTitle: ({ 'chi-square': 'Problem & critical values', 'confidence-intervals': 'Problem, formulas & settings',
         'descriptive-stats': 'Problem & formulas', 'hardy-weinberg': 'Problem & equations', 'rates': 'Problem & formulas',
-        'simpson-diversity': 'Numbers & formula', 'water-potential': 'Problem & formulas', 'graph-builder': 'What full credit needs',
+        'simpson-diversity': 'Numbers & formula', 'water-potential': 'Numbers & formulas', 'graph-builder': 'What full credit needs',
         'tree-reading': 'Trees & characters', 'design-drills': 'All drills', 'osmosis': 'Numbers & how it works' })[slug] || 'Data & settings',
       menu: {
         copyLink: function(){
@@ -1354,7 +1354,9 @@
        A skills tool's practice problems (T.skillTool) are a part too, with their own stage (the problem's figure):
                             { value: 'practice', label, practice: true } in o.parts places it (first when left out).
                             Its problems (new numbers, each worked problem) are choices of the same one dropdown,
-                            and ?seed=... opens it.
+                            and ?seed=... opens it. With onPicture: true the tool draws each problem on o.stage
+                            itself (its skillTool stage function), so o.stage stays in Test yourself and the
+                            practice's own stage stays hidden.
        o.onShow(mode, part) after every switch: mode 'explore' | 'quiz', part the Test yourself part or null.
      Two modes only: Explore and Test yourself. With more than one part, ONE dropdown on the stage ("What to
      practice") picks it. #predict..., #questions and #frq open Test yourself on that part, as the old links did.
@@ -1398,7 +1400,7 @@
     } else if(parts.length > 1) pick = s.picker({ label: 'What to practice', items: parts.map(function(p){ return { value: p.value, label: p.label }; }), value: cur.part,
       onChange: function(v){ show('quiz', v, true); } }, 'quiz');
     function show(mode, part, user){
-      var p = partOf(part), quiz = mode === 'quiz' && !!p, pic = !quiz || !(p.questions || p.practice), left = cur.part;
+      var p = partOf(part), quiz = mode === 'quiz' && !!p, pic = !quiz || !(p.questions || p.practice && !p.onPicture), left = cur.part;
       cur = { mode: quiz ? 'quiz' : 'explore', part: p ? p.value : null };
       if(s.mode() !== cur.mode) s.mode(cur.mode);
       o.stage.hidden = !pic;
@@ -1406,7 +1408,7 @@
       parts.forEach(function(x){ if(x.dock) x.dock.hidden = !(quiz && x === p); });
       if(qStage) qStage.hidden = !(quiz && p.questions);
       if(qDock) qDock.hidden = !(quiz && p.questions);
-      if(prac){ prac.nodes.forEach(function(x){ x.hidden = !(quiz && p.practice); }); if(quiz && !p.practice && left === pp.value && s.done) s.done(false, 'quiz'); }
+      if(prac){ prac.nodes.forEach(function(x, i){ x.hidden = !(quiz && p.practice) || (i === 0 && !!pp.onPicture); }); if(quiz && !p.practice && left === pp.value && s.done) s.done(false, 'quiz'); }
       if(pick && quiz && pick.value() !== pickVal(p)) pick.value(pickVal(p));
       if(quiz){
         if(p.practice){ prac.resync(); }
