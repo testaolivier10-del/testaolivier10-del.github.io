@@ -59,8 +59,8 @@ Outside the picture: 2 tabs, the purpose line (9 words), "Show me how", the caus
 5 or 6 at an extreme), "Watch it happen". That is 4 controls and about 27 words at the opening (36 at the wordiest
 setting). No side panel, no graph, no readout cards, no numbers except the one on the knob.
 On the picture: the beaker with the cell, the solute dots, 1 control (the knob with its value), the control's name
-("Solute outside") and its two ends ("0", "1.0 M"), the solution's name (1 word), the water's label (3 words), the
-cell's state (1 or 2 words). Only while they are true: "wall pushes back" (a turgid plant cell), "wall" and
+("Solute outside") and its two ends ("0", "1.0 M"), the solution's name (1 word), the
+cell's state (1 or 2 words). Only while water is moving: the arrows and "water moving out" (owner round 1). Only while they are true: "wall pushes back" (a turgid plant cell), "wall" and
 "membrane" (once they separate), "before" (after a change), the cue (first visit).
 
 ### Explore against Test yourself
@@ -181,5 +181,61 @@ page loads with the changed kit and no errors. Preview: `node scripts/tool-previ
 - The flagship was not moved onto `K.head` and `K.cause` (two copies of the cause line code exist until it is).
 - The old figure's styles (`.os-fig` and friends) are still in `bio-tools.css`, unused by this page.
 - On a desktop the beaker is centred with empty space left and right of it.
-- The settled picture shows arrows for water that has already moved (labelled in the past tense). An owner or
-  teacher may prefer no arrows once settled.
+
+## Owner round 1: visuals (2026-11-17)
+Owner on the preview: "remember visuals should be same standard as the last one" (the water pollution flagship).
+The first build was a flat beaker of dots with empty grey either side. This round changes the drawing only: the
+same interaction, the same controls, and fewer things on the settled picture (not more). No text was added.
+
+### What changed
+- **A scene across the whole stage.** The vessel of solution now runs edge to edge: glass walls and floor with
+  thickness, a rolled rim, one long highlight, a surface with a meniscus, water that is lighter near the surface
+  and deeper below, and a bench the vessel stands on, where the control lies. No grey bands on a desktop; the
+  phone keeps the same scene (taller: about 106 vw).
+- **The plant cell looks like a plant cell:** a wall with thickness (two edges and a light middle line), the
+  membrane as its own dark line just inside it, shaded cytoplasm with seven chloroplasts and a nucleus with a
+  nucleolus, and a large central vacuole (shaded blue, the same blue as water) that holds the cell sap's solute
+  and swells and shrinks more than anything else. Turgid: the wall bows out, its corners round and the green
+  arrows of its push show. Flaccid: the membrane only touches the wall. Plasmolyzed: the protoplast rounds up and
+  pulls away, the chloroplasts crowd around a small vacuole, and the gap holds the outside solution.
+- **The red blood cell looks like one:** a soft shaded disc, paler in the middle where it is thinnest. Swollen:
+  it rounds up, the pale middle fills in and a highlight appears. Shriveled: smaller with a scalloped edge
+  (crenation; rounded bumps, not spikes). Burst: a torn, empty membrane in a fading cloud of what it held.
+- **Solute as particles:** larger shaded particles with the same density rule inside and outside, spread by a
+  fixed farthest point pattern (the first pattern showed rows when crowded). None are drawn on the wall itself.
+- **Water arrows only while water is moving:** for the half second the cell takes to settle after a change (and
+  for as long as a drag keeps changing it), and in Watch it happen; drops run along them and they thin as the
+  water potentials meet. The settled picture has no arrows and no water label (it is in the cause line). The
+  arrows show the way water is really going from the cell as it was: lowering the solute from 0.80 to 0.50 M shows
+  water coming back in, while the cause line still describes that solution against a fresh cell (see open points).
+- **The cue** ("Drag the solute") no longer covers "Solute outside": the label sits lower on the bench (checked
+  in the browser at every size).
+- The cell is larger (it is sized by the height of the solution). The cell's state is not shown early on the way
+  to a burst.
+- Colours are the cause line's, everywhere: water blue (vacuole, arrows), solute amber, wall and its push green,
+  red only for the burst label and pill. The chloroplasts are a leaf green, darker and yellower than the wall's
+  green, so they are not read as "wall".
+
+### Accuracy of the drawing (checked against OpenStax Biology for AP® Courses 5.2 and the CED)
+Plasmolysis: the membrane and what it holds pull away from the wall and the wall keeps its shape; the gap fills
+with the outside solution. Turgid: the membrane presses on the wall and the wall resists. Flaccid: no pressure,
+not pulled away. Crenation: a shrunken cell with a scalloped edge. Lysis: the membrane tears and the contents
+leave. The vacuole holding most of the water and solute is standard for a mature plant cell. Not to scale and
+said nowhere as fact: the number of particles, the size of the swelling, the replay's timing.
+
+### Checks run (this round)
+`node --test scripts/test/apbio-*.test.mjs` (72 pass), `check-apbio-content --check`, `build-apbio --check`,
+`check-weight --check`. Playwright as before at 390, 768 and 1440, light and dark, 261 assertions passing; new:
+arrows are drawn mid drag and are gone once settled, and the cue does not overlap the control's label. Preview and
+shots regenerated (a mid drag shot added).
+
+### Honest comparison with the flagship, and open points
+- It is now a drawn scene with material and depth, and the cell carries the detail. It is still simpler than the
+  lake (one object in a vessel against a whole landscape); nothing more was added because every extra detail here
+  could be misread.
+- During a drag that reverses a change the arrows ("water moving in") and the cause line ("water moves out", for
+  that solution against a fresh cell) point different ways. Both are true; the owner may want one of them changed.
+- The red blood cell stands for "Animal cell" (no nucleus). A generic animal cell with a nucleus would match the
+  tab's name better but not the model's numbers.
+- With reduced motion there are no arrows at all outside the cause line.
+- The particles do not move (no random motion); moving them would be true but is ambient motion on a busy picture.
