@@ -201,10 +201,11 @@
     function say(t){ live.textContent = ''; setTimeout(function(){ live.textContent = t; }, 40); }
 
     /* ---------------------------------------------------- the curve and its view */
-    function view(){
-      var F = S.F;
-      return { x: F.x, y: F.y || [-5, 5], dy: F.dy || [-5, 5] };
-    }
+    /* The curve's own windows (P and Q stay inside them); geo() pads them on screen, so the car, P's knob and its
+       tag always have room inside the picture. */
+    function view(){ var F = S.F; return { x: F.x, y: F.y || [-5, 5], dy: F.dy || [-5, 5] }; }
+    /* P and Q live where the curve is defined and inside its own window (so the car, the knob and its tag are seen). */
+    function inWin(x){ var F = S.F, y = F.f(x), w = F.y || [-5, 5]; return x >= F.x[0] && x <= F.x[1] && isFinite(y) && y >= w[0] && y <= w[1]; }
     function fa(){ return S.F.f(S.a); }
     function slopeNow(){ return (S.cls || {}).kind === 'smooth' ? TT.slopeAt(S.F, S.a) : NaN; }
     function dfun(){ var F = S.F; return F.d ? function(x){ return F.d(x); } : F.dn; }
@@ -220,15 +221,22 @@
 
     /* ---------------------------------------------------- geometry */
     function geo(W, H){
-      var narrow = W < 560, pl = narrow ? 30 : 42, pr = narrow ? 24 : 26, pt = 10, V = view(), g = { W: W, H: H, narrow: narrow };
-      if(S.tab === 'slope'){
-        var gap = narrow ? 30 : 34, avail = H - pt - 20 - gap, aH = Math.round(avail * 0.6);
-        g.A = frameOf(V.x, V.y, pl, pt, W - pl - pr, aH);
-        g.B = frameOf(V.x, V.dy, pl, pt + aH + gap, W - pl - pr, avail - aH);
-      } else g.A = frameOf(V.x, V.y, pl, pt, W - pl - pr, H - pt - 22);
-      g.kx = g.A.W / (V.x[1] - V.x[0]); g.ky = g.A.H / (V.y[1] - V.y[0]);
+      var narrow = W < 560, pl = narrow ? 30 : 42, pr = narrow ? 10 : 16, pt = 10, V = view(), g = { W: W, H: H, narrow: narrow };
       g.rw = narrow ? 10 : 13;
       g.car = clamp(W * 0.05, 40, 60);
+      // pixels kept free inside the frame: the knob at the sides, the car above, the knob's tag below
+      var padX = 30, padT = Math.round(g.car * 0.62 + 10), padB = 56, AH, AT = pt, BW = W - pl - pr;
+      if(S.tab === 'slope'){
+        var gap = narrow ? 30 : 34, avail = H - pt - 20 - gap; AH = Math.round(avail * 0.6);
+      } else AH = H - pt - 22;
+      var kx = (BW - 2 * padX) / (V.x[1] - V.x[0]), ky = (AH - padT - padB) / (V.y[1] - V.y[0]);
+      var X = [V.x[0] - padX / kx, V.x[1] + padX / kx], Y = [V.y[0] - padB / ky, V.y[1] + padT / ky];
+      g.A = frameOf(X, Y, pl, AT, BW, AH);
+      if(S.tab === 'slope'){
+        var BH = avail - AH, kd = (BH - 16) / (V.dy[1] - V.dy[0]);
+        g.B = frameOf(X, [V.dy[0] - 4 / kd, V.dy[1] + 12 / kd], pl, pt + AH + gap, BW, BH);
+      }
+      g.kx = kx; g.ky = ky;
       return g;
     }
     /* The road as runs of pixel points: broken where f is undefined or jumps, with the exact special points in. */
@@ -331,7 +339,8 @@
     }
     function carAt(o, px, py, ang, dir){
       o.push('<g transform="translate(' + r1(px) + ' ' + r1(py) + ') rotate(' + (ang * 180 / Math.PI).toFixed(2) + ')' + (dir < 0 ? ' scale(-1 1)' : '') + '">' + car(G.car, G.rw) + '</g>');
-      block(px, py - G.car * 0.25, G.car * 0.55);
+      var L = G.car, nx = Math.sin(ang), ny = -Math.cos(ang), ux = Math.cos(ang), uy = Math.sin(ang);
+      [-0.32, 0, 0.32].forEach(function(t){ block(px + nx * L * 0.3 + ux * L * t, py + ny * L * 0.3 + uy * L * t, L * 0.3); });
     }
     /* A line y = y0 + m (x - x0) across frame F (or a vertical line when m is infinite), on [lo, hi]. */
     function across(F, x0, y0, m, cls, lo, hi){ return lineAcross(F, x0, y0, m, cls, '', lo, hi); }
@@ -385,7 +394,9 @@
       var A = G.A, B = G.B, F = S.F, a = S.a, y0 = fa(), c = S.cls || { kind: 'smooth' }, m = slopeNow(), o = [];
       var Px = A.sx(a), Py = A.sy(y0);
       block(Px, Py, 22);
-      if(S.tab === 'slope'){ var ts = tagSideP(); boxes.push(ts === 'down' ? [Px - 48, Py + 16, Px + 48, Py + 52] : ts === 'right' ? [Px + 16, Py - 16, Px + 110, Py + 16] : [Px - 110, Py - 16, Px - 16, Py + 16]); }
+      if(cue.active()) cue.place();
+      blockCue();
+      if(S.tab === 'slope') boxes.push(tagBoxP());
       var dir = S.dir;
       if(S.tab === 'slope'){
         // the f′ paper: the ink where P has been, the slope now as a bar, the pen
@@ -430,10 +441,8 @@
             if(isFinite(c.R)) o.push(across(A, a, y0, c.R, 'tt2-tan is-half', a, null));
           } else if(c.kind === 'vertical' || c.kind === 'cusp') o.push(across(A, a, y0, Infinity, 'tt2-tan is-half'));
         }
-        var cm = smooth ? m : c.kind === 'corner' || c.kind === 'vertical' || c.kind === 'cusp' ? (dir < 0 ? c.R : c.L) : c.kind === 'endpoint' ? (isFinite(c.R) || Math.abs(c.R) === Infinity ? c.R : c.L) : (isFinite(c.R) ? c.R : c.L);
-        if(!isFinite(cm) && !(Math.abs(cm) === Infinity)) cm = 0;
-        carAt(o, Px, Py, angOf(cm, dir), dir);
         o.push('</g>');
+        carAt(o, Px, Py, angOf(carSlope(c, m, dir), dir), dir);
         // labels on the road (after the shapes, placed clear of them)
         if(smooth){
           if(S.tri){
@@ -457,11 +466,47 @@
       if(cue.active()) cue.place();
       words();
     }
+    /* Q's tag: away from P (the car), unless that side has no room */
+    function tagSideQ(){
+      if(!G || qInLens()) return 'down';
+      var q = qPoint(); if(!q.ok) return 'down';
+      var y = G.A.sy(q.y), x = G.A.sx(q.x);
+      if(S.h > 0 && x < G.A.R - 120) return 'right';
+      if(S.h < 0 && x > G.A.L + 120) return 'left';
+      return y < G.A.B - 50 ? 'down' : 'up';
+    }
+    /* P's tag: the first side where it fits inside the road panel and clear of the car (down, the side away from the
+       car's roof, the other side, up). */
+    function carDiscs(px, py, ang){
+      var L = G.car, nx = Math.sin(ang), ny = -Math.cos(ang), ux = Math.cos(ang), uy = Math.sin(ang);
+      return [-0.32, 0, 0.32].map(function(t){ return [px + nx * L * 0.3 + ux * L * t, py + ny * L * 0.3 + uy * L * t, L * 0.3]; });
+    }
     function tagSideP(){
       if(!G) return 'down';
-      var y = G.A.sy(fa()), x = G.A.sx(S.a);
-      if(y < G.A.B - 50 && x > G.A.L + 44 && x < G.A.R - 44) return 'down';
-      return x < G.A.R - 130 ? 'right' : 'left';
+      var A = G.A, y = A.sy(fa()), x = A.sx(S.a), ang = angOf(carSlope(S.cls || {}, slopeNow(), S.dir), S.dir), d = carDiscs(x, y, ang);
+      var t = hp && hp.el.querySelector('.tk2-tag'), w = t && t.offsetWidth ? t.offsetWidth : 90, roof = Math.sin(ang) * (S.dir < 0 ? -1 : 1) < 0 ? 'right' : 'left';
+      function box(side){
+        if(side === 'down' || side === 'up'){ var l = clamp(x - w / 2, A.L + 2, A.R - 2 - w), t0 = side === 'down' ? y + 26 : y - 50; return [l, t0, l + w, t0 + 24]; }
+        return side === 'right' ? [x + 26, y - 12, x + 26 + w, y + 12] : [x - 26 - w, y - 12, x - 26, y + 12];
+      }
+      function ok(b){
+        if(b[0] < A.L + 1 || b[2] > A.R - 1 || b[1] < A.T + 1 || b[3] > A.B - 1) return false;
+        return d.every(function(c){ var cx = clamp(c[0], b[0], b[2]), cy = clamp(c[1], b[1], b[3]); return Math.hypot(c[0] - cx, c[1] - cy) > c[2]; });
+      }
+      var order = ['down', roof, roof === 'right' ? 'left' : 'right', 'up'];
+      for(var i = 0; i < order.length; i++) if(ok(box(order[i]))) return order[i];
+      return 'down';
+    }
+    function tagBoxP(){
+      var A = G.A, y = A.sy(fa()), x = A.sx(S.a), side = tagSideP(), t = hp.el.querySelector('.tk2-tag'), w = t && t.offsetWidth ? t.offsetWidth : 90;
+      if(side === 'down' || side === 'up'){ var l = clamp(x - w / 2, A.L + 2, A.R - 2 - w), t0 = side === 'down' ? y + 24 : y - 52; return [l, t0, l + w, t0 + 28]; }
+      return side === 'right' ? [x + 24, y - 14, x + 28 + w, y + 14] : [x - 28 - w, y - 14, x - 24, y + 14];
+    }
+    /* The car's heading: the slope, or at a point with none, the slope of the side it came from. */
+    function carSlope(c, m, dir){
+      if(c.kind === 'smooth' && isFinite(m)) return m;
+      var v = c.kind === 'corner' || c.kind === 'vertical' || c.kind === 'cusp' ? (dir < 0 ? c.R : c.L) : c.kind === 'endpoint' ? (c.R === c.R ? c.R : c.L) : (isFinite(c.R) ? c.R : c.L);
+      return v === v && v != null ? v : 0;
     }
     function roadLabel(o){
       var A = G.A, F = S.F, xs = [0.9, 0.1, 0.75, 0.25], pa = (S.a - A.x[0]) / (A.x[1] - A.x[0]);
@@ -477,10 +522,16 @@
 
     /* Tab 2: the secant through P and Q, the tangent it closes in on, and the magnifier. */
     function qPoint(){ var x = S.a + S.h, y = S.F.f(x); return { x: x, y: y, ok: isFinite(y) && x >= G.A.x[0] && x <= G.A.x[1] }; }
+    /* The glass's half width (x units) that puts Q about halfway out from P, along the secant as drawn. */
+    function lensTarget(){
+      var dy = S.F.f(S.a + S.h) - S.F.f(S.a), k = G ? G.ky / G.kx : 1, d = Math.hypot(S.h, isFinite(dy) ? dy * k : 0);
+      return Math.max(1e-9, d / 0.45);
+    }
     function lensWanted(){
       if(S.tab !== 'secant' || !G) return false;
       var q = qPoint(); if(!q.ok) return false;
-      return Math.hypot(G.A.sx(q.x) - G.A.sx(S.a), G.A.sy(q.y) - G.A.sy(fa())) < 64;
+      // only when Q is hard to see, and only when the glass really magnifies (at least twice)
+      return Math.hypot(G.A.sx(q.x) - G.A.sx(S.a), G.A.sy(q.y) - G.A.sy(fa())) < 64 && lensGeo().R / lensTarget() / G.kx >= 2;
     }
     function lensGeo(){
       var A = G.A, R = clamp(Math.min(A.W, A.H) * 0.25, 70, 132), Px = A.sx(S.a), Py = A.sy(fa());
@@ -502,12 +553,12 @@
         if(Math.abs(Qx - Px) > 6) o.push('<path class="tt2-stri" d="M' + r1(Px) + ' ' + r1(Py) + 'H' + r1(Qx) + 'V' + r1(Qy) + '"/>');
         o.push('<g class="tt2-flag" transform="translate(' + r1(Qx) + ' ' + r1(Qy) + ')"><line x1="0" y1="0" x2="0" y2="-38"/><path d="M0 -38L18 -32L0 -26Z"/></g>');
       }
-      carAt(o, Px, Py, angOf(smooth ? m : isFinite(c.R) ? c.R : isFinite(c.L) ? c.L : 0, 1), 1);
       o.push('</g>');
+      carAt(o, Px, Py, angOf(carSlope(c, m, 1), 1), 1);
       if(q.ok && isFinite(sec)){
         var Qx2 = A.sx(q.x), Qy2 = A.sy(q.y);
         block(Qx2, Qy2, 20); block(Qx2 + 9, Qy2 - 32, 12);
-        if(!qInLens()) boxes.push([Qx2 - 44, Qy2 + 16, Qx2 + 44, Qy2 + 52]);
+        if(!qInLens()){ var qs = tagSideQ(); boxes.push(qs === 'down' ? [Qx2 - 50, Qy2 + 16, Qx2 + 50, Qy2 + 52] : qs === 'up' ? [Qx2 - 50, Qy2 - 52, Qx2 + 50, Qy2 - 16] : qs === 'right' ? [Qx2 + 16, Qy2 - 16, Qx2 + 120, Qy2 + 16] : [Qx2 - 120, Qy2 - 16, Qx2 - 16, Qy2 + 16]); }
         if(Math.abs(Qx2 - Px) > 40) label(o, 'h', 'tt2-c5', [[(Px + Qx2) / 2, Qy2 < Py ? Py + 17 : Py - 8, 'middle'], [(Px + Qx2) / 2, Qy2 < Py ? Py - 8 : Py + 17, 'middle']], A, 13);
         if(Math.abs(Qy2 - Py) > 30) label(o, 'Δy', 'tt2-c5', [[Qx2 + (S.h > 0 ? 9 : -9), (Py + Qy2) / 2 + 4, S.h > 0 ? 'start' : 'end'], [Qx2 + (S.h > 0 ? -9 : 9), (Py + Qy2) / 2 + 4, S.h > 0 ? 'end' : 'start']], A, 13);
       }
@@ -516,7 +567,11 @@
       if(LENS.show > 0.01 && q.ok){
         LENS.cx = Lg.cx; LENS.cy = Lg.cy; LENS.R = Lg.R;
         var k = 0.6 + 0.4 * LENS.show, R = Lg.R, Lm = lensMap(Lg);
-        boxes.push([Lg.cx - R - 8, Lg.cy - R - 8, Lg.cx + R + 8, Lg.cy + R + 30]);
+        var z = (R / LENS.w) / G.kx, zt = '×' + (z >= 10 ? String(+z.toPrecision(2)) : String(Math.max(1, Math.round(z))));
+        var zl = [];
+        if(qInLens() || lensWanted()){ var qlx = Lm.sx(q.x), qly = Lm.sy(q.y); block(qlx, qly, 24); boxes.push([qlx - 50, qly + 14, qlx + 50, qly + 52]); }
+        label(zl, 'zoom ' + zt, 'tt2-zoom', [[Lg.cx, Lg.cy + R + 19, 'middle'], [Lg.cx, Lg.cy - R - 9, 'middle'], [Lg.cx + R * 0.75, Lg.cy + R + 6, 'start'], [Lg.cx - R * 0.75, Lg.cy + R + 6, 'end']], A, 12.5);
+        boxes.push([Lg.cx - R - 8, Lg.cy - R - 8, Lg.cx + R + 8, Lg.cy + R + 8]);
         var g = ['<g class="tt2-lens" style="opacity:' + LENS.show.toFixed(3) + '" transform="translate(' + r1(Lg.cx) + ' ' + r1(Lg.cy) + ') scale(' + k.toFixed(3) + ') translate(' + r1(-Lg.cx) + ' ' + r1(-Lg.cy) + ')">'];
         // the two lines from the small ring at P to the glass
         var d = Math.hypot(Lg.cx - Px, Lg.cy - Py), ux = (Lg.cx - Px) / d, uy = (Lg.cy - Py) / d;
@@ -550,8 +605,7 @@
         if(isFinite(sec) && !S.qIn) g.push('<circle class="tt2-qdot" cx="' + r1(Lm.sx(q.x)) + '" cy="' + r1(Lm.sy(q.y)) + '" r="5"/>');
         g.push('</g>');
         g.push('<circle class="tt2-lens-rim" cx="' + r1(Lg.cx) + '" cy="' + r1(Lg.cy) + '" r="' + r1(R) + '"/>');
-        var z = (R / LENS.w) / G.kx, zt = '×' + (z >= 10 ? String(+z.toPrecision(2)) : String(Math.max(1, Math.round(z))));
-        g.push('<text class="tt2-lab tt2-zoom" x="' + r1(Lg.cx) + '" y="' + r1(Lg.cy + R + 19) + '" text-anchor="middle">' + esc('zoom ' + zt) + '</text>');
+        g.push(zl.join(''));
         g.push('</g>');
         o.push(g.join(''));
         // the clip circle follows the glass
@@ -612,10 +666,10 @@
     function validA(a){
       var F = S.F;
       a = clamp(a, F.x[0], F.x[1]);
-      if(isFinite(F.f(a))) return a;
+      if(inWin(a)) return a;
       var lo = S.a, hi = a;
-      if(!isFinite(F.f(lo))) return null;
-      for(var k = 0; k < 40; k++){ var mid = (lo + hi) / 2; if(isFinite(F.f(mid))) lo = mid; else hi = mid; }
+      if(!inWin(lo)) return null;
+      for(var k = 0; k < 40; k++){ var mid = (lo + hi) / 2; if(inWin(mid)) lo = mid; else hi = mid; }
       return M.round(lo, 4);
     }
     function stepA(){ var span = S.F.x[1] - S.F.x[0], st = span / 120; return st > 0.04 ? 0.05 : st > 0.004 ? 0.005 : 0.0005; }
@@ -633,12 +687,13 @@
         var sp = specials().filter(function(x){ return (x - v) * (x - to) < 0 || Math.abs(x - to) < st / 2; });
         if(sp.length) to = sp.sort(function(p, q){ return Math.abs(p - v) - Math.abs(q - v); })[0];
         else to = M.round(Math.round(to / st) * st, 5);
-        if(k === 'Home' || k === 'End'){ to = k === 'Home' ? F.x[0] : F.x[1]; for(var i = 0; i < 400 && !isFinite(F.f(to)); i++) to += (k === 'Home' ? 1 : -1) * (F.x[1] - F.x[0]) / 400; to = M.round(to, 4); }
+        if(k === 'Home' || k === 'End'){ to = k === 'Home' ? F.x[0] : F.x[1]; for(var i = 0; i < 400 && !inWin(to); i++) to += (k === 'Home' ? 1 : -1) * (F.x[1] - F.x[0]) / 400; to = M.round(to, 4); }
         return validA(to);
       },
       valuetext: function(v){ var c = S.cls || {}, m = slopeNow(); return 'x = ' + sv(v) + ', f(x) = ' + fmtN(S.F.f(v), 3) + (c.kind === 'smooth' && isFinite(m) ? ', slope ' + fmtN(m) : ', no slope here'); },
       tag: function(){ if(S.tab !== 'slope') return ''; var c = S.cls || {}, m = slopeNow(); return c.kind === 'smooth' && isFinite(m) ? 'slope ' + fmtN(m) : 'no slope'; },
       tagSide: function(){ return tagSideP(); },
+      bounds: function(){ return G ? [G.A.L + 2, G.A.T, G.A.R - 2, G.A.B] : null; },
       onStart: function(){ userActs(); },
       onInput: function(v){ moveP(v); },
       onEnd: function(){ say(cause.text()); refLater(); } });
@@ -651,10 +706,14 @@
         return x >= G.A.x[0] && x <= G.A.x[1] && y >= G.A.y[0] && y <= G.A.y[1] ? [G.A.sx(x), G.A.sy(y)] : null;
       },
       dir: function(){ var q = qPoint(), sec = q.ok ? (q.y - fa()) / S.h : 0; return G ? angOf(isFinite(sec) ? sec : 0) * 180 / Math.PI : 0; },
-      pick: function(x){
+      pick: function(x, y){
         if(!G) return null;
         var h;
-        if(S.qIn){ var px = LENS.R / LENS.frozen; h = clamp((x - LENS.cx) / px, -LENS.frozen, LENS.frozen); }
+        if(S.qIn){
+          // in the glass: along the line from P to where Q was, scaled from that h (the glass keeps its zoom meanwhile)
+          var q0 = LENS.q0, d2 = q0[0] * q0[0] + q0[1] * q0[1] || 1, pr = clamp(((x - LENS.cx) * q0[0] + (y - LENS.cy) * q0[1]) / d2, -2.2, 2.2);
+          h = LENS.h0 * pr;
+        }
         else h = G.A.ix(x) - S.a;
         return validH(snapH(h));
       },
@@ -670,8 +729,12 @@
       },
       valuetext: function(v){ var q = qPoint(), sec = q.ok ? (q.y - fa()) / v : NaN; return 'h = ' + hText(v) + (v > 0 ? ', Q to the right of P' : ', Q to the left of P') + (isFinite(sec) ? ', secant slope ' + fmtN(sec, 3) : ', Q is off the curve'); },
       tag: function(v){ return S.tab === 'secant' ? 'h = ' + hText(v) : ''; },
-      tagSide: function(){ return 'down'; },
-      onStart: function(){ userActs(); S.qIn = qInLens(); if(S.qIn) LENS.frozen = LENS.w; },
+      tagSide: function(){ return tagSideQ(); },
+      bounds: function(){ return G ? (qInLens() ? [LENS.cx - LENS.R, 0, LENS.cx + LENS.R, 0] : [G.A.L + 2, G.A.T, G.A.R - 2, G.A.B]) : null; },
+      onStart: function(){
+        userActs(); S.qIn = qInLens();
+        if(S.qIn){ LENS.frozen = LENS.w; var Lm = lensMap({ cx: LENS.cx, cy: LENS.cy, R: LENS.R }), q = qPoint(); LENS.q0 = [Lm.sx(q.x) - LENS.cx, Lm.sy(q.y) - LENS.cy]; LENS.h0 = S.h; }
+      },
       onInput: function(v){ setH(v); },
       onEnd: function(){ var was = S.qIn; S.qIn = false; LENS.frozen = null; if(was || lensWanted()) glide(); kick(); say(cause.text()); refLater(); } });
     function qInLens(){ return S.tab === 'secant' && LENS.show > 0.5 && (S.qIn || (!hq || !hq.dragging() ? lensWanted() : false)); }
@@ -685,9 +748,7 @@
     function hmax(){ return Math.min(TT.HMAX * 2, (S.F.x[1] - S.F.x[0]) * 0.8); }
     function validH(h){
       h = clamp(h, -hmax(), hmax());
-      var x = S.a + h, y = S.F.f(x);
-      if(!isFinite(y) || x < S.F.x[0] || x > S.F.x[1]) return null;
-      return h;
+      return inWin(S.a + h) ? h : null;
     }
     function glide(){ hq.el.classList.add('is-glide'); setTimeout(function(){ hq.el.classList.remove('is-glide'); }, 340); }
 
@@ -718,8 +779,10 @@
     function setF(F, how){
       fade();
       drive.stop(); slide.stop();
-      S.F = F; S.a = F.a; S.h = F.h || 1; S.trace = []; S.dir = 1; S.took = null; S.driveV = 0; S.slideV = 0;
-      LENS.show = 0; LENS.w = 2.2 * Math.abs(S.h);
+      S.F = F; S.a = F.a; S.h = F.h || 1;
+      if(pick.value !== (F.custom ? 'custom' : F.id) && !F.custom) pick.value = F.id; S.trace = []; S.dir = 1; S.took = null; S.driveV = 0; S.slideV = 0;
+      LENS.show = 0; LENS.w = lensTarget();
+      if(!inWin(S.a)){ for(var i = 0; i <= 200; i++){ var x = F.x[0] + (F.x[1] - F.x[0]) * (i % 2 ? 0.5 + i / 400 : 0.5 - i / 400); if(inWin(x) && inWin(x + 0.5)){ S.a = M.round(x, 2); break; } } }
       recompute(); addVisit(S.a, S.a);
       hp.value(S.a); hq.value(S.h);
       layout(); drive.paint(); slide.paint();
@@ -730,7 +793,7 @@
       if(v === S.tab) return;
       fade();
       drive.stop(); slide.stop(); tour.stop(); tour2.stop();
-      S.tab = v; S.took = null; LENS.show = 0; LENS.w = 2.2 * Math.abs(S.h);
+      S.tab = v; S.took = null; LENS.show = 0; LENS.w = lensTarget();
       head.purpose(v === 'slope' ? 'The derivative is the slope of the curve at each point.' : 'The secant turns into the tangent as h goes to 0.');
       drive.el.hidden = v !== 'slope'; slide.el.hidden = v !== 'secant';
       hq.hide(v !== 'secant');
@@ -757,7 +820,7 @@
       var want = lensWanted() ? 1 : 0, red = K.reduced(), busy = false;
       if(red) LENS.show = want;
       else if(Math.abs(LENS.show - want) > 0.001){ LENS.show += (want - LENS.show) * Math.min(1, dt * 12); if(Math.abs(LENS.show - want) < 0.01) LENS.show = want; busy = true; }
-      var target = LENS.frozen != null ? LENS.frozen : 2.2 * Math.abs(S.h);
+      var target = LENS.frozen != null ? LENS.frozen : lensTarget();
       if(LENS.show === 0 || red || slide.playing()) LENS.w = target;
       else if(Math.abs(Math.log(LENS.w / target)) > 0.002){ LENS.w = Math.exp(Math.log(LENS.w) + (Math.log(target) - Math.log(LENS.w)) * Math.min(1, dt * 9)); busy = true; }
       else LENS.w = target;
@@ -770,9 +833,8 @@
     function driveStart(){
       userActs(); hideCue(true); tourDid('drive');
       var F = S.F, x0 = F.x[0], x1 = F.x[1];
-      for(var i = 0; i <= 400 && !isFinite(F.f(x0)); i++) x0 += (F.x[1] - F.x[0]) / 400;
-      for(var j = 0; j <= 400 && !isFinite(F.f(x1)); j++) x1 -= (F.x[1] - F.x[0]) / 400;
-      var pad = (F.x[1] - F.x[0]) * 0.01;
+      for(var i = 0; i <= 400 && !inWin(x0); i++) x0 += (F.x[1] - F.x[0]) / 400;
+      for(var j = 0; j <= 400 && !inWin(x1); j++) x1 -= (F.x[1] - F.x[0]) / 400;
       D = { x0: M.round(x0, 4), x1: M.round(x1, 4), lo: M.round(x0, 4), hi: M.round(x1, 4) };
       if(K.reduced()) fade();
       S.trace = []; S.driveV = 0; S.dir = 1;
@@ -812,7 +874,7 @@
       h = snapH(h);
       if(validH(h) == null) return;
       S.h = h; hq.value(h);
-      LENS.w = 2.2 * Math.abs(h);
+      LENS.w = lensTarget();
       kick(); draw();
     }
     function slideEnd(){
@@ -826,8 +888,16 @@
     }
 
     /* ---------------------------------------------------- the first visit cue and "Show me how" */
-    var cue = K.cue(layer, { key: 'apcalc-tangent-tracer', text: 'Drag P along the road', side: 'left',
-      at: function(){ return G ? [G.A.sx(S.a) - 16, G.A.sy(fa())] : [0, 0]; } });
+    var cueO = { key: 'apcalc-tangent-tracer', text: 'Drag P along the road', side: 'left',
+      at: function(){ return G ? [G.A.sx(S.a) - 16, G.A.sy(fa())] : [0, 0]; } };
+    var cue = K.cue(layer, cueO);
+    function cueShow(){ if(!G) return; cueO.text = G.A.sx(S.a) - G.A.L > 270 ? 'Drag P along the road' : 'Drag P'; if(cue.show()) draw(); }
+    /* the cue is a thing on the picture too: labels keep clear of it */
+    function blockCue(){
+      var c = cue.active() && scene.querySelector('.tk2-cue'); if(!c) return;
+      var r = c.getBoundingClientRect(), sr = scene.getBoundingClientRect(), k = layer.scale() || 1;
+      boxes.push([(r.left - sr.left) / k, (r.top - sr.top) / k, (r.right - sr.left) / k, (r.bottom - sr.top) / k]);
+    }
     function hideCue(used){ if(cue.active()) cue.hide(used); }
     stage.addEventListener('keydown', function(e){ if(/^(Arrow|Page|Home|End)/.test(e.key)) hideCue(true); }, true);
     var tour = K.tour({ key: 'apcalc-tangent-tracer', label: 'Show me how', steps: [
@@ -947,12 +1017,12 @@
       head.purpose('The derivative is the slope of the curve at each point.');
       slide.el.hidden = true; hq.hide(true);
       refHtml(); layout();
-      setTimeout(function(){ layout(); if(S.mode === 'explore' && !tour.active()) cue.show(); }, 60);
+      setTimeout(function(){ layout(); if(S.mode === 'explore' && !tour.active()) cueShow(); }, 60);
     }
     function shown(m){
       S.mode = m;
       if(m !== 'explore'){ drive.stop(); slide.stop(); tour.stop(); tour2.stop(); hideCue(false); return; }
-      setTimeout(function(){ layout(); if(!tour.active() && !tour2.active()) cue.show(); }, 40);
+      setTimeout(function(){ layout(); if(!tour.active() && !tour2.active() && S.tab === 'slope') cueShow(); }, 40);
     }
     return {
       kit2: function(pane, s){ LS = s; boot(); return { stage: stage, ref: ref }; },
@@ -960,7 +1030,7 @@
       shown: shown, stop: function(){ drive.stop(); slide.stop(); },
       redraw: function(){ layout(); },
       // for the sweep test and the browser checks only
-      _t: { S: S, LENS: LENS, G: function(){ return G; }, hp: hp, hq: hq, drive: drive, slide: slide, cause: cause, setF: setF, setTab: setTab, moveP: function(v){ hp.value(v, true); }, setH: function(v){ hq.value(v, true); } }
+      _t: { FUNCS: TT.FUNCS, S: S, LENS: LENS, G: function(){ return G; }, hp: hp, hq: hq, drive: drive, slide: slide, cause: cause, setF: setF, setTab: setTab, moveP: function(v){ hp.value(v, true); }, setH: function(v){ hq.value(v, true); } }
     };
   }
 

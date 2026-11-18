@@ -295,3 +295,4 @@
 .tt2-qdot{fill:var(--white);stroke:var(--tt-sec);stroke-width:3;}
 .tt2-ref .tt2-howref{margin:0 0 10px;}
 .tt2-fade{pointer-events:none;}
+@media (max-width:640px){ .tt2 .tk2-cause{min-height:72px;align-content:flex-start;} }

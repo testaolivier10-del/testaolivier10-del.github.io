@@ -37,7 +37,7 @@
                                     real range input. tag(v): a short text beside the knob ("3 sacks").
    K.handle(layer, { key, label, value, min, max, step, at(v) -> [x, y], pick(x, y, v) -> v | null, dir(v) -> deg,
            keys(v, key, shift) -> v | null | undefined, valuetext(v), tag(v), tagSide(v) -> 'up' | 'down' | 'left' |
-           'right', onStart(v), onInput(v), onEnd(v), hint, chip, quiet, beforeLabel })
+           'right', bounds(v) -> [x0, y0, x1, y1], onStart(v), onInput(v), onEnd(v), hint, chip, quiet, beforeLabel })
                 -> { el, knob, value(v?, fire), grab(event), dragging(), place(), hide(on), before(v | null) }
                                     GRAPH EXPLORERS (first: AP® Calculus AB Tangent tracer). A point the student drags
                                     on the picture itself: a point on a curve, on an axis, in an inset. The tool owns
@@ -48,7 +48,8 @@
                                     role="slider": arrows step, Shift and Page Up / Down ten steps, Home / End the ends;
                                     keys() replaces that (return undefined for the default). grab(e) starts a drag
                                     from the tool's own pointerdown (a press on the curve away from the knob). tag(v):
-                                    a short text by the knob. before(v): a small tick where the change began, named
+                                    a short text by the knob (bounds(): a tag above or below slides sideways to stay
+                                    inside that box). before(v): a small tick where the change began, named
                                     "before" once the knob is 58 px away (never a ghost of the shape); before(null)
                                     clears it. quiet: a secondary point (small plain knob, no pulse).
    K.tap(layer, { key, label, box: [x, y, w, h], pressed, onClick, hint, chip }) -> { el, place(box), pressed(on?) }
@@ -291,7 +292,13 @@
       knob.setAttribute('aria-valuetext', o.valuetext ? o.valuetext(val) : String(val));
       var t = o.tag ? o.tag(val) : '';
       tag.textContent = t || ''; tag.hidden = !t;
-      if(t){ tag.style.left = q[0] + 'px'; tag.style.top = q[1] + 'px'; tag.className = 'tk2-tag is-' + ((o.tagSide && o.tagSide(val)) || 'up'); }
+      if(t){
+        var side = (o.tagSide && o.tagSide(val)) || 'up';
+        tag.style.left = q[0] + 'px'; tag.style.top = q[1] + 'px'; tag.className = 'tk2-tag is-' + side; tag.style.marginLeft = '';
+        // o.bounds(v) -> [x0, y0, x1, y1] (picture units): a tag above or below the knob slides sideways to stay inside
+        var bd = o.bounds && (side === 'up' || side === 'down') ? o.bounds(val) : null;
+        if(bd){ var k = layer.scale(), tw = tag.offsetWidth, l = q[0] - tw / 2, r = q[0] + tw / 2, dx = l < bd[0] * k ? bd[0] * k - l : r > bd[2] * k ? bd[2] * k - r : 0; if(dx) tag.style.marginLeft = dx.toFixed(1) + 'px'; }
+      }
       paintMark();
     }
     // the "before" tick: where the value was when this change began (a mark, never a moved handle)
