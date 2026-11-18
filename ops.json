@@ -68,9 +68,13 @@
   "2026-11-09 chat: Olivier watched the w1031 premium drafts and approved all three ('those are all good. and are approved'); rebuilds swapped in and approved with fingerprints. He wants people to move and look better, still all code: research in Project doc claude/levlprep-people-upgrade-research.md (3 phase plan for pipeline/people), waiting on his go to build phase 1.",
   "2026-11-08 weekly batch: analytics done (insights, test log, search doc, message sent). w1108 Shorts built (penny doubling AP Precalc, heat stroke NREMT EMT traps #3, hyperinflation AP Macro, Zeno paradox AP Calc BC) and fixed three times, but the final fresh eyes reviews were 7.5, 7.5, 7 and 7.5 (bar 8), so none were sent or queued. Code in pipeline/w1108, renders in the run's workspace only. Waiting on Olivier.",
   "2026-11-09 daily run (3:26pm PT): no failed runs. Sodium lake marked posted. Scheduled w1031 on Buffer at 3pm PT: cold heart 11-10, Phineas Gage 11-11, mirror mint 11-12 (TikTok and YouTube, no hashtags). Mirror mint related video set to orbitals (GDdECy1YAw4). yt-apchem-01 upload through Zapier was blocked by the session's permission check, so it stays approved with no youtube_id; next run retries (or Olivier uploads in Studio). TikTok: no new comments. YouTube: 1 new (Smart power on bomber holes), reply drafted.",
-  "2026-11-09 chat fix: no Short posted 11-09 (queue ran dry; w1108 batch held back by review bar, w1031 approved after the 3pm slot and scheduled from 11-10) and yt-apchem-01 upload was blocked by the daily run's permission check. Fixed by hand: uploaded yt-apchem-01 (3anWfhlw9Hw, thumb, playlist, captions done), posted cold heart now (YT u0GUoUPbkjg), Gage moved to 11-10, mint to 11-11. Still open: site video PR (5h), end screens, 11-12 onward has no Short queued."
+  "2026-11-09 chat fix: no Short posted 11-09 (queue ran dry; w1108 batch held back by review bar, w1031 approved after the 3pm slot and scheduled from 11-10) and yt-apchem-01 upload was blocked by the daily run's permission check. Fixed by hand: uploaded yt-apchem-01 (3anWfhlw9Hw, thumb, playlist, captions done), posted cold heart now (YT u0GUoUPbkjg), Gage moved to 11-10, mint to 11-11. Still open: site video PR (5h), end screens, 11-12 onward has no Short queued.",
+  "2026-11-18 midweek build: fired 8:40am PT; laptop dropped off the bridge about 10 minutes in; YouTube and site analytics done and insights written (partial); TikTok, Umami, Search Console, test log and the 3 Shorts not done; push refused.",
+  "2026-11-18 chat (11:30am PT): repo attached with push access and the four LevlPrep scheduled tasks recreated with it. Media branch caught up from claude/levlprep-queue-unpushed-2026-11-10 to 2026-11-18 (and the 11-17 thumbs doc): lightning triage, dive reflex, tide car and bank run marked posted with youtube_ids; yt-phys-01 and yt-calc-01 posted; comments and drafts from 11-17 added; dive reflex thumbnail committed from the laptop (the version set in Studio). Nothing was posted or scheduled by this catch-up. Great smog stays scheduled for 2026-11-18 23:00Z."
  ],
- "pending_reruns": [],
+ "pending_reruns": [
+  "LevlPrep midweek build"
+ ],
  "related_check_after": null,
  "comments_seen": [
   "yt:UgzKkSO9S4e721tY4O14AaABAg",
@@ -109,7 +113,26 @@
   "tt:frumley04:speed-camera:oh",
   "yt:Ugy4ScioSmZR8EEXeqB4AaABAg",
   "yt:UgzSY-q1kxnPout1RUB4AaABAg",
-  "tt:sandrocantotandyo:phineas-gage:i hate when this happens"
+  "tt:sandrocantotandyo:phineas-gage:i hate when this happens",
+  "yt:UgzSh7uTsQA-k7K5DFd4AaABAg",
+  "yt:UgyXiM-8WxdaMrBqcIV4AaABAg",
+  "yt:UgzmW4qMayzBA6gG3LR4AaABAg",
+  "tt:ameliaearhart639:monty-hall:probability with possibility",
+  "tt:miles.2471:tag kate",
+  "tt:bonnie_1627:firework-blue:almost impossible",
+  "tt:theoneandonlysvp3rn0va:firework-blue:soul sand",
+  "tt:xtrern:firework-blue:why is blue the hardest",
+  "tt:izons5:firework-blue:lapis lazuli",
+  "tt:mrtwinkle09:firework-blue:why is blue so hard",
+  "tt:fer.m282:firework-blue:lol",
+  "tt:bigmace22567:firework-blue:lapis",
+  "tt:catgirly00:lightning-triage:why would not breathing wait",
+  "tt:lerman_3:phineas-gage:tags",
+  "tt:the_onlypreston:firework-blue:ty hs chem",
+  "tt:g10_232:firework-blue:minecraft",
+  "tt:leolanyc:firework-blue:sky is blue",
+  "tt:duiat17:firework-blue:blue paint",
+  "tt:lucas_v0821:firework-blue:emojis"
  ],
  "comment_drafts": [
   {
@@ -285,6 +308,80 @@
    "comment": "I hate when this happens",
    "reply": "Right? Ruins the whole workday.",
    "status": "drafted 2026-11-11"
+  },
+  {
+   "platform": "tiktok",
+   "video": "w1109-02-firework-blue",
+   "author": "xtrern",
+   "comment": "Why is blue the hardest color to make bro (follow up in replies: why is blue ALWAYS the hardest, like with the LED)",
+   "reply": "Good question. Blue light carries more energy than red or green, so it takes a bigger energy jump to make, and the materials that can do it are harder to keep stable. In fireworks the copper compound falls apart if the flame gets too hot, and blue LEDs needed a crystal that took decades to grow well.",
+   "status": "drafted 2026-11-17"
+  },
+  {
+   "platform": "tiktok",
+   "video": "w1109-02-firework-blue",
+   "author": "mrtwinkle09",
+   "comment": "Why is blue so hard (4 replies under it not read yet; read them before posting)",
+   "reply": "The blue comes from a copper compound that only glows blue in a narrow temperature range. Too hot and it breaks apart, too cool and it's dim.",
+   "status": "drafted 2026-11-17"
+  },
+  {
+   "platform": "tiktok",
+   "video": "w1109-02-firework-blue",
+   "author": "g10_232",
+   "comment": "but in minecraft is easy",
+   "reply": "Minecraft skipped the chemistry. Real blue needs copper and a flame that isn't too hot.",
+   "status": "drafted 2026-11-17"
+  },
+  {
+   "platform": "tiktok",
+   "video": "w1109-02-firework-blue",
+   "author": "leolanyc",
+   "comment": "But da sky is blue so u won't be able to see it",
+   "reply": "Good thing they launch them at night.",
+   "status": "drafted 2026-11-17"
+  },
+  {
+   "platform": "tiktok",
+   "video": "w1109-02-firework-blue",
+   "author": "duiat17",
+   "comment": "Just put blue paint in it",
+   "reply": "If only. Paint just burns up, so the color has to come from the metal itself.",
+   "status": "drafted 2026-11-17"
+  },
+  {
+   "platform": "tiktok",
+   "video": "w1109-02-firework-blue",
+   "author": "the_onlypreston",
+   "comment": "ty hs chem for teaching me dis",
+   "reply": "Love to hear it. Those flame tests finally paid off.",
+   "status": "drafted 2026-11-17"
+  },
+  {
+   "platform": "tiktok",
+   "video": "w1109-01-monty-hall",
+   "author": "ameliaearhart639",
+   "comment": "She was confusing probability with possibility",
+   "reply": "Nice way to put it. Two doors left feels like fifty fifty, but the odds were set when she first picked.",
+   "status": "drafted 2026-11-17"
+  },
+  {
+   "platform": "youtube",
+   "video": "w1109-02-firework-blue",
+   "author": "@DronBinani",
+   "comment": "Uranium?",
+   "reply": "Good guess, but no uranium here. The blue comes from copper, and it only works if the flame stays cool enough to keep the copper compound together.",
+   "status": "drafted 2026-11-17",
+   "youtube_id": "6r5JJI50qBA"
+  },
+  {
+   "platform": "youtube",
+   "video": "w1101-02-guard-faint",
+   "author": "@rago227",
+   "comment": "Who made these stupid rules that soldiers should stand still",
+   "reply": "Fair question. It's an old ceremonial tradition, and guards are taught tricks like flexing their calves and not locking their knees to keep blood moving.",
+   "status": "drafted 2026-11-17",
+   "youtube_id": "GiXcyqM7gig"
   }
  ],
  "series_counts": {
