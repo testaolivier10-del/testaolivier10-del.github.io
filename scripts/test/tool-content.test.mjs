@@ -428,7 +428,17 @@ test('conformations v2: the ring flip keeps every bond length, swaps every posit
   { const t12 = M.chair(ringOf([0, 'Me', 'up'], [1, 'Me', 'down']), 0), ee = t12.pair.a.total < t12.pair.b.total ? 0 : 1;
     assert.equal(chainText(M.chair(ringOf([0, 'Me', 'up'], [1, 'Me', 'down']), ee).chain), 'Both equatorial | gauche: 0.9 kcal/mol | 98.55% of molecules');
     assert.equal(best(ringOf([0, 'Me', 'up'], [1, 'Et', 'down'])), 0.9, 'any two neighboring groups pay the flat gauche estimate');
-    assert.equal(best(ringOf([0, 'Ph', 'up'], [1, 'Br', 'down'])), 0.9, 'so no trans-1,2 diequatorial chair "costs 0.00"'); }
+    assert.equal(best(ringOf([0, 'Ph', 'up'], [1, 'Br', 'down'])), 0.9, 'a carbon group beside anything pays it');
+    assert.equal(best(ringOf([0, 'Me', 'up'], [1, 'OH', 'down'])), 0.9, 'CH3/OH: one carbon group is enough');
+    // two polar neighbors are not costed and not drawn as strained (tab 1 teaches F/F and OH/OH prefer gauche)
+    for(const [g, ax] of [['F', 0.5], ['OH', 1.74], ['Cl', 0.86]]){
+      const r = ringOf([0, g, 'up'], [1, g, 'down']), pr = M.chair(r, 0).pair, ee = pr.a.axial.length ? pr.b : pr.a, aa = pr.a.axial.length ? pr.a : pr.b;
+      assert.equal(ee.total, 0, `${g}/${g} diequatorial: no cost`); assert.equal(ee.gauche.length, 0, `${g}/${g}: no glow pair`); assert.equal(ee.polar.length, 1);
+      assert.ok(Math.abs(aa.total - ax) < 1e-9, `${g}/${g} diaxial: the two A-values only (${aa.total})`);
+      assert.ok(ee.terms.some(t => /two polar neighbors, not estimated here/.test(t.text) && t.kcal === 0));
+      const end = pr.a.axial.length ? 1 : 0;
+      assert.match(chainText(M.chair(r, end).chain), /^Both equatorial \| no strain \| /);
+    } }
   /* The drill (Find the stable chair) draws one or two groups from eight, cis or trans, 1,2 / 1,3 / 1,4, never two
      halogens on neighboring carbons, and skips ties. For every such ring the better chair is the one it was
      before the gauche term existed (the term is the same in both chairs of a cis ring, and never outweighs two

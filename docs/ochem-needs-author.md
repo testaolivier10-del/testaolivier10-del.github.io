@@ -1166,15 +1166,16 @@ repulsion is drawn at gauche at all, since gauche is their lowest shape; it is d
 eclipse.
 - **Status:** open, low risk.
 
-### conf-v2-vicinal: every pair of groups on neighboring ring carbons pays a flat 0.9 kcal/mol gauche cost
-`chairEnergy()` adds 0.9 kcal/mol for two groups on neighboring ring carbons unless both are axial. 0.9 is the
-measured CH₃/CH₃ value (OpenStax Organic Chemistry 4.8); since review recheck 2 it is also used, as a flat estimate
-and labelled so in the term table, for every other pair (ethyl, isopropyl, tert-butyl, phenyl, OH, halogens), so
-that Explore and the drill never say a trans-1,2 diequatorial chair "costs 0.00". Real values differ by pair (and
-for two polar groups a dipole term can outweigh it: see "tools-review-dihalide"). The chair that wins is the same as
-without the term for every ring the drill draws (unit tested over all of them). In the ring builder two small
-groups can now tip toward diaxial: trans-1,2 F/F reads diaxial 0.5 against diequatorial 0.9.
-- **Status:** open, owner decision: per-pair values, keep the flat estimate, or cost CH₃/CH₃ only.
+### conf-v2-vicinal: neighboring ring groups pay a flat 0.9 kcal/mol gauche cost when one is a carbon group
+`chairEnergy()` adds 0.9 kcal/mol for two groups on neighboring ring carbons, unless both are axial, when at least
+one of them is a carbon group (CH₃, Et, iPr, tBu, Ph). 0.9 is the measured CH₃/CH₃ value (OpenStax Organic
+Chemistry 4.8) and a flat estimate for the other carbon pairs (labelled so in the term table). Two heteroatom
+groups (F, Cl, Br, OH, OMe) are not costed and not drawn as strained; the term table says "two polar neighbors,
+not estimated here (dipoles and hydrogen bonds decide)", and the drill's feedback says "by A-values" (review
+recheck 3: tab 1 teaches that F/F and OH/OH prefer gauche). So trans-1,2 dihalides and diols read diequatorial
+"no strain", which is what A-values alone say; see also "tools-review-dihalide". The chair that wins is the same
+as without the term for every ring the drill draws (unit tested).
+- **Status:** open, owner decision: per-pair values, or leave.
 
 ### conf-v2-fluorine: F's A-value is 0.25
 The tool had 0.15; the lessons print 0.25 (`ochem/notes/axial-equatorial.html`). The tool now uses 0.25. Published

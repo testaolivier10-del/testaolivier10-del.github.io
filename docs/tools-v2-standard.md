@@ -52,6 +52,10 @@ decision made on the owner's behalf, so he can skim it later and reverse any of 
   AP® Biology opts in the same way (`"kit2": true` in `bio/data/pages.json`); its adapter is `ApBioTools.studioKit2`
   in `bio/assets/tools/bio-tools.js` (a tool hands over its stage, its "?" reference and its Test yourself parts).
   The purpose line and the cause line are in the kit (`K.head`, `K.cause`).
+- Organic Chemistry opts in with `kit2: true` on the tool in `ochem/assets/tools-registry.js` (the page builder
+  then writes the kit's two files and `ochem/assets/tools/<slug>.css` into the page); its adapter is
+  `OchemStudioKit.kit2` in `ochem/assets/tool-shell.js` (stage, "?" reference, Test yourself parts; the page's
+  Check yourself quiz becomes the last part). First sweep test: `scripts/tools-v2/conformations-sweep.mjs`.
 - One file preview of a tool page to open from disk: `node scripts/tool-preview.mjs <page.html> <out.html>`.
 - `docs/tools-v2-owner-log.md`: decisions made on the owner's behalf, one line each.
 - Write one brief per rebuilt tool under `docs/` (name it `tools-v2-<tool>-brief.md`) and list it here.
@@ -62,3 +66,4 @@ decision made on the owner's behalf, so he can skim it later and reverse any of 
 | --- | --- | --- |
 | AP® Environmental Science, Water pollution | Shipped 2026-11-17 | `docs/tools-v2-water-pollution-brief.md` |
 | AP® Biology, Osmosis | Built 2026-11-17, waiting for the independent review (not merged) | `docs/tools-v2-osmosis-brief.md` |
+| Organic Chemistry, Conformation Lab | Built 2026-11-17, in independent review (on `claude/tools-v2-conformations`) | `docs/tools-v2-conformations-brief.md` |

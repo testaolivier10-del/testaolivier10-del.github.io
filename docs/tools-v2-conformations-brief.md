@@ -368,3 +368,20 @@ Preview and shots regenerated; contact sheets of the sweep looked at (`/mnt/user
   left between them). The sweep's floor for "largest and at least 7% of the stage" passes; it is not the flagship.
 - Below 1000 px tab 1's model has open wall to its right.
 - A name with no clear spot is dropped (the cause line still says it); on a 360 px phone names can sit on hydrogens.
+
+## Review recheck 3 (2026-11-18: layout passed; one science item) and the move to `claude/tools-v2-all`
+- **Polar neighbors are not costed.** The flat 0.9 kcal/mol gauche cost applies only when at least one of the two
+  neighboring groups is a carbon group (CH₃, Et, iPr, tBu, Ph). Two heteroatom groups (F, Cl, Br, OH, OMe) get no
+  cost and no glow; the term table in "?" has one line for them ("two polar neighbors, not estimated here (dipoles
+  and hydrogen bonds decide)", n/a); where that leaves a drill chair at 0.00 the feedback says "by A-values it
+  costs nothing. The two polar neighbors are not estimated here." Unit tested: trans-1,2 F/F, OH/OH, Cl/Cl
+  (diequatorial 0, diaxial the two A-values), CH₃/CH₃ and CH₃/OH (0.9), and the drill's winner for every ring it
+  can draw. This replaces decision 23.
+- **First visit cues** are placed by measurement: the first side of the handle where the whole bubble is inside
+  the picture and covers no name, number, inset or end chair. The bench under the small end chairs is 16 px
+  deeper so the cue has a clear row. The sweep now has a first visit state for both tabs at every width.
+- **Small end chairs** (below 1100 px) carry no letters; the sweep checks letters stay on their ball.
+- **Branch.** Nothing merges to main until every tool is done. This branch now sits on `claude/tools-v2-all`
+  (osmosis and `docs/tools-v2-builder-brief.md` included) as one commit series; the kit is that branch's plus the
+  one appended `K.cause` rule. Decisions are in `docs/tools-v2-owner-log.md` (23 lines).
+- Sweep: 1400 states, 11094 checks, 0 failures.
