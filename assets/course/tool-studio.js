@@ -45,6 +45,8 @@
                                     dock button. Why holds explanation only.
      footer   selector               the site footer, moved to the end of About
                                      (default: the page's footer elements)
+     use      true                   count this page as a tool though it is not in a tools/ folder (NREMT). Use
+                                    is counted by itself on every tool page: watchUse, near the end of this file
      quiz     ['test', 'review'] | true   which modes are a quiz (Practice / Test
                                     yourself). Default: quiz, practice, test,
                                     drill, predict, puzzle, chal, questions,
@@ -509,6 +511,7 @@
     var modeBtns = null, modesO = null;
     s.mode = function(v){
       if(v == null) return mode;
+      if(useOn && current === s) useOn.mode(v, mode);
       mode = v;
       if(modeBtns) modeBtns.forEach(function(b){ var on = b.getAttribute('data-v') === v; b.setAttribute('aria-pressed', String(on)); b.classList.toggle('on', on); });
       paintMode();
@@ -1588,6 +1591,8 @@
     });
 
     current = s;
+    // slim: a reference page (formula sheet), not a tool. opts.use: a tool page outside a tools/ folder (NREMT).
+    if(!slim) watchUse({ area: root, any: !!opts.use, mode: function(){ return mode; }, locked: function(){ return locked; } });
     setupModes(opts.modes);
     ['stage', 'dock', 'why', 'details', 'about'].forEach(function(r){ if(opts[r]) s.add(r, opts[r]); });
     s.caption(opts.caption || '');
@@ -1898,5 +1903,93 @@
   if(document.readyState !== 'complete'){ document.addEventListener('DOMContentLoaded', later); window.addEventListener('load', adopt); }
   else later();
 
-  window.LevlStudio = { mount: mount, stepper: stepper, searchSelect: searchSelect, stdKit: function(k){ stdKit = k || null; }, on: function(){ return !!current; }, get: function(){ return current; }, icon: icon };
+  /* ---------------- was the tool used (docs/analytics-plan.md, "Tool use")
+     Anonymous, the same for every tool: opened, first real touch, each mode switch, and one summary when the
+     page is first hidden (a time band and touched yes or no). It goes through LevlAnalytics, so the opt-out, Do Not
+     Track, the owner's browsers, automation and the Worker's bot filter all apply; nothing is sent until that
+     tracker is mounted (it never is under navigator.webdriver or a headless browser). Only fixed words leave the
+     page: the tool (course/page name), the frame, the mode name from the tool's own code, and bands. */
+  var USE_CHROME = '.ls-bar, .ls-modes, .ls-sheet, .ls-scrim, .ls-lockp, .ls-why, .ls-capmore, .ls-detbtn, .ls-enl, .ls-zbar, .nx-slim-bar, a[href]';
+  var USE_SKIP_KEYS = /^(Tab|Shift|Control|Alt|AltGraph|Meta|OS|Escape|CapsLock|NumLock|ScrollLock|ContextMenu|PrintScreen|F\d{1,2})$/;
+  var USE_MODES_MAX = 6;
+  var useKit = {
+    band: function(secs){ secs = Number(secs) || 0; return secs < 10 ? '<10s' : secs < 60 ? '10-60s' : secs < 300 ? '1-5m' : '5m+'; },
+    // Inside the tool (stage, dock, side panel), not the frame around it (bar, modes, "?", sheets, the lock card, links out).
+    inTool: function(el, area){ return !!(el && el.closest && area && area.contains(el) && !el.closest(USE_CHROME)); },
+    // A key that does something in a tool: not moving focus, not a bare modifier, not a browser shortcut.
+    realKey: function(e){ return !!e && !e.ctrlKey && !e.metaKey && !e.altKey && !!e.key && !USE_SKIP_KEYS.test(e.key); },
+    mode: function(v){ v = String(v == null ? '' : v).toLowerCase(); return /^[a-z0-9-]{1,24}$/.test(v) ? v : v ? 'other' : 'none'; },
+    // '/environmental-science/tools/water-pollution.html' -> 'water-pollution'; a page outside tools/ only when asked (NREMT).
+    slug: function(path, any){ var m = /\/(tools\/)?([a-z0-9-]{1,48})(?:\.html)?$/.exec(String(path || '').toLowerCase()); return m && (m[1] || any) ? m[2] : ''; }
+  };
+  var useOn = null;
+  function watchUse(o){
+    o = o || {};
+    if(useOn || !o.area) return useOn;
+    var slug = useKit.slug(location.pathname, o.any);
+    if(!slug) return null;
+    var t0 = Date.now(), opened = false, touched = false, down = false, summed = false, nModes = 0, queue = [], tries = 0, lastInput = 0;
+    function A(){ var a = window.LevlAnalytics; return a && window.__levlAnalyticsMounted && !(a._automated && a._automated()) ? a : null; }
+    function base(){
+      var a = window.LevlAnalytics, c = a && a._courseOf ? a._courseOf(location.pathname) : '';
+      return { tool: (c || 'site') + '/' + slug, course: c || 'site', frame: window.LevlKit2 ? 'v2' : 'old' };
+    }
+    function add(d, more){ for(var k in more) d[k] = more[k]; return d; }
+    function pump(){
+      var a = A();
+      if(!a) return false;
+      var q = queue; queue = [];
+      q.forEach(function(e){ a.event(e.name, add(base(), e.data)); });
+      return true;
+    }
+    function say(name, data){ queue.push({ name: name, data: data }); pump(); }
+    function modeNow(){ return useKit.mode(o.mode ? o.mode() : ''); }
+    // The tracker loads after the page is drawn: hold what happened until it is there (about 20 s, then give up).
+    function wait(){ if(!pump() && tries++ < 10) setTimeout(wait, 2000); }
+    // Opened: said a moment after the mount (a Premium tool's lock card arrives just after it), or with the first
+    // touch or the summary when those come sooner.
+    function open(){ if(!opened){ opened = true; queue.unshift({ name: 'tool-open', data: { locked: o.locked && o.locked() ? 'yes' : 'no' } }); } }
+    setTimeout(function(){ open(); wait(); }, 1500);
+
+    function touch(){
+      if(touched || (o.locked && o.locked())) return;
+      touched = true;
+      open();
+      say('tool-touch', { mode: modeNow() });
+    }
+    // A finger that starts a scroll ends in pointercancel, not pointerup: only a finished press counts.
+    document.addEventListener('pointerdown', function(e){ down = e.isTrusted !== false && useKit.inTool(e.target, o.area); }, true);
+    document.addEventListener('pointercancel', function(){ down = false; }, true);
+    document.addEventListener('pointerup', function(e){ if(e.isTrusted !== false) lastInput = Date.now(); if(down){ down = false; touch(); } }, true);
+    document.addEventListener('keydown', function(e){
+      if(e.isTrusted === false) return;
+      lastInput = Date.now();
+      if(useKit.realKey(e) && useKit.inTool(e.target, o.area)) touch();
+    }, true);
+
+    function sum(){
+      if(summed) return;
+      var a = A();
+      if(!a) return;
+      summed = true;
+      open();
+      pump();
+      var b = base(), d = { touched: touched ? 'yes' : 'no', time: useKit.band((Date.now() - t0) / 1000), mode: modeNow(), locked: o.locked && o.locked() ? 'yes' : 'no' };
+      // row: the same facts in one value, so one list in Umami (or scripts/tool-use-report.mjs) is the whole table.
+      d.row = [b.tool, b.frame, d.touched, d.time].join(' ');
+      a._beacon('tool-use', add(b, d));
+    }
+    document.addEventListener('visibilitychange', function(){ if(document.visibilityState === 'hidden') sum(); });
+    window.addEventListener('pagehide', sum);
+
+    useOn = {
+      // A switch the student made: it follows a press or a key within a second (a tool setting its first mode, or
+      // restoring one from the link, is not a switch). A few per visit at most.
+      mode: function(v, was){ if(was != null && v !== was && Date.now() - lastInput < 1000 && nModes++ < USE_MODES_MAX) say('tool-mode', { mode: useKit.mode(v), row: base().tool + ' ' + useKit.mode(v) }); }
+    };
+    return useOn;
+  }
+
+  window.LevlStudio = { mount: mount, stepper: stepper, searchSelect: searchSelect, stdKit: function(k){ stdKit = k || null; }, on: function(){ return !!current; }, get: function(){ return current; }, icon: icon,
+    use: watchUse, _use: useKit };
 })();

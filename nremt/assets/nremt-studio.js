@@ -63,6 +63,7 @@
     opts.host = wrap || undefined;
     opts.footer = foot ? [foot] : [];
     opts.about = about.children.length ? about : null;
+    opts.use = true; // counted as a tool though it is not in a tools/ folder (tool-studio.js, watchUse)
     opts.menu = o.menu || { copyLink: true, report: { course: 'nremt', id: 'tool:' + o.slug }, note: o.note || null };
     var s = window.LevlStudio.mount(opts);
     s.root.classList.add('nx-ls', 'nx-' + o.slug);
@@ -105,6 +106,7 @@
     wrap.classList.add('nx-slim');
     var head = wrap.querySelector(':scope > .page-head');
     if(head) head.classList.add('nx-slim-head');
+    if(window.LevlStudio && window.LevlStudio.use) window.LevlStudio.use({ area: wrap, any: true });
     // site-chrome.js pointed the skip link at the wrapper; the bar sits above it, so that stays right.
     return { bar: bar, wrap: wrap };
   }

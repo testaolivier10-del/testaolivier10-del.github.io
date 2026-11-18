@@ -193,7 +193,8 @@ choices on teacher printed tests, Env Sci length cues, tally fixes), live answer
 ## Analytics
 
 `docs/analytics-plan.md` is the status file: the Umami proxy and bot filter, first-touch source, question tallies
-(`question_stats`), exam-quit, read depth and the rest, plus how to verify and read them.
+(`question_stats`), exam-quit, read depth, tool use (`tool-open`, `tool-touch`, `tool-mode`, `tool-use`) and the rest, plus
+how to verify and read them.
 
 ## Video lessons
 
