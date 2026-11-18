@@ -865,7 +865,7 @@
         'tree-reading': 'Trees & characters', 'design-drills': 'All drills', 'osmosis': 'Numbers & how it works' })[slug] || 'Data & settings',
       menu: {
         copyLink: function(){
-          var code = s.mode() === 'practice' ? s.root.querySelector('.ls-prac-code .bt-code b') : null;
+          var code = s.mode() === 'practice' || s.kit2 && s.kit2.mode() === 'quiz' && s.kit2.part() === 'practice' ? s.root.querySelector('.ls-prac-code .bt-code b') : null;
           return code ? location.origin + location.pathname + '?seed=' + code.textContent : location.origin + location.pathname;
         },
         report: { course: 'apbio', id: 'tool:' + slug },
@@ -934,9 +934,11 @@
       area.lsSync = function(){ pick.value(lp.value()); };
       if(modes) modes.hidden = true;
     }
+    var lastTask = null, lastDone = null, lastPills = [];
     function fresh(){
       var slot = area.querySelector(':scope > .bt-stage-slot');
       if(!slot) return;
+      lastDone = null; lastPills = [];
       stage.innerHTML = '';
       why.innerHTML = std ? '' : '<h3 class="ls-title-l">Worked solution</h3><p class="ls-sub">It appears here after you check your answers.</p>';
       if(std) s.done(false, m);
@@ -961,8 +963,9 @@
         done: function(){ return form.classList.contains('bt-finished'); } });
       if(std){
         var n = +(area.getAttribute('data-parts') || 0);
-        s.task({ kicker: pick ? (pick.value() === 'practice' ? 'Practice problem' : 'Worked problem') : 'Problem', title: longT(esc(text)),
-          todo: n > 1 ? 'Answer one part at a time.' : 'Answer, then Check.' }, m);
+        lastTask = { kicker: pick ? (pick.value() === 'practice' ? 'Practice problem' : 'Worked problem') : 'Problem', title: longT(esc(text)),
+          todo: n > 1 ? 'Answer one part at a time.' : 'Answer, then Check.' };
+        s.task(lastTask, m);
         s.caption('', m);
       } else s.caption(esc(text), m);
       s.pills([], 'left', m);
@@ -973,7 +976,8 @@
       why.innerHTML = '';
       why.appendChild(sol);
       var mm = /(\d+) of (\d+)/.exec(t);
-      if(mm) s.pills([{ html: mm[1] + ' of ' + mm[2] + ' right', tone: mm[1] === mm[2] ? 'good' : 'warn' }], 'left', m);
+      lastPills = mm ? [{ html: mm[1] + ' of ' + mm[2] + ' right', tone: mm[1] === mm[2] ? 'good' : 'warn' }] : [];
+      if(mm) s.pills(lastPills, 'left', m);
       var nx = area.querySelector('.bt-next .btn-press');
       if(nx) nx.classList.add('ls-btn', 'ls-pri');
       if(std){
@@ -988,9 +992,10 @@
         links.push({ label: 'Review your answers', onClick: function(){ s.done(false, m); } });
         if(les) links.push({ label: 'Read the lesson: ' + les.textContent.replace(/^\s*Lesson\s*/, '').trim(), href: les.getAttribute('href') });
         var all = mm && mm[1] === mm[2];
-        s.done({ kicker: all ? 'Solved' : 'Finished', title: mm ? esc(mm[1] + ' of ' + mm[2] + ' parts right the first time.') : 'Finished.',
+        lastDone = { kicker: all ? 'Solved' : 'Finished', title: mm ? esc(mm[1] + ' of ' + mm[2] + ' parts right the first time.') : 'Finished.',
           text: all ? 'Every part right on the first try.' : endP ? esc(endP.textContent) : 'The worked solution shows each part.',
-          next: again ? { label: again.textContent, onClick: function(){ again.click(); } } : null, links: links }, m);
+          next: again ? { label: again.textContent, onClick: function(){ again.click(); } } : null, links: links };
+        s.done(lastDone, m);
         return;
       }
       s.caption((mm ? '<b>' + mm[1] + ' of ' + mm[2] + ' parts right the first time.</b> ' : '') + 'The worked solution is under Why.', m);
@@ -998,6 +1003,11 @@
     if(window.MutationObserver) new MutationObserver(fresh).observe(area, { childList: true });
     area.addEventListener('bt-skill-done', function(){ setTimeout(checked, 0); });
     fresh();
+    // kit2 (studioKit2): the practice shares Test yourself with other parts. els: what to hide while another part
+    // shows; leave() clears its card and pill; back() puts its head (or its finished card) back.
+    return { els: [stage, area, why, det].concat(pick ? [pick.el] : []),
+      leave: function(){ if(std) s.done(false, m); s.pills([], 'left', m); },
+      back: function(){ if(lastTask){ s.task(lastTask, m); s.caption('', m); } s.pills(lastPills, 'left', m); if(std && lastDone) s.done(lastDone, m); } };
   }
 
   /* ------------------------------------------ Tool Studio: simulators */
@@ -1344,6 +1354,10 @@
        o.ref      element   the reference behind "?" (how the model works, numbers, links).
        o.parts    [{ value, label, dock: element, task: { kicker, title, todo } | fn }]   TEST YOURSELF parts that
                             ask on the same picture: the question goes in the side panel (dock).
+                            A part with practice: { area, modes } instead of dock holds a skills tool's generated
+                            problems (skillTool's .bt-problem and .bt-modes): it keeps its own stage (the problem's
+                            figure), its "Problem" dropdown, stepper, worked solution and finished card
+                            (studioPractice); ?seed= and #<value> open it.
        o.questionsLabel     the name of the part that holds the page's stimulus questions and mini FRQ (they keep
                             their own stage: the stimulus), when the tool built them (T.questions, T.frq).
        o.onShow(mode, part) after every switch: mode 'explore' | 'quiz', part the Test yourself part or null.
@@ -1366,6 +1380,7 @@
     s.add('stage', o.stage, quizOn ? { mode: 'explore quiz' } : null);
     if(o.ref) s.add('details', o.ref);
     parts.forEach(function(p){ if(p.dock) s.add('dock', p.dock, { mode: 'quiz' }); });
+    var prac = null, pracOn = false;
     var qst = null, qStage = null, qDock = null;
     if(hasQ){
       qst = studioQuestions(s, qcard, frq, { mode: 'quiz' }, o);
@@ -1373,8 +1388,10 @@
     }
     var pick = parts.length > 1 ? s.picker({ label: 'What to practice', items: parts.map(function(p){ return { value: p.value, label: p.label }; }), value: cur.part,
       onChange: function(v){ show('quiz', v, true); } }, 'quiz') : null;
+    // after the parts' dropdown, so a practice part's own "Problem" dropdown sits to its right
+    parts.forEach(function(p){ if(p.practice && !prac) prac = studioPractice(s, p.practice.area, p.practice.modes, { mode: 'quiz' }); });
     function show(mode, part, user){
-      var p = partOf(part), quiz = mode === 'quiz' && !!p, pic = !quiz || !p.questions;
+      var p = partOf(part), quiz = mode === 'quiz' && !!p, pic = !quiz || !(p.questions || p.practice);
       cur = { mode: quiz ? 'quiz' : 'explore', part: p ? p.value : null };
       if(s.mode() !== cur.mode) s.mode(cur.mode);
       o.stage.hidden = !pic;
@@ -1383,8 +1400,15 @@
       if(qStage) qStage.hidden = !(quiz && p.questions);
       if(qDock) qDock.hidden = !(quiz && p.questions);
       if(pick && quiz && pick.value() !== p.value) pick.value(p.value);
+      if(prac){
+        var on = quiz && !!p.practice;
+        prac.els.forEach(function(x){ x.hidden = !on; });
+        if(pracOn && !on) prac.leave();
+        pracOn = on;
+      }
       if(quiz){
         if(p.questions){ if(qst && qst.resync) qst.resync(); }
+        else if(p.practice) prac.back();
         else { s.task(typeof p.task === 'function' ? p.task() : p.task || null, 'quiz'); s.caption('', 'quiz'); }
       }
       if(o.onShow) o.onShow(cur.mode, quiz ? cur.part : null);
@@ -1397,7 +1421,7 @@
     app.hidden = true;
     var h = location.hash, start = { mode: 'explore', part: cur.part };
     if(hasQ && /^#(questions|frq)\b/.test(h)) start = { mode: 'quiz', part: 'questions' };
-    else parts.forEach(function(p){ if(!p.questions && new RegExp('^#' + p.value + '\\b').test(h)) start = { mode: 'quiz', part: p.value }; });
+    else parts.forEach(function(p){ if(!p.questions && (new RegExp('^#' + p.value + '\\b').test(h) || p.practice && seedFromUrl())) start = { mode: 'quiz', part: p.value }; });
     s.mode(start.mode);
     show(start.mode, start.part, false);
     s.kit2 = { mode: function(){ return cur.mode; }, part: function(){ return cur.part; }, go: function(m, p){ show(m, p == null ? cur.part : p, false); } };
