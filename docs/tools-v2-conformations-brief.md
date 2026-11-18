@@ -376,7 +376,7 @@ Preview and shots regenerated; contact sheets of the sweep looked at (`/mnt/user
   and hydrogen bonds decide)", n/a); where that leaves a drill chair at 0.00 the feedback says "by A-values it
   costs nothing. The two polar neighbors are not estimated here." Unit tested: trans-1,2 F/F, OH/OH, Cl/Cl
   (diequatorial 0, diaxial the two A-values), CH₃/CH₃ and CH₃/OH (0.9), and the drill's winner for every ring it
-  can draw. This replaces decision 23.
+  can draw. This replaces the recheck 2 rule above (its owner log line is rewritten, not added).
 - **First visit cues** are placed by measurement: the first side of the handle where the whole bubble is inside
   the picture and covers no name, number, inset or end chair. The bench under the small end chairs is 16 px
   deeper so the cue has a clear row. The sweep now has a first visit state for both tabs at every width.
