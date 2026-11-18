@@ -73,5 +73,41 @@ export function check(data, map) {
       if (errs.length > before) break;
     }
   }
+  explore(data.explore, M, errs);
   return errs;
+}
+
+/* Explore (tools v2): the flask and its four factors, and the two instruments. Every factor must be a true
+   equality (checked against the equation sheet values and the model's constants), every factor must cancel the
+   unit before it in the right order, and the full chain must give the number of molecules in 250. mL of water;
+   the reading model must give one more real digit with the finer marks. */
+function explore(E, M, errs) {
+  if (!E || !E.convert || !E.read) { errs.push('explore: convert and read are required'); return; }
+  const C = E.convert, F = Object.fromEntries((C.factors || []).map(f => [f.id, f]));
+  if (C.start.sf !== sf(C.start.v.replace(/\.$/, '.0').replace(/\.0$/, '.'))) errs.push('explore: the start\'s sf does not match how it is written');
+  const truth = { L: 1 / 1000, g: 1.00, mol: 1 / 18.02, n: 6.022e23 };
+  for (const [id, want] of Object.entries(truth)) {
+    const f = F[id];
+    if (!f) { errs.push(`explore: factor ${id} is missing`); continue; }
+    const v = +f.top[0] / +f.bot[0];
+    if (Math.abs(v - want) > 1e-9 * Math.abs(want)) errs.push(`explore: factor ${id} is ${v}, should be ${want}`);
+    if (!f.name || !f.why) errs.push(`explore: factor ${id} needs a name and where it comes from`);
+  }
+  const mm = 2 * 1.008 + 16.00;
+  if (Math.abs(mm - 18.02) > 0.005) errs.push('explore: the molar mass of water is not 18.02 g/mol');
+  const ord = ['g', 'mol', 'n'].map(id => ({ top: F[id].top, bot: F[id].bot, sf: F[id].sf }));
+  const r = M.units.chain(C.start, ord);
+  if (r.unit !== 'molecules' || r.pairs.length !== 3) errs.push(`explore: the chain mL to molecules leaves ${r.unit}`);
+  if (Math.abs(r.value - 250 / 18.02 * 6.022e23) > 1e15) errs.push('explore: the chain value is wrong');
+  if (r.sf !== 3) errs.push('explore: the chain should keep 3 significant figures (250. mL and 1.00 g/mL)');
+  if (M.units.chain(C.start, [{ ...ord[0], flip: true }]).pairs.length) errs.push('explore: a flipped factor must cancel nothing');
+  const R = E.read, ins = Object.fromEntries((R.instruments || []).map(x => [x.id, x]));
+  if (!ins.cylinder || !ins.beaker || ins.cylinder.every !== 1 || ins.beaker.every !== 10) errs.push('explore: a graduated cylinder (1 mL marks) and a beaker (10 mL marks) are expected');
+  else {
+    if (!(R.min >= 2 && R.max <= Math.min(ins.cylinder.cap, ins.beaker.cap) && R.value >= R.min && R.value <= R.max)) errs.push('explore: the water range must fit both vessels');
+    for (let v = 10.5; v <= R.max + 1e-9; v += 0.1) {
+      const a = M.units.read(v, ins.cylinder), b = M.units.read(v, ins.beaker);
+      if (a.sf - b.sf !== 1 || Math.abs(a.value - v) > 0.05 + 1e-9 || Math.abs(b.value - v) > 0.5 + 1e-9) { errs.push(`explore: the reading at ${v.toFixed(1)} mL is wrong`); break; }
+    }
+  }
 }

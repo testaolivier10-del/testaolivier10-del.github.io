@@ -931,7 +931,7 @@
      Units are paired in chain order: a unit on the bottom cancels the same unit on top
      earlier in the chain, and a unit on top cancels the same unit on the bottom earlier
      (as a student strikes them through by hand). Returns { value, sf, pairs: [{ u, a, b }]
-     where a and b are { card (0 = the start), half: 'top' | 'bot' }, left (unit map),
+     where a and b are { card (0 = the start), half: 'top' | 'bot' as the card is shown, turned over or not }, left (unit map),
      unit (the unit text left over), text (value and unit) }. */
   function chain(start, cards){
     var toks = [{ u: start.u, top: true, card: 0, half: 'top' }], value = +start.v, sfs = [start.sf];
@@ -940,7 +940,7 @@
       var t = c.flip ? c.bot : c.top, b = c.flip ? c.top : c.bot;
       value = value * +t[0] / +b[0];
       if(c.sf != null) sfs.push(c.sf);
-      [[b, false, c.flip ? 'top' : 'bot'], [t, true, c.flip ? 'bot' : 'top']].forEach(function(x){
+      [[b, false, 'bot'], [t, true, 'top']].forEach(function(x){
         var tok = { u: x[0][1], top: x[1], card: i + 1, half: x[2] };
         var m = toks.filter(function(o){ return !o.gone && o.u === tok.u && o.top !== tok.top && o.card < tok.card; })[0];
         if(m){ m.gone = tok.gone = true; pairs.push({ u: tok.u, a: { card: m.card, half: m.half }, b: { card: tok.card, half: tok.half } }); }

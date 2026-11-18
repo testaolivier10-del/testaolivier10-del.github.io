@@ -35,7 +35,7 @@
   function now(){ return window.performance ? performance.now() : Date.now(); }
   function f1(x){ return (+x).toFixed(1); }
   function supU(u){ return String(u).replace(/\^(\d)/g, function(m, d){ return '⁰¹²³⁴⁵⁶⁷⁸⁹'.charAt(+d); }); }
-  function uKey(u){ return UNITS.indexOf(u) > -1 ? u : 'x'; }
+  function uKey(u){ return UNITS.indexOf(u) > -1 ? u : 'mix'; }
 
   function boot(){
     var K = window.LevlKit2, M = window.ApChemMath;
@@ -165,6 +165,7 @@
         var f = facById(id), i = inChain(id), c = i > -1 ? S.chain[i] : null, w = CEL[id], face = w.querySelector('.us3-face'), x = w.querySelector('.us3-x');
         var flip = !!(c && c.flip), key = (c ? 'b' : 't') + (flip ? 'f' : '');
         if(w.getAttribute('data-k') !== key){ face.innerHTML = cardHtml(f, flip); w.setAttribute('data-k', key); }
+        if(!c) [].forEach.call(face.querySelectorAll('.us3-u.is-x'), function(u){ u.classList.remove('is-x'); });
         w.classList.toggle('is-tray', !c); w.classList.toggle('is-board', !!c); w.classList.toggle('is-flip', flip);
         face.setAttribute('aria-label', c ? factorWords(f, flip) + ', on the board. Press to turn it over.' : f.name + ': ' + factorWords(f, false) + '. Press to put it on the board.');
         x.hidden = !c; x.setAttribute('aria-label', 'Take ' + factorWords(f, flip) + ' off the board');
@@ -205,7 +206,7 @@
           g.by0 = Math.max(14, Math.round((g.bench - 8 - bh) / 2)); g.by1 = Math.min(g.bench - 18, g.by0 + bh);
           g.trayY = g.bench + Math.max(14, (H - g.bench - g.ch) / 2 - 4); g.tcols = FAC.length;
           var tw2 = FAC.length * g.cw + (FAC.length - 1) * 18;
-          g.trayX = g.bx0 + Math.max(0, (g.bx1 - g.bx0 - tw2) / 2);
+          g.trayX = clamp(g.bx0 + (g.bx1 - g.bx0 - tw2) / 2, 12, W - 12 - tw2);
           g.need = Math.max(g.trayY + g.ch + 14, 0);
         }
         return g;
@@ -285,6 +286,16 @@
         onEnd: function(){ say(cause.text()); refHtml(); } });
       var cSwap = K.tap(layer, { key: 'apchem-us-swap', label: 'Pour the water into the ' + other().name.toLowerCase(), box: [0, 0, 10, 10], chip: false, onClick: function(){ hideCue(true); pour(); } });
       var prevInst = null;
+      /* The magnifier is part of the water too: drag up or down in it and the water follows (pointer only; the
+         knob is the keyboard's way). */
+      var lensPad = document.createElement('div'); lensPad.className = 'us3-lenspad'; lensPad.setAttribute('aria-hidden', 'true'); layer.el.appendChild(lensPad);
+      (function(){
+        var pid = null, y0 = 0, v0 = 0;
+        lensPad.addEventListener('pointerdown', function(e){ if(swap) return; pid = e.pointerId; y0 = e.clientY; v0 = S.v; try{ lensPad.setPointerCapture(pid); }catch(x){} e.preventDefault(); hideCue(true); lensPad.classList.add('is-drag'); });
+        lensPad.addEventListener('pointermove', function(e){ if(e.pointerId !== pid || !G) return; var per = (G.R * 1.72) / (instNow().every * 4); cLevel.value(clamp(v0 + (y0 - e.clientY) / per, RD.min, RD.max), true); });
+        function up(e){ if(e.pointerId !== pid) return; pid = null; lensPad.classList.remove('is-drag'); say(cause.text()); refHtml(); }
+        lensPad.addEventListener('pointerup', up); lensPad.addEventListener('pointercancel', up);
+      })();
       function pour(){
         if(swap) return;
         var from = S.inst, to = other().id;
@@ -374,7 +385,11 @@
         else {
           g.R = Math.min(g.H * 0.30, g.W * 0.135, 170);
           if(kx + 34 + 2 * g.R + 230 > g.W) g.R = Math.max(86, (g.W - 230 - kx - 34) / 2);
-          g.lx = Math.max(g.W * 0.5, kx + 34 + g.R); g.rx = Math.min((g.lx + g.R + g.W) / 2 + 4, g.W - 116);
+          g.lx = Math.max(g.W * 0.5, kx + 34 + g.R); g.rx = Math.min((g.lx + g.R + g.W) / 2 + 4, g.W - 116); g.ly = g.H * 0.40; g.ry = g.H * 0.38;
+          if(g.W - (g.lx + g.R) < 230){
+            // no room beside the magnifier: the reading goes under it
+            g.R = Math.min(g.R, (g.bench - 190) / 2, (g.W - kx - 40) / 2); g.lx = Math.max(kx + 30 + g.R, (kx + g.W) / 2); g.ly = 12 + g.R; g.rx = g.lx; g.ry = g.ly + g.R + 56;
+          }
         }
         cLevel.place([mX(id) + (VES[id].w / 2 + 30) * sc, yOf(id, RD.min, sc), mX(id) + (VES[id].w / 2 + 30) * sc, yOf(id, RD.max, sc)]);
         var oid = other().id, os = sScale(oid), ow = (oid === 'cylinder' ? 120 : VES[oid].w + 36) * os, oh = VES[oid].h * os;
@@ -447,6 +462,8 @@
         }
         svg.innerHTML = p.join('');
         G.lensBox = lensOn ? [g.lx - g.R, g.ly - g.R, 2 * g.R, 2 * g.R] : null;
+        lensPad.hidden = !lensOn || S.tab !== 'read' || S.mode !== 'explore';
+        if(lensOn){ var q = g.R * 0.86; lensPad.style.left = (g.lx - q) + 'px'; lensPad.style.top = (g.ly - q) + 'px'; lensPad.style.width = lensPad.style.height = (2 * q) + 'px'; }
         if(!swap){ cLevel.hide(S.mode !== 'explore' || S.tab !== 'read'); cSwap.el.hidden = S.mode !== 'explore' || S.tab !== 'read'; }
         if(cue.active()) cue.place();
       }
@@ -468,7 +485,7 @@
         if(es){
           var e0 = es.x + 3, e1 = es.x + es.w - 3;
           p.push('<path class="us3-brk is-e" d="M' + e0 + ' ' + (by - 5) + 'V' + by + 'H' + e1 + 'V' + (by - 5) + '"/>');
-          p.push('<text class="us3-brkt is-e" x="' + ((e0 + e1) / 2) + '" y="' + (ty + (cs.length ? 18 : 0)) + '" text-anchor="middle" style="font-size:' + small + 'px">estimated</text>');
+          p.push('<text class="us3-brkt is-e" x="' + ((e0 + e1) / 2) + '" y="' + (ty + (cs.length ? small + 8 : 0)) + '" text-anchor="middle" style="font-size:' + small + 'px">estimated</text>');
         }
         var py = ty + (cs.length ? 46 : 30), pw = (phone ? 8.2 : 9.2) * (String(r.sf).length + (r.sf === 1 ? 20 : 21)), ph = phone ? 28 : 32;
         p.push('<g class="us3-count"><rect x="' + (g.rx - pw / 2) + '" y="' + (py - ph / 2) + '" width="' + pw + '" height="' + ph + '" rx="' + (ph / 2) + '"/><text x="' + g.rx + '" y="' + (py + 5) + '" text-anchor="middle" style="font-size:' + (phone ? 14 : 15.5) + 'px">' + r.sf + ' significant figure' + (r.sf === 1 ? '' : 's') + '</text></g>');
@@ -493,7 +510,7 @@
         stage.setAttribute('data-tab', v);
         head.purpose(PURPOSE[v]);
         cards.hidden = v !== 'units'; clearB.hidden = v !== 'units' || !S.chain.length;
-        cLevel.hide(v !== 'read'); cSwap.el.hidden = v !== 'read';
+        cLevel.hide(v !== 'read'); cSwap.el.hidden = v !== 'read'; lensPad.hidden = v !== 'read';
         hideCue(false);
         layoutNow();
         if(v === 'units'){ words(); svg.setAttribute('aria-label', 'A flask of water on a lab bench and a whiteboard with the conversion: ' + shownRes.text.replace(/\^2/g, ' squared') + '.'); }
@@ -521,7 +538,7 @@
       }
       var cue;
       // the cue's words follow the tab (one cue per tab and device)
-      var cueKey = { units: 'apchem-units-sig-figs', read: 'apchem-units-sig-figs-read' }, cueText = { units: 'Tap a card', read: 'Drag the water' }, cueSide = { units: 'above', read: 'right' };
+      var cueKey = { units: 'apchem-units-sig-figs', read: 'apchem-units-sig-figs-read' }, cueText = { units: 'Tap a card', read: 'Drag the water' }, cueSide = { units: 'above', read: innerWidth < 700 ? 'above' : 'below' };
       var cues = {};
       ['units', 'read'].forEach(function(k){ cues[k] = K.cue(layer, { key: cueKey[k], text: cueText[k], side: cueSide[k], at: function(){
         if(!G) return [0, 0];

@@ -143,3 +143,6 @@
 .us3-sdock .bt-actions{display:flex;gap:8px;}
 .ls-root .ls-dock .us3-sdock .bt-actions{position:static;box-shadow:none;background:none;}
 .us3-code .bt-code{margin:0;font-size:13px;color:var(--muted);}
+.us3-lenspad{position:absolute;border-radius:50%;cursor:ns-resize;touch-action:none;}
+.us3-lenspad.is-drag{cursor:grabbing;}
+@media (max-width:640px){ .us3 .tk2-cause{min-height:68px;align-content:flex-start;} }

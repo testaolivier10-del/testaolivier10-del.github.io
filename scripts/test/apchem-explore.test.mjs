@@ -148,3 +148,30 @@ test('units setup: the right placement cancels to the asked unit and reproduces 
   const a = M.units.generate(M.rng(5), { id: 'y', topic: 'math-sig-figs', kind: 'addsub' }).setup;
   assert.equal(a.addsub.length, 2);
 });
+
+test('units and sig figs explore: the chain cancels units in order, the reading stops at one estimated digit', () => {
+  const U = M.units, start = { v: '250.', u: 'mL', sf: 3 };
+  const L = { top: ['1', 'L'], bot: ['1000', 'mL'], sf: null }, g = { top: ['1.00', 'g'], bot: ['1', 'mL'], sf: 3 }, mol = { top: ['1', 'mol'], bot: ['18.02', 'g'], sf: 4 }, n = { top: ['6.022e23', 'molecules'], bot: ['1', 'mol'], sf: 4 };
+  assert.equal(U.chain(start, []).text, '250. mL');
+  assert.equal(U.chain(start, [L]).text, '0.250 L');
+  assert.equal(U.chain(start, [g, mol]).text, '13.9 mol');
+  const all = U.chain(start, [g, mol, n]);
+  assert.equal(all.pairs.map(p => p.u).join(), 'mL,g,mol');
+  close(all.value, 250 / 18.02 * 6.022e23, 1e10);
+  assert.equal(all.text, '8.35 × 10²⁴ molecules');
+  const flipped = U.chain(start, [{ ...L, flip: true }]);
+  assert.equal(flipped.pairs.length, 0); assert.equal(flipped.unit, 'mL^2/L');
+  assert.equal(U.chain(start, [mol, g]).text, '13.9 mol', 'order of the factors does not matter once both are there');
+  assert.equal(U.sigText(250, 3), '250.'); assert.equal(U.sigText(2500, 2), '2.5 × 10³'); assert.equal(U.sigText(0.25, 3), '0.250');
+  const cyl = { every: 1 }, bk = { every: 10 };
+  const r = U.read(33.7, cyl);
+  assert.equal(r.shown, '33.7'); assert.equal(r.sf, 3); assert.equal(r.certain, '33'); assert.equal(r.est, '7');
+  const b = U.read(33.7, bk);
+  assert.equal(b.shown, '34'); assert.equal(b.sf, 2); assert.equal(b.certain, '3'); assert.equal(b.est, '4');
+  assert.equal(U.read(30.2, bk).shown, '30.'); assert.equal(U.read(30.2, bk).sf, 2);
+  assert.equal(U.read(4.6, bk).sf, 1); assert.equal(U.read(4.6, bk).certain, '');
+  for (let v = 10.5; v <= 48; v = Math.round((v + 0.1) * 10) / 10) {
+    assert.ok(U.read(v, cyl).sf - U.read(v, bk).sf === 1, `the cylinder gives one more real digit at ${v}`);
+    assert.ok(Math.abs(U.read(v, cyl).value - v) <= 0.05 + 1e-9 && Math.abs(U.read(v, bk).value - v) <= 0.5 + 1e-9, `estimate within half a step at ${v}`);
+  }
+});
