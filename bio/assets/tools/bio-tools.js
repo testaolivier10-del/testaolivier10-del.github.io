@@ -861,7 +861,7 @@
       // the second tab, named for what is in it
       detailsTitle: ({ 'chi-square': 'Problem & critical values', 'confidence-intervals': 'Problem, formulas & settings',
         'descriptive-stats': 'Problem & formulas', 'hardy-weinberg': 'Problem & equations', 'rates': 'Problem & formulas',
-        'simpson-diversity': 'Problem & formula', 'water-potential': 'Problem & formulas', 'graph-builder': 'What full credit needs',
+        'simpson-diversity': 'Numbers & formula', 'water-potential': 'Problem & formulas', 'graph-builder': 'What full credit needs',
         'tree-reading': 'Trees & characters', 'design-drills': 'All drills', 'osmosis': 'Numbers & how it works' })[slug] || 'Data & settings',
       menu: {
         copyLink: function(){

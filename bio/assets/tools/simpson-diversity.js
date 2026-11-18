@@ -114,12 +114,11 @@
         '<g class="sd2-ol">' + circles(c, 1.5) + '</g><g class="sd2-cr sd2-cr2">' + circles(c) + '</g>' +
         '<g class="sd2-lo">' + circles([[6, -54, 7], [-6, -52, 6]]) + '</g><g class="sd2-hi">' + circles([[-5, -86, 6], [-10, -68, 5]]) + '</g>';
     },
-    function(){   // maple: a crown of five points
-      var p = [], i, a, r;
-      for(i = 0; i < 10; i++){ a = -Math.PI / 2 + i * Math.PI / 5; r = i % 2 ? 21 : 32; p.push((r * Math.cos(a)).toFixed(1) + ',' + (-64 + r * Math.sin(a)).toFixed(1)); }
-      return '<path class="sd2-trunk" d="M-4.5 0C-3.5-12-4-24-5-36L5-36C4-24 3.5-12 4.5 0Z"/>' +
-        '<polygon class="sd2-cr sd2-cr3 sd2-olp sd2-round" points="' + p.join(' ') + '"/>' +
-        '<g class="sd2-lo">' + circles([[8, -54, 8]]) + '</g><g class="sd2-hi">' + circles([[-7, -74, 7], [-13, -60, 4]]) + '</g>';
+    function(){   // maple: a tall crown that narrows to the top, on a straight trunk
+      var c = [[-13, -57, 14], [13, -57, 14], [0, -62, 18], [-8, -76, 12], [8, -76, 12], [0, -88, 10]];
+      return '<path class="sd2-trunk" d="M-4.5 0C-3.5-14-4-28-5-44L5-44C4-28 3.5-14 4.5 0Z"/>' +
+        '<g class="sd2-ol">' + circles(c, 1.5) + '</g><g class="sd2-cr sd2-cr3">' + circles(c) + '</g>' +
+        '<g class="sd2-lo">' + circles([[11, -52, 8], [-10, -50, 6]]) + '</g><g class="sd2-hi">' + circles([[-5, -86, 5], [-10, -70, 6], [5, -68, 4]]) + '</g>';
     },
     function(){   // cherry: a slender forked trunk and a low crown in blossom
       var c = [[-14, -56, 14], [14, -56, 14], [0, -71, 16], [0, -55, 13]];
@@ -323,7 +322,13 @@
       });
 
       /* ---- the one cue, and "Show me how" */
-      function cueSpot(){ var want = G ? G.cols + 1 : 0, i; for(i = want; i < SPOTS; i++) if(vis[i] > CUT) return i; return want; }
+      // a tree with bare soil to its right, so the cue's bubble covers no tree
+      function cueSpot(){
+        var cols = G ? G.cols : 9, i, c;
+        for(i = cols; i < SPOTS; i++){ c = i % cols; if(c >= 1 && c <= cols - 4 && vis[i] > CUT && vis[i + 1] === CUT) return i; }
+        for(i = cols + 1; i < SPOTS; i++) if(vis[i] > CUT) return i;
+        return cols + 1;
+      }
       var cue = K.cue(layer, { key: 'apbio-simpson', text: 'Tap a tree', side: 'right', at: function(){ if(!G) return [0, 0]; var p = G.spots[cueSpot()]; return [p.x + G.th * p.s * 0.2, p.y - G.th * p.s * 0.55]; } });
       function hideCue(used){ if(cue.active()) cue.hide(used); }
       var tour = K.tour({ key: 'apbio-simpson', label: 'Show me how', steps: [
@@ -397,7 +402,7 @@
         pool.forEach(function(sp, j){ runT.push(setTimeout(function(){ setSpot(sp, need[j]); }, j * step)); });
         runT.push(setTimeout(function(){
           var a = tally(model); took = true;
-          var line = 'Same ' + a.N + ' trees, same ' + a.S + ' species, now evenly spread: D rose from ' + F(before, 2) + ' to ' + F(a.D, 2) + '.';
+          var line = 'Same trees, same species, now even: D rose from ' + F(before, 2) + ' to ' + F(a.D, 2) + '.';
           cause.take(line); say(line);
         }, pool.length * step + (calm() ? 60 : 520)));
       }
@@ -461,21 +466,29 @@
         else if(c.id === 'rich' && t.counts.some(function(n, k){ return n > 0 && !START.counts[k]; })) chal.met('rich', 'A new species: ' + t.S + ' species now, and D went from ' + F(D0, 2) + ' to ' + F(t.D, 2) + '. Richness counts.');
         else if(c.id === 'mono' && t.S === 1) chal.met('mono', 'One species: any two trees you pick are the same species, so D = 0.');
         else if(c.id === 'high' && t.D > HIGH + 1e-9) chal.met('high', 'D = ' + F(t.D, 2) + ' with ' + t.S + ' species in nearly even numbers. It takes both: many species, evenly spread.');
+        // a phone: the challenge card is above the plot; bring the result into view
+        if(chal.isMet(c.id)) setTimeout(function(){ try{ var r = chal.el.getBoundingClientRect(); if(r.top < 0 || r.bottom > (window.innerHeight || 0)) chal.el.scrollIntoView({ block: 'nearest', behavior: calm() ? 'auto' : 'smooth' }); }catch(e){} }, 450);
       }
 
+      var exPlot = null;
+      function loadPlot(m){ stopRuns(); for(var k in timers){ clearTimeout(timers[k]); timers[k] = null; } model = m.slice(); vis = model.slice(); lastD = null; if(G) buildPlot(); syncWords(); }
       /* ---- modes (the adapter calls this after every switch) */
       function shown(mode, part){
+        var was = St.mode === 'explore' ? 'explore' : St.part === 'build' ? 'build' : 'other';
         St.mode = mode; St.part = part;
         var ex = mode === 'explore', build = mode === 'quiz' && part === 'build';
         stage.setAttribute('data-view', ex ? 'explore' : 'build');
         head.el.hidden = !ex; cause.el.hidden = !ex; bEven.hidden = !ex;
         if(!ex){ hideCue(false); if(tour.active()) tour.stop(); }
+        // Explore keeps its own plot: the challenges start from the opening plot and never change the Explore one
+        if(was === 'explore' && !ex) exPlot = { model: model.slice(), pick: pick };
         if(!ex && !build) return;
         took = false;
-        if(build && chal.current() && !chal.isMet(chal.current().id)) reset(true);
+        if(ex && exPlot){ loadPlot(exPlot.model); setPick(exPlot.pick, false); exPlot = null; }
+        if(build && was !== 'build'){ loadPlot(startPlot()); setPick(Math.max(0, SP.map(function(s){ return s.id; }).indexOf(EX.plant)), false); }
         setTimeout(function(){ layoutNow(); syncWords(); if(ex && !tour.active()) cue.show(); }, 30);
       }
-      ctx.kit2 = { stage: stage, ref: ref,
+      ctx.kit2 = { stage: stage, ref: ref, othersLabel: 'On the plot',
         parts: [{ value: 'practice', label: 'Calculate D', practice: true },
           { value: 'build', label: 'Build a community', dock: dock, task: { kicker: 'Build a community', title: 'Change the plot to meet each challenge.', todo: 'Pick a tree or Cut under the plot, then tap the plot.' } }],
         onShow: function(m, p){ shown(m, p); } };
