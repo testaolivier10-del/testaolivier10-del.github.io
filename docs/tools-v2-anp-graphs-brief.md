@@ -42,7 +42,7 @@ Seen means the page was opened and read here; "text only" means only a descripti
 | Wiggers diagram explainers (search results: gcus, carepatron, Wikipedia mirrors; text only) | Static stacked curves with valve events | The four valve events as the moments the picture changes |
 
 What ours does better than all of them: the curve and the body part are one screen, one drag moves both, and the
-reason is written under them in the colours of the parts.
+reason is written under them in the colors of the parts.
 
 ## The design
 - **Main control (every tab):** drag along the graph (`K.scrub` on the plot: the whole plot is the grab area, a knob
@@ -57,15 +57,20 @@ reason is written under them in the colours of the parts.
   the new state with a short cross fade.
 - **Cause line** (`K.cause`) under the picture, from the picture as drawn (never from where it is going).
 - **Labels** on the picture, 1 to 3 words, in the colour of the part and of its curve.
-- **Colours, one per idea, from the course's visual language** (`anp.css`): oxygenated blood vermillion
-  (`--anp-o2`); the left ventricle and its curve the course ink; the aorta and its curve vermillion; the atrium
-  slate (`--anp-lo`); Na+ orange (`--anp-aff`), K+ purple (`--anp-symp`); O2 vermillion; actin and myosin each
-  their own; the purpose line and cause line pills use the same colours.
+- **Colors, one per idea** (`graphs-explore.css`, from the course's visual language in `anp.css` where it has
+  one): the aorta and its curve vermillion (`--anp-o2`), the left ventricle and its curve blue (a separate hue, so
+  the two curves that run together in ejection stay apart in light and dark), the left atrium slate (`--anp-lo`),
+  valves green (`--anp-para`), air blue, O2 vermillion, Na+ orange (`--anp-aff`), K+ purple, cross-bridges and the
+  tension curve orange, actin blue, myosin violet. The part, its label, its curve and its pill share the color.
 
-### What is on screen in Explore (to be counted in the browser)
-Outside the picture: 5 tabs, the purpose line (about 8 words), "Show me how", the cause line (3 to 5 pills). On the
-picture and graph: the drawn part with 3 to 6 labels, one number (the ventricle's volume, the lungs' volume, the
-saturation, the inside voltage, the tension), the graph with its axes, curve names and the cursor.
+### What is on screen in Explore (counted in the browser, Heart at landing, 1440 x 900)
+Outside the picture: 5 tabs, the purpose line (8 words), "Show me how", the cause line (4 pills): 36 words with the
+tab names, 7 controls (5 tabs, "Show me how", the graph cursor). No side panel. On the picture: 5 labels (Left
+atrium, Left ventricle, Aorta, Mitral valve, Aortic valve) and 1 number (the ventricle's volume). On the graph: the
+axis titles, ticks, 3 curve names, the shaded phase, the cursor knob and a dot on each curve. Other screens: Lungs 2
+to 4 labels ("Air in" or "Air out" only while air moves, "Residual air" only near the bottom) and the volume; Red
+blood cell 4 labels (the place only where the PO2 belongs to one) and the saturation; Axon 4 labels and the inside
+voltage; Sarcomere 4 labels and the tension. First visit only: the cue "Drag the graph" beside the knob.
 
 ### Explore against Test yourself
 - **Explore:** the five screens above. Nothing graded or asked.
@@ -93,8 +98,72 @@ saturation, the inside voltage, the tension), the graph with its axes, curve nam
 2. The old per graph Explore (cursor and What if) stays in Test yourself as "Read it" for every graph.
 3. No "Watch it happen" or Play: the student drags time; nothing plays by itself (one control never moves another).
 4. The Heart screen shows the pressure panel only; the volume is the ventricle's drawn size and its number.
+5. The left ventricle's curve and label are blue (it runs on top of the aorta's curve in ejection).
+6. Hemoglobin is drawn filling one molecule at a time, to show cooperative binding (said in "?").
 
 ## Accuracy
-To be checked against the course notes (`anatomy-physiology/data/notes/`: cardiac-cycle, lung-volumes,
-oxygen-transport, action-potential-basics, muscle-tension) and OpenStax A&P 2e. Contested points go to
-`docs/anp-needs-author.md`.
+Every word on the pictures and the cause lines was checked against the course notes that teach it
+(`anatomy-physiology/data/notes/`: cardiac-cycle, lung-volumes, oxygen-transport, action-potential-basics,
+muscle-tension), which are the course's reviewed text. The curves are the reviewed data; what the pictures add:
+- Heart: the valve moments are the graph's own dashed lines (mitral shuts 0.205 s, aortic opens 0.25, shuts 0.52,
+  mitral opens 0.60); the cavity's area follows the volume curve and the wall thickens as it empties; the atrium
+  squeezes in the graph's atrial systole band and refills while the mitral valve is shut; isovolumetric phases are
+  "both valves shut".
+- Lungs: quiet breath in by the diaphragm, quiet breath out by recoil, the deep breath in by the diaphragm and rib
+  muscles, the forced breath out by recoil and the belly muscles, the expiratory reserve by the belly muscles, the
+  residual volume held by small airways squeezed shut (notes' wording).
+- Red blood cell: lungs about 100 mm Hg, resting tissue about 40, working muscle about 20 (notes); dissolved O2 drawn
+  in proportion to PO2; bound sites = the curve's saturation of 24 sites.
+- Axon: Na+ channels open fast at threshold, inactivate near the peak, reset once repolarized; K+ channels open
+  slowly and close late (hyperpolarization); + and − across the membrane sized by the voltage and swapped above 0 mV.
+  A bug found in the check (Na+ channels drawn open again after their reset) was fixed.
+- Sarcomere: frog numbers from the graph's intro; heads attach where their own thin filament reaches; the drawn
+  number of cross-bridges equals the graph's tension; short side "thin filaments crowd the middle" then "thick
+  filaments hit the Z discs" (notes' wording).
+What each picture leaves out is said in "?". Five points for a person are in `docs/anp-needs-author.md`, "Graphs
+tool, tools v2 drawn screens".
+
+## What was built
+- `anatomy-physiology/assets/tools/graphs-explore.js` and `.css` (new): the five screens and their engine (tabs,
+  purpose line, the picture, the graph drawn in screen pixels with `K.scrub` on it, `K.cue`, `K.cause`, `K.tour`,
+  the "?" reference). The picture is a pure function of the x it shows, which chases the cursor (tau 90 ms).
+- **The A&P adapter:** `AnpToolKit.kit2(s, { stage, ref, onShow })` in `anatomy-physiology/assets/tools/tool-kit.js`
+  (same pattern as `ApBioTools.studioKit2` and `OchemStudioKit.kit2`): turns the kit on, Explore and Test yourself,
+  the stage in Explore only, the reference behind "?" in Explore. The item dropdown (`stdPicker`) is Test yourself
+  only on a kit2 tool. Other A&P tools never call it and are unchanged.
+- `anatomy-physiology/assets/tools/graphs.js`: with the kit on (`V2`), every part it puts in the studio is Test
+  yourself only; its Explore / Quiz switch becomes "Read it" / "Questions" in the side panel; the reading cursor shows
+  in Read it only; links route through `routeV2`; Test yourself opens on the graph of the Explore screen unless a link
+  chose one. Without the kit it behaves as before.
+- Build opt in: `"kit2": true`, `extraScripts`, `extraCss` on the tool in `anatomy-physiology/data/pages.json`;
+  `scripts/build-anp.mjs` adds `tool-kit2.css` and `tool-kit2.js` for a kit2 tool. Only `tools/graphs.html` changed.
+- `scripts/check-weight.mjs`: A&P shell 60 to 61 KB (measured 60.3). `scripts/check-tool-use.mjs`: lists the rebuilt
+  tools as frame v2 (Osmosis was still expected as "old" on this branch; Graphs added).
+- Sweep test: `scripts/tools-v2/anp-graphs-sweep.mjs`.
+
+## Checks run (2026-11-18)
+`node --test scripts/test/anp-*.test.mjs` (55 pass), `check-anp-content --check` (0 failing), `build-anp --check`,
+`check-site` (OK), `check-weight --check` (A&P within 61), `build-apcalc --check`, `build-apmacro --check`,
+`check-tool-use` (graphs reports frame v2; nothing sent under automation).
+Sweep: 44 states (8 to 9 per screen) at 10 widths, light and dark: 880 states, clean (no clipping, no overlapping
+labels on the picture or the graph, the cue covers no label, the picture is the largest thing on the stage, the cause
+line at most two rows on phones with one height, no sideways scroll, no console errors). Contact sheets:
+`/mnt/user-data/outputs/anp-graphs-v2/sweep/`.
+Playwright at 390, 768 and 1440, light and dark, 167 checks pass: opens on Explore and Heart with the cue and no side
+panel; a real mouse drag (desktop) and a real touch drag at the scrolled end of the page (phone, tablet) change the
+picture and the cause line mid drag; the cue leaves; Home and the arrow keys; a jump tweens through the moments
+between (frame caught mid tween); each screen's words at a landmark; a tab keeps each screen's own setting; Test
+yourself opens on the heart graph, a right answer marked right and a wrong one wrong; Read it shows the cursor and
+Questions hides it; back to Explore keeps the moment; reduced motion is at once with a cross fade; deep links
+(`#oxygen-hemoglobin/explore`, `#explore/axon`, `#frank-starling`, `#ecg/explore` to Read it, `#all`,
+`?topic=lung-volumes`, `?chapter=urinary`); the real locked state shows the Premium card as before; no console
+errors. Shots: `/mnt/user-data/outputs/anp-graphs-v2/shots/`; preview: `/mnt/user-data/outputs/anp-graphs-v2/index.html`.
+
+## Not done, and what I am not happy with
+- No real phone, no screen reader pass, no real students; the independent review is next.
+- The heart is a schematic left heart, not a frontal section (see needs-author); the drawings are good but simpler
+  than the flagship's lake.
+- On a phone the five tab names are tight at 360 px (12.5 px type, no numbers).
+- Test yourself is the old layout inside the new frame (its own graph, picker, Read it / Questions); it was not
+  redesigned.
+- The A&P shell weight budget had to rise by 1 KB.

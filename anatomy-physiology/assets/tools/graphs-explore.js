@@ -281,14 +281,16 @@
         var V = this.V(t), d = this.dV(t);
         if(V < 1350) return [{ t: 'Small airways squeezed shut', role: 'rv' }, { t: 'air trapped', role: 'air' }, { t: 'Residual volume', role: 'phase' }];
         if(V > 5750) return [{ t: 'Chest as big as it gets', role: 'mus' }, { t: 'lungs full', role: 'air' }, { t: 'Total lung capacity', role: 'phase' }];
+        // the trace: quiet breaths, then (8 to 20 s) the deepest breath in, the fullest breath out, and back to quiet
+        var deep = t > 8 && t < 20;
         if(d > 120){
           if(V > 2950) return [{ t: 'Diaphragm and rib muscles pull hard', role: 'mus' }, { t: 'extra air in', role: 'air' }, { t: 'Inspiratory reserve', role: 'phase' }];
           if(V < 2350) return [{ t: 'Muscles let go', role: 'mus' }, { t: 'chest springs back', role: 'mus' }, { t: 'air flows in', role: 'air' }];
-          return [{ t: 'Diaphragm contracts', role: 'mus' }, { t: 'chest gets bigger', role: 'mus' }, { t: 'air flows in', role: 'air' }, { t: 'Tidal volume', role: 'phase' }];
+          return [{ t: 'Diaphragm contracts', role: 'mus' }, { t: 'chest gets bigger', role: 'mus' }, { t: 'air flows in', role: 'air' }].concat(deep ? [] : [{ t: 'Tidal volume', role: 'phase' }]);
         }
         if(d < -120){
           if(V < 2350) return [{ t: 'Belly muscles push up', role: 'mus' }, { t: 'extra air out', role: 'air' }, { t: 'Expiratory reserve', role: 'phase' }];
-          if(V > 2950) return [{ t: 'Muscles relax', role: 'mus' }, { t: 'lungs recoil', role: 'mus' }, { t: 'air flows out', role: 'air' }];
+          if(deep) return [{ t: 'Lungs recoil', role: 'mus' }, { t: 'belly muscles push', role: 'mus', join: '+' }, { t: 'air rushes out', role: 'air' }];
           return [{ t: 'Diaphragm relaxes', role: 'mus' }, { t: 'lungs recoil', role: 'mus' }, { t: 'air flows out', role: 'air' }, { t: 'Tidal volume', role: 'phase' }];
         }
         return V > 2650 ? [{ t: 'End of a breath in', role: 'air' }, { t: 'no air moving', role: 'air' }] : [{ t: 'End of a breath out', role: 'air' }, { t: 'no air moving', role: 'air' }];
@@ -761,11 +763,20 @@
 
     /* ---- "?" for this screen */
     var ref = document.createElement('div'); ref.className = 'ls-sec gx-ref';
+    // what each picture leaves out or simplifies (docs/anp-needs-author.md, tools v2 graphs)
+    var NOTE = {
+      heart: 'Only the left side of the heart is drawn, as the graph records it. The cavity’s size follows the volume curve; the valves open and shut at the moments the graph marks.',
+      lungs: 'The trace is the total air in the lungs, so it includes the residual volume a spirometer alone cannot measure.',
+      rbc: 'One red blood cell holds about 270 million hemoglobin molecules; six are drawn, with four sites each. They fill one molecule at a time to show cooperative binding (each oxygen bound makes the next bind more easily); in real blood the share of filled sites is what the curve gives.',
+      axon: 'Two channels of each kind stand for thousands. The leak channels and the sodium–potassium pump that keep the resting potential are not drawn, and only a tiny share of the ions cross during one spike.',
+      sarcomere: 'The lengths are those of a frog fiber (thick filament 1.6 µm, thin filaments 1.0 µm), as in the graph. The number of cross-bridges drawn follows the tension the graph gives.'
+    };
     function topicLink(id){ var ts = (window.AnpCurriculum || {}).topics || [], t = ts.filter(function(x){ return x.id === id; })[0]; return t ? t : null; }
     function refHtml(){
       var g = cur.g, t = topicLink(g.topic), B = o.base || '../';
       ref.innerHTML = '<h3 class="ls-h">' + esc(g.title) + '</h3><p>' + g.intro + '</p>' +
         '<p class="ls-sub">Drag anywhere on the graph, or use the arrow keys on it. The picture shows that moment; the line under it says why. Pictures are drawn to show the idea, not to scale.</p>' +
+        (NOTE[cur.id] ? '<p class="ls-sub">' + NOTE[cur.id] + '</p>' : '') +
         '<p><button type="button" class="btn-outline gx-ref-q" data-g="' + esc(g.id) + '">Questions on this graph (' + g.questions.length + ')</button></p>' +
         (t && t.built ? '<p>Topic: <a href="' + esc(B + 'lessons/' + t.id + '.html') + '">' + esc(t.title) + '</a> · <a href="' + esc(B + 'notes/' + t.id + '.html') + '">notes</a></p>' : '') +
         '<p><button type="button" class="tk2-link gx-ref-how">Show me how</button></p>';

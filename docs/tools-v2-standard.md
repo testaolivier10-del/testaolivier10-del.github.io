@@ -63,3 +63,4 @@ decision made on the owner's behalf, so he can skim it later and reverse any of 
 | AP® Environmental Science, Water pollution | Shipped 2026-11-17 | `docs/tools-v2-water-pollution-brief.md` |
 | AP® Biology, Osmosis | Built 2026-11-17, waiting for the independent review (not merged) | `docs/tools-v2-osmosis-brief.md` |
 | AP® Biology, Simpson's diversity index | Built 2026-11-18, waiting for the independent review (not merged) | `docs/tools-v2-simpson-diversity-brief.md` |
+| A&P, Graphs | Built 2026-11-18, waiting for the independent review (not merged) | `docs/tools-v2-anp-graphs-brief.md` |

@@ -2013,3 +2013,24 @@ Spec decision 91; data in anatomy-physiology/data/tools/anatomy-3d.json.
   CC BY-SA 2.1 Japan. Spec section 2 allows only CC BY or public domain sources in A&P. The rule of nines calculator
   therefore draws its own body outline instead of reusing the NREMT figure. Owner to decide whether decision 91
   stands as an exception.
+
+## Graphs tool, tools v2 drawn screens (2026-11-18): items for review
+Explore draws the body part beside five graphs (docs/tools-v2-anp-graphs-brief.md). The curves are the reviewed
+numbers in data/tools/graphs.json; what the pictures add was checked against the course notes (cardiac-cycle,
+lung-volumes, oxygen-transport, action-potential-basics, muscle-tension).
+- **gx-hb-fill-order** (decided, for review). The red blood cell's six hemoglobin molecules fill one molecule at a
+  time, to show cooperative binding. In real blood, at 50% saturation, molecules hold every number of oxygens from
+  none to four; the curve, not the drawn order, is the measured fact. "?" says so. Keep, or fill sites at random?
+- **gx-sarcomere-crumple** (pending review). Below about 79% of resting length (the 1.6 um thick filament no longer
+  fits between the Z discs, frog numbers) the thick filaments are drawn with a slight kink against the Z discs. The
+  notes say they "butt against the Z discs"; whether they deform, pass through the Z disc or stop is drawn differently
+  by different sources.
+- **gx-heart-left-only** (decided, for review). The heart screen draws only the left atrium, left ventricle and aorta,
+  schematically (the aortic arch with its three branches to the viewer's right; pulmonary veins entering from the
+  left). It matches the graph (left heart pressures) but is not an anatomical frontal section.
+- **gx-axon-channel-timing** (decided, for review). Channel states are set from the voltage trace: Na+ channels open
+  at threshold (2.95 to 3.08 ms), inactivate near the peak (3.38 to 3.56 ms) and reset during 4.4 to 5.0 ms; K+
+  channels open from 3.3 ms and close slowly (4.9 to 6.7 ms). Illustrative, not fitted to a model.
+- **gx-forced-expiration-words** (decided, for review). From the top of the deepest breath down to the expiratory
+  reserve the cause line says "Lungs recoil + belly muscles push → air rushes out" (a forced breath out); below the
+  end of a quiet breath out it says "Belly muscles push up → extra air out → Expiratory reserve".

@@ -2,7 +2,7 @@
    from the course's visual language (anp.css): the same colour on the part, its label, its curve and its pill on the
    cause line. */
 .gx{
-  --gx-lv:var(--anp-hi); --gx-lv-ink:var(--anp-hi);
+  --gx-lv:#2C6E9E; --gx-lv-ink:#245C85;
   --gx-ao:var(--anp-o2); --gx-ao-ink:#A84400;
   --gx-la:var(--anp-lo); --gx-la-ink:var(--anp-lo);
   --gx-valve:var(--anp-para); --gx-valve-ink:#00704F;
@@ -27,7 +27,7 @@
   display:flex;flex-direction:column;gap:8px;min-height:0;
 }
 :root[data-theme="dark"] .gx{
-  --gx-ao-ink:var(--anp-o2); --gx-valve-ink:var(--anp-para); --gx-blood:#F0705C; --gx-blood-ink:#F59A8A;
+  --gx-lv:#7FC2EE; --gx-lv-ink:#9ACFF2; --gx-ao-ink:var(--anp-o2); --gx-valve-ink:var(--anp-para); --gx-blood:#F0705C; --gx-blood-ink:#F59A8A;
   --gx-mus:#E58E76; --gx-mus-ink:#F0A48F; --gx-o2-ink:var(--anp-o2); --gx-hb:#D98BBB; --gx-hb-ink:#E6A6CD;
   --gx-place:#9CC27F; --gx-place-ink:#AED38F; --gx-rbc:#F07A69; --gx-rbc-ink:#F59A8A; --gx-na-ink:var(--anp-aff);
   --gx-k:#C29BE3; --gx-k-ink:#CDAAEA; --gx-xb:#F2A35A; --gx-xb-ink:#F5B474; --gx-actin:#7EC0EE; --gx-actin-ink:#9ACFF2;
@@ -197,7 +197,11 @@
 /* five tabs on a phone: the names without their numbers */
 @media (max-width:640px){
   .gx .tk2-tabs.is-big{gap:4px;}
-  .gx .tk2-tabs.is-big .tk2-tab{padding:0 4px;font-size:13.5px;min-height:46px;}
+  .gx .tk2-tabs.is-big .tk2-tab{padding:0 3px;font-size:13px;min-height:46px;}
   .gx .tk2-tabs.is-big .tk2-tab-n{display:none;}
 }
 @media (max-width:380px){ .gx .tk2-tabs.is-big .tk2-tab{font-size:12.5px;padding:0 2px;} }
+@media (min-width:641px) and (max-width:1100px){
+  .gx .tk2-tabs.is-big .tk2-tab{padding:0 8px;}
+  .gx .tk2-tabs.is-big .tk2-tab-n{display:none;}
+}

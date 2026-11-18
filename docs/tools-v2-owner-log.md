@@ -35,3 +35,9 @@ in each tool's brief.
 | 2026-11-18 | AP Bio Simpson diversity | The gauge marks the most D can be with that many species (1 − 1/S) | Shows richness and evenness as two different moves | `syncWords()` in the tool's js |
 | 2026-11-18 | AP Bio Simpson diversity | The plot can be emptied (old kept one organism) | Empty reads "No trees, nothing to measure" | Same file |
 | 2026-11-18 | AP Bio Simpson diversity | Second tab named "Numbers & formula"; hub blurb reworded; title, description and URL unchanged | Name what is in it | `bio-tools.js`, `pages.json` |
+| 2026-11-18 | A&P Graphs | Explore shows five drawn screens (Heart, Lungs, Red blood cell, Axon, Sarcomere); the other 71 graphs are in Test yourself | Rollout open question 5: a short curated set in Explore, the full bank in Test yourself | `docs/tools-v2-anp-graphs-brief.md`. Reverse: add a screen to `SCENES` in `graphs-explore.js` |
+| 2026-11-18 | A&P Graphs | Each graph's old Explore (reading cursor and What if) kept in Test yourself as "Read it" beside "Questions" | 71 graphs have no drawn screen yet; nothing dropped | Same brief. Reverse: remove the Read it switch |
+| 2026-11-18 | A&P Graphs | No Play or "Watch it happen": the student drags time along the graph | One control; nothing moves by itself | Same brief |
+| 2026-11-18 | A&P Graphs | The Heart screen draws the pressure panel only; the volume is the ventricle's drawn size and its number; ECG and sounds stay in Test yourself | One idea per screen | Same brief |
+| 2026-11-18 | A&P Graphs | The left ventricle's curve and label are blue, not the course's red tones | Its curve runs on top of the aorta's in ejection and the two must stay apart in light and dark | `graphs-explore.css` |
+| 2026-11-18 | A&P Graphs | Hemoglobin drawn filling one molecule at a time (cooperative binding) | Shows the S shape's cause; said in "?" | `docs/anp-needs-author.md` gx-hb-fill-order |
