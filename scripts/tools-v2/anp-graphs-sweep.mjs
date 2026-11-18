@@ -6,7 +6,9 @@
 
    Needs a static server at the repo root and Chromium:
      python3 -m http.server 8923 --bind 127.0.0.1 &
-     node scripts/tools-v2/anp-graphs-sweep.mjs [--port 8923] [--shots <dir>] [--dark]
+     node scripts/tools-v2/anp-graphs-sweep.mjs [--port 8923] [--shots <dir>] [--dark] [--width 390]
+   Run one width per process (--width) for long sweeps; without it every width runs in turn. The frame by frame checks
+   of picture against words are in anp-graphs-frames.mjs.
    The tool is Premium: the test (never the page) unlocks it by serving assets/premium.js with has() answering true. */
 import { chromium } from 'playwright';
 import { readFileSync, mkdirSync } from 'fs';
@@ -16,7 +18,8 @@ import { fileURLToPath } from 'url';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const arg = (k, d) => { const i = process.argv.indexOf(k); return i > -1 ? process.argv[i + 1] : d; };
 const PORT = arg('--port', '8923'), SHOTS = arg('--shots', ''), DARK = process.argv.includes('--dark');
-const WIDTHS = [360, 390, 430, 600, 768, 820, 1024, 1280, 1440, 1920];
+const ALL = [360, 390, 430, 600, 768, 820, 1024, 1280, 1440, 1920];
+const WIDTHS = arg('--width', '') ? [+arg('--width', '')] : ALL;
 const STATES = {
   heart: [0.03, 0.12, 0.22, 0.3, 0.45, 0.55, 0.62, 0.75],
   lungs: [2, 4, 9.5, 12, 15, 17, 18, 19.5, 25],
@@ -59,6 +62,14 @@ for (const w of WIDTHS) {
   if (cue.none) fail(`${w}: no first-visit cue`);
   else { if (cue.hits.length) fail(`${w}: the cue covers ${cue.hits.join(', ')}`); if (cue.out) fail(`${w}: the cue sticks out of the screen`); }
 
+  // every tab name fits inside its tab
+  const tabs = await page.evaluate(() => [...document.querySelectorAll('.gx .tk2-tab')].map((b) => {
+    const r = b.getBoundingClientRect(), vis = [...b.querySelectorAll('*')].filter((e) => e.offsetWidth && !e.children.length).map((e) => e.getBoundingClientRect());
+    const l = Math.min(...vis.map((q) => q.left)), rr = Math.max(...vis.map((q) => q.right));
+    return { name: b.innerText.trim(), over: vis.length ? (l < r.left + 4 || rr > r.right - 4) : b.scrollWidth > b.clientWidth + 1 };
+  }));
+  checks++;
+  tabs.forEach((t) => { if (t.over) fail(`${w}: tab "${t.name}" does not fit`); });
   const heights = [];
   for (const tab of Object.keys(STATES)) {
     await page.evaluate((t) => window.AnpGraphExplore.current.tab(t), tab);
@@ -96,7 +107,7 @@ for (const w of WIDTHS) {
     }
     if (SHOTS) await (await page.$('.gx')).screenshot({ path: join(SHOTS, `${tab}-${w}${DARK ? '-dark' : ''}.png`) });
   }
-  if (w < 640 && new Set(heights).size > 1) fail(`${w}: cause line height changes (${[...new Set(heights)].join(', ')} px)`);
+  if (w <= 1100 && new Set(heights).size > 1) fail(`${w}: cause line height changes (${[...new Set(heights)].join(', ')} px)`);
   errs.forEach((e) => fail(`${w}: console error ${e}`));
   await ctx.close();
 }

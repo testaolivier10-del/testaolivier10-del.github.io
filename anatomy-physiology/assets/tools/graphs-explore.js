@@ -43,7 +43,8 @@
     o = o || {};
     var fs = E.fs, w = text.length * fs * 0.56 + fs * 1.1, h = fs * 1.75, a = o.anchor || 'middle';
     var x0 = a === 'start' ? x : a === 'end' ? x - w : x - w / 2;
-    x0 = clamp(x0, 3, PW - w - 3);
+    var bx = E.box || [0, PW];
+    x0 = clamp(x0, bx[0] + 3, bx[0] + bx[1] - w - 3);
     var y0 = clamp(y - h / 2, 3, PH - h - 3);
     var s = '';
     if(o.to){
@@ -112,27 +113,45 @@
         this.flow = function(t){ var h = 0.004; return (vol(clamp(t + h, 0, 0.8)) - vol(clamp(t - h, 0, 0.8))) / (2 * h); };   // mL per s
       },
       geo: function(t, E){
+        // the base (valve ring) stays where it is and the ventricle shortens and narrows toward the apex, so the wall,
+        // the ring and the valves stay joined on every frame
         var V = clamp(E.fn('vol')(t), 55, 135), s = Math.sqrt(V / 130), squeeze = clamp((1 - s) / (1 - Math.sqrt(60 / 130)), 0, 1);
-        var a = 70 * s, b = 80 * s, top = 224, cx = 232, cy = top + b * 0.82;
-        var wall = 18 + 18 * squeeze;   // the wall thickens as the cavity empties
-        return { V: V, s: s, a: a, b: b, cx: cx, cy: cy, top: top, wall: wall, mo: mitral(t), ao: aortic(t), la: atrium(t) };
+        var top = 226, cx = 232, a = lerp(66, 78, clamp((s - 0.68) / 0.32, 0, 1)), b = 150 * s;
+        var wall = 16 + 16 * squeeze;   // the wall thickens as the cavity empties
+        return { V: V, s: s, a: a, b: b, cx: cx, top: top, wall: wall, mo: mitral(t), ao: aortic(t), la: atrium(t) };
       },
       draw: function(E, t){
         var G = this.geo(t, E), self = this, s = '';
-        function egg(cx, cy, a, b){
-          return 'M' + (cx - a).toFixed(1) + ',' + (cy - b * 0.32).toFixed(1) + 'C' + (cx - a).toFixed(1) + ',' + (cy - b * 1.02).toFixed(1) + ' ' + (cx + a).toFixed(1) + ',' + (cy - b * 1.02).toFixed(1) + ' ' + (cx + a).toFixed(1) + ',' + (cy - b * 0.32).toFixed(1) +
-            'C' + (cx + a).toFixed(1) + ',' + (cy + b * 0.5).toFixed(1) + ' ' + (cx + a * 0.34).toFixed(1) + ',' + (cy + b).toFixed(1) + ' ' + cx.toFixed(1) + ',' + (cy + b).toFixed(1) +
-            'C' + (cx - a * 0.34).toFixed(1) + ',' + (cy + b).toFixed(1) + ' ' + (cx - a).toFixed(1) + ',' + (cy + b * 0.5).toFixed(1) + ' ' + (cx - a).toFixed(1) + ',' + (cy - b * 0.32).toFixed(1) + 'Z';
+        // a ventricle hanging from the ring: flat top at the ring, sides curving down to the apex
+        function sideCtl(cx, top, a, b, sx){ return [[cx + sx * a, top], [cx + sx * a * 1.02, top + b * 0.58], [cx + sx * a * 0.42, top + b], [cx, top + b]]; }
+        function bez(c, u){ var v = 1 - u; return [v*v*v*c[0][0] + 3*v*v*u*c[1][0] + 3*v*u*u*c[2][0] + u*u*u*c[3][0], v*v*v*c[0][1] + 3*v*v*u*c[1][1] + 3*v*u*u*c[2][1] + u*u*u*c[3][1]]; }
+        function bezD(c, u){ var v = 1 - u; return [3*v*v*(c[1][0]-c[0][0]) + 6*v*u*(c[2][0]-c[1][0]) + 3*u*u*(c[3][0]-c[2][0]), 3*v*v*(c[1][1]-c[0][1]) + 6*v*u*(c[2][1]-c[1][1]) + 3*u*u*(c[3][1]-c[2][1])]; }
+        function cup(cx, top, a, b){
+          var L = sideCtl(cx, top, a, b, -1), R = sideCtl(cx, top, a, b, 1), f = function(p){ return p[0].toFixed(1) + ',' + p[1].toFixed(1); };
+          return 'M' + f(L[0]) + 'C' + f(L[1]) + ' ' + f(L[2]) + ' ' + f(L[3]) + 'C' + f(R[2]) + ' ' + f(R[1]) + ' ' + f(R[0]) + 'Z';
         }
         s += '<rect class="gx-bg-chest" x="0" y="0" width="' + PW + '" height="' + PH + '"/>';
         // the ventricle's muscle (cut open), then the cavity: its area is the volume
-        var oa = G.a + G.wall, ob = G.b + G.wall * 0.9, ocy = G.cy - G.wall * 0.15;
-        s += '<path class="gx-myo" d="' + egg(G.cx, ocy, oa, ob) + '"/>';
-        s += '<path class="gx-blood gx-lv-cav" d="' + egg(G.cx, G.cy, G.a, G.b) + '"/>';
-        // papillary muscles on the floor, the chordae run from them to the mitral leaflets
-        var pm1 = [G.cx - G.a * 0.52, G.cy + G.b * 0.5], pm2 = [G.cx + G.a * 0.12, G.cy + G.b * 0.66];
-        s += '<ellipse class="gx-pap" cx="' + pm1[0].toFixed(1) + '" cy="' + pm1[1].toFixed(1) + '" rx="' + (9 * G.s + 3).toFixed(1) + '" ry="' + (15 * G.s + 4).toFixed(1) + '" transform="rotate(20 ' + pm1[0].toFixed(1) + ' ' + pm1[1].toFixed(1) + ')"/>';
-        s += '<ellipse class="gx-pap" cx="' + pm2[0].toFixed(1) + '" cy="' + pm2[1].toFixed(1) + '" rx="' + (9 * G.s + 3).toFixed(1) + '" ry="' + (14 * G.s + 4).toFixed(1) + '" transform="rotate(-12 ' + pm2[0].toFixed(1) + ' ' + pm2[1].toFixed(1) + ')"/>';
+        var oa = G.a + G.wall, ob = G.b + G.wall * 0.9;
+        (function(){   // the muscle: rounded shoulders at the base, the ring sits in its top
+          var T = G.top - 8, B = ob + 8, cx = G.cx, f = function(x, y){ return x.toFixed(1) + ',' + y.toFixed(1); };
+          s += '<path class="gx-myo" d="M' + f(cx - oa + 18, T) + 'Q' + f(cx - oa, T) + ' ' + f(cx - oa, T + 20) + 'C' + f(cx - oa * 1.02, T + B * 0.6) + ' ' + f(cx - oa * 0.42, T + B) + ' ' + f(cx, T + B) +
+            'C' + f(cx + oa * 0.42, T + B) + ' ' + f(cx + oa * 1.02, T + B * 0.6) + ' ' + f(cx + oa, T + 20) + 'Q' + f(cx + oa, T) + ' ' + f(cx + oa - 18, T) + 'Z"/>';
+        })();
+        s += '<path class="gx-blood gx-lv-cav" d="' + cup(G.cx, G.top, G.a, G.b) + '"/>';
+        // papillary muscles: cones that rise from the cavity wall and move with it
+        function pap(sx, u, len){
+          var c = sideCtl(G.cx, G.top, G.a, G.b, sx), p = bez(c, u), d = bezD(c, u), m = Math.hypot(d[0], d[1]) || 1, tx = d[0] / m, ty = d[1] / m;
+          var nx = -ty, ny = tx; if((G.cx - p[0]) * nx + (G.top + G.b * 0.45 - p[1]) * ny < 0){ nx = -nx; ny = -ny; }
+          var hw = 7 + 6 * G.s, L = len * (0.7 + 0.3 * G.s), tip = [p[0] + nx * L, p[1] + ny * L - 6];
+          var b1 = [p[0] - tx * hw, p[1] - ty * hw], b2 = [p[0] + tx * hw, p[1] + ty * hw];
+          return { tip: tip, base: p, d: 'M' + b1[0].toFixed(1) + ',' + b1[1].toFixed(1) + 'Q' + (b1[0] + nx * L * 0.75).toFixed(1) + ',' + (b1[1] + ny * L * 0.75).toFixed(1) + ' ' + tip[0].toFixed(1) + ',' + tip[1].toFixed(1) +
+            'Q' + (b2[0] + nx * L * 0.75).toFixed(1) + ',' + (b2[1] + ny * L * 0.75).toFixed(1) + ' ' + b2[0].toFixed(1) + ',' + b2[1].toFixed(1) + 'Z' };
+        }
+        var P1 = pap(-1, 0.5, 40), P2 = pap(1, 0.56, 36);
+        s += '<path class="gx-pap" d="' + P1.d + '"/><path class="gx-pap" d="' + P2.d + '"/>';
+        var pm1 = P1.tip, pm2 = P2.tip;
+        this._G = { cavity: [G.cx, G.top, G.a, G.b], pap: [P1.base, P2.base] };   // for the frame test
         // aorta: three branches off the arch, then the arch itself from the aortic valve over to the right and down
         [[318, 76, 306, -6], [345, 64, 344, -6], [372, 64, 386, -6]].forEach(function(br){
           var d = 'M' + br[0] + ',' + br[1] + ' L' + br[2] + ',' + br[3];
@@ -150,7 +169,7 @@
         s += '<path class="gx-ring" d="M160,226 L218,226 M246,226 L298,226"/>';
         // blood cells moving through the valves, placed by how much has crossed by now (in three lanes)
         var cin = self.cum(t, 'in'), cout = self.cum(t, 'out');
-        var inPts = [[150, 128], [176, 166], [188, 204], [190, 232], [194, 266], [202, 298]], outPts = [[250, 300], [262, 262], [272, 226], [270, 180], [274, 132], [298, 96], [344, 74], [400, 72]];
+        var low = G.top + G.b * 0.58, inPts = [[150, 128], [176, 166], [188, 204], [190, 232], [194, (232 + low) / 2], [204, low]], outPts = [[252, low], [262, (low + 226) / 2], [272, 226], [270, 180], [274, 132], [298, 96], [344, 74], [400, 72]];
         function along(pts, u){
           var Ls = [0], i; for(i = 1; i < pts.length; i++) Ls.push(Ls[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]));
           var d = u * Ls[Ls.length - 1];
@@ -170,7 +189,16 @@
         var mo = G.mo, mL = [168, 226], mR = [212, 226], len = 27;
         var angL = lerp(-0.1, 1.3, mo), angR = Math.PI - angL;
         var tipL = [mL[0] + Math.cos(angL) * len, mL[1] + Math.sin(angL) * len], tipR = [mR[0] + Math.cos(angR) * len, mR[1] + Math.sin(angR) * len];
-        s += '<path class="gx-chord" d="M' + tipL[0].toFixed(1) + ',' + tipL[1].toFixed(1) + 'L' + pm1[0].toFixed(1) + ',' + (pm1[1] - 10).toFixed(1) + 'M' + tipR[0].toFixed(1) + ',' + tipR[1].toFixed(1) + 'L' + pm2[0].toFixed(1) + ',' + (pm2[1] - 10).toFixed(1) + '"/>';
+        // chordae tendineae: thin cords from each papillary muscle to its leaflet; taut when the valve is shut, slack when open
+        var ch = '';
+        [[tipL, mL, pm1], [tipR, mR, pm2]].forEach(function(c){
+          for(var k = 0; k < 3; k++){
+            var u = 0.55 + k * 0.22, ax = lerp(c[1][0], c[0][0], u), ay = lerp(c[1][1], c[0][1], u), bx = c[2][0] + (k - 1) * 3, by = c[2][1];
+            var mx = (ax + bx) / 2, my = (ay + by) / 2, sl = 3 + 9 * mo + (k - 1) * 2;
+            ch += 'M' + ax.toFixed(1) + ',' + ay.toFixed(1) + 'Q' + (mx + sl * (c[1][0] < 190 ? -1 : 1)).toFixed(1) + ',' + my.toFixed(1) + ' ' + bx.toFixed(1) + ',' + by.toFixed(1);
+          }
+        });
+        s += '<path class="gx-chord" d="' + ch + '"/>';
         [[mL, tipL], [mR, tipR]].forEach(function(v){ s += '<path class="gx-valve" d="M' + v[0][0] + ',' + v[0][1] + 'Q' + ((v[0][0] + v[1][0]) / 2).toFixed(1) + ',' + ((v[0][1] + v[1][1]) / 2 - 6 * (1 - mo)).toFixed(1) + ' ' + v[1][0].toFixed(1) + ',' + v[1][1].toFixed(1) + '"/>'; });
         // aortic valve: cusps that meet in the middle when shut (cups facing the aorta) and lie against the wall when open
         var ao = G.ao, aL = [251, 226], aR = [293, 226], al = 22;
@@ -182,9 +210,9 @@
         var fl = self.flow(t);
         if(fl > 60 && mo > 0.5) s += flowArrow([[186, 186], [189, 222], [194, 256]], 'is-blood', 9);
         if(fl < -60 && ao > 0.5) s += flowArrow([[268, 268], [271, 228], [272, 184]], 'is-blood', 9);
-        s += readout(E, G.cx + 4, G.cy + G.b * 0.2, n0(G.V), 'mL', 'lv');
+        s += readout(E, G.cx + 6, G.top + G.b * 0.42, n0(G.V), 'mL', 'lv');
         s += lab(E, 92, 52, 'Left atrium', 'la', { to: [138, 112] });
-        s += lab(E, 76, 330, 'Left ventricle', 'lv', { to: [G.cx - oa + G.wall * 0.4, G.cy + G.b * 0.35] });
+        s += lab(E, 76, 330, 'Left ventricle', 'lv', { to: [G.cx - G.a - G.wall * 0.5, G.top + G.b * 0.5] });
         s += lab(E, 470, 26, 'Aorta', 'ao', { to: [420, 80] });
         s += lab(E, 74, 262, 'Mitral valve', 'valve', { to: [174, 230] });
         s += lab(E, 376, 248, 'Aortic valve', 'valve', { to: [294, 222] });
@@ -216,7 +244,7 @@
       draw: function(E, t){
         var V = this.V(t), f = clamp((V - VMIN) / (VMAX - VMIN), 0, 1), d = this.dV(t), s = '';
         var grow = 0.8 + 0.2 * f, base = 108;                          // lungs hang from the top; the diaphragm sets the floor
-        var floor = lerp(262, 356, f), chestW = lerp(0.95, 1.05, f);
+        var floor = lerp(282, 356, f), chestW = lerp(0.95, 1.05, f);
         s += '<rect class="gx-bg-skin" x="0" y="0" width="' + PW + '" height="' + PH + '"/>';
         // body: neck, shoulders and the chest wall
         s += '<path class="gx-body" d="M212,-4 L212,40 C150,52 70,62 40,110 C18,150 20,300 30,410 L490,410 C500,300 502,150 480,110 C450,62 370,52 308,40 L308,-4 Z"/>';
@@ -228,15 +256,22 @@
           ribs += '<path class="gx-rib" d="M' + (260 + w).toFixed(1) + ',' + (y + dy).toFixed(1) + ' Q' + (260 + w * 0.55).toFixed(1) + ',' + (y - 8).toFixed(1) + ' 272,' + (y + 4) + '"/>';
         }
         s += '<g class="gx-ribs">' + ribs + '</g><rect class="gx-sternum" x="250" y="96" width="20" height="' + (floor - 120).toFixed(1) + '" rx="8"/>';
-        // two lungs: their floor is the diaphragm
+        // the diaphragm: one dome shape, low at the sides, a cupola under each lung, a small dip at the middle; it
+        // flattens and drops as it contracts. The lungs' bases sit on it (never below it).
+        var dome = lerp(34, 14, f);
+        function domeY(x){ var u = clamp((x - 30) / 460, 0, 1); return floor + 34 - (34 + dome) * Math.pow(Math.sin(Math.PI * u), 0.6) + 7 * Math.exp(-Math.pow((x - 260) / 34, 2)); }
+        this._domeY = domeY;
         function lung(side){
-          var sx = side, cx = 260 + sx * 92 * chestW, w = 78 * chestW * grow, top = base, bot = floor;
-          var inner = 260 + sx * 20, outer = cx + sx * w;
-          return 'M' + inner + ',' + (top + 30) + ' C' + inner + ',' + (top + 6) + ' ' + (cx - sx * 10) + ',' + (top - 10) + ' ' + cx + ',' + (top - 6) +
-            ' C' + (outer - sx * 6) + ',' + (top + 10) + ' ' + outer + ',' + (top + 80) + ' ' + outer + ',' + ((top + bot) / 2 + 30) +
-            ' C' + outer + ',' + (bot - 10) + ' ' + (outer - sx * 10) + ',' + (bot + 4) + ' ' + (cx + sx * 6) + ',' + (bot - 2) +
-            ' C' + (cx - sx * 30) + ',' + (bot - 12) + ' ' + (inner + sx * 8) + ',' + (bot - 20) + ' ' + (inner + sx * 2) + ',' + (bot - 40) +
-            ' C' + (inner + sx * 30) + ',' + ((top + bot) / 2) + ' ' + inner + ',' + (top + 60) + ' ' + inner + ',' + (top + 30) + 'Z';
+          var sx = side, cx = 260 + sx * 92 * chestW, w = 78 * chestW * grow, top = base;
+          var inner = 260 + sx * 20, outer = cx + sx * w, gap = 9, o, k, n = 10;
+          var yo = domeY(outer) - gap, yi = domeY(inner + sx * 8) - gap;
+          o = 'M' + inner + ',' + (top + 30) + ' C' + inner + ',' + (top + 6) + ' ' + (cx - sx * 10) + ',' + (top - 10) + ' ' + cx + ',' + (top - 6) +
+            ' C' + (outer - sx * 6) + ',' + (top + 10) + ' ' + outer + ',' + (top + 80) + ' ' + outer + ',' + ((top + yo) / 2 + 20).toFixed(1) +
+            ' L' + outer + ',' + (yo - 6).toFixed(1);
+          // the base follows the dome from the outer edge to the inner edge
+          for(k = 0; k <= n; k++){ var x = lerp(outer - sx * 4, inner + sx * 8, k / n); o += ' L' + x.toFixed(1) + ',' + (domeY(x) - gap).toFixed(1); }
+          o += ' C' + (inner + sx * 30) + ',' + ((top + yi) / 2).toFixed(1) + ' ' + inner + ',' + (top + 60) + ' ' + inner + ',' + (top + 30) + 'Z';
+          return o;
         }
         s += '<path class="gx-lung" d="' + lung(-1) + '"/><path class="gx-lung" d="' + lung(1) + '"/>';
         // alveolar texture and the airway tree inside each lung
@@ -244,14 +279,14 @@
         [-1, 1].forEach(function(sx){
           pts.forEach(function(p, i){
             var cx = 260 + sx * (40 + p[0] * 118 * chestW * grow), cy = base + 18 + p[1] * (floor - base - 40);
-            if(Math.abs(cx - 260) < 34 + (cy - base) * 0.1) return;
+            if(Math.abs(cx - 260) < 34 + (cy - base) * 0.1 || cy > domeY(cx) - 24) return;
             tex += '<circle class="gx-alv" cx="' + cx.toFixed(1) + '" cy="' + cy.toFixed(1) + '" r="' + (7 + (i % 3) * 2) + '"/>';
           });
         });
         s += '<g class="gx-alvs">' + tex + '</g>';
         var tree = 'M260,-4 L260,104 M260,104 C240,112 222,122 206,140 M260,104 C280,112 298,122 314,140' +
-          ' M206,140 C194,160 186,184 180,' + (floor - 60) + ' M206,140 C220,170 226,200 228,' + (floor - 70) +
-          ' M314,140 C326,160 334,184 340,' + (floor - 60) + ' M314,140 C300,170 294,200 292,' + (floor - 70) +
+          ' M206,140 C194,160 186,184 180,' + Math.max(170, domeY(180) - 34).toFixed(1) + ' M206,140 C220,170 226,200 228,' + Math.max(170, domeY(228) - 30).toFixed(1) +
+          ' M314,140 C326,160 334,184 340,' + Math.max(170, domeY(340) - 34).toFixed(1) + ' M314,140 C300,170 294,200 292,' + Math.max(170, domeY(292) - 30).toFixed(1) +
           ' M206,140 C180,146 158,160 140,176 M314,140 C340,146 362,160 380,176';
         s += '<path class="gx-airway-w" d="' + tree + '"/><path class="gx-airway" d="' + tree + '"/>';
         s += '<path class="gx-trachea-rings" d="M252,14 h16 M252,30 h16 M252,46 h16 M252,62 h16 M252,78 h16 M252,94 h16"/>';
@@ -262,19 +297,21 @@
           air += '<circle class="gx-air" cx="' + (260 + (i % 2 ? 3 : -3)) + '" cy="' + y2.toFixed(1) + '" r="4" opacity="' + op.toFixed(2) + '"/>';
         }
         s += '<g>' + air + '</g>';
-        // the diaphragm: a dome under the lungs; it flattens and drops as it contracts
-        var dome = lerp(34, 14, f), mus = d > 120 ? 1 : 0, push = d < -120 && V < 2350;
-        s += '<path class="gx-dia' + (mus ? ' is-on' : '') + '" d="M30,' + (floor + 34).toFixed(1) + ' C120,' + (floor - dome).toFixed(1) + ' 220,' + (floor - dome - 6).toFixed(1) + ' 260,' + (floor - dome + 4).toFixed(1) +
-          ' C300,' + (floor - dome - 6).toFixed(1) + ' 400,' + (floor - dome).toFixed(1) + ' 490,' + (floor + 34).toFixed(1) + '"/>';
-        if(mus) s += flowArrow([[150, floor - 2], [150, floor + 24]], 'is-mus', 8) + flowArrow([[370, floor - 2], [370, floor + 24]], 'is-mus', 8);
-        if(push) s += flowArrow([[150, floor + 60], [150, floor + 34]], 'is-mus', 8) + flowArrow([[370, floor + 60], [370, floor + 34]], 'is-mus', 8);
+        // the muscles: the diaphragm is drawn contracting only on a breath in driven by muscle (not while the chest springs
+        // back from below the resting volume); on the forced breath out the belly muscles push it up
+        var deep = t > 8 && t < 20, mus = d > 120 && V >= 2350, push = d < -120 && (V < 2350 || deep) && V >= 1350 && V <= 5750;   // the line names the push in this range
+        var dp = 'M30,' + domeY(30).toFixed(1); for(var q = 1; q <= 46; q++){ var xq = 30 + q * 10; dp += ' L' + xq + ',' + domeY(xq).toFixed(1); }
+        s += '<path class="gx-dia' + (mus ? ' is-on' : '') + '" d="' + dp + '"/>';
+        if(mus) s += flowArrow([[150, domeY(150) + 4], [150, domeY(150) + 28]], 'is-mus', 8) + flowArrow([[370, domeY(370) + 4], [370, domeY(370) + 28]], 'is-mus', 8);
+        if(push) s += flowArrow([[150, domeY(150) + 40], [150, domeY(150) + 14]], 'is-mus', 8) + flowArrow([[370, domeY(370) + 40], [370, domeY(370) + 14]], 'is-mus', 8);
+        this._mus = { on: mus, push: push };   // for the frame test
         // which way air moves now
         if(d > 120) s += flowArrow([[288, 6], [288, 60]], 'is-air', 9) + lab(E, 344, 30, 'Air in', 'air');
         else if(d < -120) s += flowArrow([[288, 60], [288, 6]], 'is-air', 9) + lab(E, 344, 30, 'Air out', 'air');
-        s += readout(E, 132, floor - 52, n0(V), 'mL', 'air');
+        s += readout(E, 140, domeY(140) - 40, n0(V), 'mL', 'air');
         s += lab(E, 404, Math.min(floor - 70, 230), 'Lungs', 'air', { to: [372, Math.min(floor - 100, 200)] });
-        s += lab(E, 444, floor + 22, 'Diaphragm', 'mus', { to: [410, floor + 8] });
-        if(V < 1500) s += lab(E, 132, floor - 18, 'Residual air', 'rv');
+        s += lab(E, 444, domeY(444) + 30, 'Diaphragm', 'mus', { to: [420, domeY(420) + 2] });
+        if(V < 1500) s += lab(E, 140, domeY(140) - 14, 'Residual air', 'rv');
         return s;
       },
       words: function(E, t){
@@ -303,7 +340,7 @@
   (function(){
     var SITES = 24;
     // where in the body a PO2 is found (course notes, oxygen transport): lungs about 100, resting tissue about 40, working muscle about 20
-    function place(p){ return { lung: ramp(p, 74, 86), rest: ramp(p, 28, 34) * (1 - ramp(p, 52, 60)), work: 1 - ramp(p, 22, 28) }; }
+    function place(p){ return { lung: ramp(p, 74, 86), rest: ramp(p, 28, 34) * (1 - ramp(p, 52, 60)), work: (1 - ramp(p, 22, 28)) * ramp(p, 8, 14) }; }   // even working muscle stays above about 12
     function nOf(S){ return S / 100 * SITES + 0.25; }   // sites drawn bound: hemoglobin fills one molecule at a time (cooperative binding)
     SCENES.push({
       id: 'rbc', graph: 'oxygen-hemoglobin', tab: 'Red blood cell', short: 'Red cell',
@@ -312,14 +349,14 @@
       step: 1, start: 100, xName: 'PO2', xUnit: 'mm Hg', xFmt: function(x){ return Math.round(x) + ' mm Hg'; },
       cueText: 'Drag the graph',
       region: function(p){ return p >= 60 ? { x0: 60, x1: 100, name: 'flat top' } : p >= 10 && p <= 50 ? { x0: 10, x1: 50, name: 'steep middle' } : null; },
-      init: function(E){ this.S = E.fn('normal'); this.hb = scatter(SITES, 0.4); this.o2 = scatter(30, 0.13); },
+      init: function(E){ this.S = E.fn('normal'); this.hb = scatter(SITES, 0.4); this.o2 = [[0.9, 0.86], [0.08, 0.1], [0.94, 0.2], [0.05, 0.9]]; },
       draw: function(E, p){
         var S = clamp(this.S(p), 0, 100), pl = place(p), s = '', k;
         s += '<rect class="gx-bg-tissue" x="0" y="0" width="' + PW + '" height="' + PH + '"/>';
         // the place around the capillary
         if(pl.lung > 0.01){
           var al = '';
-          [[60, 64, 58], [176, 52, 52], [300, 66, 62], [430, 56, 56], [80, 344, 54], [206, 352, 58], [332, 340, 56], [458, 352, 54]].forEach(function(c){
+          [[60, 64, 58], [176, 52, 52], [300, 66, 62], [430, 56, 56], [78, 344, 54], [450, 346, 56]].forEach(function(c){
             al += '<circle class="gx-sac" cx="' + c[0] + '" cy="' + c[1] + '" r="' + c[2] + '"/>';
             scatter(5, c[0] / 97).forEach(function(q){ al += '<g class="gx-o2m" transform="translate(' + (c[0] + (q[0] - 0.5) * c[2] * 1.1).toFixed(1) + ',' + (c[1] + (q[1] - 0.5) * c[2] * 1.1).toFixed(1) + ')"><circle cx="-3" r="3.6"/><circle cx="3" r="3.6"/></g>'; });
           });
@@ -343,13 +380,14 @@
         }
         // the capillary and the plasma
         s += '<rect class="gx-cap-wall" x="-10" y="118" width="' + (PW + 20) + '" height="164" rx="0"/><rect class="gx-plasma" x="-10" y="128" width="' + (PW + 20) + '" height="144"/>';
-        // dissolved O2 in the plasma: as many as the PO2 says (up to 30 at 100 mm Hg)
-        var nd = Math.round(p / 100 * 30), d = '';
+        // dissolved O2 in the plasma: a handful, as many as the PO2 says (4 at 100 mm Hg); about 98.5% of the O2 in blood
+        // rides on hemoglobin, so the dissolved ones never outnumber the bound ones
+        var nd = Math.round(p / 100 * 4), d = '', nDis = 0;
         this.o2.forEach(function(q, i){
           if(i >= nd) return;
           var x = 14 + q[0] * (PW - 28), y = 136 + q[1] * 128;
           if(x > 108 && x < 412 && y > 150 && y < 250) y = q[1] < 0.5 ? 140 + q[1] * 12 : 258 + (q[1] - 0.5) * 12;
-          d += '<g class="gx-o2m" transform="translate(' + x.toFixed(1) + ',' + y.toFixed(1) + ')"><circle cx="-3" r="3.6"/><circle cx="3" r="3.6"/></g>';
+          d += '<g class="gx-o2m is-dis" transform="translate(' + x.toFixed(1) + ',' + y.toFixed(1) + ')"><circle cx="-3" r="3.6"/><circle cx="3" r="3.6"/></g>'; nDis++;
         });
         s += '<g>' + d + '</g>';
         // the red blood cell, cut open, with six hemoglobin molecules of four subunits each
@@ -373,7 +411,8 @@
         if(where) s += lab(E, 12, 100, where, 'place', { anchor: 'start', strong: true });
         s += lab(E, 470, 100, 'Red blood cell', 'rbc', { to: [392, 172], anchor: 'end' });
         s += lab(E, 140, 304, 'Hemoglobin', 'hb', { to: [140, 222] });
-        s += lab(E, 440, 304, 'Dissolved O₂', 'o2', { to: [452, 262] });
+        if(nDis) s += lab(E, 440, 304, 'Dissolved O₂', 'o2', { to: [455, 254] });
+        this._o2 = { dissolved: nDis, bound: (o2b.match(/is-bound/g) || []).length };   // for the frame test
         return s;
       },
       words: function(E, p){
@@ -382,6 +421,7 @@
         if(p >= 60) return [{ t: 'Flat top', role: 'place' }, { t: 'PO₂ still high', role: 'o2', say: 'PO2 is still high' }, { t: 'hemoglobin stays loaded', role: 'hb' }, sat];
         if(pl.rest > 0.5) return [{ t: 'Resting tissue', role: 'place' }, { t: 'PO₂ lower', role: 'o2', say: 'PO2 is lower' }, { t: 'O₂ unloads', role: 'hb', say: 'oxygen unloads' }, sat];
         if(pl.work > 0.5) return [{ t: 'Working muscle', role: 'place' }, { t: 'PO₂ low', role: 'o2', say: 'PO2 is low' }, { t: 'much more O₂ unloads', role: 'hb', say: 'much more oxygen unloads' }, sat];
+        if(p < 10) return [{ t: 'PO₂ very low', role: 'o2', say: 'PO2 is very low' }, { t: 'little O₂ left on hemoglobin', role: 'hb', say: 'little oxygen is left on hemoglobin' }, sat];
         return [{ t: 'Steep middle', role: 'place' }, { t: 'small PO₂ change', role: 'o2', say: 'a small change in PO2' }, { t: 'big change in O₂ held', role: 'hb', say: 'a big change in the oxygen held' }, sat];
       },
       say: function(E, p){ return 'At a PO2 of ' + Math.round(p) + ' mm Hg hemoglobin is ' + Math.round(this.S(p)) + ' percent saturated. ' + E.text(p); }
@@ -393,12 +433,16 @@
     // channel states from the moment of the recording (course notes, action potential basics): Na+ channels open fast
     // at threshold, inactivate near the peak and reset once repolarized; K+ channels open slowly, about when Na+ ones
     // shut, and are slow to close (the hyperpolarization)
-    function naOpen(t){ return ramp(t, 2.95, 3.08) * (1 - ramp(t, 3.38, 3.56)); }   // open, then inactivated (and closed again once reset)
-    function inact(t){ return ramp(t, 3.38, 3.56) * (1 - ramp(t, 4.4, 5.0)); }
+    function naOpen(t){ return ramp(t, 2.95, 3.08) * (1 - ramp(t, 3.38, 3.56)); }   // conducting: pore open and not plugged
+    function inact(t){ return ramp(t, 3.38, 3.56) * (1 - ramp(t, 4.4, 5.0)); }       // the inactivation plug is in
+    // the activation gate (the pore): opens at threshold and stays open while the plug is in, until the membrane has
+    // repolarized; it shuts (4.15 to 4.4 ms) before the plug leaves (4.4 to 5.0 ms): inactivated = open pore, plugged
+    function naPore(t){ return ramp(t, 2.95, 3.08) * (1 - ramp(t, 4.15, 4.4)); }
     function kOpen(t){ return ramp(t, 3.3, 3.62) * (1 - ramp(t, 4.9, 6.7)); }
     var NA = [116, 336], KK = [226, 446], MY = 200, MH = 54;   // channel x places, membrane middle and thickness
     SCENES.push({
       id: 'axon', graph: 'neuron-action-potential', tab: 'Axon', short: 'Axon',
+      crop: function(narrow){ return narrow ? [58, 330] : null; },   // a phone shows three channels, bigger
       purpose: 'Which channels are open makes each part of the spike',
       series: [{ id: 'ap', role: 'v', label: 'membrane potential', at: [3.55, 0], dy: -12, anchor: 'start' }],
       step: 0.05, start: 0, xName: 'Time', xUnit: 'ms', xFmt: function(x){ return x.toFixed(2) + ' ms'; },
@@ -413,7 +457,7 @@
         this.V = E.fn('ap');
       },
       draw: function(E, t){
-        var V = this.V(t), s = '', i, na = naOpen(t), h = inact(t), kk = kOpen(t), nac = this.naC(t), kc = this.kC(t);
+        var V = this.V(t), s = '', i, na = naOpen(t), pore = naPore(t), h = inact(t), kk = kOpen(t), nac = this.naC(t), kc = this.kC(t), B = E.box;
         s += '<rect class="gx-out" x="0" y="0" width="' + PW + '" height="' + (MY - MH / 2) + '"/><rect class="gx-in" x="0" y="' + (MY + MH / 2) + '" width="' + PW + '" height="' + (PH - MY - MH / 2) + '"/>';
         // the lipid bilayer: two rows of heads with tails
         var bl = '';
@@ -435,16 +479,17 @@
         s += '<g>' + ch + '</g>';
         // channels: two protein halves around a pore; the pore opens with the channel; Na+ channels have a plug inside
         function channel(cx, kind, open, plug){
-          var gap = 3 + 11 * open, o = '';
+          var gap = 3 + 11 * open, o = '<g class="gx-ch is-' + kind + '" data-gap="' + (2 * gap).toFixed(1) + '" data-plug="' + plug.toFixed(2) + '">';
           o += '<path class="gx-prot is-' + kind + '" d="M' + (cx - gap - 22) + ',' + (MY - MH / 2 - 8) + ' h22 v' + (MH + 16) + ' h-22 q-6,-' + ((MH + 16) / 2) + ' 0,-' + (MH + 16) + 'Z"/>';
           o += '<path class="gx-prot is-' + kind + '" d="M' + (cx + gap + 22) + ',' + (MY - MH / 2 - 8) + ' h-22 v' + (MH + 16) + ' h22 q6,-' + ((MH + 16) / 2) + ' 0,-' + (MH + 16) + 'Z"/>';
           if(kind === 'na'){
-            var px = cx + 24 - 22 * plug, py = MY + MH / 2 + 18 - 12 * plug;
+            // the plug swings into the pore's inner mouth; once the gate has shut it rests just under it until it leaves
+            var px = cx + 24 - 22 * plug, py = MY + MH / 2 + 18 - 12 * plug + 9 * (1 - open) * plug;
             o += '<path class="gx-plug-l is-na" d="M' + (cx + gap + 4) + ',' + (MY + MH / 2 + 8) + ' Q' + (cx + 28) + ',' + (MY + MH / 2 + 24) + ' ' + px.toFixed(1) + ',' + py.toFixed(1) + '"/><circle class="gx-plug is-na" cx="' + px.toFixed(1) + '" cy="' + py.toFixed(1) + '" r="7"/>';
           }
-          return o;
+          return o + '</g>';
         }
-        NA.forEach(function(cx){ s += channel(cx, 'na', na, h); });
+        NA.forEach(function(cx){ s += channel(cx, 'na', pore, h); });
         KK.forEach(function(cx){ s += channel(cx, 'k', kk, 0); });
         // ions: Na+ mostly outside, K+ mostly inside; those that cross this spike move through the pores
         var ions = '', i2;
@@ -464,18 +509,19 @@
         s += '<g>' + ions + '</g>';
         // flow arrows only while ions are crossing
         if(na > 0.3) NA.forEach(function(cx){ s += flowArrow([[cx - 34, MY - MH / 2 - 30], [cx - 34, MY + MH / 2 + 26]], 'is-na', 8); });
-        if(kk > 0.3 && t < 6.6) KK.forEach(function(cx){ s += flowArrow([[cx - 34, MY + MH / 2 + 30], [cx - 34, MY - MH / 2 - 26]], 'is-k', 8); });
-        s += lab(E, 12, 22, 'Outside', 'side', { anchor: 'start' }) + lab(E, 12, PH - 22, 'Inside', 'side', { anchor: 'start' });
-        s += readout(E, PW - 14, PH - 18, minus(Math.round(V)), 'mV inside', 'v', 'end');
+        if(kk > 0.3 || (t > 3.6 && kk > 0.05)) KK.forEach(function(cx){ s += flowArrow([[cx - 34, MY + MH / 2 + 30], [cx - 34, MY - MH / 2 - 26]], 'is-k', 8); });
+        s += lab(E, B[0] + 12, 22, 'Outside', 'side', { anchor: 'start' }) + lab(E, B[0] + 12, PH - 22, 'Inside', 'side', { anchor: 'start' });
+        s += readout(E, B[0] + B[1] - 14, PH - 18, minus(Math.round(V)), 'mV inside', 'v', 'end');
         s += lab(E, NA[0], MY - MH / 2 - 70, 'Na⁺ channel', 'na', { to: [NA[0], MY - MH / 2 - 10] });
-        s += lab(E, KK[1], MY - MH / 2 - 70, 'K⁺ channel', 'k', { to: [KK[1], MY - MH / 2 - 10] });
+        var kl = B[0] + B[1] > KK[1] + 40 ? KK[1] : KK[0];   // on a phone the picture is cropped to three channels
+        s += lab(E, kl, MY - MH / 2 - 70, 'K⁺ channel', 'k', { to: [kl, MY - MH / 2 - 10] });
         return s;
       },
       words: function(E, t){
         var V = this.V(t), na = naOpen(t), h = inact(t), kk = kOpen(t);
         if(na > 0.5) return [{ t: 'Threshold reached', role: 'v' }, { t: 'Na⁺ channels open', role: 'na', say: 'sodium channels open' }, { t: 'Na⁺ rushes in', role: 'na', say: 'sodium rushes in' }, { t: 'Depolarization', role: 'phase' }];
         if(h > 0.5 && kk > 0.5 && V > -70) return [{ t: 'Na⁺ channels plugged', role: 'na', say: 'sodium channels inactivate' }, { t: 'K⁺ channels open', role: 'k', join: '+', say: 'potassium channels open' }, { t: 'K⁺ out', role: 'k', say: 'potassium flows out' }, { t: 'Repolarization', role: 'phase' }];
-        if(V < -71.2 && kk > 0.05) return [{ t: 'K⁺ channels slow to close', role: 'k', say: 'potassium channels are slow to close' }, { t: 'extra K⁺ out', role: 'k', say: 'extra potassium leaves' }, { t: 'Hyperpolarization', role: 'phase' }];
+        if(t > 3.6 && kk > 0.05 && V <= -70) return [{ t: 'K⁺ channels slow to close', role: 'k', say: 'potassium channels are slow to close' }, { t: 'extra K⁺ out', role: 'k', say: 'extra potassium leaves' }, { t: 'Hyperpolarization', role: 'phase' }];
         if(t >= 0.4 && t <= 2.1 && V > -69.5) return [{ t: 'Weak stimulus', role: 'v' }, { t: 'small depolarization', role: 'v' }, { t: 'below threshold', role: 'v' }, { t: 'Graded potential', role: 'phase' }];
         if(t > 2.35 && t < 3.0 && V > -69.5) return [{ t: 'Stronger stimulus', role: 'v' }, { t: 'nears threshold', role: 'v', say: 'the membrane depolarizes toward threshold' }, { t: 'Graded potential', role: 'phase' }];
         return [{ t: 'Voltage-gated channels shut', role: 'side', say: 'the voltage-gated channels are shut' }, { t: 'inside more negative', role: 'v', say: 'the inside is more negative than the outside' }, { t: 'Resting potential', role: 'phase' }];
@@ -507,46 +553,59 @@
         var tl = Math.min(THICK, L - 0.06) / 2;                        // the thick filament is stopped by the Z discs
         var crush = clamp((THICK - (L - 0.06)) / 0.5, 0, 1);
         s += '<rect class="gx-bg-myo" x="0" y="0" width="' + PW + '" height="' + PH + '"/>';
-        // the band of myofibril and its neighbors' faint ends
+        // the myofibril: this sarcomere and its neighbours on both sides (thin filaments carry on past each Z disc into
+        // the next sarcomere, which is in the same state), so the picture is a piece of a real myofibril
         s += '<rect class="gx-fibril" x="-10" y="92" width="' + (PW + 20) + '" height="216" rx="20"/>';
-        // thin filaments (actin): from each Z disc toward the middle, two strands twisted
-        var thin = '';
-        TROWS.forEach(function(y, r){
-          [[zl, 1], [zr, -1]].forEach(function(z){
-            var x0 = z[0], x1 = z[0] + z[1] * THIN * U, yo = (z[1] > 0 ? -2 : 2) * clamp((THIN * 2 - L) / 0.3, 0, 1);
-            thin += '<path class="gx-actin" d="M' + x0.toFixed(1) + ',' + (y + yo).toFixed(1) + 'L' + x1.toFixed(1) + ',' + (y + yo).toFixed(1) + '"/>';
-            for(var b = 0; b < 15; b++){ var bx = x0 + z[1] * (b + 0.5) * THIN * U / 15; thin += '<circle class="gx-actin-b" cx="' + bx.toFixed(1) + '" cy="' + (y + yo + (b % 2 ? 2.2 : -2.2)).toFixed(1) + '" r="3.1"/>'; }
+        var want = Math.round(T / 100 * HX.length * 2 * ROWS.length * 2), main = null, period = L * U, kmax = Math.ceil(PW / 2 / period) + 1;
+        function one(C, isMain){
+          var zl = C - half * U, zr = C + half * U, thin = '', thick = '', bridges = '', cand = [];
+          // thin filaments (actin): from each Z disc toward the middle, two strands twisted
+          TROWS.forEach(function(y){
+            [[zl, 1], [zr, -1]].forEach(function(z){
+              var x0 = z[0], x1 = z[0] + z[1] * THIN * U, yo = (z[1] > 0 ? -2 : 2) * clamp((THIN * 2 - L) / 0.3, 0, 1);
+              thin += '<path class="gx-actin" d="M' + x0.toFixed(1) + ',' + (y + yo).toFixed(1) + 'L' + x1.toFixed(1) + ',' + (y + yo).toFixed(1) + '"/>';
+              for(var b = 0; b < 15; b++){ var bx = x0 + z[1] * (b + 0.5) * THIN * U / 15; thin += '<circle class="gx-actin-b" cx="' + bx.toFixed(1) + '" cy="' + (y + yo + (b % 2 ? 2.2 : -2.2)).toFixed(1) + '" r="3.1"/>'; }
+            });
           });
-        });
-        s += '<g>' + thin + '</g>';
-        // thick filaments (myosin) with heads; heads in reach of actin pointing the right way attach (cross-bridges)
-        var thick = '', bridges = '', want = Math.round(T / 100 * HX.length * 2 * ROWS.length * 2), cand = [];
-        ROWS.forEach(function(y, r){
-          var kink = crush * 7;
-          thick += '<path class="gx-myosin" d="M' + (CX - tl * U).toFixed(1) + ',' + y + ' L' + (CX - tl * U * 0.6).toFixed(1) + ',' + (y - kink).toFixed(1) + ' L' + (CX - tl * U * 0.3).toFixed(1) + ',' + (y + kink).toFixed(1) + ' L' + (CX + tl * U * 0.3).toFixed(1) + ',' + (y - kink).toFixed(1) + ' L' + (CX + tl * U * 0.6).toFixed(1) + ',' + (y + kink).toFixed(1) + ' L' + (CX + tl * U).toFixed(1) + ',' + y + '"/>';
-          [-1, 1].forEach(function(side){
-            HX.forEach(function(hx, i){
-              var sc = tl / (THICK / 2), px = CX + side * hx * U * sc;
-              [-1, 1].forEach(function(up){
-                var ty = y + up * 25, ownTip = half - THIN;   // the own-side thin filament reaches from the Z disc to |x| = half - THIN
-                cand.push({ px: px, y: y, ty: ty, up: up, side: side, d: hx, ok: hx * sc >= ownTip - 0.02 && hx * sc <= half });
+          // thick filaments (myosin) with heads; heads in reach of their own thin filament attach (cross-bridges); a
+          // thick filament pressed against the Z discs bends a little
+          ROWS.forEach(function(y){
+            var kink = crush * 3.5;
+            thick += '<path class="gx-myosin" d="M' + (C - tl * U).toFixed(1) + ',' + y + ' L' + (C - tl * U * 0.6).toFixed(1) + ',' + (y - kink).toFixed(1) + ' L' + (C - tl * U * 0.3).toFixed(1) + ',' + (y + kink).toFixed(1) + ' L' + (C + tl * U * 0.3).toFixed(1) + ',' + (y - kink).toFixed(1) + ' L' + (C + tl * U * 0.6).toFixed(1) + ',' + (y + kink).toFixed(1) + ' L' + (C + tl * U).toFixed(1) + ',' + y + '"/>';
+            [-1, 1].forEach(function(side){
+              HX.forEach(function(hx){
+                var sc = tl / (THICK / 2), px = C + side * hx * U * sc;
+                [-1, 1].forEach(function(up){
+                  var ownTip = half - THIN;   // the own-side thin filament reaches from the Z disc to |x| = half - THIN
+                  cand.push({ px: px, y: y, ty: y + up * 25, up: up, side: side, d: hx, ok: hx * sc >= ownTip - 0.02 && hx * sc <= half });
+                });
               });
             });
           });
-        });
-        // the tension the graph gives is the number of heads attached; they attach outermost first (the middle is where
-        // thin filaments from both ends crowd past each other on a short sarcomere)
-        var ok = cand.filter(function(c){ return c.ok; }).sort(function(a, b){ return b.d - a.d; }), attached = 0;
-        ok.slice(0, want).forEach(function(c){ c.on = true; attached++; });
-        cand.forEach(function(c){
-          var ang = c.side > 0 ? -1 : 1, hx2 = c.px + ang * 6, hy = c.y + c.up * (c.on ? 17 : 11);
-          if(c.on){ bridges += '<path class="gx-xb" d="M' + c.px.toFixed(1) + ',' + (c.y + c.up * 3) + ' L' + hx2.toFixed(1) + ',' + (c.ty - c.up * 4).toFixed(1) + '"/><circle class="gx-xb-h" cx="' + hx2.toFixed(1) + '" cy="' + (c.ty - c.up * 5).toFixed(1) + '" r="4.2"/>'; }
-          else thick += '<path class="gx-head-m" d="M' + c.px.toFixed(1) + ',' + (c.y + c.up * 3) + ' L' + (c.px - ang * 5).toFixed(1) + ',' + hy.toFixed(1) + '"/>';
-        });
-        s += '<g>' + thick + '</g><g>' + bridges + '</g>';
-        // Z discs and the M line
-        [zl, zr].forEach(function(z){ var d = 'M' + z + ',100'; for(var k = 0; k < 10; k++) d += 'L' + (z + (k % 2 ? 6 : -6)) + ',' + (110 + k * 20); s += '<path class="gx-z" d="' + d + 'L' + z + ',300"/>'; });
-        s += '<path class="gx-mline" d="M' + CX + ',110 V290"/>';
+          // the tension the graph gives is the number of heads attached; they attach outermost first (the middle is where
+          // thin filaments from both ends crowd past each other on a short sarcomere)
+          var ok = cand.filter(function(c){ return c.ok; }).sort(function(a, b){ return b.d - a.d; }), attached = 0;
+          ok.slice(0, want).forEach(function(c){ c.on = true; attached++; });
+          cand.forEach(function(c){
+            var ang = c.side > 0 ? -1 : 1, hx2 = c.px + ang * 6, hy = c.y + c.up * (c.on ? 17 : 11);
+            if(c.on){ bridges += '<path class="gx-xb" d="M' + c.px.toFixed(1) + ',' + (c.y + c.up * 3) + ' L' + hx2.toFixed(1) + ',' + (c.ty - c.up * 4).toFixed(1) + '"/><circle class="gx-xb-h" cx="' + hx2.toFixed(1) + '" cy="' + (c.ty - c.up * 5).toFixed(1) + '" r="4.2"/>'; }
+            else thick += '<path class="gx-head-m" d="M' + c.px.toFixed(1) + ',' + (c.y + c.up * 3) + ' L' + (c.px - ang * 5).toFixed(1) + ',' + hy.toFixed(1) + '"/>';
+          });
+          var o = '<g class="gx-sarc' + (isMain ? ' is-main' : '') + '">' + thin + thick + bridges + '<path class="gx-mline" d="M' + C.toFixed(1) + ',110 V290"/></g>';
+          if(isMain) main = { zl: zl, zr: zr, ok: ok, attached: attached };
+          return o;
+        }
+        var sar = '';
+        for(var k = -kmax; k <= kmax; k++){ var C = CX + k * period; if(C + period / 2 < -20 || C - period / 2 > PW + 20) continue; if(k) sar += one(C, false); }
+        sar += one(CX, true);
+        s += sar;
+        // Z discs at every boundary
+        for(var kz = -kmax; kz <= kmax + 1; kz++){
+          var z = CX + (kz - 0.5) * period; if(z < -10 || z > PW + 10) continue;
+          var zd = 'M' + z.toFixed(1) + ',100'; for(var q = 0; q < 10; q++) zd += 'L' + (z + (q % 2 ? 6 : -6)).toFixed(1) + ',' + (110 + q * 20);
+          s += '<path class="gx-z" d="' + zd + 'L' + z.toFixed(1) + ',300"/>';
+        }
+        var zl = main.zl, zr = main.zr, ok = main.ok, attached = main.attached;
         // overlap brackets would be numbers: the tension is the readout
         s += readout(E, CX, 388, Math.round(T) + '%', 'of max tension', 'xb');
         s += lab(E, 8, 66, 'Z disc', 'z', { to: [zl, 104], anchor: 'start' });
@@ -590,10 +649,10 @@
       '<radialGradient id="gx-gl" cx="0.4" cy="0.35" r="0.8"><stop offset="0" stop-color="#F7B7B9"/><stop offset="1" stop-color="#E58C93"/></radialGradient>' +
       '<radialGradient id="gx-gr" cx="0.45" cy="0.3" r="0.8"><stop offset="0" stop-color="#E5563F"/><stop offset="1" stop-color="#A3200F"/></radialGradient>' +
       '</defs><g class="gx-dyn"></g></svg></div>' +
-      '<div class="gx-plot"><svg class="gx-gsvg" role="img" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"><g class="gx-gs"></g><g class="gx-gd"></g></svg></div>';
+      '<div class="gx-plot"><svg class="gx-gsvg" role="img" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"><g class="gx-gs"></g><g class="gx-gn"></g><g class="gx-gd"></g></svg></div>';
     stage.appendChild(scene);
     tabs.el.querySelectorAll('.tk2-tab').forEach(function(b){ b.setAttribute('aria-controls', scene.id); });
-    var psvg = scene.querySelector('.gx-psvg'), dyn = scene.querySelector('.gx-dyn'), plotBox = scene.querySelector('.gx-plot'), gsvg = scene.querySelector('.gx-gsvg'), gS = gsvg.querySelector('.gx-gs'), gD = gsvg.querySelector('.gx-gd');
+    var psvg = scene.querySelector('.gx-psvg'), dyn = scene.querySelector('.gx-dyn'), plotBox = scene.querySelector('.gx-plot'), gsvg = scene.querySelector('.gx-gsvg'), gS = gsvg.querySelector('.gx-gs'), gN = gsvg.querySelector('.gx-gn'), gD = gsvg.querySelector('.gx-gd');
     var layer = K.layer(plotBox);
     var lines = document.createElement('div'); lines.className = 'gx-lines';
     var cause = K.cause({ label: 'Why' });
@@ -650,20 +709,12 @@
         for(var i = 0; i <= n; i++){ var xx = X.min + (X.max - X.min) * i / n; d += (i ? 'L' : 'M') + sx(xx).toFixed(1) + ',' + sy(clamp(f(xx), Y.min, Y.max)).toFixed(1); }
         s += '<path class="gx-curve is-' + se.role + '" d="' + d + '"/>';
       });
-      // curve names on the lines, kept apart
-      var placed = [];
-      sc.series.forEach(function(se){
-        var f = sc.fn(se.id), lx = se.at[0], ly = sy(f(lx)) + (se.dy || -12), a = se.anchor || 'middle', tw = se.label.length * 6.6;
-        var bx = a === 'start' ? sx(lx) : a === 'end' ? sx(lx) - tw : sx(lx) - tw / 2;
-        if(bx < x0 + 2){ bx = x0 + 2; a = 'start'; lx = X.min + (bx - x0) / (x1 - x0) * (X.max - X.min); }
-        if(bx + tw > x1 - 2){ bx = x1 - 2 - tw; a = 'start'; }
-        ly = clamp(ly, y0 + 26, y1 - 4);   // clear of the knob and the first-visit cue above the plot
-        placed.forEach(function(q){ if(Math.abs(q - ly) < 14) ly = q + 15; });
-        placed.push(ly);
-        s += '<text class="gx-cname is-' + se.role + '" x="' + bx.toFixed(1) + '" y="' + ly.toFixed(1) + '" text-anchor="start">' + esc(se.label) + '</text>';
-      });
+      // boxes the curve names keep out of: the dashed lines' names and the band names
+      var keep = [];
+      (p.hlines || []).forEach(function(l){ if(l.y < Y.min || l.y > Y.max || l.faint) return; var tw = l.label.replace(/,.*$/, '').length * 6.6; keep.push([x1 - 4 - tw, sy(l.y) - 17, x1, sy(l.y) - 1]); });
+      (sc.bands || []).forEach(function(b){ keep.push([x1 - 6 - b.label.length * 6.6, sy(b.y1) + 2, x1, sy(b.y1) + 19]); });
       gS.innerHTML = s;
-      PL = { sx: sx, sy: sy, x0: x0, x1: x1, y0: y0, y1: y1, w: w, h: h, Y: Y };
+      PL = { sx: sx, sy: sy, x0: x0, x1: x1, y0: y0, y1: y1, w: w, h: h, Y: Y, X: X, keep: keep, nk: '' };
       var rect = [x0, y0, x1, y1];
       if(!scrub || scrub._for !== sc.id){
         if(scrub) scrub.el.remove();
@@ -693,15 +744,59 @@
         d += '<circle class="gx-pt is-' + se.role + '" cx="' + PL.sx(x).toFixed(1) + '" cy="' + PL.sy(v).toFixed(1) + '" r="6"/>';
       });
       gD.innerHTML = d;
+      names(x);
+    }
+    /* curve names: each sits on its own curve, as near its preferred place as it can, never across the cursor line, the
+       other names, any curve or the dashed lines' names (it moves along its curve when the cursor comes) */
+    var TW = {};
+    function textW(se){
+      if(TW[se.role + se.label]) return TW[se.role + se.label];
+      var t = svgEl('text', { 'class': 'gx-cname is-' + se.role, x: -999, y: -999 }); t.textContent = se.label; gN.appendChild(t);
+      var w = t.getComputedTextLength ? t.getComputedTextLength() : 0; gN.removeChild(t);
+      return w > 0 ? (TW[se.role + se.label] = w) : se.label.length * 7.2;
+    }
+    function names(x){
+      var sc = cur, P = PL, cxp = P.sx(x), bucket = Math.round(cxp / 4), key = sc.id + ':' + bucket + ':' + P.w + 'x' + P.h;
+      if(P.nk === key) return; P.nk = key;
+      var placed = [], out = '', n = 28;
+      function hitsCurve(b){
+        for(var j = 0; j < sc.series.length; j++){ var f = sc.fn(sc.series[j].id);
+          for(var px = b[0]; px <= b[2]; px += 3){ var v = f(P.X.min + (px - P.x0) / (P.x1 - P.x0) * (P.X.max - P.X.min)), py = P.sy(clamp(v, P.Y.min, P.Y.max)); if(py > b[1] - 2 && py < b[3] + 2) return true; } }
+        return false;
+      }
+      function inter(a, b){ return a[0] < b[2] && a[2] > b[0] && a[1] < b[3] && a[3] > b[1]; }
+      sc.series.forEach(function(se){
+        var f = sc.fn(se.id), tw = textW(se), pref = P.sx(se.at[0]), best = null;
+        var cands = [];
+        for(var i = 0; i <= n; i++){ var lx = P.x0 + 4 + (P.x1 - P.x0 - 8 - tw) * i / n; [se.dy || -12, 20, -24, 32, -36].forEach(function(dy, k){ cands.push({ bx: lx, dy: dy, cost: Math.abs(lx + (se.anchor === 'start' ? 0 : tw / 2) - pref) + k * 30 }); }); }
+        cands.sort(function(a, b){ return a.cost - b.cost; });
+        for(var c = 0; c < cands.length && !best; c++){
+          var q = cands[c], mid = q.bx + tw / 2, v = f(P.X.min + (mid - P.x0) / (P.x1 - P.x0) * (P.X.max - P.X.min));
+          var ly = P.sy(clamp(v, P.Y.min, P.Y.max)) + q.dy;
+          if(ly < P.y0 + 26 || ly > P.y1 - (sc.id === 'rbc' ? 22 : 6)) continue;   // the red cell's region name sits at the bottom
+          var bx = [q.bx - 2, ly - 12, q.bx + tw + 2, ly + 4];
+          if(cxp > bx[0] - 8 && cxp < bx[2] + 8) continue;
+          if(placed.some(function(o){ return inter(o, bx); }) || P.keep.some(function(o){ return inter(o, bx); }) || hitsCurve(bx)) continue;
+          best = { x: q.bx, y: ly, b: bx };
+        }
+        if(!best) return;
+        placed.push(best.b);
+        out += '<text class="gx-cname is-' + se.role + '" x="' + best.x.toFixed(1) + '" y="' + best.y.toFixed(1) + '" text-anchor="start">' + esc(se.label) + '</text>';
+      });
+      gN.innerHTML = out;
     }
 
     /* ---- the picture */
-    function scale(){ var r = psvg.getBoundingClientRect(); return r.width ? r.width / PW : 1; }
+    function scale(){ var r = psvg.getBoundingClientRect(); return r.width ? r.width / ((E && E.box) ? E.box[1] : PW) : 1; }
     E = {
       fs: 14, text: function(x){ return cause.text(); },
       words: function(x){ return cur.words(E, x); }
     };
     function draw(){
+      var narrow = (plotBox.getBoundingClientRect().width || 999) < 480, cr = cur.crop ? cur.crop(narrow) : null;
+      E.box = cr || [0, PW];
+      var vb = E.box[0] + ' 0 ' + E.box[1] + ' ' + PH;
+      if(psvg.getAttribute('viewBox') !== vb){ psvg.setAttribute('viewBox', vb); scene.classList.toggle('is-crop', !!cr); }
       var k = scale(); E.fs = clamp((k < 0.8 ? 12 : 13.2) / k, 9, 26); E.fn = cur.fn; E.g = cur.g;
       dyn.innerHTML = cur.draw(E, view.x);
       psvg.setAttribute('aria-label', cur.tab + ': ' + cur.say(E, view.x));
@@ -765,11 +860,11 @@
     var ref = document.createElement('div'); ref.className = 'ls-sec gx-ref';
     // what each picture leaves out or simplifies (docs/anp-needs-author.md, tools v2 graphs)
     var NOTE = {
-      heart: 'Only the left side of the heart is drawn, as the graph records it. The cavity’s size follows the volume curve; the valves open and shut at the moments the graph marks.',
+      heart: 'Only the left side of the heart is drawn, as the graph records it. The cavity’s size follows the volume curve; the valves open and shut at the moments the graph marks. The valve ring is held still and the ventricle shortens toward the apex; in a real heart the ring moves down toward an apex that stays nearly still.',
       lungs: 'The trace is the total air in the lungs, so it includes the residual volume a spirometer alone cannot measure.',
-      rbc: 'One red blood cell holds about 270 million hemoglobin molecules; six are drawn, with four sites each. They fill one molecule at a time to show cooperative binding (each oxygen bound makes the next bind more easily); in real blood the share of filled sites is what the curve gives.',
-      axon: 'Two channels of each kind stand for thousands. The leak channels and the sodium–potassium pump that keep the resting potential are not drawn, and only a tiny share of the ions cross during one spike.',
-      sarcomere: 'The lengths are those of a frog fiber (thick filament 1.6 µm, thin filaments 1.0 µm), as in the graph. The number of cross-bridges drawn follows the tension the graph gives.'
+      rbc: 'One red blood cell holds about 270 million hemoglobin molecules; six are drawn, with four sites each. They fill one molecule at a time to show cooperative binding (each oxygen bound makes the next bind more easily); in real blood the share of filled sites is what the curve gives. Almost all the oxygen in blood rides on hemoglobin (about 98.5%); only a little is dissolved in the plasma, so only a few dissolved O₂ are drawn.',
+      axon: 'Two channels of each kind stand for thousands. The leak channels and the sodium–potassium pump that keep the resting potential are not drawn, and only a tiny share of the ions cross during one spike. While the plugs are in, no new spike can start: this is the absolute refractory period.',
+      sarcomere: 'The lengths are those of a frog fiber (thick filament 1.6 µm, thin filaments 1.0 µm), as in the graph. The number of cross-bridges drawn follows the tension the graph gives. The sarcomeres on each side are drawn too, because a myofibril is a chain of them joined at the Z discs.'
     };
     function topicLink(id){ var ts = (window.AnpCurriculum || {}).topics || [], t = ts.filter(function(x){ return x.id === id; })[0]; return t ? t : null; }
     function refHtml(){
@@ -815,7 +910,8 @@
         });
         return hit;
       },
-      _scenes: scenes, _view: view, _go: go
+      _scenes: scenes, _view: view, _go: go,
+      _frame: function(x){ if(raf){ cancelAnimationFrame(raf); raf = 0; } view.x = view.target = cur.x = x; draw(); }   // the frame test draws one moment
     };
     window.AnpGraphExplore.current = api;   // for the sweep test (scripts/tools-v2/anp-graphs-sweep.mjs)
     return api;

@@ -1240,6 +1240,9 @@
     DATA.graphs = (DATA.graphs || []).filter(function(g){ return g && g.panels && g.questions && g.questions.length; });
     if(window.AnpCore && window.AnpCore.allowed && !window.AnpCore.allowed('graphs')){ fail('This tool is not available right now.'); return; }
     if(V2){
+      // one colour per idea: the left ventricle (its pressure and its volume) is blue in Explore, so here too
+      var wg = find('wiggers');
+      if(wg) wg.panels.forEach(function(p){ (p.series || []).forEach(function(se){ if(se.id === 'lv' || se.id === 'vol') se.cls = 'lv'; }); });
       EX = window.AnpGraphExplore.build({ data: DATA, base: BASE, studio: S,
         onQuiz: function(id){ location.hash = '#' + id; } });
       KIT = window.AnpToolKit.kit2(S, { stage: EX.stage, ref: EX.ref, onShow: function(m, user){

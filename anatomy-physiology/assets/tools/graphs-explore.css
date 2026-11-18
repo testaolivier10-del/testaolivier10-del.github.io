@@ -34,6 +34,14 @@
   --gx-myo:#B9A2E6; --gx-myo-ink:#C6B3EC; --gx-z:#C9D3DC; --gx-z-ink:#D5DEE6;
   --gx-scene-bg:#20272A; --gx-plot-bg:#1A2023;
 }
+/* the left ventricle is blue in Test yourself's Wiggers graph too (graphs.js gives its curves the class lv there):
+   one colour per idea across the tool */
+:root{--gx-lv:#2C6E9E;--gx-lv-ink:#245C85;}
+:root[data-theme="dark"]{--gx-lv:#7FC2EE;--gx-lv-ink:#9ACFF2;}
+.anp-fig .lv.line{stroke:var(--gx-lv);} .gr-fig .gr-c-lv{fill:var(--gx-lv-ink);}
+.gr-fig .gr-cur-halo.gr-dot-lv{fill:var(--gx-lv);} .gr-fig .gr-cur-dot.gr-dot-lv{stroke:var(--gx-lv);}
+.gr-fig .gr-cur-pill.gr-pill-lv{fill:var(--gx-lv);} .gr-sw-lv{background:var(--gx-lv);} .gr-rnew .gr-sw-dash.gr-sw-lv{color:var(--gx-lv);}
+.gr-fig .gr-shift-area.gr-sa-lv{fill:var(--gx-lv);}
 /* pills on the cause line */
 .gx .tk2-cz{--cz:var(--gx-phase);--cz-ink:var(--gx-phase-ink);}
 .gx .tk2-cz.is-lv{--cz:var(--gx-lv);--cz-ink:var(--gx-lv-ink);} .gx .tk2-cz.is-ao{--cz:var(--gx-ao);--cz-ink:var(--gx-ao-ink);}
@@ -62,6 +70,8 @@
 }
 /* on a phone the cause line keeps two rows' height so the page does not jump as it changes */
 @media (max-width:640px){ .gx-lines{min-height:76px;align-items:flex-start;} .gx-plot{height:224px;} }
+/* a tablet in one column: the line can wrap to two rows there too, so it keeps two rows' height */
+@media (min-width:640.02px) and (max-width:899.98px){ .gx-lines{min-height:84px;align-items:flex-start;} }
 
 /* ---------------------------------------------------------------- the graph */
 .gx-gsvg text{font-family:var(--font-ui);}
@@ -115,7 +125,7 @@
 .gx-myo{fill:url(#gx-gm);stroke:#7A241C;stroke-width:3;}
 .gx-blood{fill:url(#gx-gb);stroke:none;}
 .gx-lv-cav{stroke:#8C2A1F;stroke-width:2.5;}
-.gx-pap{fill:#B2463A;stroke:#8C2A1F;stroke-width:1.5;}
+.gx-pap{fill:url(#gx-gm);stroke:#7A241C;stroke-width:1.5;stroke-linejoin:round;}
 .gx-cor-fat{fill:none;stroke:#F1D48C;stroke-width:9;stroke-linecap:round;}
 .gx-cor{fill:none;stroke:#B8231A;stroke-width:3.2;stroke-linecap:round;}
 .gx-la{fill:url(#gx-gb);stroke:#A54A3B;stroke-width:9;stroke-linejoin:round;}
@@ -128,7 +138,7 @@
 .gx-pv-blood{fill:none;stroke:#E9745D;stroke-width:15;}
 .gx-ring{fill:none;stroke:#F2E3C4;stroke-width:7;stroke-linecap:round;}
 .gx-valve{fill:none;stroke:var(--gx-valve);stroke-width:6;stroke-linecap:round;}
-.gx-chord{fill:none;stroke:#F2E3C4;stroke-width:1.6;opacity:.9;}
+.gx-chord{fill:none;stroke:#F6EBD3;stroke-width:1.5;stroke-linecap:round;opacity:.95;}
 .gx-rbc{fill:#9E1B10;stroke:#6E0F08;stroke-width:1;}
 :root[data-theme="dark"] .gx-psvg{filter:brightness(.92) saturate(.95);}
 
@@ -191,16 +201,17 @@
 .gx-xb-h{fill:var(--gx-xb);}
 .gx-z{fill:none;stroke:var(--gx-z);stroke-width:5;stroke-linejoin:round;}
 .gx-mline{stroke:color-mix(in srgb, var(--gx-myo) 60%, transparent);stroke-width:2.5;}
+.gx-sarc:not(.is-main){opacity:.72;}   /* the neighbouring sarcomeres: real, a little quieter */
 
 @media (prefers-reduced-motion: reduce){ .gx *{transition:none !important;} }
 
 /* five tabs on a phone: the names without their numbers */
 @media (max-width:640px){
   .gx .tk2-tabs.is-big{gap:4px;}
-  .gx .tk2-tabs.is-big .tk2-tab{padding:0 3px;font-size:13px;min-height:46px;}
+  .gx .tk2-tabs.is-big .tk2-tab{flex:1 1 auto;padding:0 3px;font-size:13px;min-height:46px;}   /* longer names get more room */
   .gx .tk2-tabs.is-big .tk2-tab-n{display:none;}
 }
-@media (max-width:380px){ .gx .tk2-tabs.is-big .tk2-tab{font-size:12.5px;padding:0 2px;} }
+@media (max-width:380px){ .gx .tk2-tabs.is-big{gap:2px;} .gx .tk2-tabs.is-big .tk2-tab{font-size:12.5px;padding:0 1px;} }
 @media (min-width:641px) and (max-width:1100px){
   .gx .tk2-tabs.is-big .tk2-tab{padding:0 8px;}
   .gx .tk2-tabs.is-big .tk2-tab-n{display:none;}
