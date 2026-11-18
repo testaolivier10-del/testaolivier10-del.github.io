@@ -234,7 +234,7 @@
         }
         var a = Math.atan2((b.y0 + b.y1) / 2 - p.y, (b.x0 + b.x1) / 2 - p.x) + (rnd() - 0.5) * 1.6; p.vx = Math.cos(a); p.vy = Math.sin(a);
       }
-      function dropPart(p){ if(p.e){ if(p.e.sub === p) p.e.sub = null; if(p.e.inh === p) p.e.inh = null; } if(p.node.parentNode) p.node.parentNode.removeChild(p.node); var i = PARTS.indexOf(p); if(i >= 0) PARTS.splice(i, 1); }
+      function dropPart(p){ if(p.e){ if(p.e.sub === p) p.e.sub = null; if(p.e.inh === p) p.e.inh = null; if(p.e.next === p) p.e.next = null; } if(p.node.parentNode) p.node.parentNode.removeChild(p.node); var i = PARTS.indexOf(p); if(i >= 0) PARTS.splice(i, 1); }
       function ofKind(k){ return PARTS.filter(function(p){ return k === 'inh' ? p.kind !== 'sub' : p.kind === k; }); }
       /* How many of each to draw: substrate by its concentration; inhibitor by its own, and always enough to bind. */
       function counts(){
@@ -247,7 +247,7 @@
         have = ofKind(kind === 'sub' ? 'sub' : 'inh').filter(function(p){ return p.mode !== 'out'; });
         while(have.length < n) have.push(addPart(kind === 'sub' ? 'sub' : now.c.inhibitor, !instant));
         var extra = have.length - n, free = have.filter(function(p){ return p.mode === 'free'; }).concat(have.filter(function(p){ return p.mode !== 'free'; }));
-        for(var i = 0; i < extra; i++){ var p = free[i]; if(instant) dropPart(p); else { if(p.e){ if(p.e.sub === p) p.e.sub = null; if(p.e.inh === p) p.e.inh = null; p.e = null; } p.mode = 'out'; } }
+        for(var i = 0; i < extra; i++){ var p = free[i]; if(instant) dropPart(p); else { if(p.e){ if(p.e.sub === p) p.e.sub = null; if(p.e.inh === p) p.e.inh = null; if(p.e.next === p) p.e.next = null; p.e = null; } p.mode = 'out'; } }
       }
       /* What each molecule should be, from the model: the top share by q unfolds (heat, or a pH far from the best),
          then the share whose site has the wrong charges; of the rest, a share carries an inhibitor (it changes
@@ -256,12 +256,16 @@
         var z = M.enzyme.states(now.prof, now.c), d = Math.abs(now.c.pH - M.enzyme.optimumPH(now.prof)), denPH = Math.min(1 - z.phOk, clamp((d - 3) / 2, 0, 1));
         var dT = clamp((1 - z.folded - 0.25) / 0.7, 0, 1), D = 1 - (1 - dT) * (1 - denPH), fi = now.c.inhibitor === 'competitive' ? z.inhibitor : z.allosteric;
         now.z = z; now.D = D; now.dT = dT; now.acid = now.c.pH < M.enzyme.optimumPH(now.prof);
+        // the share of working sites that hold substrate: S/(Km + S) (the same with either inhibitor, among the sites
+        // the inhibitor leaves free); fewer when cold, as fewer collisions happen
+        now.occ = now.c.S > 0 ? now.c.S / (now.prof.Km + now.c.S) * Math.min(1, z.motion) : 0;
         ENZ.forEach(function(e){
           var qi = (e.qi + rot) % 1;
           e.want = e.q > 1 - D + 1e-9 ? 'den' : e.q > z.phOk + 1e-9 ? 'mis' : (now.c.inhibitor !== 'none' && now.c.I > 0 && qi < fi) ? 'inh' : 'ok';
         });
       }
       function release(e, what){
+        if(!what && e.next){ var w0 = e.next; e.next = null; w0.e = null; if(w0.mode !== 'out') w0.mode = 'free'; }
         if((!what || what === 'sub') && e.sub){ var p = e.sub; e.sub = null; p.e = null; if(p.mode !== 'out'){ p.mode = 'free'; var a = e.ang + (rnd() - 0.5); p.vx = Math.cos(a); p.vy = Math.sin(a); } }
         if((!what || what === 'inh') && e.inh){ var q = e.inh; e.inh = null; q.e = null; if(q.mode !== 'out'){ q.mode = 'free'; var b = e.ang + (q.kind === 'competitive' ? 0 : Math.PI) + (rnd() - 0.5); q.vx = Math.cos(b); q.vy = Math.sin(b); } }
       }
@@ -288,7 +292,7 @@
         if(fi > 0.02 && fi < 0.98){ rotT += dt; if(rotT > 2.8){ rotT = 0; rot = (rot + 1 / G.N) % 1; roles(); } }
         ENZ.forEach(function(e){
           e.ph += dt * (1 + 2.2 * (1 - e.fold)); if(e.cool > 0) e.cool -= dt;
-          if(e.want === 'den' && !e.den){ e.den = true; release(e); }
+          if(e.want === 'den' && !e.den){ e.den = true; e.newUntil = 0; release(e); }
           if(e.den && e.want !== 'den' && !e.repl){ e.repl = 1; release(e); }   // a denatured enzyme does not refold: it goes, and a new one comes in
           if(e.repl === 1){ e.fade = Math.max(0, e.fade - dt / 0.45); if(e.fade <= 0){ e.repl = 2; e.den = false; e.fold = 1; e.pinch = 0; e.hug = 0; e.newUntil = tn + 2600; } }
           else if(e.repl === 2){ e.fade = Math.min(1, e.fade + dt / 0.45); if(e.fade >= 1) e.repl = 0; }
@@ -299,18 +303,38 @@
           if(e.want !== 'ok' && e.sub && e.sub.mode !== 'cat') release(e, 'sub');
           var pt = e.den || e.repl ? 0 : e.want === 'mis' ? 1 : (inhOn && e.inh.kind === 'noncompetitive') ? 1 : 0;
           if(e.pinch !== pt) e.pinch = pt > e.pinch ? Math.min(pt, e.pinch + dt / 0.35) : Math.max(pt, e.pinch - dt / 0.35);
-          var ht = e.sub && (e.sub.mode === 'cat') ? 1 : 0;
+          if(e.next && (!working(e) || e.want !== 'ok')){ var w1 = e.next; e.next = null; w1.e = null; w1.mode = 'free'; }
+          var ht = e.sub && (e.sub.mode === 'cat' || e.sub.mode === 'held') ? 1 : 0;
           if(e.hug !== ht) e.hug = ht > e.hug ? Math.min(1, e.hug + dt / 0.12) : Math.max(0, e.hug - dt / 0.2);
         });
         // reactions, at the model's rate: every working enzyme busy back to back is the enzyme's own top rate
         var rf = now.rate / now.prof.Vmax, free = ofKind('sub').filter(function(p){ return p.mode === 'free' && p.op > 0.6; });
+        // how many working sites hold substrate follows the model (S/(Km + S)): at high substrate nearly every site
+        // is full on every frame, and the next substrate waits at the mouth while products leave
+        var W = ENZ.filter(working), nb = Math.round(now.occ * W.length), busy = W.filter(function(e){ return e.sub; });
+        fillT += dt;
+        if(busy.length < nb && fillT > 0.06){
+          var cand = W.filter(function(e){ return !e.sub && e.cool <= 0; });
+          if(cand.length && (free.length || cand.some(function(e){ return e.next; }))){
+            fillT = 0; var e0 = cand.filter(function(e){ return e.next; })[0] || cand[Math.floor(rnd() * cand.length)];
+            if(e0.next && e0.next.mode === 'wait'){ var nx = e0.next; e0.next = null; e0.sub = nx; nx.mode = 'fly'; nx.hold = true; nx.t = nx.d1; }
+            else if(free.length){ var mm0 = world(e0, 1.4, 0), s0 = nearest(free, mm0[0], mm0[1], e0); free.splice(free.indexOf(s0), 1); e0.sub = s0; send(s0, e0, 'fly'); s0.hold = true; }
+          }
+        } else if(busy.length > nb){ var h0 = W.filter(function(e){ return e.sub && e.sub.mode === 'held'; })[0]; if(h0) release(h0, 'sub'); }
         acc = Math.min(1.5, acc + rf * G.N / 0.78 * dt);
         while(acc >= 1){
-          var ok = ENZ.filter(function(e){ return working(e) && !e.sub && e.cool <= 0; });
+          var held = W.filter(function(e){ return e.sub && e.sub.mode === 'held'; });
+          if(held.length){
+            acc -= 1; var eh = held[Math.floor(rnd() * held.length)]; eh.sub.mode = 'cat'; eh.sub.t = 0;
+            // at high substrate the next one is already on its way to the mouth
+            if(now.occ >= 0.5 && !eh.next && free.length){ var mw = world(eh, 1.4, 0), sw = nearest(free, mw[0], mw[1], eh); free.splice(free.indexOf(sw), 1); eh.next = sw; send(sw, eh, 'wait'); }
+            continue;
+          }
+          var ok = W.filter(function(e){ return !e.sub && e.cool <= 0; });
           if(!ok.length || !free.length){ acc = Math.min(acc, 1); break; }
           acc -= 1;
           var e1 = ok[Math.floor(rnd() * ok.length)], m = world(e1, 1.4, 0), s1 = nearest(free, m[0], m[1], e1);
-          free.splice(free.indexOf(s1), 1); e1.sub = s1; send(s1, e1, 'fly');
+          free.splice(free.indexOf(s1), 1); e1.sub = s1; send(s1, e1, 'fly'); s1.hold = false;
         }
         // substrate that meets a site it cannot use bounces off
         var bad = ENZ.filter(function(e){ return !e.repl && !working(e) && !e.sub && (e.den ? e.fold < 0.3 : true) && (e.want !== 'inh' || (e.inh && e.inh.mode === 'docked')); });
@@ -324,7 +348,13 @@
             p.vx += (rnd() - 0.5) * 5 * dt; p.vy += (rnd() - 0.5) * 5 * dt;
             var mm = Math.hypot(p.vx, p.vy) || 1; p.vx /= mm; p.vy /= mm;
             p.x += p.vx * sp * dt; p.y += p.vy * sp * dt; p.rot += p.vr * dt * (0.4 + sf);
+            if(p.x < b.x0){ p.x = b.x0; p.vx = Math.abs(p.vx); } else if(p.x > b.x1){ p.x = b.x1; p.vx = -Math.abs(p.vx); }
+            if(p.y < b.y0){ p.y = b.y0; p.vy = Math.abs(p.vy); } else if(p.y > b.y1){ p.y = b.y1; p.vy = -Math.abs(p.vy); }
             ENZ.forEach(function(z){ var rr = (z.fold < 0.5 ? 0.55 : 1.16) * R, dx = p.x - z.x, dy = p.y - z.y, d2 = dx * dx + dy * dy; if(d2 < rr * rr && z.fade > 0.5){ var dd = Math.sqrt(d2) || 1; p.x = z.x + dx / dd * rr; p.y = z.y + dy / dd * rr; var dot = p.vx * dx / dd + p.vy * dy / dd; if(dot < 0){ p.vx -= 2 * dot * dx / dd; p.vy -= 2 * dot * dy / dd; } } });
+          } else if(p.mode === 'wait'){
+            if(!e || e.next !== p){ p.mode = 'free'; p.e = null; return; }
+            p.t += dt; var kw = Math.min(1, p.t / p.d1), ew = kw * kw * (3 - 2 * kw), drw = ((e.ang - p.r0) % TAU + TAU + Math.PI) % TAU - Math.PI;
+            p.x = p.x0 + (p.ax - p.x0) * ew + (kw >= 1 ? Math.sin(p.t * 7) * R * 0.03 : 0); p.y = p.y0 + (p.ay - p.y0) * ew; p.rot = p.r0 + drw * ew;
           } else if(p.mode === 'fly' || p.mode === 'toInh' || p.mode === 'try'){
             if(!e || e.repl || (p.mode !== 'try' && e.den)){ if(e) release(e, p.kind === 'sub' ? 'sub' : 'inh'); p.mode = 'free'; p.e = null; return; }
             p.t += dt;
@@ -339,11 +369,16 @@
             } else {
               var k2 = Math.min(1, (p.t - p.d1) / 0.16), dk = dockPt(e, p.kind);
               p.x = p.ax + (dk[0] - p.ax) * k2; p.y = p.ay + (dk[1] - p.ay) * k2; p.rot = ta;
-              if(k2 >= 1){ if(p.mode === 'fly'){ p.mode = 'cat'; p.t = 0; } else p.mode = 'docked'; }
+              if(k2 >= 1){ if(p.mode === 'fly'){ p.mode = p.hold ? 'held' : 'cat'; p.hold = false; p.t = 0; } else p.mode = 'docked'; }
             }
           } else if(p.mode === 'cat'){
             p.t += dt; var dk2 = dockPt(e, 'sub'); p.x = dk2[0] + Math.sin(p.t * 60) * 0.6; p.y = dk2[1]; p.rot = e.ang;
-            if(p.t > 0.34 / Math.max(0.6, sf)){ spawnProducts(e); e.sub = null; e.cool = 0.1; p.e = null; p.mode = 'free'; p.op = 0; place(p, true); }
+            if(p.t > 0.34 / Math.max(0.6, sf)){
+              spawnProducts(e); e.sub = null; e.cool = 0; p.e = null; p.mode = 'free'; p.op = 0; place(p, true);
+              // the substrate waiting at the mouth moves straight in
+              if(e.next && e.next.mode === 'wait' && e.next.t >= e.next.d1 && working(e)){ var nq = e.next; e.next = null; e.sub = nq; nq.mode = 'fly'; nq.hold = true; nq.t = nq.d1; }
+            }
+          } else if(p.mode === 'held'){ var dkh = dockPt(e, 'sub'); p.x = dkh[0]; p.y = dkh[1]; p.rot = e.ang;
           } else if(p.mode === 'docked'){ var dk3 = dockPt(e, p.kind); p.x = dk3[0]; p.y = dk3[1]; p.rot = p.kind === 'competitive' ? e.ang : e.ang + Math.PI; }
           p.x = clamp(p.x, b.x0, b.x1); p.y = clamp(p.y, b.y0, b.y1);
         });
@@ -351,25 +386,36 @@
           q.life -= dt; q.vx *= Math.pow(0.25, dt); q.vy *= Math.pow(0.25, dt); q.x = clamp(q.x + q.vx * dt, b.x0, b.x1); q.y = clamp(q.y + q.vy * dt, b.y0, b.y1); q.rot += q.vr * dt;
           if(q.life <= 0){ if(q.node.parentNode) q.node.parentNode.removeChild(q.node); return false; } return true;
         });
-        var gt = now.rate / now.ref; var mid = ENZ.some(function(e){ return (e.fold > 0 && e.fold < 1) || e.repl; });   // the bar keeps pace with an unfolding that is still being drawn
-        gShown += (gt - gShown) * (1 - Math.exp(-dt / (mid ? 0.4 : 0.12))); if(Math.abs(gt - gShown) < 0.002) gShown = gt;
+        var gt = barTarget();
+        gShown += (gt - gShown) * (1 - Math.exp(-dt / 0.12)); if(Math.abs(gt - gShown) < 0.002) gShown = gt;
       }
+      /* How much each enzyme is drawn working (0 to 1), and how much the model wants it to. The bar moves from where
+         it was to the model's rate only as fast as the picture changes, so it never runs ahead of the molecules. */
+      function drawnWork(){ var d = 0; ENZ.forEach(function(e){ var w = e.repl === 1 ? 0 : e.repl === 2 ? e.fade : e.fold; w *= 1 - e.pinch; if(e.inh && e.inh.mode === 'docked') w = 0; d += w; }); return d; }
+      function wantWork(){ var d = 0; ENZ.forEach(function(e){ d += e.want === 'ok' ? 1 : 0; }); return d; }
+      function barTarget(){
+        var m = now.rate / now.ref; if(!bar) return m;
+        var d = drawnWork(), t = wantWork(), span = t - bar.d0;
+        if(Math.abs(span) < 0.05 || Math.abs(d - t) < 0.05) return m;
+        return bar.g0 + (m - bar.g0) * clamp((d - bar.d0) / span, 0, 1);
+      }
+      var bar = null, fillT = 0;
       /* The still picture (reduced motion, Pause, or the first frame): every state as it settles, the working sites
          holding substrate in the share the model gives. */
       function settle(hard){
         var tn = tnow();
         roles();
         PRODS.forEach(function(q){ if(q.node.parentNode) q.node.parentNode.removeChild(q.node); }); PRODS = [];
-        ENZ.forEach(function(e){ release(e); e.newUntil = !hard && e.den && e.want !== 'den' ? tn + 2600 : 0; e.den = e.want === 'den'; e.fold = e.den ? 0 : 1; e.fade = 1; e.repl = 0; e.hug = 0; e.pinch = e.want === 'mis' ? 1 : 0; });
+        ENZ.forEach(function(e){ release(e); e.newUntil = e.want === 'den' || hard ? 0 : e.den ? tn + 2600 : e.newUntil > tn ? e.newUntil : 0; e.den = e.want === 'den'; e.fold = e.den ? 0 : 1; e.fade = 1; e.repl = 0; e.hug = 0; e.pinch = e.want === 'mis' ? 1 : 0; });
         var n = counts(); setCount('sub', n.sub, true); setCount('inh', n.inh, true);
         PARTS.forEach(function(p){ p.op = 1; if(p.mode !== 'free'){ p.mode = 'free'; p.e = null; } });
-        var inhs = ofKind('inh'), subs = ofKind('sub'), occ = now.z.substrate;
+        var inhs = ofKind('inh'), subs = ofKind('sub'), occ = now.occ;
         ENZ.forEach(function(e){
           if(e.want === 'inh' && inhs.length){ var p = inhs.pop(); e.inh = p; p.e = e; p.mode = 'docked'; var d = dockPt(e, p.kind); p.x = d[0]; p.y = d[1]; p.rot = p.kind === 'competitive' ? e.ang : e.ang + Math.PI; if(p.kind === 'noncompetitive') e.pinch = 1; }
         });
         if(still()){ var okE = ENZ.filter(working), nb = Math.round(occ * okE.length); okE.slice(0, nb).forEach(function(e){ var s = subs.pop(); if(!s) return; e.sub = s; s.e = e; s.mode = 'held'; var d = dockPt(e, 'sub'); s.x = d[0]; s.y = d[1]; s.rot = e.ang; e.hug = 1; }); }
         if(still()) PARTS.forEach(function(p){ if(p.mode === 'free' && !clearOfEnzymes(p.x, p.y)) place(p, false); });
-        gShown = now.rate / now.ref; acc = 0; accB = 0;
+        gShown = now.rate / now.ref; acc = 0; accB = 0; bar = null;
       }
       function paint(){
         var R = G.R, sf = speedF(), amp = still() ? 0 : 1;
@@ -395,7 +441,8 @@
             cw0.forEach(function(p){ mx = Math.max(mx, Math.abs(p[0])); my = Math.max(my, Math.abs(p[1])); });
             var cp = smooth(cw0.map(function(p){ return [p[0] * tg / Math.max(mx, 1), p[1] * tg / Math.max(my, 1)]; }), true); e.el.ce.setAttribute('d', cp); e.el.cc.setAttribute('d', cp);
           }
-          setA(e.g, 'data-st', e.fold < 0.45 ? 'den' : e.inh && e.inh.mode === 'docked' ? 'inh' : e.pinch > 0.6 ? 'mis' : 'ok');
+          setA(e.g, 'data-sub', working(e) ? (e.sub && (e.sub.mode === 'cat' || e.sub.mode === 'held') ? '1' : '0') : '-');
+          setA(e.g, 'data-st', e.fold < 0.2 ? 'den' : e.inh && e.inh.mode === 'docked' ? 'inh' : e.pinch > 0.6 ? 'mis' : 'ok');
           setA(e.el.pos, 'opacity', String(now.show.ph ? (now.acid ? 1 : (1 - e.pinch).toFixed(2)) : 0));
           setA(e.el.neg, 'opacity', String(now.show.ph ? (now.acid ? (1 - e.pinch).toFixed(2) : 1) : 0));
           setA(e.el.allo, 'opacity', now.show.allo ? '1' : '0');
@@ -407,8 +454,9 @@
       }
       /* What the picture shows right now (words wait for it). */
       function shown(){
-        var o = { den: 0, mis: 0, inh: 0, n: ENZ.length, fresh: 0, g: gShown }, tn = tnow();
-        ENZ.forEach(function(e){ if(e.repl) return; if(e.fold < 0.45) o.den++; else if(e.inh && e.inh.mode === 'docked') o.inh++; else if(e.pinch > 0.6) o.mis++; if(e.newUntil > tn) o.fresh++; });
+        var o = { den: 0, mis: 0, inh: 0, n: ENZ.length, fresh: 0, g: gShown, out: 0, inn: 0 }, tn = tnow();
+        ENZ.forEach(function(e){ if(e.repl === 1 || (e.fold < 0.2 && e.want !== 'den' && !e.repl)) o.out++; if(e.repl === 2) o.inn++; });
+        ENZ.forEach(function(e){ if(e.repl) return; if(e.fold < 0.2) o.den++; else if(e.inh && e.inh.mode === 'docked') o.inh++; else if(e.pinch > 0.6) o.mis++; if(e.newUntil > tn && !e.den) o.fresh++; });
         return o;
       }
       function tick(ts){
@@ -438,7 +486,7 @@
         if(hard || still()){ if(G.ready) crossFade(); settle(hard); G.ready = true; tint(); labels(true); paint(); startLoop(); return; }
         roles(); var n = counts(); setCount('sub', n.sub); setCount('inh', n.inh); tint(); startLoop();
       }
-      function changed(){ target(false); wKey = ''; syncWords(); drawMarks(); }
+      function changed(){ if(now && G && !still()){ var g0 = gShown, d0 = drawnWork(); target(false); bar = { g0: g0, d0: d0 }; } else target(false); wKey = ''; syncWords(); drawMarks(); }
       function swap(){ target(true); wKey = ''; syncWords(); drawMarks(); }
       function setTab(v){
         if(v === S.tab) return;
@@ -452,16 +500,29 @@
       /* The cause line says what the picture shows at that moment: a pill that names a change in the enzymes
          (unfolded, out of shape, blocked) is added once at least one enzyme is drawn that way. */
       function chain(){
-        var c = now.c, z = now.z || M.enzyme.states(now.prof, c), sh = shown(), g = now.rate / now.ref, rw = rateWord(g), tab = S.tab, a;
+        // the rate words follow the bar as drawn, not the model's target
+        var c = now.c, z = now.z || M.enzyme.states(now.prof, c), sh = shown(), g = sh.g, rw = rateWord(g), tab = S.tab, a;
+        // an enzyme that unfolded does not refold: while the picture swaps it for new enzyme, the line says so
+        if((tab === 'temp' || tab === 'ph') && (sh.out || sh.inn || sh.fresh)){
+          a = [{ t: 'Denatured stay unfolded', role: 'bad', say: 'denatured enzymes do not fold back' }];
+          if(sh.inn || sh.fresh) a.push({ t: 'new enzyme added', role: 'enz', say: 'new enzyme is added to the solution' }, rw);
+          return a;
+        }
         if(tab === 'sub'){
           if(c.S === 0) return [{ t: 'No substrate', role: 'sub' }, { t: 'nothing to bind', role: 'enz' }, { t: 'no reaction', role: 'bad' }];
           if(z.substrate < 0.4) return [{ t: 'Little substrate', role: 'sub' }, { t: 'most sites empty', role: 'enz', say: 'most active sites are empty' }, rw];
-          if(z.substrate < 0.8) return [{ t: 'More substrate', role: 'sub' }, { t: 'more sites busy', role: 'enz', say: 'more active sites are busy' }, { t: g < 0.72 ? 'faster rate' : 'fast rate', role: 'prod' }];
+          var more = prev && prev.tab === 'sub' && prev.v < c.S;
+          if(z.substrate < 0.8) return [{ t: more ? 'More substrate' : 'Some substrate', role: 'sub' }, { t: more ? 'more sites busy' : 'about half the sites busy', role: 'enz', say: more ? 'more active sites are busy' : 'about half of the active sites are busy' }, rw];
           return [{ t: 'Lots of substrate', role: 'sub' }, { t: 'every site busy', role: 'enz', say: 'nearly every active site is busy' }, { t: 'rate levels off', role: 'prod' }];
         }
         if(tab === 'temp'){
-          var hot = c.T > M.enzyme.optimumT(now.prof), tf = M.enzyme.tempFactor(now.prof, c.T);
-          if(hot && now.dT > 0){
+          var ot = M.enzyme.optimumT(now.prof), hot = c.T > ot, tf = M.enzyme.tempFactor(now.prof, c.T), best = nearBestT();
+          if(rw.t === 'top rate' && !best) rw = { t: 'fast rate', role: 'prod' };
+          if(best && !sh.den) return [{ t: 'Best temperature', role: 'heat' }, { t: 'fast collisions', role: 'sub' }, { t: 'enzymes still folded', role: 'enz' }, rw];
+          // just past the best: a little slower, nothing drawn unfolded yet; never called too hot while the rate is
+          // higher than anywhere the label "Optimum temperature" shows
+          if(hot && tf >= 0.9 && !sh.den) return [{ t: 'Just past best', role: 'heat' }, { t: 'fast collisions', role: 'sub' }, rw];
+          if(hot){
             a = [{ t: 'Too hot', role: 'heat' }];
             if(!sh.den) return a;
             a.push({ t: sh.den >= sh.n ? 'enzymes denature' : 'some enzymes denature', role: 'bad', say: sh.den >= sh.n ? 'the enzymes unfold, they denature' : 'some enzymes unfold, they denature' });
@@ -469,13 +530,13 @@
             a.push(g < 0.03 ? rw : { t: 'rate falls', role: 'prod' });
             return a;
           }
-          if(tf >= 0.9) return [{ t: 'Best temperature', role: 'heat' }, { t: 'fast collisions', role: 'sub' }, { t: 'enzymes still folded', role: 'enz' }, { t: 'top rate', role: 'prod' }];
+          if(c.T >= 30) return [{ t: 'Warm', role: 'heat' }, { t: 'faster collisions', role: 'sub' }, rw];
           if(c.T < 15) return [{ t: 'Cold', role: 'heat' }, { t: 'slow molecules', role: 'sub' }, { t: 'few collisions', role: 'enz' }, rw];
           return [{ t: 'Cool', role: 'heat' }, { t: 'slower molecules', role: 'sub' }, { t: 'fewer collisions', role: 'enz' }, rw];
         }
         if(tab === 'ph'){
           var side = now.acid ? 'acidic' : 'basic';
-          if(z.phOk >= 0.9) return [{ t: 'Best pH', role: 'ph' }, { t: 'active site fits substrate', role: 'enz', say: 'the charges in the active site fit the substrate' }, { t: 'top rate', role: 'prod' }];
+          if(z.phOk >= 0.9 && !sh.mis && !sh.den) return [{ t: 'Best pH', role: 'ph' }, { t: 'active site fits substrate', role: 'enz', say: 'the charges in the active site fit the substrate' }, rw];
           if(sh.den && sh.den >= sh.n) return [{ t: 'Far too ' + side, role: 'ph' }, { t: 'enzymes denature', role: 'bad', say: 'the enzymes lose their shape, they denature' }, rateWord(g)];
           a = [{ t: 'Too ' + side, role: 'ph' }];
           if(!sh.mis && !sh.den) return a;
@@ -484,6 +545,7 @@
         }
         if(c.inhibitor === 'none') return [{ t: 'No inhibitor', role: 'inh' }, { t: 'active sites free', role: 'enz' }, rw];
         var k = M.enzyme.params(now.prof, c), free = M.enzyme.rate(now.prof, Object.assign({}, c, { inhibitor: 'none' }), c.S), rel = now.rate / free;
+        if(!sh.inh && !sh.mis) return [{ t: 'Inhibitor added', role: 'inh', say: 'inhibitor is added to the solution' }];
         if(c.inhibitor === 'competitive'){
           if(rel >= 0.8 && c.S >= 8) return [{ t: 'Lots of substrate', role: 'sub' }, { t: 'substrate wins the site', role: 'enz', say: 'substrate reaches the active site before the inhibitor' }, { t: 'rate recovers', role: 'prod' }];
           a = [{ t: 'Inhibitor in active site', role: 'inh', say: 'the inhibitor sits in the active site' }];
@@ -495,18 +557,19 @@
         if(c.S >= 8) return [{ t: 'More substrate', role: 'sub' }, { t: 'bent sites still fail', role: 'enz', say: 'the bent active sites still cannot bind it' }, { t: 'rate stays low', role: 'prod' }];
         return a.concat([{ t: 'site changes shape', role: 'enz', say: 'the active site changes shape' }, { t: 'slower rate', role: 'prod' }]);
       }
+      function nearBestT(){ return Math.abs(now.c.T - M.enzyme.optimumT(now.prof)) <= 1.5; }
       function term(){
         if(S.mode !== 'explore' || !now) return '';
         var z = now.z || {}, c = now.c;
         if(S.tab === 'sub') return z.substrate >= 0.8 && gShown >= 0.75 ? 'Saturated' : '';
-        if(S.tab === 'temp') return M.enzyme.tempFactor(now.prof, c.T) >= 0.9 && !now.dT ? 'Optimum temperature' : '';
-        if(S.tab === 'ph') return z.phOk >= 0.9 ? 'Optimum pH' : '';
+        if(S.tab === 'temp'){ var s1 = shown(); return nearBestT() && !s1.den && !s1.out ? 'Optimum temperature' : ''; }
+        if(S.tab === 'ph'){ var s2 = shown(); return z.phOk >= 0.9 && !s2.mis && !s2.den && !s2.out ? 'Optimum pH' : ''; }
         return '';
       }
       var wKey = '', lKey = '', inhLab = -1;
       function syncWords(){
         if(!now) return;
-        var sh = shown(), k = S.mode + '|' + S.tab + '|' + JSON.stringify(now.c) + '|' + sh.den + '|' + (sh.mis > 0) + '|' + (sh.inh > 0) + '|' + term();
+        var sh = shown(), k = S.mode + '|' + S.tab + '|' + JSON.stringify(now.c) + '|' + sh.den + '|' + (sh.mis > 0) + '|' + (sh.inh > 0) + '|' + term() + '|' + rateWord(sh.g).t + '|' + (sh.out > 0) + (sh.inn > 0) + (sh.fresh > 0) + '|' + !!prev;
         if(k !== wKey){ wKey = k; if(S.mode === 'explore'){ head.purpose(tabOf(S.tab).purpose); cause.set(chain()); } aria(); }
         labels(false);
       }
@@ -520,7 +583,7 @@
         var tn = tnow(), L = {}, ex = S.mode === 'explore';
         var docked = ENZ.filter(function(e){ return e.inh && e.inh.mode === 'docked' && !e.repl; });
         if(!docked.some(function(e){ return e.i === inhLab; })){ var pick = docked.filter(function(e){ return e.i > 1; })[0] || docked[0]; inhLab = pick ? pick.i : -1; }
-        var firstDen = ENZ.filter(function(e){ return e.fold < 0.45 && !e.repl; })[0], firstNew = ENZ.filter(function(e){ return e.newUntil > tn && e.repl !== 1; })[0];
+        var firstDen = ENZ.filter(function(e){ return e.fold < 0.2 && !e.repl; })[0], firstNew = ENZ.filter(function(e){ return e.newUntil > tn && e.repl !== 1 && e.fold > 0.6 && !e.den; })[0];
         if(ENZ[0] && ENZ[0].fold > 0.6 && !ENZ[0].repl) L[0] = ['active site', 'is-enz', 'site'];
         if(ENZ[1] && ENZ[1].fold > 0.6 && !ENZ[1].repl) L[1] = ['enzyme', 'is-enz'];
         if(inhLab >= 0) L[inhLab] = ['inhibitor', 'is-inh', now.c.inhibitor === 'competitive' ? 'inhc' : 'inhn'];
@@ -548,12 +611,17 @@
       /* ---------------------------------------------------- layout and the parts that do not move */
       function geo(Wd, H){
         var ph = Wd < 520, ex = S.mode === 'explore', inh = ex && S.tab === 'inh';
-        var ctl = ex ? (inh ? 154 : 104) : 0, y1 = H - ctl, top = ph ? 42 : 46, lh = ph ? 28 : 32;
-        var cols = Wd < 520 ? 2 : Wd < 1100 ? 3 : 4, rows = 2, N = cols * rows, cw = (Wd - 20) / cols, ch = (y1 - top - 10) / rows;
-        var R = Math.max(22, Math.min(cw * 0.315, (ch - lh) / 2.26));
+        var ctl = ex ? (inh ? 196 : 104) : 0, y1 = H - ctl, top = ph ? 42 : 46, lh = ph ? 28 : 32;
+        // columns and rows from the solution's shape (2 by 3 when it is taller than wide), so no band stays bare
+        var N = Wd < 520 ? 4 : Wd < 1100 ? 6 : 8, best = null;
+        [[2, N / 2], [N / 2, 2]].forEach(function(cr){
+          var cw0 = (Wd - 20) / cr[0], ch0 = (y1 - top - 10) / cr[1], R0 = Math.min(cw0 * 0.315, (ch0 - lh) / 2.26);
+          if(!best || R0 > best.R + 0.5) best = { cols: cr[0], rows: cr[1], cw: cw0, ch: ch0, R: R0 };
+        });
+        var cols = best.cols, rows = best.rows, cw = best.cw, ch = best.ch, R = Math.max(22, best.R);
         var half = Math.min(400, (Wd - (ph ? 84 : 150)) / 2), fsS = ph ? 11.5 : 13, qw = 17 * fsS * 0.56 + 18;
         return { W: Wd, H: H, ph: ph, ex: ex, inh: inh, y1: y1, top: top, lh: lh, cols: cols, N: N, cw: cw, ch: ch, cx0: 10, cy0: top, R: R, nMax: clamp(Math.round(0.4 * (Wd - 20) * (y1 - top) / (R * R)), 10, 40),
-          tx0: Wd / 2 - half, tx1: Wd / 2 + half, ty: y1 + 50, qx0: Wd / 2 - half + qw + 22, qy: y1 + 126, fs: ph ? 13 : 15, fsS: fsS, gw: ph ? 112 : 170 };
+          tx0: Wd / 2 - half, tx1: Wd / 2 + half, ty: y1 + 50, qx0: Wd / 2 - half + qw + 22, qy: y1 + 168, sy: y1 + 124, fs: ph ? 13 : 15, fsS: fsS, gw: ph ? 112 : 170 };
       }
       function ctlNow(){ return CT[S.tab]; }
       function drawStatic(){
@@ -603,7 +671,7 @@
         Object.keys(CT).forEach(function(k){ CT[k].hide(!(G.ex && k === S.tab)); });
         cSub2.hide(!G.inh); typeBox.hidden = !G.inh;
         if(G.ex) ctlNow().place([G.tx0, G.ty, G.tx1, G.ty]);
-        if(G.inh) cSub2.place([G.qx0, G.qy, G.tx1, G.qy]);
+        if(G.inh){ cSub2.place([G.qx0, G.qy, G.tx1, G.qy]); typeBox.style.left = (G.W / 2) + 'px'; typeBox.style.top = G.sy + 'px'; }
         if(!same){
           if(ready && hard) crossFade();
           PARTS.slice().forEach(dropPart); PRODS.forEach(function(q){ if(q.node.parentNode) q.node.parentNode.removeChild(q.node); }); PRODS = [];
@@ -625,6 +693,16 @@
         for(var i = 0; i <= n; i++){ var x = V.min + (V.max - V.min) * i / n, c1 = Object.assign({}, c); c1[V.key] = x; cur.push([x, rateOf(PA, c1)]); if(inhOn) base.push([x, rateOf(PA, Object.assign({}, c1, { inhibitor: 'none' }))]); }
         for(var j = 0; j <= 8; j++){ var x2 = V.min + (V.max - V.min) * j / 8, c2 = Object.assign({}, c); c2[V.key] = x2; var row = [F(x2, V.d), F(rateOf(PA, c2), 1)]; if(inhOn) row.push(F(rateOf(PA, Object.assign({}, c2, { inhibitor: 'none' })), 1)); rows.push(row); }
         var ym = T.niceMax(PA.Vmax * 1.05), nm = V.label.toLowerCase().replace('ph', 'pH');
+        // the other two enzymes, each at its own usual conditions, on the Temperature and pH tabs (only "?" shows them)
+        var others = (tab === 'temp' || tab === 'ph') ? data.profiles.filter(function(q){ return q.id !== PA.id; }) : [], oc = [];
+        others.forEach(function(q, qi){
+          var pts = [], co = { S: c.S, T: q.defaults.T, pH: q.defaults.pH, inhibitor: 'none', I: 0 };
+          for(var i2 = 0; i2 <= n; i2++){ var x3 = V.min + (V.max - V.min) * i2 / n, c3 = Object.assign({}, co); c3[V.key] = x3; pts.push([x3, rateOf(q, c3)]); }
+          oc.push({ points: pts, cls: qi ? 's4' : 's2' });
+          ym = Math.max(ym, T.niceMax(q.Vmax * 1.05));
+          rows.forEach(function(row, j3){ var x4 = V.min + (V.max - V.min) * j3 / 8, c4 = Object.assign({}, co); c4[V.key] = x4; row.push(F(rateOf(q, c4), 1)); });
+        });
+        var oNames = others.map(function(q, qi){ return (qi ? 'pink' : 'orange') + ': ' + q.name + ' (at ' + (tab === 'temp' ? 'pH ' + F(q.defaults.pH, 0) : F(q.defaults.T, 0) + ' °C') + ')'; });
         ref.innerHTML = '<p class="ez2-howref"><button type="button" class="tk2-how" data-how>Show me how</button> to use it, step by step.</p>' +
           '<h3 class="ls-title-l">This setting: ' + esc(PA.name) + '</h3>' +
           '<dl class="bt-readout"><div><dt>Substrate</dt><dd>' + F(c.S, 1) + ' ' + SU + '</dd></div><div><dt>Temperature</dt><dd>' + F(c.T, 0) + ' °C</dd></div><div><dt>pH</dt><dd>' + F(c.pH, 1) + '</dd></div>' +
@@ -635,8 +713,9 @@
           '<h3 class="ls-title-l">The rate curve: rate against ' + esc(nm) + '</h3>' +
           T.plot({ title: 'Graph of reaction rate against ' + nm + ' for ' + PA.name + (inhOn ? ' with ' + inhName(c.inhibitor).toLowerCase() + ' (solid) and without it (dashed)' : '') + '. The table below lists the values.',
             x: { label: V.label, unit: V.unit, min: V.min, max: V.max, step: V.step }, y: { label: 'Reaction rate', unit: RU, min: 0, max: ym, step: T.niceStep(ym, 5) },
-            curves: (inhOn ? [{ points: base, cls: 's3', dashed: true }] : []).concat([{ points: cur, cls: 's1' }]), points: [], vline: { x: c[V.key] } }) +
-          T.dataTable([esc(V.label) + (V.unit ? ' (' + esc(V.unit) + ')' : ''), 'Rate (' + RU + ')'].concat(inhOn ? ['Without inhibitor (' + RU + ')'] : []), rows, 'The curve, sampled') +
+            curves: (inhOn ? [{ points: base, cls: 's3', dashed: true }] : []).concat(oc, [{ points: cur, cls: 's1' }]), points: [], vline: { x: c[V.key] } }) +
+          (others.length ? '<p class="bt-small">Blue: ' + esc(PA.name) + ', the enzyme in the picture. The other enzymes in this tool, for comparison: ' + esc(oNames.join('; ')) + '.</p>' : '') +
+          T.dataTable([esc(V.label) + (V.unit ? ' (' + esc(V.unit) + ')' : ''), 'Rate (' + RU + ')'].concat(inhOn ? ['Without inhibitor (' + RU + ')'] : [], others.map(function(q){ return esc(q.name.replace(/ \(.*$/, '')) + ' (' + RU + ')'; })), rows, 'The curve, sampled') +
           '<h3 class="ls-title-l">The words</h3><ul class="ez2-words"><li><b>Active site</b>: the pocket on the enzyme that fits the substrate in shape and charge.</li><li><b>Saturated</b>: every active site is busy, so more substrate cannot raise the rate.</li>' +
           '<li><b>Denatured</b>: the enzyme has lost its folded shape, so the active site is gone.</li><li><b>Competitive inhibitor</b>: binds in the active site. More substrate can overcome it.</li><li><b>Noncompetitive inhibitor</b>: binds somewhere else and changes the active site’s shape. More substrate cannot overcome it.</li></ul>' +
           '<p class="bt-small">' + esc(EX.note) + '</p>';
@@ -674,14 +753,14 @@
         return null;
       }
       /* The words after a challenge: what the molecules are doing and why (as before the rebuild). */
-      function whyText(p, c){
+      function whyText(p, c, dir){
         var z = M.enzyme.states(p, c), k = M.enzyme.params(p, c), w = [], I = c.inhibitor !== 'none' ? c.I : 0;
         if(z.folded < 0.6) w.push('At ' + F(c.T, 0) + ' °C most molecules have unfolded (denatured): the active site has lost its shape, so no substrate fits. (Many real enzymes stay unfolded after cooling.)');
         else if(z.motion < 0.5) w.push('It is cold: molecules move slowly, so substrate meets the active site less often and fewer products form each second.');
         if(z.phOk < 0.5) w.push('At pH ' + F(c.pH, 1) + ' the charged groups in most active sites are in the wrong state, so the site no longer binds substrate well (the sites drawn out of shape).');
         if(c.inhibitor === 'competitive' && I > 0) w.push('The competitive inhibitor looks like the substrate and sits in the active site, so it competes: add more substrate and substrate wins more often (Km rises to ' + F(k.km, 2) + ' ' + SU + ', Vmax unchanged).');
         if(c.inhibitor === 'noncompetitive' && I > 0) w.push('The noncompetitive inhibitor binds elsewhere and bends the active site, taking those molecules out of action whatever the substrate level (Vmax falls to ' + F(k.vmax, 1) + ', Km unchanged).');
-        if(!w.length) w.push(z.substrate > 0.85 ? 'Nearly every active site is busy (saturated): adding substrate barely speeds things up. Only more enzyme would.' : 'Many active sites are empty, waiting for substrate: more substrate means more collisions and a faster rate.');
+        if(!w.length) w.push(dir === 'same' ? 'Nearly every active site is busy (saturated): adding substrate barely speeds things up. Only more enzyme would.' : 'Many active sites are empty, waiting for substrate: more substrate means more collisions and a faster rate.');
         return w.join(' ');
       }
       function condWords(c){ return F(c.S, 1) + ' ' + SU + ' substrate, ' + F(c.T, 0) + ' °C, pH ' + F(c.pH, 1) + (c.inhibitor !== 'none' && c.I > 0 ? ', ' + F(c.I, 2) + ' ' + IU + ' ' + c.inhibitor + ' inhibitor' : ''); }
@@ -712,7 +791,7 @@
             setTimeout(function(){
               if(chal !== x) return;
               btn.parentNode.hidden = true;
-              fb.innerHTML = '<p><span class="bio-mark ' + (ok ? 'ok">Right' : 'no">Not quite') + '</span> The rate ' + words[x.dir] + ': ' + F(x.r1, 1) + ' → ' + F(x.r2, 1) + ' ' + RU + '.</p><p>' + esc(whyText(x.p, x.c2)) + '</p>' +
+              fb.innerHTML = '<p><span class="bio-mark ' + (ok ? 'ok">Right' : 'no">Not quite') + '</span> The rate ' + words[x.dir] + ': ' + F(x.r1, 1) + ' → ' + F(x.r2, 1) + ' ' + RU + '.</p><p>' + esc(whyText(x.p, x.c2, x.dir)) + '</p>' +
                 '<div class="bt-actions"><button type="button" class="btn-press sm os-next">Next challenge</button>' + T.report(SLUG + ':predict-' + x.ch.id) + '</div>';
               fb.querySelector('.os-next').addEventListener('click', function(){ showChallenge(); var q = chalBox.querySelector('.os-chal-q'); q.setAttribute('tabindex', '-1'); q.focus(); });
               if(away) try{ fb.scrollIntoView({ block: 'start', behavior: K.reduced() ? 'auto' : 'smooth' }); }catch(e){}
