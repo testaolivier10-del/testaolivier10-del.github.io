@@ -140,3 +140,23 @@ Also one line each in `docs/tools-v2-owner-log.md`.
 `bio/assets/tools/enzyme-activity.js` and `.css`; `explore` in `bio/data/tools/enzyme-activity.json` (checked by
 `scripts/lib/apbio-tool-checks/enzyme-activity.mjs`); `"kit2": true` in `bio/data/pages.json`; the sweep
 `scripts/tools-v2/enzyme-activity-sweep.mjs`. The kit and the adapter were not changed.
+
+## Build status (2026-11-18)
+- Sweep (`scripts/tools-v2/enzyme-activity-sweep.mjs`): 42 states at each of the ten widths, 420 states and
+  2,955 checks, 0 failures. Smallest enzyme share of the solution 21.0% (1024, Test yourself, all denatured).
+  Run one width per process (`node scripts/tools-v2/enzyme-activity-sweep.mjs 390`); all ten in one process takes
+  over ten minutes.
+- Fixes from the sweep: the unfolded chain fills about the space of the folded enzyme (scaled per axis in the
+  molecule's frame), so it stays in the solution and stays the largest thing; the fold stretches less while it
+  loosens; enzymes take a little more of each cell in narrow scenes (0.315 of the cell width); the cause line
+  keeps two rows on a phone in this tool's CSS (the kit reserves one row only, so the builder brief's note that
+  the kit reserves two is not true for `.tk2-cause`).
+- Verified: AP® Biology content check, `build-apbio --check`, the 72 AP® Biology unit tests, `check-site`,
+  `check-weight`; `check-tool-use` with this tool swapped in reports `apbio/enzyme-activity` frame v2 (the stock
+  run fails on Osmosis, still listed there as the old frame although it was rebuilt on `claude/tools-v2-all`).
+  Playwright at 390, 768 and 1440, light and dark: touch drag (390) and pointer drag, keyboard (End, Home, arrows),
+  the inhibitor switch, frames while unfolding and while new enzyme comes in, reduced motion (still result at
+  once), Test yourself right and wrong marks, `#predict`, `#questions`, `#frq` (now opens the questions with the
+  FRQ; the old tool ignored `#frq`), the real locked state (Premium card), no console errors.
+- Preview: `/mnt/user-data/outputs/enzyme-activity-v2/index.html`; shots in `.../shots/` (sweep shots and contact
+  sheets in `shots/sweep/`). No shared file changed, so `build-apcalc` and `build-apmacro` were not needed.
