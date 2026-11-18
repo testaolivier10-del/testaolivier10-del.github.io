@@ -74,7 +74,7 @@
       // One card element per factor (it flies between the bench and the board), the start card and the result card.
       function cardHtml(f, flip){
         var t = flip ? f.bot : f.top, b = flip ? f.top : f.bot;
-        var half = function(x, k){ return '<span class="us3-h us3-' + k + '"><span class="us3-v">' + esc(valText(x[0])) + '</span><span class="us3-u is-' + uKey(x[1]) + '" data-u="' + esc(x[1]) + '">' + esc(x[1]) + '</span></span>'; };
+        var half = function(x, k){ return '<span class="us3-h us3-' + k + '"><span class="us3-v' + (valText(x[0]).length > 8 ? ' is-long' : '') + '">' + esc(valText(x[0])) + '</span><span class="us3-u is-' + uKey(x[1]) + '" data-u="' + esc(x[1]) + '">' + esc(x[1]) + '</span></span>'; };
         return half(t, 'top') + '<span class="us3-bar" aria-hidden="true"></span>' + half(b, 'bot');
       }
       function valText(v){ return /e/.test(v) ? (+v / Math.pow(10, Math.floor(Math.log10(+v)))).toPrecision(4) + ' × 10' + String(Math.floor(Math.log10(+v))).replace(/\d/g, function(d){ return '⁰¹²³⁴⁵⁶⁷⁸⁹'.charAt(+d); }) : v; }

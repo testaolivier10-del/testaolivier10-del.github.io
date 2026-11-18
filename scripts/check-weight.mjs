@@ -447,7 +447,7 @@ const SHELL_BUDGETS = [
      and the math chapter out, the generated chem-curriculum.js lists every
      topic as live and the exams page's shell measured 50.2 KB; the extra is
      course data, not code. */
-  ['chem', 52.8], // Score card on exam results (2026-11-07): LevlStudy.end replaces each exam summary; measured about 0.1 KB more
+  ['chem', 53.2], // Score card on exam results (2026-11-07): about 0.1 KB. Forgiving units in chem-questions.js (tools v2, units-sig-figs, 2026-11-18: g/ml, per, KJ, atmospheres, a stray full stop): measured 0.2 KB more
   /* AP® Physics 1 (physics/, a fork of the AP® Chemistry runtime). Before
      any unit is published; Chemistry's 52 is the reference. */
   /* 52 -> 52.2 (consistency audit 2026-11): the shared end panel call and the exam-day reference cards. Measured

@@ -511,3 +511,15 @@ Example 14.9) uses K<sub>c</sub> = 54.3. It agrees with the other common figures
 nearby temperatures: K ≈ 54 to 55 at 698 to 700 K, and about 50 at 448 °C (K falls as T rises,
 since the forward reaction is exothermic). Only the constant and its temperature are used; the
 drill's amounts are generated, not taken from the example. The problem text names 430 °C.
+
+## units-read-beaker: reading a beaker to one estimated digit (open, 2026-11-18)
+
+The Units and significant figures tool (Explore, tab 2; `docs/tools-v2-units-sig-figs-brief.md`) pours the same
+water from a 50 mL graduated cylinder (marks every 1 mL) into a 50 mL beaker (marks every 10 mL) and reads the
+beaker to the ones place (33.7 mL in the cylinder reads 34 mL in the beaker, 2 significant figures), by the
+course's own rule (notes, math-sig-figs: read the marks, estimate one more digit). Many lab manuals say beaker
+marks are only approximate (about ±5%) and should not be used to measure at all. The tool says nothing about the
+beaker's accuracy; a teacher may want one line in "?" ("beaker marks are approximate; use a cylinder to measure").
+Also not stated, on purpose: a reading's uncertainty. Texts differ (half the smallest division, or one tenth of
+it, or "± 1 in the estimated digit"), and the AP® Chemistry exam does not ask for one. Decide whether "?" should
+give one convention.

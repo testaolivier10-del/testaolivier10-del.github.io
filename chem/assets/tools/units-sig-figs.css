@@ -152,3 +152,5 @@
 .us3-card.is-res .us3-h{max-width:100%;}
 .us3-card.is-res .us3-v{white-space:normal;font-size:15px;}
 .us3-card.is-res.is-stale,.us3-tag.is-stale{opacity:.35;transition:opacity .15s;}
+.us3-v.is-long{font-size:13px;letter-spacing:-.02em;}
+@media (max-width:699px){ .us3-v.is-long{font-size:12px;} }
