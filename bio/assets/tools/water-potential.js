@@ -209,6 +209,18 @@
         var w = pillW(text, fs), h = fs + 10, x0 = anchor === 'start' ? x : anchor === 'end' ? x - w : x - w / 2;
         return '<g class="wp2-pill ' + cls + '"><rect x="' + n1(x0) + '" y="' + n1(y - h / 2) + '" width="' + n1(w) + '" height="' + n1(h) + '" rx="' + n1(h / 2) + '"/><text x="' + n1(x0 + w / 2) + '" y="' + n1(y + fs * 0.36) + '" text-anchor="middle" style="font-size:' + fs + 'px">' + esc(text) + '</text></g>';
       }
+      /* The same pill on two lines (a phone, where one line would run onto the cell): left edge at x, centred on y. */
+      function pill2(x, y, lines, cls, fs){
+        var w = Math.max.apply(null, lines.map(function(t){ return pillW(t, fs); })), lh = fs * 1.15, h = lh * lines.length + 9;
+        return '<g class="wp2-pill ' + cls + '"><rect x="' + n1(x) + '" y="' + n1(y - h / 2) + '" width="' + n1(w) + '" height="' + n1(h) + '" rx="' + n1(Math.min(h / 2, 12)) + '"/>' +
+          lines.map(function(t, i){ return '<text x="' + n1(x + w / 2) + '" y="' + n1(y - h / 2 + 4.5 + lh * (i + 0.5) + fs * 0.36) + '" text-anchor="middle" style="font-size:' + fs + 'px">' + esc(t) + '</text>'; }).join('') + '</g>';
+      }
+      function wPill(g, wy, t){   // the water's pill beside the cell; two lines when one would not fit before the knob
+        var x = g.xr + 8;
+        if(x + pillW(t, g.fsS) <= g.rightLim || t.indexOf(' ') < 0) return pill(Math.min(x, g.rightLim - pillW(t, g.fsS)), wy, t, 'is-water', 'start', g.fsS);
+        var k = t.lastIndexOf(' ');
+        return pill2(x, wy - 4, [t.slice(0, k), t.slice(k + 1)], 'is-water', g.fsS);
+      }
       function arrow(fx, fy, tx, ty, sw, cls){
         var ang = Math.atan2(ty - fy, tx - fx), hl = 6 + sw * 0.9, bx = tx - Math.cos(ang) * hl, by = ty - Math.sin(ang) * hl;
         return '<path class="' + cls + '" stroke-width="' + n1(sw) + '" d="M' + n1(fx) + ' ' + n1(fy) + 'L' + n1(bx) + ' ' + n1(by) + '"/>' +
@@ -311,7 +323,7 @@
         // solute outside: particles at the same density rule as the cell sap, never on the cell, a card or the rail
         var POOL = g.pool, kd = Math.max(k, 1.15), area = BW * BH / (kd * kd), nf = Math.min(POOL.length, sc.osmOut * KD * area), nOut = Math.ceil(nf - 1e-9), dr = 2.6 * Math.sqrt(kd), dots = [];
         var wy = cy - (g.ph ? 0.2 : 0.32) * g.hh - (g.ph ? 24 : 30), sp = pillW('Solute outside', g.fsS), spx = Math.min(g.vx + sp / 2, R0 - 6);
-        var keep = [[g.c2, g.cardY, g.c2 + g.cw, g.cardY + g.ch + g.wordH / 2 + 2], [g.xr, wy - 20, g.xr + 16 + pillW('no net movement', g.fsS), wy + 12]];
+        var keep = [[g.c2, g.cardY, g.c2 + g.cw, g.cardY + g.ch + g.wordH / 2 + 2], [g.xr, wy - 26, g.xr + 16 + pillW('no net movement', g.fsS), wy + 16]];
         if(!g.inside) keep.push([g.c1, g.cardY, g.c1 + g.cw, g.cardY + g.ch + g.wordH / 2 + 2]);
         if(g.ex) keep.push([g.vx - 32, g.vy1 - 54, g.vx + 32, g.vy0 + 22], [spx - sp, g.vy0 + (g.ph ? 32 : 36) - g.wordH / 2, spx, g.vy0 + (g.ph ? 32 : 36) + g.wordH / 2]);
         var hit = function(x, y, m){ for(var z = 0; z < keep.length; z++){ var q = keep[z]; if(x > q[0] - m && x < q[2] + m && y > q[1] - m && y < q[3] + m) return true; } return false; };
@@ -371,7 +383,7 @@
             if(tw && !K.reduced()){ var phs = (view.clock / 640) % 1; for(var w = 0; w < 2; w++){ var u = (phs + w / 2) % 1; fl.push('<circle class="wp2-w" cx="' + n1(fx + (tx - fx) * u * 0.78) + '" cy="' + n1(ay) + '" r="' + n1(2.2 + sw * 0.13) + '"/>'); } }
           });
           var wtxt = sc.dir === 'none' ? 'no net movement' : sc.dir === 'in' ? 'water in' : 'water out';
-          fl.push(pill(Math.min(g.xr + 8, g.rightLim - pillW(wtxt, g.fsS)), wy, wtxt, 'is-water', 'start', g.fsS));
+          fl.push(wPill(g, wy, wtxt));
           p.push('<g class="wp2-flowg" data-dir="' + sc.dir + '" opacity="' + sc.reveal.toFixed(2) + '">' + fl.join('') + '</g>');
         }
         put('flow', p.join('')); p = [];
