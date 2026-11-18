@@ -1353,10 +1353,10 @@
                             their own stage: the stimulus), when the tool built them (T.questions, T.frq).
        A skills tool's practice problems (T.skillTool) are a part too, with their own stage (the problem's figure):
                             { value: 'practice', label, practice: true } in o.parts places it (first when left out).
-                            Its problems (new numbers, each worked problem) are choices of the same one dropdown,
-                            and ?seed=... opens it. With onPicture: true the tool draws each problem on o.stage
-                            itself (its skillTool stage function), so o.stage stays in Test yourself and the
-                            practice's own stage stays hidden.
+                            Its problems (new numbers, each worked problem) are choices of the same one dropdown
+                            (named "Problem" when practice is the only part), and ?seed=... opens it. With
+                            onPicture: true the tool draws each problem on o.stage itself (its skillTool stage
+                            function), so o.stage stays in Test yourself and the practice's own stage stays hidden.
        o.onShow(mode, part) after every switch: mode 'explore' | 'quiz', part the Test yourself part or null.
      Two modes only: Explore and Test yourself. With more than one part, ONE dropdown on the stage ("What to
      practice") picks it. #predict..., #questions and #frq open Test yourself on that part, as the old links did.
@@ -1393,7 +1393,7 @@
     if(lp && (parts.length > 1 || lp.groups.length > 1 || lp.groups[0] && lp.groups[0].items.length > 1)){
       // one dropdown: each problem of the practice part, then the other parts
       var others = parts.filter(function(p){ return !p.practice; });
-      pick = s.picker({ label: 'What to practice', groups: [{ label: pp.label, items: [].concat.apply([], lp.groups.map(function(g){ return g.items; })) }]
+      pick = s.picker({ label: others.length ? 'What to practice' : 'Problem', groups: [{ label: pp.label, items: [].concat.apply([], lp.groups.map(function(g){ return g.items; })) }]
           .concat(others.length ? [{ label: o.othersLabel || 'More', items: others.map(function(p){ return { value: p.value, label: p.label }; }) }] : []), value: pickVal(partOf(cur.part)),
         onChange: function(v){ if(isProb(v)){ show('quiz', pp.value, true); lp.onChange(v); pick.value(v); } else show('quiz', v, true); } }, 'quiz');
       area.lsSync = function(){ if(cur.part === pp.value && pick.value() !== lp.value()) pick.value(lp.value()); };
