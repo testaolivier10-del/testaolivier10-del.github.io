@@ -238,7 +238,7 @@
       function ofKind(k){ return PARTS.filter(function(p){ return k === 'inh' ? p.kind !== 'sub' : p.kind === k; }); }
       /* How many of each to draw: substrate by its concentration; inhibitor by its own, and always enough to bind. */
       function counts(){
-        var c = now.c, nS = c.S > 0 ? Math.max(Math.round((now.occ || 0) * G.N) + 3, Math.round(Math.pow(c.S / data.substrate.max, 0.75) * G.nMax)) : 0, zz = M.enzyme.states(now.prof, c), nI = c.inhibitor !== 'none' && c.I > 0 ? Math.max(Math.round((c.inhibitor === 'competitive' ? zz.inhibitor : zz.allosteric) * G.N) + 2, Math.round(c.I / data.inhibitor.max * G.nMax * 0.4)) : 0;
+        var c = now.c, nS = c.S > 0 ? Math.max(Math.round((now.occ || 0) * G.N) * 2 + 3, Math.round(Math.pow(c.S / data.substrate.max, 0.75) * G.nMax)) : 0, zz = M.enzyme.states(now.prof, c), nI = c.inhibitor !== 'none' && c.I > 0 ? Math.max(Math.round((c.inhibitor === 'competitive' ? zz.inhibitor : zz.allosteric) * G.N) + 2, Math.round(c.I / data.inhibitor.max * G.nMax * 0.4)) : 0;
         return { sub: nS, inh: nI };
       }
       function setCount(kind, n, instant){
@@ -324,14 +324,14 @@
           }
         } else if(busy.length > nb){ var h0 = W.filter(function(e){ return e.sub && e.sub.mode === 'held'; })[0]; if(h0) release(h0, 'sub'); }
         // at high substrate the next substrate is already waiting at the mouth of a full site
-        if(now.occ >= 0.5 && free.length){ var hw = W.filter(function(e){ return e.sub && !e.next && (e.sub.mode === 'held' || e.sub.mode === 'cat'); })[0]; if(hw){ var mw0 = world(hw, 1.4, 0), sw0 = nearest(free, mw0[0], mw0[1], hw); free.splice(free.indexOf(sw0), 1); hw.next = sw0; send(sw0, hw, 'wait'); } }
+        if(now.occ >= 0.35 && free.length){ var hw = W.filter(function(e){ return e.sub && !e.next && (e.sub.mode === 'held' || e.sub.mode === 'cat'); })[0]; if(hw){ var mw0 = world(hw, 1.4, 0), sw0 = nearest(free, mw0[0], mw0[1], hw); free.splice(free.indexOf(sw0), 1); hw.next = sw0; send(sw0, hw, 'wait'); } }
         acc = Math.min(1.5, acc + rf * G.N / 0.78 * dt);
         while(acc >= 1){
           var held = W.filter(function(e){ return e.sub && e.sub.mode === 'held'; });
           if(held.length){
             acc -= 1; var eh = held[Math.floor(rnd() * held.length)]; eh.sub.mode = 'cat'; eh.sub.t = 0;
             // at high substrate the next one is already on its way to the mouth
-            if(now.occ >= 0.5 && !eh.next && free.length){ var mw = world(eh, 1.4, 0), sw = nearest(free, mw[0], mw[1], eh); free.splice(free.indexOf(sw), 1); eh.next = sw; send(sw, eh, 'wait'); }
+            if(now.occ >= 0.35 && !eh.next && free.length){ var mw = world(eh, 1.4, 0), sw = nearest(free, mw[0], mw[1], eh); free.splice(free.indexOf(sw), 1); eh.next = sw; send(sw, eh, 'wait'); }
             continue;
           }
           var ok = W.filter(function(e){ return !e.sub && e.cool <= 0; });

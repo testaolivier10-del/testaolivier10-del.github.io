@@ -169,9 +169,11 @@ Must fix:
 1. **Saturation drawn.** The share of working sites holding substrate follows the model, S/(Km + S) (the same among
    the sites an inhibitor leaves free; on the Temperature tab scaled down with the collision rate when cold). A
    site that fills keeps its substrate until a reaction (`held`); at high substrate the next substrate waits at the
-   mouth and slides in as the products leave; only the turnover pace follows the rate. Measured (frames test, 1440):
-   1 mM 0.28 against 0.33, 2 mM 0.39 against 0.50, 5 mM 0.62 against 0.71, 20 mM 0.86 against 0.91. The sweep
-   checks 2 and 20 mM at every width (within 0.15).
+   mouth (from an occupancy of 0.35 up) and slides in as the products leave; only the turnover pace follows the
+   rate. Enough substrate is drawn to keep the sites supplied (at least twice the occupied sites plus 3). Measured
+   (frames test, 1440): 1 mM 0.31 against 0.33, 2 mM 0.50 against 0.50, 5 mM 0.72 against 0.71, 20 mM 0.99 against
+   0.91. The sweep checks 2 and 20 mM at every width (within 0.15). Under heavy machine load (other browsers
+   running) the sample can lag; run the frames test and sweep widths alone or a few at a time.
 2. **Optimum temperature at 40.5 °C.** "Optimum temperature", "Best temperature" and "top rate" only within 1.5 °C
    of the model's optimum. From 30 °C up to it: "Warm → faster collisions"; just past it while the rate is still
    at least 0.9 of the best and nothing is drawn unfolded: "Just past best → fast collisions". "Too hot" only below
@@ -193,8 +195,8 @@ Temperature and pH tabs "?" draws Enzymes B and C beside A (each at its own usua
 "How this model works" no longer calls unfolding instant and reversible (and the old "Runs" item is gone); the
 "?" note adds that in a real test tube the rate would stay low.
 
-Checks: sweep 42 states and about 297 checks at each of the ten widths, one width per process, 0 failures
-(1920 run alone: under five parallel browsers it lags and the occupancy sample falls short). New kept test
+Checks: sweep 42 states and 297 or 298 checks at each of the ten widths (420 states, 2,975 checks), a few widths at
+a time, 0 failures. New kept test
 `scripts/tools-v2/enzyme-activity-frames.mjs` (frame by frame, items 1, 3, 4 and 5 and the pH 2 to 13 drag):
 0 failures at 390, 1440 and 1920. AP® Biology content, build `--check`, 72 unit tests, `check-site`,
 `check-weight`, `check-tool-use` with a local list (frame v2) pass. Playwright at 390, 768, 1440 light and dark.
