@@ -137,14 +137,13 @@ tool, tools v2 drawn screens".
   chose one. Without the kit it behaves as before.
 - Build opt in: `"kit2": true`, `extraScripts`, `extraCss` on the tool in `anatomy-physiology/data/pages.json`;
   `scripts/build-anp.mjs` adds `tool-kit2.css` and `tool-kit2.js` for a kit2 tool. Only `tools/graphs.html` changed.
-- `scripts/check-weight.mjs`: A&P shell 60 to 61 KB (measured 60.3). `scripts/check-tool-use.mjs`: lists the rebuilt
-  tools as frame v2 (Osmosis was still expected as "old" on this branch; Graphs added).
+- `scripts/check-weight.mjs`: A&P shell 60 to 61 KB (measured 60.3).
 - Sweep test: `scripts/tools-v2/anp-graphs-sweep.mjs`.
 
 ## Checks run (2026-11-18)
 `node --test scripts/test/anp-*.test.mjs` (55 pass), `check-anp-content --check` (0 failing), `build-anp --check`,
 `check-site` (OK), `check-weight --check` (A&P within 61), `build-apcalc --check`, `build-apmacro --check`,
-`check-tool-use` (graphs reports frame v2; nothing sent under automation).
+frame v2 checked with a local copy of `check-tool-use`'s list (the file itself is the collecting branch's).
 Sweep: 44 states (8 to 9 per screen) at 10 widths, light and dark: 880 states, clean (no clipping, no overlapping
 labels on the picture or the graph, the cue covers no label, the picture is the largest thing on the stage, the cause
 line at most two rows on phones with one height, no sideways scroll, no console errors). Contact sheets:
