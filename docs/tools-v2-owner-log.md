@@ -27,3 +27,8 @@ in each tool's brief.
 | 2026-11-18 | AP Bio Osmosis | Drawn areas follow the model (cell and vacuole by water, protoplast by mass) | Inside and outside crowding must match once settled | `shape()` |
 | 2026-11-18 | AP Bio Osmosis | Potato challenges say "24 hours"; Replay sits in the feedback; a phone scrolls the picture into view for a run | Reviewer | Test yourself, Predict |
 
+| 2026-11-18 | AP Bio Energy flow | The picture is a drawn grassland chain of four (grasses, grasshoppers, frogs, snakes); one drawn per 10 kcal, so counts are the energy | One idea, read without a chart (rule 12) | `docs/tools-v2-bio-energy-flow-brief.md` |
+| 2026-11-18 | AP Bio Energy flow | Two controls on the picture (share passed on, sunlight); respiration shares, number of levels and ecosystem are fixed in Explore | One main control (rule 11) | "?" states the fixed values; restore the sliders in Test yourself or a later tool |
+| 2026-11-18 | AP Bio Energy flow | Biomagnification (8.7) moves from a mode to "?" | Different idea from 8.2 | "?" section; a separate tool can come later |
+| 2026-11-18 | AP Bio Energy flow | The runs table is dropped; a series table for shares 5 to 20% is in "?" | Explore records nothing | `refHtml()` |
+| 2026-11-18 | AP Bio Energy flow | The cause line says "lost as heat" for all not passed on (AP shorthand); "?" splits heat and decomposers | Short cause line | `docs/apbio-needs-author.md` energy-flow-model |

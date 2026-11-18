@@ -525,6 +525,9 @@ Unit 8 (Ecology), raised by its author, 2026-10-03:
   mass, and turnover rates (P/B) per level that make the open-ocean biomass pyramid inverted. Real trophic
   efficiencies range about 5-20% and endotherms respire more than 80% of assimilated energy; textbooks state the
   "10% rule" against different quantities (energy available, production, biomass). Confirm the definitions.
+  Tools v2 (2026-11-18): Explore's cause line says "90% lost as heat" for everything not passed on (the usual AP
+  shorthand; the part eaten by decomposers also ends as heat), while "?" splits it into respiration heat and
+  decomposers. Confirm the shorthand is acceptable.
 - **biomagnification-rule** (open; same simulator). The toxin's concentration rises by retained share ÷
   (1 − respiration share) per level (×5 with the defaults), a simple mass-balance rule; real biomagnification
   factors vary widely by toxin, species and fat content. Biomagnification is taught in 8.7, so the mode is
