@@ -81,6 +81,8 @@
 .hw2-pill.is-r rect{stroke:var(--hw-r);} .hw2-pill.is-r text{fill:var(--hw-r-ink);}
 .hw2-pill.is-w rect{stroke:var(--hw-w-edge);}
 .hw2-pill.is-car rect{stroke:var(--hw-r);stroke-dasharray:none;} .hw2-pill.is-car text{fill:var(--hw-r-ink);}
+/* the two Aa plots of the pea bed, outlined as one group (both pills say 2pq) */
+.hw2-carbox{fill:none;stroke:var(--hw-r);stroke-width:2;stroke-dasharray:6 4;pointer-events:none;}
 /* the signs in front of the bed */
 .hw2-sign rect{fill:var(--white);stroke:var(--hw-wd-ink);stroke-width:1.6;}
 .hw2-sign text{fill:var(--ink);font-weight:900;font-variant-numeric:tabular-nums;}

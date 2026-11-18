@@ -13,6 +13,8 @@
    Writes one contact sheet per width group to --out (default /tmp/hw-sweep).
      - (review round 1) plants in a column and in a row never touch; each sign's text lies inside its sign; the pea
        target blooms as two signs (purple, white) with the carriers named, and the next target is snapdragons again.
+     - (recheck 1) on both carrier targets (pea bed), at every p, both Aa plots carry the carrier pill (2pq), each in
+       its own plot, turned along a single column plot, inside the stage and overlapping no label or allele.
    One child process per width (--width W runs one width).
    Usage: node scripts/tools-v2/hardy-weinberg-sweep.mjs [--out dir] [--width W]   (needs playwright) */
 import { createServer } from 'node:http';
@@ -93,7 +95,7 @@ function measure() {
   const txt = e => e.textContent.replace(/\s+/g, ' ').trim();
   return { S, labels, toks, knob: knob && knob.offsetParent ? (b => ({ x: b.x - 7, y: b.y - 7, r: b.r + 7, b: b.b + 7, w: b.w + 14, h: b.h + 14 }))(R(knob)) : null, /* the dot and its two rings */ cue: cue ? R(cue) : null, frame, soil, plants,
     cause: { h: cause.getBoundingClientRect().height, rows: rows.size, text: cz.map(txt), hidden: cause.offsetParent === null },
-    signs: signEls.map(e => txt(e)), signText, car: q('.hw2-car .hw2-pill').filter(vis).map(e => txt(e)), sp: document.querySelector('.hw2').getAttribute('data-sp'), nR: q('.hw2-top .hw2-tok.is-r:not(.is-egg)').length, nRe: q('.hw2-top .hw2-tok.is-r.is-egg').length,
+    signs: signEls.map(e => txt(e)), signText, car: q('.hw2-car .hw2-pill').filter(vis).map(e => txt(e)), carBox: q('.hw2-car .hw2-pill').filter(vis).map(e => R(e)), sp: document.querySelector('.hw2').getAttribute('data-sp'), nR: q('.hw2-top .hw2-tok.is-r:not(.is-egg)').length, nRe: q('.hw2-top .hw2-tok.is-r.is-egg').length,
     colors: ['g0', 'g1', 'g2', 'is-sprout'].map(c => scene.querySelectorAll('.hw2-p > use.' + c + ':not(.is-out)').length),
     scrollX: document.documentElement.scrollWidth - document.documentElement.clientWidth, vw: innerWidth,
     biggest: Array.from(document.querySelectorAll('.ls-root button, .ls-root .tk2-cause, .ls-root .tk2-head')).reduce((m, e) => Math.max(m, e.getBoundingClientRect().width * e.getBoundingClientRect().height), 0) };
@@ -130,6 +132,47 @@ function check(m, tag, n, opts = {}) {
     const want = [`p = ${(n / 10).toFixed(1)}`, `q = ${(1 - n / 10).toFixed(1)}`, `p² = ${(c[0] / 100).toFixed(2)}`, `2pq = ${(c[1] / 100).toFixed(2)}`, `q² = ${(c[2] / 100).toFixed(2)}`];
     ok(m.cause.text.join('|') === want.join('|'), `${tag}: the cause line says ${m.cause.text.join(' ')}`);
     if (m.vw <= 640) ok(m.cause.rows <= 2, `${tag}: the cause line takes ${m.cause.rows} rows`);
+  }
+}
+
+/* (recheck 1) The pea bed is split into four plots (AA, Aa, Aa, aa). Both Aa plots must carry the carrier pill, so
+   a student who counts the labelled plants gets 2pq, not pq; each pill lies in its own plot, a single column plot
+   has its pill turned along it, and (through check()) no pill is clipped or overlaps another label or an allele. */
+function carriers(m, tag, n) {
+  const want = n > 0 && n < 10 ? 2 : 0;
+  ok(m.car.length === want, `${tag}: ${m.car.length} carrier pills on the pea bed, expected ${want} (${m.car.join(', ')})`);
+  if (!want || m.car.length !== want) return;
+  m.car.forEach(t => ok(/^Aa\b/.test(t) && /2pq/.test(t), `${tag}: a carrier pill reads "${t}"`));
+  // each Aa plot from its own plants: top right (A egg, a pollen) and bottom left (a egg, A pollen)
+  const plot = sel => { const ps = m.plants.filter((p, i) => sel(Math.floor(i / 10), i % 10));
+    return { x: Math.min(...ps.map(p => p.x)), y: Math.min(...ps.map(p => p.y)), r: Math.max(...ps.map(p => p.r)), b: Math.max(...ps.map(p => p.b)) }; };
+  const plots = [plot((r, c) => r < n && c >= n), plot((r, c) => r >= n && c < n)];
+  const cols = [10 - n, n];
+  plots.forEach((pl, j) => {
+    const inPl = m.carBox.filter(b => { const cx = (b.x + b.r) / 2, cy = (b.y + b.b) / 2; return cx > pl.x - 2 && cx < pl.r + 2 && cy > pl.y - 2 && cy < pl.b + 2; });
+    ok(inPl.length === 1, `${tag}: the ${j ? 'bottom left' : 'top right'} Aa plot carries ${inPl.length} carrier pills`);
+    if (inPl.length === 1 && cols[j] === 1) ok(inPl[0].h > inPl[0].w, `${tag}: the pill on the single column Aa plot is not turned along it`);
+    if (inPl.length === 1) ok(inPl[0].x >= m.soil.x - 1 && inPl[0].r <= m.soil.r + 1 && inPl[0].y >= m.soil.y - 1 && inPl[0].b <= m.soil.b + 1, `${tag}: a carrier pill leaves the bed`);
+  });
+}
+/* Bloom a carrier target at every p (0 to 1 in steps of 0.1); the right answer comes last, as it ends the target. */
+async function everyP(page, scene, shots, tag, right, done) {
+  const order = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].filter(n => n !== right && !done.includes(n)).concat([right]);
+  for (const n of order) {
+    const again = page.locator('.hw2-again');
+    if (await again.count()) { await again.click(); await page.waitForTimeout(250); }
+    const input = page.locator('.hw2 .tk2-in');
+    await input.focus();
+    await page.keyboard.press('Home');
+    for (let i = 0; i < n; i++) await page.keyboard.press('ArrowRight');
+    await page.waitForTimeout(150);
+    await page.locator('.hw2-go button').click();
+    await page.waitForSelector('.hw2-fb .bio-mark', { timeout: 6000 });
+    await page.waitForTimeout(400);
+    const m = await page.evaluate(measure);
+    check(m, `${tag} p=${n / 10} in bloom`, n);
+    carriers(m, `${tag} p=${n / 10}`, n);
+    if (n === 1 || n === 9 || n === right) shots.push({ t: `${tag.split(' ').slice(-2).join(' ')}: p = ${(n / 10).toFixed(1)}`, b: await scene.screenshot() });
   }
 }
 
@@ -198,8 +241,10 @@ for (const w of WIDTHS) for (const dark of (DARK.includes(w) ? [false, true] : [
   check(m, `${tag0} target in bloom`, 5);
   // target 1 is on the pea bed (complete dominance): two signs (purple, white) and the carriers named on a pq plot
   ok(m.sp === 'pea' && m.colors[3] === 0 && m.signs.join('|') === 'purple 75%|white 25%', `${tag0}: the pea bed did not bloom as 75% purple, 25% white (${m.sp}, ${m.signs})`);
-  ok(m.car.length === 1 && m.car[0] === 'Aa: carriers', `${tag0}: the carriers are not named on the pea bed (${m.car})`);
+  carriers(m, `${tag0} target 1 p=0.5`, 5);
   shots.push({ t: 'Test yourself: peas in bloom', b: await scene.screenshot() });
+  // (recheck 1) every p on both carrier targets: both Aa plots named, inside the stage, overlapping nothing
+  await everyP(page, scene, shots, `${tag0} target 1`, 6, [5]);
   // the next target is back on the snapdragons: planted, then three signs after the bloom
   await page.locator('.hw2-nextt').click();
   await page.waitForTimeout(500);
@@ -213,6 +258,12 @@ for (const w of WIDTHS) for (const dark of (DARK.includes(w) ? [false, true] : [
   check(m, `${tag0} target 2 in bloom`, 3);
   ok(m.colors[3] === 0 && m.signs.join('|') === 'RR 9%|RW 42%|WW 49%', `${tag0}: target 2 did not bloom (${m.signs})`);
   shots.push({ t: 'Test yourself: snapdragons in bloom', b: await scene.screenshot() });
+  // target 3 (rare recessive) is the second carrier target, on the pea bed again
+  await page.locator('.hw2-nextt').click();
+  await page.waitForTimeout(500);
+  m = await page.evaluate(measure);
+  ok(m.sp === 'pea' && m.car.length === 0, `${tag0}: target 3 is not a planted pea bed (${m.sp}, ${m.car})`);
+  await everyP(page, scene, shots, `${tag0} target 3`, 9, []);
   ok(errs.length === 0, `${tag0}: console errors: ${errs.join(' | ')}`);
   sheets.push({ tag: tag0, w, shots });
   await ctx.close();

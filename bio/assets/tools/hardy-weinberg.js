@@ -532,7 +532,7 @@
             var x = g.bx0 + g.BW * (i + 0.5) / k;
             return '<g class="hw2-sign ' + GC[sg.g] + '" data-g="' + sg.g + '"><path class="hw2-stake" d="M' + n1(x) + ' ' + n1(y - g.signH / 2 - 7) + 'V' + n1(y) + '"/><rect y="' + n1(y - g.signH / 2) + '" height="' + g.signH + '" rx="7"/>' +
               '<circle class="hw2-sdot" cy="' + n1(y) + '" r="' + n1(dot) + '"/><text y="' + n1(y + fs * 0.36) + '" style="font-size:' + fs + 'px"><tspan class="hw2-sg">' + esc(sg.lab) + '</tspan> </text></g>';
-          }).join('') + '<g class="hw2-car">' + pill(0, 0, 'carriers', 'is-car', g.fs) + '</g>';
+          }).join('') + '<g class="hw2-car"><rect class="hw2-carbox"/><rect class="hw2-carbox"/>' + pill(0, 0, 'carriers', 'is-car', g.fs) + pill(0, 0, 'carriers', 'is-car', g.fs) + '</g>';
         }
         var on = c[3] < NN, kids = gSigns.children;
         set.forEach(function(sg, i){
@@ -543,13 +543,26 @@
           e.children[2].setAttribute('cx', n1(x0 + dot));
           var t = e.children[3]; t.setAttribute('x', n1(x0 + dot * 2 + 7)); if(t.lastChild.data !== num) t.lastChild.data = num;
         });
-        // peas in bloom: name the hidden carriers on one pq plot, once the bed has settled
-        var n = nNow(), car = kids[k].firstChild, lab = GN[1] + ': carriers', pf = g.fs, pw2 = pillW(lab, pf), ph2 = pf + 10, at = null;
-        if(on && SP.dom && !c[3] && !busy() && n > 0 && n < N){
-          if(n * g.cw >= pw2 + 6 && (N - n) * g.rh >= ph2) at = [g.bx0 + n * g.cw / 2, g.rows + (n + (N - n) / 2) * g.rh - g.rh * 0.3];
-          else if((N - n) * g.cw >= pw2 + 6 && n * g.rh >= ph2) at = [g.bx0 + (n + (N - n) / 2) * g.cw, g.rows + n / 2 * g.rh - g.rh * 0.3];
-        }
-        setPill(car, !!at, at ? at[0] : 0, at ? at[1] : 0, lab, pf);
+        /* peas in bloom, once the bed has settled: name the hidden carriers on BOTH pq plots (A egg with a pollen, top
+           right; a egg with A pollen, bottom left), each plot outlined, and both pills say the two together are 2pq, so
+           a student who counts the labelled plants gets 2pq and not pq (review recheck 1). A pill runs across its plot,
+           or turned along it when the plot is too narrow (a single column). */
+        var n = nNow(), cg = kids[k], box = [cg.children[0], cg.children[1]], pills = [cg.children[2], cg.children[3]], pf = g.fs, ph2 = pf + 10;
+        var show = on && SP.dom && !c[3] && !busy() && n > 0 && n < N;
+        var plots = [[g.bx0, g.rows + n * g.rh, n * g.cw, (N - n) * g.rh], [g.bx0 + n * g.cw, g.rows, (N - n) * g.cw, n * g.rh]];
+        var texts = [GN[1] + ': carriers (2pq)', GN[1] + ' (2pq)'];
+        plots.forEach(function(pl, j){
+          var at = null, x = pl[0], y = pl[1], w = pl[2], h = pl[3], cx = x + w / 2;
+          if(show) for(var ti = 0; ti < texts.length && !at; ti++){
+            var pw2 = pillW(texts[ti], pf);
+            if(w >= pw2 + 6 && h >= ph2 + 2) at = [cx, clamp(y + h / 2 - g.rh * 0.3, y + ph2 / 2 + 1, y + h - ph2 / 2 - 1), texts[ti], 0];
+            else if(h >= pw2 + 6 && w >= ph2 + 2) at = [cx, y + h / 2, texts[ti], 1];
+          }
+          setPill(pills[j], !!at, at ? at[0] : 0, at ? at[1] : 0, at ? at[2] : '', pf);
+          if(at && at[3]) pills[j].setAttribute('transform', 'rotate(-90 ' + n1(at[0]) + ' ' + n1(at[1]) + ')'); else pills[j].removeAttribute('transform');
+          showEl(box[j], show);
+          if(show){ box[j].setAttribute('x', n1(x + 1.5)); box[j].setAttribute('y', n1(y + 1.5)); box[j].setAttribute('width', n1(Math.max(0, w - 3))); box[j].setAttribute('height', n1(Math.max(0, h - 3))); box[j].setAttribute('rx', 4); }
+        });
       }
       var signFs = {};
       function layoutNow(){

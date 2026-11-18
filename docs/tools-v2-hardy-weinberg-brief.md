@@ -233,3 +233,19 @@ was brought up to `claude/tools-v2-all` (a merge, not a rebase: a force push was
 - The p95 frame time at 1440 is at the edge (three frames) on a loaded machine; not measured on a real slow phone.
 - On a wide desktop the plants are small in wide cells (their width is capped so the flowers are not stretched).
 - The pea bed sorts plants into plots like the snapdragons, and peas mostly self pollinate (hw-pea-bed).
+
+## Recheck 1 (2026-11-18): one must fix, fixed
+
+- Must fix: "Aa: carriers" named only one of the two Aa plots of the pea bed, so a student counting the labelled
+  plants got pq, not 2pq. Now both Aa plots (A egg with a pollen, top right; a egg with A pollen, bottom left) carry
+  the same pill, "Aa: carriers (2pq)", and each is outlined with the same dashed purple line, so the two read as one
+  group whose total is 2pq. A pill runs across its plot, or turned along it when the plot is too narrow (a single
+  column, and at 360 px the 5 by 5 plots); "Aa (2pq)" is the fallback text if neither fits (not needed at any
+  swept width). Code: the end of `drawSigns` in `bio/assets/tools/hardy-weinberg.js`, `.hw2-carbox` in the CSS.
+- Sweep (`scripts/tools-v2/hardy-weinberg-sweep.mjs`): both carrier targets (q16 and rare) bloom at every p from 0
+  to 1 (the right answer last); at each, two carrier pills when 0 < p < 1 and none at 0 or 1, each naming Aa and
+  2pq, one in each Aa plot (found from its own plants), turned on a single column plot, inside the bed, and through
+  `check()` inside the stage and overlapping no other label, allele, knob or cue. One process per width, all ten
+  widths: 245,331 checks, 0 failed.
+- Also run: `node --test scripts/test/apbio-*.test.mjs` (72 pass), `check-apbio-content --check`,
+  `build-apbio --check`, `check-site`, `check-weight --check`. Preview regenerated.
