@@ -706,8 +706,8 @@ These stay open:
 - **osmosis-arrows-settled** (closed 2026-11-17, owner rounds 1 and 2). The settled picture no longer keeps water
   arrows: they are drawn only while water is moving (during a change and in the replay), in the direction it is
   really going, and the cause line tells the same change ("Less solute than before → water potential outside
-  rises → water moves back in → Still plasmolyzed") whenever that differs from a fresh cell's story. With reduced
-  motion a still mark ("water moved in") stays instead. Nothing left to decide.
+  rises → water moves back in") only while those arrows show; once settled it is the settled story again. With
+  reduced motion a still mark ("water moved in") shows for 2.6 s instead. Nothing left to decide.
 - **osmosis-burst-new-cell** (logged, owner round 2). A burst red blood cell does not heal: when the solute is
   raised again the old cell fades and a new cell goes into the new solution, marked "new cell" for about two
   seconds. Teacher: confirm the wording.

@@ -276,7 +276,7 @@
       nowDir: 'none', equilibrium: !lysed && Math.abs(diff) < 0.05
     };
   }
-  var osmosis = { simulate: simulate, trajectory: trajectory, equilibrium: equilibrium, psiParts: function(sys, c, W){ return psiParts(sys, osmo(sys, c), W); }, isotonicC: isotonicC, mass: massOf };
+  var osmosis = { simulate: simulate, trajectory: trajectory, equilibrium: equilibrium, state: osmosisState, psiParts: function(sys, c, W){ return psiParts(sys, osmo(sys, c), W); }, isotonicC: isotonicC, mass: massOf };
 
   /* ------------------------------------------- signal amplification */
   /* A G protein-coupled receptor pathway in a liver cell (epinephrine →
