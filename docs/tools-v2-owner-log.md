@@ -26,4 +26,12 @@ in each tool's brief.
 | 2026-11-18 | AP Bio Osmosis | Reviewer's idea to keep the first two cause pills through a reversal was not taken | They would name a cause that points against the arrows | Review round 1 in the brief |
 | 2026-11-18 | AP Bio Osmosis | Drawn areas follow the model (cell and vacuole by water, protoplast by mass) | Inside and outside crowding must match once settled | `shape()` |
 | 2026-11-18 | AP Bio Osmosis | Potato challenges say "24 hours"; Replay sits in the feedback; a phone scrolls the picture into view for a run | Reviewer | Test yourself, Predict |
-
+| 2026-11-18 | AP Bio Water potential | Explore has two controls on the picture: pressure in the cell (main) and solute outside (quiet) | ψ = ψs + ψp: one handle per part of the sum; both drive the same idea, so they stay together | Brief, "The design" |
+| 2026-11-18 | AP Bio Water potential | Practice mode is Test yourself, content, grading and record ids unchanged | Rule 7 | Test yourself; `?seed=` and `#practice` still open it |
+| 2026-11-18 | AP Bio Water potential | The shared ψ scale with two level lines left the picture | The comparison is the word on each total ("higher", "lower", "equal") | "?" ("The two totals on one scale") |
+| 2026-11-18 | AP Bio Water potential | Beaker solute NaCl, the temperature slider and the cell sap slider left Explore (sucrose, 22 °C, 0.40 M fixed) | They do not drive the screen's idea; one main control | In the practice problems and explained in "?" |
+| 2026-11-18 | AP Bio Water potential | Explore rounds each ψs to 0.1 bar before adding | Every sum on the picture is exact and "equal" can be reached by hand | Practice keeps 0.01 bar; `outS` in the tool |
+| 2026-11-18 | AP Bio Water potential | Cell ψs held at −9.8 bar while pressure changes; pressure capped at 9.8 bar | Textbook model of a walled cell; ψ cannot rise above pure water's 0 | `docs/apbio-needs-author.md` water-potential-explore-fixed-sap |
+| 2026-11-18 | AP Bio Water potential | The cell shrinking from its wall (plasmolysis) is not drawn here | This picture is the moment the cell goes in; what happens next is Osmosis's screen | "?" points to Osmosis |
+| 2026-11-18 | AP Bio Water potential | The "Try this" goals moved to "?" ("Things to try"), reworded for the two controls | Rule 6 | "?" |
+| 2026-11-18 | AP Bio Water potential | The solute key (sucrose hexagon, Na⁺ and Cl⁻ dots) is gone | Particles are drawn at i × C, one kind of dot | "?" says so |

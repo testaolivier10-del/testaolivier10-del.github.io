@@ -102,3 +102,35 @@ belongs (on the cell and on the solution), the comparison is said in words on th
   pure water (the old tool capped it the same way).
 - The picture is the moment the cell goes into the solution. What happens next (pressure rising or falling until
   the totals meet, plasmolysis) is Osmosis's screen; "?" says so.
+
+
+## Decisions made for the owner
+One line each in `docs/tools-v2-owner-log.md` (2026-11-18, "AP Bio Water potential"): the two controls on the
+picture; Practice becomes Test yourself unchanged; the ψ scale, NaCl, temperature and the cell sap slider leave
+Explore for "?" and the practice problems; ψs rounded to 0.1 bar in Explore; the cell's ψs held fixed and pressure
+capped at 9.8 bar; no plasmolysis drawn here (Osmosis's screen); "Try this" and the solute key moved or gone.
+
+## On screen in Explore (counted)
+Purpose line and "Show me how" (2); the picture: beaker, cell, solute particles, two written sums with a word
+under each total, the water arrows with one pill (4 labelled things); two knobs with their value tags and names
+(main: "Pressure in the cell", quiet: "Solute outside"); the cause line (3 pills). No side panel. "?" holds the
+worked setting, the two totals on one scale, things to try and the link to Osmosis.
+
+## Build status (2026-11-18)
+- A first builder stopped on a usage limit; its last work (four drawing layers so a pressure drag does not redraw
+  the particles, the wide width layout, the sweep test) was committed as found.
+- Sweep (`scripts/tools-v2/water-potential-sweep.mjs`): 320 states, 2824 checks, 0 failures at the ten widths
+  (25 landmark settings, the first visit, two practice problems before and after). The sweep now waits for the
+  counting numbers to land (at most 3 s; slowest seen 1.2 s in headless Chromium at 820 px) before it compares
+  them with the knob. The cell is at least 12.1% of the stage (600 px) and up to 26.9% (1920 px).
+- Hand checks (Playwright, 390, 768, 1440, light and dark): opening state, pointer drag with frames during the
+  change (arrows always agree with the numbers shown), keyboard (End, Home, arrows by 0.1), pure water at full
+  pressure gives "no net water movement", Test yourself wrong and right answers, real touch drag at the scrolled
+  end of a phone page (knob moves, page does not scroll), reduced motion (numbers land at once with a 240 ms cross
+  fade), no console errors: 114 checks, 0 failures.
+- `scripts/check-tool-use.mjs`: Water potential reports frame v2; the old frame sample is now Simpson's diversity
+  (Osmosis and Water potential are both on the kit on this branch).
+- Course checks: 72 AP Bio unit tests, content check, map check, `build-apbio --check` all pass.
+- Not happy with: the dashed "no net flow" mark is the same as Osmosis's (kept for consistency, a reviewer may
+  still read it as ghost arrows); at 600 to 820 px the cell is a smaller share of the stage (12 to 16%) because
+  the two sums sit above it.
