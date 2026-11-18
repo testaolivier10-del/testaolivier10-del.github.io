@@ -105,7 +105,7 @@
         before: function(){
           hideCue(true); tourDid('watch'); stopTween(); prev = null; took = false;
           if(K.reduced()){ snap(); took = true; syncWords(); draw(); say(takeaway()); return false; }
-          view.play = 0; replayView(); syncWords();
+          view.play = 0; replayView(); syncWords(); toScene();
         },
         onEnd: function(){ view.play = null; snap(); took = true; syncWords(); draw(); player.paint(); say(takeaway()); } });
       player.el.classList.add('is-sm');
@@ -113,6 +113,12 @@
       stage.appendChild(lines);
       var live = document.createElement('p'); live.className = 'tk2-sr'; live.setAttribute('aria-live', 'polite');
       stage.appendChild(live);
+      /* A run started from the button below the picture brings the picture into view if any of it is off screen (phones). */
+      function toScene(){
+        var b = sceneBox.getBoundingClientRect(), vh = window.innerHeight || 800;
+        if(b.top >= 0 && b.bottom <= vh) return;
+        try{ sceneBox.scrollIntoView({ block: 'center', behavior: K.reduced() ? 'auto' : 'smooth' }); }catch(e){}
+      }
       function say(t){ live.textContent = ''; setTimeout(function(){ live.textContent = t; }, 40); }
 
       /* ---- the controls, on the picture: the share passed on (the main one) and the sunlight (quiet) */

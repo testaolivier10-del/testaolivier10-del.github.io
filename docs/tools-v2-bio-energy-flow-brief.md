@@ -92,5 +92,13 @@ the last step is shown only while it is big enough to see). Only while true: "to
   and dark at 390, 768, 1440; clipping, label overlap, the picture largest, each organism on its ground, counts
   match the written numbers, cause line two rows at most and constant height on phones, the takeaway in the same
   two rows, no sideways scroll, no console errors.
-- 2026-11-18 (second session): heat named in the replay only once drawn; takeaway shortened to two rows at 360 and
+- 2026-11-18 (second session): Watch it happen scrolls the picture into view on a phone; heat named in the replay only once drawn; takeaway shortened to two rows at 360 and
   given the cause line's height on phones; labels sized by measuring the text.
+- Verified 2026-11-18: AP Bio unit tests 72/72, `build-apbio --check`, content and map checks, `check-site`,
+  `check-weight`, `check-tool-use` (now lists this tool, frame v2; osmosis's stale "old" expectation fixed); Playwright
+  at 390, 768, 1440 light and dark (pointer and touch drag, keyboard, mid animation frames, Watch it happen, reduced
+  motion, "?", Test yourself right and wrong, `#questions`, `#frq`, the real locked state, no console errors): 244
+  checks, 0 failed; sweep 806 checks, 0 failed. Preview `/mnt/user-data/outputs/bio-energy-flow-v2/index.html`, shots
+  in `.../shots/` and `.../sweep/`.
+- Not happy with: the grass zone is a dense uniform carpet at wide screens; the last heat plume is tiny (true to the
+  numbers, but easy to miss); the open ocean, toxin and runs moved out of Explore and live only in "?".
