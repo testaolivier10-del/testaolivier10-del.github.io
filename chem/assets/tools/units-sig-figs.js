@@ -147,7 +147,7 @@
         refHtml();
         layoutCards(true);
       }
-      function addCard(id){ if(inChain(id) > -1 || S.chain.length >= FAC.length) return; S.chain.push({ id: id, flip: false }); tourDid('add'); changed('add'); }
+      function addCard(id){ if(inChain(id) > -1 || S.chain.length >= FAC.length) return; S.chain.push({ id: id, flip: false }); paintCard(id); tourDid('add'); changed('add'); }
       function removeCard(i){ var id = S.chain[i].id; S.chain.splice(i, 1); paintCard(id); var f = CEL[id].querySelector('.us3-face'); try{ f.focus({ preventScroll: true }); }catch(e){} changed('remove'); }
       function flipCard(i){
         var c = S.chain[i], w = CEL[c.id];
@@ -181,8 +181,8 @@
       /* ---- tab 1 geometry: the board on the wall, the bench, the flask, the tray */
       function geoUnits(W, H){
         var g = { W: W, H: H }, narrow = W < 700;
-        g.cw = narrow ? (W < 380 ? 90 : 98) : clamp(Math.round(W * 0.085), 104, 132);
-        g.ch = narrow ? 104 : 116; g.op = narrow ? 16 : 22; g.gap = 12;
+        g.cw = narrow ? (W < 380 ? 90 : 98) : clamp(Math.round(W * 0.092), 108, 146);
+        g.ch = narrow ? 104 : clamp(Math.round(H * 0.2), 116, 136); g.op = narrow ? 16 : 22; g.gap = 12;
         if(narrow){
           g.bx0 = 10; g.bx1 = W - 10; g.by0 = 10;
           var inner = g.bx1 - g.bx0 - 20;
@@ -201,7 +201,8 @@
           var inner2 = g.bx1 - g.bx0 - 32;
           g.per = Math.max(3, Math.floor((inner2 + g.op) / (g.cw + g.op)));
           g.rows = Math.ceil((FAC.length + 2) / g.per);
-          g.by1 = Math.min(g.bench - 14, g.by0 + 40 + g.rows * g.ch + (g.rows - 1) * g.gap + 20);
+          var bh = g.rows * g.ch + (g.rows - 1) * g.gap + 2 * clamp(H * 0.07, 34, 56);
+          g.by0 = Math.max(14, Math.round((g.bench - 8 - bh) / 2)); g.by1 = Math.min(g.bench - 18, g.by0 + bh);
           g.trayY = g.bench + Math.max(14, (H - g.bench - g.ch) / 2 - 4); g.tcols = FAC.length;
           var tw2 = FAC.length * g.cw + (FAC.length - 1) * 18;
           g.trayX = g.bx0 + Math.max(0, (g.bx1 - g.bx0 - tw2) / 2);
@@ -216,7 +217,8 @@
       function slotPos(k){   // k: 0 start, 1..n the factors, n + 1 the result
         var g = G, row = Math.floor(k / g.per), col = k % g.per, inRow = Math.min(g.per, S.chain.length + 2 - row * g.per);
         var rowW = inRow * g.cw + (inRow - 1) * g.op, x0 = g.bx0 + Math.max(14, (g.bx1 - g.bx0 - rowW) / 2);
-        var top = g.by0 + 22 + ((g.by1 - g.by0 - 22) - (g.rows * g.ch + (g.rows - 1) * g.gap)) / 2;
+        var n = S.chain.length + (S.chain.length ? 2 : 1), used = Math.ceil(n / g.per);
+        var top = g.by0 + ((g.by1 - g.by0) - (used * g.ch + (used - 1) * g.gap)) / 2;
         return [x0 + col * (g.cw + g.op), top + row * (g.ch + g.gap)];
       }
       function put(el, p, instant){
@@ -268,11 +270,7 @@
         p.push('<path class="us3-rim" d="M' + (fx - nw / 2 - 4) + ' ' + top + 'H' + (fx + nw / 2 + 4) + '"/>');
         p.push('<path class="us3-shine" d="M' + (fx - nw / 2 + 4) + ' ' + (top + 10) + 'V' + (neckB - 4) + 'M' + (fx - bw / 2 + bw * 0.16) + ' ' + (fy - 16) + 'L' + (fx - nw / 2 - 4) + ' ' + (neckB + fh * 0.12) + '"/>');
         // the tag's string, from the neck
-        var tg = [fx + nw / 2 + 6, neckB - fh * 0.10];
-        g.tag = phone ? [fx - 44, Math.max(g.bench + 8, top - 4) ] : [fx - 52, Math.max(g.by0, top - 64)];
-        if(!phone){ g.tag = [Math.max(8, fx - 58), Math.max(10, top - 70)]; }
-        var tx = g.tag[0] + 58, ty2 = g.tag[1] + 50;
-        p.push('<path class="us3-string" d="M' + tg[0] + ' ' + tg[1] + 'Q' + (tg[0] + 14) + ' ' + (tg[1] - 20) + ' ' + tx + ' ' + ty2 + '"/>');
+        g.tag = [fx, fy - fh * 0.2];
         svg.innerHTML = p.join('');
       }
 
@@ -313,8 +311,8 @@
         g.bench = Math.round(H * (narrow ? 0.86 : 0.84));
         g.floor = g.bench + (narrow ? 10 : 14);
         if(narrow){
-          g.mx = W * 0.25; g.top = 26; g.lx = W * 0.71; g.ly = H * 0.29; g.R = Math.min(W * 0.25, H * 0.21);
-          g.rx = W * 0.71; g.ry = H * 0.62; g.digits = Math.min(46, W * 0.12); g.sx = W * 0.9; g.ss = 0.3;
+          g.mx = W * 0.22; g.top = 26; g.R = Math.min(W * 0.22, H * 0.18); g.lx = W * 0.73; g.ly = 14 + g.R;
+          g.rx = W * 0.72; g.ry = g.ly + g.R + 58; g.digits = Math.min(44, W * 0.115); g.sx = W * 0.82; g.ss = 0.3;
         } else {
           g.mx = clamp(W * 0.25, 170, 360); g.top = 26; g.lx = W * 0.56; g.ly = H * 0.40; g.R = Math.min(H * 0.30, W * 0.135, 170);
           g.rx = W * 0.83; g.ry = H * 0.38; g.digits = clamp(W * 0.05, 48, 72); g.sx = W * 0.075; g.ss = 0.34;
@@ -327,7 +325,12 @@
         cylinder: { h: 400, w: 64, base: 16, y0: 26, y50: 362, marks: function(v){ return v % 10 === 0 ? 26 : v % 5 === 0 ? 17 : 10; }, mx: -27, labelEvery: 10 },
         beaker: { h: 250, w: 210, base: 0, y0: 8, y50: 196, marks: function(){ return 44; }, mx: -78, labelEvery: 10 }
       };
-      function vScale(id){ var g = G, V = VES[id], room = g.floor - g.top - 6; return id === 'cylinder' ? room / V.h : Math.min(room / V.h * 0.82, (phone ? g.W * 0.44 : 260) / V.w); }
+      function vScale(id){ var g = G, V = VES[id], room = g.floor - g.top - 6; return id === 'cylinder' ? room / V.h : Math.min(room / V.h * 0.82, (phone ? g.W * 0.30 : Math.min(300, g.W * 0.25)) / V.w); }
+      function sScale(id){ return Math.min(vScale(id) * G.ss, (phone ? 0.14 : 0.24) * G.H / VES[id].h); }
+      function mX(id){
+        var half = (VES[id].w / 2 + 24) * vScale(id), oid = id === 'cylinder' ? 'beaker' : 'cylinder', oh = (oid === 'cylinder' ? 64 : VES[oid].w / 2 + 20) * sScale(oid);
+        return Math.max(G.mx, half + 8, phone ? 0 : G.sx + oh + half + 16);
+      }
       function yOf(id, v, sc){ var V = VES[id]; return G.floor - (V.y0 + (V.y50 - V.y0) * v / 50) * sc; }
       function vesselSvg(id, cx, sc, level, detail, alpha){
         var V = VES[id], inst = instById(id), y = function(u){ return G.floor - u * sc; }, x = function(u){ return cx + u * sc; }, p = [];
@@ -365,8 +368,16 @@
       function layoutRead(){
         if(!G || S.tab !== 'read') return;
         var id = S.inst, sc = vScale(id), g = G;
-        cLevel.place([g.mx + (VES[id].w / 2 + 30) * sc, yOf(id, RD.min, sc), g.mx + (VES[id].w / 2 + 30) * sc, yOf(id, RD.max, sc)]);
-        var oid = other().id, os = vScale(oid) * g.ss, ow = (oid === 'cylinder' ? 120 : VES[oid].w + 36) * os, oh = VES[oid].h * os;
+        // the magnifier and the reading sit clear of the vessel and its knob
+        var kx = mX(id) + (VES[id].w / 2 + 30) * sc + 24;
+        if(phone){ g.rx = clamp(Math.max(g.W * 0.72, kx + 100), 0, g.W - 100); }
+        else {
+          g.R = Math.min(g.H * 0.30, g.W * 0.135, 170);
+          if(kx + 34 + 2 * g.R + 230 > g.W) g.R = Math.max(86, (g.W - 230 - kx - 34) / 2);
+          g.lx = Math.max(g.W * 0.5, kx + 34 + g.R); g.rx = Math.min((g.lx + g.R + g.W) / 2 + 4, g.W - 116);
+        }
+        cLevel.place([mX(id) + (VES[id].w / 2 + 30) * sc, yOf(id, RD.min, sc), mX(id) + (VES[id].w / 2 + 30) * sc, yOf(id, RD.max, sc)]);
+        var oid = other().id, os = sScale(oid), ow = (oid === 'cylinder' ? 120 : VES[oid].w + 36) * os, oh = VES[oid].h * os;
         cSwap.place([g.sx - ow / 2 - 8, g.floor - oh - 8, ow + 16, oh + 14]);
         drawRead();
       }
@@ -384,12 +395,12 @@
         // the vessels: the one being read stands in the middle, the other beside it; a pour moves them past each other
         var oid = RD.instruments.filter(function(x){ return x.id !== id; })[0].id;
         if(sw == null){
-          p.push(vesselSvg(oid, g.sx, vScale(oid) * g.ss, 0, false, 1));
-          p.push(vesselSvg(id, g.mx, vScale(id), S.v, true, 1));
+          p.push(vesselSvg(oid, g.sx, sScale(oid), 0, false, 1));
+          p.push(vesselSvg(id, mX(id), vScale(id), S.v, true, 1));
         } else {
           var from = swap.from, to = swap.to;
-          var sF = vScale(from) * (1 + (g.ss - 1) * sw), sT = vScale(to) * (g.ss + (1 - g.ss) * sw);
-          var xF = g.mx + (g.sx - g.mx) * sw, xT = g.sx + (g.mx - g.sx) * sw;
+          var sF = vScale(from) + (sScale(from) - vScale(from)) * sw, sT = sScale(to) + (vScale(to) - sScale(to)) * sw;
+          var xF = mX(from) + (g.sx - mX(from)) * sw, xT = g.sx + (mX(to) - g.sx) * sw;
           var drain = clamp((f - 0.05) / 0.6, 0, 1), fill = clamp((f - 0.25) / 0.7, 0, 1);
           p.push(vesselSvg(from, xF, sF, S.v * (1 - ease(drain)), false, 1));
           p.push(vesselSvg(to, xT, sT, S.v * ease(fill), true, 1));
@@ -397,11 +408,12 @@
         // the name of the vessel being read, on the bench under it
         var nm = inst.name, ny = Math.min(H - 8, g.floor + (phone ? 22 : 26));
         if(sw == null){
-          p.push('<text class="us3-vname" x="' + g.mx + '" y="' + ny + '" text-anchor="middle">' + esc(nm) + '</text>');
-          p.push('<text class="us3-oname" x="' + g.sx + '" y="' + ny + '" text-anchor="middle">' + esc(other().name) + '</text>');
+          p.push('<text class="us3-vname" x="' + mX(id) + '" y="' + ny + '" text-anchor="middle">' + esc(nm) + '</text>');
+          var on = other().name, ow2 = on.length * 7.2;
+          p.push('<text class="us3-oname" x="' + clamp(g.sx, 8 + ow2 / 2, W - 8 - ow2 / 2) + '" y="' + ny + '" text-anchor="middle">' + esc(on) + '</text>');
         }
         // the magnifier on the meniscus
-        var settled = sw == null, sc = vScale(id), mk = settled ? g.mx + VES[id].mx * sc + 10 * sc : null, my = settled ? g.menY : null;
+        var settled = sw == null, sc = vScale(id), mk = settled ? mX(id) + VES[id].mx * sc + 10 * sc : null, my = settled ? g.menY : null;
         var r = U.read(S.v, inst), lensOn = settled;
         if(lensOn){
           var R = g.R, lx = g.lx, ly = g.ly, d = Math.hypot(lx - mk, ly - my), ux = (mk - lx) / d, uy = (my - ly) / d, nx = -uy, ny2 = ux, spot = Math.max(10, 16 * sc);
@@ -420,7 +432,7 @@
             if(mv < 0 || mv > 50) continue;
             var yy = yv(mv), big = mv % 10 === 0 || inst.every >= 10, L = big ? R * 0.42 : mv % 5 === 0 ? R * 0.32 : R * 0.24;
             p.push('<path class="us3-lmark' + (big ? ' is-major' : '') + '" d="M' + x0 + ' ' + yy.toFixed(1) + 'H' + (x0 + L).toFixed(1) + '"/>');
-            p.push('<text class="us3-lnum" x="' + (x0 + L + 6).toFixed(1) + '" y="' + (yy + 6).toFixed(1) + '">' + mv + '</text>');
+            if(Math.abs(yy - ly) < R * 0.66) p.push('<text class="us3-lnum" x="' + (x0 + L + 6).toFixed(1) + '" y="' + (yy + 6).toFixed(1) + '">' + mv + '</text>');
           }
           // the reading line from the bottom of the meniscus to the scale
           p.push('<path class="us3-readline" d="M' + (x0 + R * 0.2) + ' ' + ly + 'H' + (lx + R * 0.12) + '"/><circle class="us3-readdot" cx="' + (lx + R * 0.15) + '" cy="' + ly + '" r="4.5"/>');
@@ -429,7 +441,7 @@
           var ha = Math.PI * 0.30, hx = lx + Math.cos(ha) * R, hy = ly + Math.sin(ha) * R, hl = R * (phone ? 0.42 : 0.55);
           p.push('<path class="us3-handle" d="M' + hx + ' ' + hy + 'L' + (hx + Math.cos(ha) * hl) + ' ' + (hy + Math.sin(ha) * hl) + '"/>');
           p.push('<circle class="us3-lensglass" cx="' + lx + '" cy="' + ly + '" r="' + (R - 7) + '"/><circle class="us3-rim2" cx="' + lx + '" cy="' + ly + '" r="' + (R - 3.5) + '"/>');
-          p.push('<path class="us3-lensshine" d="M' + (lx - R * 0.62) + ' ' + (ly - R * 0.42) + 'A' + (R * 0.78) + ' ' + (R * 0.78) + ' 0 0 1 ' + (lx - R * 0.18) + ' ' + (ly - R * 0.74) + '"/>');
+          p.push('<path class="us3-lensshine" d="M' + (lx + R * 0.30) + ' ' + (ly - R * 0.70) + 'A' + (R * 0.76) + ' ' + (R * 0.76) + ' 0 0 1 ' + (lx + R * 0.66) + ' ' + (ly - R * 0.30) + '"/>');
           // the reading: digits from the marks, the estimated digit, the unit
           p.push(readingSvg(r));
         }
@@ -451,16 +463,16 @@
         if(cs.length){
           var c0 = cs[0].x + 3, c1 = cs[cs.length - 1].x + cs[cs.length - 1].w - 3;
           p.push('<path class="us3-brk is-c" d="M' + c0 + ' ' + (by - 5) + 'V' + by + 'H' + c1 + 'V' + (by - 5) + '"/>');
-          p.push('<text class="us3-brkt is-c" x="' + ((c0 + c1) / 2) + '" y="' + ty + '" text-anchor="' + (es ? 'end' : 'middle') + '" dx="' + (es ? (c1 - c0) / 2 : 0) + '" style="font-size:' + small + 'px">from the marks</text>');
+          p.push('<text class="us3-brkt is-c" x="' + ((c0 + c1) / 2) + '" y="' + ty + '" text-anchor="middle" style="font-size:' + small + 'px">from the marks</text>');
         }
         if(es){
           var e0 = es.x + 3, e1 = es.x + es.w - 3;
           p.push('<path class="us3-brk is-e" d="M' + e0 + ' ' + (by - 5) + 'V' + by + 'H' + e1 + 'V' + (by - 5) + '"/>');
-          p.push('<text class="us3-brkt is-e" x="' + (cs.length ? e0 + 2 : (e0 + e1) / 2) + '" y="' + (ty + (cs.length ? 18 : 0)) + '" text-anchor="' + (cs.length ? 'start' : 'middle') + '" style="font-size:' + small + 'px">estimated</text>');
+          p.push('<text class="us3-brkt is-e" x="' + ((e0 + e1) / 2) + '" y="' + (ty + (cs.length ? 18 : 0)) + '" text-anchor="middle" style="font-size:' + small + 'px">estimated</text>');
         }
         var py = ty + (cs.length ? 46 : 30), pw = (phone ? 8.2 : 9.2) * (String(r.sf).length + (r.sf === 1 ? 20 : 21)), ph = phone ? 28 : 32;
         p.push('<g class="us3-count"><rect x="' + (g.rx - pw / 2) + '" y="' + (py - ph / 2) + '" width="' + pw + '" height="' + ph + '" rx="' + (ph / 2) + '"/><text x="' + g.rx + '" y="' + (py + 5) + '" text-anchor="middle" style="font-size:' + (phone ? 14 : 15.5) + 'px">' + r.sf + ' significant figure' + (r.sf === 1 ? '' : 's') + '</text></g>');
-        if(prevInst && prevInst.id !== S.inst) p.push('<text class="us3-was" x="' + g.rx + '" y="' + (py + ph / 2 + 22) + '" text-anchor="middle">' + esc(instById(prevInst.id).name) + ' read ' + esc(prevInst.r.shown) + ' mL</text>');
+        if(!phone && prevInst && prevInst.id !== S.inst) p.push('<text class="us3-was" x="' + g.rx + '" y="' + (py + ph / 2 + 22) + '" text-anchor="middle">' + esc(instById(prevInst.id).name) + ' read ' + esc(prevInst.r.shown) + ' mL</text>');
         p.push('</g>');
         return p.join('');
       }
@@ -491,14 +503,16 @@
       }
       function layoutNow(){
         if(stage.hidden) return;
-        var r = sceneBox.getBoundingClientRect(), W = Math.max(280, Math.round(r.width));
+        var r = sceneBox.getBoundingClientRect();
+        if(!r.width) return;
+        var W = Math.max(280, Math.round(r.width));
         phone = W < 700;
         if(phone){
-          var need = S.tab === 'units' ? geoUnits(W, 600).need : Math.round(Math.min(560, Math.max(430, W * 1.18)));
+          var need = S.tab === 'units' ? geoUnits(W, 600).need : Math.round(Math.min(600, Math.max(470, W * 1.25)));
           sceneBox.style.height = Math.round(need) + 'px';
         } else sceneBox.style.height = '';
         r = sceneBox.getBoundingClientRect();
-        var H = Math.max(300, Math.round(r.height));
+        var H = phone ? Math.round(parseFloat(sceneBox.style.height)) : Math.max(300, Math.round(r.height));
         svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.setAttribute('width', W); svg.setAttribute('height', H);
         sceneBox.classList.toggle('is-narrow', phone);
         if(S.tab === 'units'){ G = geoUnits(W, H); drawUnits(); layoutCards(true); }
@@ -512,7 +526,7 @@
       ['units', 'read'].forEach(function(k){ cues[k] = K.cue(layer, { key: cueKey[k], text: cueText[k], side: cueSide[k], at: function(){
         if(!G) return [0, 0];
         if(k === 'units'){ var p = trayPos(0); return [p[0] + G.cw / 2, p[1] + 2]; }
-        var sc = vScale(S.inst); return [G.mx + (VES[S.inst].w / 2 + 30) * sc, yOf(S.inst, S.v, sc)];
+        var sc = vScale(S.inst); return [mX(S.inst) + (VES[S.inst].w / 2 + 30) * sc, yOf(S.inst, S.v, sc)];
       } }); });
       cue = { show: function(){ return cues[S.tab].show(); }, hide: function(u){ cues[S.tab].hide(u); }, place: function(){ cues[S.tab].place(); }, active: function(){ return cues[S.tab].active(); } };
       function hideCue(used){ ['units', 'read'].forEach(function(k){ if(cues[k].active()) cues[k].hide(used && k === S.tab); }); }

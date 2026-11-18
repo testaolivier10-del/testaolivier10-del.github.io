@@ -120,13 +120,12 @@
 .us3-card.is-res .us3-v,.us3-card.is-start .us3-v{font-size:17px;}
 .us3-card.is-res .us3-u,.us3-card.is-start .us3-u{font-size:18px;}
 .us3-tag{position:absolute;min-width:116px;padding:7px 10px 8px;border-radius:6px 14px 14px 6px;background:var(--paper);border:1.5px solid var(--card-edge);box-shadow:0 3px 10px rgba(30,40,50,.16);
-  display:flex;flex-direction:column;align-items:center;pointer-events:none;transform:rotate(-3deg);}
-.us3-tag::before{content:"";position:absolute;left:8px;top:50%;width:8px;height:8px;margin-top:-4px;border-radius:50%;border:1.5px solid var(--card-edge);background:var(--wall0);}
-.us3-tag-v{font:800 17px var(--font-mono);color:var(--ink);white-space:nowrap;padding-left:12px;}
-.us3-tag-u{font:900 16px var(--font-ui);color:var(--u-x-ink);padding-left:12px;}
+  display:flex;flex-direction:column;align-items:center;pointer-events:none;transform:translate(-50%,-50%) rotate(-2deg);border-radius:8px;}
+.us3-tag-v{font:800 17px var(--font-mono);color:var(--ink);white-space:nowrap;}
+.us3-tag-u{font:900 16px var(--font-ui);color:var(--u-x-ink);}
 .us3-tag-u.is-mL{color:var(--u-mL-ink);} .us3-tag-u.is-L{color:var(--u-L-ink);} .us3-tag-u.is-g{color:var(--u-g-ink);} .us3-tag-u.is-mol{color:var(--u-mol-ink);} .us3-tag-u.is-molecules{color:var(--u-molecules-ink);}
 .us3-tag.is-new{animation:us3-tag .5s ease-out;}
-@keyframes us3-tag{0%{transform:rotate(-3deg) scale(.92);opacity:.3;}60%{transform:rotate(-3deg) scale(1.05);opacity:1;}100%{transform:rotate(-3deg) scale(1);}}
+@keyframes us3-tag{0%{transform:translate(-50%,-50%) rotate(-2deg) scale(.9);opacity:.3;}60%{transform:translate(-50%,-50%) rotate(-2deg) scale(1.06);opacity:1;}100%{transform:translate(-50%,-50%) rotate(-2deg) scale(1);}}
 @media (max-width:699px){ .us3-v{font-size:13.5px;} .us3-u{font-size:15px;} .us3-card.is-res .us3-v,.us3-card.is-start .us3-v{font-size:15px;} .us3-op{font-size:17px;--us3-op-gap:8px;} .us3-tag{min-width:96px;padding:5px 8px 6px;} .us3-tag-v{font-size:14.5px;} .us3-tag-u{font-size:14px;} }
 @media (prefers-reduced-motion:reduce){ .us3-card,.us3-card.is-res{transition:none;} .us3-u::after,.us3-u.is-x{transition:none;} .us3-tag.is-new,.us3-card.is-turn .us3-face{animation:none;} }
 :root[data-motion="reduce"] .us3-card,:root[data-motion="reduce"] .us3-u::after{transition:none;}
