@@ -186,16 +186,18 @@
       }
 
       /* ---- the words: the cause line, read from the picture */
-      function takeaway(){ return 'Only ' + pct() + '% of the energy moves up each step. The rest leaves as heat, so the top feeds the fewest animals.'; }
+      function takeaway(){ return 'Only ' + pct() + '% moves up each step. The rest leaves as heat, so few live at the top.'; }
       function chain(){
-        var p = [{ t: fmt(view.e[0]) + ' kcal in grass', role: 'energy', say: 'The grass stores ' + fmt(view.e[0]) + ' kilocalories' },
-          { t: pct() + '% passed on', role: 'energy', say: pct() + ' percent is passed on at each step' }, { t: (100 - pct()) + '% lost as heat', role: 'heat', say: (100 - pct()) + ' percent is lost as heat' }];
+        var p = [{ t: fmt(view.e[0]) + ' kcal in grass', role: 'energy', say: 'The grass stores ' + fmt(view.e[0]) + ' kilocalories' }];
+        // in a replay, the share and the heat are named only once energy is drawn moving up from the grass
+        if(flowing()) p.push({ t: pct() + '% passed on', role: 'energy', say: pct() + ' percent is passed on at each step' }, { t: (100 - pct()) + '% lost as heat', role: 'heat', say: (100 - pct()) + ' percent is lost as heat' });
         if(!busy()){ var n = count(view.e[NL - 1]); p.push({ t: nOf(NL - 1, n), role: 'ink', say: 'the top of the chain has ' + nOf(NL - 1, n) }); }
         return p;
       }
+      function flowing(){ return view.play == null || (!!G && G.pmax * Math.sqrt(clamp(view.h[1] / HMAX, 0, 1)) >= 2.5); }   // the same test plume() uses to draw the heat
       function words(){ if(took) cause.take(takeaway()); else cause.set(chain()); }
       function syncWords(){
-        var k = fmt(view.e[0]) + '|' + S.eff + '|' + busy() + '|' + count(view.e[NL - 1]) + '|' + took;
+        var k = fmt(view.e[0]) + '|' + S.eff + '|' + busy() + '|' + flowing() + '|' + count(view.e[NL - 1]) + '|' + took;
         if(k !== wKey){ wKey = k; words(); }
       }
 

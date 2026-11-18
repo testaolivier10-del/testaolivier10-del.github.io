@@ -109,6 +109,17 @@ for (const w of WIDTHS) for (const dark of DARK.has(w) ? [false, true] : [false]
     if (SHOTS) await page.locator('.ef2').screenshot({ path: join(SHOTS, `sweep-${String(w).padStart(4, '0')}${dark ? '-dark' : ''}-${name}.png`) });
   }
   if (heights.size > 1) bad(`${w}`, 'cause line height changes between states: ' + [...heights].join(', '));
+  // the takeaway (end of Watch it happen) fits the same two rows on a phone; reduced motion jumps straight to it
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  for (const eff of [5, 10, 20]) {
+    await page.evaluate(v => { const i = document.querySelectorAll('.ef2 .tk2-in')[0]; i.value = v; i.dispatchEvent(new Event('input', { bubbles: true })); i.dispatchEvent(new Event('change', { bubbles: true })); }, eff);
+    await page.waitForTimeout(150); await page.click('.ef2 .tk2-play'); await page.waitForTimeout(250);
+    const t = await page.evaluate(() => { const c = document.querySelector('.ef2 .tk2-cause'), b = c.getBoundingClientRect(); return { take: c.classList.contains('is-take'), h: b.height, lines: (() => { const r = document.createRange(); r.selectNodeContents(c); return new Set([].map.call(r.getClientRects(), q => Math.round(q.bottom))).size; })() }; });
+    checks += 2;
+    if (!t.take) bad(`${w} takeaway ${eff}%`, 'Watch it happen did not end on the takeaway');
+    if (w <= 640 && t.lines > 2) bad(`${w} takeaway ${eff}%`, 'the takeaway runs to ' + t.lines + ' rows');
+    if (w <= 640 && heights.size && Math.abs(t.h - Math.max(...heights)) > 1) bad(`${w} takeaway ${eff}%`, 'the takeaway is not the cause line\'s height (' + t.h + ' against ' + [...heights] + ')');
+  }
   errs.forEach(e => bad(`${w}`, 'console: ' + e));
   await ctx.close();
 }
