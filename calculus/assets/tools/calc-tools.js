@@ -30,6 +30,7 @@
        drill(app, data, { slug, generate, types, extra, onVol })
      Explore, then test yourself (apchem decision 21):
        modes(app, { explore(pane), quiz(pane), studio? }) the two-mode switch
+         (studio: { kit2(pane, s) -> { stage, ref } }: a tools v2 Explore, see studioKit2)
        studioPane(pane, studio, { stage, dock, caption, why, details })
        cue(text) "Start here"; moreHtml(inner) "More options"; explain(el, head, body) one line + "Why?"
      Recording: record(slug, items) -> ApCalcCore.toolResult, so every item
@@ -1094,11 +1095,31 @@
       if(/^Explore\b/.test(eb.textContent)) eb.textContent = 'Explore';
       st.modes({ el: bar, value: start });
       // After the switch, so the arrangement knows the mode it opens on.
-      if(o.studio && o.studio.explore) o.studio.explore(ex, st);
-      if(isStd(st)) stdExplore(st, o.slug, cues.slice(c0));
+      if(o.studio && o.studio.kit2 && window.LevlKit2) studioKit2(ex, st, o.studio.kit2(ex, st));
+      else {
+        if(o.studio && o.studio.explore) o.studio.explore(ex, st);
+        if(isStd(st)) stdExplore(st, o.slug, cues.slice(c0));
+      }
     }
     show(start, false);
     return { explore: ex, quiz: qz, show: show, bar: bar };
+  }
+  /* studioKit2(pane, s, k): the tools v2 arrangement (docs/tools-v2-standard.md), this course layer's adapter for the
+     shared kit (assets/course/tool-kit2.js, loaded by a page with "kit2": true in data/pages.json; first used by the
+     Tangent tracer, docs/tools-v2-tangent-tracer-brief.md). A trainer passes modes(app, { ..., studio: { kit2:
+     function(pane, s){ return { stage, ref }; } } }) and builds its own Explore with the kit:
+       k.stage   element   the picture with its controls on it and the lines around it. EXPLORE shows it alone,
+                           full width (no side panel, nothing graded, no task line).
+       k.ref     element   the reference behind "?" in Explore (how it works, the numbers, the tables, the keys).
+     TEST YOURSELF is unchanged: the drill arranges itself on the same frame (studioDrill), with its own "?".
+     The tool hears every switch through modes({ onShow }). Other trainers (no kit2) are untouched. */
+  function studioKit2(pane, s, k){
+    var K = window.LevlKit2, only = { mode: 'explore' };
+    K.on(s);
+    s.add('stage', k.stage, only);
+    if(k.ref) s.add('details', k.ref, only);
+    Array.prototype.slice.call(pane.children).forEach(function(c){ if(c !== k.stage && c !== k.ref && c.textContent.trim()) s.add('details', c, only); });
+    return s;
   }
   /* Motion off? (site toggle or the OS setting) */
   function reduced(){
@@ -1434,7 +1455,7 @@
 
   window.ApCalcTools = {
     bothWindow: bothWindow,
-    isStd: isStd, stagePick: stagePick, chipPick: chipPick,
+    isStd: isStd, stagePick: stagePick, chipPick: chipPick, studioKit2: studioKit2,
     studioOf: studioOf, studioPane: studioPane, sayHead: sayHead,
     modes: modes, reduced: reduced, cue: cue, moreHtml: moreHtml, explain: explain,
     esc: esc, F: F, nid: nid, mount: mount, frame: frame, kindPicker: kindPicker, keepGoing: keepGoing, slider: slider, choiceSelect: choiceSelect, announcer: announcer,
