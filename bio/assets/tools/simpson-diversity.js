@@ -64,13 +64,16 @@
   function meter(counts, Dtrue, Dmine){
     var x = QX + QW + 34, y0 = QY, hh = QH, w = 30, h = [], s = M.sum(counts) ? M.simpson(counts) : null;  // zero counts give zero squares, so colors stay with their species
     h.push('<rect class="sd-mbg" x="' + x + '" y="' + y0 + '" width="' + w + '" height="' + hh + '" rx="4"/>');
+    // the two labels ("D = ..." and "your D ...") never sit on each other: when close, one goes above and one below
+    var yT = Dtrue != null && s ? y0 + s.sumSq * hh + 5 : null, yM = Dmine != null && isFinite(Dmine) ? y0 + (1 - Math.max(0, Math.min(1, Dmine))) * hh + 5 : null;
+    if(yT != null && yM != null && Math.abs(yT - yM) < 22){ var mid = (yT + yM) / 2, up = yM <= yT; yM = mid + (up ? -11 : 11); yT = mid + (up ? 11 : -11); }
     if(Dtrue != null && s){
       var yy = y0;
       s.squares.forEach(function(q, k){ var hgt = q * hh; if(hgt > 0.3) h.push('<rect class="sd-i ' + CL[k % 8] + ' sd-sq" x="' + x + '" y="' + yy.toFixed(1) + '" width="' + w + '" height="' + hgt.toFixed(1) + '"/>'); yy += hgt; });
       h.push('<rect class="sd-D" x="' + x + '" y="' + yy.toFixed(1) + '" width="' + w + '" height="' + (y0 + hh - yy).toFixed(1) + '"/>');
-      h.push('<line class="sd-lev" x1="' + (x - 6) + '" x2="' + (x + w + 6) + '" y1="' + yy.toFixed(1) + '" y2="' + yy.toFixed(1) + '"/><text class="sd-Dl" x="' + (x + w + 9) + '" y="' + (yy + 5).toFixed(1) + '">D = ' + F(Dtrue, 2) + '</text>');
+      h.push('<line class="sd-lev" x1="' + (x - 6) + '" x2="' + (x + w + 6) + '" y1="' + yy.toFixed(1) + '" y2="' + yy.toFixed(1) + '"/><text class="sd-Dl" x="' + (x + w + 9) + '" y="' + yT.toFixed(1) + '">D = ' + F(Dtrue, 2) + '</text>');
     }
-    if(Dmine != null && isFinite(Dmine)){ var ym = y0 + (1 - Math.max(0, Math.min(1, Dmine))) * hh; h.push('<line class="sd-lev mine" x1="' + (x - 8) + '" x2="' + (x + w + 8) + '" y1="' + ym.toFixed(1) + '" y2="' + ym.toFixed(1) + '"/><text class="sd-Dl mine" x="' + (x + w + 9) + '" y="' + (ym + (Dtrue != null && Math.abs(ym - (y0 + (1 - Dtrue) * hh)) < 16 ? 18 : 5)).toFixed(1) + '">your D ' + F(Dmine, 2) + '</text>'); }
+    if(Dmine != null && isFinite(Dmine)){ var ym = y0 + (1 - Math.max(0, Math.min(1, Dmine))) * hh; h.push('<line class="sd-lev mine" x1="' + (x - 8) + '" x2="' + (x + w + 8) + '" y1="' + ym.toFixed(1) + '" y2="' + ym.toFixed(1) + '"/><text class="sd-Dl mine" x="' + (x + w + 9) + '" y="' + yM.toFixed(1) + '">your D ' + F(Dmine, 2) + '</text>'); }
     [0, 0.5, 1].forEach(function(v){ h.push('<text class="tick" x="' + (x - 8) + '" y="' + (y0 + (1 - v) * hh + 4).toFixed(1) + '" text-anchor="end">' + v + '</text>'); });
     h.push('<text class="sk-ph" x="' + (x + w / 2) + '" y="' + (y0 + hh + 16) + '" text-anchor="middle">D</text>');
     return h.join('');
@@ -180,20 +183,30 @@
 
       /* ---- the picture */
       function n1(v){ return Math.round(v * 10) / 10; }
+      /* The places: rows a half column apart (a tree of the row in front stands between two of the row behind), and the
+         trees as big as they can be while every bare place stays in sight: a crown is narrower than half a column, and
+         the row two in front (straight in front) is more than a tree height ahead (th <= 1.75 pitch). 6 or 9 across,
+         6 across on a phone or a tall stage, 9 on a wide one when that gives trees as big. */
+      function fit(cols, phone, W, H, sky, trayH){
+        var rows = SPOTS / cols, pad = phone ? 10 : Math.max(24, W * 0.035), colW = (W - 2 * pad) / cols, back = 0.86;
+        var yN = H - trayH - (phone ? 12 : 16), A = yN - sky - 6;
+        var th = Math.max(48, Math.min(150, colW * 1.22, 1.75 * A / (rows - 1 + 1.75 * back)));
+        var y0 = sky + back * th + 6, pitch = (yN - y0) / (rows - 1);
+        return { cols: cols, rows: rows, pad: pad, colW: colW, th: th, y0: y0, yN: yN, pitch: pitch, back: back };
+      }
       function layout(){
         var W = sceneBox.clientWidth, H = sceneBox.clientHeight;
         if(!W || !H) return null;
-        var phone = W < 600, cols = phone ? 6 : 9, rows = SPOTS / cols, sky = Math.max(gauge.offsetHeight + (phone ? 16 : 22), phone ? 84 : 100), trayH = tray.offsetHeight + (phone ? 6 : 10);
-        var pad = phone ? 10 : Math.max(24, W * 0.035), colW = (W - 2 * pad) / cols, th = Math.max(54, Math.min(colW * 1.2, 150));
-        var yN = H - trayH - (phone ? 12 : 16), back = 0.86, y0 = sky + back * th + 6, pitch = (yN - y0) / (rows - 1);
-        if(pitch < th * 0.4){ th = Math.max(48, th * (pitch / (th * 0.4)) * 0.94 + 0); y0 = sky + back * th + 6; pitch = (yN - y0) / (rows - 1); }
+        var phone = W < 600, sky = Math.max(gauge.offsetHeight + (phone ? 16 : 22), phone ? 84 : 100), trayH = tray.offsetHeight + (phone ? 6 : 10);
+        var f = fit(6, phone, W, H, sky, trayH);
+        if(!phone && H / W < 0.62){ var f9 = fit(9, phone, W, H, sky, trayH); if(f9.th >= f.th * 0.97) f = f9; }   // a tall stage keeps 6 rows (no empty bands)
         var cx = W / 2, spots = [];
         for(var i = 0; i < SPOTS; i++){
-          var r = Math.floor(i / cols), c = i % cols, f = rows > 1 ? r / (rows - 1) : 1, s = back + (1 - back) * f, persp = 0.93 + 0.07 * f;
-          var x0 = pad + (c + 0.5) * colW + (r % 2 ? 0.16 : -0.16) * colW + JIT[i][0] * colW * 0.1;
-          spots.push({ x: cx + (x0 - cx) * persp, y: y0 + r * pitch + JIT[i][1] * pitch * 0.1, s: s, k: th * s / 100, row: r, col: c });
+          var r = Math.floor(i / f.cols), c = i % f.cols, q = f.rows > 1 ? r / (f.rows - 1) : 1, s = f.back + (1 - f.back) * q, persp = 0.93 + 0.07 * q;
+          var x0 = f.pad + (c + 0.5) * f.colW + (r % 2 ? 0.25 : -0.25) * f.colW + JIT[i][0] * f.colW * 0.02;
+          spots.push({ x: cx + (x0 - cx) * persp, y: f.y0 + r * f.pitch + JIT[i][1] * f.pitch * 0.06, s: s, k: f.th * s / 100, row: r, col: c });
         }
-        return { W: W, H: H, phone: phone, cols: cols, rows: rows, sky: sky, pad: pad, colW: colW, th: th, y0: y0, yN: yN, pitch: pitch, spots: spots, trayTop: H - trayH };
+        return { W: W, H: H, phone: phone, cols: f.cols, rows: f.rows, sky: sky, pad: f.pad, colW: f.colW, th: f.th, y0: f.y0, yN: f.yN, pitch: f.pitch, spots: spots, trayTop: H - trayH };
       }
       function staticSvg(){
         var W = G.W, H = G.H, sky = G.sky, h = [], r = M.rng(5), i;
@@ -236,7 +249,7 @@
       }
       function layoutNow(){
         var g = layout(); if(!g) return;
-        var same = G && g.W === G.W && g.H === G.H && g.sky === G.sky && g.trayTop === G.trayTop;
+        var same = G && g.W === G.W && g.H === G.H && g.sky === G.sky && g.trayTop === G.trayTop && g.cols === G.cols;
         G = g;
         if(!same){
           svg.setAttribute('viewBox', '0 0 ' + G.W + ' ' + G.H);
@@ -244,16 +257,23 @@
           buildPlot();
           G.spots.forEach(function(p, i){ var b = spotBtns[i], w = Math.min(G.colW - 4, 64), hh = Math.max(40, Math.min(G.pitch, 56)); b.style.left = (p.x - w / 2) + 'px'; b.style.top = (p.y - hh + 8) + 'px'; b.style.width = w + 'px'; b.style.height = hh + 'px'; });
         }
-        cue.place(); if(tour.active()) tour.place();
+        placeCue(); if(tour.active()) tour.place();
       }
 
       /* ---- what a tap does */
-      function hit(px, py){
+      /* What a pointer at (cx, cy) on the screen acts on: what is drawn there (a tree or a bare patch), so a tap on soil
+         you can see always plants there. Only on bare floor between them: the nearest bare place, or a trunk's foot. */
+      function hit(cx, cy){
         if(!G) return -1;
-        var i, p, best = -1;
-        for(i = SPOTS - 1; i >= 0; i--){ p = G.spots[i]; if(model[i] > CUT || vis[i] > CUT){ var tw = G.th * p.s; if(Math.abs(px - p.x) <= tw * 0.31 && py <= p.y + 6 && py >= p.y - tw) return i; } }
-        var bd = 1e9;
-        for(i = 0; i < SPOTS; i++){ p = G.spots[i]; var dx = (px - p.x) / (G.colW * 0.5), dy = (py - (p.y - G.pitch * 0.12)) / (G.pitch * 0.5), dd = dx * dx + dy * dy; if(Math.abs(dx) <= 1 && Math.abs(dy) <= 1 && dd < bd){ bd = dd; best = i; } }
+        var el = document.elementFromPoint(cx, cy), g = el && el.closest ? el.closest('.sd2-spot') : null;
+        if(g && gPlot.contains(g)) return +g.getAttribute('data-i');
+        if(!el || !svg.contains(el)) return -1;
+        var r = sceneBox.getBoundingClientRect(), px = cx - r.left, py = cy - r.top, i, p, best = -1, bd = 1e9;
+        for(i = 0; i < SPOTS; i++){ p = G.spots[i]; if(model[i] !== CUT || vis[i] !== CUT) continue;
+          var dx = (px - p.x) / (G.colW * 0.45), dy = (py - p.y) / (G.pitch * 0.4), dd = dx * dx + dy * dy; if(dd <= 1 && dd < bd){ bd = dd; best = i; } }
+        if(best > -1) return best;
+        for(i = 0; i < SPOTS; i++){ p = G.spots[i]; if(model[i] === CUT && vis[i] === CUT) continue;
+          var ex = (px - p.x) / (G.th * p.s * 0.3), ey = (py - p.y) / (G.pitch * 0.25), ee = ex * ex + ey * ey; if(ee <= 1 && ee < bd){ bd = ee; best = i; } }
         return best;
       }
       function calm(){ return K.reduced() || !window.requestAnimationFrame; }
@@ -291,13 +311,13 @@
         if(e.target.closest && e.target.closest('.sd2-tray, .sd2-gauge, .tk2-cue, .tk2-tour')) return;
         var bt = e.target.closest && e.target.closest('.sd2-spotb');
         if(bt){ act(+bt.getAttribute('data-i')); return; }      // a key press or a screen reader's activation
-        var r = sceneBox.getBoundingClientRect(), i = hit(e.clientX - r.left, e.clientY - r.top);
+        var i = hit(e.clientX, e.clientY);
         if(i > -1){ act(i); focusSpot(i, true); }
       });
       // a mouse shows what a click would act on
       var hot = -1;
       function setHot(i){ if(i === hot) return; if(hot > -1 && spotG[hot]) spotG[hot].classList.remove('is-hot'); hot = i; if(hot > -1 && spotG[hot]) spotG[hot].classList.add('is-hot'); sceneBox.classList.toggle('is-point', hot > -1); }
-      sceneBox.addEventListener('pointermove', function(e){ if(e.pointerType !== 'mouse') return; if(e.target.closest && e.target.closest('.sd2-tray, .sd2-gauge')){ setHot(-1); return; } var r = sceneBox.getBoundingClientRect(); setHot(hit(e.clientX - r.left, e.clientY - r.top)); });
+      sceneBox.addEventListener('pointermove', function(e){ if(e.pointerType !== 'mouse') return; if(e.target.closest && e.target.closest('.sd2-tray, .sd2-gauge')){ setHot(-1); return; } setHot(hit(e.clientX, e.clientY)); });
       sceneBox.addEventListener('pointerleave', function(){ setHot(-1); });
       function focusSpot(i, quiet){ spotBtns.forEach(function(b, j){ b.tabIndex = j === i ? 0 : -1; }); if(!quiet) try{ spotBtns[i].focus({ preventScroll: true }); }catch(e){} }
       layer.el.addEventListener('keydown', function(e){
@@ -322,14 +342,35 @@
       });
 
       /* ---- the one cue, and "Show me how" */
-      // a tree with bare soil to its right, so the cue's bubble covers no tree
-      function cueSpot(){
-        var cols = G ? G.cols : 9, i, c;
-        for(i = cols; i < SPOTS; i++){ c = i % cols; if(c >= 1 && c <= cols - 4 && vis[i] > CUT && vis[i + 1] === CUT) return i; }
-        for(i = cols + 1; i < SPOTS; i++) if(vis[i] > CUT) return i;
-        return cols + 1;
+      /* The cue points at a tree, and its bubble covers no other tree, the gauge or the tray: each tree is tried with the
+         bubble really placed, and the first clean one is kept (else the one with the least covered). */
+      var cueI = -1, cueSide = 'right';
+      function cueSpot(){ if(cueI > -1 && vis[cueI] > CUT) return cueI; for(var i = (G ? G.cols : 9); i < SPOTS; i++) if(vis[i] > CUT) return i; return 0; }
+      function cueAt(i){ var p = G.spots[i], t = G.th * p.s; return cueSide === 'above' ? [p.x, p.y - t * 0.97] : [p.x + (cueSide === 'left' ? -0.2 : 0.2) * t, p.y - t * 0.55]; }
+      var cue = K.cue(layer, { key: 'apbio-simpson', text: 'Tap a tree', side: 'right', at: function(){ return G ? cueAt(cueSpot()) : [0, 0]; } });
+      function placeCue(){
+        if(!cue.active() || !G) return;
+        var bub = layer.el.querySelector('.tk2-cue'); if(!bub) return;
+        var sc = sceneBox.getBoundingClientRect(), walls = [gauge.getBoundingClientRect(), tray.getBoundingClientRect()];
+        function cover(a, b){ var w = Math.min(a.right, b.right) - Math.max(a.left, b.left), h = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top); return w > 0 && h > 0 ? w * h : 0; }
+        // what is drawn under the bubble: points on a grid, read with the bubble out of the way
+        function onTrees(r, i){ var n = 0, x, y, e, g; for(x = 0; x <= 6; x++) for(y = 0; y <= 3; y++){ e = document.elementFromPoint(r.left + 2 + (r.width - 4) * x / 6, r.top + 2 + (r.height - 4) * y / 3); g = e && e.closest ? e.closest('.sd2-spot') : null; if(g && e.closest('.sd2-tree') && +g.getAttribute('data-i') !== i) n++; } return n; }
+        var best = -1, bestA = 1e12, i, r, area;
+        bub.style.visibility = 'hidden';
+        var sides = ['right', 'left', 'above'], bestSide = 'right', k;
+        function side(v){ cueSide = v; sides.forEach(function(x){ bub.classList.toggle('is-' + x, x === v); }); }
+        for(i = 0; i < SPOTS && bestA > 0; i++){
+          if(vis[i] === CUT) continue;
+          for(k = 0; k < sides.length && bestA > 0; k++){
+            cueI = i; side(sides[k]); cue.place(); r = bub.getBoundingClientRect();
+            area = (r.left < sc.left + 2 || r.right > sc.right - 2 || r.top < sc.top + 2 ? 1e6 : 0) + 1e3 * (cover(r, walls[0]) > 0 || cover(r, walls[1]) > 0 ? 1 : 0);
+            if(area < bestA) area += onTrees(r, i);
+            if(area < bestA){ bestA = area; best = i; bestSide = sides[k]; }
+          }
+        }
+        bub.style.visibility = '';
+        cueI = best; side(bestSide); cue.place();
       }
-      var cue = K.cue(layer, { key: 'apbio-simpson', text: 'Tap a tree', side: 'right', at: function(){ if(!G) return [0, 0]; var p = G.spots[cueSpot()]; return [p.x + G.th * p.s * 0.2, p.y - G.th * p.s * 0.55]; } });
       function hideCue(used){ if(cue.active()) cue.hide(used); }
       var tour = K.tour({ key: 'apbio-simpson', label: 'Show me how', steps: [
         { id: 'pick', text: 'Pick a tree to plant, or Cut.', target: function(){ return tray; } },
@@ -351,7 +392,7 @@
         if(t.S === 1) return [{ t: '1 species', role: 'rich' }, { t: 'any 2 trees match', role: 'ink', say: 'any two trees picked at random are the same species' }, { t: 'D = 0', role: 'div', say: 'D is 0' }];
         var e = evenWord(t), pct = Math.round(t.D * 100);
         return [{ t: t.S + ' species', role: 'rich' }, { t: e.t, say: e.say, role: 'even', join: '+' },
-          { t: '2 random trees differ ' + pct + '%', role: 'ink', say: 'two trees picked at random are different species ' + pct + ' percent of the time' }, { t: 'D = ' + F(t.D, 2), role: 'div', say: 'D is ' + F(t.D, 2) }];
+          { t: 'pick 2: ' + pct + '% different species', role: 'ink', say: 'two trees picked at random are different species ' + pct + ' percent of the time' }, { t: 'D = ' + F(t.D, 2), role: 'div', say: 'D is ' + F(t.D, 2) }];
       }
       function spotLabels(){
         spotBtns.forEach(function(b, i){
@@ -365,13 +406,14 @@
         chips.forEach(function(c){ var k = +c.getAttribute('data-k'); if(k === CUT) return; var n = t.counts[k]; c.querySelector('.sd2-chip-c').textContent = n; c.querySelector('.sd2-chip-bar i').style.width = (t.N ? 100 * n / t.N : 0).toFixed(1) + '%'; c.classList.toggle('is-none', !n);
           c.setAttribute('aria-label', SP[k].name + ': ' + n + ' of ' + t.N + ' trees. Plant ' + lower(k)); });
         // the gauge: D is the fill, the mark is the most D can be with this many species
-        gauge.querySelector('.sd2-g-v b').textContent = D == null ? 'D –' : 'D = ' + F(D, 2);
+        gauge.querySelector('.sd2-g-v b').textContent = D == null ? 'No trees' : 'D = ' + F(D, 2);
         gauge.querySelector('.sd2-g-fill').style.width = (D == null ? 0 : 100 * D).toFixed(1) + '%';
         var mk = gauge.querySelector('.sd2-g-max'), ml = gauge.querySelector('.sd2-g-maxl');
         mk.hidden = ml.hidden = !t.S;
-        if(t.S){ mk.style.left = (100 * t.max).toFixed(1) + '%'; ml.textContent = t.S + ' species max'; ml.style.setProperty('--at', (100 * t.max).toFixed(1) + '%'); }
+        if(t.S){ mk.style.left = (100 * t.max).toFixed(1) + '%'; ml.textContent = 'max for ' + t.S + ' species'; ml.style.setProperty('--at', (100 * t.max).toFixed(1) + '%'); }
         gauge.classList.toggle('is-full', t.S > 1 && D >= t.max - 1e-9);
         var ar = gauge.querySelector('.sd2-g-d');
+        if(D == null){ clearTimeout(arrowT); ar.className = 'sd2-g-d'; ar.textContent = ''; }
         if(lastD != null && D != null && Math.abs(D - lastD) > 0.0005){ ar.textContent = D > lastD ? '▲' : '▼'; ar.className = 'sd2-g-d is-on ' + (D > lastD ? 'is-up' : 'is-down'); clearTimeout(arrowT); arrowT = setTimeout(function(){ ar.className = 'sd2-g-d'; }, 2400); }
         lastD = D;
         if(!took) cause.set(chain(t));
@@ -486,7 +528,7 @@
         took = false;
         if(ex && exPlot){ loadPlot(exPlot.model); setPick(exPlot.pick, false); exPlot = null; }
         if(build && was !== 'build'){ loadPlot(startPlot()); setPick(Math.max(0, SP.map(function(s){ return s.id; }).indexOf(EX.plant)), false); }
-        setTimeout(function(){ layoutNow(); syncWords(); if(ex && !tour.active()) cue.show(); }, 30);
+        setTimeout(function(){ layoutNow(); syncWords(); if(ex && !tour.active() && cue.show()) placeCue(); }, 30);
       }
       ctx.kit2 = { stage: stage, ref: ref, othersLabel: 'On the plot',
         parts: [{ value: 'practice', label: 'Calculate D', practice: true },

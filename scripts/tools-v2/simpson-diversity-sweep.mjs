@@ -7,7 +7,11 @@
      - the plot (the thing acted on) is the largest thing; trees and chips are at least 44 px to tap;
      - phones (640 px and under): the cause line is at most two rows and its height never changes;
    and, frame by frame at 390 and 1440: the words (tray counts, D, the cause line) always match the trees drawn.
-   Usage: node scripts/tools-v2/simpson-diversity-sweep.mjs [--shots <dir>] [--port <n>] (a free port when left out)
+   Also (review round 1): a tap or click on every bare patch you can see plants exactly there, with a mouse and with
+   real touch; a tap on a tree you can see changes that tree; no bare place is hidden behind a crown; the first visit
+   cue covers no tree; an empty plot says "No trees" with no arrow.
+   Usage: node scripts/tools-v2/simpson-diversity-sweep.mjs [--width <w>] [--shots <dir>] [--port <n>]
+   (one width per process keeps each run short; with no --width all ten widths run, then the frame checks)
    Needs playwright (PW_ROOT names a folder whose node_modules has it) and Chromium (CHROMIUM_PATH). */
 import { createServer } from 'node:http';
 import { existsSync, statSync, createReadStream, mkdirSync } from 'node:fs';
@@ -35,14 +39,15 @@ const server = createServer((req, res) => {
 await new Promise(ok => server.listen(PORT, ok));
 PORT = server.address().port;
 const URL0 = `http://localhost:${PORT}/bio/tools/simpson-diversity.html`;
-const WIDTHS = [360, 390, 430, 600, 768, 820, 1024, 1280, 1440, 1920];
+const ALL = [360, 390, 430, 600, 768, 820, 1024, 1280, 1440, 1920], ONE = arg('--width', null);
+const WIDTHS = ONE ? [+ONE] : ALL;
 /* The landmark states: trees of [oak, pine, birch, maple, cherry]. */
 const STATES = [
-  { id: 'opening', counts: [16, 4, 4, 0, 0], cause: /^3 species\+mostly oak→2 random trees differ 50%→D = 0\.50$/ },
+  { id: 'opening', counts: [16, 4, 4, 0, 0], cause: /^3 species\+mostly oak→pick 2: 50% different species→D = 0\.50$/ },
   { id: 'one-species', counts: [24, 0, 0, 0, 0], cause: /^1 species→any 2 trees match→D = 0$/ },
-  { id: 'two-even', counts: [12, 12, 0, 0, 0], cause: /^2 species\+evenly spread→.*50%→D = 0\.50$/ },
-  { id: 'five-even-full', counts: [8, 7, 7, 7, 7], cause: /^5 species\+evenly spread→.*80%→D = 0\.80$/ },
-  { id: 'five-dominated', counts: [1, 1, 1, 1, 32], cause: /^5 species\+mostly cherry→.*21%→D = 0\.21$/ },
+  { id: 'two-even', counts: [12, 12, 0, 0, 0], cause: /^2 species\+evenly spread→.*50% different species→D = 0\.50$/ },
+  { id: 'five-even-full', counts: [8, 7, 7, 7, 7], cause: /^5 species\+evenly spread→.*80% different species→D = 0\.80$/ },
+  { id: 'five-dominated', counts: [1, 1, 1, 1, 32], cause: /^5 species\+mostly cherry→.*21% different species→D = 0\.21$/ },
   { id: 'five-uneven', counts: [9, 9, 3, 2, 1], cause: /^5 species\+uneven→/ },
   { id: 'one-tree', counts: [0, 0, 0, 1, 0], cause: /^1 species→/ },
   { id: 'empty', counts: [0, 0, 0, 0, 0], cause: /^No trees→nothing to measure$/ },
@@ -52,7 +57,7 @@ const ok = (c, msg) => { if (c) pass++; else fails.push(msg); };
 
 async function open(w, dark, opts = {}) {
   const browser = await chromium.launch({ executablePath: EXE });
-  const ctx = await browser.newContext({ viewport: { width: w, height: w < 500 ? 844 : w < 1100 ? 1024 : 900 }, serviceWorkers: 'block', hasTouch: w < 500, reducedMotion: opts.reduced ? 'reduce' : 'no-preference' });
+  const ctx = await browser.newContext({ viewport: { width: w, height: w < 500 ? 844 : w < 1100 ? 1024 : 900 }, serviceWorkers: 'block', hasTouch: opts.touch != null ? opts.touch : w < 500, reducedMotion: opts.reduced ? 'reduce' : 'no-preference' });
   await ctx.route(u => !u.href.startsWith(`http://localhost:${PORT}`) && !u.href.startsWith('data:'), r => r.abort());
   const page = await ctx.newPage(); const errs = [];
   page.on('console', m => { if (m.type() === 'error' && !/Failed to load resource|ERR_FAILED|net::/.test(m.text())) errs.push(m.text()); });
@@ -86,6 +91,9 @@ const geo = (page) => page.evaluate(() => {
     chipText: qa('.sd2-chip-n, .sd2-chip-c').map(e => ({ ...R(e), p: R(e.closest('.sd2-chip')) })), cue: q('.tk2-cue') ? R(q('.tk2-cue')) : null,
     gaugeKids: qa('.sd2-g-k, .sd2-g-v, .sd2-g-row, .sd2-g-maxl:not([hidden])').map(R), maxl: q('.sd2-g-maxl').hidden ? null : (() => { const r = document.createRange(); r.selectNodeContents(q('.sd2-g-maxl')); return R(r); })(),
     cause: cause.hidden ? null : { ...R(cause), text: cause.textContent, rows: [...new Set(qa('.tk2-cause .tk2-cz').map(e => Math.round(e.getBoundingClientRect().top)))].length, pills: qa('.tk2-cause .tk2-cz').map(R), take: cause.classList.contains('is-take') },
+    cueOnTrees: (() => { const c = q('.tk2-cue'); if (!c) return 0; const r = c.getBoundingClientRect(); c.style.visibility = 'hidden'; let n = 0; for (let x = 0; x <= 6; x++) for (let y = 0; y <= 3; y++) { const e = document.elementFromPoint(r.left + 2 + (r.width - 4) * x / 6, r.top + 2 + (r.height - 4) * y / 3); if (e && e.closest('.sd2-tree')) n++; } c.style.visibility = ''; return n; })(),
+    hiddenSoil: qa('.sd2-spot').filter(g => { const s = g.querySelector('.sd2-soil'); if (!s) return false; const r = s.getBoundingClientRect(), e = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2); return !e || e.closest('.sd2-spot') !== g; }).map(g => g.dataset.i),
+    gaugeText: q('.sd2-g-v').textContent,
     lines: R(q('.sd2-lines')), acts: qa('.sd2-acts button:not([hidden])').map(R), head: q('.tk2-head').hidden ? null : R(q('.tk2-head')),
     n: +stage.dataset.n, s: +stage.dataset.s, d: stage.dataset.d, chipCounts: qa('.sd2-chip-c').map(e => +e.textContent), view: stage.dataset.view };
 });
@@ -106,7 +114,9 @@ function check(g, tag, st) {
   T(g.chips.every((c, i) => g.chips.every((d, j) => i === j || !hit(c, d, 0.5))), 'chips overlap');
   T(g.chips.every(c => c.w >= 44 && c.h >= 44), `a chip is under 44 px (${Math.round(Math.min(...g.chips.map(c => c.w)))} x ${Math.round(Math.min(...g.chips.map(c => c.h)))})`);
   T(g.trees.every(t => t.h >= 44), 'a tree is under 44 px tall');
-  if (g.cue) { T(g.cue.l >= g.scene.l && g.cue.r <= g.scene.r, 'the cue is clipped'); T(!hit(g.cue, g.gauge) && !hit(g.cue, g.tray), 'the cue covers the gauge or the tray'); }
+  if (g.cue) { T(g.cue.l >= g.scene.l && g.cue.r <= g.scene.r, 'the cue is clipped'); T(!hit(g.cue, g.gauge) && !hit(g.cue, g.tray), 'the cue covers the gauge or the tray'); T(g.cueOnTrees === 0, `the cue covers a tree (${g.cueOnTrees} points)`); }
+  T(!g.hiddenSoil.length, `bare places hidden behind trees: ${g.hiddenSoil.join()}`);
+  if (g.n === 0) T(g.gaugeText.trim() === 'No trees', `the empty gauge reads "${g.gaugeText}"`);
   // the plot is the largest thing on the stage
   const others = Math.max(g.lines.h, g.head ? g.head.h : 0);
   T(g.scene.w >= g.stage.w - 2 && g.scene.h >= 2.5 * others && g.scene.h >= 0.6 * (g.stage.h || 1), `the plot is not the largest thing (${Math.round(g.scene.h)} of ${Math.round(g.stage.h)})`);
@@ -144,15 +154,50 @@ for (const dark of [false, true]) for (const w of WIDTHS) {
   await browser.close();
 }
 
+/* A tap on what you see acts on it: every visible bare patch plants there (mouse, then real touch), and a tap on a
+   tree's crown changes that tree. Points are the centre of what is drawn, read with elementFromPoint. */
+async function tapTest(w, touch) {
+  const { browser, page, errs } = await open(w, false, { noCue: true, touch });
+  const tag = `${w} ${touch ? 'touch' : 'mouse'}`;
+  await page.click('.sd2-chip[data-k="4"]');
+  const soils = await page.evaluate(() => [...document.querySelectorAll('.sd2-spot')].filter(g => g.querySelector('.sd2-soil')).map(g => +g.dataset.i));
+  let planted = 0;
+  for (const i of soils) {
+    const pt = await page.evaluate((i) => { const g = document.querySelectorAll('.sd2-spot')[i], s = g.querySelector('.sd2-soil'); if (!s) return null; const r = s.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2, e = document.elementFromPoint(x, y); return e && e.closest('.sd2-spot') === g ? { x, y } : null; }, i);
+    if (!pt) { fails.push(`${tag}: bare place ${i} cannot be seen`); continue; }
+    if (touch) await page.touchscreen.tap(pt.x, pt.y); else await page.mouse.click(pt.x, pt.y);
+    await page.waitForTimeout(60);
+    const got = await page.evaluate((i) => { const t = document.querySelectorAll('.sd2-spot')[i].querySelector('.sd2-tree'); return t ? +t.dataset.sp : -1; }, i);
+    if (got === 4) planted++; else fails.push(`${tag}: a tap on bare place ${i} did not plant there`);
+  }
+  ok(planted === soils.length, `${tag}: ${planted} of ${soils.length} visible bare patches planted where tapped`);
+  await page.waitForTimeout(500);
+  const sum = await page.evaluate(() => [...document.querySelectorAll('.sd2-chip-c')].map(e => +e.textContent).reduce((a, b) => a + b, 0));
+  ok(sum === 24 + soils.length, `${tag}: ${sum} trees after planting every bare place`);
+  // trees: pick Birch, tap the crown centre of six trees you can see; each becomes a birch
+  await page.click('.sd2-chip[data-k="2"]');
+  for (let j = 0; j < 6; j++) {
+    const pt = await page.evaluate(() => { for (const g of document.querySelectorAll('.sd2-spot')) { const t = g.querySelector('.sd2-tree'); if (!t || t.dataset.sp === '2') continue; const r = t.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height * 0.3, e = document.elementFromPoint(x, y); if (e && e.closest('.sd2-spot') === g) return { x, y, i: +g.dataset.i }; } return null; });
+    if (!pt) break;
+    if (touch) await page.touchscreen.tap(pt.x, pt.y); else await page.mouse.click(pt.x, pt.y);
+    await page.waitForTimeout(400);
+    const got = await page.evaluate((i) => { const t = document.querySelectorAll('.sd2-spot')[i].querySelector('.sd2-tree'); return t ? +t.dataset.sp : -1; }, pt.i);
+    ok(got === 2, `${tag}: a tap on tree ${pt.i} did not change that tree (${got})`);
+  }
+  ok(!errs.length, `${tag}: console errors: ${errs.join(' | ')}`);
+  await browser.close();
+}
+for (const w of WIDTHS) { await tapTest(w, false); await tapTest(w, true); }
+
 /* Frame by frame: at every frame the tray's counts equal the trees drawn, and D and the cause line are the ones
    for those trees (no word runs ahead of the picture, none lags once a tree is in). */
-for (const w of [390, 1440]) {
+for (const w of [390, 1440].filter(w => !ONE || +ONE === w)) {
   const { browser, page, errs } = await open(w, false, { noCue: true });
   const frames = await page.evaluate(async () => {
     const log = [], q = (s) => document.querySelector(s), qa = (s) => [...document.querySelectorAll(s)];
     let on = true;
     const snap = (what) => { const c = [0, 0, 0, 0, 0]; qa('.sd2-tree').forEach(t => c[+t.dataset.sp]++); const N = c.reduce((a, b) => a + b, 0), S = c.filter(Boolean).length, D = N ? 1 - c.reduce((a, n) => a + (n / N) * (n / N), 0) : null;
-      log.push({ what, drawn: c.join(), tray: qa('.sd2-chip-c').map(e => e.textContent).join(), dText: q('.sd2-g-v b').textContent, dWant: D == null ? 'D –' : 'D = ' + D.toFixed(2), cause: q('.tk2-cause').textContent, S, moving: qa('.sd2-tree.is-out, .sd2-tree.is-cut').length }); };
+      log.push({ what, drawn: c.join(), tray: qa('.sd2-chip-c').map(e => e.textContent).join(), dText: q('.sd2-g-v b').textContent, dWant: D == null ? 'No trees' : 'D = ' + D.toFixed(2), cause: q('.tk2-cause').textContent, S, moving: qa('.sd2-tree.is-out, .sd2-tree.is-cut').length }); };
     const loop = (what) => new Promise(done => { const t0 = performance.now(); const f = () => { snap(what); if (performance.now() - t0 < 900) requestAnimationFrame(f); else done(); }; f(); });
     const btn = qa('.sd2-spotb'), kind = (i) => { const t = qa('.sd2-spot')[i].querySelector('.sd2-tree'); return t ? +t.dataset.sp : -1; };
     const first = (k) => btn.findIndex((b, i) => kind(i) === k);
@@ -172,7 +217,7 @@ for (const w of [390, 1440]) {
   await browser.close();
 }
 /* Reduced motion: the result at once, with a short cross fade. */
-{ const { browser, page, errs } = await open(390, false, { reduced: true, noCue: true });
+if (!ONE || ONE === '390') { const { browser, page, errs } = await open(390, false, { reduced: true, noCue: true });
   const r = await page.evaluate(() => { document.querySelector('.sd2-chip[data-k="3"]').click(); document.querySelectorAll('.sd2-spotb')[0].click(); const t = document.querySelector('.sd2-tree.is-fade');
     return { tray: [...document.querySelectorAll('.sd2-chip-c')].map(e => e.textContent).join(), anim: t ? getComputedStyle(t).animationName : '', dur: t ? getComputedStyle(t).animationDuration : '' }; });
   ok(r.tray === '15,4,4,1,0' && r.anim === 'sd2-fade' && parseFloat(r.dur) <= 0.3, `reduced motion: ${JSON.stringify(r)}`);

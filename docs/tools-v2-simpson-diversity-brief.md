@@ -27,26 +27,26 @@ ceiling and evenness visibly moves the fill toward it.
 
 ## The design
 - **Picture:** a drawn woodland plot (sky, hills, far woodland, a roped plot of leaf litter seen from a little
-  above) with 36 places in rows (9 across, 6 across on a phone), each a tree or bare soil. Five species, each with its
+  above) with 36 places in rows a half column apart (6 across on a phone or a tall stage, 9 on a wide one), each a tree or bare soil. Five species, each with its
   own outline as well as colour (oak, pine, birch, maple, cherry), so species never rely on colour alone.
 - **Main control, on the picture:** the tray at the bottom of the plot (five trees and Cut, a radio group). Tap a
   tree on the plot to replace it with the picked tree, tap bare soil to plant, or pick Cut and tap a tree. Each
   chip shows its count and a bar of its share.
 - **Instant, animated result:** the old tree shrinks or falls, the new one grows in; the gauge on the picture (top
-  right) shows D as a fill and a mark at 1 − 1/S labelled "N species max"; an arrow shows up or down.
-- **Cause line** under the picture, in the idea's colours: "3 species + mostly oak → 2 random trees differ 50% →
+  right) shows D as a fill and a mark at 1 − 1/S labelled "max for N species"; an arrow shows up or down.
+- **Cause line** under the picture, in the idea's colours: "3 species + mostly oak → pick 2: 50% different species →
   D = 0.50". Every word is read from the trees as drawn, never ahead of them (checked frame by frame).
 - **Buttons:** "Even it out" (same trees, same species, shared out evenly; ends on the takeaway "Same trees, same
   species, now even: D rose from 0.50 to 0.67.") and "Start over".
 - **Opens** on 16 oak, 4 pine, 4 birch (D = 0.50, max 0.67), with Maple picked, so the first tap adds a species.
-- **Cue:** "Tap a tree", once per device, beside a tree with soil to its right so it covers no tree or label.
+- **Cue:** "Tap a tree", once per device, pointing at a tree; its bubble (right, left or above) is placed where it covers no tree, the gauge or the tray.
   "Show me how" (three pointers: tray, a tree, the gauge) from the purpose line and from "?".
 - **"?" (Numbers & formula):** the live table for the plot (n, n/N, (n/N)², −/+ per species), D worked out, the
   stacked (n/N)² bar (the old meter, horizontal), what D means, what the gauge shows.
 
 ### What is on screen in Explore (counted, opening, 1440 and 390)
 1 purpose line and 1 "Show me how" link; 1 picture (the plot, the largest thing at every width, sweep checked) with
-36 places (24 trees, 12 bare soil); 1 gauge (4 labels: "Diversity", "D = 0.50", the 0 and 1 ends, "3 species max");
+36 places (24 trees, 12 bare soil); 1 gauge (4 labels: "Diversity", "D = 0.50", the 0 and 1 ends, "max for 3 species");
 1 tray of 6 chips (5 trees with counts, Cut; plus "Plant" at desktop widths); 1 cause line (4 pills); 2 buttons. The
 cue on the first visit only. No side panel.
 
@@ -69,7 +69,8 @@ cue on the first visit only. No side panel.
   targets, and 36 trees stay drawn as trees (not dots). Reverse: `explore.species` and `explore.spots` in
   `bio/data/tools/simpson-diversity.json` (the content check limits 2 to 5 species, spots a multiple of 18).
 - **The last goal is D above 0.75, not 0.80.** With five species the most D can be is exactly 0.80, so "above 0.80"
-  is impossible. 0.75 needs a fifth or fourth species in near even numbers.
+  is impossible. Above 0.75 needs all five species (with four the most is exactly 0.75), in near even numbers
+  (for example 6, 6, 6, 4, 2 of the 24 opening trees gives 0.78).
 - **The plot can be emptied** (the old one kept at least one organism). Empty reads "No trees → nothing to
   measure", which is honest.
 
@@ -112,7 +113,7 @@ mid cut and mid Even it out frames) in `/mnt/user-data/outputs/simpson-diversity
 
 ## Not done, and what I am not happy with
 - No real phone, no screen reader pass, no real students.
-- The cause pill "2 random trees differ 50%" is the longest label; it fits two rows at 360 px but is more than 3
+- The cause pill "pick 2: 50% different species" is the longest label; it fits two rows at 360 px but is more than 3
   words.
 - At 768 to 1024 the trees are small against the plot's width; still at least 44 px tall.
 - The sweep and verification run on one Chromium only.
