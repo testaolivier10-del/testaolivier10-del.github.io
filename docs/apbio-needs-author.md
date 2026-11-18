@@ -698,6 +698,14 @@ These stay open:
   Real tissue (and the potato core in the tool's questions) starts slightly turgid, so its "no change" solution
   is a little weaker than its cell sap and it passes through a flaccid range before plasmolysis. Owner or teacher:
   is the idealized cell right for free play, or should Explore use the potato core's numbers?
+- **enzyme-explore-drawing** (logged, tools v2, 2026-11-18, 3.3). The rebuilt Enzyme activity tool's rate is the
+  model's, unchanged. Its picture adds four conventions the model does not have: (1) a denatured enzyme never
+  refolds (on a drag back the unfolded ones fade and new enzyme comes in, labelled), though the CED says some
+  denaturing can be undone; (2) a pH more than about 3 units from the best is drawn as denaturing and nearer than
+  that as a change of the active site's charges only, which is undone (the model has one ionization curve);
+  (3) molecules are drawn much faster when warm than the real change in speed; (4) no molecule is drawn unfolded
+  until a quarter are unfolded in the model, so nothing looks denatured at the optimum. Owner or teacher: are
+  these right for free play?
 - **osmosis-tonicity-words** (open, 2.7). The tool names the solution hypotonic, isotonic or hypertonic by its
   solute concentration against the cell's. For a walled cell with turgor, "isotonic" (equal solute) and "no net
   water movement" (equal water potential) are not the same solution; textbooks and AP materials use the words

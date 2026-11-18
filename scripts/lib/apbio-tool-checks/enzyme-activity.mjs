@@ -50,6 +50,30 @@ export function check(data, map) {
   // the percent-decrease item: 2 mM of a noncompetitive inhibitor with Ki 1 mM removes 2/3 of the activity
   const pd = (data.questions || []).find(q => q.id === 'enzyme-activity:inhibitors:5');
   if (pd && Math.abs(pd.numeric.answer - 100 * (1 - 1 / 3)) > pd.numeric.tol) errs.push('enzyme-activity:inhibitors:5: the percent decrease must be 66.7');
+  // Explore (tools v2, docs/tools-v2-enzyme-activity-brief.md): four tabs on one enzyme, each showing its idea by the model
+  const ex = data.explore, xp = ex && (data.profiles || []).find(p => p.id === ex.profile);
+  if (!ex || !xp) errs.push('explore: a block with a known profile is required');
+  else {
+    const ids = (ex.tabs || []).map(t => t.id).join(',');
+    if (ids !== 'sub,temp,ph,inh') errs.push(`explore: tabs must be sub, temp, ph, inh (${ids})`);
+    for (const t of ex.tabs || []) if (!t.tab || !t.control || !t.purpose || !t.role || t.lo == null || t.hi == null) errs.push(`explore tab ${t.id}: tab, control, purpose, role, lo and hi are required`);
+    for (const k of ['substrate', 'temperature', 'pH', 'inhibitor', 'inhSubstrate']) { const r = ex[k]; if (!(r && r.max > r.min && r.step > 0 && r.value >= r.min && r.value <= r.max)) errs.push(`explore: ${k} {min, max, step, value} is required`); }
+    const f = ex.fixed || {}, c = { S: f.S, T: f.T, pH: f.pH, inhibitor: 'none', I: 0 }, R = (o, S) => E.rate(xp, { ...c, ...o }, S == null ? ({ ...c, ...o }).S : S);
+    if (!(f.S > 0 && E.tempFactor(xp, f.T) > 0.6 && E.phFactor(xp, f.pH) > 0.9)) errs.push('explore: the fixed conditions must let the enzyme work well');
+    else {
+      const vm = E.params(xp, c).vmax;
+      if (!(R({}, 0) === 0 && R({}, ex.substrate.max) / vm > 0.85 && Math.abs(R({}, ex.substrate.value) / vm - 0.5) < 0.15)) errs.push('explore: the substrate tab must run from no reaction to near saturation and open near half the top rate');
+      const ot = E.optimumT(xp), top = R({ T: ot });
+      if (!(ot > ex.temperature.min + 10 && ot < ex.temperature.max - 10 && R({ T: ex.temperature.min }) / top < 0.25 && R({ T: ex.temperature.max }) / top < 0.02)) errs.push('explore: the temperature tab must be slow when cold and stopped (denatured) at its hot end');
+      const op = E.optimumPH(xp), topP = R({ pH: op });
+      if (!(Math.abs(ex.pH.value - op) < 0.3 && R({ pH: ex.pH.min }) / topP < 0.02 && R({ pH: ex.pH.max }) / topP < 0.02)) errs.push('explore: the pH tab must open at the best pH and stop at both ends');
+      const s0 = ex.inhSubstrate.value, sm = ex.inhSubstrate.max, im = ex.inhibitor.max;
+      if (ex.inhibitor.value !== 0) errs.push('explore: the inhibitor tab opens with no inhibitor');
+      for (const kind of ['competitive', 'noncompetitive']) if (!(R({ inhibitor: kind, I: im, S: s0 }) < 0.6 * R({ S: s0 }))) errs.push(`explore: the most ${kind} inhibitor must slow the rate plainly`);
+      const I2 = 2, rc = R({ inhibitor: 'competitive', I: I2, S: sm }) / R({ S: sm }), rn = R({ inhibitor: 'noncompetitive', I: I2, S: sm }) / R({ S: sm });
+      if (!(rc >= 0.8 && rn < 0.5)) errs.push(`explore: at the most substrate a competitive inhibitor (2 mM) must be mostly overcome and a noncompetitive one not (${rc.toFixed(2)}, ${rn.toFixed(2)})`);
+    }
+  }
   if (!data.frq) errs.push('a simulator ends with a mini FRQ'); else frq(data.frq, 'enzyme-activity', map, errs);
   return errs;
 }

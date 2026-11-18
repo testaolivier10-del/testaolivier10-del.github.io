@@ -31,7 +31,9 @@
   var NS = 'http://www.w3.org/2000/svg', TAU = Math.PI * 2;
   function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
   function n1(v){ return (+v).toFixed(1); }
+  function nz(v){ return String(+(+v).toFixed(2)); }
   function ss(a, b, x){ x = clamp((x - a) / (b - a), 0, 1); return x * x * (3 - 2 * x); }
+  function setA(n, k, v){ var c = n.__a || (n.__a = {}); if(c[k] !== v){ c[k] = v; n.setAttribute(k, v); } }
   function sv(tag, cls){ var e = document.createElementNS(NS, tag); if(cls) e.setAttribute('class', cls); return e; }
   function smooth(pts, open){
     var n = pts.length, d = 'M' + n1(pts[0][0]) + ' ' + n1(pts[0][1]), at = function(i){ return open ? pts[clamp(i, 0, n - 1)] : pts[(i + n) % n]; };
@@ -64,7 +66,7 @@
     for(var j = 0; j <= n; j++){
       var f = j / n, a = j * 0.62 + seed, rad = 0.18 + 0.62 * Math.sqrt(f);
       var cx = Math.cos(a) * rad, cy = Math.sin(a) * rad;
-      var lx = (f - 0.5) * 2.15 + 0.16 * Math.sin(j * 0.55 + seed), ly = 0.4 * Math.sin(j * 0.8 + ph + seed) + 0.22 * Math.sin(j * 0.31 + ph * 0.7);
+      var lx = (f - 0.5) * 1.85 + 0.16 * Math.sin(j * 0.55 + seed), ly = 0.4 * Math.sin(j * 0.8 + ph + seed) + 0.22 * Math.sin(j * 0.31 + ph * 0.7);
       pts.push([cx + (lx - cx) * u, cy + (ly - cy) * u]);
     }
     return pts;
@@ -136,10 +138,10 @@
           onEnd: function(){ gest = false; say(cause.text()); refHtml(); } });
       }
       var CT = {
-        sub: knob({ id: 'sub', label: 'Substrate concentration', r: EX.substrate, get: function(){ return S.sub; }, set: function(v){ S.sub = v; }, text: function(v){ return F(v, 1) + ' millimolar substrate'; }, tag: function(v){ return F(v, 1) + ' ' + SU; } }),
+        sub: knob({ id: 'sub', label: 'Substrate concentration', r: EX.substrate, get: function(){ return S.sub; }, set: function(v){ S.sub = v; }, text: function(v){ return F(v, 1) + ' millimolar substrate'; }, tag: function(v){ return nz(v) + ' ' + SU; } }),
         temp: knob({ id: 'temp', label: 'Temperature', r: EX.temperature, get: function(){ return S.temp; }, set: function(v){ S.temp = v; }, text: function(v){ return F(v, 0) + ' degrees Celsius'; }, tag: function(v){ return F(v, 0) + ' °C'; } }),
-        ph: knob({ id: 'ph', label: 'pH of the solution', r: EX.pH, get: function(){ return S.ph; }, set: function(v){ S.ph = v; }, text: function(v){ return 'pH ' + F(v, 1); }, tag: function(v){ return 'pH ' + F(v, 1); } }),
-        inh: knob({ id: 'inh', label: 'Inhibitor concentration', r: EX.inhibitor, get: function(){ return S.inh; }, set: function(v){ S.inh = v; }, text: function(v){ return F(v, 2) + ' millimolar ' + S.itype + ' inhibitor'; }, tag: function(v){ return F(v, 2) + ' ' + IU; } })
+        ph: knob({ id: 'ph', label: 'pH of the solution', r: EX.pH, get: function(){ return S.ph; }, set: function(v){ S.ph = v; }, text: function(v){ return 'pH ' + F(v, 1); }, tag: function(v){ return 'pH ' + nz(v); } }),
+        inh: knob({ id: 'inh', label: 'Inhibitor concentration', r: EX.inhibitor, get: function(){ return S.inh; }, set: function(v){ S.inh = v; }, text: function(v){ return F(v, 2) + ' millimolar ' + S.itype + ' inhibitor'; }, tag: function(v){ return nz(v) + ' ' + IU; } })
       };
       var cSub2 = knob({ id: 'isub', quiet: true, label: 'Substrate concentration, with the inhibitor present', r: EX.inhSubstrate, get: function(){ return S.isub; }, set: function(v){ S.isub = v; }, text: function(v){ return F(v, 1) + ' millimolar substrate'; }, tag: function(){ return ''; } });
       var typeBox = document.createElement('div'); typeBox.className = 'ez2-type'; typeBox.setAttribute('role', 'group'); typeBox.setAttribute('aria-label', 'Kind of inhibitor');
@@ -236,7 +238,7 @@
       function ofKind(k){ return PARTS.filter(function(p){ return k === 'inh' ? p.kind !== 'sub' : p.kind === k; }); }
       /* How many of each to draw: substrate by its concentration; inhibitor by its own, and always enough to bind. */
       function counts(){
-        var c = now.c, nS = c.S > 0 ? Math.max(1, Math.round(Math.pow(c.S / data.substrate.max, 0.75) * G.nMax)) : 0, nI = c.inhibitor !== 'none' && c.I > 0 ? Math.max(2, Math.round(c.I / data.inhibitor.max * G.nMax * 0.4)) : 0;
+        var c = now.c, nS = c.S > 0 ? Math.max(1, Math.round(Math.pow(c.S / data.substrate.max, 0.75) * G.nMax)) : 0, zz = M.enzyme.states(now.prof, c), nI = c.inhibitor !== 'none' && c.I > 0 ? Math.max(Math.round((c.inhibitor === 'competitive' ? zz.inhibitor : zz.allosteric) * G.N) + 2, Math.round(c.I / data.inhibitor.max * G.nMax * 0.4)) : 0;
         return { sub: nS, inh: nI };
       }
       function setCount(kind, n, instant){
@@ -252,7 +254,7 @@
          hands every few seconds, as binding does). */
       function roles(){
         var z = M.enzyme.states(now.prof, now.c), d = Math.abs(now.c.pH - M.enzyme.optimumPH(now.prof)), denPH = Math.min(1 - z.phOk, clamp((d - 3) / 2, 0, 1));
-        var dT = clamp((1 - z.folded - 0.25) / 0.6, 0, 1), D = 1 - (1 - dT) * (1 - denPH), fi = now.c.inhibitor === 'competitive' ? z.inhibitor : z.allosteric;
+        var dT = clamp((1 - z.folded - 0.25) / 0.7, 0, 1), D = 1 - (1 - dT) * (1 - denPH), fi = now.c.inhibitor === 'competitive' ? z.inhibitor : z.allosteric;
         now.z = z; now.D = D; now.dT = dT; now.acid = now.c.pH < M.enzyme.optimumPH(now.prof);
         ENZ.forEach(function(e){
           var qi = (e.qi + rot) % 1;
@@ -349,7 +351,8 @@
           q.life -= dt; q.vx *= Math.pow(0.25, dt); q.vy *= Math.pow(0.25, dt); q.x = clamp(q.x + q.vx * dt, b.x0, b.x1); q.y = clamp(q.y + q.vy * dt, b.y0, b.y1); q.rot += q.vr * dt;
           if(q.life <= 0){ if(q.node.parentNode) q.node.parentNode.removeChild(q.node); return false; } return true;
         });
-        var gt = now.rate / now.ref; gShown += (gt - gShown) * (1 - Math.exp(-dt / 0.12)); if(Math.abs(gt - gShown) < 0.002) gShown = gt;
+        var gt = now.rate / now.ref; var mid = ENZ.some(function(e){ return (e.fold > 0 && e.fold < 1) || e.repl; });   // the bar keeps pace with an unfolding that is still being drawn
+        gShown += (gt - gShown) * (1 - Math.exp(-dt / (mid ? 0.4 : 0.12))); if(Math.abs(gt - gShown) < 0.002) gShown = gt;
       }
       /* The still picture (reduced motion, Pause, or the first frame): every state as it settles, the working sites
          holding substrate in the share the model gives. */
@@ -365,6 +368,7 @@
           if(e.want === 'inh' && inhs.length){ var p = inhs.pop(); e.inh = p; p.e = e; p.mode = 'docked'; var d = dockPt(e, p.kind); p.x = d[0]; p.y = d[1]; p.rot = p.kind === 'competitive' ? e.ang : e.ang + Math.PI; if(p.kind === 'noncompetitive') e.pinch = 1; }
         });
         if(still()){ var okE = ENZ.filter(working), nb = Math.round(occ * okE.length); okE.slice(0, nb).forEach(function(e){ var s = subs.pop(); if(!s) return; e.sub = s; s.e = e; s.mode = 'held'; var d = dockPt(e, 'sub'); s.x = d[0]; s.y = d[1]; s.rot = e.ang; e.hug = 1; }); }
+        if(still()) PARTS.forEach(function(p){ if(p.mode === 'free' && !clearOfEnzymes(p.x, p.y)) place(p, false); });
         gShown = now.rate / now.ref; acc = 0; accB = 0;
       }
       function paint(){
@@ -379,19 +383,19 @@
           }
           var jx = amp * Math.sin(e.ph * 0.9) * R * 0.02 * (0.5 + sf), jy = amp * Math.cos(e.ph * 0.7 + 1) * R * 0.02 * (0.5 + sf), jr = amp * Math.sin(e.ph * 0.6 + 2) * 1.6 * (0.5 + sf);
           e.g.setAttribute('transform', 'translate(' + n1(e.x + jx) + ' ' + n1(e.y + jy) + ') rotate(' + n1(jr) + ')');
-          e.g.setAttribute('opacity', e.fade.toFixed(2));
+          setA(e.g, 'opacity', e.fade.toFixed(2));
           var fo = 1 - ss(0.3, 0.85, u);
-          e.el.fold.setAttribute('opacity', fo.toFixed(2));
-          e.el.fold.setAttribute('transform', u > 0 ? 'rotate(' + n1(e.ang * 57.3) + ') scale(' + (1 + 0.4 * u).toFixed(3) + ' ' + (1 - 0.28 * u).toFixed(3) + ') rotate(' + n1(-e.ang * 57.3) + ')' : '');
-          e.el.sh.setAttribute('opacity', fo.toFixed(2));
-          var to = ss(0.12, 0.6, u); e.el.tangle.setAttribute('opacity', to.toFixed(2));
+          setA(e.el.fold, 'opacity', fo.toFixed(2));
+          setA(e.el.fold, 'transform', u > 0 ? 'rotate(' + n1(e.ang * 57.3) + ') scale(' + (1 + 0.4 * u).toFixed(3) + ' ' + (1 - 0.28 * u).toFixed(3) + ') rotate(' + n1(-e.ang * 57.3) + ')' : '');
+          setA(e.el.sh, 'opacity', fo.toFixed(2));
+          var to = ss(0.12, 0.6, u); setA(e.el.tangle, 'opacity', to.toFixed(2));
           if(u > 0){ var cp = smooth(chainPts(e.seed, ss(0, 1, u), still() ? 0 : e.ph * 0.5).map(function(p){ return local(e, p[0], p[1]); }), true); e.el.ce.setAttribute('d', cp); e.el.cc.setAttribute('d', cp); }
-          e.g.setAttribute('data-st', e.fold < 0.45 ? 'den' : e.inh && e.inh.mode === 'docked' ? 'inh' : e.pinch > 0.6 ? 'mis' : 'ok');
-          e.el.pos.setAttribute('opacity', now.show.ph ? (now.acid ? 1 : (1 - e.pinch).toFixed(2)) : 0);
-          e.el.neg.setAttribute('opacity', now.show.ph ? (now.acid ? (1 - e.pinch).toFixed(2) : 1) : 0);
-          e.el.allo.setAttribute('opacity', now.show.allo ? 1 : 0);
+          setA(e.g, 'data-st', e.fold < 0.45 ? 'den' : e.inh && e.inh.mode === 'docked' ? 'inh' : e.pinch > 0.6 ? 'mis' : 'ok');
+          setA(e.el.pos, 'opacity', String(now.show.ph ? (now.acid ? 1 : (1 - e.pinch).toFixed(2)) : 0));
+          setA(e.el.neg, 'opacity', String(now.show.ph ? (now.acid ? (1 - e.pinch).toFixed(2) : 1) : 0));
+          setA(e.el.allo, 'opacity', now.show.allo ? '1' : '0');
         });
-        PARTS.forEach(function(p){ p.node.setAttribute('transform', 'translate(' + n1(p.x) + ' ' + n1(p.y) + ') rotate(' + n1(p.rot * 57.3) + ')'); p.node.setAttribute('opacity', clamp(p.op, 0, 1).toFixed(2)); });
+        PARTS.forEach(function(p){ setA(p.node, 'transform', 'translate(' + n1(p.x) + ' ' + n1(p.y) + ') rotate(' + Math.round(p.rot * 57.3) + ')'); setA(p.node, 'opacity', clamp(p.op, 0, 1).toFixed(2)); });
         PRODS.forEach(function(q){ q.node.setAttribute('transform', 'translate(' + n1(q.x) + ' ' + n1(q.y) + ') rotate(' + n1(q.rot * 57.3) + ')'); q.node.setAttribute('opacity', clamp(q.life / 0.6, 0, 1).toFixed(2)); });
         var gf = gGauge.querySelector('.ez2-gfill'); if(gf){ var gw = Math.max(0, G.gw * clamp(gShown, 0, 1)); gf.setAttribute('width', n1(gw)); gf.setAttribute('opacity', gw < 1 ? 0 : 1); }
         syncWords();
@@ -404,7 +408,7 @@
       }
       function tick(ts){
         raf = 0;
-        var dt = lastTs ? Math.min(0.05, (ts - lastTs) / 1000) : 0.016; lastTs = ts;
+        var dt = lastTs ? Math.min(0.1, (ts - lastTs) / 1000) : 0.016; lastTs = ts;
         if(now && G){ step(dt); paint(); }
         if(!still() && visible && !stage.hidden) raf = requestAnimationFrame(tick);
       }
@@ -462,7 +466,7 @@
           }
           if(tf >= 0.9) return [{ t: 'Best temperature', role: 'heat' }, { t: 'fast collisions', role: 'sub' }, { t: 'enzymes still folded', role: 'enz' }, { t: 'top rate', role: 'prod' }];
           if(c.T < 15) return [{ t: 'Cold', role: 'heat' }, { t: 'slow molecules', role: 'sub' }, { t: 'few collisions', role: 'enz' }, rw];
-          return [{ t: 'Warmer', role: 'heat' }, { t: 'faster molecules', role: 'sub' }, { t: 'more collisions', role: 'enz' }, rw];
+          return [{ t: 'Cool', role: 'heat' }, { t: 'slower molecules', role: 'sub' }, { t: 'fewer collisions', role: 'enz' }, rw];
         }
         if(tab === 'ph'){
           var side = now.acid ? 'acidic' : 'basic';
@@ -542,7 +546,7 @@
         var ctl = ex ? (inh ? 154 : 104) : 0, y1 = H - ctl, top = ph ? 42 : 46, lh = ph ? 28 : 32;
         var cols = Wd < 520 ? 2 : Wd < 1100 ? 3 : 4, rows = 2, N = cols * rows, cw = (Wd - 20) / cols, ch = (y1 - top - 10) / rows;
         var R = Math.max(22, Math.min(cw * 0.29, (ch - lh) / 2.26));
-        var half = Math.min(400, (Wd - (ph ? 64 : 150)) / 2), fsS = ph ? 11.5 : 13, qw = 17 * fsS * 0.56 + 18;
+        var half = Math.min(400, (Wd - (ph ? 84 : 150)) / 2), fsS = ph ? 11.5 : 13, qw = 17 * fsS * 0.56 + 18;
         return { W: Wd, H: H, ph: ph, ex: ex, inh: inh, y1: y1, top: top, lh: lh, cols: cols, N: N, cw: cw, ch: ch, cx0: 10, cy0: top, R: R, nMax: clamp(Math.round(0.4 * (Wd - 20) * (y1 - top) / (R * R)), 10, 40),
           tx0: Wd / 2 - half, tx1: Wd / 2 + half, ty: y1 + 50, qx0: Wd / 2 - half + qw + 22, qy: y1 + 126, fs: ph ? 13 : 15, fsS: fsS, gw: ph ? 112 : 170 };
       }
@@ -575,7 +579,7 @@
       }
       function drawMarks(){
         var p = [], qn = gStatic.querySelector('.ez2-ctlname.is-q');
-        if(qn && G) qn.innerHTML = pill(G.tx0 - 6, G.qy, 'Substrate ' + F(S.isub, 1) + ' ' + SU, 'is-sub', 'start', G.fsS);
+        if(qn && G) qn.innerHTML = pill(G.tx0 - 6, G.qy, 'Substrate ' + nz(S.isub) + ' ' + SU, 'is-sub', 'start', G.fsS);
         if(G && G.ex && prev && prev.tab === S.tab && prev.v !== valOf(S.tab)){
           var r = S.tab === 'sub' ? EX.substrate : S.tab === 'temp' ? EX.temperature : S.tab === 'ph' ? EX.pH : EX.inhibitor, lo = r.min || 0;
           var bx = G.tx0 + (G.tx1 - G.tx0) * ((prev.v - lo) / (r.max - lo)), kx = G.tx0 + (G.tx1 - G.tx0) * ((valOf(S.tab) - lo) / (r.max - lo));
