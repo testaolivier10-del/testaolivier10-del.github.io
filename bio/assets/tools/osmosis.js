@@ -123,10 +123,16 @@
         o.parts.push('<path class="os2-torn" d="M' + n1(e1[0]) + ' ' + n1(e1[1]) + 'q' + n1(gx * fl * 0.9 + 4) + ' ' + n1(gy * fl * 0.2) + ' ' + n1(gx * fl) + ' ' + n1(gy * fl - fl * 0.35) + 'M' + n1(e2[0]) + ' ' + n1(e2[1]) + 'q' + n1(gx * fl * 0.3) + ' ' + n1(gy * fl * 0.9) + ' ' + n1(gx * fl + fl * 0.3) + ' ' + n1(gy * fl) + '"/>');
         o.ex = R; o.ey = R; o.inner = { x: R * 0.8, y: R * 0.8 }; o.bp = bq;
         // each particle leaves through the tear, then spreads
-        o.dot = function(j, n){
+        o.dot = function(j, n, lim){   // lim: the water's edges around the cell (unit space); a particle's flight is shortened to stay in it
           var da = j * 2.39996 + 0.6, dq = Math.sqrt((j + 0.5) / n) * 0.86 * Rs, p0 = [Math.cos(da) * dq, Math.sin(da) * dq];
           var fa = tc + (((j * 0.618) % 1) - 0.5) * 1.9, fd = 62 * (1.4 + 0.95 * ((j * 0.377) % 1)), p1 = [Math.cos(fa) * fd, Math.sin(fa) * fd];
           var t = eo((bq - 0.3 * ((j * 0.754) % 1)) / 0.6), g0 = [gx * R * 0.98, gy * R * 0.98];
+          if(lim){
+            var f = 1, dx = p1[0] - g0[0], dy = p1[1] - g0[1];
+            if(dx > 0) f = Math.min(f, (lim.x1 - g0[0]) / dx); else if(dx < 0) f = Math.min(f, (lim.x0 - g0[0]) / dx);
+            if(dy > 0) f = Math.min(f, (lim.y1 - g0[1]) / dy); else if(dy < 0) f = Math.min(f, (lim.y0 - g0[1]) / dy);
+            if(f < 1){ f = Math.max(0, f) * (0.55 + 0.45 * ((j * 0.291) % 1)); p1 = [g0[0] + dx * f, g0[1] + dy * f]; }
+          }
           return [(1 - t) * (1 - t) * p0[0] + 2 * t * (1 - t) * g0[0] + t * t * p1[0], (1 - t) * (1 - t) * p0[1] + 2 * t * (1 - t) * g0[1] + t * t * p1[1]];
         };
       } else {
@@ -276,8 +282,9 @@
         if(view.play != null) return replayNow().dir;
         if(view.mark) return view.mark;
         if(!tw || view.lysed || view.debris > 0) return null;
-        if(view.strain > 0) return 'in';
-        var d = resNow().W - view.W;
+        var rr = resNow();
+        if(view.strain > 0 || rr.lysed) return 'in';   // swelling, straining and the tear are one span: water is going in until it tears
+        var d = rr.W - view.W;
         return d > 0.004 ? 'in' : d < -0.004 ? 'out' : null;
       }
       function busy(){ return view.play != null || !!tw || !!view.mark; }
@@ -304,8 +311,9 @@
           if(dir) markT = setTimeout(function(){ view.mark = null; syncWords(); draw(); }, 2600);
           syncWords(); draw(); crossFade(old); return;
         }
-        view.mark = null; syncWords();
-        if(!tw){ lastTs = 0; tw = requestAnimationFrame(tick); }
+        view.mark = null;
+        if(!tw){ lastTs = 0; tw = requestAnimationFrame(tick); }   // the loop is on before any word is written, so no result shows on the first frame of a change
+        syncWords();
       }
       function tick(ts){
         var dt = lastTs ? Math.min(50, ts - lastTs) : 16, r = resNow(), go = false; lastTs = ts; view.clock = ts;
@@ -327,7 +335,7 @@
         if(r.lysed){ var g = Math.min(1, f / 0.5); o.W = 1 + (r.W - 1) * (1 - Math.pow(1 - g, 2)); o.strain = f >= 0.5 && f < 0.6 ? (f - 0.5) / 0.1 : 0; o.lysed = f >= 0.6; o.bp = o.lysed ? Math.min(1, (f - 0.6) / 0.36) : 0; }
         else { var e = (Math.exp(-4.5 * f) - Math.exp(-4.5)) / (1 - Math.exp(-4.5)); o.W = r.W + (1 - r.W) * e; }
         var d = r.psiO - M.osmosis.psiParts(cell.sys, c, o.W).psi;
-        o.gap = Math.abs(d); o.dir = o.lysed ? null : o.strain ? 'in' : Math.abs(o.W - r.W) < 0.004 || Math.abs(d) < 0.05 ? null : d > 0 ? 'in' : 'out';
+        o.gap = Math.abs(d); o.dir = o.lysed ? null : o.strain || r.lysed ? 'in' : Math.abs(o.W - r.W) < 0.004 || Math.abs(d) < 0.05 ? null : d > 0 ? 'in' : 'out';
         o.st = stateShown(cell.sys, o.W, o.lysed, o.bp, r.W);
         return o;
       }
@@ -351,17 +359,18 @@
          reversal: they would give a cause that points the other way from the arrows. */
       function chain(){
         var r = resNow(), sy = cellNow().sys, a = [], fl = flowNow(), moving = busy(), inn = r.startDir === 'in';
+        var still = !!view.mark && view.play == null && !tw;   // reduced motion: the result is already drawn, so the line is whole at once
         if(moving && fl && fl !== r.startDir){
           var bin = fl === 'in';
           return [{ t: (bin ? 'Less' : 'More') + ' solute than before', role: 'sol', say: (bin ? 'less' : 'more') + ' solute outside than before' }, { t: 'water potential outside ' + (bin ? 'rises' : 'falls'), role: 'water' },
-            { t: 'water moves back ' + (bin ? 'in' : 'out'), role: 'water' }];
+            { t: 'water moves back ' + (bin ? 'in' : 'out'), role: 'water' }].concat(still ? [{ t: stateWord(r), role: 'ink' }] : []);
         }
         if(r.startDir === 'none') return [{ t: 'Same solute both sides', role: 'sol' }, { t: 'equal water potential', role: 'water' }, { t: 'no net water movement', role: 'water' }, { t: stateWord(r), role: 'ink' }];
         a.push({ t: inn ? (S.outC === 0 ? 'No solute outside' : 'Less solute outside') : 'More solute outside', role: 'sol' });
         a.push({ t: (inn ? 'higher' : 'lower') + ' water potential outside', role: 'water' });
         if(moving && !fl && view.play == null && view.debris > 0) return a;   // a new cell is still coming in
         a.push({ t: 'water moves ' + (inn ? 'in' : 'out'), role: 'water' });
-        if(moving && fl) return a;
+        if(moving && fl && !still) return a;
         if(inn && sy.kind === 'plant') a.push({ t: 'wall pushes back', role: 'wall' });
         if(r.lysed) a.push({ t: 'no wall to push back', role: 'ink' });
         a.push(r.lysed ? { t: 'Bursts (lysis)', role: 'bad', say: 'the cell bursts' } : { t: stateWord(r), role: 'ink' });
@@ -468,18 +477,19 @@
           dots.push('<circle cx="' + n1(qx) + '" cy="' + n1(qy) + '" r="' + dr + '"/>');
         }
         p.push('<g class="os2-dots" clip-path="url(#os2c-liq)">' + dots.join('') + '</g>');
+        var lim = { x0: (BX + 16 - cx) / k, x1: (R0 - 16 - cx) / k, y0: (BY + 22 - cy) / k, y1: (y1 - 16 - cy) / k };
         var deb = sc.debris > 0 ? sc.debris : 0, body = o.parts.join(''), o1 = shape(sy, 1, false), nInD = Math.min(90, Math.round((sy.kind === 'bag' ? c.inC * (c.inI || 1) : sy.osmIn) * KD * Math.PI * o1.inner.x * o1.inner.y));
         if(deb){ // the burst cell fades as a new cell goes in
           var od = shape(sy, 1.9, true, 1), sp0 = [];
-          for(var q0 = 0; q0 < nInD; q0++){ var qd = od.dot(q0, nInD); sp0.push('<circle cx="' + n1(cx + qd[0] * k) + '" cy="' + n1(cy + qd[1] * k) + '" r="' + dr + '"/>'); }
+          for(var q0 = 0; q0 < nInD; q0++){ var qd = od.dot(q0, nInD, lim); sp0.push('<circle cx="' + n1(clamp(cx + qd[0] * k, BX + 12, R0 - 12)) + '" cy="' + n1(clamp(cy + qd[1] * k, BY + 16, y1 - 12)) + '" r="' + dr + '"/>'); }
           p.push('<g clip-path="url(#os2c-liq)" opacity="' + deb.toFixed(2) + '"><g transform="translate(' + n1(cx) + ' ' + n1(cy) + ') scale(' + k.toFixed(3) + ')">' + od.parts.join('') + '</g><g class="os2-dots is-in">' + sp0.join('') + '</g></g>');
         }
         p.push('<g class="os2-cell" clip-path="url(#os2c-liq)" opacity="' + (1 - deb).toFixed(2) + '"><g transform="translate(' + n1(cx) + ' ' + n1(cy) + ') scale(' + k.toFixed(3) + ')">' + body + '</g></g>');
         // solute inside: a fixed amount, crowded as the specimen shrinks, spilled when it has burst
         var nIn = nInD, ind = [];
         for(var j = 0; j < nIn; j++){
-          var dp = o.dot ? o.dot(j, nIn) : [(o.inner.ox || 0) + Math.cos(j * 2.39996 + 0.6) * Math.sqrt((j + 0.5) / nIn) * 0.9 * o.inner.x, (o.inner.oy || 0) + Math.sin(j * 2.39996 + 0.6) * Math.sqrt((j + 0.5) / nIn) * 0.9 * o.inner.y];
-          ind.push('<circle cx="' + n1(cx + dp[0] * k) + '" cy="' + n1(cy + dp[1] * k) + '" r="' + dr + '"/>');
+          var dp = o.dot ? o.dot(j, nIn, lim) : [(o.inner.ox || 0) + Math.cos(j * 2.39996 + 0.6) * Math.sqrt((j + 0.5) / nIn) * 0.9 * o.inner.x, (o.inner.oy || 0) + Math.sin(j * 2.39996 + 0.6) * Math.sqrt((j + 0.5) / nIn) * 0.9 * o.inner.y];
+          ind.push('<circle cx="' + n1(clamp(cx + dp[0] * k, BX + 12, R0 - 12)) + '" cy="' + n1(clamp(cy + dp[1] * k, BY + 16, y1 - 12)) + '" r="' + dr + '"/>');   // solute never leaves the water
         }
         p.push('<g class="os2-dots is-in" opacity="' + (1 - deb).toFixed(2) + '">' + ind.join('') + '</g>');
         // water, only while it is moving: arrows as wide as the water potential gap, with drops running along them

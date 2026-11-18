@@ -339,3 +339,21 @@ the tear, settled membrane solid; (6) the picture inside the viewport during a P
 after it; plus "24 hours", Replay not sticky. Preview and shots regenerated (burst frames `07a` to `07f`, `08`,
 `08b`).
 
+## Review recheck 1 (2026-11-18: still BLOCK on two items from the round 1 fixes; both fixed)
+- **A. Result pills blinked before the tear, and for one frame at the start of a change.** Swelling, straining
+  and the tear are now one moving span: while the setting means the cell must burst and it has not torn yet, water
+  is "moving in" (arrows on, the line stops at the water pill), so "→ no wall to push back → Bursts (lysis)" is
+  written once, at the tear. The loop is switched on before any word is written, so the first frame of a change
+  never shows a result. Checked frame by frame (logged in the page from the same task that makes the change): a
+  jump to 0 M, a real drag to 0 M, Watch it happen (burst and plant), a shrivel and a swell, at 1440 and 390, light
+  and dark: "Bursts" only with a torn membrane drawn, no result pill in the first 200 ms, the line changes length
+  once per change.
+- **B. Released particles came to rest above the water.** Each particle's flight is shortened to fit the water
+  around the cell at that stage size (with a small spread so they do not line up at the edge), and every drawn
+  particle is clamped to the water as well. Checked at 390, 768 and 1440, light and dark: after a burst every
+  particle's box is inside the solution's.
+- **Should fix, reduced motion:** the cause line is whole at once (the result is already drawn), including the
+  change story with its result ("... → water moves back in → Shriveled (crenated)").
+- Checks: 72 unit tests, content, build, site and weight checks; Playwright 390 assertions (full pass) and 98 new
+  frame by frame ones. Preview and shots regenerated.
+
