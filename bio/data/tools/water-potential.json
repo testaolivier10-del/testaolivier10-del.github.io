@@ -3,7 +3,28 @@
   "slug": "water-potential",
   "kind": "wp",
   "topic": "stats-water-potential",
-  "intro": "<p>Calculate solute potential and water potential, and use them to say which way water moves. To watch the same ideas play out, try the osmosis simulator.</p>",
+  "intro": "<p>Set the pressure in a plant cell and the solute around it, add up each side’s water potential and see which way water moves. Then practice the calculation. To see what the water does to the cell, try the osmosis simulator.</p>",
+  "explore": {
+    "T": 22,
+    "cell": {
+      "solute": "sucrose",
+      "i": 1,
+      "C": 0.4
+    },
+    "pressure": {
+      "min": 0,
+      "max": 9.8,
+      "step": 0.1,
+      "value": 2
+    },
+    "outside": {
+      "solute": "sucrose",
+      "i": 1,
+      "max": 1,
+      "step": 0.05,
+      "value": 0.2
+    }
+  },
   "howItWorksTitle": "The formulas, and how answers are checked",
   "howItWorks": "<p class=\"bt-eq\">ψ = ψs + ψp</p><p class=\"bt-eq\">ψs = −iCRT</p><ul><li><b>i</b> is the number of particles each unit of solute makes in water: 1 for sucrose and glucose, 2 for NaCl (we assume it splits completely), 3 for CaCl₂.</li><li><b>C</b> is the molar concentration (mol/L); <b>R</b> = 0.0831 L·bar/(mol·K); <b>T</b> is the temperature in kelvins: °C + 273.</li><li>A solution in an open container has pressure potential ψp = 0, so its ψ = ψs. Pure water at atmospheric pressure has ψ = 0.</li><li>Water moves from higher (less negative) to lower (more negative) water potential.</li><li>Answers in bar count when within 0.01 bar or 1%, whichever is larger (using 273.15 K instead of 273 K also counts).</li></ul>",
   "contexts": [

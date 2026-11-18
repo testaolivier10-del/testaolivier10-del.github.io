@@ -865,7 +865,7 @@
         'tree-reading': 'Trees & characters', 'design-drills': 'All drills', 'osmosis': 'Numbers & how it works' })[slug] || 'Data & settings',
       menu: {
         copyLink: function(){
-          var code = s.mode() === 'practice' ? s.root.querySelector('.ls-prac-code .bt-code b') : null;
+          var code = s.mode() === 'practice' || s.mode() === 'quiz' ? s.root.querySelector('.ls-prac-code .bt-code b') : null;
           return code ? location.origin + location.pathname + '?seed=' + code.textContent : location.origin + location.pathname;
         },
         report: { course: 'apbio', id: 'tool:' + slug },
@@ -1344,6 +1344,11 @@
        o.ref      element   the reference behind "?" (how the model works, numbers, links).
        o.parts    [{ value, label, dock: element, task: { kicker, title, todo } | fn }]   TEST YOURSELF parts that
                             ask on the same picture: the question goes in the side panel (dock).
+                            A skills tool's practice problems (T.skillTool) are a part too:
+                            { value: 'practice', label, practice: its .bt-problem, modes: its .bt-modes }: the
+                            problem picker, one part at a time, the hint ladder and the finished card are
+                            studioPractice's, as on the old frame; the tool draws on o.stage (its skillTool stage
+                            function), so the practice's own stage stays empty and hidden. ?seed= opens it.
        o.questionsLabel     the name of the part that holds the page's stimulus questions and mini FRQ (they keep
                             their own stage: the stimulus), when the tool built them (T.questions, T.frq).
        o.onShow(mode, part) after every switch: mode 'explore' | 'quiz', part the Test yourself part or null.
@@ -1365,7 +1370,10 @@
     function partOf(v){ return parts.filter(function(p){ return p.value === v; })[0] || parts[0] || null; }
     s.add('stage', o.stage, quizOn ? { mode: 'explore quiz' } : null);
     if(o.ref) s.add('details', o.ref);
-    parts.forEach(function(p){ if(p.dock) s.add('dock', p.dock, { mode: 'quiz' }); });
+    parts.forEach(function(p){
+      if(p.practice){ studioPractice(s, p.practice, p.modes || null, { mode: 'quiz' }); p.dock = p.practice; var ps = s.root.querySelector('.ls-prac-stage'); if(ps) ps.hidden = true; }
+      else if(p.dock) s.add('dock', p.dock, { mode: 'quiz' });
+    });
     var qst = null, qStage = null, qDock = null;
     if(hasQ){
       qst = studioQuestions(s, qcard, frq, { mode: 'quiz' }, o);
@@ -1385,7 +1393,7 @@
       if(pick && quiz && pick.value() !== p.value) pick.value(p.value);
       if(quiz){
         if(p.questions){ if(qst && qst.resync) qst.resync(); }
-        else { s.task(typeof p.task === 'function' ? p.task() : p.task || null, 'quiz'); s.caption('', 'quiz'); }
+        else if(!p.practice){ s.task(typeof p.task === 'function' ? p.task() : p.task || null, 'quiz'); s.caption('', 'quiz'); }
       }
       if(o.onShow) o.onShow(cur.mode, quiz ? cur.part : null);
       if(user) event('apbio-tool-mode', { tool: slug, mode: quiz ? cur.part : 'explore' });
@@ -1397,7 +1405,7 @@
     app.hidden = true;
     var h = location.hash, start = { mode: 'explore', part: cur.part };
     if(hasQ && /^#(questions|frq)\b/.test(h)) start = { mode: 'quiz', part: 'questions' };
-    else parts.forEach(function(p){ if(!p.questions && new RegExp('^#' + p.value + '\\b').test(h)) start = { mode: 'quiz', part: p.value }; });
+    else parts.forEach(function(p){ if(!p.questions && (new RegExp('^#' + p.value + '\\b').test(h) || (p.practice && seedFromUrl()))) start = { mode: 'quiz', part: p.value }; });
     s.mode(start.mode);
     show(start.mode, start.part, false);
     s.kit2 = { mode: function(){ return cur.mode; }, part: function(){ return cur.part; }, go: function(m, p){ show(m, p == null ? cur.part : p, false); } };

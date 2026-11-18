@@ -1,0 +1,98 @@
+/* Water potential, tools v2 (bio/assets/tools/water-potential.js; docs/tools-v2-water-potential-brief.md). Loaded
+   only by the water potential page (bio/data/pages.json "kit2": true). One colour per idea, everywhere: solute
+   amber, pressure (the wall and its push) green, water and the total blue (Okabe-Ito, lighter in dark mode; the
+   same values as the sister tool, osmosis.css). */
+.wp2{--wp-water:#0072B2;--wp-water-ink:#005A8C;--wp-sol:#E69F00;--wp-sol-hi:#FFD877;--wp-sol-ink:#8A5A00;--wp-wall:#009E73;--wp-wall-ink:#00704F;
+  --wp-liq0:#E3F2FB;--wp-liq1:#D2E9F7;--wp-liq2:#A8CFE9;--wp-surf:#F4FAFE;--wp-glass:#8FA9BF;--wp-bench0:#DDD6CA;--wp-bench1:#C9C0B0;--wp-bench-edge:#A99F8E;--wp-bench-ink:#4A4336;
+  --wp-cyto0:#FAF7DC;--wp-cyto1:#E9E4B3;--wp-vac0:#E4F3FC;--wp-vac1:#9CCBEA;--wp-memb:#3B3350;--wp-chl:#5FA23C;--wp-chl-ink:#2F6B1E;--wp-nuc:#B7ACCB;
+  display:flex;flex-direction:column;gap:10px;min-height:0;flex:1 1 auto;}
+:root[data-theme="dark"] .wp2{--wp-water:#56B4E9;--wp-water-ink:#8CCBF2;--wp-sol:#F0B63C;--wp-sol-hi:#FFE08A;--wp-sol-ink:#F6CF75;--wp-wall:#2FB88F;--wp-wall-ink:#8BE3C8;
+  --wp-liq0:#24506F;--wp-liq1:#1C415E;--wp-liq2:#112B42;--wp-surf:#3A6F93;--wp-glass:#7F97AD;--wp-bench0:#33302B;--wp-bench1:#262420;--wp-bench-edge:#4A453D;--wp-bench-ink:#D8D0C2;
+  --wp-cyto0:#5A5A3A;--wp-cyto1:#44452C;--wp-vac0:#3F7FA8;--wp-vac1:#245A80;--wp-memb:#EDE8F7;--wp-chl:#5FA23C;--wp-chl-ink:#B9E3A2;--wp-nuc:#8D80A8;}
+.wp2[hidden]{display:none;}
+.wp2 [hidden]{display:none !important;}
+.wp2-scene{position:relative;flex:1 1 auto;min-height:430px;border-radius:18px;overflow:hidden;background:var(--surface2);}
+.wp2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+@media (max-width:1023px){ .wp2-scene{flex:none;height:min(74vw,540px);min-height:420px;} }
+@media (max-width:640px){ .wp2-scene{height:max(440px,min(124vw,480px));border-radius:14px;} .wp2{gap:8px;} }
+.wp2[data-view="problem"] .wp2-scene{min-height:340px;}
+@media (max-width:1023px){ .wp2[data-view="problem"] .wp2-scene{height:min(62vw,440px);min-height:340px;} }
+@media (max-width:640px){ .wp2[data-view="problem"] .wp2-scene{height:max(350px,min(100vw,390px));} }
+.wp2-lines{display:flex;align-items:center;justify-content:space-between;gap:6px 18px;flex-wrap:wrap;flex:none;}
+.wp2 .tk2-cz.is-water{--cz:var(--wp-water);--cz-ink:var(--wp-water-ink);}
+/* the two knobs, each in its idea's colour */
+.wp2 .wp2-kp .tk2-tag{background:var(--wp-wall-ink);} .wp2 .wp2-ks .tk2-tag{background:var(--wp-sol-ink);}
+:root[data-theme="dark"] .wp2 .tk2-tag{color:#10160F;}
+.wp2 .wp2-kp .tk2-dot{color:var(--wp-wall-ink);box-shadow:0 0 0 3px var(--wp-wall-ink),0 3px 8px rgba(11,26,51,.32);}
+.wp2 .wp2-ks .tk2-dot{color:var(--wp-sol-ink);box-shadow:0 0 0 3px var(--wp-sol-ink),0 3px 8px rgba(11,26,51,.32);}
+.wp2 .wp2-kp.is-focus .tk2-dot{box-shadow:0 0 0 3px var(--wp-wall-ink),0 0 0 6px var(--white),0 0 0 9px var(--wp-wall-ink);}
+.wp2 .wp2-ks.is-focus .tk2-dot{box-shadow:0 0 0 3px var(--wp-sol-ink),0 0 0 6px var(--white),0 0 0 9px var(--wp-sol-ink);}
+.wp2 .wp2-kp .tk2-groove::before{background:color-mix(in srgb, var(--wp-bench-ink) 45%, transparent);}
+.wp2 .wp2-ks .tk2-groove::before{background:none;}
+/* the picture: a vessel of solution across the whole stage, on a bench */
+.wp2-bench{fill:url(#wp2g-bench);} .wp2-benchedge{stroke:var(--wp-bench-edge);stroke-width:1.5;fill:none;}
+.wp2-sol{fill:url(#wp2g-liq);}
+.wp2-surface{fill:var(--wp-surf);fill-opacity:.55;}
+.wp2-menis{fill:none;stroke:var(--wp-water);stroke-opacity:.5;stroke-width:2;stroke-linecap:round;}
+.wp2-glass{fill:url(#wp2g-glass);stroke:var(--wp-glass);stroke-width:1.5;stroke-linejoin:round;}
+.wp2-rim{stroke:var(--wp-glass);stroke-width:5;stroke-linecap:round;fill:none;}
+.wp2-shine{stroke:#fff;stroke-opacity:.5;stroke-width:4;stroke-linecap:round;fill:none;}
+:root[data-theme="dark"] .wp2-shine{stroke-opacity:.14;}
+.wp2-rail{stroke:var(--wp-sol-ink);stroke-opacity:.55;stroke-width:3;stroke-linecap:round;fill:none;}
+.wp2-grad{stroke:var(--wp-sol-ink);stroke-opacity:.5;stroke-width:1.5;stroke-linecap:round;fill:none;}
+.wp2s-liq0{stop-color:var(--wp-liq0);} .wp2s-liq1{stop-color:var(--wp-liq1);} .wp2s-liq2{stop-color:var(--wp-liq2);}
+.wp2s-gl0{stop-color:var(--wp-glass);stop-opacity:.55;} .wp2s-gl1{stop-color:#fff;stop-opacity:.5;}
+:root[data-theme="dark"] .wp2s-gl1{stop-opacity:.16;}
+.wp2s-bn0{stop-color:var(--wp-bench0);} .wp2s-bn1{stop-color:var(--wp-bench1);}
+.wp2s-cy0{stop-color:var(--wp-cyto0);} .wp2s-cy1{stop-color:var(--wp-cyto1);}
+.wp2s-va0{stop-color:var(--wp-vac0);} .wp2s-va1{stop-color:var(--wp-vac1);}
+.wp2s-so0{stop-color:var(--wp-sol-hi);} .wp2s-so1{stop-color:var(--wp-sol);}
+.wp2-dots circle{fill:url(#wp2g-sol);stroke:var(--wp-sol-ink);stroke-width:.9;}
+/* the plant cell */
+.wp2-wall{fill:color-mix(in srgb, var(--wp-wall) 62%, var(--wp-liq1));}
+.wp2-wall.is-taut{fill:color-mix(in srgb, var(--wp-wall) 84%, var(--wp-liq1));}
+.wp2-wallmid{fill:none;stroke:#fff;stroke-opacity:.38;stroke-width:2.4;}
+.wp2-walledge{fill:none;stroke:var(--wp-wall-ink);stroke-width:1.6;stroke-linejoin:round;}
+.wp2-walledge.is-in{stroke-width:1;stroke-opacity:.8;}
+.wp2-cyto{fill:url(#wp2g-cyto);}
+.wp2-memb{fill:none;stroke:var(--wp-memb);stroke-width:2;stroke-linejoin:round;}
+.wp2-chl{fill:var(--wp-chl);stroke:var(--wp-chl-ink);stroke-width:.9;}
+.wp2-chl-l{stroke:var(--wp-chl-ink);stroke-opacity:.6;stroke-width:.8;fill:none;stroke-linecap:round;}
+.wp2-vac{fill:url(#wp2g-vac);stroke:var(--wp-water);stroke-opacity:.7;stroke-width:1.3;stroke-linejoin:round;}
+.wp2-vacshine{fill:none;stroke:#fff;stroke-opacity:.6;stroke-width:2.2;stroke-linecap:round;}
+:root[data-theme="dark"] .wp2-vacshine{stroke-opacity:.22;}
+.wp2-nuc{fill:var(--wp-nuc);stroke:var(--wp-memb);stroke-opacity:.7;stroke-width:1;}
+.wp2-nucl{fill:var(--wp-memb);fill-opacity:.55;}
+.wp2-flow,.wp2-push{fill:none;stroke-linecap:round;}
+.wp2-flow{stroke:var(--wp-water);} .wp2-flow-h{fill:var(--wp-water);}
+.wp2-push{stroke:var(--wp-wall-ink);} .wp2-push-h{fill:var(--wp-wall-ink);}
+.wp2-eq{stroke:var(--wp-water);stroke-opacity:.6;stroke-width:2.5;stroke-dasharray:3 6;stroke-linecap:round;fill:none;}
+.wp2-w{fill:#fff;stroke:var(--wp-water);stroke-width:1.4;}
+.wp2-pill rect{fill:var(--white);fill-opacity:.96;stroke-width:1.6;stroke:color-mix(in srgb, var(--ink) 30%, transparent);}
+.wp2-pill text{font-weight:900;fill:var(--ink);}
+.wp2-pill.is-sol rect{stroke:var(--wp-sol);} .wp2-pill.is-sol text{fill:var(--wp-sol-ink);}
+.wp2-pill.is-press rect{stroke:var(--wp-wall);} .wp2-pill.is-press text{fill:var(--wp-wall-ink);}
+.wp2-pill.is-water rect{stroke:var(--wp-water);} .wp2-pill.is-water text{fill:var(--wp-water-ink);}
+.wp2-pill.is-water.is-fill rect{fill:var(--wp-water-ink);fill-opacity:1;stroke:var(--wp-water-ink);} .wp2-pill.is-water.is-fill text{fill:#fff;}
+:root[data-theme="dark"] .wp2-pill.is-water.is-fill text{fill:#06131C;}
+/* the written sums */
+.wp2-cardbg{fill:var(--white);fill-opacity:.97;stroke:color-mix(in srgb, var(--ink) 26%, transparent);stroke-width:1.4;filter:drop-shadow(0 2px 4px rgba(11,26,51,.16));}
+.wp2-ct{font-weight:900;fill:var(--ink);}
+.wp2-ck{font-weight:800;} .wp2-cv{font-weight:900;font-variant-numeric:tabular-nums;}
+.wp2-ck.is-sol,.wp2-cv.is-sol{fill:var(--wp-sol-ink);} .wp2-ck.is-press,.wp2-cv.is-press{fill:var(--wp-wall-ink);} .wp2-ck.is-water,.wp2-cv.is-water{fill:var(--wp-water-ink);}
+.wp2-ck.is-tot{font-weight:900;}
+.wp2-cv.is-mine{font-style:italic;font-weight:800;}
+.wp2-rule{stroke:var(--ink);stroke-opacity:.55;stroke-width:1.4;stroke-linecap:round;fill:none;}
+.wp2-end,.wp2-markt{fill:var(--wp-bench-ink);font-weight:800;}
+.wp2-markt.is-v{paint-order:stroke;stroke:var(--wp-liq1);stroke-width:4px;stroke-linejoin:round;}
+.wp2-markt.is-v{fill:var(--wp-sol-ink);}
+.wp2-mark{stroke:var(--wp-bench-ink);stroke-width:2.5;stroke-linecap:round;}
+.wp2-mark.is-v{stroke:var(--wp-sol-ink);}
+.wp2-fade{pointer-events:none;}
+/* "?" */
+.wp2-howref{margin:0 0 6px;font:600 14.5px/1.4 var(--font-ui);color:var(--muted);}
+.wp2-try{margin:0 0 10px;padding-left:20px;display:flex;flex-direction:column;gap:4px;font-size:15px;line-height:1.45;}
+.wp2-osm{font-weight:800;}
+.wp2-ladder{display:block;width:100%;max-width:340px;height:auto;margin:4px 0;font-family:var(--font-ui);}
+.wp2-lg{stroke:var(--ink);stroke-opacity:.14;stroke-width:1;} .wp2-lt{font-size:11px;font-weight:700;fill:var(--muted);}
+.wp2-ll{stroke:var(--wp-water);stroke-width:3;stroke-linecap:round;} .wp2-lv{font-size:12px;font-weight:900;fill:var(--wp-water-ink);}
