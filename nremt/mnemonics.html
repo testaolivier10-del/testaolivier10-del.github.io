@@ -36,7 +36,10 @@
 <!-- tool-studio:start -->
 <link rel="stylesheet" href="../assets/course/tool-studio.css">
 <link rel="stylesheet" href="assets/nremt-studio.css">
+<link rel="stylesheet" href="../assets/course/tool-kit2.css">
+<link rel="stylesheet" href="assets/mnemonics.css">
 <script src="../assets/course/tool-studio.js" defer></script>
+<script src="../assets/course/tool-kit2.js" defer></script>
 <script src="assets/nremt-studio.js" defer></script>
 <!-- tool-studio:end -->
 <style>
@@ -430,37 +433,50 @@
 </div>
 <script src="assets/nav.js" defer></script>
 <script src="assets/mnemonic-check.js" defer></script>
+<script src="assets/body-figures.js" defer></script>
+<script src="assets/mnemonics.js" defer></script>
 <script>
-/* The tool screen (consistency audit 2026-11, C6; docs/tools-calm.md): one mnemonic on the stage at a time, picked
-   in the dock (the list, Back and Next). Each card keeps its own self-check (assets/mnemonic-check.js: Fill the
-   letters, the meter, the call link), moved into the stage, never copied. A #m-... link opens that card. Without
-   the studio (?studio=0, or no tool-studio.js) the page stays the full list it always was. */
+/* Tools v2 (docs/tools-v2-nremt-mnemonics-brief.md). EXPLORE: the letters on a drawn patient (assets/mnemonics.js,
+   four tabs: DCAP-BTLS, AVPU, OPQRST, SAMPLE). TEST YOURSELF, "Fill the letters": the card screen this page always
+   had (consistency audit 2026-11, C6): one card at a time, picked in the stage's dropdown or with Back / Next, each
+   card's own self-check (assets/mnemonic-check.js) moved in, never copied. Both go through NremtStudio.kit2.
+   Deep links: #m-... of one of the four opens Explore on that tab; any other #m-... opens Test yourself on that card;
+   #test (or #test-m-...) opens Test yourself. Without the studio (?studio=0, or no tool-studio.js) the page stays
+   the full list of cards it always was. */
 document.addEventListener('DOMContentLoaded', function(){
   var grid = document.querySelector('.mnemonics-grid');
   var cards = grid ? [].slice.call(grid.querySelectorAll(':scope > .card')) : [];
   var cue = document.querySelector('.mn-cue');
   var s = cards.length && window.NremtStudio ? window.NremtStudio.mount({ title: 'Mnemonics', slug: 'mnemonics', enlarge: false }) : null;
   if(!s) return;
+  var v2 = !!(window.LevlKit2 && window.NremtMnemonics && window.NremtStudio.kit2);
   function name(c){ var h = c.querySelector('h2'); return h ? h.textContent.replace(/\s+/g, ' ').trim() : c.id; }
+  function idOf(h){ var m = /^#(?:test-)?(m-[\w-]+)/.exec(h || ''); return m ? m[1] : ''; }
+  function cardAt(id){ return cards.map(function(c){ return c.id; }).indexOf(id); }
   var stage = document.createElement('div');
   stage.className = 'mn-stage';
   stage.appendChild(grid);
-  s.add('stage', stage);
   window.NremtStudio.scrollable(stage, 'Mnemonic');
   var dock = document.createElement('div');
   dock.className = 'mn-dock';
   dock.innerHTML = '<label class="mn-pick-l" for="mnPick">Mnemonic</label><select id="mnPick" class="mn-pick">' +
     cards.map(function(c, i){ return '<option value="' + i + '">' + name(c).replace(/&/g, '&amp;').replace(/</g, '&lt;') + '</option>'; }).join('') + '</select>' +
     '<div class="mn-nav ls-act"><button type="button" class="ls-btn mn-prev">Back</button><span class="mn-at" aria-hidden="true"></span><button type="button" class="ls-btn mn-next">Next</button></div>';
-  s.add('dock', dock);
-  if(cue) s.add('why', cue);
   var pick = dock.querySelector('#mnPick'), prev = dock.querySelector('.mn-prev'), next = dock.querySelector('.mn-next'), at = dock.querySelector('.mn-at');
-  var cur = -1;
-  /* The standard frame (docs/tools-frame-2026-11.md): the mnemonic is one dropdown at the stage's top left ("3 of
-     19"); the dock's own list stays in the page, out of sight, and Back / Next stay at the dock's foot. */
+  var cur = -1, ex = null, mode = v2 ? 'explore' : 'quiz';
+  if(!v2){ s.add('stage', stage); s.add('dock', dock); if(cue) s.add('why', cue); }
+  else if(cue) cue.remove();
+  /* The standard frame: the card is one dropdown at the stage's top left ("3 of 19"); the dock's own list stays in
+     the page, out of sight, and Back / Next stay at the dock's foot. */
   var mnPick = s.picker ? s.picker({ label: 'Mnemonic', count: true, items: cards.map(function(c, i){ return { value: String(i), label: name(c) }; }),
-    onChange: function(v){ go(+v, true); } }) : null;
+    onChange: function(v){ go(+v, true); } }, v2 ? 'quiz' : undefined) : null;
   if(mnPick){ dock.querySelector('.mn-pick-l').hidden = true; pick.hidden = true; dock.querySelector('.mn-nav').classList.add('ls-push'); }
+  function task(){
+    var c = cards[cur], used = c.querySelector('.used-for');
+    var u = used ? used.textContent.trim().replace(/&/g, '&amp;').replace(/</g, '&lt;') : '';
+    if(u && !/[.!?]$/.test(u)) u += '.';
+    return { kicker: 'Mnemonic', title: name(c).replace(/&/g, '&amp;').replace(/</g, '&lt;'), todo: u + (c.querySelector('.mn-test') ? ' Read it, then Fill the letters to test yourself.' : '') };
+  }
   function go(i, push){
     i = Math.max(0, Math.min(cards.length - 1, i));
     cur = i;
@@ -468,26 +484,43 @@ document.addEventListener('DOMContentLoaded', function(){
     pick.value = String(i);
     prev.disabled = i === 0; next.disabled = i === cards.length - 1;
     at.textContent = (i + 1) + ' of ' + cards.length;
-    var used = cards[i].querySelector('.used-for');
-    var u = used ? used.textContent.trim().replace(/&/g, '&amp;').replace(/</g, '&lt;') : '';
-    if(u && !/[.!?]$/.test(u)) u += '.';
-    var nm = name(cards[i]).replace(/&/g, '&amp;').replace(/</g, '&lt;');
     if(s.task){
-      // The standard frame: the mnemonic heads the side panel; the picker on the stage follows.
-      s.task({ kicker: 'Mnemonic', title: nm, todo: u + (cards[i].querySelector('.mn-test') ? ' Read it, then Fill the letters to test yourself.' : '') });
-      s.caption('');
+      s.task(task(), v2 ? 'quiz' : undefined);
+      s.caption('', v2 ? 'quiz' : undefined);
       if(mnPick) mnPick.value(String(i));
-    } else s.caption('<b>' + nm + '.</b> ' + u + (cards[i].querySelector('.mn-test') ? ' Read it, then press Fill the letters.' : ''));
+    } else s.caption('<b>' + task().title + '.</b> ' + task().todo);
     stage.scrollTop = 0;
-    if(push && history.replaceState) history.replaceState(null, '', '#' + cards[i].id);
+    if(push && history.replaceState) history.replaceState(null, '', '#' + (v2 ? 'test-' : '') + cards[i].id);
   }
-  function fromHash(){ var id = (location.hash || '').slice(1), k = cards.map(function(c){ return c.id; }).indexOf(id); return k; }
   pick.addEventListener('change', function(){ go(+pick.value, true); });
   prev.addEventListener('click', function(){ go(cur - 1, true); });
   next.addEventListener('click', function(){ go(cur + 1, true); });
-  window.addEventListener('hashchange', function(){ var k = fromHash(); if(k >= 0 && k !== cur) go(k, false); });
-  var k0 = fromHash();
+  var k0 = cardAt(idOf(location.hash));
   go(k0 >= 0 ? k0 : 0, false);
+  if(v2){
+    ex = window.NremtMnemonics.build({ studio: s, onTab: function(id, user){
+      if(user && history.replaceState){ var t = window.NremtMnemonics.TABS.filter(function(x){ return x.id === id; })[0]; history.replaceState(null, '', '#' + t.card); }
+    } });
+    window.NremtStudio.kit2(s, { stage: ex.stage, ref: ex.ref,
+      parts: [{ value: 'cards', label: 'Fill the letters', stage: stage, dock: dock, task: task }],
+      start: function(h){
+        var id = idOf(h), tab = ex.tabOf(id);
+        if(/^#test/.test(h || '')) return { mode: 'quiz' };
+        if(tab){ ex.tab(tab); return { mode: 'explore' }; }
+        if(id && cardAt(id) >= 0) return { mode: 'quiz' };
+        return null;
+      },
+      onShow: function(m, part, user){
+        mode = m;
+        if(m === 'explore') ex.shown();
+        else go(cur, !!user);
+      } });
+  }
+  window.addEventListener('hashchange', function(){
+    var id = idOf(location.hash), k = cardAt(id), tab = ex && !/^#test/.test(location.hash) ? ex.tabOf(id) : null;
+    if(tab){ ex.tab(tab); if(s.kit2) s.kit2.go('explore'); return; }
+    if(k >= 0){ if(k !== cur) go(k, false); if(s.kit2 && mode !== 'quiz') s.kit2.go('quiz'); }
+  });
   s.hint({ target: '.mn-stage .card:not([hidden]) .mn-test', text: 'Fill the letters to test yourself' });
 });
 </script>
