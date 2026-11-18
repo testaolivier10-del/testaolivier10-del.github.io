@@ -7,7 +7,7 @@
    depends on whether it has a wall.
 
    Two modes (the rule for every tool): EXPLORE is for playing with it, TEST YOURSELF is where you get quizzed.
-   Explore: nothing locked, nothing graded, no side panel. Two big tabs (Plant cell, Animal cell), a purpose line
+   Explore: nothing locked, nothing graded, no side panel. Two big tabs (Plant cell, Red blood cell), a purpose line
    with a small "Show me how" link, the beaker with the cell in it, ONE control on the picture ("Solute outside",
    0 to 1.0 M sucrose) and one line under it. INSTANT RESPONSE: dragging the solute shows, that instant, where the
    cell settles in that solution (no Play): solute dots fill the beaker, the cell swells, goes turgid, shrinks,
@@ -55,7 +55,7 @@
   /* The specimen holding water W (1 = its starting water): parts (svg), its outline (for the "before" ghost), the
      half extents of its outside (ex, ey) and of the space its solute sits in (inner), and at(a): a point on the
      membrane (plant) or the edge at angle a. */
-  function shape(sy, W, lysed){
+  function shape(sy, W, lysed, bp){
     var o = { parts: [], outline: '', ex: 0, ey: 0, inner: { x: 0, y: 0 }, kind: sy.kind };
     if(sy.kind === 'plant'){
       /* A plant cell: a wall with thickness, the membrane just inside it, cytoplasm with chloroplasts and a nucleus,
@@ -98,11 +98,14 @@
          Burst (lysed): a torn, empty membrane in a fading cloud of what it held. */
       var m = M.osmosis.mass(sy, W), r0 = 56, R;
       if(lysed){
-        R = 64;
-        o.parts.push('<circle class="os2-hb" r="' + (R + 34) + '"/>');
-        o.parts.push('<path class="os2-ghostcell" d="M' + n1(R * Math.cos(-0.3)) + ' ' + n1(R * Math.sin(-0.3)) + 'A' + R + ' ' + R + ' 0 1 1 ' + n1(R * Math.cos(-1.1)) + ' ' + n1(R * Math.sin(-1.1)) + '"/>');
-        o.parts.push('<path class="os2-ghostcell is-tear" d="M' + n1(R * Math.cos(-0.3)) + ' ' + n1(R * Math.sin(-0.3)) + 'q12 -1 17 -9M' + n1(R * Math.cos(-1.1)) + ' ' + n1(R * Math.sin(-1.1)) + 'q9 -5 9 -16"/>');
-        o.ex = R; o.ey = R; o.inner = { x: R * 0.8, y: R * 0.8 };
+        // bp 0 to 1: the membrane tears, the tear widens, the cell empties and what it held spreads and thins out
+        var bq = bp == null ? 1 : clamp(bp, 0, 1), tc = -0.7, hg = 0.04 + 0.36 * bq; R = 69 - 5 * bq;
+        var a1 = tc + hg, a2 = tc - hg;
+        o.parts.push('<circle class="os2-hb" r="' + n1(R * 0.9 + 44 * bq) + '" opacity="' + Math.min(1, 0.25 + bq * 1.2).toFixed(2) + '"/>');
+        if(bq < 1) o.parts.push('<circle class="os2-rbc is-emptying" r="' + n1(R) + '" opacity="' + Math.pow(1 - bq, 1.4).toFixed(2) + '"/>');
+        o.parts.push('<path class="os2-ghostcell" d="M' + n1(R * Math.cos(a1)) + ' ' + n1(R * Math.sin(a1)) + 'A' + n1(R) + ' ' + n1(R) + ' 0 1 1 ' + n1(R * Math.cos(a2)) + ' ' + n1(R * Math.sin(a2)) + '"/>');
+        o.parts.push('<path class="os2-ghostcell is-tear" d="M' + n1(R * Math.cos(a1)) + ' ' + n1(R * Math.sin(a1)) + 'q' + n1(12 * bq) + ' ' + n1(-1 * bq) + ' ' + n1(17 * bq) + ' ' + n1(-9 * bq) + 'M' + n1(R * Math.cos(a2)) + ' ' + n1(R * Math.sin(a2)) + 'q' + n1(9 * bq) + ' ' + n1(-5 * bq) + ' ' + n1(9 * bq) + ' ' + n1(-16 * bq) + '"/>');
+        o.ex = R; o.ey = R; o.inner = { x: R * 0.8, y: R * 0.8 }; o.bp = bq;
       } else {
         R = m > 1 ? r0 * (1 + (m - 1) * 0.42) : r0 * Math.pow(m, 0.5);
         var amp = m < 0.985 ? Math.min(0.075, (1 - m) * 0.3) : 0, sp = 13, body;
@@ -136,21 +139,24 @@
     return o;
   }
   /* A fixed scatter pattern (the same on every load, so a redraw never jumps). */
-  var POOL = [];
-  (function(){
-    // seeded, and each new point is the candidate farthest from those before it: evenly spread at every count,
-    // with no rows or stripes (the box is wider than tall, so x counts for more)
-    var sd = 20261117, rnd = function(){ sd = (sd + 0x6D2B79F5) | 0; var t = Math.imul(sd ^ (sd >>> 15), 1 | sd); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+  var POOLS = {};
+  function poolFor(aspect){
+    // seeded, and each new point is the candidate farthest from those before it: evenly spread at every count, with
+    // no rows, stripes or clumps, for a box of this shape (x counts for its real share of the distance)
+    var key = Math.max(0.6, Math.min(4, Math.round(aspect * 4) / 4));
+    if(POOLS[key]) return POOLS[key];
+    var P = [], sd = 20261117, rnd = function(){ sd = (sd + 0x6D2B79F5) | 0; var t = Math.imul(sd ^ (sd >>> 15), 1 | sd); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
     for(var i = 0; i < 1100; i++){
       var best = null, bd = -1;
-      for(var c = 0; c < 7; c++){
+      for(var c = 0; c < 8; c++){
         var x = rnd(), y = rnd(), d = 9;
-        for(var j = 0; j < POOL.length; j++){ var dx = (x - POOL[j][0]) * 2.6, dy = y - POOL[j][1], q = dx * dx + dy * dy; if(q < d) d = q; }
+        for(var j = 0; j < P.length; j++){ var dx = (x - P[j][0]) * key, dy = y - P[j][1], q = dx * dx + dy * dy; if(q < d) d = q; }
         if(d > bd){ bd = d; best = [x, y]; }
       }
-      POOL.push(best);
+      P.push(best);
     }
-  })();
+    return (POOLS[key] = P);
+  }
   var KD = 0.006; // solute dots per unit area per osmol/L, the same inside and outside
 
   function boot(){
@@ -165,7 +171,7 @@
       /* The Explore cells: an idealized plant cell (just full in the isotonic solution) and the red blood cell. */
       var CELLS = EX.cells.map(function(c){ var sy = c.system ? Object.assign({}, sysById(c.system)) : Object.assign({}, c); sy.T = c.T; return { id: c.id, tab: c.tab, short: c.short, sys: sy }; });
       var S = { tab: CELLS[0].id, outC: EX.outside.value, mode: 'explore', part: null };
-      var view = { W: 1, lysed: false, play: null, clock: 0 }, prev = null, gest = false, took = false;
+      var view = { W: 1, lysed: false, bp: 0, debris: 0, strain: false, newUntil: 0, mark: null, play: null, clock: 0 }, prev = null, gest = false, took = false, story = null;
       function cellNow(){ return CELLS.filter(function(c){ return c.id === S.tab; })[0]; }
       var cache = {};
       function eq(cell, C){ var k = cell.id + '|' + C; return cache[k] || (cache[k] = M.osmosis.equilibrium(cell.sys, { outC: C, outI: SOL.i, T: cell.sys.T })); }
@@ -192,8 +198,8 @@
       var player = K.player({ min: 0, max: 1, speed: 1 / 3.4, labels: { play: 'Watch it happen', pause: 'Pause', again: 'Watch again' },
         get: function(){ return view.play == null ? 0 : view.play; },
         set: function(v){ view.play = v; view.clock = (window.performance ? performance.now() : 0); draw(); },
-        before: function(){ hideCue(true); tourDid('watch'); stopTween(); took = false; view.play = 0; },
-        onEnd: function(){ view.play = null; snap(); took = true; words(); draw(); player.paint(); say(takeaway()); } });
+        before: function(){ hideCue(true); tourDid('watch'); stopTween(); took = false; story = null; view.mark = null; view.newUntil = 0; words(); view.play = 0; },
+        onEnd: function(){ view.play = null; snap(); story = null; view.mark = K.reduced() && resNow().startDir !== 'none' ? resNow().startDir : null; took = true; words(); draw(); player.paint(); say(takeaway()); } });
       player.el.classList.add('is-sm');
       lines.appendChild(cause.el); lines.appendChild(clock); lines.appendChild(player.el);
       stage.appendChild(lines);
@@ -204,7 +210,7 @@
       /* ---- the one control, on the picture */
       var cSol = K.drag(layer, { key: 'apbio-osmosis-sol', label: 'Solute outside the cell: ' + SOL.name + ' in the beaker', min: 0, max: EX.outside.max, step: EX.outside.step, value: S.outC, track: [0, 0, 1, 0], chip: false,
         valuetext: function(v){ return F(v, 2) + ' molar ' + SOL.name + ' outside. ' + stateLine(eq(cellNow(), v)); }, tag: function(v){ return F(v, 2) + ' M'; },
-        onInput: function(v){ begin(); player.stop(); view.play = null; S.outC = v; took = false; changed(); tourDid('drag'); },
+        onInput: function(v){ begin(); player.stop(); view.play = null; var was = S.outC; S.outC = v; took = false; changed(was); tourDid('drag'); },
         onEnd: function(){ gest = false; say(cause.text()); refHtml(); } });
       var cue = K.cue(layer, { key: 'apbio-osmosis', text: 'Drag the solute', side: 'right', at: function(){ return G ? [G.tx0 + (G.tx1 - G.tx0) * (S.outC / EX.outside.max), G.ty] : [0, 0]; } });
       function hideCue(used){ if(cue.active()) cue.hide(used); }
@@ -220,41 +226,73 @@
 
       /* ---- the change before this one: a dashed outline and a mark on the track */
       function begin(){ if(gest) return; gest = true; var r = resNow(); prev = { tab: S.tab, outC: S.outC, W: r.W, lysed: r.lysed }; }
-      /* ---- the picture follows the control at once: a short tween to where the cell settles */
-      var tw = 0, flow = null;
-      function stopTween(){ if(tw){ cancelAnimationFrame(tw); tw = 0; } flow = null; }
-      function snap(){ var r = resNow(); view.W = r.W; view.lysed = r.lysed; }
-      /* The picture follows the control at once: water is drawn moving (arrows, the way it is really going from
-         the cell as it was) only for the half second the cell takes to reach where it settles. */
-      function changed(){
-        var r = resNow();
-        stopTween(); words();
-        if(K.reduced() || !window.requestAnimationFrame){ snap(); draw(); return; }
-        var from = view.W, to = r.W, t0 = null, was = view.lysed;
-        if(!r.lysed) view.lysed = false;
-        flow = was && !r.lysed ? 'out' : r.lysed && !was ? 'in' : to > from + 1e-6 ? 'in' : to < from - 1e-6 ? 'out' : null;
+      /* ---- the picture follows the control at once, and every change of state is seen happening (owner round 2):
+         the cell swells or shrinks to where it settles with water drawn moving the way it is really going; a red
+         blood cell swells, strains, then tears and empties; a burst cell does not heal, so going back puts a new
+         cell in (the old one fades, "new cell"). Reduced motion: the result at once with a short cross fade and a
+         still mark of the direction. */
+      var tw = 0, flow = null, newT = 0;
+      function now(){ return window.performance ? performance.now() : Date.now(); }
+      function stopTween(){ if(tw){ cancelAnimationFrame(tw); tw = 0; } flow = null; view.strain = false; view.debris = 0; }
+      function snap(){ var r = resNow(); view.W = r.W; view.lysed = r.lysed; view.bp = r.lysed ? 1 : 0; view.debris = 0; view.strain = false; }
+      function crossFade(old){
+        var g = document.createElementNS('http://www.w3.org/2000/svg', 'g'); g.setAttribute('class', 'os2-fade'); g.innerHTML = old; svg.appendChild(g);
+        var done = function(){ if(g.parentNode) g.parentNode.removeChild(g); };
+        if(g.animate){ var an = g.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 240, easing: 'linear' }); an.onfinish = done; setTimeout(done, 400); } else done();
+      }
+      function changed(was){
+        var cell = cellNow(), r = resNow(), rOld = was == null ? r : eq(cell, was), wasLysed = view.lysed, from = view.W;
+        stopTween();
+        var fresh = wasLysed && !r.lysed;   // a burst cell does not heal: a new cell goes into the new solution
+        var move = wasLysed && r.lysed ? null : fresh ? (r.startDir === 'none' ? null : r.startDir) : r.lysed ? 'in' : r.W > from + 1e-6 ? 'in' : r.W < from - 1e-6 ? 'out' : null;
+        // the cause line tells what the picture shows: when water goes the other way from a fresh cell's, it tells the change
+        story = !fresh && move && move !== r.startDir ? { dir: move, still: stateWord(rOld) === stateWord(r) } : null;
+        clearTimeout(newT); view.newUntil = 0;
+        if(fresh){ view.newUntil = now() + 2600; newT = setTimeout(function(){ view.newUntil = 0; draw(); }, 2650); }
+        words();
+        if(K.reduced() || !window.requestAnimationFrame){ var old = gDyn.innerHTML; snap(); view.mark = move; draw(); crossFade(old); return; }
+        view.mark = null;
+        var seq = [];
+        if(fresh){
+          seq.push({ dur: 450, start: function(){ view.lysed = false; view.bp = 0; view.W = 1; view.debris = 1; }, run: function(e){ view.debris = 1 - e; } });
+          if(move) seq.push({ dur: 650, start: function(){ view.debris = 0; flow = move; }, run: function(e){ view.W = 1 + (r.W - 1) * e; } });
+        } else if(r.lysed && wasLysed){
+          if(view.bp < 1){ var b0 = view.bp; seq.push({ dur: 800 * (1 - b0), start: function(){}, run: function(e){ view.bp = b0 + (1 - b0) * e; } }); }
+        } else if(r.lysed){
+          seq.push({ dur: 650, start: function(){ flow = 'in'; }, run: function(e){ view.W = from + (r.W - from) * e; } });
+          seq.push({ dur: 240, start: function(){ view.strain = true; }, run: function(){} });
+          seq.push({ dur: 850, start: function(){ view.strain = false; flow = null; view.lysed = true; view.bp = 0; }, run: function(e){ view.bp = e; } });
+        } else if(move) seq.push({ dur: 600, start: function(){ flow = move; }, run: function(e){ view.W = from + (r.W - from) * e; } });
+        if(!seq.length){ snap(); draw(); return; }
+        var i = 0, t0 = null;
+        seq[0].start();
         function step(ts){
           if(t0 == null) t0 = ts;
-          var f = Math.min(1, (ts - t0) / 520), e = 1 - Math.pow(1 - f, 2.4);
-          view.W = from + (to - from) * e; view.clock = ts;
-          if(f >= 1){ tw = 0; flow = null; view.W = to; view.lysed = r.lysed; draw(); return; }
+          var ph = seq[i], f = Math.min(1, (ts - t0) / ph.dur);
+          ph.run(1 - Math.pow(1 - f, 2.2)); view.clock = ts;
+          if(f >= 1){ i++; t0 = ts; if(i >= seq.length){ tw = 0; flow = null; snap(); draw(); return; } seq[i].start(); }
           draw(); tw = requestAnimationFrame(step);
         }
         tw = requestAnimationFrame(step);
       }
       function setTab(v){
         if(v === S.tab) return;
-        player.stop(); view.play = null; stopTween(); took = false; prev = null; gest = false;
+        player.stop(); view.play = null; stopTween(); took = false; prev = null; gest = false; story = null; view.mark = null; clearTimeout(newT); view.newUntil = 0;
         S.tab = v; snap(); words(); layoutNow(); refHtml(); tourDid('tab');
       }
 
       /* ---- words: the purpose line, the cause line, the takeaway */
-      var PURPOSE = { plant: 'What the solution outside does to a plant cell', animal: 'What the solution outside does to an animal cell' };
+      var PURPOSE = { plant: 'What the solution outside does to a plant cell', animal: 'What the solution outside does to a red blood cell' };
       function tonicity(r){ return r.startDir === 'in' ? 'Hypotonic' : r.startDir === 'out' ? 'Hypertonic' : 'Isotonic'; }
       function stateWord(r, sy){ return r.lysed ? 'Burst (lysed)' : short(r.state); }
       function stateLine(r){ return tonicity(r) + ' solution: ' + (r.startDir === 'in' ? 'water moves in' : r.startDir === 'out' ? 'water moves out' : 'no net water movement') + ', the cell is ' + stateWord(r).toLowerCase() + '.'; }
       function chain(){
         var r = resNow(), sy = cellNow().sys, a = [];
+        if(story){ // a change that sends water the other way from a fresh cell's: tell the change the picture showed
+          var bin = story.dir === 'in', end = r.startDir === 'none' || !story.still ? stateWord(r) : 'Still ' + stateWord(r).toLowerCase();
+          return [{ t: (bin ? 'Less' : 'More') + ' solute than before', role: 'sol', say: (bin ? 'less' : 'more') + ' solute outside than before' }, { t: 'water potential outside ' + (bin ? 'rises' : 'falls'), role: 'water' },
+            { t: 'water moves back ' + (bin ? 'in' : 'out'), role: 'water' }, { t: end, role: 'ink' }];
+        }
         if(r.startDir === 'none') return [{ t: 'Same solute both sides', role: 'sol' }, { t: 'equal water potential', role: 'water' }, { t: 'no net water movement', role: 'water' }, { t: stateWord(r), role: 'ink' }];
         var inn = r.startDir === 'in';
         a.push({ t: inn ? (S.outC === 0 ? 'No solute outside' : 'Less solute outside') : 'More solute outside', role: 'sol' });
@@ -285,7 +323,7 @@
         var BX = gx + gw, BW = Wd - 2 * BX, BY = air, BH = Math.max(150, H - BY - ctl), y1 = BY + BH;
         var k = Math.min(BW / 322, BH / 192), half = Math.min(400, (Wd - (ph ? 64 : 150)) / 2);
         return { W: Wd, H: H, ph: ph, ex: ex, gx: gx, gw: gw, BX: BX, BY: BY, BW: BW, BH: BH, y1: y1, cx: Wd / 2, cy: BY + BH / 2 - (ph ? 10 : 4), k: k,
-          tx0: Wd / 2 - half, tx1: Wd / 2 + half, ty: y1 + (ph ? 50 : 50), fs: ph ? 13 : 15, fsS: ph ? 11.5 : 13 };
+          pool: poolFor((BW - 24) / (BH - 28)), tx0: Wd / 2 - half, tx1: Wd / 2 + half, ty: y1 + (ph ? 50 : 50), fs: ph ? 13 : 15, fsS: ph ? 11.5 : 13 };
       }
       function pill(x, y, text, cls, anchor, fs){
         var w = text.length * fs * 0.56 + 18, h = fs + 10, x0 = anchor === 'start' ? x : anchor === 'end' ? x - w : x - w / 2;
@@ -301,13 +339,14 @@
       function sceneNow(){
         if(S.mode === 'explore'){
           var cell = cellNow(), r = resNow(), c = { outC: S.outC, outI: SOL.i, T: cell.sys.T };
-          var sc = { sys: cell.sys, c: c, res: r, solute: SOL, view: 'result', W: view.W, lysed: view.lysed, dir: 'none', gap: 0 };
+          var sc = { sys: cell.sys, c: c, res: r, solute: SOL, view: 'result', W: view.W, lysed: view.lysed, bp: view.bp, debris: view.debris, strain: view.strain, dir: 'none', gap: 0,
+            newCell: view.newUntil > now(), mark: view.play == null && !tw ? view.mark : null };
           if(view.play != null){
             var f = view.play, W, ly = false;
-            if(r.lysed){ var g = Math.min(1, f / 0.72); W = 1 + (r.W - 1) * (1 - Math.pow(1 - g, 2)); ly = f >= 0.72; }
+            if(r.lysed){ var g = Math.min(1, f / 0.6); W = 1 + (r.W - 1) * (1 - Math.pow(1 - g, 2)); ly = f >= 0.68; sc.strain = f >= 0.6 && !ly; sc.bp = ly ? Math.min(1, (f - 0.68) / 0.3) : 0; }
             else { var e = (Math.exp(-4.5 * f) - Math.exp(-4.5)) / (1 - Math.exp(-4.5)); W = r.W + (1 - r.W) * e; }
             var pp = M.osmosis.psiParts(cell.sys, c, W), d = r.psiO - pp.psi;
-            sc.view = 'live'; sc.replay = true; sc.W = W; sc.lysed = ly; sc.gap = Math.abs(d); sc.dir = ly || Math.abs(d) < 0.05 ? 'none' : d > 0 ? 'in' : 'out';
+            sc.view = 'live'; sc.replay = true; sc.debris = 0; sc.newCell = false; sc.W = W; sc.lysed = ly; sc.gap = Math.abs(d); sc.dir = ly || Math.abs(d) < 0.05 ? 'none' : d > 0 ? 'in' : 'out';
           } else {
             if(tw && flow){ sc.view = 'live'; sc.dir = flow; sc.gap = Math.abs(r.psiO - M.osmosis.psiParts(cell.sys, c, view.W).psi); }
             if(prev && prev.tab === S.tab && prev.outC !== S.outC && !prev.lysed && !r.lysed) sc.ghost = prev;
@@ -318,7 +357,7 @@
         var i = clamp(Math.floor(chal.k), 0, NF), j = Math.min(NF, i + 1), ff = chal.k - i, a = chal.tr[i], b = chal.tr[j];
         var W2 = a.W + (b.W - a.W) * ff, ly2 = ff > 0.5 ? b.lysed : a.lysed, t = a.t + (b.t - a.t) * ff;
         var p2 = M.osmosis.psiParts(chal.sys, chal.c, W2), d2 = chal.r.psiO - p2.psi;
-        return { sys: chal.sys, c: chal.c, res: chal.r, solute: chal.solute, view: chal.hide ? 'hide' : chal.playing ? 'live' : 'result', W: W2, lysed: ly2, t: t, challenge: true,
+        return { sys: chal.sys, c: chal.c, res: chal.r, solute: chal.solute, view: chal.hide ? 'hide' : chal.playing ? 'live' : 'result', W: W2, lysed: ly2, bp: chal.playing ? chal.bp || 0 : 1, t: t, challenge: true,
           gap: Math.abs(d2), dir: ly2 || Math.abs(d2) < 0.05 ? 'none' : d2 > 0 ? 'in' : 'out' };
       }
       /* The scene that does not change with the control: the vessel of solution across the whole stage (air, a
@@ -356,37 +395,44 @@
       function draw(){
         if(!G) return;
         var sc = sceneNow(); if(!sc) return;
-        var sy = sc.sys, c = sc.c, k = G.k, cx = G.cx, cy = G.cy + (sy.kind === 'bag' ? 8 * k : 0), o = shape(sy, sc.W, sc.lysed), hide = sc.view === 'hide';
+        var sy = sc.sys, c = sc.c, k = G.k, cx = G.cx, cy = G.cy + (sy.kind === 'bag' ? 8 * k : 0), o = shape(sy, sc.W, sc.lysed, sc.bp), hide = sc.view === 'hide', bpN = sc.lysed ? (sc.bp == null ? 1 : sc.bp) : 0;
         var BX = G.BX, BY = G.BY, BW = G.BW, BH = G.BH, y1 = G.y1, R0 = BX + BW, p = [];
         // solute outside: one particle per bit of concentration, so crowding can be compared with the inside
-        var osmO = c.outC * c.outI, area = BW * BH / (k * k), nOut = Math.min(POOL.length, Math.round(osmO * KD * area)), dr = n1(Math.max(2.6, 2.9 * Math.sqrt(k))), dots = [];
+        var POOL = G.pool, osmO = c.outC * c.outI, area = BW * BH / (k * k), nOut = Math.min(POOL.length, Math.round(osmO * KD * area)), dr = n1(Math.max(2.6, 2.9 * Math.sqrt(k))), dots = [];
         for(var i = 0; i < nOut; i++){
           var qx = BX + 12 + POOL[i][0] * (BW - 24), qy = BY + 16 + POOL[i][1] * (BH - 28), exx = (qx - cx) / (((o.px || o.ex) + 5) * k), eyy = (qy - cy) / (((o.py || o.ey) + 5) * k);
           var rr = exx * exx + eyy * eyy;
-          if(rr < 1.12 && !sc.lysed) continue;
+          if(rr < 1.12 * (1 - bpN) * (1 - bpN)) continue;
           if(o.px){ var wx = (qx - cx) / ((o.ex + 4) * k), wy = (qy - cy) / ((o.ey + 4) * k), wr2 = wx * wx + wy * wy; if(wr2 > 0.5 && wr2 < 1.32) continue; } // not on the wall itself
           dots.push('<circle cx="' + n1(qx) + '" cy="' + n1(qy) + '" r="' + dr + '"/>');
         }
         p.push('<g class="os2-dots" clip-path="url(#os2c-liq)">' + dots.join('') + '</g>');
-        p.push('<g clip-path="url(#os2c-liq)"><g transform="translate(' + n1(cx) + ' ' + n1(cy) + ') scale(' + k.toFixed(3) + ')">' + o.parts.join('') + '</g></g>');
+        var deb = sc.debris > 0 ? sc.debris : 0, body = o.parts.join('');
+        if(sc.strain) body = body.replace('class="os2-rbc"', 'class="os2-rbc is-strain"');
+        if(deb){ // the burst cell fades as a new cell goes in
+          var od = shape(sy, 1, true, 1), sp0 = [];
+          for(var q0 = 0; q0 < 9; q0++){ var qa = q0 * 2.39996 + 0.6, qd = Math.sqrt((q0 + 0.5) / 9) * 0.88 * 1.75; sp0.push('<circle cx="' + n1(cx + Math.cos(qa) * qd * od.inner.x * k) + '" cy="' + n1(cy + Math.sin(qa) * qd * od.inner.y * k) + '" r="' + dr + '"/>'); }
+          p.push('<g clip-path="url(#os2c-liq)" opacity="' + deb.toFixed(2) + '"><g transform="translate(' + n1(cx) + ' ' + n1(cy) + ') scale(' + k.toFixed(3) + ')">' + od.parts.join('') + '</g><g class="os2-dots is-in">' + sp0.join('') + '</g></g>');
+        }
+        p.push('<g class="os2-cell" clip-path="url(#os2c-liq)" opacity="' + (1 - deb).toFixed(2) + '"><g transform="translate(' + n1(cx) + ' ' + n1(cy) + ') scale(' + (k * (sc.strain ? 1.015 : 1)).toFixed(3) + ')">' + body + '</g></g>');
         // the "before" outline
         if(sc.ghost){ var og = shape(sy, sc.ghost.W, false); p.push('<g transform="translate(' + n1(cx) + ' ' + n1(cy) + ') scale(' + k.toFixed(3) + ')"><path class="os2-before" d="' + og.outline + '"/></g>'); }
         // solute inside: a fixed amount, crowded as the specimen shrinks, spilled when it has burst
-        var o1 = shape(sy, 1, false), nIn = Math.min(90, Math.round((sy.kind === 'bag' ? c.inC * (c.inI || 1) : sy.osmIn) * KD * Math.PI * o1.inner.x * o1.inner.y)), spill = sc.lysed ? 1.75 : 1, ind = [];
+        var o1 = shape(sy, 1, false), nIn = Math.min(90, Math.round((sy.kind === 'bag' ? c.inC * (c.inI || 1) : sy.osmIn) * KD * Math.PI * o1.inner.x * o1.inner.y)), spill = 1 + 0.75 * bpN, ind = [];
         for(var j = 0; j < nIn; j++){ var da = j * 2.39996 + 0.6, dq = Math.sqrt((j + 0.5) / nIn) * 0.88; ind.push('<circle cx="' + n1(cx + ((o.inner.ox || 0) + Math.cos(da) * dq * o.inner.x * spill) * k) + '" cy="' + n1(cy + ((o.inner.oy || 0) + Math.sin(da) * dq * o.inner.y * spill) * k) + '" r="' + dr + '"/>'); }
-        p.push('<g class="os2-dots is-in">' + ind.join('') + '</g>');
+        p.push('<g class="os2-dots is-in" opacity="' + (1 - deb).toFixed(2) + '">' + ind.join('') + '</g>');
         // water, only while it is moving: arrows as wide as the water potential gap, with drops running along them
-        var live = sc.view === 'live' && !sc.lysed, dir = live ? sc.dir : 'none', sw = (3 + Math.min(11, sc.gap * 0.7)) * clamp(k, 0.85, 1.5);
-        if(live) [[-1, 0], [1, 0], [0, -1], [0, 1]].forEach(function(d, n){
+        var live = sc.view === 'live' && !sc.lysed, still = !live && !!sc.mark && !hide, dir = live ? sc.dir : still ? sc.mark : 'none', sw = (still ? 6 : 3 + Math.min(11, sc.gap * 0.7)) * clamp(k, 0.85, 1.5);
+        if(live || still) [[-1, 0], [1, 0], [0, -1], [0, 1]].forEach(function(d, n){
           if(n === 2 && o.noTop) return;
           var ax0 = cx + d[0] * (o.ex * k + 44 + sw), ay0 = cy + d[1] * (o.ey * k + 38 + sw), ax1 = cx + d[0] * (o.ex * k + 9), ay1 = cy + d[1] * (o.ey * k + 7);
           if(n > 1){ var lim = n === 2 ? BY + 12 : y1 - G.fs - 32; if(n === 2 ? ay0 < lim : ay0 > lim) ay0 = lim; if(Math.abs(ay1 - ay0) < 18) return; }
           if(dir === 'none'){ p.push('<path class="os2-eq" d="M' + n1(ax0) + ' ' + n1(ay0) + 'L' + n1(ax1) + ' ' + n1(ay1) + '"/>'); return; }
           var inn = dir === 'in', fx = inn ? ax0 : ax1, fy = inn ? ay0 : ay1, tx = inn ? ax1 : ax0, ty = inn ? ay1 : ay0;
           p.push(arrow(fx, fy, tx, ty, sw, 'os2-flow'));
-          if(!K.reduced()){ var phs = ((sc.challenge ? chal.clock || 0 : view.clock) / 620) % 1; for(var w = 0; w < 3; w++){ var u = (phs + w / 3) % 1; p.push('<circle class="os2-w" cx="' + n1(fx + (tx - fx) * u * 0.8) + '" cy="' + n1(fy + (ty - fy) * u * 0.8) + '" r="' + n1(2.4 + sw * 0.14) + '"/>'); } }
+          if(live && !K.reduced()){ var phs = ((sc.challenge ? chal.clock || 0 : view.clock) / 620) % 1; for(var w = 0; w < 3; w++){ var u = (phs + w / 3) % 1; p.push('<circle class="os2-w" cx="' + n1(fx + (tx - fx) * u * 0.8) + '" cy="' + n1(fy + (ty - fy) * u * 0.8) + '" r="' + n1(2.4 + sw * 0.14) + '"/>'); } }
         });
-        if(live){ var wt = dir === 'none' ? 'no net movement' : 'water moving ' + dir; p.push(pill(R0 - 14, BY + 20 + G.fs * 0.5, wt, 'is-water', 'end', G.fsS)); }
+        if(live || still){ var wt = dir === 'none' ? 'no net movement' : still ? 'water moved ' + dir : 'water moving ' + dir; p.push(pill(R0 - 14, BY + 20 + G.fs * 0.5, wt, 'is-water', 'end', G.fsS)); }
         else if(sc.challenge && !hide && !sc.lysed && sc.dir === 'none') p.push(pill(R0 - 14, BY + 20 + G.fs * 0.5, 'no net movement', 'is-water', 'end', G.fsS));
         // the wall pushing back (a turgid plant cell), and the names of the two layers once they separate
         if(sy.kind === 'plant' && !hide && o.wallAt){
@@ -407,8 +453,9 @@
         var now = sc.challenge ? (sc.lysed ? { lysed: true, state: 'lysed', startDir: sc.res.startDir } : M.osmosis.simulate(sy, Object.assign({}, c, { t: sc.t }))) : null;
         var topTxt = sc.challenge ? F(c.outC, 2) + ' M ' + sc.solute.name : tonicity(sc.res);
         p.push(pill(BX + 16, BY + 20 + G.fs * 0.5, topTxt, 'is-sol is-big', 'start', G.fs));
-        var stTxt = hide ? 'Predict first' : sc.challenge ? (sc.lysed ? short('lysed') : short(now.state)) : sc.replay && !sc.lysed && Math.abs(sc.W - sc.res.W) > 0.004 ? '' : sc.res.lysed && !sc.lysed ? '' : stateWord(sc.res);
+        var stTxt = hide ? 'Predict first' : sc.challenge ? (sc.lysed ? short('lysed') : short(now.state)) : sc.replay && !sc.lysed && Math.abs(sc.W - sc.res.W) > 0.004 ? '' : sc.res.lysed && (!sc.lysed || bpN < 0.55) ? '' : stateWord(sc.res);
         if(stTxt) p.push('<g class="os2-statep">' + pill(cx, y1 - 14 - G.fs * 0.5, stTxt, sc.lysed && !hide ? 'is-bad is-big' : 'is-ink is-big', 'middle', G.fs) + '</g>');
+        if(sc.newCell) p.push(pill(cx, Math.max(BY + 24 + G.fs, cy - o.ey * k - 20), 'new cell', 'is-ink', 'middle', G.fsS));
         if(sc.challenge){
           var nm = sy.kind === 'plant' ? 'potato cell' : sy.kind === 'animal' ? 'red blood cell' : 'dialysis bag, ' + F(c.inC, 2) + ' M sucrose inside';
           p.push('<text class="os2-name" x="' + n1(G.W / 2) + '" y="' + n1(y1 + G.gw + 21) + '" text-anchor="middle" style="font-size:' + G.fsS + 'px">' + esc(nm) + '</text>');
@@ -519,12 +566,13 @@
       function playRun(done){
         stopAnim();
         if(K.reduced() || !window.requestAnimationFrame){ chal.k = NF; chal.hide = false; draw(); if(done) done(); return; }
-        var t0 = null, dur = 3200; chal.hide = false; chal.playing = true;
+        var t0 = null, dur = 3200, lyT = null; chal.hide = false; chal.playing = true; chal.bp = 0;
         function step(ts){
           if(t0 == null) t0 = ts;
           var f = Math.min(1, (ts - t0) / dur);
           chal.k = NF * Math.pow(f, 2.2); chal.clock = ts; // slow start: most water moves early
-          if(f < 1){ draw(); anim = requestAnimationFrame(step); }
+          if(chal.tr[Math.min(NF, Math.round(chal.k))].lysed){ if(lyT == null) lyT = ts; chal.bp = Math.min(1, (ts - lyT) / 850); }
+          if(f < 1 || (lyT != null && chal.bp < 1)){ draw(); anim = requestAnimationFrame(step); }
           else { anim = 0; chal.playing = false; chal.k = NF; draw(); if(done) done(); }
         }
         anim = requestAnimationFrame(step);
@@ -560,7 +608,7 @@
         var ex = mode === 'explore';
         stage.setAttribute('data-view', ex ? 'explore' : 'predict');
         tabs.el.hidden = !ex; head.el.hidden = !ex; cause.el.hidden = !ex; player.el.hidden = !ex; clock.hidden = ex; cSol.hide(!ex);
-        if(ex){ prev = null; gest = false; took = false; snap(); words(); refHtml(); }
+        if(ex){ prev = null; gest = false; took = false; story = null; view.mark = null; clearTimeout(newT); view.newUntil = 0; snap(); words(); refHtml(); }
         else { hideCue(false); if(part === 'predict' && (!chal || chal.done)) showChallenge(); }
         if(mode === 'quiz' && part !== 'predict') return;
         setTimeout(function(){ layoutNow(); if(ex && !tour.active()) cue.show(); }, 30);

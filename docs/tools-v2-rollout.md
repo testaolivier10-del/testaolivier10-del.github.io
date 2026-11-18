@@ -564,6 +564,14 @@ Listed for the owner to decide; nothing here is decided.
 - Typing tools with no picture to manipulate: AP Calc AB rule-drills, AP Precalc symbolic-steps.
 - Marked "beyond the exam": AP Precalc vectors-matrices.
 
+## Owner decisions, 2026-11-17 (after the first Osmosis rounds)
+- **Similar tools stay separate**: more tools, each more specific. No merges (this answers question 2 below; the
+  merge table is kept only as a note of which tools must not teach the same screen).
+- **No per tool owner review.** The standard and an independent fresh eyes review replace his look
+  (`docs/tools-v2-standard.md`, "Process per tool"); decisions made for him are logged in
+  `docs/tools-v2-owner-log.md`. This answers question 9.
+- **All 145 tools are in scope** (the 137 `tools/` pages and the 8 NREMT tools). This answers question 1.
+
 ## 6. Open questions for the owner
 1. **137 or 145?** The 8 NREMT tools are outside the 137 `tools/` pages. This plan includes them (4 of the 16 most
    opened are NREMT). OK?

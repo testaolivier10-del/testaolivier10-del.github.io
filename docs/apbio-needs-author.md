@@ -703,6 +703,11 @@ These stay open:
   water movement" (equal water potential) are not the same solution; textbooks and AP materials use the words
   both ways. Meanwhile: Explore's two cells are built so the two meanings fall on the same stop (0.30 M), and the
   Predict challenges ask for direction and state, never for the word.
-- **osmosis-arrows-settled** (logged). Once the cell has settled, the Explore picture keeps the arrows and says
-  "water moved in" or "water moved out" (past tense); at equilibrium there is no net movement, which the replay
-  shows (the arrows thin to nothing). Confirm the past tense label is clear enough, or drop the settled arrows.
+- **osmosis-arrows-settled** (closed 2026-11-17, owner rounds 1 and 2). The settled picture no longer keeps water
+  arrows: they are drawn only while water is moving (during a change and in the replay), in the direction it is
+  really going, and the cause line tells the same change ("Less solute than before → water potential outside
+  rises → water moves back in → Still plasmolyzed") whenever that differs from a fresh cell's story. With reduced
+  motion a still mark ("water moved in") stays instead. Nothing left to decide.
+- **osmosis-burst-new-cell** (logged, owner round 2). A burst red blood cell does not heal: when the solute is
+  raised again the old cell fades and a new cell goes into the new solution, marked "new cell" for about two
+  seconds. Teacher: confirm the wording.

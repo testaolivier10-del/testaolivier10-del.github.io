@@ -2,8 +2,8 @@
 
 Status file for the v2 rebuild of `bio/tools/osmosis.html` (the most opened tool on the site, rank 1 in
 `docs/tools-v2-rollout.md`; the first tool after the flagship and the first on the kit through a second course
-layer). Standard: `docs/tools-v2-standard.md`. Branch `claude/tools-v2-osmosis`. NOT merged: the owner looks at the
-first tool of each batch first.
+layer). Standard: `docs/tools-v2-standard.md`. Branch `claude/tools-v2-osmosis`. NOT merged: an independent review comes first (the owner no longer reviews each tool; decisions made for him
+are in `docs/tools-v2-owner-log.md`).
 
 ## The one main idea
 **Water moves toward the lower water potential (toward more solute), and what that does to a cell depends on whether
@@ -33,7 +33,7 @@ animal in the same solution one tap apart, and the reason written in the idea's 
   0.05 M (drag, tap the track, arrow keys, Home, End). Its value rides on the knob ("0.60 M").
 - **Instant response:** the picture shows where the cell settles in that solution, with no Play and no clock
   (`ApBioMath.osmosis.equilibrium`, a 220 ms tween between results; none with reduced motion).
-- **Two big tabs:** 1 Plant cell, 2 Animal cell (a red blood cell). A tab never moves the solute, so the same
+- **Two big tabs:** 1 Plant cell, 2 Red blood cell (the animal cell; named for what is drawn since owner round 2). A tab never moves the solute, so the same
   solution can be compared on both cells (rule 8).
 - **Opens** on the plant cell in the isotonic solution (0.30 M): calm, and a drag either way does something.
 - **Cue:** "Drag the solute" at the knob, once per device, gone at the first touch. "Show me how" (three
@@ -239,3 +239,44 @@ shots regenerated (a mid drag shot added).
   tab's name better but not the model's numbers.
 - With reduced motion there are no arrows at all outside the cause line.
 - The particles do not move (no random motion); moving them would be true but is ambient motion on a busy picture.
+
+## Owner round 2: every change is seen happening (2026-11-17)
+Owner: "there is no animation for the burst. also i shouldnt have to ask for these things. this should just be the
+standard for everything. also it will take way too long to critique every tool individually so just do all of
+them". The standard gained rules 12 to 15 and a new process (no per tool owner review; an independent review that
+can block; `docs/tools-v2-owner-log.md`). This tool was brought up to them.
+
+### What changed
+- **Every change of state is animated on a plain drag** (not only in Watch it happen), about 0.6 s:
+  the red blood cell swells, strains for a moment (its membrane drawn thin), then tears: the tear widens, the cell
+  empties and what it held spreads and thins (about 0.85 s more); it shrivels smoothly into a scalloped edge; the
+  plant protoplast pulls away from the wall smoothly; the wall bows out as the cell goes turgid. The same burst
+  animation plays in Watch it happen and in the Predict runs of Test yourself.
+- **A burst cell does not heal.** Raising the solute again fades the torn cell out and puts a new cell in, marked
+  "new cell" for about 2.6 s, which then swells or shrinks to where it settles in the new solution.
+- **The cause line follows the picture.** When a change sends water back the other way (0.80 down to 0.50 M: the
+  plasmolyzed cell takes some water back), the arrows say "water moving in" and the cause line tells that change:
+  "Less solute than before → water potential outside rises → water moves back in → Still plasmolyzed". A change
+  that goes the same way as a fresh cell's story (or a tab change, or the replay) shows the fresh cell story as
+  before. Checked in the browser mid drag: the two never name opposite directions.
+- **Reduced motion:** the result at once with a 240 ms cross fade, and a still mark of the direction (arrows
+  without drops and "water moved out") that stays until the next change; "new cell" still shows.
+- **The tab is "Red blood cell"** (was "Animal cell"), and the purpose line says "a red blood cell". The tab's id
+  is unchanged; `#predict-rbc`, `#predict`, `#questions` and `#frq` work as before.
+- **Phone:** the particle pattern is now made for the shape of the vessel it fills (the desktop pattern clumped at
+  the left edge of a narrow one); the two tabs show their full names at 390 with room to spare (checked: no
+  clipped text).
+
+### Checks run (this round)
+`node --test scripts/test/apbio-*.test.mjs` (72 pass), `check-apbio-content --check`, `build-apbio --check`,
+`check-site`, `check-weight --check`. Playwright at 390, 768 and 1440, light and dark, 298 assertions passing;
+new: the burst is caught mid animation (emptying cell and torn membrane both drawn) and then settles; "new cell"
+after going back; on a reversed drag the arrows and the cause line agree, and the fresh cell story returns when the
+drag goes back; reduced motion has the still mark and no moving drops; tab names are not clipped. Shots: burst
+frames added (`07a` to `07d`, `08`).
+
+### Open points
+- The change story appears only when the water goes the other way from a fresh cell's; a student who drags back
+  and forth sees the line switch between the two stories. Both are true at the moment they show.
+- The strain moment is short (0.24 s) and subtle.
+- Still no real phone, no screen reader pass; the independent review is next.
