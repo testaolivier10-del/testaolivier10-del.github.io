@@ -21,20 +21,20 @@
   --sd-tray0:#5A4329;--sd-tray1:#46331E;--sd-tray-edge:#2A1D10;--sd-chip:#2B2620;--sd-chip-ink:#F1EADF;}
 .sd2[hidden]{display:none;}
 .sd2 [hidden]{display:none !important;}
-.sd2-scene{position:relative;flex:1 1 auto;min-height:430px;border-radius:18px;overflow:hidden;background:var(--sd-gr1);}
+.sd2-scene{container-type:inline-size;container-name:sd2;position:relative;flex:1 1 auto;min-height:430px;border-radius:18px;overflow:hidden;background:var(--sd-gr1);}
 .sd2-scene.is-point{cursor:pointer;}
 .sd2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
 @media (max-width:1023px){ .sd2-scene{flex:none;height:min(72vw,540px);min-height:430px;} }
 @media (max-width:640px){ .sd2-scene{height:max(450px,min(128vw,520px));border-radius:14px;} .sd2{gap:8px;} }
 .sd2-lines{display:flex;align-items:center;justify-content:space-between;gap:6px 18px;flex-wrap:wrap;flex:none;}
 .sd2-acts{display:flex;align-items:center;gap:6px 14px;flex:none;margin-left:auto;}
-.sd2-even{min-height:44px;background:var(--white);color:var(--cink);box-shadow:inset 0 0 0 2px var(--cink);font:800 14.5px var(--font-ui);cursor:pointer;}
-.sd2-even:disabled{box-shadow:inset 0 0 0 2px color-mix(in srgb, var(--ink) 30%, transparent);color:var(--muted);}
+.sd2 .sd2-even{min-height:44px;background:var(--white);color:var(--cink);box-shadow:inset 0 0 0 2px var(--cink);font:800 14.5px var(--font-ui);cursor:pointer;}
+.sd2 .sd2-even:disabled{box-shadow:inset 0 0 0 2px color-mix(in srgb, var(--ink) 30%, transparent);color:var(--muted);}
 .sd2 .tk2-cz.is-rich{--cz:var(--sd-rich);--cz-ink:var(--sd-rich-ink);}
 .sd2 .tk2-cz.is-even{--cz:var(--sd-even);--cz-ink:var(--sd-even-ink);}
 .sd2 .tk2-cz.is-div{--cz:var(--sd-div);--cz-ink:var(--sd-div-ink);}
 /* a phone: the cause line keeps two rows whatever it says (no jump under the picture) */
-@media (max-width:640px){ .sd2-lines .tk2-cause{flex-basis:100%;min-height:66px;align-content:flex-start;} .sd2-acts{margin-left:0;width:100%;justify-content:space-between;} }
+@media (max-width:640px){ .sd2-lines .tk2-cause{flex-basis:100%;min-height:68px;align-content:flex-start;} .sd2-acts{margin-left:0;width:100%;justify-content:space-between;} }
 
 /* the scene */
 .sd2-sky{fill:url(#sd2g-sky);} .sd2s-sky0{stop-color:var(--sd-sky0);} .sd2s-sky1{stop-color:var(--sd-sky1);}
@@ -102,6 +102,7 @@
 .sd2-g-maxl{--at:50%;}
 .sd2-g-maxl{text-align:left;padding-left:clamp(0px, calc(var(--at) - 44px), calc(100% - 92px));transition:padding-left .3s ease;}
 @media (max-width:640px){ .sd2-gauge{top:8px;right:8px;width:min(232px,calc(100% - 16px));padding:6px 10px 5px;} .sd2-g-v{font-size:18px;} .sd2-g-k{font-size:12.5px;} }
+@container sd2 (max-width:599px){ .sd2-gauge{top:8px;right:8px;width:min(232px,calc(100% - 16px));padding:6px 10px 5px;} .sd2-g-v{font-size:18px;} .sd2-g-k{font-size:12.5px;} }
 @media (prefers-reduced-motion: reduce){ .sd2-g-fill,.sd2-g-max,.sd2-g-maxl{transition:none;} }
 
 /* the tray on the picture: what a tap plants */
@@ -132,10 +133,22 @@
   .sd2-chip-bar{left:5px;right:5px;}
   .sd2-chip[aria-checked="true"]{box-shadow:0 0 0 3px var(--cink), 0 0 0 5px #fff;}
 }
+/* the same by the picture's own width */
+@container sd2 (max-width:800px){ .sd2-tray{gap:6px;padding:8px 8px 8px;} .sd2-chip{padding:4px 9px 9px 6px;gap:0 5px;} .sd2-tray-k{display:none;} }
+@container sd2 (max-width:599px){
+  .sd2-tray{gap:5px;padding:7px 6px 7px;}
+  .sd2-chip{flex:1 1 0;min-width:0;grid-template-columns:auto auto;gap:0 3px;padding:3px 2px 9px;font-size:11.5px;min-height:56px;border-radius:11px;}
+  .sd2-chip .sd2-ico{width:22px;height:30px;justify-self:end;} .sd2-chip .sd2-axe{width:24px;height:24px;grid-column:1 / -1;justify-self:center;}
+  .sd2-chip-c{font-size:14.5px;text-align:left;min-width:0;}
+  .sd2-chip-n{grid-column:1 / -1;grid-row:2;text-align:center;line-height:1.1;}
+  .sd2-chip-bar{left:5px;right:5px;}
+  .sd2-chip[aria-checked="true"]{box-shadow:0 0 0 3px var(--cink), 0 0 0 5px #fff;}
+}
 @media (prefers-reduced-motion: reduce){ .sd2-chip-bar i{transition:none;} .sd2-chip[aria-checked="true"]{transform:none;} }
 
 /* Test yourself, Build a community: the same plot, no cause line */
 .sd2-dock{display:flex;flex-direction:column;gap:12px;}
+.sd2[data-view="build"] .sd2-acts{margin-left:0;}
 
 /* "?" */
 .sd2-ref-t{width:100%;border-collapse:collapse;font:700 14px var(--font-ui);}
