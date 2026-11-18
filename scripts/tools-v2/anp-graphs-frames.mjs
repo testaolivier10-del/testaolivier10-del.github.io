@@ -43,12 +43,14 @@ const res = await page.evaluate(() => {
   const bb = (e) => e.getBoundingClientRect();
   const inter = (a, b) => a.left < b.right - 1 && a.right > b.left + 1 && a.top < b.bottom - 1 && a.bottom > b.top + 1;
   function sweep(id, x0, x1, step, check){
-    A.tab(id); let n = 0;
+    A.tab(id); let n = 0, missing = 0; const want = sc(id).series.length;
     for (let x = x0; x <= x1 + 1e-9; x += step){ const xx = Math.round(x * 1000) / 1000; frame(xx); check(xx, sc(id)); n++;
       // no curve name across the cursor line
       const knob = document.querySelector('.gx-plot .tk2-in'), PLx = document.querySelector('.gx-pt');
       if (PLx){ const cx = bb(PLx).left + bb(PLx).width / 2; document.querySelectorAll('.gx-cname').forEach((t) => { const r = bb(t); if (cx > r.left - 2 && cx < r.right + 2) out.push(id + ' x=' + xx + ': curve name "' + t.textContent + '" across the cursor'); }); }
+      if (document.querySelectorAll('.gx-cname').length < want) missing++;
     }
+    if (missing > n * 0.1) out.push(id + ': a curve name is missing on ' + missing + ' of ' + n + ' frames');
     counts[id] = n;
   }
   // Axon

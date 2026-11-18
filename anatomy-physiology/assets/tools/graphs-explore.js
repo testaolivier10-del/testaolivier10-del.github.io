@@ -99,8 +99,8 @@
       purpose: 'Pressure differences open and shut the heart’s valves',
       series: [
         { id: 'aortic', role: 'ao', label: 'aorta', at: [0.66, 0], dy: -12 },
-        { id: 'lv', role: 'lv', label: 'left ventricle', at: [0.365, 0], dy: -12 },
-        { id: 'la', role: 'la', label: 'left atrium', at: [0.7, 0], dy: -10 }
+        { id: 'lv', role: 'lv', label: 'left ventricle', short: 'ventricle', at: [0.365, 0], dy: -12 },
+        { id: 'la', role: 'la', label: 'left atrium', short: 'atrium', at: [0.7, 0], dy: -10 }
       ],
       step: 0.005, start: 0.3, xName: 'Time', xUnit: 's', xFmt: function(x){ return x.toFixed(2) + ' s'; },
       cueText: 'Drag the graph',
@@ -345,7 +345,7 @@
     SCENES.push({
       id: 'rbc', graph: 'oxygen-hemoglobin', tab: 'Red blood cell', short: 'Red cell',
       purpose: 'How much oxygen hemoglobin holds at each PO2',
-      series: [{ id: 'normal', role: 'o2', label: 'hemoglobin saturation', at: [62, 0], dy: 20 }],
+      series: [{ id: 'normal', role: 'o2', label: 'hemoglobin saturation', short: 'saturation', at: [62, 0], dy: 20 }],
       step: 1, start: 100, xName: 'PO2', xUnit: 'mm Hg', xFmt: function(x){ return Math.round(x) + ' mm Hg'; },
       cueText: 'Drag the graph',
       region: function(p){ return p >= 60 ? { x0: 60, x1: 100, name: 'flat top' } : p >= 10 && p <= 50 ? { x0: 10, x1: 50, name: 'steep middle' } : null; },
@@ -444,7 +444,7 @@
       id: 'axon', graph: 'neuron-action-potential', tab: 'Axon', short: 'Axon',
       crop: function(narrow){ return narrow ? [58, 330] : null; },   // a phone shows three channels, bigger
       purpose: 'Which channels are open makes each part of the spike',
-      series: [{ id: 'ap', role: 'v', label: 'membrane potential', at: [3.55, 0], dy: -12, anchor: 'start' }],
+      series: [{ id: 'ap', role: 'v', label: 'membrane potential', short: 'potential', at: [3.55, 0], dy: -12, anchor: 'start' }],
       step: 0.05, start: 0, xName: 'Time', xUnit: 'ms', xFmt: function(x){ return x.toFixed(2) + ' ms'; },
       cueText: 'Drag the graph',
       region: function(t){ var r = null; (E0.g.regions || []).forEach(function(q){ if(t >= q.x0 && t <= q.x1) r = q; }); return r ? { x0: r.x0, x1: r.x1 } : null; },
@@ -542,7 +542,7 @@
     SCENES.push({
       id: 'sarcomere', graph: 'mt-length-tension', tab: 'Sarcomere', short: 'Sarcomere',
       purpose: 'Filament overlap sets how hard a muscle fiber can pull',
-      series: [{ id: 'lt', role: 'xb', label: 'active tension', at: [140, 0], dy: -14, anchor: 'start' }],
+      series: [{ id: 'lt', role: 'xb', label: 'active tension', short: 'tension', at: [140, 0], dy: -14, anchor: 'start' }],
       step: 1, start: 100, xName: 'Sarcomere length', xUnit: '% of resting', xFmt: function(x){ return Math.round(x) + '%'; },
       cueText: 'Drag the graph',
       region: function(x){ var r = null; (E0.gs.regions || []).forEach(function(q){ if(x >= q.x0 && x <= q.x1) r = q; }); return r ? { x0: r.x0, x1: r.x1 } : null; },
@@ -756,7 +756,7 @@
       return w > 0 ? (TW[se.role + se.label] = w) : se.label.length * 7.2;
     }
     function names(x){
-      var sc = cur, P = PL, cxp = P.sx(x), bucket = Math.round(cxp / 4), key = sc.id + ':' + bucket + ':' + P.w + 'x' + P.h;
+      var sc = cur, P = PL, cxp = P.sx(x), cxt = P.sx(view.target), bucket = Math.round(cxp / 4) + ':' + Math.round(cxt / 4), key = sc.id + ':' + bucket + ':' + P.w + 'x' + P.h;
       if(P.nk === key) return; P.nk = key;
       var placed = [], out = '', n = 28;
       function hitsCurve(b){
@@ -765,17 +765,19 @@
         return false;
       }
       function inter(a, b){ return a[0] < b[2] && a[2] > b[0] && a[1] < b[3] && a[3] > b[1]; }
-      sc.series.forEach(function(se){
+      var phone = P.w < 420;   // a phone's graph is narrow: the short name, so it can always step off the cursor
+      sc.series.forEach(function(se0){
+        var se = phone && se0.short ? { id: se0.id, role: se0.role, label: se0.short, at: se0.at, dy: se0.dy, anchor: se0.anchor } : se0;
         var f = sc.fn(se.id), tw = textW(se), pref = P.sx(se.at[0]), best = null;
         var cands = [];
-        for(var i = 0; i <= n; i++){ var lx = P.x0 + 4 + (P.x1 - P.x0 - 8 - tw) * i / n; [se.dy || -12, 20, -24, 32, -36].forEach(function(dy, k){ cands.push({ bx: lx, dy: dy, cost: Math.abs(lx + (se.anchor === 'start' ? 0 : tw / 2) - pref) + k * 30 }); }); }
+        for(var i = 0; i <= n; i++){ var lx = P.x0 + 4 + (P.x1 - P.x0 - 8 - tw) * i / n; [se.dy || -12, 20, -24, 32, -36, 46, -50, 64, -72].forEach(function(dy, k){ cands.push({ bx: lx, dy: dy, cost: Math.abs(lx + (se.anchor === 'start' ? 0 : tw / 2) - pref) + k * 30 }); }); }
         cands.sort(function(a, b){ return a.cost - b.cost; });
         for(var c = 0; c < cands.length && !best; c++){
           var q = cands[c], mid = q.bx + tw / 2, v = f(P.X.min + (mid - P.x0) / (P.x1 - P.x0) * (P.X.max - P.X.min));
           var ly = P.sy(clamp(v, P.Y.min, P.Y.max)) + q.dy;
           if(ly < P.y0 + 26 || ly > P.y1 - (sc.id === 'rbc' ? 22 : 6)) continue;   // the red cell's region name sits at the bottom
           var bx = [q.bx - 2, ly - 12, q.bx + tw + 2, ly + 4];
-          if(cxp > bx[0] - 8 && cxp < bx[2] + 8) continue;
+          if((cxp > bx[0] - 8 && cxp < bx[2] + 8) || (cxt > bx[0] - 8 && cxt < bx[2] + 8)) continue;   // the dot and the knob's line
           if(placed.some(function(o){ return inter(o, bx); }) || P.keep.some(function(o){ return inter(o, bx); }) || hitsCurve(bx)) continue;
           best = { x: q.bx, y: ly, b: bx };
         }
@@ -911,7 +913,7 @@
         return hit;
       },
       _scenes: scenes, _view: view, _go: go,
-      _frame: function(x){ if(raf){ cancelAnimationFrame(raf); raf = 0; } view.x = view.target = cur.x = x; draw(); }   // the frame test draws one moment
+      _frame: function(x){ if(raf){ cancelAnimationFrame(raf); raf = 0; } view.x = view.target = cur.x = x; if(scrub) scrub.value(x, false); draw(); }   // the frame test draws one moment
     };
     window.AnpGraphExplore.current = api;   // for the sweep test (scripts/tools-v2/anp-graphs-sweep.mjs)
     return api;
