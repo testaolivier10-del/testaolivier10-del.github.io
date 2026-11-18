@@ -104,3 +104,8 @@
 .os2-predict[hidden]{display:none;}
 .os2-hint{margin:0;}
 .os2-go .btn-press{min-height:44px;}
+.os2-rbc.is-strain{stroke-width:.9;fill-opacity:.9;}
+.os2-rbc.is-emptying{stroke:none;}
+.os2-fade{pointer-events:none;}
+.os2 .tk2-tabs.is-big .tk2-tab{flex:0 0 auto;}
+@media (max-width:420px){ .os2 .tk2-tabs.is-big{gap:6px;} .os2 .tk2-tabs.is-big .tk2-tab{padding:0 13px 0 9px;font-size:15px;gap:6px;} }

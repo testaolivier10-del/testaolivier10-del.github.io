@@ -220,9 +220,12 @@ next (audit of the other banks, ochem per-option lines, tool rebuild mockups).
 
 ## Tools v2 (the standard for every tool, 2026-11-17)
 
-`docs/tools-v2-standard.md` holds the 11 rules and the process (owner approved; it supersedes the frame only
+`docs/tools-v2-standard.md` holds the 15 rules and the process (owner approved; it supersedes the frame only
 standard in `docs/tools-frame-2026-11.md`); read it before building or rebuilding any tool. Flagship and worked
 example: `docs/tools-v2-water-pollution-brief.md`. Kit: `assets/course/tool-kit2.js` (opt in).
+The owner does not review each tool: the builder's check and an independent review replace his look, and every
+decision made for him is one line in `docs/tools-v2-owner-log.md`. Second tool and the biology adapter:
+`docs/tools-v2-osmosis-brief.md`.
 
 ## Tool visuals (2026-11)
 
