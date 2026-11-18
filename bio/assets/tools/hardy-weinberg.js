@@ -20,6 +20,8 @@
    TEST YOURSELF, one dropdown on the stage:
      "Set the alleles" (the old Explore's "Try this" targets, now checked): the bed is planted but not in bloom;
        set p for the target, then let it bloom. Recorded as hardy-weinberg:target-<id>.
+       The targets about a hidden recessive (sp: "pea") use a second bed: pea plants, A purple dominant over a
+       white, so AA and Aa look the same; after the bloom two signs (purple, white) and the Aa plot named carriers.
      "Problems" (the calculations: ApBioTools.skillTool, unchanged in content, grading and record ids): new numbers every time or
        the worked set; the figure shows the problem's individuals as pairs of alleles and the gene pool square split
        at the p the student types.
@@ -38,29 +40,54 @@
   var GC = ['g0', 'g1', 'g2'];
 
   /* ------------------------------------------------------------ drawn parts (symbols; origin at the soil) */
-  function bloom(x, y, k, side){
+  /* Shapes are few on purpose: a hundred plants repaint during a drag (review round 1, must fix 3). A floret is
+     drawn without a group or transform: its lip and hood are placed directly. */
+  function bloom(x, y, k, side, throat){
     var s = side < 0 ? -1 : 1;
-    return '<g transform="translate(' + n1(x) + ' ' + n1(y) + ') scale(' + (s * k).toFixed(2) + ' ' + k.toFixed(2) + ')">' +
-      '<ellipse class="hw2-lip" cx="1.6" cy="1.8" rx="6.6" ry="5.2"/><ellipse class="hw2-hood" cx="-0.4" cy="-2.4" rx="5.2" ry="4.2"/><circle class="hw2-throat" cx="2.6" cy="0.4" r="1.5"/></g>';
+    return '<ellipse class="hw2-lip" cx="' + n1(x + s * 1.6 * k) + '" cy="' + n1(y + 1.8 * k) + '" rx="' + n1(6.6 * k) + '" ry="' + n1(5.2 * k) + '"/><ellipse class="hw2-hood" cx="' + n1(x - s * 0.4 * k) + '" cy="' + n1(y - 2.4 * k) + '" rx="' + n1(5.2 * k) + '" ry="' + n1(4.2 * k) + '"/>' +
+      (throat ? '<circle class="hw2-throat" cx="' + n1(x + s * 2.6 * k) + '" cy="' + n1(y + 0.4 * k) + '" r="' + n1(1.5 * k) + '"/>' : '');
   }
-  function spike(dx, lean, top){
+  function spike(dx, lean, top, few){
     // one flowering stem: the stem, then florets up it, smaller toward the tip, and a bud
     var h = '<path class="hw2-stem" d="M' + n1(dx) + ' 0C' + n1(dx + lean * 0.3) + ' ' + n1(top * 0.35) + ' ' + n1(dx + lean * 0.8) + ' ' + n1(top * 0.7) + ' ' + n1(dx + lean) + ' ' + n1(top) + '"/>';
-    var ys = [0.5, 0.61, 0.72, 0.82, 0.91], ks = [1, 0.95, 0.85, 0.72, 0.58];
-    for(var i = 0; i < ys.length; i++){ var s = i % 2 ? 1 : -1; h += bloom(dx + lean * ys[i] + s * 4.6 * ks[i], top * ys[i], ks[i], s); }
+    var ys = few ? [0.55, 0.72, 0.88] : [0.5, 0.63, 0.76, 0.89], ks = few ? [1, 0.88, 0.7] : [1, 0.92, 0.8, 0.64];
+    for(var i = 0; i < ys.length; i++){ var s = i % 2 ? 1 : -1; h += bloom(dx + lean * ys[i] + s * 4.6 * ks[i], top * ys[i], ks[i], s, !few && i < 2); }
     return h + '<ellipse class="hw2-bud" cx="' + n1(dx + lean) + '" cy="' + n1(top - 1) + '" rx="2.3" ry="3.3"/>';
+  }
+  /* a pea flower (Pisum: the banner petal above, the wings and keel below) and a pea plant: a climbing stem with
+     paired leaflets, a tendril and flowers on short stalks */
+  function pflower(x, y, k, side){
+    var s = (side < 0 ? -1 : 1) * k, X = function(v){ return n1(x + s * v); }, Y = function(v){ return n1(y + k * v); };
+    return '<path class="hw2-ban" d="M' + X(-1) + ' ' + Y(2) + 'C' + X(-7) + ' ' + Y(1) + ' ' + X(-8) + ' ' + Y(-7) + ' ' + X(-2) + ' ' + Y(-8) + 'C' + X(1) + ' ' + Y(-8.5) + ' ' + X(5) + ' ' + Y(-6) + ' ' + X(4) + ' ' + Y(-1) + 'Z"/>' +
+      '<path class="hw2-wing" d="M' + X(-2) + ' ' + Y(1) + 'C' + X(0) + ' ' + Y(5) + ' ' + X(5) + ' ' + Y(6) + ' ' + X(7) + ' ' + Y(3) + 'C' + X(6) + ' ' + Y(0) + ' ' + X(2) + ' ' + Y(-1) + ' ' + X(-2) + ' ' + Y(1) + 'Z"/>';
+  }
+  function peaStem(dx, lean, top, n){
+    var h = '<path class="hw2-stem" d="M' + n1(dx) + ' 0C' + n1(dx + lean * 0.3) + ' ' + n1(top * 0.35) + ' ' + n1(dx + lean * 0.8) + ' ' + n1(top * 0.7) + ' ' + n1(dx + lean) + ' ' + n1(top) + '"/>';
+    h += '<path class="hw2-tendril" d="M' + n1(dx + lean) + ' ' + n1(top) + 'c3 -3 7 -2 6 2c-1 2 -4 1 -3 -1"/>';
+    var ys = n === 3 ? [0.55, 0.72, 0.88] : [0.5, 0.64, 0.78, 0.9], ks = n === 3 ? [1, 0.9, 0.75] : [1, 0.95, 0.85, 0.72];
+    for(var i = 0; i < ys.length; i++){ var s = i % 2 ? 1 : -1; h += pflower(dx + lean * ys[i] + s * 5 * ks[i], top * ys[i], ks[i], s); }
+    return h;
   }
   function leaf(x, y, w, s){ return '<path class="hw2-leaf" d="M' + n1(x) + ' ' + n1(y) + 'q' + n1(s * w * 0.5) + ' ' + n1(-w * 0.42) + ' ' + n1(s * w) + ' ' + n1(-w * 0.2) + 'q' + n1(-s * w * 0.42) + ' ' + n1(w * 0.42) + ' ' + n1(-s * w) + ' ' + n1(w * 0.2) + 'z"/>'; }
   function leaves(dx){ return leaf(dx, -7, 15, 1) + leaf(dx, -8, 15, -1) + leaf(dx, -16, 13, 1) + leaf(dx, -17, 13, -1) + leaf(dx, -25, 10, 1) + leaf(dx, -26, 10, -1); }
+  /* The drawings of a plant, in plant units (the base of the stem at 0 0, about 62 tall). Each is turned into one
+     image per genotype and colour scheme (sprites() in the tool), so a plant on the bed is one <use> of one <image>:
+     a hundred plants then repaint cheaply during a drag (review round 1, must fix 3). */
+  var PLANT = {
+    plant1: '<ellipse class="hw2-shade" cx="3" cy="0" rx="13" ry="3.2"/>' + leaves(0) + spike(0, 0, -58),
+    plant3: '<ellipse class="hw2-shade" cx="3" cy="0" rx="22" ry="3.6"/>' + leaf(-3, -6, 17, -1) + leaf(3, -6, 17, 1) + leaf(-2, -14, 14, -1) + leaf(2, -14, 14, 1) +
+      spike(-3, -15, -46) + spike(3, 15, -46) + leaf(0, -22, 11, 1) + leaf(0, -23, 11, -1) + spike(0, 0, -58),
+    pea1: '<ellipse class="hw2-shade" cx="3" cy="0" rx="13" ry="3.2"/>' + leaves(0) + peaStem(0, 0, -58, 4),
+    pea3: '<ellipse class="hw2-shade" cx="3" cy="0" rx="22" ry="3.6"/>' + leaf(-3, -6, 17, -1) + leaf(3, -6, 17, 1) + leaf(-2, -14, 14, -1) + leaf(2, -14, 14, 1) +
+      peaStem(-3, -15, -46, 3) + peaStem(3, 15, -46, 3) + leaf(0, -22, 11, 1) + leaf(0, -23, 11, -1) + peaStem(0, 0, -58, 4),
+    sprout: '<ellipse class="hw2-shade" cx="1" cy="0" rx="7" ry="2.2"/><path class="hw2-stem" d="M0 0V-13"/>' + leaf(0, -9, 11, 1) + leaf(0, -10, 11, -1) + '<ellipse class="hw2-leaf" cx="0" cy="-15" rx="2" ry="3"/>'
+  };
+  var PBOX = [-34, -68, 68, 76];   // the box every drawing fits in
   var DEFS = '<defs>' +
     '<linearGradient id="hw2g-lawn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="hw2s-la0"/><stop offset="1" class="hw2s-la1"/></linearGradient>' +
     '<linearGradient id="hw2g-soil" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="hw2s-so0"/><stop offset="1" class="hw2s-so1"/></linearGradient>' +
     '<linearGradient id="hw2g-wood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="hw2s-wd0"/><stop offset="1" class="hw2s-wd1"/></linearGradient>' +
-    '<symbol id="hw2-plant1" overflow="visible"><ellipse class="hw2-shade" cx="3" cy="0" rx="13" ry="3.2"/>' + leaves(0) + spike(0, 0, -58) + '</symbol>' +
-    '<symbol id="hw2-plant3" overflow="visible"><ellipse class="hw2-shade" cx="3" cy="0" rx="22" ry="3.6"/>' + leaf(-3, -6, 17, -1) + leaf(3, -6, 17, 1) + leaf(-2, -14, 14, -1) + leaf(2, -14, 14, 1) +
-      spike(-3, -15, -46) + spike(3, 15, -46) + leaf(0, -22, 11, 1) + leaf(0, -23, 11, -1) + spike(0, 0, -58) + '</symbol>' +
-    '<symbol id="hw2-sprout" overflow="visible"><ellipse class="hw2-shade" cx="1" cy="0" rx="7" ry="2.2"/><path class="hw2-stem" d="M0 0V-13"/>' + leaf(0, -9, 11, 1) + leaf(0, -10, 11, -1) + '<ellipse class="hw2-leaf" cx="0" cy="-15" rx="2" ry="3"/></symbol>' +
-    '</defs>';
+    '</defs><defs class="hw2-spr"></defs>';
 
   /* ------------------------------------------------------------ Calculations: the figure of a problem
      The problem's individuals, each a pair of alleles (up to 100, in proportion), beside the gene pool square split
@@ -81,10 +108,10 @@
     if(s > 0) h.push('<rect class="hw2f-bar is-p" x="' + X0 + '" y="' + (Y0 - 11) + '" width="' + n1(s) + '" height="7" rx="3"/><rect class="hw2f-bar is-p" x="' + (X0 - 11) + '" y="' + Y0 + '" width="7" height="' + n1(s) + '" rx="3"/>');
     if(Z - s > 0) h.push('<rect class="hw2f-bar is-q" x="' + n1(X0 + s) + '" y="' + (Y0 - 11) + '" width="' + n1(Z - s) + '" height="7" rx="3"/><rect class="hw2f-bar is-q" x="' + (X0 - 11) + '" y="' + n1(Y0 + s) + '" width="7" height="' + n1(Z - s) + '" rx="3"/>');
     h.push('<rect class="hw2f-frame" x="' + X0 + '" y="' + Y0 + '" width="' + Z + '" height="' + Z + '"/>');
-    if(s > 34) h.push('<text class="hw2f-ph" x="' + n1(X0 + s / 2) + '" y="' + (Y0 - 17) + '" text-anchor="middle">' + esc(A) + ': p</text>');
-    if(Z - s > 34) h.push('<text class="hw2f-ph" x="' + n1(X0 + s + (Z - s) / 2) + '" y="' + (Y0 - 17) + '" text-anchor="middle">' + esc(a) + ': q</text>');
-    if(s > 34) h.push('<text class="hw2f-ph" transform="translate(' + (X0 - 16) + ' ' + n1(Y0 + s / 2) + ') rotate(-90)" text-anchor="middle">' + esc(A) + ': p</text>');
-    if(Z - s > 34) h.push('<text class="hw2f-ph" transform="translate(' + (X0 - 16) + ' ' + n1(Y0 + s + (Z - s) / 2) + ') rotate(-90)" text-anchor="middle">' + esc(a) + ': q</text>');
+    if(s > 22) h.push('<text class="hw2f-ph" x="' + n1(X0 + s / 2) + '" y="' + (Y0 - 17) + '" text-anchor="middle">' + esc(A) + ': p</text>');
+    if(Z - s > 22) h.push('<text class="hw2f-ph" x="' + n1(X0 + s + (Z - s) / 2) + '" y="' + (Y0 - 17) + '" text-anchor="middle">' + esc(a) + ': q</text>');
+    if(s > 22) h.push('<text class="hw2f-ph" transform="translate(' + (X0 - 16) + ' ' + n1(Y0 + s / 2) + ') rotate(-90)" text-anchor="middle">' + esc(A) + ': p</text>');
+    if(Z - s > 22) h.push('<text class="hw2f-ph" transform="translate(' + (X0 - 16) + ' ' + n1(Y0 + s + (Z - s) / 2) + ') rotate(-90)" text-anchor="middle">' + esc(a) + ': q</text>');
     h.push('<text class="hw2f-ph hw2f-dim" x="' + (X0 + Z / 2) + '" y="' + (Y0 + Z + 17) + '" text-anchor="middle">one allele from each parent</text>');
     return h.join('');
   }
@@ -135,26 +162,42 @@
   function boot(){
     var K = window.LevlKit2;
     T.mount(SLUG, function(app, data, ctx){
-      var EX = data.explore, TG = data.targets || [], N = EX.side, NN = N * N, A = EX.A, a = EX.a, PH = EX.phen;
-      var GN = [A + A, A + a, a + a];
+      var EX = data.explore, TG = data.targets || [], N = EX.side, NN = N * N;
+      /* Two species. Explore is snapdragons (incomplete dominance: every genotype shows). Targets about a hidden
+         recessive use pea plants (complete dominance: AA and Aa both purple, aa white), so carriers are met. */
+      var SPS = { snap: { A: EX.A, a: EX.a, phen: EX.phen, name: EX.name || 'snapdragons', sym: 'hw2-plant' }, pea: data.pea ? { A: data.pea.A, a: data.pea.a, phen: data.pea.phen, name: data.pea.name, sym: 'hw2-pea', dom: true } : null };
+      var SP = SPS.snap, A = SP.A, a = SP.a, PH = SP.phen, GN = [A + A, A + a, a + a];
+      function setSp(id){
+        var sp = SPS[id] || SPS.snap;
+        if(sp === SP) return false;
+        SP = sp; A = sp.A; a = sp.a; PH = sp.phen; GN = [A + A, A + a, a + a];
+        stage.setAttribute('data-sp', sp.dom ? 'pea' : 'snap');
+        if(G){ drawTop(); drawPlants(); drawSigns.k = ''; drawSigns(); }
+        return true;
+      }
       var S = { n: Math.round(EX.p * N), mode: 'explore', part: null };
       var Q = { n: 5, i: -1, hidden: true, done: false, tried: false, t: null };   // Test yourself, "Set the alleles"
       function nNow(){ return S.mode === 'explore' ? S.n : Q.n; }
       function geno(n, r, c){ return (c < n ? 0 : 1) + (r < n ? 0 : 1); }
       function freq(n){ var p = n / N, q = 1 - p; return { p: p, q: q, f: [p * p, 2 * p * q, q * q], c: [n * n, 2 * n * (N - n), (N - n) * (N - n)] }; }
       function pct(v){ return Math.round(v * 10000 / NN) / 100; }   // plants as a percent of the bed
-      function countsText(n){ var c = freq(n).c; return pct(c[0]) + '% ' + GN[0] + ' ' + PH[0] + ', ' + pct(c[1]) + '% ' + GN[1] + ' ' + PH[1] + ', ' + pct(c[2]) + '% ' + GN[2] + ' ' + PH[2] + '.'; }
+      function countsText(n){ var c = freq(n).c;
+        if(SP.dom) return pct(c[0] + c[1]) + '% ' + PH[0] + ' (' + GN[0] + ' or ' + GN[1] + '), ' + pct(c[2]) + '% ' + PH[2] + ' (' + GN[2] + ').';
+        return pct(c[0]) + '% ' + GN[0] + ' ' + PH[0] + ', ' + pct(c[1]) + '% ' + GN[1] + ' ' + PH[1] + ', ' + pct(c[2]) + '% ' + GN[2] + ' ' + PH[2] + '.'; }
 
       /* ---------------------------------------------------- the stage */
-      var stage = document.createElement('div'); stage.className = 'hw2';
+      var stage = document.createElement('div'); stage.className = 'hw2'; stage.setAttribute('data-sp', 'snap');
       var head = K.head({ purpose: EX.purpose, how: { label: 'Show me how', onClick: function(){ startTour(); } } });
       stage.appendChild(head.el);
       var sceneBox = document.createElement('div'); sceneBox.className = 'hw2-scene'; sceneBox.id = T.nid('hw2');
       sceneBox.innerHTML = '<svg class="hw2-svg" role="img" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep">' + DEFS +
-        '<g class="hw2-static"></g><g class="hw2-twine"></g><g class="hw2-plants"></g><g class="hw2-top"></g><g class="hw2-signs"></g></svg>';
+        '<g class="hw2-static"></g><g class="hw2-plants"></g></svg>' +
+        // what moves with the knob (the twine, the gene pool, its labels) and the signs: their own layer, so a drag
+        // never repaints the hundred plants under them
+        '<svg class="hw2-svg hw2-over" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"><g class="hw2-twine"></g><g class="hw2-top"><g class="hw2-toks"></g><g class="hw2-labs"></g></g><g class="hw2-signs"></g></svg>';
       stage.appendChild(sceneBox);
-      var svg = sceneBox.querySelector('svg'), gStatic = svg.querySelector('.hw2-static'), gTwine = svg.querySelector('.hw2-twine'), gPlants = svg.querySelector('.hw2-plants'),
-        gTop = svg.querySelector('.hw2-top'), gSigns = svg.querySelector('.hw2-signs'), layer = K.layer(sceneBox), G = null;
+      var svg = sceneBox.querySelector('svg'), over = sceneBox.querySelector('.hw2-over'), gStatic = svg.querySelector('.hw2-static'), gTwine = over.querySelector('.hw2-twine'), gPlants = svg.querySelector('.hw2-plants'),
+        gTop = over.querySelector('.hw2-top'), gTok = over.querySelector('.hw2-toks'), gLab = over.querySelector('.hw2-labs'), toks = [], tokK = 0, gSigns = over.querySelector('.hw2-signs'), layer = K.layer(sceneBox), G = null;
       var lines = document.createElement('div'); lines.className = 'hw2-lines';
       var cause = K.cause({ label: 'Why' });
       lines.appendChild(cause.el); stage.appendChild(lines);
@@ -166,7 +209,7 @@
       var cP = K.drag(layer, { key: 'apbio-hw-p', label: 'p, the share of ' + A + ' alleles in the gene pool', min: 0, max: N, step: 1, value: S.n, track: [0, 0, 1, 0], chip: false,
         valuetext: function(v){ var f = freq(v); return 'p = ' + F(f.p, 1) + ', q = ' + F(f.q, 1) + '.' + (S.mode === 'explore' ? ' ' + countsText(v) : ''); },
         onInput: function(v){ if(S.mode === 'explore'){ S.n = v; tourDid('drag'); } else { if(!Q.hidden) return; Q.n = v; } changed(); },
-        onEnd: function(){ if(S.mode === 'explore'){ say(cause.text() + ' ' + countsText(S.n)); refHtml(); } } });
+        onEnd: function(){ if(S.mode === 'explore'){ say(sayWords() + ' ' + countsText(S.n)); refHtml(); } } });
       var cue = K.cue(layer, { key: 'apbio-hw', text: EX.cue, side: 'below', at: function(){ return G ? [G.bx0 + G.cw * nNow(), G.ty] : [0, 0]; } });
       function hideCue(used){ if(cue.active()) cue.hide(used); }
       stage.addEventListener('pointerdown', function(){ hideCue(true); }, true);
@@ -183,15 +226,39 @@
          drawn for plant i (-1: planted, not in bloom). A change of p sets when each plant that must change does
          so (the change runs from the allele that flipped, down its column and along its row), and one loop makes
          the flips; the signs count shown[], so a number never runs ahead of the bed. */
-      var shown = [], flipAt = [], nodes = [], tw = 0, lastFlip = 0, drawnN = null, sym = 'hw2-plant1';
+      var shown = [], flipAt = [], nodes = [], tw = 0, lastFlip = 0, drawnN = null, sym = 'plant1';
       (function(){ for(var i = 0; i < NN; i++){ shown.push(geno(S.n, Math.floor(i / N), i % N)); flipAt.push(0); } })();
       function busy(){ return !!tw; }
-      function use(g, cls){ return '<use href="#' + (g < 0 ? 'hw2-sprout' : sym) + '" class="hw2-pl ' + (g < 0 ? 'is-sprout' : GC[g]) + (cls ? ' ' + cls : '') + '"/>'; }
+      function href(g){ return '#hw2-s-' + (g < 0 ? 'sprout' : sym + '-' + g); }
+      /* The plant images: each drawing in PLANT, coloured for each genotype from this page's colour variables (light
+         or dark theme, snapdragon or pea), as one SVG image inside a symbol. Remade when the theme or species changes. */
+      var sprKey = '';
+      function sprites(){
+        var cs = getComputedStyle(stage), v = function(n, d){ return (cs.getPropertyValue(n) || '').trim() || d; };
+        var cols = [[v('--hw-r'), v('--hw-r-hi'), v('--hw-r-edge', '#7C1218')], [v('--hw-rw'), v('--hw-rw-hi'), '#B5477A'], [v('--hw-w-sh'), v('--hw-w'), v('--hw-w-edge')]];
+        if(SP.dom) cols[1] = cols[0];
+        var base = '.hw2-shade{fill:#000;fill-opacity:.26}.hw2-stem{fill:none;stroke:' + v('--hw-stem') + ';stroke-width:2.4;stroke-linecap:round}' +
+          '.hw2-tendril{fill:none;stroke:' + v('--hw-stem') + ';stroke-width:1.2;stroke-linecap:round}.hw2-leaf{fill:' + v('--hw-leaf') + ';stroke:' + v('--hw-leaf-ink') + ';stroke-width:.7}.hw2-throat{fill:' + v('--hw-throat') + '}';
+        var key = SP.sym + '|' + base + '|' + cols.join('|');
+        if(key === sprKey) return false;
+        sprKey = key;
+        function img(id, draw, c){
+          var css = base + (c ? '.hw2-lip,.hw2-bud,.hw2-wing{fill:' + c[0] + ';stroke:' + c[2] + ';stroke-width:.85}.hw2-hood,.hw2-ban{fill:' + c[1] + ';stroke:' + c[2] + ';stroke-width:.75}' : '');
+          var src = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="' + PBOX.join(' ') + '" width="' + PBOX[2] * 2 + '" height="' + PBOX[3] * 2 + '"><style>' + css + '</style>' + PLANT[draw] + '</svg>';
+          return '<symbol id="hw2-s-' + id + '" overflow="visible"><image href="data:image/svg+xml,' + encodeURIComponent(src) + '" x="' + PBOX[0] + '" y="' + PBOX[1] + '" width="' + PBOX[2] + '" height="' + PBOX[3] + '"/></symbol>';
+        }
+        var h = [img('sprout', 'sprout')];
+        ['1', '3'].forEach(function(k){ for(var g = 0; g < 3; g++) h.push(img(SP.sym.slice(4) + k + '-' + g, SP.sym.slice(4) + k, cols[g])); });
+        svg.querySelector('.hw2-spr').innerHTML = h.join('');
+        return true;
+      }
+      function plCls(g, cls){ return 'hw2-pl ' + (g < 0 ? 'is-sprout' : GC[g]) + (cls ? ' ' + cls : ''); }
+      function use(g){ return '<use href="' + href(g) + '" class="' + plCls(g) + '"/>'; }
       function shownCounts(){ var c = [0, 0, 0, 0]; for(var i = 0; i < NN; i++) c[shown[i] < 0 ? 3 : shown[i]]++; return c; }
       function target(i){ return S.mode !== 'explore' && Q.hidden ? -1 : geno(nNow(), Math.floor(i / N), i % N); }
-      function snap(){ for(var i = 0; i < NN; i++){ shown[i] = target(i); flipAt[i] = 0; } if(tw){ cancelAnimationFrame(tw); tw = 0; } }
+      function snap(){ for(var i = 0; i < NN; i++){ shown[i] = target(i); flipAt[i] = 0; if(growAt[i]){ growAt[i] = 0; plantAt(i, 1); } } if(tw){ cancelAnimationFrame(tw); tw = 0; } }
       function crossFade(){
-        var g = gPlants.cloneNode(true); g.setAttribute('class', 'hw2-plants hw2-fade'); svg.insertBefore(g, gTop);
+        var g = gPlants.cloneNode(true); g.setAttribute('class', 'hw2-plants hw2-fade'); svg.appendChild(g);
         var done = function(){ if(g.parentNode) g.parentNode.removeChild(g); };
         if(g.animate){ var an = g.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 240, easing: 'linear' }); an.onfinish = done; setTimeout(done, 400); } else done();
       }
@@ -221,18 +288,38 @@
       function tick(ts){
         var t = now(), pend = false, did = false;
         for(var i = 0; i < NN; i++){
-          if(!flipAt[i]) continue;
+          if(!flipAt[i]){ if(growAt[i] && grow(i, t)) pend = true; continue; }
           if(t >= flipAt[i]){
             var g = target(i), old = shown[i];
             flipAt[i] = 0;
-            if(g !== old){ shown[i] = g; if(nodes[i]) nodes[i].innerHTML = use(old, 'is-out') + use(g, 'is-in'); did = true; lastFlip = t; }
+            if(g !== old){
+              shown[i] = g; did = true; lastFlip = t;
+              // one <use> per plant: the new plant grows in where the old one stood
+              var u = nodes[i];
+              if(u){ if(href(g) !== href(old)) u.setAttribute('href', href(g)); u.setAttribute("class", plCls(g)); growAt[i] = t; growSt[i] = -1; }
+            }
           } else pend = true;
+          if(growAt[i] && grow(i, t)) pend = true;
         }
         if(did) drawSigns();
         if(pend || t - lastFlip < 300){ tw = requestAnimationFrame(tick); return; }
         tw = 0; syncWords(); drawSigns(); if(after){ var f = after; after = null; f(); }
       }
       var after = null;
+      /* The grow in: three sizes in 240 ms, set as the plant's own transform (an SVG attribute, not a CSS animation:
+         a hundred CSS animations made a drag stutter, review round 1). Returns true while still growing. */
+      var GROW = [0.55, 0.8, 1], growAt = [], growSt = [];
+      function grow(i, t){
+        var st = Math.min(2, Math.floor((t - growAt[i]) / 80));
+        if(st !== growSt[i]){ growSt[i] = st; plantAt(i, GROW[st]); }
+        if(st >= 2){ growAt[i] = 0; return false; }
+        return true;
+      }
+      function plantAt(i, f){
+        var g = G, w = nodes[i] && nodes[i].parentNode; if(!g || !w) return;
+        var r = Math.floor(i / N), c = i % N;
+        w.setAttribute('transform', 'translate(' + n1(g.bx0 + (c + 0.5) * g.cw) + ' ' + n1(g.rows + (r + 1) * g.rh - 3) + ') scale(' + (g.sx * f).toFixed(3) + ' ' + (g.sy * f).toFixed(3) + ')');
+      }
 
       /* ---- words: the cause line. While the bed is still changing it stops at p and q; the three shares are
          added when the plants show them. */
@@ -246,15 +333,21 @@
       function syncWords(){
         if(S.mode !== 'explore') return;
         var k = S.n + '|' + busy();
-        if(k !== wKey){ wKey = k; cause.set(chain()); }
+        if(k === wKey) return;
+        wKey = k;
+        var list = chain(), sp = cause.el.querySelectorAll('.tk2-cz'), sk = list.map(function(x){ return x.role; }).join();
+        // the same pills with new numbers (every step of a drag): only their text changes, nothing is rebuilt
+        if(sp.length === list.length && syncWords.sk === sk){ list.forEach(function(x, i){ var t = sp[i].firstChild; if(t && t.data !== x.t) t.data = x.t; }); return; }
+        syncWords.sk = sk; cause.set(list);
       }
+      function sayWords(){ var l = chain(); return l.map(function(x, i){ return (i ? (x.join === '+' ? ' and ' : ', then ') : '') + x.say; }).join('') + '.'; }
 
       /* ---------------------------------------------------- layout and drawing */
       function geo(Wd, H){
         var ph = Wd < 520, fs = ph ? 12.5 : 14.5, fsS = ph ? 10.5 : 12.5, tokR = ph ? 9.5 : Wd < 900 ? 11 : 12.5, tb = ph ? 5 : 8, fb = ph ? 9 : 13;
         var eL = ph ? 47 : 78, mr = ph ? 27 : 34, labY = (fs + 10) / 2 + 5, tokY = labY + (fs + 10) / 2 + 5 + tokR, by0 = tokY + tokR + 8 + 17 + tb / 2;
         var signH = ph ? 27 : 32, by1 = H - (fb + 9 + signH + 7), BH = by1 - by0, avail = Wd - eL - mr, BW = Math.min(avail, BH * 2.4), bx0 = eL + (avail - BW) / 2;
-        var rh = BH / (N + 0.16), cw = BW / N, hP = Math.min(rh * 1.12, cw * 2), sy = hP / 60, wide = cw / rh > 1.35;
+        var rh = BH / (N + 0.16), cw = BW / N, hP = Math.min(rh * 0.8, cw * 1.6), sy = hP / 61, wide = cw / rh > 0.85;
         var sx = wide ? clamp(cw * 0.37 / 22, sy * 0.9, sy * 1.55) : clamp(cw * 0.47 / 18, sy * 0.7, sy * 1.2);
         return { W: Wd, H: H, ph: ph, fs: fs, fsS: fsS, tokR: tokR, tb: tb, fb: fb, labY: labY, tokY: tokY, by0: by0, by1: by1, BH: BH, BW: BW, bx0: bx0, bx1: bx0 + BW, rh: rh, cw: cw,
           rows: by0 + 0.16 * rh, sx: sx, sy: sy, wide: wide, ty: by0 - tb / 2, eggX: bx0 - tb - tokR - (ph ? 17 : 12), signH: signH, signY: by1 + fb + 9 + signH / 2 };
@@ -264,6 +357,15 @@
         return '<g class="hw2-pill ' + cls + '"><rect x="' + n1(x - w / 2) + '" y="' + n1(y - h / 2) + '" width="' + n1(w) + '" height="' + n1(h) + '" rx="' + n1(h / 2) + '"/><text x="' + n1(x) + '" y="' + n1(y + fs * 0.36) + '" text-anchor="middle" style="font-size:' + fs + 'px">' + esc(text) + '</text></g>';
       }
       function pillW(text, fs){ return text.length * fs * 0.56 + 18; }
+      function showEl(e, on){ if(on) e.removeAttribute('display'); else e.setAttribute('display', 'none'); }
+      /* move and reword a pill built by pill(): attributes and the text node only, so nothing is added or removed */
+      function setPill(e, on, x, y, text, fs){
+        showEl(e, on); if(!on) return;
+        var r = e.firstChild, t = e.lastChild, w = pillW(text, fs), h = fs + 10;
+        r.setAttribute('x', n1(x - w / 2)); r.setAttribute('y', n1(y - h / 2)); r.setAttribute('width', n1(w)); r.setAttribute('height', n1(h)); r.setAttribute('rx', n1(h / 2));
+        t.setAttribute('x', n1(x)); t.setAttribute('y', n1(y + fs * 0.36)); t.style.fontSize = fs + 'px';
+        if(t.firstChild.data !== text) t.firstChild.data = text;
+      }
       function drawStatic(){
         var g = G, h = [], i, rg = M.rng(4107);
         h.push('<rect class="hw2-lawn" x="0" y="0" width="' + g.W + '" height="' + g.H + '"/>');
@@ -290,7 +392,7 @@
         h.push('<path class="hw2-edge" d="M' + n1(fx + 3) + ' ' + n1(g.by0 - g.tb + 1.2) + 'H' + n1(fx + fw - 3) + '"/>');
         // the two captions of the gene pool
         h.push('<text class="hw2-cap" x="' + n1(g.bx0 - (g.ph ? 2 : 8)) + '" y="' + n1(g.tokY + g.fsS * 0.36) + '" text-anchor="end" style="font-size:' + g.fsS + 'px">pollen</text>');
-        h.push('<text class="hw2-cap" x="' + n1(g.eggX) + '" y="' + n1(g.signY + g.fsS * 0.36) + '" text-anchor="middle" style="font-size:' + g.fsS + 'px">eggs</text>');
+        h.push('<text class="hw2-cap" x="' + n1(g.eggX) + '" y="' + n1(g.ty + g.fsS * 0.36) + '" text-anchor="middle" style="font-size:' + g.fsS + 'px">eggs</text>');
         gStatic.innerHTML = h.join('');
       }
       function tok(x, y, isA, egg, cls){
@@ -304,59 +406,140 @@
         if(!g) return;
         if(from == null) from = n;
         var lo = Math.min(from, n), hi = Math.max(from, n);
-        for(i = 0; i < N; i++) h.push(tok(g.bx0 + (i + 0.5) * g.cw, g.tokY, i < n, false, i >= lo && i < hi ? 'is-in' : ''));
-        for(i = 0; i < N; i++) h.push(tok(g.eggX, g.rows + (i + 0.5) * g.rh, i < n, true, i >= lo && i < hi ? 'is-in' : ''));
+        // the twenty alleles are built once per layout (and species); a change only turns the ones that flipped
+        var tk = g.W + '|' + g.H + '|' + A;
+        if(drawTop.k !== tk){
+          drawTop.k = tk;
+          for(i = 0; i < N; i++) h.push(tok(g.bx0 + (i + 0.5) * g.cw, g.tokY, i < n, false, ''));
+          for(i = 0; i < N; i++) h.push(tok(g.eggX, g.rows + (i + 0.5) * g.rh, i < n, true, ''));
+          gTok.innerHTML = h.join(''); h = []; gLab.innerHTML = '';
+          toks = Array.prototype.slice.call(gTok.children);
+        } else if(lo < hi){
+          tokK = 1 - tokK;
+          for(i = lo; i < hi; i++) [toks[i], toks[N + i]].forEach(function(e, j){
+            var isA = i < n, tx = e.querySelector('text').firstChild; e.setAttribute('class', 'hw2-tok ' + (isA ? 'is-r' : 'is-w') + (j ? ' is-egg' : '') + (tokK ? ' is-in' : ' is-in2'));
+            if(tx.data !== (isA ? A : a)) tx.data = isA ? A : a;
+          });
+        }
         // p over the R pollen, q over the W pollen (each only while there is something to name)
         var tp = 'p = ' + F(f.p, 1), tq = 'q = ' + F(f.q, 1), wp = pillW(tp, g.fs), wq = pillW(tq, g.fs);
         var xp = clamp(g.bx0 + n * g.cw / 2, wp / 2 + 3, g.W - wp / 2 - 3), xq = clamp(g.bx0 + (n + (N - n) / 2) * g.cw, wq / 2 + 3, g.W - wq / 2 - 3);
         if(n > 0 && n < N && xq - xp < (wp + wq) / 2 + 4){ var mid = (xp + xq) / 2; xp = mid - (wp + 4) / 2; xq = mid + (wq + 4) / 2; }
-        if(n > 0) h.push('<g class="hw2-lp">' + pill(xp, g.labY, tp, 'is-r', g.fs) + '</g>');
-        if(n < N) h.push('<g class="hw2-lq">' + pill(xq, g.labY, tq, 'is-w', g.fs) + '</g>');
-        gTop.innerHTML = h.join('');
-        if(n > 0 && n < N){
-          var xk = g.bx0 + n * g.cw, yk = g.rows + n * g.rh - 1.5;
-          t.push('<path class="hw2-string" d="M' + n1(xk) + ' ' + n1(g.by0 + 1) + 'V' + n1(g.by1 - 1) + '"/><path class="hw2-string" d="M' + n1(g.bx0 + 1) + ' ' + n1(yk) + 'H' + n1(g.bx1 - 1) + '"/>');
-          t.push('<circle class="hw2-peg" cx="' + n1(xk) + '" cy="' + n1(g.by1 - 2) + '" r="2.6"/><circle class="hw2-peg" cx="' + n1(g.bx0 + 2) + '" cy="' + n1(yk) + '" r="2.6"/><circle class="hw2-peg" cx="' + n1(g.bx1 - 2) + '" cy="' + n1(yk) + '" r="2.6"/>');
+        if(!gLab.firstChild){
+          gLab.innerHTML = '<g class="hw2-lp">' + pill(0, 0, 'p', 'is-r', g.fs) + '</g><g class="hw2-lq">' + pill(0, 0, 'q', 'is-w', g.fs) + '</g>';
+          gTwine.innerHTML = '<path class="hw2-string"/><path class="hw2-string"/><circle class="hw2-peg" r="2.6"/><circle class="hw2-peg" r="2.6"/><circle class="hw2-peg" r="2.6"/>';
         }
-        gTwine.innerHTML = t.join('');
+        setPill(gLab.children[0].firstChild, n > 0, xp, g.labY, tp, g.fs);
+        setPill(gLab.children[1].firstChild, n < N, xq, g.labY, tq, g.fs);
+        var tw2 = gTwine.children, on = n > 0 && n < N, xk = g.bx0 + n * g.cw, yk = g.rows + n * g.rh - 1.5;
+        for(i = 0; i < tw2.length; i++) showEl(tw2[i], on);
+        if(on){
+          tw2[0].setAttribute('d', 'M' + n1(xk) + ' ' + n1(g.by0 + 1) + 'V' + n1(g.by1 - 1)); tw2[1].setAttribute('d', 'M' + n1(g.bx0 + 1) + ' ' + n1(yk) + 'H' + n1(g.bx1 - 1));
+          [[xk, g.by1 - 2], [g.bx0 + 2, yk], [g.bx1 - 2, yk]].forEach(function(c, j){ tw2[2 + j].setAttribute('cx', n1(c[0])); tw2[2 + j].setAttribute('cy', n1(c[1])); });
+        }
         drawnN = n;
-        var al = S.mode === 'explore' ? 'A bed of ' + NN + ' snapdragons. p = ' + F(f.p, 1) + ' and q = ' + F(f.q, 1) + ': ' + countsText(n)
-          : 'A bed of ' + NN + ' snapdragons, ' + (Q.hidden ? 'planted but not in bloom. ' : 'in bloom. ') + 'p = ' + F(f.p, 1) + ' and q = ' + F(f.q, 1) + '.' + (Q.hidden ? '' : ' ' + countsText(n));
+        var al = S.mode === 'explore' ? 'A bed of ' + NN + ' ' + SP.name + '. p = ' + F(f.p, 1) + ' and q = ' + F(f.q, 1) + ': ' + countsText(n)
+          : 'A bed of ' + NN + ' ' + SP.name + ', ' + (Q.hidden ? 'planted but not in bloom. ' : 'in bloom. ') + 'p = ' + F(f.p, 1) + ' and q = ' + F(f.q, 1) + '.' + (Q.hidden ? '' : ' ' + countsText(n));
         if(drawTop.al !== al){ drawTop.al = al; svg.setAttribute('aria-label', al); }
+      }
+      var boxes = {};
+      function plantBox(id){
+        if(!boxes[id]){
+          var t = document.createElementNS('http://www.w3.org/2000/svg', 'g'); t.setAttribute('visibility', 'hidden'); t.innerHTML = PLANT[id]; over.appendChild(t);
+          try{ var b = t.getBBox(); boxes[id] = { x: b.x, y: b.y, width: b.width, height: b.height }; }catch(e){ boxes[id] = { x: -20, y: -62, width: 40, height: 66 }; }
+          over.removeChild(t);
+        }
+        return boxes[id];
       }
       function drawPlants(){
         var g = G, h = [];
-        sym = g.wide ? 'hw2-plant3' : 'hw2-plant1';
+        sym = SP.sym.slice(4) + (g.wide ? '3' : '1'); sprites();
         for(var i = 0; i < NN; i++){
           var r = Math.floor(i / N), c = i % N;
           h.push('<g class="hw2-p" transform="translate(' + n1(g.bx0 + (c + 0.5) * g.cw) + ' ' + n1(g.rows + (r + 1) * g.rh - 3) + ') scale(' + g.sx.toFixed(3) + ' ' + g.sy.toFixed(3) + ')">' + use(shown[i]) + '</g>');
         }
         gPlants.innerHTML = h.join('');
-        nodes = Array.prototype.slice.call(gPlants.children);
+        // the drawn box of one plant at full size (plant units times its scale), for the sweep: plants in a column
+        // must not touch (review round 1, must fix 2)
+        var bb = plantBox(sym);
+        gPlants.setAttribute('data-box', [bb.x * g.sx, bb.y * g.sy, bb.width * g.sx, bb.height * g.sy].map(function(v){ return v.toFixed(1); }).join(' '));
+        nodes = Array.prototype.map.call(gPlants.children, function(e){ return e.firstChild; });
+        for(var j = 0; j < NN; j++) growAt[j] = 0;
       }
-      /* The three signs in front of the bed count the plants as drawn. Hidden while a planted bed is not in bloom. */
+      /* The signs in front of the bed count the plants as drawn (snapdragons: one per genotype; peas: one per
+         flower colour, purple counting AA and Aa together). Hidden while a planted bed is not in bloom. Each sign is
+         sized from its measured text, and one font size per layout fits the longest text a sign can hold. */
+      var meas = null, mCache = {};
+      function textW(t, fs){
+        var k = t + '|' + fs;
+        if(mCache[k] == null){
+          if(!meas){ meas = document.createElementNS('http://www.w3.org/2000/svg', 'text'); meas.setAttribute('class', 'hw2-meas'); meas.setAttribute('aria-hidden', 'true'); over.appendChild(meas); }
+          meas.style.fontSize = fs + 'px'; meas.textContent = t;
+          mCache[k] = meas.getComputedTextLength() || t.length * fs * 0.62;
+        }
+        return mCache[k];
+      }
+      function signSet(c){
+        if(SP.dom) return [{ g: 0, lab: PH[0], n: c[0] + c[1] }, { g: 2, lab: PH[2], n: c[2] }];
+        return [0, 1, 2].map(function(i){ return { g: i, lab: GN[i], n: c[i] }; });
+      }
+      var sw0 = {};
+      function signW(lab, num, fs){
+        var k = lab + '|' + fs;
+        if(!sw0[k]){ var w0 = textW(lab + ' 0%', fs), w1 = textW(lab + ' 100%', fs); sw0[k] = [w0, (w1 - w0) / 2]; }
+        return sw0[k][0] + (num.length - 3) * sw0[k][1];
+      }
+      function signFit(k){
+        // the widest a sign's text can be: the longest label with 100%
+        var g = G, fs = g.ph ? 13.5 : 16, cap = g.BW / k - 8, dot = fs * 0.5, wMax = 0;
+        signSet([0, 0, 0]).forEach(function(s){ wMax = Math.max(wMax, textW(s.lab + ' 100%', fs)); });
+        var need = wMax + dot * 2 + 7 + 18;
+        if(need > cap) fs = Math.floor(fs * (cap - dot * 2 - 7 - 18) / wMax * 10) / 10;
+        return fs;
+      }
       function drawSigns(){
-        var g = G, c = shownCounts(), h = [];
+        var g = G, c = shownCounts();
         if(!g) return;
-        var key = c.join(',') + '|' + g.W + '|' + g.H;
+        var key = c.join(',') + '|' + g.W + '|' + g.H + '|' + (SP.dom ? 1 : 0) + busy();
         if(drawSigns.k === key) return;
         drawSigns.k = key;
-        if(c[3] < NN){
-          var pw = Math.min(g.ph ? 104 : 158, g.BW / 3 - 8), fs = g.ph ? 13.5 : 16;
-          for(var i = 0; i < 3; i++){
-            var x = g.bx0 + g.BW * (i + 0.5) / 3, y = g.signY, txt = GN[i] + ' ' + pct(c[i]) + '%', tw0 = txt.length * fs * 0.6, dot = fs * 0.5, x0 = x - (tw0 + dot * 2 + 7) / 2;
-            h.push('<g class="hw2-sign ' + GC[i] + '" data-g="' + i + '" data-n="' + c[i] + '"><path class="hw2-stake" d="M' + n1(x) + ' ' + n1(y - g.signH / 2 - 7) + 'V' + n1(y) + '"/><rect x="' + n1(x - pw / 2) + '" y="' + n1(y - g.signH / 2) + '" width="' + n1(pw) + '" height="' + g.signH + '" rx="7"/>' +
-              '<circle class="hw2-sdot" cx="' + n1(x0 + dot) + '" cy="' + n1(y) + '" r="' + n1(dot) + '"/><text x="' + n1(x0 + dot * 2 + 7) + '" y="' + n1(y + fs * 0.36) + '" style="font-size:' + fs + 'px"><tspan class="hw2-sg">' + GN[i] + '</tspan> ' + pct(c[i]) + '%</text></g>');
-          }
+        var set = signSet(c), k = set.length, fs = signFs[k] || (signFs[k] = signFit(k)), dot = fs * 0.5, cap = g.BW / k - 8, y = g.signY;
+        var bk = g.W + '|' + g.H + '|' + k + '|' + fs + '|' + A;
+        if(drawSigns.b !== bk){
+          drawSigns.b = bk;
+          gSigns.innerHTML = set.map(function(sg, i){
+            var x = g.bx0 + g.BW * (i + 0.5) / k;
+            return '<g class="hw2-sign ' + GC[sg.g] + '" data-g="' + sg.g + '"><path class="hw2-stake" d="M' + n1(x) + ' ' + n1(y - g.signH / 2 - 7) + 'V' + n1(y) + '"/><rect y="' + n1(y - g.signH / 2) + '" height="' + g.signH + '" rx="7"/>' +
+              '<circle class="hw2-sdot" cy="' + n1(y) + '" r="' + n1(dot) + '"/><text y="' + n1(y + fs * 0.36) + '" style="font-size:' + fs + 'px"><tspan class="hw2-sg">' + esc(sg.lab) + '</tspan> </text></g>';
+          }).join('') + '<g class="hw2-car">' + pill(0, 0, 'carriers', 'is-car', g.fs) + '</g>';
         }
-        gSigns.innerHTML = h.join('');
+        var on = c[3] < NN, kids = gSigns.children;
+        set.forEach(function(sg, i){
+          var e = kids[i], x = g.bx0 + g.BW * (i + 0.5) / k, num = ' ' + pct(sg.n) + '%', tw0 = signW(sg.lab, num, fs);
+          var cont = dot * 2 + 7 + tw0, pw = Math.min(cap, Math.max(g.ph ? 84 : 120, cont + 18)), x0 = x - cont / 2;
+          showEl(e, on); e.setAttribute('data-n', sg.n);
+          e.children[1].setAttribute('x', n1(x - pw / 2)); e.children[1].setAttribute('width', n1(pw));
+          e.children[2].setAttribute('cx', n1(x0 + dot));
+          var t = e.children[3]; t.setAttribute('x', n1(x0 + dot * 2 + 7)); if(t.lastChild.data !== num) t.lastChild.data = num;
+        });
+        // peas in bloom: name the hidden carriers on one pq plot, once the bed has settled
+        var n = nNow(), car = kids[k].firstChild, lab = GN[1] + ': carriers', pf = g.fs, pw2 = pillW(lab, pf), ph2 = pf + 10, at = null;
+        if(on && SP.dom && !c[3] && !busy() && n > 0 && n < N){
+          if(n * g.cw >= pw2 + 6 && (N - n) * g.rh >= ph2) at = [g.bx0 + n * g.cw / 2, g.rows + (n + (N - n) / 2) * g.rh - g.rh * 0.3];
+          else if((N - n) * g.cw >= pw2 + 6 && n * g.rh >= ph2) at = [g.bx0 + (n + (N - n) / 2) * g.cw, g.rows + n / 2 * g.rh - g.rh * 0.3];
+        }
+        setPill(car, !!at, at ? at[0] : 0, at ? at[1] : 0, lab, pf);
       }
+      var signFs = {};
       function layoutNow(){
         if(stage.hidden) return;
         var r = sceneBox.getBoundingClientRect(), Wd = Math.max(280, Math.round(r.width)), H = Math.max(300, Math.round(r.height));
-        svg.setAttribute('viewBox', '0 0 ' + Wd + ' ' + H); svg.setAttribute('width', Wd); svg.setAttribute('height', H);
-        G = geo(Wd, H);
+        [svg, over].forEach(function(e){ e.setAttribute('viewBox', '0 0 ' + Wd + ' ' + H); e.setAttribute('width', Wd); e.setAttribute('height', H); });
+        G = geo(Wd, H); signFs = {}; drawTop.k = '';
         cP.place([G.bx0, G.ty, G.bx1, G.ty]);
+        // the pollen row is part of the control: a drag that starts on a pollen grain moves p too
+        var gr = cP.el.querySelector('.tk2-groove'), top = G.tokY - G.tokR - 4;
+        if(gr){ gr.style.height = n1(G.ty + 14 - top) + 'px'; gr.style.marginTop = n1(top - G.ty) + 'px'; }
         drawStatic(); drawTop(); drawPlants(); drawSigns.k = ''; drawSigns();
         if(cue.active()) cue.place();
       }
@@ -387,8 +570,8 @@
 
       /* ---------------------------------------------------- Test yourself: set the alleles, then let it bloom */
       var dock = document.createElement('div'); dock.className = 'hw2-target';
-      dock.innerHTML = '<div class="hw2-tq"></div><p class="hw2-hint bt-small"></p><div class="hw2-go"><button type="button" class="btn-press sm">Let it bloom and check</button></div><div class="hw2-fb" role="status" aria-live="polite"></div>';
-      var tq = dock.querySelector('.hw2-tq'), hintEl = dock.querySelector('.hw2-hint'), goBtn = dock.querySelector('.hw2-go button'), goWrap = dock.querySelector('.hw2-go'), fb = dock.querySelector('.hw2-fb');
+      dock.innerHTML = '<div class="hw2-tq"></div><div class="hw2-go"><button type="button" class="btn-press sm">Let it bloom and check</button></div><div class="hw2-fb" role="status" aria-live="polite"></div>';
+      var tq = dock.querySelector('.hw2-tq'), goBtn = dock.querySelector('.hw2-go button'), goWrap = dock.querySelector('.hw2-go'), fb = dock.querySelector('.hw2-fb');
       function lockKnob(on){ cP.input.disabled = !!on; cP.el.classList.toggle('is-locked', !!on); }
       function startAt(t){ var ans = t.p.map(function(v){ return Math.round(v * N); }), pool = [5, 3, 7, 4, 6].filter(function(v){ return ans.indexOf(v) < 0; }); return pool[0]; }
       function showTarget(next, again){
@@ -398,8 +581,8 @@
         var t = TG[Q.i];
         Q.t = t; Q.hidden = true; Q.done = false; if(!again){ Q.tried = false; Q.n = startAt(t); }
         after = null;
-        tq.innerHTML = '<p class="hw2-ask"><b>Target ' + (Q.i + 1) + ' of ' + TG.length + '.</b> ' + t.ask + '</p><p class="bt-small hw2-planted">The bed is planted but not in bloom yet. Drag the knob to set p, then let it bloom.</p>';
-        hintEl.textContent = 'Hint: ' + t.hint; hintEl.hidden = false;
+        setSp(t.sp);
+        tq.innerHTML = '<p class="hw2-ask"><b>Target ' + (Q.i + 1) + ' of ' + TG.length + '.</b> ' + t.ask + '</p><p class="bt-small hw2-planted">' + (SP.dom ? 'Pea plants: ' + esc(A) + ' (' + esc(PH[0]) + ') is dominant over ' + esc(a) + ' (' + esc(PH[2]) + '), so ' + GN[0] + ' and ' + GN[1] + ' look the same. ' : 'Snapdragons: ' + GN[0] + ' ' + esc(PH[0]) + ', ' + GN[1] + ' ' + esc(PH[1]) + ', ' + GN[2] + ' ' + esc(PH[2]) + '. ') + 'The bed is planted but not in bloom yet. Drag the knob to set p, then let it bloom.</p>';
         fb.innerHTML = ''; goWrap.hidden = false; goBtn.disabled = false; lockKnob(false);
         cP.value(Q.n); snap(); drawnN = null;
         if(G){ drawTop(); drawPlants(); drawSigns(); }
@@ -420,7 +603,7 @@
           Q.hidden = false;
           after = function(){
             if(Q.t !== t) return;
-            goWrap.hidden = true; hintEl.hidden = true; var pl = tq.querySelector('.hw2-planted'); if(pl) pl.hidden = true;
+            goWrap.hidden = true; var pl = tq.querySelector('.hw2-planted'); if(pl) pl.hidden = true;
             var got = pct(f.c[t.geno]);
             fb.innerHTML = '<p><span class="bio-mark ' + (ok ? 'ok">Right' : 'no">Not quite') + '</span> ' + (ok ? 'p = ' + F(f.p, 1) + ' gives ' + got + '% ' + PH[t.geno] + '.' : 'p = ' + F(f.p, 1) + ' and q = ' + F(f.q, 1) + ' give ' + got + '% ' + PH[t.geno] + ' (' + ['p²', '2pq', 'q²'][t.geno] + ' = ' + F(f.f[t.geno], 2) + '), not ' + t.pct + '%.') + '</p>' +
               (ok ? '<p>' + esc(t.why) + '</p>' : '<p>' + esc(t.hint) + ' Work back from the share to the allele frequency, then try again.</p>') +
@@ -445,7 +628,7 @@
         var ex = mode === 'explore';
         stage.setAttribute('data-view', ex ? 'explore' : 'target');
         head.el.hidden = !ex; cause.el.hidden = !ex; lines.hidden = !ex;
-        if(ex){ lockKnob(false); cP.value(S.n); snap(); drawnN = null; wKey = ''; syncWords(); refHtml(); }
+        if(ex){ setSp('snap'); lockKnob(false); cP.value(S.n); snap(); drawnN = null; wKey = ''; syncWords(); refHtml(); }
         else { hideCue(false); if(part === 'target'){ if(Q.i < 0 || Q.done) showTarget(Q.i < 0 || Q.done && Q.tried); else { cP.value(Q.n); snap(); drawnN = null; lockKnob(false); } } }
         if(mode === 'quiz' && part !== 'target') return;
         setTimeout(function(){ layoutNow(); if(ex && !tour.active()) cue.show(); }, 30);
@@ -460,6 +643,9 @@
       cause.set(chain()); refHtml();
       // Without the frame (no Tool Studio on the page) the stage still works on its own, above the calculations.
       if(!ctx.studio){ app.insertBefore(stage, app.firstChild); app.insertBefore(ref, stage.nextSibling); shown_('explore', null); }
+      // a theme switch recolours the plant images
+      if(window.MutationObserver) new MutationObserver(function(){ if(G) sprites(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+      if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ mCache = {}; signFs = {}; sw0 = {}; drawTop.k = ''; drawTop(); drawSigns.k = ''; drawSigns(); });
       if(window.ResizeObserver){ var tm = null; new ResizeObserver(function(){ clearTimeout(tm); tm = setTimeout(layoutNow, 50); }).observe(sceneBox); }
       else window.addEventListener('resize', layoutNow);
     }, { studio: { kit2: function(ctx){ return ctx.kit2; } } });

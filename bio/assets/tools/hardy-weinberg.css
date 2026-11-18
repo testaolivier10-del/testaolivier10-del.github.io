@@ -1,6 +1,7 @@
 /* Hardy-Weinberg, tools v2 (bio/assets/tools/hardy-weinberg.js; docs/tools-v2-hardy-weinberg-brief.md). Loaded only
    by the Hardy-Weinberg page (bio/data/pages.json "kit2": true). One colour per idea, everywhere: the R allele, p, p²
-   and RR plants red; the W allele, q, q² and WW plants white; RW plants and 2pq pink. */
+   and RR plants red; the W allele, q, q² and WW plants white; RW plants and 2pq pink. The pea bed of two targets
+   (complete dominance) turns the dominant allele and its plants purple: AA and Aa look the same. */
 .hw2,.hw2f,.hw2f-key,.hw2-ref,.hw2-target{--hw-r:#C4262E;--hw-r-hi:#E4555B;--hw-r-ink:#9E1B22;--hw-rw:#F08DB4;--hw-rw-hi:#F9B9D2;--hw-rw-ink:#A4275F;--hw-w:#FFFFFF;--hw-w-hi:#FFFFFF;--hw-w-sh:#E4E0D6;--hw-w-ink:#3F3A33;--hw-w-edge:#8C867B;
   --hw-throat:#F2C230;--hw-stem:#3F7D2B;--hw-leaf:#4E9A38;--hw-leaf-ink:#2F6B1E;
   --hw-la0:#A9D48B;--hw-la1:#8CC06E;--hw-stripe:#7FB562;--hw-tuft:#5C9A44;--hw-so0:#6B4A33;--hw-so1:#553825;--hw-clod:#3F2817;--hw-clod-hi:#8A6648;
@@ -9,15 +10,19 @@
   --hw-stem:#4F9A38;--hw-leaf:#5BAA42;--hw-leaf-ink:#2B5E1C;
   --hw-la0:#2F5A27;--hw-la1:#24481F;--hw-stripe:#2A5223;--hw-tuft:#4F8A3C;--hw-so0:#4A3324;--hw-so1:#36241A;--hw-clod:#22150D;--hw-clod-hi:#6E5038;
   --hw-wd0:#9C7F58;--hw-wd1:#77603F;--hw-wd-ink:#3E2F1B;--hw-twine:#E9DDBB;--hw-cap:#DDEFD2;}
+/* peas: the dominant allele A, p and every A_ plant purple */
+.hw2[data-sp="pea"]{--hw-r:#7B3FA6;--hw-r-hi:#A574CF;--hw-r-ink:#5E2A86;--hw-r-edge:#43195F;}
+:root[data-theme="dark"] .hw2[data-sp="pea"]{--hw-r:#9D63CC;--hw-r-hi:#C49BE6;--hw-r-ink:#D9B8F5;--hw-r-edge:#4A1F68;}
 .hw2{display:flex;flex-direction:column;gap:10px;min-height:0;flex:1 1 auto;}
 .hw2[hidden]{display:none;}
 .hw2 [hidden]{display:none !important;}
 .hw2-scene{position:relative;flex:1 1 auto;min-height:420px;border-radius:18px;overflow:hidden;background:var(--hw-la1);}
 .hw2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+.hw2-over{pointer-events:none;will-change:transform;}
+.hw2-svg:not(.hw2-over){will-change:transform;}
 @media (max-width:1023px){ .hw2-scene{flex:none;height:min(76vw,580px);min-height:420px;} }
 @media (max-width:640px){ .hw2-scene{height:max(440px,min(122vw,500px));border-radius:14px;} .hw2{gap:8px;} }
 .hw2-lines{display:flex;align-items:center;gap:6px 18px;flex-wrap:wrap;flex:none;}
-@media (max-width:640px){ .hw2-lines .tk2-cause{min-height:calc(2 * (1.4em + 9px) + 12px);align-content:flex-start;} }
 .hw2 .tk2-cz.is-r{--cz:var(--hw-r);--cz-ink:var(--hw-r-ink);}
 .hw2 .tk2-cz.is-rw{--cz:var(--hw-rw);--cz-ink:var(--hw-rw-ink);}
 .hw2 .tk2-cz.is-w{--cz:var(--hw-w);--cz-ink:var(--hw-w-ink);border-color:var(--hw-w-edge);background:var(--hw-w);}
@@ -52,35 +57,39 @@
 .hw2-hood{fill:var(--pt-hi);stroke:var(--pe);stroke-width:.7;}
 .hw2-bud{fill:var(--pt);stroke:var(--pe);stroke-width:.8;}
 .hw2-throat{fill:var(--hw-throat);}
-.hw2-pl.g0{--pt:var(--hw-r);--pt-hi:var(--hw-r-hi);--pe:#7C1218;}
+.hw2-pl.g0{--pt:var(--hw-r);--pt-hi:var(--hw-r-hi);--pe:var(--hw-r-edge,#7C1218);}
 .hw2-pl.g1{--pt:var(--hw-rw);--pt-hi:var(--hw-rw-hi);--pe:#B5477A;}
+.hw2[data-sp="pea"] .hw2-pl.g1{--pt:var(--hw-r);--pt-hi:var(--hw-r-hi);--pe:var(--hw-r-edge);}
+.hw2-ban{fill:var(--pt-hi);stroke:var(--pe);stroke-width:.8;}
+.hw2-wing{fill:var(--pt);stroke:var(--pe);stroke-width:.8;}
+.hw2-tendril{fill:none;stroke:var(--hw-stem);stroke-width:1.2;stroke-linecap:round;}
+.hw2-meas{visibility:hidden;font-weight:900;font-variant-numeric:tabular-nums;}
 .hw2-pl.g2{--pt:var(--hw-w-sh);--pt-hi:var(--hw-w);--pe:var(--hw-w-edge);}
-.hw2-pl{transform-origin:0 0;}
-.hw2-pl.is-in{animation:hw2-in .28s cubic-bezier(.3,1.4,.5,1) both;}
-.hw2-pl.is-out{animation:hw2-out .2s linear both;}
-@keyframes hw2-in{from{opacity:0;transform:scale(.5);}to{opacity:1;transform:scale(1);}}
-@keyframes hw2-out{from{opacity:1;}to{opacity:0;}}
+/* a plant that changes grows in from its base in three sizes (hardy-weinberg.js grow(), set as an attribute) */
 .hw2-fade{pointer-events:none;}
 /* an allele: a pollen grain (round) or an egg (oval) with its letter */
 .hw2-tok circle,.hw2-tok ellipse{stroke-width:1.6;}
 .hw2-tok text{font-weight:900;}
-.hw2-tok.is-r circle,.hw2-tok.is-r ellipse{fill:var(--hw-r);stroke:#7C1218;} .hw2-tok.is-r text{fill:#fff;}
+.hw2-tok.is-r circle,.hw2-tok.is-r ellipse{fill:var(--hw-r);stroke:var(--hw-r-edge,#7C1218);} .hw2-tok.is-r text{fill:#fff;}
 .hw2-tok.is-w circle,.hw2-tok.is-w ellipse{fill:var(--hw-w);stroke:var(--hw-w-edge);} .hw2-tok.is-w text{fill:#3F3A33;}
 .hw2-tok.is-in .hw2-tokb{animation:hw2-tok .24s cubic-bezier(.3,1.5,.5,1) both;}
+.hw2-tok.is-in2 .hw2-tokb{animation:hw2-tok2 .24s cubic-bezier(.3,1.5,.5,1) both;}
 @keyframes hw2-tok{from{transform:scale(.4);}to{transform:scale(1);}}
+@keyframes hw2-tok2{from{transform:scale(.4);}to{transform:scale(1);}}
 .hw2-pill rect{fill:var(--white);fill-opacity:.96;stroke-width:2;stroke:color-mix(in srgb, var(--ink) 30%, transparent);}
 .hw2-pill text{font-weight:900;fill:var(--ink);}
 .hw2-pill.is-r rect{stroke:var(--hw-r);} .hw2-pill.is-r text{fill:var(--hw-r-ink);}
 .hw2-pill.is-w rect{stroke:var(--hw-w-edge);}
+.hw2-pill.is-car rect{stroke:var(--hw-r);stroke-dasharray:none;} .hw2-pill.is-car text{fill:var(--hw-r-ink);}
 /* the signs in front of the bed */
 .hw2-sign rect{fill:var(--white);stroke:var(--hw-wd-ink);stroke-width:1.6;}
 .hw2-sign text{fill:var(--ink);font-weight:900;font-variant-numeric:tabular-nums;}
 .hw2-stake{stroke:var(--hw-wd-ink);stroke-width:3;stroke-linecap:round;}
-.hw2-sign.g0 .hw2-sdot{fill:var(--hw-r);stroke:#7C1218;} .hw2-sign.g0 .hw2-sg{fill:var(--hw-r-ink);}
+.hw2-sign.g0 .hw2-sdot{fill:var(--hw-r);stroke:var(--hw-r-edge,#7C1218);} .hw2-sign.g0 .hw2-sg{fill:var(--hw-r-ink);}
 .hw2-sign.g1 .hw2-sdot{fill:var(--hw-rw);stroke:#B5477A;} .hw2-sign.g1 .hw2-sg{fill:var(--hw-rw-ink);}
 .hw2-sign.g2 .hw2-sdot{fill:var(--hw-w);stroke:var(--hw-w-edge);}
 .hw2-sdot{stroke-width:1.4;}
-@media (prefers-reduced-motion: reduce){ .hw2-pl.is-in,.hw2-pl.is-out,.hw2-tok.is-in .hw2-tokb{animation:none;} .hw2-pl.is-out{opacity:0;} }
+@media (prefers-reduced-motion: reduce){ .hw2-tok.is-in .hw2-tokb,.hw2-tok.is-in2 .hw2-tokb{animation:none;} }
 /* "?" */
 .hw2-howref{margin:0 0 6px;font:600 14.5px/1.4 var(--font-ui);color:var(--muted);}
 .hw2-ref .bt-readout{margin:6px 0 10px;}
@@ -93,9 +102,9 @@
 .hw2-target{display:grid;gap:12px;}
 .hw2-target[hidden]{display:none;}
 .hw2-ask{margin:0 0 6px;font:700 17px/1.45 var(--font-ui);}
-.hw2-tq .bt-small,.hw2-hint{margin:0;}
+.hw2-tq .bt-small{margin:0;}
 .hw2-go .btn-press{min-height:44px;}
-.hw2-go[hidden],.hw2-hint[hidden]{display:none;}
+.hw2-go[hidden]{display:none;}
 .hw2-fb p{margin:0 0 8px;}
 .hw2-target .bt-actions{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;}
 .ls-root .ls-dock .hw2-target .bt-actions{position:static;box-shadow:none;background:none;}
@@ -110,7 +119,7 @@
 .hw2f-frame.hw2f-empty{fill:var(--paper);stroke-dasharray:6 4;stroke:var(--muted);}
 .hw2f-ph{fill:var(--muted);font:800 11.5px var(--font-ui);} .hw2f-dim{font-weight:700;}
 .hw2f-ind rect{fill:var(--surface2,#EEF1F5);stroke:var(--muted);stroke-width:.8;}
-.hw2f-ind circle.is-p,.hw2f-k b.is-p{fill:var(--hw-r);background:var(--hw-r);stroke:#7C1218;stroke-width:.6;}
+.hw2f-ind circle.is-p,.hw2f-k b.is-p{fill:var(--hw-r);background:var(--hw-r);stroke:var(--hw-r-edge,#7C1218);stroke-width:.6;}
 .hw2f-ind circle.is-q,.hw2f-k b.is-q{fill:var(--hw-w);background:var(--hw-w);stroke:var(--hw-w-edge);stroke-width:.8;}
 .hw2f-ind circle.is-u,.hw2f-k b.is-u{fill:var(--surface2,#EEF1F5);background:var(--surface2,#EEF1F5);stroke:var(--muted);stroke-width:.8;stroke-dasharray:1.5 1.2;}
 .hw2f-ind text{font:900 6px var(--font-ui);fill:var(--ink);}
@@ -118,6 +127,8 @@
 .hw2f-key span{display:inline-flex;align-items:center;gap:6px;}
 .hw2f-k{display:inline-flex;gap:2px;padding:2px 3px;border-radius:999px;background:var(--surface2,#EEF1F5);border:1px solid var(--muted);}
 .hw2f-k b{display:grid;place-items:center;width:10px;height:10px;border-radius:50%;border:1px solid var(--hw-w-edge);font:900 8px/1 var(--font-ui);color:var(--ink);}
-.hw2f-k b.is-p{border-color:#7C1218;}
+.hw2f-k b.is-p{border-color:var(--hw-r-edge,#7C1218);}
+/* a phone: the key on one line, so the figure keeps its height (review round 1) */
+@media (max-width:640px){ .hw2f-key{flex-wrap:nowrap;white-space:nowrap;gap:4px 9px;font-size:12px;margin-top:4px;} .hw2f-key span{gap:4px;} .hw2f-k{gap:1px;padding:1px 2px;} .hw2f-k b{width:7px;height:7px;font-size:6px;} }
 .hw2-planted[hidden]{display:none;}
 .hw2-ref .bt-readout dt{text-transform:none;letter-spacing:0;font-size:13px;}

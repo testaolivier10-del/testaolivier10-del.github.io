@@ -21,17 +21,29 @@
     "cue": "Drag the alleles",
     "note": "The bed is a model: 100 snapdragons sorted so they can be counted. In a real population the same shares are scattered at random. R and W stand for the snapdragon alleles C<sup>R</sup> and C<sup>W</sup>; flower color shows incomplete dominance, so RR plants are red, RW plants are pink and WW plants are white."
   },
+  "pea": {
+    "about": "Test yourself, the targets about a hidden recessive (sp: \"pea\"): a bed of pea plants, flower colour with complete dominance (OpenStax 12.2: purple dominant over white). AA and Aa plants are both purple; only aa plants show white.",
+    "A": "A",
+    "a": "a",
+    "phen": [
+      "purple",
+      "purple",
+      "white"
+    ],
+    "name": "pea plants"
+  },
   "targets": [
     {
       "id": "q16",
-      "ask": "Set the alleles so that <b>16%</b> of the plants bloom <b>white</b>.",
+      "sp": "pea",
+      "ask": "Set the alleles so that <b>16%</b> of the pea plants show the recessive trait (white flowers).",
       "geno": 2,
       "pct": 16,
       "p": [
         0.6
       ],
-      "hint": "White plants are WW. Their share is q².",
-      "why": "White plants are WW, so q² = 0.16. Then q = √0.16 = 0.4 and p = 1 − q = 0.6. Start from the homozygous class you can count."
+      "hint": "Only aa plants show white. Their share is q².",
+      "why": "Only the white plants can be read straight off the bed: they are aa, so q² = 0.16. Then q = √0.16 = 0.4 and p = 1 − q = 0.6. Every purple plant is AA or Aa and looks the same: purple is p² + 2pq = 0.36 + 0.48 = 0.84, and 48% of the bed are carriers (Aa), purple but carrying a."
     },
     {
       "id": "het",
@@ -46,14 +58,15 @@
     },
     {
       "id": "rare",
-      "ask": "Make white plants rare: just <b>1%</b> of the bed.",
+      "sp": "pea",
+      "ask": "Make the recessive trait rare: just <b>1%</b> of the pea plants with white flowers. Then count the carriers.",
       "geno": 2,
       "pct": 1,
       "p": [
         0.9
       ],
-      "hint": "White plants are WW. Their share is q².",
-      "why": "q² = 0.01, so q = 0.1 and p = 0.9. Now count the pink plants: 18% still carry W. Most copies of a rare allele sit in heterozygotes. When the rare allele is recessive, those carriers do not show it."
+      "hint": "Only aa plants show white. Their share is q².",
+      "why": "q² = 0.01, so q = 0.1 and p = 0.9. Only 1% of the plants show white, but 2pq = 18% are carriers (Aa): purple, and carrying a. Most copies of a rare recessive allele hide in carriers, where nobody can see them."
     },
     {
       "id": "p49",

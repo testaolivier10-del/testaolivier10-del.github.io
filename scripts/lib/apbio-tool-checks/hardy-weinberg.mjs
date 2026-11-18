@@ -31,6 +31,8 @@ export function check(data, map) {
     const at = `hardy-weinberg target ${t.id}`;
     if (!t.id || ids.has(t.id)) errs.push(`${at}: missing or repeated id`);
     ids.add(t.id);
+    if (t.sp && (t.sp !== 'pea' || !data.pea)) errs.push(`${at}: sp must be "pea" with a pea block in the data`);
+    if (t.sp === 'pea' && t.geno !== 2) errs.push(`${at}: a pea target asks for the recessive (white) share, the one class that can be seen`);
     if (![0, 1, 2].includes(t.geno)) errs.push(`${at}: geno must be 0, 1 or 2`);
     if (!t.ask || !t.hint || !t.why) errs.push(`${at}: ask, hint and why are all needed`);
     const want = [];
@@ -40,6 +42,8 @@ export function check(data, map) {
     else if (want.join(',') !== got.join(',')) errs.push(`${at}: p must be ${want.map((n) => n / N).join(' or ')} for ${t.pct}%, the data say ${(t.p || []).join(' or ')}`);
     if (!String(t.ask).includes(t.pct + '%') && t.id !== 'het') errs.push(`${at}: the question does not name ${t.pct}%`);
   });
+  if (data.pea && (!data.pea.A || !data.pea.a || !Array.isArray(data.pea.phen) || data.pea.phen.length !== 3 || data.pea.phen[0] !== data.pea.phen[1] || data.pea.phen[2] === data.pea.phen[0])) errs.push('hardy-weinberg pea: complete dominance needs AA and Aa with one phenotype and aa with another');
+  if (!(data.targets || []).some((t) => t.sp === 'pea')) errs.push('hardy-weinberg: no target meets a hidden recessive (carriers) on the pea bed');
   if (!(data.targets || []).length) errs.push('hardy-weinberg: no targets for Test yourself');
   return errs;
 }

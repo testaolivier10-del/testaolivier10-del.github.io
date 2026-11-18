@@ -405,7 +405,10 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    that count the plants and a cause line with p², 2pq and q². Test yourself: "Set the alleles" (targets on a bed
    that is not in bloom) and the unchanged calculations. New: an `explore` block and `targets` in the tool's data,
    a `practice` part in `ApBioTools.studioKit2`, the first sweep in `scripts/tools-v2/`. Still free. Decisions made
-   for the owner are in `docs/tools-v2-owner-log.md`.
+   for the owner are in `docs/tools-v2-owner-log.md`. Review round 1 (blocked, fixed the same day): targets 1 and 3 on
+   a pea bed (complete dominance, `pea` in the data) so carriers are met; plants drawn as images, one `<use>` each;
+   countable plants; signs sized from their text; the pollen row is part of the control; a frame time check
+   (`scripts/tools-v2/hardy-weinberg-perf.mjs`).
 
 ## 4. Map format (Phase 0)
 

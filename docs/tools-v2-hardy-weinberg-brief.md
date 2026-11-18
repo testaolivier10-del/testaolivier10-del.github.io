@@ -59,10 +59,14 @@ twine, and the cue on a first visit.
 - **Explore:** free play as above. Nothing locked, graded or asked.
 - **Test yourself:** one dropdown on the stage, "What to practice":
   1. **Set the alleles** (the old Explore's three "Try this" targets, plus two): the bed is planted but not in
-     bloom, so nothing gives the answer away (no signs, no flowers). Set p for the target ("16% of the plants
-     bloom white"), then "Let it bloom and check": the bed blooms back row first, the signs appear, the answer is
-     marked and explained (q² = 0.16, so q = 0.4 and p = 0.6). Try again, Show the answer, Next target. First tries
-     are recorded as `hardy-weinberg:target-<id>` (new ids; the old targets were never recorded).
+     bloom, so nothing gives the answer away (no signs, no flowers). Set p for the target ("16% of the pea plants
+     show the recessive trait"), then "Let it bloom and check": the bed blooms back row first, the signs appear, the
+     answer is marked and explained (q² = 0.16, so q = 0.4 and p = 0.6). Try again, Show the answer, Next target.
+     First tries are recorded as `hardy-weinberg:target-<id>` (new ids; the old targets were never recorded).
+     Since review round 1 the two targets about a hidden recessive (q16 and rare, with the old wording) are on a
+     bed of **pea plants** (complete dominance: AA and Aa purple, aa white), so carriers are met: after the bloom
+     there are two signs (purple, white), the Aa plot is named "Aa: carriers", and the answer says purple is
+     p² + 2pq. The other three targets stay on the snapdragons.
   2. **Problems** (the calculations: the old Practice mode, unchanged in content, grading and record ids): new numbers every time
      or the two worked problems, one part at a time, with the worked solution. Its figure keeps the old layout
      (the gene pool square split at the p you type, beside the problem's individuals) in the new colours; each
@@ -77,16 +81,17 @@ twine, and the cue on a first visit.
 | The p slider in the side panel | Removed (it repeated the corner). The knob is a real range input: keys and screen readers work |
 | The readout (p, q, p², 2pq, q² to three decimals) | The cause line (two decimals, exact at every stop); "?" has the setting and "Any p" to three decimals |
 | p in steps of 0.01 | The bed moves in steps of 0.1 (whole plants). "?" has "Any p" in steps of 0.01 |
-| "Try this" (16% recessive, most carriers, a rare trait) | Test yourself, "Set the alleles", targets 1 to 3 |
+| "Try this" (16% recessive, most carriers, a rare trait) | Test yourself, "Set the alleles", targets 1 to 3; 1 and 3 on the pea bed with the old wording |
 | The live sentences (q² = 0.16 so q = 0.4; the most carriers at 0.5; a rare allele hides in carriers; fixed) | The targets' explanations; "fixed" and "largest at 0.5" also in "?" |
 | The key (AA, Aa carrier, aa shows the recessive trait) | Problems (unchanged wording). Explore needs no key: colour is the genotype and the signs name it |
-| Carriers in Explore (a recessive trait hiding in Aa) | Not in Explore (every genotype shows there). Target 3 and the recessive problems of Problems |
+| Carriers in Explore (a recessive trait hiding in Aa) | Not in Explore (every genotype shows there). Test yourself: targets 1 and 3 on the pea bed (purple = p² + 2pq, the Aa plot named "carriers"), and the recessive problems of Problems |
 | Practice mode, worked set, problem code, link to a problem | Test yourself, "Problems", unchanged |
 | The egg and sperm glyphs on the practice square | Bars in the allele colours, and "one allele from each parent" |
 
 ## Decisions made for the owner (also in `docs/tools-v2-owner-log.md`)
 1. Explore's population is snapdragons (incomplete dominance), not a dominant and recessive trait, so all three
-   genotypes can be seen without a key. The carrier idea moved to Test yourself.
+   genotypes can be seen without a key. The carrier idea moved to Test yourself: since review round 1, targets 1
+   and 3 use a second species, pea plants with complete dominance (purple and white), where carriers look purple.
 2. The bed is sorted into four plots (a model that can be counted), not scattered as a real population is. Said in
    "?".
 3. p moves in steps of 0.1 so every plant is whole; any p to 0.01 is in "?".
@@ -107,7 +112,11 @@ twine, and the cue on a first visit.
   equal allele frequencies in both sexes, the assumption behind p² + 2pq + q².
 - Not said anywhere as fact: that real plants stand sorted (the note in "?" says they do not), that the bed
   changes over time (a different p is a different gene pool, not the same plants changing colour).
-- Open points for a teacher: `docs/apbio-needs-author.md`, hw-explore-snapdragons.
+- The pea bed (review round 1): flower colour in peas, purple (violet) dominant over white, is Mendel's trait and
+  OpenStax's own Hardy-Weinberg example is a population of pea plants (19.1). AA and Aa are both purple, so only
+  aa can be counted from the picture: q² from the white share, then purple = p² + 2pq and the carriers are 2pq.
+  Real peas mostly self pollinate; the bed assumes random mating, as the textbook example does (open point below).
+- Open points for a teacher: `docs/apbio-needs-author.md`, hw-explore-snapdragons. and hw-pea-bed.
 
 ## What was built
 - `bio/assets/tools/hardy-weinberg.js` (rewritten), `bio/assets/tools/hardy-weinberg.css` (new, this page only),
@@ -122,9 +131,8 @@ twine, and the cue on a first visit.
 - `node --test scripts/test/apbio-*.test.mjs` (72 pass), `check-apbio-content --check` (0 failing; the validator
   checks every stop of the bed and every target), `build-apbio --check`, `check-site`, `check-weight --check`,
   `build-apmacro --check`, `build-apcalc --check`.
-- `scripts/check-tool-use.mjs` (with `CHROMIUM_PATH`): Hardy-Weinberg reports frame v2. The check expected Osmosis on
-  the old frame (stale since Osmosis was rebuilt); it now lists Osmosis and Hardy-Weinberg as v2, and NREMT
-  Flowcharts stays the old frame example.
+- `scripts/check-tool-use.mjs` (with `CHROMIUM_PATH`), run with a local copy of its list: Hardy-Weinberg reports
+  frame v2. (The edit to the check's list was dropped in review round 1: the collecting branch owns it.)
 - The sweep, `node scripts/tools-v2/hardy-weinberg-sweep.mjs`: 57,338 checks, 0 failed (p = 0 to 1 and the
   target planted and in bloom, at 360, 390, 430, 600, 768, 820, 1024, 1280, 1440, 1920; dark at 390, 768, 1440).
 - Playwright at 390x844 (touch), 768x1024 and 1440x900, light and dark, 258 assertions passing: opens at p = 0.7
@@ -146,4 +154,5 @@ twine, and the cue on a first visit.
 - On a wide desktop each plant is narrow inside its cell, so the bed reads as columns of plants with soil between
   them; on a phone the bed is tall and narrow. Both are clean in the sweep, but the plants could be fuller.
 - The bed is a sorted model, not a scattered population (said in "?"; open point hw-explore-snapdragons).
-- The 100 plants are 100 SVG groups; fine on the devices tested, not measured on a slow phone.
+- The 100 plants are 100 SVG groups; fine on the devices tested, not measured on a slow phone. (Measured in review
+  round 1: see below.)

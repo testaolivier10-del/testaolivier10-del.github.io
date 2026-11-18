@@ -11,7 +11,10 @@
      - the picture's numbers agree: the signs, the alleles drawn and the cause line say the same p and shares;
      - no sideways scroll, no console errors.
    Writes one contact sheet per width group to --out (default /tmp/hw-sweep).
-   Usage: node scripts/tools-v2/hardy-weinberg-sweep.mjs [--out dir]   (needs playwright) */
+     - (review round 1) plants in a column and in a row never touch; each sign's text lies inside its sign; the pea
+       target blooms as two signs (purple, white) with the carriers named, and the next target is snapdragons again.
+   One child process per width (--width W runs one width).
+   Usage: node scripts/tools-v2/hardy-weinberg-sweep.mjs [--out dir] [--width W]   (needs playwright) */
 import { createServer } from 'node:http';
 import { existsSync, statSync, createReadStream, mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, extname, resolve, join } from 'node:path';
@@ -19,12 +22,29 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = dirname(dirname(dirname(fileURLToPath(import.meta.url))));
 const PAGE = '/bio/tools/hardy-weinberg.html';
-const WIDTHS = [360, 390, 430, 600, 768, 820, 1024, 1280, 1440, 1920];
+const ALL = [360, 390, 430, 600, 768, 820, 1024, 1280, 1440, 1920];
+const wArg = process.argv.indexOf('--width');
+const WIDTHS = wArg > 0 ? [+process.argv[wArg + 1]] : ALL;
 const DARK = [390, 768, 1440];
 const outI = process.argv.indexOf('--out');
 const OUT = outI > 0 ? process.argv[outI + 1] : '/tmp/hw-sweep';
 const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json; charset=utf-8',
   '.svg': 'image/svg+xml', '.png': 'image/png', '.woff2': 'font/woff2', '.webmanifest': 'application/manifest+json', '.ico': 'image/x-icon' };
+
+/* With no --width, run one child process per width (one process for all ten can pass ten minutes) and add up. */
+if (wArg < 0) {
+  const { spawnSync } = await import('node:child_process');
+  let passed = 0, failed = 0;
+  for (const w of ALL) {
+    const r = spawnSync(process.execPath, [fileURLToPath(import.meta.url), '--width', String(w), '--out', OUT], { encoding: 'utf8' });
+    const out = (r.stdout || '') + (r.stderr || ''), m = /(\d+) checks passed, (\d+) failed/.exec(out);
+    if (m) { passed += +m[1]; failed += +m[2]; } else { failed++; }
+    process.stdout.write(`  ${w}: ${m ? m[0] : 'did not finish'}\n`);
+    if (!m || +m[2]) process.stdout.write(out.split('\n').filter(l => /FAIL|Error/.test(l)).slice(0, 20).join('\n') + '\n');
+  }
+  console.log(`Hardy-Weinberg sweep: ${passed} checks passed, ${failed} failed. Contact sheets in ${OUT}`);
+  process.exit(failed ? 1 : 0);
+}
 
 let chromium;
 try { ({ chromium } = await import('playwright')); }
@@ -54,19 +74,26 @@ function measure() {
   const scene = document.querySelector('.hw2-scene'), S = R(scene);
   const q = sel => Array.from(scene.querySelectorAll(sel));
   const labels = [];
-  q('.hw2-pill').forEach(e => labels.push({ k: 'pill ' + e.textContent, ...R(e) }));
+  const vis = e => e.getBoundingClientRect().width > 0;   // pills and signs that are not drawn now are display none
+  q('.hw2-pill').filter(vis).forEach(e => labels.push({ k: 'pill ' + e.textContent, ...R(e) }));
   q('.hw2-cap').forEach(e => labels.push({ k: 'caption ' + e.textContent, ...R(e) }));
-  q('.hw2-sign').forEach(e => labels.push({ k: 'sign ' + e.textContent.trim(), ...R(e.querySelector('rect')) }));
+  const signEls = q('.hw2-sign').filter(vis);
+  signEls.forEach(e => labels.push({ k: 'sign ' + e.textContent.trim(), ...R(e.querySelector('rect')) }));
+  // the text (and its dot) of each sign, which must lie inside the sign (review round 1, must fix 4)
+  const signText = signEls.map(e => ({ k: e.textContent.trim(), box: R(e.querySelector('rect')), t: R(e.querySelector('text')), d: R(e.querySelector('circle')) }));
   const toks = q('.hw2-tok').map(e => ({ k: 'allele', ...R(e) }));
   const knob = scene.querySelector('.tk2-dot'), cue = scene.querySelector('.tk2-cue');
   const frame = R(scene.querySelector('.hw2-frame')), soil = R(scene.querySelector('.hw2-soil'));
-  const plants = q('.hw2-p').map(e => R(e));
+  // each plant's DRAWN box (its image has margins): its origin from the transform, the box from data-box
+  const gP = scene.querySelector('.hw2-plants'), bx = (gP.getAttribute('data-box') || '0 0 0 0').split(' ').map(Number), sb = scene.querySelector('svg').getBoundingClientRect();
+  const plants = q('.hw2-p').map(e => { const m = /translate\(([-\d.]+) ([-\d.]+)\)/.exec(e.getAttribute('transform')), ox = sb.left + +m[1], oy = sb.top + +m[2];
+    return { x: ox + bx[0], y: oy + bx[1], r: ox + bx[0] + bx[2], b: oy + bx[1] + bx[3] }; });
   const cause = document.querySelector('.hw2 .tk2-cause'), cz = Array.from(cause.querySelectorAll('.tk2-cz'));
   const rows = new Set(cz.map(e => Math.round(e.getBoundingClientRect().top)));
   const txt = e => e.textContent.replace(/\s+/g, ' ').trim();
   return { S, labels, toks, knob: knob && knob.offsetParent ? R(knob) : null, cue: cue ? R(cue) : null, frame, soil, plants,
     cause: { h: cause.getBoundingClientRect().height, rows: rows.size, text: cz.map(txt), hidden: cause.offsetParent === null },
-    signs: q('.hw2-sign').map(e => txt(e)), nR: q('.hw2-top .hw2-tok.is-r:not(.is-egg)').length, nRe: q('.hw2-top .hw2-tok.is-r.is-egg').length,
+    signs: signEls.map(e => txt(e)), signText, car: q('.hw2-car .hw2-pill').filter(vis).map(e => txt(e)), sp: document.querySelector('.hw2').getAttribute('data-sp'), nR: q('.hw2-top .hw2-tok.is-r:not(.is-egg)').length, nRe: q('.hw2-top .hw2-tok.is-r.is-egg').length,
     colors: ['g0', 'g1', 'g2', 'is-sprout'].map(c => scene.querySelectorAll('.hw2-p > use.' + c + ':not(.is-out)').length),
     scrollX: document.documentElement.scrollWidth - document.documentElement.clientWidth, vw: innerWidth,
     biggest: Array.from(document.querySelectorAll('.ls-root button, .ls-root .tk2-cause, .ls-root .tk2-head')).reduce((m, e) => Math.max(m, e.getBoundingClientRect().width * e.getBoundingClientRect().height), 0) };
@@ -89,6 +116,10 @@ function check(m, tag, n, opts = {}) {
   ok(bed > 3 * m.biggest, `${tag}: something outside the picture is nearly as large as the bed`);
   ok(S.w * S.h > 0.38 * m.vw * Math.min(900, S.b + 200), `${tag}: the picture is small on the screen`);
   m.plants.forEach(p => ok(p.x >= m.soil.x - 1 && p.r <= m.soil.r + 1 && p.b <= m.soil.b + 1 && p.y >= m.frame.y - 1, `${tag}: a plant leaves the bed`));
+  // separate, countable plants: in every column each plant clears the one in front of it (review round 1, must fix 2)
+  for (let i = 0; i + 10 < m.plants.length; i++) ok(m.plants[i].b < m.plants[i + 10].y, `${tag}: plants ${i} and ${i + 10} touch in their column`);
+  for (let i = 0; i < m.plants.length; i++) if (i % 10 < 9) ok(m.plants[i].r < m.plants[i + 1].x + 0.5, `${tag}: plants ${i} and ${i + 1} touch in their row`);
+  m.signText.forEach(s => ok(s.t.x >= s.box.x + 2 && s.t.r <= s.box.r - 2 && s.d.x >= s.box.x + 2 && s.t.y >= s.box.y && s.t.b <= s.box.b, `${tag}: the text "${s.k}" runs out of its sign (${(s.t.r - s.box.r).toFixed(1)} px)`));
   ok(m.scrollX <= 0, `${tag}: sideways scroll of ${m.scrollX}px`);
   if (opts.explore) {
     ok(m.nR === n && m.nRe === n, `${tag}: ${m.nR} R pollen and ${m.nRe} R eggs drawn for p = ${n / 10}`);
@@ -164,8 +195,23 @@ for (const w of WIDTHS) for (const dark of (DARK.includes(w) ? [false, true] : [
   await page.waitForTimeout(400);
   m = await page.evaluate(measure);
   check(m, `${tag0} target in bloom`, 5);
-  ok(m.colors[3] === 0 && m.signs.length === 3, `${tag0}: the bed did not bloom`);
-  shots.push({ t: 'Test yourself: in bloom', b: await scene.screenshot() });
+  // target 1 is on the pea bed (complete dominance): two signs (purple, white) and the carriers named on a pq plot
+  ok(m.sp === 'pea' && m.colors[3] === 0 && m.signs.join('|') === 'purple 75%|white 25%', `${tag0}: the pea bed did not bloom as 75% purple, 25% white (${m.sp}, ${m.signs})`);
+  ok(m.car.length === 1 && m.car[0] === 'Aa: carriers', `${tag0}: the carriers are not named on the pea bed (${m.car})`);
+  shots.push({ t: 'Test yourself: peas in bloom', b: await scene.screenshot() });
+  // the next target is back on the snapdragons: planted, then three signs after the bloom
+  await page.locator('.hw2-nextt').click();
+  await page.waitForTimeout(500);
+  m = await page.evaluate(measure);
+  check(m, `${tag0} target 2 planted`, 3);
+  ok(m.sp === 'snap' && m.colors[3] === 100 && m.signs.length === 0 && m.car.length === 0, `${tag0}: target 2 is not a planted snapdragon bed (${m.sp}, ${m.colors}, ${m.signs.length})`);
+  await page.locator('.hw2-go button').click();
+  await page.waitForSelector('.hw2-fb .bio-mark', { timeout: 6000 });
+  await page.waitForTimeout(400);
+  m = await page.evaluate(measure);
+  check(m, `${tag0} target 2 in bloom`, 3);
+  ok(m.colors[3] === 0 && m.signs.join('|') === 'RR 9%|RW 42%|WW 49%', `${tag0}: target 2 did not bloom (${m.signs})`);
+  shots.push({ t: 'Test yourself: snapdragons in bloom', b: await scene.screenshot() });
   ok(errs.length === 0, `${tag0}: console errors: ${errs.join(' | ')}`);
   sheets.push({ tag: tag0, w, shots });
   await ctx.close();
