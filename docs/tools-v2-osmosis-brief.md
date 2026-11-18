@@ -2,7 +2,7 @@
 
 Status file for the v2 rebuild of `bio/tools/osmosis.html` (the most opened tool on the site, rank 1 in
 `docs/tools-v2-rollout.md`; the first tool after the flagship and the first on the kit through a second course
-layer). Standard: `docs/tools-v2-standard.md`. Branch `claude/tools-v2-osmosis`. NOT merged: an independent review comes first (the owner no longer reviews each tool; decisions made for him
+layer). Standard: `docs/tools-v2-standard.md`. Branch `claude/tools-v2-osmosis`. SHIPPED 2026-11-18 after an independent review (the owner no longer reviews each tool; decisions made for him
 are in `docs/tools-v2-owner-log.md`).
 
 ## The one main idea
@@ -356,4 +356,17 @@ after it; plus "24 hours", Replay not sticky. Preview and shots regenerated (bur
   change story with its result ("... → water moves back in → Shriveled (crenated)").
 - Checks: 72 unit tests, content, build, site and weight checks; Playwright 390 assertions (full pass) and 98 new
   frame by frame ones. Preview and shots regenerated.
+
+## Shipped (2026-11-18)
+Shipped under the owner's standing instruction (2026-11-17): a tool goes live after its builder's check and an
+independent review that passes, with no per tool owner review.
+- Independent review (`/home/claude/review-osmosis/REVIEW.md`, a reviewer who did not build it): BLOCK on
+  47c5c4b7 (6 must fix, 7 should fix), BLOCK on fef486e2 (2 small items from the fixes), PASS on 66a31164
+  ("may go live").
+- Builder's checks at the end: 72 unit tests, content, build, site and weight checks; Playwright 390 assertions
+  plus 98 frame by frame ones, at 390, 768 and 1440, light and dark.
+- Still not done by anyone: a real phone, a screen reader pass, real students.
+- Left for later, all in `docs/tools-v2-owner-log.md`: the dialysis bag and NaCl in free play, a potato core lab
+  for collecting noisy data, an optional teaser, moving the flagship onto `K.head` and `K.cause`, removing the old
+  `.os-fig` styles from `bio-tools.css`.
 

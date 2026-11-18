@@ -660,7 +660,7 @@ redone; new 02 "middrag", 22 (handle on the mark) and 23 (day 6, then 3 sacks).
 
 ## Shipped (2026-11-17)
 Owner after round 4: "I think that's good", "it's the standard", "go ahead" (finishing touches, make it live, then
-roll the standard to other tools). The standard is `docs/tools-v2-standard.md` (11 rules and the process). This
+roll the standard to other tools). The standard is `docs/tools-v2-standard.md` (15 rules and the process; 11 at this date, 12 to 15 were added on 2026-11-17 with the Osmosis rounds). This
 closes both open points of round 4.
 
 ### Finishing touches (Explore)

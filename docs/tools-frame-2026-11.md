@@ -142,7 +142,7 @@ when it is closest to the star?"; race: "Two wheels, same mass: which one speeds
 
 ## Tools v2 (2026-11-17): the standard after this one
 The owner approved the rebuilt AP® Environmental Science Water pollution tool as the standard for every tool. The
-v2 standard (`docs/tools-v2-standard.md`, 11 rules and the process) supersedes the frame only standard above: the
+v2 standard (`docs/tools-v2-standard.md`, 15 rules and the process; 11 when it was approved, 12 to 15 added 2026-11-17) supersedes the frame only standard above: the
 frame in this file stays (top bar, modes, "?", "…"), and v2 decides what goes inside it (one idea, the student acts,
 instant response, two modes with one job each, controls that never move each other, nothing extra on screen). The
 flagship's brief with every owner round is `docs/tools-v2-water-pollution-brief.md`. Rebuild the other tools to v2
