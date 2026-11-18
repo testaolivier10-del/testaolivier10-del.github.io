@@ -68,10 +68,13 @@
       var cache = {};
       function sim(gpp, eff){ var k = gpp + '|' + eff; return cache[k] || (cache[k] = E.simulate(cond({ gpp: gpp, eff: eff }))); }
       function target(){ return sim(S.gpp, S.eff).levels.map(function(L){ return L.stored; }); }
-      function count(e){ return Math.floor(e / PER + 1e-6); }
+      /* A level's energy as it is written (rounded as fmt writes it), and the plants or animals drawn for it: the
+         count is taken from the written number, so the two can never disagree, even in the middle of a change. */
+      function disp(v){ return v >= 99.5 ? Math.round(v) : v >= 9.95 ? Math.round(v) : Math.round(v * 10) / 10; }
+      function count(e){ return Math.floor(disp(e) / PER + 1e-6); }
       var MAXE = (function(){ var s = sim(EX.gpp.max, EX.eff.max); return s.levels.map(function(L){ return L.stored; }); })();
       var MAXN = MAXE.map(count), HMAX = MAXE[0] * (1 - EX.eff.min);
-      function fmt(v){ return v >= 99.5 ? Math.round(v).toLocaleString('en-US') : v >= 9.95 ? String(Math.round(v)) : (Math.round(v * 10) / 10).toFixed(1); }
+      function fmt(v){ var d = disp(v); return v >= 9.95 ? d.toLocaleString('en-US') : d.toFixed(1); }
       function pct(){ return Math.round(S.eff * 100); }
       function nOf(i, n){ return n.toLocaleString('en-US') + ' ' + ONE[i][n === 1 ? 0 : 1]; }
 
@@ -170,7 +173,7 @@
         syncWords(); draw();
       }
       function tick(ts){
-        var dt = lastTs ? Math.min(0.05, (ts - lastTs) / 1000) : 0.016, a = 1 - Math.exp(-dt / 0.13), tg = target(), done = true; lastTs = ts; view.clock = ts;
+        var dt = lastTs ? Math.min(0.3, (ts - lastTs) / 1000) : 0.016, a = 1 - Math.exp(-dt / 0.13), tg = target(), done = true; lastTs = ts; view.clock = ts;
         for(var i = 0; i < NL; i++){
           var want = i ? S.eff * view.e[i - 1] : tg[0], d = want - view.e[i];
           if(Math.abs(d) <= Math.max(0.004 * want, 0.02)) view.e[i] = want; else { view.e[i] += d * a; done = false; }
@@ -183,7 +186,7 @@
       }
 
       /* ---- the words: the cause line, read from the picture */
-      function takeaway(){ return 'Each level passes on only ' + pct() + '% of its energy. The rest leaves as heat, so the top of the chain feeds the fewest animals.'; }
+      function takeaway(){ return 'Only ' + pct() + '% of the energy moves up each step. The rest leaves as heat, so the top feeds the fewest animals.'; }
       function chain(){
         var p = [{ t: fmt(view.e[0]) + ' kcal in grass', role: 'energy', say: 'The grass stores ' + fmt(view.e[0]) + ' kilocalories' },
           { t: pct() + '% passed on', role: 'energy', say: pct() + ' percent is passed on at each step' }, { t: (100 - pct()) + '% lost as heat', role: 'heat', say: (100 - pct()) + ' percent is lost as heat' }];
@@ -198,12 +201,12 @@
 
       /* ---------------------------------------------------- layout */
       function geo(W, H){
-        var ph = W < 560, ctl = ph ? 100 : 104, f = ph ? [0.33, 0.25, 0.22, 0.2] : [0.34, 0.26, 0.22, 0.18], bx = [0], i;
+        var ph = W < 560, ctl = ph ? 116 : 114, f = ph ? [0.31, 0.27, 0.22, 0.2] : [0.34, 0.26, 0.22, 0.18], bx = [0], i;
         for(i = 0; i < NL; i++) bx.push(i === NL - 1 ? W : Math.round(bx[i] + W * f[i]));
-        var fs = ph ? 11 : W < 900 ? 12.5 : 14, fsS = ph ? 10.5 : 12;
+        var fs = W < 380 ? 10.5 : ph ? 11 : W < 900 ? 12.5 : 14, fsS = ph ? 10.5 : 12;
         // one line per label when the widest ("Grasshoppers 15,000 kcal") fits its place; else the name over the value
         var two = false;
-        for(i = 0; i < NL; i++){ var need = (ORG[i].length + 12) * fs * 0.6 + 26; if(need > bx[i + 1] - bx[i] - 6) two = true; }
+        for(i = 0; i < NL; i++){ var need = wid(ORG[i], fs) + wid('15,000 kcal', fs) + 34; if(need > bx[i + 1] - bx[i] - 8) two = true; }
         var lb = two ? fs * 2 + 22 : fs + 24, yB = H - ctl, gy1 = yB - lb;
         var sky = ph ? 118 : clamp(Math.round((yB - lb) * 0.34), 124, 190), gy0 = sky, back = ph ? 24 : 30;
         var sunR = ph ? 19 : 30, sunX = ph ? 34 : 70, sunY = ph ? 34 : 62;
@@ -212,13 +215,21 @@
         var zones = [];
         for(i = 0; i < NL; i++) zones.push({ x0: bx[i], x1: bx[i + 1], cx: (bx[i] + bx[i + 1]) / 2 });
         return { W: W, H: H, ph: ph, ctl: ctl, bx: bx, zones: zones, two: two, lb: lb, yB: yB, gy0: gy0, gy1: gy1, back: back, fs: fs, fsS: fsS,
-          sunX: sunX, sunY: sunY, sunR: sunR, sx0: sx0, sx1: sx0 + slen, sy: sy, pmax: Math.max(30, gy0 - (sy + (ph ? 40 : 52))),
-          al: ph ? 20 : 40, tx0: W / 2 - half, tx1: W / 2 + half, ty: yB + (ph ? 44 : 46) };
+          sunX: sunX, sunY: sunY, sunR: sunR, sx0: sx0, sx1: sx0 + slen, sy: sy, pmax: Math.max(30, gy0 - (sy + (ph ? 46 : 58))),
+          al: ph ? 20 : 40, tx0: W / 2 - half, tx1: W / 2 + half, ty: yB + (ph ? 58 : 56) };
+      }
+      /* The width of a word as it will be drawn (labels are sized and kept apart by measuring, not by guessing). */
+      var mctx = null, mfam = '';
+      function wid(t, fs){
+        try{
+          if(!mctx){ mctx = document.createElement('canvas').getContext('2d'); mfam = getComputedStyle(svg).fontFamily || 'sans-serif'; }
+          mctx.font = '900 ' + fs + 'px ' + mfam; return mctx.measureText(t).width;
+        }catch(e){ return t.length * fs * 0.6; }
       }
       function edge(i, y){ return i === 0 ? 0 : i === NL ? G.W : G.bx[i] + 7 * Math.sin((y - G.gy0) / 34 + i * 1.7); }
       function pill(x, y, lines, cls, fs, x0min, x1max){
         var w = 0, h = lines.length * (fs + 3) + 9, out = '';
-        lines.forEach(function(l){ w = Math.max(w, l.t.length * fs * (l.b ? 0.6 : 0.56) + 20); });
+        lines.forEach(function(l){ w = Math.max(w, wid(l.t, fs) + (G.ph ? 13 : 20)); });
         var x0 = clamp(x - w / 2, x0min == null ? 3 : x0min, (x1max == null ? G.W - 3 : x1max) - w);
         lines.forEach(function(l, k){ out += '<text class="' + (l.c || '') + '" x="' + n1(x0 + w / 2) + '" y="' + n1(y - h / 2 + 4.5 + (k + 1) * (fs + 3) - 3.2) + '" text-anchor="middle" style="font-size:' + fs + 'px">' + esc(l.t) + '</text>'; });
         return '<g class="ef2-pill ' + cls + '"><rect x="' + n1(x0) + '" y="' + n1(y - h / 2) + '" width="' + n1(w) + '" height="' + n1(h) + '" rx="' + n1(Math.min(h / 2, 13)) + '"/>' + out + '</g>';
@@ -241,7 +252,7 @@
           var best = null, bd = -1;
           for(var cnd = 0; cnd < 14; cnd++){
             var p = [rect.x0 + r() * w, rect.y0 + r() * h], dmin = 1e9;
-            for(k = 0; k < pts.length; k++){ var dx = p[0] - pts[k][0], dy = (p[1] - pts[k][1]) * 1.5, dd = dx * dx + dy * dy; if(dd < dmin) dmin = dd; }
+            for(k = 0; k < pts.length; k++){ var dx = p[0] - pts[k][0], dy = (p[1] - pts[k][1]) * (i === NL - 1 ? 2.4 : 1.5), dd = dx * dx + dy * dy; if(dd < dmin) dmin = dd; }
             if(dmin > bd){ bd = dmin; best = p; }
           }
           pts.push(best);
@@ -252,7 +263,7 @@
         var meta = [];
         for(var i = 0; i < NL; i++){
           var z = G.zones[i], gh = G.gy1 - G.gy0, wz = z.x1 - z.x0, area = wz * gh;
-          var size = i === 0 ? clamp(1.2 * Math.sqrt(area / MAXN[0]), 5, 11) : clamp([0, 0.98, 0.84, 0.66][i] * Math.sqrt(area / MAXN[i]), 6, [0, 19, 30, 56][i]);
+          var size = i === 0 ? clamp(1.2 * Math.sqrt(area / MAXN[0]), 5, 11) : clamp([0, 0.98, 0.84, 0.58][i] * Math.sqrt(area / MAXN[i]), 6, [0, 19, 30, 56][i]);
           var hh = i === 0 ? size * 1.7 : size * ASPECT[i], padX = (i === 0 ? size * 0.5 : size * 0.55) + (G.ph ? 5 : 9);
           var rect = { x0: z.x0 + padX + (i ? 3 : 0), x1: z.x1 - padX - (i < NL - 1 ? 3 : 0), y0: G.gy0 + G.back + hh * 0.9, y1: G.gy1 - 3 };
           var pts = places(i, rect, size), r = rng(9 + i * 53), order = pts.map(function(p, k){ return { p: p, k: k, v: r() }; });
@@ -315,7 +326,7 @@
         // the sun and the name of its control
         p.push('<circle class="ef2-sunglow" cx="' + g.sunX + '" cy="' + g.sunY + '" r="' + n1(g.sunR * 1.9) + '"/><circle class="ef2-sun" cx="' + g.sunX + '" cy="' + g.sunY + '" r="' + g.sunR + '"/>');
         p.push('<path class="ef2-suntrack" d="M' + n1(g.sx0) + ' ' + g.sy + 'H' + n1(g.sx1) + '"/><circle class="ef2-sunend" cx="' + n1(g.sx0 - (g.ph ? 9 : 12)) + '" cy="' + g.sy + '" r="' + (g.ph ? 3 : 3.5) + '"/><circle class="ef2-sunend" cx="' + n1(g.sx1 + (g.ph ? 12 : 16)) + '" cy="' + g.sy + '" r="' + (g.ph ? 6 : 7.5) + '"/>');
-        p.push('<text class="ef2-sunname" x="' + n1((g.sx0 + g.sx1) / 2) + '" y="' + n1(g.sy + (g.ph ? 30 : 34)) + '" text-anchor="middle" style="font-size:' + (g.ph ? 12 : 13.5) + 'px">Sunlight</text>');
+        p.push('<text class="ef2-sunname" x="' + n1((g.sx0 + g.sx1) / 2) + '" y="' + n1(g.sy + (g.ph ? 40 : 42)) + '" text-anchor="middle" style="font-size:' + (g.ph ? 12 : 13.5) + 'px">Sunlight</text>');
         gStatic.innerHTML = p.join('');
       }
       function plume(x, y0, h, ph){
@@ -368,13 +379,13 @@
           var ly2 = g.gy1 + g.lb / 2, name = { t: ORG[i], b: 1, c: 'ef2-nm' }, val = { t: fmt(e) + ' kcal', b: 1, c: 'ef2-val' };
           if(g.two) p.push(pill(z.cx, ly2, [name, val], 'is-level', g.fs, z.x0 + 2, z.x1 - 2));
           else {
-            var w1 = name.t.length * g.fs * 0.6, w2 = val.t.length * g.fs * 0.6, w = w1 + w2 + 30, h = g.fs + 13, xl = clamp(z.cx - w / 2, z.x0 + 2, z.x1 - 2 - w);
+            var w1 = wid(name.t, g.fs), w2 = wid(val.t, g.fs), w = w1 + w2 + 34, h = g.fs + 13, xl = clamp(z.cx - w / 2, z.x0 + 2, z.x1 - 2 - w);
             p.push('<g class="ef2-pill is-level"><rect x="' + n1(xl) + '" y="' + n1(ly2 - h / 2) + '" width="' + n1(w) + '" height="' + n1(h) + '" rx="' + n1(h / 2) + '"/><text class="ef2-nm" x="' + n1(xl + 11) + '" y="' + n1(ly2 + g.fs * 0.36) + '" style="font-size:' + g.fs + 'px">' + esc(name.t) + '</text>' +
               '<text class="ef2-val" x="' + n1(xl + w - 11) + '" y="' + n1(ly2 + g.fs * 0.36) + '" text-anchor="end" style="font-size:' + g.fs + 'px">' + esc(val.t) + '</text></g>');
           }
           // a level with less than one animal's worth of energy stands empty, and says why
           if(i && !rp && count(e) === 0 && count(tg[i]) === 0 && ORGS[i]){
-            var r = ORGS[i].rect, fsE = g.ph ? 10 : 12.5, narrow = (z.x1 - z.x0) < 150;
+            var r = ORGS[i].rect, fsE = g.ph ? 10 : 12.5, narrow = wid('too little energy', fsE) + 24 > z.x1 - z.x0;
             p.push(pill(z.cx, (r.y0 + r.y1) / 2, narrow ? [{ t: 'too little', b: 1 }, { t: 'energy', b: 1 }] : [{ t: 'too little energy', b: 1 }], 'is-none', fsE, z.x0 + 2, z.x1 - 2));
           }
         }
