@@ -101,5 +101,3 @@
 .ez2-predict .bt-actions{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;}
 .ls-root .ls-dock .ez2-predict .bt-actions{position:static;box-shadow:none;background:none;}
 
-/* the cause line keeps two rows on a phone, so the picture never jumps when it wraps (the kit reserves one) */
-@media (max-width:640px){ .ez2 .tk2-cause{min-height:67px;align-content:center;} }
