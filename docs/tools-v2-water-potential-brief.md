@@ -128,9 +128,44 @@ worked setting, the two totals on one scale, things to try and the link to Osmos
   pressure gives "no net water movement", Test yourself wrong and right answers, real touch drag at the scrolled
   end of a phone page (knob moves, page does not scroll), reduced motion (numbers land at once with a 240 ms cross
   fade), no console errors: 114 checks, 0 failures.
-- `scripts/check-tool-use.mjs`: Water potential reports frame v2; the old frame sample is now Simpson's diversity
-  (Osmosis and Water potential are both on the kit on this branch).
+- `scripts/check-tool-use.mjs` is not edited (its samples are fixed on the collecting branch); a local copy of its
+  list with Water potential and Osmosis added reports frame v2 for both.
 - Course checks: 72 AP Bio unit tests, content check, map check, `build-apbio --check` all pass.
 - Not happy with: the dashed "no net flow" mark is the same as Osmosis's (kept for consistency, a reviewer may
   still read it as ghost arrows); at 600 to 820 px the cell is a smaller share of the stage (12 to 16%) because
   the two sums sit above it.
+
+## Review round 1 (2026-11-18, `/home/claude/review-water-potential/REVIEW.md`: BLOCK, 2 must fix, 5 should fix)
+Rebased onto `claude/tools-v2-all` first (its `check-tool-use.mjs` and the kit's phone cause line height taken as
+they are; the earlier edit to `check-tool-use.mjs` dropped).
+
+Must fix:
+1. **The word pill sat on the total.** The card's foot is now deep enough that the hanging pill's top stays 6 px
+   under the total's glyphs at every width (`ch` in `geo`). The sweep no longer skips a sum and its own word: the
+   word must keep 4 px from every text in its sum.
+2. **Result before the arrows in Test yourself on a phone.** The words are empty while `view.reveal` is 0, and the
+   cause line keeps its place but stays unseen (`holdCause`) until the first frame that draws the arrows. The sweep
+   watches every change from each Check to the end and fails on a word or a seen cause line before `.wp2-flowg`;
+   frames every 50 ms at 390 agree (`shots/390-ty-reveal-f3.png`: true numbers, no words, no arrows).
+
+Should fix:
+- **No net movement is a thin two headed arrow** (a head at each end: water crosses both ways at the same rate) in
+  place of the three dashed lines. The same change in Osmosis (`both()` in `osmosis.js`, `.os2-eq` and `.os2-eq-h`;
+  seen in its Test yourself runs at 1440, 390 and 768 dark; its unit tests and tool check pass, nothing else there
+  changed).
+- **The cell between phone and desktop.** From 521 to 1023 px the stage is taller (`min(86vw, 600px)` in Explore,
+  `min(72vw, 500px)` in Test yourself) and under the sums the cell may widen to `hh * 1.9`, capped so the water
+  arrows and their pill still fit before the solute knob. Smallest cell share now 15.0% at 600 (was 12.1), 22.1% at
+  768 (16.5), 23.5% at 820 (15.4).
+- **One wording:** "no net movement" in the pill and in the cause line ("?" and the screen reader keep full sentences).
+  On a phone the pill wraps to two lines ("no net / movement") where one line would run onto the cell; the sweep now
+  also keeps the flow pill off the cell. The layout's lane for that pill is measured from its real width.
+- **"bar" on the first cause pill** ("Cell ψ −7.8 bar"); still two rows at 360.
+- **Owner log:** one line that the typed ψ level lines of the old practice are no longer drawn.
+- Counting numbers: left as they are (the reviewer found them acceptable).
+- The sweep polls with plain evaluations (Playwright's `waitForFunction` hit the page's CSP under load once).
+
+Checks after the round: sweep 320 states, 2846 checks, 0 failures (one width per process); hand checks 116, 0
+failures (390, 768, 1440, light and dark, pointer and touch drag, keyboard, reduced motion, the phone reveal
+frames, Test yourself right and wrong); 72 AP Bio unit tests, content, map and `build-apbio --check`, check-weight,
+check-site, `build-apcalc --check`, `build-apmacro --check`.

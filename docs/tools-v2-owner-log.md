@@ -35,3 +35,5 @@ in each tool's brief.
 | 2026-11-18 | AP Bio Water potential | The cell shrinking from its wall (plasmolysis) is not drawn here | This picture is the moment the cell goes in; what happens next is Osmosis's screen | "?" points to Osmosis |
 | 2026-11-18 | AP Bio Water potential | The "Try this" goals moved to "?" ("Things to try"), reworded for the two controls | Rule 6 | "?" |
 | 2026-11-18 | AP Bio Water potential | The solute key (sucrose hexagon, Na⁺ and Cl⁻ dots) is gone | Particles are drawn at i × C, one kind of dot | "?" says so |
+| 2026-11-18 | AP Bio Water potential | The old practice drew the student's typed ψ values as level lines on a scale ("does your arrow run downhill?"); now the typed values fill the two sums and the comparison shows only after the last part | The sums are the picture's subject; one scale beside them was a second picture | "?" ("The two totals on one scale"); review round 1 |
+| 2026-11-18 | AP Bio Water potential and Osmosis | "No net movement" is drawn as thin two headed arrows (water crosses both ways at the same rate), not dashed lines | Reviewer: the dashes read as ghost arrows | `both()` in each tool |

@@ -357,3 +357,8 @@ after it; plus "24 hours", Replay not sticky. Preview and shots regenerated (bur
 - Checks: 72 unit tests, content, build, site and weight checks; Playwright 390 assertions (full pass) and 98 new
   frame by frame ones. Preview and shots regenerated.
 
+
+## After review (from the Water potential review, 2026-11-18)
+- "No net movement" during a run is a thin two headed arrow (a head at each end) in place of the dashed lines, the
+  same mark as Water potential (`both()`, `.os2-eq`, `.os2-eq-h`). Nothing else changed. See
+  `docs/tools-v2-water-potential-brief.md`, review round 1.
