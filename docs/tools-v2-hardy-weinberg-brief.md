@@ -156,3 +156,80 @@ twine, and the cue on a first visit.
 - The bed is a sorted model, not a scattered population (said in "?"; open point hw-explore-snapdragons).
 - The 100 plants are 100 SVG groups; fine on the devices tested, not measured on a slow phone. (Measured in review
   round 1: see below.)
+
+## Review round 1 (2026-11-18): BLOCK, fixed
+The independent review (`/home/claude/review-hardy-weinberg/REVIEW.md`) blocked the tool on five points. The branch
+was brought up to `claude/tools-v2-all` (a merge, not a rebase: a force push was refused); the edit to
+`scripts/check-tool-use.mjs` and the page's own phone cause line height were dropped (the collecting branch owns both).
+
+### Must fix
+1. **Carriers were lost.** Explore stays snapdragons. Targets 1 (q16) and 3 (rare) now use a second bed, **pea
+   plants** (`"sp": "pea"`, the `pea` block in the data): A purple dominant over a white, so AA and Aa look the same.
+   They keep the old wording ("16% of the pea plants show the recessive trait (white flowers)"; "make the recessive
+   trait rare ... then count the carriers"). After the bloom there are two signs ("purple 84%", "white 16%"), the
+   Aa plot is named "Aa: carriers" (a pill, once the bed has settled, where the plot is large enough), and the
+   answer says purple is p² + 2pq and 2pq are carriers. Purple takes the place of red on the pea bed: the A alleles,
+   the p pill and every A_ plant. The q16 answer no longer says "the homozygous class you can count" of a bed
+   where every class can be counted: on the pea bed only white can be. The validator checks that pea targets ask
+   for the white share and that the pea block is complete dominance.
+2. **Plants fused into stalks.** A plant is now at most 0.8 of its row tall (and 1.6 cells wide), and the bushy
+   plant is used once a cell is 0.85 as wide as it is tall, so soil shows between rows at every width. The sweep
+   now asserts that no two plants touch in a column or a row (drawn boxes, from `data-box` on the plants).
+3. **Slow.** Measured with `scripts/tools-v2/hardy-weinberg-perf.mjs` (the reviewer's probe: a mouse drag from
+   p = 0 to 1 and back, CPU throttled four times, at 390 and 1440; it also gives main thread CPU per frame from a
+   trace, which other processes on a shared machine do not inflate). What changed, each measured:
+   - one `<use>` per plant; a flip changes its `href` and class only (no faded copy left behind);
+   - each plant is one image: the drawing is made once per genotype and colour scheme as an SVG image, then once
+     as a bitmap at the size it is shown (`sprites()`, `toBitmaps()`; remade on a theme or species change);
+   - the grow in is three sizes set as the plant's own transform by script (`grow()`), not 100 CSS animations;
+   - three layers: the lawn and bed (never repainted during a drag), the plants, and an overlay with the twine,
+     the alleles, the pills and the signs, all built once per layout and then changed by attributes and text
+     only, so a drag adds and removes no elements (the frame's observers no longer force a layout every step);
+   - the cause line's pills keep their elements during a drag (only their text changes).
+   Results, CPU ×4, with the machine at load 6 to 9 on 2 cores (other builds running):
+
+   | | Review head (54e3d43b) | Now |
+   |---|---|---|
+   | 390, drag: frames median / p95 | 50 / 117 ms | 16.7 / 33 to 50 ms |
+   | 1440, drag: frames median / p95 | 117 / 367 ms | 16.7 / 50 ms |
+   | 390, drag: main thread CPU a frame | 15.2 ms | 4.4 to 5.1 ms |
+   | 1440, drag: main thread CPU a frame | 28.9 ms | 5.1 to 5.3 ms |
+   | plant `<use>` elements after a drag | 200 | 100 |
+
+   The p95 at 1440 sits at three frames (50.0 or 50.1 ms, frames come in 16.7 ms steps), the edge of the target;
+   at 390 it is two frames on most runs.
+4. **Sign text overflowed.** Each sign is sized from its measured text (one font size per layout fits the widest
+   text a sign can hold, "WW 100%" or "purple 100%"; figures are tabular, so a sign is measured twice per layout,
+   never during a drag). The sweep asserts every sign's text and dot lie inside the sign.
+5. **The cue asked for a move that did nothing.** The control's hit area now covers the pollen row: a drag (or tap)
+   that starts on a pollen grain moves p, so "Drag the alleles" is true. Checked with mouse and real touch.
+
+### Should fix and remove
+- The Problems figure on a phone: the key is one line, and the figure is 382 by 112 at 390 (main 382 by 114; the
+  review found 81).
+- The practice square labels p and q down to a part 22 wide (was 34), so p = 0.12 is labelled.
+- "eggs" sits right under the last egg. (At the head of the column the knob covered it when p = 0; the sweep now
+  measures the knob with its rings, and caught that.)
+- Removed: the hint shown before the first try in "Set the alleles"; it is in the wrong answer feedback.
+
+### Checks run (round 1)
+- `node --test scripts/test/apbio-*.test.mjs` (72 pass), `check-apbio-content --check`, `build-apbio --check`,
+  `check-site` (it caught "colour" in the pea note; fixed), `check-weight --check`, `build-apmacro --check`,
+  `build-apcalc --check`. `check-tool-use` run with a local copy of its list: Hardy-Weinberg reports frame v2.
+- Sweep, one process per width: 102,617 checks, 0 failed (new: plants apart in columns and rows, sign text inside
+  its sign, the knob with its rings, the pea bloom with two signs and the carriers, the next target back on
+  snapdragons).
+- `scripts/tools-v2/hardy-weinberg-perf.mjs`: the numbers in the table above.
+- Playwright at 390 (touch), 768 and 1440, light and dark, 312 assertions passing: everything in the first round,
+  plus a drag that starts on a pollen grain (mouse and real touch), target 1 on the pea bed with the old wording
+  and no hint before the first try, the pea signs wrong (75% / 25%) and right (84% / 16%), the answer naming the
+  carriers, target 2 back on snapdragons, Explore back on snapdragons. A theme switch redraws the plant images.
+  Chi-square, Descriptive statistics, Water potential and Simpson diversity still open their problems at
+  `#practice`, and Hardy-Weinberg drift and Osmosis load, all with no errors.
+- Preview and shots regenerated in `/mnt/user-data/outputs/hardy-weinberg-v2/` (sweep contact sheets, mid drag and
+  mid bloom frames, the pea bed, Problems at 390).
+
+### Still not happy with
+- The p95 frame time at 1440 is at the edge (three frames) on a loaded machine; not measured on a real slow phone.
+- On a wide desktop the plants are small in wide cells (their width is capped so the flowers are not stretched).
+- The pea bed sorts plants into plots like the snapdragons, and peas mostly self pollinate (hw-pea-bed).

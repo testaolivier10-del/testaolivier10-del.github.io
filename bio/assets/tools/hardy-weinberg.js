@@ -87,7 +87,7 @@
     '<linearGradient id="hw2g-lawn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="hw2s-la0"/><stop offset="1" class="hw2s-la1"/></linearGradient>' +
     '<linearGradient id="hw2g-soil" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="hw2s-so0"/><stop offset="1" class="hw2s-so1"/></linearGradient>' +
     '<linearGradient id="hw2g-wood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="hw2s-wd0"/><stop offset="1" class="hw2s-wd1"/></linearGradient>' +
-    '</defs><defs class="hw2-spr"></defs>';
+    '</defs>';
 
   /* ------------------------------------------------------------ Calculations: the figure of a problem
      The problem's individuals, each a pair of alleles (up to 100, in proportion), beside the gene pool square split
@@ -190,13 +190,14 @@
       var head = K.head({ purpose: EX.purpose, how: { label: 'Show me how', onClick: function(){ startTour(); } } });
       stage.appendChild(head.el);
       var sceneBox = document.createElement('div'); sceneBox.className = 'hw2-scene'; sceneBox.id = T.nid('hw2');
-      sceneBox.innerHTML = '<svg class="hw2-svg" role="img" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep">' + DEFS +
-        '<g class="hw2-static"></g><g class="hw2-plants"></g></svg>' +
+      // three layers: the lawn and the bed (never change during a drag), the plants, and what moves with the knob
+      sceneBox.innerHTML = '<svg class="hw2-svg hw2-under" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep">' + DEFS + '<g class="hw2-static"></g></svg>' +
+        '<svg class="hw2-svg hw2-bed" role="img" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"><defs class="hw2-spr"></defs><g class="hw2-plants"></g></svg>' +
         // what moves with the knob (the twine, the gene pool, its labels) and the signs: their own layer, so a drag
         // never repaints the hundred plants under them
         '<svg class="hw2-svg hw2-over" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"><g class="hw2-twine"></g><g class="hw2-top"><g class="hw2-toks"></g><g class="hw2-labs"></g></g><g class="hw2-signs"></g></svg>';
       stage.appendChild(sceneBox);
-      var svg = sceneBox.querySelector('svg'), over = sceneBox.querySelector('.hw2-over'), gStatic = svg.querySelector('.hw2-static'), gTwine = over.querySelector('.hw2-twine'), gPlants = svg.querySelector('.hw2-plants'),
+      var under = sceneBox.querySelector('.hw2-under'), svg = sceneBox.querySelector('.hw2-bed'), over = sceneBox.querySelector('.hw2-over'), gStatic = under.querySelector('.hw2-static'), gTwine = over.querySelector('.hw2-twine'), gPlants = svg.querySelector('.hw2-plants'),
         gTop = over.querySelector('.hw2-top'), gTok = over.querySelector('.hw2-toks'), gLab = over.querySelector('.hw2-labs'), toks = [], tokK = 0, gSigns = over.querySelector('.hw2-signs'), layer = K.layer(sceneBox), G = null;
       var lines = document.createElement('div'); lines.className = 'hw2-lines';
       var cause = K.cause({ label: 'Why' });
@@ -233,13 +234,31 @@
       /* The plant images: each drawing in PLANT, coloured for each genotype from this page's colour variables (light
          or dark theme, snapdragon or pea), as one SVG image inside a symbol. Remade when the theme or species changes. */
       var sprKey = '';
+      /* Then each image is redrawn once as a bitmap at the size it is shown (vector images are drawn again at every
+         size a plant grows through, which made frames wait during a drag). Until then the vector image shows. */
+      function toBitmaps(key){
+        if(!G || !window.HTMLCanvasElement) return;
+        var k = Math.min(4, Math.max(G.sx, G.sy) * (window.devicePixelRatio || 1) * 1.05);
+        Array.prototype.forEach.call(svg.querySelectorAll('.hw2-spr image'), function(im){
+          var src = im.getAttribute('href'), pic = new Image();
+          pic.onload = function(){
+            if(sprKey !== key) return;
+            try{
+              var c = document.createElement('canvas'); c.width = Math.ceil(PBOX[2] * k); c.height = Math.ceil(PBOX[3] * k);
+              c.getContext('2d').drawImage(pic, 0, 0, c.width, c.height);
+              im.setAttribute('href', c.toDataURL('image/png'));
+            }catch(e){}
+          };
+          pic.src = src;
+        });
+      }
       function sprites(){
         var cs = getComputedStyle(stage), v = function(n, d){ return (cs.getPropertyValue(n) || '').trim() || d; };
         var cols = [[v('--hw-r'), v('--hw-r-hi'), v('--hw-r-edge', '#7C1218')], [v('--hw-rw'), v('--hw-rw-hi'), '#B5477A'], [v('--hw-w-sh'), v('--hw-w'), v('--hw-w-edge')]];
         if(SP.dom) cols[1] = cols[0];
         var base = '.hw2-shade{fill:#000;fill-opacity:.26}.hw2-stem{fill:none;stroke:' + v('--hw-stem') + ';stroke-width:2.4;stroke-linecap:round}' +
           '.hw2-tendril{fill:none;stroke:' + v('--hw-stem') + ';stroke-width:1.2;stroke-linecap:round}.hw2-leaf{fill:' + v('--hw-leaf') + ';stroke:' + v('--hw-leaf-ink') + ';stroke-width:.7}.hw2-throat{fill:' + v('--hw-throat') + '}';
-        var key = SP.sym + '|' + base + '|' + cols.join('|');
+        var key = SP.sym + '|' + base + '|' + cols.join('|') + '|' + (G ? Math.max(G.sx, G.sy).toFixed(2) : '');
         if(key === sprKey) return false;
         sprKey = key;
         function img(id, draw, c){
@@ -250,6 +269,7 @@
         var h = [img('sprout', 'sprout')];
         ['1', '3'].forEach(function(k){ for(var g = 0; g < 3; g++) h.push(img(SP.sym.slice(4) + k + '-' + g, SP.sym.slice(4) + k, cols[g])); });
         svg.querySelector('.hw2-spr').innerHTML = h.join('');
+        toBitmaps(key);
         return true;
       }
       function plCls(g, cls){ return 'hw2-pl ' + (g < 0 ? 'is-sprout' : GC[g]) + (cls ? ' ' + cls : ''); }
@@ -535,7 +555,7 @@
       function layoutNow(){
         if(stage.hidden) return;
         var r = sceneBox.getBoundingClientRect(), Wd = Math.max(280, Math.round(r.width)), H = Math.max(300, Math.round(r.height));
-        [svg, over].forEach(function(e){ e.setAttribute('viewBox', '0 0 ' + Wd + ' ' + H); e.setAttribute('width', Wd); e.setAttribute('height', H); });
+        [under, svg, over].forEach(function(e){ e.setAttribute('viewBox', '0 0 ' + Wd + ' ' + H); e.setAttribute('width', Wd); e.setAttribute('height', H); });
         G = geo(Wd, H); signFs = {}; drawTop.k = '';
         cP.place([G.bx0, G.ty, G.bx1, G.ty]);
         // the pollen row is part of the control: a drag that starts on a pollen grain moves p too
