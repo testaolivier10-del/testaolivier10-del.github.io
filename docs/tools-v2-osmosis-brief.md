@@ -280,3 +280,62 @@ frames added (`07a` to `07d`, `08`).
   and forth sees the line switch between the two stories. Both are true at the moment they show.
 - The strain moment is short (0.24 s) and subtle.
 - Still no real phone, no screen reader pass; the independent review is next.
+
+## Review round 1 (2026-11-18, `/home/claude/review-osmosis/REVIEW.md`: BLOCK, 6 must fix, 7 should fix)
+All six must fix items and all seven should fix items were done. One suggestion was not taken, with the reason
+(see "Cause line grammar").
+
+### Must fix
+1. **Back from a burst on a real drag.** The animation is now one loop that chases the setting, not a sequence
+   restarted at every step. When the solute goes back up, the torn cell fades (0.48 s) while a new cell comes in,
+   and "new cell" (2.6 s) and the fade survive every further step of the same drag; only a tab change clears
+   them. Checked with a 10 step pointer drag: the fade is seen mid drag and the label never drops once shown.
+2. **Isotonic settles on "no net water movement".** The change story ("Less solute than before → ... → water
+   moves back in") now lives only while the arrows show it. When the cell has settled the line is the settled
+   story for that solution, so 0.30 M always ends on "Same solute both sides → equal water potential → no net
+   water movement → Flaccid" (or "Normal size"), and the picture's label no longer says both.
+3. **No word runs ahead of the picture.** The state pill is read from the cell as drawn (its water now), not from
+   where it will end, so it passes through "Flaccid" or "Normal size" on the way. While water is moving the cause
+   line stops at the water pill ("... → water moves out"); the result pills are added when the cell is in that
+   state. "Turgid" and "wall pushes back" appear once the wall is seen bowing (60 percent of the way), in a drag
+   and in Watch it happen; "wall" and "membrane" appear with the gap. "Burst (lysed)" appears after the tear.
+4. **The dashed "before" outline is gone** on both tabs. The tick on the track stays.
+5. **A real burst.** Strain: the membrane turns thin and pale (solid, not dashed) and the cell overshoots 7
+   percent in size (0.32 s). Tear: the membrane snaps back about 20 percent in the first tenth of a second, the gap
+   opens wide at once, a plume and the particles leave through the gap and travel outward before thinning, and the
+   cell empties. Settled: a solid, slack, torn membrane with curled ends, empty. About 1 s; the same in Watch it
+   happen and in the Predict runs.
+6. **Phone, Predict.** On Run it and check (and Replay), if the picture is not fully on screen it is scrolled to
+   the middle first, the run plays, then the marks are scrolled back into view.
+
+### Should fix
+- **Red blood cell shapes.** The drawn area of the cell now follows its water. Normal: a biconcave disc with a
+  plain pale, dished middle. Swollen at 0.20 M is 22 percent wider and the dish fills in.
+- **Crowding.** Inside particles now fill the cell (or the plant's vacuole) and the drawn area follows the water,
+  so inside crowding matches outside once settled, at every setting.
+- **Plasmolysis.** The protoplast's area follows its mass (the 45 percent that is not water does not shrink) and
+  the vacuole's follows the water: at 1.0 M the protoplast is 78 percent of its width, not a pellet, with a smaller
+  vacuole, and it rests against the wall on one side instead of floating in the middle.
+- **Cause line grammar.** Calmer: three pills while water moves, the full line when settled, and the "than
+  before" wording only during a reversal. NOT taken: "do not swap the first two pills at all mid drag". Keeping
+  "More solute outside → lower water potential outside" above arrows that point in would state a cause that
+  points the other way from the picture (rule 14).
+- **Replay** is now a plain button beside Next challenge, in the flow of the feedback (nothing sticky over text).
+- **"24 hours"** in potato challenges (and the clock in hours), not "1440 minutes".
+- **"before"** over the tick hides when the knob is within 58 px of it (the tick stays).
+- Also: a deep link's specimen (`#predict-rbc`) is now always the first challenge (it could be skipped by the
+  random draw before); with reduced motion the still direction mark now leaves after 2.6 s, so a settled picture
+  never carries an arrow or a change story.
+
+### Checks run
+`node --test scripts/test/apbio-*.test.mjs` (72 pass), `check-apbio-content --check`, `build-apbio --check`,
+`check-site`, `check-weight --check`. Playwright at 390, 768 and 1440, light and dark: 390 assertions passing. New,
+one or more per must fix: (1) the 10 step drag back from a burst; (2) "no net water movement" and no "back" in the
+line or the label after arriving at 0.30 M from either side on both tabs, and the change story while moving;
+(3) every frame of a plant drag to 1.0 M, back to 0 M and of the replay is checked for a state word or label that
+does not match the drawn cell, and for a result pill while arrows are drawn; (4) no `.os2-before` in any frame;
+(5) strain, tear and emptying all seen, the torn membrane narrower than the strained cell, "Burst" never before
+the tear, settled membrane solid; (6) the picture inside the viewport during a Predict run and the marks in view
+after it; plus "24 hours", Replay not sticky. Preview and shots regenerated (burst frames `07a` to `07f`, `08`,
+`08b`).
+
