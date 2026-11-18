@@ -117,3 +117,40 @@ mid cut and mid Even it out frames) in `/mnt/user-data/outputs/simpson-diversity
   words.
 - At 768 to 1024 the trees are small against the plot's width; still at least 44 px tall.
 - The sweep and verification run on one Chromium only.
+
+## Review round 1 (2026-11-18, `/home/claude/review-simpson-diversity/REVIEW.md`: BLOCK, 2 must fix, 7 should fix; all fixed)
+Rebased on `claude/tools-v2-all` first: its `scripts/check-tool-use.mjs` taken as is (this branch's edit dropped;
+Simpson checked with a local copy of the list) and the kit's phone cause line height used (this tool's own
+`min-height` removed).
+
+### Must fix
+1. **A tap on visible bare soil replaced a nearby tree.** `hit()` now acts on what is drawn: `elementFromPoint` and
+   `closest('.sd2-spot')` first (tree shadows take no pointer); only on bare floor between things does it fall back,
+   to the nearest bare place, then to a trunk's foot. The mouse hover uses the same test. The sweep now taps the
+   centre of every visible bare patch with a mouse and with real touch at all ten widths and asserts each plants
+   exactly there, then taps six visible crowns and asserts each changes that tree.
+2. **Cause pill "2 random trees differ 50%"** is now "pick 2: 50% different species" (two rows at 360 kept).
+
+### Should fix
+3. **Cue over a tree:** each tree is tried with the bubble really placed on its right, left or above, and points
+   under the bubble are read with `elementFromPoint`; the first with no other tree, the gauge or the tray under it
+   is kept. Sweep: no tree under the cue at any width.
+4. **"3 species max"** is now "max for 3 species" (12 px).
+5. **Small trees and empty bands at 768 to 1024:** a tall stage (height over 0.62 of its width) keeps 6 rows of 6
+   (no empty bands); a wide one uses 9 across when that gives trees as big. Trees: 77 to 90 px at 768 and 820 (were
+   73 to 86, the place spacing now fills the plot), 127 to 149 px at 1024 (were 98 to 115).
+6. **Bare places hidden behind crowns:** rows are a half column apart, a crown is narrower than half a column
+   (th at most 1.22 columns) and the row two in front is more than a tree height ahead (th at most 1.75 pitch);
+   jitter reduced. 0 of 12 hidden at every width at the opening, and the sweep checks it in every state.
+7. **N = 0:** the gauge reads "No trees" and the arrow is cleared.
+8. **0.75 goal wording** corrected here and in the owner log: above 0.75 needs all five species.
+9. **Calculate D labels:** "D = …" and "your D …" go one above and one below when they would meet (22 units
+   apart). Not changed: on a phone after "Solved" the shared skill stage shrinks the whole figure (all skill tools;
+   seen before this rebuild).
+
+### Checks run
+Sweep, one width per process: **5206 passed, 0 failed** (with the new tap, cue, hidden soil and empty checks; frames
+at 390 and 1440: 603 checked, 151 mid change, words always match the trees). Playwright verification at 390 touch,
+768 and 1440 mouse, light and dark: 152 passed. 72 unit tests, `check-apbio-content --check`, `build-apbio --check`,
+`check-weight --check`, `build-apcalc --check`, `build-apmacro --check`, `check-site`; `check-tool-use` with a local
+list: Simpson reports frame v2. Preview and shots regenerated (`v-11-calc-labels-*`, `v-12-empty-390`).
