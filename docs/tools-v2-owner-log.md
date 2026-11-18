@@ -31,3 +31,4 @@ in each tool's brief.
 | 2026-11-18 | AP Bio Energy flow | Biomagnification (8.7) moves from a mode to "?" | Different idea from 8.2 | "?" section; a separate tool can come later |
 | 2026-11-18 | AP Bio Energy flow | The runs table is dropped; a series table for shares 5 to 20% is in "?" | Explore records nothing | `refHtml()` |
 | 2026-11-18 | AP Bio Energy flow | The cause line says "lost as heat" for all not passed on (AP shorthand); "?" splits heat and decomposers | Short cause line | `docs/apbio-needs-author.md` energy-flow-model |
+| 2026-11-18 | AP Bio Energy flow | The grass's own respiration plume carries no "heat" word | Its colour matches every labelled plume; a word there crowds the first step on phones | `draw()` in energy-flow.js |

@@ -35,6 +35,11 @@ less than one animal's worth; the reason is written under the picture in the ide
   snakes by rocks). One grass plant or animal is drawn for every 10 kcal/m²/yr a level stores, so the counts are the
   energy. At each step a gold arrow carries the share on ("10%") and orange heat plumes rise with the rest, sized by
   the energy lost there. Each level is named with its energy under it ("Frogs 100 kcal").
+- **Heat and passed on on one measure** (review round 1): at each step the energy entering is a band of one length;
+  the gold arrow is the share of it, the three heat wisps the rest, on the same stroke width, so heat is drawn
+  (1 - share) / share times the arrow (9 times at 10%) at every step and width. The band narrows up the chain with a
+  visible minimum. "heat" is written only beside a plume taller than the word. The grass's own respiration (half of
+  what it captures, the biggest heat loss) rises as an unlabelled plume from the grass, on the same measure.
 - **Instant response:** one loop chases the setting level by level, so a change is seen running up the chain;
   the counts are taken from the written numbers, so they can never disagree (rule 14).
 - **Opens** at 20,000 kcal captured and 10%: 1,000 grass plants, 100 grasshoppers, 10 frogs, 1 snake.
@@ -102,3 +107,17 @@ the last step is shown only while it is big enough to see). Only while true: "to
   in `.../shots/` and `.../sweep/`.
 - Not happy with: the grass zone is a dense uniform carpet at wide screens; the last heat plume is tiny (true to the
   numbers, but easy to miss); the open ocean, toxin and runs moved out of Explore and live only in "?".
+
+## Review round 1 (2026-11-18, BLOCK; `/home/claude/review-bio-energy-flow/REVIEW.md`)
+| Finding | Fix |
+|---|---|
+| Heat drawn smaller than the gold arrow at steps 2 and 3; "heat" over a tiny or missing plume | One measure per step (`stepLens`, `plume`, `heatWord`): heat is (1 - share) / share times the arrow on one stroke width; minimum band width; the word only beside a plume taller than it; the sky is a little taller (38% of the scene) so plumes have room at 600 to 820. Sweep checks the drawn ratio (within 0.75 to 1.33 of the expected), equal widths, wisps at least 12 px, and every "heat" word against its plume, at every width |
+| "?" implied number pyramids are always upright | The note now says numbers can be inverted (one tree, thousands of insects); energy never |
+| Producer respiration not drawn | A plume from the grass, on the same measure, unlabelled (same colour as every "heat") |
+| "?" table producer row did not add up | Column renamed "Of its stored energy, not eaten: to decomposers" |
+| Branch edited `scripts/check-tool-use.mjs` | Reverted; rebased on `claude/tools-v2-all`; checked with a local copy of the list (frame v2, four events) |
+| Phone cause line height override in the tool's CSS | Removed; the kit's two rows (70 px) hold the chain and the takeaway alike |
+| Owner log rows after a blank line | Blank line removed |
+
+Rechecked: sweep one width per process, 10 widths, 1826 checks, 0 failed; Playwright 244 checks, 0 failed; replay
+names heat only once drawn (0 frames); unit tests 72/72; content, map, site, weight checks pass.
