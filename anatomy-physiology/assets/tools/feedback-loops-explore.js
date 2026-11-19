@@ -264,7 +264,7 @@
       topics: ['homeostasis-feedback', 'skin-functions', 'energy-balance-thermoregulation'],
       purpose: 'Push body temperature off 37 °C and watch the loop answer',
       cue: 'Drag the thermometer', thing: 'thermometer', layouts: LAY,
-      set: SET, min: MIN, max: MAX, step: 0.1, dead: 0.1, band: [36.5, 37.5],
+      set: SET, min: MIN, max: MAX, step: 0.1, dead: 0.05, band: [36.5, 37.5],
       fmt: function(v){ return v.toFixed(1) + ' °C'; },
       TM: { sens: 0.35, aff: 0.8, affEnd: 1.75, ctl: 1.75, eff: 2.35, effEnd: 3.3, act: 3.3, resp: 3.7, tail: 4.4 },
       mon: { title: 'Body temperature', short: 'Temperature', lo: 35.5, hi: 38.5, ticks: [36, 37, 38], unit: '°C', setLabel: 'Set point', role: 'temp' },
@@ -464,7 +464,7 @@
       topics: ['pancreas-glucose'],
       purpose: 'Push blood glucose off normal and watch the loop answer',
       cue: 'Drag the glucose level', thing: 'glucose meter', layouts: LAY,
-      set: SET, min: MIN, max: MAX, step: 2, dead: 4, band: [70, 99],
+      set: SET, min: MIN, max: MAX, step: 2, dead: 1, band: [70, 99],
       fmt: function(v){ return Math.round(v) + ' mg/dL'; },
       TM: { sens: 0.35, aff: 0.8, affEnd: 0.8, ctl: 1.15, eff: 1.75, effEnd: 3.0, act: 3.0, resp: 3.4, tail: 4.4 },
       mon: { title: 'Blood glucose', short: 'Glucose', lo: 55, hi: 160, ticks: [70, 100, 140], unit: 'mg/dL', setLabel: 'Set point', role: 'glu' },
@@ -805,7 +805,8 @@
         if(k === 2) out.push({ key: 'cord', text: 'Spinal cord', role: 'aff', at: B([-22, 226]), side: ['l', 'r', 'u'], strong: true, lead: true });
         out.push({ key: 'hyp', text: 'Hypothalamus', role: k >= 3 ? 'ctl' : 'tok', at: M([-10, -30]), side: ['u', 'r', 'l'], strong: k === 3 });
         if(k === 4) out.push({ key: 'pit', text: 'Posterior pituitary', role: 'oxy', at: M([-12, 92]), side: ['d', 'l', 'r'], strong: true });
-        if(k === 4 && st.effp.length){ var pu = st.effp[0]; if(pu.p > 0.35) out.push({ key: 'oxy', text: 'Oxytocin', role: 'oxy', at: R1(E).eff.at(pu.p), side: ['r', 'l', 'u'], lead: true }); }
+        var gq = R1(E), magFrac = gq.eff.polys[0].len / gq.eff.len;
+        if(k === 4 && st.effp.length){ var pu = st.effp[0]; if(pu.p > magFrac + 0.04) out.push({ key: 'oxy', text: 'Oxytocin', role: 'oxy', at: R1(E).eff.at(pu.p), side: ['r', 'l', 'u'], lead: true }); }
         if(k >= 5) out.push({ key: 'myo', text: k === 5 ? 'Uterine muscle' : 'More stretch', role: k === 5 ? 'mus' : 'str', at: k === 5 ? B([128, 250]) : B([51, 362]), side: ['r', 'u', 'd'], strong: true, avoid: [utBox(E)], lead: true });
         return out;
       },
@@ -1278,6 +1279,8 @@
       var kq = knobPos(lastSt || state()), right = kq[0] - (E.X0 || 0) < E.W * 0.5;
       cue = K.cue(layer, { key: 'anp-loops', text: cur.cue, side: right ? 'right' : 'left', at: function(){ var q = knobPos(lastSt || state()); return [q[0] - (E.X0 || 0), q[1]]; } });
       cue.show(); ctrlDirty();
+      var cb = pic.querySelector('.tk2-cue'), pr = pic.getBoundingClientRect();
+      if(cb){ var r = cb.getBoundingClientRect(); if(r.left < pr.left + 2 || r.right > pr.right - 2){ cue.hide(false); cue = K.cue(layer, { key: 'anp-loops', text: cur.cue, side: 'above', at: function(){ var q = knobPos(lastSt || state()); return [q[0] - (E.X0 || 0), q[1]]; } }); cue.show(); } }
       setTimeout(function(){ if(cue && cue.active()){ ctrlDirty(); draw(); } }, 450);
     }
     function hideCue(used){ if(cue && cue.active()){ cue.hide(used); ctrlDirty(); } }

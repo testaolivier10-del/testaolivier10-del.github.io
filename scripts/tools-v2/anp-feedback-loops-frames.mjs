@@ -18,7 +18,7 @@
 import { chromium } from 'playwright';
 
 const arg = (k, d) => { const i = process.argv.indexOf(k); return i > -1 ? process.argv[i + 1] : d; };
-const PORT = arg('--port', '8987'), WIDTHS = arg('--width', '') ? [+arg('--width', '')] : [1440, 390];
+const PORT = arg('--port', '8987'), WIDTHS = arg('--width', '') ? [+arg('--width', '')] : [1440, 390, 360];
 const CASES = { temperature: [38.4, 37.6, 35.9, 36.6, 38.5, 35.5], glucose: [150, 160, 110, 60, 55, 76], childbirth: [0.35, 0.2, 0.06] };
 const exe = '/opt/pw-browsers/chromium-1243/chrome-linux64/chrome';
 const browser = await chromium.launch({ executablePath: exe });
@@ -54,6 +54,9 @@ for (const w of WIDTHS) {
           const st = api._state(), L = labs(), f = (m) => bad.push(`${tab} ${push} t=${t.toFixed(2)}: ${m}`);
           const cause = document.querySelector('.fe .tk2-cause').textContent;
           const rail = document.querySelector('.fe-rail').textContent;
+          // no two labels overlap on any frame (a label riding a molecule included)
+          const lr = qa('.fe-labs .fe-lab').map((g) => ({ t: g.getAttribute('data-lab'), q: g.querySelector('rect').getBoundingClientRect() }));
+          for (let i = 0; i < lr.length; i++) for (let j = i + 1; j < lr.length; j++) { const a = lr[i].q, c = lr[j].q; if (a.left < c.right && a.right > c.left && a.top < c.bottom && a.bottom > c.top) f(`labels overlap: ${lr[i].t} / ${lr[j].t}`); }
           // the drawn value and everything that reads it
           if (sc.kind === 'neg') {
             const val = sc.fmt(st.x), pill = L.find((x) => /°C|mg\/dL/.test(x.t));

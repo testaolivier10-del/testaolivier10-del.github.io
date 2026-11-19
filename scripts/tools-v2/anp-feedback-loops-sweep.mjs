@@ -114,6 +114,14 @@ for (const ws of WIDTHS) {
           const a = A.q, b = B.q, g = 4;
           if (a.left < b.right + g && a.right > b.left - g && a.top < b.bottom + g && a.bottom > b.top - g) out.over.push(A.n + ' / ' + B.n);
         }
+        // the kit's "pushed" mark: its word, when shown, clear of the knob, the scale's numbers, the bulb and every label
+        const bw = document.querySelector('.fe-pic .tk2-before:not([hidden]) b');
+        if (bw && bw.offsetWidth && getComputedStyle(bw).display !== 'none' && !bw.hidden) {
+          const a = bw.getBoundingClientRect();
+          const others = [...svgEl.querySelectorAll('.fe-ttxt, .fe-tbulb, .fe-labs .fe-lab rect')].map((e) => ({ n: e.textContent || e.getAttribute('class'), q: e.getBoundingClientRect() }));
+          const kd = document.querySelector('.fe-pic .tk2-handle:not([hidden]) .tk2-dot'); if (kd) others.push({ n: 'knob', q: kd.getBoundingClientRect() });
+          others.forEach((o) => { const q = o.q; if (q.width && a.left < q.right + 4 && a.right > q.left - 4 && a.top < q.bottom + 4 && a.bottom > q.top - 4) out.over.push('"pushed" / ' + (o.n || '').trim().slice(0, 20)); });
+        }
         // a label never covers the part it names (the arteriole, the sweat gland, the shivering muscle, the uterine wall)
         const PART = { 'Arteriole widens': '[data-r="artl"]', 'Arteriole narrows': '[data-r="artl"]', 'Sweat gland': '[data-r="gland"]', 'Muscle shivers': '[data-r="musg"]', 'Uterine muscle': '[data-r="ut"]', 'Baby born': '[data-r="baby"]' };
         svgEl.querySelectorAll('.fe-labs .fe-lab').forEach((g) => {

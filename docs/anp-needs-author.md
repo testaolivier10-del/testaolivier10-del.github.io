@@ -2099,7 +2099,6 @@ part; these are the judgment calls in the pictures and the break results.
   gland; adrenal damaged, ACTH at the gland; Ca2+ channels blocked, the action potential at the membrane; receptor
   proteins blocked, the transmitter across the cleft.
 
-<<<<<<< HEAD
 
 ## Feedback loops, tools v2 drawn loops (2026-11-18): items for review
 Brief: `docs/tools-v2-anp-feedback-loops-brief.md`. Explore draws three loops from the bank on a body (temperature,
@@ -2136,7 +2135,7 @@ unchanged.
   notes' "For your exam" note).
 - **fl-loop-timing** (decided, for review). Every run is seconds long. "?" says the pictures show the idea, not the real
   timing: temperature corrections take minutes, glucose after a meal two to three hours.
-=======
+
 ## Lab practical tool, tools v2 specimens (2026-11-18): items for review
 Explore shows six lab figures drawn clean with a pin on each part (docs/tools-v2-anp-lab-practical-brief.md). Pins sit
 where each figure's own printed leader line ended, checked by eye; each part's short "what it does" phrase was written
@@ -2153,4 +2152,3 @@ from that label's reviewed explanation in data/tools/lab-practical.json.
   "Papillary muscle: keeps the chordae tendineae taut", "Mastoid process: the bump behind the ear where muscles attach"
   and "Styloid process: a thin spike where small muscles attach" (the neck and tongue muscles are taught later, so
   the ordering rule keeps them unnamed).
->>>>>>> origin/claude/tools-v2-all

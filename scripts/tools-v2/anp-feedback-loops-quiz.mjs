@@ -14,6 +14,15 @@ const minText = (page) => page.evaluate(() => {
   const els = [...document.querySelectorAll('.fl-ring text, .fl-scene text, .fl-gauge text')].filter((t) => t.getBoundingClientRect().width && t.textContent.trim());
   return els.length ? Math.min(...els.map((t) => parseFloat(getComputedStyle(t).fontSize) * t.getScreenCTM().a)) : 0;
 });
+// every visible word of Test yourself's own HTML (slots, slot numbers, cards, buttons, "a case" tags)
+const minHtml = (page) => page.evaluate(() => {
+  let m = 99, t = '';
+  document.querySelectorAll('.ls-stage *, .ls-dock *').forEach((e) => {
+    if (e.closest('svg') || !e.offsetWidth || e.children.length || !e.textContent.trim() || e.closest('.fe')) return;
+    const fs = parseFloat(getComputedStyle(e).fontSize); if (fs < m) { m = fs; t = e.textContent.trim().slice(0, 20); }
+  });
+  return { m, t };
+});
 for (const w of WIDTHS) {
   const h = w < 500 ? 844 : w < 1100 ? 1024 : 900;
   for (const via of ['button', 'link']) {
@@ -31,7 +40,12 @@ for (const w of WIDTHS) {
     await page.setViewportSize({ width: w + 1, height: h }); await page.waitForTimeout(700);
     m = await minText(page); checks++;
     if (!(m >= 10.95)) fail(`${w} via ${via} after a resize: smallest word ${m.toFixed(1)} px`);
+    let hm = await minHtml(page); checks++;
+    if (hm.m < 10.95) fail(`${w} via ${via}: Watch it work text "${hm.t}" at ${hm.m} px`);
+    const cut = await page.$('.fl-cut summary, .fl-cut > button'); if (cut) { await cut.click().catch(() => {}); await page.waitForTimeout(200); hm = await minHtml(page); checks++; if (hm.m < 10.95) fail(`${w} via ${via}: Cut a part text "${hm.t}" at ${hm.m} px`); }
     await page.click('.fl-subb[data-v="test"]'); await page.waitForTimeout(300);
+    hm = await minHtml(page); checks++;
+    if (hm.m < 10.95) fail(`${w} via ${via}: Build it text "${hm.t}" at ${hm.m} px`);
     const slots = await page.evaluate(() => [...document.querySelectorAll('.fl-slot')].filter((e) => e.offsetWidth).length); checks++;
     if (slots !== 7) fail(`${w} via ${via}: Build it shows ${slots} slots`);
     await ctx.close();
