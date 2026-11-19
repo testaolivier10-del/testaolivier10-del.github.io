@@ -1,6 +1,13 @@
 /* Burns mode of the body map: the Rule of Nines, on a body you paint.
 
-   window.NremtBurns.mount(root, { record, q })
+   window.NremtBurns.mount(root, { record, q, anim, onChange, onSettle, onPaint })
+     anim      true: a region's burn fades in or out (about 0.3 s) and the total counts with what is drawn
+               (tools v2, docs/tools-v2-nremt-body-map-brief.md); reduced motion gets the result at once
+     onChange  fn(ev) the moment a region, the chart or the whole body changes:
+               ev = { kind: 'mark' | 'age' | 'clear', id, mark, prev, total, child }
+     onSettle  fn(ev) once the picture shows that change (the fade has ended)
+     onPaint   fn(total) after every frame drawn, with the total that frame shows
+   Returns { quiz, stop, figs, setChild, setBrush, clear, marks, total, child, brush, shown, regionName }.
 
    One job: estimate how much of the body is burned, fast, by the Rule of
    Nines, and know which regions carry how much.
@@ -234,6 +241,36 @@
     var ageBtns = Array.prototype.slice.call(root.querySelectorAll('[data-age]'));
     var brushBtns = Array.prototype.slice.call(root.querySelectorAll('[data-brush]'));
     var regs = {}, drawn = null;
+    /* What is drawn: each region's burn as a fraction (0, 0.5 or 1 when still); with opts.anim it moves toward the
+       mark over FADE ms and the total shown is read from it, never from the marks (rule 14). */
+    var FADE = 280, shownF = {}, lvlOf = {}, tw = 0, twLast = 0, pend = null;
+    function reducedM(){ try{ if(window.LevlMotion && window.LevlMotion.reduced) return !!window.LevlMotion.reduced(); return matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){ return false; } }
+    function shownTotal(){ var t = 0; REGIONS.forEach(function(r){ t += pct(r.id, st.child) * (shownF[r.id] || 0); }); return t; }
+    function settled(){ return REGIONS.every(function(r){ return Math.abs((shownF[r.id] || 0) - (st.marks[r.id] || 0)) < 1e-6; }); }
+    function step(now){
+      tw = 0;
+      var dt = Math.min(now - (twLast || now), 64); twLast = now;
+      var d = dt / FADE;
+      REGIONS.forEach(function(r){
+        var a = shownF[r.id] || 0, b = st.marks[r.id] || 0;
+        if(a === b) return;
+        shownF[r.id] = a < b ? Math.min(b, a + d) : Math.max(b, a - d);
+      });
+      paint();
+      if(!settled()){ tw = requestAnimationFrame(step); return; }
+      twLast = 0;
+      if(pend){ var ev = pend; pend = null; ev.total = total(st.marks, st.child); if(opts.onSettle) opts.onSettle(ev); }
+    }
+    function kick(ev){
+      if(ev) pend = ev;
+      if(!opts.anim || reducedM() || !figsEl.offsetParent){
+        REGIONS.forEach(function(r){ shownF[r.id] = st.marks[r.id] || 0; });
+        paint();
+        if(pend){ var e2 = pend; pend = null; e2.total = total(st.marks, st.child); if(opts.onSettle) opts.onSettle(e2); }
+        return;
+      }
+      if(!tw){ twLast = 0; tw = requestAnimationFrame(step); }
+    }
     function draw(){
       var variant = st.child ? 'child' : 'adult';
       if(drawn === variant || !figData(variant, 'front')) return;
@@ -259,8 +296,12 @@
     function paint(){
       draw();
       REGIONS.forEach(function(r){
-        var x = regs[r.id], m = st.marks[r.id] || 0;
+        var x = regs[r.id], f = opts.anim ? shownF[r.id] || 0 : st.marks[r.id] || 0, mk = st.marks[r.id] || 0;
+        // the level drawn: the mark, or while a burn fades out, the one it had
+        if(mk) lvlOf[r.id] = mk; else if(!f) lvlOf[r.id] = 0;
+        var m = opts.anim ? (f ? lvlOf[r.id] || mk || 1 : 0) : mk;
         if(!x) return;
+        x.shape.style.opacity = opts.anim && m ? Math.max(0, Math.min(1, f / m)).toFixed(3) : '';
         var shown = st.show && st.show.indexOf(r.id) >= 0;
         [x.g, x.shape, x.t].forEach(function(n){
           n.classList.toggle('is-full', m === 1);
@@ -274,7 +315,8 @@
         x.t.textContent = hideNum ? '' : fmt(p);
         x.g.setAttribute('aria-label', r.name + ', ' + fmt(p) + ' percent' + (m === 1 ? ', burned' : m === 0.5 ? ', half burned' : ''));
       });
-      var t = total(st.marks, st.child);
+      var t = opts.anim ? shownTotal() : total(st.marks, st.child);
+      if(opts.anim && !settled()) t = Math.round(t * 10) / 10;
       /* In "paint a 27% burn" the total is the answer, so it is hidden until Check. */
       var hideTotal = st.quiz && st.quiz.kind === 'paint' && !st.answered;
       total$.textContent = hideTotal ? '?' : fmt(t) + '%';
@@ -290,6 +332,7 @@
       var big = t > 10 && !hideTotal ? '<p class="bn-flag">Over 10%: if these are partial-thickness burns, that alone meets burn center criteria. Cover with dry sterile dressings: cool wet dressings over more than 10% risk hypothermia.</p>' : '';
       var old = list.nextElementSibling; if(old && old.classList.contains('bn-flag')) old.remove();
       if(big) list.insertAdjacentHTML('afterend', big);
+      if(opts.onPaint) opts.onPaint(t);
       return t;
     }
 
@@ -311,7 +354,10 @@
       var next = isTap && cur === brush && brush !== 0 ? 0 : brush;
       if(next) st.marks[id] = next; else delete st.marks[id];
       st.last = id;
-      var t = paint();
+      var t = total(st.marks, st.child);
+      var ev = { kind:'mark', id:id, mark:next, prev:cur, total:t, child:st.child, tap:!!isTap };
+      if(opts.onChange) opts.onChange(ev);
+      kick(next !== cur ? ev : null);
       info.innerHTML = '<p>' + explain(R[id]) + (next === 0.5 ? ' Half of it: ' + fmt(pct(id, st.child) / 2) + '%.' : '') + '</p>';
       var quizPaint = st.quiz && st.quiz.kind === 'paint';
       if(isTap) say(R[id].name + (next === 1 ? ' marked, ' : next === 0.5 ? ' half marked, ' : ' cleared, ') + fmt(pct(id, st.child) * (next || 0)) + ' percent.' + (quizPaint ? '' : ' Total ' + fmt(t) + ' percent.'));
@@ -344,24 +390,40 @@
 
     ageBtns.forEach(function(b){ b.addEventListener('click', function(){
       if(st.quiz) return;
-      st.child = b.dataset.age === 'child'; var t = paint();
+      setChild(b.dataset.age === 'child');
+    }); });
+    function setChild(child){
+      if(st.quiz || st.child === child) return;
+      st.child = !!child; var t = total(st.marks, st.child);
+      var ev = { kind:'age', child:st.child, total:t };
+      if(opts.onChange) opts.onChange(ev);
+      paint(); kick(ev);
       info.innerHTML = '<p>' + (st.child
         ? '<b>Child chart.</b> Only two regions change: the head and neck becomes 18% and each leg 13.5%. Everything else is counted as in an adult. These are the infant and small-child figures; as a child grows the head’s share shrinks and the legs’ grows toward the adult chart, and many protocols use a Lund-Browder chart for children.'
         : '<b>Adult Rule of Nines.</b> Head and neck 9%, each arm 9%, front of trunk 18%, back of trunk 18%, each leg 18%, genitals 1%.') + '</p>';
       say((st.child ? 'Child chart. ' : 'Adult chart. ') + 'Total ' + fmt(t) + ' percent.');
-    }); });
+    }
     brushBtns.forEach(function(b){ b.addEventListener('click', function(){ st.brush = +b.dataset.brush; paint(); }); });
     root.querySelector('.bn-clear').addEventListener('click', function(){
       if(st.quiz && (st.quiz.kind === 'estimate' || st.answered)) return;
-      st.marks = {}; paint(); info.innerHTML = ''; say('Cleared. Total 0 percent.');
+      clearAll();
     });
+    function clearAll(){
+      if(st.quiz && (st.quiz.kind === 'estimate' || st.answered)) return;
+      var had = Object.keys(st.marks).length;
+      st.marks = {}; info.innerHTML = '';
+      var ev = { kind:'clear', total:0, child:st.child };
+      if(opts.onChange) opts.onChange(ev);
+      kick(had ? ev : null); if(!had) paint();
+      say('Cleared. Total 0 percent.');
+    }
     var quizBtn = root.querySelector('.bn-quiz');
     quizBtn.addEventListener('click', function(){ if(st.quiz) stopQuiz(); else nextQ(); });
 
     /* ---- quiz ---- */
     function lockAge(on){ ageBtns.forEach(function(b){ b.disabled = on; }); }
     function stopQuiz(){
-      st.quiz = null; st.answered = false; st.show = null; st.marks = {}; cue.hidden = false;
+      st.quiz = null; st.answered = false; st.show = null; st.marks = {}; shownF = {}; cue.hidden = false;
       qpanel.hidden = true; quizBtn.setAttribute('aria-pressed', 'false'); quizBtn.textContent = 'Quiz me';
       lockAge(false); info.innerHTML = ''; paint();
     }
@@ -370,7 +432,7 @@
         .concat(PAINT.map(function(q){ return { id:q.id, kind:'paint', q:q }; }));
       var p = forceId ? pool.filter(function(x){ return x.id === forceId; })[0] : null;
       p = p || pick(pool, st.misses, st.quiz && st.quiz.id);
-      st.quiz = p; st.answered = false; st.show = null; st.marks = {}; cue.hidden = true;
+      st.quiz = p; st.answered = false; st.show = null; st.marks = {}; shownF = {}; cue.hidden = true;
       st.child = p.q.child; lockAge(true);
       quizBtn.setAttribute('aria-pressed', 'true'); quizBtn.textContent = 'Stop the quiz';
       info.innerHTML = '';
@@ -422,7 +484,7 @@
       st.answered = true;
       var q = st.quiz.q, ans = scenarioAnswer(q), ok = Math.abs(v - ans) < 0.01;
       var ids = scenarioRegions(q);
-      ids.forEach(function(id){ st.marks[id] = 1; });
+      ids.forEach(function(id){ st.marks[id] = 1; shownF[id] = 1; });
       st.show = null;
       var alt = scenarioAnswer(q, !q.child);
       var why = breakdown(ids, q.child) + ' = <b>' + fmt(ans) + '%</b>.';
@@ -474,7 +536,16 @@
     if(window.LevlBodyFigs) window.LevlBodyFigs.load('body', function(){ paint(); });
     info.innerHTML = '<p>Each number is that region’s share of the body.</p>';
     if(opts.q && (ESTIMATE.concat(PAINT)).some(function(x){ return x.id === opts.q; })) nextQ(opts.q);
-    return { quiz: nextQ, stop: stopQuiz };
+    return { quiz: nextQ, stop: stopQuiz, figs: figsEl, setChild: setChild, clear: clearAll,
+      setBrush: function(b){ st.brush = b; paint(); },
+      brush: function(){ return st.brush; }, child: function(){ return st.child; },
+      marks: function(){ var m = {}; for(var k in st.marks) m[k] = st.marks[k]; return m; },
+      total: function(){ return total(st.marks, st.child); },
+      shown: function(){ return shownTotal(); }, settled: settled,
+      // finish any fade at once (the stage is hiding: nothing keeps running)
+      finish: function(){ if(tw){ cancelAnimationFrame(tw); tw = 0; } kick(); },
+      region: function(id){ return R[id] || null; }, pct: function(id){ return pct(id, st.child); },
+      active: function(){ return !!st.quiz; } };
   }
 
   window.NremtBurns = {

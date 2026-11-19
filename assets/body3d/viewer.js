@@ -24,6 +24,11 @@
      v.setSystems(['cardio']); v.setSkin(false); v.structures(); v.info(key); v.on('select', fn);
      v.setOnly(['Heart','Aorta']) / null; v.inPlay(name); v.marks({ Heart: 'good' }); v.tag('Heart') / null
      v.hunt({ panel, live, onAnswer, onStop }).start() / .stop() / .active()
+     v.project('Heart') -> { x, y, r, front } | null   where a structure's middle is drawn, in px from the
+       canvas's top left (r: about half its drawn size; front: false when it is behind the camera)
+     v.flying() -> true while the camera is still travelling to a selection (a card waits for it)
+     v.on('frame', fn)   after every frame that was drawn (the camera moved: a card on the picture follows)
+     v.on('hover', fn(key | null, info))   the pointer moved onto a structure, or off it (mouse only)
 
    Names are the labels in the body map's Browse-by-name list, matched
    case-insensitively; keys work too. The host page needs the three.js import
@@ -195,7 +200,7 @@
     /* marks: { key: 'good' | 'bad' | 'accent' } colors a structure (quiz
        results); cleared with marks({}). */
     let markMap = {};
-    const listeners = { select:[], pick:[], load:[], layers:[] };
+    const listeners = { select:[], pick:[], load:[], layers:[], frame:[], hover:[] };
     if (opts.onSelect) listeners.select.push(opts.onSelect);
     if (opts.onPick) listeners.pick.push(opts.onPick);
     if (opts.onLoad) listeners.load.push(opts.onLoad);
@@ -503,6 +508,8 @@
         renderer.render(scene, camera);
         lastFrame = now;
         if (tagText) placeTag();
+        // no kick here: a listener that only places something over the picture must not keep it rendering
+        for (const fn of listeners.frame) { try { fn(); } catch(e){ console.error(e); } }
       }
     }
     function watchView(){
@@ -602,6 +609,7 @@
       if (groupKey && groupKey !== selectedGroupKey) {
         for (const m of meshByGroup[groupKey] || []) m.material.emissive = new L.THREE.Color(0x2a2a2a);
       }
+      if (listeners.hover.length) emit('hover', groupKey, groupKey ? CONTENT_BY_KEY[groupKey] : null);
     }
 
     /* ---- looks ---- */
@@ -1009,6 +1017,19 @@
         const dist = Math.min(Math.max(need * 1.15, 220), 3200);
         animateCamera(new L.THREE.Vector3(c.x, c.y - dist, c.z + dist * 0.12), c, 650);
       },
+      /* Where a structure is drawn now (css px from the canvas's top left), or null before the model is in. */
+      project(name){
+        const k = resolve(name);
+        if (!k || !camera || !meshByGroup[k]) return null;
+        const b = groupBounds(k);
+        if (!b) return null;
+        const v = b.center.clone().project(camera);
+        const w = canvas.clientWidth, h = canvas.clientHeight;
+        const side = new L.THREE.Vector3().setFromMatrixColumn(camera.matrixWorld, 0).multiplyScalar(Math.min(b.size.length() * 0.35, 400));
+        const e = b.center.clone().add(side).project(camera);
+        return { x: (v.x + 1) / 2 * w, y: (1 - v.y) / 2 * h, r: Math.abs(e.x - v.x) / 2 * w, front: v.z <= 1 };
+      },
+      flying(){ return !!flyAnim; },
       /* A floating name tag over the selected structure: text, or null to hide. */
       tag(text){ tagText = text == null ? null : String(text); placeTag(); },
       setSkin(on){ skinOn = !!on; applyLayers(); emit('layers', api.layers()); },
