@@ -3,7 +3,7 @@
   "slug": "energy-flow",
   "kind": "simulator",
   "topic": "energy-flow-ecosystems",
-  "intro": "<p>Follow the energy that producers capture up a food chain. Set how much energy the producers capture, how much each level passes on and how much is burned in cellular respiration, then add or remove a level and compare the pyramids of energy and of biomass. A second mode follows a toxin that the body cannot break down. In a food web, each level groups every species that feeds at that step. The questions below use the same model.</p>",
+  "intro": "<p>Follow the energy that producers capture up a grassland food chain. Drag the share of energy each level passes on, or the sunlight, and watch how many plants and animals each level can support. The numbers behind the picture, the pyramids of energy and biomass and a toxin that builds up along the same chain are under the question mark. The questions in Test yourself use the same model.</p>",
   "howItWorks": "<p>Every number is energy per square meter of ground or water surface per year (kcal/m²/yr) unless it says otherwise.</p><ol><li><b>Producers</b> capture light energy in photosynthesis. All the energy they capture is the <b>gross primary productivity (GPP)</b>.</li><li>Producers use part of it in their own cellular respiration, which releases it as heat. What is left, stored in new producer tissue, is the <b>net primary productivity (NPP)</b>: NPP = GPP − producer respiration. NPP is the base of the energy pyramid and all the energy the consumers can get.</li><li>Each <b>consumer</b> level stores only a fraction of the energy the level below stored (the fraction passed on; about 10% is typical, the \"10% rule\"). Part of the level below is never eaten, or is eaten but not absorbed (it leaves in feces); that energy goes to <b>decomposers</b>. Of what a consumer level does absorb, most is used in cellular respiration to move, keep warm and repair cells, and it leaves as heat.</li><li>So the energy stored shrinks at every step up, and a pyramid of energy always narrows upward. Energy flows one way: heat cannot be captured again by producers.</li></ol><p>The model's rules:</p><ul><li><b>Producers:</b> respiration = (producer respiration share) × GPP; NPP = GPP − respiration.</li><li><b>Each consumer level:</b> energy stored = (fraction passed on) × energy stored by the level below. To store that, the level must absorb energy stored ÷ (1 − respiration share), because the respiration share of everything it absorbs leaves as heat. The rest of the level below's stored energy goes to decomposers. The respiration share cannot be more than 1 − the fraction passed on, since a level cannot absorb more than the level below stored.</li><li><b>Top level:</b> all its stored energy eventually goes to decomposers. Decomposers' own respiration also ends as heat; the model counts their share separately. Every kcal of GPP ends as heat or with decomposers.</li><li><b>Biomass</b> (grams of dry mass per m², at one moment) = energy stored per year ÷ 4 kcal per gram ÷ how many times a year that level's biomass is replaced. Plankton are replaced many times a year, so in open water a small mass of producers can feed a larger mass of consumers: the biomass pyramid can be upside down, even though the energy pyramid never is.</li><li><b>A persistent toxin</b> (for example, the pesticide DDT, or mercury in the form fish store) is not broken down and is barely excreted, so a consumer keeps the toxin from all the food it absorbs (the retained share; 100% keeps all of it). Because most of that food is burned in respiration while the toxin stays, the toxin is concentrated: concentration = food's concentration × retained share ÷ (1 − respiration share), at every level.</li><li>All values are illustrative, chosen to show the patterns. There is no chance: the same settings always give the same numbers.</li></ul>",
   "kcalPerG": 4,
   "defaults": {
@@ -14,6 +14,16 @@
     "levels": 4,
     "c0": 0.04,
     "retain": 1
+  },
+  "explore": {
+    "eco": "land",
+    "levels": 4,
+    "perOrganism": 10,
+    "purpose": "How little energy reaches the top predator",
+    "gpp": {"min": 10000, "max": 30000, "step": 5000, "value": 20000},
+    "eff": {"min": 0.05, "max": 0.2, "step": 0.01, "value": 0.1},
+    "names": [["grass plant", "grass plants"], ["grasshopper", "grasshoppers"], ["frog", "frogs"], ["snake", "snakes"]],
+    "note": "The picture draws one grass plant or one animal for every 10 kcal/m²/yr a level stores, so the counts show the energy. Real numbers need not follow energy: one tree can feed thousands of insects, so a pyramid of numbers can be inverted; a pyramid of energy never is. The grass uses half of the energy it captures in its own respiration, and consumers use 80% of what they absorb; both are fixed here. All values are illustrative."
   },
   "ranges": {
     "gpp": {

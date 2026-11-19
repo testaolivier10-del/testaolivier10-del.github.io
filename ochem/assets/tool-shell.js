@@ -46,7 +46,7 @@
   /* Premium tools (all but OchemPremium.FREE_TOOLS): a badge by the name,
      and once Premium launches, the gate in place of the tool for anyone
      without it. The tool's own script still runs underneath, unseen. */
-  var G = window.OchemPremium, studio = null, quizEl = null, footEl = null, openAt = null, menuItems = [];
+  var G = window.OchemPremium, studio = null, quizEl = null, footEl = null, openAt = null, menuItems = [], kit2Api = null;
 
   /* Tool Studio (docs/tools-calm.md): a tool with `studio: true` in the
      registry gets the calm frame: slim top bar, stage + dock, Why / Details.
@@ -61,7 +61,10 @@
     about.innerHTML = '<p>' + esc(tool.blurb) + '</p><p class="ls-sub">' + esc(tool.tagline) + '</p>';
     var paid = G && !G.toolFree(slug);
     quizEl = document.getElementById('tool-quiz'); footEl = document.getElementById('tool-foot');
-    openAt = function(el){ return function(){ studio.open('details', null); setTimeout(function(){ if(el && el.scrollIntoView) el.scrollIntoView({ block: 'start' }); var f = el && el.querySelector('h2, h3, summary, button, a'); if(f) try{ f.focus({ preventScroll: true }); }catch(e){} }, 80); }; }
+    openAt = function(el){ return function(){
+      // a tools v2 page (kit2 below) keeps Check yourself in Test yourself, not in the "?" sheet
+      if(el === quizEl && kit2Api && kit2Api.hasCheck){ studio.close(); kit2Api.go('quiz', 'check'); return; }
+      studio.open('details', null); setTimeout(function(){ if(el && el.scrollIntoView) el.scrollIntoView({ block: 'start' }); var f = el && el.querySelector('h2, h3, summary, button, a'); if(f) try{ f.focus({ preventScroll: true }); }catch(e){} }, 80); }; }
     /* The standard frame (docs/tools-frame-2026-11.md, F1): name and one line in the bar, the modes there too,
        Share, "?" for the reference. Check yourself and Keep going stay in that sheet and are one tap from the menu
        (and from the finished card). */
@@ -70,7 +73,7 @@
       host: mount, std: true,
       lede: ({ 'arrow-pusher': 'See how electrons move when bonds form and break.' })[slug] || tool.blurb,
       // "?" opens this sheet: named for what is in it
-      detailsTitle: ({ 'synthesis': 'Problems and help', 'viewer-3d': 'View options and help', 'conformations': 'Ring builder and help' })[slug] || 'Help and reference',
+      detailsTitle: ({ 'synthesis': 'Problems and help', 'viewer-3d': 'View options and help', 'conformations': 'Numbers, builders and help' })[slug] || 'Help and reference',
       menu: {
         copyLink: true,
         report: { course: 'ochem', id: 'tool:' + slug },
@@ -143,8 +146,57 @@
     return p;
   }
 
+  /* kit2(o): the tools v2 arrangement (docs/tools-v2-standard.md), this course layer's adapter for the shared kit
+     (assets/course/tool-kit2.js; a tool with `kit2: true` in the registry loads it). The tool builds its own stage
+     with the kit and hands it over:
+       o.stage    element   the picture with its controls on it and the lines around it. EXPLORE shows it alone,
+                            full width (no side panel, nothing graded).
+       o.ref      element   the reference behind "?" (numbers, builders, how to read the picture), put first.
+       o.parts    [{ value, label, dock: element, task: { kicker, title, todo } | fn }]   TEST YOURSELF parts that
+                            ask on the same picture: the question goes in the side panel (dock).
+       o.check    { label, task } | false   the page's Check yourself quiz (#tool-quiz) as the last part, in the
+                            side panel with the picture left free (default on when the page has one).
+       o.onShow(mode, part) after every switch: mode 'explore' | 'quiz', part the Test yourself part or null.
+     Two modes only: Explore and Test yourself. With more than one part, ONE dropdown on the stage ("What to
+     practice") picks it. #<part> in the address opens Test yourself there. Returns { mode(), part(), go(mode,
+     part), hasCheck }. */
+  function kit2(o){
+    var K = window.LevlKit2;
+    if(!studio || !K) return null;
+    K.on(studio);
+    var parts = (o.parts || []).slice();
+    var hasCheck = !!quizEl && o.check !== false;
+    if(hasCheck) parts.push({ value: 'check', label: (o.check && o.check.label) || 'Check yourself', dock: quizEl, task: (o.check && o.check.task) || null });
+    var cur = { mode: 'explore', part: parts[0] ? parts[0].value : null };
+    function partOf(v){ return parts.filter(function(p){ return p.value === v; })[0] || parts[0] || null; }
+    studio.add('stage', o.stage, parts.length ? { mode: 'explore quiz' } : null);
+    if(o.ref) studio.details.insertBefore(o.ref, studio.details.firstChild);
+    parts.forEach(function(p){ if(p.dock) studio.add('dock', p.dock, { mode: 'quiz' }); });
+    var pick = parts.length > 1 ? studio.picker({ label: 'What to practice', items: parts.map(function(p){ return { value: p.value, label: p.label }; }), value: cur.part,
+      onChange: function(v){ show('quiz', v); } }, 'quiz') : null;
+    function show(mode, part){
+      var p = partOf(part), quiz = mode === 'quiz' && !!p;
+      cur = { mode: quiz ? 'quiz' : 'explore', part: p ? p.value : null };
+      if(studio.mode() !== cur.mode) studio.mode(cur.mode);
+      studio.root.classList.toggle('tk2-qs', quiz);
+      parts.forEach(function(x){ if(x.dock) x.dock.hidden = !(quiz && x === p); });
+      if(pick && quiz && pick.value() !== p.value) pick.value(p.value);
+      if(quiz){ studio.task(typeof p.task === 'function' ? p.task() : p.task || null, 'quiz'); studio.caption('', 'quiz'); }
+      if(o.onShow) o.onShow(cur.mode, quiz ? cur.part : null);
+    }
+    if(parts.length) studio.modes({ items: [{ value: 'explore', label: 'Explore' }, { value: 'quiz', label: 'Test yourself' }], value: 'explore',
+      onChange: function(v){ show(v, cur.part); } });
+    var start = { mode: 'explore', part: cur.part };
+    parts.forEach(function(p){ if(new RegExp('^#' + p.value + '\\b').test(location.hash)) start = { mode: 'quiz', part: p.value }; });
+    if(parts.length) studio.mode(start.mode);
+    show(start.mode, start.part);
+    kit2Api = { mode: function(){ return cur.mode; }, part: function(){ return cur.part; }, go: function(m, p){ show(m, p == null ? cur.part : p); }, hasCheck: hasCheck };
+    return kit2Api;
+  }
+
   window.OchemStudioKit = {
     extras: extras,
+    kit2: kit2,
     menuItems: menuItems,
     chipPicker: chipPicker,
     seg: function(seg, attr){

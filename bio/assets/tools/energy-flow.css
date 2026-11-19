@@ -1,0 +1,89 @@
+/* Energy flow, tools v2 (bio/assets/tools/energy-flow.js; docs/tools-v2-bio-energy-flow-brief.md). Loaded only by
+   the energy flow page (bio/data/pages.json "kit2": true). One colour per idea, everywhere: energy gold, heat
+   vermillion (Okabe-Ito, lighter in dark mode). The plants and animals keep their own natural colours. */
+.ef2{--ef-en:#E69F00;--ef-en-hi:#FFD877;--ef-en-ink:#7A5000;--ef-heat:#D55E00;--ef-heat-ink:#A84300;
+  --ef-sky0:#BFE0F5;--ef-sky1:#EEF8FD;--ef-hill:#B9D9B4;--ef-hill2:#CFE6CB;
+  --ef-g0:#DDE9B8;--ef-g1:#E6E8B4;--ef-g2:#D9D3A6;--ef-g3:#E5D9B6;--ef-pond:#8CC4E6;--ef-rock:#B4AA98;--ef-rock-ink:#7C7362;
+  --ef-soil0:#8E6E4E;--ef-soil1:#6F5339;--ef-soil-edge:#5A422C;--ef-soil-ink:#FFF4E2;
+  --ef-sp0:#2F8F3A;--ef-sp1:#4BAA4A;--ef-sp2:#1F7436;
+  --ef-hop:#8BC34A;--ef-hop-ink:#33691E;--ef-frog:#3F9A57;--ef-frog-d:#2C7A43;--ef-frog-ink:#17512B;--ef-frog-b:#DCEBB5;
+  --ef-snake:#9A6B2F;--ef-snake-ink:#4E3415;--ef-snake-p:#F0D58A;
+  display:flex;flex-direction:column;gap:10px;min-height:0;flex:1 1 auto;}
+:root[data-theme="dark"] .ef2{--ef-en:#F0B63C;--ef-en-hi:#FFE08A;--ef-en-ink:#F6CF75;--ef-heat:#F0824A;--ef-heat-ink:#FFA97C;
+  --ef-sky0:#16324A;--ef-sky1:#2A506B;--ef-hill:#2E5240;--ef-hill2:#3A6350;
+  --ef-g0:#33472B;--ef-g1:#3D4A2A;--ef-g2:#453F2A;--ef-g3:#4C432D;--ef-pond:#2F6F99;--ef-rock:#6F685B;--ef-rock-ink:#A39A88;
+  --ef-soil0:#3B2D20;--ef-soil1:#2A2018;--ef-soil-edge:#5A4836;--ef-soil-ink:#F2E4CC;
+  --ef-sp0:#4FB45A;--ef-sp1:#6CC56A;--ef-sp2:#3A9A4B;
+  --ef-hop:#A5D663;--ef-hop-ink:#DDF2B8;--ef-frog:#4FB06A;--ef-frog-d:#3A8E54;--ef-frog-ink:#CFEFD8;--ef-frog-b:#E3F0C2;
+  --ef-snake:#B98744;--ef-snake-ink:#F3DDB6;--ef-snake-p:#F6DF9E;}
+.ef2[hidden]{display:none;}
+.ef2 [hidden]{display:none !important;}
+.ef2-scene{position:relative;flex:1 1 auto;min-height:440px;border-radius:18px;overflow:hidden;background:var(--surface2);}
+.ef2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+@media (max-width:1023px){ .ef2-scene{flex:none;height:min(72vw,540px);min-height:430px;} }
+@media (max-width:640px){ .ef2-scene{height:max(450px,min(125vw,500px));border-radius:14px;} .ef2{gap:8px;} }
+.ef2-lines{display:flex;align-items:center;justify-content:space-between;gap:6px 18px;flex-wrap:wrap;flex:none;}
+.ef2-lines .tk2-play{flex:none;margin-left:auto;}
+.ef2 .tk2-cz.is-energy{--cz:var(--ef-en);--cz-ink:var(--ef-en-ink);}
+.ef2 .tk2-cz.is-heat{--cz:var(--ef-heat);--cz-ink:var(--ef-heat-ink);}
+.ef2 .tk2-tag{background:var(--ef-en-ink);}
+:root[data-theme="dark"] .ef2 .tk2-tag{color:#1B1405;}
+.ef2 .tk2-groove::before{background:color-mix(in srgb, var(--ef-soil-ink) 55%, transparent);}
+.ef2 .tk2-drag.is-quiet .tk2-groove::before{background:color-mix(in srgb, var(--ink) 38%, transparent);}
+/* the scene */
+.ef2s-sky0{stop-color:var(--ef-sky0);} .ef2s-sky1{stop-color:var(--ef-sky1);}
+.ef2s-sun0{stop-color:var(--ef-en-hi);stop-opacity:.75;} .ef2s-sun1{stop-color:var(--ef-en-hi);stop-opacity:0;}
+.ef2s-ray0{stop-color:var(--ef-en-hi);stop-opacity:.75;} .ef2s-ray1{stop-color:var(--ef-en);stop-opacity:.16;}
+.ef2s-dp0{stop-color:#000;stop-opacity:.1;} .ef2s-dp1{stop-color:#000;stop-opacity:0;} .ef2s-dp2{stop-color:#fff;stop-opacity:.1;}
+:root[data-theme="dark"] .ef2s-dp2{stop-opacity:.03;}
+.ef2s-so0{stop-color:var(--ef-soil0);} .ef2s-so1{stop-color:var(--ef-soil1);}
+.ef2-sky{fill:url(#ef2g-sky);}
+.ef2-hill{fill:var(--ef-hill);} .ef2-hill.is-far{fill:var(--ef-hill2);}
+.ef2-sunglow{fill:url(#ef2g-sun);} .ef2-sun{fill:var(--ef-en-hi);stroke:var(--ef-en);stroke-width:3;}
+.ef2-ray{fill:url(#ef2g-ray);}
+.ef2-ground.is-grass{fill:var(--ef-g0);} .ef2-ground.is-hop{fill:var(--ef-g1);} .ef2-ground.is-frog{fill:var(--ef-g2);} .ef2-ground.is-snake{fill:var(--ef-g3);}
+.ef2-ground{stroke:color-mix(in srgb, var(--ink) 16%, transparent);stroke-width:1;}
+.ef2-depth{fill:url(#ef2g-depth);pointer-events:none;}
+.ef2-pond{fill:var(--ef-pond);stroke:color-mix(in srgb, var(--ef-pond) 60%, #124);stroke-width:1.2;} .ef2-pondshine{stroke:#fff;stroke-opacity:.6;stroke-width:1.6;stroke-linecap:round;fill:none;}
+.ef2-rock{fill:var(--ef-rock);stroke:var(--ef-rock-ink);stroke-width:1.1;stroke-linejoin:round;} .ef2-rock.is-2{fill:color-mix(in srgb, var(--ef-rock) 80%, #fff);}
+.ef2-soil{fill:url(#ef2g-soil);} .ef2-soiledge{stroke:var(--ef-soil-edge);stroke-width:1.5;fill:none;}
+.ef2-end,.ef2-markt{fill:var(--ef-soil-ink);font-weight:800;}
+.ef2-mark{stroke:var(--ef-soil-ink);stroke-width:2.5;stroke-linecap:round;}
+.ef2-suntrack{stroke:color-mix(in srgb, var(--ink) 45%, transparent);stroke-width:4;stroke-linecap:round;fill:none;}
+.ef2-sunend{fill:var(--ef-en-hi);stroke:var(--ef-en);stroke-width:1.6;}
+.ef2-sunname{fill:var(--ink);font-weight:800;}
+/* the plants and the animals: each comes in and leaves, seen */
+/* The meadow and the grasshoppers are many: they thicken and thin one by one as the level's energy moves (the loop
+   in the script), with no tween of their own. The few frogs and snakes each grow in and shrink away. */
+.ef2-o{visibility:hidden;}
+.ef2-o.is-on{visibility:visible;}
+.ef2-lay.is-frog .ef2-o,.ef2-lay.is-snake .ef2-o{visibility:visible;opacity:0;transform:scale(.25);transform-box:fill-box;transform-origin:50% 100%;transition:opacity .22s ease, transform .3s cubic-bezier(.3,1.5,.5,1);}
+.ef2-lay.is-frog .ef2-o.is-on,.ef2-lay.is-snake .ef2-o.is-on{opacity:1;transform:none;}
+.ef2.is-rm .ef2-o,.ef2.is-build .ef2-o{transition:none !important;transform:none !important;}
+@media (prefers-reduced-motion:reduce){ .ef2 .ef2-o{transition:none !important;transform:none !important;} }
+.ef2-sp.is-0{fill:var(--ef-sp0);} .ef2-sp.is-1{fill:var(--ef-sp1);} .ef2-sp.is-2{fill:var(--ef-sp2);}
+.ef2-hbody{fill:var(--ef-hop);stroke:var(--ef-hop-ink);stroke-width:1.6;} .ef2-hwing{fill:color-mix(in srgb, var(--ef-hop) 62%, #2E5D12);}
+.ef2-hfem{fill:var(--ef-hop);stroke:var(--ef-hop-ink);stroke-width:1.6;stroke-linejoin:round;}
+.ef2-hleg{fill:none;stroke:var(--ef-hop-ink);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;} .ef2-hleg.is-thin{stroke-width:1.5;}
+.ef2-eye{fill:#14210F;} .ef2-eyew{fill:#F4F1D0;}
+.ef2-fbody{fill:var(--ef-frog);stroke:var(--ef-frog-ink);stroke-width:1.5;stroke-linejoin:round;} .ef2-fdark{fill:var(--ef-frog-d);stroke:var(--ef-frog-ink);stroke-width:1.3;}
+.ef2-fbelly{fill:var(--ef-frog-b);} .ef2-fleg{fill:none;stroke:var(--ef-frog-ink);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;}
+.ef2-fmouth{fill:none;stroke:var(--ef-frog-ink);stroke-width:1.2;stroke-linecap:round;}
+.ef2-sedge{fill:none;stroke:var(--ef-snake-ink);stroke-width:9;stroke-linecap:round;} .ef2-sbody{fill:none;stroke:var(--ef-snake);stroke-width:6.4;stroke-linecap:round;}
+.ef2-spat{fill:none;stroke:var(--ef-snake-p);stroke-width:2.2;stroke-dasharray:2.6 5.2;stroke-linecap:round;}
+.ef2-shead{fill:var(--ef-snake);stroke:var(--ef-snake-ink);stroke-width:1.4;} .ef2-stongue{fill:none;stroke:#B3261E;stroke-width:1.1;stroke-linecap:round;}
+/* energy passed on (gold) and heat (vermillion) */
+.ef2-heat{fill:none;stroke:var(--ef-heat);stroke-linecap:round;stroke-linejoin:round;} .ef2-heat-h{fill:var(--ef-heat);}
+.ef2-heat-t{fill:var(--ef-heat-ink);font-weight:900;paint-order:stroke;stroke:var(--ef-sky1);stroke-width:3px;stroke-linejoin:round;}
+.ef2-pass{fill:none;stroke:var(--ef-en);stroke-linecap:butt;} .ef2-pass-h{fill:var(--ef-en);}
+.ef2-spark{fill:#fff;stroke:var(--ef-en-ink);stroke-width:1;}
+.ef2-pill rect{fill:var(--white);fill-opacity:.95;stroke-width:1.6;stroke:color-mix(in srgb, var(--ink) 30%, transparent);}
+.ef2-pill text{font-weight:900;fill:var(--ink);}
+.ef2-pill.is-energy rect{stroke:var(--ef-en);} .ef2-pill.is-energy text{fill:var(--ef-en-ink);}
+.ef2-pill .ef2-val{fill:var(--ef-en-ink);font-variant-numeric:tabular-nums;}
+.ef2-pill.is-none rect{stroke-dasharray:none;} .ef2-pill.is-none text{fill:var(--muted);font-weight:800;}
+.ef2-lay{pointer-events:none;will-change:transform;}
+.ef2-fade{position:absolute;inset:0;pointer-events:none;}
+/* "?" */
+.ef2-ref .bt-readout{margin:6px 0 10px;}
+.ef2-howref{margin:0 0 6px;font:600 14.5px/1.4 var(--font-ui);color:var(--muted);}

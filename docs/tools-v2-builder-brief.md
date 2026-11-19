@@ -43,6 +43,36 @@ review round: `docs/tools-v2-water-pollution-brief.md`, `docs/tools-v2-osmosis-b
    - Do not edit `scripts/check-tool-use.mjs` (its samples are fixed so branches never conflict); to check your tool
      reports frame v2, run it with a local copy of the list. Do not redefine the kit's phone cause line height.
    - Run long sweeps one width per process (one process for all ten widths can pass ten minutes).
+   Caught in reviews of the first twelve tools; check each before you hand in:
+   - Every number, rate word, bar, label and cause line is derived from what is DRAWN at that frame, not from the
+     model's target value. Assert this frame by frame for every animated change, including reversals, fast drags,
+     keyboard jumps and replays (osmosis, enzyme, energy flow, water potential all failed this first).
+   - Proportions in the picture match the numbers (occupied sites vs saturation, heat vs energy passed on, counts
+     vs shares). Measure drawn sizes against the model in the sweep.
+   - Every on picture label sits clear of every number and of every other label by at least 4 px, at every width,
+     in Explore AND Test yourself (longer numbers there). No sweep exclusions for "label and its number".
+   - Labels that teach a count must label every part being counted (both Aa plots, not one).
+   - The thing a cue tells you to drag must actually drag when grabbed there.
+   - Tap and click targets act on what is drawn under the pointer (elementFromPoint / closest), never on a
+     bounding rectangle that covers neighbouring things.
+   - Only one cue at a time; a cue never covers a number, a label or the object it points at.
+   - Nothing a student needs is hidden on phones; the knob never covers the main object (car, cell).
+   - Units and words never break inside a word; text fits its sign or pill at 360 px (size from measured text).
+   - Performance: a full drag must hold median frame about 16 ms and p95 at or under 50 ms with CPU throttled x4
+     at 390 and 1440; one element per drawn object, remove faded copies, no per frame DOM rebuilds.
+   - Screen reader text (aria-valuetext, live regions) updates with the current state, not the previous one.
+   - Every explanation in Test yourself names the variable that actually changed in that challenge.
+   - A "?" or note sentence is checked for science as strictly as the picture (number pyramids can invert;
+     irreversible denaturation stated honestly; optimum where the rate actually peaks).
+   - Science simplifications that change an answer students can see are not allowed; if a cost or rule cannot
+     be estimated honestly for a case, say "not estimated" instead of applying a generic one.
+   - No dashed shapes that could read as ghosts or torn parts; two headed thin arrow for "no net movement".
+   - A course's adapter in its course kit is shared: before adding a mechanism (practice parts, tabs), check
+     whether one already exists on claude/tools-v2-all and extend it (`onPicture: true` exists for tools that
+     draw problems on their own picture).
+   - Before handing in, run a self review against this whole list and the 15 rules with your own fresh frames
+     at 360, 390, 768, 1024 and 1440, light and dark, and fix what fails. The independent review then
+     confirms; it should not be where these are first found.
 5. Keep a sweep test in the repo, `scripts/tools-v2/<tool>-sweep.mjs` (copy the pattern of the first one in
    that folder if present): every preset or landmark state at widths 360, 390, 430, 600, 768, 820, 1024, 1280,
    1440, 1920; assert nothing clipped, no label overlap, the acted-on object is the largest thing, cause line at
@@ -64,7 +94,7 @@ review round: `docs/tools-v2-water-pollution-brief.md`, `docs/tools-v2-osmosis-b
 
 Commit messages end with
 
-    Co-Authored-By: Claude Fable 5.2 <noreply@anthropic.com>
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
     Claude-Session: https://claude.ai/code/session_011LrYU6oPHBYNE4ERGyPxWg
 
 No em dashes or hyphens as punctuation in user facing copy.

@@ -1,179 +1,508 @@
-/* Skills tool: solute potential and water potential. The solver and the seeded problem generator are
-   ApBioProblems.solve.wp and generate.wp (bio-skill-problems.js);
-   the contexts, the fixed problems and the formula box are data
-   (bio/data/tools/water-potential.json); the page is ApBioTools.skillTool.
+/* Water potential, tools v2 (docs/tools-v2-water-potential-brief.md; the standard: docs/tools-v2-standard.md).
+   On the shared kit (assets/course/tool-kit2.js) through the course adapter ApBioTools.studioKit2.
+   The solver and the seeded problem generator are ApBioProblems.solve.wp and generate.wp (bio-skill-problems.js);
+   the Explore settings, the contexts, the fixed problems and the formula box are data
+   (bio/data/tools/water-potential.json).
 
-   The picture (one drawing, both modes): a plant cell and an open beaker
-   side by side, on one shared ψ scale in bar (0 at the top, more negative
-   lower down). Each is drawn as itself: the cell with its wall, membrane,
-   chloroplasts and a vacuole holding solute particles; the beaker in glass
-   with its solute particles (NaCl drawn as Na⁺ and Cl⁻, two particles per
-   formula unit, which is i). A level line on the scale marks each
-   compartment's ψ, so "water moves from higher to lower ψ" reads as water
-   running downhill, and a wide arrow between them shows the net flow.
+   THE ONE IDEA: water potential is a number you add up, solute potential plus pressure potential, and water moves
+   from the higher total to the lower total. (Osmosis, the sister tool, shows what that does to a cell and has no
+   numbers on its picture; this one has no tonicity words and no "what happens next".)
 
-     Explore (tool audit 2026-10: the tool had no Explore mode and opened on
-       an empty beaker): sliders for the cell's solute concentration, its
-       turgor pressure ψp, the beaker's concentration and solute, and the
-       temperature. ψs = −iCRT and ψ = ψs + ψp are worked live with the
-       numbers, the levels and the arrow follow, and the cell swells or
-       shrinks (plasmolysis) with the direction. "Try this" goals.
-     Practice: the problem's cell and beaker are drawn from the start, with
-       their particles; the level lines follow the values the student types,
-       then the true ones (ApBioMath.psiS) after the last part.
-   For mass change over time, the page links to the osmosis simulator. */
+   Two modes (the rule for every tool): EXPLORE is for playing with it, TEST YOURSELF is where you get quizzed.
+   Explore: nothing locked, nothing graded, no side panel. One picture across the stage: a plant cell standing in
+   an open beaker of solution. On it, a written sum for the cell and one for the solution (solute, pressure, a
+   rule, the total ψ in bar, and one word: higher, lower or equal), and two controls: "Pressure in the cell" on the
+   bench (the main one, with the first visit cue) and "Solute outside" on the beaker's wall (same idea, so it stays
+   on the screen; calm). INSTANT RESPONSE: the wall bows and pushes, particles fill the solution, the numbers
+   count, the water arrows across the wall thin to nothing, turn and grow. Numbers, words, arrows and the cause
+   line are all read from the same drawn state, so they never disagree, also in the middle of a change. The line
+   under the picture is the CAUSE LINE (K.cause): "Cell ψ −7.8 → lower than −4.9 outside → water moves in".
+   Explore rounds each solute potential to 0.1 bar before adding, so every sum on the picture is exact.
+   Test yourself: the practice problems (ApBioTools.skillTool: new numbers or the worked set, one part at a time,
+   recorded as water-potential:<context>:<part>, as before) on the same picture: the sums fill in with what the
+   student types and, after the last part, the true values, the words and the arrows.
+   "?": the numbers behind this setting worked with −iCRT, the two totals on one scale, things to try, and what
+   Explore holds fixed.
+   One colour per idea, everywhere: solute amber, pressure (the wall's push) green, water and the total ψ blue.
+   Reduced motion: the result at once with a short cross fade. */
 (function(){
   'use strict';
-  var T = window.ApBioTools, S = window.ApBioSkillStage, M = window.ApBioMath;
-  if(!T || !S) return;
-  var F = T.F, esc = T.esc;
-  var W = 420, H = 262, TOP = 30, BOT = 206, L = 58;
-  var CX = L + 26, CW = 128, BX = L + 214, BW = 128;   // cell and beaker boxes
-
-  /* Particles: n dots spread in a box from a fixed pattern (no randomness, so
-     a redraw never jumps). ions: draw pairs (Na⁺ and Cl⁻). */
-  function particles(x0, y0, w, h, n, ions){
-    var out = [], k = 0;
-    for(var i = 0; i < n; i++){
-      var fx = ((0.5 + i * 0.7548777) % 1), fy = ((0.5 + i * 0.5698403) % 1);   // the R2 sequence: evenly spread, never in a line
-      var x = x0 + 6 + fx * (w - 12), y = y0 + 6 + fy * (h - 12);
-      if(ions){
-        out.push('<circle class="wp-na" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="2.6"/><circle class="wp-cl" cx="' + Math.min(x0 + w - 4, x + 6).toFixed(1) + '" cy="' + (y + 3).toFixed(1) + '" r="3.4"/>');
-      } else out.push('<path class="wp-suc" d="M' + (x - 3.4).toFixed(1) + ' ' + y.toFixed(1) + 'l1.7 -3 3.4 0 1.7 3 -1.7 3 -3.4 0z"/>');
-      k++;
+  var SLUG = 'water-potential';
+  var T = window.ApBioTools, M = window.ApBioMath;
+  if(!T || !M) return;
+  var MIN = '−';
+  function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
+  function n1(v){ return (+v).toFixed(1); }
+  function r1(v){ var x = Math.round(v * 10) / 10; return x === 0 ? 0 : x; }
+  /* A fixed scatter pattern (the same on every load, so a redraw never jumps): each new point is the candidate
+     farthest from those before it, so it is evenly spread at every count, with no rows or clumps. */
+  var POOLS = {};
+  function poolFor(aspect){
+    var key = Math.max(0.6, Math.min(4, Math.round(aspect * 4) / 4));
+    if(POOLS[key]) return POOLS[key];
+    var P = [], sd = 20261118, rnd = function(){ sd = (sd + 0x6D2B79F5) | 0; var t = Math.imul(sd ^ (sd >>> 15), 1 | sd); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+    for(var i = 0; i < 1000; i++){
+      var best = null, bd = -1;
+      for(var c = 0, nc = 8 + i / 14; c < nc; c++){
+        var x = rnd(), y = rnd(), d = 9;
+        for(var j = 0; j < P.length; j++){ var dx = (x - P[j][0]) * key, dy = y - P[j][1], q = dx * dx + dy * dy; if(q < d) d = q; }
+        if(d > bd){ bd = d; best = [x, y]; }
+      }
+      P.push(best);
     }
-    return out.join('');
+    return (POOLS[key] = P);
   }
-  /* The drawing. v = { scaleLo, cell: { psi, psiS, psiP, i, C, mine, label, ions }, sol: { psi, i, C, name, mine },
-     dir: 0 in, 1 out, 2 none, null unknown, tissue: bool, swell: −1..1 }. */
-  function draw(v){
-    var lo = v.scaleLo, sy = function(x){ return TOP + (Math.min(0, Math.max(lo, x)) / lo) * (BOT - TOP); };
-    var p = [], st = T.niceStep(-lo, 5);
-    for(var t = 0; t >= lo - 1e-9; t -= st) p.push('<line class="grid" x1="' + L + '" x2="' + (W - 12) + '" y1="' + sy(t).toFixed(1) + '" y2="' + sy(t).toFixed(1) + '"/><text class="tick" x="' + (L - 6) + '" y="' + (sy(t) + 4).toFixed(1) + '" text-anchor="end">' + F(M.round(t, 6), Math.max(0, Math.min(3, (String(M.round(st, 6)).split('.')[1] || '').length))) + '</text>');
-    p.push('<text class="lbl" transform="translate(14 ' + ((TOP + BOT) / 2) + ') rotate(-90)" text-anchor="middle">ψ (bar)</text>');
-    p.push('<text class="sk-ph" x="' + (L + 4) + '" y="' + (TOP - 14) + '">0 = pure water; lower = more negative</text>');
-    // the cell: wall, then the protoplast (membrane) that shrinks away from the wall when water leaves
-    var c = v.cell, sw = Math.max(-1, Math.min(1, v.swell || 0)), shrink = sw < 0 ? -sw * 18 : 0, puff = sw > 0 ? sw * 3 : 0;
-    var cy0 = TOP + 4, ch = BOT - TOP - 8;
-    p.push('<rect class="wp-wall" x="' + (CX - puff) + '" y="' + (cy0 - puff) + '" width="' + (CW + 2 * puff) + '" height="' + (ch + 2 * puff) + '" rx="20"/>');
-    p.push('<rect class="wp-gap" x="' + (CX + 6) + '" y="' + (cy0 + 6) + '" width="' + (CW - 12) + '" height="' + (ch - 12) + '" rx="15"/>');
-    var px = CX + 6 + shrink, py = cy0 + 6 + shrink * 1.3, pw = CW - 12 - 2 * shrink, ph = ch - 12 - 2.6 * shrink;
-    p.push('<rect class="wp-cyto" x="' + px.toFixed(1) + '" y="' + py.toFixed(1) + '" width="' + pw.toFixed(1) + '" height="' + ph.toFixed(1) + '" rx="' + (15 - shrink * 0.3).toFixed(1) + '"/>');
-    [[12, 18, 0], [pw - 14, 34, 1], [10, ph - 26, 1], [pw - 12, ph - 16, 0]].forEach(function(q){ p.push('<g transform="translate(' + (px + q[0]).toFixed(1) + ' ' + (py + q[1]).toFixed(1) + ') rotate(' + (q[2] ? 90 : 0) + ')"><ellipse class="wp-chl" rx="6.5" ry="3.6"/><path class="wp-thy" d="M-3.5-1.5v3M-1-2v4M1.5-2v4M3.8-1.4v2.8"/></g>'); });
-    var vx = px + 20, vy = py + 22, vw = pw - 40, vh = ph - 46;
-    p.push('<rect class="wp-vac" x="' + vx.toFixed(1) + '" y="' + vy.toFixed(1) + '" width="' + Math.max(10, vw).toFixed(1) + '" height="' + Math.max(10, vh).toFixed(1) + '" rx="12"/>');
-    if(isFinite(c.C)) p.push(particles(vx, vy, Math.max(10, vw), Math.max(10, vh), Math.round(Math.min(16, c.C * c.i * 16)), false));
-    p.push('<circle class="wp-nuc" cx="' + (px + pw - 18).toFixed(1) + '" cy="' + (py + ph - 30).toFixed(1) + '" r="7"/>');
-    // the beaker: glass, liquid, particles
-    var by0 = TOP + 10;
-    p.push('<rect class="wp-liq" x="' + (BX + 2) + '" y="' + (by0 + 18) + '" width="' + (BW - 4) + '" height="' + (BOT - by0 - 22) + '" rx="6"/>');
-    if(isFinite(v.sol.C)) p.push(particles(BX + 2, by0 + 20, BW - 4, BOT - by0 - 26, Math.round(Math.min(16, v.sol.C * 16 * (v.sol.i === 2 ? 1 : v.sol.i))), v.sol.i === 2));
-    p.push('<path class="wp-glass" d="M' + (BX - 6) + ' ' + (by0 - 2) + 'q5 1 6 7V' + (BOT - 8) + 'q0 8 8 8H' + (BX + BW - 8) + 'q8 0 8 -8V' + (by0 + 3) + 'q0 -4 4 -5"/>');
-    [0.35, 0.55, 0.75].forEach(function(f){ var gy = by0 + (BOT - by0) * f; p.push('<path class="wp-grad" d="M' + (BX + BW - 3) + ' ' + gy.toFixed(1) + 'h-10"/>'); });
-    // the ψ levels
-    [[CX, CW, c.psi, c.mine], [BX, BW, v.sol.psi, v.sol.mine]].forEach(function(b){
-      if(!isFinite(b[2])) return;
-      var y = sy(b[2]);
-      p.push('<line class="wp-surf' + (b[3] ? ' mine' : '') + '" x1="' + (b[0] - 8) + '" x2="' + (b[0] + b[1] + 8) + '" y1="' + y.toFixed(1) + '" y2="' + y.toFixed(1) + '"/>');
-      p.push('<text class="wp-v" x="' + (b[0] + b[1] / 2) + '" y="' + (y - 6).toFixed(1) + '" text-anchor="middle">' + (b[3] ? 'your ' : '') + 'ψ ' + F(b[2], 2) + (b[2] < lo ? ' ↓' : '') + '</text>');
-    });
-    if(!isFinite(c.psi)) p.push('<text class="wp-ask" x="' + (CX + CW / 2) + '" y="' + (TOP + 16) + '" text-anchor="middle">ψ ?</text>');
-    if(!isFinite(v.sol.psi)) p.push('<text class="wp-ask" x="' + (BX + BW / 2) + '" y="' + (TOP + 16) + '" text-anchor="middle">ψ ?</text>');
-    p.push('<text class="tick" x="' + (CX + CW / 2) + '" y="' + (BOT + 18) + '" text-anchor="middle">' + esc(c.label) + '</text>');
-    p.push('<text class="tick" x="' + (BX + BW / 2) + '" y="' + (BOT + 18) + '" text-anchor="middle">' + esc('Beaker: ' + v.sol.name) + '</text>');
-    // the net flow
-    var mid = (TOP + BOT) / 2, x1 = CX + CW + 6, x2 = BX - 10, d = v.dir;
-    if(d === 0 || d === 1){
-      var from = d === 0 ? x2 : x1, to = d === 0 ? x1 : x2, s = d === 0 ? 1 : -1;
-      p.push('<path class="wp-flow' + (v.dirMine ? ' mine' : '') + '" d="M' + from + ' ' + (mid - 7) + 'H' + (to + s * 14) + 'V' + (mid - 15) + 'L' + to + ' ' + mid + 'L' + (to + s * 14) + ' ' + (mid + 15) + 'V' + (mid + 7) + 'H' + from + 'Z"/>');
-      p.push('<text class="wp-v" x="' + ((x1 + x2) / 2) + '" y="' + (mid - 20) + '" text-anchor="middle">water</text>');
-    } else if(d === 2) p.push('<text class="wp-v" x="' + ((x1 + x2) / 2) + '" y="' + (mid + 4) + '" text-anchor="middle">⇄</text><text class="sk-ph" x="' + ((x1 + x2) / 2) + '" y="' + (mid + 20) + '" text-anchor="middle">no net</text>');
-    return '<svg class="bio-svg wp-fig" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(v.aria) + '">' + p.join('') + '</svg>';
+  var KD = 0.0062; // solute particles per unit area per osmol/L, the same inside and outside
+  /* A plant cell's outline: a box with round corners (a superellipse). n: how square (5 is boxy, 3 is round). */
+  function sq(a, hw, hh, n){ var c = Math.cos(a), s = Math.sin(a), e = 2 / n; return [hw * (c < 0 ? -1 : 1) * Math.pow(Math.abs(c), e), hh * (s < 0 ? -1 : 1) * Math.pow(Math.abs(s), e)]; }
+  function ringPath(cx, cy, hw, hh, n, N){
+    var d = '';
+    for(var i = 0; i < N; i++){ var p = sq(i / N * Math.PI * 2, hw, hh, n); d += (i ? 'L' : 'M') + n1(cx + p[0]) + ' ' + n1(cy + p[1]); }
+    return d + 'Z';
   }
-  function scaleLo(vals){ var low = Math.min.apply(null, [-2].concat(vals.filter(isFinite).map(function(x){ return Math.max(x, -40); }))); return -T.niceMax(-low * 1.15); }
-  function key(){ return '<p class="wp-key"><span><i class="wp-k suc"></i>sucrose or glucose (i = 1)</span><span><i class="wp-k na"></i><i class="wp-k cl"></i>Na⁺ and Cl⁻ (NaCl, i = 2)</span><span><i class="wp-k lvl"></i>ψ level</span></p>'; }
+  function inSq(x, y, hw, hh, n){ return Math.pow(Math.abs(x) / hw, n) + Math.pow(Math.abs(y) / hh, n) < 1; }
 
-  /* ------------------------------------------------------- explore */
-  var SOLUTES = [{ v: 'sucrose', i: 1 }, { v: 'NaCl', i: 2 }];
-  function explore(app){
-    var sec = S.card(app, { title: 'Set the solutions, watch the water move', lead: 'ψs = −iCRT: more dissolved particles mean a more negative solute potential. ψ = ψs + ψp: turgor pressure raises the cell’s ψ. Water runs from the higher level to the lower one.' });
-    sec.insertAdjacentHTML('beforeend', '<div class="sk-fig wp-xfig"></div>' + key() + '<div class="bt-controls wp-ctl"></div><div class="wp-more"><h3 class="ls-h">Cell sap and temperature</h3></div><div class="sk-out"></div><p class="wp-work"></p><p class="sk-say" role="status" aria-live="polite"></p><div class="sk-goalhost"></div>');
-    var fig = sec.querySelector('.wp-xfig'), out = sec.querySelector('.sk-out'), work = sec.querySelector('.wp-work'), sayEl = sec.querySelector('.sk-say'), ctl = sec.querySelector('.wp-ctl');
-    var st = { cC: 0.4, psiP: 2, sC: 0.2, sol: 'sucrose', T: 22 };
-    var done = S.goals(sec.querySelector('.sk-goalhost'), [
-      { id: 'plasmo', text: 'Make water leave the cell until its membrane pulls away from the wall (plasmolysis).' },
-      { id: 'equal', text: 'Find a beaker concentration where there is <b>no net movement</b> (levels within 0.2 bar).' },
-      { id: 'nacl', text: 'Switch the beaker to NaCl: how does ψs change at the same concentration, and why?' }
-    ]);
-    var sC = T.slider({ label: 'Beaker concentration', min: 0, max: 1, step: 0.05, value: st.sC, unit: 'M', decimals: 2, onInput: function(x){ st.sC = x; set('sC'); } });
-    var cC = T.slider({ label: 'Cell sap concentration (as sucrose)', min: 0.05, max: 1, step: 0.05, value: st.cC, unit: 'M', decimals: 2, onInput: function(x){ st.cC = x; set('cC'); } });
-    var pp = T.slider({ label: 'Cell turgor pressure (ψp)', min: 0, max: 6, step: 0.5, value: st.psiP, unit: 'bar', decimals: 1, onInput: function(x){ st.psiP = x; set('pp'); } });
-    var sol = T.choiceSelect({ label: 'Beaker solute', value: st.sol, options: SOLUTES.map(function(s){ return { value: s.v, label: s.v === 'NaCl' ? 'NaCl (i = 2)' : 'Sucrose (i = 1)' }; }), onChange: function(x){ st.sol = x; set('sol'); } });
-    var tt = T.slider({ label: 'Temperature', min: 0, max: 40, step: 1, value: st.T, unit: '°C', decimals: 0, onInput: function(x){ st.T = x; set('T'); } });
-    // The beaker and the turgor in the dock (the three goals need only these); the cell sap and the temperature under Details.
-    [sC.el, sol.el, pp.el].forEach(function(e){ ctl.appendChild(e); });
-    [cC.el, tt.el].forEach(function(e){ sec.querySelector('.wp-more').appendChild(e); });
-    function calc(){
-      // Turgor can only balance the solutes, never push a cell's psi above 0 (pure water):
-      // psi-p is capped at -psi-s (a cell in pure water at full turgor has psi = 0).
-      var si = st.sol === 'NaCl' ? 2 : 1, cS = M.psiS(1, st.cC, st.T), pp = Math.min(st.psiP, -cS), cPsi = cS + pp, sS = M.psiS(si, st.sC, st.T);
-      var dir = Math.abs(sS - cPsi) < 0.2 ? 2 : sS > cPsi ? 0 : 1;
-      return { si: si, cS: cS, cPsi: cPsi, sS: sS, dir: dir, pp: pp };
-    }
-    function set(what){
-      var r = calc(), K = st.T + M.K0, gap = r.sS - r.cPsi;
-      // how far the cell swells or shrinks: by the ψ gap, capped; plasmolysis once water leaves and ψp is gone
-      var swell = r.dir === 2 ? 0 : Math.max(-1, Math.min(1, gap / 8));
-      if(r.dir === 1 && st.psiP === 0) swell = Math.min(swell, -0.35);
-      var lo = scaleLo([r.cPsi, r.sS, r.cS]);
-      S.redraw(fig, draw({ scaleLo: lo, swell: swell, dir: r.dir,
-        cell: { psi: r.cPsi, i: 1, C: st.cC, label: 'Plant cell' }, sol: { psi: r.sS, i: r.si, C: st.sC, name: st.sol },
-        aria: 'Plant cell ψ ' + F(r.cPsi, 2) + ' bar beside a beaker of ' + F(st.sC, 2) + ' M ' + st.sol + ' at ψ ' + F(r.sS, 2) + ' bar. ' + (r.dir === 0 ? 'Water moves into the cell.' : r.dir === 1 ? 'Water moves out of the cell.' : 'No net movement.') }));
-      out.innerHTML = S.readout([['Cell ψs', F(r.cS, 2) + ' bar'], ['Cell ψ', F(r.cPsi, 2) + ' bar'], ['Beaker ψ', F(r.sS, 2) + ' bar'], ['Water moves', r.dir === 0 ? 'into the cell' : r.dir === 1 ? 'out of the cell' : 'no net movement']]);
-      work.innerHTML = '<b>Cell:</b> ψs = −(1)(' + F(st.cC, 2) + ')(0.0831)(' + K + ') = ' + F(r.cS, 2) + ' bar; ψ = ' + F(r.cS, 2) + ' + ' + F(r.pp, 2) + ' = <b>' + F(r.cPsi, 2) + ' bar</b>. ' +
-        '<b>Beaker:</b> ψ = ψs = −(' + r.si + ')(' + F(st.sC, 2) + ')(0.0831)(' + K + ') = <b>' + F(r.sS, 2) + ' bar</b> (open beaker, ψp = 0).';
-      var msg = (r.pp < st.psiP ? 'Turgor cannot push the cell’s ψ above 0, so ψp is capped at ' + F(r.pp, 2) + ' bar here. ' : '') + (r.dir === 2 ? 'The levels are within 0.2 bar: ψ is about equal, so water moves both ways at nearly the same rate and there is almost no net movement.'
-        : r.dir === 0 ? 'The beaker’s level is higher (less negative), so water runs downhill into the cell. The cell swells and presses on its wall: turgor rises.'
-        : 'The cell’s level is higher, so water runs out of it into the beaker.' + (st.psiP === 0 ? ' With no turgor left, the membrane pulls away from the wall: plasmolysis.' : ' As it loses water, its turgor pressure would fall.'));
-      if(what === 'sol' && st.sol === 'NaCl') msg = 'NaCl splits into Na⁺ and Cl⁻, so i = 2: twice the particles of sucrose at the same concentration, and twice as negative a ψs (' + F(r.sS, 2) + ' bar). ' + msg;
-      if(what === 'T') msg = 'In ψs = −iCRT, T is in kelvins: ' + st.T + ' °C + 273 = ' + K + ' K. A warmer solution has a slightly more negative ψs. ' + msg;
-      sayEl.textContent = msg;
-      if(r.dir === 1 && st.psiP === 0) done('plasmo');
-      if(Math.abs(gap) < 0.2) done('equal');
-      if(st.sol === 'NaCl') done('nacl');
-    }
-    set('');
-  }
+  function boot(){
+    var K = window.LevlKit2;
+    T.mount(SLUG, function(app, data, ctx){
+      var esc = T.esc, F = T.F, EX = data.explore, TC = EX.T, PMAX = EX.pressure.max, CMAX = EX.outside.max;
+      var CELL_S = r1(M.psiS(EX.cell.i, EX.cell.C, TC));           // the cell's solute potential, held (−9.8 bar)
+      function outS(C){ return r1(M.psiS(EX.outside.i, C, TC)); }    // the solution's, rounded before adding
+      function sg(v, d, plus){ var x = +(+v).toFixed(d); return (x < 0 ? MIN : plus && x > 0 ? '+' : '') + Math.abs(x).toFixed(d); }
+      var S = { p: EX.pressure.value, c: EX.outside.value, mode: 'explore' };
+      var view = { p: S.p, c: S.c, reveal: 1, clock: 0 }, prev = null, gest = null, prob = null, flowUntil = 0;
 
-  /* ---------------------------------------------------- practice stage */
-  function stage(host, s){
-    var x = s.input, a = s.answers || {}, chk = s.phase === 'checked', zero = x.mode === 'zero';
-    var tc = x.T, sS = M.psiS(x.sol.i, x.sol.C, tc), cPsi = zero ? sS : M.psiS(x.cell.i, x.cell.C, tc) + x.cell.psiP;
-    var mineC = S.num(zero ? a['psi-tissue'] : a['psi-cell']), mineS = S.num(a['psi-sol']);
-    var vC = chk ? cPsi : mineC, vS = chk ? sS : mineS;
-    var dir = chk ? (zero ? 2 : Math.abs(sS - cPsi) < 0.005 ? 2 : sS > cPsi ? 0 : 1) : zero ? null : (a.direction == null ? null : a.direction);
-    var swell = dir === 0 ? 0.5 : dir === 1 ? -0.5 : 0;
-    var lo = scaleLo([cPsi, sS, mineC, mineS]);
-    var svg = draw({ scaleLo: lo, swell: chk ? swell : 0, dir: dir, dirMine: !chk,
-      cell: { psi: vC, i: zero ? 1 : x.cell.i, C: zero ? x.sol.C : x.cell.C, mine: !chk, label: zero ? 'Tissue' : 'Plant cell' },
-      sol: { psi: vS, i: x.sol.i, C: x.sol.C, name: x.sol.name, mine: !chk },
-      aria: (zero ? 'Tissue' : 'Cell') + ' and beaker drawn on a water potential scale.' + (isFinite(vC) ? ' ' + (zero ? 'Tissue' : 'Cell') + ' ψ ' + F(vC, 2) + ' bar.' : '') + (isFinite(vS) ? ' Beaker ψ ' + F(vS, 2) + ' bar.' : '') + (dir === 0 ? ' Water moves into the cell.' : dir === 1 ? ' Water moves out of the cell.' : dir === 2 ? ' No net movement.' : '') });
-    var cap;
-    if(chk) cap = zero ? 'No mass change means no net water movement, so the tissue’s ψ equals the solution’s: both levels sit at ' + F(sS, 2) + ' bar.'
-      : dir === 2 ? 'The two levels match: equal ψ, so no net movement.'
-      : 'Water runs “downhill”, from the higher level (less negative ψ, ' + F(Math.max(sS, cPsi), 2) + ' bar) to the lower one (' + F(Math.min(sS, cPsi), 2) + ' bar): ' + (dir === 0 ? 'into the cell' : 'out of the cell') + '.' + (!zero && x.cell.psiP > 0 ? ' The cell’s pressure potential (+' + F(x.cell.psiP, 1) + ' bar) raises its level.' : '');
-    else if(isFinite(vC) && isFinite(vS)) cap = 'Each dashed level sits at the ψ you typed. Water moves from the higher level to the lower one' + (zero ? '.' : a.direction != null ? ': does your arrow run downhill?' : '. Now pick the direction.');
-    else cap = 'The particles show what is dissolved' + (x.sol.i === 2 ? ' (NaCl splits into two ions: i = 2)' : '') + '. Type each ψ and a level line marks it on the shared scale.';
-    S.redraw(host, '<div class="sk-fig">' + svg + '</div>' + key() + '<p class="sk-cap">' + cap + ' <a href="osmosis.html">See it in the osmosis simulator</a>.</p>');
-  }
+      /* ---------------------------------------------------- the stage */
+      var stage = document.createElement('div'); stage.className = 'wp2';
+      var head = K.head({ purpose: 'Solute plus pressure decides which way water moves', how: { label: 'Show me how', onClick: function(){ startTour(); } } });
+      stage.appendChild(head.el);
+      var sceneBox = document.createElement('div'); sceneBox.className = 'wp2-scene'; sceneBox.id = T.nid('wp2');
+      sceneBox.innerHTML = '<svg class="wp2-svg" role="img" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"><g class="wp2-static"></g><g class="wp2-dyn"><g class="wp2-l-dots"></g><g class="wp2-l-cell"></g><g class="wp2-l-flow"></g><g class="wp2-l-sums"></g></g></svg>';
+      stage.appendChild(sceneBox);
+      var svg = sceneBox.querySelector('svg'), gStatic = svg.querySelector('.wp2-static'), gDyn = svg.querySelector('.wp2-dyn'), layer = K.layer(sceneBox), G = null;
+      // four layers, each rewritten only when it changes (a pressure drag does not redraw a thousand particles)
+      var LAY = {}; ['dots', 'cell', 'flow', 'sums'].forEach(function(k){ LAY[k] = { el: gDyn.querySelector('.wp2-l-' + k), html: null }; });
+      function put(k, html){ var L = LAY[k]; if(L.html !== html){ L.html = html; L.el.innerHTML = html; } }
+      var lines = document.createElement('div'); lines.className = 'wp2-lines';
+      var cause = K.cause({ label: 'Why' });
+      lines.appendChild(cause.el);
+      stage.appendChild(lines);
+      var live = document.createElement('p'); live.className = 'tk2-sr'; live.setAttribute('aria-live', 'polite');
+      stage.appendChild(live);
+      function say(t){ live.textContent = ''; setTimeout(function(){ live.textContent = t; }, 40); }
 
-  T.mount('water-potential', function(app, data){
-    explore(app);
-    T.skillTool(app, data, { slug: 'water-potential', kind: 'wp', stage: function(host, s){ host.classList.add('wp-pin'); stage(host, s); } });
-  }, {
-    // Tool Studio (docs/tools-calm.md; bio-tools.js studioArrange)
-    studio: { dock: ['.wp-ctl'], stageAlso: ['.wp-key'], why: ['.wp-work'], hint: { target: '.ls-dock input[type=range]', text: 'Slide the beaker concentration' },
-      caption: function(g){ return g.live ? T.esc(T.firstSentence(g.live)) : ''; },
-      pills: function(g){ return [{ k: 'Cell ψ', html: g.ro(1), tone: 'readout' }]; },
-      pillsR: function(g){ return [{ html: 'Beaker ψ ' + g.ro(2), tone: 'ghost' }]; } } });
+      /* ---- what the picture shows right now (Explore): read from the drawn state, never from where it will end */
+      function shown(){
+        var p = r1(view.p), so = outS(view.c), cell = r1(CELL_S + p);
+        return { p: p, cellS: CELL_S, cell: cell, outS: so, out: so, d: 1, dir: cell === so ? 'none' : so > cell ? 'in' : 'out', gap: Math.abs(cell - so) };
+      }
+      function target(){ var p = S.p, so = outS(S.c), cell = r1(CELL_S + p); return { p: p, cell: cell, out: so, dir: cell === so ? 'none' : so > cell ? 'in' : 'out' }; }
+      function dirWords(d){ return d === 'in' ? 'water moves in' : d === 'out' ? 'water moves out' : 'no net movement'; }
+      function chainOf(m){
+        var d = m.d;
+        return [{ t: 'Cell ψ ' + sg(m.cell, d) + ' bar', role: 'water', say: 'the cell’s water potential is ' + sg(m.cell, d) + ' bar' },
+          { t: (m.dir === 'none' ? 'equal to ' : m.dir === 'in' ? 'lower than ' : 'higher than ') + sg(m.out, d) + ' outside', role: 'ink' },
+          { t: dirWords(m.dir), role: 'water' }];
+      }
+      function sentence(m){
+        return 'Cell: solute potential ' + sg(m.cellS, 1) + ' bar plus pressure potential ' + sg(m.p, 1) + ' bar is ' + sg(m.cell, 1) + ' bar. Outside: ' + sg(m.out, 1) + ' bar. ' +
+          (m.dir === 'none' ? 'The totals are equal, so there is no net water movement.' : 'Water moves ' + (m.dir === 'in' ? 'into' : 'out of') + ' the cell, from the higher total to the lower.');
+      }
+
+      /* ---- the two controls, on the picture */
+      function begin(k){ if(gest === k) return; gest = k; prev = { k: k, v: k === 'p' ? S.p : S.c }; }
+      var cP = K.drag(layer, { key: 'apbio-wp-pressure', label: 'Pressure in the cell (pressure potential), in bar', min: EX.pressure.min, max: PMAX, step: EX.pressure.step, value: S.p, track: [0, 0, 1, 0], chip: false,
+        valuetext: function(v){ var c = r1(CELL_S + v), o = outS(S.c); return F(v, 1) + ' bar of pressure. Cell water potential ' + sg(c, 1) + ' bar, outside ' + sg(o, 1) + ' bar: ' + dirWords(c === o ? 'none' : o > c ? 'in' : 'out') + '.'; },
+        tag: function(v){ return F(v, 1) + ' bar'; },
+        onInput: function(v){ begin('p'); S.p = v; changed(); tourDid('press'); },
+        onEnd: function(){ gest = null; say(sentence(shownOf(target()))); refHtml(); } });
+      cP.el.classList.add('wp2-kp');
+      var cC = K.drag(layer, { label: 'Solute outside the cell: ' + EX.outside.solute + ' in the beaker, in moles per liter', min: 0, max: CMAX, step: EX.outside.step, value: S.c, track: [0, 1, 0, 0], tagSide: 'up',
+        valuetext: function(v){ var c = r1(CELL_S + S.p), o = outS(v); return F(v, 2) + ' molar ' + EX.outside.solute + ' outside. Water potential outside ' + sg(o, 1) + ' bar, cell ' + sg(c, 1) + ' bar: ' + dirWords(c === o ? 'none' : o > c ? 'in' : 'out') + '.'; },
+        tag: function(v){ return F(v, 2) + ' M'; },
+        onInput: function(v){ begin('c'); S.c = v; changed(); tourDid('solute'); },
+        onEnd: function(){ gest = null; say(sentence(shownOf(target()))); refHtml(); } });
+      cC.el.classList.add('wp2-ks');
+      function shownOf(t){ return { p: t.p, cellS: CELL_S, cell: t.cell, out: t.out, dir: t.dir, d: 1 }; }
+      var cue = K.cue(layer, { key: 'apbio-water-potential', text: 'Drag the pressure', side: 'right', at: function(){ return G ? [G.tx0 + (G.tx1 - G.tx0) * (S.p / PMAX), G.ty] : [0, 0]; } });
+      function hideCue(used){ if(cue.active()) cue.hide(used); }
+      stage.addEventListener('pointerdown', function(){ hideCue(true); }, true);
+      stage.addEventListener('keydown', function(e){ if(/^(Arrow|Page|Home|End|Enter| )/.test(e.key)) hideCue(true); }, true);
+      var tour = K.tour({ key: 'apbio-water-potential', label: 'Show me how', steps: [
+        { id: 'press', text: 'Drag the pressure. The cell’s total changes at once.', target: function(){ return cP.el.querySelector('.tk2-knob'); } },
+        { id: 'solute', text: 'Drag the solute outside. More solute, lower total.', target: function(){ return cC.el.querySelector('.tk2-knob'); } },
+        { id: 'read', text: 'Water moves from the higher total to the lower one.', target: function(){ return sceneBox.querySelector('.wp2-flowg') || sceneBox; } }],
+        onClose: function(had){ if(had) try{ head.how.focus({ preventScroll: true }); }catch(e){} } });
+      function tourDid(id){ if(tour.active()) tour.did(id); }
+      function startTour(){ if(S.mode !== 'explore') return; hideCue(false); tour.start(true); }
+
+      /* ---- the picture chases the setting, so every change is seen happening (rule 13): the wall bows, particles
+         come and go, the arrows thin, turn and grow. One loop; reduced motion: at once, with a short cross fade. */
+      var tw = 0, lastTs = 0, wKey = '';
+      function now(){ return window.performance ? performance.now() : Date.now(); }
+      function stopTween(){ if(tw){ cancelAnimationFrame(tw); tw = 0; } lastTs = 0; }
+      function snap(){ view.p = S.mode === 'explore' ? S.p : sceneP(); view.c = S.mode === 'explore' ? S.c : 0; view.reveal = 1; }
+      function crossFade(old){
+        var g = document.createElementNS('http://www.w3.org/2000/svg', 'g'); g.setAttribute('class', 'wp2-fade'); g.innerHTML = old; svg.appendChild(g);
+        var done = function(){ if(g.parentNode) g.parentNode.removeChild(g); };
+        if(g.animate){ var an = g.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 240, easing: 'linear' }); an.onfinish = done; setTimeout(done, 400); } else done();
+      }
+      function syncWords(){
+        if(S.mode !== 'explore') return;
+        var m = shown(), k = m.cell + '|' + m.out;
+        if(k !== wKey){ wKey = k; cause.set(chainOf(m)); }
+      }
+      function changed(){
+        if(K.reduced() || !window.requestAnimationFrame){ var old = gDyn.innerHTML; snap(); syncWords(); draw(); crossFade(old); return; }
+        flowUntil = now() + 900;
+        if(!tw){ lastTs = 0; tw = requestAnimationFrame(tick); }
+      }
+      function tick(ts){
+        var dt = lastTs ? Math.min(120, ts - lastTs) : 16, go = false, f = 1 - Math.exp(-dt / 90); lastTs = ts; view.clock = ts;
+        var tp = S.mode === 'explore' ? S.p : sceneP(), tc = S.mode === 'explore' ? S.c : 0;
+        if(Math.abs(tp - view.p) > 0.045){ view.p += (tp - view.p) * f; go = true; } else view.p = tp;
+        if(Math.abs(tc - view.c) > 0.004){ view.c += (tc - view.c) * f; go = true; } else view.c = tc;
+        if(view.reveal < 1){ view.reveal = Math.min(1, view.reveal + dt / 420); go = true; }
+        if(!go && now() < flowUntil) go = true;   // the drops run on for a moment after a change, then rest
+        syncWords(); draw();
+        if(go) tw = requestAnimationFrame(tick); else { tw = 0; lastTs = 0; }
+      }
+
+      /* ---------------------------------------------------- layout and drawing */
+      function geo(Wd, H){
+        var ph = Wd < 520, ex = S.mode === 'explore';
+        var ctl = ex ? (ph ? 100 : 106) : (ph ? 30 : 38), air = ph ? 22 : 32, gx = ph ? 5 : 9, gw = ph ? 5 : 8;
+        var BX = gx + gw, BW = Wd - 2 * BX, BY = air, BH = Math.max(200, H - BY - ctl), y1 = BY + BH, R0 = BX + BW;
+        var fs = ph ? 12 : 14.5, fsS = ph ? 11.5 : 13, rowH = ph ? fs + 5 : fs + 7.5, wt = ph ? 7 : 10, band = ph ? 11 : 17;
+        var cw = ph ? Math.min(146, Math.floor((BW - 32) / 2)) : clamp(BW * 0.18, 200, 236);
+        var wordH = fsS + 10;
+        // the card's foot leaves room for the word that hangs on its edge: its top stays 6 px under the total's glyphs
+        var ch = (ph ? 8 : 11) + fs * 0.8 + rowH + (ph ? 1 : 3) + rowH + (ph ? 6 : 7) + fs + (ph ? 5 : 7) + Math.ceil(wordH / 2 - 3 + 0.25 * (fs + 2) + 6);
+        var vx = R0 - (ph ? 36 : 70), rightLim = ex ? vx - (ph ? 30 : 60) : R0 - 10;   // the solute track, on the beaker's right wall
+        // Roomy stage: the cell fills the height and carries its sum inside its vacuole. Otherwise the sums sit in a
+        // band above and the cell stands under its own.
+        var cellBot = y1 - (ph ? 12 : 20), top0 = BY + (ph ? 14 : 20), hh = (cellBot - top0) / 2 / 1.05, hw = Math.min(clamp(BW * 0.22, 170, 330), hh * 1.45);
+        hh = Math.min(hh, hw * 0.95);
+        var cxIn = BX + Math.max(BW * 0.27, hw * 1.05 + 30), lane = 8 + pillW('no net movement', fsS) + 10;   // the water's pill between the cell and the outside sum
+        var inside = !ph && 2 * (hw - wt - band) * 0.8 >= cw + 30 && 2 * (hh - wt - band) >= ch + wordH + 150 && cxIn + hw * 1.05 + lane + cw + 8 <= (ex ? vx - 40 : R0), cardY, cellTop;
+        if(inside){ cellTop = top0; cardY = (top0 + cellBot) / 2 - hh + wt + band + 18; }
+        else {
+          cardY = top0; cellTop = cardY + ch + wordH / 2 + (ph ? 12 : 16); hh = (cellBot - cellTop) / 2 / 1.05;
+          // under the sums the cell takes the width it can (a wider brick), keeping room on its right for the
+          // water arrows and their pill before the solute knob
+          var room = rightLim - pillW('no net movement', fsS) - 10 - BX, cap = Math.min((room - 30) / 2.1, (room - BW * 0.27) / 1.05);
+          hw = ph ? Math.min(BW * 0.25, hh * 1.1) : Math.min(cap, Math.max(Math.min(clamp(BW * 0.2, 150, 300), hh * 1.5), Math.min(330, hh * 1.9)));
+          hh = Math.min(hh, hw * (ph ? 1.45 : 0.95));
+        }
+        var cx = ph ? BX + 8 + hw * 1.05 : BX + Math.max(BW * 0.27, hw * 1.05 + 30), cy = (cellTop + cellBot) / 2, k = Math.min(hh / 120, ph ? 9 : 1.9);
+        var xr = cx + hw * 1.05, c1 = clamp(cx - cw / 2, BX + 6, R0);
+        var c2 = ph ? R0 - 6 - cw : clamp((xr + (ex ? vx - 20 : R0)) / 2 - cw / 2, Math.max(c1 + cw + 16, inside ? xr + lane : 0), R0 - 8 - cw);
+        c2 = Math.min(c2, R0 - 8 - cw); c1 = Math.min(c1, c2 - cw - 12);
+        var tx0 = ph ? BX + 26 : Math.max(BX + 30, cx - hw * 1.4), tx1 = ph ? R0 - 26 : Math.min(R0 - 40, Math.max(cx + hw * 1.4, tx0 + 420));
+        var vy0 = y1 - (ph ? 50 : 62), clear = c2 + cw + 12 < vx - 34, vy1 = Math.max(clear ? BY + 62 : cardY + ch + wordH / 2 + (ph ? 58 : 70), vy0 - (ph ? 190 : 300));
+        return { W: Wd, H: H, ph: ph, ex: ex, gx: gx, gw: gw, BX: BX, BY: BY, BW: BW, BH: BH, y1: y1, R0: R0, fs: fs, fsS: fsS, rowH: rowH, cw: cw, ch: ch, cardY: cardY, inside: inside, wordH: wordH,
+          c1: c1, c2: c2, vx: vx, vy0: vy0, vy1: vy1, cx: cx, cy: cy, hw: hw, hh: hh, k: k, wt: wt, band: band, xr: xr, rightLim: rightLim,
+          tx0: tx0, tx1: tx1, ty: y1 + (ph ? 48 : 50), pool: poolFor((BW - 24) / (BH - 28)) };
+      }
+      function pillW(text, fs){ return text.length * fs * 0.56 + 18; }
+      function pill(x, y, text, cls, anchor, fs){
+        var w = pillW(text, fs), h = fs + 10, x0 = anchor === 'start' ? x : anchor === 'end' ? x - w : x - w / 2;
+        return '<g class="wp2-pill ' + cls + '"><rect x="' + n1(x0) + '" y="' + n1(y - h / 2) + '" width="' + n1(w) + '" height="' + n1(h) + '" rx="' + n1(h / 2) + '"/><text x="' + n1(x0 + w / 2) + '" y="' + n1(y + fs * 0.36) + '" text-anchor="middle" style="font-size:' + fs + 'px">' + esc(text) + '</text></g>';
+      }
+      /* The same pill on two lines (a phone, where one line would run onto the cell): left edge at x, centred on y. */
+      function pill2(x, y, lines, cls, fs){
+        var w = Math.max.apply(null, lines.map(function(t){ return pillW(t, fs); })), lh = fs * 1.15, h = lh * lines.length + 9;
+        return '<g class="wp2-pill ' + cls + '"><rect x="' + n1(x) + '" y="' + n1(y - h / 2) + '" width="' + n1(w) + '" height="' + n1(h) + '" rx="' + n1(Math.min(h / 2, 12)) + '"/>' +
+          lines.map(function(t, i){ return '<text x="' + n1(x + w / 2) + '" y="' + n1(y - h / 2 + 4.5 + lh * (i + 0.5) + fs * 0.36) + '" text-anchor="middle" style="font-size:' + fs + 'px">' + esc(t) + '</text>'; }).join('') + '</g>';
+      }
+      function wPill(g, wy, t){   // the water's pill beside the cell; two lines when one would not fit before the knob
+        var x = g.xr + 8;
+        if(x + pillW(t, g.fsS) <= g.rightLim || t.indexOf(' ') < 0) return pill(Math.min(x, g.rightLim - pillW(t, g.fsS)), wy, t, 'is-water', 'start', g.fsS);
+        var k = t.lastIndexOf(' ');
+        return pill2(x, wy - 4, [t.slice(0, k), t.slice(k + 1)], 'is-water', g.fsS);
+      }
+      function arrow(fx, fy, tx, ty, sw, cls){
+        var ang = Math.atan2(ty - fy, tx - fx), hl = 6 + sw * 0.9, bx = tx - Math.cos(ang) * hl, by = ty - Math.sin(ang) * hl;
+        return '<path class="' + cls + '" stroke-width="' + n1(sw) + '" d="M' + n1(fx) + ' ' + n1(fy) + 'L' + n1(bx) + ' ' + n1(by) + '"/>' +
+          '<path class="' + cls + '-h" d="M' + n1(tx) + ' ' + n1(ty) + 'L' + n1(bx + Math.sin(ang) * hl * 0.75) + ' ' + n1(by - Math.cos(ang) * hl * 0.75) + 'L' + n1(bx - Math.sin(ang) * hl * 0.75) + ' ' + n1(by + Math.cos(ang) * hl * 0.75) + 'Z"/>';
+      }
+      /* Equal water potential: water still crosses both ways at the same rate. One thin line, a head at each end. */
+      function both(x0, y0, x1, y1, cls){
+        var ang = Math.atan2(y1 - y0, x1 - x0), hl = 8, c = Math.cos(ang), s = Math.sin(ang), hw = hl * 0.62;
+        var head = function(tx, ty, sg){ var bx = tx - sg * c * hl, by = ty - sg * s * hl; return 'M' + n1(tx) + ' ' + n1(ty) + 'L' + n1(bx + s * hw) + ' ' + n1(by - c * hw) + 'L' + n1(bx - s * hw) + ' ' + n1(by + c * hw) + 'Z'; };
+        return '<path class="' + cls + '" d="M' + n1(x0 + c * hl * 0.8) + ' ' + n1(y0 + s * hl * 0.8) + 'L' + n1(x1 - c * hl * 0.8) + ' ' + n1(y1 - s * hl * 0.8) + '"/>' +
+          '<path class="' + cls + '-h" d="' + head(x1, y1, 1) + head(x0, y0, -1) + '"/>';
+      }
+      /* A written sum: the name of the place, its two parts and, under a rule, the total with one word. */
+      function card(x, y, title, rows, total, word, key){
+        var g = G, w = g.cw, fs = g.fs, p = [], pad = g.ph ? 9 : 13, yy = y + (g.ph ? 8 : 11) + fs * 0.8;
+        p.push('<g class="wp2-card" data-card="' + key + '"><rect class="wp2-cardbg" x="' + n1(x) + '" y="' + n1(y) + '" width="' + n1(w) + '" height="' + n1(g.ch) + '" rx="' + (g.ph ? 10 : 13) + '"/>');
+        p.push('<text class="wp2-ct" x="' + n1(x + pad) + '" y="' + n1(yy) + '" style="font-size:' + fs + 'px">' + esc(title) + '</text>');
+        yy += g.ph ? 1 : 3;
+        rows.forEach(function(r){
+          yy += g.rowH;
+          p.push('<text class="wp2-ck is-' + r.role + '" x="' + n1(x + pad) + '" y="' + n1(yy) + '" style="font-size:' + fs + 'px">' + esc(r.k) + '</text>' +
+            '<text class="wp2-cv is-' + r.role + (r.mine ? ' is-mine' : '') + '" data-v="' + r.id + '" x="' + n1(x + w - pad) + '" y="' + n1(yy) + '" text-anchor="end" style="font-size:' + (fs + 1) + 'px">' + esc(r.v) + '</text>');
+        });
+        yy += g.ph ? 6 : 7;
+        p.push('<path class="wp2-rule" d="M' + n1(x + pad) + ' ' + n1(yy) + 'H' + n1(x + w - pad) + '"/>');
+        yy += fs + (g.ph ? 5 : 7);
+        p.push('<text class="wp2-ck is-water is-tot" x="' + n1(x + pad) + '" y="' + n1(yy) + '" style="font-size:' + (w < 170 ? fs + 1 : fs) + 'px">' + (w < 170 ? '\u03C8' : 'Total \u03C8') + '</text>' +
+          '<text class="wp2-cv is-water is-tot' + (total.mine ? ' is-mine' : '') + '" data-v="total" x="' + n1(x + w - pad) + '" y="' + n1(yy) + '" text-anchor="end" style="font-size:' + (fs + (g.ph ? 1 : 2)) + 'px">' + esc(total.v) + '</text>');
+        p.push('</g>');
+        if(word) p.push('<g class="wp2-word" data-word="' + key + '">' + pill(x + w / 2, y + g.ch + 3, word, 'is-water is-fill', 'middle', g.fsS) + '</g>');
+        return p.join('');
+      }
+      /* What to draw now. Explore: the drawn state. A problem: its cell and beaker, the student's numbers so far
+         and, after the last part, the true ones with the words and the arrows. */
+      function sceneP(){ return prob && prob.input.mode !== 'zero' ? clamp(prob.input.cell.psiP, 0, PMAX) : 0; }
+      function sceneNow(){
+        if(S.mode === 'explore'){
+          var m = shown();
+          return { ex: true, p: view.p, osmOut: view.c * EX.outside.i, osmIn: EX.cell.C * EX.cell.i, m: m, dir: m.dir, gap: m.gap, reveal: 1,
+            t1: 'Plant cell', t2: view.c < 0.001 ? 'Pure water' : 'Open beaker',
+            rows1: [{ k: 'Solute ψs', v: sg(m.cellS, 1), role: 'sol', id: 's' }, { k: 'Pressure ψp', v: sg(m.p, 1, true), role: 'press', id: 'p' }], tot1: { v: sg(m.cell, 1) + ' bar' },
+            rows2: [{ k: 'Solute ψs', v: sg(m.outS, 1), role: 'sol', id: 's' }, { k: 'Pressure ψp', v: '0.0', role: 'press', id: 'p' }], tot2: { v: sg(m.out, 1) + ' bar' },
+            w1: m.dir === 'none' ? 'equal' : m.dir === 'in' ? 'lower' : 'higher', w2: m.dir === 'none' ? 'equal' : m.dir === 'in' ? 'higher' : 'lower' };
+        }
+        if(!prob) return null;
+        var x = prob.input, a = prob.answers || {}, chk = prob.phase === 'checked', zero = x.mode === 'zero';
+        var sS = M.psiS(x.sol.i, x.sol.C, x.T), cS = zero ? NaN : M.psiS(x.cell.i, x.cell.C, x.T), cPsi = zero ? sS : cS + x.cell.psiP;
+        var num = function(v){ return typeof v === 'number' && isFinite(v); };
+        var val = function(truth, mine){ return chk ? { v: sg(truth, 2), mine: false } : num(mine) ? { v: sg(mine, 2), mine: true } : { v: '?', mine: false }; };
+        var dir = !chk ? null : zero || Math.abs(sS - cPsi) < 0.005 ? 'none' : sS > cPsi ? 'in' : 'out';
+        var t1v = val(cPsi, zero ? a['psi-tissue'] : a['psi-cell']), t2v = val(sS, a['psi-sol']), s1 = zero ? null : val(cS, a['psiS-cell']);
+        return { ex: false, p: view.p, osmOut: x.sol.C * x.sol.i, osmIn: zero ? x.sol.C * x.sol.i : x.cell.C * x.cell.i, dir: dir, gap: Math.abs(sS - cPsi), reveal: chk ? view.reveal : 0, chk: chk,
+          m: chk ? { cell: cPsi, out: sS, dir: dir, d: 2 } : null,
+          t1: zero ? 'Tissue' : 'Plant cell', t2: F(x.sol.C, 2) + ' M ' + x.sol.name,
+          rows1: zero ? [{ k: 'Solute ψs', v: '?', role: 'sol', id: 's' }, { k: 'Pressure ψp', v: '?', role: 'press', id: 'p' }]
+            : [{ k: 'Solute ψs', v: s1.v, mine: s1.mine, role: 'sol', id: 's' }, { k: 'Pressure ψp', v: sg(x.cell.psiP, 1, true), role: 'press', id: 'p' }],
+          tot1: { v: t1v.v + (t1v.v === '?' ? '' : ' bar'), mine: t1v.mine },
+          rows2: [{ k: 'Solute ψs', v: chk ? sg(sS, 2) : '?', role: 'sol', id: 's' }, { k: 'Pressure ψp', v: chk ? '0.0' : '?', role: 'press', id: 'p' }],
+          tot2: { v: t2v.v + (t2v.v === '?' ? '' : ' bar'), mine: t2v.mine },
+          w1: !chk || view.reveal <= 0 ? '' : dir === 'none' ? 'equal' : dir === 'in' ? 'lower' : 'higher', w2: !chk || view.reveal <= 0 ? '' : dir === 'none' ? 'equal' : dir === 'in' ? 'higher' : 'lower' };
+      }
+      /* The scene that does not change with the controls: the vessel of solution across the whole stage (air, a
+         surface, depth), its glass with the graduations the solute knob rides on, the bench and the controls' names. */
+      function drawStatic(){
+        var g = G, BX = g.BX, BY = g.BY, y1 = g.y1, R0 = g.R0, p = [];
+        p.push('<defs>' +
+          '<linearGradient id="wp2g-liq" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="wp2s-liq0"/><stop offset=".12" class="wp2s-liq1"/><stop offset="1" class="wp2s-liq2"/></linearGradient>' +
+          '<linearGradient id="wp2g-glass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" class="wp2s-gl0"/><stop offset=".45" class="wp2s-gl1"/><stop offset="1" class="wp2s-gl0"/></linearGradient>' +
+          '<linearGradient id="wp2g-bench" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="wp2s-bn0"/><stop offset="1" class="wp2s-bn1"/></linearGradient>' +
+          '<radialGradient id="wp2g-cyto" cx=".45" cy=".4" r=".75"><stop offset="0" class="wp2s-cy0"/><stop offset="1" class="wp2s-cy1"/></radialGradient>' +
+          '<radialGradient id="wp2g-vac" cx=".42" cy=".36" r=".8"><stop offset="0" class="wp2s-va0"/><stop offset="1" class="wp2s-va1"/></radialGradient>' +
+          '<radialGradient id="wp2g-sol" cx=".35" cy=".3" r=".8"><stop offset="0" class="wp2s-so0"/><stop offset="1" class="wp2s-so1"/></radialGradient>' +
+          '<clipPath id="wp2c-liq"><path d="M' + n1(BX) + ' ' + n1(BY) + 'H' + n1(R0) + 'V' + n1(y1 - 12) + 'q0 12 -12 12H' + n1(BX + 12) + 'q-12 0 -12 -12Z"/></clipPath></defs>');
+        p.push('<rect class="wp2-bench" x="0" y="' + n1(y1 + g.gw) + '" width="' + g.W + '" height="' + n1(g.H - y1 - g.gw) + '"/><path class="wp2-benchedge" d="M0 ' + n1(y1 + g.gw + 0.5) + 'H' + g.W + '"/>');
+        p.push('<path class="wp2-sol" d="M' + n1(BX) + ' ' + n1(BY) + 'H' + n1(R0) + 'V' + n1(y1 - 12) + 'q0 12 -12 12H' + n1(BX + 12) + 'q-12 0 -12 -12Z"/>');
+        p.push('<path class="wp2-surface" d="M' + n1(BX) + ' ' + n1(BY - 5) + 'q4 6 18 6H' + n1(R0 - 18) + 'q14 0 18 -6V' + n1(BY + 9) + 'H' + n1(BX) + 'Z"/>');
+        p.push('<path class="wp2-menis" d="M' + n1(BX) + ' ' + n1(BY - 5) + 'q4 6 18 6H' + n1(R0 - 18) + 'q14 0 18 -6"/>');
+        var gy0 = Math.max(3, BY - (g.ph ? 18 : 27));
+        p.push('<path class="wp2-glass" d="M' + n1(g.gx) + ' ' + n1(gy0) + 'V' + n1(y1) + 'q0 ' + g.gw + ' ' + g.gw + ' ' + g.gw + 'H' + n1(R0) + 'q' + g.gw + ' 0 ' + g.gw + ' -' + g.gw + 'V' + n1(gy0) + 'h-' + g.gw + 'V' + n1(y1 - 12) + 'q0 12 -12 12H' + n1(BX + 12) + 'q-12 0 -12 -12V' + n1(gy0) + 'Z"/>');
+        p.push('<path class="wp2-rim" d="M' + n1(g.gx - 2) + ' ' + n1(gy0) + 'h' + (g.gw + 4) + 'M' + n1(R0 - 2) + ' ' + n1(gy0) + 'h' + (g.gw + 4) + '"/>');
+        p.push('<path class="wp2-shine" d="M' + n1(BX + 7) + ' ' + n1(BY + 16) + 'V' + n1(y1 - 30) + '"/>');
+        if(g.ex){
+          // the beaker's graduations: the solute knob rides on them (0 at the bottom)
+          var gr = [];
+          for(var i = 0; i <= 10; i++){ var yy = g.vy0 + (g.vy1 - g.vy0) * i / 10, L = i % 5 === 0 ? 9 : 5; gr.push('M' + n1(g.vx - L) + ' ' + n1(yy) + 'h' + (2 * L)); }
+          p.push('<path class="wp2-rail" d="M' + n1(g.vx) + ' ' + n1(g.vy0) + 'V' + n1(g.vy1) + '"/><path class="wp2-grad" d="' + gr.join('') + '"/>');
+          p.push(pill(Math.min(g.vx + pillW('Solute outside', g.fsS) / 2, R0 - 6), g.vy0 + (g.ph ? 32 : 36), 'Solute outside', 'is-sol', 'end', g.fsS));
+          p.push(pill((g.tx0 + g.tx1) / 2, g.ty + 34, 'Pressure in the cell', 'is-press', 'middle', g.fsS));
+          p.push('<text class="wp2-end" x="' + n1(g.tx0) + '" y="' + n1(g.ty + 38) + '" text-anchor="middle" style="font-size:' + g.fsS + 'px">0</text><text class="wp2-end" x="' + n1(g.tx1) + '" y="' + n1(g.ty + 38) + '" text-anchor="middle" style="font-size:' + g.fsS + 'px">' + F(PMAX, 1) + ' bar</text>');
+        }
+        gStatic.innerHTML = p.join('');
+      }
+      function draw(){
+        if(!G) return;
+        var sc = sceneNow(); if(!sc) return;
+        var g = G, BX = g.BX, BY = g.BY, BW = g.BW, BH = g.BH, y1 = g.y1, R0 = g.R0, cx = g.cx, cy = g.cy, k = g.k, p = [];
+        // the cell's shape follows its pressure: boxy and slack at 0, bowed out and round cornered when full
+        var tg = clamp(sc.p / PMAX, 0, 1), n = 5.4 - 2.3 * tg, grow = 1 + 0.05 * tg, hw = g.hw * grow, hh = g.hh * grow, wt = g.wt;
+        var ihw = hw - wt - 1.4, ihh = hh - wt - 1.4, vhw = ihw - g.band, vhh = ihh - g.band, vn = Math.max(2.6, n - 1.5);
+        // solute outside: particles at the same density rule as the cell sap, never on the cell, a card or the rail
+        var POOL = g.pool, kd = Math.max(k, 1.15), area = BW * BH / (kd * kd), nf = Math.min(POOL.length, sc.osmOut * KD * area), nOut = Math.ceil(nf - 1e-9), dr = 2.6 * Math.sqrt(kd), dots = [];
+        var wy = cy - (g.ph ? 0.2 : 0.32) * g.hh - (g.ph ? 24 : 30), sp = pillW('Solute outside', g.fsS), spx = Math.min(g.vx + sp / 2, R0 - 6);
+        var keep = [[g.c2, g.cardY, g.c2 + g.cw, g.cardY + g.ch + g.wordH / 2 + 2], [g.xr, wy - 26, g.xr + 16 + pillW('no net movement', g.fsS), wy + 16]];
+        if(!g.inside) keep.push([g.c1, g.cardY, g.c1 + g.cw, g.cardY + g.ch + g.wordH / 2 + 2]);
+        if(g.ex) keep.push([g.vx - 32, g.vy1 - 54, g.vx + 32, g.vy0 + 22], [spx - sp, g.vy0 + (g.ph ? 32 : 36) - g.wordH / 2, spx, g.vy0 + (g.ph ? 32 : 36) + g.wordH / 2]);
+        var hit = function(x, y, m){ for(var z = 0; z < keep.length; z++){ var q = keep[z]; if(x > q[0] - m && x < q[2] + m && y > q[1] - m && y < q[3] + m) return true; } return false; };
+        for(var i = 0; i < nOut; i++){
+          var qx = BX + 12 + POOL[i][0] * (BW - 24), qy = BY + 16 + POOL[i][1] * (BH - 28);
+          if(inSq(qx - cx, qy - cy, g.hw * 1.05 + dr + 3, g.hh * 1.05 + dr + 3, 3.1)) continue;
+          if(hit(qx, qy, dr + 2)) continue;
+          dots.push('<circle cx="' + n1(qx) + '" cy="' + n1(qy) + '" r="' + n1(dr) + '"' + (i === nOut - 1 && nf < nOut ? ' opacity="' + (nf - (nOut - 1)).toFixed(2) + '"' : '') + '/>');
+        }
+        put('dots', '<g class="wp2-dots" data-n="' + dots.length + '" clip-path="url(#wp2c-liq)">' + dots.join('') + '</g>');
+        // the cell: a wall with thickness, the membrane just inside it, cytoplasm, chloroplasts, a nucleus, the vacuole
+        var outer = ringPath(cx, cy, hw, hh, n, 88), inner = ringPath(cx, cy, hw - wt, hh - wt, n, 88), mid = ringPath(cx, cy, hw - wt / 2, hh - wt / 2, n, 88);
+        p.push('<g class="wp2-cell">');
+        p.push('<path class="wp2-wall' + (tg > 0.04 ? ' is-taut' : '') + '" fill-rule="evenodd" d="' + outer + inner + '"/><path class="wp2-wallmid" d="' + mid + '"/><path class="wp2-walledge" d="' + outer + '"/><path class="wp2-walledge is-in" d="' + inner + '"/>');
+        var memb = ringPath(cx, cy, ihw, ihh, n, 88);
+        p.push('<path class="wp2-cyto" d="' + memb + '"/>');
+        var bandAt = function(a, f){ var m0 = sq(a, ihw, ihh, n), v0 = sq(a, vhw, vhh, vn); return [cx + v0[0] + (m0[0] - v0[0]) * f, cy + v0[1] + (m0[1] - v0[1]) * f, Math.hypot(m0[0] - v0[0], m0[1] - v0[1])]; };
+        [0.33, 1.18, 1.95, 3.5, 4.32, 5.1, 5.95].forEach(function(a){
+          var b = bandAt(a, 0.5), ry = clamp(b[2] * 0.3, 2.4, 6.5), rx = ry * 1.9, t = sq(a + 0.02, ihw, ihh, n), t0 = sq(a - 0.02, ihw, ihh, n), rot = Math.atan2(t[1] - t0[1], t[0] - t0[0]) * 57.3;
+          p.push('<g transform="translate(' + n1(b[0]) + ' ' + n1(b[1]) + ') rotate(' + rot.toFixed(0) + ')"><ellipse class="wp2-chl" rx="' + n1(rx) + '" ry="' + n1(ry) + '"/><path class="wp2-chl-l" d="M' + n1(-rx * 0.55) + ' 0H' + n1(rx * 0.55) + '"/></g>');
+        });
+        var nq = bandAt(2.72, 0.52), nrad = clamp(nq[2] * 0.36, 3.5, 11);
+        p.push('<circle class="wp2-nuc" cx="' + n1(nq[0]) + '" cy="' + n1(nq[1]) + '" r="' + n1(nrad) + '"/><circle class="wp2-nucl" cx="' + n1(nq[0] + nrad * 0.2) + '" cy="' + n1(nq[1] - nrad * 0.15) + '" r="' + n1(nrad * 0.36) + '"/>');
+        p.push('<path class="wp2-vac" d="' + ringPath(cx, cy, vhw, vhh, vn, 72) + '"/>');
+        var s0 = sq(3.55, vhw * 0.84, vhh * 0.84, vn), s1 = sq(4.1, vhw * 0.9, vhh * 0.9, vn), s2 = sq(4.6, vhw * 0.84, vhh * 0.84, vn);
+        p.push('<path class="wp2-vacshine" d="M' + n1(cx + s0[0]) + ' ' + n1(cy + s0[1]) + 'Q' + n1(cx + s1[0]) + ' ' + n1(cy + s1[1]) + ' ' + n1(cx + s2[0]) + ' ' + n1(cy + s2[1]) + '"/>');
+        p.push('<path class="wp2-memb" d="' + memb + '"/>');
+        // the cell sap's solute, in the vacuole: a fixed amount
+        var nIn = Math.min(160, Math.round(sc.osmIn * KD * Math.PI * (g.hw - wt - g.band) * (g.hh - wt - g.band) / (kd * kd) * 1.06)), ind = [];
+        for(var j = 0; j < nIn; j++){
+          var da = j * 2.39996 + 0.6, dq = Math.sqrt((j + 0.5) / nIn) * 0.9, c0 = Math.cos(da), s0b = Math.sin(da), e = 2 / Math.max(vn, 2.6) * 0.5 + 0.5;
+          var ix = cx + (vhw - dr - 2) * dq * (c0 < 0 ? -1 : 1) * Math.pow(Math.abs(c0), e), iy = cy + (vhh - dr - 2) * dq * (s0b < 0 ? -1 : 1) * Math.pow(Math.abs(s0b), e);
+          if(g.inside && ix > g.c1 - dr - 2 && ix < g.c1 + g.cw + dr + 2 && iy > g.cardY - dr - 2 && iy < g.cardY + g.ch + g.wordH / 2 + dr + 2) continue;
+          ind.push('<circle cx="' + n1(ix) + '" cy="' + n1(iy) + '" r="' + n1(dr) + '"/>');
+        }
+        p.push('<g class="wp2-dots is-in" data-n="' + ind.length + '">' + ind.join('') + '</g>');
+        // pressure: the wall pushes in on what it holds, harder as the cell fills
+        if(sc.p > 0.08){
+          var len = (6 + 3 * sc.p) * clamp(k, 0.8, 1.9), psw = clamp(2.2 * k, 2.4, 4.4);
+          [0.76, 2.3, 3.93, 5.52, 3.1416, 1.5708, 4.7124].forEach(function(a, ix){
+            if((g.ph && ix > 4) || (g.inside && ix === 6)) return;
+            var q0 = sq(a, hw - wt - 1, hh - wt - 1, n), d0 = Math.hypot(q0[0], q0[1]) || 1, ux = -q0[0] / d0, uy = -q0[1] / d0;
+            p.push(arrow(cx + q0[0], cy + q0[1], cx + q0[0] + ux * len, cy + q0[1] + uy * len, psw, 'wp2-push'));
+          });
+        }
+        p.push('</g>');
+        put('cell', p.join('')); p = [];
+        // water: arrows across the wall from the higher total to the lower one, as wide as the difference
+        var xr = cx + hw, ys = g.ph ? [-0.2, 0.2] : [-0.32, 0, 0.32], fl = [];
+        if(sc.dir && sc.reveal > 0){
+          var sw = Math.min(15, 1.6 + sc.gap * 0.8) * clamp(k, 0.85, 1.35) * (0.35 + 0.65 * sc.reveal), ax0 = xr + (g.ph ? 40 : 58) + sw * 0.5, ax1 = xr - wt - (g.ph ? 14 : 22);
+          ys.forEach(function(f){
+            var ay = cy + f * g.hh;
+            if(sc.dir === 'none'){ fl.push(both(ax0, ay, ax1, ay, 'wp2-eq')); return; }
+            var inn = sc.dir === 'in', fx = inn ? ax0 : ax1, tx = inn ? ax1 : ax0;
+            fl.push(arrow(fx, ay, tx, ay, sw, 'wp2-flow'));
+            if(tw && !K.reduced()){ var phs = (view.clock / 640) % 1; for(var w = 0; w < 2; w++){ var u = (phs + w / 2) % 1; fl.push('<circle class="wp2-w" cx="' + n1(fx + (tx - fx) * u * 0.78) + '" cy="' + n1(ay) + '" r="' + n1(2.2 + sw * 0.13) + '"/>'); } }
+          });
+          var wtxt = sc.dir === 'none' ? 'no net movement' : sc.dir === 'in' ? 'water in' : 'water out';
+          fl.push(wPill(g, wy, wtxt));
+          p.push('<g class="wp2-flowg" data-dir="' + sc.dir + '" opacity="' + sc.reveal.toFixed(2) + '">' + fl.join('') + '</g>');
+        }
+        put('flow', p.join('')); p = [];
+        // the two written sums
+        p.push(card(g.c1, g.cardY, sc.t1, sc.rows1, sc.tot1, sc.w1, 'cell'));
+        p.push(card(g.c2, g.cardY, sc.t2, sc.rows2, sc.tot2, sc.w2, 'out'));
+        // the setting before this change: a tick on that control's track (a mark, never a moved handle)
+        if(sc.ex && prev && (prev.k === 'p' ? prev.v !== S.p : prev.v !== S.c)){
+          if(prev.k === 'p'){
+            var bx = g.tx0 + (g.tx1 - g.tx0) * (prev.v / PMAX), kx = g.tx0 + (g.tx1 - g.tx0) * (S.p / PMAX);
+            p.push('<path class="wp2-mark" d="M' + n1(bx) + ' ' + n1(g.ty - 9) + 'V' + n1(g.ty + 9) + '"/>' + (Math.abs(bx - kx) > 62 ? '<text class="wp2-markt" x="' + n1(bx) + '" y="' + n1(g.ty - 13) + '" text-anchor="middle" style="font-size:' + (g.fsS - 1) + 'px">before</text>' : ''));
+          } else {
+            var by = g.vy0 + (g.vy1 - g.vy0) * (prev.v / CMAX);   // on the wall's scale the tick alone (no room for a word beside the water's label)
+            p.push('<path class="wp2-mark is-v" d="M' + n1(g.vx - 13) + ' ' + n1(by) + 'h26"/>');
+          }
+        }
+        put('sums', p.join(''));
+        if(causeWait && sc.dir && sc.reveal > 0) holdCause(false);
+        var al = sc.ex ? 'A plant cell in an open beaker of ' + F(view.c, 2) + ' molar ' + EX.outside.solute + '. ' + sentence(sc.m)
+          : 'The problem’s ' + sc.t1.toLowerCase() + ' in a beaker of ' + sc.t2 + '.' + (sc.chk ? ' Cell water potential ' + sg(sc.m.cell, 2) + ' bar, outside ' + sg(sc.m.out, 2) + ' bar: ' + dirWords(sc.dir) + '.' : ' The sums fill in as you answer.');
+        if(draw.al !== al){ draw.al = al; svg.setAttribute('aria-label', al); }
+      }
+      function layoutNow(){
+        if(stage.hidden) return;
+        var r = sceneBox.getBoundingClientRect(), Wd = Math.max(280, Math.round(r.width)), H = Math.max(300, Math.round(r.height));
+        svg.setAttribute('viewBox', '0 0 ' + Wd + ' ' + H); svg.setAttribute('width', Wd); svg.setAttribute('height', H);
+        G = geo(Wd, H);
+        cP.place([G.tx0, G.ty, G.tx1, G.ty]); cC.place([G.vx, G.vy0, G.vx, G.vy1]);
+        drawStatic(); draw();
+        if(cue.active()) cue.place();
+      }
+
+      /* ---------------------------------------------------- "?": the numbers behind this setting */
+      var ref = document.createElement('div'); ref.className = 'ls-sec wp2-ref';
+      function ladder(m){
+        var W = 300, H = 150, L = 46, top = 18, bot = 132, lo = -25, sy = function(v){ return top + (v / lo) * (bot - top); }, q = [];
+        [0, -5, -10, -15, -20, -25].forEach(function(t){ q.push('<path class="wp2-lg" d="M' + L + ' ' + n1(sy(t)) + 'H' + (W - 8) + '"/><text class="wp2-lt" x="' + (L - 6) + '" y="' + n1(sy(t) + 4) + '" text-anchor="end">' + sg(t, 0) + '</text>'); });
+        q.push('<path class="wp2-ll" d="M' + (L + 14) + ' ' + n1(sy(m.cell)) + 'h96"/><text class="wp2-lv" x="' + (L + 62) + '" y="' + n1(sy(m.cell) - 5) + '" text-anchor="middle">cell ' + sg(m.cell, 1) + '</text>');
+        q.push('<path class="wp2-ll" d="M' + (L + 138) + ' ' + n1(sy(m.out)) + 'h96"/><text class="wp2-lv" x="' + (L + 186) + '" y="' + n1(sy(m.out) - 5) + '" text-anchor="middle">outside ' + sg(m.out, 1) + '</text>');
+        return '<svg class="wp2-ladder" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="A scale of water potential in bar, 0 at the top. The cell is at ' + sg(m.cell, 1) + ' and the outside at ' + sg(m.out, 1) + '.">' + q.join('') + '</svg>';
+      }
+      function refHtml(){
+        var t = target(), m = shownOf(t), Kk = TC + M.K0, so = M.psiS(EX.outside.i, S.c, TC), cs = M.psiS(EX.cell.i, EX.cell.C, TC);
+        ref.innerHTML = '<p class="wp2-howref"><button type="button" class="tk2-how" data-how>Show me how</button> to use it, step by step.</p>' +
+          '<h3 class="ls-title-l">This setting, worked</h3>' +
+          '<p class="bt-eq">Cell: ψs = −iCRT = −(' + EX.cell.i + ')(' + F(EX.cell.C, 2) + ' mol/L)(0.0831 L·bar/(mol·K))(' + Kk + ' K) = ' + sg(cs, 2) + ' bar, used as ' + sg(CELL_S, 1) + '</p>' +
+          '<p class="bt-eq">Cell: ψ = ψs + ψp = ' + sg(CELL_S, 1) + ' + ' + F(t.p, 1) + ' = ' + sg(t.cell, 1) + ' bar</p>' +
+          '<p class="bt-eq">Outside: ψs = −(' + EX.outside.i + ')(' + F(S.c, 2) + ')(0.0831)(' + Kk + ') = ' + sg(so, 2) + ' bar, used as ' + sg(t.out, 1) + '; an open beaker has ψp = 0, so ψ = ' + sg(t.out, 1) + ' bar</p>' +
+          '<p class="bt-small">' + (t.dir === 'none' ? 'The two totals are equal, so there is no net water movement. Water still crosses both ways at the same rate.' : sg(Math.max(t.cell, t.out), 1) + ' is higher (less negative) than ' + sg(Math.min(t.cell, t.out), 1) + ', so water moves ' + (t.dir === 'in' ? 'into the cell.' : 'out of the cell.')) + '</p>' +
+          '<h3 class="ls-title-l">The two totals on one scale</h3>' + ladder(m) +
+          '<p class="bt-small">0 is pure water in an open beaker. Solute pulls a total down; pressure lifts it. Water moves from the higher mark to the lower one.</p>' +
+          '<h3 class="ls-title-l">Things to try</h3><ul class="wp2-try"><li>Find the pressure where there is no net water movement.</li><li>Take the solute outside to 0. How much pressure stops the water now?</li><li>Set the pressure to 0 and make water leave the cell.</li></ul>' +
+          '<h3 class="ls-title-l">What Explore holds still</h3><ul class="wp2-try"><li>The cell sap is ' + F(EX.cell.C, 2) + ' M (as ' + esc(EX.cell.solute) + '), the solute outside is ' + esc(EX.outside.solute) + ' (i = 1) and the temperature is ' + TC + ' °C. The practice problems change all three, with NaCl (i = 2) and CaCl₂ (i = 3).</li>' +
+          '<li>Each solute potential is rounded to 0.1 bar before adding, so the sums are exact. The practice problems use 0.01 bar.</li>' +
+          '<li>Particles are drawn at i × C, at the same crowding rule inside and outside.</li>' +
+          '<li>The picture is the moment the cell goes in. As water moves, the cell’s pressure changes until the totals are equal. <a class="wp2-osm" href="osmosis.html">See what happens to the cell: Osmosis <span aria-hidden="true">→</span></a></li></ul>';
+      }
+      ref.addEventListener('click', function(e){ var b = e.target.closest('[data-how]'); if(!b) return; if(ctx.studio) ctx.studio.close(); if(S.mode !== 'explore' && ctx.studio && ctx.studio.kit2) ctx.studio.kit2.go('explore'); setTimeout(startTour, 60); });
+
+      /* ---------------------------------------------------- Test yourself: the practice problems on the picture */
+      function toScene(){
+        var b = sceneBox.getBoundingClientRect(), vh = window.innerHeight || 800;
+        if(b.top >= 0 && b.bottom <= vh) return false;
+        try{ sceneBox.scrollIntoView({ block: 'center', behavior: K.reduced() ? 'auto' : 'smooth' }); }catch(e){ return false; }
+        return true;
+      }
+      var lastPhase = '', lastProb = null, causeWait = false;
+      // the result's cause line keeps its place but stays unseen until the arrows draw (the words wait the same way)
+      function holdCause(on){ causeWait = on; cause.el.style.visibility = on ? 'hidden' : ''; }
+      function problemStage(host, s){
+        host.hidden = true;                      // the tool draws on its own picture, not in the skill tool's slot
+        var fresh = s.input !== lastProb, done = s.phase === 'checked' && lastPhase !== 'checked';
+        prob = s; lastProb = s.input; lastPhase = s.phase;
+        if(S.mode !== 'quiz') return;
+        if(fresh){ stopTween(); snap(); holdCause(false); cause.el.hidden = true; }
+        if(done){
+          var m = sceneNow().m; cause.set(chainOf(m)); cause.el.hidden = false;
+          if(K.reduced() || !window.requestAnimationFrame){ var old = gDyn.innerHTML; view.reveal = 1; draw(); crossFade(old); return; }
+          var away = toScene(), me = s;
+          holdCause(true); view.reveal = 0; draw();
+          setTimeout(function(){ if(prob !== me) return; flowUntil = now() + 1100; if(!tw){ lastTs = 0; tw = requestAnimationFrame(tick); } }, away ? 450 : 0);
+          // on a phone the answers are above the picture: come back to them once the arrows are in
+          if(away && ctx.studio) setTimeout(function(){ if(prob !== me) return; var d = ctx.studio.root.querySelector('.ls-dock'); try{ if(d) d.scrollIntoView({ block: 'start', behavior: 'smooth' }); }catch(e){} }, 1700);
+          return;
+        }
+        draw();
+      }
+
+      /* ---------------------------------------------------- the two modes (the adapter calls onShow) */
+      function showMode(mode){
+        S.mode = mode === 'quiz' ? 'quiz' : 'explore';
+        stopTween(); tour.stop();
+        var ex = S.mode === 'explore';
+        stage.setAttribute('data-view', ex ? 'explore' : 'problem');
+        head.el.hidden = !ex; cP.hide(!ex); cC.hide(!ex);
+        holdCause(false);
+        if(ex){ prev = null; gest = null; cause.el.hidden = false; snap(); wKey = ''; syncWords(); refHtml(); }
+        else { hideCue(false); snap(); var sc = sceneNow(); cause.el.hidden = !(sc && sc.chk); if(sc && sc.chk) cause.set(chainOf(sc.m)); }
+        setTimeout(function(){ layoutNow(); if(ex && !tour.active()) cue.show(); }, 30);
+      }
+
+      // The practice problems (the page's own blocks: About, the formula box, the problem area). The adapter moves them.
+      T.skillTool(app, data, { slug: SLUG, kind: 'wp', stage: problemStage });
+      ctx.kit2 = { stage: stage, ref: ref,
+        parts: [{ value: 'practice', label: 'Practice problems', practice: true, onPicture: true }],
+        onShow: function(m){ showMode(m); } };
+      snap(); syncWords(); refHtml();
+      // Without the frame (no Tool Studio on the page) the stage still works on its own, above the problems.
+      if(!ctx.studio){ app.insertBefore(stage, app.firstChild); app.insertBefore(ref, stage.nextSibling); showMode('explore'); }
+      if(window.ResizeObserver){ var tm = null; new ResizeObserver(function(){ clearTimeout(tm); tm = setTimeout(layoutNow, 50); }).observe(sceneBox); }
+      else window.addEventListener('resize', layoutNow);
+    }, { studio: { kit2: function(ctx){ return ctx.kit2; } } });
+  }
+  /* The page loads the kit (pages.json "kit2": true). A cached copy of the old page would not: fetch it then. */
+  if(window.LevlKit2) boot();
+  else {
+    var up = (window.ApBioBase || '../') + '../assets/course/';
+    var l = document.createElement('link'); l.rel = 'stylesheet'; l.href = up + 'tool-kit2.css'; document.head.appendChild(l);
+    var l2 = document.createElement('link'); l2.rel = 'stylesheet'; l2.href = (window.ApBioBase || '../') + 'assets/tools/water-potential.css'; document.head.appendChild(l2);
+    var sc = document.createElement('script'); sc.src = up + 'tool-kit2.js'; sc.onload = boot; document.head.appendChild(sc);
+  }
 })();
