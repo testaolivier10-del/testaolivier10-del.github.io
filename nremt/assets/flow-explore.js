@@ -40,7 +40,7 @@
   var CALLS = [
     { id: 'primary', name: 'Primary assessment', short: 'Primary', scene: 'garage', chart: 'flow-primary-assessment-sequence',
       who: 'Man, 45, fell from a ladder onto glass', purpose: 'What you find on him picks the next step.',
-      whole: [-20, 1205], start: ['Scene safe, hold head still'],
+      whole: [-20, 1205], start: ['Scene safe, gloves, head still'],
       take: 'Fix each threat as you find it: bleeding, airway, breathing, shock.',
       end: 'Reassess every 5 min',
       steps: [
@@ -116,9 +116,10 @@
   // CPR: the heel of one hand on the lower half of the breastbone, the other hand on top, fingers laced and lifted
   // across his chest; the EMT's forearms come in from his right side (image px)
   var HAND = 'M222 280C236 273 262 273 282 277L304 281C310 283 310 291 304 292L286 291L306 297C312 299 311 307 305 307L286 305L302 313C307 316 304 323 298 321L280 317C262 324 236 326 224 320Z';
-  var CPRH = '<path class="fx2-sleeve" d="M60 272L222 282L222 318L60 330Z"/><path class="fx2-glove" d="' + HAND + '"/>' +
-    '<g transform="translate(4 -4)"><path class="fx2-glove fx2-topg" d="' + HAND + '"/><path class="fx2-knuck" d="M266 282L288 284M266 296L290 300M264 308L286 314"/></g>' +
-    '<rect class="fx2-cuff" x="210" y="282" width="14" height="38" rx="6"/>';
+  // the bottom hand sits 12 px toward his head with its own forearm and cuff; the top hand's fingers lace over it
+  var CPRH = '<g transform="translate(0 -13)"><path class="fx2-sleeve" d="M60 266L214 278L214 304L60 304Z"/><rect class="fx2-cuff" x="204" y="274" width="16" height="32" rx="6"/><path class="fx2-glove" d="' + HAND + '"/></g>' +
+    '<g transform="translate(2 9)"><path class="fx2-sleeve fx2-sleeve2" d="M60 300L214 290L214 318L60 334Z"/><rect class="fx2-cuff" x="204" y="286" width="16" height="34" rx="6"/><path class="fx2-glove fx2-topg" d="' + HAND + '"/></g>' +
+    '<path class="fx2-lace" d="M270 279C278 270 288 268 296 270M268 290C278 282 290 280 300 282M266 301C276 294 288 292 298 294"/>';
   var JAW = '<path class="fx2-glove" d="M176 4C166 40 168 88 180 118L196 146C204 158 216 154 214 143L203 117C200 100 200 80 205 64C208 44 202 18 192 6Z"/>' +
     '<path class="fx2-glove" d="M203 62C213 66 222 78 225 91C227 99 219 102 215 96C211 88 205 82 199 79Z"/>' +
     '<path class="fx2-knuck" d="M184 114L199 141M190 110L205 136"/><rect class="fx2-cuff" x="166" y="-14" width="30" height="16" rx="7" transform="rotate(-6 181 -6)"/>';
@@ -313,8 +314,8 @@
       // on him: each effect its own group, shown by state (paintFx)
       if(c.id === 'primary'){
         on.push('<g class="fx2-wound"><ellipse class="fx2-wound-r" cx="176" cy="784" rx="16" ry="30" transform="rotate(-8 176 784)"/><path class="fx2-wound-c" d="M172 760Q180 784 174 808"/></g>');
-        var JETS = ['M170 796C150 822 122 852 94 880', 'M176 800C162 836 134 878 106 912', 'M168 792C146 806 112 828 80 846'];
-        on.push('<g class="fx2-jets">' + JETS.map(function(d, n){ return '<path class="fx2-jet-e" d="' + d + '"/><path class="fx2-jet fx2-jet' + n + '" d="' + d + '"/>'; }).join('') +
+        var JETS = ['M170 796C138 808 112 840 94 880', 'M176 800C150 822 128 870 106 912', 'M168 792C134 790 104 808 80 846'];
+        on.push('<g class="fx2-jets">' + JETS.map(function(d, n){ return '<path class="fx2-jet-e fx2-jet' + n + '" d="' + d + '"/><path class="fx2-jet fx2-jet' + n + '" d="' + d + '"/>'; }).join('') +
           '<circle class="fx2-drop" cx="86" cy="892" r="6"/><circle class="fx2-drop" cx="98" cy="926" r="5"/><circle class="fx2-drop" cx="70" cy="854" r="5"/></g>');
         on.push('<g class="fx2-tq"><rect class="fx2-tq-b" x="118" y="728" width="128" height="20" rx="6"/><rect class="fx2-tq-s" x="118" y="733" width="128" height="4"/>' +
           '<g class="fx2-wind" transform="translate(150 738)"><rect class="fx2-wind-r" x="-6" y="-34" width="12" height="68" rx="5"/></g><rect class="fx2-tq-tab" x="200" y="722" width="30" height="32" rx="4"/></g>');
@@ -327,15 +328,15 @@
         on.push('<g class="fx2-sweep"><g class="fx2-sweep-h">' + glove(0, 0, 90) + '</g></g>');
       } else {
         on.push('<g class="fx2-taps"><g class="fx2-tapl">' + glove(146, 118, 180) + '</g><g class="fx2-tapr">' + glove(334, 118, 180) + '</g></g>');
-        on.push('<g class="fx2-carotid">' + glove(138, 170, 90, '', 1.45, TWO) + '</g>');
+        on.push('<g class="fx2-carotid">' + glove(144, 170, 90, '', 1.45, TWO) + '</g>');
         on.push('<g class="fx2-gasp"><path class="fx2-rl" d="M118 250Q104 330 118 410"/><path class="fx2-rl" d="M362 250Q376 330 362 410"/></g>');
         on.push('<g class="fx2-pads"><rect class="fx2-pad" x="160" y="226" width="64" height="46" rx="10" transform="rotate(-10 192 249)"/><rect class="fx2-pad" x="318" y="318" width="50" height="66" rx="10"/>' +
           '<path class="fx2-wire" d="M190 228C200 160 320 120 520 90M346 318C380 260 470 160 520 110"/></g>');
         on.push('<g class="fx2-cpr"><g class="fx2-cpr-h">' + CPRH + '</g></g>');
         on.push('<g class="fx2-zap"><circle cx="270" cy="300" r="120" fill="url(#fx2-flash)"/><path class="fx2-bolt" d="M196 250L248 300L232 306L300 360"/></g>');
       }
-      on.push('<g class="fx2-bvm"><ellipse class="fx2-mask" cx="240" cy="108" rx="34" ry="44"/><ellipse class="fx2-mask-r" cx="240" cy="108" rx="24" ry="32"/><rect class="fx2-valve" x="226" y="34" width="28" height="22" rx="6"/>' +
-        '<ellipse class="fx2-bag" cx="240" cy="-46" rx="34" ry="70"/></g>');
+      on.push('<g class="fx2-bvm"><ellipse class="fx2-mask" cx="240" cy="120" rx="32" ry="38"/><ellipse class="fx2-mask-r" cx="240" cy="120" rx="22" ry="27"/><rect class="fx2-valve" x="226" y="56" width="28" height="22" rx="6"/>' +
+        '<ellipse class="fx2-bag" cx="240" cy="-24" rx="34" ry="70"/></g>');
       gUnder.innerHTML = u.join('');
       gFig.innerHTML = h.join('');
       gOn.innerHTML = on.join('');
@@ -398,7 +399,7 @@
       var taken = [];
       [bub, who, clock].forEach(function(b){ if(b.classList.contains('is-on') || b === who){ var r = rel(b); if(r) taken.push(r); } });
       var aedB = T().fx.aed && T().fx.aedBox; if(aedB) taken.push({ l: aedB[0], t: aedB[1], r: aedB[0] + aedB[2], b: aedB[1] + aedB[3] });
-      var sc = G.sc;
+      var sc = G.sc, drawn = drawnBoxes();
       LABS.forEach(function(L){
         var e = el('span', 'fx2-lab is-' + (L.tone || 'see'), esc(L.text));
         labels.appendChild(e);
@@ -413,6 +414,7 @@
             if(b.l < sc.x + 6 || b.r > sc.x + sc.w - 6 || b.t < sc.y + 6 || b.b > sc.y + sc.h - 6) return false;
             if(taken.some(function(t){ return !(b.r + 5 < t.l || b.l > t.r + 5 || b.b + 5 < t.t || b.t > t.b + 5); })) return false;
             if(keep && !(b.r + 4 < keep.l || b.l > keep.r + 4 || b.b + 4 < keep.t || b.t > keep.b + 4)) return false;
+            if(drawn.some(function(k){ return !(b.r + 3 < k.l || b.l > k.r + 3 || b.b + 3 < k.t || b.t > k.b + 3); })) return false;
             best = b; return true;
           });
         });
@@ -424,6 +426,23 @@
         svgEl('circle', { class: 'fx2-dot is-' + (L.tone || 'see'), cx: p[0].toFixed(1), cy: p[1].toFixed(1), r: 3.5 }, gLead);
         void e.offsetWidth; e.classList.add('is-in'); // in the same task as the arms, so a live arm never waits for a frame
       });
+    }
+    // everything a label must never cover: his face and what is drawn on him now (gloves, forearms, pads, the
+    // tourniquet, the wound and the jets, the mask), in stage px from the target camera
+    var DRAWN = '.fx2-face, .fx2-on > g.is-on .fx2-glove, .fx2-on > g.is-on .fx2-sleeve, .fx2-on > g.is-on .fx2-pad, .fx2-on > g.is-on .fx2-tq-b, .fx2-on > g.is-on .fx2-jet-e, .fx2-on > g.is-on .fx2-wound-r, .fx2-on > g.is-on .fx2-mask';
+    function drawnBoxes(){
+      var out = [], cm = gCam.getCTM();
+      if(!cm) return out;
+      var inv = cm.inverse();
+      gCam.querySelectorAll(DRAWN).forEach(function(e){
+        var bb, m; try{ bb = e.getBBox(); m = inv.multiply(e.getCTM()); }catch(err){ return; }
+        if(!bb.width && !bb.height) return;
+        var xs = [], ys = [];
+        [[bb.x, bb.y], [bb.x + bb.width, bb.y], [bb.x, bb.y + bb.height], [bb.x + bb.width, bb.y + bb.height]].forEach(function(c){
+          var q = new DOMPoint(c[0], c[1]).matrixTransform(m), s2 = P(q.x, q.y); xs.push(s2[0]); ys.push(s2[1]); });
+        out.push({ l: Math.min.apply(0, xs), r: Math.max.apply(0, xs), t: Math.min.apply(0, ys), b: Math.max.apply(0, ys) });
+      });
+      return out;
     }
     function rel(node){ var r = node.getBoundingClientRect(), h = box.getBoundingClientRect(); if(!r.width) return null; return { l: r.left - h.left, t: r.top - h.top, r: r.right - h.left, b: r.bottom - h.top }; }
     function speak(kind, text){
@@ -650,7 +669,7 @@
         case 'tourniquet': return [[200, function(){ f.tq = true; paintFx(); }], [900, function(){ f.bleed = 'held'; paintFx(); }], [700, function(){ setLabels([{ text: 'Tourniquet', at: [182, 738], tone: 'act' }]); }]];
         case 'jaw': return [[200, function(){ f.jaw = true; paintFx(); }], [700, function(){ f.snore = false; f.blue = false; paintFx(); }], [600, function(){ setLabels([{ text: 'Jaw thrust', at: [274, 128], tone: 'act' }]); }]];
         case 'blanket': return [[200, function(){ f.pulse = false; f.blanket = true; paintFx(); }], [900, function(){ setLabels([{ text: 'Blanket', at: [240, 450], tone: 'act' }]); }]];
-        case 'transport': return [[200, function(){ f.exam = true; paintFx(); }], [600, function(){ setLabels([{ text: 'Rapid exam', at: [240, 560], tone: 'act', keep: [100, 200, 380, 1000] }]); }], [1500, function(){}]];
+        case 'transport': return [[200, function(){ f.exam = true; paintFx(); }], [2100, function(){ setLabels([{ text: 'Rapid exam', at: [318, 1000], tone: 'act' }]); }]];
         case 'call': return [[200, function(){ speak('emt', 'No response! Get the AED.'); }], [1100, function(){ setLabels([{ text: 'Help called', at: [240, 77], tone: 'act' }]); }]];
         case 'cpr': return [[200, function(){ f.carotid = false; f.chest = ''; f.bare = true; paintFx(); }], [500, function(){ f.cpr = true; paintFx(); speak('emt', 'One, two, three…'); }],
           [1800, function(){ f.cpr = false; f.bvm = true; f.chest = 'rise'; paintFx(); speak(null); }], [1300, function(){ f.bvm = false; f.chest = ''; f.cpr = true; paintFx(); }], [550, function(){ setLabels([{ text: '30 pushes, 2 breaths', at: [240, 300], tone: 'act' }]); }]];

@@ -105,6 +105,8 @@ const geo = (page) => page.evaluate(() => {
     arms: qa('.fx2-arm').map(e => ({ ...R(e), text: e.textContent, live: e.classList.contains('is-live') })), dec: dec ? R(dec) : null, armRow: arms ? R(arms) : null,
     labs: qa('.fx2-lab').filter(vis).map(e => ({ ...R(e), text: e.textContent })), bub: q('.fx2-bub.is-on') ? R(q('.fx2-bub.is-on')) : null,
     who: R(q('.fx2-who')), clock: q('.fx2-clock.is-on') ? R(q('.fx2-clock')) : null, cue: q('.tk2-cue') ? R(q('.tk2-cue')) : null, aed: q('.fx2-aed.is-on') ? R(q('.fx2-aed')) : null,
+    drawn: qa('.fx2-face, .fx2-on > g.is-on .fx2-glove, .fx2-on > g.is-on .fx2-sleeve, .fx2-on > g.is-on .fx2-pad, .fx2-on > g.is-on .fx2-tq-b, .fx2-on > g.is-on .fx2-jet-e, .fx2-on > g.is-on .fx2-wound-r, .fx2-on > g.is-on .fx2-mask')
+      .map(e => ({ ...R(e), what: (e.getAttribute('class') || '').split(' ')[0] })).filter(r => r.w > 0),
     head: R(q('.fx2 .tk2-head')), tabs: R(q('.fx2 .tk2-tabs')), foot: R(q('.fx2-lines-row')), minText, minWho,
     cause: { ...R(cause), take: cause.classList.contains('is-take'), rows: [...new Set(qa('.fx2 .tk2-cause .tk2-cz').map(e => Math.round(e.getBoundingClientRect().top)))].length, pills: qa('.fx2 .tk2-cause .tk2-cz').map(R) } };
 });
@@ -119,6 +121,8 @@ function check(g, tag) {
   things.forEach(([n, r]) => T(inside(r, g.pic), `${n} is clipped (${Math.round(r.l)},${Math.round(r.t)},${Math.round(r.r)},${Math.round(r.b)} in ${Math.round(g.pic.l)},${Math.round(g.pic.t)},${Math.round(g.pic.r)},${Math.round(g.pic.b)})`));
   things.forEach(([n, r], i) => things.forEach(([m, s], j) => { if (j > i && hit(r, s, 4)) T(false, `${n} overlaps ${m}`); }));
   if (g.aed) g.labs.forEach(l => T(!hit(l, g.aed, 2), `label ${l.text} covers the AED`));
+  // no label on what is drawn: his face, the gloves and forearms, the pads, the tourniquet, the wound, the jets, the mask
+  g.labs.forEach(l => g.drawn.forEach(d => { if (hit(l, d, -1)) T(false, `label ${l.text} covers ${d.what}`); }));
   things.forEach(([n, r]) => T(!hit(r, g.board, 2), `${n} runs onto the card`));
   if (g.cue) {
     T(inside(g.cue, g.scene), 'the cue is clipped');

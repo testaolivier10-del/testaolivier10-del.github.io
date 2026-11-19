@@ -64,11 +64,11 @@
 .fx2-on > g{opacity:0;transition:opacity .45s ease;}
 .fx2-on > g.is-on{opacity:1;}
 .fx2-wound-r{fill:#7A0E09;} .fx2-wound-c{fill:none;stroke:#3A0604;stroke-width:4;stroke-linecap:round;}
-.fx2-jet-e{fill:none;stroke:#FFD9D2;stroke-width:17;stroke-linecap:round;opacity:.85;}
+.fx2-jet-e{fill:none;stroke:#FFD9D2;stroke-width:17;stroke-linecap:round;opacity:.85;stroke-dasharray:46 60;}
 .fx2-jet{fill:none;stroke:#E4170B;stroke-width:11;stroke-linecap:round;stroke-dasharray:46 60;}
 .fx2-drop{fill:#D8150A;stroke:#FFD9D2;stroke-width:2;}
-.fx2-jets.is-on .fx2-jet{animation:fx2-spurt .8s ease-out infinite;}
-.fx2-jet1{animation-delay:-.27s !important;} .fx2-jet2{animation-delay:-.53s !important;stroke-width:9;}
+.fx2-jets.is-on .fx2-jet,.fx2-jets.is-on .fx2-jet-e{animation:fx2-spurt .8s ease-out infinite;}
+.fx2-jet1{animation-delay:-.27s !important;} .fx2-jet2{animation-delay:-.53s !important;} .fx2-jet.fx2-jet2{stroke-width:9;} .fx2-jet-e.fx2-jet2{stroke-width:14;}
 @keyframes fx2-spurt{0%{stroke-dashoffset:46;}100%{stroke-dashoffset:-60;}}
 .fx2-tq-b{fill:#26282B;} .fx2-tq-s{fill:#3E4246;} .fx2-tq-tab{fill:#D9452E;} .fx2-wind-r{fill:#55595E;stroke:#26282B;stroke-width:2;}
 .fx2-wind{transition:transform 0s;}
@@ -213,7 +213,9 @@
   .fx2-on *,.fx2-aed *{animation:none !important;}
   .fx2-node.is-new,.fx2-arms.is-new{transform:none;}
   .fx2-ln{transition:none;} .fx2-ln.is-new{stroke-dashoffset:0;}
-  .fx2-jets.is-on .fx2-jet{stroke-dasharray:none;}
+  .fx2-jets.is-on .fx2-jet,.fx2-jets.is-on .fx2-jet-e{stroke-dasharray:none;}
   .fx2-rise.is-on .fx2-rl{opacity:.85;}
 }
 .fx2-sleeve{fill:#24344A;} .fx2-topg{fill:#7C78E0;}
+.fx2-sleeve2{fill:#2E4260;}
+.fx2-lace{fill:none;stroke:#3F3A9E;stroke-width:5;stroke-linecap:round;}
