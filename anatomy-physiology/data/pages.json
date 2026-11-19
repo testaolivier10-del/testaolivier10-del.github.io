@@ -127,7 +127,10 @@
       "script": "tools/feedback-loops.js",
       "css": "tools/feedback-loops.css",
       "data": "feedback-loops.json",
-      "studio": true
+      "studio": true,
+      "kit2": true,
+      "extraScripts": ["tools/feedback-loops-explore.js"],
+      "extraCss": ["tools/feedback-loops-explore.css"]
     },
     {
       "slug": "pathways",

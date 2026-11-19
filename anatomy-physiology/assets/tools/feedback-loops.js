@@ -35,6 +35,58 @@
      is drawn in #app and then moved into the calm frame (studioLoop,
      studioList); lookups go through the document, where the parts are. */
   var S = window.AnpToolKit && window.AnpToolKit.studio ? window.AnpToolKit.studio() : null, showTabNow = null;
+  /* Tools v2 (docs/tools-v2-anp-feedback-loops-brief.md): with the kit on the page (pages.json "kit2": true), Explore is
+     the drawn loops of tools/feedback-loops-explore.js and everything below (every loop, its Watch it work and its
+     build, classify and failure steps, with every item id and record unchanged) is Test yourself. The studio's mode
+     switch belongs to the kit (Explore | Test yourself), so this tool's own two modes become a small switch at the top
+     of Test yourself's panel ("Watch it work" | "Build it"): subStudio() stands in for the studio, puts every part in
+     the quiz mode and shows only the parts of the chosen inner mode. */
+  var V2 = !!(S && window.LevlKit2 && window.AnpLoopExplore && window.AnpToolKit.kit2), KIT = null, EX = null, SS = S, qChosen = false;
+  if(V2) S = subStudio(SS);
+  function subStudio(real){
+    var sub = 'live', capBy = {}, pillBy = {}, doneBy = {}, seg = null, segO = null, f = {}, LBL = { live: 'Watch it work', test: 'Build it' };
+    function paint(){
+      real.root.querySelectorAll('[data-fl-sub]').forEach(function(el){ el.classList.toggle('fl-suboff', el.getAttribute('data-fl-sub') !== sub); });
+      if(seg) seg.querySelectorAll('button').forEach(function(b){ var on = b.getAttribute('data-v') === sub; b.setAttribute('aria-pressed', String(on)); b.classList.toggle('on', on); });
+      real.caption(capBy[sub] != null ? capBy[sub] : (capBy['*'] || ''), 'quiz');
+      real.pills(pillBy[sub] || [], 'right', 'quiz');
+      if(real.done) real.done(doneBy[sub] || false, 'quiz');
+    }
+    f.root = real.root; f.stage = real.stage; f.suspend = function(x){ return real.suspend(x); };
+    f.close = function(){ return real.close && real.close(); };
+    f.put = function(region, els, o){
+      real.put(region, els, { mode: 'quiz', first: !!(o && o.first) });
+      if(o && o.mode) [].concat(els && els.nodeType ? [els] : [].slice.call(els || [])).forEach(function(el){ if(el) el.setAttribute('data-fl-sub', o.mode); });
+      paint();
+      return f;
+    };
+    f.reset = function(){ real.reset(); doneBy = {}; return f; };
+    f.modes = function(m){
+      segO = m; sub = m.value || m.items[0].value;
+      seg = document.createElement('div');
+      seg.className = 'fl-sub kt-seg'; seg.setAttribute('role', 'group'); seg.setAttribute('aria-label', 'How to practice this loop');
+      seg.innerHTML = m.items.map(function(it){ return '<button type="button" class="fl-subb" data-v="' + esc(it.value) + '" aria-pressed="false">' + esc(LBL[it.value] || it.label) + '</button>'; }).join('');
+      seg.addEventListener('click', function(e){ var b = e.target.closest('button[data-v]'); if(!b) return; var v = b.getAttribute('data-v'); if(v === sub) return; sub = v; paint(); if(segO.onChange) segO.onChange(v); });
+      real.add('dock', seg, { mode: 'quiz' });
+      real.dock.insertBefore(seg, real.dock.firstChild);
+      paint();
+      return f;
+    };
+    f.mode = function(v){ if(v == null) return sub; sub = v; paint(); return f; };
+    f.modeBar = function(on){ if(seg) seg.hidden = !on; return f; };
+    f.hint = function(){ return null; };
+    f.caption = function(html, m){ capBy[m || '*'] = html || ''; if(!m || m === sub) paint(); return f; };
+    f.pills = function(items, side, m){ pillBy[m || sub] = items || []; if(!m || m === sub) paint(); return f; };
+    f.done = function(d, m){ doneBy[m || sub] = d || false; if(!m || m === sub) paint(); return f; };
+    f.mirror = function(el, m, fallback){
+      if(!el) return f;
+      function up(){ var h = el.innerHTML.trim(); capBy[m || '*'] = h || fallback || ''; if(!m || m === sub) paint(); }
+      if(window.MutationObserver) new MutationObserver(up).observe(el, { childList: true, characterData: true, subtree: true });
+      up();
+      return f;
+    };
+    return f;
+  }
   function Q(){ return S ? document : app; }
 
   function esc(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
@@ -69,12 +121,49 @@
     DATA = data;
     DATA.loops.forEach(function(l){ l.chapter = topicOf(l.topic).chapter; });
     var ch = param('chapter'), tp = param('topic'), one = param('id');
+    if(V2){
+      EX = window.AnpLoopExplore.build({ data: DATA, base: base(), studio: SS, onQuiz: function(id){
+        var l = DATA.loops.filter(function(x){ return x.id === id; })[0]; if(!l) return;
+        qChosen = true; queue = [l]; qi = 0; startTab = 'test'; renderLoop(); KIT.go('quiz'); quizUrl();
+      } });
+      if(EX) KIT = window.AnpToolKit.kit2(SS, { stage: EX.stage, ref: EX.ref, onShow: function(m, user){
+        EX.shown(m === 'explore');
+        if(m === 'explore' && activeLive) activeLive.stop();
+        if(!user) return;
+        if(m === 'quiz' && !qChosen){
+          var want = EX.loopOf(EX.tab()), l = DATA.loops.filter(function(x){ return x.id === want; })[0];
+          if(l && (!queue[qi] || queue[qi].id !== l.id)){ var k = -1; queue.forEach(function(x, i){ if(x.id === l.id) k = i; }); if(k < 0){ queue = [l]; k = 0; } qi = k; renderLoop(); }
+          qChosen = true;
+        }
+        if(m === 'quiz') quizUrl(); else { try{ history.replaceState(null, '', location.pathname + '#explore/' + EX.tab()); }catch(e){} }
+      } });
+      if(!KIT){ V2 = false; S = SS; }
+    }
     if(tp && DATA.loops.some(function(l){ return l.topic === tp; })){ filterTopic = tp; filterCh = topicOf(tp).chapter; }
     else if(ch && DATA.loops.some(function(l){ return l.chapter === ch; })) filterCh = ch;
     var direct = one && DATA.loops.filter(function(l){ return l.id === one; })[0];
-    if(direct){ queue = [direct]; qi = 0; renderLoop(); return; }
-    queue = visible(); qi = nextUnfinished(queue);
-    if(queue.length) renderLoop(); else renderList();
+    /* v2: which mode a link opens. ?id=<loop> and ?mode=test: Test yourself, as the old links did. #explore/<tab>:
+       that Explore screen. ?topic= or ?chapter= with a drawn screen: Explore on it (Test yourself holds the filtered
+       list as before); with none: Test yourself. No link: Explore. */
+    var h = (location.hash || '').replace(/^#/, '').split('/'), tab = null, quiz = false;
+    if(V2){
+      if(direct || param('mode') === 'test'){ quiz = true; qChosen = true; }
+      else if(h[0] === 'explore') tab = EX.tabFor({ tab: h[1] });
+      else if(tp || ch){ tab = EX.tabFor({ topic: tp, chapter: ch, topicOf: topicOf }); quiz = !tab; qChosen = quiz; }
+      if(tab) EX.tab(tab);
+    }
+    if(direct){ queue = [direct]; qi = 0; renderLoop(); }
+    else {
+      queue = visible(); qi = nextUnfinished(queue);
+      if(V2 && tab && !(tp || ch)){ var w = EX.loopOf(tab), k = -1; queue.forEach(function(x, i){ if(x.id === w) k = i; }); if(k > -1) qi = k; }
+      if(queue.length) renderLoop(); else renderList();
+    }
+    if(V2) KIT.go(quiz ? 'quiz' : 'explore');
+  }
+  function quizUrl(){
+    if(!V2) return;
+    var l = queue[qi];
+    try{ history.replaceState(null, '', location.pathname + (l ? '?id=' + encodeURIComponent(l.id) + (startTab === 'test' ? '&mode=test' : '') : '')); }catch(e){}
   }
   // The first loop in the list not yet built fully right, else the first.
   function nextUnfinished(list){

@@ -1,0 +1,232 @@
+/* A&P Feedback loops, tools v2 Explore (tools/feedback-loops-explore.js; docs/tools-v2-anp-feedback-loops-brief.md).
+   One colour per idea, from the course's visual language (anp.css): afferent orange, efferent sky blue, the control
+   center purple; heat red, cold blue, glucose gold, insulin teal, glucagon burnt orange, oxytocin pink, the stretch of
+   the cervix olive, uterine muscle brick. The part, its label, its pill on the cause line and its dot share the colour. */
+.fe{
+  --fe-aff:var(--anp-aff); --fe-aff-ink:#8A5A00;
+  --fe-eff:#2F8FCB; --fe-eff-ink:#1E6E9E;
+  --fe-ctl:#7B4FB0; --fe-ctl-ink:#653C98;
+  --fe-heat:#D2452A; --fe-heat-ink:#A8301A;
+  --fe-cold:#2C6E9E; --fe-cold-ink:#245C85;
+  --fe-glu:#C99418; --fe-glu-ink:#7A5A08;
+  --fe-ins:#0F8B7A; --fe-ins-ink:#0B6B5E;
+  --fe-gcg:#C0562B; --fe-gcg-ink:#9A3F1C;
+  --fe-oxy:#D4447A; --fe-oxy-ink:#A8305E;
+  --fe-str:#5E7F1E; --fe-str-ink:#4A6614;
+  --fe-mus:#B0533C; --fe-mus-ink:#9A3F2B;
+  --fe-resp:#2E8B57; --fe-resp-ink:#1F6E43;
+  --fe-tok:var(--cink); --fe-tok-ink:var(--cink);
+  --fe-bg:#FBF6F0;
+  display:flex;flex-direction:column;gap:8px;min-height:0;
+}
+:root[data-theme="dark"] .fe{
+  --fe-aff-ink:var(--anp-aff); --fe-eff:#7FC2EE; --fe-eff-ink:#9ACFF2; --fe-ctl:#C29BE3; --fe-ctl-ink:#CDAAEA;
+  --fe-heat:#FF7A5C; --fe-heat-ink:#FF9C85; --fe-cold:#7FC2EE; --fe-cold-ink:#9ACFF2; --fe-glu:#E3C25A; --fe-glu-ink:#EBD083;
+  --fe-ins:#4FD1BC; --fe-ins-ink:#6FDCCB; --fe-gcg:#F0915F; --fe-gcg-ink:#F4A97F; --fe-oxy:#F08AB0; --fe-oxy-ink:#F4A3C2;
+  --fe-str:#A9CC5E; --fe-str-ink:#BBD87E; --fe-mus:#E58E76; --fe-mus-ink:#F0A48F; --fe-resp:#6FD39A; --fe-resp-ink:#8EDDB0;
+  --fe-bg:#20272A;
+}
+/* the cause line's pills */
+.fe .tk2-cz{--cz:var(--fe-tok);--cz-ink:var(--fe-tok-ink);}
+.fe .tk2-cz.is-aff{--cz:var(--fe-aff);--cz-ink:var(--fe-aff-ink);} .fe .tk2-cz.is-eff{--cz:var(--fe-eff);--cz-ink:var(--fe-eff-ink);}
+.fe .tk2-cz.is-ctl{--cz:var(--fe-ctl);--cz-ink:var(--fe-ctl-ink);} .fe .tk2-cz.is-heat,.fe .tk2-cz.is-temp{--cz:var(--fe-heat);--cz-ink:var(--fe-heat-ink);}
+.fe .tk2-cz.is-cold{--cz:var(--fe-cold);--cz-ink:var(--fe-cold-ink);} .fe .tk2-cz.is-glu{--cz:var(--fe-glu);--cz-ink:var(--fe-glu-ink);}
+.fe .tk2-cz.is-ins{--cz:var(--fe-ins);--cz-ink:var(--fe-ins-ink);} .fe .tk2-cz.is-gcg{--cz:var(--fe-gcg);--cz-ink:var(--fe-gcg-ink);}
+.fe .tk2-cz.is-oxy{--cz:var(--fe-oxy);--cz-ink:var(--fe-oxy-ink);} .fe .tk2-cz.is-str{--cz:var(--fe-str);--cz-ink:var(--fe-str-ink);}
+.fe .tk2-cz.is-mus{--cz:var(--fe-mus);--cz-ink:var(--fe-mus-ink);}
+
+/* the picture, full stage width, then the seven parts as one line under it */
+.fe-main{display:flex;flex-direction:column;gap:6px;min-height:0;}
+.fe-pic{position:relative;border-radius:18px;overflow:hidden;background:var(--fe-bg);box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--ink) 8%, transparent);width:100%;align-self:center;}
+.fe-svg{display:block;width:100%;height:auto;touch-action:none;}
+.fe-svg.fe-fade{position:absolute;left:0;top:0;pointer-events:none;}
+.fe-over{position:absolute;inset:0;pointer-events:none;}
+.fe-over > *{pointer-events:auto;}
+.fe-rail{display:flex;align-items:baseline;gap:8px;min-height:30px;font-size:14px;line-height:1.25;flex-wrap:nowrap;}
+.fe-dots{display:inline-flex;gap:5px;align-self:center;flex:0 0 auto;margin-right:6px;}
+.fe-dot{display:block;width:11px;height:11px;border-radius:50%;background:color-mix(in srgb, var(--ink) 13%, transparent);transition:background .2s, transform .2s;}
+.fe-dot.is-on.is-stim{background:var(--ink);} .fe-dot.is-on.is-aff{background:var(--fe-aff);} .fe-dot.is-on.is-ctl{background:var(--fe-ctl);}
+.fe-dot.is-on.is-eff{background:var(--fe-eff);} .fe-dot.is-on.is-resp{background:var(--fe-resp);}
+.fe-dot.is-cur{transform:scale(1.35);box-shadow:0 0 0 2px var(--white),0 0 0 3.5px currentColor;}
+.fe-rn{font-weight:900;color:var(--cink);white-space:nowrap;}
+.fe-rt{font-weight:700;color:var(--ink);min-width:0;}
+.fe-lines{display:flex;flex-wrap:wrap;align-items:center;gap:8px;min-height:44px;}
+@media (max-width:640px){ .fe-lines{min-height:80px;align-items:flex-start;} .fe-rail{flex-wrap:wrap;min-height:42px;row-gap:2px;} .fe-rt{flex-basis:100%;} }
+@media (min-width:640.02px) and (max-width:1100px){ .fe-lines{min-height:84px;align-items:flex-start;} }
+@media (prefers-reduced-motion: reduce){ .fe *{transition:none !important;} }
+
+/* the knob is a clear ring, so the column or the head under it stays in sight */
+.fe .tk2-handle > .tk2-knob{width:48px;height:48px;margin:-24px 0 0 -24px;}
+.fe .tk2-handle .tk2-dot,:root[data-theme="dark"] .fe .tk2-handle .tk2-dot{width:40px;height:40px;background:transparent;
+  box-shadow:0 0 0 2.5px var(--white),0 0 0 4.5px var(--cink),0 1px 6px rgba(11,26,51,.28);}
+.fe .tk2-handle .tk2-ar{position:absolute;right:-7px;top:-7px;width:18px;height:18px;padding:2px;border-radius:50%;background:var(--white);box-shadow:0 0 0 2px var(--cink);}
+.fe .tk2-handle.is-focus .tk2-dot{box-shadow:0 0 0 2.5px var(--white),0 0 0 4.5px var(--cink),0 0 0 7px var(--white),0 0 0 9.5px var(--cink);}
+
+.fe-reset{font:inherit;position:absolute;right:10px;top:10px;display:inline-flex;align-items:center;gap:5px;border-radius:999px;cursor:pointer;
+  font-size:13px;font-weight:800;line-height:1;white-space:nowrap;min-height:32px;padding:0 11px 0 9px;
+  background:color-mix(in srgb, var(--white) 88%, transparent);color:var(--ink);border:1.5px solid color-mix(in srgb, var(--ink) 22%, transparent);}
+.fe-reset svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
+.fe-reset:hover{border-color:var(--ink);} .fe-reset:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+@media (max-width:640px){ .fe-reset span{display:none;} .fe-reset{padding:0 8px;min-width:34px;justify-content:center;} }
+
+/* ---------------------------------------------------------------- labels */
+.fe-svg text{font-family:var(--font-ui);}
+.fe-lab rect{fill:var(--white);stroke:currentColor;stroke-width:1.6px;vector-effect:non-scaling-stroke;}
+.fe-lab text{fill:currentColor;font-weight:900;text-anchor:middle;}
+.fe-lab-m{font-weight:900;}
+.fe-lab.is-strong rect{fill:currentColor;} .fe-lab.is-strong text{fill:var(--white);}
+:root[data-theme="dark"] .fe-lab.is-strong text{fill:#14201E;}
+.fe-lead{fill:none;stroke:currentColor;stroke-width:1.6px;vector-effect:non-scaling-stroke;}
+.fe-lead-dot{fill:currentColor;}
+.fe-svg .is-aff{color:var(--fe-aff-ink);} .fe-svg .is-eff{color:var(--fe-eff-ink);} .fe-svg .is-ctl{color:var(--fe-ctl-ink);}
+.fe-svg .is-heat,.fe-svg .is-temp{color:var(--fe-heat-ink);} .fe-svg .is-cold{color:var(--fe-cold-ink);} .fe-svg .is-glu{color:var(--fe-glu-ink);}
+.fe-svg .is-ins{color:var(--fe-ins-ink);} .fe-svg .is-gcg{color:var(--fe-gcg-ink);} .fe-svg .is-oxy{color:var(--fe-oxy-ink);}
+.fe-svg .is-str{color:var(--fe-str-ink);} .fe-svg .is-mus{color:var(--fe-mus-ink);} .fe-svg .is-tok{color:var(--fe-tok-ink);}
+:root[data-theme="dark"] .fe-art{filter:brightness(.9) saturate(.95);}
+
+/* ---------------------------------------------------------------- the monitor */
+.fe-mbez{fill:#2B3440;stroke:#1C232C;stroke-width:2;}
+.fe-mscr{fill:#13202B;}
+.fe-mtitle{fill:#F2F5F8;font-weight:900;}
+.fe-mnorm{fill:#3FA36B;opacity:.22;}
+.fe-mset{stroke:#7FDCA4;stroke-width:2;fill:none;}
+.fe-mtick{fill:#B9C6D2;font-weight:700;text-anchor:end;}
+.fe-mlab{font-weight:800;text-anchor:end;}
+.fe-mlab.is-set{fill:#9BE6B9;} .fe-mlab.is-norm{fill:#8CC9A5;} .fe-mlab.is-str{fill:#C9E38C;} .fe-mlab.is-con{fill:#F2A08F;}
+.fe-mtime{fill:#B9C6D2;font-weight:700;text-anchor:end;}
+.fe-mtr{fill:none;stroke-width:3.2;stroke-linejoin:round;stroke-linecap:round;}
+.fe-mtr.is-temp{stroke:#FF8A6A;} .fe-mtr.is-glu{stroke:#F2CC5B;} .fe-mtr.is-str{stroke:#C9E38C;} .fe-mtr.is-con{stroke:#F2A08F;stroke-width:2;opacity:.85;}
+.fe-mnow{stroke:#13202B;stroke-width:2;} .fe-mnow.is-temp{fill:#FF8A6A;} .fe-mnow.is-glu{fill:#F2CC5B;} .fe-mnow.is-str{fill:#C9E38C;}
+
+/* ---------------------------------------------------------------- shared anatomy */
+.fe-bg{fill:var(--fe-bg);}
+.fe-skinp{fill:url(#fe-skin);stroke:#C99A80;stroke-width:2.5;}
+.fe-hand{fill:#EBC1A4;stroke:#C99A80;stroke-width:2;}
+.fe-ear{fill:#EBC1A4;stroke:#C99A80;stroke-width:2;}
+.fe-eye{fill:#2E2A28;}
+.fe-brow{fill:none;stroke:#5C3E28;stroke-width:2.6;stroke-linecap:round;}
+.fe-nose{fill:none;stroke:#C08A6C;stroke-width:2;stroke-linecap:round;}
+.fe-mouth{fill:none;stroke:#A85A4A;stroke-width:2.4;stroke-linecap:round;}
+.fe-hair{fill:#3E2C20;} .fe-hair2{fill:#6B4A2E;} .fe-hair3{fill:#2A1E18;}
+.fe-shirt{fill:url(#fe-shirt);stroke:#245670;stroke-width:2;}
+.fe-shirt2{fill:url(#fe-shirt2);stroke:#5C3A66;stroke-width:2;}
+.fe-top{fill:url(#fe-top);stroke:#24645A;stroke-width:2;}
+.fe-sleeve{fill:#3A8C7F;stroke:#24645A;stroke-width:2;}
+.fe-shorts{fill:url(#fe-shorts);stroke:#353E52;stroke-width:2;}
+.fe-pants{fill:url(#fe-pants);stroke:#353E52;stroke-width:2;}
+.fe-shoe{fill:#3A3F4A;stroke:#262A33;stroke-width:2;}
+.fe-fold{fill:none;stroke:rgba(0,0,0,.18);stroke-width:2;stroke-linecap:round;}
+.fe-collar{fill:none;stroke:rgba(0,0,0,.28);stroke-width:2.6;stroke-linecap:round;}
+.fe-flush{fill:#E2533F;opacity:0;} .fe-pale{fill:#E9EEF2;opacity:0;}
+.fe-patch{fill:none;stroke:var(--fe-tok);stroke-width:2.5;}
+.fe-zoom{fill:none;stroke:#7A6A88;stroke-width:1.5;opacity:.5;}
+.fe-magbg{fill:#F7EEE6;}
+.fe-magring{fill:none;stroke:#7A6A88;stroke-width:4;opacity:.75;}
+.fe-brainx{fill:#E9B8B4;opacity:.38;stroke:#C98E8A;stroke-width:1.2;}
+.fe-gyrx{fill:none;stroke:#C98E8A;stroke-width:1.2;opacity:.7;}
+.fe-hypo{fill:#D9C6EE;stroke:var(--fe-ctl);stroke-width:2;transition:fill .2s;}
+.fe-hypo.is-on{fill:var(--fe-ctl);}
+.fe-nv{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;opacity:.38;transition:opacity .2s;}
+.fe-nv.is-aff{stroke:var(--fe-aff);} .fe-nv.is-eff{stroke:var(--fe-eff);}
+.fe-nv.is-on{opacity:.95;}
+.fe-nvp{stroke-width:2.6;}
+.fe-pulse-c{stroke:var(--white);stroke-width:1.6;}
+.fe-pulse-c.is-aff{fill:var(--fe-aff);} .fe-pulse-c.is-eff{fill:var(--fe-eff);}
+.fe-bv{fill:none;stroke:#C9473B;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;opacity:.7;}
+.fe-bv.is-thin{stroke-width:5;}
+.fe-win{fill:#F3DCCB;stroke:#C99A80;stroke-width:2;}
+
+/* temperature: the thermometer and the magnified skin */
+.fe-ttube{fill:#FFFFFF;stroke:#9AA5B1;stroke-width:2;}
+.fe-tbulb{fill:#FFFFFF;stroke:#9AA5B1;stroke-width:2;}
+.fe-tbulbc{fill:#D2452A;}
+.fe-tcol{fill:#D2452A;}
+.fe-tband{fill:#3FA36B;opacity:.18;}
+.fe-ttick{stroke:#6E7A86;stroke-width:2;} .fe-ttick.is-set{stroke:#2E8B57;stroke-width:3;}
+.fe-ttxt{fill:#4A5560;font-weight:800;text-anchor:end;} .fe-ttxt.is-set{fill:#1F6E43;}
+:root[data-theme="dark"] .fe-ttxt{fill:#C6D0D8;} :root[data-theme="dark"] .fe-ttxt.is-set{fill:#8EDDB0;}
+.fe-air{fill:#E6F1F8;}
+.fe-epi{fill:#E8C2A2;stroke:#C69A78;stroke-width:1.5;}
+.fe-epic{fill:none;stroke:#C9A07E;stroke-width:1.4;stroke-linecap:round;}
+.fe-dermis{fill:#F2CDBE;}
+.fe-coll{fill:none;stroke:#E2AE9C;stroke-width:2;stroke-linecap:round;}
+.fe-fatbg{fill:#F6E6B8;} .fe-fatc{fill:#FBEFC8;stroke:#E2CC8A;stroke-width:1.5;}
+.fe-musbg{fill:#B9473A;} .fe-musf{fill:url(#fe-mus);stroke:#8E3424;stroke-width:1.2;}
+.fe-mustr{fill:none;stroke:#8E3424;stroke-width:1.2;opacity:.45;}
+.fe-heatin{fill:#FFB347;opacity:0;}
+.fe-artw{fill:none;stroke:#B3473C;stroke-linecap:round;}
+.fe-artl{fill:none;stroke:#E2685A;stroke-linecap:round;}
+.fe-rbc{fill:#C2362A;stroke:#8E241C;stroke-width:1;}
+.fe-gland{fill:none;stroke:#7FB5D6;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;transition:stroke .2s;}
+.fe-gland.is-on{stroke:#3E95C9;}
+.fe-duct{fill:none;stroke:#BBD7E8;stroke-width:4;stroke-linecap:round;}
+.fe-duct-in{fill:none;stroke:#3E95C9;stroke-width:2.4;stroke-linecap:round;opacity:0;}
+.fe-sweat{fill:#9CCFEB;stroke:#3E95C9;stroke-width:1.5;}
+.fe-bead{fill:#BFE3F5;stroke:#5AA7D3;stroke-width:1;}
+.fe-vapor{fill:none;stroke:#7FB5D6;stroke-width:2.2;stroke-linecap:round;opacity:0;}
+.fe-hwave path{fill:none;stroke:var(--fe-heat);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;}
+.fe-nend{fill:none;stroke-width:2.6;stroke-linecap:round;stroke:var(--fe-aff);}
+.fe-nend.is-on{stroke-width:3.4;}
+
+/* glucose: the meter, the trunk, the islet */
+.fe-mtube{fill:#FFFFFF;stroke:#9AA5B1;stroke-width:2;}
+.fe-mcol{fill:var(--fe-glu);}
+.fe-mband{fill:#3FA36B;opacity:.18;}
+.fe-liver{fill:url(#fe-liverg);stroke:#5E2018;stroke-width:2;transition:filter .25s;}
+.fe-liver.is-on{filter:brightness(1.18);}
+.fe-stom{fill:#EBC0B4;stroke:#C08E80;stroke-width:1.6;opacity:.7;}
+.fe-panc{fill:#F1D49A;stroke:#C29A52;stroke-width:2;}
+.fe-pancl{fill:none;stroke:#C29A52;stroke-width:1.4;}
+.fe-adip{fill:#FBEFC8;stroke:#E2CC8A;stroke-width:1.5;}
+.fe-armmus{fill:#C9584A;stroke:#8E3424;stroke-width:1.5;}
+.fe-armstr{fill:none;stroke:#8E3424;stroke-width:1;opacity:.5;}
+.fe-gly circle{fill:#F2E3B3;stroke:#A88A3A;stroke-width:1;}
+.fe-gmol{fill:var(--fe-glu);stroke:#7A5A08;stroke-width:1;}
+.fe-hmol{stroke:var(--white);stroke-width:1.2;}
+.fe-hmol.is-ins{fill:var(--fe-ins);} .fe-hmol.is-gcg{fill:var(--fe-gcg);} .fe-hmol.is-oxy{fill:var(--fe-oxy);}
+.fe-acbg{fill:#F3D9CE;} .fe-acin{fill:#EDC3B4;stroke:#D6A190;stroke-width:1.5;} .fe-acnuc{fill:#B07A86;opacity:.6;}
+.fe-islet{fill:#FBEFE6;stroke:#D9B9A5;stroke-width:2;}
+.fe-cap{fill:none;stroke:#B3473C;stroke-width:22;stroke-linecap:round;} .fe-capl{fill:none;stroke:#E2685A;stroke-width:14;stroke-linecap:round;}
+.fe-beta circle:first-child{fill:#BFE6DE;stroke:var(--fe-ins);stroke-width:2;transition:fill .2s;}
+.fe-alpha circle:first-child{fill:#F6D3BF;stroke:var(--fe-gcg);stroke-width:2;transition:fill .2s;}
+.fe-beta.is-on circle:first-child{fill:#6CCDBB;} .fe-alpha.is-on circle:first-child{fill:#EE9F78;}
+.fe-cnuc{fill:#5A4F6A;opacity:.55;}
+.fe-gran{stroke:var(--white);stroke-width:.8;} .fe-gran.is-ins{fill:var(--fe-ins);} .fe-gran.is-gcg{fill:var(--fe-gcg);}
+
+/* childbirth */
+.fe-myo{fill:url(#fe-myog);stroke:#8E3424;stroke-width:2.5;transition:stroke-width .2s;}
+#fe-main g.is-on > .fe-myo{stroke-width:4.5;}
+.fe-amn{fill:#F6E7DF;}
+.fe-myof{fill:none;stroke:#9C3E35;stroke-width:1.6;stroke-linecap:round;opacity:.6;}
+.fe-canal{fill:none;stroke:#C98E86;stroke-width:3;stroke-linecap:round;}
+.fe-cerv{fill:#D46F68;stroke:#8E3424;stroke-width:1.8;}
+.fe-sdot{fill:var(--fe-aff);stroke:#8A5A00;stroke-width:1;}
+.fe-fskin{fill:#F2C7AE;stroke:#C99A80;stroke-width:2;}
+.fe-fskin2{fill:none;stroke:#C99A80;stroke-width:2;stroke-linecap:round;}
+.fe-fear{fill:none;stroke:#C08A6C;stroke-width:1.8;stroke-linecap:round;}
+.fe-fface{fill:none;stroke:#8E5A48;stroke-width:1.8;stroke-linecap:round;}
+.fe-blanket{fill:#F4E3A1;stroke:#C9AE57;stroke-width:2;} .fe-blankf{fill:none;stroke:#C9AE57;stroke-width:2;stroke-linecap:round;}
+.fe-squeeze{fill:none;stroke:var(--fe-mus);stroke-linecap:round;stroke-linejoin:round;}
+.fe-cordb{fill:none;stroke:#E9D7A8;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;}
+.fe-vert{fill:#F4EAD2;stroke:#C9B88E;stroke-width:1.5;}
+.fe-brain{fill:#EBC4C0;stroke:#B98580;stroke-width:2.5;}
+.fe-gyri{fill:none;stroke:#C69A95;stroke-width:2;stroke-linecap:round;}
+.fe-stem{fill:#E7CFC6;stroke:#C2A096;stroke-width:2;}
+.fe-hypoM{fill:#E3D6F2;stroke:var(--fe-ctl);stroke-width:2.5;transition:fill .2s;}
+.fe-hypoM.is-on{fill:#C3A6E6;}
+.fe-oxn{fill:none;stroke:var(--fe-ctl);stroke-width:2;opacity:.7;}
+.fe-oxs{fill:#B996DE;stroke:var(--fe-ctl);stroke-width:1.5;}
+.fe-stalk{fill:#EED8CF;stroke:#C9A79B;stroke-width:2;}
+.fe-pitp{fill:#F2D3E1;stroke:var(--fe-oxy);stroke-width:2.5;transition:fill .2s;}
+.fe-pitp.is-on{fill:#EE9BBE;}
+.fe-pita{fill:#E6DCEB;stroke:#A99AB4;stroke-width:2;}
+.fe-sella{fill:none;stroke:#D2C3A0;stroke-width:4;}
+
+/* Test yourself: the tool's own two modes as a small switch at the top of the panel (feedback-loops.js subStudio) */
+.fl-suboff{display:none !important;}
+.fl-sub{margin:0 0 10px;}
+.fe-fbody{fill:#E9B596;stroke:#B98166;stroke-width:2;}
+.fe-fhead{fill:#EDBC9E;stroke:#B98166;stroke-width:2;}
+.fe-fline{fill:none;stroke:#B98166;stroke-width:2;stroke-linecap:round;}
+.fe-mtitle.is-str{fill:#C9E38C;}
+.fe-mfull{stroke:#C9E38C;stroke-width:1.2;opacity:.5;fill:none;}
