@@ -257,7 +257,11 @@ const SHELL_BUDGETS = [
   /* -> 57.0 (score card v3 on every mode, owner 2026-11-07): study.js and study.css plus card-loader.js. */
   /* -> 57.2 (overlap sweep 2026-11): the answer chip rules name Env Sci's, Macro's and Psychology's marks; measured 57.1 KB. */
   /* 57.2 -> 57.4 (same change): study.js wire() offers reminders after every score card; measured 57.3 KB. */
-  ['assets/course', 57.4],
+  /* 57.4 -> 83 (tools v2, Lab practical, docs/tools-v2-anp-lab-practical-brief.md): anatomy-physiology/tools/
+     lab-practical.html is the first page in this list that loads the v2 kit, so tool-kit2.js and .css (about 25 KB
+     gzipped together, 3.8 of it K.spots, the shared named-places piece for the explorer tools) are counted here for the
+     first time; the other v2 tool pages are not in the list. Measured 82.4 KB. */
+  ['assets/course', 83],
   /* 52.1 -> 56.6 (score card v3, 2026-11-07): study.js end() and the .cx-endp3 styles (56.4 measured before this
      branch), plus card-loader.js and the card's Tool Studio fixes for FRQ, justify and NREMT scenarios; measured 56.6. */
   /* 52.1 -> 56.5 (score card v3, owner 2026-11-07, docs/score-card.md): LevlStudy.end, miss and the .cx-endp3 styles; measured 56.4 KB. */
@@ -436,7 +440,10 @@ const SHELL_BUDGETS = [
      finished cards in four tools. Measured 59.6 KB. */
   /* 60 -> 61 (tools v2, docs/tools-v2-anp-graphs-brief.md): the Graphs tool's five drawn Explore screens
      (tools/graphs-explore.js and .css, 24 KB gzipped) beside the old engine it keeps for Test yourself. Measured 60.3 KB. */
-  ['anatomy-physiology', 61],
+  /* 61 -> 68 (tools v2, docs/tools-v2-anp-lab-practical-brief.md): the Lab practical's Explore (tools/lab-explore.js
+     and .css, 6.7 KB gzipped) beside the old engine it keeps for Test yourself (1.6 KB more in lab-practical.js).
+     Measured 67.4 KB. */
+  ['anatomy-physiology', 68],
   /* AP® Biology (bio/, a fork of the A&P runtime): bio-core, questions, nav,
      glossary tooltips, bio.css, the generated curriculum, plus the app script
      a page loads (exams.js, the largest, with pages.css and frq-kit.js).
