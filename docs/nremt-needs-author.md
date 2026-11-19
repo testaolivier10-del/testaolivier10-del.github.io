@@ -196,3 +196,13 @@ checked on 2026-11-10. For a person to confirm:
   posed (lower legs moved to the front of the cushion); the arms on the spinal stations are turned in to lie at the
   sides; the log roll is shown as the body narrowing and the board sliding in. Worth a glance that none of this
   suggests a technique the sheet does not teach.
+
+## Scenario simulator, tools v2 Explore (2026-11-19, branch claude/tools-v2-nremt-scenario-sim)
+No case text, number or care rule changed. Drawing choices a person should check:
+- Posture is not drawn from the text: prone restraint (s21), recovery and left lateral positions stay face up; a
+  seated patient is laid down only for compressions or the AED. Is that acceptable, or should those nodes get a pose?
+- Cyanosis is drawn only while the case says blue and its SpO2 (when given) is under 94%; pallor stays until the
+  case says the colour returned. Fair reading of the cases?
+- Compressions animate at about 109 a minute (AHA 100 to 120); the bag squeezes only at a rate the case gives.
+- The AED pad placement drawn: adult anterolateral; infant and toddler one anterior pad (the posterior pad not shown).
+- The epinephrine auto injector is drawn on the lateral thigh of the viewer's right (the patient's left).
