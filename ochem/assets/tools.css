@@ -976,7 +976,6 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .ls-root .tool-send__row{display:flex;flex-wrap:wrap;gap:8px;}
 .ls-sheet .tnote + .tnote,.ls-sheet .tnote + .tstage,.ls-sheet .tstage + .tnote{margin-top:10px;}
 
-.ls-root .ap-group__label{margin:0 0 8px;font:800 var(--ls-s) var(--font-ui);letter-spacing:0;text-transform:none;}
 .ls-root .ls-modes .ls-seg > button{padding:0 6px;}
 .ls-sheet .tnote__k{font:900 var(--ls-s) var(--font-ui);letter-spacing:0;text-transform:none;}
 .ls-sheet .tnote{font-size:var(--ls-m);line-height:1.5;}
@@ -1206,4 +1205,3 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .ls-root.ls-phone.sp-ls .sp-scale span{font-size:12px;}
 .ls-root.ls-phone.sp-ls .sp-scale span:first-child{transform:none;} .ls-root.ls-phone.sp-ls .sp-scale span:last-child{transform:translateX(-100%);} /* end labels inside the stage */
 
-.ls-root .ls-chips-hidden{display:none !important;}
