@@ -84,8 +84,9 @@ const SHELL_BUDGETS = [
   ['assets/body3d', 16],
   /* The tools v2 kit, assets/course/tool-kit2.js and .css (docs/tools-v2-standard.md): loaded only by tools rebuilt to
      v2, so it is its own shell, not part of every course page's assets/course (review of the Lab practical, 2026-11-18).
-     Measured 31.9 KB with K.spots (the explorers' named places, about 5 KB). */
-  ['assets/course/kit2', 33],
+     Measured 33.0 KB with K.spots (the explorers' named places, with its miss, card sizing and find-it mode: about
+     5.5 KB). */
+  ['assets/course/kit2', 34],
   /* 249 -> 253 for cross-device sync (audit 2026-10, Fix-first 5). A sync
      used to replace whole namespaces and pull only on sign-in, so two signed-in
      devices erased each other's progress. account.js now carries a per-key
@@ -442,8 +443,8 @@ const SHELL_BUDGETS = [
      (tools/graphs-explore.js and .css, 24 KB gzipped) beside the old engine it keeps for Test yourself. Measured 60.3 KB. */
   /* 61 -> 68 (tools v2, docs/tools-v2-anp-lab-practical-brief.md): the Lab practical's Explore (tools/lab-explore.js
      and .css, 6.7 KB gzipped) beside the old engine it keeps for Test yourself (1.6 KB more in lab-practical.js).
-     Measured 67.4 KB. */
-  ['anatomy-physiology', 68],
+     Measured 67.4 KB; 68.7 KB after review round 1 (blank picture taps, the fade order on a tab change). */
+  ['anatomy-physiology', 69],
   /* AP® Biology (bio/, a fork of the A&P runtime): bio-core, questions, nav,
      glossary tooltips, bio.css, the generated curriculum, plus the app script
      a page loads (exams.js, the largest, with pages.css and frq-kit.js).
