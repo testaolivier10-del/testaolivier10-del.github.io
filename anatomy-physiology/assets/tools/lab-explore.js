@@ -4,7 +4,7 @@
    Six specimens, one per tab (data: assets/tool-data/lab-specimens.json, built from data/tools/lab-specimens.json):
    a lab figure drawn clean (no printed labels, no leader lines; figures/specimens/, scripts/build-lab-specimens.py)
    with a pin on each structure where its printed leader line ended. The one control is the picture: tap a pin (the
-   shared K.spots of assets/course/tool-kit2.js), or type in "Find a part". The name opens on a card beside the pin
+   shared K.spots of assets/course/tool-kit2.js), or find one by name (the magnifier on the plate). The name opens on a card beside the pin
    (on the side its printed label was) and the cause line says what that structure does, in two pills. Nothing is
    graded here: naming against the clock, Study, Quiz and the timed practical are Test yourself (lab-practical.js).
 
@@ -34,7 +34,7 @@
     var scene = document.createElement('div'); scene.className = 'lx-scene'; scene.id = 'lx-scene';
     scene.innerHTML = '<div class="lx-plate"><div class="lx-pic"><picture><source type="image/avif"><img class="lx-img" alt="" decoding="async"></picture>' +
       '<svg class="lx-svg" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"></svg></div>' +
-      '<form class="lx-find" role="search"><label class="tk2-sr" for="lx-find-in">Find a part by name</label>' +
+      '<form class="lx-find" role="search"><button type="button" class="lx-find-b" aria-label="Find a part by name" aria-expanded="false"></button><label class="tk2-sr" for="lx-find-in">Find a part by name</label>' +
       '<input id="lx-find-in" class="lx-find-in" type="search" placeholder="Find a part" autocomplete="off" spellcheck="false" enterkeyhint="search"></form>' +
       '<p class="lx-credit">OpenStax, CC BY 4.0</p></div>';
     stage.appendChild(scene);
@@ -92,7 +92,7 @@
       // the card waits for the picture: it opens once the image has drawn
       function ready(){ pic.classList.remove('is-swap'); fit(); if(spots){ spots.pick(first, 'set'); } if(user) say(sp.tab + '. ' + items.length + ' parts to name.'); if(onScreen && !started){ started = true; makeCue(); } }
       if(img.complete && img.naturalWidth) setTimeout(ready, 0); else { img.onload = ready; img.onerror = ready; }
-      fin.value = ''; form.classList.remove('is-miss');
+      fin.value = ''; form.classList.remove('is-miss', 'is-open');
       refHtml();
       if(user){ try{ history.replaceState(null, '', location.pathname + location.search + '#specimen/' + sp.id); }catch(e){} }
     }
@@ -105,6 +105,11 @@
       if(!it) say('No part called ' + t + ' on this ' + cur.tab.toLowerCase() + '.');
     }
     form.addEventListener('submit', function(e){ e.preventDefault(); doFind(); });
+    var fb = form.querySelector('.lx-find-b');
+    function openFind(on){ form.classList.toggle('is-open', on); fb.setAttribute('aria-expanded', String(on)); if(on){ fin.focus(); hideCue(true); } }
+    fb.addEventListener('click', function(){ openFind(true); tourDid('find'); });
+    fin.addEventListener('blur', function(){ setTimeout(function(){ if(!fin.value.trim() && document.activeElement !== fin){ openFind(false); form.classList.remove('is-miss'); } }, 120); });
+    fin.addEventListener('keydown', function(e){ if(e.key === 'Escape'){ fin.value = ''; openFind(false); fb.focus(); } });
     var ft = 0;
     fin.addEventListener('input', function(){ clearTimeout(ft); ft = setTimeout(function(){ if(fin.value.trim().length >= 3) doFind(); else form.classList.remove('is-miss'); }, 260); });
 
@@ -123,7 +128,7 @@
     var tour = K.tour({ key: 'anp-lab-explore', label: 'Show me how', steps: [
       { id: 'tap', text: 'Tap a dot on the picture. Its name opens beside it.', target: function(){ var p = spots && spots.items[1]; return p ? p._b : pic; } },
       { id: 'why', text: 'The line below says what that part does.', target: function(){ return cause.el; } },
-      { id: 'find', text: 'Or type a name here to find the part.', target: function(){ return fin; } }],
+      { id: 'find', text: 'Or find a part by its name here.', target: function(){ return form.classList.contains('is-open') ? fin : fb; } }],
       onClose: function(had){ if(had) try{ head.how.focus({ preventScroll: true }); }catch(e){} } });
     function tourDid(id){ if(tour.active()) tour.did(id); }
     function startTour(){ hideCue(false); tour.start(true); }

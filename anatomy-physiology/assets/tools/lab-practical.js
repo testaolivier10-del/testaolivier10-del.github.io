@@ -326,10 +326,11 @@
     { key: 'quiz', label: 'Quiz', blurb: 'Name the highlighted structure, or point to a named one. Scored, with hints and a retry round.' },
     { key: 'practical', label: 'Timed practical', blurb: 'A bell-ringer practical: fixed stations, a timer at each, no going back, full review at the end.' }
   ];
-  if(V2){ MODES[0].label = 'Labels'; MODES[0].blurb = 'Every image set with its labels shown. Tap a label to see what that structure is and does.'; }
+  if(V2){ MODES[3].label = 'Timed';
+    MODES[0].label = 'Labels'; MODES[0].blurb = 'Every image set with its labels shown. Tap a label to see what that structure is and does.'; }
   function modeTabs(active, setId){
     return '<nav class="lp-modes kt-seg" aria-label="Mode">' + MODES.map(function(m){
-      if(setId && m.key === 'practical') return '';
+      if(setId && m.key === 'practical' && !V2) return '';   // v2: the timed practical is always one tap away in Test yourself
       var href = m.key === 'practical' ? '#practical' : setId ? '#' + m.key + '/' + setId : '#' + m.key;
       return '<a class="lp-mode" href="' + href + '"' + (m.key === active ? ' aria-current="true"' : '') + '>' + esc(m.label) + '</a>';
     }).join('') + '</nav>';

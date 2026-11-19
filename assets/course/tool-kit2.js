@@ -429,7 +429,8 @@
        clear and stays inside the picture; else the other side, above or below */
     function drawCard(anim){
       var it = cur, W = layer.el.clientWidth, H = layer.el.clientHeight;
-      card.textContent = it.name; card.hidden = false; card.className = 'tk2-spot-card';
+      // measured at the layer's corner: a card left near the right edge would shrink to fit there and be measured short
+      card.textContent = it.name; card.hidden = false; card.className = 'tk2-spot-card'; card.style.left = '0px'; card.style.top = '0px';
       var cw = card.offsetWidth, ch = card.offsetHeight, P = px(it.at[0]), G = 22, R = 13;
       var side = it.side === 'left' ? -1 : 1, cand = [
         [side > 0 ? P[0] + G : P[0] - G - cw, P[1] - ch / 2, 0], [side > 0 ? P[0] - G - cw : P[0] + G, P[1] - ch / 2, 1],

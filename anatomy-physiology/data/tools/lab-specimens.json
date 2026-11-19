@@ -26,7 +26,7 @@
        104
       ]
      ],
-     "does": "returns blood from the upper body to the right atrium"
+     "does": "returns blood from the upper body"
     },
     {
      "label": "inferior-vena-cava",
@@ -36,7 +36,7 @@
        583
       ]
      ],
-     "does": "returns blood from the lower body to the right atrium"
+     "does": "returns blood from the lower body"
     },
     {
      "label": "pulmonary-trunk",
@@ -46,7 +46,7 @@
        201
       ]
      ],
-     "does": "carries blood from the right ventricle toward the lungs"
+     "does": "carries blood to the lungs"
     },
     {
      "label": "right-atrium",
@@ -299,7 +299,7 @@
        273
       ]
      ],
-     "does": "separates the temporal lobe from the lobes above"
+     "does": "the groove above the temporal lobe"
     },
     {
      "label": "parieto-occipital-sulcus",
@@ -398,7 +398,7 @@
        649
       ]
      ],
-     "does": "the lower jaw: the one skull bone that moves freely"
+     "does": "the lower jaw: the only skull bone that moves"
     },
     {
      "label": "nasal-bone",
@@ -761,12 +761,8 @@
      "label": "cutaneous-vascular-plexus",
      "at": [
       [
-       769,
-       796
-      ],
-      [
-       781,
-       820
+       775,
+       808
       ]
      ],
      "does": "arteries and veins that feed the dermis"
