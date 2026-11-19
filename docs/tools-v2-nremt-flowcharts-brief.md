@@ -198,3 +198,7 @@ while the hand sweeps him (the hand stays); the first box reads "Scene safe, hol
 what they name (a keep out box per label: the wound and jets, the face, the hands, the pads); glass is drawn as
 irregular slivers with a highlight; the struck arm's cross is inline and the arm name never wraps; the brief says ten
 charts. Not taken: pads sliding on (they fade in).
+Checks after round 1: NREMT tests 71 pass; check-site OK; check-weight all 623 budgets within range. Sweep, one
+process per width: 360 1227 (with the 360 x 740 fold check), 390, 430, 600 1226 each, 768, 820, 1024, 1280, 1440,
+1920 1184 each, 0 failed. `--frames` 86 passed, 0 failed (about 2300 frames); frame time with the CPU slowed x4:
+median 16.7 ms, p95 16.8 ms at 390 and 33.4 ms at 1440 (load average 5).
