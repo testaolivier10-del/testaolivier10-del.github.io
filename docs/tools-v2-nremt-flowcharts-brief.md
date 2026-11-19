@@ -34,7 +34,7 @@ Seen means the page was opened and read here; "text only" means only a store lis
 | ACLS Simulator (Google Play listing) | Text only | Recognise rhythms, choose interventions, reassess, a score at the end | Choices driven by what the monitor shows (our AED screen). Not taken: the score (Explore is free play; Test yourself grades) |
 | Full Code medical simulation (independent review page, iatrox.com) | Fetched (review based on product documentation) | A virtual encounter as "the unit of practice": gather findings, choose actions, a debrief | A call is the unit; the finding comes before the choice. The review could not say whether a delay changes the case; ours shows it |
 | Brilliant (brilliant.org About page; the pathways rebuild saw its teaching page) | Fetched | "Visual and interactive", learning by trying problems | Each step is an action with a result in the picture at once |
-| The old LevlPrep page (seen in the browser at 1440) | Opened | Read / Build it / Drill me on eleven text charts | Every chart, drill and record unchanged in Test yourself; the chart shapes (action box, decision box with pointed ends, labeled arms) are the same on the drawn protocol card |
+| The old LevlPrep page (seen in the browser at 1440) | Opened | Read / Build it / Drill me on ten text charts | Every chart, drill and record unchanged in Test yourself; the chart shapes (action box, decision box with pointed ends, labeled arms) are the same on the drawn protocol card |
 
 What ours does that none of them do: the decision is made by looking at a drawn patient, the chart is built on a
 protocol card on the floor beside him as you go, and a wrong arm plays its real consequence on the patient instead
@@ -82,7 +82,7 @@ algorithm above, and the page's own charts. Open points are in `docs/nremt-needs
 - **Cue:** "Look at him, then pick" beside the first arm buttons, once per device; "Show me how" from the purpose line
   and "?".
 - **"?":** what you are looking at, the two calls step by step with the why of each step, what Explore leaves out
-  (the other nine protocols, the second rhythm check, the detail of the rapid exam), the figure's credit, the course
+  (the other eight protocols, the second rhythm check, the detail of the rapid exam), the figure's credit, the course
   footer.
 
 ### Explore against Test yourself
