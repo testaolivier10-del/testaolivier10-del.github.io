@@ -80,7 +80,8 @@
     var K = window.LevlKit2, Bank = window.LevlSoundBank, P = window.SoundStage && window.SoundStage.pure, studio = o.studio;
     var SOUNDS = o.sounds, byId = {}; SOUNDS.forEach(function(s){ byId[s.id] = s; });
     var SITE = {}; P.SITES.forEach(function(s){ SITE[s.id] = s; });
-    var reduced = function(){ return K.reduced(); };
+    // asked many times a frame: read once every half second
+    var redAt = 0, redV = false, reduced = function(){ var n = Date.now(); if(n - redAt > 500){ redAt = n; redV = K.reduced(); } return redV; };
     var St = { tab: 'lung', on: true, per: {} };
     TABS.forEach(function(t){ St.per[t.id] = { key: t.keys[0], normal: false, site: null, view: 'front' }; });
     function T(){ return TABS.filter(function(t){ return t.id === St.tab; })[0]; }
@@ -99,8 +100,11 @@
     var box = el('div', 'snd2-scene');
     box.id = 'snd2-scene';
     box.innerHTML =
+      // two layers: the still scene (wall, chest, spots) and what moves (lens, strip, tubing), so a moving frame never
+      // repaints the chest
       '<svg class="snd2-svg" role="img" aria-label="" xmlns="' + NS + '" data-ls-text="keep">' +
-        '<g class="snd2-bg"></g><g class="snd2-fig"></g><g class="snd2-sites"></g><g class="snd2-lead"></g><g class="snd2-lens"></g>' +
+        '<g class="snd2-bg"></g><g class="snd2-fig"></g><g class="snd2-sites"></g></svg>' +
+      '<svg class="snd2-svg snd2-live" aria-hidden="true" xmlns="' + NS + '" data-ls-text="keep"><g class="snd2-lead"></g><g class="snd2-lens"></g>' +
         '<g class="snd2-strip"></g><g class="snd2-tube"></g></svg>' +
       '<div class="snd2-keys" role="radiogroup" aria-label="Sound"></div>' +
       '<div class="snd2-view" role="group" aria-label="Side of the chest"><button type="button" data-view="front">Front</button><button type="button" data-view="back">Back</button></div>' +
@@ -113,8 +117,8 @@
         '<svg viewBox="-30 -30 60 60" aria-hidden="true"><circle class="snd2-dia-rim" r="27"/><circle class="snd2-dia" r="21"/><circle class="snd2-dia-shine" cx="-7" cy="-8" r="6"/><circle class="snd2-dia-c" r="4"/></svg></button>';
     tabs.el.querySelectorAll('.tk2-tab').forEach(function(b){ b.setAttribute('aria-controls', box.id); });
     stage.appendChild(box);
-    var svg = box.querySelector('svg'), gBg = svg.querySelector('.snd2-bg'), gFig = svg.querySelector('.snd2-fig'), gSites = svg.querySelector('.snd2-sites'),
-      gLead = svg.querySelector('.snd2-lead'), gLens = svg.querySelector('.snd2-lens'), gStrip = svg.querySelector('.snd2-strip'), gTube = svg.querySelector('.snd2-tube');
+    var svg = box.querySelector('svg'), svg2 = box.querySelector('.snd2-live'), gBg = svg.querySelector('.snd2-bg'), gFig = svg.querySelector('.snd2-fig'), gSites = svg.querySelector('.snd2-sites'),
+      gLead = svg2.querySelector('.snd2-lead'), gLens = svg2.querySelector('.snd2-lens'), gStrip = svg2.querySelector('.snd2-strip'), gTube = svg2.querySelector('.snd2-tube');
     var keys = box.querySelector('.snd2-keys'), viewSw = box.querySelector('.snd2-view'), hits = box.querySelector('.snd2-hits'),
       siteLab = box.querySelector('.snd2-sitelab'), lensLab = box.querySelector('.snd2-lenslab'), ab = box.querySelector('.snd2-ab'),
       bPlay = box.querySelector('.snd2-play'), steth = box.querySelector('.snd2-steth');
@@ -177,7 +181,7 @@
       paintKeys();
       var g = layout(); if(!g) return;
       G = g;
-      svg.setAttribute('viewBox', '0 0 ' + g.W + ' ' + g.H);
+      svg.setAttribute('viewBox', '0 0 ' + g.W + ' ' + g.H); svg2.setAttribute('viewBox', '0 0 ' + g.W + ' ' + g.H);
       drawBg(); drawFig(); drawSites(); drawLensFrame(); paintLens(null, null); drawStripFrame(); placeHtml();
       paintKeys(); placeSteth(S().site ? sitePos(S().site) : g.rest, true);
       frame(true);
@@ -740,7 +744,7 @@
       if(!site){ chain(); return; }
       keepCause();
       var tk = play.token;
-      play.on = true; play.sid = snd.id; play.started = false; play.ended = false;
+      play.on = true; play.sid = snd.id; play.started = false; play.ended = false; play.ck = null;
       var s = SITE[site], h = {
         onStart: function(info){ if(tk !== play.token) return; if(play.info) setupStrip(); /* a retry without CORS */ play.info = info; play.t0 = performance.now(); play.started = true; loop(); },
         onEnd: function(){ if(tk !== play.token) return; finish(); },
@@ -748,7 +752,7 @@
         onError: function(msg){ if(tk !== play.token) return; play.on = false; paintPlay(); chain(); cause.take(msg); }
       };
       if(snd === NORMAL_TRACHEA){ h.mix = { level: 1 }; h.beats = 3; h.analyse = true; }
-      else if(snd.synth){ h.mix = P.heartMix(snd.synth, s); h.beats = 6; warmSites(snd); }
+      else if(snd.synth){ h.mix = P.heartMix(snd.synth, s); h.beats = 6; }
       else { var g = P.LUNG_GAIN[snd.id]; h.gain = g ? g(s) : 1; h.analyse = true; }
       chain(); paintPlay();
       Bank.play(snd, h);
@@ -789,7 +793,8 @@
       label();
     }
     // the picture's name for a screen reader: what is drawn and heard now
-    function label(){ svg.setAttribute('aria-label', 'A patient\u2019s chest, ' + S().view + ' view, with a stethoscope. ' + cause.text()); }
+    var lastLabel = '';
+    function label(){ var t = 'A patient\u2019s chest, ' + S().view + ' view, with a stethoscope. ' + cause.text(); if(t !== lastLabel){ lastLabel = t; svg.setAttribute('aria-label', t); } }
     // a phone: after the student puts the stethoscope down, the cause line under the picture comes into view
     function keepCause(){
       if(!G || !G.phone) return;
@@ -812,7 +817,8 @@
         // the lens repaints every other frame (30 a second is smooth for it, and leaves the drag its frames)
         if(!reduced() && (play.fr = (play.fr || 0) + 1) % 2 === 0) paintLens(t, lvl);
         if(!play.lensOn && (now - play.t0 > (reduced() ? 0 : 500))){ play.lensOn = true; }
-        chain();
+        var ck = (play.lensOn ? 1 : 0) + ':' + (SZ && SZ.kind === 'heart' ? (drawnW() > 2 ? 1 : 0) : 1);
+        if(ck !== play.ck){ play.ck = ck; chain(); }
       }
       if(once !== true && (anim || (play.on && play.started))) loop();
     }

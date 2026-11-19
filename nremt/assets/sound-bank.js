@@ -278,7 +278,10 @@
       var c = audio();
       if(!c) return fail('This browser has no Web Audio support, so the generated sounds cannot play.');
       var buf;
-      try{ buf = renderHeart(sound.synth, sound.bpm || 72, handlers.beats || sound.beats || 6, handlers.mix); }
+      /* One beat (or one breath) is rendered and looped for as many as asked: every beat is the same beat, and
+         rendering one is a sixth of the work (a tap plays at once, even on a slow phone). */
+      var want = handlers.beats || sound.beats || 6;
+      try{ buf = renderHeart(sound.synth, sound.bpm || 72, 1, handlers.mix); }
       catch(e){ return fail('Could not generate this sound.'); }
       if(!buf) return fail('Could not generate this sound.');
       var src = c.createBufferSource();
@@ -293,7 +296,9 @@
       } else src.connect(gainNode);
       src.onended = function(){ if(playingNode === src){ playingNode = null; active = null; if(handlers.onEnd) handlers.onEnd(); } };
       var t0 = c.currentTime + 0.03;
+      src.loop = true;
       src.start(t0);
+      src.stop(t0 + buf.duration * want);
       playingNode = src;
       /* What a page needs to draw in sync: the clock, when beat 1 starts, the
          beat timing, and the buffer itself for the trace. */

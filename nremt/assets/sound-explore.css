@@ -15,6 +15,7 @@
 @media (min-width:641px) and (max-width:900px){ .snd2-scene{height:clamp(660px,88vw,760px);} }
 @media (max-width:640px){ .snd2-scene{height:clamp(590px,150vw,680px);border-radius:14px;} .snd2{gap:8px;} }
 .snd2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+.snd2-live{pointer-events:none;will-change:transform;}
 
 /* the clinic */
 .snd2-wall0{stop-color:var(--sd-wall0);} .snd2-wall1{stop-color:var(--sd-wall1);}
