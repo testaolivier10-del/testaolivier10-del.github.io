@@ -25,6 +25,7 @@ States: building, review, fixing, recheck, PASS (waiting to integrate), integrat
 | NREMT mnemonics | claude/tools-v2-nremt-mnemonics | wt-nremt-mnemonics | integrated | first NREMT tool on the kit; adapter `nremt/assets/nremt-kit2.js`, loaded only by this page |
 | Ochem resonance | claude/tools-v2-resonance | wt-resonance | integrated | |
 | AP Bio design drills | claude/tools-v2-design-drills | wt-design-drills | integrated | adapter: a part can carry its own stage (`stage` on a part) |
+| A&P pathways | claude/tools-v2-anp-pathways | wt-anp-pathways | integrated | |
 
-Next by use (rollout table): A&P pathways, A&P lab practical, A&P predict, A&P feedback loops,
+Next by use (rollout table): A&P lab practical, A&P predict, A&P feedback loops,
 NREMT body map, NREMT sound trainer, NREMT flowcharts, Ochem arrow pusher, Ochem viewer 3d.
