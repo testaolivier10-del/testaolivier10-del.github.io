@@ -115,9 +115,10 @@
       "script": "tools/predict.js",
       "css": "tools/predict.css",
       "data": "predict.json",
-      "extraScripts": ["tools/scene.js"],
-      "extraCss": ["tools/scene.css"],
-      "studio": true
+      "extraScripts": ["tools/scene.js", "tools/predict-explore.js"],
+      "extraCss": ["tools/scene.css", "tools/predict-explore.css"],
+      "studio": true,
+      "kit2": true
     },
     {
       "slug": "feedback-loops",
