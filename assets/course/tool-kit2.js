@@ -418,17 +418,24 @@
     box.appendChild(card);
     layer.el.appendChild(box);
     setTimeout(function(){ place(); }, 0);
-    function px(p){ var k = layer.scale(); return [p[0] * k, p[1] * k]; }
+    var kNow = 0;   // the picture's scale, read once per placement (not once per point)
+    function px(p){ var k = kNow || layer.scale(); return [p[0] * k, p[1] * k]; }
     function find(id){ for(var i = 0; i < items.length; i++) if(items[i].id === id) return items[i]; return null; }
     function setPos(e, p){ e.style.left = p[0].toFixed(1) + 'px'; e.style.top = p[1].toFixed(1) + 'px'; }
     function place(){
+      kNow = layer.scale();
       items.forEach(function(it){ setPos(it._b, px(it.at[0])); it._dots.forEach(function(d, j){ setPos(d, px(it.at[j + 1])); }); });
       if(cur) drawCard(false);
+      kNow = 0;
     }
     /* where the card goes: beside the pin on the item's side if that keeps the pin (and as many other pins as it can)
        clear and stays inside the picture; else the other side, above or below */
     function drawCard(anim){
+      var held = kNow; kNow = layer.scale();
       var it = cur, W = layer.el.clientWidth, H = layer.el.clientHeight;
+      var lr = layer.el.getBoundingClientRect(), avoid = (o.avoid ? o.avoid() : []).map(function(a){ return [a.left - lr.left, a.top - lr.top, a.width, a.height]; });
+      var others = []; items.forEach(function(j){ if(j !== it) j.at.forEach(function(q){ others.push(px(q)); }); });
+      var minePts = it.at.map(px);
       // measured at the layer's corner: a card left near the right edge would shrink to fit there and be measured short
       card.textContent = it.name; card.hidden = false; card.className = 'tk2-spot-card'; card.style.left = '0px'; card.style.top = '0px';
       var cw = card.offsetWidth, ch = card.offsetHeight, P = px(it.at[0]), G = 22, R = 13;
@@ -441,10 +448,10 @@
       for(var gy = -8; gy <= 8; gy++) for(var gx = -8; gx <= 8; gx++){ if(Math.abs(gx) < 2 && Math.abs(gy) < 2) continue; cand.push([P[0] - cw / 2 + gx * 26, P[1] - ch / 2 + gy * 22, 6 + Math.hypot(gx, gy)]); }
       cand.forEach(function(c){
         var x = clamp(c[0], 4, Math.max(4, W - cw - 4)), y = clamp(c[1], 4, Math.max(4, H - ch - 4));
-        var mine = it.at.some(function(q){ var Q = px(q); return Q[0] > x - R && Q[0] < x + cw + R && Q[1] > y - R && Q[1] < y + ch + R; });
+        var mine = minePts.some(function(Q){ return Q[0] > x - R && Q[0] < x + cw + R && Q[1] > y - R && Q[1] < y + ch + R; });
         var other = 0;
-        items.forEach(function(j){ if(j === it) return; j.at.forEach(function(q){ var Q = px(q); if(Q[0] > x - 12 && Q[0] < x + cw + 12 && Q[1] > y - 12 && Q[1] < y + ch + 12) other++; }); });
-        var lr = layer.el.getBoundingClientRect(), off = (o.avoid ? o.avoid() : []).some(function(a){ var ax = a.left - lr.left, ay = a.top - lr.top; return x < ax + a.width + 4 && x + cw > ax - 4 && y < ay + a.height + 4 && y + ch > ay - 4; });
+        others.forEach(function(Q){ if(Q[0] > x - 12 && Q[0] < x + cw + 12 && Q[1] > y - 12 && Q[1] < y + ch + 12) other++; });
+        var off = avoid.some(function(a){ return x < a[0] + a[2] + 4 && x + cw > a[0] - 4 && y < a[1] + a[3] + 4 && y + ch > a[1] - 4; });
         var score = (mine ? 1000 : 0) + (off ? 500 : 0) + other * 60 + c[2] * 3 + (Math.abs(x - c[0]) + Math.abs(y - c[1])) / 10;
         if(!best || score < best.s) best = { s: score, x: x, y: y };
       });
@@ -466,6 +473,7 @@
         void card.offsetWidth;
         card.classList.add('is-in'); if(lines.firstChild) lines.firstChild.classList.add('is-in');
       } else { card.classList.add('is-in'); if(lines.firstChild) lines.firstChild.classList.add('is-in'); }
+      kNow = held;
     }
     function pick(id, how){
       var it = id == null ? null : find(id);
