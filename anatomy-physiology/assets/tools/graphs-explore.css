@@ -1,0 +1,218 @@
+/* A&P Graphs, tools v2 Explore (tools/graphs-explore.js; docs/tools-v2-anp-graphs-brief.md). One colour per idea,
+   from the course's visual language (anp.css): the same colour on the part, its label, its curve and its pill on the
+   cause line. */
+.gx{
+  --gx-lv:#2C6E9E; --gx-lv-ink:#245C85;
+  --gx-ao:var(--anp-o2); --gx-ao-ink:#A84400;
+  --gx-la:var(--anp-lo); --gx-la-ink:var(--anp-lo);
+  --gx-valve:var(--anp-para); --gx-valve-ink:#00704F;
+  --gx-blood:#C8341F; --gx-blood-ink:#A3271A;
+  --gx-air:var(--anp-deo2); --gx-air-ink:var(--anp-deo2);
+  --gx-mus:#B0533C; --gx-mus-ink:#9A3F2B;
+  --gx-rv:var(--anp-lo); --gx-rv-ink:var(--anp-lo);
+  --gx-o2:var(--anp-o2); --gx-o2-ink:#A84400;
+  --gx-hb:#7A2E5C; --gx-hb-ink:#7A2E5C;
+  --gx-place:#4E6B3A; --gx-place-ink:#3F5A2E;
+  --gx-rbc:#B02A1C; --gx-rbc-ink:#A3271A;
+  --gx-na:var(--anp-aff); --gx-na-ink:#8A5A00;
+  --gx-k:#8C4FB8; --gx-k-ink:#7A3FA6;
+  --gx-v:var(--cink); --gx-v-ink:var(--cink);
+  --gx-side:var(--anp-shape); --gx-side-ink:var(--anp-shape);
+  --gx-xb:#D9730D; --gx-xb-ink:#9E5208;
+  --gx-actin:#2E86C1; --gx-actin-ink:#1F6A9C;
+  --gx-myo:#6B4FA0; --gx-myo-ink:#5A3F8E;
+  --gx-z:#2F3B45; --gx-z-ink:#2F3B45;
+  --gx-phase:var(--ink); --gx-phase-ink:var(--ink);
+  --gx-scene-bg:#FBF6F0; --gx-plot-bg:#FFFFFF;
+  display:flex;flex-direction:column;gap:8px;min-height:0;
+}
+:root[data-theme="dark"] .gx{
+  --gx-lv:#7FC2EE; --gx-lv-ink:#9ACFF2; --gx-ao-ink:var(--anp-o2); --gx-valve-ink:var(--anp-para); --gx-blood:#F0705C; --gx-blood-ink:#F59A8A;
+  --gx-mus:#E58E76; --gx-mus-ink:#F0A48F; --gx-o2-ink:var(--anp-o2); --gx-hb:#D98BBB; --gx-hb-ink:#E6A6CD;
+  --gx-place:#9CC27F; --gx-place-ink:#AED38F; --gx-rbc:#F07A69; --gx-rbc-ink:#F59A8A; --gx-na-ink:var(--anp-aff);
+  --gx-k:#C29BE3; --gx-k-ink:#CDAAEA; --gx-xb:#F2A35A; --gx-xb-ink:#F5B474; --gx-actin:#7EC0EE; --gx-actin-ink:#9ACFF2;
+  --gx-myo:#B9A2E6; --gx-myo-ink:#C6B3EC; --gx-z:#C9D3DC; --gx-z-ink:#D5DEE6;
+  --gx-scene-bg:#20272A; --gx-plot-bg:#1A2023;
+}
+/* the left ventricle is blue in Test yourself's Wiggers graph too (graphs.js gives its curves the class lv there):
+   one colour per idea across the tool */
+:root{--gx-lv:#2C6E9E;--gx-lv-ink:#245C85;}
+:root[data-theme="dark"]{--gx-lv:#7FC2EE;--gx-lv-ink:#9ACFF2;}
+.anp-fig .lv.line{stroke:var(--gx-lv);} .gr-fig .gr-c-lv{fill:var(--gx-lv-ink);}
+.gr-fig .gr-cur-halo.gr-dot-lv{fill:var(--gx-lv);} .gr-fig .gr-cur-dot.gr-dot-lv{stroke:var(--gx-lv);}
+.gr-fig .gr-cur-pill.gr-pill-lv{fill:var(--gx-lv);} .gr-sw-lv{background:var(--gx-lv);} .gr-rnew .gr-sw-dash.gr-sw-lv{color:var(--gx-lv);}
+.gr-fig .gr-shift-area.gr-sa-lv{fill:var(--gx-lv);}
+/* pills on the cause line */
+.gx .tk2-cz{--cz:var(--gx-phase);--cz-ink:var(--gx-phase-ink);}
+.gx .tk2-cz.is-lv{--cz:var(--gx-lv);--cz-ink:var(--gx-lv-ink);} .gx .tk2-cz.is-ao{--cz:var(--gx-ao);--cz-ink:var(--gx-ao-ink);}
+.gx .tk2-cz.is-la{--cz:var(--gx-la);--cz-ink:var(--gx-la-ink);} .gx .tk2-cz.is-valve{--cz:var(--gx-valve);--cz-ink:var(--gx-valve-ink);}
+.gx .tk2-cz.is-blood{--cz:var(--gx-blood);--cz-ink:var(--gx-blood-ink);} .gx .tk2-cz.is-air{--cz:var(--gx-air);--cz-ink:var(--gx-air-ink);}
+.gx .tk2-cz.is-mus{--cz:var(--gx-mus);--cz-ink:var(--gx-mus-ink);} .gx .tk2-cz.is-rv{--cz:var(--gx-rv);--cz-ink:var(--gx-rv-ink);}
+.gx .tk2-cz.is-o2{--cz:var(--gx-o2);--cz-ink:var(--gx-o2-ink);} .gx .tk2-cz.is-hb{--cz:var(--gx-hb);--cz-ink:var(--gx-hb-ink);}
+.gx .tk2-cz.is-place{--cz:var(--gx-place);--cz-ink:var(--gx-place-ink);} .gx .tk2-cz.is-na{--cz:var(--gx-na);--cz-ink:var(--gx-na-ink);}
+.gx .tk2-cz.is-k{--cz:var(--gx-k);--cz-ink:var(--gx-k-ink);} .gx .tk2-cz.is-v{--cz:var(--gx-v);--cz-ink:var(--gx-v-ink);}
+.gx .tk2-cz.is-side{--cz:var(--gx-side);--cz-ink:var(--gx-side-ink);} .gx .tk2-cz.is-xb{--cz:var(--gx-xb);--cz-ink:var(--gx-xb-ink);}
+.gx .tk2-cz.is-actin{--cz:var(--gx-actin);--cz-ink:var(--gx-actin-ink);} .gx .tk2-cz.is-myo{--cz:var(--gx-myo);--cz-ink:var(--gx-myo-ink);}
+.gx .tk2-cz.is-phase{color:var(--paper,#fff);background:var(--ink);border-color:var(--ink);}
+
+/* the scene: the drawn part and the graph, side by side when there is room */
+.gx-scene{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(0,1fr);gap:12px;align-items:stretch;min-height:0;}
+.gx-pic{position:relative;border-radius:18px;overflow:hidden;background:var(--gx-scene-bg);box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--ink) 8%, transparent);
+  width:100%;max-width:calc((100vh - 268px) * 1.3);justify-self:center;align-self:start;}
+.gx-psvg{display:block;width:100%;height:auto;}
+.gx-plot{position:relative;min-height:300px;border-radius:18px;background:var(--gx-plot-bg);box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--ink) 8%, transparent);}
+.gx-gsvg{position:absolute;left:0;top:0;display:block;overflow:visible;}
+.gx-lines{display:flex;flex-wrap:wrap;align-items:center;gap:8px;min-height:44px;}
+@media (max-width:899.98px){
+  .gx-scene{grid-template-columns:minmax(0,1fr);gap:8px;}
+  .gx-pic{max-width:none;}
+  .gx-plot{min-height:0;height:236px;}
+}
+/* on a phone the cause line keeps two rows' height so the page does not jump as it changes */
+@media (max-width:640px){ .gx-lines{min-height:76px;align-items:flex-start;} .gx-plot{height:224px;} }
+/* a tablet in one column: the line can wrap to two rows there too, so it keeps two rows' height */
+@media (min-width:640.02px) and (max-width:899.98px){ .gx-lines{min-height:84px;align-items:flex-start;} }
+
+/* ---------------------------------------------------------------- the graph */
+.gx-gsvg text{font-family:var(--font-ui);}
+.gx-pbg{fill:color-mix(in srgb, var(--ink) 2.5%, transparent);}
+.gx-grid{stroke:color-mix(in srgb, var(--ink) 9%, transparent);stroke-width:1;}
+.gx-axis,.gx-xt{fill:none;stroke:color-mix(in srgb, var(--ink) 55%, transparent);stroke-width:1.5;}
+.gx-tick{font-size:12px;font-weight:700;fill:var(--muted);}
+.gx-alab{font-size:13px;font-weight:800;fill:var(--ink);}
+.gx-hl{stroke:var(--anp-lo);stroke-width:1.5;stroke-dasharray:6 5;}
+.gx-hl-t{font-size:12px;font-weight:800;fill:var(--anp-lo);}
+.gx-curve{fill:none;stroke-width:3.2;stroke-linejoin:round;stroke-linecap:round;}
+.gx-cname{font-size:13px;font-weight:900;paint-order:stroke;stroke:var(--gx-plot-bg);stroke-width:4px;stroke-linejoin:round;}
+.gx-pt{stroke:var(--gx-plot-bg);stroke-width:2.5;}
+.gx-xv{font-size:13px;font-weight:900;fill:var(--cink);}
+.gx-regr{fill:color-mix(in srgb, var(--cink) 9%, transparent);}
+.gx-reg-t{font-size:12px;font-weight:800;fill:var(--cink);}
+.gx-band.is-rv{fill:color-mix(in srgb, var(--anp-lo) 16%, transparent);}
+.gx-band-t{font-size:12px;font-weight:800;fill:var(--anp-lo);}
+.gx-curve.is-lv,.gx-pt.is-lv{stroke:var(--gx-lv);} .gx-pt.is-lv,.gx-cname.is-lv{fill:var(--gx-lv-ink);}
+.gx-curve.is-ao,.gx-pt.is-ao{stroke:var(--gx-ao);} .gx-pt.is-ao,.gx-cname.is-ao{fill:var(--gx-ao-ink);}
+.gx-curve.is-la,.gx-pt.is-la{stroke:var(--gx-la);} .gx-pt.is-la,.gx-cname.is-la{fill:var(--gx-la-ink);}
+.gx-curve.is-air{stroke:var(--gx-air);} .gx-pt.is-air,.gx-cname.is-air{fill:var(--gx-air-ink);}
+.gx-curve.is-o2{stroke:var(--gx-o2);} .gx-pt.is-o2,.gx-cname.is-o2{fill:var(--gx-o2-ink);}
+.gx-curve.is-v{stroke:var(--gx-v);} .gx-pt.is-v,.gx-cname.is-v{fill:var(--gx-v-ink);}
+.gx-curve.is-xb{stroke:var(--gx-xb);} .gx-pt.is-xb,.gx-cname.is-xb{fill:var(--gx-xb-ink);}
+.gx-pt{stroke:var(--gx-plot-bg);}
+
+/* ---------------------------------------------------------------- the picture: labels and the number */
+.gx-psvg text{font-family:var(--font-ui);}
+.gx-lab rect{fill:var(--white);stroke:currentColor;stroke-width:1.6px;vector-effect:non-scaling-stroke;}
+.gx-lab text{fill:currentColor;font-weight:900;text-anchor:middle;}
+.gx-lab.is-strong rect{fill:currentColor;} .gx-lab.is-strong text{fill:var(--white);}
+.gx-lead{fill:none;stroke:currentColor;stroke-width:1.6px;vector-effect:non-scaling-stroke;}
+.gx-lead-dot{fill:currentColor;}
+.gx-num text{fill:currentColor;font-weight:900;paint-order:stroke;stroke:var(--white);stroke-width:5px;stroke-linejoin:round;}
+.gx-num-s{font-weight:800;}
+.gx-psvg .is-lv{color:var(--gx-lv-ink);} .gx-psvg .is-ao{color:var(--gx-ao-ink);} .gx-psvg .is-la{color:var(--gx-la-ink);}
+.gx-psvg .is-valve{color:var(--gx-valve-ink);} .gx-psvg .is-air{color:var(--gx-air-ink);} .gx-psvg .is-mus{color:var(--gx-mus-ink);}
+.gx-psvg .is-rv{color:var(--gx-rv-ink);} .gx-psvg .is-o2{color:var(--gx-o2-ink);} .gx-psvg .is-hb{color:var(--gx-hb-ink);}
+.gx-psvg .is-place{color:var(--gx-place-ink);} .gx-psvg .is-rbc{color:var(--gx-rbc-ink);} .gx-psvg .is-na{color:var(--gx-na-ink);}
+.gx-psvg .is-k{color:var(--gx-k-ink);} .gx-psvg .is-v{color:var(--gx-v-ink);} .gx-psvg .is-side{color:var(--gx-side-ink);}
+.gx-psvg .is-xb{color:var(--gx-xb-ink);} .gx-psvg .is-actin{color:var(--gx-actin-ink);} .gx-psvg .is-myo{color:var(--gx-myo-ink);}
+.gx-psvg .is-z{color:var(--gx-z-ink);} .gx-psvg .is-blood{color:var(--gx-blood-ink);}
+.gx-flow{fill:none;stroke-width:5;stroke-linecap:round;opacity:.9;}
+.gx-flow-h{fill:none;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;opacity:.9;}
+.gx-flow.is-blood,.gx-flow-h.is-blood{stroke:#7A1408;} .gx-flow.is-air,.gx-flow-h.is-air{stroke:var(--gx-air);}
+.gx-flow.is-mus,.gx-flow-h.is-mus{stroke:var(--gx-mus);} .gx-flow.is-na,.gx-flow-h.is-na{stroke:var(--gx-na);} .gx-flow.is-k,.gx-flow-h.is-k{stroke:var(--gx-k);}
+
+/* ---------------------------------------------------------------- heart */
+.gx-bg-chest{fill:var(--gx-scene-bg);}
+.gx-myo{fill:url(#gx-gm);stroke:#7A241C;stroke-width:3;}
+.gx-blood{fill:url(#gx-gb);stroke:none;}
+.gx-lv-cav{stroke:#8C2A1F;stroke-width:2.5;}
+.gx-pap{fill:url(#gx-gm);stroke:#7A241C;stroke-width:1.5;stroke-linejoin:round;}
+.gx-cor-fat{fill:none;stroke:#F1D48C;stroke-width:9;stroke-linecap:round;}
+.gx-cor{fill:none;stroke:#B8231A;stroke-width:3.2;stroke-linecap:round;}
+.gx-la{fill:url(#gx-gb);stroke:#A54A3B;stroke-width:9;stroke-linejoin:round;}
+.gx-ao-wall{fill:none;stroke:#C9675A;stroke-width:50;stroke-linecap:butt;}
+.gx-ao-blood{fill:none;stroke:#E9745D;stroke-width:34;stroke-linecap:butt;}
+.gx-ao-hi{fill:none;stroke:#FFFFFF;stroke-width:4;stroke-linecap:round;opacity:.28;}
+.gx-br-wall{fill:none;stroke:#C9675A;stroke-width:22;}
+.gx-br-blood{fill:none;stroke:#E9745D;stroke-width:12;}
+.gx-pv-wall{fill:none;stroke:#C9675A;stroke-width:24;}
+.gx-pv-blood{fill:none;stroke:#E9745D;stroke-width:15;}
+.gx-ring{fill:none;stroke:#F2E3C4;stroke-width:7;stroke-linecap:round;}
+.gx-valve{fill:none;stroke:var(--gx-valve);stroke-width:6;stroke-linecap:round;}
+.gx-chord{fill:none;stroke:#F6EBD3;stroke-width:1.5;stroke-linecap:round;opacity:.95;}
+.gx-rbc{fill:#9E1B10;stroke:#6E0F08;stroke-width:1;}
+:root[data-theme="dark"] .gx-psvg{filter:brightness(.92) saturate(.95);}
+
+/* ---------------------------------------------------------------- lungs */
+.gx-bg-skin{fill:var(--gx-scene-bg);}
+.gx-body{fill:#F1D3BF;stroke:#C99A80;stroke-width:3;}
+:root[data-theme="dark"] .gx-body{fill:#C9A48E;}
+.gx-rib{fill:none;stroke:#FBF3E4;stroke-width:9;stroke-linecap:round;opacity:.9;}
+.gx-sternum{fill:#FBF3E4;opacity:.9;}
+.gx-lung{fill:url(#gx-gl);stroke:#C26671;stroke-width:3;}
+.gx-alv{fill:#F7C1C4;opacity:.75;}
+.gx-airway-w{fill:none;stroke:#E8E2D6;stroke-width:14;stroke-linecap:round;}
+.gx-airway{fill:none;stroke:#C9DFF0;stroke-width:8;stroke-linecap:round;}
+.gx-trachea-rings{stroke:#FFFFFF;stroke-width:2;opacity:.8;}
+.gx-air{fill:#FFFFFF;stroke:var(--gx-air);stroke-width:1.5;}
+.gx-dia{fill:none;stroke:#B65A43;stroke-width:12;stroke-linecap:round;opacity:.8;}
+.gx-dia.is-on{stroke:#9A3A26;opacity:1;}
+
+/* ---------------------------------------------------------------- red blood cell */
+.gx-bg-tissue{fill:var(--gx-scene-bg);}
+.gx-sac{fill:#E9F3FB;stroke:#E4A9AE;stroke-width:5;}
+.gx-cell{fill:#F5D9C9;stroke:#DDB096;stroke-width:2;}
+.gx-nuc{fill:#B58BB8;}
+.gx-fiber{fill:#D97A6C;stroke:#B95A4D;stroke-width:1.5;}
+.gx-stria{stroke:#B95A4D;stroke-width:3;opacity:.45;}
+.gx-cap-wall{fill:#E8B7A4;}
+.gx-plasma{fill:#FBEFC6;}
+.gx-rbc-rim{fill:url(#gx-gr);stroke:#7E140B;stroke-width:3;}
+.gx-rbc-in{fill:#E46A55;}
+.gx-hb{stroke:#5E1A3F;stroke-width:1.5;}
+.gx-hb.is-a{fill:#C37BA7;} .gx-hb.is-b{fill:#A35287;}
+.gx-heme{fill:#3E2A2A;stroke:#F3D9A8;stroke-width:1.2;}
+.gx-heme.is-on{fill:#3E2A2A;}
+.gx-o2m circle{fill:var(--anp-o2);stroke:#7A2A00;stroke-width:1;}
+.gx-o2m.is-bound circle{fill:#FF7A3D;}
+
+/* ---------------------------------------------------------------- axon membrane */
+.gx-out{fill:#E4EEF6;} .gx-in{fill:#F6EAD9;}
+:root[data-theme="dark"] .gx-out{fill:#2A3A47;} :root[data-theme="dark"] .gx-in{fill:#3A3226;}
+.gx-head{fill:#E0C878;stroke:#A88D3A;stroke-width:1;}
+.gx-tail{stroke:#C8B47A;stroke-width:1.6;}
+.gx-prot{stroke-width:2;}
+.gx-prot.is-na{fill:#F5C66B;stroke:#B07A0E;} .gx-prot.is-k{fill:#C6A2E2;stroke:#7A4AA6;}
+.gx-plug{fill:#E09A1E;stroke:#8A5A00;stroke-width:1.5;} .gx-plug-l{fill:none;stroke:#B07A0E;stroke-width:3;}
+.gx-ion.is-na{fill:var(--gx-na);stroke:#8A5A00;stroke-width:1.2;} .gx-ion.is-k{fill:var(--gx-k);stroke:#5B2E86;stroke-width:1.2;}
+.gx-ion-p{stroke:#fff;stroke-width:1.8;stroke-linecap:round;}
+.gx-chg{fill:none;stroke-width:3;stroke-linecap:round;}
+.gx-chg.is-p{stroke:#C8341F;} .gx-chg.is-m{stroke:#2F5E9E;}
+:root[data-theme="dark"] .gx-chg.is-p{stroke:#FF8A73;} :root[data-theme="dark"] .gx-chg.is-m{stroke:#8DB8F2;}
+
+/* ---------------------------------------------------------------- sarcomere */
+.gx-bg-myo{fill:var(--gx-scene-bg);}
+.gx-fibril{fill:#F7E3DD;stroke:#E2BDB2;stroke-width:2;}
+:root[data-theme="dark"] .gx-fibril{fill:#3A2F2D;stroke:#5A4842;}
+.gx-actin{stroke:var(--gx-actin);stroke-width:3;}
+.gx-actin-b{fill:var(--gx-actin);opacity:.85;}
+.gx-myosin{fill:none;stroke:var(--gx-myo);stroke-width:9;stroke-linecap:round;stroke-linejoin:round;}
+.gx-head-m{stroke:var(--gx-myo);stroke-width:4;stroke-linecap:round;opacity:.75;}
+.gx-xb{stroke:var(--gx-xb);stroke-width:4;stroke-linecap:round;}
+.gx-xb-h{fill:var(--gx-xb);}
+.gx-z{fill:none;stroke:var(--gx-z);stroke-width:5;stroke-linejoin:round;}
+.gx-mline{stroke:color-mix(in srgb, var(--gx-myo) 60%, transparent);stroke-width:2.5;}
+.gx-sarc:not(.is-main){opacity:.72;}   /* the neighbouring sarcomeres: real, a little quieter */
+
+@media (prefers-reduced-motion: reduce){ .gx *{transition:none !important;} }
+
+/* five tabs on a phone: the names without their numbers */
+@media (max-width:640px){
+  .gx .tk2-tabs.is-big{gap:4px;}
+  .gx .tk2-tabs.is-big .tk2-tab{flex:1 1 auto;padding:0 3px;font-size:13px;min-height:46px;}   /* longer names get more room */
+  .gx .tk2-tabs.is-big .tk2-tab-n{display:none;}
+}
+@media (max-width:380px){ .gx .tk2-tabs.is-big{gap:2px;} .gx .tk2-tabs.is-big .tk2-tab{font-size:12.5px;padding:0 1px;} }
+@media (min-width:641px) and (max-width:1100px){
+  .gx .tk2-tabs.is-big .tk2-tab{padding:0 8px;}
+  .gx .tk2-tabs.is-big .tk2-tab-n{display:none;}
+}

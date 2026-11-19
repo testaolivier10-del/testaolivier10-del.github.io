@@ -70,6 +70,8 @@ review round: `docs/tools-v2-water-pollution-brief.md`, `docs/tools-v2-osmosis-b
    - A course's adapter in its course kit is shared: before adding a mechanism (practice parts, tabs), check
      whether one already exists on claude/tools-v2-all and extend it (`onPicture: true` exists for tools that
      draw problems on their own picture).
+   - Every timer, animation and observer stops when its stage hides (switching to Test yourself, "?", another tab
+     mid animation) and the screen returns clean; test leaving mid animation on every tab.
    - Before handing in, run a self review against this whole list and the 15 rules with your own fresh frames
      at 360, 390, 768, 1024 and 1440, light and dark, and fix what fails. The independent review then
      confirms; it should not be where these are first found.

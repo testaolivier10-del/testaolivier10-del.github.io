@@ -2013,3 +2013,47 @@ Spec decision 91; data in anatomy-physiology/data/tools/anatomy-3d.json.
   CC BY-SA 2.1 Japan. Spec section 2 allows only CC BY or public domain sources in A&P. The rule of nines calculator
   therefore draws its own body outline instead of reusing the NREMT figure. Owner to decide whether decision 91
   stands as an exception.
+
+## Graphs tool, tools v2 drawn screens (2026-11-18): items for review
+Explore draws the body part beside five graphs (docs/tools-v2-anp-graphs-brief.md). The curves are the reviewed
+numbers in data/tools/graphs.json; what the pictures add was checked against the course notes (cardiac-cycle,
+lung-volumes, oxygen-transport, action-potential-basics, muscle-tension).
+- **gx-hb-fill-order** (decided, for review). The red blood cell's six hemoglobin molecules fill one molecule at a
+  time, to show cooperative binding. In real blood, at 50% saturation, molecules hold every number of oxygens from
+  none to four; the curve, not the drawn order, is the measured fact. "?" says so. Keep, or fill sites at random?
+- **gx-sarcomere-crumple** (pending review). Below about 79% of resting length (the 1.6 um thick filament no longer
+  fits between the Z discs, frog numbers) the thick filaments are drawn with a slight kink against the Z discs. The
+  notes say they "butt against the Z discs"; whether they deform, pass through the Z disc or stop is drawn differently
+  by different sources. Review round 1 (2026-11-18): the reviewer kept a slight kink and asked for half the old
+  amplitude; it is now 3.5 picture units at the most (was 7).
+- **gx-heart-left-only** (decided, for review). The heart screen draws only the left atrium, left ventricle and aorta,
+  schematically (the aortic arch with its three branches to the viewer's right; pulmonary veins entering from the
+  left). It matches the graph (left heart pressures) but is not an anatomical frontal section. Review round 1: the
+  valve ring is held still and the ventricle shortens and narrows toward the apex, so wall, ring and valves stay
+  joined; in a real heart the ring (the base) moves down toward an apex that stays nearly still. "?" says so. The
+  papillary muscles are cones rising from the wall (notes, heart-chambers-valves) and the chordae are curved cords,
+  taut when the mitral valve is shut and slack when it is open.
+- **gx-axon-channel-timing** (decided, for review). Channel states are set from the voltage trace: Na+ channels open
+  at threshold (2.95 to 3.08 ms), inactivate near the peak (3.38 to 3.56 ms) and reset during 4.4 to 5.0 ms; K+
+  channels open from 3.3 ms and close slowly (4.9 to 6.7 ms). Illustrative, not fitted to a model. Review round 1
+  (a must fix): an inactivated Na+ channel is drawn as the notes and PhET teach it, the pore (activation gate) still
+  open with the inactivation plug in it, from the peak until the membrane has repolarized (4.15 to 4.4 ms the gate
+  shuts), and only then does the plug leave (4.4 to 5.0 ms): the closed, ready state at rest. The cause line says
+  "K+ channels slow to close → extra K+ out → Hyperpolarization" whenever the K+ channels are still drawn open after
+  the spike and the inside is at or below −70 mV (it said "Resting potential" from −70 to −71.2 mV). "?" names the
+  absolute refractory period (while the plugs are in, no new spike can start).
+- **gx-forced-expiration-words** (decided, for review). From the top of the deepest breath down to the expiratory
+  reserve the cause line says "Lungs recoil + belly muscles push → air rushes out" (a forced breath out); below the
+  end of a quiet breath out it says "Belly muscles push up → extra air out → Expiratory reserve". Review round 1:
+  the belly push arrows are drawn for the whole forced breath out (5,750 down to 1,350 mL, where the line names the
+  push); the diaphragm is drawn contracting only on a breath in by the muscles (2,350 mL and up), never while the
+  chest springs back from the residual volume ("Muscles let go"); the lung bases sit on the diaphragm's dome.
+- **gx-dissolved-o2** (decided, for review; review round 1 must fix). About 98.5% of the oxygen in blood is bound to
+  hemoglobin and 1.5% dissolved (notes, oxygen-transport). The picture had about 30 dissolved O2 against 24 bound at
+  100 mm Hg; it now draws a handful (4 at 100 mm Hg, fewer as PO2 falls), never more than the bound ones, and "?"
+  says almost all oxygen rides on hemoglobin. Still more dissolved than true scale (true would be under one drawn
+  molecule), so that the plasma PO2 the curve is read against stays visible.
+- **gx-po2-places** (decided, for review). The places drawn around the capillary follow the notes: lungs about
+  100 mm Hg, resting tissue about 40, working muscle about 20. Working muscle fades out below about 12 mm Hg (even
+  working muscle does not reach 0); below 10 mm Hg no place is drawn and the line says "PO2 very low → little O2
+  left on hemoglobin".

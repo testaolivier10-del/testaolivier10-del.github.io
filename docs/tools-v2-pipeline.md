@@ -18,9 +18,9 @@ States: building, review, fixing, recheck, PASS (waiting to integrate), integrat
 | AP Bio energy flow | claude/tools-v2-bio-energy-flow | wt-bio-energy-flow | integrated | |
 | AP Bio Hardy Weinberg | claude/tools-v2-hardy-weinberg | wt-hardy-weinberg | integrated | its practice part folded onto the Simpson mechanism (one dropdown) |
 | AP Bio enzyme activity | claude/tools-v2-enzyme-activity | wt-enzyme-activity | integrated | |
-| A&P graphs | claude/tools-v2-anp-graphs | wt-anp-graphs | fixing (round 1) | review: /home/claude/review-anp-graphs |
-| AP Calc tangent tracer | claude/tools-v2-tangent-tracer | wt-tangent-tracer | fixing (round 1) | review: /home/claude/review-tangent-tracer |
-| AP Chem units and sig figs | claude/tools-v2-units-sig-figs | wt-units-sig-figs | fixing (round 1) | review: /home/claude/review-units-sig-figs |
+| A&P graphs | claude/tools-v2-anp-graphs | wt-anp-graphs | integrated | |
+| AP Calc tangent tracer | claude/tools-v2-tangent-tracer | wt-tangent-tracer | integrated | |
+| AP Chem units and sig figs | claude/tools-v2-units-sig-figs | wt-units-sig-figs | integrated | |
 | APES energy flow | claude/tools-v2-apenv-energy-flow | wt-apenv-energy-flow | building | |
 | NREMT mnemonics | claude/tools-v2-nremt-mnemonics | wt-nremt-mnemonics | building | first NREMT tool on the kit |
 

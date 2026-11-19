@@ -157,7 +157,10 @@
       "script": "tools/graphs.js",
       "css": "tools/graphs.css",
       "data": "graphs.json",
-      "studio": true
+      "studio": true,
+      "kit2": true,
+      "extraScripts": ["tools/graphs-explore.js"],
+      "extraCss": ["tools/graphs-explore.css"]
     },
     {
       "slug": "calculators",

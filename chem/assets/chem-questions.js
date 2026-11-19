@@ -40,7 +40,7 @@
      carry its own exponents (mol^-1, s⁻¹, cm³) but no second number. */
   var SUP = { '⁰': '0', '¹': '1', '²': '2', '³': '3', '⁴': '4', '⁵': '5', '⁶': '6', '⁷': '7', '⁸': '8', '⁹': '9', '⁻': '-', '⁺': '+' };
   function unsup(x){ return String(x).replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]/g, function(c){ return SUP[c]; }); }
-  var NUM_RE = /^([+-]?)\s*([0-9][0-9,]*\.?[0-9]*|\.[0-9]+)\s*(?:[eE]\s*([+-]?[0-9]+)|[×xX*]\s*10\s*(?:\^|\*\*)?\s*([+-]?[0-9]+))?(?![0-9])\s*(.*)$/;
+  var NUM_RE = /^([+-]?)\s*([0-9][0-9,]*\.?[0-9]*|\.[0-9]+)\s*(?:[eE]\s*([+-]?[0-9]+)|[×xX*·⋅]\s*10\s*(?:\^|\*\*)?\s*([+-]?[0-9]+))?(?![0-9])\s*(.*)$/;
   function splitNumber(s){
     s = unsup(String(s == null ? '' : s)).trim().replace(/[−–]/g, '-').replace(/\s+/g, ' ');
     var m = NUM_RE.exec(s);
@@ -75,16 +75,24 @@
      "L atm mol-1 K-1"; "degC" = "°C"; "liters" = "L". Case matters otherwise
      (mM is not MM). An unreadable token is kept as itself, so it only ever
      matches the same token. */
+  /* Typed forms that can only mean one unit (case otherwise matters: mM is not MM; ML is megalitre, so it is not an alias). */
+  var ALIAS = { ml: 'mL', Ml: 'mL', milliliter: 'mL', milliliters: 'mL', millilitre: 'mL', millilitres: 'mL',
+    kj: 'kJ', KJ: 'kJ', Kj: 'kJ', kilojoule: 'kJ', kilojoules: 'kJ', joule: 'J', joules: 'J', Joules: 'J',
+    ATM: 'atm', Atm: 'atm', atmosphere: 'atm', atmospheres: 'atm', gm: 'g', gms: 'g', mols: 'mol', Mol: 'mol', MOL: 'mol',
+    kpa: 'kPa', KPa: 'kPa', KPA: 'kPa', Kpa: 'kPa', Torr: 'torr', TORR: 'torr', kelvin: 'K', Kelvin: 'K', kelvins: 'K' };
   function normUnit(u){
     u = unsup(String(u || '')).trim();
     u = u.replace(/\s*[·*•⋅]\s*/g, ' ').replace(/\^/g, '').replace(/[()]/g, ' ').replace(/\s+/g, ' ').trim();
     u = u.replace(/\bdeg\s*C\b|º\s*C|°\s*C/g, '°C').replace(/\b(liters?|litres?)\b/gi, 'L').replace(/(^|[^A-Za-z])l(?![A-Za-z])/g, '$1L');
     u = u.replace(/[μµ]/g, 'u').replace(/\bmoles?\b/g, 'mol').replace(/\bgrams?\b/g, 'g').replace(/\b(seconds?|sec)\b/g, 's');
+    // forgiving spellings (tools v2, rule 10): "per", a stray full stop, unambiguous words and capitals
+    u = u.replace(/\s+per\s+/gi, '/').replace(/\.(?=\s|\/|$)/g, '');
     var agg = {};
     u.split('/').forEach(function(part, i){
       part.trim().split(' ').filter(Boolean).forEach(function(tok){
         var m = /^([A-Za-z°Ω]+)(-?\d+)?$/.exec(tok);
         if(!m){ agg['?' + tok] = 1; return; }
+        if(ALIAS[m[1]]) m[1] = ALIAS[m[1]];
         var sign = (m[2] ? +m[2] : 1) * (i ? -1 : 1);
         // Standalone M is molarity, mol/L.
         if(m[1] === 'M'){ agg.mol = (agg.mol || 0) + sign; agg.L = (agg.L || 0) - sign; return; }
