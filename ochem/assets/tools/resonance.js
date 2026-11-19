@@ -314,7 +314,7 @@
   }
 
   var view = {};
-  window.OchemResonanceModel = { view: view, rankForms: rankForms, hybridOf: hybridOf, kekule: kekule, arrowsBetween: arrowsBetween,
+  window.OchemResonanceModel = { view: view, key: R.key, rankForms: rankForms, hybridOf: hybridOf, kekule: kekule, arrowsBetween: arrowsBetween,
     pathTo: pathTo, completable: completable, stabilization: stabilization, judge: judge, fraction: fraction, SPECIES: SPECIES };
 
   /* ====================================================================== */
@@ -397,7 +397,7 @@
   function layout(){
     var W = Math.max(280, sceneBox.clientWidth), H = Math.max(300, sceneBox.clientHeight);
     var cmpMode = S.mode === 'quiz' && S.part === 'compare';
-    var phone = W < 641, wide = W >= 900, top = cmpMode ? 12 : phone ? 52 : 60, pad = phone ? 8 : 14;
+    var phone = W < 641, wide = W >= 700, top = cmpMode ? 12 : phone ? 52 : 60, pad = phone ? 8 : 14;
     var o = { W: W, H: H, phone: phone, wide: wide, top: top, pad: pad };
     if(cmpMode){
       if(wide){ o.left = { x: pad, y: top + 30, w: W / 2 - pad * 1.5, h: H - top - 30 - pad }; o.right = { x: W / 2 + pad / 2, y: top + 30, w: W / 2 - pad * 1.5, h: H - top - 30 - pad }; }
@@ -619,7 +619,7 @@
   function paintMain(){
     var st = shown();
     if(!st || !L.main){ G.mainA.innerHTML = ''; G.mainB.innerHTML = ''; mainA = null; return; }
-    mainT = fitT(S.start, L.main, { cap: L.phone ? 1.7 : 2.6, margin: 30 });
+    mainT = fitT(S.start, L.main, { cap: L.phone ? 1.7 : 3.0, margin: 30 });
     var noQ = {}; over(st).forEach(function(k){ noQ[k] = 1; });
     var d = draw(st, mainT, { noCharge: noQ });
     G.mainA.innerHTML = d.html; G.mainA.style.opacity = '1';
@@ -638,24 +638,53 @@
     if(!L.hyb){ G.hyb.innerHTML = ''; return; }
     var hideIt = S.mode === 'quiz' && S.part === 'find' && !hunt.done;
     if(hideIt || S.rk.length < 2){ G.hyb.innerHTML = ''; return; }
-    var T = fitT(S.start, L.hyb, { cap: L.phone ? 1.0 : 1.7, margin: 28 });
+    var T = fitT(S.start, L.hyb, { cap: L.phone ? 1.0 : 2.0, margin: 36 });
     var d = draw(S.rk[0].st, T, { hybrid: S.hyb });
     G.hyb.innerHTML = d.html + hybMarks(S.hyb, d.A, L.hyb);
   }
+  /* The drawn size of a mark (its box and where its middle sits from the baseline), measured once per text and size. */
+  var mtext = null;
+  function measure(txt, fs){
+    if(!mtext){ mtext = document.createElementNS(NS, 'text'); mtext.setAttribute('class', 'rs2-dq'); mtext.setAttribute('text-anchor', 'middle'); mtext.style.visibility = 'hidden'; svg.appendChild(mtext); }
+    mtext.setAttribute('font-size', f1(fs)); mtext.textContent = txt;
+    var b = null; try{ b = mtext.getBBox(); }catch(e){}
+    var r = b && b.width ? { w: b.width, h: b.height, cy: b.y + b.height / 2 } : { w: fs * 0.85 * txt.length, h: fs * 1.3, cy: -fs * 0.34 };
+    return r;
+  }
   function hybMarks(hyb, A, box){
-    var t = '';
+    var t = '', placed = [], keys = Object.keys(A.atoms);
+    // the heading pill above the card is kept clear
+    placed.push({ l: box.x + box.w / 2 - 70, r: box.x + box.w / 2 + 70, t: box.y - 30, b: box.y - 2 });
+    function clear(r){
+      if(r.l < box.x - 2 || r.r > box.x + box.w + 2 || r.t < box.y - 26 || r.b > box.y + box.h + 2) return false;
+      for(var i = 0; i < keys.length; i++){
+        var a = A.atoms[keys[i]];
+        if(!(r.r + 3 <= a.x - a.r || a.x + a.r + 3 <= r.l || r.b + 3 <= a.y - a.r || a.y + a.r + 3 <= r.t)) return false;
+      }
+      return !placed.some(function(o){ return !(r.r + 4 <= o.l || o.r + 4 <= r.l || r.b + 4 <= o.t || o.b + 4 <= r.t); });
+    }
     Object.keys(hyb.atoms).forEach(function(k){
       var h = hyb.atoms[k], p = A.atoms[k];
       if(h.fixed) return;
       var txt = h.mean != null ? fraction(h.mean) : (h.neg && h.pos ? 'δ±' : h.neg ? 'δ−' : 'δ+');
-      var fs = Math.max(11, Math.min(16, p.r * 1.05)), dd = p.r + fs * 0.85, tw2 = fs * 0.62 * txt.length, x, y;
-      // the first gap beside the atom where the mark stays inside the card
-      var angs = p.free.concat([-Math.PI / 2, 0, Math.PI, -Math.PI / 4, -3 * Math.PI / 4]);
-      for(var ai = 0; ai < angs.length; ai++){
-        x = p.x + Math.cos(angs[ai]) * dd; y = p.y + Math.sin(angs[ai]) * dd;
-        if(x - tw2 / 2 > box.x - 4 && x + tw2 / 2 < box.x + box.w + 4 && y - fs * 0.7 > box.y - 26 && y + fs * 0.5 < box.y + box.h + 4) break;
+      var fs0 = Math.max(11, Math.min(16, p.r * 1.05)), fs = h.big ? fs0 : fs0 * 0.86, mb = measure(txt, fs), tw2 = mb.w + 4, th = mb.h + 2, x = null, y = null;
+      // outward only: never toward the middle of the molecule, where a mark would read as another atom's
+      var mx = 0, my = 0; keys.forEach(function(q){ mx += A.atoms[q].x; my += A.atoms[q].y; }); mx /= keys.length; my /= keys.length;
+      var ox = p.x - mx, oy = p.y - my, ol = Math.hypot(ox, oy) || 1;
+      var angs = p.free.slice();
+      for(var i = 0; i < 16; i++) angs.push(-Math.PI / 2 + i * Math.PI / 8);
+      angs = angs.filter(function(a){ return ol < 2 || (Math.cos(a) * ox + Math.sin(a) * oy) / ol > -0.2; });
+      outer: for(var di = 0; di < 3; di++){
+        for(var ai = 0; ai < angs.length; ai++){
+          var c = Math.cos(angs[ai]), sn = Math.sin(angs[ai]);
+          // the distance from the centre at which a box of this size just clears the ball along this direction
+          var reach = p.r + 4 + Math.min(Math.abs(c) > 1e-6 ? tw2 / 2 / Math.abs(c) : 1e9, Math.abs(sn) > 1e-6 ? th / 2 / Math.abs(sn) : 1e9) + di * 6;
+          var cx = p.x + c * reach, cy = p.y + sn * reach, r = { l: cx - tw2 / 2, r: cx + tw2 / 2, t: cy - th / 2, b: cy + th / 2 };
+          if(clear(r)){ x = cx; y = cy; placed.push(r); break outer; }
+        }
       }
-      t += '<text class="rs2-dq is-' + (h.neg ? 'neg' : 'pos') + (h.big ? '' : ' is-small') + '" x="' + f1(x) + '" y="' + f1(y + fs * 0.36) + '" font-size="' + f1(h.big ? fs : fs * 0.86) + '" text-anchor="middle">' + txt + '</text>';
+      if(x == null) return;    // no clear spot: the glow still shows it
+      t += '<text class="rs2-dq is-' + (h.neg ? 'neg' : 'pos') + (h.big ? '' : ' is-small') + '" x="' + f1(x) + '" y="' + f1(y - mb.cy) + '" font-size="' + f1(fs) + '" text-anchor="middle">' + txt + '</text>';
     });
     return t;
   }
@@ -707,20 +736,23 @@
     // keep an octet tag clear of balls and other names: try the atom's free directions, further out if needed
     [].forEach.call(labsEl.querySelectorAll('.is-oct'), function(e, i){
       var l = out.filter(function(x){ return x.cls === 'is-oct'; })[i], p = mainA.atoms[l.atom];
-      var tries = [];
-      p.free.forEach(function(a){ [22, 34, 46].forEach(function(d){ tries.push([p.x + Math.cos(a) * (p.r + d), p.y + Math.sin(a) * (p.r + d)]); }); });
-      for(var t = 0; t < tries.length; t++){
+      var tries = [], angs = p.free.slice();
+      for(var i2 = 0; i2 < 12; i2++) angs.push(-Math.PI / 2 + i2 * Math.PI / 6);
+      [24, 36, 50].forEach(function(d){ angs.forEach(function(a){ tries.push([p.x + Math.cos(a) * (p.r + d), p.y + Math.sin(a) * (p.r + d)]); }); });
+      var ok = false;
+      for(var t = 0; t < tries.length && !ok; t++){
         e.style.left = f1(tries[t][0]) + 'px'; e.style.top = f1(tries[t][1]) + 'px';
-        if(!labelHits(e)) break;
+        ok = !labelHits(e);
       }
+      if(!ok) e.hidden = true;     // no clear spot: the amber ring and the cause line still say it
     });
   }
   function labelHits(e){
-    var r = e.getBoundingClientRect(), s = sceneBox.getBoundingClientRect();
+    var r = e.getBoundingClientRect(), s = sceneBox.getBoundingClientRect(), g = 5;
     if(r.left < s.left + 2 || r.right > s.right - 2 || r.top < s.top + 2 || r.bottom > s.bottom - 2) return true;
-    var balls = [].slice.call(G.mainA.querySelectorAll('.rs2-ball, .rs2-badge circle'));
-    return balls.some(function(b){ var q = b.getBoundingClientRect(); return !(q.right < r.left + 1 || q.left > r.right - 1 || q.bottom < r.top + 1 || q.top > r.bottom - 1); }) ||
-      [].some.call(labsEl.children, function(o){ if(o === e) return false; var q = o.getBoundingClientRect(); return !(q.right < r.left || q.left > r.right || q.bottom < r.top || q.top > r.bottom); });
+    var things = [].slice.call(svg.querySelectorAll('.rs2-mainA .rs2-ball, .rs2-mainA .rs2-badge circle, .rs2-hyb .rs2-ball, .rs2-mainA .rs2-e, .rs2-thumb, .rs2-dq')).concat([pick.querySelector('select'), undoBtn]);
+    return things.some(function(b){ var q = b.getBoundingClientRect(); return !(q.right + g <= r.left || q.left >= r.right + g || q.bottom + g <= r.top || q.top >= r.bottom + g); }) ||
+      [].some.call(labsEl.children, function(o){ if(o === e || o.hidden) return false; var q = o.getBoundingClientRect(); return !(q.right + g <= r.left || q.left >= r.right + g || q.bottom + g <= r.top || q.top >= r.bottom + g); });
   }
 
   function paintCompare(){
@@ -1260,7 +1292,7 @@
       var all = S.rk.length > 1 && S.rk.every(function(x){ return S.visited[x.key]; });
       if(res && res.kind === 'form' && all && !S.tookAll && S.mode === 'explore' && S.rk.length > 2){
         S.tookAll = true;
-        cause.take('Every form reached. The real molecule is one blend of them' + (S.rk[0].tag === 'equal' ? ': the forms are equal, so the charge is shared evenly.' : ', closest to the major forms.'));
+        cause.take('Every form reached. The real molecule blends them' + (S.rk[0].tag === 'equal' ? ' all equally.' : ', mostly the major ones.'));
       }
       say(cause.text() + ' ' + boardText());
     }
@@ -1331,32 +1363,51 @@
     var ar = arrowsBetween(st, next.st); if(!ar) return null;
     var lp = ar.filter(function(a){ return !C.isBondKey(a.from); })[0] || ar[0];
     var p = anchorOf(lp, mainA, 'from');
-    return { x: p.x, y: p.y, lp: !C.isBondKey(lp.from) };
+    // every spot the cue may point at: each lone pair of that atom (the one the arrow uses first), or the π bond
+    var spots = [{ x: p.x, y: p.y }];
+    if(!C.isBondKey(lp.from)) (mainA.lps[lp.from] || []).forEach(function(l){ if(l.x !== p.x || l.y !== p.y) spots.push({ x: l.x, y: l.y }); });
+    return { x: p.x, y: p.y, lp: !C.isBondKey(lp.from), spots: spots };
   }
+  /* The one first visit cue: of every lone pair it may point at and every side, the first whose bubble is inside the
+     picture and covers no ball, name or control; failing that, the one that covers least. */
+  var cueAt = null;
   function placeCue(){
     if(cue){ cue.hide(false); cue = null; }
     if(S.mode !== 'explore' || S.took) return;
     var fs = firstSource(); if(!fs) return;
-    for(var i = 0; i < SIDES.length; i++){
-      cue = K.cue(layer, { key: 'ochem-res-push', text: fs.lp ? 'Drag this lone pair' : 'Drag this π bond', side: SIDES[i], at: function(){ var f = firstSource() || fs; return [f.x, f.y]; } });
-      if(!cue.show()){ cue = null; return; }
-      if(!cueHits()) return;
-      cue.hide(false); cue = null;
+    // the full words first; on a narrow picture the short ones when the full ones cannot sit clear
+    var texts = fs.lp ? ['Drag this lone pair', 'Drag this pair'] : ['Drag this π bond', 'Drag the π bond'], best = null;
+    for(var ti = 0; ti < texts.length; ti++){
+      for(var j = 0; j < fs.spots.length; j++){
+        for(var i = 0; i < SIDES.length; i++){
+          var sp = fs.spots[j];
+          cue = K.cue(layer, { key: 'ochem-res-push', text: texts[ti], side: SIDES[i], at: function(){ return [cueAt.x, cueAt.y]; } });
+          cueAt = sp;
+          if(!cue.show()){ cue = null; return; }
+          var sc = cueScore();
+          if(sc === 0){ return; }
+          if(!best || sc < best.sc) best = { sc: sc, spot: sp, side: SIDES[i], text: texts[ti] };
+          cue.hide(false); cue = null;
+        }
+      }
     }
-    cue = K.cue(layer, { key: 'ochem-res-push', text: fs.lp ? 'Drag this lone pair' : 'Drag this π bond', side: 'below', at: function(){ return [fs.x, fs.y]; } });
+    cueAt = best.spot;
+    cue = K.cue(layer, { key: 'ochem-res-push', text: best.text, side: best.side, at: function(){ return [cueAt.x, cueAt.y]; } });
     cue.show();
   }
-  function cueHits(){
-    var b = layer.el.querySelector('.tk2-cue'); if(!b) return false;
-    var r = b.getBoundingClientRect(), s = sceneBox.getBoundingClientRect();
-    if(r.left < s.left + 2 || r.right > s.right - 2 || r.top < s.top + 2 || r.bottom > s.bottom - 2) return true;
-    var things = [].slice.call(G.mainA.querySelectorAll('.rs2-ball, .rs2-badge circle, .rs2-lp')).concat([].slice.call(labsEl.children), [pick, undoBtn]);
-    return things.some(function(t){ var q = t.getBoundingClientRect(); return !(q.right < r.left || q.left > r.right || q.bottom < r.top || q.top > r.bottom); });
+  function cueScore(){
+    var b = layer.el.querySelector('.tk2-cue'); if(!b) return 0;
+    var r = b.getBoundingClientRect(), s = sceneBox.getBoundingClientRect(), sc = 0;
+    var out = Math.max(0, s.left + 2 - r.left) + Math.max(0, r.right - s.right + 2) + Math.max(0, s.top + 2 - r.top) + Math.max(0, r.bottom - s.bottom + 2);
+    sc += out * 1000;
+    var things = [].slice.call(svg.querySelectorAll('.rs2-mainA .rs2-ball, .rs2-mainA .rs2-badge circle, .rs2-mainA .rs2-lp, .rs2-hyb .rs2-ball, .rs2-thumb')).concat([].slice.call(labsEl.children), [pick.querySelector('select'), undoBtn]);
+    things.forEach(function(t){ var q = t.getBoundingClientRect(), w = Math.min(r.right, q.right) - Math.max(r.left, q.left), h = Math.min(r.bottom, q.bottom) - Math.max(r.top, q.top); if(w > 0 && h > 0) sc += w * h; });
+    return sc;
   }
   function hideCue(used){ if(cue){ cue.hide(used); cue = null; } }
 
   var tourTurn = K.tour({ key:'ochem-res', label:'Show me how', steps: [
-    { id:'push', text:'Grab a lone pair or a π bond and drag it one place over. The curved arrow follows.', target: function(){ var f = firstSource(); if(!f) return hit; var r = svg.getBoundingClientRect(); return { left: r.left + f.x - 14, top: r.top + f.y - 14, width: 28, height: 28, right: r.left + f.x + 14, bottom: r.top + f.y + 14 }; } },
+    { id:'push', text:'Grab a lone pair or a π bond and drag it one place over. The curved arrow follows.', target: function(){ var f = cueAt || firstSource(); if(!f) return hit; var r = svg.getBoundingClientRect(); return { left: r.left + f.x - 14, top: r.top + f.y - 14, width: 28, height: 28, right: r.left + f.x + 14, bottom: r.top + f.y + 14 }; } },
     { id:'forms', text:'Every form of this species is in the row. Major forms count most; tap one to see the arrows that reach it.', target: function(){ return thumbsEl.firstChild || thumbsEl; } },
     { id:'real', text:'The real molecule is none of the forms: it is this blend, with the π electrons and the charge shared.', target: function(){ var r = svg.getBoundingClientRect(); return L.hyb ? { left: r.left + L.hyb.x, top: r.top + L.hyb.y - 30, width: L.hyb.w, height: L.hyb.h + 30, right: r.left + L.hyb.x + L.hyb.w, bottom: r.top + L.hyb.y + L.hyb.h } : hit; } }
   ] });
@@ -1462,13 +1513,22 @@
     } else studio.done(false, 'quiz');
     if(hunt.done !== was && L) paintAll();
   }
+  // a run started from the side panel (above the picture on a phone): bring the picture into view first
+  function showStage(){
+    if(!L || !L.phone) return;
+    var r = sceneBox.getBoundingClientRect();
+    if(r.top < 0 || r.bottom > innerHeight) try{ sceneBox.scrollIntoView({ block: 'center', behavior: K.reduced() ? 'auto' : 'smooth' }); }catch(e){}
+  }
   function reveal(){
     var missing = S.rk.filter(function(f){ return !hunt.found[f.key]; })[0];
     if(!missing) return;
+    showStage();
     hunt.found[missing.key] = 'revealed';
     huntPanel(); paintStrip(); placeLabels();
     goTo(missing);
   }
+
+  view.reveal = reveal;
 
   // 2. Which is more stabilized? Two species on the picture; call it, then each becomes its real molecule
   var cmpBox = mk('div', 'rs2-dock');
@@ -1504,7 +1564,7 @@
     cmpBox.querySelector('#rsCmpA').addEventListener('change', function(){ setSide('a', this.value); cmpPanel(); paintAll(); syncState(); });
     cmpBox.querySelector('#rsCmpB').addEventListener('change', function(){ setSide('b', this.value); cmpPanel(); paintAll(); syncState(); });
     [].forEach.call(cmpBox.querySelectorAll('[data-guess]'), function(b){ b.addEventListener('click', function(){
-      cmp.guess = b.getAttribute('data-guess'); cmpPanel(); crossPaint();
+      cmp.guess = b.getAttribute('data-guess'); cmpPanel(); showStage(); crossPaint();
       var n = cmpBox.querySelector('.tnote'); if(n){ n.tabIndex = -1; n.focus({ preventScroll: true }); }
     }); });
     var ag = cmpBox.querySelector('#rsCmpAgain');
@@ -1585,4 +1645,6 @@
   if(window.ResizeObserver) new ResizeObserver(function(){ if(!tw && !drag) { paintAll(); if(cue) cue.place(); } }).observe(sceneBox);
   else window.addEventListener('resize', function(){ paintAll(); });
   paintAll(); words(null);
+  // names and marks are placed from measured text: place them again once the fonts are in
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ if(!tw && !drag){ paintAll(); if(cue) placeCue(); } });
 })();
