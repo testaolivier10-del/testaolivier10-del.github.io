@@ -434,7 +434,9 @@ const SHELL_BUDGETS = [
      leader-line work sit in tools/lab-fit.js (first use). Predict measured 57.7 KB. */
   /* 58 -> 60 (tool frame F2, docs/tools-frame-notes/anp.md): the chooser as a stage dropdown with Search all, the
      finished cards in four tools. Measured 59.6 KB. */
-  ['anatomy-physiology', 60],
+  /* 60 -> 61 (tools v2, docs/tools-v2-anp-graphs-brief.md): the Graphs tool's five drawn Explore screens
+     (tools/graphs-explore.js and .css, 24 KB gzipped) beside the old engine it keeps for Test yourself. Measured 60.3 KB. */
+  ['anatomy-physiology', 61],
   /* AP® Biology (bio/, a fork of the A&P runtime): bio-core, questions, nav,
      glossary tooltips, bio.css, the generated curriculum, plus the app script
      a page loads (exams.js, the largest, with pages.css and frq-kit.js).

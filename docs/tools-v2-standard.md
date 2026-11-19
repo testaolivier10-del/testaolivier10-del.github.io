@@ -72,3 +72,4 @@ decision made on the owner's behalf, so he can skim it later and reverse any of 
 | AP® Biology, Energy flow | Built 2026-11-18. Review PASS 2026-11-18; shipped to the collecting branch `claude/tools-v2-all` (not on main) | `docs/tools-v2-bio-energy-flow-brief.md` |
 | AP® Biology, Hardy-Weinberg | Built 2026-11-18. Review PASS 2026-11-18 (recheck 2); integrated on the collecting branch `claude/tools-v2-all` (not on main) | `docs/tools-v2-hardy-weinberg-brief.md` |
 | AP® Biology, Enzyme activity | Built 2026-11-18. Review PASS 2026-11-18 (recheck 2); integrated on the collecting branch `claude/tools-v2-all` (not on main) | `docs/tools-v2-enzyme-activity-brief.md` |
+| A&P, Graphs | Built 2026-11-18. Review PASS 2026-11-18 (recheck 1); integrated on the collecting branch `claude/tools-v2-all` (not on main) | `docs/tools-v2-anp-graphs-brief.md` |
