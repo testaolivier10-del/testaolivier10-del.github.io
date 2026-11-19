@@ -402,9 +402,12 @@
         var sv = burn.querySelector('svg[data-view="front"]'), k = layerB.scale() || 1, F = window.LevlBodyFigs;
         var f = F && F.figs[(BI && BI.child() ? 'child' : 'adult') + '-front'];
         if(!sv || !f) return [0, 0];
-        var r = sv.getBoundingClientRect(), h = burn.getBoundingClientRect(), s = r.width / f.w;
-        // pointing down at the front figure's shin, the bubble over the lower leg: clear of every number
-        var a = f.anchors.legL, x = r.left - h.left + a[0] * s, y = r.top - h.top + f.h * 0.9 * s;
+        // pointing down at the front figure's shin, the bubble over the lower leg: clear of every number (the
+        // figure is centred in its svg, so go through the svg's own matrix)
+        var h = burn.getBoundingClientRect(), m = sv.getScreenCTM(), pt = sv.createSVGPoint();
+        if(!m) return [0, 0];
+        pt.x = f.anchors.legL[0]; pt.y = f.h * 0.9; pt = pt.matrixTransform(m);
+        var x = pt.x - h.left, y = pt.y - h.top;
         return [x / k, y / k];
       } });
     }
