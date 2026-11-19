@@ -1,0 +1,120 @@
+/* 3D Molecule Viewer, tools v2 (ochem/assets/tools/viewer-3d.js; docs/tools-v2-viewer-3d-brief.md). Loaded only by
+   the viewer's page (`kit2: true` in tools-registry.js). One colour per idea, everywhere (picture, labels, cause
+   line; Okabe-Ito, lighter in dark mode): the tapped atom's bonds blue, lone pairs amber, the shape and its angle
+   violet (the course colour), the reading direction and R or S green. */
+.v3{--v3-bond:#0072B2;--v3-bond-ink:#005A8C;--v3-lp:#E69F00;--v3-lp-ink:#8A5A00;--v3-shape:#4B3BA8;--v3-shape-ink:#3B2D8C;
+  --v3-cfg:#009E73;--v3-cfg-ink:#00704F;--v3-h:#6B7280;--v3-h-ink:#4B5262;
+  --v3-bg0:#F6F4FC;--v3-bg1:#E4E0F2;--v3-bn0:#D9D4E8;--v3-bn1:#C9C3DC;--v3-bn-edge:#B1A9CB;--v3-bn-ink:#4A4366;
+  --v3-stick:#DADDE6;--v3-stick-edge:#2B2F3A;--v3-gl0:#F4F9FF;--v3-gl1:#DCE8F6;--v3-gl2:#C9DAEE;--v3-frame:#9AA6BD;
+  display:flex;flex-direction:column;gap:10px;min-height:0;flex:1 1 auto;}
+:root[data-theme="dark"] .v3{--v3-bond:#56B4E9;--v3-bond-ink:#9AD3F5;--v3-lp:#F0B63C;--v3-lp-ink:#F6CF75;--v3-shape:#A99BF0;--v3-shape-ink:#C9C0F2;
+  --v3-cfg:#2FB88F;--v3-cfg-ink:#8BE3C8;--v3-h:#9CA3AF;--v3-h-ink:#D1D5DB;
+  --v3-bg0:#1C2036;--v3-bg1:#141729;--v3-bn0:#272B47;--v3-bn1:#1D2038;--v3-bn-edge:#3B4066;--v3-bn-ink:#C9C4E4;
+  --v3-stick:#AEB4C4;--v3-stick-edge:#0C0E14;--v3-gl0:#2A3352;--v3-gl1:#222A45;--v3-gl2:#1B2139;--v3-frame:#55618A;}
+.v3[hidden]{display:none;}
+.v3 [hidden]{display:none !important;}
+.v3 .tk2-tabs{margin:0;align-self:flex-start;max-width:100%;}
+.v3-scene{position:relative;flex:1 1 auto;min-height:480px;border-radius:18px;overflow:hidden;background:var(--v3-bg1);touch-action:none;cursor:grab;}
+.v3-scene.is-drag{cursor:grabbing;}
+.v3-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+@media (max-width:1023px){ .v3-scene{flex:none;height:min(66vw,560px);min-height:460px;} }
+@media (max-width:640px){ .v3-scene{height:520px;min-height:0;border-radius:14px;} .v3[data-tab="hand"] .v3-scene{height:600px;} .v3{gap:8px;} }
+.v3-scene.is-xf .v3-svg{animation:v3-xf .18s linear 1;}
+@keyframes v3-xf{from{opacity:.25;}to{opacity:1;}}
+.v3-lines{display:flex;align-items:center;gap:6px 18px;flex-wrap:wrap;flex:none;}
+.v3 .tk2-cause{transition:opacity .15s ease;} .v3 .tk2-cause.is-wait{opacity:.3;}
+.v3 .tk2-cz.is-bond{--cz:var(--v3-bond);--cz-ink:var(--v3-bond-ink);}
+.v3 .tk2-cz.is-lp{--cz:var(--v3-lp);--cz-ink:var(--v3-lp-ink);}
+.v3 .tk2-cz.is-groups,.v3 .tk2-cz.is-shape{--cz:var(--v3-shape);--cz-ink:var(--v3-shape-ink);}
+.v3 .tk2-cz.is-dir,.v3 .tk2-cz.is-cfg{--cz:var(--v3-cfg);--cz-ink:var(--v3-cfg-ink);}
+.v3 .tk2-cz.is-h{--cz:var(--v3-h);--cz-ink:var(--v3-h-ink);}
+
+/* the backdrop: a lit studio wall, a bench, the mirror */
+.v3-bg{fill:url(#v3g-bg);}
+.v3s-bg0{stop-color:var(--v3-bg0);} .v3s-bg1{stop-color:var(--v3-bg1);}
+.v3-bench{fill:url(#v3g-bench);} .v3-benchedge{stroke:var(--v3-bn-edge);stroke-width:1.5;}
+.v3s-bn0{stop-color:var(--v3-bn0);} .v3s-bn1{stop-color:var(--v3-bn1);}
+.v3-shadow{fill:url(#v3g-sh);}
+.v3s-sh0{stop-color:#1B1838;stop-opacity:.32;} .v3s-sh1{stop-color:#1B1838;stop-opacity:0;}
+:root[data-theme="dark"] .v3s-sh0{stop-color:#000;stop-opacity:.55;} :root[data-theme="dark"] .v3s-sh1{stop-color:#000;}
+.v3-glass{fill:url(#v3g-glass);}
+.v3s-gl0{stop-color:var(--v3-gl0);} .v3s-gl1{stop-color:var(--v3-gl1);} .v3s-gl2{stop-color:var(--v3-gl2);}
+.v3-frame{fill:none;stroke:var(--v3-frame);stroke-width:5;}
+.v3-sheen{fill:#fff;fill-opacity:.32;}
+:root[data-theme="dark"] .v3-sheen{fill-opacity:.06;}
+
+/* balls and sticks */
+.v3-ball{stroke:var(--v3-stick-edge);stroke-width:1.1;stroke-opacity:.55;}
+.v3-al{font-weight:900;fill:#fff;text-anchor:middle;pointer-events:none;}
+.v3-al.is-dark{fill:#22252E;}
+.v3-bo{stroke:var(--v3-stick-edge);stroke-linecap:round;}
+.v3-bi{stroke:color-mix(in srgb, var(--v3-bond) calc(var(--v3-on, 0) * 100%), var(--v3-stick));stroke-linecap:round;}
+.v3-bond.is-sel .v3-bo{stroke:color-mix(in srgb, var(--v3-bond-ink) calc(var(--v3-on, 0) * 100%), var(--v3-stick-edge));}
+.v3-ring{fill:var(--v3-shape);fill-opacity:.2;stroke:var(--v3-shape);stroke-opacity:.35;stroke-width:1.5;pointer-events:none;}
+.v3-lpb{fill:var(--v3-lp);fill-opacity:.42;stroke:var(--v3-lp-ink);stroke-width:1.6;}
+.v3-lpe{fill:var(--v3-lp-ink);}
+.v3-lp.is-dots .v3-lpe{fill:var(--muted);}
+.v3-arc{fill:none;stroke:var(--v3-shape);stroke-width:4.5;paint-order:stroke;stroke-linecap:round;stroke-dasharray:1;pointer-events:none;}
+.v3-read{fill:none;stroke:var(--v3-cfg);stroke-width:4;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;}
+.v3-read.is-in{stroke-dashoffset:0;transition:stroke-dashoffset .32s ease-out;}
+.v3-arrowhead{fill:var(--v3-cfg);}
+
+/* names and numbers on the picture: pills in the idea's colour, attached to what they name */
+.v3-labs{position:absolute;inset:0;pointer-events:none;}
+.v3-lab{position:absolute;left:0;top:0;padding:2px 9px;border-radius:999px;white-space:nowrap;font:800 13px/1.35 var(--font-ui);
+  background:color-mix(in srgb, var(--white) 92%, transparent);color:var(--ink);box-shadow:0 1px 3px rgba(20,16,50,.16);}
+:root[data-theme="dark"] .v3-lab{background:#16202E;color:#F2F5F9;}
+.v3-lab.is-angle{color:var(--v3-shape-ink);font-size:15px;font-weight:900;font-variant-numeric:tabular-nums;box-shadow:inset 0 0 0 2px var(--v3-shape),0 1px 3px rgba(20,16,50,.16);}
+.v3-lab.is-prio{min-width:24px;text-align:center;padding:1px 6px;font-size:13px;font-weight:900;color:var(--v3-cfg-ink);box-shadow:inset 0 0 0 1.5px var(--v3-cfg),0 1px 3px rgba(20,16,50,.16);}
+.v3-lab.is-name{background:none;box-shadow:none;color:var(--v3-bn-ink);font-size:13px;padding:0 4px;}
+.v3-lab.is-cfg{font-size:22px;font-weight:900;padding:2px 13px;background:var(--v3-cfg);color:#fff;box-shadow:0 2px 6px rgba(20,16,50,.2);}
+:root[data-theme="dark"] .v3-lab.is-cfg{color:#0C1A14;background:var(--v3-cfg);}
+:root[data-theme="dark"] .v3-lab.is-name{background:none;}
+
+/* controls on the picture: quiet */
+.v3-turn{position:absolute;inset:0;pointer-events:none;border-radius:18px;}
+.v3-turn:focus-visible{outline:3px solid var(--cink);outline-offset:-3px;}
+.v3-pick{position:absolute;left:12px;top:12px;display:flex;align-items:center;gap:8px;z-index:4;font:900 13px var(--font-ui);color:var(--v3-bn-ink);}
+.v3-pick select{min-height:40px;max-width:230px;padding:0 30px 0 12px;border-radius:999px;border:1.5px solid var(--v3-bn-edge);background-color:var(--white);color:var(--ink);font:800 14px var(--font-ui);cursor:pointer;}
+.v3-pick select:focus-visible,.v3-btn:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.v3-btns{position:absolute;right:12px;top:12px;display:flex;gap:8px;z-index:4;}
+.v3-btn{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 14px;border-radius:999px;border:1.5px solid var(--v3-bn-edge);background:var(--white);color:var(--ink);font:800 14px var(--font-ui);cursor:pointer;white-space:nowrap;}
+.v3-btn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
+:root[data-theme="dark"] .v3-pick select,:root[data-theme="dark"] .v3-btn{background-color:#16202E;color:#F2F5F9;}
+/* the atoms are the targets: the kit's pins stay as keyboard stops, invisible over the balls */
+.v3 .v3-spots .tk2-spot-pin{opacity:0;}
+.v3 .v3-spots .tk2-spots-hit{cursor:inherit;}
+.v3 .v3-spots{--tk2-spot:var(--v3-shape);}
+@media (max-width:640px){
+  .v3-pick{left:8px;top:8px;} .v3-pick span{display:none;} .v3-pick select{max-width:190px;}
+  .v3-btns{right:8px;top:8px;gap:6px;} .v3-btn{padding:0 11px;font-size:13px;}
+  .v3-lab.is-cfg{font-size:19px;}
+}
+@media (max-width:420px){ .v3-btn span{font-size:13px;} [data-tab="shape"] .v3-btn span{display:none;} [data-tab="shape"] .v3-btn{padding:0 11px;} }
+
+/* Test yourself: Name the shape, in the side panel */
+.v3q{display:flex;flex-direction:column;gap:8px;}
+.v3q-q{margin:0;font:600 15px/1.45 var(--font-ui);color:var(--ink);}
+.v3q-k{margin:6px 0 0;font:900 13px var(--font-ui);color:var(--muted);}
+.v3q .tchips{display:flex;flex-wrap:wrap;gap:8px;}
+.v3q .tchip.on{background:var(--cink);color:var(--white);}
+.v3q .tchip.is-right{border-color:var(--good-text);background:var(--tint-good);color:var(--ink);}
+.v3q .tchip.is-right::after{content:" \2713";color:var(--good-text);}
+.v3q .tchip.is-wrong{border-color:var(--bad-text);background:var(--tint-bad);color:var(--ink);}
+.v3q .tchip.is-wrong::after{content:" \2715";color:var(--bad-text);}
+.v3q .tchip:disabled{opacity:1;}
+.v3q .trow{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 0;}
+.v3q .trow .btn-press{flex:1 1 auto;}
+.v3q .btn-press:disabled{opacity:.5;cursor:default;}
+.v3q .tnote{margin:8px 0 0;}
+
+/* "?": this atom, the view, the builder, the key */
+.v3-ref{display:flex;flex-direction:column;gap:12px;margin-bottom:16px;}
+.v3-ref-how{margin:0;}
+.v3-ref-h{margin:6px 0 8px;font:900 15px/1.3 var(--font-ui);color:var(--ink);}
+.v3-ref-view{display:flex;flex-direction:column;gap:10px;margin-top:8px;}
+.v3-ref-view .tseg{display:flex;flex-wrap:wrap;}
+.v3-ref-key p{margin:0 0 9px;font:500 14px/1.5 var(--font-ui);color:var(--ink);}
+.v3-sw{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:6px;vertical-align:-2px;}
+.v3-sw.is-bond{background:#0072B2;} .v3-sw.is-lp{background:#E69F00;} .v3-sw.is-shape{background:#4B3BA8;} .v3-sw.is-cfg{background:#009E73;}
+@media (prefers-reduced-motion: reduce){ .v3-read.is-in{transition:none;} .v3-scene.is-xf .v3-svg{animation:v3-xf .18s linear 1;} }
