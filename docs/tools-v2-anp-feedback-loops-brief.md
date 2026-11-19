@@ -254,3 +254,18 @@ collecting branch's). Playwright at 1440 and 390: drag, touch, keys, leaving mid
 reduced motion and no console errors pass; the frame timing checks could not be measured cleanly (load average 12 to
 13 on 2 cores): median 16.7 ms, p95 83 to 133 ms during a run at CPU x4. Shots and preview regenerated
 (`/mnt/user-data/outputs/anp-feedback-loops-v2/`).
+
+## Recheck 1 (2026-11-19)
+Five must fix items, all done: (A) the cue checks it is inside the picture after it shows and moves above the knob
+when neither side has room (360); (B) the kit's "pushed" word is not shown (the tick stays): it sat on the knob, the
+scale's numbers or the bulb; the sweep now checks that word against the knob, the numbers, the bulb and every label;
+(C) "Oxytocin" is named only once the molecule has left the magnified pituitary for the body's vessel; the frame test
+now fails any two labels overlapping on any frame and runs at 360 too; (D) the merge conflict markers in
+`docs/anp-needs-author.md` are gone (fl-* and the lab practical lx-* section both kept), and
+`git grep -n '^<<<<<<<\|^>>>>>>>'` is part of the pre push checks; (E) Test yourself's slot numbers and "a case" tags
+are 11 px (`feedback-loops.css`); the quiz test now also checks every word of Test yourself's own HTML in both inner
+modes. Leftover done: one dead band, smaller than one key step (0.05 °C, 1 mg/dL), so a key step that changes the shown
+value starts a run with or without motion.
+Checks: sweep at 12 widths light and 360, 390, 1440 dark, 0 failures; frame test at 1440, 390 and 360, 19,800 frames,
+0 failures; quiz test 84 checks, 0 failures; A&P tests 55 pass, content check 0 failing, `build-anp --check` clean,
+`check-site` OK, `check-weight` within budget; no conflict markers; preview regenerated.
