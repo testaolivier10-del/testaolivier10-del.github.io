@@ -45,3 +45,4 @@ in each tool's brief.
 | 2026-11-18 | AP Calc AB Tangent tracer | P's knob is a clear ring with the car inside, every width, both tabs | Review: the knob hid the car on a phone (a fifth of it on a desktop) | `ringOf()` in the tool |
 | 2026-11-18 | AP Calc AB Tangent tracer | Tab 2 shows one cue (P's cue hides); Slide Q in counts as Q's first use; Q's chip sits clear of numbers | Review: two cues, chip on the h tag | `K.handle` `used()`, `chipSide()` |
 | 2026-11-18 | AP Calc AB Tangent tracer | Hillside fainter and shorter, thin on steep parts, never below the x axis; cusp reads "slope → −∞ from the left" | Review: read as a shaded region; an infinite slope is not a number | Same brief, review round 1 |
+| 2026-11-18 | AP Calc AB Tangent tracer | In the magnifier Q's tag goes outward along P→Q; the glass's small source ring at P removed (beams start at P's ring) | Re-check: the tag covered P's dot; a double circle by the car | `tagSideLens()` in the tool |

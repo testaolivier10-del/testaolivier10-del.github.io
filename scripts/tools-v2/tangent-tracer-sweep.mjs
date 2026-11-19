@@ -16,6 +16,7 @@
      - (review round 1, frame 3) tab 2 on a first visit shows one cue at a time (P's cue is gone, only Q's chip);
        Q's chip never covers Q's tag, a label (h, Δy, zoom), P's dot in the magnifier or P's knob; "Slide Q in" and
        Q's keys count as Q's first use (the chip goes).
+     - (recheck 1) no tag touches P's dot at the magnifier's centre (tab 2 at h = 1, −0.5, 0.05, ±0.01, ±0.001).
 
      node scripts/tools-v2/tangent-tracer-sweep.mjs [widths, comma separated] [--shots dir]
 
@@ -90,6 +91,8 @@ const probe = () => {
   const knobEls = q('.tt2 .tk2-handle:not([hidden]) .tk2-dot');
   [...labs, ...ticks].forEach(a => { knobs.forEach((c, i) => { if (hit(a.r, c.r, 1) && (!isRing(knobEls[i]) || ringCut(a.r, c.r))) out.push(a.n + ' under ' + c.n); }); if (cars.length && onCar(a.r)) out.push(a.n + ' on the car'); });
   tags.forEach(a => { if (cars.length && onCar(a.r)) out.push(a.n + ' on the car'); });
+  // (recheck 1) no tag touches P's dot at the magnifier's centre
+  q('.tt2-svg > .tt2-dyn .tt2-pdot').forEach(d => { const dr = R(d); tags.forEach(a => { if (hit(a.r, dr, -2)) out.push(a.n + ' on P’s dot in the magnifier'); }); });
   // the road panel is the largest thing and a real share of the stage
   const A = G.A, B = G.B, k = sc.w / G.W, aA = A.W * A.H * k * k, share = aA / (sc.w * sc.h);
   if (B && B.W * B.H >= A.W * A.H) out.push('the f′ paper is as big as the road');
@@ -207,7 +210,7 @@ for (const w of WIDTHS) {
     await page.locator('.tt2-lines .tk2-play >> nth=0').click(); await page.waitForTimeout(80);
     await check(`${cv} tab 1 after Drive across`, cv === 'sin' || cv === 'corner' ? `1-${cv}-drive` : null);
     await page.evaluate(() => { const T = window.ApCalcTangentTracer; T.setTab('secant'); T.moveP(T.S.F.a); });
-    for (const hh of [1, -0.5, 0.05, 0.001]) {
+    for (const hh of [1, -0.5, 0.05, 0.01, -0.01, 0.001, -0.001]) {
       const ok = await page.evaluate(hh => { const T = window.ApCalcTangentTracer; T.setH(hh); return T.S.h === hh; }, hh);
       if (!ok) continue;
       await page.waitForTimeout(40);

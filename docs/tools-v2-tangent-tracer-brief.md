@@ -192,3 +192,14 @@ Checks after round 1 (2026-11-18, on the merge with v2-all): `apcalc-*` 156 pass
 frame v2. Sweep one width per process: 1070 states, 12455 checks, 0 failures at all ten widths (road panel 46 to 53
 percent). Extra frames (real CDP touch drag of the ring at 390, Slide Q in mid and end, dark mode, first visit of
 both tabs) in `/mnt/user-data/outputs/tangent-tracer-v2/shots/r1-*.png`; no console errors.
+
+## Recheck 1 (2026-11-18)
+
+The re-check passed everything from round 1 and blocked on one item: in the magnifier, Q's tag (below Q) covered
+P's dot at the glass centre on phones and tablets (360, 390, 768, also after Slide Q in). Fixed: while Q is in the
+glass its tag goes outward along P→Q (sideways when Q is more to the side, else above or below, skipping a side
+that leaves the road panel), so it always reaches away from the centre; Q's chip and the labels avoid the tag's new
+box. The should fix too: the magnifier's small source ring at P is gone and the beams start at P's ring around the
+car (one circle near the car). The sweep now asserts that no tag touches `.tt2-pdot` and checks tab 2 at
+h = 1, −0.5, 0.05, ±0.01, ±0.001.
+

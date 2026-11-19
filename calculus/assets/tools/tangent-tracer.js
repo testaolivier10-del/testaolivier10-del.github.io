@@ -504,8 +504,23 @@
       words();
     }
     /* Q's tag: away from P (the car), unless that side has no room */
+    /* Q's tag box on a side (picture units) for Q at (x, y). */
+    function qTagBox(sd, x, y){
+      var t = hq && hq.el.querySelector('.tk2-tag'), w = t && t.offsetWidth ? t.offsetWidth / (layer.scale() || 1) : 90;
+      return sd === 'down' ? [x - w / 2, y + 24, x + w / 2, y + 52] : sd === 'up' ? [x - w / 2, y - 52, x + w / 2, y - 24] : sd === 'right' ? [x + 24, y - 14, x + 28 + w, y + 14] : [x - 28 - w, y - 14, x - 24, y + 14];
+    }
+    /* In the magnifier Q's tag goes outward along P→Q (away from P's dot at the glass centre): sideways when Q is
+       more to the side, else above or below; a side that leaves the road panel is skipped. Either way the tag
+       reaches away from the centre, so it never covers P. */
+    function tagSideLens(){
+      var q = qPoint(), Lm = lensMap({ cx: LENS.cx, cy: LENS.cy, R: LENS.R }), x = Lm.sx(q.x), y = Lm.sy(q.y), dx = x - LENS.cx, dy = y - LENS.cy;
+      var hz = dx >= 0 ? 'right' : 'left', vt = dy > 0 ? 'down' : 'up', order = Math.abs(dx) >= Math.abs(dy) ? [hz, vt] : [vt, hz];
+      for(var i = 0; i < order.length; i++){ var b = qTagBox(order[i], x, y); if(b[0] >= G.A.L + 2 && b[2] <= G.A.R - 2 && b[1] >= G.A.T + 2 && b[3] <= G.A.B - 2) return order[i]; }
+      return vt;
+    }
     function tagSideQ(){
-      if(!G || qInLens()) return 'down';
+      if(!G) return 'down';
+      if(qInLens()) return tagSideLens();
       var q = qPoint(); if(!q.ok) return 'down';
       var y = G.A.sy(q.y), x = G.A.sx(q.x);
       if(S.h > 0 && x < G.A.R - 120) return 'right';
@@ -607,16 +622,16 @@
         var k = 0.6 + 0.4 * LENS.show, R = Lg.R, Lm = lensMap(Lg);
         var z = (R / LENS.w) / G.kx, zt = '×' + (z >= 10 ? String(+z.toPrecision(2)) : String(Math.max(1, Math.round(z))));
         var zl = [];
-        if(qInLens() || lensWanted()){ var qlx = Lm.sx(q.x), qly = Lm.sy(q.y); block(qlx, qly, 24); boxes.push([qlx - 50, qly + 14, qlx + 50, qly + 52]); }
+        var qls = 'down';
+        if(qInLens() || lensWanted()){ var qlx = Lm.sx(q.x), qly = Lm.sy(q.y); qls = tagSideLens(); block(qlx, qly, 24); boxes.push(qTagBox(qls, qlx, qly)); }
         var zn = boxes.length;
         label(zl, 'zoom ' + zt, 'tt2-zoom', [[Lg.cx, Lg.cy + R + 19, 'middle'], [Lg.cx, Lg.cy - R - 9, 'middle'], [Lg.cx + R * 0.75, Lg.cy + R + 6, 'start'], [Lg.cx - R * 0.75, Lg.cy + R + 6, 'end']], A, 12.5);
-        if(qInLens() || lensWanted()){ var ql = [Lm.sx(q.x), Lm.sy(q.y)]; chipQ(ql[0], ql[1], 'down', A, { cx: Lg.cx, cy: Lg.cy, more: boxes.slice(zn) }); }
+        if(qInLens() || lensWanted()){ var ql = [Lm.sx(q.x), Lm.sy(q.y)]; chipQ(ql[0], ql[1], qls, A, { cx: Lg.cx, cy: Lg.cy, more: boxes.slice(zn) }); }
         boxes.push([Lg.cx - R - 8, Lg.cy - R - 8, Lg.cx + R + 8, Lg.cy + R + 8]);
         var g = ['<g class="tt2-lens" style="opacity:' + LENS.show.toFixed(3) + '" transform="translate(' + r1(Lg.cx) + ' ' + r1(Lg.cy) + ') scale(' + k.toFixed(3) + ') translate(' + r1(-Lg.cx) + ' ' + r1(-Lg.cy) + ')">'];
-        // the two lines from the small ring at P to the glass
-        var d = Math.hypot(Lg.cx - Px, Lg.cy - Py), ux = (Lg.cx - Px) / d, uy = (Lg.cy - Py) / d;
-        g.push('<circle class="tt2-ring" cx="' + r1(Px) + '" cy="' + r1(Py) + '" r="15"/>');
-        g.push('<path class="tt2-beam" d="M' + r1(Px - uy * 15) + ' ' + r1(Py + ux * 15) + 'L' + r1(Lg.cx - uy * R) + ' ' + r1(Lg.cy + ux * R) + 'M' + r1(Px + uy * 15) + ' ' + r1(Py - ux * 15) + 'L' + r1(Lg.cx + uy * R) + ' ' + r1(Lg.cy - ux * R) + '"/>');
+        // the two lines from P's ring (around the car) to the glass: no second circle near the car
+        var kr = knobC(), rx = kr.x, ry = kr.y, rr = kr.r, d = Math.hypot(Lg.cx - rx, Lg.cy - ry) || 1, ux = (Lg.cx - rx) / d, uy = (Lg.cy - ry) / d;
+        g.push('<path class="tt2-beam" d="M' + r1(rx - uy * rr) + ' ' + r1(ry + ux * rr) + 'L' + r1(Lg.cx - uy * R) + ' ' + r1(Lg.cy + ux * R) + 'M' + r1(rx + uy * rr) + ' ' + r1(ry - ux * rr) + 'L' + r1(Lg.cx + uy * R) + ' ' + r1(Lg.cy - ux * R) + '"/>');
         var hx = Lg.cx + R * 0.72 * (Lg.cx < A.L + A.W / 2 ? -1 : 1), hy = Lg.cy + R * 0.72 * (Lg.cy < A.T + A.H / 2 ? 1 : -1);
         g.push('<line class="tt2-lens-h" x1="' + r1(hx) + '" y1="' + r1(hy) + '" x2="' + r1(Lg.cx + (hx - Lg.cx) * 1.5) + '" y2="' + r1(Lg.cy + (hy - Lg.cy) * 1.5) + '"/>');
         g.push('<circle class="tt2-lens-bg" cx="' + r1(Lg.cx) + '" cy="' + r1(Lg.cy) + '" r="' + r1(R) + '"/>');

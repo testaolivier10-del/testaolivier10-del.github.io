@@ -302,7 +302,6 @@
 :root[data-theme="dark"] .tt2-lens-rim{stroke:#9AA6B6;}
 .tt2-lens-h{stroke:#5C6673;stroke-width:9;stroke-linecap:round;}
 :root[data-theme="dark"] .tt2-lens-h{stroke:#9AA6B6;}
-.tt2-ring{fill:none;stroke:#5C6673;stroke-width:2;}
 .tt2-beam{stroke:#5C6673;stroke-opacity:.45;stroke-width:1.3;fill:none;}
 .tt2-pdot{fill:var(--white);stroke:var(--ink);stroke-width:2.5;}
 .tt2-qdot{fill:var(--white);stroke:var(--tt-sec);stroke-width:3;}
