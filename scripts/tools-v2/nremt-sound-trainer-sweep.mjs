@@ -271,6 +271,8 @@ async function frames() {
     await drag('lung-ru');
     ok(await until(page, () => window.NremtSoundExplore.last._state().started), `${tag}: the drag did not start the wheeze`);
     ok((await S(page)).per.lung.site === 'lung-ru', `${tag}: the drag did not land on the right apex`);
+    if (w < 640) { await page.waitForTimeout(700); ok(await page.evaluate(() => document.querySelector('.snd2 .tk2-cause').getBoundingClientRect().bottom <= innerHeight + 1), `${tag}: the cause line is off screen after the drop`); }
+    ok(await page.evaluate(() => /stethoscope\. Right apex/.test(document.querySelector('.snd2-svg').getAttribute('aria-label'))), `${tag}: the picture's screen reader name does not follow the state`);
     await page.waitForTimeout(1500);
     const lv = await S(page);
     if (!NOCORS) ok(lv.strip.live > 10, `${tag}: no live trace of the recording (${lv.strip.live})`);

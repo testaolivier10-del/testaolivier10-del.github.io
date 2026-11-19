@@ -635,14 +635,19 @@
       var r = G.pr, p = sp, w = siteLab.offsetWidth, h = siteLab.offsetHeight, B = box.getBoundingClientRect();
       // the first place beside the chest piece that stays in the chest's area and clear (6 px) of the switches
       var avoid = [viewSw, ab, lensLab].filter(function(e){ return !e.hidden && e.offsetWidth; }).concat([].slice.call(gFig.querySelectorAll('.snd2-rl'))).map(function(e){ var q = e.getBoundingClientRect(); return [q.left - B.left - 6, q.top - B.top - 6, q.right - B.left + 6, q.bottom - B.top + 6]; });
-      var C = [[p[0] + r + 8, p[1] - h / 2], [p[0] - r - 8 - w, p[1] - h / 2], [p[0] - w / 2, p[1] + r + 6], [p[0] - w / 2, p[1] - r - 6 - h]];
+      var C = [[p[0] + r + 8, p[1] - h / 2], [p[0] - r - 8 - w, p[1] - h / 2], [p[0] + r * .4, p[1] - r - 6 - h], [p[0] + r * .4, p[1] + r + 6],
+        [p[0] - r * .4 - w, p[1] - r - 6 - h], [p[0] - r * .4 - w, p[1] + r + 6], [p[0] - w / 2, p[1] + r + 6], [p[0] - w / 2, p[1] - r - 6 - h]];
+      // first try to keep the other spots' rings visible too; then only the labels and switches
+      var rings = Object.keys(siteEls).filter(function(k){ return k !== id; }).map(function(k){ var e = siteEls[k], rr = e.r * .62 + 3; return [e.p[0] - rr, e.p[1] - rr, e.p[0] + rr, e.p[1] + rr]; });
       var pick = null;
-      for(var i = 0; i < C.length && !pick; i++){
-        var x = C[i][0], y = C[i][1];
-        if(x < G.fa.x + 2 || x + w > G.fa.x + G.fa.w - 2 || y < G.kh + 2 || y + h > G.H - 4) continue;
-        if(avoid.some(function(a){ return x < a[2] && x + w > a[0] && y < a[3] && y + h > a[1]; })) continue;
-        pick = C[i];
-      }
+      [avoid.concat(rings), avoid].forEach(function(av){
+        for(var i = 0; i < C.length && !pick; i++){
+          var x = C[i][0], y = C[i][1];
+          if(x < G.fa.x + 2 || x + w > G.fa.x + G.fa.w - 2 || y < G.kh + 2 || y + h > G.H - 4) continue;
+          if(av.some(function(a){ return x < a[2] && x + w > a[0] && y < a[3] && y + h > a[1]; })) continue;
+          pick = C[i];
+        }
+      });
       if(!pick) pick = [clamp(p[0] - w / 2, G.fa.x + 2, G.fa.x + G.fa.w - w - 2), p[1] + r + 6];
       siteLab.style.left = f1(pick[0]) + 'px'; siteLab.style.top = f1(pick[1]) + 'px';
     }
@@ -680,6 +685,7 @@
       stopSound(false);
       setupStrip(); buildLens(); paintLens(null, null);
       if(!site){ chain(); return; }
+      keepCause();
       var tk = play.token;
       if(!snd){
         // the normal side of the lung switch: no free recording of normal breath sounds yet
@@ -693,11 +699,17 @@
         onStop: function(){ if(tk !== play.token) return; play.on = false; paintPlay(); },
         onError: function(msg){ if(tk !== play.token) return; play.on = false; paintPlay(); chain(); cause.take(msg); }
       };
-      if(snd.synth){ h.mix = P.heartMix(snd.synth, s); h.beats = 6; }
+      if(snd.synth){ h.mix = P.heartMix(snd.synth, s); h.beats = 6; warmSites(snd); }
       else { var g = P.LUNG_GAIN[snd.id]; h.gain = g ? g(s) : 1; h.analyse = true; }
       chain(); paintPlay();
       Bank.play(snd, h);
       if(o.onAct) o.onAct();
+    }
+    // the same sound at the other heart spots, rendered while the browser is idle, so the next drop plays at once
+    function warmSites(snd){
+      if(!Bank.warm) return;
+      var idle = window.requestIdleCallback || function(f){ return setTimeout(f, 200); };
+      T().sites.forEach(function(id, i){ idle(function(){ if(St.on) Bank.warm(snd, P.heartMix(snd.synth, SITE[id]), 6); }, { timeout: 3000 + i * 400 }); });
     }
     function finish(){
       play.on = false; play.ended = true; paintPlay();
@@ -716,13 +728,22 @@
     function drawnW(){ return (SZ.drawnTo - SZ.drawnFrom || 0) + (SZ.drawn2 ? SZ.drawn2[1] - SZ.drawn2[0] : 0); }
     function chain(all){
       var id = S().site, snd = cur(), I = INFO[S().key];
-      if(!id){ cause.set([{ t: 'Off the chest', role: 'place' }, { t: 'nothing heard', role: 'snd' }]); return; }
+      if(!id){ cause.set([{ t: 'Off the chest', role: 'place' }, { t: 'nothing heard', role: 'snd' }]); label(); return; }
       var parts = [{ t: SHORT[id], role: 'place' }], heard = all || (play.started && (!SZ || SZ.kind !== 'heart' || drawnW() > 2)) || (!snd && !play.on);
-      if(!snd){ parts.push({ t: 'Normal: no extra sound', role: 'snd' }); parts.push({ t: I.ncause, role: 'why' }); cause.set(parts); return; }
+      if(!snd){ parts.push({ t: 'Normal: no extra sound', role: 'snd' }); parts.push({ t: I.ncause, role: 'why' }); cause.set(parts); label(); return; }
       if(heard) parts.push({ t: (snd.id === 'heart-normal' ? 'Normal S1 S2' : I.key) + ', ' + loudWord(snd, id), role: 'snd', say: snd.label + ', ' + loudWord(snd, id) });
       if(heard && (all || play.lensOn)) parts.push({ t: snd.id === 'heart-normal' ? INFO['heart-normal'].cause : I.cause, role: 'why' });
       cause.set(parts);
       St.chain = parts.map(function(p){ return p.t; });
+      label();
+    }
+    // the picture's name for a screen reader: what is drawn and heard now
+    function label(){ svg.setAttribute('aria-label', 'A patient\u2019s chest, ' + S().view + ' view, with a stethoscope. ' + cause.text()); }
+    // a phone: after the student puts the stethoscope down, the cause line under the picture comes into view
+    function keepCause(){
+      if(!G || !G.phone) return;
+      var r = cause.el.getBoundingClientRect(), over = r.bottom + 8 - window.innerHeight;
+      if(over > 0) try{ window.scrollBy({ top: over, behavior: reduced() ? 'auto' : 'smooth' }); }catch(e){ window.scrollBy(0, over); }
     }
 
     /* ---------------------------------------------------------------- the frame loop (only while something moves) */

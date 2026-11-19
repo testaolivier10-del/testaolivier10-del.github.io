@@ -323,6 +323,9 @@
     envelope: envelope,
     setVolume: setVolume,
     getVolume: function(){ return volume; },
+    /* Render a generated sound ahead of time (cached), so a later play starts at once. Only once an AudioContext
+       exists (after the first play), since a context needs a tap. */
+    warm: function(sound, mix, beats){ if(!ctx || !sound || !sound.synth) return; try{ renderHeart(sound.synth, sound.bpm || 72, beats || 6, mix); }catch(e){} },
     /* Exposed so the page can say "generated" next to the right sounds
        without duplicating the knowledge of which ones those are. */
     isSynthetic: function(s){ return !!(s && s.synth); }
