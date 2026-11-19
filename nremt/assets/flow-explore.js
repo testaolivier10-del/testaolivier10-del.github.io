@@ -103,26 +103,36 @@
     mouthO: 'M231 117Q240 113 249 117Q248 128 240 129Q232 128 231 117Z'
   };
   // a gloved hand seen from above, fingers toward -y, wrist at +y (local px, about 40 wide)
-  var GLOVE = '<path class="fx2-glove" d="M-18 6C-20 -6 -19 -22 -16 -30L-12 -44C-11 -48 -6 -48 -5 -44L-4 -30L-2 -48C-1 -52 4 -52 5 -48L6 -30L9 -46C10 -50 15 -50 15 -46L13 -28L17 -40C18 -44 23 -43 22 -39L18 -16C17 -4 14 6 10 12L-12 14Z"/><rect class="fx2-cuff" x="-13" y="10" width="24" height="12" rx="6"/>';
+  // a nitrile glove seen from the back of the hand, fingers toward -y, wrist at +y: palm, four fingers, the thumb
+  // out to the side, knuckle creases, a highlight down each finger and a rolled cuff (local px, about 46 wide)
+  var GLOVE = '<g class="fx2-gl"><path class="fx2-glove" d="M13 -4C18 -11 24 -18 29 -18C33 -17 33 -12 30 -8L19 6Z"/>' +
+    '<rect class="fx2-glove" x="-15" y="-50" width="8" height="30" rx="4"/><rect class="fx2-glove" x="-6" y="-54" width="8.5" height="34" rx="4.2"/>' +
+    '<rect class="fx2-glove" x="3.5" y="-51" width="8" height="31" rx="4"/><rect class="fx2-glove" x="12" y="-43" width="7" height="23" rx="3.5"/>' +
+    '<path class="fx2-glove" d="M-16 16C-19 4 -18 -12 -15 -24C-8 -28 9 -28 17 -22C20 -10 18 4 13 16Z"/>' +
+    '<path class="fx2-gl-cr" d="M-14 -23q3 -2.5 6 0M-5 -25q3.2 -2.5 6.4 0M4.5 -24q3 -2.5 6 0M12.5 -21q2.6 -2 5.2 0M-6 -6q6 3 13 0"/>' +
+    '<path class="fx2-gl-hi" d="M-12.5 -45V-30M-3.4 -49V-31M6 -46V-30M14.5 -39V-27M-12 6C-14 -4 -14 -12 -12 -19"/>' +
+    '<rect class="fx2-glove fx2-cuff" x="-15" y="12" width="29" height="12" rx="4"/><rect class="fx2-rim" x="-16" y="21" width="31" height="5" rx="2.5"/></g>';
 
   // a glove at (x, y) turned rot degrees; adult hand size (a hand is about 7 inches, the figure about 70 tall)
   // two fingers out, the others curled (a pulse check)
-  var TWO = '<path class="fx2-glove" d="M-17 22C-19 8 -18 -4 -14 -10L-9 -14L-9 -58C-9 -64 -1 -64 -1 -58L-1 -16L1 -16L1 -62C1 -68 9 -68 9 -62L9 -14C14 -16 19 -12 18 -6C18 4 16 14 12 22Z"/>' +
-    '<path class="fx2-knuck" d="M9 -9C13 -10 15 -8 16 -5M-17 4C-12 2 -9 -2 -9 -8"/><rect class="fx2-cuff" x="-14" y="20" width="26" height="12" rx="6"/>';
+  var TWO = '<g class="fx2-gl"><path class="fx2-glove" d="M-15 -4C-21 -10 -23 -18 -19 -22C-15 -24 -12 -18 -11 -12Z"/>' +
+    '<rect class="fx2-glove" x="-9.5" y="-60" width="8.5" height="44" rx="4.2"/><rect class="fx2-glove" x="0.5" y="-66" width="8.5" height="50" rx="4.2"/>' +
+    '<rect class="fx2-glove" x="8" y="-30" width="8" height="14" rx="4"/><rect class="fx2-glove" x="13.5" y="-26" width="7" height="12" rx="3.5"/>' +
+    '<path class="fx2-glove" d="M-16 22C-19 8 -18 -6 -15 -18C-8 -22 9 -22 17 -16C20 -4 18 10 13 22Z"/>' +
+    '<path class="fx2-gl-cr" d="M-8 -17q3 -2.5 6 0M1.5 -17q3 -2.5 6 0M9 -18q3 -2 6 0M14 -15q2.6 -2 5.2 0"/>' +
+    '<path class="fx2-gl-hi" d="M-7 -55V-22M3 -61V-22M-12 12C-14 2 -14 -6 -12 -13"/>' +
+    '<rect class="fx2-glove fx2-cuff" x="-15" y="18" width="29" height="12" rx="4"/><rect class="fx2-rim" x="-16" y="27" width="31" height="5" rx="2.5"/></g>';
   // at adult size: a hand is about 0.8 of his head's length
   function glove(x, y, rot, cls, sc, shape){ return '<g' + (cls ? ' class="' + cls + '"' : '') + ' transform="translate(' + x + ' ' + y + ') rotate(' + rot + ') scale(' + (sc || 1.45) + ')">' + (shape || GLOVE) + '</g>'; }
   // the jaw thrust, the EMT at his head: fingers hooked behind the angle of the jaw, the thumb on the cheekbone (one
   // side; the other is its mirror)
   // CPR: the heel of one hand on the lower half of the breastbone, the other hand on top, fingers laced and lifted
   // across his chest; the EMT's forearms come in from his right side (image px)
-  var HAND = 'M222 280C236 273 262 273 282 277L304 281C310 283 310 291 304 292L286 291L306 297C312 299 311 307 305 307L286 305L302 313C307 316 304 323 298 321L280 317C262 324 236 326 224 320Z';
-  // the bottom hand sits 12 px toward his head with its own forearm and cuff; the top hand's fingers lace over it
-  var CPRH = '<g transform="translate(0 -13)"><path class="fx2-sleeve" d="M60 266L214 278L214 304L60 304Z"/><rect class="fx2-cuff" x="204" y="274" width="16" height="32" rx="6"/><path class="fx2-glove" d="' + HAND + '"/></g>' +
-    '<g transform="translate(2 9)"><path class="fx2-sleeve fx2-sleeve2" d="M60 300L214 290L214 318L60 334Z"/><rect class="fx2-cuff" x="204" y="286" width="16" height="34" rx="6"/><path class="fx2-glove fx2-topg" d="' + HAND + '"/></g>' +
-    '<path class="fx2-lace" d="M270 279C278 270 288 268 296 270M268 290C278 282 290 280 300 282M266 301C276 294 288 292 298 294"/>';
-  var JAW = '<path class="fx2-glove" d="M176 4C166 40 168 88 180 118L196 146C204 158 216 154 214 143L203 117C200 100 200 80 205 64C208 44 202 18 192 6Z"/>' +
-    '<path class="fx2-glove" d="M203 62C213 66 222 78 225 91C227 99 219 102 215 96C211 88 205 82 199 79Z"/>' +
-    '<path class="fx2-knuck" d="M184 114L199 141M190 110L205 136"/><rect class="fx2-cuff" x="166" y="-14" width="30" height="16" rx="7" transform="rotate(-6 181 -6)"/>';
+  var CPRH = '<path class="fx2-sleeve" d="M60 262L212 268L212 290L60 294Z"/><path class="fx2-sleeve fx2-sleeve2" d="M60 306L214 292L214 312L60 336Z"/>' +
+    glove(224, 279, 96, '', 1.35) + glove(230, 301, 84, 'fx2-top', 1.35);
+  // the jaw thrust (one side; the other is its mirror): fingers down the side of the face to the angle of the jaw,
+  // the thumb in on the cheekbone, the fingertips hooked behind the angle
+  var JAW = '<g transform="translate(192 72) rotate(180) scale(-1.3 1.3)">' + GLOVE + '</g><path class="fx2-gl-hook" d="M174 141Q190 153 210 146"/>';
 
   function build(o){
     var K = window.LevlKit2, studio = o && o.studio;
@@ -272,6 +282,8 @@
         '<linearGradient id="fx2-blg" x1="0" x2="1"><stop offset="0" stop-color="#7C5E96"/><stop offset=".45" stop-color="#9677B2"/><stop offset="1" stop-color="#7A5C94"/></linearGradient>' +
         ['tee:#C29630:#E2BC55', 'work:#46543A:#677852', 'pants:#2C3646:#4A586D', 'blue:#628BB6:#93B9DE'].map(function(g){ var q = g.split(':');
           return '<linearGradient id="fx2-g-' + q[0] + '" x1="0" x2="1"><stop offset="0" stop-color="' + q[1] + '"/><stop offset=".5" stop-color="' + q[2] + '"/><stop offset="1" stop-color="' + q[1] + '"/></linearGradient>'; }).join('') +
+        '<radialGradient id="fx2-nit" cx=".4" cy=".35" r=".85"><stop offset="0" stop-color="#A29EF4"/><stop offset=".55" stop-color="#736ED9"/><stop offset="1" stop-color="#4E48B6"/></radialGradient>' +
+        '<radialGradient id="fx2-nit2" cx=".4" cy=".35" r=".85"><stop offset="0" stop-color="#B3AFF7"/><stop offset=".55" stop-color="#837EE3"/><stop offset="1" stop-color="#5D57C4"/></radialGradient>' +
         '<radialGradient id="fx2-flash"><stop offset="0" stop-color="#FFF7C2" stop-opacity=".95"/><stop offset="1" stop-color="#FFE45C" stop-opacity="0"/></radialGradient>' +
         (F ? '<clipPath id="fx2-body"><path d="' + F.outline + '"/></clipPath>' : '');
       gClip.setAttribute('clip-path', 'url(#fx2-sc)');

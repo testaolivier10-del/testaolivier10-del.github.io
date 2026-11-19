@@ -78,10 +78,15 @@
 .fx2-snore.is-on .fx2-arc{animation:fx2-snore 1.6s ease-out infinite;}
 .fx2-arc1{animation-delay:.2s !important;} .fx2-arc2{animation-delay:.4s !important;}
 @keyframes fx2-snore{0%{opacity:0;}30%{opacity:.9;}100%{opacity:0;}}
-.fx2-glove{fill:#6F6BD8;stroke:#3F3A9E;stroke-width:2.4;stroke-linejoin:round;} .fx2-cuff{fill:#3A4A60;}
+.fx2-glove{fill:url(#fx2-nit);stroke:#3A3492;stroke-width:1.5;stroke-linejoin:round;}
+.fx2-cuff{fill:url(#fx2-nit);} .fx2-rim{fill:#9D99EE;stroke:#3A3492;stroke-width:1.3;}
+.fx2-gl-cr{fill:none;stroke:#3A3492;stroke-width:1.2;stroke-linecap:round;opacity:.75;}
+.fx2-gl-hi{fill:none;stroke:#FFFFFF;stroke-width:1.5;stroke-linecap:round;opacity:.5;}
+.fx2-gl-hook{fill:none;stroke:#3A3492;stroke-width:3;stroke-linecap:round;opacity:.6;}
+.fx2-gl{filter:drop-shadow(0 2px 1.5px rgba(0,0,0,.28));}
 .fx2-jaw.is-on .fx2-jaw-l{animation:fx2-lift .9s ease-out .35s both;}
 @keyframes fx2-lift{0%{transform:translate(0,-6px);}100%{transform:translate(0,5px);}}
-.fx2-top .fx2-glove{fill:#7C78E0;}
+.fx2-top .fx2-glove{fill:url(#fx2-nit2);}
 .fx2-rl{fill:none;stroke:#FFFFFF;stroke-width:6;stroke-linecap:round;opacity:.0;}
 .fx2-rglow{fill:#FFFFFF;opacity:0;}
 .fx2-rise.is-on .fx2-rl,.fx2-gasp.is-on .fx2-rl{animation:fx2-rise 3.3s ease-in-out infinite;}
@@ -216,6 +221,5 @@
   .fx2-jets.is-on .fx2-jet,.fx2-jets.is-on .fx2-jet-e{stroke-dasharray:none;}
   .fx2-rise.is-on .fx2-rl{opacity:.85;}
 }
-.fx2-sleeve{fill:#24344A;} .fx2-topg{fill:#7C78E0;}
+.fx2-sleeve{fill:#24344A;}
 .fx2-sleeve2{fill:#2E4260;}
-.fx2-lace{fill:none;stroke:#3F3A9E;stroke-width:5;stroke-linecap:round;}
