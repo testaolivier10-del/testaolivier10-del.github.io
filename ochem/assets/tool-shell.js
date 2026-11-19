@@ -98,9 +98,7 @@
                          a function giving the mode now showing.
        builder(box)      a mounted molecule builder made calm: the type row
                          and its quick picks first, the canvas, palette and
-                         atom tools behind "Draw it yourself".
-       scrollChips(el)   every .tchips row inside el becomes one scrolling
-                         row on a phone; group labels become .ls-lbl. */
+                         atom tools behind "Draw it yourself". */
   /* The finished card's extras, the same for every ochem tool: Full explanation (Why), Check yourself (the
      quiz, with its length), and the lesson (topic: a data-topic in Keep going; else its first lesson). */
   function extras(o){
@@ -115,37 +113,6 @@
 
   /* extras(o) above; menuItems: the menu's Check yourself and Keep going, for a tool that adds its own
      items (studio.menu({ items: Kit.menuItems.concat([...]) })). */
-  /* chipPicker(sets, o): a tool's rows of scenario chips become ONE grouped dropdown on the stage (the standard
-     frame). sets: [{ el, label }]; an .ap-group inside a set is its own group, named by its .ap-group__label.
-     The chips stay in the page, out of sight: a pick clicks the chip, so the tool's own handler runs, and the
-     dropdown follows whichever chip is on. o: { label, mode }. Returns the picker. */
-  function chipPicker(sets, o){
-    if(!studio || !studio.picker) return null;
-    var groups = [], first = null;
-    sets.forEach(function(set){
-      if(!set.el) return;
-      var gs = set.el.querySelectorAll('.ap-group');
-      (gs.length ? [].slice.call(gs) : [set.el]).forEach(function(g){
-        var lab = g.querySelector('.ap-group__label');
-        var items = [].slice.call(g.querySelectorAll('[data-id]')).map(function(b){ return { value: b.getAttribute('data-id'), label: b.textContent.trim() }; });
-        if(items.length){ groups.push({ label: lab ? lab.textContent.trim() : set.label, items: items }); if(!first) first = items[0].value; }
-      });
-    });
-    function onChip(){ var on = null; sets.forEach(function(s){ if(!on && s.el) on = s.el.querySelector('[data-id].on'); }); return on; }
-    var cur = onChip();
-    var p = studio.picker({ label: o.label, groups: groups, value: cur ? cur.getAttribute('data-id') : first, onChange: function(v){
-      var b = null; sets.forEach(function(s){ if(!b && s.el) b = s.el.querySelector('[data-id="' + v + '"]'); });
-      if(b) b.click();
-    } }, o.mode);
-    sets.forEach(function(s){
-      if(!s.el) return;
-      s.el.classList.add('ls-chips-hidden');
-      if(window.MutationObserver) new MutationObserver(function(){ var b = onChip(); if(b) p.value(b.getAttribute('data-id')); })
-        .observe(s.el, { subtree: true, attributes: true, attributeFilter: ['class'] });
-    });
-    return p;
-  }
-
   /* kit2(o): the tools v2 arrangement (docs/tools-v2-standard.md), this course layer's adapter for the shared kit
      (assets/course/tool-kit2.js; a tool with `kit2: true` in the registry loads it). The tool builds its own stage
      with the kit and hands it over:
@@ -198,7 +165,6 @@
     extras: extras,
     kit2: kit2,
     menuItems: menuItems,
-    chipPicker: chipPicker,
     seg: function(seg, attr){
       if(!studio || !seg) return function(){ return null; };
       function now(){ var b = seg.querySelector('button.on') || seg.querySelector('button'); return b ? b.getAttribute(attr) : null; }
@@ -226,11 +192,6 @@
         if(window.MutationObserver) new MutationObserver(function(){ if(st.querySelector('.tnote--bad')) d.open = true; }).observe(st, { childList: true, subtree: true });
       }
       var q = mb.querySelector('.mb__quick'); if(q) q.classList.add('ls-scroll');
-    },
-    scrollChips: function(el){
-      if(!el) return;
-      el.querySelectorAll('.tchips').forEach(function(c){ c.classList.add('ls-scroll'); });
-      el.querySelectorAll('.ap-group__label').forEach(function(l){ l.classList.add('ls-lbl'); });
     }
   };
 

@@ -754,16 +754,13 @@
         '<button type="button" data-mode="puzzle">Identify it</button>' +
         '<button type="button" data-mode="ref">Reference</button>' +
       '</div>' +
-      '<p class="tool-step" id="spStep"></p>' +
       '<span class="tmuted tool-meta" id="spScore"></span>' +
     '</div>' +
 
     '<div id="spPredict">' +
       '<div class="tpanel">' +
         '<div class="tpanel__head"><span>Pick a compound</span></div>' +
-        '<div class="tchips" id="spPicker"></div>' +
         '<details class="tool-more" id="spMore"><summary>Other compounds, or draw your own</summary>' +
-          '<div class="tchips" id="spPicker2"></div>' +
           '<div class="trow" style="margin-top:12px;">' +
             '<button type="button" class="tchip tchip--ghost" id="spBuildToggle">Predict your own &rarr;</button>' +
           '</div>' +
@@ -857,31 +854,18 @@
       // The packing depends on the chart's width, which is only known once the view is showing.
       if(m === 'ref') redrawRef();
       if(m === 'puzzle' && !puzzle) newPuzzle();
-      setStep(m);
     });
   });
 
   /* ---- Predict mode ------------------------------------------------------ */
 
-  function cchip(c){
-    return '<button type="button" class="tchip" data-id="' + esc(c.id) + '">' + esc(c.name) + '</button>';
+  // The compounds: the first six "Start here", the rest "More compounds" (one dropdown on the stage, set up with the studio).
+  var cPick = null;
+  function pickCompound(id){
+    COMPOUNDS.forEach(function(c){ if(c.id === id) compound = c; });
+    hlIR = null; hlNMR = null;
+    renderPredict();
   }
-  document.getElementById('spPicker').innerHTML = COMPOUNDS.slice(0, 6).map(cchip).join('');
-  document.getElementById('spPicker2').innerHTML = COMPOUNDS.slice(6).map(cchip).join('');
-  var STEP = {
-    predict: '<b>Tap a peak or a signal</b> to see which part of the molecule makes it.',
-    puzzle: '<b>Read the data, then name the compound.</b>',
-    ref: 'Where each kind of bond and hydrogen shows up. <b>Tap a band or a zone.</b>'
-  };
-  function setStep(m){ document.getElementById('spStep').innerHTML = STEP[m] || STEP.predict; }
-  setStep('predict');
-  document.querySelectorAll('#spPicker [data-id], #spPicker2 [data-id]').forEach(function(b){
-    b.addEventListener('click', function(){
-      COMPOUNDS.forEach(function(c){ if(c.id === b.getAttribute('data-id')) compound = c; });
-      hlIR = null; hlNMR = null;
-      renderPredict();
-    });
-  });
 
   function syncState(){
     if(!window.OchemToolState) return;
@@ -896,10 +880,9 @@
   var spIROpen = false, spNMROpen = false;
   function renderPredict(){
     syncState();
-    document.querySelectorAll('#spPicker [data-id], #spPicker2 [data-id]').forEach(function(b){
-      b.classList.toggle('on', b.getAttribute('data-id') === compound.id);
-    });
-    if(document.querySelector('#spPicker2 [data-id="' + compound.id + '"]')) document.getElementById('spMore').open = true;
+    var ci = COMPOUNDS.indexOf(compound);
+    if(ci >= 0 && cPick) cPick.value(compound.id);
+    if(ci >= 6) document.getElementById('spMore').open = true;
     document.getElementById('spName').textContent =
       (compound.structure ? compound.structure + ' · ' : '') + compound.formula;
 
@@ -1331,7 +1314,6 @@
       studio.root.classList.toggle('sp-ls-nmr', ls.view === 'nmr');
       studioPredict();
     });
-    var spPick = $('spPicker'); spPick.classList.add('ls-scroll');
     var predStage = mk('sp-ls-pred'); predStage.appendChild(root.querySelector('.sp-irlink')); predStage.appendChild(root.querySelector('.sp-nmrlink'));
     var whyPeak = mk('sp-ls-peak');
     whyPeak.appendChild($('spLinkNote'));
@@ -1347,12 +1329,12 @@
     studio.add('stage', predStage, { mode: 'predict' });
     studio.add('stage', puzStage, { mode: 'puzzle' });
     studio.add('stage', refStage, { mode: 'ref' });
-    studio.add('dock', [view, spPick, $('spMore')], { mode: 'predict' });
+    studio.add('dock', [view, $('spMore')], { mode: 'predict' });
     // The standard frame (F1): the compounds in one grouped dropdown on the stage; drawing your own keeps its disclosure.
-    if(Kit.chipPicker){
-      Kit.chipPicker([{ el: spPick, label: 'Start here' }, { el: $('spPicker2'), label: 'More compounds' }], { label: 'Compound', mode: 'predict' });
-      $('spMore').querySelector('summary').textContent = 'Draw your own';
-    }
+    var cItem = function(c){ return { value: c.id, label: c.name }; };
+    cPick = studio.picker({ label: 'Compound', groups: [{ label: 'Start here', items: COMPOUNDS.slice(0, 6).map(cItem) }, { label: 'More compounds', items: COMPOUNDS.slice(6).map(cItem) }],
+      value: COMPOUNDS.indexOf(compound) >= 0 ? compound.id : COMPOUNDS[0].id, onChange: pickCompound }, 'predict');
+    $('spMore').querySelector('summary').textContent = 'Draw your own';
     studio.add('dock', ansBox, { mode: 'puzzle' });
     studio.add('dock', formula, { mode: 'ref' });
     studio.add('why', [$('spPredicted'), whyPeak], { mode: 'predict' });
@@ -1505,7 +1487,6 @@
           msg.innerHTML = '<div class="tnote tnote--good" style="margin-top:12px;">' +
             '<span class="tnote__k">Predicted</span>' + p.ir.length + ' IR band' + (p.ir.length === 1 ? '' : 's') +
             ' and ' + p.nmr.length + ' NMR signal' + (p.nmr.length === 1 ? '' : 's') + '. Both spectra are below.</div>';
-          document.querySelectorAll('#spPicker [data-id], #spPicker2 [data-id]').forEach(function(b){ b.classList.remove('on'); });
           p._st = st;
           compound = p;
           hlIR = null; hlNMR = null;
