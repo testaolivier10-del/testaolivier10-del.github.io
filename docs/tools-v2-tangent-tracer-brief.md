@@ -203,3 +203,5 @@ box. The should fix too: the magnifier's small source ring at P is gone and the 
 car (one circle near the car). The sweep now asserts that no tag touches `.tt2-pdot` and checks tab 2 at
 h = 1, −0.5, 0.05, ±0.01, ±0.001.
 
+Checks after recheck 1: sweep one width per process, 1410 states, 16534 checks, 0 failures at all ten widths;
+`build-apcalc --check` (333), `build-apcalcbc --check` (420), `build-apmacro --check` clean; preview and shots regenerated.
