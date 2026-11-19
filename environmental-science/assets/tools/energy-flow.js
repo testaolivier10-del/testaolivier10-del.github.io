@@ -411,8 +411,8 @@
     });
     function CHAIN_WEB(){ return EF.webOf('grassland'); }
     var cues = {
-      chain: K.cue(layer, { key: 'apenv-ef-chain', text: 'Drag up', side: 'right', at: function(){ return G && G.track ? [G.track[0] + knobR + 4, G.track[1] + (G.ph ? 26 : 0)] : [0, 0]; } }),
-      eat: K.cue(layer, { key: 'apenv-ef-eat', text: 'Drag to feed cattle', side: 'below', at: function(){ return G && G.strack ? [G.strack[0], G.strack[1] + knobR + 2] : [0, 0]; } }),
+      chain: K.cue(layer, { key: 'apenv-ef-chain', text: 'Drag up', side: 'right', at: function(){ return G && G.track ? [G.track[0] + knobR + 4, G.track[1] + (G.ph ? 32 : 0)] : [0, 0]; } }),
+      eat: K.cue(layer, { key: 'apenv-ef-eat', text: 'Drag to feed cattle', side: 'right', at: function(){ return G && G.strack ? [G.strack[0] + knobR + 4, G.strack[1]] : [0, 0]; } }),
       web: K.cue(layer, { key: 'apenv-ef-web', text: 'Tap an animal', side: 'below', at: function(){ var p = G && G.pos && G.pos.grasshopper; return p ? [p.x, p.y + G.r + G.fs * 1.9 + 2] : [0, 0]; } })
     };
     function used(){ Object.keys(cues).forEach(function(k){ if(k === S.ch && cues[k].active()) cues[k].hide(true); }); }
@@ -439,7 +439,7 @@
 
     /* ---- the loop: everything shown eases toward the setting; a change runs as an animation */
     var raf = 0, lastT = 0;
-    function kick(){ if(K.reduced()){ settleAll(); flash(); draw(); return; } if(!raf){ lastT = 0; raf = requestAnimationFrame(tick); } }
+    function kick(){ if(K.reduced()){ settleAll(); flash(); draw(); return; } if(!raf){ lastT = 0; stage.setAttribute('data-busy', '1'); raf = requestAnimationFrame(tick); } }
     function settleAll(){
       S.p = S.lvl; S.fs = S.share;
       var fp = EF.field(S.share).people, nc = cowN(S.share);
@@ -539,7 +539,7 @@
       var want = [0, 3, 2, 1, 1][t.k] + (g.ph ? 0 : [0, 1, 1, 1, 0][t.k]), sz = Math.min(hgt, (x1 - x0) / Math.max(1, want) * 0.95);
       if(x1 - x0 < 30){
         // a narrow top tier on a phone: one animal, right of the stream and its knob, sized from the tier
-        var ax0 = t.L(t.yc) + g.ins + knobR + 4, ax1 = lab.inside ? lab.x - lab.w - 4 : t.R(t.yc) - 4, s1 = Math.max(32, Math.min(hgt, (ax1 - ax0) * 1.05, g.th - 16)), c1 = Math.max(ax0 + s1 / 2, (ax0 + ax1) / 2);
+        var ax0 = t.L(t.yc) + g.ins + knobR + 4, ax1 = lab.inside ? lab.x - lab.w - 4 : t.R(t.yc) - 4, s1 = Math.max(32, Math.min(hgt, (ax1 - ax0) * 1.05, g.th - 16)), c1 = Math.min(Math.max(ax0 + s1 / 2, (ax0 + ax1) / 2), ax1 - s1 / 2);
         return '<ellipse class="efa-shadow" cx="' + n1(c1) + '" cy="' + n1(t.yb - 6) + '" rx="' + n1(s1 * 0.32) + '" ry="3"/>' + art(id, c1, t.yb - 4 - s1 * 0.45, s1);
       }
       if(sz < 22){ want = Math.max(1, Math.floor((x1 - x0) / 24)); sz = Math.min(hgt, (x1 - x0) / want * 0.95); }
@@ -634,14 +634,14 @@
           out.push(pill(hx, hy, '90% heat', 'is-heat', fs - 1.5, 'end').svg);
           var ow = tw('10% on', fs - 1.5, true) + 14;
           if(kb[0] - 6 - ow >= 4) out.push(pill(kb[0] - 4, kp[1], '10% on', 'is-energy', fs - 1.5, 'end').svg);   // left of the knob, in the sky
-          else out.push(pill(Math.max(sxB + 10, kp[0] + 6), Math.max(yB - 2, kb[3] + fs * 0.75 + 2), '10% on', 'is-energy', fs - 1.5, 'start').svg);
+          else out.push(pill(kp[0], kb[1] - fs * 0.75 - 4, '10% on', 'is-energy', fs - 1.5).svg);   // above the knob: the tenth that goes on, up
         }
       }
       // the tiers' labels (the energy written once it arrives): their own layer, rebuilt only when they change
       out.push('\u0000');
       g.tiers.forEach(function(t){
         var on = clamp(p - t.k + 1, 0, 1), at = p >= t.k - 0.001;
-        var lab = labelSpot(g, t), ly = t.k === 0 && g.ph ? t.yt + fs * 0.9 + 2 : t.yc - (at ? fs * 0.72 + 2 : 0), cls = lab.inside ? 'efa-lab is-in' : 'efa-lab';
+        var lab = labelSpot(g, t), ly = t.k === 0 && g.ph ? t.yt + fs * 0.75 : t.yc - (at ? fs * 0.72 + 2 : 0), cls = lab.inside ? 'efa-lab is-in' : 'efa-lab';
         out.push('<text class="' + cls + '" x="' + n1(lab.x) + '" y="' + n1(ly + fs * 0.35) + '" text-anchor="' + lab.anchor + '" style="font-size:' + fs + 'px">' + esc(NAME[t.k]) + '</text>');
         if(at) out.push('<text class="efa-val" x="' + n1(lab.x) + '" y="' + n1(ly + fs * 1.8 + 4) + '" text-anchor="' + lab.anchor + '" style="font-size:' + fs + 'px">' + esc(kc(P.levels[t.k].energy)) + (t.k ? '<tspan class="efa-sh"> ' + esc(pct(P.levels[t.k].share)) + '</tspan>' : '') + '</text>');
       });
@@ -754,7 +754,7 @@
 
     /* ================= chapter 3: the food web */
     var WPOS = { grass: [0.5, 0.92], grasshopper: [0.14, 0.68], rabbit: [0.86, 0.68], mouse: [0.5, 0.6], frog: [0.13, 0.36], snake: [0.36, 0.16], fox: [0.86, 0.36], hawk: [0.66, 0.06] };
-    var WPOS_PH = { grass: [0.5, 0.95], grasshopper: [0.1, 0.72], rabbit: [0.88, 0.72], mouse: [0.5, 0.57], frog: [0.1, 0.44], snake: [0.34, 0.13], fox: [0.92, 0.36], hawk: [0.66, 0.02] };
+    var WPOS_PH = { grass: [0.56, 0.95], grasshopper: [0.1, 0.72], rabbit: [0.88, 0.72], mouse: [0.5, 0.57], frog: [0.1, 0.43], snake: [0.34, 0.11], fox: [0.92, 0.36], hawk: [0.66, 0.02] };
     function geoWeb(W, H){
       var ph = W < 640, top = ph ? 50 : 56, bot = ph ? 44 : 48, side = ph ? 38 : Math.max(80, W * 0.12), pos = {};
       var r = Math.min(ph ? 29 : 44, (H - top - bot) * 0.1, W * 0.08);

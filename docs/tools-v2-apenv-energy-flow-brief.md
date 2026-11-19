@@ -173,3 +173,12 @@ Rechecked: sweep one width per process, 17 chapter 1 to 3 states at 10 widths, d
 0 failed**. Playwright (390 real touch, 768, 1440, light and dark, reduced motion, `?seed=`): 113 passed; a drill wrong
 then right. `node --test scripts/test/apenv-*.test.mjs` 186 pass, content and build checks, `check-site`,
 `check-weight`. Preview and shots regenerated.
+
+## Recheck 1 (2026-11-18, PASS) and the small touches
+The reviewer's five near touches at 360 and 390 are cleared, each gap at least 4 px: "Drag up" sits lower and the
+grass label higher; "Drag to feed cattle" sits right of the knob, over the corn; the hawk on a narrow tier stays left of
+its label; "10% on" goes above the knob when the sky beside it is too narrow (no longer next to "90% heat"); on phones
+the frog sits a little lower and the snake higher, and the grass a little right of the web cue. The sweep now asks for
+4 px between labels, pills and badges, between cues or tags and labels, and between animals and labels (chapter 1),
+and no cue on an animal. The stage reports busy from the moment a change starts. Merged `claude/tools-v2-all` again.
+Sweep at 360, 390, 1440 (one per process): 12,677 passed, 0 failed; APES tests 186 pass, content and build checks pass.
