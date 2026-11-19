@@ -252,14 +252,16 @@
       var p = V.project(St.card);
       var W = body.clientWidth, H = body.clientHeight;
       if(!p || !W) return;
-      var wide = W >= 700;
+      // beside the part only when one side has room for the whole card; otherwise docked along the bottom
+      var cw0 = 330, room0 = Math.max(p.r, 26) + 34;
+      var wide = W >= 700 && (p.x + room0 + cw0 <= W - 14 || p.x - room0 - cw0 >= 14);
       card.classList.toggle('is-dock', !wide);
       // a docked card covers the legend's corner: the legend steps aside while it shows
       legendOff(!wide);
       var cw = card.offsetWidth, ch = card.offsetHeight, x, y;
       var px = clamp(p.x, 8, W - 8), py = clamp(p.y, 8, H - 8);
       if(wide){
-        var room = Math.max(p.r, 26) + 34, right = px + room + cw <= W - 14 || px < W / 2;
+        var room = Math.max(p.r, 26) + 34, fitR = px + room + cw <= W - 14, fitL = px - room - cw >= 14, right = fitR && (!fitL || px < W / 2);
         x = right ? clamp(px + room, 14, W - cw - 14) : clamp(px - room - cw, 14, W - cw - 14);
         y = clamp(py - ch * 0.42, 62, Math.max(62, H - ch - 14));
         card.style.left = x + 'px'; card.style.top = y + 'px'; card.style.bottom = '';
@@ -413,7 +415,7 @@
       St.cued[St.tab] = true;
       if(cue) cue.hide(false);
       cue = cueFor(St.tab);
-      if(cue && cue.show()) cue.place();
+      if(cue && cue.show()){ cue.place(); var c0 = cue; [300, 900].forEach(function(t){ setTimeout(function(){ if(c0 === cue && cue.active()) cue.place(); }, t); }); }
     }
     function hideCue(used){ if(cue && cue.active()) cue.hide(used); }
     var tour = K.tour({ key: 'nremt-body-map', label: 'Show me how', steps: [
