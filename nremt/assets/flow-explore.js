@@ -41,7 +41,7 @@
     { id: 'primary', name: 'Primary assessment', short: 'Primary', scene: 'garage', chart: 'flow-primary-assessment-sequence',
       who: 'Man, 45, fell from a ladder onto glass', purpose: 'What you find on him picks the next step.',
       whole: [-30, 1000], start: ['Scene safe, gloves on'],
-      take: 'Fix each threat as you find it: bleeding, airway, breathing, then shock.',
+      take: 'Fix each threat as you find it: bleeding, airway, breathing, shock.',
       end: 'Reassess every 5 min',
       steps: [
         { id: 'avpu', q: 'Responds to?', see: 'Eyes open to voice', look: [-40, 520], check: 'voice',
@@ -58,15 +58,15 @@
           arms: [
             { t: 'Yes', con: 'Lips turn blue', res: 'tongue still blocks it', bad: 'blue' },
             { t: 'No', ok: true, act: 'Jaw thrust', res: 'air moves freely', fx: 'jaw' }] },
-        { id: 'breath', q: 'Breathing OK?', see: 'Deep, 18 a minute', look: [-40, 600], check: 'breathe',
+        { id: 'breath', q: 'Breathing OK?', see: 'Deep, 18 a minute', look: [-40, 470], check: 'breathe',
           arms: [
             { t: 'Yes', ok: true, res: 'on to circulation' },
             { t: 'No', con: 'Time lost', res: 'he did not need the bag', bad: 'bvm', lost: 1 }] },
-        { id: 'shock', q: 'Signs of shock?', see: 'Pale, sweaty, fast pulse', look: [-40, 680], check: 'shock',
+        { id: 'shock', q: 'Signs of shock?', see: 'Pale, sweaty, fast pulse', look: [-30, 620], check: 'shock',
           arms: [
             { t: 'Yes', ok: true, act: 'Keep him warm', res: 'blanket on, kept warm', fx: 'blanket' },
             { t: 'No', con: 'Gets worse', res: 'paler and colder', bad: 'paler' }] },
-        { id: 'prio', q: 'High priority?', see: 'Altered and in shock', look: [-30, 1000], check: 'prio',
+        { id: 'prio', q: 'High priority?', see: 'Altered and in shock', look: [-40, 640], check: 'prio',
           arms: [
             { t: 'Yes', ok: true, act: 'Rapid exam, transport', res: 'transport now', fx: 'transport' },
             { t: 'No', con: 'Time lost', res: 'a slow scene delays surgery', bad: 'slow', lost: 10 }] }
@@ -74,7 +74,7 @@
     { id: 'arrest', name: 'Cardiac arrest', short: 'Arrest', scene: 'home', chart: 'flow-adult-bls-cpr-sequence-no-advanced-airway',
       who: 'Man, 62, collapsed at home', purpose: 'What you find on him picks the next step.',
       whole: [-40, 760], start: ['Scene safe'],
-      take: 'No response, no pulse: push hard and fast, and shock as soon as the AED advises.',
+      take: 'No pulse: push hard and fast, and shock when the AED says so.',
       end: 'CPR 2 min, AED rechecks',
       steps: [
         { id: 'resp', q: 'Responds?', see: 'No response', look: [-40, 560], check: 'tap',
@@ -190,7 +190,7 @@
         sc = { x: 0, y: 0, w: W - cw - 16, h: H };
         card = { x: W - cw - 6, y: 12, w: cw - 6, h: H - 24 };
       } else {
-        var sh = Math.round(clamp(H * 0.5, 230, W * 0.86));
+        var ch = 226, sh = H - ch - 14;
         sc = { x: 0, y: 0, w: W, h: sh };
         card = { x: 8, y: sh + 8, w: W - 16, h: H - sh - 14 };
       }
@@ -242,6 +242,7 @@
       var F = FIGS && FIGS.figs['adult-front'], u = [], h = [], on = [];
       defs.innerHTML = '<clipPath id="fx2-sc"><rect x="' + G.sc.x + '" y="' + G.sc.y + '" width="' + G.sc.w + '" height="' + G.sc.h + '" rx="' + (G.wide ? 16 : 12) + '"/></clipPath>' +
         '<radialGradient id="fx2-poolg"><stop offset="0" stop-color="#7A0A06"/><stop offset=".75" stop-color="#9E1209"/><stop offset="1" stop-color="#B5190E"/></radialGradient>' +
+        '<linearGradient id="fx2-blg" x1="0" x2="1"><stop offset="0" stop-color="#7C5E96"/><stop offset=".45" stop-color="#9677B2"/><stop offset="1" stop-color="#7A5C94"/></linearGradient>' +
         '<radialGradient id="fx2-flash"><stop offset="0" stop-color="#FFF7C2" stop-opacity=".95"/><stop offset="1" stop-color="#FFE45C" stop-opacity="0"/></radialGradient>' +
         (F ? '<clipPath id="fx2-body"><path d="' + F.outline + '"/></clipPath>' : '');
       gClip.setAttribute('clip-path', 'url(#fx2-sc)');
@@ -310,14 +311,14 @@
     function props(c){
       var f = T().fx, h = [];
       if(c.id === 'arrest' && G){
-        var v = cam(lookFor(c.steps[2])), a = P(560, 60, v), s = clamp(v.k * 1.25, 0.62, 1.1), w = 150 * s, hh = 110 * s;
+        var v = cam(lookFor(c.steps[2])), a = P(560, 60, v), s = clamp(v.k * 1.25, 0.68, 1.1), w = 170 * s, hh = 118 * s;
         var x = clamp(a[0] - w / 2, G.sc.x + 8, G.sc.x + G.sc.w - w - 8), y = clamp(a[1] - hh / 2, G.sc.y + 8, G.sc.y + G.sc.h - hh - 8);
         f.aedBox = [x, y, w, hh];
         h.push('<g class="fx2-aed" transform="translate(' + x.toFixed(1) + ' ' + y.toFixed(1) + ') scale(' + s.toFixed(3) + ')">' +
-          '<rect class="fx2-aed-b" x="0" y="0" width="150" height="110" rx="16"/><rect class="fx2-aed-s" x="14" y="12" width="122" height="58" rx="6"/>' +
-          '<path class="fx2-vf" d="M20 44q6 -16 10 0t10 0t9 -2t11 4t9 -14t10 12t10 -6t9 10t10 -12t9 4t9 -6"/>' +
-          '<text class="fx2-aed-t" x="75" y="30" text-anchor="middle">Shock advised</text><text class="fx2-aed-t2" x="75" y="46" text-anchor="middle">Shock delivered</text>' +
-          '<circle class="fx2-aed-btn" cx="75" cy="90" r="13"/><path class="fx2-aed-bolt" d="M72 82l-5 9h6l-3 8l9 -11h-6l3 -6z"/></g>');
+          '<rect class="fx2-aed-b" x="0" y="0" width="170" height="118" rx="16"/><rect class="fx2-aed-s" x="10" y="10" width="150" height="64" rx="6"/>' +
+          '<path class="fx2-vf" d="M22 54q6 -16 10 0t10 0t9 -2t11 4t9 -14t10 12t10 -6t9 10t10 -12t9 4t9 -6t9 6t9 -8"/>' +
+          '<text class="fx2-aed-t" x="85" y="32" text-anchor="middle">Shock advised</text><text class="fx2-aed-t2" x="85" y="48" text-anchor="middle">Shock given</text>' +
+          '<circle class="fx2-aed-btn" cx="85" cy="96" r="14"/><path class="fx2-aed-bolt" d="M82 88l-5 9h6l-3 8l9 -11h-6l3 -6z"/></g>');
       }
       gProps.innerHTML = h.join('');
       paintFx(true);
@@ -703,12 +704,11 @@
     else window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(draw, 80); });
 
     /* ---------------------------------------------------- the one cue and "Show me how" */
-    var cue = K.cue(layer, { key: 'nremt-flowcharts', text: 'Look at him, then pick', side: 'above', at: function(){
+    var cue = K.cue(layer, { key: 'nremt-flowcharts', text: 'Look at him, then pick', side: 'below', at: function(){
       var all = chart.querySelectorAll('.fx2-arms'), a = all[all.length - 1], k = layer.scale(); if(!a || !k) return [0, 0];
-      var live = chart.querySelectorAll('.fx2-arm.is-live'), r = (live[0] || a).getBoundingClientRect(), h = box.getBoundingClientRect(), n = NODES['n' + (T().items.length - 1)] || null;
-      // above the decision box, so it covers no arm and no box text
-      var d = n ? n.el.getBoundingClientRect() : r;
-      return [(r.left - h.left + r.width / 2) / k, (d.top - h.top - 2) / k];
+      // under the arms (the card is empty there), so it covers no arm and no box text
+      var r = a.getBoundingClientRect(), h = box.getBoundingClientRect();
+      return [(r.left - h.left + r.width / 2) / k, (r.bottom - h.top - 22) / k];
     } });
     function showCue(){ if(St.cued || !G || !box.clientWidth) return; St.cued = true; if(cue.show()) cue.place(); }
     var tour = K.tour({ key: 'nremt-flowcharts', label: 'Show me how', steps: [

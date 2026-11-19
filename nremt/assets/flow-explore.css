@@ -17,7 +17,7 @@
 
 .fx2-scene{position:relative;flex:1 1 auto;min-height:520px;border-radius:18px;overflow:hidden;background:#C9C5BC;isolation:isolate;}
 @media (max-width:1023px){ .fx2-scene{flex:none;height:max(540px,min(72vw,640px));} }
-@media (max-width:719px){ .fx2-scene{height:max(560px,min(150vw,640px));border-radius:14px;} .fx2{gap:8px;} }
+@media (max-width:719px){ .fx2-scene{height:max(600px,min(160vw,660px));border-radius:14px;} .fx2{gap:8px;} }
 .fx2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;transition:opacity .25s ease;}
 .fx2-scene.is-swap .fx2-svg,.fx2-scene.is-swap .fx2-board,.fx2-scene.is-swap .fx2-labels{opacity:0;transition:none;}
 .fx2-scene.is-clear .fx2-labels,.fx2-scene.is-clear .fx2-chart,.fx2-scene.is-clear .fx2-on,.fx2-scene.is-clear .fx2-bub{opacity:0;transition:opacity .22s ease;}
@@ -87,7 +87,7 @@
 .fx2-pring{fill:none;stroke:#2F6FB0;stroke-width:3;}
 .fx2-wrist.is-on .fx2-pring{animation:fx2-beat .48s ease-out infinite;transform-box:fill-box;transform-origin:center;}
 @keyframes fx2-beat{0%{opacity:.8;transform:scale(.6);}100%{opacity:0;transform:scale(1.5);}}
-.fx2-bl{fill:#8E6FA8;stroke:#6B4F84;stroke-width:4;stroke-linejoin:round;} .fx2-bl-e{fill:none;stroke:#C9B6DA;stroke-width:14;stroke-linecap:round;} .fx2-bl-f{fill:none;stroke:#7A5D93;stroke-width:9;stroke-linecap:round;opacity:.55;}
+.fx2-bl{fill:url(#fx2-blg);stroke:#6B4F84;stroke-width:4;stroke-linejoin:round;} .fx2-bl-e{fill:none;stroke:#C9B6DA;stroke-width:14;stroke-linecap:round;} .fx2-bl-f{fill:none;stroke:#7A5D93;stroke-width:9;stroke-linecap:round;opacity:.55;}
 .fx2-blanket{transform:translateX(160px);transition:opacity .5s ease,transform .8s cubic-bezier(.3,.8,.3,1) !important;}
 .fx2-blanket.is-on{transform:none;}
 .fx2-sweep.is-on .fx2-sweep-h{animation:fx2-sweep 2s ease-in-out 1 both;}
@@ -112,7 +112,7 @@
 .fx2-aed-b{fill:#F2C230;stroke:#9C7A12;stroke-width:3;} .fx2-aed-s{fill:#13221B;}
 .fx2-vf{fill:none;stroke:#7CF0A6;stroke-width:2.4;stroke-linejoin:round;opacity:0;}
 .fx2-aed.is-vf .fx2-vf{opacity:1;}
-.fx2-aed-t,.fx2-aed-t2{font:800 13px var(--font-ui);fill:#FFD86B;opacity:0;transition:opacity .3s ease;}
+.fx2-aed-t,.fx2-aed-t2{font:800 17px var(--font-ui);fill:#FFD86B;opacity:0;transition:opacity .3s ease;}
 .fx2-aed.is-adv .fx2-aed-t,.fx2-aed.is-done .fx2-aed-t2{opacity:1;}
 .fx2-aed-t2{fill:#C9F4D6;}
 .fx2-aed-btn{fill:#D2382B;stroke:#7E1A12;stroke-width:2;} .fx2-aed-bolt{fill:#FFE45C;}

@@ -934,7 +934,7 @@ document.addEventListener('DOMContentLoaded', function(){
   function shown(){ var h = [].filter.call(host.querySelectorAll('h2'), function(x){ return !x.hidden; }); return h.length === 1 ? h[0] : null; }
   function readHow(){
     var h = shown(), card = h && h.nextElementSibling, notes = card ? card.querySelectorAll('.flow-note') : [];
-    return '<h3 class="ls-title-l">' + (h ? h.textContent : 'Protocol flows') + '</h3>' + LEGEND +
+    return (v2 ? '' : '<h3 class="ls-title-l">' + (h ? h.textContent : 'Protocol flows') + '</h3>') + LEGEND +
       '<p>Each fork under a question is labeled with its answer; follow the one that fits the patient. The notes under a chart say why the order is what it is.</p>' +
       [].map.call(notes, function(n){ return '<p>' + n.innerHTML + '</p>'; }).join('');
   }
