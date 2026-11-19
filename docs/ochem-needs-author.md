@@ -1182,3 +1182,42 @@ The tool had 0.15; the lessons print 0.25 (`ochem/notes/axial-equatorial.html`).
 values run from about 0.15 to 0.4.
 - **Status:** decided for the owner in review round 1; reverse by changing `SUBS.F.a` and the unit test.
 
+
+## Resonance, tools v2 (2026-11-18)
+
+The rebuild (`docs/tools-v2-resonance-brief.md`) keeps the engine (`ochem/assets/resonance-engine.js`) and every count
+it gives. Points for a person, from the accuracy check of the new picture and words:
+
+### res-v2-benzyl: the two benzyl cation forms with the ring whole are called major
+The engine's rules (octets, number of charges, like charges side by side, electronegativity) tie all five benzyl
+cation forms: each has one carbon at six electrons and one + on carbon. The tool breaks the tie the way most texts
+draw it: a form that keeps the benzene ring as three alternating double bonds (the two with + on CH₂) is major, the
+three with + on a ring carbon (ortho, para) are minor, "ring not aromatic". The real molecule then shows δ+ large on
+CH₂ and small on the ring carbons. The same tie break counts "equally good" forms in Which is more stabilized?, which
+changes one reason, not a winner: benzyl against allyl cation is still the benzyl cation, now by "How far it spreads"
+(4 atoms against 2) instead of "Equivalent contributors" (5 against 2). Phenoxide and benzene do not change (their
+ring-whole forms were already the best, or all of them).
+- **Status:** open, owner decision: keep the tie break, or call all five equal as the old tool did.
+
+### res-v2-shares: no numbers for how much each form contributes
+Major and minor forms are ranked, never weighted: the forms row draws a minor form smaller, and the real molecule's
+glow is large where a major form puts a charge and small where only a minor one does. A share is printed only where
+every form is equally good, where the plain average is exact by symmetry (−½ on each oxygen of acetate, −⅔ on each
+oxygen of carbonate and nitrate, +½ on each end of the allyl cation). The old "Where the charge sits" panel printed a
+plain average over the forms found for every species (for example −1/2 on the enolate's O and CH₂), which overstates
+the minor form; it is gone. Amide resonance's "about 40% C–N double bond character" is in the lessons, not here.
+- **Status:** open, low risk.
+
+### res-v2-held: a first push that gives an atom ten electrons is held
+A lone pair pushed into a bond to an atom that already has eight electrons (the O⁻ lone pair into C–O in acetate) is
+held with an amber ring and "10 e⁻" until a second push moves a π bond away from that atom; the cause line says
+"move a π bond off C". On paper both arrows are drawn together; the hold is the order a student draws them in, not a
+step the molecule takes. The "?" sheet says so ("the first arrow is held until then").
+- **Status:** decided for the owner, low risk.
+
+### res-v2-negligible: legal structures that are not counted
+A push the engine accepts that leaves an atom with fewer electrons than a counted form (for example acetate's C=O π
+bond pushed onto carbon: O at six electrons) is drawn and named "negligible form" with the short atom's count; it is
+not in the forms row. This is the engine's own line (`contributors()`: fewest atoms short of an octet, then charge
+separation within two of the least), unchanged.
+- **Status:** open, low risk.

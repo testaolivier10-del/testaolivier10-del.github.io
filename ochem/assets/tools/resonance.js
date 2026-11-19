@@ -109,7 +109,13 @@
   function sign(q){ return q < 0 ? (q === -1 ? '−' : -q + '−') : (q === 1 ? '+' : q + '+'); }
 
   /* The smallest set of legal moves (at most three) that turns one structure into another. */
+  var memo = {};
   function arrowsBetween(a, b){
+    var mk = R.key(a) + '>' + R.key(b);
+    if(mk in memo) return memo[mk];
+    return (memo[mk] = searchArrows(a, b));
+  }
+  function searchArrows(a, b){
     var want = R.key(b), moves = R.legalMoves(a);
     for(var size = 1; size <= 3; size++){
       var found = null;
@@ -1298,13 +1304,15 @@
       parts = [{ t: moveWords(arrows) || 'Electrons moved', role: 'e' }, { t: w2 || 'no charges', role: roleQ(st) }].concat(v2 ? [v2] : []);
     }
     cause.set(parts);
+    if(res && res.kind === 'reject' && res.v && res.v.reason) S.lastWhy = undash(res.v.reason);
     if(!early){
       var all = S.rk.length > 1 && S.rk.every(function(x){ return S.visited[x.key]; });
       if(res && res.kind === 'form' && all && !S.tookAll && S.mode === 'explore' && S.rk.length > 2){
         S.tookAll = true;
         cause.take('Every form reached. The real molecule blends them' + (S.rk[0].tag === 'equal' ? ' all equally.' : ', mostly the major ones.'));
       }
-      say(cause.text() + ' ' + boardText());
+      say(cause.text() + ' ' + (res && res.kind === 'reject' && S.lastWhy ? S.lastWhy + ' ' : '') + boardText());
+      if(res && res.kind === 'reject') refNow();
     }
     hit.setAttribute('aria-label', boardText());
   }
@@ -1342,7 +1350,7 @@
     S.hyb = S.rk.length > 1 ? hybridOf(S.rk) : null;
     var k0 = R.key(st);
     S.cur = (S.rk.filter(function(x){ return x.key === k0; })[0] || S.rk[0]).st;
-    S.pending = []; S.pendingSt = null; S.hist = []; S.visited = {}; S.visited[k0] = 1; S.tookAll = false;
+    S.pending = []; S.pendingSt = null; S.hist = []; S.visited = {}; S.visited[k0] = 1; S.tookAll = false; S.lastWhy = null;
     hunt.found = {}; hunt.found[k0] = 'given'; hunt.done = S.rk.length < 2;
     sel.querySelector('[value="__built"]').hidden = !isBuilt;
     sel.value = isBuilt ? '__built' : S.sp.id;
@@ -1351,6 +1359,16 @@
     paintAll(); words(null);
     if(fade) try{ [G.mainA, G.hyb, G.strip].forEach(function(n){ n.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 260, easing: 'ease-out' }); }); }catch(e){}
     syncState(); refNow(); placeCue();
+    warm();
+  }
+  /* The arrows between every two forms are found ahead, a pair at a time while the page is idle, so a tap on a form
+     starts moving at once (phenoxide's search is the slowest, tens of milliseconds a pair). */
+  var warmId = 0;
+  function warm(){
+    var id = ++warmId, forms = S.rk.map(function(x){ return x.st; }), pairs = [];
+    forms.forEach(function(a){ forms.forEach(function(b){ if(a !== b) pairs.push([a, b]); }); });
+    var idle = window.requestIdleCallback || function(f){ return setTimeout(function(){ f({ timeRemaining: function(){ return 8; } }); }, 60); };
+    (function step(){ idle(function(dl){ while(pairs.length && id === warmId && dl.timeRemaining() > 4){ var p = pairs.shift(); arrowsBetween(p[0], p[1]); } if(pairs.length && id === warmId) step(); }); })();
   }
 
   function syncState(){
@@ -1459,6 +1477,7 @@
         var s = R.score(f.st), d = R.describe(f.st, forms);
         return '<tr><td class="num">' + (i + 1) + '</td><td>' + (s.incomplete ? s.incomplete + ' short' : 'all complete') + '</td><td>' + esc(whereQ(f.st) || 'none') + '</td><td>' + esc(f.tag) + (f.major ? '' : ' (' + esc(verdict(f).t.replace(/^minor: /, '')) + ')') + '</td></tr>';
       }).join('') + '</tbody></table></div>';
+    if(S.lastWhy) html += '<p><b>The last push that sprang back:</b> ' + esc(S.lastWhy) + '</p>';
     if(/phenoxide|benzyl/.test(S.sp && !S.built ? S.sp.id : '')) html += '<p class="tmuted">Five forms here, four in most textbooks: the ring’s own two Kekulé forms are both counted, where a textbook usually holds the ring fixed.</p>';
     el.innerHTML = html;
   }
