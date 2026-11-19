@@ -375,7 +375,9 @@
       box.classList.toggle('is-wide', wide);
       var cols = 1;
       if(wide){
-        var hav = box.clientHeight - (board.querySelector('.ssx-top').offsetHeight + (exam.hidden ? 0 : exam.offsetHeight) + 64);
+        // the room the steps have, with the examiner's line counted at its tallest (three lines), so the number of
+        // columns never depends on the line it changes (no back and forth)
+        var hav = box.clientHeight - 230;
         cols = n * 50 > hav ? 2 : 1;
       } else cols = W >= 330 && n > 5 ? 2 : 1;
       list.style.setProperty('--rows', Math.ceil(n / cols));
