@@ -149,5 +149,38 @@ Points for a person: `docs/anp-needs-author.md`, "Pathway tracer, tools v2 drawn
   `tools/pathways.html` changed in the build. The A&P adapter (`AnpToolKit.kit2`) is used as it is: no change.
 - Sweep test `scripts/tools-v2/anp-pathways-sweep.mjs`; frame test `scripts/tools-v2/anp-pathways-frames.mjs`.
 
-## Checks run
-See the end of this file (filled in at hand in).
+## Checks run (2026-11-18)
+`node --test scripts/test/anp-*.test.mjs` 55 pass; `check-anp-content --check` 0 failing; `build-anp --check` clean;
+`check-site` OK; `check-weight --check` all 620 within budget; `build-apcalc --check` and `build-apmacro --check`
+clean (no shared file changed); `check-tool-use` with a local copy of its list: pathways sends tool-open,
+tool-touch(explore), tool-mode(quiz), tool-use as frame v2, and nothing under automation (the file itself is the
+collecting branch's, unchanged).
+Sweep (`anp-pathways-sweep.mjs`, one width per process): 63 states (every step of the four routes, the moments
+between, the end, each break with the run stopped at it) at 360, 390, 430, 600, 768, 820, 1024, 1280, 1440 and 1920,
+light and dark: 1,260 states, 0 failures (nothing clipped, labels 4 px clear of each other, the knob and the buttons,
+the cue covering no label, tab and step names fitting, the picture the largest thing, the cause line at most two
+rows on phones with one height up to 1,100 px, no sideways scroll, no console errors). Frame test
+(`anp-pathways-frames.mjs`): every 0.01 of a step on all four screens and every break, 6,137 frames at 1440 and 5,931
+at 360, 0 failures (words and labels never ahead of the picture). Performance, CPU throttled x4, a full drag of each
+route: median 16.7 ms on every screen at 390 and 1440, p95 at most 33.4 ms (an unchanged attribute is never written
+and the controls' boxes are measured only when they change, so a frame forces no layout).
+Playwright at 360, 390, 768, 1024 and 1440, light and dark (25 to 26 checks each, all pass): opens on Explore with the
+cue; a real mouse drag (desktop) and a real touch drag (phone, tablet; the page does not scroll) move the cell through
+the right ventricle; the cue leaves; ArrowRight steps; End tweens (frame caught mid way); the takeaway and the break
+button come at the end; breaking after the cell passed starts a new one; with no air two steps fail and are labeled;
+leaving for Test yourself mid tween stops it and coming back keeps the place; reduced motion is at once with a cross
+fade; Test yourself records `pathways:reflex-arc-knee:missing` as right and `pathways:hpa-axis:missing` as missed; the
+real locked page shows the Premium card and no stage; no console errors. Deep links checked: `#all`, `#<id>`,
+`#<id>/missing`, `#blood-flow/explore`, `#explore/synapse`, `?topic=synapses` (Explore), `?topic=cardiac-cycle`
+(Test yourself).
+Shots: `/mnt/user-data/outputs/anp-pathways-v2/shots/` (landing, mid drag, mid jump, breaks, every screen, Test
+yourself, locked); sweep frames in `sweep/`; preview `/mnt/user-data/outputs/anp-pathways-v2/index.html`.
+
+## Not done, and what I am not happy with
+- No real phone, screen reader pass or real students; the independent review is next.
+- On a phone the 4:3 picture is about 290 px tall with empty page below it; the heart shows only the chamber the
+  cell is in (the four chamber labels from 768 up).
+- The people (the seated leg, the standing figure) are simpler than the flagship's lake; the hormone figure's arms
+  and the reflex torso are plain.
+- The synapse's threshold bar has no label of its own (the strong "Threshold" label comes at step 8; "?" explains it).
+- Test yourself is the old tool inside the new frame (its modes as a small switch), not redesigned.
