@@ -87,7 +87,12 @@
 .px-rbc-o{fill:#C8352A;stroke:#8E2219;stroke-width:1.2;}
 .px-rbc-c{fill:#E26654;}
 
+/* the rail a knob rides on (rate, level) */
+.px-rail{fill:none;stroke:color-mix(in srgb, var(--ink) 22%, transparent);stroke-width:8;stroke-linecap:round;}
+.px-railt{stroke:color-mix(in srgb, var(--ink) 30%, transparent);stroke-width:2.5;stroke-linecap:round;}
+
 /* 1. arteriole */
+.px-fib{fill:none;stroke:#EBC9B4;stroke-width:2.2;stroke-linecap:round;opacity:.8;}
 .px-tcell ellipse{fill:#F7D9C8;stroke:#DDAF96;stroke-width:1.5;}
 .px-tcell .px-tnuc{fill:#B78FB0;stroke:none;}
 .px-capw{fill:none;stroke:#C9574A;stroke-width:24;stroke-linecap:round;stroke-linejoin:round;}
@@ -126,7 +131,7 @@
 .px-co2.is-sm{transform:scale(.62);}
 .px-puffc{fill:color-mix(in srgb, var(--px-air) 18%, #ffffff);stroke:color-mix(in srgb, var(--px-air) 45%, transparent);stroke-width:1.5;}
 .px-h circle{fill:var(--px-h);stroke:#ffffff;stroke-width:1.5;}
-.px-h text{fill:#ffffff;font-size:9.5px;font-weight:900;text-anchor:middle;font-family:var(--font-ui);}
+.px-h path{stroke:#ffffff;stroke-width:2.4;stroke-linecap:round;}
 
 /* 3. ADH and the collecting duct */
 .px-panel{fill:color-mix(in srgb, #ffffff 70%, transparent);stroke:color-mix(in srgb, var(--ink) 14%, transparent);stroke-width:2;}
@@ -135,14 +140,15 @@
 .px-stalk{fill:none;stroke:#C98E89;stroke-width:6;stroke-linecap:round;}
 .px-pit{fill:#E7A9A2;stroke:var(--px-adh);stroke-width:3;}
 .px-adhv{fill:none;stroke:#B9493D;stroke-width:12;stroke-linecap:round;stroke-linejoin:round;}
-.px-adhl{fill:none;stroke:color-mix(in srgb, var(--px-adh) 70%, #E37C6B);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:2 10;}
+.px-adhl{fill:none;stroke:color-mix(in srgb, var(--px-adh) 55%, #E37C6B);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;}
 .px-kid{stroke:#6E2620;stroke-width:2.5;}
 .px-pyr{fill:#B44E44;opacity:.75;}
 .px-ureter{fill:none;stroke:#E8C77E;stroke-width:8;stroke-linecap:round;}
 .px-bladder{fill:#FFFFFF;stroke:#B9A27A;stroke-width:2.5;}
 .px-urine{fill:color-mix(in srgb, #D9A300 var(--px-urine-k, 40%), #FFF8D8);}
 .px-inter{opacity:1;}
-.px-dlumen{fill:color-mix(in srgb, #E9C200 var(--px-urine-k, 30%), #FFFBE6);}
+.px-lum-top{stop-color:color-mix(in srgb, #E9C200 12%, #FFFBE6);}
+.px-lum-bot{stop-color:color-mix(in srgb, #E9C200 var(--px-urine-k, 30%), #FFFBE6);}
 .px-pcell{stroke:#C98468;stroke-width:1.5;}
 .px-pnuc{fill:#9B6C9C;}
 .px-memb{fill:none;stroke:#B06B55;stroke-width:3;}
@@ -158,6 +164,7 @@
 .px-myo{stroke:#6E1F17;stroke-width:3;}
 .px-cav{stroke:none;}
 .px-cav.is-de{fill:#6E8FC4;} .px-cav.is-ox{fill:#E26654;}
+.px-cor{fill:none;stroke:#E9C08E;stroke-width:3;stroke-linecap:round;opacity:.7;}
 .px-ring{fill:none;stroke:#F2E2C8;stroke-width:6;stroke-linecap:round;}
 .px-cava{fill:none;stroke:#3F5F92;stroke-width:34;stroke-linecap:round;}
 .px-cava-l{fill:none;stroke:#7B9BD0;stroke-width:24;stroke-linecap:round;}

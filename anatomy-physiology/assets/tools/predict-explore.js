@@ -65,22 +65,22 @@
 
   /* ------------------------------------------------------------------ 1. Arteriole: radius, resistance, flow */
   (function(){
-    var R0 = 40;   // the arteriole's lumen half width at its usual radius (picture units)
+    var R0 = 44;   // the arteriole's lumen half width at its usual radius (picture units)
     function muscle(r){ return 9 + 8 / Math.sqrt(r); }   // the smooth muscle coat thickens as it contracts
     /* the route of the blood: artery (cut end) -> arteriole (radius r) -> capillary bed (three capillaries) -> venule
        (cut end). Each point: [x, y, kind, spread]; kind a (artery), r (arteriole), c (capillaries), v (venule). */
     function route(L){
       if(L.id === 'wide') return [
-        [44, 236, 'a', 0], [150, 236, 'a', 0], [236, 236, 'a', 0], [276, 236, 'r', 0], [380, 236, 'r', 0], [500, 236, 'r', 0], [620, 236, 'r', 0], [700, 236, 'r', 0],
-        [744, 236, 'c', 30], [784, 236, 'c', 118], [850, 236, 'c', 126], [920, 236, 'c', 118], [960, 236, 'c', 30], [996, 236, 'v', 0], [1040, 236, 'v', 0]
+        [40, 262, 'a', 0], [150, 262, 'a', 0], [240, 262, 'a', 0], [286, 262, 'r', 0], [400, 262, 'r', 0], [520, 262, 'r', 0], [600, 262, 'r', 0], [650, 262, 'r', 0],
+        [700, 262, 'c', 34], [744, 262, 'c', 140], [810, 262, 'c', 156], [880, 262, 'c', 140], [926, 262, 'c', 34], [968, 262, 'v', 0], [1040, 262, 'v', 0]
       ];
       return [
-        [40, 128, 'a', 0], [118, 128, 'a', 0], [178, 128, 'a', 0], [214, 128, 'r', 0], [300, 128, 'r', 0], [400, 128, 'r', 0], [470, 132, 'r', 0], [520, 150, 'r', 0],
-        [548, 190, 'r', 0], [552, 240, 'r', 0], [534, 290, 'r', 0], [496, 330, 'c', 26], [450, 352, 'c', 84], [360, 360, 'c', 92], [250, 360, 'c', 92], [160, 352, 'c', 84],
-        [112, 340, 'c', 26], [84, 380, 'v', 0], [74, 450, 'v', 0], [80, 540, 'v', 0]
+        [36, 150, 'a', 0], [100, 150, 'a', 0], [150, 150, 'a', 0], [188, 150, 'r', 0], [300, 150, 'r', 0], [400, 152, 'r', 0], [446, 168, 'r', 0],
+        [470, 208, 'r', 0], [468, 256, 'r', 0], [446, 300, 'r', 0], [410, 340, 'c', 24], [370, 372, 'c', 82], [300, 380, 'c', 94], [210, 380, 'c', 94], [150, 374, 'c', 82],
+        [112, 352, 'c', 24], [88, 400, 'v', 0], [78, 480, 'v', 0], [80, 556, 'v', 0]
       ];
     }
-    var HW = { a: 54, v: 52, c: 10 };
+    var HW = { a: 56, v: 50, c: 10 };
     function hw(p, r){ return p[2] === 'r' ? R0 * r : HW[p[2]]; }
     function area(p, r){ return p[2] === 'c' ? 2600 : hw(p, r) * hw(p, r); }
     // the outline of a tube of varying width along points (left edge forward, right edge back)
@@ -101,6 +101,8 @@
       return d + 'L' + f1(e[0]) + ',' + f1(e[1]);
     }
     var LAY = { wide: { w: 1080, h: 540 }, tall: { w: 600, h: 600 } };
+    // the two gauges: [x, y, stem rotation]
+    function gauges(L){ return L.id === 'wide' ? { i: [150, 142, 0], o: [1004, 156, 0] } : { i: [92, 30, 0], o: [168, 500, 90] }; }
     function seg(L, kinds){ return route(L).filter(function(p){ return kinds.indexOf(p[2]) > -1; }); }
     // capillary i's centre line (lane -1, 0, 1), from the route's spread
     function capLine(L, lane){
@@ -113,8 +115,9 @@
       }
       return out;
     }
-    function gauge(x, y, cls){
-      return '<g class="px-gauge" transform="translate(' + f1(x) + ',' + f1(y) + ')"><path class="px-gstem" d="M0,26 V44"/><circle class="px-gface" r="25"/>' +
+    // a pressure gauge on its stem; rot turns the stem toward the vessel (0: stem down)
+    function gauge(x, y, cls, rot){
+      return '<g class="px-gauge" transform="translate(' + f1(x) + ',' + f1(y) + ')' + (rot ? ' rotate(' + rot + ')' : '') + '"><path class="px-gstem" d="M0,26 V44"/><circle class="px-gface" r="25"/>' +
         '<path class="px-gtick" d="M-17,10 L-14,8 M-19,0 L-15.5,0 M-17,-10 L-14,-8 M-10,-17 L-8,-14 M0,-20 V-16 M10,-17 L8,-14 M17,-10 L14,-8"/>' +
         '<path class="px-gneedle ' + cls + '" d="M0,0 L' + (cls === 'is-in' ? '12,-15' : '-17,6') + '"/><circle class="px-gpin" r="3.2"/></g>';
     }
@@ -137,13 +140,18 @@
           '<radialGradient id="px-tis" cx="0.5" cy="0.45" r="0.8"><stop offset="0" stop-color="#FBE8DC"/><stop offset="1" stop-color="#F1D2C0"/></radialGradient>' +
           '<linearGradient id="px-ven" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8E7CB8"/><stop offset="1" stop-color="#5E4E8E"/></linearGradient></defs>';
         s += '<rect class="px-bg" x="-400" y="0" width="' + (L.w + 800) + '" height="' + L.h + '" fill="url(#px-tis)"/>';
-        // tissue cells round the capillaries (the organ the arteriole feeds)
-        var box = L.id === 'wide' ? [740, 70, 990, 410] : [100, 236, 520, 488], cells = '';
-        scatter(L.id === 'wide' ? 22 : 24, 0.31).forEach(function(q, i){
+        // the tissue the arteriole feeds: connective tissue everywhere, its cells packed round the capillaries
+        var cells = '', fib = '', ext = L.id === 'wide' ? [-200, 0, L.w + 200, L.h] : [0, 0, L.w, L.h];
+        scatter(L.id === 'wide' ? 70 : 46, 0.13).forEach(function(q, i){
+          var x = lerp(ext[0], ext[2], q[0]), y = lerp(ext[1] + 10, ext[3] - 10, q[1]);
+          fib += '<path class="px-fib" d="M' + f1(x - 26) + ',' + f1(y) + ' q13,' + ((i % 3) * 6 - 6) + ' 26,0 t26,0"/>';
+        });
+        var box = L.id === 'wide' ? [700, 70, 940, 460] : [110, 270, 430, 500];
+        scatter(L.id === 'wide' ? 26 : 22, 0.31).forEach(function(q, i){
           var x = lerp(box[0], box[2], q[0]), y = lerp(box[1], box[3], q[1]);
           cells += '<g class="px-tcell" transform="translate(' + f1(x) + ',' + f1(y) + ') rotate(' + ((i * 37) % 60 - 30) + ')"><ellipse rx="23" ry="15"/><circle class="px-tnuc" cx="-4" cy="1" r="5"/></g>';
         });
-        s += '<g class="px-cells-t">' + cells + '</g>';
+        s += '<g class="px-fibs">' + fib + '</g><g class="px-cells-t">' + cells + '</g>';
         // the capillaries
         [-1, 0, 1].forEach(function(l){ var c = capLine(L, l); s += '<path class="px-capw" d="' + smooth(c) + '"/><path class="px-capl" d="' + smooth(c) + '"/>'; });
         // artery and venule (cut ends drawn as rims)
@@ -158,8 +166,8 @@
         s += '<path class="px-aw" data-r="aw" fill="url(#px-art)"/><path class="px-lumen" data-r="al" fill="url(#px-lum)"/><g data-r="bands"></g>';
         s += '<g data-r="rbc"></g>';
         // pressure gauges at the two ends (the pressure that drives flow)
-        var gi = L.id === 'wide' ? [140, 112] : [118, 44], go = L.id === 'wide' ? [1018, 120] : [150, 520];
-        s += gauge(gi[0], gi[1], 'is-in') + gauge(go[0], go[1], 'is-out');
+        var gg = gauges(L);
+        s += gauge(gg.i[0], gg.i[1], 'is-in', gg.i[2]) + gauge(gg.o[0], gg.o[1], 'is-out', gg.o[2]);
         return s;
       },
       init: function(E, R){
@@ -210,19 +218,19 @@
       },
       track: function(L){
         // the knob rides the arteriole's top wall
-        return L.id === 'wide' ? { x: 470, y: 236, dir: -1 } : { x: 330, y: 128, dir: -1 };
+        return L.id === 'wide' ? { x: 470, y: 262, dir: -1 } : { x: 300, y: 150, dir: -1 };
       },
       knobAt: function(v, L){ var t = this.track(L); return [t.x, t.y + t.dir * (R0 * v + muscle(v) * 0.55)]; },
       knobPick: function(x, y, L){ var t = this.track(L); return ((t.y - y) * -t.dir - 6) / R0; },
       labels: function(st, E){
         var L = E.L, r = st.c, wide = L.id === 'wide', d = st.d, off = Math.abs(r - 1) > 0.02;
-        var mid = wide ? [560, 236] : [430, 128], cap = wide ? [850, 236 + 126] : [300, 360 + 92], gi = wide ? [140, 112] : [118, 44], go = wide ? [1018, 120] : [150, 520];
+        var mid = wide ? [560, 262] : [380, 150], cap = wide ? [810, 262 + 156] : [255, 380 + 94], gg = gauges(L), gi = gg.i, go = gg.o;
         return [
-          { key: 'r', text: 'Radius ' + (off ? fmtFac(r) : ''), role: 'mus', strong: true, at: [mid[0], mid[1] + R0 * r + muscle(r) * 0.5], side: ['d'] },
-          { key: 'res', text: 'Resistance ' + (d.res ? arrow(d.res) + ' ' + fmtFac(st.v.res) : ''), role: 'res', at: [mid[0] - (wide ? 150 : 90), mid[1] - R0 * r - muscle(r)], side: ['u'] },
+          { key: 'r', text: 'Radius ' + (off ? arrow(r - 1) + ' ' + fmtFac(r) : ''), role: 'mus', strong: true, at: [mid[0], mid[1] + R0 * r + muscle(r) * 0.5], side: ['d'] },
+          { key: 'res', text: 'Resistance ' + (d.res ? arrow(d.res) + ' ' + fmtFac(st.v.res) : ''), role: 'res', at: [mid[0] - (wide ? 200 : 170), mid[1] - R0 * r - muscle(r)], side: ['u'] },
           { key: 'flow', text: 'Blood flow ' + (d.flow ? arrow(d.flow) + ' ' + fmtFac(st.v.flow) : ''), role: 'flow', at: cap, side: wide ? ['d', 'u'] : ['d', 'u'] },
-          { key: 'pin', text: 'Pressure in' + (off ? ' same' : ''), role: 'same', at: [gi[0], gi[1] - 26], side: wide ? ['u', 'r'] : ['r', 'd'] },
-          { key: 'pout', text: 'Pressure out' + (off ? ' same' : ''), role: 'same', at: [go[0], go[1] - 26], side: wide ? ['u', 'l'] : ['r', 'u'] }
+          { key: 'pin', text: 'Pressure in' + (off ? ' same' : ''), role: 'same', at: [gi[0] + 26, gi[1]], side: ['r', 'u'] },
+          { key: 'pout', text: 'Pressure out' + (off ? ' same' : ''), role: 'same', at: wide ? [go[0], go[1] - 26] : [go[0] + 26, go[1]], side: wide ? ['u', 'l'] : ['r', 'u'] }
         ];
       },
       words: function(st){
@@ -233,7 +241,7 @@
       },
       take: function(st){
         var r = st.c;
-        return 'Radius ' + fmtFac(r) + ': resistance ' + fmtFac(st.v.res) + ', so blood flow ' + fmtFac(st.v.flow) + '. The pressures at the two ends stay the same.';
+        return 'Radius ' + fmtFac(r) + ': resistance ' + fmtFac(st.v.res) + ', flow ' + fmtFac(st.v.flow) + '. The end pressures stay the same.';
       },
       note: 'Resistance depends on the fourth power of the radius, so half the radius gives 2 × 2 × 2 × 2 = 16 times the resistance and, with the pressures at the two ends held the same, one sixteenth of the flow. The blood cells move at the flow divided by the width of the vessel, so they crowd slowly through the wide capillary bed and speed through a narrow arteriole. Arterioles are where most of an organ’s resistance is, and their smooth muscle sets the radius. Not drawn: the pressure inside the capillaries beyond a squeezed arteriole falls, because more pressure is used up in the arteriole.'
     });
@@ -241,15 +249,15 @@
 
   /* ------------------------------------------------------------------ 2. Breathing: CO2, H+ and pH */
   (function(){
-    var LAY = { wide: { w: 1080, h: 540 }, tall: { w: 600, h: 600 } };
+    var LAY = { wide: { w: 1080, h: 540 }, tall: { w: 600, h: 640 } };
     function pco2(f){ return 40 * 12 / f; }
     function hco3(p){ return 24 + (p < 40 ? 0.2 : 0.1) * (p - 40); }   // acute: buffers only, kidneys not yet
     function hOf(p){ var ph = 6.1 + Math.log10(hco3(p) / (0.03 * p)); return Math.pow(10, 9 - ph); }   // nmol/L
     function sat(p){ var po = 150 - p / 0.8; return 100 / (23400 / (po * po * po + 150 * po) + 1); }
     // geometry per layout: the person, the magnified alveolus, capillary and plasma
     function G(L){
-      if(L.id === 'wide') return { man: [40, 26, 1], lens: [350, 360, 26], zoom: [420, 30, 640, 480], alv: [740, 170, 250, 120], cap: [440, 330, 1040, 400], track: [70, 498, 330, 498] };
-      return { man: [6, 6, 0.74], lens: [212, 260, 20], zoom: [24, 300, 552, 284], alv: [300, 400, 220, 66], cap: [24, 488, 576, 548], track: [300, 96, 560, 96] };
+      if(L.id === 'wide') return { man: [26, 6, 0.98], lens: [232, 330, 24], zoom: [400, 22, 660, 496], alv: [730, 222, 300, 150], cap: [400, 352, 1060, 492], track: [70, 504, 320, 504] };
+      return { man: [8, 0, 0.66], lens: [147, 218, 18], zoom: [14, 300, 572, 326], alv: [300, 425, 250, 74], cap: [14, 490, 586, 612], track: [258, 120, 548, 120] };
     }
     function person(){
       // a person from the waist up, front view, the chest opened to show the lungs (its own units, about 330 x 470)
@@ -274,7 +282,7 @@
       id: 'breath', tab: 'Breathing', short: 'Breath', topics: ['breathing-control', 'co2-transport'],
       bank: ['hyperventilation', 'breath-hold', 'opioid-overdose', 'fab-anxiety'],
       purpose: 'Change how fast you breathe and watch the blood’s pH',
-      cue: 'Drag to breathe faster or slower', thing: 'the breathing rate', layouts: LAY,
+      cue: 'Drag the breathing rate', thing: 'the breathing rate', layouts: LAY,
       ctl: { min: 8, max: 24, step: 1, base: 12, key: 1, label: 'Breaths a minute',
         text: function(v){ return Math.round(v) + ' breaths a minute'; }, tag: function(v){ return Math.round(v) + ' a min'; } },
       nodes: [
@@ -283,7 +291,7 @@
         { id: 'ph', from: 'h', tau: 0, f: function(h){ return 9 - Math.log10(h); }, abs: 0.02 },
         { id: 'sat', from: 'co2', tau: 380, f: sat, abs: 2 }
       ],
-      rest: 'Drag the knob to breathe faster or slower than the usual 12 breaths a minute.',
+      rest: 'Drag the knob to breathe faster or slower than the usual 12 a minute.',
       art: function(E){
         var L = E.L, g = G(L), s = '<defs><radialGradient id="px-bgb" cx="0.3" cy="0.3" r="1"><stop offset="0" stop-color="#F4F7FA"/><stop offset="1" stop-color="#E3EAF1"/></radialGradient>' +
           '<radialGradient id="px-alvg" cx="0.45" cy="0.35" r="0.75"><stop offset="0" stop-color="#FDF3F3"/><stop offset="1" stop-color="#F6D3D4"/></radialGradient>' +
@@ -292,8 +300,8 @@
         s += '<rect class="px-bg is-b" x="-400" y="0" width="' + (L.w + 800) + '" height="' + L.h + '" fill="url(#px-bgb)"/>';
         s += '<g transform="translate(' + g.man[0] + ',' + g.man[1] + ') scale(' + g.man[2] + ')">' + person() + '</g>';
         // the magnifier: from a spot in the right lung to the enlarged view
-        var z = g.zoom, lx = g.lens[0], ly = g.lens[1];
-        s += '<path class="px-zl" d="M' + lx + ',' + ly + ' L' + (z[0]) + ',' + (z[1] + z[3] * 0.5) + '"/><circle class="px-lens" cx="' + lx + '" cy="' + ly + '" r="' + g.lens[2] + '"/>';
+        var z = g.zoom, lx = g.lens[0], ly = g.lens[1], wideL = L.id === 'wide';
+        s += '<path class="px-zl" d="M' + lx + ',' + ly + ' L' + (wideL ? z[0] : z[0] + z[2] * 0.42) + ',' + (wideL ? z[1] + z[3] * 0.62 : z[1]) + '"/><circle class="px-lens" cx="' + lx + '" cy="' + ly + '" r="' + g.lens[2] + '"/>';
         s += '<rect class="px-zoom" x="' + z[0] + '" y="' + z[1] + '" width="' + z[2] + '" height="' + z[3] + '" rx="22"/>';
         s += '<clipPath id="px-zc"><rect x="' + z[0] + '" y="' + z[1] + '" width="' + z[2] + '" height="' + z[3] + '" rx="22"/></clipPath><g clip-path="url(#px-zc)">';
         // neighbouring alveoli, the alveolus, its airway
@@ -309,6 +317,9 @@
         s += '</g>';
         // the exhaled air at the mouth (CO2 leaving)
         s += '<g data-r="puff"></g>';
+        var tr = g.track;
+        s += '<path class="px-rail" d="M' + tr[0] + ',' + tr[1] + ' H' + tr[2] + '"/>';
+        for(var ti = 0; ti <= 4; ti++){ var tx = lerp(tr[0], tr[2], ti / 4); s += '<path class="px-railt" d="M' + f1(tx) + ',' + (tr[1] - 9) + ' V' + (tr[1] + 9) + '"/>'; }
         return s;
       },
       init: function(E, R){
@@ -323,7 +334,7 @@
         function mol(cls){ return '<g class="' + cls + '"><circle class="px-c" r="5.2"/><circle class="px-o" cx="-8.6" r="4.4"/><circle class="px-o" cx="8.6" r="4.4"/></g>'; }
         h = ''; for(i = 0; i < 18; i++) h += mol('px-co2'); R.co2b.innerHTML = h;
         h = ''; for(i = 0; i < 18; i++) h += mol('px-co2'); R.co2a.innerHTML = h;
-        h = ''; for(i = 0; i < 16; i++) h += '<g class="px-h"><circle r="9"/><text dy="0.35em">H⁺</text></g>'; R.hion.innerHTML = h;
+        h = ''; for(i = 0; i < 16; i++) h += '<g class="px-h"><circle r="9"/><path d="M-4.5,0 H4.5 M0,-4.5 V4.5"/></g>'; R.hion.innerHTML = h;
         var pb = scatter(18, 0.17), pa = scatter(18, 0.53), ph = scatter(16, 0.71);
         E.cb = [].slice.call(R.co2b.childNodes).map(function(n, k){ return { g: n, x: lerp(c[0] + 10, c[2] - 10, pb[k][0]), y: lerp(c[1] + 12, c[3] - 12, pb[k][1]), ph: k * 1.7 }; });
         E.ca = [].slice.call(R.co2a.childNodes).map(function(n, k){ var t = pa[k][0] * Math.PI * 2, rr = Math.sqrt(pa[k][1]) * 0.78; return { g: n, x: a[0] + Math.cos(t) * rr * a[2] / 2, y: a[1] + Math.sin(t) * rr * a[3] * 0.8, ph: k * 1.3 }; });
@@ -394,10 +405,8 @@
         return out;
       },
       take: function(st){
-        var p = Math.round(st.v.co2), ph = st.v.ph.toFixed(2), s = Math.round(st.v.sat), up = st.c > 12;
-        var acid = st.v.ph < 7.35 ? ' (acidosis)' : st.v.ph > 7.45 ? ' (alkalosis)' : '';
-        return up ? 'Breathing faster blows off CO₂: blood CO₂ ' + p + ' mm Hg, fewer H⁺, pH ' + ph + acid + '. O₂ saturation hardly moves (' + s + '%).'
-          : 'Breathing slower keeps CO₂ in: blood CO₂ ' + p + ' mm Hg, more H⁺, pH ' + ph + acid + '. O₂ saturation falls a little (' + s + '%).';
+        var ph = st.v.ph.toFixed(2), up = st.c > 12, ds = st.d.sat;
+        return (up ? 'Faster breathing blows off CO₂: fewer H⁺, pH ' : 'Slower breathing keeps CO₂ in: more H⁺, pH ') + ph + '. O₂ ' + (ds < 0 ? 'falls a little.' : ds > 0 ? 'rises a little.' : 'barely changes.');
       },
       note: 'Carbon dioxide leaves the body only through the lungs, so breathing more than your cells make it lowers the PCO₂ of the alveoli and of the blood; breathing less lets it build up. CO₂ + H₂O ⇌ H⁺ + HCO₃⁻: less CO₂ pulls the reaction to the left and uses up H⁺, so pH rises; more CO₂ pushes it right. Each breath out carries CO₂ in proportion to the alveolar PCO₂, so once the blood settles the CO₂ breathed out each minute equals what the cells make. The numbers are for the first minutes, with buffers only: over days the kidneys change bicarbonate and pull the pH back toward 7.40, which is not drawn. Hemoglobin is already about 97 to 98 percent saturated at a normal PO₂, so breathing faster adds almost nothing to it; breathing slower lowers alveolar PO₂ and the saturation falls a little. The rate is changed with each breath the same size.'
     });
@@ -405,12 +414,12 @@
 
   /* ------------------------------------------------------------------ 3. ADH: the collecting duct */
   (function(){
-    var LAY = { wide: { w: 1080, h: 540 }, tall: { w: 600, h: 640 } };
+    var LAY = { wide: { w: 1080, h: 540 }, tall: { w: 600, h: 660 } };
     var VIN = 12.5;   // L a day reaching the collecting ducts (model), at about 100 mOsm/L
     function osmOf(a){ return 50 + 1150 * a; }
     function G(L){
-      if(L.id === 'wide') return { duct: [560, 26, 690, 514], cap: [800, 26, 860, 514], left: [24, 24, 380, 492], pit: [118, 112], kid: [150, 310], cup: [430, 470], track: [60, 210, 330, 210], cells: 7 };
-      return { duct: [300, 210, 410, 620], cap: [492, 210, 540, 620], left: [14, 14, 586, 192], pit: [96, 86], kid: [380, 92], cup: [190, 560], track: [40, 168, 250, 168], cells: 6 };
+      if(L.id === 'wide') return { duct: [580, 26, 710, 514], cap: [840, 26, 910, 514], left: [20, 20, 372, 520], pit: [176, 112, 1], kid: [150, 344, 0.86], cup: [282, 458], track: [52, 238, 332, 238], cells: 7 };
+      return { duct: [250, 236, 360, 646], cap: [452, 236, 506, 646], left: [12, 12, 588, 216], pit: [96, 84, 0.72], kid: [340, 112, 0.5], cup: [510, 150], track: [44, 194, 284, 194], cells: 6 };
     }
     SCENES.push({
       id: 'adh', tab: 'Kidney', short: 'Kidney', topics: ['urine-concentration'],
@@ -431,25 +440,31 @@
           '<linearGradient id="px-med" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7EEDF"/><stop offset="1" stop-color="#E9D2A8"/></linearGradient>' +
           '<linearGradient id="px-cellg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#F3C7B4"/><stop offset="1" stop-color="#E7AE98"/></linearGradient>' +
           '<linearGradient id="px-capg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#D45C4C"/><stop offset="0.5" stop-color="#E37C6B"/><stop offset="1" stop-color="#C24A3C"/></linearGradient>' +
-          '<radialGradient id="px-kidg" cx="0.4" cy="0.35" r="0.8"><stop offset="0" stop-color="#C9655A"/><stop offset="1" stop-color="#93382F"/></radialGradient></defs>';
+          '<radialGradient id="px-kidg" cx="0.4" cy="0.35" r="0.8"><stop offset="0" stop-color="#C9655A"/><stop offset="1" stop-color="#93382F"/></radialGradient>' +
+          // the duct's fluid: about 100 mOsm/L where it comes in (top), the urine's concentration at the bottom
+          '<linearGradient id="px-lumg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="px-lum-top"/><stop offset="0.15" class="px-lum-top"/><stop offset="1" class="px-lum-bot"/></linearGradient></defs>';
         s += '<rect class="px-bg" x="-400" y="0" width="' + (L.w + 800) + '" height="' + L.h + '" fill="url(#px-med)"/>';
         // the left panel: the brain's pituitary releasing ADH into the blood, the kidney, the urine
         var lf = g.left;
         s += '<rect class="px-panel" x="' + lf[0] + '" y="' + lf[1] + '" width="' + (lf[2] - lf[0]) + '" height="' + (lf[3] - lf[1]) + '" rx="20"/>';
-        var p = g.pit;
-        s += '<g transform="translate(' + p[0] + ',' + p[1] + ')"><path class="px-brain" d="M-80,-30 C-86,-74 -30,-96 20,-90 C70,-84 96,-50 88,-12 C82,14 54,20 30,18 C14,30 -10,30 -24,18 C-52,22 -78,8 -80,-30 Z"/>' +
+        var p = g.pit, ps = p[2];
+        s += '<g transform="translate(' + p[0] + ',' + p[1] + ') scale(' + ps + ')"><path class="px-brain" d="M-80,-30 C-86,-74 -30,-96 20,-90 C70,-84 96,-50 88,-12 C82,14 54,20 30,18 C14,30 -10,30 -24,18 C-52,22 -78,8 -80,-30 Z"/>' +
           '<path class="px-brain-l" d="M-60,-40 q20,-12 40,0 q20,12 40,0 q14,-8 30,-2 M-50,-10 q18,-8 34,2"/>' +
           '<path class="px-stalk" d="M2,18 C4,34 6,42 4,52"/><ellipse class="px-pit" cx="6" cy="62" rx="20" ry="13"/></g>';
         // the vessel carrying ADH from the pituitary to the kidney (drawn as one vessel)
-        var k = g.kid, vpts = L.id === 'wide' ? [[p[0] + 26, p[1] + 64], [240, 180], [330, 210], [340, 260], [k[0] + 70, k[1] - 24]] : [[p[0] + 26, p[1] + 64], [180, 150], [260, 168], [330, 140], [k[0] - 54, k[1] - 6]];
+        var k = g.kid, ks = k[2], st0 = [p[0] + 24 * ps, p[1] + 64 * ps], hil = [k[0] - 4 * ks, k[1] - 16 * ks];
+        var vpts = L.id === 'wide' ? [st0, [st0[0] + 90, st0[1] + 12], [hil[0] + 110, hil[1] - 60], [hil[0] + 60, hil[1] - 6], hil]
+          : [st0, [st0[0] + 70, st0[1] + 4], [k[0] + 60 * ks, k[1] - 120 * ks], [k[0] + 50 * ks, k[1] - 30 * ks], hil];
         s += '<path class="px-adhv" d="' + P(vpts) + '"/><path class="px-adhl" d="' + P(vpts) + '"/>';
         // the kidney, its ureter and the urine collecting
-        s += '<g transform="translate(' + k[0] + ',' + k[1] + ') scale(' + (L.id === 'wide' ? 1 : 0.62) + ')"><path class="px-kid" d="M-46,-76 C-90,-74 -104,-20 -96,24 C-88,72 -40,92 -6,72 C14,60 10,36 -6,18 C-20,6 -20,-14 -4,-26 C14,-40 16,-64 -4,-76 C-16,-80 -30,-80 -46,-76 Z" fill="url(#px-kidg)"/>' +
-          '<path class="px-pyr" d="M-80,-36 L-36,-14 L-74,10 Z M-74,30 L-30,6 L-50,56 Z M-56,-66 L-22,-28 L-12,-60 Z"/><path class="px-ureter" d="M-6,10 C30,20 30,60 ' + (L.id === 'wide' ? '60,110' : '40,90') + '"/></g>';
-        var cu = g.cup;
+        var cu = g.cup, ur0 = [k[0] - 6 * ks, k[1] + 10 * ks];
+        s += '<path class="px-ureter" d="M' + f1(ur0[0]) + ',' + f1(ur0[1]) + ' C' + f1(ur0[0] + 40) + ',' + f1(ur0[1] + 10) + ' ' + f1(cu[0] - 30) + ',' + f1(cu[1] - 70) + ' ' + f1(cu[0] - 8) + ',' + f1(cu[1] - 28) + '"/>';
+        s += '<g transform="translate(' + k[0] + ',' + k[1] + ') scale(' + ks + ')"><path class="px-kid" d="M-46,-76 C-90,-74 -104,-20 -96,24 C-88,72 -40,92 -6,72 C14,60 10,36 -6,18 C-20,6 -20,-14 -4,-26 C14,-40 16,-64 -4,-76 C-16,-80 -30,-80 -46,-76 Z" fill="url(#px-kidg)"/>' +
+          '<path class="px-pyr" d="M-80,-36 L-36,-14 L-74,10 Z M-74,30 L-30,6 L-50,56 Z M-56,-66 L-22,-28 L-12,-60 Z"/></g>';
         s += '<g transform="translate(' + cu[0] + ',' + cu[1] + ')"><path class="px-bladder" d="M-34,-30 C-40,6 -22,30 0,30 C22,30 40,6 34,-30 Z"/><path class="px-urine" data-r="urine" d="M-36,-6 C-34,14 -18,28 0,28 C18,28 34,14 36,-6 Z"/></g>';
         // the medulla's interstitium: saltier deeper (darker), with the collecting duct and a capillary
-        s += '<rect class="px-inter" x="' + (L.id === 'wide' ? 400 : 230) + '" y="0" width="' + (L.id === 'wide' ? 680 : 370) + '" height="' + L.h + '" fill="url(#px-med)"/>';
+        var ix = L.id === 'wide' ? 392 : -10, iy = L.id === 'wide' ? 0 : 226;
+        s += '<rect class="px-inter" x="' + ix + '" y="' + iy + '" width="' + (L.w + 400 - ix) + '" height="' + (L.h - iy) + '" fill="url(#px-med)"/>';
         // the duct: two walls of principal cells round the lumen (fluid going down)
         var nC = g.cells, ch = (d[3] - d[1]) / nC, wall = 34, cl = '';
         for(var i = 0; i < nC; i++){
@@ -457,11 +472,13 @@
           cl += '<rect class="px-pcell" x="' + (d[0] - wall) + '" y="' + f1(y0 + 1.5) + '" width="' + wall + '" height="' + f1(ch - 3) + '" rx="7" fill="url(#px-cellg)"/><circle class="px-pnuc" cx="' + (d[0] - wall * 0.55) + '" cy="' + f1(y0 + ch * 0.5) + '" r="7"/>';
           cl += '<rect class="px-pcell" x="' + d[2] + '" y="' + f1(y0 + 1.5) + '" width="' + wall + '" height="' + f1(ch - 3) + '" rx="7" fill="url(#px-cellg)"/><circle class="px-pnuc" cx="' + (d[2] + wall * 0.55) + '" cy="' + f1(y0 + ch * 0.5) + '" r="7"/>';
         }
-        s += '<rect class="px-dlumen" data-r="dl" x="' + d[0] + '" y="' + (d[1] - 30) + '" width="' + (d[2] - d[0]) + '" height="' + (d[3] - d[1] + 60) + '"/>' + cl;
+        s += '<rect class="px-dlumen" fill="url(#px-lumg)" data-r="dl" x="' + d[0] + '" y="' + (d[1] - 30) + '" width="' + (d[2] - d[0]) + '" height="' + (d[3] - d[1] + 60) + '"/>' + cl;
         s += '<path class="px-memb" d="M' + d[0] + ',' + (d[1] - 30) + ' V' + (d[3] + 30) + ' M' + d[2] + ',' + (d[1] - 30) + ' V' + (d[3] + 30) + '"/>';
         // the capillary (blood returning toward the body)
         s += '<rect class="px-dcap" x="' + c[0] + '" y="' + (c[1] - 30) + '" width="' + (c[2] - c[0]) + '" height="' + (c[3] - c[1] + 60) + '" rx="8" fill="url(#px-capg)"/>';
         s += '<g data-r="aqp"></g><g data-r="drops"></g><g data-r="adhm"></g><g data-r="udrop"></g>';
+        var tr = g.track;
+        s += '<path class="px-rail" d="M' + tr[0] + ',' + tr[1] + ' H' + tr[2] + '"/>';
         return s;
       },
       init: function(E, R){
@@ -496,7 +513,7 @@
         // aquaporins: rank k is in the membrane when the shown level passes it; the move in or out is drawn
         var n = a * 12;
         E.aq.forEach(function(q){
-          var ins = clamp(n - q.rank, 0, 1), inX = q.x - q.side * 18, x = lerp(inX, q.x, ss(ins));
+          var ins = clamp(n - q.rank, 0, 1), inX = q.x + q.side * 20, x = lerp(inX, q.x, ss(ins));
           sa(q.g, 'transform', 'translate(' + f1(x) + ',' + f1(q.y) + ')');
           q.g.classList.toggle('is-in', ins > 0.98);
           so(q.g.lastChild, (1 - ins).toFixed(2));
@@ -516,7 +533,8 @@
         E.adh.forEach(function(m, k){ var o = clamp(nA - k, 0, 1); so(m.g, o.toFixed(2)); var j = still ? 0 : Math.sin(E.t * 0.9 + m.ph) * 4; sa(m.g, 'transform', 'translate(' + f1(m.x + j) + ',' + f1(m.y + (still ? 0 : (E.t * 18 + m.ph * 30) % (c[3] - c[1]) - (m.y - c[1]))) + ')'); });
         // urine: its colour follows the shown concentration; drops at the duct's end at a rate that follows the volume
         var osm = st.v.osm, col = clamp((osm - 50) / 1150, 0, 1);
-        E.root.style.setProperty('--px-urine-k', (8 + col * 80).toFixed(0) + '%');
+        var uk = (8 + col * 80).toFixed(0) + '%';
+        if(E.uk !== uk){ E.uk = uk; E.root.style.setProperty('--px-urine-k', uk); }
         var vr = st.v.vol / 1.33;   // 1 at the usual volume
         E.ud.forEach(function(u, k){
           if(dt) u.u = (u.u + dt / 1000 * 0.5 * Math.min(vr, 6) / 2) % 1;
@@ -535,11 +553,11 @@
         var g = E.g, d = g.duct, c = g.cap, D = st.d, off = Math.abs(st.c - 0.35) > 0.02, wide = E.L.id === 'wide';
         var aq = E.aq.filter(function(q){ return q.side < 0; })[2], vol = st.v.vol, osm = st.v.osm;
         return [
-          { key: 'adh', text: 'ADH' + (off ? ' ' + arrow(st.dc) : ''), role: 'adh', strong: true, at: [g.pit[0] + 6, g.pit[1] + 62], side: ['r', 'd'] },
+          { key: 'adh', text: 'ADH' + (off ? ' ' + arrow(st.dc) : ''), role: 'adh', strong: true, at: [g.pit[0] + 6 * g.pit[2], g.pit[1] + 62 * g.pit[2]], side: ['l', 'r', 'd'] },
           { key: 'fin', text: 'Fluid in' + (off ? ' same' : ''), role: 'same', at: [(d[0] + d[2]) / 2, d[1] + 6], side: ['r', 'l'] },
           { key: 'aqp', text: 'Aquaporins' + (D.aqp ? ' ' + arrow(D.aqp) : ''), role: 'aqp', at: [aq.x - 12, aq.y], side: ['l'] },
           { key: 'water', text: 'Water back' + (D.water ? ' ' + arrow(D.water) : ''), role: 'water', at: [c[0], (c[1] + c[3]) / 2 - 40], side: ['r', 'l'] },
-          { key: 'vol', text: 'Urine ' + (vol < 1.95 ? vol.toFixed(1) : Math.round(vol)) + ' L a day' + (D.vol ? ' ' + arrow(D.vol) : ''), role: 'urine', at: [g.cup[0], g.cup[1] + 28], side: ['u', 'r', 'l'] },
+          { key: 'vol', text: 'Urine ' + (vol < 1.95 ? vol.toFixed(1) : Math.round(vol)) + ' L a day' + (D.vol ? ' ' + arrow(D.vol) : ''), role: 'urine', at: [g.cup[0], g.cup[1] + (wide ? 30 : -30)], side: wide ? ['d', 'l', 'u'] : ['u', 'l', 'd'] },
           { key: 'osm', text: comma(Math.round(osm / 10) * 10) + ' mOsm/L' + (D.osm ? ' ' + arrow(D.osm) : ''), role: 'urine', at: [(d[0] + d[2]) / 2, d[3] - 30], side: ['r', 'l'] }
         ];
       },
@@ -551,9 +569,8 @@
         return out;
       },
       take: function(st){
-        var v = st.v.vol, o = comma(Math.round(st.v.osm / 10) * 10), vv = v < 1.95 ? v.toFixed(1) : Math.round(v);
-        return st.c > 0.35 ? 'More ADH puts more aquaporins in the duct wall: more water goes back to the blood, so the urine is less (' + vv + ' L a day) and more concentrated (' + o + ' mOsm/L).'
-          : 'Less ADH: fewer aquaporins, so water stays in the duct: more urine (' + vv + ' L a day), more dilute (' + o + ' mOsm/L).';
+        return st.c > 0.35 ? 'More ADH, more aquaporins: more water goes back, so less, darker urine.'
+          : 'Less ADH, fewer aquaporins: water stays in the duct, so more, paler urine.';
       },
       note: 'ADH from the posterior pituitary reaches the collecting duct in the blood. On the principal cells it raises cAMP, and vesicles carrying aquaporins fuse with the membrane that faces the duct’s lumen; without ADH the cell pulls them back in. Water then leaves the duct toward the salty medulla and returns to the blood. Fluid reaches the collecting duct at about 100 mOsm/L whatever ADH does, because the segments before it work without ADH. Model: the kidneys must excrete about 600 mOsm of solute a day, so the urine volume is 600 divided by its concentration, from about 50 mOsm/L (no ADH, about 12 L a day) to about 1,200 mOsm/L (most ADH, about half a liter). Only one duct cell layer and one capillary are drawn.'
     });
@@ -562,13 +579,13 @@
 
   /* ------------------------------------------------------------------ 4. Heart: venous return, Frank-Starling */
   (function(){
-    var LAY = { wide: { w: 1080, h: 540 }, tall: { w: 600, h: 620 } };
+    var LAY = { wide: { w: 1080, h: 540 }, tall: { w: 600, h: 640 } };
     var HR = 70;
     function svOf(edv){ return 110 * (1 - Math.exp(-(edv - 45) / 75)); }
     function slOf(edv){ return 1.8 + 0.4 * (edv - 90) / 70; }   // sarcomere length at the end of filling (micrometres)
     function G(L){
-      if(L.id === 'wide') return { heart: [330, 280, 1.2], sar: [780, 120, 270, 120], aorta: [[452, 150], [456, 70], [560, 46], [700, 52], [760, 110]], ivc: [180, 500, 180, 330], hr: [330, 506], track: [180, 504, 180, 340], lens: [420, 360] };
-      return { heart: [300, 250, 1.05], sar: [60, 470, 480, 110], aorta: [[406, 132], [410, 60], [480, 36], [560, 52], [580, 120]], ivc: [130, 450, 130, 300], hr: [300, 420], track: [92, 440, 92, 300], lens: [360, 330] };
+      if(L.id === 'wide') return { heart: [440, 300, 1.32], sar: [812, 300, 238, 150], aorta: [[492, 160], [494, 80], [540, 40], [640, 34], [716, 70], [742, 140], [744, 520]], ivc: [196], ivcTop: 400, hr: [110, 80], track: [196, 524, 196, 404] };
+      return { heart: [262, 300, 1.0], sar: [300, 520, 286, 110], aorta: [[302, 182], [304, 96], [340, 50], [440, 40], [520, 64], [546, 130], [548, 470]], ivc: [70], ivcTop: 440, hr: [72, 60], track: [70, 628, 70, 456] };
     }
     SCENES.push({
       id: 'heart', tab: 'Heart', short: 'Heart', topics: ['cardiac-output'],
@@ -583,18 +600,19 @@
         { id: 'sv', from: 'sl', tau: 280, f: function(sl){ return svOf(90 + (sl - 1.8) / 0.4 * 70); }, rel: 0.03 },
         { id: 'co', from: 'sv', tau: 280, f: function(sv){ return sv * HR / 1000; }, rel: 0.03 }
       ],
-      rest: 'Drag the knob on the vena cava to send more or less blood back to the heart.',
+      rest: 'Drag the knob on the vena cava to send more or less blood back.',
       art: function(E){
         var L = E.L, g = G(L), h = g.heart, s = '<defs>' +
           '<radialGradient id="px-myo" cx="0.4" cy="0.35" r="0.85"><stop offset="0" stop-color="#D4685A"/><stop offset="0.7" stop-color="#B2463A"/><stop offset="1" stop-color="#86281F"/></radialGradient>' +
           '<radialGradient id="px-hbg" cx="0.4" cy="0.4" r="0.9"><stop offset="0" stop-color="#FBF3EE"/><stop offset="1" stop-color="#F2E0D6"/></radialGradient></defs>';
         s += '<rect class="px-bg" x="-400" y="0" width="' + (L.w + 800) + '" height="' + L.h + '" fill="url(#px-hbg)"/>';
         // the venae cavae into the right atrium, the aorta out of the left ventricle (drawn in picture units)
-        var iv = g.ivc;
-        s += '<path class="px-cava" d="M' + iv[0] + ',' + (L.h + 10) + ' V' + iv[3] + ' C' + iv[0] + ',' + (iv[3] - 30) + ' ' + (h[0] - 120 * h[2]) + ',' + (h[1] - 10 * h[2]) + ' ' + (h[0] - 92 * h[2]) + ',' + (h[1] - 40 * h[2]) + '"/>';
-        s += '<path class="px-cava-l" data-r="ivcl" d="M' + iv[0] + ',' + (L.h + 10) + ' V' + iv[3] + ' C' + iv[0] + ',' + (iv[3] - 30) + ' ' + (h[0] - 120 * h[2]) + ',' + (h[1] - 10 * h[2]) + ' ' + (h[0] - 92 * h[2]) + ',' + (h[1] - 40 * h[2]) + '"/>';
+        // the aorta behind the heart's top, arching over and down to the body
         s += '<path class="px-aorta" d="' + P(g.aorta) + '"/><path class="px-aorta-l" data-r="aol" d="' + P(g.aorta) + '"/>';
         s += '<g data-r="slug"></g>';
+        // the superior vena cava from above into the right atrium
+        var ra = [h[0] - 86 * h[2], h[1] - 62 * h[2]];
+        s += '<path class="px-cava" d="M' + f1(ra[0] - 10) + ',-20 V' + f1(ra[1] - 20) + '"/><path class="px-cava-l" d="M' + f1(ra[0] - 10) + ',-20 V' + f1(ra[1] - 20) + '"/>';
         // the heart (frontal section, right side on the viewer's left)
         s += '<g transform="translate(' + h[0] + ',' + h[1] + ') scale(' + h[2] + ')">' +
           '<path class="px-myo" d="M-130,-110 C-160,-84 -158,0 -146,40 C-124,120 -30,170 60,150 C126,136 150,70 144,-10 C140,-64 130,-104 104,-116 C60,-132 -60,-130 -130,-110 Z" fill="url(#px-myo)"/>' +
@@ -602,11 +620,15 @@
           '<g data-r="rv"><path class="px-cav is-de" d="M-118,-12 C-122,44 -92,104 -40,118 C-24,92 -20,40 -20,-12 Z"/></g>' +
           '<g data-r="lv"><path class="px-cav is-ox" d="M4,-12 C4,44 14,108 56,126 C100,112 118,52 112,-12 Z"/></g>' +
           '<path class="px-ring" d="M-118,-14 H-22 M2,-14 H112"/>' +
+          '<path class="px-cor" d="M-10,-120 C-14,-60 -4,20 -14,120 M-14,-40 C-40,-20 -60,10 -70,60 M-10,20 C20,40 40,80 50,120"/>' +
           '</g>';
+        // the inferior vena cava from below, over the heart's edge into the right atrium (the knob rides it)
+        var ivx = g.ivc[0], top = g.ivcTop, d2 = 'M' + ivx + ',' + (L.h + 20) + ' V' + top + ' C' + ivx + ',' + f1(top - 110) + ' ' + f1(ra[0] - 70 * h[2]) + ',' + f1(ra[1] + 30) + ' ' + f1(ra[0] - 22 * h[2]) + ',' + f1(ra[1] + 10);
+        s += '<path class="px-cava" d="' + d2 + '"/><path class="px-cava-l" data-r="ivcl" d="' + d2 + '"/><ellipse class="px-cav is-de" cx="' + f1(ra[0]) + '" cy="' + f1(ra[1] + 8) + '" rx="' + f1(30 * h[2]) + '" ry="' + f1(24 * h[2]) + '"/>';
         // the beat marker (heart rate, the same through the whole screen)
         s += '<g data-r="beat" class="px-beat" transform="translate(' + g.hr[0] + ',' + g.hr[1] + ')"><path d="M-36,0 H-14 L-8,-12 L0,14 L6,-6 L10,0 H36"/></g>';
         // the stretch: a sarcomere magnified from the left ventricle's wall
-        var sr = g.sar, lx = h[0] + 96 * h[2], ly = h[1] + 40 * h[2];
+        var sr = g.sar, lx = h[0] + 104 * h[2], ly = h[1] + 50 * h[2];
         s += '<path class="px-zl" d="M' + f1(lx) + ',' + f1(ly) + ' L' + sr[0] + ',' + (sr[1] + sr[3] / 2) + '"/><circle class="px-lens" cx="' + f1(lx) + '" cy="' + f1(ly) + '" r="14"/>';
         s += '<rect class="px-zoom" x="' + sr[0] + '" y="' + sr[1] + '" width="' + sr[2] + '" height="' + sr[3] + '" rx="18"/><g data-r="sar"></g>';
         return s;
@@ -666,11 +688,11 @@
       labels: function(st, E){
         var g = E.g, h = g.heart, d = st.d, off = Math.abs(st.c - 120) > 1.5, wide = E.L.id === 'wide', sr = g.sar, a = g.aorta;
         return [
-          { key: 'vr', text: 'Venous return' + (off ? ' ' + arrow(st.dc) : ''), role: 'fill', strong: true, at: [g.ivc[0], g.ivc[1] - 60], side: ['r', 'l'] },
+          { key: 'vr', text: 'Venous return' + (off ? ' ' + arrow(st.dc) : ''), role: 'fill', strong: true, at: [g.ivc[0] - 20, g.ivcTop - 34], side: ['l', 'u'] },
           { key: 'edv', text: 'Filling ' + Math.round(st.v.edv) + ' mL' + (d.edv ? ' ' + arrow(d.edv) : ''), role: 'fill', at: [h[0] + 58 * h[2], h[1] + 60 * h[2]], side: ['d', 'r'] },
           { key: 'sl', text: 'Stretch' + (d.sl ? ' ' + arrow(d.sl) : ''), role: 'mus', at: [sr[0] + sr[2] / 2, sr[1] + sr[3]], side: ['d', 'u'] },
           { key: 'sv', text: 'Stroke volume ' + Math.round(st.v.sv) + ' mL' + (d.sv ? ' ' + arrow(d.sv) : ''), role: 'sv', at: a[2], side: ['u', 'd'] },
-          { key: 'co', text: 'Output ' + st.v.co.toFixed(1) + ' L/min' + (d.co ? ' ' + arrow(d.co) : ''), role: 'co', at: a[a.length - 1], side: wide ? ['d', 'r'] : ['d', 'l'] },
+          { key: 'co', text: 'Output ' + st.v.co.toFixed(1) + ' L/min' + (d.co ? ' ' + arrow(d.co) : ''), role: 'co', at: [a[a.length - 1][0] - 18, a[a.length - 1][1] - 40], side: ['l'] },
           { key: 'hr', text: 'Heart rate ' + HR + (off ? ' same' : ''), role: 'same', at: g.hr, side: ['d', 'r', 'l'] }
         ];
       },
@@ -683,9 +705,7 @@
         return out;
       },
       take: function(st){
-        var up = st.c > 120;
-        return (up ? 'More filling stretches the muscle, so each beat ejects more' : 'Less filling stretches the muscle less, so each beat ejects less') +
-          ': stroke volume ' + Math.round(st.v.sv) + ' mL, output ' + st.v.co.toFixed(1) + ' L/min at the same heart rate.';
+        return st.c > 120 ? 'More filling, more stretch: each beat ejects more at the same heart rate.' : 'Less filling, less stretch: each beat ejects less at the same heart rate.';
       },
       note: 'The Frank–Starling mechanism: more blood returning during filling raises the end-diastolic volume, which stretches the muscle fibers toward the length where they make the most force, so the ventricle contracts harder and ejects more. Contractility (the force at a given length) and the heart rate stay the same here; only the stretch changed. Cardiac output is heart rate times stroke volume. The curve flattens at high filling. Both ventricles fill and eject the same volume each beat; the left one’s output to the aorta is drawn. Model: stroke volume rises from about 50 mL at 90 mL of filling to about 86 mL at 160 mL; heart rate held at 70.'
     });
