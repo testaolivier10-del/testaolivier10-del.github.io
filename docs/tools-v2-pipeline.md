@@ -36,5 +36,12 @@ States: building, review, fixing, recheck, PASS (waiting to integrate), integrat
 conformations, resonance and arrow pusher kept, kit2 kept). Ochem viewer 3d (`claude/tools-v2-viewer-3d`, in review) needs
 `main` merged into it before integration: PR #228 rewrote `viewer-3d.js` and `viewer-3d.html` on main.
 
+Owner 2026-11-19: the hidden legacy controls cleanup for the other 13 course kits (NREMT, A&P, Bio/Chem/Physics,
+Calc/BC/Precalc/Stats, APES/Psych, Macro/Micro/HuG; plan in `docs/tools-frame-2026-11.md` "Cleanup (2026-11-19)")
+is folded into the final merge: do it on `claude/tools-v2-all` (after each course's rebuilds, to avoid conflicts),
+never straight to `main`. Nothing else goes live before the one final merge.
+
 Next by use (rollout table):
-NREMT body map, NREMT flowcharts, Ochem viewer 3d.
+NREMT body map (fixing recheck 1), NREMT flowcharts (fixing round 1), Ochem viewer 3d (fixing recheck 1),
+NREMT skillsheets (review round 1), then A&P anatomy 3d, NREMT scenario sim, AP Bio chi square, Ochem reaction
+predictor, AP Bio rates (rollout rows 20 to 26).
