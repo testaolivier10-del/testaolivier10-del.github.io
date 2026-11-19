@@ -242,3 +242,15 @@ behind the eyes; sensory signals climb the spinal cord in the neck; a head down 
 usual occiput anterior position), flexed; the placenta on the upper uterine wall (not over the cervix) with the cord
 to the fetal belly; after birth the placenta is still inside (the third stage is not drawn) and the uterus retracts.
 Points for a person: `docs/anp-needs-author.md` fl-birth-position, fl-temp-route (updated).
+
+Checks (round 1, 2026-11-19): sweep, one width per process, at 360, 390, 430, 600, 768, 820, 1024, 1280, 1440, 1920,
+1366 x 768 and 1280 x 720 light, and 360, 390, 768, 1440 dark: 63 states each, 0 failures (now also: no label over its
+own part, the uterus the largest drawn thing on the phone crop while the fetus is shown, the knob off the baby's head).
+Frame test at 1440 and 390: 13,200 frames, 0 failures (the efferent label now waits for its command to show below the
+head). Test yourself test (`anp-feedback-loops-quiz.mjs`): 42 checks, 0 failures. A&P tests 55 pass;
+`check-anp-content --check` 0 failing; `build-anp --check` clean; `check-site` OK; `check-weight --check` all 622
+within budget; `check-tool-use` with a local copy of its list: frame v2, nothing under automation (the file is the
+collecting branch's). Playwright at 1440 and 390: drag, touch, keys, leaving mid run, childbirth birth and Start over,
+reduced motion and no console errors pass; the frame timing checks could not be measured cleanly (load average 12 to
+13 on 2 cores): median 16.7 ms, p95 83 to 133 ms during a run at CPU x4. Shots and preview regenerated
+(`/mnt/user-data/outputs/anp-feedback-loops-v2/`).

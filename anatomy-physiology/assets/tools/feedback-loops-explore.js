@@ -359,7 +359,7 @@
           else { out.push({ key: 'mus', text: 'Muscle shivers', role: 'eff', at: M([60, 140]), side: ['d', 'r'], strong: k === 5, lead: true, avoid: [ring] }); out.push({ key: 'art', text: 'Arteriole narrows', role: 'eff', at: M([-128, -14]), side: ['l', 'u'], lead: true, avoid: [ring] }); }
         }
         // the response inside the magnifier: heat above the skin (air), or in the shivering muscle
-        if(k === 6 && !st.done && st.eff > 0.15) out.push({ key: 'resp', text: hot ? 'Heat lost' : 'Heat kept, made', role: 'heat', at: hot ? M([-20, -128]) : M([-40, 150]), side: ['r', 'l', 'u', 'd'], strong: true, inside: { c: [mg[0], mg[1]], r: 170 * mg[2] } });
+        if(k === 6 && !st.done && st.eff > 0.15) out.push({ key: 'resp', text: hot ? 'Heat lost' : 'Heat kept, made', role: 'heat', at: hot ? M([-20, -128]) : M([-40, 150]), side: ['r', 'l', 'u', 'd'], strong: true, inside: { c: [mg[0], mg[1]], r: 170 * mg[2] }, avoid: [(function(){ var a = M([-170, -44]), b = M([170, 20]); return [a[0], a[1], b[0], b[1]]; })()] });
         return out;
       },
       words: function(st){
