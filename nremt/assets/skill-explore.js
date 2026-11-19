@@ -96,19 +96,19 @@
   };
   // what the patient shows from the order, by the patient's miss keys: [what was done, what it means]
   var LIVE = {
-    'order': ['Tourniquet first', 'this sheet wants pressure first'], 'abc': ['Shock care first', 'bleeding not yet controlled'],
-    'suction': ['Breaths through vomit', 'vomit pushed into the lungs'], 'check': ['Pulse before response', 'response comes first'],
-    'opa': ['Airway after breaths', 'tongue could block them'], 'open2': ['Airway not reopened', 'reopen before the OPA'],
-    'order-stab-apply': ['Splint before holding', 'the break was moved'], 'order-pms1-apply': ['Check after the splint', 'first check comes before'],
-    'order-apply-pms2': ['Recheck before the splint', 'recheck comes after'], 'order-stab-site': ['Splint before holding', 'the knee took the weight'],
-    'order-pms1-site': ['Check after the splint', 'first check comes before'], 'order-site-pms2': ['Recheck before the splint', 'recheck comes after'],
+    'order': ['Tourniquet first', 'sheet wants pressure first'], 'abc': ['Shock care first', 'bleeding not controlled'],
+    'suction': ['Breaths through vomit', 'vomit into the lungs'], 'check': ['Pulse before response', 'response comes first'],
+    'opa': ['Airway after breaths', 'tongue may block'], 'open2': ['Airway not reopened', 'reopen before the OPA'],
+    'order-stab-apply': ['Splint before holding', 'the break was moved'], 'order-pms1-apply': ['Late first check', 'check comes first'],
+    'order-apply-pms2': ['Recheck too early', 'recheck comes after'], 'order-stab-site': ['Splint before holding', 'knee took the weight'],
+    'order-pms1-site': ['Late first check', 'check comes first'], 'order-site-pms2': ['Recheck too early', 'recheck comes after'],
     'order-manual-collar': ['Collar before holding', 'the neck was moved'], 'order-collar-roll': ['Rolled before the collar', 'neck not protected'],
-    'order-torso-head': ['Head before torso', 'the body can lever the neck'], 'order-pms1-collar': ['Check after the collar', 'first check comes before'],
-    'order-device-torso': ['Straps before the vest', 'no device behind yet'], 'order-reg-open': ['Opened before regulator', 'no regulator on yet'],
-    'order-prefill-apply': ['Mask before filling', 'first breaths from an empty bag'], 'order-flow-apply': ['Mask before the flow', 'no oxygen flowing yet'],
+    'order-torso-head': ['Head before torso', 'body levers the neck'], 'order-pms1-collar': ['Late first check', 'check comes first'],
+    'order-device-torso': ['Straps before the vest', 'no device behind yet'], 'order-reg-open': ['Opened too early', 'no regulator on yet'],
+    'order-prefill-apply': ['Mask before filling', 'bag still empty'], 'order-flow-apply': ['Mask before the flow', 'no oxygen flowing yet'],
     'order-check-cpr': ['CPR before checking', 'pulse not checked first'], 'order-clear-shock': ['Shock before clear', 'someone may be touching'],
     'order-pads-shock': ['Shock without pads', 'no pads to deliver it'], 'order-breath-head': ['Exam before oxygen', 'breathing comes first'],
-    'order-circ-head': ['Exam before circulation', 'circulation comes first'], 'order-airway-focused': ['Exam before airway', 'airway and breathing first']
+    'order-circ-head': ['Exam before circulation', 'circulation first'], 'order-airway-focused': ['Exam before airway', 'airway first']
   };
   // the tourniquet where it was put (station-patient's placeTourniquet kinds)
   var TQ = { ideal: 'bleeding stops', high: 'high and tight: stops', limb: 'wrong leg: still bleeding', groin: 'too high: still bleeding',
@@ -333,7 +333,7 @@
       paintRows();
       var f = info(i);
       if(on && fresh.length){
-        var m = fresh[0], t = m.key === 'bsi' ? (St.done[0] ? ['Touched before gloves', 'bare hands on the patient'] : ['No gloves', 'bare hands on the patient']) : LIVE[m.key];
+        var m = fresh[0], t = m.key === 'bsi' ? (St.done[0] ? ['Touched before gloves', 'bare hands'] : ['No gloves', 'bare hands on the patient']) : LIVE[m.key];
         cause.set([{ t: t[0], role: 'step' }, { t: t[1], role: 'pt' }, { t: m.sev === 'bad' ? 'Critical criterion' : 'Out of order', role: m.sev === 'bad' ? 'bad' : 'warn' }]);
         say(m.text);
         return;

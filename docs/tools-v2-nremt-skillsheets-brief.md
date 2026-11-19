@@ -47,7 +47,7 @@ into the lungs, a splint on a limb nobody held).
 - **Out of order** is shown, not scored: when the order itself is a problem (station-patient's own order rules:
   touching before gloves, a splint before the limb is held, ventilating through vomit, a shock before clear, the head
   strapped before the torso), a red "!" lands on the patient where it matters, the row gets a "!" and the cause line
-  names it: [Breaths through vomit] → [vomit pushed into the lungs] → [Critical criterion]. A step simply not done
+  names it: [Breaths through vomit] → [vomit into the lungs] → [Critical criterion]. A step simply not done
   yet is never marked in Explore.
 - **Cause line** (`K.cause`): [the step] → [what it did to the patient] → [Critical step | Scored step]; it changes
   about 0.4 s after the tap, once the item is on the patient. At the start: [The patient] → [the case]. When every

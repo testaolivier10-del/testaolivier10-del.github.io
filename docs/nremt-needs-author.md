@@ -189,4 +189,4 @@ checked on 2026-11-10. For a person to confirm:
 - **The short names and effects** on the clipboard and the cause line (`STEP`, `LIVE`, `TQ` in
   `nremt/assets/skill-explore.js`) paraphrase each step's own text in 1 to 3 words. Worth a glance by an EMT
   instructor, especially "Ventilate on rate" (one breath every 5 to 6 s), "Set the flow: at least 10 L/min",
-  "Breaths through vomit: vomit pushed into the lungs" and "Tourniquet first: this sheet wants pressure first".
+  "Breaths through vomit: vomit into the lungs" and "Tourniquet first: sheet wants pressure first".

@@ -1435,9 +1435,12 @@
           var hit = placed.filter(function(q){ return x.l < q.r + 5 && q.l < x.r + 5 && x.t < q.b + 5 && q.t < x.b + 5; })[0];
           if(!hit) break;
           var h = x.b - x.t, down = hit.b + 5 - x.t, up = hit.t - 5 - x.b;
-          var mv = x.b + down <= S.bottom - 4 ? down : x.t + up >= S.top + 4 ? up : down;
+          var mv = x.b + down <= S.bottom - 4 ? down : x.t + up >= S.top + 4 ? up : null;
+          if(mv == null){ x.hide = true; break; }
           x.dy += mv; x.t += mv; x.b += mv;
         }
+        // no room left clear of the others inside the picture: this one waits (its dot still shows the place)
+        if(x.hide || placed.some(function(q){ return x.l < q.r + 5 && q.l < x.r + 5 && x.t < q.b + 5 && q.t < x.b + 5; })){ x.p.style.visibility = 'hidden'; return; }
         placed.push(x);
       }
       if(x.dx || x.dy){
