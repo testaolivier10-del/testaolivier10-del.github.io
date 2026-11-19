@@ -142,7 +142,7 @@
   /* Where a molecule is drawn differently from molecules.js (molecule units). HBr sits next to the CH₂ end of the
      alkene: a π bond attacks with its end nearer the target (chem-core), so the textbook (Markovnikov) arrow is the
      natural one; grabbing the π bond at its other end still attacks with that end. */
-  var LAYOUT = { 'propene-hbr': { hbrH: [112, 4], hbrBr: [168, -28] } };
+  var LAYOUT = { 'propene-hbr': { hbrH: [112, 4], hbrBr: [168, -28] }, 'sn2-bromoethane': { nucO: [54, 72], nucH: [40, 30] } };
 
   function startOf(id){
     var st = C.fromMolecule(Mol.get(id)), o = LAYOUT[id];
@@ -543,7 +543,7 @@
   function shown(){ return S.pendingSt || S.cur; }
   function over(st){ return Object.keys(st.atoms).filter(function(k){ var a = st.atoms[k]; return a.el && !a.group && C.electronCount(st, k) > C.octetOf(st, k); }); }
   var B = PB.board({ svg: svg, G: G, labsEl: labsEl, waitEls: [labsEl, cause.el], reduced: K.reduced, calm: [G.mainA, G.strip, labsEl],
-    T: function(){ return mainT; }, A: function(){ return mainA; }, shown: function(){ return shown(); }, noCharge: function(st){ return over(st); } });
+    T: function(){ return mainT; }, A: function(){ return mainA; }, shown: function(){ return V(shown()); }, noCharge: function(st){ return over(st); } });
 
   function picksHtml(){
     function opt(v, l){ return '<option value="' + esc(v) + '">' + esc(l) + '</option>'; }
@@ -573,13 +573,35 @@
   }
   /* The board's transform: every state this board has shown or will show fits, so the scale holds still while the
      pieces move. */
-  function boardT(){
+  /* On a phone a wide scene (two molecules side by side) is turned a quarter turn, so it fills the tall board instead of
+     a thin band of it: V(st) is the structure as drawn (the same atoms, bonds and keys; only the places turned). */
+  var vmemo = new WeakMap();
+  function V(st){
+    if(!st || !L || !L.rot) return st;
+    var m = vmemo.get(st); if(m) return m;
+    m = C.clone(st); Object.keys(m.atoms).forEach(function(k){ var a = st.atoms[k]; m.atoms[k].x = -a.y; m.atoms[k].y = a.x; });
+    vmemo.set(st, m); return m;
+  }
+  function moveE(a, b, arrows, o, done){ B.moveElectrons(V(a), V(b), arrows, o, done); }
+  function allAtoms(){
     var ex = [];
     S.row.forEach(function(r){ if(r.st) Object.keys(r.st.atoms).forEach(function(k){ ex.push(r.st.atoms[k]); }); });
     [S.cur, S.pendingSt].forEach(function(st){ if(st) Object.keys(st.atoms).forEach(function(k){ ex.push(st.atoms[k]); }); });
     S.hist.forEach(function(h){ Object.keys(h.cur.atoms).forEach(function(k){ ex.push(h.cur.atoms[k]); }); });
+    return ex;
+  }
+  function decideRot(){
+    if(!L.phone || !S.start) return false;
+    var ex = allAtoms(), x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+    ex.forEach(function(a){ x0 = Math.min(x0, a.x); x1 = Math.max(x1, a.x); y0 = Math.min(y0, a.y); y1 = Math.max(y1, a.y); });
+    var m = 70, w = x1 - x0 + m, h = y1 - y0 + m;
+    return Math.min(L.main.w / h, L.main.h / w) > Math.min(L.main.w / w, L.main.h / h) * 1.3;
+  }
+  function boardT(){
+    var ex = [];
+    allAtoms().forEach(function(a){ ex.push(L.rot ? { x: -a.y, y: a.x } : a); });
     var cap = L.phone ? 1.55 : Math.min(3.2, 2.4 * Math.max(1, L.main.h / 460));
-    return fitT(S.start, L.main, { cap: cap, margin: 34, extra: ex });
+    return fitT(V(S.start), L.main, { cap: cap, margin: L.phone ? 26 : 34, extra: ex });
   }
 
   /* ====================================================================== */
@@ -597,7 +619,7 @@
     if(!st){ G.mainA.innerHTML = ''; G.mainB.innerHTML = ''; mainA = null; return; }
     mainT = boardT();
     var noQ = {}; over(st).forEach(function(k){ noQ[k] = 1; });
-    var d = draw(st, mainT, { noCharge: noQ });
+    var d = draw(V(st), mainT, { noCharge: noQ });
     G.mainA.innerHTML = d.html; G.mainA.style.opacity = '1'; G.mainA.removeAttribute('transform');
     G.mainB.innerHTML = ''; mainA = d.A;
     var marks = S.ctx === 'chal' && chal.marks ? chal.marks : null;
@@ -616,20 +638,39 @@
     for(var i = S.row.length - 1; i >= 0; i--) if(S.row[i].st && sameStructure(S.row[i].st, S.cur)) return i;
     return -1;
   }
+  /* A card's drawing: the species as on the board, or, when that is much wider than the card, stacked one above the
+     other (left one on top), so a small card still shows each one at a readable size. */
+  function cardSt(st, box){
+    var fr = C.fragments(st).map(function(f){ return f.filter(function(k){ return st.atoms[k].el !== 'H' || f.length < 3; }); }).filter(function(f){ return f.length; });
+    if(fr.length < 2) return st;
+    function bb(keys){ var o = { x0: Infinity, x1: -Infinity, y0: Infinity, y1: -Infinity }; keys.forEach(function(k){ var a = st.atoms[k]; o.x0 = Math.min(o.x0, a.x); o.x1 = Math.max(o.x1, a.x); o.y0 = Math.min(o.y0, a.y); o.y1 = Math.max(o.y1, a.y); }); return o; }
+    var all = bb([].concat.apply([], fr)), gap = 40, m = 36;
+    var boxes = fr.map(bb), sw = Math.max.apply(null, boxes.map(function(b){ return b.x1 - b.x0; })), sh = boxes.reduce(function(t, b){ return t + b.y1 - b.y0; }, 0) + gap * (fr.length - 1);
+    var keep = Math.min(box.w / (all.x1 - all.x0 + m), box.h / (all.y1 - all.y0 + m)), stack = Math.min(box.w / (sw + m), box.h / (sh + m));
+    if(stack < keep * 1.25) return st;
+    var o = C.clone(st), y = 0, order = fr.map(function(f, i){ return i; }).sort(function(a, b){ return boxes[a].x0 - boxes[b].x0; });
+    var full = C.fragments(st);
+    order.forEach(function(i){
+      var b = boxes[i], dx = -(b.x0 + b.x1) / 2, dy = y - b.y0;
+      full[i].forEach(function(k){ o.atoms[k].x = st.atoms[k].x + dx; o.atoms[k].y = st.atoms[k].y + dy; });
+      y += b.y1 - b.y0 + gap;
+    });
+    return o;
+  }
   function paintStrip(){
     thumbBoxes = [];
-    var n = S.row.length, gap = L.phone ? 18 : 30, st = L.strip, headH = L.phone ? 16 : 22, tagH = L.phone ? 19 : 24;
+    var n = S.row.length, gap = L.phone ? 14 : 30, st = L.strip, headH = L.phone ? 16 : 22, tagH = L.phone ? 19 : 24;
     if(!n){ G.strip.innerHTML = ''; thumbsEl.innerHTML = ''; return; }
     var w = Math.min(L.phone ? 150 : 230, (st.w - gap * (n - 1)) / n), x0 = st.x + (st.w - (w * n + gap * (n - 1))) / 2;
     var now = rowNow(), h = '', btn = '';
     S.row.forEach(function(r, i){
       var bx = x0 + i * (w + gap), by = st.y + headH, bh = st.h - headH, on = i === now;
       var hid = !r.st || r.hidden;
-      var room = { x: bx + 2, y: by + 2, w: w - 4, h: bh - 2 - tagH }, pad = L.phone ? 3 : 6;
+      var room = { x: bx + 2, y: by + 2, w: w - 4, h: bh - 6 - tagH }, pad = L.phone ? 3 : 6;
       var inner = { x: room.x + pad, y: room.y + pad, w: room.w - pad * 2, h: room.h - pad * 2 };
       h += '<rect class="rs2-thumb' + (on ? ' is-on' : '') + (hid ? ' is-hid' : '') + '" x="' + f1(bx) + '" y="' + f1(by) + '" width="' + f1(w) + '" height="' + f1(bh) + '" rx="12"/>';
       if(hid) h += '<text class="rs2-q" x="' + f1(bx + w / 2) + '" y="' + f1(by + (bh - tagH) / 2 + 10) + '" font-size="26" text-anchor="middle">?</text>';
-      else h += PB.drawFlat(r.st, PB.fitFlat(r.st, r.st, inner, { cap: 1.0 }), room);
+      else { var fs = cardSt(r.st, inner); h += PB.drawFlat(fs, PB.fitFlat(fs, fs, inner, { cap: 1.0 }), room); }
       if(i < n - 1){
         var ax = bx + w + 4, ay = by + (bh - tagH) / 2, al = gap - 8;
         h += '<path class="ap2-next" d="M' + f1(ax) + ' ' + f1(ay) + 'h' + f1(al - 5) + '"/><path class="ap2-nexth" d="M' + f1(ax + al) + ' ' + f1(ay) + 'l-6 -4.5v9z"/>';
@@ -704,7 +745,7 @@
     if(r.left < s.left + 2 || r.right > s.right - 2 || r.top < s.top + 2 || r.bottom > s.bottom - 2) return true;
     var lim = L.strip.y - 6 + s.top;
     if(r.bottom > lim) return true;
-    var things = [].slice.call(svg.querySelectorAll('.rs2-mainA .rs2-ball, .rs2-mainA .rs2-badge circle, .rs2-mainA .rs2-e, .rs2-ui .rs2-oct, .rs2-arrows path')).concat([sel, undoBtn]);
+    var things = [].slice.call(svg.querySelectorAll('.rs2-mainA .rs2-ball, .rs2-mainA .rs2-badge circle, .rs2-mainA .rs2-e, .rs2-ui .rs2-oct, .rs2-arrows path')).concat([sel, undoBtn], [].slice.call(layer.el.querySelectorAll('.tk2-cue')));
     // the sticks too: a name never sits across a bond (sampled along each line, in the svg's own px)
     var sticks = svg.querySelectorAll('.rs2-mainA .rs2-sig, .rs2-mainA .rs2-pi');
     for(var i = 0; i < sticks.length; i++){
@@ -718,6 +759,7 @@
   var drawn = false;
   function paintAll(){
     L = layout();
+    L.rot = decideRot();
     svg.setAttribute('viewBox', '0 0 ' + L.W + ' ' + L.H);
     paintBg(); paintMain(); paintStrip();
     placeHit();
@@ -744,6 +786,7 @@
      drifts off, a nucleophile comes in. Only the piece groups' transforms and the bonds between pieces change per
      frame. */
   function glide(prev, next, ms, done){
+    prev = V(prev); next = V(next);
     var from = withPos(next, (function(){ var p = {}; Object.keys(next.atoms).forEach(function(k){ p[k] = { x: prev.atoms[k].x, y: prev.atoms[k].y }; }); return p; })());
     var pc = PB_pieces(prev, next), T = mainT;
     var still = Object.keys(next.atoms).every(function(k){ return Math.abs(next.atoms[k].x - prev.atoms[k].x) + Math.abs(next.atoms[k].y - prev.atoms[k].y) < 0.5; });
@@ -769,7 +812,7 @@
   function playStep(prev, arrows, next, o, done){
     var my = run, mid = withPos(next, (function(){ var p = {}; Object.keys(next.atoms).forEach(function(k){ p[k] = { x: prev.atoms[k].x, y: prev.atoms[k].y }; }); return p; })());
     mainT = boardT();
-    B.moveElectrons(prev, mid, arrows, o || {}, function(){
+    moveE(prev, mid, arrows, o || {}, function(){
       if(my !== run) return;
       glide(mid, next, 520, function(){ if(my !== run) return; if(done) done(); });
     });
@@ -824,7 +867,7 @@
         paintAll(); words({ kind: 'ok' }); chalPanel();
         return;
       }
-      B.moveElectrons(shown(), mid, arrows, { start: dropPt, from: srcPt, fresh: [ar], ms: 420 }, function(){
+      moveE(shown(), mid, arrows, { start: dropPt, from: srcPt, fresh: [ar], ms: 420 }, function(){
         if(my !== run) return;
         S.pending = arrows; S.pendingSt = mid; paintAll(); words({ kind: 'held' }); afterPush();
       });
@@ -837,7 +880,7 @@
     var from = shown();
     mainT = boardT();
     var midSt = withPos(next, posOf(prev));
-    B.moveElectrons(from, midSt, arrows, { start: dropPt, from: srcPt, fresh: [ar], ms: 480 }, function(){
+    moveE(from, midSt, arrows, { start: dropPt, from: srcPt, fresh: [ar], ms: 480 }, function(){
       if(my !== run) return;
       glide(midSt, next, 520, function(){
         if(my !== run) return;
@@ -883,7 +926,7 @@
       var to = S.row[k + 1], prev = S.cur;
       mainT = boardT();
       var midSt = withPos(to.st, posOf(prev));
-      B.moveElectrons(prev, midSt, to.arrows, {}, function(){
+      moveE(prev, midSt, to.arrows, {}, function(){
         if(my !== run) return;
         glide(midSt, to.st, 520, function(){
           if(my !== run) return;
@@ -963,7 +1006,9 @@
       tapSrc = d.src; showPick(d.src); return;
     }
     // let go back on (or next to) the spot it came from: no push, the pair goes home
-    var home = d.pt && Math.hypot(d.pt.x - d.src.x, d.pt.y - d.src.y) < Math.max(22, 16 * mainT.k);
+    // (when the target is that close too, as a π bond onto its own atom on a small drawing, the nearer one wins)
+    var dh = d.pt ? Math.hypot(d.pt.x - d.src.x, d.pt.y - d.src.y) : 0, dt = d.pt && d.t ? Math.hypot(d.pt.x - d.t.x, d.pt.y - d.t.y) : Infinity;
+    var home = d.pt && dh < Math.max(22, 16 * mainT.k) && dh <= dt;
     if(cancel || !d.t || home){ B.endDragVis(); B.springBack(d.pt || d.start, { x: d.src.x, y: d.src.y }, function(){ paintAll(); }); return; }
     B.endDragVis(true);
     commit(d.src, d.t, d.pt, { x: d.src.x, y: d.src.y });
@@ -990,7 +1035,7 @@
     var a = st.atoms[k], lab = labelOf(st, k), same = Object.keys(st.atoms).filter(function(o){ return labelOf(st, o) === lab; });
     var q = over(st).indexOf(k) >= 0 ? 0 : PB.fc(st, k), extra = q ? (q < 0 ? ' (negative)' : ' (positive)') : '';
     if(same.length < 2) return lab + extra;
-    var p = st.atoms[k], cx = 0, cy = 0; same.forEach(function(o){ cx += st.atoms[o].x; cy += st.atoms[o].y; }); cx /= same.length; cy /= same.length;
+    var vs = V(st), p = vs.atoms[k], cx = 0, cy = 0; same.forEach(function(o){ cx += vs.atoms[o].x; cy += vs.atoms[o].y; }); cx /= same.length; cy /= same.length;
     var dx = p.x - cx, dy = p.y - cy, where = Math.abs(dy) > Math.abs(dx) ? (dy < 0 ? 'top' : 'bottom') : (dx < 0 ? 'left' : 'right');
     return lab + ' ' + where + extra;
   }
@@ -1098,7 +1143,7 @@
   }
   function chalWords(){
     if(chal.verdict && chal.verdict.ok) return [{ t: 'Step ' + (chal.verdict.step + 1) + ' right', role: 'good' }].concat(chal.i >= chal.def.steps.length ? [{ t: chal.def.label + ' done', role: 'good' }] : [{ t: 'now step ' + (chal.i + 1), role: 'ink' }]);
-    if(chal.verdict) return [{ t: 'Not this step yet', role: 'bad' }, { t: 'red arrows: not wanted', role: 'ink' }];
+    if(chal.verdict) return [{ t: 'Not this step yet', role: 'bad' }, { t: chal.marks && chal.marks.length ? 'red: not this step' : chal.verdict.missing ? 'an arrow is missing' : 'see the panel', role: 'ink' }];
     if(S.pending.length) return [{ t: S.pending.length + ' arrow' + (S.pending.length > 1 ? 's' : '') + ' drawn', role: 'e' }, { t: 'Check step ' + (chal.i + 1) + ' when done', role: 'ink' }];
     return [{ t: 'Draw step ' + (chal.i + 1), role: 'e' }, { t: 'then Check', role: 'ink' }];
   }
@@ -1166,8 +1211,8 @@
   function firstSource(){
     var r1 = S.row[1];
     if(!r1 || !r1.arrows || !mainA || rowNow() !== 0) return null;
-    var ar = r1.arrows[0], p = anchorOf(ar, mainA, 'from'), isLp = !C.isBondKey(ar.from), spots = [{ x: p.x, y: p.y, lp: isLp, pi: !isLp && C.findBond(S.cur, C.parseBondKey(ar.from).a, C.parseBondKey(ar.from).b).order > 1 }];
-    if(isLp) (mainA.lps[ar.from] || []).forEach(function(l){ if(l.x !== p.x || l.y !== p.y) spots.push({ x: l.x, y: l.y, lp: true }); });
+    var ar = r1.arrows[0], p = anchorOf(ar, mainA, 'from'), isLp = !C.isBondKey(ar.from), spots = [{ x: p.x, y: p.y, lp: isLp, atom: isLp ? ar.from : null, pi: !isLp && C.findBond(S.cur, C.parseBondKey(ar.from).a, C.parseBondKey(ar.from).b).order > 1 }];
+    if(isLp) (mainA.lps[ar.from] || []).forEach(function(l){ if(l.x !== p.x || l.y !== p.y) spots.push({ x: l.x, y: l.y, lp: true, atom: ar.from }); });
     return { spots: spots };
   }
   var cueAt = null;
@@ -1176,15 +1221,15 @@
     if(MODE.mode !== 'explore' || S.took) return;
     var fs = firstSource(); if(!fs) return;
     var best = null;
-    for(var ti = 0; ti < 2; ti++){
+    for(var ti = 0; ti < 3; ti++){
       for(var j = 0; j < fs.spots.length; j++){
-        var sp = fs.spots[j], text = sp.lp ? ['Drag this lone pair', 'Drag this pair'][ti] : sp.pi ? ['Drag this π bond', 'Drag the π bond'][ti] : ['Drag this bond', 'Drag the bond'][ti];
+        var sp = fs.spots[j], text = sp.lp ? ['Drag this lone pair', 'Drag this pair', 'Drag this'][ti] : sp.pi ? ['Drag this π bond', 'Drag the π bond', 'Drag this'][ti] : ['Drag this bond', 'Drag the bond', 'Drag this'][ti];
         for(var i = 0; i < SIDES.length; i++){
           cueAt = sp;
           cue = K.cue(layer, { key: 'ochem-ap-push', text: text, side: SIDES[i], at: function(){ return [cueAt.x, cueAt.y]; } });
           if(!cue.show()){ cue = null; return; }
           var sc = cueScore();
-          if(sc === 0) return;
+          if(sc === 0){ placeLabels(); return; }
           if(!best || sc < best.sc) best = { sc: sc, spot: sp, side: SIDES[i], text: text };
           cue.hide(false); cue = null;
         }
@@ -1193,6 +1238,7 @@
     cueAt = best.spot;
     cue = K.cue(layer, { key: 'ochem-ap-push', text: best.text, side: best.side, at: function(){ return [cueAt.x, cueAt.y]; } });
     cue.show();
+    placeLabels();
   }
   function cueScore(){
     var b = layer.el.querySelector('.tk2-cue'); if(!b) return 0;
@@ -1200,8 +1246,14 @@
     // 4 px clear of everything (a name, a ball, a control)
     var r = { left: r0.left - 4, right: r0.right + 4, top: r0.top - 4, bottom: r0.bottom + 4 };
     sc += (Math.max(0, s.left + 2 - r.left) + Math.max(0, r.right - s.right + 2) + Math.max(0, s.top + 2 - r.top) + Math.max(0, r.bottom - s.bottom + 2)) * 1000;
-    var things = [].slice.call(svg.querySelectorAll('.rs2-mainA .rs2-ball, .rs2-mainA .rs2-badge circle, .rs2-mainA .rs2-lp, .rs2-thumb')).concat([].slice.call(labsEl.children).filter(function(x){ return !x.hidden; }), [sel, undoBtn]);
-    things.forEach(function(t){ var q = t.getBoundingClientRect(), w = Math.min(r.right, q.right) - Math.max(r.left, q.left), h = Math.min(r.bottom, q.bottom) - Math.max(r.top, q.top); if(w > 0 && h > 0) sc += w * h; });
+    // the names on the board make way for the cue (they are placed again around it); the row's names do not
+    var things = [].slice.call(svg.querySelectorAll('.rs2-mainA .rs2-ball, .rs2-mainA .rs2-badge circle, .rs2-mainA .rs2-lp, .rs2-thumb')).concat([].slice.call(labsEl.children).filter(function(x){ return !x.hidden && !/is-role|is-sp/.test(x.className); }), [sel, undoBtn]);
+    things.forEach(function(t){
+      var q = t.getBoundingClientRect();
+      // the pairs of the atom the cue points at are meant to be next to it
+      var src = cueAt && (cueAt.atom ? mainA.atoms[cueAt.atom] : { x: cueAt.x, y: cueAt.y, r: 0 });
+      if(src && /rs2-lp/.test(t.getAttribute('class') || '') && Math.hypot((q.left + q.right) / 2 - s.left - src.x, (q.top + q.bottom) / 2 - s.top - src.y) < src.r + 18) return;
+      var w = Math.min(r.right, q.right) - Math.max(r.left, q.left), h = Math.min(r.bottom, q.bottom) - Math.max(r.top, q.top); if(w > 0 && h > 0) sc += w * h; });
     return sc;
   }
   function hideCue(used){ if(cue){ cue.hide(used); cue = null; } }
@@ -1309,12 +1361,15 @@
   chalBox.querySelector('#apChalRow').appendChild(hintsChal.row);
   chalBox.querySelector('#apChalRow').appendChild(tgtBtn);
   chalBox.querySelector('#apChalRow').appendChild(againBtn);
-  checkBtn.addEventListener('click', function(){ checkChal(); var n = byId('apChalSay'); if(n) n.focus({ preventScroll: true }); });
+  checkBtn.addEventListener('click', function(){ var n = byId('apChalSay'); if(n) n.focus({ preventScroll: true }); checkChal(); });
   tgtBtn.addEventListener('click', function(){ chal.showTarget = !chal.showTarget; chalRow(); paintAll(); chalPanel(); });
   againBtn.addEventListener('click', function(){ startChal(chal.def); });
 
+  var whyEl = mk('div', 'ls-sec ap2-why');
+  studio.add('why', whyEl, { mode: 'quiz' });
   function startChal(def){
     S = boards.chal;
+    whyEl.innerHTML = '';
     chal.def = def; chal.i = 0; chal.wrong = 0; chal.verdict = null; chal.shown = 0; chal.marks = null; chal.showTarget = false;
     var st0 = startOf(def.mol);
     chal.states = [st0];
@@ -1333,8 +1388,15 @@
       return { st: st, name: i === 0 ? 'Start' : last ? 'Target' : 'Step ' + i + ' result', tag: i === 0 ? 'start' : last ? 'target' : 'intermediate', hidden: !reached && !(last && chal.showTarget) };
     });
   }
+  // a run started from the side panel (above the picture on a phone): bring the picture into view first
+  function showStage(){
+    if(!L || !L.phone) return;
+    var r = sceneBox.getBoundingClientRect();
+    if(r.top < 0 || r.bottom > innerHeight) try{ sceneBox.scrollIntoView({ block: 'center', behavior: K.reduced() ? 'auto' : 'smooth' }); }catch(e){}
+  }
   function checkChal(){
     if(!S.pending.length || chal.i >= chal.def.steps.length) return;
+    showStage();
     var want = arrowsOf(chal.def.steps[chal.i]), drawnA = S.pending.slice(), prev = S.cur;
     var r = applyArrows(prev, drawnA), errs = errorsOf(r);
     if(!errs.length && sameStructure(r.structure, chal.states[chal.i + 1])){
@@ -1345,7 +1407,7 @@
       var my = run, mid = withPos(next, posOf(prev));
       mainT = boardT();
       S.pending = [];
-      B.moveElectrons(prev, mid, drawnA, {}, function(){
+      moveE(prev, mid, drawnA, {}, function(){
         if(my !== run) return;
         glide(mid, next, 520, function(){
           if(my !== run) return;
@@ -1364,7 +1426,7 @@
     else if(r.steps.length) linesW.push('Your arrows: ' + undash(r.steps.join('; ')) + '.');
     if(extra.length) linesW.push('Not part of this step: ' + undash(C.deltaFor(prev, extra[0]).text) + '.');
     if(missing.length) linesW.push(missing.length === want.length && !drawnA.length ? 'Start with the electron source.' : 'Still needed: something to happen at ' + C.describeKey(prev, missing[0].to) + '.');
-    chal.verdict = { ok: false, text: linesW.join(' ') };
+    chal.verdict = { ok: false, text: linesW.join(' '), missing: missing.length > 0 };
     chal.marks = []; drawnA.forEach(function(d, i){ if(!want.some(function(n){ return sameArrow(d, n); })) chal.marks.push(i); });
     hintsChal.attempt();
     paintAll(); words(null); chalPanel();
@@ -1389,12 +1451,17 @@
     if(MODE.mode !== 'quiz' || MODE.part !== 'chal') return;
     if(done){
       var tk = def.take;
+      // Full explanation: the mechanism, arrow by arrow
+      whyEl.innerHTML = '<h3 class="ls-title-l">' + esc(def.label) + ', arrow by arrow</h3><ol class="ls-steps">' + def.steps.map(function(arr, i){
+        return '<li><span>' + (n > 1 ? '<b>Step ' + (i + 1) + '.</b> ' : '') + arrowsOf(arr).map(function(a){ return esc(undash(upper1(C.deltaFor(chal.states[i], a).text))) + '.'; }).join(' ') + '</span></li>';
+      }).join('') + '</ol><p>' + esc(tk[1]) + '</p>';
       studio.done({ kicker: 'Solved', title: esc(tk[0]),
         text: esc(tk[1]) + ' ' + (chal.wrong ? 'You got there with ' + chal.wrong + ' wrong check' + (chal.wrong > 1 ? 's' : '') + '.' : 'First time.'),
         next: { label: 'Next challenge', onClick: function(){ var i = CHALLENGES.indexOf(def); startChal(CHALLENGES[(i + 1) % CHALLENGES.length]); } },
         links: [{ label: 'Try it again', onClick: function(){ startChal(def); } }].concat(Kit.extras ? Kit.extras({ topic: def.topic }) : [])
       }, 'quiz');
     } else {
+      whyEl.innerHTML = '';
       studio.done(false, 'quiz');
       studio.task({ kicker: 'Test yourself', title: esc(def.stepGoals ? def.stepGoals[chal.i] : def.goal),
         todo: chal.i ? 'Step ' + chal.i + ' gave you this intermediate. Draw step ' + (chal.i + 1) + ' on it, then Check.' : 'Drag each electron pair of this step to where it goes, then Check.' }, 'quiz');
@@ -1429,6 +1496,8 @@
     head.el.hidden = mode !== 'explore';
     studio.done(false, 'quiz');
     var want = mode === 'explore' ? 'explore' : part === 'chal' ? 'chal' : part === 'any' ? 'any' : 'check';
+    // the Full explanation belongs to a finished challenge only
+    if(want !== 'chal') whyEl.innerHTML = '';
     if(want === 'check'){ paintAll(); words(null); syncState(); return; }   // the quiz: the picture stays live as it was
     S = boards[want];
     // a step cut short: the board is on the last state it fully reached, nothing held from a drag
