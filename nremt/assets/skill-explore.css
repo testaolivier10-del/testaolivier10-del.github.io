@@ -24,7 +24,7 @@
 .ssx-pt{position:relative;min-width:0;min-height:0;}
 .ssx-scene.is-wide .ssx-pt{height:100%;}
 .ssx-pt .sp{height:100%;}
-.ssx-pt .sp-stage{height:clamp(300px,50vh,460px);border-radius:0;box-shadow:none;}
+.ssx-pt .sp-stage{height:clamp(330px,68vh,600px);border-radius:0;box-shadow:none;}
 .ssx-scene.is-wide .ssx-pt .sp-stage{height:100%;}
 /* the patient's own words and lists belong to the run (Test yourself); Explore says it on the cause line */
 .ssx-pt .sp-chips,.ssx-pt .sp-cue,.ssx-pt .sp-misses,.ssx-pt .sp-notes,.ssx-pt .sp-credit{display:none !important;}

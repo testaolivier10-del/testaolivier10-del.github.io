@@ -245,6 +245,12 @@
         onPlace: function(i){ if(!St.done[i]) toggle(i, 'tap'); },
         onMove: function(i){ paintRows(); causeFor(i, true); },
         onBreath: function(r, iv){ breathCause(r, iv); },
+        // on a small picture the assessment stations show the newest finding's words only (the others keep their dot)
+        plateFilter: function(p){
+          if(box.classList.contains('is-wide') || (St.key !== 'trauma' && St.key !== 'medical')) return true;
+          var best = -1, id = null; def().steps.forEach(function(s, i){ if(St.done[i] && St.at[i] > best){ best = St.at[i]; id = s.id; } });
+          return !!(id && patient && patient.lay && patient.lay[id] && patient.lay[id].contains(p));
+        },
         onReady: function(P){ var sq = ptHost.querySelector('.sp-squeeze'); if(sq) ptHost.querySelector('.sp-stage').appendChild(sq); if(St.on) P.camera(true); }
       });
       paintRows();
@@ -326,7 +332,7 @@
       if(!on){ cause.set([{ t: f.name, role: 'step' }, { t: 'taken back off', role: 'ink' }]); return; }
       var eff = f.eff;
       if(f.s.id === 'tq' && St.key === 'bleeding' && patient.st.tq) eff = TQ[patient.st.tq.kind] || eff;
-      if(next() < 0 && !lv.length){ cause.take('All ' + St.done.length + ' steps, in the sheet’s order: nothing left showing on the patient. In the room, say each one out loud.'); return; }
+      if(next() < 0 && !lv.length){ cause.take('All ' + St.done.length + ' steps in the sheet’s order. In the room, say each one out loud.'); return; }
       cause.set([{ t: f.name, role: 'step' }, { t: eff, role: 'pt' }, { t: f.s.critical ? 'Critical step' : 'Scored step', role: f.s.critical ? 'crit' : 'ink' }]);
     }
 
@@ -344,7 +350,9 @@
     function examLine(){
       var best = -1, txt = '';
       def().steps.forEach(function(s, i){
-        var t = s.cue || ((St.key === 'trauma' || St.key === 'medical') ? s.did : '');
+        // assessment stations: the examiner gives what you find; on a small picture the newest finding is already
+        // written on the patient, so the clipboard keeps only real examiner cues there
+        var t = s.cue || ((St.key === 'trauma' || St.key === 'medical') && box.classList.contains('is-wide') ? s.did : '');
         if(St.done[i] && t && St.at[i] > best){ best = St.at[i]; txt = t; }
       });
       exam.hidden = !txt;

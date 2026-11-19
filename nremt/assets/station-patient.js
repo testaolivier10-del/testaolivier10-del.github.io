@@ -1385,7 +1385,7 @@
      screen; past its kmax it hides rather than cover the drawing. Run after a paint and on each camera frame. */
   Patient.prototype.upright = function(scale){
     if(!this.world) return;
-    var R = this.lie ? 90 : 0, sc = scale || this.scale || 1;
+    var self = this, R = this.lie ? 90 : 0, sc = scale || this.scale || 1, S = this.stage.getBoundingClientRect(), clamp = S.width > 0;
     [].forEach.call(this.world.querySelectorAll('.sp-plate'), function(p){
       if(p.closest('.sp-marks')) return;
       if(p.__t0 == null){
@@ -1397,9 +1397,22 @@
         p.__kmax = +(p.getAttribute('data-kmax') || 3.2);
       }
       var k = Math.max(1, 11.5 / (p.__fs * sc)), a = p.__a;
-      p.style.visibility = k > p.__kmax ? 'hidden' : '';
+      var off = k > p.__kmax || (self.opts.plateFilter && !self.opts.plateFilter(p));
+      p.style.visibility = off ? 'hidden' : '';
       k = Math.min(k, p.__kmax);
-      p.setAttribute('transform', (p.__t0 ? p.__t0 + ' ' : '') + (R || k !== 1 ? 'translate(' + a[0] + ' ' + a[1] + ')' + (R ? ' rotate(' + R + ')' : '') + (k !== 1 ? ' scale(' + k.toFixed(3) + ')' : '') + ' translate(' + (-a[0]) + ' ' + (-a[1]) + ')' : ''));
+      var tail = R || k !== 1 ? 'translate(' + a[0] + ' ' + a[1] + ')' + (R ? ' rotate(' + R + ')' : '') + (k !== 1 ? ' scale(' + k.toFixed(3) + ')' : '') + ' translate(' + (-a[0]) + ' ' + (-a[1]) + ')' : '';
+      p.setAttribute('transform', (p.__t0 ? p.__t0 + ' ' : '') + tail);
+      if(off || !clamp) return;
+      // kept inside the picture: a plate whose thing is in view slides back in; one whose thing is out of view hides
+      var r = p.getBoundingClientRect(); if(!r.width) return;
+      var ctm = p.getScreenCTM(), ax = ctm ? ctm.a * a[0] + ctm.c * a[1] + ctm.e : 0, ay = ctm ? ctm.b * a[0] + ctm.d * a[1] + ctm.f : 0;
+      if(ax < S.left || ax > S.right || ay < S.top || ay > S.bottom){ p.style.visibility = 'hidden'; return; }
+      var dx = r.left < S.left + 4 ? S.left + 4 - r.left : r.right > S.right - 4 ? S.right - 4 - r.right : 0;
+      var dy = r.top < S.top + 4 ? S.top + 4 - r.top : r.bottom > S.bottom - 4 ? S.bottom - 4 - r.bottom : 0;
+      if(dx || dy){
+        var ux = dx / sc, uy = dy / sc, w = self.lie ? [-uy, ux] : [ux, uy];
+        p.setAttribute('transform', 'translate(' + w[0].toFixed(1) + ' ' + w[1].toFixed(1) + ') ' + (p.__t0 ? p.__t0 + ' ' : '') + tail);
+      }
     });
   };
 
