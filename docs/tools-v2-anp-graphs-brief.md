@@ -138,7 +138,7 @@ tool, tools v2 drawn screens".
 - Build opt in: `"kit2": true`, `extraScripts`, `extraCss` on the tool in `anatomy-physiology/data/pages.json`;
   `scripts/build-anp.mjs` adds `tool-kit2.css` and `tool-kit2.js` for a kit2 tool. Only `tools/graphs.html` changed.
 - `scripts/check-weight.mjs`: A&P shell 60 to 61 KB (measured 60.3).
-- Sweep test: `scripts/tools-v2/anp-graphs-sweep.mjs`.
+- Sweep test: `scripts/tools-v2/anp-graphs-sweep.mjs`; frame by frame test: `scripts/tools-v2/anp-graphs-frames.mjs`.
 
 ## Checks run (2026-11-18)
 `node --test scripts/test/anp-*.test.mjs` (55 pass), `check-anp-content --check` (0 failing), `build-anp --check`,
@@ -166,3 +166,62 @@ errors. Shots: `/mnt/user-data/outputs/anp-graphs-v2/shots/`; preview: `/mnt/use
 - Test yourself is the old layout inside the new frame (its own graph, picker, Read it / Questions); it was not
   redesigned.
 - The A&P shell weight budget had to rise by 1 KB.
+
+## Review round 1 (2026-11-18)
+The independent review (`/home/claude/review-anp-graphs/REVIEW.md`) blocked on seven small must fix items and kept the
+structure. Rebased onto `claude/tools-v2-all`; `scripts/check-tool-use.mjs` is the collecting branch's again (frame v2
+is checked with a local copy of its list).
+
+Must fix, all done:
+1. `check-tool-use.mjs` restored; the line saying it changed is gone.
+2. Axon cause line: the hyperpolarization words whenever the K+ channels are still drawn open after the spike and the
+   inside is at or below −70 mV; the K+ out arrows follow the same rule (no more "Resting potential" beside open K+
+   channels at 4.22 to 4.26 ms).
+3. Inactivated Na+ channel: the pore (activation gate) stays open with the plug in it until repolarization; the gate
+   shuts 4.15 to 4.4 ms, then the plug leaves 4.4 to 5.0 ms (`naPore()`).
+4. Lungs: the diaphragm's dark "contracting" look and its down arrows only for a muscle breath in (V ≥ 2,350 mL and
+   rising); checked on the data: the trace rises from 1,200 to 2,400 mL at 18 to 20 s, where the line says "Muscles
+   let go".
+5. Lungs: one dome function (`domeY`) draws the diaphragm and the lung bases, which follow it 9 units above; alveoli
+   and airways stay above it.
+6. Red blood cell: dissolved O2 is `round(PO2 / 100 × 4)`, never more than the bound ones; "?" adds "almost all the
+   oxygen in blood rides on hemoglobin (about 98.5%)".
+7. Tabs at 360: on a phone the tabs size by their names (`flex: 1 1 auto`), 2 px apart at 380 px and under; the sweep
+   now fails a tab whose name comes within 4 px of its border.
+Frame by frame assertions for 2 to 6 (and the heart and the curve names): `scripts/tools-v2/anp-graphs-frames.mjs` draws
+every screen at 1,785 moments (axon every 0.01 ms, lungs every 0.05 s, PO2 every 1 mm Hg, heart every 5 ms, sarcomere
+every 1%) and checks the drawing against the line (K+ channels and arrows against the words, the Na+ gate and plug,
+diaphragm and belly arrows against the words, every lung outline point above the dome, dissolved against bound O2,
+the saturation number on no alveolus, the cavity top on the ring, the papillary muscles on the wall, no curve name
+across the cursor, every curve named on at least 90% of frames).
+
+Should fix, all done:
+- Heart: the valve ring is fixed and the ventricle shortens and narrows toward the apex (the cavity's top never leaves
+  the ring); the muscle has rounded shoulders; the papillary muscles are cones rising from the cavity wall that move
+  with it; three curved chordae per leaflet, taut when the mitral valve is shut, slack when open.
+- Sarcomere: drawn with its neighbours beyond each Z disc (thin filaments continue into the next sarcomere), a
+  little quieter (opacity 0.72), so the picture fills the stage; the kink at short lengths is half what it was.
+- Lungs: belly push arrows for the whole forced breath out (5,750 down to 1,350 mL, where the line names the push).
+- Red blood cell: the two bottom alveoli under the "98% saturated" readout are gone; working muscle fades out below
+  about 12 mm Hg, and below 10 mm Hg no place is drawn and the line says "PO2 very low → little O2 left on hemoglobin".
+- The left ventricle is blue in Test yourself's Wiggers graph too (pressure and volume; `graphs.js` sets class `lv`
+  on a loaded copy, `graphs.json` unchanged).
+- Axon on a phone: the picture is cropped to three channels (`crop()`, viewBox 58 to 388), so membrane and ions are
+  about 1.6 times bigger.
+- Curve names: placed every frame along their own curve, never across the dot or the knob's line, another name, any
+  curve or the dashed lines' names; on a phone graph they use short names.
+- "?" on the Axon screen names the absolute refractory period.
+- Tablet cause line: two rows' height from 641 to 899 px (this tool's CSS, on `.gx-lines`; the kit's phone rule is
+  untouched); the sweep checks a constant height at every width up to 1,100.
+- "Red cell" on phones kept (the reviewer's note only).
+- The bank's `ap-refractory` graph was considered for the Axon screen and left in Test yourself (owner log).
+
+Science check of every change against the notes: action-potential-basics (an inactivated channel is "plugged from
+inside" and "cannot open again until the membrane has repolarized", a different state from the closed one at rest;
+absolute refractory period), oxygen-transport (about 98.5% bound, 1.5% dissolved), heart-chambers-valves (papillary
+muscle "a cone of muscle that rises from the ventricle wall", chordae from cusp to papillary muscle), lung-volumes and
+ventilation-mechanics (forced breath out), muscle-tension (thick filaments butt against the Z discs).
+`docs/anp-needs-author.md`: gx-sarcomere-crumple, gx-heart-left-only, gx-axon-channel-timing and
+gx-forced-expiration-words updated; gx-dissolved-o2 and gx-po2-places added.
+
+Checks (round 1): see the end of this section once run.

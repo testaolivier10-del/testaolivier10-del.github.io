@@ -509,4 +509,7 @@ Site audit follow-up (2026-10-02, workstream W6):
     picture shows that moment and a cause line says why. Test yourself holds all 76 graphs and every question
     unchanged, each with "Read it" (the old cursor and What if view) and "Questions". First A&P tool on the shared
     kit: the adapter is AnpToolKit.kit2 in tools/tool-kit.js ("kit2": true in data/pages.json). Item ids, scoring,
-    recording and deep links unchanged; open points in docs/anp-needs-author.md.
+    recording and deep links unchanged; open points in docs/anp-needs-author.md. Review round 1 (2026-11-18): the
+    left ventricle's curves are blue in Test yourself's Wiggers graph too (one colour per idea, class lv set in
+    graphs.js; graphs.json unchanged); an inactivated Na+ channel is drawn open and plugged until repolarization;
+    dissolved O2 is a handful against the bound O2 (about 98.5% bound).
