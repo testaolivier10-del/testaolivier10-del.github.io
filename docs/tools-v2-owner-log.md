@@ -217,3 +217,6 @@ in each tool's brief.
 | 2026-11-18 | Ochem Arrow Pusher | Hydroxide in the SN2 molecule drawn closer and higher (tool only; molecules.js unchanged) | Room for the first visit cue on a phone | `LAYOUT` |
 | 2026-11-18 | Ochem Arrow Pusher | On a narrow step card, species are stacked in the small drawing | Readable at 360 px | `cardSt()` |
 | 2026-11-18 | Ochem Arrow Pusher | Build your own loads into Test yourself, Any molecule (not Explore) | Explore holds the curated mechanisms only | `openBuilder()` |
+| 2026-11-18 | Ochem Arrow Pusher | On a phone two wide species start stacked (Claisen, aldol, proton transfer) | Atoms readable, no empty band (review round 1) | `stacked()`, `PHONE` |
+| 2026-11-18 | Ochem Arrow Pusher | A state molecules.js draws by hand (tetrahedral intermediates) is drawn as there on wide screens | A hand drawing beats an automatic one (review round 1) | `drawnAs()` |
+| 2026-11-18 | Ochem Arrow Pusher | Show me how step 1 rings the whole molecule; names hidden while the tour is open | The callout never covers a ball or a name (review round 1) | `tourTurn` |
