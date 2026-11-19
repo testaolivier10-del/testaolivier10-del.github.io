@@ -11,6 +11,7 @@
 .mn2 [hidden]{display:none !important;}
 .mn2-scene{position:relative;flex:1 1 auto;min-height:440px;border-radius:18px;overflow:hidden;background:var(--mn-asph);isolation:isolate;}
 @media (max-width:1023px){ .mn2-scene{flex:none;height:min(66vw,560px);min-height:440px;} }
+@media (min-width:641px) and (max-width:900px){ .mn2-scene{height:max(560px,min(104vw,860px));} }
 @media (max-width:640px){ .mn2-scene{height:max(560px,min(160vw,640px));border-radius:14px;} .mn2{gap:8px;} }
 .mn2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;transition:opacity .25s ease;}
 .mn2-scene.is-swap .mn2-svg,.mn2-scene.is-swap .mn2-labels,.mn2-scene.is-swap .mn2-talk{opacity:0;transition:none;}
@@ -40,7 +41,7 @@
 .mn2-denim{fill:#4F6FA0;} .mn2-hood{fill:#7D8790;} .mn2-blouse{fill:#B48AC9;}
 .mn2-hood{fill:#6A737C;} .mn2-pocket{fill:none;stroke:#5E666E;stroke-width:3;opacity:.55;}
 .mn2-shoe{fill:#ECEAE4;stroke:#8E8A82;stroke-width:3;} .mn2-lace{stroke:#9C978E;stroke-width:2.4;stroke-linecap:round;}
-.mn2-shirt{fill:#5D6875;stroke:#3E4650;stroke-width:3;stroke-linejoin:round;} .mn2-belt{fill:#9C7A5A;}
+.mn2-belt{fill:#9C7A5A;}
 .mn2-sheet{fill:#F6F5F1;stroke:#CFCAC0;stroke-width:3;} .mn2-fold{fill:none;stroke:#D9D4CA;stroke-width:5;stroke-linecap:round;}
 .mn2-hair{fill:#3A2A1E;} .mn2-hairb{fill:#8D8278;} .mn2-hairf{fill:#9A8F84;}
 .mn2-face path,.mn2-face ellipse,.mn2-face circle{vector-effect:non-scaling-stroke;}
@@ -64,7 +65,7 @@
 .mn2-burn{fill:#D9452E;opacity:.7;} .mn2-blister{fill:#FBE6C8;opacity:.9;stroke:#E7B58D;stroke-width:1.5;}
 .mn2-ouch{fill:none;stroke:#E5482F;stroke-width:6;stroke-linecap:round;}
 .mn2-lac-e{fill:none;stroke:#5A120C;stroke-width:7;stroke-linecap:round;opacity:.8;} .mn2-lac{fill:none;stroke:#C2271B;stroke-width:3.4;stroke-linecap:round;}
-.mn2-swell{fill:#E8B29C;stroke:#B97A64;stroke-width:2.5;} .mn2-swell-s{fill:none;stroke:#C98A74;stroke-width:3;stroke-linecap:round;opacity:.8;}
+.mn2-swell{fill:#E6AC94;stroke:#B97A64;stroke-width:2;} .mn2-swell-t{fill:#D9705A;opacity:.28;}
 .mn2-glow{mix-blend-mode:multiply;}
 .mn2-press{fill:#B8432F;stroke:#fff;stroke-width:2;stroke-linejoin:round;}
 .mn2-rad{fill:none;stroke:#E5482F;stroke-width:9;stroke-linecap:round;stroke-dasharray:20 14;opacity:.9;}
@@ -81,8 +82,7 @@
 .mn2-bag{fill:#7A4E35;stroke:#4E3020;stroke-width:2;} .mn2-strap{fill:none;stroke:#4E3020;stroke-width:4;}
 .mn2-bottle{fill:#E08A2A;stroke:#9C5A14;stroke-width:1.5;} .mn2-cap{fill:#F4F2EE;stroke:#A8A39A;stroke-width:1;}
 .mn2-scale-bg{fill:rgba(255,255,255,.92);stroke:#B9B3A8;stroke-width:1;}
-.mn2-scale-n{font:800 12px var(--font-ui);fill:#2B2B2B;}
-.mn2-scale-m{fill:#1B1B1B;} .mn2-scale-d{fill:#fff;stroke:#1B1B1B;stroke-width:3;}
+.mn2-scale-n{font-family:var(--font-ui);font-weight:800;fill:#fff;} .mn2-scale-ring{fill:none;stroke:#1B1B1B;stroke-width:3;}
 .mn2-scale{opacity:0;transition:opacity .45s ease;}
 .mn2-scale.is-lit{opacity:1;}
 .mn2-cart,.mn2-purse{transition:filter .4s ease;}
@@ -100,6 +100,20 @@
 .mn2-cuff{fill:#5A55C2;} .mn2-sleeve{fill:#24344A;}
 .mn2-ring{fill:none;stroke:#FFD24A;stroke-width:4;opacity:0;animation:mn2-ring 1s ease-out;transform-box:fill-box;transform-origin:center;}
 @keyframes mn2-ring{0%{opacity:.95;transform:scale(1.6);}100%{opacity:0;transform:scale(.7);}}
+
+/* AVPU: the EMT's hand pinching the trapezius; the arm slides in from his left side */
+.mn2-pinch{opacity:0;transition:opacity .3s ease;}
+.mn2-pinch.is-on{opacity:1;}
+.mn2-pinch-i{transform:translateX(160px);transition:transform .5s cubic-bezier(.3,.8,.3,1);}
+.mn2-pinch.is-on .mn2-pinch-i{transform:none;}
+.mn2-fing,.mn2-thumb{transform-box:view-box;transform-origin:312px 196px;transition:transform .25s ease;}
+.mn2-pinch.is-squeeze .mn2-fing{animation:mn2-pf .5s ease 2;}
+.mn2-pinch.is-squeeze .mn2-thumb{animation:mn2-pt .5s ease 2;}
+@keyframes mn2-pf{50%{transform:translateY(6px);}}
+@keyframes mn2-pt{50%{transform:translate(4px,-6px);}}
+.mn2-sqz{fill:none;stroke:#5A55C2;stroke-width:4;stroke-linecap:round;opacity:0;transition:opacity .2s ease;}
+.mn2-pinch.is-squeeze .mn2-sqz{opacity:.9;}
+.mn2-talk.is-tall.is-low{justify-content:flex-end;}
 
 /* labels (1 to 3 words) with a leader to the point, and the badge a done letter leaves */
 .mn2-labels{position:absolute;inset:0;pointer-events:none;z-index:2;}
@@ -169,6 +183,8 @@
 @media (prefers-reduced-motion:reduce){
   .mn2-mk,.mn2-hand-i,.mn2-lab,.mn2-badge,.mn2-bub{transition:opacity .15s linear !important;transform:none !important;}
   .mn2-f,.mn2-scale,.mn2-hand{transition:opacity .15s linear !important;}
-  .mn2-mk.is-on .mn2-rad,.mn2-hand.is-squeeze .mn2-hand-i,.mn2-ring{animation:none !important;}
+  .mn2-mk.is-on .mn2-rad,.mn2-hand.is-squeeze .mn2-hand-i,.mn2-ring,.mn2-fing,.mn2-thumb{animation:none !important;}
+  .mn2-pinch,.mn2-pinch-i{transition:opacity .15s linear !important;}
+  .mn2-pinch-i{transform:none !important;}
   .mn2-ring{display:none;}
 }

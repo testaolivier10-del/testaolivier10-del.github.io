@@ -37,11 +37,11 @@
       idle: [{ t: '8 letters', role: 'key' }, { t: '8 things to look and feel for', role: 'word' }],
       take: 'On a real patient, check every body region for all eight.',
       letters: [
-        { k: 'D', word: 'Deformity', label: 'Deformity', at: [432, 522], find: 'left forearm bent out of line' },
+        { k: 'D', word: 'Deformity', label: 'Deformity', at: [432, 522], find: 'lump on the left forearm' },
         { k: 'C', word: 'Contusion', label: 'Contusion', at: [190, 292], find: 'bruise on the right chest' },
         { k: 'A', word: 'Abrasion', label: 'Abrasion', at: [300, 870], find: 'road rash on the left knee' },
         { k: 'P', word: 'Puncture', label: 'Puncture', at: [184, 806], find: 'small hole in the right thigh' },
-        { k: 'B', word: 'Burn', label: 'Burn', at: [196, 992], find: 'exhaust pipe burn on the right calf' },
+        { k: 'B', word: 'Burn', label: 'Burn', at: [196, 992], find: 'burn on the right lower leg' },
         { k: 'T', word: 'Tenderness', label: 'Tenderness', at: [284, 440], find: 'pain when you press the belly', feel: true },
         { k: 'L', word: 'Laceration', label: 'Laceration', at: [244, 50], find: 'cut on the forehead' },
         { k: 'S', word: 'Swelling', label: 'Swelling', at: [180, 1118], find: 'right ankle puffed up' }
@@ -52,7 +52,7 @@
       idle: [{ t: '4 letters', role: 'key' }, { t: 'voice first, then pain', role: 'word' }],
       take: 'Voice first, then pain: the first response sets the letter.',
       letters: [
-        { k: 'A', word: 'Alert', find: 'eyes open on their own', steps: ['open'] },
+        { k: 'A', word: 'Alert', find: 'awake and aware, talks to you', steps: ['open'] },
         { k: 'V', word: 'Verbal', find: 'responds to your voice', steps: ['voice', 'open'] },
         { k: 'P', word: 'Pain', find: 'responds only to pain', steps: ['voice', 'none', 'squeeze', 'grimace'] },
         { k: 'U', word: 'Unresponsive', find: 'no response to voice or pain', steps: ['voice', 'none', 'squeeze', 'none2'] }
@@ -77,7 +77,7 @@
       take: 'Her whole history in six letters. OPQRST digs into the S.',
       letters: [
         { k: 'S', word: 'Signs and symptoms', ask: 'What’s bothering you most?', say: 'My chest hurts, and I feel sick.', find: 'chest pain, pale, sweaty', mark: 'signs', label: 'Pale, sweaty' },
-        { k: 'A', word: 'Allergies', ask: 'Are you allergic to any medicines?', say: 'No. None that I know of.', find: 'no known allergies', mark: 'none', label: '' },
+        { k: 'A', word: 'Allergies', ask: 'Are you allergic to anything, like medicines, foods or latex?', say: 'No. None that I know of.', find: 'no known allergies', mark: 'none', label: '' },
         { k: 'M', word: 'Medications', ask: 'What medicines do you take?', say: 'Nitroglycerin, and a blood pressure pill.', find: 'nitro and a blood pressure pill', mark: 'pills', label: 'Her pills' },
         { k: 'P', word: 'Past history', ask: 'Any heart or other medical problems?', say: 'High blood pressure. A heart stent two years ago.', find: 'high blood pressure, a stent', mark: 'none', label: '' },
         { k: 'L', word: 'Last oral intake', ask: 'When did you last eat or drink?', say: 'Just this coffee, an hour ago.', find: 'coffee, an hour ago', mark: 'cup', label: 'Coffee' },
@@ -141,20 +141,26 @@
     function layout(){
       var W = box.clientWidth, H = box.clientHeight;
       if(!W || !H) return null;
-      var wide = W >= H * 1.05, phone = W < 600;
-      var talks = T().kind !== 'marks', keyH = phone ? 62 : 70, top = wide ? (talks ? (phone ? 92 : 104) : 40) : 10, side = wide ? 0 : Math.min(170, W * 0.4);
-      var k, cx, cy, availH = H - keyH - top - 8;
-      if(wide){
+      var t = T(), ladder = t.kind === 'ladder', talks = t.kind !== 'marks', phone = W < 600, keyH = phone ? 62 : 70;
+      var wide = !ladder && W > 900 && W >= H * 1.05, top, side, k, cx, cy, availH;
+      if(ladder){
+        // AVPU is about the face: frame his head and shoulders (image y -100 to 420), head up; the speech in a
+        // column on the right, clear of the EMT's arm
+        top = 8; side = phone ? Math.min(150, W * 0.38) : Math.min(340, W * 0.34); availH = H - keyH - top - 8;
+        k = Math.min(availH / 520, (W - side - 16) / 400);
+        cx = 8 + (W - side - 16) / 2; cy = top + (availH - 520 * k) / 2 + 700 * k;
+      } else if(wide){
+        top = talks ? (phone ? 92 : 104) : 40; side = 0; availH = H - keyH - top - 8;
         // the store: room past her feet for the cart
-        var extra = T().scene === 'store' ? 220 : 0;
+        var extra = t.scene === 'store' ? 220 : 0;
         k = Math.min((W - (phone ? 24 : 70)) / (1200 + extra), availH / 470);
         cx = W / 2 - extra * k / 2; cy = top + availH / 2 + 4;
       } else {
+        top = 10; side = phone ? Math.min(170, W * 0.4) : talks ? Math.min(300, W * 0.36) : W * 0.2; availH = H - keyH - top - 8;
         k = Math.min(availH / 1205, (W - side - 16) / 470);
         cx = 8 + (W - side - 16) / 2 + 4; cy = top + availH / 2 + 2;
       }
-      var a = wide ? -Math.PI / 2 : 0;
-      return { W: W, H: H, wide: wide, phone: phone, k: k, cx: cx, cy: cy, a: a, top: top, keyH: keyH, side: side,
+      return { W: W, H: H, wide: wide, ladder: ladder, phone: phone, k: k, cx: cx, cy: cy, top: top, keyH: keyH, side: side,
         tf: 'translate(' + cx.toFixed(1) + ' ' + cy.toFixed(1) + ') rotate(' + (wide ? -90 : 0) + ') scale(' + k.toFixed(4) + ') translate(-240 -600)' };
     }
     function P(x, y){ // image px -> stage px
@@ -226,14 +232,12 @@
       if(!F){ gFig.innerHTML = ''; return; }
       var url = FIGS[t.set].url(F), female = t.fig === 'female-front';
       h.push('<defs><clipPath id="mn2-body-' + t.id + '"><path d="' + F.outline + '"/></clipPath>' +
-        '<clipPath id="mn2-headc-' + t.id + '"><ellipse cx="240" cy="80" rx="44" ry="74"/></clipPath></defs>');
+        '<clipPath id="mn2-headc-' + t.id + '"><ellipse cx="240" cy="105" rx="38" ry="47"/></clipPath></defs>');
       if(t.scene === 'store'){
         // the stretcher: frame, mattress, pillow
         h.push('<rect class="mn2-cot" x="62" y="-60" width="356" height="1300" rx="34"/><rect class="mn2-mat" x="76" y="-46" width="328" height="1272" rx="28"/>' +
           '<ellipse class="mn2-pillow" cx="240" cy="60" rx="110" ry="74"/>');
       } else h.push('<path class="mn2-shadow" d="' + F.outline + '" transform="translate(10 14)" filter="url(#mn2-blur)"/>');
-      // the rider's shirt, cut up the front and spread under him for the exam
-      if(t.scene === 'road') h.push('<path class="mn2-shirt" d="M58 232L132 194L348 194L422 232L440 300L428 340L436 380L420 410L424 452L396 470L84 470L56 452L60 410L44 380L52 340L40 300Z"/>');
       if(female) h.push('<path class="mn2-hairb" d="M170 92C150 40 186 -18 240 -16C296 -18 332 40 310 94C306 128 290 150 282 156L282 70L198 70L198 156C188 148 172 126 170 92Z"/>');
       if(t.scene === 'walk') h.push('<path class="mn2-hood" d="M140 214Q150 150 240 140Q330 150 340 214Q300 186 240 184Q180 186 140 214Z"/>');
       h.push('<image href="' + url + '" x="0" y="0" width="' + F.w + '" height="' + F.h + '"/>');
@@ -257,6 +261,15 @@
         '<g class="mn2-f is-grim"><path class="mn2-brow" d="' + FACE.browG + '"/><path class="mn2-lid" d="' + FACE.lidG + '"/><path class="mn2-mouthg" d="' + FACE.mouthG + '"/></g>' +
         '</g>');
       h.push(marksSvg(t));
+      // the EMT's gloved hand pinching the trapezius ridge (thumb in front, fingers round the back), the arm reaching
+      // in from the EMT at his left side
+      if(t.kind === 'ladder') h.push('<g class="mn2-pinch"><g class="mn2-pinch-i">' +
+        '<rect class="mn2-sleeve" x="356" y="180" width="2400" height="40" rx="14"/><rect class="mn2-cuff" x="344" y="182" width="18" height="36" rx="5"/>' +
+        '<path class="mn2-glove" d="M348 180C334 172 318 172 306 178L302 216C316 224 334 224 348 218Z"/>' +
+        '<g class="mn2-fing"><ellipse class="mn2-glove" cx="303" cy="176" rx="6" ry="9"/><ellipse class="mn2-glove" cx="313" cy="172" rx="6" ry="9"/><ellipse class="mn2-glove" cx="323" cy="171" rx="6" ry="9"/><ellipse class="mn2-glove" cx="333" cy="172" rx="6" ry="8"/></g>' +
+        '<path class="mn2-glove mn2-thumb" d="M318 206C306 208 296 212 290 220C292 228 302 228 309 223C316 218 322 213 322 208Z"/>' +
+        '<path class="mn2-knuck" d="M314 186v24M326 184v26M338 184v26"/></g>' +
+        '<path class="mn2-sqz" d="M292 160q-8 8 0 16M282 196q-10 4 -12 14M300 234q4 8 12 10"/></g>');
       gFig.innerHTML = '<g class="mn2-body" transform="' + G.tf + '">' + h.join('') + '</g>';
     }
     function shoe(x){ return '<path class="mn2-shoe" d="M' + (x - 19) + ' 1150C' + (x - 22) + ' 1180 ' + (x - 14) + ' 1198 ' + x + ' 1198C' + (x + 14) + ' 1198 ' + (x + 22) + ' 1180 ' + (x + 19) + ' 1150C' + (x + 12) + ' 1140 ' + (x - 12) + ' 1140 ' + (x - 19) + ' 1150Z"/><path class="mn2-lace" d="M' + (x - 7) + ' 1156h14M' + (x - 7) + ' 1164h14M' + (x - 7) + ' 1172h14"/>'; }
@@ -273,7 +286,7 @@
         h.push(mk(4, '<ellipse class="mn2-burn" cx="196" cy="992" rx="11" ry="32"/><ellipse class="mn2-blister" cx="195" cy="980" rx="5" ry="7"/><ellipse class="mn2-blister" cx="198" cy="1004" rx="4" ry="5"/>'));
         h.push(mk(5, '<path class="mn2-ouch" d="M284 392v-14M318 406l10 -10M250 406l-10 -10M330 440h14M238 440h-14"/>'));
         h.push(mk(6, '<path class="mn2-lac-e" d="M228 52Q244 46 262 50"/><path class="mn2-lac" d="M229 52Q244 47 261 50"/><path class="mn2-drip" d="M252 50Q250 58 253 64Q256 58 254 50Z"/>'));
-        h.push(mk(7, '<path class="mn2-swell" d="M162 1094C150 1106 150 1132 162 1144L198 1144C210 1132 210 1106 198 1094Z"/><path class="mn2-swell-s" d="M166 1104Q160 1120 167 1136M194 1104Q200 1120 193 1136"/>'));
+        h.push(mk(7, '<ellipse class="mn2-swell-t" cx="180" cy="1120" rx="13" ry="20"/><path class="mn2-swell" d="M166 1094C150 1102 148 1138 166 1148C160 1132 160 1110 166 1094Z"/><path class="mn2-swell" d="M195 1094C211 1102 213 1138 195 1148C201 1132 201 1110 195 1094Z"/>'));
       } else if(t.id === 'opqrst'){
         h.push(mk('chest', '<circle cx="246" cy="296" r="70" fill="url(#mn2-pain)" class="mn2-glow"/><path class="mn2-press" d="M234 212L258 212L246 236ZM234 380L258 380L246 356ZM162 284L162 308L186 296ZM330 284L330 308L306 296Z"/>'));
         h.push(mk('arm', '<path class="mn2-rad" d="M270 290C306 262 334 236 350 238C374 250 388 330 400 400C410 460 418 520 424 586"/><path class="mn2-radh" d="M412 568L424 594L436 568"/>'));
@@ -304,13 +317,13 @@
         '<path class="mn2-bag" d="M-34 -18Q-36 26 -30 30L30 30Q36 26 34 -18Z"/><path class="mn2-strap" d="M-24 -18Q0 -50 24 -18"/>' +
         '<rect class="mn2-bottle" x="-22" y="-28" width="16" height="26" rx="3"/><rect class="mn2-cap" x="-23" y="-34" width="18" height="8" rx="2"/>' +
         '<rect class="mn2-bottle" x="2" y="-24" width="14" height="22" rx="3"/><rect class="mn2-cap" x="1" y="-29" width="16" height="7" rx="2"/></g>');
-      // the 0 to 10 scale, laid on the sheet over her legs
-      var sc = P(240, 840), sw = Math.max(110, Math.min(240, (G.wide ? 420 : 280) * u)), sx = sc[0] - sw / 2, sy = sc[1] - 14;
+      // the 0 to 10 pain scale, a printed card laid on the sheet, her 8 ringed
+      var sc = P(240, 840), sw = Math.max(132, Math.min(250, (G.wide ? 420 : 280) * u)), cw2 = sw / 11, sx = sc[0] - sw / 2, sy = sc[1] - 16, cols = ['#3FA34D', '#62AD45', '#86B83D', '#A9C236', '#CCCB2F', '#F2C230', '#F0A42C', '#EC8629', '#E66828', '#DE4A28', '#D2382B'];
       h.push('<g class="mn2-prop mn2-scale" data-p="scale" transform="translate(' + sx.toFixed(1) + ' ' + sy.toFixed(1) + ')">' +
-        '<rect class="mn2-scale-bg" x="-10" y="-10" width="' + (sw + 20) + '" height="48" rx="10"/>' +
-        '<rect x="0" y="0" width="' + sw + '" height="10" rx="5" fill="url(#mn2-scale)"/>' +
-        [0, 5, 10].map(function(n){ return '<text class="mn2-scale-n" x="' + (sw * n / 10).toFixed(1) + '" y="30" text-anchor="middle">' + n + '</text>'; }).join('') +
-        '<circle class="mn2-scale-d" cx="' + (sw * 0.8).toFixed(1) + '" cy="5" r="8"/></g>');
+        '<rect class="mn2-scale-bg" x="-6" y="-6" width="' + (sw + 12) + '" height="' + (cw2 + 12) + '" rx="6"/>' +
+        cols.map(function(c, n){ return '<rect x="' + (n * cw2).toFixed(1) + '" y="0" width="' + (cw2 - 1).toFixed(1) + '" height="' + cw2.toFixed(1) + '" fill="' + c + '"/>' +
+          '<text class="mn2-scale-n" x="' + ((n + 0.5) * cw2).toFixed(1) + '" y="' + (cw2 * 0.7).toFixed(1) + '" text-anchor="middle" font-size="' + Math.max(8, cw2 * 0.6).toFixed(1) + '">' + n + '</text>'; }).join('') +
+        '<circle class="mn2-scale-ring" cx="' + (8.5 * cw2).toFixed(1) + '" cy="' + (cw2 / 2).toFixed(1) + '" r="' + (cw2 * 0.62).toFixed(1) + '"/></g>');
       gFx.innerHTML = h.join('');
     }
     function cartSvg(w, h){
@@ -355,7 +368,7 @@
       var bw = b.offsetWidth, bh = b.offsetHeight, obs = obstacles(b), best = null;
       function clampX(x){ return Math.max(4, Math.min(G.W - bw - 4, x)); }
       function clampY(y){ return Math.max(4, Math.min(G.H - G.keyH - bh - 4, y)); }
-      function hits(x, y){ return obs.some(function(r){ return x < r.r + 3 && x + bw > r.l - 3 && y < r.b + 3 && y + bh > r.t - 3; }); }
+      function hits(x, y){ return obs.some(function(r){ return x < r.r + 5 && x + bw > r.l - 5 && y < r.b + 5 && y + bh > r.t - 5; }); }
       for(var i = 0; i < 40 && !best; i++){
         var sh = (i % 2 ? 1 : -1) * Math.ceil(i / 2) * 10, x = clampX(axis === 'x' ? lx + sh : lx), y = clampY(axis === 'y' ? ly + sh : ly);
         if(!hits(x, y)) best = [x, y];
@@ -373,19 +386,28 @@
       requestAnimationFrame(function(){ b.classList.add('is-in'); });
       return b;
     }
-    function label(text, x, y, cls, along){
-      var p = P(x, y), d = along ? (G.wide ? [1, 0] : [0, 1]) : outward(x), b = el('span', 'mn2-lab' + (cls ? ' ' + cls : ''), esc(text));
+    function label(text, x, y, cls, along, dir){
+      var p = P(x, y), d = dir || (along ? (G.wide ? [1, 0] : [0, 1]) : outward(x)), b = el('span', 'mn2-lab' + (cls ? ' ' + cls : ''), esc(text));
       labels.appendChild(b);
       var bw = b.offsetWidth, bh = b.offsetHeight, gap = along ? 26 + 30 * G.k : 18 + 26 * G.k;
       var lx = p[0] + d[0] * gap - (d[0] < 0 ? bw : d[0] > 0 ? 0 : bw / 2), ly = p[1] + d[1] * gap - (d[1] < 0 ? bh : d[1] > 0 ? 0 : bh / 2);
       return put(b, lx, ly, d[0] ? 'y' : 'x', p);
     }
-    function badge(text, x, y){
-      var p = P(x, y), b = el('span', 'mn2-badge', esc(text));
-      b.style.left = p[0].toFixed(1) + 'px'; b.style.top = p[1].toFixed(1) + 'px';
+    // a done letter's badge sits just outside its finding (outward from the body, or above a prop), never on it
+    function badgeBy(text, elx, x){
+      if(!elx) return;
+      var r = rel(elx), c, d = x == null ? null : outward(x), g = 15;
+      if(!d) c = [r.l - 14, r.t - 14];
+      else if(d[0] > 0) c = [r.r + g, (r.t + r.b) / 2]; else if(d[0] < 0) c = [r.l - g, (r.t + r.b) / 2];
+      else if(d[1] < 0) c = [(r.l + r.r) / 2, r.t - g]; else c = [(r.l + r.r) / 2, r.b + g];
+      c = [Math.max(13, Math.min(G.W - 13, c[0])), Math.max(13, Math.min(G.H - G.keyH - 13, c[1]))];
+      var b = el('span', 'mn2-badge', esc(text));
+      b.setAttribute('data-of', elx.getAttribute('data-m') != null ? 'm:' + elx.getAttribute('data-m') : 'p:' + elx.getAttribute('data-p'));
+      b.style.left = c[0].toFixed(1) + 'px'; b.style.top = c[1].toFixed(1) + 'px';
       labels.appendChild(b);
       requestAnimationFrame(function(){ b.classList.add('is-in'); });
     }
+    function badge(text, i, x){ badgeBy(text, gFig.querySelector('.mn2-mk[data-m="' + i + '"]'), x); }
     var SQUEEZE = 'Squeezes the trapezius muscle (a painful stimulus)';
     function preset(e, p){ bubE.classList.remove('is-act');
       bubE.querySelector('.mn2-bub-t').textContent = e || ''; bubP.querySelector('.mn2-bub-t').textContent = p || ''; bubE.classList.remove('is-in'); bubP.classList.remove('is-in'); }
@@ -406,8 +428,8 @@
         bubP.style.left = Math.max(0, hp[0] - 30).toFixed(1) + 'px';
         bubP.style.maxWidth = Math.min(340, G.W * 0.42).toFixed(0) + 'px';
       } else {
-        talk.className = 'mn2-talk is-tall';
-        talk.style.left = (G.W - G.side - 2).toFixed(1) + 'px'; talk.style.right = '8px'; talk.style.top = (who.offsetHeight + 18) + 'px'; talk.style.height = '';
+        talk.className = 'mn2-talk is-tall' + (G.ladder ? ' is-low' : '');
+        talk.style.left = (G.W - G.side - 2).toFixed(1) + 'px'; talk.style.right = '8px'; talk.style.top = (who.offsetHeight + 18) + 'px'; talk.style.height = ''; talk.style.bottom = G.ladder ? (G.keyH + 10) + 'px' : '';
         bubP.style.left = ''; bubP.style.maxWidth = '';
       }
     }
@@ -421,7 +443,7 @@
       labels.innerHTML = '';
       gFig.querySelectorAll('.mn2-mk').forEach(function(g){ g.classList.add('is-now'); });
       if(t.kind === 'marks'){
-        t.letters.forEach(function(L, i){ markOn(i, !!done[i]); if(done[i] && i !== cur) badge(L.k, L.at[0], L.at[1]); });
+        t.letters.forEach(function(L, i){ markOn(i, !!done[i]); if(done[i] && i !== cur) badge(L.k, i, L.at[0]); });
         if(cur >= 0 && done[cur]){ var L = t.letters[cur]; label(L.label, L.at[0], L.at[1], 'is-cur'); }
         face(cur >= 0 && t.letters[cur].feel && done[cur] ? 'grim' : 'open');
         handTo(284, 440, cur >= 0 && t.letters[cur].feel && done[cur], false);
@@ -429,10 +451,10 @@
       } else if(t.kind === 'ladder'){
         var L2 = cur >= 0 ? t.letters[cur] : null, end = L2 && done[cur];
         face(!L2 ? 'closed' : end ? (L2.k === 'A' || L2.k === 'V' ? 'open' : L2.k === 'P' ? 'grim' : 'closed') : 'closed');
-        handTo(300, 212, !!(end && (L2.k === 'P' || L2.k === 'U')), false);
-        bubble('emt', end && L2.k !== 'A' ? (L2.k === 'P' || L2.k === 'U' ? SQUEEZE : 'Sir! Can you hear me? Open your eyes!') : '');
+        pinch(!!(end && (L2.k === 'P' || L2.k === 'U')), false);
+        bubble('emt', end && L2.k !== 'A' ? (L2.k === 'P' || L2.k === 'U' ? SQUEEZE : VOICE) : '');
         bubE.classList.toggle('is-act', !!(end && (L2.k === 'P' || L2.k === 'U')));
-        bubble('pt', end ? (L2.k === 'V' ? 'Mm… what?' : L2.k === 'P' ? 'Nngh!' : '') : '');
+        bubble('pt', end ? SAYS[L2.k] : '');
         if(end) ladderLabel(L2);
       } else {
         var L3 = cur >= 0 ? t.letters[cur] : null;
@@ -448,16 +470,18 @@
       requestAnimationFrame(function(){ gFig.querySelectorAll('.mn2-mk').forEach(function(g){ g.classList.remove('is-now'); }); });
       paintKeys(); paintCause();
     }
-    function ladderLabel(L){
-      var txt = { A: 'Eyes open', V: 'Responds to voice', P: 'Responds to pain', U: 'No response' }[L.k];
-      label(txt, 262, 78, 'is-cur');
-    }
+    var LADDER = { A: 'Awake, aware', V: 'Responds to voice', P: 'Responds to pain', U: 'No response' };
+    var VOICE = 'Sir! Can you hear me? Open your eyes!', SAYS = { A: 'I\u2019m okay\u2026 what happened?', V: 'Mm\u2026 what?', P: 'Nngh!', U: '' };
+    // AVPU's words sit above his head, clear of the speech column
+    function headLabel(text, cls){ return label(text, 240, 4, cls, false, [0, -1]); }
+    function ladderLabel(L){ headLabel(LADDER[L.k], 'is-cur'); }
+    function pinch(on, squeeze){ var g = gFig.querySelector('.mn2-pinch'); if(!g) return; g.classList.toggle('is-on', !!on); g.classList.toggle('is-squeeze', !!squeeze); }
     var TALKAT = { cart: null, chest: [246, 296], arm: [404, 440], scale: null, watch: [428, 596], signs: [282, 64], pills: null, cup: null };
     function showTalkMark(L, cur){
       var m = L.mark;
       if(m === 'cart' || m === 'pills' || m === 'scale' || m === 'cup'){ propOn(m, true); if(m === 'cup') propOn('cart', false); }
       else if(m !== 'none') markOn(m, true);
-      if(!cur && m !== 'none' && L.label){ var at = talkAt(m); if(at) badgeAtStage(L.k, at[0], at[1]); }
+      if(!cur && m !== 'none' && L.label){ if(TALKAT[m]) badge(L.k, m, TALKAT[m][0]); else badgeBy(L.k, box.querySelector('[data-p="' + m + '"]'), null); }
     }
     function talkAt(m){
       if(TALKAT[m]) return P(TALKAT[m][0], TALKAT[m][1]);
@@ -466,7 +490,6 @@
       var r = g.getBoundingClientRect(), b = box.getBoundingClientRect();
       return [r.left - b.left + 2, r.top - b.top + 2];
     }
-    function badgeAtStage(text, x, y){ var b = el('span', 'mn2-badge', esc(text)); b.style.left = x.toFixed(1) + 'px'; b.style.top = y.toFixed(1) + 'px'; labels.appendChild(b); requestAnimationFrame(function(){ b.classList.add('is-in'); }); }
     function talkLabel(L){
       if(!L.label) return;
       var m = L.mark;
@@ -498,6 +521,7 @@
       var all = t.letters.every(function(L, i){ return done[i]; });
       bNext.textContent = cur < 0 ? 'First letter' : 'Next letter';
       bNext.disabled = all && cur === t.letters.length - 1;
+      bNext.hidden = bNext.disabled;
       bReset.disabled = cur < 0;
     }
     function paintCause(){
@@ -526,21 +550,23 @@
       if(t.kind === 'marks') playMark(t, L, i, wasDone);
       else if(t.kind === 'ladder') playLadder(t, L, i);
       else playTalk(t, L, i);
-      if(fromBelow && G && G.phone) revealPicture();
+      if(G && G.phone) keepInView(fromBelow);
     }
     function finish(t, i){
       St.done[t.id][i] = true;
-      var all = t.letters.every(function(x, j){ return St.done[t.id][j]; });
-      // the takeaway, once, when the last letter of the set lands on the picture
-      if(all && !St.took[t.id]){ St.took[t.id] = true; St.takeShown = t.id; }
+      var all = t.letters.every(function(x, j){ return St.done[t.id][j]; }), L = t.letters[i], my = token;
       paintKeys(); paintCause();
-      var L = t.letters[i];
-      say(L.k + ', ' + L.word + ': ' + L.find + '.' + (St.takeShown === t.id ? ' ' + t.take : ''));
+      say(L.k + ', ' + L.word + ': ' + L.find + '.');
+      // the takeaway, once, after the last letter's result has been read in the cause line
+      if(all && !St.took[t.id]){
+        St.took[t.id] = true;
+        timers.push(setTimeout(function(){ if(my !== token) return; St.takeShown = t.id; paintCause(); say(t.take); }, 1600));
+      }
     }
     function playMark(t, L, i, wasDone){
       // earlier marks keep their badges; this letter's mark grows in, then its label, then the result word
       labels.innerHTML = '';
-      t.letters.forEach(function(M, j){ if(j !== i && St.done[t.id][j]) badge(M.k, M.at[0], M.at[1]); });
+      t.letters.forEach(function(M, j){ if(j !== i && St.done[t.id][j]) badge(M.k, j, M.at[0]); });
       paintKeys(); paintCause();
       face('open'); handTo(L.at[0], L.at[1], false);
       ring(L.at[0], L.at[1]);
@@ -561,29 +587,33 @@
     function playLadder(t, L, i){
       labels.innerHTML = '';
       bubble('emt', ''); bubble('pt', ''); bubE.classList.remove('is-act');
-      handTo(300, 212, false);
+      pinch(false);
       paintKeys(); paintCause();
+      var red = reduced(), my = token;
+      function at(ms, fn){ timers.push(setTimeout(function(){ if(my === token) fn(); }, ms)); }
       if(L.k === 'A'){
-        face('closed');
-        later(120, function(){ face('open'); });
-        later(700, function(){ label('Eyes open', 262, 78, 'is-cur'); finish(t, i); });
+        // alert: awake already, eyes open, talks to you without being asked
+        face('open'); preset('', SAYS.A);
+        at(red ? 0 : 300, function(){ bubble('pt', SAYS.A); });
+        at(red ? 0 : 900, function(){ ladderLabel(L); finish(t, i); });
         return;
       }
       face('closed');
-      preset('Sir! Can you hear me? Open your eyes!', L.k === 'V' ? 'Mm\u2026 what?' : L.k === 'P' ? 'Nngh!' : '');
-      later(150, function(){ bubble('emt', 'Sir! Can you hear me? Open your eyes!'); });
+      preset(VOICE, SAYS[L.k]);
+      at(red ? 0 : 150, function(){ bubble('emt', VOICE); });
       if(L.k === 'V'){
-        later(1300, function(){ face('open'); bubble('pt', 'Mm… what?'); });
-        later(1900, function(){ label('Responds to voice', 262, 78, 'is-cur'); finish(t, i); });
+        // reduced motion: the voice still, then the response
+        at(red ? 1000 : 1300, function(){ face('open'); bubble('pt', SAYS.V); });
+        at(red ? 1000 : 1900, function(){ ladderLabel(L); finish(t, i); });
         return;
       }
-      later(1400, function(){ label('No response', 262, 78, 'is-wait'); });
-      later(2100, function(){ labels.innerHTML = ''; handTo(300, 212, true, false); bubble('emt', SQUEEZE); bubE.classList.add('is-act'); });
-      later(2600, function(){ handTo(300, 212, true, true); });
+      at(red ? 0 : 1400, function(){ headLabel('No response', 'is-wait'); });
+      at(red ? 1000 : 2100, function(){ labels.innerHTML = ''; pinch(true, false); bubble('emt', SQUEEZE); bubE.classList.add('is-act'); });
+      at(red ? 1000 : 2600, function(){ pinch(true, !red); });
       if(L.k === 'P'){
-        later(3200, function(){ face('grim'); bubble('pt', 'Nngh!'); });
-        later(3800, function(){ label('Responds to pain', 262, 78, 'is-cur'); finish(t, i); });
-      } else later(3500, function(){ label('No response', 262, 78, 'is-cur'); finish(t, i); });
+        at(red ? 1000 : 3200, function(){ face('grim'); bubble('pt', SAYS.P); });
+        at(red ? 1000 : 3800, function(){ ladderLabel(L); finish(t, i); });
+      } else at(red ? 1000 : 3500, function(){ ladderLabel(L); finish(t, i); });
     }
     function playTalk(t, L, i){
       labels.innerHTML = '';
@@ -597,10 +627,12 @@
       later(1800, function(){ talkLabel(L); finish(t, i); });
     }
 
-    function revealPicture(){
-      // a phone: a run started below the picture scrolls the picture into view
-      var r = box.getBoundingClientRect();
-      if(r.top < 0 || r.bottom > window.innerHeight){ try{ box.scrollIntoView({ block: 'nearest', behavior: reduced() ? 'auto' : 'smooth' }); }catch(e){} }
+    function keepInView(fromBelow){
+      // a phone: the picture's foot and the cause line both on screen; a run started below the picture brings it in
+      var sr = box.getBoundingClientRect(), lr = lines.getBoundingClientRect(), dy = 0;
+      if(fromBelow && sr.top < 0) dy = sr.top - 8;
+      else if(lr.bottom > innerHeight - 4) dy = lr.bottom - innerHeight + 8;
+      if(Math.abs(dy) > 2) try{ window.scrollBy({ top: dy, behavior: reduced() ? 'auto' : 'smooth' }); }catch(e){ window.scrollBy(0, dy); }
     }
 
     /* ---------------------------------------------------- tabs, start over, keys */

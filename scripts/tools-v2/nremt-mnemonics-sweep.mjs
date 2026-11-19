@@ -89,8 +89,9 @@ const geo = (page) => page.evaluate(() => {
   const q = (s) => document.querySelector(s), qa = (s) => [...document.querySelectorAll(s)];
   const vis = (e) => { const c = getComputedStyle(e); return c.display !== 'none' && c.visibility !== 'hidden' && +c.opacity > 0.05 && e.getBoundingClientRect().width > 0; };
   const cause = q('.mn2 .tk2-cause');
-  return { sw: document.documentElement.scrollWidth, iw: innerWidth, stage: R(q('.mn2')), scene: R(q('.mn2-scene')), body: R(q('.mn2-body')), keys: R(q('.mn2-keys')),
-    key: qa('.mn2-key').map(R), labs: qa('.mn2-lab').filter(vis).map(e => ({ ...R(e), text: e.textContent })), badges: qa('.mn2-badge').filter(vis).map(e => ({ ...R(e), text: e.textContent })),
+  const of = (b) => { const k = b.dataset.of || ''; const e = k.startsWith('m:') ? q(`.mn2-mk[data-m="${k.slice(2)}"]`) : k.startsWith('p:') ? q(`[data-p="${k.slice(2)}"]`) : null; return e ? R(e) : null; };
+  return { tab: q('.mn2').dataset.tab, face: R(q('.mn2-face')), sw: document.documentElement.scrollWidth, iw: innerWidth, stage: R(q('.mn2')), scene: R(q('.mn2-scene')), body: R(q('.mn2-body')), keys: R(q('.mn2-keys')),
+    key: qa('.mn2-key').map(R), labs: qa('.mn2-lab').filter(vis).map(e => ({ ...R(e), text: e.textContent })), badges: qa('.mn2-badge').filter(vis).map(e => ({ ...R(e), text: e.textContent, of: of(e) })),
     bubs: qa('.mn2-bub.is-in').map(e => ({ ...R(e), text: e.textContent })), who: R(q('.mn2-who')), cue: q('.tk2-cue') ? R(q('.tk2-cue')) : null,
     props: qa('.mn2-cart, .mn2-purse, .mn2-scale.is-lit').map(R),
     head: R(q('.mn2 .tk2-head')), tabs: R(q('.mn2 .tk2-tabs')), lines: R(q('.mn2-lines')), acts: qa('.mn2-acts button').map(R),
@@ -114,7 +115,11 @@ function check(g, tag) {
   // the patient is the largest thing in the picture; the picture the largest on the stage
   const bodyA = g.body.w * g.body.h, otherA = Math.max(g.keys.w * g.keys.h * 0.5, ...g.bubs.map(b => b.w * b.h), ...g.props.map(b => b.w * b.h));
   T(bodyA > 2 * otherA, `the patient is not the largest thing (${Math.round(bodyA)} vs ${Math.round(otherA)})`);
-  T(inside({ ...g.body, l: g.body.l + 2, r: g.body.r - 2, t: g.body.t + 2, b: g.body.b - 2 }, g.scene, 30), 'the patient is clipped');
+  // AVPU frames his head and shoulders on purpose: there the face must be whole and clear of the keys
+  if (g.tab === 'avpu') T(inside(g.face, { ...g.scene, b: g.keys.t }), 'the face is clipped');
+  else T(inside({ ...g.body, l: g.body.l + 2, r: g.body.r - 2, t: g.body.t + 2, b: g.body.b - 2 }, g.scene, 30), 'the patient is clipped');
+  // a done letter's badge sits beside its finding, never on it
+  g.badges.forEach(b => { if (b.of) T(!hit(b, b.of, 2), `badge ${b.text} covers its finding`); });
   T(g.scene.w >= g.stage.w - 2 && g.scene.h >= 2.5 * Math.max(g.lines.h, g.head.h, g.tabs.h) && g.scene.h >= 0.55 * g.stage.h, `the picture is not the largest thing (${Math.round(g.scene.h)} of ${Math.round(g.stage.h)})`);
   T(g.cause.pills.every(p => p.l >= g.lines.l - 1 && p.r <= g.lines.r + 1), 'a cause pill is clipped');
   T(!g.acts.some(a => g.cause.pills.some(p => hit(a, p))), 'a button overlaps the cause line');
@@ -142,7 +147,11 @@ if (arg('--width', null)) {
         await letter(page, i);
         const g = await geo(page); check(g, `${tag0} ${id} letter ${i + 1}`); heights.push([id + ' ' + (i + 1), g.cause.h]);
         ok(g.labs.length <= 2, `${tag0} ${id} letter ${i + 1}: ${g.labs.length} labels at once`);
-        if (i === n - 1) ok(g.cause.take, `${tag0} ${id}: no takeaway after the last letter`);
+        if (i === n - 1) {
+          ok(!g.cause.take && g.cause.pills.length === 3, `${tag0} ${id}: the last letter's result is not shown before the takeaway ("${g.cause.text}")`);
+          await until(page, () => document.querySelector('.mn2 .tk2-cause').classList.contains('is-take'));
+          const g2 = await geo(page); check(g2, `${tag0} ${id} takeaway`); heights.push([id + ' take', g2.cause.h]); ok(g2.cause.take, `${tag0} ${id}: no takeaway after the last letter`);
+        }
         else ok(/→/.test(g.cause.text) || g.cause.pills.length === 3, `${tag0} ${id} letter ${i + 1}: cause line "${g.cause.text}"`);
         if (SHOTS && (w === 360 || w === 820 || w === 1440) && (i === n - 1 || (id === 'avpu' && i === 2)) && !dark) await page.screenshot({ path: join(SHOTS, `sweep-${id}-${i + 1}-${w}.png`) });
       }
@@ -178,7 +187,7 @@ if (process.argv.includes('--frames')) {
             const cur = qa('.mn2-lab.is-cur').filter(e => op(e) > 0.05).length;
             let shown;
             if (id === 'dcap') { const m = q(`.mn2-mk[data-m="${i}"]`); shown = op(m) > 0.6; }
-            else if (id === 'avpu') { const want = { A: 'open', V: 'open', P: 'grim', U: 'closed' }[L.k]; const f = q('.mn2-f.is-' + want); shown = op(f) > 0.6 && (L.k === 'A' || L.k === 'V' || op(q('.mn2-hand')) > 0.6); }
+            else if (id === 'avpu') { const want = { A: 'open', V: 'open', P: 'grim', U: 'closed' }[L.k]; const f = q('.mn2-f.is-' + want), pt = q('.mn2-bub.is-pt'); shown = op(f) > 0.6 && (L.k === 'V' || L.k === 'P' ? pt.classList.contains('is-in') : true) && (L.k === 'A' ? pt.classList.contains('is-in') : true) && (L.k === 'A' || L.k === 'V' || op(q('.mn2-pinch')) > 0.6); }
             else { const b = q('.mn2-bub.is-pt'); shown = b.classList.contains('is-in') && op(b) > 0.6; }
             out.push({ pills, take, cur, shown });
           };
@@ -198,6 +207,19 @@ if (process.argv.includes('--frames')) {
     console.log(`frames at ${w}: ${frames} checked, ${mid} mid change`);
     await browser.close();
   }
+  // A phone 360 x 780: after a key, the cause line is on screen
+  { const browser = await chromium.launch({ executablePath: EXE });
+    const ctx = await browser.newContext({ viewport: { width: 360, height: 780 }, serviceWorkers: 'block', hasTouch: true });
+    await ctx.route(u => !u.href.startsWith(`http://localhost:${PORT}`) && !u.href.startsWith('data:'), r => r.abort());
+    await ctx.addInitScript(() => { try { localStorage.setItem('tk2c:nremt-mnemonics', '1'); } catch (e) {} });
+    const page = await ctx.newPage(); await page.goto(URL0); await page.waitForSelector('.mn2-body image'); await page.waitForTimeout(600);
+    for (const id of ['dcap', 'avpu']) {
+      await tab(page, id); await page.tap('.mn2-key[data-i="1"]');
+      await until(page, () => document.querySelector('.mn2').dataset.done[1] === '1'); await page.waitForTimeout(700);
+      const r = await page.evaluate(() => ({ cause: document.querySelector('.mn2 .tk2-cause').getBoundingClientRect().bottom, keys: document.querySelector('.mn2-keys').getBoundingClientRect().top, h: innerHeight }));
+      ok(r.cause <= r.h && r.keys >= 0, `360 x 780 ${id}: the cause line is off screen after a key (${Math.round(r.cause)} of ${r.h})`);
+    }
+    await browser.close(); }
   // Reduced motion: the full result at once, with a short fade
   { const { browser, page, errs } = await open(390, false, { reduced: true, noCue: true });
     await page.click('.mn2-key[data-i="0"]'); await page.waitForTimeout(60);

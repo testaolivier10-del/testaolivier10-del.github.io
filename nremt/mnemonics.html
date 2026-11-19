@@ -213,7 +213,7 @@
       <div class="row"><span class="letter">P</span><span><b>Provocation/Palliation</b> — what makes it better or worse</span></div>
       <div class="row"><span class="letter">Q</span><span><b>Quality</b> — sharp, dull, crushing, burning, etc.</span></div>
       <div class="row"><span class="letter">R</span><span><b>Radiation</b> — does it spread anywhere else</span></div>
-      <div class="row"><span class="letter">S</span><span><b>Severity</b> — often rated on a 1-10 scale</span></div>
+      <div class="row"><span class="letter">S</span><span><b>Severity</b> — often rated on a 0 to 10 scale, where 0 is no pain</span></div>
       <div class="row"><span class="letter">T</span><span><b>Time</b> — how long it's been going on, any change over time</span></div>
     </div>
   </div>
@@ -513,7 +513,8 @@ document.addEventListener('DOMContentLoaded', function(){
       },
       onShow: function(m, part, user){
         mode = m;
-        if(m === 'explore') ex.shown();
+        // back from Test yourself on one of the four: Explore opens on that mnemonic's tab
+        if(m === 'explore'){ var tb = user ? ex.tabOf(cards[cur].id) : null; if(tb && tb !== ex.tab()) ex.tab(tb); ex.shown(); }
         else go(cur, !!user);
       } });
   }
