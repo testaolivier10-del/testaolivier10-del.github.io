@@ -172,6 +172,8 @@ frames both ways, first visit cues at 1440, 768 dark and 390).
 - The magnifier is larger than the vessel (it is part of the water's control: the water can be dragged in it, and
   since review round 1 it carries the cue and a grip). On phones it is smaller than the cylinder.
 - The coarse cylinder (50 mL marked every 10 mL) is a teaching picture; real 50 mL cylinders are marked every 1 mL.
+  "?" says so in one sentence ("The coarse cylinder is a teaching picture: a real 50 mL cylinder is marked every
+  1 mL.").
 - The pour is drawn from a model of a tilted cylinder (level water, area as volume), not a fluid simulation; the
   stream is one curved stroke.
 - The flagship and osmosis keep their own scene code; nothing was moved into the kit here (`K.setup`, the shared
@@ -209,3 +211,13 @@ height override was dropped (the kit's own is used).
 
 Decisions made for the owner (also in `docs/tools-v2-owner-log.md`): the coarse cylinder in place of the beaker;
 the pour as drawn above (2.6 s); the cue on the magnifier with a grip; `ML` not an alias.
+
+## Recheck 1 (2026-11-18): PASS, three polish items done
+1. "?" says in one plain sentence that the coarse cylinder is a teaching picture (a real 50 mL cylinder is marked
+   every 1 mL); mirrored under "Not done" above.
+2. On a wide stage the pour is centred (`pourPlan` shifts the whole pour to the middle, still clamped to the
+   stage); phones keep it where it was.
+3. Reduced motion: the old picture fades out (0.15 s) before the new one fades in (0.15 s), so two readings never
+   show together (`crossSvg`).
+Checks: sweep at 390, 1440 and 1920 (one width per process), chem unit tests, content check, `build-apchem
+--check`; preview regenerated.

@@ -386,7 +386,9 @@
         // keep the whole pour on the stage: shift it sideways if a pose would leave it
         var lo = Infinity, hi = -Infinity;
         for(var k = 0; k <= 24; k++){ var th = TILT * k / 24; [P.lip0, P.lip1].forEach(function(lx){ P.pose(th, lx).out.forEach(function(p){ lo = Math.min(lo, p[0]); hi = Math.max(hi, p[0]); }); }); }
-        var shift = lo < 8 ? 8 - lo : hi > g.W - 8 ? g.W - 8 - hi : 0;
+        // on a wide stage the pour happens in the middle; it always stays on the stage
+        var shift = phone ? 0 : g.W / 2 - (lo + hi) / 2;
+        shift = lo + shift < 8 ? 8 - lo : hi + shift > g.W - 8 ? g.W - 8 - hi : shift;
         P.xR += shift; P.lip1 += shift; P.ready += shift; P.lip0 += shift;
         // how much water a tilted cylinder holds below its spout (mL)
         P.cap = function(ps){ return polyArea(clipBelow(ps.inn, ps.lip[1])) / P.perMl; };
@@ -410,8 +412,17 @@
         for(var j3 = 0; j3 <= n; j3++){ if(left[j3] <= 0.01){ P.fE = j3 / n; break; } }
         return P;
       }
-      function crossSvg(){ var old = svg.innerHTML; layoutRead(); var g = document.createElementNS('http://www.w3.org/2000/svg', 'g'); g.setAttribute('class', 'us3-fade'); g.innerHTML = old; svg.appendChild(g);
-        if(g.animate){ var an = g.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 240 }); an.onfinish = function(){ g.remove(); }; } else g.remove(); }
+      /* Reduced motion: the old picture fades out first, then the new one fades in (they never show together). */
+      function crossSvg(){
+        var old = svg.innerHTML; layoutRead();
+        var NS = 'http://www.w3.org/2000/svg', g = document.createElementNS(NS, 'g'), g2 = document.createElementNS(NS, 'g');
+        while(svg.firstChild) g2.appendChild(svg.firstChild);
+        g.setAttribute('class', 'us3-fade'); g.innerHTML = old; svg.appendChild(g2); svg.appendChild(g);
+        if(!g.animate){ g.remove(); return; }
+        g2.style.opacity = '0';
+        var an = g.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 150, fill: 'forwards' });
+        an.onfinish = function(){ g.remove(); g2.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 150 }); g2.style.opacity = ''; };
+      }
       // room under the magnifier for its first visit cue, so the cue never covers the reading
       var CUE_ROOM = 44;
       function geoRead(W, H){
@@ -745,7 +756,7 @@
           var inst = instNow(), rr = U.read(S.v, inst);
           ref.innerHTML = how + '<h3 class="ls-title-l">How to read a scale</h3><ol class="us3-list"><li>Look at the bottom of the curved surface (the meniscus), with your eye level with it.</li><li>Write every digit the marks give you for certain.</li><li>Estimate one more digit, in tenths of the space between two marks. Stop there: it is the last significant figure.</li></ol>' +
             '<h3 class="ls-title-l">This reading</h3><p>The ' + esc(inst.name.toLowerCase()) + ' has marks every ' + inst.every + ' mL. The water sits between ' + rr.low + ' and ' + rr.high + ' mL, so it reads <b>' + esc(rr.shown) + ' mL</b>: ' + (rr.certain ? esc(rr.certain) + ' from the marks and ' : 'no digit from the marks, and ') + esc(rr.est) + ' estimated, ' + rr.sf + ' significant figure' + (rr.sf === 1 ? '' : 's') + '.' + (/\.$/.test(rr.shown) ? ' The decimal point after the 0 says that the zero was read (estimated), so it counts.' : '') + '</p>' +
-            '<p>The same water in the fine cylinder (marks every 1 mL) reads one more digit than in the coarse cylinder (marks every 10 mL). Finer marks, more real digits; a digit past the estimated one would be a guess. To measure a volume, use a graduated cylinder (or a pipet or buret): the marks on a beaker are only approximate.</p>' +
+            '<p>The same water in the fine cylinder (marks every 1 mL) reads one more digit than in the coarse cylinder (marks every 10 mL). Finer marks, more real digits; a digit past the estimated one would be a guess. To measure a volume, use a graduated cylinder (or a pipet or buret): the marks on a beaker are only approximate. The coarse cylinder is a teaching picture: a real 50 mL cylinder is marked every 1 mL.</p>' +
             '<h3 class="ls-title-l">Counting significant figures</h3><ul class="us3-list"><li>Nonzero digits always count; so do zeros between them (4005: 4).</li><li>Leading zeros never count (0.0045: 2).</li><li>Trailing zeros count after a decimal point (4.50: 3); with no point they are unclear (2500), so write 2.50 × 10³ or 2500.</li><li>Exact numbers (a count, 1 L = 1000 mL) have no uncertainty and never limit an answer.</li></ul>' + rules + notes;
         }
       }
