@@ -230,3 +230,11 @@ status table kept).
 - The held state's screen reader text says the charges are "not settled while a push is held".
 - With a note (1° C⁺) the moves keep their own words; the note takes the result's place.
 - Not done: the O–Br stick of hydroxide pushed onto bromine can cross another atom while held.
+
+### Checks (this round, after the last change)
+- Sweep, one width per process at all ten widths: 71 or 72 states and 810 or 814 checks each (now with the four
+  `?start=` links, letters against letters and badges against letters in every card), **0 failures**.
+- Resonance's sweep: 0 failures at 390 (44 states) and 1440 (43).
+- Unit tests 113 pass (2 new arrow pusher tests in `tool-content`, 1 in `ochem-url-compat`); `build-tool-pages --check`,
+  `check-site`, `check-weight --check`.
+- Preview and shots regenerated (`/mnt/user-data/outputs/arrow-pusher-v2/`), with the Claisen solved at 390 and 1440.
