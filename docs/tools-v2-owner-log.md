@@ -216,7 +216,6 @@ in each tool's brief.
 | 2026-11-18 | A&P Pathway tracer | Review round 1: the knob is a clear ring, the token a ring round it | The part acting under it stays in sight on a phone | `pathways-explore.css` |
 | 2026-11-18 | A&P Pathway tracer | Review round 1: wide heart puts the body on the left, the lungs on the right | The trunk runs right and the veins enter the left atrium from the right, as in the body | `docs/anp-needs-author.md` pw-heart-wide |
 | 2026-11-18 | A&P Pathway tracer | Review round 1: a broken run stops after its last real step; the cut is drawn just beyond the stopped knob | Stopping a knob's width early cut off steps that really happen | `stopV` per break |
-
 | 2026-11-18 | Ochem Arrow Pusher | Explore is one screen with five curated mechanisms (SN2, proton transfer, SN1 ionization, HBr addition, acyl substitution); the 18 molecules move to Test yourself, Any molecule | "Way too much going on" on the old screen (owner); one idea per screen | `MECHS` in `arrow-pusher.js` |
 | 2026-11-18 | Ochem Arrow Pusher | The board, drag, snapping, held push and spring back are Resonance's, shared in `push-board.js` and `.css` | The two tools feel the same; one copy | `ochem/assets/push-board.js` |
 | 2026-11-18 | Ochem Arrow Pusher | σ bonds can be grabbed and dragged | They are what breaks in a mechanism | `sourceAt(pt, { sigma: true })` |
