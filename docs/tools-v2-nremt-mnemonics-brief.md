@@ -5,7 +5,8 @@ Status file for the v2 rebuild of `nremt/mnemonics.html` (free; the fourth most 
 `docs/tools-v2-builder-brief.md`. Branch `claude/tools-v2-nremt-mnemonics`, built on `claude/tools-v2-all`. NOT
 merged: an independent review comes first. Decisions made for the owner are also in `docs/tools-v2-owner-log.md`.
 The first NREMT tool on the v2 kit (`assets/course/tool-kit2.js`), so it adds the NREMT adapter
-(`NremtStudio.kit2` in `nremt/assets/nremt-studio.js`, the pattern of `ApBioTools.studioKit2`).
+(`NremtStudio.kit2` in its own file, `nremt/assets/nremt-kit2.js`, loaded only by v2 pages; the pattern of
+`ApBioTools.studioKit2`). The next NREMT v2 tool extends that file.
 
 ## The one main idea
 **A mnemonic is the order of an assessment you actually do: each letter is one thing you look for, feel for or ask
@@ -37,11 +38,11 @@ sequence of checks, not a word list.
   hand when the EMT touches the patient.
 - **Four tabs, one patient story each** (the short curated set; each is a different assessment, so a tab each):
   1. **DCAP-BTLS**, a rider after a motorcycle crash: each letter draws its injury on the body (deformed forearm,
-     chest contusion, road rash, a puncture, an exhaust pipe burn on the calf, tenderness under the gloved hand,
-     a scalp laceration, a swollen ankle).
-  2. **AVPU**, a man found on the sidewalk: each letter acts the ladder out on the face (A eyes open on their own;
-     V eyes open when the EMT speaks; P nothing to the voice, a grimace to a trapezius squeeze; U nothing to
-     either).
+     chest contusion, road rash, a puncture, a burn on the right lower leg, tenderness under the gloved hand,
+     a forehead laceration, a swollen ankle).
+  2. **AVPU**, a man found on the sidewalk, framed head and shoulders: each letter acts the ladder out on the face
+     (A awake and aware, eyes open, he talks to you; V eyes open when the EMT speaks; P nothing to the voice, a
+     grimace when the EMT's hand pinches the trapezius; U nothing to either).
   3. **OPQRST**, a 58 year old woman with chest pain on the stretcher: each letter is the EMT's question, her
      answer, and what it is about lit on the picture (the cart for onset, the chest for quality, arrows down the
      left arm for radiation, a 0 to 10 scale for severity).
@@ -75,7 +76,7 @@ sequence of checks, not a word list.
 
 ### What is on screen in Explore (counted, opening, 1440 and 390)
 4 tabs; 1 purpose line (9 to 10 words) and "Show me how"; 1 picture (the patient on the ground or stretcher, the
-largest thing at every width, sweep checked) with 1 small patient chip ("Rider after a motorcycle crash") and the
+largest thing at every width, sweep checked; on AVPU his head and shoulders) with 1 small patient chip ("Rider after a motorcycle crash") and the
 letter keys on it (8, 4, 6 or 6); 1 cause line (2 pills at the opening, 3 after a letter); 2 buttons ("Next letter",
 "Start over"). After a letter: 1 label of 1 to 3 words with a leader, a small letter badge on each earlier finding,
 and on AVPU, OPQRST and SAMPLE two speech bubbles (the EMT's question or action, the patient's answer). The cue on
@@ -87,11 +88,12 @@ the first visit only. No side panel, no text block.
 3. Deep links: `#m-...` of the four opens Explore on that tab; others open Test yourself; Test yourself writes
    `#test-m-...`; `#test` opens Test yourself.
 4. Made up patients; the chest pain answers match scenario s2.
-5. OPQRST severity drawn on a 0 to 10 scale (the card says 1 to 10; logged in `docs/nremt-needs-author.md`).
+5. One pain scale, 0 to 10: the OPQRST card now says so too and the flashcards were rebuilt (review round 1).
 6. The "Read a card, then press Fill the letters" line is not shown in the v2 frame (the side panel says it).
 7. Keys 38 to 44 px wide on a 360 px phone so eight letters stay one row (46 px tall).
 8. The NREMT adapter is its own small file, `nremt/assets/nremt-kit2.js` (`NremtStudio.kit2`), loaded only by v2
-   pages, so `nremt-studio.js` and every other NREMT page are byte for byte unchanged.
+   pages, so `nremt-studio.js` and every other NREMT page are byte for byte unchanged (the next NREMT v2 tool
+   extends this file).
 9. On AVPU the trapezius squeeze is said in the EMT's bubble (italic, "Squeezes the trapezius muscle (a painful
    stimulus)") rather than as a label by the hand: a label there collided with the speech on phones.
 10. OPQRST P (worse with walking), SAMPLE A and SAMPLE P draw nothing on the patient: they are the question and the
@@ -114,22 +116,46 @@ the first visit only. No side panel, no text block.
 
 ## Checks run (2026-11-18)
 `node --test scripts/test/nremt-*.test.mjs` (71 pass), `build-nremt-flashcards.mjs --check` (19 mnemonic cards, up
-to date), `check-site` (OK), `check-weight --check` (nremt shell 28.6 of 28.8 KB; the one budget over is the same
-on the base branch), a local copy of `check-tool-use.mjs` listing this page (reports frame v2: open, touch, mode,
+to date), `check-site` (OK), `check-weight --check` (all budgets within range; nremt shell 28.6 of 28.8 KB), a local copy of `check-tool-use.mjs` listing this page (reports frame v2: open, touch, mode,
 use; nothing under automation). Playwright at 390 (real touch taps), 768 and 1440, light and dark: 113 passed, 0
 failed (opening counts and cue, letters, keyboard arrows, Home, End, Next letter on a phone brings the picture into
 view, Start over, AVPU and OPQRST runs with mid frames, Test yourself: Fill the letters on SAMPLE with five right and
 one wrong answer reads 5 / 6, Explore kept after Test yourself, seven deep links, `?studio=0` 19 cards, "?" credit,
 no console errors).
-Sweep (`node scripts/tools-v2/nremt-mnemonics-sweep.mjs`): every tab's opening, every letter, the takeaway and Start over, at 360, 390, 430, 600, 768, 820, 1024, 1280, 1440, 1920, light and dark, plus the first visit with the cue; frame by frame at 390 and 1440 (8101 frames, 1846 mid change: no result word before the picture shows it, no flash on a first frame); reduced motion. **9690 passed, 0 failed.**
+Sweep (`node scripts/tools-v2/nremt-mnemonics-sweep.mjs`, one process per width): every tab's opening, every letter, the result before the takeaway, the takeaway and Start over, badges beside their findings, at 360 to 1920, light and dark, plus the first visit with the cue; frame by frame at 390 and 1440 (7904 frames, 1852 mid change); the cause line on screen at 360 x 780; reduced motion. **Round 1: 12411 passed, 0 failed.** Playwright verification 120 passed, 0 failed.
 Preview: `/mnt/user-data/outputs/nremt-mnemonics-v2/index.html`; shots (`sweep-*`, `v-*`, mid change frames
 `v-*-mid-*`, `v-avpu-P-voice-*`, `v-avpu-P-squeeze-*`) in `/mnt/user-data/outputs/nremt-mnemonics-v2/shots/`.
 
 ## Not done, and what I am not happy with
 - No independent medical review yet (the points are in `docs/nremt-needs-author.md`); no real phone, no screen
   reader pass, no real students.
-- The drawn face on the rendered mannequin is simple; at 360 px the eyes are small, so AVPU leans on its labels.
+- The drawn face on the rendered mannequin is simple; AVPU now frames head and shoulders (face about 80 px wide at
+  1440, about 45 px at 390), but the face is still a mannequin's.
 - At 360 px the eight DCAP-BTLS keys are under 44 px wide (about 39).
-- On a phone the AVPU result label sits under the speech bubbles with a long leader to the face.
 - The figure is the same mannequin body for both men (only clothes and hair differ).
 - Only Chromium.
+
+## Review round 1 (2026-11-18, independent review BLOCK; all fixed on this branch)
+Merged `origin/claude/tools-v2-all` first (both sides of the docs tables kept; the collecting branch's
+`check-tool-use.mjs` unchanged) and read the "Caught in reviews" checklist.
+Must fix:
+1. AVPU A meant only "eyes open" (that is GCS E4). Now: find "awake and aware, talks to you", label "Awake, aware",
+   his line "I'm okay... what happened?", and A starts with his eyes already open.
+2. SAMPLE A asks "Are you allergic to anything, like medicines, foods or latex?".
+3. One pain scale: the OPQRST card says "often rated on a 0 to 10 scale, where 0 is no pain"; flashcards rebuilt;
+   the needs-author point is marked resolved.
+4. The last letter's result now reaches the cause line; the takeaway replaces it 1.6 s later (`finish()`).
+5. Badges sit beside their findings (outward from the body, or off a prop's corner), never on them; the sweep
+   asserts it at every width.
+6. AVPU frames his head and shoulders, head up (image y -100 to 420), speech low in the right column; the EMT's
+   gloved hand pinches the trapezius ridge (thumb in front, fingers round the back) on an arm that slides in from
+   his left side; the labels sit above his head.
+7. D now reads "lump on the left forearm" (what is drawn); B reads "burn on the right lower leg"; the "usual
+   exhaust side" claim is gone from `docs/nremt-needs-author.md`.
+Should fix: on a phone a key keeps the cause line on screen (checked at 360 x 780); labels keep 5 px from
+everything; swelling drawn as two puffy bulges; the spread shirt under the rider removed; the pale overlay clipped
+to her face; the pain scale a printed card with 8 ringed, no knob; the tall (head up) layout up to 900 px with a
+taller picture (768 and 820 have no empty bands); reduced motion on AVPU V, P and U shows the voice still, then
+cross fades to the response; returning to Explore from a Test yourself card of the four opens that tab; "Next
+letter" hides once the last letter is done; docs corrected (adapter file, forehead, check-weight).
+Not taken: none.
