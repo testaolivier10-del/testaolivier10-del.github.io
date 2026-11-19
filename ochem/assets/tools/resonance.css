@@ -10,11 +10,8 @@
 @media (max-width:1023px){ .rs2-scene{flex:none;height:clamp(620px, calc(100vh - 300px), 820px);min-height:0;} }
 @media (max-width:640px){ .rs2-scene{height:596px;border-radius:14px;} .rs2{gap:8px;} .rs2[data-part="compare"] .rs2-scene{height:470px;} }
 .rs2-lines{display:flex;align-items:center;gap:6px 18px;flex-wrap:wrap;flex:none;}
-/* the forms row buttons */
+/* the forms row buttons: push-board.css (.rs2-tb) */
 .rs2-thumbs{position:absolute;inset:0;pointer-events:none;z-index:3;}
-.rs2-tb{position:absolute;pointer-events:auto;background:transparent;border:0;border-radius:12px;cursor:pointer;padding:0;}
-.rs2-tb:disabled{cursor:default;}
-.rs2-tb:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
 /* Test yourself docks */
 .rs2-dock{display:flex;flex-direction:column;gap:12px;}
 .rs2-count{margin:0;font:700 15px/1.4 var(--font-ui);}
