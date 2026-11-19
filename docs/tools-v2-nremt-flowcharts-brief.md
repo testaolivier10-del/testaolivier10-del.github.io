@@ -214,3 +214,12 @@ sweep ends with its leader on the hand; the mask sits lower, off the eyes; the p
 the first box reads "Scene safe, gloves, head still".
 Checks: NREMT tests 71 pass. Sweep, one process per width: 360 1227; 390, 430, 600 1226 each; 768, 820, 1024, 1280,
 1440 1184 each; 1920 1176; 0 failed. `--frames` 86 passed, 0 failed (p95 50 ms at both widths, CPU x4).
+
+## Polish after recheck 2 (PASS): the gloves
+Every gloved hand (carotid, radial, jaw thrust, CPR, shoulder tap, rapid exam) is redrawn as a nitrile glove: four
+fingers and a thumb, knuckle creases, radial shading with a highlight down each finger, a rolled cuff, adult scale
+against his head; same places, labels still clear of them (the shared keep out list includes every glove part). There
+is no separate bleeding control hand (the tourniquet is drawn on its own). The CPR hands are offset a little more so
+both cuffs and forearms count. Checks: NREMT tests 71 pass; sweep 360 1227, 390 1226, 1024 1184, 1440 1184, 0 failed;
+`--frames` all layout and timing checks pass; frame time p95 66 to 133 ms at load average 9 to 10 (the earlier run at
+load 5 gave 17 and 33 ms); a drop shadow on the gloves was removed to keep frames cheap.
