@@ -11,8 +11,8 @@ Spec: `docs/tools-frame-2026-11.md`. Shared API: header of `assets/course/tool-s
   going** (new: each opens the sheet at that section), Course home, All tools.
 - Finished card extras (`OchemStudioKit.extras`): Full explanation (Why), Check yourself (6 questions), Read the
   lesson (from the tool's Keep going list).
-- `OchemStudioKit.chipPicker` turns a tool's scenario chips into one grouped dropdown on the stage; the chips stay
-  in the page, hidden, and a pick clicks the chip, so the tool's own state, links and handlers are unchanged.
+- Each tool builds its scenario dropdown with `studio.picker` and the pick calls the tool's own function (the old
+  hidden chips and `OchemStudioKit.chipPicker` were removed in the 2026-11-19 cleanup).
 
 Nothing a tool did before was removed. Each list below is everything the tool does and where it is now.
 
@@ -81,6 +81,7 @@ Done along the way: captions that said "Why? has the reasoning" now name the Exp
 
 2. The arrow pusher's old ready-made chip list and the 13 resonance / spectroscopy chips stay in the page hidden (the
    dropdown drives them). Fine to delete that markup later?
+   Done 2026-11-19 (cleanup): removed; the dropdowns call the tools directly (`docs/tools-frame-2026-11.md`, "Cleanup").
 
 ## Accuracy check (2026-11-16, second reader)
 Every new student facing string from PR #211 (89c976d) read against each challenge's molecule in
