@@ -32,5 +32,9 @@ States: building, review, fixing, recheck, PASS (waiting to integrate), integrat
 | A&P feedback loops | claude/tools-v2-anp-feedback-loops | wt-anp-feedback-loops | integrated | |
 | A&P predict | claude/tools-v2-anp-predict | wt-anp-predict | integrated | Explore in its own weight bucket `anatomy-physiology/predict-explore` (34 KB); anp spec decision 104 (103 was taken) |
 
+2026-11-19: `main` merged in after PR #228 (ochem frame cleanup: chipPicker, scrollChips and .ls-chips-hidden gone; the v2
+conformations, resonance and arrow pusher kept, kit2 kept). Ochem viewer 3d (`claude/tools-v2-viewer-3d`, in review) needs
+`main` merged into it before integration: PR #228 rewrote `viewer-3d.js` and `viewer-3d.html` on main.
+
 Next by use (rollout table):
 NREMT body map, NREMT flowcharts, Ochem viewer 3d.
