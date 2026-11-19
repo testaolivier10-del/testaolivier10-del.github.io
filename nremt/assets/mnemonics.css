@@ -1,0 +1,190 @@
+/* NREMT Mnemonics, tools v2 Explore (nremt/assets/mnemonics.js; docs/tools-v2-nremt-mnemonics-brief.md). Loaded only
+   by nremt/mnemonics.html. One colour per idea, everywhere: the letter (course teal), what it stands for (navy ink),
+   what it finds (warm red, the colour of the findings drawn on the patient). The patient and the ground are drawn in
+   their real colours in both themes; dark mode only dims the ground. */
+.mn2,.mn2-ref{--mn-key:var(--cink);--mn-key-ink:var(--cink);--mn-word:#24415E;--mn-word-ink:#24415E;--mn-find:#B8432F;--mn-find-ink:#9A3322;
+  --mn-asph:#4C5157;--mn-grit0:#5E646B;--mn-grit1:#3E4247;--mn-grit2:#6E7177;--mn-lane:#F2C94C;--mn-conc:#C9C5BC;--mn-joint:#A9A397;--mn-floor:#E9E6DF;--mn-tile:#DCD7CD;
+  --mn-ground-dim:1;}
+:root[data-theme="dark"] .mn2,:root[data-theme="dark"] .mn2-ref{--mn-word:#9EC2E6;--mn-word-ink:#BFD6EE;--mn-find:#F08A6E;--mn-find-ink:#F6A890;--mn-ground-dim:.78;}
+.mn2{display:flex;flex-direction:column;gap:10px;min-height:0;flex:1 1 auto;}
+.mn2[hidden]{display:none;}
+.mn2 [hidden]{display:none !important;}
+.mn2-scene{position:relative;flex:1 1 auto;min-height:440px;border-radius:18px;overflow:hidden;background:var(--mn-asph);isolation:isolate;}
+@media (max-width:1023px){ .mn2-scene{flex:none;height:min(66vw,560px);min-height:440px;} }
+@media (min-width:641px) and (max-width:900px){ .mn2-scene{height:max(560px,min(104vw,860px));} }
+@media (max-width:640px){ .mn2-scene{height:max(560px,min(160vw,640px));border-radius:14px;} .mn2{gap:8px;} }
+.mn2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;transition:opacity .25s ease;}
+.mn2-scene.is-swap .mn2-svg,.mn2-scene.is-swap .mn2-labels,.mn2-scene.is-swap .mn2-talk{opacity:0;transition:none;}
+.mn2-labels,.mn2-talk{transition:opacity .25s ease;}
+.mn2-scene.is-clear .mn2-labels,.mn2-scene.is-clear .mn2-talk,.mn2-scene.is-clear .mn2-mk.is-on,.mn2-scene.is-clear .mn2-hand,.mn2-scene.is-clear .mn2-prop.is-lit{opacity:0;transition:opacity .22s ease;}
+.mn2-bg{filter:brightness(var(--mn-ground-dim));}
+
+/* four tabs on a phone: each as wide as its name (DCAP-BTLS is the longest) */
+@media (max-width:640px){ .mn2 .tk2-tabs.is-big .tk2-tab{flex:1 1 auto;min-width:0;} }
+@media (max-width:440px){ .mn2 .tk2-tabs.is-big{gap:4px;} .mn2 .tk2-tabs.is-big .tk2-tab{padding:0 5px;font-size:13.5px;gap:4px;} .mn2 .tk2-tabs.is-big .tk2-tab-n{width:18px;height:18px;font-size:11px;} }
+@media (max-width:370px){ .mn2 .tk2-tabs.is-big .tk2-tab{padding:0 4px;font-size:12.5px;gap:3px;} }
+
+/* the ground */
+.mn2-asph{fill:var(--mn-asph);} .mn2-grit0{fill:var(--mn-grit0);} .mn2-grit1{fill:var(--mn-grit1);} .mn2-grit2{fill:var(--mn-grit2);}
+.mn2-lane{fill:var(--mn-lane);opacity:.85;}
+.mn2-skid{fill:none;stroke:#26292D;stroke-width:9;stroke-linecap:round;opacity:.55;}
+.mn2-shard{fill:#B9C4CC;opacity:.75;}
+.mn2-conc{fill:var(--mn-conc);} .mn2-joint{stroke:var(--mn-joint);stroke-width:2;} .mn2-speck{fill:#8E897F;opacity:.5;}
+.mn2-road{fill:#4C5157;} .mn2-curb{fill:#D9D5CC;stroke:#9C978C;stroke-width:1;}
+.mn2-floor{fill:var(--mn-floor);} .mn2-tile{fill:var(--mn-tile);}
+.mn2-shelf{fill:#8C8F94;} .mn2-pack{stroke:rgba(0,0,0,.18);stroke-width:1;}
+
+/* the patient */
+.mn2-shadow{fill:#000;opacity:.42;}
+.mn2-cot{fill:#9AA3AD;stroke:#6B747E;stroke-width:4;} .mn2-mat{fill:#3D6E8F;} .mn2-pillow{fill:#F4F2EE;stroke:#D6D1C7;stroke-width:3;}
+.mn2-cl{mix-blend-mode:multiply;}
+.mn2-denim{fill:#4F6FA0;} .mn2-hood{fill:#7D8790;} .mn2-blouse{fill:#B48AC9;}
+.mn2-hood{fill:#6A737C;} .mn2-pocket{fill:none;stroke:#5E666E;stroke-width:3;opacity:.55;}
+.mn2-shoe{fill:#ECEAE4;stroke:#8E8A82;stroke-width:3;} .mn2-lace{stroke:#9C978E;stroke-width:2.4;stroke-linecap:round;}
+.mn2-belt{fill:#9C7A5A;}
+.mn2-sheet{fill:#F6F5F1;stroke:#CFCAC0;stroke-width:3;} .mn2-fold{fill:none;stroke:#D9D4CA;stroke-width:5;stroke-linecap:round;}
+.mn2-hair{fill:#3A2A1E;} .mn2-hairb{fill:#8D8278;} .mn2-hairf{fill:#9A8F84;}
+.mn2-face path,.mn2-face ellipse,.mn2-face circle{vector-effect:non-scaling-stroke;}
+.mn2-nose{fill:none;stroke:#B0735E;stroke-width:1.3;opacity:.7;}
+.mn2-brow{fill:none;stroke:#5A4030;stroke-width:2.2;stroke-linecap:round;}
+.mn2-lid,.mn2-lidu{fill:none;stroke:#6E4A3A;stroke-width:1.6;stroke-linecap:round;}
+.mn2-white{fill:#FBF7F2;stroke:#9A6A58;stroke-width:.8;} .mn2-iris{fill:#5B7A53;} .mn2-pupil{fill:#1B1B1B;}
+.mn2-mouth{fill:none;stroke:#A0544C;stroke-width:1.8;stroke-linecap:round;}
+.mn2-mouthg{fill:#7A2E2A;stroke:#A0544C;stroke-width:1.2;}
+.mn2-f{opacity:0;transition:opacity .28s ease;}
+.mn2-f.is-on{opacity:1;}
+
+/* what a letter draws on the body: grows in, fades out */
+.mn2-mk{opacity:0;transform:scale(.4);transform-box:fill-box;transform-origin:center;transition:opacity .45s ease,transform .5s cubic-bezier(.2,.9,.3,1.2);}
+.mn2-mk.is-on{opacity:1;transform:none;}
+.mn2-mk.is-now{transition:none;}
+.mn2-deform{fill:#E9B39A;} .mn2-deform-e{fill:none;stroke:#A0624C;stroke-width:2.5;stroke-linecap:round;} .mn2-crease{fill:none;stroke:#8A4A38;stroke-width:3;stroke-linecap:round;}
+.mn2-bruise{fill:#6B3F7A;opacity:.62;} .mn2-bruise2{fill:#3E2350;opacity:.45;}
+.mn2-abr{fill:#D8573F;opacity:.6;} .mn2-streak{stroke:#9E2B1E;stroke-width:2.2;opacity:.6;stroke-linecap:round;}
+.mn2-punc-r{fill:#C94A3A;opacity:.55;} .mn2-punc{fill:#3A0E0A;} .mn2-drip{fill:#A3150C;}
+.mn2-burn{fill:#D9452E;opacity:.7;} .mn2-blister{fill:#FBE6C8;opacity:.9;stroke:#E7B58D;stroke-width:1.5;}
+.mn2-ouch{fill:none;stroke:#E5482F;stroke-width:6;stroke-linecap:round;}
+.mn2-lac-e{fill:none;stroke:#5A120C;stroke-width:7;stroke-linecap:round;opacity:.8;} .mn2-lac{fill:none;stroke:#C2271B;stroke-width:3.4;stroke-linecap:round;}
+.mn2-swell{fill:#E6AC94;stroke:#B97A64;stroke-width:2;} .mn2-swell-t{fill:#D9705A;opacity:.28;}
+.mn2-glow{mix-blend-mode:multiply;}
+.mn2-press{fill:#B8432F;stroke:#fff;stroke-width:2;stroke-linejoin:round;}
+.mn2-rad{fill:none;stroke:#E5482F;stroke-width:9;stroke-linecap:round;stroke-dasharray:20 14;opacity:.9;}
+.mn2-mk.is-on .mn2-rad{animation:mn2-flow 1.2s linear infinite;}
+.mn2-radh{fill:none;stroke:#E5482F;stroke-width:9;stroke-linecap:round;stroke-linejoin:round;}
+@keyframes mn2-flow{to{stroke-dashoffset:-34;}}
+.mn2-band{fill:#2E3A46;} .mn2-wface{fill:#F8F6F0;stroke:#2E3A46;stroke-width:3;} .mn2-whand{fill:none;stroke:#2E3A46;stroke-width:2.4;stroke-linecap:round;}
+.mn2-pale{fill:#FFFFFF;opacity:.32;}
+.mn2-sweat{fill:#E7F4FF;stroke:#8DB8D9;stroke-width:1;}
+
+/* props: the cart, her purse and pills, the 0 to 10 scale */
+.mn2-cart-b{fill:rgba(220,226,232,.25);stroke:#7E8792;stroke-width:3;} .mn2-cart-w{stroke:#9AA2AB;stroke-width:1.2;} .mn2-cart-h{fill:#C8463A;}
+.mn2-cup-o{fill:#F4EFE6;stroke:#8C6A4E;stroke-width:2;} .mn2-cup-l{fill:#6B4A33;}
+.mn2-bag{fill:#7A4E35;stroke:#4E3020;stroke-width:2;} .mn2-strap{fill:none;stroke:#4E3020;stroke-width:4;}
+.mn2-bottle{fill:#E08A2A;stroke:#9C5A14;stroke-width:1.5;} .mn2-cap{fill:#F4F2EE;stroke:#A8A39A;stroke-width:1;}
+.mn2-scale-bg{fill:rgba(255,255,255,.92);stroke:#B9B3A8;stroke-width:1;}
+.mn2-scale-n{font-family:var(--font-ui);font-weight:800;fill:#fff;} .mn2-scale-ring{fill:none;stroke:#1B1B1B;stroke-width:3;}
+.mn2-scale{opacity:0;transition:opacity .45s ease;}
+.mn2-scale.is-lit{opacity:1;}
+.mn2-cart,.mn2-purse{transition:filter .4s ease;}
+.mn2-cart.is-lit,.mn2-purse.is-lit,.mn2-cup.is-lit{filter:drop-shadow(0 0 4px #FFD24A) drop-shadow(0 0 10px #FFD24A);}
+.mn2-cart.is-lit .mn2-cup{filter:none;}
+
+/* the gloved hand (the EMT): moves in, squeezes */
+.mn2-hand{opacity:0;transition:opacity .3s ease;}
+.mn2-hand.is-on{opacity:1;}
+.mn2-hand-i{transition:transform .5s cubic-bezier(.3,.8,.3,1);transform:translateY(-70px);}
+.mn2-hand.is-on .mn2-hand-i{transform:none;}
+.mn2-hand.is-squeeze .mn2-hand-i{animation:mn2-sq .5s ease 2;}
+@keyframes mn2-sq{50%{transform:scale(.9,.94);}}
+.mn2-glove{fill:#6F6BD8;stroke:#3F3A9E;stroke-width:2.4;} .mn2-knuck{fill:none;stroke:#3F3A9E;stroke-width:2;stroke-linecap:round;}
+.mn2-cuff{fill:#5A55C2;} .mn2-sleeve{fill:#24344A;}
+.mn2-ring{fill:none;stroke:#FFD24A;stroke-width:4;opacity:0;animation:mn2-ring 1s ease-out;transform-box:fill-box;transform-origin:center;}
+@keyframes mn2-ring{0%{opacity:.95;transform:scale(1.6);}100%{opacity:0;transform:scale(.7);}}
+
+/* AVPU: the EMT's hand pinching the trapezius; the arm slides in from his left side */
+.mn2-pinch{opacity:0;transition:opacity .3s ease;}
+.mn2-pinch.is-on{opacity:1;}
+.mn2-pinch-i{transform:translateX(160px);transition:transform .5s cubic-bezier(.3,.8,.3,1);}
+.mn2-pinch.is-on .mn2-pinch-i{transform:none;}
+.mn2-fing,.mn2-thumb{transform-box:view-box;transform-origin:312px 196px;transition:transform .25s ease;}
+.mn2-pinch.is-squeeze .mn2-fing{animation:mn2-pf .5s ease 2;}
+.mn2-pinch.is-squeeze .mn2-thumb{animation:mn2-pt .5s ease 2;}
+@keyframes mn2-pf{50%{transform:translateY(6px);}}
+@keyframes mn2-pt{50%{transform:translate(4px,-6px);}}
+.mn2-sqz{fill:none;stroke:#5A55C2;stroke-width:4;stroke-linecap:round;opacity:0;transition:opacity .2s ease;}
+.mn2-pinch.is-squeeze .mn2-sqz{opacity:.9;}
+.mn2-talk.is-tall.is-low{justify-content:flex-end;}
+
+/* labels (1 to 3 words) with a leader to the point, and the badge a done letter leaves */
+.mn2-labels{position:absolute;inset:0;pointer-events:none;z-index:2;}
+.mn2-lab{position:absolute;padding:4px 10px;border-radius:999px;background:#fff;color:#1F2A33;font:800 13.5px/1.2 var(--font-ui);white-space:nowrap;
+  box-shadow:0 0 0 2px var(--mn-find),0 2px 6px rgba(0,0,0,.25);opacity:0;transform:translateY(4px);transition:opacity .25s ease,transform .25s ease;}
+.mn2-lab.is-act{box-shadow:0 0 0 2px #5A55C2,0 2px 6px rgba(0,0,0,.25);color:#2E2A80;}
+.mn2-lab.is-wait{box-shadow:0 0 0 2px #8E959C,0 2px 6px rgba(0,0,0,.2);color:#4A5157;}
+.mn2-lab.is-in{opacity:1;transform:none;}
+.mn2-lead{position:absolute;height:2px;background:#fff;transform-origin:0 50%;opacity:0;transition:opacity .25s ease;box-shadow:0 0 2px rgba(0,0,0,.5);}
+.mn2-lead.is-in{opacity:.95;}
+.mn2-badge{position:absolute;width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;background:var(--mn-key);color:#fff;font:900 12.5px/22px var(--font-display);text-align:center;
+  box-shadow:0 0 0 2px #fff,0 1px 4px rgba(0,0,0,.35);opacity:0;transform:scale(.5);transition:opacity .25s ease,transform .25s ease;}
+:root[data-theme="dark"] .mn2-badge{background:#0B6B62;}
+.mn2-badge.is-in{opacity:1;transform:none;}
+
+/* who the patient is (top left, small) */
+.mn2-who{position:absolute;right:12px;bottom:calc(var(--mn2-keyh,70px) + 6px);z-index:1;padding:3px 10px;border-radius:8px;background:rgba(20,26,32,.62);color:#fff;font:700 12.5px var(--font-ui);pointer-events:none;}
+.mn2-scene.is-tall .mn2-who{bottom:auto;top:10px;left:auto;right:8px;}
+
+/* speech: the EMT's question, the patient's answer */
+.mn2-talk{position:absolute;z-index:3;pointer-events:none;}
+.mn2-bub{position:absolute;margin:0;padding:7px 12px;border-radius:14px;background:#fff;color:#1F2A33;font:700 14px/1.3 var(--font-ui);box-shadow:0 2px 8px rgba(0,0,0,.28);
+  opacity:0;transform:translateY(6px) scale(.96);transition:opacity .25s ease,transform .25s ease;}
+.mn2-bub.is-in{opacity:1;transform:none;}
+.mn2-bub-k{display:inline-block;margin-right:7px;padding:1px 7px;border-radius:6px;background:#24344A;color:#fff;font:900 11px/1.5 var(--font-ui);letter-spacing:.04em;vertical-align:1px;}
+.mn2-bub.is-act .mn2-bub-t{font-style:italic;color:#2E2A80;}
+.mn2-bub.is-pt{background:#FFF7E0;box-shadow:0 0 0 2px #E9B23C,0 2px 8px rgba(0,0,0,.25);}
+.mn2-talk.is-wide .mn2-bub.is-emt{right:0;top:0;max-width:min(46%,380px);}
+.mn2-talk.is-wide .mn2-bub.is-act .mn2-bub-t{font-style:italic;color:#2E2A80;}
+.mn2-bub.is-pt{bottom:0;}
+.mn2-talk.is-wide .mn2-bub.is-pt::after{content:"";position:absolute;left:28px;bottom:-8px;width:14px;height:14px;background:#FFF7E0;transform:rotate(45deg);box-shadow:2px 2px 0 0 #E9B23C;}
+.mn2-talk.is-tall .mn2-bub{position:relative;display:block;margin:0 0 10px;font-size:13px;padding:6px 10px;}
+.mn2-talk.is-tall{display:flex;flex-direction:column;}
+.mn2-talk.is-tall .mn2-bub:has(.mn2-bub-t:empty){display:none;}
+
+/* the letter keys, along the bottom of the picture */
+.mn2-keys{position:absolute;left:0;right:0;bottom:0;z-index:3;height:var(--mn2-keyh,70px);display:flex;align-items:center;justify-content:center;gap:8px;padding:0 10px;
+  background:linear-gradient(180deg,rgba(14,20,26,0) 0,rgba(14,20,26,.55) 30%,rgba(14,20,26,.7) 100%);}
+.mn2-key{position:relative;width:50px;height:50px;border:0;border-radius:12px;background:#fff;color:var(--mn-key);font:900 24px var(--font-display);cursor:pointer;
+  box-shadow:0 4px 0 #B9C5C3,0 6px 12px rgba(0,0,0,.3);transition:transform .15s ease,background .2s ease,color .2s ease,box-shadow .2s ease;}
+:root[data-theme="dark"] .mn2-key{color:#0B6B62;}
+:root[data-theme="dark"] .mn2-key[aria-checked="true"]{color:#fff;}
+.mn2-key:hover{transform:translateY(-2px);}
+.mn2-key[aria-checked="true"]{background:#0B6B62;color:#fff;box-shadow:0 4px 0 #064840,0 0 0 3px #FFD24A,0 6px 14px rgba(0,0,0,.35);transform:translateY(-3px);}
+.mn2-key:focus-visible{outline:3px solid #FFD24A;outline-offset:3px;}
+.mn2-tick{position:absolute;right:-5px;top:-5px;width:16px;height:16px;border-radius:50%;background:#2F8F4E;box-shadow:0 0 0 2px #fff;opacity:0;transform:scale(.4);transition:opacity .2s ease,transform .2s ease;}
+.mn2-tick::after{content:"";position:absolute;left:5px;top:2.5px;width:4px;height:8px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg);}
+.mn2-key.is-done .mn2-tick{opacity:1;transform:none;}
+@media (max-width:640px){ .mn2-keys{gap:5px;padding:0 6px;} .mn2-key{width:44px;height:46px;font-size:21px;} .mn2-keys.is-many .mn2-key{width:39px;} .mn2-keys.is-many{gap:4px;} }
+
+/* under the picture: the cause line, Next letter, Start over */
+.mn2-lines{display:flex;align-items:center;justify-content:space-between;gap:6px 18px;flex-wrap:wrap;flex:none;}
+.mn2-acts{display:flex;align-items:center;gap:6px 14px;flex:none;margin-left:auto;}
+.mn2 .mn2-next{min-height:44px;background:var(--white);color:var(--cink);box-shadow:inset 0 0 0 2px var(--cink);font:800 14.5px var(--font-ui);cursor:pointer;}
+.mn2 .mn2-next:disabled,.mn2 .mn2-reset:disabled{opacity:.45;cursor:default;}
+.mn2 .tk2-cz.is-key{--cz:var(--mn-key);--cz-ink:var(--mn-key-ink);font-family:var(--font-display);font-weight:900;}
+.mn2 .tk2-cz.is-word{--cz:var(--mn-word);--cz-ink:var(--mn-word-ink);}
+.mn2 .tk2-cz.is-find{--cz:var(--mn-find);--cz-ink:var(--mn-find-ink);}
+@media (max-width:640px){ .mn2-lines .tk2-cause{flex-basis:100%;min-height:68px;align-content:flex-start;} .mn2-acts{margin-left:0;width:100%;justify-content:space-between;} }
+
+/* "?" */
+.mn2-ref h3{margin:0 0 8px;font:900 17px var(--font-ui);}
+.mn2-ref p,.mn2-ref li{font-size:14.5px;line-height:1.5;}
+.mn2-ref-l{padding-left:18px;margin:8px 0 12px;display:grid;gap:8px;}
+.mn2-ref-s{color:var(--muted);font-size:13px !important;}
+
+@media (prefers-reduced-motion:reduce){
+  .mn2-mk,.mn2-hand-i,.mn2-lab,.mn2-badge,.mn2-bub{transition:opacity .15s linear !important;transform:none !important;}
+  .mn2-f,.mn2-scale,.mn2-hand{transition:opacity .15s linear !important;}
+  .mn2-mk.is-on .mn2-rad,.mn2-hand.is-squeeze .mn2-hand-i,.mn2-ring,.mn2-fing,.mn2-thumb{animation:none !important;}
+  .mn2-pinch,.mn2-pinch-i{transition:opacity .15s linear !important;}
+  .mn2-pinch-i{transform:none !important;}
+  .mn2-ring{display:none;}
+}
