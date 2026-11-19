@@ -202,3 +202,15 @@ Checks after round 1: NREMT tests 71 pass; check-site OK; check-weight all 623 b
 process per width: 360 1227 (with the 360 x 740 fold check), 390, 430, 600 1226 each, 768, 820, 1024, 1280, 1440,
 1920 1184 each, 0 failed. `--frames` 86 passed, 0 failed (about 2300 frames); frame time with the CPU slowed x4:
 median 16.7 ms, p95 16.8 ms at 390 and 33.4 ms at 1440 (load average 5).
+
+## Recheck 1 (2026-11-19, BLOCK on two items; fixed)
+1. Labels: one shared keep out list every label avoids (his face and every drawn glove, forearm, pad, the
+   tourniquet, the wound, the jets and the mask, measured from the drawing), plus each label's own box; the sweep
+   now fails any label on a drawn object.
+2. CPR: two hands that can be counted at 390 (the bottom hand 13 px toward his head with its own forearm and cuff,
+   the top hand's fingers laced over it).
+Should fix done: the jets' light edge is dashed like the core and the jets bend; the Rapid exam label comes when the
+sweep ends with its leader on the hand; the mask sits lower, off the eyes; the pulse fingers sit higher on the neck;
+the first box reads "Scene safe, gloves, head still".
+Checks: NREMT tests 71 pass. Sweep, one process per width: 360 1227; 390, 430, 600 1226 each; 768, 820, 1024, 1280,
+1440 1184 each; 1920 1176; 0 failed. `--frames` 86 passed, 0 failed (p95 50 ms at both widths, CPU x4).
