@@ -101,7 +101,7 @@ function geom() {
   const g = {
     W: document.documentElement.clientWidth, VH: innerHeight, cardText: R(q('.bm2-card:not([hidden]) .bm2-card-b p')), sw: document.documentElement.scrollWidth,
     scene: R(scene), kidsMax: Math.max(0, ...kids.map(k => k.w * k.h)),
-    tab: stage.dataset.tab, cause: { rows, h: R(q('.bm2 .tk2-cause'))?.h || 0, b: R(q('.bm2 .tk2-cause'))?.b || 0, text: q('.bm2 .tk2-cause').textContent },
+    tab: stage.dataset.tab, cause: { rows, pills, h: R(q('.bm2 .tk2-cause'))?.h || 0, b: R(q('.bm2 .tk2-cause'))?.b || 0, text: q('.bm2 .tk2-cause').textContent },
     card: R(q('.bm2-card:not([hidden])')), cardIn: !!q('.bm2-card.is-in'), cardName: q('.bm2-card-n')?.textContent,
     find: R(q('.bm2 .bm2-find select')), reset: R(q('.bm2 .bv-reset')), legend: legend && vis(legend) ? R(legend) : null,
     cue: R(q('.bm2 .tk2-cue')), dot: R(q('.bm2-lead-d')), dotShown: (() => { const d = q('.bm2-lead-d'); return !!d && d.style.display !== 'none' && q('.bm2-lead').style.display !== 'none'; })(),
@@ -128,6 +128,8 @@ function checkBody(g, tag, w) {
   things.forEach(([n, r]) => T(inside(r, g.scene, 0.5), `${tag}: ${n} clipped by the picture`));
   things.forEach(([n, r], i) => things.forEach(([m, s], j) => { if (j > i) T(!hit(r, s, 4), `${tag}: ${n} overlaps ${m}`); }));
   if (g.card && g.dotShown && g.dot) T(!hit(g.card, g.dot, 2), `${tag}: the card covers the part it names`);
+  // the cause line never prints over the card (from 1024 px it rides the picture's foot, where a docked card sits)
+  if (g.card) T(!g.cause.pills.some(p => hit(g.card, p, 4)), `${tag}: the cause line covers the card`);
   // a phone: the picture, the docked card's first line and the cause line fit one screen (from the page's top)
   if (w <= 640 && g.card) { T(g.cardText && g.cardText.b <= g.VH + 0.5, `${tag}: the card's text is below the screen`); }
   if (w <= 640) T(g.cause.b <= g.VH + 0.5, `${tag}: the cause line is below the screen (${g.cause.b} > ${g.VH})`);
@@ -148,7 +150,9 @@ function checkBurn(g, tag, w) {
   T(b.figs && g.scene && b.figs.w * b.figs.h >= 0.5 * g.scene.w * g.scene.h, `${tag}: the figures are not most of the picture`);
 }
 
-const PARTS = ['heart', 'femur', 'p8', 'p7'];   // an organ, a bone, a landmark dot, the longest name
+const PARTS = ['heart', 'femur', 'p8', 'p7', 'liver'];   // an organ, a bone, a landmark dot, the longest name, a big part (docked card)
+/* laptop screens where a big part docks its card along the picture's foot, above the cause line (recheck 1) */
+const SHORT = { 1024: 768, 1280: 720, 1440: 900 };
 async function pickPart(page, key) {
   await page.evaluate(k => { const s = document.querySelector('.bm2 .bm2-find select'); const o = [...s.options].find(x => x.value === k || x.value === 'pt_' + k || x.textContent.toLowerCase().startsWith(k)); s.value = o ? o.value : s.options[1].value; s.dispatchEvent(new Event('change')); }, key);
   await until(page, () => !!document.querySelector('.bm2-card.is-in') && !document.querySelector('.bm2-card[hidden]'), null, 600);
@@ -183,6 +187,21 @@ async function runWidth(w) {
     if (k === 'heart' || k === 'p7') await shot(page, `sweep-body-${k}-${tagW.replace(' ', '-')}`);
     void sel;
   }
+  if (SHORT[w]) {
+    await page.setViewportSize({ width: w, height: SHORT[w] }); await page.waitForTimeout(600);
+    for (const k of ['liver', 'small intestine']) {
+      await pickPart(page, k);
+      g = await page.evaluate(geom);
+      const dock = await page.evaluate(() => !!document.querySelector('.bm2-card.is-dock'));
+      T(!!g.card && g.cardIn, `${tagW}x${SHORT[w]} ${k}: no card`);
+      T(dock, `${tagW}x${SHORT[w]} ${k}: a big part should dock its card`);
+      T(g.card && g.card.w <= 521, `${tagW}x${SHORT[w]} ${k}: the docked card is ${g.card && g.card.w} px wide`);
+      T(g.card && Math.abs((g.card.l + g.card.r) / 2 - (g.scene.l + g.scene.r) / 2) < 1.5, `${tagW}x${SHORT[w]} ${k}: the docked card is not centred`);
+      checkBody(g, `${tagW}x${SHORT[w]} body ${k}`, w);
+      await shot(page, `sweep-body-${k.replace(' ', '_')}-${tagW.replace(' ', '-')}x${SHORT[w]}`);
+    }
+    await page.setViewportSize({ width: w, height: w < 1100 ? 1024 : 900 }); await page.waitForTimeout(600);
+  }
   lap('body done');
   // burns
   await page.evaluate(() => document.querySelector('.bm2 .tk2-tab[data-v="burns"]').click());
@@ -201,6 +220,14 @@ async function runWidth(w) {
     T(g.burn.sum === sum, `${tagW} burns ${id}: the sum reads "${g.burn.sum}", want "${sum}"`);
     T(Math.abs(g.burn.front.t - front0.t) < 0.5 && Math.abs(g.burn.front.h - front0.h) < 0.5, `${tagW} burns ${id}: the figures moved`);
     if (tot === 13.5) T(/over 10%.*burn center if partial thickness/.test(g.cause.text), `${tagW} burns ${id}: crossing 10% does not say burn center`);
+    if (tot === 13.5 && w === 360) {   // a short phone (360x640): the crossing note's second row still on screen (recheck 1)
+      await page.setViewportSize({ width: 360, height: 640 }); await page.waitForTimeout(500);
+      const s = await page.evaluate(geom);
+      T(s.cause.rows <= 2 && s.cause.b <= s.VH + 0.5, `360x640 burns ${id}: the cause line ends at ${s.cause.b} (${s.cause.rows} rows), screen ${s.VH}`);
+      await shot(page, `sweep-burns-cross-360x640${DARK ? '-dark' : ''}`);
+      await page.setViewportSize({ width: 360, height: 844 }); await page.waitForTimeout(500);
+      g = await page.evaluate(geom);
+    }
     T(g.burn.totText === tot + '%', `${tagW} burns ${id}: total reads ${g.burn.totText}, painted ${tot}%`);
     T(g.cause.text.includes('Total ' + tot + '%'), `${tagW} burns ${id}: cause line total`);
     T(g.burn.flag === tot > 10, `${tagW} burns ${id}: over 10% flag`);

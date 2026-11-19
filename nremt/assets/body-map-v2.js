@@ -67,7 +67,7 @@
       items: [{ value: 'body', label: 'The body', short: 'Body' }, { value: 'burns', label: 'Burns', short: 'Burns' }],
       onChange: function(v){ setTab(v, true); } });
     stage.appendChild(tabs.el);
-    var PURPOSE = { body: 'Every part of the body has a place and a job.', burns: 'Each region of skin is a share of the body: add the burned ones.' };
+    var PURPOSE = { body: 'Every part of the body has a place and a job.', burns: 'Each region is a share of the body: add the burned ones.' };
     var head = K.head({ purpose: PURPOSE.body, how: { label: 'Show me how', onClick: function(){ startTour(); } } });
     stage.appendChild(head.el);
 
@@ -299,7 +299,8 @@
         leadL.setAttribute('d', py < top - 6 ? 'M' + lx.toFixed(1) + ' ' + top.toFixed(1) + 'L' + px.toFixed(1) + ' ' + py.toFixed(1) : '');
       }
       // docked: the view slides up so the part sits in the middle of what the card leaves visible
-      setOff(wide ? 0 : (card.offsetHeight + 8) / 2);
+      // (the card's foot is 8 px on a phone, 64 px from 1024 px where the cause line rides under it)
+      setOff(wide ? 0 : (card.offsetHeight + (parseFloat(getComputedStyle(card).bottom) || 8)) / 2);
       leadD.setAttribute('cx', px.toFixed(1)); leadD.setAttribute('cy', py.toFixed(1));
       leadR.setAttribute('cx', px.toFixed(1)); leadR.setAttribute('cy', py.toFixed(1));
       var vis = p.front && !(wide ? false : py >= card.getBoundingClientRect().top - body.getBoundingClientRect().top - 4);

@@ -98,8 +98,10 @@ the cause line: [region] → [why its share: "half the arm: 4.5%"] → [Total 13
     take their regular height and share one row with the purpose line, the picture runs to the stage's foot, and the
     cause line rides the picture's foot. Measured against `origin/main`: the 3D canvas is 742 px tall against 796
     at 1440 x 900 (93%) and 562 against 616 at 1280 x 720 (91%); the burn figures 644 against 684 (94%) and 464
-    against 502 (92%). On phones and tablets the figures are larger than before; the region numbers read about
-    16 px on a desktop.
+    against 502 (92%). Corrected in recheck 1: on a short phone and a short tablet the picture is a little SMALLER
+    than today's page, on purpose, so that the picture, the card and both cause line rows fit one screen (today's page
+    scrolls there): at 375 x 667 the burn figures are 290 px against 329 (88%) and the 3D canvas 371 against 414
+    (90%); at 1024 x 768 the figures are 512 against 550 (93%). The region numbers read about 16 px on a desktop.
 14. **The first visit cue** is the kit's (one per tab, never on a number or label) and "Show me how" is a three step
     tour per tab.
 15. **"?"** holds what you are looking at, the view options (Reset view, Show skin, the six body systems, how to

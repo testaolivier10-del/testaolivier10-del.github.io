@@ -189,6 +189,9 @@
   .bm2 > .bm2-lines > *{pointer-events:auto;}
   .bm2 > .tk2-sr,.bm2 > .bm2-burnroot{grid-column:1 / -1;}
   .bm2 .bm2-burn{padding-bottom:64px;}
+  /* a docked card (a big part: liver, intestines) keeps the same 64 px foot as the floating card, so the cause line
+     never prints over it (recheck 1); centred, at a reading width */
+  .bm2 .bm2-card.is-dock{left:0;right:0;bottom:64px;margin:0 auto;width:min(520px,calc(100% - 16px));}
   .bm2 .bm2-home .legend{left:50%;right:auto;top:12px;bottom:auto;transform:translateX(-50%);}
 }
 /* a phone: the total box keeps to two short rows (Burned 13.5% and the mark, then the sum), so the figures keep
