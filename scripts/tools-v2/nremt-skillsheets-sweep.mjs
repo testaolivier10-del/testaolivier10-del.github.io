@@ -284,6 +284,39 @@ if (process.argv.includes('--frames')) {
     roll.forEach((f, i) => { if (f.rolling) ok(!/Log roll/.test(f.chain), `${w}: the cause line named the log roll mid roll (frame ${i})`); });
     await settle(page);
     ok(/Log roll/.test((await S(page)).chain), `${w}: the log roll's cause came (${(await S(page)).chain})`);
+    // recheck 1: the supine arms strap and the hands lie on the board, not past it onto the road
+    const onBoard = await page.evaluate(() => { const P = window.NremtSkillExplore.last.patient(), B = P.lay.boardUnder.querySelector('rect:nth-child(2)').getBBox();
+      const strap = P.lay.arms.querySelector('rect').getBBox(), pt = window.NremtStationPatient.pure.posePt;
+      const hands = [[47, 650], [433, 650]].map(p => pt(P.def, p[0], p[1]));
+      return { strap: strap.x >= B.x - 0.5 && strap.x + strap.width <= B.x + B.width + 0.5, hands: hands.every(h => h[0] - 16 >= B.x && h[0] + 16 <= B.x + B.width), B: [B.x, B.width], s: [strap.x, strap.width], h: hands }; });
+    ok(onBoard.strap && onBoard.hands, `${w}: the arms strap and the hands lie on the board (${JSON.stringify(onBoard)})`);
+    // recheck 1: leaving for Test yourself right after a tap, then coming back: the cause line names that step
+    await page.click('.ssx-reset'); await page.waitForTimeout(300);
+    await tap(page, 0); await settle(page); await tap(page, 1);
+    await page.click('.ls-modes button:has-text("Test yourself"), [role=radio]:has-text("Test yourself")');
+    await page.waitForTimeout(500);
+    await page.click('.ls-modes button:has-text("Explore"), [role=radio]:has-text("Explore")'); await page.waitForTimeout(500);
+    ok(/Hold the head/.test((await S(page)).chain), `${w}: back from Test yourself, the cause line names the last tap (${(await S(page)).chain})`);
+    await page.click('.ssx-reset'); await page.waitForTimeout(300);
+    // recheck 1: no word on the patient renders under 11 px while the camera pulls back (trauma: upper, then lower)
+    await station(page, 'trauma');
+    for (let i = 0; i < 11; i++) await tap(page, i);
+    await settle(page);
+    await tap(page, 11);
+    let minPx = 99, moving = 0;
+    for (let i = 0; i < 90; i++) {
+      const f = await page.evaluate(() => { const P = window.NremtSkillExplore.last.patient(); if (!P.raf) return null;
+        let m = 99; P.stage.querySelectorAll('.sp-plate text, text.sp-plate').forEach(t => { if (getComputedStyle(t).visibility === 'hidden' || t.closest('.sp-item:not(.on)')) return;
+          const r = t.getBoundingClientRect(); if (!r.width) return; const c = t.getScreenCTM(); m = Math.min(m, parseFloat(getComputedStyle(t).fontSize) * Math.hypot(c.a, c.b)); });
+        return m; });
+      if (f != null) { moving++; minPx = Math.min(minPx, f); }
+      await page.waitForTimeout(30);
+    }
+    ok(moving > 2 && minPx >= 10.95, `${w}: words on the patient during a camera move: smallest ${minPx.toFixed(1)} px over ${moving} frames`);
+    await page.click('.ssx-reset'); await page.waitForTimeout(300);
+    // recheck 1: the blanket is one baked picture (no live filter, mask or pattern)
+    await station(page, 'bleeding'); await page.waitForTimeout(600);
+    ok(await page.evaluate(() => { const b = window.NremtSkillExplore.last.patient().blanket; return b.children.length === 1 && b.firstElementChild.tagName === 'image' && !b.getAttribute('filter'); }), `${w}: the blanket is baked into one image`);
     // seated: the move to the board is said out loud
     await station(page, 'seated'); await tap(page, 10); await settle(page);
     ok(/said out loud/.test((await S(page)).chain), `${w}: the seated move is worded as said out loud (${(await S(page)).chain})`);

@@ -72,7 +72,9 @@
 .sp-stage{position:relative;height:clamp(290px,42vh,600px);border-radius:18px;overflow:hidden;background:#d6d9d4;box-shadow:inset 0 0 0 1.5px var(--line);touch-action:manipulation;}
 :root[data-theme="dark"] .sp-stage{background:#3a423f;}
 .sp-svg{position:absolute;inset:0;width:100%;height:100%;display:block;transform-origin:0 0;}
-.sp-svg0,.sp-svg2{pointer-events:none;}
+.sp-svg0,.sp-svgA,.sp-svg2{pointer-events:none;}
+/* the camera pulling back: the words on the patient wait until it stops, rather than shrink under 11 px */
+.sp-stage.is-zooming .sp-plate,.sp-stage.is-zooming .sp-marks{visibility:hidden !important;}
 .sp-floor{fill:#d9dcd6;}
 :root[data-theme="dark"] .sp-floor{fill:#39413e;}
 .sp-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:20px;text-align:center;font:700 var(--ls-s,13px) var(--font-ui);color:var(--muted);}

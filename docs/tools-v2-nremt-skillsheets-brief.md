@@ -181,6 +181,24 @@ Checks after the round:
   machine.
 - NREMT and kit tests 71 passed; check-site and check-weight pass; no conflict markers.
 
+## Recheck 1 (2026-11-19): PASS; its should fix items done
+1. A tap followed within about 0.1 s by Test yourself left the old cause line on return: the pending words are kept
+   (`St.pend`) and said in `shown()`.
+2. Words on the patient dropped to about 10 px while the camera pulled back: while it zooms out (scale under 0.95 of
+   the start) the plates and marks wait (`is-zooming`), and come back fitted when it stops.
+3. Supine: the long board is 300 units (about 17 in) and the arms turn in 8 degrees, so the hands and the arms strap
+   (now 296 units) lie on the board.
+4. Bleeding performance: the blanket is baked once into a data URL image (its filter, mask, weave pattern and drape
+   rendered into a canvas; `bakeLayer()`; the site's CSP allows data: images, not blob:); the drip, the wound's gleam
+   and the mask's reservoir run on their own svg (`svgA`, between the body and the items). Same process, CPU x4,
+   1440, load average 9 to 11, three rounds: bleeding p95 283 to 500 ms (the reviewer's 350 to 783), with the bleed
+   clock off 150 to 333 ms, supine 167 to 367 ms, the flagship 100 to 167 ms; medians 17 to 83, 17 to 33, 17 to 33
+   and 50 ms. Still to time on a quiet machine or a real phone before main.
+
+Checks: sweep 390 5892 and 1440 6092 passed, 0 failed (new: the strap and hands on the board, back from Test yourself
+the cause names the last tap, no word under 11 px during a zoom out, the blanket baked); frames run all passed but the
+two performance checks (load average 10 to 14); NREMT and kit tests 71 passed.
+
 ## What I am not happy with
 - Performance under CPU x4 here is over budget (above); it needs a measurement on a quiet machine or a real phone.
 - The rendered figure is one mannequin body for every patient (an existing limit, `docs/nremt-needs-author.md`,

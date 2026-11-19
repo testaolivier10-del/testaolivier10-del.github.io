@@ -223,7 +223,7 @@
       if(!DEFS[key]) return;
       clearTimers();
       St.key = key; St.done = def().steps.map(function(){ return false; }); St.at = def().steps.map(function(){ return 0; }); St.order = 0; St.sec = 0;
-      St.prevLive = {}; lastBreath = null;
+      St.prevLive = {}; lastBreath = null; St.pend = null;
       var r = row(key);
       box.querySelector('.ssx-code').textContent = r.code;
       box.querySelector('.ssx-title').textContent = NAME[key];
@@ -334,6 +334,7 @@
       if(o.onAct) o.onAct('step', St.key);
       // the words wait for the picture: the item comes in (about half a second), then the cause line and the marks
       clearTimeout(causeT);
+      St.pend = [i, on];
       if(K.reduced()){ causeFor(i, on); }
       else {
         // checked each frame: once every item coming in is mostly there (and every item leaving mostly gone)
@@ -349,6 +350,7 @@
     }
 
     function causeFor(i, on){
+      St.pend = null;
       if(!patient) return;
       var lv = liveList(), fresh = lv.filter(function(m){ return !St.prevLive[m.key]; });
       St.prevLive = {}; lv.forEach(function(m){ St.prevLive[m.key] = 1; });
@@ -448,7 +450,7 @@
       if(j >= 0){ e.preventDefault(); all[j].focus(); }
     });
     reset.addEventListener('click', function(){
-      St.done.forEach(function(d, i){ St.done[i] = false; St.at[i] = 0; }); St.order = 0; St.prevLive = {};
+      St.done.forEach(function(d, i){ St.done[i] = false; St.at[i] = 0; }); St.order = 0; St.prevLive = {}; St.pend = null;
       if(patient){ patient.st.breaths = { n: 0, fast: 0, slow: 0, long: 0, short: 0, gaps: [] }; patient.st.gastric = 0; patient.set({}); patient.live(null); patient.current(0); }
       paintRows(); examLine();
       clearTimeout(causeT);
@@ -513,10 +515,12 @@
     station(St.key, false); refNotes();
     var api = {
       stage: stage, ref: ref, more: ref.querySelector('.ssx-ref-more'),
-      hidden: function(){ St.on = false; stopTick(); clearTimers(); if(patient){ if(patient.rolling && patient.rollEnd) patient.rollEnd(); cancelAnimationFrame(patient.raf); patient.raf = 0; clearTimeout(patient.camT); clearTimeout(patient.ut); [patient.svg0, patient.svg, patient.svg2].forEach(function(v){ if(v){ v.style.transform = ''; v.style.left = v.style.top = v.style.width = v.style.height = ''; } }); } if(cue) cue.hide(false); },
+      hidden: function(){ St.on = false; stopTick(); clearTimers(); if(patient){ if(patient.rolling && patient.rollEnd) patient.rollEnd(); cancelAnimationFrame(patient.raf); patient.raf = 0; clearTimeout(patient.camT); clearTimeout(patient.ut); [patient.svg0, patient.svg, patient.svgA, patient.svg2].forEach(function(v){ if(v){ v.style.transform = ''; v.style.left = v.style.top = v.style.width = v.style.height = ''; } }); } if(cue) cue.hide(false); },
       shown: function(){
         St.on = true; layout(); startTick();
         if(patient && patient.ready) patient.camera(true);
+        // a tap's words were still waiting for the picture when the stage hid: say them now (recheck 1)
+        if(St.pend && patient && patient.ready){ var pd = St.pend; causeFor(pd[0], pd[1]); }
         if(!St.cued){ St.cued = true; later(function(){ if(!cue) makeCue(); if(St.on && St.order === 0 && cue.show()) placeCue(); }, 350); }
       },
       show: function(key){ if(!DEFS[key]) return false; if(pick) pick.value(key); station(key, false); refNotes(); return true; },
