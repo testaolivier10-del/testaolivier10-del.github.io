@@ -101,7 +101,8 @@
     var R0 = new Route(segs);
     var ALV = [[200, 50], [222, 36], [246, 40], [266, 56], [214, 76], [240, 74], [264, 86], [190, 98], [282, 66]];
     var CELLS = [[250, 515], [312, 512], [374, 516], [436, 513], [498, 516], [560, 514], [282, 462], [344, 460], [406, 463], [468, 460], [530, 462], [60, 515], [122, 512], [184, 516], [646, 513], [700, 516], [96, 462], [656, 462]];
-    function ox(v, br){ var up = br ? 0 : ramp(v, 4.55, 5.25); return up * (1 - ramp(v, 10.55, 11.25)); }
+    // the colour the blood cell is drawn: loads in the lung capillaries (step 6's words come once it is red), unloads in the body
+    function ox(v, br){ var up = br ? 0 : ramp(v, 4.9, 5.6); return up * (1 - ramp(v, 10.9, 11.6)); }
     function tube(pts, cls, w){ return '<path class="pe-vw" style="stroke-width:' + w + 'px" d="' + P(pts) + '"/><path class="pe-vb ' + cls + '" style="stroke-width:' + (w - 7) + 'px" d="' + P(pts) + '"/>'; }
     function leaflet(x, y, dx, cls){ return '<path class="pe-leaf ' + cls + '" d="M' + x + ',' + y + 'l' + dx + ',0"/>'; }
     SCENES.push({
@@ -109,8 +110,8 @@
       purpose: 'Carry one blood cell through the heart, lungs and body',
       cue: 'Drag the blood cell', token: 'the blood cell', thing: 'blood cell',
       route: R0, last: 13, steps: 13, cycle: true,
-      breaks: [{ id: 'air', at: 4.5, pass: true, place: [362, 22], label: 'Stop air', aria: 'Stop fresh air reaching the lungs', name: 'No fresh air in the lungs', step: 5 }],
-      take: 'Right heart to the lungs, left heart to the body: two circuits, one after the other.',
+      breaks: [{ id: 'air', at: 4.5, pass: true, place: [362, 30], off: [0, 1], tag: 'No fresh air', label: 'Stop air', aria: 'Stop fresh air reaching the lungs', name: 'No fresh air in the lungs', step: 5 }],
+      take: 'Right heart pumps to the lungs, left heart to the body.',
       art: function(E){
         var s = '<defs><radialGradient id="pe-lung" cx="0.45" cy="0.4" r="0.75"><stop offset="0" stop-color="#F9C9CB"/><stop offset="1" stop-color="#E9969C"/></radialGradient>' +
           '<radialGradient id="pe-myo" cx="0.4" cy="0.35" r="0.85"><stop offset="0" stop-color="#D4685A"/><stop offset="0.7" stop-color="#B2463A"/><stop offset="1" stop-color="#86281F"/></radialGradient>' +
@@ -157,16 +158,20 @@
       },
       state: function(v, br){
         var noAir = !!(br && br.id === 'air');
-        var st = { v: v, lap: v >= 12.9, k: v >= 12.9 ? 0 : Math.min(12, Math.floor(v + 0.12)), stop: null, noAir: noAir };
+        // a step's words show from 0.12 before its place, except a ventricle's: they come as its inlet valve starts to shut
+        var k = Math.min(12, Math.floor(v + 0.12)); if(v >= 1.71 && v < 1.88) k = 2; if(v >= 7.71 && v < 7.88) k = 8;
+        var st = { v: v, lap: v >= 12.9, k: v >= 12.9 ? 0 : k, stop: null, noAir: noAir };
         st.ox = ox(v, noAir);
-        st.tri = bump(v, 0.45, 0.85, 1.55, 1.95); st.rvSq = bump(v, 1.85, 2.3, 3.0, 3.5); st.pv = bump(v, 2.45, 2.85, 3.5, 3.9);
-        st.mit = bump(v, 6.45, 6.85, 7.55, 7.95); st.lvSq = bump(v, 7.85, 8.3, 9.0, 9.5); st.av = bump(v, 8.45, 8.85, 9.5, 9.9);
-        st.lungX = bump(v, 4.45, 4.75, 5.15, 5.5);   // exchange in the lung: O2 in, CO2 out
-        st.bodyX = bump(v, 10.45, 10.75, 11.15, 11.5);
+        // each step's words show from 0.12 before it (k = floor(v + 0.12)); its event is fully drawn by then and holds
+        // through its words, and the next event happens in the short band before the next words
+        st.tri = bump(v, 0.58, 0.88, 1.69, 1.86); st.rvSq = bump(v, 1.69, 1.95, 3.3, 3.7); st.pv = bump(v, 2.6, 2.88, 3.88, 4.1);
+        st.mit = bump(v, 6.58, 6.88, 7.69, 7.86); st.lvSq = bump(v, 7.69, 7.95, 9.3, 9.7); st.av = bump(v, 8.6, 8.88, 9.88, 10.1);
+        st.lungX = bump(v, 4.7, 4.88, 5.88, 6.05);   // exchange in the lung: O2 in, CO2 out
+        st.bodyX = bump(v, 10.7, 10.88, 11.88, 12.05);
         st.lungDone = noAir ? 0 : ramp(v, 4.6, 5.2);
         return st;
       },
-      fails: function(st){ var f = []; if(st.noAir){ if(st.v >= 4.9 || st.lap) f.push(4); if(st.v >= 10.9 || st.lap) f.push(10); } return f; },
+      fails: function(st){ var f = []; if(st.noAir){ if(st.v >= 4.88 || st.lap) f.push(5); if(st.v >= 10.88 || st.lap) f.push(11); } return f; },
       paint: function(R, st, E){
         function open(g, t, ang){ var a = g.childNodes[0], b = g.childNodes[1]; var d = t * ang; a.setAttribute('transform', 'rotate(' + f1(d) + ' ' + a.getAttribute('d').match(/M([\d.]+),([\d.]+)/).slice(1).join(' ') + ')'); b.setAttribute('transform', 'rotate(' + f1(-d) + ' ' + b.getAttribute('d').match(/M([\d.]+),([\d.]+)/).slice(1).join(' ') + ')'); }
         open(R.tri, st.tri, 68); open(R.mit, st.mit, 68); open(R.pv, st.pv, -70); open(R.av, st.av, -70);
@@ -177,18 +182,18 @@
         var p = this.route.at(st.v), kids = R.gas.childNodes, i, t;
         for(i = 0; i < 6; i++){
           var c = kids[i], a = ALV[i], b = CELLS[i];
-          if(st.lungX > 0 && !st.noAir){ t = ramp(st.v, 4.5 + i * 0.04, 5.1); c.setAttribute('cx', f1(lerp(a[0], p[0], t))); c.setAttribute('cy', f1(lerp(a[1], p[1], t))); c.style.opacity = f1(st.lungX); }
-          else if(st.bodyX > 0 && (!st.noAir ? true : i < 1)){ t = ramp(st.v, 10.5 + i * 0.04, 11.1); c.setAttribute('cx', f1(lerp(p[0], b[0], t))); c.setAttribute('cy', f1(lerp(p[1], b[1], t))); c.style.opacity = f1(st.bodyX); }
+          if(st.lungX > 0 && !st.noAir){ t = ramp(st.v, 4.88 + i * 0.04, 5.6); c.setAttribute('cx', f1(lerp(a[0], p[0], t))); c.setAttribute('cy', f1(lerp(a[1], p[1], t))); c.style.opacity = f1(st.lungX); }
+          else if(st.bodyX > 0 && (!st.noAir ? true : i < 1)){ t = ramp(st.v, 10.88 + i * 0.04, 11.6); c.setAttribute('cx', f1(lerp(p[0], b[0], t))); c.setAttribute('cy', f1(lerp(p[1], b[1], t))); c.style.opacity = f1(st.bodyX); }
           else c.style.opacity = '0';
         }
         for(i = 0; i < 4; i++){
           var d = kids[6 + i], a2 = ALV[5 + i % 4], b2 = CELLS[6 + i];
-          if(st.lungX > 0 && !st.noAir){ t = ramp(st.v, 4.5 + i * 0.05, 5.1); d.setAttribute('cx', f1(lerp(p[0], a2[0], t))); d.setAttribute('cy', f1(lerp(p[1], a2[1], t))); d.style.opacity = f1(st.lungX); }
-          else if(st.bodyX > 0){ t = ramp(st.v, 10.5 + i * 0.05, 11.1); d.setAttribute('cx', f1(lerp(b2[0], p[0], t))); d.setAttribute('cy', f1(lerp(b2[1], p[1], t))); d.style.opacity = f1(st.bodyX); }
+          if(st.lungX > 0 && !st.noAir){ t = ramp(st.v, 4.88 + i * 0.05, 5.6); d.setAttribute('cx', f1(lerp(p[0], a2[0], t))); d.setAttribute('cy', f1(lerp(p[1], a2[1], t))); d.style.opacity = f1(st.lungX); }
+          else if(st.bodyX > 0){ t = ramp(st.v, 10.88 + i * 0.05, 11.6); d.setAttribute('cx', f1(lerp(b2[0], p[0], t))); d.setAttribute('cy', f1(lerp(b2[1], p[1], t))); d.style.opacity = f1(st.bodyX); }
           else d.style.opacity = '0';
         }
         // the cells that got O2 this lap look fed
-        for(i = 0; i < CELLS.length; i++) R['cell' + i].setAttribute('class', st.v >= 11.05 && !st.lap && (!st.noAir || i < 1) ? 'is-fed' : '');
+        for(i = 0; i < CELLS.length; i++) R['cell' + i].setAttribute('class', st.v >= 11.4 && !st.lap && (!st.noAir || i < 1) ? 'is-fed' : '');
       },
       tokenRole: function(st){ return st.ox > 0.5 ? 'o2' : 'de'; },
       tokenFill: function(st){ return mix(DE, OX, st.ox); },
@@ -211,7 +216,6 @@
         L.push({ key: 'cur', text: c[0], role: c[2], at: c[1], side: ['l', 'r', 'u', 'd'], lead: true, strong: true });
         if(st.lungX > 0.2 && !st.noAir){ L.push({ key: 'o2', text: 'O₂ in', role: 'o2', at: [190, 30], side: ['l', 'u'] }); }
         if(st.bodyX > 0.2){ L.push({ key: 'o2b', text: st.noAir ? 'Less O₂ out' : 'O₂ out', role: st.noAir ? 'bad' : 'o2', at: [470, 470], side: ['u', 'r'] }); }
-        if(st.noAir) L.push({ key: 'noair', text: 'No fresh air', role: 'bad', at: [362, 30], side: ['r', 'l'], strong: true });
         return L;
       },
       words: function(st){
@@ -260,10 +264,10 @@
       cue: 'Drag the signal', token: 'the signal', thing: 'signal',
       route: R0, last: 6,
       breaks: [
-        { id: 'dorsal', at: 2.42, label: 'Cut', aria: 'Cut the dorsal root', name: 'Dorsal root cut', step: 2 },
-        { id: 'ventral', at: 3.62, label: 'Cut', aria: 'Cut the ventral root', name: 'Ventral root cut', step: 4 }
+        { id: 'dorsal', at: 2.42, tag: 'Cut', label: 'Cut', aria: 'Cut the dorsal root', name: 'Dorsal root cut', step: 2 },
+        { id: 'ventral', at: 3.62, off: [0, 1], tag: 'Cut', label: 'Cut', aria: 'Cut the ventral root', name: 'Ventral root cut', step: 4 }
       ],
-      take: 'Receptor, sensory neuron, one synapse, motor neuron, effector: the reflex arc.',
+      take: 'Receptor, sensory neuron, synapse, motor neuron, effector.',
       art: function(E){
         var s = '';
         s += '<defs><linearGradient id="pe-skin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6DCC8"/><stop offset="1" stop-color="#E8BFA4"/></linearGradient>' +
@@ -276,8 +280,9 @@
         s += '<path class="pe-chair" d="M0,404 H352 a10,10 0 0 1 0,20 H0 Z"/><path class="pe-chair-leg" d="M300,424 V540 M40,424 V540"/>';
         // the seated body: back and belly in a shirt, the backbone faint inside it, the lumbar part where the arc runs
         s += '<path class="pe-shirt" d="M0,0 H92 C104,80 118,170 122,250 C124,282 112,300 90,304 L0,306 Z"/>';
-        for(var v0 = 0; v0 < 8; v0++) s += '<rect class="pe-vert" x="16" y="' + (40 + v0 * 31) + '" width="30" height="24" rx="5"/>';
-        s += '<rect class="pe-vert is-lum" x="16" y="195" width="30" height="24" rx="5"/>';
+        // a window into the lower back: the stacked vertebrae with their discs; the lumbar one where the arc runs
+        s += '<path class="pe-backwin" d="M8,30 C30,24 56,24 72,30 L72,290 C56,296 30,296 8,290 Z"/>';
+        for(var v0 = 0; v0 < 8; v0++){ var vy = 38 + v0 * 32, vx = 20 + Math.sin(v0 / 7 * Math.PI) * 6; s += '<path class="pe-vert' + (v0 === 5 ? ' is-lum' : '') + '" d="M' + vx + ',' + vy + ' h30 a4,4 0 0 1 4,4 v16 a4,4 0 0 1 -4,4 h-30 a4,4 0 0 1 -4,-4 v-16 a4,4 0 0 1 4,-4 Z"/><path class="pe-disc" d="M' + (vx + 2) + ',' + (vy + 27) + ' h26"/>'; }
         // the lower leg (turns at the knee; its top is round about the knee so it turns cleanly)
         s += '<g data-r="leg"><path class="pe-skin" d="M360,334 A44,44 0 0 1 448,334 C450,410 448,460 452,494 C470,496 500,500 528,512 C538,520 534,534 520,534 L400,534 C380,532 374,520 372,500 C368,470 362,420 360,334 Z"/>' +
           '<path class="pe-bone" d="M382,350 C380,420 384,470 388,494 L408,494 C410,470 414,420 418,350 Z"/></g>';
@@ -297,7 +302,7 @@
         // reflex hammer (a triangular rubber head on a handle)
         s += '<g data-r="hammer"><path class="pe-ham-h" d="M478,370 L548,500"/><path class="pe-ham" d="M448,368 L494,346 L500,380 Z"/></g>';
         // the lumbar part of the backbone, enlarged: where the arc meets the cord
-        s += '<path class="pe-zoom" d="M46,195 L452,96 M46,219 L470,214"/>';
+        s += '<path class="pe-zoom" d="M58,198 L452,96 M58,222 L470,214"/>';
         // spinal cord, cross section
         s += '<g class="pe-cord"><ellipse class="pe-wm" cx="532" cy="150" rx="104" ry="78"/>' +
           '<path class="pe-gm" d="M532,118 C520,96 498,84 484,92 C478,104 494,118 508,128 C504,140 496,152 486,166 C474,184 486,204 508,202 C522,198 528,186 532,176 C536,186 542,198 556,202 C578,204 590,184 578,166 C568,152 560,140 556,128 C570,118 586,104 580,92 C566,84 544,96 532,118 Z"/>' +
@@ -319,12 +324,12 @@
       },
       state: function(v, br){
         var st = { v: v, k: Math.min(6, Math.floor(v + 0.12)), stop: null };
-        if(br){ var b = br; if(v >= b.at - 0.02){ st.stop = b; } }
-        st.kick = st.stop ? 0 : ramp(v, 5.5, 6);
-        st.squeeze = st.stop ? 0 : ramp(v, 5.15, 5.75);
-        st.stretch = bump(v, -1, 0, 0.6, 1.3);
-        st.fire = bump(v, 0.75, 1, 1.4, 1.9);
-        st.synOn = st.stop && st.stop.id === 'dorsal' ? 0 : bump(v, 2.75, 3, 3.3, 3.7);
+        if(br && v >= Math.min(br.at - 0.02, br.step - 0.12)) st.stop = br;
+        st.kick = st.stop ? 0 : ramp(v, 5.6, 5.88);
+        st.squeeze = st.stop ? 0 : ramp(v, 5.45, 5.8);
+        st.stretch = 1 - ramp(v, 0.88, 1.3);
+        st.fire = bump(v, 0.7, 0.88, 1.88, 2.1);
+        st.synOn = br && br.id === 'dorsal' ? 0 : bump(v, 2.7, 2.88, 3.88, 4.1);
         st.motor = v >= 3 && !(st.stop && st.stop.id === 'dorsal');
         st.hit = 1 - ramp(v, 0, 0.45);
         return st;
@@ -415,10 +420,10 @@
       cue: 'Drag the signal', token: 'the signal', thing: 'signal',
       route: R0, last: 6,
       breaks: [
-        { id: 'pit', at: 2.92, place: [312, 360], off: [1, 0], label: 'Damage', aria: 'Damage the pituitary gland', name: 'Pituitary damaged', step: 3 },
-        { id: 'adr', at: 4.0, place: [520, 330], off: [-1, 0], label: 'Damage', aria: 'Damage the adrenal cortex', name: 'Adrenal cortex damaged', step: 4 }
+        { id: 'pit', at: 2.92, place: [168, 410], off: [0, 1], tag: 'Damaged', label: 'Damage', aria: 'Damage the pituitary gland', name: 'Pituitary damaged', step: 3 },
+        { id: 'adr', at: 4.0, place: [548, 330], off: [0, 1], tag: 'Damaged', label: 'Damage', aria: 'Damage the adrenal cortex', name: 'Adrenal cortex damaged', step: 4 }
       ],
-      take: 'Three glands in a chain, held in check by cortisol’s negative feedback.',
+      take: 'Three glands in a chain, braked by cortisol’s feedback.',
       art: function(E){
         var s = '<defs><radialGradient id="pe-brain" cx="0.45" cy="0.3" r="0.8"><stop offset="0" stop-color="#F3DCD8"/><stop offset="1" stop-color="#DDB0AC"/></radialGradient>' +
           '<linearGradient id="pe-skin2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#EBC3A9"/><stop offset="0.5" stop-color="#F6DCC8"/><stop offset="1" stop-color="#E5B99E"/></linearGradient>' +
@@ -472,16 +477,16 @@
       },
       state: function(v, br){
         var st = { v: v, k: Math.min(6, Math.floor(v + 0.12)), stop: null };
-        if(br && v >= br.at - 0.02) st.stop = br;
+        if(br && v >= Math.min(br.at - 0.02, br.step - 0.12)) st.stop = br;
         var pit = br && br.id === 'pit', adr = br && br.id === 'adr';
         st.stress = bump(v, -1, 0, 0.5, 1.0);
-        st.crh = ramp(v, 0.75, 1.1);                     // CRH released into the stalk's capillaries
+        st.crh = ramp(v, 0.6, 0.88);                     // CRH released into the stalk's capillaries
         st.crhDown = ramp(v, 1.0, 2.2);                  // carried down the portal veins
-        st.acth = pit ? 0 : ramp(v, 2.8, 3.25);
-        st.cort = adr || pit ? 0 : ramp(v, 3.8, 4.25);
-        st.glu = adr || pit ? 0 : ramp(v, 4.8, 5.3);
-        st.brake = adr || pit ? 0 : ramp(v, 5.7, 6);
-        st.pile = st.stop ? ramp(v, st.stop.at - 0.35, st.stop.at) : 0;   // no cortisol, no brake: the hormone above the break builds up
+        st.acth = pit ? 0 : ramp(v, 2.6, 2.88);
+        st.cort = adr || pit ? 0 : ramp(v, 3.6, 3.88);
+        st.glu = adr || pit ? 0 : ramp(v, 4.6, 4.88);
+        st.brake = adr || pit ? 0 : ramp(v, 5.6, 5.88);
+        st.pile = st.stop ? ramp(v, st.stop.step - 0.4, st.stop.step - 0.12) : 0;   // no cortisol, no brake: the hormone above the break builds up
         st.pit = pit; st.adr = adr;
         return st;
       },
@@ -563,10 +568,10 @@
       cue: 'Drag the signal', token: 'the signal', thing: 'signal',
       route: R0, last: 8,
       breaks: [
-        { id: 'ca', at: 0.95, place: [222, 318], off: [-1, 0], label: 'Block', aria: 'Block the calcium channels', name: 'Calcium channels blocked', step: 1 },
-        { id: 'rec', at: 3.95, place: [384, 360], off: [1, 0], label: 'Block', aria: 'Block the receptor proteins', name: 'Receptor proteins blocked', step: 4 }
+        { id: 'ca', at: 0.95, place: [222, 318], off: [-1, 0], tag: 'Blocked', label: 'Block', aria: 'Block the calcium channels', name: 'Calcium channels blocked', step: 1 },
+        { id: 'rec', at: 3.95, place: [384, 360], off: [1, 0], tag: 'Blocked', label: 'Block', aria: 'Block the receptor proteins', name: 'Receptor proteins blocked', step: 4 }
       ],
-      take: 'Electrical, then chemical, then electrical again: calcium releases the transmitter, and receptor proteins turn it back into a signal.',
+      take: 'Electrical, then chemical, then electrical again.',
       art: function(E){
         var s = '<defs><radialGradient id="pe-term" cx="0.45" cy="0.35" r="0.75"><stop offset="0" stop-color="#FDF3E3"/><stop offset="1" stop-color="#F1DDBF"/></radialGradient>' +
           '<linearGradient id="pe-post" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3E4D2"/><stop offset="1" stop-color="#E7CFB4"/></linearGradient>' +
@@ -603,24 +608,24 @@
       },
       state: function(v, br){
         var st = { v: v, k: Math.min(8, Math.floor(v + 0.12)), stop: null, ca: !!(br && br.id === 'ca'), rec: !!(br && br.id === 'rec') };
-        if(br && v >= br.at - 0.02) st.stop = br;
-        st.caIn = st.ca ? 0 : bump(v, 0.75, 1.1, 1.8, 2.2);
-        st.fuse = st.ca ? 0 : ramp(v, 1.7, 2.2);
-        st.release = st.ca ? 0 : ramp(v, 1.85, 2.4);
-        st.cross = st.ca ? 0 : ramp(v, 2.4, 3.3);
-        st.bind = st.ca || st.rec ? 0 : ramp(v, 3.5, 4.0) * (1 - ramp(v, 7.6, 8));
-        st.open = st.ca || st.rec ? 0 : ramp(v, 4.4, 4.9) * (1 - ramp(v, 7.6, 8));
-        st.naIn = st.open * bump(v, 4.4, 4.8, 6.0, 6.6);
-        st.epsp = st.ca || st.rec ? 0 : ramp(v, 5.0, 6.2) * (1 - ramp(v, 7.2, 7.9));
-        st.sum = st.ca || st.rec ? 0 : ramp(v, 5.6, 6.95);
-        st.fire = st.ca || st.rec ? 0 : bump(v, 6.85, 7.0, 7.5, 7.9);
-        st.clear = st.ca ? 0 : ramp(v, 7.3, 8);
+        if(br && v >= Math.min(br.at - 0.02, br.step - 0.12)) st.stop = br;
+        st.caIn = st.ca ? 0 : bump(v, 0.7, 0.88, 1.88, 2.2);
+        st.fuse = st.ca ? 0 : ramp(v, 1.7, 1.88);
+        st.release = st.ca ? 0 : ramp(v, 1.7, 1.88);
+        st.cross = st.ca ? 0 : ramp(v, 2.45, 3.3);
+        st.bind = st.ca || st.rec ? 0 : ramp(v, 3.6, 3.88) * (1 - ramp(v, 7.88, 8));
+        st.open = st.ca || st.rec ? 0 : ramp(v, 4.6, 4.88) * (1 - ramp(v, 7.88, 8));
+        st.naIn = st.open * bump(v, 4.6, 4.88, 6.0, 6.6);
+        st.epsp = st.ca || st.rec ? 0 : ramp(v, 5.6, 5.88) * (1 - ramp(v, 7.88, 8));
+        st.sum = st.ca || st.rec ? 0 : ramp(v, 5.88, 6.88);
+        st.fire = st.ca || st.rec ? 0 : bump(v, 6.75, 6.88, 7.88, 8.0);
+        st.clear = st.ca ? 0 : ramp(v, 7.6, 7.88);
         return st;
       },
       paint: function(R, st, E){
         var i, kids = R.ions.childNodes;
-        for(i = 0; i < 6; i++){ var c = kids[i], x0 = i < 3 ? 222 : 466, t = ramp(st.v, 0.75 + i * 0.03, 1.4); c.setAttribute('cx', f1(x0 + (i % 3 - 1) * 9)); c.setAttribute('cy', f1(lerp(346, 290, t))); c.style.opacity = f1(st.caIn); }
-        for(i = 0; i < 5; i++){ var n = kids[6 + i], r = REC[i % 3], t2 = ramp(st.v, 4.5 + i * 0.05, 5.4); n.setAttribute('cx', f1(r[0] + (i > 2 ? 4 : -4))); n.setAttribute('cy', f1(lerp(340, 392, t2))); n.style.opacity = f1(st.naIn); }
+        for(i = 0; i < 6; i++){ var c = kids[i], x0 = i < 3 ? 222 : 466, t = ramp(st.v, 0.7 + i * 0.03, 1.4); c.setAttribute('cx', f1(x0 + (i % 3 - 1) * 9)); c.setAttribute('cy', f1(lerp(346, 290, t))); c.style.opacity = f1(st.caIn); }
+        for(i = 0; i < 5; i++){ var n = kids[6 + i], r = REC[i % 3], t2 = ramp(st.v, 4.7 + i * 0.05, 5.4); n.setAttribute('cx', f1(r[0] + (i > 2 ? 4 : -4))); n.setAttribute('cy', f1(lerp(340, 392, t2))); n.style.opacity = f1(st.naIn); }
         for(i = 0; i < 3; i++){ var d = R['dock' + i]; d.style.opacity = f1(1 - st.fuse); d.setAttribute('transform', 'translate(0,' + f1(st.fuse * 10) + ')'); }
         var nts = R.nts.childNodes;
         for(i = 0; i < 9; i++){
@@ -711,7 +716,7 @@
     reset.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4.5h4.5"/></svg><span>Start over</span>';
     over.appendChild(reset);
 
-    var R = {}, handle = null, cue = null, pills = [];
+    var R = {}, handle = null, cue = null, pills = [], lastSt = null;
     /* ---- sizes: font in picture units so labels read about 13 px everywhere */
     function scale(){ var r = svg.getBoundingClientRect(); return r.width ? r.width / W : 1; }
     function metrics(){ var k = scale() || 1; E.k = k; E.fs = clamp((k < 0.8 ? 12.5 : 13.5) / k, 10, 27); E.gap = 4 / k; }
@@ -776,11 +781,22 @@
           best = { b: b, sd: q.sd, dd: q.dd };
         }
         if(!best){
-          // keep it inside the picture at least
-          var bx = clamp(at[0] - w / 2, 4, W - 4 - w), by = clamp(at[1] - h * 1.6, 4, H - 4 - h);
-          best = { b: [bx, by, bx + w, by + h], sd: 'u', dd: 1 };
+          // no spot beside it: the nearest free spot further out (with a leader line), searched on rings around it
+          for(var ring = 1; ring <= 14 && !best; ring++){
+            var rr = ring * fs * 1.1, nn = 8 + ring * 4, bestD = Infinity;
+            for(var a = 0; a < nn; a++){
+              var ang = a / nn * Math.PI * 2, cx2 = at[0] + Math.cos(ang) * (rr + w * 0.35 * Math.abs(Math.cos(ang))), cy2 = at[1] + Math.sin(ang) * rr;
+              var b2 = [cx2 - w / 2, cy2 - h / 2, cx2 + w / 2, cy2 + h / 2];
+              if(b2[0] < 4 || b2[2] > W - 4 || b2[1] < 4 || b2[3] > H - 4) continue;
+              if(placed.some(function(x){ return inter(x, b2, g); })) continue;
+              var dd2 = Math.hypot(cx2 - at[0], cy2 - at[1]);
+              if(dd2 < bestD){ bestD = dd2; best = { b: b2, sd: 'u', dd: 99, far: true }; }
+            }
+          }
+          if(!best){ var bx = clamp(at[0] - w / 2, 4, W - 4 - w), by = clamp(at[1] - h * 1.6, 4, H - 4 - h); best = { b: [bx, by, bx + w, by + h], sd: 'u', dd: 1 }; }
+          if(best.far) L = Object.assign({}, L, { lead: true });
         }
-        lastPlace[cur.id + ':' + L.key + ':' + L.text] = { sd: best.sd, dd: best.dd };
+        if(!best.far) lastPlace[cur.id + ':' + L.key + ':' + L.text] = { sd: best.sd, dd: best.dd };
         placed.push(best.b);
         used[L.key] = 1;
         drawLab(L, best.b, at);
@@ -856,7 +872,7 @@
       var k = E.k || scale(), show = seenEnd();
       pills.forEach(function(x){
         var p = x.b.place || cur.route.at(x.b.at), on = cur.br && cur.br.id === x.b.id;
-        x.el.hidden = !show || (!!cur.br && !on);
+        x.el.hidden = !show || !!cur.br;
         x.el.setAttribute('aria-pressed', String(!!on));
         x.el.classList.toggle('is-done', !!on);
         x.el.disabled = !!on;
@@ -925,7 +941,7 @@
     /* ---- drawing one frame */
     function draw(){
       var st = cur.state(view.v, cur.br);
-      st.ended = seenEnd();
+      st.ended = seenEnd(); lastSt = st;
       cur.paint(R, st, E);
       // the token: what travels, at the shown position
       var p = cur.route.at(view.v), role = cur.tokenRole ? cur.tokenRole(st) : 'tok', k = E.k || 1;
@@ -934,19 +950,27 @@
       tok.firstChild.setAttribute('r', f1(30 / k)); tok.lastChild.setAttribute('r', f1(19 / k));
       if(cur.tokenFill){ tok.lastChild.style.fill = cur.tokenFill(st); } else tok.lastChild.style.fill = '';
       // the trail: where it has been
-      var tv = Math.max(0, view.v), parts = cur.trailFor ? cur.trailFor(st) : cur.trail || [[0, cur.last, role]], th = '';
-      parts.forEach(function(pt){ var a0 = pt[0], a1 = Math.min(pt[1], tv); if(a1 - a0 > 0.02) th += '<path class="pe-trail-p is-' + pt[2] + '" style="stroke-width:' + f1(6 / k) + 'px" d="' + cur.route.path(a0, a1) + '"/>'; });
-      if(trail._h !== th){ trail._h = th; trail.innerHTML = th; }
-      placeLabels(cur.labels(st, E));
+      var tv = Math.max(0, view.v), parts = cur.trailFor ? cur.trailFor(st) : cur.trail || [[0, cur.last, role]];
+      // one path per part of the trail, made once per screen and only reshaped as the token moves
+      var sig = cur.id + '|' + parts.map(function(pt){ return pt[2]; }).join(',');
+      if(trail._h !== sig){ trail._h = sig; trail.innerHTML = parts.map(function(pt){ return '<path class="pe-trail-p is-' + pt[2] + '"/>'; }).join(''); }
+      parts.forEach(function(pt, i){
+        var el = trail.childNodes[i], a0 = pt[0], a1 = Math.min(pt[1], tv);
+        if(a1 - a0 > 0.02){ el.setAttribute('d', cur.route.path(a0, a1)); el.style.strokeWidth = f1(6 / k) + 'px'; el.style.display = ''; } else el.style.display = 'none';
+      });
+      var atEnd = !st.stop && view.v >= cur.last - 0.02;
+      if(atEnd && !cur.br && !seenEnd()){ markEnd(); placePills(); }
+      var LL = cur.labels(st, E);
+      if(cur.br) LL.push({ key: 'brk', text: cur.br.tag, role: 'bad', at: cur.br.place || cur.route.at(cur.br.at), side: ['u', 'd', 'l', 'r'], lead: true, strong: true });
+      placeLabels(LL);
       railPaint(st);
-      var ws = cur.words(st), atEnd = !st.stop && view.v >= cur.last - 0.02, key = JSON.stringify(ws) + (atEnd ? '|end' : '') + (st.stop ? '|stop' : '');
+      var ws = cur.words(st), key = JSON.stringify(ws) + (atEnd ? '|end' : '') + (st.stop ? '|stop' : '');
       if(key !== wKey){
         wKey = key;
         cause.set(ws, st.stop ? 'What fails:' : 'Step ' + (st.k + 1) + ':');
-        if(atEnd){ cause.take(cur.take + (cur.breaks && cur.breaks.length && !cur.br ? ' Now break a part: what fails?' : '')); }
+        if(atEnd){ cause.take(cur.take + (cur.breaks && cur.breaks.length && !cur.br ? ' Now break a part.' : '')); }
         svg.setAttribute('aria-label', cur.tab + '. ' + stepText(view.v));
       }
-      if(atEnd && !cur.br && !seenEnd()){ markEnd(); placePills(); }
     }
 
     /* ---- the shown position chases the knob: every change is seen happening */
@@ -991,6 +1015,7 @@
       cue = K.cue(layer, { key: 'anp-pathways', text: cur.cue, side: p[0] > W * 0.55 ? 'left' : 'right', at: function(){ var q = cur.route.at(view.target); return [q[0], q[1]]; } });
       cue.show();
       placeLabels(cur.labels(cur.state(view.v, cur.br), E));
+      setTimeout(function(){ if(cue && cue.active()) draw(); }, 450);   // once the cue has settled, labels move clear of it
     }
     function hideCue(used){ if(cue && cue.active()){ cue.hide(used); } }
     var tour = K.tour({ key: 'anp-pathways', label: 'Show me how', steps: [
@@ -1004,7 +1029,10 @@
     /* ---- "?" for this screen */
     var ref = document.createElement('div'); ref.className = 'ls-sec pe-ref';
     var NOTE = {
-      reflex: 'The cord is drawn beside the thigh to show the arc; the real knee jerk runs through the lumbar cord (about L2 to L4) in the lower back. One sensory and one motor neuron stand for many. Cutting a root after the signal has passed does not undo that kick; the next signal stops at the cut.'
+      heart: 'Blue and red are the course’s colours for oxygen poor and oxygen rich blood; real blood is never blue, and blood coming back from the body still carries about 75 percent of its oxygen. Only the route through one lung is drawn; the other lung works the same way. “Stop air” stands for any time no fresh air reaches the alveoli (choking, not breathing): the heart still pumps and blood still flows through the lungs, but it picks up no new oxygen, so the body cells get less than they need.',
+      reflex: 'The spinal cord is drawn enlarged beside the thigh to show the arc; the knee jerk runs through the lumbar cord (about L2 to L4) in the lower back. One sensory and one motor neuron stand for many. At the same time the hamstrings relax through an inhibitory interneuron, which is not drawn. Cutting a root after the signal has passed does not undo that kick; the next signal stops at the cut.',
+      hormone: 'The hypothalamus and pituitary are enlarged in the circle. One blood vessel stands for the whole circulation: ACTH and cortisol travel through the heart and arteries to every organ. Cortisol also damps inflammation, which is not drawn. A damaged adrenal cortex is what happens in Addison disease: with cortisol low, nothing brakes the pituitary and ACTH rises very high. A damaged pituitary leaves no ACTH, so the adrenal cortex makes no cortisol, and without cortisol’s brake CRH rises.',
+      synapse: 'A synapse between two neurons with an excitatory neurotransmitter. One EPSP is far too small to reach threshold alone; two neighbouring synapses fire at the same moment here, so their EPSPs add at the trigger zone (spatial summation). The bar by the trigger zone shows the sum; the red mark is threshold. The blockers act on every synapse of the cell, as a drug in the fluid around it would.'
     };
     function refHtml(){
       var p = cur.p, t = topicOf(p.topic), B = o.base || '../';
@@ -1053,6 +1081,7 @@
       _scenes: scenes, _view: view, _go: go,
       _break: function(id){ var b = (cur.breaks || []).filter(function(x){ return x.id === id; })[0]; if(b){ try{ localStorage.setItem('pe-end:' + cur.id, '1'); }catch(e){} breakIt(b); } },
       _reset: function(){ reset.click(); },
+      _st: function(){ return { st: lastSt, words: cur.words(lastSt).map(function(p){ return p.t; }), labels: [].map.call(labs.querySelectorAll('.pe-lab'), function(g){ return g.getAttribute('data-lab'); }), tok: tok.getAttribute('class') }; },
       _frame: function(v){ if(raf){ cancelAnimationFrame(raf); raf = 0; } view.v = view.target = cur.v = v; if(handle) handle.value(v, false); draw(); }   // the frame tests draw one moment
     };
     window.AnpPathExplore.current = api;

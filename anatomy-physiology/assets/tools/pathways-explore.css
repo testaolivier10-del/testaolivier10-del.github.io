@@ -81,7 +81,7 @@
   .pe-strip-n{font-weight:900;color:var(--cink);white-space:nowrap;}
   .pe-strip-t{font-weight:700;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;}
 }
-@media (max-width:640px){ .pe-lines{min-height:76px;align-items:flex-start;} .pe-strip{flex-wrap:wrap;} .pe-strip-t{white-space:normal;} .pe-rail{min-height:40px;} }
+@media (max-width:640px){ .pe-lines{min-height:80px;align-items:flex-start;} .pe-strip{flex-wrap:wrap;} .pe-strip-t{white-space:normal;} .pe-rail{min-height:40px;} }
 @media (min-width:640.02px) and (max-width:899.98px){ .pe-lines{min-height:84px;align-items:flex-start;} }
 
 /* buttons on the picture: Start over, and the cut buttons once a run has ended */
@@ -90,8 +90,8 @@
 .pe-reset{right:10px;top:10px;background:color-mix(in srgb, var(--white) 88%, transparent);color:var(--ink);border:1.5px solid color-mix(in srgb, var(--ink) 22%, transparent);}
 .pe-reset svg,.pe-cutb svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
 .pe-reset:hover{border-color:var(--ink);}
-.pe-cutb{background:var(--white);color:var(--pe-bad-ink);border:2px solid var(--pe-bad);transform:translate(-50%,calc(-100% - 12px));box-shadow:0 2px 8px rgba(11,26,51,.18);}
-.pe-cutb[data-side="down"]{transform:translate(-50%,12px);} .pe-cutb[data-side="left"]{transform:translate(calc(-100% - 12px),-50%);} .pe-cutb[data-side="right"]{transform:translate(12px,-50%);}
+.pe-cutb{background:var(--white);color:var(--pe-bad-ink);border:2px solid var(--pe-bad);transform:translate(-50%,calc(-100% - 14px));box-shadow:0 2px 8px rgba(11,26,51,.18);}
+.pe-cutb[data-side="down"]{transform:translate(-50%,14px);} .pe-cutb[data-side="left"]{transform:translate(calc(-100% - 14px),-50%);} .pe-cutb[data-side="right"]{transform:translate(14px,-50%);}
 .pe-cutb.is-done{background:var(--pe-bad);color:var(--white);cursor:default;}
 .pe-cutb.is-new{animation:pe-pulse 1.6s ease-in-out 3;}
 .pe-cutb:focus-visible,.pe-reset:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
@@ -158,11 +158,13 @@
 g.is-on > .pe-syn{fill:var(--pe-aff);filter:drop-shadow(0 0 5px var(--pe-aff));}
 
 /* Test yourself: the tool's own modes as one small switch at the top of the panel (pathways.js subStudio) */
-.pw-suboff{display:none !important;}
+.pw-suboff,.ls-root.pw-ls .ls-dock .pw-ls-drills.pw-suboff{display:none !important;}
 .pw-sub{margin:0 0 10px;}
 .pe-shirt{fill:url(#pe-shirt);stroke:#647B94;stroke-width:2;}
-.pe-vert{fill:#F4ECDD;stroke:#CDBB98;stroke-width:1.5;opacity:.55;}
-.pe-vert.is-lum{fill:#EAD9F2;stroke:var(--pe-cord);stroke-width:2.5;opacity:1;}
+.pe-backwin{fill:#F1D7C6;stroke:#647B94;stroke-width:2;}
+.pe-vert{fill:#F7EEDC;stroke:#CDBB98;stroke-width:1.8;}
+.pe-vert.is-lum{fill:#EAD9F2;stroke:var(--pe-cord);stroke-width:2.5;}
+.pe-disc{stroke:#E6B9A0;stroke-width:4;stroke-linecap:round;}
 .pe-zoom{fill:none;stroke:var(--pe-cord);stroke-width:1.5;opacity:.5;}
 
 /* ---------------------------------------------------------------- heart, lungs and body */
