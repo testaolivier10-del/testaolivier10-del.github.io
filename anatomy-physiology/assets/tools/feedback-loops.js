@@ -66,7 +66,7 @@
       seg = document.createElement('div');
       seg.className = 'fl-sub kt-seg'; seg.setAttribute('role', 'group'); seg.setAttribute('aria-label', 'How to practice this loop');
       seg.innerHTML = m.items.map(function(it){ return '<button type="button" class="fl-subb" data-v="' + esc(it.value) + '" aria-pressed="false">' + esc(LBL[it.value] || it.label) + '</button>'; }).join('');
-      seg.addEventListener('click', function(e){ var b = e.target.closest('button[data-v]'); if(!b) return; var v = b.getAttribute('data-v'); if(v === sub) return; sub = v; paint(); if(segO.onChange) segO.onChange(v); });
+      seg.addEventListener('click', function(e){ var b = e.target.closest('button[data-v]'); if(!b) return; var v = b.getAttribute('data-v'); if(v === sub) return; sub = v; paint(); if(segO.onChange) segO.onChange(v); quizUrl(); });
       real.add('dock', seg, { mode: 'quiz' });
       real.dock.insertBefore(seg, real.dock.firstChild);
       paint();

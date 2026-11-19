@@ -230,3 +230,5 @@
 .fe-fline{fill:none;stroke:#B98166;stroke-width:2;stroke-linecap:round;}
 .fe-mtitle.is-str{fill:#C9E38C;}
 .fe-mfull{stroke:#C9E38C;stroke-width:1.2;opacity:.5;fill:none;}
+/* narrow phones: the tabs size by their names, so "Temperature" fits */
+@media (max-width:380px){ .fe .tk2-tabs.is-big{gap:3px;} .fe .tk2-tabs.is-big .tk2-tab{flex:1 1 auto;padding:0 6px;} }

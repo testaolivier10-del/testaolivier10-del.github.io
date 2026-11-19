@@ -84,9 +84,9 @@
     st.k = 0; for(var i = 0; i < 7; i++) if(t >= starts[i]) st.k = i;
     st.done = t >= end;
     st.a = negAct(sc, run, t);
-    st.sens = ramp(t, M.sens, M.sens + 0.2) * st.a;
-    st.ctl = ramp(t, M.ctl, M.ctl + 0.15) * negAct(sc, run, Math.max(0, t - (M.ctl - M.sens)));
-    st.eff = ramp(t, M.act, M.act + 0.45) * st.a;
+    st.sens = ramp(t, M.sens - 0.12, M.sens + 0.12) * st.a;
+    st.ctl = ramp(t, M.ctl - 0.1, M.ctl + 0.08) * negAct(sc, run, Math.max(0, t - (M.ctl - M.sens)));
+    st.eff = ramp(t, M.act - 0.12, M.act + 0.4) * st.a;
     st.aff = []; st.effp = [];
     var ta = M.affEnd - M.aff, te = M.effEnd - M.eff;
     for(var n = 0; n < 60; n++){
@@ -118,18 +118,18 @@
   function posValue(plan, t){
     // the stretch and the contraction at time t (both pure)
     if(t <= 0) return { s: plan.s0, c: 0 };
-    if(t >= plan.birth){ var b = (t - plan.birth) / 2.0; return { s: lerp(1, 0, ramp(b, 0.25, 0.75)), c: lerp(0.4, 0, ramp(b, 0, 0.6)) }; }
+    if(t >= plan.birth){ var b = (t - plan.birth) / 1.6; return { s: lerp(1, 0, ramp(b, 0.55, 0.9)), c: lerp(0.4, 0, ramp(b, 0, 0.6)) }; }
     for(var i = 0; i < plan.cyc.length; i++){
       var y = plan.cyc[i]; if(t > y.t0 + y.D) continue;
       var u = (t - y.t0) / y.D;
-      var c = y.c * (ramp(u, FR.act, FR.peak) - 0.75 * ramp(u, FR.peak + 0.04, 1)) + (i ? plan.cyc[i - 1].c * 0.25 * (1 - ramp(u, 0, 0.3)) : 0);
+      var c = y.c * (ramp(u, FR.act - 0.04, FR.peak) - 0.75 * ramp(u, FR.peak + 0.04, 1)) + (i ? plan.cyc[i - 1].c * 0.25 * (1 - ramp(u, 0, 0.3)) : 0);
       return { s: lerp(y.s0, y.s1, ramp(u, FR.act + 0.02, FR.peak + 0.06)), c: Math.max(0, c) };
     }
     return { s: 1, c: 0.4 };
   }
   function posState(sc, plan, t){
     var v = posValue(plan, t), st = { kind: 'pos', run: plan, t: t, x: v.s, c: v.c };
-    st.done = t >= plan.end; st.born = t >= plan.birth ? clamp((t - plan.birth) / 1.4, 0, 1) : 0; st.birthing = t >= plan.birth;
+    st.done = t >= plan.end; st.born = t >= plan.birth ? clamp((t - plan.birth) / 1.6, 0, 1) : 0; st.birthing = t >= plan.birth;
     st.aff = []; st.effp = []; st.sens = 0; st.ctl = 0; st.eff = 0; st.k = 0; st.turn = 0;
     if(st.birthing){ st.k = 7; st.turn = plan.cyc.length - 1; return st; }
     for(var i = 0; i < plan.cyc.length; i++){
@@ -137,9 +137,9 @@
       var u = clamp((t - y.t0) / y.D, 0, 1), st0 = [0, FR.sens, FR.aff, FR.ctl, FR.eff, FR.act, FR.resp];
       st.turn = i; st.u = u;
       for(var j = 0; j < 7; j++) if(u >= st0[j]) st.k = j;
-      st.sens = ramp(u, FR.sens, FR.sens + 0.06) * (1 - ramp(u, FR.affEnd, FR.ctl + 0.1) * 0.6) * (0.5 + 0.5 * y.s0);
+      st.sens = ramp(u, FR.sens - 0.04, FR.sens + 0.04) * (1 - ramp(u, FR.affEnd, FR.ctl + 0.1) * 0.6) * (0.5 + 0.5 * y.s0);
       if(u >= FR.aff && u <= FR.affEnd) st.aff.push({ p: (u - FR.aff) / (FR.affEnd - FR.aff), a: 1 });
-      st.ctl = ramp(u, FR.ctl, FR.ctl + 0.04) * (1 - ramp(u, FR.effEnd, FR.effEnd + 0.1));
+      st.ctl = ramp(u, FR.ctl - 0.03, FR.ctl + 0.02) * (1 - ramp(u, FR.effEnd, FR.effEnd + 0.1));
       if(u >= FR.eff && u <= FR.effEnd) st.effp.push({ p: (u - FR.eff) / (FR.effEnd - FR.eff), a: 1 });
       st.eff = clamp(v.c, 0, 1);
       st.cyc = y;
@@ -154,7 +154,7 @@
   (function(){
     var LAY = {
       wide: { w: 1080, h: 540, g: { person: [520, 74, 1], mag: [856, 266, 1.1], therm: [392, 98, 1] }, mon: [20, 108, 330, 300], spread: { mon: -1, mag: 1 } },
-      tall: { w: 600, h: 660, g: { person: [168, 70, 0.78], mag: [452, 204, 0.8], therm: [52, 78, 0.95] }, mon: [14, 452, 572, 196] }
+      tall: { w: 600, h: 620, g: { person: [168, 70, 0.78], mag: [452, 204, 0.8], therm: [52, 104, 0.9] }, mon: [14, 432, 572, 178] }
     };
     var MIN = 35.5, MAX = 38.5, SET = 37;
     // the patch of skin on the forearm (person) that the magnifier shows; the nerves between it and the brain
@@ -336,15 +336,15 @@
         var L = E.L, k = st.k, hot = st.dir === 'up', out = [], idle = k < 0;
         var M = function(p){ return T(L, [p[0], p[1], 'mag']); }, B = function(p){ return T(L, [p[0], p[1], 'person']); };
         if(idle || k === 0) out.push({ key: 'skin', text: 'Skin', role: 'tok', at: M([-130, -76]), side: ['u', 'r'] });
-        if(k >= 1 && k <= 2) out.push({ key: 'nend', text: 'Nerve ending', role: 'aff', at: M([-34, -70]), side: ['u', 'l', 'r'], strong: k === 1 });
+        if(k >= 1 && k <= 2 && st.sens > 0.05) out.push({ key: 'nend', text: 'Nerve ending', role: 'aff', at: M([-34, -70]), side: ['u', 'l', 'r'], strong: k === 1 });
         if(k === 2) out.push({ key: 'affn', text: 'Sensory nerve', role: 'aff', at: B([90, 150]), side: ['r', 'l'], strong: true });
         out.push({ key: 'brain', text: k >= 3 ? 'Hypothalamus' : 'Brain', role: k >= 3 ? 'ctl' : 'tok', at: B([0, 5]), side: ['r', 'l', 'u'], strong: k === 3, lead: true, away: 2.4 });
         if(k === 4) out.push({ key: 'effn', text: 'Efferent nerve', role: 'eff', at: B([-72, 100]), side: ['l', 'u'], strong: true });
-        if(k >= 5 && !st.done && st.eff > 0.08){
+        if(k >= 5 && !st.done && st.eff > 0.15){
           if(hot){ out.push({ key: 'gland', text: 'Sweat gland', role: 'eff', at: M([70, 30]), side: ['d', 'r'], strong: k === 5 }); out.push({ key: 'art', text: 'Arteriole widens', role: 'eff', at: M([110, -14]), side: ['d', 'u'] }); }
           else { out.push({ key: 'mus', text: 'Muscle shivers', role: 'eff', at: M([60, 140]), side: ['u', 'd'], strong: k === 5 }); out.push({ key: 'art', text: 'Arteriole narrows', role: 'eff', at: M([110, -14]), side: ['d', 'u'] }); }
         }
-        if(k === 6 && !st.done && st.eff > 0.08) out.push({ key: 'resp', text: hot ? 'Heat lost' : 'Heat kept, made', role: hot ? 'heat' : 'heat', at: hot ? M([-60, -140]) : M([-100, 140]), side: ['r', 'u', 'd'], strong: true });
+        if(k === 6 && !st.done && st.eff > 0.15) out.push({ key: 'resp', text: hot ? 'Heat lost' : 'Heat kept, made', role: hot ? 'heat' : 'heat', at: hot ? M([-60, -140]) : M([-100, 140]), side: ['r', 'u', 'd'], strong: true });
         return out;
       },
       words: function(st){
@@ -372,7 +372,7 @@
   (function(){
     var LAY = {
       wide: { w: 1080, h: 540, g: { person: [520, 76, 1], mag: [858, 268, 1.1], therm: [392, 104, 1] }, mon: [20, 108, 330, 300], spread: { mon: -1, mag: 1 } },
-      tall: { w: 600, h: 660, g: { person: [168, 72, 0.8], mag: [452, 206, 0.84], therm: [52, 80, 0.95] }, mon: [14, 452, 572, 196] }
+      tall: { w: 600, h: 620, g: { person: [168, 70, 0.78], mag: [452, 206, 0.84], therm: [52, 104, 0.9] }, mon: [14, 432, 572, 178] }
     };
     var MIN = 55, MAX = 160, SET = 88;
     function meterY(v){ return 300 * (MAX - v) / (MAX - MIN); }
@@ -565,11 +565,11 @@
         if(k >= 1 && k <= 3) out.push({ key: 'cells', text: hi ? 'Beta cells' : 'Alpha cells', role: hi ? 'ins' : 'gcg', at: hi ? M([-6, -46]) : M([-76, -20]), side: ['u', 'l', 'r'], strong: k === 1 || k === 3 });
         if(k === 2) out.push({ key: 'same', text: 'No nerve: same cells', role: 'aff', at: hi ? M([16, 30]) : M([72, 56]), side: ['d', 'r'], strong: true });
         if(k === 3 || k === 4) out.push({ key: 'horm', text: hi ? 'Insulin' : 'Glucagon', role: hi ? 'ins' : 'gcg', at: k === 3 ? M([80, -6]) : (st.effp.length ? (hi ? R0(E).mus : R0(E).liver).at(clamp((st.effp[0].p - 0.3) / 0.7, 0, 1)) : B([4, 214])), side: ['u', 'r', 'l'], strong: k === 4, lead: k === 4 });
-        if(k >= 5 && !st.done && st.eff > 0.08){
+        if(k >= 5 && !st.done && st.eff > 0.15){
           out.push({ key: 'liver', text: 'Liver', role: 'eff', at: B([-40, 150]), side: ['l', 'u'], strong: k === 5 });
           if(hi){ out.push({ key: 'mus', text: 'Muscle', role: 'eff', at: B([104, 166]), side: ['r', 'u'] }); out.push({ key: 'fat', text: 'Fat', role: 'eff', at: B([-50, 340]), side: ['l', 'd'] }); }
         }
-        if(k === 6 && !st.done && st.eff > 0.08) out.push({ key: 'resp', text: hi ? 'Glucose stored' : 'Glucose released', role: 'glu', at: B([-8, 186]), side: ['d', 'l', 'r'], strong: true });
+        if(k === 6 && !st.done && st.eff > 0.15) out.push({ key: 'resp', text: hi ? 'Glucose stored' : 'Glucose released', role: 'glu', at: B([-8, 186]), side: ['d', 'l', 'r'], strong: true });
         return out;
       },
       words: function(st){
@@ -599,7 +599,7 @@
   (function(){
     var LAY = {
       wide: { w: 1080, h: 540, g: { body: [590, 64, 1], mag: [220, 200, 1.02] }, mon: [790, 108, 270, 300], spread: { mon: 1, mag: -1 } },
-      tall: { w: 600, h: 660, g: { body: [404, 58, 0.78], mag: [150, 196, 0.86] }, mon: [14, 452, 572, 196] }
+      tall: { w: 600, h: 620, g: { body: [404, 58, 0.78], mag: [150, 196, 0.86] }, mon: [14, 432, 572, 178] }
     };
     // the woman in profile, facing right (body coordinates: the head's centre at 0,0)
     var CORD = [[-20, 46], [-28, 100], [-34, 160], [-36, 210], [-36, 252]];
@@ -753,8 +753,9 @@
         var L = E.L, k = st.k, out = [];
         var M = function(p){ return T(L, [p[0], p[1], 'mag']); }, B = function(p){ return T(L, [p[0], p[1], 'body']); };
         if(st.birthing){
-          if(st.born > 0.7) out.push({ key: 'baby', text: 'Baby born', role: 'str', at: B([150, 400]), side: ['u', 'r'], strong: true });
-          out.push({ key: 'cerv', text: 'No more stretch', role: 'str', at: B([51, 362]), side: ['r', 'l', 'd'] });
+          if(st.born >= 0.85) out.push({ key: 'baby', text: 'Baby born', role: 'str', at: B([150, 400]), side: ['u', 'r'], strong: true });
+          if(st.x < 0.5) out.push({ key: 'cerv', text: 'No more stretch', role: 'str', at: B([51, 362]), side: ['r', 'l', 'd'] });
+          else out.push({ key: 'cerv', text: 'Head passes', role: 'str', at: B([51, 362]), side: ['r', 'l', 'd'], strong: true });
           return out;
         }
         if(k <= 0 || st.idle) out.push({ key: 'cerv', text: 'Cervix', role: 'str', at: B([51, 362]), side: ['r', 'l', 'd'], strong: k === 0 && !st.idle });
@@ -769,7 +770,8 @@
       },
       words: function(st){
         var k = st.k, turn = st.turn || 0;
-        if(st.birthing) return { pre: 'Ending:', parts: [{ t: 'Baby born', role: 'str' }, { t: 'no more stretch', role: 'str' }, { t: 'the loop stops' }] };
+        if(st.birthing && st.born < 0.85) return { pre: 'Ending:', parts: [{ t: 'Full stretch', role: 'str' }, { t: 'the head passes through', role: 'str' }] };
+        if(st.birthing) return { pre: 'Ending:', parts: [{ t: 'Baby born', role: 'str' }, { t: st.x < 0.5 ? 'no more stretch' : 'stretch falling', role: 'str' }, { t: 'the loop stops' }] };
         switch(k){
           case 0: return { pre: turn ? 'Turn ' + (turn + 1) + ':' : 'Stimulus:', parts: [{ t: turn ? 'More stretch on the cervix' : 'Head stretches the cervix', role: 'str' }] };
           case 1: return { pre: 'Sensor:', parts: [{ t: 'Stretch sensors fire', role: 'aff' }] };
@@ -834,7 +836,7 @@
       Object.keys(L.spread || {}).forEach(function(n){ if(n === 'mon') L.mon[0] += L.spread[n] * sh; else L.g[n][0] += L.spread[n] * sh; });
       L.id = id; E.L = L; E.W = L.w + ex; E.H = L.h; E.X0 = -ex / 2;
       svg.setAttribute('viewBox', f1(E.X0) + ' 0 ' + E.W + ' ' + L.h); pic.setAttribute('data-lay', id);
-      pic.style.maxWidth = id === 'wide' ? 'calc((100vh - 330px) * ' + (E.W / E.H).toFixed(4) + ')' : 'max(320px, calc((100vh - 330px) * ' + (L.w / L.h).toFixed(4) + '))';
+      pic.style.maxWidth = id === 'wide' ? 'calc((100vh - 330px) * ' + (E.W / E.H).toFixed(4) + ')' : 'max(320px, calc((100vh - 358px) * ' + (L.w / L.h).toFixed(4) + '))';
     }
     function metrics(){ var k = scale() || 1; E.k = k; E.fs = clamp((k < 0.8 ? 12.5 : 13.5) / k, 10, 27); E.fsm = clamp(11.8 / k, 8, 24); E.gap = 6 / k; }
 
@@ -1035,10 +1037,11 @@
     /* ---- the line under the picture: the seven parts, the current one named with the loop's own words */
     var railKey = '';
     function railPaint(st){
-      var l = loopFor(st), k = st.k, key = cur.id + '|' + k + '|' + (st.turn || 0) + '|' + !!st.done + '|' + !!st.birthing + '|' + (l && l.id);
+      var l = loopFor(st), k = st.k, key = cur.id + '|' + k + '|' + (st.turn || 0) + '|' + !!st.done + '|' + !!st.birthing + '|' + (st.born >= 0.85) + '|' + (l && l.id);
       if(key === railKey) return; railKey = key;
       dots.forEach(function(d, i){ d.classList.toggle('is-on', k >= 0 && (i <= k || st.done || st.birthing)); d.classList.toggle('is-cur', k === i && !st.done); });
       if(k < 0){ railN.textContent = 'Seven parts'; railT.textContent = 'each lights as the signal reaches it'; return; }
+      if(st.birthing && st.born < 0.85){ railN.textContent = 'Birth'; railT.textContent = 'The head passes through the cervix.'; return; }
       if(st.birthing){ railN.textContent = 'Loop ends'; railT.textContent = l.live && l.live.end ? l.live.end : 'Birth ends the loop.'; return; }
       if(st.done){ railN.textContent = 'All 7 parts'; railT.textContent = 'back near the set point'; return; }
       railN.textContent = (st.turn ? 'Turn ' + (st.turn + 1) + ' · ' : '') + 'Part ' + (k + 1) + ' of 7';
@@ -1156,7 +1159,7 @@
       }
       var LL = sc.labels(st, E);
       // the value itself, at the column (temperature and glucose)
-      if(sc.kind === 'neg'){ var tp = T(E.L, [0, -12, 'therm']); LL.unshift({ key: 'val', text: sc.fmt(st.x), role: sc.valRole(st.x), at: tp, fixed: true, strong: true }); }
+      if(sc.kind === 'neg'){ var tp = T(E.L, [0, 0, 'therm']); tp[1] -= 30 / (E.k || 1); LL.unshift({ key: 'val', text: sc.fmt(st.x), role: sc.valRole(st.x), at: tp, fixed: true, strong: true }); }
       placeLabels(LL, st);
       railPaint(st);
       var w = words(st), key = JSON.stringify(w.parts) + w.pre + (st.done ? '|end' : '') + (st.after ? '|after' : '');
