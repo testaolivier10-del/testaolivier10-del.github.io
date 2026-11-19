@@ -157,7 +157,7 @@
   (function(){
     var LAY = {
       wide: { w: 1080, h: 540, g: { person: [520, 74, 1], mag: [856, 266, 1.1], therm: [392, 98, 1] }, mon: [20, 108, 330, 300], spread: { mon: -1, mag: 1 } },
-      tall: { w: 600, h: 620, g: { person: [168, 70, 0.78], mag: [452, 204, 0.8], therm: [52, 104, 0.9] }, mon: [14, 432, 572, 178] }
+      tall: { w: 600, h: 620, g: { person: [172, 70, 0.78], mag: [454, 204, 0.8], therm: [62, 104, 0.9] }, mon: [14, 432, 572, 178] }
     };
     var MIN = 35.5, MAX = 38.5, SET = 37;
     // the patch of skin on the forearm (person) that the magnifier shows; the nerves between it and the brain
@@ -251,7 +251,7 @@
       var fs = E.fsm / E.L.g.therm[2], s = '<rect class="fe-tband" x="-16" y="' + f1(thermY(37.5)) + '" width="32" height="' + f1(thermY(36.5) - thermY(37.5)) + '" rx="4"/>';
       s += '<rect class="fe-ttube" x="-10" y="-8" width="20" height="324" rx="10"/><circle class="fe-tbulb" cx="0" cy="326" r="20"/>';
       s += '<rect class="fe-tcol" data-r="tcol" x="-5" y="0" width="10" height="320" rx="5"/><circle class="fe-tbulbc" cx="0" cy="326" r="14"/>';
-      for(var v = 36; v <= 38; v += 0.5){ var y = thermY(v), big = v % 1 === 0; s += '<path class="fe-ttick' + (v === SET ? ' is-set' : '') + '" d="M-10,' + f1(y) + 'h' + (big ? -12 : -7) + '"/>'; if(big) s += '<text class="fe-ttxt' + (v === SET ? ' is-set' : '') + '" x="-26" y="' + f1(y) + '" dy="0.35em" style="font-size:' + f1(fs) + 'px">' + v + '</text>'; }
+      for(var v = 36; v <= 38; v += 0.5){ var y = thermY(v), big = v % 1 === 0; s += '<path class="fe-ttick' + (v === SET ? ' is-set' : '') + '" d="M-10,' + f1(y) + 'h' + (big ? -21 : -9) + '"/>'; if(big) s += '<text class="fe-ttxt' + (v === SET ? ' is-set' : '') + '" x="-37" y="' + f1(y) + '" dy="0.35em" style="font-size:' + f1(fs) + 'px">' + v + '</text>'; }
       return s;
     }
     SCENES.push({
@@ -341,7 +341,7 @@
         if(idle || k === 0) out.push({ key: 'skin', text: 'Skin', role: 'tok', at: M([-130, -76]), side: ['u', 'r'] });
         if(k >= 1 && k <= 2 && st.sens > 0.05) out.push({ key: 'nend', text: 'Nerve ending', role: 'aff', at: M([-34, -70]), side: ['u', 'l', 'r'], strong: k === 1 });
         if(k === 2) out.push({ key: 'affn', text: 'Sensory nerve', role: 'aff', at: B([90, 150]), side: ['r', 'l'], strong: true });
-        out.push({ key: 'brain', text: k >= 3 ? 'Hypothalamus' : 'Brain', role: k >= 3 ? 'ctl' : 'tok', at: B([0, 5]), side: ['r', 'l', 'u'], strong: k === 3, lead: true, away: 2.4 });
+        out.push({ key: 'brain', text: k >= 3 ? 'Hypothalamus' : 'Brain', role: k >= 3 ? 'ctl' : 'tok', at: B([0, 5]), side: ['r', 'l', 'u'], strong: k === 3, lead: true, away: 3.4 });
         if(k === 4) out.push({ key: 'effn', text: 'Efferent nerve', role: 'eff', at: B([-72, 100]), side: ['l', 'u'], strong: true });
         if(k >= 5 && !st.done && st.eff > 0.15){
           if(hot){ out.push({ key: 'gland', text: 'Sweat gland', role: 'eff', at: M([70, 30]), side: ['d', 'r'], strong: k === 5 }); out.push({ key: 'art', text: 'Arteriole widens', role: 'eff', at: M([110, -14]), side: ['d', 'u'] }); }
@@ -375,7 +375,7 @@
   (function(){
     var LAY = {
       wide: { w: 1080, h: 540, g: { person: [520, 76, 1], mag: [858, 268, 1.1], therm: [392, 104, 1] }, mon: [20, 108, 330, 300], spread: { mon: -1, mag: 1 } },
-      tall: { w: 600, h: 620, g: { person: [168, 70, 0.78], mag: [452, 206, 0.84], therm: [52, 104, 0.9] }, mon: [14, 432, 572, 178] }
+      tall: { w: 600, h: 620, g: { person: [178, 70, 0.78], mag: [456, 206, 0.82], therm: [70, 104, 0.9] }, mon: [14, 432, 572, 178] }
     };
     var MIN = 55, MAX = 160, SET = 88;
     function meterY(v){ return 300 * (MAX - v) / (MAX - MIN); }
@@ -480,7 +480,7 @@
         // the meter: a scale with the normal fasting range shaded and the set point marked
         h += '<rect class="fe-mband" x="-16" y="' + f1(meterY(99)) + '" width="32" height="' + f1(meterY(70) - meterY(99)) + '" rx="4"/>';
         h += '<rect class="fe-mtube" x="-10" y="-8" width="20" height="316" rx="10"/><rect class="fe-mcol" data-r="mcol" x="-5" y="0" width="10" height="300" rx="5"/>';
-        [60, 70, 80, 88, 100, 120, 140, 160].forEach(function(v){ var y = meterY(v), lab = v === 70 || v === 100 || v === 140; h += '<path class="fe-ttick' + (v === SET ? ' is-set' : '') + '" d="M-10,' + f1(y) + 'h' + (lab ? -12 : -7) + '"/>'; if(lab) h += '<text class="fe-ttxt" x="-26" y="' + f1(y) + '" dy="0.35em" style="font-size:' + f1(fs) + 'px">' + v + '</text>'; });
+        [60, 70, 80, 88, 100, 120, 140, 160].forEach(function(v){ var y = meterY(v), lab = v === 70 || v === 100 || v === 140; h += '<path class="fe-ttick' + (v === SET ? ' is-set' : '') + '" d="M-10,' + f1(y) + 'h' + (lab ? -21 : -9) + '"/>'; if(lab) h += '<text class="fe-ttxt" x="-37" y="' + f1(y) + '" dy="0.35em" style="font-size:' + f1(fs) + 'px">' + v + '</text>'; });
         R.meter.innerHTML = h; R.mcol = R.meter.querySelector('[data-r="mcol"]');
         var g2 = '';
         SLOTS_G.forEach(function(p){ var q = T(L, [p[0], p[1], 'person']), rr = 5.2 * L.g.person[2]; g2 += '<path class="fe-gmol" d="' + hexP(q[0], q[1], rr) + '"/>'; });

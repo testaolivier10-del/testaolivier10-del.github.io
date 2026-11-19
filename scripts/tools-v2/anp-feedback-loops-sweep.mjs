@@ -108,6 +108,7 @@ for (const ws of WIDTHS) {
         }
         for (let i = 0; i < boxes.length; i++) for (let j = i + 1; j < boxes.length; j++) {
           const A = boxes[i], B = boxes[j];
+          if ((A.knob && B.num) || (B.knob && A.num)) { const a = A.q, b = B.q; if (a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top) out.over.push(A.n + ' / ' + B.n); continue; }
           if (!/^label/.test(A.n) && !/^label/.test(B.n)) continue;   // only labels against everything
           if ((A.mon && B.num) || (B.mon && A.num)) continue;
           const a = A.q, b = B.q, g = 4;
@@ -117,6 +118,8 @@ for (const ws of WIDTHS) {
         const tx = [...svgEl.querySelectorAll('.fe-mon text, .fe-ttxt')].map((t) => ({ t: t.textContent, q: t.getBoundingClientRect(), mon: !!t.closest('.fe-mon') })).filter((x) => x.q.width);
         for (let i = 0; i < tx.length; i++) for (let j = i + 1; j < tx.length; j++) { const a = tx[i].q, b = tx[j].q; if (a.left < b.right + 2 && a.right > b.left - 2 && a.top < b.bottom && a.bottom > b.top) out.over.push('text ' + tx[i].t + ' / ' + tx[j].t); }
         const mb = svgEl.querySelector('.fe-mbez'); if (mb) { const m = mb.getBoundingClientRect(); tx.filter((x) => x.mon).forEach((x) => { if (x.q.left < m.left || x.q.right > m.right || x.q.top < m.top || x.q.bottom > m.bottom) { if (x.q.top >= m.top - 1 && x.q.top <= m.bottom) out.clip.push('monitor text ' + x.t); } }); }
+        // every drawn word and number is inside the picture
+        svgEl.querySelectorAll('text').forEach((t) => { const q = t.getBoundingClientRect(); if (q.width && t.textContent.trim() && (q.left < pic.left - 0.5 || q.right > pic.right + 0.5 || q.top < pic.top - 0.5 || q.bottom > pic.bottom + 0.5)) out.clip.push('text ' + t.textContent.trim()); });
         // smallest rendered text: every svg text and the words on the stage
         svgEl.querySelectorAll('text').forEach((t) => { const fs = parseFloat(getComputedStyle(t).fontSize) * (svgEl.getBoundingClientRect().width / svgEl.viewBox.baseVal.width); if (t.textContent.trim() && fs < 10.95) out.small.push(t.textContent.trim().slice(0, 18) + ' ' + fs.toFixed(1)); });
         document.querySelectorAll('.fe-rail span, .fe .tk2-cause *, .fe .tk2-tab *, .fe .tk2-head *').forEach((e) => { if (e.offsetWidth && e.textContent.trim() && !e.children.length) { const fs = parseFloat(getComputedStyle(e).fontSize); if (fs < 10.95) out.small.push(e.textContent.trim().slice(0, 18) + ' ' + fs); } });
