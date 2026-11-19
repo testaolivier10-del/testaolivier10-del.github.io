@@ -90,15 +90,23 @@ One colour per idea, everywhere: energy gold, heat vermillion (Okabe-Ito), a rem
 | Biomass and numbers views, pond and forest ecosystems, log or to scale widths | "?" of chapter 1: the three pyramids of the three ecosystems as tables, with the inverted ones named; Test yourself keeps the inverted pyramid drills |
 | Food web view (grassland, pond, forest) | Chapter 3 (grassland); the pond and forest webs stay in the Test yourself drills |
 | The "Every level" table | "?" of chapter 1 |
+| The food web's reason line per species (`respond().why`, e.g. why a species dies out) | The cause line names the direct effects; "?" of chapter 3 lists every changed species with its reason for the current removal |
+| "Energy flows one way: heat cannot be recycled into food" | "?" of chapter 1 ("Energy flows one way") |
 
-## Decisions made for the owner
+## Decisions made for the owner (the same 9 as `docs/tools-v2-owner-log.md`)
 1. Three chapters (10% rule, Eat lower, Food web), each its own idea and control; the old four views and three
    ecosystems are not in Explore.
-2. Explore fixes the exam's 10% and the grass's 50% respiration; Sunlight is the only second control.
+2. Explore fixes the exam's 10% and the grass's 50% respiration; Sunlight (10,000 to 30,000, was 2,000 to 40,000) is
+   the only second control.
 3. Chapter 2 is new: one hectare of corn, people fed on grain against beef, with real yields and the 10% rule.
-4. The pond and forest leave Explore (their pyramids are tables in "?"; their webs stay in the drills).
-5. Tiers of the pyramid are drawn in equal steps (not to scale); the heat and the gold at each step are on one
+4. Biomass and numbers pyramids, the pond and the forest are tables in "?" of chapter 1; their webs stay in the drills.
+5. Tiers of the pyramid are drawn in equal steps (not to scale); at each step the heat and the gold are on one
    measure; "?" says the real top would be a sliver.
+6. The animals in a tier are not counts; "?" says a numbers pyramid can be inverted.
+7. Food web: indirect, less certain effects show as "Maybe fewer"; the cause line names only the direct ones.
+8. Hub lede and About text reworded for the new Explore; title, description and URL unchanged.
+9. The beef band is drawn at least 0.6 px wide while a cow is drawn (review round 1): below about 15% to cattle
+   the drawn beef is wider than 10% of the cattle band, so the 9 to 1 is exact only above that.
 
 ## Build notes (2026-11-18)
 - Files: `environmental-science/assets/tools/energy-flow.js` (`explore()` rewritten on the kit, `K.on(s)` as the
@@ -139,3 +147,29 @@ sheet: `/mnt/user-data/outputs/apenv-energy-flow-v2/shots/` and `.../sweep/`; pr
 - Chapter 2 at 10% to cattle draws no beef band (0.2 px, under the drawn minimum) while the heat plume shows.
 - The food web's tap targets are eight soft rings (the kit's tap look with the hand badges hidden): clear, but many.
 - At 1440 the people in chapter 2 are small next to the field.
+
+## Review round 1 (2026-11-18, BLOCK; `/home/claude/review-apenv-energy-flow/REVIEW.md`)
+The branch was brought onto the current `claude/tools-v2-all` with a merge commit (a force push after a rebase was
+refused here): the collecting branch's `check-tool-use.mjs` kept, both sides of the docs tables kept.
+| Finding | Fix |
+|---|---|
+| Must 1: cause line three rows at 360 on the first step | Shorter parts at every level ("10,000 kcal → × 0.1 + 90% heat → 1,000 kcal grasshoppers"; "half to heat" at the grass). The sweep has the grass and the first step at 20,000 and 30,000 sunlight; every chain is two rows (70 px) at 360 to 600 |
+| Must 2: the knob covers "90% heat" and "10% on" | Both placed from the knob's drawn box: "90% heat" left of the wisps and below the knob, "10% on" left of the knob in the sky (right of the stream under the knob when the sky is too narrow). The sweep checks every visible knob against every label |
+| Must 3: the kit's dashed groove over the gold stream | Hidden for this knob only (`.efa-up`); the stream and the slope are its track |
+| Must 4: the grass step not on one measure | The stored stream leaving the grass is exactly as wide as the 5 respiration wisps together; the pool follows it; "?" says so. Swept at every width and state |
+| Must 5: Snakes and Hawks empty on phones | A narrow tier draws one animal right of the stream and knob, sized from the tier; the sweep checks every tier has an animal |
+| Should: no beef band at low shares | 0.6 px minimum while a cow is drawn (decision 9); swept |
+| Should: name and kcal 1 px apart | 4 px or more, swept |
+| Should: cues | Chapter 1 "Drag up" sits right of the knob, below the grass label on phones; chapter 2 below the knob; chapter 3 below the grasshoppers' name, covering no animal. Swept: cues against labels and animals |
+| Should: the first visit highlight stayed on one animal | Every web tap clears it (the key is now on the grasshoppers, the animal the cue names) |
+| Should: small people and cows at 768 and 1440 | Rows use the town's height (people about 47 px at 768, 65 px at 1440), the feedlot is taller; "N people fed" sits above the houses |
+| Should: a full rebuild per frame | The plants and animals are built once per layout and a frame only changes their opacity or transform; the moving parts (streams, wisps, bands, pills, arrows) draw on their own layer over the scene, which is never repainted while they move; the tier labels rebuild only when they change. CPU x4, machine load about 5.5 on 2 cores: median 16.7 ms everywhere; p95 33 ms at 390 and 33 to 50 ms at 1440 (two runs each) |
+| Should: "Grass are producers" | "Grass is a producer." |
+| Should: brief and owner log counts | The same 9 decisions in both |
+| Should: "What moved" missing two items | The per species reason lines are in "?" of chapter 3 for the current removal; "energy flows one way" is in "?" of chapter 1 |
+| Should: chapter 2 "?" heat only | "as heat and waste" |
+
+Rechecked: sweep one width per process, 17 chapter 1 to 3 states at 10 widths, dark at 390, 768, 1440: **22,111 passed,
+0 failed**. Playwright (390 real touch, 768, 1440, light and dark, reduced motion, `?seed=`): 113 passed; a drill wrong
+then right. `node --test scripts/test/apenv-*.test.mjs` 186 pass, content and build checks, `check-site`,
+`check-weight`. Preview and shots regenerated.

@@ -98,3 +98,4 @@ in each tool's brief.
 | 2026-11-18 | APES Energy flow | The animals in a pyramid tier are not counts; "?" says a numbers pyramid can be inverted | Biology review: counts drawn as energy taught a wrong rule | "?" of chapter 1 |
 | 2026-11-18 | APES Energy flow | Food web: indirect, less certain effects show as "Maybe fewer"; the cause line names only the direct ones | Keeps the cause line two rows on a phone | `causeWeb()` |
 | 2026-11-18 | APES Energy flow | Hub lede and the About text reworded for the new Explore; title, description and URL unchanged | They described the old views | `environmental-science/data/pages.json`, the tool's data |
+| 2026-11-18 | APES Energy flow | The beef band is drawn at least 0.6 px wide while a cow is drawn | Review round 1: a cow with nothing leaving it read as "beef is zero" | `dynEat()`; below about 15% to cattle the drawn 9 to 1 is not exact |

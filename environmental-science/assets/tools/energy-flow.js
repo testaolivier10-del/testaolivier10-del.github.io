@@ -412,7 +412,7 @@
     function CHAIN_WEB(){ return EF.webOf('grassland'); }
     var cues = {
       chain: K.cue(layer, { key: 'apenv-ef-chain', text: 'Drag up', side: 'right', at: function(){ return G && G.track ? [G.track[0] + knobR + 4, G.track[1] + (G.ph ? 26 : 0)] : [0, 0]; } }),
-      eat: K.cue(layer, { key: 'apenv-ef-eat', text: 'Drag to feed cattle', side: 'below', at: function(){ return G && G.strack ? [G.strack[0], G.strack[1] + 24] : [0, 0]; } }),
+      eat: K.cue(layer, { key: 'apenv-ef-eat', text: 'Drag to feed cattle', side: 'below', at: function(){ return G && G.strack ? [G.strack[0], G.strack[1] + knobR + 2] : [0, 0]; } }),
       web: K.cue(layer, { key: 'apenv-ef-web', text: 'Tap an animal', side: 'below', at: function(){ var p = G && G.pos && G.pos.grasshopper; return p ? [p.x, p.y + G.r + G.fs * 1.9 + 2] : [0, 0]; } })
     };
     function used(){ Object.keys(cues).forEach(function(k){ if(k === S.ch && cues[k].active()) cues[k].hide(true); }); }
@@ -663,7 +663,7 @@
         g.gy = gy; g.field = [16, gy, W * 0.36, H - 16]; g.lot = [W * 0.42, gy, W * 0.62, gy + (H - gy) * 0.72]; g.town = [W * 0.66, gy - 10, W - 16, H - 12];
         g.B = Math.min(40, H * 0.07); g.sun = [W * 0.07, H * 0.13, Math.min(28, H * 0.05)];
         g.out = [W * 0.36 + 4, gy + 30];     // where the harvest leaves the field
-        g.strack = [g.field[0] + 40, H - 34, g.field[2] - 40, H - 34];
+        g.strack = [g.field[0] + 40, H - 96, g.field[2] - 40, H - 96];
       } else {
         var gy1 = H * 0.3;
         g.gy = gy1; g.field = [10, gy1, W * 0.52, gy1 + H * 0.22]; g.lot = [W * 0.6, gy1, W - 10, gy1 + H * 0.15]; g.town = [10, H * 0.6, W - 10, H - 10];
@@ -739,7 +739,7 @@
       var shown = 0;
       people.forEach(function(v){ if(v > 0.5) shown++; });
       g.shown = shown;
-      var tp = pill(g.ph ? (Tn[0] + Tn[2]) / 2 : (Tn[0] + Tn[2]) / 2, g.gy + 24, shown + ' people fed', 'is-ink', fs);
+      var tp = pill(g.ph ? (Tn[0] + Tn[2]) / 2 : Tn[0] + (Tn[2] - Tn[0]) * 0.67, g.gy - Math.min(70, (Tn[2] - Tn[0]) / 4.4) * 1.45 - 14, shown + ' people fed', 'is-ink', fs);
       if(!g.ph) out.push(tp.svg); else out.push(pill(W2(g) - 12, g.pplTop - 18, shown + ' people fed', 'is-ink', fs, 'end').svg);
       return out.join('');
     }
