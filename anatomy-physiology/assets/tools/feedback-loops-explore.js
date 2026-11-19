@@ -38,6 +38,9 @@
   var SLOTS = ['stimulus', 'sensor', 'afferent', 'control', 'efferent', 'effector', 'response'];
   var NAMES = ['Stimulus', 'Sensor', 'Afferent pathway', 'Control center', 'Efferent pathway', 'Effector', 'Response'];
   var ROLE = ['stim', 'aff', 'aff', 'ctl', 'eff', 'eff', 'resp'];
+  var PART_SAY = ['a change in the regulated variable', 'a sensory receptor that detects the change', 'carries the information toward the control center',
+    'compares it with the set point and sends out a command', 'carries the command away from the control center', 'the muscle, gland or cells that act',
+    'what the effector does to the variable; it feeds back on the stimulus'];
 
   /* ------------------------------------------------------------------ layouts */
   /* Each screen has two compositions of the same drawn parts: "wide" (2:1, a desktop stage) and "tall" (a phone or an
@@ -1089,6 +1092,17 @@
         onInput: function(v){ hideCue(true); tourDid('drag'); dragTo(v); },
         onEnd: function(v){ release(v); } });
     }
+    // a press on the thermometer or meter away from the knob takes the value there (and the drag goes on); a press on
+    // the baby's head grabs it
+    svg.addEventListener('pointerdown', function(e){
+      if(!handle || handle.el.hidden || (e.pointerType === 'mouse' && e.button !== 0)) return;
+      var r = svg.getBoundingClientRect(), k = scale(), x = (e.clientX - r.left) / k + (E.X0 || 0), y = (e.clientY - r.top) / k, g0 = E.L.g.therm, hit = false;
+      if(g0) hit = Math.abs(x - g0[0]) < 24 * g0[2] && y > g0[1] - 10 * g0[2] && y < g0[1] + 312 * g0[2];
+      else { var hp = knobPos(lastSt || state()); hit = Math.hypot(x - hp[0], y - hp[1]) < 34 * E.L.g.body[2]; }
+      if(!hit) return;
+      hideCue(true); tourDid('drag');
+      handle.grab(e);
+    });
     var lastSt = null;
     function startDrag(){
       var sc = cur;
@@ -1230,6 +1244,7 @@
           : 'In negative feedback the response moves the variable the opposite way to the stimulus, back toward the set point. As the variable returns, the sensors signal less and the effectors ease off, so the loop switches itself off.') + '</p>' +
         '<p class="ls-sub">Drag the ' + esc(sc.thing) + (sc.kind === 'pos' ? ' down' : ' up or down') + ', or use the arrow keys on it, then let go. The seven parts light in order as the signal reaches them; the line under the picture names each one. The monitor draws the value against time. Pictures show the idea, not the real timing or scale.</p>' +
         '<p class="ls-sub">' + sc.note + '</p>' +
+        '<h3 class="ls-h">The seven parts</h3><ol class="fe-parts">' + NAMES.map(function(n, i){ return '<li>' + esc(n) + ': ' + esc(PART_SAY[i]) + '</li>'; }).join('') + '</ol>' +
         '<p>' + ids.map(function(id){ var l = loop(id); return '<button type="button" class="btn-outline fe-ref-q" data-l="' + esc(id) + '">Test yourself: ' + esc(l.title) + '</button>'; }).join(' ') + '</p>' +
         (t && t.built ? '<p>Topic: <a href="' + esc(B + 'lessons/' + t.id + '.html') + '">' + esc(t.title) + '</a> · <a href="' + esc(B + 'notes/' + t.id + '.html') + '">notes</a></p>' : '') +
         '<p><button type="button" class="tk2-link fe-ref-how">Show me how</button></p>';
@@ -1251,6 +1266,11 @@
     if(window.ResizeObserver){ var ro = new ResizeObserver(resized); ro.observe(stage); } else window.addEventListener('resize', resized);
     // leaving (Test yourself, "?", another tab, the page hidden) ends a run at once, so the screen comes back clean
     function hideNow(){ if(cur.run){ cur.t = endT(); finishRun(); } stopRaf(); dragging = false; }
+    // "?" open over the stage counts as leaving it
+    if(o.studio && o.studio.root && window.MutationObserver){
+      var wasSheet = false;
+      new MutationObserver(function(){ var on = o.studio.root.classList.contains('is-sheet'); if(on && !wasSheet) hideNow(); wasSheet = on; }).observe(o.studio.root, { attributes: true, attributeFilter: ['class'] });
+    }
     document.addEventListener('visibilitychange', function(){ if(document.hidden){ onScreen = false; hideNow(); } else onScreen = stage.offsetWidth > 0; });
 
     // first frame
