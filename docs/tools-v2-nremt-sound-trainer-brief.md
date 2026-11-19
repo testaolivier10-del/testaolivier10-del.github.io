@@ -210,3 +210,13 @@ chest piece never covers another spot); the exam tag right after the keys; point
 under the chest), and on the v2 path the old mode tabs, Sound button, "More options" box (with "Compare two sounds")
 and tap cue. The phone cause line keeps 90 px (a long cause pill wraps).
 Not taken: none. Still open: the live CORS trace of the Wikimedia clips (one look on the live site).
+Performance in this round: the scene is now two svg layers (the still chest and spots; the moving lens, strip and
+tubing), a generated sound renders one beat and loops it, and the cause line and the picture's screen reader name
+update only when they change; the lens repaints every other frame. Checks (2026-11-19): NREMT and content tests 112
+pass; `build-nremt-lessons --check`, `check-site`, `check-weight --check` OK. Sweep, one width per process, 360 to
+1920, light and dark, with the new checks (Normal plays at the base and at the trachea, the lens unnamed off the
+chest, the chest piece never over another spot, Test yourself svg text measured at 11 px or more): every width 0
+failed (1975 to 2026 checks each). `--frames`: all checks pass except the CPU x4 drag at 390 while the machine ran
+other builders' browsers (load average 10 to 12): measured back to back under that load, the first build gave p95
+66.6 ms at 390 and 50.0 at 1440, this one 66.8 and 33.4; on a quiet machine earlier in the round 16.8 and 33.3.
+Preview and shots regenerated in `/mnt/user-data/outputs/nremt-sound-trainer-v2/` (the normal clip inlined too).
