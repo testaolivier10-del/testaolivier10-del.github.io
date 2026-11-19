@@ -169,3 +169,11 @@ of the mnemonic just explored, so going back opens the same tab. General rule ke
 its stage hides. The sweep's `--frames` run now leaves mid letter on every tab and comes back (no error, nothing runs
 while hidden, the letter finished, layout checks pass): 173 passed, 0 failed; widths 360 (1276) and 1440 (1216) pass;
 the reviewer's `probe2.mjs 1440` shows no errors.
+
+## Recheck 2 (2026-11-18): PASS, one should fix, fixed
+
+Test yourself followed Explore's tab even after a glance (open `#m-cincinnati`, Explore, Test yourself landed on
+DCAP-BTLS). Now it switches the card only if the student changed tab or played a letter in Explore since Explore last
+showed (`onLetter` hook in `mnemonics.js`, an `acted` flag on the page); otherwise the card they were on stays. The
+sweep's `--frames` run checks a glance (from `#m-cincinnati` and `#test-m-apgar`), a letter and a tab change: 178
+passed, 0 failed (the glance checks fail on the old code); widths 360 (1276) and 1440 (1216) pass; NREMT tests 71 pass.

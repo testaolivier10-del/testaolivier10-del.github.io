@@ -14,7 +14,9 @@
    shows it; the cause line's last pill waits for the picture; every change animates (grow, fade, the hand moves
    in); reduced motion gets a short cross fade and the full result at once; the one cue never covers a key.
 
-     var ex = NremtMnemonics.build({ studio })   -> { stage, ref, tab(id?), tabOf(cardId), onTest(fn) }
+     var ex = NremtMnemonics.build({ studio, onTab(id, user), onLetter(tabId, i) })
+        -> { stage, ref, tab(id?), tabOf(cardId), hidden(), shown() }
+    onLetter fires on every letter the student plays (tap, keys, Next letter).
 
    The page (nremt/mnemonics.html) hands ex.stage and ex.ref to NremtStudio.kit2, with the old card screen as
    Test yourself. Medical content: checked against the course's notes and the sources in
@@ -539,6 +541,7 @@
     function go(i, focus, fromBelow){
       var t = T();
       if(i < 0 || i >= t.letters.length) return;
+      if(o && o.onLetter) o.onLetter(t.id, i);
       stopAll();
       // a letter still mid change finishes at once
       St.cur[t.id] = i;

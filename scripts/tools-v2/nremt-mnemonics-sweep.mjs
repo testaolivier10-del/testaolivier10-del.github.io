@@ -227,6 +227,26 @@ if (process.argv.includes('--frames')) {
     ok(!errs.length, `${w} leave mid letter: errors: ${errs.join(' | ')}`);
     await browser.close();
   }
+  // Test yourself follows Explore's mnemonic only when the student acted there (changed tab or played a letter);
+  // a glance at Explore keeps the card they were on (recheck 2 should fix)
+  { const { browser, page, errs } = await open(390, false, { noCue: true });
+    const btn = (t) => page.locator('.ls-root button').filter({ hasText: new RegExp('^\\s*' + t + '\\s*$') }).first();
+    const card = () => page.evaluate(() => { const c = [...document.querySelectorAll('.mn-stage .card')].filter(e => !e.hidden && e.offsetParent)[0]; return c ? c.id : null; });
+    const run = async (hash, act, want, msg) => {
+      await page.goto(URL0 + '#x'); await page.goto(URL0 + hash); await page.waitForSelector('.mn2-body image', { state: 'attached', timeout: 15000 }); await page.waitForTimeout(700);
+      const first = await card();
+      await btn('Explore').click(); await page.waitForTimeout(500);
+      if (act) await act(); await page.waitForTimeout(300);
+      await btn('Test yourself').click(); await page.waitForTimeout(500);
+      const got = await card();
+      ok(got === want, `${msg}: Test yourself shows ${got} (first ${first}), want ${want}`);
+    };
+    await run('#m-cincinnati', null, 'm-cincinnati', 'glance at Explore from #m-cincinnati');
+    await run('#m-cincinnati', () => page.click('.mn2-key[data-i="1"]'), 'm-dcap-btls', 'a letter played in Explore from #m-cincinnati');
+    await run('#m-cincinnati', () => tab(page, 'avpu'), 'm-avpu', 'tab changed in Explore from #m-cincinnati');
+    await run('#test-m-apgar', null, 'm-apgar', 'glance at Explore from #test-m-apgar');
+    ok(!errs.length, `glance at Explore: console errors: ${errs.join(' | ')}`);
+    await browser.close(); }
   // A phone 360 x 780: after a key, the cause line is on screen
   { const browser = await chromium.launch({ executablePath: EXE });
     const ctx = await browser.newContext({ viewport: { width: 360, height: 780 }, serviceWorkers: 'block', hasTouch: true });

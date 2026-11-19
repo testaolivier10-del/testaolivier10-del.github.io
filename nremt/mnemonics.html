@@ -499,7 +499,11 @@ document.addEventListener('DOMContentLoaded', function(){
   var k0 = cardAt(idOf(location.hash));
   go(k0 >= 0 ? k0 : 0, false);
   if(v2){
-    ex = window.NremtMnemonics.build({ studio: s, onTab: function(id, user){
+    // did the student do anything in Explore since it last showed (changed tab or played a letter)? Only then does
+    // Test yourself follow Explore's mnemonic; a glance at Explore keeps the card they were on
+    var acted = false;
+    ex = window.NremtMnemonics.build({ studio: s, onLetter: function(){ acted = true; }, onTab: function(id, user){
+      if(user) acted = true;
       if(user && history.replaceState){ var t = window.NremtMnemonics.TABS.filter(function(x){ return x.id === id; })[0]; history.replaceState(null, '', '#' + t.card); }
     } });
     window.NremtStudio.kit2(s, { stage: ex.stage, ref: ex.ref,
@@ -514,11 +518,12 @@ document.addEventListener('DOMContentLoaded', function(){
       onShow: function(m, part, user){
         mode = m;
         // back from Test yourself on one of the four: Explore opens on that mnemonic's tab
-        if(m === 'explore'){ var tb = user ? ex.tabOf(cards[cur].id) : null; if(tb && tb !== ex.tab()) ex.tab(tb); ex.shown(); }
+        if(m === 'explore'){ var tb = user ? ex.tabOf(cards[cur].id) : null; if(tb && tb !== ex.tab()) ex.tab(tb); acted = false; ex.shown(); }
         else {
-          // leaving Explore: its letter stops; Test yourself opens on the card of the mnemonic just explored
+          // leaving Explore: its letter stops; Test yourself opens on the card of the mnemonic just explored (only
+          // if the student changed tab or played a letter there)
           ex.hidden();
-          if(user){ var tc = cardAt(window.NremtMnemonics.TABS.filter(function(x){ return x.id === ex.tab(); })[0].card); if(tc >= 0) cur = tc; }
+          if(user && acted){ var tc = cardAt(window.NremtMnemonics.TABS.filter(function(x){ return x.id === ex.tab(); })[0].card); if(tc >= 0) cur = tc; }
           go(cur, !!user);
         }
       } });
