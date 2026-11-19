@@ -608,6 +608,7 @@
 
   /* ---------------------------------------------------------- tools v2 */
   function exploring(){ return !!(KIT && KIT.mode() === 'explore'); }
+  function at(u){ return /^data:/.test(u) ? u : BASE + u; }
   function startV2(){
     EX = window.AnpAnatomyExplore.build({ data: DATA, view: view, base: BASE, studio: ST,
       // "Quiz me on this region" in Explore's "?": a quiz round on that region
@@ -706,7 +707,8 @@
         content: content(), skin: !!pref('skin', false), hint: false,
         // v2: every change of look eases, and in Explore a tapped part glows where it is (the camera stays)
         fade: V2 && KIT ? 380 : 0, selectFly: !(V2 && KIT),
-        poster: V2 && KIT ? { light: BASE + 'figures/body3d/opening-light.webp', dark: BASE + 'figures/body3d/opening-dark.webp' } : null,
+        // the still of the opening view while the model loads (the one file preview inlines it as a data URL)
+        poster: V2 && KIT && DATA.explore && DATA.explore.poster ? { light: at(DATA.explore.poster.light), dark: at(DATA.explore.poster.dark) } : null,
         list: det.querySelector('.a3-list'),
         label: '3D model of the human body for anatomy. Drag to turn it; pick a structure by name in Filter and options to select it with the keyboard.',
         onSelect: function(key, c, part){

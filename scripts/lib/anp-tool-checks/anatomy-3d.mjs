@@ -125,6 +125,9 @@ export function check(data, map) {
   }
   for (const k of ['contains', 'missing']) if (data.model && /—/.test(data.model[k] || '')) E(`model.${k}: em dash`);
   const tabs = (data.explore && data.explore.tabs) || [];
+  const po = data.explore && data.explore.poster;
+  if (!po || !str(po.light) || !str(po.dark)) E('explore.poster: light and dark stills are required (the stage is never empty while the model loads)');
+  else for (const k of ['light', 'dark']) if (!existsSync(join(ROOT, 'anatomy-physiology', po[k]))) E(`explore.poster.${k}: ${po[k]} is missing`);
   if (!tabs.length) E('explore.tabs: at least one tab is required (tools v2 Explore)');
   const tabIds = new Set(), tabOf = {};
   for (const t of tabs) {

@@ -1,7 +1,11 @@
 {
  "about": "Content for the A&P 3D anatomy tool (anatomy-physiology/tools/anatomy-3d.html). Each structure is one or more meshes of the shared BodyParts3D model (assets/body3d/body3d.glb), named by FMA id; every name was checked against the BodyParts3D 4.0 concept tables and the FMA. parts: the meshes; partNames: what each mesh is when it is tapped; context: meshes drawn but never named because their identity could not be confirmed. Validated by scripts/lib/anp-tool-checks/anatomy-3d.mjs.",
  "explore": {
-  "about": "Explore (tools v2, docs/tools-v2-anp-anatomy-3d-brief.md): one tab per region. systems: the body systems in play on that tab (the rest stay as a faint ghost for orientation); first: the structure named when the tab first opens; frame (optional): the structures the camera frames, when not all of the tab's; dir (optional): the side the camera looks from ([x, y, z], default the front); purpose: the line above the picture. A structure's at is where it is, in a few words, for the line under the picture (at most 50 characters).",
+  "poster": {
+   "light": "figures/body3d/opening-light.webp",
+   "dark": "figures/body3d/opening-dark.webp"
+  },
+  "about": "Explore (tools v2, docs/tools-v2-anp-anatomy-3d-brief.md): one tab per region. systems: the body systems in play on that tab (the rest stay as a faint ghost for orientation); first: the structure named when the tab first opens; frame (optional): the structures the camera frames, when not all of the tab's; dir (optional): the side the camera looks from ([x, y, z], default the front); purpose: the line above the picture. poster: the still of the opening view shown while the model loads (light and dark). A structure's at is where it is, in a few words, for the line under the picture (at most 50 characters).",
   "tabs": [
    {
     "id": "skeleton",
