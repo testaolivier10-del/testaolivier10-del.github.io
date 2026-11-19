@@ -420,6 +420,13 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    a pea bed (complete dominance, `pea` in the data) so carriers are met; plants drawn as images, one `<use>` each;
    countable plants; signs sized from their text; the pollen row is part of the control; a frame time check
    (`scripts/tools-v2/hardy-weinberg-perf.mjs`).
+37. (2026-11-18, `docs/tools-v2-design-drills-brief.md`) **Design drills rebuilt to tools v2** (branch
+   `claude/tools-v2-design-drills`; review PASS 2026-11-18 (recheck 3), integrated on `claude/tools-v2-all`). The tool
+   had no free play; Explore is now a drawn bench of bean plants with two tabs: Fair test (tap what the test group
+   gets: water, plant food, warmth; every difference is ringed; the cause line says whether the difference can be
+   credited) and Sample size (plants per group, ±2 SE bars, New plants). Every drill of the 16 experiments is Test
+   yourself ("Experiment drills"), unchanged, with the same record ids. The kit adapter gained a part's own picture
+   (`stage` on a part). Still free. Decisions made for the owner are in `docs/tools-v2-owner-log.md`.
 
 ## 4. Map format (Phase 0)
 

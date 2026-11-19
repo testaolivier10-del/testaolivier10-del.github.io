@@ -1,5 +1,14 @@
-/* Experimental design and argumentation drills (science practices 3 and 6).
-   Scenarios are data (bio/data/tools/design-drills.json); each has five
+/* Experimental design and argumentation (AP Biology science practices 3 and 6), tools v2
+   (docs/tools-v2-standard.md; brief: docs/tools-v2-design-drills-brief.md), on the shared kit
+   (assets/course/tool-kit2.js) through the course adapter ApBioTools.studioKit2.
+   EXPLORE (free play, nothing graded; explore() below): a drawn bench of bean plants, a control group and a test
+   group. Tab "Fair test": tap what the test group gets (water, plant food, warmth); every difference between the
+   groups is ringed, the plants grow to the result, and the cause line says whether the difference can be credited.
+   Tab "Sample size": one knob for the plants per group, ±2 SE error bars, "New plants" for a new batch.
+   TEST YOURSELF ("Experiment drills", drillsPart() below): every drill of every experiment, unchanged.
+
+   The drills, as before:
+      Scenarios are data (bio/data/tools/design-drills.json); each has five
    drills, each made of rows the student answers with radio buttons and
    checks on its own:
      variables  independent and dependent variable (two rows)
@@ -36,7 +45,8 @@
   var SLUG = 'design-drills';
   var T = window.ApBioTools;
   if(!T) return;
-  T.mount(SLUG, function(app, data){
+  var EXP = null, CTX = null;
+  T.mount(SLUG, function(app, data, ctx){
     var esc = T.esc, gid = T.nid('dr');
     var drills = data.drills, scen = data.scenarios;
     if(!scen.length || !drills.length){ app.insertAdjacentHTML('beforeend', '<p class="bio-soon">These drills arrive with their units.</p>'); return; }
@@ -47,7 +57,7 @@
     var scSel = T.choiceSelect({ label: 'Scenario', options: scen.map(function(s, i){ return { value: s.id, label: (i + 1) + '. ' + s.title }; }), value: scen[0].id, onChange: function(v){ draw(v, true); } });
     var drSel = T.choiceSelect({ label: 'Drills', options: [{ value: '', label: 'All drills' }].concat(drills.map(function(d){ return { value: d.id, label: d.name }; })), value: '', onChange: function(v){ only = v; draw(scSel.value(), true); } });
     pick.appendChild(scSel.el); pick.appendChild(drSel.el);
-    T.stdPicker(scSel, { label: 'Scenario', count: false });
+    T.stdPicker(scSel, { label: 'Experiment', count: false, mode: 'quiz' });
     function shuffle(n){ var a = []; for(var i = 0; i < n; i++) a.push(i); for(var j = n - 1; j > 0; j--){ var k = Math.floor(Math.random() * (j + 1)); var t = a[j]; a[j] = a[k]; a[k] = t; } return a; }
     function topicOf(key){ return (data.partTopics || {})[key]; }
 
@@ -272,11 +282,29 @@
     function levels(D, fmtL, title, y, ty){
       var o = '', gw = ((D.R || 380) - (D.L || 20)) / D.n, narrow = gw < 60;
       y = y || (narrow ? 214 : 222);
+      var rn = narrow ? runs(D.lv.map(function(l, k){ return fmtL ? fmtL(l, k) : l; })) : null;
+      if(rn){
+        rn.forEach(function(r){ o += tx((gx(D.n, r.a, D.L, D.R) + gx(D.n, r.b, D.L, D.R)) / 2, y + 12, r.word, 'dk-lv'); });
+        D.lv.forEach(function(l, k){ o += tx(gx(D.n, k, D.L, D.R), y, rn.rest[k], 'dk-lv'); });
+        return o + tx(((D.L || 20) + (D.R || 380)) / 2, ty || y + 32, title || strip(D.cols[0]), 'dk-ax');
+      }
       D.lv.forEach(function(l, k){
         var x = gx(D.n, k, D.L, D.R), t = fmtL ? fmtL(l, k) : l, two = narrow && t.indexOf(' ') > 0;
         o += two ? '<text class="dk-lv" x="' + n1(x) + '" y="' + y + '" text-anchor="middle">' + esc(t.slice(0, t.indexOf(' '))) + '<tspan x="' + n1(x) + '" dy="12">' + esc(t.slice(t.indexOf(' ') + 1)) + '</tspan></text>' : tx(x, y, t, 'dk-lv');
       });
       return o + tx(((D.L || 20) + (D.R || 380)) / 2, ty || y + (narrow ? 32 : 20), title || strip(D.cols[0]), 'dk-ax');
+    }
+    /* Narrow groups whose labels share a first word in runs (Dry 1 to Dry 4, Humid 1 to Humid 4): the word is written
+       once under its run and each group keeps only the rest, since "Humid" under every narrow group ran into the
+       next (review recheck 3). Null when the labels are not like that. */
+    function runs(lv){
+      var w = [], rest = [];
+      if(!lv.every(function(l){ var i = String(l).indexOf(' '); if(i <= 0) return false; w.push(l.slice(0, i)); rest.push(l.slice(i + 1)); return true; })) return null;
+      var out = [];
+      w.forEach(function(x, k){ var r = out[out.length - 1]; if(r && r.word === x) r.b = k; else out.push({ word: x, a: k, b: k }); });
+      if(out.length === w.length || out.some(function(r){ return r.a === r.b; })) return null;
+      out.rest = rest;
+      return out;
     }
     function flask(cx, top, bot, w, inner){
       var nk = w * 0.2;
@@ -386,7 +414,7 @@
         return part(0, bath + levels(D, function(l){ return l + ' °C'; }, 'Water bath temperature')) + o + part(1, drop);
       },
       'elodea-light-color': function(D){
-        var o = topRow([[2, I.meter, 'light meter:\nsame energy'], [3, function(x, y){ return I.bottle(x, y, 'HCO₃'); }, 'bicarbonate\n(CO₂ source)'], [4, I.thermo, 'water\ntemperature'], [1, I.tally, 'count O₂ bubbles\nper minute']]), filt = '', bub = '';
+        var o = topRow([[2, I.meter, 'light meter:\nsame energy'], [3, function(x, y){ return I.bottle(x, y, ''); }, 'bicarbonate\n(CO₂ source)'], [4, I.thermo, 'water\ntemperature'], [1, I.tally, 'count O₂ bubbles\nper minute']]), filt = '', bub = '';
         D.lv.forEach(function(l, k){
           var x = gx(D.n, k), c = /blue/i.test(l) ? 'dk-fblue' : /green/i.test(l) ? 'dk-fgreen' : /red/i.test(l) ? 'dk-fred' : 'dk-fgrey';
           o += I.lamp(x, 96);
@@ -400,13 +428,15 @@
       },
       'quorum-signal': function(D){
         var o = topRow([[2, I.tally, 'same cells\nat the start'], [3, I.clock, 'time before\nmeasuring'], [4, I.thermo, 'same\ntemperature'], [1, I.meter, 'light per\ncell']]), cm = '';
-        D.L = 64; var w = Math.min(58, 316 / D.n * 0.72);
+        D.L = 76; var w = Math.min(58, 304 / D.n * 0.72);
         D.lv.forEach(function(l, k){
           var x = gx(D.n, k, D.L), pct = numOf(l) / 100, lt = 136, h = 202 - 2 - lt, ct = 200 - h * pct;
           o += flaskLiq(x, lt, 202, w, 96, 'dk-broth') + flask(x, 96, 202, w) + dots(x, 182, w * 0.6, 26, 10, 'dk-bact', 1.4, 2 + k);
           if(pct > 0) cm += '<clipPath id="' + gid + 'cq' + k + '"><rect x="' + n1(x - w / 2) + '" y="' + n1(ct) + '" width="' + n1(w) + '" height="' + n1(202 - ct) + '"/></clipPath><g clip-path="url(#' + gid + 'cq' + k + ')">' + flaskLiq(x, lt, 202, w, 96, 'dk-cond') + '</g>';
         });
-        cm += I.glow(28, 124) + tx(28, 152, 'cell-free', 'dk-ts') + tx(28, 163, 'medium', 'dk-ts') + tx(28, 174, 'from a dense,', 'dk-ts') + tx(28, 185, 'glowing', 'dk-ts') + tx(28, 196, 'culture', 'dk-ts');
+        // the label column left of the flasks: short lines, 13 apart, so the phone's raised text (12 px) neither leaves
+        // the drawing nor runs into the next line
+        cm += I.glow(38, 124) + ['cell-free', 'medium', 'from a', 'dense,', 'glowing', 'culture'].map(function(t, i){ return tx(38, 152 + i * 13, t, 'dk-ts'); }).join('');
         return o + part(0, cm + levels(D, function(l){ return l + '%'; }, 'Conditioned medium (shaded), % of the volume'));
       },
       'root-mitosis': function(D){
@@ -462,15 +492,18 @@
           segs.forEach(function(sg){ if(sg[1] > sg[0]) dna += '<rect class="dk-dnab" x="' + n1(sx(sg[0])) + '" y="' + (y - 4) + '" width="' + n1(sx(sg[1]) - sx(sg[0])) + '" height="8" rx="2"/>'; });
           if(c) dna += '<path class="dk-gap" d="M' + n1(sx(c[0]) + 2) + ' ' + y + 'H' + n1(sx(c[1]) - 2) + '"/>';
           dna += tx(52, y + 4, strip(l), 'dk-lv', 'end');
-          luc += '<rect class="dk-luc" x="' + (X1 + 2) + '" y="' + (y - 6) + '" width="60" height="12" rx="3"/>' + tx(X1 + 32, y + 3.5, 'luciferase', 'dk-ic');
+          // wide enough for the word at the phone's raised size (12 px on screen)
+          luc += '<rect class="dk-luc" x="' + (X1 + 2) + '" y="' + (y - 6) + '" width="100" height="12" rx="3"/>' + tx(X1 + 52, y + 3.5, 'luciferase', 'dk-ic');
           o += '<path class="dk-arrow" d="M' + (X1 - 2) + ' ' + (y - 4) + 'v-6h8"/>';
         });
-        [-2000, -1500, -1000, -200].forEach(function(bp){ o += '<path class="dk-tick" d="M' + n1(sx(bp)) + ' 188v8"/>' + tx(sx(bp), 206, bp === -200 ? '−200' : '−' + String(-bp).replace(/(\d)(\d{3})$/, '$1,$2'), 'dk-ts'); });
-        o += tx(sx(0), 206, '0', 'dk-ts');
-        return o + part(4, luc) + part(0, dna + tx(180, 224, 'Upstream DNA in each construct (bp from the gene; gaps are missing)', 'dk-ax'));
+        // −200 and 0 sit 22 apart: −200 ends at its tick and 0 starts at its own, so on a phone they never run together
+        // into "−2000" (review recheck 3)
+        [-2000, -1500, -1000, -200].forEach(function(bp){ o += '<path class="dk-tick" d="M' + n1(sx(bp)) + ' 188v8"/>' + (bp === -200 ? tx(sx(bp) + 2, 206, '−200', 'dk-ts', 'end') : tx(sx(bp), 206, '−' + String(-bp).replace(/(\d)(\d{3})$/, '$1,$2'), 'dk-ts')); });
+        o += '<path class="dk-tick" d="M' + n1(sx(0)) + ' 188v8"/>' + tx(sx(0) - 2, 206, '0', 'dk-ts', 'start');
+        return o + part(4, luc) + part(0, dna + tx(200, 224, 'Upstream DNA in each construct (bp; gaps missing)', 'dk-ax'));
       },
       'desiccation-selection': function(D){
-        var o = topRow([[2, function(x, y){ return I.cal(x, y, '30'); }, '30 generations\nof selection'], [3, function(x, y){ return I.drop(x - 8, y + 4, 5) + I.arrow(x + 6, y + 2); }, 'then 2 generations,\nall humid'], [4, I.vial, 'same food'], [1, I.watch, 'hours females\nlive in dry air']]), hum = '';
+        var o = topRow([[2, function(x, y){ return I.cal(x, y, '30'); }, 'generations\nof selection'], [3, function(x, y){ return I.drop(x - 8, y + 4, 5) + I.arrow(x + 6, y + 2); }, 'then 2 more,\nall humid'], [4, I.vial, 'same food'], [1, I.watch, 'hours females\nlive in dry air']]), hum = '';
         var w = Math.min(38, 360 / D.n * 0.8);
         D.lv.forEach(function(l, k){
           var x = gx(D.n, k), dry = /dry/i.test(l);
@@ -558,7 +591,9 @@
           });
         });
         o += '<path class="dc-zero" d="M' + L + ' ' + n1(Y(0)) + 'H' + (W - R) + '"/><path class="dc-axis" d="M' + L + ' ' + TP + 'V' + (TP + PH) + '"/>';
-        D.lv.forEach(function(l, k){ var x = L + gw * (k + 0.5), two = gw < 44 && l.indexOf(' ') > 0; o += two ? '<text class="dc-x' + (gw < 40 ? ' sm' : '') + '" x="' + n1(x) + '" y="' + (TP + PH + 15) + '" text-anchor="middle">' + esc(l.slice(0, l.indexOf(' '))) + '<tspan x="' + n1(x) + '" dy="11">' + esc(l.slice(l.indexOf(' ') + 1)) + '</tspan></text>' : tx(x, TP + PH + 15, l, 'dc-x'); });
+        var rn = gw < 44 ? runs(D.lv) : null;
+        if(rn) rn.forEach(function(r){ o += tx(L + gw * ((r.a + r.b) / 2 + 0.5), TP + PH + 28, r.word, 'dc-x'); });
+        D.lv.forEach(function(l, k){ var x = L + gw * (k + 0.5), two = gw < 44 && l.indexOf(' ') > 0; if(rn){ o += tx(x, TP + PH + 15, rn.rest[k], 'dc-x'); return; } o += two ? '<text class="dc-x' + (gw < 40 ? ' sm' : '') + '" x="' + n1(x) + '" y="' + (TP + PH + 15) + '" text-anchor="middle">' + esc(l.slice(0, l.indexOf(' '))) + '<tspan x="' + n1(x) + '" dy="11">' + esc(l.slice(l.indexOf(' ') + 1)) + '</tspan></text>' : tx(x, TP + PH + 15, l, 'dc-x'); });
         o += tx((L + W - R) / 2, H - 6, strip(D.cols[0]), 'dc-xt');
         var ttl = cols.length > 1 ? cols.map(function(j, c){ return '<tspan class="dc-key c' + c + '"' + (stack ? ' x="4" dy="' + (c ? 13 : 0) + '"' : '') + '>■</tspan> ' + esc(keys[c]); }).join(stack ? '' : '   ') : esc(keys[0]);
         o = '<text class="dc-title" x="4" y="14">' + ttl + '</text>' + o;
@@ -686,33 +721,643 @@
       });
     }
     draw(scen[0].id, false);
-  }, { studio: { arrange: studio } });
+    CTX = ctx;
+    EXP = explore(app, data, ctx);
+  }, { studio: { kit2: function(ctx){ return kit2(ctx); } } });
 
-  /* Tool Studio (docs/tools-calm.md): the scenario (its setup and data
-     table) is the stage; the drills go one at a time in the dock, each with
-     its own Check; the scenario choice is the one dock control, the drill
-     filter is in Details; "How this works" is under Why. Every draw (a new scenario) is re-arranged into a
-     fresh stepper. */
-  function studio(app, s){
+  /* ================================================================ EXPLORE: the plant bench (tools v2)
+     Two groups of potted bean plants on one bench, three weeks after the start. Left the control group, right the
+     test group; each under the same grow light, with its water jug, its plant food bottle and its heat mat.
+     Tab "Fair test": the three things the test group gets are tappable on its side (one tap: same as the control,
+     or different). Every thing that differs gets an amber ring on both sides; the plants grow or shrink to the new
+     result; the mean of each group (a line across it) and the difference (the bracket) are read from the plants
+     as drawn, every frame. Tab "Sample size": a fair test of plant food only, with plants that vary by chance;
+     one knob sets the plants per group, each group gets its ±2 SE error bar, and "New plants" grows a new batch.
+     The cause line (K.cause) names what differs, the result and whether the difference can be credited; its
+     result words are set only once the plants have settled. Every effect size is invented (stated in "?"). */
+  // every single effect clears ±2 SE at 6 plants a group with spread SD 3 (2.45 cm a side, 4.9 in all) by at least 1 cm,
+  // so a Fair test credit never contradicts the Sample size rule
+  var EXM = { base: 18, food: 6, water: -7, warm: 6, sd: 3, max: 12, n1: 6, nStart: 3, seed: 1254130, lo: 3, hi: 37 };
+  var ITEMS = [
+    { id: 'water', name: 'water', same: 'Same water', diff: 'Less water' },
+    { id: 'food', name: 'plant food', same: 'No plant food', diff: 'Plant food' },
+    { id: 'warm', name: 'warmth', same: 'Same warmth', diff: 'Warmer' }];
+  var MINUS = '−';
+  function explore(app, data, ctx, drillsGo){
+    var K = window.LevlKit2, M = window.ApBioMath, esc = T.esc;
+    var St = { tab: 'fair', cond: { water: false, food: true, warm: false }, n: EXM.nStart, batch: 0, mode: 'explore' };
+    function calm(){ return K.reduced() || !window.requestAnimationFrame; }
+    function n1(v){ return Math.round(v * 10) / 10; }
+    function cap(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
+
+    /* ---- the plants' chance variation */
+    var DEV1 = (function(){
+      // tab 1: six per group, centred so each group's mean is exactly the model's, spread SD 3 cm
+      var r = M.rng(5), out = [[], []];
+      out.forEach(function(a){ for(var i = 0; i < EXM.n1; i++) a.push(r.normal(0, 1)); var m = a.reduce(function(x, y){ return x + y; }, 0) / a.length;
+        for(i = 0; i < a.length; i++) a[i] -= m; var sd = Math.sqrt(a.reduce(function(x, y){ return x + y * y; }, 0) / (a.length - 1)); for(i = 0; i < a.length; i++) a[i] *= EXM.sd / sd; });
+      return out;
+    })();
+    function batchDev(b){ var r = M.rng(EXM.seed + b * 1013), c = [], t = []; for(var i = 0; i < EXM.max; i++){ c.push(r.normal(0, EXM.sd)); t.push(r.normal(0, EXM.sd)); } return [c, t]; }
+    var DEV2 = batchDev(0);
+    function clampH(h){ return Math.max(EXM.lo, Math.min(EXM.hi, h)); }
+    function cond(){ return St.tab === 'fair' ? St.cond : { water: false, food: true, warm: false }; }
+    function target(g, i){
+      var c = cond(), dev = St.tab === 'fair' ? DEV1[g][i] : DEV2[g][i];
+      var h = EXM.base + dev;
+      if(g === 1) h += (c.food ? EXM.food : 0) + (c.water ? EXM.water : 0) + (c.warm ? EXM.warm : 0);
+      return clampH(h);
+    }
+    function count(){ return St.tab === 'fair' ? EXM.n1 : St.n; }
+    function differs(){ var c = cond(); return [ITEMS[1], ITEMS[0], ITEMS[2]].filter(function(it){ return c[it.id]; }); }
+
+    /* ---- the stage */
+    var stage = document.createElement('div'); stage.className = 'dd2';
+    var tabs = K.tabs({ label: 'Idea', big: true, items: [{ value: 'fair', label: 'Fair test' }, { value: 'n', label: 'Sample size' }], value: 'fair', onChange: function(v){ setTab(v, true); } });
+    stage.appendChild(tabs.el);
+    var head = K.head({ purpose: '', how: { label: 'Show me how', onClick: function(){ startTour(); } } });
+    stage.appendChild(head.el);
+    var sceneBox = document.createElement('div'); sceneBox.className = 'dd2-scene'; sceneBox.id = T.nid('dd2');
+    // three layers, so a frame of growing plants repaints only the middle one: the room and bench (still), the plants
+    // and their numbers (every frame while they change), the trays, things and words in front (on a tap)
+    sceneBox.innerHTML = '<svg class="dd2-svg dd2-svg-b" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"><g class="dd2-back"></g><g class="dd2-mats"></g></svg>' +
+      '<svg class="dd2-svg dd2-svg-m" role="img" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"><g class="dd2-plants"><g data-g="0"></g><g data-g="1"></g></g><g class="dd2-over"></g></svg>' +
+      '<svg class="dd2-svg dd2-svg-f" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"><g class="dd2-fronts"></g><g class="dd2-items"></g><g class="dd2-labs"></g></svg>';
+    stage.appendChild(sceneBox);
+    tabs.el.querySelectorAll('.tk2-tab').forEach(function(b){ b.setAttribute('aria-controls', sceneBox.id); });
+    var svgs = sceneBox.querySelectorAll('svg'), svg = svgs[1], q1 = function(c){ return sceneBox.querySelector(c); };
+    var gBack = q1('.dd2-back'), gMats = q1('.dd2-mats'), gPl = [q1('.dd2-plants [data-g="0"]'), q1('.dd2-plants [data-g="1"]')];
+    var gFront = q1('.dd2-fronts'), gItems = q1('.dd2-items'), gOver = q1('.dd2-over'), gLabs = q1('.dd2-labs');
+    var layer = K.layer(sceneBox), G = null;
+    var lines = document.createElement('div'); lines.className = 'dd2-lines';
+    var cause = K.cause({ label: 'Why' });
+    var acts = document.createElement('div'); acts.className = 'dd2-acts';
+    acts.innerHTML = '<button type="button" class="tk2-btn dd2-new">New plants</button><button type="button" class="tk2-link dd2-reset">Start over</button>';
+    var bNew = acts.querySelector('.dd2-new'), bReset = acts.querySelector('.dd2-reset');
+    lines.appendChild(cause.el); lines.appendChild(acts);
+    stage.appendChild(lines);
+    var live = document.createElement('p'); live.className = 'tk2-sr'; live.setAttribute('aria-live', 'polite');
+    stage.appendChild(live);
+    function say(t){ live.textContent = ''; setTimeout(function(){ live.textContent = t; }, 40); }
+
+    /* ---- text sizes from measured text */
+    var mctx = document.createElement('canvas').getContext('2d'), FAM = 'sans-serif';
+    var twC = {};
+    function tw(t, size, wt){ var key = t + '|' + size + '|' + (wt || 800) + '|' + FAM; if(twC[key] == null){ mctx.font = (wt || 800) + ' ' + size + 'px ' + FAM; twC[key] = mctx.measureText(t).width; } return twC[key]; }
+    /* A label in a slot of width w: one line, else two (split at a space), else a smaller font; never inside a word. */
+    function fit(t, w, size){
+      var s = size, lines1 = [t];
+      if(tw(t, s) > w && t.indexOf(' ') > 0){
+        var best = null; t.split(' ').forEach(function(_, i, a){ if(!i) return; var l = [a.slice(0, i).join(' '), a.slice(i).join(' ')], m = Math.max(tw(l[0], s), tw(l[1], s)); if(!best || m < best.m) best = { l: l, m: m }; });
+        lines1 = best.l;
+        // still too wide at the smallest size allowed (11 px): one word a line
+        if(best.m * 11 / s > w && t.split(' ').length > 2) lines1 = t.split(' ');
+      }
+      var widest = Math.max.apply(null, lines1.map(function(l){ return tw(l, s); }));
+      if(widest > w) s = Math.max(11, s * w / widest);   // never under 11 px on screen
+      return { lines: lines1, size: n1(s), w: Math.max.apply(null, lines1.map(function(l){ return tw(l, s); })) };
+    }
+
+    /* ---- layout (pixels: the svg's viewBox is the box's own size) */
+    function layout(){
+      var W = sceneBox.clientWidth, H = sceneBox.clientHeight;
+      if(!W || !H) return null;
+      var phone = W < 600, m = phone ? 8 : Math.max(20, W * 0.03), gap = phone ? 56 : Math.max(76, Math.min(150, W * 0.09));
+      var gw = Math.min((W - 2 * m - gap) / 2, 520), cx = W / 2;
+      var frontH = St.tab === 'n' ? (phone ? 124 : 130) : (phone ? 64 : 58), itemsH = phone ? 54 : 74, matH = 7;
+      var yFront = H - frontH, yBack = yFront - itemsH, yTray = yBack + 12;
+      var ruler = phone ? 15 : 19, bar = St.tab === 'n' ? (phone ? 16 : 22) : 6;
+      var g = [0, 1].map(function(k){
+        var x0 = k ? cx + gap / 2 : cx - gap / 2 - gw, x1 = x0 + gw;
+        // the ruler on the outer side, the error bar on the inner side
+        var a = k ? x0 + bar : x0 + ruler + 8, b = k ? x1 - ruler - 8 : x1 - bar;
+        return { x0: x0, x1: x1, a: a, b: b, ruler: k ? x1 - ruler : x0, cxp: (a + b) / 2, err: k ? x0 + bar / 2 : x1 - bar / 2 };
+      });
+      var n = count(), slot = (g[0].b - g[0].a) / n, pw = Math.max(9, Math.min(phone ? 30 : 44, slot * 0.7));
+      var potH = Math.max(12, Math.min(28, Math.min(phone ? 30 : 44, (g[0].b - g[0].a) / EXM.n1 * 0.7) * 0.9));   // one pot height whatever the count, so the bench never moves
+      var ySoil = yTray - 3 - potH, yTop = phone ? 56 : 64;
+      var k = (ySoil - yTop) / (EXM.hi - 1);
+      var leaf = Math.max(7, Math.min(phone ? 14 : 26, slot * 0.5));
+      return { W: W, H: H, phone: phone, m: m, gap: gap, gw: gw, cx: cx, frontH: frontH, yFront: yFront, yBack: yBack, yTray: yTray, matH: matH,
+        g: g, n: n, slot: slot, pw: pw, potH: potH, ySoil: ySoil, yTop: yTop, k: k, leaf: leaf, ruler: ruler };
+    }
+    function px(g, i, n){ var G0 = G.g[g], s = (G0.b - G0.a) / n; return G0.a + s * (i + 0.5); }
+    function yOf(h){ return G.ySoil - h * G.k; }
+
+    /* ---- the still parts: room, lamps, rulers, bench, trays, items */
+    function itemX(g, j){ var G0 = G.g[g], w = G0.x1 - G0.x0; return G0.x0 + w * (j + 0.5) / 3; }
+    function backSvg(){
+      var W = G.W, H = G.H, h = [];
+      h.push('<defs><linearGradient id="dd2g-wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="dd2s-w0"/><stop offset="1" class="dd2s-w1"/></linearGradient>' +
+        '<linearGradient id="dd2g-cone" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="dd2s-c0"/><stop offset="1" class="dd2s-c1"/></linearGradient>' +
+        '<linearGradient id="dd2g-top" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="dd2s-t0"/><stop offset="1" class="dd2s-t1"/></linearGradient>' +
+        '<linearGradient id="dd2g-face" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="dd2s-f0"/><stop offset="1" class="dd2s-f1"/></linearGradient>' +
+        '<linearGradient id="dd2g-pot" x1="0" y1="0" x2="1" y2="0"><stop offset="0" class="dd2s-p0"/><stop offset=".55" class="dd2s-p1"/><stop offset="1" class="dd2s-p2"/></linearGradient>' +
+        '<linearGradient id="dd2g-warm" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="dd2s-h0"/><stop offset="1" class="dd2s-h1"/></linearGradient></defs>');
+      h.push('<rect class="dd2-wall" x="0" y="0" width="' + W + '" height="' + n1(G.yBack + 2) + '"/>');
+      // tiles on the wall, faint
+      var tile = G.phone ? 34 : 46, d = '';
+      for(var y = tile; y < G.yBack; y += tile) d += 'M0 ' + n1(y) + 'H' + W;
+      for(var r = 0, yy = 0; yy < G.yBack; r++, yy += tile) for(var x = (r % 2 ? tile / 2 : 0); x < W; x += tile) d += 'M' + n1(x) + ' ' + n1(yy) + 'V' + n1(Math.min(G.yBack, yy + tile));
+      h.push('<path class="dd2-tile" d="' + d + '"/>');
+      G.g.forEach(function(g, k){
+        var a = g.a - 4, b = g.b + 4, ly = G.phone ? 10 : 12;
+        // the grow light's cone over the plants, then the light itself on two cables
+        h.push('<path class="dd2-cone" d="M' + n1(a + 8) + ' ' + (ly + 9) + 'L' + n1(b - 8) + ' ' + (ly + 9) + 'L' + n1(b + 10) + ' ' + n1(G.yTray) + 'L' + n1(a - 10) + ' ' + n1(G.yTray) + 'Z"/>');
+        h.push('<path class="dd2-cable" d="M' + n1(a + 14) + ' 0V' + ly + 'M' + n1(b - 14) + ' 0V' + ly + '"/>');
+        h.push('<rect class="dd2-lamp" x="' + n1(a) + '" y="' + ly + '" width="' + n1(b - a) + '" height="9" rx="4"/><rect class="dd2-lampl" x="' + n1(a + 5) + '" y="' + (ly + 6) + '" width="' + n1(b - a - 10) + '" height="3" rx="1.5"/>');
+        // the ruler on the outer side
+        var rx = g.ruler, rw = G.ruler, top = yOf(EXM.hi - 1) - 4, rt = '';
+        h.push('<rect class="dd2-ruler" x="' + n1(rx) + '" y="' + n1(top) + '" width="' + rw + '" height="' + n1(G.ySoil + 4 - top) + '" rx="2"/>');
+        for(var c = 0; c <= EXM.hi - 1; c++){ var yy2 = yOf(c), len = c % 10 === 0 ? rw * 0.55 : c % 5 === 0 ? rw * 0.4 : rw * 0.22; rt += k ? 'M' + n1(rx) + ' ' + n1(yy2) + 'h' + n1(len) : 'M' + n1(rx + rw) + ' ' + n1(yy2) + 'h' + n1(-len); }
+        h.push('<path class="dd2-tick" d="' + rt + '"/>');
+        [10, 20, 30].forEach(function(c){ h.push('<text class="dd2-rn" data-lab="ruler" x="' + n1(k ? rx + rw - 2 : rx + 2) + '" y="' + n1(yOf(c) + 3.6) + '" text-anchor="' + (k ? 'end' : 'start') + '">' + c + '</text>'); });
+      });
+      // the bench: its top (seen a little from above) and its front face
+      h.push('<path class="dd2-btop" d="M0 ' + n1(G.yBack) + 'H' + W + 'V' + n1(G.yFront) + 'H0Z"/><rect class="dd2-bedge" x="0" y="' + n1(G.yFront) + '" width="' + W + '" height="7"/>');
+      h.push('<rect class="dd2-bface" x="0" y="' + n1(G.yFront + 7) + '" width="' + W + '" height="' + n1(H - G.yFront - 7) + '"/>');
+      var grain = ''; for(var i = 1; i < 4; i++) grain += 'M0 ' + n1(G.yBack + (G.yFront - G.yBack) * i / 4) + 'C' + n1(W * 0.3) + ' ' + n1(G.yBack + (G.yFront - G.yBack) * i / 4 - 2) + ' ' + n1(W * 0.6) + ' ' + n1(G.yBack + (G.yFront - G.yBack) * i / 4 + 2) + ' ' + W + ' ' + n1(G.yBack + (G.yFront - G.yBack) * i / 4);
+      h.push('<path class="dd2-grain" d="' + grain + '"/>');
+      return h.join('');
+    }
+    function matSvg(){
+      return G.g.map(function(g, k){
+        // the mat sticks out past the tray at both ends, so its glow and its heat show beside the tray
+        var a = g.a - 22, b = g.b + 22, y = G.yTray - 1, h = G.matH + 2;
+        return '<g class="dd2-mat" data-g="' + k + '"><rect class="dd2-mat-b" x="' + n1(a) + '" y="' + n1(y) + '" width="' + n1(b - a) + '" height="' + h + '" rx="3"/><rect class="dd2-mat-h" x="' + n1(a) + '" y="' + n1(y) + '" width="' + n1(b - a) + '" height="' + h + '" rx="3"/>' +
+          '<path class="dd2-wave" d="' + [a + 5, a + 11, b - 11, b - 5].map(function(x){ return 'M' + n1(x) + ' ' + n1(y - 2) + 'q-3 -5 0 -10t0 -10'; }).join('') + '"/></g>';
+      }).join('');
+    }
+    function frontSvg(){
+      return G.g.map(function(g){
+        var a = g.a - 6, b = g.b + 6, top = G.ySoil + G.potH * 0.5;
+        return '<rect class="dd2-tray" x="' + n1(a) + '" y="' + n1(top) + '" width="' + n1(b - a) + '" height="' + n1(G.yTray - top) + '" rx="3"/><rect class="dd2-trayl" x="' + n1(a + 2) + '" y="' + n1(top + 1.5) + '" width="' + n1(b - a - 4) + '" height="2" rx="1"/>';
+      }).join('');
+    }
+    /* Each item at (x, base y): a jug of water, a plant food bottle, the heat mat's switch box. */
+    function itemSvg(id, x, y, s){
+      var o = '';
+      if(id === 'water'){
+        var w = 20 * s, hh = 28 * s;
+        o += '<g class="dd2-jug"><path class="dd2-glass" d="M' + n1(x - w / 2) + ' ' + n1(y - hh) + 'h' + n1(w) + 'l-' + n1(1.5 * s) + ' ' + n1(hh) + 'h-' + n1(w - 3 * s) + 'z"/>' +
+          '<rect class="dd2-water" x="' + n1(x - w / 2 + 2.4 * s) + '" y="' + n1(y - hh + 4 * s) + '" width="' + n1(w - 4.8 * s) + '" height="' + n1(hh - 5.5 * s) + '"/>' +
+          '<path class="dd2-handle" d="M' + n1(x + w / 2 - 1) + ' ' + n1(y - hh + 5 * s) + 'c' + n1(8 * s) + ' 0 ' + n1(8 * s) + ' ' + n1(12 * s) + ' 0 ' + n1(13 * s) + '"/>' +
+          '<path class="dd2-grad" d="M' + n1(x - w / 2 + 2) + ' ' + n1(y - hh * 0.75) + 'h' + n1(4 * s) + 'M' + n1(x - w / 2 + 2) + ' ' + n1(y - hh * 0.5) + 'h' + n1(4 * s) + 'M' + n1(x - w / 2 + 2) + ' ' + n1(y - hh * 0.25) + 'h' + n1(4 * s) + '"/></g>';
+      } else if(id === 'food'){
+        var bw = 15 * s, bh = 30 * s;
+        o += '<g class="dd2-bottle"><path class="dd2-glass" d="M' + n1(x - 3 * s) + ' ' + n1(y - bh) + 'h' + n1(6 * s) + 'v' + n1(6 * s) + 'l' + n1(bw / 2 - 3 * s) + ' ' + n1(5 * s) + 'v' + n1(bh - 11 * s) + 'h-' + n1(bw) + 'v-' + n1(bh - 11 * s) + 'l' + n1(bw / 2 - 3 * s) + ' -' + n1(5 * s) + 'z"/>' +
+          '<rect class="dd2-food" x="' + n1(x - bw / 2 + 1.5) + '" y="' + n1(y - bh + 12 * s) + '" width="' + n1(bw - 3) + '" height="' + n1(bh - 13.5 * s) + '"/>' +
+          '<rect class="dd2-cap" x="' + n1(x - 3.6 * s) + '" y="' + n1(y - bh - 4 * s) + '" width="' + n1(7.2 * s) + '" height="' + n1(4.5 * s) + '" rx="1"/>' +
+          '<path class="dd2-flabel" d="M' + n1(x) + ' ' + n1(y - 6 * s) + 'c' + n1(-5 * s) + ' ' + n1(-2 * s) + ' ' + n1(-5 * s) + ' ' + n1(-8 * s) + ' 0 ' + n1(-10 * s) + 'c' + n1(5 * s) + ' ' + n1(2 * s) + ' ' + n1(5 * s) + ' ' + n1(8 * s) + ' 0 ' + n1(10 * s) + 'z"/></g>';
+      } else {
+        var tw2 = 26 * s, th = 18 * s;
+        o += '<g class="dd2-ctl"><path class="dd2-cord" d="M' + n1(x) + ' ' + n1(y - th) + 'C' + n1(x) + ' ' + n1(y - th - 10 * s) + ' ' + n1(x - 8 * s) + ' ' + n1(y - th - 6 * s) + ' ' + n1(x - 6 * s) + ' ' + n1(y - th - 16 * s) + '"/>' +
+          '<rect class="dd2-box" x="' + n1(x - tw2 / 2) + '" y="' + n1(y - th) + '" width="' + n1(tw2) + '" height="' + n1(th) + '" rx="' + n1(3 * s) + '"/>' +
+          '<circle class="dd2-knob" cx="' + n1(x - 4 * s) + '" cy="' + n1(y - th / 2) + '" r="' + n1(5 * s) + '"/><path class="dd2-knobm" d="M' + n1(x - 4 * s) + ' ' + n1(y - th / 2) + 'l' + n1(2.6 * s) + ' -' + n1(3.4 * s) + '"/>' +
+          '<circle class="dd2-led" cx="' + n1(x + 7 * s) + '" cy="' + n1(y - th / 2) + '" r="' + n1(2.8 * s) + '"/></g>';
+      }
+      return o;
+    }
+    var tapB = [], ringEl = [], labEl = [];
+    function itemsSvg(){
+      var s = G.phone ? 1.05 : 1.5, yb = G.yFront - 4, o = '';
+      G.g.forEach(function(g, k){
+        ITEMS.forEach(function(it, j){
+          var x = itemX(k, j), rw = Math.min((g.x1 - g.x0) / 3 - 6, 44 * s), rt = yb - 37 * s;
+          o += '<g class="dd2-item" data-g="' + k + '" data-id="' + it.id + '"><rect class="dd2-ring" x="' + n1(x - rw / 2) + '" y="' + n1(rt) + '" width="' + n1(rw) + '" height="' + n1(yb - rt + 3) + '" rx="8"/>' + itemSvg(it.id, x, yb, s) + '</g>';
+        });
+      });
+      return o;
+    }
+    function labsSvg(){
+      var o = '', size = G.phone ? 12.5 : 14;
+      G.g.forEach(function(g, k){
+        var t = k ? 'Test group' : 'Control group', sz = G.phone ? 13 : 15; sz = n1(Math.max(11, Math.min(sz, sz * (g.b - g.a - 4) / tw(t, sz))));
+        o += '<text class="dd2-gname" data-lab="name" x="' + n1(g.cxp) + '" y="' + (G.phone ? 40 : 46) + '" text-anchor="middle" style="font-size:' + sz + 'px">' + esc(t) + '</text>';
+      });
+      // the test side's item labels, under each item on the bench's front face (filled in paintItems)
+      ITEMS.forEach(function(it, j){ o += '<text class="dd2-ilab" data-lab="item" data-id="' + it.id + '" x="' + n1(itemX(1, j)) + '" y="' + n1(G.yFront + (G.phone ? 22 : 25)) + '" text-anchor="middle"></text>'; });
+      return o;
+    }
+    function paintItems(){
+      if(!G) return;
+      var c = cond(), slotW = (G.g[1].x1 - G.g[1].x0) / 3 - 8, size = G.phone ? 12.5 : 14;
+      gItems.querySelectorAll('.dd2-item').forEach(function(e){
+        var k = +e.getAttribute('data-g'), id = e.getAttribute('data-id'), on = k === 1 && c[id];
+        e.classList.toggle('is-diff', !!c[id]);
+        e.classList.toggle('is-on', !!on);   // the test side when it differs: less water, plant food in the bottle, the mat on
+      });
+      sceneBox.setAttribute('data-dry', c.water ? '1' : '0');
+      gMats.querySelectorAll('.dd2-mat').forEach(function(e){ e.classList.toggle('is-on', +e.getAttribute('data-g') === 1 && c.warm); });
+      gLabs.querySelectorAll('.dd2-ilab').forEach(function(t){
+        var id = t.getAttribute('data-id'), it = ITEMS.filter(function(x){ return x.id === id; })[0], show = St.tab === 'fair' || id === 'food';
+        var f = fit(c[id] ? it.diff : it.same, slotW, size);
+        t.style.fontSize = f.size + 'px'; t.classList.toggle('is-diff', !!c[id]); t.setAttribute('visibility', show ? 'visible' : 'hidden');
+        var x = t.getAttribute('x');
+        t.innerHTML = f.lines.map(function(l, i){ return '<tspan x="' + x + '"' + (i ? ' dy="' + n1(f.size * 1.12) + '"' : '') + '>' + esc(l) + '</tspan>'; }).join('');
+      });
+      tapB.forEach(function(b, j){ var it = ITEMS[j]; b.pressed(!!St.cond[it.id]); b.el.setAttribute('aria-label', 'Test group: ' + (St.cond[it.id] ? it.diff : it.same) + '. Press for ' + (St.cond[it.id] ? it.same.toLowerCase() : it.diff.toLowerCase()) + '.'); b.el.hidden = St.tab !== 'fair' || St.mode !== 'explore'; });
+    }
+
+    /* ---- the plants: one group element each, its stem and leaves set every frame */
+    var P = [[], []];   // per group: { i, dev, h, x, op, dry, from, to, t0, dur, el, stem, node, top, gone }
+    var LEAF = '<path class="dd2-lf" d="M0 0C.22-.46.86-.5 1 0C.86.5.22.46 0 0Z"/><path class="dd2-rib" d="M.05 0L.88 0"/>';
+    function potSvg(){
+      var w = G.pw, h = G.potH, b = w * 0.74;
+      return '<path class="dd2-pot" d="M' + n1(-w / 2) + ' 0L' + n1(w / 2) + ' 0L' + n1(b / 2) + ' ' + n1(h) + 'L' + n1(-b / 2) + ' ' + n1(h) + 'Z"/><rect class="dd2-rim" x="' + n1(-w / 2 - 1) + '" y="-1" width="' + n1(w + 2) + '" height="' + n1(Math.max(3, h * 0.2)) + '" rx="1.2"/><ellipse class="dd2-soil" cx="0" cy="0.5" rx="' + n1(w / 2 - 1) + '" ry="' + n1(Math.max(1.4, w * 0.09)) + '"/>';
+    }
+    function plantEl(p){
+      p._pot = G.pw + ',' + G.potH;
+      var e = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      e.setAttribute('class', 'dd2-pl');
+      e.innerHTML = '<g class="dd2-potg">' + potSvg() + '</g><path class="dd2-stem"/><g class="dd2-node"><g class="dd2-l1">' + LEAF + '</g><g class="dd2-l2">' + LEAF + '</g></g><g class="dd2-node2"><g class="dd2-l3">' + LEAF + '</g><g class="dd2-l4">' + LEAF + '</g></g><g class="dd2-top"><g class="dd2-t1">' + LEAF + '</g><g class="dd2-t2">' + LEAF + '</g><g class="dd2-t3">' + LEAF + '</g></g>';
+      p.el = e; p.stem = e.querySelector('.dd2-stem'); p.node = e.querySelector('.dd2-node'); p.node2 = e.querySelector('.dd2-node2'); p.top = e.querySelector('.dd2-top');
+      p.ls = ['.dd2-l1', '.dd2-l2', '.dd2-t1', '.dd2-t2', '.dd2-t3', '.dd2-l3', '.dd2-l4'].map(function(s){ return e.querySelector(s); });
+      p.sway = (((p.i * 37 + p.g * 11) % 7) - 3) * 0.9;
+      return e;
+    }
+    function paintPlant(p){
+      var h = p.h, hp = Math.max(0, h * G.k), grow = Math.max(0, Math.min(1, h / 9)), L = G.leaf * (0.35 + 0.65 * grow), dr = p.dry, sw = p.sway * Math.min(1, hp / 60);
+      p.el.setAttribute('transform', 'translate(' + n1(p.x) + ' ' + n1(G.ySoil) + ')');
+      var op = p.op < 0.999 ? String(n1(p.op * 100) / 100) : '';
+      if(p._op !== op){ p._op = op; p.el.style.opacity = op; }
+      if(hp < 0.5){ p.stem.setAttribute('d', ''); p.node.setAttribute('visibility', 'hidden'); p.node2.setAttribute('visibility', 'hidden'); p.top.setAttribute('visibility', 'hidden'); return; }
+      p.node.setAttribute('visibility', h > 2.5 ? 'visible' : 'hidden'); p.node2.setAttribute('visibility', h > 6 ? 'visible' : 'hidden'); p.top.setAttribute('visibility', 'visible');
+      p.stem.setAttribute('d', 'M0 0Q' + n1(sw * 0.6) + ' ' + n1(-hp * 0.5) + ' ' + n1(sw) + ' ' + n1(-hp));
+      var swd = String(n1(Math.max(1.6, Math.min(3.8, G.slot * 0.075)) * (0.6 + 0.4 * grow)));
+      if(p._sw !== swd){ p._sw = swd; p.stem.setAttribute('stroke-width', swd); }
+      // the stem's x at a fraction f of its height (the quadratic above)
+      function sx(f){ return 2 * (1 - f) * f * sw * 0.6 + f * f * sw; }
+      p.node.setAttribute('transform', 'translate(' + n1(sx(0.36)) + ' ' + n1(-hp * 0.36) + ')');
+      p.ls[0].setAttribute('transform', 'rotate(' + n1(-14 + 52 * dr) + ') scale(' + n1(L * 1.08) + ' ' + n1(L * 0.9) + ')');
+      p.ls[1].setAttribute('transform', 'rotate(' + n1(194 - 52 * dr) + ') scale(' + n1(L * 1.08) + ' ' + n1(L * 0.9) + ')');
+      p.node2.setAttribute('transform', 'translate(' + n1(sx(0.7)) + ' ' + n1(-hp * 0.7) + ')');
+      p.ls[5].setAttribute('transform', 'rotate(' + n1(-30 + 50 * dr) + ') scale(' + n1(L * 0.92) + ' ' + n1(L * 0.78) + ')');
+      p.ls[6].setAttribute('transform', 'rotate(' + n1(210 - 50 * dr) + ') scale(' + n1(L * 0.92) + ' ' + n1(L * 0.78) + ')');
+      p.top.setAttribute('transform', 'translate(' + n1(sw) + ' ' + n1(-hp) + ') rotate(' + n1(24 * dr) + ')');
+      var t = L * 0.78;
+      p.ls[2].setAttribute('transform', 'rotate(-136) scale(' + n1(t) + ' ' + n1(t * 0.8) + ')');
+      p.ls[3].setAttribute('transform', 'rotate(-90) scale(' + n1(t * 1.05) + ' ' + n1(t * 0.8) + ')');
+      p.ls[4].setAttribute('transform', 'rotate(-44) scale(' + n1(t) + ' ' + n1(t * 0.8) + ')');
+    }
+    function ease(t){ return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+    var raf = 0, waitT = 0;
+    function goTo(p, to, dur, delay){
+      p.from = { h: p.h, x: p.x, op: p.op, dry: p.dry }; p.to = to;
+      p.t0 = (window.performance ? performance.now() : Date.now()) + (delay || 0); p.dur = calm() ? 0 : dur;
+      if(calm()){ p.h = to.h; p.x = to.x; p.op = to.op; p.dry = to.dry; p.to = null; if(p.el) p.el.classList.remove('is-fade'), void p.el.getBoundingClientRect(), p.el.classList.add('is-fade'); }
+    }
+    function busy(){ return P.some(function(a){ return a.some(function(p){ return !!p.to; }); }); }
+    function regrowing(){ return P.some(function(a){ return a.some(function(p){ return p.to && (p.soil || p.gone); }); }); }
+    function frame(now){
+      raf = 0;
+      now = now || (window.performance ? performance.now() : Date.now());
+      P.forEach(function(a, g){
+        for(var i = a.length - 1; i >= 0; i--){
+          var p = a[i];
+          if(p.to){
+            var f = p.dur ? Math.max(0, Math.min(1, (now - p.t0) / p.dur)) : 1, e = ease(f);
+            if(now >= p.t0 || !p.dur){
+              ['h', 'x', 'op', 'dry'].forEach(function(k){ p[k] = p.from[k] + (p.to[k] - p.from[k]) * e; });
+              if(f >= 1){ ['h', 'x', 'op', 'dry'].forEach(function(k){ p[k] = p.to[k]; }); p.to = null; if(p.next){ var nx = p.next; p.next = null; goTo(p, nx.to, nx.dur, 0); p.soil = true; } else p.soil = false; }
+            }
+          }
+          if(p.gone && !p.to){ if(p.el) p.el.remove(); a.splice(i, 1); continue; }
+          if(p.el) paintPlant(p);
+        }
+      });
+      paintOver();
+      if(wDirty){ wDirty = false; words(); }
+      if(busy()) raf = requestAnimationFrame(frame);
+      else settled();
+    }
+    function kick(){ if(!raf){ if(calm()) frame(); else raf = requestAnimationFrame(frame); } }
+
+    /* Bring the plants to the model for the tab and settings now (regrow: from the soil, a new batch). */
+    function sync(how){
+      if(!G) return;
+      var n = count(), c = cond();
+      [0, 1].forEach(function(g){
+        var a = P[g], live = a.filter(function(p){ return !p.gone; });
+        live.forEach(function(p, j){ if(j >= n){ p.gone = true; p.soil = false; p.next = null; goTo(p, { h: 0, x: p.x, op: 0, dry: p.dry }, 360); } });
+        for(var i = 0; i < n; i++){
+          var p = live[i], x = px(g, i, n), t = { h: target(g, i), x: x, op: 1, dry: g === 1 && c.water ? 1 : 0 };
+          if(!p){
+            p = { g: g, i: i, h: 0, x: x, op: 0, dry: t.dry, to: null };
+            a.push(p); gPl[g].appendChild(plantEl(p));
+            p.soil = true; goTo(p, t, 700, how === 'regrow' ? 0 : 90);
+            continue;
+          }
+          p.i = i;
+          if(how === 'regrow' && !calm()){ p.soil = true; goTo(p, { h: 0, x: x, op: 1, dry: t.dry }, 300); p.next = { to: t, dur: 700 }; }
+          else { p.next = null; goTo(p, t, how === 'quick' ? 300 : 650); }
+        }
+      });
+      waiting(true);
+      kick();
+    }
+    function rebuildPlants(){
+      // after a new layout: the same plants, redrawn at their places at once
+      // a pot is redrawn only when its size changed (new plants come in at the right, so the order stays)
+      var key = G.pw + ',' + G.potH, pot = null;
+      P.forEach(function(a, g){ a.forEach(function(p){ if(p.el && p._pot !== key){ p._pot = key; p.el.querySelector('.dd2-potg').innerHTML = pot || (pot = potSvg()); } }); });
+      var n = count();
+      P.forEach(function(a, g){ var lv = a.filter(function(p){ return !p.gone; }), nn = Math.max(n, lv.length); lv.forEach(function(p, j){ var x = px(g, j, nn); if(p.to){ p.to.x = x; p.from.x = x; } p.x = x; paintPlant(p); }); });
+    }
+
+    /* ---- the numbers on the picture: read from the plants as drawn */
+    var over = { ln: [], pill: [], err: [], br: null };
+    function overSvg(){
+      var o = '';
+      [0, 1].forEach(function(g){ o += '<g class="dd2-mean" data-g="' + g + '"><path class="dd2-mline"/><path class="dd2-conn"/></g>'; });
+      [0, 1].forEach(function(g){ o += '<g class="dd2-err" data-g="' + g + '"><path class="dd2-ebar"/><circle class="dd2-edot" r="3.2"/></g>'; });
+      o += '<text class="dd2-se" data-lab="se" text-anchor="start">±2 SE</text>';
+      o += '<g class="dd2-br"><path class="dd2-brl"/><rect class="dd2-pillr" rx="9"/><text class="dd2-pillt" data-lab="diff" text-anchor="middle"></text></g>';
+      [0, 1].forEach(function(g){ o += '<g class="dd2-mp" data-g="' + g + '"><rect class="dd2-pillr" rx="9"/><text class="dd2-pillt" data-lab="mean" text-anchor="middle"></text></g>'; });
+      return o;
+    }
+    function stats(g){
+      var a = P[g].filter(function(p){ return !p.gone; }).map(function(p){ return p.h; }), n = a.length;
+      if(!n) return null;
+      var m = a.reduce(function(x, y){ return x + y; }, 0) / n, sd = n > 1 ? Math.sqrt(a.reduce(function(x, y){ return x + (y - m) * (y - m); }, 0) / (n - 1)) : null;
+      return { n: n, m: m, sd: sd, se: sd == null ? null : sd / Math.sqrt(n) };
+    }
+    function fmt(v){ return St.tab === 'fair' ? String(Math.round(v)) : (Math.round(v * 10) / 10).toFixed(1); }
+    function pill(gEl, x, y, t){
+      var tx = gEl.querySelector('text'), r = gEl.querySelector('rect'), size = G.phone ? 12.5 : 14, w = tw(t, size) + 14, h = size + 9;
+      if(tx.textContent !== t) tx.textContent = t; tx.setAttribute('x', n1(x)); tx.setAttribute('y', n1(y + size * 0.36)); tx.style.fontSize = size + 'px';
+      r.setAttribute('x', n1(x - w / 2)); r.setAttribute('y', n1(y - h / 2)); r.setAttribute('width', n1(w)); r.setAttribute('height', n1(h));
+      return { x: x - w / 2, y: y - h / 2, w: w, h: h };
+    }
+    var shown = null;   // the stats the numbers show
+    function paintOver(){
+      if(!G) return;
+      var hide = regrowing();
+      gOver.classList.toggle('is-wait', hide);
+      if(hide) return;
+      var s = [stats(0), stats(1)];
+      if(!s[0] || !s[1]) return;
+      shown = s;
+      var ys = s.map(function(x){ return yOf(x.m); });
+      [0, 1].forEach(function(g){
+        var G0 = G.g[g], e = gOver.querySelector('.dd2-mean[data-g="' + g + '"]');
+        e.querySelector('.dd2-mline').setAttribute('d', 'M' + n1(G0.a - 2) + ' ' + n1(ys[g]) + 'H' + n1(G0.b + 2));
+        e.querySelector('.dd2-conn').setAttribute('d', 'M' + n1(g ? G0.x0 : G0.x1) + ' ' + n1(ys[g]) + 'H' + n1(G.cx));
+        var t = fmt(s[g].m) + ' cm', size = G.phone ? 12.5 : 14, w = tw(t, size) + 14;
+        pill(gOver.querySelector('.dd2-mp[data-g="' + g + '"]'), g ? G0.b - w / 2 - 2 : G0.a + w / 2 + 2, ys[g], t);
+        var er = gOver.querySelector('.dd2-err[data-g="' + g + '"]'), showE = St.tab === 'n' && s[g].se != null;
+        er.setAttribute('visibility', showE ? 'visible' : 'hidden');
+        if(showE){
+          var y1 = yOf(s[g].m + 2 * s[g].se), y2 = yOf(s[g].m - 2 * s[g].se), x = G0.err, c = 5;
+          er.querySelector('.dd2-ebar').setAttribute('d', 'M' + n1(x) + ' ' + n1(y1) + 'V' + n1(y2) + 'M' + n1(x - c) + ' ' + n1(y1) + 'H' + n1(x + c) + 'M' + n1(x - c) + ' ' + n1(y2) + 'H' + n1(x + c));
+          var d = er.querySelector('.dd2-edot'); d.setAttribute('cx', n1(x)); d.setAttribute('cy', n1(ys[g]));
+        }
+      });
+      // "±2 SE" names the test group's bar, at its top on the inner side
+      var se = gOver.querySelector('.dd2-se'), showS = St.tab === 'n' && s[1].se != null;
+      se.setAttribute('visibility', showS ? 'visible' : 'hidden');
+      // above the bar's top cap, on the gap side, clear of the plants
+      var seFs = G.phone ? 11 : 12.5, seY = yOf(s[1].m + 2 * s[1].se) - 7;
+      if(showS){ se.setAttribute('x', n1(G.g[1].err + 3)); se.setAttribute('y', n1(seY)); se.setAttribute('text-anchor', 'end'); se.style.fontSize = seFs + 'px'; }
+      // the bracket between the two means, and the difference of the two means as shown (rounded first)
+      var dv = St.tab === 'fair' ? Math.round(s[1].m) - Math.round(s[0].m) : Math.round(Math.round(s[1].m * 10) - Math.round(s[0].m * 10)) / 10;
+      var dt = dv === 0 ? 'same' : (dv > 0 ? '+' : MINUS) + (St.tab === 'fair' ? Math.abs(dv) : Math.abs(dv).toFixed(1)) + ' cm';
+      var br = gOver.querySelector('.dd2-br'), yA = Math.min(ys[0], ys[1]), yB = Math.max(ys[0], ys[1]), c2 = 6;
+      // a plain line (no end caps: it must not look like a third error bar)
+      br.querySelector('.dd2-brl').setAttribute('d', yB - yA > 1 ? 'M' + n1(G.cx) + ' ' + n1(yA) + 'V' + n1(yB) : '');
+      var ph = (G.phone ? 12.5 : 14) + 9, py = yB - yA > ph + 10 ? (yA + yB) / 2 : yA - ph / 2 - 6;
+      // with error bars beside the gap, the difference goes above both bars
+      if(St.tab === 'n' && s[0].se != null){ var bt = Math.min(yA, yOf(s[0].m + 2 * s[0].se), seY - seFs - 2); py = Math.max(ph / 2 + 4, bt - ph / 2 - 8); }
+      pill(br, G.cx, py, dt);
+    }
+    function waiting(on){ stage.classList.toggle('is-busy', !!on); }
+
+    /* ---- the words: set when the plants have settled */
+    function chain(){
+      var s = shown;
+      if(St.tab === 'fair'){
+        var D = differs(), first = !D.length ? 'Nothing differs' : D.length === 1 ? 'Only ' + D[0].name + ' differs' : cap(D.length === 2 ? D[0].name + ' and ' + D[1].name : D[0].name + ', ' + D[1].name + ' and ' + D[2].name) + ' differ';
+        var head1 = { t: first, role: 'diff' };
+        if(busy() || !s) return [head1, { t: 'Growing', role: 'ink' }];
+        var d = Math.round(s[1].m) - Math.round(s[0].m), res = d === 0 ? 'Same height' : 'Test ' + Math.abs(d) + ' cm ' + (d > 0 ? 'taller' : 'shorter');
+        var end = !D.length ? { t: 'Nothing is tested', role: 'bad' } : D.length === 1 ? { t: cap(D[0].name) + ' made the difference', role: 'ok' } : { t: 'Can’t tell which did it', role: 'bad', say: 'you cannot tell which one caused it' };
+        return [head1, { t: res, role: 'res' }, end];
+      }
+      var nn = St.n + (St.n === 1 ? ' plant each' : ' plants each'), h0 = { t: nn, role: 'diff' };
+      if(busy() || !s) return [h0, { t: 'Growing', role: 'ink' }];
+      if(St.n === 1) return [h0, { t: 'No spread to measure', role: 'res' }, { t: 'Can’t tell', role: 'bad', say: 'you cannot tell if it is chance' }];
+      var ov = s[0].m + 2 * s[0].se >= s[1].m - 2 * s[1].se && s[1].m + 2 * s[1].se >= s[0].m - 2 * s[0].se;
+      return ov ? [h0, { t: 'Bars overlap', role: 'res' }, { t: 'Could be chance', role: 'bad' }] : [h0, { t: 'Bars apart', role: 'res' }, { t: 'Unlikely to be chance', role: 'ok' }];
+    }
+    var lastSay = '';
+    function settled(){
+      waiting(false);
+      words(); refHtml();
+      var t = cause.text();
+      if(t !== lastSay){ lastSay = t; say(t); }
+    }
+    function words(){
+      cause.set(chain());
+      var s = shown;
+      svg.setAttribute('aria-label', 'A bench of bean plants after 3 weeks. Control group ' + (s ? 'mean ' + fmt(s[0].m) + ' cm' : '') + '; test group ' + (s ? 'mean ' + fmt(s[1].m) + ' cm' : '') + '. ' + cause.text());
+      stage.setAttribute('data-tab', St.tab);
+      stage.setAttribute('data-diff', differs().map(function(x){ return x.id; }).join(','));
+      stage.setAttribute('data-n', count());
+    }
+
+    /* ---- controls: the three things on the test side (Fair test), the knob (Sample size) */
+    function toggle(j){
+      hideCue(true); tourDid('tap');
+      var it = ITEMS[j]; St.cond[it.id] = !St.cond[it.id];
+      paintItems(); sync(); words();
+      say('Test group: ' + (St.cond[it.id] ? it.diff : it.same).toLowerCase() + '.');
+    }
+    function tapBoxes(){
+      var yb = G.yFront - 4, s = G.phone ? 1.05 : 1.5;
+      return ITEMS.map(function(it, j){ var w = (G.g[1].x1 - G.g[1].x0) / 3 - 2, x = itemX(1, j), top = yb - 37 * s - 5; return [x - w / 2, top, w, G.yFront + (G.phone ? 44 : 50) - top]; });
+    }
+    var knob = null;
+    function knobTrack(){ var y = G.H - (G.phone ? 26 : 30), inset = G.phone ? 34 : 40; return [G.g[0].x0 + inset, y, G.g[1].x1 - inset, y]; }
+    function setN(v){
+      v = Math.round(v); if(v === St.n) return;
+      hideCue(true); tourDid('drag');
+      St.n = v; sizes(); rebuildPlants(); sync(); wordsSoon();
+    }
+    /* The sizes that follow the count (pots, leaves), from the layout already made: no reading of the page. */
+    function sizes(){
+      if(!G) return;
+      var n = count(), slot = (G.g[0].b - G.g[0].a) / n;
+      G.n = n; G.slot = slot; G.pw = Math.max(9, Math.min(G.phone ? 30 : 44, slot * 0.7)); G.leaf = Math.max(7, Math.min(G.phone ? 14 : 26, slot * 0.5));
+    }
+    var wDirty = false;
+    function wordsSoon(){ wDirty = true; kick(); }
+
+    /* ---- the cue and "Show me how" */
+    var cue = K.cue(layer, { key: 'apbio-design-fair', text: 'Tap the water', side: 'above', at: function(){ if(!G) return [0, 0]; return [itemX(1, 0), G.yFront - (G.phone ? 40 : 50)]; } });
+    var cueN = K.cue(layer, { key: 'apbio-design-n', text: 'Drag for more plants', side: 'right', at: function(){ if(!G || !knob) return [0, 0]; var t = knobTrack(), f = (St.n - 1) / (EXM.max - 1); return [t[0] + (t[2] - t[0]) * f + 18, t[1]]; } });
+    function curCue(){ return St.tab === 'fair' ? cue : cueN; }
+    function hideCue(used){ var c = curCue(); if(c.active()) c.hide(used); }
+    function showCue(){ cue.hide(false); cueN.hide(false); if(St.mode === 'explore') curCue().show(); }
+    var tour = K.tour({ key: 'apbio-design', label: 'Show me how', steps: [
+      { id: 'tap', text: 'Tap the water, the plant food or the warmth on the test side.', target: function(){ return St.tab === 'fair' ? tapB[0].el : knob.el; } },
+      { id: 'read', text: 'Amber rings mark everything that differs between the groups.', target: function(){ return sceneBox; } },
+      { id: 'why', text: 'The line below says whether the difference can be trusted.', target: function(){ return cause.el; } }],
+      onClose: function(had){ if(had) try{ head.how.focus({ preventScroll: true }); }catch(e){} } });
+    var tourN = K.tour({ key: 'apbio-design-n', label: 'Show me how', steps: [
+      { id: 'drag', text: 'Drag for more plants in each group.', target: function(){ return knob.el; } },
+      { id: 'read', text: 'Each bar is ±2 SE. Bars that overlap mean it could be chance.', target: function(){ return sceneBox; } },
+      { id: 'new', text: 'New plants grows the same experiment again.', target: function(){ return bNew; } }],
+      onClose: function(had){ if(had) try{ head.how.focus({ preventScroll: true }); }catch(e){} } });
+    function curTour(){ return St.tab === 'fair' ? tour : tourN; }
+    function tourDid(id){ var t = curTour(); if(t.active()) t.did(id); }
+    function startTour(){ if(St.mode !== 'explore') return; hideCue(false); curTour().start(true); }
+
+    /* ---- layout and tabs */
+    function layoutNow(force){
+      var g = layout(); if(!g) return;
+      var same = !force && G && g.W === G.W && g.H === G.H && g.frontH === G.frontH, onlyN = same && g.n !== G.n;
+      G = g;
+      if(onlyN) rebuildPlants();
+      FAM = getComputedStyle(svg).fontFamily || FAM;
+      if(!same){
+        svgs.forEach(function(x){ x.setAttribute('viewBox', '0 0 ' + G.W + ' ' + G.H); });
+        sceneBox.setAttribute('data-k', G.k); sceneBox.setAttribute('data-ysoil', G.ySoil);
+        gBack.innerHTML = backSvg(); gMats.innerHTML = matSvg(); gFront.innerHTML = frontSvg(); gItems.innerHTML = itemsSvg(); gLabs.innerHTML = labsSvg();
+        if(!gOver.firstChild) gOver.innerHTML = overSvg();
+        paintItems(); rebuildPlants(); paintOver();
+        var bx = tapBoxes(); tapB.forEach(function(b, j){ b.place(bx[j]); });
+        if(knob) knob.place(knobTrack());
+      }
+      if(cue.active()) cue.place(); if(cueN.active()) cueN.place();
+      if(tour.active()) tour.place(); if(tourN.active()) tourN.place();
+      if(!P[0].length && !P[1].length){ sync(); words(); }
+    }
+    function setTab(v, user){
+      if(v !== St.tab){ hideCue(false); if(tour.active()) tour.stop(); if(tourN.active()) tourN.stop(); }
+      var was = St.tab; St.tab = v; tabs.value(v);
+      head.purpose(v === 'fair' ? 'See why only one thing may differ.' : 'See why one plant per group is not enough.');
+      bNew.hidden = v !== 'n'; bReset.hidden = v !== 'fair';
+      if(knob) knob.hide(v !== 'n');
+      layoutNow(true);
+      paintItems();
+      if(was !== v || !P[0].length) sync(user || P[0].length ? 'regrow' : 'quick');
+      words();
+      if(user) showCue();
+    }
+    if(window.ResizeObserver) new ResizeObserver(function(){ layoutNow(); }).observe(sceneBox); else window.addEventListener('resize', function(){ layoutNow(); });
+
+    // the controls go on the layer once there is a layout
+    ITEMS.forEach(function(it, j){ tapB.push(K.tap(layer, { key: j === 0 ? 'apbio-design-water' : null, chip: false, label: it.same, box: [0, 0, 10, 10], pressed: !!St.cond[it.id], onClick: function(){ toggle(j); } })); });
+    knob = K.drag(layer, { key: 'apbio-design-n', label: 'Plants per group', min: 1, max: EXM.max, step: 1, value: St.n, track: [0, 0, 10, 0], chip: false,
+      valuetext: function(v){ return v + (v === 1 ? ' plant' : ' plants') + ' per group'; }, tag: function(v){ return v + (v === 1 ? ' plant' : ' plants'); }, onInput: setN });
+    knob.el.classList.add('dd2-knob-n');
+    bNew.addEventListener('click', function(){
+      hideCue(true); tourDid('new'); intoView();
+      St.batch++; DEV2 = batchDev(St.batch); sync('regrow'); words();
+    });
+    bReset.addEventListener('click', function(){ hideCue(true); intoView(); St.cond = { water: false, food: true, warm: false }; paintItems(); sync(); words(); });
+    function intoView(){ try{ var r = sceneBox.getBoundingClientRect(), vh = window.innerHeight || 0; if(r.top < 0 || r.bottom > vh) sceneBox.scrollIntoView({ block: r.height > vh ? 'start' : 'center', behavior: calm() ? 'auto' : 'smooth' }); }catch(e){} }
+
+    /* ---- "?": the terms, the bench's invented numbers, the error bars, the drill filter */
+    var ref = document.createElement('div'); ref.className = 'ls-sec dd2-ref';
+    ref.innerHTML = '<h3 class="ls-title-l">What the bench shows</h3>' +
+      '<p class="dd2-ref-p"><b>Independent variable:</b> the one thing you change on purpose (here, plant food for the test group). <b>Dependent variable:</b> what you measure (the height after 3 weeks). <b>Controlled variables:</b> everything kept the same in both groups (the light, the water, the warmth, the pots, the seeds). <b>Control group:</b> the group with no plant food, the baseline to compare with.</p>' +
+      '<p class="dd2-ref-p"><b>Confounding variable:</b> a second difference between the groups that could also change the result. With two differences you cannot say which one caused it, even when the second one turns out to do nothing. List what differs between the groups: there should be one thing on that list.</p>' +
+      '<p class="dd2-ref-p"><b>Sample size and error bars.</b> Plants of one seed lot still differ by chance. The bars on Sample size are ±2 standard errors (SE = s ÷ √n), about a 95% confidence interval. Bars that do not overlap mean the difference is unlikely to be chance; bars that overlap mean the data do not show a difference. Data support a claim or fail to support it; they never prove it.</p>' +
+      '<p class="dd2-ref-p"><b>This bench is a made up example.</b> Bean plants grow to 18 cm on average in 3 weeks; plant food adds 6 cm, less water takes away 7 cm, a warmer mat adds 6 cm, and plants vary by chance with a standard deviation of 3 cm. Each of these is big enough that, with 6 plants a group, the ±2 SE bars of the two groups would not overlap. Light is the same for both groups: very dim light can make seedlings grow taller and thinner, so height alone would mislead.</p>' +
+      '<div class="dd2-ref-live"></div>' +
+      '<p class="dd2-ref-p">Notes: <a href="../notes/design-variables.html">Independent and dependent variables</a> · <a href="../notes/design-controls.html">Controls</a> · <a href="../notes/stats-confidence-intervals.html">Confidence intervals</a></p>' +
+      '<div class="dd2-ref-drill"><h3 class="ls-title-l">Practice one kind of drill</h3></div>' +
+      '<p class="dd2-ref-p"><button type="button" class="tk2-how dd2-ref-how">Show me how</button> <button type="button" class="tk2-link dd2-ref-prac">Go to the experiment drills</button></p>';
+    var refLive = ref.querySelector('.dd2-ref-live');
+    ref.querySelector('.dd2-ref-how').addEventListener('click', function(){ if(ctx.studio){ if(ctx.studio.kit2 && ctx.studio.kit2.mode() !== 'explore') ctx.studio.kit2.go('explore'); if(ctx.studio.close) ctx.studio.close(); } setTimeout(startTour, 60); });
+    ref.querySelector('.dd2-ref-prac').addEventListener('click', function(){ if(ctx.studio && ctx.studio.kit2){ if(ctx.studio.close) ctx.studio.close(); ctx.studio.kit2.go('quiz', 'drills'); } });
+    function refHtml(){
+      var s = shown; if(!s) return;
+      var rows = [0, 1].map(function(g){ var a = P[g].filter(function(p){ return !p.gone; }).map(function(p){ return fmt(p.h); }); return '<tr><th scope="row">' + (g ? 'Test' : 'Control') + '</th><td>' + a.join(', ') + '</td><td>' + fmt(s[g].m) + '</td>' + (St.tab === 'n' ? '<td>' + (s[g].se == null ? '–' : '±' + (2 * s[g].se).toFixed(1)) + '</td>' : '') + '</tr>'; }).join('');
+      refLive.innerHTML = '<div class="table-wrap"><table><caption>Heights on the bench now (cm)</caption><thead><tr><th scope="col">Group</th><th scope="col">Each plant</th><th scope="col">Mean</th>' + (St.tab === 'n' ? '<th scope="col">±2 SE</th>' : '') + '</tr></thead><tbody>' + rows + '</tbody></table></div>';
+    }
+
+    function onShow(mode){
+      St.mode = mode;
+      if(mode === 'explore'){ setTimeout(function(){ layoutNow(true); paintItems(); showCue(); }, 0); }
+      else { cue.hide(false); cueN.hide(false); if(tour.active()) tour.stop(); if(tourN.active()) tourN.stop(); paintItems(); finishAll(); }
+    }
+    /* Leaving Explore: every change lands at once, the frame loop stops, and the words settle (nothing runs on a
+       hidden stage). */
+    function finishAll(){
+      if(raf){ cancelAnimationFrame(raf); raf = 0; }
+      P.forEach(function(a){
+        for(var i = a.length - 1; i >= 0; i--){
+          var p = a[i];
+          if(p.next){ p.to = p.next.to; p.next = null; }
+          if(p.to){ p.h = p.to.h; p.x = p.to.x; p.op = p.to.op; p.dry = p.to.dry; p.to = null; }
+          p.soil = false;
+          if(p.gone){ if(p.el) p.el.remove(); a.splice(i, 1); continue; }
+          if(p.el && G) paintPlant(p);
+        }
+      });
+      if(!G) return;
+      paintOver(); wDirty = false; settled();
+    }
+    setTab('fair', false);
+    return { stage: stage, ref: ref, refDrill: ref.querySelector('.dd2-ref-drill'), onShow: onShow, first: function(){ layoutNow(true); setTimeout(function(){ layoutNow(true); if(St.mode === 'explore') showCue(); }, 60); } };
+  }
+
+  /* TEST YOURSELF, "Experiment drills": the old Tool Studio arrangement, unchanged in content, grading and record
+     ids, handed to the kit adapter as one part with its own picture (the part's stage: the experiment's drawn setup,
+     its chart and table, with The setup / The results) and its dock (the drills one at a time). The experiment is
+     chosen on the stage (the Experiment dropdown, quiz only); the drill filter is in "?". */
+  function drillsPart(app, s, refDrill){
     var pick = app.querySelector('.dr-pick'), host = app.querySelector('.dr-scen');
-    // "How this works" (what each drill practices and how it is checked) is the Why.
-    Array.prototype.slice.call(app.children).forEach(function(k){ if(k.matches('.bt-intro')) s.add('about', k); if(k.matches('details.bt-how')){ k.open = true; s.add('why', k); } });
-    T.studioKeep(s);
-    var stage = document.createElement('div'), det = document.createElement('div'), dock = document.createElement('div');
-    stage.className = 'ls-dr-stage'; det.className = 'ls-sec'; dock.className = 'ls-dr-dock';
-    s.add('stage', stage); s.add('details', det);
+    var stage = document.createElement('div'), dock = document.createElement('div');
+    stage.className = 'ls-dr-stage'; dock.className = 'ls-dr-dock';
     var sels = pick.querySelectorAll(':scope > .bt-ctl');
-    if(sels[1]) det.appendChild(sels[1]);
-    s.add('dock', pick); s.add('dock', dock);
+    if(sels[1] && refDrill) refDrill.appendChild(sels[1]);
+    dock.appendChild(pick);
     var wrap = null, view = 'setup', auto = true;
-    /* Pass 2 (2026-11-10): one picture at a time. Setup (the drawn experiment
-       and its text) or Results (the charts and the data table); the drills
-       that read the data (claim and evidence, predict, the written answers)
-       switch to Results, the others to Setup, until the student picks. */
     var DATA_DRILLS = { cer: 1, predict: 1 };
+    /* The setup (or the results chart) is scaled to the stage's own height, so the side panel never cuts it: from the
+       svg's top to the stage's bottom, less "Read the setup" under it and the Enlarge button's corner. It never shrinks
+       below the size where its smallest label (the icons' own small glyphs aside) is 11 px tall on screen, or the
+       full width if that is less; when the stage is too short for that, the stage takes the height it needs (its
+       min-height), so the side panel starts below the drawing (review recheck 1). */
+    var fitQ = 0, LEG = 11;
+    function fitPic(){
+      fitQ = 0;
+      if(stage.hidden || !stage.getClientRects().length) return;
+      var host = stage.closest('.ls-stage-body') || stage.parentNode, stg = stage.closest('.ls-stage') || host;
+      stg.style.minHeight = '';   // measured from the stage's own height each time
+      var enl = stg.querySelector('.ls-enl'), er = enl && enl.getClientRects().length ? enl.getBoundingClientRect() : null;
+      var foot = er && er.width ? stg.getBoundingClientRect().bottom - er.top + 4 : 0;
+      var rd = stage.querySelector('.dr-readsetup'), under = rd && !rd.hidden && rd.getClientRects().length ? rd.querySelector('summary').getBoundingClientRect().height + 10 : 0;
+      var needStage = 0;
+      stage.querySelectorAll('.dr-sfig, .dr-charts svg').forEach(function(sv){
+        if(!sv.getClientRects().length) return;
+        var vb = sv.viewBox && sv.viewBox.baseVal, r = sv.getBoundingClientRect(), w = r.width;
+        if(!vb || !vb.width || !w || !r.height) return;
+        // the smallest text's font size in viewBox units (the icons' own glyphs included: every text 11 px or more). On a phone the studio
+        // raises small svg text to 12 px on screen (data-ls-fs0); there the drawing takes its full width, so the raised
+        // labels have the room they had before
+        var unit = 1e9, raised = false;
+        sv.querySelectorAll('text').forEach(function(t){ if(!t.textContent.trim()) return; if(t.hasAttribute('data-ls-fs0')) raised = true; else unit = Math.min(unit, parseFloat(getComputedStyle(t).fontSize) || 1e9); });
+        var full = w * vb.height / vb.width, legible = raised || unit >= 1e9 ? full : Math.min(full, vb.height * LEG / unit);
+        var lim = Math.min(host.getBoundingClientRect().bottom, stg.getBoundingClientRect().bottom - foot);
+        var avail = lim - r.top - 6 - (sv.classList.contains('dr-sfig') ? under : 0);
+        var h = Math.min(full, Math.max(legible, avail));
+        sv.style.height = Math.floor(h) + 'px';
+        // the stage's height that shows the whole drawing at that size
+        if(h > avail + 0.5) needStage = Math.max(needStage, r.top - stg.getBoundingClientRect().top + h + 6 + (sv.classList.contains('dr-sfig') ? under : 0) + foot);
+      });
+      if(needStage) stg.style.minHeight = Math.ceil(needStage) + 'px';
+    }
+    function unfit(){ var stg = stage.closest('.ls-stage'); if(stg) stg.style.minHeight = ''; }
+    function fitSoon(){ if(!fitQ) fitQ = requestAnimationFrame(fitPic); }
+    window.addEventListener('resize', fitSoon);
+    if(window.ResizeObserver) new ResizeObserver(fitSoon).observe(stage);
     function setView(v, byHand){
       if(byHand) auto = false;
-      view = v; stage.classList.toggle('dr-show-data', v === 'data');
+      view = v; stage.classList.toggle('dr-show-data', v === 'data'); fitSoon();
       var rs = stage.querySelector('.dr-readsetup'); if(rs) rs.hidden = v === 'data';
       stage.querySelectorAll('.dr-view button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === v)); });
     }
@@ -723,14 +1368,13 @@
       var d = cur.classList.contains('bt-frq') ? 'cer' : cur.getAttribute('data-drill');
       setView(DATA_DRILLS[d] ? 'data' : 'setup');
     }
+    var scenSel = app.querySelector('.dr-pick select') || pick.querySelector('select');
+    function task(){ return { kicker: 'Experiment ' + (scenSel ? (scenSel.selectedIndex + 1) + ' of ' + scenSel.options.length : ''), title: 'Look at the experiment, then answer one drill at a time.' }; }
     function arrange(){
       if(!host.children.length) return;
       stage.innerHTML = '';
       Array.prototype.slice.call(host.querySelectorAll(':scope > h2, :scope > .dr-schem, :scope > .bt-context, :scope > .table-wrap')).forEach(function(x){ stage.appendChild(x); });
-      var h2 = stage.querySelector('h2'); if(h2) h2.classList.add('ls-title-l');
-      // The standard frame: the stage's dropdown already names the experiment.
-      if(h2 && s.root.classList.contains('ls-std')) h2.classList.add('sr-only');
-      // pass 3 (2026-11-11): the picture carries the setup; its full paragraph opens on tap
+      var h2 = stage.querySelector('h2'); if(h2){ h2.classList.add('ls-title-l'); h2.classList.add('sr-only'); }
       var ctxEl = stage.querySelector(':scope > .bt-context');
       if(ctxEl){ var rd = document.createElement('details'); rd.className = 'bt-data dr-readsetup'; rd.innerHTML = '<summary>Read the setup</summary>'; ctxEl.parentNode.insertBefore(rd, ctxEl); rd.appendChild(ctxEl); }
       if(stage.querySelector('.dr-charts') || stage.querySelector('.table-wrap')){
@@ -740,24 +1384,21 @@
         if(h2) h2.after(vw); else stage.insertBefore(vw, stage.firstChild);
       }
       auto = true; setView('setup');
+      [60, 300, 900].forEach(function(t){ setTimeout(fitSoon, t); });
       var w = document.createElement('div'); w.className = 'ls-dr-steps';
       Array.prototype.slice.call(host.children).forEach(function(x){ w.appendChild(x); });
       if(wrap) wrap.remove();
       wrap = w; dock.appendChild(w);
       window.LevlStudio.stepper(w, { items: ':scope > .dr-sec, :scope > .bt-frq', label: 'Drill' });
       if(window.MutationObserver) new MutationObserver(follow).observe(w, { subtree: true, attributes: true, attributeFilter: ['class'] });
-      if(std){
-        // The standard frame: the side panel's head says what to do; the finished card comes when every drill is done.
-        s.done(false);
-        s.task({ kicker: 'Experiment ' + (scenSel ? (scenSel.selectedIndex + 1) + ' of ' + scenSel.options.length : ''), title: 'Look at the experiment, then answer one drill at a time.' });
-        s.caption('');
-      } else s.caption('Look at the experiment, then answer one drill at a time.');
-      s.pills([]);
+      s.done(false, 'quiz');
+      if(s.kit2 && s.kit2.mode() === 'quiz') s.task(task(), 'quiz');
+      s.caption('', 'quiz');
+      s.pills([], null, 'quiz');
     }
-    var std = s.root.classList.contains('ls-std'), scenSel = s.root.querySelector('.dr-pick select') || app.querySelector('.dr-pick select');
     /* Every drill of this experiment checked (and each written answer has its rubric): the finished card. */
     function finished(){
-      if(!std || !wrap) return;
+      if(!wrap) return;
       var secs = wrap.querySelectorAll(':scope > .dr-sec'), frqs = wrap.querySelectorAll(':scope > .bt-frq'), r = 0, n = 0, all = true;
       Array.prototype.forEach.call(secs, function(x){ var m = /(\d+) of (\d+)/.exec((x.querySelector('.bt-result') || {}).textContent || ''); if(!m){ all = false; return; } r += +m[1]; n += +m[2]; });
       Array.prototype.forEach.call(frqs, function(f){ if(!f.querySelector('.bt-rubric')) all = false; });
@@ -766,19 +1407,29 @@
       s.done({ kicker: r === n ? 'Solved' : 'Finished', title: T.esc(r + ' of ' + n + ' right on this experiment.'),
         text: frqs.length ? 'Score your written answers with their rubrics.' : 'The feedback is under each answer.',
         next: scenSel ? { label: 'Next experiment', onClick: function(){ scenSel.selectedIndex = (scenSel.selectedIndex + 1) % scenSel.options.length; scenSel.dispatchEvent(new Event('change', { bubbles: true })); } } : null,
-        links: [{ label: 'Review your answers', onClick: function(){ s.done(false); } }, { label: 'How the drills work', open: 'why' }]
-          .concat(les ? [{ label: 'Read the lesson: ' + les.textContent.replace(/^\s*Lesson\s*/, '').trim(), href: les.getAttribute('href') }] : []) });
+        links: [{ label: 'Review your answers', onClick: function(){ s.done(false, 'quiz'); } }, { label: 'How the drills work', open: 'about' }]
+          .concat(les ? [{ label: 'Read the lesson: ' + les.textContent.replace(/^\s*Lesson\s*/, '').trim(), href: les.getAttribute('href') }] : []) }, 'quiz');
     }
     // Feedback lands on the stage: the last checked drill's score as a pill.
     dock.addEventListener('submit', function(){ setTimeout(function(){
       var r = Array.prototype.filter.call(dock.querySelectorAll('.dr-sec:not(.ls-step-off) .bt-result'), function(x){ return x.textContent; })[0];
       var m = r && /(\d+) of (\d+)/.exec(r.textContent);
-      if(m){ s.pills([{ html: m[1] + ' of ' + m[2] + ' right', tone: m[1] === m[2] ? 'good' : 'warn' }]); s.caption('<b>' + T.esc(r.textContent) + '</b> The feedback is under each answer. Next goes on to the next drill.'); }
+      if(m) s.pills([{ html: m[1] + ' of ' + m[2] + ' right', tone: m[1] === m[2] ? 'good' : 'warn' }], null, 'quiz');
       finished();
     }, 0); });
     if(window.MutationObserver) new MutationObserver(arrange).observe(host, { childList: true });
     arrange();
-    app.hidden = true;
-    s.hint({ target: '.ls-dr-steps .bt-radio', text: 'Read the setup, then pick an answer', above: true });
+    if(scenSel) scenSel.addEventListener('change', function(){ setTimeout(function(){ if(s.kit2 && s.kit2.mode() === 'quiz') s.task(task(), 'quiz'); }, 0); });
+    return { value: 'drills', label: 'Experiment drills', stage: stage, dock: dock, task: task, fit: function(){ [0, 120, 500, 1200].forEach(function(t){ setTimeout(fitSoon, t); }); }, unfit: unfit };
+  }
+
+  /* The kit adapter's settings: the bench is the Explore stage, the drills are the one Test yourself part. */
+  function kit2(ctx){
+    var app = document.getElementById('app'), s = ctx.studio;
+    var part = drillsPart(app, s, EXP.refDrill);
+    var sel = EXP.refDrill.querySelector('select');
+    if(sel) sel.addEventListener('change', function(){ if(s.kit2){ if(s.close) s.close(); s.kit2.go('quiz', 'drills'); } });
+    setTimeout(EXP.first, 0);
+    return { stage: EXP.stage, ref: EXP.ref, parts: [part], onShow: function(mode){ if(mode === 'explore') part.unfit(); EXP.onShow(mode); if(mode !== 'explore') part.fit(); } };
   }
 })();
