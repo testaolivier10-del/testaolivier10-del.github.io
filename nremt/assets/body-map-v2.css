@@ -25,8 +25,8 @@
 .nx-body-map .bm2-home .bv-canvas{width:100%;height:100%;min-height:0;}
 .nx-body-map .bm2-home .legend{left:10px;bottom:10px;max-width:calc(100% - 20px);}
 .nx-body-map .bm2-home .bv-reset{top:10px;right:10px;}
-.bm2.has-card .bm2-home .legend{opacity:0;pointer-events:none;transition:opacity .18s;}
-@media (min-width:700px){ .bm2.has-card .bm2-home .legend{opacity:1;pointer-events:auto;} }
+.bm2[data-card] .bm2-home .legend{opacity:0;pointer-events:none;transition:opacity .18s;}
+@media (min-width:700px){ .bm2[data-card] .bm2-home .legend{opacity:1;pointer-events:auto;} }
 
 /* Find a part: a dropdown on the picture, top left (the viewer's Reset view is top right) */
 .bm2-find{position:absolute;left:10px;top:10px;z-index:4;display:block;}
@@ -98,7 +98,7 @@
 /* the figures from burns.js, side by side, as large as the picture allows */
 .nx-body-map .bm2-figs{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:minmax(0,1fr);gap:0 8px;margin:4px 0 0;padding:0;border:0;box-shadow:none;background:none;position:relative;}
 .nx-body-map .bm2-figs .bn-fig{display:flex;flex-direction:column;min-height:0;}
-.nx-body-map .bm2-figs .bn-fig figcaption{font:800 13px var(--font-ui);text-transform:none;letter-spacing:0;color:var(--muted);margin:0 0 2px;}
+.nx-body-map .bm2-figs .bn-fig figcaption{align-self:center;font:800 13px var(--font-ui);text-transform:none;letter-spacing:0;color:var(--muted);margin:0 0 2px;}
 .nx-body-map .bm2-figs .bn-svg{flex:1;min-height:0;height:100%;max-height:none;}
 .nx-body-map .bm2-figs .bn-total{display:none;}
 .bm2-burn .bn-shape{transition:none;}

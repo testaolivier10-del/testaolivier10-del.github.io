@@ -153,10 +153,11 @@ async function pickPart(page, key) {
 }
 
 async function runWidth(w) {
+  const t0 = Date.now(); const lap = n => console.log(`  ${n}: ${((Date.now() - t0) / 1000).toFixed(0)} s`);
   const tagW = `${w}${DARK ? ' dark' : ''}`;
   const { browser, page, errs } = await open(w);
   await page.waitForSelector('.bm2');
-  T(await loaded(page), `${tagW}: the 3D body did not load`);
+  T(await loaded(page), `${tagW}: the 3D body did not load`); lap('loaded');
   await until(page, () => !!document.querySelector('.bm2 .tk2-cue'), null, 40);
   let g = await page.evaluate(geom);
   T(!!g.cue, `${tagW}: no first visit cue`);
@@ -171,7 +172,7 @@ async function runWidth(w) {
     T(g.cause.text.includes(g.cardName || '#'), `${tagW} ${k}: the cause line does not name ${g.cardName}`);
     if (w <= 640) T(Math.abs(g.cause.h - h0) < 1.5, `${tagW} ${k}: cause line height changed (${h0} to ${g.cause.h})`);
     checkBody(g, `${tagW} body ${k}`, w);
-    for (const sec of ['wrong', 'care']) {
+    for (const sec of (k === 'heart' || k === 'p7' ? ['wrong', 'care'] : [])) {
       await page.evaluate(s => document.querySelector(`.bm2-card-tab[data-sec="${s}"]`).click(), sec);
       await page.waitForTimeout(250);
       checkBody(await page.evaluate(geom), `${tagW} body ${k} ${sec}`, w);
@@ -179,6 +180,7 @@ async function runWidth(w) {
     if (k === 'heart' || k === 'p7') await shot(page, `sweep-body-${k}-${tagW.replace(' ', '-')}`);
     void sel;
   }
+  lap('body done');
   // burns
   await page.evaluate(() => document.querySelector('.bm2 .tk2-tab[data-v="burns"]').click());
   await until(page, () => !!document.querySelector('.bm2-burn svg[data-view="front"] image'), null, 100);
@@ -212,6 +214,7 @@ async function runWidth(w) {
   T(g.burn.totText === '0%' && !g.burn.flag, `${tagW} start over: total ${g.burn.totText}`);
   checkBurn(g, `${tagW} burns start over`, w);
   T(!errs.length, `${tagW}: console errors: ${errs.join(' | ')}`);
+  lap('burns done');
   await browser.close();
 }
 

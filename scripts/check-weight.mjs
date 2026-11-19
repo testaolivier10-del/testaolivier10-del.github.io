@@ -81,7 +81,9 @@ const SHELL_BUDGETS = [
      load on demand, as before, and are not counted. */
   /* Measured 14.8 KB (the old nremt/assets/body-viewer.js with its content was 26.5 KB). */
   /* 15 -> 16 (2026-10-27): landmark dots, so pulse points and other landmarks can be tapped on the model. */
-  ['assets/body3d', 16],
+  /* 16 -> 16.4 (tools v2 NREMT body map, 2026-11-18): viewer.js project(), flying() and the frame and hover events
+     a card on the picture follows; measured 16.3 KB. */
+  ['assets/body3d', 16.4],
   /* 249 -> 253 for cross-device sync (audit 2026-10, Fix-first 5). A sync
      used to replace whole namespaces and pull only on sign-in, so two signed-in
      devices erased each other's progress. account.js now carries a per-key

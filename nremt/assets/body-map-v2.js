@@ -228,7 +228,7 @@
       cardB.innerHTML = sectionHtml(c, 'does');
       card.classList.remove('is-in'); lead.classList.remove('is-in');
       card.hidden = false; lead.style.display = '';
-      stage.classList.add('has-card');
+      stage.setAttribute('data-card', '1');
       place(true);
       void card.offsetWidth;
       card.classList.add('is-in'); lead.classList.add('is-in');
@@ -239,7 +239,7 @@
     function closeCard(quick){
       St.card = null;
       card.classList.remove('is-in'); lead.classList.remove('is-in');
-      stage.classList.remove('has-card');
+      stage.removeAttribute('data-card');
       if(quick || K.reduced()){ card.hidden = true; lead.style.display = 'none'; return; }
       setTimeout(function(){ if(!St.card){ card.hidden = true; lead.style.display = 'none'; } }, 180);
     }
@@ -392,13 +392,13 @@
         return W < 700 ? [W * 0.5, H * 0.33] : [W * 0.5 + Math.min(H * 0.15, W * 0.2), H * 0.27];
       } });
       if(!layerB) return null;
-      return K.cue(layerB, { key: 'nremt-body-map-burns', text: 'Tap a region', side: 'below', at: function(){
+      return K.cue(layerB, { key: 'nremt-body-map-burns', text: 'Tap a region', side: 'above', at: function(){
         var sv = burn.querySelector('svg[data-view="front"]'), k = layerB.scale() || 1, F = window.LevlBodyFigs;
         var f = F && F.figs[(BI && BI.child() ? 'child' : 'adult') + '-front'];
         if(!sv || !f) return [0, 0];
         var r = sv.getBoundingClientRect(), h = burn.getBoundingClientRect(), s = r.width / f.w;
-        // below the front figure's feet, pointing up at the legs: clear of every number
-        var a = f.anchors.legL, x = r.left - h.left + a[0] * s, y = r.top - h.top + Math.min(f.h * 0.93, a[1] + (f.h - a[1]) * 0.75) * s;
+        // pointing down at the front figure's shin, the bubble over the lower leg: clear of every number
+        var a = f.anchors.legL, x = r.left - h.left + a[0] * s, y = r.top - h.top + f.h * 0.9 * s;
         return [x / k, y / k];
       } });
     }

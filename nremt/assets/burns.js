@@ -179,6 +179,8 @@
         var at = f.anchors[key];
         var t = el('text', { x:at[0], y:at[1], class:'bn-pct' + (r.id === 'genitals' ? ' bn-pct--sm' : ''), dy:'0.36em' }, labels);
         if(r.id === 'genitals'){ t.setAttribute('x', at[0] + 34); }
+        // a child's thigh number sits lower, clear of the 1% genital label (their legs are short)
+        if(variant === 'child' && /^leg/.test(key)) t.setAttribute('y', at[1] + 45);
         regs[r.id] = { g:g, t:t, shape:shape };
       });
     // the 1% label sits beside the groin with a leader, as small as the region is
