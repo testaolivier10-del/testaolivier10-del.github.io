@@ -34,6 +34,9 @@
   }
   // a fixed scatter in [0,1]^2 (golden ratio): the same on every visit
   function scatter(n, seed){ var a = [], i; for(i = 0; i < n; i++) a.push([((i + 1) * 0.6180339887 + (seed || 0)) % 1, ((i + 1) * 0.7548776662 + (seed || 0) * 0.37) % 1]); return a; }
+  // set an attribute or a style only when it changes: an unchanged write still costs the browser a style pass
+  function sa(el, k, v){ v = String(v); if(el.getAttribute(k) !== v) el.setAttribute(k, v); }
+  function so(el, v){ v = String(v); if(el.style.opacity !== v) el.style.opacity = v; }
   function arrowHead(x, y, ang, s){
     var c = Math.cos(ang), d = Math.sin(ang);
     return 'M' + f1(x - c * s - d * s * 0.6) + ',' + f1(y - d * s + c * s * 0.6) + 'L' + f1(x) + ',' + f1(y) + 'L' + f1(x - c * s + d * s * 0.6) + ',' + f1(y - d * s - c * s * 0.6);
@@ -103,7 +106,8 @@
     var CELLS = [[250, 515], [312, 512], [374, 516], [436, 513], [498, 516], [560, 514], [282, 462], [344, 460], [406, 463], [468, 460], [530, 462], [60, 515], [122, 512], [184, 516], [646, 513], [700, 516], [96, 462], [656, 462]];
     // the colour the blood cell is drawn: loads in the lung capillaries (step 6's words come once it is red), unloads in the body
     function ox(v, br){ var up = br ? 0 : ramp(v, 4.9, 5.6); return up * (1 - ramp(v, 10.9, 11.6)); }
-    function tube(pts, cls, w){ return '<path class="pe-vw" style="stroke-width:' + w + 'px" d="' + P(pts) + '"/><path class="pe-vb ' + cls + '" style="stroke-width:' + (w - 7) + 'px" d="' + P(pts) + '"/>'; }
+    // at: where on the route the cell passes this part (with no fresh air, an oxygen rich part turns oxygen poor then)
+    function tube(pts, cls, w, at){ return '<path class="pe-vw" style="stroke-width:' + w + 'px" d="' + P(pts) + '"/><path class="pe-vb ' + cls + '"' + (at != null ? ' data-oxat="' + at + '"' : '') + ' style="stroke-width:' + (w - 7) + 'px" d="' + P(pts) + '"/>'; }
     function leaflet(x, y, dx, cls){ return '<path class="pe-leaf ' + cls + '" d="M' + x + ',' + y + 'l' + dx + ',0"/>'; }
     SCENES.push({
       id: 'heart', tab: 'Heart', short: 'Heart', path: 'blood-flow',
@@ -126,21 +130,21 @@
         s += '<path class="pe-tissue" d="M0,448 H720 V540 H0 Z"/>';
         CELLS.forEach(function(c, i){ s += '<g data-r="cell' + i + '"><rect class="pe-tcell" x="' + (c[0] - 27) + '" y="' + (c[1] - 19) + '" width="54" height="38" rx="14"/><circle class="pe-tnuc" cx="' + (c[0] - 6) + '" cy="' + c[1] + '" r="6"/></g>'; });
         // vessels behind the heart: the right pulmonary veins (to the left atrium), the other lung's vessels
-        s += tube([[292, 112], [330, 150], [400, 190], [430, 214], [440, 232]], 'is-ox', 18);
+        s += tube([[292, 112], [330, 150], [400, 190], [430, 214], [440, 232]], 'is-ox', 18, 5.6);
         // pulmonary trunk and artery, the capillary loop in the lung
         s += tube([[341, 290], [341, 190], [328, 160], [290, 140], [250, 128], [222, 114]], 'is-de', 22);
-        s += '<path class="pe-cap is-de" d="' + P(segs[4]) + '"/><path class="pe-cap is-ox" data-r="pcap2" d="' + P(segs[5].slice(0, 4)) + '"/>';
+        s += '<path class="pe-cap is-de" d="' + P(segs[4]) + '"/><path class="pe-cap is-ox" data-oxat="5" d="' + P(segs[5].slice(0, 4)) + '"/>';
         // systemic: aorta, arteries down to the body, capillaries, veins back
-        s += tube([[379, 290], [379, 180], [400, 154], [470, 152], [570, 154], [602, 186], [602, 455], [578, 486]], 'is-ox', 24);
-        s += '<path class="pe-cap is-ox" d="M578,488 H400"/><path class="pe-cap is-de" d="M400,488 H232"/>';
+        s += tube([[379, 290], [379, 180], [400, 154], [470, 152], [570, 154], [602, 186], [602, 455], [578, 486]], 'is-ox', 24, 9.4);
+        s += '<path class="pe-cap is-ox" data-oxat="10.4" d="M578,488 H400"/><path class="pe-cap is-de" d="M400,488 H232"/>';
         s += tube([[232, 488], [202, 460], [202, 300], [222, 268], [252, 252]], 'is-de', 24);
         s += tube([[272, 150], [274, 205]], 'is-de', 20);   // superior vena cava, from the head and arms
         // the heart: muscle, then the four chambers
         s += '<path class="pe-myo" d="M246,198 C220,214 222,290 232,330 C250,396 330,444 430,432 C482,424 508,372 502,300 C498,252 492,214 472,200 C440,190 300,188 246,198 Z"/>';
-        s += '<ellipse class="pe-cav is-de" cx="284" cy="240" rx="42" ry="36"/><ellipse class="pe-cav is-ox" cx="444" cy="238" rx="40" ry="33"/>';
+        s += '<ellipse class="pe-cav is-de" cx="284" cy="240" rx="42" ry="36"/><ellipse class="pe-cav is-ox" data-oxat="5.9" cx="444" cy="238" rx="40" ry="33"/>';
         s += '<path class="pe-cav is-de" data-r="rv" d="M254,290 C250,340 278,392 330,406 C346,380 350,330 350,290 Z"/>';
-        s += '<path class="pe-cav is-ox" data-r="lv" d="M372,290 C372,340 380,394 420,412 C462,398 478,340 472,290 Z"/>';
-        s += tube([[341, 296], [341, 250]], 'is-de', 22) + tube([[379, 296], [379, 250]], 'is-ox', 24);
+        s += '<path class="pe-cav is-ox" data-r="lv" data-oxat="7.6" d="M372,290 C372,340 380,394 420,412 C462,398 478,340 472,290 Z"/>';
+        s += tube([[341, 296], [341, 250]], 'is-de', 22) + tube([[379, 296], [379, 250]], 'is-ox', 24, 8.9);
         // valves: two leaflets each, hinged on the ring
         s += '<path class="pe-ring" d="M256,283 H316 M416,283 H474"/>';
         s += '<g data-r="tri">' + leaflet(260, 283, 26, 'a') + leaflet(312, 283, -26, 'b') + '</g>';
@@ -173,27 +177,30 @@
       },
       fails: function(st){ var f = []; if(st.noAir){ if(st.v >= 4.88 || st.lap) f.push(5); if(st.v >= 10.88 || st.lap) f.push(11); } return f; },
       paint: function(R, st, E){
-        function open(g, t, ang){ var a = g.childNodes[0], b = g.childNodes[1]; var d = t * ang; a.setAttribute('transform', 'rotate(' + f1(d) + ' ' + a.getAttribute('d').match(/M([\d.]+),([\d.]+)/).slice(1).join(' ') + ')'); b.setAttribute('transform', 'rotate(' + f1(-d) + ' ' + b.getAttribute('d').match(/M([\d.]+),([\d.]+)/).slice(1).join(' ') + ')'); }
+        function open(g, t, ang){ var a = g.childNodes[0], b = g.childNodes[1]; var d = t * ang; sa(a, 'transform', 'rotate(' + f1(d) + ' ' + a.getAttribute('d').match(/M([\d.]+),([\d.]+)/).slice(1).join(' ') + ')'); sa(b, 'transform', 'rotate(' + f1(-d) + ' ' + b.getAttribute('d').match(/M([\d.]+),([\d.]+)/).slice(1).join(' ') + ')'); }
         open(R.tri, st.tri, 68); open(R.mit, st.mit, 68); open(R.pv, st.pv, -70); open(R.av, st.av, -70);
-        R.rv.setAttribute('transform', st.rvSq ? 'translate(302,330) scale(' + (1 - st.rvSq * 0.2).toFixed(3) + ') translate(-302,-330)' : '');
-        R.lv.setAttribute('transform', st.lvSq ? 'translate(422,335) scale(' + (1 - st.lvSq * 0.2).toFixed(3) + ') translate(-422,-335)' : '');
-        ALV.forEach(function(a, i){ R['alv' + i].setAttribute('class', 'pe-alv' + (st.noAir ? ' is-stale' : '')); });
+        sa(R.rv, 'transform', st.rvSq ? 'translate(302,330) scale(' + (1 - st.rvSq * 0.2).toFixed(3) + ') translate(-302,-330)' : '');
+        sa(R.lv, 'transform', st.lvSq ? 'translate(422,335) scale(' + (1 - st.lvSq * 0.2).toFixed(3) + ') translate(-422,-335)' : '');
+        ALV.forEach(function(a, i){ sa(R['alv' + i], 'class', 'pe-alv' + (st.noAir ? ' is-stale' : '')); });
+        // with no fresh air, each oxygen rich part holds oxygen poor blood once the cell has passed it
+        if(!R.oxs) R.oxs = [].slice.call(R.rv.ownerSVGElement.querySelectorAll('[data-oxat]'));
+        R.oxs.forEach(function(el){ el.classList.toggle('is-low', !!st.noAir && (st.v >= +el.getAttribute('data-oxat') || st.lap)); });
         // gas: O2 from the alveoli into the cell, CO2 out (lungs); O2 out to the cells, CO2 in (body)
         var p = this.route.at(st.v), kids = R.gas.childNodes, i, t;
         for(i = 0; i < 6; i++){
           var c = kids[i], a = ALV[i], b = CELLS[i];
-          if(st.lungX > 0 && !st.noAir){ t = ramp(st.v, 4.88 + i * 0.04, 5.6); c.setAttribute('cx', f1(lerp(a[0], p[0], t))); c.setAttribute('cy', f1(lerp(a[1], p[1], t))); c.style.opacity = f1(st.lungX); }
-          else if(st.bodyX > 0 && (!st.noAir ? true : i < 1)){ t = ramp(st.v, 10.88 + i * 0.04, 11.6); c.setAttribute('cx', f1(lerp(p[0], b[0], t))); c.setAttribute('cy', f1(lerp(p[1], b[1], t))); c.style.opacity = f1(st.bodyX); }
-          else c.style.opacity = '0';
+          if(st.lungX > 0 && !st.noAir){ t = ramp(st.v, 4.88 + i * 0.04, 5.6); sa(c, 'cx', f1(lerp(a[0], p[0], t))); sa(c, 'cy', f1(lerp(a[1], p[1], t))); so(c, f1(st.lungX)); }
+          else if(st.bodyX > 0 && (!st.noAir ? true : i < 1)){ t = ramp(st.v, 10.88 + i * 0.04, 11.6); sa(c, 'cx', f1(lerp(p[0], b[0], t))); sa(c, 'cy', f1(lerp(p[1], b[1], t))); so(c, f1(st.bodyX)); }
+          else so(c, '0');
         }
         for(i = 0; i < 4; i++){
           var d = kids[6 + i], a2 = ALV[5 + i % 4], b2 = CELLS[6 + i];
-          if(st.lungX > 0 && !st.noAir){ t = ramp(st.v, 4.88 + i * 0.05, 5.6); d.setAttribute('cx', f1(lerp(p[0], a2[0], t))); d.setAttribute('cy', f1(lerp(p[1], a2[1], t))); d.style.opacity = f1(st.lungX); }
-          else if(st.bodyX > 0){ t = ramp(st.v, 10.88 + i * 0.05, 11.6); d.setAttribute('cx', f1(lerp(b2[0], p[0], t))); d.setAttribute('cy', f1(lerp(b2[1], p[1], t))); d.style.opacity = f1(st.bodyX); }
-          else d.style.opacity = '0';
+          if(st.lungX > 0 && !st.noAir){ t = ramp(st.v, 4.88 + i * 0.05, 5.6); sa(d, 'cx', f1(lerp(p[0], a2[0], t))); sa(d, 'cy', f1(lerp(p[1], a2[1], t))); so(d, f1(st.lungX)); }
+          else if(st.bodyX > 0){ t = ramp(st.v, 10.88 + i * 0.05, 11.6); sa(d, 'cx', f1(lerp(b2[0], p[0], t))); sa(d, 'cy', f1(lerp(b2[1], p[1], t))); so(d, f1(st.bodyX)); }
+          else so(d, '0');
         }
         // the cells that got O2 this lap look fed
-        for(i = 0; i < CELLS.length; i++) R['cell' + i].setAttribute('class', st.v >= 11.4 && !st.lap && (!st.noAir || i < 1) ? 'is-fed' : '');
+        for(i = 0; i < CELLS.length; i++) sa(R['cell' + i], 'class', st.v >= 11.4 && !st.lap && (!st.noAir || i < 1) ? 'is-fed' : '');
       },
       tokenRole: function(st){ return st.ox > 0.5 ? 'o2' : 'de'; },
       tokenFill: function(st){ return mix(DE, OX, st.ox); },
@@ -234,7 +241,7 @@
           [{ t: 'Left ventricle squeezes', role: 'mus' }, { t: 'mitral valve shuts', role: 'valve' }, { t: 'pressure builds', role: na ? 'de' : 'o2' }],
           [{ t: 'Pressure opens the aortic valve', role: 'valve' }, { t: 'blood into the aorta', role: na ? 'de' : 'o2' }],
           [{ t: 'Aorta and arteries', role: na ? 'de' : 'o2' }, { t: na ? 'low O₂ blood to every organ' : 'O₂ rich blood to every organ', say: na ? 'low oxygen blood to every organ' : 'oxygen rich blood to every organ', role: na ? 'de' : 'o2' }],
-          na ? [{ t: 'Little O₂ arrives', say: 'little oxygen arrives', role: 'bad' }, { t: 'body cells get less O₂', say: 'body cells get less oxygen', role: 'bad' }]
+          na ? [{ t: 'Less O₂ arrives', say: 'less oxygen arrives', role: 'bad' }, { t: 'body cells get less O₂', say: 'body cells get less oxygen', role: 'bad' }]
              : [{ t: 'Body cells take O₂', say: 'body cells take oxygen', role: 'o2' }, { t: 'blood picks up CO₂', say: 'blood picks up carbon dioxide', role: 'de' }],
           [{ t: 'Veins', role: 'de' }, { t: 'low O₂ blood back to the heart', say: 'low oxygen blood back to the heart', role: 'de' }]
         ][st.k];
@@ -336,19 +343,19 @@
       },
       paint: function(R, st, E){
         var a = -st.kick * 28 * Math.PI / 180;
-        R.leg.setAttribute('transform', 'rotate(' + f1(a * 180 / Math.PI) + ' ' + KNEE[0] + ' ' + KNEE[1] + ')');
+        sa(R.leg, 'transform', 'rotate(' + f1(a * 180 / Math.PI) + ' ' + KNEE[0] + ' ' + KNEE[1] + ')');
         var p0 = [438, 336], p1 = rot([432, 392], a);
-        R.lig.setAttribute('d', 'M' + f1(p0[0]) + ',' + f1(p0[1]) + ' C' + f1(p0[0] + 4 - st.hit * 7) + ',' + f1(p0[1] + 18) + ' ' + f1(p1[0] + 8 - st.hit * 9) + ',' + f1(p1[1] - 22) + ' ' + f1(p1[0]) + ',' + f1(p1[1]));
-        R.pat.setAttribute('cx', f1(438 + st.kick * 3)); R.pat.setAttribute('cy', f1(320 - st.kick * 6));
+        sa(R.lig, 'd', 'M' + f1(p0[0]) + ',' + f1(p0[1]) + ' C' + f1(p0[0] + 4 - st.hit * 7) + ',' + f1(p0[1] + 18) + ' ' + f1(p1[0] + 8 - st.hit * 9) + ',' + f1(p1[1] - 22) + ' ' + f1(p1[0]) + ',' + f1(p1[1]));
+        sa(R.pat, 'cx', f1(438 + st.kick * 3)); sa(R.pat, 'cy', f1(320 - st.kick * 6));
         // the hammer touches at the tap, then swings back out of the way
         var hb = 1 - st.hit;
-        R.hammer.setAttribute('transform', 'translate(' + f1(hb * 92) + ',' + f1(hb * 30) + ') rotate(' + f1(hb * 18) + ' 548 500)');
-        R.quadm.setAttribute('class', 'pe-mus' + (st.squeeze > 0.5 ? ' is-on' : ''));
+        sa(R.hammer, 'transform', 'translate(' + f1(hb * 92) + ',' + f1(hb * 30) + ') rotate(' + f1(hb * 18) + ' 548 500)');
+        sa(R.quadm, 'class', 'pe-mus' + (st.squeeze > 0.5 ? ' is-on' : ''));
         var sx = 1 - st.squeeze * 0.06, sy = 1 + st.squeeze * 0.16;
-        R.quad.setAttribute('transform', st.squeeze ? 'translate(10,297) scale(' + sx.toFixed(3) + ',' + sy.toFixed(3) + ') translate(-10,-297)' : '');
-        R.anulo.setAttribute('class', 'pe-anulo' + (st.fire > 0.3 ? ' is-on' : ''));
-        R.spindle.setAttribute('transform', st.stretch ? 'translate(300,298) scale(' + (1 + st.stretch * 0.1).toFixed(3) + ',' + (1 - st.stretch * 0.15).toFixed(3) + ') translate(-300,-298)' : '');
-        R.syn.setAttribute('class', st.synOn > 0.3 ? 'is-on' : '');
+        sa(R.quad, 'transform', st.squeeze ? 'translate(10,297) scale(' + sx.toFixed(3) + ',' + sy.toFixed(3) + ') translate(-10,-297)' : '');
+        sa(R.anulo, 'class', 'pe-anulo' + (st.fire > 0.3 ? ' is-on' : ''));
+        sa(R.spindle, 'transform', st.stretch ? 'translate(300,298) scale(' + (1 + st.stretch * 0.1).toFixed(3) + ',' + (1 - st.stretch * 0.15).toFixed(3) + ') translate(-300,-298)' : '');
+        sa(R.syn, 'class', st.synOn > 0.3 ? 'is-on' : '');
       },
       trail: [[0, 3, 'aff'], [3, 6, 'eff']],
       labels: function(st, E){
@@ -495,21 +502,21 @@
         // CRH: released at the hypothalamus, carried to the pituitary; more of it when the brake is gone (pituitary damaged)
         for(i = 0; i < 6; i++){
           var c = kids[i], on = i < 3 ? st.crh * (1 - st.brake * 0.6) : st.pit ? st.pile : 0, sp = SPOTS[i], t = i < 3 ? st.crhDown : 1;
-          c.setAttribute('cx', f1(lerp(212 + i * 4, sp[0], t))); c.setAttribute('cy', f1(lerp(262, sp[1], t)));
-          c.style.opacity = f1(on);
+          sa(c, 'cx', f1(lerp(212 + i * 4, sp[0], t))); sa(c, 'cy', f1(lerp(262, sp[1], t)));
+          so(c, f1(on));
         }
         for(i = 0; i < 6; i++){
           var a = kids[6 + i], b = BLOOD[i], onA = i < 3 ? st.acth * (1 - st.brake * 0.6) : st.adr ? st.pile : 0;
-          a.setAttribute('x', f1(b[0] - 5)); a.setAttribute('y', f1(b[1] - 5)); a.style.opacity = f1(onA);
+          sa(a, 'x', f1(b[0] - 5)); sa(a, 'y', f1(b[1] - 5)); so(a, f1(onA));
         }
         for(i = 0; i < 5; i++){
-          var g = kids[12 + i]; g.setAttribute('transform', 'translate(' + f1(530 + i * 20) + ',' + f1(280 + (i % 2) * 10 + st.glu * 8) + ')'); g.style.opacity = f1(st.glu);
+          var g = kids[12 + i]; sa(g, 'transform', 'translate(' + f1(530 + i * 20) + ',' + f1(280 + (i % 2) * 10 + st.glu * 8) + ')'); so(g, f1(st.glu));
         }
-        R.hypo.setAttribute('class', 'pe-hypo' + (st.crh > 0.3 && st.brake < 0.5 ? ' is-on' : ''));
-        R.pita.setAttribute('class', 'pe-pita' + (st.pit && st.stop ? ' is-dead' : st.pit ? ' is-dead' : st.acth > 0.3 && st.brake < 0.5 ? ' is-on' : ''));
-        R.adr.setAttribute('class', st.adr ? 'is-dead' : st.cort > 0.3 ? 'is-on' : '');
-        R.liver.setAttribute('class', 'pe-liverS' + (st.glu > 0.4 ? ' is-on' : ''));
-        R.b1.style.opacity = R.b2.style.opacity = f1(st.brake);
+        sa(R.hypo, 'class', 'pe-hypo' + (st.crh > 0.3 && st.brake < 0.5 ? ' is-on' : ''));
+        sa(R.pita, 'class', 'pe-pita' + (st.pit && st.stop ? ' is-dead' : st.pit ? ' is-dead' : st.acth > 0.3 && st.brake < 0.5 ? ' is-on' : ''));
+        sa(R.adr, 'class', st.adr ? 'is-dead' : st.cort > 0.3 ? 'is-on' : '');
+        sa(R.liver, 'class', 'pe-liverS' + (st.glu > 0.4 ? ' is-on' : ''));
+        so(R.b1, f1(st.brake)); so(R.b2, f1(st.brake));
       },
       cut: function(b){ return ''; },
       tokenRole: function(st){ return role(st.v); },
@@ -624,26 +631,26 @@
       },
       paint: function(R, st, E){
         var i, kids = R.ions.childNodes;
-        for(i = 0; i < 6; i++){ var c = kids[i], x0 = i < 3 ? 222 : 466, t = ramp(st.v, 0.7 + i * 0.03, 1.4); c.setAttribute('cx', f1(x0 + (i % 3 - 1) * 9)); c.setAttribute('cy', f1(lerp(346, 290, t))); c.style.opacity = f1(st.caIn); }
-        for(i = 0; i < 5; i++){ var n = kids[6 + i], r = REC[i % 3], t2 = ramp(st.v, 4.7 + i * 0.05, 5.4); n.setAttribute('cx', f1(r[0] + (i > 2 ? 4 : -4))); n.setAttribute('cy', f1(lerp(340, 392, t2))); n.style.opacity = f1(st.naIn); }
-        for(i = 0; i < 3; i++){ var d = R['dock' + i]; d.style.opacity = f1(1 - st.fuse); d.setAttribute('transform', 'translate(0,' + f1(st.fuse * 10) + ')'); }
+        for(i = 0; i < 6; i++){ var c = kids[i], x0 = i < 3 ? 222 : 466, t = ramp(st.v, 0.7 + i * 0.03, 1.4); sa(c, 'cx', f1(x0 + (i % 3 - 1) * 9)); sa(c, 'cy', f1(lerp(346, 290, t))); so(c, f1(st.caIn)); }
+        for(i = 0; i < 5; i++){ var n = kids[6 + i], r = REC[i % 3], t2 = ramp(st.v, 4.7 + i * 0.05, 5.4); sa(n, 'cx', f1(r[0] + (i > 2 ? 4 : -4))); sa(n, 'cy', f1(lerp(340, 392, t2))); so(n, f1(st.naIn)); }
+        for(i = 0; i < 3; i++){ var d = R['dock' + i]; so(d, f1(1 - st.fuse)); sa(d, 'transform', 'translate(0,' + f1(st.fuse * 10) + ')'); }
         var nts = R.nts.childNodes;
         for(i = 0; i < 9; i++){
           var m = nts[i], dk = DOCK[i % 3], rc = REC[i % 3], ang = i * 0.7;
           var x = lerp(dk[0], rc[0] + Math.cos(ang) * (st.rec ? 14 : 3), st.cross), y = lerp(dk[1] + 12, st.bind > 0.5 && i < 3 ? rc[1] - 4 : 338 + (i % 3) * 4, st.cross);
           // cleared: taken back up into the terminal and broken down by enzymes in the cleft
           if(st.clear > 0){ x = lerp(x, i % 2 ? 441 : x, st.clear); y = lerp(y, i % 2 ? 314 : y, st.clear); }
-          m.setAttribute('cx', f1(x)); m.setAttribute('cy', f1(y));
-          m.style.opacity = f1(st.release * (1 - st.clear * (i % 2 ? 0.2 : 1)) * (st.clear > 0.95 ? 0 : 1));
+          sa(m, 'cx', f1(x)); sa(m, 'cy', f1(y));
+          so(m, f1(st.release * (1 - st.clear * (i % 2 ? 0.2 : 1)) * (st.clear > 0.95 ? 0 : 1)));
         }
-        for(i = 0; i < 3; i++) R['rec' + i].setAttribute('class', st.rec ? 'is-blk' : st.open > 0.5 ? 'is-open' : st.bind > 0.5 ? 'is-bound' : '');
-        R.cach.setAttribute('class', st.ca ? 'is-blk' : st.caIn > 0.3 ? 'is-open' : '');
-        R.nb.setAttribute('class', st.sum > 0.1 ? 'is-on' : '');
+        for(i = 0; i < 3; i++) sa(R['rec' + i], 'class', st.rec ? 'is-blk' : st.open > 0.5 ? 'is-open' : st.bind > 0.5 ? 'is-bound' : '');
+        sa(R.cach, 'class', st.ca ? 'is-blk' : st.caIn > 0.3 ? 'is-open' : '');
+        sa(R.nb, 'class', st.sum > 0.1 ? 'is-on' : '');
         var rr = 10 + st.epsp * 170;
-        R.epsp.setAttribute('rx', f1(rr)); R.epsp.setAttribute('ry', f1(rr * 0.5)); R.epsp.setAttribute('cx', f1(340 + st.epsp * 120)); R.epsp.setAttribute('cy', f1(420 + st.epsp * 20)); R.epsp.style.opacity = f1(st.epsp);
+        sa(R.epsp, 'rx', f1(rr)); sa(R.epsp, 'ry', f1(rr * 0.5)); sa(R.epsp, 'cx', f1(340 + st.epsp * 120)); sa(R.epsp, 'cy', f1(420 + st.epsp * 20)); so(R.epsp, f1(st.epsp));
         var gh = 60 * clamp(st.sum * 0.78 + st.fire * 0.22, 0, 1);
-        R.gauge.setAttribute('y', f1(444 - gh)); R.gauge.setAttribute('height', f1(gh));
-        R.tz.setAttribute('class', 'pe-tz' + (st.fire > 0.3 ? ' is-on' : ''));
+        sa(R.gauge, 'y', f1(444 - gh)); sa(R.gauge, 'height', f1(gh));
+        sa(R.tz, 'class', 'pe-tz' + (st.fire > 0.3 ? ' is-on' : ''));
       },
       cut: function(b){ return ''; },
       tokenRole: function(st){ return st.stop ? (st.stop.id === 'ca' ? 'sig' : 'nt') : role(st.v); },
@@ -748,18 +755,24 @@
     }
     function inter(a, b, g){ return a[0] < b[2] + g && a[2] > b[0] - g && a[1] < b[3] + g && a[3] > b[1] - g; }
     var OFF = { r: [1, 0], l: [-1, 0], u: [0, -1], d: [0, 1], ur: [0.8, -0.8], ul: [-0.8, -0.8], dr: [0.8, 0.8], dl: [-0.8, 0.8] };
-    function keepOut(){
+    // the controls on the picture (Start over, the break buttons) and the cue, measured only when they change, so a
+    // frame never forces a layout
+    var ctrlBox = null;
+    function ctrlDirty(){ ctrlBox = null; }
+    function ctrls(){
+      if(ctrlBox) return ctrlBox;
       var out = [], k = E.k || 1;
-      var p = cur.route.at(view.v), r = 30 / k;
-      out.push([p[0] - r, p[1] - r, p[0] + r, p[1] + r]);
-      // the controls on the picture (Start over, the cut buttons) and the cue
       [reset].concat(pills.map(function(x){ return x.el; })).forEach(function(b){
         if(!b || b.hidden || !b.offsetWidth) return;
         var pr = pic.getBoundingClientRect(), q = b.getBoundingClientRect();
         out.push([(q.left - pr.left) / k, (q.top - pr.top) / k, (q.right - pr.left) / k, (q.bottom - pr.top) / k]);
       });
       if(cue && cue.active()){ var c = pic.querySelector('.tk2-cue'); if(c){ var pr2 = pic.getBoundingClientRect(), q2 = c.getBoundingClientRect(); out.push([(q2.left - pr2.left) / k, (q2.top - pr2.top) / k, (q2.right - pr2.left) / k, (q2.bottom - pr2.top) / k]); } }
-      return out;
+      return (ctrlBox = out);
+    }
+    function keepOut(){
+      var k = E.k || 1, p = cur.route.at(view.v), r = 30 / k;
+      return [[p[0] - r, p[1] - r, p[0] + r, p[1] + r]].concat(ctrls());
     }
     function placeLabels(list){
       var fs = E.fs, h = fs * 1.75, pad = fs * 0.55, placed = keepOut(), used = {}, g = E.gap;
@@ -869,6 +882,7 @@
       placePills();
     }
     function placePills(){
+      ctrlDirty();
       var k = E.k || scale(), show = seenEnd();
       pills.forEach(function(x){
         var p = x.b.place || cur.route.at(x.b.at), on = cur.br && cur.br.id === x.b.id;
@@ -945,10 +959,10 @@
       cur.paint(R, st, E);
       // the token: what travels, at the shown position
       var p = cur.route.at(view.v), role = cur.tokenRole ? cur.tokenRole(st) : 'tok', k = E.k || 1;
-      tok.setAttribute('transform', 'translate(' + f1(p[0]) + ',' + f1(p[1]) + ')');
-      tok.setAttribute('class', 'pe-tok is-' + role + (st.stop ? ' is-stop' : ''));
-      tok.firstChild.setAttribute('r', f1(30 / k)); tok.lastChild.setAttribute('r', f1(19 / k));
-      if(cur.tokenFill){ tok.lastChild.style.fill = cur.tokenFill(st); } else tok.lastChild.style.fill = '';
+      sa(tok, 'transform', 'translate(' + f1(p[0]) + ',' + f1(p[1]) + ')');
+      sa(tok, 'class', 'pe-tok is-' + role + (st.stop ? ' is-stop' : ''));
+      sa(tok.firstChild, 'r', f1(30 / k)); sa(tok.lastChild, 'r', f1(19 / k));
+      var tf = cur.tokenFill ? cur.tokenFill(st) : ''; if(tok.lastChild.style.fill !== tf) tok.lastChild.style.fill = tf;
       // the trail: where it has been
       var tv = Math.max(0, view.v), parts = cur.trailFor ? cur.trailFor(st) : cur.trail || [[0, cur.last, role]];
       // one path per part of the trail, made once per screen and only reshaped as the token moves
@@ -956,7 +970,7 @@
       if(trail._h !== sig){ trail._h = sig; trail.innerHTML = parts.map(function(pt){ return '<path class="pe-trail-p is-' + pt[2] + '"/>'; }).join(''); }
       parts.forEach(function(pt, i){
         var el = trail.childNodes[i], a0 = pt[0], a1 = Math.min(pt[1], tv);
-        if(a1 - a0 > 0.02){ el.setAttribute('d', cur.route.path(a0, a1)); el.style.strokeWidth = f1(6 / k) + 'px'; el.style.display = ''; } else el.style.display = 'none';
+        if(a1 - a0 > 0.02){ el.setAttribute('d', cur.route.path(a0, a1)); if(el.style.strokeWidth !== f1(6 / k) + 'px') el.style.strokeWidth = f1(6 / k) + 'px'; if(el.style.display) el.style.display = ''; } else if(el.style.display !== 'none') el.style.display = 'none';
       });
       var atEnd = !st.stop && view.v >= cur.last - 0.02;
       if(atEnd && !cur.br && !seenEnd()){ markEnd(); placePills(); }
@@ -1004,7 +1018,7 @@
       cur = sc; view.v = view.target = sc.v; wKey = ''; railKey = '';
       tabs.value(sc.id); head.purpose(sc.purpose); trail._h = null;
       main.setAttribute('data-scene', sc.id);
-      metrics(); buildArt(); railBuild(); makeHandle(); makePills(); draw(); refHtml();
+      metrics(); ctrlDirty(); buildArt(); railBuild(); makeHandle(); makePills(); draw(); refHtml();
       if(user){ try{ history.replaceState(null, '', location.pathname + location.search + '#explore/' + sc.id); }catch(e){} say(sc.tab + '. ' + stepText(view.v)); }
       if(cue && cue.active()){ cue.hide(false); makeCue(); }
     }
@@ -1013,11 +1027,11 @@
     function makeCue(){
       var p = cur.route.at(view.target);
       cue = K.cue(layer, { key: 'anp-pathways', text: cur.cue, side: p[0] > W * 0.55 ? 'left' : 'right', at: function(){ var q = cur.route.at(view.target); return [q[0], q[1]]; } });
-      cue.show();
+      cue.show(); ctrlDirty();
       placeLabels(cur.labels(cur.state(view.v, cur.br), E));
-      setTimeout(function(){ if(cue && cue.active()) draw(); }, 450);   // once the cue has settled, labels move clear of it
+      setTimeout(function(){ if(cue && cue.active()){ ctrlDirty(); draw(); } }, 450);   // once the cue has settled, labels move clear of it
     }
-    function hideCue(used){ if(cue && cue.active()){ cue.hide(used); } }
+    function hideCue(used){ if(cue && cue.active()){ cue.hide(used); ctrlDirty(); } }
     var tour = K.tour({ key: 'anp-pathways', label: 'Show me how', steps: [
       { id: 'drag', text: 'Drag along the route. Each step happens as it arrives.', target: function(){ return handle ? handle.knob : pic; } },
       { id: 'rail', text: 'The steps it has reached are named here, in order.', target: function(){ return rail; } },
@@ -1029,10 +1043,10 @@
     /* ---- "?" for this screen */
     var ref = document.createElement('div'); ref.className = 'ls-sec pe-ref';
     var NOTE = {
-      heart: 'Blue and red are the course’s colours for oxygen poor and oxygen rich blood; real blood is never blue, and blood coming back from the body still carries about 75 percent of its oxygen. Only the route through one lung is drawn; the other lung works the same way. “Stop air” stands for any time no fresh air reaches the alveoli (choking, not breathing): the heart still pumps and blood still flows through the lungs, but it picks up no new oxygen, so the body cells get less than they need.',
+      heart: 'Blue and red are the course’s colors for oxygen poor and oxygen rich blood; real blood is never blue, and blood coming back from the body still carries about 75 percent of its oxygen. Only the route through one lung is drawn; the other lung works the same way. “Stop air” stands for any time no fresh air reaches the alveoli (choking, not breathing): the heart still pumps and blood still flows through the lungs, but it picks up no new oxygen, so the body cells get less than they need.',
       reflex: 'The spinal cord is drawn enlarged beside the thigh to show the arc; the knee jerk runs through the lumbar cord (about L2 to L4) in the lower back. One sensory and one motor neuron stand for many. At the same time the hamstrings relax through an inhibitory interneuron, which is not drawn. Cutting a root after the signal has passed does not undo that kick; the next signal stops at the cut.',
       hormone: 'The hypothalamus and pituitary are enlarged in the circle. One blood vessel stands for the whole circulation: ACTH and cortisol travel through the heart and arteries to every organ. Cortisol also damps inflammation, which is not drawn. A damaged adrenal cortex is what happens in Addison disease: with cortisol low, nothing brakes the pituitary and ACTH rises very high. A damaged pituitary leaves no ACTH, so the adrenal cortex makes no cortisol, and without cortisol’s brake CRH rises.',
-      synapse: 'A synapse between two neurons with an excitatory neurotransmitter. One EPSP is far too small to reach threshold alone; two neighbouring synapses fire at the same moment here, so their EPSPs add at the trigger zone (spatial summation). The bar by the trigger zone shows the sum; the red mark is threshold. The blockers act on every synapse of the cell, as a drug in the fluid around it would.'
+      synapse: 'A synapse between two neurons with an excitatory neurotransmitter. One EPSP is far too small to reach threshold alone; two neighboring synapses fire at the same moment here, so their EPSPs add at the trigger zone (spatial summation). The bar by the trigger zone shows the sum; the red mark is threshold. The blockers act on every synapse of the cell, as a drug in the fluid around it would.'
     };
     function refHtml(){
       var p = cur.p, t = topicOf(p.topic), B = o.base || '../';
@@ -1051,7 +1065,7 @@
 
     /* ---- sizes */
     var rz = 0, lastW = 0;
-    function resized(){ clearTimeout(rz); rz = setTimeout(function(){ if(!stage.isConnected || !pic.offsetWidth) return; var w = pic.offsetWidth; if(w === lastW) { placePills(); if(handle) handle.place(); return; } lastW = w; metrics(); buildArt(); draw(); placePills(); if(handle) handle.place(); if(cue && cue.active()) cue.place(); }, 60); }
+    function resized(){ clearTimeout(rz); rz = setTimeout(function(){ if(!stage.isConnected || !pic.offsetWidth) return; var w = pic.offsetWidth; if(w === lastW) { placePills(); if(handle) handle.place(); return; } lastW = w; metrics(); ctrlDirty(); buildArt(); draw(); placePills(); if(handle) handle.place(); if(cue && cue.active()) cue.place(); }, 60); }
     if(window.ResizeObserver){ var ro = new ResizeObserver(resized); ro.observe(pic); }
     window.addEventListener('resize', resized);
 

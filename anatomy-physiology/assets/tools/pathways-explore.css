@@ -274,3 +274,5 @@ g.is-blk > .pe-rec{fill:#B8B0B3;stroke:#5B5356;} g.is-blk > .pe-site{stroke:#3E3
 }
 @media (max-width:380px){ .pe .tk2-tabs.is-big{gap:2px;} .pe .tk2-tabs.is-big .tk2-tab{font-size:13px;padding:0 2px;} }
 @media (min-width:641px) and (max-width:1100px){ .pe .tk2-tabs.is-big .tk2-tab{padding:0 8px;} }
+.pe-vb,.pe-cap,.pe-cav{transition:stroke .45s,fill .45s;}
+.pe-vb.is-ox.is-low{stroke:#5B78AF;} .pe-cap.is-ox.is-low{stroke:#6A84B8;} .pe-cav.is-ox.is-low{fill:#6E86BC;}
