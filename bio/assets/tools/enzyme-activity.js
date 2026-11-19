@@ -74,6 +74,61 @@
   var ANG = [-0.62, 0.5, 2.5, -2.35, 0.15, 3.6, -1.05, 2.0];
   var PERM = [2, 5, 0, 7, 3, 6, 1, 4], PERM2 = [4, 1, 6, 2, 7, 0, 5, 3];   // which molecules change first: spread over the picture
 
+  /* ------------------------------------------------------------ Test yourself: the changes and their reasons
+     Pure (the model and the data only), so scripts/test/apbio-enzyme-predict.test.mjs runs every kind of change.
+     A change has a clear answer: the rate moves by more than 15% or by less than 3%, from the model at the
+     challenge's conditions. why(x) explains the variable that changed, and only that one. */
+  function predictKit(data, F){
+    var M = window.ApBioMath, SU = data.substrate.unit, IU = data.inhibitor.unit;
+    var CHANGES = [
+      { id: 'more-substrate', key: 'S', text: function(a, b){ return 'Raise the substrate from ' + F(a, 1) + ' to ' + F(b, 1) + ' ' + SU + '.'; }, pick: function(g, c){ return Math.min(data.substrate.max, c.S * g.pick([2, 4])); } },
+      { id: 'hotter', key: 'T', text: function(a, b){ return 'Heat it from ' + F(a, 0) + ' to ' + F(b, 0) + ' °C.'; }, pick: function(g, c, p){ return Math.min(data.temperature.max, Math.round(p.Tm + g.pick([4, 8, 12]))); } },
+      { id: 'cooler', key: 'T', text: function(a, b){ return 'Cool it from ' + F(a, 0) + ' to ' + F(b, 0) + ' °C.'; }, pick: function(g, c){ return Math.max(0, c.T - g.pick([20, 25, 30])); } },
+      { id: 'ph', key: 'pH', text: function(a, b){ return 'Change the pH from ' + F(a, 1) + ' to ' + F(b, 1) + '.'; }, pick: function(g, c){ return Math.max(1, Math.min(13, c.pH + g.pick([-4, -3, 3, 4]))); } },
+      { id: 'competitive-more-substrate', key: 'S', inh: 'competitive', text: function(a, b){ return 'With a competitive inhibitor present, raise the substrate from ' + F(a, 1) + ' to ' + F(b, 1) + ' ' + SU + '.'; }, pick: function(g, c){ return Math.min(data.substrate.max, c.S * 5); } },
+      { id: 'noncompetitive-add', key: 'I', inh: 'noncompetitive', text: function(a, b){ return 'Add noncompetitive inhibitor: from ' + F(a, 2) + ' to ' + F(b, 2) + ' ' + IU + '.'; }, pick: function(g){ return g.pick([2, 3, 4]); } },
+      { id: 'saturated-more-substrate', key: 'S', sat: true, text: function(a, b){ return 'The enzyme is already working near its top speed. Raise the substrate from ' + F(a, 1) + ' to ' + F(b, 1) + ' ' + SU + '.'; }, pick: function(g, c){ return Math.min(data.substrate.max, c.S + 2); } }
+    ];
+    function make(seed, n){
+      for(var tries = 0; tries < 300; tries++){
+        var g = M.rng(seed + 7919 * (n * 300 + tries)), p = g.pick(data.profiles), ch = CHANGES[(n + tries) % CHANGES.length];
+        var c = { S: ch.sat ? 18 : g.pick([1, 2, 3, 4]), T: p.defaults.T, pH: p.defaults.pH, inhibitor: ch.inh || 'none', I: ch.id === 'noncompetitive-add' ? 0 : 2 };
+        var a = c[ch.key], b = M.round(ch.pick(g, c, p), 2);
+        if(a === b) continue;
+        var c2 = Object.assign({}, c); c2[ch.key] = b;
+        var r1 = M.enzyme.rate(p, c, c.S), r2 = M.enzyme.rate(p, c2, c2.S), rel = (r2 - r1) / Math.max(r1, 1e-9);
+        var dir = rel > 0.15 ? 'up' : rel < -0.15 ? 'down' : Math.abs(rel) < 0.03 ? 'same' : null;
+        if(!dir || r1 < 3) continue;
+        return { p: p, ch: ch, c: c, c2: c2, a: a, b: b, r1: r1, r2: r2, dir: dir, now: c, done: false };
+      }
+      return null;
+    }
+    /* The words after a challenge: what the molecules are doing and why, for the variable that changed. */
+    function why(x){
+      var p = x.p, c = x.c2, dir = x.dir, key = x.ch.key, z = M.enzyme.states(p, c), k = M.enzyme.params(p, c), I = c.inhibitor !== 'none' ? c.I : 0;
+      if(key === 'S'){
+        if(c.inhibitor === 'competitive' && I > 0) return 'The competitive inhibitor looks like the substrate and sits in the active site, so it competes: add more substrate and substrate wins more often (Km rises to ' + F(k.km, 2) + ' ' + SU + ', Vmax unchanged).';
+        return dir === 'same' ? 'Nearly every active site is busy (saturated): adding substrate barely speeds things up. Only more enzyme would.' : 'Many active sites are empty, waiting for substrate: more substrate means more collisions and a faster rate.';
+      }
+      if(key === 'I') return 'The noncompetitive inhibitor binds elsewhere and bends the active site, taking those molecules out of action whatever the substrate level (Vmax falls to ' + F(k.vmax, 1) + ', Km unchanged).';
+      if(key === 'T'){
+        var hot = x.b > x.a;
+        if(hot && z.folded < 0.6) return 'At ' + F(c.T, 0) + ' °C most molecules have unfolded (denatured): the active site has lost its shape, so no substrate fits. (Many real enzymes stay unfolded after cooling.)';
+        if(hot && dir !== 'up') return 'At ' + F(c.T, 0) + ' °C, above this enzyme’s best temperature, more of its molecules unfold (denature), so fewer active sites keep their shape' + (dir === 'same' ? '; this about cancels the faster collisions.' : ', and the rate falls even though molecules move faster.');
+        if(hot) return 'Warmer molecules move faster, so substrate meets the active site more often and more products form each second.';
+        if(dir === 'up') return 'At ' + F(c.T, 0) + ' °C fewer of this enzyme’s molecules are unfolded than at ' + F(x.a, 0) + ' °C, so more active sites keep their shape.';
+        return 'It is colder: molecules move slowly, so substrate meets the active site less often and fewer products form each second' + (dir === 'same' ? '; here the change is too small to matter much.' : '.');
+      }
+      // pH
+      var opt = M.enzyme.optimumPH(p);
+      if(z.phOk < 0.5) return 'At pH ' + F(c.pH, 1) + ' the charged groups in most active sites are in the wrong state, so the site no longer binds substrate well (the sites drawn out of shape).';
+      if(Math.abs(c.pH - opt) > Math.abs(x.a - opt)) return 'pH ' + F(c.pH, 1) + ' is farther from this enzyme’s best pH (about ' + F(opt, 1) + '), so fewer active sites have the right shape and charges to bind substrate' + (dir === 'same' ? '; here few sites are affected.' : ', and the rate drops.');
+      return 'pH ' + F(c.pH, 1) + ' is closer to this enzyme’s best pH (about ' + F(opt, 1) + '), so more active sites have the right shape and charges to bind substrate.';
+    }
+    return { changes: CHANGES, make: make, why: why };
+  }
+  if(window.ApBioTools) window.ApBioTools.enzymePredict = predictKit;
+
   function boot(){
     var K = window.LevlKit2;
     T.mount(SLUG, function(app, data, ctx){
@@ -133,7 +188,7 @@
       function valOf(tab){ return tab === 'sub' ? S.sub : tab === 'temp' ? S.temp : tab === 'ph' ? S.ph : S.inh; }
       function knob(o){
         return K.drag(layer, { key: 'apbio-enzyme-' + o.id, label: o.label, min: o.r.min || 0, max: o.r.max, step: o.r.step, value: o.get(), track: [0, 0, 1, 0], chip: false, quiet: o.quiet,
-          valuetext: function(v){ return o.text(v) + '. ' + rateSay(); }, tag: o.tag,
+          valuetext: function(v){ return o.text(v) + '. ' + knobSay(o, v); }, tag: o.tag,
           onInput: function(v){ if(!o.quiet) began(); o.set(v); changed(); tourDid('drag'); },
           onEnd: function(){ gest = false; say(cause.text()); refHtml(); } });
       }
@@ -225,13 +280,18 @@
         PARTS.push(p); return p;
       }
       function clearOfEnzymes(x, y){ return ENZ.every(function(e){ var dx = x - e.x, dy = y - e.y; return dx * dx + dy * dy > G.R * G.R * 1.7; }); }
-      function place(p, edge){
-        var b = bounds(), m = 2;
-        for(var k = 0; k < 30; k++){
-          if(edge){ var side = Math.floor(rnd() * 4), f = rnd(); p.x = side === 0 ? b.x0 + m : side === 1 ? b.x1 - m : b.x0 + m + f * (b.x1 - b.x0 - 2 * m); p.y = side === 2 ? b.y0 + m : side === 3 ? b.y1 - m : b.y0 + m + f * (b.y1 - b.y0 - 2 * m); }
-          else { p.x = b.x0 + m + rnd() * (b.x1 - b.x0 - 2 * m); p.y = b.y0 + m + rnd() * (b.y1 - b.y0 - 2 * m); }
-          if(clearOfEnzymes(p.x, p.y)) break;
+      /* A new or returning molecule fades in at a clear spot anywhere in the solution (not at the walls, where
+         entries used to pile up: review Recheck 1), away from enzymes and, if it can, from other free molecules. */
+      function place(p){
+        var b = bounds(), m = G.R * 0.5, best = null, bestD = -1;
+        for(var k = 0; k < 24; k++){
+          p.x = b.x0 + m + rnd() * (b.x1 - b.x0 - 2 * m); p.y = b.y0 + m * 0.5 + rnd() * (b.y1 - b.y0 - m);
+          if(!clearOfEnzymes(p.x, p.y)) continue;
+          var dmin = 1e9; PARTS.forEach(function(q){ if(q !== p && q.mode === 'free'){ var d = Math.hypot(q.x - p.x, q.y - p.y); if(d < dmin) dmin = d; } });
+          if(dmin > bestD){ bestD = dmin; best = [p.x, p.y]; }
+          if(dmin > G.R * 0.9) break;
         }
+        if(best){ p.x = best[0]; p.y = best[1]; }
         var a = Math.atan2((b.y0 + b.y1) / 2 - p.y, (b.x0 + b.x1) / 2 - p.x) + (rnd() - 0.5) * 1.6; p.vx = Math.cos(a); p.vy = Math.sin(a);
       }
       function dropPart(p){ if(p.e){ if(p.e.sub === p) p.e.sub = null; if(p.e.inh === p) p.e.inh = null; if(p.e.next === p) p.e.next = null; } if(p.node.parentNode) p.node.parentNode.removeChild(p.node); var i = PARTS.indexOf(p); if(i >= 0) PARTS.splice(i, 1); }
@@ -350,6 +410,11 @@
           else if(p.op < 1) p.op = Math.min(1, p.op + dt / 0.35);
           if(p.mode === 'free' || p.mode === 'out'){
             p.vx += (rnd() - 0.5) * 5 * dt; p.vy += (rnd() - 0.5) * 5 * dt;
+            // a soft push off the walls and away from crowding, so free molecules spread through the solution
+            var bw = R * 0.9;
+            if(p.x < b.x0 + bw) p.vx += (1 - (p.x - b.x0) / bw) * 6 * dt; else if(p.x > b.x1 - bw) p.vx -= (1 - (b.x1 - p.x) / bw) * 6 * dt;
+            if(p.y < b.y0 + bw * 0.6) p.vy += (1 - (p.y - b.y0) / (bw * 0.6)) * 4 * dt; else if(p.y > b.y1 - bw * 0.6) p.vy -= (1 - (b.y1 - p.y) / (bw * 0.6)) * 4 * dt;
+            if(p.mode === 'free'){ var cr = R * 0.55; for(var qi2 = 0; qi2 < PARTS.length; qi2++){ var q2 = PARTS[qi2]; if(q2 === p || q2.mode !== 'free') continue; var ddx = p.x - q2.x, ddy = p.y - q2.y, dq = Math.hypot(ddx, ddy); if(dq < cr && dq > 0.01){ var pw = (1 - dq / cr) * 5 * dt; p.vx += ddx / dq * pw; p.vy += ddy / dq * pw; } } }
             var mm = Math.hypot(p.vx, p.vy) || 1; p.vx /= mm; p.vy /= mm;
             p.x += p.vx * sp * dt; p.y += p.vy * sp * dt; p.rot += p.vr * dt * (0.4 + sf);
             if(p.x < b.x0){ p.x = b.x0; p.vx = Math.abs(p.vx); } else if(p.x > b.x1){ p.x = b.x1; p.vx = -Math.abs(p.vx); }
@@ -490,8 +555,8 @@
         if(hard || still()){ if(G.ready) crossFade(); settle(hard); G.ready = true; tint(); labels(true); paint(); startLoop(); return; }
         roles(); var n = counts(); setCount('sub', n.sub); setCount('inh', n.inh); tint(); startLoop();
       }
-      function changed(){ if(now && G && !still()){ var g0 = gShown, d0 = drawnWork(); target(false); bar = { g0: g0, d0: d0 }; } else target(false); wKey = ''; syncWords(); drawMarks(); }
-      function swap(){ target(true); wKey = ''; syncWords(); drawMarks(); }
+      function changed(){ if(now && G && !still()){ var g0 = gShown, d0 = drawnWork(); target(false); bar = { g0: g0, d0: d0 }; } else target(false); wKey = ''; syncWords(); drawMarks(); sayKnobs(); }
+      function swap(){ target(true); wKey = ''; syncWords(); drawMarks(); sayKnobs(); }
       function setTab(v){
         if(v === S.tab) return;
         S.tab = v; prev = null; gest = false;
@@ -500,7 +565,15 @@
 
       /* ---- words: the purpose line, the cause line, the labels */
       function rateWord(g){ return g < 0.03 ? { t: 'no reaction', role: 'bad' } : { t: g < 0.35 ? 'slow rate' : g < 0.72 ? 'medium rate' : g < 0.93 ? 'fast rate' : 'top rate', role: 'prod' }; }
-      function rateSay(){ if(!now) return ''; var g = now.rate / now.ref; return 'Reaction rate ' + F(now.rate, 1) + ' ' + RU + ', ' + Math.round(g * 100) + ' percent of the top of the bar'; }
+      function rateSay(r, ref){ if(r == null){ if(!now) return ''; r = now.rate; ref = now.ref; } return 'Reaction rate ' + F(r, 1) + ' ' + RU + ', ' + Math.round(r / ref * 100) + ' percent of the top of the bar'; }
+      /* A knob's spoken rate, from the conditions with the knob at v (the kit asks before the setting is stored, so
+         this never reads the picture's last state). */
+      function knobSay(o, v){
+        var was = o.get(), tab = o.id === 'isub' ? 'inh' : o.id; o.set(v);
+        var c = condOf(tab), t = rateSay(rateOf(PA, c), refOf(tab)); o.set(was); return t;
+      }
+      // every knob says the current rate: after each change, a tab switch, a new kind of inhibitor
+      function sayKnobs(){ Object.keys(CT).forEach(function(k){ CT[k].place(); }); cSub2.place(); }
       /* The cause line says what the picture shows at that moment: a pill that names a change in the enzymes
          (unfolded, out of shape, blocked) is added once at least one enzyme is drawn that way. */
       function chain(){
@@ -682,7 +755,7 @@
           defs(); buildEnzymes(); G.ready = false;
         }
         drawStatic(); lKey = '';
-        target(hard || !same); wKey = ''; syncWords(); drawMarks();
+        target(hard || !same); wKey = ''; syncWords(); drawMarks(); sayKnobs();
         if(cue.active()) cue.place();
       }
 
@@ -731,42 +804,8 @@
       var dock = document.createElement('div'); dock.className = 'ez2-predict';
       dock.innerHTML = '<div class="os-chal"></div>';
       var chalBox = dock.querySelector('.os-chal');
-      /* Changes with a clear answer (rate moves by more than 15% or by less than 3%), computed from the model at
-         the challenge's conditions. */
-      var CHANGES = [
-        { id: 'more-substrate', key: 'S', text: function(a, b){ return 'Raise the substrate from ' + F(a, 1) + ' to ' + F(b, 1) + ' ' + SU + '.'; }, pick: function(g, c){ return Math.min(data.substrate.max, c.S * g.pick([2, 4])); } },
-        { id: 'hotter', key: 'T', text: function(a, b){ return 'Heat it from ' + F(a, 0) + ' to ' + F(b, 0) + ' °C.'; }, pick: function(g, c, p){ return Math.min(data.temperature.max, Math.round(p.Tm + g.pick([4, 8, 12]))); } },
-        { id: 'cooler', key: 'T', text: function(a, b){ return 'Cool it from ' + F(a, 0) + ' to ' + F(b, 0) + ' °C.'; }, pick: function(g, c){ return Math.max(0, c.T - g.pick([20, 25, 30])); } },
-        { id: 'ph', key: 'pH', text: function(a, b){ return 'Change the pH from ' + F(a, 1) + ' to ' + F(b, 1) + '.'; }, pick: function(g, c){ return Math.max(1, Math.min(13, c.pH + g.pick([-4, -3, 3, 4]))); } },
-        { id: 'competitive-more-substrate', key: 'S', inh: 'competitive', text: function(a, b){ return 'With a competitive inhibitor present, raise the substrate from ' + F(a, 1) + ' to ' + F(b, 1) + ' ' + SU + '.'; }, pick: function(g, c){ return Math.min(data.substrate.max, c.S * 5); } },
-        { id: 'noncompetitive-add', key: 'I', inh: 'noncompetitive', text: function(a, b){ return 'Add noncompetitive inhibitor: from ' + F(a, 2) + ' to ' + F(b, 2) + ' ' + IU + '.'; }, pick: function(g){ return g.pick([2, 3, 4]); } },
-        { id: 'saturated-more-substrate', key: 'S', sat: true, text: function(a, b){ return 'The enzyme is already working near its top speed. Raise the substrate from ' + F(a, 1) + ' to ' + F(b, 1) + ' ' + SU + '.'; }, pick: function(g, c){ return Math.min(data.substrate.max, c.S + 2); } }
-      ];
-      function makeChallenge(){
-        for(var tries = 0; tries < 300; tries++){
-          var g = M.rng(chalSeed + 7919 * (chalN * 300 + tries)), p = g.pick(data.profiles), ch = CHANGES[(chalN + tries) % CHANGES.length];
-          var c = { S: ch.sat ? 18 : g.pick([1, 2, 3, 4]), T: p.defaults.T, pH: p.defaults.pH, inhibitor: ch.inh || 'none', I: ch.id === 'noncompetitive-add' ? 0 : 2 };
-          var a = c[ch.key], b = M.round(ch.pick(g, c, p), 2);
-          if(a === b) continue;
-          var c2 = Object.assign({}, c); c2[ch.key] = b;
-          var r1 = M.enzyme.rate(p, c, c.S), r2 = M.enzyme.rate(p, c2, c2.S), rel = (r2 - r1) / Math.max(r1, 1e-9);
-          var dir = rel > 0.15 ? 'up' : rel < -0.15 ? 'down' : Math.abs(rel) < 0.03 ? 'same' : null;
-          if(!dir || r1 < 3) continue;
-          return { p: p, ch: ch, c: c, c2: c2, a: a, b: b, r1: r1, r2: r2, dir: dir, now: c, done: false };
-        }
-        return null;
-      }
-      /* The words after a challenge: what the molecules are doing and why (as before the rebuild). */
-      function whyText(p, c, dir){
-        var z = M.enzyme.states(p, c), k = M.enzyme.params(p, c), w = [], I = c.inhibitor !== 'none' ? c.I : 0;
-        if(z.folded < 0.6) w.push('At ' + F(c.T, 0) + ' °C most molecules have unfolded (denatured): the active site has lost its shape, so no substrate fits. (Many real enzymes stay unfolded after cooling.)');
-        else if(z.motion < 0.5) w.push('It is cold: molecules move slowly, so substrate meets the active site less often and fewer products form each second.');
-        if(z.phOk < 0.5) w.push('At pH ' + F(c.pH, 1) + ' the charged groups in most active sites are in the wrong state, so the site no longer binds substrate well (the sites drawn out of shape).');
-        if(c.inhibitor === 'competitive' && I > 0) w.push('The competitive inhibitor looks like the substrate and sits in the active site, so it competes: add more substrate and substrate wins more often (Km rises to ' + F(k.km, 2) + ' ' + SU + ', Vmax unchanged).');
-        if(c.inhibitor === 'noncompetitive' && I > 0) w.push('The noncompetitive inhibitor binds elsewhere and bends the active site, taking those molecules out of action whatever the substrate level (Vmax falls to ' + F(k.vmax, 1) + ', Km unchanged).');
-        if(!w.length) w.push(dir === 'same' ? 'Nearly every active site is busy (saturated): adding substrate barely speeds things up. Only more enzyme would.' : 'Many active sites are empty, waiting for substrate: more substrate means more collisions and a faster rate.');
-        return w.join(' ');
-      }
+      var PK = predictKit(data, F);
+      function makeChallenge(){ return PK.make(chalSeed, chalN); }
       function condWords(c){ return F(c.S, 1) + ' ' + SU + ' substrate, ' + F(c.T, 0) + ' °C, pH ' + F(c.pH, 1) + (c.inhibitor !== 'none' && c.I > 0 ? ', ' + F(c.I, 2) + ' ' + IU + ' ' + c.inhibitor + ' inhibitor' : ''); }
       /* On a phone the question fills the screen and the picture is below it: bring the picture into view. */
       function toScene(){
@@ -795,7 +834,7 @@
             setTimeout(function(){
               if(chal !== x) return;
               btn.parentNode.hidden = true;
-              fb.innerHTML = '<p><span class="bio-mark ' + (ok ? 'ok">Right' : 'no">Not quite') + '</span> The rate ' + words[x.dir] + ': ' + F(x.r1, 1) + ' → ' + F(x.r2, 1) + ' ' + RU + '.</p><p>' + esc(whyText(x.p, x.c2, x.dir)) + '</p>' +
+              fb.innerHTML = '<p><span class="bio-mark ' + (ok ? 'ok">Right' : 'no">Not quite') + '</span> The rate ' + words[x.dir] + ': ' + F(x.r1, 1) + ' → ' + F(x.r2, 1) + ' ' + RU + '.</p><p>' + esc(PK.why(x)) + '</p>' +
                 '<div class="bt-actions"><button type="button" class="btn-press sm os-next">Next challenge</button>' + T.report(SLUG + ':predict-' + x.ch.id) + '</div>';
               fb.querySelector('.os-next').addEventListener('click', function(){ showChallenge(); var q = chalBox.querySelector('.os-chal-q'); q.setAttribute('tabindex', '-1'); q.focus(); });
               if(away) try{ fb.scrollIntoView({ block: 'start', behavior: K.reduced() ? 'auto' : 'smooth' }); }catch(e){}

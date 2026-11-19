@@ -200,3 +200,26 @@ a time, 0 failures. New kept test
 `scripts/tools-v2/enzyme-activity-frames.mjs` (frame by frame, items 1, 3, 4 and 5 and the pH 2 to 13 drag):
 0 failures at 390, 1440 and 1920. AP® Biology content, build `--check`, 72 unit tests, `check-site`,
 `check-weight`, `check-tool-use` with a local list (frame v2) pass. Playwright at 390, 768, 1440 light and dark.
+
+## Recheck 1 (2026-11-18): BLOCK, both new items fixed
+All six round 1 items passed. Two new must fix items (both older than the rebuild) and one should fix:
+1. **Test yourself names the variable that changed.** The challenge code is now a pure `predictKit(data, F)`
+   (exposed as `ApBioTools.enzymePredict`); `why(x)` reads the challenge's change and uses the substrate sentences
+   only for a substrate change. New sentences: a small pH move ("pH 1.0 is farther from this enzyme's best pH
+   (about 2.0), so fewer active sites have the right shape and charges to bind substrate, and the rate drops"),
+   heating that has not yet unfolded most molecules, and cooling or heating that moves the rate the other way.
+   Every kind was audited: pH (Enzyme B, 2 to 1) was the only one that fell back in practice. New unit test
+   `scripts/test/apbio-enzyme-predict.test.mjs`: 60 seeds by 28 challenges, each explanation names the changed
+   variable, no substrate reason for another change, direction words agree with the rate.
+2. **Spoken rate.** Each knob's `aria-valuetext` computes the rate from the conditions with the knob at the value
+   it names (`knobSay`), not from the last drawn state, and every knob is refreshed after each change, a new
+   challenge, a tab switch and a new kind of inhibitor. The frames test checks it on opening Temperature, after
+   three arrow keys, on pH (and a key) and on Substrate.
+3. **Substrate at the walls (should fix).** New and returning substrate fades in at a clear spot inside the
+   solution (it used to enter at the walls), with a soft push off the walls and away from crowding. At 20 mM, 1440:
+   left and right 7% bands held 8% and 34% before, 0% and 2% now. The frames test checks no side band holds over 15%.
+
+Checks: frames test 1440, 0 failures (the old code fails the new checks: 8 failures); sweep one width per process at
+all ten widths, 0 failures (one earlier run at 600 had a near tie in a random challenge, an enzyme 7132 against a
+label 7144 px²; it did not repeat). AP® Biology 74 unit tests, content check, build `--check`, `check-site`,
+`check-weight` pass. Preview regenerated.

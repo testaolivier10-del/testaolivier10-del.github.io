@@ -14,6 +14,11 @@
         line), never "still folded".
      6. pH 2 -> 13 in one drag that passes 7: on every frame "new enzyme" is never on an enzyme drawn unfolded, and
         once every enzyme is drawn unfolded the "denatured" label is up.
+     7. Substrate 20 mM: free substrate spreads through the solution; neither side band (7% of the width) holds
+        more than 15% of it (Recheck 1: it piled at the side walls).
+     8. The knob's spoken rate (aria-valuetext) is the model's rate for the value it names: on opening the
+        Temperature tab, after each of three arrow keys, after switching to pH and back to Substrate (Recheck 1: it
+        was one step behind).
 
      node scripts/tools-v2/enzyme-activity-frames.mjs [width]
 
@@ -70,6 +75,37 @@ const drawnWorking = f => f.E.reduce((a, e) => a + (e.fold > 0.9 && e.st === 'ok
     const want = v / (2 + v), got = a / Math.max(1, n);
     if (Math.abs(got - want) > 0.15) fails.push(`substrate ${v} mM: ${got.toFixed(2)} of working sites drawn full, the model's share is ${want.toFixed(2)}`);
     console.log(`substrate ${v} mM: drawn ${got.toFixed(2)}, model ${want.toFixed(2)}`);
+  }
+  { // 7: at 20 mM, free substrate is not piled at the side walls
+    const bands = [0, 0]; let tot = 0;
+    for (let i = 0; i < 20; i++) {
+      const xs = await page.evaluate(() => { const w = document.querySelector('.ez2-svg').viewBox.baseVal.width; return [...document.querySelectorAll('.ez2-parts use')].filter(u => u.getAttribute('href') === '#ez2-sub' && +(u.getAttribute('opacity') ?? 1) > 0.5).map(u => +/translate\(([-\d.]+)/.exec(u.getAttribute('transform'))[1] / w); });
+      xs.forEach(x => { tot++; if (x < 0.07) bands[0]++; else if (x > 0.93) bands[1]++; }); await page.waitForTimeout(200);
+    }
+    const sh = bands.map(n => n / Math.max(1, tot));
+    console.log(`substrate 20 mM: ${(sh[0] * 100).toFixed(0)}% of substrate at the left wall, ${(sh[1] * 100).toFixed(0)}% at the right`);
+    if (sh.some(x => x > 0.15)) fails.push(`substrate 20 mM: ${(sh[0] * 100).toFixed(0)}% left, ${(sh[1] * 100).toFixed(0)}% right of the substrate in a side band of 7%`);
+  }
+  { // 8: the spoken rate follows the value at once
+    const A = JSON.parse(readFileSync(join(ROOT, 'bio/data/tools/enzyme-activity.json'), 'utf8')).profiles.find(p => p.id === 'a');
+    const say = async (what, tab) => {
+      const r = await page.locator(main).evaluate((el, a) => {
+        const M = window.ApBioMath, v = +el.value, c = { S: 10, T: 37, pH: 7, inhibitor: 'none', I: 0 };
+        if (a.tab === 'sub') c.S = v; else if (a.tab === 'temp') c.T = v; else c.pH = v;
+        return { t: el.getAttribute('aria-valuetext'), want: M.fixed(M.enzyme.rate(a.A, c, c.S), 1) };
+      }, { A, tab });
+      if (!r.t.includes('Reaction rate ' + r.want + ' ')) fails.push(`spoken rate, ${what}: "${r.t}", the model gives ${r.want}`);
+    };
+    await page.getByRole('tab', { name: /Temp/ }).click(); await page.waitForTimeout(400);
+    await say('Temperature tab opened', 'temp');
+    await page.locator(main).focus();
+    for (let k = 0; k < 3; k++) { await page.keyboard.press('ArrowRight'); await page.waitForTimeout(120); await say(`Temperature, arrow key ${k + 1}`, 'temp'); }
+    await page.getByRole('tab', { name: /pH/ }).click(); await page.waitForTimeout(400); await say('pH tab opened', 'ph');
+    await page.locator(main).focus(); await page.keyboard.press('ArrowLeft'); await page.waitForTimeout(120); await say('pH, arrow key', 'ph');
+    await page.getByRole('tab', { name: /Substrate/ }).click(); await page.waitForTimeout(400); await say('Substrate tab opened', 'sub');
+    await page.getByRole('tab', { name: /Temp/ }).click(); await page.waitForTimeout(300);
+    await page.locator(main).focus(); await page.keyboard.press('Home'); await page.waitForTimeout(120);
+    await setIn(page, 37); await endIn(page); await page.waitForTimeout(300);
   }
   await page.getByRole('tab', { name: /Temp/ }).click(); await page.waitForTimeout(500);
   for (const how of ['drag back to 37', 'Home']) {
