@@ -118,7 +118,6 @@
     function say(t){ live.textContent = ''; setTimeout(function(){ live.textContent = t; }, 40); }
 
     var FIG = null, G = null;
-    if(window.LevlBodyFigs) window.LevlBodyFigs.load('chest', function(F){ if(F){ FIG = F; draw(); } });
 
     /* ---------------------------------------------------------------- geometry (stage px) */
     function layout(){
@@ -146,7 +145,7 @@
       var k = Math.min(fa.w / 600, fa.h / 666), ox = fa.x + (fa.w - 600 * k) / 2, oy = fa.y + Math.max(0, (fa.h - 666 * k) / 2);
       g.fa = fa; g.k = k; g.ox = ox; g.oy = oy;
       g.lens = { x: lx, y: ly, r: lr }; g.strip = { x: sx, y: sy, w: sw, h: sh };
-      g.rest = toStage([70, 92], g);
+      g.rest = toStage([110, 44], g); // beside the neck, off the chest, under nothing
       g.pr = clamp(26 * k * 1.25, 19, 28); // the chest piece's radius
       return g;
     }
@@ -164,7 +163,7 @@
       var g = layout(); if(!g) return;
       G = g;
       svg.setAttribute('viewBox', '0 0 ' + g.W + ' ' + g.H);
-      drawBg(); drawFig(); drawSites(); drawLensFrame(); drawStripFrame(); placeHtml();
+      drawBg(); drawFig(); drawSites(); drawLensFrame(); paintLens(null, null); drawStripFrame(); placeHtml();
       paintKeys(); placeSteth(S().site ? sitePos(S().site) : g.rest, true);
       frame(true);
       if(!play.on && play.ended){ paintStrip(null, null, true); }
@@ -192,8 +191,8 @@
       if(!f) return;
       sv('image', { href: FIG.url(f), x: f1(g.ox), y: f1(g.oy), width: f1(600 * g.k), height: f1(666 * g.k), class: 'snd2-img', preserveAspectRatio: 'none' }, gFig);
       // R and L: which side of the patient is which (front view: his right on your left)
-      var front = S().view === 'front', y = g.oy + 150 * g.k;
-      [[g.ox + 48 * g.k, front ? 'R' : 'L'], [g.ox + 552 * g.k, front ? 'L' : 'R']].forEach(function(a){
+      var front = S().view === 'front', y = g.oy + 330 * g.k;
+      [[g.ox + 26 * g.k, front ? 'R' : 'L'], [g.ox + 574 * g.k, front ? 'L' : 'R']].forEach(function(a){
         var t = sv('text', { x: f1(a[0]), y: f1(y), class: 'snd2-rl' }, gFig); t.textContent = a[1];
       });
     }
@@ -267,7 +266,8 @@
       if(g.playOut){ bPlay.style.left = f1(g.playOut[0]) + 'px'; bPlay.style.top = f1(g.playOut[1]) + 'px'; }
       else { bPlay.style.left = f1(Sx.x + 10) + 'px'; bPlay.style.top = f1(Sx.y + Sx.h / 2 - pb / 2) + 'px'; }
       placeLensLab();
-      viewSw.style.top = f1(g.kh + 6) + 'px'; viewSw.style.left = f1(g.fa.x + g.fa.w - 6) + 'px';
+      // Front / Back at the foot of the chest's area, out of the way of the cue, the keys and the lens
+      viewSw.style.top = f1(g.fa.y + g.fa.h - 50) + 'px'; viewSw.style.left = f1(g.fa.x + g.fa.w - 6) + 'px';
     }
 
     function placeLensLab(){
@@ -634,7 +634,7 @@
       siteLab.hidden = false; siteLab.textContent = SHORT[id];
       var r = G.pr, p = sp, w = siteLab.offsetWidth, h = siteLab.offsetHeight, B = box.getBoundingClientRect();
       // the first place beside the chest piece that stays in the chest's area and clear (6 px) of the switches
-      var avoid = [viewSw, ab, lensLab].filter(function(e){ return !e.hidden && e.offsetWidth; }).map(function(e){ var q = e.getBoundingClientRect(); return [q.left - B.left - 6, q.top - B.top - 6, q.right - B.left + 6, q.bottom - B.top + 6]; });
+      var avoid = [viewSw, ab, lensLab].filter(function(e){ return !e.hidden && e.offsetWidth; }).concat([].slice.call(gFig.querySelectorAll('.snd2-rl'))).map(function(e){ var q = e.getBoundingClientRect(); return [q.left - B.left - 6, q.top - B.top - 6, q.right - B.left + 6, q.bottom - B.top + 6]; });
       var C = [[p[0] + r + 8, p[1] - h / 2], [p[0] - r - 8 - w, p[1] - h / 2], [p[0] - w / 2, p[1] + r + 6], [p[0] - w / 2, p[1] - r - 6 - h]];
       var pick = null;
       for(var i = 0; i < C.length && !pick; i++){
@@ -866,7 +866,7 @@
     /* ---------------------------------------------------------------- the cue and "Show me how" */
     var cue = null; // made when Explore first shows, at its real width (a phone gets the short cue below the stethoscope)
     function makeCue(){
-      cue = K.cue(layer, { key: 'nremt-sound-trainer', text: box.clientWidth < 640 ? 'Drag the stethoscope' : 'Drag the stethoscope onto the chest', side: 'below', at: function(){ return !G ? [0, 0] : [sp[0], sp[1] + G.pr * .4]; } });
+      cue = K.cue(layer, { key: 'nremt-sound-trainer', text: box.clientWidth < 640 ? 'Drag the stethoscope' : 'Drag the stethoscope onto the chest', side: 'right', at: function(){ return !G ? [0, 0] : [sp[0] + G.pr * .5, sp[1]]; } });
     }
     var tour = K.tour({ key: 'nremt-sound-trainer', label: 'Show me how', steps: [
       { id: 'steth', text: 'Drag the stethoscope onto a spot on the chest (or tap a spot): you hear the sound there.', target: function(){ return steth; } },
@@ -895,6 +895,8 @@
     ref.querySelector('.snd2-ref-test').addEventListener('click', function(){ if(studio && studio.kit2){ if(studio.close) studio.close(); studio.kit2.go('quiz'); } });
 
     paintKeys(); chain();
+    // the chest figure (it may already be loaded, and then this calls back at once: everything above is ready)
+    if(window.LevlBodyFigs) window.LevlBodyFigs.load('chest', function(F){ if(F){ FIG = F; draw(); } });
     var api = {
       stage: stage, ref: ref, more: ref.querySelector('.snd2-ref-more'),
       // Explore leaves the screen: the sound, every timer and the frame loop stop; the trace is left whole

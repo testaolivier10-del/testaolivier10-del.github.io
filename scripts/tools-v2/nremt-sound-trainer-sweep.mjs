@@ -114,6 +114,8 @@ async function measure(page) {
     [['site label', '.snd2-sitelab'], ['lens label', '.snd2-lenslab'], ['compare switch', '.snd2-ab'], ['play', '.snd2-play'], ['front back', '.snd2-view'], ['keys', '.snd2-keys'], ['cue', '.tk2-cue']]
       .forEach(([n, s]) => { const e = box.querySelector(s); if (vis(e)) items.push({ n, ...R(e) }); });
     const steth = R(box.querySelector('.snd2-steth'));
+    const rings = [...box.querySelectorAll('.snd2-ring')].map(e => ({ n: 'spot ' + e.parentNode.getAttribute('data-site'), ...R(e) }));
+    const marks = [...box.querySelectorAll('.snd2-rl')].map(e => ({ n: 'mark ' + e.textContent, ...R(e) }));
     const pills = [...box.querySelectorAll('.snd2-ev')].filter(g => +g.style.opacity > 0.5).map(g => ({ n: 'pill ' + g.textContent, ...R(g.querySelector('.snd2-ev-b')) }));
     const img = box.querySelector('.snd2-img'), lens = box.querySelector('.snd2-lens-rim'), mon = box.querySelector('.snd2-mon');
     // text sizes: every visible element with its own text, in the tool (HTML and SVG)
@@ -130,7 +132,7 @@ async function measure(page) {
     const cz = [...document.querySelectorAll('.snd2 .tk2-cause .tk2-cz')].map(e => Math.round(e.getBoundingClientRect().top));
     const cause = document.querySelector('.snd2 .tk2-cause');
     const stage = document.querySelector('.snd2'), sr = stage.getBoundingClientRect();
-    return { B: { l: B.left, t: B.top, r: B.right, b: B.bottom, w: B.width, h: B.height }, items, steth, pills,
+    return { B: { l: B.left, t: B.top, r: B.right, b: B.bottom, w: B.width, h: B.height }, items, steth, pills, rings, marks,
       img: img ? R(img) : null, lens: lens ? R(lens) : null, mon: mon ? R(mon) : null,
       scroll: document.documentElement.scrollWidth > innerWidth + 1, small,
       rows: new Set(cz).size, causeH: cause.getBoundingClientRect().height, causeTake: cause.classList.contains('is-take'),
@@ -152,7 +154,12 @@ function checkLayout(m, tag, w) {
   const sl = m.items.find(x => x.n === 'site label');
   if (sl) ok(gap(sl, m.steth) >= 4, `${tag}: the site label touches the stethoscope (${gap(sl, m.steth).toFixed(1)})`);
   const cue = m.items.find(x => x.n === 'cue');
-  if (cue) ok(gap(cue, m.steth) >= 0, `${tag}: the cue covers the stethoscope`);
+  if (cue) {
+    ok(gap(cue, m.steth) >= 0, `${tag}: the cue covers the stethoscope`);
+    for (const x of m.rings.concat(m.marks)) ok(gap(cue, x) >= 0, `${tag}: the cue covers ${x.n}`);
+  }
+  // the R and L marks clear of every label and switch
+  for (const mk of m.marks) for (const it of m.items) if (it.n !== 'cue') ok(gap(mk, it) >= 4, `${tag}: ${mk.n} under ${it.n}`);
   for (let i = 0; i < m.pills.length; i++) {
     for (let j = i + 1; j < m.pills.length; j++) ok(gap(m.pills[i], m.pills[j]) >= 4, `${tag}: ${m.pills[i].n} and ${m.pills[j].n} overlap`);
     const pl = m.items.find(x => x.n === 'play'); if (pl) ok(gap(m.pills[i], pl) >= 4, `${tag}: ${m.pills[i].n} under Play`);
