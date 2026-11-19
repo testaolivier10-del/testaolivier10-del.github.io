@@ -396,7 +396,7 @@
         return part(0, bath + levels(D, function(l){ return l + ' °C'; }, 'Water bath temperature')) + o + part(1, drop);
       },
       'elodea-light-color': function(D){
-        var o = topRow([[2, I.meter, 'light meter:\nsame energy'], [3, function(x, y){ return I.bottle(x, y, 'HCO₃'); }, 'bicarbonate\n(CO₂ source)'], [4, I.thermo, 'water\ntemperature'], [1, I.tally, 'count O₂ bubbles\nper minute']]), filt = '', bub = '';
+        var o = topRow([[2, I.meter, 'light meter:\nsame energy'], [3, function(x, y){ return I.bottle(x, y, ''); }, 'bicarbonate\n(CO₂ source)'], [4, I.thermo, 'water\ntemperature'], [1, I.tally, 'count O₂ bubbles\nper minute']]), filt = '', bub = '';
         D.lv.forEach(function(l, k){
           var x = gx(D.n, k), c = /blue/i.test(l) ? 'dk-fblue' : /green/i.test(l) ? 'dk-fgreen' : /red/i.test(l) ? 'dk-fred' : 'dk-fgrey';
           o += I.lamp(x, 96);
@@ -477,7 +477,7 @@
         });
         [-2000, -1500, -1000, -200].forEach(function(bp){ o += '<path class="dk-tick" d="M' + n1(sx(bp)) + ' 188v8"/>' + tx(sx(bp), 206, bp === -200 ? '−200' : '−' + String(-bp).replace(/(\d)(\d{3})$/, '$1,$2'), 'dk-ts'); });
         o += tx(sx(0), 206, '0', 'dk-ts');
-        return o + part(4, luc) + part(0, dna + tx(180, 224, 'Upstream DNA in each construct (bp from the gene; gaps are missing)', 'dk-ax'));
+        return o + part(4, luc) + part(0, dna + tx(200, 224, 'Upstream DNA in each construct (bp; gaps missing)', 'dk-ax'));
       },
       'desiccation-selection': function(D){
         var o = topRow([[2, function(x, y){ return I.cal(x, y, '30'); }, '30 generations\nof selection'], [3, function(x, y){ return I.drop(x - 8, y + 4, 5) + I.arrow(x + 6, y + 2); }, 'then 2 generations,\nall humid'], [4, I.vial, 'same food'], [1, I.watch, 'hours females\nlive in dry air']]), hum = '';

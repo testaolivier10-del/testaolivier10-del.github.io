@@ -225,3 +225,21 @@ experiments, setup and results, at every width, in place of the old 80 px minimu
 1 plant numbers now match the screen.
 Checks: sweep one width per process, light and dark, **33800 passed, 0 failed** (360 to 600 at 3398, 768 to 1920 at
 3368); `--frames` 12 passed; Playwright 139 passed; unit tests, content, builds, `check-site`, `check-weight --check`, `build-apcalc --check`, `build-apmacro --check` all pass; preview regenerated.
+
+## Recheck 2 (2026-11-18, BLOCK; fixed the same day)
+Phones passed. Three spots rendered under 11 px; the rule is now every text in the tool at 11 px or more.
+1. **Text inside the setup icons in Test yourself** (8.4 to 10.8 px at 768 and 1024): `fitPic()` now takes its scale
+   from the smallest text in the drawing, the icons' own text included, and the icon text (`dk-ic`, only this tool
+   uses it) is drawn at 9 viewBox units instead of 8, so it reaches 11 px where the drawing is width limited (1024).
+   Text that could not fit was simplified, not shrunk: the bicarbonate bottle (experiment 6) no longer carries
+   "HCO₃" (its label under it names it), and experiment 12's axis title, which ran off the drawing's left edge, is
+   shorter ("Upstream DNA in each construct (bp; gaps missing)").
+2. **Explore ruler numbers** were 10 px: now 11 px.
+3. **Item labels** ("Same warmth" was 10.4 px at 360): the label fit never goes under 11 px; a label still too wide
+   at 11 px goes one word a line ("No / plant / food" at 360 and 390), and the bench's front on a phone is 12 px
+   taller for it. The group names are floored at 11 px too.
+The sweep now scans every visible text on the screen (svg text and HTML, Explore states and all 16 experiments,
+setup and results) at every width, rendered size = font size times the element's screen scale, and fails anything
+under 11 px; the smallest found is 11.0 px. Checks: sweep one width per process, light and dark, **34700 passed, 0
+failed**; `--frames` 12 passed; Playwright 139 passed; unit tests, content, `build-apbio --check`, `check-site`,
+`check-weight --check`, `build-apcalc --check`, `build-apmacro --check` pass; preview regenerated.
