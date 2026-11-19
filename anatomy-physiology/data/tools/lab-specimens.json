@@ -1,0 +1,1038 @@
+{
+ "about": "Explore specimens for the virtual lab practical (tools v2, docs/tools-v2-anp-lab-practical-brief.md). Each specimen is one lab figure (a station of the named set in data/tools/lab-practical.json) drawn clean: scripts/build-lab-specimens.py paints out every printed label and its leader line and writes figures/specimens/<figure>.webp, cropped to the drawing. Each spot names one asked label of that station; \"at\" lists the points (figure pixels) where its printed leader lines end on the structure, checked by eye; \"does\" is the short cause line, checked against the label's \"fn\". Validated by scripts/lib/anp-tool-checks/lab-specimens.mjs.",
+ "specimens": [
+  {
+   "id": "heart",
+   "tab": "Heart",
+   "figure": "os-19-9",
+   "set": "heart-internal",
+   "purpose": "Name each part of the heart and what it does",
+   "spots": [
+    {
+     "label": "aorta",
+     "at": [
+      [
+       483,
+       84
+      ]
+     ],
+     "does": "carries blood from the left ventricle to the body"
+    },
+    {
+     "label": "superior-vena-cava",
+     "at": [
+      [
+       390,
+       104
+      ]
+     ],
+     "does": "returns blood from the upper body"
+    },
+    {
+     "label": "inferior-vena-cava",
+     "at": [
+      [
+       396,
+       583
+      ]
+     ],
+     "does": "returns blood from the lower body"
+    },
+    {
+     "label": "pulmonary-trunk",
+     "at": [
+      [
+       548,
+       201
+      ]
+     ],
+     "does": "carries blood to the lungs"
+    },
+    {
+     "label": "right-atrium",
+     "at": [
+      [
+       394,
+       322
+      ]
+     ],
+     "does": "receives blood from the body"
+    },
+    {
+     "label": "left-atrium",
+     "at": [
+      [
+       637,
+       238
+      ]
+     ],
+     "does": "receives blood from the lungs"
+    },
+    {
+     "label": "right-ventricle",
+     "at": [
+      [
+       403,
+       467
+      ]
+     ],
+     "does": "pumps blood to the lungs"
+    },
+    {
+     "label": "left-ventricle",
+     "at": [
+      [
+       669,
+       434
+      ]
+     ],
+     "does": "pumps blood to the whole body"
+    },
+    {
+     "label": "tricuspid-valve",
+     "at": [
+      [
+       416,
+       421
+      ]
+     ],
+     "does": "stops backflow into the right atrium"
+    },
+    {
+     "label": "mitral-bicuspid-valve",
+     "at": [
+      [
+       651,
+       332
+      ]
+     ],
+     "does": "stops backflow into the left atrium"
+    },
+    {
+     "label": "aortic-valve",
+     "at": [
+      [
+       569,
+       339
+      ]
+     ],
+     "does": "stops backflow from the aorta"
+    },
+    {
+     "label": "pulmonary-valve",
+     "at": [
+      [
+       525,
+       333
+      ]
+     ],
+     "does": "stops backflow from the pulmonary trunk"
+    },
+    {
+     "label": "interventricular-septum",
+     "at": [
+      [
+       609,
+       520
+      ]
+     ],
+     "does": "keeps the two ventricles apart"
+    },
+    {
+     "label": "papillary-muscle",
+     "at": [
+      [
+       651,
+       478
+      ]
+     ],
+     "does": "keeps the chordae tendineae taut"
+    },
+    {
+     "label": "chordae-tendineae",
+     "at": [
+      [
+       467,
+       477
+      ]
+     ],
+     "does": "keep the valve cusps from flipping back"
+    }
+   ],
+   "erase": [
+    [
+     398,
+     370,
+     440,
+     333
+    ],
+    [
+     350,
+     488,
+     468,
+     476
+    ],
+    [
+     350,
+     490,
+     446,
+     489
+    ],
+    [
+     195,
+     246,
+     240,
+     246
+    ],
+    [
+     240,
+     246,
+     323,
+     257
+    ],
+    [
+     240,
+     246,
+     296,
+     302
+    ],
+    [
+     830,
+     213,
+     795,
+     213
+    ],
+    [
+     795,
+     213,
+     709,
+     214
+    ],
+    [
+     795,
+     213,
+     733,
+     259
+    ],
+    [
+     255,
+     531,
+     295,
+     531
+    ],
+    [
+     295,
+     531,
+     513,
+     481
+    ],
+    [
+     295,
+     531,
+     448,
+     527
+    ],
+    [
+     396,
+     402,
+     414,
+     419
+    ],
+    [
+     639,
+     239,
+     737,
+     161
+    ]
+   ]
+  },
+  {
+   "id": "brain",
+   "tab": "Brain",
+   "figure": "os-13-7",
+   "set": "brain-lateral",
+   "purpose": "Name the brain's lobes and the grooves between them",
+   "spots": [
+    {
+     "label": "frontal-lobe",
+     "at": [
+      [
+       199,
+       183
+      ]
+     ],
+     "does": "plans and starts voluntary movement"
+    },
+    {
+     "label": "parietal-lobe",
+     "at": [
+      [
+       410,
+       215
+      ]
+     ],
+     "does": "interprets touch and body position"
+    },
+    {
+     "label": "occipital-lobe",
+     "at": [
+      [
+       476,
+       303
+      ]
+     ],
+     "does": "processes vision"
+    },
+    {
+     "label": "temporal-lobe",
+     "at": [
+      [
+       332,
+       337
+      ]
+     ],
+     "does": "processes hearing and memory"
+    },
+    {
+     "label": "central-sulcus",
+     "at": [
+      [
+       379,
+       121
+      ]
+     ],
+     "does": "separates the frontal and parietal lobes"
+    },
+    {
+     "label": "lateral-sulcus",
+     "at": [
+      [
+       384,
+       273
+      ]
+     ],
+     "does": "the groove above the temporal lobe"
+    },
+    {
+     "label": "parieto-occipital-sulcus",
+     "at": [
+      [
+       489,
+       203
+      ]
+     ],
+     "does": "separates the parietal and occipital lobes"
+    }
+   ]
+  },
+  {
+   "id": "skull",
+   "tab": "Skull",
+   "figure": "os-7-5",
+   "set": "skull",
+   "purpose": "Name the bones of the skull and their landmarks",
+   "spots": [
+    {
+     "label": "frontal-bone",
+     "at": [
+      [
+       695,
+       127
+      ]
+     ],
+     "does": "forms the forehead"
+    },
+    {
+     "label": "parietal-bone",
+     "at": [
+      [
+       352,
+       117
+      ]
+     ],
+     "does": "forms the top and sides of the brain case"
+    },
+    {
+     "label": "temporal-bone",
+     "at": [
+      [
+       497,
+       323
+      ]
+     ],
+     "does": "forms the lower side of the skull"
+    },
+    {
+     "label": "occipital-bone",
+     "at": [
+      [
+       319,
+       524
+      ]
+     ],
+     "does": "forms the back and base of the skull"
+    },
+    {
+     "label": "greater-wing-of-sphenoid",
+     "at": [
+      [
+       676,
+       317
+      ]
+     ],
+     "does": "the part of the sphenoid seen on the side"
+    },
+    {
+     "label": "zygomatic-bone",
+     "at": [
+      [
+       743,
+       337
+      ]
+     ],
+     "does": "the cheekbone"
+    },
+    {
+     "label": "maxilla",
+     "at": [
+      [
+       861,
+       504
+      ]
+     ],
+     "does": "the upper jaw: holds the upper teeth"
+    },
+    {
+     "label": "mandible",
+     "at": [
+      [
+       747,
+       649
+      ]
+     ],
+     "does": "the lower jaw: the only skull bone that moves"
+    },
+    {
+     "label": "nasal-bone",
+     "at": [
+      [
+       859,
+       360
+      ]
+     ],
+     "does": "forms the bony bridge of the nose"
+    },
+    {
+     "label": "coronal-suture",
+     "at": [
+      [
+       564,
+       74
+      ]
+     ],
+     "does": "joins the frontal and parietal bones"
+    },
+    {
+     "label": "squamous-suture",
+     "at": [
+      [
+       496,
+       274
+      ]
+     ],
+     "does": "joins the temporal and parietal bones"
+    },
+    {
+     "label": "lambdoid-suture",
+     "at": [
+      [
+       239,
+       420
+      ]
+     ],
+     "does": "joins the parietal and occipital bones"
+    },
+    {
+     "label": "external-acoustic-meatus",
+     "at": [
+      [
+       507,
+       466
+      ]
+     ],
+     "does": "the ear canal opening"
+    },
+    {
+     "label": "mastoid-process",
+     "at": [
+      [
+       462,
+       524
+      ]
+     ],
+     "does": "the bump behind the ear where muscles attach"
+    },
+    {
+     "label": "styloid-process",
+     "at": [
+      [
+       544,
+       531
+      ]
+     ],
+     "does": "a thin spike where small muscles attach"
+    },
+    {
+     "label": "zygomatic-arch",
+     "at": [
+      [
+       650,
+       432
+      ]
+     ],
+     "does": "the bony bridge of the cheek, in front of the ear"
+    }
+   ],
+   "erase": [
+    [
+     593,
+     30,
+     593,
+     388
+    ],
+    [
+     560,
+     388,
+     737,
+     388
+    ],
+    [
+     560,
+     388,
+     560,
+     424
+    ],
+    [
+     737,
+     388,
+     737,
+     408
+    ],
+    [
+     632,
+     278,
+     27
+    ],
+    [
+     638,
+     252,
+     692,
+     38
+    ],
+    [
+     171,
+     337,
+     581,
+     437
+    ],
+    [
+     743,
+     337,
+     758,
+     392
+    ],
+    [
+     758,
+     392,
+     940,
+     413
+    ],
+    [
+     930,
+     524,
+     500,
+     441
+    ],
+    [
+     799,
+     505,
+     888,
+     527
+    ]
+   ]
+  },
+  {
+   "id": "neuron",
+   "tab": "Neuron",
+   "figure": "os-12-8",
+   "set": "neuron-structure",
+   "purpose": "Name each part of a neuron and what it does",
+   "spots": [
+    {
+     "label": "cell-body",
+     "at": [
+      [
+       331,
+       122
+      ]
+     ],
+     "does": "holds the nucleus and makes the proteins"
+    },
+    {
+     "label": "dendrites",
+     "at": [
+      [
+       304,
+       208
+      ]
+     ],
+     "does": "carry signals toward the cell body"
+    },
+    {
+     "label": "axon",
+     "at": [
+      [
+       438,
+       191
+      ]
+     ],
+     "does": "carries signals away from the cell body"
+    },
+    {
+     "label": "cell-membrane",
+     "at": [
+      [
+       282,
+       145
+      ]
+     ],
+     "does": "its changes in charge are the signals"
+    },
+    {
+     "label": "myelin-sheath",
+     "at": [
+      [
+       693,
+       365
+      ]
+     ],
+     "does": "insulates the axon so signals travel faster"
+    },
+    {
+     "label": "node-of-ranvier",
+     "at": [
+      [
+       629,
+       228
+      ]
+     ],
+     "does": "a bare gap between myelin segments"
+    },
+    {
+     "label": "oligodendrocyte",
+     "at": [
+      [
+       693,
+       203
+      ]
+     ],
+     "does": "wraps segments of axons in myelin"
+    },
+    {
+     "label": "synapse",
+     "at": [
+      [
+       670,
+       507
+      ]
+     ],
+     "does": "passes the signal to the next cell"
+    }
+   ],
+   "erase": [
+    [
+     150,
+     147,
+     282,
+     145
+    ],
+    [
+     590,
+     507,
+     668,
+     507
+    ]
+   ]
+  },
+  {
+   "id": "skin",
+   "tab": "Skin",
+   "figure": "os-5-2",
+   "set": "hair-follicle-glands",
+   "purpose": "Name the layers of the skin and what they hold",
+   "spots": [
+    {
+     "label": "epidermis",
+     "at": [
+      [
+       560,
+       340
+      ]
+     ],
+     "does": "the surface layer, with no blood vessels"
+    },
+    {
+     "label": "dermis",
+     "at": [
+      [
+       610,
+       470
+      ]
+     ],
+     "does": "tough connective tissue with vessels and nerves"
+    },
+    {
+     "label": "hypodermis",
+     "at": [
+      [
+       895,
+       640
+      ]
+     ],
+     "does": "anchors the skin, stores fat and insulates"
+    },
+    {
+     "label": "hair-shaft",
+     "at": [
+      [
+       429,
+       126
+      ]
+     ],
+     "does": "dead, keratin filled cells above the skin"
+    },
+    {
+     "label": "hair-follicle",
+     "at": [
+      [
+       338,
+       440
+      ]
+     ],
+     "does": "holds the hair root and makes the hair"
+    },
+    {
+     "label": "hair-root",
+     "at": [
+      [
+       297,
+       669
+      ]
+     ],
+     "does": "the part of a hair inside the follicle"
+    },
+    {
+     "label": "arrector-pili-muscle",
+     "at": [
+      [
+       455,
+       471
+      ]
+     ],
+     "does": "pulls the hair upright: a goose bump"
+    },
+    {
+     "label": "sebaceous-gland",
+     "at": [
+      [
+       232,
+       496
+      ]
+     ],
+     "does": "releases oily sebum into the follicle"
+    },
+    {
+     "label": "eccrine-sweat-gland",
+     "at": [
+      [
+       699,
+       613
+      ]
+     ],
+     "does": "makes watery sweat that cools the body"
+    },
+    {
+     "label": "pore-of-sweat-gland-duct",
+     "at": [
+      [
+       683,
+       334
+      ]
+     ],
+     "does": "where sweat leaves the skin"
+    },
+    {
+     "label": "adipose-tissue",
+     "at": [
+      [
+       204,
+       800
+      ]
+     ],
+     "does": "stores fat, insulates and cushions"
+    },
+    {
+     "label": "cutaneous-vascular-plexus",
+     "at": [
+      [
+       775,
+       808
+      ]
+     ],
+     "does": "arteries and veins that feed the dermis"
+    }
+   ],
+   "erase": [
+    [
+     604,
+     693,
+     745,
+     757
+    ],
+    [
+     742,
+     756,
+     900,
+     758
+    ],
+    [
+     810,
+     797,
+     880,
+     796
+    ],
+    [
+     214,
+     705,
+     245,
+     705
+    ]
+   ]
+  },
+  {
+   "id": "kidney",
+   "tab": "Kidney",
+   "figure": "os-25-8",
+   "set": "kidney-section",
+   "purpose": "Name each part of the kidney and what it does",
+   "crop": [
+    425,
+    8,
+    515,
+    612
+   ],
+   "spots": [
+    {
+     "label": "cortex",
+     "at": [
+      [
+       705,
+       495
+      ]
+     ],
+     "does": "the outer region, just under the capsule"
+    },
+    {
+     "label": "medulla",
+     "at": [
+      [
+       650,
+       420
+      ]
+     ],
+     "does": "the inner region, made of the pyramids"
+    },
+    {
+     "label": "pyramid",
+     "at": [
+      [
+       804,
+       334
+      ]
+     ],
+     "does": "carries forming urine toward its papilla"
+    },
+    {
+     "label": "renal-column",
+     "at": [
+      [
+       718,
+       398
+      ]
+     ],
+     "does": "cortex reaching in between two pyramids"
+    },
+    {
+     "label": "papilla",
+     "at": [
+      [
+       663,
+       362
+      ]
+     ],
+     "does": "drains urine into a minor calyx"
+    },
+    {
+     "label": "minor-calyx",
+     "at": [
+      [
+       688,
+       170
+      ]
+     ],
+     "does": "catches urine from one papilla"
+    },
+    {
+     "label": "major-calyx",
+     "at": [
+      [
+       678,
+       220
+      ]
+     ],
+     "does": "collects urine from minor calyces"
+    },
+    {
+     "label": "renal-pelvis",
+     "at": [
+      [
+       660,
+       262
+      ]
+     ],
+     "does": "funnels urine into the ureter"
+    },
+    {
+     "label": "ureter",
+     "at": [
+      [
+       511,
+       460
+      ]
+     ],
+     "does": "carries urine to the urinary bladder"
+    },
+    {
+     "label": "renal-artery",
+     "at": [
+      [
+       578,
+       357
+      ]
+     ],
+     "does": "brings blood to the kidney"
+    },
+    {
+     "label": "renal-vein",
+     "at": [
+      [
+       470,
+       211
+      ]
+     ],
+     "does": "carries blood out of the kidney"
+    },
+    {
+     "label": "capsule",
+     "at": [
+      [
+       632,
+       506
+      ]
+     ],
+     "does": "a tough layer that covers the kidney"
+    }
+   ],
+   "erase": [
+    [
+     598,
+     365,
+     598,
+     462
+    ],
+    [
+     598,
+     366,
+     632,
+     366
+    ],
+    [
+     598,
+     462,
+     632,
+     462
+    ],
+    [
+     690,
+     470,
+     722,
+     470
+    ],
+    [
+     722,
+     470,
+     722,
+     519
+    ],
+    [
+     690,
+     519,
+     722,
+     519
+    ],
+    [
+     722,
+     494,
+     940,
+     494
+    ],
+    [
+     425,
+     287,
+     460,
+     287
+    ],
+    [
+     455,
+     128,
+     600,
+     129
+    ],
+    [
+     455,
+     131,
+     605,
+     144
+    ],
+    [
+     945,
+     66,
+     821,
+     141
+    ],
+    [
+     945,
+     70,
+     806,
+     118
+    ],
+    [
+     688,
+     171,
+     832,
+     159
+    ]
+   ]
+  }
+ ]
+}

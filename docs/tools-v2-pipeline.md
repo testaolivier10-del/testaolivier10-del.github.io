@@ -26,6 +26,7 @@ States: building, review, fixing, recheck, PASS (waiting to integrate), integrat
 | Ochem resonance | claude/tools-v2-resonance | wt-resonance | integrated | |
 | AP Bio design drills | claude/tools-v2-design-drills | wt-design-drills | integrated | adapter: a part can carry its own stage (`stage` on a part) |
 | A&P pathways | claude/tools-v2-anp-pathways | wt-anp-pathways | integrated | |
+| A&P lab practical | claude/tools-v2-anp-lab-practical | wt-anp-lab-practical | integrated | first explorer: kit `K.spots`; kit2 weight bucket `assets/course/kit2` |
 
-Next by use (rollout table): A&P lab practical, A&P predict, A&P feedback loops,
+Next by use (rollout table): A&P predict, A&P feedback loops,
 NREMT body map, NREMT sound trainer, NREMT flowcharts, Ochem arrow pusher, Ochem viewer 3d.

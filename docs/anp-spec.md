@@ -525,7 +525,18 @@ Site audit follow-up (2026-10-02, workstream W6):
     Review round 1 (2026-11-18): no step column (the steps are one line under a full width picture), two
     compositions per screen (wide 2:1, tall 1:1), a clear ring knob, broken runs stop after their last real step, the
     people redrawn, the stalk into the posterior lobe, the zoom from T12 to L1.
-102. (2026-11-18) **Feedback loop builder on tools v2** (docs/tools-v2-standard.md; brief docs/tools-v2-anp-feedback-loops-brief.md).
+
+102. (2026-11-18) **Lab practical on tools v2** (docs/tools-v2-standard.md; brief docs/tools-v2-anp-lab-practical-brief.md).
+    Explore is six specimens, one lab figure each (heart internal, brain lateral, skull lateral, neuron, skin, kidney),
+    drawn clean: printed labels and their leader lines painted out by scripts/build-lab-specimens.py
+    (figures/specimens/), with a pin on each of 70 parts where its printed line ended. Tap a pin and its name opens on
+    the picture, with a short "what it does" phrase under it; find by name; nothing graded. Data:
+    data/tools/lab-specimens.json, validated by scripts/lib/anp-tool-checks/lab-specimens.mjs (asked labels only, so
+    decision 30 holds; phrases held to the ordering rule). Test yourself holds the whole section 8.1 tool unchanged:
+    all 83 sets, Labels (the old Explore), Study, Quiz and the timed practical, every item id, score and deep link. The
+    named places piece is the shared kit's K.spots (assets/course/tool-kit2.js), for the other explorer tools. Open
+    points in docs/anp-needs-author.md ("Lab practical tool, tools v2 specimens").
+103. (2026-11-18) **Feedback loop builder on tools v2** (docs/tools-v2-standard.md; brief docs/tools-v2-anp-feedback-loops-brief.md).
     Explore is three drawn loops from the bank: body temperature (`temperature-hot`, `temperature-cold`: a person, a
     magnified patch of skin with a nerve ending, an arteriole, a sweat gland and skeletal muscle, the hypothalamus),
     blood glucose (`glucose-high-insulin`, `glucose-low-glucagon`: a trunk with liver, pancreas, muscle and fat, a
