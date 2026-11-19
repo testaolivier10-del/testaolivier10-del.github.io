@@ -62,13 +62,14 @@ overlapping bars mean the data do not show one (never "prove").
   another.
 - **Instant result:** the plants grow or shrink to the new result (a 650 ms tween; leaves droop with less water);
   the means and the bracket follow the plants as drawn, every frame.
-- **What differs, drawn:** every item that differs between the groups gets an amber ring on BOTH sides and the
-  word "differs" on the test side. One ring: a fair test. Two or three: a confound.
+- **What differs, drawn:** every item that differs between the groups gets an amber ring on BOTH sides, and its
+  label on the test side turns amber ("Less water", "Plant food", "Warmer"). One ring: a fair test. Two or three: a confound.
 - **Opens** on a fair test of fertilizer (the only difference): test plants 6 cm taller.
 - **Cue:** "Tap the water" on the test group's water jug, once per device.
 - **Cause line** (`K.cause`), set when the plants settle (the first pill changes at once):
-  "Only plant food differs → Test 6 cm taller → Plant food made the difference";
-  "Plant food and water differ → Test 1 cm taller → Can't tell which did it";
+  "Only plant food differs → Test 6 cm taller → Plant food made the difference"; "Only water differs → Test 7 cm
+  shorter → Water made the difference"; "Only warmth differs → Test 6 cm taller → Warmth made the difference";
+  "Plant food and water differ → Test 1 cm shorter → Can't tell which did it";
   "Nothing differs → same height → nothing is tested".
 - **Under the picture:** Start over (a link).
 
@@ -84,8 +85,9 @@ overlapping bars mean the data do not show one (never "prove").
 - **Labels wait for the picture:** while any plant grows from the soil, the means, bars and bracket fade out and
   the cause line says "Growing"; they come back when every plant has finished.
 - **Cause line:** "1 plant each → No spread to measure → Can't tell"; "3 plants each → Bars overlap → Could be
-  chance"; "7 plants each → Bars apart → Unlikely to be chance". It opens on 3 plants (the first batch is fixed: one
-  plant each shows the control TALLER, 3 to 5 overlap, 7 and up are apart; later batches are random).
+  chance"; "7 plants each → Bars apart → Unlikely to be chance". It opens on 3 plants (the first batch is fixed, seed
+  1254130: one plant each shows the control 0.6 cm taller, 2 to 5 overlap, 6 and up are apart, and at 12 plants the
+  means are 18.0 and 24.0, the model's; later batches are random).
 - **Cue:** "Drag for more plants" at the knob, once per device.
 
 ### What is on screen in Explore (counted at 1440 and 390, opening state)
@@ -111,14 +113,17 @@ means and difference, the knob with its value, 2 error bars, the fertilizer labe
 | Experiment picker, drill stepper, finished card, setup / results switch, "Read the setup" | Test yourself, unchanged |
 | "Drills" filter (in Details) | "?" (Practice one kind of drill); a pick opens Test yourself |
 | "What each drill checks" and the intro | About (the ⋯ menu) |
+| The drills' first visit hint ("Read the setup, then pick an answer", on the first answer) | Dropped: one cue per screen; the side panel's head already says "Look at the experiment, then answer one drill at a time." Reverse: `s.hint` in `drillsPart()` |
+| The "Explanation" button in the side panel's head | About (as before for drills in the standard frame) |
 | Null hypothesis, CER, prediction and mechanism | Test yourself only (no Explore screen: writing skills) |
 
 ## Decisions made for the owner (also one line each in `docs/tools-v2-owner-log.md`)
 1. Explore is a new drawn plant bench with two tabs (Fair test, Sample size); the drills are Test yourself.
 2. Plant food (fertilizer) is the variable tested; light is the same over both groups and cannot be changed (etiolation makes
    "less light, shorter" untrue in deep shade).
-3. The confounds on offer are water and warmth; effect sizes are invented (+6 cm fertilizer, −5 cm less water,
-   +3 cm warmer, 18 cm base after 3 weeks, SD 3 cm), stated in "?".
+3. The confounds on offer are water and warmth; effect sizes are invented (+6 cm plant food, −7 cm less water,
+   +6 cm warmer, 18 cm base after 3 weeks, SD 3 cm), stated in "?". Each single effect clears ±2 SE at 6 plants a
+   group by at least 1.1 cm, so a Fair test credit never contradicts Sample size (review round 1).
 4. Error bars are ±2 SE, and the verdict is read from the bars as drawn (apart or overlapping), the course's rule.
 5. Null hypothesis, CER and prediction have no Explore screen.
 6. The Drills filter moved from Details to "?".
@@ -171,3 +176,38 @@ means and difference, the knob with its value, 2 error bars, the fertilizer labe
 - The kit's tap look (dashed outline and hand badge) sits on the bench's front; the badges sit on the box's top edge
   so they do not cover the jug, bottle and switch.
 - No real phone, no screen reader pass, no real students.
+
+## Review round 1 (2026-11-18, BLOCK; fixed the same day)
+Review: `/home/claude/review-design-drills/REVIEW.md`. Merged `claude/tools-v2-all` first (owner log and standard
+tables: both sides kept).
+Must fix:
+1. **Fair test credited warmth (+3 cm) for a difference the Sample size rule calls chance** (6 plants, SD 3: ±2 SE is
+   2.45 cm a side). Effects are now plant food +6, less water −7, warmer +6 cm: each clears the two bars by 1.1 cm or
+   more. "?" gives the new numbers and says so. The sweep asserts that every "made the difference" state has drawn
+   ±2 SE bars apart by 0.5 cm or more. The ruler and the height cap go to 37 cm (plant food and warmth reach 34.7).
+2. **Test yourself's setup was cut by the side panel on phones and tablets.** `fitPic()` in `drillsPart()` scales the
+   setup and the results chart to the stage's own height (from the drawing's top to the stage's bottom, less "Read
+   the setup" and the Enlarge button), on arrange, a view switch, a resize and entering Test yourself; the drawing
+   also uses the full width of a desktop stage now. The sweep checks all 16 experiments, setup and results, at every
+   width: the lowest text is above the stage's bottom and the side panel, nothing is under Enlarge, at least 80 px tall.
+3. **Sample size difference pill used the unrounded means.** The difference is now taken from the two rounded means
+   shown (both tabs; the cause line's result too). The sweep checks it the same way.
+4. **The growth tween ran on after Explore hid.** `finishAll()` on leaving Explore lands every change, cancels the
+   frame loop and settles the words. The frame sweep checks it (New plants, then Test yourself 100 ms later: no
+   change on the hidden bench afterwards).
+Should fix: the opening batch (all 12 control plants above average) replaced by a balanced one (above); "±2 SE" moved
+above the bar's top cap on the gap side, with the difference pill above it; the bench's front darkened in light mode
+so the amber and white labels reach 4.5:1; the cause line keeps two rows' height above 640 px too (the sweep now
+checks one height at every width); the kit's green pressed outline is not used on these taps (the amber ring is the
+one mark); the dropped drills hint is listed in "What moved"; the brief's "differs" sentence corrected.
+Removed: the difference bracket's end caps (it no longer looks like a third error bar), in both tabs.
+Also: the site's motion off rule had cut the reduced motion fade to nothing; the tool keeps its 0.22 s fade.
+Follow up (not in this round): the 16 Test yourself setup drawings are still the older icon drawings; redrawing them
+at flagship level is its own job.
+
+Checks after the round: unit tests (74 pass), content check, `build-apbio --check`, `check-site`, `check-weight
+--check`, `build-apcalc --check`, `build-apmacro --check`. Sweep one width per process, light and dark: 360, 390, 430,
+600 at 3334 each and 768, 820, 1024, 1280, 1440, 1920 at 3304 each, **33160 passed, 0 failed**; `--frames` 12 passed.
+Playwright at 390 (touch), 768 and 1440, light and dark: 139 passed, 0 failed. Preview and shots regenerated.
+Note: the reviewer's own clip script was run once against the fix (0 of 16 cut at 360, 390, 430 and 768); it wrote
+its `clip-branch-*.png` shots into the review folder again.

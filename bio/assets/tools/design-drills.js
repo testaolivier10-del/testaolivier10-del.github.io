@@ -710,7 +710,9 @@
      one knob sets the plants per group, each group gets its ±2 SE error bar, and "New plants" grows a new batch.
      The cause line (K.cause) names what differs, the result and whether the difference can be credited; its
      result words are set only once the plants have settled. Every effect size is invented (stated in "?"). */
-  var EXM = { base: 18, food: 6, water: -5, warm: 3, sd: 3, max: 12, n1: 6, nStart: 3, seed: 36, lo: 3, hi: 35 };
+  // every single effect clears ±2 SE at 6 plants a group with spread SD 3 (2.45 cm a side, 4.9 in all) by at least 1 cm,
+  // so a Fair test credit never contradicts the Sample size rule
+  var EXM = { base: 18, food: 6, water: -7, warm: 6, sd: 3, max: 12, n1: 6, nStart: 3, seed: 1254130, lo: 3, hi: 37 };
   var ITEMS = [
     { id: 'water', name: 'water', same: 'Same water', diff: 'Less water' },
     { id: 'food', name: 'plant food', same: 'No plant food', diff: 'Plant food' },
@@ -1087,15 +1089,18 @@
       // "±2 SE" names the test group's bar, at its top on the inner side
       var se = gOver.querySelector('.dd2-se'), showS = St.tab === 'n' && s[1].se != null;
       se.setAttribute('visibility', showS ? 'visible' : 'hidden');
-      if(showS){ se.setAttribute('x', n1(G.g[1].err + 8)); se.setAttribute('y', n1(yOf(s[1].m + 2 * s[1].se) + 4)); se.style.fontSize = (G.phone ? 11 : 12.5) + 'px'; }
-      // the bracket between the two means, and the difference
-      var dv = Math.round((s[1].m - s[0].m) * (St.tab === 'fair' ? 1 : 10)) / (St.tab === 'fair' ? 1 : 10);
+      // above the bar's top cap, on the gap side, clear of the plants
+      var seFs = G.phone ? 11 : 12.5, seY = yOf(s[1].m + 2 * s[1].se) - 7;
+      if(showS){ se.setAttribute('x', n1(G.g[1].err + 3)); se.setAttribute('y', n1(seY)); se.setAttribute('text-anchor', 'end'); se.style.fontSize = seFs + 'px'; }
+      // the bracket between the two means, and the difference of the two means as shown (rounded first)
+      var dv = St.tab === 'fair' ? Math.round(s[1].m) - Math.round(s[0].m) : Math.round(Math.round(s[1].m * 10) - Math.round(s[0].m * 10)) / 10;
       var dt = dv === 0 ? 'same' : (dv > 0 ? '+' : MINUS) + (St.tab === 'fair' ? Math.abs(dv) : Math.abs(dv).toFixed(1)) + ' cm';
       var br = gOver.querySelector('.dd2-br'), yA = Math.min(ys[0], ys[1]), yB = Math.max(ys[0], ys[1]), c2 = 6;
-      br.querySelector('.dd2-brl').setAttribute('d', yB - yA > 1 ? 'M' + n1(G.cx) + ' ' + n1(yA) + 'V' + n1(yB) + 'M' + n1(G.cx - c2) + ' ' + n1(yA) + 'H' + n1(G.cx + c2) + 'M' + n1(G.cx - c2) + ' ' + n1(yB) + 'H' + n1(G.cx + c2) : '');
+      // a plain line (no end caps: it must not look like a third error bar)
+      br.querySelector('.dd2-brl').setAttribute('d', yB - yA > 1 ? 'M' + n1(G.cx) + ' ' + n1(yA) + 'V' + n1(yB) : '');
       var ph = (G.phone ? 12.5 : 14) + 9, py = yB - yA > ph + 10 ? (yA + yB) / 2 : yA - ph / 2 - 6;
       // with error bars beside the gap, the difference goes above both bars
-      if(St.tab === 'n' && s[0].se != null){ var bt = Math.min(yA, yOf(s[0].m + 2 * s[0].se), yOf(s[1].m + 2 * s[1].se)); py = bt - ph / 2 - 8; }
+      if(St.tab === 'n' && s[0].se != null){ var bt = Math.min(yA, yOf(s[0].m + 2 * s[0].se), seY - seFs - 2); py = Math.max(ph / 2 + 4, bt - ph / 2 - 8); }
       pill(br, G.cx, py, dt);
     }
     function waiting(on){ stage.classList.toggle('is-busy', !!on); }
@@ -1107,7 +1112,7 @@
         var D = differs(), first = !D.length ? 'Nothing differs' : D.length === 1 ? 'Only ' + D[0].name + ' differs' : cap(D.length === 2 ? D[0].name + ' and ' + D[1].name : D[0].name + ', ' + D[1].name + ' and ' + D[2].name) + ' differ';
         var head1 = { t: first, role: 'diff' };
         if(busy() || !s) return [head1, { t: 'Growing', role: 'ink' }];
-        var d = Math.round(s[1].m - s[0].m), res = d === 0 ? 'Same height' : 'Test ' + Math.abs(d) + ' cm ' + (d > 0 ? 'taller' : 'shorter');
+        var d = Math.round(s[1].m) - Math.round(s[0].m), res = d === 0 ? 'Same height' : 'Test ' + Math.abs(d) + ' cm ' + (d > 0 ? 'taller' : 'shorter');
         var end = !D.length ? { t: 'Nothing is tested', role: 'bad' } : D.length === 1 ? { t: cap(D[0].name) + ' made the difference', role: 'ok' } : { t: 'Can’t tell which did it', role: 'bad', say: 'you cannot tell which one caused it' };
         return [head1, { t: res, role: 'res' }, end];
       }
@@ -1232,7 +1237,7 @@
       '<p class="dd2-ref-p"><b>Independent variable:</b> the one thing you change on purpose (here, plant food for the test group). <b>Dependent variable:</b> what you measure (the height after 3 weeks). <b>Controlled variables:</b> everything kept the same in both groups (the light, the water, the warmth, the pots, the seeds). <b>Control group:</b> the group with no plant food, the baseline to compare with.</p>' +
       '<p class="dd2-ref-p"><b>Confounding variable:</b> a second difference between the groups that could also change the result. With two differences you cannot say which one caused it, even when the second one turns out to do nothing. List what differs between the groups: there should be one thing on that list.</p>' +
       '<p class="dd2-ref-p"><b>Sample size and error bars.</b> Plants of one seed lot still differ by chance. The bars on Sample size are ±2 standard errors (SE = s ÷ √n), about a 95% confidence interval. Bars that do not overlap mean the difference is unlikely to be chance; bars that overlap mean the data do not show a difference. Data support a claim or fail to support it; they never prove it.</p>' +
-      '<p class="dd2-ref-p"><b>This bench is a made up example.</b> Bean plants grow to 18 cm on average in 3 weeks; plant food adds 6 cm, less water takes away 5 cm, a warmer mat adds 3 cm, and plants vary by chance with a standard deviation of 3 cm. Light is the same for both groups: very dim light can make seedlings grow taller and thinner, so height alone would mislead.</p>' +
+      '<p class="dd2-ref-p"><b>This bench is a made up example.</b> Bean plants grow to 18 cm on average in 3 weeks; plant food adds 6 cm, less water takes away 7 cm, a warmer mat adds 6 cm, and plants vary by chance with a standard deviation of 3 cm. Each of these is big enough that, with 6 plants a group, the ±2 SE bars of the two groups would not overlap. Light is the same for both groups: very dim light can make seedlings grow taller and thinner, so height alone would mislead.</p>' +
       '<div class="dd2-ref-live"></div>' +
       '<p class="dd2-ref-p">Notes: <a href="../notes/design-variables.html">Independent and dependent variables</a> · <a href="../notes/design-controls.html">Controls</a> · <a href="../notes/stats-confidence-intervals.html">Confidence intervals</a></p>' +
       '<div class="dd2-ref-drill"><h3 class="ls-title-l">Practice one kind of drill</h3></div>' +
@@ -1249,7 +1254,24 @@
     function onShow(mode){
       St.mode = mode;
       if(mode === 'explore'){ setTimeout(function(){ layoutNow(true); paintItems(); showCue(); }, 0); }
-      else { cue.hide(false); cueN.hide(false); if(tour.active()) tour.stop(); if(tourN.active()) tourN.stop(); paintItems(); }
+      else { cue.hide(false); cueN.hide(false); if(tour.active()) tour.stop(); if(tourN.active()) tourN.stop(); paintItems(); finishAll(); }
+    }
+    /* Leaving Explore: every change lands at once, the frame loop stops, and the words settle (nothing runs on a
+       hidden stage). */
+    function finishAll(){
+      if(raf){ cancelAnimationFrame(raf); raf = 0; }
+      P.forEach(function(a){
+        for(var i = a.length - 1; i >= 0; i--){
+          var p = a[i];
+          if(p.next){ p.to = p.next.to; p.next = null; }
+          if(p.to){ p.h = p.to.h; p.x = p.to.x; p.op = p.to.op; p.dry = p.to.dry; p.to = null; }
+          p.soil = false;
+          if(p.gone){ if(p.el) p.el.remove(); a.splice(i, 1); continue; }
+          if(p.el && G) paintPlant(p);
+        }
+      });
+      if(!G) return;
+      paintOver(); wDirty = false; settled();
     }
     setTab('fair', false);
     return { stage: stage, ref: ref, refDrill: ref.querySelector('.dd2-ref-drill'), onShow: onShow, first: function(){ layoutNow(true); setTimeout(function(){ layoutNow(true); if(St.mode === 'explore') showCue(); }, 60); } };
@@ -1268,9 +1290,31 @@
     dock.appendChild(pick);
     var wrap = null, view = 'setup', auto = true;
     var DATA_DRILLS = { cer: 1, predict: 1 };
+    /* The setup (or the results chart) is scaled to the stage's own height, so the side panel never cuts it: from the
+       svg's top to the stage's bottom, less "Read the setup" under it and the Enlarge button's corner. */
+    var fitQ = 0;
+    function fitPic(){
+      fitQ = 0;
+      if(stage.hidden || !stage.getClientRects().length) return;
+      var host = stage.closest('.ls-stage-body') || stage.parentNode, stg = stage.closest('.ls-stage') || host;
+      var lim = Math.min(host.getBoundingClientRect().bottom, stg.getBoundingClientRect().bottom);
+      var enl = stg.querySelector('.ls-enl'); if(enl && enl.getClientRects().length){ var er = enl.getBoundingClientRect(); if(er.width) lim = Math.min(lim, er.top - 4); }
+      var rd = stage.querySelector('.dr-readsetup'), under = rd && !rd.hidden && rd.getClientRects().length ? rd.querySelector('summary').getBoundingClientRect().height + 10 : 0;
+      stage.querySelectorAll('.dr-sfig, .dr-charts svg').forEach(function(sv){
+        if(!sv.getClientRects().length) return;
+        var vb = sv.viewBox && sv.viewBox.baseVal, w = sv.getBoundingClientRect().width;
+        if(!vb || !vb.width || !w) return;
+        var top = sv.getBoundingClientRect().top, avail = lim - top - 6 - (sv.classList.contains('dr-sfig') ? under : 0);
+        var h = Math.max(90, Math.min(avail, w * vb.height / vb.width));
+        sv.style.height = Math.floor(h) + 'px';
+      });
+    }
+    function fitSoon(){ if(!fitQ) fitQ = requestAnimationFrame(fitPic); }
+    window.addEventListener('resize', fitSoon);
+    if(window.ResizeObserver) new ResizeObserver(fitSoon).observe(stage);
     function setView(v, byHand){
       if(byHand) auto = false;
-      view = v; stage.classList.toggle('dr-show-data', v === 'data');
+      view = v; stage.classList.toggle('dr-show-data', v === 'data'); fitSoon();
       var rs = stage.querySelector('.dr-readsetup'); if(rs) rs.hidden = v === 'data';
       stage.querySelectorAll('.dr-view button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === v)); });
     }
@@ -1297,6 +1341,7 @@
         if(h2) h2.after(vw); else stage.insertBefore(vw, stage.firstChild);
       }
       auto = true; setView('setup');
+      [60, 300, 900].forEach(function(t){ setTimeout(fitSoon, t); });
       var w = document.createElement('div'); w.className = 'ls-dr-steps';
       Array.prototype.slice.call(host.children).forEach(function(x){ w.appendChild(x); });
       if(wrap) wrap.remove();
@@ -1332,7 +1377,7 @@
     if(window.MutationObserver) new MutationObserver(arrange).observe(host, { childList: true });
     arrange();
     if(scenSel) scenSel.addEventListener('change', function(){ setTimeout(function(){ if(s.kit2 && s.kit2.mode() === 'quiz') s.task(task(), 'quiz'); }, 0); });
-    return { value: 'drills', label: 'Experiment drills', stage: stage, dock: dock, task: task };
+    return { value: 'drills', label: 'Experiment drills', stage: stage, dock: dock, task: task, fit: function(){ [0, 120, 500, 1200].forEach(function(t){ setTimeout(fitSoon, t); }); } };
   }
 
   /* The kit adapter's settings: the bench is the Explore stage, the drills are the one Test yourself part. */
@@ -1342,6 +1387,6 @@
     var sel = EXP.refDrill.querySelector('select');
     if(sel) sel.addEventListener('change', function(){ if(s.kit2){ if(s.close) s.close(); s.kit2.go('quiz', 'drills'); } });
     setTimeout(EXP.first, 0);
-    return { stage: EXP.stage, ref: EXP.ref, parts: [part], onShow: function(mode){ EXP.onShow(mode); } };
+    return { stage: EXP.stage, ref: EXP.ref, parts: [part], onShow: function(mode){ EXP.onShow(mode); if(mode !== 'explore') part.fit(); } };
   }
 })();

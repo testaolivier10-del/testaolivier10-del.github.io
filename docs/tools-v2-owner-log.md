@@ -148,3 +148,7 @@ in each tool's brief.
 | 2026-11-18 | AP Bio Design drills | The second sheet is named "How it works" (was "All drills") | It now holds the terms, the bench's numbers and the drill filter | `bio-tools.js` detailsTitle |
 | 2026-11-18 | AP Bio Design drills | The kit adapter takes a part's own picture (`stage` on a part), used by Experiment drills | The 16 experiments each have their own drawn setup; no other tool passes it | `studioKit2` in `bio-tools.js` |
 | 2026-11-18 | AP Bio Design drills | Hub blurb and the bar's one line reworded for the new Explore; title, description and URL unchanged | Say what the tool now does | `bio/data/pages.json` |
+| 2026-11-18 | AP Bio Design drills | Effects changed to plant food +6, less water −7, warmer +6 cm (were −5 and +3) | Each single effect must clear ±2 SE at 6 plants a group, so Fair test never contradicts Sample size (review round 1) | `EXM` in `design-drills.js`; "?" |
+| 2026-11-18 | AP Bio Design drills | Sample size opens on a fixed balanced batch (seed 1254130) | The first batch had every control plant above average (review round 1) | `EXM.seed` |
+| 2026-11-18 | AP Bio Design drills | The drills' first visit hint is dropped | One cue per screen; the side panel's head says the same | Reverse: `s.hint` in `drillsPart()` |
+| 2026-11-18 | AP Bio Design drills | The difference bracket has no end caps | It read as a third error bar (review round 1) | `paintOver()` |

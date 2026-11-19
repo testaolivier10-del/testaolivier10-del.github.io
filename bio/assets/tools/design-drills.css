@@ -4,7 +4,7 @@
    the error bars, the height pill), a difference that can be credited green, one that cannot vermillion. */
 .dd2,.dd2-ref{--dd-diff:#E69F00;--dd-diff-ink:#8A5A00;--dd-res:#0072B2;--dd-res-ink:#005A8C;--dd-ok:#009E73;--dd-ok-ink:#00684C;--dd-bad:#D55E00;--dd-bad-ink:#A33F00;
   --dd-w0:#EEF3EE;--dd-w1:#DDE7E0;--dd-tile:#C9D6CD;--dd-lamp:#3A4148;--dd-lampl:#FFF4C2;--dd-cone:#FFF2B0;--dd-cable:#6B7278;
-  --dd-ruler:#F3D98A;--dd-ruler-ink:#6B5520;--dd-t0:#C99A62;--dd-t1:#B5864F;--dd-edge:#8C6436;--dd-f0:#9A6E3E;--dd-f1:#7E5830;
+  --dd-ruler:#F3D98A;--dd-ruler-ink:#6B5520;--dd-t0:#C99A62;--dd-t1:#B5864F;--dd-edge:#8C6436;--dd-f0:#6E4C2A;--dd-f1:#5C3F22;
   --dd-p0:#B85C38;--dd-p1:#D27A50;--dd-p2:#A24E2E;--dd-rim:#C96A43;--dd-soil:#4A3423;--dd-tray:#3F6B57;--dd-trayl:#5E8C75;
   --dd-mat:#4B5157;--dd-h0:#FF8A3D;--dd-h1:#E2541B;--dd-leaf:#4E9A3A;--dd-leaf-ink:#2F6424;--dd-dry:#A2A84A;--dd-dry-ink:#6A6E2C;--dd-stem:#5C8F38;
   --dd-glass:rgba(255,255,255,.55);--dd-glass-ink:#5E7480;--dd-water:#8CC4E6;--dd-food:#3FA34D;--dd-box:#E9ECEE;--dd-box-ink:#4B5157;--dd-pill:#fff;--dd-ink:#1F2A24;}
@@ -95,3 +95,15 @@
 /* the tap badge sits on the box's top edge, clear of the item it names */
 .dd2 .tk2-tap .tk2-badge{top:-12px;right:-4px;width:22px;height:22px;}
 .dd2 .tk2-tap .tk2-badge .tk2-i{width:13px;height:13px;}
+/* the kit's pressed look would mark "differs" a second time in green around the amber ring: these taps keep the plain
+   tap look whatever their state (the ring and the amber label carry it) */
+.dd2 .tk2-tap[aria-pressed="true"]{border:2px dashed color-mix(in srgb, var(--cink) 55%, transparent);background:transparent;}
+.dd2 .tk2-tap[aria-pressed="true"] .tk2-badge{background:#fff;color:var(--cink);}
+:root[data-theme="dark"] .dd2 .tk2-tap[aria-pressed="true"] .tk2-badge{background:#1A2638;}
+/* the cause line keeps two rows' height above phones too, so the page below never jumps on a tap */
+@media (min-width:641px){ .dd2-lines .tk2-cause{min-height:84px;align-content:center;} }
+/* Test yourself: the experiment's setup and chart are scaled by design-drills.js to the stage's height */
+.ls-root .ls-dr-stage:not(.dr-show-data) .dr-scene,.ls-root .ls-dr-stage.dr-show-data .dr-charts{max-width:none;}
+.ls-root .ls-dr-stage .dr-sfig,.ls-root .ls-dr-stage .dr-charts svg{display:block;width:100%;margin:0 auto;}
+/* reduced motion: the calm equivalent is a short cross fade, kept against the site's global motion off rule */
+@media (prefers-reduced-motion: reduce){ .dd2 .dd2-pl.is-fade{animation-duration:.22s !important;animation-iteration-count:1 !important;} }
