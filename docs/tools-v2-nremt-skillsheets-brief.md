@@ -28,10 +28,13 @@ into the lungs, a splint on a limb nobody held).
 
 ## The design
 - **Picture** (the patient from `nremt/assets/station-patient.js`, the clipboard from `nremt/assets/skill-explore.js`
-  and `.css`): the course's rendered body (BodyParts3D) on a padded mat on a tiled skills lab floor; a patient on
-  their back lies across the stage on a wide screen (head left) so the body fills it; a seated patient (seated
-  spinal, oxygen, medical) sits against a seat back (a car seat with a headrest for the seated spinal station);
-  trauma stays head up (its findings are laid out around an upright body). Beside the patient (below it on a
+  and `.css`): the course's rendered body (BodyParts3D) in a setting for its station (review round 1): a padded mat
+  on a tiled skills lab floor (bleeding, BVM, the two splints), a sports hall floor (cardiac arrest), the roadside
+  with its kerb and lane line (supine spinal), a lawn with the fallen ladder (trauma), a car's interior (seated
+  spinal) and a room with a window and an armchair (oxygen, medical), each with a soft light and shadows; a patient
+  on their back lies across the stage on a wide screen (head left) so the body fills it; a seated patient sits (the
+  lower legs drawn from the knee, in front of the cushion, feet on the floor); on the spinal stations the arms lie at
+  the sides; trauma stays head up (its findings are laid out around an upright body). Beside the patient (below it on a
   phone), the station's skill sheet on a wooden clipboard with a metal clip: the code and name, the time limit with
   a stopwatch, Start over, the examiner's words, and the steps.
 - **Main control, on the picture:** the sheet's steps, one row each: number, a drawn icon of what the step uses
@@ -110,7 +113,8 @@ change of position, not content: the bleeding station's "no gloves" mark moved b
 tourniquet's time tag). Open points for a person: `docs/nremt-needs-author.md`, "Skill sheets, tools v2".
 
 ## Checks (2026-11-19)
-- Sweep `scripts/tools-v2/nremt-skillsheets-sweep.mjs` (one width per process), last runs: 360 5862, 390 5862,
+- (Before review round 1; the round's own results are under "Review round 1".) Sweep
+  `scripts/tools-v2/nremt-skillsheets-sweep.mjs` (one width per process), runs: 360 5862, 390 5862,
   430 5862, 600 5860, 768 5740, 820 5740, 1024 6080, 1280 6040, 1440 5999, 1920 6039 checks passed, 0 failed.
   Frames (390, 1440): 67 passed, 2 failed, both performance: with the CPU throttled x4, taps gave median 16.7 ms and
   p95 100 to 183 ms at 390, median 33 ms and p95 283 ms at 1440 (earlier runs from 66 to 400 ms median at 1440).
@@ -124,10 +128,64 @@ tourniquet's time tag). Open points for a person: `docs/nremt-needs-author.md`, 
   tool-mode, tool-use with frame v2 and nothing under automation.
 - `node --test scripts/test/nremt-station-patient.test.mjs` passes (17).
 
+## Review round 1 (2026-11-19): BLOCK, fixed the same day
+Review: `/home/claude/review-nremt-skillsheets/REVIEW.md`. The medicine was confirmed unchanged; nothing here changes
+a step, a critical criterion, an order rule or an examiner cue. First `claude/tools-v2-all` was merged in (main after
+PR #228; its `scripts/check-tool-use.mjs` kept).
+
+Must fix, done:
+1. **"!" only on a step that was done.** `liveKeys()` now maps each live mark to the step done out of turn: through
+   vomit to the ventilation that was done; "not reopened" to the OPA; shock care first to the first of position,
+   oxygen or blanket done before the tourniquet; no gloves to the first touch step done (before the gloves, if any).
+   A mark whose step is not done gets no row. The sweep asserts it in every out of order state at every width and
+   in seven named cases (390 and 1440).
+2. **No blank band during camera moves.** While the camera moves, each svg shows the union of the start and end
+   boxes, sized at the start's scale and placed where that puts it, so whatever slides into view is painted (the
+   reviewer's second option; `overflow: visible` was tried first and made every frame paint the whole 6500 unit
+   floor, three times slower). The frames run checks every frame of a move covers the picture.
+3. **Board alongside**: the same long board that later goes under the patient (280 units, about 16 in) lies on the
+   road beside them, opaque, with its shadow, clear of the arm (the arms now lie at the sides).
+4. **Seated "Move to board"**: worded as said out loud ("Move to board, said out loud: pivot to a board"; on the
+   picture "Said: pivot onto a long board"); nothing claims a move that is not drawn.
+5. **Phones, BVM**: once the bag is out to squeeze, a non lying picture frames the bag and the chest (`camFor`).
+6. **Phones, first screen**: stacked, the picture height is capped (260 to 600 px, measured from the sheet) so the
+   clipboard's head and its first two rows, and the cue, are on the first screen (390x844, 768x900 and every
+   stacked width in the sweep). The sweep's "largest thing" check on stacked layouts now compares the picture with
+   the part of the clipboard on the first screen.
+7. **Visuals raised toward the flagship** (rule 12, owner's standing rule):
+   - Each station has a setting (`def.scene`, `room()`): skills lab mat (bleeding, BVM, splints), sports hall floor
+     (cardiac arrest), the roadside with kerb, gutter and lane lines (supine spinal), a lawn with the fallen ladder
+     (trauma), a car's interior with windows, pillars and carpet (seated spinal), a room with a window, skirting and
+     an armchair (oxygen, medical). A soft pool of light over the patient and shadows under the mat, seat and board.
+     The room draws on its own svg (`svg0`) so changes on the patient never repaint it.
+   - Seated patients sit (`def.seat`, `pose()`): the lower legs, cut just above the knee, are drawn in front of the
+     cushion (a touch wider, foreshortened), feet on the floor; the seat has a lit top and a darker front face.
+   - Supine and seated arms lie at the sides (`def.arms`, turned in at the shoulder); every point on a moved part
+     goes through `posePt()` (the pulse checks at the hands and feet).
+   - The log roll is animated (`rollBoard()`): the body rolls away (narrows), the board slides in from beside them,
+     they roll back; taking it back reverses it. The words wait for it (`busy()`); reduced motion gets the end state.
+
+Should fix, done: wording "OPA after breaths", "Splint before the check" (and "Collar before the check" on the spinal
+sheets; it is right whether the check was late or never done), "before the bleed was stopped"; the AED camera frames
+the head and chest (chest and AED focus boxes); trauma's "Back: nothing" is inside the picture at 1440 (upper focus
+taller); "?" says Explore has no station timer (the bleed's clock runs there). Also fixed: on a wide stage the
+tourniquet's "Tap the thigh" box stretched to the full picture height (two rules disagreed).
+
+Checks after the round:
+- Sweep, one width per process: 360 5892, 390 5892, 430 5892, 600 5904, 768 5784, 820 5784, 1024 6122, 1280 6092,
+  1440 6092, 1920 6092 passed, 0 failed.
+- Frames run (390, 1440): 143 passed, 2 failed, both performance under a load average of 10 to 14 on 2 cores (other
+  sessions running): 1440 median 100 ms. Measured earlier the same afternoon at a load of 6 with the reviewer's own
+  script, back to back with the flagship: bleeding median 17 to 33 ms, p95 233 ms; supine median 17 ms, p95 117 ms;
+  the flagship median 50 ms, p95 100 to 133 ms. The bleed's tails are still above the flagship's; recheck on a quiet
+  machine.
+- NREMT and kit tests 71 passed; check-site and check-weight pass; no conflict markers.
+
 ## What I am not happy with
 - Performance under CPU x4 here is over budget (above); it needs a measurement on a quiet machine or a real phone.
 - The rendered figure is one mannequin body for every patient (an existing limit, `docs/nremt-needs-author.md`,
-  "Female figure"); a seated patient is the same standing figure in front of a seat.
+  "Female figure"); a seated patient is that figure posed (round 1), not a seated render, and the log roll is the
+  body narrowing as seen from above, not a 3D roll.
 - The trauma station stays upright, so on a wide screen the mat shows as a band with floor either side.
 - Long stations (trauma 16 steps) make the phone page long: the sheet sits under the picture and a tap there
   scrolls the picture back into view.

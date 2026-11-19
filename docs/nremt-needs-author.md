@@ -190,3 +190,9 @@ checked on 2026-11-10. For a person to confirm:
   `nremt/assets/skill-explore.js`) paraphrase each step's own text in 1 to 3 words. Worth a glance by an EMT
   instructor, especially "Ventilate on rate" (one breath every 5 to 6 s), "Set the flow: at least 10 L/min",
   "Breaths through vomit: vomit into the lungs" and "Tourniquet first: sheet wants pressure first".
+- **Review round 1 pictures (no content change).** The settings (a roadside for the supine spinal, a car for the
+  seated spinal, a lawn and ladder for the trauma case, a sports hall for the arrest, a room for oxygen and the
+  medical case) are illustrations of each case, not part of any sheet. The seated figure is the standing render
+  posed (lower legs moved to the front of the cushion); the arms on the spinal stations are turned in to lie at the
+  sides; the log roll is shown as the body narrowing and the board sliding in. Worth a glance that none of this
+  suggests a technique the sheet does not teach.

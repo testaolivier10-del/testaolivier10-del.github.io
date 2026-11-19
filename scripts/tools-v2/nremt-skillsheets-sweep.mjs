@@ -121,7 +121,7 @@ async function measure(page) {
     const lh = parseFloat(cs.lineHeight) || parseFloat(cs.fontSize) * 1.4;
     const pills = [...cause.querySelectorAll('.tk2-cz')].map(p => Math.round(p.getBoundingClientRect().top));
     return { B: R(box, 'scene'), P: R(pt, 'patient'), board: R(box.querySelector('.ssx-board'), 'board'), plates, marks, cue: cue ? R(cue, 'cue') : null, rows, extras, texts,
-      scrollW: document.documentElement.scrollWidth, vw: innerWidth, causeH: cause.getBoundingClientRect().height,
+      scrollW: document.documentElement.scrollWidth, vw: innerWidth, vh: innerHeight, sy: scrollY, wide: box.classList.contains('is-wide'), causeH: cause.getBoundingClientRect().height,
       causeRows: cause.classList.contains('is-take') ? (() => { const r = document.createRange(); r.selectNodeContents(cause); return new Set([...r.getClientRects()].map(x => Math.round(x.top))).size; })() : new Set(pills).size };
   });
 }
@@ -138,7 +138,10 @@ function check(m, tag, w, causeH0) {
   if (m.cue) m.rows.forEach(r => ok(!over(m.cue, r, 0), `${tag}: the cue covers ${r.n}`));
   m.rows.forEach(r => { ok(r.h >= 40, `${tag}: ${r.n} only ${Math.round(r.h)} px tall`); ok(inside(r, m.board), `${tag}: ${r.n} clipped by the clipboard`); });
   for (let i = 0; i < m.rows.length; i++) for (let j = i + 1; j < m.rows.length; j++) ok(!over(m.rows[i], m.rows[j], 0), `${tag}: ${m.rows[i].n} overlaps ${m.rows[j].n}`);
-  ok(m.P.w * m.P.h >= m.board.w * m.board.h, `${tag}: the patient is not the largest thing in the scene`);
+  // stacked (the clipboard under the picture): the picture is the largest thing in the first screen (review round 1
+  // caps its height so the clipboard's head and two rows also show there)
+  const boardSeen = m.wide ? m.board.h : Math.max(0, Math.min(m.board.b + m.sy, m.vh) - (m.board.t + m.sy));
+  ok(m.P.w * m.P.h >= m.board.w * boardSeen, `${tag}: the patient is not the largest thing in the ${m.wide ? 'scene' : 'first screen'}`);
   const small = m.texts.filter(x => x.px < 10.95);
   ok(!small.length, `${tag}: text under 11 px: ${small.slice(0, 3).map(x => x.t + ' ' + x.px.toFixed(1)).join(', ')}`);
   if (w <= 640) {
@@ -158,6 +161,9 @@ if (W) {
     let m = await measure(page);
     ok(!!m.cue, `${W} ${tagT}: the first visit cue shows`);
     check(m, `${W} ${tagT} opening`, W, null);
+    // review round 1: on the first screen a stacked layout shows the clipboard's head and its first two rows
+    if (!m.wide) ok(m.rows.length > 1 && m.rows[1].b + m.sy <= m.vh + 1, `${W} ${tagT}: the first two rows are not in the first screen (${Math.round(m.rows[1].b + m.sy)} > ${m.vh})`);
+    if (m.cue) ok(m.cue.b + m.sy <= m.vh + 1 && m.cue.t + m.sy >= 0, `${W} ${tagT}: the cue is off the first screen`);
     const causeH0 = m.causeH;
     if (!dark) await shot(page, `sweep-opening-${W}`);
     for (const k of KEYS) {
