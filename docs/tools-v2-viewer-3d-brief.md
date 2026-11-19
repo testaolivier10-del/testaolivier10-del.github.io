@@ -223,5 +223,15 @@ Should fix:
   390 and 50 to 83 ms at 1440 (was 117 to 150 under the same kind of load). Not measured on a quiet machine.
 
 Checks after the round: unit tests, `build-tool-pages --check`, `check-site`, `check-weight --check`,
-`build-apcalc --check`, `build-apmacro --check`; the sweep at all ten widths (results below).
+`build-apcalc --check`, `build-apmacro --check`; the ochem unit tests (71 pass). The sweep, with the new checks (true
+shapes, text selection, Reset view's name, the drill's screen reader text), one width per process: 135 states and
+about 1610 checks per width, 0 failures at 360, 390, 430, 600, 768, 820, 1024, 1280, 1440 and 1920 (16,095 checks).
+Smallest share of the stage the molecule takes, per width: 7.1, 6.5, 5.9, 5.3, 6.2, 6.5, 6.5, 5.1, 5.5, 5.6% (was
+3.8, 3.5, 3.2, 4.6, 5.1, 5.3, 5.2, 4.1, 3.6, 3.9%). Own frames at 390 and 1440, light and dark, reduced motion:
+the letters wait for the arrows (opacity 0 while the arrow draws, the line dimmed), no text selected after a drag
+across and off the picture, 0 rAF calls in Test yourself after leaving mid turn, no console errors.
+
+Still not happy with: small molecules (water, CO₂) still leave open wall on a wide desktop, because the molecule is
+fitted to the ball that holds it at every turn; Handedness at 1440 is the slowest case under load; the 60° label on
+cyclopropane at 390 sits beside the ring's far edge (every ring angle is 60°, so it is not wrong).
 
