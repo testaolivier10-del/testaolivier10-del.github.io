@@ -360,7 +360,7 @@
         var cx = 178;
         el('rect', { x:cx - 34, y:y - 5, width:68, height:10, rx:5, fill:'url(#' + P.uid + 'Rod)', filter:'url(#' + P.uid + 'Drop)', transform:'rotate(-14 ' + cx + ' ' + y + ')' }, P.tqRod);
         el('rect', { x:cx - 11, y:y - 15, width:22, height:30, rx:5, fill:'#22282b', stroke:'#4d575c', 'stroke-width':1.2 }, P.tqRod);
-        var tag = el('g', { transform:'translate(' + (cx + 22) + ' ' + (y - 34) + ') rotate(-6)' }, P.tqRod);
+        var tag = el('g', { class:'sp-plate', transform:'translate(' + (cx + 22) + ' ' + (y - 34) + ') rotate(-6)' }, P.tqRod);
         el('rect', { x:0, y:0, width:44, height:20, rx:3, fill:'#fffdf4', stroke:'#b9b39a', 'stroke-width':1, filter:'url(#' + P.uid + 'Drop)' }, tag);
         el('text', { x:22, y:14, 'text-anchor':'middle', class:'sp-tag' }, tag).textContent = 'TQ ' + clock(st.tqAt || 0);
         if(!tq.stops) el('circle', { cx:cx, cy:y, r:26, class:'sp-wrongring' }, P.tqRod);
@@ -695,7 +695,7 @@
        spec.draw(P)     builds the layers: P.lay[stepId] is shown once ticked
        spec.paint(P,st) anything that depends on more than one step */
   function badge(parent, x, y, text, kind){
-    var g = el('g', { class:'sp-badge sp-badge--' + (kind || 'ok'), transform:'translate(' + x + ' ' + y + ')' }, parent);
+    var g = el('g', { class:'sp-badge sp-plate sp-badge--' + (kind || 'ok'), transform:'translate(' + x + ' ' + y + ')' }, parent);
     var w = 12 + text.length * 6.9;
     el('rect', { x:-w / 2, y:-10, width:w, height:20, rx:10 }, g);
     el('text', { x:0, y:4, 'text-anchor':'middle' }, g).textContent = text;
@@ -945,7 +945,7 @@
 
   /* ---- spinal immobilization, seated (E211): a vest-type device (KED) ---------- */
   var SEATED = station({
-    key:'seated', match:/seated/i,
+    key:'seated', upright:true, match:/seated/i,
     intro:'Adult, sitting in a car seat after a crash, suspected spinal injury; seen from the front. Your partner holds the head from behind.',
     full:[-10, -40, 500, 900],
     focus:{ full:[-10, -40, 500, 900], head:[110, -30, 260, 300], torso:[60, 160, 360, 520], limbs:[-10, 500, 500, 720] },
@@ -1000,7 +1000,7 @@
 
   /* ---- oxygen by non-rebreather (E204): the tank, the regulator, the mask ------ */
   var OXYGEN = station({
-    key:'oxygen', match:/rebreather|oxygen admin/i,
+    key:'oxygen', upright:true, match:/rebreather|oxygen admin/i,
     intro:'Adult, sitting up, short of breath; the oxygen cylinder is beside them.',
     full:[60, -60, 460, 560],
     focus:{ full:[60, -60, 460, 560], tank:[280, 40, 220, 420], face:[120, -20, 300, 320] },
@@ -1107,7 +1107,7 @@
       var a = el('g', {}, P.lay.power);
       el('rect', { x:420, y:250, width:110, height:130, rx:14, fill:'#e9a33a', stroke:'#9a5f12', 'stroke-width':2 }, a);
       el('rect', { x:432, y:262, width:86, height:40, rx:6, fill:'#163a2f' }, a);
-      el('text', { x:475, y:288, 'text-anchor':'middle', class:'sp-aed-t' }, a).textContent = 'AED';
+      el('text', { x:475, y:288, 'text-anchor':'middle', class:'sp-aed-t sp-plate', 'data-kmax':'1.4' }, a).textContent = 'AED';
       P.shockBtn = el('circle', { cx:475, cy:340, r:16, fill:'#c9342a', stroke:'#7a1b14', 'stroke-width':2 }, a);
       var pd = P.lay.pads;
       el('g', { transform:'rotate(-8 190 250)' }, pd).appendChild(padRect(190, 250));
@@ -1143,11 +1143,14 @@
     var g = el('g', {}, parent);
     el('circle', { cx:x, cy:y, r:7, class:'sp-find-dot' + (sev ? ' is-sev' : '') }, g);
     var bx = x + side * 26;
-    el('path', { d:'M' + x + ' ' + y + ' L' + bx + ' ' + y, class:'sp-find-line' }, g);
+    // the line, the box and its words are one plate (sp-plate) turning about the dot: kept upright and readable
+    // whichever way the patient lies
+    var pl = el('g', { class:'sp-plate', 'data-ax':x, 'data-ay':y }, g);
+    el('path', { d:'M' + x + ' ' + y + ' L' + bx + ' ' + y, class:'sp-find-line' }, pl);
     var w = 14 + text.length * 8.2;
     var gx = side > 0 ? bx : bx - w;
-    el('rect', { x:gx, y:y - 14, width:w, height:28, rx:8, class:'sp-find-box' + (sev ? ' is-sev' : '') }, g);
-    el('text', { x:gx + 7, y:y + 5, class:'sp-find-t' }, g).textContent = text;
+    el('rect', { x:gx, y:y - 14, width:w, height:28, rx:8, class:'sp-find-box' + (sev ? ' is-sev' : '') }, pl);
+    el('text', { x:gx + 7, y:y + 5, class:'sp-find-t' }, pl).textContent = text;
     return g;
   }
   var TRAUMA = station({
@@ -1203,7 +1206,7 @@
     }
   });
   var MEDICAL = station({
-    key:'medical', match:/assessment.*medical/i,
+    key:'medical', upright:true, match:/assessment.*medical/i,
     intro:'This run’s case: a 62-year-old with chest pain for 30 minutes, sitting up.',
     full:[-140, -40, 760, 900],
     focus:{ full:[-140, -40, 760, 900], upper:[-80, -40, 640, 560] },
@@ -1246,6 +1249,49 @@
   });
 
   var DEFS = [BLEEDING, BVM, LONGBONE, JOINT, SUPINE, SEATED, OXYGEN, AED, TRAUMA, MEDICAL];
+
+  /* ---- the room (tools v2, 2026-11-19) ---------------------------------------
+     Under a patient on their back: the skills lab floor and a padded mat. Behind a seated patient: a seat back
+     (a car seat with a headrest for the seated spinal station). In the figure's pixels; colours from the CSS, so
+     the dark theme dims them. Nothing here is a step or a finding. */
+  function room(world, def, uid){
+    var g = el('g', { class:'sp-room', 'aria-hidden':'true' }, world);
+    var d = world.ownerSVGElement.querySelector('defs');
+    var tile = el('pattern', { id:uid + 'Tile', width:160, height:160, patternUnits:'userSpaceOnUse' }, d);
+    el('rect', { width:160, height:160, class:'sp-tile' }, tile);
+    el('path', { d:'M0 0.5H160M0.5 0V160', class:'sp-tile-seam' }, tile);
+    el('rect', { x:-3000, y:-3000, width:6500, height:7500, class:'sp-floor' }, g);
+    el('rect', { x:-3000, y:-3000, width:6500, height:7500, fill:'url(#' + uid + 'Tile)', class:'sp-tiles' }, g);
+    if(def.upright){
+      // a seat back seen from the front, behind the shoulders and the hips
+      el('rect', { x:-3000, y:-3000, width:6500, height:7500, class:'sp-wall' }, g);
+      el('path', { d:'M86 1300 L86 250 Q86 168 168 160 L312 160 Q394 168 394 250 L394 1300 Z', class:'sp-seat' }, g);
+      el('path', { d:'M110 1300 L110 262 Q112 196 176 190 L304 190 Q368 196 370 262 L370 1300 Z', class:'sp-seat-in' }, g);
+      el('path', { d:'M240 196 L240 1300', class:'sp-seat-seam' }, g);
+      if(def.key === 'seated'){
+        el('rect', { x:168, y:-40, width:144, height:150, rx:44, class:'sp-seat' }, g);
+        el('rect', { x:186, y:-24, width:108, height:116, rx:34, class:'sp-seat-in' }, g);
+        el('rect', { x:204, y:106, width:10, height:62, class:'sp-seat-post' }, g);
+        el('rect', { x:266, y:106, width:10, height:62, class:'sp-seat-post' }, g);
+      }
+      return g;
+    }
+    // the mat: two folding panels, a piped edge and a soft sheen
+    el('rect', { x:-62, y:-150, width:604, height:1452, rx:46, class:'sp-mat-edge' }, g);
+    el('rect', { x:-50, y:-138, width:580, height:1428, rx:38, class:'sp-mat' }, g);
+    el('path', { d:'M-50 576 H530', class:'sp-mat-fold' }, g);
+    el('path', { d:'M-30 -110 Q240 -150 510 -110', class:'sp-mat-sheen' }, g);
+    return g;
+  }
+  /* An item drawn with its own transform gets an inner group for it, so the item itself can scale as it is put
+     on the patient (CSS) without losing where it is. */
+  function settle(world){
+    [].forEach.call(world.querySelectorAll('.sp-item[transform]'), function(it){
+      var inner = el('g', { transform:it.getAttribute('transform') });
+      while(it.firstChild) inner.appendChild(it.firstChild);
+      it.appendChild(inner); it.removeAttribute('transform');
+    });
+  }
 
   /* ---- the patient ------------------------------------------------------- */
 
@@ -1294,21 +1340,63 @@
     this.f = f; this.url = F.url(f);
     var l = this.host.querySelector('.sp-loading'); if(l) l.remove();
     this.defs = defs(svg, this.uid, f);
-    el('rect', { x:-3000, y:-3000, width:6500, height:7500, class:'sp-floor' }, svg);
-    el('path', { d:f.outline, fill:'#1d241f', opacity:0.22, transform:'translate(5 8)', filter:'url(#' + this.uid + 'Soft)' }, svg);
-    this.under = el('g', {}, svg);
-    this.skinLayer = el('g', {}, svg);
+    /* Everything is drawn in the figure's pixels inside one group, the world. A patient lying on their back is
+       turned to lie across a wide stage (opts.lie, tools v2 2026-11-19), so the picture fills it; a seated patient
+       never is (def.upright). Words on the patient (sp-plate) turn back upright and grow to stay readable. */
+    this.world = el('g', { class:'sp-world' }, svg);
+    room(this.world, this.def, this.uid);
+    el('path', { d:f.outline, fill:'#1d241f', opacity:0.22, transform:'translate(5 8)', filter:'url(#' + this.uid + 'Soft)' }, this.world);
+    this.under = el('g', {}, this.world);
+    this.skinLayer = el('g', {}, this.world);
     // clipped to the traced outline, so the edge stays smooth when the camera is close
     this.skinLayer.setAttribute('clip-path', 'url(#' + this.uid + 'Body)');
     el('image', { href:this.url, width:f.w, height:f.h, 'aria-hidden':'true' }, this.skinLayer);
-    this.over = el('g', {}, svg);
-    this.marks = el('g', { class:'sp-marks' }, svg);
+    this.over = el('g', {}, this.world);
+    this.marks = el('g', { class:'sp-marks' }, this.world);
     this.def.build(this);
+    settle(this.world);
     svg.addEventListener('click', function(e){ self.tap(e); });
     if(window.ResizeObserver){ this.ro = new ResizeObserver(function(){ self.camera(true); }); this.ro.observe(this.stage); }
     this.ready = true;
+    this.orient();
     this.paint();
     this.camera(true);
+    if(this.opts.onReady) this.opts.onReady(this);
+  };
+
+  /* Lying across the stage: only when the stage is wide and the patient is on their back. */
+  Patient.prototype.orient = function(){
+    var sw = this.stage.clientWidth || 300, sh = this.stage.clientHeight || 400;
+    var lie = !!(this.opts.lie && !this.def.upright && sw / sh > 1.15);
+    if(lie === this.lie && this.world.getAttribute('transform') != null) return false;
+    this.lie = lie;
+    this.world.setAttribute('transform', lie ? 'rotate(-90)' : '');
+    this.stage.classList.toggle('is-lying', lie);
+    return true;
+  };
+  // a box in the figure's pixels [x, y, w, h] as it lies on the stage
+  Patient.prototype.rbox = function(b){ return this.lie ? [b[1], -(b[0] + b[2]), b[3], b[2]] : b; };
+
+  /* Words on the patient: each plate turns back upright (lying) and grows so its text is at least 11.5 px on
+     screen; past its kmax it hides rather than cover the drawing. Run after a paint and on each camera frame. */
+  Patient.prototype.upright = function(scale){
+    if(!this.world) return;
+    var R = this.lie ? 90 : 0, sc = scale || this.scale || 1;
+    [].forEach.call(this.world.querySelectorAll('.sp-plate'), function(p){
+      if(p.closest('.sp-marks')) return;
+      if(p.__t0 == null){
+        p.__t0 = p.getAttribute('transform') || '';
+        var t = p.tagName === 'text' ? p : p.querySelector('text');
+        p.__fs = t ? parseFloat(getComputedStyle(t).fontSize) || 11 : 11;
+        if(p.hasAttribute('data-ax')) p.__a = [+p.getAttribute('data-ax'), +p.getAttribute('data-ay')];
+        else { try{ var b = p.getBBox(); p.__a = [b.x + b.width / 2, b.y + b.height / 2]; }catch(e){ p.__a = [0, 0]; } }
+        p.__kmax = +(p.getAttribute('data-kmax') || 3.2);
+      }
+      var k = Math.max(1, 11.5 / (p.__fs * sc)), a = p.__a;
+      p.style.visibility = k > p.__kmax ? 'hidden' : '';
+      k = Math.min(k, p.__kmax);
+      p.setAttribute('transform', (p.__t0 ? p.__t0 + ' ' : '') + (R || k !== 1 ? 'translate(' + a[0] + ' ' + a[1] + ')' + (R ? ' rotate(' + R + ')' : '') + (k !== 1 ? ' scale(' + k.toFixed(3) + ')' : '') + ' translate(' + (-a[0]) + ' ' + (-a[1]) + ')' : ''));
+    });
   };
 
   Patient.prototype.show = function(node, on){
@@ -1374,6 +1462,7 @@
   Patient.prototype.paint = function(){
     if(!this.ready) return;
     this.def.update(this, this.st);
+    this.upright();
     var chips = this.def.chips(this.st);
     this.chips.innerHTML = chips.map(function(c){ return '<span class="sp-chip sp-chip--' + c.k + '">' + esc(c.t) + '</span>'; }).join('');
     // placing the tourniquet by tapping the thigh
@@ -1382,10 +1471,10 @@
     var moving = !this.reviewing && step && step.place && this.st.done[step.id] && this.st.tq && !this.st.tq.stops;
     this.placeBox.hidden = !(placing || moving);
     this.stage.classList.toggle('is-placing', !!(placing || moving));
-    if(placing) this.placeBox.innerHTML = '<b>Tap the thigh</b> where the tourniquet goes, or tick the step to place it for you.';
+    if(placing) this.placeBox.innerHTML = this.opts.placeText || '<b>Tap the thigh</b> where the tourniquet goes, or tick the step to place it for you.';
     else if(moving) this.placeBox.innerHTML = (this.st.tq.stops ? '' : '<b>Still bleeding.</b> ') + 'Tap the thigh again to move it.';
     // the bag, squeezed by hand
-    var sq = !this.reviewing && step && step.squeeze;
+    var sq = !this.reviewing && (this.opts.squeeze ? this.opts.squeeze(this) : step && step.squeeze);
     this.sq.hidden = !sq;
     if(sq && !this.sqWired){ this.sqWired = true; this.wireSqueeze(); }
     this.svg.setAttribute('aria-label', 'The patient. ' + chips.map(function(c){ return c.t; }).join(', ') + (this.state.bleeding ? '. The wound is bleeding.' : ''));
@@ -1404,7 +1493,7 @@
     var step = cur && cur.place ? cur : this.def.steps.filter(function(s){ return s.place && self.st.done[s.id]; })[0];
     if(this.reviewing || !step || !this.svg.getScreenCTM) return;
     var p = this.svg.createSVGPoint(); p.x = e.clientX; p.y = e.clientY;
-    var q = p.matrixTransform(this.svg.getScreenCTM().inverse());
+    var q = p.matrixTransform((this.world || this.svg).getScreenCTM().inverse());
     this.st.tq = placeTourniquet(q.x, q.y);
     var idx = this.def.steps.indexOf(step);
     if(!this.st.done[step.id]){ if(this.opts.onPlace) this.opts.onPlace(idx); }
@@ -1433,6 +1522,7 @@
       t += r.vol === 'short' ? ' A very quick squeeze: in the room, squeeze over about a second and watch for chest rise.' : r.vol === 'long' ? ' A long squeeze: in the room that tends to mean too much volume; squeeze over about a second, just to chest rise.' : '';
       out.textContent = t;
       self.paint();
+      if(self.opts.onBreath) self.opts.onBreath(r, iv, rateOf(b));
     }
     btn.addEventListener('pointerdown', start);
     btn.addEventListener('pointerup', end);
@@ -1452,7 +1542,8 @@
   };
   Patient.prototype.camera = function(now){
     if(!this.ready) return;
-    var t = this.reviewing ? this.def.full : this.target(), sw = this.stage.clientWidth || 300, sh = this.stage.clientHeight || 400;
+    if(this.orient()) now = true;
+    var t = this.rbox(this.reviewing ? this.def.full : this.target()), sw = this.stage.clientWidth || 300, sh = this.stage.clientHeight || 400;
     // grow the box to the stage's aspect, about its center
     var ar = sw / sh, w = t[2], h = t[3];
     if(w / h < ar) w = h * ar; else h = w / ar;
@@ -1463,16 +1554,20 @@
     var self = this, from = this.cam || box;
     this.cam = box;
     this.scale = sw / w;
-    if(now || reduced()){ this.svg.setAttribute('viewBox', box.join(' ')); this.marksPaint(); return; }
+    cancelAnimationFrame(this.raf); this.raf = 0;
+    if(now || reduced() || this.frozen){ this.svg.setAttribute('viewBox', box.join(' ')); this.upright(); this.marksPaint(); return; }
     var t0 = performance.now(), dur = 650;
-    cancelAnimationFrame(this.raf);
     (function step(){
       var k = Math.min(1, (performance.now() - t0) / dur), e = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
-      self.svg.setAttribute('viewBox', from.map(function(v, i){ return (v + (box[i] - v) * e).toFixed(1); }).join(' '));
-      if(k < 1) self.raf = requestAnimationFrame(step);
+      var b = from.map(function(v, i){ return v + (box[i] - v) * e; });
+      self.svg.setAttribute('viewBox', b.map(function(v){ return v.toFixed(1); }).join(' '));
+      self.upright(sw / b[2]);
+      self.raf = k < 1 ? requestAnimationFrame(step) : 0;
     })();
     this.marksPaint();
   };
+  // the camera is moving
+  Patient.prototype.moving = function(){ return !!this.raf; };
 
   /* The end of the run: pull back to the whole patient and number what was
      missed, on the body and in a list under it. */
@@ -1494,25 +1589,29 @@
   Patient.prototype.misses = function(){ return this.def.misses(this.st); };
 
   Patient.prototype.marksPaint = function(){
-    var g = this.marks;
+    var g = this.marks, self = this;
     if(!g) return;
     while(g.firstChild) g.removeChild(g.firstChild);
-    if(!this.reviewing) return;
+    var list = this.reviewing ? this.misses() : this.liveList;
+    if(!list || !list.length) return;
     var r = 13 / (this.scale || 0.4), fs = 15 / (this.scale || 0.4);
     // marks that would overlap are pushed apart sideways, so every number reads
     var placed = [];
-    this.misses().forEach(function(x, i){
+    list.forEach(function(x, i){
       var px = x.x, py = x.y, tries = 0;
       while(tries++ < 8 && placed.some(function(q){ return Math.hypot(q[0] - px, q[1] - py) < r * 2.3; })) px += (tries % 2 ? 1 : -1) * r * 2.4 * tries;
       placed.push([px, py]);
-      var m = el('g', { class:'sp-mark sp-mark--' + x.sev, transform:'translate(' + px + ' ' + py + ')' }, g);
+      var m = el('g', { class:'sp-mark sp-mark--' + x.sev, transform:'translate(' + px + ' ' + py + ')' + (self.lie ? ' rotate(90)' : '') }, g);
       el('circle', { r:r * 1.55, class:'sp-mark-halo' }, m);
       el('circle', { r:r, class:'sp-mark-dot' }, m);
-      el('text', { 'text-anchor':'middle', dy:'0.35em', 'font-size':fs.toFixed(1), class:'sp-mark-n' }, m).textContent = i + 1;
+      el('text', { 'text-anchor':'middle', dy:'0.35em', 'font-size':fs.toFixed(1), class:'sp-mark-n' }, m).textContent = self.reviewing ? i + 1 : '!';
     });
   };
+  /* Explore (tools v2): what the patient shows from the order things were done in, marked as it happens, with "!"
+     in place of a number. list: misses() entries, or null to clear. */
+  Patient.prototype.live = function(list){ this.liveList = list && list.length ? list : null; this.marksPaint(); };
 
-  Patient.prototype.destroy = function(){ if(this.ro) this.ro.disconnect(); cancelAnimationFrame(this.raf); };
+  Patient.prototype.destroy = function(){ if(this.ro) this.ro.disconnect(); cancelAnimationFrame(this.raf); this.raf = 0; clearTimeout(this.camT); };
 
   window.NremtStationPatient = {
     find:function(name){ return DEFS.filter(function(d){ return d.match.test(name); })[0] || null; },
