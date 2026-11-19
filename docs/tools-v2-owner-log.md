@@ -189,3 +189,16 @@ in each tool's brief.
 | 2026-11-18 | AP Bio Design drills | Sample size opens on a fixed balanced batch (seed 1254130) | The first batch had every control plant above average (review round 1) | `EXM.seed` |
 | 2026-11-18 | AP Bio Design drills | The drills' first visit hint is dropped | One cue per screen; the side panel's head says the same | Reverse: `s.hint` in `drillsPart()` |
 | 2026-11-18 | AP Bio Design drills | The difference bracket has no end caps | It read as a third error bar (review round 1) | `paintOver()` |
+| 2026-11-18 | Ochem Arrow Pusher | Explore is one screen with five curated mechanisms (SN2, proton transfer, SN1 ionization, HBr addition, acyl substitution); the 18 molecules move to Test yourself, Any molecule | "Way too much going on" on the old screen (owner); one idea per screen | `MECHS` in `arrow-pusher.js` |
+| 2026-11-18 | Ochem Arrow Pusher | The board, drag, snapping, held push and spring back are Resonance's, shared in `push-board.js` and `.css` | The two tools feel the same; one copy | `ochem/assets/push-board.js` |
+| 2026-11-18 | Ochem Arrow Pusher | σ bonds can be grabbed and dragged | They are what breaks in a mechanism | `sourceAt(pt, { sigma: true })` |
+| 2026-11-18 | Ochem Arrow Pusher | A first push that overfills an atom is held until the push that makes room (concerted steps) | Lets a one step mechanism be drawn arrow by arrow | `outcome()`, `completion()` |
+| 2026-11-18 | Ochem Arrow Pusher | Atoms move after a step (pieces slide; no angles; SN2 inversion not drawn, said in "?") | The owner asked that atoms and bonds actually change | `relax()` |
+| 2026-11-18 | Ochem Arrow Pusher | A steps row (start, intermediate, product) replaces the product pane; a tap plays the textbook arrows | The molecule itself changes; the row places the step in the mechanism | `paintStrip()`, `goTo()` |
+| 2026-11-18 | Ochem Arrow Pusher | Draw each step keeps the old checking: arrows drawn, then Check; no live product | Same grading as before; no answer given away | `checkChal()` |
+| 2026-11-18 | Ochem Arrow Pusher | HBr drawn next to the CH₂ end so the textbook arrow is Markovnikov; grabbing the π bond's other end attacks with that end | chem-core picks the end nearer the target | `LAYOUT`, `withEnd()` |
+| 2026-11-18 | Ochem Arrow Pusher | Role names on the start (Nucleophile, Electrophile, Leaving group; Base and Acidic H in the proton transfer) | Names what each part does | `ROLE`, `MECHS[].roles` |
+| 2026-11-18 | Ochem Arrow Pusher | Takeaways shortened to two lines on a phone; full sentences in "?" | Cause line height | `MECHS[].take`, `.long` |
+| 2026-11-18 | Ochem Arrow Pusher | Hydroxide in the SN2 molecule drawn closer and higher (tool only; molecules.js unchanged) | Room for the first visit cue on a phone | `LAYOUT` |
+| 2026-11-18 | Ochem Arrow Pusher | On a narrow step card, species are stacked in the small drawing | Readable at 360 px | `cardSt()` |
+| 2026-11-18 | Ochem Arrow Pusher | Build your own loads into Test yourself, Any molecule (not Explore) | Explore holds the curated mechanisms only | `openBuilder()` |

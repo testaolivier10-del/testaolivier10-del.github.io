@@ -16,7 +16,7 @@
 
    EXPLORE is free play on five curated mechanisms. TEST YOURSELF holds everything else the old tool did, with the
    same ids: draw each step (the seven mechanism challenges, the same checking, hints and Show one arrow), any
-   molecule (the twenty one molecules with their nudges, a mechanism as long as you like, Build your own), and the
+   molecule (the eighteen molecules with their nudges, a mechanism as long as you like, Build your own), and the
    six question Check yourself (slug arrow-pusher, the same question ids). Links keep working: ?start=<molecule>,
    ?chal=<challenge>, ?build=<structure>. */
 (function(){
@@ -1272,7 +1272,7 @@
     '<div id="apRefNow"></div>' +
     '<details class="tool-more" open id="apBooksBox"><summary>Formal charges on the board</summary><div id="apBooks"></div></details>' +
     '<details class="tool-more" open><summary>How to read the picture</summary><div class="ap2-ref-key">' +
-      '<p><span class="rs2-sw is-e"></span><b>Violet:</b> electrons that can move: lone pairs (two dots) and π bonds (the second line of a double bond). A σ bond (the grey stick) can move too: grab it to break it. Curved arrows are violet: each moves one pair, from where it is to where it goes, an atom or the space between two atoms.</p>' +
+      '<p><span class="rs2-sw is-e"></span><b>Violet:</b> electrons that can move: lone pairs (two dots) and π bonds (the second line of a double bond). A σ bond (the gray stick) can move too: grab it to break it. Curved arrows are violet: each moves one pair, from where it is to where it goes, an atom or the space between two atoms.</p>' +
       '<p><span class="rs2-sw is-neg"></span><b>Red glow:</b> a negative formal charge. <span class="rs2-sw is-pos"></span><b>Blue glow:</b> a positive one. The badge gives the sign. Charges are worked out again after every step (valence electrons minus lone pair electrons minus bonds).</p>' +
       '<p><span class="rs2-sw is-warn"></span><b>Amber ring:</b> an atom past its octet, with its electron count ("10 e⁻" on carbon, "4 e⁻" on hydrogen). The push is held: in the same step a bond to that atom has to break (draw the second arrow). That is how a one step mechanism such as SN2 or a proton transfer is drawn.</p>' +
       '<p><b>A push that cannot happen springs back</b> (red), with the reason: an atom with no lone pair cannot give one; electrons move only along bonds that connect; a bond has one pair to give. A push that is legal but rarely happens (a primary carbocation, hydroxide leaving) is made, with a note.</p>' +
@@ -1468,7 +1468,7 @@
     }
   }
 
-  // 2. Any molecule: the twenty one molecules (and Build your own), pushed freely; your steps in the row, the notes here
+  // 2. Any molecule: the eighteen molecules (and Build your own), pushed freely; your steps in the row, the notes here
   var anyBox = mk('div', 'ap2-dock');
   anyBox.innerHTML = '<div id="apAnyNotes" class="ap2-notes" role="status"></div><div id="apAnyHint"></div><div class="trow ap2-row" id="apAnyRow"></div>';
   var hintsAny = studio.hints({ label: 'Need a nudge?', hints: function(){ return S.ctx === 'any' && S.pick && S.pick.hint ? [esc(S.pick.hint)] : []; } });

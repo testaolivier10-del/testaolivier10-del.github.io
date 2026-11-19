@@ -1221,3 +1221,38 @@ bond pushed onto carbon: O at six electrons) is drawn and named "negligible form
 not in the forms row. This is the engine's own line (`contributors()`: fewest atoms short of an octet, then charge
 separation within two of the least), unchanged.
 - **Status:** open, low risk.
+
+## Arrow Pusher, tools v2 (2026-11-18)
+
+Brief: `docs/tools-v2-arrow-pusher-brief.md`. The engine (chem-core), the challenges, their checking and the quiz are
+unchanged; these are the points the rebuild added.
+
+### ap-v2-positions: atoms move after a step, as a sketch
+After a real step the pieces (atoms still held together by bonds that existed before and after) slide: a new bond pulls
+its partner to a bond's length, a leaving group drifts to about twice a bond's length. Only translations: no angle
+changes, so SN2's backside attack and inversion, and the trigonal to tetrahedral change at a carbonyl carbon, are not
+drawn. "?" says so.
+- **Status:** decided for the owner. A reviewer may want the inversion drawn for SN2 (a later separate tool?).
+
+### ap-v2-held: the first arrow of a concerted step is held
+Hydroxide onto the carbon of bromoethane leaves C at 10 e⁻; the push is held (amber ring) until a bond to C breaks in the
+same step. The same for a base onto a proton (H at 4 e⁻). On paper both arrows are drawn together; the hold is the
+order the student draws them in. A completion is searched up to three more arrows from bonds at the over full atom.
+- **Status:** decided for the owner, low risk.
+
+### ap-v2-markovnikov: which end of a π bond attacks
+chem-core bonds the end of a π bond nearer the target. The tool draws HBr beside the CH₂ end (the textbook arrow then
+gives the secondary cation) and, when the student grabs the π stick clearly nearer one end, attacks with that end, so
+the anti-Markovnikov push is possible and gets the "1° C⁺: rarely forms" note.
+- **Status:** decided for the owner.
+
+### ap-v2-e2: E2 without a base
+`e2-butane` (Any molecule, and the Reaction Predictor's "Draw the E2" link) has no base drawn, as before: the old nudge
+says "two arrows if no base is drawn", which leaves a bare H⁺. Not in Explore for that reason. A version with
+hydroxide drawn would make E2 an Explore mechanism.
+- **Status:** open; needs a molecule record (`molecules.js`) and a check of the old link.
+
+### ap-v2-secondary: the 2° carbocation note
+The old "Legal, but" note for a secondary carbocation ("real, but borderline") is kept in Any molecule's notes but is
+not a pill in the cause line, so SN1 ionization of 2-bromopropane (an Explore mechanism) is not flagged as doubtful.
+- **Status:** decided for the owner.

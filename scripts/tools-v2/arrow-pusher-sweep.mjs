@@ -1,7 +1,7 @@
 /* Tools v2 layout sweep for the Organic Chemistry Arrow Pusher (docs/tools-v2-arrow-pusher-brief.md). At ten widths:
    every state of every Explore mechanism (reached by tapping its card, with reduced motion so each lands at once),
    the held push of each concerted step (dragged with a real mouse), the seven Draw each step challenges at their start,
-   after a wrong check and solved (every answer arrow dragged, then Check), all twenty one Any molecule molecules and
+   after a wrong check and solved (every answer arrow dragged, then Check), all eighteen Any molecule molecules and
    one step on one of them, Check yourself, leaving Explore in the middle of a two step replay (motion on: Test
    yourself must start clean and Explore come back settled), "?" opened on a phone during a replay, and a first visit
    with the cue. At each state it asserts:

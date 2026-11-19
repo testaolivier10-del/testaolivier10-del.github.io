@@ -89,6 +89,7 @@ function extract(path, from, to){
 const CORE = [
   'ochem/assets/molecules.js',
   'ochem/assets/chem-core.js',
+  'ochem/assets/push-board.js',
   'ochem/assets/resonance-engine.js',
   'ochem/assets/mol3d.js',
   'ochem/assets/mol3d-library.js',
@@ -1290,4 +1291,79 @@ test('resonance v2: Which is more stabilized keeps the old verdicts', () => {
   assert.equal(j('enolate', 'allyl-anion').winner, 'a');
   assert.equal(j('allyl-cation', 'acetate-ion').winner, 'tie');
   assert.equal(j('benzyl-cation', 'allyl-cation').winner, 'a');
+});
+
+/* ====================================================================== */
+/* Arrow Pusher v2 (docs/tools-v2-arrow-pusher-brief.md)                   */
+/* ====================================================================== */
+
+function apModel(){
+  return browser({ OchemToolQuiz: { mount(){ return {}; }, shuffle: a => a, esc: x => String(x) }, OchemTools: null })
+    .load(...CORE, 'ochem/assets/tools/arrow-pusher.js');
+}
+
+test('arrow pusher v2: the bank keeps every id (challenges, molecules, mechanisms)', () => {
+  const s = apModel(), A = s.OchemArrowChallenge, M = s.OchemArrowModel, Mol = s.OchemMolecules;
+  assert.equal(JSON.stringify(A.CHALLENGES.map(c => c.id)), JSON.stringify(['sn2', 'acid-base', 'sn1', 'protonate', 'aldol', 'acyl', 'claisen']));
+  const ids = M.GROUPS.reduce((a, g) => a.concat(g.picks.map(p => p.id)), []);
+  assert.equal(ids.length, 18);
+  for(const id of ids.concat(M.MECHS.map(m => m.id))) assert.ok(Mol.get(id), `${id} is not a molecule`);
+  // the links other pages use (the course home, the Reaction Predictor) still land
+  for(const id of ['sn2-bromoethane', 'sn1-secondary', 'e2-butane']) assert.ok(ids.includes(id), `${id} is not reachable by ?start=`);
+});
+
+test('arrow pusher v2: every Explore mechanism is real steps, and a concerted step is held after its first arrow', () => {
+  const s = apModel(), M = s.OchemArrowModel, C = s.OchemChem;
+  for(const m of M.MECHS){
+    const path = M.pathOf(m);
+    assert.equal(path.length, m.steps.length + 1, m.id);
+    assert.equal(m.names.length, path.length, `${m.id}: a name per state`);
+    for(let i = 0; i < m.steps.length; i++){
+      const arrows = M.arrowsOf(m.steps[i]), r = M.applyArrows(path[i].st, arrows);
+      assert.equal(r.issues.filter(x => x.level === 'error').length, 0, `${m.id} step ${i + 1}: the textbook arrows are rejected`);
+      assert.ok(!M.sameStructure(path[i].st, path[i + 1].st), `${m.id} step ${i + 1} changes nothing`);
+      assert.ok(M.sameStructure(r.structure, path[i + 1].st), `${m.id} step ${i + 1}: the row state is not what the arrows make`);
+      // every atom keeps an octet (or a duet for H), except a carbocation the step is about
+      for(const k of Object.keys(path[i + 1].st.atoms)){ const a = path[i + 1].st.atoms[k]; if(!a.el || a.group) continue; assert.ok(C.electronCount(path[i + 1].st, k) <= C.octetOf(path[i + 1].st, k), `${m.id}: ${k} over its octet`); }
+      if(arrows.length > 1){
+        const o = M.outcome(path[i].st, [arrows[0]]);
+        assert.equal(o.kind, 'held', `${m.id} step ${i + 1}: the first arrow alone is ${o.kind}`);
+        const o2 = M.outcome(path[i].st, arrows);
+        assert.equal(o2.kind, 'step', `${m.id} step ${i + 1}: both arrows are ${o2.kind}`);
+      }
+    }
+    // the pieces never land on one another, and a group that leaves is clearly away
+    for(const st of path.map(p => p.st)){
+      const keys = Object.keys(st.atoms), Lb = M.bondLen(path[0].st);
+      for(let a = 0; a < keys.length; a++) for(let b = a + 1; b < keys.length; b++){
+        const x = st.atoms[keys[a]], y = st.atoms[keys[b]];
+        assert.ok(Math.hypot(x.x - y.x, x.y - y.y) > Lb * 0.45, `${m.id}: ${keys[a]} and ${keys[b]} overlap`);
+      }
+    }
+  }
+  // SN2: bromide drifts off, hydroxide comes in to a bond's length
+  const sn2 = M.pathOf(M.MECHS[0]), a = sn2[0].st.atoms, b = sn2[1].st.atoms, d = (p, q) => Math.hypot(p.x - q.x, p.y - q.y);
+  assert.ok(d(b.br, b.c1) > d(a.br, a.c1) * 1.5, 'bromide did not leave');
+  assert.ok(d(b.nucO, b.c1) < d(a.nucO, a.c1), 'hydroxide did not come in');
+});
+
+test('arrow pusher v2: HBr adds Markovnikov by default; grabbing the other end gives the primary cation, with its note', () => {
+  const s = apModel(), M = s.OchemArrowModel, C = s.OchemChem;
+  const st = M.startOf('propene-hbr');
+  const mk = (end) => M.applyArrows(st, [{ from: 'bond:c1-c2', to: 'hbrH', end }, { from: 'bond:hbrH-hbrBr', to: 'hbrBr' }]).structure;
+  const mark = mk(undefined), anti = mk('c2');
+  assert.equal(C.formalCharge(mark, 'c2'), 1, 'the textbook arrow does not put + on the secondary carbon');
+  assert.equal(C.formalCharge(anti, 'c1'), 1, 'grabbing the CH end did not attack with it');
+  assert.ok(M.plausibility(st, anti).some(n => /1° C⁺/.test(n.short) && n.pill), 'a primary carbocation gets no note');
+  assert.ok(!M.plausibility(st, mark).some(n => n.pill), 'the Markovnikov step is flagged');
+  // the atoms keep their places in the result (the end choice is not a move)
+  for(const k of Object.keys(st.atoms)) assert.equal(anti.atoms[k].x, st.atoms[k].x);
+});
+
+test('arrow pusher v2: a push that cannot happen is rejected with its reason', () => {
+  const s = apModel(), M = s.OchemArrowModel;
+  const st = M.startOf('sn2-bromoethane');
+  assert.equal(M.outcome(st, [{ from: 'c2', to: 'nucO' }]).err.code, 'no-lone-pair');
+  assert.equal(M.outcome(st, [{ from: 'nucO', to: 'bond:c2-m1' }]).err.code, 'not-adjacent');
+  assert.equal(M.outcome(st, [{ from: 'bond:c1-br', to: 'br' }]).kind, 'step', 'ionization alone is a legal step');
 });
