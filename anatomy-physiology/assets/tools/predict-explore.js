@@ -33,6 +33,10 @@
     var i = 1 / x;
     return '×1/' + (i >= 9.5 ? Math.round(i) : i.toFixed(1).replace(/\.0$/, ''));
   }
+  function mixc(a, b, t){
+    var x = a.match(/\w\w/g).map(function(h){ return parseInt(h, 16); }), y = b.match(/\w\w/g).map(function(h){ return parseInt(h, 16); });
+    return 'rgb(' + x.map(function(v, i){ return Math.round(lerp(v, y[i], clamp(t, 0, 1))); }).join(',') + ')';
+  }
   function comma(n){ return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
   var UP = '↑', DN = '↓';
   function arrow(d){ return d > 0 ? UP : d < 0 ? DN : ''; }
@@ -361,6 +365,7 @@
           list.forEach(function(m, k){
             var o = clamp(n - k, 0, 1);
             so(m.g, o.toFixed(2));
+            if(o <= 0) return;
             var j = jitter && !E.still ? Math.sin(E.t * 1.3 + m.ph) * 3 : 0, jy = jitter && !E.still ? Math.cos(E.t * 1.1 + m.ph) * 2.5 : 0;
             sa(m.g, 'transform', 'translate(' + f1(m.x + j) + ',' + f1(m.y + jy) + ') scale(' + (0.6 + 0.4 * o).toFixed(2) + ')');
           });
@@ -443,7 +448,7 @@
           '<linearGradient id="px-capg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#D45C4C"/><stop offset="0.5" stop-color="#E37C6B"/><stop offset="1" stop-color="#C24A3C"/></linearGradient>' +
           '<radialGradient id="px-kidg" cx="0.4" cy="0.35" r="0.8"><stop offset="0" stop-color="#C9655A"/><stop offset="1" stop-color="#93382F"/></radialGradient>' +
           // the duct's fluid: about 100 mOsm/L where it comes in (top), the urine's concentration at the bottom
-          '<linearGradient id="px-lumg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="px-lum-top"/><stop offset="0.15" class="px-lum-top"/><stop offset="1" class="px-lum-bot"/></linearGradient></defs>';
+          '<linearGradient id="px-lumg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="px-lum-top"/><stop offset="0.15" class="px-lum-top"/><stop offset="1" class="px-lum-bot" data-r="lumbot"/></linearGradient></defs>';
         s += '<rect class="px-bg" x="-400" y="0" width="' + (L.w + 800) + '" height="' + L.h + '" fill="url(#px-med)"/>';
         // the left panel: the brain's pituitary releasing ADH into the blood, the kidney, the urine
         var lf = g.left;
@@ -490,10 +495,12 @@
         var nA = 24;
         for(i = 0; i < nA; i++) h += '<g class="px-aq"><rect class="px-aqb" x="-5" y="-8" width="10" height="16" rx="3"/><path class="px-aqp" d="M0,-6 V6"/><circle class="px-ves" r="10"/></g>';
         R.aqp.innerHTML = h;
+        E.uk = '';
         E.aq = [].slice.call(R.aqp.childNodes).map(function(n, k){
           var side = k % 2 ? 1 : -1, j = Math.floor(k / 2), y = lerp(d[1] + 18, d[3] - 18, (j + 0.5) / 12), x = side < 0 ? d[0] : d[2];
           return { g: n, side: side, y: y, x: x, rank: (j * 5 + (side > 0 ? 3 : 0)) % 12 };
         });
+        E.aqSide = [E.aq.filter(function(q){ return q.side < 0; }), E.aq.filter(function(q){ return q.side > 0; })];
         // water drops crossing from the lumen through the wall to the capillary
         h = ''; for(i = 0; i < 30; i++) h += '<g class="px-drop"><path d="M0,-7 C4,-2 6,2 6,4 A6,6 0 0 1 -6,4 C-6,2 -4,-2 0,-7 Z"/></g>';
         R.drops.innerHTML = h;
@@ -523,7 +530,7 @@
         var w = st.v.water, rate = w / VIN, wide = E.L.id === 'wide';
         E.drops.forEach(function(dr, k){
           if(dt) dr.ph = (dr.ph + dt / 1000 * 0.45) % 1;
-          var on = k < Math.round(rate * E.drops.length), slot = E.aq.filter(function(q){ return q.side === dr.side; })[dr.slot % 12];
+          var on = k < Math.round(rate * E.drops.length), slot = E.aqSide[dr.side > 0 ? 1 : 0][dr.slot % 12];
           var x0 = (d[0] + d[2]) / 2, x1 = dr.side > 0 ? c[0] + 8 : d[0] - 70, y = slot.y + (dr.side > 0 ? 0 : 0), t = still ? 0.5 : dr.ph;
           var x = lerp(x0, dr.side > 0 ? x1 : x1, t);
           so(dr.g, on ? (Math.min(1, t * 6, (1 - t) * 6)).toFixed(2) : '0');
@@ -534,8 +541,13 @@
         E.adh.forEach(function(m, k){ var o = clamp(nA - k, 0, 1); so(m.g, o.toFixed(2)); var j = still ? 0 : Math.sin(E.t * 0.9 + m.ph) * 4; sa(m.g, 'transform', 'translate(' + f1(m.x + j) + ',' + f1(m.y + (still ? 0 : (E.t * 18 + m.ph * 30) % (c[3] - c[1]) - (m.y - c[1]))) + ')'); });
         // urine: its colour follows the shown concentration; drops at the duct's end at a rate that follows the volume
         var osm = st.v.osm, col = clamp((osm - 50) / 1150, 0, 1);
+        // set on the few drawn things only (a custom property on the stage would restyle the whole stage every frame)
         var uk = (8 + col * 80).toFixed(0) + '%';
-        if(E.uk !== uk){ E.uk = uk; E.root.style.setProperty('--px-urine-k', uk); }
+        if(E.uk !== uk){
+          E.uk = uk; var t = (8 + col * 80) / 100;
+          sa(R.lumbot, 'stop-color', mixc('#FFFBE6', '#E9C200', t)); sa(R.urine, 'fill', mixc('#FFF8D8', '#D9A300', t));
+          var dc = mixc('#FFF3B8', '#D9A300', t); E.ud.forEach(function(u){ sa(u.g.firstChild, 'fill', dc); });
+        }
         var vr = st.v.vol / 1.33;   // 1 at the usual volume
         E.ud.forEach(function(u, k){
           if(dt) u.u = (u.u + dt / 1000 * 0.5 * Math.min(vr, 6) / 2) % 1;
@@ -810,11 +822,15 @@
 
     /* ---- labels: pills placed clear of each other, the knob and the controls (from the pathway tracer) */
     var labCache = {}, lastPlace = {}, TW = {};
+    // label widths from a canvas (no layout is forced, so a frame whose numbers change stays cheap)
+    var cv = null, cvFam = '';
     function textW(t){
       var key = t + '|' + E.fs.toFixed(2);
       if(TW[key]) return TW[key];
-      var n = document.createElementNS(NS, 'text'); n.setAttribute('class', 'px-lab-m'); n.setAttribute('x', -999); n.setAttribute('y', -999); n.style.fontSize = E.fs.toFixed(2) + 'px'; n.textContent = t; labs.appendChild(n);
-      var w = n.getComputedTextLength ? n.getComputedTextLength() : 0; labs.removeChild(n);
+      if(!cv){ try{ cv = document.createElement('canvas').getContext('2d'); }catch(e){ cv = null; } }
+      if(cv && !cvFam){ var m = document.createElementNS(NS, 'text'); m.setAttribute('class', 'px-lab-m'); labs.appendChild(m); cvFam = getComputedStyle(m).fontFamily || 'sans-serif'; labs.removeChild(m); }
+      var w = 0;
+      if(cv){ cv.font = '900 ' + E.fs.toFixed(2) + 'px ' + cvFam; w = cv.measureText(t).width * 1.03; }
       return (TW[key] = w > 0 ? w : t.length * E.fs * 0.6);
     }
     function inter(a, b, g){ return a[0] < b[2] + g && a[2] > b[0] - g && a[1] < b[3] + g && a[3] > b[1] - g; }
@@ -822,17 +838,34 @@
     var ctrlBox = null;
     function ctrlDirty(){ ctrlBox = null; }
     function boxOf(el){ var pr = pic.getBoundingClientRect(), q = el.getBoundingClientRect(), k = E.k || 1, x0 = E.X0 || 0; return [(q.left - pr.left) / k + x0, (q.top - pr.top) / k, (q.right - pr.left) / k + x0, (q.bottom - pr.top) / k]; }
+    /* The controls' boxes are measured only when something about them changes (a layout, the cue, the "before" tick
+       showing or hiding, the tag's text length); the tag's box then rides with the knob by its measured offset. */
+    var tagRel = null, bfWas = null, tagLen = -1;
     function ctrls(){
+      var bf = handle && handle.el.querySelector('.tk2-before'), tg = handle && handle.el.querySelector('.tk2-tag');
+      var bfOn = !!(bf && !bf.hidden), tl = tg && !tg.hidden ? tg.textContent.length : -1;
+      if(bfOn !== bfWas || tl !== tagLen) ctrlBox = null;
       if(ctrlBox) return ctrlBox;
+      bfWas = bfOn; tagLen = tl;
       var out = [];
       if(reset.offsetWidth) out.push(boxOf(reset));
-      if(handle){ var tg = handle.el.querySelector('.tk2-tag'); if(tg && !tg.hidden && tg.offsetWidth) out.push(boxOf(tg)); var bf = handle.el.querySelector('.tk2-before'); if(bf && !bf.hidden && bf.offsetWidth) out.push(boxOf(bf)); }
+      if(bfOn && bf.offsetWidth) out.push(boxOf(bf));
       if(cue && cue.active()){ var c = pic.querySelector('.tk2-cue'); if(c) out.push(boxOf(c)); }
+      tagRel = null;
+      if(tl >= 0 && tg.offsetWidth){
+        // the tag's box without the kit's slide at the picture's edge (added back in keepOut)
+        var tb = boxOf(tg), p = cur.knobAt(handle.value(), E.L), ml = parseFloat(tg.style.marginLeft) || 0, sh = ml / (E.k || 1);
+        tagRel = [tb[0] - sh - p[0], tb[1] - p[1], tb[2] - sh - p[0], tb[3] - p[1]];
+      }
       return (ctrlBox = out);
     }
     function keepOut(){
-      var k = E.k || 1, p = cur.knobAt(view.u, E.L), r = 30 / k;
-      return [[p[0] - r, p[1] - r, p[0] + r, p[1] + r]].concat(ctrls());
+      var k = E.k || 1, p = cur.knobAt(view.u, E.L), r = 30 / k, c = ctrls(), out = [[p[0] - r, p[1] - r, p[0] + r, p[1] + r]].concat(c);
+      if(tagRel){
+        var x0 = (E.X0 || 0) + 4, x1 = (E.X0 || 0) + E.W - 4, a0 = p[0] + tagRel[0], a1 = p[0] + tagRel[2], dx = a0 < x0 ? x0 - a0 : a1 > x1 ? x1 - a1 : 0;
+        out.push([a0 + dx, p[1] + tagRel[1], a1 + dx, p[1] + tagRel[3]]);
+      }
+      return out;
     }
     function placeLabels(list){
       var fs = E.fs, h = fs * 1.75, pad = fs * 0.55, placed = keepOut(), used = {}, g = E.gap, x0 = E.X0 || 0;
@@ -940,7 +973,6 @@
     function go(v){
       view.u = v; cur.u = v;
       if(handle) handle.before(Math.abs(v - cur.ctl.base) > (cur.ctl.max - cur.ctl.min) * 0.02 ? cur.ctl.base : null);
-      ctrlDirty();
       if(K.reduced() || !window.requestAnimationFrame || !onScreen){ if(onScreen) fadeOut(); settleAll(cur, view); E.still = K.reduced(); draw(0); return; }
       startLoop();
     }
@@ -1098,6 +1130,7 @@
       _labels: function(){ return [].map.call(labs.querySelectorAll('.px-lab'), function(g){ return { key: g.getAttribute('data-lab'), text: g.querySelector('text').textContent }; }); },
       _loop: function(){ return !!raf; },
       _E: function(){ return E; },
+      _draw: function(n){ var t = performance.now(); for(var i = 0; i < (n || 1); i++){ step(16); draw(16); } return (performance.now() - t) / (n || 1); },
       _settled: function(){ return settled(); }
     };
     window.AnpPredictExplore.current = api;

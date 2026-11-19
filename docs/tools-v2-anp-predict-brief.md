@@ -133,3 +133,42 @@ Points for a person: `docs/anp-needs-author.md`, "Predict the change, tools v2 d
   `tools/predict.html` changed in the build. The A&P adapter (`AnpToolKit.kit2`) is used unchanged.
 - Tests: `scripts/tools-v2/anp-predict-sweep.mjs` (widths), `anp-predict-frames.mjs` (picture against words, every 16 ms
   of a change), `anp-predict-interact.mjs` (drag, touch, keys, reduced motion, modes, records, deep links, locked).
+
+## Checks run (2026-11-19)
+`node --test scripts/test/anp-*.test.mjs` 55 pass; `check-anp-content --check` 0 failing; `build-anp --check` clean;
+`check-site` OK (it caught one British spelling, fixed); `check-weight --check` all 622 within budget after the A&P
+shell's budget rose 69 -> 91 KB (Predict is the A&P tool page the list measures; its Explore adds 30.4 KB gzipped,
+comment in `scripts/check-weight.mjs`); `build-apcalc --check` and `build-apmacro --check` clean (no shared file
+changed); `check-tool-use` with a local copy of its list: predict sends tool-open, tool-touch(explore), tool-mode(quiz),
+tool-use as frame v2, and nothing under automation (the file itself is the collecting branch's, unchanged).
+Sweep (`anp-predict-sweep.mjs`, one width per process): 36 states (each screen at its usual value, both ends, points
+between and four moments of a change still spreading) at 360, 390, 430, 600, 768, 820, 1024, 1280, 1440, 1920, 1366 x
+768 and 1280 x 720, light and dark: 912 checks, 0 failures (nothing clipped, labels, knob, tag, "before" tick and Start
+over 4 px apart, no text under 11 px, label text inside its pill, the cue covering nothing, tab names fitting, the
+picture the largest thing and 80% / 85% / 95% of the stage width, the cause line at most two rows on phones with one
+height and on screen, no sideways scroll, no console errors). Frame test (`anp-predict-frames.mjs`): 16 jumps, every
+16 ms until settled, 2,975 frames at 360, 390 and 1440, 0 failures (label arrows exactly when the link has moved, the
+cause line in chain order and only as far as reached, the takeaway only once settled, drawn radius, CO₂, H⁺,
+aquaporins and urine colour matching the shown numbers). Interactions (`anp-predict-interact.mjs`) at 1440 and 390,
+light and dark, and 768: 28 checks each, all pass (lands on Explore with the cue; real mouse and real touch drag of the
+wall, caught mid spread, the page does not scroll; the cue leaves; End and Home tween; ArrowUp steps; leaving for
+Test yourself mid change stops the loop and coming back resumes it; Start over; every screen at both ends; "Test
+yourself on this" opens that screen's scenarios; reduced motion at once with a cross fade and no loop; `?id=tube-narrows`
+records right, right, wrong under `predict:tube-narrows:*`; `#explore/heart`, `?topic=urine-concentration`,
+`?chapter=respiratory` open Explore there, `?topic=cardiac-cycle` and `?level=4` open Test yourself; the real locked page
+shows the Premium card and no stage; no console errors).
+Performance: one frame's script (`_draw`, a change spreading) takes 0.5 to 0.8 ms median at 1440 and 390 (p95 2 to 19 ms,
+garbage collection). With CPU x4 the whole frame (`anp-predict-perf.mjs`) measured 16.7 to 33 ms median and p95 50 to
+230 ms, but the 2-core machine was running other builders' sweeps at a load average of about 9, so these are not clean
+numbers; the reviewer should measure on a quiet machine.
+Shots: `/mnt/user-data/outputs/anp-predict-v2/shots/` (landing, mid drag, narrowest, every screen at both ends, Test
+yourself, answered, locked; 1440 and 390 light and dark, 768 light); preview `/mnt/user-data/outputs/anp-predict-v2/index.html`.
+
+## Not done, and what I am not happy with
+- The independent review is next; no real phone, screen reader pass or real students.
+- The drawings are clean but plainer than the flagship: the heart is the pathway tracer's frontal section (flat top),
+  the person on Breathing is simple, the smooth muscle bands read a little like hatching, the kidney panel on phones is
+  small.
+- The stroke volume's ejected blood shows only during each beat's squeeze (about a third of the time).
+- Performance under a quiet machine is not measured (see above).
+- Test yourself is the old tool inside the new frame, not redesigned.

@@ -145,10 +145,10 @@
 .px-pyr{fill:#B44E44;opacity:.75;}
 .px-ureter{fill:none;stroke:#E8C77E;stroke-width:8;stroke-linecap:round;}
 .px-bladder{fill:#FFFFFF;stroke:#B9A27A;stroke-width:2.5;}
-.px-urine{fill:color-mix(in srgb, #D9A300 var(--px-urine-k, 40%), #FFF8D8);}
+.px-urine{stroke:none;}
 .px-inter{opacity:1;}
 .px-lum-top{stop-color:color-mix(in srgb, #E9C200 12%, #FFFBE6);}
-.px-lum-bot{stop-color:color-mix(in srgb, #E9C200 var(--px-urine-k, 30%), #FFFBE6);}
+
 .px-pcell{stroke:#C98468;stroke-width:1.5;}
 .px-pnuc{fill:#9B6C9C;}
 .px-memb{fill:none;stroke:#B06B55;stroke-width:3;}
@@ -158,7 +158,7 @@
 .px-ves{fill:none;stroke:color-mix(in srgb, var(--px-aqp) 55%, transparent);stroke-width:1.6;}
 .px-drop path{fill:var(--px-water);stroke:#ffffff;stroke-width:1;}
 .px-adh path{fill:var(--px-adh);stroke:#ffffff;stroke-width:1.2;}
-.px-udrop path{fill:color-mix(in srgb, #D9A300 var(--px-urine-k, 40%), #FFF3B8);stroke:#A98A3E;stroke-width:1;}
+.px-udrop path{stroke:#A98A3E;stroke-width:1;}
 
 /* 4. heart */
 .px-myo{stroke:#6E1F17;stroke-width:3;}
