@@ -152,8 +152,17 @@ Each is also one line in `docs/tools-v2-owner-log.md`.
   added to its core files).
 
 ## Checks run (2026-11-18)
-- Sweep, one width per process at 360, 390, 430, 600, 768, 820, 1024, 1280, 1440, 1920: 67 or 68 states and about 800
-  checks per width, **0 failures** (the last run after the last change). Smallest board share 5.7% (600) to 10%.
+- Sweep, one width per process at 360, 390, 430, 600, 768, 820, 1024, 1280, 1440, 1920: 67 or 68 states and 802 or 806
+  checks per width, **0 failures** (the last run after the last change; it includes the words waiting while the pieces
+  slide, which a mid change shot caught first). Smallest board share 5.7% (600) to 10%. Contact sheets:
+  `/mnt/user-data/outputs/arrow-pusher-v2/sweep/`.
+- `check-tool-use` with a local copy of its list: the tool reports frame v2 (open, touch, mode, use; nothing under
+  automation).
+- Preview: `/mnt/user-data/outputs/arrow-pusher-v2/index.html`; shots (opening, dragging, held, electrons moving, pieces
+  moving, product, a tapped carbon, a two step replay at three moments, HBr start, the three Test yourself parts, at 390,
+  768 and 1440, light and dark): `/mnt/user-data/outputs/arrow-pusher-v2/shots/`.
+- Accuracy: checked by the builder against the engine and the unit tests above; no separate reviewer was available in
+  this session, so the independent review should include the ochem accuracy pass.
 - Unit tests (tool-content 45, ochem-tools-upgrade, ochem-url-compat, tool-use, ochem-premium, question-ids,
   synthesis-trainer: 110 pass), `build-tool-pages --check`, `check-site`, `check-weight --check`.
 - Playwright: mouse and real touch (CDP) drags at 390 and 1440, light and dark, the held push, the step, replays of
@@ -170,4 +179,6 @@ Each is also one line in `docs/tools-v2-owner-log.md`.
   SN2, no inversion).
 - p95 frame time sits at the 50 ms bar under load; spikes are the first targets judged at the start of a drag
   (completion search) and the redraw at the end of a step.
+- On a phone the product card of SN2 puts Br⁻ under the CH₂ with its badge between them; it reads as a separate ion
+  but is close.
 - No real phone, no screen reader pass, no real students.
