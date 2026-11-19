@@ -137,8 +137,37 @@ side panel, no text block, no buttons under the picture.
 - A one file preview (`scripts/tool-preview.mjs`) cannot load the chest figure through `LevlBodyFigs.load`, and the
   lung clips stream from Wikimedia; the preview in outputs was patched by hand to inline the figure data.
 
-## Checks run
-See "Checks" at the end (filled in after the runs).
+## Checks run (2026-11-18)
+- `node --test scripts/test/nremt-*.test.mjs scripts/test/tool-content.test.mjs`: 108 pass (the sound stage's timing,
+  site and zone tests and the trainer's content tests unchanged). `build-nremt-lessons --check` (80 up to date),
+  `build-nremt-flashcards --check` (up to date), `check-site` (OK), `check-weight --check` (all budgets within range).
+  No shared kit file changed, so `build-apcalc` and `build-apmacro --check` were not needed.
+- A local copy of `check-tool-use.mjs` listing this page (not committed): tool-open, tool-touch(explore),
+  tool-mode(quiz), tool-use as frame v2; nothing under automation.
+- Sweep (`node scripts/tools-v2/nremt-sound-trainer-sweep.mjs`, one process per width, light and dark): every landmark
+  state at 360 to 1920 (opening with the cue, each lung and heart sound at its best spot mid sound and stopped, back
+  view, a faint spot, normal on both tabs, the takeaway): nothing clipped, no overlaps (labels, keys, switches, Play,
+  cue, R and L, the strip's event pills), the cue clear of every spot and mark, the chest the largest thing, every
+  text at least 11 px, keys at least 40 px tall, the compare switch one row, the phone cause line at most two rows
+  and constant in height. `--frames` at 390 and 1440: frame by frame (about 900 frames each) the sound's pill only
+  after the trace or sound starts, the cause only once the lens moves, each event pill only over drawn trace, the
+  spot's label never while the stethoscope moves; a mouse drag, a fast drag, a real touch drag at the scrolled end
+  of the page, the keyboard (arrows, End), the phone cause line in view after the drop, the screen reader name
+  following the state, leaving mid sound for Test yourself (sound bank stopped, no frame loop, no timers) and coming
+  back finished and clean, "?" mid sound (stops), reduced motion (the whole trace at once), Test yourself (Where to
+  listen right and wrong from `?mode=where&q=s1`, Name the sound right and wrong, no autoplay, record ids
+  `where-s1` and the sound's id), seven deep links, and a drag with the CPU throttled x4 (median 16.7 ms, p95 33.3 ms
+  at 390 and at 1440). **Final run: 22858 passed, 0 failed.** `--frames --nocors` (the CORS address fails, the clip
+  plays the plain way and the strip draws the named typical breath): 5532 passed, 0 failed.
+- Preview: `/mnt/user-data/outputs/nremt-sound-trainer-v2/index.html` (the chest figure inlined by hand; the lung clips
+  need a connection). Shots: `/mnt/user-data/outputs/nremt-sound-trainer-v2/shots/` (`sweep-<width>-<theme>-<state>`,
+  the `-mid` ones taken while the sound plays, the lens and strip moving; `v-test-*` for Test yourself), compared
+  side by side with the flagship's `wp-v2/shots/`.
+- Self review against the 15 rules and the "Caught in reviews" list with fresh frames at 360, 390, 768, 1024 and
+  1440, light and dark: what it found is fixed above (the compare switch wrapping on phones, the cue over a spot and
+  the R mark, a label over Front / Back, event pills too close in a narrow strip, the trace erased under its labels
+  between sweeps, the finished state lost on a redraw, the figure loading before the module was ready, slow drops
+  under CPU x4).
 
 ## Not done, and what I am not happy with
 - No independent review yet; no medical review by a person (points in `docs/nremt-needs-author.md`); no real phone,
