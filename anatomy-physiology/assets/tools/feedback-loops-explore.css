@@ -233,3 +233,12 @@
 /* narrow phones: the tabs size by their names, so "Temperature" fits */
 @media (max-width:380px){ .fe .tk2-tabs.is-big{gap:3px;} .fe .tk2-tabs.is-big .tk2-tab{flex:1 1 auto;padding:0 6px;} }
 @media (max-width:640px){ .fe .tk2-handle .tk2-dot,:root[data-theme="dark"] .fe .tk2-handle .tk2-dot{width:36px;height:36px;} }
+
+/* Test yourself, Watch it work, on a narrow stage (a tablet, or a laptop beside the panel): the gauge, the drawing and
+   the ring one above the other at full width, so the ring's words stay at least 11 px (feedback-loops.js fitLive) */
+.ls-root:not(.ls-phone) .fl-ls-stage.has-scene.fl-narrow,.ls-root:not(.ls-phone) .fl-ls-stage.fl-narrow{display:flex;flex-direction:column;align-items:stretch;gap:8px;}
+.ls-root:not(.ls-phone) .fl-ls-stage.fl-narrow .fl-gaugefig{max-width:480px;align-self:center;width:100%;}
+.ls-root:not(.ls-phone) .fl-ls-stage.fl-narrow .fl-scenefig{flex:none;height:220px;display:flex;justify-content:center;}
+.ls-root:not(.ls-phone) .fl-ls-stage.fl-narrow .fl-scene{height:100%;width:auto;max-width:100%;}
+.ls-root:not(.ls-phone) .fl-ls-stage.fl-narrow .fl-ringfig{flex:none;width:100%;height:auto;min-height:0;}
+.ls-root:not(.ls-phone) .fl-ls-stage.fl-narrow .fl-ringfig .fl-ring{width:100%;height:auto;max-width:520px;max-height:none;}

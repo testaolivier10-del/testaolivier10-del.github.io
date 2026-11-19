@@ -128,6 +128,7 @@
       } });
       if(EX) KIT = window.AnpToolKit.kit2(SS, { stage: EX.stage, ref: EX.ref, onShow: function(m, user){
         EX.shown(m === 'explore');
+        if(m === 'quiz') setTimeout(fitLive, 0);
         if(m === 'explore' && activeLive) activeLive.stop();
         if(!user) return;
         if(m === 'quiz' && !qChosen){
@@ -303,6 +304,7 @@
     var liveCtl = activeLive = mountLive(l, Q().querySelector('.fl-livepanel'), p);
     tabs(Q().querySelector('.fl-tabs'));
     if(S) studioLoop(l, p);
+    if(V2) setTimeout(fitLive, 0);
     showTabNow = showTab;
     if(startTab === 'test') showTab('test'); else if(S) S.mode('live');
 
@@ -628,6 +630,16 @@
       S.hint(startTab === 'test' ? { target: '.fl-pool .fl-tile', text: 'Tap a card to fill the highlighted slot' } : { target: '.ls-dock .fl-push', text: 'Push the variable off, or drag the marker' });
     }
   }
+  /* v2: Watch it work is laid out for the stage it is shown in. When Test yourself is opened from Explore the stage was
+     hidden while the loop was drawn, so the layout is chosen again each time the stage is shown or resized: below 760 px
+     of stage the gauge, drawing and ring stack at full width (the ring's words stay at least 11 px). */
+  var fitObs = null;
+  function fitLive(){
+    var st = document.querySelector('.fl-ls-stage'); if(!st) return;
+    var w = st.getBoundingClientRect().width; if(!w) return;
+    st.classList.toggle('fl-narrow', w < 760);
+    if(window.ResizeObserver && fitObs !== st){ fitObs = st; new ResizeObserver(function(){ var w2 = st.getBoundingClientRect().width; if(w2) st.classList.toggle('fl-narrow', w2 < 760); }).observe(st); }
+  }
   function partsEl(){
     var d = document.createElement('div');
     d.innerHTML = '<h3 class="ls-h">The seven slots</h3><ol class="fl-parts">' + SLOTS.map(function(k){ return '<li class="fl-part-' + k + '">' + esc(LABELS[k]) + '</li>'; }).join('') + '</ol>' +
@@ -670,7 +682,8 @@
      be cut, and says why. */
   var sceneWait = null;
   function loadScenes(cb){
-    if(window.AnpLoopScenes) return cb();
+    // always after the caller's render has put its parts in the studio (the stage class depends on where they sit)
+    if(window.AnpLoopScenes){ setTimeout(cb, 0); return; }
     if(sceneWait){ sceneWait.push(cb); return; }
     sceneWait = [cb];
     var sc = document.createElement('script');

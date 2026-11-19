@@ -601,18 +601,23 @@
 
   /* ================================================================== 3. Childbirth (positive feedback) */
   (function(){
+    /* wide: the whole woman, the brain magnified beside her head. tall (phones, upright tablets): cropped to her trunk and
+       pelvis so the uterus is the largest thing; the cord leaves the top of the picture toward the magnified brain. */
     var LAY = {
       wide: { w: 1080, h: 540, g: { body: [590, 64, 1], mag: [220, 200, 1.02] }, mon: [772, 108, 290, 300], spread: { mon: 1, mag: -1 } },
-      tall: { w: 600, h: 620, g: { body: [404, 58, 0.78], mag: [150, 196, 0.86] }, mon: [14, 432, 572, 178] }
+      tall: { w: 600, h: 620, g: { body: [250, -226, 1.75], mag: [86, 94, 0.5] }, mon: [14, 482, 572, 128], crop: true }
     };
-    // the woman in profile, facing right (body coordinates: the head's centre at 0,0)
-    var CORD = [[-20, 46], [-28, 100], [-34, 160], [-36, 210], [-36, 252]];
-    var AFF_B = [[46, 362], [18, 340], [-10, 300], [-36, 262]].concat(CORD.slice().reverse()).concat([[-8, 22], [4, 10]]);
+    // the woman in profile, facing right (body coordinates: the head's centre at 0,0); the cord runs inside her back
+    var CORD = [[-2, 40], [-14, 100], [-20, 160], [-22, 210], [-24, 252]];
+    var AFF_B = [[46, 362], [20, 340], [-4, 300], [-24, 262]].concat(CORD.slice().reverse()).concat([[-4, 22], [4, 10]]);
     var VES = [[10, 18], [12, 60], [10, 110], [-2, 160], [-6, 210], [6, 250], [26, 262]];
     var HEAD0 = [52, 314];         // the fetal head with no stretch
+    var PLAC = [100, 206];         // the placenta on the uterine wall
     var UT = 'M18,214 C30,170 104,166 120,226 C132,272 116,320 82,346 C70,356 60,362 56,364 L44,364 C36,358 24,346 16,326 C2,292 6,246 18,214 Z';
     var WIN = 'M8,206 C24,158 114,154 130,224 C142,278 122,332 88,358 C74,368 62,372 50,372 C36,372 22,362 12,338 C-2,302 -4,250 8,206 Z';
     function headAt(s, born){ return [HEAD0[0] - 4 * s, HEAD0[1] + 48 * s + born * 190]; }
+    // the knob sits just behind the head, on the baby's shoulders, so the head it pushes stays in sight
+    var KNOB = [10, -52];
     // the magnifier (r 150): the hypothalamus, the stalk and the posterior pituitary
     var M_AFF = [[-150, 120], [-80, 60], [-30, -10]];
     var M_EFF = [[-30, -10], [-22, 30], [-14, 66], [-12, 92]];
@@ -621,48 +626,62 @@
       var b = function(pts){ return TS(L, pts.map(function(p){ return [p[0], p[1], 'body']; })); }, m = function(pts){ return TS(L, pts.map(function(p){ return [p[0], p[1], 'mag']; })); };
       return { aff: Route([Poly(b(AFF_B.slice(0, -2))), Poly(m(M_AFF))]), eff: Route([Poly(m(M_EFF).concat(m(M_OUT))), Poly(b(VES))]) };
     }
+    function limb(x1, y1, x2, y2, w){ return '<path class="fe-flo" style="stroke-width:' + (w + 3) + 'px" d="M' + x1 + ',' + y1 + 'L' + x2 + ',' + y2 + '"/><path class="fe-fli" style="stroke-width:' + w + 'px" d="M' + x1 + ',' + y1 + 'L' + x2 + ',' + y2 + '"/>'; }
+    function baby(){
+      // the newborn, wrapped, lying along her forearm with its head in her hand
+      var b = '<path class="fe-blanket" d="M18,158 C14,142 34,132 62,134 C82,136 92,146 90,160 C86,172 60,176 38,172 C26,170 20,166 18,158 Z"/>';
+      b += '<path class="fe-blankf" d="M34,140 C46,150 54,160 58,172 M62,136 C66,148 70,160 70,172"/>';
+      b += '<circle class="fe-fhead" cx="94" cy="146" r="15"/><path class="fe-fface" d="M98,142 q3,-2 6,0 M100,152 q3,1.5 5,-1"/><path class="fe-fhair" d="M84,136 q6,-6 14,-4"/>';
+      return b;
+    }
     function body(){
       var p = '';
-      // legs (cut at the thighs) in leggings, the far leg a little behind
+      // legs (cut at the thighs) in leggings
       p += '<path class="fe-pants" d="M-58,330 C-62,380 -58,430 -54,470 L28,470 C32,430 40,400 44,374 C10,372 -28,356 -58,330 Z"/>';
       p += '<path class="fe-fold" d="M-12,400 C-6,430 -6,452 -8,470"/>';
       // the dress: shoulders, the back with its curve, the breast and the pregnant belly
       p += '<path class="fe-top" d="M-26,76 C-40,84 -44,110 -42,150 C-40,196 -34,226 -40,262 C-46,292 -60,316 -62,336 C-30,356 10,372 46,380 C100,376 142,338 154,288 C162,236 140,192 100,172 C80,166 66,166 58,160 C64,144 62,124 50,110 C40,98 26,86 16,76 Z"/>';
       p += '<path class="fe-fold" d="M-36,200 C-30,220 -32,240 -38,256 M132,204 C146,224 152,250 152,272 M46,118 C54,128 56,142 52,154"/>';
-      // the window into the belly: the uterus, its muscle wall (myometrium), the fetus inside, the cervix below
+      // the spinal cord inside her back (vertebrae), seen through
+      p += '<path class="fe-cordb" d="' + P(CORD) + '"/>';
+      CORD.forEach(function(c, i){ if(i) p += '<rect class="fe-vert" x="' + (c[0] - 7) + '" y="' + (c[1] - 6) + '" width="14" height="12" rx="3"/>'; });
+      // the window into the belly: the uterus, its muscle wall (myometrium), the placenta, the cervix below
       p += '<path class="fe-win" d="' + WIN + '"/>';
       p += '<g data-r="ut"><path class="fe-myo" d="' + UT + '"/>';
       p += '<path class="fe-amn" d="M30,222 C40,190 96,186 106,232 C116,272 102,310 76,332 C66,340 58,346 54,348 L46,348 C38,344 30,334 26,320 C14,290 18,250 30,222 Z"/>';
-      p += '<path class="fe-myof" d="M24,224 c6,-14 20,-26 36,-30 M84,186 c16,6 26,18 30,34 M118,264 c0,16 -6,32 -14,44 M10,280 c0,16 4,30 10,42"/></g>';
+      p += '<path class="fe-myof" d="M24,224 c6,-14 20,-26 36,-30 M84,186 c16,6 26,18 30,34 M118,264 c0,16 -6,32 -14,44 M10,280 c0,16 4,30 10,42"/>';
+      p += '<ellipse class="fe-plac" cx="' + PLAC[0] + '" cy="' + PLAC[1] + '" rx="16" ry="8" transform="rotate(48 ' + PLAC[0] + ' ' + PLAC[1] + ')"/></g>';
       p += '<path class="fe-canal" d="M42,366 C40,384 36,398 30,412 M60,366 C60,386 56,400 50,414"/>';
       p += '<g data-r="cerv"><path class="fe-cerv" data-r="cervl" d="M44,354 C38,356 36,364 40,368 L50,366 Z"/><path class="fe-cerv" data-r="cervr" d="M58,354 C64,356 66,364 62,368 L52,366 Z"/></g>';
       p += '<g data-r="sens"><circle class="fe-sdot" cx="40" cy="362" r="3.6"/><circle class="fe-sdot" cx="62" cy="362" r="3.6"/><circle class="fe-sdot" cx="44" cy="369" r="3"/><circle class="fe-sdot" cx="58" cy="369" r="3"/></g>';
-      // the spinal cord along the back (vertebrae), seen through
-      p += '<path class="fe-cordb" d="' + P(CORD) + '"/>';
-      CORD.forEach(function(c, i){ if(i) p += '<rect class="fe-vert" x="' + (c[0] - 7) + '" y="' + (c[1] - 6) + '" width="14" height="12" rx="3"/>'; });
       // the afferent nerve from the cervix to the cord; one vessel from the pituitary down to the uterus
       p += '<path class="fe-nv is-aff" data-r="affb" d="' + P(AFF_B.slice(0, -2)) + '"/>';
       p += '<path class="fe-bv" d="' + P(VES) + '"/>';
-      // the near arm, bent, the hand resting on top of the belly
+      // the near arm, bent, resting on top of the belly; after the birth the baby lies along it, its head in her hand
       p += '<path class="fe-skinp" d="M-14,90 C-24,120 -24,160 -16,190 C-10,206 10,206 30,196 C46,188 62,180 74,176 C84,172 84,162 74,160 C56,162 36,170 18,174 C10,160 10,124 12,98 Z"/>';
+      p += '<g data-r="baby" style="opacity:0">' + baby() + '</g>';
       p += '<path class="fe-hand" d="M70,158 C82,152 98,154 104,162 C108,170 98,176 86,176 C78,176 72,172 70,166 Z"/>';
       p += '<path class="fe-sleeve" d="M-26,78 C-34,96 -32,118 -24,132 L12,132 C16,112 16,92 10,78 Z"/>';
-      // neck and head in profile, facing right; the brain seen through it
+      // neck and head in profile, facing right; the brain seen through it, the hypothalamus at its base
       p += '<path class="fe-skinp" d="M-10,34 L-14,84 C-2,92 14,90 22,82 L18,38 Z"/>';
       p += '<path class="fe-skinp" d="M-36,-6 C-38,-40 -12,-54 12,-50 C32,-46 42,-30 42,-14 C42,-8 48,0 52,8 C54,12 48,14 46,14 C48,20 46,24 42,26 C44,30 42,36 36,40 C26,48 8,50 -8,44 C-26,36 -36,18 -36,-6 Z"/>';
-      p += '<path class="fe-brainx" d="M-28,-14 C-30,-36 -6,-44 10,-42 C26,-40 34,-28 32,-12 C30,0 18,6 4,6 C-12,6 -26,0 -28,-14 Z"/>';
-      p += '<ellipse class="fe-hypo" data-r="hypob" cx="4" cy="8" rx="7" ry="5"/>';
       p += '<path class="fe-hair3" d="M-40,-2 C-48,-44 -14,-62 14,-56 C34,-52 46,-38 42,-22 C28,-34 10,-38 -6,-34 C-14,-16 -18,6 -20,30 C-32,26 -40,14 -40,-2 Z"/><circle class="fe-hair3" cx="-38" cy="-30" r="14"/>';
+      p += '<path class="fe-brainc" d="M-24,-10 C-26,-30 -6,-40 10,-38 C26,-36 34,-24 32,-10 C30,0 20,4 10,4 C4,10 -2,10 -6,4 C-16,4 -22,0 -24,-10 Z"/><path class="fe-gyrc" d="M-14,-24 c6,-5 10,3 15,-1 M6,-28 c6,-4 10,4 15,0 M-16,-12 c6,-4 10,4 16,0 M10,-14 c5,-3 9,3 13,0"/>';
+      p += '<ellipse class="fe-hypo" data-r="hypob" cx="4" cy="6" rx="6" ry="4"/>';
       p += '<ellipse class="fe-ear" cx="-6" cy="6" rx="6" ry="10"/><ellipse class="fe-eye" cx="30" cy="-4" rx="3" ry="3.6"/><path class="fe-brow" d="M24,-13 q6,-3 12,0"/><path class="fe-mouth" d="M34,30 C38,31 41,30 43,28"/>';
       return p;
     }
     function fetus(){
-      // head down: the head at 0,0, the curled body above it with the back toward the mother's back, knees up by the fundus
-      var f = '<path class="fe-fbody" d="M-22,-16 C-34,-44 -34,-96 -10,-122 C10,-142 46,-134 56,-108 C64,-88 56,-58 40,-40 C30,-28 16,-22 8,-20 Z"/>';
-      f += '<path class="fe-fline" d="M40,-60 C52,-70 56,-86 50,-100 C46,-110 36,-112 30,-104 M20,-40 C30,-46 34,-56 28,-62"/>';
-      f += '<ellipse class="fe-fbody" cx="40" cy="-118" rx="18" ry="13" transform="rotate(-30 40 -118)"/>';
-      f += '<circle class="fe-fhead" cx="0" cy="0" r="27"/><path class="fe-fear" d="M-12,-8 c-6,2 -6,10 0,12"/>';
-      f += '<path class="fe-fface" d="M14,12 c4,2 8,0 9,-4 M16,-2 a2,2 0 1,0 0.1,0"/>';
+      // head down (the head at 0,0), the face toward the mother's back, chin tucked; the curled back toward her belly;
+      // the knees drawn up by the chest, the feet by the buttocks at the top of the uterus, an arm folded by the face
+      var f = '<path class="fe-fbody" d="M12,-20 C30,-30 44,-56 44,-86 C44,-112 32,-132 10,-138 C-10,-142 -26,-128 -28,-108 C-30,-88 -26,-62 -18,-42 C-12,-30 -2,-22 4,-20 Z"/>';
+      f += '<path class="fe-fline" d="M24,-32 C38,-50 42,-80 36,-108 C32,-120 24,-128 14,-132"/>';
+      f += '<ellipse class="fe-fhi" cx="26" cy="-80" rx="6" ry="20" transform="rotate(-8 26 -80)"/>';
+      f += limb(18, -120, -28, -94, 20) + limb(-30, -92, -14, -132, 15) + '<ellipse class="fe-ffoot" cx="-8" cy="-138" rx="9" ry="6" transform="rotate(-30 -8 -138)"/>';
+      f += limb(6, -44, -20, -62, 12) + limb(-20, -62, -24, -26, 11) + '<circle class="fe-ffoot" cx="-24" cy="-22" r="6"/>';
+      f += '<ellipse class="fe-fhead" cx="0" cy="0" rx="27" ry="28"/><ellipse class="fe-fhi" cx="10" cy="-8" rx="9" ry="12"/>';
+      f += '<path class="fe-fear" d="M10,-8 c6,1 8,8 3,12"/><path class="fe-fface" d="M-20,-8 q5,3 10,0 M-27,-2 q-4,4 0,8 M-22,10 q3,2 6,0"/>';
+      f += '<path class="fe-fhair" d="M-12,25 q6,4 12,0 M2,27 q6,3 10,-2 M14,22 q5,2 8,-3"/>';
       return f;
     }
     function mag(){
