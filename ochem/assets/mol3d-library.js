@@ -288,7 +288,7 @@
 
   add('Hybridization', {
     id:'dimethyl-ether', name:'Dimethyl ether', formula:'CH₃OCH₃',
-    note:'A bent oxygen with two lone pairs, exactly like water — the two methyls have not changed the geometry, only what is attached. Those two pairs are why an ether dissolves a Grignard and why it can be protonated.',
+    note:'A bent oxygen with two lone pairs, the same bent shape as water. The two methyls change what is attached and open the angle a little (111.7° against 104.5°). Those two pairs are why an ether dissolves a Grignard and why it can be protonated.',
     atoms:[
       { el:'O', pos:v(0,0,0), lpDirs:[v(0,0.82,0.57), v(0,-0.82,0.57)] },
       { el:'C', pos:v( 1.41*Math.sin(deg(55.85)), 0, -1.41*Math.cos(deg(55.85))) },

@@ -256,3 +256,17 @@ card, so it is logged, not changed.
 Checks: the sweep at all ten widths, one per process: 0 failures (135 states, about 1610 checks each; shares unchanged);
 the ochem unit tests; `build-tool-pages --check`, `check-site`, `check-weight --check`.
 
+## Recheck 2 (2026-11-19): BLOCK on two small items, fixed the same day
+1. **The hydronium sentence** in "?" showed on dimethyl ether's neutral oxygen too and called hydronium's oxygen
+   "positive". It now shows for hydronium's oxygen only, in the reviewer's wording (oxygen holds pairs closer than
+   nitrogen; the hydrogens carry most of the charge); the ether's oxygen gets its own line (the methyl groups are bigger
+   than hydrogens).
+2. **The picker** may be 270 px wide above 640 px (was 230), so "Phosphorus pentachloride" fits (174 px of text in a
+   210 px text box at 1024).
+
+Should fix, done: dimethyl ether's note says "the same bent shape as water" (and gives 111.7° against 104.5°); the unused
+formamide entry in `ANGLE_OK` is gone; a far angle number now takes the clear spot whose leader is shortest, with
+penalties for each ball it crosses and for crossing or running within 18 px of the card's leader (`placeFar()`).
+
+Checks: the sweep at all ten widths, one per process, 0 failures; the ochem unit tests.
+

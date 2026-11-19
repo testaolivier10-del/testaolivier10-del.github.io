@@ -1294,10 +1294,14 @@ against 120° in "?", the chair at 109° and 109.5° on equivalent carbons, the 
 - **A three membered ring** says "tetrahedral, the ring squeezes it to 60°" (it said "tetrahedral 60°").
 - PhET's Real against Model switch was considered and not added (no new controls; rule 6). The "?" key lists which
   angles are measured and which are ideal.
-- **Hydronium (recheck 1):** "?" now says why 113° is wider than ammonia's 107° though it has a lone pair: the positive
-  oxygen pulls every pair in close, so the bonding pairs crowd and spread, and the lone pair is held tighter and
-  squeezes less. This is the usual VSEPR reading (more electronegative center, wider angle), written for the tool.
-- **For a person:** the formaldehyde value (116.5° or 118°), and a check of the hydronium sentence above.
+- **Hydronium (recheck 1, reworded in recheck 2):** "?" ("This atom") says, for hydronium's oxygen only: "Measured wider
+  than 109.5°, though it has a lone pair. Oxygen holds electron pairs closer than nitrogen does, so the three bonding
+  pairs crowd each other and spread apart, and the hydrogens, which carry most of the ion's positive charge, push each
+  other away. Together these beat the lone pair's squeeze, which leaves ammonia at 107°." (Reviewer's wording; the +1
+  is formal and sits mostly on the hydrogens, so the oxygen is not called "positive".) Dimethyl ether's oxygen gets its
+  own line: wider than water's 104.5° though it has two lone pairs, because the methyl groups are much bigger than
+  hydrogens and push each other apart.
+- **For a person:** the formaldehyde value (116.5° or 118°), and a check of the hydronium and ether sentences above.
 - **Status:** decided for the owner; the two points above open.
 
 ### v3-v2-back: when the H counts as "at the back"

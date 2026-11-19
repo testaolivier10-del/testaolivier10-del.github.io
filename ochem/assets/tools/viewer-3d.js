@@ -639,6 +639,45 @@
     e.hidden = true;
     return null;
   }
+  /* The angle number when nothing beside its arc is clear: of the clear spots farther out, the one whose leader to the
+     arc is shortest, crossing no ball and not the card's leader (recheck 2) */
+  function segPt(ax, ay, bx, by, px, py){
+    var dx = bx - ax, dy = by - ay, l2 = dx * dx + dy * dy, t = l2 ? clamp(((px - ax) * dx + (py - ay) * dy) / l2, 0, 1) : 0;
+    return Math.hypot(ax + dx * t - px, ay + dy * t - py);
+  }
+  function segX(a, b){
+    function o(p, q, r){ return (q[0] - p[0]) * (r[1] - p[1]) - (q[1] - p[1]) * (r[0] - p[0]); }
+    return o(a[0], a[1], b[0]) * o(a[0], a[1], b[1]) < 0 && o(b[0], b[1], a[0]) * o(b[0], b[1], a[1]) < 0;
+  }
+  function placeFar(e, cands, avoid, circ, AP, pts){
+    labW(e);
+    var w = e._w, h = e._h, R0 = [4, 4, L.W - 4, L.benchY + 30], best = null, cardSeg = null;
+    var cd = layer.el.querySelector('.tk2-spot-card:not([hidden])');
+    if(cd && pts[E.sel]){
+      var cb = boxOf(cd), P0 = pts[E.sel];
+      cardSeg = [[P0.x, P0.y], [clamp(P0.x, cb[0], cb[2]), clamp(P0.y, cb[1], cb[3])]];
+    }
+    cands.forEach(function(c){
+      var b = [c[0] - w / 2, c[1] - h / 2, c[0] + w / 2, c[1] + h / 2];
+      if(b[0] < R0[0] || b[1] < R0[1] || b[2] > R0[2] || b[3] > R0[3]) return;
+      if(avoid.some(function(a){ return hits(b, a, 4); }) || circ.some(function(q){ return hitsC(b, q, 4); })) return;
+      var nq = null;
+      AP.forEach(function(q){ var d = Math.hypot(Math.max(b[0] - q.x, 0, q.x - b[2]), Math.max(b[1] - q.y, 0, q.y - b[3])); if(!nq || d < nq.d) nq = { d: d, q: q }; });
+      var s0 = [clamp(nq.q.x, b[0], b[2]), clamp(nq.q.y, b[1], b[3])], s1 = [nq.q.x, nq.q.y];
+      var pen = 400 * pts.filter(function(p){ return segPt(s0[0], s0[1], s1[0], s1[1], p.x, p.y) < p.r * 0.95; }).length;
+      if(cardSeg){
+        // crossing the card's leader, or running alongside it, reads as one line
+        var dd = segX([s0, s1], cardSeg) ? 0 : Math.min(segPt(s0[0], s0[1], s1[0], s1[1], cardSeg[0][0], cardSeg[0][1]), segPt(s0[0], s0[1], s1[0], s1[1], cardSeg[1][0], cardSeg[1][1]),
+          segPt(cardSeg[0][0], cardSeg[0][1], cardSeg[1][0], cardSeg[1][1], s0[0], s0[1]), segPt(cardSeg[0][0], cardSeg[0][1], cardSeg[1][0], cardSeg[1][1], s1[0], s1[1]));
+        if(dd < 18) pen += 2000;
+      }
+      var sc = nq.d + pen;
+      if(!best || sc < best.sc) best = { sc: sc, b: b };
+    });
+    if(!best){ e.hidden = true; return null; }
+    e.style.left = f1(best.b[0]) + 'px'; e.style.top = f1(best.b[1]) + 'px';
+    return best.b;
+  }
   /* a box against a circle { x, y, r }, with a gap */
   function hitsC(b, c, g){
     var dx = Math.max(b[0] - c.x, 0, c.x - b[2]), dy = Math.max(b[1] - c.y, 0, c.y - b[3]), rr = c.r + (g || 0);
@@ -838,7 +877,7 @@
       // clear of every ball, stick, lobe and control, and of its own arc (review round 1)
       var avA = ctlBoxes().concat(PA.lobes()), avC = ballCircles(pts).concat(stickCircles(PA.sticks()), lineCircles(AP, 3));
       var bA = placeLab(e, near, avA, null, avC);
-      if(!bA){ e.hidden = false; bA = placeLab(e, far, avA, null, avC); }
+      if(!bA){ e.hidden = false; bA = placeFar(e, far, avA, avC, AP, pts); }
       aLead.style.display = 'none';
       if(bA){
         // how far the pill is from its arc; past 40 px a short leader joins them
@@ -1282,9 +1321,11 @@
         if(ideal === 120 && !a.lonePairs && !a.deloc && a.angles[0].deg < 119){
           html += '<p class="tmuted" style="margin-top:10px;">The double bond holds four electrons, so it pushes a little harder than a single bond and the two single bonds close to ' + fmtDeg(a.angles[0].deg) + ', under the ideal 120°.</p>';
         }
-        if(ideal !== null && a.lonePairs && a.angles[0].deg - ideal > 1.2){
-          // hydronium (review recheck 1): wider than ideal with a lone pair, so the squeeze idea needs a word
-          html += '<p class="tmuted" style="margin-top:10px;">Measured wider than ' + ideal + '°, though it has a lone pair. The positive oxygen pulls every pair in close to itself: the bonding pairs crowd each other and spread apart, and its lone pair is held tighter, so it squeezes them less than ammonia\'s does (107°).</p>';
+        if(E.mol.id === 'hydronium' && a.el === 'O'){
+          // recheck 2: hydronium only (dimethyl ether's neutral O passed the old gate); the +1 is formal, mostly on the hydrogens
+          html += '<p class="tmuted" style="margin-top:10px;">Measured wider than 109.5°, though it has a lone pair. Oxygen holds electron pairs closer than nitrogen does, so the three bonding pairs crowd each other and spread apart, and the hydrogens, which carry most of the ion\'s positive charge, push each other away. Together these beat the lone pair\'s squeeze, which leaves ammonia at 107°.</p>';
+        } else if(E.mol.id === 'dimethyl-ether' && a.el === 'O'){
+          html += '<p class="tmuted" style="margin-top:10px;">Wider than water\'s 104.5°, though it has two lone pairs: the two methyl groups are much bigger than hydrogens and push each other apart.</p>';
         }
         if(a.kind === 'ideal'){
           html += '<p class="tmuted" style="margin-top:10px;">This atom is drawn at the model\'s ideal angle; no measured angle is drawn for it.</p>';
@@ -1397,7 +1438,7 @@
      asked where the library's geometry is the textbook value. */
   var ANGLE_OK = { methane:109.5, ammonia:107, water:104.5, 'boron-trifluoride':120, 'phosphorus-pentachloride':90,
                    'sulfur-hexafluoride':90, ethene:120, ethyne:180, 'carbon-dioxide-3d':180, 'formaldehyde-3d':120,
-                   'methyl-cation':120, acetonitrile:180, formamide:120 };
+                   'methyl-cation':120, acetonitrile:180 };
   var ANGLES = [90, 104.5, 107, 109.5, 120, 180];
   var task = { on:false, done:false, id:null, shape:null, angle:null, score:{ right:0, total:0 } };
   var taskBox = mk('div', 'v3q');
