@@ -52,7 +52,8 @@
   function event(name, data){ try{ core() && core().event(name, data); }catch(e){} }
 
   /* ------------------------------------------------------- mounting */
-  function mount(slug, fn){
+  function mount(slug, fn, opts){
+    opts = opts || {};
     var app = document.getElementById('app');
     if(!app) return;
     var src = app.getAttribute('data-src');
@@ -70,7 +71,11 @@
       // data-studio on #app. modes() and drill() then place their parts in
       // the frame; a trainer's explore view places its own (o.studio).
       var studio = app.getAttribute('data-studio') && window.LevlStudio ? studioFrame(app, slug) : null;
-      fn(app, data);
+      var ctx = { studio: studio };
+      fn(app, data, ctx);
+      // tools v2 (docs/tools-v2-standard.md): a tool on the shared kit hands its stage over (studioKit2)
+      var so = opts.studio || {};
+      if(studio && so.kit2 && window.LevlKit2){ studioKit2(app, studio, slug, typeof so.kit2 === 'function' ? so.kit2(ctx) : so.kit2); return; }
       if(studio) studioRest(app, studio);
     }).catch(function(e){ try{ console.error(e); }catch(x){}
       app.innerHTML = '<p class="chem-soon" role="alert">The tool could not load. Check your connection and reload the page.</p>';
@@ -1008,11 +1013,69 @@
       open: openAll, why: why, details: det
     };
   }
+  /* studioKit2(app, s, slug, o): the tools v2 arrangement (docs/tools-v2-standard.md), this course layer's adapter
+     for the shared kit (assets/course/tool-kit2.js, loaded by a page with "kit2": true in chem/data/pages.json).
+     The same pattern as ApBioTools.studioKit2. T.mount(slug, fn, { studio: { kit2: fn(ctx) -> o } }); the tool
+     builds its own stage with the kit and hands it over:
+       o.stage    element   the picture with its controls on it and the lines around it. EXPLORE shows it alone,
+                            full width (no side panel, nothing graded).
+       o.ref      element   the reference behind "?" (how it works, rules, links).
+       o.about    [element] moved to About (the intro).
+       o.parts    [{ value, label, group, stage: element, dock: element, task: { kicker, title, todo } | fn }]
+                            TEST YOURSELF parts: the question goes in the side panel (dock); a part with its own
+                            stage shows it in place of the picture. Parts may share a stage or a dock element.
+       o.start    fn() -> { mode, part } | null   where a link opens (a problem code, #quiz); default Explore.
+       o.onShow(mode, part) after every switch: mode 'explore' | 'quiz', part the Test yourself part or null.
+     Two modes only: Explore and Test yourself. With more than one part, ONE dropdown on the stage ("What to
+     practice", grouped by part.group) picks it. Returns { mode(), part(), go(mode, part) }; also at s.kit2. */
+  function studioKit2(app, s, slug, o){
+    var K = window.LevlKit2;
+    K.on(s);
+    var draft = app.querySelector(':scope > .bt-draft');
+    if(draft) s.add('about', draft);
+    (o.about || []).forEach(function(el){ if(el) s.add('about', el); });
+    var parts = (o.parts || []).slice(), quizOn = parts.length > 0, cur = { mode: 'explore', part: parts[0] ? parts[0].value : null };
+    function partOf(v){ return parts.filter(function(p){ return p.value === v; })[0] || parts[0] || null; }
+    s.add('stage', o.stage, quizOn ? { mode: 'explore quiz' } : null);
+    if(o.ref) s.add('details', o.ref);
+    var stages = [], docks = [];
+    parts.forEach(function(p){
+      if(p.stage && stages.indexOf(p.stage) < 0){ stages.push(p.stage); s.add('stage', p.stage, { mode: 'quiz' }); }
+      if(p.dock && docks.indexOf(p.dock) < 0){ docks.push(p.dock); s.add('dock', p.dock, { mode: 'quiz' }); }
+    });
+    var groups = [];
+    parts.forEach(function(p){ var g = groups.filter(function(x){ return x.label === (p.group || ''); })[0]; if(!g){ g = { label: p.group || '', items: [] }; groups.push(g); } g.items.push({ value: p.value, label: p.label }); });
+    var pick = parts.length > 1 ? s.picker(Object.assign({ label: 'What to practice', value: cur.part, onChange: function(v){ show('quiz', v, true); } },
+      groups.length > 1 ? { groups: groups } : { items: groups[0].items }), 'quiz') : null;
+    function show(mode, part, user){
+      var p = partOf(part), quiz = mode === 'quiz' && !!p;
+      cur = { mode: quiz ? 'quiz' : 'explore', part: p ? p.value : null };
+      if(s.mode() !== cur.mode) s.mode(cur.mode);
+      o.stage.hidden = quiz && !!p.stage;
+      s.root.classList.toggle('tk2-qs', quiz);
+      stages.forEach(function(el){ el.hidden = !(quiz && p.stage === el); });
+      docks.forEach(function(el){ el.hidden = !(quiz && p.dock === el); });
+      if(pick && quiz && pick.value() !== p.value) pick.value(p.value);
+      if(quiz){ s.task(typeof p.task === 'function' ? p.task() : p.task || null, 'quiz'); s.caption('', 'quiz'); }
+      if(o.onShow) o.onShow(cur.mode, quiz ? cur.part : null);
+      if(user) event('apchem-tool-mode', { tool: slug, mode: quiz ? cur.part : 'explore' });
+    }
+    if(quizOn) s.modes({ items: [{ value: 'explore', label: 'Explore' }, { value: 'quiz', label: 'Test yourself' }], value: 'explore',
+      onChange: function(v){ show(v, cur.part, true); } });
+    // Whatever the tool left in #app goes behind "?".
+    Array.prototype.slice.call(app.children).forEach(function(k){ if(!k.classList.contains('bt-loading')) s.add('details', k); });
+    app.hidden = true;
+    var start = (o.start && o.start()) || { mode: 'explore', part: cur.part };
+    s.mode(start.mode);
+    show(start.mode, start.part || cur.part, false);
+    s.kit2 = { mode: function(){ return cur.mode; }, part: function(){ return cur.part; }, go: function(m, p){ show(m, p == null ? cur.part : p, false); } };
+    return s.kit2;
+  }
   /* The "head" line of an explain() box as plain caption html. */
   function sayHead(el){ var h = el && el.querySelector('.bt-say-h'); return h ? h.innerHTML : ''; }
 
   window.ApChemTools = {
-    stdPicker: stdPicker,
+    stdPicker: stdPicker, studioKit2: studioKit2,
     studioOf: studioOf, studioPane: studioPane, sayHead: sayHead,
     modes: modes, reduced: reduced, cue: cue, moreHtml: moreHtml, explain: explain,
     esc: esc, F: F, nid: nid, mount: mount, frame: frame, kindPicker: kindPicker, keepGoing: keepGoing, slider: slider, choiceSelect: choiceSelect, announcer: announcer,

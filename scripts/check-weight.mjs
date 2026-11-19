@@ -434,7 +434,9 @@ const SHELL_BUDGETS = [
      leader-line work sit in tools/lab-fit.js (first use). Predict measured 57.7 KB. */
   /* 58 -> 60 (tool frame F2, docs/tools-frame-notes/anp.md): the chooser as a stage dropdown with Search all, the
      finished cards in four tools. Measured 59.6 KB. */
-  ['anatomy-physiology', 60],
+  /* 60 -> 61 (tools v2, docs/tools-v2-anp-graphs-brief.md): the Graphs tool's five drawn Explore screens
+     (tools/graphs-explore.js and .css, 24 KB gzipped) beside the old engine it keeps for Test yourself. Measured 60.3 KB. */
+  ['anatomy-physiology', 61],
   /* AP® Biology (bio/, a fork of the A&P runtime): bio-core, questions, nav,
      glossary tooltips, bio.css, the generated curriculum, plus the app script
      a page loads (exams.js, the largest, with pages.css and frq-kit.js).
@@ -447,7 +449,7 @@ const SHELL_BUDGETS = [
      and the math chapter out, the generated chem-curriculum.js lists every
      topic as live and the exams page's shell measured 50.2 KB; the extra is
      course data, not code. */
-  ['chem', 52.8], // Score card on exam results (2026-11-07): LevlStudy.end replaces each exam summary; measured about 0.1 KB more
+  ['chem', 53.2], // Score card on exam results (2026-11-07): about 0.1 KB. Forgiving units in chem-questions.js (tools v2, units-sig-figs, 2026-11-18: g/ml, per, KJ, atmospheres, a stray full stop): the shell measured 52.7 KB before and 53.1 KB after (0.4 KB more), so the budget rises 0.4 KB, 52.8 to 53.2
   /* AP® Physics 1 (physics/, a fork of the AP® Chemistry runtime). Before
      any unit is published; Chemistry's 52 is the reference. */
   /* 52 -> 52.2 (consistency audit 2026-11): the shared end panel call and the exam-day reference cards. Measured

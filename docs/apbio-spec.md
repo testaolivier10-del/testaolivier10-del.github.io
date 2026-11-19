@@ -409,6 +409,17 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    a written sum on each (solute plus pressure, the total and a word), "Pressure in the cell" as the main knob and
    "Solute outside" as a quiet second one, water arrows and a cause line that follow at once. Test yourself is the
    old Practice mode, unchanged. Still free. What moved is listed in the brief and the owner log.
+36. (2026-11-18, `docs/tools-v2-hardy-weinberg-brief.md`) **Hardy-Weinberg rebuilt to tools v2** (branch
+   `claude/tools-v2-hardy-weinberg`, collects on `claude/tools-v2-all`, waiting for the independent review).
+   Explore: a bed of 100 snapdragons whose pollen and eggs carry R or W, one knob for p on the picture, three signs
+   that count the plants and a cause line with p², 2pq and q². Test yourself: "Set the alleles" (targets on a bed
+   that is not in bloom) and the unchanged calculations. New: an `explore` block and `targets` in the tool's data,
+   a `practice` part in `ApBioTools.studioKit2` (folded onto the one practice mechanism, Simpson's, when it was
+   integrated: one "What to practice" dropdown holds Set the alleles and each problem), the first sweep in `scripts/tools-v2/`. Still free. Decisions made
+   for the owner are in `docs/tools-v2-owner-log.md`. Review round 1 (blocked, fixed the same day): targets 1 and 3 on
+   a pea bed (complete dominance, `pea` in the data) so carriers are met; plants drawn as images, one `<use>` each;
+   countable plants; signs sized from their text; the pollen row is part of the control; a frame time check
+   (`scripts/tools-v2/hardy-weinberg-perf.mjs`).
 
 ## 4. Map format (Phase 0)
 

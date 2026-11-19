@@ -502,3 +502,14 @@ Site audit follow-up (2026-10-02, workstream W6):
     ticks on done items, "Search all" reopens the searchable list, the full list stays a choice). Finished cards
     after a lab practical quiz or timed practical, a predict session, a built feedback loop and a 3D anatomy round.
     Presentation only: item ids, scoring, recording, deep links and reviewed text are unchanged.
+100. (2026-11-18) **Graph reader on tools v2** (docs/tools-v2-standard.md; brief docs/tools-v2-anp-graphs-brief.md). Explore
+    is five drawn screens, each one graph beside the body part it records: the left heart (cardiac cycle pressures),
+    the chest and lungs (spirogram), a red blood cell in a capillary (oxygen-hemoglobin curve), a patch of axon
+    membrane (action potential) and a sarcomere (length-tension). The one control is the graph (drag along it); the
+    picture shows that moment and a cause line says why. Test yourself holds all 76 graphs and every question
+    unchanged, each with "Read it" (the old cursor and What if view) and "Questions". First A&P tool on the shared
+    kit: the adapter is AnpToolKit.kit2 in tools/tool-kit.js ("kit2": true in data/pages.json). Item ids, scoring,
+    recording and deep links unchanged; open points in docs/anp-needs-author.md. Review round 1 (2026-11-18): the
+    left ventricle's curves are blue in Test yourself's Wiggers graph too (one colour per idea, class lv set in
+    graphs.js; graphs.json unchanged); an inactivated Na+ channel is drawn open and plugged until repolarization;
+    dissolved O2 is a handful against the bound O2 (about 98.5% bound).

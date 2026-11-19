@@ -141,10 +141,16 @@
      lookups go through the document. */
   var S = window.AnpToolKit && window.AnpToolKit.studio ? window.AnpToolKit.studio() : null;
   function Q(){ return S ? document : app; }
+  /* Tools v2 (docs/tools-v2-anp-graphs-brief.md): with the kit on the page (pages.json "kit2": true), Explore is the
+     five drawn screens of tools/graphs-explore.js and everything below (all 76 graphs, each with "Read it", the old
+     cursor and What if view, and "Questions") is Test yourself: every part is put in the studio for the quiz mode
+     only and the old Explore / Quiz switch becomes the small Read it / Questions switch above the question. */
+  var V2 = !!(S && window.LevlKit2 && window.AnpGraphExplore && window.AnpToolKit.kit2), KIT = null, EX = null;
+  var QM = V2 ? { mode: 'quiz' } : undefined;
   if(S){
     S.root.classList.add('gr-ls');
-    S.caption('Loading graphs…');
-    S.modes({ items: [{ value: 'explore', label: 'Explore' }, { value: 'quiz', label: 'Quiz' }], value: 'explore',
+    S.caption('Loading graphs…', V2 ? 'quiz' : undefined);
+    if(!V2) S.modes({ items: [{ value: 'explore', label: 'Explore' }, { value: 'quiz', label: 'Quiz' }], value: 'explore',
       onChange: function(v){ var b = Q().querySelector('.gr-mode[data-m="' + v + '"]'); if(b) b.click(); } });
   }
 
@@ -185,6 +191,7 @@
   function route(){
     var h = (location.hash || '').replace(/^#/, '').split('/');
     var g = h[0] ? find(decodeURIComponent(h[0])) : null;
+    if(V2) return routeV2(h, g);
     if(g){
       if(h[1] === 'explore') return showGraph(g, null, 'explore');
       var k = null;
@@ -192,6 +199,24 @@
       showGraph(g, k);
     } else if(h[0] === 'all') showList();
     else { var d = defaultItem(); if(d) showGraph(d, null); else showList(); }
+  }
+
+  /* v2: which mode a link opens. #explore/<tab> and #<drawn graph>/explore: that Explore screen. #<graph>,
+     #<graph>/<question>, #all and #<graph>/explore for a graph with no drawn screen: Test yourself, as the old links
+     did. No hash: Explore, on the screen for ?topic= or ?chapter= when one matches; a ?topic= or ?chapter= with no
+     drawn screen opens Test yourself on its graph, as before. Test yourself always holds a graph (or the list). */
+  var qChosen = false;
+  function routeV2(h, g){
+    var p = params(), tab = null, quiz = false;
+    if(h[0] === 'explore') tab = EX.tabFor({ tab: h[1] }) || EX.tab();
+    else if(g && h[1] === 'explore' && EX.tabFor({ graph: g.id })) tab = EX.tabFor({ graph: g.id });
+    else if(g || h[0] === 'all'){ quiz = true; qChosen = true; }
+    else if(p.topic || p.chapter){ tab = EX.tabFor({ topic: p.topic, chapter: p.chapter, topicOf: topicInfo }); quiz = !tab; }
+    if(tab) EX.tab(tab);
+    if(h[0] === 'all') showList();
+    else if(g){ var k = null; if(h[1]) g.questions.forEach(function(q, i){ if(q.id === h[1]) k = i; }); showGraph(g, k, h[1] === 'explore' ? 'explore' : 'quiz'); }
+    else { var d = (tab && find(EX.graphOf(tab))) || defaultItem(); if(d) showGraph(d, null, 'quiz'); else showList(); }
+    KIT.go(quiz ? 'quiz' : 'explore');
   }
 
   /* -------------------------------------------------------------- list view */
@@ -548,11 +573,13 @@
     return s.charAt(0).toUpperCase() + s.slice(1);
   }
 
+  var curG = null;
   function showGraph(g, qk, wantMode){
+    curG = g;
     var next = nextOf(g);
     var hasRegions = (g.regions || []).some(function(r){ return !r.show && r.x1 - r.x0 > 0; });
     var tried = g.questions.some(function(q){ return status(itemId(g, q)) !== 'new'; });
-    var mode = wantMode || (qk != null || tried ? 'quiz' : 'explore');
+    var mode = wantMode || (V2 || qk != null || tried ? 'quiz' : 'explore');
     var nRight = g.questions.filter(function(q){ return status(itemId(g, q)) === 'right'; }).length;
     if(S) S.reset();
     app.innerHTML = '<div class="pw gr gr-view">' +
@@ -561,8 +588,8 @@
       '<p class="anp-small pw-meta">Topic: ' + topicLink(g.topic) + ' · ' + g.questions.length + ' questions</p>' +
       (K() ? K().about('<p>' + html(g.intro) + '</p>', 'About this graph') : '<p class="pw-intro">' + html(g.intro) + '</p>') +
       '<div class="gr-modes kt-seg" role="tablist" aria-label="Mode">' +
-        '<button type="button" role="tab" class="gr-mode" id="gr-tab-explore" aria-controls="gr-panel" data-m="explore">Explore</button>' +
-        '<button type="button" role="tab" class="gr-mode" id="gr-tab-quiz" aria-controls="gr-panel" data-m="quiz">Quiz <span class="gr-mode-n">' + nRight + '/' + g.questions.length + '</span></button>' +
+        '<button type="button" role="tab" class="gr-mode" id="gr-tab-explore" aria-controls="gr-panel" data-m="explore">' + (V2 ? 'Read it' : 'Explore') + '</button>' +
+        '<button type="button" role="tab" class="gr-mode" id="gr-tab-quiz" aria-controls="gr-panel" data-m="quiz">' + (V2 ? 'Questions' : 'Quiz') + ' <span class="gr-mode-n">' + nRight + '/' + g.questions.length + '</span></button>' +
       '</div>' +
       '<p class="kt-first gr-first"></p>' +
       '<div class="gr-layout"><div class="gr-figcol"><figure class="anp-fig gr-fig"></figure>' +
@@ -731,13 +758,15 @@
     var tabs = Q().querySelectorAll('.gr-mode');
     function setMode(m, focus){
       mode = m;
-      if(S) S.mode(m);
+      if(S && !V2) S.mode(m);
       tabs.forEach(function(b){ var on = b.getAttribute('data-m') === m; b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; if(on && focus) b.focus(); });
       panelEl.setAttribute('aria-labelledby', 'gr-tab-' + m);
       Q().querySelector('.gr-first').textContent = m === 'explore'
         ? 'Drag along the graph to read every curve' + (conditions(g).length ? ', then tap a What if to shift it.' : '.')
         : S ? 'Answer the question below. The graph shows the answer once you have.' : 'Answer the question beside the graph.';
       fig.classList.toggle('is-explore', m === 'explore');
+      // v2: the reading cursor belongs to "Read it" only (in Questions it would read the answers off the graph)
+      if(V2){ var scr = Q().querySelector('.gr-scrub'); if(scr) scr.hidden = m !== 'explore'; if(S.root.querySelector('.gr-read')) S.root.querySelectorAll('.gr-read').forEach(function(x){ x.hidden = m !== 'explore'; }); }
       c.clear(); clearCond(true);
       if(m === 'explore') explore(); else { cursorOn = false; drawCursor(); quiz(); }
     }
@@ -821,8 +850,8 @@
       if(S){
         // The live reading sits under the chart; a condition's reason goes to Why.
         S.root.querySelectorAll('.ls-stage .gr-read, .ls-sheet .gr-cond-why').forEach(function(x){ x.parentNode.removeChild(x); });
-        S.put('stage', readEl, { mode: 'explore' });
-        if(whyEl) S.put('why', whyEl, { mode: 'explore', first: true });
+        S.put('stage', readEl, { mode: V2 ? 'quiz' : 'explore' });
+        if(whyEl) S.put('why', whyEl, { mode: V2 ? 'quiz' : 'explore', first: true });
       }
       function readout(x){
         var rows = [];
@@ -1145,38 +1174,40 @@
   function studioGraph(g){
     function $(sel){ return app.querySelector(sel); }
     S.modeBar(true);
-    S.pills([], 'right', 'explore');
+    S.pills([], 'right', V2 ? 'quiz' : 'explore');
     var fig = $('.gr-fig');
     fig.classList.add('ls-fit');
-    S.put('stage', [$('.pw-title'), fig]);
-    S.put('dock', $('.gr-scrub'), { mode: 'explore' });
-    S.put('dock', [$('#gr-panel'), $('.pw-pickhost')]);
-    S.mirror($('.gr-first'));
+    S.put('stage', [$('.pw-title'), fig], QM);
+    // v2: the old Explore / Quiz switch is the small Read it / Questions switch at the top of the side panel
+    if(V2) S.put('dock', $('.gr-modes'), QM);
+    S.put('dock', $('.gr-scrub'), V2 ? { mode: 'quiz' } : { mode: 'explore' });
+    S.put('dock', [$('#gr-panel'), $('.pw-pickhost')], QM);
+    S.mirror($('.gr-first'), V2 ? 'quiz' : undefined);
     var ab = $('.kt-about');
     var w = document.createElement('div');
     w.className = 'ls-sec';
     w.innerHTML = '<h3 class="ls-h">About this graph</h3>' + (ab ? ab.querySelector('.kt-about-b').innerHTML : '') +
       '<p class="ls-sub">Explore: drag along the graph or move the slider to read every curve; a What if moves the curve. Quiz: read a value, name a phase, or predict (or drag) the shift.</p>';
     if(ab) ab.parentNode.removeChild(ab);
-    S.put('why', w);
+    S.put('why', w, QM);
     var d = document.createElement('div');
     d.className = 'ls-sec gr-ls-det';
     [$('.pw-meta'), $('.gr-figcol .kt-more') || $('.gr-tools'), $('.pw-next')].forEach(function(x){ if(x) d.appendChild(x); });
     var mo = d.querySelector('.kt-more'); if(mo) mo.open = true;   // the phases toggle shows in Details as it is
-    S.put('details', d);
-    if(!studioGraph.hinted){
+    S.put('details', d, QM);
+    if(!V2 && !studioGraph.hinted){
       studioGraph.hinted = true;
       S.hint({ target: '.ls-dock .gr-range', text: 'Slide to read every curve' });
     }
   }
   function studioList(){
-    S.modeBar(false);
+    if(!V2) S.modeBar(false);
     S.pills([], 'right', 'quiz');
     var root = app.querySelector('.pw');
     var lead = root.querySelector('.pw-lead');
-    S.put('stage', root);
-    if(lead) S.put('why', lead);
-    S.caption('Pick a graph to explore, then quiz yourself on it.', 'explore');
+    S.put('stage', root, QM);
+    if(lead) S.put('why', lead, QM);
+    if(!V2) S.caption('Pick a graph to explore, then quiz yourself on it.', 'explore');
     S.caption('Pick a graph to explore, then quiz yourself on it.', 'quiz');
     S.stage.scrollTop = 0;
   }
@@ -1208,6 +1239,20 @@
     DATA = d;
     DATA.graphs = (DATA.graphs || []).filter(function(g){ return g && g.panels && g.questions && g.questions.length; });
     if(window.AnpCore && window.AnpCore.allowed && !window.AnpCore.allowed('graphs')){ fail('This tool is not available right now.'); return; }
+    if(V2){
+      // one colour per idea: the left ventricle (its pressure and its volume) is blue in Explore, so here too
+      var wg = find('wiggers');
+      if(wg) wg.panels.forEach(function(p){ (p.series || []).forEach(function(se){ if(se.id === 'lv' || se.id === 'vol') se.cls = 'lv'; }); });
+      EX = window.AnpGraphExplore.build({ data: DATA, base: BASE, studio: S,
+        onQuiz: function(id){ location.hash = '#' + id; } });
+      KIT = window.AnpToolKit.kit2(S, { stage: EX.stage, ref: EX.ref, onShow: function(m, user){
+        EX.shown(m === 'explore');
+        if(!user) return;
+        if(m === 'quiz' && !qChosen){ var tg = find(EX.graphOf(EX.tab())); if(tg && (!curG || curG.id !== tg.id)) showGraph(tg, null, 'quiz'); }
+        try{ history.replaceState(null, '', location.pathname + location.search + (m === 'explore' ? '#explore/' + EX.tab() : curG ? '#' + curG.id : '')); }catch(e){}
+      } });
+      if(!KIT){ V2 = false; QM = undefined; }
+    }
     window.addEventListener('hashchange', route);
     // A graph drawn for a phone held upright is redrawn when it turns (and back).
     var rt = 0;

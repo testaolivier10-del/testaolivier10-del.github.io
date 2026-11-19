@@ -238,7 +238,8 @@ the tool's own stylesheet `bio/assets/tools/<slug>.css`. The tool builds its sta
 `ApBioTools.studioKit2` (the course adapter) sets the two modes (Explore: the stage alone, full width; Test
 yourself: one dropdown for its parts, the question in the side panel), puts `ref` behind "?" and reuses the
 stimulus questions and mini FRQ as the last part. First tool: Osmosis (`docs/tools-v2-osmosis-brief.md`); its
-Explore reads `explore` in its data file and `ApBioMath.osmosis.equilibrium`.
+Explore reads `explore` in its data file and `ApBioMath.osmosis.equilibrium`. Second tool: Enzyme activity
+(`docs/tools-v2-enzyme-activity-brief.md`; four tabs from `explore.tabs`, `ApBioMath.enzyme.rate` and `states`).
 
 | Piece | Path |
 |---|---|

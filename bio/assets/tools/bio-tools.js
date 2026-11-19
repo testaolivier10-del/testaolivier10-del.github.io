@@ -860,7 +860,7 @@
       std: true, lede: lede ? lede.textContent.trim() : '',
       // the second tab, named for what is in it
       detailsTitle: ({ 'chi-square': 'Problem & critical values', 'confidence-intervals': 'Problem, formulas & settings',
-        'descriptive-stats': 'Problem & formulas', 'hardy-weinberg': 'Problem & equations', 'rates': 'Problem & formulas',
+        'descriptive-stats': 'Problem & formulas', 'hardy-weinberg': 'Numbers & equations', 'rates': 'Problem & formulas',
         'simpson-diversity': 'Numbers & formula', 'water-potential': 'Numbers & formulas', 'graph-builder': 'What full credit needs',
         'tree-reading': 'Trees & characters', 'design-drills': 'All drills', 'osmosis': 'Numbers & how it works' })[slug] || 'Data & settings',
       menu: {
@@ -926,7 +926,7 @@
     if(modes){ modes.classList.add('ls-prac-set'); s.add('details', modes, only); }
     area.classList.add('ls-prac');
     s.add('dock', area, only);
-    var m = only && only.mode, std = s.root.classList.contains('ls-std'), pick = null, lastTask = null;
+    var m = only && only.mode, std = s.root.classList.contains('ls-std'), pick = null, lastTask = null, lastDone = null, lastPills = [];
     // The standard frame: new numbers or a worked problem, from one dropdown on the stage (skillTool's area.lsPick).
     if(x && x.noPick){ if(modes) modes.hidden = true; }
     else if(std && area.lsPick && s.picker){
@@ -938,6 +938,7 @@
     function fresh(){
       var slot = area.querySelector(':scope > .bt-stage-slot');
       if(!slot) return;
+      lastDone = null; lastPills = [];
       stage.innerHTML = '';
       why.innerHTML = std ? '' : '<h3 class="ls-title-l">Worked solution</h3><p class="ls-sub">It appears here after you check your answers.</p>';
       if(std) s.done(false, m);
@@ -976,7 +977,8 @@
       why.innerHTML = '';
       why.appendChild(sol);
       var mm = /(\d+) of (\d+)/.exec(t);
-      if(mm) s.pills([{ html: mm[1] + ' of ' + mm[2] + ' right', tone: mm[1] === mm[2] ? 'good' : 'warn' }], 'left', m);
+      lastPills = mm ? [{ html: mm[1] + ' of ' + mm[2] + ' right', tone: mm[1] === mm[2] ? 'good' : 'warn' }] : [];
+      if(mm) s.pills(lastPills, 'left', m);
       var nx = area.querySelector('.bt-next .btn-press');
       if(nx) nx.classList.add('ls-btn', 'ls-pri');
       if(std){
@@ -991,9 +993,10 @@
         links.push({ label: 'Review your answers', onClick: function(){ s.done(false, m); } });
         if(les) links.push({ label: 'Read the lesson: ' + les.textContent.replace(/^\s*Lesson\s*/, '').trim(), href: les.getAttribute('href') });
         var all = mm && mm[1] === mm[2];
-        s.done({ kicker: all ? 'Solved' : 'Finished', title: mm ? esc(mm[1] + ' of ' + mm[2] + ' parts right the first time.') : 'Finished.',
+        lastDone = { kicker: all ? 'Solved' : 'Finished', title: mm ? esc(mm[1] + ' of ' + mm[2] + ' parts right the first time.') : 'Finished.',
           text: all ? 'Every part right on the first try.' : endP ? esc(endP.textContent) : 'The worked solution shows each part.',
-          next: again ? { label: again.textContent, onClick: function(){ again.click(); } } : null, links: links }, m);
+          next: again ? { label: again.textContent, onClick: function(){ again.click(); } } : null, links: links };
+        s.done(lastDone, m);
         return;
       }
       s.caption((mm ? '<b>' + mm[1] + ' of ' + mm[2] + ' parts right the first time.</b> ' : '') + 'The worked solution is under Why.', m);
@@ -1002,7 +1005,10 @@
     area.addEventListener('bt-skill-done', function(){ setTimeout(checked, 0); });
     fresh();
     // kit2: practice shares Test yourself with other parts; the adapter hides these and sets the task head again.
-    return { nodes: [stage, why, det, area], resync: function(){ if(std && lastTask){ s.task(lastTask, m); s.caption('', m); } } };
+    // On return the head, the score pill and the finished card (if the problem was finished) come back.
+    return { nodes: [stage, why, det, area],
+      resync: function(){ if(std && lastTask){ s.task(lastTask, m); s.caption('', m); } s.pills(lastPills, 'left', m); if(std && lastDone) s.done(lastDone, m); },
+      leave: function(){ if(std) s.done(false, m); s.pills([], 'left', m); } };
   }
 
   /* ------------------------------------------ Tool Studio: simulators */
@@ -1392,10 +1398,18 @@
     var pick = null;
     if(lp && (parts.length > 1 || lp.groups.length > 1 || lp.groups[0] && lp.groups[0].items.length > 1)){
       // one dropdown: each problem of the practice part, then the other parts
-      var others = parts.filter(function(p){ return !p.practice; });
-      pick = s.picker({ label: others.length ? 'What to practice' : 'Problem', groups: [{ label: pp.label, items: [].concat.apply([], lp.groups.map(function(g){ return g.items; })) }]
-          .concat(others.length ? [{ label: o.othersLabel || 'More', items: others.map(function(p){ return { value: p.value, label: p.label }; }) }] : []), value: pickVal(partOf(cur.part)),
-        onChange: function(v){ if(isProb(v)){ show('quiz', pp.value, true); lp.onChange(v); pick.value(v); } else show('quiz', v, true); } }, 'quiz');
+      // in the order of o.parts: parts listed after the practice are grouped under othersLabel ("More"), parts
+      // listed before it stay plain choices above it
+      var others = parts.filter(function(p){ return !p.practice; }), at = parts.indexOf(pp), groups = [];
+      function plain(list, label){ if(list.length) groups.push({ label: label, items: list.map(function(p){ return { value: p.value, label: p.label }; }) }); }
+      plain(parts.slice(0, at).filter(function(p){ return !p.practice; }), o.othersLabel || '');
+      groups.push({ label: pp.label, items: [].concat.apply([], lp.groups.map(function(g){ return g.items; })) });
+      plain(parts.slice(at + 1).filter(function(p){ return !p.practice; }), o.othersLabel || 'More');
+      pick = s.picker({ label: others.length ? 'What to practice' : 'Problem', groups: groups, value: pickVal(partOf(cur.part)),
+        onChange: function(v){
+          // back from another part to the same kind of problem: the problem it left (and its finished card) stays
+          if(isProb(v)){ var back = cur.part !== pp.value && v === lp.value(); show('quiz', pp.value, true); if(!back) lp.onChange(v); pick.value(v); }
+          else show('quiz', v, true); } }, 'quiz');
       area.lsSync = function(){ if(cur.part === pp.value && pick.value() !== lp.value()) pick.value(lp.value()); };
     } else if(parts.length > 1) pick = s.picker({ label: 'What to practice', items: parts.map(function(p){ return { value: p.value, label: p.label }; }), value: cur.part,
       onChange: function(v){ show('quiz', v, true); } }, 'quiz');
@@ -1408,7 +1422,7 @@
       parts.forEach(function(x){ if(x.dock) x.dock.hidden = !(quiz && x === p); });
       if(qStage) qStage.hidden = !(quiz && p.questions);
       if(qDock) qDock.hidden = !(quiz && p.questions);
-      if(prac){ prac.nodes.forEach(function(x, i){ x.hidden = !(quiz && p.practice) || (i === 0 && !!pp.onPicture); }); if(quiz && !p.practice && left === pp.value && s.done) s.done(false, 'quiz'); }
+      if(prac){ prac.nodes.forEach(function(x, i){ x.hidden = !(quiz && p.practice) || (i === 0 && !!pp.onPicture); }); if(quiz && !p.practice && left === pp.value) prac.leave(); }
       if(pick && quiz && pick.value() !== pickVal(p)) pick.value(pickVal(p));
       if(quiz){
         if(p.practice){ prac.resync(); }
