@@ -239,8 +239,9 @@
     }
     return T;
   }
-  /* o.groups: draw groups (Et) as their letters; o.clear: a badge also keeps 2 px clear of every other letter and badge
-     (both Arrow Pusher's). */
+  /* o.groups: draw groups (Et) as their letters; o.clear: a badge also keeps 2 px (on a phone) clear of every letter and
+     badge, and sits on the far side of its own atom from every neighbouring letter (both Arrow Pusher's only, so the
+     Resonance cards do not change). */
   function drawFlat(st, T, box, o){
     o = o || {};
     var g = !!o.groups;
@@ -253,10 +254,11 @@
     var z0 = flatSizes(st, T, g), lw = z0.lw, fsz = z0.fsz, off = z0.off;
     // every letter's box (for o.clear)
     var lbox = {}, placed = [];
-    if(o.clear) hk.forEach(function(k){ if(bare(k)) return; var p = P(T, st.atoms[k]), w = fsz * 0.64 * flatLabel(st, k).replace(/[₀-₉]/g, '').length + fsz * 0.3 * (flatLabel(st, k).match(/[₀-₉]/g) || []).length; lbox[k] = { x0: p[0] - w / 2, x1: p[0] + w / 2, y0: p[1] - fsz * 0.5, y1: p[1] + fsz * 0.5 }; });
+    if(o.clear) hk.forEach(function(k){ if(bare(k)) return; var p = P(T, st.atoms[k]), w = fsz * 0.7 * flatLabel(st, k).replace(/[₀-₉]/g, '').length + fsz * 0.3 * (flatLabel(st, k).match(/[₀-₉]/g) || []).length; lbox[k] = { x0: p[0] - w / 2, x1: p[0] + w / 2, y0: p[1] - fsz * 0.5, y1: p[1] + fsz * 0.5 }; });
     function clearOf(k, bx, by, br){
       if(!o.clear) return true;
-      var hit = function(b){ return !(bx + br + 2 <= b.x0 || bx - br - 2 >= b.x1 || by + br + 2 <= b.y0 || by - br - 2 >= b.y1); };
+      // 3.2 units: the cards are drawn at about 0.65 of their size on a phone, so this is still 2 px on screen
+      var hit = function(b){ return !(bx + br + 3.2 <= b.x0 || bx - br - 3.2 >= b.x1 || by + br + 3.2 <= b.y0 || by - br - 3.2 >= b.y1); };
       return !Object.keys(lbox).some(function(j){ return hit(lbox[j]); }) && !placed.some(hit);
     }
     st.bonds.forEach(function(b){
@@ -284,11 +286,38 @@
         var angs = slots(st, k, 1); for(var ai = 0; ai < 16; ai++) angs.push(-Math.PI / 2 + ai * Math.PI / 8);
         var bdirs = C.neighbors(st, k).filter(function(n){ return hvy(st, n, g); }).map(function(n){ var o = st.atoms[n], me = st.atoms[k]; return Math.atan2(o.y - me.y, o.x - me.x); });
         angs = angs.filter(function(t, i){ return i === 0 || bdirs.every(function(d){ return angDist(t, d) > 0.6; }); });
+        // (o.clear: the badge goes on the far side of its own atom from every neighbouring letter, bonded or not, so it
+        // never sits between two atoms and reads as the other one's; review recheck 1, the Claisen alkoxide on a phone)
+        var near = [];
+        if(o.clear){
+          hk.forEach(function(j){ if(j === k) return; var pj = P(T, st.atoms[j]), d = Math.hypot(pj[0] - p[0], pj[1] - p[1]); if(d < dd * 3.2) near.push({ a: Math.atan2(pj[1] - p[1], pj[0] - p[0]), p: pj }); });
+          var far = function(t){ return near.reduce(function(m, n){ return Math.min(m, angDist(t, n.a)); }, Math.PI); };
+          angs = angs.map(function(t, i){ return { t: t, i: i, f: far(t) }; }).sort(function(a, b){ return (b.f - a.f) || (a.i - b.i); }).map(function(x){ return x.t; });
+        }
+        // nearer its own atom than any other (o.clear)
+        function own(bx, by){ var d0 = Math.hypot(bx - p[0], by - p[1]); return near.every(function(n){ return Math.hypot(bx - n.p[0], by - n.p[1]) > d0 + 2; }); }
         // (o.clear: a little further out too, before giving up)
         var tries = []; (o.clear ? [0, 3, 6, 10] : [0]).forEach(function(e){ angs.forEach(function(t){ tries.push([t, e]); }); });
+        if(o.clear){
+          // the best place, not the first: inside the card, nearer its own atom than any other, then the most room from
+          // every letter and badge (up to 3.2 units, 2 px on a phone), then closest to its atom, then the far side from
+          // neighbouring letters
+          var room = function(cx, cy){ var m = 99; Object.keys(lbox).map(function(j){ return lbox[j]; }).concat(placed).forEach(function(b){ var gx = Math.max(b.x0 - (cx + br), (cx - br) - b.x1), gy = Math.max(b.y0 - (cy + br), (cy - br) - b.y1); m = Math.min(m, Math.max(gx, gy)); }); return m; };
+          var best = null;
+          for(var ai2 = 0; ai2 < 32; ai2++) angs.push(ai2 * Math.PI / 16);
+          [0, 2, 4, 7, 10, 14].forEach(function(e){ angs.forEach(function(t){
+            var cx = p[0] + Math.cos(t) * (dd + e), cy = p[1] + Math.sin(t) * (dd + e);
+            if(box && !(cx - br - 1 >= box.x && cx + br + 1 <= box.x + box.w && cy - br - 1 >= box.y && cy + br + 5 <= box.y + box.h)) return;
+            // (close to its own atom before the far side: a badge right against its letter reads as that atom's)
+            var sc = [own(cx, cy) ? 1 : 0, Math.min(3.2, room(cx, cy)), -e, near.length ? near.reduce(function(m, n){ return Math.min(m, angDist(t, n.a)); }, Math.PI) : 0];
+            if(!best || sc[0] > best.s[0] || (sc[0] === best.s[0] && (sc[1] > best.s[1] + 0.01 || (Math.abs(sc[1] - best.s[1]) <= 0.01 && (sc[2] > best.s[2] || (sc[2] === best.s[2] && sc[3] > best.s[3] + 0.05)))))) best = { s: sc, x: cx, y: cy };
+          }); });
+          if(best){ bx = best.x; by = best.y; tries = []; }
+          else { bx = p[0] + Math.cos(angs[0]) * dd; by = p[1] + Math.sin(angs[0]) * dd; tries = []; }
+        }
         for(var aj = 0; aj < tries.length; aj++){
           bx = p[0] + Math.cos(tries[aj][0]) * (dd + tries[aj][1]); by = p[1] + Math.sin(tries[aj][0]) * (dd + tries[aj][1]);
-          if((!box || (bx - br - 1 >= box.x && bx + br + 1 <= box.x + box.w && by - br - 1 >= box.y && by + br + 5 <= box.y + box.h)) && clearOf(k, bx, by, br)) break;
+          if((!box || (bx - br - 1 >= box.x && bx + br + 1 <= box.x + box.w && by - br - 1 >= box.y && by + br + 5 <= box.y + box.h)) && clearOf(k, bx, by, br) && own(bx, by)) break;
           bx = p[0] + Math.cos(angs[0]) * dd; by = p[1] + Math.sin(angs[0]) * dd;
         }
         if(box){ bx = Math.max(box.x + br + 1, Math.min(box.x + box.w - br - 1, bx)); by = Math.max(box.y + br + 1, Math.min(box.y + box.h - br - 5, by)); }

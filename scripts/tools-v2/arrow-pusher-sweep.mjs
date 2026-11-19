@@ -9,6 +9,7 @@
      - names sit at least 4 px clear of each other, of every ball and charge badge, of the picker and Undo;
      - charge badges and lone pairs do not sit on another atom's ball;
      - in the steps row every badge and letter is inside its card and 4 px clear of its tag; π lines at least 6 px;
+       a badge at least 2 px from every letter, nearer its own letters than any other, never between two letters;
      - the molecule on the board is the largest object in the picture (bigger than each card);
      - no rendered text under 11 px anywhere in the tool, Test yourself and "?" included;
      - names and the cause line wait (is-wait) while electrons are moving, and the words after a step name what is
@@ -89,10 +90,25 @@ const probe = () => {
   // inside each card, no letters on letters and no badge on letters (glyph boxes: cap height, measured width)
   { const svgR = document.querySelector('.ap2-svg').getBoundingClientRect(), vbw = document.querySelector('.ap2-svg').viewBox.baseVal.width || svgR.width, kk = svgR.width / vbw;
     const glyph = q('.rs2-strip .rs2-fal').map(e => { const x = +e.getAttribute('x'), y = +e.getAttribute('y'), fs = +e.getAttribute('font-size'), w = e.getComputedTextLength(); return { t: e.textContent, l: (x - w / 2) * kk, r: (x + w / 2) * kk, t0: (y - fs * 0.72) * kk, b0: (y + fs * 0.04) * kk }; });
-    const badges = q('.rs2-strip .rs2-badge circle').map(e => { const cx = +e.getAttribute('cx'), cy = +e.getAttribute('cy'), r = +e.getAttribute('r'); return { l: (cx - r) * kk, r: (cx + r) * kk, t0: (cy - r) * kk, b0: (cy + r) * kk }; });
+    const badges = q('.rs2-strip .rs2-badge circle').map(e => { const cx = +e.getAttribute('cx'), cy = +e.getAttribute('cy'), r = +e.getAttribute('r'), pv = e.parentNode.previousElementSibling; return { l: (cx - r) * kk, r: (cx + r) * kk, t0: (cy - r) * kk, b0: (cy + r) * kk, own: pv && pv.classList.contains('rs2-fal') ? pv : null }; });
+    const glyphEl = q('.rs2-strip .rs2-fal');
     const ov = (a, c) => Math.min(a.r, c.r) - Math.max(a.l, c.l) > 0.5 && Math.min(a.b0, c.b0) - Math.max(a.t0, c.t0) > 0.5;
     for (let i = 0; i < glyph.length; i++) { for (let j = i + 1; j < glyph.length; j++) if (ov(glyph[i], glyph[j])) out.push('card letters "' + glyph[i].t + '" and "' + glyph[j].t + '" overlap');
-      badges.forEach(bd => { if (ov(glyph[i], bd)) out.push('a card badge on letters "' + glyph[i].t + '"'); }); } }
+      badges.forEach(bd => { if (ov(glyph[i], bd)) out.push('a card badge on letters "' + glyph[i].t + '"'); }); }
+    // a badge keeps 2 px from every letter, and never sits between two letters (where it reads as either one's)
+    const gap = (a, c) => Math.max(c.l - a.r, a.l - c.r, c.t0 - a.b0, a.t0 - c.b0);
+    badges.forEach(bd => { const bx = (bd.l + bd.r) / 2, by = (bd.t0 + bd.b0) / 2, br = (bd.r - bd.l) / 2;
+      glyph.forEach(gl => { const d = gap(gl, bd); if (d > -0.5 && d < 1.95) out.push('a card badge ' + d.toFixed(1) + ' px from letters "' + gl.t + '"'); });
+      const cs = glyph.map(gl => ({ t: gl.t, x: (gl.l + gl.r) / 2, y: (gl.t0 + gl.b0) / 2 }));
+      // a badge drawn with its own letters (it follows them) is nearer them than any other letters
+      if (bd.own) { const oi = glyphEl.indexOf(bd.own), ds = cs.map(c => Math.hypot(bx - c.x, by - c.y)), oth = ds.filter((d, i) => i !== oi);
+        if (oi >= 0 && oth.length && Math.min(...oth) < ds[oi] + 2) out.push('a card badge nearer other letters than its own "' + cs[oi].t + '"'); }
+      for (let i = 0; i < cs.length; i++) for (let j = i + 1; j < cs.length; j++) { const A = cs[i], B = cs[j], dx = B.x - A.x, dy = B.y - A.y, L2 = dx * dx + dy * dy, L = Math.sqrt(L2);
+        if (L > br * 7) continue;
+        const t = ((bx - A.x) * dx + (by - A.y) * dy) / L2, perp = Math.abs((bx - A.x) * dy - (by - A.y) * dx) / L;
+        // (only when it is about as near one as the other and nothing is nearer: a badge against its own letter is clear)
+        const dA = Math.hypot(bx - A.x, by - A.y), dB = Math.hypot(bx - B.x, by - B.y), dMin = Math.min(...cs.map(c => Math.hypot(bx - c.x, by - c.y)));
+        if (t > 0.2 && t < 0.8 && perp < br && Math.min(dA, dB) <= dMin + 0.5 && Math.max(dA, dB) < Math.min(dA, dB) * 1.35) out.push('a card badge between "' + A.t + '" and "' + B.t + '"'); } }); }
   q('.rs2-strip .rs2-fpi').forEach(e => { const L = Math.hypot(e.x2.baseVal.value - e.x1.baseVal.value, e.y2.baseVal.value - e.y1.baseVal.value); if (L < 6) out.push('a π line in the row is ' + L.toFixed(1) + ' px'); });
   // no rendered text under 11 px anywhere in the tool
   const svgEl = document.querySelector('.ap2-svg'), vb = svgEl.viewBox.baseVal, k = vb && vb.width ? svgEl.getBoundingClientRect().width / vb.width : 1;
@@ -221,6 +237,7 @@ for (const w of WIDTHS) {
       if (!(await checkStep(page, `${w} challenge ${c.id} step ${s + 1}`))) break;
       await page.waitForTimeout(150);
       await check(`challenge ${c.id} step ${s + 1} checked`);
+      if (c.id === 'claisen') await shot(page.locator('.rs2-strip').first(), `${tag}-6-claisen-${s + 1}.png`);
     }
     const solved = await page.evaluate(() => !!document.querySelector('.ls-donew:not([hidden])'));
     checks++; if (!solved) fails.push(`${w} challenge ${c.id}: the right arrows did not solve it`);

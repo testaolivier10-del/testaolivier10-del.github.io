@@ -238,3 +238,14 @@ status table kept).
 - Unit tests 113 pass (2 new arrow pusher tests in `tool-content`, 1 in `ochem-url-compat`); `build-tool-pages --check`,
   `check-site`, `check-weight --check`.
 - Preview and shots regenerated (`/mnt/user-data/outputs/arrow-pusher-v2/`), with the Claisen solved at 390 and 1440.
+
+## Recheck 1 (2026-11-18, PASS; its badge note fixed before the merge)
+
+On a 390 phone the Claisen intermediate card put the alkoxide's minus badge between CH₂ and its O, so it could be
+read as either one's; a few badges sat 1 to 2 px from a letter. In the cards (`drawFlat` with `clear`, Arrow Pusher
+only, so the Resonance cards do not change) a badge now takes the best place, not the first that fits: inside the
+card, nearer its own atom than any other, at least 3.2 units (2 px on a phone, where the cards are drawn at about 0.65)
+from every letter and badge, then as close to its atom as that allows, then on the far side from neighbouring
+letters. The sweep checks every card badge: at least 2 px from every letter, nearer its own letters than any other,
+and never about equally between two letters. It fails on the old code; 360 and 390 pass (72 states, 814 checks, 0
+failures); the Resonance sweep at 390 passes (44 states, 397 checks).
