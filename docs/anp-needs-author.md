@@ -2099,6 +2099,43 @@ part; these are the judgment calls in the pictures and the break results.
   gland; adrenal damaged, ACTH at the gland; Ca2+ channels blocked, the action potential at the membrane; receptor
   proteins blocked, the transmitter across the cleft.
 
+
+## Feedback loops, tools v2 drawn loops (2026-11-18): items for review
+Brief: `docs/tools-v2-anp-feedback-loops-brief.md`. Explore draws three loops from the bank on a body (temperature,
+blood glucose, childbirth); these are the judgment calls in the pictures. The bank's loops and their reviewed text are
+unchanged.
+- **fl-temp-range** (decided, for review). The thermometer and the monitor shade 36.5 to 37.5 °C as the normal range
+  around the 37 °C set point. Normal ranges vary by site and source (oral readings are often given as about 36.1 to
+  37.2 °C); the notes give only the set point. The push is capped at 35.5 and 38.5 °C.
+- **fl-temp-route** (decided, for review). One patch of forearm skin is magnified; the sensory nerve is drawn from it up
+  the arm, over the shoulder and up the back of the neck to the brain (hidden behind the head), and the command back
+  down beside it. In the body the signal enters the spinal cord and climbs
+  to the hypothalamus, and the commands leave by sympathetic nerves (skin vessels, sweat glands) and somatic motor
+  nerves (shivering). "?" says so. The brain's own temperature-sensitive neurons are named in "?", not drawn.
+- **fl-birth-position** (decided, for review; review round 1). The fetus is drawn head down, face toward the mother's
+  back, flexed (the usual occiput anterior position), with the placenta on the upper uterine wall. After birth the
+  newborn is drawn wrapped and held on the mother's forearm; the delivery of the placenta (third stage) is not drawn,
+  so the placenta stays inside.
+- **fl-glucose-setpoint** (decided, for review). One set point, 88 mg/dL (the bank's insulin loop, "about 88 mg/dL
+  fasting"), is drawn for both directions; the glucagon loop's text says "near 80 mg/dL". The normal band is the
+  notes' fasting range, 70 to 99 mg/dL. Whether blood glucose has a true set point (rather than a range defended by
+  two hormones) is debated; the course's loop builder uses the set point language.
+- **fl-islet-mix** (decided, for review). The magnified islet mixes beta cells (about 55%) and alpha cells through it,
+  as human islets are; many textbook figures draw a beta cell core with an alpha cell rim, which is the rodent pattern.
+- **fl-glucose-liver** (decided, for review). With insulin, glucose is drawn moving from the blood into the liver,
+  muscle and fat; the liver takes it up through carriers insulin does not move (the notes: insulin switches on
+  glycogenesis there), so the drawing shows the net movement, not the mechanism.
+- **fl-birth-route** (decided, for review). The afferent fibres from the cervix are drawn joining the lower end of the
+  spinal cord and climbing it to the hypothalamus; in the body they run in pelvic and hypogastric nerves into sacral and
+  lower thoracic segments. The hypothalamus and pituitary are magnified; one vessel stands for the circulation from the
+  posterior pituitary to the uterus.
+- **fl-birth-turns** (decided, for review). Each turn of the loop adds more stretch than the last and the turns come
+  closer together, until full stretch and birth (four or five turns, a few seconds each). Real labor takes hours, with
+  contractions minutes apart; the loop strengthens contractions and does not start labor ("?" and the labor-birth
+  notes' "For your exam" note).
+- **fl-loop-timing** (decided, for review). Every run is seconds long. "?" says the pictures show the idea, not the real
+  timing: temperature corrections take minutes, glucose after a meal two to three hours.
+
 ## Lab practical tool, tools v2 specimens (2026-11-18): items for review
 Explore shows six lab figures drawn clean with a pin on each part (docs/tools-v2-anp-lab-practical-brief.md). Pins sit
 where each figure's own printed leader line ended, checked by eye; each part's short "what it does" phrase was written
