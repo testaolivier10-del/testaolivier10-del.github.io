@@ -1385,7 +1385,7 @@
      screen; past its kmax it hides rather than cover the drawing. Run after a paint and on each camera frame. */
   Patient.prototype.upright = function(scale){
     if(!this.world) return;
-    var self = this, R = this.lie ? 90 : 0, sc = scale || this.scale || 1, S = this.stage.getBoundingClientRect(), clamp = S.width > 0;
+    var self = this, R = this.lie ? 90 : 0, sc = scale || this.scale || 1, S = this.stage.getBoundingClientRect(), clamp = S.width > 0, list = [];
     [].forEach.call(this.world.querySelectorAll('.sp-plate'), function(p){
       if(p.closest('.sp-marks')) return;
       if(p.__t0 == null){
@@ -1409,11 +1409,29 @@
       if(ax < S.left || ax > S.right || ay < S.top || ay > S.bottom){ p.style.visibility = 'hidden'; return; }
       var dx = r.left < S.left + 4 ? S.left + 4 - r.left : r.right > S.right - 4 ? S.right - 4 - r.right : 0;
       var dy = r.top < S.top + 4 ? S.top + 4 - r.top : r.bottom > S.bottom - 4 ? S.bottom - 4 - r.bottom : 0;
-      if(dx || dy){
-        var ux = dx / sc, uy = dy / sc, w = self.lie ? [-uy, ux] : [ux, uy];
-        p.setAttribute('transform', 'translate(' + w[0].toFixed(1) + ' ' + w[1].toFixed(1) + ') ' + (p.__t0 ? p.__t0 + ' ' : '') + tail);
+      var item = p.closest('.sp-item');
+      list.push({ p: p, tail: tail, dx: dx, dy: dy, l: r.left + dx, r: r.right + dx, t: r.top + dy, b: r.bottom + dy, on: !item || item.classList.contains('on') });
+    });
+    /* No two plates touch: in top to bottom order, a plate that would overlap one already placed moves down below it
+       (or up above it when there is no room below), 5 px clear. */
+    var placed = [];
+    list.sort(function(x, y){ return x.t - y.t; }).forEach(function(x){
+      if(x.on){
+        for(var n = 0; n < 8; n++){
+          var hit = placed.filter(function(q){ return x.l < q.r + 5 && q.l < x.r + 5 && x.t < q.b + 5 && q.t < x.b + 5; })[0];
+          if(!hit) break;
+          var h = x.b - x.t, down = hit.b + 5 - x.t, up = hit.t - 5 - x.b;
+          var mv = x.b + down <= S.bottom - 4 ? down : x.t + up >= S.top + 4 ? up : down;
+          x.dy += mv; x.t += mv; x.b += mv;
+        }
+        placed.push(x);
+      }
+      if(x.dx || x.dy){
+        var ux = x.dx / sc, uy = x.dy / sc, w = self.lie ? [-uy, ux] : [ux, uy];
+        x.p.setAttribute('transform', 'translate(' + w[0].toFixed(1) + ' ' + w[1].toFixed(1) + ') ' + (x.p.__t0 ? x.p.__t0 + ' ' : '') + x.tail);
       }
     });
+    this.plateRects = placed;
   };
 
   Patient.prototype.show = function(node, on){
@@ -1619,6 +1637,15 @@
     list.forEach(function(x, i){
       var px = x.x, py = x.y, tries = 0;
       while(tries++ < 8 && placed.some(function(q){ return Math.hypot(q[0] - px, q[1] - py) < r * 2.3; })) px += (tries % 2 ? 1 : -1) * r * 2.4 * tries;
+      // and clear of the words on the patient (screen boxes from upright()), moved sideways on screen
+      var ctm = self.world && self.world.getScreenCTM(), sc = self.scale || 0.4, rad = r * 1.55 * sc;
+      if(ctm && self.plateRects) for(var n = 0; n < 6; n++){
+        var sx = ctm.a * px + ctm.c * py + ctm.e, sy = ctm.b * px + ctm.d * py + ctm.f;
+        var hit = self.plateRects.filter(function(q){ return sx + rad > q.l - 3 && sx - rad < q.r + 3 && sy + rad > q.t - 3 && sy - rad < q.b + 3; })[0];
+        if(!hit) break;
+        var mvx = (sx < (hit.l + hit.r) / 2 ? hit.l - 4 - rad - sx : hit.r + 4 + rad - sx) / sc, w = self.lie ? [0, mvx] : [mvx, 0];
+        px += w[0]; py += w[1];
+      }
       placed.push([px, py]);
       var m = el('g', { class:'sp-mark sp-mark--' + x.sev, transform:'translate(' + px + ' ' + py + ')' + (self.lie ? ' rotate(90)' : '') }, g);
       el('circle', { r:r * 1.55, class:'sp-mark-halo' }, m);
