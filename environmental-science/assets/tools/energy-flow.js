@@ -6,19 +6,10 @@
 
    Job: see why so little energy reaches the top of a food chain.
 
-   Explore (Tool Studio): the stage is one ecosystem drawn as a pyramid of
-   illustrated organisms. Its bars are the model's numbers (energy, biomass
-   or numbers per level, widths on a log scale by default, so every factor
-   of 10 is the same step and the loss is written beside each step; "to
-   scale" in More options shows the 90% lost as a ghost around each bar); gold sparks rise one
-   level for every nine heat sparks that leave (the ratio follows the
-   transfer efficiency), and the producers' sunlight budget (GPP, respiration,
-   NPP) sits under the base. Tap a level for where its energy went. The
-   fourth view is the ecosystem's food web: tap a species to remove it and
-   every other species shows its first, most likely response (ApEnvMath.
-   energyFlow.respond). Dock: the view, the ecosystem, the producers' GPP.
-   More options: transfer efficiency, producer respiration, bar scale.
-   Reduced motion: no sparks (the static heat arrows stay).
+   Explore (tools v2, docs/tools-v2-apenv-energy-flow-brief.md; kit assets/course/tool-kit2.js): three chapters,
+   one idea and one control each, on a drawn scene with no side panel (see explore() below): the 10% rule (drag
+   the energy up the meadow's pyramid), Eat lower (drag a hectare's corn toward cattle) and Food web (tap a species
+   out). The old views (biomass, numbers, pond, forest) are tables in "?".
 
    Test yourself: ApEnvTools.drill over the model's six kinds (10% rule up
    the chain, energy the producers need, GPP/NPP, transfer efficiency,
@@ -322,183 +313,609 @@
     T.modes(app, { slug: SLUG,
       explore: function(host){ ex = explore(host, data); },
       quiz: function(host){ quiz(host, data); },
-      onShow: function(m){ if(ex) ex.active(m === 'explore'); },
+      onShow: function(m){ if(ex) ex.shown(m); },
       studio: { explore: function(pane, s){ ex.studio(pane, s); } } });
   });
 
-  /* ------------------------------------------------------- explore */
+  /* ====================================================================== Explore v2
+     (docs/tools-v2-apenv-energy-flow-brief.md). Three chapters, one idea and one main control each, on a drawn scene:
+       chain  the energy pyramid of a meadow; drag the energy up one feeding step at a time (the knob rides the tip of
+              the gold stream); at every step passed 1 of 10 parts goes on (gold) and 9 leave as heat (vermillion),
+              drawn on one measure; the quiet Sunlight knob sets GPP (the grass keeps half as NPP).
+       eat    one hectare of corn; drag the share fed to cattle; the grain and the cattle's heat and beef are bands
+              on one measure, and the people fed come and go one by one.
+       web    the meadow food web; tap a species to take it out (again to bring it back); every linked species
+              answers (more, fewer, dies out; "maybe fewer" for the indirect, less certain effects).
+     One colour per idea: energy gold, heat vermillion, removed or dies out red. Words never run ahead of the picture:
+     the cause line reads the state as drawn. Reduced motion: the result at once with a short cross fade. */
+  var K = window.LevlKit2;
+  var CH = [{ value: 'chain', label: '10% rule' }, { value: 'eat', label: 'Eat lower' }, { value: 'web', label: 'Food web' }];
+  var PURPOSE = { chain: 'How little energy reaches the top of a food chain', eat: 'Why a field feeds more people as grain than as beef', web: 'What changes when one species leaves a food web' };
+  var CHAIN = EF.ECOS.grassland.chain;
+  var NAME = ['Grass', 'Grasshoppers', 'Frogs', 'Snakes', 'Hawks'];
+  var GPP0 = 20000, RPCT = 50;
+  var PW = 4000;   // the scene's width, so a pill never leaves it
+  function n1(v){ return (+v).toFixed(1); }
+  function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
+  function lerp(a, b, f){ return a + (b - a) * f; }
+  function kc(v){ return num(v) + ' kcal'; }
+  function pct(v){ return M.fmt(v, 3) + '%'; }
+  function tw(t, fs, bold){ return String(t).length * fs * (bold ? 0.58 : 0.54); }   // text width estimate (Nunito)
+  function pill(x, y, t, cls, fs, anchor){
+    var w = tw(t, fs, true) + 14, h = fs + 9, x0 = anchor === 'start' ? x : anchor === 'end' ? x - w : x - w / 2;
+    x0 = Math.max(4, Math.min(x0, PW - w - 4));
+    return { w: w, h: h, x: x0, y: y - h / 2, svg: '<g class="efa-pill ' + (cls || '') + '"><rect x="' + n1(x0) + '" y="' + n1(y - h / 2) + '" width="' + n1(w) + '" height="' + n1(h) + '" rx="' + n1(h / 2) + '"/><text x="' + n1(x0 + w / 2) + '" y="' + n1(y + fs * 0.36) + '" text-anchor="middle" style="font-size:' + fs + 'px">' + esc(t) + '</text></g>' };
+  }
+  /* A wisp of heat or a stroke of energy that goes on, from (x, y) along angle a (radians), length L, grown to f. */
+  function wisp(x, y, a, L, f, wig){
+    var l = L * f, ex = x + Math.cos(a) * l, ey = y + Math.sin(a) * l, nx = -Math.sin(a) * wig, ny = Math.cos(a) * wig;
+    return 'M' + n1(x) + ' ' + n1(y) + ' C' + n1(x + Math.cos(a) * l * 0.35 + nx) + ' ' + n1(y + Math.sin(a) * l * 0.35 + ny) + ' ' + n1(x + Math.cos(a) * l * 0.7 - nx) + ' ' + n1(y + Math.sin(a) * l * 0.7 - ny) + ' ' + n1(ex) + ' ' + n1(ey);
+  }
+  /* New art for this screen (100 x 100 boxes, as ART): a corn plant, a steer, a person. */
+  ART.corn = '<path d="M50 98 C49 70 51 40 50 8" stroke="#6E9A2E" stroke-width="5" fill="none" stroke-linecap="round"/>' +
+    '<path d="M50 70 C36 60 26 62 14 72 C28 66 38 68 50 76Z" fill="#7DB03A"/><path d="M50 56 C64 44 76 44 88 52 C74 50 64 54 50 62Z" fill="#6FA334"/>' +
+    '<path d="M50 40 C38 30 28 30 18 36 C30 34 40 38 50 46Z" fill="#88BC45"/><path d="M50 26 C60 16 70 14 80 18 C70 20 60 24 50 32Z" fill="#7DB03A"/>' +
+    '<path d="M52 62 C62 58 66 46 64 36 C58 40 54 50 52 62Z" fill="#E9BE3A" stroke="#B88A1C" stroke-width="1.4"/><path d="M57 54 l4 -2 M56 49 l5 -2 M57 44 l4 -2" stroke="#B88A1C" stroke-width="1.1"/>' +
+    '<path d="M50 10 l-6 -6 M50 10 l6 -7 M50 10 v-8" stroke="#C9A24A" stroke-width="2" stroke-linecap="round"/>';
+  ART.cow = '<rect x="26" y="66" width="6" height="26" rx="3" fill="#5B4636"/><rect x="36" y="68" width="6" height="24" rx="3" fill="#4A382B"/><rect x="66" y="66" width="6" height="26" rx="3" fill="#5B4636"/><rect x="76" y="68" width="6" height="24" rx="3" fill="#4A382B"/>' +
+    '<path d="M86 52 C92 58 94 66 92 74" stroke="#6E553F" stroke-width="2.4" fill="none" stroke-linecap="round"/>' +
+    '<ellipse cx="56" cy="56" rx="32" ry="17" fill="#8C5A3C"/><path d="M40 46 C48 40 60 44 58 54 C52 60 42 58 40 46Z" fill="#F2E6D6"/><path d="M68 60 C74 56 82 58 82 64 C76 70 68 68 68 60Z" fill="#F2E6D6"/>' +
+    '<path d="M28 48 C20 42 12 44 8 52 C6 60 12 66 20 64 C26 62 30 56 28 48Z" fill="#8C5A3C"/><ellipse cx="11" cy="60" rx="6" ry="5" fill="#D9A79A"/>' +
+    '<path d="M22 44 l-4 -8 M14 46 l-8 -4" stroke="#E8DCC6" stroke-width="2.6" stroke-linecap="round"/><circle cx="18" cy="52" r="1.8" fill="#151515"/>';
+  var SHIRT = ['#3D7EC2', '#C2553D', '#4F9A55', '#8A5FB4', '#D08A2A', '#2F8F8A', '#B8466E', '#5D6B7A'];
+  function person(x, y, h, k){
+    var s = h / 100, c = SHIRT[k % SHIRT.length], skin = ['#E8B994', '#C68B62', '#8D5B3E', '#F0C8A8'][(k * 7) % 4];
+    return '<g transform="translate(' + n1(x - 50 * s) + ' ' + n1(y - 100 * s) + ') scale(' + s.toFixed(4) + ')">' +
+      '<rect x="38" y="66" width="10" height="32" rx="5" fill="#3B3F4A"/><rect x="52" y="66" width="10" height="32" rx="5" fill="#33363F"/>' +
+      '<path d="M30 74 C30 46 38 38 50 38 C62 38 70 46 70 74Z" fill="' + c + '"/>' +
+      '<circle cx="50" cy="24" r="14" fill="' + skin + '"/><path d="M36 22 C38 10 62 8 64 20 C58 16 44 16 36 22Z" fill="#3A2A20"/></g>';
+  }
+
   function explore(host, data){
-    var X = data.explore || {}, st = { view: 'energy', eco: X.eco || 'grassland', gpp: X.gpp || 20000, rPct: X.rPct || 50, eff: X.eff || 10, scale: X.scale || 'log', sel: null, removed: null };
-    var LS = null, setupRow = null, touched = false, nid = T.nid('ef'), P = null, live = true, myMk = newMk();
-    function $(q){ return host.querySelector(q) || (LS ? LS.root.querySelector(q) : null); }
-    var VIEWS = [['energy', 'Energy'], ['biomass', 'Biomass'], ['number', 'Numbers'], ['web', 'Food web']];
-    host.innerHTML = '<section class="bt-problem ef-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Energy flow through an ecosystem</h2>' +
-      '<div class="ef-fig"><svg class="ef-svg" xmlns="http://www.w3.org/2000/svg" role="group" aria-labelledby="' + nid + '-d"></svg><p class="sr-only" id="' + nid + '-d"></p></div>' +
-      '<div class="ef-ctl">' +
-        '<div class="ef-views" role="group" aria-label="What the pyramid shows">' + VIEWS.map(function(v){ return '<button type="button" class="tchip ef-view" data-v="' + v[0] + '" aria-pressed="false">' + v[1] + '</button>'; }).join('') + '</div>' +
-        '<div class="ef-ecos" role="group" aria-label="Ecosystem">' + EF.ECO_IDS.map(function(id){ return '<button type="button" class="tchip ef-eco" data-e="' + id + '" aria-pressed="false">' + esc(EF.ECOS[id].title) + '</button>'; }).join('') + '</div>' +
-        '<div class="ef-gpp"></div><div class="ef-webctl" hidden><button type="button" class="bt-btn ef-reset">Bring every species back</button></div>' +
-      '</div>' +
-      '<div class="ef-say"></div>' +
-      T.moreHtml('<div class="ef-more-sl"></div><div class="bt-tabs ef-scale" role="group" aria-label="Bar widths"><button type="button" class="bt-btn" data-s="log" aria-pressed="true">Widths on a log scale</button><button type="button" class="bt-btn" data-s="linear" aria-pressed="false">Widths to scale</button></div><p class="bt-small">On a log scale every factor of 10 is the same step, so every level is easy to see. To scale, each bar is 10% of the one below, so you see the 90% lost at every step; the top of a five-level chain is a sliver, 1/10,000 of the base.</p>', 'efficiency, respiration, scale') +
-      '<div class="ef-nums"></div><p class="sr-only ef-live" role="status" aria-live="polite"></p></section>';
-    var say = T.announcer($('.ef-live'));
-    var cue = T.cue('Tap a level of the pyramid to see where its energy goes.');
-    $('.ef-ctl').insertBefore(cue.el, $('.ef-ctl').firstChild);
-    function act(){ if(!touched){ touched = true; cue.done(); } }
-    var gpp = T.slider({ label: 'Producers\' GPP (sunlight captured)', min: 2000, max: 40000, step: 1000, value: st.gpp, unit: 'kcal/m²/yr', onInput: function(v){ st.gpp = v; act(); draw(); } });
-    $('.ef-gpp').appendChild(gpp.el);
-    var eff = T.slider({ label: 'Energy passed up each level', min: 5, max: 20, step: 1, value: st.eff, unit: '%', onInput: function(v){ st.eff = v; act(); draw(); } });
-    var resp = T.slider({ label: 'Producers\' respiration (share of GPP)', min: 30, max: 70, step: 5, value: st.rPct, unit: '%', onInput: function(v){ st.rPct = v; act(); draw(); } });
-    $('.ef-more-sl').appendChild(eff.el); $('.ef-more-sl').appendChild(resp.el);
-    var svg = $('.ef-svg');
+    var X = data.explore || {};
+    var S = { ch: 'chain', mode: 'explore', lvl: 0, p: 0, gpp: X.gpp || GPP0, share: 0, fs: 0, removed: null, wt: 1 };
+    try{ var q0 = new URLSearchParams(location.search).get('ch'); if(q0 === 'eat' || q0 === 'web') S.ch = q0; }catch(e){}
+    var LS = null, nid = T.nid('efa');
+    var stage = document.createElement('div'); stage.className = 'efa'; stage.setAttribute('data-ch', S.ch);
+    var tabs = K.tabs({ label: 'Chapters', items: CH, value: S.ch, big: true, onChange: function(v){ setCh(v); } });
+    stage.appendChild(tabs.el);
+    var head = K.head({ purpose: PURPOSE[S.ch], how: { label: 'Show me how', onClick: function(){ startTour(true); } } });
+    stage.appendChild(head.el);
+    var sceneBox = document.createElement('div'); sceneBox.className = 'efa-scene'; sceneBox.id = nid + '-sc';
+    sceneBox.innerHTML = '<svg class="efa-svg" role="img" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"><g class="efa-static"></g></svg><svg class="efa-svg efa-top" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><g class="efa-mid"></g><g class="efa-dyn"></g><g class="efa-dyn efa-labs"></g></svg><div class="efa-fade" aria-hidden="true"></div>';
+    stage.appendChild(sceneBox);
+    var svg = sceneBox.querySelector('svg'), svgTop = sceneBox.querySelector('.efa-top'), gStatic = svg.querySelector('.efa-static'), gMid = svgTop.querySelector('.efa-mid'), gDyn = svgTop.querySelector('.efa-dyn'), gLabs = svgTop.querySelector('.efa-labs'), fade = sceneBox.querySelector('.efa-fade');
+    var layer = K.layer(sceneBox);
+    tabs.el.querySelectorAll('.tk2-tab').forEach(function(b){ b.setAttribute('aria-controls', sceneBox.id); });
+    var lines = document.createElement('div'); lines.className = 'efa-lines';
+    var cause = K.cause({ label: 'Why' });
+    lines.appendChild(cause.el); stage.appendChild(lines);
+    var live = document.createElement('p'); live.className = 'tk2-sr'; live.setAttribute('aria-live', 'polite'); stage.appendChild(live);
+    host.appendChild(stage);
+    var ref = document.createElement('div'); ref.className = 'efa-ref';
 
-    function onClick(e){
-      var b = e.target.closest('.ef-view'); if(b){ st.view = b.getAttribute('data-v'); st.sel = null; act(); draw(true); return; }
-      b = e.target.closest('.ef-eco'); if(b){ st.eco = b.getAttribute('data-e'); st.sel = null; st.removed = null; act(); draw(true); if(LS) LS.close(); return; }
-      b = e.target.closest('.ef-scale [data-s]'); if(b){ st.scale = b.getAttribute('data-s'); (LS ? LS.root : host).querySelectorAll('.ef-scale [data-s]').forEach(function(x){ x.setAttribute('aria-pressed', String(x === b)); }); draw(); return; }
-      if(e.target.closest('.ef-reset')){ st.removed = null; draw(true); return; }
-    }
-    host.addEventListener('click', onClick);
-    function pick(el){
-      if(!el) return;
-      act();
-      if(el.classList.contains('ef-lvl')){ var k = +el.getAttribute('data-k'); st.sel = st.sel === k ? null : k; draw(true, k); }
-      else if(el.classList.contains('ef-node')){ var id = el.getAttribute('data-id'); st.removed = st.removed === id ? null : id; draw(true, id); }
-    }
-    svg.addEventListener('click', function(e){ pick(e.target.closest('.ef-lvl, .ef-node')); });
-    svg.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ var g = e.target.closest('.ef-lvl, .ef-node'); if(g){ e.preventDefault(); pick(g); } } });
+    /* ---- controls on the picture */
+    var cLvl = K.drag(layer, { key: 'apenv-ef-up', label: 'Follow the energy up the food chain', min: 0, max: 4, step: 1, value: S.lvl, track: [0, 1, 0, 0], chip: false,
+      valuetext: function(v){ var P = pyr(); return NAME[v] + ': ' + kc(P.levels[v].energy) + ' per square meter per year, ' + pct(P.levels[v].share) + ' of the grass\'s energy'; },
+      onInput: function(v){ used(); S.lvl = v; kick(); tourDid('up'); } });
+    cLvl.el.classList.add('efa-up');   // the gold stream and the pyramid's slope are its track: no groove drawn
+    var cSun = K.drag(layer, { label: 'Sunlight the grass captures (GPP)', min: 10000, max: 30000, step: 1000, value: S.gpp, track: [0, 0, 1, 0], quiet: true,
+      valuetext: function(v){ return EF.big(v) + ' kilocalories per square meter per year'; }, tag: function(v){ return EF.big(v); }, tagSide: "right",
+      onInput: function(v){ used(); S.gpp = v; flash(); kick(); tourDid('sun'); } });
+    var cShare = K.drag(layer, { key: 'apenv-ef-cattle', label: 'Share of the corn fed to cattle', min: 0, max: 100, step: 10, value: 0, track: [0, 0, 1, 0], chip: false,
+      valuetext: function(v){ return v + '% of the corn to cattle, ' + EF.field(v / 100).people + ' people fed'; }, tag: function(v){ return v + "% to cattle"; }, tagSide: "up",
+      onInput: function(v){ used(); S.share = v / 100; kick(); tourDid('cattle'); } });
+    var cWeb = CHAIN_WEB().map(function(sp){
+      return K.tap(layer, { key: sp.id === 'grasshopper' ? 'apenv-ef-web' : null, label: '', box: [0, 0, 1, 1], pressed: false, chip: false,
+        onClick: function(){ used(); cWeb.forEach(function(b){ if(b.done) b.done(); }); S.removed = S.removed === sp.id ? null : sp.id; webChanged(); tourDid('tap'); } });
+    });
+    function CHAIN_WEB(){ return EF.webOf('grassland'); }
+    var cues = {
+      chain: K.cue(layer, { key: 'apenv-ef-chain', text: 'Drag up', side: 'right', at: function(){ return G && G.track ? [G.track[0] + knobR + 4, G.track[1] + (G.ph ? 32 : 0)] : [0, 0]; } }),
+      eat: K.cue(layer, { key: 'apenv-ef-eat', text: 'Drag to feed cattle', side: 'right', at: function(){ return G && G.strack ? [G.strack[0] + knobR + 4, G.strack[1]] : [0, 0]; } }),
+      web: K.cue(layer, { key: 'apenv-ef-web', text: 'Tap an animal', side: 'below', at: function(){ var p = G && G.pos && G.pos.grasshopper; return p ? [p.x, p.y + G.r + G.fs * 1.9 + 2] : [0, 0]; } })
+    };
+    function used(){ Object.keys(cues).forEach(function(k){ if(k === S.ch && cues[k].active()) cues[k].hide(true); }); }
+    sceneBox.addEventListener('pointerdown', used);
 
-    function size(){
-      var r = svg.getBoundingClientRect(), w = r.width || 360, h = r.height || 420;
-      var W = w < 600 ? 400 : 820, H = Math.max(W * 0.62, Math.min(W * 1.6, W * h / w));
-      return { W: W, H: Math.round(H) };
-    }
-    function words(){
-      var E = EF.ECOS[st.eco], L = P.levels, top = L[L.length - 1], Kd = KEY[st.view] || KEY.energy, head, why = '';
-      if(st.view === 'web'){
-        if(!st.removed){ head = 'Tap a species to remove it from the ' + E.name + ' and see how the others respond.'; why = '<p>Each arrow points from a food to the organism that eats it, the direction energy flows. A species that loses its only food dies out; its prey increase; a predator that loses one food eats more of another.</p>'; }
-        else {
-          var res = EF.respond(st.eco, st.removed), S = EF.webOf(st.eco).filter(function(s){ return s.id === st.removed; })[0];
-          var list = EF.webOf(st.eco).filter(function(s){ return s.id !== st.removed && res[s.id].effect !== 'same'; });
-          head = 'Without the ' + S.name + ': ' + ['gone', 'up', 'down'].map(function(k){ var n = list.filter(function(s){ return res[s.id].effect === k; }).map(function(s){ return s.name; }); return n.length ? EFFECT[k].w.toLowerCase() + ' ' + n.join(', ') : ''; }).filter(Boolean).join('; ') + '.';
-          why = '<ul class="ef-why-l">' + list.map(function(s){ var x = res[s.id]; return '<li><b class="ef-eff ' + EFFECT[x.effect].cls + '">' + EFFECT[x.effect].g + ' ' + esc(cap(s.name)) + '</b> ' + esc(x.why) + (x.direct ? '' : ' <span class="bt-small">(indirect, less certain)</span>') + '</li>'; }).join('') + '</ul><p>These are the first, most likely effects. Later, animals may switch foods and numbers can recover; a web with more links is more stable because each consumer has other foods.</p>';
-        }
-        return { head: head, why: why };
-      }
-      if(st.sel != null){
-        var l = L[st.sel], nx = L[st.sel + 1];
-        if(st.view === 'energy'){
-          head = cap(l.plural.replace(/ cells| plants/, '')) + ' (' + l.level + ') hold ' + num(l.energy) + ' ' + Kd.unit + ': ' + (nx ? num(nx.energy) + ' passes up to the ' + nx.plural + ', ' + num(l.energy - nx.energy) + ' leaves the chain.' : 'all of it leaves the chain as heat or to decomposers; nothing eats them here.');
-          why = '<p>' + (st.sel === 0 ? 'The producers capture ' + num(P.gpp) + ' ' + Kd.unit + ' of sunlight (GPP) and burn ' + num(P.r) + ' in their own cellular respiration, leaving ' + num(P.npp) + ' stored as NPP. ' : 'The ' + l.plural + ' received ' + M.fmt(P.eff * 100, 3) + '% of the level below. ') +
-            (nx ? 'Only about ' + M.fmt(P.eff * 100, 3) + '% of what they hold becomes the next level\'s biomass. The rest is used for their own life (cellular respiration releases it as heat), is never eaten (roots, bones, fur), or is not digested and leaves as waste for decomposers.' : 'At the top, no level above eats them; their energy is released as heat or passes to decomposers when they die.') + '</p>' +
-            '<p class="bt-small">Energy flows one way: heat cannot be recycled into food, which is why the chain needs the sun every day.</p>';
-        } else {
-          head = cap(l.plural.replace(/ cells| plants/, '')) + ': ' + num(l[st.view]) + ' ' + Kd.unit + ' (' + l.level + ').';
-          why = '<p>' + (st.view === 'biomass' ? 'Biomass is the dry mass of living things at one moment. It equals the energy flowing through the level divided by how fast the organisms turn over: small, fast organisms (phytoplankton) need little standing biomass to pass on a lot of energy.' : 'A pyramid of numbers counts individuals. A level of a few big organisms (one oak tree) can feed many small ones (thousands of caterpillars), so this pyramid can be inverted.') + '</p>';
-        }
-        return { head: head, why: why };
-      }
-      if(st.view === 'energy'){
-        head = 'Only ' + num(top.energy) + ' of the producers\' ' + num(P.npp) + ' ' + Kd.unit + ' reaches the ' + top.plural + ': about ' + M.fmt(100 - P.eff * 100, 3) + '% is lost at each step.';
-        why = '<p>NPP = GPP − respiration = ' + num(P.gpp) + ' − ' + num(P.r) + ' = ' + num(P.npp) + ' ' + Kd.unit + '. Each level up keeps about ' + M.fmt(P.eff * 100, 3) + '% of the level below (the 10% rule), so after ' + (L.length - 1) + ' transfers the top gets ' + M.fmt(Math.pow(P.eff, L.length - 1) * 100, 3) + '% of the NPP.</p><p>That is why food chains rarely have more than four or five levels, and why eating lower on the chain feeds more people from the same land.</p>';
-      } else {
-        var inv = EF.inverted(P, st.view);
-        head = inv ? 'This pyramid is inverted: there is more ' + (st.view === 'biomass' ? 'biomass' : 'individuals') + ' of ' + L[inv].plural + ' than of ' + L[inv - 1].plural + '. The energy pyramid never is.' : 'This pyramid is upright, like the energy pyramid. ' + (st.view === 'biomass' ? 'Try the pond.' : 'Try the forest.');
-        why = '<p>' + (st.view === 'biomass' ? 'In the pond, phytoplankton are eaten and replaced within days, so a small standing biomass feeds a larger biomass of zooplankton.' : 'In the forest, one oak tree feeds thousands of caterpillars, so the numbers pyramid widens above the producers.') + ' Biomass and numbers show what is there at one moment; energy is a flow per year, and it always drops level by level.</p>';
-      }
-      return { head: head, why: why };
-    }
-    var fx = null;
-    function draw(announce, focusId){
-      P = EF.pyramid(st.eco, st.gpp, st.rPct, st.eff / 100);
-      var sz = size(), inner;
-      MK = myMk;
-      svg.setAttribute('viewBox', '0 0 ' + sz.W + ' ' + sz.H);
-      if(st.view === 'web') inner = drawWeb(st.eco, { W: sz.W, H: sz.H, removed: st.removed, interactive: true });
-      else inner = drawPyramid(P, { W: sz.W, H: sz.H, key: st.view, scale: st.scale, sel: st.sel, budget: st.view === 'energy', interactive: true });
-      svg.innerHTML = defs(MK) + inner + '<g class="ef-fx" aria-hidden="true"></g>';
-      fx = svg.querySelector('.ef-fx');
-      if(focusId != null){ var f = svg.querySelector(typeof focusId === 'number' ? '[data-k="' + focusId + '"]' : '[data-id="' + focusId + '"]'); if(f && document.activeElement !== f){ try{ f.focus({ preventScroll: true }); }catch(e){} } }
-      // controls
-      (LS ? LS.root : host).querySelectorAll('.ef-view').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === st.view)); });
-      (LS ? LS.root : host).querySelectorAll('.ef-eco').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-e') === st.eco)); });
-      if(setupRow && setupRow.setup) setupRow.setup(LS && T.isStd(LS) ? 'Efficiency, respiration, scale' : EF.ECOS[st.eco].title);
-      $('.ef-gpp').hidden = st.view === 'web'; $('.ef-webctl').hidden = st.view !== 'web'; $('.ef-reset').disabled = !st.removed;
-      cue.el.querySelector('.bt-cue-t').textContent = st.view === 'web' ? 'Tap a species to remove it.' : 'Tap a level of the pyramid to see where its energy goes.';
-      var w = words();
-      T.explain($('.ef-say'), '<b>' + esc(w.head) + '</b>', w.why);
-      $('#' + nid + '-d').textContent = describe();
-      nums();
-      if(LS){
-        LS.caption('<b>' + esc(w.head) + '</b>', 'explore');
-        if(st.view === 'web') LS.pills(st.removed ? [{ k: 'Removed', html: esc(EF.webOf(st.eco).filter(function(s){ return s.id === st.removed; })[0].name), tone: 'warn' }] : [], 'left', 'explore');
-        else LS.pills(st.view === 'energy' ? [] : [{ k: 'NPP', html: num(P.npp), tone: 'readout' }], 'left', 'explore');   // energy: NPP is written under the producers' bar
-        LS.pills(st.view === 'web' ? [] : st.view === 'energy' ? [{ k: 'Top gets', html: M.fmt(P.levels[P.levels.length - 1].share, 2) + '%', tone: 'accent' }] : [{ k: 'Pyramid', html: EF.inverted(P, st.view) ? 'inverted' : 'upright', tone: EF.inverted(P, st.view) ? 'warn' : 'good' }], 'right', 'explore');
-        if(LS.why) LS.why.querySelectorAll && LS.root.querySelectorAll('.env-ls-why details.bt-why').forEach(function(d){ d.open = true; });
-      }
-      if(announce) say(w.head);
-    }
-    function describe(){
-      if(st.view === 'web') return 'Food web of the ' + EF.ECOS[st.eco].name + ': ' + EF.webOf(st.eco).map(function(s){ return s.name + (s.eats.length ? ' eat ' + s.eats.map(function(f){ return EF.webOf(st.eco).filter(function(x){ return x.id === f; })[0].name; }).join(' and ') : ' are producers'); }).join('; ') + '.';
-      var Kd = KEY[st.view];
-      return Kd.title + ' for the ' + EF.ECOS[st.eco].name + ', from the bottom: ' + P.levels.map(function(l){ return l.plural + ' ' + num(l[st.view]) + ' ' + Kd.unit; }).join(', ') + '.';
-    }
-    function nums(){
-      var rows = P.levels.map(function(l){ return [esc(cap(l.levelShort)) + '<br><span class="bt-small">' + esc(l.plural) + '</span>', num(l.energy), num(l.biomass), num(l.number)]; });
-      $('.ef-nums').innerHTML = '<h3 class="ls-title-l">Every level</h3>' + T.dataTable(['Level', 'Energy (kcal/m²/yr)', 'Biomass (g/m²)', 'Number per hectare'], rows, 'The ' + EF.ECOS[st.eco].name + ' at GPP ' + num(P.gpp) + ' kcal/m²/yr') +
-        '<p class="bt-small">GPP ' + num(P.gpp) + ' − respiration ' + num(P.r) + ' = NPP ' + num(P.npp) + ' kcal/m²/yr. Level n holds NPP × ' + M.fmt(P.eff, 2) + '<sup>n − 1</sup>. Biomass and numbers come from illustrative turnover rates and body masses, so their shapes are typical, not measured.</p>';
+    /* ---- the model, as drawn */
+    var Pc = null;
+    function pyr(){ if(!Pc || Pc.gpp !== S.gpp) Pc = EF.pyramid('grassland', S.gpp, RPCT, 0.1); return Pc; }
+    var wShown = {};   // per species: { s scale, o opacity, g grey, e extra animal, b badge }
+    CHAIN_WEB().forEach(function(sp){ wShown[sp.id] = { s: 1, o: 1, g: 0, e: 0, b: 0 }; });
+    var people = [], cows = [];
+    for(var i = 0; i < 44; i++) people.push(i < EF.field(0).people ? 1 : 0);
+    for(var j = 0; j < 6; j++) cows.push(0);
+    function webTarget(){
+      var res = S.removed ? EF.respond('grassland', S.removed) : {}, out = {};
+      CHAIN_WEB().forEach(function(sp){
+        var r = res[sp.id], e = r ? r.effect : 'same';
+        out[sp.id] = e === 'removed' ? { s: 0.6, o: 0, g: 0, e: 0, b: 1, eff: 'removed' } : e === 'gone' ? { s: 0.8, o: 0.32, g: 1, e: 0, b: 1, eff: 'gone' }
+          : e === 'up' ? { s: 1.12, o: 1, g: 0, e: 1, b: 1, eff: 'up' } : e === 'down' ? { s: r.direct ? 0.78 : 0.9, o: r.direct ? 0.8 : 0.92, g: 0, e: 0, b: 1, eff: r.direct ? 'down' : 'maybe' }
+          : { s: 1, o: 1, g: 0, e: 0, b: 0, eff: 'same' };
+      });
+      return out;
     }
 
-    /* sparks: per level, (1 − eff) / eff heat sparks leave for every one that rises */
-    var raf = 0, sparks = [], last = 0, acc = 0;
-    function tick(t){
+    /* ---- the loop: everything shown eases toward the setting; a change runs as an animation */
+    var raf = 0, lastT = 0;
+    function kick(){ if(K.reduced()){ settleAll(); flash(); draw(); return; } if(!raf){ lastT = 0; stage.setAttribute('data-busy', '1'); raf = requestAnimationFrame(tick); } }
+    function settleAll(){
+      S.p = S.lvl; S.fs = S.share;
+      var fp = EF.field(S.share).people, nc = cowN(S.share);
+      people = people.map(function(v, i){ return i < fp ? 1 : 0; }); cows = cows.map(function(v, i){ return i < nc ? 1 : 0; });
+      var t = webTarget(); Object.keys(t).forEach(function(id){ var w = wShown[id]; ['s', 'o', 'g', 'e', 'b'].forEach(function(k){ w[k] = t[id][k]; }); });
+      S.wt = 1;
+    }
+    function cowN(f){ return f <= 0 ? 0 : Math.max(1, Math.round(f * 6)); }
+    function step(cur, to, d){ return Math.abs(to - cur) <= d ? to : cur + (to > cur ? d : -d); }
+    function tick(ts){
       raf = 0;
-      if(!live || document.hidden || st.view === 'web' || T.reduced() || !fx){ sparks = []; if(fx) fx.innerHTML = ''; return; }
-      var dt = last ? Math.min(60, t - last) : 16; last = t; acc += dt;
-      var G = geom(P, Object.assign(size(), { key: st.view, scale: st.scale, budget: st.view === 'energy' }));
-      if(acc > 160){
-        acc = 0;
-        var k = Math.floor(Math.random() * G.length), g = G[k], up = Math.random() < (st.view === 'energy' ? P.eff : 0.5) && k + 1 < G.length;
-        if(st.view === 'energy') sparks.push(up ? { kind: 'up', x: g.cx, y: g.y - 3, ty: G[k + 1].y + G[k + 1].h + 6, life: 0 } : { kind: 'heat', x: g.x + 6 + Math.random() * Math.min(40, g.w * 0.3), y: g.y - 2, vx: -0.004 - Math.random() * 0.01, life: 0 });
-      }
-      sparks = sparks.filter(function(s){ s.life += dt; return s.life < 1600; });
-      fx.innerHTML = sparks.map(function(s){
-        var u = s.life / 1600;
-        if(s.kind === 'up'){ var y = s.y + (s.ty - s.y) * Math.min(1, u * 1.6); return '<circle class="ef-spark" cx="' + s.x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="3.4" opacity="' + (1 - Math.max(0, u - 0.7) / 0.3).toFixed(2) + '"/>'; }
-        return '<circle class="ef-hspark" cx="' + (s.x + s.vx * s.life).toFixed(1) + '" cy="' + (s.y - 26 * u - 6 * Math.sin(u * 9)).toFixed(1) + '" r="' + (2.8 - 1.4 * u).toFixed(2) + '" opacity="' + (0.9 * (1 - u)).toFixed(2) + '"/>';
-      }).join('');
-      raf = requestAnimationFrame(tick);
+      var dt = lastT ? Math.min(0.05, (ts - lastT) / 1000) : 0.016; lastT = ts;
+      var moving = false;
+      // chapter 1: the tip climbs 1.6 levels a second
+      if(S.p !== S.lvl){ S.p = step(S.p, S.lvl, dt * 1.6); moving = true; }
+      // chapter 2: the bands follow the share; people and cows come and go one at a time
+      if(S.fs !== S.share){ S.fs = step(S.fs, S.share, dt * 0.9); moving = true; }
+      var fp = EF.field(S.fs).people, nc = cowN(S.fs);
+      people = people.map(function(v, i){ var to = i < fp ? 1 : 0; if(v !== to) moving = true; return step(v, to, dt * 4); });
+      cows = cows.map(function(v, i){ var to = i < nc ? 1 : 0; if(v !== to) moving = true; return step(v, to, dt * 3); });
+      // chapter 3: each species eases to its new state
+      var t = webTarget();
+      Object.keys(t).forEach(function(id){ var w = wShown[id]; ['s', 'o', 'g', 'e', 'b'].forEach(function(k){ var to = t[id][k]; if(w[k] !== to){ w[k] = step(w[k], to, dt * (k === 'b' ? 2.2 : 1.8)); moving = true; } }); });
+      if(S.wt < 1){ S.wt = Math.min(1, S.wt + dt * 1.6); moving = true; }
+      draw();
+      stage.setAttribute('data-busy', moving ? '1' : '');
+      if(moving) raf = requestAnimationFrame(tick);
     }
-    function kick(){ if(!raf && live && !T.reduced()) raf = requestAnimationFrame(tick); }
-    var drawRaw = draw; draw = function(a, f){ drawRaw(a, f); kick(); };
+    function flash(){ if(!K.reduced()) return; fade.classList.remove('is-on'); void fade.offsetWidth; fade.classList.add('is-on'); }
+    function webChanged(){ S.wt = 0; refHtml(); cWeb.forEach(function(b, i){ b.pressed(CHAIN_WEB()[i].id === S.removed); }); kick(); }
+
+    /* ---- layout: one geometry per chapter, from the scene box */
+    var G = null;
+    function dark(){ return document.documentElement.getAttribute('data-theme') === 'dark'; }
+    function layoutNow(){
+      var r = sceneBox.getBoundingClientRect(), W = Math.max(300, Math.round(r.width) || 640), H = Math.max(300, Math.round(r.height) || 460);
+      [svg, svgTop].forEach(function(e){ e.setAttribute('viewBox', '0 0 ' + W + ' ' + H); e.setAttribute('width', W); e.setAttribute('height', H); });
+      PW = W;
+      G = S.ch === 'chain' ? geoChain(W, H) : S.ch === 'eat' ? geoEat(W, H) : geoWeb(W, H);
+      gStatic.innerHTML = S.ch === 'chain' ? staticChain(G) : S.ch === 'eat' ? staticEat(G) : staticWeb(G);
+      // the drawn plants and animals are built once per layout; a frame only moves or fades them (updMid)
+      gMid.innerHTML = S.ch === 'chain' ? midChain(G) : S.ch === 'eat' ? midEat(G) : midWeb(G); MID = { els: {}, last: {} };
+      knobR = (cLvl.el.querySelector('.tk2-knob') || {}).offsetWidth / 2 || 22;
+      cLvl.hide(S.ch !== 'chain'); cSun.hide(S.ch !== 'chain'); cShare.hide(S.ch !== 'eat');
+      cWeb.forEach(function(b){ b.el.hidden = S.ch !== 'web'; });
+      if(S.ch === 'chain'){ cLvl.place(G.track); cSun.place(G.sunTrack); }
+      else if(S.ch === 'eat') cShare.place(G.strack);
+      else CHAIN_WEB().forEach(function(sp, i){ var p = G.pos[sp.id], rr = G.r * 1.15; cWeb[i].place([p.x - rr, p.y - rr, rr * 2, rr * 2]); });
+      draw();
+      if(cues[S.ch].active()) cues[S.ch].place();
+    }
+    function sky(W, H, y){
+      return '<defs><linearGradient id="' + nid + '-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="efa-sky0"/><stop offset="1" class="efa-sky1"/></linearGradient>' +
+        '<radialGradient id="' + nid + '-sun"><stop offset="0" class="efa-sun0"/><stop offset="1" class="efa-sun1"/></radialGradient>' +
+        '<linearGradient id="' + nid + '-gr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="efa-gr0"/><stop offset="1" class="efa-gr1"/></linearGradient>' +
+        '<linearGradient id="' + nid + '-so" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="efa-so0"/><stop offset="1" class="efa-so1"/></linearGradient>' +
+        '<linearGradient id="' + nid + '-ts" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".28"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".1"/></linearGradient></defs>' +
+        '<rect class="efa-skyr" width="' + W + '" height="' + n1(y + 2) + '" fill="url(#' + nid + '-sky)"/>' +
+        '<path class="efa-hill is-far" d="M0 ' + n1(y - H * 0.06) + ' C' + n1(W * 0.2) + ' ' + n1(y - H * 0.13) + ' ' + n1(W * 0.42) + ' ' + n1(y - H * 0.03) + ' ' + n1(W * 0.62) + ' ' + n1(y - H * 0.09) + ' S' + n1(W * 0.9) + ' ' + n1(y - H * 0.05) + ' ' + W + ' ' + n1(y - H * 0.1) + ' V' + n1(y + 2) + ' H0Z"/>' +
+        '<path class="efa-hill" d="M0 ' + n1(y - H * 0.02) + ' C' + n1(W * 0.25) + ' ' + n1(y - H * 0.06) + ' ' + n1(W * 0.55) + ' ' + n1(y) + ' ' + n1(W * 0.75) + ' ' + n1(y - H * 0.04) + ' S' + W + ' ' + n1(y - H * 0.02) + ' ' + W + ' ' + n1(y - H * 0.02) + ' V' + n1(y + 2) + ' H0Z"/>';
+    }
+
+    /* ================= chapter 1: the pyramid */
+    function geoChain(W, H){
+      var ph = W < 640, top = ph ? 74 : 84, bot = ph ? 16 : 22, n = 5, gap = ph ? 5 : 6;
+      var th = (H - top - bot) / n, side = ph ? 30 : Math.max(60, W * 0.14);
+      // a phone keeps a strip on the right for the labels, so each tier's animals have the whole tier
+      var wB = ph ? W - 22 - Math.min(104, W * 0.27) : Math.min(W - 2 * side, (H - top) * 2.1), cx = ph ? 22 + wB / 2 : W / 2 + W * 0.02;
+      var dw = wB * 0.165, tiers = [];
+      for(var k = 0; k < n; k++){
+        var yb = H - bot - k * th, yt = yb - th + gap, wb = wB - k * dw, wt = wb - dw * (th - gap) / th;
+        tiers.push({ k: k, yb: yb, yt: yt, yc: (yb + yt) / 2, wb: wb, wt: wt, xl: function(y, yb, wb){ return cx - (wb - dw * (yb - y) / th) / 2; } });
+      }
+      tiers.forEach(function(t){ var yb = t.yb, wb = t.wb; t.L = function(y){ return cx - (wb - dw * (yb - y) / th) / 2; }; t.R = function(y){ return cx + (wb - dw * (yb - y) / th) / 2; }; });
+      var ins = ph ? 15 : 20, P0 = [tiers[0].L(tiers[0].yc) + ins, tiers[0].yc], P4 = [tiers[4].L(tiers[4].yc) + ins, tiers[4].yc];
+      var sx = ph ? 30 : 46, sy = ph ? 40 : 46, sr = ph ? 17 : 22;
+      return { W: W, H: H, ph: ph, top: top, th: th, cx: cx, wB: wB, dw: dw, tiers: tiers, ins: ins, track: [P0[0], P0[1], P4[0], P4[1]],
+        sun: [sx, sy, sr], sunTrack: [sx + sr + 16, sy, sx + sr + 16 + (ph ? 84 : 120), sy], fs: ph ? 12.5 : 14, wl: ph ? 30 : 46, sw0: ph ? 3.2 : 4.2, rw: ph ? 1.7 : 2.2 };
+    }
+    function tierPath(g, t){ return 'M' + n1(t.L(t.yb)) + ' ' + n1(t.yb) + ' L' + n1(t.L(t.yt)) + ' ' + n1(t.yt) + ' L' + n1(t.R(t.yt)) + ' ' + n1(t.yt) + ' L' + n1(t.R(t.yb)) + ' ' + n1(t.yb) + 'Z'; }
+    function trackAt(g, p){ var t = g.track; return [lerp(t[0], t[2], p / 4), lerp(t[1], t[3], p / 4)]; }
+    /* Where each tier's label goes: inside its right part when it fits, else outside to the right. */
+    function labelSpot(g, t){
+      var fs = g.fs, w = Math.max(tw(NAME[t.k], fs, true), tw('10,000 kcal', fs, true)) + 18, inR = t.R(t.yc) - 10, inL = t.L(t.yc) + g.ins + 26;
+      if(t.k > 0 && g.W - t.R(t.yc) - 14 >= w) return { x: t.R(t.yc) + 10, anchor: 'start', inside: false, w: w };
+      if(t.k === 0 || inR - w > inL) return { x: inR, anchor: 'end', inside: true, w: w };
+      return { x: t.R(t.yc) + 10, anchor: 'start', inside: false, w: w };
+    }
+    function critters(g, t){
+      // organisms of the tier, between the stream and the label, fewer up the chain (counts in "?": numbers can invert)
+      var lab = labelSpot(g, t), x0 = t.L(t.yc) + g.ins + (g.ph ? 72 : 96), x1 = lab.inside ? lab.x - lab.w - 6 : t.R(t.yc) - 10;
+      var hgt = Math.min(g.th - 14, g.ph ? 46 : 60), out = [], id = CHAIN[t.k].id;
+      if(t.k === 0){
+        for(var x = t.L(t.yb) + 14; x < t.R(t.yb) - 14; x += g.ph ? 22 : 28) if(x < x1 || x > lab.x + 4) out.push(art('grass', x, t.yb - hgt * 0.42, hgt * 0.9));
+        return out.join('');
+      }
+      var want = [0, 3, 2, 1, 1][t.k] + (g.ph ? 0 : [0, 1, 1, 1, 0][t.k]), sz = Math.min(hgt, (x1 - x0) / Math.max(1, want) * 0.95);
+      if(x1 - x0 < 30){
+        // a narrow top tier on a phone: one animal, right of the stream and its knob, sized from the tier
+        var ax0 = t.L(t.yc) + g.ins + knobR + 4, ax1 = lab.inside ? lab.x - lab.w - 4 : t.R(t.yc) - 4, s1 = Math.max(32, Math.min(hgt, (ax1 - ax0) * 1.05, g.th - 16)), c1 = Math.min(Math.max(ax0 + s1 / 2, (ax0 + ax1) / 2), ax1 - s1 / 2);
+        return '<ellipse class="efa-shadow" cx="' + n1(c1) + '" cy="' + n1(t.yb - 6) + '" rx="' + n1(s1 * 0.32) + '" ry="3"/>' + art(id, c1, t.yb - 4 - s1 * 0.45, s1);
+      }
+      if(sz < 22){ want = Math.max(1, Math.floor((x1 - x0) / 24)); sz = Math.min(hgt, (x1 - x0) / want * 0.95); }
+      for(var i = 0; i < want; i++){ var cxk = x0 + (x1 - x0) * (i + 0.5) / want; out.push('<ellipse class="efa-shadow" cx="' + n1(cxk) + '" cy="' + n1(t.yb - 6) + '" rx="' + n1(sz * 0.32) + '" ry="3"/>' + art(id, cxk, t.yb - 4 - sz * 0.45, sz)); }
+      return out.join('');
+    }
+    function midChain(g){ return g.tiers.map(function(t){ return '<g class="efa-crit" data-k="' + t.k + '">' + critters(g, t) + '</g>'; }).join(''); }
+    function midEat(g){
+      return g.cows.map(function(c, i){ return '<g data-cow="' + i + '"><ellipse class="efa-shadow" cx="' + n1(c.x) + '" cy="' + n1(c.y - 2) + '" rx="' + n1(c.s * 0.36) + '" ry="3"/>' + art('cow', c.x, c.y - c.s * 0.42, c.s) + '</g>'; }).join('') +
+        g.ppl.map(function(q, i){ return '<g data-p="' + i + '"><ellipse class="efa-shadow" cx="' + n1(q.x) + '" cy="' + n1(q.y - 1) + '" rx="' + n1(q.h * 0.2) + '" ry="2.2"/>' + person(q.x, q.y, q.h, i) + '</g>'; }).join('');
+    }
+    function midWeb(g){
+      var r = g.r;
+      return CHAIN_WEB().map(function(s){ var p = g.pos[s.id], sz = r * 1.8;
+        return '<g data-sp="' + s.id + '"><g class="efa-body"><ellipse class="efa-shadow" cx="' + n1(p.x) + '" cy="' + n1(p.y + r * 0.78) + '" rx="' + n1(r * 0.6) + '" ry="3.5"/>' + art(s.id, p.x, p.y, sz) + '</g>' +
+          '<g class="efa-extra">' + art(s.id, p.x + r, p.y + r * 0.25, sz * 0.7) + '</g>' +
+          '<path class="efa-cross" d="M' + n1(p.x - r * 0.55) + ' ' + n1(p.y - r * 0.55) + ' L' + n1(p.x + r * 0.55) + ' ' + n1(p.y + r * 0.55) + ' M' + n1(p.x + r * 0.55) + ' ' + n1(p.y - r * 0.55) + ' L' + n1(p.x - r * 0.55) + ' ' + n1(p.y + r * 0.55) + '"/></g>'; }).join('');
+    }
+    var MID = { els: {}, last: {} }, knobR = 22;
+    function midEl(sel){ return MID.els[sel] || (MID.els[sel] = gMid.querySelector(sel)); }
+    function setA(el, k, v){ if(!el) return; var key = k; if(el['_' + key] === v) return; el['_' + key] = v; if(k === 'class') el.setAttribute('class', v); else if(k === 'style') el.setAttribute('style', v); else el.setAttribute(k, v); }
+    /* One frame: only attributes change on the built plants and animals. */
+    function updMid(){
+      if(!G) return;
+      if(S.ch === 'chain') G.tiers.forEach(function(t){ setA(midEl('[data-k="' + t.k + '"]'), 'style', 'opacity:' + (0.38 + 0.62 * clamp(S.p - t.k + 1, 0, 1)).toFixed(2)); });
+      else if(S.ch === 'eat'){
+        G.cows.forEach(function(c, i){ var v = cows[i], el = midEl('[data-cow="' + i + '"]'); setA(el, 'style', v <= 0 ? 'display:none' : 'opacity:' + v.toFixed(2)); setA(el, 'transform', 'translate(' + n1(c.x) + ' ' + n1(c.y) + ') scale(' + (0.6 + 0.4 * v).toFixed(2) + ') translate(' + n1(-c.x) + ' ' + n1(-c.y) + ')'); });
+        G.ppl.forEach(function(q, i){ var v = people[i], el = midEl('[data-p="' + i + '"]'); setA(el, 'style', v <= 0 ? 'display:none' : 'opacity:' + v.toFixed(2)); setA(el, 'transform', 'translate(0 ' + n1((1 - v) * 10) + ')'); });
+      } else {
+        var t = webTarget();
+        CHAIN_WEB().forEach(function(s){
+          var w = wShown[s.id], p = G.pos[s.id], el = midEl('[data-sp="' + s.id + '"]'); if(!el) return;
+          var body = el.firstChild, ex = body.nextSibling, cr = ex.nextSibling;
+          setA(body, 'style', w.o <= 0.01 ? 'display:none' : 'opacity:' + w.o.toFixed(2));
+          setA(body, 'transform', 'translate(' + n1(p.x) + ' ' + n1(p.y) + ') scale(' + w.s.toFixed(3) + ') translate(' + n1(-p.x) + ' ' + n1(-p.y) + ')');
+          setA(body, 'class', w.g > 0.5 ? 'efa-body efa-grey' : 'efa-body');
+          setA(ex, 'style', w.e <= 0.01 ? 'display:none' : 'opacity:' + w.e.toFixed(2));
+          setA(ex, 'transform', 'translate(' + n1(-G.r * 0.3 * (1 - w.e)) + ' 0)');
+          setA(cr, 'style', t[s.id].eff === 'gone' && w.g > 0.5 && w.o > 0.01 ? '' : 'display:none');
+        });
+      }
+    }
+    function staticChain(g){
+      var out = [sky(g.W, g.H, g.H)], P = pyr();
+      g.tiers.forEach(function(t){
+        out.push('<path class="efa-tier is-' + t.k + '" d="' + tierPath(g, t) + '"/>');
+        out.push('<path class="efa-tiersh" d="' + tierPath(g, t) + '" fill="url(#' + nid + '-ts)"/>');
+        out.push('<path class="efa-tierhi" d="M' + n1(t.L(t.yt)) + ' ' + n1(t.yt + 1.5) + ' H' + n1(t.R(t.yt)) + '"/>');
+      });
+      return out.join('');
+    }
+    function dynChain(g){
+      var P = pyr(), out = [], p = S.p, reached = Math.floor(p + 1e-6), fs = g.fs;
+      // the sun and the grass's own respiration (half of what it captures leaves as heat)
+      var su = g.sun, glow = 1 + (S.gpp - 10000) / 20000;
+      out.push('<circle class="efa-sunglow" cx="' + su[0] + '" cy="' + su[1] + '" r="' + n1(su[2] * (1.7 + 0.6 * glow)) + '" fill="url(#' + nid + '-sun)"/><circle class="efa-sun" cx="' + su[0] + '" cy="' + su[1] + '" r="' + n1(su[2] * (0.85 + 0.15 * glow)) + '"/>');
+      out.push('<text class="efa-k" x="' + n1(Math.max(6, su[0] - su[2])) + '" y="' + n1(su[1] + su[2] + 21) + '">Sunlight</text>');
+      var t0 = g.tiers[0], bx = t0.L(t0.yc) + g.ins, base = [bx, t0.yc];
+      // the sunbeam into the grass
+      out.push('<path class="efa-beam" d="M' + n1(su[0] - su[2] * 0.5) + ' ' + n1(su[1] + su[2] * 0.6) + ' L' + n1(bx - 10) + ' ' + n1(t0.yt + 6) + ' L' + n1(bx + 26) + ' ' + n1(t0.yt + 6) + ' L' + n1(su[0] + su[2] * 0.6) + ' ' + n1(su[1] + su[2] * 0.4) + 'Z"/>');
+      // grass respiration on one measure with what it stores: each wisp is a tenth of GPP, and the stored stream (NPP,
+      // the other 5 tenths) is exactly as wide as the 5 wisps together
+      var half = Math.round(10 * RPCT / 100), rw = g.rw, store = rw * (10 - half);
+      for(var w = 0; w < half; w++){ var ry = t0.yt + 8 + w * (t0.yb - t0.yt - 16) / Math.max(1, half - 1); out.push('<path class="efa-heat is-resp" style="stroke-width:' + rw.toFixed(2) + 'px" d="' + wisp(t0.R(ry) + 3, ry, -0.5 - w * 0.06, g.wl * 0.8, 1, 2.6) + '"/>'); }
+      // the stream: from the grass up to the tip; after each step it is one part of ten, as thin as one heat wisp
+      function sw(k){ return k < 0 ? store : Math.max(1.6, g.sw0 * Math.pow(0.66, k)); }
+      var segs = [];
+      for(var k = 0; k < 4 && k < p; k++){
+        var a = trackAt(g, k), b = trackAt(g, Math.min(p, k + 1)), yS = g.tiers[k].yt - 1, f0 = clamp((p - k - 0.15) / 0.55, 0, 1);
+        // below the step the stream carries what reached this level; above it, the one part in ten that goes on
+        var cut = (a[1] - yS) / (a[1] - b[1] || 1);
+        if(p <= k + 0.15 || cut >= 1) segs.push('<path class="efa-stream' + (k ? '' : ' is-npp') + '" style="stroke-width:' + sw(k - 1).toFixed(2) + 'px" d=""M' + n1(a[0]) + ' ' + n1(a[1]) + ' L' + n1(b[0]) + ' ' + n1(b[1]) + '"/>');
+        else { var m = [lerp(a[0], b[0], cut), yS]; segs.push('<path class="efa-stream' + (k ? '' : ' is-npp') + '" style="stroke-width:' + sw(k - 1).toFixed(2) + 'px" d="M' + n1(a[0]) + ' ' + n1(a[1]) + ' L' + n1(m[0]) + ' ' + n1(m[1]) + '"/><path class="efa-stream" style="stroke-width:' + n1(sw(k)) + 'px" d="M' + n1(m[0]) + ' ' + n1(m[1]) + ' L' + n1(b[0]) + ' ' + n1(b[1]) + '"/>'); }
+      }
+      out.push(segs.join(''));
+      out.push('<circle class="efa-pool" cx="' + n1(base[0]) + '" cy="' + n1(base[1]) + '" r="' + n1(sw(-1) * 0.55) + '"/>');
+      // the split at each step passed: of every 10 parts, 1 goes on (the gold stream) and 9 leave as heat, each wisp
+      // as wide as the stream that goes on (one measure per step); they grow out as the energy passes
+      for(var s2 = 0; s2 < 4; s2++){
+        var f = clamp((p - s2 - 0.15) / 0.55, 0, 1); if(f <= 0) continue;
+        var t = g.tiers[s2], yB = t.yt - 1, hw = sw(s2), sp = Math.max(hw * 2.2, g.ph ? 4.2 : 5.6);
+        for(var hh = 0; hh < 9; hh++){
+          var yy = yB + 3 + hh * sp, xx = trackAt(g, s2 + (yy > t.yc ? 0 : 0))[0] - (yy - trackAt(g, s2)[1]) * (g.track[2] - g.track[0]) / (g.track[3] - g.track[1]);
+          out.push('<path class="efa-heat" style="stroke-width:' + n1(hw) + 'px" d="' + wisp(xx - hw, yy, Math.PI + 0.42 - hh * 0.02, g.wl, f, 2.2) + '"/>');
+        }
+        if(s2 === Math.min(3, reached - 1) && f >= 1 && S.p === S.lvl){
+          // placed from the knob's drawn box (it sits on the level reached): "90% heat" left of the wisps and below
+          // the knob, "10% on" right of the stream at the step, under the knob
+          var kp = trackAt(g, S.lvl), kb = [kp[0] - knobR - 3, kp[1] - knobR - 3, kp[0] + knobR + 3, kp[1] + knobR + 3];
+          var sxB = trackAt(g, s2)[0] - (yB - trackAt(g, s2)[1]) * (g.track[2] - g.track[0]) / (g.track[3] - g.track[1]);
+          var hy = Math.max(yB + 12, kb[3] + fs * 0.75 + 2), hx = Math.min(sxB - g.wl * 0.95 - 2, kb[0] - 2);
+          out.push(pill(hx, hy, '90% heat', 'is-heat', fs - 1.5, 'end').svg);
+          var ow = tw('10% on', fs - 1.5, true) + 14;
+          if(kb[0] - 6 - ow >= 4) out.push(pill(kb[0] - 4, kp[1], '10% on', 'is-energy', fs - 1.5, 'end').svg);   // left of the knob, in the sky
+          else out.push(pill(kp[0], kb[1] - fs * 0.75 - 4, '10% on', 'is-energy', fs - 1.5).svg);   // above the knob: the tenth that goes on, up
+        }
+      }
+      // the tiers' labels (the energy written once it arrives): their own layer, rebuilt only when they change
+      out.push('\u0000');
+      g.tiers.forEach(function(t){
+        var on = clamp(p - t.k + 1, 0, 1), at = p >= t.k - 0.001;
+        var lab = labelSpot(g, t), ly = t.k === 0 && g.ph ? t.yt + fs * 0.75 : t.yc - (at ? fs * 0.72 + 2 : 0), cls = lab.inside ? 'efa-lab is-in' : 'efa-lab';
+        out.push('<text class="' + cls + '" x="' + n1(lab.x) + '" y="' + n1(ly + fs * 0.35) + '" text-anchor="' + lab.anchor + '" style="font-size:' + fs + 'px">' + esc(NAME[t.k]) + '</text>');
+        if(at) out.push('<text class="efa-val" x="' + n1(lab.x) + '" y="' + n1(ly + fs * 1.8 + 4) + '" text-anchor="' + lab.anchor + '" style="font-size:' + fs + 'px">' + esc(kc(P.levels[t.k].energy)) + (t.k ? '<tspan class="efa-sh"> ' + esc(pct(P.levels[t.k].share)) + '</tspan>' : '') + '</text>');
+      });
+      return out.join('');
+    }
+    function causeChain(){
+      var P = pyr(), rl = Math.floor(S.p + 1e-6), settled = S.p === S.lvl;
+      if(rl === 0) return { parts: [{ t: EF.big(S.gpp) + ' kcal of sunlight', role: 'energy' }, { t: 'half to heat', role: 'heat' }, { t: EF.big(P.npp) + ' kcal stored', role: 'energy' }] };
+      var x = []; for(var i = 0; i < rl; i++) x.push('0.1');
+      if(rl === 4 && settled) return { take: 'Each step keeps only about 10%, so the hawks get ' + pct(P.levels[4].share) + ' of the grass’s energy.' };
+      return { parts: [{ t: EF.big(P.npp) + ' kcal', role: 'energy' }, { t: '× ' + x.join(' × '), role: 'ink' }, { t: '90% heat', role: 'heat', join: '+' }, { t: kc(P.levels[rl].energy) + ' ' + NAME[rl].toLowerCase(), role: 'energy' }] };
+    }
+
+    /* ================= chapter 2: one field */
+    function geoEat(W, H){
+      var ph = W < 700, g = { W: W, H: H, ph: ph, fs: ph ? 12.5 : 14 };
+      if(!ph){
+        var gy = H * 0.58;
+        g.gy = gy; g.field = [16, gy, W * 0.36, H - 16]; g.lot = [W * 0.42, gy, W * 0.62, gy + (H - gy) * 0.72]; g.town = [W * 0.66, gy - 10, W - 16, H - 12];
+        g.B = Math.min(40, H * 0.07); g.sun = [W * 0.07, H * 0.13, Math.min(28, H * 0.05)];
+        g.out = [W * 0.36 + 4, gy + 30];     // where the harvest leaves the field
+        g.strack = [g.field[0] + 40, H - 96, g.field[2] - 40, H - 96];
+      } else {
+        var gy1 = H * 0.3;
+        g.gy = gy1; g.field = [10, gy1, W * 0.52, gy1 + H * 0.22]; g.lot = [W * 0.6, gy1, W - 10, gy1 + H * 0.15]; g.town = [10, H * 0.6, W - 10, H - 10];
+        g.B = 22; g.sun = [W * 0.1, H * 0.08, 16];
+        g.out = [W * 0.27, gy1 + H * 0.22 + 6];
+        g.strack = [g.field[0] + 52, gy1 + H * 0.22 - 18, g.field[2] - 52, gy1 + H * 0.22 - 18];
+      }
+      // the people: 44 places in rows, front row first
+      var T0 = g.town.slice(); T0[1] += ph ? 46 : 0; g.pplTop = T0[1]; var cols = ph ? 11 : Math.max(8, Math.min(11, Math.round((T0[2] - T0[0]) / 34))), rows = Math.ceil(44 / cols);
+      var cw = (T0[2] - T0[0]) / cols, rh = Math.min((T0[3] - T0[1] - 6) / rows, cw * 1.8), ph2 = Math.min(rh * 1.3, cw * 1.6);
+      g.ppl = []; for(var i = 0; i < 44; i++){ var r = Math.floor(i / cols), c = i % cols, order = [5, 4, 6, 3, 7, 2, 8, 1, 9, 0, 10].filter(function(x){ return x < cols; })[c] != null ? [5, 4, 6, 3, 7, 2, 8, 1, 9, 0, 10].filter(function(x){ return x < cols; })[c] : c;
+        g.ppl.push({ x: T0[0] + cw * (order + 0.5) + (r % 2 ? cw * 0.18 : 0), y: T0[3] - r * rh, h: ph2 }); }
+      g.ppl.sort(function(a, b){ return b.y - a.y; });
+      var L = g.lot, cwid = (L[2] - L[0]) / 3, ch = (L[3] - L[1] - 8) / 2, cs = Math.min(cwid * 0.92, ch * 1.5);
+      g.cows = []; for(var k = 0; k < 6; k++){ var row = Math.floor(k / 3); g.cows.push({ x: L[0] + cwid * ((k % 3) + 0.5) + (row ? -cwid * 0.12 : cwid * 0.08), y: L[1] + 6 + ch * (row + 1), s: cs }); }
+      return g;
+    }
+    function staticEat(g){
+      var W = g.W, H = g.H, F = g.field, out = [sky(W, H, g.gy)];
+      out.push('<rect class="efa-ground" x="0" y="' + n1(g.gy) + '" width="' + W + '" height="' + n1(H - g.gy) + '" fill="url(#' + nid + '-gr)"/>');
+      // the field: soil and rows of corn
+      out.push('<rect class="efa-soil" x="' + n1(F[0]) + '" y="' + n1(F[1] + 4) + '" width="' + n1(F[2] - F[0]) + '" height="' + n1(F[3] - F[1] - 4) + '" rx="10" fill="url(#' + nid + '-so)"/>');
+      var rows = g.ph ? 2 : 3, cs = Math.min((F[3] - F[1]) / (rows + 0.4), g.ph ? 46 : 70);
+      for(var r = 0; r < rows; r++) for(var x = F[0] + cs * 0.35; x < F[2] - cs * 0.3; x += cs * 0.42) out.push(art('corn', x + (r % 2) * cs * 0.2, F[1] + cs * (r * 0.75 + 0.42) - 2, cs));
+      out.push(pill((F[0] + F[2]) / 2, F[1] - (g.ph ? 12 : 16), '1 hectare of corn', 'is-ink', g.fs - 1).svg);
+      // the feedlot: a fence around trodden ground
+      var L = g.lot;
+      out.push('<rect class="efa-lot" x="' + n1(L[0]) + '" y="' + n1(L[1] + 4) + '" width="' + n1(L[2] - L[0]) + '" height="' + n1(L[3] - L[1]) + '" rx="8"/>');
+      for(var fx = L[0]; fx <= L[2] + 0.5; fx += (L[2] - L[0]) / 6) out.push('<path class="efa-post" d="M' + n1(fx) + ' ' + n1(L[3] + 4) + ' v-16"/>');
+      out.push('<path class="efa-rail" d="M' + n1(L[0]) + ' ' + n1(L[3] - 4) + ' H' + n1(L[2]) + ' M' + n1(L[0]) + ' ' + n1(L[3] - 10) + ' H' + n1(L[2]) + '"/>');
+      // the town's ground
+      var Tn = g.town;
+      var hw = Math.min(g.ph ? 40 : 70, (Tn[2] - Tn[0]) / 4.4), hy = g.ph ? Tn[1] + 40 : g.gy + 4;
+      (g.ph ? [0.1, 0.42] : [0.16, 0.5, 0.84]).forEach(function(fx, i){ var x = Tn[0] + (Tn[2] - Tn[0]) * fx, hh = hw * (0.78 + 0.08 * i);
+        out.push('<g class="efa-house"><rect class="efa-wall" x="' + n1(x - hw / 2) + '" y="' + n1(hy - hh) + '" width="' + n1(hw) + '" height="' + n1(hh) + '"/><path class="efa-roof" d="M' + n1(x - hw * 0.62) + ' ' + n1(hy - hh) + ' L' + n1(x) + ' ' + n1(hy - hh - hw * 0.5) + ' L' + n1(x + hw * 0.62) + ' ' + n1(hy - hh) + 'Z"/><rect class="efa-door" x="' + n1(x - hw * 0.12) + '" y="' + n1(hy - hh * 0.5) + '" width="' + n1(hw * 0.24) + '" height="' + n1(hh * 0.5) + '"/><rect class="efa-win" x="' + n1(x + hw * 0.2) + '" y="' + n1(hy - hh * 0.72) + '" width="' + n1(hw * 0.2) + '" height="' + n1(hw * 0.18) + '"/></g>'); });
+      return out.join('');
+    }
+    function band(d, w, cls, k){ return w > 0.3 ? '<path class="' + cls + '" data-k="' + k + '" style="stroke-width:' + w.toFixed(2) + 'px" d="' + d + '"/>' : ''; }
+    function dynEat(g){
+      var out = [], f = S.fs, R = EF.field(f), B = g.B, fs = g.fs, wG = B * (1 - f), wC = B * f, wBeef = wC * 0.1, wHeat = wC * 0.9;
+      if(cows.some(function(v){ return v > 0.05; })) wBeef = Math.max(wBeef, 0.6);   // a cow always passes some beef on (a drawn minimum)
+      var su = g.sun; out.push('<circle class="efa-sunglow" cx="' + n1(su[0]) + '" cy="' + n1(su[1]) + '" r="' + n1(su[2] * 2.3) + '" fill="url(#' + nid + '-sun)"/><circle class="efa-sun" cx="' + n1(su[0]) + '" cy="' + n1(su[1]) + '" r="' + n1(su[2]) + '"/>');
+      var L = g.lot, Tn = g.town, o = g.out, lotIn, lotOut, townIn, townIn2, plume;
+      if(!g.ph){
+        var ly = L[1] + (L[3] - L[1]) * 0.3;
+        lotIn = [L[0] - 2, ly]; lotOut = [L[2] + 2, ly]; townIn = [Tn[0] + (Tn[2] - Tn[0]) * 0.33, g.gy + 8]; townIn2 = [Tn[0] + 12, g.gy + 8];
+        // grain to the people: an arc over the feedlot; to the cattle: straight in
+        var gTop = g.gy - g.H * 0.42;
+        out.push(band('M' + n1(o[0]) + ' ' + n1(o[1] - wC / 2) + ' C' + n1(o[0] + g.W * 0.12) + ' ' + n1(o[1] - wC / 2) + ' ' + n1(o[0] + g.W * 0.04) + ' ' + n1(gTop) + ' ' + n1((o[0] + townIn[0]) / 2) + ' ' + n1(gTop) + ' S' + n1(townIn[0]) + ' ' + n1(gTop + 10) + ' ' + n1(townIn[0]) + ' ' + n1(townIn[1]), wG, 'efa-band', 'grain'));
+        out.push(band('M' + n1(o[0]) + ' ' + n1(o[1] + wG / 2) + ' C' + n1((o[0] + lotIn[0]) / 2) + ' ' + n1(o[1] + wG / 2) + ' ' + n1((o[0] + lotIn[0]) / 2) + ' ' + n1(lotIn[1]) + ' ' + n1(lotIn[0]) + ' ' + n1(lotIn[1]), wC, 'efa-band', 'cattle'));
+        out.push(band('M' + n1(lotOut[0]) + ' ' + n1(lotOut[1]) + ' C' + n1(townIn2[0]) + ' ' + n1(lotOut[1]) + ' ' + n1(townIn2[0]) + ' ' + n1(lotOut[1]) + ' ' + n1(townIn2[0]) + ' ' + n1(townIn2[1]), wBeef, 'efa-band', 'beef'));
+        plume = [(L[0] + L[2]) / 2, L[1] - 6];
+      } else {
+        lotIn = [L[0] - 4, (L[1] + L[3]) / 2]; townIn = [o[0], Tn[1] - 2]; townIn2 = [(L[0] + L[2]) / 2 + 10, Tn[1] - 2]; lotOut = [(L[0] + L[2]) / 2 + 10, L[3] + 6];
+        out.push(band('M' + n1(o[0] - wC / 2) + ' ' + n1(o[1] - 8) + ' V' + n1(townIn[1]), wG, 'efa-band', 'grain'));
+        out.push(band('M' + n1(g.field[2] + 2) + ' ' + n1(lotIn[1] - wG * 0) + ' H' + n1(lotIn[0]), wC, 'efa-band', 'cattle'));
+        out.push(band('M' + n1(lotOut[0]) + ' ' + n1(lotOut[1]) + ' V' + n1(townIn2[1]), wBeef, 'efa-band', 'beef'));
+        plume = [(L[0] + L[2]) / 2 - 6, L[1] - 4];
+      }
+      // the cattle's heat: a plume 9 times the beef, on the same measure as every band
+      if(wHeat > 0.3){
+        var hp = '', hy = plume[1], top = g.ph ? Math.max(18, hy - g.H * 0.2) : Math.max(24, hy - g.H * 0.22);
+        hp = 'M' + n1(plume[0]) + ' ' + n1(hy) + ' C' + n1(plume[0] - 18) + ' ' + n1(lerp(hy, top, 0.35)) + ' ' + n1(plume[0] + 18) + ' ' + n1(lerp(hy, top, 0.65)) + ' ' + n1(plume[0] - 4) + ' ' + n1(top);
+        out.push('<path class="efa-plume" style="stroke-width:' + wHeat.toFixed(2) + 'px" d="' + hp + '"/>');
+        if(wHeat >= 6) out.push(pill(plume[0] + wHeat / 2 + 8, lerp(hy, top, 0.6), '90% heat', 'is-heat', fs - 1.5, 'start').svg);
+      }
+      if(wG >= 8) out.push(pill(g.ph ? o[0] + wG / 2 + 8 : (o[0] + townIn[0]) / 2, g.ph ? (g.field[3] + Tn[1]) / 2 + 6 : g.gy - g.H * 0.3 - wG / 2 - 14, 'grain', 'is-energy', fs - 1.5, g.ph ? 'start' : null).svg);
+      if(wBeef >= 1.2 && cows.some(function(v){ return v > 0.5; })) out.push(pill(g.ph ? townIn2[0] + 8 : (lotOut[0] + townIn2[0]) / 2, g.ph ? (lotOut[1] + townIn2[1]) / 2 : lotOut[1] - 14, 'beef', 'is-energy', fs - 1.5, g.ph ? 'start' : null).svg);
+      // the cows
+
+      if(!cows.some(function(v){ return v > 0.05; })) out.push('<text class="efa-k is-mut" x="' + n1((L[0] + L[2]) / 2) + '" y="' + n1((L[1] + L[3]) / 2 + 8) + '" text-anchor="middle" style="font-size:' + (fs - 1) + 'px">no cattle</text>');
+      // the people: the ones fed stand in the town, one by one
+      var shown = 0;
+      people.forEach(function(v){ if(v > 0.5) shown++; });
+      g.shown = shown;
+      var tp = pill(g.ph ? (Tn[0] + Tn[2]) / 2 : Tn[0] + (Tn[2] - Tn[0]) * 0.67, g.gy - Math.min(70, (Tn[2] - Tn[0]) / 4.4) * 1.45 - 14, shown + ' people fed', 'is-ink', fs);
+      if(!g.ph) out.push(tp.svg); else out.push(pill(W2(g) - 12, g.pplTop - 18, shown + ' people fed', 'is-ink', fs, 'end').svg);
+      return out.join('');
+    }
+    function W2(g){ return g.W; }
+    function causeEat(){
+      var n = G && G.shown != null ? G.shown : EF.field(S.fs).people, all = EF.field(0).people, pc = Math.round(S.fs * 100);
+      if(S.fs !== S.share) return { parts: [{ t: pc + '% of corn to cattle', role: 'energy' }] };
+      if(pc === 0) return { parts: [{ t: 'All the corn eaten as grain', role: 'energy' }, { t: n + ' people fed', role: 'ink' }] };
+      if(pc === 100 && n === EF.field(1).people) return { take: 'Fed to cattle first, the field feeds ' + n + ' people, not ' + all + '.' };
+      return { parts: [{ t: pc + '% of corn to cattle', role: 'energy' }, { t: '90% of it lost as heat', role: 'heat' }, { t: n + ' people fed, not ' + all, role: 'ink' }] };
+    }
+
+    /* ================= chapter 3: the food web */
+    var WPOS = { grass: [0.5, 0.92], grasshopper: [0.14, 0.68], rabbit: [0.86, 0.68], mouse: [0.5, 0.6], frog: [0.13, 0.36], snake: [0.36, 0.16], fox: [0.86, 0.36], hawk: [0.66, 0.06] };
+    var WPOS_PH = { grass: [0.56, 0.95], grasshopper: [0.1, 0.72], rabbit: [0.88, 0.72], mouse: [0.5, 0.57], frog: [0.1, 0.43], snake: [0.34, 0.11], fox: [0.92, 0.36], hawk: [0.66, 0.02] };
+    function geoWeb(W, H){
+      var ph = W < 640, top = ph ? 50 : 56, bot = ph ? 44 : 48, side = ph ? 38 : Math.max(80, W * 0.12), pos = {};
+      var r = Math.min(ph ? 29 : 44, (H - top - bot) * 0.1, W * 0.08);
+      CHAIN_WEB().forEach(function(s){ var q = (ph ? WPOS_PH : WPOS)[s.id]; pos[s.id] = { x: side + q[0] * (W - 2 * side), y: top + q[1] * (H - top - bot) }; });
+      return { W: W, H: H, ph: ph, pos: pos, r: r, fs: ph ? 12.5 : 14, gy: top + 0.45 * (H - top - bot) };
+    }
+    function staticWeb(g){
+      var out = [sky(g.W, g.H, g.gy)];
+      out.push('<rect class="efa-ground" x="0" y="' + n1(g.gy) + '" width="' + g.W + '" height="' + n1(g.H - g.gy) + '" fill="url(#' + nid + '-gr)"/>');
+      for(var i = 0; i < 26; i++){ var x = 12 + (i * 97.3) % (g.W - 24), y = g.gy + 12 + ((i * 53.1) % (g.H - g.gy - 18)); out.push('<path class="efa-tuft" d="M' + n1(x) + ' ' + n1(y) + ' l-3 -7 M' + n1(x) + ' ' + n1(y) + ' l1 -9 M' + n1(x) + ' ' + n1(y) + ' l4 -7"/>'); }
+      return out.join('');
+    }
+    var EFX = { up: 'More', down: 'Fewer', maybe: 'Maybe fewer', gone: 'Dies out', removed: 'Removed' };
+    function dynWeb(g){
+      var out = [], t = webTarget(), web = CHAIN_WEB(), r = g.r, fs = g.fs, P = g.pos;
+      // arrows from food to eater (energy gold); they fade with a species that is gone
+      web.forEach(function(s){
+        s.eats.forEach(function(fid){
+          var a = P[fid], b = P[s.id], dx = b.x - a.x, dy = b.y - a.y, d = Math.hypot(dx, dy) || 1, ux = dx / d, uy = dy / d;
+          var x0 = a.x + ux * r * 1.05, y0 = a.y + uy * r * 1.05, x1 = b.x - ux * (r * 1.12 + 6), y1 = b.y - uy * (r * 1.12 + 6);
+          var mx = (x0 + x1) / 2 - uy * d * 0.08, my = (y0 + y1) / 2 + ux * d * 0.08;
+          var op = Math.min(wShown[fid].o, wShown[s.id].o < 0.5 ? wShown[s.id].o : 1);
+          op = Math.max(0.1, Math.min(op, 1 - 0.85 * Math.max(wShown[fid].g, wShown[s.id].g)));
+          if(wShown[fid].o < 0.02 || wShown[s.id].o < 0.02) op = 0.1;
+          out.push('<path class="efa-link" style="opacity:' + op.toFixed(2) + '" d="M' + n1(x0) + ' ' + n1(y0) + ' Q' + n1(mx) + ' ' + n1(my) + ' ' + n1(x1) + ' ' + n1(y1) + '" marker-end="url(#' + nid + '-ar)"/>');
+        });
+      });
+      out.unshift('<defs><marker id="' + nid + '-ar" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0 0 L10 5 L0 10z" class="efa-link-h"/></marker></defs>');
+      // the species
+      web.forEach(function(s){
+        var w = wShown[s.id], p = P[s.id], eff = t[s.id].eff;
+        var nm = cap(s.name), ly = p.y + r + fs * 0.9;
+        out.push(pill(p.x, ly, nm, 'is-ink is-name', fs - 1).svg);
+        if(w.b > 0.02 && eff !== 'same'){
+          var bt = EFX[eff], bp = pill(p.x, p.y - r * 1.12 - fs * 0.85, bt, 'is-' + eff, fs - 1.5);
+          out.push('<g style="opacity:' + w.b.toFixed(2) + '">' + bp.svg + '</g>');
+        }
+      });
+      return out.join('');
+    }
+    function causeWeb(){
+      if(!S.removed) return { parts: [{ t: 'Arrows: food → eater', role: 'energy' }, { t: 'tap one to take it out', role: 'ink' }] };
+      var web = CHAIN_WEB(), res = EF.respond('grassland', S.removed), nm = function(id){ return web.filter(function(s){ return s.id === id; })[0].name; };
+      var parts = [{ t: 'No ' + nm(S.removed), role: 'bad' }];
+      if(S.wt < 1) return { parts: parts };
+      var gone = [], up = [], down = [], maybe = [];
+      web.forEach(function(s){ var x = res[s.id]; if(!x || s.id === S.removed) return; if(x.effect === 'gone') gone.push(s.name); else if(x.effect === 'up') up.push(s.name); else if(x.effect === 'down') (x.direct ? down : maybe).push(s.name); });
+      if(gone.length >= 7) return { parts: parts.concat([{ t: 'every animal dies out', role: 'bad' }]) };
+      function list(a){ return a.length > 2 ? a.slice(0, -1).join(', ') + ' and ' + a[a.length - 1] : a.join(' and '); }
+      if(gone.length) parts.push({ t: list(gone) + ' die out', role: 'bad' });
+      if(up.length) parts.push({ t: list(up) + ' more', role: 'ink' });
+      if(down.length) parts.push({ t: list(down) + ' fewer', role: 'ink', join: up.length ? '+' : null });
+      if(parts.length === 1 && maybe.length) parts.push({ t: list(maybe) + ' maybe fewer', role: 'ink' });
+      return { parts: parts };
+    }
+
+    /* ---- drawing and words */
+    var lastCause = '';
+    function draw(){
+      if(!G) return;
+      var h = (S.ch === 'chain' ? dynChain(G) : S.ch === 'eat' ? dynEat(G) : dynWeb(G)).split('\u0000');
+      if(h[0] !== draw.h){ draw.h = h[0]; gDyn.innerHTML = h[0]; }
+      if((h[1] || '') !== draw.l){ draw.l = h[1] || ''; gLabs.innerHTML = draw.l; }
+      updMid();
+      var c = S.ch === 'chain' ? causeChain() : S.ch === 'eat' ? causeEat() : causeWeb(), key = JSON.stringify(c);
+      if(key !== lastCause){
+        lastCause = key;
+        if(c.take) cause.take(c.take); else cause.set(c.parts);
+        var txt = c.take || cause.text();
+        live.textContent = txt;
+        svg.setAttribute('aria-label', (S.ch === 'chain' ? 'An energy pyramid of a meadow: grass, grasshoppers, frogs, snakes and hawks. ' : S.ch === 'eat' ? 'One hectare of corn, a feedlot and the people the field feeds. ' : 'A meadow food web; arrows point from food to eater. ') + txt);
+      }
+    }
+    function setCh(v){
+      S.ch = v; stage.setAttribute('data-ch', v); tabs.value(v); head.purpose(PURPOSE[v]);
+      Object.keys(cues).forEach(function(k){ if(k !== v) cues[k].hide(false); });
+      stopTour(); lastCause = ''; refHtml();
+      layoutNow(); if(S.mode === 'explore') cues[v].show();
+    }
+
+    /* ---- "Show me how": three pointers per chapter (opens from its link and from "?") */
+    var tour = null;
+    function knobOf(c){ return c.el.querySelector('.tk2-knob') || c.el; }
+    function tourSteps(){
+      if(S.ch === 'chain') return [{ id: 'up', text: 'Drag the energy up one level at a time.', target: function(){ return knobOf(cLvl); } },
+        { id: 'heat', text: 'At every step, 9 of 10 parts leave as heat.', target: function(){ return sceneBox; } },
+        { id: 'sun', text: 'More sunlight means more for every level.', target: function(){ return knobOf(cSun); } }];
+      if(S.ch === 'eat') return [{ id: 'cattle', text: 'Drag to feed more of the corn to cattle.', target: function(){ return knobOf(cShare); } },
+        { id: 'heat', text: 'The cattle lose 90% of it as heat.', target: function(){ return sceneBox; } },
+        { id: 'ppl', text: 'Count the people the field still feeds.', target: function(){ return cause.el; } }];
+      return [{ id: 'tap', text: 'Tap an animal to take it out of the web.', target: function(){ return cWeb[4].el; } },
+        { id: 'look', text: 'Linked animals show more, fewer or dies out.', target: function(){ return sceneBox; } },
+        { id: 'back', text: 'Tap it again to bring it back.', target: function(){ return cause.el; } }];
+    }
+    function startTour(force){ if(S.mode !== 'explore') return; stopTour(); if(force) cues[S.ch].hide(false); tour = K.tour({ key: 'apenv-ef-' + S.ch, label: 'Show me how', steps: tourSteps() }); if(force) tour.start(true); }
+    function stopTour(){ if(tour){ tour.stop(); tour = null; } }
+    function tourDid(id){ if(tour && tour.active()) tour.did(id); }
+
+    /* ---- "?" for the chapter */
+    function refHtml(){
+      var P = pyr(), h = '';
+      if(S.ch === 'chain'){
+        h = '<p><b>Where the energy goes.</b> The grass captures sunlight (gross primary productivity, GPP) and uses about half in its own cellular respiration, which leaves as heat. What is left is stored: <b>NPP = GPP − respiration</b>. Only NPP is food for the levels above.</p><p><b>Energy flows one way.</b> Heat cannot be turned back into food, so a food chain needs new sunlight every day; nutrients cycle, energy does not.</p>' +
+          '<p><b>The 10% rule.</b> About 10% of a level’s energy becomes the next level’s tissue. The rest is used for living (respiration releases it as heat), never eaten, or passed out as waste for decomposers, whose respiration also ends as heat. Count the feeding steps and multiply by 0.1 for each one; going down, divide. Real transfers run from about 5% to 20%; the exam uses 10%.</p>' +
+          '<h3 class="ls-title-l">This meadow (kcal/m²/yr)</h3>' + T.dataTable(['Level', 'Energy', 'Share of NPP', 'Setup'], P.levels.map(function(l, k){ var x = []; for(var i = 0; i < k; i++) x.push('0.1'); return [esc(NAME[k]) + '<br><span class="bt-small">' + esc(EF.LEVEL_SHORT[k]) + '</span>', num(l.energy), pct(l.share), k ? num(P.npp) + ' × ' + x.join(' × ') : 'GPP ' + num(P.gpp) + ' − ' + num(P.r)]; }), 'Energy at each level for GPP ' + num(P.gpp)) +
+          '<p class="bt-small">How it is drawn: the tiers step down evenly, as a textbook draws an energy pyramid; drawn to scale, each tier would be a tenth as wide as the one below and the hawks a sliver. At each step the 10 strokes are one measure: 1 gold goes on, 9 vermillion leave as heat. The grass’s 5 wisps (each a tenth of the sunlight it captures) are together as wide as the gold it stores: half to heat, half stored. The animals in a tier are not counts: a pyramid of numbers can even be inverted (one oak feeds thousands of caterpillars), but a pyramid of energy never is.</p>' +
+          '<h3 class="ls-title-l">Biomass and numbers in three ecosystems</h3>' + EF.ECO_IDS.map(function(id){ var Q = EF.pyramid(id, 20000, 50, 0.1), bi = EF.inverted(Q, 'biomass'), ni = EF.inverted(Q, 'number');
+            return T.dataTable(['Level', 'Energy (kcal/m²/yr)', 'Biomass (g/m²)', 'Number per hectare'], Q.levels.map(function(l){ return [esc(cap(l.plural)), num(l.energy), num(l.biomass), num(l.number)]; }), cap(EF.ECOS[id].name)) +
+              '<p class="bt-small">' + cap(EF.ECOS[id].name) + ': energy upright; biomass ' + (bi ? 'inverted (more ' + esc(Q.levels[bi].plural) + ' than ' + esc(Q.levels[bi - 1].plural) + ')' : 'upright') + '; numbers ' + (ni ? 'inverted (more ' + esc(Q.levels[ni].plural) + ' than ' + esc(Q.levels[ni - 1].plural) + ')' : 'upright') + '.</p>'; }).join('') +
+          '<p class="bt-small">Biomass is the energy flowing through a level divided by how fast its organisms turn over; numbers are biomass over one individual’s mass. Those rates and masses are illustrative, chosen so each ecosystem shows its textbook shape.</p>';
+      } else if(S.ch === 'eat'){
+        var F = EF.FIELD;
+        h = '<p><b>One more step.</b> People who eat grain are primary consumers. Feeding the grain to cattle first makes people secondary consumers: the cattle use most of it to live and stay warm, and it leaves as heat and waste. With the 10% rule, the beef holds a tenth of the grain’s energy.</p>' +
+          '<h3 class="ls-title-l">The numbers</h3><ul class="efa-src">' +
+          '<li>A hectare of corn grows about ' + EF.big(F.kcal / 1e6) + ' million kcal of grain a year: about 177 bushels an acre in 2023 (USDA NASS, <i>Crop Production 2023 Summary</i>), about 11,100 kg a hectare, at about 365 kcal per 100 g (USDA FoodData Central). Rounded.</li>' +
+          '<li>A person eats about ' + EF.big(F.perDay) + ' kcal a day, ' + EF.big(F.perYear) + ' a year: the grain feeds ' + EF.field(0).people + ' people, the beef from all of it ' + EF.field(1).people + '.</li>' +
+          '<li>Real animals do worse than 10% for beef (nearer 3%) and better for chicken and eggs; across all livestock, about 12% of feed calories come back as food, and about a third of the world’s crop calories are fed to animals (Cassidy and others, 2013, <i>Environmental Research Letters</i>).</li>' +
+          '<li>A teaching model: cattle also eat grass on land that grows no crops, and grain is not all a diet needs.</li></ul>' +
+          T.dataTable(['To cattle', 'People fed'], [0, 25, 50, 75, 100].map(function(v){ return [v + '%', String(EF.field(v / 100).people)]; }), 'People one hectare feeds');
+      } else {
+        h = '<p><b>Reading the web.</b> Each arrow points from a food to the organism that eats it, the way energy moves. An organism with many arrows in has many foods; one with many arrows out is eaten by many.</p>' +
+          '<p><b>Taking a species out</b> shows its first, most likely effects: its prey increase (fewer are eaten), its predators decrease (one food fewer), and a consumer left with no food dies out, and so on up the web. “Maybe fewer” marks an indirect, less certain effect: a hungrier predator eating more of its other food, or more plant eaters eating more plants. Later, animals may switch foods and numbers can recover; a web with more links is more stable.</p>' +
+          '<h3 class="ls-title-l">Who eats whom</h3><ul class="efa-src">' + CHAIN_WEB().map(function(s){ var w = CHAIN_WEB(); return '<li><b>' + esc(cap(s.name)) + '</b> ' + (s.eats.length ? 'eat ' + s.eats.map(function(f){ return w.filter(function(x){ return x.id === f; })[0].name; }).join(', ') : (s.id === 'grass' ? 'is a producer' : 'are producers')) + '.</li>'; }).join('') + '</ul>' +
+          (S.removed ? (function(){ var res = EF.respond('grassland', S.removed), w = CHAIN_WEB(); return '<h3 class="ls-title-l">Why each one changes (no ' + esc(w.filter(function(x){ return x.id === S.removed; })[0].name) + ')</h3><ul class="efa-src">' + w.filter(function(x){ return x.id !== S.removed && res[x.id] && res[x.id].effect !== 'same'; }).map(function(x){ var r = res[x.id]; return '<li><b>' + esc(cap(x.name)) + ': ' + esc(EFX[r.effect === 'down' && !r.direct ? 'maybe' : r.effect].toLowerCase()) + '.</b> ' + esc(r.why) + '</li>'; }).join('') + '</ul>'; })() : '') +
+          '<p class="bt-small">The pond and forest webs are in Test yourself.</p>';
+      }
+      ref.innerHTML = '<p class="efa-howref"><button type="button" class="tk2-how" data-how>Show me how</button> to use this chapter.</p>' + h;
+    }
+    ref.addEventListener('click', function(e){ if(e.target.closest('[data-how]')){ if(LS && LS.close) LS.close(); setTimeout(function(){ startTour(true); }, 280); } });
+
+    function labelTaps(){ CHAIN_WEB().forEach(function(sp, i){ cWeb[i].el.setAttribute('aria-label', (S.removed === sp.id ? 'Bring back the ' : 'Take out the ') + sp.name); }); }
+    var webChanged0 = webChanged; webChanged = function(){ webChanged0(); labelTaps(); };
+    labelTaps();
 
     function studio(pane, s){
       LS = s;
-      // Pass 3: the ecosystem chips wait in Details (a Setup row names the one
-      // showing); the dock keeps the four views and the GPP slider.
-      var ecos = $('.ef-ecos'), lab = document.createElement('p');
-      lab.className = 'ls-lbl'; lab.textContent = 'Ecosystem';
-      var ms = $('.ef-more-sl'); ms.parentNode.insertBefore(lab, ms); ms.parentNode.insertBefore(ecos, ms);
-      setupRow = T.studioPane(pane, s, { task: { title: 'Follow energy up a food chain.' }, stage: [$('.ef-fig')], dock: [$('.ef-ctl')], primary: [gpp.el], why: [$('.ef-say')], details: [$('.ef-nums')], setup: T.isStd(s) ? 'Settings' : 'Ecosystem', moreLabel: 'Ecosystem, efficiency, respiration and scale' });
-      // The Setup row opens Details on these settings: they come first there.
-      var mo = s.root.querySelector('.env-ls-det details.bt-more'); if(mo) mo.parentNode.insertBefore(mo, mo.parentNode.firstChild);
-      // The standard frame: the ecosystems are the scenario dropdown on the stage; the Setup row keeps the rest.
-      if(T.stagePick(s, ecos, { label: 'Ecosystem' })) lab.hidden = true;
-      s.root.addEventListener('click', onClick);
-      host.removeEventListener('click', onClick);
-      draw();
-      if(s.mode() === 'explore') s.hint({ target: svg.querySelector('.ef-lvl[data-k="1"] .ef-bar') || svg, text: 'Start here: tap a level' });
-      if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(function(){ draw(); }, 60); }).observe($('.ef-fig')); }
+      K.on(s);
+      s.add('stage', stage, { mode: 'explore' });
+      s.add('details', ref, { mode: 'explore' });
+      stage.setAttribute('data-ls-only', 'explore'); ref.setAttribute('data-ls-only', 'explore');
+      var ab = pane.querySelector('details.tool-about, .tool-about'); if(ab) s.add('about', ab, { mode: 'explore' });
+      s.mode(s.mode());
+      refHtml(); layoutNow();
+      if(window.ResizeObserver){ var tm = null; new ResizeObserver(function(){ clearTimeout(tm); tm = setTimeout(layoutNow, 50); }).observe(sceneBox); }
+      try{ new MutationObserver(function(){ layoutNow(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] }); }catch(e){}
+      if(s.mode() === 'explore') cues[S.ch].show();
+      startTour(false);
     }
-    draw();
-    document.addEventListener('visibilitychange', kick);
-    return { studio: studio, active: function(on){ live = on; if(on) kick(); } };
+    refHtml();
+    return {
+      studio: studio,
+      shown: function(m){
+        S.mode = m;
+        if(m === 'explore'){ setTimeout(function(){ layoutNow(); cues[S.ch].show(); }, 30); }
+        else { stopTour(); Object.keys(cues).forEach(function(k){ cues[k].hide(false); }); }
+      }
+    };
   }
 
-  /* After a step the drill clears its Check button (the focused element),
-     and the figure redraws: keep focus in the drill, on the next step's
-     first input, else on the feedback just given, never the page start. */
+  /* After a step the drill clears its Check button (the focused element), and the figure redraws: keep focus in the
+     drill, on the next step's first input, else on the feedback just given, never the page start. */
   function keepFocus(api){
     setTimeout(function(){
       var a = document.activeElement;
