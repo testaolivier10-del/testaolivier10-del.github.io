@@ -95,3 +95,103 @@ parts of a homeostatic loop acting in place, and positive feedback beside it as 
 3. "Cut a part" stays in Test yourself's Watch it work, not in Explore.
 4. The run plays by itself after the push (the loop is automatic; that is the idea), about 7 s for a negative loop and
    about 12 s for childbirth.
+5. The value is drawn twice, on the body (thermometer, glucose meter, the baby's head) and on a monitor trace against
+   time with the set point and the normal range; the childbirth monitor draws the stretch and the contractions and has
+   no set point line (positive feedback has none).
+6. One glucose set point (88 mg/dL) for both directions; the temperature normal range is drawn 36.5 to 37.5 °C
+   (`docs/anp-needs-author.md` fl-glucose-setpoint, fl-temp-range).
+7. Test yourself's inner switch reads "Watch it work" and "Build it" ("Test yourself" twice would confuse).
+
+### What is on screen in Explore (counted in the browser, 1440 x 900, at landing)
+Outside the picture: 3 tabs, the purpose line, "Show me how", the line of seven dots ("Seven parts each lights as the
+signal reaches it") and the cause line: 42 words on Temperature, 40 on Blood glucose, 36 on Childbirth. 6 controls: 3
+tabs, "Show me how", "Start over", the knob. No side panel. On the picture at landing: 3 labels each (Temperature: the
+value, Skin, Brain; Glucose: the value, Pancreatic islet, Pancreas; Childbirth: Cervix, Uterine muscle, Hypothalamus),
+plus the scale's numbers and the monitor's own words. During a run a part's label appears when that part is drawn
+acting (Nerve ending, Sensory nerve, Hypothalamus, Efferent nerve, Sweat gland and Arteriole widens or Muscle shivers
+and Arteriole narrows, Heat lost or Heat kept, made; Beta or Alpha cells, No nerve: same cells, Insulin or Glucagon,
+Liver, Muscle, Fat, Glucose stored or released; Stretch sensors, Spinal cord, Posterior pituitary, Oxytocin, Uterine
+muscle, More stretch, Head passes, Baby born, No more stretch). First visit only: the cue at the knob ("Drag the
+thermometer", "Drag the glucose level", "Push the head down").
+
+## Accuracy
+Every word on the pictures, the cause lines and "?" was checked against the course notes that teach it
+(`anatomy-physiology/data/notes/`: homeostasis-feedback, pancreas-glucose, labor-birth) and the loops' own reviewed slot
+texts, which name the parts on the line under the picture. What the pictures add:
+- Temperature: warm (or cold) sensitive nerve endings in the skin fire; the signal goes to the hypothalamus, which
+  compares the value with the 37 °C set point; nerves carry the command to the skin arterioles' smooth muscle and the
+  sweat glands (too warm: arterioles widen, sweat is released and evaporates, heat leaves; the skin flushes) or to the
+  arterioles and skeletal muscle (too cold: arterioles narrow, the skin pales, the muscle shivers and makes heat). The
+  effectors work in proportion to how far off the value is, so they ease off as it returns; a small overshoot stays
+  inside the normal range (the notes' "why the variable wobbles").
+- Glucose: beta cells take glucose in and are their own sensor and control center (no nerve), release insulin into the
+  islet's capillary; insulin reaches liver, muscle and fat, glucose moves into them, glycogen granules grow in liver
+  and muscle and fat cells swell a little; as glucose falls, less insulin. Low glucose: alpha cells release glucagon,
+  which acts on the liver only; liver glycogen shrinks and glucose leaves the liver. The number of glucose hexagons in
+  the blood is the drawn level (8 at 88 mg/dL). The islet mixes beta and alpha cells, as in humans.
+- Childbirth: the head stretches the cervix; stretch sensors fire; afferent nerves climb the spinal cord to the
+  hypothalamus; its neurons release oxytocin from the posterior pituitary into the blood; the myometrium contracts
+  harder (the uterine wall squeezes in, harder each turn) and pushes the head lower, so the stretch grows. Birth (an
+  event outside the loop) removes the stretch and the loop ends; the empty uterus shrinks back. "?" says the loop
+  strengthens contractions and does not start labor (the notes' "For your exam" point).
+- A skeptical second pass by the builder (no helper agent was available in this session) looked for wrong mechanisms,
+  wrong targets and misleading proportions; it changed the islet from a beta core with an alpha rim (the rodent
+  pattern) to mixed cells, kept glucagon off muscle, and kept "the loop does not start labor". The independent review
+  should repeat the science check. Points for a person: `docs/anp-needs-author.md`, "Feedback loops, tools v2 drawn
+  loops" (fl-*).
+
+## What was built
+- `anatomy-physiology/assets/tools/feedback-loops-explore.js` and `.css` (new): the engine (tabs, purpose line, the
+  picture with two compositions per screen, wide 2:1 and tall for phones and upright tablets, `K.handle` on the value,
+  pooled labels placed every frame clear of each other, the knob, the monitor, the scale and Start over, the line of
+  seven dots, the cause line, cue, tour, "?") and the three screens. A run is a pure function of time since release
+  (`negState`, `posPlan` / `posState`); every frame only sets attributes on the parts that change, and label placement
+  is skipped when nothing about the labels changed.
+- `anatomy-physiology/assets/tools/feedback-loops.js`: with the kit on (`V2`), `subStudio()` turns the studio's modes
+  into the inner switch and puts every part in Test yourself; `init()` routes links (`?id=`, `?mode=test`, `?topic=`,
+  `?chapter=`, `#explore/<tab>`) and keeps the address in step. Without the kit it behaves as before. Bug fixed on the
+  way: Watch it work drew its marker at NaN when a loop was opened after the body drawings had loaded.
+- `anatomy-physiology/data/pages.json`: `"kit2": true` and the new script and stylesheet on the tool; only
+  `tools/feedback-loops.html` changed in the build. The adapter (`AnpToolKit.kit2`) is used as it is: no change.
+- Sweep test `scripts/tools-v2/anp-feedback-loops-sweep.mjs`; frame test `scripts/tools-v2/anp-feedback-loops-frames.mjs`.
+
+## Checks run (2026-11-18)
+`node --test scripts/test/anp-*.test.mjs` 55 pass; `check-anp-content --check` 0 failing (tools 0 failing);
+`build-anp --check` clean; `check-site` OK; `check-weight --check` all 620 within budget; no shared file changed, so
+`build-apcalc` and `build-apmacro` were not affected; `check-tool-use` with a local copy of its list: feedback-loops
+sends tool-open, tool-touch(explore), tool-mode(quiz), tool-use as frame v2, and nothing under automation (the file
+itself is the collecting branch's, unchanged).
+Frame test: every run seeked every 0.02 s (temperature 38.4, 37.6, 35.9, 36.6, 38.5, 35.5 °C; glucose 150, 160, 110,
+60, 55, 76 mg/dL; childbirth pushes 0.35, 0.2, 0.06) at 1440 and 390: 13,200 frames, 0 failures (value pill, column,
+cause line numbers and monitor all read the drawn value; dot line and cause line name the same part; every part's
+label only while it is drawn acting; overshoot inside the normal range; effectors off at the end; stretch climbs until
+birth and falls only after it; glucose hexagons equal the level).
+Sweep (one width per process): 63 states each (rest, a held push, every part of both directions, the end, every turn of
+childbirth, birth and after) at 360, 390, 430, 600, 768, 820, 1024, 1280, 1440, 1920, 1366 x 768 and 1280 x 720, light,
+and 360, 390, 768, 1440 dark: 0 failures (nothing clipped, labels 4 px clear of each other, the knob, Start over, the
+monitor and the scale's numbers; the knob clear of the scale's numbers; the monitor's words clear of each other; no
+text under 11 px; the cue covering nothing; tabs fit; the picture the largest thing and at least 80% of the stage on a
+desktop, 85% upright tablet, 95% phone; cause line at most two rows on phones, one height, on screen; no sideways scroll;
+no console errors).
+Playwright at 1440 and 390 (light and dark): opens on Explore with the cue; real mouse drag (1440) and real touch drag
+(390, the page does not scroll) raise the value and the cue leaves; release starts the run and the parts light in
+time; the run ends near the set point with the takeaway; a press on the scale takes that value; keys move the value and
+start a run, with aria-valuetext the shown value; leaving for Test yourself or opening "?" mid run ends it and the
+screen comes back clean; childbirth left mid run ends at birth with the knob gone, Start over brings a new pregnancy, and
+a push after birth changes nothing; reduced motion gives the result at once with a cross fade; Test yourself records
+`feedback-loops:glucose-high-insulin:<slot>` right, `:kind` wrong and `:failure` right, with the finished card; deep
+links `?id=childbirth`, `?id=co2-high&mode=test`, `?topic=pancreas-glucose` (Explore, Glucose), `?topic=breathing-control`
+(Test yourself), `#explore/childbirth`; the free page shows no lock; no console errors. Performance with CPU x4: a full
+drag at 1440, median 16.7 ms and p95 50 ms; the machine's load average was 9 to 13 on 2 cores (other builders), so
+the p95 is not a clean number.
+Shots: `/mnt/user-data/outputs/anp-feedback-loops-v2/shots/` (landing with the cue, every part of temperature both
+ways, glucose both ways and childbirth turn by turn to after birth, a real mid run frame, Test yourself; 1440 light and
+dark, 768, 390 light and dark); preview `/mnt/user-data/outputs/anp-feedback-loops-v2/index.html`.
+
+## Not done, and what I am not happy with
+- No real phone, screen reader pass or real students; the independent review is next, and the science should get its
+  own check there (no helper agent was available to me for a separate accuracy pass).
+- The people are drawn at the pathway tracer's level, but the fetus is simple (a curled body and a head).
+- On a phone the monitor is short: its middle tick number steps aside when there is no room.
+- The temperature nerves run up the arm to the brain as one route (said in "?" and needs-author).
+- Test yourself is the old tool inside the new frame (its two modes as a small switch), not redesigned.
