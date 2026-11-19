@@ -993,7 +993,6 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .ls-root .tool-send__row{display:flex;flex-wrap:wrap;gap:8px;}
 .ls-sheet .tnote + .tnote,.ls-sheet .tnote + .tstage,.ls-sheet .tstage + .tnote{margin-top:10px;}
 
-.ls-root .ap-group__label{margin:0 0 8px;font:800 var(--ls-s) var(--font-ui);letter-spacing:0;text-transform:none;}
 .ls-root .ls-modes .ls-seg > button{padding:0 6px;}
 .ls-sheet .tnote__k{font:900 var(--ls-s) var(--font-ui);letter-spacing:0;text-transform:none;}
 .ls-sheet .tnote{font-size:var(--ls-m);line-height:1.5;}
@@ -1015,10 +1014,6 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .v3-ls .v3-stage svg{width:100%;height:100%;max-width:none;max-height:100%;}
 .v3-ls .v3-ls-src .tseg{width:100%;display:flex;}
 .v3-ls .v3-ls-src .tseg button{flex:1;}
-.v3-ls #v3Picker .ap-group{margin:0 0 12px;}
-.v3-ls #v3Picker .tool-more{margin:0;border:0;padding:0;}
-.v3-ls #v3Picker .tool-more > summary{font:700 var(--ls-m) var(--font-ui);letter-spacing:0;text-transform:none;}
-.v3-ls #v3Picker .tool-more__now{font-size:var(--ls-s);color:var(--muted);}
 .v3-ls .v3-quiz{margin:0;padding:0;border:0;background:none;display:flex;flex-direction:column;gap:12px;}
 .v3-ls .v3-quiz .v3-quiz__k{margin:0 0 8px;font:900 var(--ls-l)/1.25 var(--font-ui);letter-spacing:-.01em;text-transform:none;color:var(--ink);}
 .v3-ls .v3-quiz .tchips{gap:8px;}
@@ -1248,4 +1243,3 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .ls-root.ls-phone.sp-ls .sp-scale span{font-size:12px;}
 .ls-root.ls-phone.sp-ls .sp-scale span:first-child{transform:none;} .ls-root.ls-phone.sp-ls .sp-scale span:last-child{transform:translateX(-100%);} /* end labels inside the stage */
 
-.ls-root .ls-chips-hidden{display:none !important;}
