@@ -238,6 +238,10 @@ for (const w of WIDTHS) {
     states++; checks += 2;
     if (!mid.wait) fails.push(`${w} replay: the words did not wait while electrons moved`);
     if (!mid.fly) fails.push(`${w} replay: nothing was moving 450 ms in`);
+    // while the pieces slide (after the electrons, about 1.3 s in) the words still wait
+    await c.page.waitForTimeout(850);
+    const glide = await c.page.evaluate(() => ({ wait: !!document.querySelector('.tk2-cause.is-wait') && !!document.querySelector('.rs2-labs.is-wait'), moving: document.querySelectorAll('.rs2-mainA [data-p][transform]').length }));
+    checks++; if (glide.moving && !glide.wait) fails.push(`${w} replay: the words did not wait while the pieces slid`);
     await c.page.getByRole('button', { name: 'Test yourself' }).click(); await c.page.waitForTimeout(2600);
     const r = await c.page.evaluate(() => { const v = window.OchemArrowModel.view, S = v.S; return { ctx: S.ctx, fly: document.querySelectorAll('.rs2-fly *').length, arrows: document.querySelectorAll('.rs2-arrows .is-run').length, onStart: window.OchemArrowModel.sameStructure(S.cur, S.start) }; });
     states++; checks += 3;

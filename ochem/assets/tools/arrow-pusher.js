@@ -792,6 +792,9 @@
     var still = Object.keys(next.atoms).every(function(k){ return Math.abs(next.atoms[k].x - prev.atoms[k].x) + Math.abs(next.atoms[k].y - prev.atoms[k].y) < 0.5; });
     if(still){ if(done) done(); return; }
     var noQ = {}; over(from).forEach(function(k){ noQ[k] = 1; });
+    // the words wait while the pieces move, as they do while the electrons move
+    labsEl.classList.add('is-wait'); cause.el.classList.add('is-wait');
+    var fin = done; done = function(){ labsEl.classList.remove('is-wait'); cause.el.classList.remove('is-wait'); if(fin) fin(); };
     G.mainA.innerHTML = draw(from, T, { noCharge: noQ, pieces: pc }).html;
     G.mainA.style.opacity = '1';
     var delta = {}, groups = {};
