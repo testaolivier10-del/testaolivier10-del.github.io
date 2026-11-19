@@ -303,8 +303,12 @@
   };
 
   Monitor.prototype.startDrift = function(from, to){
-    var self = this;
     this.drift = { from: from, to: to, t0: Date.now(), said: false };
+    this.driftTick();
+  };
+  Monitor.prototype.driftTick = function(){
+    var self = this;
+    if(this.driftTimer) clearInterval(this.driftTimer);
     this.driftTimer = setInterval(function(){
       if(!self.drift) return;
       var ms = Date.now() - self.drift.t0;
@@ -324,6 +328,23 @@
         window.LevlAnnounce.say('The monitor is trending worse while you decide.');
       }
     }, 500);
+  };
+  /* Off screen (another tab, Explore, "?"): the traces, the tween and the hesitation clock stop, and the time away
+     does not count as hesitating (tools v2: every timer stops when its stage hides). */
+  Monitor.prototype.pause = function(){
+    if(this.paused) return;
+    this.paused = Date.now();
+    cancelAnimationFrame(this.raf); this.raf = 0;
+    if(this.driftTimer){ clearInterval(this.driftTimer); this.driftTimer = 0; }
+  };
+  Monitor.prototype.resume = function(){
+    if(!this.paused) return;
+    var gap = Date.now() - this.paused;
+    this.paused = 0;
+    if(this.drift){ this.drift.t0 += gap; this.driftTick(); }
+    if(this.tween) this.tween.t0 += gap;
+    this.last = 0;
+    if(!this.raf) this.raf = requestAnimationFrame(this.loop);
   };
   Monitor.prototype.stopDrift = function(){
     if(this.driftTimer){ clearInterval(this.driftTimer); this.driftTimer = 0; }
@@ -651,31 +672,39 @@
      current step is coral, an earlier one the accent, a bleed red. The mental
      status, which has no region of its own, rides on the head when the head
      has nothing else to say. */
-  Patient.prototype.items = function(){
-    var f = this.fig, fs = this.f || {}, items = [], self = this;
-    if(!f) return items;
-    for(var key in this.parts){
-      var list = fs[key] || [];
-      var k = key;
-      if(!list.length && key === 'head' && (fs.ms || []).length){ list = fs.ms; k = 'ms'; }
-      if(!list.length) continue;
-      var at = this.parts[key].at, pr = this.parts[key].paths;
+  /* Pure: the callouts for a figure and the findings seen so far (also the scenario simulator's Explore,
+     nremt/assets/scenario-explore.js). fig: a body figure (front or back), view: 'front' | 'back', f: findings(),
+     res: the care layer's resolutions or null. -> [{ key, where, what, sev, fresh, x, y }] in the figure's px. */
+  function pinsFor(fig, view, f, res){
+    var items = [];
+    if(!fig) return items;
+    f = f || {};
+    VIEW_REGIONS[view || 'front'].forEach(function(r){
+      var key = r[0], paths = r[1], list = f[key] || [], k = key;
+      if(!list.length && key === 'head' && (f.ms || []).length){ list = f.ms; k = 'ms'; }
+      if(!list.length) return;
+      var at = anchorOf(fig, key, paths);
       // a limb finding that names a side points at that limb (front view: the
       // patient's right is on the viewer's left; back view: the reverse)
-      if(pr.length > 1){
+      if(paths.length > 1){
         var txt = list.map(function(x){ return x.text; }).join(' ');
         var R = /\bright\b/i.test(txt), L = /\bleft\b/i.test(txt);
         if(R !== L){
-          var viewerLeft = (R === (this.view === 'front'));
-          at = f.anchors[pr[viewerLeft ? 0 : 1]] || at;
+          var viewerLeft = (R === (view !== 'back'));
+          at = fig.anchors[paths[viewerLeft ? 0 : 1]] || at;
         }
         // a thigh finding points at the thigh, not the knee
-        if(key === 'legs' && /\bthigh/i.test(txt) && f.lines && f.lines.groinY) at = [at[0], f.lines.groinY + (at[1] - f.lines.groinY) * 0.55];
+        if(key === 'legs' && /\bthigh/i.test(txt) && fig.lines && fig.lines.groinY) at = [at[0], fig.lines.groinY + (at[1] - fig.lines.groinY) * 0.55];
       }
-      var w = words(list, this.res);
+      var w = words(list, res);
       items.push({ key: k, where: where(k, list), what: w.text, sev: w.sev,
         fresh: list.some(function(x){ return x.now; }), x: at[0], y: at[1] });
-    }
+    });
+    return items;
+  }
+  Patient.prototype.items = function(){
+    if(!this.fig) return [];
+    var items = pinsFor(this.fig, this.view, this.f, this.res);
     if(window.NremtSim.care) window.NremtSim.care.pins(this, items);
     return items;
   };
@@ -792,7 +821,7 @@
   window.NremtSim = {
     Monitor: Monitor, Patient: Patient, HESITATE: HESITATE, util: { svgEl: svgEl, esc: esc },
     pure: { parseVitals: parseVitals, ageMonths: ageMonths, refFor: refFor, sbpLow: sbpLow, judge: judge,
-            driftAt: driftAt, findings: findings, words: words, where: where, sentences: sentences, REF: REF, SPO2_LOW: SPO2_LOW,
+            driftAt: driftAt, findings: findings, pinsFor: pinsFor, VIEW_REGIONS: VIEW_REGIONS, words: words, where: where, sentences: sentences, REF: REF, SPO2_LOW: SPO2_LOW,
             GRACE_MS: GRACE_MS, DRIFT_MS: DRIFT_MS }
   };
 })();
