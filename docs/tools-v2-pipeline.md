@@ -33,6 +33,7 @@ States: building, review, fixing, recheck, PASS (waiting to integrate), integrat
 | A&P predict | claude/tools-v2-anp-predict | wt-anp-predict | integrated | Explore in its own weight bucket `anatomy-physiology/predict-explore` (34 KB); anp spec decision 104 (103 was taken) |
 | NREMT skill sheets | claude/tools-v2-nremt-skillsheets | wt-nremt-skillsheets | integrated | third NREMT tool on `nremt-kit2.js` (unchanged); Explore `nremt/assets/skill-explore.js`, the run is Test yourself |
 | Ochem 3D viewer | claude/tools-v2-viewer-3d | wt-viewer-3d | integrated | second explorer (`K.spots` over a turning molecule); Handedness opens with the H in front and reads R or S after "H to the back" (brief rule 8) |
+| NREMT flowcharts | claude/tools-v2-nremt-flowcharts | wt-nremt-flowcharts | integrated | fourth NREMT tool on `nremt-kit2.js`; Explore `nremt/assets/flow-explore.js` (two drawn calls); Read, Build it and Drill me are Test yourself |
 
 2026-11-19: `main` merged in after PR #228 (ochem frame cleanup: chipPicker, scrollChips and .ls-chips-hidden gone; the v2
 conformations, resonance and arrow pusher kept, kit2 kept). Ochem viewer 3d had `main` merged
@@ -47,8 +48,9 @@ never straight to `main`. Nothing else goes live before the one final merge.
 Before the final merge:
 - Time the skill sheets bleeding station's Blanket and Transport taps on a quiet machine or a real phone (p95 is
   above budget under load). If still over 50 ms, find the cause.
+- Time flowcharts after the glove polish on a quiet machine (p95 at CPU x4 was 66 to 133 ms under load).
 
 Next by use (rollout table):
-NREMT body map (fixing recheck 1), NREMT flowcharts (fixing round 1),
+NREMT body map (fixing recheck 1),
 then A&P anatomy 3d, NREMT scenario sim, AP Bio chi square, Ochem reaction
 predictor, AP Bio rates (rollout rows 20 to 26).
