@@ -2152,3 +2152,34 @@ from that label's reviewed explanation in data/tools/lab-practical.json.
   "Papillary muscle: keeps the chordae tendineae taut", "Mastoid process: the bump behind the ear where muscles attach"
   and "Styloid process: a thin spike where small muscles attach" (the neck and tongue muscles are taught later, so
   the ordering rule keeps them unnamed).
+
+## Predict the change, tools v2 drawn chains (2026-11-19): items for review
+Brief: `docs/tools-v2-anp-predict-brief.md`. Explore draws four chains from the bank's scenarios; these are the model
+choices behind the numbers on the pictures.
+- **px-vessel-model** (decided, for review; changed in review round 1). Poiseuille for the arteriole: its resistance is
+  1 / r⁴ (×16 at half the radius). Between the two gauges the blood passes the arteriole and then the capillary bed, so
+  the flow is the pressure difference over both: the arteriole is taken as half of that resistance at its usual radius,
+  flow = 2 / (1 / r⁴ + 1) of usual (about 1/8.5 at half the radius, 1.5 times at 1.3). The flow label shows only its
+  arrow, never a factor (×1/16 is true only for a single tube, as in `tube-narrows`). The end pressures are held (as
+  `one-organ-constricts` states). Not drawn: the fall in pressure inside the capillaries beyond a squeezed arteriole.
+- **px-breath-model** (decided, for review). Rate changed with each breath the same size; PaCO2 = 40 x 12 / rate (8 to
+  24 a minute: 60 to 20 mm Hg); bicarbonate changes acutely by -2 per 10 mm Hg fall and +1 per 10 rise (no renal
+  compensation, said in "?"); pH by Henderson-Hasselbalch (7.26 to 7.62). O2 saturation from the alveolar gas equation
+  (PIO2 150, R 0.8) and the Severinghaus curve: 97.7% at 12, 98.8% at 24 (labeled "O₂ saturation 98.8% ↑"), 94.9% at
+  8 (falls, "↓"); the label shows one decimal and its real arrow. Review round 1: saturation carries its real arrow whenever its shown number moves (rises about 1 point when
+  breathing faster; the bank's `hyperventilation` keys it "none" because it barely changes, which "?" says), and the
+  screen's "same" label is the breath size, which the model holds.
+- **px-adh-model** (decided, for review). Urine volume = 600 mOsm a day / urine concentration (the notes' worked
+  example), concentration 50 + 1,150 x the ADH level; 12.5 L a day is taken to reach the collecting ducts, so about
+  0.5 L is still reabsorbed with no ADH (as `ur-adh-blocked` says). The interstitium's gradient is drawn the same at
+  every ADH level (urea's ADH-dependent part is not modelled).
+  Review round 1: the 12.5 L a day reaching the ducts is lower than the 15 to 20 percent of filtered water (27 to 36 L)
+  that `ur-adh-blocked`'s explanation says reaches the collecting duct; the model's number comes from the course's own
+  600 mOsm ÷ 50 mOsm/L = 12 L for the most dilute urine. Which should the picture follow? "?" now says fluid leaves the
+  nephron loop at about 100 mOsm/L whatever ADH does (with ADH the late distal tubule and cortical collecting duct
+  equilibrate toward 300 mOsm/L, which is not drawn).
+- **px-heart-model** (decided, for review). Stroke volume = 110 x (1 - e^-(EDV-45)/75) mL at a fixed heart rate (70) and
+  contractility: 50 mL at 90 mL filling, 70 at 120, 86 at 160 (the curve flattens). The end-systolic volume therefore
+  rises a little with filling. Sarcomere length 1.8 to 2.2 um across the filling range, shortening during each beat.
+- **px-pace** (decided, for review). Each link follows its cause with a lag of 0.2 to 0.65 s so the order is seen; "?"
+  says the real times (CO2 over minutes, the kidney over hours).

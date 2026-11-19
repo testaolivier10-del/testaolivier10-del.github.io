@@ -39,6 +39,23 @@
      studioStage, studioSetup, studioSummary); lookups go through the
      document, and a stage's dials through dashOf(box). */
   var S = window.AnpToolKit && window.AnpToolKit.studio ? window.AnpToolKit.studio({ menu: [{ label: 'End session', icon: 'flag', onClick: function(){ var q = Q().querySelector('.pc-quit'); if(q) q.click(); } }] }) : null;
+  /* Tools v2 (docs/tools-v2-anp-predict-brief.md): with the kit on the page (pages.json "kit2": true), Explore is the
+     drawn body systems of tools/predict-explore.js (make a change, watch it spread) and everything below (every
+     scenario, the setup screen, the summary, with every item id and record unchanged) is Test yourself. quizView()
+     stands in for the studio and puts every part, caption, pill and finished card in the quiz mode. */
+  var V2 = !!(S && window.LevlKit2 && window.AnpPredictExplore && window.AnpToolKit.kit2), KIT = null, EX = null, SS = S;
+  if(V2) S = quizView(SS);
+  function quizView(real){
+    var f = Object.create(real);
+    f.put = function(region, els, o){ real.put(region, els, { mode: 'quiz', first: !!(o && o.first) }); return f; };
+    f.caption = function(html){ real.caption(html, 'quiz'); return f; };
+    f.pills = function(items, side){ real.pills(items, side, 'quiz'); return f; };
+    f.done = function(d){ return real.done ? real.done(d, 'quiz') : null; };
+    // the first-use hint points at a quiz control: only while Test yourself shows
+    f.hint = function(o){ return KIT && KIT.mode() === 'quiz' ? real.hint(o) : null; };
+    f.reset = function(){ real.reset(); return f; };
+    return f;
+  }
   function Q(){ return S ? document : app; }
   function dashOf(box){ return box._dash || box; }
 
@@ -79,11 +96,33 @@
     else if(ch && chapters().indexOf(ch) > -1) filters.chapter = ch;
     if(lv >= 1 && lv <= 4) filters.level = lv;
     var direct = one && DATA.scenarios.filter(function(s){ return s.id === one; })[0];
+    if(V2) bootV2(!!direct, tp, ch, lv);
     if(direct){ startSession([direct]); return; }
     var list = matching();
     if(!list.length){ renderSetup(); return; }
     var todo = list.filter(function(s){ var l = lastScore(s); return !l || l.right < l.total; });
     startSession(ordered(todo.length ? todo : list).slice(0, +filters.length || 8));
+  }
+  /* v2: which mode a link opens. #explore/<screen>: that Explore screen. ?id= and ?level=: Test yourself, as before.
+     ?topic= or ?chapter= with a drawn screen: that screen in Explore (Test yourself holds the same filtered session
+     the old link opened); without one: Test yourself. No link: Explore, first screen; Test yourself holds the session
+     the old tool opened on. "Test yourself on this" in Explore's "?" starts a session of that screen's scenarios. */
+  function bootV2(direct, tp, ch, lv){
+    EX = window.AnpPredictExplore.build({ data: DATA, base: base(), studio: SS, onQuiz: function(ids){
+      startSession(DATA.scenarios.filter(function(s){ return ids.indexOf(s.id) > -1; }));
+      if(KIT) KIT.go('quiz');
+    } });
+    if(EX) KIT = window.AnpToolKit.kit2(SS, { stage: EX.stage, ref: EX.ref, onShow: function(m, user){
+      EX.shown(m === 'explore');
+      if(user) try{ history.replaceState(null, '', location.pathname + location.search + (m === 'explore' ? '#explore/' + EX.tab() : '')); }catch(e){}
+    } });
+    if(!KIT){ V2 = false; S = SS; return; }
+    var h = (location.hash || '').replace(/^#/, '').split('/'), tab = null, quiz = false;
+    if(h[0] === 'explore') tab = EX.tabFor({ tab: h[1] }) || EX.tab();
+    else if(direct || (lv >= 1 && lv <= 4)) quiz = true;
+    else if(tp || ch){ tab = EX.tabFor({ topic: tp, chapter: tp ? null : ch, topicOf: topicOf }); quiz = !tab; }
+    if(tab) EX.tab(tab);
+    KIT.go(quiz ? 'quiz' : 'explore');
   }
   function kit(){ return window.AnpToolKit || null; }
   function addPicker(s){
