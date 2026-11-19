@@ -224,4 +224,12 @@ ventilation-mechanics (forced breath out), muscle-tension (thick filaments butt 
 `docs/anp-needs-author.md`: gx-sarcomere-crumple, gx-heart-left-only, gx-axon-channel-timing and
 gx-forced-expiration-words updated; gx-dissolved-o2 and gx-po2-places added.
 
-Checks (round 1): see the end of this section once run.
+Checks (round 1): `node --test scripts/test/anp-*.test.mjs` 55 pass; `check-anp-content --check` 0 failing;
+`build-anp --check` clean; `check-site` OK; `check-weight --check` all within budget; `check-tool-use` with a local
+copy of its list: graphs sends tool-open, tool-touch(explore), tool-mode(quiz), tool-use as frame v2 and nothing under
+automation. Sweep one width per process at all ten widths, light and dark: 45 states each, clean (now also: every tab
+name fits, the cause line one height up to 1,100 px). Frame test at 1440, 390 and 360: 1,785 frames each, clean.
+Playwright at 390, 768 and 1440, light and dark: 167 checks pass (drags, touch, keys, tween, reduced motion, Test
+yourself right and wrong, deep links, the locked state, no console errors); Test yourself's Wiggers left ventricle
+measured blue in light and dark. Shots: `/mnt/user-data/outputs/anp-graphs-v2/shots/` (round 1: `r1-*`); sweep
+contact sheets in `sweep/`; preview `index.html` regenerated.
