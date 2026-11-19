@@ -43,8 +43,8 @@
 .fx2-placket{stroke:#557EA8;stroke-width:4;fill:none;}
 .fx2-shirt{transition:opacity .5s ease;} .fx2-shirt.is-off{opacity:0;}
 .fx2-paleo{fill:#F4F1EC;opacity:0;transition:opacity 1.2s ease;mix-blend-mode:screen;}
-.fx2-greyo{fill:#7A8794;opacity:0;transition:opacity 1.2s ease;mix-blend-mode:color;}
-.fx2-hair{fill:#3A2A1E;} .fx2-hair.is-grey{fill:#A8A29A;}
+.fx2-grayo{fill:#7A8794;opacity:0;transition:opacity 1.2s ease;mix-blend-mode:color;}
+.fx2-hair{fill:#3A2A1E;} .fx2-hair.is-gray{fill:#A8A29A;}
 .fx2-face path,.fx2-face ellipse,.fx2-face circle{vector-effect:non-scaling-stroke;}
 .fx2-nose{fill:none;stroke:#B0735E;stroke-width:1.3;opacity:.7;}
 .fx2-brow{fill:none;stroke:#5A4030;stroke-width:2.2;stroke-linecap:round;}
@@ -202,7 +202,7 @@
 
 /* reduced motion: a short cross fade and the end state at once */
 @media (prefers-reduced-motion:reduce){
-  .fx2-cam,.fx2-chart,.fx2-node,.fx2-arms,.fx2-pool,.fx2-blanket,.fx2-paleo,.fx2-greyo{transition:opacity .15s linear !important;}
+  .fx2-cam,.fx2-chart,.fx2-node,.fx2-arms,.fx2-pool,.fx2-blanket,.fx2-paleo,.fx2-grayo{transition:opacity .15s linear !important;}
   .fx2-on *,.fx2-aed *{animation:none !important;}
   .fx2-node.is-new,.fx2-arms.is-new{transform:none;}
   .fx2-ln{transition:none;} .fx2-ln.is-new{stroke-dashoffset:0;}

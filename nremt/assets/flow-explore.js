@@ -83,7 +83,7 @@
             { t: 'No', ok: true, act: 'Call for help, AED', res: 'partner gets the AED', fx: 'call' }] },
         { id: 'pulse', q: 'Breathing, pulse?', see: 'Gasping, no pulse', look: [-40, 560], check: 'pulse',
           arms: [
-            { t: 'Both normal', con: 'Gasps aren’t breaths', res: 'no CPR, no blood flow', bad: 'grey', lost: 1 },
+            { t: 'Both normal', con: 'Gasps aren’t breaths', res: 'no CPR, no blood flow', bad: 'gray', lost: 1 },
             { t: 'Pulse only', con: 'No blood moves', res: 'breaths alone move no blood', bad: 'breaths', lost: 1 },
             { t: 'No pulse', ok: true, act: 'CPR 30:2', res: 'blood pushed to the brain', fx: 'cpr' }] },
         { id: 'aed', q: 'Shock advised?', see: 'AED: Shock advised', look: [-40, 560], check: 'aed', pre: 'AED on, pads on',
@@ -171,7 +171,7 @@
     var S = {};
     function fresh(c){
       return { i: 0, phase: 'check', picks: {}, lost: 0, done: false,
-        fx: { eyes: 'closed', mouth: 'n', bleed: c.id === 'primary' ? 'spurt' : 'none', pool: c.id === 'primary' ? 1 : 0, pale: 0, grey: 0, blue: false, snore: false,
+        fx: { eyes: 'closed', mouth: 'n', bleed: c.id === 'primary' ? 'spurt' : 'none', pool: c.id === 'primary' ? 1 : 0, pale: 0, gray: 0, blue: false, snore: false,
           tq: false, jaw: false, chest: '', pulse: false, sweat: false, blanket: false, bvm: false, exam: false, tap: false,
           carotid: false, cpr: false, bare: false, aed: false, pads: false, screen: '', clear: false, flash: false },
         items: [] };
@@ -267,9 +267,9 @@
         if(c.scene === 'garage') cl.push('<path class="fx2-cl fx2-tee" d="M0 168L480 168L480 300L380 300L380 520L100 520L100 300L0 300Z"/>' +
           '<path class="fx2-cl fx2-work" d="M100 520L380 520L386 1130L240 1130L240 700L230 709L214 697L198 710L182 698L166 709L150 698L134 709L118 699L100 706Z"/>');
         else cl.push('<path class="fx2-cl fx2-pants" d="M100 540L380 540L386 1140L94 1140Z"/><g class="fx2-shirt"><path class="fx2-cl fx2-blue" d="M0 168L480 168L480 560L0 560Z"/><path class="fx2-placket" d="M240 214L240 556"/></g>');
-        h.push('<g clip-path="url(#fx2-body)"><path class="fx2-paleo" d="' + F.outline + '"/><path class="fx2-greyo" d="' + F.outline + '"/>' + cl.join('') + '</g>');
+        h.push('<g clip-path="url(#fx2-body)"><path class="fx2-paleo" d="' + F.outline + '"/><path class="fx2-grayo" d="' + F.outline + '"/>' + cl.join('') + '</g>');
         h.push(c.scene === 'garage' ? '<path class="fx2-hair" d="M199 70C196 30 214 5 240 4C267 5 285 30 281 70C276 50 266 38 254 34C244 31 236 31 226 34C214 38 204 50 199 70Z"/>'
-          : '<path class="fx2-hair is-grey" d="M200 60C200 40 210 22 222 18C230 30 250 30 258 18C270 22 280 40 280 60C272 46 262 40 240 40C218 40 208 46 200 60Z"/>');
+          : '<path class="fx2-hair is-gray" d="M200 60C200 40 210 22 222 18C230 30 250 30 258 18C270 22 280 40 280 60C272 46 262 40 240 40C218 40 208 46 200 60Z"/>');
         h.push('<g class="fx2-face"><path class="fx2-nose" d="' + FACE.nose + '"/><path class="fx2-brow" d="' + FACE.brow + '"/>' +
           '<g class="fx2-eo">' + eye(224) + eye(256) + '</g><g class="fx2-ec"><path class="fx2-lid" d="' + FACE.lidC + '"/></g>' +
           '<path class="fx2-mouth fx2-mn" d="' + FACE.mouthN + '"/><path class="fx2-mo" d="' + FACE.mouthO + '"/>' +
@@ -333,7 +333,7 @@
       if(pool){ pool.style.transform = 'scale(' + (0.55 + 0.45 * f.pool).toFixed(3) + ')'; }
       cls('.fx2-jets', f.bleed === 'spurt'); cls('.fx2-wound', f.bleed !== 'none');
       var pa = gCam.querySelector('.fx2-paleo'); if(pa) pa.style.opacity = [0, 0.22, 0.34, 0.44][Math.min(3, f.pale)];
-      var gr = gCam.querySelector('.fx2-greyo'); if(gr) gr.style.opacity = [0, 0.2, 0.32, 0.4][Math.min(3, f.grey)];
+      var gr = gCam.querySelector('.fx2-grayo'); if(gr) gr.style.opacity = [0, 0.2, 0.32, 0.4][Math.min(3, f.gray)];
       cls('.fx2-lips', f.blue); cls('.fx2-sweat', f.sweat);
       cls('.fx2-tq', f.tq); cls('.fx2-snore', f.snore); cls('.fx2-jaw', f.jaw);
       cls('.fx2-rise', f.chest === 'rise'); cls('.fx2-gasp', f.chest === 'gasp');
@@ -522,7 +522,7 @@
           [600, function(){ setLabels([{ text: 'No pulse', at: [212, 188] }, { text: 'Gasping', at: [240, 120] }]); }]];
         case 'aed': return [[0, function(){ look(); speak(null); f.cpr = true; paintFx(); }], [500, function(){ f.aed = true; paintFx(); }], [600, function(){ f.bare = true; f.pads = true; paintFx(); }],
           [700, function(){ f.cpr = false; f.screen = 'vf'; paintFx(); speak('aed', 'Analyzing. Don’t touch the patient.'); }],
-          [1400, function(){ f.screen = 'shock'; paintFx(); speak(null); setLabels([{ text: 'Shock advised', at: 'aed' }, { text: 'Pads', at: [192, 249], tone: 'act' }]); }]];
+          [1400, function(){ f.screen = 'shock'; paintFx(); speak(null); setLabels([{ text: 'Pads', at: [192, 249], tone: 'act' }]); }]];
       }
       return [[0, look]];
     }
@@ -575,7 +575,7 @@
       return ({ voice: [{ text: 'Eyes open to voice', at: [240, 77] }], bleed: [{ text: 'Spurting blood', at: [150, 784] }], snore: [{ text: 'Snoring', at: [240, 150] }],
         breathe: [{ text: 'Chest rises fully', at: [240, 310] }], shock: [{ text: 'Pale, sweaty', at: [240, 60] }, { text: 'Fast, weak pulse', at: [50, 600] }],
         prio: [{ text: 'Responds to voice', at: [240, 77] }, { text: 'Shock', at: [240, 400] }], tap: [{ text: 'No response', at: [240, 77] }],
-        pulse: [{ text: 'No pulse', at: [212, 188] }, { text: 'Gasping', at: [240, 120] }], aed: [{ text: 'Shock advised', at: 'aed' }] })[step.check] || [];
+        pulse: [{ text: 'No pulse', at: [212, 188] }, { text: 'Gasping', at: [240, 120] }], aed: [{ text: 'Pads', at: [192, 249], tone: 'act' }] })[step.check] || [];
     }
     function lose(n){ T().lost += n; paintFx(); placeChips(); }
     // a wrong arm: its consequence happens on the picture, then the label names it
@@ -590,10 +590,10 @@
         case 'paler': return [[200, function(){ f.pale = Math.min(3, f.pale + 1); paintFx(); }], [1100, function(){ setLabels([{ text: 'Paler, colder', at: [240, 60], tone: 'bad' }]); }]];
         case 'slow': return [[200, function(){ lose(arm.lost); }], [900, function(){ setLabels([{ text: 'Still on the floor', at: [240, 500], tone: 'bad' }]); }]];
         case 'wait': return [[200, function(){ lose(arm.lost); }], [900, function(){ setLabels([{ text: 'No AED coming', at: [240, 77], tone: 'bad' }]); }]];
-        case 'grey': return [[200, function(){ f.grey = Math.min(3, f.grey + 1); paintFx(); }], [1000, function(){ lose(arm.lost); setLabels([{ text: 'Turning grey', at: [240, 300], tone: 'bad' }]); }]];
-        case 'breaths': return [[200, function(){ f.bvm = true; f.chest = 'rise'; paintFx(); }], [1500, function(){ f.bvm = false; f.chest = ''; f.grey = Math.min(3, f.grey + 1); paintFx(); }],
+        case 'gray': return [[200, function(){ f.gray = Math.min(3, f.gray + 1); paintFx(); }], [1000, function(){ lose(arm.lost); setLabels([{ text: 'Turning gray', at: [240, 300], tone: 'bad' }]); }]];
+        case 'breaths': return [[200, function(){ f.bvm = true; f.chest = 'rise'; paintFx(); }], [1500, function(){ f.bvm = false; f.chest = ''; f.gray = Math.min(3, f.gray + 1); paintFx(); }],
           [700, function(){ lose(arm.lost); setLabels([{ text: 'No blood moves', at: [240, 300], tone: 'bad' }]); }]];
-        case 'noshock': return [[200, function(){ f.cpr = true; paintFx(); }], [1400, function(){ f.cpr = false; paintFx(); lose(arm.lost); setLabels([{ text: 'Still VF', at: 'aed', tone: 'bad' }]); }]];
+        case 'noshock': return [[200, function(){ f.cpr = true; paintFx(); }], [1400, function(){ f.cpr = false; paintFx(); lose(arm.lost); setLabels([{ text: 'No shock given', at: [240, 300], tone: 'bad' }]); }]];
       }
       return [];
     }
@@ -723,7 +723,7 @@
     var ref = el('div', 'fx2-ref');
     ref.innerHTML =
       '<h3>What you are looking at</h3>' +
-      '<p>A patient lying on his back, seen from above, with the protocol card on the floor beside him. At each question the picture shows what you find; tap the answer that fits and the next box of the chart is drawn on the card while the EMT does it. A wrong answer shows what it would cost (more blood lost, blue lips, minutes lost), stays struck on the card, and you pick again. Lost time stays on the clock until Start over.</p>' +
+      '<p>A patient lying on his back, seen from above, with the protocol card on the floor beside him. At each question the picture shows what you find; tap the answer that fits and the next box of the chart is drawn on the card while the EMT does it. A wrong answer shows what it would cost (more blood lost, blue lips, minutes lost), stays struck on the card, and you pick again. Lost time stays on the clock until Start over; its minutes are rough figures for illustration, not measured delays.</p>' +
       '<h3>Primary assessment</h3>' +
       '<ul class="fx2-ref-l"><li><b>Responds to?</b> AVPU: he opens his eyes and groans when you speak, so V. Altered mental status raises his priority.</li>' +
       '<li><b>Severe bleeding?</b> Bright red blood spurting from the thigh is life threatening: a tourniquet 2 to 3 inches above the wound, never over the knee, tightened until the bleeding stops. In trauma it comes before the airway.</li>' +

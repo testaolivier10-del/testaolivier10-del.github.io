@@ -176,3 +176,26 @@ management, primary assessment, principles of assessment, cardiac emergencies) a
   artery). Timing follows the same table as the sound: AV valves close at S1, aortic and pulmonic at S2 (split: aortic
   first), ventricles squeeze in systole, the atria at the end of diastole. The murmurs are one example each (aortic
   stenosis, aortic regurgitation), as the old page already said.
+
+## Flowcharts, tools v2 Explore (2026-11-19, branch claude/tools-v2-nremt-flowcharts)
+
+Explore (`nremt/assets/flow-explore.js`) walks two made up calls through a protocol on a drawn patient. Checked against
+the course notes, the AHA 2025 adult BLS algorithm (healthcare provider, accessible text) and the page's own charts;
+for a person to confirm:
+
+- **Circulation fork of the Primary assessment chart.** The page's chart asks "bleeding still uncontrolled / perfusion
+  adequate". A patient whose bleeding is controlled can still be in shock, so neither arm fits him. Explore asks "Signs
+  of shock?" (yes: keep him warm, high priority) and "?" says why; the chart itself (and Build it and Drill me, which
+  read it) is unchanged. Should the chart's fork be reworded?
+- **Order of AVPU and the bleeding check.** Explore follows the page's chart (AVPU, then life threatening bleeding).
+  Some programs teach X-ABC with massive bleeding controlled as soon as it is seen in the general impression; the
+  chart's note says bleeding comes before the airway in trauma, which Explore keeps.
+- **Jaw thrust for a fall.** A fall from a ladder puts the spine in question, so the snoring airway is opened with a
+  jaw thrust (course notes). The gloved hands stay on the jaw for the rest of the call (maintaining the airway); an
+  adjunct is not shown.
+- **Blue lips clearing after the jaw thrust.** After the wrong "airway open: yes" arm, the lips turn blue; they clear
+  once the jaw thrust opens the airway (oxygenation recovers). Everything else a wrong arm does stays (blood lost,
+  pallor, the clock).
+- **The lost time clock.** 1, 2 and 10 minutes are illustrative figures for the wrong arms, said in "?".
+- **Cardiac arrest, three way fork.** Explore uses AHA 2025's three outcomes (normal breathing and a pulse; a pulse
+  without normal breathing; no pulse with no breathing or only gasping). The page's BLS chart has two arms; unchanged.
