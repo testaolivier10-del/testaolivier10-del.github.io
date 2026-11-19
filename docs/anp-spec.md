@@ -525,4 +525,17 @@ Site audit follow-up (2026-10-02, workstream W6):
     Review round 1 (2026-11-18): no step column (the steps are one line under a full width picture), two
     compositions per screen (wide 2:1, tall 1:1), a clear ring knob, broken runs stop after their last real step, the
     people redrawn, the stalk into the posterior lobe, the zoom from T12 to L1.
-
+102. (2026-11-18) **Feedback loop builder on tools v2** (docs/tools-v2-standard.md; brief docs/tools-v2-anp-feedback-loops-brief.md).
+    Explore is three drawn loops from the bank: body temperature (`temperature-hot`, `temperature-cold`: a person, a
+    magnified patch of skin with a nerve ending, an arteriole, a sweat gland and skeletal muscle, the hypothalamus),
+    blood glucose (`glucose-high-insulin`, `glucose-low-glucagon`: a trunk with liver, pancreas, muscle and fat, a
+    magnified islet) and childbirth as positive feedback on its own tab (`dv-labor-oxytocin`: the uterus, cervix and
+    fetus, the spinal cord, the hypothalamus and posterior pituitary magnified). The student pushes the variable off
+    normal (the thermometer, the glucose meter, the baby's head); on release each of the seven parts acts in place in
+    order, named under the picture with the loop's own slot words, while the value is drawn on the body and on a monitor
+    trace against time (set point and normal range; for childbirth the stretch and the contractions, until birth ends
+    the loop). Test yourself holds all 49 loops with their Watch it work and build, classify and failure steps,
+    unchanged (the tool's own modes are a small switch in its panel). Uses AnpToolKit.kit2 unchanged ("kit2": true in
+    data/pages.json). Item ids, scoring, recording and deep links unchanged; open points in docs/anp-needs-author.md
+    (fl-*). Also fixed: Watch it work drew its gauge marker at NaN when a second loop opened after the body drawings had
+    loaded (the drawing callback ran before the marker's state was set).

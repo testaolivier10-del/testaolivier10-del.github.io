@@ -259,7 +259,7 @@
       set: SET, min: MIN, max: MAX, step: 0.1, dead: 0.1, band: [36.5, 37.5],
       fmt: function(v){ return v.toFixed(1) + ' °C'; },
       TM: { sens: 0.35, aff: 0.8, affEnd: 1.75, ctl: 1.75, eff: 2.35, effEnd: 3.3, act: 3.3, resp: 3.7, tail: 4.4 },
-      mon: { title: 'Body temperature', lo: 35.5, hi: 38.5, ticks: [36, 37, 38], unit: '°C', setLabel: 'Set point', role: 'temp' },
+      mon: { title: 'Body temperature', short: 'Temperature', lo: 35.5, hi: 38.5, ticks: [36, 37, 38], unit: '°C', setLabel: 'Set point', role: 'temp' },
       knobAt: knobAt,
       pick: function(L, x, y){ var g0 = L.g.therm; return MAX - (y - g0[1]) / (300 * g0[2]) * (MAX - MIN); },
       valRole: function(v){ return v > SET + 0.05 ? 'heat' : v < SET - 0.05 ? 'cold' : 'tok'; },
@@ -433,8 +433,9 @@
       m += '<path class="fe-cap" d="M-160,40 C-90,30 -40,-4 20,-6 C80,-8 120,-12 160,-16"/><path class="fe-capl" d="M-160,40 C-90,30 -40,-4 20,-6 C80,-8 120,-12 160,-16"/>';
       return m;
     }
-    var BETA = [[-40, -40], [-6, -46], [28, -40], [-52, 18], [-18, 26], [16, 30], [50, 22], [-30, 58], [8, 62]];
-    var ALPHA = [[-76, -20], [-60, -66], [62, -62], [82, -16], [72, 56], [-70, 60], [40, 78]];
+    // a human islet: beta cells (about 55%) and alpha cells mixed through it, not in a core and a rim
+    var BETA = [[-40, -40], [28, -40], [-52, 18], [16, 30], [50, 22], [-30, 58], [8, 62], [62, -62], [-76, -20]];
+    var ALPHA = [[-6, -46], [-18, 26], [82, -16], [72, 56], [-70, 60], [40, 78], [-60, -66]];
     function cells(){
       var m = '';
       BETA.forEach(function(c, i){ m += '<g class="fe-beta" data-b="' + i + '"><circle cx="' + c[0] + '" cy="' + c[1] + '" r="17"/><circle class="fe-cnuc" cx="' + (c[0] - 4) + '" cy="' + (c[1] - 3) + '" r="5.5"/></g>'; });
@@ -451,7 +452,7 @@
       set: SET, min: MIN, max: MAX, step: 1, dead: 4, band: [70, 99],
       fmt: function(v){ return Math.round(v) + ' mg/dL'; },
       TM: { sens: 0.35, aff: 0.8, affEnd: 0.8, ctl: 1.15, eff: 1.75, effEnd: 3.0, act: 3.0, resp: 3.4, tail: 4.4 },
-      mon: { title: 'Blood glucose', lo: 55, hi: 160, ticks: [70, 100, 140], unit: 'mg/dL', setLabel: 'Set point', role: 'glu' },
+      mon: { title: 'Blood glucose', short: 'Glucose', lo: 55, hi: 160, ticks: [70, 100, 140], unit: 'mg/dL', setLabel: 'Set point', role: 'glu' },
       knobAt: function(L, v){ return T(L, [0, meterY(v), 'therm']); },
       pick: function(L, x, y){ var g0 = L.g.therm; return MAX - (y - g0[1]) / (300 * g0[2]) * (MAX - MIN); },
       valRole: function(){ return 'glu'; },
@@ -562,8 +563,8 @@
         var M = function(p){ return T(L, [p[0], p[1], 'mag']); }, B = function(p){ return T(L, [p[0], p[1], 'person']); };
         if(k < 1) out.push({ key: 'islet', text: 'Pancreatic islet', role: 'tok', at: M([0, -90]), side: ['u', 'd'] });
         if(k < 5 || st.done) out.push({ key: 'panc', text: 'Pancreas', role: 'tok', at: B([50, 214]), side: ['r', 'd'] });
-        if(k >= 1 && k <= 3) out.push({ key: 'cells', text: hi ? 'Beta cells' : 'Alpha cells', role: hi ? 'ins' : 'gcg', at: hi ? M([-6, -46]) : M([-76, -20]), side: ['u', 'l', 'r'], strong: k === 1 || k === 3 });
-        if(k === 2) out.push({ key: 'same', text: 'No nerve: same cells', role: 'aff', at: hi ? M([16, 30]) : M([72, 56]), side: ['d', 'r'], strong: true });
+        if(k >= 1 && k <= 3) out.push({ key: 'cells', text: hi ? 'Beta cells' : 'Alpha cells', role: hi ? 'ins' : 'gcg', at: hi ? M([-40, -40]) : M([-6, -46]), side: ['u', 'l', 'r'], strong: k === 1 || k === 3 });
+        if(k === 2) out.push({ key: 'same', text: 'No nerve: same cells', role: hi ? 'ins' : 'gcg', at: hi ? M([16, 30]) : M([-18, 26]), side: ['d', 'r'], strong: true });
         if(k === 3 || k === 4) out.push({ key: 'horm', text: hi ? 'Insulin' : 'Glucagon', role: hi ? 'ins' : 'gcg', at: k === 3 ? M([80, -6]) : (st.effp.length ? (hi ? R0(E).mus : R0(E).liver).at(clamp((st.effp[0].p - 0.3) / 0.7, 0, 1)) : B([4, 214])), side: ['u', 'r', 'l'], strong: k === 4, lead: k === 4 });
         if(k >= 5 && !st.done && st.eff > 0.15){
           out.push({ key: 'liver', text: 'Liver', role: 'eff', at: B([-40, 150]), side: ['l', 'u'], strong: k === 5 });
@@ -578,7 +579,7 @@
         switch(k){
           case 0: return { pre: 'Stimulus:', parts: [{ t: (hi ? 'Glucose rises to ' : 'Glucose falls to ') + v, role: 'glu' }] };
           case 1: return { pre: 'Sensor:', parts: [{ t: hi ? 'Beta cells sense the rise' : 'Alpha cells sense the fall', role: hi ? 'ins' : 'gcg' }] };
-          case 2: return { pre: 'Afferent:', parts: [{ t: 'None', role: 'aff' }, { t: 'the same cells sense and decide', role: 'aff' }] };
+          case 2: return { pre: 'Afferent:', parts: [{ t: 'None', role: hi ? 'ins' : 'gcg' }, { t: 'the same cells sense and decide', role: hi ? 'ins' : 'gcg' }] };
           case 3: return { pre: 'Control center:', parts: [{ t: hi ? 'Beta cells release insulin' : 'Alpha cells release glucagon', role: hi ? 'ins' : 'gcg' }] };
           case 4: return { pre: 'Efferent:', parts: [{ t: hi ? 'Insulin in the blood' : 'Glucagon in the blood', role: hi ? 'ins' : 'gcg' }] };
           case 5: return { pre: 'Effector:', parts: hi ? [{ t: 'Liver, muscle, fat', role: 'eff' }, { t: 'take glucose in', role: 'glu' }] : [{ t: 'Liver', role: 'eff' }, { t: 'breaks down glycogen', role: 'glu' }] };
@@ -589,7 +590,7 @@
       },
       take: function(st){ return st.dir === 'up' ? 'Negative feedback: insulin moved glucose into storage, and less insulin is released as it falls.' : 'Negative feedback: glucagon made the liver release glucose, and less glucagon is released as it rises.'; },
       idleWords: function(x){ return { pre: 'Now:', parts: [{ t: this.fmt(x), role: 'glu' }, { t: 'normal fasting level', role: 'glu' }, { t: 'nothing to correct' }] }; },
-      note: 'The pancreas is drawn in front of the stomach so it can be seen; it lies behind it. Each gold hexagon in the blood stands for a share of the glucose, not one molecule. The islet cells are their own sensors and control center, so this loop has no nerve between them. Insulin acts on the liver, skeletal muscle and fat (muscle and fat move glucose carriers to their membranes; the liver stores glucose as glycogen); glucagon acts on the liver, which breaks glycogen down and makes new glucose. Muscle keeps its glycogen for itself. The fasting normal range is about 70 to 99 mg/dL; the set point is drawn at 88, the level in the bank’s loop.'
+      note: 'The pancreas is drawn in front of the stomach so it can be seen; it lies behind it. Each gold hexagon in the blood stands for a share of the glucose, not one molecule. The islet cells are their own sensors and control center, so this loop has no nerve between them. Insulin acts on the liver, skeletal muscle and fat (muscle and fat move glucose carriers to their membranes; the liver stores glucose as glycogen); glucagon acts on the liver, which breaks glycogen down and makes new glucose. Muscle keeps its glycogen for itself. In a human islet the beta and alpha cells are mixed, as drawn. The fasting normal range is about 70 to 99 mg/dL; the set point is drawn at 88, the level in the bank’s loop.'
     });
     // the scene's routes, for labels that follow a molecule (computed per layout, cached on the engine's E)
     function R0(E){ if(!E._g || E._g.L !== E.L){ E._g = geo(E.L); E._g.L = E.L; } return E._g; }
@@ -598,7 +599,7 @@
   /* ================================================================== 3. Childbirth (positive feedback) */
   (function(){
     var LAY = {
-      wide: { w: 1080, h: 540, g: { body: [590, 64, 1], mag: [220, 200, 1.02] }, mon: [790, 108, 270, 300], spread: { mon: 1, mag: -1 } },
+      wide: { w: 1080, h: 540, g: { body: [590, 64, 1], mag: [220, 200, 1.02] }, mon: [772, 108, 290, 300], spread: { mon: 1, mag: -1 } },
       tall: { w: 600, h: 620, g: { body: [404, 58, 0.78], mag: [150, 196, 0.86] }, mon: [14, 432, 572, 178] }
     };
     // the woman in profile, facing right (body coordinates: the head's centre at 0,0)
@@ -683,7 +684,7 @@
       cue: 'Push the head down', thing: 'baby’s head', layouts: LAY,
       set: 0, min: 0, max: 1, step: 0.01, dead: 0.04, push: 0.35,
       fmt: function(v){ return v < 0.04 ? 'none' : v < 0.35 ? 'low' : v < 0.7 ? 'medium' : 'high'; },
-      mon: { title: 'Stretch of the cervix', lo: 0, hi: 1, pos: true, role: 'str' },
+      mon: { title: 'Stretch of the cervix', short: 'Stretch', lo: 0, hi: 1, pos: true, role: 'str' },
       knobAt: function(L, v, born){ var h = headAt(v, born || 0); return T(L, [h[0], h[1], 'body']); },
       pick: function(L, x, y){ var g0 = L.g.body; return ((y - g0[1]) / g0[2] - HEAD0[1]) / 120; },
       valRole: function(){ return 'str'; },
@@ -917,6 +918,9 @@
       s += '<text class="fe-mtime" x="' + f1(px1) + '" y="' + f1(py1 + fs * 1.15) + '" style="font-size:' + f1(fs) + 'px">Time</text>';
       s += '<path class="fe-mtr is-con" data-m="con"/><path class="fe-mtr is-' + m.role + '" data-m="tr"/><circle class="fe-mnow is-' + m.role + '" data-m="now" r="' + f1(fs * 0.38) + '"/>';
       monG.innerHTML = s;
+      // a narrow monitor: the title shortens rather than run into the legend
+      var ti = monG.querySelector('.fe-mtitle'), lg = monG.querySelector('.fe-mlab.is-norm, .fe-mlab.is-con');
+      if(ti && lg && ti.getComputedTextLength && ti.getComputedTextLength() + lg.getComputedTextLength() + fs * (m.pos ? 1.2 : 2.6) > w - pad * 2 - 4) ti.textContent = m.short || m.title;
       var sw = monG.querySelector('[data-m="sw"]'), nl = monG.querySelector('.fe-mlab.is-norm');
       if(sw && nl && nl.getComputedTextLength){ sw.setAttribute('x', f1(+nl.getAttribute('x') - nl.getComputedTextLength() - fs * 1.3)); }
       MON.tr = monG.querySelector('[data-m="tr"]'); MON.con = monG.querySelector('[data-m="con"]'); MON.now = monG.querySelector('[data-m="now"]');
