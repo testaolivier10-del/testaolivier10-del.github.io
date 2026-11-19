@@ -1210,3 +1210,84 @@ test('the spectrum predictor reads splitting, anhydrides, para rings and condens
   assert.equal(star('CCl₃'), '[[0,1],[0,1],[0,1]]', 'CCl3 read as a chain');
   assert.equal(star('SO₃H'), '[[0,2],[0,2],[0,1]]', 'SO3H read as a chain');
 });
+
+/* ====================================================================== */
+/* Resonance v2 (docs/tools-v2-resonance-brief.md)                         */
+/* ====================================================================== */
+
+function resModel(){
+  return browser({ OchemToolQuiz: { mount(){ return {}; }, shuffle: a => a, esc: x => String(x) }, OchemTools: null })
+    .load(...CORE, 'ochem/assets/tools/resonance.js');
+}
+
+test('resonance v2: majors, minors and equal forms, with the reason a minor form ranks lower', () => {
+  const s = resModel(), M = s.OchemResonanceModel, C = s.OchemChem, R = s.OchemResonance, Mol = s.OchemMolecules;
+  const rank = id => M.rankForms(R.contributors(C.fromMolecule(Mol.get(id))));
+  const tags = id => rank(id).map(f => f.tag).join(',');
+  for(const id of ['acetate-ion', 'formate', 'allyl-cation', 'allyl-anion', 'nitromethane', 'benzene', 'ozone']) assert.equal(tags(id), 'equal,equal', id);
+  assert.equal(tags('carbonate'), 'equal,equal,equal');
+  assert.equal(tags('nitrate'), 'equal,equal,equal');
+  assert.equal(tags('enolate'), 'major,minor');
+  assert.equal(rank('enolate')[1].rule, 'electronegativity');
+  assert.equal(tags('acetamide'), 'major,minor');
+  assert.equal(rank('acetamide')[1].rule, 'charge-count');
+  assert.equal(tags('phenoxide'), 'major,major,minor,minor,minor');
+  // the benzyl cation: the engine ties all five; the two that keep the benzene ring whole are the major ones
+  const bz = rank('benzyl-cation');
+  assert.equal(bz.map(f => f.tag).join(','), 'major,major,minor,minor,minor');
+  assert.ok(bz.slice(0, 2).every(f => M.kekule(f.st)) && bz.slice(2).every(f => !M.kekule(f.st) && f.rule === 'ring'));
+  // the + sits on CH₂ in both major forms
+  for(const f of bz.slice(0, 2)) assert.equal(C.formalCharge(f.st, 'ch2'), 1);
+});
+
+test('resonance v2: the real molecule shares charge exactly only where every form is equal', () => {
+  const s = resModel(), M = s.OchemResonanceModel, C = s.OchemChem, R = s.OchemResonance, Mol = s.OchemMolecules;
+  const hyb = id => M.hybridOf(M.rankForms(R.contributors(C.fromMolecule(Mol.get(id)))));
+  const means = h => Object.fromEntries(Object.entries(h.atoms).map(([k, a]) => [k, a.fixed != null ? 'fixed ' + a.fixed : a.mean == null ? (a.big ? 'big' : 'small') : M.fraction(a.mean)]));
+  assert.deepEqual(means(hyb('acetate-ion')), { o1: '−½', o2: '−½' });
+  assert.deepEqual(means(hyb('carbonate')), { o1: '−⅔', o2: '−⅔', o3: '−⅔' });
+  assert.deepEqual(means(hyb('nitrate')), { n: 'fixed 1', o1: '−⅔', o2: '−⅔', o3: '−⅔' });
+  assert.equal(means(hyb('ozone')).o2, 'fixed 1');
+  assert.deepEqual(means(hyb('allyl-cation')), { c1: '+½', c3: '+½' });
+  // unequal forms: no fraction, only which atoms carry it in a major form (big) or only in a minor one (small)
+  const en = means(hyb('enolate'));
+  assert.ok(Object.values(en).includes('big') && Object.values(en).includes('small'));
+  const am = means(hyb('acetamide'));
+  assert.ok(Object.values(am).every(v => v === 'small'), JSON.stringify(am));
+  // partial bonds: acetate's two C–O bonds, every benzene ring bond
+  assert.equal(Object.values(hyb('acetate-ion').bonds).filter(b => b.hi > b.lo).length, 2);
+  assert.equal(Object.values(hyb('benzene').bonds).filter(b => b.hi > b.lo).length, 6);
+});
+
+test('resonance v2: every form of every species is reachable by pushes, and a first push that overfills an atom is held', () => {
+  const s = resModel(), M = s.OchemResonanceModel, C = s.OchemChem, R = s.OchemResonance, Mol = s.OchemMolecules;
+  for(const sp of M.SPECIES){
+    const start = C.fromMolecule(Mol.get(sp.id)), forms = R.contributors(start);
+    for(const f of forms){
+      if(R.key(f) === R.key(start)) continue;
+      const path = M.pathTo(start, f, forms);
+      assert.ok(path && path.length, `${sp.id}: no path to a form`);
+      let cur = start;
+      for(const step of path){ const v = R.validate(cur, step.arrows); assert.ok(v.valid, `${sp.id}: a step is not valid`); cur = v.structure; }
+      assert.equal(R.key(cur), R.key(f), `${sp.id}: the path ends elsewhere`);
+    }
+  }
+  // acetate: the O⁻ lone pair into C–O alone gives carbon ten electrons; that push can still be finished
+  const ac = C.fromMolecule(Mol.get('acetate-ion')), first = [{ from: 'o2', to: 'bond:c-o2' }];
+  const v = R.validate(ac, first);
+  assert.equal(v.code, 'octet');
+  assert.ok(M.completable(ac, first));
+  // a lone pair onto a hydrogen makes a new σ bond: never completable
+  const bad = [{ from: 'o1', to: 'h1' }];
+  assert.notEqual(R.validate(ac, bad).code, 'octet');
+});
+
+test('resonance v2: Which is more stabilized keeps the old verdicts', () => {
+  const s = resModel(), M = s.OchemResonanceModel, C = s.OchemChem, Mol = s.OchemMolecules;
+  const j = (a, b) => M.judge(M.stabilization(C.fromMolecule(Mol.get(a))), M.stabilization(C.fromMolecule(Mol.get(b))));
+  assert.equal(j('acetate-ion', 'phenoxide').winner, 'a');
+  assert.equal(j('acetate-ion', 'phenoxide').rule, 'What the charge lands on');
+  assert.equal(j('enolate', 'allyl-anion').winner, 'a');
+  assert.equal(j('allyl-cation', 'acetate-ion').winner, 'tie');
+  assert.equal(j('benzyl-cation', 'allyl-cation').winner, 'a');
+});

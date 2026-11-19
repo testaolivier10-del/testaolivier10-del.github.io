@@ -56,6 +56,53 @@
      is drawn in #app and moved into the calm frame (studioPathway,
      studioDrill, studioList); lookups go through the document. */
   var S = window.AnpToolKit && window.AnpToolKit.studio ? window.AnpToolKit.studio() : null;
+  /* Tools v2 (docs/tools-v2-anp-pathways-brief.md): with the kit on the page (pages.json "kit2": true), Explore is the
+     drawn routes of tools/pathways-explore.js and everything below (every pathway, its Watch / Trace it figure and the
+     three drills, with every item id and record unchanged) is Test yourself. The studio's mode switch belongs to the
+     kit (Explore | Test yourself), so the tool's own modes (Watch | Trace it | Drills, or Order | Missing step | Spot
+     the error) become a small switch at the top of Test yourself's panel: subStudio() below stands in for the studio
+     and puts every part in the quiz mode, showing only the parts of the chosen inner mode. */
+  var V2 = !!(S && window.LevlKit2 && window.AnpPathExplore && window.AnpToolKit.kit2), KIT = null, EX = null, SS = S;
+  if(V2) S = subStudio(SS);
+  function subStudio(real){
+    var sub = null, capBy = {}, seg = null, segO = null, f = {};
+    function paint(){
+      real.root.querySelectorAll('[data-pw-sub]').forEach(function(el){ el.classList.toggle('pw-suboff', el.getAttribute('data-pw-sub').split(/\s+/).indexOf(sub) < 0); });
+      if(seg) seg.querySelectorAll('button').forEach(function(b){ var on = b.getAttribute('data-v') === sub; b.setAttribute('aria-pressed', String(on)); b.classList.toggle('on', on); });
+      real.caption(capBy[sub] != null ? capBy[sub] : (capBy['*'] || ''), 'quiz');
+    }
+    f.root = real.root; f.stage = real.stage; f.suspend = function(x){ return real.suspend(x); };
+    f.close = function(){ return real.close && real.close(); };
+    f.put = function(region, els, o){
+      real.put(region, els, { mode: 'quiz', first: !!(o && o.first) });
+      if(o && o.mode) [].concat(els && els.nodeType ? [els] : [].slice.call(els || [])).forEach(function(el){ if(el) el.setAttribute('data-pw-sub', o.mode); });
+      paint();
+      return f;
+    };
+    f.reset = function(){ real.reset(); seg = null; return f; };
+    f.modes = function(m){
+      segO = m; sub = m.value || m.items[0].value;
+      seg = document.createElement('div');
+      seg.className = 'pw-sub kt-seg'; seg.setAttribute('role', 'group'); seg.setAttribute('aria-label', 'How to practice this pathway');
+      seg.innerHTML = m.items.map(function(it){ return '<button type="button" class="pw-subb" data-v="' + esc(it.value) + '" aria-pressed="false">' + esc(it.label) + '</button>'; }).join('');
+      seg.addEventListener('click', function(e){ var b = e.target.closest('button[data-v]'); if(!b) return; var v = b.getAttribute('data-v'); if(v === sub) return; sub = v; paint(); if(segO.onChange) segO.onChange(v); });
+      real.put('dock', seg, { mode: 'quiz', first: true });
+      paint();
+      return f;
+    };
+    f.mode = function(v){ if(v == null) return sub; sub = v; paint(); return f; };
+    f.modeBar = function(){ return f; };
+    f.hint = function(){ return null; };
+    f.caption = function(html, m){ capBy[m || sub || '*'] = html || ''; if(!m || m === sub) paint(); return f; };
+    f.mirror = function(el){
+      if(!el) return f;
+      function up(){ capBy.watch = capBy.trace = el.innerHTML.trim(); if(sub === 'watch' || sub === 'trace') paint(); }
+      if(window.MutationObserver) new MutationObserver(up).observe(el, { childList: true, characterData: true, subtree: true });
+      up();
+      return f;
+    };
+    return f;
+  }
   function Q(){ return S ? document : app; }
   function pq(el, sel){ return (S ? document : el).querySelector(sel); }
   if(S){ S.root.classList.add('pw-ls'); S.caption('Loading pathways…'); }
@@ -65,12 +112,33 @@
     stopPlayer();
     var h = (location.hash || '').replace(/^#/, '').split('/');
     var p = h[0] ? find(decodeURIComponent(h[0])) : null;
+    if(V2) return routeV2(h, p);
     if(p){
       var v = h[1] && /^(order|missing|error)$/.test(h[1]) ? h[1] : 'order';
       showPathway(p, v, false);
     } else if(h[0] === 'all') showList();
     else { var d = defaultItem(); if(d) showPathway(d, firstOpen(d), false); else showList(); }
   }
+
+  /* v2: which mode a link opens. #explore/<tab> and #<drawn pathway>/explore: that Explore screen. #<pathway>,
+     #<pathway>/<drill>, #all: Test yourself, as the old links did (a pathway with no drawn screen and /explore opens
+     its Test yourself too). No hash: Explore, on the screen for ?topic= or ?chapter= when one matches; a ?topic= or
+     ?chapter= with no drawn screen opens Test yourself on its pathway, as before. Test yourself always holds a
+     pathway (or the list). */
+  var qChosen = false;
+  function routeV2(h, p){
+    var q = params(), tab = null, quiz = false;
+    if(h[0] === 'explore') tab = EX.tabFor({ tab: h[1] }) || EX.tab();
+    else if(p && h[1] === 'explore' && EX.tabFor({ path: p.id })) tab = EX.tabFor({ path: p.id });
+    else if(p || h[0] === 'all'){ quiz = true; qChosen = true; }
+    else if(q.topic || q.chapter){ tab = EX.tabFor({ topic: q.topic, chapter: q.chapter, topicOf: topicInfo }); quiz = !tab; }
+    if(tab) EX.tab(tab);
+    KIT.go(quiz ? 'quiz' : 'explore');
+    if(h[0] === 'all') showList();
+    else if(p && h[1] !== 'explore'){ var v = h[1] && /^(order|missing|error)$/.test(h[1]) ? h[1] : 'order'; showPathway(p, v, false); }
+    else { var d = (tab && find(EX.pathOf(tab))) || p || defaultItem(); if(d) showPathway(d, firstOpen(d), false); else showList(); }
+  }
+  function quizShowing(){ return !V2 || (KIT && KIT.mode() === 'quiz'); }
 
   /* -------------------------------------------------------------- list view */
   function params(){
@@ -206,7 +274,7 @@
       if(player){ player.stop(); player = null; }
       tabs.forEach(function(t){ var on = t.getAttribute('data-v') === v; t.setAttribute('aria-selected', String(on)); t.tabIndex = on ? 0 : -1; if(on && focus) t.focus(); });
       panel.setAttribute('aria-labelledby', 'pw-tab-' + v);
-      if(location.hash !== '#' + p.id + '/' + v) history.replaceState(null, '', '#' + p.id + '/' + v);
+      if(quizShowing() && location.hash !== '#' + p.id + '/' + v) history.replaceState(null, '', '#' + p.id + '/' + v);
       if(S && !p.trace) S.mode(v);
       if(v === 'order') orderVariant(p, panel);
       else if(v === 'missing') missingVariant(p, panel);
@@ -1274,6 +1342,19 @@
     DATA = d;
     DATA.pathways = (DATA.pathways || []).filter(function(p){ return p && p.steps && p.steps.length; });
     if(window.AnpCore && window.AnpCore.allowed && !window.AnpCore.allowed('pathways')) { fail('This tool is not available right now.'); return; }
+    if(V2){
+      EX = window.AnpPathExplore.build({ data: DATA, base: BASE, studio: SS, onQuiz: function(id){ location.hash = '#' + id; } });
+      if(EX) KIT = window.AnpToolKit.kit2(SS, { stage: EX.stage, ref: EX.ref, onShow: function(m, user){
+        EX.shown(m === 'explore');
+        if(m === 'quiz') stopPlayer();
+        if(!user) return;
+        if(m === 'quiz' && !qChosen){ var tp = find(EX.pathOf(EX.tab())); if(tp && (!curP || curP.id !== tp.id)) showPathway(tp, firstOpen(tp), false); }
+        if(m === 'explore') stopPlayer();
+        var sel = Q().querySelector('.pw-tab[aria-selected="true"]');
+        try{ history.replaceState(null, '', location.pathname + location.search + (m === 'explore' ? '#explore/' + EX.tab() : curP ? '#' + curP.id + (sel ? '/' + sel.getAttribute('data-v') : '') : '')); }catch(e){}
+      } });
+      if(!KIT){ V2 = false; S = SS; }
+    }
     window.addEventListener('hashchange', route);
     route();
     booted = true;
