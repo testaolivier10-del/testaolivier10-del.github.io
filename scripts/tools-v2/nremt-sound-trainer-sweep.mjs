@@ -16,7 +16,7 @@
    motion (the whole trace at once), Test yourself's three parts with a right and a wrong answer, the deep links, and a
    drag with the CPU throttled x4 (median frame about 16 ms, p95 at most 50 ms). No console errors anywhere.
    The lung clips stream from Wikimedia; the sweep serves a local test tone in their place (with a CORS header, so the
-   live trace is exercised; --nocors serves it without, to check the fallback).
+   live trace is exercised; --nocors fails the CORS address, to check the fallback).
    One width per process: with no --width it runs itself once per width, in turn, then --frames.
    Usage: node scripts/tools-v2/nremt-sound-trainer-sweep.mjs [--width <w>] [--frames] [--shots <dir>] [--nocors]
    Needs playwright (PW_ROOT names a folder whose node_modules has it) and Chromium (CHROMIUM_PATH). */
@@ -81,7 +81,10 @@ const CLIP = wav();
 async function open(w, dark, opts = {}) {
   const browser = await chromium.launch({ executablePath: EXE, args: ['--autoplay-policy=no-user-gesture-required'] });
   const ctx = await browser.newContext({ viewport: { width: w, height: opts.h || (w < 500 ? 844 : w < 1100 ? 1024 : 900) }, serviceWorkers: 'block', hasTouch: w < 500, reducedMotion: opts.reduced ? 'reduce' : 'no-preference' });
-  await ctx.route(/wikimedia\.org/, r => r.fulfill({ status: 200, body: CLIP, headers: Object.assign({ 'content-type': 'audio/wav' }, NOCORS ? {} : { 'access-control-allow-origin': '*' }) }));
+  // --nocors: the direct (CORS) address fails, as it would without a CORS header (a fulfilled route passes CORS in
+  // Playwright, so failing the request is how the fallback is reached); the plain address still plays
+  await ctx.route(/wikimedia\.org/, r => NOCORS && /upload\.wikimedia/.test(r.request().url()) ? r.abort()
+    : r.fulfill({ status: 200, body: CLIP, headers: { 'content-type': 'audio/wav', 'access-control-allow-origin': '*' } }));
   await ctx.route(u => !u.href.startsWith(`http://localhost:${PORT}`) && !/wikimedia\.org/.test(u.href) && !u.href.startsWith('data:'), r => r.abort());
   const page = await ctx.newPage(); const errs = [];
   page.on('console', m => { if (m.type() === 'error' && !/Failed to load resource|ERR_FAILED|net::/.test(m.text())) errs.push(m.text()); });
@@ -305,6 +308,8 @@ async function frames() {
     // performance: a full drag with the CPU throttled x4
     const cdp = await ctx.newCDPSession(page);
     await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 });
+    const a0 = await page.locator('.snd2-steth').boundingBox(); // one drag first: the audio context starts once
+    await page.mouse.move(a0.x + a0.width / 2, a0.y + a0.height / 2); await page.mouse.down(); await page.mouse.move(a0.x + 30, a0.y + 30, { steps: 5 }); await page.mouse.up(); await page.waitForTimeout(800);
     await page.evaluate(() => { window.__ft = []; let last = 0; (function f(t){ if(last) window.__ft.push(t - last); last = t; if(window.__ft.length < 400) requestAnimationFrame(f); })(); });
     const a = await page.locator('.snd2-steth').boundingBox();
     await page.mouse.move(a.x + a.width / 2, a.y + a.height / 2); await page.mouse.down();

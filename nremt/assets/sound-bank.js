@@ -138,10 +138,17 @@
   /* mix: relative loudness of S1, S2 and the extra finding, set by WHERE the
      stethoscope is (the trainer's auscultation sites). Defaults are all 1.
      After the mix the buffer is normalized, so only the ratios matter. */
+  /* The last few rendered sounds, so the same sound at the same spot is not generated again on every tap (a drop of
+     the stethoscope on the Explore picture plays at once; rendering six beats is the slow part). */
+  var CACHE = {}, CACHE_KEYS = [];
   function renderHeart(kind, bpm, beats, mix){
     var c = audio();
     if(!c) return null;
-    var data = renderHeartData(kind, bpm, beats, mix, c.sampleRate);
+    var key = [kind, bpm, beats, c.sampleRate, JSON.stringify(mix || {})].join('|'), data = CACHE[key];
+    if(!data){
+      data = CACHE[key] = renderHeartData(kind, bpm, beats, mix, c.sampleRate);
+      CACHE_KEYS.push(key); if(CACHE_KEYS.length > 24) delete CACHE[CACHE_KEYS.shift()];
+    }
     var buf = c.createBuffer(1, data.length, c.sampleRate);
     buf.getChannelData(0).set(data);
     return buf;

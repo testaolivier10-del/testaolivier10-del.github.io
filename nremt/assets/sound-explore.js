@@ -290,11 +290,12 @@
       var body = sv('g', { class: 'snd2-lz', transform: 'translate(' + f1(L.x) + ' ' + f1(L.y) + ') scale(' + (L.r / 100).toFixed(4) + ')' }, inner);
       sv('circle', { cx: f1(L.x), cy: f1(L.y), r: f1(L.r), class: 'snd2-lens-rim' }, gLens);
       LZ = { body: body, kind: null, parts: {} };
-      buildLens();
+      buildLens(true);
     }
     // design units: the lens is a circle of radius 100 around 0, 0
-    function buildLens(){
+    function buildLens(force){
       if(!LZ) return;
+      if(!force && LZ.sid === S().key && LZ.normal === S().normal && LZ.body.firstChild) return; // already drawn
       var snd = byId[S().key], I = INFO[S().key], normal = S().normal, b = LZ.body, d = I.draw || 'heart';
       b.innerHTML = ''; LZ.parts = {}; LZ.kind = d; LZ.normal = normal; LZ.sid = S().key;
       var P_ = LZ.parts, i;
@@ -465,7 +466,7 @@
     }
 
     /* ---------------------------------------------------------------- the monitor strip: the sound, drawn */
-    var SZ = null;
+    var SZ = null, ENV = {};
     function drawStripFrame(){
       var R = G.strip;
       gStrip.innerHTML = '';
@@ -498,8 +499,11 @@
       if(snd && snd.synth){
         SZ.kind = 'heart';
         var ev = Bank.heartEvents(snd.synth, 72), cyc = ev.cycle, sr = 4000, mix = P.heartMix(snd.synth, site);
-        var data = Bank.heartData(snd.synth, 72, 3, mix, sr), from = Math.floor((cyc - PRE) * sr), N = Math.max(60, Math.round(SZ.pw / 3));
-        var env = Bank.envelope(data, from, from + Math.floor(cyc * sr), N), top = [], bot = [];
+        var N = Math.max(60, Math.round(SZ.pw / 3)), ck = snd.synth + '|' + site.id + '|' + N, env = ENV[ck], top = [], bot = [];
+        if(!env){ // the samples that are played, at this spot's mix (cached: the same sound at the same spot is the same)
+          var data = Bank.heartData(snd.synth, 72, 3, mix, sr), from = Math.floor((cyc - PRE) * sr);
+          env = ENV[ck] = Bank.envelope(data, from, from + Math.floor(cyc * sr), N);
+        }
         for(var i = 0; i < N; i++){ var x = SZ.px + (i + .5) / N * SZ.pw, h = Math.max(.6, env[i] / .82 * SZ.amp); top.push([x, SZ.mid - h]); bot.push([x, SZ.mid + h]); }
         var dT = 'M' + top.map(function(p){ return f1(p[0]) + ' ' + f1(p[1]); }).join('L'), dB = 'M' + bot.map(function(p){ return f1(p[0]) + ' ' + f1(p[1]); }).join('L');
         SZ.line.setAttribute('d', dT + dB);
@@ -614,10 +618,14 @@
       if(G.wide){ bx = clamp(p[0] + out * Math.max(50, 90 * G.k), G.fa.x + 6, G.fa.x + G.fa.w - 6); by = G.H + 12; c2 = [bx, by - 90]; }
       else { bx = out < 0 ? -12 : G.W + 12; by = Math.min(p[1] + 120, G.fa.y + G.fa.h - 10); c2 = [bx - out * 60, by]; }
       var dT = 'M' + f1(p[0]) + ' ' + f1(p[1] + r * .8) + ' C' + f1(p[0] + out * 6) + ' ' + f1(p[1] + r + 50) + ' ' + f1(c2[0]) + ' ' + f1(c2[1]) + ' ' + f1(bx) + ' ' + f1(by);
-      gTube.innerHTML = '<path class="snd2-tube-s" d="' + dT + '"/><path class="snd2-tube" d="' + dT + '"/>';
+      // one element per drawn thing, updated in place (a drag moves them every frame)
+      if(!gTube.firstChild){ sv('path', { class: 'snd2-tube-s' }, gTube); sv('path', { class: 'snd2-tube' }, gTube); }
+      gTube.firstChild.setAttribute('d', dT); gTube.lastChild.setAttribute('d', dT);
       // the leader from the chest piece to the lens, once it is on a spot
       var on = !!S().site && !St.moving, L = G.lens, dx = p[0] - L.x, dy = p[1] - L.y, dd = Math.sqrt(dx * dx + dy * dy) || 1;
-      gLead.innerHTML = on ? '<line class="snd2-leader" x1="' + f1(p[0]) + '" y1="' + f1(p[1]) + '" x2="' + f1(L.x + dx / dd * L.r) + '" y2="' + f1(L.y + dy / dd * L.r) + '"/>' : '';
+      if(!gLead.firstChild) sv('line', { class: 'snd2-leader' }, gLead);
+      var ld = gLead.firstChild; ld.style.display = on ? '' : 'none';
+      if(on){ ld.setAttribute('x1', f1(p[0])); ld.setAttribute('y1', f1(p[1])); ld.setAttribute('x2', f1(L.x + dx / dd * L.r)); ld.setAttribute('y2', f1(L.y + dy / dd * L.r)); }
       placeSiteLab();
     }
     function placeSiteLab(){
@@ -804,7 +812,7 @@
       if(e.button > 0) return;
       e.preventDefault();
       if(cue && cue.active()) cue.hide(true);
-      stopSound(false); anim = null; St.moving = true; siteLab.hidden = true; gLead.innerHTML = '';
+      stopSound(false); anim = null; St.moving = true; siteLab.hidden = true; if(gLead.firstChild) gLead.firstChild.style.display = 'none';
       var p = local(e);
       drag = { id: e.pointerId, dx: sp[0] - p[0], dy: sp[1] - p[1], moved: false, x0: p[0], y0: p[1] };
       try{ steth.setPointerCapture(e.pointerId); }catch(err){}
@@ -816,7 +824,7 @@
       if(Math.abs(p[0] - drag.x0) + Math.abs(p[1] - drag.y0) > 4) drag.moved = true;
       placeSteth([x, y]);
       var n = nearest(x, y, 46);
-      Object.keys(siteEls).forEach(function(id){ siteEls[id].g.classList.toggle('is-near', id === n); });
+      if(n !== drag.near){ if(drag.near && siteEls[drag.near]) siteEls[drag.near].g.classList.remove('is-near'); if(n) siteEls[n].g.classList.add('is-near'); drag.near = n; }
     });
     function endDrag(e){
       if(!drag || (e && e.pointerId !== drag.id)) return;
