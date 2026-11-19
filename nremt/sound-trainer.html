@@ -38,13 +38,18 @@
 <script src="assets/tool-results.js" defer></script>
 <script src="assets/body-figures.js" defer></script>
 <script src="assets/sound-stage.js" defer></script>
+<script src="assets/sound-explore.js" defer></script>
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
 <!-- tool-studio:start -->
 <link rel="stylesheet" href="../assets/course/tool-studio.css">
 <link rel="stylesheet" href="assets/nremt-studio.css">
 <link rel="stylesheet" href="assets/studio/sound-trainer.css">
+<link rel="stylesheet" href="../assets/course/tool-kit2.css">
+<link rel="stylesheet" href="assets/sound-explore.css">
 <script src="../assets/course/tool-studio.js" defer></script>
+<script src="../assets/course/tool-kit2.js" defer></script>
 <script src="assets/nremt-studio.js" defer></script>
+<script src="assets/nremt-kit2.js" defer></script>
 <!-- tool-studio:end -->
 <style>
   body{line-height:1.65;}
@@ -100,7 +105,7 @@
   .sound-card.unavailable{background:var(--surface2);border-style:dashed;box-shadow:none;}
   .sound-card.unavailable .play-btn{background:var(--line);color:var(--muted);}
   .audio-error{font-size:12px;color:var(--bad-text);margin-top:8px;display:none;}
-  .credit-line{font-size:10.5px;color:var(--muted);margin-top:10px;}
+  .credit-line{font-size:11px;color:var(--muted);margin-top:10px;}
   .credit-line a{color:var(--muted);}
 
   /* ---- Grouping and generated-sound labelling ---------------------------- */
@@ -111,7 +116,7 @@
   /* Never let a student wonder whether they are hearing a patient or a
      formula. This tag appears everywhere a generated sound appears. */
   .synth-tag{
-    font:700 9.5px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;
+    font:700 11px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;
     color:var(--muted);border:1px solid var(--line);border-radius:10px;
     padding:2px 7px;vertical-align:middle;margin-left:6px;
   }
@@ -222,7 +227,7 @@
   .st-cap{font:700 16px var(--font-mono);fill:#5B3A2A;text-anchor:middle;letter-spacing:.04em;paint-order:stroke;stroke:rgba(255,246,238,.85);stroke-width:5px;stroke-linejoin:round;}
   .st-ics,.st-cap{transition:opacity .2s;} .st-ics.is-dim,.st-cap.is-dim{opacity:0;}
   .st-rl{font:800 26px var(--font-ui);fill:var(--muted);text-anchor:middle;}
-  .st-credit{font-size:10.5px;color:var(--muted);text-align:center;margin:4px 0 2px;line-height:1.4;}
+  .st-credit{font-size:11px;color:var(--muted);text-align:center;margin:4px 0 2px;line-height:1.4;}
   .st-credit a{color:var(--muted);}
   .st-site{cursor:pointer;outline:none;}
   .st-hit{fill:transparent;}
@@ -251,11 +256,11 @@
   .st-site.is-right .st-dot{fill:var(--good);stroke:var(--good-text);stroke-width:6;}
   .st-site.is-wrong .st-dot{fill:var(--bad);stroke:var(--bad-text);stroke-width:6;}
   .st-side{min-width:0;}
-  .st-k{display:block;font:700 10.5px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:6px;}
+  .st-k{display:block;font:700 11px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:6px;}
   .st-row .st-k{margin:0;}
   .st-chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:8px;}
   .st-gl{font:700 12px var(--font-ui);color:var(--muted);width:100%;}
-  .st-rec{font:700 9.5px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);border:1px solid var(--line);border-radius:10px;padding:2px 7px;margin-left:4px;}
+  .st-rec{font:700 11px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);border:1px solid var(--line);border-radius:10px;padding:2px 7px;margin-left:4px;}
   .st-chips button{font:600 13px var(--font-ui);padding:6px 12px;border:2px solid var(--line);border-radius:16px;background:var(--white);color:var(--ink);cursor:pointer;min-height:40px;}
   .st-chips button[aria-pressed="true"]{border-color:var(--accent);background:var(--tint-accent);color:var(--ink);box-shadow:inset 0 0 0 1px var(--accent);}
   .st-site-card{background:var(--white);border:2px solid var(--line);border-radius:12px;padding:12px 14px;margin:6px 0 12px;}
@@ -281,11 +286,11 @@
   .st-tick{stroke:var(--muted);stroke-width:1;stroke-dasharray:2 3;opacity:.8;}
   .st-tick--x{stroke:var(--bad-text);}
   .st-evt-bg{fill:var(--ink);} .st-evt-bg--x{fill:var(--bad-text);}
-  .st-evt{font:800 10px var(--font-mono);fill:var(--white);text-anchor:middle;}
+  .st-evt{font:800 11px var(--font-mono);fill:var(--white);text-anchor:middle;}
   .st-evt--x{fill:var(--white);}
   :root[data-theme="dark"] .st-evt{fill:#0E1513;} :root[data-theme="dark"] .st-evt.st-evt--plain{fill:var(--bad-text);stroke:#0E1513;}
   .st-evt.st-evt--plain{font-size:11px;fill:var(--bad-text);paint-order:stroke;stroke:var(--white);stroke-width:3px;}
-  .st-phase{font:600 10.5px var(--font-ui);fill:var(--muted);text-anchor:middle;}
+  .st-phase{font:600 11px var(--font-ui);fill:var(--muted);text-anchor:middle;}
   .st-span{fill:var(--bad-text);opacity:.7;}
   .st-playhead{stroke:var(--warn);stroke-width:2.5;stroke-linecap:round;}
   .st-marker{fill:var(--warn);stroke:var(--warn);stroke-width:2.5;}
@@ -424,13 +429,13 @@
     <p class="section-sub">Each card plays the sound as heard at its best spot. Click again to stop.</p>
     <div class="sound-grid" id="soundGrid"></div>
     <div class="notice notice--after">
-    <strong>A note on these recordings:</strong> the wheeze, crackles and stridor clips are real auscultation recordings from Wikimedia Commons, each individually credited and licensed CC BY-SA. Normal breath sounds and rhonchi have no clip yet: we have not found a recording we are free to use. Snoring, gurgling and diminished breath sounds are described below without a clip for the same reason — the descriptions are there, the audio is not, and a synthesized substitute would be worse than silence.
+    <strong>A note on these recordings:</strong> the wheeze, crackles and stridor clips are real auscultation recordings from Wikimedia Commons, each individually credited and licensed CC BY-SA. Normal breath sounds play in the chest picture (Explore): a recording from a CC BY 4.0 dataset over the lungs, and a generated tracheal sound over the trachea. Rhonchi have no clip yet: we have not found a recording we are free to use. Snoring, gurgling and diminished breath sounds are described below without a clip for the same reason: the descriptions are there, the audio is not, because for these three a synthesized substitute would teach the wrong sound.
     </div>
     </details>
   </section>
 
   <footer>
-    <p>Audio credits: the wheeze, crackles and stridor recordings are by James Heilman, MD (the stridor clip processed by Natural Philo), from Wikimedia Commons under CC BY-SA 3.0, with individual credits shown next to each clip above. This trainer is a supplementary study aid; it is not a substitute for hands-on stethoscope practice with an instructor.</p>
+    <p>Audio credits: the wheeze, crackles and stridor recordings are by James Heilman, MD (the stridor clip processed by Natural Philo), from Wikimedia Commons under CC BY-SA 3.0, with individual credits shown next to each clip above. The normal breath sound in the chest picture is from Fraiwan M, Fraiwan L, Khassawneh B, Ibnian A, &ldquo;A dataset of lung sounds recorded from the chest wall using an electronic stethoscope&rdquo;, Mendeley Data, <a href="https://doi.org/10.17632/jwyy9np4gv.3" rel="noopener">doi:10.17632/jwyy9np4gv.3</a>, under <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a>. This trainer is a supplementary study aid; it is not a substitute for hands-on stethoscope practice with an instructor.</p>
     <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../about.html">About</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a> &middot; <a href="../premium.html">Premium</a> &middot; <a href="../teach/">Teachers</a> &middot; <a href="../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
     </footer>
 </div>
@@ -464,6 +469,7 @@ const SOUNDS = [
     group: "lung",
     available: true,
     audioUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Wheeze2O.ogg",
+    liveUrl: "https://upload.wikimedia.org/wikipedia/commons/4/47/Wheeze2O.ogg",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Wheeze2O.ogg",
     creditBy: "James Heilman, MD",
     // Measured 2026-10-09 (docs/tools-upgrade-notes/nremt-body.md).
@@ -477,6 +483,7 @@ const SOUNDS = [
     group: "lung",
     available: true,
     audioUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Crackles_pneumoniaO.ogg",
+    liveUrl: "https://upload.wikimedia.org/wikipedia/commons/c/c7/Crackles_pneumoniaO.ogg",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Crackles_pneumoniaO.ogg",
     creditBy: "James Heilman, MD",
     timingNote: "the crackles cluster in bursts of half a second to a second, about every 2 to 2.8 seconds, and the clip repeats itself after 7.5 seconds. The clip has no airflow track, so which part of each breath is in cannot be told from the sound.",
@@ -489,6 +496,7 @@ const SOUNDS = [
     group: "airway",
     available: true,
     audioUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Stridor_NP_OGG_2.ogg",
+    liveUrl: "https://upload.wikimedia.org/wikipedia/commons/b/ba/Stridor_NP_OGG_2.ogg",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Stridor_NP_OGG_2.ogg",
     creditBy: "James Heilman, MD; processed by Natural Philo",
     timingNote: "the crowing sound fills most of each breath, about one every 1.8 seconds (about 33 a minute, a child\u2019s rate), with a short gap between. The clip has no airflow track, so which part is in cannot be told from the sound.",
@@ -780,7 +788,7 @@ function renderQuizRound(){
     ${qGroup}
     <div class="quiz-progress">Round ${quizState.current + 1} of ${quizState.rounds.length}<span class="quiz-score">Score: ${quizState.score}/${quizState.current}</span></div>
     <button type="button" class="big-play-btn" id="quizPlayBtn">&#9658;</button>
-    <div class="quiz-hint">Play the clip (press again to stop), then pick what you hear</div>
+    <div class="quiz-hint">Press play (again to stop), then pick what you hear</div>
     <div class="quiz-choices" id="quizChoices">
       ${SOUNDS.filter(s => s.group === round.group).map(s => `<button type="button" class="choice-btn" data-choice="${s.id}">${s.label}</button>`).join('')}
     </div>
@@ -792,8 +800,7 @@ function renderQuizRound(){
     quizGroup = b.dataset.qgroup; startQuiz();
   }));
   document.getElementById('quizPlayBtn').addEventListener('click', () => playClip(round));
-  // auto-play on round start
-  playClip(round);
+  // No auto-play (tools v2: audio starts only from the student's own tap).
 
   document.querySelectorAll('#quizChoices [data-choice]').forEach(btn => {
     btn.addEventListener('click', () => submitAnswer(btn.dataset.choice, round));
@@ -935,8 +942,9 @@ if (!stage) document.getElementById('quizSection').hidden = false;
    test (name it, where, when) at the top of the dock and the question itself
    on the stage. Why: why this spot (mirrored from the explore card) and the
    sound's description. Details: volume, compare two sounds, every sound's card. */
+const v2 = !!(stage && window.LevlKit2 && window.NremtSoundExplore && window.NremtStudio && window.NremtStudio.kit2 && params.get('studio') !== '0');
 const studio = stage && window.NremtStudio ? window.NremtStudio.mount({ title: 'Sound trainer', slug: 'sound-trainer', detailsTitle: 'Settings & every sound' }) : null;
-if (studio) (function(){
+if (studio && !v2) (function(){
   const R = document.getElementById('stageRoot'), q = sel => R.querySelector(sel);
   const fig = q('.st-fig'), side = q('.st-side'), main = q('.st-main'), timing = q('.st-timing'), pick = q('.st-quizpick'), vol = q('.st-vol');
   const quiz = document.getElementById('quizSection');
@@ -1056,6 +1064,63 @@ if (studio) (function(){
   if (location.hash.indexOf('#snd-') === 0) {
     const card = document.getElementById(location.hash.slice(1));
     if (card) { sndMore.open = true; studio.open('details'); card.classList.add('is-target'); setTimeout(() => { card.scrollIntoView({ block: 'center' }); card.focus({ preventScroll: true }); }, 300); }
+  }
+})();
+/* ---- Tools v2 (docs/tools-v2-nremt-sound-trainer-brief.md) ----------------------------------------------------
+   EXPLORE (assets/sound-explore.js): a chest with a stethoscope to drag onto it, the lens with what makes the sound,
+   the strip that draws it, normal or abnormal at the same spot. TEST YOURSELF, three parts, each the screen this page
+   always had, moved in and never copied: Name the sound (the quiz above), Where to listen and When in the beat
+   (assets/sound-stage.js). Record ids are unchanged (the sound's id, where-<id>, timing-<id>).
+   Deep links: ?mode=name|where|timing (&q=<id>) opens that part; ?mode=explore Explore; #test Test yourself;
+   #snd-<id> Explore on that sound, the stethoscope on its best spot (nothing plays); for a sound with no clip,
+   "?" opens on its card. */
+if (studio && v2) (function(){
+  const R = document.getElementById('stageRoot'), q = sel => R.querySelector(sel);
+  const quiz = document.getElementById('quizSection'), fig = q('.st-fig'), side = q('.st-side'), timing = q('.st-timing');
+  R.querySelector('.st-quizpick').hidden = true;
+  const ex = window.NremtSoundExplore.build({ studio, sounds: SOUNDS });
+  // "?": the explanation, the volume, and every sound's card (snoring, gurgling and diminished have no clip)
+  const vol = q('.st-volrow'), cards = document.getElementById('listenSection');
+  if (vol) { const h = document.createElement('h3'); h.textContent = 'Volume'; ex.more.append(h, vol); }
+  ex.more.append(cards);
+  // the old Explore's leftovers have no use in v2: the mode tabs and Sound button, the "More options" box (its volume
+  // moved to "?" above; "Compare two sounds" is the Normal switch now; its credit is in "?")
+  ['.st-top', '.st-more', '.st-tapcue'].forEach(sel => { const e = R.querySelector(sel); if (e) e.remove(); });
+  window.NremtStudio.scrollable([timing, quiz], 'Question');
+  const TASK = {
+    name: { kicker: 'Test yourself', title: 'Name the sound', todo: 'Press play, then pick what you hear.' },
+    where: { kicker: 'Test yourself', title: 'Where to listen', todo: 'Tap the spot on the chest where you would listen. Flip to Back if you need the back.' },
+    timing: { kicker: 'Test yourself', title: 'When in the beat', todo: 'Play the beat, then tap the strip where the extra sound falls.' }
+  };
+  const want = params.get('mode');
+  // the stage was mounted on ?mode= (with its &q= question), so that part is already set up
+  let shownPart = want && /^(name|where|timing)$/.test(want) ? want : null;
+  window.NremtStudio.kit2(studio, { stage: ex.stage, ref: ex.ref,
+    parts: [
+      { value: 'name', label: 'Name the sound', stage: quiz, task: TASK.name },
+      { value: 'where', label: 'Where to listen', stage: fig, dock: side, task: TASK.where },
+      { value: 'timing', label: 'When in the beat', stage: timing, task: TASK.timing }
+    ],
+    start: h => {
+      if (want && /^(name|where|timing)$/.test(want)) return { mode: 'quiz', part: want };
+      if (/^#test\b/.test(h || '')) return { mode: 'quiz', part: 'name' };
+      if ((h || '').indexOf('#snd-') === 0) { if (ex.show(h.slice(5))) return { mode: 'explore' }; }
+      return { mode: 'explore' };
+    },
+    onShow: (m, part) => {
+      if (m === 'explore') { window.LevlSoundBank.stop(); ex.shown(); return; }
+      ex.hidden();
+      window.LevlSoundBank.stop();
+      if (part !== shownPart) {
+        shownPart = part;
+        stage.setMode(part);
+      }
+      if (part === 'name' && !quizState) startQuiz();
+    } });
+  // a #snd-<id> link to a sound with no clip opens "?" on its card
+  if (location.hash.indexOf('#snd-') === 0 && studio.kit2.mode() === 'explore' && !SOUNDS.some(x => x.available && x.id === location.hash.slice(5))) {
+    const card = document.getElementById(location.hash.slice(1));
+    if (card) { document.getElementById('sndMore').open = true; studio.open('details'); card.classList.add('is-target'); setTimeout(() => { card.scrollIntoView({ block: 'center' }); card.focus({ preventScroll: true }); }, 300); }
   }
 })();
 // From Review: sound-trainer.html#snd-<id> lands on that sound's card.

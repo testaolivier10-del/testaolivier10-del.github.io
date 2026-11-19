@@ -201,6 +201,25 @@
     if(parent) parent.appendChild(n);
     return n;
   }
+  /* Text in a scaled svg: every text renders at least `min` px on screen (the 11 px rule, tools v2), whatever the
+     svg's scale; measured from the svg's real width against its viewBox, again whenever it is resized. */
+  function fitText(svgEl, min){
+    function fit(){
+      var vb = svgEl.viewBox && svgEl.viewBox.baseVal, w = svgEl.getBoundingClientRect().width;
+      if(!vb || !vb.width || !w) return;
+      var k = w / vb.width;
+      svgEl.querySelectorAll('text').forEach(function(t){
+        if(!t.hasAttribute('data-fs')){ t.style.fontSize = ''; t.setAttribute('data-fs', parseFloat(getComputedStyle(t).fontSize) || 12); }
+        var base = +t.getAttribute('data-fs');
+        t.style.fontSize = base * k < min ? (min / k).toFixed(2) + 'px' : '';
+      });
+    }
+    fit();
+    if(window.ResizeObserver && !svgEl._fitRO){ svgEl._fitRO = new ResizeObserver(fit); svgEl._fitRO.observe(svgEl); }
+    svgEl._fit = fit;
+    return fit;
+  }
+
   /* Site positions from the rendered figure's measured landmarks. */
   function placeSites(F){
     ['front', 'back'].forEach(function(v){
@@ -282,8 +301,23 @@
     el('line', { x1:0, x2:0, y1:14, y2:H - 18 }, marker);
     el('path', { d:'M-7 10 L7 10 L0 20 Z' }, marker);
     var state = { svg: svg, layer: layer, head: head, marker: marker, title: title, sound: null, W: myW };
+    /* Made while its part was hidden, the strip had no width and drew at 600 units, then was shown smaller: its
+       labels shrank under 11 px. So it redraws at its real width whenever that changes. */
+    if(window.ResizeObserver){
+      var ro = new ResizeObserver(function(){
+        var nw = Math.round(Math.max(240, Math.min(720, (host.clientWidth || 0) - 12)));
+        if(!host.clientWidth || Math.abs(nw - myW) < 2 || !state.last) return;
+        var frac = state.markX == null ? null : state.markX / myW;
+        myW = nw; state.W = myW; W = myW; svg.setAttribute('viewBox', '0 0 ' + myW + ' ' + H);
+        state.last();
+        if(frac != null) state.mark(frac * myW);
+        fitText(svg, 11);
+      });
+      ro.observe(host);
+    }
 
     state.drawHeart = function(sound, mix, hide){
+      state.last = function(){ state.drawHeart(sound, mix, hide); };
       W = myW;
       state.sound = sound; state.kind = 'heart';
       while(layer.firstChild) layer.removeChild(layer.firstChild);
@@ -347,9 +381,11 @@
       title.textContent = hide
         ? 'One heartbeat, S1 and S2 marked. Where the extra sound falls is hidden.'
         : 'One heartbeat of ' + sound.label + ': ' + describeHeart(sound.synth);
+      fitText(svg, 11);
     };
 
     state.drawLung = function(sound){
+      state.last = function(){ state.drawLung(sound); };
       W = myW;
       state.sound = sound; state.kind = 'lung';
       while(layer.firstChild) layer.removeChild(layer.firstChild);
@@ -372,6 +408,7 @@
       // The breathing-in band is narrow: start the label at its left edge so it is not cut off.
       if(ph === 'insp'){ c.setAttribute('x', 4); c.style.textAnchor = 'start'; }
       title.textContent = 'A typical breath, not traced from this recording. ' + shortName(sound) + ': ' + PHASE_TEXT[sound.id];
+      fitText(svg, 11);
     };
 
     state.play = function(info){
@@ -395,6 +432,7 @@
     };
     state.stop = function(){ state.info = null; cancelAnimationFrame(state.raf); head.style.display = 'none'; };
     state.mark = function(x){
+      state.markX = x;
       if(x == null){ marker.style.display = 'none'; return; }
       marker.style.display = '';
       marker.setAttribute('transform', 'translate(' + x + ',0)');
@@ -588,6 +626,7 @@
       drawBody(svg, v, figs);
       siteEls = drawSites(svg, v, { onTap: tapSite });
       paintSites();
+      fitText(svg, 12);
       if(st.mode === 'where' && st.whereAnswered && st.where){
         Object.keys(siteEls).forEach(function(id){ if(st.where.ok.indexOf(id) >= 0) siteEls[id].classList.add('is-right'); });
         if(st.lastWrong && siteEls[st.lastWrong]) siteEls[st.lastWrong].classList.add('is-wrong');
