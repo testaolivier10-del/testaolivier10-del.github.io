@@ -149,7 +149,16 @@
                                     question waits (match(text) looks up without picking). ask(id,
                                     cb): the "find it" question mode: the next tap answers (cb(true | false, tapped
                                     item)), marks the tapped pin right or wrong and shows the asked one's card;
-                                    ask(null) leaves it. how in onPick: 'tap' | 'key' | 'find' | 'set'. */
+                                    ask(null) leaves it. how in onPick: 'tap' | 'key' | 'find' | 'set'.
+                                    3D VIEWERS (first: A&P 3D anatomy; docs/tools-v2-anp-anatomy-3d-brief.md):
+                                    o.project(item) -> [x, y, r] | null: where the item is drawn now (layer px; r about
+                                    half its drawn size; null: off the picture). Then no pins are drawn and the picture's
+                                    taps are the tool's (it calls pick(id, 'tap') from its own picking); only the named
+                                    item is placed, with a small ring where its leader ends, and the card keeps off a
+                                    disc of the item's size. o.wait() -> true while the picture still moves (a camera
+                                    travelling): the card waits, then grows once place() runs with wait() false. The
+                                    tool calls place() after every drawn frame. ask() is for pins only. An item's sub (set
+                                    before pick) is a small second line on the card (the piece tapped: "Right scaphoid"). */
 (function(){
   'use strict';
   if(window.LevlKit2) return;
@@ -403,7 +412,8 @@
   /* ------------------------------------------------------------ named places on a picture (explorers) */
   K.spots = function(layer, o){
     var items = o.items.slice(), cur = null, asking = null, shown = true;
-    var box = el('div', 'tk2-spots'); box.setAttribute('role', 'group'); box.setAttribute('aria-label', o.label || 'Parts');
+    var proj = typeof o.project === 'function', due = false;   // 3D: projected, no pins; due: a grow waits for wait()
+    var box = el('div', 'tk2-spots' + (proj ? ' is-proj' : '')); box.setAttribute('role', 'group'); box.setAttribute('aria-label', o.label || 'Parts');
     var hit = el('div', 'tk2-spots-hit'); hit.setAttribute('aria-hidden', 'true');
     var NS = 'http://www.w3.org/2000/svg', lines = document.createElementNS(NS, 'svg');
     lines.setAttribute('class', 'tk2-spots-lines'); lines.setAttribute('aria-hidden', 'true');
@@ -411,6 +421,7 @@
     box.appendChild(hit); box.appendChild(lines);
     var done = firstHint(box, o.key, o.hint || 'Tap', o.chip === false);
     items.forEach(function(it, i){
+      if(proj){ it._b = null; it._dots = []; it.at = it.at || [[0, 0]]; return; }
       var b = el('button', 'tk2-spot', '<span class="tk2-spot-pin"></span>');
       b.type = 'button'; b.setAttribute('aria-label', it.name); b.setAttribute('aria-pressed', 'false'); b.setAttribute('data-id', it.id);
       b.tabIndex = i ? -1 : 0;
@@ -425,6 +436,16 @@
     function find(id){ for(var i = 0; i < items.length; i++) if(items[i].id === id) return items[i]; return null; }
     function setPos(e, p){ e.style.left = p[0].toFixed(1) + 'px'; e.style.top = p[1].toFixed(1) + 'px'; }
     function place(){
+      if(proj){
+        if(!cur) return;
+        var p = o.project(cur);
+        if(!p || !isFinite(p[0]) || !isFinite(p[1])){ card.hidden = true; lines.innerHTML = ''; due = due || !!cur; return; }
+        cur.at = [[p[0], p[1]]]; cur._r = p[2] || 0;
+        if(o.wait && o.wait()){ if(due){ card.hidden = true; lines.innerHTML = ''; } return; }
+        var grow = due; due = false;
+        kNow = layer.scale(); drawCard(grow); kNow = 0;
+        return;
+      }
       kNow = layer.scale();
       items.forEach(function(it){ setPos(it._b, px(it.at[0])); it._dots.forEach(function(d, j){ setPos(d, px(it.at[j + 1])); }); });
       if(cur) drawCard(false);
@@ -434,13 +455,13 @@
        its longest line (no empty space at its right), measured at the layer's corner so it never shrinks to fit */
     var sizes = {};
     function size(it){
-      var key = it.id + '|' + layer.el.clientWidth;
+      var key = it.id + '|' + layer.el.clientWidth + (it.sub ? '|' + it.sub : '');
       if(sizes[key]) return sizes[key];
-      card.hidden = false; card.className = 'tk2-spot-card'; card.style.left = '0px'; card.style.top = '0px'; card.style.width = '';
-      card.innerHTML = '<span class="tk2-spot-t">' + esc(it.name) + '</span>';
-      var sp = card.firstChild, cs = getComputedStyle(card), pad = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight) + parseFloat(cs.borderLeftWidth) + parseFloat(cs.borderRightWidth);
-      var rects = sp.getClientRects(), wmax = 0;
-      for(var i = 0; i < rects.length; i++) wmax = Math.max(wmax, rects[i].width);
+      card.hidden = false; card.className = 'tk2-spot-card'; card.style.left = '0px'; card.style.top = '0px'; card.style.width = ''; card._for = null;
+      card.innerHTML = '<span class="tk2-spot-t">' + esc(it.name) + '</span>' + (it.sub ? '<span class="tk2-spot-s">' + esc(it.sub) + '</span>' : '');
+      var cs = getComputedStyle(card), pad = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight) + parseFloat(cs.borderLeftWidth) + parseFloat(cs.borderRightWidth);
+      var wmax = 0;
+      [].forEach.call(card.children, function(sp){ var rects = sp.getClientRects(); for(var i = 0; i < rects.length; i++) wmax = Math.max(wmax, rects[i].width); });
       var w = Math.ceil(wmax + pad + 1);
       card.style.width = w + 'px';
       sizes[key] = [w, card.offsetHeight, card.innerHTML];
@@ -452,10 +473,13 @@
       var held = kNow; kNow = layer.scale();
       var it = cur, W = layer.el.clientWidth, H = layer.el.clientHeight;
       var lr = layer.el.getBoundingClientRect(), avoid = (o.avoid ? o.avoid() : []).map(function(a){ return [a.left - lr.left, a.top - lr.top, a.width, a.height]; });
-      var others = []; items.forEach(function(j){ if(j !== it) j.at.forEach(function(q){ others.push(px(q)); }); });
+      var others = []; if(!proj) items.forEach(function(j){ if(j !== it) j.at.forEach(function(q){ others.push(px(q)); }); });
       var minePts = it.at.map(px);
-      var sz = size(it), cw = sz[0], ch = sz[1], P = px(it.at[0]), G = 22, R = 13;
-      card.innerHTML = sz[2]; card.hidden = false; card.className = 'tk2-spot-card'; card.style.width = cw + 'px';
+      // 3D: the card stands off a disc of the part's drawn size (never on the part it names)
+      var sz = size(it), cw = sz[0], ch = sz[1], P = px(it.at[0]), G = proj ? 22 + Math.min(it._r || 0, 90) * 0.55 : 22, R = proj ? clamp((it._r || 0) * 0.55, 13, 70) : 13;
+      if(proj && !anim && card._for === it.id + (it.sub || '') && !card.hidden){ card.className = 'tk2-spot-card is-in'; }
+      else { card.innerHTML = sz[2]; card._for = it.id + (it.sub || ''); card.hidden = false; card.className = 'tk2-spot-card'; }
+      card.style.width = cw + 'px';
       var side = it.side === 'left' ? -1 : 1, near = side > 0 ? P[0] + G : P[0] - G - cw, far = side > 0 ? P[0] - G - cw : P[0] + G, cand = [], best = null;
       // beside the pin on its own side first, then the other side, then above or below; each also slid up or down
       // (or sideways) by most of its size, so it can clear a neighbouring pin
@@ -484,6 +508,14 @@
         var dx = Q[0] - ex, dy = Q[1] - ey, L = Math.sqrt(dx * dx + dy * dy);
         if(L > 9) d += 'M' + ex.toFixed(1) + ',' + ey.toFixed(1) + 'L' + (Q[0] - dx / L * 8).toFixed(1) + ',' + (Q[1] - dy / L * 8).toFixed(1);
       });
+      if(proj){
+        // a ring where the leader ends; on a frame that only follows the camera the same two nodes move
+        var ring = '<circle class="tk2-spot-ring" cx="' + P[0].toFixed(1) + '" cy="' + P[1].toFixed(1) + '" r="5"/>';
+        var pa = lines.querySelector('.tk2-spot-lead'), ci = lines.querySelector('.tk2-spot-ring');
+        if(!anim && ci && (pa || !d)){ ci.setAttribute('cx', P[0].toFixed(1)); ci.setAttribute('cy', P[1].toFixed(1)); if(pa) pa.setAttribute('d', d); }
+        else lines.innerHTML = (d ? '<path class="tk2-spot-lead" d="' + d + '" pathLength="1"/>' : '') + ring;
+        if(!anim){ kNow = held; return; }
+      } else
       lines.innerHTML = d ? '<path class="tk2-spot-lead" d="' + d + '" pathLength="1"/>' : '';
       if(anim){
         var rm = reduced();
@@ -498,7 +530,15 @@
       var it = id == null ? null : find(id);
       if(cur && cur._b){ cur._b.setAttribute('aria-pressed', 'false'); cur._b.classList.remove('is-on'); cur._dots.forEach(function(d){ d.classList.remove('is-on'); }); }
       cur = it;
-      if(!it){ card.hidden = true; lines.innerHTML = ''; if(o.onPick) o.onPick(null, how || 'set'); return null; }
+      if(!it){ card.hidden = true; card._for = null; lines.innerHTML = ''; due = false; if(o.onPick) o.onPick(null, how || 'set'); return null; }
+      if(proj){
+        // the card grows once the picture shows the part (the tool's place() after each frame, wait() false)
+        card.hidden = true; card._for = null; lines.innerHTML = ''; due = how !== 'set' || !reduced();
+        if(how && how !== 'set'){ done(); }
+        if(o.onPick) o.onPick(it, how || 'set');
+        place();
+        return it;
+      }
       it._b.setAttribute('aria-pressed', 'true'); it._dots.forEach(function(d){ d.classList.add('is-on'); });
       // the halo grows again on every pick (restarted, so a second tap on the same pin shows too)
       var hb = it._b; hb.classList.remove('is-on'); requestAnimationFrame(function(){ if(cur === it) hb.classList.add('is-on'); });
@@ -588,7 +628,7 @@
       find: function(text){ if(asking) return null; var it = match(text); if(it) tapped(it, 'find'); return it; },
       match: match,
       asking: function(){ return !!asking; },
-      ask: function(id, cb){ items.forEach(function(j){ j._b.classList.remove('is-good', 'is-bad'); }); asking = id == null ? null : { id: id, cb: cb }; if(asking) pick(null, 'set'); },
+      ask: function(id, cb){ if(proj) return; items.forEach(function(j){ j._b.classList.remove('is-good', 'is-bad'); }); asking = id == null ? null : { id: id, cb: cb }; if(asking) pick(null, 'set'); },
       place: place,
       hide: function(on){ shown = !on; box.hidden = !!on; }
     };

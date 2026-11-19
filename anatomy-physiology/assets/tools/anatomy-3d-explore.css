@@ -1,0 +1,78 @@
+/* A&P 3D anatomy, tools v2 Explore (tools/anatomy-3d-explore.js; docs/tools-v2-anp-anatomy-3d-brief.md). The 3D body
+   fills the stage; the find field, Reset view and the credit sit on it; the name card and its leader are K.spots'
+   (assets/course/tool-kit2.css) in the viewer's selection colour; the cause line: the part's name in that colour,
+   where it is in ink. */
+.ax{display:flex;flex-direction:column;gap:8px;min-height:0;--ax-sel:#0F5C50;}
+:root[data-theme="dark"] .ax{--ax-sel:#5CC2AE;}
+.ax .tk2-cz.is-name{--cz:var(--ax-sel);--cz-ink:var(--ax-sel);}
+.ax .tk2-cz.is-at{--cz:transparent;--cz-ink:var(--ink);border-color:color-mix(in srgb, var(--ink) 30%, transparent);background:var(--white);
+  white-space:normal;border-radius:14px;overflow-wrap:normal;word-break:normal;hyphens:none;}
+:root[data-theme="dark"] .ax .tk2-cz.is-at{background:transparent;}
+
+.ax-scene{position:relative;min-height:340px;border-radius:18px;overflow:hidden;
+  box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--ink) 10%, transparent);}
+.ax-slot{position:absolute;inset:0;}
+.ax-slot > .bv{position:absolute;inset:0;}
+.ax-slot .bv-canvas{height:100% !important;}
+.ax-slot .bv-reset{display:none;}   /* Explore's own Reset view brings the region back */
+.ax-over{position:absolute;inset:0;pointer-events:none;}
+.ax-zero{position:absolute;width:0;height:0;}
+/* the card and the ring in the viewer's selection colour (the part glows in it) */
+.ax-over{--tk2-spot:var(--ax-sel);--tk2-spot-fill:#fff;}
+.ax .tk2-spot-card{max-width:min(240px,62%);}
+.ax-over .tk2-spot-lead{filter:drop-shadow(0 0 1.5px rgba(255,255,255,.9));}
+:root[data-theme="dark"] .ax-over .tk2-spot-lead{filter:drop-shadow(0 0 1.5px rgba(0,0,0,.8));}
+:root[data-theme="dark"] .ax-over{--tk2-spot-fill:#16202E;}
+
+/* "Find a part": a quiet magnifier at the top left of the picture; it opens into a field */
+.ax-find{position:absolute;left:10px;top:10px;z-index:5;margin:0;display:flex;align-items:center;}
+.ax-find-b{width:40px;height:40px;border-radius:50%;border:2px solid var(--line);cursor:pointer;
+  background:var(--overlay-bg,rgba(255,255,255,.92)) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235A6573' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='6.5'/%3E%3Cpath d='M15.5 15.5l5 5'/%3E%3C/svg%3E") 50% 50%/18px no-repeat;
+  box-shadow:0 1px 4px rgba(0,0,0,.08);}
+.ax-find-b:focus-visible,.ax .ax-find-in:focus-visible,.ax-reset:focus-visible{outline:3px solid var(--ax-sel);outline-offset:1px;}
+.ax-find:not(.is-open) .ax-find-in{display:none;}
+.ax-find.is-open .ax-find-b{display:none;}
+.ax .ax-find-in{width:190px;height:40px;padding:0 10px 0 32px;border-radius:999px;border:2px solid var(--line);
+  background:var(--overlay-bg,rgba(255,255,255,.94)) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235A6573' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='6.5'/%3E%3Cpath d='M15.5 15.5l5 5'/%3E%3C/svg%3E") 10px 50%/16px no-repeat;
+  color:var(--ink);font:700 15px var(--font-ui);}
+.ax .ax-find-in::placeholder{color:var(--muted);}
+.ax .ax-find.is-miss .ax-find-in{border-color:#C0392B;}
+.ax-reset{position:absolute;top:10px;right:10px;z-index:5;display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:8px 14px;
+  border:2px solid var(--line);border-radius:999px;background:var(--overlay-bg,rgba(255,255,255,.92));color:var(--ink);
+  font:800 13px var(--font-ui,system-ui);cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.08);}
+.ax-reset:hover,.ax-find-b:hover{border-color:var(--ax-sel);}
+.ax-reset svg{width:16px;height:16px;}
+.ax-credit{position:absolute;right:12px;bottom:6px;margin:0;font:700 11px var(--font-ui);color:var(--muted);pointer-events:none;z-index:2;}
+
+.ax-lines{display:flex;flex-wrap:wrap;align-items:center;gap:8px;min-height:44px;}
+
+/* "?" */
+.ax-card{margin:10px 0;padding:10px 12px;border-radius:12px;background:var(--ctint,rgba(0,0,0,.04));}
+.ax-k{margin:8px 0 2px;font:800 12px var(--font-ui);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);}
+.ax-n{margin:0 0 6px;font:800 17px var(--font-ui);}
+.ax-dl{margin:0;}
+.ax-dl dt{font-weight:800;margin-top:6px;}
+.ax-dl dd{margin:0;}
+.ax-rel{display:flex;flex-wrap:wrap;gap:6px;}
+.ax-go{min-height:34px;padding:4px 11px;border-radius:999px;border:1.5px solid var(--line);background:var(--white);color:var(--ink);font:700 13.5px var(--font-ui);cursor:pointer;}
+.ax-go:hover{border-color:var(--ax-sel);}
+
+@media (max-width:640px){
+  .ax-scene{border-radius:14px;}
+  .ax-find{left:7px;top:7px;}
+  .ax .ax-find-in{width:160px;font-size:15px;}
+  .ax-reset{top:7px;right:7px;padding:6px 11px;font-size:12.5px;}
+  .ax-lines{min-height:76px;align-items:flex-start;}
+  .ax .tk2-tabs.is-big{gap:4px;}
+  .ax .tk2-tabs.is-big .tk2-tab{flex:1 1 auto;padding:0 3px;font-size:13px;min-height:46px;}
+  .ax .tk2-tabs.is-big .tk2-tab-n{display:none;}
+  .ax .tk2-spot-card{font-size:14px;padding:5px 9px;max-width:10.5em;}
+}
+@media (max-width:380px){ .ax .tk2-tabs.is-big{gap:2px;} .ax .tk2-tabs.is-big .tk2-tab{font-size:12.5px;padding:0 1px;} }
+@media (min-width:641px) and (max-width:1100px){
+  .ax .tk2-tabs.is-big .tk2-tab{padding:0 8px;}
+  .ax .tk2-tabs.is-big .tk2-tab-n{display:none;}
+  .ax-lines{min-height:84px;align-items:flex-start;}
+}
+@media (prefers-reduced-motion: reduce){ .ax *{transition-duration:.12s !important;} }
+.ax-lines{contain:layout paint;}

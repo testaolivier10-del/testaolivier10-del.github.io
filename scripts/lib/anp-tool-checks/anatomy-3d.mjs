@@ -23,7 +23,12 @@
    names one structure); partNames only for meshes that exist; the ordering
    rule: a structure's text uses no term taught after its topic (everyday words
    allowed, decision 51), exactly as a page is checked; no em dash (owner rule
-   for new student-facing copy); no option-by-position wording. */
+   for new student-facing copy); no option-by-position wording.
+   Tools v2 Explore (docs/tools-v2-anp-anatomy-3d-brief.md): every structure has
+   "at", where it is in a few words (at most 50 characters, so the line under the
+   picture fits two rows on a phone), held to the same rules; explore.tabs name
+   listed systems, each system on one tab at most, and a first structure on that
+   tab. */
 import { readFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -77,6 +82,8 @@ export function check(data, map) {
     if (!topics.has(s.topic)) E(`${at}: topic "${s.topic}" is not in the dependency map`);
     if (!KINDS.includes(s.kind)) E(`${at}: kind must be one of ${KINDS.join(', ')}`);
     for (const f of FIELDS) if (!str(s[f])) E(`${at}: ${f} is required`);
+    if (!str(s.at)) E(`${at}: at (where it is, a few words) is required`);
+    else if (s.at.length > 50) E(`${at}: at is ${s.at.length} characters; keep it to 50 (two rows on a phone)`);
     if (!Array.isArray(s.parts) || !s.parts.length) E(`${at}: parts must list at least one mesh`);
     for (const p of s.parts || []) {
       if (meshes && !meshes.has(p)) E(`${at}: mesh ${p} is not in the model`);
@@ -94,10 +101,10 @@ export function check(data, map) {
     }
     // The ordering rule (docs/anp-spec.md section 7), as for every page.
     if (topicIndex.get(s.topic) !== undefined) {
-      const html = [s.name, s.what, s.where, s.features, s.note].filter(Boolean).map(x => `<p>${escHtml(textOf(x))}</p>`).join('');
+      const html = [s.name, s.what, s.where, s.at, s.features, s.note].filter(Boolean).map(x => `<p>${escHtml(textOf(x))}</p>`).join('');
       for (const p of scanPage(map, html, s.topic)) E(`${at}: ${p}`);
     }
-    for (const x of [s.name, s.what, s.where, s.features, s.note, ...(s.accept || [])]) {
+    for (const x of [s.name, s.what, s.where, s.at, s.features, s.note, ...(s.accept || [])]) {
       if (x && /—/.test(x)) E(`${at}: em dash in "${textOf(x).slice(0, 40)}…"; use a period, colon or comma`);
     }
   }
@@ -117,5 +124,23 @@ export function check(data, map) {
     if (/—/.test(n)) E(`partNames: em dash in ${p}`);
   }
   for (const k of ['contains', 'missing']) if (data.model && /—/.test(data.model[k] || '')) E(`model.${k}: em dash`);
+  const tabs = (data.explore && data.explore.tabs) || [];
+  if (!tabs.length) E('explore.tabs: at least one tab is required (tools v2 Explore)');
+  const tabIds = new Set(), tabOf = {};
+  for (const t of tabs) {
+    const at = `explore tab ${t.id || '?'}`;
+    if (!str(t.id) || !SLUG.test(t.id) || tabIds.has(t.id)) E(`${at}: id must be a unique lowercase slug`);
+    tabIds.add(t.id);
+    for (const f of ['label', 'short', 'purpose']) if (!str(t[f])) E(`${at}: ${f} is required`);
+    if (str(t.purpose) && /—/.test(t.purpose)) E(`${at}: em dash in the purpose line`);
+    if (!Array.isArray(t.systems) || !t.systems.length) E(`${at}: systems must list at least one body system`);
+    for (const k of t.systems || []) {
+      if (!systems[k]) E(`${at}: system ${k} is not listed in systems`);
+      if (tabOf[k]) E(`${at}: system ${k} is already on tab ${tabOf[k]}`);
+      tabOf[k] = t.id;
+    }
+    const f = data.structures.find(x => x.id === t.first);
+    if (!f || !(t.systems || []).includes(f.system)) E(`${at}: first "${t.first}" is not a structure on this tab`);
+  }
   return errs;
 }
