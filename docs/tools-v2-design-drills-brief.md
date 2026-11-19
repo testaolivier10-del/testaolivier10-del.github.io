@@ -243,3 +243,18 @@ setup and results) at every width, rendered size = font size times the element's
 under 11 px; the smallest found is 11.0 px. Checks: sweep one width per process, light and dark, **34700 passed, 0
 failed**; `--frames` 12 passed; Playwright 139 passed; unit tests, content, `build-apbio --check`, `check-site`,
 `check-weight --check`, `build-apcalc --check`, `build-apmacro --check` pass; preview regenerated.
+
+## Recheck 3 (2026-11-18, PASS; text collisions it found fixed before the merge)
+
+The reviewer measured collisions that were already on main, where the phone's raised text (12 px) runs into its
+neighbours. Fixed now, since "−200" next to "0" read as "−2000":
+- Experiment 12: "−200" ends at its tick and "0" starts at its own (a tick added at 0); the luciferase box is wide
+  enough for the word.
+- Experiment 13: the top labels are shorter ("generations of selection" under the calendar that shows 30; "then 2
+  more, all humid"); groups whose labels share a first word in runs (Dry 1 to 4, Humid 1 to 4) show the number
+  under each group and the word once under its run, in the setup and the results chart (`runs()`).
+- Experiment 7: the label left of the flasks (it left the drawing on a phone) is six short lines 13 apart, with
+  the flasks moved right to make room.
+The sweep now checks every setup and results chart: no two texts collide (side by side on one row at least 4 px
+apart, otherwise no ink overlap; each line of a two line label on its own) and a word on a box stays inside it. It
+fails on the old code (experiments 12 and 13); 360 (3552), 390 (3552) and 768 (3522) pass, 0 failed.

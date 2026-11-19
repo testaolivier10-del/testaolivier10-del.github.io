@@ -282,11 +282,29 @@
     function levels(D, fmtL, title, y, ty){
       var o = '', gw = ((D.R || 380) - (D.L || 20)) / D.n, narrow = gw < 60;
       y = y || (narrow ? 214 : 222);
+      var rn = narrow ? runs(D.lv.map(function(l, k){ return fmtL ? fmtL(l, k) : l; })) : null;
+      if(rn){
+        rn.forEach(function(r){ o += tx((gx(D.n, r.a, D.L, D.R) + gx(D.n, r.b, D.L, D.R)) / 2, y + 12, r.word, 'dk-lv'); });
+        D.lv.forEach(function(l, k){ o += tx(gx(D.n, k, D.L, D.R), y, rn.rest[k], 'dk-lv'); });
+        return o + tx(((D.L || 20) + (D.R || 380)) / 2, ty || y + 32, title || strip(D.cols[0]), 'dk-ax');
+      }
       D.lv.forEach(function(l, k){
         var x = gx(D.n, k, D.L, D.R), t = fmtL ? fmtL(l, k) : l, two = narrow && t.indexOf(' ') > 0;
         o += two ? '<text class="dk-lv" x="' + n1(x) + '" y="' + y + '" text-anchor="middle">' + esc(t.slice(0, t.indexOf(' '))) + '<tspan x="' + n1(x) + '" dy="12">' + esc(t.slice(t.indexOf(' ') + 1)) + '</tspan></text>' : tx(x, y, t, 'dk-lv');
       });
       return o + tx(((D.L || 20) + (D.R || 380)) / 2, ty || y + (narrow ? 32 : 20), title || strip(D.cols[0]), 'dk-ax');
+    }
+    /* Narrow groups whose labels share a first word in runs (Dry 1 to Dry 4, Humid 1 to Humid 4): the word is written
+       once under its run and each group keeps only the rest, since "Humid" under every narrow group ran into the
+       next (review recheck 3). Null when the labels are not like that. */
+    function runs(lv){
+      var w = [], rest = [];
+      if(!lv.every(function(l){ var i = String(l).indexOf(' '); if(i <= 0) return false; w.push(l.slice(0, i)); rest.push(l.slice(i + 1)); return true; })) return null;
+      var out = [];
+      w.forEach(function(x, k){ var r = out[out.length - 1]; if(r && r.word === x) r.b = k; else out.push({ word: x, a: k, b: k }); });
+      if(out.length === w.length || out.some(function(r){ return r.a === r.b; })) return null;
+      out.rest = rest;
+      return out;
     }
     function flask(cx, top, bot, w, inner){
       var nk = w * 0.2;
@@ -410,13 +428,15 @@
       },
       'quorum-signal': function(D){
         var o = topRow([[2, I.tally, 'same cells\nat the start'], [3, I.clock, 'time before\nmeasuring'], [4, I.thermo, 'same\ntemperature'], [1, I.meter, 'light per\ncell']]), cm = '';
-        D.L = 64; var w = Math.min(58, 316 / D.n * 0.72);
+        D.L = 76; var w = Math.min(58, 304 / D.n * 0.72);
         D.lv.forEach(function(l, k){
           var x = gx(D.n, k, D.L), pct = numOf(l) / 100, lt = 136, h = 202 - 2 - lt, ct = 200 - h * pct;
           o += flaskLiq(x, lt, 202, w, 96, 'dk-broth') + flask(x, 96, 202, w) + dots(x, 182, w * 0.6, 26, 10, 'dk-bact', 1.4, 2 + k);
           if(pct > 0) cm += '<clipPath id="' + gid + 'cq' + k + '"><rect x="' + n1(x - w / 2) + '" y="' + n1(ct) + '" width="' + n1(w) + '" height="' + n1(202 - ct) + '"/></clipPath><g clip-path="url(#' + gid + 'cq' + k + ')">' + flaskLiq(x, lt, 202, w, 96, 'dk-cond') + '</g>';
         });
-        cm += I.glow(28, 124) + tx(28, 152, 'cell-free', 'dk-ts') + tx(28, 163, 'medium', 'dk-ts') + tx(28, 174, 'from a dense,', 'dk-ts') + tx(28, 185, 'glowing', 'dk-ts') + tx(28, 196, 'culture', 'dk-ts');
+        // the label column left of the flasks: short lines, 13 apart, so the phone's raised text (12 px) neither leaves
+        // the drawing nor runs into the next line
+        cm += I.glow(38, 124) + ['cell-free', 'medium', 'from a', 'dense,', 'glowing', 'culture'].map(function(t, i){ return tx(38, 152 + i * 13, t, 'dk-ts'); }).join('');
         return o + part(0, cm + levels(D, function(l){ return l + '%'; }, 'Conditioned medium (shaded), % of the volume'));
       },
       'root-mitosis': function(D){
@@ -472,15 +492,18 @@
           segs.forEach(function(sg){ if(sg[1] > sg[0]) dna += '<rect class="dk-dnab" x="' + n1(sx(sg[0])) + '" y="' + (y - 4) + '" width="' + n1(sx(sg[1]) - sx(sg[0])) + '" height="8" rx="2"/>'; });
           if(c) dna += '<path class="dk-gap" d="M' + n1(sx(c[0]) + 2) + ' ' + y + 'H' + n1(sx(c[1]) - 2) + '"/>';
           dna += tx(52, y + 4, strip(l), 'dk-lv', 'end');
-          luc += '<rect class="dk-luc" x="' + (X1 + 2) + '" y="' + (y - 6) + '" width="60" height="12" rx="3"/>' + tx(X1 + 32, y + 3.5, 'luciferase', 'dk-ic');
+          // wide enough for the word at the phone's raised size (12 px on screen)
+          luc += '<rect class="dk-luc" x="' + (X1 + 2) + '" y="' + (y - 6) + '" width="100" height="12" rx="3"/>' + tx(X1 + 52, y + 3.5, 'luciferase', 'dk-ic');
           o += '<path class="dk-arrow" d="M' + (X1 - 2) + ' ' + (y - 4) + 'v-6h8"/>';
         });
-        [-2000, -1500, -1000, -200].forEach(function(bp){ o += '<path class="dk-tick" d="M' + n1(sx(bp)) + ' 188v8"/>' + tx(sx(bp), 206, bp === -200 ? '−200' : '−' + String(-bp).replace(/(\d)(\d{3})$/, '$1,$2'), 'dk-ts'); });
-        o += tx(sx(0), 206, '0', 'dk-ts');
+        // −200 and 0 sit 22 apart: −200 ends at its tick and 0 starts at its own, so on a phone they never run together
+        // into "−2000" (review recheck 3)
+        [-2000, -1500, -1000, -200].forEach(function(bp){ o += '<path class="dk-tick" d="M' + n1(sx(bp)) + ' 188v8"/>' + (bp === -200 ? tx(sx(bp) + 2, 206, '−200', 'dk-ts', 'end') : tx(sx(bp), 206, '−' + String(-bp).replace(/(\d)(\d{3})$/, '$1,$2'), 'dk-ts')); });
+        o += '<path class="dk-tick" d="M' + n1(sx(0)) + ' 188v8"/>' + tx(sx(0) - 2, 206, '0', 'dk-ts', 'start');
         return o + part(4, luc) + part(0, dna + tx(200, 224, 'Upstream DNA in each construct (bp; gaps missing)', 'dk-ax'));
       },
       'desiccation-selection': function(D){
-        var o = topRow([[2, function(x, y){ return I.cal(x, y, '30'); }, '30 generations\nof selection'], [3, function(x, y){ return I.drop(x - 8, y + 4, 5) + I.arrow(x + 6, y + 2); }, 'then 2 generations,\nall humid'], [4, I.vial, 'same food'], [1, I.watch, 'hours females\nlive in dry air']]), hum = '';
+        var o = topRow([[2, function(x, y){ return I.cal(x, y, '30'); }, 'generations\nof selection'], [3, function(x, y){ return I.drop(x - 8, y + 4, 5) + I.arrow(x + 6, y + 2); }, 'then 2 more,\nall humid'], [4, I.vial, 'same food'], [1, I.watch, 'hours females\nlive in dry air']]), hum = '';
         var w = Math.min(38, 360 / D.n * 0.8);
         D.lv.forEach(function(l, k){
           var x = gx(D.n, k), dry = /dry/i.test(l);
@@ -568,7 +591,9 @@
           });
         });
         o += '<path class="dc-zero" d="M' + L + ' ' + n1(Y(0)) + 'H' + (W - R) + '"/><path class="dc-axis" d="M' + L + ' ' + TP + 'V' + (TP + PH) + '"/>';
-        D.lv.forEach(function(l, k){ var x = L + gw * (k + 0.5), two = gw < 44 && l.indexOf(' ') > 0; o += two ? '<text class="dc-x' + (gw < 40 ? ' sm' : '') + '" x="' + n1(x) + '" y="' + (TP + PH + 15) + '" text-anchor="middle">' + esc(l.slice(0, l.indexOf(' '))) + '<tspan x="' + n1(x) + '" dy="11">' + esc(l.slice(l.indexOf(' ') + 1)) + '</tspan></text>' : tx(x, TP + PH + 15, l, 'dc-x'); });
+        var rn = gw < 44 ? runs(D.lv) : null;
+        if(rn) rn.forEach(function(r){ o += tx(L + gw * ((r.a + r.b) / 2 + 0.5), TP + PH + 28, r.word, 'dc-x'); });
+        D.lv.forEach(function(l, k){ var x = L + gw * (k + 0.5), two = gw < 44 && l.indexOf(' ') > 0; if(rn){ o += tx(x, TP + PH + 15, rn.rest[k], 'dc-x'); return; } o += two ? '<text class="dc-x' + (gw < 40 ? ' sm' : '') + '" x="' + n1(x) + '" y="' + (TP + PH + 15) + '" text-anchor="middle">' + esc(l.slice(0, l.indexOf(' '))) + '<tspan x="' + n1(x) + '" dy="11">' + esc(l.slice(l.indexOf(' ') + 1)) + '</tspan></text>' : tx(x, TP + PH + 15, l, 'dc-x'); });
         o += tx((L + W - R) / 2, H - 6, strip(D.cols[0]), 'dc-xt');
         var ttl = cols.length > 1 ? cols.map(function(j, c){ return '<tspan class="dc-key c' + c + '"' + (stack ? ' x="4" dy="' + (c ? 13 : 0) + '"' : '') + '>■</tspan> ' + esc(keys[c]); }).join(stack ? '' : '   ') : esc(keys[0]);
         o = '<text class="dc-title" x="4" y="14">' + ttl + '</text>' + o;

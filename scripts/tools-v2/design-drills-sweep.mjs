@@ -10,7 +10,8 @@
      - the plants drawn match the model (each group's mean), the pills say the drawn means and difference, the
        error bars are the drawn mean ± 2 SE, and the cause line says the state's words;
    Test yourself: every one of the 16 experiments' setups and results charts fits its stage (nothing under the side
-   panel or the Enlarge button) with every text in the drawing at least 11 px on screen;
+   panel or the Enlarge button) with every text in the drawing at least 11 px on screen, no two of its texts colliding
+   (side by side at least 4 px apart, no ink overlap; each line of a two line label on its own) and a word on a box inside its box;
    every visible text on the screen (svg and HTML, Explore and all 16 experiments) is 11 px or more; every credited Fair test state has ±2 SE bars apart (the Sample size rule);
    and, frame by frame at 390 and 1440: every number on the picture is the one for the plants drawn at that frame,
    and no result word shows while a plant is still changing.
@@ -211,12 +212,29 @@ if (!FRAMES) for (const dark of [false, true]) for (const w of WIDTHS) {
         // rendered font size of each label: its font size times the drawing's scale (the icons' own small glyphs aside)
         const vb = sv.viewBox.baseVal, sr = sv.getBoundingClientRect(), sc = Math.min(sr.width / vb.width, sr.height / vb.height);
         const labs = [...sv.querySelectorAll('text')].filter(t => t.textContent.trim()).map(t => parseFloat(getComputedStyle(t).fontSize) * sc);
-        return { low, lim, dock: dock ? dock.top : 1e9, covered: enl ? texts.filter(b => b.left < enl.right && b.right > enl.left && b.top < enl.bottom && b.bottom > enl.top).length : 0, minLab: Math.min(...labs) };
+        // no two texts in the drawing collide: side by side on one row at least 4 px apart (a "−200" tick next to "0"
+        // read as "−2000"), otherwise their ink does not overlap; each line of a two line label measured on its own; a
+        // word on a box (luciferase) stays inside its box
+        const lines = [...sv.querySelectorAll('text')].filter(t => t.textContent.trim() && vis(t)).flatMap(t => { const ts = [...t.querySelectorAll('tspan')].filter(x => x.textContent.trim()); return (ts.length > 1 ? ts : [t]).map(e => ({ t: e.textContent.trim(), b: e.getBoundingClientRect(), own: t })); }).filter(x => x.b.width);
+        const near = [];
+        for (let a = 0; a < lines.length; a++) for (let c = a + 1; c < lines.length; c++) { const A = lines[a].b, C = lines[c].b;
+          if (lines[a].own === lines[c].own) continue;
+          // the ink of a line is about its box less a fifth of its height at the top and bottom (the leading)
+          const it = (B) => ({ t: B.top + B.height * 0.2, b: B.bottom - B.height * 0.2 }), ia = it(A), ic = it(C);
+          const vo = Math.min(ia.b, ic.b) - Math.max(ia.t, ic.t), gap = Math.max(C.left - A.right, A.left - C.right);
+          // on one row (they share most of their height): at least 4 px apart side by side; otherwise: no ink overlap
+          const row = vo > 0.5 * Math.min(ia.b - ia.t, ic.b - ic.t);
+          if (row ? gap < 4 : (vo > 0 && gap < 0)) near.push(`"${lines[a].t}" and "${lines[c].t}"`); }
+        const boxes = [...sv.querySelectorAll('rect.dk-luc')].map(e => e.getBoundingClientRect());
+        lines.forEach(x => { const cx = (x.b.left + x.b.right) / 2, cy = (x.b.top + x.b.bottom) / 2, bx = boxes.find(k => cx > k.left && cx < k.right && cy > k.top && cy < k.bottom);
+          if (bx && (x.b.left < bx.left - 0.5 || x.b.right > bx.right + 0.5)) near.push(`"${x.t}" spills past its box`); });
+        return { low, lim, dock: dock ? dock.top : 1e9, covered: enl ? texts.filter(b => b.left < enl.right && b.right > enl.left && b.top < enl.bottom && b.bottom > enl.top).length : 0, minLab: Math.min(...labs), near };
       }, view);
       if (r.none) { ok(view === 'data', `${tag0} experiment ${i + 1}: no setup drawing`); continue; }
       ok(r.low <= r.lim + 0.5 && r.low <= r.dock + 0.5 && !r.covered, `${tag0} experiment ${i + 1} ${view}: the picture is cut (lowest text ${Math.round(r.low)}, stage ${Math.round(r.lim)}, panel ${Math.round(r.dock)}, under Enlarge ${r.covered})`);
       ok(r.minLab >= 10.95, `${tag0} experiment ${i + 1} ${view}: a text in the drawing is ${r.minLab.toFixed(1)} px on screen (11 px or more)`);
       { const sm = await scanText(page); if (sm.length && sm[0].px < SMALL.px) SMALL = sm[0]; ok(!sm.length || sm[0].px >= 10.95, `${tag0} experiment ${i + 1} ${view}: text under 11 px: ${sm.filter(x => x.px < 10.95).map(x => `"${x.t}" ${x.px.toFixed(1)}`).join(', ')}`); }
+      ok(!r.near.length, `${tag0} experiment ${i + 1} ${view}: texts collide: ${r.near.join(', ')}`);
       minLabs.push(r.minLab);
     }
   }
