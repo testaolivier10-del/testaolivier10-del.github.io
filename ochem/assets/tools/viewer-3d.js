@@ -50,7 +50,6 @@
         '<button type="button" data-task="explore" class="on" aria-pressed="true">Explore</button>' +
         '<button type="button" data-task="predict" aria-pressed="false">Predict shape</button>' +
       '</div>' +
-      '<p class="tool-step" id="v3Step"></p>' +
     '</div>' +
     '<div class="v3-layout">' +
     '<div class="tpanel v3-pick">' +
@@ -61,7 +60,6 @@
           '<button type="button" data-src="build">Build your own</button>' +
         '</div>' +
       '</div>' +
-      '<div id="v3Picker"></div>' +
       '<div id="v3Builder" hidden></div>' +
       '<div id="v3BuildMsg"></div>' +
       '<div id="v3Send"></div>' +
@@ -108,7 +106,6 @@
 
   var svg      = document.getElementById('v3Svg');
   var stage    = document.getElementById('v3Stage');
-  var elPicker = document.getElementById('v3Picker');
   var elName   = document.getElementById('v3Name');
   var elNote   = document.getElementById('v3Note');
   var elAnal   = document.getElementById('v3Analysis');
@@ -117,33 +114,15 @@
 
   /* ---- Picker ----------------------------------------------------------- */
 
-  function groupHtml(g){
-    return '<div class="ap-group">' +
-      '<div class="ap-group__label">' + esc(g.label) + '</div>' +
-      '<div class="tchips">' + g.items.map(function(m){
-        return '<button type="button" class="tchip" data-id="' + esc(m.id) + '">' + esc(m.name) + '</button>';
-      }).join('') + '</div></div>';
-  }
-  var GROUPS3 = LIB.groups();
-  elPicker.innerHTML = groupHtml(GROUPS3[0]) +
-    '<details class="tool-more" id="v3More"><summary>Other molecules <span class="tool-more__now">· ' +
-      esc(GROUPS3.slice(1).map(function(g){ return g.label.toLowerCase(); }).join(', ')) + '</span></summary>' +
-      GROUPS3.slice(1).map(groupHtml).join('') + '</details>';
+  // Every molecule in its groups: one dropdown on the stage (set up with the studio, below).
+  var GROUPS3 = LIB.groups(), molPick = null;
+  function inLib(id){ return GROUPS3.some(function(g){ return g.items.some(function(m){ return m.id === id; }); }); }
 
-  function setStep(){
-    var predicting = typeof task !== 'undefined' && task && task.on;
-    document.getElementById('v3Step').innerHTML = predicting
-      ? '<b>Turn the model, then name the shape of the ringed atom.</b>'
-      : '<b>Drag the molecule to turn it, and tap an atom</b> to see its shape and angles.';
+  function pickMol(id){
+    select(LIB.get(id));
+    // On a phone, bring the model back into view so the pick is seen.
+    if(window.OchemShowWork) window.OchemShowWork(document.getElementById('v3Stage'));
   }
-
-  elPicker.querySelectorAll('.tchip').forEach(function(b){
-    b.addEventListener('click', function(){
-      select(LIB.get(b.getAttribute('data-id')));
-      // On a phone the list sits below the model: bring the model back into view so the pick is seen.
-      if(window.OchemShowWork) window.OchemShowWork(document.getElementById('v3Stage'));
-    });
-  });
 
   function select(m){
     if(!m) return;
@@ -151,10 +130,7 @@
     sync({ mol: m.id });
     mol = m;
     selected = m.focus;
-    elPicker.querySelectorAll('.tchip').forEach(function(b){
-      b.classList.toggle('on', b.getAttribute('data-id') === m.id);
-    });
-    if(elPicker.querySelector('#v3More [data-id="' + m.id + '"]')) document.getElementById('v3More').open = true;
+    if(molPick && inLib(m.id)) molPick.value(m.id);
     elName.textContent = m.name + ' · ' + m.formula;
     svg.setAttribute('aria-label', m.name + ', 3D model: tab to an atom to read it, or use the arrow keys to turn it');
     elNote.textContent = m.note || '';
@@ -429,7 +405,6 @@
       document.getElementById('v3Src').querySelectorAll('button').forEach(function(x){
         x.classList.toggle('on', x === b);
       });
-      elPicker.hidden = (src !== 'lib');
       elBuild.hidden  = (src !== 'build');
       if(src === 'build'){ openBuilder(); }
       else { showBuildMsg('', ''); }
@@ -698,12 +673,12 @@
     var srcSeg = byId('v3Src');
     var srcBox = document.createElement('div'); srcBox.className = 'v3-ls-src';
     srcBox.appendChild(srcSeg);
-    Kit.scrollChips(elPicker);
     var v3Mode = Kit.seg(byId('v3Task'), 'data-task');
     studio.add('stage', stage);
-    studio.add('dock', [srcBox, elPicker, elBuild], { mode: 'explore' });
+    studio.add('dock', [srcBox, elBuild], { mode: 'explore' });
     // The standard frame (F1): every molecule in one dropdown on the stage, in its groups.
-    if(Kit.chipPicker) Kit.chipPicker([{ el: elPicker, label: 'Molecules' }], { label: 'Molecule', mode: 'explore' });
+    molPick = studio.picker({ label: 'Molecule', groups: GROUPS3.map(function(g){ return { label: g.label, items: g.items.map(function(m){ return { value: m.id, label: m.name }; }) }; }),
+      value: mol && inLib(mol.id) ? mol.id : GROUPS3[0].items[0].id, onChange: pickMol }, 'explore');
     studio.add('dock', byId('v3Quiz'), { mode: 'predict' });
     studio.add('why', [elBMsg, elNote, elAnal]);
     var detFirst = studio.details.firstChild;
@@ -788,8 +763,6 @@
     el.querySelectorAll('[data-shape]').forEach(function(b){ b.addEventListener('click', function(){ ls.justShape = true; }, true); });
   }
 
-  setStep();
-  document.getElementById('v3Task').addEventListener('click', setStep);
   if(!restore()) select(LIB.ALL[0]);
   if(ls && ls.mode() === 'explore') studio.hint({ target: stage, text: 'Drag to turn it, tap an atom', round: 24 });
   /* ---- Check yourself ---------------------------------------------------

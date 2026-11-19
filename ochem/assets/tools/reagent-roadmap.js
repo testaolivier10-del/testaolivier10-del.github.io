@@ -590,19 +590,12 @@
         '<button type="button" data-mode="groups" aria-pressed="false">Groups</button>' +
         '<button type="button" data-mode="puzzle" aria-pressed="false">Synthesis puzzle</button>' +
       '</div>' +
-      '<p class="tool-step" id="rrModeSay"></p>' +
     '</div>' +
     '<div id="rrRoute"></div>' +
     '<div id="rrReagent" hidden></div>' +
     '<div id="rrGroups" hidden></div>' +
     '<div id="rrPuzzle" hidden></div>';
 
-  var MODE_SAY = {
-    route: '<b>Pick a start and a target</b> (or tap a group on the map) to see the reagents that get you there.',
-    reagent: '<b>Pick a reagent</b> to see everything it does in this course, and what it leaves alone.',
-    groups: '<b>Pick a functional group:</b> what it becomes, what makes it, and what does not work on it.',
-    puzzle: '<b>Tap reagents to build the route</b> from the start to the target, one step at a time.'
-  };
 
   var elRoute = document.getElementById('rrRoute');
   var elReagent = document.getElementById('rrReagent');
@@ -617,7 +610,6 @@
       b.classList.toggle('on', on);
       b.setAttribute('aria-pressed', String(on));
     });
-    document.getElementById('rrModeSay').innerHTML = MODE_SAY[m];
     elRoute.hidden = m !== 'route';
     elReagent.hidden = m !== 'reagent';
     elGroups.hidden = m !== 'groups';
