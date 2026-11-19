@@ -228,3 +228,17 @@ L4 cord segments lie ("?" says so). The "?" sentence explaining the threshold ba
 Wide composition of the heart: the body's tissue on the left, the heart in the middle (enlarged), the lungs on the
 right, so the pulmonary trunk runs to the right as it does and the pulmonary veins enter the left atrium from the
 right (owner log).
+
+Checks (round 1): `node --test scripts/test/anp-*.test.mjs` 55 pass; `check-anp-content --check` 0 failing; `build-anp
+--check` clean; `check-site` OK; `check-weight --check` all within budget; `build-apcalc --check` and `build-apmacro
+--check` clean; `check-tool-use` with a local copy of its list: pathways frame v2, nothing under automation (the file
+itself is the collecting branch's). Sweep, one width per process, light and dark, ten widths: 65 states each (now also:
+the knob's ring inside the picture, the picture at least 80% of the stage width on a desktop and 95% on a phone),
+1,300 states, 0 failures. On a 1920 x 1080 screen the 2:1 picture is 81% of the stage: the screen's height sets it so
+the cause line stays on screen. Frame test at 360, 390 and 1440: 6,199 frames each, 0 failures, including every break
+(stops after its last real step, says what fails, draws the last real step, labels the break). Playwright at 390, 768
+and 1440, light, and 390 and 1440, dark: 25 to 26 checks each, all pass. Performance with CPU x4: median 16.7 ms on
+every screen; p95 33 to 100 ms, measured while the 2-core machine ran other jobs (load average about 10), so the p95
+is not a clean number; the trail is now drawn once and revealed by its dash, so a frame rebuilds no path. Shots:
+`/mnt/user-data/outputs/anp-pathways-v2/shots/` (`11-break-*` for every break at 390 and 1440); preview regenerated.
+

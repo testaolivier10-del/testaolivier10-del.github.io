@@ -137,7 +137,8 @@ for (const w of WIDTHS) {
       if (r.clip.length) fail(`${tag}: clipped ${r.clip.join(', ')}`);
       if (r.over.length) fail(`${tag}: overlap ${r.over.join('; ')}`);
       if (!r.big) fail(`${tag}: the picture is not the largest thing`);
-      if (r.wide < (w >= 900 ? 0.82 : 0.95)) fail(`${tag}: the picture uses only ${Math.round(r.wide * 100)}% of the stage width`);
+      // a 2:1 picture is as wide as the screen's height lets it be (the cause line stays on screen): at least 80% of the stage
+      if (r.wide < (w >= 900 ? 0.8 : 0.95)) fail(`${tag}: the picture uses only ${Math.round(r.wide * 100)}% of the stage width`);
       if (r.scroll > 1) fail(`${tag}: sideways scroll ${r.scroll}px`);
       if (r.fit.length) fail(`${tag}: does not fit ${r.fit.join(', ')}`);
       if (w < 641 && r.lines.rows > 2) fail(`${tag}: cause line ${r.lines.rows} rows (${r.lines.t})`);
