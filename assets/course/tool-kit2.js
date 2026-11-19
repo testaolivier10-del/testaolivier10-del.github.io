@@ -37,8 +37,9 @@
                                     real range input. tag(v): a short text beside the knob ("3 sacks").
    K.handle(layer, { key, label, value, min, max, step, at(v) -> [x, y], pick(x, y, v) -> v | null, dir(v) -> deg,
            keys(v, key, shift) -> v | null | undefined, valuetext(v), tag(v), tagSide(v) -> 'up' | 'down' | 'left' |
-           'right', bounds(v) -> [x0, y0, x1, y1], onStart(v), onInput(v), onEnd(v), hint, chip, quiet, beforeLabel })
-                -> { el, knob, value(v?, fire), grab(event), dragging(), place(), hide(on), before(v | null) }
+           'right', bounds(v) -> [x0, y0, x1, y1], onStart(v), onInput(v), onEnd(v), hint, chip, chipSide(v), quiet,
+           beforeLabel }) -> { el, knob, value(v?, fire), grab(event), dragging(), place(), hide(on), before(v | null),
+           used() }
                                     GRAPH EXPLORERS (first: AP® Calculus AB Tangent tracer). A point the student drags
                                     on the picture itself: a point on a curve, on an axis, in an inset. The tool owns
                                     the geometry: at(v) is where value v sits (picture units, the svg viewBox), pick()
@@ -51,7 +52,10 @@
                                     a short text by the knob (bounds(): a tag above or below slides sideways to stay
                                     inside that box). before(v): a small tick where the change began, named
                                     "before" once the knob is 58 px away (never a ghost of the shape); before(null)
-                                    clears it. quiet: a secondary point (small plain knob, no pulse).
+                                    clears it. quiet: a secondary point (small plain knob, no pulse). chipSide(v):
+                                    where the first-time chip sits ('up', 'down', 'left', 'right'; default below), so it
+                                    never covers the tag. used(): a control elsewhere that moves this point (a "Slide
+                                    in" button) counts as its first use (the pulse and chip go).
    K.tap(layer, { key, label, box: [x, y, w, h], pressed, onClick, hint, chip }) -> { el, place(box), pressed(on?) }
                                     a tappable part of the picture (a button over it, aria-pressed when given).
    K.predict({ q, choices: [{ value, label }], answer, then, onPick(v) }) -> { el, picked(), settled(), note(html),
@@ -287,7 +291,7 @@
       var q = px(p), ang = o.dir ? o.dir(val) : 0;
       knob.style.left = q[0] + 'px'; knob.style.top = q[1] + 'px';
       w.querySelector('.tk2-ar').style.transform = 'rotate(' + (isFinite(ang) ? ang : 0) + 'deg)';
-      var chip = w.querySelector('.tk2-chip'); if(chip){ chip.style.left = q[0] + 'px'; chip.style.top = q[1] + 'px'; }
+      var chip = w.querySelector('.tk2-chip'); if(chip){ chip.style.left = q[0] + 'px'; chip.style.top = q[1] + 'px'; if(o.chipSide) chip.className = 'tk2-chip is-' + (o.chipSide(val) || 'down'); }
       knob.setAttribute('aria-valuenow', String(+(+val).toFixed(6)));
       knob.setAttribute('aria-valuetext', o.valuetext ? o.valuetext(val) : String(val));
       var t = o.tag ? o.tag(val) : '';
@@ -356,7 +360,8 @@
       grab: function(e){ if(down(e)) move(e); },
       dragging: function(){ return pid != null; },
       place: paint, hide: function(on){ w.hidden = !!on; },
-      before: function(v){ mk = v == null ? null : v; paintMark(); } };
+      before: function(v){ mk = v == null ? null : v; paintMark(); },
+      used: function(){ done(); } };
   };
 
   /* ------------------------------------------------------------ a tappable part of the picture */

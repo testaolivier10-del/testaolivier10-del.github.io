@@ -108,6 +108,9 @@
 .tk2-handle.is-focus .tk2-dot{box-shadow:0 0 0 3px var(--cink),0 0 0 6px var(--white),0 0 0 9px var(--cink);}
 .tk2-handle.is-quiet .tk2-dot{width:18px;height:18px;box-shadow:0 0 0 2.5px color-mix(in srgb, var(--ink) 60%, transparent),0 1px 3px rgba(11,26,51,.25);}
 .tk2-handle.is-quiet .tk2-ar{display:none;}
+.tk2-handle > .tk2-chip.is-up{transform:translate(-50%,calc(-100% - 30px));}
+.tk2-handle > .tk2-chip.is-left{transform:translate(calc(-100% - 30px),-50%);}
+.tk2-handle > .tk2-chip.is-right{transform:translate(30px,-50%);}
 .tk2-handle.is-quiet.is-focus .tk2-dot{box-shadow:0 0 0 3px var(--cink),0 0 0 5px var(--white),0 0 0 8px var(--cink);}
 .tk2-before{position:absolute;width:0;height:0;pointer-events:none;}
 .tk2-before i{position:absolute;left:-7px;top:-1.5px;width:14px;height:3px;border-radius:2px;background:var(--muted);}

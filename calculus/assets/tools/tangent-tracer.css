@@ -240,6 +240,19 @@
 .tt2 .tk2-handle.is-quiet.is-new .tk2-dot::after{display:none;}
 .tt2 .tk2-handle.is-glide .tk2-knob,.tt2 .tk2-handle.is-glide .tk2-tag{transition:left .32s ease,top .32s ease;}
 @media (prefers-reduced-motion: reduce){ .tt2 .tk2-handle.is-glide .tk2-knob,.tt2 .tk2-handle.is-glide .tk2-tag{transition:none;} }
+/* P on a phone: a ring with the car inside it (the car is never hidden); still the kit's slider, focus ring and pulse */
+.tt2 .tk2-handle.is-ring > .tk2-knob{width:var(--tt-ring,54px);height:var(--tt-ring,54px);margin:calc(var(--tt-ring,54px) / -2) 0 0 calc(var(--tt-ring,54px) / -2);}
+.tt2 .tk2-handle.is-ring .tk2-dot,:root[data-theme="dark"] .tt2 .tk2-handle.is-ring .tk2-dot{width:calc(var(--tt-ring,54px) - 6px);height:calc(var(--tt-ring,54px) - 6px);background:transparent;
+  box-shadow:0 0 0 3px var(--cink),0 0 0 5px color-mix(in srgb, var(--white) 80%, transparent);}
+.tt2 .tk2-handle.is-ring .tk2-ar{display:none;}
+.tt2 .tk2-handle.is-ring .tk2-knob:hover .tk2-dot,.tt2 .tk2-handle.is-ring.is-drag .tk2-dot{transform:scale(1.04);}
+.tt2 .tk2-handle.is-ring.is-focus .tk2-dot{box-shadow:0 0 0 3px var(--cink),0 0 0 6px var(--white),0 0 0 9px var(--cink);}
+.tt2 .tk2-handle.is-ring.is-quiet .tk2-dot{box-shadow:0 0 0 2px color-mix(in srgb, var(--ink) 55%, transparent);}
+.tt2 .tk2-handle.is-ring.is-quiet.is-focus .tk2-dot{box-shadow:0 0 0 3px var(--cink),0 0 0 5px var(--white),0 0 0 8px var(--cink);}
+.tt2 .tk2-handle.is-ring .tk2-tag.is-up{transform:translate(-50%,calc(-100% - var(--tt-ring,54px) / 2 - 6px));}
+.tt2 .tk2-handle.is-ring .tk2-tag.is-down{transform:translate(-50%,calc(var(--tt-ring,54px) / 2 + 6px));}
+.tt2 .tk2-handle.is-ring .tk2-tag.is-left{transform:translate(calc(-100% - var(--tt-ring,54px) / 2 - 6px),-50%);}
+.tt2 .tk2-handle.is-ring .tk2-tag.is-right{transform:translate(calc(var(--tt-ring,54px) / 2 + 6px),-50%);}
 /* the picture */
 .tt2s-sky0{stop-color:var(--tt-sky0);} .tt2s-sky1{stop-color:var(--tt-sky1);}
 .tt2-grid line{stroke:var(--tt-grid);stroke-width:1;}
@@ -249,7 +262,7 @@
 .tt2-frame{fill:none;stroke:var(--line);stroke-width:1;}
 .tt2-paper{fill:var(--tt-paper);}
 .tt2-hill{fill:var(--tt-hill);stroke:none;}
-.tt2-hill.h1{fill-opacity:.42;} .tt2-hill.h2{fill-opacity:.24;} .tt2-hill.h3{fill-opacity:.1;}
+.tt2-hill.h1{fill-opacity:.32;} .tt2-hill.h2{fill-opacity:.17;} .tt2-hill.h3{fill-opacity:.07;}
 .tt2-shoulder{fill:none;stroke:var(--tt-shoulder);stroke-linejoin:round;stroke-linecap:round;}
 .tt2-road{fill:none;stroke:var(--tt-road);stroke-linejoin:round;stroke-linecap:round;}
 .tt2-lane{fill:none;stroke:var(--tt-lane);stroke-width:2;stroke-linejoin:round;stroke-linecap:round;}

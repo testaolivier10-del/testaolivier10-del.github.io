@@ -69,7 +69,9 @@ shrinks, so the limit is seen, not only read in a table.
   tangent visibly merge. Q's knob moves into the magnifier then, so it can still be dragged closer.
 - **Secondary:** "Slide Q in" (small) slides h to 0.001 from the side Q is on (the old "h → 0"), the magnifier
   zooming as it goes, and ends on the takeaway; once there it reads "Back to h = 1".
-- **Cause line:** "h = 0.5 → secant slope 2.5 → tangent slope 2"; at a corner the third pill is "no tangent slope".
+- **Cause line:** "h = 0.5 → secant slope 2.5"; a third pill "almost the tangent, slope 2" only once the secant's
+  slope is within 0.005 of the tangent's (so it never claims a far secant is the tangent); at a corner, cusp or
+  jump the third pill is "no tangent slope at x = a" once |h| ≤ 0.1.
 
 ### Both tabs
 - Opens on f(x) = x² at x = 1 (tab 1). One cue, once per device: "Drag P along the road" at the knob.
@@ -98,7 +100,7 @@ shrinks, so the limit is seen, not only read in a table.
 | The f′ trace as P moves | Tab 1, the pen on the graph paper |
 | "Show all of f′ (dotted)" | Removed (a dotted ghost reads as a real part); "Drive across" draws all of f′ |
 | "Clear the f′ trace" | The trace clears with a new curve; "Drive across" redraws it |
-| Zoom ×1 to ×64 at P | Tab 2's magnifier (it follows h, both for smooth points and corners) |
+| Zoom ×1 to ×64 at P | Replaced by tab 2's magnifier (it follows h, both for smooth points and corners). The zoom at will in tab 1 is gone: local linearity (2.1, 4.6) is seen in the magnifier with a small h |
 | The table of secant slopes for h = ±1 ... ±0.001 | "?" (live for the current P) |
 | "Why?" (the limit definition with the numbers) | "?" |
 | Numbers at P, the formula of f and of f′ | "?" |
@@ -119,7 +121,7 @@ Q is within about 64 px of P and the glass magnifies at least twice; P is a quie
 ## Decisions made for the owner (also in `docs/tools-v2-owner-log.md`)
 - Two tabs: "Slope at a point" (P, the derivative as the slope and the f′ graph) and "Secant to tangent" (Q, the limit).
 - The curve is drawn as a road with a car on it; the grid, axes and tick labels stay, so the math is exact.
-- The hillside under the road fades out in about 60 px and never reaches the axis (so it cannot be read as an area).
+- The hillside under the road fades out in about 30 px, thins where the road is steep and never goes below the x axis (so it cannot be read as an area or a band).
 - P and Q stay where the curve is inside its own window (the old P could leave the picture and be hidden).
 - The h slider is gone: Q is dragged on the road, the magnifier replaces the zoom buttons, "Slide Q in" replaces h → 0.
 - "Show all of f′ (dotted)" and "Clear the f′ trace" are gone (a dotted ghost reads as a real part; a new curve or
@@ -128,6 +130,7 @@ Q is within about 64 px of P and the glass magnifies at least twice; P is a quie
 - The table of secant slopes, the limit with the numbers, the values at P and both formulas moved into "?".
 - The tool's About text was reworded for the new Explore; title, description, blurb and URL unchanged.
 - At a point with no slope the car keeps the heading of the side it came from.
+- P's knob is a clear ring with the car inside it, at every width and in both tabs (review round 1).
 
 ## What was built
 - `calculus/assets/tools/tangent-tracer.js`: Explore rewritten (`explore()`); Test yourself (`quiz()`) unchanged.
@@ -153,7 +156,39 @@ reduced motion (results at once), no sideways scroll, no console errors. Preview
 
 ## Not done, and what I am not happy with
 - The picture is still a graph with a road on it (the grid has to stay for exact slopes); less of a scene than the lake.
-- P's knob covers the car's rear wheel; the car is small on a phone.
+- The ring around the car is big on a desktop (about 76 px across at 1440); smaller felt cramped on a phone.
 - With reduced motion the site gives every property a 0.01 ms transition, so a knob reads its new place a frame late.
 - The phone keeps two rows for the cause line, so a one row line leaves a gap above the button.
 - No real phone, no screen reader pass, no real students; the independent review is next.
+
+## Review round 1 (2026-11-18)
+
+The independent review (`/home/claude/review-tangent-tracer/REVIEW.md`) blocked on three must fix items. Fixed:
+1. **Branch behind v2-all.** Merged `origin/claude/tools-v2-all`; `scripts/check-tool-use.mjs` taken byte for byte
+   (frame v2 checked with a local uncommitted copy of the list); the owner log and the standard's status table
+   resolved as appends.
+2. **The car hidden by P's knob on a phone.** P's knob is a clear ring around the car (the ring's centre is the
+   car's centre, its radius 0.57 of the car's length plus 4 px), at every width: an opaque knob on the road still
+   hid a fifth of the car at 1440. It is still the kit's `K.handle` (a real slider with keys, focus ring and pulse).
+   P's quiet knob in tab 2 is a thin ring too. Tags sit outside the ring; the windows' padding grew to fit it.
+3. **Two cues in tab 2 and Q's chip on numbers.** P's cue hides when tab 2 opens (and comes back on tab 1 if P was
+   never used). "Slide Q in" and Q's keys count as Q's first use (`K.handle` gained `used()`; keys already did).
+   Q's chip sits on a side of Q clear of Q's tag, the labels, P and the car, and in the magnifier away from its
+   centre and the zoom label (`K.handle` gained `chipSide(v)`, CSS in `tool-kit2.css` scoped to `.tk2-handle`).
+
+Should fix, done: the one sided labels stay on phones ("left", "right"; more spots to try), "run" and "rise" get
+more spots so a phone keeps them; the hillside is fainter, 30 px deep instead of 62, thinner where the road is
+steep and never below the x axis; a cusp reads "slope → −∞ from the left + → ∞ from the right"; tab 2's cause line
+above matches the code; the About text names "the Slope at a point tab" and "the Secant to tangent tab"; the
+"moved" table says the zoom at will was replaced by the magnifier. Removed: `window.ApCalcTangentTracer` is set only
+when a test sets `window.LevlToolTest` before load. The sweep gained frame assertions for 2 (the car is never hidden:
+P's knob is a clear ring, the car is inside it and P on the road is inside it) and 3 (tab 2 first
+visit: one cue, Q's chip clear of its tag, labels, P's dot in the glass and P's knob, at h = 1, −0.5, 0.05, 0.001;
+the chip goes after Slide Q in and after Q's keys).
+
+Checks after round 1 (2026-11-18, on the merge with v2-all): `apcalc-*` 156 pass, `apcalcbc-*` 71 pass,
+`check-apcalc-content --check`, `build-apcalc --check` (333), `build-apcalcbc --check` (420), `build-apmacro --check`,
+`check-site`, `check-weight --check` all clean; `check-tool-use` with a local copy of the list: this page reports
+frame v2. Sweep one width per process: 1070 states, 12455 checks, 0 failures at all ten widths (road panel 46 to 53
+percent). Extra frames (real CDP touch drag of the ring at 390, Slide Q in mid and end, dark mode, first visit of
+both tabs) in `/mnt/user-data/outputs/tangent-tracer-v2/shots/r1-*.png`; no console errors.

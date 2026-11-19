@@ -225,7 +225,7 @@
       g.rw = narrow ? 10 : 13;
       g.car = clamp(W * 0.05, 40, 60);
       // pixels kept free inside the frame: the knob at the sides, the car above, the knob's tag below
-      var padX = 30, padT = Math.round(g.car * 0.62 + 10), padB = 56, AH, AT = pt, BW = W - pl - pr;
+      var padX = Math.round(g.car * 0.57 + 18), padT = Math.round(g.car * 0.86 + 8), padB = 56, AH, AT = pt, BW = W - pl - pr;
       if(S.tab === 'slope'){
         var gap = narrow ? 30 : 34, avail = H - pt - 20 - gap; AH = Math.round(avail * 0.6);
       } else AH = H - pt - 22;
@@ -258,11 +258,36 @@
       return out;
     }
     function pathOfRun(r, dy){ return 'M' + r.map(function(p){ return r1(p.X) + ' ' + r1(p.Y + (dy || 0)); }).join('L'); }
-    function bandOf(r, d0, d1){ return pathOfRun(r, d0) + 'L' + r.slice().reverse().map(function(p){ return r1(p.X) + ' ' + r1(p.Y + d1); }).join('L') + 'Z'; }
+    /* A soft band under the road, d0 to d1 px below it: thinner where the road is steep (so it never reads as a band
+       beside the curve) and never below the x axis (so it never reads as an area down to it). */
+    function bandOf(r, d0, d1, ax){
+      function at(i, d){
+        var p = r[i], q0 = r[Math.max(0, i - 1)], q1 = r[Math.min(r.length - 1, i + 1)], dx = q1.X - q0.X, s = dx > 0.01 ? (q1.Y - q0.Y) / dx : 9, k = 1 / (1 + s * s), y = p.Y + d * k;
+        if(ax != null && p.Y <= ax) y = Math.min(y, ax);
+        return r1(p.X) + ' ' + r1(y);
+      }
+      var top = [], bot = [];
+      for(var i = 0; i < r.length; i++){ top.push(at(i, d0)); bot.unshift(at(i, d1)); }
+      return 'M' + top.join('L') + 'L' + bot.join('L') + 'Z';
+    }
     /* The direction of the road at x in picture units (radians), from a slope m. */
     function angOf(m, dir){
       if(!isFinite(m)) return (m > 0 ? -1 : 1) * Math.PI / 2 * (dir < 0 ? -1 : 1);
       return Math.atan2(-m * G.ky, G.kx);
+    }
+
+    /* P's knob is a clear ring with the car inside it, so the car (the scene, its heading the tangent) is never
+       hidden by the knob, on a phone (where the car is about a knob's size) or on a desktop. */
+    function ringOn(){ return !!G; }
+    function carAng(){ var c = S.cls || {}, m = slopeNow(), d = S.tab === 'slope' ? S.dir : 1; return angOf(carSlope(c, m, d), d); }
+    function ringOf(){
+      var A = G.A, px = A.sx(S.a), py = A.sy(fa()), ang = carAng(), L = G.car, d = G.rw / 2 - 2.5 + L * 0.275;
+      return { x: px + Math.sin(ang) * d, y: py - Math.cos(ang) * d, r: L * 0.57 + 4, px: px, py: py };
+    }
+    /* Where P's knob is (picture units) and how far its tag sits from its centre. */
+    function knobC(){
+      if(ringOn()){ var g = ringOf(); return { x: g.x, y: g.y, o: g.r + 6, r: g.r }; }
+      return { x: G.A.sx(S.a), y: G.A.sy(fa()), o: 26, r: 22 };
     }
 
     /* ---------------------------------------------------- the static picture: sky, grid, hillside, road, paper */
@@ -293,8 +318,9 @@
       o.push(gridOf(A, 'tt2-grid'));
       var runs = runsOf(F.f, A), rw = G.rw;
       o.push('<g clip-path="url(#' + id + '-cA)">');
-      // the hillside under the road: three soft bands that fade (not an area down to the axis)
-      runs.forEach(function(r){ o.push('<path class="tt2-hill h1" d="' + bandOf(r, rw * 0.4, rw * 0.4 + 16) + '"/><path class="tt2-hill h2" d="' + bandOf(r, rw * 0.4 + 16, rw * 0.4 + 36) + '"/><path class="tt2-hill h3" d="' + bandOf(r, rw * 0.4 + 36, rw * 0.4 + 62) + '"/>'); });
+      // the hillside under the road: three soft bands that fade within 30 px, thin on steep parts, above the x axis
+      var ax = A.y[0] < 0 && A.y[1] > 0 ? A.sy(0) : null;
+      runs.forEach(function(r){ o.push('<path class="tt2-hill h1" d="' + bandOf(r, rw * 0.4, rw * 0.4 + 9, ax) + '"/><path class="tt2-hill h2" d="' + bandOf(r, rw * 0.4 + 9, rw * 0.4 + 19, ax) + '"/><path class="tt2-hill h3" d="' + bandOf(r, rw * 0.4 + 19, rw * 0.4 + 30, ax) + '"/>'); });
       runs.forEach(function(r){ var d = pathOfRun(r); o.push('<path class="tt2-shoulder" style="stroke-width:' + (rw + 6) + 'px" d="' + d + '"/><path class="tt2-road" style="stroke-width:' + rw + 'px" d="' + d + '"/><path class="tt2-lane" d="' + d + '"/>'); });
       (F.dots || []).forEach(function(d){ o.push('<circle class="tt2-end' + (d.open ? ' is-open' : '') + '" cx="' + r1(A.sx(d.at[0])) + '" cy="' + r1(A.sy(d.at[1])) + '" r="' + (rw * 0.42 + 1).toFixed(1) + '"/>'); });
       (F.special || []).filter(function(s){ return s.kind === 'endpoint'; }).forEach(function(s){ var y = F.f(s.x); if(isFinite(y)) o.push('<circle class="tt2-end" cx="' + r1(A.sx(s.x)) + '" cy="' + r1(A.sy(y)) + '" r="' + (rw * 0.42 + 1).toFixed(1) + '"/>'); });
@@ -392,8 +418,8 @@
       if(!G || !S.ready) return;
       boxes = [];
       var A = G.A, B = G.B, F = S.F, a = S.a, y0 = fa(), c = S.cls || { kind: 'smooth' }, m = slopeNow(), o = [];
-      var Px = A.sx(a), Py = A.sy(y0);
-      block(Px, Py, 22);
+      var Px = A.sx(a), Py = A.sy(y0), kc = knobC();
+      block(Px, Py, 22); block(kc.x, kc.y, kc.r + 2);
       if(cue.active()) cue.place();
       blockCue();
       if(S.tab === 'slope') boxes.push(tagBoxP());
@@ -447,13 +473,22 @@
         if(smooth){
           if(S.tri){
             var tx1 = A.sx(a + S.tri.run * (rr.s)), ty0 = Py, ty1 = A.sy(y0 + m * rr.s * rr.r), rs = rr.s;
-            label(o, 'run ' + fmtN(S.tri.run), 'tt2-c4', [[(Px + tx1) / 2, ty1 < ty0 ? ty0 + 17 : ty0 - 8, 'middle'], [(Px + tx1) / 2, ty1 < ty0 ? ty0 - 8 : ty0 + 17, 'middle']], A, 12.5);
-            if(Math.abs(ty1 - ty0) > 14) label(o, 'rise ' + fmtN(S.tri.rise), 'tt2-c4', [[tx1 + (rs > 0 ? 7 : -7), (ty0 + ty1) / 2 + 4, rs > 0 ? 'start' : 'end'], [tx1 + (rs > 0 ? -7 : 7), (ty0 + ty1) / 2 + 4, rs > 0 ? 'end' : 'start']], A, 12.5);
+            var yo = ty1 < ty0 ? ty0 + 17 : ty0 - 8, yi = ty1 < ty0 ? ty0 - 8 : ty0 + 17, ea = rs > 0 ? 'end' : 'start', ex = tx1 + (rs > 0 ? 2 : -2);
+            label(o, 'run ' + fmtN(S.tri.run), 'tt2-c4', [[(Px + tx1) / 2, yo, 'middle'], [(Px + tx1) / 2, yi, 'middle'], [ex, yo, ea], [ex, yi, ea], [tx1 + (rs > 0 ? 6 : -6), yo, rs > 0 ? 'start' : 'end']], A, 12.5);
+            if(Math.abs(ty1 - ty0) > 14){
+              var ym = (ty0 + ty1) / 2 + 4, yt = ty1 + (ty1 < ty0 ? 12 : -4), sa = rs > 0 ? 'start' : 'end', sb = rs > 0 ? 'end' : 'start';
+              label(o, 'rise ' + fmtN(S.tri.rise), 'tt2-c4', [[tx1 + (rs > 0 ? 7 : -7), ym, sa], [tx1 + (rs > 0 ? -7 : 7), ym, sb], [tx1 + (rs > 0 ? 7 : -7), yt, sa], [tx1 + (rs > 0 ? -7 : 7), yt, sb], [tx1 + (rs > 0 ? 7 : -7), ty0 + (ty1 < ty0 ? -6 : 14), sa]], A, 12.5);
+            }
           }
           lineLabel(o, A, a, y0, m, 'tangent', 'tt2-c4', Px, Py);
         } else if(c.kind === 'corner'){
-          if(isFinite(c.L)) label(o, 'from the left', 'tt2-c4', [[A.sx(a - (A.x[1] - A.x[0]) * 0.12), A.sy(y0 - c.L * (A.x[1] - A.x[0]) * 0.12) - 10, 'middle'], [A.sx(a - (A.x[1] - A.x[0]) * 0.12), A.sy(y0 - c.L * (A.x[1] - A.x[0]) * 0.12) + 20, 'middle']], A, 12.5);
-          if(isFinite(c.R)) label(o, 'from the right', 'tt2-c4', [[A.sx(a + (A.x[1] - A.x[0]) * 0.12), A.sy(y0 + c.R * (A.x[1] - A.x[0]) * 0.12) - 10, 'middle'], [A.sx(a + (A.x[1] - A.x[0]) * 0.12), A.sy(y0 + c.R * (A.x[1] - A.x[0]) * 0.12) + 20, 'middle']], A, 12.5);
+          // the two one sided lines, each named (shorter words on a phone)
+          [[-1, c.L, G.narrow ? 'left' : 'from the left'], [1, c.R, G.narrow ? 'right' : 'from the right']].forEach(function(sd){
+            if(!isFinite(sd[1])) return;
+            var cs = [];
+            [0.12, 0.2, 0.28, 0.07].forEach(function(f){ var dx = (A.x[1] - A.x[0]) * f * sd[0], X = A.sx(a + dx), Y = A.sy(y0 + sd[1] * dx); cs.push([X, Y - 10, 'middle'], [X, Y + 20, 'middle']); });
+            label(o, sd[2], 'tt2-c4', cs, A, 12.5);
+          });
         } else if(c.kind === 'vertical' || c.kind === 'cusp') label(o, c.kind === 'cusp' ? 'cusp' : 'vertical tangent', 'tt2-c4', [[Px + 10, A.T + 18, 'start'], [Px - 10, A.T + 18, 'end']], A, 12.5);
         else if(c.kind === 'jump') label(o, 'jump', 'tt2-cbad', [[Px + 14, Py + 24, 'start'], [Px - 14, Py + 24, 'end']], A, 12.5);
         roadLabel(o);
@@ -462,6 +497,8 @@
       }
       gD.innerHTML = o.join('');
       svg.setAttribute('aria-label', picText());
+      var rg = ringOn(); hp.el.classList.toggle('is-ring', rg);
+      if(rg) hp.el.style.setProperty('--tt-ring', (2 * knobC().r * (layer.scale() || 1)).toFixed(1) + 'px');
       hp.place(); if(hq) hq.place();
       if(cue.active()) cue.place();
       words();
@@ -483,11 +520,11 @@
     }
     function tagSideP(){
       if(!G) return 'down';
-      var A = G.A, y = A.sy(fa()), x = A.sx(S.a), ang = angOf(carSlope(S.cls || {}, slopeNow(), S.dir), S.dir), d = carDiscs(x, y, ang);
-      var t = hp && hp.el.querySelector('.tk2-tag'), w = t && t.offsetWidth ? t.offsetWidth : 90, roof = Math.sin(ang) * (S.dir < 0 ? -1 : 1) < 0 ? 'right' : 'left';
+      var A = G.A, ang = carAng(), d = carDiscs(A.sx(S.a), A.sy(fa()), ang), kc = knobC(), x = kc.x, y = kc.y, of = kc.o;
+      var t = hp && hp.el.querySelector('.tk2-tag'), w = t && t.offsetWidth ? t.offsetWidth / (layer.scale() || 1) : 90, roof = Math.sin(ang) * (S.dir < 0 ? -1 : 1) < 0 ? 'right' : 'left';
       function box(side){
-        if(side === 'down' || side === 'up'){ var l = clamp(x - w / 2, A.L + 2, A.R - 2 - w), t0 = side === 'down' ? y + 26 : y - 50; return [l, t0, l + w, t0 + 24]; }
-        return side === 'right' ? [x + 26, y - 12, x + 26 + w, y + 12] : [x - 26 - w, y - 12, x - 26, y + 12];
+        if(side === 'down' || side === 'up'){ var l = clamp(x - w / 2, A.L + 2, A.R - 2 - w), t0 = side === 'down' ? y + of : y - of - 24; return [l, t0, l + w, t0 + 24]; }
+        return side === 'right' ? [x + of, y - 12, x + of + w, y + 12] : [x - of - w, y - 12, x - of, y + 12];
       }
       function ok(b){
         if(b[0] < A.L + 1 || b[2] > A.R - 1 || b[1] < A.T + 1 || b[3] > A.B - 1) return false;
@@ -498,9 +535,9 @@
       return 'down';
     }
     function tagBoxP(){
-      var A = G.A, y = A.sy(fa()), x = A.sx(S.a), side = tagSideP(), t = hp.el.querySelector('.tk2-tag'), w = t && t.offsetWidth ? t.offsetWidth : 90;
-      if(side === 'down' || side === 'up'){ var l = clamp(x - w / 2, A.L + 2, A.R - 2 - w), t0 = side === 'down' ? y + 24 : y - 52; return [l, t0, l + w, t0 + 28]; }
-      return side === 'right' ? [x + 24, y - 14, x + 28 + w, y + 14] : [x - 28 - w, y - 14, x - 24, y + 14];
+      var A = G.A, kc = knobC(), x = kc.x, y = kc.y, of = kc.o, side = tagSideP(), t = hp.el.querySelector('.tk2-tag'), w = t && t.offsetWidth ? t.offsetWidth / (layer.scale() || 1) : 90;
+      if(side === 'down' || side === 'up'){ var l = clamp(x - w / 2, A.L + 2, A.R - 2 - w), t0 = side === 'down' ? y + of - 2 : y - of - 26; return [l, t0, l + w, t0 + 28]; }
+      return side === 'right' ? [x + of - 2, y - 14, x + of + 2 + w, y + 14] : [x - of - 2 - w, y - 14, x - of + 2, y + 14];
     }
     /* The car's heading: the slope, or at a point with none, the slope of the side it came from. */
     function carSlope(c, m, dir){
@@ -558,7 +595,8 @@
       if(q.ok && isFinite(sec)){
         var Qx2 = A.sx(q.x), Qy2 = A.sy(q.y);
         block(Qx2, Qy2, 20); block(Qx2 + 9, Qy2 - 32, 12);
-        if(!qInLens()){ var qs = tagSideQ(); boxes.push(qs === 'down' ? [Qx2 - 50, Qy2 + 16, Qx2 + 50, Qy2 + 52] : qs === 'up' ? [Qx2 - 50, Qy2 - 52, Qx2 + 50, Qy2 - 16] : qs === 'right' ? [Qx2 + 16, Qy2 - 16, Qx2 + 120, Qy2 + 16] : [Qx2 - 120, Qy2 - 16, Qx2 - 16, Qy2 + 16]); }
+        S.qChip = null;
+        if(!qInLens()){ var qs = tagSideQ(); chipQ(Qx2, Qy2, qs, A, null); boxes.push(qs === 'down' ? [Qx2 - 50, Qy2 + 16, Qx2 + 50, Qy2 + 52] : qs === 'up' ? [Qx2 - 50, Qy2 - 52, Qx2 + 50, Qy2 - 16] : qs === 'right' ? [Qx2 + 16, Qy2 - 16, Qx2 + 120, Qy2 + 16] : [Qx2 - 120, Qy2 - 16, Qx2 - 16, Qy2 + 16]); }
         if(Math.abs(Qx2 - Px) > 40) label(o, 'h', 'tt2-c5', [[(Px + Qx2) / 2, Qy2 < Py ? Py + 17 : Py - 8, 'middle'], [(Px + Qx2) / 2, Qy2 < Py ? Py - 8 : Py + 17, 'middle']], A, 13);
         if(Math.abs(Qy2 - Py) > 30) label(o, 'Δy', 'tt2-c5', [[Qx2 + (S.h > 0 ? 9 : -9), (Py + Qy2) / 2 + 4, S.h > 0 ? 'start' : 'end'], [Qx2 + (S.h > 0 ? -9 : 9), (Py + Qy2) / 2 + 4, S.h > 0 ? 'end' : 'start']], A, 13);
       }
@@ -570,7 +608,9 @@
         var z = (R / LENS.w) / G.kx, zt = '×' + (z >= 10 ? String(+z.toPrecision(2)) : String(Math.max(1, Math.round(z))));
         var zl = [];
         if(qInLens() || lensWanted()){ var qlx = Lm.sx(q.x), qly = Lm.sy(q.y); block(qlx, qly, 24); boxes.push([qlx - 50, qly + 14, qlx + 50, qly + 52]); }
+        var zn = boxes.length;
         label(zl, 'zoom ' + zt, 'tt2-zoom', [[Lg.cx, Lg.cy + R + 19, 'middle'], [Lg.cx, Lg.cy - R - 9, 'middle'], [Lg.cx + R * 0.75, Lg.cy + R + 6, 'start'], [Lg.cx - R * 0.75, Lg.cy + R + 6, 'end']], A, 12.5);
+        if(qInLens() || lensWanted()){ var ql = [Lm.sx(q.x), Lm.sy(q.y)]; chipQ(ql[0], ql[1], 'down', A, { cx: Lg.cx, cy: Lg.cy, more: boxes.slice(zn) }); }
         boxes.push([Lg.cx - R - 8, Lg.cy - R - 8, Lg.cx + R + 8, Lg.cy + R + 8]);
         var g = ['<g class="tt2-lens" style="opacity:' + LENS.show.toFixed(3) + '" transform="translate(' + r1(Lg.cx) + ' ' + r1(Lg.cy) + ') scale(' + k.toFixed(3) + ') translate(' + r1(-Lg.cx) + ' ' + r1(-Lg.cy) + ')">'];
         // the two lines from the small ring at P to the glass
@@ -616,6 +656,27 @@
       if(smooth) lineLabel(o, A, a, y0, m, 'tangent', 'tt2-c4', Px, Py);
       roadLabel(o);
     }
+    /* Q's first-time chip: on a side of Q that keeps clear of Q's tag (side ts), the labels and P, and in the
+       magnifier away from its centre (P's dot) and clear of the zoom label. Its box then keeps labels away. */
+    function chipQ(x, y, ts, A, lens){
+      var ch = hq && hq.el.querySelector('.tk2-chip'); if(!ch){ S.qChip = null; return; }
+      var k = layer.scale() || 1, w = (ch.offsetWidth || 64) / k + 4, h = (ch.offsetHeight || 22) / k + 4, g = 30;
+      function box(sd){ return sd === 'down' ? [x - w / 2, y + g, x + w / 2, y + g + h] : sd === 'up' ? [x - w / 2, y - g - h, x + w / 2, y - g] : sd === 'right' ? [x + g, y - h / 2, x + g + w, y + h / 2] : [x - g - w, y - h / 2, x - g, y + h / 2]; }
+      var tb = box(ts), opp = { down: 'up', up: 'down', left: 'right', right: 'left' }, order;
+      if(lens){ var dx = x - lens.cx, dy = y - lens.cy, hz = dx >= 0 ? 'right' : 'left', vt = dy >= 0 ? 'down' : 'up'; order = Math.abs(dx) >= Math.abs(dy) ? [hz, vt, opp[vt], opp[hz]] : [vt, hz, opp[hz], opp[vt]]; }
+      else order = [opp[ts], ts === 'down' || ts === 'up' ? 'right' : 'down', ts === 'down' || ts === 'up' ? 'left' : 'up', ts];
+      function hit(b, q){ return !(b[2] < q[0] || b[0] > q[2] || b[3] < q[1] || b[1] > q[3]); }
+      var best = null;
+      for(var i = 0; i < order.length; i++){
+        var sd = order[i], b = box(sd);
+        if(sd === ts || !inside(b, A) || hit(b, tb)) continue;
+        if(lens){ if(hit(b, [lens.cx - 9, lens.cy - 9, lens.cx + 9, lens.cy + 9]) || lens.more.some(function(q){ return hit(b, q); })) continue; }
+        else if(!free(b)) continue;
+        best = sd; break;
+      }
+      if(!best) best = order.filter(function(sd){ return sd !== ts && inside(box(sd), A); })[0] || opp[ts];
+      S.qChip = best; boxes.push(box(best));
+    }
     function picText(){
       var F = S.F, A = sv(S.a), c = S.cls || {};
       var t = (F.custom ? 'Your curve ' : 'The curve ') + plain('$' + F.tex + '$') + ', drawn as a road. P at x = ' + A + '. ';
@@ -648,7 +709,7 @@
     function brokenParts(c, A){
       var dne = { t: 'f′(' + A + ') does not exist', role: 'bad' };
       if(c.kind === 'corner') return [{ t: 'left slope ' + fmtN(c.L), role: 'slope' }, { t: 'right slope ' + fmtN(c.R), role: 'slope', join: '+' }, { t: 'they disagree', role: 'ink' }, dne];
-      if(c.kind === 'cusp') return [{ t: 'left slope ' + fmtN(c.L), role: 'slope' }, { t: 'right slope ' + fmtN(c.R), role: 'slope', join: '+' }, { t: 'a cusp', role: 'ink' }, dne];
+      if(c.kind === 'cusp') return [{ t: 'slope → ' + fmtN(c.L) + ' from the left', role: 'slope', say: 'from the left the slope goes to ' + (c.L < 0 ? 'minus ' : '') + 'infinity' }, { t: '→ ' + fmtN(c.R) + ' from the right', role: 'slope', join: '+', say: 'to ' + (c.R < 0 ? 'minus ' : '') + 'infinity from the right' }, dne];
       if(c.kind === 'vertical') return [{ t: 'tangent is vertical', role: 'slope' }, { t: 'no slope', role: 'ink' }, dne];
       if(c.kind === 'jump') return [{ t: 'f jumps at x = ' + A, role: 'road' }, { t: 'not continuous', role: 'ink' }, dne];
       if(c.kind === 'endpoint') return [{ t: 'the road ends at x = ' + A, role: 'road' }, { t: 'one side only', role: 'ink' }, dne];
@@ -674,7 +735,7 @@
     }
     function stepA(){ var span = S.F.x[1] - S.F.x[0], st = span / 120; return st > 0.04 ? 0.05 : st > 0.004 ? 0.005 : 0.0005; }
     var hp = K.handle(layer, { key: 'apcalc-tangent-tracer-p', label: 'Point P on the curve', value: S.a, chip: false,
-      at: function(v){ if(!G) return null; var y = S.F.f(v); return isFinite(y) && y >= G.A.y[0] && y <= G.A.y[1] ? [G.A.sx(v), G.A.sy(y)] : null; },
+      at: function(v){ if(!G) return null; var y = S.F.f(v); if(!(isFinite(y) && y >= G.A.y[0] && y <= G.A.y[1])) return null; if(ringOn() && Math.abs(v - S.a) < 1e-12){ var g = ringOf(); return [g.x, g.y]; } return [G.A.sx(v), G.A.sy(y)]; },
       dir: function(v){ if(!G) return 0; var m = slopeNow(); return angOf(isFinite(m) ? m : 0) * 180 / Math.PI; },
       pick: function(x){ if(!G) return null; var v = validA(snapA(G.A.ix(x))); return v; },
       keys: function(v, k, big){
@@ -730,6 +791,7 @@
       valuetext: function(v){ var q = qPoint(), sec = q.ok ? (q.y - fa()) / v : NaN; return 'h = ' + hText(v) + (v > 0 ? ', Q to the right of P' : ', Q to the left of P') + (isFinite(sec) ? ', secant slope ' + fmtN(sec, 3) : ', Q is off the curve'); },
       tag: function(v){ return S.tab === 'secant' ? 'h = ' + hText(v) : ''; },
       tagSide: function(){ return tagSideQ(); },
+      chipSide: function(){ return S.qChip || 'down'; },
       bounds: function(){ return G ? (qInLens() ? [LENS.cx - LENS.R, 0, LENS.cx + LENS.R, 0] : [G.A.L + 2, G.A.T, G.A.R - 2, G.A.B]) : null; },
       onStart: function(){
         userActs(); S.qIn = S.tab === 'secant' && LENS.show > 0.5 && lensWanted();
@@ -794,6 +856,7 @@
       fade();
       drive.stop(); slide.stop(); tour.stop(); tour2.stop();
       S.tab = v; S.took = null;
+      if(v === 'secant') hideCue(false);
       if(v === 'secant' && validH(S.h) == null){ var hh = [-S.h, S.h / 2, -S.h / 2, S.h / 10, -S.h / 10].filter(function(x){ return validH(x) != null; })[0]; if(hh != null){ S.h = hh; hq.value(hh); } }
       LENS.show = 0; LENS.w = lensTarget();
       head.purpose(v === 'slope' ? 'The derivative is the slope of the curve at each point.' : 'The secant turns into the tangent as h goes to 0.');
@@ -801,6 +864,7 @@
       hq.hide(v !== 'secant');
       hp.el.classList.toggle('is-quiet', v === 'secant');
       layout(); kick();
+      if(v === 'slope' && S.mode === 'explore') cueShow();
       say(v === 'slope' ? 'Slope at a point. ' + cause.text() : 'Secant to tangent. ' + cause.text());
     }
     /* A short cross fade of the picture that was there (a new curve, a tab, a result shown at once). */
@@ -862,7 +926,7 @@
     }
     var SL = { h0: 1, side: 1, out: false };
     function slideStart(){
-      userActs(); hideCue(true); tourDid('slide');
+      userActs(); hideCue(true); tourDid('slide'); hq.used();
       var ah = Math.abs(S.h);
       SL = { side: S.h < 0 ? -1 : 1, out: ah <= TT.HMIN * 1.01, h0: ah };
       if(SL.out){ var back = validH(SL.side * 1) != null ? 1 : Math.min(1, hmax()); SL.h0 = back; }
@@ -892,7 +956,7 @@
 
     /* ---------------------------------------------------- the first visit cue and "Show me how" */
     var cueO = { key: 'apcalc-tangent-tracer', text: 'Drag P along the road', side: 'left',
-      at: function(){ return G ? [G.A.sx(S.a) - 16, G.A.sy(fa())] : [0, 0]; } };
+      at: function(){ if(!G) return [0, 0]; var kc = knobC(); return [kc.x - kc.r + 6, kc.y]; } };
     var cue = K.cue(layer, cueO);
     function cueShow(){ if(!G) return; cueO.text = G.A.sx(S.a) - G.A.L > 270 ? 'Drag P along the road' : 'Drag P'; if(cue.show()) draw(); }
     /* the cue is a thing on the picture too: labels keep clear of it */
@@ -1032,7 +1096,8 @@
       plain: function(){ host.appendChild(stage); host.appendChild(ref); boot(); },
       shown: shown, stop: function(){ drive.stop(); slide.stop(); },
       redraw: function(){ layout(); },
-      // for the sweep test and the browser checks only
+      // for the sweep test and the browser checks only: exposed as window.ApCalcTangentTracer only when the test sets
+      // window.LevlToolTest before the page loads (never in production)
       _t: { FUNCS: TT.FUNCS, S: S, LENS: LENS, G: function(){ return G; }, hp: hp, hq: hq, drive: drive, slide: slide, cause: cause, setF: setF, setTab: setTab, moveP: function(v){ hp.value(v, true); }, setH: function(v){ if(validH(v) != null) hq.value(v, true); } }
     };
   }
@@ -1352,7 +1417,7 @@
     T.mount(SLUG, function(app, data){
       var ex = null, qz = null, kit = !!(window.LevlKit2 && window.LevlStudio && app.getAttribute('data-studio'));
       var md = T.modes(app, { slug: SLUG, labels: ['Explore', 'Test yourself'],
-        explore: function(host){ ex = explore(host, data); window.ApCalcTangentTracer = ex._t; },
+        explore: function(host){ ex = explore(host, data); if(window.LevlToolTest) window.ApCalcTangentTracer = ex._t; },
         quiz: function(host){ qz = quiz(host, data); },
         onShow: function(m){
           if(ex) ex.shown(m);
