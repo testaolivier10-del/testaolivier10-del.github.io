@@ -42,7 +42,10 @@ const URL0 = `http://localhost:${PORT}/environmental-science/tools/energy-flow.h
 const WIDTHS = ONE ? [+ONE] : [360, 390, 430, 600, 768, 820, 1024, 1280, 1440, 1920];
 const STATES = [
   { ch: 'chain', id: 'grass', set: { lvl: 0 } },
-  { ch: 'chain', id: 'frogs', set: { lvl: 2 } },
+  { ch: 'chain', id: 'grass-most-sun', set: { lvl: 0, sun: 30000 } },
+  { ch: 'chain', id: 'grasshoppers', set: { lvl: 1, sun: 20000 } },
+  { ch: 'chain', id: 'grasshoppers-most-sun', set: { lvl: 1, sun: 30000 } },
+  { ch: 'chain', id: 'frogs', set: { lvl: 2, sun: 20000 } },
   { ch: 'chain', id: 'snakes', set: { lvl: 3 } },
   { ch: 'chain', id: 'hawks', set: { lvl: 4 } },
   { ch: 'chain', id: 'hawks-most-sun', set: { lvl: 4, sun: 30000 } },
@@ -90,10 +93,12 @@ const geo = (page) => page.evaluate(() => {
   const scene = document.querySelector('.efa-scene'), stage = document.querySelector('.efa');
   const labels = [...document.querySelectorAll('.efa-dyn text.efa-lab, .efa-dyn text.efa-val, .efa-dyn .efa-pill, .efa-dyn text.efa-k')].map(r).filter(b => b.w > 0);
   const ctrls = [...document.querySelectorAll('.tk2-layer .tk2-drag:not([hidden]) .tk2-knob, .tk2-layer .tk2-drag:not([hidden]) .tk2-tag:not([hidden]), .tk2-cue, .tk2-layer .tk2-tap:not([hidden])')].map(r).filter(b => b.w > 0);
+  const knobs = [...document.querySelectorAll('.tk2-layer .tk2-drag:not([hidden]) .tk2-knob')].map(r).filter(b => b.w > 0);
+  const animals = [...document.querySelectorAll('.efa-mid [data-sp] .efa-body, .efa-mid .efa-crit:not([data-k="0"]) .ef-art')].filter(e => getComputedStyle(e).display !== 'none').map(r).filter(b => b.w > 0);
   const tags = [...document.querySelectorAll('.tk2-layer .tk2-drag:not([hidden]) .tk2-tag:not([hidden]), .tk2-cue')].map(r).filter(b => b.w > 0);
   const kids = [...stage.children].filter(e => e.offsetParent !== null && e !== scene).map(r);
   const cause = document.querySelector('.tk2-cause');
-  return { scene: r(scene), labels, ctrls, tags, kids, cause: r(cause), causeT: cause.textContent, sw: document.documentElement.scrollWidth, iw: window.innerWidth };
+  return { scene: r(scene), labels, ctrls, tags, knobs, animals, kids, cause: r(cause), causeT: cause.textContent, sw: document.documentElement.scrollWidth, iw: window.innerWidth };
 });
 const hit = (a, b, pad = 1) => a.x + pad < b.x + b.w && b.x + pad < a.x + a.w && a.y + pad < b.y + b.h && b.y + pad < a.y + a.h;
 const inside = (a, s, pad = 1) => a.x >= s.x - pad && a.y >= s.y - pad && a.x + a.w <= s.x + s.w + pad && a.y + a.h <= s.y + s.h + pad;
@@ -109,6 +114,7 @@ for (const w of WIDTHS) {
       const g0 = await geo(page);
       for (const c of g0.tags) ok(inside(c, g0.scene), `${tag} ${ch} opening: cue or tag clipped "${c.t}"`);
       for (const c of g0.tags) for (const l of g0.labels) ok(!hit(c, l), `${tag} ${ch} opening: cue/tag "${c.t}" covers "${l.t}"`);
+      for (const c of g0.tags) for (const a of g0.animals) ok(!hit(c, a, 2), `${tag} ${ch} opening: cue/tag "${c.t}" covers an animal`);
       for (const st of STATES.filter(s => s.ch === ch)) {
         await apply(page, st.set);
         const g = await geo(page), id = `${tag} ${st.id}`;
@@ -122,6 +128,10 @@ for (const w of WIDTHS) {
           ok(!hit(a, b), `${id}: labels overlap "${a.t}" / "${b.t}"`);
         }
         for (const t of g.tags) for (const l of g.labels) ok(!hit(t, l), `${id}: tag "${t.t}" covers "${l.t}"`);
+        for (const k of g.knobs) for (const l of g.labels) ok(!hit(k, l, 0), `${id}: a knob covers "${l.t}"`);
+        // a tier's name and its kcal: at least 4 px apart
+        const gaps = await page.evaluate(() => { const L = [...document.querySelectorAll('.efa-dyn text.efa-lab')], V = [...document.querySelectorAll('.efa-dyn text.efa-val')]; return V.map((v, i) => { const a = L[i].getBoundingClientRect(), b = v.getBoundingClientRect(); return b.top - a.bottom; }); });
+        gaps.forEach((d, i) => ok(d >= 4 || st.ch !== 'chain', `${id}: tier ${i} name and kcal ${d.toFixed(1)} px apart`));
         const area = g.scene.w * g.scene.h;
         ok(g.kids.every(k => k.w * k.h < area), `${id}: the scene is not the largest thing`);
         if (w <= 640) { ok(g.cause.h <= 72, `${id}: cause line ${g.cause.h}px (more than two rows)`); causeH[st.id] = g.cause.h; }
@@ -135,6 +145,12 @@ for (const w of WIDTHS) {
           // one measure per step: every heat wisp of a step is as wide as the stream that goes on from it
           const widths = await page.evaluate(() => [...document.querySelectorAll('.efa-dyn path.efa-heat')].map(p => parseFloat(p.style.strokeWidth)));
           ok(widths.length === 5 + 9 * st.set.lvl, `${id}: ${widths.length} heat wisps, expected ${5 + 9 * st.set.lvl}`);
+          // the grass step on one measure: the 5 respiration wisps together are as wide as the stored stream
+          const gs = await page.evaluate(() => ({ resp: [...document.querySelectorAll('.efa-dyn path.efa-heat.is-resp')].reduce((a, p) => a + parseFloat(p.style.strokeWidth), 0), npp: (() => { const p = document.querySelector('.efa-dyn path.efa-stream.is-npp'); return p ? parseFloat(p.style.strokeWidth) : null; })() }));
+          if (gs.npp != null) ok(Math.abs(gs.resp - gs.npp) < 0.05, `${id}: respiration ${gs.resp} vs stored ${gs.npp}`);
+          // every tier shows at least one animal (the grass tier its grass)
+          const per = await page.evaluate(() => [0, 1, 2, 3, 4].map(k => document.querySelectorAll('.efa-mid .efa-crit[data-k="' + k + '"] .ef-art').length));
+          ok(per.every(n => n > 0), `${id}: empty tier ${JSON.stringify(per)}`);
           if (st.set.lvl === 4) ok(/hawks get 0\.01%/.test(g.causeT), `${id}: takeaway "${g.causeT}"`);
           else if (st.set.lvl) ok(new RegExp(want[st.set.lvl].toLocaleString('en-US') + ' kcal ').test(g.causeT), `${id}: cause "${g.causeT}"`);
         } else if (st.ch === 'eat') {
@@ -142,7 +158,7 @@ for (const w of WIDTHS) {
             const b = (k) => { const p = document.querySelector('.efa-dyn .efa-band[data-k="' + k + '"]'); return p ? parseFloat(p.style.strokeWidth) : 0; }; const plume = document.querySelector('.efa-dyn .efa-plume');
             return { people: F.people, cattle: b('cattle'), beef: b('beef'), plume: plume ? parseFloat(plume.style.strokeWidth) : 0 }; }, st.set.share);
           ok(new RegExp('\\b' + d.people + ' people fed').test(g.causeT) || (st.set.share === 100 && new RegExp('feeds ' + d.people + ' people').test(g.causeT)), `${id}: cause "${g.causeT}" vs model ${d.people}`);
-          if (st.set.share > 0) { ok(Math.abs(d.plume - 0.9 * d.cattle) < 0.05 && (d.beef === 0 || Math.abs(d.plume - 9 * d.beef) < 0.1), `${id}: heat ${d.plume} is not 9 x beef ${d.beef} (cattle ${d.cattle})`); }
+          if (st.set.share > 0) { ok(Math.abs(d.plume - 0.9 * d.cattle) < 0.05 && (Math.abs(d.plume - 9 * d.beef) < 0.1 || (d.beef === 0.6 && d.plume / 9 < 0.6)), `${id}: heat ${d.plume} is not 9 x beef ${d.beef} (cattle ${d.cattle})`); ok(d.beef >= 0.6, `${id}: no beef band while cattle are drawn`); }
           else ok(d.plume === 0, `${id}: heat drawn with no cattle`);
         } else if (st.set.tap) {
           ok(g.causeT.startsWith('No ' + st.set.tap), `${id}: cause "${g.causeT}"`);

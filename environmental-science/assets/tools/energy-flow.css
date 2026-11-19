@@ -178,3 +178,8 @@
 :root[data-theme="dark"] .efa-wall{fill:#BFAF92;} :root[data-theme="dark"] .efa-roof{fill:#9C4A35;}
 .efa .tk2-tap .tk2-badge{display:none;}
 .efa .tk2-tap{border-style:solid;border-width:2px;border-color:color-mix(in srgb, var(--cink) 35%, transparent);}
+.efa .tk2-drag.efa-up .tk2-groove{opacity:0;}
+.efa-cross{display:inline;}
+.efa-extra{transition:none;}
+/* the moving parts draw on their own layer, so the scene under them is never repainted while they move */
+.efa-top{pointer-events:none;will-change:transform;}
