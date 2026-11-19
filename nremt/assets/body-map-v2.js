@@ -237,8 +237,9 @@
       say(c.name + ', ' + sysName(c.system) + '. ' + (c.funct || ''));
       if(o.onCard) o.onCard(key);
     }
+    function legendOff(on){ var l = viewerEl.querySelector('.legend'); if(l) l.hidden = !!on; }
     function closeCard(quick){
-      St.card = null;
+      St.card = null; legendOff(false);
       card.classList.remove('is-in'); lead.classList.remove('is-in');
       stage.removeAttribute('data-card');
       if(quick || K.reduced()){ card.hidden = true; lead.style.display = 'none'; return; }
@@ -253,6 +254,8 @@
       if(!p || !W) return;
       var wide = W >= 700;
       card.classList.toggle('is-dock', !wide);
+      // a docked card covers the legend's corner: the legend steps aside while it shows
+      legendOff(!wide);
       var cw = card.offsetWidth, ch = card.offsetHeight, x, y;
       var px = clamp(p.x, 8, W - 8), py = clamp(p.y, 8, H - 8);
       if(wide){
@@ -471,7 +474,7 @@
       hidden: function(){
         St.on = false;
         if(lt){ cancelAnimationFrame(lt); lt = 0; }
-        hideTip(); hideCue(false); tour.stop(); tourB.stop();
+        hideTip(); hideCue(false); tour.stop(); tourB.stop(); legendOff(false);
         if(BI) BI.finish();
         if(St.pending){ St.pending = null; }
       },
