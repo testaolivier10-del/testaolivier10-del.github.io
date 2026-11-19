@@ -121,7 +121,7 @@
   function posValue(plan, t){
     // the stretch and the contraction at time t (both pure)
     if(t <= 0) return { s: plan.s0, c: 0 };
-    if(t >= plan.birth){ var b = (t - plan.birth) / 1.6; return { s: lerp(1, 0, ramp(b, 0.55, 0.9)), c: lerp(0.4, 0, ramp(b, 0, 0.6)) }; }
+    if(t >= plan.birth){ var b = (t - plan.birth) / 1.6; return { s: lerp(1, 0, ramp(b, 0.85, 1)), c: lerp(0.4, 0, ramp(b, 0, 0.6)) }; }
     for(var i = 0; i < plan.cyc.length; i++){
       var y = plan.cyc[i]; if(t > y.t0 + y.D) continue;
       var u = (t - y.t0) / y.D;
@@ -156,14 +156,16 @@
   /* ================================================================== 1. Body temperature */
   (function(){
     var LAY = {
-      wide: { w: 1080, h: 540, g: { person: [520, 74, 1], mag: [856, 266, 1.1], therm: [392, 98, 1] }, mon: [14, 108, 306, 300], spread: { mon: -1, mag: 1 } },
+      wide: { w: 1080, h: 540, g: { person: [520, 74, 1], mag: [856, 266, 1.1], therm: [392, 98, 1] }, mon: [14, 64, 306, 410], spread: { mon: -1, mag: 1 } },
       tall: { w: 600, h: 620, g: { person: [172, 70, 0.78], mag: [454, 204, 0.8], therm: [62, 104, 0.9] }, mon: [14, 432, 572, 178] }
     };
     var MIN = 35.5, MAX = 38.5, SET = 37;
     // the patch of skin on the forearm (person) that the magnifier shows; the nerves between it and the brain
     var PATCH = [96, 236];
-    var AFF_P = [[96, 236], [93, 184], [86, 128], [64, 88], [24, 62], [8, 34], [2, 6]];
-    var EFF_P = [[-3, 6], [-1, 36], [14, 68], [54, 98], [76, 134], [84, 188], [88, 232]];
+    // up the arm, over the shoulder, up the back of the neck (behind the head, so hidden there) to the hypothalamus
+    var AFF_P = [[96, 236], [93, 184], [86, 128], [64, 90], [28, 70], [8, 54], [4, 30], [2, 4], [0, -7]];
+    var EFF_P = [[-1, -7], [-4, 4], [-6, 30], [-10, 54], [14, 74], [56, 98], [78, 134], [86, 188], [88, 232]];
+    function inHead(q){ return Math.pow(q[0] / 36, 2) + Math.pow(q[1] / 44, 2) < 1 && q[1] > -2; }
     // inside the magnifier (r 170): the nerve ending's fiber to the edge; the command fiber from the edge to the effectors
     var AFF_M = [[-34, -64], [-50, -30], [-86, 14], [-120, 52], [-150, 80]];
     var EFF_M = [[-162, 46], [-126, 22], [-70, 14], [-10, 22], [58, 28]];
@@ -190,15 +192,18 @@
       p += '<path class="fe-shirt" d="M-16,56 C-46,62 -72,72 -84,92 C-92,108 -94,124 -92,140 L-64,146 L-62,136 C-64,190 -62,240 -60,286 L60,286 C62,240 64,190 62,136 L64,146 L92,140 C94,124 92,108 84,92 C72,72 46,62 16,56 Z"/>';
       p += '<path class="fe-fold" d="M-62,146 C-56,166 -58,186 -60,200 M62,146 C56,166 58,186 60,200 M-34,268 C-10,274 14,274 36,268"/>';
       p += '<path class="fe-collar" d="M-18,57 C-8,72 8,72 18,57"/>';
+      // the two nerves (drawn under the neck and head: they run up the back of the neck)
+      p += '<path class="fe-nv is-aff fe-nvp" data-r="affp" d="' + P(AFF_P) + '"/><path class="fe-nv is-eff fe-nvp" data-r="effp" d="' + P(EFF_P) + '"/>';
       // neck and head
       p += '<path class="fe-skinp" d="M-13,30 L-13,60 C-6,66 6,66 13,60 L13,30 Z"/>';
       p += '<ellipse class="fe-ear" cx="-35" cy="2" rx="7" ry="11"/><ellipse class="fe-ear" cx="35" cy="2" rx="7" ry="11"/>';
       p += '<ellipse class="fe-skinp" cx="0" cy="0" rx="34" ry="42"/>';
-      // the brain seen through the head, the temperature center at its base
-      p += '<path class="fe-brainx" d="M-26,-6 C-28,-28 -12,-36 0,-36 C14,-36 28,-28 26,-6 C24,6 12,10 0,10 C-12,10 -24,6 -26,-6 Z"/>';
-      p += '<path class="fe-gyrx" d="M-16,-22 c6,-5 10,3 15,-1 M2,-26 c6,-4 10,4 15,0 M-18,-8 c6,-4 10,4 16,0"/>';
-      p += '<ellipse class="fe-hypo" data-r="hypo" cx="0" cy="5" rx="8" ry="5.5"/>';
       p += '<path class="fe-hair" d="M-36,-6 C-40,-36 -20,-50 2,-48 C26,-46 42,-30 36,-6 C30,-22 18,-30 2,-30 C-16,-30 -30,-22 -36,-6 Z"/>';
+      // the top of the head cut away: the skull's rim, the brain's two halves, the hypothalamus at its base
+      p += '<path class="fe-skull" d="M-33,-8 C-36,-34 -20,-50 0,-50 C20,-50 36,-34 33,-8 C30,-2 20,0 8,-1 L-8,-1 C-20,0 -30,-2 -33,-8 Z"/>';
+      p += '<path class="fe-brainc" d="M-29,-9 C-32,-30 -18,-45 -1,-45 L-1,-6 C-10,-4 -22,-3 -29,-9 Z M1,-45 C18,-45 32,-30 29,-9 C22,-3 10,-4 1,-6 Z"/>';
+      p += '<path class="fe-gyrc" d="M-22,-30 c5,-4 8,2 13,-1 M-24,-18 c5,-3 9,3 14,0 M8,-34 c5,-4 9,3 13,0 M10,-20 c5,-3 9,3 14,0 M-14,-40 c4,-2 7,2 10,0"/>';
+      p += '<ellipse class="fe-hypo" data-r="hypo" cx="0" cy="-7" rx="6" ry="4"/>';
       p += '<path class="fe-brow" d="M-20,-4 q7,-4 14,0 M6,-4 q7,-4 14,0"/><ellipse class="fe-eye" cx="-12" cy="5" rx="3.4" ry="4"/><ellipse class="fe-eye" cx="12" cy="5" rx="3.4" ry="4"/>';
       p += '<path class="fe-nose" d="M0,8 C-2,16 -5,20 -1,22 C2,23 4,22 5,20"/><path class="fe-mouth" d="M-10,30 C-5,28 5,28 10,30"/>';
       return p;
@@ -208,7 +213,7 @@
       return '<path d="M-78,120 C-90,160 -96,200 -98,250 C-99,272 -98,290 -96,300 L-80,300 C-80,280 -80,262 -79,248 C-76,206 -70,170 -60,138 Z M78,120 C90,160 96,200 98,250 C99,272 98,290 96,300 L80,300 C80,280 80,262 79,248 C76,206 70,170 60,138 Z' +
         'M-96,298 C-104,310 -102,330 -90,336 C-80,340 -74,330 -76,318 C-77,308 -79,302 -80,300 Z M96,298 C104,310 102,330 90,336 C80,340 74,330 76,318 C77,308 79,302 80,300 Z' +
         'M-44,350 C-46,380 -44,410 -42,432 L-18,432 C-16,410 -12,380 -8,352 Z M44,350 C46,380 44,410 42,432 L18,432 C16,410 12,380 8,352 Z M-13,30 L-13,60 C-6,66 6,66 13,60 L13,30 Z' +
-        'M-34,0 a34,42 0 1,0 68,0 a34,42 0 1,0 -68,0 Z"/>';
+        'M-34,-4 C-34,30 -18,42 0,42 C18,42 34,30 34,-4 Z"/>';
     }
     function mag(){
       var m = '<defs><clipPath id="fe-tmag"><circle cx="0" cy="0" r="170"/></clipPath></defs><circle class="fe-magbg" r="170"/><g clip-path="url(#fe-tmag)">';
@@ -266,6 +271,8 @@
       knobAt: knobAt,
       pick: function(L, x, y){ var g0 = L.g.therm; return MAX - (y - g0[1]) / (300 * g0[2]) * (MAX - MIN); },
       valRole: function(v){ return v > SET + 0.05 ? 'heat' : v < SET - 0.05 ? 'cold' : 'tok'; },
+      // a signal behind the head (the back of the neck) is not drawn over the face
+      pulseHidden: function(E, q){ var g0 = E.L.g.person; return inHead([(q[0] - g0[0]) / g0[2], (q[1] - g0[1]) / g0[2]]); },
       geo: geo,
       art: function(E){
         var L = E.L, gg = geo(L), s = '<defs><linearGradient id="fe-skin" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#E0AD8E"/><stop offset="0.5" stop-color="#F4D4BE"/><stop offset="1" stop-color="#DDA888"/></linearGradient>' +
@@ -280,8 +287,6 @@
         s += '<g data-r="body">' + G(L, 'person', person() + '<g class="fe-flush" data-r="flush">' + skinShapes() + '</g><g class="fe-pale" data-r="pale">' + skinShapes() + '</g>' +
           '<g data-r="sweatp"></g><circle class="fe-patch" cx="' + PATCH[0] + '" cy="' + PATCH[1] + '" r="10"/>') + '</g>';
         // the two nerves between the arm and the brain (afferent orange, efferent sky blue)
-        s += '<path class="fe-nv is-aff fe-nvp" data-r="affp" d="' + P(TS(L, AFF_P.map(function(p){ return [p[0], p[1], 'person']; }))) + '"/>';
-        s += '<path class="fe-nv is-eff fe-nvp" data-r="effp" d="' + P(TS(L, EFF_P.map(function(p){ return [p[0], p[1], 'person']; }))) + '"/>';
         s += G(L, 'mag', mag());
         s += G(L, 'therm', therm(E));
         s += '<g data-r="pulses"></g>';
@@ -294,7 +299,7 @@
         R.rbc.innerHTML = h;
         // sweat beads on the person (forehead, arms) and vapor and heat above the magnified skin
         var b = '';
-        [[-14, -22], [10, -26], [-24, -12], [86, 190], [-88, 214], [92, 262], [-90, 268], [24, -18]].forEach(function(p){ b += '<path class="fe-bead" d="M' + p[0] + ',' + (p[1] - 5) + ' c-3,4 -4,6 -4,8 a4,4 0 0 0 8,0 c0,-2 -1,-4 -4,-8 Z"/>'; });
+        [[-24, 14], [24, 16], [-18, 24], [86, 190], [-88, 214], [92, 262], [-90, 268], [18, 26]].forEach(function(p){ b += '<path class="fe-bead" d="M' + p[0] + ',' + (p[1] - 5) + ' c-3,4 -4,6 -4,8 a4,4 0 0 0 8,0 c0,-2 -1,-4 -4,-8 Z"/>'; });
         R.sweatp.innerHTML = b;
         var v = '';
         [[48, -108], [66, -126], [56, -146]].forEach(function(p){ v += '<path class="fe-vapor" d="M' + p[0] + ',' + p[1] + ' c-6,-6 6,-10 0,-16 c-6,-6 6,-10 0,-16"/>'; });
@@ -341,13 +346,18 @@
         if(idle || k === 0) out.push({ key: 'skin', text: 'Skin', role: 'tok', at: M([-130, -76]), side: ['u', 'r'] });
         if(k >= 1 && k <= 2 && st.sens > 0.05) out.push({ key: 'nend', text: 'Nerve ending', role: 'aff', at: M([-34, -70]), side: ['u', 'l', 'r'], strong: k === 1 });
         if(k === 2) out.push({ key: 'affn', text: 'Sensory nerve', role: 'aff', at: B([90, 150]), side: ['r', 'l'], strong: true });
-        out.push({ key: 'brain', text: k >= 3 ? 'Hypothalamus' : 'Brain', role: k >= 3 ? 'ctl' : 'tok', at: B([0, 5]), side: ['r', 'l', 'u'], strong: k === 3, lead: true, away: 3.4 });
-        if(k === 4) out.push({ key: 'effn', text: 'Efferent nerve', role: 'eff', at: B([-72, 100]), side: ['l', 'u'], strong: true });
+        // the brain's label sits off the head; k >= 3 names the hypothalamus at its base
+        var hd = { c: B([0, 0]), r: 46 * L.g.person[2] };
+        out.push({ key: 'brain', text: k >= 3 ? 'Hypothalamus' : 'Brain', role: k >= 3 ? 'ctl' : 'tok', at: k >= 3 ? B([0, -7]) : B([-14, -32]), side: ['l', 'r', 'u'], strong: k === 3, lead: true, avoid: [hd] });
+        if(k === 4) out.push({ key: 'effn', text: 'Efferent nerve', role: 'eff', at: B([36, 86]), side: ['r', 'u'], strong: true, avoid: [hd] });
+        // the effectors are named from outside the magnifier, each with a line to its part, so the part stays in sight
+        var mg = L.g.mag, ring = { c: [mg[0], mg[1]], r: 170 * mg[2] };
         if(k >= 5 && !st.done && st.eff > 0.15){
-          if(hot){ out.push({ key: 'gland', text: 'Sweat gland', role: 'eff', at: M([70, 30]), side: ['d', 'r'], strong: k === 5 }); out.push({ key: 'art', text: 'Arteriole widens', role: 'eff', at: M([110, -14]), side: ['d', 'u'] }); }
-          else { out.push({ key: 'mus', text: 'Muscle shivers', role: 'eff', at: M([60, 140]), side: ['u', 'd'], strong: k === 5 }); out.push({ key: 'art', text: 'Arteriole narrows', role: 'eff', at: M([110, -14]), side: ['d', 'u'] }); }
+          if(hot){ out.push({ key: 'gland', text: 'Sweat gland', role: 'eff', at: M([68, 30]), side: ['d', 'r'], strong: k === 5, lead: true, avoid: [ring] }); out.push({ key: 'art', text: 'Arteriole widens', role: 'eff', at: M([-128, -14]), side: ['l', 'u'], lead: true, avoid: [ring] }); }
+          else { out.push({ key: 'mus', text: 'Muscle shivers', role: 'eff', at: M([60, 140]), side: ['d', 'r'], strong: k === 5, lead: true, avoid: [ring] }); out.push({ key: 'art', text: 'Arteriole narrows', role: 'eff', at: M([-128, -14]), side: ['l', 'u'], lead: true, avoid: [ring] }); }
         }
-        if(k === 6 && !st.done && st.eff > 0.15) out.push({ key: 'resp', text: hot ? 'Heat lost' : 'Heat kept, made', role: hot ? 'heat' : 'heat', at: hot ? M([-60, -140]) : M([-100, 140]), side: ['r', 'u', 'd'], strong: true });
+        // the response inside the magnifier: heat above the skin (air), or in the shivering muscle
+        if(k === 6 && !st.done && st.eff > 0.15) out.push({ key: 'resp', text: hot ? 'Heat lost' : 'Heat kept, made', role: 'heat', at: hot ? M([-20, -128]) : M([-40, 150]), side: ['r', 'l', 'u', 'd'], strong: true, inside: { c: [mg[0], mg[1]], r: 170 * mg[2] } });
         return out;
       },
       words: function(st){
@@ -366,7 +376,7 @@
         }
       },
       take: function(st){ return st.dir === 'up' ? 'Negative feedback: sweating and wide skin vessels undid the rise, then switched off.' : 'Negative feedback: narrow skin vessels and shivering undid the fall, then switched off.'; },
-      idleWords: function(x){ return { pre: 'Now:', parts: [{ t: this.fmt(x), role: 'temp' }, { t: 'at the set point', role: 'temp' }, { t: 'nothing to correct' }] }; },
+      idleWords: function(x){ var at = Math.abs(x - SET) < 0.05; return { pre: 'Now:', parts: [{ t: this.fmt(x), role: 'temp' }, { t: at ? 'at the set point' : 'near the set point', role: 'temp' }, { t: at ? 'nothing to correct' : 'too small to correct' }] }; },
       note: 'One patch of skin on the forearm is magnified; the same happens in skin all over the body. The brain also has its own temperature-sensitive neurons in the hypothalamus, which sense the blood flowing through it. The nerves are drawn as one route from the arm to the brain and back; in the body the sensory signal enters the spinal cord and climbs to the brain. Narrow skin vessels keep warm blood away from the skin, so less heat is lost; shivering is skeletal muscle contracting in rapid small bursts, which releases heat. Sweat cools you only as it evaporates. The trace wobbles a little past the set point and settles, inside the normal range.'
     });
   })();
@@ -374,7 +384,7 @@
   /* ================================================================== 2. Blood glucose */
   (function(){
     var LAY = {
-      wide: { w: 1080, h: 540, g: { person: [520, 76, 1], mag: [858, 268, 1.1], therm: [392, 104, 1] }, mon: [14, 108, 306, 300], spread: { mon: -1, mag: 1 } },
+      wide: { w: 1080, h: 540, g: { person: [520, 76, 1], mag: [858, 268, 1.1], therm: [392, 104, 1] }, mon: [14, 64, 306, 410], spread: { mon: -1, mag: 1 } },
       tall: { w: 600, h: 620, g: { person: [178, 70, 0.78], mag: [456, 206, 0.82], therm: [70, 104, 0.9] }, mon: [14, 432, 572, 178] }
     };
     var MIN = 55, MAX = 160, SET = 88;
@@ -452,7 +462,7 @@
       topics: ['pancreas-glucose'],
       purpose: 'Push blood glucose off normal and watch the loop answer',
       cue: 'Drag the glucose level', thing: 'glucose meter', layouts: LAY,
-      set: SET, min: MIN, max: MAX, step: 1, dead: 4, band: [70, 99],
+      set: SET, min: MIN, max: MAX, step: 2, dead: 4, band: [70, 99],
       fmt: function(v){ return Math.round(v) + ' mg/dL'; },
       TM: { sens: 0.35, aff: 0.8, affEnd: 0.8, ctl: 1.15, eff: 1.75, effEnd: 3.0, act: 3.0, resp: 3.4, tail: 4.4 },
       mon: { title: 'Blood glucose', short: 'Glucose', lo: 55, hi: 160, ticks: [70, 100, 140], unit: 'mg/dL', setLabel: 'Set point', role: 'glu' },
@@ -510,8 +520,10 @@
         [].forEach.call(R.glu.childNodes, function(c, i){ so(c, clamp(n - i, 0, 1)); });
         // the islet: the sensing cells light; glucose enters the beta cells when high
         var on = st.sens > 0.05;
-        [].forEach.call(R.cells.querySelectorAll('.fe-beta'), function(c){ c.classList.toggle('is-on', hi && on); });
-        [].forEach.call(R.cells.querySelectorAll('.fe-alpha'), function(c){ c.classList.toggle('is-on', !hi && on); });
+        if(!R._beta){ R._beta = [].slice.call(R.cells.querySelectorAll('.fe-beta')); R._alpha = [].slice.call(R.cells.querySelectorAll('.fe-alpha')); }
+        var bOn = hi && on, aOn = !hi && on;
+        if(R._bOn !== bOn){ R._bOn = bOn; R._beta.forEach(function(c){ c.classList.toggle('is-on', bOn); }); }
+        if(R._aOn !== aOn){ R._aOn = aOn; R._alpha.forEach(function(c){ c.classList.toggle('is-on', aOn); }); }
         var cap = function(f){ var x = lerp(-150, 150, f); return [x, x < 20 ? lerp(40, -6, (x + 160) / 180) : lerp(-6, -16, (x - 20) / 140)]; };
         [].forEach.call(R.gin.childNodes, function(c, i){
           var f = ((i / 6) + 0.05) % 1, p = cap(f), dest = BETA[(i * 2) % BETA.length], into = hi && k >= 1 && !st.done ? ramp(t, M.sens + i * 0.05, M.sens + 0.45 + i * 0.05) * clamp(st.a * 1.2, 0, 1) : 0;
@@ -570,10 +582,10 @@
         if(k === 2) out.push({ key: 'same', text: 'No nerve: same cells', role: hi ? 'ins' : 'gcg', at: hi ? M([16, 30]) : M([-18, 26]), side: ['d', 'r'], strong: true });
         if(k === 3 || k === 4) out.push({ key: 'horm', text: hi ? 'Insulin' : 'Glucagon', role: hi ? 'ins' : 'gcg', at: k === 3 ? M([80, -6]) : (st.effp.length ? (hi ? R0(E).mus : R0(E).liver).at(clamp((st.effp[0].p - 0.3) / 0.7, 0, 1)) : B([4, 214])), side: ['u', 'r', 'l'], strong: k === 4, lead: k === 4 });
         if(k >= 5 && !st.done && st.eff > 0.15){
-          out.push({ key: 'liver', text: 'Liver', role: 'eff', at: B([-40, 150]), side: ['l', 'u'], strong: k === 5 });
+          out.push({ key: 'liver', text: 'Liver', role: 'eff', at: B([-44, 148]), side: ['u', 'l'], strong: k === 5, lead: true });
           if(hi){ out.push({ key: 'mus', text: 'Muscle', role: 'eff', at: B([104, 166]), side: ['r', 'u'] }); out.push({ key: 'fat', text: 'Fat', role: 'eff', at: B([-50, 340]), side: ['l', 'd'] }); }
         }
-        if(k === 6 && !st.done && st.eff > 0.15) out.push({ key: 'resp', text: hi ? 'Glucose stored' : 'Glucose released', role: 'glu', at: B([-8, 186]), side: ['d', 'l', 'r'], strong: true });
+        if(k === 6 && !st.done && st.eff > 0.15) out.push({ key: 'resp', text: hi ? 'Glucose stored' : 'Glucose released', role: 'glu', at: B([-52, 168]), side: ['l', 'd'], strong: true, lead: true });
         return out;
       },
       words: function(st){
@@ -592,7 +604,7 @@
         }
       },
       take: function(st){ return st.dir === 'up' ? 'Negative feedback: insulin moved glucose into storage, and less insulin is released as it falls.' : 'Negative feedback: glucagon made the liver release glucose, and less glucagon is released as it rises.'; },
-      idleWords: function(x){ return { pre: 'Now:', parts: [{ t: this.fmt(x), role: 'glu' }, { t: 'normal fasting level', role: 'glu' }, { t: 'nothing to correct' }] }; },
+      idleWords: function(x){ var at = Math.abs(x - SET) < 1; return { pre: 'Now:', parts: [{ t: this.fmt(x), role: 'glu' }, { t: at ? 'at the set point' : 'near the set point', role: 'glu' }, { t: at ? 'nothing to correct' : 'too small to correct' }] }; },
       note: 'The pancreas is drawn in front of the stomach so it can be seen; it lies behind it. Each gold hexagon in the blood stands for a share of the glucose, not one molecule. The islet cells are their own sensors and control center, so this loop has no nerve between them. Insulin acts on the liver, skeletal muscle and fat (muscle and fat move glucose carriers to their membranes; the liver stores glucose as glycogen); glucagon acts on the liver, which breaks glycogen down and makes new glucose. Muscle keeps its glycogen for itself. In a human islet the beta and alpha cells are mixed, as drawn. The fasting normal range is about 70 to 99 mg/dL; the set point is drawn at 88, the level in the bank’s loop.'
     });
     // the scene's routes, for labels that follow a molecule (computed per layout, cached on the engine's E)
@@ -703,12 +715,12 @@
       id: 'childbirth', tab: 'Childbirth', short: 'Childbirth', kind: 'pos', loops: { up: 'dv-labor-oxytocin' },
       topics: ['labor-birth'],
       purpose: 'Positive feedback: each turn makes the change bigger',
-      cue: 'Push the head down', thing: 'baby’s head', layouts: LAY,
+      cue: 'Push the baby down', thing: 'baby', layouts: LAY,
       set: 0, min: 0, max: 1, step: 0.01, dead: 0.04, push: 0.35,
       fmt: function(v){ return v < 0.04 ? 'none' : v < 0.35 ? 'low' : v < 0.7 ? 'medium' : 'high'; },
       mon: { title: 'Stretch of the cervix', short: 'Stretch', lo: 0, hi: 1, pos: true, role: 'str' },
-      knobAt: function(L, v, born){ var h = headAt(v, born || 0); return T(L, [h[0], h[1], 'body']); },
-      pick: function(L, x, y){ var g0 = L.g.body; return ((y - g0[1]) / g0[2] - HEAD0[1]) / 120; },
+      knobAt: function(L, v, born){ var h = headAt(v, born || 0); return T(L, [h[0] + KNOB[0], h[1] + KNOB[1], 'body']); },
+      pick: function(L, x, y){ var g0 = L.g.body; return ((y - g0[1]) / g0[2] - HEAD0[1] - KNOB[1]) / 120; },
       valRole: function(){ return 'str'; },
       geo: geo,
       art: function(E){
@@ -719,10 +731,10 @@
           '<clipPath id="fe-win"><path transform="translate(' + f1(L.g.body[0]) + ',' + f1(L.g.body[1]) + ') scale(' + L.g.body[2] + ')" d="' + WIN + ' M26,360 L66,360 L54,414 L24,414 Z"/></clipPath></defs>';
         s += '<rect class="fe-bg" x="-400" y="0" width="' + (L.w + 800) + '" height="' + L.h + '"/>';
         s += G(L, 'body', body());
-        s += '<g clip-path="url(#fe-win)"><g data-r="fetus">' + G(L, 'body', '<g data-r="fet">' + fetus() + '</g>') + '</g></g>';
-        s += G(L, 'body', '<g data-r="sq"></g><g data-r="baby" opacity="0"><ellipse class="fe-blanket" cx="0" cy="0" rx="40" ry="24"/><circle class="fe-fskin" cx="-30" cy="-6" r="16"/><path class="fe-fface" d="M-36,-8 a1.6,1.6 0 1,0 0.1,0 M-28,-2 c2,2 5,2 6,0"/><path class="fe-blankf" d="M-14,-20 C6,-14 20,-4 30,10"/></g>');
+        s += '<g clip-path="url(#fe-win)"><g data-r="fetus">' + G(L, 'body', '<path class="fe-ucord" data-r="ucord"/><path class="fe-ucordl" data-r="ucordl"/><g data-r="fet">' + fetus() + '</g>') + '</g></g>';
+        s += G(L, 'body', '<g data-r="sq"></g>');
         // zoom lines from the head to the magnifier
-        var hd = T(L, [4, 8, 'body']), mg = L.g.mag, r = 150 * mg[2], ang = Math.atan2(mg[1] - hd[1], mg[0] - hd[0]);
+        var hd = L.crop ? [T(L, [-2, 0, 'body'])[0] + (T(L, [-14, 100, 'body'])[0] - T(L, [-2, 40, 'body'])[0]) * 0.2, 0] : T(L, [4, 8, 'body']), mg = L.g.mag, r = 150 * mg[2], ang = Math.atan2(mg[1] - hd[1], mg[0] - hd[0]);
         var z1 = [mg[0] + Math.cos(ang + Math.PI / 2 + 0.2) * r, mg[1] + Math.sin(ang + Math.PI / 2 + 0.2) * r], z2 = [mg[0] + Math.cos(ang - Math.PI / 2 - 0.2) * r, mg[1] + Math.sin(ang - Math.PI / 2 - 0.2) * r];
         s += '<path class="fe-zoom" d="M' + f1(hd[0]) + ',' + f1(hd[1]) + 'L' + f1(z1[0]) + ',' + f1(z1[1]) + 'M' + f1(hd[0]) + ',' + f1(hd[1]) + 'L' + f1(z2[0]) + ',' + f1(z2[1]) + '"/>';
         s += G(L, 'mag', mag());
@@ -745,14 +757,16 @@
         sa(R.fet, 'transform', 'translate(' + f1(HEAD0[0] + dh[0]) + ',' + f1(HEAD0[1] + dh[1]) + ')');
         so(R.fetus, 1 - ramp(born, 0.55, 0.85));
         so(R.baby, ramp(born, 0.7, 1));
-        sa(R.baby, 'transform', 'translate(150,420)');
+        // the umbilical cord from the baby's belly to the placenta on the wall
+        var bx = h[0] - 18, by = h[1] - 66, cd = 'M' + f1(bx) + ',' + f1(by) + 'C' + f1(bx + 10) + ',' + f1(by - 40) + ' ' + f1(PLAC[0] - 40) + ',' + f1(PLAC[1] + 30) + ' ' + f1(PLAC[0] - 6) + ',' + f1(PLAC[1] + 4);
+        sa(R.ucord, 'd', cd); sa(R.ucordl, 'd', cd);
         // the cervix opens with the stretch; its stretch sensors fire
         var w = 12 * s + (born > 0 ? 18 * (1 - ramp(born, 0.6, 1)) : 0);
         sa(R.cervl, 'transform', 'translate(' + f1(-w) + ',0)'); sa(R.cervr, 'transform', 'translate(' + f1(w) + ',0)');
         R.sens.classList.toggle('is-on', st.sens > 0.05); so(R.sens, 0.5 + 0.5 * clamp(st.sens * 1.5, 0, 1));
         // the uterus contracts: its wall squeezes in, harder each turn
         // after birth the empty uterus shrinks back
-        var sh = 1 - 0.16 * ramp(born, 0.75, 1);
+        var sh = 1 - 0.16 * ramp(born, 0.85, 1);
         sa(R.ut, 'transform', c > 0.01 || sh < 1 ? 'translate(54,360) scale(' + f1(sh * (1 - 0.05 * c)) + ',' + f1(sh * (1 - 0.035 * c)) + ') translate(-54,-360)' : '');
         R.ut.classList.toggle('is-on', c > 0.08);
         so(R.sq, clamp(c * 1.3, 0, 1) * (st.birthing ? 1 - ramp(born, 0.2, 0.6) : 1));
@@ -776,19 +790,21 @@
         var L = E.L, k = st.k, out = [];
         var M = function(p){ return T(L, [p[0], p[1], 'mag']); }, B = function(p){ return T(L, [p[0], p[1], 'body']); };
         if(st.birthing){
-          if(st.born >= 0.85) out.push({ key: 'baby', text: 'Baby born', role: 'str', at: B([150, 400]), side: ['u', 'r'], strong: true });
-          if(st.x < 0.5) out.push({ key: 'cerv', text: 'No more stretch', role: 'str', at: B([51, 362]), side: ['r', 'l', 'd'] });
-          else out.push({ key: 'cerv', text: 'Head passes', role: 'str', at: B([51, 362]), side: ['r', 'l', 'd'], strong: true });
+          if(st.born >= 0.85){
+            var bb = [T(L, [16, 128, 'body']), T(L, [110, 178, 'body'])];
+            out.push({ key: 'baby', text: 'Baby born', role: 'str', at: B([60, 152]), side: ['r', 'u', 'l', 'd'], strong: true, lead: true, avoid: [[bb[0][0], bb[0][1], bb[1][0], bb[1][1]]] });
+            out.push({ key: 'cerv', text: st.x < 0.5 ? 'No more stretch' : 'Stretch falling', role: 'str', at: B([51, 362]), side: ['r', 'l', 'd'] });
+          } else out.push({ key: 'cerv', text: 'Head passes', role: 'str', at: B([51, 362]), side: ['r', 'l', 'd'], strong: true });
           return out;
         }
         if(k <= 0 || st.idle) out.push({ key: 'cerv', text: 'Cervix', role: 'str', at: B([51, 362]), side: ['r', 'l', 'd'], strong: k === 0 && !st.idle });
         if(k === 1) out.push({ key: 'sens', text: 'Stretch sensors', role: 'aff', at: B([62, 364]), side: ['r', 'd'], strong: true });
-        if(st.idle || k === 0) out.push({ key: 'myo', text: 'Uterine muscle', role: 'mus', at: B([124, 250]), side: ['r', 'u'] });
+        if(st.idle || k === 0) out.push({ key: 'myo', text: 'Uterine muscle', role: 'mus', at: B([128, 250]), side: ['r', 'u', 'd'], avoid: [utBox(E)], lead: true });
         if(k === 2) out.push({ key: 'cord', text: 'Spinal cord', role: 'aff', at: B([-34, 160]), side: ['l', 'u'], strong: true });
         out.push({ key: 'hyp', text: 'Hypothalamus', role: k >= 3 ? 'ctl' : 'tok', at: M([-10, -30]), side: ['u', 'r', 'l'], strong: k === 3 });
         if(k === 4) out.push({ key: 'pit', text: 'Posterior pituitary', role: 'oxy', at: M([-12, 92]), side: ['d', 'l', 'r'], strong: true });
         if(k === 4 && st.effp.length){ var pu = st.effp[0]; if(pu.p > 0.35) out.push({ key: 'oxy', text: 'Oxytocin', role: 'oxy', at: R1(E).eff.at(pu.p), side: ['r', 'l', 'u'], lead: true }); }
-        if(k >= 5) out.push({ key: 'myo', text: k === 5 ? 'Uterine muscle' : 'More stretch', role: k === 5 ? 'mus' : 'str', at: k === 5 ? B([124, 250]) : B([51, 362]), side: ['r', 'u'], strong: true });
+        if(k >= 5) out.push({ key: 'myo', text: k === 5 ? 'Uterine muscle' : 'More stretch', role: k === 5 ? 'mus' : 'str', at: k === 5 ? B([128, 250]) : B([51, 362]), side: ['r', 'u', 'd'], strong: true, avoid: [utBox(E)], lead: true });
         return out;
       },
       words: function(st){
@@ -799,7 +815,7 @@
           case 0: return { pre: turn ? 'Turn ' + (turn + 1) + ':' : 'Stimulus:', parts: [{ t: turn ? 'More stretch on the cervix' : 'Head stretches the cervix', role: 'str' }] };
           case 1: return { pre: 'Sensor:', parts: [{ t: 'Stretch sensors fire', role: 'aff' }] };
           case 2: return { pre: 'Afferent:', parts: [{ t: 'Nerves up the spinal cord', role: 'aff' }, { t: 'to the brain', role: 'aff' }] };
-          case 3: return { pre: 'Control center:', parts: [{ t: 'Hypothalamus', role: 'ctl' }, { t: turn ? 'even more oxytocin' : 'releases oxytocin', role: 'oxy' }] };
+          case 3: return { pre: 'Control center:', parts: [{ t: 'Hypothalamus', role: 'ctl' }, { t: turn ? 'sends more oxytocin pulses' : 'sends oxytocin pulses', role: 'oxy' }] };
           case 4: return { pre: 'Efferent:', parts: [{ t: 'Oxytocin in the blood', role: 'oxy' }] };
           case 5: return { pre: 'Effector:', parts: [{ t: turn ? 'Uterine muscle contracts harder still' : 'Uterine muscle contracts harder', role: 'mus' }] };
           default: return { pre: 'Response:', parts: [{ t: 'Head pushed lower', role: 'mus' }, { t: 'more stretch', role: 'str' }, { t: 'the loop goes round again', role: 'str' }] };
@@ -810,6 +826,8 @@
       note: 'Late in labor. The uterus and the birth canal are drawn cut open; the hypothalamus and pituitary are magnified. One vessel stands for the circulation from the pituitary to the uterus. The hypothalamic neurons make oxytocin; their axons end in the posterior pituitary, which releases it into the blood in pulses. Prostaglandins from the uterine lining add to each contraction (not drawn). The loop strengthens contractions; it is not what starts labor. In real labor each turn takes minutes and labor takes hours; here it is quick.'
     });
     function R1(E){ if(!E._g || E._g.L !== E.L){ E._g = geo(E.L); E._g.L = E.L; } return E._g; }
+    // the uterus's box in the picture: labels about the wall sit outside it
+    function utBox(E){ var a = T(E.L, [0, 168, 'body']), b = T(E.L, [134, 366, 'body']); return [a[0], a[1], b[0], b[1]]; }
   })();
 
   /* ================================================================== the engine */
@@ -902,7 +920,7 @@
       while(pulsePool.length < need.length){ var c = document.createElementNS(NS, 'circle'); pulseG.appendChild(c); pulsePool.push(c); }
       pulsePool.forEach(function(c, i){
         var n = need[i];
-        if(!n){ so(c, 0); return; }
+        if(!n || (cur.pulseHidden && cur.pulseHidden(E, n.at))){ so(c, 0); return; }
         sa(c, 'cx', f1(n.at[0])); sa(c, 'cy', f1(n.at[1])); sa(c, 'r', f1(r * (0.7 + 0.3 * n.a))); sa(c, 'class', 'fe-pulse-c ' + n.cls); so(c, 0.35 + 0.65 * n.a);
       });
     }
@@ -1003,12 +1021,20 @@
     var placeKey = '';
     function placeLabels(list, st){
       // the same labels at the same spots as the last frame: nothing to place (most frames of a run)
-      var kp = handle && !handle.el.hidden ? knobPos(st) : [0, 0], pk = list.map(function(Lb){ return Lb.key + ':' + Lb.text + ':' + Lb.role + ':' + !!Lb.strong + ':' + f1(Lb.at[0]) + ',' + f1(Lb.at[1]); }).join('|') + '#' + f1(kp[0]) + ',' + f1(kp[1]) + '#' + E.fs.toFixed(2) + '#' + (ctrlBox ? 1 : 0) + E.L.id;
+      var kp = handle && !handle.el.hidden ? knobPos(st) : [0, 0], pk = list.map(function(Lb){ return Lb.key + ':' + Lb.text + ':' + Lb.role + ':' + !!Lb.strong + ':' + f1(Lb.at[0]) + ',' + f1(Lb.at[1]) + ':' + (Lb.avoid ? Lb.avoid.length : 0); }).join('|') + '#' + f1(kp[0]) + ',' + f1(kp[1]) + '#' + E.fs.toFixed(2) + '#' + (ctrlBox ? 1 : 0) + E.L.id;
       if(pk === placeKey) return;
       placeKey = pk;
       var fs = E.fs, h = fs * 1.75, pad = fs * 0.55, placed = keepOut(st), used = {}, gp = E.gap, X0 = E.X0 || 0;
       list.forEach(function(Lb){
-        var w = textW(Lb.text) + pad * 2, at = Lb.at, best = null;
+        var w = textW(Lb.text) + pad * 2, at = Lb.at, best = null, av = Lb.avoid || [];
+        function clear(b){
+          if(placed.some(function(x){ return inter(x, b, gp); })) return false;
+          if(Lb.inside){ var ic = Lb.inside; if([[b[0], b[1]], [b[2], b[1]], [b[0], b[3]], [b[2], b[3]]].some(function(p){ return Math.hypot(p[0] - ic.c[0], p[1] - ic.c[1]) > ic.r - gp; })) return false; }
+          return !av.some(function(a){
+            if(a.c){ var nx = clamp(a.c[0], b[0], b[2]), ny = clamp(a.c[1], b[1], b[3]); return Math.hypot(nx - a.c[0], ny - a.c[1]) < a.r + gp; }
+            return inter(a, b, gp);
+          });
+        }
         if(Lb.fixed){
           // the value's own place: above the thermometer or meter, centred on it
           var fx0 = clamp(at[0] - w / 2, X0 + 4, X0 + E.W - 4 - w), fb = [fx0, Math.max(4, at[1] - h - 6), fx0 + w, Math.max(4, at[1] - h - 6) + h];
@@ -1016,7 +1042,7 @@
         }
         var sides = (Lb.side || ['r', 'l', 'u', 'd']).concat(['u', 'd', 'r', 'l', 'ur', 'ul', 'dr', 'dl']);
         var cands = [];
-        [0.9, 1.6, 2.4, 3.4, 4.6, 6].filter(function(dd){ return !Lb.away || dd >= Lb.away; }).forEach(function(dd, di){ sides.forEach(function(sd, si){ cands.push({ sd: sd, dd: dd, cost: di * 10 + si }); }); });
+        [0.9, 1.6, 2.4, 3.4, 4.6, 6, 8, 10, 13].filter(function(dd){ return !Lb.away || dd >= Lb.away; }).forEach(function(dd, di){ sides.forEach(function(sd, si){ cands.push({ sd: sd, dd: dd, cost: di * 10 + si }); }); });
         var prev = lastPlace[cur.id + ':' + Lb.key + ':' + Lb.text + ':' + E.L.id];
         if(prev) cands.unshift({ sd: prev.sd, dd: prev.dd, cost: -1 });
         for(var c = 0; c < cands.length && !best; c++){
@@ -1024,17 +1050,17 @@
           var cx = o2[0] ? at[0] + o2[0] * (w / 2 + d * 0.6) : at[0], cy = at[1] + o2[1] * (h / 2 + d);
           var b = [cx - w / 2, cy - h / 2, cx + w / 2, cy + h / 2];
           if(b[0] < X0 + 4 || b[2] > X0 + E.W - 4 || b[1] < 4 || b[3] > E.H - 4) continue;
-          if(placed.some(function(x){ return inter(x, b, gp); })) continue;
+          if(!clear(b)) continue;
           best = { b: b, sd: q.sd, dd: q.dd };
         }
         if(!best){
-          for(var ring = 1; ring <= 16 && !best; ring++){
+          for(var ring = 1; ring <= 30 && !best; ring++){
             var rr = ring * fs * 1.1, nn = 8 + ring * 4, bestD = Infinity;
             for(var a = 0; a < nn; a++){
               var ang = a / nn * Math.PI * 2, cx2 = at[0] + Math.cos(ang) * (rr + w * 0.35 * Math.abs(Math.cos(ang))), cy2 = at[1] + Math.sin(ang) * rr;
               var b2 = [cx2 - w / 2, cy2 - h / 2, cx2 + w / 2, cy2 + h / 2];
               if(b2[0] < X0 + 4 || b2[2] > X0 + E.W - 4 || b2[1] < 4 || b2[3] > E.H - 4) continue;
-              if(placed.some(function(x){ return inter(x, b2, gp); })) continue;
+              if(!clear(b2)) continue;
               var dd2 = Math.hypot(cx2 - at[0], cy2 - at[1]);
               if(dd2 < bestD){ bestD = dd2; best = { b: b2, sd: 'u', dd: 99, far: true }; }
             }
@@ -1122,6 +1148,12 @@
       hideCue(true); tourDid('drag');
       handle.grab(e);
     });
+    function fastKnob(st){
+      var kn = handle.knob, q = knobPos(st), k = E.k || scale(), x = f1((q[0] - (E.X0 || 0)) * k) + 'px', y = f1(q[1] * k) + 'px';
+      if(kn.style.left !== x) kn.style.left = x; if(kn.style.top !== y) kn.style.top = y;
+      var vt = cur.kind === 'pos' ? 'Stretch of the cervix: ' + cur.fmt(st.x) : cur.fmt(st.x);
+      if(kn.getAttribute('aria-valuetext') !== vt){ kn.setAttribute('aria-valuetext', vt); kn.setAttribute('aria-valuenow', String(+(+st.x).toFixed(3))); }
+    }
     var lastSt = null;
     function startDrag(){
       var sc = cur;
@@ -1205,7 +1237,9 @@
       if(handle){
         var hidden = sc.kind === 'pos' && (st.birthing || st.after);
         handle.el.hidden = hidden;
-        if(!dragging && !hidden) handle.value(sc.kind === 'pos' ? st.x : st.x, false);
+        // during a run the knob is moved here directly: the kit's own paint rewrites its tag and hidden state each
+        // call, and on a phone those writes make the page restyle every frame
+        if(!dragging && !hidden){ if(sc.run) fastKnob(st); else handle.value(st.x, false); }
         else if(dragging) handle.place();
       }
       var LL = sc.labels(st, E);
@@ -1239,7 +1273,8 @@
 
     /* ---- the first visit cue and "Show me how" */
     function makeCue(){
-      cue = K.cue(layer, { key: 'anp-loops', text: cur.cue, side: 'right', at: function(){ var q = knobPos(lastSt || state()); return [q[0] - (E.X0 || 0), q[1]]; } });
+      var kq = knobPos(lastSt || state()), right = kq[0] - (E.X0 || 0) < E.W * 0.5;
+      cue = K.cue(layer, { key: 'anp-loops', text: cur.cue, side: right ? 'right' : 'left', at: function(){ var q = knobPos(lastSt || state()); return [q[0] - (E.X0 || 0), q[1]]; } });
       cue.show(); ctrlDirty();
       setTimeout(function(){ if(cue && cue.active()){ ctrlDirty(); draw(); } }, 450);
     }

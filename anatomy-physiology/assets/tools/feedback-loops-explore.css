@@ -242,3 +242,20 @@
 .ls-root:not(.ls-phone) .fl-ls-stage.fl-narrow .fl-scene{height:100%;width:auto;max-width:100%;}
 .ls-root:not(.ls-phone) .fl-ls-stage.fl-narrow .fl-ringfig{flex:none;width:100%;height:auto;min-height:0;}
 .ls-root:not(.ls-phone) .fl-ls-stage.fl-narrow .fl-ringfig .fl-ring{width:100%;height:auto;max-width:520px;max-height:none;}
+
+/* review round 1: the fetus, the placenta and cord, the newborn, the brain cutaway */
+.fe-flo{fill:none;stroke:#B98166;stroke-linecap:round;}
+.fe-fli{fill:none;stroke:#EBB99B;stroke-linecap:round;}
+.fe-ffoot{fill:#EBB99B;stroke:#B98166;stroke-width:1.6;}
+.fe-fbody{fill:#E9B596;stroke:#B98166;stroke-width:2;}
+.fe-fhead{fill:#EDBC9E;stroke:#B98166;stroke-width:2;}
+.fe-fhi{fill:#F6D3BD;opacity:.7;stroke:none;}
+.fe-fhair{fill:none;stroke:#8A6450;stroke-width:1.6;stroke-linecap:round;}
+.fe-plac{fill:#9C3A3A;stroke:#6E2222;stroke-width:1.5;}
+.fe-ucord{fill:none;stroke:#8E7AA6;stroke-width:6;stroke-linecap:round;}
+.fe-ucordl{fill:none;stroke:#D7CCE5;stroke-width:2.2;stroke-linecap:round;}
+.fe-skull{fill:#F2E6CF;stroke:#CDB98F;stroke-width:2;}
+.fe-brainc{fill:#EDB9B4;stroke:#B98580;stroke-width:1.6;}
+.fe-gyrc{fill:none;stroke:#C78F8A;stroke-width:1.3;stroke-linecap:round;}
+/* phones: the knob's first-use pulse stays off the scale's numbers */
+@media (max-width:640px){ .fe .is-new .tk2-dot::after{inset:-3px;} @keyframes fe-pulse{0%{transform:scale(.9);opacity:.7;}80%,100%{transform:scale(1.12);opacity:0;}} .fe .is-new .tk2-dot::after{animation-name:fe-pulse;} }
