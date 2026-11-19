@@ -41,48 +41,37 @@
 .pe .tk2-cz.is-ca{--cz:var(--pe-ca);--cz-ink:var(--pe-ca-ink);} .pe .tk2-cz.is-nt{--cz:var(--pe-nt);--cz-ink:var(--pe-nt-ink);}
 .pe .tk2-cz.is-na{--cz:var(--pe-na);--cz-ink:var(--pe-na-ink);} .pe .tk2-cz.is-bad{--cz:var(--pe-bad);--cz-ink:var(--pe-bad-ink);}
 
-/* the picture beside the steps reached */
-.pe-main{display:grid;grid-template-columns:minmax(0,1fr) minmax(200px,280px);gap:14px;align-items:start;min-height:0;}
+/* the picture, full stage width, with the steps as one line under it (dots, "Step n of N", the current step) */
+.pe-main{display:flex;flex-direction:column;gap:6px;min-height:0;}
 .pe-pic{position:relative;border-radius:18px;overflow:hidden;background:var(--pe-bg);box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--ink) 8%, transparent);
-  width:100%;max-width:calc((100vh - 330px) * 1.3333);justify-self:center;}
+  width:100%;align-self:center;}
+.pe-pic[data-lay="wide"]{max-width:calc((100vh - 300px) * 2);}
+.pe-pic[data-lay="tall"]{max-width:max(320px, calc(100vh - 290px));}
 .pe-svg{display:block;width:100%;height:auto;touch-action:none;}
 .pe-svg.pe-fade{position:absolute;left:0;top:0;pointer-events:none;}
 .pe-over{position:absolute;inset:0;pointer-events:none;}
 .pe-over > *{pointer-events:auto;}
 
-/* the rail: steps reached, in order */
-.pe-rail{list-style:none;margin:0;padding:6px 0;display:flex;flex-direction:column;gap:2px;counter-reset:none;}
-.pe-step{display:flex;align-items:flex-start;gap:10px;padding:5px 8px;border-radius:10px;font-weight:700;font-size:14px;line-height:1.3;color:var(--muted);min-height:30px;position:relative;}
-.pe-step::before{content:"";position:absolute;left:21px;top:-4px;width:2px;height:10px;background:color-mix(in srgb, var(--ink) 14%, transparent);}
-.pe-step:first-child::before{display:none;}
-.pe-n{flex:0 0 26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:900;color:var(--muted);
-  background:color-mix(in srgb, var(--ink) 6%, transparent);}
-.pe-sn{padding-top:3px;}
-.pe-step.is-on{color:var(--ink);} .pe-step.is-on .pe-n{background:color-mix(in srgb, var(--cink) 16%, transparent);color:var(--cink);}
-.pe-step.is-cur{background:color-mix(in srgb, var(--cink) 9%, transparent);} .pe-step.is-cur .pe-n{background:var(--cink);color:var(--white);}
-.pe-step.is-cur .pe-sn{font-weight:900;}
-.pe-step.is-fail{color:var(--pe-bad-ink);} .pe-step.is-fail .pe-sn{text-decoration:line-through;text-decoration-thickness:2px;}
-.pe-step.is-fail .pe-n{background:color-mix(in srgb, var(--pe-bad) 16%, transparent);color:var(--pe-bad-ink);}
-.pe-strip{display:none;}
+.pe-rail{list-style:none;margin:0;padding:0;display:flex;flex-direction:row;align-items:center;flex-wrap:nowrap;gap:4px;min-height:30px;}
+.pe-step{display:block;flex:0 0 10px;height:10px;border-radius:50%;background:color-mix(in srgb, var(--ink) 14%, transparent);}
+.pe-step .pe-n,.pe-step .pe-sn{display:none;}
+.pe-step.is-on{background:color-mix(in srgb, var(--cink) 45%, transparent);}
+.pe-step.is-cur{background:var(--cink);transform:scale(1.3);}
+.pe-step.is-fail{background:color-mix(in srgb, var(--pe-bad) 55%, transparent);}
+.pe-strip{display:flex;align-items:baseline;gap:6px;margin-left:8px;min-width:0;font-size:14px;line-height:1.2;}
+.pe-strip-n{font-weight:900;color:var(--cink);white-space:nowrap;}
+.pe-strip-t{font-weight:700;color:var(--ink);min-width:0;}
 
 .pe-lines{display:flex;flex-wrap:wrap;align-items:center;gap:8px;min-height:44px;}
+@media (max-width:640px){ .pe-lines{min-height:80px;align-items:flex-start;} .pe-strip{flex-wrap:wrap;} .pe-rail{min-height:40px;} }
+@media (min-width:640.02px) and (max-width:1100px){ .pe-lines{min-height:84px;align-items:flex-start;} }
 
-/* one column: the rail becomes one line under the picture */
-@media (max-width:899.98px){
-  .pe-main{grid-template-columns:minmax(0,1fr);gap:6px;}
-  .pe-pic{max-width:none;}
-  .pe-rail{flex-direction:row;align-items:center;flex-wrap:nowrap;gap:4px;padding:0;min-height:30px;}
-  .pe-step{display:block;flex:0 0 10px;height:10px;min-height:0;padding:0;border-radius:50%;background:color-mix(in srgb, var(--ink) 14%, transparent);}
-  .pe-step::before,.pe-step .pe-n,.pe-step .pe-sn{display:none;}
-  .pe-step.is-on{background:color-mix(in srgb, var(--cink) 45%, transparent);}
-  .pe-step.is-cur{background:var(--cink);transform:scale(1.3);}
-  .pe-step.is-fail{background:color-mix(in srgb, var(--pe-bad) 55%, transparent);}
-  .pe-strip{display:flex;align-items:baseline;gap:6px;margin-left:8px;min-width:0;font-size:14px;line-height:1.2;}
-  .pe-strip-n{font-weight:900;color:var(--cink);white-space:nowrap;}
-  .pe-strip-t{font-weight:700;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;}
-}
-@media (max-width:640px){ .pe-lines{min-height:80px;align-items:flex-start;} .pe-strip{flex-wrap:wrap;} .pe-strip-t{white-space:normal;} .pe-rail{min-height:40px;} }
-@media (min-width:640.02px) and (max-width:899.98px){ .pe-lines{min-height:84px;align-items:flex-start;} }
+/* the knob is a clear ring (what acts under it stays in sight); the token is drawn as a ring round it */
+.pe .tk2-handle > .tk2-knob{width:54px;height:54px;margin:-27px 0 0 -27px;}
+.pe .tk2-handle .tk2-dot,:root[data-theme="dark"] .pe .tk2-handle .tk2-dot{width:46px;height:46px;background:transparent;
+  box-shadow:0 0 0 2.5px var(--white),0 0 0 4.5px var(--cink),0 1px 6px rgba(11,26,51,.28);}
+.pe .tk2-handle .tk2-ar{position:absolute;right:-7px;top:-7px;width:18px;height:18px;padding:2px;border-radius:50%;background:var(--white);box-shadow:0 0 0 2px var(--cink);}
+.pe .tk2-handle.is-focus .tk2-dot{box-shadow:0 0 0 2.5px var(--white),0 0 0 4.5px var(--cink),0 0 0 7px var(--white),0 0 0 9.5px var(--cink);}
 
 /* buttons on the picture: Start over, and the cut buttons once a run has ended */
 .pe-reset,.pe-cutb{font:inherit;position:absolute;display:inline-flex;align-items:center;gap:5px;border-radius:999px;cursor:pointer;
@@ -114,11 +103,11 @@
 .pe-svg .is-acth{color:var(--pe-acth-ink);} .pe-svg .is-cort{color:var(--pe-cort-ink);} .pe-svg .is-glu{color:var(--pe-glu-ink);}
 .pe-svg .is-ca{color:var(--pe-ca-ink);} .pe-svg .is-nt{color:var(--pe-nt-ink);} .pe-svg .is-na{color:var(--pe-na-ink);}
 .pe-svg .is-bad{color:var(--pe-bad-ink);} .pe-svg .is-tok{color:var(--pe-tok-ink);}
-.pe-tok-glow{fill:currentColor;opacity:.22;}
-.pe-tok-c{fill:currentColor;opacity:.9;}
+.pe-tok-glow{fill:none;stroke:var(--white);stroke-width:2;opacity:.9;}
+.pe-tok-c{fill:none;stroke:currentColor;}
 .pe-tok.is-aff{color:var(--pe-aff);} .pe-tok.is-eff{color:var(--pe-eff);} .pe-tok.is-o2{color:var(--pe-o2);} .pe-tok.is-de{color:var(--pe-de);}
 .pe-tok.is-crh{color:var(--pe-crh);} .pe-tok.is-acth{color:var(--pe-acth);} .pe-tok.is-cort{color:var(--pe-cort);} .pe-tok.is-nt{color:var(--pe-nt);}
-.pe-tok.is-stop .pe-tok-glow{opacity:.1;}
+.pe-tok.is-stop .pe-tok-c{stroke-dasharray:none;opacity:.75;}
 .pe-trail-p{fill:none;stroke-linecap:round;stroke-linejoin:round;opacity:.45;stroke:currentColor;}
 .pe-trail-p.is-aff{color:var(--pe-aff);} .pe-trail-p.is-eff{color:var(--pe-eff);} .pe-trail-p.is-o2{color:var(--pe-o2);} .pe-trail-p.is-de{color:var(--pe-de);}
 .pe-trail-p.is-crh{color:var(--pe-crh);} .pe-trail-p.is-acth{color:var(--pe-acth);} .pe-trail-p.is-cort{color:var(--pe-cort);} .pe-trail-p.is-nt{color:var(--pe-nt);}
@@ -276,3 +265,23 @@ g.is-blk > .pe-rec{fill:#B8B0B3;stroke:#5B5356;} g.is-blk > .pe-site{stroke:#3E3
 @media (min-width:641px) and (max-width:1100px){ .pe .tk2-tabs.is-big .tk2-tab{padding:0 8px;} }
 .pe-vb,.pe-cap,.pe-cav{transition:stroke .45s,fill .45s;}
 .pe-vb.is-ox.is-low{stroke:#5B78AF;} .pe-cap.is-ox.is-low{stroke:#6A84B8;} .pe-cav.is-ox.is-low{fill:#6E86BC;}
+
+/* round 1: the people */
+.pe-skinT{fill:url(#pe-skinH);stroke:#C99A80;stroke-width:3;}
+.pe-shorts{fill:url(#pe-shorts);stroke:#2E3647;stroke-width:2;}
+.pe-fold{fill:none;stroke:#4F6680;stroke-width:2;stroke-linecap:round;opacity:.6;}
+.pe-chairback{fill:#A97E56;stroke:#7E5A38;stroke-width:2;}
+.pe-sole{fill:none;stroke:#C99A80;stroke-width:2;}
+.pe-spinous{stroke:#CDBB98;stroke-width:5;stroke-linecap:round;}
+.pe-head{fill:url(#pe-face);stroke:#C99A80;stroke-width:2.5;}
+.pe-ear{fill:#EBC1A4;stroke:#C99A80;stroke-width:2;}
+.pe-eye{fill:#2E2A28;}
+.pe-brow{fill:none;stroke:#5C3E28;stroke-width:3;stroke-linecap:round;}
+.pe-nose{fill:none;stroke:#C08A6C;stroke-width:2.2;stroke-linecap:round;}
+.pe-mouth{fill:none;stroke:#A85A4A;stroke-width:2.6;stroke-linecap:round;}
+.pe-collar{fill:none;stroke:#2F5440;stroke-width:3;stroke-linecap:round;}
+.pe-fold2{fill:none;stroke:#365C47;stroke-width:2;stroke-linecap:round;opacity:.7;}
+.pe-pants2{fill:url(#pe-pants2);stroke:#353E52;stroke-width:2;}
+.pe-hand{fill:#EBC1A4;stroke:#C99A80;stroke-width:2;}
+.pe-sleeve{fill:url(#pe-shirt);stroke:#4F6680;stroke-width:2.5;}
+.pe-fingers{stroke:#C99A80;stroke-width:1.5;stroke-linecap:round;}

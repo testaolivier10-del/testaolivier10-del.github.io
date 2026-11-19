@@ -83,82 +83,147 @@
   /* ================================================================== the screens */
   var SCENES = [];
 
+  /* ------------------------------------------------------------------ layouts */
+  /* Every screen has two compositions of the same drawn parts: "wide" (2:1, a desktop stage) and "tall" (1:1, a phone
+     or a tablet held upright). A part is drawn once in its own coordinates and placed by its group's transform
+     [dx, dy, scale] (a negative scale is never used); points tagged with a group ([x, y, 'g']) are mapped through it,
+     untagged points are already in the picture's coordinates. */
+  function T(L, p){ var g = p[2] ? L.g[p[2]] : null; return g ? [g[0] + p[0] * g[2], g[1] + p[1] * g[2]] : [p[0], p[1]]; }
+  function TS(L, pts){ return pts.map(function(p){ return T(L, p); }); }
+  function G(L, name, inner){ var g = L.g[name]; return '<g transform="translate(' + f1(g[0]) + ',' + f1(g[1]) + ') scale(' + g[2] + ')">' + inner + '</g>'; }
+  // a soft curve between two points, sampled as a polyline (bend: how far the middle bows, picture units)
+  function bow(a, b, bend, n){
+    var mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2, dx = b[0] - a[0], dy = b[1] - a[1], len = Math.hypot(dx, dy) || 1, nx = -dy / len, ny = dx / len, out = [];
+    n = n || 10;
+    for(var i = 0; i <= n; i++){ var t = i / n, k = 4 * t * (1 - t) * bend; out.push([a[0] + dx * t + nx * k, a[1] + dy * t + ny * k]); }
+    return out;
+  }
+  function offset(pts, d){
+    return pts.map(function(p, i){
+      var a = pts[Math.max(0, i - 1)], b = pts[Math.min(pts.length - 1, i + 1)], dx = b[0] - a[0], dy = b[1] - a[1], len = Math.hypot(dx, dy) || 1;
+      return [p[0] - dy / len * d, p[1] + dx / len * d];
+    });
+  }
+
   /* ------------------------------------------------------------------ 1. Heart: blood through the heart and body */
   (function(){
     var DE = '4F6FA8', OX = 'D2452A';
-    var segs = [
-      [[282, 238], [286, 283]],
-      [[286, 283], [296, 320], [300, 345]],
-      [[300, 345], [322, 330], [338, 300], [341, 262]],
-      [[341, 262], [341, 190], [328, 160], [290, 140], [250, 128]],
-      [[250, 128], [218, 112], [196, 88], [205, 62], [225, 56]],
-      [[225, 56], [252, 60], [276, 82], [292, 112], [330, 150], [400, 190], [430, 214], [440, 236]],
-      [[440, 236], [444, 283]],
-      [[444, 283], [434, 320], [422, 350]],
-      [[422, 350], [396, 330], [382, 298], [379, 262]],
-      [[379, 262], [379, 180], [400, 154], [470, 152], [570, 154], [602, 186], [602, 300]],
-      [[602, 300], [602, 455], [576, 488], [400, 488]],
-      [[400, 488], [232, 488], [202, 460], [202, 380]],
-      [[202, 380], [202, 300], [222, 268], [255, 250], [282, 238]]
-    ];
-    var R0 = new Route(segs);
-    var ALV = [[200, 50], [222, 36], [246, 40], [266, 56], [214, 76], [240, 74], [264, 86], [190, 98], [282, 66]];
-    var CELLS = [[250, 515], [312, 512], [374, 516], [436, 513], [498, 516], [560, 514], [282, 462], [344, 460], [406, 463], [468, 460], [530, 462], [60, 515], [122, 512], [184, 516], [646, 513], [700, 516], [96, 462], [656, 462]];
-    // the colour the blood cell is drawn: loads in the lung capillaries (step 6's words come once it is red), unloads in the body
     function ox(v, br){ var up = br ? 0 : ramp(v, 4.9, 5.6); return up * (1 - ramp(v, 10.9, 11.6)); }
     // at: where on the route the cell passes this part (with no fresh air, an oxygen rich part turns oxygen poor then)
     function tube(pts, cls, w, at){ return '<path class="pe-vw" style="stroke-width:' + w + 'px" d="' + P(pts) + '"/><path class="pe-vb ' + cls + '"' + (at != null ? ' data-oxat="' + at + '"' : '') + ' style="stroke-width:' + (w - 7) + 'px" d="' + P(pts) + '"/>'; }
     function leaflet(x, y, dx, cls){ return '<path class="pe-leaf ' + cls + '" d="M' + x + ',' + y + 'l' + dx + ',0"/>'; }
+    // the heart's own coordinates (the frontal section, right side on the viewer's left)
+    var HP = { ra: [282, 238], tri: [286, 283], rv: [300, 345], pv: [341, 262], la: [440, 236], mit: [444, 283], lv: [422, 350], av: [379, 262] };
+    function H(k, L){ return T(L, [HP[k][0], HP[k][1], 'heart']); }
+    function heartBody(){
+      var s = '<path class="pe-myo" d="M246,198 C220,214 222,290 232,330 C250,396 330,444 430,432 C482,424 508,372 502,300 C498,252 492,214 472,200 C440,190 300,188 246,198 Z"/>';
+      s += '<ellipse class="pe-cav is-de" cx="284" cy="240" rx="42" ry="36"/><ellipse class="pe-cav is-ox" data-oxat="5.9" cx="444" cy="238" rx="40" ry="33"/>';
+      s += '<path class="pe-cav is-de" data-r="rv" d="M254,290 C250,340 278,392 330,406 C346,380 350,330 350,290 Z"/>';
+      s += '<path class="pe-cav is-ox" data-r="lv" data-oxat="7.6" d="M372,290 C372,340 380,394 420,412 C462,398 478,340 472,290 Z"/>';
+      s += tube([[341, 296], [341, 250]], 'is-de', 22) + tube([[379, 296], [379, 250]], 'is-ox', 24, 8.9);
+      s += '<path class="pe-ring" d="M256,283 H316 M416,283 H474"/>';
+      s += '<g data-r="tri">' + leaflet(260, 283, 26, 'a') + leaflet(312, 283, -26, 'b') + '</g>';
+      s += '<g data-r="mit">' + leaflet(418, 283, 27, 'a') + leaflet(470, 283, -27, 'b') + '</g>';
+      s += '<g data-r="pv">' + leaflet(332, 262, 9, 'a') + leaflet(350, 262, -9, 'b') + '</g>';
+      s += '<g data-r="av">' + leaflet(369, 262, 10, 'a') + leaflet(389, 262, -10, 'b') + '</g>';
+      return s;
+    }
+    /* the tall composition is the original one (lungs above, body below), placed whole; the wide one puts the body's
+       tissue on the left, the heart in the middle and the lungs on the right, so the pulmonary trunk runs to the right
+       (as it does) and the pulmonary veins enter the left atrium from the right. */
+    var LAY = {
+      tall: { w: 600, h: 600, g: { heart: [-115.5, 0, 1.1], all: [-115.5, 0, 1.1] } },
+      wide: { w: 1080, h: 540, g: { heart: [-17, -124, 1.35] } }
+    };
+    function geo(L){
+      if(L.id === 'tall'){
+        var a = function(pts){ return TS(L, pts.map(function(p){ return [p[0], p[1], 'all']; })); };
+        return {
+          segs: [
+            a([[282, 238], [286, 283]]), a([[286, 283], [296, 320], [300, 345]]), a([[300, 345], [322, 330], [338, 300], [341, 262]]),
+            a([[341, 262], [341, 190], [328, 160], [290, 140], [250, 128]]), a([[250, 128], [218, 112], [196, 88], [205, 62], [225, 56]]),
+            a([[225, 56], [252, 60], [276, 82], [292, 112], [330, 150], [376, 172], [420, 196], [436, 212], [440, 236]]),
+            a([[440, 236], [444, 283]]), a([[444, 283], [434, 320], [422, 350]]), a([[422, 350], [396, 330], [382, 298], [379, 262]]),
+            a([[379, 262], [379, 180], [400, 154], [470, 152], [570, 154], [602, 186], [602, 300]]), a([[602, 300], [602, 455], [576, 488], [400, 488]]),
+            a([[400, 488], [232, 488], [202, 460], [202, 380]]), a([[202, 380], [202, 300], [222, 268], [255, 250], [282, 238]])
+          ],
+          alv: a([[200, 50], [222, 36], [246, 40], [266, 56], [214, 76], [240, 74], [264, 86], [190, 98], [282, 66]]),
+          cells: a([[250, 515], [312, 512], [374, 516], [436, 513], [498, 516], [560, 514], [282, 462], [344, 460], [406, 463], [468, 460], [530, 462], [140, 515], [184, 516], [626, 513], [156, 462], [600, 462]]),
+          trach: a([[362, 22]])[0], lungsAt: a([[470, 60]])[0], bodyAt: a([[160, 500]])[0], o2At: a([[190, 30]])[0], o2bAt: a([[470, 470]])[0]
+        };
+      }
+      return {
+        segs: [
+          [H('ra', L), H('tri', L)], [H('tri', L), [378, 300], H('rv', L)], [H('rv', L), [418, 325], [438, 290], H('pv', L)],
+          [H('pv', L), [443, 110], [460, 70], [520, 56], [760, 56], [810, 90], [830, 120]],
+          [[830, 120], [820, 170], [830, 230]],
+          [[830, 230], [845, 290], [830, 340], [780, 360], [720, 330], [660, 270], [622, 230], H('la', L)],
+          [H('la', L), H('mit', L)], [H('mit', L), [566, 300], H('lv', L)], [H('lv', L), [520, 325], [500, 290], H('av', L)],
+          [H('av', L), [495, 110], [478, 84], [430, 74], [330, 74]],
+          [[330, 74], [262, 90], [238, 120], [190, 180], [160, 250], [150, 300]],
+          [[150, 300], [160, 380], [200, 440], [250, 468], [300, 470]],
+          [[300, 470], [330, 450], [340, 350], [345, 280], H('ra', L)]
+        ],
+        alv: [[802, 150], [852, 142], [810, 196], [862, 190], [846, 244], [800, 246], [878, 236], [858, 288], [812, 290]],
+        cells: [[95, 240], [215, 238], [95, 330], [210, 330], [105, 150], [110, 412], [45, 230], [45, 320], [165, 62], [45, 150], [45, 70], [105, 70], [45, 410], [60, 490], [130, 500], [205, 420]],
+        trach: [952, 22], lungsAt: [1025, 300], bodyAt: [60, 500], o2At: [760, 170], o2bAt: [60, 280]
+      };
+    }
     SCENES.push({
       id: 'heart', tab: 'Heart', short: 'Heart', path: 'blood-flow',
       purpose: 'Carry one blood cell through the heart, lungs and body',
       cue: 'Drag the blood cell', token: 'the blood cell', thing: 'blood cell',
-      route: R0, last: 13, steps: 13, cycle: true,
-      breaks: [{ id: 'air', at: 4.5, pass: true, place: [362, 30], off: [0, 1], tag: 'No fresh air', label: 'Stop air', aria: 'Stop fresh air reaching the lungs', name: 'No fresh air in the lungs', step: 5 }],
+      layouts: LAY, last: 13, steps: 13, cycle: true,
+      segs: function(L){ return geo(L).segs; },
+      breaks: [{ id: 'air', at: 4.5, pass: true, place: function(L){ var t = geo(L).trach; return [t[0], t[1] + 16]; }, off: [1, 0], tag: 'No fresh air', label: 'Stop air', aria: 'Stop fresh air reaching the lungs', name: 'No fresh air in the lungs', step: 5 }],
       take: 'Right heart pumps to the lungs, left heart to the body.',
+      brokenTake: 'No fresh air: the heart still pumps, but the body gets less O₂.',
       art: function(E){
-        var s = '<defs><radialGradient id="pe-lung" cx="0.45" cy="0.4" r="0.75"><stop offset="0" stop-color="#F9C9CB"/><stop offset="1" stop-color="#E9969C"/></radialGradient>' +
+        var L = E.L, g = geo(L), s = '<defs><radialGradient id="pe-lung" cx="0.45" cy="0.4" r="0.75"><stop offset="0" stop-color="#F9C9CB"/><stop offset="1" stop-color="#E9969C"/></radialGradient>' +
           '<radialGradient id="pe-myo" cx="0.4" cy="0.35" r="0.85"><stop offset="0" stop-color="#D4685A"/><stop offset="0.7" stop-color="#B2463A"/><stop offset="1" stop-color="#86281F"/></radialGradient>' +
           '<linearGradient id="pe-tis" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D5C6"/><stop offset="1" stop-color="#E9BFA9"/></linearGradient></defs>';
-        s += '<rect class="pe-bg" x="0" y="0" width="' + W + '" height="' + H + '"/>';
-        // lungs, trachea and bronchi
-        var lungL = 'M330,40 C320,16 290,8 262,12 C210,20 168,58 158,108 C154,130 170,140 196,138 C240,134 290,132 322,130 C336,110 338,70 330,40 Z';
-        s += '<path class="pe-lung" d="' + lungL + '"/><path class="pe-lung" transform="translate(724,0) scale(-1,1)" d="' + lungL + '"/>';
-        s += '<path class="pe-trach" d="M362,0 V40 M362,40 L326,64 M362,40 L398,64"/><path class="pe-trach-r" d="M354,8 h16 M354,18 h16 M354,28 h16"/>';
-        ALV.forEach(function(a, i){ s += '<circle class="pe-alv" data-r="alv' + i + '" cx="' + a[0] + '" cy="' + a[1] + '" r="13"/>'; });
-        // body tissue with its cells
-        s += '<path class="pe-tissue" d="M0,448 H720 V540 H0 Z"/>';
-        CELLS.forEach(function(c, i){ s += '<g data-r="cell' + i + '"><rect class="pe-tcell" x="' + (c[0] - 27) + '" y="' + (c[1] - 19) + '" width="54" height="38" rx="14"/><circle class="pe-tnuc" cx="' + (c[0] - 6) + '" cy="' + c[1] + '" r="6"/></g>'; });
-        // vessels behind the heart: the right pulmonary veins (to the left atrium), the other lung's vessels
-        s += tube([[292, 112], [330, 150], [400, 190], [430, 214], [440, 232]], 'is-ox', 18, 5.6);
-        // pulmonary trunk and artery, the capillary loop in the lung
-        s += tube([[341, 290], [341, 190], [328, 160], [290, 140], [250, 128], [222, 114]], 'is-de', 22);
-        s += '<path class="pe-cap is-de" d="' + P(segs[4]) + '"/><path class="pe-cap is-ox" data-oxat="5" d="' + P(segs[5].slice(0, 4)) + '"/>';
-        // systemic: aorta, arteries down to the body, capillaries, veins back
-        s += tube([[379, 290], [379, 180], [400, 154], [470, 152], [570, 154], [602, 186], [602, 455], [578, 486]], 'is-ox', 24, 9.4);
-        s += '<path class="pe-cap is-ox" data-oxat="10.4" d="M578,488 H400"/><path class="pe-cap is-de" d="M400,488 H232"/>';
-        s += tube([[232, 488], [202, 460], [202, 300], [222, 268], [252, 252]], 'is-de', 24);
-        s += tube([[272, 150], [274, 205]], 'is-de', 20);   // superior vena cava, from the head and arms
-        // the heart: muscle, then the four chambers
-        s += '<path class="pe-myo" d="M246,198 C220,214 222,290 232,330 C250,396 330,444 430,432 C482,424 508,372 502,300 C498,252 492,214 472,200 C440,190 300,188 246,198 Z"/>';
-        s += '<ellipse class="pe-cav is-de" cx="284" cy="240" rx="42" ry="36"/><ellipse class="pe-cav is-ox" data-oxat="5.9" cx="444" cy="238" rx="40" ry="33"/>';
-        s += '<path class="pe-cav is-de" data-r="rv" d="M254,290 C250,340 278,392 330,406 C346,380 350,330 350,290 Z"/>';
-        s += '<path class="pe-cav is-ox" data-r="lv" data-oxat="7.6" d="M372,290 C372,340 380,394 420,412 C462,398 478,340 472,290 Z"/>';
-        s += tube([[341, 296], [341, 250]], 'is-de', 22) + tube([[379, 296], [379, 250]], 'is-ox', 24, 8.9);
-        // valves: two leaflets each, hinged on the ring
-        s += '<path class="pe-ring" d="M256,283 H316 M416,283 H474"/>';
-        s += '<g data-r="tri">' + leaflet(260, 283, 26, 'a') + leaflet(312, 283, -26, 'b') + '</g>';
-        s += '<g data-r="mit">' + leaflet(418, 283, 27, 'a') + leaflet(470, 283, -27, 'b') + '</g>';
-        s += '<g data-r="pv">' + leaflet(332, 262, 9, 'a') + leaflet(350, 262, -9, 'b') + '</g>';
-        s += '<g data-r="av">' + leaflet(369, 262, 10, 'a') + leaflet(389, 262, -10, 'b') + '</g>';
+        s += '<rect class="pe-bg" x="0" y="0" width="' + L.w + '" height="' + L.h + '"/>';
+        var cells = '';
+        g.cells.forEach(function(c, i){ cells += '<g data-r="cell' + i + '"><rect class="pe-tcell" x="' + f1(c[0] - 27) + '" y="' + f1(c[1] - 19) + '" width="54" height="38" rx="14"/><circle class="pe-tnuc" cx="' + f1(c[0] - 6) + '" cy="' + f1(c[1]) + '" r="6"/></g>'; });
+        var alv = '';
+        g.alv.forEach(function(a, i){ alv += '<circle class="pe-alv" data-r="alv' + i + '" cx="' + f1(a[0]) + '" cy="' + f1(a[1]) + '" r="' + (L.id === 'tall' ? 14.3 : 15) + '"/>'; });
+        if(L.id === 'tall'){
+          var lungL = 'M330,40 C320,16 290,8 262,12 C210,20 168,58 158,108 C154,130 170,140 196,138 C240,134 290,132 322,130 C336,110 338,70 330,40 Z';
+          var back = '<path class="pe-lung" d="' + lungL + '"/><path class="pe-lung" transform="translate(724,0) scale(-1,1)" d="' + lungL + '"/>' +
+            '<path class="pe-trach" d="M362,0 V40 M362,40 L326,64 M362,40 L398,64"/><path class="pe-trach-r" d="M354,8 h16 M354,18 h16 M354,28 h16"/>' +
+            '<path class="pe-tissue" d="M90,448 H660 V560 H90 Z"/>';
+          s += G(L, 'all', back) + alv + cells;
+          var vt = function(pts, cls, w, at){ return G(L, 'all', tube(pts, cls, w, at)); };
+          s += vt([[341, 290], [341, 190], [328, 160], [290, 140], [250, 128], [222, 114]], 'is-de', 22);
+          s += G(L, 'all', '<path class="pe-cap is-de" d="M250,128 L218,112 L196,88 L205,62 L225,56"/><path class="pe-cap is-ox" data-oxat="5" d="M225,56 L252,60 L276,82 L292,112"/>');
+          s += vt([[379, 290], [379, 180], [400, 154], [470, 152], [570, 154], [602, 186], [602, 455], [578, 486]], 'is-ox', 24, 9.4);
+          s += G(L, 'all', '<path class="pe-cap is-ox" data-oxat="10.4" d="M578,488 H400"/><path class="pe-cap is-de" d="M400,488 H232"/>');
+          s += vt([[232, 488], [202, 460], [202, 300], [222, 268], [252, 252]], 'is-de', 24) + vt([[272, 150], [274, 205]], 'is-de', 20);
+          s += G(L, 'heart', heartBody());
+          // the pulmonary veins run over the aorta's root and into the left atrium (drawn over the heart wall)
+          s += vt([[292, 112], [330, 150], [376, 172], [420, 196], [436, 214], [440, 228]], 'is-ox', 18, 5.6);
+        } else {
+          // body tissue (left), lungs (right)
+          s += '<path class="pe-tissue" d="M0,0 H250 C262,180 262,360 250,540 H0 Z"/>' + cells;
+          s += '<g transform="translate(40,0)"><path class="pe-lung" d="M860,70 C900,80 905,150 900,250 C896,350 890,440 860,470 C800,482 742,470 722,430 C706,380 708,300 716,230 C724,150 760,78 860,70 Z"/>' +
+            '<path class="pe-lung" d="M930,80 C1000,70 1050,140 1060,240 C1068,340 1060,430 1030,465 C990,476 950,470 935,440 C925,360 922,250 925,170 C926,120 925,92 930,80 Z"/>' +
+            '<path class="pe-trach" d="M912,0 V40 M912,40 L888,72 M912,40 L936,72"/><path class="pe-trach-r" d="M904,8 h16 M904,18 h16 M904,28 h16"/></g>' + alv;
+          s += tube([[443, 280], [443, 110], [460, 70], [520, 56], [760, 56], [810, 90], [830, 118]], 'is-de', 24);
+          s += '<path class="pe-cap is-de" d="' + P([[830, 120], [820, 170], [830, 230]]) + '"/><path class="pe-cap is-ox" data-oxat="5" d="' + P([[830, 230], [845, 290], [830, 340]]) + '"/>';
+          s += tube([[495, 280], [495, 110], [478, 84], [430, 74], [330, 74], [262, 90], [238, 120]], 'is-ox', 26, 9.4);
+          s += '<path class="pe-cap is-ox" data-oxat="10.4" d="' + P([[238, 120], [190, 180], [160, 250], [150, 300]]) + '"/><path class="pe-cap is-de" d="' + P([[150, 300], [160, 380], [200, 440], [248, 467]]) + '"/>';
+          s += tube([[248, 467], [300, 470], [330, 450], [340, 350], [345, 280], [352, 236]], 'is-de', 26);
+          s += G(L, 'heart', heartBody());
+          s += tube([[830, 340], [780, 360], [720, 330], [660, 270], [622, 230], [606, 210]], 'is-ox', 20, 5.6);
+        }
         s += '<g data-r="cuts"></g><g data-r="gas"></g>';
         return s;
       },
       fxInit: function(fx, R){
-        var g = R.gas, h = '';
+        var h = '';
         for(var i = 0; i < 6; i++) h += '<circle class="pe-o2m" r="5.5" cx="-50" cy="-50"/>';
         for(i = 0; i < 4; i++) h += '<circle class="pe-co2m" r="5" cx="-50" cy="-50"/>';
-        g.innerHTML = h;
+        R.gas.innerHTML = h;
       },
       state: function(v, br){
         var noAir = !!(br && br.id === 'air');
@@ -166,78 +231,75 @@
         var k = Math.min(12, Math.floor(v + 0.12)); if(v >= 1.71 && v < 1.88) k = 2; if(v >= 7.71 && v < 7.88) k = 8;
         var st = { v: v, lap: v >= 12.9, k: v >= 12.9 ? 0 : k, stop: null, noAir: noAir };
         st.ox = ox(v, noAir);
-        // each step's words show from 0.12 before it (k = floor(v + 0.12)); its event is fully drawn by then and holds
-        // through its words, and the next event happens in the short band before the next words
         st.tri = bump(v, 0.58, 0.88, 1.69, 1.86); st.rvSq = bump(v, 1.69, 1.95, 3.3, 3.7); st.pv = bump(v, 2.6, 2.88, 3.88, 4.1);
         st.mit = bump(v, 6.58, 6.88, 7.69, 7.86); st.lvSq = bump(v, 7.69, 7.95, 9.3, 9.7); st.av = bump(v, 8.6, 8.88, 9.88, 10.1);
-        st.lungX = bump(v, 4.7, 4.88, 5.88, 6.05);   // exchange in the lung: O2 in, CO2 out
+        st.lungX = bump(v, 4.7, 4.88, 5.88, 6.05);
         st.bodyX = bump(v, 10.7, 10.88, 11.88, 12.05);
-        st.lungDone = noAir ? 0 : ramp(v, 4.6, 5.2);
         return st;
       },
       fails: function(st){ var f = []; if(st.noAir){ if(st.v >= 4.88 || st.lap) f.push(5); if(st.v >= 10.88 || st.lap) f.push(11); } return f; },
       paint: function(R, st, E){
-        function open(g, t, ang){ var a = g.childNodes[0], b = g.childNodes[1]; var d = t * ang; sa(a, 'transform', 'rotate(' + f1(d) + ' ' + a.getAttribute('d').match(/M([\d.]+),([\d.]+)/).slice(1).join(' ') + ')'); sa(b, 'transform', 'rotate(' + f1(-d) + ' ' + b.getAttribute('d').match(/M([\d.]+),([\d.]+)/).slice(1).join(' ') + ')'); }
+        function open(g, t, ang){ var a = g.childNodes[0], b = g.childNodes[1], d = t * ang; sa(a, 'transform', 'rotate(' + f1(d) + ' ' + a.getAttribute('d').match(/M([\d.]+),([\d.]+)/).slice(1).join(' ') + ')'); sa(b, 'transform', 'rotate(' + f1(-d) + ' ' + b.getAttribute('d').match(/M([\d.]+),([\d.]+)/).slice(1).join(' ') + ')'); }
         open(R.tri, st.tri, 68); open(R.mit, st.mit, 68); open(R.pv, st.pv, -70); open(R.av, st.av, -70);
         sa(R.rv, 'transform', st.rvSq ? 'translate(302,330) scale(' + (1 - st.rvSq * 0.2).toFixed(3) + ') translate(-302,-330)' : '');
         sa(R.lv, 'transform', st.lvSq ? 'translate(422,335) scale(' + (1 - st.lvSq * 0.2).toFixed(3) + ') translate(-422,-335)' : '');
-        ALV.forEach(function(a, i){ sa(R['alv' + i], 'class', 'pe-alv' + (st.noAir ? ' is-stale' : '')); });
-        // with no fresh air, each oxygen rich part holds oxygen poor blood once the cell has passed it
+        var g = geo(E.L);
+        g.alv.forEach(function(a, i){ sa(R['alv' + i], 'class', 'pe-alv' + (st.noAir ? ' is-stale' : '')); });
         if(!R.oxs) R.oxs = [].slice.call(R.rv.ownerSVGElement.querySelectorAll('[data-oxat]'));
         R.oxs.forEach(function(el){ el.classList.toggle('is-low', !!st.noAir && (st.v >= +el.getAttribute('data-oxat') || st.lap)); });
-        // gas: O2 from the alveoli into the cell, CO2 out (lungs); O2 out to the cells, CO2 in (body)
         var p = this.route.at(st.v), kids = R.gas.childNodes, i, t;
         for(i = 0; i < 6; i++){
-          var c = kids[i], a = ALV[i], b = CELLS[i];
+          var c = kids[i], a = g.alv[i], b = g.cells[i];
           if(st.lungX > 0 && !st.noAir){ t = ramp(st.v, 4.88 + i * 0.04, 5.6); sa(c, 'cx', f1(lerp(a[0], p[0], t))); sa(c, 'cy', f1(lerp(a[1], p[1], t))); so(c, f1(st.lungX)); }
-          else if(st.bodyX > 0 && (!st.noAir ? true : i < 1)){ t = ramp(st.v, 10.88 + i * 0.04, 11.6); sa(c, 'cx', f1(lerp(p[0], b[0], t))); sa(c, 'cy', f1(lerp(p[1], b[1], t))); so(c, f1(st.bodyX)); }
+          else if(st.bodyX > 0 && (!st.noAir || i < 1)){ t = ramp(st.v, 10.88 + i * 0.04, 11.6); sa(c, 'cx', f1(lerp(p[0], b[0], t))); sa(c, 'cy', f1(lerp(p[1], b[1], t))); so(c, f1(st.bodyX)); }
           else so(c, '0');
         }
         for(i = 0; i < 4; i++){
-          var d = kids[6 + i], a2 = ALV[5 + i % 4], b2 = CELLS[6 + i];
+          var d = kids[6 + i], a2 = g.alv[5 + i % 4], b2 = g.cells[6 + i];
           if(st.lungX > 0 && !st.noAir){ t = ramp(st.v, 4.88 + i * 0.05, 5.6); sa(d, 'cx', f1(lerp(p[0], a2[0], t))); sa(d, 'cy', f1(lerp(p[1], a2[1], t))); so(d, f1(st.lungX)); }
           else if(st.bodyX > 0){ t = ramp(st.v, 10.88 + i * 0.05, 11.6); sa(d, 'cx', f1(lerp(b2[0], p[0], t))); sa(d, 'cy', f1(lerp(b2[1], p[1], t))); so(d, f1(st.bodyX)); }
           else so(d, '0');
         }
-        // the cells that got O2 this lap look fed
-        for(i = 0; i < CELLS.length; i++) sa(R['cell' + i], 'class', st.v >= 11.4 && !st.lap && (!st.noAir || i < 1) ? 'is-fed' : '');
+        for(i = 0; i < g.cells.length; i++) sa(R['cell' + i], 'class', st.v >= 11.4 && !st.lap && (!st.noAir || i < 1) ? 'is-fed' : '');
       },
       tokenRole: function(st){ return st.ox > 0.5 ? 'o2' : 'de'; },
       tokenFill: function(st){ return mix(DE, OX, st.ox); },
       trailFor: function(st){ return st.noAir ? [[0, 13, 'de']] : [[0, 4.95, 'de'], [4.95, 10.95, 'o2'], [10.95, 13, 'de']]; },
       labels: function(st, E){
-        var wide = E.k >= 0.75, L = [
-          { key: 'lungs', text: 'Lungs', role: 'air', at: [470, 60], side: ['r', 'u'] },
-          { key: 'body', text: 'Body cells', role: 'mus', at: [160, 500], side: ['l', 'u'] }
+        var L = E.L, g = geo(L), wide = L.id === 'wide' || E.k >= 0.95, na = st.noAir;
+        var out = [
+          { key: 'lungs', text: 'Lungs', role: 'air', at: g.lungsAt, side: ['r', 'u', 'd'] },
+          { key: 'body', text: 'Body cells', role: 'mus', at: g.bodyAt, side: ['u', 'r', 'l'] }
         ];
         var CUR = [
-          ['Right atrium', [284, 236], 'de'], ['Tricuspid valve', [286, 283], 'valve'], ['Right ventricle', [300, 352], 'de'], ['Pulmonary valve', [341, 262], 'valve'],
-          ['Pulmonary artery', [250, 128], 'de'], ['Lung capillaries', [236, 60], st.noAir ? 'de' : 'o2'], ['Left atrium', [444, 236], st.noAir ? 'de' : 'o2'], ['Mitral valve', [444, 283], 'valve'],
-          ['Left ventricle', [422, 352], st.noAir ? 'de' : 'o2'], ['Aortic valve', [379, 262], 'valve'], ['Aorta', [602, 300], st.noAir ? 'de' : 'o2'], ['Body capillaries', [400, 488], 'de'], ['Vena cava', [202, 380], 'de']
+          ['Right atrium', H('ra', L), 'de'], ['Tricuspid valve', H('tri', L), 'valve'], ['Right ventricle', T(L, [300, 352, 'heart']), 'de'], ['Pulmonary valve', H('pv', L), 'valve'],
+          ['Pulmonary artery', this.route.at(4), 'de'], ['Lung capillaries', this.route.at(5), na ? 'de' : 'o2'], ['Left atrium', H('la', L), na ? 'de' : 'o2'], ['Mitral valve', H('mit', L), 'valve'],
+          ['Left ventricle', T(L, [422, 352, 'heart']), na ? 'de' : 'o2'], ['Aortic valve', H('av', L), 'valve'], ['Aorta', this.route.at(10), na ? 'de' : 'o2'], ['Body capillaries', this.route.at(11), 'de'], ['Vena cava', this.route.at(12), 'de']
         ], c = CUR[st.k];
         if(wide){
           [['Right atrium', [270, 226], 'de'], ['Right ventricle', [290, 370], 'de'], ['Left atrium', [458, 226], 'o2'], ['Left ventricle', [430, 372], 'o2']].forEach(function(x){
-            if(x[0] !== c[0]) L.push({ key: x[0], text: x[0], role: st.noAir && x[2] === 'o2' ? 'de' : x[2], at: x[1], side: ['l', 'r', 'd'] });
+            if(x[0] !== c[0]) out.push({ key: x[0], text: x[0], role: na && x[2] === 'o2' ? 'de' : x[2], at: T(L, [x[1][0], x[1][1], 'heart']), side: ['l', 'r', 'd'] });
           });
         }
-        L.push({ key: 'cur', text: c[0], role: c[2], at: c[1], side: ['l', 'r', 'u', 'd'], lead: true, strong: true });
-        if(st.lungX > 0.2 && !st.noAir){ L.push({ key: 'o2', text: 'O₂ in', role: 'o2', at: [190, 30], side: ['l', 'u'] }); }
-        if(st.bodyX > 0.2){ L.push({ key: 'o2b', text: st.noAir ? 'Less O₂ out' : 'O₂ out', role: st.noAir ? 'bad' : 'o2', at: [470, 470], side: ['u', 'r'] }); }
-        return L;
+        out.push({ key: 'cur', text: c[0], role: c[2], at: c[1], side: ['l', 'r', 'u', 'd'], lead: true, strong: true });
+        if(st.lungX > 0.2 && !na) out.push({ key: 'o2', text: 'O₂ in', role: 'o2', at: g.o2At, side: ['l', 'u', 'd'] });
+        if(st.bodyX > 0.2) out.push({ key: 'o2b', text: na ? 'Less O₂ out' : 'O₂ out', role: na ? 'bad' : 'o2', at: g.o2bAt, side: ['u', 'r', 'd'] });
+        return out;
       },
       words: function(st){
         var na = st.noAir;
-        if(st.lap) return [{ t: 'Body', role: 'de' }, { t: 'veins', role: 'de' }, { t: 'back to the right atrium', role: 'de' }];
+        if(st.lap) return na ? [{ t: 'No fresh air', role: 'bad' }, { t: 'heart still pumps', role: 'mus' }, { t: 'body cells got less O₂', say: 'body cells got less oxygen', role: 'bad' }]
+          : [{ t: 'Body', role: 'de' }, { t: 'veins', role: 'de' }, { t: 'back to the right atrium', role: 'de' }];
         return [
           [{ t: 'Blood from the body', role: 'de' }, { t: 'right atrium', role: 'de' }],
-          [{ t: 'Atrium fuller than ventricle', role: 'de' }, { t: 'tricuspid valve opens', role: 'valve' }],
+          [{ t: 'Atrium pressure above ventricle', role: 'de' }, { t: 'tricuspid valve opens', role: 'valve' }],
           [{ t: 'Right ventricle squeezes', role: 'mus' }, { t: 'tricuspid valve shuts', role: 'valve' }, { t: 'blood pushed up', role: 'de' }],
           [{ t: 'Pressure opens the pulmonary valve', role: 'valve' }, { t: 'blood to the lungs', role: 'de' }],
           [{ t: 'Pulmonary artery', role: 'de' }, { t: 'low O₂ blood to the lungs', say: 'low oxygen blood to the lungs', role: 'de' }],
           na ? [{ t: 'No fresh air', role: 'bad' }, { t: 'blood picks up no new O₂', say: 'blood picks up no new oxygen', role: 'de' }]
              : [{ t: 'Air in the alveoli', role: 'air' }, { t: 'O₂ in, CO₂ out', say: 'oxygen in, carbon dioxide out', role: 'o2' }],
           [{ t: 'Pulmonary veins', role: na ? 'de' : 'o2' }, { t: na ? 'low O₂ blood to the left atrium' : 'O₂ rich blood to the left atrium', say: na ? 'low oxygen blood to the left atrium' : 'oxygen rich blood to the left atrium', role: na ? 'de' : 'o2' }],
-          [{ t: 'Atrium fuller than ventricle', role: na ? 'de' : 'o2' }, { t: 'mitral valve opens', role: 'valve' }],
+          [{ t: 'Atrium pressure above ventricle', role: na ? 'de' : 'o2' }, { t: 'mitral valve opens', role: 'valve' }],
           [{ t: 'Left ventricle squeezes', role: 'mus' }, { t: 'mitral valve shuts', role: 'valve' }, { t: 'pressure builds', role: na ? 'de' : 'o2' }],
           [{ t: 'Pressure opens the aortic valve', role: 'valve' }, { t: 'blood into the aorta', role: na ? 'de' : 'o2' }],
           [{ t: 'Aorta and arteries', role: na ? 'de' : 'o2' }, { t: na ? 'low O₂ blood to every organ' : 'O₂ rich blood to every organ', say: na ? 'low oxygen blood to every organ' : 'oxygen rich blood to every organ', role: na ? 'de' : 'o2' }],
@@ -246,98 +308,121 @@
           [{ t: 'Veins', role: 'de' }, { t: 'low O₂ blood back to the heart', say: 'low oxygen blood back to the heart', role: 'de' }]
         ][st.k];
       },
-      cut: function(b){ return '<g class="pe-cut"><rect class="pe-plug" x="350" y="6" width="24" height="30" rx="5"/><path class="pe-cutend" d="M346,12 l32,18 M378,12 l-32,18"/></g>'; }
+      cut: function(b, R, at, cv, E){ var t = geo(E.L).trach; return '<g class="pe-cut"><rect class="pe-plug" x="' + f1(t[0] - 12) + '" y="' + f1(t[1] - 14) + '" width="24" height="30" rx="5"/><path class="pe-cutend" d="M' + f1(t[0] - 16) + ',' + f1(t[1] - 8) + ' l32,18 M' + f1(t[0] + 16) + ',' + f1(t[1] - 8) + ' l-32,18"/></g>'; }
     });
   })();
 
   /* ------------------------------------------------------------------ 2. Reflex arc: the knee jerk */
   (function(){
-    var KNEE = [404, 334];   // the lower leg turns here
+    var KNEE = [404, 334];   // the lower leg turns here (leg coordinates)
     function rot(p, a){ var c = Math.cos(a), s = Math.sin(a), x = p[0] - KNEE[0], y = p[1] - KNEE[1]; return [KNEE[0] + x * c - y * s, KNEE[1] + x * s + y * c]; }
-    var SENS = [[290, 296], [276, 282], [300, 214], [350, 178], [385, 120], [405, 92], [440, 93], [465, 96], [494, 116], [503, 150], [505, 172]];
-    var MOT = [[516, 186], [482, 204], [458, 206], [392, 198], [356, 192], [307, 225], [264, 266], [226, 296]];
-    var segs = [
-      [[441, 362], [438, 332], [420, 302], [360, 292], [290, 296]],
-      [[290, 296], [276, 282], [300, 214], [350, 178], [385, 120], [405, 92]],
-      [[405, 92], [440, 93], [465, 96], [494, 116], [503, 150], [505, 172]],
-      [[505, 172], [516, 186], [482, 204], [458, 206]],
-      [[458, 206], [392, 198], [356, 192], [307, 225], [264, 266], [226, 296]],
-      [[226, 296], [292, 299], [352, 296]]
-    ];
-    var R0 = new Route(segs);
+    // a seated person in profile, facing right, cut to the lower back and the leg; the cord section enlarged beside it
+    var LAY = {
+      tall: { w: 600, h: 600, g: { leg: [100, 52, 0.92], cord: [-104, -14, 1] } },
+      wide: { w: 1080, h: 540, g: { leg: [120, 0, 1], cord: [185, 14, 1.25] } }
+    };
+    var J = [360, 186];            // where the two roots join the spinal nerve (cord coordinates)
+    var ENTRY = [262, 268];        // where the nerve enters the thigh (leg coordinates)
+    function nerve(L){ var a = T(L, [ENTRY[0], ENTRY[1], 'leg']), b = T(L, [J[0], J[1], 'cord']); return bow(a, b, L.id === 'wide' ? -40 : 18, 12); }
+    function sens(L){ var n = nerve(L); return TS(L, [[290, 296, 'leg'], [276, 282, 'leg']]).concat(offset(n, -4).slice(1, -1)).concat(TS(L, [[385, 120, 'cord'], [405, 92, 'cord']])); }
+    function mot(L){ var n = nerve(L).slice().reverse(); return TS(L, [[458, 206, 'cord'], [392, 198, 'cord']]).concat(offset(n, -4).slice(1, -1)).concat(TS(L, [[264, 266, 'leg'], [226, 296, 'leg']])); }
+    // the vertebra at the level of the L2 to L4 cord segments (about T12 and L1; the cord ends near L1 to L2)
+    var VERT = [[-74, 40], [-70, 72], [-65, 104], [-61, 136], [-58, 168], [-57, 200], [-59, 232], [-63, 264]];
+    var LUM = 3;
     SCENES.push({
       id: 'reflex', tab: 'Reflex arc', short: 'Reflex', path: 'reflex-arc-knee',
       purpose: 'Send the knee jerk signal around the reflex arc',
       cue: 'Drag the signal', token: 'the signal', thing: 'signal',
-      route: R0, last: 6,
+      layouts: LAY, last: 6,
+      segs: function(L){
+        return [
+          TS(L, [[441, 362, 'leg'], [438, 332, 'leg'], [420, 302, 'leg'], [360, 292, 'leg'], [290, 296, 'leg']]),
+          sens(L),
+          TS(L, [[405, 92, 'cord'], [440, 93, 'cord'], [465, 96, 'cord'], [494, 116, 'cord'], [503, 150, 'cord'], [505, 172, 'cord']]),
+          TS(L, [[505, 172, 'cord'], [516, 186, 'cord'], [482, 204, 'cord'], [458, 206, 'cord']]),
+          mot(L),
+          TS(L, [[226, 296, 'leg'], [292, 299, 'leg'], [352, 296, 'leg']])
+        ];
+      },
+      // a broken run goes as far as the signal really goes; the cut is drawn just beyond, on the root
       breaks: [
-        { id: 'dorsal', at: 2.42, tag: 'Cut', label: 'Cut', aria: 'Cut the dorsal root', name: 'Dorsal root cut', step: 2 },
-        { id: 'ventral', at: 3.62, off: [0, 1], tag: 'Cut', label: 'Cut', aria: 'Cut the ventral root', name: 'Ventral root cut', step: 4 }
+        { id: 'dorsal', stopV: 2.0, cutMin: 2.2, cutMax: 2.7, place: function(L){ return T(L, [440, 93, 'cord']); }, off: [0, -1], tag: 'Cut', label: 'Cut', aria: 'Cut the dorsal root', name: 'Dorsal root cut', step: 2 },
+        { id: 'ventral', stopV: 3.55, cutMin: 3.6, cutMax: 4.2, place: function(L){ return T(L, [470, 205, 'cord']); }, off: [0, 1], tag: 'Cut', label: 'Cut', aria: 'Cut the ventral root', name: 'Ventral root cut', step: 4 }
       ],
       take: 'Receptor, sensory neuron, synapse, motor neuron, effector.',
       art: function(E){
-        var s = '';
+        var L = E.L, s = '';
         s += '<defs><linearGradient id="pe-skin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6DCC8"/><stop offset="1" stop-color="#E8BFA4"/></linearGradient>' +
+          '<linearGradient id="pe-skinH" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#E3B497"/><stop offset="0.45" stop-color="#F4D6C1"/><stop offset="1" stop-color="#EAC3A8"/></linearGradient>' +
           '<linearGradient id="pe-mus" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D86A57"/><stop offset="1" stop-color="#A9402F"/></linearGradient>' +
-          '<linearGradient id="pe-shirt" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7F95AE"/><stop offset="1" stop-color="#9DB1C6"/></linearGradient>' +
+          '<linearGradient id="pe-shirt" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5E7894"/><stop offset="0.6" stop-color="#8AA1BA"/><stop offset="1" stop-color="#6F87A2"/></linearGradient>' +
+          '<linearGradient id="pe-shorts" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4C5870"/><stop offset="1" stop-color="#394459"/></linearGradient>' +
           '<radialGradient id="pe-wm" cx="0.45" cy="0.4" r="0.7"><stop offset="0" stop-color="#FFFDF7"/><stop offset="1" stop-color="#EDE2CF"/></radialGradient>' +
           '<radialGradient id="pe-gm" cx="0.5" cy="0.5" r="0.6"><stop offset="0" stop-color="#E9C9CF"/><stop offset="1" stop-color="#D5A7B0"/></radialGradient></defs>';
-        s += '<rect class="pe-bg" x="0" y="0" width="' + W + '" height="' + H + '"/>';
-        // the chair under the thigh
-        s += '<path class="pe-chair" d="M0,404 H352 a10,10 0 0 1 0,20 H0 Z"/><path class="pe-chair-leg" d="M300,424 V540 M40,424 V540"/>';
-        // the seated body: back and belly in a shirt, the backbone faint inside it, the lumbar part where the arc runs
-        s += '<path class="pe-shirt" d="M0,0 H92 C104,80 118,170 122,250 C124,282 112,300 90,304 L0,306 Z"/>';
-        // a window into the lower back: the stacked vertebrae with their discs; the lumbar one where the arc runs
-        s += '<path class="pe-backwin" d="M8,30 C30,24 56,24 72,30 L72,290 C56,296 30,296 8,290 Z"/>';
-        for(var v0 = 0; v0 < 8; v0++){ var vy = 38 + v0 * 32, vx = 20 + Math.sin(v0 / 7 * Math.PI) * 6; s += '<path class="pe-vert' + (v0 === 5 ? ' is-lum' : '') + '" d="M' + vx + ',' + vy + ' h30 a4,4 0 0 1 4,4 v16 a4,4 0 0 1 -4,4 h-30 a4,4 0 0 1 -4,-4 v-16 a4,4 0 0 1 4,-4 Z"/><path class="pe-disc" d="M' + (vx + 2) + ',' + (vy + 27) + ' h26"/>'; }
-        // the lower leg (turns at the knee; its top is round about the knee so it turns cleanly)
-        s += '<g data-r="leg"><path class="pe-skin" d="M360,334 A44,44 0 0 1 448,334 C450,410 448,460 452,494 C470,496 500,500 528,512 C538,520 534,534 520,534 L400,534 C380,532 374,520 372,500 C368,470 362,420 360,334 Z"/>' +
-          '<path class="pe-bone" d="M382,350 C380,420 384,470 388,494 L408,494 C410,470 414,420 418,350 Z"/></g>';
-        // thigh (skin), the femur and the quadriceps under it
-        s += '<path class="pe-skin" d="M0,262 C120,252 300,258 392,266 C434,270 454,300 452,334 C450,366 420,392 384,396 C250,400 120,404 0,404 Z"/>';
-        s += '<path class="pe-bone" d="M0,346 C120,340 300,338 376,336 C400,326 420,334 422,350 C420,368 398,372 380,362 C300,360 120,364 0,364 Z"/>';
-        s += '<g data-r="quad"><path class="pe-mus" data-r="quadm" d="M10,274 C120,264 300,270 392,282 C410,288 418,300 414,312 C380,318 300,320 200,322 C120,324 40,322 10,320 Z"/>';
-        for(var i = 0; i < 9; i++){ var x = 40 + i * 40; s += '<path class="pe-stria" d="M' + x + ',' + (276 - i * 0.3) + ' C' + (x + 12) + ',' + 292 + ' ' + (x + 8) + ',' + 306 + ' ' + (x + 18) + ',' + 318 + '"/>'; }
-        s += '</g>';
-        s += '<path class="pe-shirt" d="M0,240 C40,236 90,240 118,250 C124,282 112,300 90,304 L0,306 Z"/>';
+        s += '<rect class="pe-bg" x="0" y="0" width="' + L.w + '" height="' + L.h + '"/>';
+        var leg = '';
+        // the chair
+        leg += '<path class="pe-chair" d="M-120,404 H352 a10,10 0 0 1 0,20 H-120 Z"/><path class="pe-chair-leg" d="M300,424 V640 M-60,424 V640"/>';
+        leg += '<path class="pe-chairback" d="M-138,404 C-146,300 -150,160 -146,-120 L-120,-120 C-124,160 -120,300 -112,404 Z"/>';
+        // the lower leg (turns at the knee; its top is round about the knee so it turns cleanly), with the shin bone
+        leg += '<g data-r="leg"><path class="pe-skin" d="M360,334 A44,44 0 0 1 448,334 C450,410 448,460 452,494 C470,496 500,500 528,512 C538,520 534,534 520,534 L400,534 C380,532 374,520 372,500 C368,470 362,420 360,334 Z"/>' +
+          '<path class="pe-sole" d="M400,534 L520,534 C534,534 538,524 534,516"/><path class="pe-bone" d="M382,350 C380,420 384,470 388,494 L408,494 C410,470 414,420 418,350 Z"/></g>';
+        // the trunk in profile: the back curves (upper back out, lower back in, buttock out), the belly in front
+        leg += '<path class="pe-skinT" d="M-100,-130 C-90,-40 -86,40 -84,110 C-82,170 -78,210 -84,250 C-92,290 -114,320 -114,356 C-114,388 -96,404 -60,404 L130,404 L130,262 C116,230 112,180 106,120 C100,40 94,-40 90,-130 Z"/>';
+        leg += '<path class="pe-shirt" d="M-100,-130 C-90,-40 -86,40 -84,110 C-82,170 -78,210 -84,250 C-86,262 -90,274 -94,286 L124,284 C118,262 114,230 110,180 C104,100 96,0 90,-130 Z"/>';
+        leg += '<path class="pe-fold" d="M-80,236 C-30,250 50,250 112,236"/>';
+        // the near arm: the upper arm down the side, the forearm forward, the hand resting on the thigh
+        var arm = '<path class="pe-skinT" d="M-30,-130 C-26,-40 -6,80 14,150 C22,174 46,176 54,154 C40,90 34,-20 36,-130 Z"/>' +
+          '<path class="pe-skinT" d="M18,150 C40,190 80,226 112,246 C122,252 132,242 126,232 C98,210 68,182 52,148 Z"/>' +
+          '<path class="pe-hand" d="M106,240 C120,230 148,232 160,244 C168,254 156,264 140,262 C126,262 112,256 106,248 Z"/><path class="pe-fingers" d="M142,248 h14 M140,254 h14"/>' +
+          '<path class="pe-sleeve" d="M-36,-130 C-34,-80 -28,-40 -24,-16 L40,-20 C38,-60 38,-100 40,-130 Z"/>';
+        // the thigh (skin), the femur and the quadriceps under it; shorts at the hip
+        leg += '<path class="pe-skin" d="M-40,262 C120,252 300,258 392,266 C434,270 454,300 452,334 C450,366 420,392 384,396 C250,400 120,404 -40,404 Z"/>';
+        leg += '<path class="pe-shorts" d="M-94,280 L124,270 C150,266 176,268 190,272 L196,402 L-60,404 C-96,404 -114,388 -114,356 C-114,320 -100,300 -94,280 Z"/>';
+        leg += '<path class="pe-bone" d="M150,346 C220,340 300,338 376,336 C400,326 420,334 422,350 C420,368 398,372 380,362 C300,360 220,364 150,364 Z"/>';
+        leg += '<g data-r="quad"><path class="pe-mus" data-r="quadm" d="M110,276 C180,268 300,270 392,282 C410,288 418,300 414,312 C380,318 300,320 220,322 C170,323 130,322 110,320 Z"/>';
+        for(var i = 0; i < 7; i++){ var x = 130 + i * 38; leg += '<path class="pe-stria" d="M' + x + ',' + (277 - i * 0.3) + ' C' + (x + 12) + ',292 ' + (x + 8) + ',306 ' + (x + 18) + ',318"/>'; }
+        leg += '</g>';
+        // a window in the lower back: the vertebrae and discs, with the one at the level of the arc's cord segments
+        leg += '<path class="pe-backwin" d="M-100,24 C-86,18 -52,18 -38,24 L-38,290 C-52,296 -86,296 -100,290 Z"/>';
+        VERT.forEach(function(v0, i){ leg += '<path class="pe-vert' + (i === LUM ? ' is-lum' : '') + '" d="M' + v0[0] + ',' + v0[1] + ' h28 a5,5 0 0 1 5,5 v14 a5,5 0 0 1 -5,5 h-28 a5,5 0 0 1 -5,-5 v-14 a5,5 0 0 1 5,-5 Z"/><path class="pe-spinous" d="M' + (v0[0] - 5) + ',' + (v0[1] + 12) + ' l-12,4"/>' + (i < VERT.length - 1 ? '<path class="pe-disc" d="M' + (v0[0] + 2) + ',' + (v0[1] + 28) + ' h24"/>' : ''); });
+        leg += arm;
         // muscle spindle and its sensory ending
-        s += '<g data-r="spindle"><ellipse class="pe-spindle" cx="300" cy="298" rx="30" ry="7"/><path class="pe-anulo" data-r="anulo" d="M286,298 c2,-7 4,7 6,0 c2,-7 4,7 6,0 c2,-7 4,7 6,0 c2,-7 4,7 6,0"/></g>';
-        // the quadriceps tendon, the patella and the patellar ligament
-        s += '<path class="pe-tendon" d="M392,286 C412,292 428,302 436,314"/>';
-        s += '<path class="pe-lig" data-r="lig" d="M438,334 C442,350 440,368 432,392"/>';
-        s += '<ellipse class="pe-patella" data-r="pat" cx="438" cy="320" rx="12" ry="18"/>';
-        // reflex hammer (a triangular rubber head on a handle)
-        s += '<g data-r="hammer"><path class="pe-ham-h" d="M478,370 L548,500"/><path class="pe-ham" d="M448,368 L494,346 L500,380 Z"/></g>';
-        // the lumbar part of the backbone, enlarged: where the arc meets the cord
-        s += '<path class="pe-zoom" d="M58,198 L452,96 M58,222 L470,214"/>';
-        // spinal cord, cross section
-        s += '<g class="pe-cord"><ellipse class="pe-wm" cx="532" cy="150" rx="104" ry="78"/>' +
+        leg += '<g data-r="spindle"><ellipse class="pe-spindle" cx="300" cy="298" rx="30" ry="7"/><path class="pe-anulo" data-r="anulo" d="M286,298 c2,-7 4,7 6,0 c2,-7 4,7 6,0 c2,-7 4,7 6,0 c2,-7 4,7 6,0"/></g>';
+        leg += '<path class="pe-tendon" d="M392,286 C412,292 428,302 436,314"/>';
+        leg += '<path class="pe-lig" data-r="lig" d="M438,334 C442,350 440,368 432,392"/>';
+        leg += '<ellipse class="pe-patella" data-r="pat" cx="438" cy="320" rx="12" ry="18"/>';
+        // nerve endings on the muscle (the motor neuron's junction)
+        leg += '<path class="pe-eff" d="M226,296 l-12,8 M226,296 l-4,12 M226,296 l10,10"/>';
+        leg += '<g data-r="hammer"><path class="pe-ham-h" d="M478,370 L548,500"/><path class="pe-ham" d="M448,368 L494,346 L500,380 Z"/></g>';
+        s += G(L, 'leg', leg);
+        // zoom lines from the vertebra to the cord section
+        var v0 = VERT[LUM], za = T(L, [v0[0] + 30, v0[1] + 2, 'leg']), zb = T(L, [v0[0] + 30, v0[1] + 22, 'leg']), ca = T(L, [470, 84, 'cord']), cb = T(L, [470, 216, 'cord']);
+        s += '<path class="pe-zoom" d="M' + f1(za[0]) + ',' + f1(za[1]) + ' L' + f1(ca[0]) + ',' + f1(ca[1]) + ' M' + f1(zb[0]) + ',' + f1(zb[1]) + ' L' + f1(cb[0]) + ',' + f1(cb[1]) + '"/>';
+        // the spinal nerve (both neurons in one sheath) from the cord's roots to the thigh
+        var n = nerve(L);
+        s += '<path class="pe-sheath" d="' + P(n) + '"/>';
+        s += G(L, 'cord', '<ellipse class="pe-wm" cx="532" cy="150" rx="104" ry="78"/>' +
           '<path class="pe-gm" d="M532,118 C520,96 498,84 484,92 C478,104 494,118 508,128 C504,140 496,152 486,166 C474,184 486,204 508,202 C522,198 528,186 532,176 C536,186 542,198 556,202 C578,204 590,184 578,166 C568,152 560,140 556,128 C570,118 586,104 580,92 C566,84 544,96 532,118 Z"/>' +
-          '<circle class="pe-canal" cx="532" cy="152" r="4"/></g>';
-        // the nerve: a sheath that holds both neurons, then splitting into the two roots
-        s += '<path class="pe-sheath" d="' + P([[262, 268], [304, 220], [352, 186], [360, 186]]) + '"/>';
-        s += '<path class="pe-root" d="' + P([[352, 184], [384, 124], [405, 92], [440, 93], [470, 98]]) + '"/>';
-        s += '<path class="pe-root" d="' + P([[352, 188], [392, 198], [458, 206], [486, 202]]) + '"/>';
-        s += '<ellipse class="pe-drg" cx="405" cy="92" rx="20" ry="13"/>';
-        // the two neurons, drawn whole
-        s += '<path class="pe-aff" data-r="aff" d="' + P(SENS) + '"/><circle class="pe-aff-soma" cx="405" cy="92" r="6.5"/>';
-        s += '<path class="pe-eff" data-r="eff" d="' + P(MOT) + '"/><path class="pe-eff-soma" d="M516,186 l-9,-11 l13,2 l6,-9 l3,13 l11,4 l-12,6 l-1,10 l-8,-8 Z"/>';
-        // nerve endings in the muscle
-        s += '<path class="pe-eff" d="M226,296 l-12,8 M226,296 l-4,12 M226,296 l10,10"/>';
-        s += '<g data-r="syn"><circle class="pe-syn" cx="505" cy="172" r="5"/></g>';
-        // cuts (drawn when made)
+          '<circle class="pe-canal" cx="532" cy="152" r="4"/>' +
+          '<path class="pe-root" d="' + P([[352, 184], [384, 124], [405, 92], [440, 93], [470, 98]]) + '"/><path class="pe-root" d="' + P([[352, 188], [392, 198], [458, 206], [486, 202]]) + '"/>' +
+          '<ellipse class="pe-drg" cx="405" cy="92" rx="20" ry="13"/>');
+        // the two neurons, drawn whole, through the nerve
+        s += '<path class="pe-aff" d="' + P(sens(L).concat(TS(L, [[440, 93, 'cord'], [465, 96, 'cord'], [494, 116, 'cord'], [503, 150, 'cord'], [505, 172, 'cord']]))) + '"/>';
+        s += '<path class="pe-eff" d="' + P(TS(L, [[516, 186, 'cord'], [482, 204, 'cord']]).concat(mot(L))) + '"/>';
+        s += G(L, 'cord', '<circle class="pe-aff-soma" cx="405" cy="92" r="6.5"/><path class="pe-eff-soma" d="M516,186 l-9,-11 l13,2 l6,-9 l3,13 l11,4 l-12,6 l-1,10 l-8,-8 Z"/><g data-r="syn"><circle class="pe-syn" cx="505" cy="172" r="5"/></g>');
         s += '<g data-r="cuts"></g>';
         return s;
       },
       state: function(v, br){
         var st = { v: v, k: Math.min(6, Math.floor(v + 0.12)), stop: null };
-        if(br && v >= Math.min((br.lim != null ? br.lim : br.at) - 0.01, br.step - 0.12)) st.stop = br;
-        st.kick = st.stop ? 0 : ramp(v, 5.6, 5.88);
-        st.squeeze = st.stop ? 0 : ramp(v, 5.45, 5.8);
+        if(v >= 5.71 && v < 5.88) st.k = 6;   // the kick's words come as the kick starts
+        if(br && v >= Math.min(br.stopV - 0.01, br.step - 0.12)) st.stop = br;
+        st.kick = br ? 0 : ramp(v, 5.69, 6);
+        st.squeeze = br ? 0 : ramp(v, 5.5, 5.8);
         st.stretch = 1 - ramp(v, 0.88, 1.3);
         st.fire = bump(v, 0.7, 0.88, 1.88, 2.1);
         st.synOn = br && br.id === 'dorsal' ? 0 : bump(v, 2.7, 2.88, 3.88, 4.1);
-        st.motor = v >= 3 && !(st.stop && st.stop.id === 'dorsal');
         st.hit = 1 - ramp(v, 0, 0.45);
         return st;
       },
@@ -347,41 +432,45 @@
         var p0 = [438, 336], p1 = rot([432, 392], a);
         sa(R.lig, 'd', 'M' + f1(p0[0]) + ',' + f1(p0[1]) + ' C' + f1(p0[0] + 4 - st.hit * 7) + ',' + f1(p0[1] + 18) + ' ' + f1(p1[0] + 8 - st.hit * 9) + ',' + f1(p1[1] - 22) + ' ' + f1(p1[0]) + ',' + f1(p1[1]));
         sa(R.pat, 'cx', f1(438 + st.kick * 3)); sa(R.pat, 'cy', f1(320 - st.kick * 6));
-        // the hammer touches at the tap, then swings back out of the way
         var hb = 1 - st.hit;
         sa(R.hammer, 'transform', 'translate(' + f1(hb * 92) + ',' + f1(hb * 30) + ') rotate(' + f1(hb * 18) + ' 548 500)');
         sa(R.quadm, 'class', 'pe-mus' + (st.squeeze > 0.5 ? ' is-on' : ''));
-        var sx = 1 - st.squeeze * 0.06, sy = 1 + st.squeeze * 0.16;
-        sa(R.quad, 'transform', st.squeeze ? 'translate(10,297) scale(' + sx.toFixed(3) + ',' + sy.toFixed(3) + ') translate(-10,-297)' : '');
+        // the stretch lengthens the muscle a little; the contraction shortens and thickens it (both from the hip end)
+        var sx = 1 - st.squeeze * 0.06 + st.stretch * 0.025, sy = 1 + st.squeeze * 0.16 - st.stretch * 0.05;
+        sa(R.quad, 'transform', sx !== 1 || sy !== 1 ? 'translate(110,297) scale(' + sx.toFixed(3) + ',' + sy.toFixed(3) + ') translate(-110,-297)' : '');
         sa(R.anulo, 'class', 'pe-anulo' + (st.fire > 0.3 ? ' is-on' : ''));
         sa(R.spindle, 'transform', st.stretch ? 'translate(300,298) scale(' + (1 + st.stretch * 0.1).toFixed(3) + ',' + (1 - st.stretch * 0.15).toFixed(3) + ') translate(-300,-298)' : '');
         sa(R.syn, 'class', st.synOn > 0.3 ? 'is-on' : '');
       },
-      trail: [[0, 3, 'aff'], [3, 6, 'eff']],
+      // the tap stretches the muscle (muscle colour); the sensory neuron starts at the spindle
+      trail: [[0, 1, 'mus'], [1, 3, 'aff'], [3, 6, 'eff']],
       labels: function(st, E){
-        var L = [
-          { key: 'quad', text: 'Quadriceps', role: 'mus', at: [150, 282], side: ['u', 'd'] },
-          { key: 'cord', text: 'Spinal cord', role: 'cord', at: [575, 90], side: ['u', 'r', 'd'] },
-          { key: 'sens', text: 'Sensory neuron', role: 'aff', at: [330, 196], side: ['l', 'u', 'ul'], lead: true },
-          { key: 'mot', text: 'Motor neuron', role: 'eff', at: [286, 246], side: ['d', 'dl', 'l'], lead: true }
+        var L = E.L, out = [
+          { key: 'quad', text: 'Quadriceps', role: 'mus', at: T(L, [190, 282, 'leg']), side: ['u', 'd'] },
+          { key: 'cord', text: 'Spinal cord', role: 'cord', at: T(L, [575, 76, 'cord']), side: ['u', 'r', 'd'] },
+          { key: 'sens', text: 'Sensory neuron', role: 'aff', at: sens(L)[4], side: ['ul', 'l', 'u'], lead: true },
+          { key: 'mot', text: 'Motor neuron', role: 'eff', at: mot(L)[mot(L).length - 5], side: ['dr', 'd', 'r'], lead: true }
         ];
         var cur = [
-          { text: 'Tap', at: [446, 368], role: 'cord', side: ['r', 'd'] },
-          { text: 'Muscle spindle', at: [300, 298], role: 'aff', side: ['d', 'u'] },
-          { text: 'Dorsal root', at: [430, 92], role: 'aff', side: ['u', 'ul'] },
-          { text: 'Synapse', at: [505, 172], role: 'cord', side: ['r', 'd'] },
-          { text: 'Ventral root', at: [462, 206], role: 'eff', side: ['d', 'dr'] },
-          { text: 'Neuromuscular junction', at: [226, 296], role: 'eff', side: ['d', 'dr', 'dl'] },
-          { text: 'Knee straightens', at: [470, 470], role: 'mus', side: ['r', 'u'] }
+          { text: 'Tap', at: [446, 368, 'leg'], role: 'cord', side: ['r', 'd'] },
+          { text: 'Muscle spindle', at: [300, 298, 'leg'], role: 'aff', side: ['d', 'u'] },
+          { text: 'Dorsal root', at: [430, 92, 'cord'], role: 'aff', side: ['u', 'ul'] },
+          { text: 'Synapse', at: [505, 172, 'cord'], role: 'cord', side: ['r', 'd'] },
+          { text: 'Ventral root', at: [462, 206, 'cord'], role: 'eff', side: ['d', 'dr'] },
+          { text: 'Neuromuscular junction', at: [226, 296, 'leg'], role: 'eff', side: ['d', 'dr', 'dl'] },
+          { text: 'Knee straightens', at: [470, 470, 'leg'], role: 'mus', side: ['r', 'u'] }
         ][st.k];
-        if(cur && !(st.k === 6 && st.kick < 0.9)) L.push({ key: 'cur', text: cur.text, role: cur.role, at: cur.at, side: cur.side, lead: true, strong: true });
-        if(st.stop) L.push({ key: 'fail', text: 'No kick', role: 'bad', at: [470, 470], side: ['r', 'u'], strong: true });
-        return L;
+        // a stopped run names where the signal is (its last real step), not the step it never reaches
+        if(st.stop) cur = st.stop.id === 'dorsal' ? { text: 'Dorsal root ganglion', at: [405, 92, 'cord'], role: 'aff', side: ['u', 'l'] } : { text: 'Motor neuron', at: [505, 194, 'cord'], role: 'eff', side: ['d', 'r'] };
+        if(cur && !(st.k === 6 && st.kick < 0.9 && !st.stop)) out.push({ key: 'cur', text: cur.text, role: cur.role, at: T(L, cur.at), side: cur.side, lead: true, strong: true });
+        if(st.stop && st.stop.id === 'ventral') out = out.filter(function(x){ return x.key !== 'mot'; });
+        if(st.stop) out.push({ key: 'fail', text: 'No kick', role: 'bad', at: T(L, [470, 470, 'leg']), side: ['r', 'u'], strong: true });
+        return out;
       },
       words: function(st){
         if(st.stop){
           return st.stop.id === 'dorsal' ? [{ t: 'Dorsal root cut', role: 'bad' }, { t: 'signal never reaches the cord', role: 'aff' }, { t: 'no kick', role: 'bad' }]
-            : [{ t: 'Ventral root cut', role: 'bad' }, { t: 'signal never reaches the muscle', role: 'eff' }, { t: 'no kick', role: 'bad' }];
+            : [{ t: 'Motor neuron fires', role: 'eff' }, { t: 'ventral root cut', role: 'bad' }, { t: 'signal never reaches the muscle', role: 'eff' }, { t: 'no kick', role: 'bad' }];
         }
         return [
           [{ t: 'Tap stretches the tendon', role: 'cord' }, { t: 'quadriceps stretched', role: 'mus' }],
@@ -393,148 +482,171 @@
           [{ t: 'Quadriceps contracts', role: 'mus' }, { t: 'knee straightens', role: 'mus' }]
         ][st.k];
       },
-      cut: function(b, R, at){
-        // two cut ends with a gap, across the root
-        var p = at(b.at), q = at(b.at + 0.03), ang = Math.atan2(q[1] - p[1], q[0] - p[0]), c = Math.cos(ang), s = Math.sin(ang), g = 7;
+      cut: function(b, R, at, cv){
+        var p = at(cv), q = at(cv + 0.03), ang = Math.atan2(q[1] - p[1], q[0] - p[0]), c = Math.cos(ang), s = Math.sin(ang), g = 7;
         return '<g class="pe-cut"><path class="pe-cutgap" d="M' + f1(p[0] - c * g) + ',' + f1(p[1] - s * g) + 'L' + f1(p[0] + c * g) + ',' + f1(p[1] + s * g) + '"/>' +
           '<path class="pe-cutend" d="M' + f1(p[0] - c * g - s * 9) + ',' + f1(p[1] - s * g + c * 9) + 'L' + f1(p[0] - c * g + s * 9) + ',' + f1(p[1] - s * g - c * 9) + 'M' + f1(p[0] + c * g - s * 9) + ',' + f1(p[1] + s * g + c * 9) + 'L' + f1(p[0] + c * g + s * 9) + ',' + f1(p[1] + s * g - c * 9) + '"/></g>';
       },
-      tokenRole: function(st){ return st.v < 3 ? 'aff' : 'eff'; },
-      say: function(st){ return null; }
+      cutAt: function(b){ return b; },
+      tokenRole: function(st){ return st.v < 1 ? 'mus' : st.v < 3 ? 'aff' : 'eff'; }
     });
   })();
 
   /* ------------------------------------------------------------------ 3. Hormones: the stress axis (HPA) */
   (function(){
-    // left: the hypothalamus and pituitary, enlarged (a magnifier from the person's head); right: the person, with the
-    // liver, kidneys and adrenal glands in a window. One blood vessel joins them.
+    // the hypothalamus and pituitary in a magnifier (mag coordinates, centre 215,235, radius 195), beside a person cut
+    // at the hips (person coordinates, the head's centre at 0,0); one blood vessel joins them
     var C = [215, 235], RAD = 195;
-    var segs = [
-      [[120, 120], [160, 160], [184, 190], [206, 232], [215, 262]],
-      [[215, 262], [230, 292], [242, 324]],
-      [[242, 324], [252, 350], [258, 366]],
-      [[258, 366], [306, 382], [360, 352], [408, 292], [470, 206], [540, 152], [580, 146], [580, 250], [572, 296], [556, 312]],
-      [[556, 312], [578, 296], [584, 262], [566, 244], [540, 238]],
-      [[540, 238], [582, 228], [584, 150], [540, 156], [470, 206], [400, 200], [330, 206], [306, 210]]
-    ];
-    var R0 = new Route(segs);
+    var LAY = {
+      tall: { w: 600, h: 600, g: { mag: [-2.8, -4, 0.92], person: [494, 100, 0.95] } },
+      wide: { w: 1080, h: 540, g: { mag: [42.75, 0, 1.15], person: [830, 74, 1] } }
+    };
+    var EDGE = [400, 300];                              // where the vessel leaves the magnifier (mag)
+    function gap(L){ return bow(T(L, [EDGE[0], EDGE[1], 'mag']), T(L, [0, 92, 'person']), L.id === 'wide' ? -20 : -14, 8); }
     function role(v){ return v < 0.8 ? 'aff' : v < 2.85 ? 'crh' : v < 3.9 ? 'acth' : 'cort'; }
-    var SPOTS = [[226, 286], [236, 306], [230, 318], [244, 296], [222, 300], [240, 314]];   // CRH in the portal veins
-    var BLOOD = [[470, 206], [508, 178], [580, 196], [440, 246], [496, 190], [580, 222]];   // ACTH in the blood
+    var SPOTS = [[232, 290], [240, 306], [236, 318], [248, 300], [228, 300], [246, 316]];   // CRH in the portal veins (mag)
     SCENES.push({
       id: 'hormone', tab: 'Hormones', short: 'Hormones', path: 'hpa-axis',
       purpose: 'Follow stress from the brain to cortisol and back',
       cue: 'Drag the signal', token: 'the signal', thing: 'signal',
-      route: R0, last: 6,
+      layouts: LAY, last: 6,
+      segs: function(L){
+        var g = gap(L), down = TS(L, [[0, 120, 'person'], [0, 240, 'person'], [-12, 256, 'person'], [-28, 256, 'person']]);
+        return [
+          TS(L, [[120, 120, 'mag'], [160, 160, 'mag'], [184, 190, 'mag'], [206, 232, 'mag'], [215, 262, 'mag']]),
+          TS(L, [[215, 262, 'mag'], [230, 290, 'mag'], [244, 318, 'mag']]),
+          TS(L, [[244, 318, 'mag'], [256, 338, 'mag'], [270, 360, 'mag']]),
+          TS(L, [[270, 360, 'mag'], [320, 382, 'mag'], [368, 350, 'mag'], [EDGE[0], EDGE[1], 'mag']]).concat(g.slice(1)).concat(down),
+          TS(L, [[-28, 256, 'person'], [-12, 252, 'person'], [0, 224, 'person'], [-14, 178, 'person'], [-30, 170, 'person']]),
+          TS(L, [[-30, 170, 'person'], [-10, 172, 'person'], [0, 150, 'person'], [0, 120, 'person']]).concat(g.slice().reverse().slice(1)).concat(TS(L, [[380, 316, 'mag'], [340, 262, 'mag'], [300, 224, 'mag']]))
+        ];
+      },
       breaks: [
-        { id: 'pit', at: 2.92, place: [168, 410], off: [0, 1], tag: 'Damaged', label: 'Damage', aria: 'Damage the pituitary gland', name: 'Pituitary damaged', step: 3 },
-        { id: 'adr', at: 4.0, place: [548, 330], off: [0, 1], tag: 'Damaged', label: 'Damage', aria: 'Damage the adrenal cortex', name: 'Adrenal cortex damaged', step: 4 }
+        { id: 'pit', stopV: 2.3, place: function(L){ return T(L, [100, 372, 'mag']); }, off: [-1, 0], tag: 'Damaged', label: 'Damage', aria: 'Damage the pituitary gland', name: 'Pituitary damaged', step: 3, mark: function(L){ return T(L, [275, 372, 'mag']); } },
+        { id: 'adr', stopV: 3.88, place: function(L){ return T(L, [-74, 258, 'person']); }, off: [-1, 0], tag: 'Damaged', label: 'Damage', aria: 'Damage the adrenal cortex', name: 'Adrenal cortex damaged', step: 4, mark: function(L){ return T(L, [-30, 252, 'person']); } }
       ],
       take: 'Three glands in a chain, braked by cortisol’s feedback.',
       art: function(E){
-        var s = '<defs><radialGradient id="pe-brain" cx="0.45" cy="0.3" r="0.8"><stop offset="0" stop-color="#F3DCD8"/><stop offset="1" stop-color="#DDB0AC"/></radialGradient>' +
-          '<linearGradient id="pe-skin2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#EBC3A9"/><stop offset="0.5" stop-color="#F6DCC8"/><stop offset="1" stop-color="#E5B99E"/></linearGradient>' +
-          '<linearGradient id="pe-shirt2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4F7B60"/><stop offset="0.5" stop-color="#6A9A7C"/><stop offset="1" stop-color="#4F7B60"/></linearGradient>' +
+        var L = E.L, s = '<defs><radialGradient id="pe-brain" cx="0.45" cy="0.3" r="0.8"><stop offset="0" stop-color="#F3DCD8"/><stop offset="1" stop-color="#DDB0AC"/></radialGradient>' +
+          '<radialGradient id="pe-face" cx="0.45" cy="0.4" r="0.7"><stop offset="0" stop-color="#F8DFCC"/><stop offset="1" stop-color="#E3B596"/></radialGradient>' +
+          '<linearGradient id="pe-skin2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#E0AD8E"/><stop offset="0.5" stop-color="#F4D4BE"/><stop offset="1" stop-color="#DDA888"/></linearGradient>' +
+          '<linearGradient id="pe-shirt2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3F6A51"/><stop offset="0.35" stop-color="#5F927A"/><stop offset="0.7" stop-color="#5A8C73"/><stop offset="1" stop-color="#3F6A51"/></linearGradient>' +
+          '<linearGradient id="pe-pants2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4A556B"/><stop offset="0.5" stop-color="#5E6A82"/><stop offset="1" stop-color="#4A556B"/></linearGradient>' +
           '<radialGradient id="pe-liver" cx="0.4" cy="0.35" r="0.8"><stop offset="0" stop-color="#B5574A"/><stop offset="1" stop-color="#7E2F26"/></radialGradient>' +
           '<clipPath id="pe-mag"><circle cx="' + C[0] + '" cy="' + C[1] + '" r="' + RAD + '"/></clipPath></defs>';
-        s += '<rect class="pe-bg" x="0" y="0" width="' + W + '" height="' + H + '"/>';
-        // the person
-        s += '<path class="pe-skin2" d="M556,104 h48 v40 h-48 Z"/>';
-        s += '<path class="pe-shirt2" d="M500,160 C520,146 548,140 580,140 C612,140 640,146 660,160 C676,200 680,300 672,470 L488,470 C480,300 484,200 500,160 Z"/>';
-        s += '<path class="pe-skin2" d="M500,162 C478,200 470,300 474,400 L492,402 C494,320 498,240 512,190 Z M660,162 C682,200 690,300 686,400 L668,402 C666,320 662,240 648,190 Z"/>';
-        s += '<path class="pe-pants" d="M488,466 H672 L668,540 H588 L580,500 L572,540 H492 Z"/>';
-        s += '<circle class="pe-skin2" cx="580" cy="66" r="44"/><path class="pe-hair" d="M536,62 C536,30 560,18 584,20 C610,22 626,40 624,62 C612,46 596,40 580,42 C562,44 548,52 536,62 Z"/>';
-        s += '<circle class="pe-pitdot" cx="580" cy="74" r="7"/>';
+        s += '<rect class="pe-bg" x="0" y="0" width="' + L.w + '" height="' + L.h + '"/>';
+        // the person: arms, trunk in a shirt, trousers, neck and head with a face
+        var p = '';
+        p += '<path class="pe-pants2" d="M-74,392 C-60,388 60,388 74,392 L84,520 L10,520 L0,440 L-10,520 L-84,520 Z"/>';
+        p += '<path class="pe-skin2" d="M-104,196 C-112,250 -116,300 -112,346 C-110,366 -100,378 -90,376 C-84,350 -84,300 -82,250 Z M104,196 C112,250 116,300 112,346 C110,366 100,378 90,376 C84,350 84,300 82,250 Z"/>';
+        p += '<path class="pe-hand" d="M-112,346 C-122,356 -120,380 -104,388 C-92,392 -84,382 -88,368 C-90,358 -96,352 -100,350 Z M112,346 C122,356 120,380 104,388 C92,392 84,382 88,368 C90,358 96,352 100,350 Z"/>';
+        p += '<path class="pe-shirt2" d="M-18,82 C-50,88 -84,98 -98,118 C-110,140 -112,180 -108,210 L-80,214 L-78,196 C-80,260 -78,340 -74,400 L74,400 C78,340 80,260 78,196 L80,214 L108,210 C112,180 110,140 98,118 C84,98 50,88 18,82 Z"/>';
+        p += '<path class="pe-fold2" d="M-78,214 C-70,230 -72,250 -76,262 M78,214 C70,230 72,250 76,262 M-40,382 C-10,388 20,388 44,382"/>';
+        p += '<path class="pe-skin2" d="M-16,40 L-16,88 C-8,96 8,96 16,88 L16,40 Z"/>';
+        p += '<path class="pe-collar" d="M-20,84 C-10,100 10,100 20,84"/>';
+        p += '<ellipse class="pe-ear" cx="-42" cy="4" rx="8" ry="13"/><ellipse class="pe-ear" cx="42" cy="4" rx="8" ry="13"/>';
+        p += '<ellipse class="pe-head" cx="0" cy="0" rx="42" ry="52"/>';
+        p += '<path class="pe-hair" d="M-44,-4 C-48,-44 -22,-60 2,-58 C30,-56 50,-38 44,-4 C38,-24 22,-34 4,-34 C-16,-34 -34,-24 -44,-4 Z"/>';
+        p += '<path class="pe-brow" d="M-24,-10 q9,-5 17,0 M7,-10 q9,-5 17,0"/><ellipse class="pe-eye" cx="-15" cy="0" rx="4" ry="4.6"/><ellipse class="pe-eye" cx="15" cy="0" rx="4" ry="4.6"/>';
+        p += '<path class="pe-nose" d="M0,4 C-3,14 -6,20 -1,23 C2,24 5,23 6,21"/><path class="pe-mouth" d="M-12,34 C-6,31 6,31 12,34"/>';
+        p += '<circle class="pe-pitdot" cx="0" cy="8" r="6"/>';
         // the window into the trunk: liver, kidneys and adrenal glands, the main vessel
-        s += '<path class="pe-win" d="M512,206 C540,196 620,196 648,206 L648,420 C620,428 540,428 512,420 Z"/>';
-        s += '<path class="pe-liverS" data-r="liver" d="M518,226 C536,214 580,212 616,220 C630,226 624,250 604,256 C576,264 540,264 524,256 C510,248 508,234 518,226 Z"/>';
-        s += '<path class="pe-kid" d="M532,330 C526,350 532,378 548,382 C562,384 568,360 566,342 C564,326 552,318 544,320 Z"/><path class="pe-kid" d="M628,330 C634,350 628,378 612,382 C598,384 592,360 594,342 C596,326 608,318 616,320 Z"/>';
-        s += '<g data-r="adr"><path class="pe-adr" d="M532,320 C534,302 548,296 562,304 C568,310 566,322 556,326 C546,330 534,328 532,320 Z"/><path class="pe-adrm" d="M542,316 C544,308 552,307 556,312 C558,316 554,320 548,320 C545,320 542,318 542,316 Z"/>' +
-          '<path class="pe-adr" d="M628,320 C626,302 612,296 598,304 C592,310 594,322 604,326 C614,330 626,328 628,320 Z"/></g>';
-        s += '<path class="pe-bv" d="' + P([[580, 104], [580, 146], [580, 296], [572, 300], [556, 312]]) + '"/><path class="pe-bv" d="' + P([[580, 230], [566, 242], [540, 238]]) + '"/>';
-        // the magnifier: lines from the head to the enlarged view
-        s += '<path class="pe-zoom" d="M570,58 L180,42 M572,86 L330,400"/>';
-        s += '<path class="pe-bv" d="' + P([[306, 382], [360, 352], [408, 292], [470, 206], [540, 152], [580, 146]]) + '"/><path class="pe-bv" d="' + P([[470, 206], [400, 200]]) + '"/>';
-        s += '<circle class="pe-magbg" cx="' + C[0] + '" cy="' + C[1] + '" r="' + RAD + '"/>';
-        s += '<g clip-path="url(#pe-mag)">';
-        s += '<path class="pe-brain" d="M0,0 H430 V218 C380,236 320,246 270,250 C240,252 226,256 215,262 C204,256 190,252 160,250 C110,246 50,236 0,218 Z"/>';
-        s += '<path class="pe-gyri" d="M60,90 c20,-14 30,10 50,-2 M90,150 c22,-10 34,12 56,0 M300,90 c16,12 36,4 48,18 M320,160 c18,-8 28,8 46,0"/>';
-        s += '<path class="pe-vent" d="M208,120 C204,150 206,180 212,206 C218,180 222,150 218,120 Z"/>';
-        s += '<path class="pe-hypo" data-r="hypo" d="M150,186 C170,168 260,168 282,186 C292,206 270,236 240,246 C226,250 204,250 190,246 C160,236 140,206 150,186 Z"/>';
-        [[176, 196], [214, 184], [254, 198]].forEach(function(n){ s += '<path class="pe-crhn" d="M' + n[0] + ',' + n[1] + ' C' + n[0] + ',' + (n[1] + 30) + ' 214,236 215,258"/><circle class="pe-crhs" cx="' + n[0] + '" cy="' + n[1] + '" r="8"/>'; });
-        s += '<path class="pe-stalk" d="M196,256 C200,290 208,320 212,340 L250,340 C246,318 240,288 234,256 Z"/>';
-        s += '<path class="pe-plex" d="M200,262 c6,-8 12,8 18,0 c6,-8 12,8 18,0"/>';
-        s += '<path class="pe-portal" d="M228,266 C232,290 238,316 244,340 M218,268 C222,292 230,318 236,342"/>';
-        s += '<path class="pe-sella" d="M100,350 C110,420 150,440 215,440 C280,440 330,420 340,350"/>';
-        s += '<g data-r="pit"><ellipse class="pe-pitp" cx="168" cy="372" rx="44" ry="38"/><ellipse class="pe-pita" data-r="pita" cx="262" cy="372" rx="64" ry="44"/>' +
-          '<circle class="pe-cortico" cx="246" cy="362" r="6"/><circle class="pe-cortico" cx="270" cy="382" r="6"/><circle class="pe-cortico" cx="288" cy="360" r="6"/></g>';
-        s += '<path class="pe-bv" d="' + P([[258, 366], [306, 382], [360, 352], [420, 280]]) + '"/><path class="pe-bv is-thin" d="' + P([[420, 200], [330, 206], [276, 214], [250, 222]]) + '"/>';
-        s += '</g><circle class="pe-magring" cx="' + C[0] + '" cy="' + C[1] + '" r="' + RAD + '"/>';
+        p += '<path class="pe-win" d="M-62,134 C-30,124 30,124 62,134 L62,334 C30,342 -30,342 -62,334 Z"/>';
+        p += '<path class="pe-liverS" data-r="liver" d="M-58,160 C-44,146 4,144 30,152 C42,158 36,180 18,186 C-10,194 -40,192 -52,186 C-64,178 -66,166 -58,160 Z"/>';
+        p += '<path class="pe-kid" d="M-46,270 C-52,290 -46,316 -30,320 C-16,322 -10,298 -12,280 C-14,264 -26,256 -34,258 Z"/><path class="pe-kid" d="M46,270 C52,290 46,316 30,320 C16,322 10,298 12,280 C14,264 26,256 34,258 Z"/>';
+        p += '<g data-r="adr"><path class="pe-adr" d="M-46,258 C-44,240 -30,234 -16,242 C-10,248 -12,260 -22,264 C-32,268 -44,266 -46,258 Z"/><path class="pe-adrm" d="M-36,254 C-34,246 -26,245 -22,250 C-20,254 -24,258 -30,258 C-33,258 -36,256 -36,254 Z"/>' +
+          '<path class="pe-adr" d="M46,258 C44,240 30,234 16,242 C10,248 12,260 22,264 C32,268 44,266 46,258 Z"/></g>';
+        p += '<path class="pe-bv" d="' + P([[0, 92], [0, 240], [-12, 256], [-24, 256]]) + '"/><path class="pe-bv" d="' + P([[0, 150], [-10, 172], [-26, 170]]) + '"/>';
+        s += G(L, 'person', p);
+        // zoom lines from the pituitary in the head to the magnifier, then the one vessel between them
+        var hd = T(L, [0, 8, 'person']), za = T(L, [215, 40, 'mag']), zb = T(L, [330, 395, 'mag']);
+        s += '<path class="pe-zoom" d="M' + f1(hd[0]) + ',' + f1(hd[1]) + ' L' + f1(za[0]) + ',' + f1(za[1]) + ' M' + f1(hd[0]) + ',' + f1(hd[1]) + ' L' + f1(zb[0]) + ',' + f1(zb[1]) + '"/>';
+        s += '<path class="pe-bv" d="' + P(gap(L)) + '"/>';
+        var m = '<circle class="pe-magbg" cx="' + C[0] + '" cy="' + C[1] + '" r="' + RAD + '"/><g clip-path="url(#pe-mag)">';
+        m += '<path class="pe-brain" d="M0,0 H430 V218 C380,236 320,246 270,250 C240,252 226,256 215,262 C204,256 190,252 160,250 C110,246 50,236 0,218 Z"/>';
+        m += '<path class="pe-gyri" d="M60,90 c20,-14 30,10 50,-2 M90,150 c22,-10 34,12 56,0 M300,90 c16,12 36,4 48,18 M320,160 c18,-8 28,8 46,0"/>';
+        m += '<path class="pe-vent" d="M208,120 C204,150 206,180 212,206 C218,180 222,150 218,120 Z"/>';
+        m += '<path class="pe-hypo" data-r="hypo" d="M150,186 C170,168 260,168 282,186 C292,206 270,236 240,246 C226,250 204,250 190,246 C160,236 140,206 150,186 Z"/>';
+        [[176, 196], [214, 184], [254, 198]].forEach(function(n){ m += '<path class="pe-crhn" d="M' + n[0] + ',' + n[1] + ' C' + n[0] + ',' + (n[1] + 30) + ' 214,236 215,258"/><circle class="pe-crhs" cx="' + n[0] + '" cy="' + n[1] + '" r="8"/>'; });
+        // the stalk runs down into the posterior lobe; the portal veins run down its front into the anterior lobe
+        m += '<path class="pe-sella" d="M90,360 C100,430 150,446 222,446 C292,446 336,430 346,360"/>';
+        m += '<g data-r="pit"><path class="pe-stalk" d="M196,256 C196,286 190,312 186,340 L222,340 C224,312 230,286 234,256 Z"/>' +
+          '<ellipse class="pe-pitp" cx="196" cy="378" rx="42" ry="38"/><ellipse class="pe-pita" data-r="pita" cx="276" cy="372" rx="62" ry="46"/>' +
+          '<circle class="pe-cortico" cx="262" cy="362" r="6"/><circle class="pe-cortico" cx="286" cy="384" r="6"/><circle class="pe-cortico" cx="300" cy="358" r="6"/></g>';
+        m += '<path class="pe-plex" d="M200,262 c6,-8 12,8 18,0 c6,-8 12,8 18,0"/>';
+        m += '<path class="pe-portal" d="M232,266 C238,290 246,316 258,340 M224,268 C230,294 238,320 250,344"/>';
+        m += '<path class="pe-bv" d="' + P([[270, 360], [320, 382], [368, 350], [430, 286]]) + '"/><path class="pe-bv is-thin" d="' + P([[380, 316], [340, 262], [300, 224], [258, 214]]) + '"/>';
+        m += '</g><circle class="pe-magring" cx="' + C[0] + '" cy="' + C[1] + '" r="' + RAD + '"/>';
+        s += G(L, 'mag', m);
         s += '<g data-r="mol"></g><g data-r="brk"></g><g data-r="cuts"></g>';
         return s;
       },
-      fxInit: function(fx, R){
-        var h = '';
+      fxInit: function(fx, R, E){
+        var L = E.L, h = '';
         for(var i = 0; i < 6; i++) h += '<circle class="pe-mol is-crh" r="5.5" cx="-50" cy="-50"/>';
         for(i = 0; i < 6; i++) h += '<rect class="pe-mol is-acth" width="10" height="10" rx="2" x="-50" y="-50"/>';
         for(i = 0; i < 5; i++) h += '<path class="pe-mol is-glu" d="M0,-6 L5.2,-3 L5.2,3 L0,6 L-5.2,3 L-5.2,-3 Z" transform="translate(-50,-50)"/>';
         R.mol.innerHTML = h;
-        R.brk.innerHTML = '<g class="pe-brake" data-r="b1"><circle cx="262" cy="240" r="13"/><path d="M255,240 h14"/></g><g class="pe-brake" data-r="b2"><circle cx="330" cy="338" r="13"/><path d="M323,338 h14"/></g>';
+        var b1 = T(L, [292, 214, 'mag']), b2 = T(L, [352, 340, 'mag']);
+        R.brk.innerHTML = '<g class="pe-brake"><circle cx="' + f1(b1[0]) + '" cy="' + f1(b1[1]) + '" r="13"/><path d="M' + f1(b1[0] - 7) + ',' + f1(b1[1]) + ' h14"/></g><g class="pe-brake"><circle cx="' + f1(b2[0]) + '" cy="' + f1(b2[1]) + '" r="13"/><path d="M' + f1(b2[0] - 7) + ',' + f1(b2[1]) + ' h14"/></g>';
         R.b1 = R.brk.childNodes[0]; R.b2 = R.brk.childNodes[1];
       },
       state: function(v, br){
         var st = { v: v, k: Math.min(6, Math.floor(v + 0.12)), stop: null };
-        if(br && v >= Math.min((br.lim != null ? br.lim : br.at) - 0.01, br.step - 0.12)) st.stop = br;
+        var s0 = br ? Math.min(br.stopV - 0.01, br.step - 0.12) : 0;
+        if(br && v >= s0) st.stop = br;
         var pit = br && br.id === 'pit', adr = br && br.id === 'adr';
-        st.stress = bump(v, -1, 0, 0.5, 1.0);
-        st.crh = ramp(v, 0.6, 0.88);                     // CRH released into the stalk's capillaries
-        st.crhDown = ramp(v, 1.0, 2.2);                  // carried down the portal veins
+        st.crh = ramp(v, 0.6, 0.88);
+        st.crhDown = ramp(v, 1.0, 2.2);
         st.acth = pit ? 0 : ramp(v, 2.6, 2.88);
         st.cort = adr || pit ? 0 : ramp(v, 3.6, 3.88);
         st.glu = adr || pit ? 0 : ramp(v, 4.6, 4.88);
         st.brake = adr || pit ? 0 : ramp(v, 5.6, 5.88);
-        var s0 = br ? Math.min((br.lim != null ? br.lim : br.at) - 0.01, br.step - 0.12) : 0;
-        st.pile = st.stop ? ramp(v, s0 - 0.3, s0) : 0;   // no cortisol, no brake: the hormone above the break builds up
+        st.pile = st.stop ? ramp(v, s0 - 0.3, s0) : 0;
         st.pit = pit; st.adr = adr;
         return st;
       },
       paint: function(R, st, E){
-        var kids = R.mol.childNodes, i, p = this.route.at(st.v);
-        // CRH: released at the hypothalamus, carried to the pituitary; more of it when the brake is gone (pituitary damaged)
+        var L = E.L, kids = R.mol.childNodes, i;
         for(i = 0; i < 6; i++){
           var c = kids[i], on = i < 3 ? st.crh * (1 - st.brake * 0.6) : st.pit ? st.pile : 0, sp = SPOTS[i], t = i < 3 ? st.crhDown : 1;
-          sa(c, 'cx', f1(lerp(212 + i * 4, sp[0], t))); sa(c, 'cy', f1(lerp(262, sp[1], t)));
-          so(c, f1(on));
+          var q = T(L, [lerp(210 + i * 4, sp[0], t), lerp(262, sp[1], t), 'mag']);
+          sa(c, 'cx', f1(q[0])); sa(c, 'cy', f1(q[1])); so(c, f1(on));
         }
+        var gp = gap(L);
         for(i = 0; i < 6; i++){
-          var a = kids[6 + i], b = BLOOD[i], onA = i < 3 ? st.acth * (1 - st.brake * 0.6) : st.adr ? st.pile : 0;
-          sa(a, 'x', f1(b[0] - 5)); sa(a, 'y', f1(b[1] - 5)); so(a, f1(onA));
+          var a = kids[6 + i], b = i < 3 ? gp[2 + i * 2] : gp[3 + (i - 3) * 2], onA = i < 3 ? st.acth * (1 - st.brake * 0.6) : st.adr ? st.pile : 0;
+          sa(a, 'x', f1(b[0] - 5)); sa(a, 'y', f1(b[1] - 9)); so(a, f1(onA));
         }
         for(i = 0; i < 5; i++){
-          var g = kids[12 + i]; sa(g, 'transform', 'translate(' + f1(530 + i * 20) + ',' + f1(280 + (i % 2) * 10 + st.glu * 8) + ')'); so(g, f1(st.glu));
+          var gq = T(L, [-50 + i * 18, 200 + (i % 2) * 8 + st.glu * 6, 'person']);
+          sa(kids[12 + i], 'transform', 'translate(' + f1(gq[0]) + ',' + f1(gq[1]) + ')'); so(kids[12 + i], f1(st.glu));
         }
         sa(R.hypo, 'class', 'pe-hypo' + (st.crh > 0.3 && st.brake < 0.5 ? ' is-on' : ''));
-        sa(R.pita, 'class', 'pe-pita' + (st.pit && st.stop ? ' is-dead' : st.pit ? ' is-dead' : st.acth > 0.3 && st.brake < 0.5 ? ' is-on' : ''));
+        sa(R.pita, 'class', 'pe-pita' + (st.pit ? ' is-dead' : st.acth > 0.3 && st.brake < 0.5 ? ' is-on' : ''));
         sa(R.adr, 'class', st.adr ? 'is-dead' : st.cort > 0.3 ? 'is-on' : '');
         sa(R.liver, 'class', 'pe-liverS' + (st.glu > 0.4 ? ' is-on' : ''));
         so(R.b1, f1(st.brake)); so(R.b2, f1(st.brake));
       },
-      cut: function(b){ return ''; },
+      cut: function(){ return ''; },
       tokenRole: function(st){ return role(st.v); },
       trailFor: function(st){ return [[0, 0.8, 'aff'], [0.8, 2.85, 'crh'], [2.85, 3.9, 'acth'], [3.9, 6, 'cort']]; },
       labels: function(st, E){
-        var L = [
-          { key: 'hypo', text: 'Hypothalamus', role: 'crh', at: [150, 200], side: ['l', 'ul', 'u'], lead: true },
-          { key: 'pit', text: 'Pituitary', role: 'acth', at: [262, 404], side: ['d', 'dl', 'dr'], lead: true },
-          { key: 'adr', text: 'Adrenal cortex', role: 'cort', at: [612, 312], side: ['r', 'dr', 'd'], lead: true },
-          { key: 'liver', text: 'Liver', role: 'glu', at: [622, 232], side: ['r', 'u'], lead: true }
+        var L = E.L, out = [
+          { key: 'hypo', text: 'Hypothalamus', role: 'crh', at: T(L, [150, 200, 'mag']), side: ['l', 'ul', 'u'], lead: true },
+          { key: 'pit', text: 'Pituitary', role: 'acth', at: T(L, [276, 416, 'mag']), side: ['d', 'dr', 'dl'], lead: true },
+          { key: 'adr', text: 'Adrenal cortex', role: 'cort', at: T(L, [36, 248, 'person']), side: ['r', 'dr', 'ur'], lead: true },
+          { key: 'liver', text: 'Liver', role: 'glu', at: T(L, [30, 168, 'person']), side: ['r', 'ur', 'u'], lead: true }
         ];
-        var CUR = [['Stress', 'aff'], ['CRH', 'crh'], ['CRH', 'crh'], ['ACTH', 'acth'], ['Cortisol', 'cort'], ['Glucose up', 'glu'], ['Cortisol brakes', 'cort']][st.k];
-        if(st.stop) CUR = st.stop.id === 'pit' ? ['No ACTH', 'bad'] : ['No cortisol', 'bad'];
-        var p = this.route.at(st.v);
-        if(!(st.k === 5 && st.glu < 0.5) && !(st.k === 6 && st.brake < 0.5)) L.push({ key: 'cur', text: CUR[0], role: CUR[1], at: p, side: ['r', 'u', 'd', 'l'], lead: false, strong: true });
-        if(st.stop && st.pile > 0.5) L.push({ key: 'pile', text: st.stop.id === 'pit' ? 'CRH builds up' : 'ACTH builds up', role: st.stop.id === 'pit' ? 'crh' : 'acth', at: st.stop.id === 'pit' ? [236, 304] : [470, 206], side: st.stop.id === 'pit' ? ['l', 'r'] : ['u', 'd'], strong: true });
-        return L;
+        // the strong label names what the token is now: the hormone it carries
+        var name = st.v < 0.8 ? 'Stress' : st.v < 2.85 ? 'CRH' : st.v < 3.9 ? 'ACTH' : 'Cortisol', rl = role(st.v);
+        if(st.k === 6 && st.brake >= 0.5) name = 'Cortisol brakes';
+        if(st.stop){ name = st.stop.id === 'pit' ? 'CRH' : 'ACTH'; rl = st.stop.id === 'pit' ? 'crh' : 'acth'; }
+        if(!(st.k === 6 && st.brake < 0.5 && !st.stop)) out.push({ key: 'cur', text: name, role: rl, at: this.route.at(st.v), side: ['r', 'u', 'd', 'l'], strong: true });
+        // glucose stays at the liver, where it is released
+        if(st.glu >= 0.5) out.push({ key: 'glu', text: 'Glucose up', role: 'glu', at: T(L, [-40, 210, 'person']), side: ['l', 'dl', 'd'], lead: true, strong: true });
+        if(st.stop && st.pile > 0.5) out.push({ key: 'pile', text: st.stop.id === 'pit' ? 'CRH builds up' : 'ACTH builds up', role: st.stop.id === 'pit' ? 'crh' : 'acth', at: st.stop.id === 'pit' ? T(L, [238, 300, 'mag']) : gap(L)[4], side: st.stop.id === 'pit' ? ['l', 'u'] : ['u', 'd'], lead: true, strong: true });
+        return out;
       },
       words: function(st){
         if(st.stop) return st.stop.id === 'pit'
@@ -555,54 +667,69 @@
 
   /* ------------------------------------------------------------------ 4. Synapse: chemical synaptic transmission */
   (function(){
-    var segs = [
-      [[190, 30], [204, 110], [262, 190], [236, 286], [222, 312]],
-      [[222, 312], [250, 304], [276, 300]],
-      [[276, 300], [296, 336]],
-      [[296, 336], [338, 350]],
-      [[338, 350], [340, 374]],
-      [[340, 374], [384, 396], [430, 414]],
-      [[430, 414], [540, 448], [628, 470]],
-      [[628, 470], [664, 472], [704, 472]]
-    ];
-    var R0 = new Route(segs);
-    function role(v){ return v < 0.9 ? 'sig' : v < 1.9 ? 'ca' : v < 4.9 ? 'nt' : v < 6.95 ? 'na' : 'sig'; }
+    // syn: the terminal, cleft and receptor proteins (their own coordinates); tz: the trigger zone, its threshold bar
+    // and the axon (centred on the trigger zone); n1, n2: the two neighbouring terminals
+    var LAY = {
+      tall: { w: 600, h: 600, g: { syn: [-64, 18, 1], tz: [500, 520, 1], n1: [-46, 18, 1], n2: [-108, 18, 1] } },
+      wide: { w: 1080, h: 540, g: { syn: [140, 0, 1], tz: [968, 452, 1], n1: [40, 0, 1], n2: [196, 0, 1] } }
+    };
     var VES = [[200, 170], [250, 140], [300, 160], [350, 130], [390, 180], [330, 220], [270, 230], [420, 240]];
     var DOCK = [[276, 300], [340, 300], [400, 300]];
     var REC = [[296, 354], [340, 354], [384, 354]];
+    function role(v){ return v < 0.9 ? 'sig' : v < 1.9 ? 'ca' : v < 4.9 ? 'nt' : v < 6.95 ? 'na' : 'sig'; }
+    function post(L){
+      // the postsynaptic neuron: its membrane under the cleft, narrowing to the trigger zone and the axon
+      var m = T(L, [0, 352, 'syn'])[1], z = T(L, [0, 0, 'tz']), w = L.w, h = L.h;
+      return 'M0,' + f1(m) + ' H' + f1(z[0] - 150) + ' C' + f1(z[0] - 60) + ',' + f1(m + 4) + ' ' + f1(z[0] - 30) + ',' + f1(z[1] - 70) + ' ' + f1(z[0] - 8) + ',' + f1(z[1] - 22) +
+        ' C' + f1(z[0] + 4) + ',' + f1(z[1] - 16) + ' ' + f1(z[0] + 30) + ',' + f1(z[1] - 16) + ' ' + f1(w) + ',' + f1(z[1] - 16) + ' V' + f1(z[1] + 16) +
+        ' C' + f1(z[0] + 30) + ',' + f1(z[1] + 16) + ' ' + f1(z[0] + 4) + ',' + f1(z[1] + 16) + ' ' + f1(z[0] - 8) + ',' + f1(z[1] + 24) + ' C' + f1(z[0] - 30) + ',' + f1(z[1] + 50) + ' ' + f1(z[0] - 40) + ',' + f1(h) + ' ' + f1(z[0] - 44) + ',' + f1(h) + ' H0 Z';
+    }
     SCENES.push({
       id: 'synapse', tab: 'Synapse', short: 'Synapse', path: 'synaptic-transmission',
       purpose: 'Carry a signal across a chemical synapse',
       cue: 'Drag the signal', token: 'the signal', thing: 'signal',
-      route: R0, last: 8,
+      layouts: LAY, last: 8,
+      segs: function(L){
+        var z = T(L, [0, 0, 'tz']), e = T(L, [0, 352, 'syn']);
+        return [
+          // the action potential runs along the terminal's membrane to the calcium channel
+          TS(L, [[174, 64, 'syn'], [170, 110, 'syn'], [156, 170, 'syn'], [150, 230, 'syn'], [154, 278, 'syn'], [176, 304, 'syn'], [208, 312, 'syn']]),
+          TS(L, [[208, 312, 'syn'], [240, 306, 'syn'], [276, 300, 'syn']]),
+          TS(L, [[276, 300, 'syn'], [296, 336, 'syn']]),
+          TS(L, [[296, 336, 'syn'], [338, 350, 'syn']]),
+          TS(L, [[338, 350, 'syn'], [340, 374, 'syn']]),
+          TS(L, [[340, 374, 'syn'], [384, 396, 'syn'], [430, 414, 'syn']]),
+          TS(L, [[430, 414, 'syn']]).concat(bow(T(L, [470, 426, 'syn']), [z[0] - 16, z[1] - 4], 20, 8)).concat([[z[0], z[1]]]),
+          [[z[0], z[1]], [z[0] + 24, z[1]], [z[0] + 52, z[1]]]
+        ];
+      },
       breaks: [
-        { id: 'ca', at: 0.95, place: [222, 318], off: [-1, 0], tag: 'Blocked', label: 'Block', aria: 'Block the calcium channels', name: 'Calcium channels blocked', step: 1 },
-        { id: 'rec', at: 3.95, place: [384, 360], off: [1, 0], tag: 'Blocked', label: 'Block', aria: 'Block the receptor proteins', name: 'Receptor proteins blocked', step: 4 }
+        { id: 'ca', stopV: 0.6, place: function(L){ return T(L, [222, 344, 'syn']); }, off: [0, 1], tag: 'Blocked', label: 'Block', aria: 'Block the calcium channels', name: 'Calcium channels blocked', step: 1, mark: function(L){ return T(L, [222, 318, 'syn']); } },
+        { id: 'rec', stopV: 3.55, place: function(L){ return T(L, [430, 372, 'syn']); }, off: [1, 0], tag: 'Blocked', label: 'Block', aria: 'Block the receptor proteins', name: 'Receptor proteins blocked', step: 4, mark: function(L){ return T(L, [296, 372, 'syn']); } }
       ],
       take: 'Electrical, then chemical, then electrical again.',
       art: function(E){
-        var s = '<defs><radialGradient id="pe-term" cx="0.45" cy="0.35" r="0.75"><stop offset="0" stop-color="#FDF3E3"/><stop offset="1" stop-color="#F1DDBF"/></radialGradient>' +
+        var L = E.L, s = '<defs><radialGradient id="pe-term" cx="0.45" cy="0.35" r="0.75"><stop offset="0" stop-color="#FDF3E3"/><stop offset="1" stop-color="#F1DDBF"/></radialGradient>' +
           '<linearGradient id="pe-post" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3E4D2"/><stop offset="1" stop-color="#E7CFB4"/></linearGradient>' +
           '<radialGradient id="pe-epsp" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#F2B33D" stop-opacity=".7"/><stop offset="1" stop-color="#F2B33D" stop-opacity="0"/></radialGradient></defs>';
-        s += '<rect class="pe-ecf" x="0" y="0" width="' + W + '" height="' + H + '"/>';
-        // the postsynaptic neuron: its body below, narrowing to the trigger zone and its axon on the right
-        s += '<path class="pe-post" d="M0,352 C120,350 220,350 460,352 C560,354 620,380 660,430 C676,450 690,456 720,456 V490 C690,490 676,500 664,520 L650,540 H0 Z"/>';
-        s += '<path class="pe-myel" d="M690,456 h30 v34 h-30 Z"/>';
-        s += '<ellipse class="pe-epsp" data-r="epsp" cx="340" cy="420" rx="10" ry="10"/>';
-        s += '<path class="pe-tz" data-r="tz" d="M640,446 C652,460 660,470 664,480 C660,492 652,504 640,512"/>';
-        // two neighbouring terminals (they fire with this one)
-        s += '<g data-r="nb"><path class="pe-term2" d="M30,346 C10,320 20,270 60,262 C100,256 128,290 120,330 C118,342 112,350 104,352 Z"/><path class="pe-term2" d="M540,354 C536,320 560,290 600,292 C636,296 650,330 632,366 Z"/></g>';
-        // the presynaptic axon and its terminal
-        s += '<path class="pe-term" d="M164,0 H224 C230,60 250,86 300,92 C400,96 500,140 506,220 C510,280 470,318 440,320 L190,320 C150,318 134,280 140,230 C146,180 170,120 166,60 Z"/>';
-        s += '<path class="pe-myel" d="M160,0 h68 v26 h-68 Z"/>';
-        VES.forEach(function(v0, i){ s += '<g class="pe-ves"><circle cx="' + v0[0] + '" cy="' + v0[1] + '" r="17"/><circle class="pe-ntd" cx="' + (v0[0] - 5) + '" cy="' + (v0[1] - 3) + '" r="3.5"/><circle class="pe-ntd" cx="' + (v0[0] + 5) + '" cy="' + (v0[1] + 4) + '" r="3.5"/></g>'; });
-        DOCK.forEach(function(d, i){ s += '<g class="pe-ves" data-r="dock' + i + '"><circle cx="' + d[0] + '" cy="' + d[1] + '" r="15"/></g>'; });
-        // calcium channels in the terminal's membrane, reuptake transporter, receptor proteins with their channels
-        s += '<g data-r="cach"><path class="pe-cach" d="M206,306 h10 v26 h-10 Z M228,306 h10 v26 h-10 Z"/><path class="pe-cach" d="M450,306 h10 v26 h-10 Z M472,306 h10 v26 h-10 Z"/></g>';
-        s += '<path class="pe-upt" d="M432,312 c0,-10 18,-10 18,0 v12 h-18 Z"/>';
-        REC.forEach(function(r, i){ s += '<g data-r="rec' + i + '"><path class="pe-rec" d="M' + (r[0] - 14) + ',' + (r[1] - 6) + ' h10 v30 h-10 Z M' + (r[0] + 4) + ',' + (r[1] - 6) + ' h10 v30 h-10 Z"/><path class="pe-site" d="M' + (r[0] - 14) + ',' + (r[1] - 6) + ' a7,7 0 0 1 10,0"/></g>'; });
+        s += '<rect class="pe-ecf" x="0" y="0" width="' + L.w + '" height="' + L.h + '"/>';
+        s += '<path class="pe-post" d="' + post(L) + '"/>';
+        var z = T(L, [0, 0, 'tz']);
+        s += '<path class="pe-myel" d="M' + f1(z[0] + 26) + ',' + f1(z[1] - 16) + ' h' + f1(L.w - z[0] - 26) + ' v32 h-' + f1(L.w - z[0] - 26) + ' Z"/>';
+        s += '<ellipse class="pe-epsp" data-r="epsp" cx="0" cy="0" rx="10" ry="10"/>';
+        s += G(L, 'tz', '<path class="pe-tz" data-r="tz" d="M-14,-26 C-4,-14 4,-6 6,0 C4,6 -4,14 -14,26"/>');
+        // the threshold bar by the trigger zone: the summed EPSPs, with threshold marked
+        s += G(L, 'tz', '<rect class="pe-gauge" x="-62" y="-124" width="16" height="70" rx="8"/><rect class="pe-gaugef" data-r="gauge" x="-62" y="-54" width="16" height="0" rx="8"/><path class="pe-thr" d="M-70,-108 h32"/>');
+        s += G(L, 'n1', '<path class="pe-term2" d="M30,346 C10,320 20,270 60,262 C100,256 128,290 120,330 C118,342 112,350 104,352 Z"/>');
+        s += G(L, 'n2', '<path class="pe-term2" d="M540,354 C536,320 560,290 600,292 C636,296 650,330 632,366 Z"/>');
+        var t = '<path class="pe-term" d="M164,-40 H224 C230,60 250,86 300,92 C400,96 500,140 506,220 C510,280 470,318 440,320 L190,320 C150,318 134,280 140,230 C146,180 170,120 166,60 Z"/>';
+        VES.forEach(function(v0){ t += '<g class="pe-ves"><circle cx="' + v0[0] + '" cy="' + v0[1] + '" r="17"/><circle class="pe-ntd" cx="' + (v0[0] - 5) + '" cy="' + (v0[1] - 3) + '" r="3.5"/><circle class="pe-ntd" cx="' + (v0[0] + 5) + '" cy="' + (v0[1] + 4) + '" r="3.5"/></g>'; });
+        DOCK.forEach(function(d, i){ t += '<g class="pe-ves" data-r="dock' + i + '"><circle cx="' + d[0] + '" cy="' + d[1] + '" r="15"/><circle class="pe-ntd" cx="' + (d[0] - 5) + '" cy="' + (d[1] - 3) + '" r="3.5"/><circle class="pe-ntd" cx="' + (d[0] + 5) + '" cy="' + (d[1] + 4) + '" r="3.5"/></g>'; });
+        t += '<g data-r="cach"><path class="pe-cach" d="M206,306 h10 v26 h-10 Z M228,306 h10 v26 h-10 Z"/><path class="pe-cach" d="M450,306 h10 v26 h-10 Z M472,306 h10 v26 h-10 Z"/></g>';
+        t += '<path class="pe-upt" d="M432,312 c0,-10 18,-10 18,0 v12 h-18 Z"/>';
+        REC.forEach(function(r, i){ t += '<g data-r="rec' + i + '"><path class="pe-rec" d="M' + (r[0] - 14) + ',' + (r[1] - 6) + ' h10 v30 h-10 Z M' + (r[0] + 4) + ',' + (r[1] - 6) + ' h10 v30 h-10 Z"/><path class="pe-site" d="M' + (r[0] - 14) + ',' + (r[1] - 6) + ' a7,7 0 0 1 10,0"/></g>'; });
+        s += G(L, 'syn', t);
         s += '<g data-r="ions"></g><g data-r="nts"></g><g data-r="cuts"></g>';
-        s += '<rect class="pe-gauge" x="672" y="380" width="16" height="64" rx="8"/><rect class="pe-gaugef" data-r="gauge" x="672" y="444" width="16" height="0" rx="8"/><path class="pe-thr" d="M666,396 h28"/>';
         return s;
       },
       fxInit: function(fx, R){
@@ -616,7 +743,7 @@
       },
       state: function(v, br){
         var st = { v: v, k: Math.min(8, Math.floor(v + 0.12)), stop: null, ca: !!(br && br.id === 'ca'), rec: !!(br && br.id === 'rec') };
-        if(br && v >= Math.min((br.lim != null ? br.lim : br.at) - 0.01, br.step - 0.12)) st.stop = br;
+        if(br && v >= Math.min(br.stopV - 0.01, br.step - 0.12)) st.stop = br;
         st.caIn = st.ca ? 0 : bump(v, 0.7, 0.88, 1.88, 2.2);
         st.fuse = st.ca ? 0 : ramp(v, 1.7, 1.88);
         st.release = st.ca ? 0 : ramp(v, 1.7, 1.88);
@@ -625,55 +752,61 @@
         st.open = st.ca || st.rec ? 0 : ramp(v, 4.6, 4.88) * (1 - ramp(v, 7.88, 8));
         st.naIn = st.open * bump(v, 4.6, 4.88, 6.0, 6.6);
         st.epsp = st.ca || st.rec ? 0 : ramp(v, 5.6, 5.88) * (1 - ramp(v, 7.88, 8));
-        st.sum = st.ca || st.rec ? 0 : ramp(v, 5.88, 6.88);
-        st.fire = st.ca || st.rec ? 0 : bump(v, 6.75, 6.88, 7.88, 8.0);
+        // the EPSPs add at the trigger zone through step 8's words; threshold is reached at the end of that, then it fires
+        st.sum = st.ca || st.rec ? 0 : ramp(v, 6.86, 7.3);
+        st.fire = st.ca || st.rec ? 0 : bump(v, 7.22, 7.3, 7.88, 8.0);
         st.clear = st.ca ? 0 : ramp(v, 7.6, 7.88);
         return st;
       },
       paint: function(R, st, E){
-        var i, kids = R.ions.childNodes;
-        for(i = 0; i < 6; i++){ var c = kids[i], x0 = i < 3 ? 222 : 466, t = ramp(st.v, 0.7 + i * 0.03, 1.4); sa(c, 'cx', f1(x0 + (i % 3 - 1) * 9)); sa(c, 'cy', f1(lerp(346, 290, t))); so(c, f1(st.caIn)); }
-        for(i = 0; i < 5; i++){ var n = kids[6 + i], r = REC[i % 3], t2 = ramp(st.v, 4.7 + i * 0.05, 5.4); sa(n, 'cx', f1(r[0] + (i > 2 ? 4 : -4))); sa(n, 'cy', f1(lerp(340, 392, t2))); so(n, f1(st.naIn)); }
+        var L = E.L, i, kids = R.ions.childNodes, q;
+        for(i = 0; i < 6; i++){ var x0 = i < 3 ? 222 : 466, t = ramp(st.v, 0.7 + i * 0.03, 1.4); q = T(L, [x0 + (i % 3 - 1) * 9, lerp(346, 290, t), 'syn']); sa(kids[i], 'cx', f1(q[0])); sa(kids[i], 'cy', f1(q[1])); so(kids[i], f1(st.caIn)); }
+        for(i = 0; i < 5; i++){ var r = REC[i % 3], t2 = ramp(st.v, 4.7 + i * 0.05, 5.4); q = T(L, [r[0] + (i > 2 ? 4 : -4), lerp(340, 392, t2), 'syn']); sa(kids[6 + i], 'cx', f1(q[0])); sa(kids[6 + i], 'cy', f1(q[1])); so(kids[6 + i], f1(st.naIn)); }
         for(i = 0; i < 3; i++){ var d = R['dock' + i]; so(d, f1(1 - st.fuse)); sa(d, 'transform', 'translate(0,' + f1(st.fuse * 10) + ')'); }
         var nts = R.nts.childNodes;
         for(i = 0; i < 9; i++){
-          var m = nts[i], dk = DOCK[i % 3], rc = REC[i % 3], ang = i * 0.7;
+          var dk = DOCK[i % 3], rc = REC[i % 3], ang = i * 0.7;
           var x = lerp(dk[0], rc[0] + Math.cos(ang) * (st.rec ? 14 : 3), st.cross), y = lerp(dk[1] + 12, st.bind > 0.5 && i < 3 ? rc[1] - 4 : 338 + (i % 3) * 4, st.cross);
-          // cleared: taken back up into the terminal and broken down by enzymes in the cleft
           if(st.clear > 0){ x = lerp(x, i % 2 ? 441 : x, st.clear); y = lerp(y, i % 2 ? 314 : y, st.clear); }
-          sa(m, 'cx', f1(x)); sa(m, 'cy', f1(y));
-          so(m, f1(st.release * (1 - st.clear * (i % 2 ? 0.2 : 1)) * (st.clear > 0.95 ? 0 : 1)));
+          q = T(L, [x, y, 'syn']);
+          sa(nts[i], 'cx', f1(q[0])); sa(nts[i], 'cy', f1(q[1]));
+          so(nts[i], f1(st.release * (1 - st.clear * (i % 2 ? 0.2 : 1)) * (st.clear > 0.95 ? 0 : 1)));
         }
         for(i = 0; i < 3; i++) sa(R['rec' + i], 'class', st.rec ? 'is-blk' : st.open > 0.5 ? 'is-open' : st.bind > 0.5 ? 'is-bound' : '');
         sa(R.cach, 'class', st.ca ? 'is-blk' : st.caIn > 0.3 ? 'is-open' : '');
-        sa(R.nb, 'class', st.sum > 0.1 ? 'is-on' : '');
-        var rr = 10 + st.epsp * 170;
-        sa(R.epsp, 'rx', f1(rr)); sa(R.epsp, 'ry', f1(rr * 0.5)); sa(R.epsp, 'cx', f1(340 + st.epsp * 120)); sa(R.epsp, 'cy', f1(420 + st.epsp * 20)); so(R.epsp, f1(st.epsp));
-        var gh = 60 * clamp(st.sum * 0.78 + st.fire * 0.22, 0, 1);
-        sa(R.gauge, 'y', f1(444 - gh)); sa(R.gauge, 'height', f1(gh));
+        if(!R.nbs) R.nbs = [].slice.call(R.cach.ownerSVGElement.querySelectorAll('.pe-term2'));
+        R.nbs.forEach(function(n){ sa(n, 'class', st.sum > 0.05 ? 'pe-term2 is-on' : 'pe-term2'); });
+        var a = T(L, [340, 420, 'syn']), z = T(L, [0, 0, 'tz']), rr = 10 + st.epsp * 160;
+        sa(R.epsp, 'rx', f1(rr)); sa(R.epsp, 'ry', f1(rr * 0.5)); sa(R.epsp, 'cx', f1(lerp(a[0], z[0] - 80, st.epsp * 0.6))); sa(R.epsp, 'cy', f1(lerp(a[1], z[1] - 20, st.epsp * 0.6))); so(R.epsp, f1(st.epsp));
+        // the bar: empty until the EPSPs add; it reaches the threshold mark exactly when threshold is reached, then fills
+        var level = st.sum * 54 + st.fire * 16;
+        sa(R.gauge, 'y', f1(-54 - level)); sa(R.gauge, 'height', f1(level));
         sa(R.tz, 'class', 'pe-tz' + (st.fire > 0.3 ? ' is-on' : ''));
       },
-      cut: function(b){ return ''; },
+      cut: function(){ return ''; },
       tokenRole: function(st){ return st.stop ? (st.stop.id === 'ca' ? 'sig' : 'nt') : role(st.v); },
       trailFor: function(st){ return [[0, 0.9, 'sig'], [0.9, 1.9, 'ca'], [1.9, 4.9, 'nt'], [4.9, 6.95, 'na'], [6.95, 8, 'sig']]; },
       labels: function(st, E){
-        var L = [
-          { key: 'term', text: 'Axon terminal', role: 'sig', at: [430, 150], side: ['r', 'u'] },
-          { key: 'ca', text: 'Ca²⁺ channel', role: 'ca', at: [472, 318], side: ['r', 'd', 'ur'], lead: true },
-          { key: 'rec', text: 'Receptor proteins', role: 'nt', at: [340, 372], side: ['d', 'dl', 'l'], lead: true },
-          { key: 'tz', text: 'Trigger zone', role: 'na', at: [654, 476], side: ['d', 'l', 'u'], lead: true }
+        var L = E.L, out = [
+          { key: 'thr', text: 'Threshold', role: 'bad', at: T(L, [-70, -108, 'tz']), side: ['l', 'u', 'd'], lead: true },
+          { key: 'term', text: 'Axon terminal', role: 'sig', at: T(L, [430, 150, 'syn']), side: ['r', 'u'] },
+          { key: 'ca', text: 'Ca²⁺ channel', role: 'ca', at: T(L, [472, 318, 'syn']), side: ['r', 'd', 'ur'], lead: true },
+          { key: 'rec', text: 'Receptor proteins', role: 'nt', at: T(L, [340, 372, 'syn']), side: ['d', 'dl', 'l'], lead: true },
+          { key: 'tz', text: 'Trigger zone', role: 'na', at: T(L, [-8, 18, 'tz']), side: ['d', 'dl', 'l'], lead: true }
         ];
-        var CUR = [['Action potential', 'sig'], ['Ca²⁺ in', 'ca'], ['Vesicle fuses', 'nt'], ['Neurotransmitter', 'nt'], ['Binds', 'nt'], ['Na⁺ in', 'na'], ['EPSP', 'na'], ['Threshold', 'na'], ['Cleared', 'nt']][st.k];
-        if(st.stop) CUR = st.stop.id === 'ca' ? ['No Ca²⁺ in', 'bad'] : ['Cannot bind', 'bad'];
-        if(st.k === 8){ if(st.clear > 0.5) L.push({ key: 'cur', text: CUR[0], role: CUR[1], at: [420, 338], side: ['u', 'r'], lead: true, strong: true }); }
-        else if(!(st.k === 7 && st.fire < 0.3 && !st.stop)) L.push({ key: 'cur', text: CUR[0], role: CUR[1], at: this.route.at(st.v), side: ['r', 'l', 'u', 'd'], strong: true });
-        if(st.fire > 0.3 || (st.k === 8 && !st.stop)) L.push({ key: 'fire', text: 'Fires', role: 'sig', at: [690, 472], side: ['u', 'd'], strong: true });
-        return L;
+        var CUR = [['Action potential', 'sig'], ['Ca²⁺ in', 'ca'], ['Vesicle fuses', 'nt'], ['Neurotransmitter', 'nt'], ['Binds', 'nt'], ['Na⁺ in', 'na'], ['EPSP', 'na'], ['EPSPs add', 'na'], ['Cleared', 'nt']][st.k];
+        if(st.stop) CUR = st.stop.id === 'ca' ? ['Action potential', 'sig'] : ['Neurotransmitter', 'nt'];
+        if(st.k === 8 && !st.stop){ if(st.clear > 0.5) out.push({ key: 'cur', text: CUR[0], role: CUR[1], at: T(L, [420, 338, 'syn']), side: ['u', 'r'], lead: true, strong: true }); }
+        else out.push({ key: 'cur', text: CUR[0], role: CUR[1], at: this.route.at(st.v), side: ['r', 'l', 'u', 'd'], strong: true });
+        if(st.fire > 0.3 || (st.k === 8 && !st.stop)) out.push({ key: 'fire', text: 'Fires', role: 'sig', at: T(L, [40, 0, 'tz']), side: ['u', 'd'], strong: true });
+        return out;
       },
       words: function(st){
         if(st.stop) return st.stop.id === 'ca'
           ? [{ t: 'Ca²⁺ channels blocked', say: 'calcium channels blocked', role: 'bad' }, { t: 'no Ca²⁺ in', say: 'no calcium in', role: 'ca' }, { t: 'no transmitter released', role: 'nt' }]
           : [{ t: 'Receptor proteins blocked', role: 'bad' }, { t: 'transmitter cannot bind', role: 'nt' }, { t: 'no EPSP', role: 'na' }];
+        if(st.k === 7) return st.sum < 0.999 ? [{ t: 'EPSPs from three synapses', role: 'na' }, { t: 'add up at the trigger zone', role: 'na' }]
+          : [{ t: 'EPSPs add up', role: 'na' }, { t: 'threshold reached', role: 'na' }, { t: 'neuron fires', role: 'sig' }];
         return [
           [{ t: 'Action potential', role: 'sig' }, { t: 'reaches the axon terminal', role: 'sig' }],
           [{ t: 'Depolarization', role: 'sig' }, { t: 'Ca²⁺ channels open', say: 'calcium channels open', role: 'ca' }, { t: 'Ca²⁺ rushes in', say: 'calcium rushes in', role: 'ca' }],
@@ -682,7 +815,7 @@
           [{ t: 'Neurotransmitter', role: 'nt' }, { t: 'binds receptor proteins', role: 'nt' }],
           [{ t: 'Receptor proteins', role: 'nt' }, { t: 'channels open', role: 'na' }, { t: 'Na⁺ flows in', say: 'sodium flows in', role: 'na' }],
           [{ t: 'Na⁺ in', say: 'sodium in', role: 'na' }, { t: 'membrane depolarizes: EPSP', role: 'na' }],
-          [{ t: 'EPSPs add up', role: 'na' }, { t: 'threshold reached', role: 'na' }, { t: 'neuron fires', role: 'sig' }],
+          null,
           [{ t: 'Reuptake and enzymes', role: 'nt' }, { t: 'transmitter cleared', role: 'nt' }, { t: 'synapse ready again', role: 'sig' }]
         ][st.k];
       }
@@ -726,7 +859,19 @@
 
     var R = {}, handle = null, cue = null, pills = [], lastSt = null;
     /* ---- sizes: font in picture units so labels read about 13 px everywhere */
-    function scale(){ var r = svg.getBoundingClientRect(); return r.width ? r.width / W : 1; }
+    function scale(){ var r = svg.getBoundingClientRect(); return r.width ? r.width / (E.W || W) : 1; }
+    /* the composition: wide (2:1) when the stage is a desktop's, tall (1:1) on a phone or an upright tablet */
+    function pickLayout(){ return (stage.clientWidth || 0) >= 900 ? 'wide' : 'tall'; }
+    function layout(){
+      var id = pickLayout(), L = cur.layouts[id];
+      L.id = id; E.L = L; E.W = L.w; E.H = L.h;
+      svg.setAttribute('viewBox', '0 0 ' + L.w + ' ' + L.h); pic.setAttribute('data-lay', id);
+      if(cur.Lid === id && cur.route) return false;
+      cur.Lid = id; cur.L = L; cur.route = new Route(cur.segs(L));
+      (cur.breaks || []).forEach(function(b){ b._cut = null; });
+      trail._h = null;
+      return true;
+    }
     function metrics(){ var k = scale() || 1; E.k = k; E.fs = clamp((k < 0.8 ? 12.5 : 13.5) / k, 10, 27); E.gap = 4 / k; }
 
     /* ---- the picture of the current screen */
@@ -741,7 +886,7 @@
     }
     function paintCuts(){
       if(!R.cuts) return;
-      R.cuts.innerHTML = cur.br ? cur.cut(cur.br, R, cur.route.at) : '';
+      R.cuts.innerHTML = cur.br && !cur.br.mark ? cur.cut(cur.br, R, cur.route.at, cutV(cur.br), E) : '';
     }
 
     /* ---- labels: pooled pills placed clear of each other, the token and the controls */
@@ -790,7 +935,7 @@
           var cx = at[0] + o2[0] * (w / 2 + d * 0.6) * (o2[0] ? 1 : 0), cy = at[1] + o2[1] * (h / 2 + d);
           if(!o2[0]) cx = at[0];
           var b = [cx - w / 2, cy - h / 2, cx + w / 2, cy + h / 2];
-          if(b[0] < 4 || b[2] > W - 4 || b[1] < 4 || b[3] > H - 4) continue;
+          if(b[0] < 4 || b[2] > E.W - 4 || b[1] < 4 || b[3] > E.H - 4) continue;
           if(placed.some(function(x){ return inter(x, b, g); })) continue;
           best = { b: b, sd: q.sd, dd: q.dd };
         }
@@ -801,13 +946,13 @@
             for(var a = 0; a < nn; a++){
               var ang = a / nn * Math.PI * 2, cx2 = at[0] + Math.cos(ang) * (rr + w * 0.35 * Math.abs(Math.cos(ang))), cy2 = at[1] + Math.sin(ang) * rr;
               var b2 = [cx2 - w / 2, cy2 - h / 2, cx2 + w / 2, cy2 + h / 2];
-              if(b2[0] < 4 || b2[2] > W - 4 || b2[1] < 4 || b2[3] > H - 4) continue;
+              if(b2[0] < 4 || b2[2] > E.W - 4 || b2[1] < 4 || b2[3] > E.H - 4) continue;
               if(placed.some(function(x){ return inter(x, b2, g); })) continue;
               var dd2 = Math.hypot(cx2 - at[0], cy2 - at[1]);
               if(dd2 < bestD){ bestD = dd2; best = { b: b2, sd: 'u', dd: 99, far: true }; }
             }
           }
-          if(!best){ var bx = clamp(at[0] - w / 2, 4, W - 4 - w), by = clamp(at[1] - h * 1.6, 4, H - 4 - h); best = { b: [bx, by, bx + w, by + h], sd: 'u', dd: 1 }; }
+          if(!best){ var bx = clamp(at[0] - w / 2, 4, E.W - 4 - w), by = clamp(at[1] - h * 1.6, 4, E.H - 4 - h); best = { b: [bx, by, bx + w, by + h], sd: 'u', dd: 1 }; }
           if(best.far) L = Object.assign({}, L, { lead: true });
         }
         if(!best.far) lastPlace[cur.id + ':' + L.key + ':' + L.text] = { sd: best.sd, dd: best.dd };
@@ -886,7 +1031,7 @@
       ctrlDirty();
       var k = E.k || scale(), show = seenEnd();
       pills.forEach(function(x){
-        var p = x.b.place || cur.route.at(x.b.at), on = cur.br && cur.br.id === x.b.id;
+        var p = placeOf(x.b), on = cur.br && cur.br.id === x.b.id;
         x.el.hidden = !show || !!cur.br;
         x.el.setAttribute('aria-pressed', String(!!on));
         x.el.classList.toggle('is-done', !!on);
@@ -903,6 +1048,7 @@
       // a new signal starts if the old one had already passed the break (the cut does not undo what happened)
       var m = lim();
       if(view.v > (b.pass ? b.at : m)){ jumpTo(0, true); }
+      b._cut = null;
       paintCuts(); placePills(); wKey = ''; railKey = ''; draw();
       say(b.name + '. Drag the ' + cur.thing + ' again.');
       var hk = handle && handle.knob; if(hk) try{ hk.focus({ preventScroll: true }); }catch(e){}
@@ -917,18 +1063,20 @@
     });
 
     /* ---- the knob on the route */
-    // a stopped run halts a knob's width before the break, so the cut, damage or block stays in sight
-    function lim(){
-      var b = cur.br;
-      if(!b || b.pass) return cur.last;
-      var key = cur.id + b.id + (E.k || 1).toFixed(3);
-      if(b._key !== key){
-        var p0 = cur.route.at(b.at), need = 30 / (E.k || 1) + 6, v = b.at;
-        while(v > 0 && Math.hypot(cur.route.at(v)[0] - p0[0], cur.route.at(v)[1] - p0[1]) < need) v -= 0.01;
-        b.lim = Math.max(0, +v.toFixed(2)); b._key = key;
-      }
-      return b.lim;
+    /* a broken run goes as far as the thing really goes (the break's stopV: never before the last step that happens);
+       a cut is drawn a knob's width further down the route, so it stays in sight beside the stopped knob */
+    function lim(){ var b = cur.br; return !b || b.pass ? cur.last : b.stopV; }
+    function cutV(b){
+      if(b.pass) return b.at;
+      var key = cur.Lid + (E.k || 1).toFixed(3);
+      if(b._cut && b._cut.key === key) return b._cut.v;
+      var p0 = cur.route.at(b.stopV), need = 30 / (E.k || 1) + 10, v = Math.max(b.stopV, b.cutMin || b.stopV);
+      while(v < (b.cutMax || cur.last) && Math.hypot(cur.route.at(v)[0] - p0[0], cur.route.at(v)[1] - p0[1]) < need) v += 0.01;
+      b._cut = { key: key, v: +v.toFixed(2) };
+      return b._cut.v;
     }
+    function breakAt(b){ return b.mark ? b.mark(E.L) : b.pass ? placeOf(b) : cur.route.at(cutV(b)); }
+    function placeOf(b){ return typeof b.place === 'function' ? b.place(E.L) : b.place; }
     function makeHandle(){
       if(handle){ handle.el.remove(); handle = null; }
       handle = K.handle(layer, { key: 'anp-pathways-knob', label: 'Move ' + cur.token + ' along the ' + cur.tab.toLowerCase(), value: view.target, min: 0, max: cur.last, step: 1, chip: false,
@@ -973,8 +1121,9 @@
       var p = cur.route.at(view.v), role = cur.tokenRole ? cur.tokenRole(st) : 'tok', k = E.k || 1;
       sa(tok, 'transform', 'translate(' + f1(p[0]) + ',' + f1(p[1]) + ')');
       sa(tok, 'class', 'pe-tok is-' + role + (st.stop ? ' is-stop' : ''));
-      sa(tok.firstChild, 'r', f1(30 / k)); sa(tok.lastChild, 'r', f1(19 / k));
-      var tf = cur.tokenFill ? cur.tokenFill(st) : ''; if(tok.lastChild.style.fill !== tf) tok.lastChild.style.fill = tf;
+      // the token is a ring round the knob's clear centre, so the part acting under it stays in sight
+      sa(tok.firstChild, 'r', f1(29 / k)); sa(tok.lastChild, 'r', f1(25.5 / k)); sa(tok.lastChild, 'stroke-width', f1(5 / k));
+      var tf = cur.tokenFill ? cur.tokenFill(st) : ''; if(tok.lastChild.style.stroke !== tf) tok.lastChild.style.stroke = tf;
       // the trail: where it has been
       var tv = Math.max(0, view.v), parts = cur.trailFor ? cur.trailFor(st) : cur.trail || [[0, cur.last, role]];
       // one path per part of the trail, made once per screen and only reshaped as the token moves
@@ -987,14 +1136,15 @@
       var atEnd = !st.stop && view.v >= cur.last - 0.02;
       if(atEnd && !cur.br && !seenEnd()){ markEnd(); placePills(); }
       var LL = cur.labels(st, E);
-      if(cur.br) LL.push({ key: 'brk', text: cur.br.tag, role: 'bad', at: cur.br.place || cur.route.at(cur.br.at), side: ['u', 'd', 'l', 'r'], lead: true, strong: true });
+      if(cur.br) LL.push({ key: 'brk', text: cur.br.tag, role: 'bad', at: breakAt(cur.br), side: ['u', 'd', 'l', 'r'], lead: true, strong: true });
       placeLabels(LL);
       railPaint(st);
       var ws = cur.words(st), key = JSON.stringify(ws) + (atEnd ? '|end' : '') + (st.stop ? '|stop' : '');
       if(key !== wKey){
         wKey = key;
         cause.set(ws, st.stop ? 'What fails:' : 'Step ' + (st.k + 1) + ':');
-        if(atEnd){ cause.take(cur.take + (cur.breaks && cur.breaks.length && !cur.br ? ' Now break a part.' : '')); }
+        // the end of a run: the takeaway, or after a break what failed
+        if(atEnd){ cause.take(cur.br && cur.brokenTake ? cur.brokenTake : cur.take + (cur.breaks && cur.breaks.length && !cur.br ? ' Now break a part.' : '')); }
         svg.setAttribute('aria-label', cur.tab + '. ' + stepText(view.v));
       }
     }
@@ -1030,7 +1180,7 @@
       cur = sc; view.v = view.target = sc.v; wKey = ''; railKey = '';
       tabs.value(sc.id); head.purpose(sc.purpose); trail._h = null;
       main.setAttribute('data-scene', sc.id);
-      metrics(); ctrlDirty(); buildArt(); railBuild(); makeHandle(); makePills(); draw(); refHtml();
+      layout(); metrics(); ctrlDirty(); buildArt(); railBuild(); makeHandle(); makePills(); draw(); refHtml();
       if(user){ try{ history.replaceState(null, '', location.pathname + location.search + '#explore/' + sc.id); }catch(e){} say(sc.tab + '. ' + stepText(view.v)); }
       if(cue && cue.active()){ cue.hide(false); makeCue(); }
     }
@@ -1038,7 +1188,7 @@
     /* ---- the first visit cue and "Show me how" */
     function makeCue(){
       var p = cur.route.at(view.target);
-      cue = K.cue(layer, { key: 'anp-pathways', text: cur.cue, side: p[0] > W * 0.55 ? 'left' : 'right', at: function(){ var q = cur.route.at(view.target); return [q[0], q[1]]; } });
+      cue = K.cue(layer, { key: 'anp-pathways', text: cur.cue, side: p[0] > E.W * 0.55 ? 'left' : 'right', at: function(){ var q = cur.route.at(view.target); return [q[0], q[1]]; } });
       cue.show(); ctrlDirty();
       placeLabels(cur.labels(cur.state(view.v, cur.br), E));
       setTimeout(function(){ if(cue && cue.active()){ ctrlDirty(); draw(); } }, 450);   // once the cue has settled, labels move clear of it
@@ -1046,7 +1196,6 @@
     function hideCue(used){ if(cue && cue.active()){ cue.hide(used); ctrlDirty(); } }
     var tour = K.tour({ key: 'anp-pathways', label: 'Show me how', steps: [
       { id: 'drag', text: 'Drag along the route. Each step happens as it arrives.', target: function(){ return handle ? handle.knob : pic; } },
-      { id: 'rail', text: 'The steps it has reached are named here, in order.', target: function(){ return rail; } },
       { id: 'why', text: 'The line below says why each step causes the next.', target: function(){ return cause.el; } }],
       onClose: function(had){ if(had) try{ head.how.focus({ preventScroll: true }); }catch(e){} } });
     function tourDid(id){ if(tour.active()) tour.did(id); }
@@ -1056,9 +1205,9 @@
     var ref = document.createElement('div'); ref.className = 'ls-sec pe-ref';
     var NOTE = {
       heart: 'Blue and red are the course’s colors for oxygen poor and oxygen rich blood; real blood is never blue, and blood coming back from the body still carries about 75 percent of its oxygen. Only the route through one lung is drawn; the other lung works the same way. “Stop air” stands for any time no fresh air reaches the alveoli (choking, not breathing): the heart still pumps and blood still flows through the lungs, but it picks up no new oxygen, so the body cells get less than they need.',
-      reflex: 'The spinal cord is drawn enlarged beside the thigh to show the arc; the knee jerk runs through the lumbar cord (about L2 to L4) in the lower back. One sensory and one motor neuron stand for many. At the same time the hamstrings relax through an inhibitory interneuron, which is not drawn. Cutting a root after the signal has passed does not undo that kick; the next signal stops at the cut.',
+      reflex: 'The spinal cord is drawn enlarged beside the thigh to show the arc; the knee jerk runs through the cord segments L2 to L4, which lie inside the backbone at about the T12 and L1 vertebrae (marked), because the cord is shorter than the backbone. One sensory and one motor neuron stand for many. At the same time the hamstrings relax through an inhibitory interneuron, which is not drawn. Cutting a root after the signal has passed does not undo that kick; the next signal stops at the cut.',
       hormone: 'The hypothalamus and pituitary are enlarged in the circle. One blood vessel stands for the whole circulation: ACTH and cortisol travel through the heart and arteries to every organ. Cortisol also damps inflammation, which is not drawn. A damaged adrenal cortex is what happens in Addison disease: with cortisol low, nothing brakes the pituitary and ACTH rises very high. A damaged pituitary leaves no ACTH, so the adrenal cortex makes no cortisol, and without cortisol’s brake CRH rises.',
-      synapse: 'A synapse between two neurons with an excitatory neurotransmitter. One EPSP is far too small to reach threshold alone; two neighboring synapses fire at the same moment here, so their EPSPs add at the trigger zone (spatial summation). The bar by the trigger zone shows the sum; the red mark is threshold. The blockers act on every synapse of the cell, as a drug in the fluid around it would.'
+      synapse: 'A synapse between two neurons with an excitatory neurotransmitter. One EPSP is far too small to reach threshold alone; two neighboring synapses fire at the same moment here, so their EPSPs add at the trigger zone (spatial summation). The blockers act on every synapse of the cell, as a drug in the fluid around it would.'
     };
     function refHtml(){
       var p = cur.p, t = topicOf(p.topic), B = o.base || '../';
@@ -1077,7 +1226,7 @@
 
     /* ---- sizes */
     var rz = 0, lastW = 0;
-    function resized(){ clearTimeout(rz); rz = setTimeout(function(){ if(!stage.isConnected || !pic.offsetWidth) return; var w = pic.offsetWidth; if(w === lastW) { placePills(); if(handle) handle.place(); return; } lastW = w; metrics(); ctrlDirty(); buildArt(); draw(); placePills(); if(handle) handle.place(); if(cue && cue.active()) cue.place(); }, 60); }
+    function resized(){ clearTimeout(rz); rz = setTimeout(function(){ if(!stage.isConnected || !pic.offsetWidth) return; var w = pic.offsetWidth; if(w === lastW) { placePills(); if(handle) handle.place(); return; } lastW = w; layout(); metrics(); ctrlDirty(); buildArt(); draw(); placePills(); if(handle) handle.place(); if(cue && cue.active()) cue.place(); }, 60); }
     if(window.ResizeObserver){ var ro = new ResizeObserver(resized); ro.observe(pic); }
     window.addEventListener('resize', resized);
 

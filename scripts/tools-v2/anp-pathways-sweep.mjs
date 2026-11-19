@@ -24,9 +24,9 @@ const WIDTHS = arg('--width', '') ? [+arg('--width', '')] : ALL;
 // every step, the moments between where things change, the end, and each break (b:<id> then the token at the break)
 const STATES = {
   heart: [0, 0.6, 1, 2, 2.6, 3, 4, 4.8, 5, 6, 6.6, 7, 8, 8.6, 9, 10, 10.8, 11, 12, 13, 'b:air', 5, 11, 13],
-  reflex: [0, 0.5, 1, 2, 3, 3.3, 4, 5, 5.7, 6, 'b:dorsal', 'L', 'r', 'b:ventral', 'L'],
+  reflex: [0, 0.5, 1, 2, 3, 3.3, 4, 5, 5.7, 5.8, 6, 'b:dorsal', 'L', 'r', 'b:ventral', 'L'],
   hormone: [0, 1, 1.6, 2, 3, 4, 5, 5.2, 6, 'b:pit', 'L', 'r', 'b:adr', 'L'],
-  synapse: [0, 1, 2, 2.6, 3, 4, 4.6, 5, 6, 6.6, 7, 7.5, 8, 'b:ca', 'L', 'r', 'b:rec', 'L']
+  synapse: [0, 1, 2, 2.6, 3, 4, 4.6, 5, 6, 6.6, 7, 7.2, 7.5, 8, 'b:ca', 'L', 'r', 'b:rec', 'L']
 };
 const exe = '/opt/pw-browsers/chromium-1243/chrome-linux64/chrome';
 const browser = await chromium.launch({ executablePath: exe });
@@ -107,7 +107,12 @@ for (const w of WIDTHS) {
           if (q.left < pic.left - 0.5 || q.right > pic.right + 0.5 || q.top < pic.top - 0.5 || q.bottom > pic.bottom + 0.5) out.clip.push('button ' + b.textContent.trim());
         });
         const knob = document.querySelector('.pe-pic .tk2-knob');
-        if (knob) { const q = knob.getBoundingClientRect(); boxes.push({ n: 'knob', q: { left: q.left + 6, right: q.right - 6, top: q.top + 6, bottom: q.bottom - 6 } }); }
+        if (knob) {
+          const q = knob.getBoundingClientRect(), d = knob.querySelector('.tk2-dot').getBoundingClientRect();
+          boxes.push({ n: 'knob', q: { left: d.left, right: d.right, top: d.top, bottom: d.bottom } });
+          // the knob (its ring) is never cut by the picture's edge
+          if (d.left < pic.left - 0.5 || d.right > pic.right + 0.5 || d.top < pic.top - 0.5 || d.bottom > pic.bottom + 0.5) out.clip.push('knob');
+        }
         for (let i = 0; i < boxes.length; i++) for (let j = i + 1; j < boxes.length; j++) {
           const a = boxes[i].q, b = boxes[j].q, g = 4;
           if (a.left < b.right + g && a.right > b.left - g && a.top < b.bottom + g && a.bottom > b.top - g) out.over.push(boxes[i].n + ' / ' + boxes[j].n);
@@ -115,6 +120,9 @@ for (const w of WIDTHS) {
         // the picture is the largest thing on the stage
         const stage = document.querySelector('.pe'), area = (e) => { const q = e.getBoundingClientRect(); return q.width * q.height; };
         const others = [...stage.children].filter((e) => !e.classList.contains('pe-main') && e.offsetWidth).map(area).concat([area(document.querySelector('.pe-rail'))]);
+        // the picture uses the stage's width (no column beside it)
+        const pr = document.querySelector('.pe-pic').getBoundingClientRect(), sr = stage.getBoundingClientRect();
+        out.wide = pr.width / sr.width;
         out.big = area(document.querySelector('.pe-pic')) >= Math.max(...others);
         const ln = document.querySelector('.pe-lines'), pills = [...ln.querySelectorAll('.tk2-cz, .tk2-take')].filter((e) => e.offsetWidth);
         const tops = [...new Set(pills.map((e) => Math.round(e.getBoundingClientRect().top / 6)))];
@@ -129,6 +137,7 @@ for (const w of WIDTHS) {
       if (r.clip.length) fail(`${tag}: clipped ${r.clip.join(', ')}`);
       if (r.over.length) fail(`${tag}: overlap ${r.over.join('; ')}`);
       if (!r.big) fail(`${tag}: the picture is not the largest thing`);
+      if (r.wide < (w >= 900 ? 0.82 : 0.95)) fail(`${tag}: the picture uses only ${Math.round(r.wide * 100)}% of the stage width`);
       if (r.scroll > 1) fail(`${tag}: sideways scroll ${r.scroll}px`);
       if (r.fit.length) fail(`${tag}: does not fit ${r.fit.join(', ')}`);
       if (w < 641 && r.lines.rows > 2) fail(`${tag}: cause line ${r.lines.rows} rows (${r.lines.t})`);
