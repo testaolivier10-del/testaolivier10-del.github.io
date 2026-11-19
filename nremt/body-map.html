@@ -532,7 +532,7 @@ document.addEventListener('DOMContentLoaded', function(){
     onSelect: v2 ? (key, c) => { if (mode === 'explore') ex.onSelect(key, c); } : undefined,
     onPick: v2 ? key => { if (mode === 'explore') ex.onPick(key); } : undefined,
   });
-  if (ex) ex.attach(viewer);
+  if (ex) { ex.attach(viewer); window.NremtBodyMap.viewer = viewer; }
 
   /* ---- Test yourself, the find quiz: the ten question round (audit 2026-10). Ten structures, one at a time, with
      a tally that is the student's first try at each. A wrong tap names what was hit, says where the target is, and

@@ -430,11 +430,12 @@
     var ref = el('div', 'bm2-ref');
     ref.innerHTML =
       '<h3>What you are looking at</h3>' +
-      '<p><b>The body.</b> A real anatomical model (bones, organs and the main vessels under see through skin), with 70 parts you can tap, each with what it does, what goes wrong, what you find and what you do as an EMT. Tap a part: it lights up, the rest fades so you can see it, and its card opens beside it. Tap it again, or empty space, to let go. Drag to turn the body; pinch or scroll to zoom; drag with two fingers (or the right mouse button) to move it. The orange dots are landmarks (rib spaces, pulse points, lines on the chest).</p>' +
+      '<p><b>The body.</b> A real anatomical model (bones, organs and the main vessels under see through skin), with 70 parts you can tap, each with what it does, what goes wrong, what you find and what you do as an EMT. Tap a part: it lights up, the rest fades so you can see it, and its card opens beside it. Tap it again, or empty space, to let go. Drag to turn the body; pinch or scroll to zoom; drag with two fingers (or the right mouse button) to move it. The dots are landmarks on the surface: red ones are pulse points (radial, brachial, femoral, popliteal, posterior tibial, dorsalis pedis), the others places you describe findings by (a rib space, the nipple line, the iliac crest).</p>' +
       '<p><b>Burns.</b> The same body, front and back. Each number is that region’s share of the skin by the Rule of Nines; tap or drag over regions to burn them and the total adds up.</p>' +
       '<p class="bm2-ref-p"><button type="button" class="tk2-how bm2-ref-how">Show me how</button></p>' +
       '<div class="bm2-ref-slot" data-slot="view"></div>' +
       '<h3>The Rule of Nines</h3><div class="bm2-ref-slot" data-slot="nines"></div>' +
+      '<p><b>The child chart.</b> Only two regions change: the head and neck is 18% and each leg 13.5%. These are an infant’s or small child’s shares; as a child grows the head’s share shrinks and the legs’ grows toward the adult chart, and many protocols use a Lund and Browder chart for children.</p>' +
       '<p><b>Brush.</b> Full burns the whole region; Half marks part of it (half its share); Erase clears. Tapping a burned region again also clears it.</p>' +
       '<p><b>Over 10%.</b> Partial thickness (second degree) burns over 10% of the body surface are a burn center criterion. Cover large burns with dry sterile dressings: cool wet dressings over more than 10% risk hypothermia.</p>' +
       '<p><b>Palm rule.</b> The patient’s own palm, fingers included, is about 1% of their body surface. Use it for small or scattered burns the big regions do not fit.</p>' +
