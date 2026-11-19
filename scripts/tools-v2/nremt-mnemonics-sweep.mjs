@@ -207,6 +207,26 @@ if (process.argv.includes('--frames')) {
     console.log(`frames at ${w}: ${frames} checked, ${mid} mid change`);
     await browser.close();
   }
+  // Leave Explore in the middle of a letter, on every tab, then come back: no error, every timer stopped while
+  // hidden, and the letter shown finished and clean (recheck 1)
+  for (const w of [390, 1440]) {
+    const { browser, page, errs } = await open(w, false, { noCue: true });
+    for (const [id, i, after] of [['dcap', 5, 300], ['avpu', 2, 800], ['avpu', 3, 2300], ['opqrst', 5, 1000], ['sample', 2, 500]]) {
+      await tab(page, id);
+      await page.click(`.mn2-key[data-i="${i}"]`); await page.waitForTimeout(after);
+      await page.locator('.ls-root button').filter({ hasText: /^\s*Test yourself\s*$/ }).first().click(); await page.waitForTimeout(2500);
+      const hid = await page.evaluate(() => ({ labs: document.querySelectorAll('.mn2-lab').length, cause: document.querySelector('.mn2 .tk2-cause').textContent }));
+      await page.waitForTimeout(1500);
+      const hid2 = await page.evaluate(() => ({ labs: document.querySelectorAll('.mn2-lab').length, cause: document.querySelector('.mn2 .tk2-cause').textContent }));
+      ok(JSON.stringify(hid) === JSON.stringify(hid2), `${w} leave ${id} ${i}: something still runs while Explore is hidden`);
+      await page.locator('.ls-root button').filter({ hasText: /^\s*Explore\s*$/ }).first().click(); await page.waitForTimeout(900);
+      const r = await page.evaluate(() => { const m = document.querySelector('.mn2'); return { tab: m.dataset.tab, cur: +m.dataset.cur, done: m.dataset.done, pills: document.querySelectorAll('.mn2 .tk2-cause .tk2-cz').length, take: document.querySelector('.mn2 .tk2-cause').classList.contains('is-take'), labs: [...document.querySelectorAll('.mn2-lab')].filter(e => getComputedStyle(e).opacity > 0.05).length }; });
+      ok(r.tab === id && r.cur === i && r.done[i] === '1' && (r.pills === 3 || r.take) && r.labs >= 1 && r.labs <= 2, `${w} leave ${id} ${i} and come back: ${JSON.stringify(r)}`);
+      const g = await geo(page); check(g, `${w} back from Test yourself, ${id} ${i}`);
+    }
+    ok(!errs.length, `${w} leave mid letter: errors: ${errs.join(' | ')}`);
+    await browser.close();
+  }
   // A phone 360 x 780: after a key, the cause line is on screen
   { const browser = await chromium.launch({ executablePath: EXE });
     const ctx = await browser.newContext({ viewport: { width: 360, height: 780 }, serviceWorkers: 'block', hasTouch: true });

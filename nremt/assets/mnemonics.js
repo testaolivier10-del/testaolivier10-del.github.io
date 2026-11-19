@@ -164,6 +164,7 @@
         tf: 'translate(' + cx.toFixed(1) + ' ' + cy.toFixed(1) + ') rotate(' + (wide ? -90 : 0) + ') scale(' + k.toFixed(4) + ') translate(-240 -600)' };
     }
     function P(x, y){ // image px -> stage px
+      if(!G) return [0, 0];
       var dx = (x - 240) * G.k, dy = (y - 600) * G.k;
       return G.wide ? [G.cx + dy, G.cy - dx] : [G.cx + dx, G.cy + dy];
     }
@@ -387,6 +388,7 @@
       return b;
     }
     function label(text, x, y, cls, along, dir){
+      if(!G) return null;
       var p = P(x, y), d = dir || (along ? (G.wide ? [1, 0] : [0, 1]) : outward(x)), b = el('span', 'mn2-lab' + (cls ? ' ' + cls : ''), esc(text));
       labels.appendChild(b);
       var bw = b.offsetWidth, bh = b.offsetHeight, gap = along ? 26 + 30 * G.k : 18 + 26 * G.k;
@@ -674,8 +676,10 @@
 
     /* ---------------------------------------------------- draw (resize, tab, figure loaded) */
     function draw(){
-      G = layout();
-      if(!G) return;
+      // a hidden stage (Test yourself) has no size: keep the last geometry, draw again when it shows
+      var g = layout();
+      if(!g) return;
+      G = g;
       var t = T();
       box.classList.toggle('is-wide', G.wide); box.classList.toggle('is-tall', !G.wide);
       box.style.setProperty('--mn2-keyh', G.keyH + 'px');
@@ -731,6 +735,17 @@
       stage: stage, ref: ref,
       tab: function(id){ if(id === undefined) return St.tab; setTab(id, false); },
       tabOf: function(cardId){ var f = TABS.filter(function(t){ return t.card === cardId; })[0]; return f ? f.id : null; },
+      // Explore leaves the screen: every timer and animation stops, and a letter still mid change is finished at once,
+      // so coming back shows a clean, finished state
+      hidden: function(){
+        stopAll();
+        var t = T(), c = St.cur[t.id];
+        if(c >= 0 && !St.done[t.id][c]){
+          St.done[t.id][c] = true;
+          if(t.letters.every(function(x, j){ return St.done[t.id][j]; }) && !St.took[t.id]){ St.took[t.id] = true; St.takeShown = t.id; }
+        }
+        if(St.took[t.id] && t.letters.every(function(x, j){ return St.done[t.id][j]; })) St.takeShown = t.id;
+      },
       shown: function(){
         // Explore is on screen: draw at its real size, then the cue (once per device)
         draw();

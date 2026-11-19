@@ -159,3 +159,13 @@ taller picture (768 and 820 have no empty bands); reduced motion on AVPU V, P an
 cross fades to the response; returning to Explore from a Test yourself card of the four opens that tab; "Next
 letter" hides once the last letter is done; docs corrected (adapter file, forehead, check-weight).
 Not taken: none.
+
+## Recheck 1 (2026-11-18): one new must fix, fixed
+Leaving Explore in the middle of a letter threw a TypeError (`P()` with no geometry: a hidden stage has no size) and
+left the letter half done on return. Now Explore's `hidden()` (called by the page whenever Test yourself shows) stops
+every timer and finishes the letter at once, so coming back shows it finished and clean; `draw()` keeps the last
+geometry while the stage is hidden; `P()` and `label()` return early without one. Test yourself now opens on the card
+of the mnemonic just explored, so going back opens the same tab. General rule kept: any timer or animation stops when
+its stage hides. The sweep's `--frames` run now leaves mid letter on every tab and comes back (no error, nothing runs
+while hidden, the letter finished, layout checks pass): 173 passed, 0 failed; widths 360 (1276) and 1440 (1216) pass;
+the reviewer's `probe2.mjs 1440` shows no errors.
