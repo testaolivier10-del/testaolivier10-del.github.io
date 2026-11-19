@@ -54,7 +54,7 @@ const mode = (page) => page.evaluate(() => { const m = document.querySelector('.
   ok(!mid.settled, `${tagW}: a frame caught while the change spreads`);
   ok(TOUCH ? (await page.evaluate(() => scrollY)) === sy0 : true, `${tagW}: a touch drag on the knob does not scroll the page`);
   ok(!(await page.evaluate(() => !!document.querySelector('.px .tk2-cue'))), `${tagW}: the cue leaves after the first drag`);
-  await page.waitForTimeout(2500);
+  for (let i = 0; i < 60 && !(await page.evaluate(() => window.AnpPredictExplore.current._settled())); i++) await page.waitForTimeout(100);
   const end = await page.evaluate(() => { const A = window.AnpPredictExplore.current, st = A._st(); return { c: st.c, flow: st.v.flow, cause: A._cause(), res: st.v.res }; });
   ok(end.flow < 1 && end.res > 1 && /flow/.test(end.cause), `${tagW}: settles with resistance up, flow down and the takeaway (${end.cause})`);
   await page.focus('.px .tk2-handle .tk2-knob');
