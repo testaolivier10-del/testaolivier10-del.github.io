@@ -861,6 +861,8 @@
           sev = bl !== 'stop';
           if(bl === 'stop' && fresh.indexOf('tq') >= 0) return;
         }
+        // the head's words: the newest state only ("Unresponsive", never "Unresponsive, alert")
+        if(p.key === 'head' || p.key === 'ms') t = t.split(', ')[0];
         // words about the head point at the top of the head, never at the face
         var at = (p.key === 'head' || p.key === 'ms') && M ? [M.hx, M.top + M.hry * 0.18] : [p.x, p.y];
         // a count is not a finding to name, and one finding is named once
@@ -1026,14 +1028,14 @@
       // pending words for the cause line: the action now, the result once the picture shows it
       cause.set([{ t: shortAction(actText), role: 'act' }]);
       var go = function(){
-        if(monitor) monitor.show(n.vitals, null);
+        // an ending with no numbers of its own keeps the last ones, still (the call is over, nothing is measured anew)
+        if(monitor && !(n.ending && !n.vitals)) monitor.show(n.vitals, null);
         if(v2 !== St.view){
           // sitting to lying (compressions, the AED): the picture fades to the patient on the ground
           St.view = v2;
           svg.classList.add('is-fade');
           later(function(){ draw(); paint(S, false); rates(); svg.classList.remove('is-fade'); }, anim ? 260 : 0);
         } else { paint(S, anim); }
-        if(n.ending && monitor) monitor.pause();
       };
       go();
       St.pend = { before: before, prevCare: prevCare, actText: actText, how: how };
@@ -1054,10 +1056,12 @@
       placeLabels(labelList(pd.prevCare));
       var parts = [{ t: shortAction(pd.actText), role: 'act' }];
       if(n.ending){
+        // the call is over: the monitor holds its last trace
+        if(monitor) monitor.pause();
         var oc = n.ending === 'good' ? 'Good outcome' : n.ending === 'bad' ? 'Poor outcome' : 'Mixed outcome';
         parts.push({ t: oc, role: n.ending === 'good' ? 'up' : n.ending === 'bad' ? 'down' : 'same' });
         cause.set(parts);
-        later(function(){ cause.take(oc + '. Tap a number on the card to go back to that decision and try the other choice.'); }, rd() ? 0 : 900);
+        later(function(){ cause.take(oc + '. Tap a number on the card to try another way.'); }, rd() ? 0 : 900);
         if(window.LevlAnalytics) window.LevlAnalytics.event('scenario-finish', { scenario: St.id, ending: n.ending, mode: 'explore' });
         say(oc + '. ' + n.text);
       } else {
@@ -1198,7 +1202,8 @@
       _state: function(){ var n = node(); return { id: St.id, node: St.node, path: St.path.map(function(p){ return p.index; }), busy: St.busy, view: St.view, on: St.on, timers: timers.length,
         chain: cause.text(), take: cause.el.classList.contains('is-take') ? cause.el.textContent : '', drawn: St.drawn ? { eyes: St.drawn.eyes, skin: St.drawn.skin, bleed: St.drawn.bleed, pool: St.drawn.pool, care: St.drawn.care } : null,
         shown: monitor ? { hr: monitor.shown.hr, sys: monitor.shown.sys, rr: monitor.shown.rr, spo2: monitor.shown.spo2 } : null, tween: !!(monitor && monitor.tween && monitor.tween.dur), raf: !!(monitor && monitor.raf),
-        ending: n && n.ending || '', labs: (St.labs || []).map(function(l){ return l.text; }), kind: St.kind }; }
+        ending: n && n.ending || '', labs: (St.labs || []).map(function(l){ return l.text; }), kind: St.kind, pend: !!St.pend,
+        geo: G && M ? { W: G.W, H: G.H, wide: G.wide, mon: G.mon, drawn: drawnBoxes() } : null }; }
     };
     window.NremtScenarioExplore.last = api;
     return api;

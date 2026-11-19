@@ -180,3 +180,4 @@
   .scx-c{font-size:13px;}
   .scx-what,.scx-now{font-size:13.5px;}
 }
+:root[data-theme="dark"] .scx-enext{color:#0F1F1B;}
