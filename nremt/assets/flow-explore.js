@@ -40,7 +40,7 @@
   var CALLS = [
     { id: 'primary', name: 'Primary assessment', short: 'Primary', scene: 'garage', chart: 'flow-primary-assessment-sequence',
       who: 'Man, 45, fell from a ladder onto glass', purpose: 'What you find on him picks the next step.',
-      whole: [-30, 1000], start: ['Scene safe, gloves on'],
+      whole: [-20, 1205], start: ['Scene safe, hold head still'],
       take: 'Fix each threat as you find it: bleeding, airway, breathing, shock.',
       end: 'Reassess every 5 min',
       steps: [
@@ -73,7 +73,7 @@
       ] },
     { id: 'arrest', name: 'Cardiac arrest', short: 'Arrest', scene: 'home', chart: 'flow-adult-bls-cpr-sequence-no-advanced-airway',
       who: 'Man, 62, collapsed at home', purpose: 'What you find on him picks the next step.',
-      whole: [-40, 760], start: ['Scene safe'],
+      whole: [-20, 1205], start: ['Scene safe'],
       take: 'No pulse: push hard and fast, and shock when the AED says so.',
       end: 'CPR 2 min, AED rechecks',
       steps: [
@@ -106,7 +106,22 @@
   var GLOVE = '<path class="fx2-glove" d="M-18 6C-20 -6 -19 -22 -16 -30L-12 -44C-11 -48 -6 -48 -5 -44L-4 -30L-2 -48C-1 -52 4 -52 5 -48L6 -30L9 -46C10 -50 15 -50 15 -46L13 -28L17 -40C18 -44 23 -43 22 -39L18 -16C17 -4 14 6 10 12L-12 14Z"/><rect class="fx2-cuff" x="-13" y="10" width="24" height="12" rx="6"/>';
 
   // a glove at (x, y) turned rot degrees; adult hand size (a hand is about 7 inches, the figure about 70 tall)
-  function glove(x, y, rot, cls, sc){ return '<g' + (cls ? ' class="' + cls + '"' : '') + ' transform="translate(' + x + ' ' + y + ') rotate(' + rot + ') scale(' + (sc || 1.9) + ')">' + GLOVE + '</g>'; }
+  // two fingers out, the others curled (a pulse check)
+  var TWO = '<path class="fx2-glove" d="M-17 22C-19 8 -18 -4 -14 -10L-9 -14L-9 -58C-9 -64 -1 -64 -1 -58L-1 -16L1 -16L1 -62C1 -68 9 -68 9 -62L9 -14C14 -16 19 -12 18 -6C18 4 16 14 12 22Z"/>' +
+    '<path class="fx2-knuck" d="M9 -9C13 -10 15 -8 16 -5M-17 4C-12 2 -9 -2 -9 -8"/><rect class="fx2-cuff" x="-14" y="20" width="26" height="12" rx="6"/>';
+  // at adult size: a hand is about 0.8 of his head's length
+  function glove(x, y, rot, cls, sc, shape){ return '<g' + (cls ? ' class="' + cls + '"' : '') + ' transform="translate(' + x + ' ' + y + ') rotate(' + rot + ') scale(' + (sc || 1.45) + ')">' + (shape || GLOVE) + '</g>'; }
+  // the jaw thrust, the EMT at his head: fingers hooked behind the angle of the jaw, the thumb on the cheekbone (one
+  // side; the other is its mirror)
+  // CPR: the heel of one hand on the lower half of the breastbone, the other hand on top, fingers laced and lifted
+  // across his chest; the EMT's forearms come in from his right side (image px)
+  var HAND = 'M222 280C236 273 262 273 282 277L304 281C310 283 310 291 304 292L286 291L306 297C312 299 311 307 305 307L286 305L302 313C307 316 304 323 298 321L280 317C262 324 236 326 224 320Z';
+  var CPRH = '<path class="fx2-sleeve" d="M60 272L222 282L222 318L60 330Z"/><path class="fx2-glove" d="' + HAND + '"/>' +
+    '<g transform="translate(4 -4)"><path class="fx2-glove fx2-topg" d="' + HAND + '"/><path class="fx2-knuck" d="M266 282L288 284M266 296L290 300M264 308L286 314"/></g>' +
+    '<rect class="fx2-cuff" x="210" y="282" width="14" height="38" rx="6"/>';
+  var JAW = '<path class="fx2-glove" d="M176 4C166 40 168 88 180 118L196 146C204 158 216 154 214 143L203 117C200 100 200 80 205 64C208 44 202 18 192 6Z"/>' +
+    '<path class="fx2-glove" d="M203 62C213 66 222 78 225 91C227 99 219 102 215 96C211 88 205 82 199 79Z"/>' +
+    '<path class="fx2-knuck" d="M184 114L199 141M190 110L205 136"/><rect class="fx2-cuff" x="166" y="-14" width="30" height="16" rx="7" transform="rotate(-6 181 -6)"/>';
 
   function build(o){
     var K = window.LevlKit2, studio = o && o.studio;
@@ -195,7 +210,7 @@
     function layout(){
       var W = box.clientWidth, H = box.clientHeight;
       if(!W || !H) return null;
-      var wide = W >= 900, sc, card;
+      var wide = W >= 1100, sc, card;
       if(wide){
         var cw = clamp(Math.round(W * 0.32), 260, 400);
         sc = { x: 0, y: 0, w: W - cw - 16, h: H };
@@ -205,7 +220,7 @@
         sc = { x: 0, y: 0, w: W, h: sh };
         card = { x: 8, y: sh + 8, w: W - 16, h: H - sh - 14 };
       }
-      return { W: W, H: H, wide: wide, phone: W < 600, sc: sc, card: card, full: sc.w >= 820 && sc.w / sc.h >= 1.35 };
+      return { W: W, H: H, wide: wide, phone: W < 600, sc: sc, card: card, full: W >= 600 };
     }
     // the camera: frames image y range [y0, y1] (along the body) inside the scene; head left
     function cam(range){
@@ -254,6 +269,8 @@
       defs.innerHTML = '<clipPath id="fx2-sc"><rect x="' + G.sc.x + '" y="' + G.sc.y + '" width="' + G.sc.w + '" height="' + G.sc.h + '" rx="' + (G.wide ? 16 : 12) + '"/></clipPath>' +
         '<radialGradient id="fx2-poolg"><stop offset="0" stop-color="#7A0A06"/><stop offset=".75" stop-color="#9E1209"/><stop offset="1" stop-color="#B5190E"/></radialGradient>' +
         '<linearGradient id="fx2-blg" x1="0" x2="1"><stop offset="0" stop-color="#7C5E96"/><stop offset=".45" stop-color="#9677B2"/><stop offset="1" stop-color="#7A5C94"/></linearGradient>' +
+        ['tee:#C29630:#E2BC55', 'work:#46543A:#677852', 'pants:#2C3646:#4A586D', 'blue:#628BB6:#93B9DE'].map(function(g){ var q = g.split(':');
+          return '<linearGradient id="fx2-g-' + q[0] + '" x1="0" x2="1"><stop offset="0" stop-color="' + q[1] + '"/><stop offset=".5" stop-color="' + q[2] + '"/><stop offset="1" stop-color="' + q[1] + '"/></linearGradient>'; }).join('') +
         '<radialGradient id="fx2-flash"><stop offset="0" stop-color="#FFF7C2" stop-opacity=".95"/><stop offset="1" stop-color="#FFE45C" stop-opacity="0"/></radialGradient>' +
         (F ? '<clipPath id="fx2-body"><path d="' + F.outline + '"/></clipPath>' : '');
       gClip.setAttribute('clip-path', 'url(#fx2-sc)');
@@ -262,8 +279,13 @@
         u.push('<g class="fx2-ladder" transform="translate(560 120) rotate(8)"><rect class="fx2-rail" x="0" y="0" width="22" height="980" rx="6"/><rect class="fx2-rail" x="150" y="0" width="22" height="980" rx="6"/>' +
           [60, 200, 340, 480, 620, 760, 900].map(function(y){ return '<rect class="fx2-rung" x="16" y="' + y + '" width="140" height="16" rx="4"/>'; }).join('') + '</g>');
         var r = rng(31);
-        for(var i = 0; i < 16; i++){ var gx = 20 + r() * 120, gy = 820 + r() * 300; u.push('<path class="fx2-glass" d="M' + gx.toFixed(0) + ' ' + gy.toFixed(0) + 'l' + (10 + r() * 16).toFixed(0) + ' ' + (-6 - r() * 10).toFixed(0) + 'l' + (4 + r() * 10).toFixed(0) + ' ' + (14 + r() * 10).toFixed(0) + 'z"/>'); }
-        u.push('<g class="fx2-pool"><ellipse cx="96" cy="800" rx="78" ry="104" fill="url(#fx2-poolg)"/><ellipse class="fx2-pool-hi" cx="78" cy="770" rx="20" ry="30"/></g>');
+        for(var i = 0; i < 14; i++){
+          // irregular slivers of glass with a highlight
+          var gx = 10 + r() * 130, gy = 940 + r() * 220, a = r() * Math.PI, L = 14 + r() * 26, wd = 3 + r() * 5, ca = Math.cos(a), sa = Math.sin(a);
+          var pts = [[gx, gy], [gx + ca * L * 0.55 - sa * wd, gy + sa * L * 0.55 + ca * wd], [gx + ca * L, gy + sa * L], [gx + ca * L * 0.4 + sa * wd * 0.6, gy + sa * L * 0.4 - ca * wd * 0.6]];
+          u.push('<path class="fx2-glass" d="M' + pts.map(function(q){ return q[0].toFixed(1) + ' ' + q[1].toFixed(1); }).join('L') + 'Z"/><path class="fx2-glass-h" d="M' + (gx + ca * 3).toFixed(1) + ' ' + (gy + sa * 3).toFixed(1) + 'L' + (gx + ca * L * 0.8).toFixed(1) + ' ' + (gy + sa * L * 0.8).toFixed(1) + '"/>');
+        }
+        u.push('<g class="fx2-pool"><path d="M96 646C140 640 164 680 162 730C160 790 132 822 92 818C50 814 22 780 26 724C30 676 58 650 96 646Z" fill="url(#fx2-poolg)"/></g>');
       } else {
         u.push('<rect class="fx2-rug" x="-40" y="140" width="560" height="900" rx="10"/><rect class="fx2-rug-b" x="-16" y="164" width="512" height="852" rx="6"/>' +
           '<g class="fx2-sofa"><rect x="520" y="-60" width="200" height="760" rx="40"/><rect class="fx2-sofa-k" x="660" y="-60" width="60" height="760" rx="24"/><rect class="fx2-sofa-c" x="540" y="-30" width="130" height="330" rx="26"/><rect class="fx2-sofa-c" x="540" y="320" width="130" height="330" rx="26"/><path class="fx2-sofa-s" d="M560 0Q600 130 560 270M560 350Q600 480 560 620"/></g>' +
@@ -278,7 +300,8 @@
         if(c.scene === 'garage') cl.push('<path class="fx2-cl fx2-tee" d="M0 168L480 168L480 300L380 300L380 520L100 520L100 300L0 300Z"/>' +
           '<path class="fx2-cl fx2-work" d="M100 520L380 520L386 1130L240 1130L240 700L230 709L214 697L198 710L182 698L166 709L150 698L134 709L118 699L100 706Z"/>');
         else cl.push('<path class="fx2-cl fx2-pants" d="M100 540L380 540L386 1140L94 1140Z"/><g class="fx2-shirt"><path class="fx2-cl fx2-blue" d="M0 168L480 168L480 560L0 560Z"/><path class="fx2-placket" d="M240 214L240 556"/></g>');
-        h.push('<g clip-path="url(#fx2-body)"><path class="fx2-paleo" d="' + F.outline + '"/><path class="fx2-grayo" d="' + F.outline + '"/>' + cl.join('') + '</g>');
+        h.push('<g clip-path="url(#fx2-body)"><path class="fx2-paleo" d="' + F.outline + '"/><path class="fx2-grayo" d="' + F.outline + '"/>' + cl.join('') +
+          '<ellipse class="fx2-fpale" cx="240" cy="80" rx="44" ry="70"/><ellipse class="fx2-fgray" cx="240" cy="80" rx="44" ry="70"/></g>');
         h.push(c.scene === 'garage' ? '<path class="fx2-hair" d="M199 70C196 30 214 5 240 4C267 5 285 30 281 70C276 50 266 38 254 34C244 31 236 31 226 34C214 38 204 50 199 70Z"/>'
           : '<path class="fx2-hair is-gray" d="M200 60C200 40 210 22 222 18C230 30 250 30 258 18C270 22 280 40 280 60C272 46 262 40 240 40C218 40 208 46 200 60Z"/>');
         h.push('<g class="fx2-face"><path class="fx2-nose" d="' + FACE.nose + '"/><path class="fx2-brow" d="' + FACE.brow + '"/>' +
@@ -290,23 +313,25 @@
       // on him: each effect its own group, shown by state (paintFx)
       if(c.id === 'primary'){
         on.push('<g class="fx2-wound"><ellipse class="fx2-wound-r" cx="176" cy="784" rx="16" ry="30" transform="rotate(-8 176 784)"/><path class="fx2-wound-c" d="M172 760Q180 784 174 808"/></g>');
-        on.push('<g class="fx2-jets">' + [0, 1, 2].map(function(n){ return '<path class="fx2-jet fx2-jet' + n + '" d="M168 786C140 ' + (776 - n * 10) + ' 110 ' + (770 - n * 16) + ' 74 ' + (780 - n * 20) + '"/>'; }).join('') + '</g>');
+        var JETS = ['M170 796C150 822 122 852 94 880', 'M176 800C162 836 134 878 106 912', 'M168 792C146 806 112 828 80 846'];
+        on.push('<g class="fx2-jets">' + JETS.map(function(d, n){ return '<path class="fx2-jet-e" d="' + d + '"/><path class="fx2-jet fx2-jet' + n + '" d="' + d + '"/>'; }).join('') +
+          '<circle class="fx2-drop" cx="86" cy="892" r="6"/><circle class="fx2-drop" cx="98" cy="926" r="5"/><circle class="fx2-drop" cx="70" cy="854" r="5"/></g>');
         on.push('<g class="fx2-tq"><rect class="fx2-tq-b" x="118" y="728" width="128" height="20" rx="6"/><rect class="fx2-tq-s" x="118" y="733" width="128" height="4"/>' +
           '<g class="fx2-wind" transform="translate(150 738)"><rect class="fx2-wind-r" x="-6" y="-34" width="12" height="68" rx="5"/></g><rect class="fx2-tq-tab" x="200" y="722" width="30" height="32" rx="4"/></g>');
         on.push('<g class="fx2-snore">' + [0, 1, 2].map(function(n){ return '<path class="fx2-arc fx2-arc' + n + '" d="M' + (226 - n * 8) + ' ' + (134 + n * 12) + 'Q240 ' + (148 + n * 16) + ' ' + (254 + n * 8) + ' ' + (134 + n * 12) + '"/>'; }).join('') + '</g>');
-        on.push('<g class="fx2-jaw">' + glove(188, 52, 196) + glove(292, 52, 164) + '</g>');
+        on.push('<g class="fx2-jaw"><g class="fx2-jaw-l">' + JAW + '</g><g transform="translate(480 0) scale(-1 1)"><g class="fx2-jaw-l">' + JAW + '</g></g></g>');
         on.push('<g class="fx2-rise"><path class="fx2-rl" d="M118 250Q104 330 118 410"/><path class="fx2-rl" d="M362 250Q376 330 362 410"/><ellipse class="fx2-rglow" cx="240" cy="310" rx="96" ry="80"/></g>');
-        on.push('<g class="fx2-wrist">' + glove(128, 604, -90) + '<circle class="fx2-pring" cx="44" cy="602" r="12"/></g>');
+        on.push('<g class="fx2-wrist">' + glove(134, 600, -90, '', 1.45, TWO) + '<circle class="fx2-pring" cx="44" cy="600" r="12"/></g>');
         on.push('<g class="fx2-blanket"><path class="fx2-bl" d="M58 214C120 200 360 200 422 214C430 330 424 470 434 690C380 702 330 694 300 700C250 708 200 694 160 702C120 708 80 698 46 690C56 520 50 360 58 214Z"/>' +
           '<path class="fx2-bl-e" d="M58 214C120 200 360 200 422 214"/><path class="fx2-bl-f" d="M120 260C140 380 120 520 150 660M330 250C310 380 340 520 316 670M236 300C246 420 226 560 240 690"/></g>');
         on.push('<g class="fx2-sweep"><g class="fx2-sweep-h">' + glove(0, 0, 90) + '</g></g>');
       } else {
         on.push('<g class="fx2-taps"><g class="fx2-tapl">' + glove(146, 118, 180) + '</g><g class="fx2-tapr">' + glove(334, 118, 180) + '</g></g>');
-        on.push('<g class="fx2-carotid">' + glove(128, 186, 90) + '</g>');
+        on.push('<g class="fx2-carotid">' + glove(138, 170, 90, '', 1.45, TWO) + '</g>');
         on.push('<g class="fx2-gasp"><path class="fx2-rl" d="M118 250Q104 330 118 410"/><path class="fx2-rl" d="M362 250Q376 330 362 410"/></g>');
         on.push('<g class="fx2-pads"><rect class="fx2-pad" x="160" y="226" width="64" height="46" rx="10" transform="rotate(-10 192 249)"/><rect class="fx2-pad" x="318" y="318" width="50" height="66" rx="10"/>' +
           '<path class="fx2-wire" d="M190 228C200 160 320 120 520 90M346 318C380 260 470 160 520 110"/></g>');
-        on.push('<g class="fx2-cpr"><g class="fx2-cpr-h">' + glove(236, 300, 90) + glove(244, 296, 78, '', 1.8) + '</g></g>');
+        on.push('<g class="fx2-cpr"><g class="fx2-cpr-h">' + CPRH + '</g></g>');
         on.push('<g class="fx2-zap"><circle cx="270" cy="300" r="120" fill="url(#fx2-flash)"/><path class="fx2-bolt" d="M196 250L248 300L232 306L300 360"/></g>');
       }
       on.push('<g class="fx2-bvm"><ellipse class="fx2-mask" cx="240" cy="108" rx="34" ry="44"/><ellipse class="fx2-mask-r" cx="240" cy="108" rx="24" ry="32"/><rect class="fx2-valve" x="226" y="34" width="28" height="22" rx="6"/>' +
@@ -345,7 +370,9 @@
       cls('.fx2-jets', f.bleed === 'spurt'); cls('.fx2-wound', f.bleed !== 'none');
       var pa = gCam.querySelector('.fx2-paleo'); if(pa) pa.style.opacity = [0, 0.3, 0.45, 0.58][Math.min(3, f.pale)];
       var gr = gCam.querySelector('.fx2-grayo'); if(gr) gr.style.opacity = [0, 0.28, 0.4, 0.5][Math.min(3, f.gray)];
-      cls('.fx2-lips', f.blue); cls('.fx2-sweat', f.sweat);
+      var fp = gCam.querySelector('.fx2-fpale'); if(fp) fp.style.opacity = [0, 0.3, 0.42, 0.52][Math.min(3, f.pale)];
+      var fg = gCam.querySelector('.fx2-fgray'); if(fg) fg.style.opacity = [0, 0.4, 0.52, 0.62][Math.min(3, f.gray)];
+      cls('.fx2-lips', f.blue || f.gray > 0); cls('.fx2-sweat', f.sweat);
       cls('.fx2-tq', f.tq); cls('.fx2-snore', f.snore); cls('.fx2-jaw', f.jaw);
       cls('.fx2-rise', f.chest === 'rise'); cls('.fx2-gasp', f.chest === 'gasp');
       cls('.fx2-wrist', f.pulse); cls('.fx2-blanket', f.blanket); cls('.fx2-bvm', f.bvm); cls('.fx2-sweep', f.exam);
@@ -359,7 +386,11 @@
     }
 
     /* ---------------------------------------------------- labels, the bubble, the chip, the clock */
-    var LABS = []; // { text, at: [x, y] image px, tone }
+    var LABS = []; // { text, at: [x, y] image px, tone, keep: [x0, y0, x1, y1] image px the label keeps off }
+    // what each label names: the label never sits on it (image px boxes)
+    var FACEBOX = [192, 10, 288, 170], KEEP = { 'Spurting blood': [92, 750, 204, 950], 'Tourniquet': [112, 716, 252, 760], 'Jaw thrust': [160, -24, 320, 162],
+      'Fast, weak pulse': [24, 570, 150, 632], 'No pulse': [96, 144, 252, 200], 'Carotid, 10 s': [96, 144, 252, 200], '30 pushes, 2 breaths': [176, 236, 346, 356],
+      'CPR again': [176, 236, 346, 356], 'Pads': [156, 216, 232, 282], 'Chest rises fully': [150, 230, 330, 390], 'Pool grows': [20, 640, 170, 830] };
     function setLabels(list){ LABS = list || []; placeLabels(); }
     function placeLabels(){
       labels.innerHTML = ''; gLead.innerHTML = '';
@@ -371,14 +402,17 @@
       LABS.forEach(function(L){
         var e = el('span', 'fx2-lab is-' + (L.tone || 'see'), esc(L.text));
         labels.appendChild(e);
+        var kb = L.keep || KEEP[L.text] || (L.at !== 'aed' && L.at[0] > FACEBOX[0] && L.at[0] < FACEBOX[2] && L.at[1] > FACEBOX[1] && L.at[1] < FACEBOX[3] ? FACEBOX : null), keep = null;
+        if(kb){ var k1 = P(kb[0], kb[1]), k2 = P(kb[2], kb[3]); keep = { l: Math.min(k1[0], k2[0]), r: Math.max(k1[0], k2[0]), t: Math.min(k1[1], k2[1]), b: Math.max(k1[1], k2[1]) }; }
         var w = e.offsetWidth, h = e.offsetHeight, ab = T().fx.aedBox, p = L.at === 'aed' && ab ? [ab[0] + ab[2] / 2, ab[1] + ab[3] * 0.32] : P(L.at[0], L.at[1]), best = null;
         var dirs = [[0, -1], [0, 1], [1, -1], [-1, -1], [1, 1], [-1, 1], [1, 0], [-1, 0]];
-        [26, 44, 64, 88].some(function(d){
+        [26, 44, 64, 88, 120, 160].some(function(d){
           return dirs.some(function(dd){
             var cx = p[0] + dd[0] * (d + w / 2), cy = p[1] + dd[1] * (d * 0.8 + h / 2);
             var b = { l: cx - w / 2, t: cy - h / 2, r: cx + w / 2, b: cy + h / 2 };
             if(b.l < sc.x + 6 || b.r > sc.x + sc.w - 6 || b.t < sc.y + 6 || b.b > sc.y + sc.h - 6) return false;
             if(taken.some(function(t){ return !(b.r + 5 < t.l || b.l > t.r + 5 || b.b + 5 < t.t || b.t > t.b + 5); })) return false;
+            if(keep && !(b.r + 4 < keep.l || b.l > keep.r + 4 || b.b + 4 < keep.t || b.t > keep.b + 4)) return false;
             best = b; return true;
           });
         });
@@ -521,16 +555,16 @@
       switch(step.check){
         case 'voice': return [[0, look], [500, function(){ speak('emt', 'Sir, can you hear me?'); }], [1000, function(){ f.eyes = 'open'; paintFx(); }],
           [450, function(){ speak('pt', 'Mmh…'); setLabels([{ text: 'Eyes open to voice', at: [240, 77] }]); }]];
-        case 'bleed': return [[0, look], [600, function(){ speak(null); f.eyes = 'closed'; f.bleed = 'spurt'; paintFx(); }], [500, function(){ setLabels([{ text: 'Spurting blood', at: [150, 784] }]); }]];
+        case 'bleed': return [[0, look], [600, function(){ speak(null); f.eyes = 'closed'; f.bleed = 'spurt'; paintFx(); }], [500, function(){ setLabels([{ text: 'Spurting blood', at: [150, 870] }]); }]];
         case 'snore': return [[0, look], [500, function(){ f.snore = true; paintFx(); }], [700, function(){ setLabels([{ text: 'Snoring', at: [240, 150] }]); }]];
         case 'breathe': return [[0, function(){ look(); f.snore = false; paintFx(); }], [500, function(){ f.chest = 'rise'; paintFx(); }], [1400, function(){ setLabels([{ text: 'Chest rises fully', at: [240, 310] }]); }]];
         case 'shock': return [[0, function(){ look(); f.chest = ''; paintFx(); }], [500, function(){ f.pale = Math.max(f.pale, 1); f.sweat = true; paintFx(); }], [700, function(){ f.pulse = true; paintFx(); }],
           [700, function(){ setLabels([{ text: 'Pale, sweaty', at: [240, 60] }, { text: 'Fast, weak pulse', at: [50, 600] }]); }]];
         case 'prio': return [[0, look], [600, function(){ setLabels([{ text: 'Responds to voice', at: [240, 77] }, { text: 'Shock', at: [240, 400] }]); }]];
         case 'tap': return [[0, look], [400, function(){ f.tap = true; paintFx(); speak('emt', 'Sir! Are you OK?'); }], [1300, function(){ f.tap = false; paintFx(); setLabels([{ text: 'No response', at: [240, 77] }]); }]];
-        case 'pulse': return [[0, function(){ look(); speak(null); }], [400, function(){ f.carotid = true; paintFx(); }], [550, function(){ setLabels([{ text: 'Carotid, 10 s', at: [212, 188], tone: 'act' }]); }],
+        case 'pulse': return [[0, function(){ look(); speak(null); }], [400, function(){ f.carotid = true; paintFx(); }], [550, function(){ setLabels([{ text: 'Carotid, 10 s', at: [226, 170], tone: 'act' }]); }],
           [600, function(){ f.mouth = 'o'; f.chest = 'gasp'; paintFx(); }], [700, function(){ f.mouth = 'n'; paintFx(); }],
-          [600, function(){ setLabels([{ text: 'No pulse', at: [212, 188] }, { text: 'Gasping', at: [240, 120] }]); }]];
+          [600, function(){ setLabels([{ text: 'No pulse', at: [226, 170] }, { text: 'Gasping', at: [240, 120] }]); }]];
         case 'aed': return [[0, function(){ look(); speak(null); f.cpr = true; paintFx(); }], [500, function(){ f.aed = true; paintFx(); }], [600, function(){ f.bare = true; f.pads = true; paintFx(); }],
           [700, function(){ f.cpr = false; f.screen = 'vf'; paintFx(); speak('aed', 'Analyzing. Don’t touch the patient.'); }],
           [1400, function(){ f.screen = 'shock'; paintFx(); speak(null); setLabels([{ text: 'Pads', at: [192, 249], tone: 'act' }]); }]];
@@ -584,10 +618,10 @@
       run(s2);
     }
     function findLabels(step){
-      return ({ voice: [{ text: 'Eyes open to voice', at: [240, 77] }], bleed: [{ text: 'Spurting blood', at: [150, 784] }], snore: [{ text: 'Snoring', at: [240, 150] }],
+      return ({ voice: [{ text: 'Eyes open to voice', at: [240, 77] }], bleed: [{ text: 'Spurting blood', at: [150, 870] }], snore: [{ text: 'Snoring', at: [240, 150] }],
         breathe: [{ text: 'Chest rises fully', at: [240, 310] }], shock: [{ text: 'Pale, sweaty', at: [240, 60] }, { text: 'Fast, weak pulse', at: [50, 600] }],
         prio: [{ text: 'Responds to voice', at: [240, 77] }, { text: 'Shock', at: [240, 400] }], tap: [{ text: 'No response', at: [240, 77] }],
-        pulse: [{ text: 'No pulse', at: [212, 188] }, { text: 'Gasping', at: [240, 120] }], aed: [{ text: 'Pads', at: [192, 249], tone: 'act' }] })[step.check] || [];
+        pulse: [{ text: 'No pulse', at: [226, 170] }, { text: 'Gasping', at: [240, 120] }], aed: [{ text: 'Pads', at: [192, 249], tone: 'act' }] })[step.check] || [];
     }
     function lose(n){ T().lost += n; paintFx(); placeChips(); }
     // a wrong arm: its consequence happens on the picture, then the label names it
@@ -616,7 +650,7 @@
         case 'tourniquet': return [[200, function(){ f.tq = true; paintFx(); }], [900, function(){ f.bleed = 'held'; paintFx(); }], [700, function(){ setLabels([{ text: 'Tourniquet', at: [182, 738], tone: 'act' }]); }]];
         case 'jaw': return [[200, function(){ f.jaw = true; paintFx(); }], [700, function(){ f.snore = false; f.blue = false; paintFx(); }], [600, function(){ setLabels([{ text: 'Jaw thrust', at: [274, 128], tone: 'act' }]); }]];
         case 'blanket': return [[200, function(){ f.pulse = false; f.blanket = true; paintFx(); }], [900, function(){ setLabels([{ text: 'Blanket', at: [240, 450], tone: 'act' }]); }]];
-        case 'transport': return [[200, function(){ f.exam = true; paintFx(); }], [2000, function(){ f.exam = false; paintFx(); setLabels([{ text: 'Rapid exam', at: [240, 300], tone: 'act' }]); }]];
+        case 'transport': return [[200, function(){ f.exam = true; paintFx(); }], [600, function(){ setLabels([{ text: 'Rapid exam', at: [240, 560], tone: 'act', keep: [100, 200, 380, 1000] }]); }], [1500, function(){}]];
         case 'call': return [[200, function(){ speak('emt', 'No response! Get the AED.'); }], [1100, function(){ setLabels([{ text: 'Help called', at: [240, 77], tone: 'act' }]); }]];
         case 'cpr': return [[200, function(){ f.carotid = false; f.chest = ''; f.bare = true; paintFx(); }], [500, function(){ f.cpr = true; paintFx(); speak('emt', 'One, two, three…'); }],
           [1800, function(){ f.cpr = false; f.bvm = true; f.chest = 'rise'; paintFx(); speak(null); }], [1300, function(){ f.bvm = false; f.chest = ''; f.cpr = true; paintFx(); }], [550, function(){ setLabels([{ text: '30 pushes, 2 breaths', at: [240, 300], tone: 'act' }]); }]];

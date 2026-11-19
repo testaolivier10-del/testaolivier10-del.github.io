@@ -71,7 +71,7 @@ const ok = (c, msg) => { if (c) pass++; else fails.push(msg); };
 
 async function open(w, dark, opts = {}) {
   const browser = await chromium.launch({ executablePath: EXE });
-  const ctx = await browser.newContext({ viewport: { width: w, height: w < 500 ? 844 : w < 1100 ? 1024 : 900 }, serviceWorkers: 'block', hasTouch: w < 500, reducedMotion: opts.reduced ? 'reduce' : 'no-preference' });
+  const ctx = await browser.newContext({ viewport: { width: w, height: opts.h || (w < 500 ? 844 : w < 1100 ? 1024 : 900) }, serviceWorkers: 'block', hasTouch: w < 500, reducedMotion: opts.reduced ? 'reduce' : 'no-preference' });
   await ctx.route(u => !u.href.startsWith(`http://localhost:${PORT}`) && !u.href.startsWith('data:'), r => r.abort());
   const page = await ctx.newPage(); const errs = [];
   page.on('console', m => { if (m.type() === 'error' && !/Failed to load resource|ERR_FAILED|net::/.test(m.text())) errs.push(m.text()); });
@@ -150,6 +150,12 @@ if (arg('--width', null)) {
       if (SHOTS && !dark) { mkdirSync(SHOTS, { recursive: true }); await page.screenshot({ path: join(SHOTS, `sweep-opening-${w}.png`) }); }
       ok(!errs.length, `${tag0} first visit: console errors: ${errs.join(' | ')}`);
       await browser.close(); }
+    // a short phone (360 x 740): the arms and the cue sit above the fold on the first visit
+    if (w === 360 && !dark) { const { browser, page } = await open(w, dark, { cue: true, h: 740 });
+      await askReady(page); await page.waitForTimeout(400);
+      const r = await page.evaluate(() => ({ arms: Math.max(...[...document.querySelectorAll('.fx2-arm')].map(e => e.getBoundingClientRect().bottom)), cue: document.querySelector('.tk2-cue') ? document.querySelector('.tk2-cue').getBoundingClientRect().bottom : 0, vh: innerHeight }));
+      ok(r.arms <= r.vh && r.cue <= r.vh, `360 x 740: the arms (${Math.round(r.arms)}) or the cue (${Math.round(r.cue)}) are below the fold (${r.vh})`);
+      await browser.close(); }
     for (const call of Object.keys(PATHS)) {
       const { browser, page, errs } = await open(w, dark, { hash: '#call-' + call });
       const heights = [];
@@ -181,7 +187,7 @@ if (process.argv.includes('--frames')) {
   // label -> what must be drawn (and faded in) when it shows
   const NEED = { 'Eyes open to voice': '.fx2-eo', 'Spurting blood': '.fx2-jets', 'Snoring': '.fx2-snore', 'Chest rises fully': '.fx2-rise', 'Fast, weak pulse': '.fx2-wrist',
     'Pale, sweaty': '.fx2-sweat', 'Tourniquet': '.fx2-tq', 'Jaw thrust': '.fx2-jaw', 'Blanket': '.fx2-blanket', 'Lips turn blue': '.fx2-lips', 'Carotid, 10 s': '.fx2-carotid',
-    'Pads': '.fx2-pads', '30 pushes, 2 breaths': '.fx2-cpr', 'CPR again': '.fx2-cpr', 'Shock advised': '.fx2-aed.is-adv .fx2-aed-t', 'Gasping': '.fx2-gasp' };
+    'Pads': '.fx2-pads', '30 pushes, 2 breaths': '.fx2-cpr', 'CPR again': '.fx2-cpr', 'Rapid exam': '.fx2-sweep', 'Shock advised': '.fx2-aed.is-adv .fx2-aed-t', 'Gasping': '.fx2-gasp' };
   // the cause line's last pill -> what must be drawn
   const RES = { 'the spurting stops': ['.fx2-tq', '!.fx2-jets'], 'air moves freely': ['.fx2-jaw', '!.fx2-snore'], 'blanket on, kept warm': ['.fx2-blanket'], 'more blood lost': ['pool'],
     'tongue still blocks it': ['.fx2-lips'], 'blood pushed to the brain': ['.fx2-cpr'], 'shock, then CPR at once': ['.fx2-cpr'] };
