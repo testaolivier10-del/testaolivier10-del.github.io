@@ -35,7 +35,7 @@
       purpose: 'Each letter is one injury you look and feel for.',
       who: 'Rider after a motorcycle crash',
       idle: [{ t: '8 letters', role: 'key' }, { t: '8 things to look and feel for', role: 'word' }],
-      take: 'Eight letters, eight things to look and feel for. On a real patient you check every body region for all eight.',
+      take: 'On a real patient, check every body region for all eight.',
       letters: [
         { k: 'D', word: 'Deformity', label: 'Deformity', at: [432, 522], find: 'left forearm bent out of line' },
         { k: 'C', word: 'Contusion', label: 'Contusion', at: [190, 292], find: 'bruise on the right chest' },
@@ -50,7 +50,7 @@
       purpose: 'Each letter is how much it takes to get a response.',
       who: 'Man found on the sidewalk',
       idle: [{ t: '4 letters', role: 'key' }, { t: 'voice first, then pain', role: 'word' }],
-      take: 'Voice before pain: the first thing that gets a response sets the letter.',
+      take: 'Voice first, then pain: the first response sets the letter.',
       letters: [
         { k: 'A', word: 'Alert', find: 'eyes open on their own', steps: ['open'] },
         { k: 'V', word: 'Verbal', find: 'responds to your voice', steps: ['voice', 'open'] },
@@ -61,10 +61,10 @@
       purpose: 'Each letter is one question about her pain.',
       who: 'Woman, 58, with chest pain',
       idle: [{ t: '6 letters', role: 'key' }, { t: '6 questions about one pain', role: 'word' }],
-      take: 'Six questions turn "my chest hurts" into a full picture of the pain.',
+      take: 'Six questions turn one complaint into a full picture of the pain.',
       letters: [
         { k: 'O', word: 'Onset', ask: 'What were you doing when it started?', say: 'Pushing my cart. It came on all at once.', find: 'sudden, while shopping', mark: 'cart', label: 'Her cart' },
-        { k: 'P', word: 'Provocation', ask: 'Does anything make it better or worse?', say: 'Walking makes it worse. Resting doesn’t help.', find: 'worse with walking', mark: 'legs', label: 'Worse walking' },
+        { k: 'P', word: 'Provocation', ask: 'Does anything make it better or worse?', say: 'Walking makes it worse. Resting doesn’t help.', find: 'worse with walking', mark: 'none', label: '' },
         { k: 'Q', word: 'Quality', ask: 'What does it feel like?', say: 'Crushing. Like a weight on my chest.', find: 'crushing', mark: 'chest', label: 'Crushing' },
         { k: 'R', word: 'Radiation', ask: 'Does it spread anywhere?', say: 'Down my left arm.', find: 'spreads down the left arm', mark: 'arm', label: 'Left arm' },
         { k: 'S', word: 'Severity', ask: 'From 0 to 10, how bad is it?', say: 'An 8.', find: '8 out of 10', mark: 'scale', label: '8 of 10' },
@@ -74,12 +74,12 @@
       purpose: 'Each letter is one part of her history.',
       who: 'Woman, 58, with chest pain',
       idle: [{ t: '6 letters', role: 'key' }, { t: 'her whole history', role: 'word' }],
-      take: 'Six letters, her whole history. OPQRST is how you dig into the S.',
+      take: 'Her whole history in six letters. OPQRST digs into the S.',
       letters: [
-        { k: 'S', word: 'Signs and symptoms', ask: 'What’s bothering you most?', say: 'My chest hurts, and I feel sick.', find: 'chest pain; pale and sweaty', mark: 'signs', label: 'Pale, sweaty' },
+        { k: 'S', word: 'Signs and symptoms', ask: 'What’s bothering you most?', say: 'My chest hurts, and I feel sick.', find: 'chest pain, pale, sweaty', mark: 'signs', label: 'Pale, sweaty' },
         { k: 'A', word: 'Allergies', ask: 'Are you allergic to any medicines?', say: 'No. None that I know of.', find: 'no known allergies', mark: 'none', label: '' },
-        { k: 'M', word: 'Medications', ask: 'What medicines do you take?', say: 'Nitroglycerin, and a blood pressure pill.', find: 'nitroglycerin, blood pressure pill', mark: 'pills', label: 'Her pills' },
-        { k: 'P', word: 'Past history', ask: 'Any heart or other medical problems?', say: 'High blood pressure. A heart stent two years ago.', find: 'high blood pressure, heart stent', mark: 'none', label: '' },
+        { k: 'M', word: 'Medications', ask: 'What medicines do you take?', say: 'Nitroglycerin, and a blood pressure pill.', find: 'nitro and a blood pressure pill', mark: 'pills', label: 'Her pills' },
+        { k: 'P', word: 'Past history', ask: 'Any heart or other medical problems?', say: 'High blood pressure. A heart stent two years ago.', find: 'high blood pressure, a stent', mark: 'none', label: '' },
         { k: 'L', word: 'Last oral intake', ask: 'When did you last eat or drink?', say: 'Just this coffee, an hour ago.', find: 'coffee, an hour ago', mark: 'cup', label: 'Coffee' },
         { k: 'E', word: 'Events', ask: 'What happened right before it started?', say: 'I was pushing my cart, and it hit me.', find: 'pushing her cart', mark: 'cart', label: 'Her cart' }
       ] }
@@ -142,11 +142,13 @@
       var W = box.clientWidth, H = box.clientHeight;
       if(!W || !H) return null;
       var wide = W >= H * 1.05, phone = W < 600;
-      var keyH = phone ? 62 : 70, top = wide ? (phone ? 92 : 104) : 10, side = wide ? 0 : Math.min(170, W * 0.4);
+      var talks = T().kind !== 'marks', keyH = phone ? 62 : 70, top = wide ? (talks ? (phone ? 92 : 104) : 40) : 10, side = wide ? 0 : Math.min(170, W * 0.4);
       var k, cx, cy, availH = H - keyH - top - 8;
       if(wide){
-        k = Math.min((W - (phone ? 24 : 70)) / 1200, availH / 470);
-        cx = W / 2; cy = top + availH / 2 + 4;
+        // the store: room past her feet for the cart
+        var extra = T().scene === 'store' ? 220 : 0;
+        k = Math.min((W - (phone ? 24 : 70)) / (1200 + extra), availH / 470);
+        cx = W / 2 - extra * k / 2; cy = top + availH / 2 + 4;
       } else {
         k = Math.min(availH / 1205, (W - side - 16) / 470);
         cx = 8 + (W - side - 16) / 2 + 4; cy = top + availH / 2 + 2;
@@ -276,7 +278,6 @@
         h.push(mk('chest', '<circle cx="246" cy="296" r="70" fill="url(#mn2-pain)" class="mn2-glow"/><path class="mn2-press" d="M234 212L258 212L246 236ZM234 380L258 380L246 356ZM162 284L162 308L186 296ZM330 284L330 308L306 296Z"/>'));
         h.push(mk('arm', '<path class="mn2-rad" d="M270 290C306 262 334 236 350 238C374 250 388 330 400 400C410 460 418 520 424 586"/><path class="mn2-radh" d="M412 568L424 594L436 568"/>'));
         h.push(mk('watch', '<rect class="mn2-band" x="412" y="586" width="32" height="20" rx="4"/><circle class="mn2-wface" cx="428" cy="596" r="11"/><path class="mn2-whand" d="M428 596V588M428 596L434 600"/>'));
-        h.push(mk('legs', '<path class="mn2-walk" d="M150 760C140 860 160 980 170 1090M330 760C340 860 320 980 310 1090"/>'));
       } else if(t.id === 'sample'){
         h.push(mk('signs', '<g clip-path="url(#mn2-headc-sample)"><rect class="mn2-pale" x="190" y="0" width="100" height="160"/></g>' +
           '<path class="mn2-sweat" d="M222 48q-3 6 0 9q3 -3 0 -9zM252 42q-3 6 0 9q3 -3 0 -9zM268 58q-3 6 0 9q3 -3 0 -9zM212 92q-3 6 0 9q3 -3 0 -9zM266 98q-3 6 0 9q3 -3 0 -9z"/>' +
@@ -293,10 +294,8 @@
       if(t.scene !== 'store' || !G) return;
       var u = G.k, h = [];
       // the cart beside her feet
-      var f = P(470, 1080), cw = 170 * u, ch = 250 * u;
-      if(!G.wide){ f = P(-40, 1020); }
-      var cx = f[0], cy = f[1], tr = G.wide ? 'translate(' + (cx + 10).toFixed(1) + ' ' + (cy - ch / 2 - 10).toFixed(1) + ')' : 'translate(' + (cx - cw - 4).toFixed(1) + ' ' + (cy - ch / 2).toFixed(1) + ')';
-      if(G.wide){ tr = 'translate(' + (P(240, 1250)[0] - cw * 0.2).toFixed(1) + ' ' + (P(470, 1000)[1] - ch * 0.15).toFixed(1) + ')'; }
+      var cw = 170 * u, ch = 250 * u, tr;
+      if(G.wide) tr = 'translate(' + (P(240, 1244)[0] + 8).toFixed(1) + ' ' + (G.cy - ch / 2 - 6).toFixed(1) + ')';
       else { cw = Math.min(cw, G.side * 0.6); ch = cw * 250 / 170; tr = 'translate(' + (G.W - G.side + (G.side - cw) / 2 - 10).toFixed(1) + ' ' + (G.H - G.keyH - ch - 26).toFixed(1) + ')'; }
       h.push('<g class="mn2-cart" data-p="cart" transform="' + tr + '">' + cartSvg(cw, ch) + '</g>');
       // her purse with her pills, at the foot of the stretcher
@@ -453,7 +452,7 @@
       var txt = { A: 'Eyes open', V: 'Responds to voice', P: 'Responds to pain', U: 'No response' }[L.k];
       label(txt, 262, 78, 'is-cur');
     }
-    var TALKAT = { cart: null, legs: [330, 900], chest: [246, 296], arm: [404, 440], scale: null, watch: [428, 596], signs: [282, 64], pills: null, cup: null };
+    var TALKAT = { cart: null, chest: [246, 296], arm: [404, 440], scale: null, watch: [428, 596], signs: [282, 64], pills: null, cup: null };
     function showTalkMark(L, cur){
       var m = L.mark;
       if(m === 'cart' || m === 'pills' || m === 'scale' || m === 'cup'){ propOn(m, true); if(m === 'cup') propOn('cart', false); }
@@ -465,7 +464,7 @@
       var g = box.querySelector('[data-p="' + m + '"]');
       if(!g) return null;
       var r = g.getBoundingClientRect(), b = box.getBoundingClientRect();
-      return [r.left - b.left + Math.min(14, r.width / 2), r.top - b.top + Math.min(14, r.height / 2)];
+      return [r.left - b.left + 2, r.top - b.top + 2];
     }
     function badgeAtStage(text, x, y){ var b = el('span', 'mn2-badge', esc(text)); b.style.left = x.toFixed(1) + 'px'; b.style.top = y.toFixed(1) + 'px'; labels.appendChild(b); requestAnimationFrame(function(){ b.classList.add('is-in'); }); }
     function talkLabel(L){
@@ -476,9 +475,9 @@
       if(!g) return;
       var r = rel(g), b = el('span', 'mn2-lab is-cur', esc(L.label));
       labels.appendChild(b);
-      var bw = b.offsetWidth, bh = b.offsetHeight, ly = r.b + 8;
-      if(ly + bh > G.H - G.keyH - 4) ly = r.t - bh - 8;
-      put(b, (r.l + r.r) / 2 - bw / 2, ly, 'x', null);
+      var bw = b.offsetWidth, bh = b.offsetHeight, x0 = (r.l + r.r) / 2 - bw / 2, below = r.b + 8, above = r.t - bh - 8, obs = obstacles(b);
+      function free(y){ return y >= 4 && y + bh <= G.H - G.keyH - 4 && !obs.some(function(o){ return x0 < o.r + 3 && x0 + bw > o.l - 3 && y < o.b + 3 && y + bh > o.t - 3; }); }
+      put(b, x0, free(below) || !free(above) ? below : above, 'x', null);
     }
 
     /* ---------------------------------------------------- the letter keys */
@@ -490,6 +489,7 @@
     }
     function paintKeys(){
       var t = T(), done = St.done[t.id], cur = St.cur[t.id];
+      stage.setAttribute('data-tab', t.id); stage.setAttribute('data-cur', cur); stage.setAttribute('data-done', t.letters.map(function(L, i){ return done[i] ? 1 : 0; }).join(''));
       keys.querySelectorAll('.mn2-key').forEach(function(b, i){
         b.setAttribute('aria-checked', String(i === cur));
         b.classList.toggle('is-done', !!done[i]);
@@ -510,7 +510,7 @@
     }
 
     /* ---------------------------------------------------- doing a letter */
-    function go(i, focus){
+    function go(i, focus, fromBelow){
       var t = T();
       if(i < 0 || i >= t.letters.length) return;
       stopAll();
@@ -526,7 +526,7 @@
       if(t.kind === 'marks') playMark(t, L, i, wasDone);
       else if(t.kind === 'ladder') playLadder(t, L, i);
       else playTalk(t, L, i);
-      if(studio && studio.reveal && G && G.phone) revealPicture();
+      if(fromBelow && G && G.phone) revealPicture();
     }
     function finish(t, i){
       St.done[t.id][i] = true;
@@ -637,7 +637,7 @@
       if(j == null){ if((e.key === ' ' || e.key === 'Enter') && cur !== at){ e.preventDefault(); go(at, true); } return; }
       e.preventDefault(); go((j + n) % n, true);
     });
-    bNext.addEventListener('click', function(){ var t = T(), c = St.cur[t.id]; go(Math.min(t.letters.length - 1, c + 1), false); });
+    bNext.addEventListener('click', function(){ var t = T(), c = St.cur[t.id]; go(Math.min(t.letters.length - 1, c + 1), false, true); });
     bReset.addEventListener('click', startOver);
 
     /* ---------------------------------------------------- draw (resize, tab, figure loaded) */

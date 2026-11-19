@@ -35,3 +35,13 @@ in each tool's brief.
 | 2026-11-18 | AP Bio Simpson diversity | The gauge marks the most D can be with that many species (1 − 1/S) | Shows richness and evenness as two different moves | `syncWords()` in the tool's js |
 | 2026-11-18 | AP Bio Simpson diversity | The plot can be emptied (old kept one organism) | Empty reads "No trees, nothing to measure" | Same file |
 | 2026-11-18 | AP Bio Simpson diversity | Second tab named "Numbers & formula"; hub blurb reworded; title, description and URL unchanged | Name what is in it | `bio-tools.js`, `pages.json` |
+
+| 2026-11-18 | NREMT Mnemonics | Explore is a drawn patient: four tabs (DCAP-BTLS, AVPU, OPQRST, SAMPLE), tap a letter and the EMT does that check | Owner: Explore must be free play that shows an idea; the idea is that each letter is one check on a patient | `docs/tools-v2-nremt-mnemonics-brief.md` |
+| 2026-11-18 | NREMT Mnemonics | The other 15 mnemonics and scales are in Test yourself only (every card and its Fill the letters check, unchanged) | They need other patients (a newborn for APGAR, a face up close for BE-FAST); candidates for later tabs | `TABS` in `nremt/assets/mnemonics.js` |
+| 2026-11-18 | NREMT Mnemonics | Reading a card (the old free view) is now in Test yourself, where each card shows until Fill the letters | Rule 7: Explore is free play, Test yourself holds the cards and the check | The page's script in `nremt/mnemonics.html` |
+| 2026-11-18 | NREMT Mnemonics | A `#m-...` link to DCAP-BTLS, AVPU, OPQRST or SAMPLE opens Explore on that tab; any other `#m-...` opens Test yourself on its card; Test yourself writes `#test-m-...` | Old links keep working and land on the best view | Same script, `start()` |
+| 2026-11-18 | NREMT Mnemonics | Explore's patients are made up (a rider, a man on the sidewalk, a woman of 58 with chest pain); the chest pain answers match scenario s2 | One patient per assessment | `docs/nremt-needs-author.md` (Mnemonics tool) |
+| 2026-11-18 | NREMT Mnemonics | OPQRST severity drawn as 0 to 10 (the card says 1 to 10) | The usual numeric rating scale | `docs/nremt-needs-author.md`; card unchanged |
+| 2026-11-18 | NREMT Mnemonics | The page's "Read a card, then press Fill the letters" line removed from the v2 frame (still there with `?studio=0`) | Test yourself's side panel already says it | The page's script |
+| 2026-11-18 | NREMT Mnemonics | Letter keys are 38 to 44 px wide on a 360 px phone (eight keys in one row); 46 px tall | The letters read as the word only in one row | `.mn2-key` in `nremt/assets/mnemonics.css` |
+| 2026-11-18 | NREMT Mnemonics | First NREMT tool on the v2 kit: `NremtStudio.kit2` added; no other NREMT page calls it | The ApBioTools.studioKit2 pattern | `nremt/assets/nremt-studio.js` |

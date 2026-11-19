@@ -15,6 +15,7 @@
 .mn2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;transition:opacity .25s ease;}
 .mn2-scene.is-swap .mn2-svg,.mn2-scene.is-swap .mn2-labels,.mn2-scene.is-swap .mn2-talk{opacity:0;transition:none;}
 .mn2-labels,.mn2-talk{transition:opacity .25s ease;}
+.mn2-scene.is-clear .mn2-labels,.mn2-scene.is-clear .mn2-talk,.mn2-scene.is-clear .mn2-mk.is-on,.mn2-scene.is-clear .mn2-hand,.mn2-scene.is-clear .mn2-prop.is-lit{opacity:0;transition:opacity .22s ease;}
 .mn2-bg{filter:brightness(var(--mn-ground-dim));}
 
 /* four tabs on a phone: each as wide as its name (DCAP-BTLS is the longest) */
@@ -39,7 +40,7 @@
 .mn2-denim{fill:#4F6FA0;} .mn2-hood{fill:#7D8790;} .mn2-blouse{fill:#B48AC9;}
 .mn2-hood{fill:#6A737C;} .mn2-pocket{fill:none;stroke:#5E666E;stroke-width:3;opacity:.55;}
 .mn2-shoe{fill:#ECEAE4;stroke:#8E8A82;stroke-width:3;} .mn2-lace{stroke:#9C978E;stroke-width:2.4;stroke-linecap:round;}
-.mn2-shirt{fill:#5D6875;stroke:#3E4650;stroke-width:3;stroke-linejoin:round;} .mn2-belt{fill:#6A4A32;}
+.mn2-shirt{fill:#5D6875;stroke:#3E4650;stroke-width:3;stroke-linejoin:round;} .mn2-belt{fill:#9C7A5A;}
 .mn2-sheet{fill:#F6F5F1;stroke:#CFCAC0;stroke-width:3;} .mn2-fold{fill:none;stroke:#D9D4CA;stroke-width:5;stroke-linecap:round;}
 .mn2-hair{fill:#3A2A1E;} .mn2-hairb{fill:#8D8278;} .mn2-hairf{fill:#9A8F84;}
 .mn2-face path,.mn2-face ellipse,.mn2-face circle{vector-effect:non-scaling-stroke;}
@@ -71,7 +72,6 @@
 .mn2-radh{fill:none;stroke:#E5482F;stroke-width:9;stroke-linecap:round;stroke-linejoin:round;}
 @keyframes mn2-flow{to{stroke-dashoffset:-34;}}
 .mn2-band{fill:#2E3A46;} .mn2-wface{fill:#F8F6F0;stroke:#2E3A46;stroke-width:3;} .mn2-whand{fill:none;stroke:#2E3A46;stroke-width:2.4;stroke-linecap:round;}
-.mn2-walk{fill:none;stroke:#E5482F;stroke-width:8;stroke-linecap:round;stroke-dasharray:4 18;opacity:.75;}
 .mn2-pale{fill:#FFFFFF;opacity:.32;}
 .mn2-sweat{fill:#E7F4FF;stroke:#8DB8D9;stroke-width:1;}
 
@@ -116,7 +116,7 @@
 .mn2-badge.is-in{opacity:1;transform:none;}
 
 /* who the patient is (top left, small) */
-.mn2-who{position:absolute;left:12px;bottom:calc(var(--mn2-keyh,70px) + 6px);z-index:1;padding:3px 10px;border-radius:8px;background:rgba(20,26,32,.62);color:#fff;font:700 12.5px var(--font-ui);pointer-events:none;}
+.mn2-who{position:absolute;right:12px;bottom:calc(var(--mn2-keyh,70px) + 6px);z-index:1;padding:3px 10px;border-radius:8px;background:rgba(20,26,32,.62);color:#fff;font:700 12.5px var(--font-ui);pointer-events:none;}
 .mn2-scene.is-tall .mn2-who{bottom:auto;top:10px;left:auto;right:8px;}
 
 /* speech: the EMT's question, the patient's answer */
@@ -157,7 +157,7 @@
 .mn2 .mn2-next:disabled,.mn2 .mn2-reset:disabled{opacity:.45;cursor:default;}
 .mn2 .tk2-cz.is-key{--cz:var(--mn-key);--cz-ink:var(--mn-key-ink);font-family:var(--font-display);font-weight:900;}
 .mn2 .tk2-cz.is-word{--cz:var(--mn-word);--cz-ink:var(--mn-word-ink);}
-.mn2 .tk2-cz.is-find{--cz:var(--mn-find);--cz-ink:var(--mn-find-ink);white-space:normal;}
+.mn2 .tk2-cz.is-find{--cz:var(--mn-find);--cz-ink:var(--mn-find-ink);}
 @media (max-width:640px){ .mn2-lines .tk2-cause{flex-basis:100%;min-height:68px;align-content:flex-start;} .mn2-acts{margin-left:0;width:100%;justify-content:space-between;} }
 
 /* "?" */
@@ -167,7 +167,8 @@
 .mn2-ref-s{color:var(--muted);font-size:13px !important;}
 
 @media (prefers-reduced-motion:reduce){
-  .mn2-mk,.mn2-hand-i,.mn2-lab,.mn2-badge,.mn2-bub,.mn2-f,.mn2-scale,.mn2-hand{transition:opacity .15s linear !important;transform:none !important;}
+  .mn2-mk,.mn2-hand-i,.mn2-lab,.mn2-badge,.mn2-bub{transition:opacity .15s linear !important;transform:none !important;}
+  .mn2-f,.mn2-scale,.mn2-hand{transition:opacity .15s linear !important;}
   .mn2-mk.is-on .mn2-rad,.mn2-hand.is-squeeze .mn2-hand-i,.mn2-ring{animation:none !important;}
   .mn2-ring{display:none;}
 }
