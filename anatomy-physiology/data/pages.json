@@ -82,7 +82,10 @@
       "script": "tools/lab-practical.js",
       "css": "tools/lab-practical.css",
       "data": "lab-practical.json",
-      "studio": true
+      "studio": true,
+      "kit2": true,
+      "extraScripts": ["tools/lab-explore.js"],
+      "extraCss": ["tools/lab-explore.css"]
     },
     {
       "slug": "anatomy-3d",
@@ -141,9 +144,10 @@
       "script": "tools/pathways.js",
       "css": "tools/pathways.css",
       "data": "pathways.json",
-      "extraScripts": ["tools/scene.js"],
-      "extraCss": ["tools/scene.css"],
-      "studio": true
+      "extraScripts": ["tools/scene.js", "tools/pathways-explore.js"],
+      "extraCss": ["tools/scene.css", "tools/pathways-explore.css"],
+      "studio": true,
+      "kit2": true
     },
     {
       "slug": "graphs",

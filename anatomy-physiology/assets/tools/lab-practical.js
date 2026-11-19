@@ -52,10 +52,25 @@
      (studioPaint, called by paint); lookups go through the document. */
   var ST = window.AnpToolKit && window.AnpToolKit.studio ? window.AnpToolKit.studio() : null;
   function Q(){ return ST ? document : app; }
+  /* Tools v2 (docs/tools-v2-anp-lab-practical-brief.md): with the kit on the page (pages.json "kit2": true), Explore is
+     the six clean specimens of tools/lab-explore.js and everything below (all 83 image sets: Labels, the old labels
+     shown view; Study; Quiz; the timed practical; review) is Test yourself: every part is put in the studio for the
+     quiz mode only, and the old mode switch (.lp-modes) stays above the figure as the switch inside Test yourself. */
+  var V2 = !!(ST && window.LevlKit2 && window.AnpLabExplore && window.AnpToolKit.kit2), KIT = null, EX = null, SPEC = null, qChosen = false;
+  if(V2){
+    (function(){
+      var put = ST.put, cap = ST.caption, pills = ST.pills, done = ST.done;
+      ST._v1 = { put: put, caption: cap, pills: pills, done: done };
+      ST.put = function(r, els, opt){ return put(r, els, Object.assign({ mode: 'quiz' }, opt || {})); };
+      ST.caption = function(h, m){ return cap.call(ST, h, m || 'quiz'); };
+      ST.pills = function(l, side, m){ return pills.call(ST, l, side, m || 'quiz'); };
+      if(done) ST.done = function(c, m){ return done.call(ST, c, m || 'quiz'); };
+    })();
+  }
   if(ST){
     ST.root.classList.add('lp-ls');
     ST.caption('Loading the lab practical…');
-    ST.modes({ items: [{ value: 'explore', label: 'Explore' }, { value: 'study', label: 'Study' }, { value: 'quiz', label: 'Quiz' }, { value: 'practical', label: 'Timed' }], value: 'explore',
+    if(!V2) ST.modes({ items: [{ value: 'explore', label: 'Explore' }, { value: 'study', label: 'Study' }, { value: 'quiz', label: 'Quiz' }, { value: 'practical', label: 'Timed' }], value: 'explore',
       onChange: function(v){
         if(v === 'practical'){ location.hash = '#practical'; return; }
         var a = app.querySelector('.lp-modes .lp-mode[href^="#' + v + '"]');
@@ -311,9 +326,11 @@
     { key: 'quiz', label: 'Quiz', blurb: 'Name the highlighted structure, or point to a named one. Scored, with hints and a retry round.' },
     { key: 'practical', label: 'Timed practical', blurb: 'A bell-ringer practical: fixed stations, a timer at each, no going back, full review at the end.' }
   ];
+  if(V2){ MODES[3].label = 'Timed';
+    MODES[0].label = 'Labels'; MODES[0].blurb = 'Every image set with its labels shown. Tap a label to see what that structure is and does.'; }
   function modeTabs(active, setId){
     return '<nav class="lp-modes kt-seg" aria-label="Mode">' + MODES.map(function(m){
-      if(setId && m.key === 'practical') return '';
+      if(setId && m.key === 'practical' && !V2) return '';   // v2: the timed practical is always one tap away in Test yourself
       var href = m.key === 'practical' ? '#practical' : setId ? '#' + m.key + '/' + setId : '#' + m.key;
       return '<a class="lp-mode" href="' + href + '"' + (m.key === active ? ' aria-current="true"' : '') + '>' + esc(m.label) + '</a>';
     }).join('') + '</nav>';
@@ -350,14 +367,16 @@
   }
   function studioPaint(){
     var root = app.querySelector('.lp');
-    var kids = [].slice.call(root.children), dock = [], stage = [], det = [], pick = null, cap = null, credits = [];
+    var kids = [].slice.call(root.children), dock = [], stage = [], det = [], pick = null, cap = null, credits = [], modesEl = null;
     var nav = root.querySelector('.lp-modes'), cur = nav && nav.querySelector('.lp-mode[aria-current="true"]');
-    ST.modeBar(!!nav);
-    if(cur){ var m = (cur.getAttribute('href') || '').replace(/^#/, '').split('/')[0]; ST.mode(m); }
+    if(!V2){
+      ST.modeBar(!!nav);
+      if(cur){ var m = (cur.getAttribute('href') || '').replace(/^#/, '').split('/')[0]; ST.mode(m); }
+    }
     ST.pills([], 'right'); ST.pills([], 'left');
     kids.forEach(function(el){
       var c = el.classList;
-      if(c.contains('lp-modes')) return;                       // the studio's switch stands in for it
+      if(c.contains('lp-modes')){ if(V2) modesEl = el; return; }   // the studio's switch stands in for it (v2: the switch inside Test yourself)
       if(c.contains('lp-pickhost')){ pick = el; return; }
       if(!cap && (c.contains('kt-first') || c.contains('lp-lead') || c.contains('lp-prompt'))){ cap = el; return; }
       if(c.contains('lp-title') || c.contains('lp-run-head') || c.contains('lp-timebar')){ stage.push(el); return; }
@@ -407,6 +426,7 @@
     else if(!setup) ST.caption('');
     ST.put('stage', stage);
     ST.put('dock', dock);
+    if(modesEl) ST.put('dock', modesEl, { first: true });
     // An answer: verdict pill on the stage; the structure's role goes to Why.
     dock.forEach(function(el){
       if(!el.classList || !el.classList.contains('lp-feedback')) return;
@@ -431,7 +451,7 @@
     // Wait for the figure to load: before that the label boxes have no real place, and the box chosen
     // for the ring could sit in the part of the figure the stage does not show.
     var hImg = ST.stage.querySelector('.lp-fig img');
-    if(!studioPaint.hinted && ST.stage.querySelector('.lp-box') && (!hImg || (hImg.complete && hImg.naturalWidth))){
+    if(!V2 && !studioPaint.hinted && ST.stage.querySelector('.lp-box') && (!hImg || (hImg.complete && hImg.naturalWidth))){
       studioPaint.hinted = true;
       // The first-run ring goes on the label with the most room round it, so it covers no other label.
       var bs = [].slice.call(ST.stage.querySelectorAll('.lp-box:not([data-off])')), best = null;
@@ -497,8 +517,28 @@
                              the saved mode; the timed practical keeps its
                              setup screen. The set list is one tap away
                              (a picker, and "All image sets"). */
+  /* v2: which mode a link opens. #specimen/<id>: that Explore tab. #explore/<set>[/<n>] (the old labels view): the
+     Explore tab when that figure is a specimen, else Test yourself's Labels view of the set, as before. No hash:
+     Explore, on the specimen for ?topic= or ?chapter= when there is one (a chapter with none opens Test yourself on
+     its set, as before). Every other link (#study, #quiz, #practical, #review, #explore) is Test yourself, as before. */
+  function routeV2(h){
+    var q = location.search, topic = (q.match(/[?&]topic=([\w-]+)/) || [])[1], chapter = (q.match(/[?&]chapter=([\w-]+)/) || [])[1];
+    var tab = null, quiz = true;
+    if(h[0] === 'specimen'){ tab = EX.tabFor({ tab: h[1] }) || EX.tab(); quiz = false; }
+    else if(h[0] === 'explore' && h[1] && SETS[h[1]]){ tab = EX.tabFor({ set: h[1], station: parseInt(h[2], 10) || 1 }); quiz = !tab; }
+    else if(!h[0]){ tab = topic || chapter ? EX.tabFor({ topic: topic, chapter: chapter }) : EX.tab(); quiz = !tab; }
+    if(tab) EX.tab(tab);
+    if(quiz){ qChosen = true; route1(h); }
+    else if(!qChosen) route1(['quiz', EX.setOf(EX.tab())], true);
+    KIT.go(quiz ? 'quiz' : 'explore');
+  }
   function route(){
     var h = decodeURIComponent((location.hash || '').replace(/^#/, '')).split('/');
+    if(V2 && KIT) return routeV2(h);
+    route1(h);
+  }
+  function route1(h, quiet){
+    if(quiet){ var s0 = SETS[h[1]]; if(s0) return startQuiz(s0, null); }
     var mode = /^(explore|study|quiz|practical|review)$/.test(h[0]) ? h[0] : '';
     if(mode === 'practical') return showSetup();
     if(mode === 'review') return startQuiz(null, missedItems(), 'Your missed structures');
@@ -1063,10 +1103,37 @@
     document.title = 'Timed practical in progress | Anatomy & Physiology';
   }
 
+  /* v2: Explore (tools/lab-explore.js) beside Test yourself (everything above) */
+  function startV2(){
+    EX = SPEC && window.AnpLabExplore.build({ data: SPEC, base: BASE, studio: ST,
+      onQuiz: function(id){ location.hash = '#quiz/' + id; } });
+    if(EX) KIT = window.AnpToolKit.kit2(ST, { stage: EX.stage, ref: EX.ref, onShow: function(m, user){
+      EX.shown(m === 'explore');
+      if(m === 'explore'){
+        // leaving Test yourself ends a timed practical in progress: its clock stops and it starts again from setup
+        if(timer){ stopTimer(); qChosen = false; }
+      }
+      if(!user) return;
+      if(m === 'quiz' && !qChosen){ qChosen = true; route1(['quiz', EX.setOf(EX.tab())], true); }
+      try{ history.replaceState(null, '', location.pathname + location.search + (m === 'explore' ? '#specimen/' + EX.tab() : '')); }catch(e){}
+    } });
+    if(!KIT){
+      V2 = false;
+      if(ST._v1) Object.keys(ST._v1).forEach(function(k){ if(ST._v1[k]) ST[k] = ST._v1[k]; });
+      ST.modes({ items: [{ value: 'explore', label: 'Explore' }, { value: 'study', label: 'Study' }, { value: 'quiz', label: 'Quiz' }, { value: 'practical', label: 'Timed' }], value: 'explore',
+        onChange: function(v){ if(v === 'practical'){ location.hash = '#practical'; return; } location.hash = '#' + v; } });
+    }
+  }
+
   /* ------------------------------------------------------------------ boot */
   function boot(){
+    var specSrc = SRC.replace(/lab-practical\.json$/, 'lab-specimens.json');
+    var specs = V2 ? fetch(specSrc).then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; }) : Promise.resolve(null);
     fetch(SRC).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }).then(function(d){
+      return specs.then(function(sp){ SPEC = sp; return d; });
+    }).then(function(d){
       DATA = d; index();
+      if(V2) startV2();
       var live = document.createElement('p');
       live.id = 'lp-announce'; live.className = 'lp-sr'; live.setAttribute('aria-live', 'assertive');
       app.parentNode.insertBefore(live, app.nextSibling);

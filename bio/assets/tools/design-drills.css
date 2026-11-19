@@ -1,0 +1,109 @@
+/* Design drills, tools v2 Explore (bio/assets/tools/design-drills.js; docs/tools-v2-design-drills-brief.md).
+   Loaded only by this page (bio/data/pages.json "kit2": true). One colour per idea, everywhere: what differs between
+   the groups amber (the rings, the item labels, the first pill), the measured result blue (mean lines, the bracket,
+   the error bars, the height pill), a difference that can be credited green, one that cannot vermillion. */
+.dd2,.dd2-ref{--dd-diff:#E69F00;--dd-diff-ink:#8A5A00;--dd-res:#0072B2;--dd-res-ink:#005A8C;--dd-ok:#009E73;--dd-ok-ink:#00684C;--dd-bad:#D55E00;--dd-bad-ink:#A33F00;
+  --dd-w0:#EEF3EE;--dd-w1:#DDE7E0;--dd-tile:#C9D6CD;--dd-lamp:#3A4148;--dd-lampl:#FFF4C2;--dd-cone:#FFF2B0;--dd-cable:#6B7278;
+  --dd-ruler:#F3D98A;--dd-ruler-ink:#6B5520;--dd-t0:#C99A62;--dd-t1:#B5864F;--dd-edge:#8C6436;--dd-f0:#6E4C2A;--dd-f1:#5C3F22;
+  --dd-p0:#B85C38;--dd-p1:#D27A50;--dd-p2:#A24E2E;--dd-rim:#C96A43;--dd-soil:#4A3423;--dd-tray:#3F6B57;--dd-trayl:#5E8C75;
+  --dd-mat:#4B5157;--dd-h0:#FF8A3D;--dd-h1:#E2541B;--dd-leaf:#4E9A3A;--dd-leaf-ink:#2F6424;--dd-dry:#A2A84A;--dd-dry-ink:#6A6E2C;--dd-stem:#5C8F38;
+  --dd-glass:rgba(255,255,255,.55);--dd-glass-ink:#5E7480;--dd-water:#8CC4E6;--dd-food:#3FA34D;--dd-box:#E9ECEE;--dd-box-ink:#4B5157;--dd-pill:#fff;--dd-ink:#1F2A24;}
+:root[data-theme="dark"] .dd2,:root[data-theme="dark"] .dd2-ref{--dd-diff:#F0B63C;--dd-diff-ink:#F6CF75;--dd-res:#56B4E9;--dd-res-ink:#8CCBF2;--dd-ok:#3CC79D;--dd-ok-ink:#7CDDBF;--dd-bad:#F07F3C;--dd-bad-ink:#F5A877;
+  --dd-w0:#1D2A28;--dd-w1:#17211F;--dd-tile:#25332F;--dd-lamp:#11161A;--dd-lampl:#FFE58A;--dd-cone:#6E6436;--dd-cable:#4C5358;
+  --dd-ruler:#B79A4C;--dd-ruler-ink:#1E1709;--dd-t0:#6A4E30;--dd-t1:#5A4128;--dd-edge:#3E2B18;--dd-f0:#4A3520;--dd-f1:#3A2917;
+  --dd-p0:#8E4429;--dd-p1:#A65A3A;--dd-p2:#7A3A22;--dd-rim:#9E5434;--dd-soil:#24190F;--dd-tray:#28463A;--dd-trayl:#3C6553;
+  --dd-mat:#2E3236;--dd-h0:#E8742C;--dd-h1:#B8441A;--dd-leaf:#4F9A3E;--dd-leaf-ink:#20461A;--dd-dry:#8D9240;--dd-dry-ink:#4B4E1E;--dd-stem:#4C7E30;
+  --dd-glass:rgba(220,235,245,.18);--dd-glass-ink:#9DB4C0;--dd-water:#3E7FA8;--dd-food:#3B9A48;--dd-box:#3A4046;--dd-box-ink:#C9D0D5;--dd-pill:#1E2327;--dd-ink:#E9EFEA;}
+.dd2{display:flex;flex-direction:column;gap:10px;min-height:0;flex:1 1 auto;}
+.dd2[hidden]{display:none;}
+.dd2 [hidden]{display:none !important;}
+.dd2-scene{position:relative;flex:1 1 auto;min-height:440px;border-radius:18px;overflow:hidden;background:var(--dd-f1);}
+.dd2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+.dd2-svg-m,.dd2-svg-f{will-change:transform;}   /* own layers: a frame of plants repaints only the middle one */
+@media (max-width:1023px){ .dd2-scene{flex:none;height:min(66vw,540px);min-height:440px;} }
+@media (max-width:640px){ .dd2-scene{height:max(460px,min(130vw,540px));border-radius:14px;} .dd2{gap:8px;} }
+.dd2-lines{display:flex;align-items:center;justify-content:space-between;gap:6px 18px;flex-wrap:wrap;flex:none;}
+.dd2-acts{display:flex;align-items:center;gap:6px 14px;flex:none;margin-left:auto;}
+.dd2 .dd2-new{min-height:44px;background:var(--white);color:var(--cink);box-shadow:inset 0 0 0 2px var(--cink);font:800 14.5px var(--font-ui);cursor:pointer;}
+.dd2 .tk2-cz.is-diff{--cz:var(--dd-diff);--cz-ink:var(--dd-diff-ink);}
+.dd2 .tk2-cz.is-res{--cz:var(--dd-res);--cz-ink:var(--dd-res-ink);}
+.dd2 .tk2-cz.is-ok{--cz:var(--dd-ok);--cz-ink:var(--dd-ok-ink);}
+.dd2 .tk2-cz.is-bad{--cz:var(--dd-bad);--cz-ink:var(--dd-bad-ink);}
+@media (max-width:640px){ .dd2-lines .tk2-cause{flex-basis:100%;min-height:70px;align-content:flex-start;} .dd2-acts{margin-left:0;width:100%;justify-content:flex-end;} }
+
+/* the room and the bench */
+.dd2-wall{fill:url(#dd2g-wall);} .dd2s-w0{stop-color:var(--dd-w0);} .dd2s-w1{stop-color:var(--dd-w1);}
+.dd2-tile{fill:none;stroke:var(--dd-tile);stroke-width:1;}
+.dd2-cone{fill:url(#dd2g-cone);opacity:.55;} .dd2s-c0{stop-color:var(--dd-cone);stop-opacity:.9;} .dd2s-c1{stop-color:var(--dd-cone);stop-opacity:0;}
+.dd2-cable{fill:none;stroke:var(--dd-cable);stroke-width:1.4;}
+.dd2-lamp{fill:var(--dd-lamp);} .dd2-lampl{fill:var(--dd-lampl);}
+.dd2-ruler{fill:var(--dd-ruler);stroke:var(--dd-ruler-ink);stroke-width:.8;stroke-opacity:.5;}
+.dd2-tick{fill:none;stroke:var(--dd-ruler-ink);stroke-width:1;}
+.dd2-rn{font-size:11px;font-weight:800;fill:var(--dd-ruler-ink);}
+.dd2-btop{fill:url(#dd2g-top);} .dd2s-t0{stop-color:var(--dd-t0);} .dd2s-t1{stop-color:var(--dd-t1);}
+.dd2-grain{fill:none;stroke:var(--dd-edge);stroke-width:1;opacity:.25;}
+.dd2-bedge{fill:var(--dd-edge);}
+.dd2-bface{fill:url(#dd2g-face);} .dd2s-f0{stop-color:var(--dd-f0);} .dd2s-f1{stop-color:var(--dd-f1);}
+/* the heat mat under each tray: off, or warm (test group with Warmer) */
+.dd2-mat-b{fill:var(--dd-mat);}
+.dd2-mat-h{fill:url(#dd2g-warm);opacity:0;transition:opacity .35s;} .dd2s-h0{stop-color:var(--dd-h0);} .dd2s-h1{stop-color:var(--dd-h1);}
+.dd2-wave{fill:none;stroke:var(--dd-h0);stroke-width:1.6;stroke-linecap:round;opacity:0;transition:opacity .35s;}
+.dd2-mat.is-on .dd2-mat-h{opacity:1;} .dd2-mat.is-on .dd2-wave{opacity:.7;}
+.dd2-tray{fill:var(--dd-tray);} .dd2-trayl{fill:var(--dd-trayl);}
+/* pots and plants */
+.dd2-pot{fill:url(#dd2g-pot);} .dd2s-p0{stop-color:var(--dd-p0);} .dd2s-p1{stop-color:var(--dd-p1);} .dd2s-p2{stop-color:var(--dd-p2);}
+.dd2-rim{fill:var(--dd-rim);} .dd2-soil{fill:var(--dd-soil);}
+.dd2-stem{fill:none;stroke:var(--dd-stem);stroke-linecap:round;}
+.dd2-lf{fill:var(--dd-leaf);stroke:var(--dd-leaf-ink);stroke-width:1;vector-effect:non-scaling-stroke;transition:fill .5s;}
+.dd2-rib{fill:none;stroke:var(--dd-leaf-ink);stroke-width:.8;vector-effect:non-scaling-stroke;opacity:.55;}
+.dd2-plants [data-g="1"] .dd2-pl.is-dry .dd2-lf,.dd2-scene[data-dry="1"] .dd2-plants [data-g="1"] .dd2-lf{fill:var(--dd-dry);stroke:var(--dd-dry-ink);}
+.dd2-pl.is-fade{animation:dd2-fade .22s ease-out;}
+@keyframes dd2-fade{from{opacity:.25;}to{opacity:1;}}
+/* the things each group gets */
+.dd2-glass{fill:var(--dd-glass);stroke:var(--dd-glass-ink);stroke-width:1.3;stroke-linejoin:round;}
+.dd2-water{fill:var(--dd-water);transform-box:fill-box;transform-origin:50% 100%;transition:transform .45s ease;}
+.dd2-item.is-on .dd2-water{transform:scaleY(.45);}
+.dd2-handle{fill:none;stroke:var(--dd-glass-ink);stroke-width:2;}
+.dd2-grad{fill:none;stroke:var(--dd-glass-ink);stroke-width:1;}
+.dd2-food{fill:var(--dd-food);opacity:0;transition:opacity .4s;} .dd2-item.is-on .dd2-food{opacity:.9;}
+.dd2-cap{fill:var(--dd-box-ink);} .dd2-flabel{fill:#fff;opacity:.8;}
+.dd2-cord{fill:none;stroke:var(--dd-box-ink);stroke-width:1.6;}
+.dd2-box{fill:var(--dd-box);stroke:var(--dd-box-ink);stroke-width:1.2;}
+.dd2-knob{fill:var(--dd-box-ink);} .dd2-knobm{stroke:var(--dd-box);stroke-width:1.4;stroke-linecap:round;}
+.dd2-led{fill:#7C858C;transition:fill .35s;} .dd2-item.is-on .dd2-led{fill:var(--dd-h1);}
+.dd2-ring{fill:none;stroke:var(--dd-diff);stroke-width:2.6;opacity:0;transition:opacity .3s;}
+.dd2-item.is-diff .dd2-ring{opacity:1;}
+/* words on the picture */
+.dd2-gname{font-weight:900;fill:var(--dd-ink);paint-order:stroke;stroke:var(--dd-w0);stroke-width:3px;stroke-linejoin:round;}
+.dd2-ilab{font-weight:800;fill:#FFF8EC;}
+.dd2-ilab.is-diff{fill:#FFD66B;}
+:root[data-theme="dark"] .dd2-ilab.is-diff{fill:var(--dd-diff-ink);}
+.dd2-over{transition:opacity .2s;} .dd2-over.is-wait{opacity:0;transition:none;}
+.dd2-mline{fill:none;stroke:var(--dd-res);stroke-width:2.4;}
+.dd2-conn{fill:none;stroke:var(--dd-res);stroke-width:1.2;opacity:.55;}
+.dd2-brl,.dd2-ebar{fill:none;stroke:var(--dd-res);stroke-width:2.2;stroke-linecap:round;}
+.dd2-edot{fill:var(--dd-res);}
+.dd2-pillr{fill:var(--dd-pill);stroke:var(--dd-res);stroke-width:1.6;}
+.dd2-pillt{font-weight:900;fill:var(--dd-res-ink);}
+.dd2-se{font-weight:800;fill:var(--dd-res-ink);paint-order:stroke;stroke:var(--dd-w0);stroke-width:3px;}
+.dd2-knob-n .tk2-tag{white-space:nowrap;}
+/* "?" */
+.dd2-ref-p{margin:0 0 10px;line-height:1.5;}
+.dd2-ref .table-wrap{margin:0 0 10px;}
+.dd2-ref-drill{margin:6px 0 12px;}
+@media (prefers-reduced-motion: reduce){ .dd2-water,.dd2-food,.dd2-ring,.dd2-mat-h,.dd2-wave,.dd2-led,.dd2-lf{transition-duration:.15s;} }
+/* the tap badge sits on the box's top edge, clear of the item it names */
+.dd2 .tk2-tap .tk2-badge{top:-12px;right:-4px;width:22px;height:22px;}
+.dd2 .tk2-tap .tk2-badge .tk2-i{width:13px;height:13px;}
+/* the kit's pressed look would mark "differs" a second time in green around the amber ring: these taps keep the plain
+   tap look whatever their state (the ring and the amber label carry it) */
+.dd2 .tk2-tap[aria-pressed="true"]{border:2px dashed color-mix(in srgb, var(--cink) 55%, transparent);background:transparent;}
+.dd2 .tk2-tap[aria-pressed="true"] .tk2-badge{background:#fff;color:var(--cink);}
+:root[data-theme="dark"] .dd2 .tk2-tap[aria-pressed="true"] .tk2-badge{background:#1A2638;}
+/* the cause line keeps two rows' height above phones too, so the page below never jumps on a tap */
+@media (min-width:641px){ .dd2-lines .tk2-cause{min-height:84px;align-content:center;} }
+/* Test yourself: the experiment's setup and chart are scaled by design-drills.js to the stage's height */
+.ls-root .ls-dr-stage:not(.dr-show-data) .dr-scene,.ls-root .ls-dr-stage.dr-show-data .dr-charts{max-width:none;}
+.ls-root .ls-dr-stage .dr-sfig,.ls-root .ls-dr-stage .dr-charts svg{display:block;width:100%;margin:0 auto;}
+/* reduced motion: the calm equivalent is a short cross fade, kept against the site's global motion off rule */
+@media (prefers-reduced-motion: reduce){ .dd2 .dd2-pl.is-fade{animation-duration:.22s !important;animation-iteration-count:1 !important;} }

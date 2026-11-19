@@ -513,3 +513,26 @@ Site audit follow-up (2026-10-02, workstream W6):
     left ventricle's curves are blue in Test yourself's Wiggers graph too (one colour per idea, class lv set in
     graphs.js; graphs.json unchanged); an inactivated Na+ channel is drawn open and plugged until repolarization;
     dissolved O2 is a handful against the bound O2 (about 98.5% bound).
+101. (2026-11-18) **Pathway tracer on tools v2** (docs/tools-v2-standard.md; brief docs/tools-v2-anp-pathways-brief.md).
+    Explore is four drawn pathways from the bank: blood through the heart and body (`blood-flow`), the knee jerk reflex
+    arc (`reflex-arc-knee`), the stress hormone axis (`hpa-axis`) and a chemical synapse (`synaptic-transmission`). The
+    student drags what travels along the drawn body route; each step happens in place and is named in order beside
+    the picture with the pathway's own step labels; after one full run a part can be broken (no fresh air, a cut root,
+    a damaged gland, blocked channels or receptor proteins) and the next run shows what fails. Test yourself holds all
+    208 pathways, Watch and Trace it on the five figures and the three drills, unchanged; the tool's own modes are a
+    small switch in its panel. Uses AnpToolKit.kit2 unchanged ("kit2": true in data/pages.json). Item ids, scoring,
+    recording and deep links unchanged; open points in docs/anp-needs-author.md (pw-*).
+    Review round 1 (2026-11-18): no step column (the steps are one line under a full width picture), two
+    compositions per screen (wide 2:1, tall 1:1), a clear ring knob, broken runs stop after their last real step, the
+    people redrawn, the stalk into the posterior lobe, the zoom from T12 to L1.
+
+102. (2026-11-18) **Lab practical on tools v2** (docs/tools-v2-standard.md; brief docs/tools-v2-anp-lab-practical-brief.md).
+    Explore is six specimens, one lab figure each (heart internal, brain lateral, skull lateral, neuron, skin, kidney),
+    drawn clean: printed labels and their leader lines painted out by scripts/build-lab-specimens.py
+    (figures/specimens/), with a pin on each of 70 parts where its printed line ended. Tap a pin and its name opens on
+    the picture, with a short "what it does" phrase under it; find by name; nothing graded. Data:
+    data/tools/lab-specimens.json, validated by scripts/lib/anp-tool-checks/lab-specimens.mjs (asked labels only, so
+    decision 30 holds; phrases held to the ordering rule). Test yourself holds the whole section 8.1 tool unchanged:
+    all 83 sets, Labels (the old Explore), Study, Quiz and the timed practical, every item id, score and deep link. The
+    named places piece is the shared kit's K.spots (assets/course/tool-kit2.js), for the other explorer tools. Open
+    points in docs/anp-needs-author.md ("Lab practical tool, tools v2 specimens").

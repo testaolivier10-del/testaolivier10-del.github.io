@@ -84,6 +84,11 @@ const SHELL_BUDGETS = [
   /* 16 -> 16.4 (tools v2 NREMT body map, 2026-11-18): viewer.js project(), flying() and the frame and hover events
      a card on the picture follows; measured 16.3 KB. */
   ['assets/body3d', 16.4],
+  /* The tools v2 kit, assets/course/tool-kit2.js and .css (docs/tools-v2-standard.md): loaded only by tools rebuilt to
+     v2, so it is its own shell, not part of every course page's assets/course (review of the Lab practical, 2026-11-18).
+     Measured 33.0 KB with K.spots (the explorers' named places, with its miss, card sizing and find-it mode: about
+     5.5 KB). */
+  ['assets/course/kit2', 34],
   /* 249 -> 253 for cross-device sync (audit 2026-10, Fix-first 5). A sync
      used to replace whole namespaces and pull only on sign-in, so two signed-in
      devices erased each other's progress. account.js now carries a per-key
@@ -438,7 +443,10 @@ const SHELL_BUDGETS = [
      finished cards in four tools. Measured 59.6 KB. */
   /* 60 -> 61 (tools v2, docs/tools-v2-anp-graphs-brief.md): the Graphs tool's five drawn Explore screens
      (tools/graphs-explore.js and .css, 24 KB gzipped) beside the old engine it keeps for Test yourself. Measured 60.3 KB. */
-  ['anatomy-physiology', 61],
+  /* 61 -> 68 (tools v2, docs/tools-v2-anp-lab-practical-brief.md): the Lab practical's Explore (tools/lab-explore.js
+     and .css, 6.7 KB gzipped) beside the old engine it keeps for Test yourself (1.6 KB more in lab-practical.js).
+     Measured 67.4 KB; 68.7 KB after review round 1 (blank picture taps, the fade order on a tab change). */
+  ['anatomy-physiology', 69],
   /* AP® Biology (bio/, a fork of the A&P runtime): bio-core, questions, nav,
      glossary tooltips, bio.css, the generated curriculum, plus the app script
      a page loads (exams.js, the largest, with pages.css and frq-kit.js).
@@ -1147,6 +1155,9 @@ const DATA_BUDGETS = [
      chapter (the chapter filter). The page itself went from 42.9 to 15.9 KB
      gzipped. Measured 180 KB for all 162 topics. */
   ['anatomy-physiology/assets/glossary.json', 190],
+  /* The Lab practical's Explore specimens (tools v2, docs/tools-v2-anp-lab-practical-brief.md): six specimens, 70
+     parts, each with its name, accepted names and phrase, and each figure's credit. Measured 5.2 KB. */
+  ['anatomy-physiology/assets/tool-data/lab-specimens.json', 6],
   /* The Reagent Roadmap's graph: every group, reagent and reaction the tool
      routes over. Same situation as question-molecules.js — a <script src>
      on a page with no line of its own above, so nothing was measuring it —
@@ -1182,6 +1193,7 @@ function bucketOf(relPath) {
   const parts = relPath.split(sep);
   // The shared course layer (docs/course-shell.md) is loaded by course pages
   // only, so it is its own shell rather than part of every page's.
+  if (parts[0] === 'assets' && parts[1] === 'course' && /^tool-kit2\./.test(parts[2] || '')) return 'assets/course/kit2';
   if (parts[0] === 'assets' && parts[1] === 'course') return 'assets/course';
   // The video lesson player (docs/video-lessons.md) loads only on pages that
   // show a video, so it is its own shell, not part of every page's.

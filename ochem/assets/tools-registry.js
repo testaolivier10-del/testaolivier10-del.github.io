@@ -78,12 +78,13 @@
       slug: 'resonance',
       name: 'Resonance Explorer',
       icon: ICONS.resonance,
-      tagline: 'Find every valid resonance form, and rank them.',
+      tagline: 'Push electrons. See the forms and the real molecule.',
       blurb: 'Move electrons to find every resonance form of a molecule.',
       teaches: 'Delocalization, contributor weighting',
       topic: ['resonance', 'conjugate'],
       terms: ['resonance-structures', 'major-contributor', 'resonance-hybrid'],
-      studio: true
+      studio: true,
+      kit2: true     // tools v2 (docs/tools-v2-resonance-brief.md)
     },
     {
       slug: 'viewer-3d',

@@ -191,7 +191,8 @@
       if(it && it.href) location.href = it.href; else if(opts.onPick) opts.onPick(v);
     } };
     if(!S._pick) S._pick = S.picker(o, S.kit2 ? 'quiz' : undefined); else S._pick.set(o);
-    S._pick.el.classList.remove('ls-off');
+    // on a kit2 tool the dropdown is Test yourself's only: it stays hidden while Explore shows
+    S._pick.el.classList.toggle('ls-off', !!(S.kit2 && S.kit2.mode() !== 'quiz'));
     return true;
   }
   function picker(host, opts){
@@ -371,7 +372,7 @@
       // A new render is not the finished screen any more (a finished card is set again by the render that needs it).
       if(s.done) s.done(false);
       // The dropdown shows while its chooser is part of what is on screen (a list or setup view has none).
-      if(s._pick) setTimeout(function(){ var k = s._kp; s._pick.el.classList.toggle('ls-off', !(k && k.isConnected && s.root.contains(k))); }, 0);
+      if(s._pick) setTimeout(function(){ var k = s._kp; s._pick.el.classList.toggle('ls-off', !(k && k.isConnected && s.root.contains(k)) || !!(s.kit2 && s.kit2.mode() !== 'quiz')); }, 0);
       return s;
     };
     s.mirror = function(el, mode, fallback){

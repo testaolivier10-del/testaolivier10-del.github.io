@@ -1438,7 +1438,7 @@
 .dr-sfig .dk-ts{fill:var(--muted);font:700 9.5px var(--font-ui);}
 .dr-sfig .dk-lv{fill:var(--ink);font:900 12px var(--font-ui);}
 .dr-sfig .dk-ax{fill:var(--muted);font:800 11px var(--font-ui);}
-.dr-sfig .dk-ic{fill:var(--ink);font:900 8px var(--font-ui);stroke:none;}
+.dr-sfig .dk-ic{fill:var(--ink);font:900 9px var(--font-ui);stroke:none;}
 .dr-sfig .dk-ic.big{font-size:10px;}
 /* the drawn parts of the variables drill: tappable while the drill is open, and colored by role after Check */
 .dr-sfig .dr-part.is-live{cursor:pointer;}

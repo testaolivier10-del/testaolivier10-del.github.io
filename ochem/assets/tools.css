@@ -657,18 +657,9 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .v3-quiz .tchip:disabled{opacity:1;}
 .v3-quiz .tnote{margin:12px 0 0;}
 
-/* ---- Resonance: the averaged charge overlay ------------------------------ */
-.res-charge .omol svg{max-width:340px;max-height:260px;}
-.res-q{transition:r .4s cubic-bezier(.2,.8,.2,1);}
-.res-q--neg{fill:color-mix(in srgb,var(--q-neg) 14%,transparent);stroke:var(--q-neg);stroke-width:1.5;stroke-dasharray:3 3;}
-.res-q--pos{fill:color-mix(in srgb,var(--q-pos) 14%,transparent);stroke:var(--q-pos);stroke-width:1.5;stroke-dasharray:3 3;}
-.res-q__t{font:900 12px var(--font-mono);}
-.res-q__t--neg{fill:var(--q-neg);}
-.res-q__t--pos{fill:var(--q-pos);}
 /* Pass 2: δ− red and δ+ blue, the same colors as the − and + badges on the forms (red was on δ+ before). */
 .tool-root{--q-neg:#C62828;--q-pos:#1F4FBF;}
 :root[data-theme="dark"] .tool-root{--q-neg:#FF8A80;--q-pos:#8FB0FF;}
-@media(prefers-reduced-motion:reduce){ .res-q{transition:none;} }
 
 /* ---- Arrow Pusher: mechanism challenge ------------------------------------ */
 .ap-chal__goal{margin:0 0 10px;font-size:14px;font-weight:700;line-height:1.55;color:var(--ink);}
@@ -1073,93 +1064,11 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .ap-ls #apBooksBox > summary{background:none;padding:0;min-height:0;font-weight:900 !important;}
 .ls-sheet .ttable th{text-transform:none;letter-spacing:0;font-size:var(--ls-s);}
 
-/* ---- Resonance explorer in the Tool Studio: the drawing board beside the
-   forms found (a scrolling strip of cards on a phone, a grid when wide);
-   Compare two: both species as panes, the winner marked. */
-.res-ls-found{gap:8px;}
-.res-ls-found #resFound{flex:1;min-height:0;display:flex;}
-.res-ls .res-grid{flex:1;min-height:0;display:flex;gap:10px;overflow-x:auto;scrollbar-width:thin;}
-.res-ls .res-card{flex:0 0 auto;width:min(46%,220px);min-height:0;display:flex;flex-direction:column;margin:0;padding:8px;border-radius:14px;
-  background:var(--white);--mol-bg:var(--white);border:0;box-shadow:inset 0 0 0 1.5px var(--line-soft);}
-.res-ls .res-card--major{box-shadow:inset 0 0 0 2px var(--good-text);background:var(--tint-good);--mol-bg:var(--tint-good);}
-.res-ls .res-card .tstage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;}
-.res-ls .res-card .scene{width:100%;height:100%;display:flex;align-items:center;}
-.res-ls .res-card .scene svg{width:100%;height:100%;max-height:100%;}
-.res-ls .res-card__rank{flex:none;font:800 var(--ls-s)/1.3 var(--font-ui);letter-spacing:0;text-transform:none;}
-.res-ls .res-card__why{display:none;}
-.res-ls .res-card--blank{align-items:center;justify-content:center;font:900 var(--ls-l) var(--font-ui);color:var(--muted);background:transparent;box-shadow:inset 0 0 0 1.5px var(--line);border-style:none;}
-@container (min-width:560px){ .res-ls .res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));align-content:start;overflow:auto;} .res-ls .res-card{width:auto;min-height:auto;} .res-ls .res-card .tstage{flex:none;height:120px;} .res-ls .res-card--blank{min-height:150px;} }
-/* Phone pass (2026-10-13): the board and the forms found each get a fixed height and the stage scrolls between them,
-   so a found form is drawn near full size (its atom labels at least 12 px) instead of a 135 px thumbnail; the cards
-   are a swipeable row, one at a time. */
-.ls-root.ls-phone.res-ls .ls-ed{flex:none;height:250px;}
-/* Audit 2026-10: the forms found were 88%-wide cards with the rest off-screen. Now a thumbnail strip: every form
-   found and every one still missing in view at once (up to four), each card a third of the width. */
-.ls-root.ls-phone.res-ls .res-ls-found{flex:none;height:168px;}
-/* Two forms to a row on a phone (three were ~100 px wide and their atoms' letters fell under 12 px; consistency
-   audit 2026-11, C4); the row still scrolls to the rest. */
-.ls-root.ls-phone.res-ls .res-card{width:calc((100% - 10px) / 2);scroll-snap-align:start;padding:6px;}
-.ls-root.ls-phone.res-ls .res-card__rank{font-size:12px;line-height:1.25;}
-.ls-root.ls-phone.res-ls .ls-ed{height:280px;}
-.ls-root.ls-phone.res-ls .res-grid{scroll-snap-type:x mandatory;}
-.ls-root.ls-phone.res-ls .res-card__tag{font-size:12px;}
-/* Legibility sweep 2026-11: in a phone thumbnail the raised atom label reached its charge badge, so the badge moves
-   6 units further out (direction set by resonance.js) and its sign keeps the size the badge was drawn for. */
-.ls-root.ls-phone.res-ls .res-card .atom-chg{translate:var(--chg-dx,0) var(--chg-dy,0);}
-.ls-root.ls-phone.res-ls .res-card .atom-chg text{font-size:12px!important;}
 /* Small atom labels (H, drawn at 11 units; 12.5 for mid-size atoms) read at least 12 px on a phone stage. Labels only:
    the atoms, bonds and positions are unchanged. */
 .ls-root.ls-phone .ls-stage .atom text[font-size="11"]{font-size:14.2px;}
 .ls-root.ls-phone .ls-stage .atom text[font-size="12.5"]{font-size:14.2px;}
-/* The resonance hybrid (tool review 2026-11): drawn in the board's place once every form is found, and on each side
-   of Compare two after the call. Dashed partial bonds; δ marks, large where a major form puts the charge. */
-.res-ls .ls-ed[hidden],.res-hybwrap[hidden]{display:none !important;}
-.res-hybwrap{display:flex;flex-direction:column;gap:6px;min-height:0;}
-.res-ls .res-hybwrap{flex:1;min-width:0;}
-.res-hyb{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;}
-.res-hyb .scene,.res-cmpmol .scene{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:transparent;border:0;margin:0;padding:0;}
-.res-hyb .scene svg,.res-cmpmol .scene svg{width:100%;height:100%;max-height:100%;}
-.res-hyb__k{margin:0;}
-.res-hyb__key{margin:0;font:700 var(--ls-s,13px)/1.4 var(--font-ui);color:var(--muted);}
-.res-hybwrap .tchip{align-self:flex-start;}
-.res-hyb__dash{stroke:var(--line);stroke-width:2.4;stroke-dasharray:5 4;stroke-linecap:round;}
-.res-hyb__halo--neg{fill:var(--q-neg);fill-opacity:.16;}
-.res-hyb__halo--pos{fill:var(--q-pos);fill-opacity:.16;}
-.res-hyb__d{font:900 19px var(--font-ui);}
-.res-hyb__d.is-minor{font-size:13px;opacity:.85;}
-.ls-root.ls-phone.res-ls .res-hybwrap{flex:none;height:300px;}
-.ls-root.ls-phone.res-ls .res-hyb__d{font-size:22px;}
-.ls-root.ls-phone.res-ls .res-hyb__d.is-minor{font-size:16px;}
-.res-hyb__d--neg{fill:var(--q-neg);}
-.res-hyb__d--pos{fill:var(--q-pos);}
-.res-ls .res-ls-cmp .ls-pane{display:flex;flex-direction:column;min-height:0;}
-.res-ls .res-cmpmol{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;}
-.res-ls #resMore{margin:0;border:0;padding:0;}
-.res-ls #resMore > summary{font:700 var(--ls-m) var(--font-ui);letter-spacing:0;text-transform:none;}
-.res-ls #resMore .tchips{margin-bottom:12px;}
-.res-ls #resChargeBox{margin:0;border:0;padding:0;}
-.res-ls #resChargeBox > summary{pointer-events:none;background:none;padding:0;min-height:0;}
-.res-ls #resChargeBox > summary::after{display:none;}
-.res-ls-prog .res-bar{height:8px;border-radius:9px;}
-.res-ls-prog .trow,.res-ls .ls-dock .trow{margin:0 !important;gap:8px;}
-.res-ls-prog .tchip,.res-ls .ls-dock .tchip{min-height:44px;}
-.res-ls-cmp .ls-pane{margin:0;box-shadow:none;border:0;background:var(--surface2);}
-.res-ls-cmp .ls-pane .tpanel__head{margin:0;font:800 var(--ls-m) var(--font-ui);letter-spacing:0;text-transform:none;color:var(--ink);}
-.res-ls-cmp .ls-pane .tstage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;border:0;background:none;padding:0;}
-.res-ls-cmp .ls-pane.tpanel--win{background:var(--tint-good);--mol-bg:var(--tint-good);box-shadow:inset 0 0 0 2px var(--good-text);}
-.res-ls-cmpdock{display:flex;flex-direction:column;gap:12px;}
-.res-ls-picks{display:flex;align-items:center;gap:8px;flex-wrap:nowrap !important;}
-.res-ls-picks select{flex:1;min-width:0;max-width:none !important;min-height:48px;}
-.res-ls-guess{display:flex;gap:8px;flex-wrap:wrap;margin:0 !important;}
-.res-ls-guess .btn-press{flex:1 1 0;}
-.res-ls-guess .tchip{min-height:44px;flex:1 0 100%;}
-.res-ls-cmpwhy .tpanel__head{font:900 var(--ls-l) var(--font-ui);letter-spacing:0;text-transform:none;color:var(--ink);margin:0 0 8px;}
-.res-ls-cmpdet .tstat{margin:0 0 6px;}
 .ls-sheet .tstat .k{text-transform:none;letter-spacing:0;font-size:var(--ls-s);}
-.res-ls-picks select{font:700 var(--ls-m) var(--font-ui);border-radius:14px;}
-.res-ls-picks .tmuted{flex:none;}
-.res-ls .ls-pics > .ls-ed{flex-grow:1.5;}
-.res-ls-prog .ls-row > *,.res-ls .ls-dock .ls-row > *{flex:1 1 auto;white-space:normal;}
 
 /* ---- 3D molecule viewer in the Tool Studio: the model fills the stage;
    Predict shape is a one-question-at-a-time card in the dock. */
