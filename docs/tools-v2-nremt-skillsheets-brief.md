@@ -110,12 +110,22 @@ change of position, not content: the bleeding station's "no gloves" mark moved b
 tourniquet's time tag). Open points for a person: `docs/nremt-needs-author.md`, "Skill sheets, tools v2".
 
 ## Checks (2026-11-19)
-- Sweep `scripts/tools-v2/nremt-skillsheets-sweep.mjs`: ten widths, light and dark, every station at half, all and
-  out of order; frames at 390 and 1440; reduced motion; deep links; Test yourself pause and result; perf at CPU x4.
-  Results in the handover report.
+- Sweep `scripts/tools-v2/nremt-skillsheets-sweep.mjs` (one width per process), last runs: 360 5862, 390 5862,
+  430 5862, 600 5860, 768 5740, 820 5740, 1024 6080, 1280 6040, 1440 5999, 1920 6039 checks passed, 0 failed.
+  Frames (390, 1440): 67 passed, 2 failed, both performance: with the CPU throttled x4, taps gave median 16.7 ms and
+  p95 100 to 183 ms at 390, median 33 ms and p95 283 ms at 1440 (earlier runs from 66 to 400 ms median at 1440).
+  The machine's load average was 9 to 11 on 2 cores with software rendering; a trace shows the time in raster and
+  the software compositor, not in script (a tap's script is about 4 ms). Done for it: items on their own svg, the
+  camera moves as a transform with the view box set once at the end, words fitted per frame without layout reads,
+  the pool's turbulence filter replaced by drawn edges, the pool and pallor updated in visible steps, faded items
+  hidden. To recheck on a quiet machine.
+- `node --test scripts/test/nremt-station-patient.test.mjs` (17) and the NREMT and kit tests (116) pass; check-site
+  and check-weight pass; check-tool-use, run on a local copy listing this page, reports tool-open, tool-touch,
+  tool-mode, tool-use with frame v2 and nothing under automation.
 - `node --test scripts/test/nremt-station-patient.test.mjs` passes (17).
 
 ## What I am not happy with
+- Performance under CPU x4 here is over budget (above); it needs a measurement on a quiet machine or a real phone.
 - The rendered figure is one mannequin body for every patient (an existing limit, `docs/nremt-needs-author.md`,
   "Female figure"); a seated patient is the same standing figure in front of a seat.
 - The trauma station stays upright, so on a wide screen the mat shows as a band with floor either side.
