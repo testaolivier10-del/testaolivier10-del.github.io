@@ -218,7 +218,7 @@
       },
       track: function(L){
         // the knob rides the arteriole's top wall
-        return L.id === 'wide' ? { x: 470, y: 262, dir: -1 } : { x: 300, y: 150, dir: -1 };
+        return L.id === 'wide' ? { x: 470, y: 262, dir: -1 } : { x: 214, y: 150, dir: -1 };
       },
       knobAt: function(v, L){ var t = this.track(L); return [t.x, t.y + t.dir * (R0 * v + muscle(v) * 0.55)]; },
       knobPick: function(x, y, L){ var t = this.track(L); return ((t.y - y) * -t.dir - 6) / R0; },
@@ -257,7 +257,7 @@
     // geometry per layout: the person, the magnified alveolus, capillary and plasma
     function G(L){
       if(L.id === 'wide') return { man: [26, 6, 0.98], lens: [232, 330, 24], zoom: [400, 22, 660, 496], alv: [730, 222, 300, 150], cap: [400, 352, 1060, 492], track: [70, 504, 320, 504] };
-      return { man: [8, 0, 0.66], lens: [147, 218, 18], zoom: [14, 300, 572, 326], alv: [300, 425, 250, 74], cap: [14, 490, 586, 612], track: [258, 120, 548, 120] };
+      return { man: [8, 0, 0.66], lens: [147, 218, 18], zoom: [14, 300, 572, 326], alv: [300, 425, 250, 74], cap: [14, 490, 586, 612], track: [236, 150, 520, 150] };
     }
     function person(){
       // a person from the waist up, front view, the chest opened to show the lungs (its own units, about 330 x 470)
@@ -414,12 +414,12 @@
 
   /* ------------------------------------------------------------------ 3. ADH: the collecting duct */
   (function(){
-    var LAY = { wide: { w: 1080, h: 540 }, tall: { w: 600, h: 660 } };
+    var LAY = { wide: { w: 1080, h: 540 }, tall: { w: 600, h: 640 } };
     var VIN = 12.5;   // L a day reaching the collecting ducts (model), at about 100 mOsm/L
     function osmOf(a){ return 50 + 1150 * a; }
     function G(L){
       if(L.id === 'wide') return { duct: [580, 26, 710, 514], cap: [840, 26, 910, 514], left: [20, 20, 372, 520], pit: [176, 112, 1], kid: [150, 344, 0.86], cup: [282, 458], track: [52, 238, 332, 238], cells: 7 };
-      return { duct: [250, 236, 360, 646], cap: [452, 236, 506, 646], left: [12, 12, 588, 216], pit: [96, 84, 0.72], kid: [340, 112, 0.5], cup: [510, 150], track: [44, 194, 284, 194], cells: 6 };
+      return { duct: [250, 236, 360, 628], cap: [452, 236, 506, 628], left: [12, 12, 588, 216], pit: [96, 84, 0.72], kid: [340, 112, 0.5], cup: [510, 150], track: [44, 194, 284, 194], cells: 6 };
     }
     SCENES.push({
       id: 'adh', tab: 'Kidney', short: 'Kidney', topics: ['urine-concentration'],
@@ -584,8 +584,8 @@
     function svOf(edv){ return 110 * (1 - Math.exp(-(edv - 45) / 75)); }
     function slOf(edv){ return 1.8 + 0.4 * (edv - 90) / 70; }   // sarcomere length at the end of filling (micrometres)
     function G(L){
-      if(L.id === 'wide') return { heart: [440, 300, 1.32], sar: [812, 300, 238, 150], aorta: [[492, 160], [494, 80], [540, 40], [640, 34], [716, 70], [742, 140], [744, 520]], ivc: [196], ivcTop: 400, hr: [110, 80], track: [196, 524, 196, 404] };
-      return { heart: [262, 300, 1.0], sar: [300, 520, 286, 110], aorta: [[302, 182], [304, 96], [340, 50], [440, 40], [520, 64], [546, 130], [548, 470]], ivc: [70], ivcTop: 440, hr: [72, 60], track: [70, 628, 70, 456] };
+      if(L.id === 'wide') return { heart: [440, 300, 1.32], sar: [812, 300, 238, 150], aorta: [[492, 160], [494, 80], [540, 40], [640, 34], [716, 70], [742, 140], [744, 520]], ivc: [196], ivcTop: 380, hr: [110, 80], track: [196, 506, 196, 388] };
+      return { heart: [262, 300, 1.0], sar: [300, 520, 286, 110], aorta: [[302, 182], [304, 96], [340, 50], [440, 40], [520, 64], [546, 130], [548, 470]], ivc: [70], ivcTop: 420, hr: [72, 60], track: [70, 592, 70, 430] };
     }
     SCENES.push({
       id: 'heart', tab: 'Heart', short: 'Heart', topics: ['cardiac-output'],
@@ -795,7 +795,7 @@
       if(id === 'wide'){ var avail = Math.max(300, (window.innerHeight || 800) - 330), asp = (stage.clientWidth || 0) / avail; if(asp > L.w / L.h) ex = Math.min(400, Math.round(L.h * asp - L.w)); }
       E.L = L; E.W = L.w + ex; E.H = L.h; E.X0 = -ex / 2;
       svg.setAttribute('viewBox', f1(E.X0) + ' 0 ' + E.W + ' ' + L.h); pic.setAttribute('data-lay', id);
-      pic.style.maxWidth = id === 'wide' ? 'calc((100vh - 330px) * ' + (E.W / E.H).toFixed(4) + ')' : 'max(320px, calc((100vh - 350px) * ' + (L.w / L.h).toFixed(4) + '))';
+      pic.style.maxWidth = id === 'wide' ? 'calc((100vh - 330px) * ' + (E.W / E.H).toFixed(4) + ')' : 'max(320px, calc((100vh - 330px) * ' + (L.w / L.h).toFixed(4) + '))';
     }
     function metrics(){ var k = scale() || 1; E.k = k; E.fs = clamp((k < 0.8 ? 12.5 : 13.5) / k, 10, 27); E.gap = 6 / k; }
     function buildArt(){
@@ -964,7 +964,8 @@
         },
         valuetext: function(v){ return c.text(v); },
         tag: c.tag ? function(v){ return c.tag(v); } : null,
-        tagSide: function(){ var t = cur.track(E.L); if(!t.line) return 'right'; return Math.abs(t.line[3] - t.line[1]) > Math.abs(t.line[2] - t.line[0]) ? (t.line[0] < E.L.w / 2 ? 'right' : 'left') : 'up'; },
+        bounds: function(){ return [4, 4, E.W - 4, E.H - 4]; },
+        tagSide: function(){ var t = cur.track(E.L); if(!t.line) return 'right'; return Math.abs(t.line[3] - t.line[1]) > Math.abs(t.line[2] - t.line[0]) ? (t.line[0] < E.L.w / 2 ? 'right' : 'left') : E.L.id === 'tall' && t.line[1] < 160 ? 'down' : 'up'; },
         onStart: function(){ hideCue(true); tourDid('drag'); },
         onInput: function(v){ hideCue(true); tourDid('drag'); go(v); },
         onEnd: function(){ ctrlDirty(); }
