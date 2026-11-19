@@ -1430,6 +1430,9 @@ test('viewer-3d v2: each tapped atom is named and explained from its electron gr
   assert.equal(line('methanol', 0), '4 bonds | no lone pairs | 4 groups, sp³ | tetrahedral ideal 109.5°');
   assert.equal(line('cyclopropane-3d'), '4 bonds | no lone pairs | 4 groups, sp³ | tetrahedral, the ring squeezes it to 60°');
   assert.equal(line('ethane'), '4 bonds | no lone pairs | 4 groups, sp³ | tetrahedral ideal 109.5°');
+  // recheck 1: formamide's carbon at its measured angles (smallest N–C–H 112.5°), dimethyl ether's C–O–C 111.7°
+  assert.equal(line('formamide', 0), '3 bonds | no lone pairs | 3 groups, sp² | trigonal planar 112.5°');
+  assert.equal(line('dimethyl-ether'), '2 bonds | 2 lone pairs | 4 groups, sp³ | bent 111.7°');
   for(const id of ['cyclohexane-chair-3d', 'cyclohexane-boat-3d']){
     const m = LIB.get(id);
     const all = m.atoms.map((a, i) => a.el === 'C' ? line(id, i) : null).filter(Boolean);

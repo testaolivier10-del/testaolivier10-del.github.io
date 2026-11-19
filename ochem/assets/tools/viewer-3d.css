@@ -56,6 +56,7 @@
 .v3-lpe{fill:var(--v3-lp-ink);}
 .v3-lp.is-dots .v3-lpe{fill:var(--muted);}
 .v3-arc{fill:none;stroke:var(--v3-shape);stroke-width:4.5;paint-order:stroke;stroke-linecap:round;stroke-dasharray:1;pointer-events:none;}
+.v3-alead{stroke:var(--v3-shape);stroke-width:1.6;stroke-linecap:round;pointer-events:none;}
 .v3-read{fill:none;stroke:var(--v3-cfg);stroke-width:4;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;}
 .v3-read.is-in{stroke-dashoffset:0;transition:stroke-dashoffset .32s ease-out;}
 .v3-arrowhead{fill:var(--v3-cfg);}

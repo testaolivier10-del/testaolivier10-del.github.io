@@ -105,6 +105,15 @@ const probe = (o) => {
       const arcEl = document.querySelector('.v3-arc'), seen = arcEl && getComputedStyle(arcEl).display !== 'none' && arcEl.getAttribute('data-seen') === '1';
       if (!ang && st.style !== 'space' && seen) out.push('no angle shown');
       if (ang && !seen) out.push('an angle shown with its arc out of sight');
+      // recheck 1: the number sits within 40 px of its arc, or a leader joins them
+      if (ang && seen) {
+        const L = arcEl.getTotalLength(), sr = arcEl.ownerSVGElement.getBoundingClientRect(); let dmin = 1e9;
+        for (let j = 0; j <= 60; j++) { const p = arcEl.getPointAtLength(L * j / 60), x = p.x + sr.left, y = p.y + sr.top;
+          dmin = Math.min(dmin, Math.hypot(Math.max(ang.r.l - x, 0, x - ang.r.r), Math.max(ang.r.t - y, 0, y - ang.r.b))); }
+        const lead = document.querySelector('.v3-alead'), led = lead && getComputedStyle(lead).display !== 'none';
+        if (dmin > 42 && !led) out.push('angle "' + ang.t + '" ' + dmin.toFixed(0) + ' px from its arc, no leader');
+        if (dmin <= 40 && led) out.push('a leader on an angle already beside its arc');
+      }
       if (ang && !cz[cz.length - 1].endsWith(ang.t)) out.push('angle "' + ang.t + '" but the line says "' + cz[cz.length - 1] + '"');
       if (!cz.some(t => t.indexOf(r.shape.m.toLowerCase()) === 0)) out.push('cause line does not name ' + r.shape.m);
     } else if (ang) out.push('an angle shown for an end atom');

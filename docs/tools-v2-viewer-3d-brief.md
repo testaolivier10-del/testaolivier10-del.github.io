@@ -235,3 +235,24 @@ Still not happy with: small molecules (water, CO₂) still leave open wall on a 
 fitted to the ball that holds it at every turn; Handedness at 1440 is the slowest case under load; the 60° label on
 cyclopropane at 390 sits beside the ring's far edge (every ring angle is 60°, so it is not wrong).
 
+## Recheck 1 (2026-11-19): BLOCK on two small items, fixed the same day
+Merged `claude/tools-v2-all` again (it carries main's #228, the ochem tool frame cleanup) and `origin/main` (already
+contained). The v2 viewer kept: #228's edits were to the old viewer's hidden picker chips and step line, which v2
+does not have; its inline page styles stay removed and `ochem/assets/tools.css` is the collecting branch's, less the
+old viewer rules. `scripts/check-tool-use.mjs` is as on `claude/tools-v2-all`.
+
+Must fix:
+1. **Formamide's carbon** was drawn at O=C–N 115.8° and N–C–H 125.0° and read "trigonal planar 116°" as measured. Now
+   at the measured O=C–N 124.6°, N–C–H 112.5°, O=C–H 122.9° (Demaison et al.; Hirota et al.), so it reads
+   "trigonal planar 112.5°"; the nitrogen stays at the ideal 120° and says so.
+2. **The angle number near its arc.** Candidates first within 38 px of the arc's middle or quarter points, outward first;
+   if none is clear, farther out with a short leader line from the pill to the nearest point of the arc. The sweep fails
+   an angle more than 42 px from its arc without a leader (and a leader on one that is beside its arc).
+
+Should fix: hydronium's sentence in "?" ("This atom"); dimethyl ether at 111.7°; angles are said as a whole number
+only within 0.15° of one (0.35° had rounded 111.7° to 112°). The card's leader crossing an H ball is the shared kit's
+card, so it is logged, not changed.
+
+Checks: the sweep at all ten widths, one per process: 0 failures (135 states, about 1610 checks each; shares unchanged);
+the ochem unit tests; `build-tool-pages --check`, `check-site`, `check-weight --check`.
+

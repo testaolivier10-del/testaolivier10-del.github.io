@@ -291,8 +291,8 @@
     note:'A bent oxygen with two lone pairs, exactly like water — the two methyls have not changed the geometry, only what is attached. Those two pairs are why an ether dissolves a Grignard and why it can be protonated.',
     atoms:[
       { el:'O', pos:v(0,0,0), lpDirs:[v(0,0.82,0.57), v(0,-0.82,0.57)] },
-      { el:'C', pos:v( 1.41*Math.sin(deg(55.5)), 0, -1.41*Math.cos(deg(55.5))) },
-      { el:'C', pos:v(-1.41*Math.sin(deg(55.5)), 0, -1.41*Math.cos(deg(55.5))) }
+      { el:'C', pos:v( 1.41*Math.sin(deg(55.85)), 0, -1.41*Math.cos(deg(55.85))) },
+      { el:'C', pos:v(-1.41*Math.sin(deg(55.85)), 0, -1.41*Math.cos(deg(55.85))) }
     ],
     bonds:[{a:0,b:1},{a:0,b:2}],
     fill:[{ at:1, h:3, len:1.09 }, { at:2, h:3, len:1.09 }],
@@ -303,15 +303,15 @@
     id:'formamide', name:'Formamide (an amide)', formula:'HCONH₂',
     note:'The nitrogen here is FLAT, not pyramidal — click it and read the angles. Its lone pair is delocalized into the carbonyl, so it sits in a p orbital rather than an sp³ one. That is why amides do not behave like amines, why the C–N bond will not rotate, and why proteins have a backbone with a shape.',
     atoms:[
+      /* the C at its measured angles: O=C–N 124.6°, N–C–H 112.5° (so O=C–H 122.9°), C=O 1.212, C–N 1.352, C–H
+         1.098 Å (equilibrium structure, Demaison et al.; Hirota et al. give 124.7° and 112.7°) */
       { el:'C', pos:v(0,0,0) },
-      { el:'O', pos:v(0.66,1.05,0), lp:2 },
-      { el:'N', pos:v(-1.35,0.15,0) },
-      { el:'H', pos:v(0.52,-0.95,0) },
-      /* Placed at exactly ±120° from the N→C direction, so the viewer measures
-         the planar nitrogen this molecule is here to demonstrate rather than
-         something merely close to it. */
-      { el:'H', pos:v(-1.76,1.08,0) },
-      { el:'H', pos:v(-1.95,-0.66,0) }
+      { el:'O', pos:v(0,1.212,0), lp:2 },
+      { el:'N', pos:v(-1.352*Math.sin(deg(124.6)), 1.352*Math.cos(deg(124.6)),0) },
+      { el:'H', pos:v(1.098*Math.sin(deg(122.9)), 1.098*Math.cos(deg(122.9)),0) },
+      /* The N's hydrogens at exactly ±120° from the N→C direction (the model's ideal planar nitrogen) */
+      { el:'H', pos:v(-2.0162,-0.3388,0) },
+      { el:'H', pos:v(-1.0327,-1.7645,0) }
     ],
     bonds:[{a:0,b:1,order:2},{a:0,b:2},{a:0,b:3},{a:2,b:4},{a:2,b:5}],
     focus:2

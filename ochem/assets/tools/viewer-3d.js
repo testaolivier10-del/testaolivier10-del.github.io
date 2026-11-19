@@ -35,9 +35,9 @@
     S:'Sulfur', P:'Phosphorus', B:'Boron' };
   var Z = { H:1, B:5, C:6, N:7, O:8, F:9, P:15, S:16, Cl:17, Br:35, I:53 };
   function dot(a, b){ return a.x * b.x + a.y * b.y + a.z * b.z; }
-  /* An angle as it is said: a whole number when it is within 0.35° of one (119.9 is "120°"), else one decimal
+  /* An angle as it is said: a whole number when it is within 0.15° of one (119.9 is "120°"), else one decimal
      (104.5°). The table in "?" keeps the decimal. */
-  function fmtDeg(d){ var r = Math.round(d * 10) / 10; return (Math.abs(r - Math.round(r)) < 0.35 ? String(Math.round(r)) : r.toFixed(1)) + '°'; }
+  function fmtDeg(d){ var r = Math.round(d * 10) / 10; return (Math.abs(r - Math.round(r)) < 0.15 ? String(Math.round(r)) : r.toFixed(1)) + '°'; }
   function plural(n, w){ return n + ' ' + w + (n === 1 ? '' : 's'); }
 
   /* Formamide's nitrogen is drawn with its lone pair shared into C=O (it is flat). The count is right for the
@@ -46,11 +46,12 @@
 
   /* Atoms drawn at the VSEPR model's ideal angle rather than a measured one (review round 1). Every other atom in
      the library carries a measured angle (ammonia 107°, water 104.5°, hydronium 113°, ethene 117.4°, formaldehyde
-     116.5°, methanol's C–O–H 108.5°, dimethyl ether's C–O–C 111°, cyclopropane's H–C–H 114.5°) or one its symmetry
+     116.5°, methanol's C–O–H 108.5°, dimethyl ether's C–O–C 111.7°, cyclopropane's H–C–H 114.5°, formamide's
+     carbon: O=C–N 124.6°, N–C–H 112.5°) or one its symmetry
      fixes (methane, BF₃, PCl₅, SF₆, CO₂, ethyne, benzene, the methyl cation). A built molecule is all model. When the
      drawn angle is the ideal one, the picture and the line say "ideal". */
   var MODEL = { ethane: 1, 'chiral-carbon': 1, 'cyclohexane-chair-3d': 1, 'cyclohexane-boat-3d': 1, 'methyl-anion': 1,
-    formamide: 1, methanol: [0], acetonitrile: [0], 'dimethyl-ether': [1, 2] };
+    formamide: [2], methanol: [0], acetonitrile: [0], 'dimethyl-ether': [1, 2] };
   function isModel(mol, i){
     if(!mol) return false;
     if(mol._model) return true;
@@ -299,6 +300,8 @@
   var svg = sceneBox.querySelector('svg');
   var gBack = svg.querySelector('.v3-back'), gA = svg.querySelector('.v3-molA'), gB = svg.querySelector('.v3-molB'), gOver = svg.querySelector('.v3-over');
   var labsEl = sceneBox.querySelector('.v3-labs');
+  // the angle number's leader, when it has to sit more than 40 px from its arc
+  var aLead = sv('line', 'v3-alead', svg); aLead.style.display = 'none';
   var layer = K.layer(sceneBox);
 
   // the backdrop: a lit wall, a bench, the mirror (tab 2)
@@ -822,14 +825,32 @@
     if(D.ready && r && r.angle !== null && !hideAns && E.style !== 'space' && arc.mid && seen >= 0.3){
       var e = lab('ang', 'is-angle'); e.textContent = angleLabel(r);
       var ps = pts[E.sel], mx = arc.mid.x - ps.x, my = arc.mid.y - ps.y, ml = Math.sqrt(mx * mx + my * my), ux = ml > 3 ? mx / ml : 0, uy = ml > 3 ? my / ml : -1;
-      var cands = [];
-      [18, 30, 44, 60, 78, 100, 124, 150, 180].forEach(function(dd){ [0, 0.5, -0.5, 1, -1, 1.6, -1.6, 2.4, -2.4, 3.14].forEach(function(t){
-        var c = Math.cos(t), s = Math.sin(t), vx = ux * c - uy * s, vy = ux * s + uy * c;
-        cands.push([arc.mid.x + vx * dd, arc.mid.y + vy * dd]);
+      /* near the arc first: within 40 px of its middle or its quarter points, outward first (recheck 1: the number
+         drifted up to 90 px away and read as another atom's label); only if none is clear, farther out with a leader */
+      var near = [], far = [], AP = arc.pts, anchors = [arc.mid, AP[Math.round(AP.length * 0.25)], AP[Math.round(AP.length * 0.75)]];
+      var dirs = [0, 0.4, -0.4, 0.8, -0.8, 1.2, -1.2, 1.6, -1.6, 2.0, -2.0, 2.4, -2.4, 2.8, -2.8, 3.14];
+      [14, 20, 26, 32, 38].forEach(function(dd){ anchors.forEach(function(A){ dirs.forEach(function(t){
+        var c = Math.cos(t), s = Math.sin(t); near.push([A.x + (ux * c - uy * s) * dd, A.y + (ux * s + uy * c) * dd]);
+      }); }); });
+      [50, 64, 80, 100, 124, 150, 180, 210].forEach(function(dd){ dirs.forEach(function(t){
+        var c = Math.cos(t), s = Math.sin(t); far.push([arc.mid.x + (ux * c - uy * s) * dd, arc.mid.y + (ux * s + uy * c) * dd]);
       }); });
       // clear of every ball, stick, lobe and control, and of its own arc (review round 1)
-      placeLab(e, cands, ctlBoxes().concat(PA.lobes()), null, ballCircles(pts).concat(stickCircles(PA.sticks()), lineCircles(arc.pts, 3)));
-    } else if(ang) ang.hidden = true;
+      var avA = ctlBoxes().concat(PA.lobes()), avC = ballCircles(pts).concat(stickCircles(PA.sticks()), lineCircles(AP, 3));
+      var bA = placeLab(e, near, avA, null, avC);
+      if(!bA){ e.hidden = false; bA = placeLab(e, far, avA, null, avC); }
+      aLead.style.display = 'none';
+      if(bA){
+        // how far the pill is from its arc; past 40 px a short leader joins them
+        var best = null;
+        AP.forEach(function(q){ var dx = Math.max(bA[0] - q.x, 0, q.x - bA[2]), dy = Math.max(bA[1] - q.y, 0, q.y - bA[3]), d = Math.hypot(dx, dy); if(!best || d < best.d) best = { d: d, q: q }; });
+        if(best.d > 40){
+          var qx = clamp(best.q.x, bA[0], bA[2]), qy = clamp(best.q.y, bA[1], bA[3]);
+          aLead.setAttribute('x1', f1(qx)); aLead.setAttribute('y1', f1(qy)); aLead.setAttribute('x2', f1(best.q.x)); aLead.setAttribute('y2', f1(best.q.y));
+          aLead.style.display = '';
+        }
+      }
+    } else { if(ang) ang.hidden = true; aLead.style.display = 'none'; }
     if(spots && spotsMol === mol) spots.place();
     lastPts.shape = pts;
     return pts;
@@ -965,6 +986,7 @@
     } else {
       gB.style.display = ''; gOver.style.display = '';
       if(labPool.ang) labPool.ang.hidden = true;
+      aLead.style.display = 'none';
       frameHand();
       handWords();
     }
@@ -1213,7 +1235,7 @@
       '<p><span class="v3-sw is-lp"></span><b>Amber lobes:</b> its lone pairs, two electrons each. They push like a bond (a little harder) but are not part of the shape\'s name.</p>' +
       '<p><span class="v3-sw is-shape"></span><b>The arc:</b> the smallest bond angle at that atom, measured from the coordinates drawn. Every angle is under "This atom".</p>' +
       '<p><span class="v3-sw is-cfg"></span><b>Handedness:</b> priorities go by atomic number (Br 1, Cl 2, F 3, H 4). With the H pointing away from you, 1 → 2 → 3 clockwise is R and counterclockwise is S. A mirror reverses the turn, so the mirror image is the other one.</p>' +
-      '<p>Ball sizes are drawing sizes, chosen so hydrogens stay visible; Space-filling uses the real van der Waals sizes. Most angles drawn are measured ones: ammonia 107°, water 104.5°, hydronium about 113°, ethene 117.4° and formaldehyde about 116.5° (H–C–H), methanol 108.5° (C–O–H), dimethyl ether 111° (C–O–C) and cyclopropane 114.5° (H–C–H). Methane, BF₃, PCl₅, SF₆, CO₂, ethyne, benzene and the methyl cation have the angles their symmetry sets. Where no measured angle is drawn (ethane, the stereocenter, the chair and the boat, the methyl anion, formamide, the methyl groups), the number says <b>ideal</b>: that atom is drawn at the model\'s ideal angle, and the real molecule is off by a degree or two. A molecule you build is drawn at the ideal angles.</p>' +
+      '<p>Ball sizes are drawing sizes, chosen so hydrogens stay visible; Space-filling uses the real van der Waals sizes. Most angles drawn are measured ones: ammonia 107°, water 104.5°, hydronium about 113°, ethene 117.4° and formaldehyde about 116.5° (H–C–H), methanol 108.5° (C–O–H), dimethyl ether 111.7° (C–O–C), cyclopropane 114.5° (H–C–H) and formamide\'s carbon (O=C–N 124.6°, N–C–H 112.5°). Methane, BF₃, PCl₅, SF₆, CO₂, ethyne, benzene and the methyl cation have the angles their symmetry sets. Where no measured angle is drawn (ethane, the stereocenter, the chair and the boat, the methyl anion, formamide\'s nitrogen, the methyl groups), the number says <b>ideal</b>: that atom is drawn at the model\'s ideal angle, and the real molecule is off by a degree or two. A molecule you build is drawn at the ideal angles.</p>' +
     '</div></details>');
   function refNow(){
     var el = byId('v3RefNow'); if(!el) return;
@@ -1259,6 +1281,10 @@
         }
         if(ideal === 120 && !a.lonePairs && !a.deloc && a.angles[0].deg < 119){
           html += '<p class="tmuted" style="margin-top:10px;">The double bond holds four electrons, so it pushes a little harder than a single bond and the two single bonds close to ' + fmtDeg(a.angles[0].deg) + ', under the ideal 120°.</p>';
+        }
+        if(ideal !== null && a.lonePairs && a.angles[0].deg - ideal > 1.2){
+          // hydronium (review recheck 1): wider than ideal with a lone pair, so the squeeze idea needs a word
+          html += '<p class="tmuted" style="margin-top:10px;">Measured wider than ' + ideal + '°, though it has a lone pair. The positive oxygen pulls every pair in close to itself: the bonding pairs crowd each other and spread apart, and its lone pair is held tighter, so it squeezes them less than ammonia\'s does (107°).</p>';
         }
         if(a.kind === 'ideal'){
           html += '<p class="tmuted" style="margin-top:10px;">This atom is drawn at the model\'s ideal angle; no measured angle is drawn for it.</p>';
