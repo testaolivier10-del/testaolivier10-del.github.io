@@ -190,6 +190,18 @@
     // the focus atom's lone pair tips count as things to keep apart too
     var pts0 = mol.atoms.map(function(at){ return { p: at.pos, r: M3.styleOf(at.el).r }; });
     if(a && a.lpDirs) a.lpDirs.forEach(function(d){ pts0.push({ p: M3.add(a.pos, M3.mul(M3.norm(d), M3.styleOf(a.el).r + 0.7)), r: 0.35 }); });
+    /* how well the focus atom's drawn arc faces the viewer, as readAtom picks the pair (recheck 4: the boat opened
+       with its arc edge on, so no number) */
+    function arcFace(rx, ry){
+      var r = readAtom(mol, f, { rx: rx, ry: ry });
+      if(!r || !r.pair) return 1;
+      var x = r.pair, nn = M3.len(x.n), fc = nn < 1e-6 ? 1 : Math.abs(rotate(M3.mul(x.n, 1 / nn), rx, ry).z);
+      var u = M3.norm(M3.sub(mol.atoms[x.a].pos, a.pos)), w = M3.norm(M3.sub(mol.atoms[x.b].pos, a.pos)), m = M3.add(u, w);
+      return fc;
+    }
+    for(var pass = 0; pass < 2; pass++){
+    // a second pass only when the first view shows the arc nearly edge on; then facing it counts too
+    if(pass === 1){ if(arcFace(best.rx, best.ry) >= 0.35) break; best = { rx: best.rx, ry: best.ry, s: -Infinity }; }
     for(var i = 0; i <= 14; i++) for(var j = 0; j < 24; j++){
       var rx = -1.4 + 2.8 * i / 14, ry = j * Math.PI / 12, P = pts0.map(function(o){ return rotate(M3.sub(o.p, c), rx, ry); });
       var mind = Infinity;
@@ -198,8 +210,9 @@
         if(dd < mind) mind = dd;
       }
       var sc = Math.min(mind, 0.9) + (up ? 0.5 * rotate(up, rx, ry).y : 0) + 0.04 * Math.abs(Math.sin(rx)) - 0.02 * Math.abs(rx) +
-        (ringN ? 0.6 * Math.abs(rotate(ringN, rx, ry).z) : 0);
+        (ringN ? 0.6 * Math.abs(rotate(ringN, rx, ry).z) : 0) + (pass ? 0.6 * Math.min(1, arcFace(rx, ry)) : 0);
       if(sc > best.s + 1e-6) best = { rx: rx, ry: ry, s: sc };
+    }
     }
     mol._home = { rx: best.rx, ry: best.ry };
     return mol._home;

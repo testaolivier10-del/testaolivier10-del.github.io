@@ -287,3 +287,9 @@ leader ending under a ball, a leader over 90 px, a leader crossing a ball, a lea
 
 Checks: the sweep at all ten widths, one per process, 0 failures; the ochem unit tests.
 
+## Recheck 4 (2026-11-19): PASS, one polish
+The boat opened on desktop with its arc edge on, so no number. `homeView()` now searches a second time when the first
+view shows the focus atom's arc plane less than 35% facing the viewer, adding how much it faces to the score; views
+that already face are unchanged. Checked: every molecule's opening view shows its number at all ten widths. Sweep at
+390, 1024 and 1440: 0 failures; unit tests pass.
+
