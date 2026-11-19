@@ -1355,6 +1355,8 @@
        o.ref      element   the reference behind "?" (how the model works, numbers, links).
        o.parts    [{ value, label, dock: element, task: { kicker, title, todo } | fn }]   TEST YOURSELF parts that
                             ask on the same picture: the question goes in the side panel (dock).
+                            stage: element (optional) is that part's own picture, shown in Test yourself in place
+                            of o.stage while the part is on (Design drills: each experiment's drawn setup).
        o.questionsLabel     the name of the part that holds the page's stimulus questions and mini FRQ (they keep
                             their own stage: the stimulus), when the tool built them (T.questions, T.frq).
        A skills tool's practice problems (T.skillTool) are a part too, with their own stage (the problem's figure):
@@ -1386,7 +1388,7 @@
     function partOf(v){ return parts.filter(function(p){ return p.value === v; })[0] || parts[0] || null; }
     s.add('stage', o.stage, quizOn ? { mode: 'explore quiz' } : null);
     if(o.ref) s.add('details', o.ref);
-    parts.forEach(function(p){ if(p.dock) s.add('dock', p.dock, { mode: 'quiz' }); });
+    parts.forEach(function(p){ if(p.stage) s.add('stage', p.stage, { mode: 'quiz' }); if(p.dock) s.add('dock', p.dock, { mode: 'quiz' }); });
     var qst = null, qStage = null, qDock = null;
     if(hasQ){
       qst = studioQuestions(s, qcard, frq, { mode: 'quiz' }, o);
@@ -1414,12 +1416,12 @@
     } else if(parts.length > 1) pick = s.picker({ label: 'What to practice', items: parts.map(function(p){ return { value: p.value, label: p.label }; }), value: cur.part,
       onChange: function(v){ show('quiz', v, true); } }, 'quiz');
     function show(mode, part, user){
-      var p = partOf(part), quiz = mode === 'quiz' && !!p, pic = !quiz || !(p.questions || p.practice && !p.onPicture), left = cur.part;
+      var p = partOf(part), quiz = mode === 'quiz' && !!p, pic = !quiz || !(p.questions || p.stage || p.practice && !p.onPicture), left = cur.part;
       cur = { mode: quiz ? 'quiz' : 'explore', part: p ? p.value : null };
       if(s.mode() !== cur.mode) s.mode(cur.mode);
       o.stage.hidden = !pic;
       s.root.classList.toggle('tk2-qs', quiz && pic);
-      parts.forEach(function(x){ if(x.dock) x.dock.hidden = !(quiz && x === p); });
+      parts.forEach(function(x){ if(x.dock) x.dock.hidden = !(quiz && x === p); if(x.stage) x.stage.hidden = !(quiz && x === p); });
       if(qStage) qStage.hidden = !(quiz && p.questions);
       if(qDock) qDock.hidden = !(quiz && p.questions);
       if(prac){ prac.nodes.forEach(function(x, i){ x.hidden = !(quiz && p.practice) || (i === 0 && !!pp.onPicture); }); if(quiz && !p.practice && left === pp.value) prac.leave(); }
