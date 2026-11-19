@@ -649,34 +649,49 @@
     function o(p, q, r){ return (q[0] - p[0]) * (r[1] - p[1]) - (q[1] - p[1]) * (r[0] - p[0]); }
     return o(a[0], a[1], b[0]) * o(a[0], a[1], b[1]) < 0 && o(b[0], b[1], a[0]) * o(b[0], b[1], a[1]) < 0;
   }
-  function placeFar(e, cands, avoid, circ, AP, pts){
+  function placeFar(e, cands, avoid, circ, AP, pts, sel){
     labW(e);
     var w = e._w, h = e._h, R0 = [4, 4, L.W - 4, L.benchY + 30], best = null, cardSeg = null;
     var cd = layer.el.querySelector('.tk2-spot-card:not([hidden])');
-    if(cd && pts[E.sel]){
-      var cb = boxOf(cd), P0 = pts[E.sel];
+    if(cd && pts[sel]){
+      // the card as placed this frame (the tool places it before a far angle number; recheck 3)
+      var cb = boxOf(cd), P0 = pts[sel];
+      avoid = avoid.concat([cb]);
       cardSeg = [[P0.x, P0.y], [clamp(P0.x, cb[0], cb[2]), clamp(P0.y, cb[1], cb[3])]];
     }
+    // the leader ends on a point of the arc that no ball in front covers (the ringed atom's own ball excepted)
+    var aim = AP.filter(function(q){ return !pts.some(function(p, k){ return k !== sel && p.z > q.z && Math.hypot(p.x - q.x, p.y - q.y) < p.r + 2; }); });
+    if(!aim.length){ e.hidden = true; return null; }
+    // more spots: round every few visible arc points, in every direction, out to the longest leader allowed
+    cands = cands.slice();
+    aim.filter(function(q, k){ return k % 3 === 0; }).forEach(function(q){ [44, 56, 70, 86].forEach(function(dd){ for(var t = 0; t < 16; t++){
+      var an = t * Math.PI / 8; cands.push([q.x + Math.cos(an) * (dd + w / 2 * Math.abs(Math.cos(an))), q.y + Math.sin(an) * (dd + h / 2 * Math.abs(Math.sin(an)))]);
+    } }); });
     cands.forEach(function(c){
       var b = [c[0] - w / 2, c[1] - h / 2, c[0] + w / 2, c[1] + h / 2];
       if(b[0] < R0[0] || b[1] < R0[1] || b[2] > R0[2] || b[3] > R0[3]) return;
-      if(avoid.some(function(a){ return hits(b, a, 4); }) || circ.some(function(q){ return hitsC(b, q, 4); })) return;
+      // cheapest tests first (this runs on every frame of a drag when nothing beside the arc is clear)
       var nq = null;
-      AP.forEach(function(q){ var d = Math.hypot(Math.max(b[0] - q.x, 0, q.x - b[2]), Math.max(b[1] - q.y, 0, q.y - b[3])); if(!nq || d < nq.d) nq = { d: d, q: q }; });
+      aim.forEach(function(q){ var d = Math.hypot(Math.max(b[0] - q.x, 0, q.x - b[2]), Math.max(b[1] - q.y, 0, q.y - b[3])); if(!nq || d < nq.d) nq = { d: d, q: q }; });
+      if(nq.d > 90) return;                       // no long leaders
+      if(best && nq.d >= best.sc) return;         // cannot beat the best so far
+      if(avoid.some(function(a){ return hits(b, a, 4); }) || circ.some(function(q){ return hitsC(b, q, 4); })) return;
       var s0 = [clamp(nq.q.x, b[0], b[2]), clamp(nq.q.y, b[1], b[3])], s1 = [nq.q.x, nq.q.y];
-      var pen = 400 * pts.filter(function(p){ return segPt(s0[0], s0[1], s1[0], s1[1], p.x, p.y) < p.r * 0.95; }).length;
+      // a leader across any ball but the ringed atom's is not a leader to this arc
+      if(pts.some(function(p, k){ return k !== sel && segPt(s0[0], s0[1], s1[0], s1[1], p.x, p.y) < p.r + 1; })) return;
+      var pen = 0;
       if(cardSeg){
-        // crossing the card's leader, or running alongside it, reads as one line
         var dd = segX([s0, s1], cardSeg) ? 0 : Math.min(segPt(s0[0], s0[1], s1[0], s1[1], cardSeg[0][0], cardSeg[0][1]), segPt(s0[0], s0[1], s1[0], s1[1], cardSeg[1][0], cardSeg[1][1]),
           segPt(cardSeg[0][0], cardSeg[0][1], cardSeg[1][0], cardSeg[1][1], s0[0], s0[1]), segPt(cardSeg[0][0], cardSeg[0][1], cardSeg[1][0], cardSeg[1][1], s1[0], s1[1]));
-        if(dd < 18) pen += 2000;
+        if(dd === 0) return;                      // never across the card's leader
+        if(dd < 18) pen += 200;                   // and rather not beside it
       }
       var sc = nq.d + pen;
-      if(!best || sc < best.sc) best = { sc: sc, b: b };
+      if(!best || sc < best.sc) best = { sc: sc, b: b, s0: s0, s1: s1, d: nq.d };
     });
-    if(!best){ e.hidden = true; return null; }
+    if(!best){ e.hidden = true; return null; }     // nothing passes: no number (the cause line still says it)
     e.style.left = f1(best.b[0]) + 'px'; e.style.top = f1(best.b[1]) + 'px';
-    return best.b;
+    return best;
   }
   /* a box against a circle { x, y, r }, with a gap */
   function hitsC(b, c, g){
@@ -852,7 +867,7 @@
     // pins follow the atoms
     if(spots && spotsMol === mol){ spots.items.forEach(function(it, i){ it.at[0] = [pts[i].x, pts[i].y]; }); }
     // the angle on the picture, once the arc is drawn
-    var ang = labPool.ang;
+    var ang = labPool.ang, placedCard = false;
     var arc = PA.arc();
     // how much of the arc can be seen: points not under a ball drawn in front of them (no arc in sight, no number)
     var seen = 0;
@@ -877,20 +892,25 @@
       // clear of every ball, stick, lobe and control, and of its own arc (review round 1)
       var avA = ctlBoxes().concat(PA.lobes()), avC = ballCircles(pts).concat(stickCircles(PA.sticks()), lineCircles(AP, 3));
       var bA = placeLab(e, near, avA, null, avC);
-      if(!bA){ e.hidden = false; bA = placeFar(e, far, avA, avC, AP, pts); }
-      aLead.style.display = 'none';
-      if(bA){
-        // how far the pill is from its arc; past 40 px a short leader joins them
-        var best = null;
-        AP.forEach(function(q){ var dx = Math.max(bA[0] - q.x, 0, q.x - bA[2]), dy = Math.max(bA[1] - q.y, 0, q.y - bA[3]), d = Math.hypot(dx, dy); if(!best || d < best.d) best = { d: d, q: q }; });
-        if(best.d > 40){
-          var qx = clamp(best.q.x, bA[0], bA[2]), qy = clamp(best.q.y, bA[1], bA[3]);
-          aLead.setAttribute('x1', f1(qx)); aLead.setAttribute('y1', f1(qy)); aLead.setAttribute('x2', f1(best.q.x)); aLead.setAttribute('y2', f1(best.q.y));
+      aLead.style.display = 'none'; arc.el.setAttribute('data-noplace', '0');
+      if(!bA && ((drag && drag.moved) || tweens.length)){
+        // mid turn: the far search is costly (up to 15 ms a frame), so the number waits until the turn ends
+        e.hidden = true;
+      } else if(!bA){
+        // nothing clear beside the arc: the card goes first (placed without the number), then the number farther out,
+        // clear of the card, with a short leader that ends on the arc where it can be seen
+        e.hidden = true;
+        if(spots && spotsMol === mol){ spots.place(); placedCard = true; }
+        e.hidden = false;
+        var fb = placeFar(e, far, avA, avC, AP, pts, E.sel);
+        arc.el.setAttribute('data-noplace', fb ? '0' : '1');
+        if(fb && fb.d > 40){
+          aLead.setAttribute('x1', f1(fb.s0[0])); aLead.setAttribute('y1', f1(fb.s0[1])); aLead.setAttribute('x2', f1(fb.s1[0])); aLead.setAttribute('y2', f1(fb.s1[1]));
           aLead.style.display = '';
         }
       }
     } else { if(ang) ang.hidden = true; aLead.style.display = 'none'; }
-    if(spots && spotsMol === mol) spots.place();
+    if(spots && spotsMol === mol && !placedCard) spots.place();
     lastPts.shape = pts;
     return pts;
   }
@@ -1094,7 +1114,7 @@
     if(pinch){ if(Object.keys(ptrs).length < 2) pinch = null; return; }
     if(!drag || drag.id !== e.pointerId) return;
     var was = drag; drag = null; sceneBox.classList.remove('is-drag');
-    if(was.moved){ sync(); rePair(); if(S.tab === 'hand') paint(); return; }
+    if(was.moved){ sync(); rePair(); paint(); return; }
     if(e.type === 'pointerup') tapAt(e.clientX, e.clientY);
   }
   sceneBox.addEventListener('pointerup', endPtr);

@@ -103,7 +103,9 @@ const probe = (o) => {
     if (r.shape) {
       // the angle is named whenever its arc can be seen (an arc seen exactly edge on, behind its atom, has no name)
       const arcEl = document.querySelector('.v3-arc'), seen = arcEl && getComputedStyle(arcEl).display !== 'none' && arcEl.getAttribute('data-seen') === '1';
-      if (!ang && st.style !== 'space' && seen) out.push('no angle shown');
+      // no clear spot with a short leader that crosses no ball: no number (recheck 3), counted, not failed
+      if (!ang && st.style !== 'space' && seen && arcEl.getAttribute('data-noplace') !== '1') out.push('no angle shown');
+      if (!ang && seen && arcEl.getAttribute('data-noplace') === '1') window.__v3NoPlace = (window.__v3NoPlace || 0) + 1;
       if (ang && !seen) out.push('an angle shown with its arc out of sight');
       // recheck 1: the number sits within 40 px of its arc, or a leader joins them
       if (ang && seen) {
@@ -112,7 +114,18 @@ const probe = (o) => {
           dmin = Math.min(dmin, Math.hypot(Math.max(ang.r.l - x, 0, x - ang.r.r), Math.max(ang.r.t - y, 0, y - ang.r.b))); }
         const lead = document.querySelector('.v3-alead'), led = lead && getComputedStyle(lead).display !== 'none';
         if (dmin > 42 && !led) out.push('angle "' + ang.t + '" ' + dmin.toFixed(0) + ' px from its arc, no leader');
-        if (dmin <= 40 && led) out.push('a leader on an angle already beside its arc');
+        // a leader only where it is needed: the pill is more than 40 px from the part of the arc that can be seen
+        if (led) { const L2 = lead.getTotalLength ? Math.hypot(+lead.getAttribute('x2') - +lead.getAttribute('x1'), +lead.getAttribute('y2') - +lead.getAttribute('y1')) : 0; if (L2 <= 40) out.push('a leader on an angle already beside its arc'); }
+        // recheck 3: a leader is short, crosses no ball but the ringed atom's, and ends where the arc can be seen
+        if (led) {
+          const sr2 = lead.ownerSVGElement.getBoundingClientRect(), x1 = +lead.getAttribute('x1') + sr2.left, y1 = +lead.getAttribute('y1') + sr2.top,
+            x2 = +lead.getAttribute('x2') + sr2.left, y2 = +lead.getAttribute('y2') + sr2.top, len = Math.hypot(x2 - x1, y2 - y1);
+          if (len > 92) out.push('angle leader ' + len.toFixed(0) + ' px long');
+          const P = Mo.view.pts(), sel = st.sel, segD = (px, py) => { const dx = x2 - x1, dy = y2 - y1, l2 = dx * dx + dy * dy || 1, t = Math.max(0, Math.min(1, ((px - x1) * dx + (py - y1) * dy) / l2)); return Math.hypot(x1 + dx * t - px, y1 + dy * t - py); };
+          P.forEach((p, k) => { if (k === sel) return; const cx = p.x + sr2.left, cy = p.y + sr2.top;
+            if (segD(cx, cy) < p.r - 1) out.push('angle leader crosses a ball');
+            if (p.z > P[sel].z && Math.hypot(x2 - cx, y2 - cy) < p.r - 1) out.push('angle leader ends under a ball'); });
+        }
       }
       if (ang && !cz[cz.length - 1].endsWith(ang.t)) out.push('angle "' + ang.t + '" but the line says "' + cz[cz.length - 1] + '"');
       if (!cz.some(t => t.indexOf(r.shape.m.toLowerCase()) === 0)) out.push('cause line does not name ' + r.shape.m);
@@ -232,6 +245,7 @@ for (const w of WIDTHS) {
   }
   if (w <= 640) { checks++; if (heights.size !== 1) fails.push(`${w}: cause line height not constant: ${[...heights]}`); }
   minShare[w] = (lo * 100).toFixed(1) + '%';
+  const np = await page.evaluate(() => window.__v3NoPlace || 0); console.log(`${w}: angle number left off (no clear spot) in ${np} states`);
   const real = errs.filter(e => !/ERR_FAILED/.test(e)); checks++; if (real.length) fails.push(`${w}: console ${real.join('|')}`);
   await page.context().close();
 }

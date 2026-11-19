@@ -270,3 +270,20 @@ penalties for each ball it crosses and for crossing or running within 18 px of t
 
 Checks: the sweep at all ten widths, one per process, 0 failures; the ochem unit tests.
 
+## Recheck 3 (2026-11-19): BLOCK on one item, fixed the same day
+The angle number's leader still ended under other atoms' balls in turned views, and on phones it ran up to 182 px and
+crossed balls. `placeFar()` now:
+1. aims only at arc points no ball in front covers (the ringed atom's own ball excepted);
+2. rejects (no longer penalizes) a spot whose leader crosses any ball but the ringed atom's, crosses the card's leader,
+   or is longer than 90 px; running within 18 px of the card's leader is still a penalty. It also tries spots round
+   every third visible arc point in 16 directions, so fewer states run out of spots;
+3. leaves the number off when no spot passes, as when the arc is out of sight (the cause line still gives the angle).
+   The sweep counts these states: 1 to 4 of 135 per width;
+4. places the card first, with the number hidden, whenever the number has to go far; then it places the number clear of
+   the card as placed in this frame (the card had been read one frame old). The far search waits during a drag or an
+   animation (it can cost several milliseconds a frame on the rings); the number comes back when the turn ends.
+A leader is drawn only when the pill is more than 40 px from the part of the arc that can be seen. New sweep checks: a
+leader ending under a ball, a leader over 90 px, a leader crossing a ball, a leader of 40 px or less.
+
+Checks: the sweep at all ten widths, one per process, 0 failures; the ochem unit tests.
+
