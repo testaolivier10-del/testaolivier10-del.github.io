@@ -536,3 +536,12 @@ Site audit follow-up (2026-10-02, workstream W6):
     all 83 sets, Labels (the old Explore), Study, Quiz and the timed practical, every item id, score and deep link. The
     named places piece is the shared kit's K.spots (assets/course/tool-kit2.js), for the other explorer tools. Open
     points in docs/anp-needs-author.md ("Lab practical tool, tools v2 specimens").
+103. (2026-11-19) **Predict the change on tools v2** (docs/tools-v2-standard.md; brief docs/tools-v2-anp-predict-brief.md).
+    Explore is four drawn body systems, one knob each, where a change spreads link by link: an arteriole (squeeze the
+    wall: radius, resistance, blood flow; the end pressures stay the same), breathing (rate: blood CO2, H+, pH; O2
+    saturation barely moves), the kidney (ADH: aquaporins, water back, urine volume and concentration; the fluid coming
+    in stays the same) and the heart (venous return: filling, stretch, stroke volume, output; heart rate the same). The
+    cause line names the chain as far as it has reached and a takeaway comes when it settles. Test yourself holds all
+    377 scenarios, the setup, Run it and the summary unchanged. Uses AnpToolKit.kit2 unchanged ("kit2": true in
+    data/pages.json). Item ids, scoring, recording and deep links unchanged (?topic= and ?chapter= open the matching
+    Explore screen); open points in docs/anp-needs-author.md (px-*).

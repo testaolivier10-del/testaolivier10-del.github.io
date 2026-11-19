@@ -2115,3 +2115,24 @@ from that label's reviewed explanation in data/tools/lab-practical.json.
   "Papillary muscle: keeps the chordae tendineae taut", "Mastoid process: the bump behind the ear where muscles attach"
   and "Styloid process: a thin spike where small muscles attach" (the neck and tongue muscles are taught later, so
   the ordering rule keeps them unnamed).
+
+## Predict the change, tools v2 drawn chains (2026-11-19): items for review
+Brief: `docs/tools-v2-anp-predict-brief.md`. Explore draws four chains from the bank's scenarios; these are the model
+choices behind the numbers on the pictures.
+- **px-vessel-model** (decided, for review). Poiseuille with the pressures at both ends held (as `one-organ-constricts`
+  states); radius 0.5 to 1.3 of usual. Cells move at flow divided by the drawn width, so they are slowest in the
+  capillary bed. Not drawn: the fall in pressure downstream of a squeezed arteriole (named in "?").
+- **px-breath-model** (decided, for review). Rate changed with each breath the same size; PaCO2 = 40 x 12 / rate (8 to
+  24 a minute: 60 to 20 mm Hg); bicarbonate changes acutely by -2 per 10 mm Hg fall and +1 per 10 rise (no renal
+  compensation, said in "?"); pH by Henderson-Hasselbalch (7.26 to 7.62). O2 saturation from the alveolar gas equation
+  (PIO2 150, R 0.8) and the Severinghaus curve: 97.7% at 12, 98.8% at 24 (labeled "same", threshold 2 points), 94.9% at
+  8 (falls). Is a 2 point threshold for "same" the right teaching line?
+- **px-adh-model** (decided, for review). Urine volume = 600 mOsm a day / urine concentration (the notes' worked
+  example), concentration 50 + 1,150 x the ADH level; 12.5 L a day is taken to reach the collecting ducts, so about
+  0.5 L is still reabsorbed with no ADH (as `ur-adh-blocked` says). The interstitium's gradient is drawn the same at
+  every ADH level (urea's ADH-dependent part is not modelled).
+- **px-heart-model** (decided, for review). Stroke volume = 110 x (1 - e^-(EDV-45)/75) mL at a fixed heart rate (70) and
+  contractility: 50 mL at 90 mL filling, 70 at 120, 86 at 160 (the curve flattens). The end-systolic volume therefore
+  rises a little with filling. Sarcomere length 1.8 to 2.2 um across the filling range, shortening during each beat.
+- **px-pace** (decided, for review). Each link follows its cause with a lag of 0.2 to 0.65 s so the order is seen; "?"
+  says the real times (CO2 over minutes, the kidney over hours).

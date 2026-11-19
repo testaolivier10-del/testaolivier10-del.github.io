@@ -216,4 +216,9 @@ in each tool's brief.
 | 2026-11-18 | A&P Pathway tracer | Review round 1: the knob is a clear ring, the token a ring round it | The part acting under it stays in sight on a phone | `pathways-explore.css` |
 | 2026-11-18 | A&P Pathway tracer | Review round 1: wide heart puts the body on the left, the lungs on the right | The trunk runs right and the veins enter the left atrium from the right, as in the body | `docs/anp-needs-author.md` pw-heart-wide |
 | 2026-11-18 | A&P Pathway tracer | Review round 1: a broken run stops after its last real step; the cut is drawn just beyond the stopped knob | Stopping a knob's width early cut off steps that really happen | `stopV` per break |
-
+| 2026-11-19 | A&P Predict the change | Explore is four drawn body systems (arteriole, breathing, kidney, heart), one knob each; all 377 scenarios stay in Test yourself | Owner: Explore is real free play that shows one idea | `docs/tools-v2-anp-predict-brief.md` |
+| 2026-11-19 | A&P Predict the change | Every screen draws and labels one link that stays the same (pressures, O2 saturation, fluid in, heart rate) | Teaches the bank's "no change" call by watching | `predict-explore.js` |
+| 2026-11-19 | A&P Predict the change | The chain spreads with a short lag per link (0.2 to 0.65 s), a teaching pace | So the order is seen; real CO2 takes minutes and the kidney hours, said in "?" | `nodes[].tau` |
+| 2026-11-19 | A&P Predict the change | Blood flow, breathing and the heartbeat animate while Explore shows; nothing runs when it hides or with reduced motion | They really happen; rule 13 | `predict-explore.js` loop |
+| 2026-11-19 | A&P Predict the change | Numbers from simple stated models (Poiseuille, alveolar ventilation with acute buffering, 600 mOsm a day, a flattening Starling curve) | Honest numbers on the labels, each model in "?" | `docs/anp-needs-author.md` px-* |
+| 2026-11-19 | A&P Predict the change | Old links: ?id= and ?level= open Test yourself; ?topic= / ?chapter= open the matching Explore screen when there is one | Deep links keep working; the landing is free play | `bootV2()` in `predict.js` |
