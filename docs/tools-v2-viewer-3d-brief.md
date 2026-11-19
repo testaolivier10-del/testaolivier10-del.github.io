@@ -152,3 +152,30 @@ back reading S and R, the letters leaving on the same frame, Name the shape righ
 mid change, Check yourself, reduced motion landing at once with a cross fade, links `mol`, `rx`, `ry`, `mode`,
 `tab=hand`, `#check`, `build=`, no console errors), and a full drag with the CPU throttled x4: median 16.7 ms, p95
 33.3 ms at 390 and 1440. The sweep: see below.
+
+## The sweep
+`node scripts/tools-v2/viewer-3d-sweep.mjs <width>` (one width per process): all 24 molecules in their opening view
+and four turns, end atoms on four, the stereocenter at eight turns (H to the back included), three Name the shape
+questions before and after Check, and a first visit on both tabs. 135 states and about 1605 checks per width; 0
+failures at 360, 390, 430, 600, 768, 820, 1024, 1280, 1440 and 1920 (13,505 states' checks in all). Smallest share of
+the stage the molecule takes, per width: 3.8, 3.5, 3.2, 4.6, 5.1, 5.3, 5.2, 4.1, 3.6, 3.9%. Shots:
+`/mnt/user-data/outputs/viewer-3d-v2/sweep/`; review shots (mid change frames included) in `.../shots/`; preview
+`/mnt/user-data/outputs/viewer-3d-v2/index.html`.
+
+What the sweep changed: the card and the angle avoid every ball and lobe (they had read the previous frame's
+positions); the angle's arc is the pair that faces the viewer and sits in front of its atom; an arc seen exactly edge
+on behind its atom gets no number (water seen face on looks straight, which is the point of turning it); the first
+visit cue keeps off the mirror image's balls; the Handedness layout is side by side or stacked, whichever gives each
+molecule the bigger square.
+
+## Side by side with the flagship, and what I am not happy with
+- It is a drawn object with material and depth (lit balls, sticks, a shadow on a bench, glass for the mirror). It is
+  not a landscape like the lake; a molecule is one object, so on a wide desktop the wall around it is open. The
+  molecule is fitted to the ball that holds it at every turn, so small molecules (water, CO₂) take 3 to 4% of a
+  desktop stage. A zoom (pinch, Ctrl and wheel) is there; the sweep's floor is 3.5% on desktops.
+- On phones the Handedness molecules are small (about 120 px across): two molecules share a 360 px stage, and the H
+  has no letter at that size (its number 4 names it).
+- The angle arc goes behind its atom in some views, so its number is left off; the cause line still says it.
+- Performance with the CPU throttled x4: p95 33 ms on a quiet machine, 50 to 67 ms when the shared machine was loaded
+  (load average 10); median 16.7 ms throughout. The Handedness tab places 12 labels per frame.
+- No real phone, screen reader pass or students. No independent review yet.

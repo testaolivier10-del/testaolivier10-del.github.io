@@ -44,7 +44,7 @@
      shape; the words say where the pair went, so "0 lone pairs" is never read as "it has none". */
   function delocalized(mol, i){ return mol && mol.id === 'formamide' && i === 2; }
 
-  /* Everything the picture and the words say about atom i, from the coordinates. pair: the two neighbours whose
+  /* Everything the picture and the words say about atom i, from the coordinates. pair: the two neighbors whose
      angle is drawn (the smallest at this atom). */
   function readAtom(mol, i, view){
     var a = M3.analyse(mol, i);
@@ -174,7 +174,7 @@
   }
   function prep(mol){
     if(mol._R) return mol;
-    /* the centre the molecule turns about: the centre of the smallest ball holding every atom (Badoiu and
+    /* the center the molecule turns about: the center of the smallest ball holding every atom (Badoiu and
        Clarkson's iteration), so the molecule is drawn as big as its region allows at every turn */
     var c = { x:0, y:0, z:0 };
     mol.atoms.forEach(function(a){ c = M3.add(c, a.pos); });
@@ -473,7 +473,9 @@
     bench.setAttribute('y', L.benchY); bench.setAttribute('width', W); bench.setAttribute('height', benchH);
     benchEdge.setAttribute('x1', 0); benchEdge.setAttribute('x2', W); benchEdge.setAttribute('y1', L.benchY + 0.5); benchEdge.setAttribute('y2', L.benchY + 0.5);
     if(S.tab === 'hand'){
-      L.side = W >= H * 1.05;                       // side by side; else stacked (the mirror under the molecule)
+      // side by side, or stacked (the mirror under the molecule): whichever gives each molecule the larger square
+      var hh = L.benchY - top;
+      L.side = Math.min((W - pad * 2) / 2, hh) >= Math.min(W - pad * 2, hh / 2);
       if(L.side){
         var half = (W - pad * 2) / 2, gapX = phone ? 10 : 22;
         L.regA = [pad, top, pad + half - gapX, L.benchY - 30];
@@ -899,7 +901,7 @@
     var v = view(); v.zoom = clamp(v.zoom * Math.exp(-e.deltaY * 0.004), 0.6, 1.8); kick();
   }, { passive: false });
   /* a tap acts on the atom drawn under the finger: the front-most ball that contains the point, else the nearest
-     centre within 26 px; a tap on empty picture does nothing */
+     center within 26 px; a tap on empty picture does nothing */
   function tapAt(cx, cy){
     if(!L) return;
     var s = sceneBox.getBoundingClientRect(), x = cx - s.left, y = cy - s.top;
@@ -1096,7 +1098,7 @@
             ', so the shape you name from the atoms alone is ' + shape.m.toLowerCase() + '.' :
             'With no lone pairs, the shape of the atoms is the same as the shape of the groups.') + '</div>';
       } else {
-        html += '<p class="tmuted">An end atom has one neighbour, so it has no bond angle and no shape of its own. Tap a central atom.</p>';
+        html += '<p class="tmuted">An end atom has one neighbor, so it has no bond angle and no shape of its own. Tap a central atom.</p>';
       }
       if(a.angles.length){
         var ideal = shape ? shape.ideal : null;
