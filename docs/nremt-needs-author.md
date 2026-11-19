@@ -138,3 +138,28 @@ Explore (`nremt/assets/mnemonics.js`) acts four mnemonics out on drawn, made up 
   nitroglycerin and a blood pressure pill, a stent two years ago, coffee an hour ago) are consistent with scenario s2.
   The rider has one finding per DCAP-BTLS letter, including a burn on the right lower leg (from the exhaust pipe). Explore shows one finding per letter on one body; "?" says that a real exam checks every
   region for all eight.
+
+## Sound trainer, tools v2 Explore (2026-11-18, branch claude/tools-v2-nremt-sound-trainer)
+
+Explore (`nremt/assets/sound-explore.js`) puts a stethoscope on the drawn chest; a lens beside it draws what makes
+each sound. The sounds, sites, loudness by site and the Test yourself questions are unchanged (`sound-stage.js`,
+whose accuracy notes are in `docs/tools-upgrade-notes/nremt-body.md`). Checked against the course notes (airway
+management, primary assessment, principles of assessment, cardiac emergencies) and the sources in
+`docs/nremt-lessons-spec.md`; for a person to confirm:
+
+- **Crackles, the cause.** The lens shows air sacs, some holding fluid, snapping open on breathing in; the cause line
+  says "fluid filled air sacs pop open" and the takeaway "small airways and air sacs with fluid in them popping open".
+  The usual explanation is collapsed or fluid filled small airways popping open (fine crackles), with fluid in the
+  airways for coarse ones; the course notes say "fluid in the alveoli, or small airways popping open". Kept at that
+  level for EMTs; confirm the wording.
+- **No normal breath sound clip.** The Normal side of the lung switch draws the open airway or dry air sacs and plays
+  nothing ("No free recording yet"). A public domain, CC0, CC BY or CC BY-SA recording of normal vesicular breath
+  sounds would fill it (`localSrc` in `SOUNDS`; `nremt/assets/audio/README.md`).
+- **The live trace of a lung clip.** The strip draws the clip's own loudness as it plays only if Wikimedia's file
+  server answers the CORS request (`liveUrl`, the file's direct address). Could not be checked from this container
+  (Wikimedia is blocked here); if it fails the clip plays as before and the strip draws a typical breath, named as one. Worth one look on
+  the live site.
+- **The heart in the lens is a schematic** (four chambers from the front, valves as leaflets, the aorta and pulmonary
+  artery). Timing follows the same table as the sound: AV valves close at S1, aortic and pulmonic at S2 (split: aortic
+  first), ventricles squeeze in systole, the atria at the end of diastole. The murmurs are one example each (aortic
+  stenosis, aortic regurgitation), as the old page already said.

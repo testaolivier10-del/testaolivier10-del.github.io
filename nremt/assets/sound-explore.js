@@ -140,7 +140,8 @@
         lr = Math.min(phone ? W * 0.19 : 96, (bandH - 46) / 2);
         lx = 12 + lr; ly = y0 + 30 + lr;
         sx = lx + lr + 16; sw = W - sx - 10; sy = y0 + 60; sh = bandH - 66;
-        g.abY = y0 + 4; g.abX = sx + sw / 2; g.abW = sw;
+        // Play sits left of the switch, so the strip keeps its whole width for the sound
+        g.abY = y0 + 4; g.abX = sx + 52 + (sw - 52) / 2; g.abW = sw - 52; g.playOut = [sx, y0 + 7];
       }
       var k = Math.min(fa.w / 600, fa.h / 666), ox = fa.x + (fa.w - 600 * k) / 2, oy = fa.y + Math.max(0, (fa.h - 666 * k) / 2);
       g.fa = fa; g.k = k; g.ox = ox; g.oy = oy;
@@ -263,11 +264,20 @@
       ab.style.left = f1(g.abX) + 'px'; ab.style.top = f1(g.abY) + 'px'; ab.style.width = f1(g.abW) + 'px';
       var pb = Math.min(44, Sx.h - 20);
       bPlay.style.width = bPlay.style.height = pb + 'px';
-      bPlay.style.left = f1(Sx.x + 10) + 'px'; bPlay.style.top = f1(Sx.y + Sx.h / 2 - pb / 2) + 'px';
-      lensLab.style.left = f1(L.x) + 'px'; lensLab.style.top = f1(L.y - L.r - 8) + 'px';
+      if(g.playOut){ bPlay.style.left = f1(g.playOut[0]) + 'px'; bPlay.style.top = f1(g.playOut[1]) + 'px'; }
+      else { bPlay.style.left = f1(Sx.x + 10) + 'px'; bPlay.style.top = f1(Sx.y + Sx.h / 2 - pb / 2) + 'px'; }
+      placeLensLab();
       viewSw.style.top = f1(g.kh + 6) + 'px'; viewSw.style.left = f1(g.fa.x + g.fa.w - 6) + 'px';
     }
 
+    function placeLensLab(){
+      if(!G) return;
+      var L = G.lens, w = lensLab.offsetWidth, x = L.x - w / 2, bottom = L.y - L.r - 8;
+      var right = G.playOut ? G.playOut[0] - 6 : G.W - 8; // in the narrow layout Play and the switch sit to its right
+      if(8 + w > right){ x = clamp(x, 8, G.W - 8 - w); bottom = Math.min(bottom, G.playOut[1] - 6); } // too long: it rises above them
+      else x = clamp(x, 8, right - w);
+      lensLab.style.left = f1(x) + 'px'; lensLab.style.top = f1(bottom) + 'px';
+    }
     /* ---------------------------------------------------------------- the lens: what makes the sound */
     var LZ = null;
     function drawLensFrame(){
@@ -337,6 +347,7 @@
       }
       lensLab.textContent = normal ? (I.normal || INFO['heart-normal'].lens) : (I.lens);
       lensLab.className = 'snd2-lab snd2-lenslab' + (normal ? ' is-normal' : '');
+      placeLensLab();
     }
     // the heart, cut open from the front: right atrium and ventricle on the viewer's left, left on the right
     function buildHeart(b, kind){
@@ -458,7 +469,7 @@
     function drawStripFrame(){
       var R = G.strip;
       gStrip.innerHTML = '';
-      var px = R.x + 64, pw = R.w - 74;
+      var px = R.x + (G.playOut ? 10 : 64), pw = R.w - (G.playOut ? 20 : 74);
       sv('rect', { x: f1(R.x), y: f1(R.y), width: f1(R.w), height: f1(R.h), rx: 12, class: 'snd2-mon' }, gStrip);
       var grid = sv('g', { class: 'snd2-grid' }, gStrip);
       for(var gx = px; gx <= px + pw + .5; gx += pw / 8) sv('line', { x1: f1(gx), x2: f1(gx), y1: f1(R.y + 22), y2: f1(R.y + R.h - 20) }, grid);
@@ -513,7 +524,10 @@
     function layoutEventLabels(){
       var R = SZ.R, placed = [];
       // where each pill goes: under its tick, then pushed apart (5 px at least) and kept inside the strip
-      var L = SZ.events.map(function(e){ var w = e.key.length * 7.4 + 12; return { e: e, w: w, x: e.span ? (e.x + e.x2) / 2 : e.x }; }).sort(function(a, b){ return a.x - b.x; });
+      var L = SZ.events.map(function(e){
+        var w = e.key.length * 7.4 + 12, x = e.x;
+        if(e.span) x = e.x2 > e.x ? (e.x + e.x2) / 2 : (SZ.px + SZ.pw - e.x > e.x2 - SZ.px ? (e.x + SZ.px + SZ.pw) / 2 : (SZ.px + e.x2) / 2);
+        return { e: e, w: w, x: x }; }).sort(function(a, b){ return a.x - b.x; });
       for(var it = 0; it < 6; it++){
         for(var j = 1; j < L.length; j++){ var a = L[j - 1], b = L[j], need = (a.w + b.w) / 2 + 5 - (b.x - a.x); if(need > 0){ a.x -= need / 2; b.x += need / 2; } }
         L.forEach(function(l){ l.x = clamp(l.x, SZ.px + l.w / 2, SZ.px + SZ.pw - l.w / 2); });
@@ -524,19 +538,21 @@
         var y = R.y + R.h - 17;
         var gE = sv('g', { class: 'snd2-ev' + (e.extra ? ' is-x' : ''), style: 'opacity:0' }, SZ.ticks);
         if(!e.span) sv('line', { x1: f1(e.x), x2: f1(e.x), y1: f1(R.y + 22), y2: f1(y - 2), class: 'snd2-ev-t' }, gE);
-        else sv('rect', { x: f1(Math.min(e.x, e.x2)), width: f1(Math.abs(e.x2 - e.x)), y: f1(y - 6), height: 3, rx: 1.5, class: 'snd2-ev-s' }, gE);
+        else (e.x2 > e.x ? [[e.x, e.x2]] : [[e.x, SZ.px + SZ.pw], [SZ.px, e.x2]]).forEach(function(seg){
+          sv('rect', { x: f1(seg[0]), width: f1(seg[1] - seg[0]), y: f1(y - 6), height: 3, rx: 1.5, class: 'snd2-ev-s' }, gE); });
         sv('rect', { x: f1(x - w / 2), y: f1(y), width: f1(w), height: 15, rx: 7.5, class: 'snd2-ev-b' }, gE);
         var tx_ = sv('text', { x: f1(x), y: f1(y + 11.5), class: 'snd2-ev-l' }, gE); tx_.textContent = e.key;
         e.g = gE; e.lx = x; e.lw = w; placed.push(e);
       });
     }
-    function drawBreath(){
+    function drawBreath(phase){
       // one typical breath: in for a third, out for two thirds (I:E about 1:2); not traced from any recording
       var R = SZ.R, d = '', n = 80, INSP = P.INSP / P.BREATH;
       for(var i = 0; i <= n; i++){ var u = i / n, v = u < INSP ? (1 - Math.cos(Math.PI * u / INSP)) / 2 : (1 + Math.cos(Math.PI * (u - INSP) / (1 - INSP))) / 2;
         d += (i ? 'L' : 'M') + f1(SZ.px + u * SZ.pw) + ' ' + f1(SZ.mid + SZ.amp * .8 - v * SZ.amp * 1.6); }
       SZ.line.setAttribute('d', d); SZ.fill.setAttribute('d', '');
       var xi = SZ.px + INSP * SZ.pw;
+      if(phase){ SZ.band.setAttribute('x', f1(phase === 'insp' ? SZ.px : xi)); SZ.band.setAttribute('width', f1(phase === 'insp' ? xi - SZ.px : SZ.px + SZ.pw - xi)); SZ.band.setAttribute('class', 'snd2-band is-phase'); }
       [['in', SZ.px + INSP * SZ.pw / 2], ['out', (xi + SZ.px + SZ.pw) / 2]].forEach(function(a){
         var t = sv('text', { x: f1(a[1]), y: f1(R.y + R.h - 6), class: 'snd2-ph' }, SZ.phase); t.textContent = a[0];
       });
@@ -572,8 +588,9 @@
       } else if(!SZ.lungNormal){
         var R = SZ.R;
         if(lvl == null){
-          // no measured loudness (a clip from another site that the browser may not measure): nothing is drawn
-          if(t != null && !SZ.noLive){ SZ.noLive = true; SZ.title.textContent = 'This recording (no trace)'; }
+          // the browser cannot measure this clip (no CORS from its server): a typical breath, named as one, with the
+          // part of the breath this sound lives in shaded, as the old page drew it
+          if(t != null && !SZ.noLive){ SZ.noLive = true; SZ.title.textContent = 'Typical breath'; drawBreath(P.PHASE[cur().id]); }
           return;
         }
         SZ.live.push(lvl); var max = Math.round(SZ.pw / 2);
@@ -607,12 +624,19 @@
       var id = S().site;
       if(!id || St.moving){ siteLab.hidden = true; return; }
       siteLab.hidden = false; siteLab.textContent = SHORT[id];
-      var r = G.pr, p = sp, w = siteLab.offsetWidth, h = siteLab.offsetHeight;
-      // beside the chest piece, on the side away from the lens, inside the figure's area
-      var left = p[0] + r + 8, top = p[1] - h / 2;
-      if(left + w > G.fa.x + G.fa.w - 4 || (G.wide && left + w > G.fa.x + G.fa.w)) left = p[0] - r - 8 - w;
-      if(left < G.fa.x + 2) left = clamp(p[0] - w / 2, G.fa.x + 2, G.fa.x + G.fa.w - w - 2), top = p[1] + r + 6;
-      siteLab.style.left = f1(left) + 'px'; siteLab.style.top = f1(top) + 'px';
+      var r = G.pr, p = sp, w = siteLab.offsetWidth, h = siteLab.offsetHeight, B = box.getBoundingClientRect();
+      // the first place beside the chest piece that stays in the chest's area and clear (6 px) of the switches
+      var avoid = [viewSw, ab, lensLab].filter(function(e){ return !e.hidden && e.offsetWidth; }).map(function(e){ var q = e.getBoundingClientRect(); return [q.left - B.left - 6, q.top - B.top - 6, q.right - B.left + 6, q.bottom - B.top + 6]; });
+      var C = [[p[0] + r + 8, p[1] - h / 2], [p[0] - r - 8 - w, p[1] - h / 2], [p[0] - w / 2, p[1] + r + 6], [p[0] - w / 2, p[1] - r - 6 - h]];
+      var pick = null;
+      for(var i = 0; i < C.length && !pick; i++){
+        var x = C[i][0], y = C[i][1];
+        if(x < G.fa.x + 2 || x + w > G.fa.x + G.fa.w - 2 || y < G.kh + 2 || y + h > G.H - 4) continue;
+        if(avoid.some(function(a){ return x < a[2] && x + w > a[0] && y < a[3] && y + h > a[1]; })) continue;
+        pick = C[i];
+      }
+      if(!pick) pick = [clamp(p[0] - w / 2, G.fa.x + 2, G.fa.x + G.fa.w - w - 2), p[1] + r + 6];
+      siteLab.style.left = f1(pick[0]) + 'px'; siteLab.style.top = f1(pick[1]) + 'px';
     }
     var anim = null;
     function slideTo(id, then){
@@ -656,7 +680,7 @@
       }
       play.on = true; play.sid = snd.id; play.started = false; play.ended = false;
       var s = SITE[site], h = {
-        onStart: function(info){ if(tk !== play.token) return; play.info = info; play.t0 = performance.now(); play.started = true; loop(); },
+        onStart: function(info){ if(tk !== play.token) return; if(play.info) setupStrip(); /* a retry without CORS */ play.info = info; play.t0 = performance.now(); play.started = true; loop(); },
         onEnd: function(){ if(tk !== play.token) return; finish(); },
         onStop: function(){ if(tk !== play.token) return; play.on = false; paintPlay(); },
         onError: function(msg){ if(tk !== play.token) return; play.on = false; paintPlay(); chain(); cause.take(msg); }
@@ -832,7 +856,10 @@
     document.addEventListener('visibilitychange', function(){ if(document.hidden && play.on){ stopSound(true); finishQuiet(); } });
 
     /* ---------------------------------------------------------------- the cue and "Show me how" */
-    var cue = K.cue(layer, { key: 'nremt-sound-trainer', text: 'Drag the stethoscope onto the chest', side: 'right', at: function(){ return G ? [sp[0] + G.pr * .5, sp[1]] : [0, 0]; } });
+    var cue = null; // made when Explore first shows, at its real width (a phone gets the short cue below the stethoscope)
+    function makeCue(){
+      cue = K.cue(layer, { key: 'nremt-sound-trainer', text: box.clientWidth < 640 ? 'Drag the stethoscope' : 'Drag the stethoscope onto the chest', side: box.clientWidth < 640 ? 'below' : 'right', at: function(){ return !G ? [0, 0] : G.W < 640 ? [sp[0], sp[1] + G.pr * .4] : [sp[0] + G.pr * .5, sp[1]]; } });
+    }
     var tour = K.tour({ key: 'nremt-sound-trainer', label: 'Show me how', steps: [
       { id: 'steth', text: 'Drag the stethoscope onto a spot on the chest (or tap a spot): you hear the sound there.', target: function(){ return steth; } },
       { id: 'key', text: 'Pick a sound. The rings show where it is loudest.', target: function(){ return keys; } },
@@ -848,7 +875,7 @@
       '<p>A patient’s chest with the ribs, sternum and heart drawn under the skin. Drag the stethoscope onto a spot (or tap a spot) to hear the chosen sound there, as loud as it is at that spot: the bigger a spot’s glow, the louder it is there. The round lens shows what makes the sound, and the strip draws the sound as it plays. The switch under the lens compares it with normal at the same spot.</p>' +
       '<ul class="snd2-ref-l">' +
       '<li><b>Where to listen.</b> Lungs: below each clavicle (the apices), the sides low down (the bases, midaxillary line) and the back, comparing right with left at the same level. Stridor: over the trachea. Heart: aortic area (2nd intercostal space, right sternal border), pulmonic (2nd, left sternal border), Erb’s point (3rd, left), tricuspid (4th to 5th, lower left sternal border), mitral or apex (5th, left midclavicular line).</li>' +
-      '<li><b>Lung sounds</b> are real recordings by James Heilman, MD (stridor processed by Natural Philo), from Wikimedia Commons, CC BY-SA 3.0. They stream from Wikimedia, so they need a connection. When the browser can measure the clip, the strip draws its loudness live; otherwise it says so and draws nothing. There is no free recording of normal breath sounds yet, so the Normal side of the lung switch plays nothing.</li>' +
+      '<li><b>Lung sounds</b> are real recordings by James Heilman, MD (stridor processed by Natural Philo), from Wikimedia Commons, CC BY-SA 3.0. They stream from Wikimedia, so they need a connection. When the browser can measure the clip, the strip draws its loudness live; otherwise it draws a typical breath (not this clip) with the part of the breath the sound lives in shaded. There is no free recording of normal breath sounds yet, so the Normal side of the lung switch plays nothing.</li>' +
       '<li><b>Heart sounds</b> are generated in your browser, not recorded: what separates them is where each falls in the beat, which a generated sound gets exactly; the timbre of a real chest it does not. Murmurs, S3 and S4 are beyond the EMT exam. The murmurs drawn are one example each: the systolic one shaped like aortic stenosis, the diastolic one aortic regurgitation; other valves make murmurs heard best elsewhere.</li>' +
       '<li><b>Loudness by spot</b> is a teaching approximation: which spot is loudest, not the exact ratio.</li>' +
       '</ul>' +
@@ -866,7 +893,7 @@
       hidden: function(){ if(drag){ drag = null; steth.classList.remove('is-drag'); St.moving = false; } anim = null; if(play.on){ stopSound(true); if(SZ) finishQuiet(); } else stopSound(true); St.on = false; if(raf){ cancelAnimationFrame(raf); raf = 0; } },
       shown: function(){
         St.on = true; draw();
-        if(!St.cued){ St.cued = true; setTimeout(function(){ if(St.on && !S().site && cue.show()) cue.place(); }, 300); }
+        if(!St.cued){ St.cued = true; setTimeout(function(){ if(!cue) makeCue(); if(St.on && !S().site && cue.show()) cue.place(); }, 300); }
       },
       // a deep link to one sound: its tab and key, the stethoscope on its best spot, nothing playing
       show: function(id){
