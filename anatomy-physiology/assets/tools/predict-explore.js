@@ -1095,7 +1095,9 @@
       _settle: function(u){ stopLoop(); view.u = u; cur.u = u; settleAll(cur, view); if(handle){ handle.value(u, false); handle.before(Math.abs(u - cur.ctl.base) > (cur.ctl.max - cur.ctl.min) * 0.02 ? cur.ctl.base : null); } ctrlDirty(); causeKey = ''; draw(0); return lastSt; },
       _cause: function(){ return cause.el.textContent; },
       _labels: function(){ return [].map.call(labs.querySelectorAll('.px-lab'), function(g){ return { key: g.getAttribute('data-lab'), text: g.querySelector('text').textContent }; }); },
-      _loop: function(){ return !!raf; }
+      _loop: function(){ return !!raf; },
+      _E: function(){ return E; },
+      _settled: function(){ return settled(); }
     };
     window.AnpPredictExplore.current = api;
     return api;
