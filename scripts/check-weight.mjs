@@ -444,7 +444,10 @@ const SHELL_BUDGETS = [
   /* 61 -> 68 (tools v2, docs/tools-v2-anp-lab-practical-brief.md): the Lab practical's Explore (tools/lab-explore.js
      and .css, 6.7 KB gzipped) beside the old engine it keeps for Test yourself (1.6 KB more in lab-practical.js).
      Measured 67.4 KB; 68.7 KB after review round 1 (blank picture taps, the fade order on a tab change). */
-  ['anatomy-physiology', 69],
+  /* 69 -> 91 (tools v2, docs/tools-v2-anp-predict-brief.md): Predict the change's Explore (tools/predict-explore.js and
+     .css, 30.4 KB gzipped: four drawn body systems and the chain engine) beside the old engine it keeps whole for Test
+     yourself. Predict is the A&P tool page in this list, so it sets the shell's measure. Measured 90.2 KB. */
+  ['anatomy-physiology', 91],
   /* AP® Biology (bio/, a fork of the A&P runtime): bio-core, questions, nav,
      glossary tooltips, bio.css, the generated curriculum, plus the app script
      a page loads (exams.js, the largest, with pages.css and frq-kit.js).

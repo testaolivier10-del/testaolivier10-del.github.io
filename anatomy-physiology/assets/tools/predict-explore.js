@@ -105,7 +105,7 @@
     // the two gauges: [x, y, stem rotation]
     function gauges(L){ return L.id === 'wide' ? { i: [150, 142, 0], o: [1004, 156, 0] } : { i: [92, 30, 0], o: [168, 500, 90] }; }
     function seg(L, kinds){ return route(L).filter(function(p){ return kinds.indexOf(p[2]) > -1; }); }
-    // capillary i's centre line (lane -1, 0, 1), from the route's spread
+    // capillary i's center line (lane -1, 0, 1), from the route's spread
     function capLine(L, lane){
       var pts = route(L), out = [], i;
       for(i = 0; i < pts.length; i++){
