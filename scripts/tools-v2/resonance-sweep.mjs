@@ -6,6 +6,7 @@
      - nothing drawn or named is clipped by the stage (balls, lone pairs, charge badges, names, marks, form cards);
      - names sit at least 4 px clear of each other, of every ball and charge badge, of the picker and Undo;
      - charge badges and lone pairs do not sit on another atom's ball;
+     - the real molecule letters each ball as the board does (CH₃ never as "C"; too small to letter: colour only);
      - in the forms row every badge and letter is inside its card and 4 px clear of its tag; letters at least 11 px,
        badges at least 7 px in radius, π lines at least 6 px long;
      - the molecule on the board is the largest object in the picture (bigger than the real molecule and each form);
@@ -136,6 +137,12 @@ for (const w of WIDTHS) {
     await page.locator('.rs2-pick select').selectOption(id); await page.waitForTimeout(120);
     const n = await page.locator('.rs2-tb').count();
     await check(`${id} form 1`);
+    // the real molecule letters each ball as the board does (a ring CH may read C); a group too small to letter keeps
+    // only its colour, never a bare atom (CH₃ as "C")
+    { const m = await page.evaluate(() => { const L = s => [...document.querySelectorAll(s + ' .rs2-ball')].map(b => { const t = b.nextElementSibling && b.nextElementSibling.nextElementSibling; return t && t.tagName === 'text' ? t.textContent : ''; });
+        const a = L('.rs2-mainA'), h = L('.rs2-hyb'); if (!h.length) return []; if (a.length !== h.length) return ['real molecule has ' + h.length + ' balls, board ' + a.length];
+        return h.map((t, i) => (t && a[i] && t !== a[i] && !(a[i] === 'CH' && t === 'C')) ? 'real molecule letters "' + a[i] + '" as "' + t + '"' : null).filter(Boolean); });
+      checks++; m.forEach(x => fails.push(`${w} ${id}: ${x}`)); }
     if (id === 'acetate-ion' || id === 'phenoxide') await shot(page.locator('.rs2'), `${tag}-1-${id}-1.png`);
     for (let i = 1; i < n; i++) {
       await page.locator(`.rs2-tb[data-i="${i}"]`).click(); await page.waitForTimeout(60);

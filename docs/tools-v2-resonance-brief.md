@@ -263,3 +263,11 @@ table kept).
 - Checks: sweep one width per process, 0 failures at all ten widths (44 states and 384 checks per phone width, 43 and
   380 above); unit tests 95 pass; `build-tool-pages --check`, `check-site`, `check-weight --check`, `check-tool-use`
   (frame v2); preview and shots regenerated.
+
+## Review recheck 2 (2026-11-18: PASS; one nit, fixed)
+
+On a phone the real molecule lettered a CH₃ ball "C" (acetamide; benzyl cation's CH₂ too) while the board names it
+CH₃. "CH₃" does not fit across that ball at 11 px (its ink spills past the ball), so a group (two or more H) too small
+to letter now keeps only its colour, never a bare atom; a ring CH may still read C. The sweep checks that every real
+molecule ball is lettered as the board does (or colour only); it fails on the old code; 360 and 390 pass (44 states,
+397 checks, 0 failures).

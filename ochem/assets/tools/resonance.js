@@ -566,10 +566,11 @@
       }
       sh += '<circle class="rs2-shadow" cx="' + f1(p.x + r * 0.18) + '" cy="' + f1(p.y + r * 0.42) + '" r="' + f1(r * 1.12) + '"/>';
       var lab = labelOf(st, k), fs = Math.min(r * 1.02, r * 2.5 / Math.max(1, lab.length * 0.78));
-      // no letters under 11 px: try the bare element symbol, else the ball keeps only its colour (the board names it)
-      // (an 11 px label is used when it still fits across the ball)
+      // no letters under 11 px: an 11 px label is used when it still fits across the ball; else a ring CH may drop to
+      // its bare symbol; a group (CH₂, CH₃, NH₂) is never lettered as a bare atom ("C" for CH₃ would disagree with the
+      // board): the ball keeps only its colour (the board names it)
       function fits(t){ return 0.62 * 11 * t.length <= 2 * r * 0.98; }
-      if(fs < 11){ if(fits(lab)) fs = 11; else if(fits(a.el)){ lab = a.el; fs = 11; } else lab = ''; }
+      if(fs < 11){ if(fits(lab)) fs = 11; else if((a.hImplicit || 0) < 2 && fits(a.el)){ lab = a.el; fs = 11; } else lab = ''; }
       at += '<circle class="rs2-ball is-' + (BALL[a.el] || 'x') + '" cx="' + f1(p.x) + '" cy="' + f1(p.y) + '" r="' + f1(r) + '" fill="url(#rs2g-' + (BALL[a.el] || 'x') + ')"/>' +
         '<ellipse class="rs2-shine" cx="' + f1(p.x - r * 0.32) + '" cy="' + f1(p.y - r * 0.38) + '" rx="' + f1(r * 0.34) + '" ry="' + f1(r * 0.22) + '"/>' +
         '<text class="rs2-al is-' + (BALL[a.el] || 'x') + '" x="' + f1(p.x) + '" y="' + f1(p.y + fs * 0.36) + '" font-size="' + f1(fs) + '" text-anchor="middle">' + esc(lab) + '</text>';
