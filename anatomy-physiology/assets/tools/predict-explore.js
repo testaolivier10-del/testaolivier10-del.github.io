@@ -66,6 +66,7 @@
   /* ------------------------------------------------------------------ 1. Arteriole: radius, resistance, flow */
   (function(){
     var R0 = 44;   // the arteriole's lumen half width at its usual radius (picture units)
+    function rFmt(r){ return r.toFixed(2).replace(/0$/, '').replace(/\.$/, ''); }
     function muscle(r){ return 9 + 8 / Math.sqrt(r); }   // the smooth muscle coat thickens as it contracts
     /* the route of the blood: artery (cut end) -> arteriole (radius r) -> capillary bed (three capillaries) -> venule
        (cut end). Each point: [x, y, kind, spread]; kind a (artery), r (arteriole), c (capillaries), v (venule). */
@@ -226,7 +227,7 @@
         var L = E.L, r = st.c, wide = L.id === 'wide', d = st.d, off = Math.abs(r - 1) > 0.02;
         var mid = wide ? [560, 262] : [380, 150], cap = wide ? [810, 262 + 156] : [255, 380 + 94], gg = gauges(L), gi = gg.i, go = gg.o;
         return [
-          { key: 'r', text: 'Radius ' + (off ? arrow(r - 1) + ' ' + fmtFac(r) : ''), role: 'mus', strong: true, at: [mid[0], mid[1] + R0 * r + muscle(r) * 0.5], side: ['d'] },
+          { key: 'r', text: 'Radius ' + (off ? arrow(r - 1) + ' \u00d7' + rFmt(r) : ''), role: 'mus', strong: true, at: [mid[0], mid[1] + R0 * r + muscle(r) * 0.5], side: ['d'] },
           { key: 'res', text: 'Resistance ' + (d.res ? arrow(d.res) + ' ' + fmtFac(st.v.res) : ''), role: 'res', at: [mid[0] - (wide ? 200 : 170), mid[1] - R0 * r - muscle(r)], side: ['u'] },
           { key: 'flow', text: 'Blood flow ' + (d.flow ? arrow(d.flow) + ' ' + fmtFac(st.v.flow) : ''), role: 'flow', at: cap, side: wide ? ['d', 'u'] : ['d', 'u'] },
           { key: 'pin', text: 'Pressure in' + (off ? ' same' : ''), role: 'same', at: [gi[0] + 26, gi[1]], side: ['r', 'u'] },
@@ -241,7 +242,7 @@
       },
       take: function(st){
         var r = st.c;
-        return 'Radius ' + fmtFac(r) + ': resistance ' + fmtFac(st.v.res) + ', flow ' + fmtFac(st.v.flow) + '. The end pressures stay the same.';
+        return 'Radius \u00d7' + rFmt(r) + ': resistance ' + fmtFac(st.v.res) + ', flow ' + fmtFac(st.v.flow) + '. The end pressures stay the same.';
       },
       note: 'Resistance depends on the fourth power of the radius, so half the radius gives 2 × 2 × 2 × 2 = 16 times the resistance and, with the pressures at the two ends held the same, one sixteenth of the flow. The blood cells move at the flow divided by the width of the vessel, so they crowd slowly through the wide capillary bed and speed through a narrow arteriole. Arterioles are where most of an organ’s resistance is, and their smooth muscle sets the radius. Not drawn: the pressure inside the capillaries beyond a squeezed arteriole falls, because more pressure is used up in the arteriole.'
     });

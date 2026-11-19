@@ -175,3 +175,14 @@
 .px-z{stroke:#3F3270;stroke-width:5;stroke-linecap:round;}
 .px-thin{stroke:#D96C5E;stroke-width:5;stroke-linecap:round;}
 .px-thick{stroke:#6A4F8E;stroke-width:9;stroke-linecap:round;}
+
+/* dark: the backgrounds and the magnified panels go dark; the drawn parts keep their colours */
+:root[data-theme="dark"] .px-bg{fill:var(--px-bg);}
+:root[data-theme="dark"] .px-zoom{fill:#2A3134;stroke:color-mix(in srgb, #ffffff 25%, transparent);}
+:root[data-theme="dark"] .px-panel{fill:#283034;stroke:color-mix(in srgb, #ffffff 18%, transparent);}
+:root[data-theme="dark"] .px-inter{opacity:.35;}
+:root[data-theme="dark"] .px-fib{stroke:#4A4440;}
+:root[data-theme="dark"] .px-zl{stroke:color-mix(in srgb, #ffffff 30%, transparent);}
+:root[data-theme="dark"] .px-rail{stroke:color-mix(in srgb, #ffffff 25%, transparent);}
+:root[data-theme="dark"] .px-railt{stroke:color-mix(in srgb, #ffffff 35%, transparent);}
+:root[data-theme="dark"] .px-chest{fill:#E9D3C6;}
