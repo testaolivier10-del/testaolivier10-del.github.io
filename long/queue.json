@@ -328,6 +328,27 @@
       "review_blob": "e7463bf8618ff56f21832a0867693f503b3c102d",
       "approved_blob": "e7463bf8618ff56f21832a0867693f503b3c102d",
       "endscreen_next": "best"
+    },
+    {
+      "id": "yt-stats-01-intro-variables",
+      "course": "stats",
+      "topic_pages": [
+        "statistics/notes/intro-statistics.html",
+        "statistics/notes/variables.html",
+        "statistics/notes/math-fractions-percents.html"
+      ],
+      "title": "",
+      "description_file": "",
+      "video": "",
+      "thumb": "",
+      "captions": "",
+      "playlist": "AP Statistics | LevlPrep",
+      "date": "",
+      "status": "building",
+      "approved_on": "",
+      "youtube_id": "",
+      "added_on": "2026-11-19",
+      "note": "script audited 2026-11-19, not voiced (laptop unreachable); script in Project claude/levlprep-pipeline/long/st01_script.py"
     }
   ]
 }
