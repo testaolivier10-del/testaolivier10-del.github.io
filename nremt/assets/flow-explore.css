@@ -42,8 +42,8 @@
 .fx2-tee{fill:#D7B24A;} .fx2-work{fill:#5C6B4E;} .fx2-pants{fill:#3E4A5C;} .fx2-blue{fill:#7EA6CF;}
 .fx2-placket{stroke:#557EA8;stroke-width:4;fill:none;}
 .fx2-shirt{transition:opacity .5s ease;} .fx2-shirt.is-off{opacity:0;}
-.fx2-paleo{fill:#F4F1EC;opacity:0;transition:opacity 1.2s ease;mix-blend-mode:screen;}
-.fx2-grayo{fill:#7A8794;opacity:0;transition:opacity 1.2s ease;mix-blend-mode:color;}
+.fx2-paleo{fill:#F4F1EC;opacity:0;transition:opacity 1.2s ease;}
+.fx2-grayo{fill:#8A97A4;opacity:0;transition:opacity 1.2s ease;}
 .fx2-hair{fill:#3A2A1E;} .fx2-hair.is-gray{fill:#A8A29A;}
 .fx2-face path,.fx2-face ellipse,.fx2-face circle{vector-effect:non-scaling-stroke;}
 .fx2-nose{fill:none;stroke:#B0735E;stroke-width:1.3;opacity:.7;}
@@ -54,7 +54,7 @@
 .fx2-mo{fill:#5A1E1A;stroke:#A0544C;stroke-width:1.2;}
 .fx2-eo,.fx2-ec,.fx2-mo,.fx2-mn{opacity:0;transition:opacity .3s ease;}
 .fx2-eo.is-on,.fx2-ec.is-on,.fx2-mo.is-on,.fx2-mn.is-on{opacity:1;}
-.fx2-lips{fill:#5B6FB8;fill-opacity:.75;opacity:0;transition:opacity 1s ease;mix-blend-mode:multiply;}
+.fx2-lips{fill:#5B6FB8;fill-opacity:.75;opacity:0;transition:opacity 1s ease;}
 .fx2-lips.is-on{opacity:1;}
 .fx2-sweat{fill:#E7F4FF;stroke:#8DB8D9;stroke-width:1;opacity:0;transition:opacity .6s ease;}
 .fx2-sweat.is-on{opacity:1;}

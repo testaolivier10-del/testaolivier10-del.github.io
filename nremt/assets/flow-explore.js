@@ -332,8 +332,8 @@
       var pool = gCam.querySelector('.fx2-pool');
       if(pool){ pool.style.transform = 'scale(' + (0.55 + 0.45 * f.pool).toFixed(3) + ')'; }
       cls('.fx2-jets', f.bleed === 'spurt'); cls('.fx2-wound', f.bleed !== 'none');
-      var pa = gCam.querySelector('.fx2-paleo'); if(pa) pa.style.opacity = [0, 0.22, 0.34, 0.44][Math.min(3, f.pale)];
-      var gr = gCam.querySelector('.fx2-grayo'); if(gr) gr.style.opacity = [0, 0.2, 0.32, 0.4][Math.min(3, f.gray)];
+      var pa = gCam.querySelector('.fx2-paleo'); if(pa) pa.style.opacity = [0, 0.3, 0.45, 0.58][Math.min(3, f.pale)];
+      var gr = gCam.querySelector('.fx2-grayo'); if(gr) gr.style.opacity = [0, 0.28, 0.4, 0.5][Math.min(3, f.gray)];
       cls('.fx2-lips', f.blue); cls('.fx2-sweat', f.sweat);
       cls('.fx2-tq', f.tq); cls('.fx2-snore', f.snore); cls('.fx2-jaw', f.jaw);
       cls('.fx2-rise', f.chest === 'rise'); cls('.fx2-gasp', f.chest === 'gasp');
