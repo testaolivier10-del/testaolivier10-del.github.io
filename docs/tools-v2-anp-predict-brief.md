@@ -22,8 +22,8 @@ teaches the "no change" call the bank asks for (spec 9: at least 20% of predict 
 
 | Tab | Body system drawn | The knob (on the picture) | The chain (each link drawn) | Same |
 |---|---|---|---|---|
-| 1 Arteriole | artery with a cut end, the arteriole with its smooth muscle bands, three capillaries in a tissue of cells and fibers, a venule, two pressure gauges | the arteriole's wall: drag in to squeeze, out to widen (radius 0.5 to 1.3 of usual) | radius, resistance (×1/r⁴), blood flow (cells crossing per second ∝ r⁴; speed = flow / width) | pressure in, pressure out (gauges) |
-| 2 Breathing | a person with the chest opened (lungs, diaphragm, airway), a magnified alveolus over a capillary with red cells, CO₂ molecules in air and plasma, H⁺ ions | a rail under the person: 8 to 24 breaths a minute (each breath the same size) | breathing, blood CO₂ (PCO₂ = 40 × 12 / rate), H⁺ (acute buffering), pH; each breath out carries CO₂ in proportion to PCO₂ | O₂ saturation when breathing faster (it falls a little when slower) |
+| 1 Arteriole | artery with a cut end, the arteriole with its smooth muscle bands, three capillaries in a tissue of cells and fibers, a venule, two pressure gauges | the arteriole's wall: drag in to squeeze, out to widen (radius 0.5 to 1.3 of usual) | radius, resistance (×1/r⁴), blood flow (through the arteriole and the capillary bed, px-vessel-model; speed = flow / width) | pressure in, pressure out (gauges) |
+| 2 Breathing | a person with the chest opened (lungs, diaphragm, airway), a magnified alveolus over a capillary with red cells, CO₂ molecules in air and plasma, H⁺ ions | a rail under the person: 8 to 24 breaths a minute (each breath the same size) | breathing, blood CO₂ (PCO₂ = 40 × 12 / rate), H⁺ (acute buffering), pH, O₂ saturation (a little); each breath out carries CO₂ in proportion to PCO₂ | breath size |
 | 3 Kidney | brain with pituitary, the vessel to the kidney, kidney, ureter, bladder; the collecting duct magnified in the medulla (principal cells, aquaporins in the membrane or waiting in vesicles, water drops leaving, a capillary with ADH) | a rail by the pituitary: ADH none to very high | ADH, aquaporins (inserted), water back, urine volume (600 mOsm a day ÷ concentration), urine concentration (50 to 1,200 mOsm/L; drawn as the urine's colour, pale at the top where fluid comes in) | fluid in (about 100 mOsm/L) |
 | 4 Heart | a frontal section of the heart beating at 70 a minute, the venae cavae, the aorta with each beat's ejected blood, a sarcomere magnified from the left ventricle's wall | the inferior vena cava: less, usual or more blood back (filling 90 to 160 mL) | venous return, filling (EDV), stretch (sarcomere length), stroke volume (Frank-Starling curve), output (× 70) | heart rate |
 
@@ -136,9 +136,8 @@ Points for a person: `docs/anp-needs-author.md`, "Predict the change, tools v2 d
 
 ## Checks run (2026-11-19)
 `node --test scripts/test/anp-*.test.mjs` 55 pass; `check-anp-content --check` 0 failing; `build-anp --check` clean;
-`check-site` OK (it caught one British spelling, fixed); `check-weight --check` all 622 within budget after the A&P
-shell's budget rose 69 -> 91 KB (Predict is the A&P tool page the list measures; its Explore adds 30.4 KB gzipped,
-comment in `scripts/check-weight.mjs`); `build-apcalc --check` and `build-apmacro --check` clean (no shared file
+`check-site` OK (it caught one British spelling, fixed); `check-weight --check`: see Review round 1 (Explore is its own
+bucket); `build-apcalc --check` and `build-apmacro --check` clean (no shared file
 changed); `check-tool-use` with a local copy of its list: predict sends tool-open, tool-touch(explore), tool-mode(quiz),
 tool-use as frame v2, and nothing under automation (the file itself is the collecting branch's, unchanged).
 Sweep (`anp-predict-sweep.mjs`, one width per process): 36 states (each screen at its usual value, both ends, points
@@ -157,10 +156,7 @@ yourself on this" opens that screen's scenarios; reduced motion at once with a c
 records right, right, wrong under `predict:tube-narrows:*`; `#explore/heart`, `?topic=urine-concentration`,
 `?chapter=respiratory` open Explore there, `?topic=cardiac-cycle` and `?level=4` open Test yourself; the real locked page
 shows the Premium card and no stage; no console errors).
-Performance: one frame's script (`_draw`, a change spreading) takes 0.5 to 0.8 ms median at 1440 and 390 (p95 2 to 19 ms,
-garbage collection). With CPU x4 the whole frame (`anp-predict-perf.mjs`) measured 16.7 to 33 ms median and p95 50 to
-230 ms, but the 2-core machine was running other builders' sweeps at a load average of about 9, so these are not clean
-numbers; the reviewer should measure on a quiet machine.
+Performance: see Review round 1.
 Shots: `/mnt/user-data/outputs/anp-predict-v2/shots/` (landing, mid drag, narrowest, every screen at both ends, Test
 yourself, answered, locked; 1440 and 390 light and dark, 768 light); preview `/mnt/user-data/outputs/anp-predict-v2/index.html`.
 
@@ -169,6 +165,57 @@ yourself, answered, locked; 1440 and 390 light and dark, 768 light); preview `/m
 - The drawings are clean but plainer than the flagship: the heart is the pathway tracer's frontal section (flat top),
   the person on Breathing is simple, the smooth muscle bands read a little like hatching, the kidney panel on phones is
   small.
-- The stroke volume's ejected blood shows only during each beat's squeeze (about a third of the time).
-- Performance under a quiet machine is not measured (see above).
 - Test yourself is the old tool inside the new frame, not redesigned.
+
+## Review round 1 (2026-11-19)
+The independent review (`/home/claude/review-anp-predict/REVIEW.md`) blocked on eight must fix items; the settled numbers,
+Test yourself and the records were confirmed. Merged `origin/claude/tools-v2-all` first (its `check-tool-use.mjs`, both
+sides of the docs tables; no conflict markers).
+
+Must fix, all done:
+1. **No false causes on a reversal.** Each link has a sign against its cause; a link's arrow shows only when it moves the
+   way its cause's arrow implies, so labels and the cause line stop at the first link still pointing the old way until
+   it turns (`state()`). The frame test now also checks every pill's arrow against how that value is really moving.
+2. **Arteriole numbers from the drawn radius.** Resistance and flow follow the shown radius at once (no lag).
+3. **Honest flow.** Between the gauges the blood passes the arteriole and the capillary bed; the arteriole is taken as half
+   of that resistance at its usual size, so the drawn flow is 2 / (1 / r⁴ + 1) (about 1/8.5 at half the radius). The flow
+   label and takeaway give no factor; "Resistance ×16" stays on the arteriole; "?" and px-vessel-model say so.
+4. **One threshold.** `ctl.key` is half a step: the tag's word, the cause line, every arrow, the "same" labels and the live
+   region all move off "usual" together; link thresholds are tiny so any step shows.
+5. **O₂ saturation** carries its real arrow (one decimal); "Breath size same" is the breathing screen's held link.
+6. **Weight.** `anatomy-physiology/assets/tools/predict-explore.*` is its own bucket (`anatomy-physiology/predict-explore`,
+   33 KB, measured 32.4); the A&P shell is back to 69 KB (measured 68.8).
+7. **Performance.** The moving things and the labels sit on their own composited layer; the red cells, the water drops and
+   the urine drops are one path each; molecules no longer jitter; the ADH molecules move as one group; labels are placed
+   only when a label, anchor or control box changed; the dark mode filter is gone. At rest the ambient motion is drawn
+   on every third frame; every frame is drawn while a change spreads. CPU x4, this machine (load 5 to 6), against the
+   course home in the same run (idle median 16.7, p95 17 to 33): at rest median 16.7 on all four screens at 1440 and 390
+   (p95 17 to 33 at 1440, 17 to 83 at 390); full drags median 16.7 (one 16.8), p95 33 to 67 at 1440 and 67 to 83 at 390.
+   The p95 on drags is still above 50 on some screens; the idle page's own maximum in the same runs reached 417 ms.
+8. **Nothing covered.** The "before" word sits on a pill beside a vertical track (not on the vena cava or the wall); the
+   sarcomere box is a keep-out for labels, larger on phones, with "Stretch" below it; the phone kidney panel is
+   rearranged (kidney and bladder at the right, the ADH rail below the vessel, its tag beside the knob toward the
+   middle), and the kidney and bladder are keep-outs.
+
+Should fix, done: each beat's ejected blood runs the whole aorta with its length set by the stroke volume (86 mL about
+half the aorta, 50 mL clearly shorter); the heart has a rounded silhouette with both auricles, the pulmonary trunk and
+its branches, an interventricular groove and inlet valve leaflets that open while the ventricles fill and shut as they
+squeeze; the smooth muscle is a sleeve of narrow rings; the kidney has a cortex, striped pyramids and a pelvis, the
+bladder is a sac; the pressure gauges are keep-outs so their labels sit beside them; the wide arteriole is larger
+(lumen 54, artery 68, capillary bed spread to 170) with no empty bands; the kidney "?" says fluid leaves the nephron loop
+at about 100 mOsm/L, and px-adh-model asks about 12.5 L against the bank's 15 to 20 percent. The "Alveolus" label is
+gone (room on phones).
+
+Accuracy, rechecked for every change: the flow model (arteriole half the resistance between the gauges: flow 0.118 at
+half the radius, 1.48 at 1.3); saturation 97.7, 98.8 and 94.9 percent at 12, 24 and 8 breaths a minute, now with arrows
+(up when faster, down when slower), against `hyperventilation` ("barely changes", kept in "?") and `opioid-overdose`
+(down); the valve leaflets open only in filling (the inlet valves shut during the squeeze); every arrow's sign is the
+physiology the bank keys (radius down: resistance up, flow down; breathing up: CO₂ down, H⁺ down, pH up; ADH up:
+aquaporins, water back up, urine volume down, concentration up; return up: filling, stretch, stroke volume, output up).
+
+Checks: sweep at 360, 390, 430, 600, 768, 820, 1024, 1280, 1440, 1920, 1366 x 768 and 1280 x 720, light and dark, one
+width per process: 912 checks, 0 failures. Frame test at 360, 390 and 1440: 2,546 frames each, 0 failures (now including
+the reversal check). Interactions at 1440 and 390 (light and dark) and 768: 28 each, all pass. A&P tests 55 pass;
+check-anp-content, build-anp, build-apcalc and build-apmacro `--check` clean; check-site OK; check-weight all 623 within
+budget; check-tool-use (local copy of the list) frame v2, nothing under automation. Shots regenerated in
+`/mnt/user-data/outputs/anp-predict-v2/shots/`; preview regenerated.
