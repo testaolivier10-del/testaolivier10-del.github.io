@@ -199,6 +199,10 @@ point; a sample for every part; `stimulus` an object or a stimulus id from a que
   in the bank item format with `chem-` ids replaced by `<slug>:<content>:<item>`, …) + a validator
   `scripts/lib/apchem-tool-checks/<slug>.mjs` exporting `check(data, map)` that recomputes every
   number through `runtime()` (`_shared.mjs`). "simulator" is shown as "Trainers" in the course.
+- **Tools v2** (`docs/tools-v2-standard.md`): a tool rebuilt on the shared kit sets `"kit2": true` in `pages.json`
+  (the build adds `tool-kit2.css` and `.js`) and mounts with `T.mount(slug, fn, { studio: { kit2: fn(ctx) } })`;
+  `ApChemTools.studioKit2` (chem-tools.js) places its stage, "?", About and Test yourself parts. First: units-sig-figs
+  (its `explore` data block; models `ApChemMath.units.chain`, `.read`, `.sigText`).
 - **Seeded step drills** (ICE tables, Q vs K, buffers, titration reader, particle diagrams): the data
   file holds `contexts[]` (each with its own `topic`, so a context is served only once its unit is
   published) and no fixed questions. `ApChemMath.<kind>.generate(rng, context, type?)` returns

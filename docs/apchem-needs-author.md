@@ -511,3 +511,21 @@ Example 14.9) uses K<sub>c</sub> = 54.3. It agrees with the other common figures
 nearby temperatures: K ≈ 54 to 55 at 698 to 700 K, and about 50 at 448 °C (K falls as T rises,
 since the forward reaction is exothermic). Only the constant and its temperature are used; the
 drill's amounts are generated, not taken from the example. The problem text names 430 °C.
+
+## units-read-beaker: reading a beaker to one estimated digit (closed, 2026-11-18)
+
+The Units and significant figures tool (Explore, tab 2; `docs/tools-v2-units-sig-figs-brief.md`) first poured the
+same water from a 50 mL graduated cylinder (marks every 1 mL) into a 50 mL beaker (marks every 10 mL) and read the
+beaker to the ones place. Many lab manuals say beaker marks are only approximate (about ±5%) and should not be used
+to measure at all.
+
+**Resolution (review round 1, decided for the owner, logged in `docs/tools-v2-owner-log.md`):** no beaker is read.
+The coarse vessel is now a second 50 mL graduated cylinder with marks only every 10 mL, as the UW–Madison reading
+pages compare cylinders with different marks. The same water reads 33.7 mL in the fine cylinder and 34 mL in the
+coarse one, so the point (finer marks, more real digits) stands without asking whether a beaker may be read. "?"
+adds one line: to measure a volume use a graduated cylinder (or a pipet or buret); a beaker's marks are only
+approximate. A real 50 mL cylinder is marked every 1 mL; the coarse one is a teaching picture of coarser marks.
+
+Still open, on purpose: a reading's uncertainty. Texts differ (half the smallest division, or one tenth of it, or
+"± 1 in the estimated digit"), and the AP® Chemistry exam does not ask for one. Decide whether "?" should give one
+convention.

@@ -60,6 +60,12 @@ test('units: spellings agree, the unit is graded on its own, and a prefix slip i
   for (const [a, b] of [['kJ/mol', 'kJ mol^-1'], ['kJ/mol', 'kJ·mol⁻¹'], ['L·atm/(mol·K)', 'L atm mol-1 K-1'], ['M', 'mol/L'], ['J/(mol K)', 'J mol-1 K-1'], ['liters', 'L'], ['degC', '°C']])
     assert.equal(Q.normUnit(a), Q.normUnit(b), `${a} = ${b}`);
   assert.notEqual(Q.normUnit('mM'), Q.normUnit('MM'));
+  // forgiving spellings (tools v2): per, a stray full stop, words and capitals that can mean one unit only
+  for (const [a, b] of [['g/mL', 'g/ml'], ['g/mL', 'grams per mL'], ['kJ/mol', 'KJ/mol'], ['kJ/mol', 'kj per mole'], ['atm', 'ATM'], ['atm', 'atmospheres'], ['atm', 'atm.'], ['g', 'gm'], ['kPa', 'KPa'], ['K', 'kelvin']])
+    assert.equal(Q.normUnit(a), Q.normUnit(b), `${a} = ${b}`);
+  assert.notEqual(Q.normUnit('J'), Q.normUnit('kJ'));
+  assert.notEqual(Q.normUnit('ML'), Q.normUnit('mL'), 'ML is megalitre');
+  assert.equal(Q.parseNumber('1.8·10^-5'), 1.8e-5);
   const q = { type: 'numeric', numeric: { answer: -286, rel: 0.005, unit: 'kJ/mol', askUnit: true, sigfigs: 3 } };
   const right = Q.grade(q, { value: '-286', unit: 'kJ mol^-1' });
   assert.equal(right.correct, true); assert.equal(right.score, 1);

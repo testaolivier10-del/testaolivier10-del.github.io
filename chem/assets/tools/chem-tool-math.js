@@ -909,6 +909,69 @@
     return { kind: 'units', ctx: ctx.id, topic: ctx.topic, item: q, setup: setup };
   }
 
+  /* Explore (tools v2, docs/tools-v2-units-sig-figs-brief.md). Pure, tested in
+     scripts/test/apchem-explore.test.mjs and recomputed by the tool's validator.
+
+     sigText(x, sf): x written with sf significant figures the way a chemist
+     writes it, as an array of { t, sup } pieces joined by the page: plain
+     from 0.001 to 9999 (a trailing decimal point when a last zero counts:
+     250. is three figures), otherwise c × 10ⁿ. text(): the same as one string. */
+  function sigText(x, sf){
+    if(!isFinite(x)) return String(x);
+    if(x === 0) return '0';
+    var v = M.sig(x, sf), e = Math.floor(Math.log10(Math.abs(v)) + 1e-12);
+    if(e < -3 || e >= 4 || e >= sf + 1){ var c = v / Math.pow(10, e); return minus(c.toFixed(sf - 1)) + ' × 10' + sup(e); }
+    var s = v.toFixed(Math.max(0, sf - 1 - e));
+    // a whole number whose last written digit is a significant zero ("250" read as 3 figures) gets its point
+    if(s.indexOf('.') < 0 && /0$/.test(s) && sfOf(s) < sf) s += '.';
+    return minus(s);
+  }
+  /* chain(start, cards): a quantity times conversion factors, the factor-label way.
+     start { v, u, sf }; cards [{ top: [v, u], bot: [v, u], sf (null: exact), flip }].
+     Units are paired in chain order: a unit on the bottom cancels the same unit on top
+     earlier in the chain, and a unit on top cancels the same unit on the bottom earlier
+     (as a student strikes them through by hand). Returns { value, sf, pairs: [{ u, a, b }]
+     where a and b are { card (0 = the start), half: 'top' | 'bot' as the card is shown, turned over or not }, left (unit map),
+     unit (the unit text left over), text (value and unit) }. */
+  function chain(start, cards){
+    var toks = [{ u: start.u, top: true, card: 0, half: 'top' }], value = +start.v, sfs = [start.sf];
+    var pairs = [];
+    cards.forEach(function(c, i){
+      var t = c.flip ? c.bot : c.top, b = c.flip ? c.top : c.bot;
+      value = value * +t[0] / +b[0];
+      if(c.sf != null) sfs.push(c.sf);
+      [[b, false, 'bot'], [t, true, 'top']].forEach(function(x){
+        var tok = { u: x[0][1], top: x[1], card: i + 1, half: x[2] };
+        var m = toks.filter(function(o){ return !o.gone && o.u === tok.u && o.top !== tok.top && o.card < tok.card; })[0];
+        if(m){ m.gone = tok.gone = true; pairs.push({ u: tok.u, a: { card: m.card, half: m.half }, b: { card: tok.card, half: tok.half } }); }
+        toks.push(tok);
+      });
+    });
+    var left = {};
+    toks.forEach(function(o){ if(!o.gone) left[o.u] = (left[o.u] || 0) + (o.top ? 1 : -1); });
+    Object.keys(left).forEach(function(k){ if(!left[k]) delete left[k]; });
+    var sf = Math.min.apply(null, sfs), unit = unitText(left);
+    return { value: value, sf: sf, pairs: pairs, left: left, unit: unit, text: sigText(value, sf) + (unit ? ' ' + unit : '') };
+  }
+  /* read(v, inst): reading a scale whose finest marks are inst.every apart (1 mL, 10 mL): the digits read
+     from the marks plus one estimated digit, one place finer than the marks. Returns { shown, digits:
+     [{ ch, k: 'c' (certain) | 'e' (estimated) | 'p' (point) }], sf, certain, est, places, low, high }
+     with low and high the marks the level sits between. */
+  function read(v, inst){
+    var p = Math.round(Math.log10(inst.every)), q = Math.pow(10, p - 1), places = Math.max(0, 1 - p);
+    var r = Math.round(v / q) * q, shown = r.toFixed(places);
+    if(shown.indexOf('.') < 0 && /0$/.test(shown)) shown += '.';
+    var ds = shown.split(''), lastDigit = -1;
+    ds.forEach(function(ch, i){ if(/\d/.test(ch)) lastDigit = i; });
+    var digits = ds.map(function(ch, i){ return { ch: ch, k: ch === '.' ? 'p' : i === lastDigit ? 'e' : 'c' }; });
+    var lead = true;
+    digits.forEach(function(d){ if(d.k === 'c' && lead && d.ch === '0') d.k = 'z'; else if(d.k !== 'p') lead = false; });
+    var sf = digits.filter(function(d){ return d.k === 'c' || d.k === 'e'; }).length;
+    var low = Math.floor(v / inst.every + 1e-9) * inst.every;
+    return { shown: shown, digits: digits, sf: sf, certain: digits.filter(function(d){ return d.k === 'c'; }).map(function(d){ return d.ch; }).join(''),
+      est: ds[lastDigit], places: places, low: M.round(low, 6), high: M.round(low + inst.every, 6), value: r };
+  }
+
   /* A change-row entry typed by a student: "−2x", "+x", "x", "0" -> the
      coefficient of x (NaN when it is not a multiple of x). */
   function parseCoef(s){
@@ -1073,7 +1136,7 @@
     titration: { generate: titGenerate, pH: titrationPH, curve: titrationCurve, eq: titrationEq, nbar: nbar, INDICATORS: INDICATORS,
       species: titrationSpecies, region: titrationRegion, cross: titrationCross },
     particles: { generate: ptGenerate, box: boxSvg, hydration: hydrationSvg, mol: molSvg, describe: describe, has: function(k){ return !!TEMPL[k]; }, templ: TEMPL },
-    units: { generate: unGenerate, sigFigsOf: sfOf, decimalsOf: decOf }
+    units: { generate: unGenerate, sigFigsOf: sfOf, decimalsOf: decOf, sigText: sigText, chain: chain, read: read }
   };
   for(var k in D) M[k] = D[k];
 })();
