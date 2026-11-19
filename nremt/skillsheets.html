@@ -37,8 +37,12 @@
 <link rel="stylesheet" href="../assets/course/tool-studio.css">
 <link rel="stylesheet" href="assets/nremt-studio.css">
 <link rel="stylesheet" href="assets/studio/skillsheets.css">
+<link rel="stylesheet" href="../assets/course/tool-kit2.css">
+<link rel="stylesheet" href="assets/skill-explore.css">
 <script src="../assets/course/tool-studio.js" defer></script>
+<script src="../assets/course/tool-kit2.js" defer></script>
 <script src="assets/nremt-studio.js" defer></script>
+<script src="assets/nremt-kit2.js" defer></script>
 <!-- tool-studio:end -->
 <style>
   h2{font-size:21px;font-weight:900;margin:44px 0 10px;}
@@ -455,6 +459,7 @@
 <script src="assets/body-figures.js" defer></script>
 <script src="assets/station-patient.js" defer></script>
 <script src="assets/station-run.js" defer></script>
+<script src="assets/skill-explore.js" defer></script>
 <script>
 /* ---- Tool Studio (docs/tools-calm.md; assets/nremt-studio.js) ------------
    The station run is the tool. Stage: the stations to pick from, then the
@@ -464,21 +469,25 @@
    run is, and the picked station's card. Details: the reading guide (how
    the stations are scored, the official sheets, every station's card). */
 document.addEventListener('DOMContentLoaded', function(){
-  var studio = window.NremtStudio ? window.NremtStudio.mount({ title: 'Station run', slug: 'skillsheets', detailsTitle: 'Scoring guide & sheets' }) : null;
+  var studio = window.NremtStudio ? window.NremtStudio.mount({ title: 'Skill sheets', slug: 'skillsheets', detailsTitle: 'Scoring guide & sheets' }) : null;
   if(!studio) return;
   var run = document.getElementById('stationRun');
   var dock = document.createElement('div'); dock.id = 'stationRunDock'; dock.className = 'sk-ls-dock';
   document.getElementById('runH').hidden = true;
-  studio.add('stage', run);
+  /* Tools v2 (docs/tools-v2-nremt-skillsheets-brief.md): EXPLORE is the patient and the sheet on a clipboard
+     (assets/skill-explore.js); TEST YOURSELF is this run, as it was. Q scopes the run's side panel to Test yourself. */
+  var v2 = !!(window.LevlKit2 && window.NremtSkillExplore && window.NremtStationPatient && window.NremtStudio.kit2);
+  var Q = v2 ? 'quiz' : undefined;
+  if(!v2) studio.add('stage', run);
   window.NremtStudio.scrollable(run, 'Station');
-  studio.add('dock', dock);
+  if(!v2) studio.add('dock', dock);
   var why = document.createElement('div'); why.className = 'sk-ls-why';
-  studio.add('why', why);
+  studio.add('why', why, v2 ? { mode: 'quiz' } : undefined);
   var guide = document.createElement('div'); guide.className = 'ls-sec';
   guide.innerHTML = '<h3 class="ls-h">Reading guide</h3>';
   guide.appendChild(document.querySelector('.ss-note'));
   document.querySelectorAll('.ss-more').forEach(function(d){ guide.appendChild(d); });
-  studio.add('details', guide);
+  if(!v2) studio.add('details', guide);
   var INTRO = '<h3 class="ls-title-l">A station, out loud, against the clock</h3>' +
     '<p>Examiners score what you say and show, not what you think. Say each phase out loud as you would in the room, then tick it. The clock runs against the station&rsquo;s limit, and the critical criteria light up when the run breaks one: no PPE if you tick a later phase before BSI, and the time limit once it passes. Tap any other criterion you know you broke.</p>' +
     '<p><b>On a patient.</b> Every station is run on an illustrated patient: each action you tick happens on the body (gauze and the tourniquet, the mask and the bag, the splint and its cravats, the collar and the board, the AED pads, what each phase of an assessment finds), and at the end anything missed or done out of order is still showing, numbered. In bleeding control you can place the tourniquet by tapping the thigh; in BVM you squeeze the bag yourself to practice the rate.</p>' +
@@ -494,10 +503,10 @@ document.addEventListener('DOMContentLoaded', function(){
     var st = pick ? 'pick' : live ? 'run' : 'done';
     studio.root.setAttribute('data-run', st);
     if(st === 'pick'){
-      studio.task({ kicker: 'Station run', title: 'Pick a station.', todo: 'Then say each phase out loud and tick it; the clock runs.' });
-      studio.caption('');
-      studio.done(false);
-      studio.pills([]);
+      studio.task({ kicker: 'Station run', title: 'Pick a station.', todo: 'Then say each phase out loud and tick it; the clock runs.' }, Q);
+      studio.caption('', Q);
+      studio.done(false, Q);
+      studio.pills([], 'left', Q);
       why.innerHTML = INTRO;
       return;
     }
@@ -511,20 +520,20 @@ document.addEventListener('DOMContentLoaded', function(){
       [].filter.call(c.children, function(x){ return x.tagName !== 'H3'; }).map(function(x){ return '<p>' + x.innerHTML + '</p>'; }).join('') : '') +
       (pc ? '<p class="ls-sub">' + pc.innerHTML + '</p>' : '');
     if(st === 'run'){
-      studio.done(false);
-      studio.task({ kicker: name && name.firstChild ? name.firstChild.textContent.trim() : 'Station', title: 'Say it out loud, then tick it.', todo: 'Finish the run when the station is done.' });
-      studio.caption('');
+      studio.done(false, Q);
+      studio.task({ kicker: name && name.firstChild ? name.firstChild.textContent.trim() : 'Station', title: 'Say it out loud, then tick it.', todo: 'Finish the run when the station is done.' }, Q);
+      studio.caption('', Q);
     } else {
       var v = run.querySelector('.run-result__row .v');
-      studio.caption('');
-      studio.pills(v ? [{ html: v.textContent.split(' against')[0], k: 'Time', tone: v.classList.contains('over') ? 'bad' : 'readout' }] : []);
+      studio.caption('', Q);
+      studio.pills(v ? [{ html: v.textContent.split(' against')[0], k: 'Time', tone: v.classList.contains('over') ? 'bad' : 'readout' }] : [], 'left', Q);
       /* The finished card: the time and phases, what to look at, Run it again; the full result stays on the stage. */
       var rows = run.querySelectorAll('.run-result__row .v'), crit = run.querySelector('.run-flagbox');
       studio.done({ kicker: 'Run done', title: (rows[1] ? rows[1].textContent + ' phases ticked' : 'Your run'),
         text: (v ? 'Time ' + v.textContent + '. ' : '') + (crit ? 'Check the flagged items in your result.' : 'No critical item missed.') + ' No score: your program&rsquo;s sheet decides.',
         next: { label: 'Run it again', onClick: function(){ var b = document.getElementById('runAgain'); if(b) b.click(); } },
         links: [{ label: 'Pick another station', onClick: function(){ var b = document.getElementById('runOther'); if(b) b.click(); } },
-          { label: 'How the stations are scored', open: 'details', focus: guide }] });
+          { label: 'How the stations are scored', open: 'details', focus: guide }] }, Q);
     }
   }
   /* One phase at a time: the shared stepper over the run's checkboxes. A tick
@@ -555,6 +564,32 @@ document.addEventListener('DOMContentLoaded', function(){
   }).observe(dock, { childList: true });
   new MutationObserver(paint).observe(run, { childList: true });
   paint();
+  var slug = function(t){ return t.toLowerCase().replace(/&/g, ' and ').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, ''); };
+  function runStation(sl){
+    var b = [].filter.call(run.querySelectorAll('.run-station'), function(x){ var n = x.querySelector('.n'); return n && slug(n.firstChild.textContent) === sl; })[0];
+    if(b) b.click();
+    return !!b;
+  }
+  if(v2){
+    var ex = window.NremtSkillExplore.build({ studio: studio, guide: guide });
+    /* Deep links: #station-<name> (Search) opens Explore on that station; #run-<name> starts that station's run;
+       #test opens Test yourself. */
+    window.NremtStudio.kit2(studio, { stage: ex.stage, ref: ex.ref,
+      parts: [{ value: 'run', label: 'Run a station', stage: run, dock: dock }],
+      start: function(h){
+        var m = /^#station-([a-z0-9-]+)$/.exec(h || ''), r = /^#run-([a-z0-9-]+)$/.exec(h || '');
+        if(m && ex.keyOf(m[1])){ ex.show(ex.keyOf(m[1])); return { mode: 'explore' }; }
+        if(r) return { mode: 'quiz' };
+        return null;
+      },
+      onShow: function(m){
+        if(m === 'explore'){ if(window.NremtStationRun) window.NremtStationRun.pause(); ex.shown(); }
+        else { ex.hidden(); if(window.NremtStationRun) window.NremtStationRun.resume(); paint(); }
+      } });
+    var rm = /^#run-([a-z0-9-]+)$/.exec(location.hash);
+    if(rm) runStation(rm[1]);
+    return;
+  }
   studio.hint({ target: run.querySelector('.run-station'), text: 'Pick a station to run', round: 16 });
   // From Search: skillsheets.html#station-<name> starts that station.
   var sm = /^#station-([a-z0-9-]+)$/.exec(location.hash);

@@ -18,7 +18,7 @@
    the item has come in); the clock (the bleed, the soak, the pallor) runs only while Explore shows; every timer and
    the camera stop when it hides; reduced motion gets a short cross fade and the result at once.
 
-     var ex = NremtSkillExplore.build({ studio, onAct() }) -> { stage, ref, hidden(), shown(), show(key), keyOf(slug),
+     var ex = NremtSkillExplore.build({ studio, guide, onAct() }) -> { stage, ref, hidden(), shown(), show(key), keyOf(slug),
                                                               key(), _state() } */
 (function(){
   'use strict';
@@ -175,7 +175,7 @@
     var DEFS = {}; SP.pure.DEFS.forEach(function(d){ DEFS[d.key] = d; });
     function def(){ return DEFS[St.key]; }
     function row(key){
-      var rows = document.querySelectorAll('.sheets-table tbody tr');
+      var rows = (o.guide || document).querySelectorAll('.sheets-table tbody tr');
       for(var i = 0; i < rows.length; i++){
         var th = rows[i].querySelector('th'), td = rows[i].querySelectorAll('td');
         if(th && td.length >= 3 && ROW[key].test(th.textContent)) return { code: (th.querySelector('.sheet-code') || {}).textContent || '', min: parseInt(td[1].textContent, 10) || null, name: (th.querySelector('a') || th).textContent.replace(/\s+/g, ' ').trim() };
@@ -195,9 +195,10 @@
         '<div class="ssx-paper">' +
           '<div class="ssx-top"><p class="ssx-name"><span class="ssx-code"></span><span class="ssx-title"></span></p>' +
             '<p class="ssx-limit"><svg class="ssx-watch" viewBox="0 0 24 24" aria-hidden="true"><rect x="9.5" y="1" width="5" height="3" rx="1"/><circle cx="12" cy="14" r="8.5"/><path d="M12 14V9"/></svg><span></span></p>' +
+            '<p class="ssx-key"><i aria-hidden="true"></i>Critical</p>' +
             '<button type="button" class="ssx-reset" aria-label="Start this station over">Start over</button></div>' +
           '<p class="ssx-exam" hidden><b>Examiner</b><span></span></p>' +
-          '<ol class="ssx-steps" aria-label="The steps of the sheet"></ol>' +
+          '<ol class="ssx-steps" aria-label="The steps of the sheet" data-ls-allchips></ol>' +
         '</div>' +
       '</div>' +
       '<div class="ssx-cuehost"></div>';
@@ -296,7 +297,7 @@
       if(tour.active()) tour.did('step');
       patient.set(doneMap());
       var nx = next();
-      patient.current(nx < 0 ? i : nx);
+      patient.current(nx < 0 ? def().steps.length : nx);
       paintRows();
       examLine();
       var f = info(i);
@@ -358,7 +359,7 @@
       var cols = 1;
       if(wide){
         var hav = box.clientHeight - (board.querySelector('.ssx-top').offsetHeight + (exam.hidden ? 0 : exam.offsetHeight) + 64);
-        cols = n * 42 > hav ? 2 : 1;
+        cols = n * 50 > hav ? 2 : 1;
       } else cols = W >= 330 && n > 5 ? 2 : 1;
       list.style.setProperty('--rows', Math.ceil(n / cols));
       box.classList.toggle('is-2col', cols === 2);
@@ -445,13 +446,14 @@
     function refNotes(){ ref.querySelector('.ssx-ref-vh').textContent = 'What varies by program: ' + NAME[St.key]; ref.querySelector('.ssx-ref-notes').innerHTML = def().notes.map(function(n){ return '<li>' + n + '</li>'; }).join(''); }
 
     // the station picker: one dropdown at the stage's top left (Explore only)
-    var pick = studio && studio.picker ? studio.picker({ label: 'Station', groups: GROUPS.map(function(g){ return { label: g.label, items: g.keys.map(function(k){ return { value: k, label: NAME[k] }; }) }; }),
+    var pick = studio && studio.picker ? studio.picker({ label: 'Station', groups: GROUPS.map(function(g){ return { label: g.label, items: g.keys.map(function(k){ return { value: k, label: NAME[k], sub: '' }; }) }; }),
       value: St.key, onChange: function(v){ station(v, true); refNotes(); if(history.replaceState) history.replaceState(null, '', '#station-' + slugOf(v)); } }, 'explore') : null;
     function slugOf(key){ return ({ bleeding: 'bleeding-control-shock-management', bvm: 'bvm-ventilation-of-an-apneic-adult', oxygen: 'oxygen-administration-by-non-rebreather-mask',
       aed: 'cardiac-arrest-management-aed', longbone: 'long-bone-immobilization', joint: 'joint-immobilization', supine: 'spinal-immobilization-supine-patient',
       seated: 'spinal-immobilization-seated-patient', trauma: 'patient-assessment-trauma', medical: 'patient-assessment-medical' })[key]; }
     function keyOf(slug){ var k = null; Object.keys(NAME).forEach(function(x){ if(slugOf(x) === slug) k = x; }); return k; }
 
+    if(o.guide) ref.querySelector('.ssx-ref-more').appendChild(o.guide);
     station(St.key, false); refNotes();
     var api = {
       stage: stage, ref: ref, more: ref.querySelector('.ssx-ref-more'),

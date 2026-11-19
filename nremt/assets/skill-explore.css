@@ -1,0 +1,134 @@
+/* NREMT Skill sheets, tools v2 Explore (nremt/assets/skill-explore.js; docs/tools-v2-nremt-skillsheets-brief.md).
+   Loaded only by nremt/skillsheets.html. One colour per idea, everywhere: the STEP you did (course teal: the step's
+   number and icon on the sheet, the cause line's first pill), what it did to the PATIENT (warm brown: the second
+   pill), and CRITICAL (red: the sheet's "Critical" tags, the third pill, the "!" marks on the patient). The patient
+   and the room are drawn in real colours in both themes; the clipboard is wood and paper. Every text is at least
+   11 px. */
+.ssx,.ssx-ref{--sx-step:var(--cink);--sx-pt:#9A4A26;--sx-pt-ink:#86401F;--sx-crit:#B3261E;--sx-warn:#9A6A00;
+  --sx-wood0:#A47A4C;--sx-wood1:#8C6439;--sx-paper:#FBF8F1;--sx-line:#E4DCCB;--sx-ink:#23302C;--sx-mut:#5E6B66;}
+:root[data-theme="dark"] .ssx,:root[data-theme="dark"] .ssx-ref{--sx-pt:#E39A72;--sx-pt-ink:#F0B08E;--sx-crit:#FF8A7E;--sx-warn:#F2C46B;
+  --sx-wood0:#6B5136;--sx-wood1:#56402A;--sx-paper:#1F2826;--sx-line:#33403C;--sx-ink:#E6EEEB;--sx-mut:#A7B5B0;}
+.ssx{display:flex;flex-direction:column;gap:10px;min-height:0;flex:1 1 auto;}
+.ssx[hidden]{display:none;}
+.ssx [hidden]{display:none !important;}
+
+/* the scene: the patient and the clipboard */
+.ssx-scene{position:relative;display:flex;flex-direction:column;gap:0;border-radius:18px;overflow:hidden;isolation:isolate;background:var(--sx-wood1);}
+.ssx-scene.is-wide{display:grid;grid-template-columns:minmax(0,1fr) 296px;height:clamp(470px,calc(100vh - 300px),640px);}
+.ssx-scene.is-wide.is-2col{grid-template-columns:minmax(0,1fr) 420px;}
+/* two columns of steps: no room for the word on each row, so a critical step's number ring is red and the sheet's
+   head says so once (as on phones) */
+.ssx-scene.is-2col .ssx-crit{display:none;}
+.ssx-scene.is-2col .ssx-key{display:inline-flex;}
+.ssx-scene.is-2col .ssx-step.is-crit .ssx-n{border-color:var(--sx-crit);color:var(--sx-crit);}
+.ssx-pt{position:relative;min-width:0;min-height:0;}
+.ssx-scene.is-wide .ssx-pt{height:100%;}
+.ssx-pt .sp{height:100%;}
+.ssx-pt .sp-stage{height:clamp(300px,50vh,460px);border-radius:0;box-shadow:none;}
+.ssx-scene.is-wide .ssx-pt .sp-stage{height:100%;}
+/* the patient's own words and lists belong to the run (Test yourself); Explore says it on the cause line */
+.ssx-pt .sp-chips,.ssx-pt .sp-cue,.ssx-pt .sp-misses,.ssx-pt .sp-notes,.ssx-pt .sp-credit{display:none !important;}
+.ssx-pt .sp-place{top:auto;bottom:12px;left:12px;right:auto;max-width:min(330px,calc(100% - 24px));}
+.ssx-pt .sp-squeeze{position:absolute;left:12px;bottom:12px;margin:0;z-index:3;}
+.ssx-pt .sp-sq-out{display:none;}
+.ssx-pt .sp-sq-btn{min-height:52px;}
+
+/* the clipboard: a wooden board, a metal clip, the sheet */
+.ssx-board{position:relative;padding:22px 12px 12px;background:linear-gradient(160deg,var(--sx-wood0),var(--sx-wood1));min-width:0;min-height:0;display:flex;}
+.ssx-scene.is-wide .ssx-board{padding:26px 14px 14px 12px;box-shadow:inset 6px 0 12px rgba(0,0,0,.18);}
+.ssx-clip{position:absolute;left:50%;top:4px;transform:translateX(-50%);width:110px;height:26px;border-radius:7px 7px 10px 10px;
+  background:linear-gradient(180deg,#E9EDEF,#AEB6BA 55%,#8D969B);box-shadow:0 2px 3px rgba(0,0,0,.35);z-index:2;}
+.ssx-clip span{position:absolute;left:36px;right:36px;top:6px;height:8px;border-radius:5px;background:#6E777C;box-shadow:inset 0 1px 2px rgba(0,0,0,.4);}
+.ssx-paper{flex:1;min-width:0;display:flex;flex-direction:column;gap:8px;padding:16px 12px 10px;border-radius:6px;background:var(--sx-paper);
+  box-shadow:0 2px 0 rgba(0,0,0,.12),0 6px 14px rgba(0,0,0,.18);color:var(--sx-ink);overflow:hidden;}
+.ssx-top{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;border-bottom:2px solid var(--sx-line);padding-bottom:7px;}
+.ssx-name{flex:1 1 100%;margin:0;font:900 15px/1.2 var(--font-ui);display:flex;gap:7px;align-items:baseline;flex-wrap:wrap;}
+.ssx-code{font:800 12px var(--font-mono,monospace);color:var(--sx-mut);}
+.ssx-limit{margin:0;display:inline-flex;align-items:center;gap:5px;font:800 12.5px var(--font-ui);color:var(--sx-mut);}
+.ssx-watch{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;}
+.ssx-watch rect{fill:currentColor;stroke:none;}
+.ssx-key{display:none;margin:0;align-items:center;gap:5px;font:800 12px var(--font-ui);color:var(--sx-crit);}
+.ssx-key i{width:16px;height:16px;border-radius:50%;border:2px solid currentColor;}
+.ssx-reset{margin-left:auto;min-height:36px;padding:0 12px;border-radius:999px;border:1.5px solid var(--sx-line);background:transparent;color:var(--sx-ink);
+  font:800 12.5px var(--font-ui);cursor:pointer;}
+.ssx-reset:hover{border-color:var(--sx-mut);}
+.ssx-reset:focus-visible,.ssx-step:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.ssx-exam{margin:0;display:flex;gap:8px;align-items:flex-start;padding:7px 10px;border-radius:10px;background:color-mix(in srgb,var(--sx-pt) 12%,transparent);
+  font:700 13px/1.35 var(--font-ui);color:var(--sx-ink);animation:ssx-in .35s ease;}
+.ssx-exam b{flex:none;font:900 11.5px/1.6 var(--font-ui);color:var(--sx-pt-ink);text-transform:uppercase;letter-spacing:.04em;}
+@keyframes ssx-in{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:none;}}
+
+/* the steps: number, icon, name, Critical */
+.ssx-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;gap:5px;min-height:0;}
+.ssx-scene.is-2col .ssx-steps{grid-template-columns:1fr 1fr;grid-template-rows:repeat(var(--rows,8),auto);grid-auto-flow:column;column-gap:6px;}
+.ssx-steps li{min-width:0;}
+.ssx-step{position:relative;width:100%;min-height:44px;display:flex;align-items:center;gap:7px;padding:4px 8px 4px 5px;border-radius:10px;border:1.5px solid transparent;
+  background:transparent;color:var(--sx-ink);font:800 13.5px/1.2 var(--font-ui);text-align:left;cursor:pointer;
+  transition:background .3s ease,border-color .3s ease;}
+.ssx-step:hover{background:color-mix(in srgb,var(--sx-step) 7%,transparent);}
+.ssx-n{position:relative;flex:none;width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;
+  border:2px solid var(--sx-step);color:var(--sx-step);font:900 12px var(--font-ui);transition:background .3s ease;}
+.ssx-n svg{position:absolute;inset:1px;width:18px;height:18px;fill:none;stroke:#fff;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;
+  stroke-dasharray:16;stroke-dashoffset:16;transition:stroke-dashoffset .35s ease .1s;}
+:root[data-theme="dark"] .ssx-n svg{stroke:#0E1715;}
+.ssx-ic{flex:none;width:28px;height:28px;opacity:.55;filter:grayscale(.65);transition:opacity .3s ease,filter .3s ease,transform .35s cubic-bezier(.2,.8,.25,1);}
+.ssx-lab{flex:1;min-width:0;overflow-wrap:normal;word-break:normal;hyphens:none;}
+.ssx-crit{flex:none;font:900 11px/1 var(--font-ui);color:var(--sx-crit);border:1.5px solid currentColor;border-radius:999px;padding:3px 6px;}
+.ssx-step.is-done{background:color-mix(in srgb,var(--sx-step) 12%,transparent);}
+.ssx-step.is-done .ssx-n{background:var(--sx-step);}
+.ssx-step.is-done .ssx-n span{opacity:0;}
+.ssx-step.is-done .ssx-n svg{stroke-dashoffset:0;}
+.ssx-step.is-done .ssx-ic{opacity:1;filter:none;transform:scale(1.08);}
+.ssx-step.is-next{border-color:var(--sx-step);}
+.ssx-steps.is-started .ssx-step.is-next{border-style:solid;}
+.ssx-step.is-flag{border-color:var(--sx-crit);}
+.ssx-step.is-flag::after{content:"!";position:absolute;right:-5px;top:-7px;width:17px;height:17px;border-radius:50%;background:var(--sx-crit);color:#fff;
+  font:900 12px/17px var(--font-ui);text-align:center;}
+:root[data-theme="dark"] .ssx-step.is-flag::after{color:#1B0F0C;}
+/* the icons' parts (the step's own colours) */
+.ssx-ic .ic-f{fill:#5B78C9;} .ssx-ic .ic-p{fill:#F4F1E8;stroke:#7E8A86;stroke-width:1.3;} .ssx-ic .ic-d{fill:#38403F;}
+.ssx-ic .ic-r{fill:#C0392B;} .ssx-ic .ic-y{fill:#E2B33C;stroke:#9C7616;stroke-width:1.2;} .ssx-ic .ic-o{fill:#E39A35;stroke:#9A5F12;stroke-width:1.2;}
+.ssx-ic .ic-s{fill:#E8B796;stroke:#A9714F;stroke-width:1.2;}
+.ssx-ic .ic-l{fill:none;stroke:#6E7A76;stroke-width:1.4;stroke-linecap:round;} .ssx-ic .ic-l2{fill:#D6D1C4;}
+.ssx-ic .ic-w{fill:none;stroke:#fff;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round;}
+.ssx-ic .ic-a{fill:none;stroke:var(--sx-step);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
+.ssx-ic .ic-c{fill:none;stroke:#3F4846;stroke-width:2.4;stroke-linecap:round;}
+.ssx-ic .ic-f[d^="M5 27"]{fill:none;stroke:#7E8A86;stroke-width:3.4;}
+
+.ssx-cuehost{position:absolute;inset:0;pointer-events:none;z-index:5;}
+.ssx-cuehost .tk2-cue{pointer-events:none;}
+
+/* the cause line: step, what it did to the patient, critical */
+.ssx-lines{display:flex;}
+.ssx .tk2-cz.is-step{--cz:var(--sx-step);--cz-ink:var(--sx-step);}
+.ssx .tk2-cz.is-pt{--cz:var(--sx-pt);--cz-ink:var(--sx-pt-ink);}
+.ssx .tk2-cz.is-crit{--cz:var(--sx-crit);--cz-ink:var(--sx-crit);}
+.ssx .tk2-cz.is-warn{--cz:var(--sx-warn);--cz-ink:var(--sx-warn);}
+.ssx .tk2-cz.is-good{--cz:var(--good-text);--cz-ink:var(--good-text);}
+.ssx .tk2-cz.is-bad{--cz:var(--sx-crit);}
+
+@media (max-width:859px){
+  .ssx-scene{border-radius:14px;}
+  .ssx-board{padding-top:24px;}
+  .ssx-step{font-size:13px;gap:5px;padding:3px 5px 3px 3px;}
+  .ssx-ic{width:24px;height:24px;}
+  .ssx-crit{padding:2px 4px;}
+}
+@media (max-width:859px){
+  /* no room for the word on each row: a critical step's number ring is red, and the sheet's head says so once */
+  .ssx-crit{display:none;}
+  .ssx-key{display:inline-flex;}
+  .ssx-step.is-crit .ssx-n{border-color:var(--sx-crit);color:var(--sx-crit);}
+}
+@media (max-width:400px){ .ssx-step{font-size:12.5px;} }
+@media (prefers-reduced-motion:reduce){
+  .ssx-step,.ssx-n,.ssx-ic{transition:none;}
+  .ssx-n svg{transition:stroke-dashoffset .15s linear;}
+  .ssx-exam{animation:none;}
+}
+
+/* "?" */
+.ssx-ref h3{margin:14px 0 6px;font:900 var(--ls-m,16px) var(--font-ui);}
+.ssx-ref p,.ssx-ref li{font-size:var(--ls-s,14px);line-height:1.55;}
+.ssx-ref ul{padding-left:18px;display:flex;flex-direction:column;gap:7px;}
+.ssx-ref-s{color:var(--muted);font-size:12px !important;}

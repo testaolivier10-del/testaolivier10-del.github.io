@@ -76,8 +76,8 @@
 :root[data-theme="dark"] .sp-floor{fill:#39413e;}
 .sp-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:20px;text-align:center;font:700 var(--ls-s,13px) var(--font-ui);color:var(--muted);}
 /* equipment and hands fade in where they are placed */
-.sp-item{opacity:0;transition:opacity .45s ease,transform .45s ease;pointer-events:none;}
-.sp-item.on{opacity:1;}
+.sp-item{opacity:0;scale:1.1;transform-box:fill-box;transform-origin:50% 50%;transition:opacity .45s ease,scale .55s cubic-bezier(.2,.8,.25,1);pointer-events:none;}
+.sp-item.on{opacity:1;scale:1;}
 .sp-fade{transition:opacity .9s ease;}
 .sp-handpart{stroke:rgba(30,30,60,.35);stroke-width:1;}
 .sp-knuckle{fill:none;stroke:rgba(20,20,50,.28);stroke-width:1.2;stroke-linecap:round;}
@@ -166,7 +166,8 @@
   .sp-run,.sp-gleam,.sp-pulse,.sp-res,.sp-mark--bad .sp-mark-halo,.sp-rise.go,.sp-bag.go{animation:none;}
   .sp-rise.go{opacity:var(--rise,.42);}
   .sp-run{stroke-dasharray:none;}
-  .sp-item,.sp-fade,.sp-bleed{transition:none;}
+  .sp-item{scale:1;transition:opacity .2s linear;}
+  .sp-fade,.sp-bleed{transition:opacity .2s linear;}
 }
 @media (min-width:1000px){
   .nx-skillsheets .run-live.has-vis .run-clockwrap{width:120px;height:120px;}
@@ -199,3 +200,16 @@
 .nx-skillsheets .run-step.is-late label{box-shadow:inset 0 0 0 2px var(--bad-text);}
 .nx-skillsheets .run-step.is-late .run-flag{color:var(--bad-text);}
 .nx-skillsheets .run-step.is-late .run-flag::after{content:": out of order";}
+
+/* ---- The room under and behind the patient (tools v2, 2026-11-19; station-patient.js room()) ---- */
+.sp-tile{fill:#d3d6cf;} .sp-tile-seam{fill:none;stroke:#c2c6be;stroke-width:3;}
+.sp-tiles{opacity:1;}
+.sp-mat-edge{fill:#2f6157;} .sp-mat{fill:#4a8274;} .sp-mat-fold{fill:none;stroke:#3a6c60;stroke-width:7;}
+.sp-mat-sheen{fill:none;stroke:#fff;stroke-width:34;opacity:.07;stroke-linecap:round;}
+.sp-wall{fill:#e6e2da;}
+.sp-seat{fill:#3f4954;} .sp-seat-in{fill:#4f5b68;} .sp-seat-seam{fill:none;stroke:#36404a;stroke-width:5;} .sp-seat-post{fill:#a3abb0;}
+:root[data-theme="dark"] .sp-tile{fill:#323a37;} :root[data-theme="dark"] .sp-tile-seam{stroke:#2a312e;}
+:root[data-theme="dark"] .sp-mat-edge{fill:#1b3832;} :root[data-theme="dark"] .sp-mat{fill:#2c5149;} :root[data-theme="dark"] .sp-mat-fold{stroke:#224039;}
+:root[data-theme="dark"] .sp-wall{fill:#2c3331;}
+:root[data-theme="dark"] .sp-seat{fill:#262d33;} :root[data-theme="dark"] .sp-seat-in{fill:#323b44;}
+.sp-stage.is-lying .sp-place{left:auto;max-width:300px;top:10px;right:10px;}

@@ -409,8 +409,8 @@
     misses:function(st){
       var d = st.done, m = [], w = L.wound;
       var stopped = has(d, 'tq') && (!st.tq || st.tq.stops);
-      if(!has(d, 'bsi')) m.push({ key:'bsi', x:w[0] - 40, y:w[1] - 40, sev:'bad', text:'No gloves: BSI was never taken or voiced, so these hands are bare (a critical criterion).' });
-      else if(touchedBare(BLEEDING, d)) m.push({ key:'bsi', x:w[0] - 40, y:w[1] - 40, sev:'bad', text:'BSI came after you had touched the patient: the first contact was bare-handed.' });
+      if(!has(d, 'bsi')) m.push({ key:'bsi', x:w[0] + 46, y:w[1] + 34, sev:'bad', text:'No gloves: BSI was never taken or voiced, so these hands are bare (a critical criterion).' });
+      else if(touchedBare(BLEEDING, d)) m.push({ key:'bsi', x:w[0] + 46, y:w[1] + 34, sev:'bad', text:'BSI came after you had touched the patient: the first contact was bare-handed.' });
       if(!stopped){
         var why = has(d, 'tq') ? 'the tourniquet is not where it can stop it (' + st.tq.kind + ')'
           : has(d, 'pressure') ? 'direct pressure alone did not stop it and no tourniquet followed'
@@ -1154,7 +1154,7 @@
     return g;
   }
   var TRAUMA = station({
-    key:'trauma', match:/assessment.*trauma/i,
+    key:'trauma', stay:true, match:/assessment.*trauma/i,
     intro:'This run’s case: a 34-year-old who fell about 12 feet from a ladder, lying on their back.',
     full:[-140, -40, 760, 1260],
     focus:{ full:[-140, -40, 760, 1260], upper:[-80, -40, 640, 560], lower:[-80, 420, 640, 800] },
@@ -1265,9 +1265,12 @@
     if(def.upright){
       // a seat back seen from the front, behind the shoulders and the hips
       el('rect', { x:-3000, y:-3000, width:6500, height:7500, class:'sp-wall' }, g);
-      el('path', { d:'M86 1300 L86 250 Q86 168 168 160 L312 160 Q394 168 394 250 L394 1300 Z', class:'sp-seat' }, g);
-      el('path', { d:'M110 1300 L110 262 Q112 196 176 190 L304 190 Q368 196 370 262 L370 1300 Z', class:'sp-seat-in' }, g);
-      el('path', { d:'M240 196 L240 1300', class:'sp-seat-seam' }, g);
+      el('path', { d:'M86 700 L86 250 Q86 168 168 160 L312 160 Q394 168 394 250 L394 700 Z', class:'sp-seat' }, g);
+      el('path', { d:'M110 690 L110 262 Q112 196 176 190 L304 190 Q368 196 370 262 L370 690 Z', class:'sp-seat-in' }, g);
+      el('path', { d:'M240 196 L240 690', class:'sp-seat-seam' }, g);
+      // the cushion's front edge, behind the thighs
+      el('rect', { x:40, y:660, width:400, height:110, rx:30, class:'sp-seat' }, g);
+      el('rect', { x:56, y:672, width:368, height:70, rx:22, class:'sp-seat-in' }, g);
       if(def.key === 'seated'){
         el('rect', { x:168, y:-40, width:144, height:150, rx:44, class:'sp-seat' }, g);
         el('rect', { x:186, y:-24, width:108, height:116, rx:34, class:'sp-seat-in' }, g);
@@ -1367,7 +1370,8 @@
   /* Lying across the stage: only when the stage is wide and the patient is on their back. */
   Patient.prototype.orient = function(){
     var sw = this.stage.clientWidth || 300, sh = this.stage.clientHeight || 400;
-    var lie = !!(this.opts.lie && !this.def.upright && sw / sh > 1.15);
+    // trauma stays head up: its findings are laid out around an upright body
+    var lie = !!(this.opts.lie && !this.def.upright && !this.def.stay && sw / sh > 1.15);
     if(lie === this.lie && this.world.getAttribute('transform') != null) return false;
     this.lie = lie;
     this.world.setAttribute('transform', lie ? 'rotate(-90)' : '');
@@ -1538,6 +1542,8 @@
      letterboxed into a sliver on a phone. */
   Patient.prototype.target = function(){
     var self = this, step = this.lastId ? this.def.steps.filter(function(x){ return x.id === self.lastId; })[0] : this.def.steps[this.cur], key = this.reviewing ? 'full' : step ? step.focus : 'full';
+    // lying across a wide stage, the whole patient fits: the overview is all of them
+    if(this.lie && key === 'full') return this.def.full;
     return (this.def.focus[key]) || this.def.full;
   };
   Patient.prototype.camera = function(now){
