@@ -161,8 +161,10 @@ Sweep (`node scripts/tools-v2/nremt-flowcharts-sweep.mjs`, one process per width
 live, the state after one wrong arm at every decision, the end and Start over, both calls, light and dark, plus the
 first visit with the cue: 360, 390, 430, 600: 1226 passed each; 768, 820, 1024, 1280, 1440, 1920: 1184 passed each;
 0 failed. `--frames` (390 and 1440, every pick right and wrong, about 1900 frames): labels, live arms and the cause
-line's last pill never run ahead of the drawing (it caught five timing faults, all fixed); leaving mid step and
-returning; reduced motion.
+line's last pill never run ahead of the drawing (it caught seven timing faults, all fixed; a step that names
+something now waits until the drawings have finished fading, so it holds on a busy device); leaving mid step and
+returning; reduced motion. After the last changes, 360, 768 and 1440 were run again (pass) and `--frames` passes
+everything but the frame time limit, which fails only under load (below).
 Preview: `/mnt/user-data/outputs/nremt-flowcharts-v2/index.html`; shots in `/mnt/user-data/outputs/nremt-flowcharts-v2/shots/`
 (`sweep-*`, and `v-*` with mid change frames `v-*-mid`).
 
