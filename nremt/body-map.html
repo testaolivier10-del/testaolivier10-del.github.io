@@ -694,9 +694,11 @@ document.addEventListener('DOMContentLoaded', function(){
   });
   /* Leaving the find quiz for Explore stops the hunt (every tap there would answer it), keeping the round; coming
      back asks the same question again, or moves on if it was answered. */
+  let firstHunt = true;
   function pauseHunt(){ if (viewer.hunt.active()) { pausing = true; viewer.hunt.stop(); pausing = false; } }
   function resumeHunt(){
-    if (round.hidden) { newRound(); return; }
+    // the first round asks the part a ?hunt=<name> link names (Review's "Find the X again")
+    if (round.hidden) { newRound(firstHunt ? params.get('hunt') : null); firstHunt = false; return; }
     if (!R.cur) return;   // the summary is showing
     if (R.cur.res) { finishQuestion(); return; }
     viewer.hunt.start(huntOpts(R.cur.key)); askTask(R.cur.key, false);

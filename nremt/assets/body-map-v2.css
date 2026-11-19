@@ -17,7 +17,10 @@
   background:radial-gradient(ellipse 70% 60% at 50% 42%,#fbfbfa,#e4e6e2);}
 :root[data-theme="dark"] .bm2-scene{background:radial-gradient(ellipse 70% 60% at 50% 42%,#26332f,#121a18);}
 @media (max-width:1023px){ .bm2-scene{flex:none;height:max(560px,min(78vh,820px));} }
-@media (max-width:640px){ .bm2-scene{height:max(540px,min(150vw,640px));min-height:0;border-radius:14px;} }
+/* a phone: the picture, a card docked on it and the two rows of the cause line fit one screen (the scene's top sits
+   about 214 px down, the cause line takes about 80) */
+@media (max-width:640px){ .bm2-scene{height:max(340px,min(150vw,640px,calc(100svh - 296px)));min-height:0;border-radius:14px;}
+  .bm2-card.is-dock{max-height:54%;} }
 .bm2-3d,.bm2-burn{position:absolute;inset:0;}
 .bm2-home,.bm2-qstage .bm2-home{position:absolute;inset:0;}
 /* the viewer fills its home (studio/body-map.css bled it past the old stage's padding; not here) */
@@ -91,7 +94,10 @@
 :root[data-theme="dark"] .bm2-tot{background:var(--surface2);}
 .bm2-tot-k{font:800 12.5px var(--font-ui);color:var(--muted);}
 .bm2-tot-n{font:900 30px/1 var(--font-ui);color:var(--bm-tot);font-variant-numeric:tabular-nums;}
-.bm2-tot-f{font:900 12px var(--font-ui);color:var(--bm-burn-ink);white-space:nowrap;}
+.bm2-tot-f{font:900 12px/1.3 var(--font-ui);color:var(--bm-burn-ink);white-space:nowrap;visibility:hidden;}
+.bm2-tot-f.is-on{visibility:visible;}
+/* the sum of the burned shares ("9 + 4.5 = 13.5"): its line is kept even when empty, so nothing below ever moves */
+.bm2-tot-s{display:block;min-height:1.3em;font:800 12.5px/1.3 var(--font-ui);color:var(--bm-tot);white-space:nowrap;font-variant-numeric:tabular-nums;}
 .bm2-tot-f::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--bm-burn);margin-right:5px;vertical-align:1px;}
 /* the figures from burns.js, side by side, as large as the picture allows */
 .nx-body-map .bm2-figs{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:minmax(0,1fr);gap:0 8px;margin:4px 0 0;padding:0;border:0;box-shadow:none;background:none;position:relative;}
@@ -168,3 +174,27 @@
   .nx-body-map .bm2-burn .bn-pct--sm{font-size:38px;}
 }
 .bm2-q3d .bm2-find{top:62px;}
+
+/* a wide screen (tools v2 review round 1): the body is the owner's favourite picture, so it gets the height. The tabs
+   (regular height) share one row with the purpose line, the picture runs to the stage's foot, and the cause line
+   rides the picture's foot (the 3D body has backdrop there; Burns keeps that band free under the feet) */
+@media (min-width:1024px){
+  .bm2{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);column-gap:20px;row-gap:8px;margin:-6px 0 -24px;}
+  .bm2 > .tk2-tabs{grid-column:1;grid-row:1;margin:0;}
+  .bm2 > .tk2-head{grid-column:2;grid-row:1;align-self:center;margin:0;min-width:0;}
+  .bm2 .tk2-tabs.is-big .tk2-tab{min-height:40px;font-size:15px;padding:0 18px 0 10px;}
+  .bm2 .tk2-tabs.is-big .tk2-tab-n{width:22px;height:22px;font-size:12px;}
+  .bm2 > .bm2-scene{grid-column:1 / -1;grid-row:2;min-height:0;height:auto;border-radius:18px 18px 0 0;}
+  .bm2 > .bm2-lines{grid-column:1 / -1;grid-row:2;align-self:end;position:relative;z-index:6;padding:0 14px 12px;pointer-events:none;}
+  .bm2 > .bm2-lines > *{pointer-events:auto;}
+  .bm2 > .tk2-sr,.bm2 > .bm2-burnroot{grid-column:1 / -1;}
+  .bm2 .bm2-burn{padding-bottom:64px;}
+  .bm2 .bm2-home .legend{left:50%;right:auto;top:12px;bottom:auto;transform:translateX(-50%);}
+}
+/* a phone: the total box keeps to two short rows (Burned 13.5% and the mark, then the sum), so the figures keep
+   their height on a short screen */
+@media (max-width:640px){
+  .bm2-tot{grid-template-columns:auto auto auto;grid-template-areas:"k n f" "s s s";column-gap:6px;row-gap:0;align-items:baseline;justify-items:end;padding:4px 10px;}
+  .bm2-tot-k{grid-area:k;} .bm2-tot-n{grid-area:n;font-size:22px;} .bm2-tot-f{grid-area:f;}
+  .bm2-tot-s{grid-area:s;font-size:11.5px;}
+}

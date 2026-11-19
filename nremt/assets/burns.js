@@ -6,7 +6,8 @@
      onChange  fn(ev) the moment a region, the chart or the whole body changes:
                ev = { kind: 'mark' | 'age' | 'clear', id, mark, prev, total, child }
      onSettle  fn(ev) once the picture shows that change (the fade has ended)
-     onPaint   fn(total) after every frame drawn, with the total that frame shows
+     onPaint   fn(total, terms) after every frame drawn: the total that frame shows and each burned region's drawn
+               share [{ id, v, done }] (the sum under the total)
    Returns { quiz, stop, figs, setChild, setBrush, clear, marks, total, child, brush, shown, regionName }.
 
    One job: estimate how much of the body is burned, fast, by the Rule of
@@ -334,7 +335,8 @@
       var big = t > 10 && !hideTotal ? '<p class="bn-flag">Over 10%: if these are partial-thickness burns, that alone meets burn center criteria. Cover with dry sterile dressings: cool wet dressings over more than 10% risk hypothermia.</p>' : '';
       var old = list.nextElementSibling; if(old && old.classList.contains('bn-flag')) old.remove();
       if(big) list.insertAdjacentHTML('afterend', big);
-      if(opts.onPaint) opts.onPaint(t);
+      if(opts.onPaint) opts.onPaint(t, REGIONS.filter(function(r){ return (opts.anim ? shownF[r.id] : st.marks[r.id]) > 0; })
+        .map(function(r){ var f = opts.anim ? shownF[r.id] : st.marks[r.id]; return { id: r.id, v: pct(r.id, st.child) * f, done: f === (st.marks[r.id] || 0) }; }));
       return t;
     }
 

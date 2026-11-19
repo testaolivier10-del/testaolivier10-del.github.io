@@ -34,23 +34,30 @@
     { id: 'care', label: 'EMT care', short: 'Care', rows: [['What you do', 'interv']] }
   ];
   /* Burns: why each region carries its share (the line burns.js said in its side panel, now in the cause line) */
-  function shareOf(r, child){
+  /* the region's share and why, in a few words: "half the leg: 9%" (the leg is 18%, half on the front and half on the
+     back); with the Half brush, "half of this 9%: 4.5%". num false: the words only (while the burn is still fading in) */
+  function shareOf(r, child, pct, mark, num){
+    var w;
     switch(r.whole){
-      case 'head': return 'half of the head’s ' + (child ? '18%' : '9%');
-      case 'antTrunk': return 'one nine of the front’s 18%';
-      case 'postTrunk': return 'one nine of the back’s 18%';
-      case 'genitals': return 'the last 1%';
-      case 'rarm': case 'larm': return 'half of the arm’s 9%';
-      default: return 'half of the leg’s ' + (child ? '13.5%' : '18%');
+      case 'head': w = 'half the head'; break;
+      case 'antTrunk': w = 'half the front of the trunk'; break;
+      case 'postTrunk': w = 'half the back of the trunk'; break;
+      case 'genitals': w = 'the 1% left over'; break;
+      case 'rarm': case 'larm': w = 'half the arm'; break;
+      default: w = 'half the leg';
     }
+    if(mark === 0.5) return num ? 'half of this ' + fmt(pct) + '%: ' + fmt(pct / 2) + '%' : 'half of this ' + fmt(pct) + '%';
+    if(r.whole === 'genitals') return w;
+    return num ? w + ': ' + fmt(pct) + '%' : w;
   }
+  function fmt1(n){ return (Math.round(n * 10) / 10).toString(); }   // a total: an estimate, at most one decimal
   var SHORT = { 'head-f': 'Head, front', 'head-b': 'Head, back', chest: 'Chest', abdomen: 'Abdomen', upback: 'Upper back',
     lowback: 'Lower back', genitals: 'Genitals', 'rarm-f': 'Right arm, front', 'rarm-b': 'Right arm, back', 'larm-f': 'Left arm, front',
     'larm-b': 'Left arm, back', 'rleg-f': 'Right leg, front', 'rleg-b': 'Right leg, back', 'lleg-f': 'Left leg, front', 'lleg-b': 'Left leg, back' };
 
   function build(o){
     var K = window.LevlKit2, studio = o.studio, viewerEl = o.viewerEl;
-    var St = { tab: 'body', sel: null, card: null, pending: null, sec: 'does', ptr: 'mouse', on: true, cued: {}, burnsUp: false, flagOn: false };
+    var St = { off: 0, offT: 0, lastTot: 0, tab: 'body', sel: null, card: null, pending: null, sec: 'does', ptr: 'mouse', on: true, cued: {}, burnsUp: false, flagOn: false };
     var V = null;   // the 3D viewer, once attached
 
     /* ---------------------------------------------------- the stage */
@@ -104,9 +111,9 @@
     burn.hidden = true;
     burn.innerHTML = '<div class="bm2-bbar"><div class="bm2-seg bm2-age" role="radiogroup" aria-label="Patient">' +
       '<button type="button" role="radio" data-age="adult" aria-checked="true">Adult</button><button type="button" role="radio" data-age="child" aria-checked="false">Child</button></div>' +
-      '<div class="bm2-tot"><span class="bm2-tot-k">Burned</span><span class="bm2-tot-n" aria-hidden="true">0%</span><span class="bm2-tot-f" hidden>Over 10%</span></div></div>';
+      '<div class="bm2-tot"><span class="bm2-tot-k">Burned</span><span class="bm2-tot-n" aria-hidden="true">0%</span><span class="bm2-tot-s" aria-hidden="true"></span><span class="bm2-tot-f">Over 10%</span></div></div>';
     scene.appendChild(burn);
-    var ageBtns = [].slice.call(burn.querySelectorAll('[data-age]')), totN = burn.querySelector('.bm2-tot-n'), totF = burn.querySelector('.bm2-tot-f');
+    var ageBtns = [].slice.call(burn.querySelectorAll('[data-age]')), totN = burn.querySelector('.bm2-tot-n'), totF = burn.querySelector('.bm2-tot-f'), totS = burn.querySelector('.bm2-tot-s');
     var burnRoot = el('div', 'bm2-burnroot'); burnRoot.hidden = true;   // burns.js's own side panel: kept out of sight
     stage.appendChild(burnRoot);
     var layerB = null, BI = null;
@@ -194,9 +201,16 @@
       else if(St.pending && V.loaded()) later();   // the camera is still on its way: check again next frame
       if(St.card) place(false);
     }
+    /* no em dashes on screen (owner rule; the content file is unchanged): a pair around an aside becomes
+       parentheses, a single one a colon */
+    function dashes(t){
+      var n = (t.match(/\u2014/g) || []).length;
+      if(n === 2) return t.replace(/\s*\u2014\s*([^\u2014]*?)\s*\u2014\s*/, ' ($1) ');
+      return t.replace(/\s*\u2014\s*/g, ': ');
+    }
     function sectionHtml(c, id){
       var s = SECTIONS.filter(function(x){ return x.id === id; })[0] || SECTIONS[0];
-      return s.rows.filter(function(r){ return c[r[1]]; }).map(function(r){ return '<p><b>' + r[0] + '.</b> ' + esc(c[r[1]]).replace(/\s*—\s*/g, ': ') + '</p>'; }).join('');
+      return s.rows.filter(function(r){ return c[r[1]]; }).map(function(r){ return '<p><b>' + r[0] + '.</b> ' + dashes(esc(c[r[1]])) + '</p>'; }).join('');
     }
     function setSec(id, focus){
       St.sec = id;
@@ -237,9 +251,19 @@
       say(c.name + ', ' + sysName(c.system) + '. ' + (c.funct || ''));
       if(o.onCard) o.onCard(key);
     }
+    var offRaf = 0;
+    function setOff(t){ t = Math.round(t); if(t === St.offT) return; St.offT = t; if(!offRaf) offRaf = requestAnimationFrame(offStep); }
+    function offStep(){
+      offRaf = 0;
+      if(!V) return;
+      var d = St.offT - St.off;
+      St.off = K.reduced() || Math.abs(d) < 0.5 ? St.offT : St.off + d * 0.22;
+      V.offset(St.off);
+      if(St.off !== St.offT) offRaf = requestAnimationFrame(offStep);
+    }
     function legendOff(on){ var l = viewerEl.querySelector('.legend'); if(l) l.hidden = !!on; }
     function closeCard(quick){
-      St.card = null; legendOff(false);
+      St.card = null; legendOff(false); setOff(0);
       card.classList.remove('is-in'); lead.classList.remove('is-in');
       stage.removeAttribute('data-card');
       if(quick || K.reduced()){ card.hidden = true; lead.style.display = 'none'; return; }
@@ -263,7 +287,8 @@
       if(wide){
         var room = Math.max(p.r, 26) + 34, fitR = px + room + cw <= W - 14, fitL = px - room - cw >= 14, right = fitR && (!fitL || px < W / 2);
         x = right ? clamp(px + room, 14, W - cw - 14) : clamp(px - room - cw, 14, W - cw - 14);
-        y = clamp(py - ch * 0.42, 62, Math.max(62, H - ch - 14));
+        var foot = matchMedia('(min-width: 1024px)').matches ? 64 : 14;   // the cause line rides the picture's foot there
+        y = clamp(py - ch * 0.42, 62, Math.max(62, H - ch - foot));
         card.style.left = x + 'px'; card.style.top = y + 'px'; card.style.bottom = '';
         var ex = right ? x : x + cw, ey = clamp(py, y + 22, y + ch - 22);
         leadL.setAttribute('d', 'M' + ex.toFixed(1) + ' ' + ey.toFixed(1) + 'L' + px.toFixed(1) + ' ' + py.toFixed(1));
@@ -273,6 +298,8 @@
         var lx = clamp(px, r.left - b.left + 24, r.right - b.left - 24);
         leadL.setAttribute('d', py < top - 6 ? 'M' + lx.toFixed(1) + ' ' + top.toFixed(1) + 'L' + px.toFixed(1) + ' ' + py.toFixed(1) : '');
       }
+      // docked: the view slides up so the part sits in the middle of what the card leaves visible
+      setOff(wide ? 0 : (card.offsetHeight + 8) / 2);
       leadD.setAttribute('cx', px.toFixed(1)); leadD.setAttribute('cy', py.toFixed(1));
       leadR.setAttribute('cx', px.toFixed(1)); leadR.setAttribute('cy', py.toFixed(1));
       var vis = p.front && !(wide ? false : py >= card.getBoundingClientRect().top - body.getBoundingClientRect().top - 4);
@@ -339,7 +366,7 @@
         var r = BI.region(ev.id), name = SHORT[ev.id] || r.name;
         // the region and why it carries its share: shown as the burn starts; the numbers wait for the picture
         if(!ev.mark) cause.set([{ t: name, role: 'reg' }, { t: 'cleared', role: 'ink' }]);
-        else cause.set([{ t: name, role: 'reg' }, { t: (ev.mark === 0.5 ? 'half of it: ' : '') + shareOf(r, ev.child), role: 'ink' }]);
+        else cause.set([{ t: name, role: 'reg' }, { t: shareOf(r, ev.child, BI.pct(ev.id), ev.mark, false), role: 'ink' }]);
       } else if(ev.kind === 'age'){
         burn.classList.remove('is-swap'); void burn.offsetWidth; burn.classList.add('is-swap');
         cause.set([{ t: ev.child ? 'Child chart' : 'Adult chart', role: 'reg' }]);
@@ -352,25 +379,37 @@
       if(ev.kind === 'mark'){
         var r = BI.region(ev.id), name = SHORT[ev.id] || r.name, p = BI.pct(ev.id) * (ev.mark || 0);
         var parts = [{ t: name, role: 'reg' }];
-        if(ev.mark) parts.push({ t: (ev.mark === 0.5 ? 'half of it: ' : '') + shareOf(r, ev.child), role: 'ink' }, { t: fmt(p) + '%', role: 'burn' });
+        if(ev.mark) parts.push({ t: shareOf(r, ev.child, BI.pct(ev.id), ev.mark, true), role: 'burn' });
         else parts.push({ t: 'cleared', role: 'ink' });
-        parts.push({ t: 'Total ' + fmt(ev.total) + '%', role: 'tot' });
+        parts.push({ t: 'Total ' + fmt1(ev.total) + '%', role: 'tot' });
+        // the moment the total first passes 10%: what that means (burn center criteria for partial thickness)
+        var crossed = ev.total > 10 && !(St.lastTot > 10);
+        if(crossed) parts = [{ t: name + ' ' + fmt(p) + '%', role: 'reg' }, { t: 'Total ' + fmt1(ev.total) + '%', role: 'tot' }, { t: 'over 10%', role: 'burn' }, { t: 'burn center if partial thickness', role: 'ink' }];
+        St.lastTot = ev.total;
         cause.set(parts);
-        say(r.name + (ev.mark ? ', ' + fmt(p) + ' percent' : ' cleared') + '. Total burned ' + fmt(ev.total) + ' percent.');
+        say(r.name + (ev.mark ? ', ' + fmt(p) + ' percent' : ' cleared') + '. Total burned ' + fmt1(ev.total) + ' percent.' + (crossed ? ' Over 10 percent: if these are partial thickness burns, that alone is a burn center criterion.' : ''));
       } else if(ev.kind === 'age'){
-        cause.set(ev.child ? [{ t: 'Child chart', role: 'reg' }, { t: 'head 18%', role: 'burn' }, { t: 'each leg 13.5%', role: 'burn', join: '+' }, { t: 'Total ' + fmt(ev.total) + '%', role: 'tot' }]
-          : [{ t: 'Adult chart', role: 'reg' }, { t: 'head 9%', role: 'burn' }, { t: 'each leg 18%', role: 'burn', join: '+' }, { t: 'Total ' + fmt(ev.total) + '%', role: 'tot' }]);
-        say((ev.child ? 'Child chart: head and neck 18 percent, each leg 13.5. ' : 'Adult chart: head and neck 9 percent, each leg 18. ') + 'Total burned ' + fmt(ev.total) + ' percent.');
+        St.lastTot = ev.total;
+        cause.set(ev.child ? [{ t: 'Child chart', role: 'reg' }, { t: 'head 18%', role: 'burn' }, { t: 'each leg 13.5%', role: 'burn', join: '+' }, { t: 'Total ' + fmt1(ev.total) + '%', role: 'tot' }]
+          : [{ t: 'Adult chart', role: 'reg' }, { t: 'head 9%', role: 'burn' }, { t: 'each leg 18%', role: 'burn', join: '+' }, { t: 'Total ' + fmt1(ev.total) + '%', role: 'tot' }]);
+        say((ev.child ? 'Child chart: head and neck 18 percent, each leg 13.5. ' : 'Adult chart: head and neck 9 percent, each leg 18. ') + 'Total burned ' + fmt1(ev.total) + ' percent.');
       } else if(ev.kind === 'clear'){
+        St.lastTot = 0;
         cause.take('Nothing is burned now. Tap a region to start again.');
         say('Cleared. Total burned 0 percent.');
       }
     }
-    function onBurnPaint(t){
-      // the total on the picture reads what is drawn this frame (burns.js gives it)
-      totN.textContent = fmt(t) + '%';
+    function onBurnPaint(t, terms){
+      // the total on the picture reads what is drawn this frame (burns.js gives it), and under it the sum of the drawn
+      // shares, in the order of the regions (at most five terms, then "(n more)")
+      totN.textContent = fmt1(t) + '%';
       var over = t > 10;
-      if(over !== St.flagOn){ St.flagOn = over; totF.hidden = !over; }
+      if(over !== St.flagOn){ St.flagOn = over; totF.classList.toggle('is-on', over); }
+      terms = terms || [];
+      var vals = terms.map(function(x){ return x.done ? fmt(x.v) : fmt1(x.v); });
+      var shown = vals.length > 5 ? vals.slice(0, 4).concat(['(' + (vals.length - 4) + ' more)']) : vals;
+      var tot = fmt1(t), exact = Math.abs(terms.reduce(function(a, x){ return a + +(x.done ? fmt(x.v) : fmt1(x.v)); }, 0) - +tot) < 1e-6;
+      totS.textContent = vals.length > 1 ? shown.join(' + ') + (exact ? ' = ' : ' \u2248 ') + tot : '';
     }
 
     /* ---------------------------------------------------- the cause line at rest */
@@ -382,7 +421,7 @@
       } else {
         var t = BI ? BI.total() : 0;
         if(lastBurn && lastBurn.kind === 'mark' && BI && BI.settled()) onBurnSettle(lastBurn);
-        else cause.set([{ t: 'Tap a region', role: 'reg' }, { t: 'its share adds up', role: 'ink' }, { t: 'Total ' + fmt(t) + '%', role: 'tot' }]);
+        else cause.set([{ t: 'Tap a region', role: 'reg' }, { t: 'its share adds up', role: 'ink' }, { t: 'Total ' + fmt1(t) + '%', role: 'tot' }]);
       }
     }
 
@@ -395,7 +434,9 @@
         // backdrop and never on the body it points at
         // (a narrow picture has no backdrop beside the body: the bubble hangs under the chest, on the belly)
         var W = body.clientWidth, H = body.clientHeight;
-        return W < 700 ? [W * 0.5, H * 0.33] : [W * 0.5 + Math.min(H * 0.15, W * 0.2), H * 0.27];
+        // (picture units: the layer scales by the first svg it finds, here Find a part's icon)
+        var k = layer3.scale() || 1, at = W < 700 ? [W * 0.5, H * 0.33] : [W * 0.5 + Math.min(H * 0.27, W * 0.24), H * 0.3];
+        return [at[0] / k, at[1] / k];
       } });
       if(!layerB) return null;
       return K.cue(layerB, { key: 'nremt-body-map-burns', text: 'Tap a region', side: 'above', at: function(){
@@ -480,6 +521,7 @@
         St.on = false;
         if(lt){ cancelAnimationFrame(lt); lt = 0; }
         hideTip(); hideCue(false); tour.stop(); tourB.stop(); legendOff(false);
+        if(offRaf){ cancelAnimationFrame(offRaf); offRaf = 0; } St.off = St.offT = 0; if(V) V.offset(0);
         if(BI) BI.finish();
         if(St.pending){ St.pending = null; }
       },

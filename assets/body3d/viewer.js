@@ -27,6 +27,7 @@
      v.project('Heart') -> { x, y, r, front } | null   where a structure's middle is drawn, in px from the
        canvas's top left (r: about half its drawn size; front: false when it is behind the camera)
      v.flying() -> true while the camera is still travelling to a selection (a card waits for it)
+     v.offset(px)   draw everything px higher (a panel docked over the picture's foot); 0 restores
      v.on('frame', fn)   after every frame that was drawn (the camera moved: a card on the picture follows)
      v.on('hover', fn(key | null, info))   the pointer moved onto a structure, or off it (mouse only)
 
@@ -381,6 +382,14 @@
       camera.aspect = w / h;
       camera.updateProjectionMatrix();
       renderer.setSize(w, h, false);
+      applyOffset();
+    }
+    let viewOffY = 0;
+    function applyOffset(){
+      if (!camera) return;
+      const w = canvas.clientWidth || el.clientWidth, h = canvas.clientHeight || 560;
+      if (viewOffY) camera.setViewOffset(w, h, 0, viewOffY, w, h); else if (camera.view) camera.clearViewOffset();
+      kick(300);
     }
 
     function materialFor(content){
@@ -1023,13 +1032,27 @@
         if (!k || !camera || !meshByGroup[k]) return null;
         const b = groupBounds(k);
         if (!b) return null;
-        const v = b.center.clone().project(camera);
+        /* A pair drawn as one part (the kidneys) has its middle on nothing (the spine): point at the nearer one. */
+        let at = b.center;
+        const ms = meshByGroup[k].filter(m => !m.userData.isPoint);
+        if (ms.length > 1) {
+          const boxes = ms.map(m => new L.THREE.Box3().setFromObject(m));
+          if (!boxes.some(bx => bx.containsPoint(b.center))) {
+            let best = null, bd = Infinity;
+            for (const bx of boxes) { const c = new L.THREE.Vector3(); bx.getCenter(c); const d = c.distanceTo(camera.position); if (d < bd) { bd = d; best = c; } }
+            if (best) at = best;
+          }
+        }
+        const v = at.clone().project(camera);
         const w = canvas.clientWidth, h = canvas.clientHeight;
         const side = new L.THREE.Vector3().setFromMatrixColumn(camera.matrixWorld, 0).multiplyScalar(Math.min(b.size.length() * 0.35, 400));
-        const e = b.center.clone().add(side).project(camera);
+        const e = at.clone().add(side).project(camera);
         return { x: (v.x + 1) / 2 * w, y: (1 - v.y) / 2 * h, r: Math.abs(e.x - v.x) / 2 * w, front: v.z <= 1 };
       },
       flying(){ return !!flyAnim; },
+      /* Move what is drawn up by px (a panel docked over the picture's foot): the camera's view slides, so picking,
+         project() and the drawing agree. 0 puts it back. */
+      offset(px){ viewOffY = Math.max(0, +px || 0); applyOffset(); },
       /* A floating name tag over the selected structure: text, or null to hide. */
       tag(text){ tagText = text == null ? null : String(text); placeTag(); },
       setSkin(on){ skinOn = !!on; applyLayers(); emit('layers', api.layers()); },
