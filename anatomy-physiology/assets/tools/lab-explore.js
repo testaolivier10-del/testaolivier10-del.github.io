@@ -52,11 +52,17 @@
     /* the picture fits the stage: as big as the width allows, and on a desktop as tall as the screen leaves room for */
     function fit(){
       if(!stage.isConnected || !plate.clientWidth) return;
-      var c = cur.crop, w = plate.clientWidth - 16, phone = window.innerWidth <= 640;
-      // the bottom of the studio's stage card (a desktop shows the whole stage without scrolling)
-      var sb = o.studio && o.studio.stage ? o.studio.stage.getBoundingClientRect().bottom : window.innerHeight;
-      var bottom = Math.min(window.innerHeight, sb > 0 ? sb : window.innerHeight);
-      var room = phone ? window.innerHeight * 0.62 : Math.max(280, bottom - plate.getBoundingClientRect().top - lines.offsetHeight - 40);
+      var c = cur.crop, w = plate.clientWidth - 16, H = window.innerHeight, room;
+      if(window.innerWidth >= 1000){
+        // a desktop: the studio's stage is a fixed box, so the picture takes the height left in it
+        var sb = o.studio && o.studio.stage ? o.studio.stage.getBoundingClientRect().bottom : H;
+        var bottom = Math.min(H, sb > 0 ? sb : H);
+        room = Math.max(280, bottom - plate.getBoundingClientRect().top - lines.offsetHeight - 40);
+      } else {
+        // a phone or tablet: the stage has its natural height (the page scrolls), so the room is a share of the screen
+        // (never measured from the stage itself, which would shrink with the picture)
+        room = H * (window.innerWidth <= 640 ? 0.62 : 0.66);
+      }
       var k = Math.min(w / c[2], room / c[3], 1.6);
       pic.style.width = Math.round(c[2] * k) + 'px'; pic.style.height = Math.round(c[3] * k) + 'px';
       if(spots) spots.place();
@@ -72,6 +78,7 @@
     function setTab(id, user){
       var sp = specs.filter(function(s){ return s.id === id; })[0]; if(!sp) return;
       cur = sp; tabs.value(sp.id); head.purpose(sp.purpose);
+      cause.set([]);   // the line waits with the card for the new picture
       pref.tab = sp.id; save(pref);
       var c = sp.crop;
       svg.setAttribute('viewBox', '0 0 ' + c[2] + ' ' + c[3]);
@@ -116,13 +123,22 @@
     /* the one first-visit cue: at a pin away from the open card */
     function makeCue(){
       if(!spots || !spots.picked()) return;
-      var open = spots.picked(), its = spots.items, far = null;
-      its.forEach(function(it){ if(it === open) return; var d = open ? Math.hypot(it.at[0][0] - open.at[0][0], it.at[0][1] - open.at[0][1]) : 0; if(!far || d > far.d) far = { it: it, d: d }; });
-      if(!far) return;
-      // the bubble points away from the open card
-      var p = far.it.at[0], right = p[0] > open.at[0][0] ? true : p[0] < cur.crop[2] / 2;
-      cue = K.cue(layer, { key: 'anp-lab-explore', text: 'Tap a dot', side: right ? 'right' : 'left', at: function(){ return far.it.at[0]; } });
-      cue.show();
+      var open = spots.picked(), its = spots.items.filter(function(it){ return it !== open; });
+      // pins far from the open card first; the bubble goes where it covers no pin, the card or the find button
+      its.sort(function(a, b){ return Math.hypot(b.at[0][0] - open.at[0][0], b.at[0][1] - open.at[0][1]) - Math.hypot(a.at[0][0] - open.at[0][0], a.at[0][1] - open.at[0][1]); });
+      var R = function(e){ return e.getBoundingClientRect(); }, meet = function(a, b){ return a.left < b.right + 3 && a.right > b.left - 3 && a.top < b.bottom + 3 && a.bottom > b.top - 3; };
+      for(var i = 0; i < its.length; i++){
+        for(var k = 0; k < 2; k++){
+          var it = its[i], right = (it.at[0][0] < cur.crop[2] / 2) !== (k === 1);
+          var c = K.cue(layer, { key: 'anp-lab-explore', text: 'Tap a dot', side: right ? 'right' : 'left', at: (function(q){ return function(){ return q; }; })(it.at[0]) });
+          if(!c.show()) return;
+          var box = layer.el.querySelector('.tk2-cue'), r = box && R(box), pr = R(pic), bad = !r || r.left < pr.left || r.right > pr.right || r.top < pr.top || r.bottom > pr.bottom;
+          if(!bad) [].forEach.call(layer.el.querySelectorAll('.tk2-spot-pin, .tk2-spot-dot, .tk2-spot-card:not([hidden])'), function(e){ if(e.closest('.tk2-spot') === it._b) return; if(meet(R(e), r)) bad = true; });
+          if(!bad && fb.offsetParent && meet(R(fb), r)) bad = true;
+          if(!bad){ cue = c; return; }
+          c.hide(false);
+        }
+      }
     }
     function hideCue(used){ if(cue && cue.active()) cue.hide(used); }
     var tour = K.tour({ key: 'anp-lab-explore', label: 'Show me how', steps: [

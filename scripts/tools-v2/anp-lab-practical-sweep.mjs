@@ -59,6 +59,25 @@ for (const w of WIDTHS) {
   if (!cue.none) { ok(!cue.hits.length, `${w}: the cue covers ${cue.hits.join(', ')}`); ok(!cue.out, `${w}: the cue sticks out of the picture`); }
   if (SHOTS) await page.screenshot({ path: join(SHOTS, `land-${w}${DARK ? '-dark' : ''}.png`) });
 
+  // the cue on each tab as a first screen (#specimen/<tab> on a fresh device)
+  for (const t of ['brain', 'skull', 'neuron', 'skin', 'kidney']) {
+    const pg = await ctx.newPage();
+    await pg.goto(`http://127.0.0.1:${PORT}/anatomy-physiology/tools/lab-practical.html#specimen/${t}`, { waitUntil: 'load' });
+    for (let i = 0; i < 80 && !(await pg.evaluate(() => !!document.querySelector('.tk2-spot-card.is-in'))); i++) await pg.waitForTimeout(100);
+    await pg.waitForTimeout(400);
+    const c2 = await pg.evaluate(() => {
+      const c = document.querySelector('.tk2-cue'); if (!c) return { none: true };
+      const r = c.getBoundingClientRect(), pic = document.querySelector('.lx-pic').getBoundingClientRect(), hits = [];
+      document.querySelectorAll('.tk2-spot-pin, .tk2-spot-card:not([hidden]), .lx-find-b').forEach((e) => {
+        const q = e.getBoundingClientRect();
+        if (q.width && q.left < r.right - 1 && q.right > r.left + 1 && q.top < r.bottom - 1 && q.bottom > r.top + 1) hits.push(e.className);
+      });
+      return { hits, out: r.left < pic.left - 2 || r.right > pic.right + 2 || r.top < pic.top - 2 || r.bottom > pic.bottom + 2 };
+    });
+    ok(c2.none || (!c2.hits.length && !c2.out), `${w} ${t}: the first visit cue ${JSON.stringify(c2)}`);
+    await pg.close();
+  }
+
   const specs = await page.evaluate(() => window.AnpLabExplore.current._specs.map((s) => ({ id: s.id, spots: s.spots.map((x) => x.label) })));
   const causeH = new Set();
   for (const sp of specs) {
@@ -86,6 +105,11 @@ for (const w of WIDTHS) {
           if (fb && fb.offsetParent && meet(p, R(fb), 4)) out.errs.push('pin ' + i + ' under the find button');
           pins.forEach((q, j) => { if (j > i && Math.hypot(p.left - q.left, p.top - q.top) < p.width * 0.9) out.errs.push('pins ' + i + ' and ' + j + ' drawn on top of each other'); });
         });
+        // the picture fills the plate's width or most of the screen's height
+        const plate = R(document.querySelector('.lx-plate'));
+        if (pic.width < plate.width * 0.85 && pic.height < innerHeight * 0.5) out.errs.push('picture small: ' + Math.round(pic.width) + ' x ' + Math.round(pic.height));
+        // no other pin under the card
+        [...document.querySelectorAll('.tk2-spot:not([aria-pressed="true"]) .tk2-spot-pin')].forEach((e) => { if (meet(R(e), c, 2)) out.errs.push('card covers the ' + e.parentElement.getAttribute('data-id') + ' pin'); });
         // the picture is the biggest thing on the stage
         const area = (q) => q.width * q.height, big = area(pic);
         document.querySelectorAll('.lx .tk2-tabs, .lx .tk2-head, .lx-lines').forEach((e) => { if (area(R(e)) >= big) out.errs.push(e.className + ' bigger than the picture'); });

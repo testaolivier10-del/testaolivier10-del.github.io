@@ -432,16 +432,20 @@
       // measured at the layer's corner: a card left near the right edge would shrink to fit there and be measured short
       card.textContent = it.name; card.hidden = false; card.className = 'tk2-spot-card'; card.style.left = '0px'; card.style.top = '0px';
       var cw = card.offsetWidth, ch = card.offsetHeight, P = px(it.at[0]), G = 22, R = 13;
-      var side = it.side === 'left' ? -1 : 1, cand = [
-        [side > 0 ? P[0] + G : P[0] - G - cw, P[1] - ch / 2, 0], [side > 0 ? P[0] - G - cw : P[0] + G, P[1] - ch / 2, 1],
-        [P[0] - cw / 2, P[1] - G - ch, 2], [P[0] - cw / 2, P[1] + G, 2]], best = null;
+      var side = it.side === 'left' ? -1 : 1, near = side > 0 ? P[0] + G : P[0] - G - cw, far = side > 0 ? P[0] - G - cw : P[0] + G, cand = [], best = null;
+      // beside the pin on its own side first, then the other side, then above or below; each also slid up or down
+      // (or sideways) by most of its size, so it can clear a neighbouring pin
+      [[near, 0], [far, 1], [near + side * 2 * G, 3], [far - side * 2 * G, 3.5]].forEach(function(h){ [0, -0.8, 0.8, -1.6, 1.6].forEach(function(k, j){ cand.push([h[0], P[1] - ch / 2 + k * ch, h[1] + j * 0.4]); }); });
+      [P[1] - G - ch, P[1] + G, P[1] - 2.5 * G - ch, P[1] + 2.5 * G].forEach(function(y, i){ [0.5, 0.15, 0.85].forEach(function(k, j){ cand.push([P[0] - cw * k, y, 2 + (i > 1 ? 1.5 : 0) + j * 0.4]); }); });
+      // last resort on a crowded picture: any clear place within reach, with a longer leader
+      for(var gy = -8; gy <= 8; gy++) for(var gx = -8; gx <= 8; gx++){ if(Math.abs(gx) < 2 && Math.abs(gy) < 2) continue; cand.push([P[0] - cw / 2 + gx * 26, P[1] - ch / 2 + gy * 22, 6 + Math.hypot(gx, gy)]); }
       cand.forEach(function(c){
         var x = clamp(c[0], 4, Math.max(4, W - cw - 4)), y = clamp(c[1], 4, Math.max(4, H - ch - 4));
         var mine = it.at.some(function(q){ var Q = px(q); return Q[0] > x - R && Q[0] < x + cw + R && Q[1] > y - R && Q[1] < y + ch + R; });
         var other = 0;
-        items.forEach(function(j){ if(j === it) return; j.at.forEach(function(q){ var Q = px(q); if(Q[0] > x - 8 && Q[0] < x + cw + 8 && Q[1] > y - 8 && Q[1] < y + ch + 8) other++; }); });
+        items.forEach(function(j){ if(j === it) return; j.at.forEach(function(q){ var Q = px(q); if(Q[0] > x - 12 && Q[0] < x + cw + 12 && Q[1] > y - 12 && Q[1] < y + ch + 12) other++; }); });
         var lr = layer.el.getBoundingClientRect(), off = (o.avoid ? o.avoid() : []).some(function(a){ var ax = a.left - lr.left, ay = a.top - lr.top; return x < ax + a.width + 4 && x + cw > ax - 4 && y < ay + a.height + 4 && y + ch > ay - 4; });
-        var score = (mine ? 1000 : 0) + (off ? 500 : 0) + other * 10 + c[2] + (Math.abs(x - c[0]) + Math.abs(y - c[1])) / 40;
+        var score = (mine ? 1000 : 0) + (off ? 500 : 0) + other * 60 + c[2] * 3 + (Math.abs(x - c[0]) + Math.abs(y - c[1])) / 10;
         if(!best || score < best.s) best = { s: score, x: x, y: y };
       });
       card.style.left = best.x.toFixed(1) + 'px'; card.style.top = best.y.toFixed(1) + 'px';
