@@ -84,7 +84,8 @@
       topic: ['resonance', 'conjugate'],
       terms: ['resonance-structures', 'major-contributor', 'resonance-hybrid'],
       studio: true,
-      kit2: true     // tools v2 (docs/tools-v2-resonance-brief.md)
+      kit2: true,    // tools v2 (docs/tools-v2-resonance-brief.md)
+      css: ['push-board']   // the shared electron pushing board (ochem/assets/push-board.js)
     },
     {
       slug: 'viewer-3d',

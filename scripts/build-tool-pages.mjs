@@ -66,10 +66,12 @@ const LD_END = '<!-- tool-ld:end -->';
 const STUDIO_START = '<!-- tool-studio:start -->';
 const STUDIO_END = '<!-- tool-studio:end -->';
 const STUDIO_HTML = '<link rel="stylesheet" href="../../assets/course/tool-studio.css">\n<script src="../../assets/course/tool-studio.js" defer></script>';
-/* A tool with `kit2: true` (tools v2, docs/tools-v2-standard.md) also loads the shared kit, after the studio, and
+/* A tool with `kit2: true` (tools v2, docs/tools-v2-standard.md) also loads the shared kit, after the studio, the
+   shared stylesheets it names in `css` (ochem/assets/tools/<name>.css: `push-board`, the electron pushing board), and
    its own stylesheet (ochem/assets/tools/<slug>.css) when it has one. */
 const studioHtml = (tool) => STUDIO_HTML + (tool.kit2
   ? '\n<link rel="stylesheet" href="../../assets/course/tool-kit2.css">\n<script src="../../assets/course/tool-kit2.js" defer></script>' +
+    (tool.css || []).map((n) => `\n<link rel="stylesheet" href="../assets/tools/${n}.css">`).join('') +
     (existsSync(join(ROOT, 'ochem', 'assets', 'tools', `${tool.slug}.css`)) ? `\n<link rel="stylesheet" href="../assets/tools/${tool.slug}.css">` : '')
   : '');
 

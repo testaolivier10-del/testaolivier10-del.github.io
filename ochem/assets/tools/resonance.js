@@ -22,6 +22,12 @@
   var R = window.OchemResonance;
   var root = document.getElementById('resRoot');
   if(!Mol || !C || !R || !root) return;
+  // the drawing, the arrows and the drag are the shared electron pushing board (ochem/assets/push-board.js)
+  var PB = window.OchemPushBoard;
+  if(!PB) return;
+  var heavy = PB.heavy, fc = PB.fc, bondKey = PB.bondKey, sixRings = PB.sixRings, sign = PB.sign, fitT = PB.fitT, P = PB.P,
+    labelOf = PB.labelOf, draw = PB.draw, drawFlat = PB.drawFlat, anchorOf = PB.anchorOf, arrowPath = PB.arrowPath,
+    ease = PB.ease, lerpP = PB.lerpP;
 
   function esc(s){
     return String(s).replace(/[&<>"]/g, function(c){
@@ -50,26 +56,9 @@
   /* The chemistry the picture needs, on top of the engine                    */
   /* ====================================================================== */
 
-  function heavy(st, k){ var a = st.atoms[k]; return a && a.el && a.el !== 'H'; }
-  function fc(st, k){ var a = st.atoms[k]; return a && a.el && !a.group ? C.formalCharge(st, k) : 0; }
-  function bondKey(b){ return 'bond:' + b.a + '-' + b.b; }
   function sameBond(st, a, b){ var x = C.findBond(st, a, b); return x ? bondKey(x) : null; }
 
   /* Rings of six heavy atoms (benzene, phenoxide, the benzyl cation). */
-  function sixRings(st){
-    var adj = {}, out = [], seen = {};
-    Object.keys(st.atoms).forEach(function(k){ if(heavy(st, k)) adj[k] = C.neighbors(st, k).filter(function(n){ return heavy(st, n); }); });
-    Object.keys(adj).forEach(function(s){
-      (function walk(path){
-        var last = path[path.length - 1];
-        adj[last].forEach(function(n){
-          if(path.length === 6){ if(n === s){ var id = path.slice().sort().join(','); if(!seen[id]){ seen[id] = 1; out.push(path.slice()); } } return; }
-          if(path.indexOf(n) < 0 && n > s) walk(path.concat([n]));
-        });
-      })([s]);
-    });
-    return out;
-  }
   // a ring drawn with its three alternating double bonds inside it (a Kekulé benzene ring)
   function kekule(st){
     return sixRings(st).some(function(ring){
@@ -109,7 +98,6 @@
   function over(st){
     return Object.keys(st.atoms).filter(function(k){ var a = st.atoms[k]; return a.el && !a.group && a.el !== 'H' && C.electronCount(st, k) > C.octetOf(st, k); });
   }
-  function sign(q){ return q < 0 ? (q === -1 ? '−' : -q + '−') : (q === 1 ? '+' : q + '+'); }
 
   /* The smallest set of legal moves (at most three) that turns one structure into another. */
   var memo = {};
@@ -353,20 +341,12 @@
   var built = null;                              // a species from Build your own
 
   /* ---- the stage */
-  var stage = mk('div', 'rs2');
+  var stage = mk('div', 'rs2 pb2');
   var head = K.head({ purpose: 'Push electrons: the forms blend into one real molecule.', how: { label:'Show me how', onClick: function(){ startTour(); } } });
   stage.appendChild(head.el);
   var sceneBox = mk('div', 'rs2-scene'); sceneBox.id = 'rs2Scene';
-  function grad(id){ return '<radialGradient id="rs2g-' + id + '" cx="0.36" cy="0.32" r="0.75"><stop offset="0" class="rs2s-' + id + '0"/><stop offset="0.55" class="rs2s-' + id + '1"/><stop offset="1" class="rs2s-' + id + '2"/></radialGradient>'; }
   sceneBox.innerHTML = '<svg class="rs2-svg" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep" aria-hidden="true"><defs>' +
-    ['c', 'h', 'o', 'n', 'x'].map(grad).join('') +
-    '<linearGradient id="rs2g-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="rs2s-bg0"/><stop offset="1" class="rs2s-bg1"/></linearGradient>' +
-    '<linearGradient id="rs2g-tray" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="rs2s-tr0"/><stop offset="1" class="rs2s-tr1"/></linearGradient>' +
-    '<radialGradient id="rs2g-spot" cx="0.5" cy="0.5" r="0.5"><stop offset="0" class="rs2s-sp0"/><stop offset="1" class="rs2s-sp1"/></radialGradient>' +
-    '<radialGradient id="rs2g-neg"><stop offset="0.2" class="rs2s-ng0"/><stop offset="1" class="rs2s-ng1"/></radialGradient>' +
-    '<radialGradient id="rs2g-pos"><stop offset="0.2" class="rs2s-ps0"/><stop offset="1" class="rs2s-ps1"/></radialGradient>' +
-    '<radialGradient id="rs2g-el"><stop offset="0" class="rs2s-el0"/><stop offset="1" class="rs2s-el1"/></radialGradient>' +
-    '<radialGradient id="rs2g-sh"><stop offset="0" class="rs2s-sh0"/><stop offset="1" class="rs2s-sh1"/></radialGradient>' +
+    PB.defs() +
     '</defs><g class="rs2-bgs"></g><g class="rs2-hyb"></g><g class="rs2-strip"></g><g class="rs2-mainA"></g><g class="rs2-mainB"></g>' +
     '<g class="rs2-arrows"></g><g class="rs2-fly"></g><g class="rs2-ui"></g></svg><div class="rs2-labs" aria-hidden="true"></div>';
   stage.appendChild(sceneBox);
@@ -400,6 +380,11 @@
   var live = mk('p', 'tk2-sr'); live.setAttribute('aria-live', 'polite');
   stage.appendChild(live);
   function say(t){ live.textContent = ''; setTimeout(function(){ live.textContent = t; }, 40); }
+  var B = PB.board({ svg: svg, G: G, labsEl: labsEl, waitEls: [labsEl, cause.el], reduced: K.reduced, calm: [G.mainA, G.hyb, G.strip, labsEl],
+    T: function(){ return mainT; }, A: function(){ return mainA; }, shown: function(){ return shown(); }, noCharge: function(st){ return over(st); } });
+  var curve = B.curve, arrowHtml = B.arrowHtml, tween = B.tween, stopTween = B.stopTween, moveElectrons = B.moveElectrons,
+    springBack = B.springBack, targetsFor = B.targetsFor, sourceAt = B.sourceAt, startDragVis = B.startDragVis, endDragVis = B.endDragVis;
+  function snap(src, pt, list){ return B.snap(src, pt, list, function(t){ return RANK[judgeTarget(src, t).kind]; }); }
 
   /* ====================================================================== */
   /* Layout: regions of the picture, by its size                            */
@@ -436,223 +421,23 @@
   }
 
   /* A transform that fits a structure's atoms (with room for lone pairs and charges) into a region. */
-  function fitT(st, box, opts){
-    opts = opts || {};
-    var ks = Object.keys(st.atoms).filter(function(k){ return opts.flat ? heavy(st, k) : true; });
-    var x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
-    ks.forEach(function(k){ var a = st.atoms[k]; x0 = Math.min(x0, a.x); x1 = Math.max(x1, a.x); y0 = Math.min(y0, a.y); y1 = Math.max(y1, a.y); });
-    // sizes are set from the bond length, so a structure drawn at another scale (Build your own) looks the same
-    var bl = st.bonds.filter(function(b){ return heavy(st, b.a) && heavy(st, b.b); }).map(function(b){ var a = st.atoms[b.a], z = st.atoms[b.b]; return Math.hypot(z.x - a.x, z.y - a.y); }).sort(function(a, b){ return a - b; });
-    var u = bl.length ? bl[Math.floor(bl.length / 2)] / 70 : 1;
-    var m = (opts.margin == null ? 34 : opts.margin) * u;
-    var bw = x1 - x0 + m * 2, bh = y1 - y0 + m * 2;
-    var s = Math.min(box.w / bw, box.h / bh, (opts.cap || 2.1) / u);
-    return { s: s, k: s * u, ox: box.x + box.w / 2 - (x0 + x1) / 2 * s, oy: box.y + box.h / 2 - (y0 + y1) / 2 * s };
-  }
-  function P(T, a){ return [T.ox + a.x * T.s, T.oy + a.y * T.s]; }
 
   /* ====================================================================== */
   /* Drawing a structure                                                     */
   /* ====================================================================== */
-  var BALL = { C:'c', H:'h', O:'o', N:'n' };
-  function radiusOf(st, k, T){
-    var a = st.atoms[k], base = a.el === 'H' ? 10 : 16.5;
-    var lab = labelOf(st, k);
-    // the smallest ball keeps its letters readable, but shrinks with a small drawing so balls never overlap
-    var fl = Math.min(1, T.k / 1.1);
-    return Math.max((a.el === 'H' ? 7.5 : 11.5) * fl, base * T.k * 0.8) * (lab.length > 2 ? 1.16 : lab.length > 1 ? 1.07 : 1);
-  }
-  function labelOf(st, k){
-    var a = st.atoms[k];
-    if(!a.el || a.group || a.el === 'H') return a.label;
-    var h = (a.hImplicit || 0);
-    if(!h) return a.el;
-    return a.el + 'H' + (h > 1 ? '₀₁₂₃₄'[h] : '');
-  }
   // folded hydrogens, for the small drawings (explicit H atoms counted into the label)
-  function flatLabel(st, k){
-    var a = st.atoms[k];
-    if(!a.el || a.group) return a.label;
-    var h = (a.hImplicit || 0) + C.neighbors(st, k).filter(function(n){ return st.atoms[n].el === 'H'; }).length;
-    if(a.el === 'C' && h === 0) return 'C';
-    return a.el + (h ? 'H' + (h > 1 ? '₀₁₂₃₄'[h] : '') : '');
-  }
-  function angDist(a, b){ var d = Math.abs(a - b) % (Math.PI * 2); return d > Math.PI ? Math.PI * 2 - d : d; }
   /* Where an atom's lone pairs (and then its charge badge and its octet tag) sit: greedy, into the widest gaps
      between its bonds, the same for the same bonds in every form. */
-  function slots(st, k, n){
-    var a = st.atoms[k], occ = C.neighbors(st, k).map(function(o){ var b = st.atoms[o]; return Math.atan2(b.y - a.y, b.x - a.x); });
-    var out = [], cand = [];
-    for(var i = 0; i < 36; i++) cand.push(-Math.PI / 2 + i * Math.PI / 18);
-    for(var j = 0; j < n; j++){
-      var best = null, bd = -1;
-      cand.forEach(function(c){
-        var d = Math.min.apply(null, occ.concat(out).map(function(o){ return angDist(c, o); }).concat([Math.PI]));
-        if(d > bd + 1e-6){ bd = d; best = c; }
-      });
-      out.push(best);
-    }
-    return out;
-  }
-  function piSide(st, b){
-    // the π stick goes inside a ring, otherwise to the side with fewer neighbours
-    var A = st.atoms[b.a], Z = st.atoms[b.b], dx = Z.x - A.x, dy = Z.y - A.y, L0 = Math.hypot(dx, dy) || 1, nx = -dy / L0, ny = dx / L0;
-    var rings = sixRings(st), ring = rings.filter(function(r){ return r.indexOf(b.a) >= 0 && r.indexOf(b.b) >= 0; })[0];
-    var score = 0;
-    if(ring){
-      var cx = 0, cy = 0; ring.forEach(function(k){ cx += st.atoms[k].x; cy += st.atoms[k].y; }); cx /= 6; cy /= 6;
-      score = (cx - (A.x + Z.x) / 2) * nx + (cy - (A.y + Z.y) / 2) * ny;
-    } else {
-      [b.a, b.b].forEach(function(e){ C.neighbors(st, e).forEach(function(o){ if(o === b.a || o === b.b) return; var q = st.atoms[o]; score -= ((q.x - (A.x + Z.x) / 2) * nx + (q.y - (A.y + Z.y) / 2) * ny) > 0 ? 1 : -1; }); });
-      if(score === 0) score = ny <= 0 ? 1 : -1;   // up, when nothing decides
-    }
-    return score >= 0 ? 1 : -1;
-  }
 
   /* draw(st, T, o) -> { html, A: anchors }
      o.omitLp {atomKey: [{x, y}]}  lone pairs not drawn (they are in flight): the slot nearest each point
      o.omitPi {bondKey: 1}      π sticks not drawn
      o.noCharge {atomKey: 1}    charge not drawn (an atom over its octet, held)
      o.hybrid  hybridOf()       draw the real molecule: shared π electrons and shared charge, no lone pairs */
-  function draw(st, T, o){
-    o = o || {};
-    var A = { atoms: {}, lps: {}, pis: {}, bonds: {} }, sh = '', bg = '', bo = '', at = '', lp = '', ch = '', s = T.k;
-    var stickW = Math.max(3.2, 4.2 * s), piW = Math.max(2.6, 3.2 * s), off = Math.max(5, 6.4 * s);
-    var keys = Object.keys(st.atoms);
-    keys.forEach(function(k){ var p = P(T, st.atoms[k]); A.atoms[k] = { x: p[0], y: p[1], r: radiusOf(st, k, T) }; });
-    // bonds
-    st.bonds.forEach(function(b){
-      if(b.order < 1) return;
-      var a = A.atoms[b.a], z = A.atoms[b.b], bk = bondKey(b), dx = z.x - a.x, dy = z.y - a.y, L0 = Math.hypot(dx, dy) || 1, nx = -dy / L0, ny = dx / L0;
-      A.bonds[bk] = { x1: a.x, y1: a.y, x2: z.x, y2: z.y, mx: (a.x + z.x) / 2, my: (a.y + z.y) / 2, nx: nx, ny: ny };
-      bo += '<line class="rs2-sig" x1="' + f1(a.x) + '" y1="' + f1(a.y) + '" x2="' + f1(z.x) + '" y2="' + f1(z.y) + '" stroke-width="' + f1(stickW) + '"/>';
-      var side = piSide(st, b), ox = nx * off * side, oy = ny * off * side;
-      var hb = o.hybrid && o.hybrid.bonds[bk], extra = hb ? hb.lo - 1 : b.order - 1, partial = hb && hb.hi > hb.lo;
-      var sx = a.x + dx * 0.2 + ox, sy = a.y + dy * 0.2 + oy, ex = a.x + dx * 0.8 + ox, ey = a.y + dy * 0.8 + oy;
-      A.pis[bk] = { x1: sx, y1: sy, x2: ex, y2: ey, mx: (sx + ex) / 2, my: (sy + ey) / 2 };
-      if(partial){
-        bg += '<line class="rs2-deloc" x1="' + f1(a.x) + '" y1="' + f1(a.y) + '" x2="' + f1(z.x) + '" y2="' + f1(z.y) + '" stroke-width="' + f1(off * 3.6) + '"/>';
-        bo += '<line class="rs2-pi is-part" x1="' + f1(sx) + '" y1="' + f1(sy) + '" x2="' + f1(ex) + '" y2="' + f1(ey) + '" stroke-width="' + f1(piW) + '"/>';
-      }
-      for(var i = 0; i < extra; i++){
-        if(i === 0 && o.omitPi && o.omitPi[bk]) continue;
-        var m = i === 0 ? 1 : -1;
-        bo += '<line class="rs2-pi" x1="' + f1(a.x + dx * 0.2 + ox * m) + '" y1="' + f1(a.y + dy * 0.2 + oy * m) + '" x2="' + f1(a.x + dx * 0.8 + ox * m) + '" y2="' + f1(a.y + dy * 0.8 + oy * m) + '" stroke-width="' + f1(piW) + '"/>';
-      }
-    });
-    // atoms, lone pairs, charges
-    keys.forEach(function(k){
-      var a = st.atoms[k], p = A.atoms[k], r = p.r, q = fc(st, k), n = o.hybrid ? 0 : (a.lp || 0);
-      var sl = slots(st, k, n + 2);
-      A.lps[k] = [];
-      for(var i = 0; i < n; i++){
-        var ang = sl[i], d = r + Math.max(7, 5.2 * s);
-        A.lps[k].push({ x: p.x + Math.cos(ang) * d, y: p.y + Math.sin(ang) * d, ang: ang });
-      }
-      var skip = {};
-      ((o.omitLp && o.omitLp[k]) || []).forEach(function(pt){
-        var bi = -1, bd = Infinity;
-        A.lps[k].forEach(function(l, j){ if(skip[j]) return; var dd = Math.hypot(l.x - pt.x, l.y - pt.y); if(dd < bd){ bd = dd; bi = j; } });
-        if(bi >= 0) skip[bi] = 1;
-      });
-      A.lps[k].forEach(function(l, j){ if(!skip[j]) lp += pairHtml(l.x, l.y, l.ang, s); });
-      A.atoms[k].free = [sl[n], sl[n + 1]];
-      var hq = o.hybrid && o.hybrid.atoms[k];
-      var showQ = !o.noCharge || !o.noCharge[k];
-      if(!o.hybrid && q && showQ) bg += '<circle class="rs2-glow" cx="' + f1(p.x) + '" cy="' + f1(p.y) + '" r="' + f1(r * 2.3) + '" fill="url(#rs2g-' + (q < 0 ? 'neg' : 'pos') + ')"/>';
-      if(hq){
-        if(hq.fixed) bg += '<circle class="rs2-glow" cx="' + f1(p.x) + '" cy="' + f1(p.y) + '" r="' + f1(r * 2.2) + '" fill="url(#rs2g-' + (hq.fixed < 0 ? 'neg' : 'pos') + ')"/>';
-        else bg += '<circle class="rs2-glow' + (hq.big ? '' : ' is-small') + '" cx="' + f1(p.x) + '" cy="' + f1(p.y) + '" r="' + f1(r * (hq.big ? 2.3 : 1.65)) + '" fill="url(#rs2g-' + (hq.neg ? 'neg' : 'pos') + ')"/>';
-      }
-      sh += '<circle class="rs2-shadow" cx="' + f1(p.x + r * 0.18) + '" cy="' + f1(p.y + r * 0.42) + '" r="' + f1(r * 1.12) + '"/>';
-      var lab = labelOf(st, k), fs = Math.min(r * 1.02, r * 2.5 / Math.max(1, lab.length * 0.78));
-      // no letters under 11 px: an 11 px label is used when it still fits across the ball; else a ring CH may drop to
-      // its bare symbol; a group (CH₂, CH₃, NH₂) is never lettered as a bare atom ("C" for CH₃ would disagree with the
-      // board): the ball keeps only its colour (the board names it)
-      function fits(t){ return 0.62 * 11 * t.length <= 2 * r * 0.98; }
-      if(fs < 11){ if(fits(lab)) fs = 11; else if((a.hImplicit || 0) < 2 && fits(a.el)){ lab = a.el; fs = 11; } else lab = ''; }
-      at += '<circle class="rs2-ball is-' + (BALL[a.el] || 'x') + '" cx="' + f1(p.x) + '" cy="' + f1(p.y) + '" r="' + f1(r) + '" fill="url(#rs2g-' + (BALL[a.el] || 'x') + ')"/>' +
-        '<ellipse class="rs2-shine" cx="' + f1(p.x - r * 0.32) + '" cy="' + f1(p.y - r * 0.38) + '" rx="' + f1(r * 0.34) + '" ry="' + f1(r * 0.22) + '"/>' +
-        '<text class="rs2-al is-' + (BALL[a.el] || 'x') + '" x="' + f1(p.x) + '" y="' + f1(p.y + fs * 0.36) + '" font-size="' + f1(fs) + '" text-anchor="middle">' + esc(lab) + '</text>';
-      var badge = null;
-      if(!o.hybrid && q && showQ) badge = { q: q, t: sign(q) };
-      if(hq && hq.fixed) badge = { q: hq.fixed, t: sign(hq.fixed) };
-      if(badge){
-        var ba = sl[n], br = Math.max(7.6, 6.4 * s), bd = r + br * 0.55, bx = p.x + Math.cos(ba) * bd, by = p.y + Math.sin(ba) * bd;
-        A.atoms[k].badge = { x: bx, y: by, r: br };
-        ch += '<g class="rs2-badge is-' + (badge.q < 0 ? 'neg' : 'pos') + '"><circle cx="' + f1(bx) + '" cy="' + f1(by) + '" r="' + f1(br) + '"/>' +
-          '<text x="' + f1(bx) + '" y="' + f1(by + br * 0.42) + '" font-size="' + f1(Math.max(11, br * (badge.t.length > 1 ? 1.05 : 1.45))) + '" text-anchor="middle">' + badge.t + '</text></g>';
-      }
-    });
-    return { html: '<g class="rs2-bgl">' + bg + '</g><g class="rs2-shl">' + sh + '</g><g class="rs2-bol">' + bo + '</g><g class="rs2-atl">' + at + '</g><g class="rs2-lpl">' + lp + '</g><g class="rs2-chl">' + ch + '</g>', A: A };
-  }
-  function pairHtml(cx, cy, ang, s){
-    var dr = Math.max(2.4, 2.2 * s), sp = Math.max(3.4, 2.9 * s), px = -Math.sin(ang) * sp, py = Math.cos(ang) * sp;
-    return '<g class="rs2-lp"><circle class="rs2-lpglow" cx="' + f1(cx) + '" cy="' + f1(cy) + '" r="' + f1(sp * 2.1) + '"/>' +
-      '<circle class="rs2-e" cx="' + f1(cx + px) + '" cy="' + f1(cy + py) + '" r="' + f1(dr) + '"/><circle class="rs2-e" cx="' + f1(cx - px) + '" cy="' + f1(cy - py) + '" r="' + f1(dr) + '"/></g>';
-  }
 
   /* The small drawings in the forms row: lines and letters, the charge in its colour, the π line violet. */
-  function flatSizes(st, T){
-    var b = st.bonds.filter(function(x){ return heavy(st, x.a) && heavy(st, x.b); })[0], bl = 40;
-    if(b){ var a = P(T, st.atoms[b.a]), z = P(T, st.atoms[b.b]); bl = Math.hypot(z[0] - a[0], z[1] - a[1]); }
-    return { bl: bl, lw: Math.max(1.5, Math.min(2.6, bl * 0.06)), fsz: Math.max(11, Math.min(15, bl * 0.42)), off: Math.max(2.6, Math.min(5.5, bl * 0.14)) };
-  }
   /* Fit a small drawing so its letters, not only its atom centres, stay inside the box: fit, measure the letters at
      that size, shrink the box by how far they reach, fit again. */
-  function fitFlat(st, box){
-    var T = fitT(S.start, box, { flat: true, margin: 0, cap: 1.2 });
-    for(var it = 0; it < 2; it++){
-      var z = flatSizes(st, T), ex = 0, ey = z.fsz * 0.55;
-      var inR = {}; sixRings(st).forEach(function(r){ r.forEach(function(k){ inR[k] = 1; }); });
-      Object.keys(st.atoms).forEach(function(k){ if(!heavy(st, k) || (st.atoms[k].el === 'C' && (inR[k] || C.neighbors(st, k).some(function(n){ return inR[n]; })))) return; var l = flatLabel(st, k); if(l !== 'C') ex = Math.max(ex, z.fsz * 0.33 * l.length); });
-      T = fitT(S.start, { x: box.x + ex, y: box.y + ey, w: Math.max(10, box.w - ex * 2), h: Math.max(10, box.h - ey * 2) }, { flat: true, margin: 0, cap: 1.2 });
-    }
-    return T;
-  }
-  function drawFlat(st, T, box){
-    /* drawn as on paper: a ring carbon is a plain corner (no letters), so the ring's double bonds have room; letters
-       only on heteroatoms and groups. box: where every mark must stay (the card above its tag). */
-    var s = T.k, out = '', hk = Object.keys(st.atoms).filter(function(k){ return heavy(st, k); });
-    var inRing = {}; sixRings(st).forEach(function(r){ r.forEach(function(k){ inRing[k] = 1; }); });
-    // a ring carbon, and a CH₂ hanging off a ring (the benzyl carbon), are line ends as on paper
-    function bare(k){ var l = flatLabel(st, k); return l === 'C' || (st.atoms[k].el === 'C' && (inRing[k] || (l === 'CH₂' && C.neighbors(st, k).some(function(n){ return inRing[n]; })))); }
-    var z0 = flatSizes(st, T), lw = z0.lw, fsz = z0.fsz, off = z0.off;
-    st.bonds.forEach(function(b){
-      if(b.order < 1 || !heavy(st, b.a) || !heavy(st, b.b)) return;
-      var a = P(T, st.atoms[b.a]), z = P(T, st.atoms[b.b]), dx = z[0] - a[0], dy = z[1] - a[1], L0 = Math.hypot(dx, dy) || 1, nx = -dy / L0, ny = dx / L0;
-      // a line stops just short of a letter: wider labels need more room, and more along a level bond than a steep one
-      function gap(k){ if(bare(k)) return 0; var n = flatLabel(st, k).length, hx = fsz * (0.2 + 0.17 * n), hy = fsz * 0.42; return Math.min(hx / Math.max(0.01, Math.abs(dx / L0)), hy / Math.max(0.01, Math.abs(dy / L0))) + 1.5; }
-      var ga = gap(b.a), gz = gap(b.b);
-      var ax = a[0] + dx / L0 * ga, ay = a[1] + dy / L0 * ga, zx = z[0] - dx / L0 * gz, zy = z[1] - dy / L0 * gz;
-      out += '<line class="rs2-fsig" x1="' + f1(ax) + '" y1="' + f1(ay) + '" x2="' + f1(zx) + '" y2="' + f1(zy) + '" stroke-width="' + f1(lw) + '"/>';
-      var side = piSide(st, b), o2 = off * side, ll = Math.hypot(zx - ax, zy - ay) || 1, cut = Math.max(2, Math.min(4, ll * 0.12)) / ll, ua = ga ? 0 : cut, uz = gz ? 0 : cut;
-      for(var i = 1; i < b.order; i++){
-        var m = i === 1 ? 1 : -1;
-        out += '<line class="rs2-fpi" x1="' + f1(ax + (zx - ax) * ua + nx * o2 * m) + '" y1="' + f1(ay + (zy - ay) * ua + ny * o2 * m) + '" x2="' + f1(zx - (zx - ax) * uz + nx * o2 * m) + '" y2="' + f1(zy - (zy - ay) * uz + ny * o2 * m) + '" stroke-width="' + f1(lw) + '"/>';
-      }
-    });
-    hk.forEach(function(k){
-      var p = P(T, st.atoms[k]), lab = flatLabel(st, k), q = fc(st, k), c = bare(k);
-      if(!c) out += '<text class="rs2-fal" x="' + f1(p[0]) + '" y="' + f1(p[1] + fsz * 0.36) + '" font-size="' + f1(fsz) + '" text-anchor="middle">' + esc(lab) + '</text>';
-      if(q){
-        // a badge in the widest gap between the atom's bonds, kept inside the card and above its tag
-        var br = Math.max(7.6, fsz * 0.55), dd = (c ? 2 : fsz * 0.32 * lab.length) + br + 1, bx, by;
-        // the widest gap first; if that leaves the card, the next direction that stays inside it
-        var angs = slots(st, k, 1); for(var ai = 0; ai < 16; ai++) angs.push(-Math.PI / 2 + ai * Math.PI / 8);
-        var bdirs = C.neighbors(st, k).filter(function(n){ return heavy(st, n); }).map(function(n){ var o = st.atoms[n], me = st.atoms[k]; return Math.atan2(o.y - me.y, o.x - me.x); });
-        angs = angs.filter(function(t, i){ return i === 0 || bdirs.every(function(d){ return angDist(t, d) > 0.6; }); });
-        for(var aj = 0; aj < angs.length; aj++){
-          bx = p[0] + Math.cos(angs[aj]) * dd; by = p[1] + Math.sin(angs[aj]) * dd;
-          if(!box || (bx - br - 1 >= box.x && bx + br + 1 <= box.x + box.w && by - br - 1 >= box.y && by + br + 5 <= box.y + box.h)) break;
-          bx = p[0] + Math.cos(angs[0]) * dd; by = p[1] + Math.sin(angs[0]) * dd;
-        }
-        if(box){ bx = Math.max(box.x + br + 1, Math.min(box.x + box.w - br - 1, bx)); by = Math.max(box.y + br + 1, Math.min(box.y + box.h - br - 5, by)); }
-        out += '<g class="rs2-badge is-' + (q < 0 ? 'neg' : 'pos') + '"><circle cx="' + f1(bx) + '" cy="' + f1(by) + '" r="' + f1(br) + '"/><text x="' + f1(bx) + '" y="' + f1(by + br * 0.45) + '" font-size="' + f1(Math.max(11, br * 1.55)) + '" text-anchor="middle">' + sign(q) + '</text></g>';
-      }
-    });
-    return out;
-  }
 
   /* ====================================================================== */
   /* Painting the scene                                                      */
@@ -765,7 +550,7 @@
       var inner = { x: room.x + (room.w - iw) / 2, y: room.y + (room.h - ih) / 2, w: iw, h: ih };
       h += '<rect class="rs2-thumb' + (on ? ' is-on' : '') + (hideIt ? ' is-hid' : '') + '" x="' + f1(bx) + '" y="' + f1(by) + '" width="' + f1(w) + '" height="' + f1(bh) + '" rx="12"/>';
       if(hideIt) h += '<text class="rs2-q" x="' + f1(bx + w / 2) + '" y="' + f1(by + bh / 2 + 9) + '" font-size="26" text-anchor="middle">?</text>';
-      else h += drawFlat(f.st, fitFlat(f.st, inner), room);
+      else h += drawFlat(f.st, PB.fitFlat(S.start, f.st, inner), room);
       thumbBoxes.push({ x: bx, y: by, w: w, h: bh, f: f, hid: hideIt, on: on });
       var what = hideIt ? 'Form ' + (i + 1) + ', not found yet' : 'Form ' + (i + 1) + ', ' + f.tag + (on ? ', shown now' : '') + '. ' + R.describe(f.st, S.rk.map(function(x){ return x.st; })).summary;
       btn += '<button type="button" class="rs2-tb" data-i="' + i + '" style="left:' + f1(bx) + 'px;top:' + f1(by) + 'px;width:' + f1(w) + 'px;height:' + f1(bh) + 'px"' +
@@ -857,149 +642,17 @@
   /* ====================================================================== */
   /* Arrows                                                                  */
   /* ====================================================================== */
-  function anchorOf(ar, A, end){
-    var key = end === 'from' ? ar.from : ar.to;
-    if(C.isBondKey(key)){
-      var bk = C.parseBondKey(key), x = A.pis[key] || A.pis['bond:' + bk.b + '-' + bk.a], y = A.bonds[key] || A.bonds['bond:' + bk.b + '-' + bk.a];
-      if(end === 'from' && x) return { x: x.mx, y: x.my };
-      if(y) return { x: y.mx, y: y.my };
-      var a = A.atoms[bk.a], b = A.atoms[bk.b];
-      return { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
-    }
-    var p = A.atoms[key];
-    if(end === 'from' && A.lps[key] && A.lps[key].length){
-      // the lone pair nearest the arrow's other end
-      var o = rawPos(ar.to, A);
-      var best = A.lps[key].slice().sort(function(u, v){ return Math.hypot(u.x - o.x, u.y - o.y) - Math.hypot(v.x - o.x, v.y - o.y); })[0];
-      return { x: best.x, y: best.y, ang: best.ang };
-    }
-    if(end === 'to' && p){
-      // onto an atom: end just outside it, on the side the arrow comes from
-      var f = rawPos(ar.from, A), dx = f.x - p.x, dy = f.y - p.y, dl = Math.hypot(dx, dy) || 1;
-      return { x: p.x + dx / dl * (p.r + 6), y: p.y + dy / dl * (p.r + 6), atom: true };
-    }
-    return p ? { x: p.x, y: p.y } : { x: 0, y: 0 };
-  }
-  function rawPos(key, A){
-    if(C.isBondKey(key)){ var bk = C.parseBondKey(key), x = A.bonds[key] || A.bonds['bond:' + bk.b + '-' + bk.a]; if(x) return { x: x.mx, y: x.my }; var a = A.atoms[bk.a], z = A.atoms[bk.b]; return { x: (a.x + z.x) / 2, y: (a.y + z.y) / 2 }; }
-    var p = A.atoms[key]; return p ? { x: p.x, y: p.y } : { x: 0, y: 0 };
-  }
   // a curved arrow from a to b, bowed away from the molecule's middle
-  function curve(a, b){
-    var dx = b.x - a.x, dy = b.y - a.y, L0 = Math.hypot(dx, dy) || 1, nx = -dy / L0, ny = dx / L0;
-    var cx = 0, cy = 0, n = 0;
-    if(mainA) Object.keys(mainA.atoms).forEach(function(k){ cx += mainA.atoms[k].x; cy += mainA.atoms[k].y; n++; });
-    cx = n ? cx / n : a.x; cy = n ? cy / n : a.y;
-    var mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2, side = (mx - cx) * nx + (my - cy) * ny >= 0 ? 1 : -1;
-    var bow = Math.max(18, Math.min(46, L0 * 0.5));
-    return { a: a, b: b, c: { x: mx + nx * bow * side, y: my + ny * bow * side } };
-  }
-  function bez(cv, t){ var u = 1 - t; return { x: u * u * cv.a.x + 2 * u * t * cv.c.x + t * t * cv.b.x, y: u * u * cv.a.y + 2 * u * t * cv.c.y + t * t * cv.b.y }; }
-  function arrowPath(cv){
-    var b = cv.b, c = cv.c, dx = b.x - c.x, dy = b.y - c.y, dl = Math.hypot(dx, dy) || 1, ux = dx / dl, uy = dy / dl, hl = 11, hw = 6;
-    var bx = b.x - ux * hl * 0.6, by = b.y - uy * hl * 0.6;
-    return { line: 'M' + f1(cv.a.x) + ' ' + f1(cv.a.y) + ' Q' + f1(c.x) + ' ' + f1(c.y) + ' ' + f1(bx) + ' ' + f1(by),
-      head: 'M' + f1(b.x) + ' ' + f1(b.y) + ' L' + f1(b.x - ux * hl - uy * hw) + ' ' + f1(b.y - uy * hl + ux * hw) + ' L' + f1(b.x - ux * hl + uy * hw) + ' ' + f1(b.y - uy * hl - ux * hw) + 'Z' };
-  }
-  function arrowHtml(ar, A, cls){
-    var p = arrowPath(curve(anchorOf(ar, A, 'from'), anchorOf(ar, A, 'to')));
-    return '<g class="rs2-arrow ' + (cls || '') + '"><path class="rs2-al-l" d="' + p.line + '"/><path class="rs2-al-h" d="' + p.head + '"/></g>';
-  }
 
   /* ====================================================================== */
   /* Motion                                                                  */
   /* ====================================================================== */
-  var tw = 0, twEnd = null;
-  function stopTween(){ if(tw){ cancelAnimationFrame(tw); tw = 0; } if(twEnd){ var f = twEnd; twEnd = null; f(); } }
-  function calm(){ if(!svg.animate) return; try{ [G.mainA, G.hyb, G.strip, labsEl].forEach(function(n){ n.animate([{ opacity: 0.2 }, { opacity: 1 }], { duration: 180, easing: 'ease-out' }); }); }catch(e){} }
-  function tween(ms, fn, done){
-    stopTween();
-    twEnd = done || null;
-    if(K.reduced() || !window.requestAnimationFrame){ fn(1); stopTween(); calm(); return; }
-    var t0 = null;
-    function step(ts){
-      if(t0 == null) t0 = ts;
-      var f = Math.min(1, (ts - t0) / ms);
-      fn(f);
-      if(f < 1) tw = requestAnimationFrame(step); else { tw = 0; var d = twEnd; twEnd = null; if(d) d(); }
-    }
-    tw = requestAnimationFrame(step);
-  }
-  function ease(f){ return f < 0.5 ? 2 * f * f : 1 - Math.pow(-2 * f + 2, 2) / 2; }
-  function seg(f, a, b){ return Math.max(0, Math.min(1, (f - a) / (b - a))); }
 
   /* Electrons move from one drawn structure to the next along the arrows. from: the structure drawn now; to: the
      one to draw; arrows: all of them (the held ones and the new one); start: where the new pair is (the finger's
      drop point) or null to draw every arrow in first. Labels and words wait for the end. */
-  var flyEls = [];
-  function moveElectrons(from, to, arrows, o, done){
-    o = o || {};
-    var T = mainT, Afrom = draw(from, T).A, Ato = draw(to, T).A;
-    var fresh = o.fresh || arrows;             // the arrows whose pairs move now
-    var omitLpA = {}, omitPiA = {}, omitLpB = {}, omitPiB = {};
-    var ends = fresh.map(function(ar, i){
-      var a = o.from && i === fresh.length - 1 ? o.from : anchorOf(ar, Afrom, 'from'), b = anchorOf(ar, Ato, 'to');
-      if(C.isBondKey(ar.to)){ var pi = Ato.pis[norm(to, ar.to)]; if(pi) b = { x: pi.mx, y: pi.my }; }
-      else { var lps = Ato.lps[ar.to] || []; if(lps.length) b = lps.slice().sort(function(u, v){ return Math.hypot(u.x - a.x, u.y - a.y) - Math.hypot(v.x - a.x, v.y - a.y); })[0]; }
-      return { a: a, b: b };
-    });
-    fresh.forEach(function(ar, i){
-      if(C.isBondKey(ar.from)) omitPiA[ar.from] = 1; else (omitLpA[ar.from] = omitLpA[ar.from] || []).push(ends[i].a);
-      if(C.isBondKey(ar.to)) omitPiB[norm(to, ar.to)] = 1; else (omitLpB[ar.to] = omitLpB[ar.to] || []).push(ends[i].b);
-    });
-    var noQa = {}; over(from).forEach(function(k){ noQa[k] = 1; });
-    var noQb = {}; over(to).forEach(function(k){ noQb[k] = 1; });
-    G.mainA.innerHTML = draw(from, T, { omitLp: omitLpA, omitPi: omitPiA, noCharge: noQa }).html;
-    G.mainB.innerHTML = draw(to, T, { omitLp: omitLpB, omitPi: omitPiB, noCharge: noQb }).html;
-    G.mainA.style.opacity = '1'; G.mainB.style.opacity = '0';
-    G.ui.innerHTML = ''; labsEl.classList.add('is-wait'); cause.el.classList.add('is-wait');
-    var curves = ends.map(function(e){ return curve(e.a, e.b); });
-    var held = arrows.filter(function(ar){ return fresh.indexOf(ar) < 0; });
-    G.arrows.innerHTML = held.map(function(ar){ return arrowHtml(ar, Afrom, 'is-held'); }).join('') +
-      curves.map(function(cv){ var p = arrowPath(cv); return '<g class="rs2-arrow is-run"><path class="rs2-al-l" d="' + p.line + '"/><path class="rs2-al-h" d="' + p.head + '"/></g>'; }).join('');
-    var runs = [].slice.call(G.arrows.querySelectorAll('.is-run')), heldEls = [].slice.call(G.arrows.querySelectorAll('.is-held'));
-    runs.forEach(function(g){ var l = g.querySelector('.rs2-al-l'), len = l.getTotalLength ? l.getTotalLength() : 200; g.__len = len; l.style.strokeDasharray = len; l.style.strokeDashoffset = o.start ? 0 : len; g.querySelector('.rs2-al-h').style.opacity = o.start ? 1 : 0; });
-    G.fly.innerHTML = curves.map(function(){ return '<g class="rs2-flyp"><circle class="rs2-lpglow" r="9"/><circle class="rs2-e" r="3"/><circle class="rs2-e" r="3"/></g>'; }).join('');
-    flyEls = [].slice.call(G.fly.children);
-    var s = T.k, dr = Math.max(2.4, 2.2 * s), sp = Math.max(3.4, 2.9 * s);
-    flyEls.forEach(function(g){ g.children[0].setAttribute('r', f1(sp * 2.1)); g.children[1].setAttribute('r', f1(dr)); g.children[2].setAttribute('r', f1(dr)); });
-    var ms = o.ms || (o.start ? 520 : 1100), drawIn = o.start ? 0 : 0.3;
-    tween(ms, function(f){
-      var a = ease(seg(f, 0, drawIn || 0.0001)), m = ease(seg(f, drawIn, 0.82)), x = ease(seg(f, drawIn + (0.82 - drawIn) * 0.55, 0.9)), z = seg(f, 0.84, 1);
-      runs.forEach(function(g){ if(!o.start){ g.querySelector('.rs2-al-l').style.strokeDashoffset = f1(g.__len * (1 - a)); g.querySelector('.rs2-al-h').style.opacity = a > 0.95 ? 1 : 0; } g.style.opacity = f1(1 - z); });
-      heldEls.forEach(function(g){ g.style.opacity = f1(1 - z); });
-      curves.forEach(function(cv, i){
-        var p = o.start && i === fresh.length - 1 ? lerpP(o.start, cv.b, m) : bez(cv, m), d = bez(cv, Math.min(1, m + 0.02)), ang = Math.atan2(d.y - p.y, d.x - p.x) + Math.PI / 2;
-        var g = flyEls[i], px = -Math.sin(ang) * sp, py = Math.cos(ang) * sp;
-        g.children[0].setAttribute('cx', f1(p.x)); g.children[0].setAttribute('cy', f1(p.y));
-        g.children[1].setAttribute('cx', f1(p.x + px)); g.children[1].setAttribute('cy', f1(p.y + py));
-        g.children[2].setAttribute('cx', f1(p.x - px)); g.children[2].setAttribute('cy', f1(p.y - py));
-        g.style.opacity = f1(1 - seg(f, 0.86, 1));
-      });
-      G.mainA.style.opacity = f1(1 - x); G.mainB.style.opacity = f1(x);
-    }, function(){
-      G.fly.innerHTML = ''; flyEls = []; G.arrows.innerHTML = ''; G.mainB.innerHTML = ''; G.mainB.style.opacity = '0';
-      labsEl.classList.remove('is-wait'); cause.el.classList.remove('is-wait');
-      if(done) done();
-    });
-  }
-  function lerpP(a, b, t){ return { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t }; }
-  function norm(st, key){ if(!C.isBondKey(key)) return key; var bk = C.parseBondKey(key), b = C.findBond(st, bk.a, bk.b); return b ? bondKey(b) : key; }
 
   /* A pair that does not make a resonance form springs back to where it came from; the arrow fades red. */
-  function springBack(fromPt, toPt, done){
-    G.fly.innerHTML = '<g class="rs2-flyp is-bad"><circle class="rs2-lpglow" r="9"/><circle class="rs2-e" r="3"/><circle class="rs2-e" r="3"/></g>';
-    var g = G.fly.firstChild, a = G.arrows.querySelector('.is-drag');
-    if(a) a.classList.add('is-bad');
-    tween(380, function(f){
-      var m = ease(f), p = lerpP(fromPt, toPt, m);
-      g.children[0].setAttribute('cx', f1(p.x)); g.children[0].setAttribute('cy', f1(p.y));
-      g.children[1].setAttribute('cx', f1(p.x + 4)); g.children[1].setAttribute('cy', f1(p.y));
-      g.children[2].setAttribute('cx', f1(p.x - 4)); g.children[2].setAttribute('cy', f1(p.y));
-      g.style.opacity = f1(1 - seg(f, 0.7, 1));
-      if(a) a.style.opacity = f1(1 - f);
-    }, function(){ G.fly.innerHTML = ''; if(a) a.remove(); if(done) done(); });
-  }
 
   /* ====================================================================== */
   /* What a push does                                                        */
@@ -1016,12 +669,6 @@
   var RANK = { form: 0, held: 1, negligible: 2, reject: 3 };
 
   /* Every place an arrow from this source could end, the nearest first, with what each would do. */
-  function targetsFor(src){
-    var st = shown(), out = [], A = mainA;
-    Object.keys(st.atoms).forEach(function(k){ if(k !== src) out.push({ key: k, x: A.atoms[k].x, y: A.atoms[k].y }); });
-    st.bonds.forEach(function(b){ if(b.order < 1) return; var bk = bondKey(b); if(bk === src) return; var m = A.bonds[bk]; out.push({ key: bk, x: m.mx, y: m.my, bond: b }); });
-    return out;
-  }
   function judgeTarget(src, t){
     if(t.res) return t.res;
     t.res = outcome(S.pending.concat([{ from: src, to: t.key }]));
@@ -1029,34 +676,8 @@
   }
   /* Forgiving: the arrow lands on the nearest target that makes sense within reach; a target almost under the
      finger is taken as meant, whatever it does. */
-  function snap(src, pt, list){
-    var reach = Math.max(58, 44 * mainT.k), near = list.map(function(t){
-      var d = t.bond ? segDist(pt, mainA.bonds[t.key]) : Math.hypot(t.x - pt.x, t.y - pt.y) - mainA.atoms[t.key].r * 0.6;
-      return { t: t, d: d };
-    }).filter(function(x){ return x.d < reach; }).sort(function(a, b){ return a.d - b.d; });
-    if(!near.length) return null;
-    if(near[0].d < Math.max(12, 9 * mainT.k)) return near[0].t;
-    var best = null, br = 9;
-    near.forEach(function(x){ var r = RANK[judgeTarget(src, x.t).kind]; if(r < br){ br = r; best = x.t; } });
-    return best;
-  }
-  function segDist(p, b){
-    var dx = b.x2 - b.x1, dy = b.y2 - b.y1, l2 = dx * dx + dy * dy || 1, t = Math.max(0.15, Math.min(0.85, ((p.x - b.x1) * dx + (p.y - b.y1) * dy) / l2));
-    return Math.hypot(p.x - (b.x1 + dx * t), p.y - (b.y1 + dy * t));
-  }
   /* What the finger grabbed: a lone pair (or the atom that holds it), a π bond, or (to be told why not) an atom
      with no lone pair or a single bond. */
-  function sourceAt(pt){
-    var st = shown(), A = mainA, best = null, bd = Infinity;
-    function take(key, d, x, y, real){ if(d < bd){ bd = d; best = { key: key, x: x, y: y, real: real }; } }
-    Object.keys(A.lps).forEach(function(k){ A.lps[k].forEach(function(l){ take(k, Math.hypot(l.x - pt.x, l.y - pt.y) - 6, l.x, l.y, true); }); });
-    st.bonds.forEach(function(b){ if(b.order >= 2){ var bk = bondKey(b), pi = A.pis[bk]; take(bk, segDist(pt, pi) - 4, pi.mx, pi.my, true); } });
-    Object.keys(A.atoms).forEach(function(k){ var a = A.atoms[k], d = Math.hypot(a.x - pt.x, a.y - pt.y) - a.r;
-      if((st.atoms[k].lp || 0) > 0){ var l = A.lps[k][0]; take(k, d + 2, l.x, l.y, true); } else take(k, d + 10, a.x, a.y, false); });
-    st.bonds.forEach(function(b){ if(b.order === 1){ var m = A.bonds[bondKey(b)]; take(bondKey(b), segDist(pt, m) + 10, m.mx, m.my, false); } });
-    var reach = Math.max(26, 20 * mainT.k);
-    return bd < reach ? best : null;
-  }
 
   /* After a push: land it. */
   function commit(src, t, dropPt, srcPt){
@@ -1139,7 +760,7 @@
   var drag = null, tapSrc = null;
   function local(e){ var r = svg.getBoundingClientRect(); return { x: (e.clientX - r.left) * L.W / r.width, y: (e.clientY - r.top) * L.H / r.height }; }
   hit.addEventListener('pointerdown', function(e){
-    if(!S.cur || tw) return;
+    if(!S.cur || B.busy()) return;
     var pt = local(e), src = sourceAt(pt);
     if(tapSrc && !src){ var tl = targetsFor(tapSrc.key), t0 = snap(tapSrc.key, pt, tl); if(t0){ var s0 = tapSrc; tapSrc = null; clearPick(); commit(s0.key, t0, { x: t0.x, y: t0.y }, { x: s0.x, y: s0.y }); } return; }
     if(!src) return;
@@ -1160,7 +781,7 @@
     if(!drag.moved){ drag.moved = true; startDragVis(drag); }
     drag.pt = pt;
     drag.t = snap(drag.src.key, pt, drag.list);
-    paintDrag(drag);
+    B.paintDrag(drag, function(t){ return judgeTarget(drag.src.key, t).kind; });
   });
   function endDrag(e, cancel){
     if(!drag || (e && e.pointerId !== drag.id)) return;
@@ -1182,40 +803,6 @@
   hit.addEventListener('lostpointercapture', function(e){ if(drag && drag.id === e.pointerId) endDrag(e, true); });
 
   // what is shown while dragging: the source dimmed, the pair on the finger, the arrow to the lit target
-  var dv = null;
-  function startDragVis(d){
-    var key = d.src.key, omitLp = {}, omitPi = {};
-    if(d.src.real){ if(C.isBondKey(key)) omitPi[key] = 1; else omitLp[key] = [{ x: d.src.x, y: d.src.y }]; }
-    var st = shown(), noQ = {}; over(st).forEach(function(k){ noQ[k] = 1; });
-    G.mainA.innerHTML = draw(st, mainT, { omitLp: omitLp, omitPi: omitPi, noCharge: noQ }).html;
-    G.fly.innerHTML = '<g class="rs2-flyp is-drag"><circle class="rs2-lpglow" r="10"/><circle class="rs2-e" r="3"/><circle class="rs2-e" r="3"/></g>';
-    G.arrows.insertAdjacentHTML('beforeend', '<g class="rs2-arrow is-drag"><path class="rs2-al-l"/><path class="rs2-al-h"/></g><circle class="rs2-tgt" r="0"/><line class="rs2-tgtb"/>');
-    var s = mainT.k, dr = Math.max(2.4, 2.2 * s), sp = Math.max(3.4, 2.9 * s), fp = G.fly.firstChild;
-    fp.children[0].setAttribute('r', f1(sp * 2.1)); fp.children[1].setAttribute('r', f1(dr)); fp.children[2].setAttribute('r', f1(dr));
-    dv = { pair: fp, arrow: G.arrows.querySelector('.is-drag'), tgt: G.arrows.querySelector('.rs2-tgt'), tgtb: G.arrows.querySelector('.rs2-tgtb'), sp: sp };
-    labsEl.classList.add('is-drag');
-  }
-  function paintDrag(d){
-    if(!dv) return;
-    var p = d.pt, sp = dv.sp, g = dv.pair;
-    g.children[0].setAttribute('cx', f1(p.x)); g.children[0].setAttribute('cy', f1(p.y));
-    g.children[1].setAttribute('cx', f1(p.x + sp)); g.children[1].setAttribute('cy', f1(p.y));
-    g.children[2].setAttribute('cx', f1(p.x - sp)); g.children[2].setAttribute('cy', f1(p.y));
-    var end = d.t ? (d.t.bond ? { x: d.t.x, y: d.t.y } : anchorOf({ from: d.src.key, to: d.t.key }, mainA, 'to')) : p;
-    var a = arrowPath(curve({ x: d.src.x, y: d.src.y }, end));
-    dv.arrow.children[0].setAttribute('d', a.line); dv.arrow.children[1].setAttribute('d', a.head);
-    var kind = d.t ? judgeTarget(d.src.key, d.t).kind : null;
-    dv.arrow.setAttribute('class', 'rs2-arrow is-drag' + (kind === 'reject' ? ' is-no' : ''));
-    if(d.t && !d.t.bond){ var at = mainA.atoms[d.t.key]; dv.tgt.setAttribute('cx', f1(at.x)); dv.tgt.setAttribute('cy', f1(at.y)); dv.tgt.setAttribute('r', f1(at.r + 7)); dv.tgtb.setAttribute('class', 'rs2-tgtb'); }
-    else dv.tgt.setAttribute('r', '0');
-    if(d.t && d.t.bond){ var b = mainA.bonds[d.t.key]; ['x1', 'y1', 'x2', 'y2'].forEach(function(n){ dv.tgtb.setAttribute(n, f1(b[n])); }); dv.tgtb.setAttribute('class', 'rs2-tgtb is-on'); }
-    else dv.tgtb.setAttribute('class', 'rs2-tgtb');
-    dv.tgt.setAttribute('class', 'rs2-tgt' + (kind === 'reject' ? ' is-no' : ''));
-  }
-  function endDragVis(keepArrow){
-    if(dv){ dv.tgt.remove(); dv.tgtb.remove(); if(!keepArrow) dv.arrow.remove(); }
-    G.fly.innerHTML = ''; dv = null; labsEl.classList.remove('is-drag');
-  }
   function showPick(src){
     G.ui.insertAdjacentHTML('beforeend', '<circle class="rs2-pickring" cx="' + f1(src.x) + '" cy="' + f1(src.y) + '" r="' + f1(Math.max(13, 10 * mainT.k)) + '"/>');
     cause.set([{ t: C.isBondKey(src.key) ? 'π bond picked' : 'Lone pair picked', role: 'e' }, { t: 'tap where it goes', role: 'ink' }]);
@@ -1260,7 +847,7 @@
   }
   function kbMark(p){ clearPick(); if(p) G.ui.insertAdjacentHTML('beforeend', '<circle class="rs2-pickring is-kb" cx="' + f1(p.x) + '" cy="' + f1(p.y) + '" r="' + f1(Math.max(13, 10 * mainT.k)) + '"/>'); }
   hit.addEventListener('keydown', function(e){
-    if(!S.cur || tw) return;
+    if(!S.cur || B.busy()) return;
     var k = e.key;
     if(k === 'Backspace' || ((e.ctrlKey || e.metaKey) && k === 'z')){ e.preventDefault(); undo(); kb.phase = 'src'; return; }
     if(k === 'Escape'){ if(kb.phase === 'tgt'){ e.preventDefault(); kb.phase = 'src'; kbMark(null); say('Cancelled.'); } return; }
@@ -1722,7 +1309,7 @@
     if(!sheet || !window.MutationObserver) return;
     function check(){
       var open = studio.root.classList.contains('is-sheet') && !sheet.hidden;
-      if(!open || !tw) return;
+      if(!open || !B.busy()) return;
       var r = sceneBox.getBoundingClientRect(), q = sheet.getBoundingClientRect();
       var covered = q.left <= r.left + 1 && q.right >= r.right - 1 || (L && L.phone);
       if(!covered) return;
@@ -1755,9 +1342,9 @@
     }
   }
   // a new size redraws the picture; the cue is placed again from the new drawing (its spot moved with the molecule)
-  if(window.ResizeObserver) new ResizeObserver(function(){ if(!tw && !drag) { paintAll(); if(cue) placeCue(); } }).observe(sceneBox);
+  if(window.ResizeObserver) new ResizeObserver(function(){ if(!B.busy() && !drag) { paintAll(); if(cue) placeCue(); } }).observe(sceneBox);
   else window.addEventListener('resize', function(){ paintAll(); });
   paintAll(); words(null);
   // names and marks are placed from measured text: place them again once the fonts are in
-  if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ if(!tw && !drag){ paintAll(); if(cue) placeCue(); } });
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ if(!B.busy() && !drag){ paintAll(); if(cue) placeCue(); } });
 })();
