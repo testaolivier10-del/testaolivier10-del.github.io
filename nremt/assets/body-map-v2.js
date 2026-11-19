@@ -428,14 +428,17 @@
     /* ---------------------------------------------------- the one cue per tab, and "Show me how" */
     var cue = null;
     function cueFor(tab){
-      var narrow = body.clientWidth < 700;
+      // beside the body when the backdrop there has room for the bubble (about 290 px with its gap), else under the chest
+      var bw = body.clientWidth, bh = body.clientHeight, bx = bw * 0.5 + Math.min(bh * 0.27, bw * 0.24);
+      var narrow = bw < 700 || bw - bx < 290;
       if(tab === 'body') return K.cue(layer3, { key: 'nremt-body-map', text: 'Tap a part of the body', side: narrow ? 'below' : 'right', at: function(){
         // beside the left shoulder of the model as it opens (the viewer's home view), so the bubble sits on empty
         // backdrop and never on the body it points at
         // (a narrow picture has no backdrop beside the body: the bubble hangs under the chest, on the belly)
         var W = body.clientWidth, H = body.clientHeight;
         // (picture units: the layer scales by the first svg it finds, here Find a part's icon)
-        var k = layer3.scale() || 1, at = W < 700 ? [W * 0.5, H * 0.33] : [W * 0.5 + Math.min(H * 0.27, W * 0.24), H * 0.3];
+        var x2 = W * 0.5 + Math.min(H * 0.27, W * 0.24);
+        var k = layer3.scale() || 1, at = narrow ? [W * 0.5, H * 0.33] : [x2, H * 0.3];
         return [at[0] / k, at[1] / k];
       } });
       if(!layerB) return null;
