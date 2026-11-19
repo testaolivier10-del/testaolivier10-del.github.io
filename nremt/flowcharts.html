@@ -37,8 +37,12 @@
 <link rel="stylesheet" href="../assets/course/tool-studio.css">
 <link rel="stylesheet" href="assets/nremt-studio.css">
 <link rel="stylesheet" href="assets/studio/flowcharts.css">
+<link rel="stylesheet" href="../assets/course/tool-kit2.css">
+<link rel="stylesheet" href="assets/flow-explore.css">
 <script src="../assets/course/tool-studio.js" defer></script>
+<script src="../assets/course/tool-kit2.js" defer></script>
 <script src="assets/nremt-studio.js" defer></script>
+<script src="assets/nremt-kit2.js" defer></script>
 <!-- tool-studio:end -->
 <style>
   .diagram-card{background:var(--white);border:2px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--lift);padding:22px;margin-bottom:18px;}
@@ -849,30 +853,30 @@
 </script>
 <script src="assets/flow-build.js" defer></script>
 <script src="assets/flow-drill.js" defer></script>
+<script src="assets/body-figures.js" defer></script>
+<script src="assets/flow-explore.js" defer></script>
 <script>
-/* ---- Tool Studio (docs/tools-calm.md; assets/nremt-studio.js) ------------
-   Read: one diagram on the stage, the sequences as one row of chips in the
-   dock. Build it: the board on the stage (chart, and the tray of steps along
-   its bottom). Drill me: the chain with its blank on the stage, the choices
-   and the verdict in the dock (flow-drill.js renders them into
-   #flowDrillDock). The page's own Read / Build it / Drill me switch is the
-   mode switch; its listeners (flow-drill.js) still drive everything. */
+/* ---- Tool Studio, tools v2 (docs/tools-v2-nremt-flowcharts-brief.md; assets/nremt-kit2.js) ----------------------
+   EXPLORE is a drawn call beside a protocol card (assets/flow-explore.js). TEST YOURSELF holds the old screens,
+   moved in, not copied: Read a chart (one chart on the stage, a part at a time), Build it (the board) and Drill me
+   (the chain with its blank on the stage, the choices in the panel). The page's own Read / Build it / Drill me switch
+   (#flowMode) stays, hidden: picking a part presses it, and flow-drill.js still drives everything. Without the kit
+   (?studio=0) the page is the old one. */
 document.addEventListener('DOMContentLoaded', function(){
   var studio = window.NremtStudio ? window.NremtStudio.mount({ title: 'Protocol flows', slug: 'flowcharts', detailsTitle: 'Scope note' }) : null;
   if(!studio) return;
   var $ = function(id){ return document.getElementById(id); };
-  var mode = $('flowMode'), chips = $('flowChips'), host = $('flowDiagrams');
+  var mode = $('flowMode'), chips = $('flowChips'), host = $('flowDiagrams'), fb = $('flowBuild'), fd = $('flowDrill');
+  var v2 = !!(window.LevlKit2 && window.NremtFlowExplore && window.NremtStudio.kit2);
   var dock = document.createElement('div'); dock.id = 'flowDrillDock'; dock.className = 'fl-ls-drill';
   chips.classList.add('ls-scroll');
-  /* Read mode drawn as a flowchart (flowcharts.css): each arm's answer becomes
-     a tab on the fork. The text is unchanged (flow-drill.js and flow-build.js
-     read the same words). */
+  /* Read drawn as a flowchart (flowcharts.css): each arm's answer becomes a tab on the fork. The text is unchanged
+     (flow-drill.js and flow-build.js read the same words). */
   host.querySelectorAll('.flow-branch').forEach(function(br){
     br.querySelectorAll(':scope > div > .branch-label').forEach(function(l){ var t = document.createElement('span'); t.className = 'fc-tab'; while(l.firstChild) t.appendChild(l.firstChild); l.appendChild(t); });
     if(br.children.length > 3) br.classList.add('is-many');
   });
-  /* Pass 2 (calm): a chart's "why" note is a small "Why?" under its step, opened
-     on tap, so the chart reads as a chart. flow-build.js reads the same notes. */
+  // a chart's "why" note is a small "Why?" under its step, opened on tap
   host.querySelectorAll('.flow-note').forEach(function(n, i){
     var b = document.createElement('button');
     b.type = 'button'; b.className = 'fc-why'; b.textContent = 'Why?';
@@ -881,10 +885,7 @@ document.addEventListener('DOMContentLoaded', function(){
     b.addEventListener('click', function(){ n.hidden = !n.hidden; b.setAttribute('aria-expanded', String(!n.hidden)); });
     n.parentNode.insertBefore(b, n);
   });
-  /* Pass 3 (cleanup 2026-11-11): the protocols are one select (the chips
-     stay, hidden, and the select presses them), and Read opens a chart a part
-     at a time: down to the first fork, then "Next" adds the next part under
-     it. "Whole chart" shows it all; Show all and print show every box. */
+  // the protocols are one select (the chips stay, hidden, and the select presses them); a chart opens a part at a time
   var sel = document.createElement('select'); sel.id = 'flowSel'; sel.className = 'fl-sel'; sel.setAttribute('aria-label', 'Pick a protocol');
   sel.innerHTML = [].map.call(chips.querySelectorAll('button'), function(b){ return '<option value="' + b.dataset.i + '">' + b.textContent + '</option>'; }).join('');
   sel.addEventListener('change', function(){ var b = chips.querySelector('[data-i="' + sel.value + '"]'); if(b) b.click(); });
@@ -921,66 +922,129 @@ document.addEventListener('DOMContentLoaded', function(){
   }
   chips.addEventListener('click', function(e){ var b = e.target.closest('button'); if(!b) return; rv = {}; sel.value = b.dataset.i; setTimeout(reveal, 0); });
   reveal();
-  // The diagram scrolls inside the stage: reachable by keyboard.
   window.NremtStudio.scrollable(host, 'Diagram');
-  window.NremtStudio.scrollable([$('flowBuild'), $('flowDrill')], 'Board');
-  studio.add('stage', [host, $('flowBuild'), $('flowDrill')]);
-  studio.add('dock', $('flowPick'), { mode: 'read' });
-  studio.add('dock', dock, { mode: 'drill' });
+  window.NremtStudio.scrollable([fb, fd], 'Board');
   var foot = document.querySelector('.flow-foot');
+  var LEGEND = '<div class="fc-legend" aria-label="The three shapes"><div class="flow-box action">An action: something you do</div><div class="flow-box decision">A question you check</div><div class="flow-box terminal">The end of that path</div></div>';
+  var HOW = {
+    build: '<h3 class="ls-title-l">Build it</h3><p>Producing a sequence from its parts is the skill the scene asks for. Diamonds are questions; each arm is labeled with its answer. A step in the wrong place bounces and says why; two tiles are from other protocols. A chart you misplaced a step in goes to your Review list until you build it clean.</p>',
+    drill: '<h3 class="ls-title-l">Drill me</h3><p>Each question shows the sequence so far, or a decision and which way it went, and asks what follows. The wrong choices are real steps from the other protocols, because mixing them up is the actual mistake. A miss goes to your Review list with a link to its diagram.</p>'
+  };
   var how = document.createElement('div'); how.className = 'fl-ls-why';
-  studio.add('why', how);
-  studio.add('details', foot);
-  var cur = function(){ var b = mode.querySelector('[aria-pressed="true"]'); return b ? b.getAttribute('data-mode') : 'read'; };
-  studio.modes({ el: mode, value: cur() });
   function shown(){ var h = [].filter.call(host.querySelectorAll('h2'), function(x){ return !x.hidden; }); return h.length === 1 ? h[0] : null; }
-  function paint(){
-    var m = cur();
-    studio.mode(m);
-    if(m === 'read'){
-      var h = shown();
-      studio.task(h ? { kicker: 'Read', title: h.textContent + '.', todo: 'Read down to the first fork, then Next part of the chart.' }
-        : { kicker: 'Read', title: 'Every sequence, one after another.' }, 'read');
-      studio.caption('', 'read');
-      var onB = chips.querySelector('[aria-pressed="true"]'); if(onB){ sel.value = onB.dataset.i; if(readPick) readPick.value(onB.dataset.i); }
-      var on = chips.querySelector('[aria-pressed="true"]');
-      if(on && chips.scrollWidth > chips.clientWidth) chips.scrollLeft = Math.max(0, on.offsetLeft - 16);
-      var card = h && h.nextElementSibling, notes = card ? card.querySelectorAll('.flow-note') : [];
-      how.innerHTML = '<h3 class="ls-title-l">' + (h ? h.textContent : 'Protocol flows') + '</h3>' +
-        '<div class="fc-legend" aria-label="The three shapes"><div class="flow-box action">An action: something you do</div><div class="flow-box decision">A question you check</div><div class="flow-box terminal">The end of that path</div></div>' +
-        '<p>Each fork under a question is labeled with its answer; follow the one that fits the patient. The notes under a chart say why the order is what it is.</p>' +
-        [].map.call(notes, function(n){ return '<p>' + n.innerHTML + '</p>'; }).join('');
-    } else if(m === 'build'){
-      studio.task({ kicker: 'Build it', title: 'Put each step in its place.', todo: 'Drag a step into the chart, or tap it and then its place. Two steps belong to other protocols.' }, 'build');
-      studio.caption('', 'build');
-      how.innerHTML = '<h3 class="ls-title-l">Build it</h3><p>Producing a sequence from its parts is the skill the scene asks for. Diamonds are questions; each arm is labeled with its answer. A step in the wrong place bounces and says why; two tiles are from other protocols. A chart you misplaced a step in goes to your Review list until you build it clean.</p>';
-    } else {
-      studio.task({ kicker: 'Drill me', title: 'Which step comes next?', todo: 'Pick it below.' }, 'drill');
-      studio.caption('', 'drill');
-      how.innerHTML = '<h3 class="ls-title-l">Drill me</h3><p>Each question shows the sequence so far, or a decision and which way it went, and asks what follows. The wrong choices are real steps from the other protocols, because mixing them up is the actual mistake. A miss goes to your Review list with a link to its diagram.</p>';
-    }
+  function readHow(){
+    var h = shown(), card = h && h.nextElementSibling, notes = card ? card.querySelectorAll('.flow-note') : [];
+    return (v2 ? '' : '<h3 class="ls-title-l">' + (h ? h.textContent : 'Protocol flows') + '</h3>') + LEGEND +
+      '<p>Each fork under a question is labeled with its answer; follow the one that fits the patient. The notes under a chart say why the order is what it is.</p>' +
+      [].map.call(notes, function(n){ return '<p>' + n.innerHTML + '</p>'; }).join('');
   }
-  mode.addEventListener('click', function(){ setTimeout(paint, 0); });
+  var TASK = {
+    read: function(){ var h = shown(); return h ? { kicker: 'Read', title: h.textContent + '.', todo: 'Read down to the first fork, then Next part of the chart.' } : { kicker: 'Read', title: 'Every sequence, one after another.' }; },
+    build: function(){ return { kicker: 'Build it', title: 'Put each step in its place.', todo: 'Drag a step into the chart, or tap it and then its place. Two steps belong to other protocols.' }; },
+    drill: function(){ var v = dock.querySelector('.drill-verdict'); return v ? { kicker: v.classList.contains('ok') ? 'Right' : 'Not here', tone: v.classList.contains('ok') ? 'good' : 'bad', title: 'Which step comes next?', todo: 'The answer is marked below. Next for another.' } : { kicker: 'Drill me', title: 'Which step comes next?', todo: 'Pick it below.' }; }
+  };
+  var cur = function(){ var b = mode.querySelector('[aria-pressed="true"]'); return b ? b.getAttribute('data-mode') : 'read'; };
+  var M = v2 ? 'quiz' : null; // the studio mode the Test yourself pieces live in (v2), or each old mode
+  function part(){ return v2 ? (studio.kit2 && studio.kit2.mode() === 'quiz' ? studio.kit2.part() : null) : cur(); }
+  function paint(){
+    var m = part();
+    if(!m) return;
+    if(!v2) studio.mode(m);
+    studio.task(TASK[m](), M || m);
+    studio.caption('', M || m);
+    if(m === 'read'){
+      var onB = chips.querySelector('[aria-pressed="true"]'); if(onB){ sel.value = onB.dataset.i; if(readPick) readPick.value(onB.dataset.i); }
+      if(onB && chips.scrollWidth > chips.clientWidth) chips.scrollLeft = Math.max(0, onB.offsetLeft - 16);
+      how.innerHTML = readHow();
+    } else how.innerHTML = HOW[m];
+    if(readPick) readPick.el.hidden = v2 && m !== 'read';
+    if(buildPick) buildPick.el.hidden = v2 && m !== 'build';
+    pillsFor(m);
+  }
+  // the old pills and finished card, for the part on screen
+  function pillsFor(m){
+    if(m === 'drill'){
+      var v = dock.querySelector('.drill-verdict');
+      studio.pills(v ? [{ html: v.classList.contains('ok') ? 'Yes' : 'Not here', tone: v.classList.contains('ok') ? 'good' : 'bad' }] : [], 'left', M || 'drill');
+    } else if(m === 'build'){
+      var f = fb.querySelector('.bd-fb'), done = fb.querySelector('.bd-done-h');
+      var t = done ? done.textContent : f && f.textContent ? (f.classList.contains('ok') ? 'Placed' : 'Bounced') : '';
+      studio.pills(t ? [{ html: t, tone: done || f.classList.contains('ok') ? 'good' : 'bad' }] : [], 'left', M || 'build');
+    } else if(v2) studio.pills([], 'left', M);
+    if(v2 && m !== 'build') studio.done(false, M);
+  }
+
+  var ex = null, rdock = null, bdock = null;
+  if(v2){
+    // the old switch stays in the page, hidden; a part presses it (flow-drill.js listens)
+    mode.hidden = true;
+    rdock = document.createElement('div'); rdock.className = 'fl-ls-part'; rdock.appendChild(how); rdock.appendChild($('flowPick'));
+    bdock = document.createElement('div'); bdock.className = 'fl-ls-part';
+    if(foot) foot.hidden = true;
+    var acted = false;
+    ex = window.NremtFlowExplore.build({ studio: studio, onPick: function(){ acted = true; }, onTab: function(id, user){
+      if(user){ acted = true; if(history.replaceState) history.replaceState(null, '', '#call-' + id); }
+    } });
+    var ref = ex.ref;
+    if(foot){ var fp = document.createElement('p'); fp.className = 'fx2-ref-s'; fp.innerHTML = foot.innerHTML; ref.appendChild(fp); }
+    var press = function(m){ var b = mode.querySelector('[data-mode="' + m + '"]'); if(b && cur() !== m) b.click(); else if(b && m === 'drill' && !fd.firstChild) b.click(); };
+    var CALL = /^#call-(primary|arrest)\b/;
+    window.NremtStudio.kit2(studio, { stage: ex.stage, ref: ref,
+      parts: [
+        { value: 'read', label: 'Read a chart', stage: host, dock: rdock, task: TASK.read },
+        { value: 'build', label: 'Build it', stage: fb, dock: bdock, task: TASK.build },
+        { value: 'drill', label: 'Drill me', stage: fd, dock: dock, task: TASK.drill }],
+      start: function(h){
+        var m = CALL.exec(h || '');
+        if(m){ ex.tab(m[1]); return { mode: 'explore' }; }
+        if(/^#build-/.test(h || '')) return { mode: 'quiz', part: 'build' };
+        if(/^#drill\b/.test(h || '')) return { mode: 'quiz', part: 'drill' };
+        if(/^#(flow-|test\b)/.test(h || '')) return { mode: 'quiz', part: 'read' };
+        return { mode: 'explore' };
+      },
+      onShow: function(m, p, user){
+        if(m === 'explore'){ acted = false; ex.shown(); if(readPick) readPick.el.hidden = true; if(buildPick) buildPick.el.hidden = true; return; }
+        ex.hidden();
+        // Test yourself opens on the chart of the call just walked (only if the student did something in Explore)
+        if(user && acted && p === 'read'){ var id = ex.CALLS.filter(function(c){ return c.id === ex.tab(); })[0].chart; if(window.NremtFlowPick) window.NremtFlowPick.show(id); rv = {}; reveal(); }
+        acted = false;
+        press(p);
+        if(p === 'build') syncBuild();
+        paint();
+      } });
+    // a "See the diagram" link inside Build it or Drill me shows Read: the part follows
+    new MutationObserver(function(){ if(!host.hidden && studio.kit2 && studio.kit2.mode() === 'quiz' && studio.kit2.part() !== 'read') studio.kit2.go('quiz', 'read'); })
+      .observe(host, { attributes: true, attributeFilter: ['hidden'] });
+    window.addEventListener('hashchange', function(){
+      var h = location.hash, m = CALL.exec(h);
+      if(m){ ex.tab(m[1]); studio.kit2.go('explore'); return; }
+      if(/^#build-/.test(h)) studio.kit2.go('quiz', 'build');
+      else if(/^#(flow-|test\b)/.test(h)) studio.kit2.go('quiz', 'read');
+      else if(/^#drill\b/.test(h)) studio.kit2.go('quiz', 'drill');
+    });
+  } else {
+    studio.add('stage', [host, fb, fd]);
+    studio.add('dock', $('flowPick'), { mode: 'read' });
+    studio.add('dock', dock, { mode: 'drill' });
+    studio.add('why', how);
+    studio.add('details', foot);
+    studio.modes({ el: mode, value: cur() });
+    mode.addEventListener('click', function(){ setTimeout(paint, 0); });
+    window.addEventListener('hashchange', function(){ setTimeout(paint, 0); });
+  }
   chips.addEventListener('click', function(){ setTimeout(paint, 0); });
-  window.addEventListener('hashchange', function(){ setTimeout(paint, 0); });
-  // A drill verdict lands on the stage.
-  new MutationObserver(function(){
-    var v = dock.querySelector('.drill-verdict');
-    studio.task(v ? { kicker: v.classList.contains('ok') ? 'Right' : 'Not here', tone: v.classList.contains('ok') ? 'good' : 'bad', title: 'Which step comes next?', todo: 'The answer is marked below. Next for another.' }
-      : { kicker: 'Drill me', title: 'Which step comes next?', todo: 'Pick it below.' }, 'drill');
-    studio.pills(v ? [{ html: v.classList.contains('ok') ? 'Yes' : 'Not here', tone: v.classList.contains('ok') ? 'good' : 'bad' }] : [], 'left', 'drill');
-  }).observe(dock, { childList: true, subtree: true });
-  /* Build and Drill name each sequence by Read mode's short name (the long
-     titles were truncated on chips), and after each placement the chart
-     scrolls to the next empty slot, marked. */
-  var fb = $('flowBuild'), fd = $('flowDrill'), lastN = -1;
+  // a drill verdict lands on the stage
+  new MutationObserver(function(){ if(part() === 'drill'){ studio.task(TASK.drill(), M || 'drill'); pillsFor('drill'); } }).observe(dock, { childList: true, subtree: true });
+  /* Build and Drill name each sequence by Read's short name, and after each placement the chart scrolls to the next
+     empty slot, marked. */
+  var lastN = -1;
   function tidy(){
     var P = window.NremtFlowPick;
     if(P && P.shortName){
       fb.querySelectorAll('.bd-proto:not([data-short])').forEach(function(b){ b.setAttribute('data-short', ''); b.title = b.textContent; b.textContent = P.shortName(b.textContent); });
       var dp = fd.querySelector('.drill-proto:not([data-short])'); if(dp){ dp.setAttribute('data-short', ''); dp.textContent = P.shortName(dp.textContent); }
     }
-    var slots = fb.querySelectorAll('.bd-slot'), open = fb.querySelector('.bd-slot:not(:disabled)');
+    var open = fb.querySelector('.bd-slot:not(:disabled)');
     fb.querySelectorAll('.bd-slot.is-next').forEach(function(x){ if(x !== open) x.classList.remove('is-next'); });
     if(open && !open.classList.contains('is-next')) open.classList.add('is-next');
     var n = fb.querySelectorAll('.bd-slot.is-filled').length;
@@ -995,28 +1059,23 @@ document.addEventListener('DOMContentLoaded', function(){
   new MutationObserver(tidy).observe(fb, { childList: true, subtree: true });
   new MutationObserver(tidy).observe(fd, { childList: true, subtree: true });
   tidy();
-  // A build's bounce or finish, too.
-  new MutationObserver(function(){
-    var fb = $('flowBuild').querySelector('.bd-fb'), done = $('flowBuild').querySelector('.bd-done-h');
-    var t = done ? done.textContent : fb && fb.textContent ? (fb.classList.contains('ok') ? 'Placed' : 'Bounced') : '';
-    studio.pills(t ? [{ html: t, tone: done || fb.classList.contains('ok') ? 'good' : 'bad' }] : [], 'left', 'build');
-  }).observe($('flowBuild'), { childList: true, subtree: true, characterData: true });
-  /* The standard frame (docs/tools-frame-2026-11.md): the protocol is one dropdown at the stage's top left in Read
-     (it drives the old select, which drives the chips) and in Build it (it drives the board's own select). A
-     finished build gets the finished card; the board's own summary stays on the stage beside it. */
+  new MutationObserver(function(){ if(part() === 'build') pillsFor('build'); }).observe(fb, { childList: true, subtree: true, characterData: true });
+  /* The protocol is one dropdown at the stage's top left in Read (it drives the old select, which drives the chips)
+     and in Build it (it drives the board's own select). A finished build gets the finished card. */
   var items = [].map.call(chips.querySelectorAll('button'), function(b){ return { value: b.dataset.i, label: b.textContent.trim() }; });
   var onB0 = chips.querySelector('[aria-pressed="true"]');
   var readPick = studio.picker ? studio.picker({ label: 'Protocol', items: items, count: true, value: onB0 ? onB0.dataset.i : items[0] && items[0].value,
-    onChange: function(v){ sel.value = v; sel.dispatchEvent(new Event('change')); } }, 'read') : null;
+    onChange: function(v){ sel.value = v; sel.dispatchEvent(new Event('change')); } }, M || 'read') : null;
   if(readPick) $('flowPick').classList.add('fl-ls-off');
   function buildItems(){ var bs = fb.querySelector('.bd-picksel'); return bs ? [].map.call(bs.options, function(o){ return { value: o.value, label: o.textContent }; }) : []; }
   var buildPick = null;
   function syncBuild(){
     var bs = fb.querySelector('.bd-picksel');
     if(!bs || !studio.picker) return;
-    if(!buildPick) buildPick = studio.picker({ label: 'Protocol to build', items: buildItems(), count: true, value: bs.value, onChange: function(v){
-      var b2 = fb.querySelector('.bd-picksel'); if(b2){ b2.value = v; b2.dispatchEvent(new Event('change', { bubbles: true })); } } }, 'build');
+    if(!buildPick){ buildPick = studio.picker({ label: 'Protocol to build', items: buildItems(), count: true, value: bs.value, onChange: function(v){
+      var b2 = fb.querySelector('.bd-picksel'); if(b2){ b2.value = v; b2.dispatchEvent(new Event('change', { bubbles: true })); } } }, M || 'build'); buildPick.el.hidden = v2 && part() !== 'build'; }
     else if(buildPick.value() !== bs.value) buildPick.value(bs.value);
+    if(part() !== 'build') return;
     var dn = fb.querySelector('.bd-done');
     if(dn && !dn.getAttribute('data-ls')){
       dn.setAttribute('data-ls', '1');
@@ -1024,13 +1083,14 @@ document.addEventListener('DOMContentLoaded', function(){
       studio.done({ kicker: 'Chart built', title: dn.querySelector('.bd-done-h').textContent,
         text: wrong.length ? 'Tried in the wrong place: ' + wrong.join('; ') + '. The chart is on your Review list until you build it clean.' : 'Every step went where it belongs.',
         next: { label: 'Build it again', onClick: function(){ var a = fb.querySelector('[data-again]'); if(a) a.click(); } },
-        links: [{ label: 'See the diagram', onClick: function(){ var a = fb.querySelector('[data-see]'); if(a) a.click(); setTimeout(paint, 0); } }] }, 'build');
-    } else if(!dn) studio.done(false, 'build');
+        links: [{ label: 'See the diagram', onClick: function(){ var a = fb.querySelector('[data-see]'); if(a) a.click(); setTimeout(paint, 0); } }] }, M || 'build');
+    } else if(!dn) studio.done(false, M || 'build');
   }
   new MutationObserver(syncBuild).observe(fb, { childList: true, subtree: true });
   syncBuild();
+  if(readPick) readPick.el.hidden = v2 && part() !== 'read';
   paint();
-  // The first move is in the chart itself: Next part of the chart (Read opens a part at a time).
+  // Read's first move is in the chart itself: Next part of the chart
   var nx = host.querySelector('.diagram-card:not([hidden]) .fc-more:not([hidden]) .fc-next') || host.querySelector('.fc-next');
   studio.hint({ target: nx || mode.querySelector('[data-mode="drill"]'), text: nx ? 'Read down, then tap for the next part' : 'Read a flow, or test yourself' });
 });
