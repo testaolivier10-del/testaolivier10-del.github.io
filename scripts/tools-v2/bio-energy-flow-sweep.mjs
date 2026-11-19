@@ -1,0 +1,161 @@
+#!/usr/bin/env node
+/* Sweep test for the tools v2 AP Biology Energy flow tool (docs/tools-v2-bio-energy-flow-brief.md;
+   docs/tools-v2-builder-brief.md step 5). Every landmark state at ten widths, light and dark at three of them.
+   At each: nothing is clipped by the stage, no two labels overlap, the picture is the largest thing, every plant and
+   animal stands on its own level's ground, the counts drawn match the numbers written, the cause line is at most two
+   rows on a phone with the same height in every state, and the page does not scroll sideways.
+   The tool is Premium: here only, assets/premium.js is answered with has() returning true. Nothing leaves the machine.
+   Heat against passed on: at every step the drawn heat (the three wisps, their height summed) is (1 - share) / share
+   times the drawn gold arrow, on the same stroke width; no plume is too small to see; "heat" is written only beside a
+   plume taller than the word.
+   Usage: node scripts/tools-v2/bio-energy-flow-sweep.mjs [--width <px>] [--shots <dir>]   (needs playwright;
+   run one width per process: for w in 360 390 430 600 768 820 1024 1280 1440 1920; do node ... --width $w; done) */
+import { createServer } from 'node:http';
+import { readFileSync, existsSync, statSync, createReadStream, mkdirSync } from 'node:fs';
+import { dirname, extname, resolve, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { createRequire } from 'node:module';
+
+const ROOT = dirname(dirname(dirname(fileURLToPath(import.meta.url))));
+const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.woff2': 'font/woff2' };
+let chromium;
+try { ({ chromium } = await import('playwright')); }
+catch (e) { try { ({ chromium } = createRequire('/opt/npm-tools/')('playwright')); } catch (e2) { console.error('This check needs playwright (' + e.message + ')'); process.exit(0); } }
+const EXE = existsSync('/opt/pw-browsers/chromium-1243/chrome-linux64/chrome') ? '/opt/pw-browsers/chromium-1243/chrome-linux64/chrome' : undefined;
+const si = process.argv.indexOf('--shots'), SHOTS = si > 0 ? process.argv[si + 1] : null;
+if (SHOTS) mkdirSync(SHOTS, { recursive: true });
+
+const server = createServer((req, res) => {
+  let p = decodeURIComponent(req.url.split('?')[0]);
+  const file = resolve(ROOT, '.' + p);
+  if (!file.startsWith(ROOT) || !existsSync(file) || !statSync(file).isFile()) { res.writeHead(404); res.end(); return; }
+  if (p === '/assets/premium.js') {
+    const src = readFileSync(file, 'utf8');
+    if (!src.includes('function has(course) {')) { res.writeHead(500); res.end(); return; }
+    res.writeHead(200, { 'Content-Type': MIME['.js'] }); res.end(src.replace('function has(course) {', 'function has(course) { return true;')); return;
+  }
+  res.writeHead(200, { 'Content-Type': MIME[extname(file)] || 'application/octet-stream' });
+  createReadStream(file).pipe(res);
+});
+await new Promise(r => server.listen(0, r));
+const ORIGIN = 'http://localhost:' + server.address().port;
+
+const ALL = [360, 390, 430, 600, 768, 820, 1024, 1280, 1440, 1920];
+// one width per process keeps each run short: --width 390 (the default runs all ten)
+const wi = process.argv.indexOf('--width'), WIDTHS = wi > 0 ? [+process.argv[wi + 1]] : ALL;
+const DARK = new Set([390, 768, 1440]);
+// [name, share passed on (%), sunlight (GPP)]
+const STATES = [['default', 10, 20000], ['share-5', 5, 20000], ['share-20', 20, 20000], ['sun-low', 10, 10000], ['sun-high', 10, 30000], ['least', 5, 10000], ['most', 20, 30000], ['one-snake-edge', 15, 15000]];
+let fails = 0, checks = 0;
+const bad = (where, msg) => { fails++; console.log('FAIL ' + where + ': ' + msg); };
+
+const browser = await chromium.launch({ executablePath: EXE });
+for (const w of WIDTHS) for (const dark of DARK.has(w) ? [false, true] : [false]) {
+  const ctx = await browser.newContext({ viewport: { width: w, height: w < 700 ? 844 : 900 }, serviceWorkers: 'block', hasTouch: w < 700 });
+  await ctx.route(u => !u.href.startsWith(ORIGIN), r => r.abort());
+  const page = await ctx.newPage();
+  const errs = [];
+  page.on('pageerror', e => errs.push(e.message));
+  page.on('console', m => { if (m.type() === 'error' && !/Failed to load resource|net::/.test(m.text())) errs.push(m.text()); });
+  await page.addInitScript(d => { try { localStorage.setItem('tk2c:apbio-energy-flow', '1'); if (d) localStorage.setItem('nremt_theme', 'dark'); } catch (e) {} }, dark);
+  await page.goto(ORIGIN + '/bio/tools/energy-flow.html');
+  await page.waitForSelector('.ef2-svg', { timeout: 15000 });
+  await page.waitForTimeout(700);
+  const heights = new Set();
+  for (const [name, eff, gpp] of STATES) {
+    const where = `${w}${dark ? ' dark' : ''} ${name}`;
+    await page.evaluate(([eff, gpp]) => {
+      const ins = document.querySelectorAll('.ef2 .tk2-in');
+      [[ins[0], eff], [ins[1], gpp]].forEach(([i, v]) => { i.value = v; i.dispatchEvent(new Event('input', { bubbles: true })); i.dispatchEvent(new Event('change', { bubbles: true })); });
+    }, [eff, gpp]);
+    await page.waitForFunction(() => document.querySelectorAll('.ef2 .tk2-cause .tk2-cz').length === 4, null, { timeout: 8000 }).catch(() => bad(where, 'the cause line never got its result'));
+    await page.waitForTimeout(380);
+    const r = await page.evaluate(() => {
+      const out = { issues: [] }, scene = document.querySelector('.ef2-scene').getBoundingClientRect();
+      const box = e => { const b = e.getBoundingClientRect(); return { l: b.left, t: b.top, r: b.right, b: b.bottom, w: b.width, h: b.height }; };
+      const shown = e => { const b = e.getBoundingClientRect(); return b.width > 0 && b.height > 0 && getComputedStyle(e).visibility !== 'hidden'; };
+      out.sideways = document.documentElement.scrollWidth > window.innerWidth + 1;
+      // labels: every pill, every loose word, the knob tags
+      const labels = [];
+      document.querySelectorAll('.ef2-scene .ef2-pill rect, .ef2-scene text:not(.ef2-nm):not(.ef2-val), .ef2-scene .tk2-tag, .ef2-scene .tk2-knob').forEach(e => {
+        if (e.tagName === 'text' && e.closest('.ef2-pill')) return;
+        if (shown(e)) labels.push({ n: (e.closest('.ef2-pill') || e).textContent.trim().slice(0, 24) || e.className, ...box(e) });
+      });
+      labels.forEach(a => { if (a.l < scene.left - 0.5 || a.r > scene.right + 0.5 || a.t < scene.top - 0.5 || a.b > scene.bottom + 0.5) out.issues.push('clipped: ' + a.n); });
+      for (let i = 0; i < labels.length; i++) for (let j = i + 1; j < labels.length; j++) {
+        const a = labels[i], b = labels[j], ox = Math.min(a.r, b.r) - Math.max(a.l, b.l), oy = Math.min(a.b, b.b) - Math.max(a.t, b.t);
+        if (ox > 1 && oy > 1) out.issues.push('overlap: "' + a.n + '" and "' + b.n + '"');
+      }
+      // every plant and animal on its own ground
+      const kinds = ['grass', 'hop', 'frog', 'snake']; out.counts = [];
+      kinds.forEach((k, i) => {
+        const g = box(document.querySelector('.ef2-ground.is-' + k)); let n = 0, off = 0;
+        document.querySelectorAll('.ef2-lay.is-' + k + ' .ef2-o.is-on').forEach(e => { n++; const b = box(e); if (b.l < g.l - 9 || b.r > g.r + 9 || b.b > g.b + 1 || b.t < g.t - 1) off++; });
+        out.counts.push(n); if (off) out.issues.push(off + ' ' + k + ' off its ground');
+      });
+      // heat against passed on, step by step, measured from what is drawn
+      out.steps = [].map.call(document.querySelectorAll('.ef2-step'), g => {
+        const j = +g.dataset.j, heat = [...g.querySelectorAll('.ef2-heat')], heads = [...g.querySelectorAll('.ef2-heat-h')];
+        const hs = heat.map((e, k) => { const a = e.getBoundingClientRect(), b = heads[k] ? heads[k].getBoundingClientRect() : a; return Math.max(a.bottom, b.bottom) - Math.min(a.top, b.top); });
+        const ps = g.querySelector('.ef2-pass'), ph = g.querySelector('.ef2-pass-h');
+        const al = ps && ph ? Math.max(ps.getBoundingClientRect().right, ph.getBoundingClientRect().right) - Math.min(ps.getBoundingClientRect().left, ph.getBoundingClientRect().left) : 0;
+        return { j, lh: hs.reduce((a, b) => a + b, 0), hmin: hs.length ? Math.min(...hs) : 0, al, swH: heat[0] ? +heat[0].getAttribute('stroke-width') : 0, swA: ps ? +ps.getAttribute('stroke-width') : 0, hr: heat.length ? Math.max(...heat.concat(heads).map(e => e.getBoundingClientRect().right)) : -1e9 };
+      });
+      out.words = [].map.call(document.querySelectorAll('.ef2-heat-t'), t => { const b = t.getBoundingClientRect(); return { l: b.left, t: b.top, b: b.bottom, h: b.height }; });
+      out.vals = [].map.call(document.querySelectorAll('.ef2-top .ef2-val'), e => parseFloat(e.textContent.replace(/,/g, '')));
+      out.none = !!document.querySelector('.ef2-pill.is-none');
+      // the picture is the largest thing
+      const sa = scene.width * scene.height;
+      document.querySelectorAll('.ef2 > *, .ls-top, .ls-bar').forEach(e => { if (e.classList.contains('ef2-scene')) return; const b = e.getBoundingClientRect(); if (b.width * b.height >= sa) out.issues.push('larger than the picture: ' + e.className); });
+      const c = document.querySelector('.ef2 .tk2-cause'), cb = c.getBoundingClientRect(), tops = new Set([].map.call(c.querySelectorAll('.tk2-cz'), e => Math.round(e.getBoundingClientRect().top)));
+      out.rows = tops.size; out.ch = Math.round(cb.height); out.cause = c.textContent;
+      out.cright = Math.max(...[].map.call(c.querySelectorAll('.tk2-cz'), e => e.getBoundingClientRect().right)) > window.innerWidth;
+      return out;
+    });
+    checks += 7;
+    r.issues.forEach(m => bad(where, m));
+    if (r.sideways) bad(where, 'the page scrolls sideways');
+    if (r.cright) bad(where, 'a cause pill runs off the screen');
+    if (w <= 640 && r.rows > 2) bad(where, 'cause line has ' + r.rows + ' rows');
+    if (w <= 640) heights.add(r.ch);
+    r.vals.forEach((v, i) => { const want = Math.floor(v / 10 + 1e-6); if (v >= 99.5 ? Math.abs(r.counts[i] - want) > 0 : r.counts[i] !== want && Math.abs(v / 10 - Math.round(v / 10)) > 0.06) bad(where, 'level ' + i + ' draws ' + r.counts[i] + ' for ' + v + ' kcal'); });
+    const share = eff / 100, want = (1 - share) / share;
+    r.steps.filter(st => st.j > 0).forEach(st => {
+      checks += 3;
+      if (!st.al || !st.lh) { bad(where, 'step ' + st.j + ': heat ' + st.lh.toFixed(1) + ' px, arrow ' + st.al.toFixed(1) + ' px'); return; }
+      const ratio = st.lh / st.al;
+      if (ratio < want * 0.75 || ratio > want * 1.33) bad(where, 'step ' + st.j + ': heat is ' + ratio.toFixed(1) + ' times the arrow, want ' + want.toFixed(1));
+      if (st.swH !== st.swA) bad(where, 'step ' + st.j + ': heat and arrow on different widths (' + st.swH + ', ' + st.swA + ')');
+      if (st.hmin < 12) bad(where, 'step ' + st.j + ': a heat wisp only ' + st.hmin.toFixed(1) + ' px tall');
+    });
+    const st0 = r.steps.find(st => st.j === 0); checks++;
+    if (!st0 || st0.lh < 3 * 10) bad(where, 'the grass\'s own heat is not drawn (' + (st0 ? st0.lh.toFixed(1) : 'none') + ')');
+    r.words.forEach(wd => {
+      checks++;
+      // the plume just left of the word, at its height
+      const near = r.steps.filter(st => st.j > 0 && st.hr <= wd.l + 2 && st.hr > wd.l - 40);
+      if (!near.length || Math.max(...near.map(st => st.hmin)) < wd.h * 1.2) bad(where, '"heat" written beside a plume smaller than the word');
+    });
+    if (r.words.length !== r.steps.filter(st => st.j > 0).length) bad(where, r.words.length + ' "heat" words for ' + (r.steps.length - 1) + ' steps');
+    if (r.none !== (r.counts[3] === 0)) bad(where, '"too little energy" shown: ' + r.none + ' with ' + r.counts[3] + ' snakes');
+    if (!new RegExp('→' + r.counts[3] + ' snakes?$').test(r.cause)) bad(where, 'cause line "' + r.cause + '" against ' + r.counts[3] + ' snakes drawn');
+    if (SHOTS) await page.locator('.ef2').screenshot({ path: join(SHOTS, `sweep-${String(w).padStart(4, '0')}${dark ? '-dark' : ''}-${name}.png`) });
+  }
+  if (heights.size > 1) bad(`${w}`, 'cause line height changes between states: ' + [...heights].join(', '));
+  // the takeaway (end of Watch it happen) fits the same two rows on a phone; reduced motion jumps straight to it
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  for (const eff of [5, 10, 20]) {
+    await page.evaluate(v => { const i = document.querySelectorAll('.ef2 .tk2-in')[0]; i.value = v; i.dispatchEvent(new Event('input', { bubbles: true })); i.dispatchEvent(new Event('change', { bubbles: true })); }, eff);
+    await page.waitForTimeout(150); await page.click('.ef2 .tk2-play'); await page.waitForTimeout(250);
+    const t = await page.evaluate(() => { const c = document.querySelector('.ef2 .tk2-cause'), b = c.getBoundingClientRect(); return { take: c.classList.contains('is-take'), h: b.height, lines: (() => { const r = document.createRange(); r.selectNodeContents(c); return new Set([].map.call(r.getClientRects(), q => Math.round(q.bottom))).size; })() }; });
+    checks += 2;
+    if (!t.take) bad(`${w} takeaway ${eff}%`, 'Watch it happen did not end on the takeaway');
+    if (w <= 640 && t.lines > 2) bad(`${w} takeaway ${eff}%`, 'the takeaway runs to ' + t.lines + ' rows');
+    if (w <= 640 && heights.size && Math.abs(t.h - Math.max(...heights)) > 1) bad(`${w} takeaway ${eff}%`, 'the takeaway is not the cause line\'s height (' + t.h + ' against ' + [...heights] + ')');
+  }
+  errs.forEach(e => bad(`${w}`, 'console: ' + e));
+  await ctx.close();
+}
+await browser.close(); server.close();
+console.log(`${WIDTHS.length} widths, ${STATES.length} states, ${checks} checks, ${fails} failed`);
+process.exit(fails ? 1 : 0);

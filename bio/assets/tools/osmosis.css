@@ -80,7 +80,7 @@
 .os2-flow,.os2-push{fill:none;stroke-linecap:round;}
 .os2-flow{stroke:var(--os-water);} .os2-flow-h{fill:var(--os-water);}
 .os2-push{stroke:var(--os-wall-ink);} .os2-push-h{fill:var(--os-wall-ink);}
-.os2-eq{stroke:var(--os-water);stroke-opacity:.6;stroke-width:2.5;stroke-dasharray:3 6;stroke-linecap:round;fill:none;}
+.os2-eq{stroke:var(--os-water);stroke-width:2;stroke-linecap:round;fill:none;} .os2-eq-h{fill:var(--os-water);}
 .os2-w{fill:#fff;stroke:var(--os-water);stroke-width:1.4;}
 .os2-lead{stroke:var(--ink);stroke-opacity:.6;stroke-width:1.1;fill:none;}
 .os2-pill rect{fill:var(--white);fill-opacity:.95;stroke-width:1.6;stroke:color-mix(in srgb, var(--ink) 30%, transparent);}

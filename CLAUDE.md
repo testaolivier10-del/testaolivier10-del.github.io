@@ -226,7 +226,8 @@ standard in `docs/tools-frame-2026-11.md`); read it before building or rebuildin
 example: `docs/tools-v2-water-pollution-brief.md`. Kit: `assets/course/tool-kit2.js` (opt in).
 The owner does not review each tool: the builder's check and an independent review replace his look, and every
 decision made for him is one line in `docs/tools-v2-owner-log.md`. Second tool and the biology adapter:
-`docs/tools-v2-osmosis-brief.md`.
+`docs/tools-v2-osmosis-brief.md`. Third tool, the ochem adapter and the first width sweep
+(`scripts/tools-v2/conformations-sweep.mjs`): `docs/tools-v2-conformations-brief.md`.
 
 ## Tool visuals (2026-11)
 
