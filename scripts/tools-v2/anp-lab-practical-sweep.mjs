@@ -144,6 +144,25 @@ for (const w of WIDTHS) {
   ok(tapRes.card === 'Left ventricle', `${w}: a tap next to the left ventricle pin named "${tapRes.card}"`);
   ok(/Left ventricle.*pumps blood/.test(tapRes.cause), `${w}: the cause line says "${tapRes.cause}"`);
   ok(!tapRes.cue, `${w}: the cue stayed after the first tap`);
+  // a tap on the drawing near no pin keeps the card and rings the nearest pins (review round 1)
+  const miss = await page.evaluate(() => {
+    const A = window.AnpLabExplore.current, pic = document.querySelector('.lx-pic').getBoundingClientRect();
+    const k = pic.width / A._cur().crop[2];
+    const pins = [...document.querySelectorAll('.tk2-spot-pin, .tk2-spot-dot')].map((e) => { const r = e.getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; });
+    for (let y = pic.top + 20; y < pic.bottom - 20; y += 7) for (let x = pic.left + 20; x < pic.right - 20; x += 7) {
+      if (A._blank((x - pic.left) / k, (y - pic.top) / k)) continue;
+      if (pins.every((q) => Math.hypot(q[0] - x, q[1] - y) > 48)) return [x, y];
+    }
+    return null;
+  });
+  ok(!!miss, `${w}: found no drawing far from the pins to test a miss`);
+  if (miss) {
+    if (touch) await page.touchscreen.tap(miss[0], miss[1]); else await page.mouse.click(miss[0], miss[1]);
+    await page.waitForTimeout(80);
+    const m = await page.evaluate(() => ({ card: document.querySelector('.tk2-spot-card').hidden ? null : document.querySelector('.tk2-spot-card').textContent,
+      cause: document.querySelector('.lx .tk2-cause').textContent, hint: document.querySelectorAll('.tk2-spot.is-hint').length }));
+    ok(m.card === 'Left ventricle' && /Left ventricle/.test(m.cause) && m.hint === 2, `${w}: a miss over the drawing ${JSON.stringify(m)}`);
+  }
   const bare = await page.evaluate(() => { const p = document.querySelector('.lx-pic').getBoundingClientRect(); return [p.left + 6, p.bottom - 6]; });
   if (touch) await page.touchscreen.tap(bare[0], bare[1]); else await page.mouse.click(bare[0], bare[1]);
   await page.waitForTimeout(200);

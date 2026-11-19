@@ -51,17 +51,19 @@
 
     /* the picture fits the stage: as big as the width allows, and on a desktop as tall as the screen leaves room for */
     function fit(){
-      if(!stage.isConnected || !plate.clientWidth) return;
-      var c = cur.crop, w = plate.clientWidth - 16, H = window.innerHeight, room;
+      if(!stage.isConnected || !scene.clientWidth) return;
+      // the plate hugs the picture (centred), so the room is the scene's width less the plate's padding
+      var c = cur.crop, ps = getComputedStyle(plate), padX = parseFloat(ps.paddingLeft) + parseFloat(ps.paddingRight), padY = parseFloat(ps.paddingTop) + parseFloat(ps.paddingBottom);
+      var w = scene.clientWidth - padX, H = window.innerHeight, room;
       if(window.innerWidth >= 1000){
         // a desktop: the studio's stage is a fixed box, so the picture takes the height left in it
         var sb = o.studio && o.studio.stage ? o.studio.stage.getBoundingClientRect().bottom : H;
         var bottom = Math.min(H, sb > 0 ? sb : H);
-        room = Math.max(280, bottom - plate.getBoundingClientRect().top - lines.offsetHeight - 40);
+        room = Math.max(280, bottom - plate.getBoundingClientRect().top - lines.offsetHeight - 24 - padY);
       } else {
         // a phone or tablet: the stage has its natural height (the page scrolls), so the room is a share of the screen
         // (never measured from the stage itself, which would shrink with the picture)
-        room = H * (window.innerWidth <= 640 ? 0.62 : 0.66);
+        room = H * (window.innerWidth <= 640 ? 0.62 : 0.66) - padY;
       }
       var k = Math.min(w / c[2], room / c[3], 1.6);
       pic.style.width = Math.round(c[2] * k) + 'px'; pic.style.height = Math.round(c[3] * k) + 'px';
@@ -69,6 +71,29 @@
       if(cue && cue.active()) cue.place();
     }
 
+    var swapN = 0;
+    /* blank picture under a tap: the specimen's own pixels (white there), read once per specimen */
+    var pix = null, pixFor = null;
+    function readPixels(sp){
+      if(pixFor === sp.id) return;
+      pix = null; pixFor = sp.id;
+      try{
+        var cv = document.createElement('canvas'); cv.width = sp.crop[2]; cv.height = sp.crop[3];
+        var g = cv.getContext('2d', { willReadFrequently: true }); g.drawImage(img, 0, 0, cv.width, cv.height);
+        pix = { w: cv.width, h: cv.height, d: g.getImageData(0, 0, cv.width, cv.height).data };
+      }catch(e){ pix = null; }
+    }
+    function blank(x, y){
+      if(!pix) return false;
+      // white all round the tap (a 9 px square): no drawing there
+      for(var dy = -4; dy <= 4; dy += 2) for(var dx = -4; dx <= 4; dx += 2){
+        var X = Math.round(x + dx), Y = Math.round(y + dy);
+        if(X < 0 || Y < 0 || X >= pix.w || Y >= pix.h) continue;
+        var i = (Y * pix.w + X) * 4;
+        if(Math.min(pix.d[i], pix.d[i + 1], pix.d[i + 2]) < 236) return false;
+      }
+      return true;
+    }
     function itemOf(sp){ return { id: sp.label, name: sp.name, accept: sp.accept, side: sp.side, does: sp.does,
       at: sp.at.map(function(p){ return [p[0] - cur.crop[0], p[1] - cur.crop[1]]; }) }; }
     function line(it){
@@ -90,6 +115,7 @@
       if(cue && cue.active()) cue.hide(false);
       var items = sp.spots.map(itemOf);
       spots = K.spots(layer, { key: 'anp-lab-spots', label: 'Parts of the ' + sp.tab.toLowerCase(), items: items, chip: false, avoid: function(){ return [form.getBoundingClientRect()]; },
+        blank: blank, onMiss: function(){ hideCue(true); say('No part there. The nearest dots are ringed.'); },
         onPick: function(it, how){
           line(it);
           if(it){ picks[cur.id] = it.id; pref.picks = picks; save(pref); }
@@ -98,7 +124,23 @@
       fit();
       var first = picks[sp.id] && items.some(function(x){ return x.id === picks[sp.id]; }) ? picks[sp.id] : items[0].id;
       // the card waits for the picture: it opens once the image has drawn
-      function ready(){ pic.classList.remove('is-swap'); fit(); if(spots){ spots.pick(first, 'set'); } if(user) say(sp.tab + '. ' + items.length + ' parts to name.'); if(onScreen && !started){ started = true; makeCue(); } }
+      // the picture fades in first; the pins fade in with it, and the card and the line wait until it is drawn
+      var token = ++swapN;
+      function ready(){
+        if(token !== swapN) return;
+        readPixels(sp);
+        fit();
+        requestAnimationFrame(function(){
+          if(token !== swapN) return;
+          pic.classList.remove('is-swap');
+          setTimeout(function(){
+            if(token !== swapN || !spots) return;
+            spots.pick(first, 'set');
+            if(user) say(sp.tab + '. ' + items.length + ' parts to name.');
+            if(onScreen && !started){ started = true; makeCue(); }
+          }, K.reduced() ? 60 : 240);
+        });
+      }
       if(img.complete && img.naturalWidth) setTimeout(ready, 0); else { img.onload = ready; img.onerror = ready; }
       fin.value = ''; form.classList.remove('is-miss', 'is-open');
       refHtml();
@@ -112,6 +154,8 @@
       form.classList.toggle('is-miss', !it);
       if(!it) say('No part called ' + t + ' on this ' + cur.tab.toLowerCase() + '.');
     }
+    // a tap on the plate round the picture (blank) closes the card
+    plate.addEventListener('click', function(e){ if(e.target === plate && spots && spots.picked() && !spots.asking()) spots.pick(null, 'tap'); });
     form.addEventListener('submit', function(e){ e.preventDefault(); doFind(); });
     var fb = form.querySelector('.lx-find-b');
     function openFind(on){ form.classList.toggle('is-open', on); fb.setAttribute('aria-expanded', String(on)); if(on){ fin.focus(); hideCue(true); } }
@@ -196,7 +240,7 @@
         return hit;
       },
       pick: function(label){ return spots ? spots.pick(label, 'set') : null; },
-      _spots: function(){ return spots; }, _cur: function(){ return cur; }, _specs: specs, _fit: fit
+      _spots: function(){ return spots; }, _blank: function(x, y){ return blank(x, y); }, _cur: function(){ return cur; }, _specs: specs, _fit: fit
     };
     window.AnpLabExplore.current = api;   // for the sweep test (scripts/tools-v2/anp-lab-practical-sweep.mjs)
     return api;

@@ -82,6 +82,10 @@ const SHELL_BUDGETS = [
   /* Measured 14.8 KB (the old nremt/assets/body-viewer.js with its content was 26.5 KB). */
   /* 15 -> 16 (2026-10-27): landmark dots, so pulse points and other landmarks can be tapped on the model. */
   ['assets/body3d', 16],
+  /* The tools v2 kit, assets/course/tool-kit2.js and .css (docs/tools-v2-standard.md): loaded only by tools rebuilt to
+     v2, so it is its own shell, not part of every course page's assets/course (review of the Lab practical, 2026-11-18).
+     Measured 31.9 KB with K.spots (the explorers' named places, about 5 KB). */
+  ['assets/course/kit2', 33],
   /* 249 -> 253 for cross-device sync (audit 2026-10, Fix-first 5). A sync
      used to replace whole namespaces and pull only on sign-in, so two signed-in
      devices erased each other's progress. account.js now carries a per-key
@@ -257,11 +261,7 @@ const SHELL_BUDGETS = [
   /* -> 57.0 (score card v3 on every mode, owner 2026-11-07): study.js and study.css plus card-loader.js. */
   /* -> 57.2 (overlap sweep 2026-11): the answer chip rules name Env Sci's, Macro's and Psychology's marks; measured 57.1 KB. */
   /* 57.2 -> 57.4 (same change): study.js wire() offers reminders after every score card; measured 57.3 KB. */
-  /* 57.4 -> 83 (tools v2, Lab practical, docs/tools-v2-anp-lab-practical-brief.md): anatomy-physiology/tools/
-     lab-practical.html is the first page in this list that loads the v2 kit, so tool-kit2.js and .css (about 25 KB
-     gzipped together, 3.8 of it K.spots, the shared named-places piece for the explorer tools) are counted here for the
-     first time; the other v2 tool pages are not in the list. Measured 82.4 KB. */
-  ['assets/course', 83],
+  ['assets/course', 57.4],
   /* 52.1 -> 56.6 (score card v3, 2026-11-07): study.js end() and the .cx-endp3 styles (56.4 measured before this
      branch), plus card-loader.js and the card's Tool Studio fixes for FRQ, justify and NREMT scenarios; measured 56.6. */
   /* 52.1 -> 56.5 (score card v3, owner 2026-11-07, docs/score-card.md): LevlStudy.end, miss and the .cx-endp3 styles; measured 56.4 KB. */
@@ -1152,6 +1152,9 @@ const DATA_BUDGETS = [
      chapter (the chapter filter). The page itself went from 42.9 to 15.9 KB
      gzipped. Measured 180 KB for all 162 topics. */
   ['anatomy-physiology/assets/glossary.json', 190],
+  /* The Lab practical's Explore specimens (tools v2, docs/tools-v2-anp-lab-practical-brief.md): six specimens, 70
+     parts, each with its name, accepted names and phrase, and each figure's credit. Measured 5.2 KB. */
+  ['anatomy-physiology/assets/tool-data/lab-specimens.json', 6],
   /* The Reagent Roadmap's graph: every group, reagent and reaction the tool
      routes over. Same situation as question-molecules.js — a <script src>
      on a page with no line of its own above, so nothing was measuring it —
@@ -1187,6 +1190,7 @@ function bucketOf(relPath) {
   const parts = relPath.split(sep);
   // The shared course layer (docs/course-shell.md) is loaded by course pages
   // only, so it is its own shell rather than part of every page's.
+  if (parts[0] === 'assets' && parts[1] === 'course' && /^tool-kit2\./.test(parts[2] || '')) return 'assets/course/kit2';
   if (parts[0] === 'assets' && parts[1] === 'course') return 'assets/course';
   // The video lesson player (docs/video-lessons.md) loads only on pages that
   // show a video, so it is its own shell, not part of every page's.

@@ -129,14 +129,15 @@
                                     until first used; chip: false keeps the pulse but drops the "Drag" / "Tap" chip
                                     (one chip per screen reads best: give it to the first thing to touch).
    K.spots(layer, { key, label, items: [{ id, name, at: [[x, y], ...], side, accept: [] }], onPick(item, how),
-           chip, hint, avoid() -> [DOMRect] }) -> { el, pick(id | null, how), picked(), find(text) -> item | null, ask(id | null, onAnswer(ok,
-           item)), place(), hide(on), items }
+           chip, hint, avoid() -> [DOMRect], blank(x, y) -> bool, onMiss(nearest) }) -> { el, pick(id | null, how), picked(),
+           find(text) -> item | null, match(text), ask(id | null, onAnswer(ok, item)), asking(), place(), hide(on), items }
                                     EXPLORERS (first: A&P Lab practical; docs/tools-v2-anp-lab-practical-brief.md).
                                     Named places on a picture (Complete Anatomy, Visible Body): each item is a pin at
                                     its first point (picture units, the svg viewBox); more points draw as small dots
                                     of the same item (one name, two places). A tap acts on the pin nearest the finger
-                                    (within 26 px, or the gap to the next pin), never on a box; a tap on bare picture
-                                    closes the card. pick() opens the LABEL CARD on the picture, not in a side panel:
+                                    (within 26 px, or the gap to the next pin), never on a box. A tap near no pin
+                                    keeps the card and pulses the two nearest pins (onMiss); only Escape or a tap
+                                    where blank() says the picture is empty closes it. pick() opens the LABEL CARD on the picture, not in a side panel:
                                     the name on a card beside the pin, on the item's side ('left' / 'right', where
                                     its printed label was) when that keeps the pin and the most other pins clear,
                                     with a leader line to each point (avoid(): boxes on the picture the card keeps off, such as a search
@@ -144,7 +145,8 @@
                                     fade). Every pin is a real button (Tab, Enter; arrow keys move to the next pin;
                                     Escape closes the card). find(text): search by name, forgiving (case, spaces,
                                     hyphens, a final s, text in brackets, an accepted name, one slip in a long
-                                    word, a start of three letters or more); it picks the match ('find'). ask(id,
+                                    word, a start of three letters or more); it picks the match ('find'), and finds nothing while a "find it"
+                                    question waits (match(text) looks up without picking). ask(id,
                                     cb): the "find it" question mode: the next tap answers (cb(true | false, tapped
                                     item)), marks the tapped pin right or wrong and shows the asked one's card;
                                     ask(null) leaves it. how in onPick: 'tap' | 'key' | 'find' | 'set'. */
@@ -428,6 +430,22 @@
       if(cur) drawCard(false);
       kNow = 0;
     }
+    /* the card's size for an item, measured once per item and picture width: a name that wraps gets a box as wide as
+       its longest line (no empty space at its right), measured at the layer's corner so it never shrinks to fit */
+    var sizes = {};
+    function size(it){
+      var key = it.id + '|' + layer.el.clientWidth;
+      if(sizes[key]) return sizes[key];
+      card.hidden = false; card.className = 'tk2-spot-card'; card.style.left = '0px'; card.style.top = '0px'; card.style.width = '';
+      card.innerHTML = '<span class="tk2-spot-t">' + esc(it.name) + '</span>';
+      var sp = card.firstChild, cs = getComputedStyle(card), pad = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight) + parseFloat(cs.borderLeftWidth) + parseFloat(cs.borderRightWidth);
+      var rects = sp.getClientRects(), wmax = 0;
+      for(var i = 0; i < rects.length; i++) wmax = Math.max(wmax, rects[i].width);
+      var w = Math.ceil(wmax + pad + 1);
+      card.style.width = w + 'px';
+      sizes[key] = [w, card.offsetHeight, card.innerHTML];
+      return sizes[key];
+    }
     /* where the card goes: beside the pin on the item's side if that keeps the pin (and as many other pins as it can)
        clear and stays inside the picture; else the other side, above or below */
     function drawCard(anim){
@@ -436,25 +454,26 @@
       var lr = layer.el.getBoundingClientRect(), avoid = (o.avoid ? o.avoid() : []).map(function(a){ return [a.left - lr.left, a.top - lr.top, a.width, a.height]; });
       var others = []; items.forEach(function(j){ if(j !== it) j.at.forEach(function(q){ others.push(px(q)); }); });
       var minePts = it.at.map(px);
-      // measured at the layer's corner: a card left near the right edge would shrink to fit there and be measured short
-      card.textContent = it.name; card.hidden = false; card.className = 'tk2-spot-card'; card.style.left = '0px'; card.style.top = '0px';
-      var cw = card.offsetWidth, ch = card.offsetHeight, P = px(it.at[0]), G = 22, R = 13;
+      var sz = size(it), cw = sz[0], ch = sz[1], P = px(it.at[0]), G = 22, R = 13;
+      card.innerHTML = sz[2]; card.hidden = false; card.className = 'tk2-spot-card'; card.style.width = cw + 'px';
       var side = it.side === 'left' ? -1 : 1, near = side > 0 ? P[0] + G : P[0] - G - cw, far = side > 0 ? P[0] - G - cw : P[0] + G, cand = [], best = null;
       // beside the pin on its own side first, then the other side, then above or below; each also slid up or down
       // (or sideways) by most of its size, so it can clear a neighbouring pin
       [[near, 0], [far, 1], [near + side * 2 * G, 3], [far - side * 2 * G, 3.5]].forEach(function(h){ [0, -0.8, 0.8, -1.6, 1.6].forEach(function(k, j){ cand.push([h[0], P[1] - ch / 2 + k * ch, h[1] + j * 0.4]); }); });
       [P[1] - G - ch, P[1] + G, P[1] - 2.5 * G - ch, P[1] + 2.5 * G].forEach(function(y, i){ [0.5, 0.15, 0.85].forEach(function(k, j){ cand.push([P[0] - cw * k, y, 2 + (i > 1 ? 1.5 : 0) + j * 0.4]); }); });
-      // last resort on a crowded picture: any clear place within reach, with a longer leader
-      for(var gy = -8; gy <= 8; gy++) for(var gx = -8; gx <= 8; gx++){ if(Math.abs(gx) < 2 && Math.abs(gy) < 2) continue; cand.push([P[0] - cw / 2 + gx * 26, P[1] - ch / 2 + gy * 22, 6 + Math.hypot(gx, gy)]); }
-      cand.forEach(function(c){
+      function score(c){
         var x = clamp(c[0], 4, Math.max(4, W - cw - 4)), y = clamp(c[1], 4, Math.max(4, H - ch - 4));
         var mine = minePts.some(function(Q){ return Q[0] > x - R && Q[0] < x + cw + R && Q[1] > y - R && Q[1] < y + ch + R; });
         var other = 0;
         others.forEach(function(Q){ if(Q[0] > x - 12 && Q[0] < x + cw + 12 && Q[1] > y - 12 && Q[1] < y + ch + 12) other++; });
         var off = avoid.some(function(a){ return x < a[0] + a[2] + 4 && x + cw > a[0] - 4 && y < a[1] + a[3] + 4 && y + ch > a[1] - 4; });
-        var score = (mine ? 1000 : 0) + (off ? 500 : 0) + other * 60 + c[2] * 3 + (Math.abs(x - c[0]) + Math.abs(y - c[1])) / 10;
-        if(!best || score < best.s) best = { s: score, x: x, y: y };
-      });
+        var sc = (mine ? 1000 : 0) + (off ? 500 : 0) + other * 60 + c[2] * 3 + (Math.abs(x - c[0]) + Math.abs(y - c[1])) / 10;
+        if(!best || sc < best.s) best = { s: sc, x: x, y: y, clear: !mine && !off && !other };
+      }
+      cand.forEach(score);
+      // last resort on a crowded picture (only when no near place is clear): any clear place within reach, with a
+      // longer leader
+      if(!best.clear) for(var gy = -8; gy <= 8; gy++) for(var gx = -8; gx <= 8; gx++){ if(Math.abs(gx) < 2 && Math.abs(gy) < 2) continue; score([P[0] - cw / 2 + gx * 26, P[1] - ch / 2 + gy * 22, 6 + Math.hypot(gx, gy)]); }
       card.style.left = best.x.toFixed(1) + 'px'; card.style.top = best.y.toFixed(1) + 'px';
       card.style.transformOrigin = (P[0] - best.x).toFixed(1) + 'px ' + (P[1] - best.y).toFixed(1) + 'px';
       // leader lines from the card's nearest edge to each point
@@ -470,8 +489,8 @@
         var rm = reduced();
         card.classList.add(rm ? 'is-fade' : 'is-grow');
         if(lines.firstChild) lines.firstChild.classList.add(rm ? 'is-fade' : 'is-draw');
-        void card.offsetWidth;
-        card.classList.add('is-in'); if(lines.firstChild) lines.firstChild.classList.add('is-in');
+        var lf = lines.firstChild;
+        requestAnimationFrame(function(){ requestAnimationFrame(function(){ card.classList.add('is-in'); if(lf) lf.classList.add('is-in'); }); });
       } else { card.classList.add('is-in'); if(lines.firstChild) lines.firstChild.classList.add('is-in'); }
       kNow = held;
     }
@@ -482,7 +501,7 @@
       if(!it){ card.hidden = true; lines.innerHTML = ''; if(o.onPick) o.onPick(null, how || 'set'); return null; }
       it._b.setAttribute('aria-pressed', 'true'); it._dots.forEach(function(d){ d.classList.add('is-on'); });
       // the halo grows again on every pick (restarted, so a second tap on the same pin shows too)
-      it._b.classList.remove('is-on'); void it._b.offsetWidth; it._b.classList.add('is-on');
+      var hb = it._b; hb.classList.remove('is-on'); requestAnimationFrame(function(){ if(cur === it) hb.classList.add('is-on'); });
       items.forEach(function(j){ j._b.tabIndex = j === it ? 0 : -1; });
       drawCard(how !== 'set' || !reduced());
       if(how && how !== 'set'){ done(); }
@@ -493,6 +512,18 @@
       var r = hit.getBoundingClientRect(), x = cx - r.left, y = cy - r.top, best = null, second = 1e9;
       items.forEach(function(it){ it.at.forEach(function(q){ var Q = px(q), dd = Math.hypot(Q[0] - x, Q[1] - y); if(!best || dd < best.d){ if(best) second = Math.min(second, best.d); best = { it: it, d: dd }; } else second = Math.min(second, dd); }); });
       return best && best.d <= Math.max(26, Math.min(40, second / 2)) ? best.it : null;
+    }
+    /* a tap over the drawing that is near no pin: the card stays, and the nearest pins pulse once so the student sees
+       where to tap. Only Escape, or a tap on blank picture (o.blank(x, y) in picture units, when the tool gives it)
+       closes the card. */
+    function missed(cx, cy){
+      var r = hit.getBoundingClientRect(), x = cx - r.left, y = cy - r.top, k = kNow || layer.scale();
+      if(o.blank && o.blank(x / k, y / k)){ if(!asking) pick(null, 'tap'); return; }
+      var ds = [];
+      items.forEach(function(it){ var d = 1e9; it.at.forEach(function(q){ var Q = px(q); d = Math.min(d, Math.hypot(Q[0] - x, Q[1] - y)); }); ds.push({ it: it, d: d }); });
+      ds.sort(function(a, b){ return a.d - b.d; });
+      ds.slice(0, 2).forEach(function(e){ var b = e.it._b; b.classList.remove('is-hint'); requestAnimationFrame(function(){ b.classList.add('is-hint'); }); setTimeout(function(){ b.classList.remove('is-hint'); }, 1300); });
+      if(o.onMiss) o.onMiss(ds[0] && ds[0].it);
     }
     function tapped(it, how){
       if(asking){
@@ -511,10 +542,12 @@
       if(e.target === card || card.contains(e.target)){ return; }
       var it = nearest(e.clientX, e.clientY);
       if(!it && !(e.target === hit || e.target.closest('.tk2-spot'))) return;
+      if(!it){ missed(e.clientX, e.clientY); return; }
       tapped(it, 'tap');
     });
     box.addEventListener('keydown', function(e){
       var b = e.target.closest && e.target.closest('.tk2-spot'); if(!b) return;
+      if(e.key === 'Escape' && asking){ e.preventDefault(); return; }
       var i = items.indexOf(find(b.getAttribute('data-id'))), j = null;
       if(e.key === 'ArrowRight' || e.key === 'ArrowDown') j = (i + 1) % items.length;
       else if(e.key === 'ArrowLeft' || e.key === 'ArrowUp') j = (i - 1 + items.length) % items.length;
@@ -551,7 +584,10 @@
       el: box, items: items,
       pick: function(id, how){ return pick(id, how || 'set'); },
       picked: function(){ return cur; },
-      find: function(text){ var it = match(text); if(it) tapped(it, 'find'); return it; },
+      // while a "find it" question waits, a search never answers it (nor gives the answer away): it finds nothing
+      find: function(text){ if(asking) return null; var it = match(text); if(it) tapped(it, 'find'); return it; },
+      match: match,
+      asking: function(){ return !!asking; },
       ask: function(id, cb){ items.forEach(function(j){ j._b.classList.remove('is-good', 'is-bad'); }); asking = id == null ? null : { id: id, cb: cb }; if(asking) pick(null, 'set'); },
       place: place,
       hide: function(on){ shown = !on; box.hidden = !!on; }

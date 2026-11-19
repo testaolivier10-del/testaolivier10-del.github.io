@@ -492,6 +492,9 @@
 .tk2-spot[aria-pressed="true"] .tk2-spot-pin,.tk2-spot-dot.is-on{background:var(--tk2-spot,var(--cink));transform:scale(1.25);}
 .tk2-spot::after{content:"";position:absolute;inset:5px;border-radius:50%;border:3px solid var(--tk2-spot,var(--cink));opacity:0;pointer-events:none;}
 .tk2-spot.is-on::after{animation:tk2-halo .7s ease-out 1;}
+/* a tap near no pin: the nearest pins ring twice, so the student sees where to tap */
+.tk2-spot.is-hint::after{animation:tk2-halo .6s ease-out 2;}
+.tk2-spot.is-hint .tk2-spot-pin{transform:scale(1.3);}
 @keyframes tk2-halo{from{opacity:.85;transform:scale(.6);}to{opacity:0;transform:scale(2.3);}}
 .tk2-spot.is-good .tk2-spot-pin{border-color:#2F9E5B;background:#2F9E5B;}
 .tk2-spot.is-bad .tk2-spot-pin{border-color:#D1594A;background:#D1594A;}
@@ -509,4 +512,4 @@
 .tk2-spot-lead.is-draw{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .26s ease-out .06s;}
 .tk2-spot-lead.is-fade{opacity:0;transition:opacity .18s linear;}
 .tk2-spot-lead.is-in{stroke-dashoffset:0;opacity:1;}
-@media (prefers-reduced-motion: reduce){ .tk2-spot.is-on::after,.tk2-spots.is-new .tk2-spot-pin{animation:none;} .tk2-spot-pin{transition:none;} }
+@media (prefers-reduced-motion: reduce){ .tk2-spot.is-hint::after{animation:none;opacity:.8;transform:scale(1.6);} .tk2-spot.is-on::after,.tk2-spots.is-new .tk2-spot-pin{animation:none;} .tk2-spot-pin{transition:none;} }

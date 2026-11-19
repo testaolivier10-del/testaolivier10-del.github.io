@@ -513,7 +513,7 @@ Site audit follow-up (2026-10-02, workstream W6):
     left ventricle's curves are blue in Test yourself's Wiggers graph too (one colour per idea, class lv set in
     graphs.js; graphs.json unchanged); an inactivated Na+ channel is drawn open and plugged until repolarization;
     dissolved O2 is a handful against the bound O2 (about 98.5% bound).
-101. (2026-11-18) **Lab practical on tools v2** (docs/tools-v2-standard.md; brief docs/tools-v2-anp-lab-practical-brief.md).
+102. (2026-11-18) **Lab practical on tools v2** (docs/tools-v2-standard.md; brief docs/tools-v2-anp-lab-practical-brief.md).
     Explore is six specimens, one lab figure each (heart internal, brain lateral, skull lateral, neuron, skin, kidney),
     drawn clean: printed labels and their leader lines painted out by scripts/build-lab-specimens.py
     (figures/specimens/), with a pin on each of 70 parts where its printed line ended. Tap a pin and its name opens on

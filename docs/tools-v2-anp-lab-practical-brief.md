@@ -161,7 +161,7 @@ Open points for a person: `docs/anp-needs-author.md`, "Lab practical tool, tools
 - Build opt in: `"kit2": true`, `extraScripts`, `extraCss` on the tool in `anatomy-physiology/data/pages.json`.
 - `scripts/check-weight.mjs`: the two budgets above.
 - Sweep test: `scripts/tools-v2/anp-lab-practical-sweep.mjs`.
-- `docs/anp-spec.md` decision 101.
+- `docs/anp-spec.md` decision 102.
 
 ## Checks run (2026-11-18)
 `node --test scripts/test/anp-*.test.mjs` 55 pass; `check-anp-content` 0 failing (tools too, with the new

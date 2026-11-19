@@ -9,6 +9,7 @@
 
 .lx-scene{position:relative;min-height:0;}
 .lx-plate{position:relative;display:flex;justify-content:center;align-items:center;padding:8px;border-radius:18px;background:#fff;
+  width:fit-content;max-width:100%;margin:0 auto;box-sizing:border-box;padding:48px 10px 22px;
   box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--ink) 10%, transparent);}
 :root[data-theme="dark"] .lx-plate{box-shadow:0 0 0 1px rgba(255,255,255,.1);}
 /* the plate is white in both themes, so the pins keep the light theme's course colour on it */
@@ -17,7 +18,9 @@
 .lx-pic picture,.lx-img{display:block;width:100%;height:100%;}
 .lx-img{object-fit:contain;mix-blend-mode:multiply;transition:opacity .22s ease-out;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;}
 .lx-pic.is-swap .lx-img{opacity:0;transition:none;}
-.lx-pic.is-swap .tk2-spots{visibility:hidden;}
+/* the pins fade in with the picture (the card and the cause line wait until it is drawn) */
+.lx-pic .tk2-spots{transition:opacity .22s ease-out;}
+.lx-pic.is-swap .tk2-spots{opacity:0;transition:none;pointer-events:none;}
 .lx-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
 /* the cue and the card: dark text on the light plate in both themes */
 :root[data-theme="dark"] .lx .tk2-spot-card{background:#fff;color:#1B2430;}
@@ -39,7 +42,7 @@
 
 .lx-lines{display:flex;flex-wrap:wrap;align-items:center;gap:8px;min-height:44px;}
 @media (max-width:640px){
-  .lx-plate{padding:4px;border-radius:14px;}
+  .lx-plate{padding:44px 4px 20px;border-radius:14px;}
   .lx-find{left:5px;top:5px;}
   .lx .lx-find-in{width:150px;height:34px;font-size:14px;}
   .lx-lines{min-height:76px;align-items:flex-start;}
