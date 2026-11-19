@@ -206,3 +206,13 @@ logged as removed (owner log) rather than kept; the ABA's "≥10%" against the c
 Medical check of every change: the share phrases restate burns.js's tables (head 9 adult and 18 child, half each
 side; trunk front and back 18, two nines each; arm 9; leg 18 adult and 13.5 child; genitals 1); "burn center if
 partial thickness" over 10% matches the course notes (burn center criteria, partial thickness over 10% BSA).
+Checks after round 1: NREMT tests 71 pass; `check-site` OK; `check-weight --check` within budget (`assets/body3d`
+16.8 of 17 KB after the round's two viewer hooks). Sweep, one process per width, the new assertions included (the
+card's text and the cause line on screen on phones, the figures still through three burns, the sum line, the crossing
+note, the child sum "9 + 4.5 + 6.75 ≈ 20.3", `?hunt=heart` asks the Heart): 360, 390, 430, 600 (1203 each), 768 and
+820 (1164), 1024 (1180), 1280 and 1440 (1184), 1920 (1196), 390 dark (1203), 1440 dark (1184) passed, 0 failed; frames
+32 passed, 0 failed. (768, 820 and 1024 first failed on the cue bubble past the picture's edge; it now sits beside the
+body only where the bubble has about 290 px, else under the chest. 1920 and 1440 dark first timed out under load and
+were rerun alone.) Size against `origin/main` (the reviewer's s8 method): 3D canvas 742 / 796 at 1440 x 900, 562 / 616
+at 1280 x 720; figures 644 / 684 and 464 / 502. Phones: 375 x 667 card text to 556 and cause line to 663; 390 x 800
+660 and 796. Preview and shots regenerated in `/mnt/user-data/outputs/nremt-body-map-v2/`.
