@@ -176,3 +176,17 @@ management, primary assessment, principles of assessment, cardiac emergencies) a
   artery). Timing follows the same table as the sound: AV valves close at S1, aortic and pulmonic at S2 (split: aortic
   first), ventricles squeeze in systole, the atria at the end of diastole. The murmurs are one example each (aortic
   stenosis, aortic regurgitation), as the old page already said.
+
+## Skill sheets, tools v2 Explore (2026-11-19, branch claude/tools-v2-nremt-skillsheets)
+
+No step, critical criterion, order rule, examiner cue or finding was changed: Explore reuses station-patient.js as
+checked on 2026-11-10. For a person to confirm:
+- **Registry PDFs not reopened.** The proxy here refused content.nremt.org, so the ten sheets could not be read again
+  this session. If the Registry has published new EMT sheets since 2026-11-10, the step lists need a fresh check.
+- **Does the Registry still run these sheets?** Searches suggest psychomotor verification for EMT has moved to
+  programs and states in many places; the tool already says to verify against your program's sheet. Confirm the
+  wording on the page ("the official sheets") is still right for 2026 candidates.
+- **The short names and effects** on the clipboard and the cause line (`STEP`, `LIVE`, `TQ` in
+  `nremt/assets/skill-explore.js`) paraphrase each step's own text in 1 to 3 words. Worth a glance by an EMT
+  instructor, especially "Ventilate on rate" (one breath every 5 to 6 s), "Set the flow: at least 10 L/min",
+  "Breaths through vomit: vomit pushed into the lungs" and "Tourniquet first: this sheet wants pressure first".

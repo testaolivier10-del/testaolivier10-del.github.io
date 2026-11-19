@@ -30,6 +30,7 @@ States: building, review, fixing, recheck, PASS (waiting to integrate), integrat
 | Ochem arrow pusher | claude/tools-v2-arrow-pusher | wt-arrow-pusher | integrated | shares `ochem/assets/push-board.js` and `.css` with Resonance; registry `css` field (build-tool-pages) |
 | NREMT sound trainer | claude/tools-v2-nremt-sound-trainer | wt-nremt-sound-trainer | integrated | second NREMT tool on `nremt/assets/nremt-kit2.js` (unchanged) |
 | A&P feedback loops | claude/tools-v2-anp-feedback-loops | wt-anp-feedback-loops | integrated | |
+| NREMT skill sheets | claude/tools-v2-nremt-skillsheets | wt-nremt-skillsheets | review | third NREMT tool on `nremt-kit2.js` (unchanged); Explore `nremt/assets/skill-explore.js`, the run is Test yourself |
 
 Next by use (rollout table): A&P predict,
 NREMT body map, NREMT flowcharts, Ochem viewer 3d.
