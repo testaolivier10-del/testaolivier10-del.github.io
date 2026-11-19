@@ -161,7 +161,18 @@
       if(!queue.length){ timer = null; return; }
       var it = queue[0], ms = reduced() ? 0 : it[0];
       if(ms <= 0){ queue.shift(); it[1](); next(my); return; }
-      timer = setTimeout(function(){ if(my !== token) return; queue.shift(); it[1](); next(my); }, ms);
+      timer = setTimeout(function(){ if(my !== token) return; settle(my, Date.now(), function(){ queue.shift(); it[1](); next(my); }); }, ms);
+    }
+    // a step that names something waits until every drawing has finished fading in or out (on a busy device the
+    // fades can lag the timers): labels and the cause line never run ahead of the picture
+    var FADES = '.fx2-on > g, .fx2-lips, .fx2-sweat, .fx2-eo, .fx2-ec, .fx2-aed';
+    function settled(){
+      return [].every.call(box.querySelectorAll(FADES), function(e){ var o = +getComputedStyle(e).opacity, want = e.classList.contains('is-on') ? 1 : 0; return Math.abs(o - want) < 0.06 || (want === 1 && e.classList.contains('fx2-lips') && o > 0.94); });
+    }
+    function settle(my, t0, fn){
+      if(my !== token) return;
+      if(!box.clientWidth || settled() || Date.now() - t0 > 2500){ fn(); return; }
+      requestAnimationFrame(function(){ settle(my, t0, fn); });
     }
     function stopAll(){ token++; clearTimeout(timer); timer = null; queue = []; }
     function flush(){ for(var n = 0; n < 30 && queue.length; n++){ var q = queue; stopAll(); q.forEach(function(it){ it[1](); }); } }
@@ -377,7 +388,7 @@
         var ex = clamp(p[0], best.l + 6, best.r - 6), ey = p[1] < best.t ? best.t : p[1] > best.b ? best.b : (best.t + best.b) / 2;
         if(Math.hypot(ex - p[0], ey - p[1]) > 8) svgEl('line', { class: 'fx2-leader is-' + (L.tone || 'see'), x1: p[0].toFixed(1), y1: p[1].toFixed(1), x2: ex.toFixed(1), y2: ey.toFixed(1) }, gLead);
         svgEl('circle', { class: 'fx2-dot is-' + (L.tone || 'see'), cx: p[0].toFixed(1), cy: p[1].toFixed(1), r: 3.5 }, gLead);
-        requestAnimationFrame(function(){ e.classList.add('is-in'); });
+        void e.offsetWidth; e.classList.add('is-in'); // in the same task as the arms, so a live arm never waits for a frame
       });
     }
     function rel(node){ var r = node.getBoundingClientRect(), h = box.getBoundingClientRect(); if(!r.width) return null; return { l: r.left - h.left, t: r.top - h.top, r: r.right - h.left, b: r.bottom - h.top }; }
@@ -586,7 +597,7 @@
         case 'misread': return [[300, function(){ speak('emt', 'What’s your name?'); }], [900, function(){ speak('pt', 'Mmh…'); setLabels([{ text: 'Only groans', at: [240, 120], tone: 'bad' }]); }]];
         case 'pain': return [[300, function(){ speak('emt', 'Squeezes his shoulder hard'); }], [900, function(){ speak('pt', 'Ow!'); setLabels([{ text: 'Needless pain', at: [300, 200], tone: 'bad' }]); }]];
         case 'pool': return [[200, function(){ f.pool = 2.2; f.pale = Math.min(3, f.pale + 1); paintFx(); }], [1500, function(){ lose(arm.lost); setLabels([{ text: 'Pool grows', at: [96, 700], tone: 'bad' }]); }]];
-        case 'blue': return [[200, function(){ f.blue = true; paintFx(); }], [1100, function(){ setLabels([{ text: 'Lips turn blue', at: [240, 120], tone: 'bad' }]); }]];
+        case 'blue': return [[200, function(){ f.blue = true; paintFx(); }], [1300, function(){ setLabels([{ text: 'Lips turn blue', at: [240, 120], tone: 'bad' }]); }]];
         case 'bvm': return [[200, function(){ f.bvm = true; paintFx(); }], [1400, function(){ f.bvm = false; paintFx(); lose(arm.lost); setLabels([{ text: 'Time lost', at: [240, 60], tone: 'bad' }]); }]];
         case 'paler': return [[200, function(){ f.pale = Math.min(3, f.pale + 1); paintFx(); }], [1100, function(){ setLabels([{ text: 'Paler, colder', at: [240, 60], tone: 'bad' }]); }]];
         case 'slow': return [[200, function(){ lose(arm.lost); }], [900, function(){ setLabels([{ text: 'Still on the floor', at: [240, 500], tone: 'bad' }]); }]];
