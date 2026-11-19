@@ -10,7 +10,8 @@
      - the plants drawn match the model (each group's mean), the pills say the drawn means and difference, the
        error bars are the drawn mean ± 2 SE, and the cause line says the state's words;
    Test yourself: every one of the 16 experiments' setups and results charts fits its stage (nothing under the side
-   panel or the Enlarge button) with every label at least 11 px on screen; every credited Fair test state has ±2 SE bars apart (the Sample size rule);
+   panel or the Enlarge button) with every text in the drawing at least 11 px on screen;
+   every visible text on the screen (svg and HTML, Explore and all 16 experiments) is 11 px or more; every credited Fair test state has ±2 SE bars apart (the Sample size rule);
    and, frame by frame at 390 and 1440: every number on the picture is the one for the plants drawn at that frame,
    and no result word shows while a plant is still changing.
    Usage: node scripts/tools-v2/design-drills-sweep.mjs [--width <w>] [--frames] [--shots <dir>] [--port <n>]
@@ -61,7 +62,7 @@ const NS = [
   { id: 'n12', n: 12, cause: /^12 plants each→Bars apart→Unlikely to be chance$/ },
   { id: 'n12-new', n: 12, fresh: true, cause: /^12 plants each→Bars (overlap→Could be chance|apart→Unlikely to be chance)$/ },
 ];
-let pass = 0; const fails = [];
+let pass = 0; const fails = []; let SMALL = { px: 1e9, t: '' };
 const ok = (c, msg) => { if (c) pass++; else fails.push(msg); };
 
 async function open(w, dark, opts = {}) {
@@ -111,6 +112,17 @@ const geo = (page) => page.evaluate(() => {
     taps: qa('.dd2-scene .tk2-tap:not([hidden])').map(R), knob: q('.dd2-knob-n:not([hidden]) .tk2-knob') ? R(q('.dd2-knob-n .tk2-knob')) : null,
     cause: { ...R(cause), text: cause.textContent, rows: [...new Set(qa('.tk2-cause .tk2-cz').map(e => Math.round(e.getBoundingClientRect().top)))].length, pills: qa('.tk2-cause .tk2-cz').map(R) },
     lines: R(q('.dd2-lines')), head: R(q('.tk2-head')), tabs: R(q('.dd2 .tk2-tabs')), acts: qa('.dd2-acts button:not([hidden])').map(R), tab: q('.dd2').dataset.tab };
+});
+/* Every visible text on the tool's screen (svg text and tspans, and HTML elements with text of their own), with its
+   rendered size in screen px: the font size times the element's screen scale. Hidden, faded out and screen reader
+   only text is left out. */
+const scanText = (page) => page.evaluate(() => {
+  const out = [], root = document.querySelector('.ls-root') || document.body;
+  const shown = (e) => { if (e.closest('[hidden], .is-wait, .tk2-sr, .sr-only, [visibility="hidden"]')) return false; const r = e.getBoundingClientRect(); if (r.width < 2 || r.height < 2) return false; const cs = getComputedStyle(e); return cs.visibility !== 'hidden' && cs.display !== 'none' && +cs.opacity > 0.05; };
+  root.querySelectorAll('svg text').forEach(t => { if (!t.textContent.trim() || !shown(t)) return; const m = t.getScreenCTM(); if (!m) return; out.push({ px: parseFloat(getComputedStyle(t).fontSize) * Math.hypot(m.a, m.b), t: t.textContent.trim().slice(0, 30) }); });
+  root.querySelectorAll('*:not(svg *)').forEach(e => { if (!e.childNodes.length || ![...e.childNodes].some(n => n.nodeType === 3 && n.textContent.trim()) || !shown(e)) return; out.push({ px: parseFloat(getComputedStyle(e).fontSize), t: e.textContent.trim().slice(0, 30) }); });
+  out.sort((a, b) => a.px - b.px);
+  return out.slice(0, 3);
 });
 const hit = (a, b, pad = 0) => a.l < b.r + pad && a.r > b.l - pad && a.t < b.b + pad && a.b > b.t - pad;
 const mean = (a) => a.reduce((x, y) => x + y, 0) / a.length;
@@ -162,6 +174,7 @@ if (!FRAMES) for (const dark of [false, true]) for (const w of WIDTHS) {
   for (const st of FAIR) {
     await setFair(page, st.set);
     const g = await geo(page); check(g, `${tag0} ${st.id}`, st); heights.push(g.cause.h);
+    { const sm = await scanText(page); if (sm.length && sm[0].px < SMALL.px) SMALL = sm[0]; ok(!sm.length || sm[0].px >= 10.95, `${tag0} ${st.id}: text under 11 px: ${sm.filter(x => x.px < 10.95).map(x => `"${x.t}" ${x.px.toFixed(1)}`).join(', ')}`); }
     if (SHOTS && (w === 360 || w === 820 || w === 1920) && (!dark || st.id === 'all-three')) await page.screenshot({ path: join(SHOTS, `sweep-${st.id}-${w}${dark ? '-dark' : ''}.png`) });
   }
   await page.click('.dd2 .tk2-tab[data-v="n"]'); await settle(page);
@@ -169,6 +182,7 @@ if (!FRAMES) for (const dark of [false, true]) for (const w of WIDTHS) {
   for (const st of NS) {
     if (st.fresh) { await page.click('.dd2-new'); await settle(page); } else await setN(page, st.n);
     const g = await geo(page); check(g, `${tag0} ${st.id}`, st); heights.push(g.cause.h);
+    { const sm = await scanText(page); if (sm.length && sm[0].px < SMALL.px) SMALL = sm[0]; ok(!sm.length || sm[0].px >= 10.95, `${tag0} ${st.id}: text under 11 px: ${sm.filter(x => x.px < 10.95).map(x => `"${x.t}" ${x.px.toFixed(1)}`).join(', ')}`); }
     if (SHOTS && (w === 360 || w === 820 || w === 1920) && (!dark || st.id === 'n7')) await page.screenshot({ path: join(SHOTS, `sweep-${st.id}-${w}${dark ? '-dark' : ''}.png`) });
   }
   ok(new Set(heights.map(h => Math.round(h))).size === 1, `${tag0}: the cause line changes height: ${heights.map(h => Math.round(h)).join(', ')}`);
@@ -196,12 +210,13 @@ if (!FRAMES) for (const dark of [false, true]) for (const w of WIDTHS) {
         const low = Math.max(...texts.map(b => b.bottom));
         // rendered font size of each label: its font size times the drawing's scale (the icons' own small glyphs aside)
         const vb = sv.viewBox.baseVal, sr = sv.getBoundingClientRect(), sc = Math.min(sr.width / vb.width, sr.height / vb.height);
-        const labs = [...sv.querySelectorAll('text')].filter(t => !t.classList.contains('dk-ic') && t.textContent.trim()).map(t => parseFloat(getComputedStyle(t).fontSize) * sc);
+        const labs = [...sv.querySelectorAll('text')].filter(t => t.textContent.trim()).map(t => parseFloat(getComputedStyle(t).fontSize) * sc);
         return { low, lim, dock: dock ? dock.top : 1e9, covered: enl ? texts.filter(b => b.left < enl.right && b.right > enl.left && b.top < enl.bottom && b.bottom > enl.top).length : 0, minLab: Math.min(...labs) };
       }, view);
       if (r.none) { ok(view === 'data', `${tag0} experiment ${i + 1}: no setup drawing`); continue; }
       ok(r.low <= r.lim + 0.5 && r.low <= r.dock + 0.5 && !r.covered, `${tag0} experiment ${i + 1} ${view}: the picture is cut (lowest text ${Math.round(r.low)}, stage ${Math.round(r.lim)}, panel ${Math.round(r.dock)}, under Enlarge ${r.covered})`);
-      ok(r.minLab >= 10.95, `${tag0} experiment ${i + 1} ${view}: a label is ${r.minLab.toFixed(1)} px on screen (11 px or more; the icons' own glyphs aside)`);
+      ok(r.minLab >= 10.95, `${tag0} experiment ${i + 1} ${view}: a text in the drawing is ${r.minLab.toFixed(1)} px on screen (11 px or more)`);
+      { const sm = await scanText(page); if (sm.length && sm[0].px < SMALL.px) SMALL = sm[0]; ok(!sm.length || sm[0].px >= 10.95, `${tag0} experiment ${i + 1} ${view}: text under 11 px: ${sm.filter(x => x.px < 10.95).map(x => `"${x.t}" ${x.px.toFixed(1)}`).join(', ')}`); }
       minLabs.push(r.minLab);
     }
   }
@@ -276,6 +291,7 @@ if (FRAMES || !ONLY) { const { browser, page, errs } = await open(390, false, { 
   ok(!errs.length, 'reduced motion: console errors'); await browser.close(); }
 
 server.close();
+if (SMALL.px < 1e9) console.log(`smallest text on screen: "${SMALL.t}" ${SMALL.px.toFixed(1)} px`);
 console.log(`${pass} passed, ${fails.length} failed`);
 fails.slice(0, 60).forEach(f => console.log('  FAIL ' + f));
 process.exit(fails.length ? 1 : 0);

@@ -785,9 +785,11 @@
       if(tw(t, s) > w && t.indexOf(' ') > 0){
         var best = null; t.split(' ').forEach(function(_, i, a){ if(!i) return; var l = [a.slice(0, i).join(' '), a.slice(i).join(' ')], m = Math.max(tw(l[0], s), tw(l[1], s)); if(!best || m < best.m) best = { l: l, m: m }; });
         lines1 = best.l;
+        // still too wide at the smallest size allowed (11 px): one word a line
+        if(best.m * 11 / s > w && t.split(' ').length > 2) lines1 = t.split(' ');
       }
       var widest = Math.max.apply(null, lines1.map(function(l){ return tw(l, s); }));
-      if(widest > w) s = Math.max(9.5, s * w / widest);
+      if(widest > w) s = Math.max(11, s * w / widest);   // never under 11 px on screen
       return { lines: lines1, size: n1(s), w: Math.max.apply(null, lines1.map(function(l){ return tw(l, s); })) };
     }
 
@@ -797,7 +799,7 @@
       if(!W || !H) return null;
       var phone = W < 600, m = phone ? 8 : Math.max(20, W * 0.03), gap = phone ? 56 : Math.max(76, Math.min(150, W * 0.09));
       var gw = Math.min((W - 2 * m - gap) / 2, 520), cx = W / 2;
-      var frontH = St.tab === 'n' ? (phone ? 124 : 130) : (phone ? 52 : 58), itemsH = phone ? 54 : 74, matH = 7;
+      var frontH = St.tab === 'n' ? (phone ? 124 : 130) : (phone ? 64 : 58), itemsH = phone ? 54 : 74, matH = 7;
       var yFront = H - frontH, yBack = yFront - itemsH, yTray = yBack + 12;
       var ruler = phone ? 15 : 19, bar = St.tab === 'n' ? (phone ? 16 : 22) : 6;
       var g = [0, 1].map(function(k){
@@ -905,7 +907,7 @@
     function labsSvg(){
       var o = '', size = G.phone ? 12.5 : 14;
       G.g.forEach(function(g, k){
-        var t = k ? 'Test group' : 'Control group', sz = G.phone ? 13 : 15; sz = n1(Math.min(sz, sz * (g.b - g.a - 4) / tw(t, sz)));
+        var t = k ? 'Test group' : 'Control group', sz = G.phone ? 13 : 15; sz = n1(Math.max(11, Math.min(sz, sz * (g.b - g.a - 4) / tw(t, sz))));
         o += '<text class="dd2-gname" data-lab="name" x="' + n1(g.cxp) + '" y="' + (G.phone ? 40 : 46) + '" text-anchor="middle" style="font-size:' + sz + 'px">' + esc(t) + '</text>';
       });
       // the test side's item labels, under each item on the bench's front face (filled in paintItems)
@@ -1309,11 +1311,11 @@
         if(!sv.getClientRects().length) return;
         var vb = sv.viewBox && sv.viewBox.baseVal, r = sv.getBoundingClientRect(), w = r.width;
         if(!vb || !vb.width || !w || !r.height) return;
-        // the smallest label's font size in viewBox units (the icons' own small glyphs aside). On a phone the studio
+        // the smallest text's font size in viewBox units (the icons' own glyphs included: every text 11 px or more). On a phone the studio
         // raises small svg text to 12 px on screen (data-ls-fs0); there the drawing takes its full width, so the raised
         // labels have the room they had before
         var unit = 1e9, raised = false;
-        sv.querySelectorAll('text').forEach(function(t){ if(t.classList.contains('dk-ic') || !t.textContent.trim()) return; if(t.hasAttribute('data-ls-fs0')) raised = true; else unit = Math.min(unit, parseFloat(getComputedStyle(t).fontSize) || 1e9); });
+        sv.querySelectorAll('text').forEach(function(t){ if(!t.textContent.trim()) return; if(t.hasAttribute('data-ls-fs0')) raised = true; else unit = Math.min(unit, parseFloat(getComputedStyle(t).fontSize) || 1e9); });
         var full = w * vb.height / vb.width, legible = raised || unit >= 1e9 ? full : Math.min(full, vb.height * LEG / unit);
         var lim = Math.min(host.getBoundingClientRect().bottom, stg.getBoundingClientRect().bottom - foot);
         var avail = lim - r.top - 6 - (sv.classList.contains('dr-sfig') ? under : 0);

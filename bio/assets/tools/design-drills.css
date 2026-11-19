@@ -39,7 +39,7 @@
 .dd2-lamp{fill:var(--dd-lamp);} .dd2-lampl{fill:var(--dd-lampl);}
 .dd2-ruler{fill:var(--dd-ruler);stroke:var(--dd-ruler-ink);stroke-width:.8;stroke-opacity:.5;}
 .dd2-tick{fill:none;stroke:var(--dd-ruler-ink);stroke-width:1;}
-.dd2-rn{font-size:10px;font-weight:800;fill:var(--dd-ruler-ink);}
+.dd2-rn{font-size:11px;font-weight:800;fill:var(--dd-ruler-ink);}
 .dd2-btop{fill:url(#dd2g-top);} .dd2s-t0{stop-color:var(--dd-t0);} .dd2s-t1{stop-color:var(--dd-t1);}
 .dd2-grain{fill:none;stroke:var(--dd-edge);stroke-width:1;opacity:.25;}
 .dd2-bedge{fill:var(--dd-edge);}
