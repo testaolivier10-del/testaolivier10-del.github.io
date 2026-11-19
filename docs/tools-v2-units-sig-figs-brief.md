@@ -42,7 +42,10 @@ graduated cylinder with coarser marks.
   every unit that now cancels is struck through, one after the other (0.2 s each), then the result card on the
   board, the flask's label and the cause line show what is left (a short pop on the label). A card on the board:
   tap turns it over (it narrows to an edge and opens upside down); its × takes it off. "Clear the board" under the
-  picture. Cards keep their places on the bench, so nothing shuffles under a finger.
+  picture. Cards keep their places on the bench, so nothing shuffles under a finger. A card's × shows once it has
+  landed. A struck unit fades and gets a strike in its own colour, so the two halves of a pair match. On a board
+  1440 px wide the cards grow (about 146 × 164) so the chain still fits one row and the board is not empty. A long
+  unit on the result card or the tag breaks only after "·" or "/".
 - Words wait for the picture: while a change is moving, strikes that no longer hold go at once, the old result
   card and label fade, and the cause line keeps only the pairs that still cancel ("checking units" if none).
 - Cause line: "mL cancels → g cancels → 13.9 mol"; a turned over card: "nothing cancels → 2.50 × 10⁵ mL²/L".
@@ -110,7 +113,8 @@ digits and "mL"), 2 bracket words, 1 pill, the names of the two cylinders (2 wor
 Test yourself already read powers of ten in every common form. Added, for every AP® Chemistry numeric question
 (`chem/assets/chem-questions.js`, `normUnit` and the number reader): "g/ml", "grams per mL", "kJ per mol", "KJ" and
 "kj", "ATM", "Atm", "atmospheres", "atm.", "gm", "KPa", "kelvin", and a middle dot as the times sign
-("1.8·10^-5"). Case still matters where it means something (mM is not MM). Unit tests in
+("1.8·10^-5"). Case still matters where it means something (mM is not MM; ML is megalitre, so only "ml" and
+"Ml" read as mL). Unit tests in
 `scripts/test/apchem-questions.test.mjs`. Explore has no typing.
 
 ## Accuracy
@@ -146,23 +150,62 @@ Test yourself already read powers of ten in every common form. Added, for every 
   the file when the tool is merged.
 - Sweep: `scripts/tools-v2/units-sig-figs-sweep.mjs`.
 
-## Checks run (2026-11-18)
+## Checks run (2026-11-18, after review round 1)
 `node --test scripts/test/apchem-*.test.mjs` (99 pass), `check-apchem-content --check`, `build-apchem --check`,
-`check-site`, `check-weight --check`, `build-apcalc --check`, `build-apmacro --check`, `check-tool-use` (this
-tool: tool-open, tool-touch, tool-mode, tool-use with frame v2; the osmosis line of that check expects "old" and
-fails on `claude/tools-v2-all` already, not changed here). Sweep at 10 widths: 170 states, 1158 checks, 0
-failures. Playwright behaviour checks at 1440 light, 768 dark, 390 light and dark (85 pass): the card's flight,
-no strike and no new words before it lands, the strike frame, the result, the turn (mid frame), keyboard placing
-(focus stays on the card), keys, Home and End on the water, a pointer drag of the knob and inside the magnifier,
-the pour (reading and line wait), reduced motion (result at once, pour at once), a real touch drag on a phone
-with the page scrolled, Test yourself right and wrong answers graded and recorded with their ids, `?seed=`,
-`#quiz`, `#setup-gas`, no console errors. Preview: `node scripts/tool-preview.mjs chem/tools/units-sig-figs.html
-/mnt/user-data/outputs/units-sig-figs-v2/index.html` opens from disk.
+`check-site`, `check-weight --check` (chem shell 53.1 of 53.2 KB), `build-apcalc --check`, `build-apmacro --check`.
+`check-tool-use` with a local uncommitted copy of its list plus this tool: tool-open, tool-touch(explore),
+tool-mode(quiz), tool-use, nothing sent under automation (the committed file is the collecting branch's). Sweep,
+one width per process at 10 widths: 330 states, 1648 checks, 0 failures (the cue against every text on the picture,
+unit line breaks, 16 held pour frames per width: no overlap, on the stage, "pouring" only with the stream).
+Playwright behaviour checks at 1440 light, 768 dark, 390 light and dark, each with and without reduced motion
+(108 pass): the × waits for the card to land, the cue in tab 2 and gone after use, a pointer drag in the
+magnifier (desktop) and a real CDP touch drag in it (phones), End, Home and arrow keys on the knob, the words wait
+during the lift, no reading during the pour, the coarse reading after it, the water value unchanged by a pour, the
+comparison line shown on every width, the pour back, reduced motion pours at once over a fading copy of the old
+state, `?seed=` opens the problem, no console errors. Preview: `node scripts/tool-preview.mjs
+chem/tools/units-sig-figs.html /mnt/user-data/outputs/units-sig-figs-v2/index.html` opens from disk; shots in
+`/mnt/user-data/outputs/units-sig-figs-v2/shots/` (sweep states at 10 widths, `*-2-pour-*` and `*-pour-*` mid pour
+frames both ways, first visit cues at 1440, 768 dark and 390).
 
 ## Not done, and what I am not happy with
 - No real phone, no screen reader pass, no students.
-- The board has empty space above and below one row of cards on a wide screen.
-- The pour shows the vessels passing each other rather than a real pour stream.
-- The magnifier is larger than the vessel (it is part of the water's control: the water can be dragged in it).
+- The magnifier is larger than the vessel (it is part of the water's control: the water can be dragged in it, and
+  since review round 1 it carries the cue and a grip). On phones it is smaller than the cylinder.
+- The coarse cylinder (50 mL marked every 10 mL) is a teaching picture; real 50 mL cylinders are marked every 1 mL.
+- The pour is drawn from a model of a tilted cylinder (level water, area as volume), not a fluid simulation; the
+  stream is one curved stroke.
 - The flagship and osmosis keep their own scene code; nothing was moved into the kit here (`K.setup`, the shared
   factor chain the rollout plan names for APES calculation studio, is not built: the chain is in this tool).
+
+## Review round 1 (2026-11-18): BLOCK, fixed
+Review: `/home/claude/review-units-sig-figs/REVIEW.md` (shots beside it). Branch rebased on `claude/tools-v2-all`.
+
+Must fix:
+1. `scripts/check-tool-use.mjs` is now byte for byte the collecting branch's; frame v2 was checked with a local,
+   uncommitted copy (all four tools: tool-open, tool-touch, tool-mode, tool-use; nothing sent under automation).
+   "What was built" says so.
+2. The tab 2 cue hangs from the magnifier (desktop: from its lower rim; phone: from inside its lower part, which
+   shows only water), in room kept above the reading (`CUE_ROOM`, and the reading moves down under it). The sweep's
+   cue check now covers every text on the picture, the cylinder's scale numbers and the lens numbers included.
+3. Decided for the owner: no beaker. The coarse vessel is a second 50 mL graduated cylinder marked every 10 mL,
+   as the UW–Madison reading pages compare cylinders; `units-read-beaker` is closed in `docs/apchem-needs-author.md`
+   and "?" says a beaker's marks are only approximate. The water moves as a real pour (`pourPlan`, `pourSvg`):
+   both cylinders drawn the same size while it moves, the full one lifted so its lowest point stays above the
+   other's mouth, tilted until the water reaches its spout, a stream while one level falls and the other rises,
+   set down small. The cause line says "lifting the fine cylinder", "pouring into the coarse cylinder" only while
+   the stream is drawn, then "all the water in the coarse cylinder". The sweep holds the pour at 16 frames per
+   width and checks the outlines never overlap (separating axis test), stay on the stage, and that "pouring" is
+   said exactly while the stream is drawn. Reduced motion: a cross fade (it now really fades from the old state).
+4. Result card and tag units break only after "·" or "/" (`<wbr>`, `word-break: keep-all`), a step smaller when
+   long; the sweep checks every line break of those units.
+
+Should fix, all done: the cue and a grip relate the knob's job to the magnifier (the knob by the cylinder stays,
+the keyboard's way); "Fine cylinder read 33.7 mL" shows on phones (two short lines beside the small cylinder);
+the board at 1440 and up has bigger cards (146 × 164 at 1440, text scaled) and a taller board, still one row;
+strikes are 3.5 px in the unit's own colour, the struck text faded in that colour; `ML` is no longer read as mL
+(unit test added); the weight comment gives the measured 52.7 → 53.1 KB; the tap ring and the knob track are solid,
+not dashed. Removed: the × on a card while it flies (it shows once the card lands). Also: the phone cause line
+height override was dropped (the kit's own is used).
+
+Decisions made for the owner (also in `docs/tools-v2-owner-log.md`): the coarse cylinder in place of the beaker;
+the pour as drawn above (2.6 s); the cue on the magnifier with a grip; `ML` not an alias.

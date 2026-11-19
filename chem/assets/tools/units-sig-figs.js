@@ -327,7 +327,7 @@
         S.inst = to; tourDid('swap');
         cLevel.input.setAttribute('aria-label', 'Water in the ' + instNow().name.toLowerCase());
         cSwap.el.setAttribute('aria-label', 'Pour the water into the ' + other().name.toLowerCase());
-        if(K.reduced()){ swap = null; layoutRead(); crossSvg(); readWords(); say(cause.text()); refHtml(); return; }
+        if(K.reduced()){ swap = null; crossSvg(); readWords(); say(cause.text()); refHtml(); return; }   // crossSvg draws the new state over a fading copy of the old
         swap = { from: from, to: to, t0: now(), plan: pourPlan(from, to), phase: '' };
         stage.classList.add('is-moving'); cLevel.hide(true); cSwap.el.hidden = true; lensPad.hidden = true;
         (function step(){
