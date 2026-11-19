@@ -71,6 +71,12 @@
       for(var i = 0; i < S.length; i++){ var s = S[i]; if(s[0] < lo - 1e-9 || s[0] > hi + 1e-9) continue; var d = (s[1] - x) * (s[1] - x) + (s[2] - y) * (s[2] - y); if(d < bd){ bd = d; best = s[0]; } }
       return best == null ? null : { v: best, d: Math.sqrt(bd) };
     };
+    // the arc length from 0 to v (picture units), for revealing a trail with a dash
+    self.len = function(v){
+      v = clamp(v, 0, self.n); var k = Math.min(self.n - 1, Math.floor(v)), d = 0, i;
+      for(i = 0; i < k; i++) d += L[i][L[i].length - 1];
+      return d + (v - k) * L[k][L[k].length - 1];
+    };
     // the drawn path from v0 to v1 (for trails)
     self.path = function(v0, v1){
       var pts = [], st = 0.02;
@@ -175,7 +181,7 @@
       cue: 'Drag the blood cell', token: 'the blood cell', thing: 'blood cell',
       layouts: LAY, last: 13, steps: 13, cycle: true,
       segs: function(L){ return geo(L).segs; },
-      breaks: [{ id: 'air', at: 4.5, pass: true, place: function(L){ var t = geo(L).trach; return [t[0], t[1] + 16]; }, off: [1, 0], tag: 'No fresh air', label: 'Stop air', aria: 'Stop fresh air reaching the lungs', name: 'No fresh air in the lungs', step: 5 }],
+      breaks: [{ id: 'air', at: 4.5, pass: true, place: function(L){ var t = geo(L).trach; return [t[0] - 10, t[1] + 16]; }, off: [-1, 0], tag: 'No fresh air', label: 'Stop air', aria: 'Stop fresh air reaching the lungs', name: 'No fresh air in the lungs', step: 5 }],
       take: 'Right heart pumps to the lungs, left heart to the body.',
       brokenTake: 'No fresh air: the heart still pumps, but the body gets less O₂.',
       art: function(E){
@@ -470,7 +476,7 @@
       words: function(st){
         if(st.stop){
           return st.stop.id === 'dorsal' ? [{ t: 'Dorsal root cut', role: 'bad' }, { t: 'signal never reaches the cord', role: 'aff' }, { t: 'no kick', role: 'bad' }]
-            : [{ t: 'Motor neuron fires', role: 'eff' }, { t: 'ventral root cut', role: 'bad' }, { t: 'signal never reaches the muscle', role: 'eff' }, { t: 'no kick', role: 'bad' }];
+            : [{ t: 'Motor neuron fires', role: 'eff' }, { t: 'ventral root cut', role: 'bad' }, { t: 'no kick', role: 'bad' }];
         }
         return [
           [{ t: 'Tap stretches the tendon', role: 'cord' }, { t: 'quadriceps stretched', role: 'mus' }],
@@ -522,7 +528,7 @@
         ];
       },
       breaks: [
-        { id: 'pit', stopV: 2.3, place: function(L){ return T(L, [100, 372, 'mag']); }, off: [-1, 0], tag: 'Damaged', label: 'Damage', aria: 'Damage the pituitary gland', name: 'Pituitary damaged', step: 3, mark: function(L){ return T(L, [275, 372, 'mag']); } },
+        { id: 'pit', stopV: 2.3, place: function(L){ return L.id === 'wide' ? T(L, [146, 392, 'mag']) : T(L, [196, 434, 'mag']); }, off: function(L){ return L.id === 'wide' ? [-1, 0] : [0, 1]; }, tag: 'Damaged', label: 'Damage', aria: 'Damage the pituitary gland', name: 'Pituitary damaged', step: 3, mark: function(L){ return T(L, [275, 372, 'mag']); } },
         { id: 'adr', stopV: 3.88, place: function(L){ return T(L, [-74, 258, 'person']); }, off: [-1, 0], tag: 'Damaged', label: 'Damage', aria: 'Damage the adrenal cortex', name: 'Adrenal cortex damaged', step: 4, mark: function(L){ return T(L, [-30, 252, 'person']); } }
       ],
       take: 'Three glands in a chain, braked by cortisol’s feedback.',
@@ -872,7 +878,7 @@
       trail._h = null;
       return true;
     }
-    function metrics(){ var k = scale() || 1; E.k = k; E.fs = clamp((k < 0.8 ? 12.5 : 13.5) / k, 10, 27); E.gap = 4 / k; }
+    function metrics(){ var k = scale() || 1; E.k = k; E.fs = clamp((k < 0.8 ? 12.5 : 13.5) / k, 10, 27); E.gap = 6 / k; }
 
     /* ---- the picture of the current screen */
     function buildArt(){
@@ -1037,7 +1043,7 @@
         x.el.classList.toggle('is-done', !!on);
         x.el.disabled = !!on;
         x.el.classList.toggle('is-new', show && !cur.br && !cur.pillsSeen);
-        var off = x.b.off || [0, -1];
+        var off = typeof x.b.off === 'function' ? x.b.off(E.L) : (x.b.off || [0, -1]);
         x.el.style.left = (p[0] * k) + 'px'; x.el.style.top = (p[1] * k) + 'px';
         x.el.setAttribute('data-side', off[1] < 0 ? 'up' : off[1] > 0 ? 'down' : off[0] < 0 ? 'left' : 'right');
       });
@@ -1126,12 +1132,17 @@
       var tf = cur.tokenFill ? cur.tokenFill(st) : ''; if(tok.lastChild.style.stroke !== tf) tok.lastChild.style.stroke = tf;
       // the trail: where it has been
       var tv = Math.max(0, view.v), parts = cur.trailFor ? cur.trailFor(st) : cur.trail || [[0, cur.last, role]];
-      // one path per part of the trail, made once per screen and only reshaped as the token moves
-      var sig = cur.id + '|' + parts.map(function(pt){ return pt[2]; }).join(',');
-      if(trail._h !== sig){ trail._h = sig; trail.innerHTML = parts.map(function(pt){ return '<path class="pe-trail-p is-' + pt[2] + '"/>'; }).join(''); }
+      // one path per part of the trail, drawn whole once per screen; the token's progress only moves its dash, so a
+      // frame never rebuilds a path
+      var sig = cur.id + '|' + cur.Lid + '|' + parts.map(function(pt){ return pt[0] + ':' + pt[1] + pt[2]; }).join(',');
+      if(trail._h !== sig){
+        trail._h = sig;
+        trail.innerHTML = parts.map(function(pt){ return '<path class="pe-trail-p is-' + pt[2] + '" d="' + cur.route.path(pt[0], pt[1]) + '"/>'; }).join('');
+        trail._len = parts.map(function(pt){ return cur.route.len(pt[1]) - cur.route.len(pt[0]); });
+      }
       parts.forEach(function(pt, i){
-        var el = trail.childNodes[i], a0 = pt[0], a1 = Math.min(pt[1], tv);
-        if(a1 - a0 > 0.02){ el.setAttribute('d', cur.route.path(a0, a1)); if(el.style.strokeWidth !== f1(6 / k) + 'px') el.style.strokeWidth = f1(6 / k) + 'px'; if(el.style.display) el.style.display = ''; } else if(el.style.display !== 'none') el.style.display = 'none';
+        var el = trail.childNodes[i], a1 = Math.min(pt[1], tv), shown = a1 > pt[0] + 0.02 ? cur.route.len(a1) - cur.route.len(pt[0]) : 0, full = trail._len[i] + 2;
+        sa(el, 'stroke-dasharray', f1(shown) + ' ' + f1(full)); sa(el, 'stroke-width', f1(6 / k));
       });
       var atEnd = !st.stop && view.v >= cur.last - 0.02;
       if(atEnd && !cur.br && !seenEnd()){ markEnd(); placePills(); }

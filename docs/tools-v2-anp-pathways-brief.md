@@ -184,3 +184,47 @@ yourself, locked); sweep frames in `sweep/`; preview `/mnt/user-data/outputs/anp
   and the reflex torso are plain.
 - The synapse's threshold bar has no label of its own (the strong "Threshold" label comes at step 8; "?" explains it).
 - Test yourself is the old tool inside the new frame (its modes as a small switch), not redesigned.
+
+## Review round 1 (2026-11-18)
+The independent review (`/home/claude/review-anp-pathways/REVIEW.md`) blocked on eight must fix items and kept the idea,
+the science (including the ventral horn synapse) and Test yourself. Merged `origin/claude/tools-v2-all` first
+(`check-tool-use.mjs` is the collecting branch's; both sides of the docs tables kept).
+
+Must fix, all done:
+1. **No side column.** The step list is the one line under the picture at every width (dots, "Step n of N", the
+   current step's name); its tour step is gone. The picture takes the stage: at 1440 x 900 it is 1,180 of 1,344 px
+   (the height of the screen sets the rest); the sweep now fails a picture under 82% of the stage width (95% on phones).
+2. **Phones.** Each screen has two compositions of the same drawn parts (`layouts` in `pathways-explore.js`): wide,
+   2:1, for a stage of 900 px or more, and tall, 1:1, for phones and upright tablets (the picture is 382 x 382 at 390,
+   was 382 x 287). The knob is a clear ring (54 px, open centre) and the token a coloured ring round it, so the valve,
+   gland or synapse acting under it stays in sight.
+3. **A broken run goes as far as the thing really goes.** Each break has its own stop after its last real step (dorsal
+   root: at the ganglion; ventral root: the motor neuron has fired, the signal is in the axon; pituitary: CRH has
+   reached it; adrenal: ACTH has arrived; Ca2+ block: the action potential is at the membrane; receptor block: the
+   transmitter has crossed the cleft). A cut is drawn a knob's width further down the route. The frame test now
+   checks every break at 360, 390 and 1440: the stop is never before the failing step's predecessor, the run says what
+   fails, the last real step is drawn and the break is labeled.
+4. **Heart after "Stop air".** The end of the run says "No fresh air: the heart still pumps, but the body gets less
+   O2.", and the line at the last step is "No fresh air, heart still pumps, body cells got less O2".
+5. **Hormones.** The strong label is what the token carries: Stress, CRH, ACTH, then Cortisol from the adrenal on
+   (and "Cortisol brakes" at the brain); "Glucose up" stays on the liver.
+6. **Knob never clipped.** Routes start and end inside the picture (the synapse's starts lower and ends on the axon
+   inside the stage); the sweep checks the knob's ring against the picture's edges.
+7. **Threshold.** The one word "Threshold" labels the red mark from the start; the bar is empty until the EPSPs add
+   (step 8's words), reaches the mark exactly when "threshold reached" shows, and fills above it as the neuron fires.
+8. **People.** The reflex figure is a seated person in profile cut to the lower back and leg: curved back, buttock on
+   the seat, belly, shirt with folds, shorts, an arm with a hand resting on the thigh, the spine in a window. The
+   hormone figure is a person cut at the hips: a face (eyes, brows, nose, mouth, ears, hair), neck, shirt with collar
+   and folds, arms with hands, trousers.
+
+Should fix, all done: the action potential runs along the terminal's membrane to the Ca2+ channel; the pulmonary
+veins visibly enter the left atrium (tall: over the heart wall into it; wide: from the lung on the right into its right
+side); "Atrium pressure above ventricle"; the tap's stretch is drawn in muscle colour and orange starts at the spindle;
+the kick starts with step 7's words; the stalk runs into the posterior lobe and the portal veins down its front into
+the anterior lobe; one vessel leaves the magnifier and joins the body's line once; the Damage and Block buttons sit
+beside what they break; the docked vesicles are full; the zoom lines leave the vertebra at T12 to L1, where the L2 to
+L4 cord segments lie ("?" says so). The "?" sentence explaining the threshold bar is removed.
+
+Wide composition of the heart: the body's tissue on the left, the heart in the middle (enlarged), the lungs on the
+right, so the pulmonary trunk runs to the right as it does and the pulmonary veins enter the left atrium from the
+right (owner log).

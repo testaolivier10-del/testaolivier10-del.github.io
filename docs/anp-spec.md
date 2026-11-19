@@ -522,3 +522,7 @@ Site audit follow-up (2026-10-02, workstream W6):
     208 pathways, Watch and Trace it on the five figures and the three drills, unchanged; the tool's own modes are a
     small switch in its panel. Uses AnpToolKit.kit2 unchanged ("kit2": true in data/pages.json). Item ids, scoring,
     recording and deep links unchanged; open points in docs/anp-needs-author.md (pw-*).
+    Review round 1 (2026-11-18): no step column (the steps are one line under a full width picture), two
+    compositions per screen (wide 2:1, tall 1:1), a clear ring knob, broken runs stop after their last real step, the
+    people redrawn, the stalk into the posterior lobe, the zoom from T12 to L1.
+

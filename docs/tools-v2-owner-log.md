@@ -169,3 +169,9 @@ in each tool's brief.
 | 2026-11-18 | A&P Pathway tracer | Two neighbouring synapses fire with the drawn one so the EPSPs reach threshold; blockers act on every synapse | One EPSP alone stays below threshold (notes) | `docs/anp-needs-author.md` pw-synapse-summation |
 | 2026-11-18 | A&P Pathway tracer | Steps reached are named with the bank's own step labels | Reviewed text, ties Explore to Test yourself | `.pe-rail` |
 | 2026-11-18 | A&P Pathway tracer | Test yourself keeps the old modes as a small switch at the top of its panel; the dock's "Start here" hint is off on the kit2 page | The frame's mode switch is Explore / Test yourself; one cue at a time | `subStudio()` in `pathways.js` |
+| 2026-11-18 | A&P Pathway tracer | Review round 1: no step column; the steps are one line under a full width picture at every width | The column was a side panel and shrank the picture | `docs/tools-v2-anp-pathways-brief.md` |
+| 2026-11-18 | A&P Pathway tracer | Review round 1: two compositions per screen, wide 2:1 (desktop) and tall 1:1 (phones, upright tablets) | Fills the stage on both; the same drawn parts placed differently | `layouts` in `pathways-explore.js` |
+| 2026-11-18 | A&P Pathway tracer | Review round 1: the knob is a clear ring, the token a ring round it | The part acting under it stays in sight on a phone | `pathways-explore.css` |
+| 2026-11-18 | A&P Pathway tracer | Review round 1: wide heart puts the body on the left, the lungs on the right | The trunk runs right and the veins enter the left atrium from the right, as in the body | `docs/anp-needs-author.md` pw-heart-wide |
+| 2026-11-18 | A&P Pathway tracer | Review round 1: a broken run stops after its last real step; the cut is drawn just beyond the stopped knob | Stopping a knob's width early cut off steps that really happen | `stopV` per break |
+

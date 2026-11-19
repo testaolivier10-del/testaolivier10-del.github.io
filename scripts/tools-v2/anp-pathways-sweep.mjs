@@ -141,7 +141,7 @@ for (const w of WIDTHS) {
       if (r.scroll > 1) fail(`${tag}: sideways scroll ${r.scroll}px`);
       if (r.fit.length) fail(`${tag}: does not fit ${r.fit.join(', ')}`);
       if (w < 641 && r.lines.rows > 2) fail(`${tag}: cause line ${r.lines.rows} rows (${r.lines.t})`);
-      heights.push(r.lines.h);
+      heights.push(r.lines.h); if (r.lines.h > 84) console.log(`  tall line ${tag} ${r.lines.h}px: ${r.lines.t}`);
       if (SHOTS) { const pic = await page.$('.pe-main'); shots.push(await pic.screenshot()); }
     }
     if (SHOTS) {

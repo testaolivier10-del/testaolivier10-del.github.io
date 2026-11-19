@@ -2068,8 +2068,8 @@ part; these are the judgment calls in the pictures and the break results.
 - **pw-heart-one-lung** (decided, for review). Only the route through the viewer's left lung is drawn (pulmonary artery,
   capillary loop, pulmonary veins to the left atrium, passing behind the trunk and aorta); "?" says the other lung works
   the same way. The superior vena cava is drawn; the cell returns by the inferior vena cava.
-- **pw-reflex-layout** (decided, for review). The lumbar cord is drawn magnified beside the thigh, with zoom lines from
-  the lumbar vertebra; the nerve runs from it straight to the quadriceps (the femoral nerve's real path through the
+- **pw-reflex-layout** (decided, for review). The cord section is drawn magnified beside the thigh, with zoom lines
+  from the vertebra at about T12 to L1, where the L2 to L4 cord segments lie (review round 1); the nerve runs from it straight to the quadriceps (the femoral nerve's real path through the
   groin is not drawn). The synapse is in the ventral horn, on the motor neuron's cell body, as the course teaches
   (one source seen during research, Case Western NeuroWiki, places it in the dorsal horn). Reciprocal inhibition of
   the hamstrings is named in "?", not drawn.
@@ -2089,3 +2089,13 @@ part; these are the judgment calls in the pictures and the break results.
 - **pw-synapse-blockers** (decided, for review). "Block" on the Ca2+ channels stops release (the notes: remove calcium
   and nothing is released); "Block" on the receptor proteins stands for a receptor antagonist (curare type at the
   neuromuscular junction; the drawn synapse is neuron to neuron, so no drug is named).
+- **pw-heart-wide** (decided, for review; review round 1). On a desktop the heart screen puts the body's tissue on the
+  left, the heart in the middle and the lungs on the right; only the inferior vena cava is drawn there (the superior
+  one would cross the aortic arch). On a phone the original composition (lungs above, body below) is kept.
+- **pw-hpa-stalk** (decided, for review; review round 1). The stalk runs into the posterior lobe; the portal veins run
+  down its front into the anterior lobe, where ACTH is released.
+- **pw-break-stops** (decided, for review; review round 1). Where each broken run stops: dorsal root cut, at the
+  dorsal root ganglion; ventral root cut, after the motor neuron fires, in its axon; pituitary damaged, CRH at the
+  gland; adrenal damaged, ACTH at the gland; Ca2+ channels blocked, the action potential at the membrane; receptor
+  proteins blocked, the transmitter across the cleft.
+
