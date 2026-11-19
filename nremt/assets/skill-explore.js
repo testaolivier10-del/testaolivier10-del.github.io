@@ -277,13 +277,22 @@
     function liveList(){
       if(!patient || !patient.ready) return [];
       var touched = def().steps.some(function(s, i){ return s.touch && St.done[i]; });
-      return patient.misses().filter(function(m){
+      var d = doneMap(), extra = [];
+      /* the sheet's order rules (a before b): the patient marks b done before a; in free play b done with a not
+         done yet is the same mistake made now (a shock with nobody cleared), so it is marked as it happens */
+      (def().order || []).forEach(function(o){
+        if(d[o[1]] && !d[o[0]]){
+          var sb = def().steps.filter(function(x){ return x.id === o[1]; })[0] || {}, at = sb.at || [240, 300];
+          extra.push({ key: 'order-' + o[0] + '-' + o[1], x: at[0] + 26, y: at[1] - 26, sev: o[3] || 'warn', text: o[2] });
+        }
+      });
+      return extra.concat(patient.misses().filter(function(m){
         if(m.key === 'bsi') return touched;
         if(m.key === 'check') return /before responsiveness/.test(m.text);
         if(m.key === 'suction') return /through vomit/.test(m.text);
         if(m.key === 'opa') return /after ventilation/.test(m.text);
         return !!LIVE[m.key];
-      });
+      }));
     }
     // which sheet row each live mark belongs to (the step done out of turn)
     function liveKeys(){
