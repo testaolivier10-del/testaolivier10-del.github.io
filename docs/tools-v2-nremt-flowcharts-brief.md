@@ -8,8 +8,8 @@ first. Decisions made for the owner are also one line each in `docs/tools-v2-own
 adapter (`nremt/assets/nremt-kit2.js`) as it is (no adapter change was needed).
 
 ## What the old tool teaches (from `claude/tools-v2-all`)
-Eleven protocol charts written in the page's HTML (primary assessment, choking adult and child, choking infant,
-anaphylaxis, stroke, spinal motion restriction, adult BLS and CPR, shock, START triage, SALT triage and one more),
+Ten protocol charts written in the page's HTML (primary assessment, choking adult and child, choking infant,
+anaphylaxis, stroke, spinal motion restriction, adult BLS and CPR, shock, START triage, SALT triage),
 three modes: Read (one chart at a time, a part at a time with "Next part of the chart", "Why?" notes), Build it
 (drag the shuffled steps into the chart; decoys from other protocols; record `build:<anchor>`) and Drill me ("which
 step comes next?"; record `<anchor>:<step slug>`). The rollout's verdict: "The free mode is reading a text chart; the
@@ -87,7 +87,7 @@ algorithm above, and the page's own charts. Open points are in `docs/nremt-needs
 
 ### Explore against Test yourself
 - Explore: free play on the call; nothing graded, nothing recorded.
-- Test yourself (one dropdown on the stage, "What to practice"): **Read a chart** (the old Read: all eleven charts,
+- Test yourself (one dropdown on the stage, "What to practice"): **Read a chart** (the old Read: all ten charts,
   the protocol dropdown, a part at a time, "Whole chart", "Why?" notes), **Build it** (the old board, unchanged:
   record `build:<anchor>`), **Drill me** (the old drill, unchanged: record `<anchor>:<step>`). Each is the old screen,
   moved in through `NremtStudio.kit2`, not copied; the chart HTML that `flow-build.js` and `flow-drill.js` read is
@@ -98,8 +98,8 @@ algorithm above, and the page's own charts. Open points are in `docs/nremt-needs
 
 ### What moved (nothing dropped silently)
 - Reading a chart (the old free view) is the first part of Test yourself, unchanged.
-- The other nine protocols (choking adult and infant, anaphylaxis, stroke, spinal motion restriction, shock, START,
-  SALT and the rest) are in Test yourself only (Read, Build it, Drill me). Candidates for later drawn calls: choking
+- The other eight protocols (choking adult and child, choking infant, anaphylaxis, stroke, spinal motion restriction,
+  shock, START, SALT) are in Test yourself only (Read, Build it, Drill me). Candidates for later drawn calls: choking
   (back blows and thrusts on a drawn infant), START triage (a scene with several patients).
 - The Read mode's legend of the three shapes and the chart's notes now sit in Read's own panel, as before.
 
@@ -112,7 +112,7 @@ no text block.
 
 ## Decisions made for the owner (also in the owner log)
 1. Explore is a drawn call beside a drawn protocol card, two tabs (primary assessment, cardiac arrest); the other
-   nine charts are Test yourself only.
+   eight charts are Test yourself only.
 2. Read, Build it and Drill me are the three Test yourself parts, unchanged; record ids unchanged.
 3. Deep links: `#flow-...` opens Read, `#build-...` Build it, `#drill` Drill me, `#test` Test yourself, `#call-...`
    Explore on that call.
@@ -177,3 +177,24 @@ Preview: `/mnt/user-data/outputs/nremt-flowcharts-v2/index.html`; shots in `/mnt
   neck and arm; the body is the same mannequin as the mnemonics patients.
 - The arrest patient's face does not change colour much with the gray overlay; the jets of blood are thin strokes.
 - Only Chromium.
+
+## Review round 1 (2026-11-19, independent review BLOCK; fixed on this branch)
+Merged `origin/claude/tools-v2-all` first (main after PR #228; both sides of the docs tables kept). Medicine and the
+three choices (three way pulse fork, "Signs of shock?", AVPU before X) were confirmed.
+Must fix:
+1. Spurting blood: three thick, bright jets with a light edge arc out of the wound toward his feet, clear of the pool
+   (the pool moved up beside the hip and lost its pale blob); drops at their ends; the label sits off the wound.
+2. Gray and pale: the clothes are opaque (no multiply), shaded with a gradient across the body; the overlays tint the
+   skin only, with a stronger tint on the face, and the lips turn blue as he grays.
+3. Carotid: an adult size hand (about 0.8 of his head's length) with two fingers out, the fingertips in the groove
+   beside the windpipe, the palm off the neck; the radial check uses the same hand.
+4. Jaw thrust: two hands at his head, fingers hooked behind the angles of the jaw, thumbs on the cheekbones, and a
+   small forward lift when they act.
+5. On every stage of 600 px and wider the whole body is framed left of the card (or above it under 1100 px); the card
+   sits beside him on wide stages from 1100 px.
+Should fix: CPR is two stacked hands on the lower half of the breastbone with the EMT's forearms; "Rapid exam" shows
+while the hand sweeps him (the hand stays); the first box reads "Scene safe, hold head still"; on a short phone
+(360 x 740) the stage is shorter so the arms and the cue are above the fold (the sweep checks it); labels keep off
+what they name (a keep out box per label: the wound and jets, the face, the hands, the pads); glass is drawn as
+irregular slivers with a highlight; the struck arm's cross is inline and the arm name never wraps; the brief says ten
+charts. Not taken: pads sliding on (they fade in).

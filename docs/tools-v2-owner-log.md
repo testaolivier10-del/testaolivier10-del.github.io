@@ -278,3 +278,5 @@ in each tool's brief.
 | 2026-11-19 | NREMT Flowcharts | Explore's circulation question is "Signs of shock?" rather than the chart's "bleeding uncontrolled / perfusion adequate" | Controlled bleeding can still mean shock; chart unchanged, point logged | `docs/nremt-needs-author.md` |
 | 2026-11-19 | NREMT Flowcharts | A wrong arm plays its consequence, stays struck on the card, and lost minutes stay on a clock until Start over | Irreversible states never heal; the student still finishes the call | `badSeq()` in `flow-explore.js` |
 | 2026-11-19 | NREMT Flowcharts | The legend of the chart shapes and each chart's notes sit in Read's panel; the scope note moved to "?" | No side panel in Explore | `nremt/flowcharts.html` |
+| 2026-11-19 | NREMT Flowcharts | Review round 1: the whole patient is framed beside or above the card on every stage of 600 px and wider; phones keep the close camera | No part of the patient under the card | `layout()` in `flow-explore.js` |
+| 2026-11-19 | NREMT Flowcharts | Review round 1: the first box reads "Scene safe, hold head still" | The fall puts the spine in question from the start (NREMT trauma sheet) | `CALLS` |
