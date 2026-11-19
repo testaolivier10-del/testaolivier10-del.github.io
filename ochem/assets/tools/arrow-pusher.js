@@ -103,12 +103,8 @@
         '<button type="button" data-src="build">Build your own</button>' +
         '<button type="button" data-src="chal">Mechanism challenge</button>' +
       '</div>' +
-      '<p class="tool-step" id="apStep"></p>' +
     '</div>' +
     '<div class="tpanel">' +
-      '<div class="tpanel__head" id="apPickH"><span>Pick something to push electrons on</span></div>' +
-      '<div id="apPicker"></div>' +
-      '<div id="apChalPick" hidden></div>' +
       '<div id="apBuilder" hidden></div>' +
       '<div id="apBuildMsg"></div>' +
       '<div id="apSend"></div>' +
@@ -119,7 +115,6 @@
           '<div class="tpanel__head"><span>Your arrows</span><span id="apName" class="tmuted"></span></div>' +
           '<div id="apSteps" class="ap-steps"></div>' +
           '<div id="apEditor"></div>' +
-          '<details id="apHintBox" class="ap-hint"><summary>Need a nudge?</summary><div id="apHint"></div></details>' +
         '</div>' +
       '</div>' +
       '<div>' +
@@ -133,11 +128,8 @@
       '</div>' +
     '</div>';
 
-  var elPicker  = document.getElementById('apPicker');
   var elName    = document.getElementById('apName');
   var elResult  = document.getElementById('apResult');
-  var elHint    = document.getElementById('apHint');
-  var elHintBox = document.getElementById('apHintBox');
   var elBooks   = document.getElementById('apBooksBody');
   var elSteps   = document.getElementById('apSteps');
   var elBuilder = document.getElementById('apBuilder');
@@ -148,27 +140,6 @@
     renderBooks();
   });
 
-  function groupHtml(g){
-    return '<div class="ap-group">' +
-      '<div class="ap-group__label">' + esc(g.label) + '</div>' +
-      '<div class="tchips">' + g.picks.map(function(p){
-        return '<button type="button" class="tchip" data-id="' + esc(p.id) + '">' + esc(p.label) + '</button>';
-      }).join('') + '</div>' +
-    '</div>';
-  }
-  elPicker.innerHTML = groupHtml(GROUPS[0]) +
-    '<details class="tool-more" id="apMore"><summary>More molecules <span class="tool-more__now">· ' +
-      esc(GROUPS.slice(1).map(function(g){ return g.label.toLowerCase(); }).join(', ')) + '</span></summary>' +
-      GROUPS.slice(1).map(groupHtml).join('') +
-    '</details>';
-
-  var STEP = {
-    lib: '<b>Tap a lone pair or a bond, then tap where those electrons go.</b>',
-    build: '<b>Draw a molecule</b>, then push electrons on it below.',
-    chal: '<b>Draw the arrows for each step</b>, then check them.'
-  };
-  function setStep(src){ document.getElementById('apStep').innerHTML = STEP[src] || STEP.lib; }
-  setStep('lib');
 
   /* ---- Tool Studio, the standard frame (docs/tools-frame-2026-11.md, F1) ----
      tool-shell.js mounts the frame; setupStudio() (near the end, once the
@@ -306,35 +277,11 @@
     if(ls.push) ls.push.disabled = !lastBuilt;
   }
 
-  elPicker.querySelectorAll('.tchip').forEach(function(b){
-    b.addEventListener('click', function(){
-      var pick = null;
-      ALL.forEach(function(p){ if(p.id === b.getAttribute('data-id')) pick = p; });
-      if(pick) select(pick);
-      // The arrows panel is below the picker: on a phone, take the student to it.
-      if(pick && window.OchemShowWork) window.OchemShowWork(document.getElementById('apName').closest('.tpanel'));
-    });
-  });
-
   function select(pick){
     current = pick;
-    elPicker.querySelectorAll('.tchip').forEach(function(b){
-      b.classList.toggle('on', b.getAttribute('data-id') === pick.id);
-    });
-    var inMore = document.querySelector('#apMore [data-id="' + pick.id + '"]');
-    if(inMore) document.getElementById('apMore').open = true;
-
     var mol = Mol.get(pick.id);
     if(ls){ ls.built = false; ls.pickLib.set(libPicks(pick.id)); ls.hintsLib.reset(); }
     begin(C.fromMolecule(mol), mol.name);
-
-    if(pick.hint){
-      elHintBox.style.display = '';
-      elHintBox.open = false;
-      elHint.innerHTML = '<p class="tmuted" style="margin:0;">' + esc(pick.hint) + '</p>';
-    } else {
-      elHintBox.style.display = 'none';
-    }
     update();
   }
 
@@ -484,7 +431,6 @@
           '<span class="tnote__k">Ready</span>Push electrons on it below. Nothing here is graded — but an arrow that could not have happened will still be told so.</div>';
         // The structure is legal, so it is worth somewhere else too.
         if(sendApi) sendApi.refresh();
-        elHintBox.style.display = 'none';
         // A fresh copy each time, so editing the drawing does not reach into a
         // mechanism that is already part-way through.
         /* Hydrogens drawn as atoms, like the ready-made molecules, so a built
@@ -526,11 +472,7 @@
       document.getElementById('apSrc').querySelectorAll('button').forEach(function(x){
         x.classList.toggle('on', x === b);
       });
-      elPicker.hidden = (src !== 'lib');
-      document.getElementById('apPickH').hidden = (src !== 'lib');
-      setStep(src);
       elBuilder.hidden = (src !== 'build');
-      document.getElementById('apChalPick').hidden = (src !== 'chal');
       if(src === 'chal'){ if(!ls) elBuildMsg.innerHTML = ''; startChal(chal.def || CHALLENGES[0]); return; }
       chal.on = false;
       if(src === 'build'){ openBuilder(); if(ls) buildAfter(); }
@@ -841,16 +783,7 @@
     var st0 = C.fromMolecule(Mol.get(def.mol));
     chal.states = [st0];
     def.steps.forEach(function(arr, i){ chal.states.push(C.apply(chal.states[i], arrowsOf(arr)).structure); });
-    var pick = document.getElementById('apChalPick');
-    pick.innerHTML = '<div class="tchips">' + CHALLENGES.map(function(c){
-      return '<button type="button" class="tchip' + (c === def ? ' on' : '') + '" data-chal="' + c.id + '" aria-pressed="' + (c === def) + '">' + esc(c.label) +
-        (c.steps.length > 1 ? ' <span class="tmuted">· ' + c.steps.length + ' steps</span>' : '') + '</button>';
-    }).join('') + '</div>';
-    pick.querySelectorAll('[data-chal]').forEach(function(b){
-      b.addEventListener('click', function(){ CHALLENGES.forEach(function(c){ if(c.id === b.getAttribute('data-chal')) startChal(c); }); });
-    });
     history = [];
-    elHintBox.style.display = 'none';
     if(ls){ ls.pickChal.value(def.id); ls.hintsChal.reset(); }
     startStep(C.clone(st0), Mol.get(def.mol).name);
     if(window.OchemToolState) window.OchemToolState.write({ chal: def.id });

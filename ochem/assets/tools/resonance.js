@@ -68,13 +68,8 @@
         '<button type="button" data-mode="hunt" class="on">Find the forms</button>' +
         '<button type="button" data-mode="compare">Compare two</button>' +
       '</div>' +
-      '<p class="tool-step" id="resStep"></p>' +
     '</div>' +
-    '<div class="tpanel" id="resPickPanel">' +
-      '<div class="tpanel__head"><span>Pick a molecule or ion</span></div>' +
-      '<div class="tchips" id="resPicker"></div>' +
-      '<details class="tool-more" id="resMore"><summary>Other species, or build your own</summary>' +
-        '<div class="tchips" id="resPicker2"></div>' +
+    '<details class="tool-more" id="resMore"><summary>Build your own</summary>' +
         '<div class="trow" style="margin-top:12px;">' +
           '<button type="button" class="tchip tchip--ghost" id="resBuildToggle">Build your own &rarr;</button>' +
         '</div>' +
@@ -82,7 +77,6 @@
         '<div id="resBuildMsg"></div>' +
         '<div id="resSend"></div>' +
       '</details>' +
-    '</div>' +
     '<div id="resCompare" hidden></div>' +
     '<div id="resHunt">' +
     '<div class="tsplit tsplit--wide">' +
@@ -97,7 +91,6 @@
         '<div class="tpanel__head"><span>Progress</span><span id="resCount" class="tmuted"></span></div>' +
         '<div id="resProgress"></div>' +
         '<div class="trow" style="margin-top:14px;">' +
-          '<button type="button" class="tchip" id="resReveal">Show me one I’m missing</button>' +
           '<button type="button" class="tchip" id="resReset">Start over</button>' +
         '</div>' +
         '<details class="tool-more" id="resChargeBox"><summary>Where the charge sits <span class="tool-more__now" id="resChargeK"></span></summary>' +
@@ -112,7 +105,6 @@
     '<div id="resSummary"></div>' +
     '</div>';
 
-  var elPicker  = document.getElementById('resPicker');
   var elName    = document.getElementById('resName');
   var elVerdict = document.getElementById('resVerdict');
   var elFound   = document.getElementById('resFound');
@@ -120,38 +112,17 @@
   var elSummary = document.getElementById('resSummary');
   var elProgress = document.getElementById('resProgress');
 
-  function chip(s){
-    return '<button type="button" class="tchip" data-id="' + esc(s.id) + '">' + esc(s.label) + '</button>';
-  }
+  // The species: the first six "Start here", the rest "More species" (one dropdown on the stage, below).
   var FIRST = 6;
-  elPicker.innerHTML = SPECIES.slice(0, FIRST).map(chip).join('');
-  document.getElementById('resPicker2').innerHTML = SPECIES.slice(FIRST).map(chip).join('');
-  var STEP = {
-    hunt: '<b>Tap a lone pair or a π bond, then tap where it goes</b> to draw another resonance form.',
-    compare: '<b>Pick two species, then call which one resonance stabilizes more.</b>'
-  };
-  function setStep(m){ document.getElementById('resStep').innerHTML = STEP[m] || STEP.hunt; }
-  setStep('hunt');
-  document.getElementById('resPickPanel').querySelectorAll('[data-id]').forEach(function(b){
-    b.addEventListener('click', function(){
-      SPECIES.forEach(function(s){ if(s.id === b.getAttribute('data-id')) select(s); });
-      // The drawing is below the picker: on a phone, take the student to it.
-      if(window.OchemShowWork) window.OchemShowWork(document.getElementById('resName').closest('.tpanel'));
-    });
-  });
 
   document.getElementById('resReset').addEventListener('click', function(){
     begin(start, elName.textContent);
   });
-  document.getElementById('resReveal').addEventListener('click', reveal);
   document.getElementById('resHybridOn').addEventListener('click', function(){ hybridOff = false; renderHybrid(); });
 
   function select(sp){
     current = sp;
-    document.getElementById('resPickPanel').querySelectorAll('[data-id]').forEach(function(b){
-      b.classList.toggle('on', b.getAttribute('data-id') === sp.id);
-    });
-    if(document.querySelector('#resPicker2 [data-id="' + sp.id + '"]')) document.getElementById('resMore').open = true;
+    if(SPECIES.indexOf(sp) >= FIRST) document.getElementById('resMore').open = true;
     var mol = Mol.get(sp.id);
     begin(C.fromMolecule(mol), mol.name);
   }
@@ -326,7 +297,6 @@
             (left === 1 ? 'One left.' : left + ' left to find.')) +
       '</p>';
 
-    document.getElementById('resReveal').disabled = remaining() === 0;
     renderCharge(got);
     renderSummary(got.length === target.length);
     renderHybrid();
@@ -598,7 +568,6 @@
           elBuildMsg.innerHTML = '<div class="tnote tnote--good" style="margin-top:12px;">' +
             '<span class="tnote__k">' + forms.length + ' forms</span>' +
             'Loaded. Move a lone pair or a pi bond and see which of them you can find.</div>';
-          document.getElementById('resPickPanel').querySelectorAll('[data-id]').forEach(function(b){ b.classList.remove('on'); });
           begin(C.clone(st), st.name || rep.formula);
         }
       });
@@ -846,8 +815,6 @@
       });
       elHunt.hidden = (mode !== 'hunt');
       elCompare.hidden = (mode !== 'compare');
-      document.getElementById('resPickPanel').hidden = (mode !== 'hunt');
-      setStep(mode);
       if(mode === 'compare' && !cmpLeft){
         setSide('a', 'acetate-ion');
         setSide('b', 'enolate');
@@ -880,30 +847,25 @@
     var prog = mk('ls-sec res-ls-prog');
     prog.appendChild(elProgress);
     // the reveal and start-over buttons are actions: they live in the dock, not under Why
-    var tools = byId('resReveal').parentNode; tools.classList.add('ls-row');
+    var tools = byId('resReset').parentNode; tools.classList.add('ls-row');
     tools.appendChild(byId('resHybridOn'));
     var formsWhy = mk('ls-sec res-ls-forms');
     var resMode = Kit.seg(byId('resMode'), 'data-mode');
-    Kit.scrollChips(byId('resPickPanel'));
     studio.add('stage', pics, { mode: 'hunt' });
     studio.add('stage', cmpStage, { mode: 'compare' });
-    /* The standard frame (F1): the species in one dropdown on the stage (the chips stay, out of sight, for the
-       tool's own state); Build your own keeps its disclosure; Show me one I'm missing is the hint ladder's answer,
+    /* The standard frame (F1): the species in one dropdown on the stage; Build your own keeps its disclosure; Show me one I'm missing is the hint ladder's answer,
        open after one real try (an arrow drawn and judged), with two hints before it. */
-    byId('resMore').querySelector('summary').textContent = 'Build your own';
     var pickGroups = function(){ return [{ label: 'Start here', items: SPECIES.slice(0, FIRST).map(function(x){ return { value: x.id, label: x.label }; }) },
       { label: 'More species', items: SPECIES.slice(FIRST).map(function(x){ return { value: x.id, label: x.label }; }) }]; };
     var hints = studio.hints({ hints: [
         'Look for a lone pair or a π bond next to another π bond, or next to an atom that is short of electrons.',
         'Move a pair one place over: a lone pair into the bond beside it, or a π bond toward its neighbor. If an atom would then pass an octet, move one of its π bonds on too. Atoms stay put; only electrons move.'
-      ], answer: { label: 'Show me one I’m missing', onShow: function(){ byId('resReveal').click(); return ''; } } });
-    byId('resReveal').hidden = true;
+      ], answer: { label: 'Show me one I’m missing', onShow: function(){ reveal(); return ''; } } });
     act.classList.add('ls-push');
     studio.add('dock', [byId('resMore'), hints.card, act, hints.row, tools], { mode: 'hunt' });
     var pick = studio.picker({ label: 'Molecule or ion', groups: pickGroups(), value: current.id, onChange: function(v){
       SPECIES.forEach(function(x){ if(x.id === v) select(x); });
     } }, 'hunt');
-    elPicker.hidden = true; byId('resPicker2').hidden = true;
     studio.add('dock', cmpDock, { mode: 'compare' });
     studio.add('why', [elVerdict, prog, elSummary, formsWhy], { mode: 'hunt' });
     studio.add('why', cmpWhy, { mode: 'compare' });
