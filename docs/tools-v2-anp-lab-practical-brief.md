@@ -164,7 +164,33 @@ Open points for a person: `docs/anp-needs-author.md`, "Lab practical tool, tools
 - `docs/anp-spec.md` decision 101.
 
 ## Checks run (2026-11-18)
-See "Checks" at the end (filled in after the runs).
+`node --test scripts/test/anp-*.test.mjs` 55 pass; `check-anp-content` 0 failing (tools too, with the new
+`lab-specimens` validator); `build-anp --check` clean; `check-site` OK; `check-weight --check` all 620 within budget (two
+raised, above); `build-apcalc --check` and `build-apmacro --check` clean (the shared kit changed);
+`python3 scripts/build-lab-specimens.py --check` clean; `check-tool-use` with a local copy of its list (this tool in
+place of the old-frame sample): tool-open, tool-touch(explore), tool-mode(quiz), tool-use as frame v2, nothing under
+automation (the file itself is the collecting branch's, unchanged).
+Sweep (`scripts/tools-v2/anp-lab-practical-sweep.mjs`, one width per process, all ten widths, light and dark): every
+specimen at landing and with each of its 70 parts named; 158 to 229 checks per width, 0 failing (card inside the
+picture and clear of its own pins, of every other pin and of the find button; pins inside the picture and apart;
+picture fills the plate or half the screen and is the largest thing; cause line two rows at most on phones, one
+height up to 1,100 px, pills inside it; the first visit cue on every tab clear of pins, card and button and inside the
+picture; a real tap (mouse, or touch on phones) beside a pin names it, a tap on bare picture closes the card; find
+forgives case, a slip, an accepted name and a start; no sideways scroll; no console errors). Contact sheets:
+`/mnt/user-data/outputs/anp-lab-practical-v2/sweep/`.
+Playwright at 390, 768 and 1440, light and dark (166 checks, 0 failing): opens on Explore with the cue and no dropdown;
+a touch tap (phone, tablet) or click names the part, card and cause line agree mid animation (frame at 90 ms), the
+screen reader line names the current part, the cue leaves; arrow keys move to the next pin, Escape closes; find by
+name; all six tabs (frames mid cross fade and after); Test yourself opens on the Explore specimen's set; typed answers
+right and wrong marked and recorded as `lab-practical:<set>:<figure>:<label>`; the timed practical starts, and
+switching to Explore mid run stops it (nothing left on screen); reduced motion fades the card in with no grow; the
+real locked state shows the Premium card as before; ten deep links land as listed above; no console errors.
+Performance (CPU x4, taps every 60 ms): median frame 16.7 ms at 390 and 1440; p95 33 ms at 1440 and 83 ms at 390 (a
+tap is one event, not a drag; the long frames are the card placement on the phone's denser picture).
+Shots: `/mnt/user-data/outputs/anp-lab-practical-v2/shots/` (landing, mid grow, tap, find, each tab mid swap and after,
+quiz right and wrong, timed setup and run, reduced motion, locked); preview `index.html` (made with the new
+`--json` option of `scripts/tool-preview.mjs`, which inlines the specimens and their pictures). Compared side by side
+with the flagship's shots: same frame, tabs, purpose line, cue and cause line.
 
 ## Not done, and what I am not happy with
 - The specimens are flat figures with pins, not shaded regions: a tap names the nearest pin, so a tap on the far edge
@@ -174,6 +200,9 @@ See "Checks" at the end (filled in after the runs).
   region, the heart's left wall); the drawing reads clean at the shown size, but enlarged it shows.
 - K.spots' `ask()` ("find it") is built and documented for the next explorers but not used here: Test yourself
   keeps the old Quiz with its "point to" mode, which records the same ids.
+- On a desktop a portrait specimen (heart, skin, kidney) leaves white plate on both sides of the picture: the picture
+  is fitted to the height, so the stage is not filled edge to edge as the flagship's lake is.
+- Tap performance on a phone at CPU x4: p95 83 ms when tapping every 60 ms (the card placement scores many places).
 - Test yourself is the old layout inside the new frame (its own figure, zoom, dropdown and switch); it was not
   redesigned.
 - No real phone, no screen reader pass, no real students; the independent review is next.
