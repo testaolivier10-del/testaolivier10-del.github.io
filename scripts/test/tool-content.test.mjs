@@ -1394,3 +1394,93 @@ test('arrow pusher v2: a hand drawn intermediate is used where molecules.js has 
   const span = (x) => { const v = Object.values(x.atoms); return [Math.max(...v.map(a => a.x)) - Math.min(...v.map(a => a.x)), Math.max(...v.map(a => a.y)) - Math.min(...v.map(a => a.y))]; };
   assert.ok(span(tall)[0] < span(wide)[0] * 0.7 && span(tall)[1] > span(wide)[1], 'the phone layout is not stacked');
 });
+
+/* ====================================================================== */
+/* 3D Molecule Viewer, tools v2 (docs/tools-v2-viewer-3d-brief.md): the cause line, the card, the arc and the R or S
+   letters all read OchemViewer3DModel, so the model is what is checked. */
+function viewerModel(){
+  const s = browser({ OchemToolQuiz: { mount(){ return {}; }, shuffle: a => a, esc: x => String(x) }, OchemTools: null })
+    .load(...CORE, 'ochem/assets/tools/viewer-3d.js');
+  return { M: s.OchemViewer3DModel, LIB: s.OchemMol3DLibrary, M3: s.OchemMol3D };
+}
+
+test('viewer-3d v2: each tapped atom is named and explained from its electron groups', () => {
+  const { M, LIB } = viewerModel();
+  const line = (id, i) => { const m = LIB.get(id); return M.causeParts(M.readAtom(m, i == null ? m.focus : i)).map(x => x.t).join(' | '); };
+  assert.equal(line('ammonia'), '3 bonds | 1 lone pair | 4 groups, sp³ | trigonal pyramidal 107°');
+  assert.equal(line('water'), '2 bonds | 2 lone pairs | 4 groups, sp³ | bent 104.5°');
+  assert.equal(line('methane'), '4 bonds | no lone pairs | 4 groups, sp³ | tetrahedral 109.5°');
+  assert.equal(line('boron-trifluoride'), '3 bonds | no lone pairs | 3 groups, sp² | trigonal planar 120°');
+  assert.equal(line('carbon-dioxide-3d'), '2 bonds | no lone pairs | 2 groups, sp | linear 180°');
+  assert.equal(line('phosphorus-pentachloride'), '5 bonds | no lone pairs | 5 groups, sp³d | trigonal bipyramidal 90°');
+  assert.equal(line('sulfur-hexafluoride'), '6 bonds | no lone pairs | 6 groups, sp³d² | octahedral 90°');
+  // a double or triple bond is one group
+  // ethene and formaldehyde carry their measured H–C–H (a double bond pushes a little harder)
+  assert.equal(line('ethene'), '3 bonds | no lone pairs | 3 groups, sp² | trigonal planar 117.4°');
+  assert.equal(line('formaldehyde-3d'), '3 bonds | no lone pairs | 3 groups, sp² | trigonal planar 116.5°');
+  assert.equal(line('ethyne'), '2 bonds | no lone pairs | 2 groups, sp | linear 180°');
+  // formamide's flat nitrogen: the pair is shared, never "no lone pairs"
+  assert.equal(line('formamide'), '3 bonds | lone pair shared with C=O | 3 groups, sp² | trigonal planar ideal 120°');
+  // the methyl cation and anion differ by one pair
+  assert.equal(line('methyl-cation'), '3 bonds | no lone pairs | 3 groups, sp² | trigonal planar 120°');
+  assert.equal(line('methyl-anion'), '3 bonds | 1 lone pair | 4 groups, sp³ | trigonal pyramidal ideal 109.5°');
+  // review round 1: measured angles, not ammonia's copied; a model atom says "ideal"; a three membered ring says so
+  assert.equal(line('hydronium'), '3 bonds | 1 lone pair | 4 groups, sp³ | trigonal pyramidal 113°');
+  assert.equal(line('methanol', 1), '2 bonds | 2 lone pairs | 4 groups, sp³ | bent 108.5°');
+  assert.equal(line('methanol', 0), '4 bonds | no lone pairs | 4 groups, sp³ | tetrahedral ideal 109.5°');
+  assert.equal(line('cyclopropane-3d'), '4 bonds | no lone pairs | 4 groups, sp³ | tetrahedral, the ring squeezes it to 60°');
+  assert.equal(line('ethane'), '4 bonds | no lone pairs | 4 groups, sp³ | tetrahedral ideal 109.5°');
+  // recheck 1: formamide's carbon at its measured angles (smallest N–C–H 112.5°), dimethyl ether's C–O–C 111.7°
+  assert.equal(line('formamide', 0), '3 bonds | no lone pairs | 3 groups, sp² | trigonal planar 112.5°');
+  assert.equal(line('dimethyl-ether'), '2 bonds | 2 lone pairs | 4 groups, sp³ | bent 111.7°');
+  for(const id of ['cyclohexane-chair-3d', 'cyclohexane-boat-3d']){
+    const m = LIB.get(id);
+    const all = m.atoms.map((a, i) => a.el === 'C' ? line(id, i) : null).filter(Boolean);
+    assert.equal(all.length, 6, id);
+    all.forEach(t => assert.equal(t, '4 bonds | no lone pairs | 4 groups, sp³ | tetrahedral ideal 109.5°', id));
+  }
+  // the label on the picture is the end of the line
+  for(const m of LIB.ALL){
+    const r = M.readAtom(m, m.focus);
+    if(r.shape && r.angle !== null) assert.ok(M.causeParts(r).slice(-1)[0].t.endsWith(M.angleLabel(r)), m.id);
+  }
+  // an end atom has no shape of its own
+  assert.equal(line('ammonia', 1), '1 bond | an end atom, no shape of its own');
+  assert.equal(line('sulfur-hexafluoride', 1), '1 bond | 3 lone pairs | an end atom, no shape of its own');
+  // every central atom the card names carries the VSEPR table's name
+  for(const m of LIB.ALL){
+    const r = M.readAtom(m, m.focus);
+    if(r.shape) assert.equal(r.name, r.shape.m, m.id);
+  }
+});
+
+test('viewer-3d v2: R or S read off the drawn frame agrees with the 3D configuration, and the mirror reads the other', () => {
+  const { M, LIB, M3 } = viewerModel();
+  const mol = LIB.get('chiral-carbon');
+  const pr = M.priorities(mol, 0);
+  assert.equal(pr.map(i => mol.atoms[i].el).join(' '), 'Br Cl F H');
+  const cfg = M.config3D(mol, 0);
+  assert.equal(cfg, 'S');
+  // its mirror image (x -> -x) is the other one
+  const mir = { atoms: mol.atoms.map(a => Object.assign({}, a, { pos: M3.v(-a.pos.x, a.pos.y, a.pos.z) })), bonds: mol.bonds };
+  assert.equal(M.config3D(mir, 0), 'R');
+  // "H to the back" really points it away
+  const t = M.awayView(M3.sub(mol.atoms[pr[3]].pos, mol.atoms[0].pos));
+  const h = M.rotate(M3.norm(M3.sub(mol.atoms[pr[3]].pos, mol.atoms[0].pos)), t.rx, t.ry);
+  assert.ok(h.z < -0.999 && Math.abs(t.rx) <= 1.45, 'H to the back');
+  // every orientation with the H within 35 degrees of straight back: the screen reading (y down) is the configuration
+  let n = 0, seed = 7;
+  const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  for(let k = 0; k < 4000; k++){
+    const rx = -1.45 + 2.9 * rnd(), ry = 6.283 * rnd();
+    const hd = M.rotate(M3.norm(M3.sub(mol.atoms[pr[3]].pos, mol.atoms[0].pos)), rx, ry);
+    if(-hd.z < M.BACK) continue;
+    n++;
+    for(const mirror of [null, 'x', 'y']){
+      const P = pr.slice(0, 3).map(i => { const q = M.rotate(mol.atoms[i].pos, rx, ry, mirror); return [q.x, -q.y]; });
+      const read = M.readTurn(P[0], P[1], P[2]) === 'cw' ? 'R' : 'S';
+      assert.equal(read, mirror ? (cfg === 'R' ? 'S' : 'R') : cfg, `rx ${rx} ry ${ry} mirror ${mirror}`);
+    }
+  }
+  assert.ok(n > 200, `only ${n} orientations had the H at the back`);
+});
