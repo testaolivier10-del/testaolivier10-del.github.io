@@ -77,7 +77,7 @@
 .px-svg .is-h{color:var(--px-h-ink);} .px-svg .is-ph{color:var(--px-ph-ink);} .px-svg .is-o2{color:var(--px-o2-ink);}
 .px-svg .is-adh{color:var(--px-adh-ink);} .px-svg .is-aqp{color:var(--px-aqp-ink);} .px-svg .is-water{color:var(--px-water-ink);}
 .px-svg .is-urine{color:var(--px-urine-ink);} .px-svg .is-fill{color:var(--px-fill-ink);} .px-svg .is-sv{color:var(--px-sv-ink);} .px-svg .is-co{color:var(--px-co-ink);}
-:root[data-theme="dark"] .px-art{filter:brightness(.9) saturate(.95);}
+
 
 /* shared */
 .px-bg{fill:var(--px-bg);}
@@ -103,7 +103,7 @@
 .px-lumen.is-v{fill:#C9BEDF;}
 .px-rim{fill:#C55346;stroke:#8E2F25;stroke-width:1.5;} .px-rim.is-v{fill:#6D5C9E;stroke:#3F3270;}
 .px-rim-in{fill:#8E2F25;opacity:.55;}
-.px-band{fill:none;stroke:var(--px-mus);stroke-width:11;stroke-linecap:round;opacity:.9;}
+.px-band{fill:none;stroke:var(--px-mus);stroke-width:7.5;stroke-linecap:round;opacity:.92;}
 .px-gface{fill:#FFFFFF;stroke:#5D6470;stroke-width:2.5;}
 .px-gstem{stroke:#8C939E;stroke-width:6;stroke-linecap:round;}
 .px-gtick{stroke:#8C939E;stroke-width:2;stroke-linecap:round;}
@@ -142,7 +142,7 @@
 .px-adhv{fill:none;stroke:#B9493D;stroke-width:12;stroke-linecap:round;stroke-linejoin:round;}
 .px-adhl{fill:none;stroke:color-mix(in srgb, var(--px-adh) 55%, #E37C6B);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;}
 .px-kid{stroke:#6E2620;stroke-width:2.5;}
-.px-pyr{fill:#B44E44;opacity:.75;}
+.px-pyr{fill:#8E352C;opacity:.8;}
 .px-ureter{fill:none;stroke:#E8C77E;stroke-width:8;stroke-linecap:round;}
 .px-bladder{fill:#FFFFFF;stroke:#B9A27A;stroke-width:2.5;}
 .px-urine{stroke:none;}
@@ -164,13 +164,21 @@
 .px-myo{stroke:#6E1F17;stroke-width:3;}
 .px-cav{stroke:none;}
 .px-cav.is-de{fill:#6E8FC4;} .px-cav.is-ox{fill:#E26654;}
+.px-aur{fill:#B44A3E;stroke:#6E1F17;stroke-width:3;}
+.px-sulc{fill:none;stroke:#8E2F25;stroke-width:3;opacity:.45;stroke-linecap:round;}
+.px-leaf{stroke:#F6E7CF;stroke-width:6;stroke-linecap:round;fill:none;}
+.px-pt{fill:none;stroke:#30507F;stroke-width:28;stroke-linecap:round;}
+.px-pt-l{fill:none;stroke:#7B9BD0;stroke-width:19;stroke-linecap:round;}
+.px-cortex{fill:#C96A5E;opacity:.55;}
+.px-pyrs{fill:none;stroke:#7A2A22;stroke-width:1.5;opacity:.6;}
+.px-pelvis{fill:#F2E3B8;stroke:#C9A96A;stroke-width:1.5;}
 .px-cor{fill:none;stroke:#E9C08E;stroke-width:3;stroke-linecap:round;opacity:.7;}
 .px-ring{fill:none;stroke:#F2E2C8;stroke-width:6;stroke-linecap:round;}
 .px-cava{fill:none;stroke:#3F5F92;stroke-width:34;stroke-linecap:round;}
 .px-cava-l{fill:none;stroke:#7B9BD0;stroke-width:24;stroke-linecap:round;}
 .px-aorta{fill:none;stroke:#8E2F25;stroke-width:34;stroke-linecap:round;stroke-linejoin:round;}
 .px-aorta-l{fill:none;stroke:#E9A497;stroke-width:24;stroke-linecap:round;stroke-linejoin:round;}
-.px-slug{fill:none;stroke:var(--px-sv);stroke-linecap:round;stroke-linejoin:round;}
+.px-slug{fill:none;stroke:var(--px-sv);stroke-width:16;stroke-linecap:round;stroke-linejoin:round;}
 .px-beat path{fill:none;stroke:var(--px-same);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;}
 .px-z{stroke:#3F3270;stroke-width:5;stroke-linecap:round;}
 .px-thin{stroke:#D96C5E;stroke-width:5;stroke-linecap:round;}
@@ -186,3 +194,6 @@
 :root[data-theme="dark"] .px-rail{stroke:color-mix(in srgb, #ffffff 25%, transparent);}
 :root[data-theme="dark"] .px-railt{stroke:color-mix(in srgb, #ffffff 35%, transparent);}
 :root[data-theme="dark"] .px-chest{fill:#E9D3C6;}
+
+/* the "before" tick's word sits beside a vertical track (on a pill), never on the vessel it rides */
+.px-main[data-vt="1"] .tk2-before b{left:22px;top:-9px;transform:none;padding:2px 6px;border-radius:999px;background:var(--white);box-shadow:0 0 0 1px color-mix(in srgb, var(--ink) 15%, transparent);}

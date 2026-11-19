@@ -47,7 +47,14 @@ for (const [tab, jumps] of Object.entries(JUMPS)) {
         if (take && !calm && st.dc) bad.push(`${t}ms: takeaway before the change settled`);
         if (!take) {
           const pills = [...cz.querySelectorAll('.tk2-cz')].map((p) => p.textContent);
-          pills.slice(1).forEach((p) => { const node = Object.keys(words).find((k) => p.startsWith(words[k])); if (!node) bad.push(`${t}ms: pill "${p}" names no link`); else if (!st.d[node]) bad.push(`${t}ms: pill "${p}" before ${node} moved`); });
+          pills.slice(1).forEach((p) => {
+            const node = Object.keys(words).find((k) => p.startsWith(words[k]));
+            if (!node) { bad.push(`${t}ms: pill "${p}" names no link`); return; }
+            if (!st.d[node]) bad.push(`${t}ms: pill "${p}" before ${node} moved`);
+            // the arrow says how the drawn value is really moving (no false causes on a reversal)
+            const ar = /↑/.test(p) ? 1 : /↓/.test(p) ? -1 : 0;
+            if (ar !== st.raw[node]) bad.push(`${t}ms: pill "${p}" but ${node} is moving ${st.raw[node]}`);
+          });
           const order = Object.keys(words), idx = pills.slice(1).map((p) => order.findIndex((k) => p.startsWith(words[k])));
           idx.forEach((v, i) => { if (v !== i) bad.push(`${t}ms: cause line out of order (${pills.join(' > ')})`); });
         }
