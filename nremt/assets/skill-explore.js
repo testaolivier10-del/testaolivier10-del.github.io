@@ -320,8 +320,17 @@
       if(o.onAct) o.onAct('step', St.key);
       // the words wait for the picture: the item comes in (about half a second), then the cause line and the marks
       clearTimeout(causeT);
-      var wait = K.reduced() ? 0 : 420;
-      causeT = setTimeout(function(){ causeT = 0; causeFor(i, on); }, wait);
+      if(K.reduced()){ causeFor(i, on); }
+      else {
+        // checked each frame: once every item coming in is mostly there (and every item leaving mostly gone)
+        var t0 = performance.now(), items = [].slice.call(ptHost.querySelectorAll('.sp-item'));
+        var wait = function(){
+          var busy = items.some(function(it){ var o = +getComputedStyle(it).opacity, onIt = it.classList.contains('on'); return onIt ? o < 0.65 : o > 0.35; });
+          if(busy && performance.now() - t0 < 1600){ causeT = setTimeout(wait, 40); return; }
+          causeT = 0; causeFor(i, on);
+        };
+        causeT = setTimeout(wait, 60);
+      }
       if(how !== 'tap') toView();
     }
 
