@@ -103,7 +103,7 @@
     mouthO: 'M231 117Q240 113 249 117Q248 128 240 129Q232 128 231 117Z'
   };
   // a gloved hand seen from above, fingers toward -y, wrist at +y (local px, about 40 wide)
-  var GLOVE = '<path class="fx2-glove" d="M-18 6C-20 -6 -19 -22 -16 -30L-12 -44C-11 -48 -6 -48 -5 -44L-4 -30L-2 -48C-1 -52 4 -52 5 -48L6 -30L9 -46C10 -50 15 -50 15 -46L13 -28L17 -40C18 -44 23 -43 22 -39L18 -16C17 -4 14 6 10 12L-12 14Z"/><rect class="fx2-cuff" x="-14" y="10" width="26" height="16" rx="5"/>';
+  var GLOVE = '<path class="fx2-glove" d="M-18 6C-20 -6 -19 -22 -16 -30L-12 -44C-11 -48 -6 -48 -5 -44L-4 -30L-2 -48C-1 -52 4 -52 5 -48L6 -30L9 -46C10 -50 15 -50 15 -46L13 -28L17 -40C18 -44 23 -43 22 -39L18 -16C17 -4 14 6 10 12L-12 14Z"/><rect class="fx2-cuff" x="-13" y="10" width="24" height="12" rx="6"/>';
 
   // a glove at (x, y) turned rot degrees; adult hand size (a hand is about 7 inches, the figure about 70 tall)
   function glove(x, y, rot, cls, sc){ return '<g' + (cls ? ' class="' + cls + '"' : '') + ' transform="translate(' + x + ' ' + y + ') rotate(' + rot + ') scale(' + (sc || 1.9) + ')">' + GLOVE + '</g>'; }
@@ -184,9 +184,9 @@
     function layout(){
       var W = box.clientWidth, H = box.clientHeight;
       if(!W || !H) return null;
-      var wide = W >= 720, sc, card;
+      var wide = W >= 900, sc, card;
       if(wide){
-        var cw = clamp(Math.round(W * 0.36), 260, 420);
+        var cw = clamp(Math.round(W * 0.32), 260, 400);
         sc = { x: 0, y: 0, w: W - cw - 16, h: H };
         card = { x: W - cw - 6, y: 12, w: cw - 6, h: H - 24 };
       } else {
@@ -194,11 +194,11 @@
         sc = { x: 0, y: 0, w: W, h: sh };
         card = { x: 8, y: sh + 8, w: W - 16, h: H - sh - 14 };
       }
-      return { W: W, H: H, wide: wide, phone: W < 600, sc: sc, card: card };
+      return { W: W, H: H, wide: wide, phone: W < 600, sc: sc, card: card, full: sc.w >= 820 && sc.w / sc.h >= 1.35 };
     }
     // the camera: frames image y range [y0, y1] (along the body) inside the scene; head left
     function cam(range){
-      var sc = G.sc, m = G.phone ? 6 : 14, span = range[1] - range[0], across = G.wide ? 470 : 330;
+      var sc = G.sc, m = G.phone ? 6 : 14, span = range[1] - range[0], across = G.full ? 470 : 330;
       var k = Math.min((sc.w - 2 * m) / span, (sc.h - 2 * m) / across);
       var ym = (range[0] + range[1]) / 2, xm = 240;
       return { k: k, cx: sc.x + sc.w / 2, cy: sc.y + sc.h / 2 + (G.wide ? 0 : 4), xm: xm, ym: ym };
@@ -211,7 +211,7 @@
       gCam.style.transform = 'translate(' + V.cx.toFixed(1) + 'px,' + V.cy.toFixed(1) + 'px) rotate(-90deg) scale(' + V.k.toFixed(4) + ') translate(' + (-V.xm) + 'px,' + (-V.ym) + 'px)';
       if(instant || reduced()){ void gCam.getBoundingClientRect(); gCam.style.transition = ''; }
     }
-    function lookFor(step){ return G && G.wide ? C().whole : step ? step.look : C().whole; }
+    function lookFor(step){ return G && G.full ? C().whole : step ? step.look : C().whole; }
 
     /* ---------------------------------------------------- the floor (stage px) */
     function svgEl(tag, attrs, parent){ var e = document.createElementNS(NS, tag); for(var a in attrs) e.setAttribute(a, attrs[a]); if(parent) parent.appendChild(e); return e; }
@@ -255,7 +255,7 @@
         u.push('<g class="fx2-pool"><ellipse cx="96" cy="800" rx="78" ry="104" fill="url(#fx2-poolg)"/><ellipse class="fx2-pool-hi" cx="78" cy="770" rx="20" ry="30"/></g>');
       } else {
         u.push('<rect class="fx2-rug" x="-40" y="140" width="560" height="900" rx="10"/><rect class="fx2-rug-b" x="-16" y="164" width="512" height="852" rx="6"/>' +
-          '<g class="fx2-sofa"><rect x="520" y="-60" width="200" height="760" rx="40"/><rect class="fx2-sofa-c" x="540" y="-30" width="150" height="330" rx="26"/><rect class="fx2-sofa-c" x="540" y="320" width="150" height="330" rx="26"/></g>' +
+          '<g class="fx2-sofa"><rect x="520" y="-60" width="200" height="760" rx="40"/><rect class="fx2-sofa-k" x="660" y="-60" width="60" height="760" rx="24"/><rect class="fx2-sofa-c" x="540" y="-30" width="130" height="330" rx="26"/><rect class="fx2-sofa-c" x="540" y="320" width="130" height="330" rx="26"/><path class="fx2-sofa-s" d="M560 0Q600 130 560 270M560 350Q600 480 560 620"/></g>' +
           '<g class="fx2-mug" transform="translate(-60 470)"><circle r="26"/><circle class="fx2-mug-c" r="18"/><path class="fx2-spill" d="M20 10C60 20 90 60 70 100C50 120 10 90 4 50Z"/></g>');
       }
       if(F){
@@ -510,7 +510,7 @@
       switch(step.check){
         case 'voice': return [[0, look], [500, function(){ speak('emt', 'Sir, can you hear me?'); }], [1000, function(){ f.eyes = 'open'; paintFx(); }],
           [450, function(){ speak('pt', 'Mmh…'); setLabels([{ text: 'Eyes open to voice', at: [240, 77] }]); }]];
-        case 'bleed': return [[0, look], [600, function(){ speak(null); f.bleed = 'spurt'; paintFx(); }], [500, function(){ setLabels([{ text: 'Spurting blood', at: [150, 784] }]); }]];
+        case 'bleed': return [[0, look], [600, function(){ speak(null); f.eyes = 'closed'; f.bleed = 'spurt'; paintFx(); }], [500, function(){ setLabels([{ text: 'Spurting blood', at: [150, 784] }]); }]];
         case 'snore': return [[0, look], [500, function(){ f.snore = true; paintFx(); }], [700, function(){ setLabels([{ text: 'Snoring', at: [240, 150] }]); }]];
         case 'breathe': return [[0, function(){ look(); f.snore = false; paintFx(); }], [500, function(){ f.chest = 'rise'; paintFx(); }], [1400, function(){ setLabels([{ text: 'Chest rises fully', at: [240, 310] }]); }]];
         case 'shock': return [[0, function(){ look(); f.chest = ''; paintFx(); }], [500, function(){ f.pale = Math.max(f.pale, 1); f.sweat = true; paintFx(); }], [700, function(){ f.pulse = true; paintFx(); }],

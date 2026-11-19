@@ -16,7 +16,7 @@
 .fx2 .tk2-cz.is-bad{--cz:var(--fx-bad);}
 
 .fx2-scene{position:relative;flex:1 1 auto;min-height:520px;border-radius:18px;overflow:hidden;background:#C9C5BC;isolation:isolate;}
-@media (max-width:1023px){ .fx2-scene{flex:none;height:max(540px,min(72vw,640px));} }
+@media (max-width:1023px){ .fx2-scene{flex:none;height:max(560px,min(78vw,680px));} }
 @media (max-width:719px){ .fx2-scene{height:max(600px,min(160vw,660px));border-radius:14px;} .fx2{gap:8px;} }
 .fx2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;transition:opacity .25s ease;}
 .fx2-scene.is-swap .fx2-svg,.fx2-scene.is-swap .fx2-board,.fx2-scene.is-swap .fx2-labels{opacity:0;transition:none;}
@@ -31,7 +31,7 @@
 .fx2-rail{fill:#C5CCD3;stroke:#7F8892;stroke-width:4;} .fx2-rung{fill:#AEB6BF;stroke:#7F8892;stroke-width:3;}
 .fx2-glass{fill:#DDEFF6;stroke:#8DB2C2;stroke-width:2;opacity:.85;}
 .fx2-rug{fill:#8E3B32;} .fx2-rug-b{fill:none;stroke:#E2C38E;stroke-width:8;}
-.fx2-sofa rect{fill:#5F6F7E;} .fx2-sofa .fx2-sofa-c{fill:#6F8090;stroke:#55636F;stroke-width:3;}
+.fx2-sofa rect{fill:#5F6F7E;} .fx2-sofa .fx2-sofa-k{fill:#4E5C69;} .fx2-sofa .fx2-sofa-c{fill:#7A8B9B;stroke:#55636F;stroke-width:3;} .fx2-sofa-s{fill:none;stroke:#8C9DAD;stroke-width:6;stroke-linecap:round;opacity:.6;}
 .fx2-mug circle{fill:#F4EFE6;stroke:#8C6A4E;stroke-width:3;} .fx2-mug .fx2-mug-c{fill:#6B4A33;} .fx2-spill{fill:#6B4A33;opacity:.55;}
 .fx2-pool{transform-box:fill-box;transform-origin:70% 50%;transition:transform 1.4s cubic-bezier(.3,.7,.3,1);}
 .fx2-pool-hi{fill:#E0473A;opacity:.35;}
@@ -75,7 +75,7 @@
 .fx2-snore.is-on .fx2-arc{animation:fx2-snore 1.6s ease-out infinite;}
 .fx2-arc1{animation-delay:.2s !important;} .fx2-arc2{animation-delay:.4s !important;}
 @keyframes fx2-snore{0%{opacity:0;}30%{opacity:.9;}100%{opacity:0;}}
-.fx2-glove{fill:#6F6BD8;stroke:#3F3A9E;stroke-width:2.4;stroke-linejoin:round;} .fx2-cuff{fill:#24344A;}
+.fx2-glove{fill:#6F6BD8;stroke:#3F3A9E;stroke-width:2.4;stroke-linejoin:round;} .fx2-cuff{fill:#3A4A60;}
 .fx2-jaw g g,.fx2-jaw > g{transition:transform .5s cubic-bezier(.3,.8,.3,1);}
 .fx2-rl{fill:none;stroke:#FFFFFF;stroke-width:6;stroke-linecap:round;opacity:.0;}
 .fx2-rglow{fill:#FFFFFF;opacity:0;}

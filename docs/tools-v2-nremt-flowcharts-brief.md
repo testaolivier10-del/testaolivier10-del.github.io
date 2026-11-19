@@ -126,4 +126,24 @@ no text block.
    sample before integration).
 
 ## Build notes
-(Filled in as the build goes.)
+- `nremt/assets/flow-explore.js` and `.css`: the two calls (`CALLS`: steps, arms, what each arm does), the floors
+  (garage concrete with the fallen ladder and glass; a living room floor with a rug, a sofa and a spilled mug), the
+  patient (`LevlBodyFigs` `body`, `adult-front`, fetched only when shown) with clothes clipped to his outline, a drawn
+  face (eyes open or closed, mouth, blue lips, sweat), a pale and a gray overlay under the clothes, and everything an
+  action or a consequence draws (wound and jets, pool of blood, tourniquet with its windlass, snoring arcs, gloved
+  hands for the jaw thrust, the radial pulse, the shoulder tap, the carotid check and CPR, chest rise lines, blanket,
+  bag and mask, pads and wires, the shock). The AED is drawn in stage px (its words read). The protocol card is HTML
+  over the picture (a clipboard: nodes, arm buttons, connectors in its own svg that draw in, a view that pans to the
+  newest box). A "camera" frames the part of him that matters on a narrow stage (the whole call on a wide one).
+- What is drawn is a function of the call's `fx` state; a step changes `fx`, waits for the drawing, then names it
+  (labels, the cause line's last pill). One timer owner (`run()`); `hidden()` finishes a running step at once, so
+  Test yourself never shows half a step and nothing runs while Explore is hidden.
+- `nremt/flowcharts.html`: loads the kit, the adapter, `body-figures.js` and the tool; its script keeps every old
+  piece (chart decorations, the protocol select, a part at a time, Why?, short names, Build's picker and finished card,
+  Drill's verdict pills) and hands Read, Build it and Drill me to `NremtStudio.kit2` as Test yourself parts. The chart
+  HTML that `flow-build.js`, `flow-drill.js` and the tutor read is unchanged; `?studio=0` keeps the old page.
+- `scripts/tools-v2/nremt-flowcharts-sweep.mjs`: the kept sweep (one process per width, then `--frames`).
+- A one file preview needs the body figure inlined by hand (the shared `tool-preview.mjs` does not follow
+  `LevlBodyFigs.load`); the preview in outputs was patched that way, the script was not changed.
+- `scripts/check-tool-use.mjs` is not edited (its NREMT sample moved to Formulary on the collecting branch, merged
+  here); a local copy listing this page reports frame v2: open, touch, mode, use; nothing under automation.
