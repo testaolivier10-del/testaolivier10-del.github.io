@@ -98,7 +98,7 @@ const geo = (page) => page.evaluate(() => {
   // each plant's drawn height, from the end of its stem (viewBox units) and the scale (cm per unit)
   const hts = [0, 1].map(g => qa(`.dd2-plants [data-g="${g}"] .dd2-pl`).filter(p => +(p.style.opacity || 1) > 0.5).map(p => { const d = p.querySelector('.dd2-stem').getAttribute('d') || ''; const m = /(-?[\d.]+)\s*$/.exec(d); return m ? -parseFloat(m[1]) / k : 0; }));
   const labs = [];
-  qa('.dd2-svg [data-lab]').forEach(t => { if (!vis(t)) return; const box = t.closest('.dd2-mp, .dd2-br'); labs.push({ ...R(box ? box.querySelector('rect') : t), what: t.dataset.lab + ':' + t.textContent }); });
+  qa('.dd2-scene [data-lab]').forEach(t => { if (!vis(t)) return; const box = t.closest('.dd2-mp, .dd2-br'); labs.push({ ...R(box ? box.querySelector('rect') : t), what: t.dataset.lab + ':' + t.textContent }); });
   const tag = q('.dd2-knob-n:not([hidden]) .tk2-tag'); if (tag && vis(tag) && tag.textContent) labs.push({ ...R(tag), what: 'knob:' + tag.textContent });
   const cue = q('.tk2-cue'); if (cue) labs.push({ ...R(cue), what: 'cue' });
   const cause = q('.tk2-cause');

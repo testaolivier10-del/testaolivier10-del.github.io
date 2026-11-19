@@ -862,7 +862,7 @@
       detailsTitle: ({ 'chi-square': 'Problem & critical values', 'confidence-intervals': 'Problem, formulas & settings',
         'descriptive-stats': 'Problem & formulas', 'hardy-weinberg': 'Numbers & equations', 'rates': 'Problem & formulas',
         'simpson-diversity': 'Numbers & formula', 'water-potential': 'Numbers & formulas', 'graph-builder': 'What full credit needs',
-        'tree-reading': 'Trees & characters', 'design-drills': 'All drills', 'osmosis': 'Numbers & how it works' })[slug] || 'Data & settings',
+        'tree-reading': 'Trees & characters', 'design-drills': 'How it works', 'osmosis': 'Numbers & how it works' })[slug] || 'Data & settings',
       menu: {
         copyLink: function(){
           var code = s.mode() === 'practice' || s.mode() === 'quiz' ? s.root.querySelector('.ls-prac-code:not([hidden]) .bt-code b') : null;

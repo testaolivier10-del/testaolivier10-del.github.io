@@ -52,27 +52,28 @@ overlapping bars mean the data do not show one (never "prove").
 
 ### Tab 1, Fair test
 - **The picture** (the full stage): a lab bench in a greenhouse room. Left, the control group; right, the test
-  group. Each group is a tray of 6 potted bean plants under the same grow light, with its watering can and a heat
-  mat under the tray. A ruler stands behind each group. After 3 weeks the plants stand at their heights; a line
+  group. Each group is a tray of 6 potted bean plants under the same grow light, with its water jug, its plant food
+  bottle and a heat mat under the tray (its switch box in front). A ruler stands behind each group. After 3 weeks the plants stand at their heights; a line
   across each group marks the mean ("18 cm"), and a bracket between the groups gives the difference ("+6 cm").
 - **The main control, on the picture:** the three things the test group gets, tappable on its side: the
-  fertilizer bottle, the watering can, the heat mat. Each tap switches it between "same as the control" and
-  "different" (Fertilizer / No fertilizer, Same water / Less water, Same warmth / Warmer). One control never moves
+  water jug, the plant food bottle, the heat mat's switch box. Each tap switches it between "same as the control" and
+  "different" (Same water / Less water, No plant food / Plant food, Same warmth / Warmer). "Plant food" is the fertilizer
+  ("?" says so): the plain word fits under the bottle at 360 px. One control never moves
   another.
 - **Instant result:** the plants grow or shrink to the new result (a 650 ms tween; leaves droop with less water);
   the means and the bracket follow the plants as drawn, every frame.
 - **What differs, drawn:** every item that differs between the groups gets an amber ring on BOTH sides and the
   word "differs" on the test side. One ring: a fair test. Two or three: a confound.
 - **Opens** on a fair test of fertilizer (the only difference): test plants 6 cm taller.
-- **Cue:** "Tap the water" on the test group's watering can, once per device.
+- **Cue:** "Tap the water" on the test group's water jug, once per device.
 - **Cause line** (`K.cause`), set when the plants settle (the first pill changes at once):
-  "Only fertilizer differs → test 6 cm taller → fertilizer made the difference";
-  "Fertilizer and water differ → test 1 cm taller → can't tell which did it";
+  "Only plant food differs → Test 6 cm taller → Plant food made the difference";
+  "Plant food and water differ → Test 1 cm taller → Can't tell which did it";
   "Nothing differs → same height → nothing is tested".
 - **Under the picture:** Start over (a link).
 
 ### Tab 2, Sample size
-- **The picture:** the same bench, a fair test of fertilizer only (rings on the fertilizer, as tab 1 draws it).
+- **The picture:** the same bench, a fair test of plant food only (rings on the bottles, as tab 1 draws it).
   Plants vary by chance (SD 3 cm; the true difference is 6 cm). Each group shows its plants, its mean line and its
   ±2 SE error bar beside the ruler; the bracket gives the difference of the means.
 - **The main control, on the picture:** one knob on the bench's front edge, "Plants per group", 1 to 12. Its value
@@ -82,13 +83,14 @@ overlapping bars mean the data do not show one (never "prove").
   with 10 it hardly moves.
 - **Labels wait for the picture:** while any plant grows from the soil, the means, bars and bracket fade out and
   the cause line says "Growing"; they come back when every plant has finished.
-- **Cause line:** "1 plant each → no spread to measure → can't tell"; "3 plants each → bars overlap → can't tell
-  yet"; "8 plants each → bars apart → fertilizer made a real difference".
+- **Cause line:** "1 plant each → No spread to measure → Can't tell"; "3 plants each → Bars overlap → Could be
+  chance"; "7 plants each → Bars apart → Unlikely to be chance". It opens on 3 plants (the first batch is fixed: one
+  plant each shows the control TALLER, 3 to 5 overlap, 7 and up are apart; later batches are random).
 - **Cue:** "Drag for more plants" at the knob, once per device.
 
 ### What is on screen in Explore (counted at 1440 and 390, opening state)
-Outside the picture: 2 tabs, the purpose line (6 words), "Show me how", the cause line (3 pills), Start over (tab 1)
-or New plants (tab 2). That is 4 controls and about 20 words. No side panel, no graph, no readout cards.
+Outside the picture: 2 tabs, the purpose line (7 words), "Show me how", the cause line (3 pills, 12 words), Start
+over (tab 1) or New plants (tab 2). That is 4 controls and about 25 words. No side panel, no graph, no readout cards.
 On the picture, tab 1: 2 group names ("Control group", "Test group"), 2 means, 1 difference, 3 item labels on the
 test side, the "differs" marks (1 to 3), the ruler numbers, the cue (first visit). Tab 2: the same group names,
 means and difference, the knob with its value, 2 error bars, the fertilizer label with its ring.
@@ -113,7 +115,7 @@ means and difference, the knob with its value, 2 error bars, the fertilizer labe
 
 ## Decisions made for the owner (also one line each in `docs/tools-v2-owner-log.md`)
 1. Explore is a new drawn plant bench with two tabs (Fair test, Sample size); the drills are Test yourself.
-2. Fertilizer is the variable tested; light is the same over both groups and cannot be changed (etiolation makes
+2. Plant food (fertilizer) is the variable tested; light is the same over both groups and cannot be changed (etiolation makes
    "less light, shorter" untrue in deep shade).
 3. The confounds on offer are water and warmth; effect sizes are invented (+6 cm fertilizer, −5 cm less water,
    +3 cm warmer, 18 cm base after 3 weeks, SD 3 cm), stated in "?".
@@ -130,3 +132,42 @@ means and difference, the knob with its value, 2 error bars, the fertilizer labe
   in place of the Explore stage). No other tool passes it, so nothing else changes.
 - `bio/data/pages.json`: `"kit2": true` and the blurb.
 - Sweep: `scripts/tools-v2/design-drills-sweep.mjs`.
+
+## Checks run (2026-11-18)
+- `node --test scripts/test/apbio-*.test.mjs` (74 pass), `check-apbio-content --check`, `build-apbio --check`,
+  `check-site`, `check-weight --check`, `build-apcalc --check`, `build-apmacro --check`; `check-tool-use` with a local
+  copy of its list: Design drills reports frame v2 (tool-open, tool-touch, tool-mode, tool-use; nothing under
+  automation). `check-tool-use.mjs` itself unchanged.
+- Sweep (`node scripts/tools-v2/design-drills-sweep.mjs --width W`, one width per process, light and dark): 8 Fair
+  test states and 7 Sample size states plus Test yourself at 360, 390, 430, 600, 768, 820, 1024, 1280, 1440, 1920:
+  **32408 passed, 0 failed** (nothing clipped, no two labels or numbers within 4 px, the bench the largest thing,
+  tap targets 44 px, the cause line two rows and one height on phones, drawn means equal the model, pills equal the
+  drawn means and difference, error bars equal the drawn mean ± 2 SE, the verdict matches the bars drawn).
+  `--frames`: frame by frame at 390 and 1440 through taps, three fast taps, a tab switch, fast drags up and down and
+  New plants (611 + 610 frames, 389 each with a change running): every number is the one for the plants drawn, no
+  result word while plants change, Sample size hides its numbers while plants come or go. Reduced motion: the result
+  at once with a 0.22 s fade. 10 passed.
+- Playwright (`/tmp`, not kept) at 390 (real touch tap, CDP touch drag of the knob), 768 and 1440 (mouse), light and
+  dark: **139 passed, 0 failed**: opening, mid change words, water, keyboard Enter on warmth, aria-pressed, Start
+  over and New plants bring the bench into view after scrolling down, Show me how, Sample size drag, Home and End
+  keys with aria-valuetext, a wrong then a right variables drill (scores, record ids `design-drills:<scenario>:iv`
+  and `:dv` stored), Experiment 2 of 16, The results view, Explore kept after Test yourself, `#drills`, free (no
+  lock), no console errors.
+- Frame times (`scripts/tools-v2/design-drills-perf.mjs`, CPU x4) on a 2 core container at load 7 to 10 (other
+  builds running): 390 within target (median 16.7 ms, p95 33.4 ms for taps and the full drag); 1440 median 16.7 ms,
+  p95 66.7 ms for taps and the drag. The page's own work is about 2.5 ms a frame at x4 (trace); what was fixed on
+  the way: three svg layers (still room, plants and numbers, front), no reordering of plants, pots redrawn only when
+  their size changes, sizes from the layout without reading the page, the words once a frame, text written only
+  when it changes.
+- Preview: `/mnt/user-data/outputs/design-drills-v2/index.html`; shots (`sweep-*`, `v-*`, including mid change,
+  mid drag, regrow and New plants frames) in `/mnt/user-data/outputs/design-drills-v2/shots/`.
+
+## Not done, and what I am not happy with
+- The p95 frame time at 1440 under x4 throttling measured 66.7 ms on a loaded 2 core machine; the reviewer should
+  measure on a quiet one.
+- Test yourself keeps the experiments' own setup drawings from the 2026-11 review (icon level, smaller than the
+  bench); bringing them to flagship level is 16 drawings of its own.
+- On phones with 10 to 12 plants a group the plants are thin (leaves 7 px); they stay countable.
+- The kit's tap look (dashed outline and hand badge) sits on the bench's front; the badges sit on the box's top edge
+  so they do not cover the jug, bottle and switch.
+- No real phone, no screen reader pass, no real students.

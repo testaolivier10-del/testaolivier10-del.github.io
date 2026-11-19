@@ -751,11 +751,16 @@
     var head = K.head({ purpose: '', how: { label: 'Show me how', onClick: function(){ startTour(); } } });
     stage.appendChild(head.el);
     var sceneBox = document.createElement('div'); sceneBox.className = 'dd2-scene'; sceneBox.id = T.nid('dd2');
-    sceneBox.innerHTML = '<svg class="dd2-svg" role="img" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"><g class="dd2-back"></g><g class="dd2-mats"></g><g class="dd2-plants"><g data-g="0"></g><g data-g="1"></g></g><g class="dd2-fronts"></g><g class="dd2-items"></g><g class="dd2-over"></g><g class="dd2-labs"></g></svg>';
+    // three layers, so a frame of growing plants repaints only the middle one: the room and bench (still), the plants
+    // and their numbers (every frame while they change), the trays, things and words in front (on a tap)
+    sceneBox.innerHTML = '<svg class="dd2-svg dd2-svg-b" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"><g class="dd2-back"></g><g class="dd2-mats"></g></svg>' +
+      '<svg class="dd2-svg dd2-svg-m" role="img" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"><g class="dd2-plants"><g data-g="0"></g><g data-g="1"></g></g><g class="dd2-over"></g></svg>' +
+      '<svg class="dd2-svg dd2-svg-f" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"><g class="dd2-fronts"></g><g class="dd2-items"></g><g class="dd2-labs"></g></svg>';
     stage.appendChild(sceneBox);
     tabs.el.querySelectorAll('.tk2-tab').forEach(function(b){ b.setAttribute('aria-controls', sceneBox.id); });
-    var svg = sceneBox.querySelector('svg'), gBack = svg.querySelector('.dd2-back'), gMats = svg.querySelector('.dd2-mats'), gPl = [svg.querySelector('.dd2-plants [data-g="0"]'), svg.querySelector('.dd2-plants [data-g="1"]')];
-    var gFront = svg.querySelector('.dd2-fronts'), gItems = svg.querySelector('.dd2-items'), gOver = svg.querySelector('.dd2-over'), gLabs = svg.querySelector('.dd2-labs');
+    var svgs = sceneBox.querySelectorAll('svg'), svg = svgs[1], q1 = function(c){ return sceneBox.querySelector(c); };
+    var gBack = q1('.dd2-back'), gMats = q1('.dd2-mats'), gPl = [q1('.dd2-plants [data-g="0"]'), q1('.dd2-plants [data-g="1"]')];
+    var gFront = q1('.dd2-fronts'), gItems = q1('.dd2-items'), gOver = q1('.dd2-over'), gLabs = q1('.dd2-labs');
     var layer = K.layer(sceneBox), G = null;
     var lines = document.createElement('div'); lines.className = 'dd2-lines';
     var cause = K.cause({ label: 'Why' });
@@ -770,7 +775,8 @@
 
     /* ---- text sizes from measured text */
     var mctx = document.createElement('canvas').getContext('2d'), FAM = 'sans-serif';
-    function tw(t, size, wt){ mctx.font = (wt || 800) + ' ' + size + 'px ' + FAM; return mctx.measureText(t).width; }
+    var twC = {};
+    function tw(t, size, wt){ var key = t + '|' + size + '|' + (wt || 800) + '|' + FAM; if(twC[key] == null){ mctx.font = (wt || 800) + ' ' + size + 'px ' + FAM; twC[key] = mctx.measureText(t).width; } return twC[key]; }
     /* A label in a slot of width w: one line, else two (split at a space), else a smaller font; never inside a word. */
     function fit(t, w, size){
       var s = size, lines1 = [t];
@@ -798,7 +804,8 @@
         var a = k ? x0 + bar : x0 + ruler + 8, b = k ? x1 - ruler - 8 : x1 - bar;
         return { x0: x0, x1: x1, a: a, b: b, ruler: k ? x1 - ruler : x0, cxp: (a + b) / 2, err: k ? x0 + bar / 2 : x1 - bar / 2 };
       });
-      var n = count(), slot = (g[0].b - g[0].a) / n, pw = Math.max(9, Math.min(phone ? 30 : 44, slot * 0.7)), potH = Math.max(12, Math.min(28, pw * 0.9));
+      var n = count(), slot = (g[0].b - g[0].a) / n, pw = Math.max(9, Math.min(phone ? 30 : 44, slot * 0.7));
+      var potH = Math.max(12, Math.min(28, Math.min(phone ? 30 : 44, (g[0].b - g[0].a) / EXM.n1 * 0.7) * 0.9));   // one pot height whatever the count, so the bench never moves
       var ySoil = yTray - 3 - potH, yTop = phone ? 56 : 64;
       var k = (ySoil - yTop) / (EXM.hi - 1);
       var leaf = Math.max(7, Math.min(phone ? 14 : 26, slot * 0.5));
@@ -846,9 +853,10 @@
     }
     function matSvg(){
       return G.g.map(function(g, k){
-        var a = g.a - 10, b = g.b + 10, y = G.yTray - 1;
-        return '<g class="dd2-mat" data-g="' + k + '"><rect class="dd2-mat-b" x="' + n1(a) + '" y="' + n1(y) + '" width="' + n1(b - a) + '" height="' + G.matH + '" rx="2"/><rect class="dd2-mat-h" x="' + n1(a) + '" y="' + n1(y) + '" width="' + n1(b - a) + '" height="' + G.matH + '" rx="2"/>' +
-          '<path class="dd2-wave" d="' + [0.12, 0.5, 0.88].map(function(f){ var x = a + (b - a) * f; return 'M' + n1(x) + ' ' + n1(y - 2) + 'q-3 -5 0 -10t0 -10'; }).join('') + '"/></g>';
+        // the mat sticks out past the tray at both ends, so its glow and its heat show beside the tray
+        var a = g.a - 22, b = g.b + 22, y = G.yTray - 1, h = G.matH + 2;
+        return '<g class="dd2-mat" data-g="' + k + '"><rect class="dd2-mat-b" x="' + n1(a) + '" y="' + n1(y) + '" width="' + n1(b - a) + '" height="' + h + '" rx="3"/><rect class="dd2-mat-h" x="' + n1(a) + '" y="' + n1(y) + '" width="' + n1(b - a) + '" height="' + h + '" rx="3"/>' +
+          '<path class="dd2-wave" d="' + [a + 5, a + 11, b - 11, b - 5].map(function(x){ return 'M' + n1(x) + ' ' + n1(y - 2) + 'q-3 -5 0 -10t0 -10'; }).join('') + '"/></g>';
       }).join('');
     }
     function frontSvg(){
@@ -930,6 +938,7 @@
       return '<path class="dd2-pot" d="M' + n1(-w / 2) + ' 0L' + n1(w / 2) + ' 0L' + n1(b / 2) + ' ' + n1(h) + 'L' + n1(-b / 2) + ' ' + n1(h) + 'Z"/><rect class="dd2-rim" x="' + n1(-w / 2 - 1) + '" y="-1" width="' + n1(w + 2) + '" height="' + n1(Math.max(3, h * 0.2)) + '" rx="1.2"/><ellipse class="dd2-soil" cx="0" cy="0.5" rx="' + n1(w / 2 - 1) + '" ry="' + n1(Math.max(1.4, w * 0.09)) + '"/>';
     }
     function plantEl(p){
+      p._pot = G.pw + ',' + G.potH;
       var e = document.createElementNS('http://www.w3.org/2000/svg', 'g');
       e.setAttribute('class', 'dd2-pl');
       e.innerHTML = '<g class="dd2-potg">' + potSvg() + '</g><path class="dd2-stem"/><g class="dd2-node"><g class="dd2-l1">' + LEAF + '</g><g class="dd2-l2">' + LEAF + '</g></g><g class="dd2-node2"><g class="dd2-l3">' + LEAF + '</g><g class="dd2-l4">' + LEAF + '</g></g><g class="dd2-top"><g class="dd2-t1">' + LEAF + '</g><g class="dd2-t2">' + LEAF + '</g><g class="dd2-t3">' + LEAF + '</g></g>';
@@ -941,11 +950,13 @@
     function paintPlant(p){
       var h = p.h, hp = Math.max(0, h * G.k), grow = Math.max(0, Math.min(1, h / 9)), L = G.leaf * (0.35 + 0.65 * grow), dr = p.dry, sw = p.sway * Math.min(1, hp / 60);
       p.el.setAttribute('transform', 'translate(' + n1(p.x) + ' ' + n1(G.ySoil) + ')');
-      p.el.style.opacity = p.op < 0.999 ? n1(p.op * 100) / 100 : '';
+      var op = p.op < 0.999 ? String(n1(p.op * 100) / 100) : '';
+      if(p._op !== op){ p._op = op; p.el.style.opacity = op; }
       if(hp < 0.5){ p.stem.setAttribute('d', ''); p.node.setAttribute('visibility', 'hidden'); p.node2.setAttribute('visibility', 'hidden'); p.top.setAttribute('visibility', 'hidden'); return; }
       p.node.setAttribute('visibility', h > 2.5 ? 'visible' : 'hidden'); p.node2.setAttribute('visibility', h > 6 ? 'visible' : 'hidden'); p.top.setAttribute('visibility', 'visible');
       p.stem.setAttribute('d', 'M0 0Q' + n1(sw * 0.6) + ' ' + n1(-hp * 0.5) + ' ' + n1(sw) + ' ' + n1(-hp));
-      p.stem.style.strokeWidth = n1(Math.max(1.6, Math.min(3.8, G.slot * 0.075)) * (0.6 + 0.4 * grow));
+      var swd = String(n1(Math.max(1.6, Math.min(3.8, G.slot * 0.075)) * (0.6 + 0.4 * grow)));
+      if(p._sw !== swd){ p._sw = swd; p.stem.setAttribute('stroke-width', swd); }
       // the stem's x at a fraction f of its height (the quadratic above)
       function sx(f){ return 2 * (1 - f) * f * sw * 0.6 + f * f * sw; }
       p.node.setAttribute('transform', 'translate(' + n1(sx(0.36)) + ' ' + n1(-hp * 0.36) + ')');
@@ -987,6 +998,7 @@
         }
       });
       paintOver();
+      if(wDirty){ wDirty = false; words(); }
       if(busy()) raf = requestAnimationFrame(frame);
       else settled();
     }
@@ -1011,15 +1023,15 @@
           if(how === 'regrow' && !calm()){ p.soil = true; goTo(p, { h: 0, x: x, op: 1, dry: t.dry }, 300); p.next = { to: t, dur: 700 }; }
           else { p.next = null; goTo(p, t, how === 'quick' ? 300 : 650); }
         }
-        // keep the drawing order left to right
-        a.filter(function(p){ return !p.gone; }).sort(function(u, v){ return u.i - v.i; }).forEach(function(p){ gPl[g].appendChild(p.el); });
       });
       waiting(true);
       kick();
     }
     function rebuildPlants(){
       // after a new layout: the same plants, redrawn at their places at once
-      P.forEach(function(a, g){ a.forEach(function(p){ if(p.el){ var pg = p.el.querySelector('.dd2-potg'); pg.innerHTML = potSvg(); } }); });
+      // a pot is redrawn only when its size changed (new plants come in at the right, so the order stays)
+      var key = G.pw + ',' + G.potH, pot = null;
+      P.forEach(function(a, g){ a.forEach(function(p){ if(p.el && p._pot !== key){ p._pot = key; p.el.querySelector('.dd2-potg').innerHTML = pot || (pot = potSvg()); } }); });
       var n = count();
       P.forEach(function(a, g){ var lv = a.filter(function(p){ return !p.gone; }), nn = Math.max(n, lv.length); lv.forEach(function(p, j){ var x = px(g, j, nn); if(p.to){ p.to.x = x; p.from.x = x; } p.x = x; paintPlant(p); }); });
     }
@@ -1044,7 +1056,7 @@
     function fmt(v){ return St.tab === 'fair' ? String(Math.round(v)) : (Math.round(v * 10) / 10).toFixed(1); }
     function pill(gEl, x, y, t){
       var tx = gEl.querySelector('text'), r = gEl.querySelector('rect'), size = G.phone ? 12.5 : 14, w = tw(t, size) + 14, h = size + 9;
-      tx.textContent = t; tx.setAttribute('x', n1(x)); tx.setAttribute('y', n1(y + size * 0.36)); tx.style.fontSize = size + 'px';
+      if(tx.textContent !== t) tx.textContent = t; tx.setAttribute('x', n1(x)); tx.setAttribute('y', n1(y + size * 0.36)); tx.style.fontSize = size + 'px';
       r.setAttribute('x', n1(x - w / 2)); r.setAttribute('y', n1(y - h / 2)); r.setAttribute('width', n1(w)); r.setAttribute('height', n1(h));
       return { x: x - w / 2, y: y - h / 2, w: w, h: h };
     }
@@ -1137,8 +1149,16 @@
     function setN(v){
       v = Math.round(v); if(v === St.n) return;
       hideCue(true); tourDid('drag');
-      St.n = v; layoutNow(); sync(); words();
+      St.n = v; sizes(); rebuildPlants(); sync(); wordsSoon();
     }
+    /* The sizes that follow the count (pots, leaves), from the layout already made: no reading of the page. */
+    function sizes(){
+      if(!G) return;
+      var n = count(), slot = (G.g[0].b - G.g[0].a) / n;
+      G.n = n; G.slot = slot; G.pw = Math.max(9, Math.min(G.phone ? 30 : 44, slot * 0.7)); G.leaf = Math.max(7, Math.min(G.phone ? 14 : 26, slot * 0.5));
+    }
+    var wDirty = false;
+    function wordsSoon(){ wDirty = true; kick(); }
 
     /* ---- the cue and "Show me how" */
     var cue = K.cue(layer, { key: 'apbio-design-fair', text: 'Tap the water', side: 'above', at: function(){ if(!G) return [0, 0]; return [itemX(1, 0), G.yFront - (G.phone ? 40 : 50)]; } });
@@ -1163,11 +1183,12 @@
     /* ---- layout and tabs */
     function layoutNow(force){
       var g = layout(); if(!g) return;
-      var same = !force && G && g.W === G.W && g.H === G.H && g.n === G.n && g.frontH === G.frontH;
+      var same = !force && G && g.W === G.W && g.H === G.H && g.frontH === G.frontH, onlyN = same && g.n !== G.n;
       G = g;
+      if(onlyN) rebuildPlants();
       FAM = getComputedStyle(svg).fontFamily || FAM;
       if(!same){
-        svg.setAttribute('viewBox', '0 0 ' + G.W + ' ' + G.H);
+        svgs.forEach(function(x){ x.setAttribute('viewBox', '0 0 ' + G.W + ' ' + G.H); });
         sceneBox.setAttribute('data-k', G.k); sceneBox.setAttribute('data-ysoil', G.ySoil);
         gBack.innerHTML = backSvg(); gMats.innerHTML = matSvg(); gFront.innerHTML = frontSvg(); gItems.innerHTML = itemsSvg(); gLabs.innerHTML = labsSvg();
         if(!gOver.firstChild) gOver.innerHTML = overSvg();
@@ -1202,7 +1223,7 @@
       hideCue(true); tourDid('new'); intoView();
       St.batch++; DEV2 = batchDev(St.batch); sync('regrow'); words();
     });
-    bReset.addEventListener('click', function(){ hideCue(true); St.cond = { water: false, food: true, warm: false }; paintItems(); sync(); words(); });
+    bReset.addEventListener('click', function(){ hideCue(true); intoView(); St.cond = { water: false, food: true, warm: false }; paintItems(); sync(); words(); });
     function intoView(){ try{ var r = sceneBox.getBoundingClientRect(), vh = window.innerHeight || 0; if(r.top < 0 || r.bottom > vh) sceneBox.scrollIntoView({ block: r.height > vh ? 'start' : 'center', behavior: calm() ? 'auto' : 'smooth' }); }catch(e){} }
 
     /* ---- "?": the terms, the bench's invented numbers, the error bars, the drill filter */
