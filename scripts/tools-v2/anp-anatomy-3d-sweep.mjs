@@ -9,7 +9,8 @@
        cue, and off the ring where its leader ends; the card, the viewer's selection and the cause line name the same
        part, and the cause line says that part's "at"; on phones (640 px and under) the cause line is at most two rows
        and one constant height; every pill inside it; no rendered text under 11 px; the tabs inside the stage;
-     - the first visit cue: inside the picture, clear of the card and the buttons;
+     - the first visit cue: inside the picture, clear of the card and the buttons, and a tap where it points names the
+       part it points at (then it leaves);
      - a real tap (mouse, or touch on phones) on a part names what the viewer picked; a tap on empty space lets go;
      - find by name forgives (a slip in a long word) and crosses regions (the tab follows);
      - with --all, every part of every region named by find, each state checked as above.
@@ -131,6 +132,7 @@ async function check(page, tag, opts = {}) {
     return { scroll: document.documentElement.scrollWidth - innerWidth, scene: rect(scene), card: rect(card), cardText: card && !card.hidden ? card.querySelector('.tk2-spot-t').textContent : null,
       find: rect(q('.ax-find')), reset: rect(q('.ax-reset')), credit: rect(q('.ax-credit')), cue: rect(q('.tk2-cue')), cause: rect(cause), pills, small,
       kids, ringC, sel, selName: s ? s.name : null, selAt: s ? s.at : null, tabs: [...document.querySelectorAll('.ax .tk2-tab')].map(rect), stage: rect(stage),
+      tabFit: [...document.querySelectorAll('.ax .tk2-tab')].map(b => b.scrollWidth <= b.clientWidth + 1 && [...b.children].every(c => { const cr = R(c), br = R(b); return cr.width <= 1 || (cr.left >= br.left - 1 && cr.right <= br.right + 1); })),
       canvas: rect(q('.ax-slot canvas')) };
   });
   const inside = (a, b, m = 1) => a && b && a.l >= b.l - m && a.r <= b.r + m && a.t >= b.t - m && a.b <= b.b + m;
@@ -141,6 +143,7 @@ async function check(page, tag, opts = {}) {
   T(/ax-scene/.test(big.c), `${tag}: the largest thing on the stage is ${big.c}, not the body`);
   T(r.canvas && r.scene && Math.abs(r.canvas.w - r.scene.w) < 2 && Math.abs(r.canvas.h - r.scene.h) < 2, `${tag}: the canvas does not fill the picture ${JSON.stringify([r.canvas, r.scene])}`);
   T(r.tabs.every(t => t && t.l >= r.stage.l - 1 && t.r <= r.stage.r + 1), `${tag}: a tab sticks out of the stage`);
+  T(r.tabFit.every(Boolean), `${tag}: a tab's name overflows its tab`);
   T(!meet(r.find, r.reset, 4), `${tag}: Find a part meets Reset view`);
   if (opts.card !== false) {
     T(!!r.card, `${tag}: no card`);
@@ -189,6 +192,16 @@ async function sweep() {
   await check(page, 'landing skeleton', { expect: 'femur' });
   T(await page.evaluate(() => !!document.querySelector('.tk2-cue')), 'landing: no first visit cue');
   await shot(page, 'land');
+  // the cue points where a tap names a part of the region: tap there
+  const cueAt = await page.evaluate(() => { const c = window.AnpAnatomyExplore.current._cueAt(), r = document.querySelector('.ax-slot canvas').getBoundingClientRect(); return c ? { id: c.id, x: r.left + c.x, y: r.top + c.y } : null; });
+  T(!!cueAt, 'landing: the cue has no part under it');
+  if (cueAt) {
+    if (W < 900) await page.touchscreen.tap(cueAt.x, cueAt.y); else await page.mouse.click(cueAt.x, cueAt.y);
+    T(await settledCard(page), 'tap at the cue: no card');
+    await page.waitForTimeout(300);
+    await check(page, 'tap at the cue', { expect: cueAt.id });
+    T(await page.evaluate(() => !document.querySelector('.tk2-cue')), 'tap at the cue: the cue stays');
+  }
   // each region at its landing
   for (const t of DATA.explore.tabs.slice(1)) {
     await page.click(`.ax .tk2-tab[data-v="${t.id}"]`);

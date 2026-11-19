@@ -42,6 +42,7 @@
                         the front, [0, -1, 0.12]; [1, -0.35, 0.15] looks at the left side)
      v.settling() -> true while the camera travels or a look is still easing (a card waits for both)
      v.set({ selectFly, fadeOthers })   change those two options later
+     v.hit(x, y) -> key | null   what a tap there would pick (a first visit cue points only where a tap names the part)
      v.project(name, part)   with a mesh name (FMA id) of that structure: where that one piece is drawn (the bone
                         that was tapped, of a pair or a set)
 
@@ -1145,6 +1146,12 @@
         return { x: (v.x + 1) / 2 * w, y: (1 - v.y) / 2 * h, r: Math.abs(e.x - v.x) / 2 * w, front: v.z <= 1, box: x };
       },
       flying(){ return !!flyAnim; },
+      /* What a tap at (x, y) (css px from the canvas's top left) would pick: a key, or null. */
+      hit(x, y){
+        if (!camera) return null;
+        const r = canvas.getBoundingClientRect();
+        return keyAt({ clientX: r.left + x, clientY: r.top + y });
+      },
       settling(){ return !!flyAnim || !!tween; },
       /* selectFly and fadeOthers, changed after mount (one viewer, two screens: Explore keeps the camera and the
          region readable, Test yourself flies to a part and fades the rest, as before) */

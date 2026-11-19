@@ -34,7 +34,7 @@
     var tabOfSys = {}; TABS.forEach(function(t){ t.systems.forEach(function(k){ tabOfSys[k] = t; }); });
     var pref = load(), picks = pref.picks || {};
     var cur = TABS.filter(function(t){ return t.id === pref.tab; })[0] || TABS[0];
-    var viewer = null, spots = null, cue = null, onScreen = false, started = false, piece = {}, drawnBox = null;
+    var viewer = null, spots = null, cue = null, cueAt = null, onScreen = false, started = false, piece = {}, drawnBox = null;
 
     var stage = document.createElement('div'); stage.className = 'ax';
     var tabs = K.tabs({ label: 'Which part of the body', items: TABS.map(function(t){ return { value: t.id, label: t.label, short: t.short }; }), value: cur.id, big: true,
@@ -215,7 +215,14 @@
       var open = spots.picked(), cand = cur.items.filter(function(s){ return !open || s.id !== open.id; });
       var R = function(e){ return e.getBoundingClientRect(); }, meet = function(a, b){ return a.left < b.right + 4 && a.right > b.left - 4 && a.top < b.bottom + 4 && a.bottom > b.top - 4; };
       var w = over.clientWidth, h = over.clientHeight, P = [];
-      cand.forEach(function(s){ var p = viewer.project(s.id); if(p && p.front && p.x > 40 && p.y > 50 && p.x < w - 40 && p.y < h - 40) P.push({ s: s, p: p }); });
+      // a point where a tap really names that part: the middle of one of its pieces, checked with the viewer's own pick
+      cand.forEach(function(s){
+        (s.parts.length > 1 ? s.parts.slice(0, 3) : [null]).some(function(part){
+          var p = viewer.project(s.id, part);
+          if(p && p.front && p.x > 40 && p.y > 50 && p.x < w - 40 && p.y < h - 40 && viewer.hit(p.x, p.y) === s.id){ P.push({ s: s, p: p }); return true; }
+          return false;
+        });
+      });
       // the biggest drawn parts first: the cue points at something easy to hit
       P.sort(function(a, b){ return b.p.r - a.p.r; });
       var text = cur.id === 'skeleton' ? (touch ? 'Tap a bone' : 'Click a bone') : (touch ? 'Tap a part' : 'Click a part');
@@ -229,7 +236,7 @@
           var bad = !r || r.left < sr.left + 2 || r.right > sr.right - 2 || r.top < sr.top + 2 || r.bottom > sr.bottom - 2;
           [].forEach.call(layer.el.querySelectorAll('.tk2-spot-card:not([hidden])'), function(e){ if(meet(R(e), r)) bad = true; });
           if(!bad && (meet(R(form), r) || meet(R(resetB), r))) bad = true;
-          if(!bad){ cue = c; return; }
+          if(!bad){ cue = c; cueAt = { id: P[i].s.id, x: at[0], y: at[1] }; return; }
           c.hide(false);
         }
       }
@@ -326,7 +333,7 @@
       pick: function(id){ var s = BY[id]; if(!s || !tabOfSys[s.system]) return false; var t = tabOfSys[s.system]; picks[t.id] = id; pref.picks = picks; save(pref); api.tab(t.id); return true; },
       current: function(){ return spots && spots.picked() ? spots.picked().id : null; },
       show: function(id, how){ go(id, how || 'find'); },
-      _spots: function(){ return spots; }, _cause: function(){ return cause; }, _viewer: function(){ return viewer; }
+      _spots: function(){ return spots; }, _cueAt: function(){ return cue && cue.active() ? cueAt : null; }, _cause: function(){ return cause; }, _viewer: function(){ return viewer; }
     };
     window.AnpAnatomyExplore.current = api;   // for the sweep test (scripts/tools-v2/anp-anatomy-3d-sweep.mjs)
     return api;

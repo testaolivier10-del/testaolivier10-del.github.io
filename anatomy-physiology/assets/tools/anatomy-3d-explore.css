@@ -69,6 +69,12 @@
   .ax .tk2-spot-card{font-size:14px;padding:5px 9px;max-width:10.5em;}
 }
 @media (max-width:380px){ .ax .tk2-tabs.is-big{gap:2px;} .ax .tk2-tabs.is-big .tk2-tab{font-size:12.5px;padding:0 1px;} }
+/* five regions: their full names fit one row from about 1200 px; under that the tabs show the short names (Bones,
+   Brain, Heart, Lungs, Abdomen), the full one stays the accessible name */
+@media (min-width:641px) and (max-width:1199px){
+  .ax .tk2-tab:has(.tk2-tab-s) .tk2-tab-t{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;}
+  .ax .tk2-tab-s{display:inline;}
+}
 @media (min-width:641px) and (max-width:1100px){
   .ax .tk2-tabs.is-big .tk2-tab{padding:0 8px;}
   .ax .tk2-tabs.is-big .tk2-tab-n{display:none;}

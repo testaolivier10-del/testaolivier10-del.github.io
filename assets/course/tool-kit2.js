@@ -156,7 +156,7 @@
                                     taps are the tool's (it calls pick(id, 'tap') from its own picking); only the named
                                     item is placed, with a small ring where its leader ends, and the card keeps off a
                                     disc of the item's size. o.wait() -> true while the picture still moves (a camera
-                                    travelling): the card waits, then grows once place() runs with wait() false. The
+                                    travelling): a new card waits, then grows once place() runs with wait() false (an open one follows). The
                                     tool calls place() after every drawn frame. ask() is for pins only. An item's sub (set
                                     before pick) is a small second line on the card (the piece tapped: "Right scaphoid"). */
 (function(){
@@ -441,7 +441,8 @@
         var p = o.project(cur);
         if(!p || !isFinite(p[0]) || !isFinite(p[1])){ card.hidden = true; lines.innerHTML = ''; due = due || !!cur; return; }
         cur.at = [[p[0], p[1]]]; cur._r = p[2] || 0;
-        if(o.wait && o.wait()){ if(due){ card.hidden = true; lines.innerHTML = ''; } return; }
+        // while the picture moves a card already open follows it; a new one waits until it settles
+        if(o.wait && o.wait()){ if(due){ card.hidden = true; lines.innerHTML = ''; return; } kNow = layer.scale(); drawCard(false); kNow = 0; return; }
         var grow = due; due = false;
         kNow = layer.scale(); drawCard(grow); kNow = 0;
         return;
