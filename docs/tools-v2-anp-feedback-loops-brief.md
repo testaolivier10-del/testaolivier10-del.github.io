@@ -195,3 +195,50 @@ dark, 768, 390 light and dark); preview `/mnt/user-data/outputs/anp-feedback-loo
 - On a phone the monitor is short: its middle tick number steps aside when there is no room.
 - The temperature nerves run up the arm to the brain as one route (said in "?" and needs-author).
 - Test yourself is the old tool inside the new frame (its two modes as a small switch), not redesigned.
+
+## Review round 1 (2026-11-19)
+The independent review (`/home/claude/review-anp-feedback-loops/REVIEW.md`) blocked on six must fix items and kept the
+idea, the science, the seven dot line, the auto run after the push and Test yourself. Merged
+`origin/claude/tools-v2-all` first (its `check-tool-use.mjs`, both sides of the docs tables; the spec decision is now
+103, as 100 to 102 were taken).
+
+Must fix, all done:
+1. **Test yourself from Explore.** The scene drawings' callback ran before the render had put Watch it work in the
+   studio, so the stage missed its layout class, and on a narrow stage the side by side layout shrank the ring to
+   8.2 px. The callback now always runs after the render; a narrow stage (under 760 px: tablets, a 1024 laptop beside
+   the panel) stacks the gauge, drawing and ring at full width, chosen each time Test yourself is shown or resized
+   (`fitLive`). New test `scripts/tools-v2/anp-feedback-loops-quiz.mjs`: by the mode button and by `?id=`, at 360 to
+   1440 and after a resize, no word under 11 px, and Build it shows its seven slots.
+2. **Childbirth cue.** The cue sits on the side of the knob with room (left on the phone crop), and reads "Push the
+   baby down".
+3. **Birth, one condition.** Words, label, rail and the monitor all change at `born >= 0.85`: before it "Head passes"
+   and "Full stretch, the head passes through" with the stretch still full; after it "Baby born" and the stretch falls.
+4. **Effector labels.** "Arteriole widens / narrows", "Sweat gland" and "Muscle shivers" sit outside the magnifier
+   with a line to their part (labels can now avoid a circle or a box), so the vessel, gland and muscle stay in sight;
+   "Heat lost" stays in the air above the skin and "Heat kept, made" in the muscle (labels can be held inside a
+   circle). The sweep now fails a label covering more than 5% of its own part, inside the magnifier's circle.
+5. **Brain.** The top of the head is cut away: the skull's rim, the brain's two halves with folds, the hypothalamus a
+   filled shape at the brain's base. Both nerves run under the head and up the back of the neck (hidden behind the
+   face; their signal is not drawn over it). Sweat beads moved from the forehead to the cheeks; the flush tints only
+   the face, not the brain.
+6. **Childbirth on phones.** The tall layout crops to the trunk and pelvis: the uterus is about 145 x 227 px at 390,
+   the largest drawn thing (the sweep checks it against the monitor and the magnifier). The fetus is redrawn: head
+   down, face toward the mother's back, chin tucked, the curled back toward her belly, knees up by the chest, feet by
+   the buttocks, an arm folded by the face, shaded; an umbilical cord runs to a placenta on the upper wall. The knob
+   sits on the baby's shoulders, just behind the head (the sweep fails a knob over a quarter of the head). After birth
+   the wrapped newborn lies along the mother's forearm with its head in her hand; the empty uterus shrinks back.
+
+Should fix, all done: the spinal cord runs inside her back and neck; during a run the knob is moved directly (the
+kit's paint rewrote its tag text and hidden state each frame, which on a phone restyled the page through the frame's
+`:has()` rules: style time per frame at 390 fell from about 13 to about 5 ms on temperature with CPU x4; glucose still
+restyles when its number changes on the cause line); the phone pulse ring is smaller, clear of the scale's numbers;
+inside the dead band the words say "near the set point" and "too small a change to show", "at the set point" only at
+it; glucose arrow keys step 2 mg/dL; "Glucose stored / released" and "Liver" are labeled at the liver; the control
+center says "sends oxytocin pulses" (later turns "sends more oxytocin pulses"), as the bank does; the desktop monitor
+is taller (410 of 540 units); "Uterine muscle" sits outside the uterus with a line to the wall.
+
+Accuracy (each change checked against the notes and the bank): the hypothalamus at the base of the brain, midline,
+behind the eyes; sensory signals climb the spinal cord in the neck; a head down fetus facing the mother's back (the
+usual occiput anterior position), flexed; the placenta on the upper uterine wall (not over the cervix) with the cord
+to the fetal belly; after birth the placenta is still inside (the third stage is not drawn) and the uterus retracts.
+Points for a person: `docs/anp-needs-author.md` fl-birth-position, fl-temp-route (updated).

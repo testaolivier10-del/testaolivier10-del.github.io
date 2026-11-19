@@ -123,15 +123,24 @@ for (const ws of WIDTHS) {
           // a part drawn inside a magnifier is seen only inside its circle
           const clip = part.closest('g[clip-path]'), cb = clip ? clip.getBoundingClientRect() : null;
           const b = cb ? { left: Math.max(b0.left, cb.left), right: Math.min(b0.right, cb.right), top: Math.max(b0.top, cb.top), bottom: Math.min(b0.bottom, cb.bottom) } : b0;
-          const ix = Math.max(0, Math.min(a.right, b.right) - Math.max(a.left, b.left)), iy = Math.max(0, Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top));
-          if (ix * iy > 0.05 * a.width * a.height) out.over.push('label ' + g.getAttribute('data-lab') + ' covers its part');
+          // sample the label: points inside the part's box and (in a magnifier) inside its circle
+          const ring = clip ? clip.closest('svg').querySelector('.fe-magring') : null, rr = ring ? ring.getBoundingClientRect() : null;
+          let hit = 0, n = 0;
+          for (let i = 0; i < 12; i++) for (let j = 0; j < 5; j++) {
+            const x = a.left + (i + 0.5) / 12 * a.width, y = a.top + (j + 0.5) / 5 * a.height; n++;
+            if (x < b.left || x > b.right || y < b.top || y > b.bottom) continue;
+            if (rr && Math.hypot(x - (rr.left + rr.width / 2), y - (rr.top + rr.height / 2)) > rr.width / 2) continue;
+            hit++;
+          }
+          if (hit > 0.05 * n) out.over.push('label ' + g.getAttribute('data-lab') + ' covers its part');
         });
         // childbirth on a phone: the uterus is the largest drawn thing (bigger than the monitor and the magnifier), and
         // the knob leaves the baby's head in sight
         if (document.querySelector('.fe-main').getAttribute('data-scene') === 'childbirth') {
           const ar = (e) => { const q = e.getBoundingClientRect(); return q.width * q.height; };
           const ut = svgEl.querySelector('[data-r="ut"]'), mag = svgEl.querySelector('.fe-magring'), monb = svgEl.querySelector('.fe-mbez');
-          if (document.querySelector('.fe-pic').getAttribute('data-lay') === 'tall' && ut && (ar(ut) < ar(monb) || ar(ut) < ar(mag))) out.over.push('the uterus is not the largest drawn thing');
+          const fetusOn = +getComputedStyle(svgEl.querySelector('[data-r="fetus"]')).opacity > 0.5;
+          if (fetusOn && document.querySelector('.fe-pic').getAttribute('data-lay') === 'tall' && ut && (ar(ut) < ar(monb) || ar(ut) < ar(mag))) out.over.push('the uterus is not the largest drawn thing');
           const head = svgEl.querySelector('.fe-fhead'), kd = document.querySelector('.fe-pic .tk2-handle:not([hidden]) .tk2-dot');
           if (head && kd && +getComputedStyle(svgEl.querySelector('[data-r="fetus"]')).opacity > 0.5) {
             const a = head.getBoundingClientRect(), b = kd.getBoundingClientRect();

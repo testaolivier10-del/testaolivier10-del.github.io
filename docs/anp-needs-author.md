@@ -2109,9 +2109,14 @@ unchanged.
   around the 37 °C set point. Normal ranges vary by site and source (oral readings are often given as about 36.1 to
   37.2 °C); the notes give only the set point. The push is capped at 35.5 and 38.5 °C.
 - **fl-temp-route** (decided, for review). One patch of forearm skin is magnified; the sensory nerve is drawn from it up
-  the arm to the brain, and the command back down beside it. In the body the signal enters the spinal cord and climbs
+  the arm, over the shoulder and up the back of the neck to the brain (hidden behind the head), and the command back
+  down beside it. In the body the signal enters the spinal cord and climbs
   to the hypothalamus, and the commands leave by sympathetic nerves (skin vessels, sweat glands) and somatic motor
   nerves (shivering). "?" says so. The brain's own temperature-sensitive neurons are named in "?", not drawn.
+- **fl-birth-position** (decided, for review; review round 1). The fetus is drawn head down, face toward the mother's
+  back, flexed (the usual occiput anterior position), with the placenta on the upper uterine wall. After birth the
+  newborn is drawn wrapped and held on the mother's forearm; the delivery of the placenta (third stage) is not drawn,
+  so the placenta stays inside.
 - **fl-glucose-setpoint** (decided, for review). One set point, 88 mg/dL (the bank's insulin loop, "about 88 mg/dL
   fasting"), is drawn for both directions; the glucagon loop's text says "near 80 mg/dL". The normal band is the
   notes' fasting range, 70 to 99 mg/dL. Whether blood glucose has a true set point (rather than a range defended by

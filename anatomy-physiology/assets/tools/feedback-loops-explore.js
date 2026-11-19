@@ -349,7 +349,9 @@
         // the brain's label sits off the head; k >= 3 names the hypothalamus at its base
         var hd = { c: B([0, 0]), r: 46 * L.g.person[2] };
         out.push({ key: 'brain', text: k >= 3 ? 'Hypothalamus' : 'Brain', role: k >= 3 ? 'ctl' : 'tok', at: k >= 3 ? B([0, -7]) : B([-14, -32]), side: ['l', 'r', 'u'], strong: k === 3, lead: true, avoid: [hd] });
-        if(k === 4) out.push({ key: 'effn', text: 'Efferent nerve', role: 'eff', at: B([36, 86]), side: ['r', 'u'], strong: true, avoid: [hd] });
+        // named once its command is drawn on the nerve (it starts behind the head, where it is not drawn)
+        var g0 = L.g.person, effSeen = st.effp.some(function(pu){ var q = E.geo.eff.at(pu.p); return !inHead([(q[0] - g0[0]) / g0[2], (q[1] - g0[1]) / g0[2]]); });
+        if(k === 4 && effSeen) out.push({ key: 'effn', text: 'Efferent nerve', role: 'eff', at: B([36, 86]), side: ['r', 'u'], strong: true, avoid: [hd] });
         // the effectors are named from outside the magnifier, each with a line to its part, so the part stays in sight
         var mg = L.g.mag, ring = { c: [mg[0], mg[1]], r: 170 * mg[2] };
         if(k >= 5 && !st.done && st.eff > 0.15){
@@ -376,7 +378,7 @@
         }
       },
       take: function(st){ return st.dir === 'up' ? 'Negative feedback: sweating and wide skin vessels undid the rise, then switched off.' : 'Negative feedback: narrow skin vessels and shivering undid the fall, then switched off.'; },
-      idleWords: function(x){ var at = Math.abs(x - SET) < 0.05; return { pre: 'Now:', parts: [{ t: this.fmt(x), role: 'temp' }, { t: at ? 'at the set point' : 'near the set point', role: 'temp' }, { t: at ? 'nothing to correct' : 'too small to correct' }] }; },
+      idleWords: function(x){ var at = Math.abs(x - SET) < 0.05; return { pre: 'Now:', parts: [{ t: this.fmt(x), role: 'temp' }, { t: at ? 'at the set point' : 'near the set point', role: 'temp' }, { t: at ? 'nothing to correct' : 'too small a change to show' }] }; },
       note: 'One patch of skin on the forearm is magnified; the same happens in skin all over the body. The brain also has its own temperature-sensitive neurons in the hypothalamus, which sense the blood flowing through it. The nerves are drawn as one route from the arm to the brain and back; in the body the sensory signal enters the spinal cord and climbs to the brain. Narrow skin vessels keep warm blood away from the skin, so less heat is lost; shivering is skeletal muscle contracting in rapid small bursts, which releases heat. Sweat cools you only as it evaporates. The trace wobbles a little past the set point and settles, inside the normal range.'
     });
   })();
@@ -604,7 +606,7 @@
         }
       },
       take: function(st){ return st.dir === 'up' ? 'Negative feedback: insulin moved glucose into storage, and less insulin is released as it falls.' : 'Negative feedback: glucagon made the liver release glucose, and less glucagon is released as it rises.'; },
-      idleWords: function(x){ var at = Math.abs(x - SET) < 1; return { pre: 'Now:', parts: [{ t: this.fmt(x), role: 'glu' }, { t: at ? 'at the set point' : 'near the set point', role: 'glu' }, { t: at ? 'nothing to correct' : 'too small to correct' }] }; },
+      idleWords: function(x){ var at = Math.abs(x - SET) < 1; return { pre: 'Now:', parts: [{ t: this.fmt(x), role: 'glu' }, { t: at ? 'at the set point' : 'near the set point', role: 'glu' }, { t: at ? 'nothing to correct' : 'too small a change to show' }] }; },
       note: 'The pancreas is drawn in front of the stomach so it can be seen; it lies behind it. Each gold hexagon in the blood stands for a share of the glucose, not one molecule. The islet cells are their own sensors and control center, so this loop has no nerve between them. Insulin acts on the liver, skeletal muscle and fat (muscle and fat move glucose carriers to their membranes; the liver stores glucose as glycogen); glucagon acts on the liver, which breaks glycogen down and makes new glucose. Muscle keeps its glycogen for itself. In a human islet the beta and alpha cells are mixed, as drawn. The fasting normal range is about 70 to 99 mg/dL; the set point is drawn at 88, the level in the bank’s loop.'
     });
     // the scene's routes, for labels that follow a molecule (computed per layout, cached on the engine's E)
