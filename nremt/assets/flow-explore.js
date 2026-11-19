@@ -316,7 +316,7 @@
         f.aedBox = [x, y, w, hh];
         h.push('<g class="fx2-aed" transform="translate(' + x.toFixed(1) + ' ' + y.toFixed(1) + ') scale(' + s.toFixed(3) + ')">' +
           '<rect class="fx2-aed-b" x="0" y="0" width="170" height="118" rx="16"/><rect class="fx2-aed-s" x="10" y="10" width="150" height="64" rx="6"/>' +
-          '<path class="fx2-vf" d="M22 54q6 -16 10 0t10 0t9 -2t11 4t9 -14t10 12t10 -6t9 10t10 -12t9 4t9 -6t9 6t9 -8"/>' +
+          '<path class="fx2-vf" transform="translate(0 64) scale(1 .62) translate(0 -54)" d="M22 54q6 -16 10 0t10 0t9 -2t11 4t9 -14t10 12t10 -6t9 10t10 -12t9 4t9 -6t9 6t9 -8"/>' +
           '<text class="fx2-aed-t" x="85" y="32" text-anchor="middle">Shock advised</text><text class="fx2-aed-t2" x="85" y="48" text-anchor="middle">Shock given</text>' +
           '<circle class="fx2-aed-btn" cx="85" cy="96" r="14"/><path class="fx2-aed-bolt" d="M82 88l-5 9h6l-3 8l9 -11h-6l3 -6z"/></g>');
       }
@@ -517,8 +517,8 @@
           [700, function(){ setLabels([{ text: 'Pale, sweaty', at: [240, 60] }, { text: 'Fast, weak pulse', at: [50, 600] }]); }]];
         case 'prio': return [[0, look], [600, function(){ setLabels([{ text: 'Responds to voice', at: [240, 77] }, { text: 'Shock', at: [240, 400] }]); }]];
         case 'tap': return [[0, look], [400, function(){ f.tap = true; paintFx(); speak('emt', 'Sir! Are you OK?'); }], [1300, function(){ f.tap = false; paintFx(); setLabels([{ text: 'No response', at: [240, 77] }]); }]];
-        case 'pulse': return [[0, function(){ look(); speak(null); }], [400, function(){ f.carotid = true; paintFx(); setLabels([{ text: 'Carotid, 10 s', at: [212, 188], tone: 'act' }]); }],
-          [900, function(){ f.mouth = 'o'; f.chest = 'gasp'; paintFx(); }], [700, function(){ f.mouth = 'n'; f.chest = ''; paintFx(); }],
+        case 'pulse': return [[0, function(){ look(); speak(null); }], [400, function(){ f.carotid = true; paintFx(); }], [550, function(){ setLabels([{ text: 'Carotid, 10 s', at: [212, 188], tone: 'act' }]); }],
+          [600, function(){ f.mouth = 'o'; f.chest = 'gasp'; paintFx(); }], [700, function(){ f.mouth = 'n'; paintFx(); }],
           [600, function(){ setLabels([{ text: 'No pulse', at: [212, 188] }, { text: 'Gasping', at: [240, 120] }]); }]];
         case 'aed': return [[0, function(){ look(); speak(null); f.cpr = true; paintFx(); }], [500, function(){ f.aed = true; paintFx(); }], [600, function(){ f.bare = true; f.pads = true; paintFx(); }],
           [700, function(){ f.cpr = false; f.screen = 'vf'; paintFx(); speak('aed', 'Analyzing. Don’t touch the patient.'); }],
@@ -552,7 +552,8 @@
         cz([see, { t: arm.t, role: 'bad' }]);
         var seq = badSeq(arm, step);
         seq.push([200, function(){ cz([see, { t: arm.t, role: 'bad' }, { t: arm.res, role: 'bad' }]); say(arm.t + ': ' + arm.con + '. ' + arm.res + '.'); }]);
-        seq.push([700, function(){ setPhase('ask'); setLabels(findLabels(step)); focusArm(how); }]);
+        seq.push([700, function(){ setLabels(findLabels(step)); }]);
+        seq.push([350, function(){ setPhase('ask'); focusArm(how); }]);
         run(seq);
         return;
       }
@@ -591,7 +592,7 @@
         case 'slow': return [[200, function(){ lose(arm.lost); }], [900, function(){ setLabels([{ text: 'Still on the floor', at: [240, 500], tone: 'bad' }]); }]];
         case 'wait': return [[200, function(){ lose(arm.lost); }], [900, function(){ setLabels([{ text: 'No AED coming', at: [240, 77], tone: 'bad' }]); }]];
         case 'gray': return [[200, function(){ f.gray = Math.min(3, f.gray + 1); paintFx(); }], [1000, function(){ lose(arm.lost); setLabels([{ text: 'Turning gray', at: [240, 300], tone: 'bad' }]); }]];
-        case 'breaths': return [[200, function(){ f.bvm = true; f.chest = 'rise'; paintFx(); }], [1500, function(){ f.bvm = false; f.chest = ''; f.gray = Math.min(3, f.gray + 1); paintFx(); }],
+        case 'breaths': return [[200, function(){ f.bvm = true; f.chest = 'rise'; paintFx(); }], [1500, function(){ f.bvm = false; f.chest = 'gasp'; f.gray = Math.min(3, f.gray + 1); paintFx(); }],
           [700, function(){ lose(arm.lost); setLabels([{ text: 'No blood moves', at: [240, 300], tone: 'bad' }]); }]];
         case 'noshock': return [[200, function(){ f.cpr = true; paintFx(); }], [1400, function(){ f.cpr = false; paintFx(); lose(arm.lost); setLabels([{ text: 'No shock given', at: [240, 300], tone: 'bad' }]); }]];
       }
@@ -606,7 +607,7 @@
         case 'blanket': return [[200, function(){ f.pulse = false; f.blanket = true; paintFx(); }], [900, function(){ setLabels([{ text: 'Blanket', at: [240, 450], tone: 'act' }]); }]];
         case 'transport': return [[200, function(){ f.exam = true; paintFx(); }], [2000, function(){ f.exam = false; paintFx(); setLabels([{ text: 'Rapid exam', at: [240, 300], tone: 'act' }]); }]];
         case 'call': return [[200, function(){ speak('emt', 'No response! Get the AED.'); }], [1100, function(){ setLabels([{ text: 'Help called', at: [240, 77], tone: 'act' }]); }]];
-        case 'cpr': return [[200, function(){ f.carotid = false; f.bare = true; paintFx(); }], [500, function(){ f.cpr = true; paintFx(); speak('emt', 'One, two, three…'); }],
+        case 'cpr': return [[200, function(){ f.carotid = false; f.chest = ''; f.bare = true; paintFx(); }], [500, function(){ f.cpr = true; paintFx(); speak('emt', 'One, two, three…'); }],
           [1800, function(){ f.cpr = false; f.bvm = true; f.chest = 'rise'; paintFx(); speak(null); }], [1300, function(){ f.bvm = false; f.chest = ''; f.cpr = true; paintFx(); setLabels([{ text: '30 pushes, 2 breaths', at: [240, 300], tone: 'act' }]); }]];
         case 'shock': return [[200, function(){ f.clear = true; f.cpr = false; paintFx(); speak('emt', 'Clear!'); }], [800, function(){ f.flash = true; paintFx(); }], [500, function(){ f.flash = false; f.screen = 'done'; f.clear = false; f.cpr = true; paintFx(); speak(null); }],
           [500, function(){ setLabels([{ text: 'CPR again', at: [240, 300], tone: 'act' }]); }]];

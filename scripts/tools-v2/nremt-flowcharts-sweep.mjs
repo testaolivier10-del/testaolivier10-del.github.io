@@ -181,7 +181,7 @@ if (process.argv.includes('--frames')) {
   // label -> what must be drawn (and faded in) when it shows
   const NEED = { 'Eyes open to voice': '.fx2-eo', 'Spurting blood': '.fx2-jets', 'Snoring': '.fx2-snore', 'Chest rises fully': '.fx2-rise', 'Fast, weak pulse': '.fx2-wrist',
     'Pale, sweaty': '.fx2-sweat', 'Tourniquet': '.fx2-tq', 'Jaw thrust': '.fx2-jaw', 'Blanket': '.fx2-blanket', 'Lips turn blue': '.fx2-lips', 'Carotid, 10 s': '.fx2-carotid',
-    'Pads': '.fx2-pads', '30 pushes, 2 breaths': '.fx2-cpr', 'CPR again': '.fx2-cpr', 'Shock advised': '.fx2-aed.is-adv .fx2-aed-t', 'Gasping': '.fx2-rl' };
+    'Pads': '.fx2-pads', '30 pushes, 2 breaths': '.fx2-cpr', 'CPR again': '.fx2-cpr', 'Shock advised': '.fx2-aed.is-adv .fx2-aed-t', 'Gasping': '.fx2-gasp' };
   // the cause line's last pill -> what must be drawn
   const RES = { 'the spurting stops': ['.fx2-tq', '!.fx2-jets'], 'air moves freely': ['.fx2-jaw', '!.fx2-snore'], 'blanket on, kept warm': ['.fx2-blanket'], 'more blood lost': ['pool'],
     'tongue still blocks it': ['.fx2-lips'], 'blood pushed to the brain': ['.fx2-cpr'], 'shock, then CPR at once': ['.fx2-cpr'] };
@@ -195,7 +195,7 @@ if (process.argv.includes('--frames')) {
       const sample = async () => {
         const r = await page.evaluate(([NEED, RES]) => {
           const op = (sel) => { const neg = sel[0] === '!'; const s = neg ? sel.slice(1) : sel; if (s === 'pool') { const p = document.querySelector('.fx2-pool'); const m = /scale\(([\d.]+)/.exec(p.style.transform || ''); return m && +m[1] > 1.2 ? 1 : 0; }
-            const e = document.querySelector(s); if (!e) return neg ? 1 : 0; let o = 1, x = e; while (x && x.tagName !== 'svg') { o *= +getComputedStyle(x).opacity; x = x.parentElement; } const on = (e.closest('.fx2-on > g') || e).classList.contains('is-on') || /fx2-aed/.test(s) || s === '.fx2-rl';
+            const e = document.querySelector(s); if (!e) return neg ? 1 : 0; let o = 1, x = e; while (x && x.tagName !== 'svg') { o *= +getComputedStyle(x).opacity; x = x.parentElement; } const on = (e.closest('.fx2-on > g') || e).classList.contains('is-on') || /fx2-aed/.test(s);
             return neg ? (on ? 0 : 1) : (on ? o : 0); };
           const out = [];
           document.querySelectorAll('.fx2-lab.is-in').forEach(l => { const s = NEED[l.textContent]; if (s && op(s) < 0.85 && +getComputedStyle(l).opacity > 0.05) out.push('label "' + l.textContent + '" before its drawing (' + op(s).toFixed(2) + ')'); });
@@ -228,7 +228,7 @@ if (process.argv.includes('--frames')) {
     const before = await page.evaluate(() => document.querySelector('.fx2-chart').innerHTML.length);
     await page.waitForTimeout(2500);
     ok(await page.evaluate((b) => document.querySelector('.fx2-chart').innerHTML.length === b, before), `frames ${w}: something runs while Explore is hidden`);
-    await page.getByRole('button', { name: 'Explore' }).click(); await page.waitForTimeout(700);
+    await page.getByRole('button', { name: 'Explore' }).click(); await page.waitForTimeout(1200);
     check(await geo(page), `frames ${w} back from Test yourself`);
     // frame times with the CPU slowed x4 during a step with motion (the tourniquet, the jets)
     await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 });

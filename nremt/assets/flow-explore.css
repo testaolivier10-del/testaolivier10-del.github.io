@@ -54,8 +54,8 @@
 .fx2-mo{fill:#5A1E1A;stroke:#A0544C;stroke-width:1.2;}
 .fx2-eo,.fx2-ec,.fx2-mo,.fx2-mn{opacity:0;transition:opacity .3s ease;}
 .fx2-eo.is-on,.fx2-ec.is-on,.fx2-mo.is-on,.fx2-mn.is-on{opacity:1;}
-.fx2-lips{fill:#5B6FB8;opacity:0;transition:opacity 1s ease;mix-blend-mode:multiply;}
-.fx2-lips.is-on{opacity:.75;}
+.fx2-lips{fill:#5B6FB8;fill-opacity:.75;opacity:0;transition:opacity 1s ease;mix-blend-mode:multiply;}
+.fx2-lips.is-on{opacity:1;}
 .fx2-sweat{fill:#E7F4FF;stroke:#8DB8D9;stroke-width:1;opacity:0;transition:opacity .6s ease;}
 .fx2-sweat.is-on{opacity:1;}
 
@@ -81,7 +81,8 @@
 .fx2-rglow{fill:#FFFFFF;opacity:0;}
 .fx2-rise.is-on .fx2-rl,.fx2-gasp.is-on .fx2-rl{animation:fx2-rise 3.3s ease-in-out infinite;}
 .fx2-rise.is-on .fx2-rglow{animation:fx2-glow 3.3s ease-in-out infinite;}
-.fx2-gasp.is-on .fx2-rl{animation:fx2-rise 1s ease-out 1;}
+.fx2-gasp.is-on .fx2-rl{animation:fx2-gasp 3.2s ease-out infinite;opacity:.35;}
+@keyframes fx2-gasp{0%{opacity:.35;}12%{opacity:.95;}35%,100%{opacity:.35;}}
 @keyframes fx2-rise{0%,100%{opacity:0;transform:none;}45%{opacity:.85;}}
 @keyframes fx2-glow{0%,100%{opacity:0;}45%{opacity:.18;}}
 .fx2-pring{fill:none;stroke:#2F6FB0;stroke-width:3;}
