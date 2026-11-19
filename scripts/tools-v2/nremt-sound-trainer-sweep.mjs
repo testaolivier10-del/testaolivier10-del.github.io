@@ -397,14 +397,20 @@ async function frames() {
     await page.selectOption('.ls-root select', 'name').catch(async () => { await page.click('text=Where to listen'); await page.click('text=Name the sound'); });
     await page.waitForTimeout(400);
     ok(await page.evaluate(() => !document.querySelector('#quizPlayBtn.playing')), 'name: the clip played on its own');
-    // answer rounds until a right and a wrong answer have both been seen; the marking must match the verdict
+    // answer rounds until a right and a wrong answer have both been seen; the marking must match the verdict. The
+    // round's sound is read from what Play hands the sound bank (the student's own tap on Play)
+    await page.evaluate(() => { const B = window.LevlSoundBank, p0 = B.play; B.play = function(snd){ window.__playing = snd && snd.id; return p0.apply(this, arguments); }; });
     const seen = { right: 0, wrong: 0 }; const ids = [];
-    for (let r = 0; r < 10 && !(seen.right && seen.wrong); r++) {
+    for (let r = 0; r < 4 && !(seen.right && seen.wrong); r++) {
+      await page.click('#quizPlayBtn'); await page.waitForTimeout(150);
+      const id = await page.evaluate(() => window.__playing);
+      await page.click('#quizPlayBtn'); // stop it
       const choices = await page.$$eval('#quizChoices [data-choice]', bs => bs.map(b => b.dataset.choice));
-      const pickId = choices[(r * 3) % choices.length];
+      const pickId = r % 2 === 0 ? id : choices.find(c => c !== id);
       await page.click(`#quizChoices [data-choice="${pickId}"]`); await page.waitForTimeout(150);
-      const res = await page.evaluate((id) => ({ v: document.querySelector('.feedback-verdict').textContent, right: document.querySelector('#quizChoices .correct').dataset.choice, id }), pickId);
+      const res = await page.evaluate(() => ({ v: document.querySelector('.feedback-verdict').textContent, right: document.querySelector('#quizChoices .correct').dataset.choice }));
       ids.push(res.right);
+      ok(res.right === id, `name: the played sound (${id}) is not the marked answer (${res.right})`);
       if (res.right === pickId) { seen.right++; ok(/^Correct/.test(res.v), `name: a right answer marked "${res.v}"`); }
       else { seen.wrong++; ok(/^Not quite/.test(res.v), `name: a wrong answer marked "${res.v}"`); }
       await page.click('#nextRoundBtn'); await page.waitForTimeout(150);

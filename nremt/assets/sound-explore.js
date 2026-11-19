@@ -419,7 +419,7 @@
       if(kind === 'systolic-murmur'){ P_.aor.g.classList.add('is-stenotic'); }
       if(kind === 'diastolic-murmur'){ P_.aor.g.classList.add('is-leaky'); }
       P_.flashLV = sv('path', { class: 'snd2-flash-w', d: lv }, gH);
-      P_.blood = []; for(var i = 0; i < 12; i++) P_.blood.push(sv('circle', { r: 3, class: 'snd2-blood' }, gH));
+      P_.blood = []; for(var i = 0; i < 9; i++) P_.blood.push(sv('circle', { r: 3, class: 'snd2-blood' }, gH));
       P_.kind = kind;
     }
     // valve state: 0 closed, 1 open
@@ -500,7 +500,7 @@
       // blood: out through the aorta in systole (a jet through a narrow valve), in from the left atrium in diastole,
       // and back through a leaky aortic valve in diastole
       P_.blood.forEach(function(c, i){
-        var u = ((t == null ? i / 12 : t * 1.6 + i / 12) % 1), x, y, show = 1, turb = false;
+        var u = ((t == null ? i / 9 : t * 1.6 + i / 9) % 1), x, y, show = 1, turb = false;
         function seg(p0, p1, v){ return [p0[0] + (p1[0] - p0[0]) * v, p0[1] + (p1[1] - p0[1]) * v]; }
         var pt;
         if(inSys){ // out of the left ventricle, through the aortic valve, up the aorta
@@ -809,7 +809,8 @@
         var info = play.info, t = info.synth ? info.now() - info.startAt : info.now(), lvl = info.level ? info.level() : null;
         if(info.synth && t < 0) t = 0;
         paintStrip(t, lvl, false);
-        if(!reduced()) paintLens(t, lvl);
+        // the lens repaints every other frame (30 a second is smooth for it, and leaves the drag its frames)
+        if(!reduced() && (play.fr = (play.fr || 0) + 1) % 2 === 0) paintLens(t, lvl);
         if(!play.lensOn && (now - play.t0 > (reduced() ? 0 : 500))){ play.lensOn = true; }
         chain();
       }
