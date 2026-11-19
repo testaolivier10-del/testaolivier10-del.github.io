@@ -82,3 +82,26 @@ test('nothing saved, or junk saved, falls back to the default range', () => {
     assert.equal(r.toId, 'alkenes-alkynes');
   }
 });
+
+/* Arrow Pusher v2 (docs/tools-v2-arrow-pusher-brief.md): every ?start= link the site makes (the course home, the
+   Reaction Predictor's SN2, SN1, E2 and E1 links) names a mechanism of Explore or a molecule of Test yourself, Any
+   molecule; and the page loads a linked mechanism after its kit is built (the kit opens Explore on the first one while
+   it is built, so loading it before then was overwritten: review round 1). The browser side is in
+   scripts/tools-v2/arrow-pusher-sweep.mjs (it opens ?start=sn1-secondary, propene-hbr and acetyl-chloride-nu). */
+test('arrow pusher: every ?start= link the site makes still lands on a mechanism or a molecule', async () => {
+  const { readFileSync } = await import('node:fs');
+  const b = createBrowser();
+  for (const f of ['ochem/assets/molecules.js', 'ochem/assets/chem-core.js', 'ochem/assets/push-board.js', 'ochem/assets/tools/arrow-pusher.js']) b.load(f);
+  const M = b.window.OchemArrowModel;
+  const known = new Set(M.MECHS.map((m) => m.id).concat(M.GROUPS.flatMap((g) => g.picks.map((p) => p.id))));
+  const src = readFileSync('ochem/assets/tools/reaction-predictor.js', 'utf8') + readFileSync('scripts/build-course-homes.mjs', 'utf8');
+  const linked = new Set([...src.matchAll(/arrow-pusher\.html\?start=([a-z0-9-]+)/g)].map((m) => m[1]));
+  const mech = /MECH_LINK = \{([\s\S]*?)\};/.exec(readFileSync('ochem/assets/tools/reaction-predictor.js', 'utf8'));
+  for (const m of mech[1].matchAll(/id:'([a-z0-9-]+)'/g)) linked.add(m[1]);
+  assert.ok(linked.size >= 3, 'found no links');
+  for (const id of linked) assert.ok(known.has(id), `?start=${id} lands nowhere`);
+  // the boot loads a linked mechanism after the kit (not only when Explore has nothing loaded)
+  const js = readFileSync('ochem/assets/tools/arrow-pusher.js', 'utf8');
+  const kit = js.indexOf('var kitApi = Kit.kit2('), load = js.indexOf('if(m0){ loadMech(m0);');
+  assert.ok(kit > 0 && load > kit, 'a linked mechanism is loaded before the kit opens Explore on the first one');
+});

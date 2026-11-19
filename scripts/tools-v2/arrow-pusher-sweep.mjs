@@ -86,6 +86,13 @@ const probe = () => {
     if (!c) { out.push(what + ' outside every card'); return; }
     if (r.l < c.l - 0.5 || r.r > c.r + 0.5 || r.t < c.t - 0.5 || r.b > c.b + 0.5) out.push(what + ' crosses its card edge');
     tags.filter(t => t.l >= c.l - 1 && t.r <= c.r + 1).forEach(t => { if (hit(r, t, 4)) out.push(what + ' within 4 px of its tag'); }); });
+  // inside each card, no letters on letters and no badge on letters (glyph boxes: cap height, measured width)
+  { const svgR = document.querySelector('.ap2-svg').getBoundingClientRect(), vbw = document.querySelector('.ap2-svg').viewBox.baseVal.width || svgR.width, kk = svgR.width / vbw;
+    const glyph = q('.rs2-strip .rs2-fal').map(e => { const x = +e.getAttribute('x'), y = +e.getAttribute('y'), fs = +e.getAttribute('font-size'), w = e.getComputedTextLength(); return { t: e.textContent, l: (x - w / 2) * kk, r: (x + w / 2) * kk, t0: (y - fs * 0.72) * kk, b0: (y + fs * 0.04) * kk }; });
+    const badges = q('.rs2-strip .rs2-badge circle').map(e => { const cx = +e.getAttribute('cx'), cy = +e.getAttribute('cy'), r = +e.getAttribute('r'); return { l: (cx - r) * kk, r: (cx + r) * kk, t0: (cy - r) * kk, b0: (cy + r) * kk }; });
+    const ov = (a, c) => Math.min(a.r, c.r) - Math.max(a.l, c.l) > 0.5 && Math.min(a.b0, c.b0) - Math.max(a.t0, c.t0) > 0.5;
+    for (let i = 0; i < glyph.length; i++) { for (let j = i + 1; j < glyph.length; j++) if (ov(glyph[i], glyph[j])) out.push('card letters "' + glyph[i].t + '" and "' + glyph[j].t + '" overlap');
+      badges.forEach(bd => { if (ov(glyph[i], bd)) out.push('a card badge on letters "' + glyph[i].t + '"'); }); } }
   q('.rs2-strip .rs2-fpi').forEach(e => { const L = Math.hypot(e.x2.baseVal.value - e.x1.baseVal.value, e.y2.baseVal.value - e.y1.baseVal.value); if (L < 6) out.push('a π line in the row is ' + L.toFixed(1) + ' px'); });
   // no rendered text under 11 px anywhere in the tool
   const svgEl = document.querySelector('.ap2-svg'), vb = svgEl.viewBox.baseVal, k = vb && vb.width ? svgEl.getBoundingClientRect().width / vb.width : 1;
@@ -143,6 +150,14 @@ for (const w of WIDTHS) {
       return out; });
     states++; checks += 2; r.forEach(m => fails.push(`${w} first visit: ${m}`));
     await shot(c.page.locator('.ap2-scene'), `${tag}-0-cue.png`);
+    await c.page.context().close();
+  }
+  // links: ?start=<an Explore mechanism> opens it and keeps the address (the Reaction Predictor's SN1 and E1 links)
+  for (const id of ['sn1-secondary', 'propene-hbr', 'acetyl-chloride-nu', 'e2-butane']) {
+    const c = await open({ w, h, q: '?start=' + id });
+    const r = await c.page.evaluate(() => ({ id: window.OchemArrowModel.view.S.id, ctx: window.OchemArrowModel.view.S.ctx, q: location.search }));
+    states++; checks += 2;
+    if (r.id !== id || r.q !== '?start=' + id) fails.push(`${w} ?start=${id}: opened ${r.ctx} ${r.id} at "${r.q}"`);
     await c.page.context().close();
   }
   const { page, errs } = await open({ w, h });

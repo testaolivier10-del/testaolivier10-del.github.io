@@ -29,6 +29,8 @@
   function f1(x){ return Math.round(x * 10) / 10; }
   function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]; }); }
   function heavy(st, k){ var a = st.atoms[k]; return a && a.el && a.el !== 'H'; }
+  // heavy, or (g) a group drawn as one unit (Et, OEt): the small drawings of Arrow Pusher draw those too
+  function hvy(st, k, g){ return heavy(st, k) || !!(g && st.atoms[k] && st.atoms[k].group); }
   function fc(st, k){ var a = st.atoms[k]; return a && a.el && !a.group ? C.formalCharge(st, k) : 0; }
   function bondKey(b){ return 'bond:' + b.a + '-' + b.b; }
   function sign(q){ return q < 0 ? (q === -1 ? '−' : -q + '−') : (q === 1 ? '+' : q + '+'); }
@@ -53,7 +55,7 @@
      atoms only. o.keys: fit these atoms (e.g. the union of every state of a mechanism, passed as a structure). */
   function fitT(st, box, opts){
     opts = opts || {};
-    var ks = Object.keys(st.atoms).filter(function(k){ return opts.flat ? heavy(st, k) : true; });
+    var ks = Object.keys(st.atoms).filter(function(k){ return opts.flat ? hvy(st, k, opts.groups) : true; });
     var x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
     ks.forEach(function(k){ var a = st.atoms[k]; x0 = Math.min(x0, a.x); x1 = Math.max(x1, a.x); y0 = Math.min(y0, a.y); y1 = Math.max(y1, a.y); });
     if(opts.extra) opts.extra.forEach(function(a){ x0 = Math.min(x0, a.x); x1 = Math.max(x1, a.x); y0 = Math.min(y0, a.y); y1 = Math.max(y1, a.y); });
@@ -217,8 +219,8 @@
   }
 
   /* The small drawings (a forms row, a steps row): lines and letters, the charge in its colour, the π line violet. */
-  function flatSizes(st, T){
-    var b = st.bonds.filter(function(x){ return x.order > 0 && heavy(st, x.a) && heavy(st, x.b); })[0], bl = 40;
+  function flatSizes(st, T, g){
+    var b = st.bonds.filter(function(x){ return x.order > 0 && hvy(st, x.a, g) && hvy(st, x.b, g); })[0], bl = 40;
     if(b){ var a = P(T, st.atoms[b.a]), z = P(T, st.atoms[b.b]); bl = Math.hypot(z[0] - a[0], z[1] - a[1]); }
     return { bl: bl, lw: Math.max(1.5, Math.min(2.6, bl * 0.06)), fsz: Math.max(11, Math.min(15, bl * 0.42)), off: Math.max(2.6, Math.min(5.5, bl * 0.14)) };
   }
@@ -227,33 +229,46 @@
      same for every card of one species); o.cap: largest scale. */
   function fitFlat(ref, st, box, o){
     o = o || {};
-    var cap = o.cap || 1.2;
-    var T = fitT(ref, box, { flat: true, margin: 0, cap: cap });
+    var cap = o.cap || 1.2, g = !!o.groups;
+    var T = fitT(ref, box, { flat: true, margin: 0, cap: cap, groups: g });
     for(var it = 0; it < 2; it++){
-      var z = flatSizes(st, T), ex = 0, ey = z.fsz * 0.55;
+      var z = flatSizes(st, T, g), ex = 0, ey = z.fsz * 0.55;
       var inR = {}; sixRings(st).forEach(function(r){ r.forEach(function(k){ inR[k] = 1; }); });
-      Object.keys(st.atoms).forEach(function(k){ if(!heavy(st, k) || (st.atoms[k].el === 'C' && (inR[k] || C.neighbors(st, k).some(function(n){ return inR[n]; })))) return; var l = flatLabel(st, k); if(l !== 'C') ex = Math.max(ex, z.fsz * 0.33 * l.length); });
-      T = fitT(ref, { x: box.x + ex, y: box.y + ey, w: Math.max(10, box.w - ex * 2), h: Math.max(10, box.h - ey * 2) }, { flat: true, margin: 0, cap: cap });
+      Object.keys(st.atoms).forEach(function(k){ if(!hvy(st, k, g) || (st.atoms[k].el === 'C' && (inR[k] || C.neighbors(st, k).some(function(n){ return inR[n]; })))) return; var l = flatLabel(st, k); if(l !== 'C') ex = Math.max(ex, z.fsz * 0.33 * l.length); });
+      T = fitT(ref, { x: box.x + ex, y: box.y + ey, w: Math.max(10, box.w - ex * 2), h: Math.max(10, box.h - ey * 2) }, { flat: true, margin: 0, cap: cap, groups: g });
     }
     return T;
   }
-  function drawFlat(st, T, box){
+  /* o.groups: draw groups (Et) as their letters; o.clear: a badge also keeps 2 px clear of every other letter and badge
+     (both Arrow Pusher's). */
+  function drawFlat(st, T, box, o){
+    o = o || {};
+    var g = !!o.groups;
     /* drawn as on paper: a ring carbon is a plain corner (no letters), so the ring's double bonds have room; letters
        only on heteroatoms and groups. box: where every mark must stay (the card above its tag). */
-    var out = '', hk = Object.keys(st.atoms).filter(function(k){ return heavy(st, k); });
+    var out = '', hk = Object.keys(st.atoms).filter(function(k){ return hvy(st, k, g); });
     var inRing = {}; sixRings(st).forEach(function(r){ r.forEach(function(k){ inRing[k] = 1; }); });
     // a ring carbon, and a CH₂ hanging off a ring (the benzyl carbon), are line ends as on paper
     function bare(k){ var l = flatLabel(st, k); return l === 'C' || (st.atoms[k].el === 'C' && (inRing[k] || (l === 'CH₂' && C.neighbors(st, k).some(function(n){ return inRing[n]; })))); }
-    var z0 = flatSizes(st, T), lw = z0.lw, fsz = z0.fsz, off = z0.off;
+    var z0 = flatSizes(st, T, g), lw = z0.lw, fsz = z0.fsz, off = z0.off;
+    // every letter's box (for o.clear)
+    var lbox = {}, placed = [];
+    if(o.clear) hk.forEach(function(k){ if(bare(k)) return; var p = P(T, st.atoms[k]), w = fsz * 0.64 * flatLabel(st, k).replace(/[₀-₉]/g, '').length + fsz * 0.3 * (flatLabel(st, k).match(/[₀-₉]/g) || []).length; lbox[k] = { x0: p[0] - w / 2, x1: p[0] + w / 2, y0: p[1] - fsz * 0.5, y1: p[1] + fsz * 0.5 }; });
+    function clearOf(k, bx, by, br){
+      if(!o.clear) return true;
+      var hit = function(b){ return !(bx + br + 2 <= b.x0 || bx - br - 2 >= b.x1 || by + br + 2 <= b.y0 || by - br - 2 >= b.y1); };
+      return !Object.keys(lbox).some(function(j){ return hit(lbox[j]); }) && !placed.some(hit);
+    }
     st.bonds.forEach(function(b){
-      if(b.order < 1 || !heavy(st, b.a) || !heavy(st, b.b)) return;
+      if(b.order < 1 || !hvy(st, b.a, g) || !hvy(st, b.b, g)) return;
       var a = P(T, st.atoms[b.a]), z = P(T, st.atoms[b.b]), dx = z[0] - a[0], dy = z[1] - a[1], L0 = Math.hypot(dx, dy) || 1, nx = -dy / L0, ny = dx / L0;
       // a line stops just short of a letter: wider labels need more room, and more along a level bond than a steep one
-      function gap(k){ if(bare(k)) return 0; var n = flatLabel(st, k).length, hx = fsz * (0.2 + 0.17 * n), hy = fsz * 0.42; return Math.min(hx / Math.max(0.01, Math.abs(dx / L0)), hy / Math.max(0.01, Math.abs(dy / L0))) + 1.5; }
+      // (o.clear: a tighter gap from the letters' measured width, so a short bond on a small card keeps its π line)
+      function gap(k){ if(bare(k)) return 0; var n = flatLabel(st, k).replace(/[₀-₉]/g, '').length, hx = o.clear ? fsz * (0.08 + 0.32 * n) : fsz * (0.2 + 0.17 * flatLabel(st, k).length), hy = o.clear ? fsz * 0.38 : fsz * 0.42; return Math.min(hx / Math.max(0.01, Math.abs(dx / L0)), hy / Math.max(0.01, Math.abs(dy / L0))) + (o.clear ? 1 : 1.5); }
       var ga = gap(b.a), gz = gap(b.b);
       var ax = a[0] + dx / L0 * ga, ay = a[1] + dy / L0 * ga, zx = z[0] - dx / L0 * gz, zy = z[1] - dy / L0 * gz;
       out += '<line class="rs2-fsig" x1="' + f1(ax) + '" y1="' + f1(ay) + '" x2="' + f1(zx) + '" y2="' + f1(zy) + '" stroke-width="' + f1(lw) + '"/>';
-      var side = piSide(st, b), o2 = off * side, ll = Math.hypot(zx - ax, zy - ay) || 1, cut = Math.max(2, Math.min(4, ll * 0.12)) / ll, ua = ga ? 0 : cut, uz = gz ? 0 : cut;
+      var side = piSide(st, b), o2 = off * side, ll = Math.hypot(zx - ax, zy - ay) || 1, cut = (o.clear ? Math.min(2, ll * 0.1) : Math.max(2, Math.min(4, ll * 0.12))) / ll, ua = ga ? 0 : cut, uz = gz ? 0 : cut;
       for(var i = 1; i < b.order; i++){
         var m = i === 1 ? 1 : -1;
         out += '<line class="rs2-fpi" x1="' + f1(ax + (zx - ax) * ua + nx * o2 * m) + '" y1="' + f1(ay + (zy - ay) * ua + ny * o2 * m) + '" x2="' + f1(zx - (zx - ax) * uz + nx * o2 * m) + '" y2="' + f1(zy - (zy - ay) * uz + ny * o2 * m) + '" stroke-width="' + f1(lw) + '"/>';
@@ -267,14 +282,17 @@
         var br = Math.max(7.6, fsz * 0.55), dd = (c ? 2 : fsz * 0.32 * lab.length) + br + 1, bx, by;
         // the widest gap first; if that leaves the card, the next direction that stays inside it
         var angs = slots(st, k, 1); for(var ai = 0; ai < 16; ai++) angs.push(-Math.PI / 2 + ai * Math.PI / 8);
-        var bdirs = C.neighbors(st, k).filter(function(n){ return heavy(st, n); }).map(function(n){ var o = st.atoms[n], me = st.atoms[k]; return Math.atan2(o.y - me.y, o.x - me.x); });
+        var bdirs = C.neighbors(st, k).filter(function(n){ return hvy(st, n, g); }).map(function(n){ var o = st.atoms[n], me = st.atoms[k]; return Math.atan2(o.y - me.y, o.x - me.x); });
         angs = angs.filter(function(t, i){ return i === 0 || bdirs.every(function(d){ return angDist(t, d) > 0.6; }); });
-        for(var aj = 0; aj < angs.length; aj++){
-          bx = p[0] + Math.cos(angs[aj]) * dd; by = p[1] + Math.sin(angs[aj]) * dd;
-          if(!box || (bx - br - 1 >= box.x && bx + br + 1 <= box.x + box.w && by - br - 1 >= box.y && by + br + 5 <= box.y + box.h)) break;
+        // (o.clear: a little further out too, before giving up)
+        var tries = []; (o.clear ? [0, 3, 6, 10] : [0]).forEach(function(e){ angs.forEach(function(t){ tries.push([t, e]); }); });
+        for(var aj = 0; aj < tries.length; aj++){
+          bx = p[0] + Math.cos(tries[aj][0]) * (dd + tries[aj][1]); by = p[1] + Math.sin(tries[aj][0]) * (dd + tries[aj][1]);
+          if((!box || (bx - br - 1 >= box.x && bx + br + 1 <= box.x + box.w && by - br - 1 >= box.y && by + br + 5 <= box.y + box.h)) && clearOf(k, bx, by, br)) break;
           bx = p[0] + Math.cos(angs[0]) * dd; by = p[1] + Math.sin(angs[0]) * dd;
         }
         if(box){ bx = Math.max(box.x + br + 1, Math.min(box.x + box.w - br - 1, bx)); by = Math.max(box.y + br + 1, Math.min(box.y + box.h - br - 5, by)); }
+        placed.push({ x0: bx - br, x1: bx + br, y0: by - br, y1: by + br });
         out += '<g class="rs2-badge is-' + (q < 0 ? 'neg' : 'pos') + '"><circle cx="' + f1(bx) + '" cy="' + f1(by) + '" r="' + f1(br) + '"/><text x="' + f1(bx) + '" y="' + f1(by + br * 0.45) + '" font-size="' + f1(Math.max(11, br * 1.55)) + '" text-anchor="middle">' + sign(q) + '</text></g>';
       }
     });
