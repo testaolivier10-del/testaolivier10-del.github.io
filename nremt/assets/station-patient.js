@@ -278,7 +278,9 @@
       // a flat puddle on the floor under the outer thigh (review 2026-11: a round blob beside the leg read as the wound)
       var pool = el('g', { class:'sp-pool', transform:'translate(150 872) scale(1.45 0.62)', opacity:0.82 }, P.under);
       P.poolG = el('g', {}, pool);
-      el('path', { d:'M-62 0 C-66 -34 -26 -60 10 -52 C36 -46 52 -20 48 10 C44 40 4 60 -28 52 C-50 46 -60 24 -62 0 Z', fill:'url(#' + u + 'Pool)', filter:'url(#' + u + 'Rag)', transform:'scale(1 1.25)' }, P.poolG);
+      el('path', { d:'M-62 0 C-66 -34 -26 -60 10 -52 C36 -46 52 -20 48 10 C44 40 4 60 -28 52 C-50 46 -60 24 -62 0 Z', fill:'url(#' + u + 'Pool)', transform:'scale(1 1.25)' }, P.poolG);
+      [[-58, -18, 9], [-40, 40, 8], [30, 44, 10], [46, -18, 8], [0, -50, 9], [-60, 18, 7]].forEach(function(b){
+        el('ellipse', { cx:b[0], cy:b[1] * 1.25, rx:b[2], ry:b[2] * 0.8, fill:'#8f1316' }, P.poolG); });
       el('ellipse', { cx:-16, cy:-18, rx:16, ry:6, fill:'#fff', opacity:0.22, transform:'rotate(-18 -16 -18)' }, P.poolG);
 
       var o = P.over;
@@ -376,14 +378,16 @@
     // the parts that move with the clock: the pool, the stain, the pallor
     flow:function(P, st){
       var s = P.state;
-      var k = Math.min(1.15, 0.5 + (st.bleedSec || 0) / 90);
-      P.poolG.setAttribute('transform', 'scale(' + k.toFixed(3) + ')');
+      // in steps of 0.02 (and the pallor below in steps of 0.03): the picture changes when the eye can see it
+      var k = Math.round(Math.min(1.15, 0.5 + (st.bleedSec || 0) / 90) * 50) / 50;
+      if(P.poolG.getAttribute('transform') !== 'scale(' + k.toFixed(2) + ')') P.poolG.setAttribute('transform', 'scale(' + k.toFixed(2) + ')');
       var soak = has(st.done, 'pressure') ? Math.min(1, 0.35 + (st.soakSec || 0) / 40) : 0;
       P.stain.setAttribute('opacity', soak.toFixed(2));
       P.stain.setAttribute('transform', 'scale(' + (0.6 + 0.4 * soak).toFixed(2) + ')');
       // the examiner reports hypoperfusion once the tourniquet is on; uncontrolled bleeding gets there by itself
       var pallor = Math.min(0.62, (st.bleedSec || 0) / 160 + (has(st.done, 'tq') ? 0.3 : 0));
-      P.pale.setAttribute('opacity', pallor.toFixed(2));
+      var pq = (Math.round(pallor / 0.03) * 0.03).toFixed(2);
+      if(P.pale.getAttribute('opacity') !== pq) P.pale.setAttribute('opacity', pq);
       s.pallor = pallor;
     },
 
@@ -1354,10 +1358,17 @@
     // clipped to the traced outline, so the edge stays smooth when the camera is close
     this.skinLayer.setAttribute('clip-path', 'url(#' + this.uid + 'Body)');
     el('image', { href:this.url, width:f.w, height:f.h, 'aria-hidden':'true' }, this.skinLayer);
-    this.over = el('g', {}, this.world);
-    this.marks = el('g', { class:'sp-marks' }, this.world);
+    /* What is put on the patient and the marks draw on a second svg over the first, on its own layer: an item
+       coming in repaints only that layer, never the body, its image and its filters (performance, tools v2). */
+    this.svg2 = document.createElementNS(NS, 'svg');
+    this.svg2.setAttribute('class', 'sp-svg sp-svg2'); this.svg2.setAttribute('aria-hidden', 'true');
+    svg.parentNode.insertBefore(this.svg2, svg.nextSibling);
+    this.world2 = el('g', { class:'sp-world' }, this.svg2);
+    this.over = el('g', {}, this.world2);
+    this.marks = el('g', { class:'sp-marks' }, this.world2);
     this.def.build(this);
-    settle(this.world);
+    settle(this.world); settle(this.world2);
+    if(this.pale){ var pg = el('g', { 'clip-path':'url(#' + this.uid + 'Body)' }); this.world2.insertBefore(pg, this.world2.firstChild); pg.appendChild(this.pale); }
     svg.addEventListener('click', function(e){ self.tap(e); });
     if(window.ResizeObserver){ this.ro = new ResizeObserver(function(){ self.camera(true); }); this.ro.observe(this.stage); }
     this.ready = true;
@@ -1375,6 +1386,7 @@
     if(lie === this.lie && this.world.getAttribute('transform') != null) return false;
     this.lie = lie;
     this.world.setAttribute('transform', lie ? 'rotate(-90)' : '');
+    this.world2.setAttribute('transform', lie ? 'rotate(-90)' : '');
     this.stage.classList.toggle('is-lying', lie);
     return true;
   };
@@ -1383,14 +1395,16 @@
 
   /* Words on the patient: each plate turns back upright (lying) and grows so its text is at least 11.5 px on
      screen; past its kmax it hides rather than cover the drawing. Run after a paint and on each camera frame. */
-  Patient.prototype.upright = function(scale){
+  Patient.prototype.upright = function(scale, light){
     if(!this.world) return;
-    var self = this, R = this.lie ? 90 : 0, sc = scale || this.scale || 1, S = this.stage.getBoundingClientRect(), clamp = S.width > 0, list = [];
-    [].forEach.call(this.world.querySelectorAll('.sp-plate'), function(p){
+    // light: a camera frame (turn and size only, no layout reads); the full pass runs when the camera stops
+    var self = this, R = this.lie ? 90 : 0, sc = scale || this.scale || 1, S = light ? null : this.stage.getBoundingClientRect(), clamp = !light && S.width > 0, list = [];
+    [].forEach.call(this.stage.querySelectorAll('.sp-plate'), function(p){
       if(p.closest('.sp-marks')) return;
       if(p.__t0 == null){
         p.__t0 = p.getAttribute('transform') || '';
         var t = p.tagName === 'text' ? p : p.querySelector('text');
+        if(light){ p.__t0 = null; return; }
         p.__fs = t ? parseFloat(getComputedStyle(t).fontSize) || 11 : 11;
         if(p.hasAttribute('data-ax')) p.__a = [+p.getAttribute('data-ax'), +p.getAttribute('data-ay')];
         else { try{ var b = p.getBBox(); p.__a = [b.x + b.width / 2, b.y + b.height / 2]; }catch(e){ p.__a = [0, 0]; } }
@@ -1592,16 +1606,27 @@
     this.cam = box;
     this.scale = sw / w;
     cancelAnimationFrame(this.raf); this.raf = 0;
-    if(now || reduced() || this.frozen){ this.svg.setAttribute('viewBox', box.join(' ')); this.upright(); this.marksPaint(); return; }
-    var t0 = performance.now(), dur = 650;
+    var both = [this.svg, this.svg2];
+    both.forEach(function(v){ v.style.transform = ''; });
+    if(now || reduced() || this.frozen){ both.forEach(function(v){ v.setAttribute('viewBox', box.join(' ')); }); this.upright(); this.marksPaint(); return; }
+    /* The move itself is a transform of the drawn picture (composited, so the body, its filters and the image are
+       not redrawn every frame); the view box jumps to the target when it lands, and the words are fitted then. */
+    var t0 = performance.now(), dur = 650, sF = sw / from[2];
+    both.forEach(function(v){ v.setAttribute('viewBox', from.join(' ')); });
     (function step(){
       var k = Math.min(1, (performance.now() - t0) / dur), e = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
-      var b = from.map(function(v, i){ return v + (box[i] - v) * e; });
-      self.svg.setAttribute('viewBox', b.map(function(v){ return v.toFixed(1); }).join(' '));
-      self.upright(sw / b[2]);
-      self.raf = k < 1 ? requestAnimationFrame(step) : 0;
+      var b = from.map(function(v, i){ return v + (box[i] - v) * e; }), sB = sw / b[2];
+      if(k < 1){
+        var tf = 'translate(' + ((from[0] - b[0]) * sB).toFixed(2) + 'px,' + ((from[1] - b[1]) * sB).toFixed(2) + 'px) scale(' + (sB / sF).toFixed(5) + ')';
+        both.forEach(function(v){ v.style.transform = tf; });
+        self.raf = requestAnimationFrame(step);
+        return;
+      }
+      both.forEach(function(v){ v.style.transform = ''; v.setAttribute('viewBox', box.join(' ')); });
+      self.raf = 0;
+      self.upright();
+      self.marksPaint();
     })();
-    this.marksPaint();
   };
   // the camera is moving
   Patient.prototype.moving = function(){ return !!this.raf; };

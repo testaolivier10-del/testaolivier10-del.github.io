@@ -185,7 +185,7 @@ if (process.argv.includes('--frames')) {
   for (const w of [390, 1440]) {
     const { browser, page, errs } = await open(w, false, { noCue: true });
     // the cause line waits for the picture: frames after a tap on the tourniquet step
-    await tap(page, 0); await settle(page);
+    await tap(page, 0); await tap(page, 1); await settle(page);
     const before = (await S(page)).chain;
     const t0 = Date.now(); await tap(page, 2);
     const frames = [];
@@ -202,7 +202,7 @@ if (process.argv.includes('--frames')) {
     ok(/Tourniquet, then taken back off/.test((await S(page)).chain), `${w}: taking a step back says so`);
     ok(+await page.evaluate(() => getComputedStyle(window.NremtSkillExplore.last.patient().tq).opacity) < 0.05, `${w}: the tourniquet left the picture`);
     // a tap on the thigh places it (the tourniquet box, then the patient)
-    await tap(page, 1); await settle(page);
+    await settle(page);
     const place = await page.$('.ssx-pt .sp-place:not([hidden])');
     ok(!!place, `${w}: the tourniquet box asks for a tap on the thigh`);
     await page.evaluate(() => { const P = window.NremtSkillExplore.last.patient(), L = window.NremtStationPatient.pure.L, IN = window.NremtStationPatient.pure.PX_PER_IN;
@@ -256,7 +256,7 @@ if (process.argv.includes('--frames')) {
     await tap(r.page, 0); await r.page.waitForTimeout(60);
     let rs = await S(r.page);
     ok(/Gloves on/.test(rs.chain), `${w} reduced: the cause line comes at once (${rs.chain})`);
-    ok(await r.page.evaluate(() => getComputedStyle(document.querySelector('.ssx-pt .sp-item')).transitionDuration.split(',')[0]) === '0.2s', `${w} reduced: items cross fade in 0.2 s`);
+    ok(await r.page.evaluate(() => getComputedStyle(document.querySelector('.ssx-pt .sp-item')).transitionDuration.split(',')[0].trim()) === '0.2s', `${w} reduced: items cross fade in 0.2 s`);
     await r.browser.close();
 
     // deep links: #station-<name> opens Explore on it; #run-<name> starts its run
