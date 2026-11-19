@@ -476,7 +476,7 @@
     station(St.key, false); refNotes();
     var api = {
       stage: stage, ref: ref, more: ref.querySelector('.ssx-ref-more'),
-      hidden: function(){ St.on = false; stopTick(); clearTimers(); if(patient){ cancelAnimationFrame(patient.raf); patient.raf = 0; clearTimeout(patient.camT); } if(cue) cue.hide(false); },
+      hidden: function(){ St.on = false; stopTick(); clearTimers(); if(patient){ cancelAnimationFrame(patient.raf); patient.raf = 0; clearTimeout(patient.camT); clearTimeout(patient.ut); patient.svg.style.transform = ''; if(patient.svg2) patient.svg2.style.transform = ''; } if(cue) cue.hide(false); },
       shown: function(){
         St.on = true; layout(); startTick();
         if(patient && patient.ready) patient.camera(true);

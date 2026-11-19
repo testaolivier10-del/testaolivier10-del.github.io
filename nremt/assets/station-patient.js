@@ -1515,6 +1515,9 @@
     if(!this.ready) return;
     this.def.update(this, this.st);
     this.upright();
+    // once the items have settled (their 0.55 s scale), fit the words again from where they really are
+    var self = this; clearTimeout(this.ut);
+    this.ut = setTimeout(function(){ if(!self.raf && self.ready){ self.upright(); self.marksPaint(); } }, 650);
     var chips = this.def.chips(this.st);
     this.chips.innerHTML = chips.map(function(c){ return '<span class="sp-chip sp-chip--' + c.k + '">' + esc(c.t) + '</span>'; }).join('');
     // placing the tourniquet by tapping the thigh
@@ -1685,7 +1688,7 @@
      in place of a number. list: misses() entries, or null to clear. */
   Patient.prototype.live = function(list){ this.liveList = list && list.length ? list : null; this.marksPaint(); };
 
-  Patient.prototype.destroy = function(){ if(this.ro) this.ro.disconnect(); cancelAnimationFrame(this.raf); this.raf = 0; clearTimeout(this.camT); };
+  Patient.prototype.destroy = function(){ if(this.ro) this.ro.disconnect(); cancelAnimationFrame(this.raf); this.raf = 0; clearTimeout(this.camT); clearTimeout(this.ut); };
 
   window.NremtStationPatient = {
     find:function(name){ return DEFS.filter(function(d){ return d.match.test(name); })[0] || null; },
