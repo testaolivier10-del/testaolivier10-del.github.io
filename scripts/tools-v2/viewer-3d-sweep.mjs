@@ -89,7 +89,9 @@ const probe = (o) => {
     if (!c0) out.push('no card'); else if (c0.t !== r.name) out.push('card "' + c0.t + '" for ' + r.name);
     const ang = labs.filter(x => /is-angle/.test(x.c))[0];
     if (r.shape) {
-      if (!ang && st.style !== 'space') out.push('no angle shown');
+      // the angle is named whenever its arc can be seen (an arc seen exactly edge on, behind its atom, has no name)
+      const arcEl = document.querySelector('.v3-arc'), ab = arcEl && getComputedStyle(arcEl).display !== 'none' ? arcEl.getBoundingClientRect() : null;
+      if (!ang && st.style !== 'space' && ab && ab.width > 6 && ab.height > 6) out.push('no angle shown');
       if (ang && !cz[cz.length - 1].endsWith(ang.t)) out.push('angle "' + ang.t + '" but the line says "' + cz[cz.length - 1] + '"');
       if (!cz.some(t => t.indexOf(r.shape.m.toLowerCase()) === 0)) out.push('cause line does not name ' + r.shape.m);
     } else if (ang) out.push('an angle shown for an end atom');
@@ -154,7 +156,8 @@ for (const w of WIDTHS) {
   };
   const ids = await page.evaluate(() => window.OchemMol3DLibrary.ALL.map(m => m.id));
   for (const id of ids) {
-    await page.locator('.v3-pick select').selectOption(id); await page.waitForTimeout(620);
+    await page.locator('.v3-pick select').selectOption(id);
+    await page.waitForFunction(() => window.OchemViewer3DModel.view.state().ready, null, { timeout: 5000 }); await page.waitForTimeout(80);
     for (const t of TURNS) {
       if (t) { await page.evaluate(([rx, ry]) => window.OchemViewer3DModel.view.turn(rx, ry), t); }
       await check({ tab: 'shape' }, `${id} ${t ? t.join('/') : 'home'}`);
@@ -163,7 +166,8 @@ for (const w of WIDTHS) {
     if (['methane', 'acetonitrile', 'methanol', 'benzene-3d'].includes(id)) {
       // an end atom, then a second centre where there is one
       await page.evaluate(() => { const V = window.OchemViewer3DModel.view, m = window.OchemMol3DLibrary.get(V.state().mol); const i = m.atoms.findIndex((a, k) => k !== m.focus && a.el === 'H'); V.select(i); });
-      await page.waitForTimeout(420); await check({ tab: 'shape' }, `${id} end atom`);
+      await page.waitForTimeout(60); await page.waitForFunction(() => window.OchemViewer3DModel.view.state().ready, null, { timeout: 5000 }); await page.waitForTimeout(60);
+      await check({ tab: 'shape' }, `${id} end atom`);
     }
   }
   await page.locator('.tk2-tab[data-v="hand"]').click(); await page.waitForTimeout(500);

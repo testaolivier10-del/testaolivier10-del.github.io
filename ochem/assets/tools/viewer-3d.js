@@ -696,9 +696,9 @@
     var arc = PA.arc();
     if(D.ready && r && r.angle !== null && !hideAns && E.style !== 'space' && arc.mid){
       var e = lab('ang', 'is-angle'); e.textContent = fmtDeg(r.angle);
-      var ps = pts[E.sel], mx = arc.mid.x - ps.x, my = arc.mid.y - ps.y, ml = Math.sqrt(mx * mx + my * my) || 1, ux = mx / ml, uy = my / ml;
+      var ps = pts[E.sel], mx = arc.mid.x - ps.x, my = arc.mid.y - ps.y, ml = Math.sqrt(mx * mx + my * my), ux = ml > 3 ? mx / ml : 0, uy = ml > 3 ? my / ml : -1;
       var cands = [];
-      [18, 30, 44, 60, 78, 100, 124].forEach(function(dd){ [0, 0.5, -0.5, 1, -1, 1.6, -1.6, 2.4, -2.4].forEach(function(t){
+      [18, 30, 44, 60, 78, 100, 124].forEach(function(dd){ [0, 0.5, -0.5, 1, -1, 1.6, -1.6, 2.4, -2.4, 3.14].forEach(function(t){
         var c = Math.cos(t), s = Math.sin(t), vx = ux * c - uy * s, vy = ux * s + uy * c;
         cands.push([arc.mid.x + vx * dd, arc.mid.y + vy * dd]);
       }); });
@@ -720,7 +720,7 @@
     var base = { rx: Hd.rx, ry: Hd.ry, style: E.style === 'space' ? 'ball' : E.style, letters: true, allLp: false, sel: null, selT: 0, prev: null, prevT: 0, grow: 1 };
     var ptsA = PA.draw(Object.assign({}, base, { cx: FA.cx, cy: FA.cy, scale: s }));
     var ptsB = PB.draw(Object.assign({}, base, { cx: FB.cx, cy: FB.cy, scale: s, mirror: mirror }));
-    lastPts.hand = ptsA;
+    lastPts.hand = ptsA; lastPts.handB = ptsB;
     gA.style.opacity = 1; gB.style.opacity = 1;
     // the mirror: a glass pane standing on the bench (side by side) or lying under the molecule (stacked)
     mirrorEl.style.display = '';
@@ -797,7 +797,7 @@
       } else cf.hidden = true;
     });
     if(spots && spotsMol === HAND){ spots.items.forEach(function(it, i){ it.at[0] = [ptsA[i].x, ptsA[i].y]; }); spots.place(); }
-    lastPts.hand = ptsA;
+
     return ptsA;
   }
   var handDrawn = { a: false, b: false }, arrows = {};
@@ -990,7 +990,7 @@
     var r = b.getBoundingClientRect(), sc = sceneBox.getBoundingClientRect();
     if(r.left < sc.left + 2 || r.right > sc.right - 2 || r.top < sc.top + 2 || r.bottom > sc.bottom - 2) return false;
     var others = [].slice.call(labsEl.querySelectorAll('.v3-lab:not([hidden])')).concat([pickEl, btnRow, layer.el.querySelector('.tk2-spot-card:not([hidden])')]);
-    var pts = S.tab === 'shape' ? lastPts.shape : lastPts.hand;
+    var pts = S.tab === 'shape' ? lastPts.shape : lastPts.hand.concat(lastPts.handB || []);
     var balls = pts.map(function(p){ return { left: sc.left + p.x - p.r, right: sc.left + p.x + p.r, top: sc.top + p.y - p.r, bottom: sc.top + p.y + p.r }; });
     return others.filter(Boolean).filter(function(e){ return !e.hidden && e.offsetParent; }).map(function(e){ return e.getBoundingClientRect(); }).concat(balls).every(function(q){
       return r.right <= q.left || q.right <= r.left || r.bottom <= q.top || q.bottom <= r.top;
@@ -1066,7 +1066,7 @@
       '<p><span class="v3-sw is-lp"></span><b>Amber lobes:</b> its lone pairs, two electrons each. They push like a bond (a little harder) but are not part of the shape\'s name.</p>' +
       '<p><span class="v3-sw is-shape"></span><b>The arc:</b> the smallest bond angle at that atom, measured from the coordinates drawn. Every angle is under "This atom".</p>' +
       '<p><span class="v3-sw is-cfg"></span><b>Handedness:</b> priorities go by atomic number (Br 1, Cl 2, F 3, H 4). With the H pointing away from you, 1 → 2 → 3 clockwise is R and counterclockwise is S. A mirror reverses the turn, so the mirror image is the other one.</p>' +
-      '<p>Ball sizes are drawing sizes, chosen so hydrogens stay visible; Space-filling uses the real van der Waals sizes. Ammonia, water and the other centres with lone pairs carry their measured angles (107°, 104.5°); the rest are drawn with the ideal angle for their shape (ethene and formaldehyde are really a few degrees off 120°). A molecule you build gets the ideal angle for each shape.</p>' +
+      '<p>Ball sizes are drawing sizes, chosen so hydrogens stay visible; Space-filling uses the real van der Waals sizes. Ammonia (107°), water (104.5°) and dimethyl ether (C–O–C 111°) carry measured angles. The others are drawn with an idealized angle: hydronium and the methyl anion like ammonia, and ethene and formaldehyde at 120° (their real H–C–H angles are a few degrees smaller). A molecule you build gets the ideal angle for each shape.</p>' +
     '</div></details>');
   function refNow(){
     var el = byId('v3RefNow'); if(!el) return;

@@ -232,3 +232,17 @@ in each tool's brief.
 | 2026-11-18 | Ochem Arrow Pusher | On a phone two wide species start stacked (Claisen, aldol, proton transfer) | Atoms readable, no empty band (review round 1) | `stacked()`, `PHONE` |
 | 2026-11-18 | Ochem Arrow Pusher | A state molecules.js draws by hand (tetrahedral intermediates) is drawn as there on wide screens | A hand drawing beats an automatic one (review round 1) | `drawnAs()` |
 | 2026-11-18 | Ochem Arrow Pusher | Show me how step 1 rings the whole molecule; names hidden while the tour is open | The callout never covers a ball or a name (review round 1) | `tourTurn` |
+| 2026-11-19 | Ochem 3D Viewer | Two tabs: Shape (VSEPR) and Handedness (R or S with a live mirror) | The stereocenter is a different idea from electron groups | `docs/tools-v2-viewer-3d-brief.md`; reverse: drop the Handedness tab, CHFClBr stays in the list |
+| 2026-11-19 | Ochem 3D Viewer | Lone pairs drawn as lobes on the tapped atom only; all atoms' pairs behind "?" | Eighteen dot pairs on SF₆ hid the idea | "?", View, "Lone pairs on every atom" |
+| 2026-11-19 | Ochem 3D Viewer | Opens on ammonia with N tapped (old: methane) | A lone pair and a squeezed angle show at once | `E.mol` in the tool's js |
+| 2026-11-19 | Ochem 3D Viewer | Each molecule opens in a searched view (atoms apart, lone pairs up); Reset view goes there (old: one Angled view) | No atom hidden behind another at the start | `homeView()`; "Angled" is still in "?" |
+| 2026-11-19 | Ochem 3D Viewer | One angle drawn: the smallest, on the pair that faces the viewer; every angle in "?" | One number on the picture | `choosePair()` |
+| 2026-11-19 | Ochem 3D Viewer | Styles, letters, presets, zoom and Spin moved to "?"; Spin became "Turn it once" (one turn, then stops) | Extras start hidden; motion only while something happens | "?", View |
+| 2026-11-19 | Ochem 3D Viewer | Idle rock removed | Rule 13; the cue says what to do | Reverse: a rock in `paint()` |
+| 2026-11-19 | Ochem 3D Viewer | Plain mouse wheel no longer zooms (pinch or Ctrl and wheel do) | The wheel trapped page scrolling | `wheel` listener |
+| 2026-11-19 | Ochem 3D Viewer | Build your own moved from a switch in the picker panel to "?" | Extras start hidden; the built molecule still fills the picture | "?", "Build your own molecule" |
+| 2026-11-19 | Ochem 3D Viewer | Predict shape is Test yourself, "Name the shape" (same pool, grading, count) | Rule 7 | `#predict` |
+| 2026-11-19 | Ochem 3D Viewer | R or S shown only with the H within 35° of straight back, on both the molecule and the mirror | Read only from what is drawn | `BACK`; `docs/ochem-needs-author.md` v3-v2-back |
+| 2026-11-19 | Ochem 3D Viewer | Angles said to the nearest whole degree when within 0.35° (119.9° reads 120°); the table in "?" keeps decimals | Matches the textbook number | `fmtDeg()` |
+| 2026-11-19 | Ochem 3D Viewer | "How to read the picture" now says which angles are idealized (the old note said all were real) | Honesty | `docs/ochem-needs-author.md` v3-v2-ideal-angles |
+| 2026-11-19 | Ochem 3D Viewer | No "R or S?" drill added to Test yourself | Scope; a later addition | Brief, "Decisions" 9 |

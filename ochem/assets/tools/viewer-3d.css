@@ -18,7 +18,7 @@
 .v3-scene.is-drag{cursor:grabbing;}
 .v3-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
 @media (max-width:1023px){ .v3-scene{flex:none;height:min(66vw,560px);min-height:460px;} }
-@media (max-width:640px){ .v3-scene{height:520px;min-height:0;border-radius:14px;} .v3[data-tab="hand"] .v3-scene{height:600px;} .v3{gap:8px;} }
+@media (max-width:640px){ .v3-scene{height:520px;min-height:0;border-radius:14px;} .v3[data-tab="hand"] .v3-scene{height:568px;} .v3{gap:8px;} }
 .v3-scene.is-xf .v3-svg{animation:v3-xf .18s linear 1;}
 @keyframes v3-xf{from{opacity:.25;}to{opacity:1;}}
 .v3-lines{display:flex;align-items:center;gap:6px 18px;flex-wrap:wrap;flex:none;}

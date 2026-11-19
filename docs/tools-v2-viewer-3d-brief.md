@@ -102,3 +102,53 @@ direction (the arrow, R or S) green.
 
 Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
 Claude-Session: https://claude.ai/code/session_011LrYU6oPHBYNE4ERGyPxWg" && git push -q -u origin claude/tools-v2-viewer-3d 2>&1 | tail -1
+## Accuracy (checked 2026-11-19; ochem content always gets a check)
+- **VSEPR table and the library are unchanged** (`mol3d.js`, `mol3d-library.js`). Unit tested: the cause line of every
+  shape the table has (methane 109.5°, ammonia 107°, water 104.5°, BF₃ 120°, CO₂ and ethyne 180°, PCl₅ and SF₆ 90°,
+  ethene 120°, the methyl cation flat and the anion pyramidal), a double or triple bond counted once, formamide's N
+  "lone pair shared with C=O" (never "no lone pairs"), an end atom named as one, and the card naming every focus
+  atom by the table's shape.
+- **Handedness.** Priorities by atomic number (Br, Cl, F, H). The library's CHFClBr is (S) by the 3D rule
+  ((v₁ × v₂) · v₃ < 0 is R with the lowest priority away); its mirror image is (R). The reading on screen is the turn
+  of 1, 2, 3 as drawn; unit tested over 4000 turns with the H within 35° of the back: it always equals the 3D
+  configuration, and the reflection (side or floor mirror) always reads the other letter. The sweep reads the letter
+  again from the balls' positions on screen at every state.
+- **Words that are new on the page,** checked: "a lone pair pushes like a bond (a little harder) but is not part of the
+  shape's name"; "swapping any two groups is the only way" to turn one into the other; PCl₅'s 90° axial to equatorial
+  and 120° equatorial; formamide's N flat because its pair is in a p orbital (resonance).
+- **Fixed while moving text:** the old key said every listed molecule carried real angles; ethene, formaldehyde,
+  hydronium, the methyl anion and methanol are idealized. "?" now says which are which.
+- **Open, in `docs/ochem-needs-author.md`:** v3-v2-expanded-octet (sp³d, sp³d² labels, kept), v3-v2-ideal-angles,
+  v3-v2-back.
+
+## What was built
+- `ochem/assets/tools/viewer-3d.js` (rewritten; the Predict pool, grading, verdict text and the Check yourself
+  generator are the old code, ids unchanged), `ochem/assets/tools/viewer-3d.css` (new), `ochem/tools/viewer-3d.html`
+  (inline styles gone; `kit2: true` in `ochem/assets/tools-registry.js`, the builder writes the kit and the stylesheet).
+- Its own SVG painter: one element per ball, stick, lobe and arc, made once per molecule and moved per frame, depth
+  sorted by re-appending only when the order changes. The molecule turns about the centre of its smallest enclosing
+  ball and is fitted so no turn clips it. Each molecule opens in a searched view (`homeView`).
+- `K.spots` names the atoms (pins invisible over the balls, keyboard stops; a tap is resolved on the front ball under
+  the finger by the tool and handed to the kit; the card avoids balls, lobes, labels and controls).
+- `window.OchemViewer3DModel` and two tests in `scripts/test/tool-content.test.mjs`; the sweep
+  `scripts/tools-v2/viewer-3d-sweep.mjs`.
+- Old viewer rules removed from `ochem/assets/tools.css` (`.v3-quiz`, `.v3-ls`).
+
+## What is on screen in Explore (counted; Playwright, opening state)
+Outside the picture: 2 tabs, the purpose line (8 words), "Show me how", the cause line (4 pills). That is 4 controls
+and about 25 words. No side panel, no readout cards.
+- Shape, on the picture: the molecule with its shadow; the tapped atom's glow, blue bonds, amber lobes, the arc and
+  its angle; the card (1 to 3 words); the Molecule picker; Reset view. First visit only: the cue.
+- Handedness, on the picture: the molecule, the mirror and the reflection; 8 priority numbers; 2 names ("Molecule",
+  "Mirror image"); while the H is at the back, 2 arrows and 2 letters; "H to the back"; Reset view.
+
+## Checks run (2026-11-19)
+Unit tests, `build-tool-pages --check`, `check-site`, `check-weight --check`, `build-apcalc --check`,
+`build-apmacro --check`, `check-tool-use` with a local copy of its list (the viewer reports open, touch, mode, use;
+nothing under automation). Playwright (`/home/claude/v3-work/verify.mjs`, not in the repo) at 390, 768 and 1440,
+light and dark: 190 assertions (opening words, mouse drag and a real touch drag, tap on the front atom, frames mid
+change (line dimmed, no card, no angle), arrow keys, the pins by keyboard, the picker, Reset view animated, H to the
+back reading S and R, the letters leaving on the same frame, Name the shape right and wrong and the count, leaving
+mid change, Check yourself, reduced motion landing at once with a cross fade, links `mol`, `rx`, `ry`, `mode`,
+`tab=hand`, `#check`, `build=`, no console errors), and a full drag with the CPU throttled x4: median 16.7 ms, p95
+33.3 ms at 390 and 1440. The sweep: see below.

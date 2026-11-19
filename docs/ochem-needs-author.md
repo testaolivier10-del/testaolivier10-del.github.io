@@ -1263,3 +1263,31 @@ intermediates) the board uses it on a wide screen. On a phone the two species st
 placed from that (the new bond in each atom's widest gap), so the same state can look different on a phone and on a
 desktop. Bonding and charges are the same.
 - **Status:** decided for the owner (review round 1).
+
+## 3D Molecule Viewer, tools v2 (2026-11-19)
+
+Brief: `docs/tools-v2-viewer-3d-brief.md`. The geometry is the unchanged `ochem/assets/mol3d-library.js`; what is new is
+that the picture now names shapes, draws one angle and reads R or S, so these points are visible to students.
+
+### v3-v2-expanded-octet: sp³d and sp³d² for PCl₅ and SF₆
+The VSEPR table (`mol3d.js`) gives PCl₅ sp³d and SF₆ sp³d², and the cause line and the Check yourself quiz say so (the
+quiz has asked it since before v2). Most general chemistry courses still teach these labels; current bonding models
+give d orbitals almost no part (three center four electron bonding). A note in "?" or dropping the hybridization for
+five and six groups would change quiz answers (record ids `phosphorus-pentachloride:hyb`, `sulfur-hexafluoride:hyb`).
+- **Status:** open; kept as before.
+
+### v3-v2-ideal-angles: idealized angles shown as "measured"
+The arc and the cause line show the angle measured from the drawn coordinates. Ammonia (107°), water (104.5°) and
+dimethyl ether (111°) are built with measured angles; ethene and formaldehyde are drawn at 120° (real H–C–H about
+117° and 116.5°), hydronium and the methyl anion at ammonia's 107° (hydronium is reported flatter), methanol's C–O–H at
+109.5° (real about 108.5°). "How to read the picture" in "?" now says which are idealized (the old note said every
+listed molecule carried real angles). Giving the library the real angles would change the picture and the drill's
+"measured on this model" numbers, not its answers.
+- **Status:** open; needs an author to pick sources for each molecule.
+
+### v3-v2-back: when the H counts as "at the back"
+R or S is shown only while the lowest priority group points within 35° of straight away from the viewer; outside that
+the line says "turn it away to read R or S". The reading is the turn of 1, 2, 3 as drawn on screen, so it always
+matches the picture (unit tested over 4000 turns, and the mirror image always reads the other letter). The usual
+shortcut (H toward you: read and reverse) is not offered.
+- **Status:** decided for the owner.
