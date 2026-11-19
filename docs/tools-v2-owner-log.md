@@ -216,6 +216,22 @@ in each tool's brief.
 | 2026-11-18 | A&P Pathway tracer | Review round 1: the knob is a clear ring, the token a ring round it | The part acting under it stays in sight on a phone | `pathways-explore.css` |
 | 2026-11-18 | A&P Pathway tracer | Review round 1: wide heart puts the body on the left, the lungs on the right | The trunk runs right and the veins enter the left atrium from the right, as in the body | `docs/anp-needs-author.md` pw-heart-wide |
 | 2026-11-18 | A&P Pathway tracer | Review round 1: a broken run stops after its last real step; the cut is drawn just beyond the stopped knob | Stopping a knob's width early cut off steps that really happen | `stopV` per break |
+| 2026-11-18 | Ochem Arrow Pusher | Explore is one screen with five curated mechanisms (SN2, proton transfer, SN1 ionization, HBr addition, acyl substitution); the 18 molecules move to Test yourself, Any molecule | "Way too much going on" on the old screen (owner); one idea per screen | `MECHS` in `arrow-pusher.js` |
+| 2026-11-18 | Ochem Arrow Pusher | The board, drag, snapping, held push and spring back are Resonance's, shared in `push-board.js` and `.css` | The two tools feel the same; one copy | `ochem/assets/push-board.js` |
+| 2026-11-18 | Ochem Arrow Pusher | σ bonds can be grabbed and dragged | They are what breaks in a mechanism | `sourceAt(pt, { sigma: true })` |
+| 2026-11-18 | Ochem Arrow Pusher | A first push that overfills an atom is held until the push that makes room (concerted steps) | Lets a one step mechanism be drawn arrow by arrow | `outcome()`, `completion()` |
+| 2026-11-18 | Ochem Arrow Pusher | Atoms move after a step (pieces slide; no angles; SN2 inversion not drawn, said in "?") | The owner asked that atoms and bonds actually change | `relax()` |
+| 2026-11-18 | Ochem Arrow Pusher | A steps row (start, intermediate, product) replaces the product pane; a tap plays the textbook arrows | The molecule itself changes; the row places the step in the mechanism | `paintStrip()`, `goTo()` |
+| 2026-11-18 | Ochem Arrow Pusher | Draw each step keeps the old checking: arrows drawn, then Check; no live product | Same grading as before; no answer given away | `checkChal()` |
+| 2026-11-18 | Ochem Arrow Pusher | HBr drawn next to the CH₂ end so the textbook arrow is Markovnikov; grabbing the π bond's other end attacks with that end | chem-core picks the end nearer the target | `LAYOUT`, `withEnd()` |
+| 2026-11-18 | Ochem Arrow Pusher | Role names on the start (Nucleophile, Electrophile, Leaving group; Base and Acidic H in the proton transfer) | Names what each part does | `ROLE`, `MECHS[].roles` |
+| 2026-11-18 | Ochem Arrow Pusher | Takeaways shortened to two lines on a phone; full sentences in "?" | Cause line height | `MECHS[].take`, `.long` |
+| 2026-11-18 | Ochem Arrow Pusher | Hydroxide in the SN2 molecule drawn closer and higher (tool only; molecules.js unchanged) | Room for the first visit cue on a phone | `LAYOUT` |
+| 2026-11-18 | Ochem Arrow Pusher | On a narrow step card, species are stacked in the small drawing | Readable at 360 px | `cardSt()` |
+| 2026-11-18 | Ochem Arrow Pusher | Build your own loads into Test yourself, Any molecule (not Explore) | Explore holds the curated mechanisms only | `openBuilder()` |
+| 2026-11-18 | Ochem Arrow Pusher | On a phone two wide species start stacked (Claisen, aldol, proton transfer) | Atoms readable, no empty band (review round 1) | `stacked()`, `PHONE` |
+| 2026-11-18 | Ochem Arrow Pusher | A state molecules.js draws by hand (tetrahedral intermediates) is drawn as there on wide screens | A hand drawing beats an automatic one (review round 1) | `drawnAs()` |
+| 2026-11-18 | Ochem Arrow Pusher | Show me how step 1 rings the whole molecule; names hidden while the tour is open | The callout never covers a ball or a name (review round 1) | `tourTurn` |
 | 2026-11-19 | A&P Predict the change | Explore is four drawn body systems (arteriole, breathing, kidney, heart), one knob each; all 377 scenarios stay in Test yourself | Owner: Explore is real free play that shows one idea | `docs/tools-v2-anp-predict-brief.md` |
 | 2026-11-19 | A&P Predict the change | Every screen draws and labels one link that stays the same (pressures, O2 saturation, fluid in, heart rate) | Teaches the bank's "no change" call by watching | `predict-explore.js` |
 | 2026-11-19 | A&P Predict the change | The chain spreads with a short lag per link (0.2 to 0.65 s), a teaching pace | So the order is seen; real CO2 takes minutes and the kidney hours, said in "?" | `nodes[].tau` |

@@ -1,0 +1,47 @@
+/* Arrow Pusher, tools v2 (ochem/assets/tools/arrow-pusher.js; docs/tools-v2-arrow-pusher-brief.md). Loaded only by the
+   arrow pusher page (`kit2: true` in tools-registry.js), after the shared board (ochem/assets/tools/push-board.css:
+   the colours, balls, electrons, arrows, names, the picker and Undo). Here: the stage's layout, the steps row, the
+   Test yourself docks and "?". A start is grey (--minor), an intermediate violet (the electrons' colour, --e), a
+   product or target green (--good). */
+.ap2{display:flex;flex-direction:column;gap:10px;min-height:0;flex:1 1 auto;}
+.ap2[hidden]{display:none;}
+.ap2 [hidden]{display:none !important;}
+.ap2-scene{position:relative;flex:1 1 auto;min-height:540px;border-radius:18px;overflow:hidden;background:var(--bg1);}
+.ap2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+@media (max-width:1023px){ .ap2-scene{flex:none;height:clamp(620px, calc(100vh - 300px), 820px);min-height:0;} }
+@media (max-width:640px){ .ap2-scene{height:596px;border-radius:14px;} .ap2{gap:8px;} }
+.ap2-lines{display:flex;align-items:center;gap:6px 18px;flex-wrap:wrap;flex:none;}
+.ap2 .tk2-cz.is-inter{--cz:var(--e);--cz-ink:var(--e-ink);}
+.ap2 .tk2-cz.is-ink{--cz:var(--minor);--cz-ink:var(--ink);}
+
+/* the steps row: cards in order, an arrow between them */
+.ap2-thumbs{position:absolute;inset:0;pointer-events:none;z-index:3;}
+.ap2-next{fill:none;stroke:var(--minor);stroke-width:2.2;stroke-linecap:round;}
+.ap2-nexth{fill:var(--minor);}
+.rs2-lab.is-start{color:var(--minor-ink);box-shadow:inset 0 0 0 1.5px var(--minor);}
+.rs2-lab.is-inter{color:var(--e-ink);box-shadow:inset 0 0 0 1.5px var(--e);}
+.rs2-lab.is-product{color:var(--good-ink);box-shadow:inset 0 0 0 1.5px var(--good);}
+/* names on the board: what each atom does at the start, each species after a step */
+.rs2-lab.is-role{font-size:12.5px;color:var(--ink);}
+.rs2-lab.is-sp{font-size:13px;font-weight:900;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--card-edge),0 1px 3px rgba(20,16,50,.14);}
+/* names of a state are hidden while the picture moves to another (they would name what is no longer there) */
+.ap2 .rs2-labs.is-tour .is-role,.ap2 .rs2-labs.is-tour .is-sp,.ap2 .rs2-labs.is-wait .is-role,.ap2 .rs2-labs.is-wait .is-sp,.ap2 .rs2-labs.is-drag .is-sp{opacity:0;}
+@media (max-width:640px){ .rs2-lab.is-role{font-size:11.5px;} .rs2-lab.is-sp{font-size:12px;} }
+
+/* Test yourself docks */
+.ap2-dock{display:flex;flex-direction:column;gap:12px;}
+.ap2-row{gap:8px;flex-wrap:wrap;align-items:center;}
+.ap2-notes{display:flex;flex-direction:column;gap:8px;}
+.ap2-notes:empty{display:none;}
+.ap2-stepmark{display:flex;align-items:center;gap:8px;font:800 13px var(--font-ui);color:var(--muted);}
+.ap2-stepmark:empty{display:none;}
+.ap2-sm.is-now{color:var(--ink);} .ap2-sm.is-done{color:var(--good-ink,#0A6B49);}
+.ap2-sm-line{flex:0 0 18px;height:2px;background:var(--line-soft,#ddd);}
+/* "?" */
+.ap2-ref-how{margin:0 0 10px;}
+.ap2-ref-h{font:900 15px var(--font-ui);margin:4px 0 8px;}
+.ap2-ref-key p,.ap2-ref-p{margin:0 0 10px;line-height:1.5;}
+.ap2-steps{margin:0 0 10px;padding-left:20px;line-height:1.5;}
+.ap2-steps li{margin:0 0 6px;}
+/* no text under 11 px in this tool (tools v2 checklist): the shared ochem table headers are 10.5 px, raised here only */
+.ap2-dock .ttable th,.ap2-ref .ttable th{font-size:11px;}

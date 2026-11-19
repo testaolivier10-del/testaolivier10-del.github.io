@@ -74,6 +74,8 @@ review round: `docs/tools-v2-water-pollution-brief.md`, `docs/tools-v2-osmosis-b
      mid animation) and the screen returns clean; test leaving mid animation on every tab.
    - Text stays readable: no rendered label under 11 px at any width (fit a drawing by giving it room, never by
      shrinking it below that); the sweep checks minimum rendered text size, not just bounds.
+   - After every merge, check no conflict markers were committed: `git grep -nI '^<<<<<<< \|^>>>>>>> '` must print
+     nothing.
    - Before handing in, run a self review against this whole list and the 15 rules with your own fresh frames
      at 360, 390, 768, 1024 and 1440, light and dark, and fix what fails. The independent review then
      confirms; it should not be where these are first found.
