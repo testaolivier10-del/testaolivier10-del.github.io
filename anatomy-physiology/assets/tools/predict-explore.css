@@ -1,0 +1,201 @@
+/* A&P Predict the change, tools v2 Explore (tools/predict-explore.js; docs/tools-v2-anp-predict-brief.md). One colour
+   per idea: the part, its label, its pill on the cause line share it. Grey is "same" (did not change). */
+.px{
+  --px-mus:#A9442F; --px-mus-ink:#93391F;
+  --px-res:#6A4FB0; --px-res-ink:#563C98;
+  --px-flow:#C8352A; --px-flow-ink:#A52A20;
+  --px-same:#5D6470; --px-same-ink:#4B515C;
+  --px-air:#2F7DB4; --px-air-ink:#245F8C;
+  --px-co2:#3F7A6E; --px-co2-ink:#2F6157;
+  --px-h:#C2307A; --px-h-ink:#A1255F;
+  --px-ph:#3F51B5; --px-ph-ink:#33429A;
+  --px-o2:#D23A1E; --px-o2-ink:#A8301A;
+  --px-adh:#8E44AD; --px-adh-ink:#733590;
+  --px-aqp:#0F8B7A; --px-aqp-ink:#0B6B5E;
+  --px-water:#2F8FCB; --px-water-ink:#1E6E9E;
+  --px-urine:#A97A00; --px-urine-ink:#7F5C00;
+  --px-fill:#2C6E9E; --px-fill-ink:#245C85;
+  --px-sv:#D23A1E; --px-sv-ink:#A8301A;
+  --px-co:#9A2A1A; --px-co-ink:#8A2516;
+  --px-bg:#FBF6F0;
+  display:flex;flex-direction:column;gap:8px;min-height:0;
+}
+:root[data-theme="dark"] .px{
+  --px-mus:#E58E76; --px-mus-ink:#F0A48F; --px-res:#B9A3F0; --px-res-ink:#C8B6F4; --px-flow:#FF7A5C; --px-flow-ink:#FF9C85;
+  --px-same:#AEB4BE; --px-same-ink:#C2C7CF; --px-air:#86C0E8; --px-air-ink:#9ACFF2; --px-co2:#7FC4B4; --px-co2-ink:#98D2C4;
+  --px-h:#F08AB0; --px-h-ink:#F4A3C2; --px-ph:#A9B5F2; --px-ph-ink:#BBC5F5; --px-o2:#FF7A5C; --px-o2-ink:#FF9C85;
+  --px-adh:#CDA0E6; --px-adh-ink:#D8B4EC; --px-aqp:#4FD1BC; --px-aqp-ink:#6FDCCB; --px-water:#7FC2EE; --px-water-ink:#9ACFF2;
+  --px-urine:#E8C35A; --px-urine-ink:#F0D27E; --px-fill:#7FC2EE; --px-fill-ink:#9ACFF2; --px-sv:#FF7A5C; --px-sv-ink:#FF9C85;
+  --px-co:#FF9C85; --px-co-ink:#FFB4A2; --px-bg:#20272A;
+}
+.px .tk2-cz{--cz:var(--cink);--cz-ink:var(--cink);}
+.px .tk2-cz.is-mus{--cz:var(--px-mus);--cz-ink:var(--px-mus-ink);} .px .tk2-cz.is-res{--cz:var(--px-res);--cz-ink:var(--px-res-ink);}
+.px .tk2-cz.is-flow{--cz:var(--px-flow);--cz-ink:var(--px-flow-ink);} .px .tk2-cz.is-same{--cz:var(--px-same);--cz-ink:var(--px-same-ink);}
+.px .tk2-cz.is-air{--cz:var(--px-air);--cz-ink:var(--px-air-ink);} .px .tk2-cz.is-co2{--cz:var(--px-co2);--cz-ink:var(--px-co2-ink);}
+.px .tk2-cz.is-h{--cz:var(--px-h);--cz-ink:var(--px-h-ink);} .px .tk2-cz.is-ph{--cz:var(--px-ph);--cz-ink:var(--px-ph-ink);}
+.px .tk2-cz.is-o2{--cz:var(--px-o2);--cz-ink:var(--px-o2-ink);} .px .tk2-cz.is-adh{--cz:var(--px-adh);--cz-ink:var(--px-adh-ink);}
+.px .tk2-cz.is-aqp{--cz:var(--px-aqp);--cz-ink:var(--px-aqp-ink);} .px .tk2-cz.is-water{--cz:var(--px-water);--cz-ink:var(--px-water-ink);}
+.px .tk2-cz.is-urine{--cz:var(--px-urine);--cz-ink:var(--px-urine-ink);} .px .tk2-cz.is-fill{--cz:var(--px-fill);--cz-ink:var(--px-fill-ink);}
+.px .tk2-cz.is-sv{--cz:var(--px-sv);--cz-ink:var(--px-sv-ink);} .px .tk2-cz.is-co{--cz:var(--px-co);--cz-ink:var(--px-co-ink);}
+
+/* the picture, full stage width */
+.px-main{display:flex;flex-direction:column;gap:6px;min-height:0;}
+.px-pic{position:relative;border-radius:18px;overflow:hidden;background:var(--px-bg);box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--ink) 8%, transparent);width:100%;align-self:center;}
+.px-svg{display:block;width:100%;height:auto;touch-action:none;}
+.px-fxsvg{position:absolute;left:0;top:0;width:100%;height:auto;pointer-events:none;will-change:transform;}
+.px-fade{position:absolute;inset:0;pointer-events:none;}
+.px-fade .px-fxsvg{will-change:auto;}
+.px-over{position:absolute;inset:0;pointer-events:none;}
+.px-over > *{pointer-events:auto;}
+.px-lines{display:flex;flex-wrap:wrap;align-items:center;gap:8px;min-height:44px;}
+@media (max-width:640px){ .px-lines{min-height:80px;align-items:flex-start;} }
+@media (min-width:640.02px) and (max-width:1100px){ .px-lines{min-height:84px;align-items:flex-start;} }
+
+/* the knob: a clear ring, so the wall or part under it stays in sight */
+.px .tk2-handle > .tk2-knob{width:50px;height:50px;margin:-25px 0 0 -25px;}
+.px .tk2-handle .tk2-dot,:root[data-theme="dark"] .px .tk2-handle .tk2-dot{width:42px;height:42px;background:color-mix(in srgb, var(--white) 30%, transparent);
+  box-shadow:0 0 0 2.5px var(--white),0 0 0 4.5px var(--cink),0 1px 6px rgba(11,26,51,.28);}
+.px .tk2-handle .tk2-ar{position:absolute;right:-7px;top:-7px;width:18px;height:18px;padding:2px;border-radius:50%;background:var(--white);box-shadow:0 0 0 2px var(--cink);}
+.px .tk2-handle.is-focus .tk2-dot{box-shadow:0 0 0 2.5px var(--white),0 0 0 4.5px var(--cink),0 0 0 7px var(--white),0 0 0 9.5px var(--cink);}
+
+.px-reset{font:inherit;position:absolute;right:10px;top:10px;display:inline-flex;align-items:center;gap:5px;border-radius:999px;cursor:pointer;font-size:13px;font-weight:800;line-height:1;
+  white-space:nowrap;min-height:32px;padding:0 11px 0 9px;background:color-mix(in srgb, var(--white) 88%, transparent);color:var(--ink);border:1.5px solid color-mix(in srgb, var(--ink) 22%, transparent);}
+.px-reset svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
+.px-reset:hover{border-color:var(--ink);}
+.px-reset:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+@media (max-width:640px){ .px-reset span{display:none;} .px-reset{padding:0 8px;min-width:34px;justify-content:center;} }
+
+/* labels */
+.px-svg text{font-family:var(--font-ui);}
+.px-lab rect{fill:var(--white);stroke:currentColor;stroke-width:1.6px;vector-effect:non-scaling-stroke;}
+.px-lab text{fill:currentColor;font-weight:900;text-anchor:middle;}
+.px-lab-m{font-weight:900;}
+.px-lab.is-strong rect{fill:currentColor;} .px-lab.is-strong text{fill:var(--white);}
+:root[data-theme="dark"] .px-lab.is-strong text{fill:#14181B;}
+.px-lead{fill:none;stroke:currentColor;stroke-width:1.6px;vector-effect:non-scaling-stroke;}
+.px-lead-dot{fill:currentColor;}
+.px-svg .is-mus{color:var(--px-mus-ink);} .px-svg .is-res{color:var(--px-res-ink);} .px-svg .is-flow{color:var(--px-flow-ink);}
+.px-svg .is-same{color:var(--px-same-ink);} .px-svg .is-air{color:var(--px-air-ink);} .px-svg .is-co2{color:var(--px-co2-ink);}
+.px-svg .is-h{color:var(--px-h-ink);} .px-svg .is-ph{color:var(--px-ph-ink);} .px-svg .is-o2{color:var(--px-o2-ink);}
+.px-svg .is-adh{color:var(--px-adh-ink);} .px-svg .is-aqp{color:var(--px-aqp-ink);} .px-svg .is-water{color:var(--px-water-ink);}
+.px-svg .is-urine{color:var(--px-urine-ink);} .px-svg .is-fill{color:var(--px-fill-ink);} .px-svg .is-sv{color:var(--px-sv-ink);} .px-svg .is-co{color:var(--px-co-ink);}
+
+
+/* shared */
+.px-bg{fill:var(--px-bg);}
+.px-zl{fill:none;stroke:color-mix(in srgb, var(--ink) 30%, transparent);stroke-width:2;}
+.px-lens{fill:color-mix(in srgb, var(--white) 25%, transparent);stroke:var(--ink);stroke-width:2.5;}
+.px-zoom{fill:#FFFDFB;stroke:color-mix(in srgb, var(--ink) 35%, transparent);stroke-width:2.5;}
+.px-rbc-o{fill:#C8352A;stroke:#8E2219;stroke-width:1.2;}
+.px-rbc-c{fill:#E26654;}
+
+/* the rail a knob rides on (rate, level) */
+.px-rail{fill:none;stroke:color-mix(in srgb, var(--ink) 22%, transparent);stroke-width:8;stroke-linecap:round;}
+.px-railt{stroke:color-mix(in srgb, var(--ink) 30%, transparent);stroke-width:2.5;stroke-linecap:round;}
+
+/* 1. arteriole */
+.px-fib{fill:none;stroke:#EBC9B4;stroke-width:2.2;stroke-linecap:round;opacity:.8;}
+.px-tcell ellipse{fill:#F7D9C8;stroke:#DDAF96;stroke-width:1.5;}
+.px-tcell .px-tnuc{fill:#B78FB0;stroke:none;}
+.px-capw{fill:none;stroke:#C9574A;stroke-width:24;stroke-linecap:round;stroke-linejoin:round;}
+.px-capl{fill:none;stroke:#F2B6A6;stroke-width:17;stroke-linecap:round;stroke-linejoin:round;}
+.px-artw,.px-aw{stroke:#8E2F25;stroke-width:1.5;stroke-linejoin:round;}
+.px-venw{stroke:#3F3270;stroke-width:1.5;}
+.px-lumen{stroke:none;}
+.px-lumen.is-v{fill:#C9BEDF;}
+.px-rim{fill:#C55346;stroke:#8E2F25;stroke-width:1.5;} .px-rim.is-v{fill:#6D5C9E;stroke:#3F3270;}
+.px-rim-in{fill:#8E2F25;opacity:.55;}
+.px-band{fill:none;stroke:var(--px-mus);stroke-width:7.5;stroke-linecap:round;opacity:.92;}
+.px-gface{fill:#FFFFFF;stroke:#5D6470;stroke-width:2.5;}
+.px-gstem{stroke:#8C939E;stroke-width:6;stroke-linecap:round;}
+.px-gtick{stroke:#8C939E;stroke-width:2;stroke-linecap:round;}
+.px-gneedle{stroke:var(--px-same);stroke-width:3.4;stroke-linecap:round;}
+.px-gpin{fill:var(--px-same);}
+
+/* 2. breathing */
+.px-skin{fill:#F1C7A6;stroke:#C99A80;stroke-width:2.5;}
+.px-hair{fill:#4A3426;}
+.px-face{fill:none;stroke:#8A5A44;stroke-width:2.5;stroke-linecap:round;}
+.px-eye{fill:#3A2A20;}
+.px-mouth{fill:#B8574A;stroke:#8A3C30;stroke-width:2;stroke-linejoin:round;}
+.px-shirt{fill:#5D86A8;stroke:#40627F;stroke-width:2.5;}
+.px-shirt-f{fill:none;stroke:#40627F;stroke-width:2;opacity:.6;}
+.px-chest{fill:#F6E3D8;stroke:#D6B4A2;stroke-width:2;}
+.px-lung{fill:url(#px-lungg);stroke:#B9606A;stroke-width:2;}
+.px-trach{fill:none;stroke:#E8DCC6;stroke-width:11;stroke-linecap:round;stroke-linejoin:round;}
+.px-bron{fill:none;stroke:#F1E5D0;stroke-width:4;stroke-linecap:round;opacity:.9;}
+.px-dia{fill:none;stroke:#A9442F;stroke-width:5;stroke-linecap:round;}
+.px-alvw{fill:none;stroke:#E8C9C2;stroke-width:44;stroke-linecap:round;}
+.px-alvn{fill:#F7DDDD;stroke:#D9A2A6;stroke-width:2;}
+.px-alv{stroke:#C77C83;stroke-width:3;}
+.px-capwall{fill:#D9786C;}
+.px-co2 .px-c{fill:#2F4F49;} .px-co2 .px-o{fill:#7FB7A8;stroke:#3F7A6E;stroke-width:1.4;}
+.px-co2.is-sm{transform:scale(.62);}
+.px-puffc{fill:color-mix(in srgb, var(--px-air) 18%, #ffffff);stroke:color-mix(in srgb, var(--px-air) 45%, transparent);stroke-width:1.5;}
+.px-h circle{fill:var(--px-h);stroke:#ffffff;stroke-width:1.5;}
+.px-h path{stroke:#ffffff;stroke-width:2.4;stroke-linecap:round;}
+
+/* 3. ADH and the collecting duct */
+.px-panel{fill:color-mix(in srgb, #ffffff 70%, transparent);stroke:color-mix(in srgb, var(--ink) 14%, transparent);stroke-width:2;}
+.px-brain{fill:#F2C9C4;stroke:#C98E89;stroke-width:2.5;}
+.px-brain-l{fill:none;stroke:#D7A39E;stroke-width:2;stroke-linecap:round;}
+.px-stalk{fill:none;stroke:#C98E89;stroke-width:6;stroke-linecap:round;}
+.px-pit{fill:#E7A9A2;stroke:var(--px-adh);stroke-width:3;}
+.px-adhv{fill:none;stroke:#B9493D;stroke-width:12;stroke-linecap:round;stroke-linejoin:round;}
+.px-adhl{fill:none;stroke:color-mix(in srgb, var(--px-adh) 55%, #E37C6B);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;}
+.px-kid{stroke:#6E2620;stroke-width:2.5;}
+.px-pyr{fill:#8E352C;opacity:.8;}
+.px-ureter{fill:none;stroke:#E8C77E;stroke-width:8;stroke-linecap:round;}
+.px-bladder{fill:#FFFFFF;stroke:#B9A27A;stroke-width:2.5;}
+.px-urine{stroke:none;}
+.px-inter{opacity:1;}
+.px-lum-top{stop-color:color-mix(in srgb, #E9C200 12%, #FFFBE6);}
+
+.px-pcell{stroke:#C98468;stroke-width:1.5;}
+.px-pnuc{fill:#9B6C9C;}
+.px-memb{fill:none;stroke:#B06B55;stroke-width:3;}
+.px-dcap{stroke:#8E2F25;stroke-width:1.5;}
+.px-aqb{fill:var(--px-aqp);stroke:#ffffff;stroke-width:1.2;}
+.px-aqp{stroke:#ffffff;stroke-width:2;stroke-linecap:round;}
+.px-ves{fill:none;stroke:color-mix(in srgb, var(--px-aqp) 55%, transparent);stroke-width:1.6;}
+.px-dropp{fill:var(--px-water);stroke:#ffffff;stroke-width:1;}
+.px-adh path{fill:var(--px-adh);stroke:#ffffff;stroke-width:1.2;}
+.px-udropp{stroke:#A98A3E;stroke-width:1;}
+
+/* 4. heart */
+.px-myo{stroke:#6E1F17;stroke-width:3;}
+.px-cav{stroke:none;}
+.px-cav.is-de{fill:#6E8FC4;} .px-cav.is-ox{fill:#E26654;}
+.px-aur{fill:#B44A3E;stroke:#6E1F17;stroke-width:3;}
+.px-sulc{fill:none;stroke:#8E2F25;stroke-width:3;opacity:.45;stroke-linecap:round;}
+.px-leaf{stroke:#F6E7CF;stroke-width:6;stroke-linecap:round;fill:none;}
+.px-pt{fill:none;stroke:#30507F;stroke-width:28;stroke-linecap:round;}
+.px-pt-l{fill:none;stroke:#7B9BD0;stroke-width:19;stroke-linecap:round;}
+.px-cortex{fill:#C96A5E;opacity:.55;}
+.px-pyrs{fill:none;stroke:#7A2A22;stroke-width:1.5;opacity:.6;}
+.px-pelvis{fill:#F2E3B8;stroke:#C9A96A;stroke-width:1.5;}
+.px-cor{fill:none;stroke:#E9C08E;stroke-width:3;stroke-linecap:round;opacity:.7;}
+.px-ring{fill:none;stroke:#F2E2C8;stroke-width:6;stroke-linecap:round;}
+.px-cava{fill:none;stroke:#3F5F92;stroke-width:34;stroke-linecap:round;}
+.px-cava-l{fill:none;stroke:#7B9BD0;stroke-width:24;stroke-linecap:round;}
+.px-aorta{fill:none;stroke:#8E2F25;stroke-width:34;stroke-linecap:round;stroke-linejoin:round;}
+.px-aorta-l{fill:none;stroke:#E9A497;stroke-width:24;stroke-linecap:round;stroke-linejoin:round;}
+.px-slug{fill:none;stroke:var(--px-sv);stroke-width:16;stroke-linecap:round;stroke-linejoin:round;}
+.px-beat path{fill:none;stroke:var(--px-same);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;}
+.px-z{stroke:#3F3270;stroke-width:5;stroke-linecap:round;}
+.px-thin{stroke:#D96C5E;stroke-width:5;stroke-linecap:round;}
+.px-thick{stroke:#6A4F8E;stroke-width:9;stroke-linecap:round;}
+
+/* dark: the backgrounds and the magnified panels go dark; the drawn parts keep their colours */
+:root[data-theme="dark"] .px-bg{fill:var(--px-bg);}
+:root[data-theme="dark"] .px-zoom{fill:#2A3134;stroke:color-mix(in srgb, #ffffff 25%, transparent);}
+:root[data-theme="dark"] .px-panel{fill:#283034;stroke:color-mix(in srgb, #ffffff 18%, transparent);}
+:root[data-theme="dark"] .px-inter{opacity:.35;}
+:root[data-theme="dark"] .px-fib{stroke:#4A4440;}
+:root[data-theme="dark"] .px-zl{stroke:color-mix(in srgb, #ffffff 30%, transparent);}
+:root[data-theme="dark"] .px-rail{stroke:color-mix(in srgb, #ffffff 25%, transparent);}
+:root[data-theme="dark"] .px-railt{stroke:color-mix(in srgb, #ffffff 35%, transparent);}
+:root[data-theme="dark"] .px-chest{fill:#E9D3C6;}
+
+/* the "before" tick's word sits beside a vertical track (on a pill), never on the vessel it rides */
+.px-main[data-vt="1"] .tk2-before b{left:22px;top:-9px;transform:none;padding:2px 6px;border-radius:999px;background:var(--white);box-shadow:0 0 0 1px color-mix(in srgb, var(--ink) 15%, transparent);}

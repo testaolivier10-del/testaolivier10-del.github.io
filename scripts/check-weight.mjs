@@ -87,6 +87,10 @@ const SHELL_BUDGETS = [
      Measured 33.0 KB with K.spots (the explorers' named places, with its miss, card sizing and find-it mode: about
      5.5 KB). */
   ['assets/course/kit2', 34],
+  /* A&P Predict the change's Explore, tools/predict-explore.js and .css (docs/tools-v2-anp-predict-brief.md): loaded only
+     by that tool's page (its landing), so it is its own shell, not part of every A&P page's (review round 1). Four drawn
+     body systems and the chain engine. Measured 32.8 KB in review round 1; 33.3 KB after recheck 1 (the adaptive ambient rate, the keep-out for the "before" word, arrows held until the shown number moves). */
+  ['anatomy-physiology/predict-explore', 34],
   /* 249 -> 253 for cross-device sync (audit 2026-10, Fix-first 5). A sync
      used to replace whole namespaces and pull only on sign-in, so two signed-in
      devices erased each other's progress. account.js now carries a per-key
@@ -1196,6 +1200,8 @@ function bucketOf(relPath) {
   // The video lesson player (docs/video-lessons.md) loads only on pages that
   // show a video, so it is its own shell, not part of every page's.
   if (parts[0] === 'assets' && parts[1] === 'video') return 'assets/video';
+  // A&P Predict the change's Explore (tools v2) loads only on that tool's page, so it is its own shell.
+  if (parts[0] === 'anatomy-physiology' && parts[1] === 'assets' && parts[2] === 'tools' && /^predict-explore\./.test(parts[3] || '')) return 'anatomy-physiology/predict-explore';
   // The shared 3D body (assets/body3d/viewer.js) loads only on the NREMT body
   // map and the A&P 3D anatomy tool, so it is its own shell too.
   if (parts[0] === 'assets' && parts[1] === 'body3d') return 'assets/body3d';

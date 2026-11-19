@@ -61,6 +61,7 @@ card), a Share button in the bar on desktop, the "what to do" line under the tas
 | F6 | Fresh-eyes pass on every tool, fixes, done | F6a done 2026-11-16: every item of the F6 decisions below except the accuracy check (F6b, in parallel): shared picker search, empty caption row, phone quiz figure size, Reset to the stage foot in Bio / Chem / Physics, calc parametric axes and rule drill window, HuG FRQ sample gate and Map pill, takeaways per problem type (Macro, Micro, HuG), policy chain row. Checked in every course at 390 and 1440, light and dark; AB and Macro builds byte-identical |
 | F7 | Follow-ups after F6a (five small items) | done 2026-11-16: see "F7 follow-ups" below |
 | F8 | Final wrap up | done 2026-11-16: FRQ coach step 3 waits for a try; tree reading's duplicate caption dropped; the flaky "every page loads" CI step fixed; accuracy check of the F6a and F7 copy (verdicts in the course notes); see "F8 wrap up" below |
+| Cleanup | Remove the hidden original scenario controls behind the pickers (owner: "remove code underneath") | ochem done 2026-11-19 (see "Cleanup" below); other course kits not started |
 
 **Project status: done (2026-11-16).** Every tool in every course is on the standard frame. Left for later: the hidden
 original scenario controls (ochem, APES, Psych and others, kept in the page out of sight behind the pickers) could be
@@ -147,3 +148,23 @@ frame in this file stays (top bar, modes, "?", "…"), and v2 decides what goes 
 instant response, two modes with one job each, controls that never move each other, nothing extra on screen). The
 flagship's brief with every owner round is `docs/tools-v2-water-pollution-brief.md`. Rebuild the other tools to v2
 one at a time, each with its own brief.
+
+## Cleanup (2026-11-19): hidden controls behind the pickers
+Rule: each picker calls the tool's own logic (the function the old control's listener called); the hidden control,
+its listener, its CSS and any bridge helper go. Students see the same choices, order, groups, deep links, labels.
+- Ochem (branch `claude/tools-frame-cleanup`): `OchemStudioKit.chipPicker` and `scrollChips` removed (`tool-shell.js`,
+  `.ls-chips-hidden`). Arrow pusher: the ready-made chip list, challenge chip row, "Need a nudge?" box (the hint
+  ladder has the nudge) and the hidden step cue gone; the dropdowns already called `select` / `startChal`.
+  Spectroscopy, 3D viewer, resonance: compounds, molecules and species are built straight into `studio.picker`
+  (same groups: Start here / More, the library groups) calling `pickCompound` / `pickMol` / `select`; resonance's
+  hidden "Show me one I'm missing" button gone (the ladder's answer calls `reveal()`). Conformations: the hidden
+  torsion chips gone; the select calls `pickTor` and a `torOn` state replaces "which chip is on" (`?tor=`, `?f=&b=`
+  links checked). Hidden "tool-step" cues gone in acid-base, conformations, reaction predictor, reagent roadmap,
+  spectroscopy, 3D viewer; acid-base rank's hidden tip line gone. About 15.3 KB less source. Checked: every picker
+  value and mode before and after at 1440 and 390, deep links, dark flows at 390: same text, same picks, no errors.
+- Not removed: tools' own mode `.tseg` rows (adopted by `Kit.seg` as the bar's mode switch, so they show), the
+  reaction predictor's substrate and reagent chips (they are the visible pickers in the side panel), Build your own
+  disclosures (visible).
+- Left for a later pass: NREMT, A&P, Bio/Chem/Physics, Calc/BC/Precalc/Stats (`chipPick`, `stagePick`, `radioPick`),
+  APES/Psych (`stagePick`), Macro/Micro/HuG (`selectPicker`, `chipPicker`). Baseline probe method: drive every
+  visible picker value in every mode on main and on the branch, compare stage, dock, task, caption and URL.

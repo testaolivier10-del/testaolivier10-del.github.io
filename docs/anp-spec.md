@@ -550,3 +550,15 @@ Site audit follow-up (2026-10-02, workstream W6):
     data/pages.json). Item ids, scoring, recording and deep links unchanged; open points in docs/anp-needs-author.md
     (fl-*). Also fixed: Watch it work drew its gauge marker at NaN when a second loop opened after the body drawings had
     loaded (the drawing callback ran before the marker's state was set).
+104. (2026-11-19) **Predict the change on tools v2** (docs/tools-v2-standard.md; brief docs/tools-v2-anp-predict-brief.md).
+    Explore is four drawn body systems, one knob each, where a change spreads link by link: an arteriole (squeeze the
+    wall: radius, resistance, blood flow; the end pressures stay the same), breathing (rate: blood CO2, H+, pH, O2
+    saturation a little; breath size the same), the kidney (ADH: aquaporins, water back, urine volume and concentration; the fluid coming
+    in stays the same) and the heart (venous return: filling, stretch, stroke volume, output; heart rate the same). The
+    cause line names the chain as far as it has reached and a takeaway comes when it settles. Test yourself holds all
+    377 scenarios, the setup, Run it and the summary unchanged. Uses AnpToolKit.kit2 unchanged ("kit2": true in
+    data/pages.json). Item ids, scoring, recording and deep links unchanged (?topic= and ?chapter= open the matching
+    Explore screen); open points in docs/anp-needs-author.md (px-*). Review round 1 (2026-11-19): the chain stops at
+    the first link not yet turned on a reversal; the arteriole's resistance and flow follow its radius at once and the flow
+    shows no factor (the circuit includes the capillary bed); one threshold for "moved"; Explore's files are their own
+    weight bucket.
