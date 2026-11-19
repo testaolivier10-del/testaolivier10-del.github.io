@@ -83,7 +83,8 @@
       var c = sp.crop;
       svg.setAttribute('viewBox', '0 0 ' + c[2] + ' ' + c[3]);
       pic.classList.add('is-swap');
-      src.setAttribute('srcset', B + sp.avif); img.src = B + sp.src; img.alt = sp.alt + ' Printed labels are hidden; tap a dot to name a part.';
+      var at = function(u){ return /^data:/.test(u) ? u : B + u; };   // the one file preview inlines the pictures
+      src.setAttribute('srcset', at(sp.avif)); img.src = at(sp.src); img.alt = sp.alt + ' Printed labels are hidden; tap a dot to name a part.';
       img.width = c[2]; img.height = c[3];
       if(spots){ spots.el.remove(); spots = null; }
       if(cue && cue.active()) cue.hide(false);

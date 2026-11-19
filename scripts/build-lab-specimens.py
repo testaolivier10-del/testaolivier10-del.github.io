@@ -259,6 +259,16 @@ def clean(fig, spec):
     near_line = cv2.dilate((path | erase_bg).astype(np.uint8), np.ones((9, 9), np.uint8)) > 0
     left = on_bg & near_line & ((o.max(2) - o.min(2)) < 18) & (o.min(2) < 250) & (o.min(2) > 195)
     out[left] = 255
+    # and any grey left on the background just outside a label box (the start of its line, the box's own edge)
+    nearbox = np.zeros((H, W), bool)
+    for b in boxes:
+        x, y, w, h = b
+        nearbox[max(0, y - 8):y + h + 8, max(0, x - 40):x + w + 40] = True
+    o = out.astype(np.int16)
+    out[nearbox & on_bg & ((o.max(2) - o.min(2)) < 40)] = 255
+    # faint grey ghosts of lines on the background (the figures' backgrounds are plain white)
+    o = out.astype(np.int16)
+    out[on_bg & ((o.max(2) - o.min(2)) < 40) & (o.min(2) > 150)] = 255
     # 5. crop
     if spec.get('crop'):
         cx, cy, cw, ch = spec['crop']
