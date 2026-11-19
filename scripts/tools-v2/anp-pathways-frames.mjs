@@ -87,6 +87,10 @@ for (const tab of Object.keys(RULES)) {
         A._frame(+v.toFixed(2)); n++;
         const f = A._st(), w = f.words.join(' | ');
         R.forEach((r) => { if (w.indexOf(r[0]) > -1 && !r[1](f.st)) bad.push(`v=${v.toFixed(2)} words "${r[0]}" but not ${r[2]}`); });
+        // the blood cell never crosses a shut valve
+        A._valves().forEach((vl) => { const sc = A._scenes.filter((x) => x.id === t)[0], p = sc.route.at(+v.toFixed(2)); if (Math.hypot(p[0] - vl[1][0], p[1] - vl[1][1]) < 10 && !(f.st[vl[0]] >= 0.3)) bad.push(`v=${v.toFixed(2)} the cell is at the ${vl[0]} valve while it is shut`); });
+        // the summed EPSPs come from three synapses: both neighbours are drawn lit
+        if (t === 'synapse' && f.st.sum > 0.1){ const on = [...document.querySelectorAll('svg.pe-svg:not(.pe-fade) .pe-term2.is-on')]; if (on.length !== 2 || on.some((n) => getComputedStyle(n).fill === getComputedStyle(document.querySelector('.pe-term')).fill)) bad.push(`v=${v.toFixed(2)} the neighbouring terminals are not lit`); }
         L.forEach((l) => { if (f.labels.indexOf(l[0]) > -1 && !l[1](f.st)) bad.push(`v=${v.toFixed(2)} label "${l[0]}" before its picture`); });
       }
       return { n, bad };

@@ -19,8 +19,9 @@ import { fileURLToPath } from 'url';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const arg = (k, d) => { const i = process.argv.indexOf(k); return i > -1 ? process.argv[i + 1] : d; };
 const PORT = arg('--port', '8923'), SHOTS = arg('--shots', ''), DARK = process.argv.includes('--dark');
-const ALL = [360, 390, 430, 600, 768, 820, 1024, 1280, 1440, 1920];
-const WIDTHS = arg('--width', '') ? [+arg('--width', '')] : ALL;
+// widths, and two short laptop screens given as WxH
+const ALL = ['360', '390', '430', '600', '768', '820', '1024', '1280', '1440', '1920', '1366x768', '1280x720'];
+const WIDTHS = arg('--width', '') ? [arg('--width', '')] : ALL;
 // every step, the moments between where things change, the end, and each break (b:<id> then the token at the break)
 const STATES = {
   heart: [0, 0.6, 1, 2, 2.6, 3, 4, 4.8, 5, 6, 6.6, 7, 8, 8.6, 9, 10, 10.8, 11, 12, 13, 'b:air', 5, 11, 13],
@@ -34,8 +35,8 @@ if (SHOTS) mkdirSync(SHOTS, { recursive: true });
 let fails = 0, checks = 0;
 const fail = (m) => { fails++; console.log('FAIL ' + m); };
 
-for (const w of WIDTHS) {
-  const h = w < 500 ? 844 : w < 900 ? 1024 : w >= 1900 ? 1080 : 900;
+for (const ws of WIDTHS) {
+  const w = +String(ws).split('x')[0], h = String(ws).includes('x') ? +String(ws).split('x')[1] : w < 500 ? 844 : w < 900 ? 1024 : w >= 1900 ? 1080 : 900;
   const ctx = await browser.newContext({ viewport: { width: w, height: h }, serviceWorkers: 'block', hasTouch: w < 900 });
   await ctx.route('**/assets/premium.js', (r) => r.fulfill({ contentType: 'application/javascript',
     body: readFileSync(join(ROOT, 'assets/premium.js'), 'utf8').replace('function has(course) {', 'function has(course) { return true;') }));
@@ -128,19 +129,35 @@ for (const w of WIDTHS) {
         const tops = [...new Set(pills.map((e) => Math.round(e.getBoundingClientRect().top / 6)))];
         out.lines = { h: Math.round(ln.getBoundingClientRect().height), rows: tops.length, t: ln.innerText.replace(/\s+/g, ' ') };
         out.scroll = document.scrollingElement.scrollWidth - innerWidth;
+        // the cause line is on screen at the top of the page
+        const lr = document.querySelector('.pe-lines').getBoundingClientRect();
+        out.lineOff = lr.bottom + scrollY - innerHeight;
+        // each break button sits nearest the part it breaks
+        const A = window.AnpPathExplore.current, svgEl = document.querySelector('svg.pe-svg:not(.pe-fade)'), vb = svgEl.viewBox.baseVal, k = svgEl.getBoundingClientRect().width / vb.width, tg = A._targets();
+        out.near = [];
+        document.querySelectorAll('.pe-cutb').forEach((b) => {
+          if (b.hidden || !b.offsetWidth) return;
+          const q = b.getBoundingClientRect(), sr = svgEl.getBoundingClientRect(), x = (q.left + q.width / 2 - sr.left) / k + vb.x, y = (q.top + q.height / 2 - sr.top) / k + vb.y;
+          let best = null, bd = Infinity;
+          tg.forEach((t) => { const d = Math.hypot(t.at[0] - x, t.at[1] - y); if (d < bd) { bd = d; best = t.id; } });
+          if (best !== b.getAttribute('data-b')) out.near.push(b.getAttribute('aria-label') + ' is nearest ' + best);
+        });
         document.querySelectorAll('.pe-rail .pe-sn, .pe-strip-n').forEach((e) => { if (e.offsetWidth && e.scrollWidth > e.clientWidth + 1) out.fit.push('rail ' + e.textContent); });
         document.querySelectorAll('.pe-over > button span').forEach((e) => { if (e.offsetWidth && e.scrollWidth > e.clientWidth + 1) out.fit.push('button ' + e.textContent); });
         return out;
       });
       checks++;
-      const tag = `${w}${DARK ? ' dark' : ''} ${tab} @${s}`;
+      const tag = `${ws}${DARK ? ' dark' : ''} ${tab} @${s}`;
       if (r.clip.length) fail(`${tag}: clipped ${r.clip.join(', ')}`);
       if (r.over.length) fail(`${tag}: overlap ${r.over.join('; ')}`);
       if (!r.big) fail(`${tag}: the picture is not the largest thing`);
       // a 2:1 picture is as wide as the screen's height lets it be (the cause line stays on screen): at least 80% of the stage
-      if (r.wide < (w >= 900 ? 0.8 : 0.95)) fail(`${tag}: the picture uses only ${Math.round(r.wide * 100)}% of the stage width`);
+      // tablets upright: the square picture is held to the screen height so the cause line stays on screen (Recheck 1), so it may fill a little less of the width
+      if (r.wide < (w >= 900 ? 0.8 : w >= 500 ? 0.85 : 0.95)) fail(`${tag}: the picture uses only ${Math.round(r.wide * 100)}% of the stage width`);
       if (r.scroll > 1) fail(`${tag}: sideways scroll ${r.scroll}px`);
       if (r.fit.length) fail(`${tag}: does not fit ${r.fit.join(', ')}`);
+      if (r.near.length) fail(`${tag}: ${r.near.join('; ')}`);
+      if (r.lineOff > 1) fail(`${tag}: the cause line ends ${Math.round(r.lineOff)} px below the screen`);
       if (w < 641 && r.lines.rows > 2) fail(`${tag}: cause line ${r.lines.rows} rows (${r.lines.t})`);
       heights.push(r.lines.h); if (r.lines.h > 84) console.log(`  tall line ${tag} ${r.lines.h}px: ${r.lines.t}`);
       if (SHOTS) { const pic = await page.$('.pe-main'); shots.push(await pic.screenshot()); }
@@ -151,8 +168,8 @@ for (const w of WIDTHS) {
       if (sharp && shots.length) {
         const meta = await sharp(shots[0]).metadata(), cols = 4, cw = meta.width, ch = meta.height, rows = Math.ceil(shots.length / cols);
         const comp = shots.map((b, i) => ({ input: b, left: (i % cols) * cw, top: Math.floor(i / cols) * ch }));
-        await sharp({ create: { width: cw * cols, height: ch * rows, channels: 3, background: '#ffffff' } }).composite(comp).png().toFile(join(SHOTS, `${tab}-${w}${DARK ? '-dark' : ''}.png`));
-      } else shots.forEach((b, i) => { import('fs').then((fs) => fs.writeFileSync(join(SHOTS, `${tab}-${w}${DARK ? '-dark' : ''}-${i}.png`), b)); });
+        await sharp({ create: { width: cw * cols, height: ch * rows, channels: 3, background: '#ffffff' } }).composite(comp).png().toFile(join(SHOTS, `${tab}-${ws}${DARK ? '-dark' : ''}.png`));
+      } else shots.forEach((b, i) => { import('fs').then((fs) => fs.writeFileSync(join(SHOTS, `${tab}-${ws}${DARK ? '-dark' : ''}-${i}.png`), b)); });
     }
   }
   if (w < 1101 && new Set(heights).size > 1) fail(`${w}: the cause line changes height (${[...new Set(heights)].join(', ')} px)`);

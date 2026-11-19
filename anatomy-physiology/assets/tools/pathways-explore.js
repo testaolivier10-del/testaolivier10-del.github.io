@@ -161,18 +161,18 @@
       return {
         segs: [
           [H('ra', L), H('tri', L)], [H('tri', L), [378, 300], H('rv', L)], [H('rv', L), [418, 325], [438, 290], H('pv', L)],
-          [H('pv', L), [443, 110], [460, 70], [520, 56], [760, 56], [810, 90], [830, 120]],
-          [[830, 120], [820, 170], [830, 230]],
-          [[830, 230], [845, 290], [830, 340], [780, 360], [720, 330], [660, 270], [622, 230], H('la', L)],
+          [H('pv', L), [443, 110], [460, 70], [520, 56], [720, 56], [770, 90], [790, 120]],
+          [[790, 120], [780, 170], [790, 230]],
+          [[790, 230], [805, 290], [790, 340], [745, 362], [700, 336], [660, 280], [628, 232], H('la', L)],
           [H('la', L), H('mit', L)], [H('mit', L), [566, 300], H('lv', L)], [H('lv', L), [520, 325], [500, 290], H('av', L)],
           [H('av', L), [495, 110], [478, 84], [430, 74], [330, 74]],
           [[330, 74], [262, 90], [238, 120], [190, 180], [160, 250], [150, 300]],
-          [[150, 300], [160, 380], [200, 440], [250, 468], [300, 470]],
-          [[300, 470], [330, 450], [340, 350], [345, 280], H('ra', L)]
+          [[150, 300], [160, 380], [200, 440], [236, 468], [270, 466]],
+          [[270, 466], [266, 420], [262, 360], [262, 262], [278, 224], [312, 206], H('ra', L)]
         ],
-        alv: [[802, 150], [852, 142], [810, 196], [862, 190], [846, 244], [800, 246], [878, 236], [858, 288], [812, 290]],
+        alv: [[762, 150], [812, 142], [770, 196], [822, 190], [806, 244], [760, 246], [838, 236], [818, 288], [772, 290]],
         cells: [[95, 240], [215, 238], [95, 330], [210, 330], [105, 150], [110, 412], [45, 230], [45, 320], [165, 62], [45, 150], [45, 70], [105, 70], [45, 410], [60, 490], [130, 500], [205, 420]],
-        trach: [952, 22], lungsAt: [1025, 300], bodyAt: [60, 500], o2At: [760, 170], o2bAt: [60, 280]
+        trach: [912, 22], lungsAt: [995, 300], bodyAt: [60, 500], o2At: [720, 170], o2bAt: [60, 280]
       };
     }
     SCENES.push({
@@ -188,7 +188,7 @@
         var L = E.L, g = geo(L), s = '<defs><radialGradient id="pe-lung" cx="0.45" cy="0.4" r="0.75"><stop offset="0" stop-color="#F9C9CB"/><stop offset="1" stop-color="#E9969C"/></radialGradient>' +
           '<radialGradient id="pe-myo" cx="0.4" cy="0.35" r="0.85"><stop offset="0" stop-color="#D4685A"/><stop offset="0.7" stop-color="#B2463A"/><stop offset="1" stop-color="#86281F"/></radialGradient>' +
           '<linearGradient id="pe-tis" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D5C6"/><stop offset="1" stop-color="#E9BFA9"/></linearGradient></defs>';
-        s += '<rect class="pe-bg" x="0" y="0" width="' + L.w + '" height="' + L.h + '"/>';
+        s += '<rect class="pe-bg" x="-400" y="0" width="' + (L.w + 800) + '" height="' + L.h + '"/>';
         var cells = '';
         g.cells.forEach(function(c, i){ cells += '<g data-r="cell' + i + '"><rect class="pe-tcell" x="' + f1(c[0] - 27) + '" y="' + f1(c[1] - 19) + '" width="54" height="38" rx="14"/><circle class="pe-tnuc" cx="' + f1(c[0] - 6) + '" cy="' + f1(c[1]) + '" r="6"/></g>'; });
         var alv = '';
@@ -210,17 +210,18 @@
           s += vt([[292, 112], [330, 150], [376, 172], [420, 196], [436, 214], [440, 228]], 'is-ox', 18, 5.6);
         } else {
           // body tissue (left), lungs (right)
-          s += '<path class="pe-tissue" d="M0,0 H250 C262,180 262,360 250,540 H0 Z"/>' + cells;
-          s += '<g transform="translate(40,0)"><path class="pe-lung" d="M860,70 C900,80 905,150 900,250 C896,350 890,440 860,470 C800,482 742,470 722,430 C706,380 708,300 716,230 C724,150 760,78 860,70 Z"/>' +
+          s += '<path class="pe-tissue" d="M-400,0 H250 C262,180 262,360 250,540 H-400 Z"/>' + cells;
+          s += '<g><path class="pe-lung" d="M860,70 C900,80 905,150 900,250 C896,350 890,440 860,470 C800,482 742,470 722,430 C706,380 708,300 716,230 C724,150 760,78 860,70 Z"/>' +
             '<path class="pe-lung" d="M930,80 C1000,70 1050,140 1060,240 C1068,340 1060,430 1030,465 C990,476 950,470 935,440 C925,360 922,250 925,170 C926,120 925,92 930,80 Z"/>' +
             '<path class="pe-trach" d="M912,0 V40 M912,40 L888,72 M912,40 L936,72"/><path class="pe-trach-r" d="M904,8 h16 M904,18 h16 M904,28 h16"/></g>' + alv;
-          s += tube([[443, 280], [443, 110], [460, 70], [520, 56], [760, 56], [810, 90], [830, 118]], 'is-de', 24);
-          s += '<path class="pe-cap is-de" d="' + P([[830, 120], [820, 170], [830, 230]]) + '"/><path class="pe-cap is-ox" data-oxat="5" d="' + P([[830, 230], [845, 290], [830, 340]]) + '"/>';
+          s += tube([[443, 280], [443, 110], [460, 70], [520, 56], [720, 56], [770, 90], [790, 118]], 'is-de', 24);
+          s += '<path class="pe-cap is-de" d="' + P([[790, 120], [780, 170], [790, 230]]) + '"/><path class="pe-cap is-ox" data-oxat="5" d="' + P([[790, 230], [805, 290], [790, 340]]) + '"/>';
           s += tube([[495, 280], [495, 110], [478, 84], [430, 74], [330, 74], [262, 90], [238, 120]], 'is-ox', 26, 9.4);
-          s += '<path class="pe-cap is-ox" data-oxat="10.4" d="' + P([[238, 120], [190, 180], [160, 250], [150, 300]]) + '"/><path class="pe-cap is-de" d="' + P([[150, 300], [160, 380], [200, 440], [248, 467]]) + '"/>';
-          s += tube([[248, 467], [300, 470], [330, 450], [340, 350], [345, 280], [352, 236]], 'is-de', 26);
+          s += '<path class="pe-cap is-ox" data-oxat="10.4" d="' + P([[238, 120], [190, 180], [160, 250], [150, 300]]) + '"/><path class="pe-cap is-de" d="' + P([[150, 300], [160, 380], [200, 440], [236, 468]]) + '"/>';
           s += G(L, 'heart', heartBody());
-          s += tube([[830, 340], [780, 360], [720, 330], [660, 270], [622, 230], [606, 210]], 'is-ox', 20, 5.6);
+          // the inferior vena cava runs up outside the heart's wall and opens into the right atrium
+          s += tube([[236, 468], [270, 466], [266, 420], [262, 360], [262, 262], [278, 224], [314, 206]], 'is-de', 26);
+          s += tube([[790, 340], [745, 362], [700, 336], [660, 280], [628, 232], [610, 214]], 'is-ox', 20, 5.6);
         }
         s += '<g data-r="cuts"></g><g data-r="gas"></g>';
         return s;
@@ -243,6 +244,7 @@
         st.bodyX = bump(v, 10.7, 10.88, 11.88, 12.05);
         return st;
       },
+      valves: function(L){ return [['tri', H('tri', L)], ['mit', H('mit', L)], ['pv', H('pv', L)], ['av', H('av', L)]]; },
       fails: function(st){ var f = []; if(st.noAir){ if(st.v >= 4.88 || st.lap) f.push(5); if(st.v >= 10.88 || st.lap) f.push(11); } return f; },
       paint: function(R, st, E){
         function open(g, t, ang){ var a = g.childNodes[0], b = g.childNodes[1], d = t * ang; sa(a, 'transform', 'rotate(' + f1(d) + ' ' + a.getAttribute('d').match(/M([\d.]+),([\d.]+)/).slice(1).join(' ') + ')'); sa(b, 'transform', 'rotate(' + f1(-d) + ' ' + b.getAttribute('d').match(/M([\d.]+),([\d.]+)/).slice(1).join(' ') + ')'); }
@@ -324,7 +326,7 @@
     function rot(p, a){ var c = Math.cos(a), s = Math.sin(a), x = p[0] - KNEE[0], y = p[1] - KNEE[1]; return [KNEE[0] + x * c - y * s, KNEE[1] + x * s + y * c]; }
     // a seated person in profile, facing right, cut to the lower back and the leg; the cord section enlarged beside it
     var LAY = {
-      tall: { w: 600, h: 600, g: { leg: [100, 52, 0.92], cord: [-104, -14, 1] } },
+      tall: { w: 600, h: 600, g: { leg: [86, 86, 0.84], cord: [-104, -14, 1] } },
       wide: { w: 1080, h: 540, g: { leg: [120, 0, 1], cord: [185, 14, 1.25] } }
     };
     var J = [360, 186];            // where the two roots join the spinal nerve (cord coordinates)
@@ -365,10 +367,10 @@
           '<linearGradient id="pe-shorts" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4C5870"/><stop offset="1" stop-color="#394459"/></linearGradient>' +
           '<radialGradient id="pe-wm" cx="0.45" cy="0.4" r="0.7"><stop offset="0" stop-color="#FFFDF7"/><stop offset="1" stop-color="#EDE2CF"/></radialGradient>' +
           '<radialGradient id="pe-gm" cx="0.5" cy="0.5" r="0.6"><stop offset="0" stop-color="#E9C9CF"/><stop offset="1" stop-color="#D5A7B0"/></radialGradient></defs>';
-        s += '<rect class="pe-bg" x="0" y="0" width="' + L.w + '" height="' + L.h + '"/>';
+        s += '<rect class="pe-bg" x="-400" y="0" width="' + (L.w + 800) + '" height="' + L.h + '"/>';
         var leg = '';
         // the chair
-        leg += '<path class="pe-chair" d="M-120,404 H352 a10,10 0 0 1 0,20 H-120 Z"/><path class="pe-chair-leg" d="M300,424 V640 M-60,424 V640"/>';
+        leg += '<path class="pe-chair" d="M-600,404 H352 a10,10 0 0 1 0,20 H-600 Z"/><path class="pe-chair-leg" d="M300,424 V640 M-60,424 V640"/>';
         leg += '<path class="pe-chairback" d="M-138,404 C-146,300 -150,160 -146,-120 L-120,-120 C-124,160 -120,300 -112,404 Z"/>';
         // the lower leg (turns at the knee; its top is round about the knee so it turns cleanly), with the shin bone
         leg += '<g data-r="leg"><path class="pe-skin" d="M360,334 A44,44 0 0 1 448,334 C450,410 448,460 452,494 C470,496 500,500 528,512 C538,520 534,534 520,534 L400,534 C380,532 374,520 372,500 C368,470 362,420 360,334 Z"/>' +
@@ -439,7 +441,7 @@
         sa(R.lig, 'd', 'M' + f1(p0[0]) + ',' + f1(p0[1]) + ' C' + f1(p0[0] + 4 - st.hit * 7) + ',' + f1(p0[1] + 18) + ' ' + f1(p1[0] + 8 - st.hit * 9) + ',' + f1(p1[1] - 22) + ' ' + f1(p1[0]) + ',' + f1(p1[1]));
         sa(R.pat, 'cx', f1(438 + st.kick * 3)); sa(R.pat, 'cy', f1(320 - st.kick * 6));
         var hb = 1 - st.hit;
-        sa(R.hammer, 'transform', 'translate(' + f1(hb * 92) + ',' + f1(hb * 30) + ') rotate(' + f1(hb * 18) + ' 548 500)');
+        sa(R.hammer, 'transform', 'translate(' + f1(hb * 36) + ',' + f1(hb * 30) + ') rotate(' + f1(hb * 26) + ' 548 500)');
         sa(R.quadm, 'class', 'pe-mus' + (st.squeeze > 0.5 ? ' is-on' : ''));
         // the stretch lengthens the muscle a little; the contraction shortens and thickens it (both from the hip end)
         var sx = 1 - st.squeeze * 0.06 + st.stretch * 0.025, sy = 1 + st.squeeze * 0.16 - st.stretch * 0.05;
@@ -529,7 +531,7 @@
       },
       breaks: [
         { id: 'pit', stopV: 2.3, place: function(L){ return L.id === 'wide' ? T(L, [146, 392, 'mag']) : T(L, [196, 434, 'mag']); }, off: function(L){ return L.id === 'wide' ? [-1, 0] : [0, 1]; }, tag: 'Damaged', label: 'Damage', aria: 'Damage the pituitary gland', name: 'Pituitary damaged', step: 3, mark: function(L){ return T(L, [275, 372, 'mag']); } },
-        { id: 'adr', stopV: 3.88, place: function(L){ return T(L, [-74, 258, 'person']); }, off: [-1, 0], tag: 'Damaged', label: 'Damage', aria: 'Damage the adrenal cortex', name: 'Adrenal cortex damaged', step: 4, mark: function(L){ return T(L, [-30, 252, 'person']); } }
+        { id: 'adr', stopV: 3.88, place: function(L){ return L.id === 'wide' ? T(L, [-74, 258, 'person']) : T(L, [-30, 326, 'person']); }, off: function(L){ return L.id === 'wide' ? [-1, 0] : [0, 1]; }, tag: 'Damaged', label: 'Damage', aria: 'Damage the adrenal cortex', name: 'Adrenal cortex damaged', step: 4, mark: function(L){ return T(L, [-30, 252, 'person']); } }
       ],
       take: 'Three glands in a chain, braked by cortisol’s feedback.',
       art: function(E){
@@ -540,7 +542,7 @@
           '<linearGradient id="pe-pants2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4A556B"/><stop offset="0.5" stop-color="#5E6A82"/><stop offset="1" stop-color="#4A556B"/></linearGradient>' +
           '<radialGradient id="pe-liver" cx="0.4" cy="0.35" r="0.8"><stop offset="0" stop-color="#B5574A"/><stop offset="1" stop-color="#7E2F26"/></radialGradient>' +
           '<clipPath id="pe-mag"><circle cx="' + C[0] + '" cy="' + C[1] + '" r="' + RAD + '"/></clipPath></defs>';
-        s += '<rect class="pe-bg" x="0" y="0" width="' + L.w + '" height="' + L.h + '"/>';
+        s += '<rect class="pe-bg" x="-400" y="0" width="' + (L.w + 800) + '" height="' + L.h + '"/>';
         // the person: arms, trunk in a shirt, trousers, neck and head with a face
         var p = '';
         p += '<path class="pe-pants2" d="M-74,392 C-60,388 60,388 74,392 L84,520 L10,520 L0,440 L-10,520 L-84,520 Z"/>';
@@ -650,7 +652,7 @@
         if(st.stop){ name = st.stop.id === 'pit' ? 'CRH' : 'ACTH'; rl = st.stop.id === 'pit' ? 'crh' : 'acth'; }
         if(!(st.k === 6 && st.brake < 0.5 && !st.stop)) out.push({ key: 'cur', text: name, role: rl, at: this.route.at(st.v), side: ['r', 'u', 'd', 'l'], strong: true });
         // glucose stays at the liver, where it is released
-        if(st.glu >= 0.5) out.push({ key: 'glu', text: 'Glucose up', role: 'glu', at: T(L, [-40, 210, 'person']), side: ['l', 'dl', 'd'], lead: true, strong: true });
+        if(st.glu >= 0.5) out.push({ key: 'glu', text: 'Glucose up', role: 'glu', at: T(L, [-46, 196, 'person']), side: ['ul', 'l', 'u'], lead: true, strong: true });
         if(st.stop && st.pile > 0.5) out.push({ key: 'pile', text: st.stop.id === 'pit' ? 'CRH builds up' : 'ACTH builds up', role: st.stop.id === 'pit' ? 'crh' : 'acth', at: st.stop.id === 'pit' ? T(L, [238, 300, 'mag']) : gap(L)[4], side: st.stop.id === 'pit' ? ['l', 'u'] : ['u', 'd'], lead: true, strong: true });
         return out;
       },
@@ -685,8 +687,8 @@
     function role(v){ return v < 0.9 ? 'sig' : v < 1.9 ? 'ca' : v < 4.9 ? 'nt' : v < 6.95 ? 'na' : 'sig'; }
     function post(L){
       // the postsynaptic neuron: its membrane under the cleft, narrowing to the trigger zone and the axon
-      var m = T(L, [0, 352, 'syn'])[1], z = T(L, [0, 0, 'tz']), w = L.w, h = L.h;
-      return 'M0,' + f1(m) + ' H' + f1(z[0] - 150) + ' C' + f1(z[0] - 60) + ',' + f1(m + 4) + ' ' + f1(z[0] - 30) + ',' + f1(z[1] - 70) + ' ' + f1(z[0] - 8) + ',' + f1(z[1] - 22) +
+      var m = T(L, [0, 352, 'syn'])[1], z = T(L, [0, 0, 'tz']), w = L.w + 400, h = L.h;
+      return 'M-400,' + f1(m) + ' H' + f1(z[0] - 150) + ' C' + f1(z[0] - 60) + ',' + f1(m + 4) + ' ' + f1(z[0] - 30) + ',' + f1(z[1] - 70) + ' ' + f1(z[0] - 8) + ',' + f1(z[1] - 22) +
         ' C' + f1(z[0] + 4) + ',' + f1(z[1] - 16) + ' ' + f1(z[0] + 30) + ',' + f1(z[1] - 16) + ' ' + f1(w) + ',' + f1(z[1] - 16) + ' V' + f1(z[1] + 16) +
         ' C' + f1(z[0] + 30) + ',' + f1(z[1] + 16) + ' ' + f1(z[0] + 4) + ',' + f1(z[1] + 16) + ' ' + f1(z[0] - 8) + ',' + f1(z[1] + 24) + ' C' + f1(z[0] - 30) + ',' + f1(z[1] + 50) + ' ' + f1(z[0] - 40) + ',' + f1(h) + ' ' + f1(z[0] - 44) + ',' + f1(h) + ' H0 Z';
     }
@@ -710,18 +712,18 @@
         ];
       },
       breaks: [
-        { id: 'ca', stopV: 0.6, place: function(L){ return T(L, [222, 344, 'syn']); }, off: [0, 1], tag: 'Blocked', label: 'Block', aria: 'Block the calcium channels', name: 'Calcium channels blocked', step: 1, mark: function(L){ return T(L, [222, 318, 'syn']); } },
-        { id: 'rec', stopV: 3.55, place: function(L){ return T(L, [430, 372, 'syn']); }, off: [1, 0], tag: 'Blocked', label: 'Block', aria: 'Block the receptor proteins', name: 'Receptor proteins blocked', step: 4, mark: function(L){ return T(L, [296, 372, 'syn']); } }
+        { id: 'ca', stopV: 0.6, place: function(L){ return L.id === 'wide' ? T(L, [222, 344, 'syn']) : T(L, [198, 340, 'syn']); }, off: [0, 1], tag: 'Blocked', label: 'Block', aria: 'Block the calcium channels', name: 'Calcium channels blocked', step: 1, mark: function(L){ return T(L, [222, 318, 'syn']); } },
+        { id: 'rec', stopV: 3.55, place: function(L){ return L.id === 'wide' ? T(L, [430, 372, 'syn']) : T(L, [358, 392, 'syn']); }, off: function(L){ return L.id === 'wide' ? [1, 0] : [0, 1]; }, tag: 'Blocked', label: 'Block', aria: 'Block the receptor proteins', name: 'Receptor proteins blocked', step: 4, mark: function(L){ return T(L, [296, 372, 'syn']); } }
       ],
       take: 'Electrical, then chemical, then electrical again.',
       art: function(E){
         var L = E.L, s = '<defs><radialGradient id="pe-term" cx="0.45" cy="0.35" r="0.75"><stop offset="0" stop-color="#FDF3E3"/><stop offset="1" stop-color="#F1DDBF"/></radialGradient>' +
           '<linearGradient id="pe-post" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3E4D2"/><stop offset="1" stop-color="#E7CFB4"/></linearGradient>' +
           '<radialGradient id="pe-epsp" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#F2B33D" stop-opacity=".7"/><stop offset="1" stop-color="#F2B33D" stop-opacity="0"/></radialGradient></defs>';
-        s += '<rect class="pe-ecf" x="0" y="0" width="' + L.w + '" height="' + L.h + '"/>';
+        s += '<rect class="pe-ecf" x="-400" y="0" width="' + (L.w + 800) + '" height="' + L.h + '"/>';
         s += '<path class="pe-post" d="' + post(L) + '"/>';
         var z = T(L, [0, 0, 'tz']);
-        s += '<path class="pe-myel" d="M' + f1(z[0] + 26) + ',' + f1(z[1] - 16) + ' h' + f1(L.w - z[0] - 26) + ' v32 h-' + f1(L.w - z[0] - 26) + ' Z"/>';
+        s += '<path class="pe-myel" d="M' + f1(z[0] + 26) + ',' + f1(z[1] - 16) + ' h' + f1(L.w + 400 - z[0] - 26) + ' v32 h-' + f1(L.w + 400 - z[0] - 26) + ' Z"/>';
         s += '<ellipse class="pe-epsp" data-r="epsp" cx="0" cy="0" rx="10" ry="10"/>';
         s += G(L, 'tz', '<path class="pe-tz" data-r="tz" d="M-14,-26 C-4,-14 4,-6 6,0 C4,6 -4,14 -14,26"/>');
         // the threshold bar by the trigger zone: the summed EPSPs, with threshold marked
@@ -868,10 +870,14 @@
     function scale(){ var r = svg.getBoundingClientRect(); return r.width ? r.width / (E.W || W) : 1; }
     /* the composition: wide (2:1) when the stage is a desktop's, tall (1:1) on a phone or an upright tablet */
     function pickLayout(){ return (stage.clientWidth || 0) >= 900 ? 'wide' : 'tall'; }
+    /* on a short wide screen (a laptop) the 2:1 picture would leave plain page at its sides: the crop widens
+       (up to 400 units, half each side) so the picture still fills the stage; the drawing does not move */
     function layout(){
-      var id = pickLayout(), L = cur.layouts[id];
-      L.id = id; E.L = L; E.W = L.w; E.H = L.h;
-      svg.setAttribute('viewBox', '0 0 ' + L.w + ' ' + L.h); pic.setAttribute('data-lay', id);
+      var id = pickLayout(), L = cur.layouts[id], ex = 0;
+      if(id === 'wide'){ var avail = Math.max(300, (window.innerHeight || 800) - 340), asp = (stage.clientWidth || 0) / avail; if(asp > 2) ex = Math.min(400, Math.round(L.h * asp - L.w)); }
+      L.id = id; E.L = L; E.W = L.w + ex; E.H = L.h; E.X0 = -ex / 2;
+      svg.setAttribute('viewBox', f1(E.X0) + ' 0 ' + E.W + ' ' + L.h); pic.setAttribute('data-lay', id);
+      pic.style.maxWidth = id === 'wide' ? 'calc((100vh - 340px) * ' + (E.W / E.H).toFixed(4) + ')' : '';
       if(cur.Lid === id && cur.route) return false;
       cur.Lid = id; cur.L = L; cur.route = new Route(cur.segs(L));
       (cur.breaks || []).forEach(function(b){ b._cut = null; });
@@ -917,9 +923,10 @@
       [reset].concat(pills.map(function(x){ return x.el; })).forEach(function(b){
         if(!b || b.hidden || !b.offsetWidth) return;
         var pr = pic.getBoundingClientRect(), q = b.getBoundingClientRect();
-        out.push([(q.left - pr.left) / k, (q.top - pr.top) / k, (q.right - pr.left) / k, (q.bottom - pr.top) / k]);
+        var x0 = E.X0 || 0;
+        out.push([(q.left - pr.left) / k + x0, (q.top - pr.top) / k, (q.right - pr.left) / k + x0, (q.bottom - pr.top) / k]);
       });
-      if(cue && cue.active()){ var c = pic.querySelector('.tk2-cue'); if(c){ var pr2 = pic.getBoundingClientRect(), q2 = c.getBoundingClientRect(); out.push([(q2.left - pr2.left) / k, (q2.top - pr2.top) / k, (q2.right - pr2.left) / k, (q2.bottom - pr2.top) / k]); } }
+      if(cue && cue.active()){ var c = pic.querySelector('.tk2-cue'); if(c){ var pr2 = pic.getBoundingClientRect(), q2 = c.getBoundingClientRect(); out.push([(q2.left - pr2.left) / k + (E.X0 || 0), (q2.top - pr2.top) / k, (q2.right - pr2.left) / k + (E.X0 || 0), (q2.bottom - pr2.top) / k]); } }
       return (ctrlBox = out);
     }
     function keepOut(){
@@ -941,7 +948,7 @@
           var cx = at[0] + o2[0] * (w / 2 + d * 0.6) * (o2[0] ? 1 : 0), cy = at[1] + o2[1] * (h / 2 + d);
           if(!o2[0]) cx = at[0];
           var b = [cx - w / 2, cy - h / 2, cx + w / 2, cy + h / 2];
-          if(b[0] < 4 || b[2] > E.W - 4 || b[1] < 4 || b[3] > E.H - 4) continue;
+          if(b[0] < (E.X0 || 0) + 4 || b[2] > (E.X0 || 0) + E.W - 4 || b[1] < 4 || b[3] > E.H - 4) continue;
           if(placed.some(function(x){ return inter(x, b, g); })) continue;
           best = { b: b, sd: q.sd, dd: q.dd };
         }
@@ -952,13 +959,13 @@
             for(var a = 0; a < nn; a++){
               var ang = a / nn * Math.PI * 2, cx2 = at[0] + Math.cos(ang) * (rr + w * 0.35 * Math.abs(Math.cos(ang))), cy2 = at[1] + Math.sin(ang) * rr;
               var b2 = [cx2 - w / 2, cy2 - h / 2, cx2 + w / 2, cy2 + h / 2];
-              if(b2[0] < 4 || b2[2] > E.W - 4 || b2[1] < 4 || b2[3] > E.H - 4) continue;
+              if(b2[0] < (E.X0 || 0) + 4 || b2[2] > (E.X0 || 0) + E.W - 4 || b2[1] < 4 || b2[3] > E.H - 4) continue;
               if(placed.some(function(x){ return inter(x, b2, g); })) continue;
               var dd2 = Math.hypot(cx2 - at[0], cy2 - at[1]);
               if(dd2 < bestD){ bestD = dd2; best = { b: b2, sd: 'u', dd: 99, far: true }; }
             }
           }
-          if(!best){ var bx = clamp(at[0] - w / 2, 4, E.W - 4 - w), by = clamp(at[1] - h * 1.6, 4, E.H - 4 - h); best = { b: [bx, by, bx + w, by + h], sd: 'u', dd: 1 }; }
+          if(!best){ var bx = clamp(at[0] - w / 2, (E.X0 || 0) + 4, (E.X0 || 0) + E.W - 4 - w), by = clamp(at[1] - h * 1.6, 4, E.H - 4 - h); best = { b: [bx, by, bx + w, by + h], sd: 'u', dd: 1 }; }
           if(best.far) L = Object.assign({}, L, { lead: true });
         }
         if(!best.far) lastPlace[cur.id + ':' + L.key + ':' + L.text] = { sd: best.sd, dd: best.dd };
@@ -1025,7 +1032,7 @@
       pills.forEach(function(x){ x.el.remove(); });
       pills = (cur.breaks || []).map(function(b){
         var el = document.createElement('button'); el.type = 'button'; el.className = 'pe-cutb';
-        el.setAttribute('aria-label', b.aria);
+        el.setAttribute('aria-label', b.aria); el.setAttribute('data-b', b.id);
         el.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.1 8.1 20 20M8.1 15.9 20 4"/></svg><span>' + esc(b.label) + '</span>';
         el.addEventListener('click', function(){ breakIt(b); });
         over.appendChild(el);
@@ -1044,7 +1051,7 @@
         x.el.disabled = !!on;
         x.el.classList.toggle('is-new', show && !cur.br && !cur.pillsSeen);
         var off = typeof x.b.off === 'function' ? x.b.off(E.L) : (x.b.off || [0, -1]);
-        x.el.style.left = (p[0] * k) + 'px'; x.el.style.top = (p[1] * k) + 'px';
+        x.el.style.left = ((p[0] - (E.X0 || 0)) * k) + 'px'; x.el.style.top = (p[1] * k) + 'px';
         x.el.setAttribute('data-side', off[1] < 0 ? 'up' : off[1] > 0 ? 'down' : off[0] < 0 ? 'left' : 'right');
       });
     }
@@ -1081,14 +1088,15 @@
       b._cut = { key: key, v: +v.toFixed(2) };
       return b._cut.v;
     }
+    function geoTarget(b){ var p = placeOf(b); return p; }
     function breakAt(b){ return b.mark ? b.mark(E.L) : b.pass ? placeOf(b) : cur.route.at(cutV(b)); }
     function placeOf(b){ return typeof b.place === 'function' ? b.place(E.L) : b.place; }
     function makeHandle(){
       if(handle){ handle.el.remove(); handle = null; }
       handle = K.handle(layer, { key: 'anp-pathways-knob', label: 'Move ' + cur.token + ' along the ' + cur.tab.toLowerCase(), value: view.target, min: 0, max: cur.last, step: 1, chip: false,
-        at: function(v){ return cur.route.at(v); },
+        at: function(v){ var q = cur.route.at(v); return [q[0] - (E.X0 || 0), q[1]]; },
         dir: function(v){ return cur.route.dir(v); },
-        pick: function(x, y, v){ var m = lim(), r = cur.route.near(x, y, Math.max(0, v - 0.6), Math.min(m, v + 0.6)); return r ? Math.min(r.v, m) : null; },
+        pick: function(x, y, v){ x += E.X0 || 0; var m = lim(), r = cur.route.near(x, y, Math.max(0, v - 0.6), Math.min(m, v + 0.6)); return r ? Math.min(r.v, m) : null; },
         keys: function(v, key){
           var m = lim();
           if(key === 'ArrowRight' || key === 'ArrowUp' || key === 'PageUp') return Math.min(m, Math.floor(v + 1e-6) + 1);
@@ -1110,7 +1118,7 @@
     // a press on the route away from the knob: the token goes there (seen travelling), and the drag goes on
     svg.addEventListener('pointerdown', function(e){
       if(!handle || (e.pointerType === 'mouse' && e.button !== 0)) return;
-      var r = svg.getBoundingClientRect(), k = scale(), x = (e.clientX - r.left) / k, y = (e.clientY - r.top) / k;
+      var r = svg.getBoundingClientRect(), k = scale(), x = (e.clientX - r.left) / k + (E.X0 || 0), y = (e.clientY - r.top) / k;
       var hit = cur.route.near(x, y, 0, lim());
       if(!hit || hit.d > 26 / k) return;
       hideCue(true); tourDid('drag');
@@ -1199,7 +1207,7 @@
     /* ---- the first visit cue and "Show me how" */
     function makeCue(){
       var p = cur.route.at(view.target);
-      cue = K.cue(layer, { key: 'anp-pathways', text: cur.cue, side: p[0] > E.W * 0.55 ? 'left' : 'right', at: function(){ var q = cur.route.at(view.target); return [q[0], q[1]]; } });
+      cue = K.cue(layer, { key: 'anp-pathways', text: cur.cue, side: p[0] - (E.X0 || 0) > E.W * 0.55 ? 'left' : 'right', at: function(){ var q = cur.route.at(view.target); return [q[0] - (E.X0 || 0), q[1]]; } });
       cue.show(); ctrlDirty();
       placeLabels(cur.labels(cur.state(view.v, cur.br), E));
       setTimeout(function(){ if(cue && cue.active()){ ctrlDirty(); draw(); } }, 450);   // once the cue has settled, labels move clear of it
@@ -1268,6 +1276,9 @@
       _break: function(id){ var b = (cur.breaks || []).filter(function(x){ return x.id === id; })[0]; if(b){ try{ localStorage.setItem('pe-end:' + cur.id, '1'); }catch(e){} breakIt(b); } },
       _reset: function(){ reset.click(); },
       _lim: function(){ return lim(); },
+      _targets: function(){ return (cur.breaks || []).map(function(b){ return { id: b.id, at: b.mark ? b.mark(E.L) : b.pass ? geoTarget(b) : cur.route.at(b.cutMin || b.stopV) }; }); },
+      _x0: function(){ return E.X0 || 0; },
+      _valves: function(){ return cur.valves ? cur.valves(E.L) : []; },
       _st: function(){ return { st: lastSt, words: cur.words(lastSt).map(function(p){ return p.t; }), labels: [].map.call(labs.querySelectorAll('.pe-lab'), function(g){ return g.getAttribute('data-lab'); }), tok: tok.getAttribute('class') }; },
       _frame: function(v){ if(raf){ cancelAnimationFrame(raf); raf = 0; } view.v = view.target = cur.v = v; if(handle) handle.value(v, false); draw(); }   // the frame tests draw one moment
     };

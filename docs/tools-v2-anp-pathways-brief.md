@@ -242,3 +242,33 @@ every screen; p95 33 to 100 ms, measured while the 2-core machine ran other jobs
 is not a clean number; the trail is now drawn once and revealed by its dash, so a frame rebuilds no path. Shots:
 `/mnt/user-data/outputs/anp-pathways-v2/shots/` (`11-break-*` for every break at 390 and 1440); preview regenerated.
 
+
+## Recheck 1 (2026-11-18)
+
+Three must fix items and five should fix items from the reviewer's recheck, all fixed.
+
+- **Wide heart vena cava (science).** On screens 1024 and wider the vena cava joined the bottom of the right ventricle,
+  so the blood cell crossed the shut tricuspid valve backwards. It now runs outside the heart wall up into the right
+  atrium, as the phone layout does. New frame check: the scene lists its four valves (`_valves()`), and at every frame
+  the cell may only be within 10 units of a valve while that valve is open (the check sees the cell pass all four).
+- **Synapse neighbours.** The two neighbouring terminals never lit because the CSS rule was `g.is-on > .pe-term2` and
+  the class sits on the path. Now `.pe-term2.is-on`. New frame check: whenever the summed EPSPs show, both neighbour
+  terminals are lit and drawn in a different fill from an unlit one (so all three synapses show).
+- **Break buttons beside their part.** On phones the adrenal Damage button sat by the pituitary; it now sits below the
+  kidneys by the adrenal cortex. The receptor Block button moved off the threshold bar and the calcium Block button moved
+  left so the two never touch. New sweep check: each shown break button's nearest drawn target (`_targets()`) is the
+  part it breaks, at every width.
+- **Short laptop screens.** The sweep now runs 1366 x 768 and 1280 x 720. On a short wide screen the picture's view
+  box widens (up to 400 units of background, `X0`) instead of the picture shrinking, so it stays at least 80% of the
+  stage width; every world to screen mapping subtracts `X0`.
+- **Upright iPad.** The square picture is held to `100vh - 360px`, so the cause line is on screen at 768 x 1024 (new
+  sweep check at every width). Upright tablets now need 85% of the stage width for the picture, not 95%; phones keep 95%.
+- **Phone reflex.** The leg is drawn a little smaller and the hammer pulls back less, so the foot and hammer stay inside
+  the stage.
+- **Hormones label.** "Glucose up" moved up and left, off the adrenal.
+- **Wide heart lungs.** The lungs moved left so the second lung is no longer cut by the stage.
+
+Checks rerun: sweep at 360, 390, 430, 600, 768, 820, 1024, 1280, 1440, 1920, 1366 x 768 and 1280 x 720, light and dark,
+one width per process: 0 failures. Frame test at 360, 390 and 1440: 6,199 frames each, 0 failures. Interactions at
+1440, 390 and 1440 dark: all pass. A&P tests 55 pass; check-anp-content, build-anp, apcalc and apmacro `--check`,
+check-site, check-weight all clean; check-tool-use (local copy of the list with this tool on frame v2) clean.
