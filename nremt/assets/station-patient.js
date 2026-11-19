@@ -1410,7 +1410,7 @@
         else { try{ var b = p.getBBox(); p.__a = [b.x + b.width / 2, b.y + b.height / 2]; }catch(e){ p.__a = [0, 0]; } }
         p.__kmax = +(p.getAttribute('data-kmax') || 3.2);
       }
-      var k = Math.max(1, 11.5 / (p.__fs * sc)), a = p.__a;
+      var k = Math.max(1, 12 / (p.__fs * sc)), a = p.__a;
       var off = k > p.__kmax || (self.opts.plateFilter && !self.opts.plateFilter(p));
       p.style.visibility = off ? 'hidden' : '';
       k = Math.min(k, p.__kmax);

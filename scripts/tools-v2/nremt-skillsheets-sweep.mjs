@@ -85,7 +85,12 @@ async function open(w, dark, opts = {}) {
 const S = page => page.evaluate(() => window.NremtSkillExplore.last._state());
 async function station(page, k) { await page.evaluate(k => window.NremtSkillExplore.last.show(k), k); await page.waitForTimeout(500); }
 async function tap(page, i) { await page.evaluate(i => document.querySelector(`.ssx-step[data-i="${i}"]`).click(), i); }
-async function settle(page) { await page.waitForTimeout(2300); }
+// the camera waits 1.4 s on a step, then moves for 0.65 s: wait past both, then until it has really stopped
+async function settle(page) {
+  await page.waitForTimeout(2200);
+  for (let i = 0; i < 40; i++) { if (!await page.evaluate(() => { const P = window.NremtSkillExplore.last.patient(); return !!(P && P.raf); })) break; await page.waitForTimeout(100); }
+  await page.waitForTimeout(150);
+}
 
 /* ---- the layout checks, run on one state */
 async function measure(page) {
