@@ -135,7 +135,8 @@
           pic.classList.remove('is-swap');
           setTimeout(function(){
             if(token !== swapN || !spots) return;
-            spots.pick(first, 'set');
+            // a part the student already tapped while the picture faded in stays named
+            if(!spots.picked()) spots.pick(first, 'set');
             if(user) say(sp.tab + '. ' + items.length + ' parts to name.');
             if(onScreen && !started){ started = true; makeCue(); }
           }, K.reduced() ? 60 : 240);

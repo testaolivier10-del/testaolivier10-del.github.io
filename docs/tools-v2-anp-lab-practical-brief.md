@@ -244,7 +244,8 @@ practical stopping, reduced motion, the locked state, ten deep links, no console
 
 Should fix:
 - On a tab change the picture fades in first; the pins fade in with it and the card and the cause line open once it
-  is drawn (about 0.24 s; reduced motion 0.06 s).
+  is drawn (about 0.24 s; reduced motion 0.06 s). A part tapped during the fade stays named (the sweep caught the
+  opening card replacing it once at 820).
 - Tap cost: each card is measured once per part and picture width, the far fallback places are scored only when no
   near place is clear, the halo restarts on the next frame instead of forcing a layout, and the picture and the line
   under it are layout and paint containers (a tap re-lays out only them). CPU x4, a tap every 0.4 s: p95 frame 33 ms
