@@ -278,16 +278,18 @@
       // a flat puddle on the floor under the outer thigh (review 2026-11: a round blob beside the leg read as the wound)
       var pool = el('g', { class:'sp-pool', transform:'translate(150 872) scale(1.45 0.62)', opacity:0.82 }, P.under);
       P.poolG = el('g', {}, pool);
-      el('path', { d:'M-62 0 C-66 -34 -26 -60 10 -52 C36 -46 52 -20 48 10 C44 40 4 60 -28 52 C-50 46 -60 24 -62 0 Z', fill:'url(#' + u + 'Pool)', filter:'url(#' + u + 'Rag)', transform:'scale(1 1.25)' }, P.poolG);
+      el('path', { d:'M-62 0 C-66 -34 -26 -60 10 -52 C36 -46 52 -20 48 10 C44 40 4 60 -28 52 C-50 46 -60 24 -62 0 Z', fill:'url(#' + u + 'Pool)', transform:'scale(1 1.25)' }, P.poolG);
+      [[-58, -18, 9], [-40, 40, 8], [30, 44, 10], [46, -18, 8], [0, -50, 9], [-60, 18, 7]].forEach(function(b){
+        el('ellipse', { cx:b[0], cy:b[1] * 1.25, rx:b[2], ry:b[2] * 0.8, fill:'#8f1316' }, P.poolG); });
       el('ellipse', { cx:-16, cy:-18, rx:16, ry:6, fill:'#fff', opacity:0.22, transform:'rotate(-18 -16 -18)' }, P.poolG);
 
       var o = P.over;
       // the wound and the blood running off the thigh
-      P.bleed = el('g', { class:'sp-bleed' }, o);
+      P.bleed = el('g', { class:'sp-bleed' }, P.anim);
       var runs = ['M190 798 C176 806 156 812 138 820', 'M182 800 C170 816 154 828 138 840', 'M194 802 C182 822 166 840 146 856'];
       runs.forEach(function(dd){ el('path', { d:dd, stroke:'#a52a24', 'stroke-width':6.5, 'stroke-linecap':'round', fill:'none', opacity:0.55 }, P.bleed); });
       runs.forEach(function(dd, i){ el('path', { d:dd, class:'sp-run sp-run' + i }, P.bleed); });
-      var wg = el('g', { transform:'translate(' + w[0] + ' ' + w[1] + ') rotate(-24) scale(1.25)' }, o);
+      var wg = el('g', { transform:'translate(' + w[0] + ' ' + w[1] + ') rotate(-24) scale(1.25)' }, P.anim);
       el('path', { d:'M-20 0 Q-6 -8 0 -7 Q10 -7 20 0 Q8 8 0 7 Q-10 8 -20 0 Z', fill:'#b54a40', opacity:0.55, transform:'scale(1.35 1.7)' }, wg);
       el('path', { d:'M-19 0 Q-6 -6 0 -5.5 Q10 -6 19 0 Q8 6.5 0 6 Q-10 6.5 -19 0 Z', fill:'url(#' + u + 'Wound)' }, wg);
       P.gleam = el('ellipse', { cx:-3, cy:-1.5, rx:7, ry:1.6, fill:'#ffd9d0', opacity:0.5, class:'sp-gleam' }, wg);
@@ -315,7 +317,7 @@
       P.tqRod = el('g', {}, P.tq);
 
       // oxygen: a non-rebreather on the face
-      P.nrb = el('g', { class:'sp-item' }, o);
+      P.nrb = el('g', { class:'sp-item' }, P.anim);
       nrb(P.nrb, u);
 
       // the blanket, folded back off the injured thigh so the tourniquet stays in sight
@@ -336,6 +338,8 @@
       var hem = el('g', { mask:'url(#' + u + 'Cloth)' }, P.blanket);
       el('path', { d:'M30 263 Q240 237 450 263', stroke:'#b6cbdc', 'stroke-width':10, fill:'none' }, hem);
       el('path', { d:'M246 1200 L246 704 Q200 672 150 690 Q100 700 30 690', stroke:'#9db7cc', 'stroke-width':8, fill:'none' }, hem);
+      // drawn once into a picture: no live filter, mask or pattern to repaint while it is on (recheck 1)
+      bakeLayer(P, P.blanket, [-20, 200, 520, 1030], 1.6);
     },
 
     update:function(P, st){
@@ -360,7 +364,7 @@
         var cx = 178;
         el('rect', { x:cx - 34, y:y - 5, width:68, height:10, rx:5, fill:'url(#' + P.uid + 'Rod)', filter:'url(#' + P.uid + 'Drop)', transform:'rotate(-14 ' + cx + ' ' + y + ')' }, P.tqRod);
         el('rect', { x:cx - 11, y:y - 15, width:22, height:30, rx:5, fill:'#22282b', stroke:'#4d575c', 'stroke-width':1.2 }, P.tqRod);
-        var tag = el('g', { transform:'translate(' + (cx + 22) + ' ' + (y - 34) + ') rotate(-6)' }, P.tqRod);
+        var tag = el('g', { class:'sp-plate', transform:'translate(' + (cx + 22) + ' ' + (y - 34) + ') rotate(-6)' }, P.tqRod);
         el('rect', { x:0, y:0, width:44, height:20, rx:3, fill:'#fffdf4', stroke:'#b9b39a', 'stroke-width':1, filter:'url(#' + P.uid + 'Drop)' }, tag);
         el('text', { x:22, y:14, 'text-anchor':'middle', class:'sp-tag' }, tag).textContent = 'TQ ' + clock(st.tqAt || 0);
         if(!tq.stops) el('circle', { cx:cx, cy:y, r:26, class:'sp-wrongring' }, P.tqRod);
@@ -376,14 +380,16 @@
     // the parts that move with the clock: the pool, the stain, the pallor
     flow:function(P, st){
       var s = P.state;
-      var k = Math.min(1.15, 0.5 + (st.bleedSec || 0) / 90);
-      P.poolG.setAttribute('transform', 'scale(' + k.toFixed(3) + ')');
+      // in steps of 0.02 (and the pallor below in steps of 0.03): the picture changes when the eye can see it
+      var k = Math.round(Math.min(1.15, 0.5 + (st.bleedSec || 0) / 90) * 50) / 50;
+      if(P.poolG.getAttribute('transform') !== 'scale(' + k.toFixed(2) + ')') P.poolG.setAttribute('transform', 'scale(' + k.toFixed(2) + ')');
       var soak = has(st.done, 'pressure') ? Math.min(1, 0.35 + (st.soakSec || 0) / 40) : 0;
       P.stain.setAttribute('opacity', soak.toFixed(2));
       P.stain.setAttribute('transform', 'scale(' + (0.6 + 0.4 * soak).toFixed(2) + ')');
       // the examiner reports hypoperfusion once the tourniquet is on; uncontrolled bleeding gets there by itself
       var pallor = Math.min(0.62, (st.bleedSec || 0) / 160 + (has(st.done, 'tq') ? 0.3 : 0));
-      P.pale.setAttribute('opacity', pallor.toFixed(2));
+      var pq = (Math.round(pallor / 0.03) * 0.03).toFixed(2);
+      if(P.pale.getAttribute('opacity') !== pq) P.pale.setAttribute('opacity', pq);
       s.pallor = pallor;
     },
 
@@ -409,8 +415,8 @@
     misses:function(st){
       var d = st.done, m = [], w = L.wound;
       var stopped = has(d, 'tq') && (!st.tq || st.tq.stops);
-      if(!has(d, 'bsi')) m.push({ key:'bsi', x:w[0] - 40, y:w[1] - 40, sev:'bad', text:'No gloves: BSI was never taken or voiced, so these hands are bare (a critical criterion).' });
-      else if(touchedBare(BLEEDING, d)) m.push({ key:'bsi', x:w[0] - 40, y:w[1] - 40, sev:'bad', text:'BSI came after you had touched the patient: the first contact was bare-handed.' });
+      if(!has(d, 'bsi')) m.push({ key:'bsi', x:w[0] + 46, y:w[1] + 34, sev:'bad', text:'No gloves: BSI was never taken or voiced, so these hands are bare (a critical criterion).' });
+      else if(touchedBare(BLEEDING, d)) m.push({ key:'bsi', x:w[0] + 46, y:w[1] + 34, sev:'bad', text:'BSI came after you had touched the patient: the first contact was bare-handed.' });
       if(!stopped){
         var why = has(d, 'tq') ? 'the tourniquet is not where it can stop it (' + st.tq.kind + ')'
           : has(d, 'pressure') ? 'direct pressure alone did not stop it and no tourniquet followed'
@@ -475,6 +481,8 @@
         did:'One breath every 5 to 6 seconds, each just enough to make the chest rise.', cue:'How would you know the volume is adequate? (Watch for chest rise.)' }
     ],
     focus:{ full:[60, -40, 360, 560], upper:[70, -40, 340, 470], neck:[140, 40, 200, 230], mouth:[160, 30, 160, 170], face:[120, -20, 240, 280], bvm:[100, -250, 280, 470], bvmchest:[40, -260, 400, 800] },
+    // once the bag is out to squeeze, a phone's picture keeps the bag and the chest in view (review round 1)
+    camFor:function(P, key){ return !P.lie && P.sq && !P.sq.hidden && /^(full|upper|neck|mouth|face)$/.test(key) ? 'bvmchest' : null; },
     notes:[
       '<b>Suction time.</b> The sheet fails &ldquo;excessive and prolonged&rdquo; suctioning without naming a number; no more than about 15 seconds in an adult is what most programs teach.',
       '<b>Room air first.</b> The sheet allows the first breaths before oxygen is connected, as long as ventilation starts within 30 seconds of suctioning; some programs have you connect oxygen before the first breath.',
@@ -695,7 +703,7 @@
        spec.draw(P)     builds the layers: P.lay[stepId] is shown once ticked
        spec.paint(P,st) anything that depends on more than one step */
   function badge(parent, x, y, text, kind){
-    var g = el('g', { class:'sp-badge sp-badge--' + (kind || 'ok'), transform:'translate(' + x + ' ' + y + ')' }, parent);
+    var g = el('g', { class:'sp-badge sp-plate sp-badge--' + (kind || 'ok'), transform:'translate(' + x + ' ' + y + ')' }, parent);
     var w = 12 + text.length * 6.9;
     el('rect', { x:-w / 2, y:-10, width:w, height:20, rx:10 }, g);
     el('text', { x:0, y:4, 'text-anchor':'middle' }, g).textContent = text;
@@ -761,6 +769,35 @@
       return m;
     };
     return spec;
+  }
+  /* The log roll, animated (review round 1): the patient rolls onto their side, away from the board, the board
+     slides in under them, and they roll back onto it (taken back: the same in reverse, the board slides out to
+     beside them). The roll is the body narrowing about its long axis, as seen from above. */
+  function rollBoard(P, on){
+    var bu = P.lay.boardUnder, bs = P.lay.board, dx = P.boardDx || 332;
+    cancelAnimationFrame(P.rollRaf);
+    var body = [P.shadowLayer, P.skinLayer, P.over];
+    function end(){
+      P.rolling = false; P.rollRaf = 0;
+      body.forEach(function(g){ if(g) g.removeAttribute('transform'); });
+      bu.removeAttribute('transform'); bs.style.visibility = '';
+      P.def.paint(P, P.st);
+    }
+    P.rollEnd = function(){ cancelAnimationFrame(P.rollRaf); end(); };
+    if(reduced() || !P.ready){ end(); return; }
+    P.rolling = true;
+    bs.style.visibility = 'hidden';
+    P.show(bu, true);
+    var t0 = performance.now(), dur = 1200;
+    (function step(){
+      var k = Math.min(1, (performance.now() - t0) / dur), r = Math.sin(Math.PI * k);
+      var p = Math.max(0, Math.min(1, (k - 0.22) / 0.5)); p = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+      bu.setAttribute('transform', 'translate(' + (dx * (on ? 1 - p : p)).toFixed(1) + ' 0)');
+      var tf = 'translate(' + (-34 * r).toFixed(1) + ' 0) translate(240 0) scale(' + (1 - 0.24 * r).toFixed(3) + ' 1) translate(-240 0)';
+      body.forEach(function(g){ if(g) g.setAttribute('transform', tf); });
+      if(k < 1){ P.rollRaf = requestAnimationFrame(step); return; }
+      end();
+    })();
   }
   var COMMON_NOTE = 'Wording and order vary between program sheets, so practice with the one you will be tested on.';
 
@@ -877,10 +914,10 @@
 
   /* ---- spinal immobilization, supine (E212): the long board from above --------- */
   var SUPINE = station({
-    key:'supine', match:/supine/i,
+    key:'supine', match:/supine/i, scene:'road', arms:8,
     intro:'Adult, lying on their back with a suspected spinal injury. You are the one directing; your partner is at the head.',
-    full:[-10, -40, 500, 1260],
-    focus:{ full:[-10, -40, 500, 1260], head:[110, -30, 260, 300], limbs:[-10, 500, 500, 720], torso:[40, 180, 400, 600], legs:[60, 600, 360, 600] },
+    full:[-10, -40, 750, 1300],
+    focus:{ full:[-10, -40, 750, 1300], head:[110, -30, 260, 300], limbs:[-10, 500, 500, 720], torso:[40, 180, 400, 600], legs:[60, 600, 360, 600] },
     steps:[
       { id:'bsi', text:'Take or verbalize BSI / PPE precautions', critical:false, focus:'full', at:[330, 400], did:'Gloves on, eye protection verbalized.' },
       { id:'manual', touch:true, text:'Direct your partner to hold the head in a neutral, in-line position', critical:true, focus:'head', at:[240, 60], chip:'Manual in-line',
@@ -910,16 +947,26 @@
     ],
     draw:function(P){
       var u = P.uid;
-      // the board under the patient
-      var bd = el('g', { class:'sp-item' }, P.under); P.lay.boardUnder = bd;
-      el('rect', { x:120, y:-20, width:240, height:1240, rx:60, fill:'#e9b64a', stroke:'#a8781e', 'stroke-width':3 }, bd);
-      for(var i = 0; i < 7; i++) el('rect', { x:132, y:60 + i * 170, width:18, height:44, rx:8, fill:'#a8781e', opacity:0.55 }, bd), el('rect', { x:330, y:60 + i * 170, width:18, height:44, rx:8, fill:'#a8781e', opacity:0.55 }, bd);
-      // the board waiting beside the patient
-      el('rect', { x:400, y:120, width:70, height:1000, rx:28, fill:'#e9b64a', stroke:'#a8781e', 'stroke-width':2.5, opacity:0.9 }, P.lay.board);
+      /* the long board: the same board waits beside the patient ("Board alongside") and slides under them on the log
+         roll (rollBoard); drawn opaque, clear of the arm */
+      function boardAt(parent, x){
+        var b = el('g', {}, parent);
+        el('rect', { x:x + 6, y:-10, width:300, height:1250, rx:66, fill:'#0d1310', opacity:0.3, filter:'url(#' + u + 'Soft)' }, b);
+        el('rect', { x:x, y:-20, width:300, height:1250, rx:66, fill:'#e9b64a', stroke:'#a8781e', 'stroke-width':3 }, b);
+        el('rect', { x:x + 14, y:-6, width:272, height:1222, rx:56, fill:'none', stroke:'#f6d07a', 'stroke-width':4, opacity:0.7 }, b);
+        for(var i = 0; i < 7; i++) el('rect', { x:x + 14, y:60 + i * 170, width:20, height:46, rx:8, fill:'#a8781e', opacity:0.6 }, b), el('rect', { x:x + 266, y:60 + i * 170, width:20, height:46, rx:8, fill:'#a8781e', opacity:0.6 }, b);
+        return b;
+      }
+      var bd = el('g', { class:'sp-item sp-board' }, P.under); P.lay.boardUnder = bd;
+      // the board is 300 units (about 17 in) wide: the arms at the sides lie on it, hands included
+      boardAt(bd, 90);
+      boardAt(P.lay.board, 432);
+      P.boardDx = 342;
       // hands holding the head from the top
       hand(P.lay.manual, { uid:u, x:196, y:40, rot:200, s:0.62 });
       hand(P.lay.manual, { uid:u, x:284, y:40, rot:160, s:0.62, flip:true });
-      [[50, 655], [430, 655], [176, 1160], [304, 1160]].forEach(function(p){ pulseAt(P.lay.pms1, p[0], p[1]); });
+      var limbs = [[50, 655], [430, 655], [176, 1160], [304, 1160]].map(function(p){ return posePt(P.def, p[0], p[1]); });
+      limbs.forEach(function(p){ pulseAt(P.lay.pms1, p[0], p[1]); });
       badge(P.lay.pms1, 240, 1110, 'All four: present', 'ok');
       el('path', { d:'M206 146 Q240 160 274 146 L282 204 Q240 218 198 204 Z', fill:'#e8c77a', stroke:'#9a7a2e', 'stroke-width':1.6 }, P.lay.collar);
       el('rect', { x:231, y:168, width:18, height:18, rx:4, fill:'#5b4a2a', opacity:0.55 }, P.lay.collar);
@@ -932,23 +979,29 @@
       el('rect', { x:284, y:40, width:28, height:96, rx:8, fill:'#e05b4b', stroke:'#9b2f24', 'stroke-width':1.4 }, P.lay.head);
       band(P.lay.head, 240, 56, 170, 12, 'sp-tape'); band(P.lay.head, 240, 170, 170, 12, 'sp-tape');
       band(P.lay.legs, 240, 800, 210, 16, 'sp-strapx'); band(P.lay.legs, 240, 980, 190, 16, 'sp-strapx');
-      band(P.lay.arms, 240, 640, 420, 14, 'sp-strapx');
-      [[50, 655], [430, 655], [176, 1160], [304, 1160]].forEach(function(p){ pulseAt(P.lay.pms2, p[0], p[1]); });
+      // the arms strap: across both forearms and the board, the arms at the sides
+      band(P.lay.arms, 240, 600, 296, 16, 'sp-strapx');
+      limbs.forEach(function(p){ pulseAt(P.lay.pms2, p[0], p[1]); });
       badge(P.lay.pms2, 240, 1110, 'Rechecked: present', 'ok');
     },
     paint:function(P, st){
-      P.show(P.lay.boardUnder, has(st.done, 'roll'));
-      P.show(P.lay.board, has(st.done, 'board') && !has(st.done, 'roll'));
+      var rolled = has(st.done, 'roll');
+      if(P.rolledOn == null) P.rolledOn = rolled;
+      else if(rolled !== P.rolledOn){ P.rolledOn = rolled; rollBoard(P, rolled); }
+      if(!P.rolling){
+        P.show(P.lay.boardUnder, rolled);
+        P.show(P.lay.board, has(st.done, 'board') && !rolled);
+      }
       P.show(P.lay.pms1, has(st.done, 'pms1') && !has(st.done, 'pms2'));
     }
   });
 
   /* ---- spinal immobilization, seated (E211): a vest-type device (KED) ---------- */
   var SEATED = station({
-    key:'seated', match:/seated/i,
+    key:'seated', upright:true, match:/seated/i, scene:'car', seat:true, arms:5,
     intro:'Adult, sitting in a car seat after a crash, suspected spinal injury; seen from the front. Your partner holds the head from behind.',
-    full:[-10, -40, 500, 900],
-    focus:{ full:[-10, -40, 500, 900], head:[110, -30, 260, 300], torso:[60, 160, 360, 520], limbs:[-10, 500, 500, 720] },
+    full:[-10, -60, 500, 1150],
+    focus:{ full:[-10, -60, 500, 1150], head:[110, -30, 260, 300], torso:[60, 160, 360, 520], limbs:[-10, 480, 500, 620] },
     steps:[
       { id:'bsi', text:'Take or verbalize BSI / PPE precautions', critical:false, focus:'full', at:[330, 400], did:'Gloves on, eye protection verbalized.' },
       { id:'manual', touch:true, text:'Direct your partner to hold the head neutral and in line', critical:true, focus:'head', at:[240, 60], chip:'Manual in-line',
@@ -982,7 +1035,8 @@
       P.under.appendChild(v);
       hand(P.lay.manual, { uid:u, x:196, y:40, rot:200, s:0.62 });
       hand(P.lay.manual, { uid:u, x:284, y:40, rot:160, s:0.62, flip:true });
-      [[50, 655], [430, 655], [176, 1160], [304, 1160]].forEach(function(p){ pulseAt(P.lay.pms1, p[0], p[1]); });
+      var limbs = [[50, 655], [430, 655], [176, 1160], [304, 1160]].map(function(p){ return posePt(P.def, p[0], p[1]); });
+      limbs.forEach(function(p){ pulseAt(P.lay.pms1, p[0], p[1]); });
       el('path', { d:'M206 146 Q240 160 274 146 L282 204 Q240 218 198 204 Z', fill:'#e8c77a', stroke:'#9a7a2e', 'stroke-width':1.6 }, P.lay.collar);
       // torso flaps wrapping the chest, three colored straps
       el('path', { d:'M104 240 Q150 250 170 300 L176 600 L104 600 Z M376 240 Q330 250 310 300 L304 600 L376 600 Z', fill:'#2f6b5a', opacity:0.92 }, P.lay.torso);
@@ -992,15 +1046,16 @@
       el('ellipse', { cx:240, cy:60, rx:52, ry:56, fill:'#d5e6ee', opacity:0.95 }, P.lay.headpad); P.under.appendChild(P.lay.headpad);
       el('path', { d:'M150 30 L196 40 L196 150 L150 160 Z M330 30 L284 40 L284 150 L330 160 Z', fill:'#2f6b5a' }, P.lay.head);
       band(P.lay.head, 240, 56, 180, 12, 'sp-tape'); band(P.lay.head, 240, 170, 180, 12, 'sp-tape');
-      badge(P.lay.move, 240, 860, 'Pivot onto the long board', 'go');
-      [[50, 655], [430, 655], [176, 1160], [304, 1160]].forEach(function(p){ pulseAt(P.lay.pms2, p[0], p[1]); });
+      // a step said out loud, not acted out: the words say so
+      badge(P.lay.move, 240, 860, 'Said: pivot onto a long board', 'go');
+      limbs.forEach(function(p){ pulseAt(P.lay.pms2, p[0], p[1]); });
     },
     paint:function(P, st){ P.show(P.lay.pms1, has(st.done, 'pms1') && !has(st.done, 'pms2')); }
   });
 
   /* ---- oxygen by non-rebreather (E204): the tank, the regulator, the mask ------ */
   var OXYGEN = station({
-    key:'oxygen', match:/rebreather|oxygen admin/i,
+    key:'oxygen', upright:true, match:/rebreather|oxygen admin/i, scene:'room', seat:true,
     intro:'Adult, sitting up, short of breath; the oxygen cylinder is beside them.',
     full:[60, -60, 460, 560],
     focus:{ full:[60, -60, 460, 560], tank:[280, 40, 220, 420], face:[120, -20, 300, 320] },
@@ -1066,10 +1121,10 @@
 
   /* ---- cardiac arrest management / AED (E215) ------------------------------------ */
   var AED = station({
-    key:'aed', match:/cardiac arrest|aed/i,
+    key:'aed', match:/cardiac arrest|aed/i, scene:'gym',
     intro:'Adult, collapsed, lying on their back on the floor. A second rescuer is with you.',
     full:[-10, -100, 560, 800],
-    focus:{ full:[-10, -100, 560, 800], chest:[90, 120, 330, 380], neck:[140, 40, 200, 230], face:[110, -40, 300, 300], aed:[180, 120, 380, 460] },
+    focus:{ full:[-10, -100, 560, 800], chest:[80, -40, 350, 480], neck:[140, 40, 200, 230], face:[110, -40, 300, 300], aed:[60, -40, 490, 560] },
     steps:[
       { id:'bsi', text:'Take or verbalize BSI / PPE precautions', critical:true, focus:'full', at:[340, 480], did:'Gloves on.' },
       { id:'scene', text:'Make sure the scene is safe', critical:false, focus:'full', at:[420, 560], did:'Scene safe.' },
@@ -1107,7 +1162,7 @@
       var a = el('g', {}, P.lay.power);
       el('rect', { x:420, y:250, width:110, height:130, rx:14, fill:'#e9a33a', stroke:'#9a5f12', 'stroke-width':2 }, a);
       el('rect', { x:432, y:262, width:86, height:40, rx:6, fill:'#163a2f' }, a);
-      el('text', { x:475, y:288, 'text-anchor':'middle', class:'sp-aed-t' }, a).textContent = 'AED';
+      el('text', { x:475, y:288, 'text-anchor':'middle', class:'sp-aed-t sp-plate', 'data-kmax':'1.4' }, a).textContent = 'AED';
       P.shockBtn = el('circle', { cx:475, cy:340, r:16, fill:'#c9342a', stroke:'#7a1b14', 'stroke-width':2 }, a);
       var pd = P.lay.pads;
       el('g', { transform:'rotate(-8 190 250)' }, pd).appendChild(padRect(190, 250));
@@ -1143,18 +1198,21 @@
     var g = el('g', {}, parent);
     el('circle', { cx:x, cy:y, r:7, class:'sp-find-dot' + (sev ? ' is-sev' : '') }, g);
     var bx = x + side * 26;
-    el('path', { d:'M' + x + ' ' + y + ' L' + bx + ' ' + y, class:'sp-find-line' }, g);
+    // the line, the box and its words are one plate (sp-plate) turning about the dot: kept upright and readable
+    // whichever way the patient lies
+    var pl = el('g', { class:'sp-plate', 'data-ax':x, 'data-ay':y }, g);
+    el('path', { d:'M' + x + ' ' + y + ' L' + bx + ' ' + y, class:'sp-find-line' }, pl);
     var w = 14 + text.length * 8.2;
     var gx = side > 0 ? bx : bx - w;
-    el('rect', { x:gx, y:y - 14, width:w, height:28, rx:8, class:'sp-find-box' + (sev ? ' is-sev' : '') }, g);
-    el('text', { x:gx + 7, y:y + 5, class:'sp-find-t' }, g).textContent = text;
+    el('rect', { x:gx, y:y - 14, width:w, height:28, rx:8, class:'sp-find-box' + (sev ? ' is-sev' : '') }, pl);
+    el('text', { x:gx + 7, y:y + 5, class:'sp-find-t' }, pl).textContent = text;
     return g;
   }
   var TRAUMA = station({
-    key:'trauma', match:/assessment.*trauma/i,
+    key:'trauma', stay:true, match:/assessment.*trauma/i, scene:'grass',
     intro:'This run’s case: a 34-year-old who fell about 12 feet from a ladder, lying on their back.',
-    full:[-140, -40, 760, 1260],
-    focus:{ full:[-140, -40, 760, 1260], upper:[-80, -40, 640, 560], lower:[-80, 420, 640, 800] },
+    full:[-140, -40, 760, 1390],
+    focus:{ full:[-140, -40, 760, 1390], upper:[-80, -40, 640, 640], lower:[-80, 420, 640, 800] },
     steps:[
       { id:'bsi', text:'Take or verbalize BSI / PPE precautions', critical:true, focus:'full', at:[420, 400], did:'Gloves on, eye protection verbalized.' },
       { id:'scene', text:'Scene size-up: safety, mechanism, number of patients, more help, spinal precautions', critical:true, focus:'full', at:[420, 460], chip:'Scene safe', did:'Scene safe; a 12-foot fall; one patient; help requested; manual stabilization of the head.' },
@@ -1203,10 +1261,10 @@
     }
   });
   var MEDICAL = station({
-    key:'medical', match:/assessment.*medical/i,
+    key:'medical', upright:true, match:/assessment.*medical/i, scene:'room', seat:true,
     intro:'This run’s case: a 62-year-old with chest pain for 30 minutes, sitting up.',
-    full:[-140, -40, 760, 900],
-    focus:{ full:[-140, -40, 760, 900], upper:[-80, -40, 640, 560] },
+    full:[-140, -40, 760, 1110],
+    focus:{ full:[-140, -40, 760, 1110], upper:[-80, -40, 640, 560] },
     steps:[
       { id:'bsi', text:'Take or verbalize BSI / PPE precautions', critical:true, focus:'full', at:[420, 400], did:'Gloves on.' },
       { id:'scene', text:'Scene size-up: safety, nature of illness, number of patients, more help', critical:true, focus:'full', at:[420, 460], chip:'Scene safe', did:'Scene safe; chest pain; one patient.' },
@@ -1246,6 +1304,203 @@
   });
 
   var DEFS = [BLEEDING, BVM, LONGBONE, JOINT, SUPINE, SEATED, OXYGEN, AED, TRAUMA, MEDICAL];
+
+  /* A drawn layer baked into a bitmap once (recheck 1): its live filter, mask and pattern are rendered into a
+     canvas and the group then holds that one image. The live drawing stays until the image is ready. */
+  function bakeLayer(P, g, box, k){
+    try{
+      var html = '', seen = {}, todo = [g.outerHTML], defsEl = P.defs, uid = P.uid;
+      while(todo.length){
+        var src = todo.pop(), re = /url\(#([^)]+)\)/g, m;
+        while((m = re.exec(src))){
+          if(seen[m[1]]) continue; seen[m[1]] = 1;
+          var ref = defsEl.querySelector('#' + m[1]); if(!ref) continue;
+          html += ref.outerHTML; todo.push(ref.outerHTML);
+        }
+      }
+      var inner = '<g' + (g.getAttribute('filter') ? ' filter="' + g.getAttribute('filter') + '"' : '') + '>' + g.innerHTML + '</g>';
+      var svgText = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="' + box.join(' ') + '" width="' + Math.round(box[2] * k) + '" height="' + Math.round(box[3] * k) + '"><defs>' + html + '</defs>' + inner + '</svg>';
+      var img = new Image();
+      img.onload = function(){
+        var c = document.createElement('canvas'); c.width = Math.round(box[2] * k); c.height = Math.round(box[3] * k);
+        c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+        // a data URL (the site's content security policy allows data: images, not blob:)
+        var url = c.toDataURL('image/webp', 0.9);
+        if(url.indexOf('data:image/webp') !== 0) url = c.toDataURL('image/png');
+        if(!P.ready) return;
+        while(g.firstChild) g.removeChild(g.firstChild);
+        g.removeAttribute('filter');
+        el('image', { href:url, x:box[0], y:box[1], width:box[2], height:box[3], 'aria-hidden':'true' }, g);
+        P.baked = (P.baked || 0) + 1;
+      };
+      img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgText);
+    }catch(e){ /* the live drawing stays */ }
+  }
+
+  /* ---- the pose (tools v2, review round 1) -------------------------------------
+     The rendered figure stands with its arms a little out. def.arms (degrees) turns each arm in at the shoulder so
+     it lies along the side (a patient strapped to a board); def.seat lifts the lower legs (from just above the knee)
+     up to the front of a seat cushion and draws them a touch larger (nearer the viewer), so the figure sits. Points
+     on the moved parts go through posePt(). */
+  var ARM_PIVOT = [[152, 188], [328, 188]], SEAT = { cut:830, to:646, kx:1.12, ky:0.82, top:652 };
+  function pose(def, f, uid, defsEl){
+    if(!def.arms && !def.seat) return null;
+    var parts = [], A = f.regions || {};
+    var top = def.seat ? SEAT.top : 1300;
+    // the trunk: everything but the two arms (and, seated, nothing below the lap)
+    var tc = el('clipPath', { id:uid + 'Trunk' }, defsEl);
+    el('path', { d:'M-200 -200H700V' + top + 'H-200Z' + (def.arms ? ' ' + A.armL + ' ' + A.armR : ''), 'clip-rule':'evenodd' }, tc);
+    parts.push({ clip:uid + 'Trunk' });
+    if(def.arms){
+      [['armL', -def.arms, 0], ['armR', def.arms, 1]].forEach(function(a){
+        var c = el('clipPath', { id:uid + a[0] }, defsEl); el('path', { d:A[a[0]] }, c);
+        var pv = ARM_PIVOT[a[2]];
+        parts.push({ clip:uid + a[0], t:'rotate(' + a[1] + ' ' + pv[0] + ' ' + pv[1] + ')' });
+      });
+    }
+    if(def.seat){
+      var lc = el('clipPath', { id:uid + 'Shins' }, defsEl); el('rect', { x:-200, y:SEAT.cut, width:900, height:600 }, lc);
+      parts.push({ clip:uid + 'Shins', t:'translate(240 ' + SEAT.to + ') scale(' + SEAT.kx + ' ' + SEAT.ky + ') translate(-240 -' + SEAT.cut + ')' });
+    }
+    return parts;
+  }
+  // where a point of the standing figure is drawn once posed (a hand turned in, a foot lifted)
+  function posePt(def, x, y){
+    if(def.arms && y > 300 && (x < 128 || x > 352)){
+      var r = x < 240 ? -def.arms : def.arms, pv = ARM_PIVOT[x < 240 ? 0 : 1], a = r * Math.PI / 180, dx = x - pv[0], dy = y - pv[1];
+      return [Math.round(pv[0] + dx * Math.cos(a) - dy * Math.sin(a)), Math.round(pv[1] + dx * Math.sin(a) + dy * Math.cos(a))];
+    }
+    if(def.seat && y >= SEAT.cut) return [Math.round(240 + (x - 240) * SEAT.kx), Math.round(SEAT.to + (y - SEAT.cut) * SEAT.ky)];
+    return [x, y];
+  }
+
+  /* ---- the room (tools v2, 2026-11-19) ---------------------------------------
+     Under a patient on their back: the skills lab floor and a padded mat. Behind a seated patient: a seat back
+     (a car seat with a headrest for the seated spinal station). In the figure's pixels; colours from the CSS, so
+     the dark theme dims them. Nothing here is a step or a finding. */
+  function room(world, def, uid, d){
+    var g = el('g', { class:'sp-room sp-room--' + (def.scene || 'lab'), 'aria-hidden':'true' }, world);
+    var BIG = { x:-3000, y:-3000, width:6500, height:7500 };
+    function big(cls, fill){ var a = { class:cls }; for(var k in BIG) a[k] = BIG[k]; if(fill) a.fill = fill; return el('rect', a, g); }
+    function pat(id, w, h, draw, tf){ var p = el('pattern', { id:uid + id, width:w, height:h, patternUnits:'userSpaceOnUse', patternTransform:tf || '' }, d); draw(p); return 'url(#' + uid + id + ')'; }
+    // the light: a soft pool over the patient, falling off to the edges of the room (drawn under the patient)
+    var lt = el('radialGradient', { id:uid + 'Light', cx:240, cy:520, r:1150, gradientUnits:'userSpaceOnUse' }, d);
+    [[0, '#fffbe8', 0.20], [0.45, '#fffbe8', 0.05], [0.75, '#000', 0.10], [1, '#000', 0.30]].forEach(function(s){ el('stop', { offset:s[0], 'stop-color':s[1], 'stop-opacity':s[2] }, lt); });
+    var soft = 'url(#' + uid + 'Soft)';
+    function shadow(dd, dx, dy, op){ el('path', { d:dd, fill:'#0d1310', opacity:op || 0.3, transform:'translate(' + (dx || 8) + ' ' + (dy || 12) + ')', filter:soft }, g); }
+    var sc = def.scene || 'lab';
+    if(def.upright){
+      /* Sitting: the seat seen from the front. Behind it a car's interior (seated spinal) or a room (oxygen, medical);
+         the lower legs hang in front of the cushion's face and the feet rest on the floor. */
+      if(sc === 'car'){
+        big('sp-car-roof');
+        el('rect', { x:-3000, y:760, width:6500, height:3000, class:'sp-car-floor' }, g);
+        el('rect', { x:-3000, y:760, width:6500, height:3000, fill:pat('Carpet', 8, 8, function(p){ el('rect', { width:8, height:8, class:'sp-car-floor' }, p); el('path', { d:'M0 0L8 8M8 0L0 8', class:'sp-carpet' }, p); }) }, g);
+        // the side windows behind the seat, daylight through the glass, and the door pillars
+        el('path', { d:'M-420 -260 L-60 -260 L-60 520 L-420 520 Z', class:'sp-glass' }, g);
+        el('path', { d:'M540 -260 L900 -260 L900 520 L540 520 Z', class:'sp-glass' }, g);
+        el('path', { d:'M-400 -230 L-160 -240 M600 -240 L860 -230', class:'sp-glass-hi' }, g);
+        el('rect', { x:-90, y:-300, width:58, height:1150, rx:10, class:'sp-car-pillar' }, g);
+        el('rect', { x:512, y:-300, width:58, height:1150, rx:10, class:'sp-car-pillar' }, g);
+        el('rect', { x:-3000, y:-420, width:6500, height:140, class:'sp-car-trim' }, g);
+        el('rect', { x:-3000, y:520, width:6500, height:240, class:'sp-car-door' }, g);
+        el('path', { d:'M-3000 600 H3500', class:'sp-car-line' }, g);
+      } else {
+        big('sp-wall');
+        el('rect', { x:-3000, y:-3000, width:6500, height:3752, fill:pat('Paper', 60, 60, function(p){ el('rect', { width:60, height:60, class:'sp-wall' }, p); el('path', { d:'M30 0V60', class:'sp-wall-stripe' }, p); }) }, g);
+        // a window with daylight on the patient's left, its sill and the light it throws
+        el('rect', { x:470, y:-300, width:330, height:520, rx:6, class:'sp-win-frame' }, g);
+        el('rect', { x:486, y:-284, width:298, height:488, class:'sp-glass' }, g);
+        el('path', { d:'M635 -284V204M486 -40H784', class:'sp-win-bar' }, g);
+        el('path', { d:'M500 -270 L600 -270 L520 40 Z', class:'sp-glass-hi' }, g);
+        el('rect', { x:456, y:214, width:358, height:22, rx:4, class:'sp-win-frame' }, g);
+        // the floor: boards, a skirting board where they meet the wall
+        el('rect', { x:-3000, y:752, width:6500, height:3000, fill:pat('Boards', 600, 64, function(p){ el('rect', { width:600, height:64, class:'sp-wood' }, p); el('path', { d:'M0 0.5H600M260 0V64', class:'sp-wood-seam' }, p); }) }, g);
+        el('rect', { x:-3000, y:730, width:6500, height:26, class:'sp-skirt' }, g);
+      }
+      var car = sc === 'car';
+      // the shadow the seat throws, then the seat back, the headrest (car), the cushion's top and its front face
+      shadow('M70 120 H410 V740 H70 Z', 14, 18, 0.35);
+      el('path', { d:'M86 620 L86 250 Q86 160 168 152 L312 152 Q394 160 394 250 L394 620 Z', class:'sp-seat' }, g);
+      el('path', { d:'M112 610 L112 262 Q114 190 176 184 L304 184 Q366 190 368 262 L368 610 Z', class:'sp-seat-in' }, g);
+      if(car){
+        el('path', { d:'M176 184 L176 610 M304 184 L304 610', class:'sp-seat-seam' }, g);
+        el('rect', { x:162, y:-48, width:156, height:160, rx:46, class:'sp-seat' }, g);
+        el('rect', { x:180, y:-32, width:120, height:124, rx:36, class:'sp-seat-in' }, g);
+        el('rect', { x:204, y:110, width:10, height:46, class:'sp-seat-post' }, g);
+        el('rect', { x:266, y:110, width:10, height:46, class:'sp-seat-post' }, g);
+      } else {
+        el('path', { d:'M240 190 L240 610', class:'sp-seat-seam' }, g);
+        // armrests either side
+        el('rect', { x:20, y:470, width:66, height:200, rx:30, class:'sp-seat' }, g);
+        el('rect', { x:394, y:470, width:66, height:200, rx:30, class:'sp-seat' }, g);
+      }
+      // the cushion: its top (lit) behind the lap, its front face behind the knees
+      el('rect', { x:40, y:576, width:400, height:96, rx:34, class:'sp-seat-in' }, g);
+      el('rect', { x:40, y:650, width:400, height:84, rx:22, class:'sp-seat' }, g);
+      el('path', { d:'M66 664 H414', class:'sp-seat-seam' }, g);
+      // the shade under the seat's front edge
+      el('rect', { x:50, y:730, width:380, height:40, rx:16, fill:'#0d1310', opacity:0.3, filter:soft }, g);
+      el('rect', { x:-3000, y:-3000, width:6500, height:7500, fill:'url(#' + uid + 'Light)' }, g);
+      big('sp-dim');
+      return g;
+    }
+    if(sc === 'road'){
+      /* At the roadside: asphalt with its grit, the lane's edge line and centre lines, a kerb and a gutter */
+      big('sp-asphalt');
+      big('', pat('Grit', 46, 46, function(p){ el('rect', { width:46, height:46, class:'sp-asphalt' }, p);
+        [[6, 9, 1.6], [30, 4, 1.2], [19, 27, 2], [40, 35, 1.4], [9, 40, 1.1], [33, 21, 0.9]].forEach(function(c, i){ el('circle', { cx:c[0], cy:c[1], r:c[2], class:i % 2 ? 'sp-grit' : 'sp-grit2' }, p); }); }));
+      // the kerb and the gutter on one side (the pavement beyond), the lane's white edge line on the other
+      el('rect', { x:-3000, y:-3000, width:2930, height:7500, class:'sp-kerb-top' }, g);
+      for(var y = -2980; y < 4000; y += 300) el('path', { d:'M-3000 ' + y + 'H-100', class:'sp-kerb-joint' }, g);
+      el('rect', { x:-100, y:-3000, width:30, height:7500, class:'sp-kerb' }, g);
+      el('rect', { x:-70, y:-3000, width:34, height:7500, class:'sp-gutter' }, g);
+      el('rect', { x:720, y:-3000, width:20, height:7500, class:'sp-line-w' }, g);
+      for(var y2 = -2900; y2 < 4000; y2 += 520) el('rect', { x:1180, y:y2, width:18, height:300, class:'sp-line-w' }, g);
+    } else if(sc === 'gym'){
+      /* A sports hall floor (the patient collapsed on it): maple boards, a painted court line */
+      big('sp-maple');
+      big('', pat('Maple', 70, 520, function(p){ el('rect', { width:70, height:520, class:'sp-maple' }, p); el('path', { d:'M0.5 0V520M0 300.5H70', class:'sp-maple-seam' }, p); el('rect', { x:20, width:24, height:520, class:'sp-maple-grain' }, p); }, 'translate(-20 0)'));
+      el('rect', { x:-3000, y:-260, width:6500, height:14, class:'sp-court' }, g);
+      el('rect', { x:640, y:-3000, width:14, height:7500, class:'sp-court' }, g);
+    } else if(sc === 'grass'){
+      /* A lawn by a house: grass with its tufts, the ladder the patient fell from lying where it fell */
+      big('sp-grass');
+      big('', pat('Tuft', 54, 54, function(p){ el('rect', { width:54, height:54, class:'sp-grass' }, p);
+        el('path', { d:'M8 20l3-9 2 9M30 44l2-10 3 10M42 14l2-8 2 8M18 50l2-7 2 7', class:'sp-tuft' }, p);
+        el('path', { d:'M24 26l2-8 3 8M48 38l1-7 3 7', class:'sp-tuft2' }, p); }, 'rotate(12)'));
+      shadow('M-110 1260 H560 V1330 H-110 Z', 10, 14, 0.35);
+      var lad = el('g', { class:'sp-ladder' }, g);
+      el('rect', { x:-110, y:1258, width:670, height:14, rx:5 }, lad); el('rect', { x:-110, y:1314, width:670, height:14, rx:5 }, lad);
+      for(var r = -80; r < 560; r += 64) el('rect', { x:r, y:1266, width:9, height:54, rx:3 }, lad);
+    } else {
+      /* The skills lab: a tiled floor and a padded mat */
+      var tile = el('pattern', { id:uid + 'Tile', width:160, height:160, patternUnits:'userSpaceOnUse' }, d);
+      el('rect', { width:160, height:160, class:'sp-tile' }, tile);
+      el('path', { d:'M0 0.5H160M0.5 0V160', class:'sp-tile-seam' }, tile);
+      big('sp-floor'); big('sp-tiles', 'url(#' + uid + 'Tile)');
+    }
+    if(sc === 'lab'){
+      // the mat: its shadow on the floor, two folding panels, a piped edge and a soft sheen
+      shadow('M-62 -150 H542 V1302 H-62 Z', 12, 16, 0.32);
+      el('rect', { x:-62, y:-150, width:604, height:1452, rx:46, class:'sp-mat-edge' }, g);
+      el('rect', { x:-50, y:-138, width:580, height:1428, rx:38, class:'sp-mat' }, g);
+      el('path', { d:'M-50 576 H530', class:'sp-mat-fold' }, g);
+      el('path', { d:'M-30 -110 Q240 -150 510 -110', class:'sp-mat-sheen' }, g);
+    }
+    el('rect', { x:-3000, y:-3000, width:6500, height:7500, fill:'url(#' + uid + 'Light)' }, g);
+    if(sc !== 'lab') big('sp-dim');
+    return g;
+  }
+  /* An item drawn with its own transform gets an inner group for it, so the item itself can scale as it is put
+     on the patient (CSS) without losing where it is. */
+  function settle(world){
+    [].forEach.call(world.querySelectorAll('.sp-item[transform]'), function(it){
+      var inner = el('g', { transform:it.getAttribute('transform') });
+      while(it.firstChild) inner.appendChild(it.firstChild);
+      it.appendChild(inner); it.removeAttribute('transform');
+    });
+  }
 
   /* ---- the patient ------------------------------------------------------- */
 
@@ -1294,21 +1549,139 @@
     this.f = f; this.url = F.url(f);
     var l = this.host.querySelector('.sp-loading'); if(l) l.remove();
     this.defs = defs(svg, this.uid, f);
-    el('rect', { x:-3000, y:-3000, width:6500, height:7500, class:'sp-floor' }, svg);
-    el('path', { d:f.outline, fill:'#1d241f', opacity:0.22, transform:'translate(5 8)', filter:'url(#' + this.uid + 'Soft)' }, svg);
-    this.under = el('g', {}, svg);
-    this.skinLayer = el('g', {}, svg);
-    // clipped to the traced outline, so the edge stays smooth when the camera is close
-    this.skinLayer.setAttribute('clip-path', 'url(#' + this.uid + 'Body)');
-    el('image', { href:this.url, width:f.w, height:f.h, 'aria-hidden':'true' }, this.skinLayer);
-    this.over = el('g', {}, svg);
-    this.marks = el('g', { class:'sp-marks' }, svg);
+    /* Everything is drawn in the figure's pixels inside one group, the world. A patient lying on their back is
+       turned to lie across a wide stage (opts.lie, tools v2 2026-11-19), so the picture fills it; a seated patient
+       never is (def.upright). Words on the patient (sp-plate) turn back upright and grow to stay readable. */
+    this.world = el('g', { class:'sp-world' }, svg);
+    /* The room is drawn on its own svg under the patient's, so a change on the patient (the bleed spreading each
+       second) repaints only the patient's layer, never the floor, the scenery and the light (performance). */
+    this.svg0 = document.createElementNS(NS, 'svg');
+    this.svg0.setAttribute('class', 'sp-svg sp-svg0'); this.svg0.setAttribute('aria-hidden', 'true');
+    svg.parentNode.insertBefore(this.svg0, svg);
+    this.world0 = el('g', { class:'sp-world' }, this.svg0);
+    room(this.world0, this.def, this.uid, this.defs);
+    var parts = pose(this.def, f, this.uid, svg.querySelector('defs'));
+    this.shadowLayer = el('g', {}, this.world);
+    this.under = el('g', {}, this.world);
+    this.skinLayer = el('g', {}, this.world);
+    if(!parts){
+      el('path', { d:f.outline, fill:'#1d241f', opacity:0.22, transform:'translate(5 8)', filter:'url(#' + this.uid + 'Soft)' }, this.shadowLayer);
+      // clipped to the traced outline, so the edge stays smooth when the camera is close
+      this.skinLayer.setAttribute('clip-path', 'url(#' + this.uid + 'Body)');
+      el('image', { href:this.url, width:f.w, height:f.h, 'aria-hidden':'true' }, this.skinLayer);
+    } else {
+      /* A posed body (pose()): each part is the same rendered image, clipped to the part and to the outline, then
+         moved (an arm turned in at the shoulder, the lower legs lifted in front of a seat). Shadow the same way. */
+      var url = this.url, uid = this.uid;
+      parts.forEach(function(pt){
+        [[self.shadowLayer, true], [self.skinLayer, false]].forEach(function(L){
+          var g = el('g', pt.t ? { transform:pt.t } : {}, L[0]);
+          var c = pt.clip ? el('g', { 'clip-path':'url(#' + pt.clip + ')' }, g) : g;
+          if(L[1]) el('path', { d:f.outline, fill:'#1d241f', opacity:0.22, transform:'translate(5 8)', filter:'url(#' + uid + 'Soft)' }, c);
+          else el('image', { href:url, width:f.w, height:f.h, 'aria-hidden':'true', 'clip-path':'url(#' + uid + 'Body)' }, c);
+        });
+      });
+    }
+    /* What is put on the patient and the marks draw on a second svg over the first, on its own layer: an item
+       coming in repaints only that layer, never the body, its image and its filters (performance, tools v2). */
+    this.svg2 = document.createElementNS(NS, 'svg');
+    this.svg2.setAttribute('class', 'sp-svg sp-svg2'); this.svg2.setAttribute('aria-hidden', 'true');
+    svg.parentNode.insertBefore(this.svg2, svg.nextSibling);
+    this.world2 = el('g', { class:'sp-world' }, this.svg2);
+    /* Things that animate all the time (the drip, the wound's gleam, the mask's reservoir) go on their own svg
+       between the body and the items, so their frames repaint only that small layer (performance, recheck 1). */
+    this.svgA = document.createElementNS(NS, 'svg');
+    this.svgA.setAttribute('class', 'sp-svg sp-svgA'); this.svgA.setAttribute('aria-hidden', 'true');
+    svg.parentNode.insertBefore(this.svgA, this.svg2);
+    this.worldA = el('g', { class:'sp-world' }, this.svgA);
+    this.anim = el('g', {}, this.worldA);
+    this.over = el('g', {}, this.world2);
+    this.marks = el('g', { class:'sp-marks' }, this.world2);
     this.def.build(this);
+    settle(this.world); settle(this.world2); settle(this.worldA);
+    if(this.pale){ var pg = el('g', { 'clip-path':'url(#' + this.uid + 'Body)' }); this.world2.insertBefore(pg, this.world2.firstChild); pg.appendChild(this.pale); }
     svg.addEventListener('click', function(e){ self.tap(e); });
     if(window.ResizeObserver){ this.ro = new ResizeObserver(function(){ self.camera(true); }); this.ro.observe(this.stage); }
     this.ready = true;
+    this.orient();
     this.paint();
     this.camera(true);
+    if(this.opts.onReady) this.opts.onReady(this);
+  };
+
+  /* Lying across the stage: only when the stage is wide and the patient is on their back. */
+  Patient.prototype.orient = function(){
+    var sw = this.stage.clientWidth || 300, sh = this.stage.clientHeight || 400;
+    // trauma stays head up: its findings are laid out around an upright body
+    var lie = !!(this.opts.lie && !this.def.upright && !this.def.stay && sw / sh > 1.15);
+    if(lie === this.lie && this.world.getAttribute('transform') != null) return false;
+    this.lie = lie;
+    this.world.setAttribute('transform', lie ? 'rotate(-90)' : '');
+    this.world2.setAttribute('transform', lie ? 'rotate(-90)' : '');
+    this.world0.setAttribute('transform', lie ? 'rotate(-90)' : '');
+    this.worldA.setAttribute('transform', lie ? 'rotate(-90)' : '');
+    this.stage.classList.toggle('is-lying', lie);
+    return true;
+  };
+  // a box in the figure's pixels [x, y, w, h] as it lies on the stage
+  Patient.prototype.rbox = function(b){ return this.lie ? [b[1], -(b[0] + b[2]), b[3], b[2]] : b; };
+
+  /* Words on the patient: each plate turns back upright (lying) and grows so its text is at least 11.5 px on
+     screen; past its kmax it hides rather than cover the drawing. Run after a paint and on each camera frame. */
+  Patient.prototype.upright = function(scale, light){
+    if(!this.world) return;
+    // light: a camera frame (turn and size only, no layout reads); the full pass runs when the camera stops
+    var self = this, R = this.lie ? 90 : 0, sc = scale || this.scale || 1, S = light ? null : this.stage.getBoundingClientRect(), clamp = !light && S.width > 0, list = [];
+    [].forEach.call(this.stage.querySelectorAll('.sp-plate'), function(p){
+      if(p.closest('.sp-marks')) return;
+      if(p.__t0 == null){
+        p.__t0 = p.getAttribute('transform') || '';
+        var t = p.tagName === 'text' ? p : p.querySelector('text');
+        if(light){ p.__t0 = null; return; }
+        p.__fs = t ? parseFloat(getComputedStyle(t).fontSize) || 11 : 11;
+        if(p.hasAttribute('data-ax')) p.__a = [+p.getAttribute('data-ax'), +p.getAttribute('data-ay')];
+        else { try{ var b = p.getBBox(); p.__a = [b.x + b.width / 2, b.y + b.height / 2]; }catch(e){ p.__a = [0, 0]; } }
+        p.__kmax = +(p.getAttribute('data-kmax') || 3.2);
+      }
+      var k = Math.max(1, 12 / (p.__fs * sc)), a = p.__a;
+      var off = k > p.__kmax || (self.opts.plateFilter && !self.opts.plateFilter(p));
+      p.style.visibility = off ? 'hidden' : '';
+      k = Math.min(k, p.__kmax);
+      var tail = R || k !== 1 ? 'translate(' + a[0] + ' ' + a[1] + ')' + (R ? ' rotate(' + R + ')' : '') + (k !== 1 ? ' scale(' + k.toFixed(3) + ')' : '') + ' translate(' + (-a[0]) + ' ' + (-a[1]) + ')' : '';
+      p.setAttribute('transform', (p.__t0 ? p.__t0 + ' ' : '') + tail);
+      if(off || !clamp) return;
+      // kept inside the picture: a plate whose thing is in view slides back in; one whose thing is out of view hides
+      var r = p.getBoundingClientRect(); if(!r.width) return;
+      var ctm = p.getScreenCTM(), ax = ctm ? ctm.a * a[0] + ctm.c * a[1] + ctm.e : 0, ay = ctm ? ctm.b * a[0] + ctm.d * a[1] + ctm.f : 0;
+      if(ax < S.left || ax > S.right || ay < S.top || ay > S.bottom){ p.style.visibility = 'hidden'; return; }
+      var dx = r.left < S.left + 4 ? S.left + 4 - r.left : r.right > S.right - 4 ? S.right - 4 - r.right : 0;
+      var dy = r.top < S.top + 4 ? S.top + 4 - r.top : r.bottom > S.bottom - 4 ? S.bottom - 4 - r.bottom : 0;
+      var item = p.closest('.sp-item');
+      list.push({ p: p, tail: tail, dx: dx, dy: dy, l: r.left + dx, r: r.right + dx, t: r.top + dy, b: r.bottom + dy, on: !item || item.classList.contains('on') });
+    });
+    /* No two plates touch: in top to bottom order, a plate that would overlap one already placed moves down below it
+       (or up above it when there is no room below), 5 px clear. */
+    var placed = [];
+    list.sort(function(x, y){ return x.t - y.t; }).forEach(function(x){
+      if(x.on){
+        for(var n = 0; n < 8; n++){
+          var hit = placed.filter(function(q){ return x.l < q.r + 5 && q.l < x.r + 5 && x.t < q.b + 5 && q.t < x.b + 5; })[0];
+          if(!hit) break;
+          var h = x.b - x.t, down = hit.b + 5 - x.t, up = hit.t - 5 - x.b;
+          var mv = x.b + down <= S.bottom - 4 ? down : x.t + up >= S.top + 4 ? up : null;
+          if(mv == null){ x.hide = true; break; }
+          x.dy += mv; x.t += mv; x.b += mv;
+        }
+        // no room left clear of the others inside the picture: this one waits (its dot still shows the place)
+        if(x.hide || placed.some(function(q){ return x.l < q.r + 5 && q.l < x.r + 5 && x.t < q.b + 5 && q.t < x.b + 5; })){ x.p.style.visibility = 'hidden'; return; }
+        placed.push(x);
+      }
+      if(x.dx || x.dy){
+        var ux = x.dx / sc, uy = x.dy / sc, w = self.lie ? [-uy, ux] : [ux, uy];
+        x.p.setAttribute('transform', 'translate(' + w[0].toFixed(1) + ' ' + w[1].toFixed(1) + ') ' + (x.p.__t0 ? x.p.__t0 + ' ' : '') + x.tail);
+      }
+    });
+    this.plateRects = placed;
   };
 
   Patient.prototype.show = function(node, on){
@@ -1374,6 +1747,10 @@
   Patient.prototype.paint = function(){
     if(!this.ready) return;
     this.def.update(this, this.st);
+    this.upright();
+    // once the items have settled (their 0.55 s scale), fit the words again from where they really are
+    var self = this; clearTimeout(this.ut);
+    this.ut = setTimeout(function(){ if(!self.raf && self.ready){ self.upright(); self.marksPaint(); } }, 650);
     var chips = this.def.chips(this.st);
     this.chips.innerHTML = chips.map(function(c){ return '<span class="sp-chip sp-chip--' + c.k + '">' + esc(c.t) + '</span>'; }).join('');
     // placing the tourniquet by tapping the thigh
@@ -1382,10 +1759,10 @@
     var moving = !this.reviewing && step && step.place && this.st.done[step.id] && this.st.tq && !this.st.tq.stops;
     this.placeBox.hidden = !(placing || moving);
     this.stage.classList.toggle('is-placing', !!(placing || moving));
-    if(placing) this.placeBox.innerHTML = '<b>Tap the thigh</b> where the tourniquet goes, or tick the step to place it for you.';
+    if(placing) this.placeBox.innerHTML = this.opts.placeText || '<b>Tap the thigh</b> where the tourniquet goes, or tick the step to place it for you.';
     else if(moving) this.placeBox.innerHTML = (this.st.tq.stops ? '' : '<b>Still bleeding.</b> ') + 'Tap the thigh again to move it.';
     // the bag, squeezed by hand
-    var sq = !this.reviewing && step && step.squeeze;
+    var sq = !this.reviewing && (this.opts.squeeze ? this.opts.squeeze(this) : step && step.squeeze);
     this.sq.hidden = !sq;
     if(sq && !this.sqWired){ this.sqWired = true; this.wireSqueeze(); }
     this.svg.setAttribute('aria-label', 'The patient. ' + chips.map(function(c){ return c.t; }).join(', ') + (this.state.bleeding ? '. The wound is bleeding.' : ''));
@@ -1404,7 +1781,7 @@
     var step = cur && cur.place ? cur : this.def.steps.filter(function(s){ return s.place && self.st.done[s.id]; })[0];
     if(this.reviewing || !step || !this.svg.getScreenCTM) return;
     var p = this.svg.createSVGPoint(); p.x = e.clientX; p.y = e.clientY;
-    var q = p.matrixTransform(this.svg.getScreenCTM().inverse());
+    var q = p.matrixTransform((this.world || this.svg).getScreenCTM().inverse());
     this.st.tq = placeTourniquet(q.x, q.y);
     var idx = this.def.steps.indexOf(step);
     if(!this.st.done[step.id]){ if(this.opts.onPlace) this.opts.onPlace(idx); }
@@ -1433,6 +1810,7 @@
       t += r.vol === 'short' ? ' A very quick squeeze: in the room, squeeze over about a second and watch for chest rise.' : r.vol === 'long' ? ' A long squeeze: in the room that tends to mean too much volume; squeeze over about a second, just to chest rise.' : '';
       out.textContent = t;
       self.paint();
+      if(self.opts.onBreath) self.opts.onBreath(r, iv, rateOf(b));
     }
     btn.addEventListener('pointerdown', start);
     btn.addEventListener('pointerup', end);
@@ -1448,11 +1826,15 @@
      letterboxed into a sliver on a phone. */
   Patient.prototype.target = function(){
     var self = this, step = this.lastId ? this.def.steps.filter(function(x){ return x.id === self.lastId; })[0] : this.def.steps[this.cur], key = this.reviewing ? 'full' : step ? step.focus : 'full';
+    // lying across a wide stage, the whole patient fits: the overview is all of them
+    if(this.def.camFor) key = this.def.camFor(this, key) || key;
+    if(this.lie && key === 'full') return this.def.full;
     return (this.def.focus[key]) || this.def.full;
   };
   Patient.prototype.camera = function(now){
     if(!this.ready) return;
-    var t = this.reviewing ? this.def.full : this.target(), sw = this.stage.clientWidth || 300, sh = this.stage.clientHeight || 400;
+    if(this.orient()) now = true;
+    var t = this.rbox(this.reviewing ? this.def.full : this.target()), sw = this.stage.clientWidth || 300, sh = this.stage.clientHeight || 400;
     // grow the box to the stage's aspect, about its center
     var ar = sw / sh, w = t[2], h = t[3];
     if(w / h < ar) w = h * ar; else h = w / ar;
@@ -1463,16 +1845,46 @@
     var self = this, from = this.cam || box;
     this.cam = box;
     this.scale = sw / w;
-    if(now || reduced()){ this.svg.setAttribute('viewBox', box.join(' ')); this.marksPaint(); return; }
-    var t0 = performance.now(), dur = 650;
-    cancelAnimationFrame(this.raf);
+    cancelAnimationFrame(this.raf); this.raf = 0;
+    var both = [this.svg0, this.svg, this.svgA, this.svg2];
+    function plain(v){ v.style.transform = ''; v.style.left = v.style.top = v.style.width = v.style.height = ''; }
+    both.forEach(plain);
+    this.stage.classList.remove('is-zooming');
+    if(now || reduced() || this.frozen){ both.forEach(function(v){ v.setAttribute('viewBox', box.join(' ')); }); this.upright(); this.marksPaint(); return; }
+    /* The move itself is a transform of the drawn picture (composited, so the body, its filters and the image are
+       not redrawn every frame); the view box jumps to the target when it lands, and the words are fitted then.
+       During the move the svg shows the union of the start and end boxes (sized at the start's scale and placed
+       where that puts it), so whatever comes into view is already painted: no blank band (review round 1). */
+    var t0 = performance.now(), dur = 650, sF = sw / from[2];
+    var U = [Math.min(from[0], box[0]), Math.min(from[1], box[1])];
+    U.push(Math.max(from[0] + from[2], box[0] + box[2]) - U[0], Math.max(from[1] + from[3], box[1] + box[3]) - U[1]);
+    var ox = (U[0] - from[0]) * sF, oy = (U[1] - from[1]) * sF;
+    both.forEach(function(v){
+      v.setAttribute('viewBox', U.join(' '));
+      v.style.left = ox.toFixed(2) + 'px'; v.style.top = oy.toFixed(2) + 'px';
+      v.style.width = (U[2] * sF).toFixed(2) + 'px'; v.style.height = (U[3] * sF).toFixed(2) + 'px';
+    });
     (function step(){
       var k = Math.min(1, (performance.now() - t0) / dur), e = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
-      self.svg.setAttribute('viewBox', from.map(function(v, i){ return (v + (box[i] - v) * e).toFixed(1); }).join(' '));
-      if(k < 1) self.raf = requestAnimationFrame(step);
+      var b = from.map(function(v, i){ return v + (box[i] - v) * e; }), sB = sw / b[2];
+      // words on the patient never shrink under 11 px mid move: while the camera pulls back they wait (recheck 1)
+      self.stage.classList.toggle('is-zooming', k < 1 && sB / sF < 0.95);
+      if(k < 1){
+        var tf = 'translate(' + ((U[0] - b[0]) * sB - ox).toFixed(2) + 'px,' + ((U[1] - b[1]) * sB - oy).toFixed(2) + 'px) scale(' + (sB / sF).toFixed(5) + ')';
+        both.forEach(function(v){ v.style.transform = tf; });
+        self.raf = requestAnimationFrame(step);
+        return;
+      }
+      both.forEach(function(v){ plain(v); v.setAttribute('viewBox', box.join(' ')); });
+      self.raf = 0;
+      self.upright();
+      self.marksPaint();
     })();
-    this.marksPaint();
   };
+  // the camera is moving
+  Patient.prototype.moving = function(){ return !!this.raf; };
+  // something on the patient is still happening (the log roll): the words wait for it
+  Patient.prototype.busy = function(){ return !!this.rolling; };
 
   /* The end of the run: pull back to the whole patient and number what was
      missed, on the body and in a list under it. */
@@ -1494,29 +1906,42 @@
   Patient.prototype.misses = function(){ return this.def.misses(this.st); };
 
   Patient.prototype.marksPaint = function(){
-    var g = this.marks;
+    var g = this.marks, self = this;
     if(!g) return;
     while(g.firstChild) g.removeChild(g.firstChild);
-    if(!this.reviewing) return;
+    var list = this.reviewing ? this.misses() : this.liveList;
+    if(!list || !list.length) return;
     var r = 13 / (this.scale || 0.4), fs = 15 / (this.scale || 0.4);
     // marks that would overlap are pushed apart sideways, so every number reads
     var placed = [];
-    this.misses().forEach(function(x, i){
+    list.forEach(function(x, i){
       var px = x.x, py = x.y, tries = 0;
       while(tries++ < 8 && placed.some(function(q){ return Math.hypot(q[0] - px, q[1] - py) < r * 2.3; })) px += (tries % 2 ? 1 : -1) * r * 2.4 * tries;
+      // and clear of the words on the patient (screen boxes from upright()), moved sideways on screen
+      var ctm = self.world && self.world.getScreenCTM(), sc = self.scale || 0.4, rad = r * 1.55 * sc;
+      if(ctm && self.plateRects) for(var n = 0; n < 6; n++){
+        var sx = ctm.a * px + ctm.c * py + ctm.e, sy = ctm.b * px + ctm.d * py + ctm.f;
+        var hit = self.plateRects.filter(function(q){ return sx + rad > q.l - 3 && sx - rad < q.r + 3 && sy + rad > q.t - 3 && sy - rad < q.b + 3; })[0];
+        if(!hit) break;
+        var mvx = (sx < (hit.l + hit.r) / 2 ? hit.l - 4 - rad - sx : hit.r + 4 + rad - sx) / sc, w = self.lie ? [0, mvx] : [mvx, 0];
+        px += w[0]; py += w[1];
+      }
       placed.push([px, py]);
-      var m = el('g', { class:'sp-mark sp-mark--' + x.sev, transform:'translate(' + px + ' ' + py + ')' }, g);
+      var m = el('g', { class:'sp-mark sp-mark--' + x.sev, transform:'translate(' + px + ' ' + py + ')' + (self.lie ? ' rotate(90)' : '') }, g);
       el('circle', { r:r * 1.55, class:'sp-mark-halo' }, m);
       el('circle', { r:r, class:'sp-mark-dot' }, m);
-      el('text', { 'text-anchor':'middle', dy:'0.35em', 'font-size':fs.toFixed(1), class:'sp-mark-n' }, m).textContent = i + 1;
+      el('text', { 'text-anchor':'middle', dy:'0.35em', 'font-size':fs.toFixed(1), class:'sp-mark-n' }, m).textContent = self.reviewing ? i + 1 : '!';
     });
   };
+  /* Explore (tools v2): what the patient shows from the order things were done in, marked as it happens, with "!"
+     in place of a number. list: misses() entries, or null to clear. */
+  Patient.prototype.live = function(list){ this.liveList = list && list.length ? list : null; this.marksPaint(); };
 
-  Patient.prototype.destroy = function(){ if(this.ro) this.ro.disconnect(); cancelAnimationFrame(this.raf); };
+  Patient.prototype.destroy = function(){ if(this.ro) this.ro.disconnect(); cancelAnimationFrame(this.raf); cancelAnimationFrame(this.rollRaf); this.rolling = false; this.raf = 0; clearTimeout(this.camT); clearTimeout(this.ut); };
 
   window.NremtStationPatient = {
     find:function(name){ return DEFS.filter(function(d){ return d.match.test(name); })[0] || null; },
     mount:function(host, def, opts){ return new Patient(host, def, opts); },
-    pure:{ placeTourniquet:placeTourniquet, breath:breath, rateOf:rateOf, DEFS:DEFS, L:L, PX_PER_IN:PX_PER_IN }
+    pure:{ placeTourniquet:placeTourniquet, breath:breath, rateOf:rateOf, DEFS:DEFS, L:L, PX_PER_IN:PX_PER_IN, posePt:posePt }
   };
 })();

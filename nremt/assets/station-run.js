@@ -353,6 +353,7 @@
     dropPatient();
     flagged = s.criteria.map(function(){ return ''; });
     clockSaid = {};
+    pausedAt = 0;
     startedAt = Date.now();
     stop();
     tick = setInterval(updateClock, 1000);
@@ -458,6 +459,7 @@
     var host = document.getElementById('runPatient');
     if(host && window.NremtStationPatient){
       patient = window.NremtStationPatient.mount(host, station.vis, {
+        lie: true,
         // a tap on the patient that does a step (placing the tourniquet) ticks it
         onPlace: function(i){
           var box = ctl().querySelector('.run-step input[data-i="' + i + '"]');
@@ -580,6 +582,15 @@
       });
     });
   }
+
+  /* Tools v2: the run is Test yourself. Leaving it mid run (Explore, another tab) pauses the clock and the
+     patient; coming back picks up where it was. */
+  var pausedAt = 0;
+  window.NremtStationRun = {
+    pause: function(){ if(!tick || pausedAt) return; pausedAt = Date.now(); stop(); if(patient){ cancelAnimationFrame(patient.raf); patient.raf = 0; clearTimeout(patient.camT); } },
+    resume: function(){ if(!pausedAt) return; startedAt += Date.now() - pausedAt; pausedAt = 0; if(station && document.getElementById('runClock')){ tick = setInterval(updateClock, 1000); updateClock(); if(patient) patient.camera(true); } },
+    running: function(){ return !!tick; }
+  };
 
   picker();
 })();

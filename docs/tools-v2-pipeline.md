@@ -31,6 +31,7 @@ States: building, review, fixing, recheck, PASS (waiting to integrate), integrat
 | NREMT sound trainer | claude/tools-v2-nremt-sound-trainer | wt-nremt-sound-trainer | integrated | second NREMT tool on `nremt/assets/nremt-kit2.js` (unchanged) |
 | A&P feedback loops | claude/tools-v2-anp-feedback-loops | wt-anp-feedback-loops | integrated | |
 | A&P predict | claude/tools-v2-anp-predict | wt-anp-predict | integrated | Explore in its own weight bucket `anatomy-physiology/predict-explore` (34 KB); anp spec decision 104 (103 was taken) |
+| NREMT skill sheets | claude/tools-v2-nremt-skillsheets | wt-nremt-skillsheets | recheck | third NREMT tool on `nremt-kit2.js` (unchanged); Explore `nremt/assets/skill-explore.js`, the run is Test yourself |
 
 2026-11-19: `main` merged in after PR #228 (ochem frame cleanup: chipPicker, scrollChips and .ls-chips-hidden gone; the v2
 conformations, resonance and arrow pusher kept, kit2 kept). Ochem viewer 3d (`claude/tools-v2-viewer-3d`, in review) needs
@@ -43,5 +44,5 @@ never straight to `main`. Nothing else goes live before the one final merge.
 
 Next by use (rollout table):
 NREMT body map (fixing recheck 1), NREMT flowcharts (fixing round 1), Ochem viewer 3d (fixing recheck 1),
-NREMT skillsheets (review round 1), then A&P anatomy 3d, NREMT scenario sim, AP Bio chi square, Ochem reaction
+NREMT skillsheets (recheck 1), then A&P anatomy 3d, NREMT scenario sim, AP Bio chi square, Ochem reaction
 predictor, AP Bio rates (rollout rows 20 to 26).
