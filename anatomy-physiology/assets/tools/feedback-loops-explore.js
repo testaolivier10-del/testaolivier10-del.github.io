@@ -617,7 +617,7 @@
        pelvis so the uterus is the largest thing; the cord leaves the top of the picture toward the magnified brain. */
     var LAY = {
       wide: { w: 1080, h: 540, g: { body: [590, 64, 1], mag: [220, 200, 1.02] }, mon: [772, 108, 290, 300], spread: { mon: 1, mag: -1 } },
-      tall: { w: 600, h: 620, g: { body: [250, -226, 1.75], mag: [86, 94, 0.5] }, mon: [14, 482, 572, 128], crop: true }
+      tall: { w: 600, h: 620, g: { body: [233, -258, 1.95], mag: [80, 86, 0.46] }, mon: [14, 494, 572, 118], crop: true }
     };
     // the woman in profile, facing right (body coordinates: the head's centre at 0,0); the cord runs inside her back
     var CORD = [[-2, 40], [-14, 100], [-20, 160], [-22, 210], [-24, 252]];
@@ -800,7 +800,7 @@
         if(k <= 0 || st.idle) out.push({ key: 'cerv', text: 'Cervix', role: 'str', at: B([51, 362]), side: ['r', 'l', 'd'], strong: k === 0 && !st.idle });
         if(k === 1) out.push({ key: 'sens', text: 'Stretch sensors', role: 'aff', at: B([62, 364]), side: ['r', 'd'], strong: true });
         if(st.idle || k === 0) out.push({ key: 'myo', text: 'Uterine muscle', role: 'mus', at: B([128, 250]), side: ['r', 'u', 'd'], avoid: [utBox(E)], lead: true });
-        if(k === 2) out.push({ key: 'cord', text: 'Spinal cord', role: 'aff', at: B([-34, 160]), side: ['l', 'u'], strong: true });
+        if(k === 2) out.push({ key: 'cord', text: 'Spinal cord', role: 'aff', at: B([-22, 226]), side: ['l', 'r', 'u'], strong: true, lead: true });
         out.push({ key: 'hyp', text: 'Hypothalamus', role: k >= 3 ? 'ctl' : 'tok', at: M([-10, -30]), side: ['u', 'r', 'l'], strong: k === 3 });
         if(k === 4) out.push({ key: 'pit', text: 'Posterior pituitary', role: 'oxy', at: M([-12, 92]), side: ['d', 'l', 'r'], strong: true });
         if(k === 4 && st.effp.length){ var pu = st.effp[0]; if(pu.p > 0.35) out.push({ key: 'oxy', text: 'Oxytocin', role: 'oxy', at: R1(E).eff.at(pu.p), side: ['r', 'l', 'u'], lead: true }); }

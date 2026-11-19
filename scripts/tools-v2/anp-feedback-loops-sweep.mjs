@@ -114,6 +114,31 @@ for (const ws of WIDTHS) {
           const a = A.q, b = B.q, g = 4;
           if (a.left < b.right + g && a.right > b.left - g && a.top < b.bottom + g && a.bottom > b.top - g) out.over.push(A.n + ' / ' + B.n);
         }
+        // a label never covers the part it names (the arteriole, the sweat gland, the shivering muscle, the uterine wall)
+        const PART = { 'Arteriole widens': '[data-r="artl"]', 'Arteriole narrows': '[data-r="artl"]', 'Sweat gland': '[data-r="gland"]', 'Muscle shivers': '[data-r="musg"]', 'Uterine muscle': '[data-r="ut"]', 'Baby born': '[data-r="baby"]' };
+        svgEl.querySelectorAll('.fe-labs .fe-lab').forEach((g) => {
+          const sel = PART[g.getAttribute('data-lab')]; if (!sel) return;
+          const part = svgEl.querySelector(sel); if (!part) return;
+          const a = g.querySelector('rect').getBoundingClientRect(), b0 = part.getBoundingClientRect();
+          // a part drawn inside a magnifier is seen only inside its circle
+          const clip = part.closest('g[clip-path]'), cb = clip ? clip.getBoundingClientRect() : null;
+          const b = cb ? { left: Math.max(b0.left, cb.left), right: Math.min(b0.right, cb.right), top: Math.max(b0.top, cb.top), bottom: Math.min(b0.bottom, cb.bottom) } : b0;
+          const ix = Math.max(0, Math.min(a.right, b.right) - Math.max(a.left, b.left)), iy = Math.max(0, Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top));
+          if (ix * iy > 0.05 * a.width * a.height) out.over.push('label ' + g.getAttribute('data-lab') + ' covers its part');
+        });
+        // childbirth on a phone: the uterus is the largest drawn thing (bigger than the monitor and the magnifier), and
+        // the knob leaves the baby's head in sight
+        if (document.querySelector('.fe-main').getAttribute('data-scene') === 'childbirth') {
+          const ar = (e) => { const q = e.getBoundingClientRect(); return q.width * q.height; };
+          const ut = svgEl.querySelector('[data-r="ut"]'), mag = svgEl.querySelector('.fe-magring'), monb = svgEl.querySelector('.fe-mbez');
+          if (document.querySelector('.fe-pic').getAttribute('data-lay') === 'tall' && ut && (ar(ut) < ar(monb) || ar(ut) < ar(mag))) out.over.push('the uterus is not the largest drawn thing');
+          const head = svgEl.querySelector('.fe-fhead'), kd = document.querySelector('.fe-pic .tk2-handle:not([hidden]) .tk2-dot');
+          if (head && kd && +getComputedStyle(svgEl.querySelector('[data-r="fetus"]')).opacity > 0.5) {
+            const a = head.getBoundingClientRect(), b = kd.getBoundingClientRect();
+            const ix = Math.max(0, Math.min(a.right, b.right) - Math.max(a.left, b.left)), iy = Math.max(0, Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top));
+            if (ix * iy > 0.25 * a.width * a.height) out.over.push('the knob covers the baby\'s head');
+          }
+        }
         // the monitor's and the scale's own words never run into each other
         const tx = [...svgEl.querySelectorAll('.fe-mon text, .fe-ttxt')].map((t) => ({ t: t.textContent, q: t.getBoundingClientRect(), mon: !!t.closest('.fe-mon') })).filter((x) => x.q.width);
         for (let i = 0; i < tx.length; i++) for (let j = i + 1; j < tx.length; j++) { const a = tx[i].q, b = tx[j].q; if (a.left < b.right + 2 && a.right > b.left - 2 && a.top < b.bottom && a.bottom > b.top) out.over.push('text ' + tx[i].t + ' / ' + tx[j].t); }
