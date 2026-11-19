@@ -331,7 +331,7 @@
       },
       state: function(v, br){
         var st = { v: v, k: Math.min(6, Math.floor(v + 0.12)), stop: null };
-        if(br && v >= Math.min(br.at - 0.02, br.step - 0.12)) st.stop = br;
+        if(br && v >= Math.min((br.lim != null ? br.lim : br.at) - 0.01, br.step - 0.12)) st.stop = br;
         st.kick = st.stop ? 0 : ramp(v, 5.6, 5.88);
         st.squeeze = st.stop ? 0 : ramp(v, 5.45, 5.8);
         st.stretch = 1 - ramp(v, 0.88, 1.3);
@@ -484,7 +484,7 @@
       },
       state: function(v, br){
         var st = { v: v, k: Math.min(6, Math.floor(v + 0.12)), stop: null };
-        if(br && v >= Math.min(br.at - 0.02, br.step - 0.12)) st.stop = br;
+        if(br && v >= Math.min((br.lim != null ? br.lim : br.at) - 0.01, br.step - 0.12)) st.stop = br;
         var pit = br && br.id === 'pit', adr = br && br.id === 'adr';
         st.stress = bump(v, -1, 0, 0.5, 1.0);
         st.crh = ramp(v, 0.6, 0.88);                     // CRH released into the stalk's capillaries
@@ -493,7 +493,8 @@
         st.cort = adr || pit ? 0 : ramp(v, 3.6, 3.88);
         st.glu = adr || pit ? 0 : ramp(v, 4.6, 4.88);
         st.brake = adr || pit ? 0 : ramp(v, 5.6, 5.88);
-        st.pile = st.stop ? ramp(v, st.stop.step - 0.4, st.stop.step - 0.12) : 0;   // no cortisol, no brake: the hormone above the break builds up
+        var s0 = br ? Math.min((br.lim != null ? br.lim : br.at) - 0.01, br.step - 0.12) : 0;
+        st.pile = st.stop ? ramp(v, s0 - 0.3, s0) : 0;   // no cortisol, no brake: the hormone above the break builds up
         st.pit = pit; st.adr = adr;
         return st;
       },
@@ -615,7 +616,7 @@
       },
       state: function(v, br){
         var st = { v: v, k: Math.min(8, Math.floor(v + 0.12)), stop: null, ca: !!(br && br.id === 'ca'), rec: !!(br && br.id === 'rec') };
-        if(br && v >= Math.min(br.at - 0.02, br.step - 0.12)) st.stop = br;
+        if(br && v >= Math.min((br.lim != null ? br.lim : br.at) - 0.01, br.step - 0.12)) st.stop = br;
         st.caIn = st.ca ? 0 : bump(v, 0.7, 0.88, 1.88, 2.2);
         st.fuse = st.ca ? 0 : ramp(v, 1.7, 1.88);
         st.release = st.ca ? 0 : ramp(v, 1.7, 1.88);
@@ -900,8 +901,8 @@
       if(cur.br) return;
       cur.br = b; cur.pillsSeen = true;
       // a new signal starts if the old one had already passed the break (the cut does not undo what happened)
-      if(view.v > b.at){ jumpTo(0, true); }
-      if(handle && !b.pass) handle.value(Math.min(handle.value(), b.at), false);
+      var m = lim();
+      if(view.v > (b.pass ? b.at : m)){ jumpTo(0, true); }
       paintCuts(); placePills(); wKey = ''; railKey = ''; draw();
       say(b.name + '. Drag the ' + cur.thing + ' again.');
       var hk = handle && handle.knob; if(hk) try{ hk.focus({ preventScroll: true }); }catch(e){}
@@ -916,7 +917,18 @@
     });
 
     /* ---- the knob on the route */
-    function lim(){ return cur.br && !cur.br.pass ? cur.br.at : cur.last; }
+    // a stopped run halts a knob's width before the break, so the cut, damage or block stays in sight
+    function lim(){
+      var b = cur.br;
+      if(!b || b.pass) return cur.last;
+      var key = cur.id + b.id + (E.k || 1).toFixed(3);
+      if(b._key !== key){
+        var p0 = cur.route.at(b.at), need = 30 / (E.k || 1) + 6, v = b.at;
+        while(v > 0 && Math.hypot(cur.route.at(v)[0] - p0[0], cur.route.at(v)[1] - p0[1]) < need) v -= 0.01;
+        b.lim = Math.max(0, +v.toFixed(2)); b._key = key;
+      }
+      return b.lim;
+    }
     function makeHandle(){
       if(handle){ handle.el.remove(); handle = null; }
       handle = K.handle(layer, { key: 'anp-pathways-knob', label: 'Move ' + cur.token + ' along the ' + cur.tab.toLowerCase(), value: view.target, min: 0, max: cur.last, step: 1, chip: false,
@@ -1095,6 +1107,7 @@
       _scenes: scenes, _view: view, _go: go,
       _break: function(id){ var b = (cur.breaks || []).filter(function(x){ return x.id === id; })[0]; if(b){ try{ localStorage.setItem('pe-end:' + cur.id, '1'); }catch(e){} breakIt(b); } },
       _reset: function(){ reset.click(); },
+      _lim: function(){ return lim(); },
       _st: function(){ return { st: lastSt, words: cur.words(lastSt).map(function(p){ return p.t; }), labels: [].map.call(labs.querySelectorAll('.pe-lab'), function(g){ return g.getAttribute('data-lab'); }), tok: tok.getAttribute('class') }; },
       _frame: function(v){ if(raf){ cancelAnimationFrame(raf); raf = 0; } view.v = view.target = cur.v = v; if(handle) handle.value(v, false); draw(); }   // the frame tests draw one moment
     };

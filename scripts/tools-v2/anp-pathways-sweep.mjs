@@ -24,9 +24,9 @@ const WIDTHS = arg('--width', '') ? [+arg('--width', '')] : ALL;
 // every step, the moments between where things change, the end, and each break (b:<id> then the token at the break)
 const STATES = {
   heart: [0, 0.6, 1, 2, 2.6, 3, 4, 4.8, 5, 6, 6.6, 7, 8, 8.6, 9, 10, 10.8, 11, 12, 13, 'b:air', 5, 11, 13],
-  reflex: [0, 0.5, 1, 2, 3, 3.3, 4, 5, 5.7, 6, 'b:dorsal', 2.42, 'r', 'b:ventral', 3.62],
-  hormone: [0, 1, 1.6, 2, 3, 4, 5, 5.2, 6, 'b:pit', 2.92, 'r', 'b:adr', 4],
-  synapse: [0, 1, 2, 2.6, 3, 4, 4.6, 5, 6, 6.6, 7, 7.5, 8, 'b:ca', 0.95, 'r', 'b:rec', 3.95]
+  reflex: [0, 0.5, 1, 2, 3, 3.3, 4, 5, 5.7, 6, 'b:dorsal', 'L', 'r', 'b:ventral', 'L'],
+  hormone: [0, 1, 1.6, 2, 3, 4, 5, 5.2, 6, 'b:pit', 'L', 'r', 'b:adr', 'L'],
+  synapse: [0, 1, 2, 2.6, 3, 4, 4.6, 5, 6, 6.6, 7, 7.5, 8, 'b:ca', 'L', 'r', 'b:rec', 'L']
 };
 const exe = '/opt/pw-browsers/chromium-1243/chrome-linux64/chrome';
 const browser = await chromium.launch({ executablePath: exe });
@@ -79,14 +79,16 @@ for (const w of WIDTHS) {
     await page.waitForTimeout(150);
     const shots = [];
     for (const s of STATES[tab]) {
-      if (typeof s === 'string') {
+      if (s === 'L') { await page.evaluate(() => { const A = window.AnpPathExplore.current; A._frame(A._lim()); }); await page.waitForTimeout(120); }
+      else if (typeof s === 'string') {
         if (s === 'r') await page.evaluate(() => window.AnpPathExplore.current._reset());
         else await page.evaluate((id) => window.AnpPathExplore.current._break(id), s.slice(2));
         await page.waitForTimeout(350);
         continue;
+      } else {
+        await page.evaluate((v) => window.AnpPathExplore.current._frame(v), s);
+        await page.waitForTimeout(120);
       }
-      await page.evaluate((v) => window.AnpPathExplore.current._frame(v), s);
-      await page.waitForTimeout(120);
       const r = await page.evaluate(() => {
         const out = { clip: [], over: [], big: null, lines: null, scroll: 0, fit: [] };
         const pic = document.querySelector('.pe-pic').getBoundingClientRect();

@@ -67,7 +67,8 @@ for (const tab of Object.keys(RULES)) {
       const R = rules.map((r) => [r[0], new Function('s', 'return (' + r[1] + ')(s)'), r[2]]), L = labels.map((l) => [l[0], new Function('s', 'return (' + l[1] + ')(s)')]);
       const bad = []; let n = 0;
       const lim = br ? A._scenes.filter((x) => x.id === t)[0].breaks.filter((b) => b.id === br)[0] : null;
-      const top = lim && !lim.pass ? lim.at : last;
+      if (lim && !lim.pass) A._frame(0);
+      const top = lim && !lim.pass ? (lim.lim != null ? lim.lim : lim.at) : last;
       for (let v = 0; v <= top + 1e-9; v += 0.01) {
         A._frame(+v.toFixed(2)); n++;
         const f = A._st(), w = f.words.join(' | ');
