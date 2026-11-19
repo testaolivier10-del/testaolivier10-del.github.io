@@ -1367,3 +1367,30 @@ test('arrow pusher v2: a push that cannot happen is rejected with its reason', (
   assert.equal(M.outcome(st, [{ from: 'nucO', to: 'bond:c2-m1' }]).err.code, 'not-adjacent');
   assert.equal(M.outcome(st, [{ from: 'bond:c1-br', to: 'br' }]).kind, 'step', 'ionization alone is a legal step');
 });
+
+test('arrow pusher v2: "O⁻ leaving: poor" only where an oxide leaves a carbon on its own (review round 1)', () => {
+  const s = apModel(), M = s.OchemArrowModel, A = s.OchemArrowChallenge;
+  // the Claisen's second step: the tetrahedral intermediate collapses and ethoxide leaves (fine, no note)
+  const c = A.CHALLENGES.find(x => x.id === 'claisen');
+  let st = M.startOf(c.mol, false); st = M.stepTo(st, M.arrowsOf(c.steps[0]));
+  const next = M.stepTo(st, M.arrowsOf(c.steps[1]));
+  assert.ok(!M.plausibility(st, next).some(n => /O⁻ leaving/.test(n.short)), 'the Claisen collapse is flagged');
+  // the acyl substitution pushed back (methoxide expelled as the C=O re-forms): fine too
+  const ac = M.pathOf(M.MECHS.find(m => m.id === 'acetyl-chloride-nu'));
+  const back = M.stepTo(ac[1].st, [{ from: 'o1', to: 'bond:c-o1' }, { from: 'bond:c-nuO', to: 'nuO' }]);
+  assert.ok(!M.plausibility(ac[1].st, back).some(n => /O⁻ leaving/.test(n.short)), 'methoxide leaving a tetrahedral intermediate is flagged');
+  // hydroxide leaving a saturated carbon on its own: flagged
+  const eth = M.pathOf(M.MECHS[0])[1].st;
+  const lost = M.stepTo(eth, [{ from: 'bond:c1-nucO', to: 'nucO' }]);
+  assert.ok(M.plausibility(eth, lost).some(n => /O⁻ leaving/.test(n.short) && n.pill), 'hydroxide leaving on its own is not flagged');
+});
+
+test('arrow pusher v2: a hand drawn intermediate is used where molecules.js has one; a phone stacks two wide species', () => {
+  const s = apModel(), M = s.OchemArrowModel, A = s.OchemArrowChallenge, Mol = s.OchemMolecules;
+  const c = A.CHALLENGES.find(x => x.id === 'claisen'), st = M.startOf(c.mol, false), mid = M.stepTo(st, M.arrowsOf(c.steps[0]));
+  const rec = Mol.get('claisen-tetrahedral').atoms, dx = mid.atoms.c2.x - rec.c2.x, dy = mid.atoms.c2.y - rec.c2.y;
+  for (const k of Object.keys(rec)) { assert.ok(Math.abs(mid.atoms[k].x - rec[k].x - dx) < 0.01 && Math.abs(mid.atoms[k].y - rec[k].y - dy) < 0.01, `${k} is not where the hand drawing puts it`); }
+  const wide = M.startOf('enolate-plus-ester', false), tall = M.startOf('enolate-plus-ester', true);
+  const span = (x) => { const v = Object.values(x.atoms); return [Math.max(...v.map(a => a.x)) - Math.min(...v.map(a => a.x)), Math.max(...v.map(a => a.y)) - Math.min(...v.map(a => a.y))]; };
+  assert.ok(span(tall)[0] < span(wide)[0] * 0.7 && span(tall)[1] > span(wide)[1], 'the phone layout is not stacked');
+});
