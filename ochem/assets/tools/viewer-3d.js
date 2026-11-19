@@ -596,7 +596,7 @@
   function setMol(m, o){
     o = o || {};
     if(!m) return;
-    hideCue(true);
+    if(o.how) hideCue(true);
     var first = !PA.mol();
     stopTweens(true);
     var swap = function(){
@@ -638,7 +638,7 @@
   /* after a turn settles: an arc that has gone edge on moves to a pair that faces the viewer, drawn in again */
   function rePair(){
     if(S.tab !== 'shape' || !D.ready || drillHides()) return;
-    if(choosePair(false)){ D.arcT = 0; tween(260, function(u){ D.arcT = u; }); }
+    if(choosePair(false)){ D.ready = false; D.arcT = 0; cause.el.classList.add('is-wait'); tween(260, function(u){ D.arcT = u; }, function(){ settle(); }); }
   }
   function selectAtom(i, how){
     if(S.tab !== 'shape' || !E.mol.atoms[i]) return;
@@ -657,21 +657,29 @@
     D.ready = true; D.selT = 1; D.arcT = 1; D.grow = 1; D.fade = 1;
     cause.el.classList.remove('is-wait');
     words();
-    if(S.tab === 'shape' && !drillHides()) quietPick('a' + E.sel);
-    // Name the shape keeps the pins hidden until Check; they come back with the answer
+    // Name the shape keeps the pins hidden until Check; they come back with the answer (shown first, so the card
+    // is measured on screen)
     if(spots) spots.hide(drillHides());
     paint();
+    if(S.tab === 'shape' && !drillHides()){ quietPick('a' + E.sel); paint(); }
   }
 
   function drillHides(){ return S.mode === 'quiz' && S.part === 'predict' && !task.done; }
 
+  /* the tapped atom as drawn: its angle is the one the arc shows */
+  function drawnAtom(){
+    var r = readAtom(E.mol, E.sel);
+    if(r && E.pair && E.pairFor === E.mol && E.pairAt === E.sel){ r.pair = E.pair; r.angle = E.pair.deg; }
+    return r;
+  }
   function frameShape(){
     var lay = L, mol = E.mol, F = fitIn(lay.regA, mol, E.zoom);
     var hideAns = drillHides();
-    var r = readAtom(mol, E.sel);
+    var r = drawnAtom();
     var P = { rx: E.rx, ry: E.ry, cx: F.cx, cy: F.cy, scale: F.scale, style: E.style, letters: E.letters && !hideAns, allLp: E.allLp,
-      sel: E.sel, selT: D.selT, prev: D.prev, prevT: D.prevT, grow: D.grow, pair: E.pair && E.pairFor === mol && E.pairAt === E.sel ? E.pair : r && r.pair, showArc: !hideAns, arcT: D.arcT };
+      sel: E.sel, selT: D.selT, prev: D.prev, prevT: D.prevT, grow: D.grow, pair: r && r.pair, showArc: !hideAns, arcT: D.arcT };
     var pts = PA.draw(P);
+    lastPts.shape = pts;
     gA.style.opacity = D.fade == null ? 1 : String(D.fade);
     // the shadow on the bench, under the molecule's drawn width
     shadowB.style.display = 'none';
@@ -690,7 +698,7 @@
       var e = lab('ang', 'is-angle'); e.textContent = fmtDeg(r.angle);
       var ps = pts[E.sel], mx = arc.mid.x - ps.x, my = arc.mid.y - ps.y, ml = Math.sqrt(mx * mx + my * my) || 1, ux = mx / ml, uy = my / ml;
       var cands = [];
-      [18, 30, 44, 60, 78].forEach(function(dd){ [0, 0.5, -0.5, 1, -1].forEach(function(t){
+      [18, 30, 44, 60, 78, 100, 124].forEach(function(dd){ [0, 0.5, -0.5, 1, -1, 1.6, -1.6, 2.4, -2.4].forEach(function(t){
         var c = Math.cos(t), s = Math.sin(t), vx = ux * c - uy * s, vy = ux * s + uy * c;
         cands.push([arc.mid.x + vx * dd, arc.mid.y + vy * dd]);
       }); });
@@ -712,6 +720,7 @@
     var base = { rx: Hd.rx, ry: Hd.ry, style: E.style === 'space' ? 'ball' : E.style, letters: true, allLp: false, sel: null, selT: 0, prev: null, prevT: 0, grow: 1 };
     var ptsA = PA.draw(Object.assign({}, base, { cx: FA.cx, cy: FA.cy, scale: s }));
     var ptsB = PB.draw(Object.assign({}, base, { cx: FB.cx, cy: FB.cy, scale: s, mirror: mirror }));
+    lastPts.hand = ptsA;
     gA.style.opacity = 1; gB.style.opacity = 1;
     // the mirror: a glass pane standing on the bench (side by side) or lying under the molecule (stacked)
     mirrorEl.style.display = '';
@@ -826,7 +835,7 @@
   function words(){
     if(S.tab !== 'shape') return;
     if(drillHides()){ cause.set([{ t:'Name the shape of the ringed atom', role:'ink' }]); return; }
-    var r = readAtom(E.mol, E.sel);
+    var r = drawnAtom();
     cause.set(causeParts(r));
     say((E.mol.name ? E.mol.name + ', ' : '') + (r ? (NAMES[r.el] || r.el) + ': ' : '') + cause.text());
   }
@@ -1363,7 +1372,8 @@
   })();
   if(window.ResizeObserver) new ResizeObserver(function(){ L = null; layoutNow(); paint(); if(cueOn()) cue.place(); }).observe(sceneBox);
   else window.addEventListener('resize', function(){ L = null; layoutNow(); paint(); });
-  if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ paint(); });
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ paint(); if(S.mode === 'explore' && !cueOn()) showCue(); });
+  if(S.mode === 'explore') showCue();
   window.OchemViewer3DModel.view = { state: function(){ return { tab: S.tab, mode: S.mode, part: S.part, mol: E.mol.id, sel: E.sel, rx: E.rx, ry: E.ry, hand: { rx: Hd.rx, ry: Hd.ry }, read: handRead, ready: D.ready, style: E.style }; },
     pts: function(){ return S.tab === 'shape' ? lastPts.shape : lastPts.hand; }, select: function(i){ selectAtom(i, 'tap'); }, setMol: function(id){ setMol(LIB.get(id), { how:'pick' }); },
     turn: function(rx, ry){ var v = view(); v.rx = rx; v.ry = ry; paint(); }, tab: function(t){ setTab(t, true); } };
