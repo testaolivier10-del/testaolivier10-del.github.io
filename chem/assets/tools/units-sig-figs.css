@@ -103,11 +103,13 @@
 .us3-card.is-turn .us3-face{animation:us3-turn .33s ease-in-out;}
 @keyframes us3-turn{0%{transform:scaleY(1);}48%{transform:scaleY(.04);}52%{transform:scaleY(.04);}100%{transform:scaleY(1);}}
 .us3-h{display:flex;flex-direction:column;align-items:center;gap:0;line-height:1.15;min-width:0;}
-.us3-v{font:800 15px var(--font-mono);color:var(--ink);white-space:nowrap;}
-.us3-u{position:relative;font:900 17px var(--font-ui);color:var(--u-x-ink);padding:0 3px;}
-.us3-u.is-mL{color:var(--u-mL-ink);} .us3-u.is-L{color:var(--u-L-ink);} .us3-u.is-g{color:var(--u-g-ink);} .us3-u.is-mol{color:var(--u-mol-ink);} .us3-u.is-molecules{color:var(--u-molecules-ink);}
-.us3-u::after{content:"";position:absolute;left:-3px;right:-3px;top:52%;height:3px;margin-top:-1.5px;border-radius:2px;background:var(--ink);transform:rotate(-18deg) scaleX(0);transform-origin:0 50%;transition:transform .2s ease-out;}
-.us3-u.is-x{opacity:.55;transition:opacity .2s;} .us3-u.is-x::after{transform:rotate(-18deg) scaleX(1);}
+.us3-v{font:800 calc(15px * var(--us3-k, 1)) var(--font-mono);color:var(--ink);white-space:nowrap;}
+.us3-u{--uc:var(--u-x-ink);position:relative;font:900 calc(17px * var(--us3-k, 1)) var(--font-ui);color:var(--uc);padding:0 3px;}
+.us3-u.is-mL{--uc:var(--u-mL-ink);} .us3-u.is-L{--uc:var(--u-L-ink);} .us3-u.is-g{--uc:var(--u-g-ink);} .us3-u.is-mol{--uc:var(--u-mol-ink);} .us3-u.is-molecules{--uc:var(--u-molecules-ink);}
+/* a cancelled unit: its text fades, and a strike in the unit's own colour crosses it, so the two struck halves of a pair match */
+.us3-u::after{content:"";position:absolute;left:-4px;right:-4px;top:52%;height:3.5px;margin-top:-1.75px;border-radius:2px;background:var(--uc);transform:rotate(-18deg) scaleX(0);transform-origin:0 50%;transition:transform .2s ease-out;}
+.us3-u.is-x{color:color-mix(in srgb, var(--uc) 45%, transparent);transition:color .2s;} .us3-u.is-x::after{transform:rotate(-18deg) scaleX(1);}
+.us3-card.is-fly .us3-x{visibility:hidden;}
 .us3-bar{width:78%;height:2.5px;border-radius:2px;background:var(--ink);opacity:.85;}
 .us3-x{all:unset;position:absolute;top:-12px;right:-12px;width:32px;height:32px;display:grid;place-items:center;cursor:pointer;z-index:2;}
 .us3-x span{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ink);color:var(--paper);font:900 15px/1 var(--font-ui);box-shadow:0 1px 3px rgba(0,0,0,.25);}
@@ -116,9 +118,9 @@
 .us3-card.is-tray > .us3-op,.us3-card.is-wrap > .us3-op{display:none;}
 .us3-card.is-start,.us3-card.is-res{display:grid;grid-template-rows:1fr auto;align-items:center;justify-items:center;padding:8px 6px;border-radius:10px;background:var(--paper);border:1.5px solid var(--card-edge);box-shadow:0 2px 0 var(--card-edge),0 6px 14px rgba(30,40,50,.12);text-align:center;}
 .us3-card.is-res{border:2.5px solid var(--ink);box-shadow:0 2px 0 var(--card-edge);transition:left .36s cubic-bezier(.3,.7,.3,1),top .36s cubic-bezier(.3,.7,.3,1);}
-.us3-name{font:700 12px var(--font-ui);color:var(--muted);}
-.us3-card.is-res .us3-v,.us3-card.is-start .us3-v{font-size:17px;}
-.us3-card.is-res .us3-u,.us3-card.is-start .us3-u{font-size:18px;}
+.us3-name{font:700 calc(12px * var(--us3-k, 1)) var(--font-ui);color:var(--muted);}
+.us3-card.is-res .us3-v,.us3-card.is-start .us3-v{font-size:calc(17px * var(--us3-k, 1));}
+.us3-card.is-res .us3-u,.us3-card.is-start .us3-u{font-size:calc(18px * var(--us3-k, 1));}
 .us3-tag{position:absolute;min-width:116px;padding:7px 10px 8px;border-radius:6px 14px 14px 6px;background:var(--paper);border:1.5px solid var(--card-edge);box-shadow:0 3px 10px rgba(30,40,50,.16);
   display:flex;flex-direction:column;align-items:center;pointer-events:none;transform:translate(-50%,-50%) rotate(-2deg);border-radius:8px;}
 .us3-tag-v{font:800 17px var(--font-mono);color:var(--ink);white-space:nowrap;}
@@ -145,12 +147,21 @@
 .us3-code .bt-code{margin:0;font-size:13px;color:var(--muted);}
 .us3-lenspad{position:absolute;border-radius:50%;cursor:ns-resize;touch-action:none;}
 .us3-lenspad.is-drag{cursor:grabbing;}
-@media (max-width:640px){ .us3 .tk2-cause{min-height:68px;align-content:flex-start;} }
 /* a unit that does not simplify (a turned over card) wraps inside its card and the tag */
-.us3-u.is-mix,.us3-tag-u.is-mix{font-size:13.5px;line-height:1.15;overflow-wrap:anywhere;text-align:center;max-width:100%;}
-.us3-card.is-res .us3-u.is-mix{font-size:13.5px;}
+.us3-u.is-mix,.us3-tag-u.is-mix{font-size:13.5px;line-height:1.15;overflow-wrap:normal;word-break:keep-all;text-align:center;max-width:100%;}
+.us3-card.is-res .us3-u.is-mix{font-size:calc(13.5px * var(--us3-k, 1));}
+.us3-card.is-res .us3-u.is-long,.us3-tag-u.is-long{font-size:12.5px;}
+@media (max-width:699px){ .us3-card.is-res .us3-u.is-mix{font-size:12.5px;} .us3-card.is-res .us3-u.is-long,.us3-tag-u.is-long{font-size:11.5px;} }
 .us3-card.is-res .us3-h{max-width:100%;}
 .us3-card.is-res .us3-v{white-space:normal;font-size:15px;}
 .us3-card.is-res.is-stale,.us3-tag.is-stale{opacity:.35;transition:opacity .15s;}
 .us3-v.is-long{font-size:13px;letter-spacing:-.02em;}
 @media (max-width:699px){ .us3-v.is-long{font-size:12px;} }
+/* no dashed shapes that could be read as parts of the picture: a solid soft ring for the cylinder to tap, a solid faint track */
+.us3 .tk2-tap{border:2px solid color-mix(in srgb, var(--cink) 30%, transparent);}
+.us3 .tk2-groove::before{background:color-mix(in srgb, var(--cink) 20%, transparent);}
+/* the pour: the stream from the spout */
+.us3-stream{fill:none;stroke:color-mix(in srgb, var(--wline) 70%, var(--w1));stroke-linecap:round;}
+/* the grip on the magnifier's rim: the water can be dragged in the magnifier */
+.us3-grip rect{fill:var(--white);stroke:var(--cink);stroke-width:2.5;}
+.us3-grip path{fill:none;stroke:var(--cink);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;}

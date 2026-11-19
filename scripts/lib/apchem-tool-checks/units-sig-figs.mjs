@@ -102,11 +102,11 @@ function explore(E, M, errs) {
   if (r.sf !== 3) errs.push('explore: the chain should keep 3 significant figures (250. mL and 1.00 g/mL)');
   if (M.units.chain(C.start, [{ ...ord[0], flip: true }]).pairs.length) errs.push('explore: a flipped factor must cancel nothing');
   const R = E.read, ins = Object.fromEntries((R.instruments || []).map(x => [x.id, x]));
-  if (!ins.cylinder || !ins.beaker || ins.cylinder.every !== 1 || ins.beaker.every !== 10) errs.push('explore: a graduated cylinder (1 mL marks) and a beaker (10 mL marks) are expected');
+  if (!ins.cylinder || !ins.coarse || ins.cylinder.every !== 1 || ins.coarse.every !== 10) errs.push('explore: two graduated cylinders, one with 1 mL marks and one with 10 mL marks, are expected');
   else {
-    if (!(R.min >= 2 && R.max <= Math.min(ins.cylinder.cap, ins.beaker.cap) && R.value >= R.min && R.value <= R.max)) errs.push('explore: the water range must fit both vessels');
+    if (!(R.min >= 2 && R.max <= Math.min(ins.cylinder.cap, ins.coarse.cap) && R.value >= R.min && R.value <= R.max)) errs.push('explore: the water range must fit both vessels');
     for (let v = 10.5; v <= R.max + 1e-9; v += 0.1) {
-      const a = M.units.read(v, ins.cylinder), b = M.units.read(v, ins.beaker);
+      const a = M.units.read(v, ins.cylinder), b = M.units.read(v, ins.coarse);
       if (a.sf - b.sf !== 1 || Math.abs(a.value - v) > 0.05 + 1e-9 || Math.abs(b.value - v) > 0.5 + 1e-9) { errs.push(`explore: the reading at ${v.toFixed(1)} mL is wrong`); break; }
     }
   }

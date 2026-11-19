@@ -11,9 +11,10 @@
      it (a flipped card cancels nothing and the result's unit shows it); its × takes it off. The water never
      changes: only its number and unit do. Cause line: "mL cancels → g cancels → 13.9 mol".
    2 Significant figures. A graduated cylinder on the bench with a magnifier on its meniscus. Drag the water:
-     the reading shows the digits read from the marks (blue) and one estimated digit (vermillion). Tap the beaker
-     standing beside it to read the same water with marks every 10 mL instead of every 1 mL: one digit fewer is
-     real. Cause line: "marks every 1 mL → 33 from the marks → 7 estimated → 3 significant figures".
+     the reading shows the digits read from the marks (blue) and one estimated digit (vermillion). Tap the coarse
+     cylinder standing beside it (marks every 10 mL instead of every 1 mL): the water is poured into it, a real
+     pour (lift, tilt over it, a stream while one level falls and the other rises, set down), and the same water
+     reads one digit fewer. Cause line: "marks every 1 mL → 33 from the marks → 7 estimated → 3 significant figures".
 
    Two modes (the rule for every tool): EXPLORE is free play (nothing locked, graded or asked; no side panel).
    TEST YOURSELF, one dropdown: the graded problems as before (Any habit, or one habit; value, unit and
@@ -36,6 +37,8 @@
   function f1(x){ return (+x).toFixed(1); }
   function supU(u){ return String(u).replace(/\^(\d)/g, function(m, d){ return '⁰¹²³⁴⁵⁶⁷⁸⁹'.charAt(+d); }); }
   function uKey(u){ return UNITS.indexOf(u) > -1 ? u : 'mix'; }
+  // a long unit may break only after "·" or "/" (never inside a word): the CSS keeps words whole
+  function uHtml(u, esc){ return esc(u).replace(/([·\/])/g, '$1<wbr>'); }
 
   function boot(){
     var K = window.LevlKit2, M = window.ApChemMath;
@@ -148,9 +151,9 @@
         resEl.hidden = !S.chain.length;
         var resU = resEl.querySelector('.us3-u');
         resEl.querySelector('.us3-v').textContent = U.sigText(r.value, r.sf);
-        resU.textContent = supU(r.unit); resU.className = 'us3-u is-' + uKey(r.unit);
+        resU.innerHTML = uHtml(supU(r.unit), esc); resU.className = 'us3-u is-' + uKey(r.unit) + (r.unit.length > 11 ? ' is-long' : '');
         tagEl.querySelector('.us3-tag-v').textContent = U.sigText(r.value, r.sf);
-        var tu = tagEl.querySelector('.us3-tag-u'); tu.textContent = supU(r.unit); tu.className = 'us3-tag-u is-' + uKey(r.unit);
+        var tu = tagEl.querySelector('.us3-tag-u'); tu.innerHTML = uHtml(supU(r.unit), esc); tu.className = 'us3-tag-u is-' + uKey(r.unit) + (r.unit.length > 11 ? ' is-long' : '');
         tagEl.classList.remove('is-new'); void tagEl.offsetWidth; if(S.chain.length || tagEl.getAttribute('data-was') !== r.text) tagEl.classList.add('is-new');
         tagEl.setAttribute('data-was', r.text);
         clearB.hidden = !S.chain.length;
@@ -159,7 +162,13 @@
         refHtml();
         layoutCards(true);
       }
-      function addCard(id){ if(inChain(id) > -1 || S.chain.length >= FAC.length) return; S.chain.push({ id: id, flip: false }); paintCard(id); tourDid('add'); changed('add'); }
+      function addCard(id){
+        if(inChain(id) > -1 || S.chain.length >= FAC.length) return;
+        S.chain.push({ id: id, flip: false }); paintCard(id); tourDid('add');
+        // its × shows once it has landed on the board
+        var w = CEL[id]; if(!K.reduced()){ w.classList.add('is-fly'); clearTimeout(w._fly); w._fly = setTimeout(function(){ w.classList.remove('is-fly'); }, 380); }
+        changed('add');
+      }
       function removeCard(i){ var id = S.chain[i].id; S.chain.splice(i, 1); paintCard(id); var f = CEL[id].querySelector('.us3-face'); try{ f.focus({ preventScroll: true }); }catch(e){} changed('remove'); }
       function flipCard(i){
         var c = S.chain[i], w = CEL[c.id];
@@ -208,13 +217,16 @@
           g.need = g.trayY + 2 * g.ch + 10 + 18;
           g.fx = Math.max(54, (g.trayX - 6) / 2 + 2); g.fh = Math.min(200, g.need - g.bench - 14); g.fy = g.need - 26;
         } else {
-          g.bench = Math.round(H * 0.66);
           g.fh = Math.min(H * 0.62, 330); g.fx = clamp(W * 0.115, 96, 190); g.fy = H - Math.max(26, H * 0.07);
           g.bx0 = Math.round(g.fx + g.fh * 0.36 + 34); g.bx1 = W - 18; g.by0 = 16;
           var inner2 = g.bx1 - g.bx0 - 32;
+          // a wide board: the cards grow with it so the whole chain still fits one row and the board is not empty
+          if(W >= 960){ g.cw = clamp(Math.floor((inner2 + g.op) / (FAC.length + 2) - g.op), 108, 168); g.ch = clamp(Math.round(g.cw * 1.12), 116, Math.round(H * 0.3)); }
+          g.k = Math.max(1, Math.min(1.35, g.ch / 120));
+          g.bench = Math.min(Math.round(H * 0.66), H - g.ch - 30);
           g.per = Math.max(3, Math.floor((inner2 + g.op) / (g.cw + g.op)));
           g.rows = Math.ceil((FAC.length + 2) / g.per);
-          var bh = g.rows * g.ch + (g.rows - 1) * g.gap + 2 * clamp(H * 0.07, 34, 56);
+          var bh = g.rows * g.ch + (g.rows - 1) * g.gap + 2 * clamp(H * (g.rows > 1 ? 0.07 : 0.1), 34, 64);
           g.by0 = Math.max(14, Math.round((g.bench - 8 - bh) / 2)); g.by1 = Math.min(g.bench - 18, g.by0 + bh);
           g.trayY = g.bench + Math.max(14, (H - g.bench - g.ch) / 2 - 4); g.tcols = FAC.length;
           var tw2 = FAC.length * g.cw + (FAC.length - 1) * 18;
@@ -316,26 +328,101 @@
         cLevel.input.setAttribute('aria-label', 'Water in the ' + instNow().name.toLowerCase());
         cSwap.el.setAttribute('aria-label', 'Pour the water into the ' + other().name.toLowerCase());
         if(K.reduced()){ swap = null; layoutRead(); crossSvg(); readWords(); say(cause.text()); refHtml(); return; }
-        swap = { from: from, to: to, t0: now() };
-        stage.classList.add('is-moving'); cLevel.hide(true); cSwap.el.hidden = true;
-        readWords();
+        swap = { from: from, to: to, t0: now(), plan: pourPlan(from, to), phase: '' };
+        stage.classList.add('is-moving'); cLevel.hide(true); cSwap.el.hidden = true; lensPad.hidden = true;
         (function step(){
           if(!swap) return;
-          var f = Math.min(1, (now() - swap.t0) / 900);
+          var f = swap.hold != null ? swap.hold : Math.min(1, (now() - swap.t0) / POUR_MS);
           drawRead(f);
           if(f < 1) requestAnimationFrame(step);
           else { swap = null; stage.classList.remove('is-moving'); layoutRead(); readWords(); say(cause.text()); refHtml(); }
         })();
       }
+      /* ---- the pour, drawn as it happens. Both cylinders hold 50 mL, so while the water moves they are drawn the
+         same size (sp). The full one is lifted clear of the empty one (its lowest point always above the empty one's
+         mouth, so they never overlap), tilted toward it until the water reaches its spout; a stream runs from the
+         spout while its level falls and the other rises (the water in the tilted one stays level and its area is
+         the volume left), then it is set down small where the empty one stood and the full one becomes the one read.
+         Phases of f (0 to 1 over POUR_MS): lift .00-.12, move over .12-.26, tilt until the water reaches the spout
+         .26-.36, tilt slowly while it pours .36-.70, tip the last out .70-.74, tilt back .74-.80, move away .80-.86,
+         set down .86-.93, the full one takes the middle .93-1. */
+      // for the sweep and the review shots only: hold the pour at a frame (null lets it run on from there)
+      svg.__pourHold = function(f){ if(!swap) return false; if(f == null){ swap.t0 = now() - swap.hold * POUR_MS; swap.hold = null; } else swap.hold = f; return true; };
+      var POUR_MS = 2600, TILT = 112 * Math.PI / 180, LAG = 0.045;
+      var PH = { a: 0.12, b: 0.26, c1: 0.36, c2: 0.70, c: 0.74, d: 0.80, e: 0.86, f: 0.93 };
+      function seg(f, a, b){ return ease(clamp((f - a) / (b - a), 0, 1)); }
+      function lerp(a, b, t){ return a + (b - a) * t; }
+      function rotPt(o, a, b, phi){ var c = Math.cos(phi), sn = Math.sin(phi); return [o[0] + a * c + b * sn, o[1] + a * sn - b * c]; }
+      function clipBelow(poly, y){   // the part of a convex polygon below the line y (screen y grows down)
+        var out = [];
+        for(var i = 0; i < poly.length; i++){
+          var p = poly[i], q = poly[(i + 1) % poly.length], pin = p[1] >= y, qin = q[1] >= y;
+          if(pin) out.push(p);
+          if(pin !== qin){ var t = (y - p[1]) / (q[1] - p[1]); out.push([p[0] + (q[0] - p[0]) * t, y]); }
+        }
+        return out;
+      }
+      function polyArea(P){ var a = 0; for(var i = 0; i < P.length; i++){ var p = P[i], q = P[(i + 1) % P.length]; a += p[0] * q[1] - q[0] * p[1]; } return Math.abs(a) / 2; }
+      function pourPlan(from, to){
+        var g = G, V = VES.cylinder, hw = V.w / 2, d = g.sx < mX(to) ? 1 : -1, gap = 10;
+        var sp = Math.min(vScale(from), (g.floor - gap - 8) / (2 * (V.h + 4)));
+        var Ym = g.floor - V.h * sp, mm = (V.y50 - V.y0) / 50;
+        // outline (foot and mouth) and inside, in the vessel's own units, mirrored so the spout faces the other one
+        var OUT = [[-60, 0], [60, 0], [-(hw + 10), V.h], [hw + 4, V.h]].map(function(p){ return [-d * p[0], p[1]]; });
+        var IN = [[-(hw - WALL), V.y0], [hw - WALL, V.y0], [hw - WALL, V.h - 4], [-(hw - WALL), V.h - 4]];
+        var LIP = [d * (hw + 10), V.h];
+        var P = { d: d, sp: sp, Ym: Ym, gap: gap, xR: mX(to), from: from, to: to, perMl: (2 * (hw - WALL)) * mm * sp * sp, LIP: LIP };
+        // the pose at tilt th with the spout at x lipX: the lowest point of the vessel sits gap above the other's mouth
+        P.pose = function(th, lipX){
+          var phi = d * th, rel = function(p){ return rotPt([0, 0], (p[0] - LIP[0]) * sp, (p[1] - LIP[1]) * sp, phi); };
+          var low = Math.max.apply(null, OUT.map(function(p){ return rel(p)[1]; }));
+          var lip = [lipX, Ym - gap - low], at = function(p){ var r = rel(p); return [lip[0] + r[0], lip[1] + r[1]]; };
+          return { phi: phi, lip: lip, base: at([0, 0]), out: OUT.map(at), inn: IN.map(at) };
+        };
+        // where the spout goes: just inside the near side of the other's mouth; the lift starts this far away
+        P.lip1 = P.xR - d * (hw - WALL) * 0.45 * sp;
+        P.ready = P.xR - d * V.h * sp * 0.62;
+        P.lip0 = P.ready + d * (hw + 10) * sp;
+        // keep the whole pour on the stage: shift it sideways if a pose would leave it
+        var lo = Infinity, hi = -Infinity;
+        for(var k = 0; k <= 24; k++){ var th = TILT * k / 24; [P.lip0, P.lip1].forEach(function(lx){ P.pose(th, lx).out.forEach(function(p){ lo = Math.min(lo, p[0]); hi = Math.max(hi, p[0]); }); }); }
+        var shift = lo < 8 ? 8 - lo : hi > g.W - 8 ? g.W - 8 - hi : 0;
+        P.xR += shift; P.lip1 += shift; P.ready += shift; P.lip0 += shift;
+        // how much water a tilted cylinder holds below its spout (mL)
+        P.cap = function(ps){ return polyArea(clipBelow(ps.inn, ps.lip[1])) / P.perMl; };
+        // the tilt at which the water first reaches the spout, and at which none is left below it: the pour is slow between
+        var capAt = function(th){ return P.cap(P.pose(th, P.lip1)); }, bis = function(want){ var a = 0, b = TILT; for(var k = 0; k < 32; k++){ var m = (a + b) / 2; if(capAt(m) > want) a = m; else b = m; } return (a + b) / 2; };
+        var thS = bis(S.v), thE = Math.max(thS + 0.05, bis(0.005));
+        P.theta = function(f){
+          if(f < PH.b || f >= PH.d) return 0;
+          if(f < PH.c1) return thS * seg(f, PH.b, PH.c1);
+          if(f < PH.c2) return thS + (thE - thS) * clamp((f - PH.c1) / (PH.c2 - PH.c1), 0, 1);
+          if(f < PH.c) return thE + (TILT - thE) * seg(f, PH.c2, PH.c);
+          return TILT * (1 - seg(f, PH.c, PH.d));
+        };
+        P.poseAt = function(f){ return P.pose(P.theta(f), f < PH.c ? lerp(P.lip0, P.lip1, seg(f, PH.b, PH.c1)) : P.lip1); };
+        // water left in the pouring one: what fits below the spout, never more than it had (a running minimum)
+        var left = [], n = 400, m = S.v;
+        for(var j = 0; j <= n; j++){ var f = j / n; if(f >= PH.b && f <= PH.c) m = Math.min(m, P.cap(P.poseAt(f))); if(f > PH.c) m = 0; left.push(Math.max(0, m)); }
+        P.left = function(f){ return f <= 0 ? S.v : left[Math.min(n, Math.round(f * n))]; };
+        P.fS = 1; P.fE = 1;
+        for(var j2 = 0; j2 <= n; j2++){ if(left[j2] < S.v - 0.01){ P.fS = j2 / n; break; } }
+        for(var j3 = 0; j3 <= n; j3++){ if(left[j3] <= 0.01){ P.fE = j3 / n; break; } }
+        return P;
+      }
       function crossSvg(){ var old = svg.innerHTML; layoutRead(); var g = document.createElementNS('http://www.w3.org/2000/svg', 'g'); g.setAttribute('class', 'us3-fade'); g.innerHTML = old; svg.appendChild(g);
         if(g.animate){ var an = g.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 240 }); an.onfinish = function(){ g.remove(); }; } else g.remove(); }
+      // room under the magnifier for its first visit cue, so the cue never covers the reading
+      var CUE_ROOM = 44;
       function geoRead(W, H){
         var g = { W: W, H: H }, narrow = W < 700;
         g.bench = Math.round(H * (narrow ? 0.86 : 0.84));
         g.floor = g.bench + (narrow ? 10 : 14);
         if(narrow){
           g.mx = W * 0.22; g.top = 26; g.R = Math.min(W * 0.22, H * 0.18); g.lx = W * 0.73; g.ly = 14 + g.R;
-          g.rx = W * 0.72; g.ry = g.ly + g.R + 58; g.digits = Math.min(44, W * 0.115); g.sx = W * 0.82; g.ss = 0.3;
+          g.digits = Math.min(44, W * 0.115); g.rx = W * 0.72; g.sx = W - 30; g.ss = 0.3;
+          // the cue hangs from inside the magnifier's lower part; the reading starts under the cue
+          g.ry = g.ly + Math.max(g.R + 58, 0.55 * g.R + 68 + 6 + 0.75 * g.digits);
         } else {
           g.mx = clamp(W * 0.25, 170, 360); g.top = 26; g.lx = W * 0.56; g.ly = H * 0.40; g.R = Math.min(H * 0.30, W * 0.135, 170);
           g.rx = W * 0.83; g.ry = H * 0.38; g.digits = clamp(W * 0.05, 48, 72); g.sx = W * 0.075; g.ss = 0.34;
@@ -344,41 +431,45 @@
         return g;
       }
       /* The two vessels, drawn in their own units: the origin at the middle of the foot, up is negative. */
+      /* Both are 50 mL graduated cylinders of the same size: the fine one is marked every 1 mL, the coarse one every
+         10 mL (as reading guides compare cylinders with different marks; no beaker, whose marks are not meant for
+         measuring). */
+      var CYL = { h: 400, w: 64, base: 16, y0: 26, y50: 362, mx: -27, labelEvery: 10 }, WALL = 4;
       var VES = {
-        cylinder: { h: 400, w: 64, base: 16, y0: 26, y50: 362, marks: function(v){ return v % 10 === 0 ? 26 : v % 5 === 0 ? 17 : 10; }, mx: -27, labelEvery: 10 },
-        beaker: { h: 250, w: 210, base: 0, y0: 8, y50: 196, marks: function(){ return 44; }, mx: -78, labelEvery: 10 }
+        cylinder: Object.assign({ marks: function(v){ return v % 10 === 0 ? 26 : v % 5 === 0 ? 17 : 10; } }, CYL),
+        coarse: Object.assign({ marks: function(){ return 26; } }, CYL)
       };
-      function vScale(id){ var g = G, V = VES[id], room = g.floor - g.top - 6; return id === 'cylinder' ? room / V.h : Math.min(room / V.h * 0.82, (phone ? g.W * 0.30 : Math.min(300, g.W * 0.25)) / V.w); }
-      function sScale(id){ return Math.min(vScale(id) * G.ss, (phone ? 0.14 : 0.24) * G.H / VES[id].h); }
-      function mX(id){
-        var half = (VES[id].w / 2 + 24) * vScale(id), oid = id === 'cylinder' ? 'beaker' : 'cylinder', oh = (oid === 'cylinder' ? 64 : VES[oid].w / 2 + 20) * sScale(oid);
+      function vScale(){ var g = G, room = g.floor - g.top - 6; return room / CYL.h; }
+      function sScale(){ return Math.min(vScale() * G.ss, (phone ? 0.14 : 0.24) * G.H / CYL.h); }
+      function mX(){
+        var half = (CYL.w / 2 + 24) * vScale(), oh = 64 * sScale();
         return Math.max(G.mx, half + 8, phone ? 0 : G.sx + oh + half + 16);
       }
-      function yOf(id, v, sc){ var V = VES[id]; return G.floor - (V.y0 + (V.y50 - V.y0) * v / 50) * sc; }
-      function vesselSvg(id, cx, sc, level, detail, alpha){
-        var V = VES[id], inst = instById(id), y = function(u){ return G.floor - u * sc; }, x = function(u){ return cx + u * sc; }, p = [];
-        var hw = V.w / 2, wall = 4;
+      function yOf(id, v, sc, fl){ var V = VES[id]; return (fl == null ? G.floor : fl) - (V.y0 + (V.y50 - V.y0) * v / 50) * sc; }
+      /* One cylinder. o.floor: the y of its foot (default the bench); o.bare: no shadow (it is in the air). */
+      function vesselSvg(id, cx, sc, level, detail, alpha, o){
+        o = o || {};
+        var V = VES[id], inst = instById(id), fl = o.floor == null ? G.floor : o.floor, y = function(u){ return fl - u * sc; }, x = function(u){ return cx + u * sc; }, p = [];
+        var hw = V.w / 2, wall = WALL;
         p.push('<g class="us3-ves is-' + id + (detail ? ' is-main' : ' is-side') + '"' + (alpha < 1 ? ' opacity="' + alpha.toFixed(3) + '"' : '') + '>');
-        p.push('<ellipse class="us3-shadow" cx="' + cx + '" cy="' + (G.floor + 2) + '" rx="' + ((id === 'cylinder' ? 70 : hw + 10) * sc) + '" ry="' + Math.max(2, 6 * sc) + '"/>');
-        if(id === 'cylinder') p.push('<path class="us3-foot" d="M' + x(-60) + ' ' + y(0) + 'L' + x(-48) + ' ' + y(16) + 'H' + x(48) + 'L' + x(60) + ' ' + y(0) + 'Z"/><path class="us3-foottop" d="M' + x(-48) + ' ' + y(16) + 'H' + x(48) + '"/>');
+        if(!o.bare) p.push('<ellipse class="us3-shadow" cx="' + cx + '" cy="' + (fl + 2) + '" rx="' + (70 * sc) + '" ry="' + Math.max(2, 6 * sc) + '"/>');
+        p.push('<path class="us3-foot" d="M' + x(-60) + ' ' + y(0) + 'L' + x(-48) + ' ' + y(16) + 'H' + x(48) + 'L' + x(60) + ' ' + y(0) + 'Z"/><path class="us3-foottop" d="M' + x(-48) + ' ' + y(16) + 'H' + x(48) + '"/>');
         var bot = V.base, inL = x(-hw + wall), inR = x(hw - wall);
         if(level > 0.01){
-          var ly = yOf(id, level, sc), m = Math.min(6, (hw - wall) * 0.18) * sc + 1.2;
-          p.push('<path class="us3-liq" d="M' + inL + ' ' + (ly - m) + 'Q' + cx + ' ' + (ly + m) + ' ' + inR + ' ' + (ly - m) + 'V' + y(bot + wall + 2) + (id === 'beaker' ? 'Q' + inR + ' ' + y(bot + wall) + ' ' + (inR - 6 * sc) + ' ' + y(bot + wall) + 'H' + (inL + 6 * sc) + 'Q' + inL + ' ' + y(bot + wall) + ' ' + inL + ' ' + y(bot + wall + 2) : 'H' + inL) + 'Z"/>');
+          var ly = yOf(id, level, sc, fl), m = Math.min(6, (hw - wall) * 0.18) * sc + 1.2;
+          p.push('<path class="us3-liq" d="M' + inL + ' ' + (ly - m) + 'Q' + cx + ' ' + (ly + m) + ' ' + inR + ' ' + (ly - m) + 'V' + y(bot + wall + 2) + 'H' + inL + 'Z"/>');
           p.push('<path class="us3-menis" d="M' + inL + ' ' + (ly - m) + 'Q' + cx + ' ' + (ly + m) + ' ' + inR + ' ' + (ly - m) + '"/>');
           if(detail) G.menY = ly;
-        } else if(detail) G.menY = yOf(id, 0, sc);
+        } else if(detail) G.menY = yOf(id, 0, sc, fl);
         // the glass
-        var gl = id === 'cylinder'
-          ? 'M' + x(-hw) + ' ' + y(bot) + 'V' + y(V.h - 8) + 'Q' + x(-hw - 6) + ' ' + y(V.h - 2) + ' ' + x(-hw - 10) + ' ' + y(V.h) + 'H' + x(hw + 4) + 'Q' + x(hw + 1) + ' ' + y(V.h - 4) + ' ' + x(hw) + ' ' + y(V.h - 10) + 'V' + y(bot) + 'Z'
-          : 'M' + x(-hw) + ' ' + y(V.h - 6) + 'Q' + x(-hw - 14) + ' ' + y(V.h + 2) + ' ' + x(-hw - 18) + ' ' + y(V.h) + 'L' + x(-hw - 8) + ' ' + y(V.h - 4) + 'L' + x(-hw) + ' ' + y(V.h - 18) + 'V' + y(10) + 'Q' + x(-hw) + ' ' + y(0) + ' ' + x(-hw + 10) + ' ' + y(0) + 'H' + x(hw - 10) + 'Q' + x(hw) + ' ' + y(0) + ' ' + x(hw) + ' ' + y(10) + 'V' + y(V.h - 6) + 'Z';
+        var gl = 'M' + x(-hw) + ' ' + y(bot) + 'V' + y(V.h - 8) + 'Q' + x(-hw - 6) + ' ' + y(V.h - 2) + ' ' + x(-hw - 10) + ' ' + y(V.h) + 'H' + x(hw + 4) + 'Q' + x(hw + 1) + ' ' + y(V.h - 4) + ' ' + x(hw) + ' ' + y(V.h - 10) + 'V' + y(bot) + 'Z';
         p.push('<path class="us3-glassv" d="' + gl + '"/>');
-        p.push('<path class="us3-shine" d="M' + x(hw - 10) + ' ' + y(V.h - 30) + 'V' + y(id === 'cylinder' ? 60 : 40) + '"/>');
+        p.push('<path class="us3-shine" d="M' + x(hw - 10) + ' ' + y(V.h - 30) + 'V' + y(60) + '"/>');
         // the marks: every inst.every mL, numbered every 10 (and "mL" by the 50)
         if(sc > 0.2){
           var lab = [];
-          for(var v = (id === 'cylinder' ? 1 : 10); v <= 50; v += inst.every){
-            var my = yOf(id, v, sc), L = V.marks(v);
+          for(var v = inst.every; v <= 50; v += inst.every){
+            var my = yOf(id, v, sc, fl), L = V.marks(v);
             p.push('<path class="us3-mark' + (v % 10 === 0 ? ' is-major' : '') + '" d="M' + x(V.mx) + ' ' + my.toFixed(1) + 'H' + x(V.mx + L).toFixed(1) + '"/>');
             if(detail && v % V.labelEvery === 0) lab.push('<text class="us3-num" x="' + (x(V.mx + L) + 4).toFixed(1) + '" y="' + (my + 4.5).toFixed(1) + '">' + v + (v === 50 ? ' mL' : '') + '</text>');
           }
@@ -397,20 +488,20 @@
         else {
           g.R = Math.min(g.H * 0.30, g.W * 0.135, 170);
           if(kx + 34 + 2 * g.R + 230 > g.W) g.R = Math.max(86, (g.W - 230 - kx - 34) / 2);
-          g.lx = Math.max(g.W * 0.5, kx + 34 + g.R); g.rx = Math.min((g.lx + g.R + g.W) / 2 + 4, g.W - 116); g.ly = g.H * 0.40; g.ry = g.H * 0.38;
+          g.lx = Math.max(g.W * 0.5, kx + 34 + g.R); g.rx = Math.min((g.lx + g.R + g.W) / 2 + 4, g.W - 116); g.ly = Math.max(g.R + 10, Math.min(g.H * 0.40, g.bench - g.R - 34 - CUE_ROOM)); g.ry = g.H * 0.38;
           if(g.W - (g.lx + g.R) < 230){
             // no room beside the magnifier: the reading goes under it
-            g.R = Math.min(g.R, (g.bench - 190) / 2, (g.W - kx - 40) / 2); g.lx = Math.max(kx + 30 + g.R, (kx + g.W) / 2); g.ly = 12 + g.R; g.rx = g.lx; g.ry = g.ly + g.R + 56;
+            g.R = Math.min(g.R, (g.bench - 214 - CUE_ROOM) / 2, (g.W - kx - 40) / 2); g.lx = Math.max(kx + 30 + g.R, (kx + g.W) / 2); g.ly = 12 + g.R; g.rx = g.lx; g.ry = g.ly + g.R + Math.max(56, 66 + 8 + g.digits);
           }
         }
         cLevel.place([mX(id) + (VES[id].w / 2 + 30) * sc, yOf(id, RD.min, sc), mX(id) + (VES[id].w / 2 + 30) * sc, yOf(id, RD.max, sc)]);
-        var oid = other().id, os = sScale(oid), ow = (oid === 'cylinder' ? 120 : VES[oid].w + 36) * os, oh = VES[oid].h * os;
+        var oid = other().id, os = sScale(oid), ow = 120 * os, oh = VES[oid].h * os;
         cSwap.place([g.sx - ow / 2 - 8, g.floor - oh - 8, ow + 16, oh + 14]);
         drawRead();
       }
       function drawRead(f){
         var g = G, id = S.inst, inst = instNow(), p = [], W = g.W, H = g.H;
-        var sw = swap && f != null ? ease(f) : null;
+        var sw = swap && f != null ? f : null;
         p.push('<defs><linearGradient id="us3g-wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="us3s-wall0"/><stop offset="1" class="us3s-wall1"/></linearGradient>' +
           '<linearGradient id="us3g-bench" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="us3s-bn0"/><stop offset="1" class="us3s-bn1"/></linearGradient>' +
           '<linearGradient id="us3g-water" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="us3s-w0"/><stop offset="1" class="us3s-w1"/></linearGradient>' +
@@ -419,19 +510,12 @@
         p.push('<rect class="us3-wall" x="0" y="0" width="' + W + '" height="' + g.bench + '"/>');
         for(var ty = 40; ty < g.bench; ty += 56) p.push('<path class="us3-grout" d="M0 ' + ty + 'H' + W + '"/>');
         p.push('<rect class="us3-bench" x="0" y="' + g.bench + '" width="' + W + '" height="' + (H - g.bench) + '"/><path class="us3-benchedge" d="M0 ' + (g.bench + 0.5) + 'H' + W + '"/>');
-        // the vessels: the one being read stands in the middle, the other beside it; a pour moves them past each other
+        // the vessels: the one being read stands in the middle, the other beside it; a pour is drawn as it happens
         var oid = RD.instruments.filter(function(x){ return x.id !== id; })[0].id;
         if(sw == null){
           p.push(vesselSvg(oid, g.sx, sScale(oid), 0, false, 1));
           p.push(vesselSvg(id, mX(id), vScale(id), S.v, true, 1));
-        } else {
-          var from = swap.from, to = swap.to;
-          var sF = vScale(from) + (sScale(from) - vScale(from)) * sw, sT = sScale(to) + (vScale(to) - sScale(to)) * sw;
-          var xF = mX(from) + (g.sx - mX(from)) * sw, xT = g.sx + (mX(to) - g.sx) * sw;
-          var drain = clamp((f - 0.05) / 0.6, 0, 1), fill = clamp((f - 0.25) / 0.7, 0, 1);
-          p.push(vesselSvg(from, xF, sF, S.v * (1 - ease(drain)), false, 1 - 0.55 * sw));
-          p.push(vesselSvg(to, xT, sT, S.v * ease(fill), true, 1));
-        }
+        } else p.push(pourSvg(f));
         // the name of the vessel being read, on the bench under it
         var nm = inst.name, ny = Math.min(H - 8, g.floor + (phone ? 22 : 26));
         if(sw == null){
@@ -469,13 +553,17 @@
           p.push('<path class="us3-handle" d="M' + hx + ' ' + hy + 'L' + (hx + Math.cos(ha) * hl) + ' ' + (hy + Math.sin(ha) * hl) + '"/>');
           p.push('<circle class="us3-lensglass" cx="' + lx + '" cy="' + ly + '" r="' + (R - 7) + '"/><circle class="us3-rim2" cx="' + lx + '" cy="' + ly + '" r="' + (R - 3.5) + '"/>');
           p.push('<path class="us3-lensshine" d="M' + (lx + R * 0.30) + ' ' + (ly - R * 0.70) + 'A' + (R * 0.76) + ' ' + (R * 0.76) + ' 0 0 1 ' + (lx + R * 0.66) + ' ' + (ly - R * 0.30) + '"/>');
+          // a grip on the rim: the water can be dragged up and down in the magnifier
+          var gx = lx + Math.cos(-Math.PI / 4) * (R - 3.5), gy = ly + Math.sin(-Math.PI / 4) * (R - 3.5), gs = phone ? 0.85 : 1;
+          p.push('<g class="us3-grip" transform="translate(' + gx.toFixed(1) + ' ' + gy.toFixed(1) + ') scale(' + gs + ')"><rect x="-13" y="-21" width="26" height="42" rx="13"/><path d="M-5.5 -6 L0 -12 L5.5 -6 M-5.5 6 L0 12 L5.5 6"/></g>');
           // the reading: digits from the marks, the estimated digit, the unit
           p.push(readingSvg(r));
         }
         svg.innerHTML = p.join('');
+        if(sw == null) svg.removeAttribute('data-pour');
         G.lensBox = lensOn ? [g.lx - g.R, g.ly - g.R, 2 * g.R, 2 * g.R] : null;
-        lensPad.hidden = !lensOn || S.tab !== 'read' || S.mode !== 'explore';
-        if(lensOn){ var q = g.R * 0.86; lensPad.style.left = (g.lx - q) + 'px'; lensPad.style.top = (g.ly - q) + 'px'; lensPad.style.width = lensPad.style.height = (2 * q) + 'px'; }
+        lensPad.hidden = !lensOn || !!swap || S.tab !== 'read' || S.mode !== 'explore';
+        if(lensOn){ var q = g.R; lensPad.style.left = (g.lx - q) + 'px'; lensPad.style.top = (g.ly - q) + 'px'; lensPad.style.width = lensPad.style.height = (2 * q) + 'px'; }
         if(!swap){ cLevel.hide(S.mode !== 'explore' || S.tab !== 'read'); cSwap.el.hidden = S.mode !== 'explore' || S.tab !== 'read'; }
         if(cue.active()) cue.place();
       }
@@ -501,12 +589,73 @@
         }
         var py = ty + (cs.length ? 46 : 30), pw = (phone ? 8.2 : 9.2) * (String(r.sf).length + (r.sf === 1 ? 20 : 21)), ph = phone ? 28 : 32;
         p.push('<g class="us3-count"><rect x="' + (g.rx - pw / 2) + '" y="' + (py - ph / 2) + '" width="' + pw + '" height="' + ph + '" rx="' + (ph / 2) + '"/><text x="' + g.rx + '" y="' + (py + 5) + '" text-anchor="middle" style="font-size:' + (phone ? 14 : 15.5) + 'px">' + r.sf + ' significant figure' + (r.sf === 1 ? '' : 's') + '</text></g>');
-        if(!phone && prevInst && prevInst.id !== S.inst) p.push('<text class="us3-was" x="' + g.rx + '" y="' + (py + ph / 2 + 22) + '" text-anchor="middle">' + esc(instById(prevInst.id).name) + ' read ' + esc(prevInst.r.shown) + ' mL</text>');
+        if(prevInst && prevInst.id !== S.inst){
+          // what the other cylinder read: the comparison stays on screen (on a phone in two short lines, clear of the knob
+          // and of the small cylinder on the bench)
+          var wn = instById(prevInst.id).name, wr = 'read ' + prevInst.r.shown + ' mL', wy = py + ph / 2 + 22;
+          if(!phone) p.push('<text class="us3-was" x="' + g.rx + '" y="' + wy + '" text-anchor="middle">' + esc(wn + ' ' + wr) + '</text>');
+          else {
+            var hw2 = Math.max(wn.length, wr.length) * 3.6, sc2 = vScale(), kr = mX() + (CYL.w / 2 + 30) * sc2 + 24, sl = g.sx - 64 * sScale() - 10;
+            var wx = clamp(g.rx, kr + hw2, Math.max(kr + hw2, sl - hw2));
+            p.push('<text class="us3-was" x="' + wx.toFixed(1) + '" y="' + (wy - 4) + '" text-anchor="middle"><tspan x="' + wx.toFixed(1) + '">' + esc(wn) + '</tspan><tspan x="' + wx.toFixed(1) + '" dy="15">' + esc(wr) + '</tspan></text>');
+          }
+        }
         p.push('</g>');
         return p.join('');
       }
+      /* One frame of the pour (f from 0 to 1): see pourPlan. */
+      function pourSvg(f){
+        var P = swap.plan, g = G, p = [], from = P.from, to = P.to, sp = P.sp;
+        // the one poured into: from beside the bench to under the spout (b), then to the middle, full size (after .93)
+        var tx = f < PH.a ? g.sx : f < PH.b ? lerp(g.sx, P.xR, seg(f, PH.a, PH.b)) : f < PH.f ? P.xR : lerp(P.xR, mX(to), seg(f, PH.f, 1));
+        var ts = f < PH.a ? sScale(to) : f < PH.b ? lerp(sScale(to), sp, seg(f, PH.a, PH.b)) : f < PH.f ? sp : lerp(sp, vScale(to), seg(f, PH.f, 1));
+        var tv = S.v - P.left(f - LAG);
+        p.push(vesselSvg(to, tx, ts, tv, false, 1));
+        // the one poured from: lifted (a), carried over (b), tilted (c, d), carried back (e) and set down small (f)
+        var V = VES[from], ps = null, liq = '', bx, by, phi = 0, sc = sp;
+        var liftY = P.Ym - P.gap;
+        if(f < PH.a){ var t = seg(f, 0, PH.a); sc = lerp(vScale(from), sp, t); bx = mX(from); by = lerp(g.floor, liftY, t); }
+        else if(f < PH.b){ bx = lerp(mX(from), P.ready, seg(f, PH.a, PH.b)); by = liftY; }
+        else if(f < PH.d){ ps = P.poseAt(f); bx = ps.base[0]; by = ps.base[1]; phi = ps.phi; }
+        else if(f < PH.e){ bx = lerp(P.ready, g.sx, seg(f, PH.d, PH.e)); by = liftY; }
+        else if(f < PH.f){ var t2 = seg(f, PH.e, PH.f); sc = lerp(sp, sScale(from), t2); bx = g.sx; by = lerp(liftY, g.floor, t2); }
+        else { sc = sScale(from); bx = g.sx; by = g.floor; }
+        var left = P.left(f);
+        if(ps && left > 0.01){
+          // the water in the tilted cylinder stays level: find the level whose area below it is the water left
+          var lo = Math.min.apply(null, ps.inn.map(function(q){ return q[1]; })), hi = Math.max.apply(null, ps.inn.map(function(q){ return q[1]; })), want = left * P.perMl;
+          for(var k = 0; k < 30; k++){ var mid = (lo + hi) / 2; if(polyArea(clipBelow(ps.inn, mid)) > want) lo = mid; else hi = mid; }
+          var wy = Math.max((lo + hi) / 2, ps.lip[1]), poly = clipBelow(ps.inn, wy), xs = poly.filter(function(q){ return Math.abs(q[1] - wy) < 0.01; }).map(function(q){ return q[0]; });
+          liq = '<path class="us3-liq" d="M' + poly.map(function(q){ return q[0].toFixed(1) + ' ' + q[1].toFixed(1); }).join('L') + 'Z"/>' +
+            (xs.length > 1 ? '<path class="us3-menis" d="M' + Math.min.apply(null, xs).toFixed(1) + ' ' + wy.toFixed(1) + 'H' + Math.max.apply(null, xs).toFixed(1) + '"/>' : '');
+        }
+        // the stream, from the spout into the other one, only while water is leaving (it lands LAG later; its tail falls after)
+        if(f >= P.fS && f <= P.fE + LAG && ps){
+          var lip = ps.lip, surf = yOf(to, Math.max(tv, 0.2), sp), ex = clamp(lerp(lip[0], P.xR, 0.3), P.xR - (V.w / 2 - WALL - 3) * sp, P.xR + (V.w / 2 - WALL - 3) * sp);
+          var top = f <= P.fE ? 0 : (f - P.fE) / LAG, bot = Math.min(1, (f - P.fS) / LAG);
+          var pt = function(t){ var cx = lip[0] + P.d * 6, cy = lip[1] + (surf - lip[1]) * 0.25, u = 1 - t; return [u * u * lip[0] + 2 * u * t * cx + t * t * ex, u * u * lip[1] + 2 * u * t * cy + t * t * surf]; };
+          var a0 = pt(top), mid2 = pt((top + bot) / 2), a1 = pt(bot), wv = Math.max(2.2, 5 * sp);
+          if(bot > top) p.push('<path class="us3-stream" stroke-width="' + wv.toFixed(1) + '" d="M' + a0[0].toFixed(1) + ' ' + a0[1].toFixed(1) + 'Q' + (2 * mid2[0] - (a0[0] + a1[0]) / 2).toFixed(1) + ' ' + (2 * mid2[1] - (a0[1] + a1[1]) / 2).toFixed(1) + ' ' + a1[0].toFixed(1) + ' ' + a1[1].toFixed(1) + '"/>');
+        }
+        p.push(liq);
+        var mir = P.d > 0 ? -1 : 1;
+        p.push('<g transform="translate(' + bx.toFixed(1) + ' ' + by.toFixed(1) + ') rotate(' + (phi * 180 / Math.PI).toFixed(2) + ') scale(' + mir + ' 1)">' +
+          vesselSvg(from, 0, sc, ps ? 0 : (f < PH.c ? S.v : 0), false, 1, { floor: 0, bare: by < g.floor - 0.5 }) + '</g>');
+        // for the sweep: the two outlines in the stage's units, so it can check they never overlap
+        var oa = ps ? ps.out : [[-60, 0], [60, 0], [42, CYL.h], [-42, CYL.h]].map(function(q){ return [bx + q[0] * sc, by - q[1] * sc]; });
+        var ob = [[-60, 0], [60, 0], [42, CYL.h], [-42, CYL.h]].map(function(q){ return [tx + q[0] * ts, g.floor - q[1] * ts]; });
+        svg.setAttribute('data-pour', JSON.stringify({ a: oa, b: ob, stream: f >= P.fS && f <= P.fE + LAG, f: +f.toFixed(3) }));
+        // the words follow the picture: the pour is named only while the stream is drawn
+        var phase = f < P.fS ? 'before' : f <= P.fE + LAG ? 'pour' : 'after';
+        if(phase !== swap.phase){ swap.phase = phase; readWords(); }
+        return p.join('');
+      }
       function readWords(){
-        if(swap){ cause.set([{ t: 'pouring into the ' + instNow().name.toLowerCase(), role: 'ink' }]); return; }
+        if(swap){
+          var ph = swap.phase, nm = function(id){ return instById(id).name.toLowerCase(); };
+          cause.set([ph === 'pour' ? { t: 'pouring into the ' + nm(swap.to), role: 'ink' } : ph === 'after' ? { t: 'all the water in the ' + nm(swap.to), role: 'ink' } : { t: 'lifting the ' + nm(swap.from), role: 'ink' }]);
+          return;
+        }
         var inst = instNow(), r = U.read(S.v, inst), parts = [{ t: 'marks every ' + inst.every + ' mL', role: 'c', say: 'the marks are every ' + inst.every + ' mL' }];
         parts.push(r.certain ? { t: r.certain + ' from the marks', role: 'c' } : { t: 'no digit from the marks', role: 'c' });
         parts.push({ t: r.est + ' estimated', role: 'e', say: 'the ' + r.est + ' is estimated' });
@@ -544,18 +693,20 @@
         var H = phone ? Math.round(parseFloat(sceneBox.style.height)) : Math.max(300, Math.round(r.height));
         svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.setAttribute('width', W); svg.setAttribute('height', H);
         sceneBox.classList.toggle('is-narrow', phone);
-        if(S.tab === 'units'){ G = geoUnits(W, H); drawUnits(); layoutCards(true); }
+        if(S.tab === 'units'){ G = geoUnits(W, H); cards.style.setProperty('--us3-k', (G.k || 1).toFixed(3)); drawUnits(); layoutCards(true); }
         else { G = geoRead(W, H); layoutRead(); }
         if(cue.active()) cue.place();
       }
       var cue;
       // the cue's words follow the tab (one cue per tab and device)
-      var cueKey = { units: 'apchem-units-sig-figs', read: 'apchem-units-sig-figs-read' }, cueText = { units: 'Tap a card', read: 'Drag the water' }, cueSide = { units: 'above', read: innerWidth < 700 ? 'above' : 'below' };
+      var cueKey = { units: 'apchem-units-sig-figs', read: 'apchem-units-sig-figs-read' }, cueText = { units: 'Tap a card', read: 'Drag the water' }, cueSide = { units: 'above', read: 'below' };
       var cues = {};
       ['units', 'read'].forEach(function(k){ cues[k] = K.cue(layer, { key: cueKey[k], text: cueText[k], side: cueSide[k], at: function(){
         if(!G) return [0, 0];
         if(k === 'units'){ var p = trayPos(0); return [p[0] + G.cw / 2, p[1] + 2]; }
-        var sc = vScale(S.inst); return [mX(S.inst) + (VES[S.inst].w / 2 + 30) * sc, yOf(S.inst, S.v, sc)];
+        // on the magnifier, the biggest thing and a way to move the water: from its lower rim (on a phone from inside its
+        // lower part, which shows only water), into the room kept for it above the reading
+        return [G.lx, G.ly + (phone ? 0.55 : 1) * G.R - 2];
       } }); });
       cue = { show: function(){ return cues[S.tab].show(); }, hide: function(u){ cues[S.tab].hide(u); }, place: function(){ cues[S.tab].place(); }, active: function(){ return cues[S.tab].active(); } };
       function hideCue(used){ ['units', 'read'].forEach(function(k){ if(cues[k].active()) cues[k].hide(used && k === S.tab); }); }
@@ -567,9 +718,9 @@
         { id: 'read', text: 'The tag on the flask and the line below say what is left.', target: function(){ return tagEl; } }],
         onClose: function(had){ if(had) try{ head.how.focus({ preventScroll: true }); }catch(e){} } });
       var tourR = K.tour({ key: 'apchem-units-sig-figs-read', label: 'Show me how', steps: [
-        { id: 'drag', text: 'Drag the water. The magnifier shows the marks it sits between.', target: function(){ return cLevel.el.querySelector('.tk2-knob'); } },
+        { id: 'drag', text: 'Drag the water up or down in the magnifier (or with the knob by the cylinder). The magnifier shows the marks it sits between.', target: function(){ var b = G && G.lensBox; if(!b) return cLevel.el.querySelector('.tk2-knob'); var r0 = svg.getBoundingClientRect(); return { left: r0.left + b[0], top: r0.top + b[1], right: r0.left + b[0] + b[2], bottom: r0.top + b[1] + b[3], width: b[2], height: b[3] }; } },
         { id: 'look', text: 'Digits read from the marks, then one estimated digit. That is all that is real.', target: function(){ var b = G && G.lensBox; if(!b) return sceneBox; var r0 = svg.getBoundingClientRect(); return { left: r0.left + b[0], top: r0.top + b[1], right: r0.left + b[0] + b[2], bottom: r0.top + b[1] + b[3], width: b[2], height: b[3] }; } },
-        { id: 'swap', text: 'Tap the other vessel to pour the water in. Coarser marks, fewer real digits.', target: function(){ return cSwap.el; } }],
+        { id: 'swap', text: 'Tap the other cylinder to pour the water into it. Coarser marks, fewer real digits.', target: function(){ return cSwap.el; } }],
         onClose: function(had){ if(had) try{ head.how.focus({ preventScroll: true }); }catch(e){} } });
       var tour1 = tour;
       tour = { start: function(f){ return (S.tab === 'units' ? tour1 : tourR).start(f); }, stop: function(){ tour1.stop(); tourR.stop(); }, active: function(){ return tour1.active() || tourR.active(); },
@@ -594,7 +745,7 @@
           var inst = instNow(), rr = U.read(S.v, inst);
           ref.innerHTML = how + '<h3 class="ls-title-l">How to read a scale</h3><ol class="us3-list"><li>Look at the bottom of the curved surface (the meniscus), with your eye level with it.</li><li>Write every digit the marks give you for certain.</li><li>Estimate one more digit, in tenths of the space between two marks. Stop there: it is the last significant figure.</li></ol>' +
             '<h3 class="ls-title-l">This reading</h3><p>The ' + esc(inst.name.toLowerCase()) + ' has marks every ' + inst.every + ' mL. The water sits between ' + rr.low + ' and ' + rr.high + ' mL, so it reads <b>' + esc(rr.shown) + ' mL</b>: ' + (rr.certain ? esc(rr.certain) + ' from the marks and ' : 'no digit from the marks, and ') + esc(rr.est) + ' estimated, ' + rr.sf + ' significant figure' + (rr.sf === 1 ? '' : 's') + '.' + (/\.$/.test(rr.shown) ? ' The decimal point after the 0 says that the zero was read (estimated), so it counts.' : '') + '</p>' +
-            '<p>The same water in the graduated cylinder (marks every 1 mL) reads one more digit than in the beaker (marks every 10 mL). Finer marks, more real digits; a digit past the estimated one would be a guess.</p>' +
+            '<p>The same water in the fine cylinder (marks every 1 mL) reads one more digit than in the coarse cylinder (marks every 10 mL). Finer marks, more real digits; a digit past the estimated one would be a guess. To measure a volume, use a graduated cylinder (or a pipet or buret): the marks on a beaker are only approximate.</p>' +
             '<h3 class="ls-title-l">Counting significant figures</h3><ul class="us3-list"><li>Nonzero digits always count; so do zeros between them (4005: 4).</li><li>Leading zeros never count (0.0045: 2).</li><li>Trailing zeros count after a decimal point (4.50: 3); with no point they are unclear (2500), so write 2.50 × 10³ or 2500.</li><li>Exact numbers (a count, 1 L = 1000 mL) have no uncertainty and never limit an answer.</li></ul>' + rules + notes;
         }
       }

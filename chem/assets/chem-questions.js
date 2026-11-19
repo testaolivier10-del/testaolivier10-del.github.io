@@ -75,8 +75,8 @@
      "L atm mol-1 K-1"; "degC" = "°C"; "liters" = "L". Case matters otherwise
      (mM is not MM). An unreadable token is kept as itself, so it only ever
      matches the same token. */
-  /* Typed forms that can only mean one unit (case otherwise matters: mM is not MM). */
-  var ALIAS = { ml: 'mL', ML: 'mL', Ml: 'mL', milliliter: 'mL', milliliters: 'mL', millilitre: 'mL', millilitres: 'mL',
+  /* Typed forms that can only mean one unit (case otherwise matters: mM is not MM; ML is megalitre, so it is not an alias). */
+  var ALIAS = { ml: 'mL', Ml: 'mL', milliliter: 'mL', milliliters: 'mL', millilitre: 'mL', millilitres: 'mL',
     kj: 'kJ', KJ: 'kJ', Kj: 'kJ', kilojoule: 'kJ', kilojoules: 'kJ', joule: 'J', joules: 'J', Joules: 'J',
     ATM: 'atm', Atm: 'atm', atmosphere: 'atm', atmospheres: 'atm', gm: 'g', gms: 'g', mols: 'mol', Mol: 'mol', MOL: 'mol',
     kpa: 'kPa', KPa: 'kPa', KPA: 'kPa', Kpa: 'kPa', Torr: 'torr', TORR: 'torr', kelvin: 'K', Kelvin: 'K', kelvins: 'K' };

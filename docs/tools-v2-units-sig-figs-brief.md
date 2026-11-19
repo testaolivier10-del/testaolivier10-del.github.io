@@ -25,10 +25,12 @@ Seen means the page itself was opened and read; summary only means only a descri
 | AACT Measuring volume simulation (summary only) | Ten cylinder pictures; report the reading and the uncertainty | Different cylinders, different marks | Behind membership; a quiz | Nothing beyond the idea of comparing instruments |
 | Virtual Science Teachers, Reading a graduated cylinder (Articulate page; text only) | Type the reading; five rounds; a score | Read the bottom of the meniscus | A quiz | "Bottom of the meniscus" in "?" and the meniscus drawn and magnified |
 | PhET (searched) | No unit conversion or measurement reading simulation | | | The PhET rules already in the standard |
+| UW–Madison gen chem, Reading a graduated cylinder (seen by the reviewer; text only) | Separate pages for cylinders with different marks, each read to one uncertain digit | Compares cylinders, never a beaker | Text only | Review round 1: the coarse vessel is a second graduated cylinder, not a beaker |
 
 What ours does better: in tab 1 the unit you see cancel is the unit that goes away on the flask's tag, live, with no
 goal to reach; in tab 2 the water is dragged and a magnifier shows exactly which marks it sits between, with the
-digits split into "from the marks" and "estimated" and the same water poured into a coarser vessel.
+digits split into "from the marks" and "estimated" and the same water poured, as a real pour, into a second
+graduated cylinder with coarser marks.
 
 ## The design
 ### Tab 1 "Units cancel" (opens here)
@@ -51,27 +53,36 @@ digits split into "from the marks" and "estimated" and the same water poured int
 - Cue: "Tap a card", above the first card, once per device.
 
 ### Tab 2 "Significant figures"
-- Scene: the same wall and bench. A 50 mL graduated cylinder (marks every 1 mL, numbered every 10) stands in the
-  middle with water; a magnifying glass on its meniscus shows the scale there, enlarged: the marks, their numbers,
+- Scene: the same wall and bench. A 50 mL graduated cylinder, the "Fine cylinder" (marks every 1 mL, numbered every
+  10), stands in the middle with water; a magnifying glass on its meniscus shows the scale there, enlarged: the marks, their numbers,
   the curved surface and a vermillion line from its bottom to the scale, and the space between the two marks the
   water sits between shaded in blue. Beside it: the reading, big, "33.7 mL", with a blue bracket "from the marks"
   under 33 and a vermillion bracket "estimated" under 7, and a pill "3 significant figures".
-- Main control: the water. A knob on the cylinder (drag, tap the track, arrow keys, Page Up/Down, Home, End) from
-  2 to 48 mL in steps of 0.1 mL; dragging up or down inside the magnifier moves the water too (pointer only).
-- Second control (quiet): the beaker standing small beside it. A tap pours the water into the beaker (0.9 s: the
-  vessels pass each other, the cylinder drains and fades, the beaker fills; the reading and line wait). The beaker
-  has marks every 10 mL, so the same water reads "34 mL", 2 significant figures, and "Graduated cylinder read
-  33.7 mL" stays under the pill (desktop). Tap the cylinder to pour it back. Pouring never moves the water knob.
-- Cause line: "marks every 1 mL → 33 from the marks → 7 estimated → 3 significant figures".
-- Cue: "Drag the water" at the knob.
+- Main control: the water. Drag up or down in the magnifier (pointer; a grip with up and down arrows sits on its
+  rim), or the knob beside the cylinder (drag, tap the track, arrow keys, Page Up/Down, Home, End; the keyboard's
+  way), from 2 to 48 mL in steps of 0.1 mL.
+- Second control (quiet): the "Coarse cylinder" standing small beside it, the same 50 mL cylinder with marks only
+  every 10 mL. A tap pours the water into it, drawn as it really happens (2.6 s): the full cylinder is lifted clear
+  of the empty one, which comes to stand under it at the same size (both hold 50 mL); it tilts toward it until the
+  water reaches its spout, a stream runs from the spout while its level falls and the other's rises (the water in
+  the tilted cylinder stays level, its area is the volume left), then it is set down small where the empty one
+  stood and the full one takes the middle. The vessels never overlap (the pouring one's lowest point stays above
+  the other's mouth). The same water reads "34 mL", 2 significant figures, and "Fine cylinder read 33.7 mL" stays
+  under the pill (on phones in two short lines beside the small cylinder). Tap the fine cylinder to pour it back.
+  Pouring never moves the water value.
+- Cause line: "marks every 1 mL → 33 from the marks → 7 estimated → 3 significant figures". During a pour it names
+  what is drawn: "lifting the fine cylinder", "pouring into the coarse cylinder" only while the stream is drawn,
+  then "all the water in the coarse cylinder"; the reading words come back when it is set down.
+- Cue: "Drag the water", hanging from the magnifier (on a phone from inside its lower part, which shows only
+  water), in room kept for it above the reading, so it covers no number.
 
 ### What is on screen in Explore (counted in Playwright at 1440, opening state)
 Outside the picture: 2 tabs, the purpose line (9 words), "Show me how", the cause line (1 pill at the opening of
 tab 1, "Start: 250. mL of water"; 2 to 5 pills after; 4 pills in tab 2), "Clear the board" once a card is on the
 board. About 18 words at the opening of tab 1 and 22 in tab 2. No side panel.
 On the picture, tab 1: the flask and its label (2 words), 1 card on the board (2 words), 4 cards on the bench,
-the cue (first visit). Tab 2: the cylinder and its numbers, the knob, the magnifier, the reading (3 digits and
-"mL"), 2 bracket words, 1 pill, the names of the two vessels (1 and 2 words), the cue (first visit).
+the cue (first visit). Tab 2: the cylinder and its numbers, the knob, the magnifier with its grip, the reading (3
+digits and "mL"), 2 bracket words, 1 pill, the names of the two cylinders (2 words each), the cue (first visit).
 
 ### Explore against Test yourself
 - Explore: free play, nothing graded, no goal.
@@ -110,13 +121,13 @@ Test yourself already read powers of ten in every common form. Added, for every 
 - The validator (`scripts/lib/apchem-tool-checks/units-sig-figs.mjs`) checks every factor is a true equality
   (1000 mL per L; 1.00 g/mL; 18.02 g/mol = 2(1.008) + 16.00; 6.022 × 10²³ per mol), that the full chain gives
   molecules with 3 pairs cancelled and 3 significant figures, that a flipped factor cancels nothing, and that the
-  cylinder always gives one more real digit than the beaker from 10.5 to 48 mL.
+  fine cylinder always gives one more real digit than the coarse one from 10.5 to 48 mL.
 - Checked against the course's notes (`chem/data/notes/math-sig-figs.html`: "read the marks, then estimate one
   more digit"; exact numbers never limit) and Physics Classroom and ChemTeam (above). The density of water is
   0.997 g/mL at 25 °C; 1.00 g/mL is the usual three figure value (said in "?").
-- Open points in `docs/apchem-needs-author.md`: whether a beaker should be read at all (many labs call its marks
-  approximate), and the ± convention for a reading's uncertainty (half a division or a tenth), which the tool
-  does not state.
+- `docs/apchem-needs-author.md`, units-read-beaker: closed in review round 1 (no beaker is read; "?" says a
+  beaker's marks are only approximate). Still open there: the ± convention for a reading's uncertainty (half a
+  division or a tenth), which the tool does not state.
 
 ## What was built
 - `chem/assets/tools/units-sig-figs.js` (rewritten) and `.css` (new, this page only); `explore` block, intro and
@@ -128,8 +139,11 @@ Test yourself already read powers of ten in every common form. Added, for every 
   scripts are unchanged (`mount` passes a third argument they ignore).
 - **Build opt in:** `"kit2": true` on the tool in `chem/data/pages.json`; `scripts/build-apchem.mjs` then loads
   `tool-kit2.css` and `tool-kit2.js`. Only `chem/tools/units-sig-figs.html` changed among the pages.
-- `scripts/check-weight.mjs`: the chem shell budget 52.8 → 53.2 KB (the forgiving units, 0.2 KB).
-- `scripts/check-tool-use.mjs`: this tool added as a v2 tool (it reports frame v2).
+- `scripts/check-weight.mjs`: the chem shell budget 52.8 → 53.2 KB (the forgiving units: measured 52.7 → 53.1 KB).
+- `scripts/check-tool-use.mjs` is NOT changed (byte for byte the collecting branch's; its samples are fixed). That
+  this tool reports frame v2 was checked with a local, uncommitted copy that adds the line
+  `{ path: '/chem/tools/units-sig-figs.html', tool: 'apchem/units-sig-figs', frame: 'v2' }`; the line goes into
+  the file when the tool is merged.
 - Sweep: `scripts/tools-v2/units-sig-figs-sweep.mjs`.
 
 ## Checks run (2026-11-18)

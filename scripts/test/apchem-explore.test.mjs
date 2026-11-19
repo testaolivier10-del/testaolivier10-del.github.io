@@ -163,15 +163,15 @@ test('units and sig figs explore: the chain cancels units in order, the reading 
   assert.equal(flipped.pairs.length, 0); assert.equal(flipped.unit, 'mL^2/L');
   assert.equal(U.chain(start, [mol, g]).text, '13.9 mol', 'order of the factors does not matter once both are there');
   assert.equal(U.sigText(250, 3), '250.'); assert.equal(U.sigText(2500, 2), '2.5 × 10³'); assert.equal(U.sigText(0.25, 3), '0.250');
-  const cyl = { every: 1 }, bk = { every: 10 };
+  const cyl = { every: 1 }, coarse = { every: 10 };
   const r = U.read(33.7, cyl);
   assert.equal(r.shown, '33.7'); assert.equal(r.sf, 3); assert.equal(r.certain, '33'); assert.equal(r.est, '7');
-  const b = U.read(33.7, bk);
+  const b = U.read(33.7, coarse);
   assert.equal(b.shown, '34'); assert.equal(b.sf, 2); assert.equal(b.certain, '3'); assert.equal(b.est, '4');
-  assert.equal(U.read(30.2, bk).shown, '30.'); assert.equal(U.read(30.2, bk).sf, 2);
-  assert.equal(U.read(4.6, bk).sf, 1); assert.equal(U.read(4.6, bk).certain, '');
+  assert.equal(U.read(30.2, coarse).shown, '30.'); assert.equal(U.read(30.2, coarse).sf, 2);
+  assert.equal(U.read(4.6, coarse).sf, 1); assert.equal(U.read(4.6, coarse).certain, '');
   for (let v = 10.5; v <= 48; v = Math.round((v + 0.1) * 10) / 10) {
-    assert.ok(U.read(v, cyl).sf - U.read(v, bk).sf === 1, `the cylinder gives one more real digit at ${v}`);
-    assert.ok(Math.abs(U.read(v, cyl).value - v) <= 0.05 + 1e-9 && Math.abs(U.read(v, bk).value - v) <= 0.5 + 1e-9, `estimate within half a step at ${v}`);
+    assert.ok(U.read(v, cyl).sf - U.read(v, coarse).sf === 1, `the fine cylinder gives one more real digit than the coarse one at ${v}`);
+    assert.ok(Math.abs(U.read(v, cyl).value - v) <= 0.05 + 1e-9 && Math.abs(U.read(v, coarse).value - v) <= 0.5 + 1e-9, `estimate within half a step at ${v}`);
   }
 });

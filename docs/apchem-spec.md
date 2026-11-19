@@ -388,10 +388,11 @@ Chemistry science gets an independent accuracy check, as A&P and ochem do.
     merged) **Units and significant figures is the first chemistry tool on the v2 kit.** The course adapter is
     `ApChemTools.studioKit2` (chem-tools.js; a page opts in with `"kit2": true` in pages.json, and the build then
     loads `tool-kit2.*`). Explore has two tabs: units cancelling in a chain of factor cards on a board next to a
-    flask of water, and reading a graduated cylinder or a beaker through a magnifier (digits from the marks plus
-    one estimated). The old setup puzzle moved to Test yourself ("Set it up", not graded) beside the graded
+    flask of water, and reading a graduated cylinder through a magnifier (digits from the marks plus one estimated),
+    then pouring the same water into a second cylinder with coarser marks (review round 1: no beaker is read). The old setup puzzle moved to Test yourself ("Set it up", not graded) beside the graded
     problems, whose items, grading and record ids are unchanged. The grader's units are more forgiving for every
-    chemistry question (g/ml, per, KJ, atmospheres, a stray full stop, a middle dot as the times sign).
+    chemistry question (g/ml, per, KJ, atmospheres, a stray full stop, a middle dot as the times sign; not ML,
+    which is megalitre).
 
 ## 8. Open items for the owner
 
