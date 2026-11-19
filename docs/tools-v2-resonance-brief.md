@@ -163,7 +163,8 @@ Each is also one line in `docs/tools-v2-owner-log.md`.
 
 ## Checks run (2026-11-18)
 - Sweep, one width per process: 42 states and about 375 checks per width, 420 states and 3757 checks in all,
-  **0 failures** at 360, 390, 430, 600, 768, 820, 1024, 1280, 1440 and 1920. Smallest share of the stage the board
+  **0 failures** (final run after the last change; the run before it caught a first visit cue left at its old spot
+  after a resize at 768 to 1024, fixed by placing the cue again from the new drawing) at 360, 390, 430, 600, 768, 820, 1024, 1280, 1440 and 1920. Smallest share of the stage the board
   molecule takes: 4.5% (1920, a three atom species) to 14% (360); it is the largest object in every state. Contact
   sheets in `/mnt/user-data/outputs/resonance-v2/sweep/`.
 - Unit tests (`tool-content`, `ochem-tools-upgrade`, `ochem-url-compat`, `tool-use`, `ochem-premium`,

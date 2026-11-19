@@ -1679,7 +1679,8 @@
       studio.open('details');
     }
   }
-  if(window.ResizeObserver) new ResizeObserver(function(){ if(!tw && !drag) { paintAll(); if(cue) cue.place(); } }).observe(sceneBox);
+  // a new size redraws the picture; the cue is placed again from the new drawing (its spot moved with the molecule)
+  if(window.ResizeObserver) new ResizeObserver(function(){ if(!tw && !drag) { paintAll(); if(cue) placeCue(); } }).observe(sceneBox);
   else window.addEventListener('resize', function(){ paintAll(); });
   paintAll(); words(null);
   // names and marks are placed from measured text: place them again once the fonts are in
