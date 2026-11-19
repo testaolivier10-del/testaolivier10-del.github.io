@@ -327,7 +327,7 @@
               var cs = Math.cos(rot), sn = Math.sin(rot), c = 0;
               [o].concat(mine).forEach(function(k){
                 var x = k === o ? px : px + rel[k].x * cs - rel[k].y * sn, y = k === o ? py : py + rel[k].x * sn + rel[k].y * cs;
-                others.forEach(function(j){ if(j === a && k === o) return; var dd = Math.hypot(pos[j].x - x, pos[j].y - y), hh = (next.atoms[k].el === 'H') + (next.atoms[j].el === 'H'), mn = Lb * (hh ? 0.75 : 1.0); if(dd < mn) c += mn - dd; });
+                others.forEach(function(j){ if(j === a && k === o) return; var dd = Math.hypot(pos[j].x - x, pos[j].y - y), hh = (next.atoms[k].el === 'H') + (next.atoms[j].el === 'H'), mn = Lb * (hh ? 0.75 : 1.15); if(dd < mn) c += mn - dd; });
               });
               return c;
             }
@@ -373,7 +373,7 @@
         if(pc[ka] === pc[kb] || (bb && bb.order > 0)) continue;
         var A = pos[ka], Z = pos[kb], vx2 = Z.x - A.x, vy2 = Z.y - A.y, d2 = Math.hypot(vx2, vy2) || 0.01;
         var hh = (next.atoms[ka].el === 'H') + (next.atoms[kb].el === 'H');
-        var min = frag[ka] === frag[kb] ? Lb * (hh ? 0.7 : 0.9) : Lb * (hh === 2 ? 1.0 : hh ? 1.2 : 1.45);
+        var min = frag[ka] === frag[kb] ? Lb * (hh ? 0.7 : 1.1) : Lb * (hh === 2 ? 1.0 : hh ? 1.2 : 1.45);
         // the two atoms of a bond that broke: the leaving group goes clearly away
         var was = C.findBond(prev, ka, kb);
         if(was && was.order >= 1 && frag[ka] !== frag[kb]) min = Math.max(min, Lb * 1.9);
