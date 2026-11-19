@@ -88,7 +88,7 @@
 .fe-mbez{fill:#2B3440;stroke:#1C232C;stroke-width:2;}
 .fe-mscr{fill:#13202B;}
 .fe-mtitle{fill:#F2F5F8;font-weight:900;}
-.fe-mnorm{fill:#3FA36B;opacity:.22;}
+.fe-mnorm{fill:#3FA36B;opacity:.22;} .fe-mnorm.is-sw{opacity:.6;}
 .fe-mset{stroke:#7FDCA4;stroke-width:2;fill:none;}
 .fe-mtick{fill:#B9C6D2;font-weight:700;text-anchor:end;}
 .fe-mlab{font-weight:800;text-anchor:end;}

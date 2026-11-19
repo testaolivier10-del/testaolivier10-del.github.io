@@ -113,6 +113,10 @@ for (const ws of WIDTHS) {
           const a = A.q, b = B.q, g = 4;
           if (a.left < b.right + g && a.right > b.left - g && a.top < b.bottom + g && a.bottom > b.top - g) out.over.push(A.n + ' / ' + B.n);
         }
+        // the monitor's and the scale's own words never run into each other
+        const tx = [...svgEl.querySelectorAll('.fe-mon text, .fe-ttxt')].map((t) => ({ t: t.textContent, q: t.getBoundingClientRect(), mon: !!t.closest('.fe-mon') })).filter((x) => x.q.width);
+        for (let i = 0; i < tx.length; i++) for (let j = i + 1; j < tx.length; j++) { const a = tx[i].q, b = tx[j].q; if (a.left < b.right + 2 && a.right > b.left - 2 && a.top < b.bottom && a.bottom > b.top) out.over.push('text ' + tx[i].t + ' / ' + tx[j].t); }
+        const mb = svgEl.querySelector('.fe-mbez'); if (mb) { const m = mb.getBoundingClientRect(); tx.filter((x) => x.mon).forEach((x) => { if (x.q.left < m.left || x.q.right > m.right || x.q.top < m.top || x.q.bottom > m.bottom) { if (x.q.top >= m.top - 1 && x.q.top <= m.bottom) out.clip.push('monitor text ' + x.t); } }); }
         // smallest rendered text: every svg text and the words on the stage
         svgEl.querySelectorAll('text').forEach((t) => { const fs = parseFloat(getComputedStyle(t).fontSize) * (svgEl.getBoundingClientRect().width / svgEl.viewBox.baseVal.width); if (t.textContent.trim() && fs < 10.95) out.small.push(t.textContent.trim().slice(0, 18) + ' ' + fs.toFixed(1)); });
         document.querySelectorAll('.fe-rail span, .fe .tk2-cause *, .fe .tk2-tab *, .fe .tk2-head *').forEach((e) => { if (e.offsetWidth && e.textContent.trim() && !e.children.length) { const fs = parseFloat(getComputedStyle(e).fontSize); if (fs < 10.95) out.small.push(e.textContent.trim().slice(0, 18) + ' ' + fs); } });

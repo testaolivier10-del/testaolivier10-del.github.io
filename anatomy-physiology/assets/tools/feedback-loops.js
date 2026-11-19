@@ -754,6 +754,12 @@
        is-act once the signal reaches the effector, --fs-v how far off. */
     var sceneFig = panel.querySelector('.fl-scenefig'), scene = null;
     function sceneSet(on, act){ if(!scene) return; if(on != null) scene.classList.toggle('is-on', !!on); if(act != null) scene.classList.toggle('is-act', !!act); }
+    var v = 0;          // how far the variable is off its set point, 0..1, on this loop's side
+    var spOff = 0;      // how far the set point itself has moved, 0..1, on this loop's side (fever, reset)
+    var cut = '';       // the part cut, or ''
+    var timers = [], raf = 0, running = false;
+    var half = (GX1 - GX0) / 2;
+    // (after the state above: when the drawings are already loaded this runs at once and draws)
     loadScenes(function(){
       var A = window.AnpLoopScenes;
       if(!A || !A.has(l) || !document.contains(sceneFig)) return;
@@ -762,11 +768,6 @@
       panel.classList.add('has-scene'); var st = panel.closest('.fl-ls-stage') || (sceneFig.parentNode && sceneFig.parentNode.classList.contains('fl-ls-stage') ? sceneFig.parentNode : null); if(st) st.classList.add('has-scene');
       draw();
     });
-    var v = 0;          // how far the variable is off its set point, 0..1, on this loop's side
-    var spOff = 0;      // how far the set point itself has moved, 0..1, on this loop's side (fever, reset)
-    var cut = '';       // the part cut, or ''
-    var timers = [], raf = 0, running = false;
-    var half = (GX1 - GX0) / 2;
     function xOf(val){ return GC + (up ? 1 : -1) * val * half; }
     function word(){
       var d = v - spOff, a = Math.abs(d), side = (up ? d : -d) > 0 ? 'above' : 'below';

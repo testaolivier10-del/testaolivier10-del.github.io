@@ -258,7 +258,7 @@
       cue: 'Drag the thermometer', thing: 'thermometer', layouts: LAY,
       set: SET, min: MIN, max: MAX, step: 0.1, dead: 0.1, band: [36.5, 37.5],
       fmt: function(v){ return v.toFixed(1) + ' °C'; },
-      TM: { sens: 0.35, aff: 0.8, affEnd: 1.75, ctl: 1.75, eff: 2.35, effEnd: 3.3, act: 3.3, resp: 3.7, tail: 5.2 },
+      TM: { sens: 0.35, aff: 0.8, affEnd: 1.75, ctl: 1.75, eff: 2.35, effEnd: 3.3, act: 3.3, resp: 3.7, tail: 4.4 },
       mon: { title: 'Body temperature', lo: 35.5, hi: 38.5, ticks: [36, 37, 38], unit: '°C', setLabel: 'Set point', role: 'temp' },
       knobAt: knobAt,
       pick: function(L, x, y){ var g0 = L.g.therm; return MAX - (y - g0[1]) / (300 * g0[2]) * (MAX - MIN); },
@@ -450,7 +450,7 @@
       cue: 'Drag the glucose level', thing: 'glucose meter', layouts: LAY,
       set: SET, min: MIN, max: MAX, step: 1, dead: 4, band: [70, 99],
       fmt: function(v){ return Math.round(v) + ' mg/dL'; },
-      TM: { sens: 0.35, aff: 0.8, affEnd: 0.8, ctl: 1.15, eff: 1.75, effEnd: 3.0, act: 3.0, resp: 3.4, tail: 5.2 },
+      TM: { sens: 0.35, aff: 0.8, affEnd: 0.8, ctl: 1.15, eff: 1.75, effEnd: 3.0, act: 3.0, resp: 3.4, tail: 4.4 },
       mon: { title: 'Blood glucose', lo: 55, hi: 160, ticks: [70, 100, 140], unit: 'mg/dL', setLabel: 'Set point', role: 'glu' },
       knobAt: function(L, v){ return T(L, [0, meterY(v), 'therm']); },
       pick: function(L, x, y){ var g0 = L.g.therm; return MAX - (y - g0[1]) / (300 * g0[2]) * (MAX - MIN); },
@@ -861,7 +861,7 @@
       art.innerHTML = cur.art(E);
       R = {};
       art.querySelectorAll('[data-r]').forEach(function(n){ R[n.getAttribute('data-r')] = n; });
-      labCache = {}; labs.innerHTML = '';
+      labCache = {}; labs.innerHTML = ''; placeKey = '';
       if(cur.fxInit) cur.fxInit(null, R, E);
       E.geo = cur.geo(E.L);
       pulseG.innerHTML = '';
@@ -901,15 +901,24 @@
         var yb0 = vy(cur.band[1]), yb1 = vy(cur.band[0]);
         s += '<rect class="fe-mnorm" x="' + f1(px0) + '" y="' + f1(yb0) + '" width="' + f1(px1 - px0) + '" height="' + f1(yb1 - yb0) + '"/>';
         s += '<path class="fe-mset" d="M' + f1(px0) + ',' + f1(vy(cur.set)) + 'H' + f1(px1) + '"/>';
-        m.ticks.forEach(function(v){ s += '<text class="fe-mtick" x="' + f1(px0 - fs * 0.35) + '" y="' + f1(vy(v)) + '" dy="0.35em" style="font-size:' + f1(fs) + 'px">' + v + '</text>'; });
+        // tick numbers only where they have room (on a phone the middle one steps aside)
+        var lastY = -1e9, tk = m.ticks.slice().sort(function(a, b){ return b - a; }), keep = [];
+        tk.forEach(function(v, i){ var y = vy(v); if(y - lastY >= fs * 1.45 && (i === tk.length - 1 || vy(tk[tk.length - 1]) - y >= fs * 1.45 || keep.length === 0)){ keep.push(v); lastY = y; } });
+        if(keep.indexOf(tk[tk.length - 1]) < 0 && vy(tk[tk.length - 1]) - lastY >= fs * 1.45) keep.push(tk[tk.length - 1]);
+        keep.forEach(function(v){ s += '<text class="fe-mtick" x="' + f1(px0 - fs * 0.35) + '" y="' + f1(vy(v)) + '" dy="0.35em" style="font-size:' + f1(fs) + 'px">' + v + '</text>'; });
         s += '<text class="fe-mlab is-set" x="' + f1(px1 - 2) + '" y="' + f1(vy(cur.set) - fs * 0.45) + '" style="font-size:' + f1(fs) + 'px">' + esc(m.setLabel) + '</text>';
-        s += '<text class="fe-mlab is-norm" x="' + f1(px1 - 2) + '" y="' + f1(yb1 + fs * 1.05) + '" style="font-size:' + f1(fs) + 'px">Normal range</text>';
+        // the normal range is named in the title row, beside a swatch of its colour
+        var nx = x0 + w - pad - 2;
+        s += '<text class="fe-mlab is-norm" x="' + f1(nx) + '" y="' + f1(y0 + head * 0.55) + '" dy="0.35em" style="font-size:' + f1(fs) + 'px">Normal range</text>';
+        s += '<rect class="fe-mnorm is-sw" data-m="sw" x="0" y="' + f1(y0 + head * 0.55 - fs * 0.45) + '" width="' + f1(fs * 0.9) + '" height="' + f1(fs * 0.9) + '" rx="2"/>';
       } else {
         s += '<text class="fe-mlab is-str" x="' + f1(px1 - 2) + '" y="' + f1(py0 + fs * 0.4) + '" style="font-size:' + f1(fs) + 'px">Birth</text><path class="fe-mfull" d="M' + f1(px0) + ',' + f1(py0) + 'H' + f1(px1) + '"/>';
       }
       s += '<text class="fe-mtime" x="' + f1(px1) + '" y="' + f1(py1 + fs * 1.15) + '" style="font-size:' + f1(fs) + 'px">Time</text>';
       s += '<path class="fe-mtr is-con" data-m="con"/><path class="fe-mtr is-' + m.role + '" data-m="tr"/><circle class="fe-mnow is-' + m.role + '" data-m="now" r="' + f1(fs * 0.38) + '"/>';
       monG.innerHTML = s;
+      var sw = monG.querySelector('[data-m="sw"]'), nl = monG.querySelector('.fe-mlab.is-norm');
+      if(sw && nl && nl.getComputedTextLength){ sw.setAttribute('x', f1(+nl.getAttribute('x') - nl.getComputedTextLength() - fs * 1.3)); }
       MON.tr = monG.querySelector('[data-m="tr"]'); MON.con = monG.querySelector('[data-m="con"]'); MON.now = monG.querySelector('[data-m="now"]');
     }
     function vy(v){ var m = cur.mon; return lerp(MON.py1, MON.py0, (v - m.lo) / (m.hi - m.lo)); }
@@ -949,7 +958,7 @@
     function inter(a, b, gp){ return a[0] < b[2] + gp && a[2] > b[0] - gp && a[1] < b[3] + gp && a[3] > b[1] - gp; }
     var OFF = { r: [1, 0], l: [-1, 0], u: [0, -1], d: [0, 1], ur: [0.8, -0.8], ul: [-0.8, -0.8], dr: [0.8, 0.8], dl: [-0.8, 0.8] };
     var ctrlBox = null;
-    function ctrlDirty(){ ctrlBox = null; }
+    function ctrlDirty(){ ctrlBox = null; placeKey = ''; }
     function ctrls(){
       if(ctrlBox) return ctrlBox;
       var out = [], k = E.k || 1, pr = pic.getBoundingClientRect(), x0 = E.X0 || 0;
@@ -965,7 +974,12 @@
       if(E.L.g.therm){ var g0 = E.L.g.therm, sc2 = g0[2]; out.push([g0[0] - 30 * sc2 - E.fsm * 2.2, g0[1] - 12 * sc2, g0[0] + 22 * sc2, g0[1] + 350 * sc2]); }
       return out;
     }
+    var placeKey = '';
     function placeLabels(list, st){
+      // the same labels at the same spots as the last frame: nothing to place (most frames of a run)
+      var kp = handle && !handle.el.hidden ? knobPos(st) : [0, 0], pk = list.map(function(Lb){ return Lb.key + ':' + Lb.text + ':' + Lb.role + ':' + !!Lb.strong + ':' + f1(Lb.at[0]) + ',' + f1(Lb.at[1]); }).join('|') + '#' + f1(kp[0]) + ',' + f1(kp[1]) + '#' + E.fs.toFixed(2) + '#' + (ctrlBox ? 1 : 0) + E.L.id;
+      if(pk === placeKey) return;
+      placeKey = pk;
       var fs = E.fs, h = fs * 1.75, pad = fs * 0.55, placed = keepOut(st), used = {}, gp = E.gap, X0 = E.X0 || 0;
       list.forEach(function(Lb){
         var w = textW(Lb.text) + pad * 2, at = Lb.at, best = null;
