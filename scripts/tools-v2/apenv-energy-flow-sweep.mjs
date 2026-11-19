@@ -100,6 +100,8 @@ const geo = (page) => page.evaluate(() => {
   const cause = document.querySelector('.tk2-cause');
   return { scene: r(scene), labels, ctrls, tags, knobs, animals, kids, cause: r(cause), causeT: cause.textContent, sw: document.documentElement.scrollWidth, iw: window.innerWidth };
 });
+/* gap: things that must stay apart by at least 4 px (labels, pills and badges, cues and tags, animals) */
+const near = (a, b, gap = 4) => a.x - gap < b.x + b.w && b.x - gap < a.x + a.w && a.y - gap < b.y + b.h && b.y - gap < a.y + a.h;
 const hit = (a, b, pad = 1) => a.x + pad < b.x + b.w && b.x + pad < a.x + a.w && a.y + pad < b.y + b.h && b.y + pad < a.y + a.h;
 const inside = (a, s, pad = 1) => a.x >= s.x - pad && a.y >= s.y - pad && a.x + a.w <= s.x + s.w + pad && a.y + a.h <= s.y + s.h + pad;
 
@@ -113,7 +115,7 @@ for (const w of WIDTHS) {
       // the first visit cue is part of the opening state: checked there, then dismissed
       const g0 = await geo(page);
       for (const c of g0.tags) ok(inside(c, g0.scene), `${tag} ${ch} opening: cue or tag clipped "${c.t}"`);
-      for (const c of g0.tags) for (const l of g0.labels) ok(!hit(c, l), `${tag} ${ch} opening: cue/tag "${c.t}" covers "${l.t}"`);
+      for (const c of g0.tags) for (const l of g0.labels) ok(!near(c, l), `${tag} ${ch} opening: cue/tag "${c.t}" within 4 px of "${l.t}"`);
       for (const c of g0.tags) for (const a of g0.animals) ok(!hit(c, a, 2), `${tag} ${ch} opening: cue/tag "${c.t}" covers an animal`);
       for (const st of STATES.filter(s => s.ch === ch)) {
         await apply(page, st.set);
@@ -125,9 +127,11 @@ for (const w of WIDTHS) {
           const a = g.labels[i], b = g.labels[j];
           if (a.x >= b.x && a.y >= b.y && a.x + a.w <= b.x + b.w + 0.5 && a.y + a.h <= b.y + b.h + 0.5) continue;   // a pill's own text
           if (b.x >= a.x && b.y >= a.y && b.x + b.w <= a.x + a.w + 0.5 && b.y + b.h <= a.y + a.h + 0.5) continue;
-          ok(!hit(a, b), `${id}: labels overlap "${a.t}" / "${b.t}"`);
+          ok(!near(a, b), `${id}: labels closer than 4 px "${a.t}" / "${b.t}"`);
         }
-        for (const t of g.tags) for (const l of g.labels) ok(!hit(t, l), `${id}: tag "${t.t}" covers "${l.t}"`);
+        for (const t of g.tags) for (const l of g.labels) ok(!near(t, l), `${id}: tag "${t.t}" within 4 px of "${l.t}"`);
+        for (const t of g.tags) for (const a of g.animals) ok(!near(t, a, 2), `${id}: tag "${t.t}" covers an animal`);
+        for (const a of g.animals) for (const l of g.labels) if (st.ch === 'chain') ok(!near(a, l), `${id}: an animal within 4 px of "${l.t}"`);
         for (const k of g.knobs) for (const l of g.labels) ok(!hit(k, l, 0), `${id}: a knob covers "${l.t}"`);
         // a tier's name and its kcal: at least 4 px apart
         const gaps = await page.evaluate(() => { const L = [...document.querySelectorAll('.efa-dyn text.efa-lab')], V = [...document.querySelectorAll('.efa-dyn text.efa-val')]; return V.map((v, i) => { const a = L[i].getBoundingClientRect(), b = v.getBoundingClientRect(); return b.top - a.bottom; }); });

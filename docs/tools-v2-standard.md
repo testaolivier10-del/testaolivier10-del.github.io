@@ -71,4 +71,6 @@ decision made on the owner's behalf, so he can skim it later and reverse any of 
 | Organic Chemistry, Conformation Lab | Built 2026-11-17. Review PASS 2026-11-18; shipped to the collecting branch `claude/tools-v2-all` (not on main) | `docs/tools-v2-conformations-brief.md` |
 | AP® Biology, Energy flow | Built 2026-11-18. Review PASS 2026-11-18; shipped to the collecting branch `claude/tools-v2-all` (not on main) | `docs/tools-v2-bio-energy-flow-brief.md` |
 | AP® Biology, Hardy-Weinberg | Built 2026-11-18. Review PASS 2026-11-18 (recheck 2); integrated on the collecting branch `claude/tools-v2-all` (not on main) | `docs/tools-v2-hardy-weinberg-brief.md` |
-| AP® Environmental Science, Energy flow | Built 2026-11-18, waiting for the independent review (not merged) | `docs/tools-v2-apenv-energy-flow-brief.md` |
+| AP® Environmental Science, Energy flow | Built 2026-11-18. Review BLOCK, then recheck 1 PASS 2026-11-18; waiting to join the collecting branch `claude/tools-v2-all` (not on main) | `docs/tools-v2-apenv-energy-flow-brief.md` |
+| AP® Biology, Enzyme activity | Built 2026-11-18. Review PASS 2026-11-18 (recheck 2); integrated on the collecting branch `claude/tools-v2-all` (not on main) | `docs/tools-v2-enzyme-activity-brief.md` |
+| A&P, Graphs | Built 2026-11-18. Review PASS 2026-11-18 (recheck 1); integrated on the collecting branch `claude/tools-v2-all` (not on main) | `docs/tools-v2-anp-graphs-brief.md` |

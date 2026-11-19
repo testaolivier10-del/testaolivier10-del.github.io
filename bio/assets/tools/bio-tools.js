@@ -1406,7 +1406,10 @@
       groups.push({ label: pp.label, items: [].concat.apply([], lp.groups.map(function(g){ return g.items; })) });
       plain(parts.slice(at + 1).filter(function(p){ return !p.practice; }), o.othersLabel || 'More');
       pick = s.picker({ label: others.length ? 'What to practice' : 'Problem', groups: groups, value: pickVal(partOf(cur.part)),
-        onChange: function(v){ if(isProb(v)){ show('quiz', pp.value, true); lp.onChange(v); pick.value(v); } else show('quiz', v, true); } }, 'quiz');
+        onChange: function(v){
+          // back from another part to the same kind of problem: the problem it left (and its finished card) stays
+          if(isProb(v)){ var back = cur.part !== pp.value && v === lp.value(); show('quiz', pp.value, true); if(!back) lp.onChange(v); pick.value(v); }
+          else show('quiz', v, true); } }, 'quiz');
       area.lsSync = function(){ if(cur.part === pp.value && pick.value() !== lp.value()) pick.value(lp.value()); };
     } else if(parts.length > 1) pick = s.picker({ label: 'What to practice', items: parts.map(function(p){ return { value: p.value, label: p.label }; }), value: cur.part,
       onChange: function(v){ show('quiz', v, true); } }, 'quiz');
