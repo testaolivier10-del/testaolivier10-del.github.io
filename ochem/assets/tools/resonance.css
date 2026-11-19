@@ -30,7 +30,7 @@
 .rs2s-bg0{stop-color:var(--bg0);} .rs2s-bg1{stop-color:var(--bg1);}
 .rs2s-tr0{stop-color:var(--tr0);} .rs2s-tr1{stop-color:var(--tr1);}
 .rs2s-sp0{stop-color:#fff;stop-opacity:.75;} .rs2s-sp1{stop-color:#fff;stop-opacity:0;}
-:root[data-theme="dark"] .rs2s-sp0{stop-color:#3A3F6E;stop-opacity:.5;}
+:root[data-theme="dark"] .rs2s-sp0{stop-color:#2C3160;stop-opacity:.55;}
 .rs2-card{fill:var(--card);stroke:var(--card-edge);stroke-width:1.2;filter:drop-shadow(0 2px 6px rgba(30,20,70,.08));}
 .rs2-trayedge{stroke:var(--tr-edge);stroke-width:1.5;}
 /* balls and sticks */

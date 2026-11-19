@@ -178,6 +178,8 @@
     });
     return { atoms: atoms, bonds: bonds, equal: equal };
   }
+  // the engine's sentences use dashes as punctuation; the page does not
+  function undash(t){ return String(t).replace(/\s+—\s+/g, ', ').replace(/—/g, ', '); }
   function fraction(x){
     var n = Math.abs(x), F = { '1/2':'½', '1/3':'⅓', '2/3':'⅔', '1/4':'¼', '3/4':'¾', '1/5':'⅕', '2/5':'⅖', '3/5':'⅗', '4/5':'⅘', '1/6':'⅙', '5/6':'⅚' };
     for(var d = 1; d <= 6; d++){
@@ -351,7 +353,7 @@
     ['c', 'h', 'o', 'n', 'x'].map(grad).join('') +
     '<linearGradient id="rs2g-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="rs2s-bg0"/><stop offset="1" class="rs2s-bg1"/></linearGradient>' +
     '<linearGradient id="rs2g-tray" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="rs2s-tr0"/><stop offset="1" class="rs2s-tr1"/></linearGradient>' +
-    '<radialGradient id="rs2g-spot" cx="0.5" cy="0.45" r="0.6"><stop offset="0" class="rs2s-sp0"/><stop offset="1" class="rs2s-sp1"/></radialGradient>' +
+    '<radialGradient id="rs2g-spot" cx="0.5" cy="0.5" r="0.5"><stop offset="0" class="rs2s-sp0"/><stop offset="1" class="rs2s-sp1"/></radialGradient>' +
     '<radialGradient id="rs2g-neg"><stop offset="0.2" class="rs2s-ng0"/><stop offset="1" class="rs2s-ng1"/></radialGradient>' +
     '<radialGradient id="rs2g-pos"><stop offset="0.2" class="rs2s-ps0"/><stop offset="1" class="rs2s-ps1"/></radialGradient>' +
     '<radialGradient id="rs2g-el"><stop offset="0" class="rs2s-el0"/><stop offset="1" class="rs2s-el1"/></radialGradient>' +
@@ -429,10 +431,13 @@
     var ks = Object.keys(st.atoms).filter(function(k){ return opts.flat ? heavy(st, k) : true; });
     var x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
     ks.forEach(function(k){ var a = st.atoms[k]; x0 = Math.min(x0, a.x); x1 = Math.max(x1, a.x); y0 = Math.min(y0, a.y); y1 = Math.max(y1, a.y); });
-    var m = opts.margin == null ? 34 : opts.margin;
+    // sizes are set from the bond length, so a structure drawn at another scale (Build your own) looks the same
+    var bl = st.bonds.filter(function(b){ return heavy(st, b.a) && heavy(st, b.b); }).map(function(b){ var a = st.atoms[b.a], z = st.atoms[b.b]; return Math.hypot(z.x - a.x, z.y - a.y); }).sort(function(a, b){ return a - b; });
+    var u = bl.length ? bl[Math.floor(bl.length / 2)] / 70 : 1;
+    var m = (opts.margin == null ? 34 : opts.margin) * u;
     var bw = x1 - x0 + m * 2, bh = y1 - y0 + m * 2;
-    var s = Math.min(box.w / bw, box.h / bh, opts.cap || 2.1);
-    return { s: s, ox: box.x + box.w / 2 - (x0 + x1) / 2 * s, oy: box.y + box.h / 2 - (y0 + y1) / 2 * s };
+    var s = Math.min(box.w / bw, box.h / bh, (opts.cap || 2.1) / u);
+    return { s: s, k: s * u, ox: box.x + box.w / 2 - (x0 + x1) / 2 * s, oy: box.y + box.h / 2 - (y0 + y1) / 2 * s };
   }
   function P(T, a){ return [T.ox + a.x * T.s, T.oy + a.y * T.s]; }
 
@@ -443,7 +448,7 @@
   function radiusOf(st, k, T){
     var a = st.atoms[k], base = a.el === 'H' ? 10 : 16.5;
     var lab = labelOf(st, k);
-    return Math.max(a.el === 'H' ? 7.5 : 11.5, base * T.s * 0.8) * (lab.length > 2 ? 1.16 : lab.length > 1 ? 1.07 : 1);
+    return Math.max(a.el === 'H' ? 7.5 : 11.5, base * T.k * 0.8) * (lab.length > 2 ? 1.16 : lab.length > 1 ? 1.07 : 1);
   }
   function labelOf(st, k){
     var a = st.atoms[k];
@@ -493,13 +498,13 @@
   }
 
   /* draw(st, T, o) -> { html, A: anchors }
-     o.omitLp {atomKey: count}  lone pairs not drawn (they are in flight)
+     o.omitLp {atomKey: [{x, y}]}  lone pairs not drawn (they are in flight): the slot nearest each point
      o.omitPi {bondKey: 1}      π sticks not drawn
      o.noCharge {atomKey: 1}    charge not drawn (an atom over its octet, held)
      o.hybrid  hybridOf()       draw the real molecule: shared π electrons and shared charge, no lone pairs */
   function draw(st, T, o){
     o = o || {};
-    var A = { atoms: {}, lps: {}, pis: {}, bonds: {} }, sh = '', bg = '', bo = '', at = '', lp = '', ch = '', s = T.s;
+    var A = { atoms: {}, lps: {}, pis: {}, bonds: {} }, sh = '', bg = '', bo = '', at = '', lp = '', ch = '', s = T.k;
     var stickW = Math.max(3.2, 4.2 * s), piW = Math.max(2.6, 3.2 * s), off = Math.max(5, 6.4 * s);
     var keys = Object.keys(st.atoms);
     keys.forEach(function(k){ var p = P(T, st.atoms[k]); A.atoms[k] = { x: p[0], y: p[1], r: radiusOf(st, k, T) }; });
@@ -528,13 +533,17 @@
       var a = st.atoms[k], p = A.atoms[k], r = p.r, q = fc(st, k), n = o.hybrid ? 0 : (a.lp || 0);
       var sl = slots(st, k, n + 2);
       A.lps[k] = [];
-      var drop = (o.omitLp && o.omitLp[k]) || 0;
       for(var i = 0; i < n; i++){
-        var ang = sl[i], d = r + Math.max(7, 5.2 * s), cx = p.x + Math.cos(ang) * d, cy = p.y + Math.sin(ang) * d;
-        A.lps[k].push({ x: cx, y: cy, ang: ang });
-        if(i >= n - drop) continue;
-        lp += pairHtml(cx, cy, ang, s);
+        var ang = sl[i], d = r + Math.max(7, 5.2 * s);
+        A.lps[k].push({ x: p.x + Math.cos(ang) * d, y: p.y + Math.sin(ang) * d, ang: ang });
       }
+      var skip = {};
+      ((o.omitLp && o.omitLp[k]) || []).forEach(function(pt){
+        var bi = -1, bd = Infinity;
+        A.lps[k].forEach(function(l, j){ if(skip[j]) return; var dd = Math.hypot(l.x - pt.x, l.y - pt.y); if(dd < bd){ bd = dd; bi = j; } });
+        if(bi >= 0) skip[bi] = 1;
+      });
+      A.lps[k].forEach(function(l, j){ if(!skip[j]) lp += pairHtml(l.x, l.y, l.ang, s); });
       A.atoms[k].free = [sl[n], sl[n + 1]];
       var hq = o.hybrid && o.hybrid.atoms[k];
       var showQ = !o.noCharge || !o.noCharge[k];
@@ -568,7 +577,7 @@
 
   /* The small drawings in the forms row: lines and letters, the charge in its colour, the π line violet. */
   function drawFlat(st, T){
-    var s = T.s, out = '', hk = Object.keys(st.atoms).filter(function(k){ return heavy(st, k); });
+    var s = T.k, out = '', hk = Object.keys(st.atoms).filter(function(k){ return heavy(st, k); });
     var lw = Math.max(1.4, 2.6 * s), fsz = Math.max(8.5, 15 * s);
     st.bonds.forEach(function(b){
       if(b.order < 1 || !heavy(st, b.a) || !heavy(st, b.b)) return;
@@ -619,7 +628,7 @@
   function paintMain(){
     var st = shown();
     if(!st || !L.main){ G.mainA.innerHTML = ''; G.mainB.innerHTML = ''; mainA = null; return; }
-    mainT = fitT(S.start, L.main, { cap: L.phone ? 1.7 : 3.0, margin: 30 });
+    mainT = fitT(S.start, L.main, { cap: L.phone ? 1.7 : 2.7, margin: 30 });
     var noQ = {}; over(st).forEach(function(k){ noQ[k] = 1; });
     var d = draw(st, mainT, { noCharge: noQ });
     G.mainA.innerHTML = d.html; G.mainA.style.opacity = '1';
@@ -638,7 +647,7 @@
     if(!L.hyb){ G.hyb.innerHTML = ''; return; }
     var hideIt = S.mode === 'quiz' && S.part === 'find' && !hunt.done;
     if(hideIt || S.rk.length < 2){ G.hyb.innerHTML = ''; return; }
-    var T = fitT(S.start, L.hyb, { cap: L.phone ? 1.0 : 2.0, margin: 36 });
+    var T = fitT(S.start, { x: L.hyb.x, y: L.hyb.y + 10, w: L.hyb.w, h: L.hyb.h - 10 }, { cap: L.phone ? 1.0 : 2.0, margin: 36 });
     var d = draw(S.rk[0].st, T, { hybrid: S.hyb });
     G.hyb.innerHTML = d.html + hybMarks(S.hyb, d.A, L.hyb);
   }
@@ -875,9 +884,15 @@
     var T = mainT, Afrom = draw(from, T).A, Ato = draw(to, T).A;
     var fresh = o.fresh || arrows;             // the arrows whose pairs move now
     var omitLpA = {}, omitPiA = {}, omitLpB = {}, omitPiB = {};
-    fresh.forEach(function(ar){
-      if(C.isBondKey(ar.from)) omitPiA[ar.from] = 1; else omitLpA[ar.from] = (omitLpA[ar.from] || 0) + 1;
-      if(C.isBondKey(ar.to)) omitPiB[norm(to, ar.to)] = 1; else omitLpB[ar.to] = (omitLpB[ar.to] || 0) + 1;
+    var ends = fresh.map(function(ar, i){
+      var a = o.from && i === fresh.length - 1 ? o.from : anchorOf(ar, Afrom, 'from'), b = anchorOf(ar, Ato, 'to');
+      if(C.isBondKey(ar.to)){ var pi = Ato.pis[norm(to, ar.to)]; if(pi) b = { x: pi.mx, y: pi.my }; }
+      else { var lps = Ato.lps[ar.to] || []; if(lps.length) b = lps.slice().sort(function(u, v){ return Math.hypot(u.x - a.x, u.y - a.y) - Math.hypot(v.x - a.x, v.y - a.y); })[0]; }
+      return { a: a, b: b };
+    });
+    fresh.forEach(function(ar, i){
+      if(C.isBondKey(ar.from)) omitPiA[ar.from] = 1; else (omitLpA[ar.from] = omitLpA[ar.from] || []).push(ends[i].a);
+      if(C.isBondKey(ar.to)) omitPiB[norm(to, ar.to)] = 1; else (omitLpB[ar.to] = omitLpB[ar.to] || []).push(ends[i].b);
     });
     var noQa = {}; over(from).forEach(function(k){ noQa[k] = 1; });
     var noQb = {}; over(to).forEach(function(k){ noQb[k] = 1; });
@@ -885,12 +900,7 @@
     G.mainB.innerHTML = draw(to, T, { omitLp: omitLpB, omitPi: omitPiB, noCharge: noQb }).html;
     G.mainA.style.opacity = '1'; G.mainB.style.opacity = '0';
     G.ui.innerHTML = ''; labsEl.classList.add('is-wait'); cause.el.classList.add('is-wait');
-    var curves = fresh.map(function(ar){
-      var a = anchorOf(ar, Afrom, 'from'), b = anchorOf(ar, Ato, 'to');
-      if(C.isBondKey(ar.to)){ var pi = Ato.pis[norm(to, ar.to)]; if(pi) b = { x: pi.mx, y: pi.my }; }
-      else { var lps = Ato.lps[ar.to] || []; if(lps.length) b = lps.slice().sort(function(u, v){ return Math.hypot(u.x - a.x, u.y - a.y) - Math.hypot(v.x - a.x, v.y - a.y); })[0]; }
-      return curve(a, b);
-    });
+    var curves = ends.map(function(e){ return curve(e.a, e.b); });
     var held = arrows.filter(function(ar){ return fresh.indexOf(ar) < 0; });
     G.arrows.innerHTML = held.map(function(ar){ return arrowHtml(ar, Afrom, 'is-held'); }).join('') +
       curves.map(function(cv){ var p = arrowPath(cv); return '<g class="rs2-arrow is-run"><path class="rs2-al-l" d="' + p.line + '"/><path class="rs2-al-h" d="' + p.head + '"/></g>'; }).join('');
@@ -898,7 +908,7 @@
     runs.forEach(function(g){ var l = g.querySelector('.rs2-al-l'), len = l.getTotalLength ? l.getTotalLength() : 200; g.__len = len; l.style.strokeDasharray = len; l.style.strokeDashoffset = o.start ? 0 : len; g.querySelector('.rs2-al-h').style.opacity = o.start ? 1 : 0; });
     G.fly.innerHTML = curves.map(function(){ return '<g class="rs2-flyp"><circle class="rs2-lpglow" r="9"/><circle class="rs2-e" r="3"/><circle class="rs2-e" r="3"/></g>'; }).join('');
     flyEls = [].slice.call(G.fly.children);
-    var s = T.s, dr = Math.max(2.4, 2.2 * s), sp = Math.max(3.4, 2.9 * s);
+    var s = T.k, dr = Math.max(2.4, 2.2 * s), sp = Math.max(3.4, 2.9 * s);
     flyEls.forEach(function(g){ g.children[0].setAttribute('r', f1(sp * 2.1)); g.children[1].setAttribute('r', f1(dr)); g.children[2].setAttribute('r', f1(dr)); });
     var ms = o.ms || (o.start ? 520 : 1100), drawIn = o.start ? 0 : 0.3;
     tween(ms, function(f){
@@ -967,12 +977,12 @@
   /* Forgiving: the arrow lands on the nearest target that makes sense within reach; a target almost under the
      finger is taken as meant, whatever it does. */
   function snap(src, pt, list){
-    var reach = Math.max(58, 44 * mainT.s), near = list.map(function(t){
+    var reach = Math.max(58, 44 * mainT.k), near = list.map(function(t){
       var d = t.bond ? segDist(pt, mainA.bonds[t.key]) : Math.hypot(t.x - pt.x, t.y - pt.y) - mainA.atoms[t.key].r * 0.6;
       return { t: t, d: d };
     }).filter(function(x){ return x.d < reach; }).sort(function(a, b){ return a.d - b.d; });
     if(!near.length) return null;
-    if(near[0].d < Math.max(12, 9 * mainT.s)) return near[0].t;
+    if(near[0].d < Math.max(12, 9 * mainT.k)) return near[0].t;
     var best = null, br = 9;
     near.forEach(function(x){ var r = RANK[judgeTarget(src, x.t).kind]; if(r < br){ br = r; best = x.t; } });
     return best;
@@ -991,7 +1001,7 @@
     Object.keys(A.atoms).forEach(function(k){ var a = A.atoms[k], d = Math.hypot(a.x - pt.x, a.y - pt.y) - a.r;
       if((st.atoms[k].lp || 0) > 0){ var l = A.lps[k][0]; take(k, d + 2, l.x, l.y, true); } else take(k, d + 10, a.x, a.y, false); });
     st.bonds.forEach(function(b){ if(b.order === 1){ var m = A.bonds[bondKey(b)]; take(bondKey(b), segDist(pt, m) + 10, m.mx, m.my, false); } });
-    var reach = Math.max(26, 20 * mainT.s);
+    var reach = Math.max(26, 20 * mainT.k);
     return bd < reach ? best : null;
   }
 
@@ -1001,8 +1011,8 @@
     S.took = true; hideCue(true); tourTurn.did('push');
     if(S.mode === 'quiz' && S.part === 'find') hints.attempt();
     if(res.kind === 'reject'){
-      paintMain();
-      G.arrows.insertAdjacentHTML('beforeend', '<g class="rs2-arrow is-drag">' + arrowPathHtml(curve(srcPt, { x: t.x, y: t.y })) + '</g>');
+      // the pair stays lifted (its place empty) while it springs back along the arrow, drawn red
+      if(!G.arrows.querySelector('.is-drag')) G.arrows.insertAdjacentHTML('beforeend', '<g class="rs2-arrow is-drag">' + arrowPathHtml(curve(srcPt, { x: t.x, y: t.y })) + '</g>');
       springBack(dropPt, srcPt, function(){ paintAll(); words(res, ar); });
       words(res, ar, true);
       return;
@@ -1010,11 +1020,11 @@
     var from = shown();
     if(res.kind === 'held'){
       var mid = C.apply(S.cur, arrows).structure;
-      moveElectrons(from, mid, arrows, { start: dropPt, fresh: [ar], ms: 420 }, function(){ S.pending = arrows; S.pendingSt = mid; after(res, ar); });
+      moveElectrons(from, mid, arrows, { start: dropPt, from: srcPt, fresh: [ar], ms: 420 }, function(){ S.pending = arrows; S.pendingSt = mid; after(res, ar); });
       return;
     }
     var next = res.v.structure;
-    moveElectrons(from, next, arrows, { start: dropPt, fresh: [ar], ms: 480 }, function(){
+    moveElectrons(from, next, arrows, { start: dropPt, from: srcPt, fresh: [ar], ms: 480 }, function(){
       S.hist.push({ cur: S.cur });
       S.cur = res.form ? res.form.st : next; S.pending = []; S.pendingSt = null;
       after(res, ar, arrows);
@@ -1111,12 +1121,12 @@
   var dv = null;
   function startDragVis(d){
     var key = d.src.key, omitLp = {}, omitPi = {};
-    if(d.src.real){ if(C.isBondKey(key)) omitPi[key] = 1; else omitLp[key] = 1; }
+    if(d.src.real){ if(C.isBondKey(key)) omitPi[key] = 1; else omitLp[key] = [{ x: d.src.x, y: d.src.y }]; }
     var st = shown(), noQ = {}; over(st).forEach(function(k){ noQ[k] = 1; });
     G.mainA.innerHTML = draw(st, mainT, { omitLp: omitLp, omitPi: omitPi, noCharge: noQ }).html;
     G.fly.innerHTML = '<g class="rs2-flyp is-drag"><circle class="rs2-lpglow" r="10"/><circle class="rs2-e" r="3"/><circle class="rs2-e" r="3"/></g>';
     G.arrows.insertAdjacentHTML('beforeend', '<g class="rs2-arrow is-drag"><path class="rs2-al-l"/><path class="rs2-al-h"/></g><circle class="rs2-tgt" r="0"/><line class="rs2-tgtb"/>');
-    var s = mainT.s, dr = Math.max(2.4, 2.2 * s), sp = Math.max(3.4, 2.9 * s), fp = G.fly.firstChild;
+    var s = mainT.k, dr = Math.max(2.4, 2.2 * s), sp = Math.max(3.4, 2.9 * s), fp = G.fly.firstChild;
     fp.children[0].setAttribute('r', f1(sp * 2.1)); fp.children[1].setAttribute('r', f1(dr)); fp.children[2].setAttribute('r', f1(dr));
     dv = { pair: fp, arrow: G.arrows.querySelector('.is-drag'), tgt: G.arrows.querySelector('.rs2-tgt'), tgtb: G.arrows.querySelector('.rs2-tgtb'), sp: sp };
     labsEl.classList.add('is-drag');
@@ -1143,7 +1153,7 @@
     G.fly.innerHTML = ''; dv = null; labsEl.classList.remove('is-drag');
   }
   function showPick(src){
-    G.ui.insertAdjacentHTML('beforeend', '<circle class="rs2-pickring" cx="' + f1(src.x) + '" cy="' + f1(src.y) + '" r="' + f1(Math.max(13, 10 * mainT.s)) + '"/>');
+    G.ui.insertAdjacentHTML('beforeend', '<circle class="rs2-pickring" cx="' + f1(src.x) + '" cy="' + f1(src.y) + '" r="' + f1(Math.max(13, 10 * mainT.k)) + '"/>');
     cause.set([{ t: C.isBondKey(src.key) ? 'π bond picked' : 'Lone pair picked', role: 'e' }, { t: 'tap where it goes', role: 'ink' }]);
     say(cause.text());
   }
@@ -1184,7 +1194,7 @@
       return t;
     });
   }
-  function kbMark(p){ clearPick(); if(p) G.ui.insertAdjacentHTML('beforeend', '<circle class="rs2-pickring is-kb" cx="' + f1(p.x) + '" cy="' + f1(p.y) + '" r="' + f1(Math.max(13, 10 * mainT.s)) + '"/>'); }
+  function kbMark(p){ clearPick(); if(p) G.ui.insertAdjacentHTML('beforeend', '<circle class="rs2-pickring is-kb" cx="' + f1(p.x) + '" cy="' + f1(p.y) + '" r="' + f1(Math.max(13, 10 * mainT.k)) + '"/>'); }
   hit.addEventListener('keydown', function(e){
     if(!S.cur || tw) return;
     var k = e.key;
@@ -1361,32 +1371,34 @@
     var st = S.cur, next = S.rk.filter(function(x){ return x.key !== R.key(st); })[0];
     if(!next || !mainA) return null;
     var ar = arrowsBetween(st, next.st); if(!ar) return null;
-    var lp = ar.filter(function(a){ return !C.isBondKey(a.from); })[0] || ar[0];
-    var p = anchorOf(lp, mainA, 'from');
-    // every spot the cue may point at: each lone pair of that atom (the one the arrow uses first), or the π bond
-    var spots = [{ x: p.x, y: p.y }];
-    if(!C.isBondKey(lp.from)) (mainA.lps[lp.from] || []).forEach(function(l){ if(l.x !== p.x || l.y !== p.y) spots.push({ x: l.x, y: l.y }); });
-    return { x: p.x, y: p.y, lp: !C.isBondKey(lp.from), spots: spots };
+    // every spot the cue may point at: each lone pair of an atom the first move starts from, then each π bond it moves
+    var spots = [];
+    ar.filter(function(a){ return !C.isBondKey(a.from); }).concat(ar.filter(function(a){ return C.isBondKey(a.from); })).forEach(function(a){
+      var p = anchorOf(a, mainA, 'from'), isLp = !C.isBondKey(a.from);
+      spots.push({ x: p.x, y: p.y, lp: isLp });
+      if(isLp) (mainA.lps[a.from] || []).forEach(function(l){ if(l.x !== p.x || l.y !== p.y) spots.push({ x: l.x, y: l.y, lp: true }); });
+    });
+    return { x: spots[0].x, y: spots[0].y, lp: spots[0].lp, spots: spots };
   }
-  /* The one first visit cue: of every lone pair it may point at and every side, the first whose bubble is inside the
-     picture and covers no ball, name or control; failing that, the one that covers least. */
+  /* The one first visit cue: of every spot it may point at and every side, the first whose bubble is inside the
+     picture and covers no ball, name or control (the full words first, then shorter ones); failing that, the one that
+     covers least. */
   var cueAt = null;
   function placeCue(){
     if(cue){ cue.hide(false); cue = null; }
     if(S.mode !== 'explore' || S.took) return;
     var fs = firstSource(); if(!fs) return;
-    // the full words first; on a narrow picture the short ones when the full ones cannot sit clear
-    var texts = fs.lp ? ['Drag this lone pair', 'Drag this pair'] : ['Drag this π bond', 'Drag the π bond'], best = null;
-    for(var ti = 0; ti < texts.length; ti++){
+    var best = null;
+    for(var ti = 0; ti < 2; ti++){
       for(var j = 0; j < fs.spots.length; j++){
+        var sp = fs.spots[j], text = sp.lp ? ['Drag this lone pair', 'Drag this pair'][ti] : ['Drag this π bond', 'Drag the π bond'][ti];
         for(var i = 0; i < SIDES.length; i++){
-          var sp = fs.spots[j];
-          cue = K.cue(layer, { key: 'ochem-res-push', text: texts[ti], side: SIDES[i], at: function(){ return [cueAt.x, cueAt.y]; } });
+          cue = K.cue(layer, { key: 'ochem-res-push', text: text, side: SIDES[i], at: function(){ return [cueAt.x, cueAt.y]; } });
           cueAt = sp;
           if(!cue.show()){ cue = null; return; }
           var sc = cueScore();
           if(sc === 0){ return; }
-          if(!best || sc < best.sc) best = { sc: sc, spot: sp, side: SIDES[i], text: texts[ti] };
+          if(!best || sc < best.sc) best = { sc: sc, spot: sp, side: SIDES[i], text: text };
           cue.hide(false); cue = null;
         }
       }
@@ -1437,10 +1449,10 @@
     if(S.rk.length > 1){
       var cmpTxt = R.compare(S.rk[0].st, S.rk[S.rk.length - 1].st);
       html += '<p>' + (S.rk[0].tag === 'equal'
-        ? esc(cmpTxt.text) + ' So the charge is not hopping between them: it is spread across all ' + S.rk.length + ' positions at once, and each carries a share.'
+        ? esc(undash(cmpTxt.text)) + ' So the charge is not hopping between them: it is spread across ' + (S.rk.length === 2 ? 'both' : 'all ' + S.rk.length) + ' positions at once, and each carries a share.'
         : (S.rk[S.rk.length - 1].rule === 'ring'
           ? 'By the charge rules these forms tie. The ones that keep the benzene ring as three alternating double bonds count for more, so they are the major forms here.'
-          : esc(R.compare(S.rk[S.rk.length - 1].st, S.rk[0].st).text) + ' The real molecule resembles the major form most; the others still contribute.')) + '</p>';
+          : esc(undash(R.compare(S.rk[S.rk.length - 1].st, S.rk[0].st).text)) + ' The real molecule resembles the major form most; the others still contribute.')) + '</p>';
     } else html += '<p>One form only: there is nowhere for a lone pair or a π bond to go without breaking an octet or the skeleton. Most molecules have no resonance at all.</p>';
     html += '<div class="ttable-scroll"><table class="ttable"><thead><tr><th>Form</th><th>Octets</th><th>Formal charges</th><th>Standing</th></tr></thead><tbody>' +
       S.rk.map(function(f, i){
@@ -1640,7 +1652,13 @@
   }
   if(q.build && window.OchemToolHandoff){
     var box = byId('rsBuildBox');
-    if(box){ box.open = true; var api = openBuilder(); if(api) api.build(q.build); studio.open('details'); }
+    if(box){
+      box.open = true;
+      var api = openBuilder(), got = window.OchemToolHandoff.decode ? window.OchemToolHandoff.decode(q.build) : null;
+      // the link carries the builder's own text form; a typed formula or name also works
+      if(api){ if(got && api.load) api.load(got); else api.build(q.build); }
+      studio.open('details');
+    }
   }
   if(window.ResizeObserver) new ResizeObserver(function(){ if(!tw && !drag) { paintAll(); if(cue) cue.place(); } }).observe(sceneBox);
   else window.addEventListener('resize', function(){ paintAll(); });
