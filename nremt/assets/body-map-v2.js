@@ -11,9 +11,11 @@
      the purpose line and "Show me how" (K.head), one first-visit cue per tab (K.cue), the cause line (K.cause),
      "?" (the reference: view options, the Rule of Nines in words, the terms, the credits).
 
-   NremtBodyMap.build({ studio, viewerEl }) -> { stage, ref, attach(viewer), tab(id?), shown(), hidden(),
-     cardKey(), burns, _st }   viewerEl: the element the viewer mounts on (#bodyViewer); the page mounts the viewer
-     and hands it over with attach(), and moves viewerEl to Test yourself's own stage and back. */
+   NremtBodyMap.build({ studio, viewerEl, onTab, onCard, onBurns }) -> { stage, ref, home, slot(name, nodes),
+     attach(viewer), onSelect, onPick, tab(id?), burns(), shown(), hidden(), card() }
+     viewerEl: the element the viewer mounts on (#bodyViewer). It sits in `home` with Find a part; the page mounts the
+     viewer, hands it over with attach(), and moves `home` to Test yourself's own stage and back (shown() brings it
+     home). */
 (function(){
   'use strict';
   var NS = 'http://www.w3.org/2000/svg';
@@ -27,8 +29,8 @@
   var SYS = ['resp', 'cardio', 'neuro', 'msk', 'abd', 'skin'];
   /* the card's three sections: every field of the part's card, one short section at a time */
   var SECTIONS = [
-    { id: 'does', label: 'What it does', short: 'Does', rows: [['Where', 'location'], ['Job', 'funct']] },
-    { id: 'wrong', label: 'Goes wrong', short: 'Wrong', rows: [['What goes wrong', 'path'], ['What you find', 'findings']] },
+    { id: 'does', label: 'What it does', short: 'Job', rows: [['Where', 'location'], ['Job', 'funct']] },
+    { id: 'wrong', label: 'Goes wrong', short: 'Problems', rows: [['What goes wrong', 'path'], ['What you find', 'findings']] },
     { id: 'care', label: 'EMT care', short: 'Care', rows: [['What you do', 'interv']] }
   ];
   /* Burns: why each region carries its share (the line burns.js said in its side panel, now in the cause line) */
@@ -92,7 +94,7 @@
     var findW = el('label', 'bm2-find');
     findW.innerHTML = '<span class="tk2-sr">Find a part by name</span><select class="bm2-find-s"><option value="">Find a part</option></select>' +
       '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5"/></svg>';
-    body.appendChild(findW);
+    home.appendChild(findW);   // Find a part travels with the body (Test yourself uses it too: a keyboard can answer)
     var find = findW.querySelector('select');
     scene.appendChild(body);
     var layer3 = K.layer(body);
@@ -118,6 +120,7 @@
       '<button type="button" role="radio" data-brush="0" aria-checked="false">Erase</button></div>' +
       '<button type="button" class="tk2-link bm2-reset">Start over</button>';
     var brushBtns = [].slice.call(acts.querySelectorAll('[data-brush]')), bReset = acts.querySelector('.bm2-reset');
+    acts.hidden = true;
     lines.appendChild(cause.el); lines.appendChild(acts);
     stage.appendChild(lines);
     var live = el('p', 'tk2-sr'); live.setAttribute('aria-live', 'polite');
@@ -380,9 +383,13 @@
     /* ---------------------------------------------------- the one cue per tab, and "Show me how" */
     var cue = null;
     function cueFor(tab){
-      if(tab === 'body') return K.cue(layer3, { key: 'nremt-body-map', text: 'Tap a part of the body', side: 'right', at: function(){
-        // the chest of the model as it opens (the viewer's home view)
-        return [body.clientWidth * 0.5 + 34, body.clientHeight * 0.3];
+      var narrow = body.clientWidth < 700;
+      if(tab === 'body') return K.cue(layer3, { key: 'nremt-body-map', text: 'Tap a part of the body', side: narrow ? 'below' : 'right', at: function(){
+        // beside the left shoulder of the model as it opens (the viewer's home view), so the bubble sits on empty
+        // backdrop and never on the body it points at
+        // (a narrow picture has no backdrop beside the body: the bubble hangs under the chest, on the belly)
+        var W = body.clientWidth, H = body.clientHeight;
+        return W < 700 ? [W * 0.5, H * 0.33] : [W * 0.5 + Math.min(H * 0.15, W * 0.2), H * 0.27];
       } });
       if(!layerB) return null;
       return K.cue(layerB, { key: 'nremt-body-map-burns', text: 'Tap a region', side: 'below', at: function(){
@@ -468,7 +475,7 @@
       },
       shown: function(){
         St.on = true;
-        if(home.firstChild !== viewerEl) home.appendChild(viewerEl);
+        if(home.parentNode !== body) body.insertBefore(home, body.firstChild);
         if(V){ fillFind(); St.sel = V.selected(); if(!St.sel){ closeCard(true); } else if(St.card !== St.sel){ St.pending = St.sel; later(); } window.dispatchEvent(new Event('resize')); }
         if(St.tab === 'burns') upBurns();
         paintCause();
