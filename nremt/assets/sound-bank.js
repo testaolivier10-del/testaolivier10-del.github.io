@@ -268,8 +268,14 @@
     var url = sound.localSrc || sound.audioUrl;
     if(!url) return fail('No recording available for this sound yet.');
 
+    /* handlers.analyse (the Explore picture, tools v2): ask for the clip with CORS (`liveUrl`, the file's direct
+       address, skips the redirect) and route it through an AnalyserNode, so the page can draw the sound's own
+       loudness as it plays (info.level()). If that load fails (no CORS header, or offline), the clip is asked for
+       again the plain way, as before, and info.level is null: the page then draws no live trace. */
+    var live = !!(handlers.analyse && !handlers._plain && (sound.localSrc || sound.liveUrl));
     var el = new Audio();
     el.preload = 'auto';
+    if(live){ el.crossOrigin = 'anonymous'; url = sound.localSrc || sound.liveUrl; }
     el.src = url;
     /* handlers.gain: a recording heard quieter at one spot than another (a
        sound transmitted from somewhere else), on top of the master volume. */
@@ -279,16 +285,27 @@
     el.addEventListener('error', function(){
       if(playingEl !== el) return;
       playingEl = null; active = null;
+      if(live){ var h2 = {}; for(var k in handlers) h2[k] = handlers[k]; h2._plain = true; play(sound, h2); return; }
       /* The honest message. A local file would work offline; this one is
          fetched from Wikimedia, and if the network is gone so is the clip. */
       fail(sound.localSrc
         ? 'That audio file could not be loaded.'
         : 'This clip is streamed from Wikimedia and could not be reached — it needs a connection.');
     });
+    var level = null;
+    if(live){
+      try{
+        var c2 = audio(), an = c2.createAnalyser(), buf2;
+        an.fftSize = 1024; buf2 = new Float32Array(an.fftSize);
+        c2.createMediaElementSource(el).connect(an); an.connect(c2.destination);
+        // the peak of the last ~23 ms of what is sounding, 0-1, after the volume
+        level = function(){ an.getFloatTimeDomainData(buf2); var m = 0; for(var i = 0; i < buf2.length; i++){ var v = buf2[i] < 0 ? -buf2[i] : buf2[i]; if(v > m) m = v; } return m; };
+      }catch(e){ level = null; }
+    }
     var p = el.play();
-    if(p && p.catch) p.catch(function(){ fail('Playback was blocked. Press play again.'); });
+    if(p && p.catch) p.catch(function(err){ if(playingEl === el && !(err && err.name === 'AbortError')) fail('Playback was blocked. Press play again.'); });
     playingEl = el;
-    if(handlers.onStart) handlers.onStart({ synth: false, el: el, now: function(){ return el.currentTime; } });
+    if(handlers.onStart) handlers.onStart({ synth: false, el: el, level: level, now: function(){ return el.currentTime; } });
   }
 
   window.LevlSoundBank = {

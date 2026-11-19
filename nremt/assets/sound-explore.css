@@ -1,0 +1,169 @@
+/* NREMT Sound trainer, tools v2 Explore (nremt/assets/sound-explore.js; docs/tools-v2-nremt-sound-trainer-brief.md).
+   Loaded only by nremt/sound-trainer.html. One colour per idea, everywhere: WHERE the stethoscope is (course teal:
+   the spot's label and the cause line's first pill), the SOUND (blue: the keys, the trace, the second pill), and its
+   CAUSE (warm red: the lens's name and the last pill). The chest and the clinic are drawn in real colours in both
+   themes; dark mode dims the wall. Every text on the picture is at least 11 px. */
+.snd2,.snd2-ref{--sd-place:var(--cink);--sd-place-ink:var(--cink);--sd-snd:#2F6FB0;--sd-snd-ink:#235A92;--sd-why:#B8432F;--sd-why-ink:#9A3322;
+  --sd-wall0:#EEF1F0;--sd-wall1:#DCE3E1;--sd-panel:#CFD8D5;--sd-dim:1;}
+:root[data-theme="dark"] .snd2,:root[data-theme="dark"] .snd2-ref{--sd-snd:#7FB2E6;--sd-snd-ink:#A9CBEE;--sd-why:#F08A6E;--sd-why-ink:#F6A890;
+  --sd-wall0:#2A3533;--sd-wall1:#1E2725;--sd-panel:#33403D;--sd-dim:.92;}
+.snd2{display:flex;flex-direction:column;gap:10px;min-height:0;flex:1 1 auto;}
+.snd2[hidden]{display:none;}
+.snd2 [hidden]{display:none !important;}
+.snd2-scene{position:relative;flex:1 1 auto;min-height:520px;border-radius:18px;overflow:hidden;isolation:isolate;touch-action:manipulation;}
+@media (max-width:1023px){ .snd2-scene{flex:none;height:min(78vw,620px);min-height:540px;} }
+@media (min-width:641px) and (max-width:900px){ .snd2-scene{height:max(700px,min(110vw,860px));} }
+@media (max-width:640px){ .snd2-scene{height:max(640px,min(176vw,700px));border-radius:14px;} .snd2{gap:8px;} }
+.snd2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+
+/* the clinic */
+.snd2-wall0{stop-color:var(--sd-wall0);} .snd2-wall1{stop-color:var(--sd-wall1);}
+.snd2-panel{stroke:var(--sd-panel);stroke-width:1;opacity:.6;}
+.snd2-rail{fill:#9AA5A2;}
+.snd2-c0{stop-color:#7FA9A0;} .snd2-c1{stop-color:#A9CBC3;}
+:root[data-theme="dark"] .snd2-c0{stop-color:#3F5C56;} :root[data-theme="dark"] .snd2-c1{stop-color:#557A72;}
+.snd2-spot0{stop-color:#fff;stop-opacity:.55;} .snd2-spot1{stop-color:#fff;stop-opacity:0;}
+:root[data-theme="dark"] .snd2-spot0{stop-opacity:.06;}
+.snd2-img{filter:drop-shadow(0 6px 14px rgba(60,40,30,.16)) brightness(var(--sd-dim));}
+.snd2-rl{font:900 15px var(--font-ui);fill:#7B5A48;text-anchor:middle;paint-order:stroke;stroke:rgba(255,246,238,.8);stroke-width:4px;stroke-linejoin:round;}
+
+/* the listening spots: a ring with a glow as big as the sound is loud there */
+.snd2-halo{fill:var(--sd-snd);transition:r .3s ease,opacity .3s ease;}
+.snd2-ring{fill:rgba(255,255,255,.9);stroke:var(--sd-snd);stroke-width:3;}
+.snd2-core{fill:var(--sd-snd);}
+.snd2-site.is-near .snd2-ring{stroke-width:5;stroke:var(--ink);}
+.snd2-site.is-on .snd2-ring{fill:var(--sd-place);stroke:var(--sd-place);}
+.snd2-hits{position:absolute;inset:0;pointer-events:none;z-index:2;}
+.snd2-hit{position:absolute;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;border:0;background:transparent;cursor:pointer;pointer-events:auto;padding:0;}
+.snd2-hit:focus-visible{outline:3px solid var(--cink);outline-offset:1px;}
+
+/* the stethoscope: a chest piece the student drags, its tubing running up out of the picture */
+.snd2-tube,.snd2-tube-s{fill:none;stroke-linecap:round;}
+.snd2-tube-s{stroke:rgba(0,0,0,.18);stroke-width:10;transform:translate(2px,3px);}
+.snd2-tube{stroke:#2E3338;stroke-width:7;}
+:root[data-theme="dark"] .snd2-tube{stroke:#11161A;}
+.snd2-steth{position:absolute;left:0;top:0;z-index:4;border:0;padding:0;background:transparent;border-radius:50%;cursor:grab;touch-action:none;
+  filter:drop-shadow(0 4px 6px rgba(0,0,0,.35));}
+.snd2-steth svg{display:block;width:100%;height:100%;overflow:visible;}
+.snd2-steth.is-drag{cursor:grabbing;filter:drop-shadow(0 10px 12px rgba(0,0,0,.35));}
+.snd2-steth:focus-visible{outline:3px solid var(--cink);outline-offset:3px;}
+.snd2-steth.is-fade{animation:snd2Fade .2s ease;}
+@keyframes snd2Fade{from{opacity:.2;}to{opacity:1;}}
+.snd2-dia-rim{fill:#9AA3AB;stroke:#5E666D;stroke-width:2;}
+.snd2-dia{fill:#D9DEE2;stroke:#7D868D;stroke-width:1.5;}
+.snd2-dia-shine{fill:#fff;opacity:.6;}
+.snd2-dia-c{fill:#5E666D;}
+
+/* labels on the picture (1 to 3 words) */
+.snd2-lab{position:absolute;z-index:3;margin:0;padding:3px 10px;border-radius:999px;font:900 13.5px/1.25 var(--font-ui);white-space:nowrap;pointer-events:none;
+  background:var(--white);border:2px solid currentColor;box-shadow:0 2px 6px rgba(0,0,0,.12);}
+.snd2-sitelab{color:var(--sd-place-ink);}
+.snd2-lenslab{color:var(--sd-why-ink);transform:translate(-50%,-100%);}
+.snd2-lenslab.is-normal{color:var(--ink);border-color:color-mix(in srgb,var(--ink) 35%,transparent);}
+
+/* the sound keys across the top of the picture */
+.snd2-keys{position:absolute;left:0;right:0;top:0;z-index:5;display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:8px 10px;
+  background:color-mix(in srgb,var(--white) 82%,transparent);border-bottom:1px solid var(--line);backdrop-filter:blur(4px);}
+.snd2-key{font:800 14px var(--font-ui);min-height:40px;padding:0 14px;border-radius:999px;border:2px solid var(--line);background:var(--white);color:var(--ink);cursor:pointer;}
+.snd2-key[aria-checked="true"]{background:var(--sd-snd);border-color:var(--sd-snd);color:#fff;}
+:root[data-theme="dark"] .snd2-key[aria-checked="true"]{color:#0E1513;}
+.snd2-key:focus-visible,.snd2-ab button:focus-visible,.snd2-view button:focus-visible,.snd2-play:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.snd2-key-s{display:none;}
+.snd2-made{margin-left:auto;font:700 12px var(--font-ui);color:var(--muted);white-space:nowrap;}
+@media (max-width:640px){
+  .snd2-keys{gap:5px;padding:7px 8px;}
+  .snd2-key{font-size:13px;padding:0 10px;min-height:40px;}
+  .snd2-key:has(.snd2-key-s) .snd2-key-l{display:none;}
+  .snd2-made{flex-basis:100%;margin:0;font-size:11.5px;}
+}
+
+/* front / back */
+.snd2-view{position:absolute;z-index:3;display:inline-flex;transform:translateX(-100%);border:2px solid var(--line);border-radius:999px;background:var(--white);padding:2px;}
+.snd2-view button{font:800 12.5px var(--font-ui);min-height:36px;min-width:52px;padding:0 10px;border:0;border-radius:999px;background:transparent;color:var(--ink);cursor:pointer;}
+.snd2-view button[aria-pressed="true"]{background:var(--ink);color:var(--paper);}
+
+/* normal or abnormal, at the same spot */
+.snd2-ab{position:absolute;z-index:3;display:flex;transform:translateX(-50%);border:2px solid var(--line);border-radius:999px;background:var(--white);padding:3px;gap:3px;}
+.snd2-ab button{flex:1 1 50%;font:800 13.5px var(--font-ui);min-height:38px;padding:0 10px;border:0;border-radius:999px;background:transparent;color:var(--ink);cursor:pointer;white-space:nowrap;}
+.snd2-ab [data-ab="n"][aria-checked="true"]{background:var(--ink);color:var(--paper);}
+.snd2-ab [data-ab="a"][aria-checked="true"]{background:var(--sd-snd);color:#fff;}
+:root[data-theme="dark"] .snd2-ab [data-ab="a"][aria-checked="true"]{color:#0E1513;}
+.snd2-ab .snd2-key-s{display:none;}
+@media (max-width:640px){ .snd2-ab button{font-size:13px;padding:0 6px;} .snd2-ab .snd2-key-s{display:inline;} .snd2-ab button:has(.snd2-key-s) .snd2-key-l{display:none;} }
+
+/* Play, on the strip */
+.snd2-play{position:absolute;z-index:3;border-radius:50%;border:0;background:var(--sd-snd);color:#fff;display:grid;place-items:center;cursor:pointer;padding:0;box-shadow:0 3px 8px rgba(0,0,0,.25);}
+.snd2-play svg{width:52%;height:52%;fill:currentColor;}
+.snd2-play.is-on{background:var(--ink);color:var(--paper);}
+.snd2-play:disabled{background:#8E9B98;cursor:default;box-shadow:none;}
+:root[data-theme="dark"] .snd2-play{color:#0E1513;}
+
+/* the lens: what makes the sound */
+.snd2-lens-sh{fill:rgba(0,0,0,.14);}
+.snd2-lens-rim{fill:none;stroke:#59636A;stroke-width:5;}
+:root[data-theme="dark"] .snd2-lens-rim{stroke:#9AA6AC;}
+.snd2-leader{stroke:#59636A;stroke-width:1.5;opacity:.6;}
+:root[data-theme="dark"] .snd2-leader{stroke:#9AA6AC;}
+.snd2-lz{transition:opacity .25s ease;}
+.snd2-tis{fill:#F1C9C1;} .snd2-alv-bg{fill:#F6D9D3;stroke:#E2AFA6;stroke-width:1;}
+.snd2-lumen{fill:#FDF2EE;}
+.snd2-wall-t{fill:#D9877C;stroke:#B9665B;stroke-width:1.5;}
+.snd2-muc{fill:#EFE2B0;opacity:.85;}
+.snd2-musc{fill:none;stroke:#9B4A40;stroke-width:2.2;stroke-linecap:round;}
+.snd2-air{fill:#5C9BD6;}
+.snd2-wave{fill:none;stroke:var(--sd-why);stroke-width:3;stroke-linecap:round;}
+.snd2-bron{fill:#E8A79C;stroke:#C27A6F;stroke-width:1.5;}
+.snd2-sac-w{fill:#FCEDEA;stroke:#D39186;stroke-width:2.5;}
+.snd2-sac.is-wet .snd2-sac-w{stroke:#B9665B;}
+.snd2-fluid{fill:#7FB0DE;opacity:.85;}
+.snd2-pop{fill:none;stroke:var(--sd-why);stroke-width:3;stroke-linecap:round;opacity:0;}
+.snd2-neck{fill:#EBC3A9;} .snd2-neck-s{fill:#E4B79B;opacity:.5;}
+.snd2-trach{fill:#FBEFEA;stroke:#D7A79A;stroke-width:2;}
+.snd2-cart{fill:none;stroke:#E8D6CC;stroke-width:6;stroke-linecap:round;}
+.snd2-fold{fill:#E39B8E;stroke:#C27A6F;stroke-width:1.5;}
+.snd2-swell{fill:#D9584A;stroke:#A83B2C;stroke-width:1.5;}
+.snd2-peri{fill:#F3E6DE;}
+.snd2-ch{stroke-width:1.5;}
+.snd2-ch.is-blue{fill:#8FA9D6;stroke:#5C78A8;} .snd2-ch.is-red{fill:#E07A6E;stroke:#B04E43;}
+.snd2-myo{fill:#B8574B;stroke:#8E3B31;stroke-width:1.5;}
+.snd2-myo.is-thick{stroke-width:3;}
+.snd2-ves.is-blue{fill:#7F9ACB;stroke:#5C78A8;stroke-width:1.5;} .snd2-ves.is-red{fill:#D2665A;stroke:#A84A3F;stroke-width:1.5;}
+.snd2-valve line{stroke:#FFF8E8;stroke-width:4;stroke-linecap:round;}
+.snd2-valve.is-stenotic line{stroke-width:7;stroke:#F2E2B8;}
+.snd2-flash{fill:#FFE27A;opacity:0;mix-blend-mode:screen;}
+.snd2-flash-w{fill:none;stroke:#FFD34D;stroke-width:6;opacity:0;}
+.snd2-blood{fill:#A8261C;}
+.snd2-blood.is-turb{fill:var(--sd-why);}
+
+/* the monitor strip: the sound, drawn as it plays */
+.snd2-mon{fill:#14231F;stroke:#0A1512;stroke-width:2;}
+.snd2-grid line{stroke:#22413A;stroke-width:1;}
+.snd2-base{stroke:#2D5A50;stroke-width:1;}
+.snd2-mon-t{font:800 12px var(--font-ui);fill:#9FD3C7;}
+.snd2-band{fill:#7FB2E6;opacity:.12;}
+.snd2-tr{fill:none;stroke:#7FD0F0;stroke-width:1.6;stroke-linejoin:round;}
+.snd2-tr-f{fill:#7FD0F0;opacity:.32;}
+.snd2-head{stroke:#FFD34D;stroke-width:2.5;stroke-linecap:round;}
+.snd2-ev-t{stroke:#9FD3C7;stroke-width:1;stroke-dasharray:2 3;opacity:.7;}
+.snd2-ev.is-x .snd2-ev-t{stroke:#FF9C83;}
+.snd2-ev-s{fill:#FF9C83;}
+.snd2-ev-b{fill:#E8F4F1;}
+.snd2-ev.is-x .snd2-ev-b{fill:#FF9C83;}
+.snd2-ev-l{font:900 11.5px var(--font-mono);fill:#14231F;text-anchor:middle;}
+.snd2-ev{transition:opacity .2s ease;}
+.snd2-ph{font:700 12px var(--font-ui);fill:#9FD3C7;text-anchor:middle;}
+
+/* the cause line under the picture */
+.snd2-lines{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;}
+.snd2 .tk2-cz.is-place{--cz:var(--sd-place);--cz-ink:var(--sd-place-ink);}
+.snd2 .tk2-cz.is-snd{--cz:var(--sd-snd);--cz-ink:var(--sd-snd-ink);}
+.snd2 .tk2-cz.is-why{--cz:var(--sd-why);--cz-ink:var(--sd-why-ink);white-space:normal;}
+
+/* "?" */
+.snd2-ref h3{margin:0 0 6px;}
+.snd2-ref-l{padding-left:18px;margin:8px 0;}
+.snd2-ref-l li{margin:0 0 8px;}
+.snd2-ref-s{font-size:12.5px;color:var(--muted);}
+.snd2-ref-more .sound-grid{grid-template-columns:1fr;}
+
+@media (prefers-reduced-motion: reduce){ .snd2-halo,.snd2-lz,.snd2-ev{transition:none;} }

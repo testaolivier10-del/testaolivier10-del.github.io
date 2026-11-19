@@ -38,13 +38,18 @@
 <script src="assets/tool-results.js" defer></script>
 <script src="assets/body-figures.js" defer></script>
 <script src="assets/sound-stage.js" defer></script>
+<script src="assets/sound-explore.js" defer></script>
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
 <!-- tool-studio:start -->
 <link rel="stylesheet" href="../assets/course/tool-studio.css">
 <link rel="stylesheet" href="assets/nremt-studio.css">
 <link rel="stylesheet" href="assets/studio/sound-trainer.css">
+<link rel="stylesheet" href="../assets/course/tool-kit2.css">
+<link rel="stylesheet" href="assets/sound-explore.css">
 <script src="../assets/course/tool-studio.js" defer></script>
+<script src="../assets/course/tool-kit2.js" defer></script>
 <script src="assets/nremt-studio.js" defer></script>
+<script src="assets/nremt-kit2.js" defer></script>
 <!-- tool-studio:end -->
 <style>
   body{line-height:1.65;}
@@ -464,6 +469,7 @@ const SOUNDS = [
     group: "lung",
     available: true,
     audioUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Wheeze2O.ogg",
+    liveUrl: "https://upload.wikimedia.org/wikipedia/commons/4/47/Wheeze2O.ogg",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Wheeze2O.ogg",
     creditBy: "James Heilman, MD",
     // Measured 2026-10-09 (docs/tools-upgrade-notes/nremt-body.md).
@@ -477,6 +483,7 @@ const SOUNDS = [
     group: "lung",
     available: true,
     audioUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Crackles_pneumoniaO.ogg",
+    liveUrl: "https://upload.wikimedia.org/wikipedia/commons/c/c7/Crackles_pneumoniaO.ogg",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Crackles_pneumoniaO.ogg",
     creditBy: "James Heilman, MD",
     timingNote: "the crackles cluster in bursts of half a second to a second, about every 2 to 2.8 seconds, and the clip repeats itself after 7.5 seconds. The clip has no airflow track, so which part of each breath is in cannot be told from the sound.",
@@ -489,6 +496,7 @@ const SOUNDS = [
     group: "airway",
     available: true,
     audioUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Stridor_NP_OGG_2.ogg",
+    liveUrl: "https://upload.wikimedia.org/wikipedia/commons/b/ba/Stridor_NP_OGG_2.ogg",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Stridor_NP_OGG_2.ogg",
     creditBy: "James Heilman, MD; processed by Natural Philo",
     timingNote: "the crowing sound fills most of each breath, about one every 1.8 seconds (about 33 a minute, a child\u2019s rate), with a short gap between. The clip has no airflow track, so which part is in cannot be told from the sound.",
@@ -780,7 +788,7 @@ function renderQuizRound(){
     ${qGroup}
     <div class="quiz-progress">Round ${quizState.current + 1} of ${quizState.rounds.length}<span class="quiz-score">Score: ${quizState.score}/${quizState.current}</span></div>
     <button type="button" class="big-play-btn" id="quizPlayBtn">&#9658;</button>
-    <div class="quiz-hint">Play the clip (press again to stop), then pick what you hear</div>
+    <div class="quiz-hint">Press play (again to stop), then pick what you hear</div>
     <div class="quiz-choices" id="quizChoices">
       ${SOUNDS.filter(s => s.group === round.group).map(s => `<button type="button" class="choice-btn" data-choice="${s.id}">${s.label}</button>`).join('')}
     </div>
@@ -792,8 +800,7 @@ function renderQuizRound(){
     quizGroup = b.dataset.qgroup; startQuiz();
   }));
   document.getElementById('quizPlayBtn').addEventListener('click', () => playClip(round));
-  // auto-play on round start
-  playClip(round);
+  // No auto-play (tools v2: audio starts only from the student's own tap).
 
   document.querySelectorAll('#quizChoices [data-choice]').forEach(btn => {
     btn.addEventListener('click', () => submitAnswer(btn.dataset.choice, round));
@@ -935,8 +942,9 @@ if (!stage) document.getElementById('quizSection').hidden = false;
    test (name it, where, when) at the top of the dock and the question itself
    on the stage. Why: why this spot (mirrored from the explore card) and the
    sound's description. Details: volume, compare two sounds, every sound's card. */
+const v2 = !!(stage && window.LevlKit2 && window.NremtSoundExplore && window.NremtStudio && window.NremtStudio.kit2 && params.get('studio') !== '0');
 const studio = stage && window.NremtStudio ? window.NremtStudio.mount({ title: 'Sound trainer', slug: 'sound-trainer', detailsTitle: 'Settings & every sound' }) : null;
-if (studio) (function(){
+if (studio && !v2) (function(){
   const R = document.getElementById('stageRoot'), q = sel => R.querySelector(sel);
   const fig = q('.st-fig'), side = q('.st-side'), main = q('.st-main'), timing = q('.st-timing'), pick = q('.st-quizpick'), vol = q('.st-vol');
   const quiz = document.getElementById('quizSection');
@@ -1056,6 +1064,60 @@ if (studio) (function(){
   if (location.hash.indexOf('#snd-') === 0) {
     const card = document.getElementById(location.hash.slice(1));
     if (card) { sndMore.open = true; studio.open('details'); card.classList.add('is-target'); setTimeout(() => { card.scrollIntoView({ block: 'center' }); card.focus({ preventScroll: true }); }, 300); }
+  }
+})();
+/* ---- Tools v2 (docs/tools-v2-nremt-sound-trainer-brief.md) ----------------------------------------------------
+   EXPLORE (assets/sound-explore.js): a chest with a stethoscope to drag onto it, the lens with what makes the sound,
+   the strip that draws it, normal or abnormal at the same spot. TEST YOURSELF, three parts, each the screen this page
+   always had, moved in and never copied: Name the sound (the quiz above), Where to listen and When in the beat
+   (assets/sound-stage.js). Record ids are unchanged (the sound's id, where-<id>, timing-<id>).
+   Deep links: ?mode=name|where|timing (&q=<id>) opens that part; ?mode=explore Explore; #test Test yourself;
+   #snd-<id> Explore on that sound, the stethoscope on its best spot (nothing plays); for a sound with no clip,
+   "?" opens on its card. */
+if (studio && v2) (function(){
+  const R = document.getElementById('stageRoot'), q = sel => R.querySelector(sel);
+  const quiz = document.getElementById('quizSection'), fig = q('.st-fig'), side = q('.st-side'), timing = q('.st-timing');
+  R.querySelector('.st-top').hidden = true; R.querySelector('.st-quizpick').hidden = true;
+  const ex = window.NremtSoundExplore.build({ studio, sounds: SOUNDS });
+  // "?": the explanation, the volume, and every sound's card (snoring, gurgling and diminished have no clip)
+  const vol = q('.st-volrow'), cards = document.getElementById('listenSection');
+  if (vol) { const h = document.createElement('h3'); h.textContent = 'Volume'; ex.more.append(h, vol); }
+  ex.more.append(cards);
+  window.NremtStudio.scrollable([timing, quiz], 'Question');
+  const TASK = {
+    name: { kicker: 'Test yourself', title: 'Name the sound', todo: 'Press play, then pick what you hear.' },
+    where: { kicker: 'Test yourself', title: 'Where to listen', todo: 'Tap the spot on the chest where you would listen. Flip to Back if you need the back.' },
+    timing: { kicker: 'Test yourself', title: 'When in the beat', todo: 'Play the beat, then tap the strip where the extra sound falls.' }
+  };
+  const want = params.get('mode');
+  // the stage was mounted on ?mode= (with its &q= question), so that part is already set up
+  let shownPart = want && /^(name|where|timing)$/.test(want) ? want : null;
+  window.NremtStudio.kit2(studio, { stage: ex.stage, ref: ex.ref,
+    parts: [
+      { value: 'name', label: 'Name the sound', stage: quiz, task: TASK.name },
+      { value: 'where', label: 'Where to listen', stage: fig, dock: side, task: TASK.where },
+      { value: 'timing', label: 'When in the beat', stage: timing, task: TASK.timing }
+    ],
+    start: h => {
+      if (want && /^(name|where|timing)$/.test(want)) return { mode: 'quiz', part: want };
+      if (/^#test\b/.test(h || '')) return { mode: 'quiz', part: 'name' };
+      if ((h || '').indexOf('#snd-') === 0) { if (ex.show(h.slice(5))) return { mode: 'explore' }; }
+      return { mode: 'explore' };
+    },
+    onShow: (m, part) => {
+      if (m === 'explore') { window.LevlSoundBank.stop(); ex.shown(); return; }
+      ex.hidden();
+      window.LevlSoundBank.stop();
+      if (part !== shownPart) {
+        shownPart = part;
+        stage.setMode(part);
+      }
+      if (part === 'name' && !quizState) startQuiz();
+    } });
+  // a #snd-<id> link to a sound with no clip opens "?" on its card
+  if (location.hash.indexOf('#snd-') === 0 && studio.kit2.mode() === 'explore' && !SOUNDS.some(x => x.available && x.id === location.hash.slice(5))) {
+    const card = document.getElementById(location.hash.slice(1));
+    if (card) { document.getElementById('sndMore').open = true; studio.open('details'); card.classList.add('is-target'); setTimeout(() => { card.scrollIntoView({ block: 'center' }); card.focus({ preventScroll: true }); }, 300); }
   }
 })();
 // From Review: sound-trainer.html#snd-<id> lands on that sound's card.
