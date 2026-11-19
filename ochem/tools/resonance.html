@@ -122,34 +122,10 @@
 <!-- tool-studio:start -->
 <link rel="stylesheet" href="../../assets/course/tool-studio.css">
 <script src="../../assets/course/tool-studio.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/tool-kit2.css">
+<script src="../../assets/course/tool-kit2.js" defer></script>
+<link rel="stylesheet" href="../assets/tools/resonance.css">
 <!-- tool-studio:end -->
-<style>
-.res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;}
-  .res-card{
-    border:var(--bw) solid var(--line);border-radius:var(--radius);padding:8px;background:var(--paper);
-  }
-  .res-card--major{border-color:var(--good);background:var(--tint-good);}
-  .res-card .tstage{border:0;background:transparent;padding:0;}
-  .res-card .scene svg{max-width:100%;}
-  .res-card__rank{
-    font:900 10.5px var(--font-ui);letter-spacing:.04em;text-transform:uppercase;
-    color:var(--muted);margin-top:4px;
-  }
-  .res-card--major .res-card__rank{color:var(--good);}
-  .res-card__tag{
-    font:900 9px var(--font-ui);background:var(--track);color:var(--muted);
-    padding:2px 6px;border-radius:var(--radius-pill);letter-spacing:.03em;
-  }
-  .res-card__why{font-size:11.5px;font-weight:700;color:var(--muted);line-height:1.45;margin-top:3px;}
-  .res-bar{
-    height:8px;border-radius:var(--radius-pill);background:var(--track);overflow:hidden;
-  }
-  .res-bar span{display:block;height:100%;background:var(--accent);transition:width .2s ease;}
-  .res-card--blank{
-    display:flex;align-items:center;justify-content:center;min-height:120px;
-    border-style:dashed;color:var(--muted);font:900 26px var(--font-mono);opacity:.6;
-  }
-</style>
 </head>
 <body>
 <header id="site-header"></header>
@@ -166,7 +142,7 @@
 <!-- tool-top:start -->
 <div class="tool-topbar"><a class="tool-back" href="../tools.html">&larr; All tools</a><div class="tool-share" id="tool-share"></div></div><div class="tool-title"><span class="tool-tile__mark"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 10h4M10 14h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><h1>Resonance Explorer</h1></div><p class="tool-lede">Move electrons to find every resonance form of a molecule.</p>
 <!-- tool-top:end --></div>
-  <div id="resRoot" class="tool-root"><!-- tool-about:start --><details class="tool-about"><summary>About this tool</summary><p>Find every valid resonance form, and rank them. Move electrons to find every resonance form of a molecule.</p><p>What it teaches: Delocalization, contributor weighting.</p><h2 class="tool-about-h">The topics it covers</h2><ul><li><a href="../lessons/resonance.html">Resonance</a>: Some molecules cannot be shown correctly by any single Lewis structure.</li><li><a href="../lessons/conjugate.html">Conjugate acids/bases</a>: When an acid gives away its proton, what is left behind can take a proton back, so it is a base.</li></ul><h2 class="tool-about-h">Terms you will use</h2><ul><li><b>resonance structures</b>: Two or more Lewis structures for one species that differ only in where π electrons and lone pairs are placed, with every atom in the same position. The real species is one hybrid of them, not a flicker between them.</li><li><b>major contributor</b>: The resonance structure that most resembles the real hybrid. Rank them by: full octets first, then fewest formal charges, then any negative charge on the more electronegative atom.</li><li><b>resonance hybrid</b>: The real electronic structure of a species that has resonance structures: a weighted blend of them, with electrons spread over several atoms.</li></ul></details><!-- tool-about:end --></div>
+  <div id="resRoot" class="tool-root"><!-- tool-about:start --><details class="tool-about"><summary>About this tool</summary><p>Push electrons. See the forms and the real molecule. Move electrons to find every resonance form of a molecule.</p><p>What it teaches: Delocalization, contributor weighting.</p><h2 class="tool-about-h">The topics it covers</h2><ul><li><a href="../lessons/resonance.html">Resonance</a>: Some molecules cannot be shown correctly by any single Lewis structure.</li><li><a href="../lessons/conjugate.html">Conjugate acids/bases</a>: When an acid gives away its proton, what is left behind can take a proton back, so it is a base.</li></ul><h2 class="tool-about-h">Terms you will use</h2><ul><li><b>resonance structures</b>: Two or more Lewis structures for one species that differ only in where π electrons and lone pairs are placed, with every atom in the same position. The real species is one hybrid of them, not a flicker between them.</li><li><b>major contributor</b>: The resonance structure that most resembles the real hybrid. Rank them by: full octets first, then fewest formal charges, then any negative charge on the more electronegative atom.</li><li><b>resonance hybrid</b>: The real electronic structure of a species that has resonance structures: a weighted blend of them, with electrons spread over several atoms.</li></ul></details><!-- tool-about:end --></div>
 
   <div id="tool-quiz"></div>
 
