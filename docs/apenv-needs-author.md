@@ -248,3 +248,12 @@ nothing. Done for now: the model is unchanged and the tool says so (the change r
 were paved like a city", the explanation gives the 0.4% and that inside a paved watershed the change is this large; the
 fertilizer note says the nitrogen amounts are a relative sketch). Open for a teacher: keep the exaggerated case, or
 recast the water cycle's human changes as one paved watershed with its own reservoirs.
+
+## Energy flow tool, "Eat lower" (tools v2, 2026-11-18)
+The chapter feeds one hectare of corn to people or to cattle. Numbers: about 40 million kcal of grain a hectare a year
+(USDA NASS 2023 average 177.3 bushels an acre, about 11,100 kg a hectare; USDA FoodData Central about 365 kcal per
+100 g, rounded down), 2,500 kcal a day a person (44 people), and the course's 10% rule for the cattle (4 people).
+Real beef returns nearer 3% of feed calories and all livestock about 12% (Cassidy and others, 2013), so the tool's beef
+is generous; "?" says so. Open for a teacher: keep the exam's 10% here (consistent with every drill), or use a real
+beef figure. Also open: a real ecosystem's measured pyramid (Odum's Silver Springs is the classic) for "?" of the
+10% rule chapter; the per level numbers could not be checked against the 1957 paper in this session, so none is shown.

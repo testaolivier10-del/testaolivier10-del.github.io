@@ -424,9 +424,25 @@
     throw new Error('energy-flow: unknown problem type ' + type);
   }
 
+
+  /* ---------------------------------------------------------- one field, people fed (tools v2, chapter "Eat lower")
+     A hectare of corn: USDA NASS, Crop Production 2023 Summary (January 2024): 177.3 bushels an acre, 56 lb a bushel,
+     so about 11,100 kg of grain a hectare; USDA FoodData Central, dry yellow corn about 365 kcal per 100 g: about
+     40 million kcal a year, rounded. A person: about 2,500 kcal a day. Grain fed to cattle passes one more trophic step
+     at the course's 10% rule (real beef returns nearer 3%; Cassidy et al. 2013: 12% of all feed calories come back as
+     food). Pure numbers; docs/tools-v2-apenv-energy-flow-brief.md. */
+  var FIELD = { kcal: 40000000, perDay: 2500, perYear: 2500 * 365, eff: 0.1 };
+  function field(share){
+    share = Math.max(0, Math.min(1, share || 0));
+    var toCattle = FIELD.kcal * share, grain = FIELD.kcal - toCattle, beef = toCattle * FIELD.eff, heat = toCattle - beef;
+    var fedGrain = grain / FIELD.perYear, fedBeef = beef / FIELD.perYear;
+    return { share: share, grain: grain, toCattle: toCattle, beef: beef, heat: heat, fedGrain: fedGrain, fedBeef: fedBeef,
+      people: Math.round(fedGrain + fedBeef), all: Math.round(FIELD.kcal / FIELD.perYear) };
+  }
+
   M.register('energyFlow', {
     ECOS: ECOS, ECO_IDS: ECO_IDS, LEVEL_NAMES: LEVEL_NAMES, LEVEL_SHORT: LEVEL_SHORT, UNIT: UNIT, UNIT_T: UNIT_T,
     pyramid: pyramid, inverted: inverted, webOf: webOf, webLevels: webLevels, respond: respond, webQuestions: webQuestions,
-    big: big, TYPES: TYPES, generate: generate
+    big: big, TYPES: TYPES, generate: generate, FIELD: FIELD, field: field
   });
 })(typeof window !== 'undefined' ? window : globalThis);

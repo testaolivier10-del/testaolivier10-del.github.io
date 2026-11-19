@@ -122,3 +122,19 @@ Decided (2026-11-12, owner: "do the best possible decision for the NREMT content
 `docs/nremt-reviews/decisions-2026-11-12.md` and applied by `scripts/nremt-decisions-2026-11-12.py`. Chapter 27 has a
 "Suicide risk" notes topic (no lesson step yet). Field triage lists are summarized and linked to ACS. Still open: a
 clinician or EMS instructor spot check.
+
+## Mnemonics tool, tools v2 Explore (2026-11-18, branch claude/tools-v2-nremt-mnemonics)
+
+Explore (`nremt/assets/mnemonics.js`) acts four mnemonics out on drawn, made up patients. Checked against the cards on
+`nremt/mnemonics.html`, the course notes and the sources in `docs/nremt-lessons-spec.md`; for a person to confirm:
+
+- **OPQRST severity, 0 to 10 or 1 to 10. Resolved (review round 1, 2026-11-18):** 0 to 10 is the standard numeric
+  rating scale (0 is no pain). The card now says "often rated on a 0 to 10 scale, where 0 is no pain" and the
+  flashcards were rebuilt; Explore uses the same scale.
+- **AVPU painful stimulus.** Explore shows a trapezius squeeze (the stimulus most EMT sources name first; sternal rub
+  is also taught, and some programs discourage it). Any response to voice (eyes opening, a mumble) counts as V; A is awake and aware, not only eyes open (review round 1). The UK
+  ACVPU adds C (new confusion); not shown, since the NREMT uses AVPU.
+- **The made up patients.** The chest pain patient's answers (crushing pain for 20 minutes, to the left arm, 8 of 10,
+  nitroglycerin and a blood pressure pill, a stent two years ago, coffee an hour ago) are consistent with scenario s2.
+  The rider has one finding per DCAP-BTLS letter, including a burn on the right lower leg (from the exhaust pipe). Explore shows one finding per letter on one body; "?" says that a real exam checks every
+  region for all eight.
