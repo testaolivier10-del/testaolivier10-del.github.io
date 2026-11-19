@@ -2099,3 +2099,19 @@ part; these are the judgment calls in the pictures and the break results.
   gland; adrenal damaged, ACTH at the gland; Ca2+ channels blocked, the action potential at the membrane; receptor
   proteins blocked, the transmitter across the cleft.
 
+## Lab practical tool, tools v2 specimens (2026-11-18): items for review
+Explore shows six lab figures drawn clean with a pin on each part (docs/tools-v2-anp-lab-practical-brief.md). Pins sit
+where each figure's own printed leader line ended, checked by eye; each part's short "what it does" phrase was written
+from that label's reviewed explanation in data/tools/lab-practical.json.
+- **lx-pins-by-eye** (decided, for review). Pins set by eye where no single leader line ends on the structure: the
+  zygomatic arch, the external acoustic meatus (the opening itself), the epidermis, dermis and hypodermis (inside the
+  layer, not at its edge), the renal medulla and cortex, the parietal lobe, the node of Ranvier (the bare gap between
+  two myelin segments), the right ventricle and chordae tendineae (the true end of an elbowed or doubled line). Please
+  confirm each sits on its structure.
+- **lx-renal-artery** (for review). The renal artery pin is on the cut red vessel end the figure's leader points to,
+  beside the renal nerve's yellow ends at the hilum; at the shown size the two are close.
+- **lx-does-phrases** (decided, for review). Simplified on purpose: "Temporal lobe: processes hearing and memory"
+  (the notes say it has a large part in memory and language), "Medulla: the inner region, made of the pyramids",
+  "Papillary muscle: keeps the chordae tendineae taut", "Mastoid process: the bump behind the ear where muscles attach"
+  and "Styloid process: a thin spike where small muscles attach" (the neck and tongue muscles are taught later, so
+  the ordering rule keeps them unnamed).
