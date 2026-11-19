@@ -126,7 +126,7 @@ cows. Chapter 3: 8 species with names, arrows, one effect word per changed speci
 --check`, `build-apenv --check`, `check-site`, `check-weight --check`, `build-apcalc --check`, `build-apmacro --check`,
 `check-tool-use` with a local copy of its list (energy flow reports frame v2: open, touch, mode, use; nothing sent
 under automation). Sweep (`node scripts/tools-v2/apenv-energy-flow-sweep.mjs --width W`, one process per width): 15
-landmark states at 360, 390, 430, 600, 768, 820, 1024, 1280, 1440, 1920, dark at 390, 768, 1440: **15,343 passed, 0
+landmark states at 360, 390, 430, 600, 768, 820, 1024, 1280, 1440, 1920, dark at 390, 768, 1440: **16,109 passed, 0
 failed**. Playwright at 390 (real CDP touch drag), 768 and 1440 (mouse), light and dark: cue, drag, mid-climb frames,
 keyboard End and Home, Sunlight never moves the energy knob, Eat lower by keys (20 and 4 people), the web (words wait,
 take out, bring back), "?", Test yourself, back to Explore, reduced motion, `?seed=`: 110 passed; a 10% rule drill
