@@ -37,6 +37,10 @@
     var x = a.match(/\w\w/g).map(function(h){ return parseInt(h, 16); }), y = b.match(/\w\w/g).map(function(h){ return parseInt(h, 16); });
     return 'rgb(' + x.map(function(v, i){ return Math.round(lerp(v, y[i], clamp(t, 0, 1))); }).join(',') + ')';
   }
+  // a circle as path commands (many in one path)
+  function circ(x, y, r){ return 'M' + f1(x - r) + ',' + f1(y) + 'a' + f1(r) + ',' + f1(r) + ' 0 1,0 ' + f1(2 * r) + ',0a' + f1(r) + ',' + f1(r) + ' 0 1,0 ' + f1(-2 * r) + ',0'; }
+  // a water drop of size k at x, y (path commands)
+  function drop(x, y, k){ return 'M' + f1(x) + ',' + f1(y - 7 * k) + 'c' + f1(4 * k) + ',' + f1(5 * k) + ' ' + f1(6 * k) + ',' + f1(9 * k) + ' ' + f1(6 * k) + ',' + f1(11 * k) + 'a' + f1(6 * k) + ',' + f1(6 * k) + ' 0 0 1 ' + f1(-12 * k) + ',0c0,' + f1(-2 * k) + ' ' + f1(2 * k) + ',' + f1(-6 * k) + ' ' + f1(6 * k) + ',' + f1(-11 * k) + 'Z'; }
   function comma(n){ return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
   var UP = '↑', DN = '↓';
   function arrow(d){ return d > 0 ? UP : d < 0 ? DN : ''; }
@@ -174,20 +178,22 @@
         s += '<g transform="translate(' + v1[0] + ',' + v1[1] + ') rotate(' + f1(vang) + ')"><ellipse class="px-rim is-v" rx="10" ry="' + (HW.v + 8) + '"/><ellipse class="px-rim-in" rx="6" ry="' + HW.v + '"/></g>';
         // the arteriole: wall, lumen and its smooth muscle bands (drawn each frame)
         s += '<path class="px-aw" data-r="aw" fill="url(#px-art)"/><path class="px-lumen" data-r="al" fill="url(#px-lum)"/><g data-r="bands"></g>';
-        s += '<g data-r="rbc"></g>';
         // pressure gauges at the two ends (the pressure that drives flow)
         var gg = gauges(L);
         s += gauge(gg.i[0], gg.i[1], 'is-in', gg.i[2]) + gauge(gg.o[0], gg.o[1], 'is-out', gg.o[2]);
         return s;
       },
+      // the moving blood sits on the picture's own layer (fx), so the drawn tissue is not repainted every frame
+      fx: function(){ return '<g data-r="rbc"></g>'; },
       init: function(E, R){
         var L = E.L, pts = route(L), self = this;
         E.r = 1;
         E.flow = new Flow(pts.map(function(p){ return [p[0], p[1]]; }), function(i){ return area(pts[i], E.r); });
-        var n = L.id === 'wide' ? 54 : 50, h = '';
-        for(var i = 0; i < n; i++) h += '<g class="px-rbc"><ellipse class="px-rbc-o" rx="10" ry="10"/><ellipse class="px-rbc-c" rx="4.6" ry="4.6"/></g>';
-        R.rbc.innerHTML = h;
-        E.cells = [].slice.call(R.rbc.childNodes).map(function(g, i){ return { g: g, u: (i / n) * E.flow.U, lane: (i % 3) - 1, j: ((i * 7) % 5 - 2) * 0.12 }; });
+        // every red cell is drawn in two paths (rims, pale centres): two attribute writes a frame, not one per cell
+        var n = L.id === 'wide' ? 54 : 50, i;
+        R.rbc.innerHTML = '<path class="px-rbc-o"/><path class="px-rbc-c"/>';
+        E.rbcO = R.rbc.firstChild; E.rbcC = R.rbc.lastChild;
+        E.cells = []; for(i = 0; i < n; i++) E.cells.push({ u: (i / n) * E.flow.U, lane: (i % 3) - 1, j: ((i * 7) % 5 - 2) * 0.12 });
         var bands = '';
         for(i = 0; i < 40; i++) bands += '<path class="px-band"/>';
         R.bands.innerHTML = bands;
@@ -217,14 +223,16 @@
         }
         // the blood: every cell moves at flow / cross section; the shown flow sets the pace
         var Q = st.v.flow, U = E.flow.U, sp = (L.id === 'wide' ? 0.26 : 0.24) * U / 1000;   // a usual flow crosses in about 4 s
+        var dO = '', dC = '';
         E.cells.forEach(function(c){
           if(dt) c.u = (c.u + Q * sp * dt) % U;
           var p = E.flow.at(c.u), pt = pts[p.i], nxt = pts[Math.min(pts.length - 1, p.i + 1)];
           var w = lerp(hw(pt, r), hw(nxt, r), p.t), spr = lerp(pt[2] === 'c' ? pt[3] : 0, nxt[2] === 'c' ? nxt[3] : 0, p.t);
           var off = spr > 1 ? c.lane * spr + c.j * 6 : (c.lane * 0.55 + c.j * 0.5) * Math.max(0, w - 10);
           var sc = clamp(Math.min(w, spr > 1 ? 10 : w) / 10, 0.62, 1);
-          sa(c.g, 'transform', 'translate(' + f1(p.x + p.nx * off) + ',' + f1(p.y + p.ny * off) + ') scale(' + sc.toFixed(2) + ')');
+          dO += circ(p.x + p.nx * off, p.y + p.ny * off, 10 * sc); dC += circ(p.x + p.nx * off, p.y + p.ny * off, 4.6 * sc);
         });
+        sa(E.rbcO, 'd', dO); sa(E.rbcC, 'd', dC);
       },
       avoid: function(E){ var g = gauges(E.L); return [[g.i[0] - 28, g.i[1] - 28, g.i[0] + 28, g.i[1] + 28], [g.o[0] - 28, g.o[1] - 28, g.o[0] + 28, g.o[1] + 28]]; },
       track: function(L){
@@ -493,11 +501,12 @@
         s += '<path class="px-memb" d="M' + d[0] + ',' + (d[1] - 30) + ' V' + (d[3] + 30) + ' M' + d[2] + ',' + (d[1] - 30) + ' V' + (d[3] + 30) + '"/>';
         // the capillary (blood returning toward the body)
         s += '<rect class="px-dcap" x="' + c[0] + '" y="' + (c[1] - 30) + '" width="' + (c[2] - c[0]) + '" height="' + (c[3] - c[1] + 60) + '" rx="8" fill="url(#px-capg)"/>';
-        s += '<g data-r="aqp"></g><g data-r="drops"></g><g data-r="adhm"></g><g data-r="udrop"></g>';
+        s += '<g data-r="aqp"></g>';
         var tr = g.track;
         s += '<path class="px-rail" d="M' + tr[0] + ',' + tr[1] + ' H' + tr[2] + '"/>';
         return s;
       },
+      fx: function(){ return '<g data-r="drops"></g><g data-r="adhm"></g><g data-r="udrop"></g>'; },
       init: function(E, R){
         var L = E.L, g = G(L), d = g.duct, c = g.cap, i, h = '';
         E.g = g; E.t = 0;
@@ -513,9 +522,8 @@
         });
         E.aqSide = [E.aq.filter(function(q){ return q.side < 0; }), E.aq.filter(function(q){ return q.side > 0; })];
         // water drops crossing from the lumen through the wall to the capillary
-        h = ''; for(i = 0; i < 20; i++) h += '<g class="px-drop"><path d="M0,-7 C4,-2 6,2 6,4 A6,6 0 0 1 -6,4 C-6,2 -4,-2 0,-7 Z"/></g>';
-        R.drops.innerHTML = h;
-        E.drops = [].slice.call(R.drops.childNodes).map(function(n, k){ return { g: n, ph: (k * 0.6180339887) % 1, side: k % 2 ? 1 : -1, slot: (k * 7) % 12 }; });
+        R.drops.innerHTML = '<path class="px-dropp"/>'; E.dropP = R.drops.firstChild;
+        E.drops = []; for(i = 0; i < 20; i++) E.drops.push({ ph: (i * 0.6180339887) % 1, side: i % 2 ? 1 : -1, slot: (i * 7) % 12 });
         // ADH molecules in the capillary and on the vessel
         h = ''; for(i = 0; i < 12; i++) h += '<g class="px-adh"><path d="M-6,-5 L6,-5 L9,0 L6,5 L-6,5 L-9,0 Z"/></g>';
         R.adhm.innerHTML = h;
@@ -527,9 +535,8 @@
           return { g: n, x: x, y: y };
         });
         // urine drops from the duct's end
-        h = ''; for(i = 0; i < 8; i++) h += '<g class="px-udrop"><path d="M0,-8 C4,-3 7,2 7,5 A7,7 0 0 1 -7,5 C-7,2 -4,-3 0,-8 Z"/></g>';
-        R.udrop.innerHTML = h;
-        E.ud = [].slice.call(R.udrop.childNodes).map(function(n, k){ return { g: n, u: k / 8 }; });
+        R.udrop.innerHTML = '<path class="px-udropp"/>'; E.udP = R.udrop.firstChild;
+        E.ud = []; for(i = 0; i < 8; i++) E.ud.push({ u: i / 8 });
       },
       paint: function(st, E, R, dt){
         var g = E.g, d = g.duct, c = g.cap, a = st.v.aqp, still = E.still;
@@ -544,14 +551,15 @@
         });
         // water out: drops leave through the inserted aquaporins at a rate that follows the shown reabsorption
         var w = st.v.water, rate = w / VIN, wide = E.L.id === 'wide';
+        var dd = '';
         E.drops.forEach(function(dr, k){
           if(dt) dr.ph = (dr.ph + dt / 1000 * 0.45) % 1;
-          var on = k < Math.round(rate * E.drops.length), slot = E.aqSide[dr.side > 0 ? 1 : 0][dr.slot % 12];
-          var x0 = (d[0] + d[2]) / 2, x1 = dr.side > 0 ? c[0] + 8 : d[0] - 70, y = slot.y + (dr.side > 0 ? 0 : 0), t = still ? 0.5 : dr.ph;
-          var x = lerp(x0, dr.side > 0 ? x1 : x1, t);
-          so(dr.g, on ? (Math.min(1, t * 6, (1 - t) * 6)).toFixed(2) : '0');
-          sa(dr.g, 'transform', 'translate(' + f1(x) + ',' + f1(y) + ')');
+          if(k >= Math.round(rate * E.drops.length)) return;
+          var slot = E.aqSide[dr.side > 0 ? 1 : 0][dr.slot % 12], t = still ? 0.5 : dr.ph;
+          var x = lerp((d[0] + d[2]) / 2, dr.side > 0 ? c[0] + 8 : d[0] - 70, t), sz = Math.min(1, t * 6, (1 - t) * 6);
+          if(sz > 0.05) dd += drop(x, slot.y, sz);
         });
+        sa(E.dropP, 'd', dd);
         // ADH in the blood (the control shown)
         var nA = st.c * 12;
         // the ADH molecules move down the capillary together: one transform on their group, wrapped by a whole row
@@ -565,15 +573,16 @@
         if(E.uk !== uk){
           E.uk = uk; var t = (8 + col * 80) / 100;
           sa(R.lumbot, 'stop-color', mixc('#FFFBE6', '#E9C200', t)); sa(R.urine, 'fill', mixc('#FFF8D8', '#D9A300', t));
-          var dc = mixc('#FFF3B8', '#D9A300', t); E.ud.forEach(function(u){ sa(u.g.firstChild, 'fill', dc); });
+          sa(E.udP, 'fill', mixc('#FFF3B8', '#D9A300', t));
         }
         var vr = st.v.vol / 1.33;   // 1 at the usual volume
+        var ud = '', uk2 = clamp(0.8 + vr * 0.17, 0.8, 1.6);
         E.ud.forEach(function(u, k){
           if(dt) u.u = (u.u + dt / 1000 * 0.5 * Math.min(vr, 6) / 2) % 1;
-          var on = k < clamp(Math.round(vr * 1.5), 1, 8), y = lerp(d[3] - 10, E.L.h + 10, u.u);
-          so(u.g, on && !still ? '1' : on && k === 0 ? '1' : '0');
-          sa(u.g, 'transform', 'translate(' + f1((d[0] + d[2]) / 2) + ',' + f1(still ? d[3] - 20 : y) + ') scale(' + clamp(0.7 + vr * 0.15, 0.7, 1.4).toFixed(2) + ')');
+          if(k >= clamp(Math.round(vr * 1.5), 1, 8) || (still && k)) return;
+          ud += drop((d[0] + d[2]) / 2, still ? d[3] - 20 : lerp(d[3] - 10, E.L.h + 10, u.u), uk2);
         });
+        sa(E.udP, 'd', ud);
         // the bladder fills to a height that follows the volume
         var lv = clamp(st.v.vol / 12, 0.04, 1);
         sa(R.urine, 'transform', 'translate(0,' + f1(24 * (1 - lv)) + ') scale(1,' + lv.toFixed(3) + ')');
@@ -778,10 +787,13 @@
     stage.appendChild(head.el);
     var main = document.createElement('div'); main.className = 'px-main'; main.id = 'px-main';
     main.innerHTML = '<div class="px-pic"><svg class="px-svg" viewBox="0 0 600 600" role="img" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep">' +
-      '<g class="px-art"></g><g class="px-labs"></g></svg><div class="px-over"></div></div>';
+      '<g class="px-art"></g></svg>' +
+      // the moving things and the labels on a layer of their own (composited), so a frame repaints only them
+      '<svg class="px-svg px-fxsvg" viewBox="0 0 600 600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"><g class="px-fxg"></g><g class="px-labs"></g></svg>' +
+      '<div class="px-over"></div></div>';
     stage.appendChild(main);
     tabs.el.querySelectorAll('.tk2-tab').forEach(function(b){ b.setAttribute('aria-controls', main.id); });
-    var pic = main.querySelector('.px-pic'), svg = main.querySelector('.px-svg'), art = svg.querySelector('.px-art'), labs = svg.querySelector('.px-labs'), over = main.querySelector('.px-over');
+    var pic = main.querySelector('.px-pic'), svg = main.querySelector('.px-svg'), art = svg.querySelector('.px-art'), fxs = main.querySelector('.px-fxsvg'), fxg = fxs.querySelector('.px-fxg'), labs = fxs.querySelector('.px-labs'), over = main.querySelector('.px-over');
     var layer = K.layer(pic);
     var lines = document.createElement('div'); lines.className = 'px-lines';
     var cause = K.cause({ label: 'Why' });
@@ -843,14 +855,16 @@
       var id = pickLayout(), L0 = cur.layouts[id], ex = 0, L = { id: id, w: L0.w, h: L0.h };
       if(id === 'wide'){ var avail = Math.max(300, (window.innerHeight || 800) - 330), asp = (stage.clientWidth || 0) / avail; if(asp > L.w / L.h) ex = Math.min(400, Math.round(L.h * asp - L.w)); }
       E.L = L; E.W = L.w + ex; E.H = L.h; E.X0 = -ex / 2;
-      svg.setAttribute('viewBox', f1(E.X0) + ' 0 ' + E.W + ' ' + L.h); pic.setAttribute('data-lay', id);
+      svg.setAttribute('viewBox', f1(E.X0) + ' 0 ' + E.W + ' ' + L.h); fxs.setAttribute('viewBox', f1(E.X0) + ' 0 ' + E.W + ' ' + L.h); pic.setAttribute('data-lay', id);
       pic.style.maxWidth = id === 'wide' ? 'calc((100vh - 330px) * ' + (E.W / E.H).toFixed(4) + ')' : 'max(320px, calc((100vh - 330px) * ' + (L.w / L.h).toFixed(4) + '))';
     }
     function metrics(){ var k = scale() || 1; E.k = k; E.fs = clamp((k < 0.8 ? 12.5 : 13.5) / k, 10, 27); E.gap = 6 / k; }
     function buildArt(){
       art.innerHTML = cur.art(E);
+      fxg.innerHTML = cur.fx ? cur.fx(E) : '';
       R = {};
       art.querySelectorAll('[data-r]').forEach(function(n){ R[n.getAttribute('data-r')] = n; });
+      fxg.querySelectorAll('[data-r]').forEach(function(n){ R[n.getAttribute('data-r')] = n; });
       E.root = stage; E.still = K.reduced();
       if(cur.init) cur.init(E, R);
       labCache = {}; labs.innerHTML = ''; labSig = '';
@@ -995,14 +1009,19 @@
       raf = 0;
       if(!onScreen) return;
       var dt = last ? Math.min(50, ts - last) : 16; last = ts;
-      step(dt);
-      draw(dt);
+      /* While a change spreads every frame is drawn. At rest only the ambient motion runs (blood, breath, beat), and it is
+         drawn on every third frame (about 20 a second, its time carried over), so a settled screen costs a third. */
+      acc += dt;
+      if(!calmNow || ++skip >= 3){ step(acc); calmNow = draw(acc); acc = 0; skip = 0; }
       raf = requestAnimationFrame(tick);
     }
-    function startLoop(){ if(!raf && onScreen && !K.reduced() && window.requestAnimationFrame){ last = 0; raf = requestAnimationFrame(tick); } }
+    var acc = 0, skip = 0, calmNow = false;
+    function startLoop(){ calmNow = false; acc = 0; if(!raf && onScreen && !K.reduced() && window.requestAnimationFrame){ last = 0; raf = requestAnimationFrame(tick); } }
     function stopLoop(){ if(raf){ cancelAnimationFrame(raf); raf = 0; } last = 0; }
     function fadeOut(){
-      var c = svg.cloneNode(true); c.removeAttribute('id'); c.setAttribute('aria-hidden', 'true'); c.classList.add('px-fade');
+      // the picture and its moving layer, frozen, fading out over the new state
+      var c = document.createElement('div'); c.className = 'px-fade'; c.setAttribute('aria-hidden', 'true');
+      c.appendChild(svg.cloneNode(true)); c.appendChild(fxs.cloneNode(true));
       pic.appendChild(c);
       var done = function(){ if(c.parentNode) c.parentNode.removeChild(c); };
       if(c.animate){ var an = c.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 260, easing: 'linear' }); an.onfinish = done; setTimeout(done, 480); } else done();
@@ -1011,6 +1030,7 @@
       view.u = v; cur.u = v;
       if(handle) handle.before(Math.abs(v - cur.ctl.base) > (cur.ctl.max - cur.ctl.min) * 0.02 ? cur.ctl.base : null);
       if(K.reduced() || !window.requestAnimationFrame || !onScreen){ if(onScreen) fadeOut(); settleAll(cur, view); E.still = K.reduced(); draw(0); return; }
+      calmNow = false;
       startLoop();
     }
 

@@ -42,7 +42,9 @@
 .px-main{display:flex;flex-direction:column;gap:6px;min-height:0;}
 .px-pic{position:relative;border-radius:18px;overflow:hidden;background:var(--px-bg);box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--ink) 8%, transparent);width:100%;align-self:center;}
 .px-svg{display:block;width:100%;height:auto;touch-action:none;}
-.px-svg.px-fade{position:absolute;left:0;top:0;pointer-events:none;}
+.px-fxsvg{position:absolute;left:0;top:0;width:100%;height:auto;pointer-events:none;will-change:transform;}
+.px-fade{position:absolute;inset:0;pointer-events:none;}
+.px-fade .px-fxsvg{will-change:auto;}
 .px-over{position:absolute;inset:0;pointer-events:none;}
 .px-over > *{pointer-events:auto;}
 .px-lines{display:flex;flex-wrap:wrap;align-items:center;gap:8px;min-height:44px;}
@@ -156,9 +158,9 @@
 .px-aqb{fill:var(--px-aqp);stroke:#ffffff;stroke-width:1.2;}
 .px-aqp{stroke:#ffffff;stroke-width:2;stroke-linecap:round;}
 .px-ves{fill:none;stroke:color-mix(in srgb, var(--px-aqp) 55%, transparent);stroke-width:1.6;}
-.px-drop path{fill:var(--px-water);stroke:#ffffff;stroke-width:1;}
+.px-dropp{fill:var(--px-water);stroke:#ffffff;stroke-width:1;}
 .px-adh path{fill:var(--px-adh);stroke:#ffffff;stroke-width:1.2;}
-.px-udrop path{stroke:#A98A3E;stroke-width:1;}
+.px-udropp{stroke:#A98A3E;stroke-width:1;}
 
 /* 4. heart */
 .px-myo{stroke:#6E1F17;stroke-width:3;}

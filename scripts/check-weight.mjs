@@ -87,6 +87,10 @@ const SHELL_BUDGETS = [
      Measured 33.0 KB with K.spots (the explorers' named places, with its miss, card sizing and find-it mode: about
      5.5 KB). */
   ['assets/course/kit2', 34],
+  /* A&P Predict the change's Explore, tools/predict-explore.js and .css (docs/tools-v2-anp-predict-brief.md): loaded only
+     by that tool's page (its landing), so it is its own shell, not part of every A&P page's (review round 1). Four drawn
+     body systems and the chain engine. Measured 32.4 KB. */
+  ['anatomy-physiology/predict-explore', 33],
   /* 249 -> 253 for cross-device sync (audit 2026-10, Fix-first 5). A sync
      used to replace whole namespaces and pull only on sign-in, so two signed-in
      devices erased each other's progress. account.js now carries a per-key
@@ -444,10 +448,7 @@ const SHELL_BUDGETS = [
   /* 61 -> 68 (tools v2, docs/tools-v2-anp-lab-practical-brief.md): the Lab practical's Explore (tools/lab-explore.js
      and .css, 6.7 KB gzipped) beside the old engine it keeps for Test yourself (1.6 KB more in lab-practical.js).
      Measured 67.4 KB; 68.7 KB after review round 1 (blank picture taps, the fade order on a tab change). */
-  /* 69 -> 91 (tools v2, docs/tools-v2-anp-predict-brief.md): Predict the change's Explore (tools/predict-explore.js and
-     .css, 30.4 KB gzipped: four drawn body systems and the chain engine) beside the old engine it keeps whole for Test
-     yourself. Predict is the A&P tool page in this list, so it sets the shell's measure. Measured 90.2 KB. */
-  ['anatomy-physiology', 91],
+  ['anatomy-physiology', 69],
   /* AP® Biology (bio/, a fork of the A&P runtime): bio-core, questions, nav,
      glossary tooltips, bio.css, the generated curriculum, plus the app script
      a page loads (exams.js, the largest, with pages.css and frq-kit.js).
@@ -1199,6 +1200,8 @@ function bucketOf(relPath) {
   // The video lesson player (docs/video-lessons.md) loads only on pages that
   // show a video, so it is its own shell, not part of every page's.
   if (parts[0] === 'assets' && parts[1] === 'video') return 'assets/video';
+  // A&P Predict the change's Explore (tools v2) loads only on that tool's page, so it is its own shell.
+  if (parts[0] === 'anatomy-physiology' && parts[1] === 'assets' && parts[2] === 'tools' && /^predict-explore\./.test(parts[3] || '')) return 'anatomy-physiology/predict-explore';
   // The shared 3D body (assets/body3d/viewer.js) loads only on the NREMT body
   // map and the A&P 3D anatomy tool, so it is its own shell too.
   if (parts[0] === 'assets' && parts[1] === 'body3d') return 'assets/body3d';

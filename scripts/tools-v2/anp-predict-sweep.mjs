@@ -54,7 +54,7 @@ for (const ws of WIDTHS) {
   const cue = await page.evaluate(() => {
     const c = document.querySelector('.tk2-cue'); if (!c) return { none: true };
     const r = c.getBoundingClientRect(), hits = [];
-    document.querySelectorAll('svg.px-svg:not(.px-fade) .px-lab rect, .px-reset, .px .tk2-handle .tk2-tag:not([hidden])').forEach((e) => {
+    document.querySelectorAll('.px-pic > svg.px-fxsvg .px-lab rect, .px-reset, .px .tk2-handle .tk2-tag:not([hidden])').forEach((e) => {
       const q = e.getBoundingClientRect();
       if (q.width && q.left < r.right - 1 && q.right > r.left + 1 && q.top < r.bottom - 1 && q.bottom > r.top + 1) hits.push((e.closest('.px-lab') || e).textContent.trim());
     });
@@ -87,7 +87,7 @@ for (const ws of WIDTHS) {
         const pic = document.querySelector('.px-pic').getBoundingClientRect();
         const boxes = [];
         const inPic = (q) => q.left >= pic.left - 0.5 && q.right <= pic.right + 0.5 && q.top >= pic.top - 0.5 && q.bottom <= pic.bottom + 0.5;
-        document.querySelectorAll('svg.px-svg:not(.px-fade) .px-labs .px-lab').forEach((g) => {
+        document.querySelectorAll('.px-pic > svg.px-fxsvg .px-labs .px-lab').forEach((g) => {
           const q = g.querySelector('rect').getBoundingClientRect(), t = g.querySelector('text').getBoundingClientRect();
           const n = 'label ' + g.getAttribute('data-lab');
           boxes.push({ n, q });
