@@ -152,7 +152,10 @@ older children (burns.js already said so in its old side panel sentence, now in 
   the card never shows while the camera travels; Test yourself: find quiz wrong then Try again then right, recorded;
   the Rule of Nines quiz right then a second answer); reduced motion gives the result at once.
   Round 1: 14196 passed, 8 failed (the card covered the part at 768 when its text grew, and the burns cue was
-  placed by the svg's box instead of the drawn figure on wide pictures); both fixed, those widths rerun (below).
+  placed by the svg's box instead of the drawn figure on wide pictures); both fixed, and the five widths that
+  failed rerun clean: 600 (1178), 768 (1156), 1024 (1172), 1280 (1172), 1440 (1188) passed, 0 failed. Every other
+  width and both dark runs passed in round 1; frames 30 passed, 0 failed (390: 202 frames, 60 mid fade; 1440: 190,
+  44 mid fade).
 - Preview: `/mnt/user-data/outputs/nremt-body-map-v2/index.html` is the one file page (the frame, Burns' figures
   need the server; the 3D body cannot load from a file at all: it is an ES module and a 3.3 MB model). Shots of the
   sweep in `/mnt/user-data/outputs/nremt-body-map-v2/shots/` (`sweep-*`, `frames-burn-mid-*` mid fade,
