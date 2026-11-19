@@ -94,7 +94,7 @@ review round: `docs/tools-v2-water-pollution-brief.md`, `docs/tools-v2-osmosis-b
 
 Commit messages end with
 
-    Co-Authored-By: Claude Fable 5.2 <noreply@anthropic.com>
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
     Claude-Session: https://claude.ai/code/session_011LrYU6oPHBYNE4ERGyPxWg
 
 No em dashes or hyphens as punctuation in user facing copy.
