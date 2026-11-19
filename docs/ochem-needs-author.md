@@ -1277,13 +1277,24 @@ five and six groups would change quiz answers (record ids `phosphorus-pentachlor
 - **Status:** open; kept as before.
 
 ### v3-v2-ideal-angles: idealized angles shown as "measured"
-The arc and the cause line show the angle measured from the drawn coordinates. Ammonia (107°), water (104.5°) and
-dimethyl ether (111°) are built with measured angles; ethene and formaldehyde are drawn at 120° (real H–C–H about
-117° and 116.5°), hydronium and the methyl anion at ammonia's 107° (hydronium is reported flatter), methanol's C–O–H at
-109.5° (real about 108.5°). "How to read the picture" in "?" now says which are idealized (the old note said every
-listed molecule carried real angles). Giving the library the real angles would change the picture and the drill's
-"measured on this model" numbers, not its answers.
-- **Status:** open; needs an author to pick sources for each molecule.
+The arc and the cause line show the angle measured from the drawn coordinates. Review round 1 (2026-11-19) found
+idealized angles shown as if measured (hydronium 107°, methanol's O at 109.5° with two lone pairs, formaldehyde 119°
+against 120° in "?", the chair at 109° and 109.5° on equivalent carbons, the boat at 105°). Decided for the owner:
+- **Measured where a solid value exists**, now drawn: ethene H–C–H 117.4° (OpenStax Organic Chemistry 1.8);
+  formaldehyde H–C–H 116.5° (microwave value; Roberts and Caserio 2.2 says 118°, so textbooks range 116 to 118°);
+  hydronium H–O–H about 113° (Wikipedia, citing Tang and Oka 1999 and Bell 1973), so it is drawn flatter than ammonia;
+  methanol C–O–H 108.5°, staggered; cyclopropane H–C–H 114.5° and C–H 1.08 Å (literature value quoted on the UW
+  Oshkosh cyclopropane page). Ammonia, water and dimethyl ether were already measured.
+- **Ideal where none is drawn**, labelled "ideal" on the picture and in the cause line ("tetrahedral ideal 109.5°"):
+  ethane, the stereocenter, the chair and the boat (rebuilt so every angle is exactly 109.47°; the measured chair
+  C–C–C is about 111°, said in its note), the methyl anion (now 109.5°, not ammonia's 107°), formamide, and the methyl
+  carbons of methanol, acetonitrile and dimethyl ether. A built molecule is all ideal.
+- **A three membered ring** says "tetrahedral, the ring squeezes it to 60°" (it said "tetrahedral 60°").
+- PhET's Real against Model switch was considered and not added (no new controls; rule 6). The "?" key lists which
+  angles are measured and which are ideal.
+- **For a person:** the formaldehyde value (116.5° or 118°), and whether hydronium's 113° wants a sentence on why it is
+  wider than ammonia's 107° (the tool states the number only).
+- **Status:** decided for the owner; the two points above open.
 
 ### v3-v2-back: when the H counts as "at the back"
 R or S is shown only while the lowest priority group points within 35° of straight away from the viewer; outside that

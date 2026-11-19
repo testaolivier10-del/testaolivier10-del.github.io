@@ -14,11 +14,12 @@
 .v3[hidden]{display:none;}
 .v3 [hidden]{display:none !important;}
 .v3 .tk2-tabs{margin:0;align-self:flex-start;max-width:100%;}
-.v3-scene{position:relative;flex:1 1 auto;min-height:480px;border-radius:18px;overflow:hidden;background:var(--v3-bg1);touch-action:none;cursor:grab;}
+.v3-scene{position:relative;flex:1 1 auto;min-height:480px;border-radius:18px;overflow:hidden;background:var(--v3-bg1);touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none;}
+.v3-labs,.v3-ctl,.v3 .tk2-spots{user-select:none;-webkit-user-select:none;}
 .v3-scene.is-drag{cursor:grabbing;}
 .v3-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
 @media (max-width:1023px){ .v3-scene{flex:none;height:min(66vw,560px);min-height:460px;} }
-@media (max-width:640px){ .v3-scene{height:520px;min-height:0;border-radius:14px;} .v3[data-tab="hand"] .v3-scene{height:568px;} .v3{gap:8px;} }
+@media (max-width:640px){ .v3-scene{height:520px;min-height:0;border-radius:14px;} .v3[data-tab="hand"] .v3-scene{height:600px;} .v3{gap:8px;} }
 .v3-scene.is-xf .v3-svg{animation:v3-xf .18s linear 1;}
 @keyframes v3-xf{from{opacity:.25;}to{opacity:1;}}
 .v3-lines{display:flex;align-items:center;gap:6px 18px;flex-wrap:wrap;flex:none;}
@@ -68,6 +69,7 @@
 .v3-lab.is-prio{min-width:24px;text-align:center;padding:1px 6px;font-size:13px;font-weight:900;color:var(--v3-cfg-ink);box-shadow:inset 0 0 0 1.5px var(--v3-cfg),0 1px 3px rgba(20,16,50,.16);}
 .v3-lab.is-name{background:none;box-shadow:none;color:var(--v3-bn-ink);font-size:13px;padding:0 4px;}
 .v3-lab.is-cfg{font-size:22px;font-weight:900;padding:2px 13px;background:var(--v3-cfg);color:#fff;box-shadow:0 2px 6px rgba(20,16,50,.2);}
+.v3-lab.is-cfg{transition:opacity .2s ease;} .v3-lab.is-cfg.is-wait{opacity:0;}
 :root[data-theme="dark"] .v3-lab.is-cfg{color:#0C1A14;background:var(--v3-cfg);}
 :root[data-theme="dark"] .v3-lab.is-name{background:none;}
 
@@ -86,7 +88,7 @@
 .v3 .v3-spots .tk2-spots-hit{cursor:inherit;}
 .v3 .v3-spots{--tk2-spot:var(--v3-shape);}
 @media (max-width:640px){
-  .v3-pick{left:8px;top:8px;} .v3-pick span{display:none;} .v3-pick select{max-width:190px;}
+  .v3-pick{left:8px;top:8px;} .v3-pick span{display:none;} .v3-pick select{max-width:calc(100vw - 112px);padding-right:26px;}
   .v3-btns{right:8px;top:8px;gap:6px;} .v3-btn{padding:0 11px;font-size:13px;}
   .v3-lab.is-cfg{font-size:19px;}
 }

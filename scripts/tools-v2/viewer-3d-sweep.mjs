@@ -75,6 +75,18 @@ const probe = (o) => {
   names.forEach(x => ctl.forEach(c => { if (hit(x.r, c.r, 4)) out.push('label "' + x.t + '" on a control (' + c.n + ')'); }));
   // a name never sits on the letters of an atom drawn in front (a letter shown is an atom you can see)
   names.forEach(x => letters.forEach(l => { if (hit(x.r, l.r, 1)) out.push('label "' + x.t + '" over the letter "' + l.t + '"'); }));
+  // review round 1: no label on a ball, a stick, the angle's arc or the reading arrow (true shapes, 2 px clear)
+  const offX = 0, rc = (b, x, y, r) => { const dx = Math.max(b.l - x, 0, x - b.r), dy = Math.max(b.t - y, 0, y - b.b); return dx * dx + dy * dy < r * r; };
+  const circ = [];
+  groups.forEach(g => q(g + ' .v3-ball').forEach(e => { const r = R(e); circ.push({ x: (r.l + r.r) / 2, y: (r.t + r.b) / 2, r: r.w / 2, what: 'a ball' }); }));
+  groups.forEach(g => q(g + ' .v3-bo').forEach(e => { const m = e.getCTM(), sw = parseFloat(e.getAttribute('stroke-width')) / 2, svgR = e.ownerSVGElement.getBoundingClientRect();
+    const x1 = +e.getAttribute('x1') + svgR.left, y1 = +e.getAttribute('y1') + svgR.top, x2 = +e.getAttribute('x2') + svgR.left, y2 = +e.getAttribute('y2') + svgR.top, n = Math.max(1, Math.ceil(Math.hypot(x2 - x1, y2 - y1) / 3));
+    for (let j = 0; j <= n; j++) circ.push({ x: x1 + (x2 - x1) * j / n, y: y1 + (y2 - y1) * j / n, r: sw, what: 'a stick' }); }));
+  q('.v3-read, .v3-arc').forEach(e => { const svgR = e.ownerSVGElement.getBoundingClientRect(), L = e.getTotalLength(), n = Math.max(2, Math.ceil(L / 3)), arrow = e.classList.contains('v3-read');
+    for (let j = 0; j <= n; j++) { const p = e.getPointAtLength(L * j / n); circ.push({ x: p.x + svgR.left, y: p.y + svgR.top, r: j === n && arrow ? 6 : 2, what: arrow ? 'the reading arrow' : 'the arc' }); } });
+  labs.forEach(x => { const c = circ.find(c => rc(x.r, c.x, c.y, c.r + 2)); if (c) out.push('label "' + x.t + '" on ' + c.what); });
+  card.forEach(x => { const c = circ.find(c => c.what !== 'a stick' && rc(x.r, c.x, c.y, c.r)); if (c) out.push('the card on ' + c.what); });
+  if (o.tab === 'hand') { const n = labs.filter(x => /is-prio/.test(x.c)).length; if (n !== 8) out.push(n + ' priority numbers shown, not 8'); }
   // the molecule is the largest thing
   const uni = a => a.length ? { l: Math.min(...a.map(x => x.l)), t: Math.min(...a.map(x => x.t)), r: Math.max(...a.map(x => x.r)), b: Math.max(...a.map(x => x.b)) } : null;
   const area = u => u ? (u.r - u.l) * (u.b - u.t) : 0, M = uni(balls[0].concat(o.tab === 'shape' ? q('.v3-molA .v3-lpb').map(R) : [])), share = area(M) / (S.w * S.h);
@@ -90,8 +102,9 @@ const probe = (o) => {
     const ang = labs.filter(x => /is-angle/.test(x.c))[0];
     if (r.shape) {
       // the angle is named whenever its arc can be seen (an arc seen exactly edge on, behind its atom, has no name)
-      const arcEl = document.querySelector('.v3-arc'), ab = arcEl && getComputedStyle(arcEl).display !== 'none' ? arcEl.getBoundingClientRect() : null;
-      if (!ang && st.style !== 'space' && ab && ab.width > 6 && ab.height > 6) out.push('no angle shown');
+      const arcEl = document.querySelector('.v3-arc'), seen = arcEl && getComputedStyle(arcEl).display !== 'none' && arcEl.getAttribute('data-seen') === '1';
+      if (!ang && st.style !== 'space' && seen) out.push('no angle shown');
+      if (ang && !seen) out.push('an angle shown with its arc out of sight');
       if (ang && !cz[cz.length - 1].endsWith(ang.t)) out.push('angle "' + ang.t + '" but the line says "' + cz[cz.length - 1] + '"');
       if (!cz.some(t => t.indexOf(r.shape.m.toLowerCase()) === 0)) out.push('cause line does not name ' + r.shape.m);
     } else if (ang) out.push('an angle shown for an end atom');
@@ -154,6 +167,17 @@ for (const w of WIDTHS) {
     const floor = o.tab === 'hand' ? (w <= 640 ? 0.025 : 0.03) : (w <= 640 ? 0.06 : 0.035);
     if (r.share < floor) fails.push(`${w} ${what}: the molecule is ${(r.share * 100).toFixed(1)}% of the stage (floor ${floor * 100}%)`);
   };
+  {
+    // review round 1: a mouse drag over the picture selects no text; Reset view has a name at every width
+    const sb = await page.locator('.v3-scene').boundingBox();
+    await page.mouse.move(sb.x + sb.width * 0.3, sb.y + sb.height * 0.5); await page.mouse.down();
+    await page.mouse.move(sb.x + sb.width * 0.9, sb.y + sb.height * 0.2, { steps: 8 }); await page.mouse.move(sb.x + sb.width * 0.5, sb.y + sb.height + 120, { steps: 6 }); await page.mouse.up();
+    const sel = await page.evaluate(() => String(window.getSelection()));
+    checks++; if (sel.trim()) fails.push(`${w}: a mouse drag selected "${sel.trim().slice(0, 40)}"`);
+    const nm = await page.evaluate(() => { const b = [...document.querySelectorAll('.v3-btn')].find(e => /Reset/.test(e.textContent)); return b.getAttribute('aria-label') || b.innerText.trim(); });
+    checks++; if (!/Reset view/.test(nm)) fails.push(`${w}: Reset view has no name`);
+    await page.locator('.v3-btn', { hasText: 'Reset view' }).click(); await page.waitForTimeout(700);
+  }
   const ids = await page.evaluate(() => window.OchemMol3DLibrary.ALL.map(m => m.id));
   for (const id of ids) {
     await page.locator('.v3-pick select').selectOption(id);
@@ -181,6 +205,10 @@ for (const w of WIDTHS) {
   await page.locator('.tk2-tab[data-v="shape"]').click(); await page.waitForTimeout(300);
   await page.getByRole('button', { name: 'Test yourself' }).click(); await page.waitForTimeout(500);
   for (let k = 0; k < 3; k++) {
+    const srBad = await page.evaluate(() => { const V = window.OchemViewer3DModel, st = V.view.state(), m = window.OchemMol3DLibrary.get(st.mol), r = V.readAtom(m, st.sel);
+      const t = (document.querySelector('.tk2-sr').textContent + ' ' + (document.querySelector('.v3-turn').getAttribute('aria-label') || '')).toLowerCase();
+      return [r.shape.m.toLowerCase(), m.name.toLowerCase(), 'lone pair', 'groups'].filter(w => t.indexOf(w) >= 0); });
+    checks++; if (srBad.length) fails.push(`${w} drill ${k}: the screen reader text gives away "${srBad.join(', ')}"`);
     const hidden = await page.evaluate(() => !document.querySelector('.tk2-spot-card:not([hidden])') && !document.querySelector('.v3-lab.is-angle:not([hidden])') && ![...document.querySelectorAll('.v3-al')].some(e => getComputedStyle(e).display !== 'none'));
     checks++; if (!hidden) fails.push(`${w} drill ${k}: the answer shows before Check`);
     const r = await page.evaluate(probe, { tab: 'shape', drill: true }); states++; checks += 12;

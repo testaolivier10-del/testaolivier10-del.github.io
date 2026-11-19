@@ -113,9 +113,13 @@
     id:'ethene', name:'Ethene', formula:'C₂H₄',
     note:'Both carbons sp², and every atom in one plane. Rotating the double bond would mean breaking the pi overlap, which is why alkenes have cis and trans isomers and alkanes do not.',
     atoms:[
+      /* measured, not idealized: H–C–H 117.4°, H–C–C 121.3°, C–H 1.087 Å, C=C 1.34 Å (OpenStax Organic
+         Chemistry 1.8) */
       { el:'C', pos:v(-0.67,0,0) }, { el:'C', pos:v(0.67,0,0) },
-      { el:'H', pos:v(-1.21, 0.94,0) }, { el:'H', pos:v(-1.21,-0.94,0) },
-      { el:'H', pos:v( 1.21, 0.94,0) }, { el:'H', pos:v( 1.21,-0.94,0) }
+      { el:'H', pos:v(-0.67 + 1.087*Math.cos(deg(121.3)),  1.087*Math.sin(deg(121.3)),0) },
+      { el:'H', pos:v(-0.67 + 1.087*Math.cos(deg(121.3)), -1.087*Math.sin(deg(121.3)),0) },
+      { el:'H', pos:v( 0.67 - 1.087*Math.cos(deg(121.3)),  1.087*Math.sin(deg(121.3)),0) },
+      { el:'H', pos:v( 0.67 - 1.087*Math.cos(deg(121.3)), -1.087*Math.sin(deg(121.3)),0) }
     ],
     bonds:[{a:0,b:1,order:2},{a:0,b:2},{a:0,b:3},{a:1,b:4},{a:1,b:5}],
     focus:0
@@ -149,7 +153,9 @@
     atoms:[
       { el:'C', pos:v(0,0,0) },
       { el:'O', pos:v(0,1.21,0), lp:2 },
-      { el:'H', pos:v( 0.94,-0.55,0) }, { el:'H', pos:v(-0.94,-0.55,0) }
+      /* measured: H–C–H about 116.5° (microwave; textbooks quote 116 to 118°), C–H 1.11 Å */
+      { el:'H', pos:v( 1.11*Math.sin(deg(121.75)), 1.11*Math.cos(deg(121.75)),0) },
+      { el:'H', pos:v(-1.11*Math.sin(deg(121.75)), 1.11*Math.cos(deg(121.75)),0) }
     ],
     bonds:[{a:0,b:1,order:2},{a:0,b:2},{a:0,b:3}],
     focus:0
@@ -184,8 +190,9 @@
 
   add('Stereochemistry', {
     id:'cyclohexane-chair-3d', name:'Cyclohexane (chair)', formula:'C₆H₁₂',
-    note:'Look down the ring edge-on: six hydrogens point straight up and down (axial) and six point out around the rim (equatorial). Every angle is 109.5° and nothing eclipses anything — which is why this shape wins.',
-    atoms: M3.ringPoints(6, 1.46, 0.25).map(function(p){ return { el:'C', pos:p }; }),
+    note:'Look down the ring edge-on: six hydrogens point straight up and down (axial) and six point out around the rim (equatorial). Every angle is close to 109.5° (drawn at exactly 109.5°; the measured C–C–C is about 111°) and nothing eclipses anything — which is why this shape wins.',
+    /* the ideal chair: a pucker of r / (4√2) puts every C–C–C at exactly 109.47°, so all six carbons read the same */
+    atoms: M3.ringPoints(6, 1.4425, 1.4425 / (4 * Math.SQRT2)).map(function(p){ return { el:'C', pos:p }; }),
     bonds:[{a:0,b:1},{a:1,b:2},{a:2,b:3},{a:3,b:4},{a:4,b:5},{a:5,b:0}],
     fill:[0,1,2,3,4,5].map(function(i){ return { at:i, h:2, len:1.09 }; }),
     focus:0
@@ -194,9 +201,15 @@
   add('Stereochemistry', {
     id:'methanol', name:'Methanol', formula:'CH₃OH',
     note:'Two different centers in one small molecule: a tetrahedral carbon and a bent oxygen with two lone pairs. Click either one and the readout follows.',
-    atoms:[{ el:'C', pos:v(0,0,0) }, { el:'O', pos:v(1.43,0,0) }],
-    bonds:[{a:0,b:1}],
-    fill:[{ at:0, h:3, len:1.09 }, { at:1, h:1, lp:2, len:0.96 }],
+    /* the O–H at the measured C–O–H of 108.5°, its two lone pairs either side of that plane; the methyl is the
+       ideal tetrahedron */
+    atoms:[{ el:'C', pos:v(0,0,0) },
+      { el:'O', pos:v(1.43,0,0), lpDirs:[v(0.585*Math.cos(deg(55)), 0.811*Math.cos(deg(55)),  Math.sin(deg(55))),
+                                         v(0.585*Math.cos(deg(55)), 0.811*Math.cos(deg(55)), -Math.sin(deg(55)))] },
+      // staggered: anti to the methyl hydrogen the fill puts at +y
+      { el:'H', pos:v(1.43 + 0.96*Math.cos(deg(71.5)), -0.96*Math.sin(deg(71.5)), 0) }],
+    bonds:[{a:0,b:1},{a:1,b:2}],
+    fill:[{ at:0, h:3, len:1.09 }],
     focus:1
   });
 
@@ -236,7 +249,8 @@
       var out = [];
       for(var i=0;i<3;i++){
         var a = deg(120*i);
-        out.push({ el:'H', pos:v(1.09*0.9285*Math.cos(a), 1.09*0.9285*Math.sin(a), -1.09*0.3720) });
+        // the ideal tetrahedral 109.5° (no measured angle to draw)
+        out.push({ el:'H', pos:v(1.09*0.9428*Math.cos(a), 1.09*0.9428*Math.sin(a), -1.09/3) });
       }
       return out;
     }
@@ -244,7 +258,7 @@
 
   add('Reactive intermediates', {
     id:'hydronium', name:'Hydronium', formula:'H₃O⁺',
-    note:'What "acid" means in water. One lone pair left on the oxygen, so it is pyramidal like ammonia rather than bent like water — protonating oxygen costs it a pair and changes its shape.',
+    note:'What "acid" means in water. One lone pair left on the oxygen, so it is pyramidal like ammonia rather than bent like water — protonating oxygen costs it a pair and changes its shape. Its measured H–O–H angle is about 113°, flatter than ammonia\'s 107°.',
     atoms:[{ el:'O', pos:v(0,0,0), charge:1, lpDirs:[v(0,0,1)] }],
     bonds:[],
     focus:0,
@@ -252,7 +266,8 @@
       var out = [];
       for(var i=0;i<3;i++){
         var a = deg(120*i);
-        out.push({ el:'H', pos:v(0.98*0.9285*Math.cos(a), 0.98*0.9285*Math.sin(a), -0.98*0.3720) });
+        // H–O–H about 113° (infrared, Tang and Oka 1999): 15.66° from the plane
+        out.push({ el:'H', pos:v(0.98*0.9629*Math.cos(a), 0.98*0.9629*Math.sin(a), -0.98*0.2699) });
       }
       return out;
     }
@@ -305,23 +320,31 @@
   add('Ring strain', {
     id:'cyclopropane-3d', name:'Cyclopropane', formula:'C₃H₆',
     note:'Three carbons in a triangle, so the internal angles are 60° against the 109.5° an sp³ carbon wants. Click a carbon and the readout says so. Every C–H is eclipsed with its neighbor as well, which the ring cannot relieve by twisting — nothing here can move.',
-    atoms: M3.ringPoints(3, 0.87, 0).map(function(p){ return { el:'C', pos:p }; }),
-    bonds:[{a:0,b:1},{a:1,b:2},{a:2,b:0}],
-    fill:[{ at:0, h:2, len:1.09 }, { at:1, h:2, len:1.09 }, { at:2, h:2, len:1.09 }],
+    /* C–C 1.51 Å; each CH2 in the plane that bisects the ring at its carbon, at the measured H–C–H of 114.5°
+       (C–H 1.08 Å) */
+    atoms: M3.ringPoints(3, 0.872, 0).map(function(p){ return { el:'C', pos:p }; }).concat([0, 1, 2].reduce(function(o, i){
+      var a = deg(120 * i), r = v(Math.cos(a), Math.sin(a), 0), c = M3.mul(r, 0.872), h = deg(114.5 / 2);
+      o.push({ el:'H', pos:M3.add(c, M3.add(M3.mul(r, 1.08*Math.cos(h)), v(0, 0,  1.08*Math.sin(h)))) });
+      o.push({ el:'H', pos:M3.add(c, M3.add(M3.mul(r, 1.08*Math.cos(h)), v(0, 0, -1.08*Math.sin(h)))) });
+      return o;
+    }, [])),
+    bonds:[{a:0,b:1},{a:1,b:2},{a:2,b:0},{a:0,b:3},{a:0,b:4},{a:1,b:5},{a:1,b:6},{a:2,b:7},{a:2,b:8}],
     focus:0
   });
 
   add('Ring strain', {
     id:'cyclohexane-boat-3d', name:'Cyclohexane (boat)', formula:'C₆H₁₂',
     note:'The conformation the chair is better than. Put it next to the chair and look along the ring: two carbons point the same way at the "prow" and "stern", their hydrogens crowd into each other, and two C–C bonds are fully eclipsed. About 7 kcal/mol worse, and the ring flip never stops here.',
-    atoms: [
-      { el:'C', pos:v( 1.25, 0.75, 0.00) }, { el:'C', pos:v( 0.00, 1.45, 0.65) },
-      { el:'C', pos:v(-1.25, 0.75, 0.00) }, { el:'C', pos:v(-1.25,-0.75, 0.00) },
-      { el:'C', pos:v( 0.00,-1.45, 0.65) }, { el:'C', pos:v( 1.25,-0.75, 0.00) }
-    ],
+    /* the ideal chair with one end carbon (atom 0) reflected through the plane of carbons 1, 2, 4 and 5: every
+       bond length and angle stays exactly tetrahedral, and carbons 0 and 3 become the flagpole ends */
+    atoms: M3.ringPoints(6, 1.4425, 1.4425 / (4 * Math.SQRT2)).map(function(p, i){
+      if(i !== 0) return { el:'C', pos:p };
+      var r = 1.4425, h = r / (4 * Math.SQRT2), n = M3.norm(v(2 * h / r, 0, 1)), d = p.x * n.x + p.y * n.y + p.z * n.z;
+      return { el:'C', pos:M3.sub(p, M3.mul(n, 2 * d)) };
+    }),
     bonds:[{a:0,b:1},{a:1,b:2},{a:2,b:3},{a:3,b:4},{a:4,b:5},{a:5,b:0}],
     fill:[0,1,2,3,4,5].map(function(i){ return { at:i, h:2, len:1.09 }; }),
-    focus:1
+    focus:0
   });
 
   var BUILT = LIB.map(function(entry){

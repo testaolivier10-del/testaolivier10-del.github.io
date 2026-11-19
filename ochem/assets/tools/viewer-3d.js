@@ -44,6 +44,34 @@
      shape; the words say where the pair went, so "0 lone pairs" is never read as "it has none". */
   function delocalized(mol, i){ return mol && mol.id === 'formamide' && i === 2; }
 
+  /* Atoms drawn at the VSEPR model's ideal angle rather than a measured one (review round 1). Every other atom in
+     the library carries a measured angle (ammonia 107°, water 104.5°, hydronium 113°, ethene 117.4°, formaldehyde
+     116.5°, methanol's C–O–H 108.5°, dimethyl ether's C–O–C 111°, cyclopropane's H–C–H 114.5°) or one its symmetry
+     fixes (methane, BF₃, PCl₅, SF₆, CO₂, ethyne, benzene, the methyl cation). A built molecule is all model. When the
+     drawn angle is the ideal one, the picture and the line say "ideal". */
+  var MODEL = { ethane: 1, 'chiral-carbon': 1, 'cyclohexane-chair-3d': 1, 'cyclohexane-boat-3d': 1, 'methyl-anion': 1,
+    formamide: 1, methanol: [0], acetonitrile: [0], 'dimethyl-ether': [1, 2] };
+  function isModel(mol, i){
+    if(!mol) return false;
+    if(mol._model) return true;
+    var m = MODEL[mol.id];
+    return m === 1 || (!!m && m.indexOf(i) >= 0);
+  }
+  function bonded(mol, a, b){ return mol.bonds.some(function(x){ return (x.a === a && x.b === b) || (x.a === b && x.b === a); }); }
+  /* what the drawn angle is: ring (the two ends are bonded to each other, so the angle is a three membered ring's),
+     ideal (a model atom at its shape's ideal value) or measured */
+  function angleKind(mol, i, r){
+    if(!r || !r.shape || r.angle === null || !r.pair) return 'measured';
+    if(bonded(mol, r.pair.a, r.pair.b)) return 'ring';
+    if(isModel(mol, i) && Math.abs(r.angle - r.shape.ideal) < 0.6) return 'ideal';
+    return 'measured';
+  }
+  /* the angle's words, the same on the picture and at the end of the cause line */
+  function angleLabel(r){
+    if(!r || r.angle === null) return '';
+    return (r.kind === 'ideal' ? 'ideal ' : '') + fmtDeg(r.angle);
+  }
+
   /* Everything the picture and the words say about atom i, from the coordinates. pair: the two neighbors whose
      angle is drawn (the smallest at this atom). */
   function readAtom(mol, i, view){
@@ -75,6 +103,7 @@
     a.angle = best ? best.deg : null;
     a.deloc = delocalized(mol, i);
     a.name = a.shape ? a.shape.m : (NAMES[a.el] || a.el);
+    a.kind = angleKind(mol, i, a);
     return a;
   }
   /* The cause line for atom i: the count, the spread, the shape (rule 4: it is clear why). */
@@ -90,8 +119,13 @@
     if(r.deloc) out.push({ t: 'lone pair shared with C=O', role:'lp', join:'+' });
     else out.push({ t: r.lonePairs ? plural(r.lonePairs, 'lone pair') : 'no lone pairs', role:'lp', join:'+' });
     out.push({ t: r.steric + ' groups, ' + r.shape.hyb, role:'groups' });
-    out.push({ t: r.shape.m.toLowerCase() + (r.angle !== null ? ' ' + fmtDeg(r.angle) : ''), role:'shape',
-      say: r.shape.m.toLowerCase() + (r.angle !== null ? ', smallest angle ' + fmtDeg(r.angle) : '') });
+    var sm = r.shape.m.toLowerCase();
+    if(r.angle === null) out.push({ t: sm, role:'shape' });
+    else if(r.kind === 'ring')
+      out.push({ t: sm + ', the ring squeezes it to ' + angleLabel(r), role:'shape',
+        say: sm + ', but the three membered ring squeezes the angle to ' + fmtDeg(r.angle) });
+    else out.push({ t: sm + ' ' + angleLabel(r), role:'shape',
+      say: sm + ', smallest angle ' + fmtDeg(r.angle) + (r.kind === 'ideal' ? ', drawn at the ideal value' : '') });
     return out;
   }
 
@@ -149,6 +183,9 @@
     mol.atoms.forEach(function(at){ c = M3.add(c, at.pos); });
     c = M3.mul(c, 1 / mol.atoms.length);
     var best = { rx: -0.35, ry: 0.6, s: -Infinity };
+    // a three membered ring at the focus atom: its 60° is the point, so the ring opens facing the viewer
+    var ringN = null, r0 = readAtom(mol, f);
+    if(r0 && r0.kind === 'ring' && r0.pair && M3.len(r0.pair.n) > 1e-6) ringN = M3.norm(r0.pair.n);
     // the focus atom's lone pair tips count as things to keep apart too
     var pts0 = mol.atoms.map(function(at){ return { p: at.pos, r: M3.styleOf(at.el).r }; });
     if(a && a.lpDirs) a.lpDirs.forEach(function(d){ pts0.push({ p: M3.add(a.pos, M3.mul(M3.norm(d), M3.styleOf(a.el).r + 0.7)), r: 0.35 }); });
@@ -159,7 +196,8 @@
         var dd = Math.hypot(P[p].x - P[q].x, P[p].y - P[q].y) - 0.6 * (pts0[p].r + pts0[q].r);
         if(dd < mind) mind = dd;
       }
-      var sc = Math.min(mind, 0.9) + (up ? 0.5 * rotate(up, rx, ry).y : 0) + 0.04 * Math.abs(Math.sin(rx)) - 0.02 * Math.abs(rx);
+      var sc = Math.min(mind, 0.9) + (up ? 0.5 * rotate(up, rx, ry).y : 0) + 0.04 * Math.abs(Math.sin(rx)) - 0.02 * Math.abs(rx) +
+        (ringN ? 0.6 * Math.abs(rotate(ringN, rx, ry).z) : 0);
       if(sc > best.s + 1e-6) best = { rx: rx, ry: ry, s: sc };
     }
     mol._home = { rx: best.rx, ry: best.ry };
@@ -196,7 +234,7 @@
     return mol;
   }
 
-  window.OchemViewer3DModel = { readAtom: readAtom, causeParts: causeParts, priorities: priorities, config3D: config3D,
+  window.OchemViewer3DModel = { readAtom: readAtom, causeParts: causeParts, angleLabel: angleLabel, isModel: isModel, priorities: priorities, config3D: config3D,
     readTurn: readTurn, rotate: rotate, awayView: awayView, homeView: homeView, BACK: BACK, fmtDeg: fmtDeg };
 
   /* ====================================================================== */
@@ -280,7 +318,7 @@
   var btnRow = mk('div', 'v3-btns v3-ctl');
   var backBtn = mk('button', 'v3-btn', '<span>H to the back</span>'); backBtn.type = 'button';
   var resetBtn = mk('button', 'v3-btn', '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4.5h4.5"/></svg><span>Reset view</span>');
-  resetBtn.type = 'button';
+  resetBtn.type = 'button'; resetBtn.setAttribute('aria-label', 'Reset view');
   btnRow.appendChild(backBtn); btnRow.appendChild(resetBtn);
   layer.el.appendChild(btnRow);
 
@@ -312,7 +350,7 @@
   /* Drawing: one painter per molecule on screen                            */
   /* ====================================================================== */
   function Painter(g){
-    var mol = null, A = [], B = [], LP = [], arc = null, ring = null, order = [], pts = [];
+    var mol = null, A = [], B = [], LP = [], arc = null, ring = null, order = [], pts = [], sticks = [], topT = null;
     function build(m){
       while(g.firstChild) g.removeChild(g.firstChild);
       mol = prep(m); A = []; B = []; LP = []; order = [];
@@ -335,13 +373,15 @@
       });
       arc = { el: sv('path', 'v3-arc'), z: 0 };
       arc.el.setAttribute('pathLength', '1');
+      // the tapped atom's letter again, drawn over its own lone pair lobes (review round 1)
+      topT = sv('text', 'v3-al v3-al-top'); topT.style.display = 'none';
       ring = { el: sv('circle', 'v3-ring'), z: 0 };
       return mol;
     }
     /* P: { rx, ry, cx, cy, scale, mirror, style, letters, allLp, sel, selT, prev, prevT, grow, pair, showArc, arcT } */
     function draw(P){
       if(!mol) return [];
-      var c = mol._c, d = Math.max(8, 4.5 * mol._R), sc = P.scale * (P.grow == null ? 1 : P.grow);
+      var c = mol._c, d = persp(mol._R), sc = P.scale * (P.grow == null ? 1 : P.grow);
       function proj(p){
         var q = rotate(M3.sub(p, c), P.rx, P.ry, P.mirror), k = d / (d - q.z);
         return { x: P.cx + q.x * sc * k, y: P.cy - q.y * sc * k, z: q.z, k: k };
@@ -352,7 +392,8 @@
         var a = mol.atoms[i], p = pts[i];
         return space ? M3.vdwOf(a.el) * sc * p.k * 0.5 : wire ? Math.max(5, M3.styleOf(a.el).r * sc * p.k * 0.38) : M3.styleOf(a.el).r * sc * p.k * 0.98;
       }
-      var R = pts.map(function(p, i){ return rad(i); });
+      var R = pts.map(function(p, i){ var r0 = rad(i); return P.minH && mol.atoms[i].el === 'H' && !space && !wire ? Math.max(r0, P.minH) : r0; });
+      sticks = [];
       mol.atoms.forEach(function(a, i){
         var p = pts[i], o = A[i], r = R[i];
         o.c.setAttribute('cx', f1(p.x)); o.c.setAttribute('cy', f1(p.y)); o.c.setAttribute('r', f1(r));
@@ -379,6 +420,7 @@
         if(P.letters && pa.z < zb && R[o.b.a] * 0.9 >= 11) ta = Math.min(0.45, R[o.b.a] * 0.62 / L);
         if(P.letters && pb.z < zb && R[o.b.b] * 0.9 >= 11) tb = Math.min(0.45, R[o.b.b] * 0.62 / L);
         var ax = pa.x + dx * ta, ay = pa.y + dy * ta, bx = pb.x - dx * tb, by = pb.y - dy * tb;
+        sticks.push({ x1: ax, y1: ay, x2: bx, y2: by, w: n > 1 ? gap * 2 * (n - 1) + wl + 2.4 : wl + 2.4 });
         o.ls.forEach(function(l, k){
           var off = (k - (n - 1) / 2) * gap * 2;
           [l.o, l.i].forEach(function(e){
@@ -452,10 +494,23 @@
       var same = items.length === order.length;
       for(var j = 0; same && j < items.length; j++) if(items[j] !== order[j]) same = false;
       if(!same){ items.forEach(function(it){ g.appendChild(it.el); }); order = items; }
+      var si = P.sel, so = si != null ? A[si] : null, showTop = false;
+      if(so && so.t.style.display !== 'none' && P.selT > 0.02){
+        var ps2 = pts[si];
+        showTop = LP.some(function(o){ return o.at === si && o.el.style.display !== 'none' && o.z > ps2.z; }) &&
+          !pts.some(function(p, k){ return k !== si && p.z > ps2.z && Math.hypot(p.x - ps2.x, p.y - ps2.y) < R[k] + R[si] * 0.4; });
+      }
+      topT.style.display = showTop ? '' : 'none';
+      if(showTop){
+        ['x', 'y', 'font-size'].forEach(function(k){ topT.setAttribute(k, so.t.getAttribute(k)); });
+        topT.textContent = so.t.textContent; topT.setAttribute('class', so.t.getAttribute('class') + ' v3-al-top');
+        if(g.lastChild !== topT) g.appendChild(topT);
+      }
       return pts.map(function(p, i){ return { x: p.x, y: p.y, z: p.z, r: R[i] }; });
     }
     function lobes(){ return LP.filter(function(o){ return o.el.style.display !== 'none' && o.box && !o.el.classList.contains('is-dots'); }).map(function(o){ return o.box; }); }
-    return { build: build, draw: draw, mol: function(){ return mol; }, arc: function(){ return arc; }, pts: function(){ return pts; }, lobes: lobes };
+    return { build: build, draw: draw, mol: function(){ return mol; }, arc: function(){ return arc; }, pts: function(){ return pts; }, lobes: lobes,
+      sticks: function(){ return sticks; } };
   }
   var PA = Painter(gA), PB = Painter(gB);
 
@@ -474,7 +529,7 @@
     benchEdge.setAttribute('x1', 0); benchEdge.setAttribute('x2', W); benchEdge.setAttribute('y1', L.benchY + 0.5); benchEdge.setAttribute('y2', L.benchY + 0.5);
     if(S.tab === 'hand'){
       // side by side, or stacked (the mirror under the molecule): whichever gives each molecule the larger square
-      var hh = L.benchY - top;
+      var hh = L.benchY - top - (phone ? 0 : 24);
       L.side = Math.min((W - pad * 2) / 2, hh) >= Math.min(W - pad * 2, hh / 2);
       if(L.side){
         var half = (W - pad * 2) / 2, gapX = phone ? 10 : 22;
@@ -482,21 +537,29 @@
         L.mir = [pad + half + gapX * 0.4, top - 8, W - pad, L.benchY + 4];
         L.regB = [L.mir[0] + gapX, top + 10, L.mir[2] - gapX * 0.6, L.benchY - 30];
       } else {
+        // stacked: little margin between the two (review round 1: each molecule was a third of its region)
         var mid = top + (L.benchY - top) * 0.5;
-        L.regA = [pad, top, W - pad, mid - 30];
-        L.mir = [pad, mid - 6, W - pad, L.benchY + 4];
-        L.regB = [pad + 6, mid + 26, W - pad - 6, L.benchY - 22];
+        L.regA = [pad, top - 4, W - pad, mid - 10];
+        L.mir = [pad, mid - 4, W - pad, L.benchY + 4];
+        L.regB = [pad + 4, mid + 10, W - pad - 4, L.benchY - 6];
       }
     } else {
-      L.regA = [pad, top, W - pad, L.benchY - 22];
+      // on a wide stage the molecule may use the band beside the picker and the buttons, so it fills the height
+      var ctlW = Math.max(pickEl.offsetWidth || 0, btnRow.offsetWidth || 0) + 24, top1 = top, hgt = L.benchY - 6 - pad;
+      if(!phone && W - 2 * ctlW - 2 * pad >= hgt) top1 = pad;
+      L.regA = [pad, top1, W - pad, L.benchY - 6];
     }
     return L;
   }
+  /* the eye's distance (angstrom): far enough that the perspective is mild, so the ball that holds the molecule at
+     every turn is not inflated much by the nearest atom */
+  function persp(R){ return Math.max(10, 6 * R); }
   function fitIn(reg, mol, zoom, atomsOnly){
-    var w = reg[2] - reg[0], h = reg[3] - reg[1], R = atomsOnly ? mol._Ra : mol._R, d = Math.max(8, 4.5 * R), kmax = d / (d - R);
-    var rad = Math.max(40, Math.min(w, h) / 2 - 6);
-    // a real molecule should not be drawn larger than about 150 px per angstrom (water would fill a desktop wall)
-    var sc = Math.min(rad / (R * kmax), L.phone ? 150 : 210);
+    var w = reg[2] - reg[0], h = reg[3] - reg[1], R = atomsOnly ? mol._Ra : mol._R, d = persp(mol._R), kmax = d / (d - R);
+    var rad = Math.max(40, Math.min(w, h) / 2 - 3);
+    // the ball that holds the molecule at every turn fills the region's height; a cap only keeps the smallest
+    // molecules on the widest screens from turning into a wall of one ball (review round 1: 210 was too low)
+    var sc = Math.min(rad / (R * kmax), L.phone ? 190 : 320);
     return { cx: (reg[0] + reg[2]) / 2, cy: (reg[1] + reg[3]) / 2, scale: sc * (zoom || 1) };
   }
 
@@ -542,21 +605,65 @@
   function hideLabs(except){ Object.keys(labPool).forEach(function(k){ if(!except || except.indexOf(k) < 0) labPool[k].hidden = true; }); }
   function boxOf(e){ var r = e.getBoundingClientRect(), s = sceneBox.getBoundingClientRect(); return [r.left - s.left, r.top - s.top, r.right - s.left, r.bottom - s.top]; }
   function hits(a, b, g){ g = g || 0; return a[0] < b[2] + g && b[0] < a[2] + g && a[1] < b[3] + g && b[1] < a[3] + g; }
-  function ctlBoxes(){ return [pickEl, btnRow].filter(function(e){ return !e.hidden && e.offsetParent; }).map(boxOf); }
+  /* the controls' boxes, measured once per layout (reading them every frame forced a layout per frame) */
+  var ctlCache = null;
+  function ctlBoxes(){
+    if(!ctlCache || ctlCache.L !== L || ctlCache.pick !== pickEl.hidden || ctlCache.mode !== S.mode)
+      ctlCache = { L: L, pick: pickEl.hidden, mode: S.mode, b: [pickEl, btnRow].filter(function(e){ return !e.hidden && e.offsetParent; }).map(boxOf) };
+    return ctlCache.b;
+  }
+  function labW(e){ if(e._t !== e.textContent || e._W !== L.W){ e._t = e.textContent; e._W = L.W; e._w = e.offsetWidth; e._h = e.offsetHeight; } return e._w; }
   /* place a label at the first candidate point that keeps it inside the picture and clear of the boxes given;
      returns false (and hides it) when no candidate is clear */
-  function placeLab(e, cands, avoid, inside){
+  function placeLab(e, cands, avoid, inside, circ){
     if(e._t !== e.textContent || e._W !== L.W){ e._t = e.textContent; e._W = L.W; e._w = e.offsetWidth; e._h = e.offsetHeight; }
     var w = e._w, h = e._h, R0 = inside || [4, 4, L.W - 4, L.benchY + 30];
+    if(circ && circ.length > 24){
+      // only the circles the candidates can reach (a frame places a dozen labels against a few hundred circles)
+      var bx0 = Infinity, by0 = Infinity, bx1 = -Infinity, by1 = -Infinity;
+      cands.forEach(function(c){ bx0 = Math.min(bx0, c[0]); by0 = Math.min(by0, c[1]); bx1 = Math.max(bx1, c[0]); by1 = Math.max(by1, c[1]); });
+      var reach = [bx0 - w / 2, by0 - h / 2, bx1 + w / 2, by1 + h / 2];
+      circ = circ.filter(function(c){ return hitsC(reach, c, 4); });
+    }
     for(var i = 0; i < cands.length; i++){
       var x = cands[i][0] - w / 2, y = cands[i][1] - h / 2, b = [x, y, x + w, y + h];
       if(b[0] < R0[0] || b[1] < R0[1] || b[2] > R0[2] || b[3] > R0[3]) continue;
       if(avoid.some(function(a){ return hits(b, a, 4); })) continue;
+      if(circ && circ.some(function(c){ return hitsC(b, c, 4); })) continue;
       e.style.left = f1(x) + 'px'; e.style.top = f1(y) + 'px';
       return b;
     }
     e.hidden = true;
     return null;
+  }
+  /* a box against a circle { x, y, r }, with a gap */
+  function hitsC(b, c, g){
+    var dx = Math.max(b[0] - c.x, 0, c.x - b[2]), dy = Math.max(b[1] - c.y, 0, c.y - b[3]), rr = c.r + (g || 0);
+    return dx * dx + dy * dy < rr * rr;
+  }
+  /* what a label must keep off, as circles: every ball, every stick (sampled along its length) and any drawn line
+     (the angle's arc, the reading arrow) */
+  function ballCircles(pts){ return pts.map(function(p){ return { x: p.x, y: p.y, r: p.r }; }); }
+  function stickCircles(sticks){
+    var out = [];
+    sticks.forEach(function(k){
+      var L0 = Math.hypot(k.x2 - k.x1, k.y2 - k.y1), n = Math.max(1, Math.ceil(L0 / Math.max(4, k.w / 2 + 3)));
+      for(var j = 0; j <= n; j++) out.push({ x: k.x1 + (k.x2 - k.x1) * j / n, y: k.y1 + (k.y2 - k.y1) * j / n, r: k.w / 2 });
+    });
+    return out;
+  }
+  function lineCircles(P, r){
+    // a drawn line as circles no more than 4 px apart (a big arc's 25 points can be 25 px apart)
+    var out = [];
+    (P || []).forEach(function(q, k){
+      var x = q.x == null ? q[0] : q.x, y = q.y == null ? q[1] : q.y;
+      if(k){
+        var p = P[k - 1], px = p.x == null ? p[0] : p.x, py = p.y == null ? p[1] : p.y, n = Math.ceil(Math.hypot(x - px, y - py) / 4);
+        for(var j = 1; j < n; j++) out.push({ x: px + (x - px) * j / n, y: py + (y - py) * j / n, r: r });
+      }
+      out.push({ x: x, y: y, r: r });
+    });
+    return out;
   }
   function ballBoxes(pts, skip){ return pts.filter(function(p, i){ return !skip || skip.indexOf(i) < 0; }).map(function(p){ return [p.x - p.r * 0.8, p.y - p.r * 0.8, p.x + p.r * 0.8, p.y + p.r * 0.8]; }); }
 
@@ -572,8 +679,10 @@
         var sr = sceneBox.getBoundingClientRect(), pts = S.tab === 'shape' ? lastPts.shape : lastPts.hand;
         return [pickEl, btnRow].concat([].slice.call(labsEl.querySelectorAll('.v3-lab'))).filter(function(e){ return !e.hidden && e.offsetParent; })
           .map(function(e){ return e.getBoundingClientRect(); })
-          .concat(pts.map(function(p){ var r = p.r * 0.92; return { left: sr.left + p.x - r, top: sr.top + p.y - r, width: 2 * r, height: 2 * r }; }))
-          .concat(S.tab === 'shape' ? PA.lobes().map(function(b){ return { left: sr.left + b[0], top: sr.top + b[1], width: b[2] - b[0], height: b[3] - b[1] }; }) : []);
+          .concat(pts.map(function(p){ var r = p.r + 3; return { left: sr.left + p.x - r, top: sr.top + p.y - r, width: 2 * r, height: 2 * r }; }))
+          .concat(S.tab === 'shape' ? PA.lobes().map(function(b){ return { left: sr.left + b[0], top: sr.top + b[1], width: b[2] - b[0], height: b[3] - b[1] }; }) : [])
+          .concat(stickCircles(PA.sticks()).filter(function(c, k){ return k % 2 === 0; }).concat(S.tab === 'shape' && PA.arc().pts && PA.arc().el.style.display !== 'none' ? lineCircles(PA.arc().pts, 3) : [])
+            .map(function(c){ return { left: sr.left + c.x - c.r, top: sr.top + c.y - c.r, width: 2 * c.r, height: 2 * c.r }; }));
       },
       onPick: function(it, how){
         if(spotsGuard || !it) return;
@@ -609,11 +718,12 @@
       PA.build(E.mol);
       makeSpots(E.mol, spotItems1(E.mol));
       syncPicker();
-      turnEl.setAttribute('aria-label', E.mol.name + ', 3D model. Arrow keys turn it; Tab reaches each atom.');
+      turnLabel();
       refNow();
     };
     if(first || o.instant || S.tab !== 'shape'){ swap(); D.grow = 1; D.selT = 1; D.prev = null; D.ready = true; D.arcT = 1; settle(); paint(); return; }
-    // the old molecule shrinks away, the new one grows in; the words wait for it
+    // the old molecule shrinks away, the new one grows in; the words wait for it (reduced motion: a cross fade)
+    crossFade();
     D.ready = false; quietPick(null); cause.el.classList.add('is-wait');
     tween(200, function(u){ D.grow = 1 - 0.4 * u; D.fade = 1 - u; }, function(){
       swap(); D.selT = 0; D.prev = null; D.arcT = 0;
@@ -657,6 +767,7 @@
      picture). */
   function settle(){
     D.ready = true; D.selT = 1; D.arcT = 1; D.grow = 1; D.fade = 1;
+    turnLabel();
     cause.el.classList.remove('is-wait');
     words();
     // Name the shape keeps the pins hidden until Check; they come back with the answer (shown first, so the card
@@ -667,11 +778,16 @@
   }
 
   function drillHides(){ return S.mode === 'quiz' && S.part === 'predict' && !task.done; }
+  // the model's name for a screen reader; in Name the shape the molecule is not named until Check
+  function turnLabel(){
+    if(S.tab === 'hand') return;
+    turnEl.setAttribute('aria-label', (drillHides() ? 'The molecule to name' : E.mol.name) + ', 3D model. Arrow keys turn it; Tab reaches each atom.');
+  }
 
   /* the tapped atom as drawn: its angle is the one the arc shows */
   function drawnAtom(){
     var r = readAtom(E.mol, E.sel);
-    if(r && E.pair && E.pairFor === E.mol && E.pairAt === E.sel){ r.pair = E.pair; r.angle = E.pair.deg; }
+    if(r && E.pair && E.pairFor === E.mol && E.pairAt === E.sel){ r.pair = E.pair; r.angle = E.pair.deg; r.kind = angleKind(E.mol, E.sel, r); }
     return r;
   }
   function frameShape(){
@@ -696,15 +812,23 @@
     // the angle on the picture, once the arc is drawn
     var ang = labPool.ang;
     var arc = PA.arc();
-    if(D.ready && r && r.angle !== null && !hideAns && E.style !== 'space' && arc.mid){
-      var e = lab('ang', 'is-angle'); e.textContent = fmtDeg(r.angle);
+    // how much of the arc can be seen: points not under a ball drawn in front of them (no arc in sight, no number)
+    var seen = 0;
+    if(arc.pts){
+      arc.pts.forEach(function(q){ if(!pts.some(function(p){ return p.z > q.z && Math.hypot(p.x - q.x, p.y - q.y) < p.r; })) seen++; });
+      seen /= arc.pts.length;
+    }
+    arc.el.setAttribute('data-seen', seen >= 0.3 ? '1' : '0');
+    if(D.ready && r && r.angle !== null && !hideAns && E.style !== 'space' && arc.mid && seen >= 0.3){
+      var e = lab('ang', 'is-angle'); e.textContent = angleLabel(r);
       var ps = pts[E.sel], mx = arc.mid.x - ps.x, my = arc.mid.y - ps.y, ml = Math.sqrt(mx * mx + my * my), ux = ml > 3 ? mx / ml : 0, uy = ml > 3 ? my / ml : -1;
       var cands = [];
-      [18, 30, 44, 60, 78, 100, 124].forEach(function(dd){ [0, 0.5, -0.5, 1, -1, 1.6, -1.6, 2.4, -2.4, 3.14].forEach(function(t){
+      [18, 30, 44, 60, 78, 100, 124, 150, 180].forEach(function(dd){ [0, 0.5, -0.5, 1, -1, 1.6, -1.6, 2.4, -2.4, 3.14].forEach(function(t){
         var c = Math.cos(t), s = Math.sin(t), vx = ux * c - uy * s, vy = ux * s + uy * c;
         cands.push([arc.mid.x + vx * dd, arc.mid.y + vy * dd]);
       }); });
-      placeLab(e, cands, ballBoxes(pts).concat(ctlBoxes(), PA.lobes()));
+      // clear of every ball, stick, lobe and control, and of its own arc (review round 1)
+      placeLab(e, cands, ctlBoxes().concat(PA.lobes()), null, ballCircles(pts).concat(stickCircles(PA.sticks()), lineCircles(arc.pts, 3)));
     } else if(ang) ang.hidden = true;
     if(spots && spotsMol === mol) spots.place();
     lastPts.shape = pts;
@@ -719,7 +843,8 @@
     var lay = L, mol = prep(HAND), FA = fitIn(lay.regA, mol, Hd.zoom, true), FB = fitIn(lay.regB, mol, Hd.zoom, true);
     var s = Math.min(FA.scale, FB.scale);
     var mirror = lay.side ? 'x' : 'y';
-    var base = { rx: Hd.rx, ry: Hd.ry, style: E.style === 'space' ? 'ball' : E.style, letters: true, allLp: false, sel: null, selT: 0, prev: null, prevT: 0, grow: 1 };
+    // the H is the atom this tab asks for: never smaller than its letter needs (11 px or more)
+    var base = { rx: Hd.rx, ry: Hd.ry, style: E.style === 'space' ? 'ball' : E.style, letters: true, allLp: false, sel: null, selT: 0, prev: null, prevT: 0, grow: 1, minH: 13 };
     var ptsA = PA.draw(Object.assign({}, base, { cx: FA.cx, cy: FA.cy, scale: s }));
     var ptsB = PB.draw(Object.assign({}, base, { cx: FB.cx, cy: FB.cy, scale: s, mirror: mirror }));
     lastPts.hand = ptsA; lastPts.handB = ptsB;
@@ -747,7 +872,7 @@
     handRead = { back: back, a: rA, b: rB };
 
     // the reading arrows (only while the H is at the back), the priority numbers, the names
-    var avoid = ctlBoxes(), placed = [];
+    var avoid = ctlBoxes(), placed = [], arrowCirc = [];
     function arrowFor(pts, rd, key){
       var path = arrows[key];
       var cx = pts[c].x, cy = pts[c].y, th = [0, 1, 2].map(function(k){ return Math.atan2(pts[pr[k]].y - cy, pts[pr[k]].x - cx); });
@@ -759,6 +884,9 @@
       var p0 = [cx + rad * Math.cos(a0), cy + rad * Math.sin(a0)], p1 = [cx + rad * Math.cos(a1), cy + rad * Math.sin(a1)];
       path.style.display = '';
       path.setAttribute('d', 'M' + f1(p0[0]) + ',' + f1(p0[1]) + 'A' + f1(rad) + ',' + f1(rad) + ' 0 ' + (tot > Math.PI ? 1 : 0) + ' ' + (cw ? 1 : 0) + ' ' + f1(p1[0]) + ',' + f1(p1[1]));
+      // the arrow's path, for the labels to keep off (its head a little wider)
+      var n = Math.max(6, Math.ceil(rad * tot / 6));
+      for(var j = 0; j <= n; j++){ var aj = a0 + (cw ? 1 : -1) * tot * j / n; arrowCirc.push({ x: cx + rad * Math.cos(aj), y: cy + rad * Math.sin(aj), r: j === n ? 7 : 3 }); }
       if(!handDrawn[key]){
         path.classList.remove('is-in');
         if(!K.reduced()){ void path.getBoundingClientRect(); requestAnimationFrame(function(){ path.classList.add('is-in'); }); }
@@ -766,8 +894,13 @@
       }
       handDrawn[key] = true;
     }
-    if(back){ arrowFor(ptsA, rA, 'a'); arrowFor(ptsB, rB, 'b'); }
+    if(back){
+      // the letters wait for the arrows to draw in (review round 1), as the words wait for the picture elsewhere
+      if(!handDrawn.a && !K.reduced()){ cfgWait = true; clearTimeout(cfgWaitT); cfgWaitT = setTimeout(function(){ cfgWait = false; if(S.tab === 'hand') paint(); }, 340); }
+      arrowFor(ptsA, rA, 'a'); arrowFor(ptsB, rB, 'b');
+    }
     else { handDrawn.a = handDrawn.b = false; arrows.a.style.display = 'none'; arrows.b.style.display = 'none'; }
+    var handCirc = ballCircles(ptsA).concat(ballCircles(ptsB), stickCircles(PA.sticks()), stickCircles(PB.sticks()), arrowCirc);
     // priority numbers beside each group, on both
     [[ptsA, 'A'], [ptsB, 'B']].forEach(function(pp){
       var pts = pp[0];
@@ -776,10 +909,11 @@
         var p = pts[ai], vx = p.x - pts[c].x, vy = p.y - pts[c].y, l = Math.hypot(vx, vy);
         if(l < 4){ vx = 0.7; vy = -0.7; l = 1; }
         var ux = vx / l, uy = vy / l, cands = [];
-        [p.r + 13, p.r + 22, p.r + 32].forEach(function(dd){ [0, 0.6, -0.6, 1.2, -1.2, 2, -2].forEach(function(t){
+        [p.r + 13, p.r + 20, p.r + 28, p.r + 38, p.r + 50].forEach(function(dd){ [0, 0.6, -0.6, 1.2, -1.2, 2, -2, 2.7, -2.7].forEach(function(t){
           var cs = Math.cos(t), sn = Math.sin(t); cands.push([p.x + (ux * cs - uy * sn) * dd, p.y + (ux * sn + uy * cs) * dd]);
         }); });
-        var b = placeLab(e, cands, ballBoxes(pts).concat(avoid, placed));
+        // clear of both molecules' balls and sticks and both reading arrows (review round 1)
+        var b = placeLab(e, cands, avoid.concat(placed), null, handCirc);
         if(b) placed.push(b);
       });
     });
@@ -789,23 +923,26 @@
       pts.forEach(function(p){ y1 = Math.max(y1, p.y + p.r); y0 = Math.min(y0, p.y - p.r); xa = Math.min(xa, p.x - p.r); xb = Math.max(xb, p.x + p.r); });
       var cx = (xa + xb) / 2;
       var nm = lab('nm' + pp[1], 'is-name'); nm.textContent = pp[4];
-      var bn = placeLab(nm, [[cx, y1 + 18], [cx, y1 + 30], [cx, y0 - 18], [xb + nm.offsetWidth / 2 + 10, (y0 + y1) / 2], [xa - nm.offsetWidth / 2 - 10, (y0 + y1) / 2]], ballBoxes(pts).concat(avoid, placed));
+      var bn = placeLab(nm, [[cx, y1 + 18], [cx, y1 + 30], [cx, y0 - 18], [cx, y0 - 30], [xb + labW(nm) / 2 + 10, (y0 + y1) / 2], [xa - labW(nm) / 2 - 10, (y0 + y1) / 2]], avoid.concat(placed), null, handCirc);
       if(bn) placed.push(bn);
       var cf = lab('cf' + pp[1], 'is-cfg');
+      cf.classList.toggle('is-wait', back && cfgWait);
       if(back){
         cf.textContent = pp[2].cfg;
-        var bc = placeLab(cf, [[xb + 30, (y0 + y1) / 2], [xa - 30, (y0 + y1) / 2], [xb + 30, y0 + 20], [xa - 30, y0 + 20], [cx, y0 - 26], [cx + 70, y1 + 18], [cx - 70, y1 + 18]], ballBoxes(pts).concat(avoid, placed));
+        var bc = placeLab(cf, [[xb + 30, (y0 + y1) / 2], [xa - 30, (y0 + y1) / 2], [xb + 30, y0 + 20], [xa - 30, y0 + 20], [cx, y0 - 26], [cx + 70, y1 + 18], [cx - 70, y1 + 18], [xb + 30, y1 - 20], [xa - 30, y1 - 20]], avoid.concat(placed), null, handCirc);
         if(bc) placed.push(bc);
       } else cf.hidden = true;
     });
-    if(spots && spotsMol === HAND){ spots.items.forEach(function(it, i){ it.at[0] = [ptsA[i].x, ptsA[i].y]; }); spots.place(); }
+    // the invisible keyboard pins follow the atoms once a drag ends (placing them reads the layout every frame)
+    if(spots && spotsMol === HAND){ spots.items.forEach(function(it, i){ it.at[0] = [ptsA[i].x, ptsA[i].y]; }); if(!drag || !drag.moved) spots.place(); }
 
     return ptsA;
   }
-  var handDrawn = { a: false, b: false }, arrows = {};
+  var handDrawn = { a: false, b: false }, arrows = {}, cfgWait = false, cfgWaitT = 0;
   ['a', 'b'].forEach(function(k){ var p = sv('path', 'v3-read', gOver); p.setAttribute('pathLength', '1'); p.setAttribute('marker-end', 'url(#v3m-arrow)'); p.style.display = 'none'; arrows[k] = p; });
   function handWords(){
     var r = handRead; if(!r) return;
+    cause.el.classList.toggle('is-wait', !!(r.back && cfgWait));
     if(r.back){
       cause.set([{ t:'H at the back', role:'h' }, { t:'1 → 2 → 3 ' + (r.a.turn === 'cw' ? 'clockwise' : 'counterclockwise'), role:'dir', join:'+',
         say: 'one, two, three turns ' + (r.a.turn === 'cw' ? 'clockwise' : 'counterclockwise') }, { t: r.a.cfg, role:'cfg' }, { t:'mirror image ' + r.b.cfg, role:'cfg', join:'+' }]);
@@ -836,7 +973,13 @@
 
   function words(){
     if(S.tab !== 'shape') return;
-    if(drillHides()){ cause.set([{ t:'Name the shape of the ringed atom', role:'ink' }]); return; }
+    if(drillHides()){
+      // the question, never the answer (review round 1: this kept the last Explore line)
+      cause.set([{ t:'Name the shape of the ringed atom', role:'ink' }]);
+      var fa = E.mol.atoms[E.sel];
+      say('Name the shape: the ringed atom is ' + (fa ? (NAMES[fa.el] || fa.el) : 'an atom') + ' in a molecule. Turn the model with the arrow keys to see it.');
+      return;
+    }
     var r = drawnAtom();
     cause.set(causeParts(r));
     say((E.mol.name ? E.mol.name + ', ' : '') + (r ? (NAMES[r.el] || r.el) + ': ' : '') + cause.text());
@@ -857,6 +1000,8 @@
   var ptrs = {}, drag = null, pinch = null;
   sceneBox.addEventListener('pointerdown', function(e){
     if(e.target.closest('.v3-ctl') || e.target.closest('.tk2-cue') || e.button > 0) return;
+    // a mouse drag turns the model; it never selects the page's text (review round 1)
+    if(e.pointerType === 'mouse') e.preventDefault();
     ptrs[e.pointerId] = [e.clientX, e.clientY];
     var ids = Object.keys(ptrs);
     if(ids.length === 2){
@@ -888,7 +1033,7 @@
     if(pinch){ if(Object.keys(ptrs).length < 2) pinch = null; return; }
     if(!drag || drag.id !== e.pointerId) return;
     var was = drag; drag = null; sceneBox.classList.remove('is-drag');
-    if(was.moved){ sync(); rePair(); return; }
+    if(was.moved){ sync(); rePair(); if(S.tab === 'hand') paint(); return; }
     if(e.type === 'pointerup') tapAt(e.clientX, e.clientY);
   }
   sceneBox.addEventListener('pointerup', endPtr);
@@ -949,7 +1094,7 @@
   var PURPOSE = { shape:'See how electron groups set each atom’s shape', hand:'Turn the H to the back to read R or S' };
   function setTab(v, user){
     if(v !== 'shape' && v !== 'hand') v = 'shape';
-    stopTweens(true);
+    stopTweens(true); clearTimeout(cfgWaitT); cfgWait = false;
     S.tab = v; tabs.value(v);
     stage.setAttribute('data-tab', v);
     head.purpose(PURPOSE[v]);
@@ -961,7 +1106,7 @@
       PA.build(E.mol); makeSpots(E.mol, spotItems1(E.mol)); PB.build(HAND); gB.style.display = 'none';
       D.selT = 1; D.prev = null; D.ready = true; D.arcT = 1; D.grow = 1; D.fade = 1;
       cause.el.classList.remove('is-wait');
-      turnEl.setAttribute('aria-label', E.mol.name + ', 3D model. Arrow keys turn it; Tab reaches each atom.');
+      turnLabel();
       paint(); words(); if(!drillHides()) quietPick('a' + E.sel);
     } else {
       PA.build(HAND); PB.build(HAND); handDrawn = { a: false, b: false };
@@ -1068,7 +1213,7 @@
       '<p><span class="v3-sw is-lp"></span><b>Amber lobes:</b> its lone pairs, two electrons each. They push like a bond (a little harder) but are not part of the shape\'s name.</p>' +
       '<p><span class="v3-sw is-shape"></span><b>The arc:</b> the smallest bond angle at that atom, measured from the coordinates drawn. Every angle is under "This atom".</p>' +
       '<p><span class="v3-sw is-cfg"></span><b>Handedness:</b> priorities go by atomic number (Br 1, Cl 2, F 3, H 4). With the H pointing away from you, 1 → 2 → 3 clockwise is R and counterclockwise is S. A mirror reverses the turn, so the mirror image is the other one.</p>' +
-      '<p>Ball sizes are drawing sizes, chosen so hydrogens stay visible; Space-filling uses the real van der Waals sizes. Ammonia (107°), water (104.5°) and dimethyl ether (C–O–C 111°) carry measured angles. The others are drawn with an idealized angle: hydronium and the methyl anion like ammonia, and ethene and formaldehyde at 120° (their real H–C–H angles are a few degrees smaller). A molecule you build gets the ideal angle for each shape.</p>' +
+      '<p>Ball sizes are drawing sizes, chosen so hydrogens stay visible; Space-filling uses the real van der Waals sizes. Most angles drawn are measured ones: ammonia 107°, water 104.5°, hydronium about 113°, ethene 117.4° and formaldehyde about 116.5° (H–C–H), methanol 108.5° (C–O–H), dimethyl ether 111° (C–O–C) and cyclopropane 114.5° (H–C–H). Methane, BF₃, PCl₅, SF₆, CO₂, ethyne, benzene and the methyl cation have the angles their symmetry sets. Where no measured angle is drawn (ethane, the stereocenter, the chair and the boat, the methyl anion, formamide, the methyl groups), the number says <b>ideal</b>: that atom is drawn at the model\'s ideal angle, and the real molecule is off by a degree or two. A molecule you build is drawn at the ideal angles.</p>' +
     '</div></details>');
   function refNow(){
     var el = byId('v3RefNow'); if(!el) return;
@@ -1111,6 +1256,15 @@
           }).join('') + '</tbody></table></div>';
         if(ideal !== null && a.angles[0].deg - ideal < -1.2 && a.lonePairs){
           html += '<p class="tmuted" style="margin-top:10px;">Every angle here is under the ideal ' + ideal + '°. A lone pair is held by one nucleus instead of shared between two, so it spreads out closer to the atom and squeezes the bonding pairs together. Two lone pairs squeeze harder than one.</p>';
+        }
+        if(ideal === 120 && !a.lonePairs && !a.deloc && a.angles[0].deg < 119){
+          html += '<p class="tmuted" style="margin-top:10px;">The double bond holds four electrons, so it pushes a little harder than a single bond and the two single bonds close to ' + fmtDeg(a.angles[0].deg) + ', under the ideal 120°.</p>';
+        }
+        if(a.kind === 'ideal'){
+          html += '<p class="tmuted" style="margin-top:10px;">This atom is drawn at the model\'s ideal angle; no measured angle is drawn for it.</p>';
+        }
+        if(a.kind === 'ring'){
+          html += '<p class="tmuted" style="margin-top:10px;">Four groups would spread to 109.5°, but three carbons in a ring can only meet at 60°. That squeeze is the ring strain; the hydrogens open out to 114.5°.</p>';
         }
         if(shape && shape.e === 'Trigonal bipyramidal'){
           html += '<p class="tmuted" style="margin-top:10px;">The arc shows the smallest angle, 90° between an axial and an equatorial bond. The three equatorial bonds are 120° apart.</p>';
@@ -1177,6 +1331,7 @@
         if(r.error){ showBuildMsg('warn', r.error); return; }
         r.mol.name = st.name || 'Your molecule';
         r.mol.focus = 0;
+        r.mol._model = true;
         r.mol.note = 'Built from your drawing, so the angles are the ideal ones for each shape. The ready-made molecules carry real compressions: ammonia at 107°, water at 104.5°.';
         var typed = byId('mbText');
         var asText = typed && typed.value ? typed.value : null;
@@ -1288,7 +1443,7 @@
     E.letters = false; byId('v3Labels').checked = false;
     setMol(LIB.get(task.id), { instant: true });
     E.rx = -0.2 - Math.random() * 0.7; E.ry = Math.random() * 6.28;
-    D.ready = true; quietPick(null); words(); refNow();
+    D.ready = true; quietPick(null); turnLabel(); words(); refNow();
     crossFade(); paint();
     taskSay();
   }
@@ -1299,7 +1454,7 @@
   /* The shell's adapter calls this after every switch: mode 'explore' | 'quiz', part 'predict' | 'check' or null.
      "Name the shape" borrows the Shape picture; Explore gets back the molecule, atom, view and settings it had. */
   function onShow(mode, part){
-    stopTweens(true); tourShape.stop(); tourHand.stop(); hideCue(false);
+    stopTweens(true); clearTimeout(cfgWaitT); cfgWait = false; tourShape.stop(); tourHand.stop(); hideCue(false);
     var drill = mode === 'quiz' && part === 'predict';
     if(drill && !drillSaved) drillSaved = { mol:E.mol, sel:E.sel, rx:E.rx, ry:E.ry, letters:E.letters, allLp:E.allLp, tab:S.tab, zoom:E.zoom };
     S.mode = mode; S.part = part;
@@ -1378,7 +1533,8 @@
   if(S.mode === 'explore') showCue();
   window.OchemViewer3DModel.view = { state: function(){ return { tab: S.tab, mode: S.mode, part: S.part, mol: E.mol.id, sel: E.sel, rx: E.rx, ry: E.ry, hand: { rx: Hd.rx, ry: Hd.ry }, read: handRead, ready: D.ready, style: E.style }; },
     pts: function(){ return S.tab === 'shape' ? lastPts.shape : lastPts.hand; }, select: function(i){ selectAtom(i, 'tap'); }, setMol: function(id){ setMol(LIB.get(id), { how:'pick' }); },
-    turn: function(rx, ry){ var v = view(); v.rx = rx; v.ry = ry; paint(); }, tab: function(t){ setTab(t, true); } };
+    turn: function(rx, ry){ var v = view(); v.rx = rx; v.ry = ry; paint(); }, tab: function(t){ setTab(t, true); },
+    fit: function(){ return { L: L, R: E.mol._R, Ra: E.mol._Ra, F: L && fitIn(L.regA, E.mol, E.zoom) }; } };
 
   /* ====================================================================== */
   /* Check yourself (the page's quiz; same generator and record ids)         */

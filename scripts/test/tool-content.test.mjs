@@ -1415,13 +1415,32 @@ test('viewer-3d v2: each tapped atom is named and explained from its electron gr
   assert.equal(line('phosphorus-pentachloride'), '5 bonds | no lone pairs | 5 groups, sp³d | trigonal bipyramidal 90°');
   assert.equal(line('sulfur-hexafluoride'), '6 bonds | no lone pairs | 6 groups, sp³d² | octahedral 90°');
   // a double or triple bond is one group
-  assert.equal(line('ethene'), '3 bonds | no lone pairs | 3 groups, sp² | trigonal planar 120°');
+  // ethene and formaldehyde carry their measured H–C–H (a double bond pushes a little harder)
+  assert.equal(line('ethene'), '3 bonds | no lone pairs | 3 groups, sp² | trigonal planar 117.4°');
+  assert.equal(line('formaldehyde-3d'), '3 bonds | no lone pairs | 3 groups, sp² | trigonal planar 116.5°');
   assert.equal(line('ethyne'), '2 bonds | no lone pairs | 2 groups, sp | linear 180°');
   // formamide's flat nitrogen: the pair is shared, never "no lone pairs"
-  assert.equal(line('formamide'), '3 bonds | lone pair shared with C=O | 3 groups, sp² | trigonal planar 120°');
+  assert.equal(line('formamide'), '3 bonds | lone pair shared with C=O | 3 groups, sp² | trigonal planar ideal 120°');
   // the methyl cation and anion differ by one pair
   assert.equal(line('methyl-cation'), '3 bonds | no lone pairs | 3 groups, sp² | trigonal planar 120°');
-  assert.match(line('methyl-anion'), /^3 bonds \| 1 lone pair \| 4 groups, sp³ \| trigonal pyramidal /);
+  assert.equal(line('methyl-anion'), '3 bonds | 1 lone pair | 4 groups, sp³ | trigonal pyramidal ideal 109.5°');
+  // review round 1: measured angles, not ammonia's copied; a model atom says "ideal"; a three membered ring says so
+  assert.equal(line('hydronium'), '3 bonds | 1 lone pair | 4 groups, sp³ | trigonal pyramidal 113°');
+  assert.equal(line('methanol', 1), '2 bonds | 2 lone pairs | 4 groups, sp³ | bent 108.5°');
+  assert.equal(line('methanol', 0), '4 bonds | no lone pairs | 4 groups, sp³ | tetrahedral ideal 109.5°');
+  assert.equal(line('cyclopropane-3d'), '4 bonds | no lone pairs | 4 groups, sp³ | tetrahedral, the ring squeezes it to 60°');
+  assert.equal(line('ethane'), '4 bonds | no lone pairs | 4 groups, sp³ | tetrahedral ideal 109.5°');
+  for(const id of ['cyclohexane-chair-3d', 'cyclohexane-boat-3d']){
+    const m = LIB.get(id);
+    const all = m.atoms.map((a, i) => a.el === 'C' ? line(id, i) : null).filter(Boolean);
+    assert.equal(all.length, 6, id);
+    all.forEach(t => assert.equal(t, '4 bonds | no lone pairs | 4 groups, sp³ | tetrahedral ideal 109.5°', id));
+  }
+  // the label on the picture is the end of the line
+  for(const m of LIB.ALL){
+    const r = M.readAtom(m, m.focus);
+    if(r.shape && r.angle !== null) assert.ok(M.causeParts(r).slice(-1)[0].t.endsWith(M.angleLabel(r)), m.id);
+  }
   // an end atom has no shape of its own
   assert.equal(line('ammonia', 1), '1 bond | an end atom, no shape of its own');
   assert.equal(line('sulfur-hexafluoride', 1), '1 bond | 3 lone pairs | an end atom, no shape of its own');

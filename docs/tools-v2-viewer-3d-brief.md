@@ -95,15 +95,9 @@ direction (the arrow, R or S) green.
 7. **Plain wheel no longer zooms** (it trapped page scrolling); pinch or Ctrl and wheel does.
 8. **Handedness is read only with H within 35° of straight back,** and shown on both the molecule and its mirror.
 9. **No "R or S?" drill was added** to Test yourself; logged as a later addition.
-</content>
-</invoke>
-<invoke name="Bash">
-<parameter name="command">cd /home/claude/wt-viewer-3d && git add docs/tools-v2-viewer-3d-brief.md && git commit -qm "Tools v2 viewer-3d: design brief
 
-Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
-Claude-Session: https://claude.ai/code/session_011LrYU6oPHBYNE4ERGyPxWg" && git push -q -u origin claude/tools-v2-viewer-3d 2>&1 | tail -1
 ## Accuracy (checked 2026-11-19; ochem content always gets a check)
-- **VSEPR table and the library are unchanged** (`mol3d.js`, `mol3d-library.js`). Unit tested: the cause line of every
+- **The VSEPR table is unchanged** (`mol3d.js`); the library's coordinates changed in review round 1 (below). Unit tested: the cause line of every
   shape the table has (methane 109.5°, ammonia 107°, water 104.5°, BF₃ 120°, CO₂ and ethyne 180°, PCl₅ and SF₆ 90°,
   ethene 120°, the methyl cation flat and the anion pyramidal), a double or triple bond counted once, formamide's N
   "lone pair shared with C=O" (never "no lone pairs"), an end atom named as one, and the card naming every focus
@@ -179,3 +173,55 @@ molecule the bigger square.
 - Performance with the CPU throttled x4: p95 33 ms on a quiet machine, 50 to 67 ms when the shared machine was loaded
   (load average 10); median 16.7 ms throughout. The Handedness tab places 12 labels per frame.
 - No real phone, screen reader pass or students. No independent review yet.
+
+## Review round 1 (2026-11-19): BLOCK, fixed the same day
+Review: `/home/claude/review-viewer-3d/REVIEW.md` (R/S and VSEPR confirmed right). Fixed by a new builder on the same
+branch, after merging `claude/tools-v2-all`.
+
+Must fix:
+1. **Cyclopropane** read "tetrahedral 60°". An angle whose two ends are bonded to each other (a three membered ring)
+   now reads "tetrahedral, the ring squeezes it to 60°"; the screen reader says "but the three membered ring squeezes
+   the angle to 60°"; "?" says why (ring strain). The molecule opens with its ring facing you, so the 60° arc shows.
+2. **Labels on balls, sticks and arrows.** `placeLab` now keeps 4 px off true circles: every ball (full radius, not
+   0.8 of it), every stick (sampled along its drawn length), the angle's own arc and both reading arrows (head
+   included), on both molecules. More candidate spots per label. The card keeps off full balls, sticks and the arc.
+   The angle number shows only while at least 30% of its arc is in sight (PCl₅'s "90°" with no arc). The sweep now
+   measures these on the real shapes (balls, `.v3-bo` lines, the arc and arrow paths), 2 px clear, and that all 8
+   priority numbers show.
+3. **A mouse drag selected text.** `user-select:none` on the scene, the labels, the controls and the pins, and
+   `preventDefault` on a mouse pointerdown in the picture. The sweep drags across and off the picture and checks the
+   selection is empty.
+4. **Handedness on phones.** The H is never drawn under 13 px radius, so its letter shows at 11.7 px; the phone stage
+   is 600 px tall (was 568) and the two stacked regions have less margin. Each molecule is about 125 px across at 360
+   (was about 90 in the sweep's opening state; share of the stage 3.9% to 7.1%).
+5. **Open wall on desktop.** The cap was not what bound (ammonia's scale was 116 px per Å against a 210 cap); the
+   bounding ball already filled the region, but the region left out the band beside the picker and the buttons, the
+   perspective inflated the ball by 25%, and the margin was 6 px. Now on a wide stage the region runs from the top
+   edge to just above the bench, the eye is farther away (`persp()`, about 15%), and the cap is 320 (190 on phones).
+   Ammonia at 1440 takes 7.7% of the stage (was 5.3%), 256 px tall of 602.
+6. **Screen reader text in Name the shape** now says the question ("Name the shape: the ringed atom is Nitrogen in a
+   molecule…") and the model is "The molecule to name" until Check; the full line comes back after Check. The sweep
+   fails if the live text or the model's name holds the shape, the molecule's name, "lone pair" or "groups".
+7. **Stray tool-call text** removed from this brief.
+
+Should fix:
+- **Angles.** Measured where a solid value exists, ideal (and labelled "ideal") elsewhere; chair and boat rebuilt
+  exactly tetrahedral; see `docs/ochem-needs-author.md` v3-v2-ideal-angles for every value and source. "?" lists
+  which are which, explains ethene's and formaldehyde's 117.4° and 116.5° (a double bond pushes harder) and says when
+  an atom is drawn at the ideal angle. No Real and Model switch (rule 6).
+- **Reduced motion:** changing the molecule now cross fades.
+- **Reset view** has `aria-label` "Reset view" (its text is hidden on phones).
+- **The picker** may be as wide as the screen less 112 px on phones, so "Phosphorus pentachloride" fits at 360.
+- **The tapped atom's letter** is drawn again over its own lobes when a lobe is in front of it.
+- **S and R** fade in after the reading arrows draw (340 ms); the cause line waits, dimmed, with them.
+- **Test yourself on phones** keeps the question panel above the picture: that is the shared ochem dock layout
+  (`studio.add('dock')` in `ochem/assets/tool-shell.js`), so it is logged, not changed.
+- **Performance:** the controls' boxes were read every frame (a forced layout per frame), and the Handedness pins were
+  placed every frame of a drag; both fixed (controls measured once per layout, pins placed when the drag ends). Paint
+  cost at 1440 on Handedness fell from about 9.8 ms to about 2 ms unthrottled. With the CPU throttled x4 on a loaded
+  machine (load average 9 to 11): median 16.7 ms everywhere; p95 33 to 50 ms on Shape, 33 to 50 ms on Handedness at
+  390 and 50 to 83 ms at 1440 (was 117 to 150 under the same kind of load). Not measured on a quiet machine.
+
+Checks after the round: unit tests, `build-tool-pages --check`, `check-site`, `check-weight --check`,
+`build-apcalc --check`, `build-apmacro --check`; the sweep at all ten widths (results below).
+
