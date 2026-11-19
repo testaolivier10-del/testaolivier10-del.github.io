@@ -66,8 +66,9 @@ in a panel, and the line under it says what the part does in two short pills.
   leaves on the first tap.
 - **The label card** opens beside the pin, on the side the figure printed that label (so it reads like the figure),
   moved to the other side, above or below when that keeps its own pin, more pins and the find button clear; it never
-  leaves the picture. A leader line runs from the card to each point of the part (two points for one part when the
-  figure points twice, the skin's vascular plexus is one).
+  leaves the picture. A leader line runs from the card to each point of the part (K.spots takes two or more points for
+  one part when a figure points twice; every part here has one point: the skin's vascular plexus was given two at
+  first and one since, on its artery and vein pair).
 - **Cause line** (`K.cause`): two pills, the part's name (course colour) and what it does (ink), for example
   "Left ventricle → pumps blood to the whole body". Each "does" is a short phrase checked against the label's own
   reviewed explanation (`fn`), at most 56 characters so it fits two rows at 360 px.
@@ -127,8 +128,10 @@ button). No side panel, no dropdown. On the picture: 15 pins, one card (1 to 3 w
    stays in Labels.
 7. The plate is white in both themes (the figures are drawn on white).
 8. Leaving Test yourself during a timed practical stops its clock; it starts again from its setup.
-9. The weight budgets rise: the shared course layer 57.4 to 83 KB (the v2 kit is counted for the first time, because
-   this is the first kit page in the budget list), the A&P shell 61 to 68 KB (Explore's 6.7 KB).
+9. The weight budgets (review round 1 changed this): the v2 kit (`tool-kit2.js` and `.css`) is its own bucket,
+   `assets/course/kit2`, budget 34 KB (measured 33.0), as `assets/body3d` and `assets/video` are; the shared course layer
+   stays at 57.4 KB (56.9 measured); the A&P shell 61 to 69 KB (Explore, measured 68.7); the specimens' data file gets a
+   data budget of 6 KB (5.0 measured).
 
 ## Accuracy
 Every pin was placed where the figure's own leader line ends (traced from the label box by
@@ -206,3 +209,55 @@ with the flagship's shots: same frame, tabs, purpose line, cue and cause line.
 - Test yourself is the old layout inside the new frame (its own figure, zoom, dropdown and switch); it was not
   redesigned.
 - No real phone, no screen reader pass, no real students; the independent review is next.
+
+## Review round 1 (2026-11-18)
+The independent review (`/home/claude/review-anp-lab-practical/REVIEW.md`) blocked on four must fix items; all 70 pins and
+phrases were confirmed right and nothing dropped. Merged `origin/claude/tools-v2-all` first (its
+`check-tool-use.mjs`, both sides of the docs tables); the A&P spec decision for this tool is now 102 (Pathways took 101).
+
+Must fix:
+1. **Specimens cleaned again** (`scripts/build-lab-specimens.py`, rewritten). Each leader is found as straight segments
+   chained to its label box (plus the line followed through its bends from the box, and a few `erase` lines in the
+   data, snapped onto the line), merged so one line is one segment, with its own width measured (line, soft edge and
+   halo). Under a band each pixel takes the colours of the band's two sides (on white both sides: background); edges
+   between two colours and band crossings are filled from the drawing round them only (never from the white
+   background); an outline a line cut through is joined across it in its own colour and width; and the drawing's
+   outer outline is put back from the original under every band (dark pixels within 4 px of the background, never a
+   stub with background on two sides). Crumbs, ticks and grey ghosts left on the background are removed. Checked by
+   eye on all six at 1x in the tool and enlarged 2 to 4x against the original (shots
+   `/mnt/user-data/outputs/anp-lab-practical-v2/shots/r1-specimens/`, 1440 light and dark, 390 at 2x).
+
+Checks (round 1): A&P unit tests and `kit2-spots.test.mjs` 56 pass; `check-anp-content` 0 failing; `build-anp --check`
+clean; `check-weight --check` all 622 within budget; sweep one width per process at all ten widths, light and dark,
+160 to 231 checks each, 0 failing (now also: a miss over the drawing keeps the card and rings two pins; the cue on
+every tab's first screen); Playwright at 390, 768 and 1440, light and dark, 162 checks pass (taps, keys, find, mid
+animation frames, every tab mid swap and after, Test yourself right and wrong with their record ids, the timed
+practical stopping, reduced motion, the locked state, ten deep links, no console errors). Preview regenerated.
+2. **A miss keeps the card** (K.spots): a tap over the drawing that is near no pin keeps the card and the line and
+   rings the two nearest pins twice (`onMiss`; reduced motion: a still ring); only Escape or a tap where the tool's
+   `blank(x, y)` says the picture is empty (Lab practical: white all round the tap in the specimen's own pixels, or the
+   plate round the picture) closes it. Tested in the sweep (a real mouse or touch tap on the heart far from every pin)
+   and in `scripts/test/kit2-spots.test.mjs`.
+3. **The plate hugs the picture**: it is as wide as the picture plus padding and centred, so the stage keeps its theme
+   colour round it; the find button and the credit sit in the plate's own top and bottom padding.
+4. **Weight**: the kit has its own bucket (decision 9 above, rewritten); `assets/course` is back at 57.4 KB.
+
+Should fix:
+- On a tab change the picture fades in first; the pins fade in with it and the card and the cause line open once it
+  is drawn (about 0.24 s; reduced motion 0.06 s).
+- Tap cost: each card is measured once per part and picture width, the far fallback places are scored only when no
+  near place is clear, the halo restarts on the next frame instead of forcing a layout, and the picture and the line
+  under it are layout and paint containers (a tap re-lays out only them). CPU x4, a tap every 0.4 s: p95 frame 33 ms
+  at 390 and at 1440 (median 16.7).
+- The card is as wide as its longest line (a two line name such as "Cell body (soma)" has no empty space at its right).
+- `find()` finds nothing while an `ask()` question waits (`asking()` reports it), and a miss while asking answers
+  nothing; `scripts/test/kit2-spots.test.mjs` tests tap, miss, blank, Escape, find and ask in a real browser (skipped
+  where Playwright is not installed).
+- Sharper pictures on 2x phones: not done. OpenStax's larger originals cannot be reached from this environment (the
+  host is refused), and upscaling the 1,100 px figures adds no detail; the specimens stay at the figures' native size.
+- The brief's point count for the vascular plexus is corrected (one point).
+
+What is still not perfect: where several leaders cross busy detail (the heart's valves and chordae, the skull's
+maxilla edge, the neuron's dendrites at the top left) the fill is a soft patch rather than the original detail, and
+the outline can show a 1 to 2 px jog where a line crossed it. They no longer read as lines, dashes or ticks at the
+drawn size.

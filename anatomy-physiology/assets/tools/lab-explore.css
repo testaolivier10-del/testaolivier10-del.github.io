@@ -58,3 +58,6 @@
   .lx-lines{min-height:84px;align-items:flex-start;}
 }
 @media (prefers-reduced-motion: reduce){ .lx *{transition-duration:.12s !important;} }
+/* a tap repaints only the picture and the line under it (review round 1: tap cost on phones) */
+.lx-pic{contain:layout paint;}
+.lx-lines{contain:layout paint;}
