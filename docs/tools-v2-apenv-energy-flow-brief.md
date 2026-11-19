@@ -99,3 +99,43 @@ One colour per idea, everywhere: energy gold, heat vermillion (Okabe-Ito), a rem
 4. The pond and forest leave Explore (their pyramids are tables in "?"; their webs stay in the drills).
 5. Tiers of the pyramid are drawn in equal steps (not to scale); the heat and the gold at each step are on one
    measure; "?" says the real top would be a sliver.
+
+## Build notes (2026-11-18)
+- Files: `environmental-science/assets/tools/energy-flow.js` (`explore()` rewritten on the kit, `K.on(s)` as the
+  flagship does; the drills, their figures and the art are unchanged) and `.css` (the `efa-` block at the end);
+  `math/energy-flow.js` gains `FIELD` and `field(share)` (pure); `pages.json` `"kit2": true` and a new lede (the
+  test fixture copy updated); the tool's data `intro` and `howItWorks` reworded. Deep link `?ch=eat` / `?ch=web`.
+- Words never run ahead of the picture: a tier's kcal shows only once the gold reaches it; the cause line follows the
+  level reached; the food web's effects are named only once every animal has changed (`S.wt`); the people count in
+  the cause line is the number drawn. `data-busy` on the stage while anything moves (the sweep waits on it).
+- One measure per step (the Biology review's must fix): chapter 1, at every step 9 heat wisps each as wide as the
+  gold that goes on; the grass's 5 wisps are tenths of GPP. Chapter 2, the bands share one scale: grain, to cattle,
+  beef = 10% of it, heat = 90% (sweep checks heat = 9 × beef and 0.9 × the cattle band).
+- Reduced motion: every change lands at once with a 240 ms cross fade.
+
+### What is on screen in Explore (opening, 1440)
+Outside the picture: 3 tabs, the purpose line (9 words), "Show me how", the cause line (3 pills, 10 words). No side
+panel, no graph, no readout cards. On the picture (chapter 1): the energy knob with the cue "Drag the energy up" (first
+visit only), the quiet Sunlight knob with its value and name, 5 tier names and the grass's kcal (each tier's kcal and
+share appear as the energy reaches it), the heat wisps, "90% heat" and "10% on" at the last step reached. Chapter 2:
+the share knob and its value, "1 hectare of corn", "grain", "beef", "90% heat", "N people fed", up to 44 people and 6
+cows. Chapter 3: 8 species with names, arrows, one effect word per changed species.
+
+### Checks run
+`node --test scripts/test/apenv-*.test.mjs` (186 pass, after the fixture copy of pages.json), `check-apenv-content
+--check`, `build-apenv --check`, `check-site`, `check-weight --check`, `build-apcalc --check`, `build-apmacro --check`,
+`check-tool-use` with a local copy of its list (energy flow reports frame v2: open, touch, mode, use; nothing sent
+under automation). Sweep (`node scripts/tools-v2/apenv-energy-flow-sweep.mjs --width W`, one process per width): 15
+landmark states at 360, 390, 430, 600, 768, 820, 1024, 1280, 1440, 1920, dark at 390, 768, 1440: **15,343 passed, 0
+failed**. Playwright at 390 (real CDP touch drag), 768 and 1440 (mouse), light and dark: cue, drag, mid-climb frames,
+keyboard End and Home, Sunlight never moves the energy knob, Eat lower by keys (20 and 4 people), the web (words wait,
+take out, bring back), "?", Test yourself, back to Explore, reduced motion, `?seed=`: 110 passed; a 10% rule drill
+answered wrong ("Not yet ... count the arrows: 3") then right ("Correct"). No console errors. Shots and the contact
+sheet: `/mnt/user-data/outputs/apenv-energy-flow-v2/shots/` and `.../sweep/`; preview `.../index.html`.
+
+### Not happy with
+- No real phone, students or screen reader pass.
+- The kit's dashed groove of the energy knob runs over the gold stream; the stream reads, but it is busier than I want.
+- Chapter 2 at 10% to cattle draws no beef band (0.2 px, under the drawn minimum) while the heat plume shows.
+- The food web's tap targets are eight soft rings (the kit's tap look with the hand badges hidden): clear, but many.
+- At 1440 the people in chapter 2 are small next to the field.
