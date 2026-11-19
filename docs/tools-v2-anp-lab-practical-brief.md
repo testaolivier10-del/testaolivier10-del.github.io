@@ -262,3 +262,32 @@ What is still not perfect: where several leaders cross busy detail (the heart's 
 maxilla edge, the neuron's dendrites at the top left) the fill is a soft patch rather than the original detail, and
 the outline can show a 1 to 2 px jog where a line crossed it. They no longer read as lines, dashes or ticks at the
 drawn size.
+
+## Recheck 1 (2026-11-18)
+The independent recheck (`/home/claude/review-anp-lab-practical/REVIEW.md`, "Recheck 1") passed everything but one must
+fix: the outline repair left black marks the original figure does not have (the heart's pulmonary artery cut ends, a
+checkered blob at the left one, marks at the right wall; four on the skull's occipital outline and beside the upper
+teeth; grey blocks in the neuron's faded dendrites).
+
+- **Fix** (`scripts/build-lab-specimens.py`, new step 6 in `clean()`). The measure is the original with its lines taken
+  out (`mark_ref`): soft, each whole band inpainted from the original round it; strict, only the band's dark pixels
+  inpainted. `new_dark` marks a pixel darker by more than 40 than every pixel of the soft reference within 2 px
+  (lightness under 200), or near black (under 110) and darker than the strict one (an outline put back at an open vessel
+  end or beside a line that ran along it). A join drawn across a band (an outline carried through) stays. Each mark and
+  its soft edge take the reference's colour: white on the background (strict white joined to the edge), else the soft
+  reference, the strict one where the soft one would still be black. The guard clears with 20 of headroom so the
+  compressed pictures pass. The brain's crop lost one row (index.json and the tool data rebuilt).
+- **Check.** `build-lab-specimens.py --check` now cleans each figure again in memory for its bands and runs `new_dark`
+  on every written `.avif` and `.webp`; it lists each mark (size, place) and fails on any. On the round 1 pictures it
+  lists every mark the review named among its places (heart 60, skull 41, neuron 7, skin 24, kidney 18; the brain's
+  crop moved, so not compared); on the new ones none.
+- **By eye**, all six at 1x and 2x (marks 3 to 6x) against the original and the round 1 pictures: no black bars, blob,
+  ticks or grey blocks; the kidney's vein crossings and the skin's vessel ends are no worse. Still soft patches: the
+  heart's left pulmonary artery top corner has no outline for about 10 px (the leader ran along it), the skull's
+  occipital outline has small breaks where three leaders met it at a shallow angle, and a faint dendrite stripe stays
+  in the neuron where the line crossed it.
+- **Checks.** `--check` clean; A&P unit tests and `kit2-spots.test.mjs` 56 pass (one flaky failure on the first run,
+  clean on the rerun); `check-anp-content` 0 failing; `build-anp --check` clean; `check-weight --check` all 622 within
+  budget; sweep at 390 (231 checks) and 1440 (160), one width per process, 0 failing. Preview regenerated
+  (`node scripts/tool-preview.mjs anatomy-physiology/tools/lab-practical.html <out>/index.html --json
+  anatomy-physiology/assets/tool-data/lab-specimens.json`).

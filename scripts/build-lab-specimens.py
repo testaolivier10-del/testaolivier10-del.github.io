@@ -13,14 +13,18 @@ OpenStax figure (figures/<figure>.jpg) and its label boxes (data/labels/<figure>
      a small speck, plus a margin);
   4. makes the white background transparent: white connected to the picture's edge, with a soft one pixel edge, so
      a white part inside the drawing (teeth, valve cusps) stays white;
-  5. writes figures/specimens/<figure>.avif and .webp (WebP is the fallback for a browser without AVIF), and
+  5. leaves no dark mark the original figure does not have (step 6 in clean(): a fill, a crossing, an outline put
+     back at an open vessel end, a checkered join or a grey block darker than the original with its lines inpainted
+     out gets that colour back; --check runs the same test on every written picture);
+  6. writes figures/specimens/<figure>.avif and .webp (WebP is the fallback for a browser without AVIF), and
      figures/specimens/index.json with each crop (figure pixels) so the page can place the spots.
 
 The spots themselves (where each leader line ended) are data, set by eye: this script never moves them.
 Needs Pillow with AVIF support, NumPy and OpenCV (cv2.inpaint).
 
   python3 scripts/build-lab-specimens.py            write every specimen
-  python3 scripts/build-lab-specimens.py --check    exit 1 if a specimen picture or its crop entry is missing
+  python3 scripts/build-lab-specimens.py --check    exit 1 if a specimen picture or its crop entry is missing, or a
+                                                    picture has a dark mark its original figure does not (step 6)
   python3 scripts/build-lab-specimens.py --debug    also write /tmp/specimen-<figure>.png with the spots drawn
 """
 import json
@@ -36,6 +40,12 @@ COURSE = os.path.join(ROOT, 'anatomy-physiology')
 OUT = os.path.join(COURSE, 'figures', 'specimens')
 DATA = os.path.join(COURSE, 'data', 'tools', 'lab-specimens.json')
 MARGIN = 14
+# a specimen pixel is a new dark mark when it is darker than lightness MARK_DARK and darker by more than MARK_DROP than
+# every pixel of the original within 2 px (so the original's outline, and a leader line that was painted out, are
+# allowed; a black block on white or a grey block in a pale fill is not)
+MARK_DARK = 200
+MARK_BLACK = 110
+MARK_DROP = 40
 
 
 def load(fig):
@@ -55,6 +65,33 @@ def masks(A):
     near = cv2.dilate(core.astype(np.uint8), np.ones((5, 5), np.uint8)) > 0
     soft = (sat < 18) & ~white & ~core & near
     return white, core, soft
+
+
+def mark_ref(A, band):
+    """the original (RGB) with its lines taken out, two ways: (soft) each whole band (the line, its soft edge and the
+    light halo some figures draw round it) inpainted from the original round it; (strict) only the band's dark
+    pixels inpainted, so a line that ran along an outline or over an open vessel end leaves the light side there"""
+    import cv2
+    A8 = np.clip(A, 0, 255).astype(np.uint8)
+    soft = cv2.inpaint(A8, band.astype(np.uint8), 3, cv2.INPAINT_TELEA)
+    lum = A8.astype(np.int16).mean(2)
+    sat = A8.max(2).astype(np.int16) - A8.min(2)
+    dark = band & (lum < 170) & (sat < 90)
+    hole = (cv2.dilate(dark.astype(np.uint8), np.ones((3, 3), np.uint8)) > 0) & band
+    strict = cv2.inpaint(A8, hole.astype(np.uint8), 3, cv2.INPAINT_TELEA)
+    return soft, strict
+
+
+def new_dark(spec, refs, drop=MARK_DROP, gate=0):
+    """pixels of a specimen (RGB) that are a dark mark the original does not have: darker than every pixel of the
+    soft reference within 2 px, or near black (MARK_BLACK) and darker than every pixel of the strict one (refs from
+    mark_ref, same crop); gate raises both darkness limits. The strict test is for black only, so a mid-tone fill beside a haloed line is not judged by
+    the halo."""
+    import cv2
+    sl = spec.astype(np.float32).mean(2)
+    k = np.ones((5, 5), np.uint8)
+    soft, strict = (cv2.erode(r.astype(np.float32).mean(2), k) for r in refs)
+    return ((sl < MARK_DARK + gate) & (sl < soft - drop)) | ((sl < MARK_BLACK + gate) & (sl < strict - drop))
 
 
 def box_share(m, r):
@@ -676,6 +713,37 @@ def clean(fig, spec):
     ghost = ~sil & ((o.max(2) - o.min(2)) < 30) & (o.min(2) <= 240) & (o.min(2) > 200)
     ghost &= cv2.dilate((allband | bg).astype(np.uint8), np.ones((9, 9), np.uint8)) > 0
     out[ghost] = 255
+    # 6. no dark mark the original does not have. The measure is the original with its lines taken out (mark_ref,
+    # new_dark). A fill, a crossing, an outline put back at an open vessel end, a checkered join where a line met the
+    # outline or a grey block in a pale fill can then be no darker than that within 2 px. A join drawn across a band
+    # (bridged) is the outline itself and stays. A pixel darker by more than MARK_DROP - 20, with darkness limits 20 higher (the
+    # written pictures keep room for compression under --check's own limits), takes the soft reference's colour (the strict
+    # one on the background, or where the soft one would still be black on the strict test), with its soft edge.
+    refs = mark_ref(A, allband)
+    # the background of the strict reference (its white joined to the picture's edge): there a mark goes white, never
+    # the grey the soft reference smears out of a nearby outline
+    sw = (refs[1].min(2) > 232).astype(np.uint8)
+    ffs = np.zeros((H + 2, W + 2), np.uint8)
+    for sx, sy in ((0, 0), (W - 1, 0), (0, H - 1), (W - 1, H - 1)):
+        if sw[sy, sx]:
+            cv2.floodFill(sw, ffs, (sx, sy), 2, 0, 0, flags=4 | (255 << 8) | cv2.FLOODFILL_MASK_ONLY)
+    ref_bg = ffs[1:-1, 1:-1] > 0
+    fixed = np.zeros((H, W), bool)
+    for _ in range(4):
+        new = new_dark(out, refs, MARK_DROP - 20, 20) & ~bridged
+        if not new.any():
+            break
+        # its soft edge: anything round it darker than the reference, however light (no grey ring is left)
+        grow = cv2.dilate(new.astype(np.uint8), np.ones((7, 7), np.uint8)) > 0
+        grow &= ~bridged & new_dark(out, refs, 12, 60)
+        m = new | grow
+        black = out.astype(np.float32).mean(2) < MARK_BLACK + 20
+        # the strict colour only where the soft one would still be a mark by the strict test (a vessel end on white)
+        soft_l = refs[0].astype(np.float32).mean(2)
+        strict_e = cv2.erode(refs[1].astype(np.float32).mean(2), np.ones((5, 5), np.uint8))
+        use_strict = black & (soft_l < MARK_BLACK + 20) & (soft_l < strict_e - (MARK_DROP - 20))
+        out[m] = np.where((use_strict | ref_bg)[..., None], refs[1], refs[0])[m]
+        fixed |= m
     # 5. crop
     if spec.get('crop'):
         cx, cy, cw, ch = spec['crop']
@@ -703,7 +771,8 @@ def clean(fig, spec):
         for i in range(1, n):
             if stats[i, cv2.CC_STAT_AREA] < min(0.01 * top, 400):
                 crop[lab == i] = 255
-    DEBUG[fig] = dict(segs=segs)
+    DEBUG[fig] = dict(segs=segs, fixed=fixed[cy:cy + ch, cx:cx + cw], refs=tuple(r[cy:cy + ch, cx:cx + cw] for r in refs), allband=allband[cy:cy + ch, cx:cx + cw], back=back[cy:cy + ch, cx:cx + cw],
+                      bridged=bridged[cy:cy + ch, cx:cx + cw], crumb=crumb[cy:cy + ch, cx:cx + cw])
     return Image.fromarray(crop.astype(np.uint8), 'RGB'), [int(cx), int(cy), int(cw), int(ch)]
 
 
@@ -725,6 +794,28 @@ def main():
             if not (os.path.exists(avif) and os.path.exists(webp) and fig in index):
                 print(f'specimen {fig}: missing picture or crop (run python3 scripts/build-lab-specimens.py)')
                 bad += 1
+                continue
+            # no dark mark that the original figure does not have (each written picture, as the browser gets it);
+            # the bands and their sides come from cleaning the figure again in memory
+            import cv2
+            cx, cy, cw, ch = index[fig]['crop']
+            _, crop_ = clean(fig, sp)
+            if crop_ != index[fig]['crop']:
+                print(f'specimen {fig}: crop {crop_} differs from index.json (run python3 scripts/build-lab-specimens.py)')
+                bad += 1
+                continue
+            refs, joins = DEBUG[fig]['refs'], DEBUG[fig]['bridged']
+            for path in (avif, webp):
+                pic = np.asarray(Image.open(path).convert('RGB')).astype(np.int16)
+                if pic.shape[:2] != refs[0].shape[:2]:
+                    print(f'specimen {fig}: {os.path.basename(path)} is {pic.shape[1]} x {pic.shape[0]}, crop says {cw} x {ch}')
+                    bad += 1
+                    continue
+                n, _, st, cen = cv2.connectedComponentsWithStats((new_dark(pic, refs) & ~joins).astype(np.uint8), connectivity=8)
+                for i in range(1, n):
+                    print(f'specimen {fig}: {os.path.basename(path)} has a dark mark the original does not, '
+                          f'{st[i, cv2.CC_STAT_AREA]} px at ({int(cen[i][0])}, {int(cen[i][1])})')
+                    bad += 1
             continue
         im, crop = clean(fig, sp)
         im.save(avif, quality=62)
