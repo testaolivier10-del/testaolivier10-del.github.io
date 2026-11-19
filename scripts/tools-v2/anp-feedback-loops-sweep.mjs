@@ -114,7 +114,8 @@ for (const ws of WIDTHS) {
           const a = A.q, b = B.q, g = 4;
           if (a.left < b.right + g && a.right > b.left - g && a.top < b.bottom + g && a.bottom > b.top - g) out.over.push(A.n + ' / ' + B.n);
         }
-        // the kit's "pushed" mark: its word, when shown, clear of the knob, the scale's numbers, the bulb and every label
+        // no "before" mark at all (review recheck 2: it read as a scale tick); the monitor's trace shows where the push began
+        if (document.querySelector('.fe-pic .tk2-before:not([hidden])')) out.over.push('a "before" mark is shown');
         const bw = document.querySelector('.fe-pic .tk2-before:not([hidden]) b');
         if (bw && bw.offsetWidth && getComputedStyle(bw).display !== 'none' && !bw.hidden) {
           const a = bw.getBoundingClientRect();

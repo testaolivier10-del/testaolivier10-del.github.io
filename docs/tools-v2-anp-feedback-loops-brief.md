@@ -269,3 +269,9 @@ value starts a run with or without motion.
 Checks: sweep at 12 widths light and 360, 390, 1440 dark, 0 failures; frame test at 1440, 390 and 360, 19,800 frames,
 0 failures; quiz test 84 checks, 0 failures; A&P tests 55 pass, content check 0 failing, `build-anp --check` clean,
 `check-site` OK, `check-weight` within budget; no conflict markers; preview regenerated.
+
+## Recheck 2 (2026-11-19, PASS; its note done before the merge)
+
+The bare "before" tick is gone. Hidden during the run, it appeared only once the run ended, alone, and read as one of
+the scale's ticks; the monitor's trace already shows where the push began. The tool no longer sets the kit's before
+mark (`beforeLabel` and `handle.before(v)` removed, the kit unchanged), and the sweep fails if one shows.

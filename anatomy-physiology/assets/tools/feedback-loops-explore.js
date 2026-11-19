@@ -1123,7 +1123,7 @@
       if(handle){ handle.el.remove(); handle = null; }
       var sc = cur;
       handle = K.handle(layer, { key: 'anp-loops-knob', label: sc.kind === 'pos' ? 'Push the baby’s head down onto the cervix' : 'Body ' + (sc.id === 'glucose' ? 'blood glucose' : 'temperature') + ': drag it off the set point',
-        value: sc.x, min: sc.min, max: sc.kind === 'pos' ? sc.max : sc.max, step: sc.step, chip: false, beforeLabel: 'pushed',
+        value: sc.x, min: sc.min, max: sc.kind === 'pos' ? sc.max : sc.max, step: sc.step, chip: false,
         at: function(v){ var st = lastSt || { x: v }; var q = sc.knobAt(E.L, v, st.born || 0); return [q[0] - (E.X0 || 0), q[1]]; },
         dir: function(){ return 90; },
         pick: function(x, y, v){ x += E.X0 || 0; var nv = sc.pick(E.L, x, y); if(sc.kind === 'pos'){ var lo = sc.run ? lastSt.x : 0; nv = clamp(nv, lo, Math.max(lo, sc.push)); } return clamp(nv, sc.min, sc.max); },
@@ -1184,7 +1184,8 @@
       if(sc.kind === 'pos') sc.run = posPlan(v);
       else sc.run = { d: v - sc.set, s: v > sc.set ? 1 : -1, x0: v };
       sc.t = 0; sc.after = null; sc.endRun = null;
-      if(handle && sc.kind === 'neg') handle.before(v);
+      // no "before" mark: hidden during the run, it showed only at the end, alone, like one of the scale's ticks; the
+      // monitor's trace already shows where the push began (review recheck 2)
       if(K.reduced() || !onScreen){ fadeOut(); sc.t = endT(); finishRun(); return; }
       last = 0; stopRaf(); raf = requestAnimationFrame(tick);
       draw();
@@ -1269,7 +1270,6 @@
       tabs.value(sc.id); head.purpose(sc.purpose);
       main.setAttribute('data-scene', sc.id);
       layout(); metrics(); ctrlDirty(); buildArt(); makeHandle(); draw(); refHtml();
-      if(sc.endRun && handle) handle.before(sc.endRun.x0);
       if(user){ try{ history.replaceState(null, '', location.pathname + location.search + '#explore/' + sc.id); }catch(e){} say(sc.tab + '. ' + words(state()).text); }
       if(cue && cue.active()){ cue.hide(false); makeCue(); }
     }
