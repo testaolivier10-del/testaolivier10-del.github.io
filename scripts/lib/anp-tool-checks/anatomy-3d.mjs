@@ -141,6 +141,8 @@ export function check(data, map) {
     }
     const f = data.structures.find(x => x.id === t.first);
     if (!f || !(t.systems || []).includes(f.system)) E(`${at}: first "${t.first}" is not a structure on this tab`);
+    for (const id of t.frame || []) { const x = data.structures.find(y => y.id === id); if (!x || !(t.systems || []).includes(x.system)) E(`${at}: frame "${id}" is not a structure on this tab`); }
+    if (t.dir && !(Array.isArray(t.dir) && t.dir.length === 3 && t.dir.every(Number.isFinite))) E(`${at}: dir must be three numbers`);
   }
   return errs;
 }

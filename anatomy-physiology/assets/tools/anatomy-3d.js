@@ -635,7 +635,7 @@
     var cv = view.querySelector('canvas'); if(cv) cv.style.height = '';
     setTimeout(function(){ window.dispatchEvent(new Event('resize')); }, 0);
     if(!viewer) return;
-    viewer.flyOnSelect(true);
+    viewer.set({ selectFly: true, fadeOthers: 0 });
     if(!qChosen){
       qChosen = true;
       // the first visit opens a quiz round on the region Explore showed (unless a link chose a filter)

@@ -1,7 +1,7 @@
 {
  "about": "Content for the A&P 3D anatomy tool (anatomy-physiology/tools/anatomy-3d.html). Each structure is one or more meshes of the shared BodyParts3D model (assets/body3d/body3d.glb), named by FMA id; every name was checked against the BodyParts3D 4.0 concept tables and the FMA. parts: the meshes; partNames: what each mesh is when it is tapped; context: meshes drawn but never named because their identity could not be confirmed. Validated by scripts/lib/anp-tool-checks/anatomy-3d.mjs.",
  "explore": {
-  "about": "Explore (tools v2, docs/tools-v2-anp-anatomy-3d-brief.md): one tab per region. systems: the body systems in play on that tab (the rest stay as a faint ghost for orientation); first: the structure named when the tab first opens; purpose: the line above the picture. A structure's at is where it is, in a few words, for the line under the picture (at most 50 characters).",
+  "about": "Explore (tools v2, docs/tools-v2-anp-anatomy-3d-brief.md): one tab per region. systems: the body systems in play on that tab (the rest stay as a faint ghost for orientation); first: the structure named when the tab first opens; frame (optional): the structures the camera frames, when not all of the tab's; dir (optional): the side the camera looks from ([x, y, z], default the front); purpose: the line above the picture. A structure's at is where it is, in a few words, for the line under the picture (at most 50 characters).",
   "tabs": [
    {
     "id": "skeleton",
@@ -22,6 +22,11 @@
      "senses"
     ],
     "first": "cerebellum",
+    "dir": [
+     1,
+     -0.35,
+     0.15
+    ],
     "purpose": "Find each brain part inside the head"
    },
    {
@@ -32,6 +37,14 @@
      "cardiovascular"
     ],
     "first": "aortic-arch",
+    "frame": [
+     "heart-wall",
+     "ascending-aorta",
+     "aortic-arch",
+     "superior-vena-cava",
+     "pulmonary-arteries",
+     "pulmonary-veins"
+    ],
     "purpose": "Find each heart part and great vessel in the chest"
    },
    {
@@ -47,7 +60,7 @@
    {
     "id": "abdomen",
     "label": "Abdomen and pelvis",
-    "short": "Belly",
+    "short": "Abdomen",
     "systems": [
      "digestive",
      "lymphatic",
@@ -2163,7 +2176,7 @@
    ],
    "what": "The bean-shaped organs that filter the blood and make urine.",
    "where": "Against the back wall of the abdomen, behind the peritoneum (retroperitoneal), from about T12 to L3.",
-   "at": "the back wall of the abdomen, T12 to L3",
+   "at": "the back wall of the abdomen, about T12 to L3",
    "features": "The right kidney sits a little lower because the liver is above it. Vessels and the ureter enter and leave at the hilum on its medial side.",
    "related": [
     "ureters",

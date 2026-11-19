@@ -24,7 +24,7 @@
      v.setSystems(['cardio']); v.setSkin(false); v.structures(); v.info(key); v.on('select', fn);
      v.setOnly(['Heart','Aorta']) / null; v.inPlay(name); v.marks({ Heart: 'good' }); v.tag('Heart') / null
      v.hunt({ panel, live, onAnswer, onStop }).start() / .stop() / .active()
-     v.project('Heart') -> { x, y, r, front } | null   where a structure's middle is drawn, in px from the
+     v.project('Heart') -> { x, y, r, front, box } | null   where a structure's middle is drawn, in px from the
        canvas's top left (r: about half its drawn size; front: false when it is behind the camera)
      v.flying() -> true while the camera is still travelling to a selection (a card waits for it)
      v.offset(px)   draw everything px higher (a panel docked over the picture's foot); 0 restores
@@ -36,8 +36,12 @@
      opts.selectFly: false   a selection glows where it is; the camera stays (a tap again lets go, no fly home)
      opts.poster: { light, dark }   a still of the opening view (transparent, the canvas's full height) shown while
                         the model loads, then cross faded to the live body
+     opts.fadeOthers: 0.45   with a part selected, the other organs and vessels in play fade to this opacity (default 0.1);
+                        the region stays readable round the part
+     v.frame(names, pad, dir)   pad: room round them (default 1.15); dir: [x, y, z] from them to the camera (default
+                        the front, [0, -1, 0.12]; [1, -0.35, 0.15] looks at the left side)
      v.settling() -> true while the camera travels or a look is still easing (a card waits for both)
-     v.flyOnSelect(on)   the selectFly option, changed later
+     v.set({ selectFly, fadeOthers })   change those two options later
      v.project(name, part)   with a mesh name (FMA id) of that structure: where that one piece is drawn (the bone
                         that was tapped, of a pair or a set)
 
@@ -751,7 +755,7 @@
           m.material.depthWrite = !m.userData.baseTransparent;
         } else if (selectedGroupKey) {
           m.material.transparent = true;
-          m.material.opacity = FADE_OPACITY;
+          m.material.opacity = opts.fadeOthers > 0 ? +opts.fadeOthers : FADE_OPACITY;
           m.material.depthWrite = false;
         } else {
           m.material.transparent = m.userData.baseTransparent;
@@ -1084,7 +1088,7 @@
       /* Canvas picks select (explore) or only report (a quiz). */
       setPickSelects(on){ pickSelects = !!on; },
       /* Fly to frame several structures (null: the whole body). */
-      frame(names){
+      frame(names, pad, dir){
         if (!camera) return;
         if (!names) { animateCamera(new L.THREE.Vector3(...HOME_POS), new L.THREE.Vector3(...HOME_TARGET), 650); return; }
         const box = new L.THREE.Box3(); let has = false;
@@ -1097,7 +1101,15 @@
         const c = new L.THREE.Vector3(), sz = new L.THREE.Vector3(); box.getCenter(c); box.getSize(sz);
         const aspect = canvas.clientWidth / Math.max(1, canvas.clientHeight);
         const need = Math.max(sz.z, sz.x / Math.max(aspect, 0.3)) * 0.5 / Math.tan(16 * Math.PI / 180);
-        const dist = Math.min(Math.max(need * 1.15, 220), 3200);
+        const dist = Math.min(Math.max(need * (pad || 1.15), 220), 3200);
+        if (dir) {
+          const d = new L.THREE.Vector3(dir[0], dir[1], dir[2]).normalize();
+          // seen from the side the box's depth is its width on screen
+          const side = Math.abs(d.x) > Math.abs(d.y) ? Math.max(sz.z, sz.y / Math.max(aspect, 0.3)) * 0.5 / Math.tan(16 * Math.PI / 180) : need;
+          const dd = Math.min(Math.max(side * (pad || 1.15), 220), 3200);
+          animateCamera(c.clone().addScaledVector(d, dd), c, 650);
+          return;
+        }
         animateCamera(new L.THREE.Vector3(c.x, c.y - dist, c.z + dist * 0.12), c, 650);
       },
       /* Where a structure is drawn now (css px from the canvas's top left), or null before the model is in. */
@@ -1123,12 +1135,20 @@
         const w = canvas.clientWidth, h = canvas.clientHeight;
         const side = new L.THREE.Vector3().setFromMatrixColumn(camera.matrixWorld, 0).multiplyScalar(Math.min(b.size.length() * 0.35, 400));
         const e = at.clone().add(side).project(camera);
-        return { x: (v.x + 1) / 2 * w, y: (1 - v.y) / 2 * h, r: Math.abs(e.x - v.x) / 2 * w, front: v.z <= 1 };
+        /* box: the whole structure's drawn extent (every piece of a pair), [x0, y0, x1, y1] px, so a card can keep off all of it */
+        const gb = groupBounds(k), lo = gb.center.clone().addScaledVector(gb.size, -0.5), x = [Infinity, Infinity, -Infinity, -Infinity];
+        for (let i = 0; i < 8; i++) {
+          const q = new L.THREE.Vector3(lo.x + (i & 1 ? gb.size.x : 0), lo.y + (i & 2 ? gb.size.y : 0), lo.z + (i & 4 ? gb.size.z : 0)).project(camera);
+          const qx = (q.x + 1) / 2 * w, qy = (1 - q.y) / 2 * h;
+          x[0] = Math.min(x[0], qx); x[1] = Math.min(x[1], qy); x[2] = Math.max(x[2], qx); x[3] = Math.max(x[3], qy);
+        }
+        return { x: (v.x + 1) / 2 * w, y: (1 - v.y) / 2 * h, r: Math.abs(e.x - v.x) / 2 * w, front: v.z <= 1, box: x };
       },
       flying(){ return !!flyAnim; },
       settling(){ return !!flyAnim || !!tween; },
-      /* selectFly, changed after mount (one viewer, two screens: Explore keeps the camera, Test yourself flies) */
-      flyOnSelect(on){ opts.selectFly = !!on; },
+      /* selectFly and fadeOthers, changed after mount (one viewer, two screens: Explore keeps the camera and the
+         region readable, Test yourself flies to a part and fades the rest, as before) */
+      set(o){ if (o && 'selectFly' in o) opts.selectFly = o.selectFly; if (o && 'fadeOthers' in o) opts.fadeOthers = o.fadeOthers; },
       /* Move what is drawn up by px (a panel docked over the picture's foot): the camera's view slides, so picking,
          project() and the drawing agree. 0 puts it back. */
       offset(px){ viewOffY = Math.max(0, +px || 0); applyOffset(); },

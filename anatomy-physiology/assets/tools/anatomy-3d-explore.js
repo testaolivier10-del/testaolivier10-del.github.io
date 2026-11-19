@@ -34,7 +34,7 @@
     var tabOfSys = {}; TABS.forEach(function(t){ t.systems.forEach(function(k){ tabOfSys[k] = t; }); });
     var pref = load(), picks = pref.picks || {};
     var cur = TABS.filter(function(t){ return t.id === pref.tab; })[0] || TABS[0];
-    var viewer = null, spots = null, cue = null, onScreen = false, started = false, piece = {};
+    var viewer = null, spots = null, cue = null, onScreen = false, started = false, piece = {}, drawnBox = null;
 
     var stage = document.createElement('div'); stage.className = 'ax';
     var tabs = K.tabs({ label: 'Which part of the body', items: TABS.map(function(t){ return { value: t.id, label: t.label, short: t.short }; }), value: cur.id, big: true,
@@ -87,7 +87,7 @@
       spots.place();
       if(pending && viewer && !viewer.settling() && spots.picked() === pending.it){
         var it = pending.it; pending = null;
-        cause.set(where(BY[it.id]), piece[it.id] ? piece[it.id].name + ':' : '');
+        cause.set(where(BY[it.id]));   // the piece tapped ("Right humerus") is the card's second line, on the picture
         if(pendingSay){ say(pendingSay); pendingSay = ''; }
         if(onScreen && !started){ started = true; makeCue(); }
       }
@@ -103,10 +103,16 @@
           if(!viewer) return null;
           var pc = piece[it.id], p = viewer.project(it.id, pc ? pc.part : null), w = over.clientWidth, h = over.clientHeight;
           if(!p || !p.front || p.x < 0 || p.y < 0 || p.x > w || p.y > h) return null;
+          drawnBox = p.box;
           return [p.x, p.y, p.r];
         },
         wait: function(){ return !!viewer && viewer.settling(); },
-        avoid: function(){ return [form.getBoundingClientRect(), resetB.getBoundingClientRect()]; },
+        // the card keeps off the buttons and off the whole named structure (both of a pair, every rib)
+        avoid: function(){
+          var a = [form.getBoundingClientRect(), resetB.getBoundingClientRect()];
+          if(drawnBox){ var r = over.getBoundingClientRect(), b = drawnBox; a.push({ left: r.left + b[0], top: r.top + b[1], width: b[2] - b[0], height: b[3] - b[1] }); }
+          return a;
+        },
         onPick: function(it, how){
           cause.set([]);
           pending = it ? { it: it } : null;
@@ -153,7 +159,8 @@
         fn();
       })();
     }
-    function frameTab(){ if(viewer && viewer.loaded()) viewer.frame(ids(cur)); }
+    // the camera frames the tab's own list when it has one (the heart, not every vessel of the trunk), from its side
+    function frameTab(){ if(viewer && viewer.loaded()) viewer.frame(cur.frame && cur.frame.length ? cur.frame : ids(cur), cur.pad || 1.3, cur.dir || null); }
     function setTab(id, user, how){
       var t = TABS.filter(function(x){ return x.id === id; })[0]; if(!t) return;
       var was = cur;
@@ -287,7 +294,7 @@
       if(!viewer.loaded()) return;
       quiet++;
       try{
-        viewer.flyOnSelect(false); viewer.marks({}); viewer.highlight([]); viewer.tag(null); viewer.setPickSelects(true); viewer.setSkin(false);
+        viewer.set({ selectFly: false, fadeOthers: 0.42 }); viewer.marks({}); viewer.highlight([]); viewer.tag(null); viewer.setPickSelects(true); viewer.setSkin(false);
       } finally { quiet--; }
       // after the loading still has cross faded to the live body, the camera travels into the region
       if(first) setTimeout(function(){ if(onScreen) setTab(cur.id, false); }, K.reduced() ? 0 : 520);
@@ -318,6 +325,7 @@
       /* pick(id): open on that structure (?focus=, "See it in 3D") */
       pick: function(id){ var s = BY[id]; if(!s || !tabOfSys[s.system]) return false; var t = tabOfSys[s.system]; picks[t.id] = id; pref.picks = picks; save(pref); api.tab(t.id); return true; },
       current: function(){ return spots && spots.picked() ? spots.picked().id : null; },
+      show: function(id, how){ go(id, how || 'find'); },
       _spots: function(){ return spots; }, _cause: function(){ return cause; }, _viewer: function(){ return viewer; }
     };
     window.AnpAnatomyExplore.current = api;   // for the sweep test (scripts/tools-v2/anp-anatomy-3d-sweep.mjs)
