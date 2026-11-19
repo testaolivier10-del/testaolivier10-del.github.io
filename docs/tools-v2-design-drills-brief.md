@@ -86,8 +86,8 @@ overlapping bars mean the data do not show one (never "prove").
   the cause line says "Growing"; they come back when every plant has finished.
 - **Cause line:** "1 plant each → No spread to measure → Can't tell"; "3 plants each → Bars overlap → Could be
   chance"; "7 plants each → Bars apart → Unlikely to be chance". It opens on 3 plants (the first batch is fixed, seed
-  1254130: one plant each shows the control 0.6 cm taller, 2 to 5 overlap, 6 and up are apart, and at 12 plants the
-  means are 18.0 and 24.0, the model's; later batches are random).
+  1254130: one plant each shows 18.7 and 18.2 cm (the control 0.5 cm taller), 2 to 5 overlap, 6 and up are apart, and at
+  12 plants the means are 17.9 and 24.0 (the model's 18 and 24); later batches are random).
 - **Cue:** "Drag for more plants" at the knob, once per device.
 
 ### What is on screen in Explore (counted at 1440 and 390, opening state)
@@ -195,7 +195,7 @@ Must fix:
 4. **The growth tween ran on after Explore hid.** `finishAll()` on leaving Explore lands every change, cancels the
    frame loop and settles the words. The frame sweep checks it (New plants, then Test yourself 100 ms later: no
    change on the hidden bench afterwards).
-Should fix: the opening batch (all 12 control plants above average) replaced by a balanced one (above); "±2 SE" moved
+Should fix: the opening batch (all 12 control plants above average) replaced by a balanced one (12 plants: 17.9 and 24.0 cm); "±2 SE" moved
 above the bar's top cap on the gap side, with the difference pill above it; the bench's front darkened in light mode
 so the amber and white labels reach 4.5:1; the cause line keeps two rows' height above 640 px too (the sweep now
 checks one height at every width); the kit's green pressed outline is not used on these taps (the amber ring is the
@@ -211,3 +211,17 @@ Checks after the round: unit tests (74 pass), content check, `build-apbio --chec
 Playwright at 390 (touch), 768 and 1440, light and dark: 139 passed, 0 failed. Preview and shots regenerated.
 Note: the reviewer's own clip script was run once against the fix (0 of 16 cut at 360, 390, 430 and 768); it wrote
 its `clip-branch-*.png` shots into the review folder again.
+
+## Recheck 1 (2026-11-18, BLOCK; fixed the same day)
+All four round 1 items and every should fix passed. New must fix: the round 1 fit shrank the Test yourself setup to
+a 90 px floor, so labels were about 5 px on phones and 3.8 px at 768 (main: 12 and 14.5 px). Now `fitPic()` never
+goes below a legible size: the smallest label (the icons' own small glyphs aside) is 11 px or more on screen, or the
+drawing takes its full width where that is the most there is (phones, where the studio also raises small svg text
+to 12 px); when the stage is too short for that, the stage takes the height it needs (an inline min-height, cleared
+on every fit and in Explore), so the side panel starts below the drawing. 1024 and up are as before. Sizes now: 360
+about 215 px tall (labels 12 to 13 px), 390 about 225 px, 768 about 270 px (labels 11 px and up), 1440 labels 20 to
+33 px. The sweep checks the rendered label size (font size times the drawing's scale, 11 px or more) over all 16
+experiments, setup and results, at every width, in place of the old 80 px minimum height. Brief: the 12 plant and
+1 plant numbers now match the screen.
+Checks: sweep one width per process, light and dark, **33800 passed, 0 failed** (360 to 600 at 3398, 768 to 1920 at
+3368); `--frames` 12 passed; Playwright 139 passed; unit tests, content, builds, `check-site`, `check-weight --check`, `build-apcalc --check`, `build-apmacro --check` all pass; preview regenerated.

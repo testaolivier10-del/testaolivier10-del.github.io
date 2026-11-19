@@ -10,7 +10,7 @@
      - the plants drawn match the model (each group's mean), the pills say the drawn means and difference, the
        error bars are the drawn mean ± 2 SE, and the cause line says the state's words;
    Test yourself: every one of the 16 experiments' setups and results charts fits its stage (nothing under the side
-   panel or the Enlarge button); every credited Fair test state has ±2 SE bars apart (the Sample size rule);
+   panel or the Enlarge button) with every label at least 11 px on screen; every credited Fair test state has ±2 SE bars apart (the Sample size rule);
    and, frame by frame at 390 and 1440: every number on the picture is the one for the plants drawn at that frame,
    and no result word shows while a plant is still changing.
    Usage: node scripts/tools-v2/design-drills-sweep.mjs [--width <w>] [--frames] [--shots <dir>] [--port <n>]
@@ -178,7 +178,9 @@ if (!FRAMES) for (const dark of [false, true]) for (const w of WIDTHS) {
       scene: !!document.querySelector('.ls-dr-stage:not([hidden]) .dr-sfig'), drill: !!document.querySelector('.ls-dr-steps .dr-sec'), pick: (document.querySelector('.ls-pick-sel') || {}).value || '' }));
     ok(t.sw <= t.iw + 1 && !t.bench && t.scene && t.drill && t.pick === 'duckweed-nitrogen', `${tag0} Test yourself: ${JSON.stringify(t)}`);
     if (SHOTS && !dark && (w === 360 || w === 1440)) await page.screenshot({ path: join(SHOTS, `sweep-quiz-${w}.png`) }); }
-  // every experiment's setup and its results chart fit the stage: nothing under the side panel or the Enlarge button
+  // every experiment's setup and its results chart fit the stage (nothing under the side panel or the Enlarge button),
+  // and stay readable: every label at least 11 px on screen
+  const minLabs = [];
   for (let i = 0; i < 16; i++) {
     for (const view of ['setup', 'data']) {
       await page.evaluate(([i, view]) => { const s = document.querySelector('.dr-pick select'); if (s.selectedIndex !== i) { s.selectedIndex = i; s.dispatchEvent(new Event('change', { bubbles: true })); } window.scrollTo(0, 0); setTimeout(() => { const b = document.querySelector(`.dr-view button[data-v="${view}"]`); if (b) b.click(); }, 50); }, [i, view]);
@@ -192,12 +194,18 @@ if (!FRAMES) for (const dark of [false, true]) for (const w of WIDTHS) {
         const enl = [...document.querySelectorAll('.ls-enl')].filter(vis).map(e => e.getBoundingClientRect())[0];
         const texts = [...sv.querySelectorAll('text')].map(t => t.getBoundingClientRect()).filter(b => b.width);
         const low = Math.max(...texts.map(b => b.bottom));
-        return { low, lim, dock: dock ? dock.top : 1e9, covered: enl ? texts.filter(b => b.left < enl.right && b.right > enl.left && b.top < enl.bottom && b.bottom > enl.top).length : 0, h: sv.getBoundingClientRect().height };
+        // rendered font size of each label: its font size times the drawing's scale (the icons' own small glyphs aside)
+        const vb = sv.viewBox.baseVal, sr = sv.getBoundingClientRect(), sc = Math.min(sr.width / vb.width, sr.height / vb.height);
+        const labs = [...sv.querySelectorAll('text')].filter(t => !t.classList.contains('dk-ic') && t.textContent.trim()).map(t => parseFloat(getComputedStyle(t).fontSize) * sc);
+        return { low, lim, dock: dock ? dock.top : 1e9, covered: enl ? texts.filter(b => b.left < enl.right && b.right > enl.left && b.top < enl.bottom && b.bottom > enl.top).length : 0, minLab: Math.min(...labs) };
       }, view);
       if (r.none) { ok(view === 'data', `${tag0} experiment ${i + 1}: no setup drawing`); continue; }
-      ok(r.low <= r.lim + 0.5 && r.low <= r.dock + 0.5 && !r.covered && r.h >= 80, `${tag0} experiment ${i + 1} ${view}: the picture is cut (lowest text ${Math.round(r.low)}, stage ${Math.round(r.lim)}, panel ${Math.round(r.dock)}, under Enlarge ${r.covered}, ${Math.round(r.h)} px tall)`);
+      ok(r.low <= r.lim + 0.5 && r.low <= r.dock + 0.5 && !r.covered, `${tag0} experiment ${i + 1} ${view}: the picture is cut (lowest text ${Math.round(r.low)}, stage ${Math.round(r.lim)}, panel ${Math.round(r.dock)}, under Enlarge ${r.covered})`);
+      ok(r.minLab >= 10.95, `${tag0} experiment ${i + 1} ${view}: a label is ${r.minLab.toFixed(1)} px on screen (11 px or more; the icons' own glyphs aside)`);
+      minLabs.push(r.minLab);
     }
   }
+  if (minLabs.length) console.log(`${tag0}: Test yourself labels, smallest ${Math.min(...minLabs).toFixed(1)} px, median ${minLabs.sort((a, b) => a - b)[minLabs.length >> 1].toFixed(1)} px`);
   ok(!errs.length, `${tag0}: console errors: ${errs.join(' | ')}`);
   await browser.close();
 }

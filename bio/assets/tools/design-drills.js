@@ -1291,24 +1291,40 @@
     var wrap = null, view = 'setup', auto = true;
     var DATA_DRILLS = { cer: 1, predict: 1 };
     /* The setup (or the results chart) is scaled to the stage's own height, so the side panel never cuts it: from the
-       svg's top to the stage's bottom, less "Read the setup" under it and the Enlarge button's corner. */
-    var fitQ = 0;
+       svg's top to the stage's bottom, less "Read the setup" under it and the Enlarge button's corner. It never shrinks
+       below the size where its smallest label (the icons' own small glyphs aside) is 11 px tall on screen, or the
+       full width if that is less; when the stage is too short for that, the stage takes the height it needs (its
+       min-height), so the side panel starts below the drawing (review recheck 1). */
+    var fitQ = 0, LEG = 11;
     function fitPic(){
       fitQ = 0;
       if(stage.hidden || !stage.getClientRects().length) return;
       var host = stage.closest('.ls-stage-body') || stage.parentNode, stg = stage.closest('.ls-stage') || host;
-      var lim = Math.min(host.getBoundingClientRect().bottom, stg.getBoundingClientRect().bottom);
-      var enl = stg.querySelector('.ls-enl'); if(enl && enl.getClientRects().length){ var er = enl.getBoundingClientRect(); if(er.width) lim = Math.min(lim, er.top - 4); }
+      stg.style.minHeight = '';   // measured from the stage's own height each time
+      var enl = stg.querySelector('.ls-enl'), er = enl && enl.getClientRects().length ? enl.getBoundingClientRect() : null;
+      var foot = er && er.width ? stg.getBoundingClientRect().bottom - er.top + 4 : 0;
       var rd = stage.querySelector('.dr-readsetup'), under = rd && !rd.hidden && rd.getClientRects().length ? rd.querySelector('summary').getBoundingClientRect().height + 10 : 0;
+      var needStage = 0;
       stage.querySelectorAll('.dr-sfig, .dr-charts svg').forEach(function(sv){
         if(!sv.getClientRects().length) return;
-        var vb = sv.viewBox && sv.viewBox.baseVal, w = sv.getBoundingClientRect().width;
-        if(!vb || !vb.width || !w) return;
-        var top = sv.getBoundingClientRect().top, avail = lim - top - 6 - (sv.classList.contains('dr-sfig') ? under : 0);
-        var h = Math.max(90, Math.min(avail, w * vb.height / vb.width));
+        var vb = sv.viewBox && sv.viewBox.baseVal, r = sv.getBoundingClientRect(), w = r.width;
+        if(!vb || !vb.width || !w || !r.height) return;
+        // the smallest label's font size in viewBox units (the icons' own small glyphs aside). On a phone the studio
+        // raises small svg text to 12 px on screen (data-ls-fs0); there the drawing takes its full width, so the raised
+        // labels have the room they had before
+        var unit = 1e9, raised = false;
+        sv.querySelectorAll('text').forEach(function(t){ if(t.classList.contains('dk-ic') || !t.textContent.trim()) return; if(t.hasAttribute('data-ls-fs0')) raised = true; else unit = Math.min(unit, parseFloat(getComputedStyle(t).fontSize) || 1e9); });
+        var full = w * vb.height / vb.width, legible = raised || unit >= 1e9 ? full : Math.min(full, vb.height * LEG / unit);
+        var lim = Math.min(host.getBoundingClientRect().bottom, stg.getBoundingClientRect().bottom - foot);
+        var avail = lim - r.top - 6 - (sv.classList.contains('dr-sfig') ? under : 0);
+        var h = Math.min(full, Math.max(legible, avail));
         sv.style.height = Math.floor(h) + 'px';
+        // the stage's height that shows the whole drawing at that size
+        if(h > avail + 0.5) needStage = Math.max(needStage, r.top - stg.getBoundingClientRect().top + h + 6 + (sv.classList.contains('dr-sfig') ? under : 0) + foot);
       });
+      if(needStage) stg.style.minHeight = Math.ceil(needStage) + 'px';
     }
+    function unfit(){ var stg = stage.closest('.ls-stage'); if(stg) stg.style.minHeight = ''; }
     function fitSoon(){ if(!fitQ) fitQ = requestAnimationFrame(fitPic); }
     window.addEventListener('resize', fitSoon);
     if(window.ResizeObserver) new ResizeObserver(fitSoon).observe(stage);
@@ -1377,7 +1393,7 @@
     if(window.MutationObserver) new MutationObserver(arrange).observe(host, { childList: true });
     arrange();
     if(scenSel) scenSel.addEventListener('change', function(){ setTimeout(function(){ if(s.kit2 && s.kit2.mode() === 'quiz') s.task(task(), 'quiz'); }, 0); });
-    return { value: 'drills', label: 'Experiment drills', stage: stage, dock: dock, task: task, fit: function(){ [0, 120, 500, 1200].forEach(function(t){ setTimeout(fitSoon, t); }); } };
+    return { value: 'drills', label: 'Experiment drills', stage: stage, dock: dock, task: task, fit: function(){ [0, 120, 500, 1200].forEach(function(t){ setTimeout(fitSoon, t); }); }, unfit: unfit };
   }
 
   /* The kit adapter's settings: the bench is the Explore stage, the drills are the one Test yourself part. */
@@ -1387,6 +1403,6 @@
     var sel = EXP.refDrill.querySelector('select');
     if(sel) sel.addEventListener('change', function(){ if(s.kit2){ if(s.close) s.close(); s.kit2.go('quiz', 'drills'); } });
     setTimeout(EXP.first, 0);
-    return { stage: EXP.stage, ref: EXP.ref, parts: [part], onShow: function(mode){ EXP.onShow(mode); if(mode !== 'explore') part.fit(); } };
+    return { stage: EXP.stage, ref: EXP.ref, parts: [part], onShow: function(mode){ if(mode === 'explore') part.unfit(); EXP.onShow(mode); if(mode !== 'explore') part.fit(); } };
   }
 })();
