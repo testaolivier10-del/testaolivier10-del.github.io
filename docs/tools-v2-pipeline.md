@@ -27,6 +27,14 @@ States: building, review, fixing, recheck, PASS (waiting to integrate), integrat
 | AP Bio design drills | claude/tools-v2-design-drills | wt-design-drills | integrated | adapter: a part can carry its own stage (`stage` on a part) |
 | A&P pathways | claude/tools-v2-anp-pathways | wt-anp-pathways | integrated | |
 | A&P lab practical | claude/tools-v2-anp-lab-practical | wt-anp-lab-practical | integrated | first explorer: kit `K.spots`; kit2 weight bucket `assets/course/kit2` |
+| Ochem arrow pusher | claude/tools-v2-arrow-pusher | wt-arrow-pusher | integrated | shares `ochem/assets/push-board.js` and `.css` with Resonance; registry `css` field (build-tool-pages) |
+| NREMT sound trainer | claude/tools-v2-nremt-sound-trainer | wt-nremt-sound-trainer | integrated | second NREMT tool on `nremt/assets/nremt-kit2.js` (unchanged) |
+| A&P feedback loops | claude/tools-v2-anp-feedback-loops | wt-anp-feedback-loops | integrated | |
+| A&P predict | claude/tools-v2-anp-predict | wt-anp-predict | integrated | Explore in its own weight bucket `anatomy-physiology/predict-explore` (34 KB); anp spec decision 104 (103 was taken) |
 
-Next by use (rollout table): A&P predict, A&P feedback loops,
-NREMT body map, NREMT sound trainer, NREMT flowcharts, Ochem arrow pusher, Ochem viewer 3d.
+2026-11-19: `main` merged in after PR #228 (ochem frame cleanup: chipPicker, scrollChips and .ls-chips-hidden gone; the v2
+conformations, resonance and arrow pusher kept, kit2 kept). Ochem viewer 3d (`claude/tools-v2-viewer-3d`, in review) needs
+`main` merged into it before integration: PR #228 rewrote `viewer-3d.js` and `viewer-3d.html` on main.
+
+Next by use (rollout table):
+NREMT body map, NREMT flowcharts, Ochem viewer 3d.

@@ -155,3 +155,41 @@ did not change. For a person to confirm:
   surface meet burn center criteria. The American Burn Association's current referral page uses "partial thickness
   ≥10% TBSA" (https://ameriburn.org/burnreferral). It only matters at exactly 10% (for example 9 + 1). Not changed
   without the author.
+
+## Sound trainer, tools v2 Explore (2026-11-18, branch claude/tools-v2-nremt-sound-trainer)
+
+Explore (`nremt/assets/sound-explore.js`) puts a stethoscope on the drawn chest; a lens beside it draws what makes
+each sound. The sounds, sites, loudness by site and the Test yourself questions are unchanged (`sound-stage.js`,
+whose accuracy notes are in `docs/tools-upgrade-notes/nremt-body.md`). Checked against the course notes (airway
+management, primary assessment, principles of assessment, cardiac emergencies) and the sources in
+`docs/nremt-lessons-spec.md`; for a person to confirm:
+
+- **Crackles, the cause.** The lens shows air sacs, some holding fluid, snapping open on breathing in; the cause line
+  says "fluid filled air sacs pop open" and the takeaway "small airways and air sacs with fluid in them popping open".
+  The usual explanation is collapsed or fluid filled small airways popping open (fine crackles), with fluid in the
+  airways for coarse ones; the course notes say "fluid in the alveoli, or small airways popping open". Kept at that
+  level for EMTs; confirm the wording.
+- **Normal breath sounds (review round 1, 2026-11-18).** The Normal side of the lung switch is never silent (silence
+  over a lung field is the finding "diminished or absent breath sounds"). Over the lung fields it plays recording
+  DP31 (label N, normal; posterior left middle; 27 year old woman; diaphragm mode; 20 s, 4 kHz) from Fraiwan M,
+  Fraiwan L, Khassawneh B, Ibnian A, "A dataset of lung sounds recorded from the chest wall using an electronic
+  stethoscope" (Data in Brief 2021; Mendeley Data jwyy9np4gv), CC BY 4.0, saved as
+  `nremt/assets/audio/normal-vesicular.wav` and credited in "?" and the page footer. For a person: (1) the file came
+  from a GitHub copy of the dataset (`IKnowUCantPvp/Lung-Sound-Classification-PCEN`, folder "Additional Lung Sounds",
+  the file used unaltered, sha256 ffce627849d0b2e2...), since Mendeley is not reachable from the
+  build container: confirm it against the original download, and which version it is (the credit links version 3,
+  doi:10.17632/jwyy9np4gv.3, the current one, checked on 2026-11-19); (2) listen to it: it could not be listened to here (its
+  breath bursts were checked by their energy, 150 to 800 Hz, about every 2.7 s; much of its low end is heart sound);
+  pick another normal file from the dataset if a cleaner one exists. Over the trachea, Normal plays a GENERATED
+  tracheal (bronchial) breath, tagged "Generated breath": louder and harsher, heard breathing in and out about equally
+  with a short gap. Confirm, or replace with a recorded tracheal sound.
+- **Crackles wording (review round 1).** The cause pill now follows the course's words: "small airways and air sacs
+  stuck by fluid snap open".
+- **The live trace of a lung clip.** The strip draws the clip's own loudness as it plays only if Wikimedia's file
+  server answers the CORS request (`liveUrl`, the file's direct address). Could not be checked from this container
+  (Wikimedia is blocked here); if it fails the clip plays as before and the strip draws a typical breath, named as one. Worth one look on
+  the live site.
+- **The heart in the lens is a schematic** (four chambers from the front, valves as leaflets, the aorta and pulmonary
+  artery). Timing follows the same table as the sound: AV valves close at S1, aortic and pulmonic at S2 (split: aortic
+  first), ventricles squeeze in systole, the atria at the end of diastole. The murmurs are one example each (aortic
+  stenosis, aortic regurgitation), as the old page already said.

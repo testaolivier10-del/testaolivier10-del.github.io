@@ -577,7 +577,6 @@
         '<button type="button" data-mode="rank">Rank four</button>' +
         '<button type="button" data-mode="site">Which proton?</button>' +
       '</div>' +
-      '<p class="tool-step" id="abStep"></p>' +
       '<span class="tmuted tool-meta" id="abScore"></span>' +
     '</div>' +
 
@@ -670,18 +669,10 @@
       if(m === 'rank' && !rankPool.length) newRank();
       if(m === 'site') renderSite();
       if(m === 'pair') renderPair();
-      setStep(m);
       sync();
     });
   });
 
-  var STEP = {
-    pair: '<b>Pick two acids, then tap the one that gives up its proton more easily.</b>',
-    rank: '<b>Put the four in order, most acidic first</b>, then check them on the pK<sub>a</sub> line.',
-    site: '<b>Tap the hydrogen that comes off first.</b>'
-  };
-  function setStep(m){ document.getElementById('abStep').innerHTML = STEP[m] || STEP.pair; }
-  setStep('pair');
 
   function resetPair(){
     guess = null; revealed = false;
@@ -928,8 +919,7 @@
 
     var act = document.getElementById('abRankAct');
     act.innerHTML = rankChecked ? '' :
-      '<button type="button" class="btn-press" id="abRankCheck">Put them on the pK<sub>a</sub> line</button>' +
-      '<span class="tmuted">Most acidic first. Drag the cards, or tap one and then another to swap them.</span>';
+      '<button type="button" class="btn-press" id="abRankCheck">Put them on the pK<sub>a</sub> line</button>';
     var chk = document.getElementById('abRankCheck');
     if(chk) chk.addEventListener('click', function(){
       rankChecked = true;
@@ -1083,7 +1073,6 @@
 
   function studioRank(){
     if(!ls) return;
-    var tip = document.querySelector('#abRankAct .tmuted'); if(tip) tip.hidden = true;
     var truth = rankPool.slice().sort(function(x, y){ return x.pKa - y.pKa; });
     var placed = rankOrder.filter(function(a, i){ return truth[i] === a; }).length, cap, pills = [];
     if(!rankChecked){

@@ -661,17 +661,6 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .tool-root{--q-neg:#C62828;--q-pos:#1F4FBF;}
 :root[data-theme="dark"] .tool-root{--q-neg:#FF8A80;--q-pos:#8FB0FF;}
 
-/* ---- Arrow Pusher: mechanism challenge ------------------------------------ */
-.ap-chal__goal{margin:0 0 10px;font-size:14px;font-weight:700;line-height:1.55;color:var(--ink);}
-.ap-chal__k{font:900 10.5px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
-.ap-chal__steps{display:flex;align-items:center;gap:6px;margin:0 0 12px;}
-.ap-chal__dot{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font:900 11.5px var(--font-mono);background:var(--track);color:var(--muted);}
-.ap-chal__dot.is-now{background:var(--accent);color:var(--on-accent-fill);}
-.ap-chal__dot.is-done{background:var(--good-text);color:var(--white);}
-.ap-chal__line{width:18px;height:2px;background:var(--line);}
-.ap-chal .tnote:focus{outline:2px solid var(--accent);outline-offset:2px;}
-
 /* ---- Newman projection drawings (Conformation Lab; its own styles are in tools/conformations.css) ---- */
 .tool-root{--nm-back:#9AA6B8;--nm-back-fill:#EEF1F6;}
 :root[data-theme="dark"] .tool-root{--nm-back:#6F7C90;--nm-back-fill:#1E2430;}
@@ -680,35 +669,6 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 /* A panel the verdict has picked out. Used by the resonance comparison and
    anywhere else two options are put side by side and one of them wins. */
 .tpanel--win{border-color:var(--good-text);background:var(--tint-good);}
-
-/* ---- The mechanism strip (Arrow Pusher) ---------------------------------
-
-   One chip per committed step, each one a way back into it. A mechanism that
-   went wrong at step 2 should be edited at step 2, not abandoned. */
-
-.ap-steps{
-  display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-bottom:12px;
-}
-.ap-steps:empty{display:none;}
-.ap-steps__k{
-  font:900 10px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;
-  color:var(--muted);margin-right:2px;
-}
-.ap-step{
-  display:inline-flex;align-items:center;gap:6px;padding:5px 10px;
-  border:var(--bw) solid var(--line);border-radius:var(--radius-pill);
-  background:var(--white);color:var(--ink);cursor:pointer;font:inherit;
-}
-.ap-step:hover{border-color:var(--accent);}
-.ap-step--now{background:var(--tint-accent);border-color:var(--accent);cursor:default;}
-.ap-step__n{
-  width:17px;height:17px;border-radius:50%;background:var(--track);color:var(--muted);
-  display:flex;align-items:center;justify-content:center;font:900 10px var(--font-mono);flex:none;
-}
-.ap-step--now .ap-step__n{background:var(--accent);color:var(--on-accent-fill);}
-.ap-step__f{font:800 12px var(--font-mono);}
-.ap-step__arrow{color:var(--muted);font-weight:900;}
-.ap-steps__reset{margin-left:auto;}
 
 /* ---- The molecule builder ------------------------------------------------
 
@@ -1033,27 +993,6 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .ls-root .tool-send__row{display:flex;flex-wrap:wrap;gap:8px;}
 .ls-sheet .tnote + .tnote,.ls-sheet .tnote + .tstage,.ls-sheet .tstage + .tnote{margin-top:10px;}
 
-/* ---- Arrow Pusher in the Tool Studio */
-.ap-ls .ap-steps{flex:none;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 0 8px;padding:2px;}
-.ap-ls .ap-steps::-webkit-scrollbar{display:none;}
-.ap-ls .ap-steps > *{flex:none;}
-.ap-ls .ap-steps__k{font:800 var(--ls-s) var(--font-ui);letter-spacing:0;text-transform:none;}
-.ap-ls .ap-step{min-height:36px;}
-.ap-ls .ap-steps__reset{min-height:36px !important;}
-.ap-ls .ap-group{margin:0 0 12px;}
-.ap-ls .ap-group__label,.ls-root .ap-group__label{margin:0 0 8px;font:800 var(--ls-s) var(--font-ui);letter-spacing:0;text-transform:none;}
-.ap-ls #apPicker .tool-more{margin:0;border:0;padding:0;}
-.ap-ls #apPicker .tool-more > summary{font:700 var(--ls-m) var(--font-ui);letter-spacing:0;text-transform:none;}
-.ap-ls #apChalPick .tchip .tmuted{color:inherit;opacity:.75;}
-.ap-ls-act:empty{display:none;}
-.ap-ls-act .trow{display:flex;gap:10px;flex-wrap:wrap;margin:0 !important;}
-.ap-ls-act .btn-press{flex:1 1 auto;}
-.ap-ls-act .tchip{min-height:44px;display:inline-flex;align-items:center;}
-.ap-ls #apResult .ap-chal__k,.ap-ls #apResult .tempty{display:none;}
-.ap-ls #apBooksBox{margin:0;border:0;padding:0;}
-.ap-ls #apBooksBox > summary{pointer-events:none;}
-.ap-ls #apBooksBox > summary::after{display:none;}
-.ap-ls #apPicker .tool-more__now{font-size:var(--ls-s);color:var(--muted);}
 .ls-root .ls-modes .ls-seg > button{padding:0 6px;}
 .ls-sheet .tnote__k{font:900 var(--ls-s) var(--font-ui);letter-spacing:0;text-transform:none;}
 .ls-sheet .tnote{font-size:var(--ls-m);line-height:1.5;}
@@ -1061,7 +1000,6 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .ls-ed .med-status{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0;}
 .ls-root .mb__typerow{flex-direction:row;}
 .ls-root .mb__input{flex:1;min-width:0;}
-.ap-ls #apBooksBox > summary{background:none;padding:0;min-height:0;font-weight:900 !important;}
 .ls-sheet .ttable th{text-transform:none;letter-spacing:0;font-size:var(--ls-s);}
 
 /* Small atom labels (H, drawn at 11 units; 12.5 for mid-size atoms) read at least 12 px on a phone stage. Labels only:
@@ -1076,10 +1014,6 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .v3-ls .v3-stage svg{width:100%;height:100%;max-width:none;max-height:100%;}
 .v3-ls .v3-ls-src .tseg{width:100%;display:flex;}
 .v3-ls .v3-ls-src .tseg button{flex:1;}
-.v3-ls #v3Picker .ap-group{margin:0 0 12px;}
-.v3-ls #v3Picker .tool-more{margin:0;border:0;padding:0;}
-.v3-ls #v3Picker .tool-more > summary{font:700 var(--ls-m) var(--font-ui);letter-spacing:0;text-transform:none;}
-.v3-ls #v3Picker .tool-more__now{font-size:var(--ls-s);color:var(--muted);}
 .v3-ls .v3-quiz{margin:0;padding:0;border:0;background:none;display:flex;flex-direction:column;gap:12px;}
 .v3-ls .v3-quiz .v3-quiz__k{margin:0 0 8px;font:900 var(--ls-l)/1.25 var(--font-ui);letter-spacing:-.01em;text-transform:none;color:var(--ink);}
 .v3-ls .v3-quiz .tchips{gap:8px;}
@@ -1309,32 +1243,3 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .ls-root.ls-phone.sp-ls .sp-scale span{font-size:12px;}
 .ls-root.ls-phone.sp-ls .sp-scale span:first-child{transform:none;} .ls-root.ls-phone.sp-ls .sp-scale span:last-child{transform:translateX(-100%);} /* end labels inside the stage */
 
-/* ---- Arrow Pusher in the standard frame (docs/tools-frame-2026-11.md, F1) */
-.ap-ls .ls-ed .med-bar{display:none;}
-.ap-ls .ls-pics > .ap-to{flex:0 0 28px;align-self:center;display:grid;place-items:center;color:var(--muted);}
-.ap-ls .ls-pics > .ap-to[hidden]{display:none;}
-.ap-ls .ap-to .ls-i{width:28px;height:28px;stroke-width:2.6;}
-@container (max-width:559.98px){ .ap-ls .ap-to{transform:rotate(90deg);} }
-.ap-note{flex:none;align-self:center;max-width:min(560px,100%);margin:8px 0 0;padding:10px 14px;border-radius:14px;font:700 var(--ls-m)/1.4 var(--font-ui);}
-.ap-note[hidden]{display:none;}
-.ap-note--bad{background:var(--tint-bad);color:var(--bad-text);}
-.ap-note--good{background:var(--tint-good);color:var(--good-text);}
-.ap-stepmark{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
-.ap-stepmark[hidden]{display:none;}
-.ap-sm{display:inline-flex;align-items:center;gap:6px;font:800 var(--ls-s) var(--font-ui);color:var(--muted);}
-.ap-sm.is-done{color:var(--good-text);}
-.ap-sm.is-now{padding:4px 10px;border-radius:999px;background:var(--ctint);color:var(--cink);font-weight:900;}
-.ap-sm .ls-i{width:18px;height:18px;stroke-width:3;}
-.ap-sm-line{width:28px;height:3px;border-radius:2px;background:var(--line);}
-.ap-ls-notes{display:flex;flex-direction:column;gap:10px;}
-.ap-ls-notes:empty{display:none;}
-.ap-ls .ap-ls-act{display:flex;flex-direction:column;gap:8px;}
-.ap-ls .ap-ls-act > .tmuted{margin:0;font-size:var(--ls-s);}
-.ap-ls .ap-check,.ap-ls .ap-ls-pushrow .ls-pri{width:100%;min-height:52px;}
-.ap-ls .ap-ls-pushrow{display:flex;flex-direction:column;gap:8px;}
-.ap-ls-sendnote{margin:0;text-align:center;}
-.ap-ls .mb__quick{display:none;}
-.ap-ls .ls-sfoot .tchip{min-height:44px;}
-.ap-ls .ls-stage-body > .mb{flex:1;min-height:0;}
-.ap-ls .ls-sheet .ls-sec > p{margin:0;}
-.ls-root .ls-chips-hidden{display:none !important;}

@@ -680,7 +680,6 @@
         '<button type="button" data-mode="predict" class="on" aria-pressed="true">Predict first</button>' +
         '<button type="button" data-mode="explore" aria-pressed="false">Explore</button>' +
       '</div>' +
-      '<p class="tool-step" id="rpStep"></p>' +
     '</div>' +
     '<div class="rp-grid">' +
       '<div class="tpanel rp-flask">' +
@@ -1031,10 +1030,6 @@
     var sh = shares(p);
     sync();
 
-    document.getElementById('rpStep').innerHTML = state.mode === 'predict'
-      ? (state.revealed ? 'Change anything, or tap <b>Next flask</b>, to try another.'
-                        : '<b>Read the flask, then tap the corner of the meter you think wins.</b>')
-      : '<b>Pick a substrate and a reagent.</b> The meter shows which mechanism wins.';
     document.getElementById('rpOptsNow').textContent = ls ? state.solvent.name + ', ' + (state.heat ? 'heat' : '25 °C')
       : '· ' + state.solvent.name + ', ' + (state.heat ? 'heat' : 'room temp');
 

@@ -3,7 +3,7 @@
    assets/course/tool-studio.js). Three tools, one of each kind of mount:
      - an old-frame course tool (AP Human Geography, Scale lab, free; rebuilt late in the rollout, so tool branches never touch this list),
      - the tools v2 flagship (AP Environmental Science, Water pollution, with Premium answered "yes" here only),
-     - an NREMT tool (Flowcharts; the body map draws in 3D, too slow for a headless check), which is not in a tools/ folder.
+     - an NREMT tool (Formulary, rebuilt late in the rollout; the body map draws in 3D, too slow for a headless check), which is not in a tools/ folder.
    For each: a visitor opens it, presses on the stage several times, switches mode when the tool has modes, and
    leaves. Exactly one tool-open, one tool-touch, one tool-mode per switch and one tool-use must reach
    api.levlprep.com/api/send, carrying only the fixed fields.
@@ -27,7 +27,7 @@ const MIME = {
 const TOOLS = [
   { path: '/human-geography/tools/scale-lab.html', tool: 'aphug/scale-lab', frame: 'old' },
   { path: '/environmental-science/tools/water-pollution.html', tool: 'apenv/water-pollution', frame: 'v2', premium: true },
-  { path: '/nremt/flowcharts.html', tool: 'nremt/flowcharts', frame: 'old' },
+  { path: '/nremt/formulary.html', tool: 'nremt/formulary', frame: 'old' },
 ];
 const FIELDS = { 'tool-open': ['tool', 'course', 'frame', 'locked'], 'tool-touch': ['tool', 'course', 'frame', 'mode'],
   'tool-mode': ['tool', 'course', 'frame', 'mode', 'row'], 'tool-use': ['tool', 'course', 'frame', 'touched', 'time', 'mode', 'locked', 'row'] };

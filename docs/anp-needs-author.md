@@ -2099,6 +2099,43 @@ part; these are the judgment calls in the pictures and the break results.
   gland; adrenal damaged, ACTH at the gland; Ca2+ channels blocked, the action potential at the membrane; receptor
   proteins blocked, the transmitter across the cleft.
 
+
+## Feedback loops, tools v2 drawn loops (2026-11-18): items for review
+Brief: `docs/tools-v2-anp-feedback-loops-brief.md`. Explore draws three loops from the bank on a body (temperature,
+blood glucose, childbirth); these are the judgment calls in the pictures. The bank's loops and their reviewed text are
+unchanged.
+- **fl-temp-range** (decided, for review). The thermometer and the monitor shade 36.5 to 37.5 °C as the normal range
+  around the 37 °C set point. Normal ranges vary by site and source (oral readings are often given as about 36.1 to
+  37.2 °C); the notes give only the set point. The push is capped at 35.5 and 38.5 °C.
+- **fl-temp-route** (decided, for review). One patch of forearm skin is magnified; the sensory nerve is drawn from it up
+  the arm, over the shoulder and up the back of the neck to the brain (hidden behind the head), and the command back
+  down beside it. In the body the signal enters the spinal cord and climbs
+  to the hypothalamus, and the commands leave by sympathetic nerves (skin vessels, sweat glands) and somatic motor
+  nerves (shivering). "?" says so. The brain's own temperature-sensitive neurons are named in "?", not drawn.
+- **fl-birth-position** (decided, for review; review round 1). The fetus is drawn head down, face toward the mother's
+  back, flexed (the usual occiput anterior position), with the placenta on the upper uterine wall. After birth the
+  newborn is drawn wrapped and held on the mother's forearm; the delivery of the placenta (third stage) is not drawn,
+  so the placenta stays inside.
+- **fl-glucose-setpoint** (decided, for review). One set point, 88 mg/dL (the bank's insulin loop, "about 88 mg/dL
+  fasting"), is drawn for both directions; the glucagon loop's text says "near 80 mg/dL". The normal band is the
+  notes' fasting range, 70 to 99 mg/dL. Whether blood glucose has a true set point (rather than a range defended by
+  two hormones) is debated; the course's loop builder uses the set point language.
+- **fl-islet-mix** (decided, for review). The magnified islet mixes beta cells (about 55%) and alpha cells through it,
+  as human islets are; many textbook figures draw a beta cell core with an alpha cell rim, which is the rodent pattern.
+- **fl-glucose-liver** (decided, for review). With insulin, glucose is drawn moving from the blood into the liver,
+  muscle and fat; the liver takes it up through carriers insulin does not move (the notes: insulin switches on
+  glycogenesis there), so the drawing shows the net movement, not the mechanism.
+- **fl-birth-route** (decided, for review). The afferent fibres from the cervix are drawn joining the lower end of the
+  spinal cord and climbing it to the hypothalamus; in the body they run in pelvic and hypogastric nerves into sacral and
+  lower thoracic segments. The hypothalamus and pituitary are magnified; one vessel stands for the circulation from the
+  posterior pituitary to the uterus.
+- **fl-birth-turns** (decided, for review). Each turn of the loop adds more stretch than the last and the turns come
+  closer together, until full stretch and birth (four or five turns, a few seconds each). Real labor takes hours, with
+  contractions minutes apart; the loop strengthens contractions and does not start labor ("?" and the labor-birth
+  notes' "For your exam" note).
+- **fl-loop-timing** (decided, for review). Every run is seconds long. "?" says the pictures show the idea, not the real
+  timing: temperature corrections take minutes, glucose after a meal two to three hours.
+
 ## Lab practical tool, tools v2 specimens (2026-11-18): items for review
 Explore shows six lab figures drawn clean with a pin on each part (docs/tools-v2-anp-lab-practical-brief.md). Pins sit
 where each figure's own printed leader line ended, checked by eye; each part's short "what it does" phrase was written
@@ -2115,3 +2152,34 @@ from that label's reviewed explanation in data/tools/lab-practical.json.
   "Papillary muscle: keeps the chordae tendineae taut", "Mastoid process: the bump behind the ear where muscles attach"
   and "Styloid process: a thin spike where small muscles attach" (the neck and tongue muscles are taught later, so
   the ordering rule keeps them unnamed).
+
+## Predict the change, tools v2 drawn chains (2026-11-19): items for review
+Brief: `docs/tools-v2-anp-predict-brief.md`. Explore draws four chains from the bank's scenarios; these are the model
+choices behind the numbers on the pictures.
+- **px-vessel-model** (decided, for review; changed in review round 1). Poiseuille for the arteriole: its resistance is
+  1 / r⁴ (×16 at half the radius). Between the two gauges the blood passes the arteriole and then the capillary bed, so
+  the flow is the pressure difference over both: the arteriole is taken as half of that resistance at its usual radius,
+  flow = 2 / (1 / r⁴ + 1) of usual (about 1/8.5 at half the radius, 1.5 times at 1.3). The flow label shows only its
+  arrow, never a factor (×1/16 is true only for a single tube, as in `tube-narrows`). The end pressures are held (as
+  `one-organ-constricts` states). Not drawn: the fall in pressure inside the capillaries beyond a squeezed arteriole.
+- **px-breath-model** (decided, for review). Rate changed with each breath the same size; PaCO2 = 40 x 12 / rate (8 to
+  24 a minute: 60 to 20 mm Hg); bicarbonate changes acutely by -2 per 10 mm Hg fall and +1 per 10 rise (no renal
+  compensation, said in "?"); pH by Henderson-Hasselbalch (7.26 to 7.62). O2 saturation from the alveolar gas equation
+  (PIO2 150, R 0.8) and the Severinghaus curve: 97.7% at 12, 98.8% at 24 (labeled "O₂ saturation 98.8% ↑"), 94.9% at
+  8 (falls, "↓"); the label shows one decimal and its real arrow. Review round 1: saturation carries its real arrow whenever its shown number moves (rises about 1 point when
+  breathing faster; the bank's `hyperventilation` keys it "none" because it barely changes, which "?" says), and the
+  screen's "same" label is the breath size, which the model holds.
+- **px-adh-model** (decided, for review). Urine volume = 600 mOsm a day / urine concentration (the notes' worked
+  example), concentration 50 + 1,150 x the ADH level; 12.5 L a day is taken to reach the collecting ducts, so about
+  0.5 L is still reabsorbed with no ADH (as `ur-adh-blocked` says). The interstitium's gradient is drawn the same at
+  every ADH level (urea's ADH-dependent part is not modelled).
+  Review round 1: the 12.5 L a day reaching the ducts is lower than the 15 to 20 percent of filtered water (27 to 36 L)
+  that `ur-adh-blocked`'s explanation says reaches the collecting duct; the model's number comes from the course's own
+  600 mOsm ÷ 50 mOsm/L = 12 L for the most dilute urine. Which should the picture follow? "?" now says fluid leaves the
+  nephron loop at about 100 mOsm/L whatever ADH does (with ADH the late distal tubule and cortical collecting duct
+  equilibrate toward 300 mOsm/L, which is not drawn).
+- **px-heart-model** (decided, for review). Stroke volume = 110 x (1 - e^-(EDV-45)/75) mL at a fixed heart rate (70) and
+  contractility: 50 mL at 90 mL filling, 70 at 120, 86 at 160 (the curve flattens). The end-systolic volume therefore
+  rises a little with filling. Sarcomere length 1.8 to 2.2 um across the filling range, shortening during each beat.
+- **px-pace** (decided, for review). Each link follows its cause with a lag of 0.2 to 0.65 s so the order is seen; "?"
+  says the real times (CO2 over minutes, the kidney over hours).
