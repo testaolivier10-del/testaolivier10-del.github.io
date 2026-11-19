@@ -391,7 +391,7 @@
     /* ---------------------------------------------------------------- the clock (the bleed) while Explore shows */
     function startTick(){
       stopTick();
-      tickT = setInterval(function(){ if(!St.on || document.hidden || !patient) return; St.sec++; patient.tick(St.sec); }, 1000);
+      tickT = setInterval(function(){ if(!St.on || document.hidden || !patient || (studio && studio.root && studio.root.classList.contains('is-sheet'))) return; St.sec++; patient.tick(St.sec); }, 1000);
     }
     function stopTick(){ if(tickT){ clearInterval(tickT); tickT = 0; } }
 

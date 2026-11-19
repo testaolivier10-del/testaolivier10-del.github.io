@@ -108,7 +108,7 @@
 .sp-find-box{fill:#fff;stroke:#127264;stroke-width:1.4;}
 .sp-find-box.is-sev{stroke:#d1594a;}
 .sp-find-t{font:800 15px var(--font-ui,sans-serif);fill:#14201c;}
-.sp-wrongring{fill:none;stroke:#e0412f;stroke-width:3;stroke-dasharray:5 4;}
+.sp-wrongring{fill:none;stroke:#e0412f;stroke-width:3;}
 /* BVM: the chest rising, the bag squeezing, a pulse at the carotid */
 .sp-rise{opacity:0;}
 .sp-rise.go{animation:sp-rise 2.2s ease-in-out;}
