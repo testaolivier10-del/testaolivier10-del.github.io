@@ -58,8 +58,9 @@ are in `docs/nremt-needs-author.md`.
   (S3), a thick stiff one (S4), a jet through a narrow aortic valve (systolic murmur), a leak back through it in
   diastole (diastolic murmur). Its name sits above it (1 to 3 words): "Narrowed airway", "Stiff ventricle".
 - **Normal / abnormal** at the same spot: the switch swaps sound, lens and strip. Heart normal is the generated
-  S1 S2. Lung normal has no free recording, so it draws the open airway (or dry air sacs, or an open larynx) and plays
-  nothing, and says so.
+  S1 S2. Lung normal is never silent (review round 1): over the lung fields a real normal recording (Fraiwan et al.,
+  CC BY 4.0), over the trachea a generated tracheal breath (louder and harsher, both ways), its strip titled
+  "Generated breath"; the lens draws what is under the stethoscope (open airway, dry air sacs, or the open larynx).
 - **The strip** draws the sound as it plays. Heart: the loudness envelope of the very samples being played (at that
   spot's mix), swept once a beat by a playhead like a monitor, S1 and S2 (and the extra sound) named as the trace
   reaches them, systole shaded. Lungs: the clip's own loudness, live, scrolling, when the browser can measure it
@@ -94,7 +95,12 @@ are in `docs/nremt-needs-author.md`.
 ### What moved (nothing dropped silently)
 - "Compare two sounds side by side" (any two abnormal sounds) is now normal against abnormal at the same spot; two
   abnormal sounds are one key tap apart.
-- The side panel's "Why?" text (why this spot, the spot's landmarks) is in the cause line, the glow and "?".
+- The side panel's "Why?" notes per spot (for example "P2 is soft and heard mainly here") and the ICS numbers and MCL
+  lines drawn on the old Explore chest are no longer in Explore. They are in Test yourself, Where to listen: the notes
+  in its feedback after each answer (the tapped spot's note and the answer), the ICS numbers and MCL lines on its
+  chest; every spot's intercostal space and line is also listed in "?". Explore keeps the spot's name, its glow (how
+  loud the sound is there) and "loudest here" or "faint here" on the cause line. (Corrected in review round 1: the
+  first version of this brief said these were in the cause line.)
 - Volume and every sound's card moved to "?". Mute as a button on the stage is gone; volume 0 in "?" does the same.
 - Name the sound no longer plays on its own when a round opens (press Play).
 
@@ -110,7 +116,8 @@ side panel, no text block, no buttons under the picture.
 1. Explore is a chest with a stethoscope to drag; landing it plays the sound (the student's own action, not autoplay).
 2. Two tabs, lungs first; heart marked beyond the EMT exam.
 3. Normal against abnormal on one switch; the old "compare two sounds" removed.
-4. The lung Normal side plays nothing and says so (no licensed recording).
+4. Lung Normal plays a real normal recording over the lung fields and a generated tracheal breath over the trachea
+   (review round 1; the first build played nothing).
 5. Name the sound no longer autoplays.
 6. Test yourself keeps its three parts unchanged; record ids and Review links unchanged.
 7. Volume and every sound's card in "?".
@@ -176,3 +183,30 @@ side panel, no text block, no buttons under the picture.
   blocked here). The fallback is the old typical breath, named as one.
 - No normal breath sound recording, so lung normal is silent.
 - The heart in the lens is a schematic; the lungs' airway drawings are simple.
+
+## Review round 1 (2026-11-18, independent review BLOCK; all fixed on this branch)
+Merged `origin/claude/tools-v2-all` first (both sides of the docs tables kept; its `check-tool-use.mjs` unchanged).
+Must fix:
+1. **Normal lung was silent.** Silence over a lung field teaches "diminished or absent". Now Normal plays: over the
+   lung fields recording DP31 (normal) of the Fraiwan et al. dataset (CC BY 4.0, Mendeley Data jwyy9np4gv), fetched
+   from a GitHub copy of the dataset (Mendeley is not reachable from the container) and saved as
+   `nremt/assets/audio/normal-vesicular.wav`, credited in "?" and the footer; over the trachea a generated tracheal
+   breath (`sound-bank.js` `breath-tracheal`: band limited noise, in and out about equal with a gap, harsh), tagged
+   "Generated breath". The takeaway: "Normal breath sounds over the lungs are soft and low (vesicular): heard all
+   through breathing in, fading early in breathing out. Over the trachea they are louder and harsher." Points for a
+   person (check the file against the original, listen to it) in `docs/nremt-needs-author.md`.
+2. **When in the beat under 11 px.** The strip was made while its part was hidden (no width, drawn at 600 units)
+   and then shown smaller. It now redraws at its real width whenever that changes, and every svg text in Test
+   yourself (the strip, Where to listen's ICS, MCL, R and L) is sized from the measured scale to render at 11 px or
+   more (`fitText` in `sound-stage.js`). The sweep measures it with `getScreenCTM` at every width, light and dark.
+3. **"What moved" corrected** (above) and the owner log line added.
+Should fix: the lens heart redrawn (the aorta rises from the left ventricle and arches over, the pulmonary trunk
+rises in front of it toward the patient's left; systolic flow leaves the left ventricle through the aortic valve;
+shading like the rendered chest); air sacs shaded on ducts; "does not close fully"; crackles "small airways and air
+sacs stuck by fluid snap open"; off the chest the lens is dim and unnamed; the heart picture zooms (up to 2.2x) when
+its spots would sit under the chest piece, and on narrow layouts the tubing leaves sideways (the sweep checks the
+chest piece never covers another spot); the exam tag right after the keys; pointer moves painted once a frame
+(drag x4 p95 16.8 ms at 390, 33.4 at 1440). Removed: the desktop leader line (kept on phones, where the lens sits
+under the chest), and on the v2 path the old mode tabs, Sound button, "More options" box (with "Compare two sounds")
+and tap cue. The phone cause line keeps 90 px (a long cause pill wraps).
+Not taken: none. Still open: the live CORS trace of the Wikimedia clips (one look on the live site).

@@ -429,13 +429,13 @@
     <p class="section-sub">Each card plays the sound as heard at its best spot. Click again to stop.</p>
     <div class="sound-grid" id="soundGrid"></div>
     <div class="notice notice--after">
-    <strong>A note on these recordings:</strong> the wheeze, crackles and stridor clips are real auscultation recordings from Wikimedia Commons, each individually credited and licensed CC BY-SA. Normal breath sounds and rhonchi have no clip yet: we have not found a recording we are free to use. Snoring, gurgling and diminished breath sounds are described below without a clip for the same reason — the descriptions are there, the audio is not, and a synthesized substitute would be worse than silence.
+    <strong>A note on these recordings:</strong> the wheeze, crackles and stridor clips are real auscultation recordings from Wikimedia Commons, each individually credited and licensed CC BY-SA. Normal breath sounds play in the chest picture (Explore): a recording from a CC BY 4.0 dataset over the lungs, and a generated tracheal sound over the trachea. Rhonchi have no clip yet: we have not found a recording we are free to use. Snoring, gurgling and diminished breath sounds are described below without a clip for the same reason — the descriptions are there, the audio is not, and a synthesized substitute would be worse than silence.
     </div>
     </details>
   </section>
 
   <footer>
-    <p>Audio credits: the wheeze, crackles and stridor recordings are by James Heilman, MD (the stridor clip processed by Natural Philo), from Wikimedia Commons under CC BY-SA 3.0, with individual credits shown next to each clip above. This trainer is a supplementary study aid; it is not a substitute for hands-on stethoscope practice with an instructor.</p>
+    <p>Audio credits: the wheeze, crackles and stridor recordings are by James Heilman, MD (the stridor clip processed by Natural Philo), from Wikimedia Commons under CC BY-SA 3.0, with individual credits shown next to each clip above. The normal breath sound in the chest picture is from Fraiwan M, Fraiwan L, Khassawneh B, Ibnian A, &ldquo;A dataset of lung sounds recorded from the chest wall using an electronic stethoscope&rdquo;, Mendeley Data (jwyy9np4gv), under <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a>. This trainer is a supplementary study aid; it is not a substitute for hands-on stethoscope practice with an instructor.</p>
     <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../about.html">About</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a> &middot; <a href="../premium.html">Premium</a> &middot; <a href="../teach/">Teachers</a> &middot; <a href="../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
     </footer>
 </div>
@@ -1077,12 +1077,15 @@ if (studio && !v2) (function(){
 if (studio && v2) (function(){
   const R = document.getElementById('stageRoot'), q = sel => R.querySelector(sel);
   const quiz = document.getElementById('quizSection'), fig = q('.st-fig'), side = q('.st-side'), timing = q('.st-timing');
-  R.querySelector('.st-top').hidden = true; R.querySelector('.st-quizpick').hidden = true;
+  R.querySelector('.st-quizpick').hidden = true;
   const ex = window.NremtSoundExplore.build({ studio, sounds: SOUNDS });
   // "?": the explanation, the volume, and every sound's card (snoring, gurgling and diminished have no clip)
   const vol = q('.st-volrow'), cards = document.getElementById('listenSection');
   if (vol) { const h = document.createElement('h3'); h.textContent = 'Volume'; ex.more.append(h, vol); }
   ex.more.append(cards);
+  // the old Explore's leftovers have no use in v2: the mode tabs and Sound button, the "More options" box (its volume
+  // moved to "?" above; "Compare two sounds" is the Normal switch now; its credit is in "?")
+  ['.st-top', '.st-more', '.st-tapcue'].forEach(sel => { const e = R.querySelector(sel); if (e) e.remove(); });
   window.NremtStudio.scrollable([timing, quiz], 'Question');
   const TASK = {
     name: { kicker: 'Test yourself', title: 'Name the sound', todo: 'Press play, then pick what you hear.' },

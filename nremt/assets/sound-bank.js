@@ -146,7 +146,7 @@
     if(!c) return null;
     var key = [kind, bpm, beats, c.sampleRate, JSON.stringify(mix || {})].join('|'), data = CACHE[key];
     if(!data){
-      data = CACHE[key] = renderHeartData(kind, bpm, beats, mix, c.sampleRate);
+      data = CACHE[key] = /^breath-/.test(kind) ? renderBreathData(kind, beats, mix, c.sampleRate) : renderHeartData(kind, bpm, beats, mix, c.sampleRate);
       CACHE_KEYS.push(key); if(CACHE_KEYS.length > 24) delete CACHE[CACHE_KEYS.shift()];
     }
     var buf = c.createBuffer(1, data.length, c.sampleRate);
@@ -190,6 +190,33 @@
     var lvl = mix.level == null ? 1 : Math.max(0, Math.min(1, mix.level));
     if(peak > 0){ for(i = 0; i < d.length; i++) d[i] = d[i] / peak * 0.82 * lvl; }
 
+    return d;
+  }
+
+  /* Normal TRACHEAL breath sounds, generated (the Explore picture's Normal at the trachea spot only; never offered
+     as an abnormal finding, and tagged "Generated" wherever it plays). Over the trachea a normal breath is loud,
+     harsh and hollow (bronchial): heard breathing in and breathing out, with a short gap between, the out breath
+     as long and as loud as the in breath. That is air rushing through a wide tube, which band limited noise on the
+     breath's envelope gets right; a recorded normal breath over the lung fields is used everywhere else.
+     Times in seconds within one 4 s breath (15 a minute). */
+  var TRACHEAL = { cycle: 4, inFrom: 0.05, inTo: 1.35, outFrom: 1.55, outTo: 3.35 };
+  function renderBreathData(kind, breaths, mix, sr){
+    mix = mix || {};
+    var B = TRACHEAL, n = Math.ceil(sr * B.cycle * breaths), d = new Float32Array(n);
+    var lp = 0, lp2 = 0, prev = 0;
+    for(var i = 0; i < n; i++){
+      var t = (i / sr) % B.cycle, env = 0;
+      if(t >= B.inFrom && t < B.inTo) env = Math.sin(Math.PI * (t - B.inFrom) / (B.inTo - B.inFrom));
+      else if(t >= B.outFrom && t < B.outTo) env = Math.sin(Math.PI * (t - B.outFrom) / (B.outTo - B.outFrom));
+      env = Math.pow(env, 0.6); // a quick rise and a flat top: a hollow rush, not a swell
+      var x = Math.random() * 2 - 1;
+      lp += 0.35 * (x - lp); lp2 += 0.35 * (lp - lp2);  // take the hiss off
+      var hp = lp2 - prev; prev = lp2;                  // and the rumble: a harsh mid band
+      d[i] = hp * env;
+    }
+    var peak = 0; for(i = 0; i < n; i++) if(Math.abs(d[i]) > peak) peak = Math.abs(d[i]);
+    var lvl = mix.level == null ? 1 : Math.max(0, Math.min(1, mix.level));
+    if(peak > 0) for(i = 0; i < n; i++) d[i] = d[i] / peak * 0.7 * lvl;
     return d;
   }
 
@@ -258,7 +285,12 @@
       src.buffer = buf;
       if(!gainNode){ gainNode = c.createGain(); gainNode.connect(c.destination); }
       gainNode.gain.value = volume;
-      src.connect(gainNode);
+      var slevel = null;
+      if(handlers.analyse){ // the same live level a recording gives (the Explore strip draws it)
+        var an2 = c.createAnalyser(), b2 = new Float32Array(1024); an2.fftSize = 1024;
+        src.connect(an2); an2.connect(gainNode);
+        slevel = function(){ an2.getFloatTimeDomainData(b2); var m = 0; for(var i = 0; i < b2.length; i++){ var v = b2[i] < 0 ? -b2[i] : b2[i]; if(v > m) m = v; } return m * volume; };
+      } else src.connect(gainNode);
       src.onended = function(){ if(playingNode === src){ playingNode = null; active = null; if(handlers.onEnd) handlers.onEnd(); } };
       var t0 = c.currentTime + 0.03;
       src.start(t0);
@@ -266,7 +298,7 @@
       /* What a page needs to draw in sync: the clock, when beat 1 starts, the
          beat timing, and the buffer itself for the trace. */
       if(handlers.onStart) handlers.onStart({
-        synth: true, buffer: buf, events: heartEvents(sound.synth, sound.bpm || 72),
+        synth: true, buffer: buf, level: slevel, breath: /^breath-/.test(sound.synth), events: /^breath-/.test(sound.synth) ? null : heartEvents(sound.synth, sound.bpm || 72),
         startAt: t0, now: function(){ return c.currentTime; }
       });
       return;
@@ -320,6 +352,8 @@
     stop: stop,
     heartEvents: heartEvents,
     heartData: renderHeartData,
+    breathData: renderBreathData,
+    TRACHEAL: TRACHEAL,
     envelope: envelope,
     setVolume: setVolume,
     getVolume: function(){ return volume; },

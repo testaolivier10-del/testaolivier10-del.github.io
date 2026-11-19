@@ -152,9 +152,21 @@ management, primary assessment, principles of assessment, cardiac emergencies) a
   The usual explanation is collapsed or fluid filled small airways popping open (fine crackles), with fluid in the
   airways for coarse ones; the course notes say "fluid in the alveoli, or small airways popping open". Kept at that
   level for EMTs; confirm the wording.
-- **No normal breath sound clip.** The Normal side of the lung switch draws the open airway or dry air sacs and plays
-  nothing ("No free recording yet"). A public domain, CC0, CC BY or CC BY-SA recording of normal vesicular breath
-  sounds would fill it (`localSrc` in `SOUNDS`; `nremt/assets/audio/README.md`).
+- **Normal breath sounds (review round 1, 2026-11-18).** The Normal side of the lung switch is never silent (silence
+  over a lung field is the finding "diminished or absent breath sounds"). Over the lung fields it plays recording
+  DP31 (label N, normal; posterior left middle; 27 year old woman; diaphragm mode; 20 s, 4 kHz) from Fraiwan M,
+  Fraiwan L, Khassawneh B, Ibnian A, "A dataset of lung sounds recorded from the chest wall using an electronic
+  stethoscope" (Data in Brief 2021; Mendeley Data jwyy9np4gv), CC BY 4.0, saved as
+  `nremt/assets/audio/normal-vesicular.wav` and credited in "?" and the page footer. For a person: (1) the file came
+  from a GitHub copy of the dataset (`IKnowUCantPvp/Lung-Sound-Classification-PCEN`, folder "Additional Lung Sounds",
+  the file used unaltered, sha256 ffce627849d0b2e2...), since Mendeley is not reachable from the
+  build container: confirm it against the original download; (2) listen to it: it could not be listened to here (its
+  breath bursts were checked by their energy, 150 to 800 Hz, about every 2.7 s; much of its low end is heart sound);
+  pick another normal file from the dataset if a cleaner one exists. Over the trachea, Normal plays a GENERATED
+  tracheal (bronchial) breath, tagged "Generated breath": louder and harsher, heard breathing in and out about equally
+  with a short gap. Confirm, or replace with a recorded tracheal sound.
+- **Crackles wording (review round 1).** The cause pill now follows the course's words: "small airways and air sacs
+  stuck by fluid snap open".
 - **The live trace of a lung clip.** The strip draws the clip's own loudness as it plays only if Wikimedia's file
   server answers the CORS request (`liveUrl`, the file's direct address). Could not be checked from this container
   (Wikimedia is blocked here); if it fails the clip plays as before and the strip draws a typical breath, named as one. Worth one look on

@@ -114,7 +114,7 @@ async function measure(page) {
     [['site label', '.snd2-sitelab'], ['lens label', '.snd2-lenslab'], ['compare switch', '.snd2-ab'], ['play', '.snd2-play'], ['front back', '.snd2-view'], ['keys', '.snd2-keys'], ['cue', '.tk2-cue']]
       .forEach(([n, s]) => { const e = box.querySelector(s); if (vis(e)) items.push({ n, ...R(e) }); });
     const steth = R(box.querySelector('.snd2-steth'));
-    const rings = [...box.querySelectorAll('.snd2-ring')].map(e => ({ n: 'spot ' + e.parentNode.getAttribute('data-site'), ...R(e) }));
+    const rings = [...box.querySelectorAll('.snd2-ring')].map(e => ({ n: 'spot ' + e.parentNode.getAttribute('data-site'), on: e.parentNode.classList.contains('is-on'), ...R(e) }));
     const marks = [...box.querySelectorAll('.snd2-rl')].map(e => ({ n: 'mark ' + e.textContent, ...R(e) }));
     const pills = [...box.querySelectorAll('.snd2-ev')].filter(g => +g.style.opacity > 0.5).map(g => ({ n: 'pill ' + g.textContent, ...R(g.querySelector('.snd2-ev-b')) }));
     const img = box.querySelector('.snd2-img'), lens = box.querySelector('.snd2-lens-rim'), mon = box.querySelector('.snd2-mon');
@@ -158,6 +158,8 @@ function checkLayout(m, tag, w) {
     ok(gap(cue, m.steth) >= 0, `${tag}: the cue covers the stethoscope`);
     for (const x of m.rings.concat(m.marks)) ok(gap(cue, x) >= 0, `${tag}: the cue covers ${x.n}`);
   }
+  // the chest piece never covers another spot
+  for (const x of m.rings) if (!x.on) ok(gap(m.steth, x) >= 0, `${tag}: the stethoscope covers ${x.n}`);
   // the R and L marks clear of every label and switch
   for (const mk of m.marks) for (const it of m.items) if (it.n !== 'cue') ok(gap(mk, it) >= 4, `${tag}: ${mk.n} under ${it.n}`);
   for (let i = 0; i < m.pills.length; i++) {
@@ -186,6 +188,7 @@ async function sweepWidth(w) {
     const m0 = await tagged('open');
     ok(m0.items.some(x => x.n === 'cue'), `${w} ${th}: no first visit cue`);
     ok((await S(page)).chain.startsWith('Off the chest'), `${w} ${th}: opening chain`);
+    ok(await page.evaluate(() => document.querySelector('.snd2-lenslab').hidden && document.querySelector('.snd2-lens').classList.contains('is-idle')), `${w} ${th}: the lens is named while nothing is heard`);
     // lung sounds at their best spots, mid sound and stopped
     for (const [k, sid, v] of [['wheeze', 'lung-ru', 'front'], ['crackles', 'back-rl', 'back'], ['stridor', 'trachea', 'front']]) {
       await view(page, v); await key(page, k); await site(page, sid);
@@ -200,9 +203,17 @@ async function sweepWidth(w) {
     await view(page, 'front'); await key(page, 'stridor'); await site(page, 'lung-rl'); await page.waitForTimeout(900);
     ok(/faint here/.test((await S(page)).chain), `${w} ${th}: stridor at the base is not faint (${(await S(page)).chain})`);
     await stopPlay(page);
-    await page.click('.snd2-ab [data-ab="n"]'); await page.waitForTimeout(1100);
-    ok(!(await S(page)).playing, `${w} ${th}: normal lung plays something`);
+    // Normal is never silent: a recording over the lung fields, a generated tracheal breath over the trachea
+    await page.click('.snd2-ab [data-ab="n"]');
+    await until(page, () => window.NremtSoundExplore.last._state().started); await page.waitForTimeout(900);
+    let sn = await S(page);
+    ok(sn.playing && sn.strip.title === 'This recording' && /Normal breath sounds, heard here/.test(sn.chain), `${w} ${th}: normal at the base does not play the recording (${sn.chain} | ${sn.strip.title})`);
     await tagged('lung-normal');
+    await site(page, 'trachea'); await until(page, () => window.NremtSoundExplore.last._state().started); await page.waitForTimeout(900);
+    sn = await S(page);
+    ok(sn.playing && sn.strip.title === 'Generated breath' && /Normal tracheal breath sounds, louder, harsher here/.test(sn.chain), `${w} ${th}: normal at the trachea (${sn.chain} | ${sn.strip.title})`);
+    await tagged('trachea-normal');
+    await stopPlay(page);
     // heart sounds
     await tab(page, 'heart');
     await tagged('heart-open');
@@ -222,6 +233,18 @@ async function sweepWidth(w) {
     const mt = await tagged('takeaway');
     ok(mt.causeTake, `${w} ${th}: no takeaway after the sound ended`);
     if (w <= 640) ok(Math.max(...causeH) - Math.min(...causeH) < 1, `${w} ${th}: the cause line changes height (${Math.min(...causeH)} to ${Math.max(...causeH)})`);
+    // Test yourself: Where to listen's chest and When in the beat's strip, every text at least 11 px on screen
+    for (const q of ['?mode=timing&q=s3', '?mode=where&q=s1']) {
+      await page.goto(URL0 + q); await page.waitForTimeout(1200);
+      if (q.includes('where')) { await page.click('.st-site[data-site="aortic"]', { force: true }); await page.waitForTimeout(300); }
+      else { await page.click('.st-strip--tap', { position: { x: 60, y: 40 } }); await page.waitForTimeout(300); }
+      const small = await page.evaluate(() => [...document.querySelectorAll('.st-fig svg text, .st-timing svg text')].filter(t => {
+        const r = t.getBoundingClientRect(); if (!r.width || getComputedStyle(t).display === 'none' || +getComputedStyle(t).opacity === 0 || t.classList.contains('is-dim')) return false;
+        const m = t.getScreenCTM(); const k = Math.hypot(m.a, m.b); return parseFloat(getComputedStyle(t).fontSize) * k < 10.95;
+      }).map(t => t.textContent + ' ' + (parseFloat(getComputedStyle(t).fontSize) * Math.hypot(t.getScreenCTM().a, t.getScreenCTM().b)).toFixed(1)));
+      ok(!small.length, `${w} ${th} ${q}: Test yourself text under 11 px: ${small.slice(0, 4).join(', ')}`);
+      await shot('test-' + q.replace(/[^a-z0-9]/gi, '_'));
+    }
     ok(!errs.length, `${w} ${th}: console errors ${errs.slice(0, 2).join(' | ')}`);
     await browser.close();
   }

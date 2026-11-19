@@ -39,7 +39,7 @@
       cause: 'air forced through narrowed small airways', ncause: 'air flows freely through open airways',
       take: 'A wheeze is air forced through narrowed small airways (asthma, COPD): heard over every lung field, mostly breathing out.' },
     crackles: { key: 'Crackles', lens: 'Fluid in air sacs', normal: 'Dry air sacs', draw: 'alveoli',
-      cause: 'fluid filled air sacs pop open', ncause: 'dry air sacs fill quietly',
+      cause: 'small airways and air sacs stuck by fluid snap open', ncause: 'dry air sacs fill quietly',
       take: 'Crackles are small airways and air sacs with fluid in them popping open, mostly breathing in: listen low, at the bases, first.' },
     stridor:  { key: 'Stridor', lens: 'Swollen upper airway', normal: 'Open upper airway', draw: 'larynx',
       cause: 'air forced through a narrowed upper airway', ncause: 'air flows freely past the larynx',
@@ -53,7 +53,7 @@
     'heart-systolic-murmur': { key: 'Systolic murmur', short: 'Systolic', lens: 'Narrow aortic valve', cause: 'blood squeezes through a narrow valve',
       take: 'A systolic murmur fills the gap between S1 and S2: turbulent flow while the ventricles squeeze (here, a narrow aortic valve).' },
     'heart-diastolic-murmur': { key: 'Diastolic murmur', short: 'Diastolic', lens: 'Leaky aortic valve', cause: 'blood leaks back while the heart fills',
-      take: 'A diastolic murmur sits after S2, while the heart fills: here blood leaking back through an aortic valve that does not close.' },
+      take: 'A diastolic murmur sits after S2, while the heart fills: here blood leaking back through an aortic valve that does not close fully.' },
     'heart-normal': { key: 'Normal', lens: 'Valves closing', cause: 'S1 and S2 are the valves closing',
       take: 'Normal: S1 is the mitral and tricuspid valves closing, S2 the aortic and pulmonic; the short gap is systole.' }
   };
@@ -68,6 +68,12 @@
   var SHORT = { trachea: 'Trachea', aortic: 'Aortic area', pulmonic: 'Pulmonic area', erb: 'Erb’s point', tricuspid: 'Tricuspid area',
     mitral: 'Mitral area', 'lung-ru': 'Right apex', 'lung-lu': 'Left apex', 'lung-rl': 'Right base', 'lung-ll': 'Left base',
     'back-lu': 'Left upper back', 'back-ru': 'Right upper back', 'back-ll': 'Left lower back', 'back-rl': 'Right lower back' };
+  /* Normal breath sounds, for the Normal side of the lung switch (never silence: silence over a lung field is the
+     finding "diminished or absent breath sounds"). Over the lung fields a real recording (Fraiwan et al., CC BY 4.0);
+     over the trachea a generated tracheal breath (louder and harsher, heard both ways), tagged "Generated". */
+  var NORMAL_LUNG = { id: 'lung-normal', label: 'Normal breath sounds', group: 'lung', localSrc: 'assets/audio/normal-vesicular.wav' };
+  var NORMAL_TRACHEA = { id: 'trachea-normal', label: 'Normal tracheal breath sounds', group: 'airway', synth: 'breath-tracheal' };
+  var NORMAL_TAKE = 'Normal breath sounds over the lungs are soft and low (vesicular): heard all through breathing in, fading early in breathing out. Over the trachea they are louder and harsher.';
   var PRE = 0.25; // the heart strip starts this long before S1 (as the timing test's strip does)
 
   function build(o){
@@ -80,7 +86,8 @@
     function T(){ return TABS.filter(function(t){ return t.id === St.tab; })[0]; }
     function S(){ return St.per[St.tab]; }
     // the sound heard now: the selected key, or the normal one on the switch's other side
-    function cur(){ var s = S(); return s.normal ? (T().kind === 'heart' ? byId['heart-normal'] : null) : byId[s.key]; }
+    function cur(){ var s = S(); return s.normal ? (T().kind === 'heart' ? byId['heart-normal'] : s.site === 'trachea' ? NORMAL_TRACHEA : NORMAL_LUNG) : byId[s.key]; }
+    function isNormalBreath(snd){ return snd === NORMAL_LUNG || snd === NORMAL_TRACHEA; }
 
     /* ---------------------------------------------------------------- the stage */
     var stage = el('div', 'snd2');
@@ -143,10 +150,18 @@
         g.abY = y0 + 4; g.abX = sx + 52 + (sw - 52) / 2; g.abW = sw - 52; g.playOut = [sx, y0 + 7];
       }
       var k = Math.min(fa.w / 600, fa.h / 666), ox = fa.x + (fa.w - 600 * k) / 2, oy = fa.y + Math.max(0, (fa.h - 666 * k) / 2);
+      g.pr = clamp(26 * k * 1.25, 19, 28); // the chest piece's radius
+      g.zoom = 1;
+      // the heart's five spots sit close (Erb's point is 49 image px below the pulmonic area): on a small chest the
+      // picture zooms in on the heart so the chest piece on one spot never covers the next
+      if(T().kind === 'heart'){
+        var z = clamp((g.pr + 30) / (48.6 * k), 1, 2.2);
+        if(z > 1.02){ g.zoom = z; k *= z; ox = fa.x + fa.w / 2 - 335 * k; oy = fa.y + fa.h * .5 - 340 * k; }
+      }
       g.fa = fa; g.k = k; g.ox = ox; g.oy = oy;
       g.lens = { x: lx, y: ly, r: lr }; g.strip = { x: sx, y: sy, w: sw, h: sh };
       g.rest = toStage([110, 44], g); // beside the neck, off the chest, under nothing
-      g.pr = clamp(26 * k * 1.25, 19, 28); // the chest piece's radius
+      if(g.zoom > 1) g.rest = [fa.x + g.pr + 10, fa.y + g.pr + 10]; // zoomed in: the top left corner of the view
       return g;
     }
     function toStage(p, g){ g = g || G; return [g.ox + p[0] * g.k, g.oy + p[1] * g.k]; }
@@ -189,10 +204,17 @@
       var g = G, f = FIG && FIG.figs['chest-' + S().view];
       gFig.innerHTML = '';
       if(!f) return;
-      sv('image', { href: FIG.url(f), x: f1(g.ox), y: f1(g.oy), width: f1(600 * g.k), height: f1(666 * g.k), class: 'snd2-img', preserveAspectRatio: 'none' }, gFig);
+      var host = gFig;
+      if(g.zoom > 1){ // zoomed on the heart: the chest is cut to its own area
+        var cpz = sv('clipPath', { id: 'snd2-fz' }, sv('defs', {}, gFig));
+        sv('rect', { x: f1(g.fa.x), y: f1(g.fa.y), width: f1(g.fa.w), height: f1(g.fa.h), rx: 12 }, cpz);
+        host = sv('g', { 'clip-path': 'url(#snd2-fz)' }, gFig);
+      }
+      sv('image', { href: FIG.url(f), x: f1(g.ox), y: f1(g.oy), width: f1(600 * g.k), height: f1(666 * g.k), class: 'snd2-img', preserveAspectRatio: 'none' }, host);
       // R and L: which side of the patient is which (front view: his right on your left)
       var front = S().view === 'front', y = g.oy + 330 * g.k;
-      [[g.ox + 26 * g.k, front ? 'R' : 'L'], [g.ox + 574 * g.k, front ? 'L' : 'R']].forEach(function(a){
+      if(g.zoom > 1) y = g.fa.y + g.fa.h * .3;
+      [[Math.max(g.ox + 26 * g.k, g.fa.x + 14), front ? 'R' : 'L'], [Math.min(g.ox + 574 * g.k, g.fa.x + g.fa.w - 14), front ? 'L' : 'R']].forEach(function(a){
         var t = sv('text', { x: f1(a[0]), y: f1(y), class: 'snd2-rl' }, gFig); t.textContent = a[1];
       });
     }
@@ -216,7 +238,7 @@
     }
     function strengthAt(id){
       var snd = cur(), s = SITE[id];
-      if(!snd) return 0.55; // normal breath sounds: heard over every lung field and the trachea
+      if(isNormalBreath(snd) || (S().normal && T().kind === 'lung')) return id === 'trachea' ? 0.85 : 0.55; // heard everywhere; loudest and harshest over the trachea
       return P.strength(snd, s);
     }
     function paintSites(){
@@ -270,6 +292,17 @@
       viewSw.style.top = f1(g.fa.y + g.fa.h - 50) + 'px'; viewSw.style.left = f1(g.fa.x + g.fa.w - 6) + 'px';
     }
 
+    // what the lens draws: the key's picture; for a normal breath, what is under the stethoscope (the trachea, or the
+    // lung's airways and air sacs)
+    var NORMAL_NAME = { bronchiole: 'Open airway', alveoli: 'Dry air sacs', larynx: 'Open upper airway' };
+    function lensKind(){
+      var I = INFO[S().key], d = I.draw || 'heart';
+      if(S().normal && T().kind === 'lung') d = S().site === 'trachea' ? 'larynx' : d === 'larynx' ? 'bronchiole' : d;
+      return d;
+    }
+    function normalCause(){ var d = lensKind(); return d === 'larynx' ? 'air rushes through the wide trachea' : d === 'alveoli' ? INFO.crackles.ncause : INFO.wheeze.ncause; }
+    // off the chest nothing is heard, so the lens is dim and unnamed (the cause line says "nothing heard")
+    function lensIdle(){ var off = !S().site; lensLab.hidden = off; gLens.classList.toggle('is-idle', off); if(!off) placeLensLab(); }
     function placeLensLab(){
       if(!G) return;
       var L = G.lens, w = lensLab.offsetWidth, x = L.x - w / 2, bottom = L.y - L.r - 8;
@@ -295,8 +328,8 @@
     // design units: the lens is a circle of radius 100 around 0, 0
     function buildLens(force){
       if(!LZ) return;
-      if(!force && LZ.sid === S().key && LZ.normal === S().normal && LZ.body.firstChild) return; // already drawn
-      var snd = byId[S().key], I = INFO[S().key], normal = S().normal, b = LZ.body, d = I.draw || 'heart';
+      var snd = byId[S().key], I = INFO[S().key], normal = S().normal, b = LZ.body, d = lensKind();
+      if(!force && LZ.sid === S().key && LZ.normal === S().normal && LZ.kind === d && LZ.body.firstChild) return; // already drawn
       b.innerHTML = ''; LZ.parts = {}; LZ.kind = d; LZ.normal = normal; LZ.sid = S().key;
       var P_ = LZ.parts, i;
       if(d === 'bronchiole'){
@@ -318,14 +351,18 @@
         if(!normal){ P_.waves = []; for(i = 0; i < 3; i++) P_.waves.push(sv('path', { class: 'snd2-wave', d: 'M0 0' }, b)); }
       } else if(d === 'alveoli'){
         sv('rect', { x: -110, y: -110, width: 220, height: 220, class: 'snd2-tis' }, b);
+        var dfa = sv('defs', {}, b), sg = sv('radialGradient', { id: 'snd2-sac-g', cx: '.36', cy: '.3', r: '.75' }, dfa);
+        sv('stop', { offset: '0', 'stop-color': '#FFF6F3' }, sg); sv('stop', { offset: '.7', 'stop-color': '#F6D2CA' }, sg); sv('stop', { offset: '1', 'stop-color': '#E3A79C' }, sg);
+        // a bronchiole ending in a grape like cluster of air sacs, each on its own short duct
         sv('path', { d: 'M-110 -14 C-70 -14 -50 -8 -28 -4 L-28 6 C-50 4 -70 8 -110 8 Z', class: 'snd2-bron' }, b);
         var SAC = [[-6, -2, 24], [30, -40, 25], [44, 8, 26], [22, 50, 24], [-24, 44, 22], [-26, -44, 23], [70, -26, 20], [62, 48, 20], [8, -78, 18], [80, 14, 0]];
         P_.sacs = [];
+        SAC.forEach(function(s){ if(s[2]) sv('line', { x1: s[0], y1: s[1], x2: -24, y2: 1, class: 'snd2-duct' }, b); });
         SAC.forEach(function(s, j){
           if(!s[2]) return;
           var wet = !normal && j % 2 === 0 && j > 0, gO = sv('g', { class: 'snd2-sac' + (wet ? ' is-wet' : ''), transform: 'translate(' + s[0] + ' ' + s[1] + ')' }, b);
           var gS = sv('g', {}, gO); // scaled as the sac opens and closes: the fluid stays inside it
-          var c = sv('circle', { r: s[2], class: 'snd2-sac-w' }, gS);
+          var c = sv('circle', { r: s[2], class: 'snd2-sac-w', fill: 'url(#snd2-sac-g)' }, gS);
           var fl = wet ? sv('path', { d: 'M' + (-s[2]) + ' ' + (s[2] * .25) + ' Q0 ' + (s[2] * .05) + ' ' + s[2] + ' ' + (s[2] * .25) + ' A' + s[2] + ' ' + s[2] + ' 0 0 1 ' + (-s[2]) + ' ' + (s[2] * .25) + 'Z', class: 'snd2-fluid' }, gS) : null;
           var pop = wet ? sv('path', { class: 'snd2-pop', d: 'M-9 -9l-6 -6M9 -9l6 -6M0 -12v-8M-12 0h-8M12 0h8' }, gO) : null;
           P_.sacs.push({ g: gS, c: c, r: s[2], wet: wet, pop: pop, x: s[0], y: s[1] });
@@ -346,31 +383,39 @@
       } else {
         buildHeart(b, snd.synth || 'normal');
       }
-      lensLab.textContent = normal ? (I.normal || INFO['heart-normal'].lens) : (I.lens);
+      lensLab.textContent = normal ? (T().kind === 'heart' ? INFO['heart-normal'].lens : NORMAL_NAME[d]) : I.lens;
+      lensIdle();
       lensLab.className = 'snd2-lab snd2-lenslab' + (normal ? ' is-normal' : '');
       placeLensLab();
     }
-    // the heart, cut open from the front: right atrium and ventricle on the viewer's left, left on the right
+    // the heart, cut open from the front (patient's right on the viewer's left): right atrium and ventricle on the
+    // left, left atrium and ventricle on the right; the aorta rises from the left ventricle and arches over, the
+    // pulmonary trunk rises from the right ventricle in front of it and to the patient's left. Shaded like the
+    // rendered chest: soft light from the upper left.
     function buildHeart(b, kind){
       var P_ = LZ.parts, dil = kind === 's3', stiff = kind === 's4';
-      sv('rect', { x: -110, y: -110, width: 220, height: 220, class: 'snd2-peri' }, b);
+      var df = sv('defs', {}, b);
+      function rg(id, c0, c1){ var g = sv('radialGradient', { id: id, cx: '.38', cy: '.32', r: '.8' }, df); sv('stop', { offset: '0', 'stop-color': c0 }, g); sv('stop', { offset: '1', 'stop-color': c1 }, g); }
+      rg('snd2-hg-b', '#B9CCEB', '#6F8DC4'); rg('snd2-hg-r', '#F2A79C', '#C0544A'); rg('snd2-hg-m', '#D8796C', '#8E3B31'); rg('snd2-hg-p', '#FBF1EA', '#E6D2C6');
+      sv('rect', { x: -110, y: -110, width: 220, height: 220, fill: 'url(#snd2-hg-p)' }, b);
       var gH = sv('g', { class: 'snd2-heart' }, b);
-      sv('path', { class: 'snd2-myo-out', d: 'M-92 -18 C-98 34 -44 96 34 104 C96 84 114 24 100 -18 C94 -46 74 -60 44 -58 C14 -62 -18 -62 -50 -58 C-80 -56 -90 -42 -92 -18Z' }, gH);
-      P_.ra = sv('path', { class: 'snd2-ch is-blue', d: 'M-70 -52 C-86 -50 -88 -8 -64 -4 L-12 -4 L-12 -44 C-26 -56 -54 -56 -70 -52Z' }, gH);
-      P_.la = sv('path', { class: 'snd2-ch is-red', d: 'M14 -46 C30 -58 66 -56 78 -44 C88 -28 80 -8 66 -4 L14 -4Z' }, gH);
+      // the aorta first (it lies behind the pulmonary trunk): up from the left ventricle, arching to the right
+      sv('path', { class: 'snd2-ves is-red', fill: 'url(#snd2-hg-r)', d: 'M-4 -4 L-6 -62 C-8 -92 14 -108 40 -104 C58 -101 70 -92 72 -76 L60 -72 C56 -86 46 -92 34 -92 C16 -92 8 -80 8 -62 L10 -4Z' }, gH);
+      sv('path', { class: 'snd2-myo-out', fill: 'url(#snd2-hg-m)', d: 'M-92 -18 C-98 34 -44 96 34 104 C96 84 114 24 100 -18 C94 -46 74 -60 44 -58 C14 -62 -18 -62 -50 -58 C-80 -56 -90 -42 -92 -18Z' }, gH);
+      P_.ra = sv('path', { class: 'snd2-ch is-blue', fill: 'url(#snd2-hg-b)', d: 'M-70 -52 C-86 -50 -88 -8 -64 -4 L-12 -4 L-12 -44 C-26 -56 -54 -56 -70 -52Z' }, gH);
+      P_.la = sv('path', { class: 'snd2-ch is-red', fill: 'url(#snd2-hg-r)', d: 'M14 -46 C30 -58 66 -56 78 -44 C88 -28 80 -8 66 -4 L14 -4Z' }, gH);
       var lv = dil ? 'M10 4 L92 4 C106 40 84 96 30 96 C14 80 10 40 10 4Z' : 'M14 4 L80 4 C92 36 72 84 34 88 C22 70 14 40 14 4Z';
-      P_.rv = sv('path', { class: 'snd2-ch is-blue', d: 'M-74 4 L-12 4 L-12 60 C-14 76 -26 86 -34 88 C-62 70 -80 40 -74 4Z' }, gH);
-      P_.lvWall = sv('path', { class: 'snd2-myo' + (stiff ? ' is-thick' : ''), d: lv }, gH);
-      P_.lv = sv('path', { class: 'snd2-ch is-red', d: lv, transform: stiff ? 'translate(50 44) scale(.72) translate(-50 -44)' : 'translate(50 44) scale(.86) translate(-50 -44)' }, gH);
-      // the great vessels: the pulmonary artery from the right ventricle, the aorta from the left
-      sv('path', { class: 'snd2-ves is-blue', d: 'M-28 -6 L-28 -64 C-28 -84 -40 -96 -60 -100 L-56 -112 C-30 -106 -14 -90 -14 -64 L-14 -6Z' }, gH);
-      sv('path', { class: 'snd2-ves is-red', d: 'M-6 -6 L-6 -70 C-6 -100 30 -112 56 -98 L50 -86 C32 -96 8 -90 8 -70 L8 -6Z' }, gH);
-      function valve(x, y, w, horiz){ var g2 = sv('g', { class: 'snd2-valve', transform: 'translate(' + x + ' ' + y + ')' }, gH);
-        var a = sv('line', { x1: -w, y1: 0, x2: 0, y2: 0 }, g2), c = sv('line', { x1: w, y1: 0, x2: 0, y2: 0 }, g2);
+      P_.rv = sv('path', { class: 'snd2-ch is-blue', fill: 'url(#snd2-hg-b)', d: 'M-74 4 L-12 4 L-12 60 C-14 76 -26 86 -34 88 C-62 70 -80 40 -74 4Z' }, gH);
+      P_.lvWall = sv('path', { class: 'snd2-myo' + (stiff ? ' is-thick' : ''), fill: 'url(#snd2-hg-m)', d: lv }, gH);
+      P_.lv = sv('path', { class: 'snd2-ch is-red', fill: 'url(#snd2-hg-r)', d: lv, transform: stiff ? 'translate(50 44) scale(.72) translate(-50 -44)' : 'translate(50 44) scale(.86) translate(-50 -44)' }, gH);
+      // the pulmonary trunk, in front: up from the right ventricle and over to the patient's left
+      sv('path', { class: 'snd2-ves is-blue', fill: 'url(#snd2-hg-b)', d: 'M-30 -4 L-30 -40 C-30 -66 -10 -82 18 -86 L30 -88 L32 -74 L20 -72 C2 -68 -16 -58 -16 -40 L-16 -4Z' }, gH);
+      function valve(x, y, w, up){ var g2 = sv('g', { class: 'snd2-valve', transform: 'translate(' + x + ' ' + y + ')' }, gH);
         var fl = sv('circle', { r: w + 6, class: 'snd2-flash' }, g2);
-        return { g: g2, a: a, b: c, w: w, flash: fl, dir: horiz ? -1 : 1 }; }
+        var a = sv('line', { x1: -w, y1: 0, x2: 0, y2: 0 }, g2), c = sv('line', { x1: w, y1: 0, x2: 0, y2: 0 }, g2);
+        return { g: g2, a: a, b: c, w: w, flash: fl, dir: up ? -1 : 1 }; }
       P_.tri = valve(-40, 0, 16); P_.mit = valve(46, 0, 18);
-      P_.pul = valve(-21, -30, 7, true); P_.aor = valve(1, -36, 7, true);
+      P_.pul = valve(-23, -26, 7, true); P_.aor = valve(2, -30, 7, true);
       if(kind === 'systolic-murmur'){ P_.aor.g.classList.add('is-stenotic'); }
       if(kind === 'diastolic-murmur'){ P_.aor.g.classList.add('is-leaky'); }
       P_.flashLV = sv('path', { class: 'snd2-flash-w', d: lv }, gH);
@@ -455,13 +500,20 @@
       // blood: out through the aorta in systole (a jet through a narrow valve), in from the left atrium in diastole,
       // and back through a leaky aortic valve in diastole
       P_.blood.forEach(function(c, i){
-        var u = ((t == null ? i / 12 : t * 1.6 + i / 12) % 1), x, y, show = 1;
-        if(inSys){ x = 1 + Math.sin(i * 1.7 + u * 9) * (k === 'systolic-murmur' && u > .3 ? 14 * u : 3); y = 40 - u * 140; }
-        else if(k === 'diastolic-murmur' && i % 2){ x = 1 + Math.sin(i + u * 10) * 10 * u; y = -60 + u * 110; }
-        else { x = 46 + Math.sin(i * 2.1) * 10; y = -30 + u * (k === 's3' ? 100 : 80); }
+        var u = ((t == null ? i / 12 : t * 1.6 + i / 12) % 1), x, y, show = 1, turb = false;
+        function seg(p0, p1, v){ return [p0[0] + (p1[0] - p0[0]) * v, p0[1] + (p1[1] - p0[1]) * v]; }
+        var pt;
+        if(inSys){ // out of the left ventricle, through the aortic valve, up the aorta
+          pt = u < .5 ? seg([46, 56], [3, -26], u / .5) : seg([3, -26], [-1, -96], (u - .5) / .5);
+          if(k === 'systolic-murmur' && u > .5){ turb = true; pt[0] += Math.sin(i * 1.7 + u * 12) * 12 * (u - .4); }
+        } else if(k === 'diastolic-murmur' && i % 2){ // back through the leaky valve into the left ventricle
+          pt = u < .4 ? seg([0, -70], [3, -30], u / .4) : seg([3, -30], [40, 40], (u - .4) / .6);
+          pt[0] += Math.sin(i + u * 10) * 6 * u; turb = true;
+        } else { pt = seg([48, -30], [42, k === 's3' ? 70 : 56], u); pt[0] += Math.sin(i * 2.1) * 8; } // filling from the left atrium
+        x = pt[0]; y = pt[1];
         if(t == null) show = (k === 'systolic-murmur' && inSys) || (k === 'diastolic-murmur' && !inSys && i % 2) ? 1 : 0;
         c.setAttribute('cx', f1(x)); c.setAttribute('cy', f1(y)); c.style.opacity = String(show);
-        c.setAttribute('class', 'snd2-blood' + ((k === 'systolic-murmur' && inSys && u > .3) || (k === 'diastolic-murmur' && !inSys && i % 2) ? ' is-turb' : ''));
+        c.setAttribute('class', 'snd2-blood' + (turb ? ' is-turb' : ''));
       });
     }
 
@@ -496,7 +548,7 @@
       SZ.band.setAttribute('width', 0); SZ.head.style.opacity = 0; SZ.shown = {}; SZ.events = [];
       SZ.clip.setAttribute('x', f1(SZ.px)); SZ.clip.setAttribute('width', 0); SZ.clip2.setAttribute('width', 0);
       if(!site){ SZ.title.textContent = 'Nothing heard'; return; }
-      if(snd && snd.synth){
+      if(snd && snd.synth && !isNormalBreath(snd)){
         SZ.kind = 'heart';
         var ev = Bank.heartEvents(snd.synth, 72), cyc = ev.cycle, sr = 4000, mix = P.heartMix(snd.synth, site);
         var N = Math.max(60, Math.round(SZ.pw / 3)), ck = snd.synth + '|' + site.id + '|' + N, env = ENV[ck], top = [], bot = [];
@@ -519,9 +571,8 @@
         layoutEventLabels();
       } else {
         SZ.kind = 'lung';
-        SZ.title.textContent = snd ? 'This recording' : 'Typical breath';
-        SZ.live = []; SZ.lungNormal = !snd;
-        if(!snd) drawBreath();
+        SZ.title.textContent = snd && snd.synth ? 'Generated breath' : 'This recording';
+        SZ.live = [];
       }
     }
     // event pills: S1 and S2 above the trace, the extra one in the finding's colour; P2 to the right of A2
@@ -589,12 +640,12 @@
           var on = done || reduced() ? 1 : SZ.shown[e.key] ? 1 : 0;
           if(e.g.style.opacity !== String(on)) e.g.style.opacity = String(on);
         });
-      } else if(!SZ.lungNormal){
+      } else {
         var R = SZ.R;
         if(lvl == null){
           // the browser cannot measure this clip (no CORS from its server): a typical breath, named as one, with the
           // part of the breath this sound lives in shaded, as the old page drew it
-          if(t != null && !SZ.noLive){ SZ.noLive = true; SZ.title.textContent = 'Typical breath'; drawBreath(P.PHASE[cur().id]); }
+          if(t != null && !SZ.noLive){ SZ.noLive = true; SZ.title.textContent = 'Typical breath'; drawBreath(P.PHASE[cur().id]); } /* a normal breath: no phase shaded */
           return;
         }
         SZ.live.push(lvl); var max = Math.round(SZ.pw / 2);
@@ -616,13 +667,15 @@
       // the tubing hangs from the chest piece down and outward, off the bottom of the picture (to the EMT's ears)
       var cxm = G.ox + 300 * G.k, out = p[0] < cxm ? -1 : 1, bx, by, c2;
       if(G.wide){ bx = clamp(p[0] + out * Math.max(50, 90 * G.k), G.fa.x + 6, G.fa.x + G.fa.w - 6); by = G.H + 12; c2 = [bx, by - 90]; }
-      else { bx = out < 0 ? -12 : G.W + 12; by = Math.min(p[1] + 120, G.fa.y + G.fa.h - 10); c2 = [bx - out * 60, by]; }
-      var dT = 'M' + f1(p[0]) + ' ' + f1(p[1] + r * .8) + ' C' + f1(p[0] + out * 6) + ' ' + f1(p[1] + r + 50) + ' ' + f1(c2[0]) + ' ' + f1(c2[1]) + ' ' + f1(bx) + ' ' + f1(by);
+      else { bx = out < 0 ? -12 : G.W + 12; by = Math.min(p[1] + 40, G.fa.y + G.fa.h - 10); c2 = [bx - out * 60, by]; }
+      // wide: down, off the bottom; narrow: straight out to the side, so it never lies over the next spot down
+      var c1 = G.wide ? [p[0] + out * 6, p[1] + r + 50] : [p[0] + out * 70, p[1] + 6], st0 = G.wide ? [p[0], p[1] + r * .8] : [p[0] + out * r * .8, p[1]];
+      var dT = 'M' + f1(st0[0]) + ' ' + f1(st0[1]) + ' C' + f1(c1[0]) + ' ' + f1(c1[1]) + ' ' + f1(c2[0]) + ' ' + f1(c2[1]) + ' ' + f1(bx) + ' ' + f1(by);
       // one element per drawn thing, updated in place (a drag moves them every frame)
       if(!gTube.firstChild){ sv('path', { class: 'snd2-tube-s' }, gTube); sv('path', { class: 'snd2-tube' }, gTube); }
       gTube.firstChild.setAttribute('d', dT); gTube.lastChild.setAttribute('d', dT);
       // the leader from the chest piece to the lens, once it is on a spot
-      var on = !!S().site && !St.moving, L = G.lens, dx = p[0] - L.x, dy = p[1] - L.y, dd = Math.sqrt(dx * dx + dy * dy) || 1;
+      var on = !!S().site && !St.moving && !G.wide, L = G.lens, dx = p[0] - L.x, dy = p[1] - L.y, dd = Math.sqrt(dx * dx + dy * dy) || 1;
       if(!gLead.firstChild) sv('line', { class: 'snd2-leader' }, gLead);
       var ld = gLead.firstChild; ld.style.display = on ? '' : 'none';
       if(on){ ld.setAttribute('x1', f1(p[0])); ld.setAttribute('y1', f1(p[1])); ld.setAttribute('x2', f1(L.x + dx / dd * L.r)); ld.setAttribute('y2', f1(L.y + dy / dd * L.r)); }
@@ -687,11 +740,6 @@
       if(!site){ chain(); return; }
       keepCause();
       var tk = play.token;
-      if(!snd){
-        // the normal side of the lung switch: no free recording of normal breath sounds yet
-        chain(); later(700, function(){ cause.take('Normal breath sounds are soft and even over every lung field: there is no extra sound. (No free recording yet, so nothing plays.)'); });
-        paintPlay(); return;
-      }
       play.on = true; play.sid = snd.id; play.started = false; play.ended = false;
       var s = SITE[site], h = {
         onStart: function(info){ if(tk !== play.token) return; if(play.info) setupStrip(); /* a retry without CORS */ play.info = info; play.t0 = performance.now(); play.started = true; loop(); },
@@ -699,7 +747,8 @@
         onStop: function(){ if(tk !== play.token) return; play.on = false; paintPlay(); },
         onError: function(msg){ if(tk !== play.token) return; play.on = false; paintPlay(); chain(); cause.take(msg); }
       };
-      if(snd.synth){ h.mix = P.heartMix(snd.synth, s); h.beats = 6; warmSites(snd); }
+      if(snd === NORMAL_TRACHEA){ h.mix = { level: 1 }; h.beats = 3; h.analyse = true; }
+      else if(snd.synth){ h.mix = P.heartMix(snd.synth, s); h.beats = 6; warmSites(snd); }
       else { var g = P.LUNG_GAIN[snd.id]; h.gain = g ? g(s) : 1; h.analyse = true; }
       chain(); paintPlay();
       Bank.play(snd, h);
@@ -715,11 +764,13 @@
       play.on = false; play.ended = true; paintPlay();
       paintStrip(null, null, true); paintLens(null, null);
       chain(true);
-      later(reduced() ? 300 : 900, function(){ var I = INFO[S().normal && T().kind === 'heart' ? 'heart-normal' : S().key]; cause.take(I.take); say(I.take); });
+      later(reduced() ? 300 : 900, function(){ var tk2 = S().normal ? (T().kind === 'heart' ? INFO['heart-normal'].take : NORMAL_TAKE) : INFO[S().key].take; cause.take(tk2); say(tk2); });
     }
     /* the cause line: where the stethoscope is -> what is heard there -> what makes it. The second pill waits for
        the trace (or the sound) to start; the third for the lens to move. */
     function loudWord(snd, id){
+      if(snd === NORMAL_TRACHEA) return 'louder, harsher here';
+      if(snd === NORMAL_LUNG) return 'heard here';
       var best = P.BEST[snd.id], s = SITE[id];
       if(best && best.at.indexOf(id) >= 0) return 'loudest here';
       if(!P.assessedHere(snd, s)) return 'faint here';
@@ -729,10 +780,10 @@
     function chain(all){
       var id = S().site, snd = cur(), I = INFO[S().key];
       if(!id){ cause.set([{ t: 'Off the chest', role: 'place' }, { t: 'nothing heard', role: 'snd' }]); label(); return; }
-      var parts = [{ t: SHORT[id], role: 'place' }], heard = all || (play.started && (!SZ || SZ.kind !== 'heart' || drawnW() > 2)) || (!snd && !play.on);
-      if(!snd){ parts.push({ t: 'Normal: no extra sound', role: 'snd' }); parts.push({ t: I.ncause, role: 'why' }); cause.set(parts); label(); return; }
-      if(heard) parts.push({ t: (snd.id === 'heart-normal' ? 'Normal S1 S2' : I.key) + ', ' + loudWord(snd, id), role: 'snd', say: snd.label + ', ' + loudWord(snd, id) });
-      if(heard && (all || play.lensOn)) parts.push({ t: snd.id === 'heart-normal' ? INFO['heart-normal'].cause : I.cause, role: 'why' });
+      var parts = [{ t: SHORT[id], role: 'place' }], heard = all || (play.started && (!SZ || SZ.kind !== 'heart' || drawnW() > 2));
+      var nb = isNormalBreath(snd);
+      if(heard) parts.push({ t: (snd.id === 'heart-normal' ? 'Normal S1 S2' : nb ? 'Normal' : I.key) + ', ' + loudWord(snd, id), role: 'snd', say: snd.label + ', ' + loudWord(snd, id) });
+      if(heard && (all || play.lensOn)) parts.push({ t: snd.id === 'heart-normal' ? INFO['heart-normal'].cause : nb ? normalCause() : I.cause, role: 'why' });
       cause.set(parts);
       St.chain = parts.map(function(p){ return p.t; });
       label();
@@ -770,7 +821,7 @@
       var s = S();
       if(cue && cue.active()) cue.hide(true);
       if(id && !siteEls[id]) return;
-      s.site = id || null; play.lensOn = false;
+      s.site = id || null; play.lensOn = false; lensIdle();
       paintSites(); paintPlay();
       stopSound(false); setupStrip(); chain();
       slideTo(s.site, function(){ if(s.site && user) listen(); else { chain(); } });
@@ -843,12 +894,19 @@
       if(!drag || e.pointerId !== drag.id) return;
       var p = local(e), x = clamp(p[0] + drag.dx, G.fa.x, G.fa.x + G.fa.w), y = clamp(p[1] + drag.dy, G.fa.y, G.fa.y + G.fa.h);
       if(Math.abs(p[0] - drag.x0) + Math.abs(p[1] - drag.y0) > 4) drag.moved = true;
-      placeSteth([x, y]);
-      var n = nearest(x, y, 46);
-      if(n !== drag.near){ if(drag.near && siteEls[drag.near]) siteEls[drag.near].g.classList.remove('is-near'); if(n) siteEls[n].g.classList.add('is-near'); drag.near = n; }
+      drag.to = [x, y];
+      if(drag.raf) return; // one paint a frame, however many moves arrive
+      var d0 = drag;
+      d0.raf = requestAnimationFrame(function(){
+        d0.raf = 0; if(drag !== d0 || !d0.to) return;
+        placeSteth(d0.to);
+        var n = nearest(d0.to[0], d0.to[1], 46);
+        if(n !== d0.near){ if(d0.near && siteEls[d0.near]) siteEls[d0.near].g.classList.remove('is-near'); if(n) siteEls[n].g.classList.add('is-near'); d0.near = n; }
+      });
     });
     function endDrag(e){
       if(!drag || (e && e.pointerId !== drag.id)) return;
+      if(drag.raf){ cancelAnimationFrame(drag.raf); if(drag.to) placeSteth(drag.to); }
       var moved = drag.moved; drag = null; steth.classList.remove('is-drag');
       Object.keys(siteEls).forEach(function(id){ siteEls[id].g.classList.remove('is-near'); });
       St.moving = false;
@@ -904,7 +962,8 @@
       '<p>A patient’s chest with the ribs, sternum and heart drawn under the skin. Drag the stethoscope onto a spot (or tap a spot) to hear the chosen sound there, as loud as it is at that spot: the bigger a spot’s glow, the louder it is there. The round lens shows what makes the sound, and the strip draws the sound as it plays. The switch under the lens compares it with normal at the same spot.</p>' +
       '<ul class="snd2-ref-l">' +
       '<li><b>Where to listen.</b> Lungs: below each clavicle (the apices), the sides low down (the bases, midaxillary line) and the back, comparing right with left at the same level. Stridor: over the trachea. Heart: aortic area (2nd intercostal space, right sternal border), pulmonic (2nd, left sternal border), Erb’s point (3rd, left), tricuspid (4th to 5th, lower left sternal border), mitral or apex (5th, left midclavicular line).</li>' +
-      '<li><b>Lung sounds</b> are real recordings by James Heilman, MD (stridor processed by Natural Philo), from Wikimedia Commons, CC BY-SA 3.0. They stream from Wikimedia, so they need a connection. When the browser can measure the clip, the strip draws its loudness live; otherwise it draws a typical breath (not this clip) with the part of the breath the sound lives in shaded. There is no free recording of normal breath sounds yet, so the Normal side of the lung switch plays nothing.</li>' +
+      '<li><b>Lung sounds</b> are real recordings by James Heilman, MD (stridor processed by Natural Philo), from Wikimedia Commons, CC BY-SA 3.0. They stream from Wikimedia, so they need a connection. When the browser can measure the clip, the strip draws its loudness live; otherwise it draws a typical breath (not this clip) with the part of the breath the sound lives in shaded.</li>' +
+      '<li><b>Normal breath sounds</b> over the lung fields are a real recording (normal, posterior left middle, an adult; heart sounds may be heard under it) from Fraiwan M, Fraiwan L, Khassawneh B, Ibnian A, \u201cA dataset of lung sounds recorded from the chest wall using an electronic stethoscope\u201d, Mendeley Data (jwyy9np4gv), <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. Over the trachea, normal breath sounds are louder and harsher, heard both breathing in and out: that one is generated in your browser and marked so.</li>' +
       '<li><b>Heart sounds</b> are generated in your browser, not recorded: what separates them is where each falls in the beat, which a generated sound gets exactly; the timbre of a real chest it does not. Murmurs, S3 and S4 are beyond the EMT exam. The murmurs drawn are one example each: the systolic one shaped like aortic stenosis, the diastolic one aortic regurgitation; other valves make murmurs heard best elsewhere.</li>' +
       '<li><b>Loudness by spot</b> is a teaching approximation: which spot is loudest, not the exact ratio.</li>' +
       '</ul>' +
