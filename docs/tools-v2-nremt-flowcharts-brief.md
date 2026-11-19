@@ -147,3 +147,31 @@ no text block.
   `LevlBodyFigs.load`); the preview in outputs was patched that way, the script was not changed.
 - `scripts/check-tool-use.mjs` is not edited (its NREMT sample moved to Formulary on the collecting branch, merged
   here); a local copy listing this page reports frame v2: open, touch, mode, use; nothing under automation.
+
+## Checks run (2026-11-19)
+`node --test scripts/test/nremt-*.test.mjs` (71 pass), `check-site` (OK), `check-weight` (no NREMT budget moved: the
+nremt shell still measures 28.6 of 28.8 KB on its largest page; the one failing line in this tree is an AP® Human
+Geography map, not this branch), a local copy of `check-tool-use.mjs` listing this page (frame v2: open, touch, mode,
+use; nothing under automation). Playwright at 390 (touch), 768 dark and 1440: 27 checks each (opening and cue, the
+cue clear of arms and boxes, keyboard picks with arrows and Enter, leaving Explore mid step and coming back, Test
+yourself Read, Drill a question with its verdict, a Build placement, back to Explore, deep links `#flow-...`,
+`#build-...`, `#drill`, `#call-arrest`, a reduced motion run to the takeaway, no console errors); Test yourself opens
+on the chart of the call just walked, and a glance at Explore keeps the chart the student was on.
+Sweep (`node scripts/tools-v2/nremt-flowcharts-sweep.mjs`, one process per width): every decision with its arms
+live, the state after one wrong arm at every decision, the end and Start over, both calls, light and dark, plus the
+first visit with the cue: 360, 390, 430, 600: 1226 passed each; 768, 820, 1024, 1280, 1440, 1920: 1184 passed each;
+0 failed. `--frames` (390 and 1440, every pick right and wrong, about 1900 frames): labels, live arms and the cause
+line's last pill never run ahead of the drawing (it caught five timing faults, all fixed); leaving mid step and
+returning; reduced motion.
+Preview: `/mnt/user-data/outputs/nremt-flowcharts-v2/index.html`; shots in `/mnt/user-data/outputs/nremt-flowcharts-v2/shots/`
+(`sweep-*`, and `v-*` with mid change frames `v-*-mid`).
+
+## Not done, and what I am not happy with
+- Frame times with the CPU slowed x4: median 16.7 ms; p95 33 to 43 ms in quieter runs, but 50 to 100 ms while the
+  shared machine was loaded (load average 12; idle frames then spiked to 300 ms too). The longest frames are the
+  pick itself (the card is laid out again and measured). Worth a clean measurement on an idle machine.
+- No independent medical review yet (points in `docs/nremt-needs-author.md`); no real phone, no screen reader pass.
+- The gloved hands are simple shapes and large (adult hand size), so the carotid and wrist hands cover part of the
+  neck and arm; the body is the same mannequin as the mnemonics patients.
+- The arrest patient's face does not change colour much with the gray overlay; the jets of blood are thin strokes.
+- Only Chromium.
