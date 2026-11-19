@@ -2057,3 +2057,45 @@ lung-volumes, oxygen-transport, action-potential-basics, muscle-tension).
   100 mm Hg, resting tissue about 40, working muscle about 20. Working muscle fades out below about 12 mm Hg (even
   working muscle does not reach 0); below 10 mm Hg no place is drawn and the line says "PO2 very low → little O2
   left on hemoglobin".
+
+## Pathway tracer, tools v2 drawn routes (2026-11-18): items for review
+Brief: `docs/tools-v2-anp-pathways-brief.md`. Explore draws four pathways from the bank and lets the student break a
+part; these are the judgment calls in the pictures and the break results.
+- **pw-heart-no-air** (decided, for review). The heart screen's break is "no fresh air reaches the alveoli": the cell
+  stays blue through the lungs and left heart and the body cells get "less O2" (one O2 leaves instead of six). Real
+  alveolar O2 falls over seconds to a minute, and returning blood is still about 75% saturated, so "less", never
+  "none". A blocked valve was rejected (not survivable, wrong picture).
+- **pw-heart-one-lung** (decided, for review). Only the route through the viewer's left lung is drawn (pulmonary artery,
+  capillary loop, pulmonary veins to the left atrium, passing behind the trunk and aorta); "?" says the other lung works
+  the same way. The superior vena cava is drawn; the cell returns by the inferior vena cava.
+- **pw-reflex-layout** (decided, for review). The cord section is drawn magnified beside the thigh, with zoom lines
+  from the vertebra at about T12 to L1, where the L2 to L4 cord segments lie (review round 1); the nerve runs from it straight to the quadriceps (the femoral nerve's real path through the
+  groin is not drawn). The synapse is in the ventral horn, on the motor neuron's cell body, as the course teaches
+  (one source seen during research, Case Western NeuroWiki, places it in the dorsal horn). Reciprocal inhibition of
+  the hamstrings is named in "?", not drawn.
+- **pw-reflex-cut-after** (decided, for review). Cutting a root after the signal passed keeps that kick and starts a
+  new signal at the tap; the next run stops at the cut.
+- **pw-hpa-layout** (decided, for review). The hypothalamus, stalk, portal veins and pituitary are a magnified circle;
+  one vessel stands for the circulation from the pituitary to the adrenal glands and liver and back to the brain.
+- **pw-hpa-pituitary-crh** (pending review). With the pituitary damaged the picture shows "CRH builds up" (no cortisol,
+  so no brake on the hypothalamus). This is standard physiology of secondary adrenal insufficiency but the course
+  notes do not state it; the adrenal case (ACTH very high, Addison disease) is in the notes.
+- **pw-hpa-glucose** (decided, for review). Cortisol's action is drawn as glucose leaving the liver; muscle protein
+  breakdown and damped inflammation are in the pathway's text and "?", not drawn.
+- **pw-synapse-summation** (decided, for review). Two neighbouring terminals fire with the drawn one, so the summed
+  EPSPs reach threshold and the trigger zone fires (spatial summation); "?" says one EPSP alone is far too small. The
+  threshold bar is qualitative. Transmitter is cleared by reuptake (a transporter on the terminal) and enzymes in the
+  cleft; which one a synapse uses is not said.
+- **pw-synapse-blockers** (decided, for review). "Block" on the Ca2+ channels stops release (the notes: remove calcium
+  and nothing is released); "Block" on the receptor proteins stands for a receptor antagonist (curare type at the
+  neuromuscular junction; the drawn synapse is neuron to neuron, so no drug is named).
+- **pw-heart-wide** (decided, for review; review round 1). On a desktop the heart screen puts the body's tissue on the
+  left, the heart in the middle and the lungs on the right; only the inferior vena cava is drawn there (the superior
+  one would cross the aortic arch). On a phone the original composition (lungs above, body below) is kept.
+- **pw-hpa-stalk** (decided, for review; review round 1). The stalk runs into the posterior lobe; the portal veins run
+  down its front into the anterior lobe, where ACTH is released.
+- **pw-break-stops** (decided, for review; review round 1). Where each broken run stops: dorsal root cut, at the
+  dorsal root ganglion; ventral root cut, after the motor neuron fires, in its axon; pituitary damaged, CRH at the
+  gland; adrenal damaged, ACTH at the gland; Ca2+ channels blocked, the action potential at the membrane; receptor
+  proteins blocked, the transmitter across the cleft.
+

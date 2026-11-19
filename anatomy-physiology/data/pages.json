@@ -141,9 +141,10 @@
       "script": "tools/pathways.js",
       "css": "tools/pathways.css",
       "data": "pathways.json",
-      "extraScripts": ["tools/scene.js"],
-      "extraCss": ["tools/scene.css"],
-      "studio": true
+      "extraScripts": ["tools/scene.js", "tools/pathways-explore.js"],
+      "extraCss": ["tools/scene.css", "tools/pathways-explore.css"],
+      "studio": true,
+      "kit2": true
     },
     {
       "slug": "graphs",
