@@ -118,7 +118,7 @@
 .rs2-lab.is-major,.rs2-lab.is-equal{color:var(--good-ink);box-shadow:inset 0 0 0 1.5px var(--good);}
 .rs2-lab.is-minor{color:var(--minor-ink);box-shadow:inset 0 0 0 1.5px var(--minor);}
 .rs2-lab.is-oct{color:var(--warn-ink);box-shadow:inset 0 0 0 1.5px var(--warn),0 1px 3px rgba(20,16,50,.14);}
-@media (max-width:640px){ .rs2-lab{font-size:11.5px;padding:1px 7px;} .rs2-lab.is-head{font-size:13px;padding:2px 10px;} .rs2-lab.is-tag{font-size:10.5px;padding:0 6px;} .rs2-lab.is-sub{font-size:11px;} }
+@media (max-width:640px){ .rs2-lab{font-size:11.5px;padding:1px 7px;} .rs2-lab.is-head{font-size:13px;padding:2px 10px;} .rs2-lab.is-tag{font-size:11px;padding:0 6px;} .rs2-lab.is-sub{font-size:11px;} }
 
 /* Test yourself docks */
 .rs2-dock{display:flex;flex-direction:column;gap:12px;}
@@ -134,3 +134,5 @@
 .rs2-ref-key p{margin:0 0 10px;line-height:1.5;}
 .rs2-sw{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;vertical-align:-1px;}
 .rs2-sw.is-e{background:var(--e,#6A3FD0);} .rs2-sw.is-neg{background:var(--neg,#D2412F);} .rs2-sw.is-pos{background:var(--pos,#2463C8);} .rs2-sw.is-warn{background:var(--warn,#D98A00);}
+/* no text under 11 px in this tool (tools v2 checklist): the shared ochem table headers are 10.5 px, raised here only */
+.rs2-dock .ttable th,.rs2-ref .ttable th{font-size:11px;}

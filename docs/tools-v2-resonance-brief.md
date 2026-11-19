@@ -248,3 +248,18 @@ table kept).
 - Nits left: the "6 e⁻" tag in the negligible form can sit on a stick; the keyboard target wording "onto C top" for a
   push into the C–O bond; repeated atom names in phenoxide's board text.
 - In a para minor form whose outward gap is below the card's room the badge sits inside the ring at that carbon.
+
+## Review recheck 1 (2026-11-18: round 1 items passed; blocked on two)
+1. **No rendered text under 11 px.** Badge signs (board, real molecule, forms row) and δ marks have an 11 px floor;
+   the major, minor and equal pills are 11 px on phones; this tool's table headers (Which is more stabilized? and
+   "?") are 11 px (`.rs2-dock .ttable th, .rs2-ref .ttable th`; the shared ochem style is unchanged). A ball's
+   letters are drawn at 11 px or more when they fit across the ball, else the bare element symbol, else no letters
+   (the ball keeps its colour; the board names the atoms where it can). The sweep now measures every rendered text in
+   the tool (SVG text by its size on screen, HTML text by its computed size), Test yourself included: none under 11 px.
+2. **"?" on a phone stops a replay.** When the sheet opens over the stage (a phone) while something is moving, the run
+   token is bumped as on a mode change; the board keeps the last form it fully reached. On a desktop the stage stays
+   in view and carries on. Sweep check at every phone width: phenoxide form 5 replay, "?" opened mid replay, at most
+   two SVG changes in the next 600 ms, nothing flying, the board on a settled form.
+- Checks: sweep one width per process, 0 failures at all ten widths (44 states and 384 checks per phone width, 43 and
+  380 above); unit tests 95 pass; `build-tool-pages --check`, `check-site`, `check-weight --check`, `check-tool-use`
+  (frame v2); preview and shots regenerated.

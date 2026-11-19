@@ -9,6 +9,8 @@
      - in the forms row every badge and letter is inside its card and 4 px clear of its tag; letters at least 11 px,
        badges at least 7 px in radius, π lines at least 6 px long;
      - the molecule on the board is the largest object in the picture (bigger than the real molecule and each form);
+     - no rendered text under 11 px anywhere in the tool, Test yourself and "?" included;
+     - "?" opened on a phone during a replay stops it on a settled form;
      - on a phone the cause line is at most two rows and keeps one height; no sideways scroll; no console errors;
      - on a first visit the cue is whole and covers no ball, name, picker or Undo.
 
@@ -89,6 +91,14 @@ const probe = () => {
     const fsz = e.tagName === 'circle' ? +e.getAttribute('r') : +e.getAttribute('font-size');
     if (e.tagName === 'circle' ? fsz < 6.9 : fsz < 10.9) out.push(what + ' too small (' + fsz + ')'); });
   q('.rs2-strip .rs2-fpi').forEach(e => { const L = Math.hypot(e.x2.baseVal.value - e.x1.baseVal.value, e.y2.baseVal.value - e.y1.baseVal.value); if (L < 6) out.push('a π line in the forms row is ' + L.toFixed(1) + ' px'); });
+  // no rendered text under 11 px anywhere in the tool (picture, cause line, side panel, "?"): SVG text by its size on
+  // screen, HTML text by its computed size
+  const svgEl = document.querySelector('.rs2-svg'), vb = svgEl.viewBox.baseVal, k = vb && vb.width ? svgEl.getBoundingClientRect().width / vb.width : 1;
+  [...document.querySelectorAll('.rs2-svg text')].filter(e => e.textContent.trim() && vis(e) && e.style.visibility !== 'hidden').forEach(e => {
+    const px = parseFloat(e.getAttribute('font-size') || getComputedStyle(e).fontSize) * k; if (px < 10.95) out.push('text "' + e.textContent + '" at ' + px.toFixed(1) + ' px'); });
+  const roots = [...document.querySelectorAll('.rs2, .rs2-dock, .rs2-ref')];
+  roots.forEach(rt => { const w = document.createTreeWalker(rt, NodeFilter.SHOW_TEXT); let n; while ((n = w.nextNode())) { const el = n.parentElement; if (!n.textContent.trim() || !el || el.closest('svg') || !vis(el) || el.closest('.tk2-sr')) continue;
+    const r = el.getBoundingClientRect(); if (!r.width) continue; const px = parseFloat(getComputedStyle(el).fontSize); if (px < 10.95) out.push('text "' + n.textContent.trim().slice(0, 24) + '" at ' + px.toFixed(1) + ' px'); } });
   const uni = a => a.length ? { l: Math.min(...a.map(x => x.l)), t: Math.min(...a.map(x => x.t)), r: Math.max(...a.map(x => x.r)), b: Math.max(...a.map(x => x.b)) } : null;
   const area = u => u ? (u.r - u.l) * (u.b - u.t) : 0, M = uni(mainBalls), H = uni(hybBalls);
   const thumbs = q('.rs2-thumb').map(e => area(R(e)));
@@ -183,6 +193,20 @@ for (const w of WIDTHS) {
     const e = await c.page.evaluate(() => { const M = OchemResonanceModel, v = M.view, S = v.S; return { settled: S.rk.some(f => f.key === M.key(S.cur)), held: !!S.pendingSt, fly: document.querySelectorAll('.rs2-fly *').length }; });
     if (!e.settled || e.held || e.fly) fails.push(`${w} replay leave: Explore came back unsettled (${JSON.stringify(e)})`);
     const real = c.errs.filter(x => !/ERR_FAILED/.test(x)); if (real.length) fails.push(`${w} replay leave: console ${real.join('|')}`);
+    await c.page.context().close();
+  }
+  // "?" opened on a phone (it covers the stage) during a replay: the replay stops on a settled form
+  if (w <= 640) {
+    const c = await open({ w, h, motion: true });
+    await c.page.locator('.rs2-pick select').selectOption('phenoxide'); await c.page.waitForTimeout(300);
+    await c.page.locator('.rs2-tb[data-i="4"]').click(); await c.page.waitForTimeout(400);
+    await c.page.locator('.ls-bar button[aria-label*="elp"], .ls-bar .ls-help, .ls-bar button[title*="elp"]').first().click().catch(() => c.page.getByRole('button', { name: /help|reference/i }).first().click());
+    await c.page.waitForTimeout(200);
+    const r = await c.page.evaluate(() => new Promise(res => { let n = 0; const mo = new MutationObserver(m => { n += m.length; }); mo.observe(document.querySelector('.rs2-svg'), { subtree: true, attributes: true, childList: true });
+      setTimeout(() => { mo.disconnect(); const M = OchemResonanceModel, S = M.view.S; res({ n, open: document.querySelector('.ls-root').classList.contains('is-sheet'), settled: S.rk.some(f => f.key === M.key(S.cur)), fly: document.querySelectorAll('.rs2-fly *').length }); }, 600); }));
+    states++; checks += 3;
+    if (!r.open) fails.push(`${w} "?" during a replay: the sheet did not open`);
+    if (r.n > 2 || r.fly || !r.settled) fails.push(`${w} "?" during a replay: the replay carried on behind it (${JSON.stringify(r)})`);
     await c.page.context().close();
   }
   if (w <= 640) { checks++; if (heights.size !== 1) fails.push(`${w}: cause line height not constant: ${[...heights]}`); }

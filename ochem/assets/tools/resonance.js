@@ -566,8 +566,10 @@
       }
       sh += '<circle class="rs2-shadow" cx="' + f1(p.x + r * 0.18) + '" cy="' + f1(p.y + r * 0.42) + '" r="' + f1(r * 1.12) + '"/>';
       var lab = labelOf(st, k), fs = Math.min(r * 1.02, r * 2.5 / Math.max(1, lab.length * 0.78));
-      // too small to read: a carbon or hydrogen ball keeps its colour only (the board above names it); others keep a letter
-      if(fs < 8.5 && (a.el === 'C' || a.el === 'H')) lab = ''; else if(fs < 8.5){ lab = a.el; fs = Math.min(r * 1.1, 11); }
+      // no letters under 11 px: try the bare element symbol, else the ball keeps only its colour (the board names it)
+      // (an 11 px label is used when it still fits across the ball)
+      function fits(t){ return 0.62 * 11 * t.length <= 2 * r * 0.98; }
+      if(fs < 11){ if(fits(lab)) fs = 11; else if(fits(a.el)){ lab = a.el; fs = 11; } else lab = ''; }
       at += '<circle class="rs2-ball is-' + (BALL[a.el] || 'x') + '" cx="' + f1(p.x) + '" cy="' + f1(p.y) + '" r="' + f1(r) + '" fill="url(#rs2g-' + (BALL[a.el] || 'x') + ')"/>' +
         '<ellipse class="rs2-shine" cx="' + f1(p.x - r * 0.32) + '" cy="' + f1(p.y - r * 0.38) + '" rx="' + f1(r * 0.34) + '" ry="' + f1(r * 0.22) + '"/>' +
         '<text class="rs2-al is-' + (BALL[a.el] || 'x') + '" x="' + f1(p.x) + '" y="' + f1(p.y + fs * 0.36) + '" font-size="' + f1(fs) + '" text-anchor="middle">' + esc(lab) + '</text>';
@@ -575,10 +577,10 @@
       if(!o.hybrid && q && showQ) badge = { q: q, t: sign(q) };
       if(hq && hq.fixed) badge = { q: hq.fixed, t: sign(hq.fixed) };
       if(badge){
-        var ba = sl[n], br = Math.max(7.5, 6.4 * s), bd = r + br * 0.55, bx = p.x + Math.cos(ba) * bd, by = p.y + Math.sin(ba) * bd;
+        var ba = sl[n], br = Math.max(7.6, 6.4 * s), bd = r + br * 0.55, bx = p.x + Math.cos(ba) * bd, by = p.y + Math.sin(ba) * bd;
         A.atoms[k].badge = { x: bx, y: by, r: br };
         ch += '<g class="rs2-badge is-' + (badge.q < 0 ? 'neg' : 'pos') + '"><circle cx="' + f1(bx) + '" cy="' + f1(by) + '" r="' + f1(br) + '"/>' +
-          '<text x="' + f1(bx) + '" y="' + f1(by + br * 0.42) + '" font-size="' + f1(br * (badge.t.length > 1 ? 1.05 : 1.45)) + '" text-anchor="middle">' + badge.t + '</text></g>';
+          '<text x="' + f1(bx) + '" y="' + f1(by + br * 0.42) + '" font-size="' + f1(Math.max(11, br * (badge.t.length > 1 ? 1.05 : 1.45))) + '" text-anchor="middle">' + badge.t + '</text></g>';
       }
     });
     return { html: '<g class="rs2-bgl">' + bg + '</g><g class="rs2-shl">' + sh + '</g><g class="rs2-bol">' + bo + '</g><g class="rs2-atl">' + at + '</g><g class="rs2-lpl">' + lp + '</g><g class="rs2-chl">' + ch + '</g>', A: A };
@@ -634,7 +636,7 @@
       if(!c) out += '<text class="rs2-fal" x="' + f1(p[0]) + '" y="' + f1(p[1] + fsz * 0.36) + '" font-size="' + f1(fsz) + '" text-anchor="middle">' + esc(lab) + '</text>';
       if(q){
         // a badge in the widest gap between the atom's bonds, kept inside the card and above its tag
-        var br = Math.max(7, fsz * 0.55), dd = (c ? 2 : fsz * 0.32 * lab.length) + br + 1, bx, by;
+        var br = Math.max(7.6, fsz * 0.55), dd = (c ? 2 : fsz * 0.32 * lab.length) + br + 1, bx, by;
         // the widest gap first; if that leaves the card, the next direction that stays inside it
         var angs = slots(st, k, 1); for(var ai = 0; ai < 16; ai++) angs.push(-Math.PI / 2 + ai * Math.PI / 8);
         var bdirs = C.neighbors(st, k).filter(function(n){ return heavy(st, n); }).map(function(n){ var o = st.atoms[n], me = st.atoms[k]; return Math.atan2(o.y - me.y, o.x - me.x); });
@@ -645,7 +647,7 @@
           bx = p[0] + Math.cos(angs[0]) * dd; by = p[1] + Math.sin(angs[0]) * dd;
         }
         if(box){ bx = Math.max(box.x + br + 1, Math.min(box.x + box.w - br - 1, bx)); by = Math.max(box.y + br + 1, Math.min(box.y + box.h - br - 5, by)); }
-        out += '<g class="rs2-badge is-' + (q < 0 ? 'neg' : 'pos') + '"><circle cx="' + f1(bx) + '" cy="' + f1(by) + '" r="' + f1(br) + '"/><text x="' + f1(bx) + '" y="' + f1(by + br * 0.45) + '" font-size="' + f1(br * 1.55) + '" text-anchor="middle">' + sign(q) + '</text></g>';
+        out += '<g class="rs2-badge is-' + (q < 0 ? 'neg' : 'pos') + '"><circle cx="' + f1(bx) + '" cy="' + f1(by) + '" r="' + f1(br) + '"/><text x="' + f1(bx) + '" y="' + f1(by + br * 0.45) + '" font-size="' + f1(Math.max(11, br * 1.55)) + '" text-anchor="middle">' + sign(q) + '</text></g>';
       }
     });
     return out;
@@ -724,7 +726,7 @@
       var h = hyb.atoms[k], p = A.atoms[k];
       if(h.fixed) return;
       var txt = h.mean != null ? fraction(h.mean) : (h.neg && h.pos ? 'δ±' : h.neg ? 'δ−' : 'δ+');
-      var fs0 = Math.max(11, Math.min(16, p.r * 1.05)), fs = h.big ? fs0 : fs0 * 0.86, mb = measure(txt, fs), tw2 = mb.w + 4, th = mb.h + 2, x = null, y = null;
+      var fs0 = Math.max(11, Math.min(16, p.r * 1.05)), fs = Math.max(11, h.big ? fs0 : fs0 * 0.86), mb = measure(txt, fs), tw2 = mb.w + 4, th = mb.h + 2, x = null, y = null;
       // outward only: never toward the middle of the molecule, where a mark would read as another atom's
       var mx = 0, my = 0; keys.forEach(function(q){ mx += A.atoms[q].x; my += A.atoms[q].y; }); mx /= keys.length; my /= keys.length;
       var ox = p.x - mx, oy = p.y - my, ol = Math.hypot(ox, oy) || 1;
@@ -1712,6 +1714,23 @@
     check: { label:'Check yourself: 6 questions',
       task: { kicker:'Test yourself', title:'Check yourself', todo:'Six quick questions. The picture stays live, so use it.' } }
   });
+  /* "?" on a phone covers the whole stage: a replay or push still moving stops there (the board keeps the last form
+     it fully reached), as on a mode change. On a desktop the stage stays in view beside the sheet and carries on. */
+  (function(){
+    var sheet = studio.root.querySelector('.ls-sheet');
+    if(!sheet || !window.MutationObserver) return;
+    function check(){
+      var open = studio.root.classList.contains('is-sheet') && !sheet.hidden;
+      if(!open || !tw) return;
+      var r = sceneBox.getBoundingClientRect(), q = sheet.getBoundingClientRect();
+      var covered = q.left <= r.left + 1 && q.right >= r.right - 1 || (L && L.phone);
+      if(!covered) return;
+      cancelRuns(); paintAll(); words(null);
+    }
+    var mo = new MutationObserver(check);
+    mo.observe(studio.root, { attributes: true, attributeFilter: ['class'] });
+    mo.observe(sheet, { attributes: true, attributeFilter: ['hidden'] });
+  })();
   byId('rsRefHow').addEventListener('click', function(){ studio.close(); if(S.mode === 'explore') startTour(); });
 
   /* ---- start: a species from the link, a structure handed over from another tool, or acetate */
