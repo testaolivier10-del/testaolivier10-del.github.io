@@ -1256,3 +1256,10 @@ hydroxide drawn would make E2 an Explore mechanism.
 The old "Legal, but" note for a secondary carbocation ("real, but borderline") is kept in Any molecule's notes but is
 not a pill in the cause line, so SN1 ionization of 2-bromopropane (an Explore mechanism) is not flagged as doubtful.
 - **Status:** decided for the owner.
+
+### ap-v2-layout: hand drawn intermediates on wide screens, placed ones on phones
+Where molecules.js has a hand drawing of a state with the same atom keys (the Claisen and acyl substitution tetrahedral
+intermediates) the board uses it on a wide screen. On a phone the two species start stacked and the intermediate is
+placed from that (the new bond in each atom's widest gap), so the same state can look different on a phone and on a
+desktop. Bonding and charges are the same.
+- **Status:** decided for the owner (review round 1).

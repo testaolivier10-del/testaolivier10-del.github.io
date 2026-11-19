@@ -182,3 +182,51 @@ Each is also one line in `docs/tools-v2-owner-log.md`.
 - On a phone the product card of SN2 puts Br⁻ under the CH₂ with its badge between them; it reads as a separate ion
   but is close.
 - No real phone, no screen reader pass, no real students.
+
+## Review round 1 (2026-11-18, `/home/claude/review-arrow-pusher/REVIEW.md`: blocked on 3 must fix items; all done)
+Where this section and the text above disagree, this section is the tool as it is now. The branch first took in
+`origin/claude/tools-v2-all` (a8eda9ec; a merge, its `check-tool-use.mjs` kept, both sides of the owner log and the
+status table kept).
+
+### Must fix
+1. **`?start=<an Explore mechanism>` opens it and keeps the address.** The kit opens Explore on SN2 while it is built;
+   a linked mechanism is now loaded after the kit (and Test yourself is shown again if a hash asked for it). Covered by a
+   url compat test (every `?start=` the site makes, from the Reaction Predictor's `MECH_LINK` and the course home, lands
+   on a mechanism or a molecule; the boot loads it after the kit) and by the sweep (it opens `?start=sn1-secondary`,
+   `propene-hbr`, `acetyl-chloride-nu` and `e2-butane` at every width and checks the board and the address).
+2. **Claisen cards.** Groups drawn as one unit (Et) count in the small drawings now (`drawFlat(..., { groups: true })`
+   in `push-board.js`; Resonance does not pass it and is unchanged), so the esters read –O–Et and the expelled ion
+   reads EtO⁻. A badge keeps 2 px clear of every letter and badge (`{ clear: true }`, tried a little further out before
+   giving up); letters stop closer to short bonds there, so π lines keep their length. A state molecules.js draws by
+   hand (the Claisen and acyl tetrahedral intermediates, same atom keys) is placed as drawn there. The sweep now checks
+   letter against letter and badge against letter inside every card.
+3. **Two species on a phone.** When the page opens on a phone (under 641 px) and two species side by side would be drawn
+   smaller than stacked, they start one above the other (Claisen, aldol, the proton transfer); every state of that
+   board follows from it. Pieces that join are now placed the way they are drawn on paper: the new bond leaves the
+   joining atom in its widest gap (nearest where the partner was, so SN2's hydroxide stays on the far side from
+   bromine) and enters the other atom in its widest gap, turned to land clear of what is there. On a phone the
+   intermediates follow this placement (stacked), on wider screens the hand drawings.
+
+### Should fix
+- Keyboard: targets in the same order as the drag's snapping, then chem-core's likely ends (an electron poor atom, a
+  bond's own end), then distance: hydroxide's pair is offered the carbon first.
+- "O⁻ leaving: poor" only when an oxide leaves a carbon on its own; an alkoxide pushed out as a C=O forms again on the
+  same carbon (a tetrahedral intermediate collapsing) is not flagged; the full sentence says so. Unit tested (Claisen
+  step 2, the acyl intermediate pushed back, hydroxide leaving ethanol).
+- An ion in a card is set beside its old partner (level with its middle, clear of it), or under its far corner when
+  that draws a narrow card larger: Br⁻ no longer sits under CH₂.
+- "Show me how" step 1 points at the whole molecule, so its callout sits above or below it (0 balls under it at 390 and
+  1440); names on the board are hidden while the tour is open.
+- Performance: label placement measures every obstacle once and tests spots by arithmetic (it measured each try); the
+  steps row's small drawings are cached per state and card size; "?" is filled after the frame; the address is written
+  after the frame; a two step replay does not repaint between its stages; a change of molecule or the end of a step
+  paints the board in one frame and the row and names in the next. Measured with CPU x4 on this machine (load average
+  6 to 9 from other sessions, so single frames are noisy: idle frames reach 33 to 50 ms): drag median 16.7 ms; release,
+  mechanism switch and replay usually top out at 67 to 117 ms, with occasional spikes above that in the noisiest runs.
+  Script time per change is small (the profiler's own functions under 50 ms in total over a full session of pushes,
+  a switch and a replay); what remains is the browser's layout and paint of the board. Not proven under 100 ms here.
+
+### Nits
+- The held state's screen reader text says the charges are "not settled while a push is held".
+- With a note (1° C⁺) the moves keep their own words; the note takes the result's place.
+- Not done: the O–Br stick of hydroxide pushed onto bromine can cross another atom while held.
