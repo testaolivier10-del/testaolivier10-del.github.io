@@ -6,7 +6,7 @@
    "tab": "Heart",
    "figure": "os-19-9",
    "set": "heart-internal",
-   "purpose": "Tap a part of the heart to name it",
+   "purpose": "Name each part of the heart and what it does",
    "spots": [
     {
      "label": "aorta",
@@ -239,7 +239,7 @@
    "tab": "Brain",
    "figure": "os-13-7",
    "set": "brain-lateral",
-   "purpose": "Tap a lobe or groove of the brain to name it",
+   "purpose": "Name the brain's lobes and the grooves between them",
    "spots": [
     {
      "label": "frontal-lobe",
@@ -318,7 +318,7 @@
    "tab": "Skull",
    "figure": "os-7-5",
    "set": "skull",
-   "purpose": "Tap a bone or landmark of the skull to name it",
+   "purpose": "Name the bones of the skull and their landmarks",
    "spots": [
     {
      "label": "frontal-bone",
@@ -458,7 +458,7 @@
        524
       ]
      ],
-     "does": "the bump behind the ear where neck muscles attach"
+     "does": "the bump behind the ear where muscles attach"
     },
     {
      "label": "styloid-process",
@@ -468,7 +468,7 @@
        531
       ]
      ],
-     "does": "a thin spike where tongue and neck muscles attach"
+     "does": "a thin spike where small muscles attach"
     },
     {
      "label": "zygomatic-arch",
@@ -542,7 +542,7 @@
    "tab": "Neuron",
    "figure": "os-12-8",
    "set": "neuron-structure",
-   "purpose": "Tap a part of the neuron to name it",
+   "purpose": "Name each part of a neuron and what it does",
    "spots": [
     {
      "label": "cell-body",
@@ -645,7 +645,7 @@
    "tab": "Skin",
    "figure": "os-5-2",
    "set": "hair-follicle-glands",
-   "purpose": "Tap a layer or part of the skin to name it",
+   "purpose": "Name the layers of the skin and what they hold",
    "spots": [
     {
      "label": "epidermis",
@@ -792,7 +792,7 @@
    "tab": "Kidney",
    "figure": "os-25-8",
    "set": "kidney-section",
-   "purpose": "Tap a part of the kidney to name it",
+   "purpose": "Name each part of the kidney and what it does",
    "crop": [
     425,
     8,

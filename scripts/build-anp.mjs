@@ -1183,6 +1183,29 @@ function publishedTool(file) {
       if (fx) f.fixSvg = fx.replace('class="anp-fix"', 'class="lp-fix"');
     }
   }
+  /* The lab practical's Explore specimens (tools v2, docs/tools-v2-anp-lab-practical-brief.md): each specimen
+     carries its clean picture (figures/specimens/, scripts/build-lab-specimens.py) and crop, the figure's credit
+     (adapted: labels hidden), and for each spot the label's name, accepted names and the side its printed label was
+     on (where the card opens). */
+  if (file === 'lab-specimens.json') {
+    const L = JSON.parse(readFileSync(join(C.data, 'tools', 'lab-practical.json'), 'utf8'));
+    const ix = JSON.parse(readFileSync(join(C.data, '..', 'figures', 'specimens', 'index.json'), 'utf8'));
+    d.specimens = d.specimens.filter(sp => {
+      const set = L.sets.find(x => x.id === sp.set), n = set ? set.stations.findIndex(st => st.figure === sp.figure) : -1;
+      if (n < 0 || !C.built.has(set.stations[n].topic) || !ix[sp.figure]) return false;
+      const st = set.stations[n], f = L.figures[sp.figure];
+      Object.assign(sp, { station: n + 1, topic: st.topic, chapter: set.chapter, title: set.title, crop: ix[sp.figure].crop,
+        src: `figures/specimens/${sp.figure}.webp`, avif: `figures/specimens/${sp.figure}.avif`, alt: f.alt,
+        attribution: C.figures[sp.figure] ? attribution(C.figures[sp.figure], { adapted: true }).html : f.credit });
+      for (const s of sp.spots) {
+        const l = st.labels.find(x => x.id === s.label);
+        Object.assign(s, { name: l.name, accept: l.accept || [], side: l.box[0] + l.box[2] / 2 < s.at[0][0] ? 'left' : 'right' });
+      }
+      delete sp.erase;
+      return true;
+    });
+    delete d.about;
+  }
   /* Pathways traced on a real figure (data/pathway-traces.json, tools
      upgrade 2026-10): the figure, the step points, and its label boxes (later
      concepts covered for good, decision 30) ride along with the pathway. */
