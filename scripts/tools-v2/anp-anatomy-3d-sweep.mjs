@@ -386,15 +386,42 @@ async function perf() {
     out[label] = { frames: ft.length, median: +q(0.5).toFixed(1), p95: +q(0.95).toFixed(1) };
     console.log(`perf ${label} at ${W}: ${ft.length} frames, median ${q(0.5).toFixed(1)} ms, p95 ${q(0.95).toFixed(1)} ms`);
   };
-  {
-    const { browser, page } = await open({ noCue: true, real: true });
-    await settledCard(page);
-    const b = await page.evaluate(() => { const r = document.querySelector('.ax-slot canvas').getBoundingClientRect(); return [r.left + r.width * 0.3, r.top + r.height * 0.5, r.width * 0.4]; });
-    await measure(page, 'turn the body', async () => {
-      await page.mouse.move(b[0], b[1]); await page.mouse.down();
-      for (let i = 0; i <= 60; i++) { await page.mouse.move(b[0] + b[2] * i / 60, b[1] + 10 * Math.sin(i / 8)); await page.waitForTimeout(16); }
+  if (has('--flagship')) {
+    const browser = await chromium.launch({ executablePath: EXE });
+    const ctx = await browser.newContext({ viewport: { width: W, height: H }, serviceWorkers: 'block', hasTouch: W < 900 });
+    await ctx.route('**/assets/premium.js', r => r.fulfill({ contentType: 'application/javascript', body: PREMIUM.replace('function has(course) {', 'function has(course) { return true;') }));
+    await ctx.route(u => !u.href.startsWith(`http://127.0.0.1:${PORT}`) && !u.href.startsWith('data:'), r => r.abort());
+    const page = await ctx.newPage();
+    await page.addInitScript(() => { try { localStorage.setItem('tk2c:apenv-water-pollution', '1'); } catch (e) {} });
+    await page.goto(`http://127.0.0.1:${PORT}/environmental-science/tools/water-pollution.html`);
+    for (let i = 0; i < 200 && !(await page.evaluate(() => !!document.querySelector('.tk2-drag .tk2-knob'))); i++) await page.waitForTimeout(150);
+    await page.waitForTimeout(1500);
+    const k = await page.evaluate(() => { const e = document.querySelector('.tk2-drag .tk2-knob'); if (!e) return null; const r = e.getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; });
+    if (k) await measure(page, 'flagship knob', async () => {
+      await page.mouse.move(k[0], k[1]); await page.mouse.down();
+      for (let i = 0; i <= 60; i++) { await page.mouse.move(k[0] + 120 * Math.sin(i / 10), k[1]); await page.waitForTimeout(16); }
       await page.mouse.up(); await page.waitForTimeout(600);
     });
+    else console.log('perf: the flagship knob was not found');
+    await browser.close();
+  }
+  {
+    // software WebGL in headless Chromium: the viewer's shadows and anti-aliasing are off unless --real (see open())
+    const { browser, page } = await open({ noCue: true });
+    await settledCard(page);
+    const b = await page.evaluate(() => { const r = document.querySelector('.ax-slot canvas').getBoundingClientRect(); return [r.left + r.width * 0.3, r.top + r.height * 0.5, r.width * 0.4]; });
+    // our own work per drawn frame (the card following the body), apart from the drawing itself
+    await page.evaluate(() => { const sp = window.AnpAnatomyExplore.current._spots(), f = sp.place; window.__js = []; sp.place = function(){ const t = performance.now(); f.apply(this, arguments); window.__js.push(performance.now() - t); }; });
+    await measure(page, 'turn the body', async () => {
+      await page.mouse.move(b[0], b[1]); await page.mouse.down();
+      for (let i = 0; i <= 30; i++) { await page.mouse.move(b[0] + b[2] * i / 30, b[1] + 10 * Math.sin(i / 4)); await page.waitForTimeout(16); }
+      await page.mouse.up(); await page.waitForTimeout(600);
+    });
+    {
+      const js = (await page.evaluate(() => window.__js)).sort((x, y) => x - y);
+      const q = p => js.length ? js[Math.min(js.length - 1, Math.floor(p * js.length))].toFixed(2) : 'n/a';
+      console.log(`perf the card following the body at ${W} (CPU x4): ${js.length} calls, median ${q(0.5)} ms, p95 ${q(0.95)} ms`);
+    }
     await measure(page, 'tap a part', async () => {
       for (const id of ['frontal-bone', 'humerus', 'femur']) {
         const pt = await page.evaluate(id => { const v = window.AnpAnatomyExplore.current._viewer(), p = v.project(id), r = document.querySelector('.ax-slot canvas').getBoundingClientRect(); return p ? [r.left + p.x, r.top + p.y] : null; }, id);
@@ -404,21 +431,23 @@ async function perf() {
     });
     await browser.close();
   }
-  if (has('--flagship')) {
+  if (has('--baseline')) {
+    // the same viewer on the NREMT body map (not on tools v2 hooks): what the drawing alone costs on this machine
     const browser = await chromium.launch({ executablePath: EXE });
     const ctx = await browser.newContext({ viewport: { width: W, height: H }, serviceWorkers: 'block' });
+    if (!has('--real')) await ctx.route('**/assets/body3d/viewer.js', r => r.fulfill({ contentType: 'application/javascript',
+      body: VIEWER.replace('renderer.shadowMap.enabled = true;', 'renderer.shadowMap.enabled = false;').replace('antialias:true', 'antialias:false') }));
     await ctx.route(u => !u.href.startsWith(`http://127.0.0.1:${PORT}`) && !u.href.startsWith('data:'), r => r.abort());
-    const page = await ctx.newPage();
-    await page.addInitScript(() => { try { localStorage.setItem('tk2c:apenv-water-pollution', '1'); } catch (e) {} });
-    await page.goto(`http://127.0.0.1:${PORT}/environmental-science/tools/water-pollution.html`);
-    await page.waitForTimeout(4000);
-    const k = await page.evaluate(() => { const e = document.querySelector('.tk2-drag .tk2-knob'); if (!e) return null; const r = e.getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; });
-    if (k) await measure(page, 'flagship knob', async () => {
-      await page.mouse.move(k[0], k[1]); await page.mouse.down();
-      for (let i = 0; i <= 60; i++) { await page.mouse.move(k[0] + 120 * Math.sin(i / 10), k[1]); await page.waitForTimeout(16); }
+    const page = await ctx.newPage(); page.setDefaultTimeout(300000);
+    await page.goto(`http://127.0.0.1:${PORT}/nremt/body-map.html`);
+    for (let i = 0; i < 900 && !(await page.evaluate(() => { const l = document.querySelector('.bv-loading'); return !!l && l.hidden; })); i++) await page.waitForTimeout(150);
+    await page.waitForTimeout(2000);
+    const b = await page.evaluate(() => { const r = document.querySelector('.bv-canvas').getBoundingClientRect(); return [r.left + r.width * 0.3, r.top + r.height * 0.5, r.width * 0.4]; });
+    await measure(page, 'NREMT body map turn (same viewer)', async () => {
+      await page.mouse.move(b[0], b[1]); await page.mouse.down();
+      for (let i = 0; i <= 30; i++) { await page.mouse.move(b[0] + b[2] * i / 30, b[1] + 10 * Math.sin(i / 4)); await page.waitForTimeout(16); }
       await page.mouse.up(); await page.waitForTimeout(600);
     });
-    else console.log('perf: the flagship knob was not found');
     await browser.close();
   }
   return out;
