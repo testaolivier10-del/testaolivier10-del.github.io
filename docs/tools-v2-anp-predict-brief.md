@@ -184,7 +184,7 @@ Must fix, all done:
    region all move off "usual" together; link thresholds are tiny so any step shows.
 5. **O₂ saturation** carries its real arrow (one decimal); "Breath size same" is the breathing screen's held link.
 6. **Weight.** `anatomy-physiology/assets/tools/predict-explore.*` is its own bucket (`anatomy-physiology/predict-explore`,
-   33 KB, measured 32.4); the A&P shell is back to 69 KB (measured 68.8).
+   34 KB, measured 32.8, 33.3 after recheck 1); the A&P shell is back to 69 KB (measured 68.8).
 7. **Performance.** The moving things and the labels sit on their own composited layer; the red cells, the water drops and
    the urine drops are one path each; molecules no longer jitter; the ADH molecules move as one group; labels are placed
    only when a label, anchor or control box changed; the dark mode filter is gone. At rest the ambient motion is drawn

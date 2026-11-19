@@ -133,7 +133,7 @@
         '<path class="px-gneedle ' + cls + '" d="M0,0 L' + (cls === 'is-in' ? '12,-15' : '-17,6') + '"/><circle class="px-gpin" r="3.2"/></g>';
     }
     SCENES.push({
-      id: 'vessel', tab: 'Arteriole', short: 'Vessel', topics: ['gradients-flow', 'blood-pressure-flow'],
+      id: 'vessel', last: 'flow', tab: 'Arteriole', short: 'Vessel', topics: ['gradients-flow', 'blood-pressure-flow'],
       bank: ['tube-narrows', 'one-organ-constricts', 'arterioles-dilate', 'coronary-narrowing'],
       purpose: 'Squeeze the arteriole and watch the flow change',
       cue: 'Drag the wall', thing: 'the arteriole wall', layouts: LAY,
@@ -298,7 +298,7 @@
         '</g>';
     }
     SCENES.push({
-      id: 'breath', tab: 'Breathing', short: 'Breath', topics: ['breathing-control', 'co2-transport'],
+      id: 'breath', last: 'ph', tab: 'Breathing', short: 'Breath', topics: ['breathing-control', 'co2-transport'],
       bank: ['hyperventilation', 'breath-hold', 'opioid-overdose', 'fab-anxiety'],
       purpose: 'Change how fast you breathe and watch the blood’s pH',
       cue: 'Drag the breathing rate', thing: 'the breathing rate', layouts: LAY,
@@ -442,7 +442,7 @@
       return { duct: [250, 258, 360, 630], cap: [452, 258, 506, 630], left: [12, 12, 588, 238], pit: [92, 80, 0.7], kid: [454, 92, 0.5], cup: [548, 182], track: [160, 214, 400, 214], cells: 6 };
     }
     SCENES.push({
-      id: 'adh', tab: 'Kidney', short: 'Kidney', topics: ['urine-concentration'],
+      id: 'adh', last: 'vol', tab: 'Kidney', short: 'Kidney', topics: ['urine-concentration'],
       bank: ['ur-adh-blocked', 'fab-siadh', 'fab-lost-hiker'],
       purpose: 'Change ADH and watch the urine change',
       cue: 'Drag to change ADH', thing: 'ADH', layouts: LAY,
@@ -631,17 +631,17 @@
       return { heart: [262, 290, 1.0], sar: [222, 470, 364, 118], aorta: [[302, 172], [304, 90], [340, 46], [440, 36], [520, 60], [546, 126], [548, 446]], ivc: [70], ivcTop: 420, hr: [72, 60], track: [70, 592, 70, 430] };
     }
     SCENES.push({
-      id: 'heart', tab: 'Heart', short: 'Heart', topics: ['cardiac-output'],
+      id: 'heart', last: 'co', tab: 'Heart', short: 'Heart', topics: ['cardiac-output'],
       bank: ['venous-return-up', 'afterload-l4', 'sympathetic-surge'],
       purpose: 'Send more blood back and watch each beat',
       cue: 'Drag to send more blood back', thing: 'the venous return', layouts: LAY,
       ctl: { min: 90, max: 160, step: 1, base: 120, key: 0.5, label: 'Venous return',
         text: function(v){ return 'venous return ' + word(v) + ', filling to ' + Math.round(v) + ' mL'; }, tag: function(v){ return word(v); } },
       nodes: [
-        { id: 'edv', from: 'c', sign: 1, tau: 420, f: function(v){ return v; }, rel: 0.002 },
+        { id: 'edv', from: 'c', sign: 1, tau: 420, f: function(v){ return v; }, rel: 0.002, shown: Math.round },
         { id: 'sl', from: 'edv', sign: 1, tau: 220, f: slOf, rel: 0.001 },
-        { id: 'sv', from: 'sl', sign: 1, tau: 280, f: function(sl){ return svOf(90 + (sl - 1.8) / 0.4 * 70); }, rel: 0.002 },
-        { id: 'co', from: 'sv', sign: 1, tau: 280, f: function(sv){ return sv * HR / 1000; }, rel: 0.002 }
+        { id: 'sv', from: 'sl', sign: 1, tau: 280, f: function(sl){ return svOf(90 + (sl - 1.8) / 0.4 * 70); }, rel: 0.002, shown: Math.round },
+        { id: 'co', from: 'sv', sign: 1, tau: 280, f: function(sv){ return sv * HR / 1000; }, rel: 0.002, shown: function(v){ return v.toFixed(1); } }
       ],
       rest: 'Drag the knob on the vena cava to send more or less blood back.',
       art: function(E){
@@ -740,7 +740,8 @@
         return [
           { key: 'vr', text: 'Venous return' + (off ? ' ' + arrow(st.dc) : ''), role: 'fill', strong: true, at: [g.ivc[0] - 20, g.ivcTop - 34], side: ['l', 'u'] },
           { key: 'edv', text: 'Filling ' + Math.round(st.v.edv) + ' mL' + (d.edv ? ' ' + arrow(d.edv) : ''), role: 'fill', at: [h[0] + 58 * h[2], h[1] + 60 * h[2]], side: ['d', 'r'] },
-          { key: 'sl', text: 'Stretch' + (d.sl ? ' ' + arrow(d.sl) : ''), role: 'mus', at: [sr[0] + sr[2] / 2, sr[1] + sr[3] + 2], side: ['d', 'u'] },
+          // on the box's edge, on the side the pill goes, so a leader never crosses the sarcomere
+          { key: 'sl', text: 'Stretch' + (d.sl ? ' ' + arrow(d.sl) : ''), role: 'mus', at: wide ? [sr[0] + sr[2] / 2, sr[1] + sr[3] + 2] : [sr[0] + sr[2] * 0.3, sr[1] - 2], side: wide ? ['d'] : ['u'] },
           { key: 'sv', text: 'Stroke volume ' + Math.round(st.v.sv) + ' mL' + (d.sv ? ' ' + arrow(d.sv) : ''), role: 'sv', at: a[2], side: ['u', 'd'] },
           { key: 'co', text: 'Output ' + st.v.co.toFixed(1) + ' L/min' + (d.co ? ' ' + arrow(d.co) : ''), role: 'co', at: [a[a.length - 1][0] - 18, a[a.length - 1][1] - 40], side: ['l'] },
           { key: 'hr', text: 'Heart rate ' + HR + (off ? ' same' : ''), role: 'same', at: g.hr, side: ['d', 'r', 'l'] }
@@ -831,7 +832,7 @@
       cur.nodes.forEach(function(n){
         raw[n.id] = dirOf(n, vw.v[n.id], vw.b[n.id]);
         var want = (n.sign || 1) * (n.from === 'c' ? dc : d[n.from]);
-        d[n.id] = want && raw[n.id] === want ? want : 0;
+        d[n.id] = want && raw[n.id] === want && (!n.shown || n.shown(vw.v[n.id]) !== n.shown(vw.b[n.id])) ? want : 0;
       });
       return { c: vw.c, v: vw.v, b: vw.b, d: d, raw: raw, dc: dc };
     }
@@ -893,13 +894,14 @@
     var tagRel = null, bfWas = null, tagLen = -1;
     function ctrls(){
       var bf = handle && handle.el.querySelector('.tk2-before'), tg = handle && handle.el.querySelector('.tk2-tag');
-      var bfOn = !!(bf && !bf.hidden), tl = tg && !tg.hidden ? tg.textContent.length : -1;
+      var bfOn = !!(bf && !bf.hidden), bfw = bfOn && bf.querySelector('b') && !bf.querySelector('b').hidden, tl = tg && !tg.hidden ? tg.textContent.length : -1;
+      bfOn = bfOn ? (bfw ? 2 : 1) : 0;
       if(bfOn !== bfWas || tl !== tagLen) ctrlBox = null;
       if(ctrlBox) return ctrlBox;
       bfWas = bfOn; tagLen = tl;
       var out = [];
       if(reset.offsetWidth) out.push(boxOf(reset));
-      if(bfOn && bf.offsetWidth) out.push(boxOf(bf));
+      if(bfOn){ var bw = bf.querySelector('b'), bi = bf.querySelector('i'); if(bw && !bw.hidden && bw.offsetWidth) out.push(boxOf(bw)); if(bi && bi.offsetWidth) out.push(boxOf(bi)); }
       if(cue && cue.active()){ var c = pic.querySelector('.tk2-cue'); if(c) out.push(boxOf(c)); }
       tagRel = null;
       if(tl >= 0 && tg.offsetWidth){
@@ -970,7 +972,7 @@
       sa(c.g, 'data-lab', L.key);
       var h = b[3] - b[1];
       sa(c.rect, 'x', f1(b[0])); sa(c.rect, 'y', f1(b[1])); sa(c.rect, 'width', f1(b[2] - b[0])); sa(c.rect, 'height', f1(h)); sa(c.rect, 'rx', f1(h / 2));
-      sa(c.t, 'x', f1((b[0] + b[2]) / 2)); sa(c.t, 'y', f1((b[1] + b[3]) / 2)); c.t.style.fontSize = E.fs.toFixed(2) + 'px'; if(c.t.textContent !== text) c.t.textContent = text;
+      sa(c.t, 'x', f1((b[0] + b[2]) / 2)); sa(c.t, 'y', f1((b[1] + b[3]) / 2)); var fz = E.fs.toFixed(2) + 'px'; if(c.t.style.fontSize !== fz) c.t.style.fontSize = fz; if(c.t.textContent !== text) c.t.textContent = text;
       var inside = at[0] > b[0] && at[0] < b[2] && at[1] > b[1] && at[1] < b[3];
       if(lead && !inside){
         var cx = clamp(at[0], b[0], b[2]), cy = clamp(at[1], b[1], b[3]);
@@ -992,7 +994,8 @@
       var calm = settled(), off = st.dc !== 0;
       var key;
       if(!off && calm){ key = 'rest'; if(causeKey !== key){ cause.take(cur.rest); } }
-      else if(calm){
+      else if(calm && (!cur.last || st.d[cur.last])){
+        // the takeaway only once the whole chain shows (a tiny change can leave the last number at its usual value)
         key = 'take:' + cur.take(st);
         if(causeKey !== key){ cause.take(cur.take(st)); }
       } else {
@@ -1001,7 +1004,7 @@
         if(causeKey !== key){ if(parts.length) cause.set(parts); else cause.take(cur.rest); }
       }
       causeKey = key;
-      if(calm && key !== saidKey){ saidKey = key; say(key === 'rest' ? cur.tab + '. ' + cur.rest : cur.take(st)); }
+      if(calm && key !== saidKey){ saidKey = key; say(key === 'rest' ? cur.tab + '. ' + cur.rest : key.indexOf('take:') === 0 ? cur.take(st) : cause.text()); }
       return calm;
     }
     // the loop runs while the screen shows: blood flows, breaths come and go, the heart beats
@@ -1009,13 +1012,16 @@
       raf = 0;
       if(!onScreen) return;
       var dt = last ? Math.min(50, ts - last) : 16; last = ts;
-      /* While a change spreads every frame is drawn. At rest only the ambient motion runs (blood, breath, beat), and it is
-         drawn on every third frame (about 20 a second, its time carried over), so a settled screen costs a third. */
+      /* Every frame is drawn. Only on a device that cannot keep up (frames averaging over about 20 ms) does the ambient
+         motion at rest (blood, breath, beat) drop to every second or third frame, its time carried over; a change that
+         is spreading is always drawn on every frame. */
+      fAvg = fAvg * 0.9 + dt * 0.1;
+      var every = !calmNow || fAvg <= 20 ? 1 : fAvg <= 30 ? 2 : 3;
       acc += dt;
-      if(!calmNow || ++skip >= 3){ step(acc); calmNow = draw(acc); acc = 0; skip = 0; }
+      if(++skip >= every){ step(acc); calmNow = draw(acc); acc = 0; skip = 0; }
       raf = requestAnimationFrame(tick);
     }
-    var acc = 0, skip = 0, calmNow = false;
+    var acc = 0, skip = 0, calmNow = false, fAvg = 16.7;
     function startLoop(){ calmNow = false; acc = 0; if(!raf && onScreen && !K.reduced() && window.requestAnimationFrame){ last = 0; raf = requestAnimationFrame(tick); } }
     function stopLoop(){ if(raf){ cancelAnimationFrame(raf); raf = 0; } last = 0; }
     function fadeOut(){

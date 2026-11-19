@@ -89,8 +89,8 @@ const SHELL_BUDGETS = [
   ['assets/course/kit2', 34],
   /* A&P Predict the change's Explore, tools/predict-explore.js and .css (docs/tools-v2-anp-predict-brief.md): loaded only
      by that tool's page (its landing), so it is its own shell, not part of every A&P page's (review round 1). Four drawn
-     body systems and the chain engine. Measured 32.4 KB. */
-  ['anatomy-physiology/predict-explore', 33],
+     body systems and the chain engine. Measured 32.8 KB in review round 1; 33.3 KB after recheck 1 (the adaptive ambient rate, the keep-out for the "before" word, arrows held until the shown number moves). */
+  ['anatomy-physiology/predict-explore', 34],
   /* 249 -> 253 for cross-device sync (audit 2026-10, Fix-first 5). A sync
      used to replace whole namespaces and pull only on sign-in, so two signed-in
      devices erased each other's progress. account.js now carries a per-key

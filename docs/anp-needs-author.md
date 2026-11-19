@@ -2128,8 +2128,8 @@ choices behind the numbers on the pictures.
 - **px-breath-model** (decided, for review). Rate changed with each breath the same size; PaCO2 = 40 x 12 / rate (8 to
   24 a minute: 60 to 20 mm Hg); bicarbonate changes acutely by -2 per 10 mm Hg fall and +1 per 10 rise (no renal
   compensation, said in "?"); pH by Henderson-Hasselbalch (7.26 to 7.62). O2 saturation from the alveolar gas equation
-  (PIO2 150, R 0.8) and the Severinghaus curve: 97.7% at 12, 98.8% at 24 (labeled "same", threshold 2 points), 94.9% at
-  8 (falls). Review round 1: saturation carries its real arrow whenever its shown number moves (rises about 1 point when
+  (PIO2 150, R 0.8) and the Severinghaus curve: 97.7% at 12, 98.8% at 24 (labeled "O₂ saturation 98.8% ↑"), 94.9% at
+  8 (falls, "↓"); the label shows one decimal and its real arrow. Review round 1: saturation carries its real arrow whenever its shown number moves (rises about 1 point when
   breathing faster; the bank's `hyperventilation` keys it "none" because it barely changes, which "?" says), and the
   screen's "same" label is the breath size, which the model holds.
 - **px-adh-model** (decided, for review). Urine volume = 600 mOsm a day / urine concentration (the notes' worked
