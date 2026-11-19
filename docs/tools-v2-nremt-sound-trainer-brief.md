@@ -220,3 +220,15 @@ failed (1975 to 2026 checks each). `--frames`: all checks pass except the CPU x4
 other builders' browsers (load average 10 to 12): measured back to back under that load, the first build gave p95
 66.6 ms at 390 and 50.0 at 1440, this one 66.8 and 33.4; on a quiet machine earlier in the round 16.8 and 33.3.
 Preview and shots regenerated in `/mnt/user-data/outputs/nremt-sound-trainer-v2/` (the normal clip inlined too).
+
+## Recheck 1 (2026-11-19, PASS; its should fix items 1 to 4 done before the merge)
+
+1. The dataset is linked by its DOI (doi:10.17632/jwyy9np4gv.3, version 3, the current one) in "?" and the footer,
+   beside the CC BY 4.0 link. Which version the GitHub copy came from is an open point in `docs/nremt-needs-author.md`.
+2. The key row's tag follows what is on: on a lung tab "Generated breath" while the generated tracheal Normal is the
+   sound (as the strip says), "Real recordings" otherwise (`madeTag()`).
+3. The recording note's clause now covers only snoring, gurgling and diminished ("for these three a synthesized
+   substitute would teach the wrong sound"), not the generated tracheal breath beside it.
+4. On the wide heart tab the tubing leaves down and outward on a diagonal before it drops, so it no longer crosses
+   Erb's point under the pulmonic area (lung tabs unchanged).
+Sweep: 390 (2026) and 1440 (1982) pass, 0 failed; NREMT tests 71 pass.

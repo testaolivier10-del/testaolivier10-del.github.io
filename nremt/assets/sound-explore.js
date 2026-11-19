@@ -266,6 +266,7 @@
         }).join('') + (t.kind === 'heart' ? '<span class="snd2-made">Generated, not recorded. Beyond the EMT exam</span>' : '<span class="snd2-made">Real recordings</span>');
       }
       keys.querySelectorAll('.snd2-key').forEach(function(b){ var on = b.getAttribute('data-key') === s.key; b.setAttribute('aria-checked', String(on)); b.tabIndex = on ? 0 : -1; });
+      madeTag();
       viewSw.hidden = t.views.length < 2;
       viewSw.querySelectorAll('button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-view') === s.view)); });
       var I = INFO[s.key], nb = ab.querySelector('[data-ab="n"]'), axb = ab.querySelector('[data-ab="a"]');
@@ -545,7 +546,15 @@
       setupStrip();
     }
     function txH(t, cyc){ var u = ((t + PRE) % cyc + cyc) % cyc; return SZ.px + u / cyc * SZ.pw; }
+    // the key row's tag says what is on: on a lung tab "Real recordings", except while the generated tracheal breath is
+    // the sound (then "Generated breath", as the strip says; review recheck 1)
+    function madeTag(){
+      var t = T(), m = keys.querySelector('.snd2-made'); if(!m || t.kind === 'heart') return;
+      var snd = cur(), gen = !!(S().site && snd && snd.synth), txt = gen ? 'Generated breath' : 'Real recordings';
+      if(m.textContent !== txt) m.textContent = txt;
+    }
     function setupStrip(){
+      madeTag();
       if(!SZ) return;
       var snd = cur(), site = S().site ? SITE[S().site] : null, R = SZ.R;
       SZ.kind = null; SZ.ticks.innerHTML = ''; SZ.phase.innerHTML = ''; SZ.fill.setAttribute('d', ''); SZ.line.setAttribute('d', '');
@@ -674,6 +683,10 @@
       else { bx = out < 0 ? -12 : G.W + 12; by = Math.min(p[1] + 40, G.fa.y + G.fa.h - 10); c2 = [bx - out * 60, by]; }
       // wide: down, off the bottom; narrow: straight out to the side, so it never lies over the next spot down
       var c1 = G.wide ? [p[0] + out * 6, p[1] + r + 50] : [p[0] + out * 70, p[1] + 6], st0 = G.wide ? [p[0], p[1] + r * .8] : [p[0] + out * r * .8, p[1]];
+      // (wide heart tab: the five spots stack down the left sternal border, so the tubing leaves down and outward on a
+      // diagonal (under the site's name, clear of the spot below) before it drops; review recheck 1, Erb's point under
+      // the pulmonic area)
+      if(G.wide && T().kind === 'heart'){ st0 = [p[0] + out * r * .6, p[1] + r * .6]; c1 = [p[0] + out * (r + 80), p[1] + r + 30]; bx = clamp(p[0] + out * Math.max(160, 220 * G.k), G.fa.x + 6, G.fa.x + G.fa.w - 6); c2 = [bx, by - 120]; }
       var dT = 'M' + f1(st0[0]) + ' ' + f1(st0[1]) + ' C' + f1(c1[0]) + ' ' + f1(c1[1]) + ' ' + f1(c2[0]) + ' ' + f1(c2[1]) + ' ' + f1(bx) + ' ' + f1(by);
       // one element per drawn thing, updated in place (a drag moves them every frame)
       if(!gTube.firstChild){ sv('path', { class: 'snd2-tube-s' }, gTube); sv('path', { class: 'snd2-tube' }, gTube); }
@@ -970,7 +983,7 @@
       '<ul class="snd2-ref-l">' +
       '<li><b>Where to listen.</b> Lungs: below each clavicle (the apices), the sides low down (the bases, midaxillary line) and the back, comparing right with left at the same level. Stridor: over the trachea. Heart: aortic area (2nd intercostal space, right sternal border), pulmonic (2nd, left sternal border), Erb’s point (3rd, left), tricuspid (4th to 5th, lower left sternal border), mitral or apex (5th, left midclavicular line).</li>' +
       '<li><b>Lung sounds</b> are real recordings by James Heilman, MD (stridor processed by Natural Philo), from Wikimedia Commons, CC BY-SA 3.0. They stream from Wikimedia, so they need a connection. When the browser can measure the clip, the strip draws its loudness live; otherwise it draws a typical breath (not this clip) with the part of the breath the sound lives in shaded.</li>' +
-      '<li><b>Normal breath sounds</b> over the lung fields are a real recording (normal, posterior left middle, an adult; heart sounds may be heard under it) from Fraiwan M, Fraiwan L, Khassawneh B, Ibnian A, \u201cA dataset of lung sounds recorded from the chest wall using an electronic stethoscope\u201d, Mendeley Data (jwyy9np4gv), <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. Over the trachea, normal breath sounds are louder and harsher, heard both breathing in and out: that one is generated in your browser and marked so.</li>' +
+      '<li><b>Normal breath sounds</b> over the lung fields are a real recording (normal, posterior left middle, an adult; heart sounds may be heard under it) from Fraiwan M, Fraiwan L, Khassawneh B, Ibnian A, \u201cA dataset of lung sounds recorded from the chest wall using an electronic stethoscope\u201d, Mendeley Data, <a href="https://doi.org/10.17632/jwyy9np4gv.3" target="_blank" rel="noopener">doi:10.17632/jwyy9np4gv.3</a>, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. Over the trachea, normal breath sounds are louder and harsher, heard both breathing in and out: that one is generated in your browser and marked so.</li>' +
       '<li><b>Heart sounds</b> are generated in your browser, not recorded: what separates them is where each falls in the beat, which a generated sound gets exactly; the timbre of a real chest it does not. Murmurs, S3 and S4 are beyond the EMT exam. The murmurs drawn are one example each: the systolic one shaped like aortic stenosis, the diastolic one aortic regurgitation; other valves make murmurs heard best elsewhere.</li>' +
       '<li><b>Loudness by spot</b> is a teaching approximation: which spot is loudest, not the exact ratio.</li>' +
       '</ul>' +

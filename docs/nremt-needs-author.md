@@ -160,7 +160,8 @@ management, primary assessment, principles of assessment, cardiac emergencies) a
   `nremt/assets/audio/normal-vesicular.wav` and credited in "?" and the page footer. For a person: (1) the file came
   from a GitHub copy of the dataset (`IKnowUCantPvp/Lung-Sound-Classification-PCEN`, folder "Additional Lung Sounds",
   the file used unaltered, sha256 ffce627849d0b2e2...), since Mendeley is not reachable from the
-  build container: confirm it against the original download; (2) listen to it: it could not be listened to here (its
+  build container: confirm it against the original download, and which version it is (the credit links version 3,
+  doi:10.17632/jwyy9np4gv.3, the current one, checked on 2026-11-19); (2) listen to it: it could not be listened to here (its
   breath bursts were checked by their energy, 150 to 800 Hz, about every 2.7 s; much of its low end is heart sound);
   pick another normal file from the dataset if a cleaner one exists. Over the trachea, Normal plays a GENERATED
   tracheal (bronchial) breath, tagged "Generated breath": louder and harsher, heard breathing in and out about equally
