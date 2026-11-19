@@ -83,7 +83,9 @@ const SHELL_BUDGETS = [
   /* 15 -> 16 (2026-10-27): landmark dots, so pulse points and other landmarks can be tapped on the model. */
   /* 16 -> 16.4 (tools v2 NREMT body map, 2026-11-18): viewer.js project(), flying() and the frame and hover events
      a card on the picture follows; measured 16.3 KB. */
-  ['assets/body3d', 16.4],
+  /* 16.4 -> 17 (the same tool, review round 1, 2026-11-19): project() points at the nearer of a pair (the kidneys)
+     and offset() slides the view above a card docked on a phone; measured 16.8 KB. */
+  ['assets/body3d', 17],
   /* The tools v2 kit, assets/course/tool-kit2.js and .css (docs/tools-v2-standard.md): loaded only by tools rebuilt to
      v2, so it is its own shell, not part of every course page's assets/course (review of the Lab practical, 2026-11-18).
      Measured 33.0 KB with K.spots (the explorers' named places, with its miss, card sizing and find-it mode: about

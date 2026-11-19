@@ -42,7 +42,7 @@ picture the legend steps aside while a card is docked over it.
 (15 regions with their numbers, unchanged), Adult | Child on the picture (top left), the total ("Burned 0%") on the
 picture (between the figures on a wide one); 1 cause line (3 pills); under it the brush (Full | Half | Erase) and
 "Start over"; the cue "Tap a region". **After a tap:** the region burns in (0.28 s), the total counts with it, then
-the cause line: [region] → [why its share: "half of the arm's 9%"] → [4.5%] → [Total 13.5%]. Over 10% a small
+the cause line: [region] → [why its share: "half the arm: 4.5%"] → [Total 13.5%]. Over 10% a small
 "Over 10%" mark appears under the total (what it means is in "?").
 
 ## Explore against Test yourself
