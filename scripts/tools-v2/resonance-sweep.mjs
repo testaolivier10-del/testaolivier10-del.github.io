@@ -1,10 +1,13 @@
 /* Tools v2 layout sweep for the Organic Chemistry Resonance tool (docs/tools-v2-resonance-brief.md). Every form of every
    species (reached by tapping it in the forms row, with reduced motion so each lands at once), a held push (an atom at
-   ten electrons) for three species, Find every form at its start and when finished, Which is more stabilized? before
+   ten electrons) for three species, Find every form at its start and when finished, leaving Explore in the middle of a
+   two step replay (phenoxide, motion on: Test yourself must start clean and Explore come back settled), Which is more stabilized? before
    and after the call, and a first visit with the cue, at ten widths. At each state it asserts:
      - nothing drawn or named is clipped by the stage (balls, lone pairs, charge badges, names, marks, form cards);
      - names sit at least 4 px clear of each other, of every ball and charge badge, of the picker and Undo;
      - charge badges and lone pairs do not sit on another atom's ball;
+     - in the forms row every badge and letter is inside its card and 4 px clear of its tag; letters at least 11 px,
+       badges at least 7 px in radius, π lines at least 6 px long;
      - the molecule on the board is the largest object in the picture (bigger than the real molecule and each form);
      - on a phone the cause line is at most two rows and keeps one height; no sideways scroll; no console errors;
      - on a first visit the cue is whole and covers no ball, name, picker or Undo.
@@ -37,7 +40,7 @@ const WIDTHS = (args[0] && !args[0].startsWith('--') ? args[0] : '360,390,430,60
 const SPECIES = ['acetate-ion', 'formate', 'allyl-cation', 'allyl-anion', 'enolate', 'acetamide', 'nitromethane', 'carbonate', 'benzene', 'phenoxide', 'benzyl-cation', 'nitrate', 'ozone'];
 const b = await chromium.launch({ executablePath: process.env.CHROME || '/opt/pw-browsers/chromium-1243/chrome-linux64/chrome' });
 async function open(o) {
-  const ctx = await b.newContext({ viewport: { width: o.w, height: o.h }, serviceWorkers: 'block', deviceScaleFactor: 1, reducedMotion: 'reduce' });
+  const ctx = await b.newContext({ viewport: { width: o.w, height: o.h }, serviceWorkers: 'block', deviceScaleFactor: 1, reducedMotion: o.motion ? 'no-preference' : 'reduce' });
   const page = await ctx.newPage(), errs = [];
   page.on('console', m => { if (m.type() === 'error') errs.push(m.text()); });
   page.on('pageerror', e => errs.push('PAGEERROR ' + e.message));
@@ -75,6 +78,17 @@ const probe = () => {
   q('.rs2-mainA .rs2-badge circle, .rs2-mainA .rs2-e').forEach(e => { const r = R(e), ex = (r.l + r.r) / 2, ey = (r.t + r.b) / 2;
     const ds = balls.map(c => Math.hypot(ex - c.x, ey - c.y) - c.r).sort((a, c) => a - c);
     if (ds.length > 1 && ds[1] < r.w / 2 - 0.5) out.push('a ' + (e.closest('.rs2-badge') ? 'badge' : 'lone pair') + ' on another atom'); });
+  // the forms row: every badge and letter inside its card and 4 px clear of its tag; letters, signs and π lines legible
+  const cards = q('.rs2-thumb:not(.is-hid)').map(R), tags = q('.rs2-lab.is-tag').map(R);
+  q('.rs2-strip .rs2-badge circle, .rs2-strip .rs2-fal').forEach(e => { const r = R(e), cx = (r.l + r.r) / 2, cy = (r.t + r.b) / 2;
+    const what = e.tagName === 'circle' ? 'a form card badge' : 'form card letters "' + e.textContent + '"';
+    const c = cards.find(k => cx >= k.l && cx <= k.r && cy >= k.t && cy <= k.b);
+    if (!c) { out.push(what + ' outside every card'); return; }
+    if (r.l < c.l - 0.5 || r.r > c.r + 0.5 || r.t < c.t - 0.5 || r.b > c.b + 0.5) out.push(what + ' crosses its card edge');
+    tags.filter(t => t.l >= c.l - 1 && t.r <= c.r + 1).forEach(t => { if (hit(r, t, 4)) out.push(what + ' within 4 px of its tag'); });
+    const fsz = e.tagName === 'circle' ? +e.getAttribute('r') : +e.getAttribute('font-size');
+    if (e.tagName === 'circle' ? fsz < 6.9 : fsz < 10.9) out.push(what + ' too small (' + fsz + ')'); });
+  q('.rs2-strip .rs2-fpi').forEach(e => { const L = Math.hypot(e.x2.baseVal.value - e.x1.baseVal.value, e.y2.baseVal.value - e.y1.baseVal.value); if (L < 6) out.push('a π line in the forms row is ' + L.toFixed(1) + ' px'); });
   const uni = a => a.length ? { l: Math.min(...a.map(x => x.l)), t: Math.min(...a.map(x => x.t)), r: Math.max(...a.map(x => x.r)), b: Math.max(...a.map(x => x.b)) } : null;
   const area = u => u ? (u.r - u.l) * (u.b - u.t) : 0, M = uni(mainBalls), H = uni(hybBalls);
   const thumbs = q('.rs2-thumb').map(e => area(R(e)));
@@ -150,6 +164,27 @@ for (const w of WIDTHS) {
   await check('compare, before the call');
   await page.locator('.rs2-dock [data-guess="a"]').first().click(); await page.waitForTimeout(150);
   await check('compare, after the call'); await shot(page.locator('.rs2-scene'), `${tag}-6-compare.png`);
+  // leaving Explore in the middle of a two step replay: Test yourself starts clean, Explore comes back settled
+  {
+    const c = await open({ w, h, motion: true });
+    await c.page.locator('.rs2-pick select').selectOption('phenoxide'); await c.page.waitForTimeout(300);
+    const steps = await c.page.evaluate(() => { const M = OchemResonanceModel, v = M.view; return M.pathTo(v.S.cur, v.S.rk[4].st, v.S.rk.map(x => x.st)).length; });
+    await c.page.locator('.rs2-tb[data-i="4"]').click(); await c.page.waitForTimeout(500);
+    await c.page.getByRole('button', { name: 'Test yourself' }).click(); await c.page.waitForTimeout(150);
+    await c.page.locator('select.ls-pick-sel').selectOption('find'); await c.page.waitForTimeout(2600);
+    const r = await c.page.evaluate(() => { const M = OchemResonanceModel, v = M.view, S = v.S;
+      return { count: document.querySelector('#rsFindCount').textContent, onStart: M.key(S.cur) === M.key(S.start), fly: document.querySelectorAll('.rs2-fly *').length,
+        framedHidden: document.querySelectorAll('.rs2-thumb.is-on.is-hid').length, cause: document.querySelector('.tk2-cause').innerText.replace(/\n/g, ' ') }; });
+    states++; checks += 5;
+    if (steps < 2) fails.push(`${w} replay leave: phenoxide form 5 is not a multi step path`);
+    if (!/^1 of 5/.test(r.count)) fails.push(`${w} replay leave: Find every form counts "${r.count}"`);
+    if (!r.onStart || r.fly || r.framedHidden || /minor/.test(r.cause)) fails.push(`${w} replay leave: the replay ran into Test yourself (${JSON.stringify(r)})`);
+    await c.page.getByRole('button', { name: 'Explore' }).click(); await c.page.waitForTimeout(800);
+    const e = await c.page.evaluate(() => { const M = OchemResonanceModel, v = M.view, S = v.S; return { settled: S.rk.some(f => f.key === M.key(S.cur)), held: !!S.pendingSt, fly: document.querySelectorAll('.rs2-fly *').length }; });
+    if (!e.settled || e.held || e.fly) fails.push(`${w} replay leave: Explore came back unsettled (${JSON.stringify(e)})`);
+    const real = c.errs.filter(x => !/ERR_FAILED/.test(x)); if (real.length) fails.push(`${w} replay leave: console ${real.join('|')}`);
+    await c.page.context().close();
+  }
   if (w <= 640) { checks++; if (heights.size !== 1) fails.push(`${w}: cause line height not constant: ${[...heights]}`); }
   const real = errs.filter(e => !/ERR_FAILED/.test(e)); checks++; if (real.length) fails.push(`${w}: console ${real.join('|')}`);
   console.log(`${w}: board molecule at least ${(lo * 100).toFixed(1)}% of the stage`);

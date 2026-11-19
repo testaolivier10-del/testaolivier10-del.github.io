@@ -194,3 +194,57 @@ Each is also one line in `docs/tools-v2-owner-log.md`.
 - A target near two candidates prefers the one that gives a form, which is forgiving but can hide a deliberate wrong
   push aimed between them; a push almost on its target is always taken as meant.
 - No real phone, no screen reader pass, no real students.
+
+## Review round 1 (2026-11-18, `/home/claude/review-resonance/REVIEW.md`: blocked on 3 must fix items; all done)
+Where this section and the text above disagree, this section is the tool as it is now. The branch first took in
+`origin/claude/tools-v2-all` (a merge; its `check-tool-use.mjs` kept, both sides of the owner log and the status
+table kept).
+
+### Must fix
+1. **Charges in the forms row.** A form's badge is placed in the widest gap between its atom's bonds, then in the next
+   direction that is not along a bond and stays inside the card's drawing room (the card above its tag strip, 4 px
+   clear of the tag); only if none fits is it clamped into that room. The phenoxide and benzyl para forms now show
+   their charge; no badge leaves its card. The sweep checks every form card badge and letter: inside its card and at
+   least 4 px clear of its tag.
+2. **The forms row on phones.** The small drawings are drawn as on paper: ring carbons, and a CH₂ hanging off a ring
+   (the benzyl carbon), are plain corners or line ends with no letters; letters only on heteroatoms and groups
+   (O, N, CH₃). Each drawing is fitted to its card's width and height from its measured letters (fit, measure, fit
+   again), not from a fixed margin. Letters 11 to 15 px, badges at least 7 px in radius (sign about 11 px), π lines
+   stop short only of letters, so both Kekulé forms read at 360. The phone row is 150 px (its heading and tags a
+   little smaller there), the phone stage 596 px; on wider stages the row is up to 180 px. The sweep asserts letters
+   at least 11 px, badge radius at least 7 px and every π line at least 6 px long, at every width.
+3. **Leaving mid replay.** Every played change carries a run token; a mode switch, a new species, Undo and a new
+   replay bump it first, so a replay cut short stops: the board keeps the last form it fully reached and the rest of
+   the chain never starts (the same guard is on the push animations). The sweep has a new check at every width, with
+   motion on: phenoxide, tap form 5 (a two step path), switch to Test yourself, Find every form, after the replay
+   would have ended: "1 of 5", the board on the drawn structure, nothing flying, no hidden card framed, no minor form
+   named; back in Explore the board is on a settled form, nothing held, nothing flying.
+
+### Should fix
+- **Screen reader text in the held state** leaves out the charge of the atom at ten electrons, as the picture does
+  ("a push held ... Charges: none"; no "(negative)" in atom names).
+- **A drag back onto its own spot cancels**: a release within the grab radius of where the pair came from springs
+  back and changes nothing.
+- **Less empty space.** The real molecule's card is at most 560 px wide, so wide stages give the room to the board;
+  the board's size cap grows with its height (up to 3.6 against 2.7); tablets in portrait get a taller stage
+  (620 to 820 px, from the window's height). Smallest board share at 1920 went from 4.5% to 7.5%.
+- **The real molecule on phones**: a taller card (162 px), a larger cap; ball sizes shrink with the drawing so balls
+  never overlap, and a carbon or hydrogen ball too small for readable letters keeps only its colour (O and N keep a
+  letter; the board above names every atom).
+- Nit: the quiz explanation says "the picture", not "the picture above".
+
+### Checks (this round)
+- Sweep, one width per process at all ten widths: 43 states and 380 or 381 checks each, 0 failures (the four new
+  form row checks and the replay check included; the wide widths were run again after the last row size change).
+- Unit tests (`tool-content` 41 pass; with the ochem and tool files 95 pass), `build-tool-pages --check`,
+  `check-site`, `check-weight --check`, `check-tool-use` with a local copy of its list (frame v2).
+- Playwright at 390 (real touch) and 1440, light and dark: as in the first round, plus the drag-home cancel and the
+  held state's screen reader text. Performance with CPU x4: median 16.7 ms; p95 16.8 ms on a quiet run, 50 to 83 ms on
+  runs while the machine was loaded by other sessions (load average about 6); nothing per frame was added this round
+  (the forms row is drawn only on a change of state).
+- Preview and shots regenerated: `/mnt/user-data/outputs/resonance-v2/`.
+
+### Not done
+- Nits left: the "6 e⁻" tag in the negligible form can sit on a stick; the keyboard target wording "onto C top" for a
+  push into the C–O bond; repeated atom names in phenoxide's board text.
+- In a para minor form whose outward gap is below the card's room the badge sits inside the ring at that carbon.

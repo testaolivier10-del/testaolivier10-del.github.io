@@ -97,8 +97,11 @@
     return list;
   }
 
+  // the charges a structure shows; while a push is held, the atom at ten electrons shows none (as in the picture)
+  function heldOver(st){ return typeof S !== 'undefined' && S && S.pendingSt && st === S.pendingSt ? over(st) : []; }
   function charged(st){
-    return Object.keys(st.atoms).filter(function(k){ return fc(st, k) !== 0; }).map(function(k){ return { k: k, el: st.atoms[k].el, q: fc(st, k) }; });
+    var hid = heldOver(st);
+    return Object.keys(st.atoms).filter(function(k){ return fc(st, k) !== 0 && hid.indexOf(k) < 0; }).map(function(k){ return { k: k, el: st.atoms[k].el, q: fc(st, k) }; });
   }
   function short(st){
     return Object.keys(st.atoms).filter(function(k){ var a = st.atoms[k]; return a.el && !a.group && a.el !== 'H' && C.electronCount(st, k) < C.octetOf(st, k); });
@@ -315,7 +318,7 @@
                    (/phenoxide|benzyl/.test(pick.id)
                      ? 'That includes the ring’s own two Kekulé forms; a textbook picture usually holds those fixed and shows you one fewer. '
                      : '') +
-                   'Push the electrons in the picture above and the row of forms shows each one you reach.'
+                   'Push the electrons in the picture and the row of forms shows each one you reach.'
         };
       }
     });
@@ -412,7 +415,7 @@
       else { var hh = (H - top - pad * 2) / 2; o.left = { x: pad, y: top + 26, w: W - pad * 2, h: hh - 26 }; o.right = { x: pad, y: top + hh + pad + 26, w: W - pad * 2, h: hh - 26 }; }
       return o;
     }
-    var stripH = wide ? Math.max(118, Math.min(152, H * 0.25)) : phone ? 104 : 128;
+    var stripH = wide ? Math.max(130, Math.min(180, H * 0.27)) : phone ? 150 : 150;
     o.strip = { x: pad, y: H - stripH, w: W - pad * 2, h: stripH - pad };
     // no real molecule to show (Find every form before the last one, or a species with one form): the board takes its room
     if((S.mode === 'quiz' && S.part === 'find' && !hunt.done) || S.rk.length < 2){
@@ -420,11 +423,12 @@
       return o;
     }
     if(wide){
-      var split = Math.round(W * 0.6);
+      // the real molecule's card is never wider than it needs (open wall on wide stages goes to the board)
+      var split = Math.round(W - Math.min(W * 0.4, 560));
       o.main = { x: pad, y: top, w: split - pad * 2, h: H - top - stripH - 6 };
       o.hyb = { x: split, y: top + 34, w: W - split - pad, h: H - top - stripH - 40 };
     } else {
-      var hybH = phone ? 128 : 170;
+      var hybH = phone ? 162 : 170;
       o.main = { x: pad, y: top, w: W - pad * 2, h: H - top - stripH - hybH - 4 };
       o.hyb = { x: pad, y: H - stripH - hybH + 26, w: W - pad * 2, h: hybH - 30 };
     }
@@ -454,7 +458,9 @@
   function radiusOf(st, k, T){
     var a = st.atoms[k], base = a.el === 'H' ? 10 : 16.5;
     var lab = labelOf(st, k);
-    return Math.max(a.el === 'H' ? 7.5 : 11.5, base * T.k * 0.8) * (lab.length > 2 ? 1.16 : lab.length > 1 ? 1.07 : 1);
+    // the smallest ball keeps its letters readable, but shrinks with a small drawing so balls never overlap
+    var fl = Math.min(1, T.k / 1.1);
+    return Math.max((a.el === 'H' ? 7.5 : 11.5) * fl, base * T.k * 0.8) * (lab.length > 2 ? 1.16 : lab.length > 1 ? 1.07 : 1);
   }
   function labelOf(st, k){
     var a = st.atoms[k];
@@ -560,6 +566,8 @@
       }
       sh += '<circle class="rs2-shadow" cx="' + f1(p.x + r * 0.18) + '" cy="' + f1(p.y + r * 0.42) + '" r="' + f1(r * 1.12) + '"/>';
       var lab = labelOf(st, k), fs = Math.min(r * 1.02, r * 2.5 / Math.max(1, lab.length * 0.78));
+      // too small to read: a carbon or hydrogen ball keeps its colour only (the board above names it); others keep a letter
+      if(fs < 8.5 && (a.el === 'C' || a.el === 'H')) lab = ''; else if(fs < 8.5){ lab = a.el; fs = Math.min(r * 1.1, 11); }
       at += '<circle class="rs2-ball is-' + (BALL[a.el] || 'x') + '" cx="' + f1(p.x) + '" cy="' + f1(p.y) + '" r="' + f1(r) + '" fill="url(#rs2g-' + (BALL[a.el] || 'x') + ')"/>' +
         '<ellipse class="rs2-shine" cx="' + f1(p.x - r * 0.32) + '" cy="' + f1(p.y - r * 0.38) + '" rx="' + f1(r * 0.34) + '" ry="' + f1(r * 0.22) + '"/>' +
         '<text class="rs2-al is-' + (BALL[a.el] || 'x') + '" x="' + f1(p.x) + '" y="' + f1(p.y + fs * 0.36) + '" font-size="' + f1(fs) + '" text-anchor="middle">' + esc(lab) + '</text>';
@@ -582,29 +590,62 @@
   }
 
   /* The small drawings in the forms row: lines and letters, the charge in its colour, the π line violet. */
-  function drawFlat(st, T){
+  function flatSizes(st, T){
+    var b = st.bonds.filter(function(x){ return heavy(st, x.a) && heavy(st, x.b); })[0], bl = 40;
+    if(b){ var a = P(T, st.atoms[b.a]), z = P(T, st.atoms[b.b]); bl = Math.hypot(z[0] - a[0], z[1] - a[1]); }
+    return { bl: bl, lw: Math.max(1.5, Math.min(2.6, bl * 0.06)), fsz: Math.max(11, Math.min(15, bl * 0.42)), off: Math.max(2.6, Math.min(5.5, bl * 0.14)) };
+  }
+  /* Fit a small drawing so its letters, not only its atom centres, stay inside the box: fit, measure the letters at
+     that size, shrink the box by how far they reach, fit again. */
+  function fitFlat(st, box){
+    var T = fitT(S.start, box, { flat: true, margin: 0, cap: 1.2 });
+    for(var it = 0; it < 2; it++){
+      var z = flatSizes(st, T), ex = 0, ey = z.fsz * 0.55;
+      var inR = {}; sixRings(st).forEach(function(r){ r.forEach(function(k){ inR[k] = 1; }); });
+      Object.keys(st.atoms).forEach(function(k){ if(!heavy(st, k) || (st.atoms[k].el === 'C' && (inR[k] || C.neighbors(st, k).some(function(n){ return inR[n]; })))) return; var l = flatLabel(st, k); if(l !== 'C') ex = Math.max(ex, z.fsz * 0.33 * l.length); });
+      T = fitT(S.start, { x: box.x + ex, y: box.y + ey, w: Math.max(10, box.w - ex * 2), h: Math.max(10, box.h - ey * 2) }, { flat: true, margin: 0, cap: 1.2 });
+    }
+    return T;
+  }
+  function drawFlat(st, T, box){
+    /* drawn as on paper: a ring carbon is a plain corner (no letters), so the ring's double bonds have room; letters
+       only on heteroatoms and groups. box: where every mark must stay (the card above its tag). */
     var s = T.k, out = '', hk = Object.keys(st.atoms).filter(function(k){ return heavy(st, k); });
-    var lw = Math.max(1.4, 2.6 * s), fsz = Math.max(8.5, 15 * s);
+    var inRing = {}; sixRings(st).forEach(function(r){ r.forEach(function(k){ inRing[k] = 1; }); });
+    // a ring carbon, and a CH₂ hanging off a ring (the benzyl carbon), are line ends as on paper
+    function bare(k){ var l = flatLabel(st, k); return l === 'C' || (st.atoms[k].el === 'C' && (inRing[k] || (l === 'CH₂' && C.neighbors(st, k).some(function(n){ return inRing[n]; })))); }
+    var z0 = flatSizes(st, T), lw = z0.lw, fsz = z0.fsz, off = z0.off;
     st.bonds.forEach(function(b){
       if(b.order < 1 || !heavy(st, b.a) || !heavy(st, b.b)) return;
       var a = P(T, st.atoms[b.a]), z = P(T, st.atoms[b.b]), dx = z[0] - a[0], dy = z[1] - a[1], L0 = Math.hypot(dx, dy) || 1, nx = -dy / L0, ny = dx / L0;
-      var ga = flatLabel(st, b.a) === 'C' ? 0 : fsz * 0.62, gz = flatLabel(st, b.b) === 'C' ? 0 : fsz * 0.62;
+      // a line stops just short of a letter: wider labels need more room, and more along a level bond than a steep one
+      function gap(k){ if(bare(k)) return 0; var n = flatLabel(st, k).length, hx = fsz * (0.2 + 0.17 * n), hy = fsz * 0.42; return Math.min(hx / Math.max(0.01, Math.abs(dx / L0)), hy / Math.max(0.01, Math.abs(dy / L0))) + 1.5; }
+      var ga = gap(b.a), gz = gap(b.b);
       var ax = a[0] + dx / L0 * ga, ay = a[1] + dy / L0 * ga, zx = z[0] - dx / L0 * gz, zy = z[1] - dy / L0 * gz;
       out += '<line class="rs2-fsig" x1="' + f1(ax) + '" y1="' + f1(ay) + '" x2="' + f1(zx) + '" y2="' + f1(zy) + '" stroke-width="' + f1(lw) + '"/>';
-      var side = piSide(st, b), o2 = Math.max(2.6, 5 * s) * side;
+      var side = piSide(st, b), o2 = off * side, ll = Math.hypot(zx - ax, zy - ay) || 1, cut = Math.max(2, Math.min(4, ll * 0.12)) / ll, ua = ga ? 0 : cut, uz = gz ? 0 : cut;
       for(var i = 1; i < b.order; i++){
         var m = i === 1 ? 1 : -1;
-        out += '<line class="rs2-fpi" x1="' + f1(ax + dx * 0.08 + nx * o2 * m) + '" y1="' + f1(ay + dy * 0.08 + ny * o2 * m) + '" x2="' + f1(zx - dx * 0.08 + nx * o2 * m) + '" y2="' + f1(zy - dy * 0.08 + ny * o2 * m) + '" stroke-width="' + f1(lw) + '"/>';
+        out += '<line class="rs2-fpi" x1="' + f1(ax + (zx - ax) * ua + nx * o2 * m) + '" y1="' + f1(ay + (zy - ay) * ua + ny * o2 * m) + '" x2="' + f1(zx - (zx - ax) * uz + nx * o2 * m) + '" y2="' + f1(zy - (zy - ay) * uz + ny * o2 * m) + '" stroke-width="' + f1(lw) + '"/>';
       }
     });
     hk.forEach(function(k){
-      var p = P(T, st.atoms[k]), lab = flatLabel(st, k), q = fc(st, k), c = lab === 'C';
+      var p = P(T, st.atoms[k]), lab = flatLabel(st, k), q = fc(st, k), c = bare(k);
       if(!c) out += '<text class="rs2-fal" x="' + f1(p[0]) + '" y="' + f1(p[1] + fsz * 0.36) + '" font-size="' + f1(fsz) + '" text-anchor="middle">' + esc(lab) + '</text>';
       if(q){
-        // a small badge in the widest gap between the atom's bonds, so no line runs through it
-        var ang = slots(st, k, 1)[0], br = Math.max(5.2, fsz * 0.52), dd = (c ? 0 : fsz * 0.32 * lab.length) + br + 2;
-        var bx = p[0] + Math.cos(ang) * dd, by = p[1] + Math.sin(ang) * dd;
-        out += '<g class="rs2-badge is-' + (q < 0 ? 'neg' : 'pos') + '"><circle cx="' + f1(bx) + '" cy="' + f1(by) + '" r="' + f1(br) + '"/><text x="' + f1(bx) + '" y="' + f1(by + br * 0.45) + '" font-size="' + f1(br * 1.5) + '" text-anchor="middle">' + sign(q) + '</text></g>';
+        // a badge in the widest gap between the atom's bonds, kept inside the card and above its tag
+        var br = Math.max(7, fsz * 0.55), dd = (c ? 2 : fsz * 0.32 * lab.length) + br + 1, bx, by;
+        // the widest gap first; if that leaves the card, the next direction that stays inside it
+        var angs = slots(st, k, 1); for(var ai = 0; ai < 16; ai++) angs.push(-Math.PI / 2 + ai * Math.PI / 8);
+        var bdirs = C.neighbors(st, k).filter(function(n){ return heavy(st, n); }).map(function(n){ var o = st.atoms[n], me = st.atoms[k]; return Math.atan2(o.y - me.y, o.x - me.x); });
+        angs = angs.filter(function(t, i){ return i === 0 || bdirs.every(function(d){ return angDist(t, d) > 0.6; }); });
+        for(var aj = 0; aj < angs.length; aj++){
+          bx = p[0] + Math.cos(angs[aj]) * dd; by = p[1] + Math.sin(angs[aj]) * dd;
+          if(!box || (bx - br - 1 >= box.x && bx + br + 1 <= box.x + box.w && by - br - 1 >= box.y && by + br + 5 <= box.y + box.h)) break;
+          bx = p[0] + Math.cos(angs[0]) * dd; by = p[1] + Math.sin(angs[0]) * dd;
+        }
+        if(box){ bx = Math.max(box.x + br + 1, Math.min(box.x + box.w - br - 1, bx)); by = Math.max(box.y + br + 1, Math.min(box.y + box.h - br - 5, by)); }
+        out += '<g class="rs2-badge is-' + (q < 0 ? 'neg' : 'pos') + '"><circle cx="' + f1(bx) + '" cy="' + f1(by) + '" r="' + f1(br) + '"/><text x="' + f1(bx) + '" y="' + f1(by + br * 0.45) + '" font-size="' + f1(br * 1.55) + '" text-anchor="middle">' + sign(q) + '</text></g>';
       }
     });
     return out;
@@ -634,7 +675,8 @@
   function paintMain(){
     var st = shown();
     if(!st || !L.main){ G.mainA.innerHTML = ''; G.mainB.innerHTML = ''; mainA = null; return; }
-    mainT = fitT(S.start, L.main, { cap: L.phone ? 1.7 : 2.7, margin: 30 });
+    // a taller board draws the molecule bigger, so a small species does not sit in an empty band
+    mainT = fitT(S.start, L.main, { cap: L.phone ? 1.7 : Math.min(3.6, 2.7 * Math.max(1, L.main.h / 460)), margin: 30 });
     var noQ = {}; over(st).forEach(function(k){ noQ[k] = 1; });
     var d = draw(st, mainT, { noCharge: noQ });
     G.mainA.innerHTML = d.html; G.mainA.style.opacity = '1';
@@ -653,7 +695,7 @@
     if(!L.hyb){ G.hyb.innerHTML = ''; return; }
     var hideIt = S.mode === 'quiz' && S.part === 'find' && !hunt.done;
     if(hideIt || S.rk.length < 2){ G.hyb.innerHTML = ''; return; }
-    var T = fitT(S.start, { x: L.hyb.x, y: L.hyb.y + 10, w: L.hyb.w, h: L.hyb.h - 10 }, { cap: L.phone ? 1.0 : 2.0, margin: 36 });
+    var T = fitT(S.start, { x: L.hyb.x, y: L.hyb.y + 10, w: L.hyb.w, h: L.hyb.h - 10 }, { cap: L.phone ? 1.3 : Math.min(2.6, 2.0 * Math.max(1, L.hyb.h / 460)), margin: L.phone ? 26 : 36 });
     var d = draw(S.rk[0].st, T, { hybrid: S.hyb });
     G.hyb.innerHTML = d.html + hybMarks(S.hyb, d.A, L.hyb);
   }
@@ -708,17 +750,19 @@
   function paintStrip(){
     thumbBoxes = [];
     if(!L.strip){ G.strip.innerHTML = ''; thumbsEl.innerHTML = ''; return; }
-    var n = S.rk.length, gap = L.phone ? 6 : 12, st = L.strip, headH = 22;
+    var n = S.rk.length, gap = L.phone ? 5 : 12, st = L.strip, headH = L.phone ? 16 : 22, tagH = L.phone ? 19 : 24;
     var w = Math.min(L.phone ? 120 : 190, (st.w - gap * (n - 1)) / n), x0 = st.x + (st.w - (w * n + gap * (n - 1))) / 2;
     var curKey = S.cur ? R.key(S.cur) : null, h = '', btn = '';
     S.rk.forEach(function(f, i){
       var bx = x0 + i * (w + gap), by = st.y + headH, bh = st.h - headH, on = f.key === curKey && !S.pendingSt;
       var hideIt = S.mode === 'quiz' && S.part === 'find' && !hunt.found[f.key];
-      var scale = f.major ? 1 : 0.8, iw = w * scale, ih = (bh - 18) * scale;
-      var inner = { x: bx + (w - iw) / 2, y: by + 4 + (bh - 18 - ih) / 2, w: iw, h: ih };
+      // the drawing's room: the card above its tag strip, a minor form a little smaller; badges stay in the card's room
+      var room = { x: bx + 2, y: by + 2, w: w - 4, h: bh - 2 - tagH }, scale = f.major ? 1 : 0.86, pad = L.phone ? 3 : 6;
+      var iw = (room.w - pad * 2) * scale, ih = (room.h - pad * 2) * scale;
+      var inner = { x: room.x + (room.w - iw) / 2, y: room.y + (room.h - ih) / 2, w: iw, h: ih };
       h += '<rect class="rs2-thumb' + (on ? ' is-on' : '') + (hideIt ? ' is-hid' : '') + '" x="' + f1(bx) + '" y="' + f1(by) + '" width="' + f1(w) + '" height="' + f1(bh) + '" rx="12"/>';
       if(hideIt) h += '<text class="rs2-q" x="' + f1(bx + w / 2) + '" y="' + f1(by + bh / 2 + 9) + '" font-size="26" text-anchor="middle">?</text>';
-      else h += drawFlat(f.st, fitT(S.start, inner, { flat: true, margin: 22, cap: 0.9 }));
+      else h += drawFlat(f.st, fitFlat(f.st, inner), room);
       thumbBoxes.push({ x: bx, y: by, w: w, h: bh, f: f, hid: hideIt, on: on });
       var what = hideIt ? 'Form ' + (i + 1) + ', not found yet' : 'Form ' + (i + 1) + ', ' + f.tag + (on ? ', shown now' : '') + '. ' + R.describe(f.st, S.rk.map(function(x){ return x.st; })).summary;
       btn += '<button type="button" class="rs2-tb" data-i="' + i + '" style="left:' + f1(bx) + 'px;top:' + f1(by) + 'px;width:' + f1(w) + 'px;height:' + f1(bh) + 'px"' +
@@ -732,8 +776,8 @@
   function placeLabels(){
     var out = [];
     if(L.hyb && G.hyb.innerHTML) out.push({ t: 'Real molecule', cls: 'is-head', x: L.hyb.x + L.hyb.w / 2, y: L.hyb.y - 15 });
-    if(L.strip) out.push({ t: S.mode === 'quiz' && S.part === 'find' ? 'Forms found' : 'Resonance forms', cls: 'is-sub', x: L.strip.x + L.strip.w / 2, y: L.strip.y + 10 });
-    thumbBoxes.forEach(function(b){ if(!b.hid) out.push({ t: b.f.tag, cls: 'is-tag is-' + b.f.tag + (b.on ? ' is-on' : ''), x: b.x + b.w / 2, y: b.y + b.h - 10 }); });
+    if(L.strip) out.push({ t: S.mode === 'quiz' && S.part === 'find' ? 'Forms found' : 'Resonance forms', cls: 'is-sub', x: L.strip.x + L.strip.w / 2, y: L.strip.y + (L.phone ? 7 : 10) });
+    thumbBoxes.forEach(function(b){ if(!b.hid) out.push({ t: b.f.tag, cls: 'is-tag is-' + b.f.tag + (b.on ? ' is-on' : ''), x: b.x + b.w / 2, y: b.y + b.h - (L.phone ? 9 : 10) }); });
     if(L.left && cmp.a){
       out.push({ t: cmp.a.label, cls: 'is-head', x: L.left.x + L.left.w / 2, y: L.left.y - 14 });
       out.push({ t: cmp.b.label, cls: 'is-head', x: L.right.x + L.right.w / 2, y: L.right.y - 14 });
@@ -1026,11 +1070,13 @@
     var from = shown();
     if(res.kind === 'held'){
       var mid = C.apply(S.cur, arrows).structure;
-      moveElectrons(from, mid, arrows, { start: dropPt, from: srcPt, fresh: [ar], ms: 420 }, function(){ S.pending = arrows; S.pendingSt = mid; after(res, ar); });
+      var myH = run;
+      moveElectrons(from, mid, arrows, { start: dropPt, from: srcPt, fresh: [ar], ms: 420 }, function(){ if(myH !== run) return; S.pending = arrows; S.pendingSt = mid; after(res, ar); });
       return;
     }
-    var next = res.v.structure;
+    var next = res.v.structure, myF = run;
     moveElectrons(from, next, arrows, { start: dropPt, from: srcPt, fresh: [ar], ms: 480 }, function(){
+      if(myF !== run) return;
       S.hist.push({ cur: S.cur });
       S.cur = res.form ? res.form.st : next; S.pending = []; S.pendingSt = null;
       after(res, ar, arrows);
@@ -1044,9 +1090,15 @@
   }
 
   /* Go to a form from the row (or the answer in Test yourself): the arrows are drawn, then the electrons move. */
+  /* Every played change carries a run token. Anything that leaves or resets the picture (a mode switch, a new species,
+     Undo, another replay) bumps it first, so a replay cut short stops where it is: the board keeps the last form it
+     fully reached and the rest of the chain never starts. */
+  var run = 0;
+  function cancelRuns(){ run++; stopTween(); }
   function goTo(f, done){
     if(!S.cur || f.key === R.key(S.cur)){ if(done) done(); return; }
-    stopTween();
+    cancelRuns();
+    var my = run;
     var path = pathTo(S.pendingSt ? S.cur : S.cur, f.st, S.rk.map(function(x){ return x.st; }));
     S.pending = []; S.pendingSt = null; paintMain();
     if(!path){ S.cur = f.st; paintAll(); words({ kind: 'form', form: f }, null); if(done) done(); return; }
@@ -1054,6 +1106,7 @@
     (function next(){
       var stp = path[i], from = S.cur;
       moveElectrons(from, stp.st, stp.arrows, {}, function(){
+        if(my !== run) return;
         S.hist.push({ cur: from }); S.cur = stp.st;
         var fk = R.key(stp.st), ff = S.rk.filter(function(x){ return x.key === fk; })[0];
         if(ff) S.visited[ff.key] = 1;
@@ -1066,7 +1119,7 @@
   }
 
   function undo(){
-    stopTween();
+    cancelRuns();
     if(S.pending.length){
       S.pending.pop();
       S.pendingSt = S.pending.length ? C.apply(S.cur, S.pending).structure : null;
@@ -1115,7 +1168,9 @@
       if(!d.src.real){ commitBad(d.src); return; }
       tapSrc = d.src; showPick(d.src); return;
     }
-    if(cancel || !d.t){ endDragVis(); springBack(d.pt || d.start, { x: d.src.x, y: d.src.y }, function(){ paintAll(); }); return; }
+    // let go back on (or next to) the spot it came from: no push, the pair goes home
+    var home = d.pt && Math.hypot(d.pt.x - d.src.x, d.pt.y - d.src.y) < Math.max(22, 16 * mainT.k);
+    if(cancel || !d.t || home){ endDragVis(); springBack(d.pt || d.start, { x: d.src.x, y: d.src.y }, function(){ paintAll(); }); return; }
     endDragVis(true);
     commit(d.src.key, d.t, d.pt, { x: d.src.x, y: d.src.y });
   }
@@ -1182,7 +1237,7 @@
   }
   function atomName(st, k){
     var a = st.atoms[k], same = Object.keys(st.atoms).filter(function(o){ return st.atoms[o].el === a.el; });
-    var q = fc(st, k), extra = q ? (q < 0 ? ' (negative)' : ' (positive)') : '';
+    var q = heldOver(st).indexOf(k) >= 0 ? 0 : fc(st, k), extra = q ? (q < 0 ? ' (negative)' : ' (positive)') : '';
     if(same.length < 2) return labelOf(st, k) + extra;
     var p = st.atoms[k], cx = 0, cy = 0; same.forEach(function(o){ cx += st.atoms[o].x; cy += st.atoms[o].y; }); cx /= same.length; cy /= same.length;
     var dx = p.x - cx, dy = p.y - cy, where = Math.abs(dy) > Math.abs(dx) ? (dy < 0 ? 'top' : 'bottom') : (dx < 0 ? 'left' : 'right');
@@ -1344,7 +1399,7 @@
     load(C.fromMolecule(mol), mol.name, false);
   }
   function load(st, name, isBuilt){
-    stopTween(); tapSrc = null; kb.phase = 'src';
+    cancelRuns(); tapSrc = null; kb.phase = 'src';
     S.start = st; S.name = name || ''; S.built = !!isBuilt;
     S.rk = rankForms(R.contributors(st));
     S.hyb = S.rk.length > 1 ? hybridOf(S.rk) : null;
@@ -1618,7 +1673,7 @@
   /* ====================================================================== */
   var saved = null;
   function onShow(mode, part){
-    stopTween(); hideCue(false); tourTurn.stop(); tapSrc = null;
+    cancelRuns(); hideCue(false); tourTurn.stop(); tapSrc = null;
     var wasFind = S.mode === 'quiz' && S.part === 'find';
     S.mode = mode; S.part = part;
     stage.setAttribute('data-part', mode === 'quiz' ? part : 'explore');
