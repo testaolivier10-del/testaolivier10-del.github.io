@@ -135,3 +135,33 @@ older children (burns.js already said so in its old side panel sentence, now in 
 - `nremt/assets/burns.js`: `anim`, `onChange`, `onSettle`, `onPaint` and the returned controls (additive; the quiz
   mount is unchanged).
 - `scripts/tools-v2/nremt-body-map-sweep.mjs`: the kept sweep (one process per width; the 3D body is slow headless).
+
+## Checks run (2026-11-18)
+- `node --test scripts/test/nremt-*.test.mjs` 71 pass (burns tables add to 100 on both charts); A&P tool kit, tool
+  use and cross course tests 27 pass; `check-site` OK; `check-weight --check` within budget after
+  `assets/body3d` 16 -> 16.4 KB (viewer hooks, measured 16.3; the NREMT shell is unchanged at 28.6 of 28.8).
+- `check-tool-use.mjs` with a local copy listing this page: it reports frame v2 (tool-open, tool-touch(explore),
+  tool-use; nothing sent under automation). Its one complaint is the time band ("1-5m"): headless Chromium takes
+  minutes to draw the 3D body, which is why the shared check lists Flowcharts and not the body map.
+- Sweep (`node scripts/tools-v2/nremt-body-map-sweep.mjs`, one process per width; about 8 minutes a width, the 3D
+  body is slow headless): the body's opening and four parts with their cards (an organ, a bone, a landmark dot, the
+  longest name; two of them on all three card tabs), Burns' opening, one, two and three regions, the child chart and
+  Start over, at 360, 390, 430, 600, 768, 820, 1024, 1280, 1440, 1920, plus 390 and 1440 dark; then frame by frame
+  at 390 and 1440 (a burn, two more, a reversal, the chart switch, Start over: the total on the picture equals the
+  sum of the drawn shares on every frame, no total pill mid fade; leaving for Test yourself mid fade finishes it;
+  the card never shows while the camera travels; Test yourself: find quiz wrong then Try again then right, recorded;
+  the Rule of Nines quiz right then a second answer); reduced motion gives the result at once.
+  Round 1: 14196 passed, 8 failed (the card covered the part at 768 when its text grew, and the burns cue was
+  placed by the svg's box instead of the drawn figure on wide pictures); both fixed, those widths rerun (below).
+- Preview: `/mnt/user-data/outputs/nremt-body-map-v2/index.html` is the one file page (the frame, Burns' figures
+  need the server; the 3D body cannot load from a file at all: it is an ES module and a 3.3 MB model). Shots of the
+  sweep in `/mnt/user-data/outputs/nremt-body-map-v2/shots/` (`sweep-*`, `frames-burn-mid-*` mid fade,
+  `frames-card-*`).
+
+## Not done, and what I am not happy with
+- The frame time rule (median about 16 ms, p95 50 ms with CPU x4) cannot be measured honestly for the 3D body in
+  headless Chromium (software WebGL); Burns' fade is one opacity per region and the total, no DOM rebuilds. A real
+  phone check is needed for the 3D view (unchanged from today's page).
+- The camera zooms close on a small part (the viewer's own fly to, unchanged); on a phone the part sits at the middle
+  and the docked card covers the lower 45% of the picture.
+- No independent review yet, no real phone, no screen reader pass, only Chromium.
