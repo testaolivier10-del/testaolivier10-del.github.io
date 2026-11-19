@@ -272,3 +272,14 @@ Checks rerun: sweep at 360, 390, 430, 600, 768, 820, 1024, 1280, 1440, 1920, 136
 one width per process: 0 failures. Frame test at 360, 390 and 1440: 6,199 frames each, 0 failures. Interactions at
 1440, 390 and 1440 dark: all pass. A&P tests 55 pass; check-anp-content, build-anp, apcalc and apmacro `--check`,
 check-site, check-weight all clean; check-tool-use (local copy of the list with this tool on frame v2) clean.
+
+## Recheck 2 (2026-11-18)
+
+- **Break buttons name their part.** Synapse: "Block Ca²⁺ channels" (wide) or "Block Ca²⁺" (phones and upright tablets)
+  sits in the terminal just above the calcium channels; "Block receptors" sits under the receptor proteins. The
+  "Receptor proteins" label now goes to the left of the receptors, below the membrane, so it no longer covers the left
+  calcium channels on phones. The same rule for the other screens: "Cut dorsal root", "Cut ventral root", "Damage
+  pituitary", "Damage adrenal" ("Stop air" already named it).
+- **New sweep check:** every shown break button reads more than its verb, and no two on a screen read the same (on top
+  of the nearest part check).
+- Sweep at 360, 390 and 1440: 0 failures. Frame test at 390: 6,199 frames, 0 failures.

@@ -354,8 +354,8 @@
       },
       // a broken run goes as far as the signal really goes; the cut is drawn just beyond, on the root
       breaks: [
-        { id: 'dorsal', stopV: 2.0, cutMin: 2.2, cutMax: 2.7, place: function(L){ return T(L, [440, 93, 'cord']); }, off: [0, -1], tag: 'Cut', label: 'Cut', aria: 'Cut the dorsal root', name: 'Dorsal root cut', step: 2 },
-        { id: 'ventral', stopV: 3.55, cutMin: 3.6, cutMax: 4.2, place: function(L){ return T(L, [470, 205, 'cord']); }, off: [0, 1], tag: 'Cut', label: 'Cut', aria: 'Cut the ventral root', name: 'Ventral root cut', step: 4 }
+        { id: 'dorsal', stopV: 2.0, cutMin: 2.2, cutMax: 2.7, place: function(L){ return T(L, [440, 93, 'cord']); }, off: [0, -1], tag: 'Cut', label: 'Cut dorsal root', aria: 'Cut the dorsal root', name: 'Dorsal root cut', step: 2 },
+        { id: 'ventral', stopV: 3.55, cutMin: 3.6, cutMax: 4.2, place: function(L){ return T(L, [470, 205, 'cord']); }, off: [0, 1], tag: 'Cut', label: 'Cut ventral root', aria: 'Cut the ventral root', name: 'Ventral root cut', step: 4 }
       ],
       take: 'Receptor, sensory neuron, synapse, motor neuron, effector.',
       art: function(E){
@@ -530,8 +530,8 @@
         ];
       },
       breaks: [
-        { id: 'pit', stopV: 2.3, place: function(L){ return L.id === 'wide' ? T(L, [146, 392, 'mag']) : T(L, [196, 434, 'mag']); }, off: function(L){ return L.id === 'wide' ? [-1, 0] : [0, 1]; }, tag: 'Damaged', label: 'Damage', aria: 'Damage the pituitary gland', name: 'Pituitary damaged', step: 3, mark: function(L){ return T(L, [275, 372, 'mag']); } },
-        { id: 'adr', stopV: 3.88, place: function(L){ return L.id === 'wide' ? T(L, [-74, 258, 'person']) : T(L, [-30, 326, 'person']); }, off: function(L){ return L.id === 'wide' ? [-1, 0] : [0, 1]; }, tag: 'Damaged', label: 'Damage', aria: 'Damage the adrenal cortex', name: 'Adrenal cortex damaged', step: 4, mark: function(L){ return T(L, [-30, 252, 'person']); } }
+        { id: 'pit', stopV: 2.3, place: function(L){ return L.id === 'wide' ? T(L, [146, 392, 'mag']) : T(L, [196, 434, 'mag']); }, off: function(L){ return L.id === 'wide' ? [-1, 0] : [0, 1]; }, tag: 'Damaged', label: 'Damage pituitary', aria: 'Damage the pituitary gland', name: 'Pituitary damaged', step: 3, mark: function(L){ return T(L, [275, 372, 'mag']); } },
+        { id: 'adr', stopV: 3.88, place: function(L){ return L.id === 'wide' ? T(L, [-74, 258, 'person']) : T(L, [-30, 326, 'person']); }, off: function(L){ return L.id === 'wide' ? [-1, 0] : [0, 1]; }, tag: 'Damaged', label: 'Damage adrenal', aria: 'Damage the adrenal cortex', name: 'Adrenal cortex damaged', step: 4, mark: function(L){ return T(L, [-30, 252, 'person']); } }
       ],
       take: 'Three glands in a chain, braked by cortisol’s feedback.',
       art: function(E){
@@ -712,8 +712,8 @@
         ];
       },
       breaks: [
-        { id: 'ca', stopV: 0.6, place: function(L){ return L.id === 'wide' ? T(L, [222, 344, 'syn']) : T(L, [198, 340, 'syn']); }, off: [0, 1], tag: 'Blocked', label: 'Block', aria: 'Block the calcium channels', name: 'Calcium channels blocked', step: 1, mark: function(L){ return T(L, [222, 318, 'syn']); } },
-        { id: 'rec', stopV: 3.55, place: function(L){ return L.id === 'wide' ? T(L, [430, 372, 'syn']) : T(L, [358, 392, 'syn']); }, off: function(L){ return L.id === 'wide' ? [1, 0] : [0, 1]; }, tag: 'Blocked', label: 'Block', aria: 'Block the receptor proteins', name: 'Receptor proteins blocked', step: 4, mark: function(L){ return T(L, [296, 372, 'syn']); } }
+        { id: 'ca', stopV: 0.6, place: function(L){ return T(L, [222, 292, 'syn']); }, off: [0, -1], tag: 'Blocked', label: ['Block Ca²⁺ channels', 'Block Ca²⁺'], aria: 'Block the calcium channels', name: 'Calcium channels blocked', step: 1, mark: function(L){ return T(L, [222, 318, 'syn']); } },
+        { id: 'rec', stopV: 3.55, place: function(L){ return T(L, [340, 404, 'syn']); }, off: [0, 1], tag: 'Blocked', label: 'Block receptors', aria: 'Block the receptor proteins', name: 'Receptor proteins blocked', step: 4, mark: function(L){ return T(L, [296, 372, 'syn']); } }
       ],
       take: 'Electrical, then chemical, then electrical again.',
       art: function(E){
@@ -799,7 +799,7 @@
           { key: 'thr', text: 'Threshold', role: 'bad', at: T(L, [-70, -108, 'tz']), side: ['l', 'u', 'd'], lead: true },
           { key: 'term', text: 'Axon terminal', role: 'sig', at: T(L, [430, 150, 'syn']), side: ['r', 'u'] },
           { key: 'ca', text: 'Ca²⁺ channel', role: 'ca', at: T(L, [472, 318, 'syn']), side: ['r', 'd', 'ur'], lead: true },
-          { key: 'rec', text: 'Receptor proteins', role: 'nt', at: T(L, [340, 372, 'syn']), side: ['d', 'dl', 'l'], lead: true },
+          { key: 'rec', text: 'Receptor proteins', role: 'nt', at: T(L, [296, 372, 'syn']), side: ['l', 'dl', 'd'], lead: true },
           { key: 'tz', text: 'Trigger zone', role: 'na', at: T(L, [-8, 18, 'tz']), side: ['d', 'dl', 'l'], lead: true }
         ];
         var CUR = [['Action potential', 'sig'], ['Ca²⁺ in', 'ca'], ['Vesicle fuses', 'nt'], ['Neurotransmitter', 'nt'], ['Binds', 'nt'], ['Na⁺ in', 'na'], ['EPSP', 'na'], ['EPSPs add', 'na'], ['Cleared', 'nt']][st.k];
@@ -1033,7 +1033,7 @@
       pills = (cur.breaks || []).map(function(b){
         var el = document.createElement('button'); el.type = 'button'; el.className = 'pe-cutb';
         el.setAttribute('aria-label', b.aria); el.setAttribute('data-b', b.id);
-        el.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.1 8.1 20 20M8.1 15.9 20 4"/></svg><span>' + esc(b.label) + '</span>';
+        el.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.1 8.1 20 20M8.1 15.9 20 4"/></svg>' + (typeof b.label === 'string' ? '<span>' + esc(b.label) + '</span>' : '<span class="pe-lbw">' + esc(b.label[0]) + '</span><span class="pe-lbt">' + esc(b.label[1]) + '</span>');
         el.addEventListener('click', function(){ breakIt(b); });
         over.appendChild(el);
         return { el: el, b: b };

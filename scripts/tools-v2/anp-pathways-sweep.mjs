@@ -134,13 +134,17 @@ for (const ws of WIDTHS) {
         out.lineOff = lr.bottom + scrollY - innerHeight;
         // each break button sits nearest the part it breaks
         const A = window.AnpPathExplore.current, svgEl = document.querySelector('svg.pe-svg:not(.pe-fade)'), vb = svgEl.viewBox.baseVal, k = svgEl.getBoundingClientRect().width / vb.width, tg = A._targets();
-        out.near = [];
+        out.near = []; const seen = {};
         document.querySelectorAll('.pe-cutb').forEach((b) => {
           if (b.hidden || !b.offsetWidth) return;
           const q = b.getBoundingClientRect(), sr = svgEl.getBoundingClientRect(), x = (q.left + q.width / 2 - sr.left) / k + vb.x, y = (q.top + q.height / 2 - sr.top) / k + vb.y;
           let best = null, bd = Infinity;
           tg.forEach((t) => { const d = Math.hypot(t.at[0] - x, t.at[1] - y); if (d < bd) { bd = d; best = t.id; } });
           if (best !== b.getAttribute('data-b')) out.near.push(b.getAttribute('aria-label') + ' is nearest ' + best);
+          // the button names its part: more than the verb, and no two buttons on a screen read the same
+          const txt = b.innerText.trim();
+          if (txt.split(/\s+/).length < 2) out.near.push(`"${txt}" does not name its part`);
+          if (seen[txt]) out.near.push(`two buttons read "${txt}"`); seen[txt] = 1;
         });
         document.querySelectorAll('.pe-rail .pe-sn, .pe-strip-n').forEach((e) => { if (e.offsetWidth && e.scrollWidth > e.clientWidth + 1) out.fit.push('rail ' + e.textContent); });
         document.querySelectorAll('.pe-over > button span').forEach((e) => { if (e.offsetWidth && e.scrollWidth > e.clientWidth + 1) out.fit.push('button ' + e.textContent); });

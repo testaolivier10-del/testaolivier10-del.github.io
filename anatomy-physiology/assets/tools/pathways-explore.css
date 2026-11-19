@@ -286,3 +286,6 @@ g.is-blk > .pe-rec{fill:#B8B0B3;stroke:#5B5356;} g.is-blk > .pe-site{stroke:#3E3
 .pe-sleeve{fill:url(#pe-shirt);stroke:#4F6680;stroke-width:2.5;}
 .pe-fingers{stroke:#C99A80;stroke-width:1.5;stroke-linecap:round;}
 .pe-tok.is-mus,.pe-trail-p.is-mus{color:var(--pe-mus);}
+
+/* a break button names its part: the long name on wide pictures, the short one on tall */
+.pe-pic:not([data-lay="tall"]) .pe-lbt,.pe-pic[data-lay="tall"] .pe-lbw{display:none;}
