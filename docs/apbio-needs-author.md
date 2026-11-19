@@ -720,3 +720,14 @@ These stay open:
   turgor rises; textbooks and the lab manual hold ψs fixed for a walled cell, whose volume changes by a few percent.
   Pressure stops at 9.8 bar, where the cell's total reaches 0, the value of pure water. Teacher: confirm holding ψs
   fixed is right for free play (the practice problems are unchanged and keep 0.01 bar).
+- **hw-explore-snapdragons** (logged, tools v2, 2026-11-18). The rebuilt Hardy-Weinberg tool's Explore draws 100
+  snapdragons (RR red, RW pink, WW white; incomplete dominance) sorted into the four plots of the gene pool square,
+  with the same p in pollen and eggs, in steps of 0.1. Teacher: confirm that (1) writing the alleles R and W on the
+  picture (C^R and C^W in "?") is acceptable, (2) a sorted bed is clear enough as a model of a randomly mating
+  population (the note in "?" says real plants are scattered), and (3) leaving the hidden carrier of a recessive
+  trait to Test yourself is right for free play. Review round 1 (2026-11-18): the hidden carrier is now met in Test
+  yourself on a second bed of pea plants (complete dominance), not only in the calculations.
+- **hw-pea-bed** (logged, tools v2 review round 1, 2026-11-18). Hardy-Weinberg targets 1 and 3 use a bed of pea
+  plants, A purple dominant over a white (OpenStax uses pea plants for its Hardy-Weinberg example). Real peas mostly
+  self pollinate, while the bed assumes random mating. Teacher: confirm peas are acceptable here, or name another
+  complete dominance species with two flower colours.

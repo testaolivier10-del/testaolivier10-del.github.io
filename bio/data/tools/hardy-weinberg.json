@@ -3,9 +3,95 @@
   "slug": "hardy-weinberg",
   "kind": "hw",
   "topic": "stats-hardy-weinberg",
-  "intro": "<p>Find allele frequencies from genotype counts or from the share of individuals showing a recessive trait, and predict genotype frequencies for a population in Hardy-Weinberg equilibrium.</p>",
+  "intro": "<p>Drag the allele frequency and watch a bed of 100 snapdragons change, then find allele frequencies from genotype counts or from the share of individuals showing a recessive trait, and predict genotype frequencies for a population in Hardy-Weinberg equilibrium.</p>",
   "howItWorksTitle": "The equations, their assumptions, and how answers are checked",
   "howItWorks": "<p class=\"bt-eq\">p + q = 1</p><p class=\"bt-eq\">p² + 2pq + q² = 1</p><ul><li><b>p</b> and <b>q</b> are the frequencies of the two alleles of one gene; p², 2pq and q² are the expected frequencies of the two homozygous genotypes and the heterozygote.</li><li>From genotype counts, count alleles: every individual carries two. From a recessive phenotype, q² is the share of individuals showing it, because only homozygous recessive individuals do.</li><li>The genotype frequencies are expected only if the population is in equilibrium: very large, mating at random, with no mutation, no migration and no natural selection.</li><li>Frequencies count when within one unit of the last decimal place asked for (0.01 for p, q and 2pq; 0.001 for q²) or 1%; numbers of individuals within 2%.</li></ul>",
+  "explore": {
+    "about": "Explore (tools v2, docs/tools-v2-hardy-weinberg-brief.md): a bed of side x side snapdragons. Each plant gets the allele of its column's pollen grain and of its row's egg; p is the share of R among both. Flower color shows incomplete dominance, so every genotype can be seen.",
+    "side": 10,
+    "p": 0.7,
+    "A": "R",
+    "a": "W",
+    "phen": [
+      "red",
+      "pink",
+      "white"
+    ],
+    "purpose": "With random mating, allele frequencies set the genotypes",
+    "cue": "Drag the alleles",
+    "note": "The bed is a model: 100 snapdragons sorted so they can be counted. In a real population the same shares are scattered at random. R and W stand for the snapdragon alleles C<sup>R</sup> and C<sup>W</sup>; flower color shows incomplete dominance, so RR plants are red, RW plants are pink and WW plants are white."
+  },
+  "pea": {
+    "about": "Test yourself, the targets about a hidden recessive (sp: \"pea\"): a bed of pea plants, flower color with complete dominance (OpenStax 12.2: purple dominant over white). AA and Aa plants are both purple; only aa plants show white.",
+    "A": "A",
+    "a": "a",
+    "phen": [
+      "purple",
+      "purple",
+      "white"
+    ],
+    "name": "pea plants"
+  },
+  "targets": [
+    {
+      "id": "q16",
+      "sp": "pea",
+      "ask": "Set the alleles so that <b>16%</b> of the pea plants show the recessive trait (white flowers).",
+      "geno": 2,
+      "pct": 16,
+      "p": [
+        0.6
+      ],
+      "hint": "Only aa plants show white. Their share is q².",
+      "why": "Only the white plants can be read straight off the bed: they are aa, so q² = 0.16. Then q = √0.16 = 0.4 and p = 1 − q = 0.6. Every purple plant is AA or Aa and looks the same: purple is p² + 2pq = 0.36 + 0.48 = 0.84, and 48% of the bed are carriers (Aa), purple but carrying a."
+    },
+    {
+      "id": "het",
+      "ask": "Set the alleles for the <b>most pink</b> plants a bed can have.",
+      "geno": 1,
+      "pct": 50,
+      "p": [
+        0.5
+      ],
+      "hint": "Pink plants are RW. Their share is 2pq.",
+      "why": "2pq is largest when p = q = 0.5. Then half the plants are heterozygous: the most any population can have at equilibrium."
+    },
+    {
+      "id": "rare",
+      "sp": "pea",
+      "ask": "Make the recessive trait rare: just <b>1%</b> of the pea plants with white flowers. Then count the carriers.",
+      "geno": 2,
+      "pct": 1,
+      "p": [
+        0.9
+      ],
+      "hint": "Only aa plants show white. Their share is q².",
+      "why": "q² = 0.01, so q = 0.1 and p = 0.9. Only 1% of the plants show white, but 2pq = 18% are carriers (Aa): purple, and carrying a. Most copies of a rare recessive allele hide in carriers, where nobody can see them."
+    },
+    {
+      "id": "p49",
+      "ask": "Set the alleles so that <b>49%</b> of the plants bloom <b>red</b>.",
+      "geno": 0,
+      "pct": 49,
+      "p": [
+        0.7
+      ],
+      "hint": "Red plants are RR. Their share is p².",
+      "why": "Red plants are RR, so p² = 0.49 and p = √0.49 = 0.7. Then q = 0.3."
+    },
+    {
+      "id": "pq32",
+      "ask": "Set the alleles so that <b>32%</b> of the plants bloom <b>pink</b>.",
+      "geno": 1,
+      "pct": 32,
+      "p": [
+        0.2,
+        0.8
+      ],
+      "hint": "Pink plants are RW. Their share is 2pq, and p + q = 1.",
+      "why": "2pq = 0.32 when p and q are 0.8 and 0.2, either way round: 2 × 0.8 × 0.2 = 0.32. Two different gene pools give the same share of heterozygotes."
+    }
+  ],
   "contexts": [
     {
       "id": "snapdragons",
