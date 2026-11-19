@@ -565,14 +565,14 @@
       if(!SZ || !SZ.kind) return;
       if(SZ.kind === 'heart'){
         // a monitor sweep: the first pass draws from S1; after that the new pass draws up to the playhead and the
-        // last pass stays drawn beyond it, after a small gap (every beat here is the same beat)
+        // last pass stays drawn beyond it (every beat here is the same beat, so the trace is whole once drawn)
         var x0 = txH(0, SZ.cyc), from, to, from2 = 0, to2 = 0, sweep = 0;
         if(done || reduced()){ from = SZ.px; to = SZ.px + SZ.pw; SZ.head.style.opacity = 0; }
         else if(t == null){ from = SZ.px; to = SZ.px; SZ.head.style.opacity = 0; }
         else {
           sweep = Math.floor((t + PRE) / SZ.cyc); var x = txH(t, SZ.cyc);
           from = sweep === 0 ? x0 : SZ.px; to = x;
-          if(sweep > 0){ from2 = Math.min(SZ.px + SZ.pw, x + 14); to2 = SZ.px + SZ.pw; }
+          if(sweep > 0){ from2 = x; to2 = SZ.px + SZ.pw; }
           else if(x < x0){ to = SZ.px + SZ.pw; from = x0; } // the end of the first pass, before the playhead wraps
           SZ.head.setAttribute('x1', f1(x)); SZ.head.setAttribute('x2', f1(x)); SZ.head.style.opacity = 1;
         }
@@ -783,7 +783,7 @@
     });
     viewSw.addEventListener('click', function(e){ var b = e.target.closest('[data-view]'); if(b) setView(b.getAttribute('data-view')); });
     bPlay.addEventListener('click', function(){ if(play.on) stopSound(true), finishQuiet(); else if(S().site) listen(); });
-    function finishQuiet(){ paintStrip(null, null, true); chain(true); }
+    function finishQuiet(){ play.ended = true; paintStrip(null, null, true); chain(true); }
     hits.addEventListener('click', function(e){
       var b = e.target.closest('.snd2-hit'); if(!b) return;
       // spots sit close together (the heart's five): act on the one nearest the finger, not the top button
@@ -858,7 +858,7 @@
     /* ---------------------------------------------------------------- the cue and "Show me how" */
     var cue = null; // made when Explore first shows, at its real width (a phone gets the short cue below the stethoscope)
     function makeCue(){
-      cue = K.cue(layer, { key: 'nremt-sound-trainer', text: box.clientWidth < 640 ? 'Drag the stethoscope' : 'Drag the stethoscope onto the chest', side: box.clientWidth < 640 ? 'below' : 'right', at: function(){ return !G ? [0, 0] : G.W < 640 ? [sp[0], sp[1] + G.pr * .4] : [sp[0] + G.pr * .5, sp[1]]; } });
+      cue = K.cue(layer, { key: 'nremt-sound-trainer', text: box.clientWidth < 640 ? 'Drag the stethoscope' : 'Drag the stethoscope onto the chest', side: 'below', at: function(){ return !G ? [0, 0] : [sp[0], sp[1] + G.pr * .4]; } });
     }
     var tour = K.tour({ key: 'nremt-sound-trainer', label: 'Show me how', steps: [
       { id: 'steth', text: 'Drag the stethoscope onto a spot on the chest (or tap a spot): you hear the sound there.', target: function(){ return steth; } },

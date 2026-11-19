@@ -170,3 +170,4 @@ in each tool's brief.
 | 2026-11-18 | NREMT Sound trainer | `#snd-<id>` (Review's links) opens Explore on that sound with the stethoscope on its best spot, nothing playing; a sound with no clip opens "?" on its card | The link's job is to hear it again | the page's v2 block |
 | 2026-11-18 | NREMT Sound trainer | The lung strip draws the clip's own loudness live when the browser can measure it (CORS); otherwise a typical breath named as one, its phase shaded | A drawn curve must be what is heard, or say what it is | `sound-bank.js` (`analyse`), `paintStrip()` |
 | 2026-11-18 | NREMT Sound trainer | Text in the tool's Test yourself parts raised to at least 11 px (tags, credits, strip labels) | The 11 px rule | the page's style block |
+| 2026-11-18 | NREMT Sound trainer | The Mute button on the stage removed; volume (0 mutes) is in "?" | Nothing extra on the Explore screen | "?" |

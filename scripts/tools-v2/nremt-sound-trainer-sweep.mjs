@@ -273,8 +273,9 @@ async function frames() {
     // fast drag across the heart spots and back, landing on the aortic area
     await drag('aortic'); await page.waitForTimeout(1800);
     // keyboard: the stethoscope moves spot to spot with the arrows and plays there
+    const HS = ['aortic', 'pulmonic', 'erb', 'tricuspid', 'mitral'], was = (await S(page)).per.heart.site, next = HS[(HS.indexOf(was) + 1) % 5];
     await page.focus('.snd2-steth'); await page.keyboard.press('ArrowRight'); await page.waitForTimeout(700);
-    ok((await S(page)).per.heart.site === 'erb' && (await S(page)).playing, `${tag}: ArrowRight did not move to Erb's point and play`);
+    ok((await S(page)).per.heart.site === next && (await S(page)).playing, `${tag}: ArrowRight did not move from ${was} to ${next} and play`);
     await page.keyboard.press('End'); await page.waitForTimeout(500);
     ok((await S(page)).per.heart.site === 'mitral', `${tag}: End did not move to the mitral area`);
     // leave mid sound for Test yourself: everything stops; back: finished and clean
@@ -359,13 +360,20 @@ async function frames() {
     await page.selectOption('.ls-root select', 'name').catch(async () => { await page.click('text=Where to listen'); await page.click('text=Name the sound'); });
     await page.waitForTimeout(400);
     ok(await page.evaluate(() => !document.querySelector('#quizPlayBtn.playing')), 'name: the clip played on its own');
-    const right = await page.evaluate(() => quizState.rounds[quizState.current].id);
-    await page.click(`#quizChoices [data-choice="${right}"]`); await page.waitForTimeout(200);
-    ok(await page.evaluate(() => /^Correct/.test(document.querySelector('.feedback-verdict').textContent)), 'name: a right answer is not marked right');
-    await page.click('#nextRoundBtn'); await page.waitForTimeout(200);
-    const wrong = await page.evaluate(() => { const r = quizState.rounds[quizState.current]; return [...document.querySelectorAll('#quizChoices [data-choice]')].map(b => b.dataset.choice).find(c => c !== r.id); });
-    await page.click(`#quizChoices [data-choice="${wrong}"]`); await page.waitForTimeout(200);
-    ok(await page.evaluate(() => /^Not quite/.test(document.querySelector('.feedback-verdict').textContent)), 'name: a wrong answer is not marked wrong');
+    // answer rounds until a right and a wrong answer have both been seen; the marking must match the verdict
+    const seen = { right: 0, wrong: 0 }; const ids = [];
+    for (let r = 0; r < 10 && !(seen.right && seen.wrong); r++) {
+      const choices = await page.$$eval('#quizChoices [data-choice]', bs => bs.map(b => b.dataset.choice));
+      const pickId = choices[(r * 3) % choices.length];
+      await page.click(`#quizChoices [data-choice="${pickId}"]`); await page.waitForTimeout(150);
+      const res = await page.evaluate((id) => ({ v: document.querySelector('.feedback-verdict').textContent, right: document.querySelector('#quizChoices .correct').dataset.choice, id }), pickId);
+      ids.push(res.right);
+      if (res.right === pickId) { seen.right++; ok(/^Correct/.test(res.v), `name: a right answer marked "${res.v}"`); }
+      else { seen.wrong++; ok(/^Not quite/.test(res.v), `name: a wrong answer marked "${res.v}"`); }
+      await page.click('#nextRoundBtn'); await page.waitForTimeout(150);
+    }
+    ok(seen.right && seen.wrong, `name: did not see both a right and a wrong answer (${JSON.stringify(seen)})`);
+    const right = ids[0];
     const rec = await page.evaluate(() => window.__rec.map(r => r.id));
     ok(rec.includes('where-s1') && rec.includes(right), `record ids changed: ${rec.join(',')}`);
     ok(!errs.length, `test yourself: console errors ${errs.join(' | ')}`);
