@@ -83,15 +83,23 @@ the cause line: [region] → [why its share: "half of the arm's 9%"] → [4.5%] 
 9. **Burns animate** (rule 13): a region burns in or fades out over 0.28 s, the total on the picture counts with
    what is drawn on every frame (rule 14), the figure cross fades on the chart switch. Reduced motion: the result at
    once with a short cross fade.
-10. **The total is on the picture**, big ("Burned 13.5%"), between the figures on a wide picture; the over 10% note
-    is a small mark there, the sentence in "?". The list of painted regions under the total (old side panel) is gone
-    from Explore: each burned region is drawn on the figures with its number, and the cause line names the last one.
+10. **The total is on the picture**, big ("Burned 13.5%"), between the figures on a wide picture, with the sum of
+    the burned shares under it ("9 + 4.5 + 4.5 = 18", from what is drawn, so it agrees mid fade; five terms at most,
+    then "(n more)"; review round 1 restored it: the old side panel list was the addition the tab teaches). Over 10%
+    a small mark shows there (its line is kept from the start, so nothing moves), and the moment the total first
+    passes 10% the cause line says "over 10% → burn center if partial thickness" (review round 1). Totals show at
+    most one decimal (an estimate).
 11. **Adult | Child is on the picture**; the brush (Full | Half | Erase) and Start over sit under it (they were in
     the dock and behind "More options"; a connected control is never hidden behind a step, rule 11).
 12. **Region boundaries are a solid hairline** (they were dashed: the builder brief's "no dashed shapes that could
     read as torn parts"); the quiz's "these regions" mark is solid too.
-13. **Figures larger**: the switch and the total float over the picture's corners on a wide picture, so the figures
-    take the full height; the region numbers read about 16 px on a desktop (they were about 11 px).
+13. **The picture as big as the screen allows** (corrected in review round 1: the first build made the body and
+    the figures about 25% smaller than today's page on a 1440 x 900 laptop). On a screen 1024 px and wider the tabs
+    take their regular height and share one row with the purpose line, the picture runs to the stage's foot, and the
+    cause line rides the picture's foot. Measured against `origin/main`: the 3D canvas is 742 px tall against 796
+    at 1440 x 900 (93%) and 562 against 616 at 1280 x 720 (91%); the burn figures 644 against 684 (94%) and 464
+    against 502 (92%). On phones and tablets the figures are larger than before; the region numbers read about
+    16 px on a desktop.
 14. **The first visit cue** is the kit's (one per tab, never on a number or label) and "Show me how" is a three step
     tour per tab.
 15. **"?"** holds what you are looking at, the view options (Reset view, Show skin, the six body systems, how to
@@ -102,7 +110,7 @@ the cause line: [region] → [why its share: "half of the arm's 9%"] → [4.5%] 
 ## Decisions made for the owner (also in the owner log)
 1. Explore is two tabs, The body and Burns; the find quiz and the Rule of Nines quiz are Test yourself.
 2. The card opens on the picture, beside the part (docked along the bottom under 700 px), with three tabs.
-3. Burns' painted regions list left Explore (the figures show them; the quiz answers still show the sum).
+3. Burns' painted regions list became one sum line under the total (review round 1).
 4. Burns explanation is the cause line ("half of the arm's 9%"); the long side panel sentences are gone, the Rule
    of Nines in words is in "?".
 5. Region boundaries solid, not dashed.
@@ -168,3 +176,33 @@ older children (burns.js already said so in its old side panel sentence, now in 
 - The camera zooms close on a small part (the viewer's own fly to, unchanged); on a phone the part sits at the middle
   and the docked card covers the lower 45% of the picture.
 - No independent review yet, no real phone, no screen reader pass, only Chromium.
+
+## Review round 1 (2026-11-19, independent review BLOCK; all fixed on this branch)
+Merged `origin/claude/tools-v2-all` first (its `check-tool-use.mjs` kept; both sides of the docs tables and of the
+check-weight budgets kept: `assets/body3d` 16.4 and the kit's own 34).
+Must fix:
+1. `?hunt=<name>` asked a random part: the first round now starts on the named part (`firstHunt` in the page); the
+   sweep's frames run opens `?hunt=heart` and expects "Find the Heart.".
+2. Phones: the scene is `min(150vw, 640px, 100svh − 296px)` (floor 340), the docked card may take 54%, so at
+   375 x 667 and 390 x 800 the picture, the card's first lines and both cause line rows are on one screen
+   (375 x 667: card text to 556, cause line to 663; 390 x 800: 660 and 796). The sweep asserts it at 360 to 640.
+3. The figures no longer move when "Over 10%" shows: the mark and the sum keep their lines from the start
+   (`visibility`, a min height); on a phone the total box is two short rows. The sweep asserts the front figure's
+   box is unchanged through three burns.
+4. Size on laptops: see change 13 (93% and 91% of main for the 3D canvas, 94% and 92% for the figures).
+5. Crossing 10%: the cause line shows "[region 4.5%] → Total 13.5% → over 10% → burn center if partial thickness"
+   (the old side panel's sentence, short), and the live region says it in full.
+6. The sum under the total, from the drawn shares.
+Should fix: the two paired dashes read as parentheses ("Testicular torsion (the testis twists on its blood supply)
+is…", "Lower back pain, and (in trauma) any leg weakness…"), single dashes stay colons; the cue on a wide picture
+sits on the backdrop beside the body (it was also scaled by the Find icon's svg, fixed); a pair drawn as one part
+(the kidneys) puts the leader on the nearer one (`project` in viewer.js); on a phone the view slides up by half the
+docked card (`viewer.offset`, the camera's view offset, so picking agrees) and back when the card closes; wording:
+"half the leg: 9%", "half the arm: 4.5%", "half the front of the trunk: 9%", "the 1% left over", Half brush "half of
+this 9%: 4.5%" (the number now sits in the share pill, so the separate number pill went); totals at most one
+decimal; Enlarge: the kit hides it in every v2 Explore, and the picture now fills the stage on every screen, so it is
+logged as removed (owner log) rather than kept; the ABA's "≥10%" against the course's "over 10%" is in
+`docs/nremt-needs-author.md`.
+Medical check of every change: the share phrases restate burns.js's tables (head 9 adult and 18 child, half each
+side; trunk front and back 18, two nines each; arm 9; leg 18 adult and 13.5 child; genitals 1); "burn center if
+partial thickness" over 10% matches the course notes (burn center criteria, partial thickness over 10% BSA).

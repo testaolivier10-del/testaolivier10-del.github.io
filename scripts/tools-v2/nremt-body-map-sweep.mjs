@@ -99,9 +99,9 @@ function geom() {
   const kids = [...stage.children].filter(e => !e.hidden && e !== scene).map(R).filter(Boolean);
   const legend = q('.bm2 .legend');
   const g = {
-    W: document.documentElement.clientWidth, sw: document.documentElement.scrollWidth,
+    W: document.documentElement.clientWidth, VH: innerHeight, cardText: R(q('.bm2-card:not([hidden]) .bm2-card-b p')), sw: document.documentElement.scrollWidth,
     scene: R(scene), kidsMax: Math.max(0, ...kids.map(k => k.w * k.h)),
-    tab: stage.dataset.tab, cause: { rows, h: R(q('.bm2 .tk2-cause'))?.h || 0, text: q('.bm2 .tk2-cause').textContent },
+    tab: stage.dataset.tab, cause: { rows, h: R(q('.bm2 .tk2-cause'))?.h || 0, b: R(q('.bm2 .tk2-cause'))?.b || 0, text: q('.bm2 .tk2-cause').textContent },
     card: R(q('.bm2-card:not([hidden])')), cardIn: !!q('.bm2-card.is-in'), cardName: q('.bm2-card-n')?.textContent,
     find: R(q('.bm2 .bm2-find select')), reset: R(q('.bm2 .bv-reset')), legend: legend && vis(legend) ? R(legend) : null,
     cue: R(q('.bm2 .tk2-cue')), dot: R(q('.bm2-lead-d')), dotShown: (() => { const d = q('.bm2-lead-d'); return !!d && d.style.display !== 'none' && q('.bm2-lead').style.display !== 'none'; })(),
@@ -110,7 +110,7 @@ function geom() {
   if (stage.dataset.tab === 'burns') {
     const nums = [...document.querySelectorAll('.bm2-burn .bn-pct')].filter(t => t.textContent).map(t => ({ n: t.textContent, ...R(t), fig: R(t.closest('svg')) }));
     g.burn = { nums, tot: R(q('.bm2-tot')), totText: q('.bm2-tot-n').textContent, age: R(q('.bm2-age')), caps: [...document.querySelectorAll('.bm2-burn figcaption')].map(R),
-      figs: R(q('.bm2-figs')), flag: !q('.bm2-tot-f').hidden };
+      figs: R(q('.bm2-figs')), flag: q('.bm2-tot-f').classList.contains('is-on'), sum: q('.bm2-tot-s').textContent, front: R(q('.bm2-burn svg[data-view="front"]')) };
   }
   return g;
 }
@@ -128,6 +128,9 @@ function checkBody(g, tag, w) {
   things.forEach(([n, r]) => T(inside(r, g.scene, 0.5), `${tag}: ${n} clipped by the picture`));
   things.forEach(([n, r], i) => things.forEach(([m, s], j) => { if (j > i) T(!hit(r, s, 4), `${tag}: ${n} overlaps ${m}`); }));
   if (g.card && g.dotShown && g.dot) T(!hit(g.card, g.dot, 2), `${tag}: the card covers the part it names`);
+  // a phone: the picture, the docked card's first line and the cause line fit one screen (from the page's top)
+  if (w <= 640 && g.card) { T(g.cardText && g.cardText.b <= g.VH + 0.5, `${tag}: the card's text is below the screen`); }
+  if (w <= 640) T(g.cause.b <= g.VH + 0.5, `${tag}: the cause line is below the screen (${g.cause.b} > ${g.VH})`);
 }
 function checkBurn(g, tag, w) {
   checkCommon(g, tag, w);
@@ -190,10 +193,14 @@ async function runWidth(w) {
   const hb = g.cause.h;
   await shot(page, `sweep-burns-open-${tagW.replace(' ', '-')}`);
   const paint = async (id, view = 'front') => { await page.evaluate(([i, v]) => { const g = document.querySelector(`.bm2-burn svg[data-view="${v}"] [data-region="${i}"]`); g.dispatchEvent(new MouseEvent('click', { bubbles: true })); }, [id, view]); await until(page, () => /Total/.test(document.querySelector('.bm2 .tk2-cause').textContent) && document.querySelectorAll('.bm2 .tk2-cause .tk2-cz').length >= 3, null, 60); await page.waitForTimeout(150); };
-  const STEPS = [['chest', 'front', 9], ['rarm-f', 'front', 13.5], ['lleg-b', 'back', 22.5]];
-  for (const [id, v, tot] of STEPS) {
+  const STEPS = [['chest', 'front', 9, ''], ['rarm-f', 'front', 13.5, '9 + 4.5 = 13.5'], ['lleg-b', 'back', 22.5, '9 + 4.5 + 9 = 22.5']];
+  const front0 = g.burn.front;
+  for (const [id, v, tot, sum] of STEPS) {
     await paint(id, v);
     g = await page.evaluate(geom);
+    T(g.burn.sum === sum, `${tagW} burns ${id}: the sum reads "${g.burn.sum}", want "${sum}"`);
+    T(Math.abs(g.burn.front.t - front0.t) < 0.5 && Math.abs(g.burn.front.h - front0.h) < 0.5, `${tagW} burns ${id}: the figures moved`);
+    if (tot === 13.5) T(/over 10%.*burn center if partial thickness/.test(g.cause.text), `${tagW} burns ${id}: crossing 10% does not say burn center`);
     T(g.burn.totText === tot + '%', `${tagW} burns ${id}: total reads ${g.burn.totText}, painted ${tot}%`);
     T(g.cause.text.includes('Total ' + tot + '%'), `${tagW} burns ${id}: cause line total`);
     T(g.burn.flag === tot > 10, `${tagW} burns ${id}: over 10% flag`);
@@ -204,7 +211,8 @@ async function runWidth(w) {
   await page.evaluate(() => document.querySelector('.bm2-age [data-age="child"]').click());
   await until(page, () => /Child chart.*Total/.test(document.querySelector('.bm2 .tk2-cause').textContent), null, 60);
   g = await page.evaluate(geom);
-  T(g.burn.totText === '20.25%', `${tagW} child: total ${g.burn.totText}, want 20.25%`);
+  T(g.burn.totText === '20.3%', `${tagW} child: total ${g.burn.totText}, want 20.3% (20.25, one decimal)`);
+  T(g.burn.sum === '9 + 4.5 + 6.75 ≈ 20.3', `${tagW} child: sum "${g.burn.sum}"`);
   T(g.burn.nums.some(n => n.n === '6.75') && g.burn.nums.filter(n => n.n === '9').length >= 2, `${tagW} child: the child numbers`);
   checkBurn(g, `${tagW} burns child`, w);
   await shot(page, `sweep-burns-child-${tagW.replace(' ', '-')}`);
@@ -304,6 +312,11 @@ async function runFrames() {
     T(await page.evaluate(() => /Found it|Right/.test(document.querySelector('.ls-task')?.textContent || '')), `frames ${w}: a right answer is marked`);
     const recs = await page.evaluate(() => { try { return JSON.stringify(localStorage).match(/body-map/g)?.length || 0; } catch (e) { return -1; } });
     T(recs !== 0, `frames ${w}: the answer was not recorded`);
+    // Review's "Find the X again" link asks that part first
+    await page.goto(URL0 + '?hunt=heart');
+    await until(page, () => /^Find the /.test(document.querySelector('.ls-task-t')?.textContent || ''), null, 300);
+    const hq = await page.evaluate(() => document.querySelector('.ls-task-t')?.textContent || '');
+    T(hq === 'Find the Heart.', `frames ${w}: ?hunt=heart asks "${hq}"`);
     // the Rule of Nines quiz, by its deep link
     await page.goto(URL0 + '?mode=burns&q=leg-back');
     await until(page, () => !!document.querySelector('.bn-choices button'), null, 100);

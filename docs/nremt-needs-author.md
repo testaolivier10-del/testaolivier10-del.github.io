@@ -151,3 +151,7 @@ did not change. For a person to confirm:
 - **Why each region carries its share.** The cause line now says "half of the arm's 9%", "one nine of the front's
   18%", "half of the leg's 13.5%" (child), "the last 1%" (genitals). These restate burns.js's tables, which the unit
   test checks add up to 100 on both charts.
+- **Over 10% or 10% and over.** The course notes and the tool say partial thickness burns "over 10%" of the body
+  surface meet burn center criteria. The American Burn Association's current referral page uses "partial thickness
+  ≥10% TBSA" (https://ameriburn.org/burnreferral). It only matters at exactly 10% (for example 9 + 1). Not changed
+  without the author.
