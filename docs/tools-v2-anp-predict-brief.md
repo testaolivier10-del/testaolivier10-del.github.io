@@ -219,3 +219,22 @@ the reversal check). Interactions at 1440 and 390 (light and dark) and 768: 28 e
 check-anp-content, build-anp, build-apcalc and build-apmacro `--check` clean; check-site OK; check-weight all 623 within
 budget; check-tool-use (local copy of the list) frame v2, nothing under automation. Shots regenerated in
 `/mnt/user-data/outputs/anp-predict-v2/shots/`; preview regenerated.
+
+## Recheck 1 (2026-11-19)
+The reviewer confirmed all eight round 1 items and blocked on three small ones, all fixed:
+1. **Smooth blood at rest.** Every frame is drawn again. Only when the measured frames average over about 20 ms (a device
+   that cannot keep up) does the ambient motion at rest drop to every second (20 to 30 ms) or third frame, its time
+   carried over; a spreading change is always drawn every frame (`tick()`, `fAvg`).
+2. **Kidney at 390.** The "before" word (and its tick) is measured and kept clear by labels on every screen (it was measured
+   as the zero-size wrapper before, so only Heart's happened to stay clear).
+3. **Heart on phones.** "Stretch" is anchored on the sarcomere box's top edge and placed above it, so no leader crosses
+   the filaments.
+Should fix, done: Filling, Stroke volume and Output carry an arrow only once their shown number has moved off the usual
+value (121 mL no longer shows "70 mL ↑"), the takeaway comes only when the whole chain shows (until then the chain stays
+on the cause line and is what the screen reader hears); a label's font size is written only when it changes; px-breath-model
+and the weight figure updated. Explore's bucket rose 33 -> 34 KB (measured 33.3 KB with these changes).
+Checks: sweep, 12 widths light and dark, one per process: 912 checks, 0 failures. Frame test at 360, 390 and 1440: 0
+failures. Interactions at 1440 and 390 (light and dark) and 768: 28 each, all pass (390 dark passed on a rerun; the first
+run missed its mid-drag frame under load). A&P tests 55 pass; check-anp-content and build-anp `--check` clean;
+check-weight all 623 within budget; check-site OK. CPU x4 at load 7 to 9: at rest median 16.7 ms (idle 16.7). Shots and
+preview regenerated.
