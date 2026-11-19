@@ -28,6 +28,7 @@ States: building, review, fixing, recheck, PASS (waiting to integrate), integrat
 | A&P pathways | claude/tools-v2-anp-pathways | wt-anp-pathways | integrated | |
 | A&P lab practical | claude/tools-v2-anp-lab-practical | wt-anp-lab-practical | integrated | first explorer: kit `K.spots`; kit2 weight bucket `assets/course/kit2` |
 | Ochem arrow pusher | claude/tools-v2-arrow-pusher | wt-arrow-pusher | integrated | shares `ochem/assets/push-board.js` and `.css` with Resonance; registry `css` field (build-tool-pages) |
+| NREMT sound trainer | claude/tools-v2-nremt-sound-trainer | wt-nremt-sound-trainer | integrated | second NREMT tool on `nremt/assets/nremt-kit2.js` (unchanged) |
 
 Next by use (rollout table): A&P predict, A&P feedback loops,
-NREMT body map, NREMT sound trainer, NREMT flowcharts, Ochem viewer 3d.
+NREMT body map, NREMT flowcharts, Ochem viewer 3d.
