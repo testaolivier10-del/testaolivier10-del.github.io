@@ -108,7 +108,7 @@ graph drawn from the function it claims to show; independent accuracy review.
 | Slug | Unit | What |
 |---|---|---|
 | `limit-explorer` | 1 | Zoom into a graph near a point; one-sided limits, holes, jumps, asymptotes, continuity types, squeeze; table of values closing in |
-| `tangent-tracer` | 2 | Flagship. Secant to tangent as h → 0, live f′ graph, sketch f′ from f and be graded |
+| `tangent-tracer` | 2 | Flagship. Tools v2 (2026-11-18): Explore has two tabs, Slope at a point (drag P along the curve drawn as a road; tangent, slope and the f′ graph at once) and Secant to tangent (drag Q, a magnifier as h → 0); Test yourself unchanged (sketch f′ from f and be graded). `docs/tools-v2-tangent-tracer-brief.md` |
 | `rule-drills` | math chapter then 2-3 | Step-by-step derivative builder: power, product, quotient, chain, implicit, inverse; expression steps graded by evaluation |
 | `related-rates` | 4 | Animated scenes (sliding ladder, filling cone, shadow, expanding circle) with live rates and the chain of equations |
 | `motion-lab` | 4, 8 | Particle on a line: position, velocity, acceleration graphs; speeding up/slowing down; displacement vs total distance |
@@ -251,3 +251,4 @@ a tool's data file exists and its topic is published.
 - Optional: an AP® Calculus AB teacher to review the course (the Beta note stays until then).
 
 - 2026-11-16 (tools frame F4): every tool uses the standard tool frame (stage dropdown, hint ladder, finished card) from its course kit; notes in `docs/tools-frame-notes/`.
+- 2026-11-18 (tools v2): the Tangent tracer is the first calculus tool on the shared kit, through the adapter `ApCalcTools.studioKit2` (`"kit2": true` in `data/pages.json`; the generator adds the kit's files to that page only). Brief: `docs/tools-v2-tangent-tracer-brief.md`. Not merged until the tools v2 rollout merges.

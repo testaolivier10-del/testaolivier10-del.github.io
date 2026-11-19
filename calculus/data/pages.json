@@ -148,7 +148,8 @@
    "desc": "Drag a point along a curve: the secant line becomes the tangent as h shrinks, the derivative graph draws itself, and you sketch f′ from f.",
    "blurb": "The secant becomes the tangent; the derivative draws itself.",
    "lede": "Drag a point and watch the secant line turn into the tangent.",
-   "studio": true
+   "studio": true,
+   "kit2": true
   },
   {
    "slug": "rule-drills",

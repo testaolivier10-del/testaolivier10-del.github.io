@@ -35,6 +35,27 @@
                                     toggle .is-quiet on el to make it loud for a moment)
                                     a knob on the picture that moves along a track (viewBox units); its value is a
                                     real range input. tag(v): a short text beside the knob ("3 sacks").
+   K.handle(layer, { key, label, value, min, max, step, at(v) -> [x, y], pick(x, y, v) -> v | null, dir(v) -> deg,
+           keys(v, key, shift) -> v | null | undefined, valuetext(v), tag(v), tagSide(v) -> 'up' | 'down' | 'left' |
+           'right', bounds(v) -> [x0, y0, x1, y1], onStart(v), onInput(v), onEnd(v), hint, chip, chipSide(v), quiet,
+           beforeLabel }) -> { el, knob, value(v?, fire), grab(event), dragging(), place(), hide(on), before(v | null),
+           used() }
+                                    GRAPH EXPLORERS (first: AP® Calculus AB Tangent tracer). A point the student drags
+                                    on the picture itself: a point on a curve, on an axis, in an inset. The tool owns
+                                    the geometry: at(v) is where value v sits (picture units, the svg viewBox), pick()
+                                    turns the finger's spot into a value (snap there; null keeps the old one), dir(v)
+                                    turns the knob's arrow to the way it moves (a curve's direction). The knob is the
+                                    kit's (white, course ring, pulse and chip until first used) and a real
+                                    role="slider": arrows step, Shift and Page Up / Down ten steps, Home / End the ends;
+                                    keys() replaces that (return undefined for the default). grab(e) starts a drag
+                                    from the tool's own pointerdown (a press on the curve away from the knob). tag(v):
+                                    a short text by the knob (bounds(): a tag above or below slides sideways to stay
+                                    inside that box). before(v): a small tick where the change began, named
+                                    "before" once the knob is 58 px away (never a ghost of the shape); before(null)
+                                    clears it. quiet: a secondary point (small plain knob, no pulse). chipSide(v):
+                                    where the first-time chip sits ('up', 'down', 'left', 'right'; default below), so it
+                                    never covers the tag. used(): a control elsewhere that moves this point (a "Slide
+                                    in" button) counts as its first use (the pulse and chip go).
    K.tap(layer, { key, label, box: [x, y, w, h], pressed, onClick, hint, chip }) -> { el, place(box), pressed(on?) }
                                     a tappable part of the picture (a button over it, aria-pressed when given).
    K.predict({ q, choices: [{ value, label }], answer, then, onPick(v) }) -> { el, picked(), settled(), note(html),
@@ -243,6 +264,104 @@
     paint();
     return { el: w, input: inp, value: function(v, fire){ if(v === undefined) return val; set(v, fire); },
       place: function(t, side){ if(t) track = t; if(side !== undefined) o.tagSide = side; paint(); }, hide: function(on){ w.hidden = !!on; } };
+  };
+
+  /* ------------------------------------------------------------ a draggable point on a picture (graph explorers) */
+  /* K.handle: a knob that sits wherever the tool says its value is (o.at(v), picture units), so it can ride a curve,
+     an axis or an inset. Dragging asks the tool for the value under the finger (o.pick(x, y), picture units); the
+     tool snaps or refuses (return null) as its idea needs. The knob is a real role="slider" (keys: arrows, Shift or
+     Page Up / Down for ten steps, Home, End; o.keys(v, key, shift) -> value | null replaces them, for a log scale). */
+  K.handle = function(layer, o){
+    var val = o.value, step = o.step || 1, pid = null, mk = null;
+    var w = el('div', 'tk2-handle' + (o.quiet ? ' is-quiet' : ''));
+    w.innerHTML = '<span class="tk2-knob" role="slider" tabindex="0"><span class="tk2-dot">' + icon('arrows', 'tk2-ar') + '</span></span>' +
+      '<span class="tk2-tag" aria-hidden="true" hidden></span><span class="tk2-before" aria-hidden="true" hidden><i></i><b></b></span>';
+    layer.el.appendChild(w);
+    var knob = w.querySelector('.tk2-knob'), tag = w.querySelector('.tk2-tag'), bef = w.querySelector('.tk2-before');
+    knob.setAttribute('aria-label', o.label);
+    if(o.min != null) knob.setAttribute('aria-valuemin', String(o.min));
+    if(o.max != null) knob.setAttribute('aria-valuemax', String(o.max));
+    var done = o.quiet ? function(){} : firstHint(w, o.key, o.hint || 'Drag', o.chip === false);
+    function lim(v){ return clamp(v, o.min == null ? -Infinity : o.min, o.max == null ? Infinity : o.max); }
+    function px(p){ var k = layer.scale(); return [p[0] * k, p[1] * k]; }
+    function paint(){
+      var p = o.at(val);
+      if(!p || !isFinite(p[0]) || !isFinite(p[1])){ knob.style.visibility = 'hidden'; tag.hidden = true; return; }
+      knob.style.visibility = '';
+      var q = px(p), ang = o.dir ? o.dir(val) : 0;
+      knob.style.left = q[0] + 'px'; knob.style.top = q[1] + 'px';
+      w.querySelector('.tk2-ar').style.transform = 'rotate(' + (isFinite(ang) ? ang : 0) + 'deg)';
+      var chip = w.querySelector('.tk2-chip'); if(chip){ chip.style.left = q[0] + 'px'; chip.style.top = q[1] + 'px'; if(o.chipSide) chip.className = 'tk2-chip is-' + (o.chipSide(val) || 'down'); }
+      knob.setAttribute('aria-valuenow', String(+(+val).toFixed(6)));
+      knob.setAttribute('aria-valuetext', o.valuetext ? o.valuetext(val) : String(val));
+      var t = o.tag ? o.tag(val) : '';
+      tag.textContent = t || ''; tag.hidden = !t;
+      if(t){
+        var side = (o.tagSide && o.tagSide(val)) || 'up';
+        tag.style.left = q[0] + 'px'; tag.style.top = q[1] + 'px'; tag.className = 'tk2-tag is-' + side; tag.style.marginLeft = '';
+        // o.bounds(v) -> [x0, y0, x1, y1] (picture units): a tag above or below the knob slides sideways to stay inside
+        var bd = o.bounds && (side === 'up' || side === 'down') ? o.bounds(val) : null;
+        if(bd){ var k = layer.scale(), tw = tag.offsetWidth, l = q[0] - tw / 2, r = q[0] + tw / 2, dx = l < bd[0] * k ? bd[0] * k - l : r > bd[2] * k ? bd[2] * k - r : 0; if(dx) tag.style.marginLeft = dx.toFixed(1) + 'px'; }
+      }
+      paintMark();
+    }
+    // the "before" tick: where the value was when this change began (a mark, never a moved handle)
+    function paintMark(){
+      if(mk == null){ bef.hidden = true; return; }
+      var p = o.at(mk), q0 = o.at(val);
+      if(!p || !isFinite(p[0]) || !isFinite(p[1])){ bef.hidden = true; return; }
+      var a = px(p), b = q0 ? px(q0) : a, far = Math.hypot(a[0] - b[0], a[1] - b[1]);
+      bef.hidden = far < 18;
+      bef.style.left = a[0] + 'px'; bef.style.top = a[1] + 'px';
+      bef.querySelector('i').style.transform = 'rotate(' + ((o.dir ? o.dir(mk) : 0) + 90) + 'deg)';
+      var lb = bef.querySelector('b'); lb.textContent = o.beforeLabel || 'before'; lb.hidden = far < 58;
+    }
+    function set(v, fire){
+      if(v == null || !isFinite(v)){ paint(); return; }
+      v = lim(+(+v).toFixed(9));
+      var ch = v !== val; val = v; paint();
+      if(fire && ch && o.onInput) o.onInput(v);
+    }
+    function local(e){ var r = layer.el.getBoundingClientRect(), k = layer.scale() || 1; return [(e.clientX - r.left) / k, (e.clientY - r.top) / k]; }
+    function down(e){
+      if(pid != null || (e.pointerType === 'mouse' && e.button !== 0)) return false;
+      pid = e.pointerId; try{ knob.setPointerCapture(pid); }catch(x){}
+      e.preventDefault(); done(); w.classList.add('is-drag');
+      try{ knob.focus({ preventScroll: true }); }catch(x){}
+      if(o.onStart) o.onStart(val);
+      return true;
+    }
+    function move(e){ if(e.pointerId !== pid) return; var p = local(e); set(o.pick(p[0], p[1], val), true); }
+    function up(e){ if(e.pointerId !== pid) return; pid = null; w.classList.remove('is-drag'); if(o.onEnd) o.onEnd(val); }
+    knob.addEventListener('pointerdown', function(e){ if(down(e)) move(e); });
+    knob.addEventListener('pointermove', move); knob.addEventListener('pointerup', up); knob.addEventListener('pointercancel', up);
+    knob.addEventListener('lostpointercapture', function(e){ if(e.pointerId === pid) up(e); });
+    knob.addEventListener('keydown', function(e){
+      var k = e.key, big = e.shiftKey, to = null;
+      if(o.keys) to = o.keys(val, k, big);
+      if(to === undefined || (to === null && !o.keys)){
+        if(k === 'ArrowRight' || k === 'ArrowUp') to = val + step * (big ? 10 : 1);
+        else if(k === 'ArrowLeft' || k === 'ArrowDown') to = val - step * (big ? 10 : 1);
+        else if(k === 'PageUp') to = val + step * 10; else if(k === 'PageDown') to = val - step * 10;
+        else if(k === 'Home' && o.min != null) to = o.min; else if(k === 'End' && o.max != null) to = o.max;
+      }
+      if(to == null) return;
+      e.preventDefault(); done();
+      if(o.onStart) o.onStart(val);
+      set(to, true);
+      if(o.onEnd) o.onEnd(val);
+    });
+    knob.addEventListener('focus', function(){ w.classList.add('is-focus'); });
+    knob.addEventListener('blur', function(){ w.classList.remove('is-focus'); });
+    paint();
+    return { el: w, knob: knob,
+      value: function(v, fire){ if(v === undefined) return val; set(v, fire); },
+      // grab(e): a press elsewhere on the picture (the tool decided it is near enough) starts a drag of this knob
+      grab: function(e){ if(down(e)) move(e); },
+      dragging: function(){ return pid != null; },
+      place: paint, hide: function(on){ w.hidden = !!on; },
+      before: function(v){ mk = v == null ? null : v; paintMark(); },
+      used: function(){ done(); } };
   };
 
   /* ------------------------------------------------------------ a tappable part of the picture */
