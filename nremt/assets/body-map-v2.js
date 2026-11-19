@@ -80,7 +80,7 @@
     body.appendChild(lead);
     var leadL = lead.querySelector('.bm2-lead-l'), leadR = lead.querySelector('.bm2-lead-r'), leadD = lead.querySelector('.bm2-lead-d');
     var card = el('section', 'bm2-card');
-    card.setAttribute('aria-live', 'polite'); card.setAttribute('aria-label', 'The part you tapped'); card.hidden = true;
+    card.setAttribute('aria-label', 'The part you tapped'); card.hidden = true;
     card.innerHTML = '<button type="button" class="bm2-card-x" aria-label="Close the card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>' +
       '<p class="bm2-card-s"></p><h3 class="bm2-card-n"></h3>' +
       '<div class="bm2-card-t" role="tablist" aria-label="About this part">' + SECTIONS.map(function(x, i){
@@ -189,8 +189,9 @@
     function frame(){
       lt = 0;
       if(!V || St.tab !== 'body' || body.hidden) return;
-      if(St.pending && !V.flying()){ var k = St.pending; St.pending = null; openCard(k); }
-      else if(St.pending) later();   // the camera is still on its way: check again next frame
+      // the card waits for the body to be drawn (a ?focus= link selects before the model arrives) and for the camera
+      if(St.pending && V.loaded() && !V.flying()){ var k = St.pending; St.pending = null; openCard(k); }
+      else if(St.pending && V.loaded()) later();   // the camera is still on its way: check again next frame
       if(St.card) place(false);
     }
     function sectionHtml(c, id){
@@ -460,7 +461,7 @@
         v.on('frame', function(){ if(St.on) frame(); });
         v.on('hover', onHover);
         v.on('layers', fillFind);
-        v.on('load', function(){ fillFind(); showCue(); });
+        v.on('load', function(){ fillFind(); if(St.on && St.sel && !St.card){ St.pending = St.sel; later(); } showCue(); });
         fillFind();
       },
       onSelect: onSelect, onPick: onPick,
