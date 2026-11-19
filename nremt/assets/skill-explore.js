@@ -80,7 +80,7 @@
       collar: ['Collar', 'collar sized and on', 'collar'], device: ['Vest behind', 'device behind the back', 'vest'],
       torso: ['Strap the torso', 'chest straps fastened', 'strap'], legs: ['Leg straps', 'straps round the thighs', 'strap'],
       check: ['Check the straps', 'device does not shift', 'check'], headpad: ['Pad the head', 'head kept neutral', 'pad'],
-      head: ['Secure the head', 'head strapped to the vest', 'vest'], move: ['Move to board', 'onto a long board', 'board'],
+      head: ['Secure the head', 'head strapped to the vest', 'vest'], move: ['Move to board', 'said out loud: pivot to a board', 'board'],
       pms2: ['Recheck all limbs', 'still present after', 'pulse'] },
     trauma: { bsi: GLOVES, scene: ['Scene size-up', 'safe; a 12 ft fall', 'eye'], gi: ['General impression', 'groaning, left side pain', 'eye'],
       airway: ['Airway', 'open and clear', 'tilt'], breath: ['Breathing', 'fast, shallow: oxygen on', 'mask'], circ: ['Circulation', 'pulse fast, skin pale', 'pulse'],
@@ -96,14 +96,14 @@
   };
   // what the patient shows from the order, by the patient's miss keys: [what was done, what it means]
   var LIVE = {
-    'order': ['Tourniquet first', 'sheet wants pressure first'], 'abc': ['Shock care first', 'bleeding not controlled'],
+    'order': ['Tourniquet first', 'sheet wants pressure first'], 'abc': ['Shock care first', 'before the bleed was stopped'],
     'suction': ['Breaths through vomit', 'vomit into the lungs'], 'check': ['Pulse before response', 'response comes first'],
-    'opa': ['Airway after breaths', 'tongue may block'], 'open2': ['Airway not reopened', 'reopen before the OPA'],
-    'order-stab-apply': ['Splint before holding', 'the break was moved'], 'order-pms1-apply': ['Late first check', 'check comes first'],
+    'opa': ['OPA after breaths', 'tongue may block'], 'open2': ['Airway not reopened', 'reopen before the OPA'],
+    'order-stab-apply': ['Splint before holding', 'the break was moved'], 'order-pms1-apply': ['Splint before the check', 'check comes first'],
     'order-apply-pms2': ['Recheck too early', 'recheck comes after'], 'order-stab-site': ['Splint before holding', 'knee took the weight'],
-    'order-pms1-site': ['Late first check', 'check comes first'], 'order-site-pms2': ['Recheck too early', 'recheck comes after'],
+    'order-pms1-site': ['Splint before the check', 'check comes first'], 'order-site-pms2': ['Recheck too early', 'recheck comes after'],
     'order-manual-collar': ['Collar before holding', 'the neck was moved'], 'order-collar-roll': ['Rolled before the collar', 'neck not protected'],
-    'order-torso-head': ['Head before torso', 'body levers the neck'], 'order-pms1-collar': ['Late first check', 'check comes first'],
+    'order-torso-head': ['Head before torso', 'body levers the neck'], 'order-pms1-collar': ['Collar before the check', 'check comes first'],
     'order-device-torso': ['Straps before the vest', 'no device behind yet'], 'order-reg-open': ['Opened too early', 'no regulator on yet'],
     'order-prefill-apply': ['Mask before filling', 'bag still empty'], 'order-flow-apply': ['Mask before the flow', 'no oxygen flowing yet'],
     'order-check-cpr': ['CPR before checking', 'pulse not checked first'], 'order-clear-shock': ['Shock before clear', 'someone may be touching'],
@@ -295,11 +295,25 @@
       }));
     }
     // which sheet row each live mark belongs to (the step done out of turn)
+    // never the missing step: the row that gets the "!" is always one that was done
     function liveKeys(){
+      var steps = def().steps, d = doneMap();
+      function idx(id){ var i = -1; steps.forEach(function(s, k){ if(s.id === id) i = k; }); return i; }
+      // the earliest done step among the ids (or matching a test), optionally only those done before step 'by'
+      function first(ok, by){
+        var best = -1, at = Infinity;
+        steps.forEach(function(s, k){ if(St.done[k] && ok(s) && St.at[k] < at && (by == null || !d[by] || St.at[k] < d[by])){ at = St.at[k]; best = k; } });
+        return best;
+      }
       return liveList().map(function(m){
-        var id = m.key === 'bsi' ? 'bsi' : m.key === 'order' ? 'tq' : m.key === 'abc' ? 'o2' : m.key === 'check' ? 'check' : m.key === 'suction' ? 'suction' :
-          m.key === 'opa' ? 'opa' : m.key === 'open2' ? 'open2' : m.key.split('-')[2] || m.key;
-        var i = -1; def().steps.forEach(function(s, k){ if(s.id === id) i = k; });
+        var i;
+        if(m.key === 'bsi') i = first(function(s){ return s.touch; }, 'bsi');
+        else if(m.key === 'suction') i = idx(d.vent1 ? 'vent1' : 'vent2');
+        else if(m.key === 'open2') i = idx('opa');
+        else if(m.key === 'abc') i = first(function(s){ return /^(position|o2|warm)$/.test(s.id); }, 'tq');
+        else if(m.key === 'order') i = idx('tq');
+        else i = idx(m.key === 'check' || m.key === 'opa' ? m.key : m.key.split('-')[2] || m.key);
+        if(i >= 0 && !St.done[i]) i = -1;
         return { i: i, m: m };
       });
     }
@@ -325,8 +339,8 @@
         // checked each frame: once every item coming in is mostly there (and every item leaving mostly gone)
         var t0 = performance.now(), items = [].slice.call(ptHost.querySelectorAll('.sp-item'));
         var wait = function(){
-          var busy = items.some(function(it){ var o = +getComputedStyle(it).opacity, onIt = it.classList.contains('on'); return onIt ? o < 0.65 : o > 0.35; });
-          if(busy && performance.now() - t0 < 1600){ causeT = setTimeout(wait, 40); return; }
+          var busy = (patient && patient.busy && patient.busy()) || items.some(function(it){ var o = +getComputedStyle(it).opacity, onIt = it.classList.contains('on'); return onIt ? o < 0.65 : o > 0.35; });
+          if(busy && performance.now() - t0 < 2000){ causeT = setTimeout(wait, 40); return; }
           causeT = 0; causeFor(i, on);
         };
         causeT = setTimeout(wait, 60);
@@ -391,6 +405,20 @@
       } else cols = W >= 330 && n > 5 ? 2 : 1;
       list.style.setProperty('--rows', Math.ceil(n / cols));
       box.classList.toggle('is-2col', cols === 2);
+      fitFirstScreen(wide);
+    }
+    /* Stacked (phones, narrow tablets): the picture is capped so the first screen also shows the clipboard's head
+       and its first two rows, where the cue points (review round 1). Measured from the sheet itself, which sits under
+       the picture, so the cap never depends on the picture's own height. */
+    function fitFirstScreen(wide){
+      if(wide){ box.style.removeProperty('--ssx-pth'); return; }
+      // the rows fill the first column first, so the first two rows are the first two buttons either way
+      var rows = list.querySelectorAll('.ssx-step'), second = rows[Math.min(rows.length - 1, 1)];
+      if(!second || !board.offsetHeight) return;
+      var need = second.getBoundingClientRect().bottom - board.getBoundingClientRect().top + 10;
+      var top = box.getBoundingClientRect().top + (window.scrollY || 0), vh = window.innerHeight || 800;
+      var h = Math.round(Math.max(260, Math.min(600, vh - top - need)));
+      if(box.style.getPropertyValue('--ssx-pth') !== h + 'px') box.style.setProperty('--ssx-pth', h + 'px');
     }
     // on a phone, a step tapped on the sheet below the picture brings the picture back into view
     function toView(){
@@ -463,7 +491,7 @@
       '<li><b>Out of order.</b> Do steps in any order. When the order itself is a problem (touching the patient before gloves, a splint before the limb is held, a shock before everyone is clear), the patient shows it, marked "!", and the line under the picture names it. Red there means a critical criterion is involved.</li>' +
       '<li><b>The examiner.</b> On the clipboard, what the examiner tells you after a step (the wound keeps bleeding; on the assessment stations, what you find).</li>' +
       '<li><b>Bleeding control.</b> Tap the thigh to place the tourniquet yourself; a tourniquet over the knee, on the wound or below it does not stop the bleed. <b>BVM.</b> Once you ventilate, squeeze the bag on the picture: about one breath every 5 to 6 seconds.</li>' +
-      '<li><b>The clock.</b> Each sheet has a time limit (on the clipboard). Explore has no clock and no score; run a station against the clock in <button type="button" class="tk2-link ssx-ref-test">Test yourself</button>.</li>' +
+      '<li><b>The clock.</b> Each sheet has a time limit (on the clipboard). Explore has no station timer and no score (the bleed’s own clock runs there); run a station against the clock in <button type="button" class="tk2-link ssx-ref-test">Test yourself</button>.</li>' +
       '</ul>' +
       '<p class="ssx-ref-p"><button type="button" class="tk2-how ssx-ref-how">Show me how</button></p>' +
       '<h3 class="ssx-ref-vh">What varies by program</h3><ul class="ssx-ref-notes"></ul>' +
@@ -485,7 +513,7 @@
     station(St.key, false); refNotes();
     var api = {
       stage: stage, ref: ref, more: ref.querySelector('.ssx-ref-more'),
-      hidden: function(){ St.on = false; stopTick(); clearTimers(); if(patient){ cancelAnimationFrame(patient.raf); patient.raf = 0; clearTimeout(patient.camT); clearTimeout(patient.ut); patient.svg.style.transform = ''; if(patient.svg2) patient.svg2.style.transform = ''; } if(cue) cue.hide(false); },
+      hidden: function(){ St.on = false; stopTick(); clearTimers(); if(patient){ if(patient.rolling && patient.rollEnd) patient.rollEnd(); cancelAnimationFrame(patient.raf); patient.raf = 0; clearTimeout(patient.camT); clearTimeout(patient.ut); [patient.svg0, patient.svg, patient.svg2].forEach(function(v){ if(v){ v.style.transform = ''; v.style.left = v.style.top = v.style.width = v.style.height = ''; } }); } if(cue) cue.hide(false); },
       shown: function(){
         St.on = true; layout(); startTick();
         if(patient && patient.ready) patient.camera(true);

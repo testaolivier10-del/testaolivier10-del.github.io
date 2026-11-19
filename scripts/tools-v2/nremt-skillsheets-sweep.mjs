@@ -9,6 +9,8 @@
      - the patient's picture is the largest thing in the scene; every row is at least 40 px tall;
      - every visible text is at least 11 px (the words on the patient included: they grow with the camera);
      - phones (640 px and under): the cause line is at most two rows and its height never changes.
+   Review round 1: the row "!" only ever lands on a step that was done (every out of order state, and named cases);
+   every frame of a camera move paints the whole picture; the log roll slides the board in while the words wait.
    And with --frames (390 and 1440): frame by frame (rule 14) the cause line names a step only once its item is on
    the patient (never on the first frames), the live "!" only with its words; a step taken back; keyboard; reduced
    motion (the result at once); leaving Explore mid change (the clock, the timers and the camera stop; coming back is
@@ -179,6 +181,10 @@ if (W) {
       const s2 = await S(page);
       const touched = await page.evaluate(n => { const d = window.NremtSkillExplore.last.patient().def; return !!(d.steps[n - 1].touch || d.steps[1].touch); }, n);
       ok(s2.live.includes('bsi') === touched, `${W} ${tagT} ${k}: a touch before gloves is marked only when there was one (${s2.live.join(',')})`);
+      // review round 1: the row "!" lands only on a step that was done (the one done out of turn), never on a missing one
+      const flags = await page.$$eval('.ssx-step.is-flag', b => b.map(x => ({ i: +x.dataset.i, done: x.classList.contains('is-done') })));
+      ok(flags.every(x => x.done), `${W} ${tagT} ${k}: a "!" on a step not done (${JSON.stringify(flags)})`);
+      ok(!s2.live.length || flags.length > 0, `${W} ${tagT} ${k}: an order problem with no row marked (${s2.live.join(',')})`);
       await page.click('.ssx-reset'); await page.waitForTimeout(300);
     }
     ok(!errs.length, `${W} ${tagT}: console errors ${errs.slice(0, 2).join(' | ')}`);
@@ -216,6 +222,66 @@ if (process.argv.includes('--frames')) {
     await settle(page);
     let st = await S(page);
     ok(st.done[2], `${w}: a tap on the thigh did the tourniquet step`);
+    // review round 1: which row carries the "!" (always the step done out of turn)
+    const flagged = () => page.$$eval('.ssx-step.is-flag', b => b.map(x => x.querySelector('.ssx-lab').textContent));
+    const ORDER = [
+      ['bvm', [0, 9], ['Ventilate'], 'ventilate before suction'],
+      ['bvm', [0, 1, 2, 3, 4, 5, 6, 8], ['Oral airway'], 'OPA without reopening'],
+      ['bvm', [0, 1, 2, 3, 4, 5, 6, 7, 9, 8], ['Oral airway'], 'OPA after breaths'],
+      ['bleeding', [0, 1, 5, 2], ['Blanket'], 'blanket before the tourniquet'],
+      ['bleeding', [1, 0], ['Direct pressure'], 'pressure before gloves'],
+      ['supine', [1, 3, 0], ['Hold the head'], 'held without gloves'],
+      ['longbone', [0, 1, 4, 2], ['Apply splint'], 'splint before the check'],
+    ];
+    for (const [k, seq, want, what] of ORDER) {
+      await station(page, k);
+      for (const i of seq) await tap(page, i);
+      await settle(page);
+      const got = await flagged();
+      ok(want.every(x => got.includes(x)), `${w} order ${k} (${what}): flagged ${JSON.stringify(got)}, want ${JSON.stringify(want)}`);
+      const notDone = await page.$$eval('.ssx-step.is-flag:not(.is-done)', b => b.length);
+      ok(notDone === 0, `${w} order ${k} (${what}): a "!" on a step not done`);
+      await page.click('.ssx-reset'); await page.waitForTimeout(300);
+    }
+    // wording: the effects named in review round 1
+    await station(page, 'bleeding'); for (const i of [0, 1, 5, 2]) await tap(page, i); await settle(page);
+    ok(/before the bleed was stopped/.test((await S(page)).chain), `${w}: shock care first says "before the bleed was stopped" (${(await S(page)).chain})`);
+    await page.click('.ssx-reset'); await page.waitForTimeout(300);
+    await station(page, 'longbone'); for (const i of [0, 1, 4]) await tap(page, i); await settle(page);
+    ok(/Splint before the check/.test((await S(page)).chain), `${w}: a splint with no check says "Splint before the check" (${(await S(page)).chain})`);
+    await page.click('.ssx-reset'); await page.waitForTimeout(300);
+    // no blank band during a camera move: on every frame of a move the painted svgs cover the whole picture
+    await station(page, 'bleeding'); await tap(page, 0); await page.waitForTimeout(200); await tap(page, 1);
+    const cover = [];
+    for (let i = 0; i < 70 && cover.length < 12; i++) {
+      const f = await page.evaluate(() => { const P = window.NremtSkillExplore.last.patient(); if (!P.raf) return null;
+        const S = P.stage.getBoundingClientRect();
+        return [P.svg, P.svg2].map(v => { const r = v.getBoundingClientRect(); return r.left <= S.left + 1 && r.top <= S.top + 1 && r.right >= S.right - 1 && r.bottom >= S.bottom - 1; }); });
+      if (f) cover.push(f.every(Boolean));
+      await page.waitForTimeout(25);
+    }
+    ok(cover.length > 2, `${w}: caught the camera moving (${cover.length} frames)`);
+    ok(cover.every(Boolean), `${w}: a camera frame left part of the picture unpainted (${cover.map(Number).join('')})`);
+    await page.click('.ssx-reset'); await page.waitForTimeout(300);
+    // the log roll: the board slides in under the patient while the body rolls; the words wait for it
+    await station(page, 'supine');
+    for (const i of [0, 1, 2, 3, 4]) await tap(page, i);
+    await settle(page);
+    await tap(page, 5);
+    const roll = [];
+    for (let i = 0; i < 16; i++) {
+      roll.push(await page.evaluate(() => { const P = window.NremtSkillExplore.last.patient(), st = window.NremtSkillExplore.last._state();
+        return { tx: P.lay.boardUnder.getAttribute('transform') || '', body: P.skinLayer.getAttribute('transform') || '', rolling: !!P.rolling, chain: st.chain }; }));
+      await page.waitForTimeout(90);
+    }
+    ok(roll.some(f => /translate\((?!0\.0 )[1-9]/.test(f.tx)) && roll.some(f => /scale\(0\.[0-9]+ 1\)/.test(f.body)), `${w}: the log roll slides the board and rolls the body (${roll.map(f => f.tx).slice(0, 4).join(' | ')})`);
+    roll.forEach((f, i) => { if (f.rolling) ok(!/Log roll/.test(f.chain), `${w}: the cause line named the log roll mid roll (frame ${i})`); });
+    await settle(page);
+    ok(/Log roll/.test((await S(page)).chain), `${w}: the log roll's cause came (${(await S(page)).chain})`);
+    // seated: the move to the board is said out loud
+    await station(page, 'seated'); await tap(page, 10); await settle(page);
+    ok(/said out loud/.test((await S(page)).chain), `${w}: the seated move is worded as said out loud (${(await S(page)).chain})`);
+    await page.click('.ssx-reset'); await page.waitForTimeout(300);
     // live marks: BVM ventilated through vomit
     await station(page, 'bvm');
     await tap(page, 0); await tap(page, 9); await settle(page);
