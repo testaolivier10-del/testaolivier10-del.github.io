@@ -60,7 +60,7 @@
   var TABS = [
     { id: 'lung', name: 'Lung sounds', purpose: 'Hear where each breath sound is loudest, and why.', keys: ['wheeze', 'crackles', 'stridor'],
       sites: ['trachea', 'lung-ru', 'lung-lu', 'lung-rl', 'lung-ll', 'back-lu', 'back-ru', 'back-ll', 'back-rl'], views: ['front', 'back'], kind: 'lung' },
-    { id: 'heart', name: 'Heart sounds', purpose: 'Beyond the EMT exam: hear where each heart sound is loudest.',
+    { id: 'heart', name: 'Heart sounds', purpose: 'Hear where each heart sound is loudest, and why.',
       keys: ['heart-s3', 'heart-s4', 'heart-split-s2', 'heart-systolic-murmur', 'heart-diastolic-murmur'],
       sites: ['aortic', 'pulmonic', 'erb', 'tricuspid', 'mitral'], views: ['front'], kind: 'heart' }
   ];
@@ -139,7 +139,7 @@
         var y0 = fa.y + fa.h + 6;
         lr = Math.min(phone ? W * 0.19 : 96, (bandH - 46) / 2);
         lx = 12 + lr; ly = y0 + 30 + lr;
-        sx = lx + lr + 16; sw = W - sx - 10; sy = y0 + 54; sh = bandH - 60;
+        sx = lx + lr + 16; sw = W - sx - 10; sy = y0 + 60; sh = bandH - 66;
         g.abY = y0 + 4; g.abX = sx + sw / 2; g.abW = sw;
       }
       var k = Math.min(fa.w / 600, fa.h / 666), ox = fa.x + (fa.w - 600 * k) / 2, oy = fa.y + Math.max(0, (fa.h - 666 * k) / 2);
@@ -166,6 +166,7 @@
       drawBg(); drawFig(); drawSites(); drawLensFrame(); drawStripFrame(); placeHtml();
       paintKeys(); placeSteth(S().site ? sitePos(S().site) : g.rest, true);
       frame(true);
+      if(!play.on && play.ended){ paintStrip(null, null, true); }
       if(cue) cue.place();
     }
     function drawBg(){
@@ -236,7 +237,7 @@
           var I = INFO[id];
           return '<button type="button" class="snd2-key" role="radio" data-key="' + id + '" aria-label="' + esc(byId[id].label) + '"><span class="snd2-key-l">' + esc(I.key) + '</span>' +
             (I.short ? '<span class="snd2-key-s" aria-hidden="true">' + esc(I.short) + '</span>' : '') + '</button>';
-        }).join('') + (t.kind === 'heart' ? '<span class="snd2-made">Generated, not recorded</span>' : '<span class="snd2-made">Real recordings</span>');
+        }).join('') + (t.kind === 'heart' ? '<span class="snd2-made">Generated, not recorded. Beyond the EMT exam</span>' : '<span class="snd2-made">Real recordings</span>');
       }
       keys.querySelectorAll('.snd2-key').forEach(function(b){ var on = b.getAttribute('data-key') === s.key; b.setAttribute('aria-checked', String(on)); b.tabIndex = on ? 0 : -1; });
       viewSw.hidden = t.views.length < 2;
@@ -311,10 +312,11 @@
         P_.sacs = [];
         SAC.forEach(function(s, j){
           if(!s[2]) return;
-          var wet = !normal && j % 2 === 0 && j > 0, gS = sv('g', { class: 'snd2-sac' + (wet ? ' is-wet' : ''), transform: 'translate(' + s[0] + ' ' + s[1] + ')' }, b);
+          var wet = !normal && j % 2 === 0 && j > 0, gO = sv('g', { class: 'snd2-sac' + (wet ? ' is-wet' : ''), transform: 'translate(' + s[0] + ' ' + s[1] + ')' }, b);
+          var gS = sv('g', {}, gO); // scaled as the sac opens and closes: the fluid stays inside it
           var c = sv('circle', { r: s[2], class: 'snd2-sac-w' }, gS);
           var fl = wet ? sv('path', { d: 'M' + (-s[2]) + ' ' + (s[2] * .25) + ' Q0 ' + (s[2] * .05) + ' ' + s[2] + ' ' + (s[2] * .25) + ' A' + s[2] + ' ' + s[2] + ' 0 0 1 ' + (-s[2]) + ' ' + (s[2] * .25) + 'Z', class: 'snd2-fluid' }, gS) : null;
-          var pop = wet ? sv('path', { class: 'snd2-pop', d: 'M-9 -9l-6 -6M9 -9l6 -6M0 -12v-8M-12 0h-8M12 0h8' }, gS) : null;
+          var pop = wet ? sv('path', { class: 'snd2-pop', d: 'M-9 -9l-6 -6M9 -9l6 -6M0 -12v-8M-12 0h-8M12 0h8' }, gO) : null;
           P_.sacs.push({ g: gS, c: c, r: s[2], wet: wet, pop: pop, x: s[0], y: s[1] });
         });
       } else if(d === 'larynx'){
@@ -341,6 +343,7 @@
       var P_ = LZ.parts, dil = kind === 's3', stiff = kind === 's4';
       sv('rect', { x: -110, y: -110, width: 220, height: 220, class: 'snd2-peri' }, b);
       var gH = sv('g', { class: 'snd2-heart' }, b);
+      sv('path', { class: 'snd2-myo-out', d: 'M-92 -18 C-98 34 -44 96 34 104 C96 84 114 24 100 -18 C94 -46 74 -60 44 -58 C14 -62 -18 -62 -50 -58 C-80 -56 -90 -42 -92 -18Z' }, gH);
       P_.ra = sv('path', { class: 'snd2-ch is-blue', d: 'M-70 -52 C-86 -50 -88 -8 -64 -4 L-12 -4 L-12 -44 C-26 -56 -54 -56 -70 -52Z' }, gH);
       P_.la = sv('path', { class: 'snd2-ch is-red', d: 'M14 -46 C30 -58 66 -56 78 -44 C88 -28 80 -8 66 -4 L14 -4Z' }, gH);
       var lv = dil ? 'M10 4 L92 4 C106 40 84 96 30 96 C14 80 10 40 10 4Z' : 'M14 4 L80 4 C92 36 72 84 34 88 C22 70 14 40 14 4Z';
@@ -410,9 +413,8 @@
               if(lvl != null) pop *= clamp(lvl * 3, .3, 1);
             } else open = .92 + .08 * Math.sin(t * 2.2 + j);
           } else open = s.wet ? .55 : 1;
-          s.c.setAttribute('r', f1(s.r * open));
+          s.g.setAttribute('transform', 'scale(' + open.toFixed(3) + ')');
           if(s.pop){ s.pop.style.opacity = pop.toFixed(2); }
-          s.g.style.setProperty('--open', open.toFixed(2));
         });
       } else {
         heartAt(still ? null : t);
@@ -460,7 +462,8 @@
       sv('rect', { x: f1(R.x), y: f1(R.y), width: f1(R.w), height: f1(R.h), rx: 12, class: 'snd2-mon' }, gStrip);
       var grid = sv('g', { class: 'snd2-grid' }, gStrip);
       for(var gx = px; gx <= px + pw + .5; gx += pw / 8) sv('line', { x1: f1(gx), x2: f1(gx), y1: f1(R.y + 22), y2: f1(R.y + R.h - 20) }, grid);
-      var cp = sv('clipPath', { id: 'snd2-sc' }, sv('defs', {}, gStrip)), clip = sv('rect', { x: f1(px), y: f1(R.y), width: 0, height: f1(R.h) }, cp);
+      var cp = sv('clipPath', { id: 'snd2-sc' }, sv('defs', {}, gStrip)), clip = sv('rect', { x: f1(px), y: f1(R.y), width: 0, height: f1(R.h) }, cp),
+        clip2 = sv('rect', { x: f1(px), y: f1(R.y), width: 0, height: f1(R.h) }, cp);
       var title = sv('text', { x: f1(px), y: f1(R.y + 16), class: 'snd2-mon-t' }, gStrip);
       var band = sv('rect', { class: 'snd2-band', y: f1(R.y + 22), height: f1(R.h - 42), x: 0, width: 0 }, gStrip);
       var mid = R.y + 22 + (R.h - 42) / 2;
@@ -470,7 +473,7 @@
       var ticks = sv('g', { class: 'snd2-ticks' }, gStrip);
       var phase = sv('g', { class: 'snd2-phase' }, gStrip);
       var head = sv('line', { class: 'snd2-head', x1: 0, x2: 0, y1: f1(R.y + 22), y2: f1(R.y + R.h - 20) }, gStrip);
-      SZ = { px: px, pw: pw, mid: mid, amp: (R.h - 42) / 2 - 3, clip: clip, title: title, band: band, fill: fill, line: line, ticks: ticks, phase: phase, head: head, R: R, shown: {} };
+      SZ = { px: px, pw: pw, mid: mid, amp: (R.h - 42) / 2 - 3, clip: clip, clip2: clip2, title: title, band: band, fill: fill, line: line, ticks: ticks, phase: phase, head: head, R: R, shown: {} };
       setupStrip();
     }
     function txH(t, cyc){ var u = ((t + PRE) % cyc + cyc) % cyc; return SZ.px + u / cyc * SZ.pw; }
@@ -479,7 +482,7 @@
       var snd = cur(), site = S().site ? SITE[S().site] : null, R = SZ.R;
       SZ.kind = null; SZ.ticks.innerHTML = ''; SZ.phase.innerHTML = ''; SZ.fill.setAttribute('d', ''); SZ.line.setAttribute('d', '');
       SZ.band.setAttribute('width', 0); SZ.head.style.opacity = 0; SZ.shown = {}; SZ.events = [];
-      SZ.clip.setAttribute('x', f1(SZ.px)); SZ.clip.setAttribute('width', 0);
+      SZ.clip.setAttribute('x', f1(SZ.px)); SZ.clip.setAttribute('width', 0); SZ.clip2.setAttribute('width', 0);
       if(!site){ SZ.title.textContent = 'Nothing heard'; return; }
       if(snd && snd.synth){
         SZ.kind = 'heart';
@@ -509,10 +512,15 @@
     // event pills: S1 and S2 above the trace, the extra one in the finding's colour; P2 to the right of A2
     function layoutEventLabels(){
       var R = SZ.R, placed = [];
+      // where each pill goes: under its tick, then pushed apart (5 px at least) and kept inside the strip
+      var L = SZ.events.map(function(e){ var w = e.key.length * 7.4 + 12; return { e: e, w: w, x: e.span ? (e.x + e.x2) / 2 : e.x }; }).sort(function(a, b){ return a.x - b.x; });
+      for(var it = 0; it < 6; it++){
+        for(var j = 1; j < L.length; j++){ var a = L[j - 1], b = L[j], need = (a.w + b.w) / 2 + 5 - (b.x - a.x); if(need > 0){ a.x -= need / 2; b.x += need / 2; } }
+        L.forEach(function(l){ l.x = clamp(l.x, SZ.px + l.w / 2, SZ.px + SZ.pw - l.w / 2); });
+      }
+      L.forEach(function(l){ l.e.px_ = l.x; });
       SZ.events.forEach(function(e){
-        var w = (e.key.length * 7.4 + 12), x = e.span ? (e.x + e.x2) / 2 : e.x;
-        if(e.key === 'P2') x += w / 2 + 2; if(e.key === 'A2') x -= w / 2 + 2;
-        x = clamp(x, SZ.px + w / 2, SZ.px + SZ.pw - w / 2);
+        var w = (e.key.length * 7.4 + 12), x = e.px_;
         var y = R.y + R.h - 17;
         var gE = sv('g', { class: 'snd2-ev' + (e.extra ? ' is-x' : ''), style: 'opacity:0' }, SZ.ticks);
         if(!e.span) sv('line', { x1: f1(e.x), x2: f1(e.x), y1: f1(R.y + 22), y2: f1(y - 2), class: 'snd2-ev-t' }, gE);
@@ -540,18 +548,23 @@
     function paintStrip(t, lvl, done){
       if(!SZ || !SZ.kind) return;
       if(SZ.kind === 'heart'){
-        var x0 = txH(0, SZ.cyc), from, to;
+        // a monitor sweep: the first pass draws from S1; after that the new pass draws up to the playhead and the
+        // last pass stays drawn beyond it, after a small gap (every beat here is the same beat)
+        var x0 = txH(0, SZ.cyc), from, to, from2 = 0, to2 = 0, sweep = 0;
         if(done || reduced()){ from = SZ.px; to = SZ.px + SZ.pw; SZ.head.style.opacity = 0; }
         else if(t == null){ from = SZ.px; to = SZ.px; SZ.head.style.opacity = 0; }
         else {
-          var sweep = Math.floor((t + PRE) / SZ.cyc), x = txH(t, SZ.cyc);
+          sweep = Math.floor((t + PRE) / SZ.cyc); var x = txH(t, SZ.cyc);
           from = sweep === 0 ? x0 : SZ.px; to = x;
+          if(sweep > 0){ from2 = Math.min(SZ.px + SZ.pw, x + 14); to2 = SZ.px + SZ.pw; }
+          else if(x < x0){ to = SZ.px + SZ.pw; from = x0; } // the end of the first pass, before the playhead wraps
           SZ.head.setAttribute('x1', f1(x)); SZ.head.setAttribute('x2', f1(x)); SZ.head.style.opacity = 1;
         }
         SZ.clip.setAttribute('x', f1(from)); SZ.clip.setAttribute('width', f1(Math.max(0, to - from)));
-        SZ.drawnTo = to; SZ.drawnFrom = from;
+        SZ.clip2.setAttribute('x', f1(from2)); SZ.clip2.setAttribute('width', f1(Math.max(0, to2 - from2)));
+        SZ.drawnTo = to; SZ.drawnFrom = from; SZ.drawn2 = [from2, to2];
         SZ.events.forEach(function(e){
-          var reached = e.x >= from - .5 && e.x <= to + .5;
+          var reached = (e.x >= from - .5 && e.x <= to + .5) || (e.x >= from2 - .5 && e.x <= to2 + .5 && to2 > from2);
           if(reached) SZ.shown[e.key] = 1;
           var on = done || reduced() ? 1 : SZ.shown[e.key] ? 1 : 0;
           if(e.g.style.opacity !== String(on)) e.g.style.opacity = String(on);
@@ -579,10 +592,12 @@
       var r = G.pr;
       steth.style.width = steth.style.height = (r * 2) + 'px';
       steth.style.transform = 'translate(' + f1(p[0] - r) + 'px,' + f1(p[1] - r) + 'px)';
-      // the tubing runs from the chest piece up out of the picture (to the EMT's ears)
-      var ax = clamp(p[0] + G.W * .16, 40, G.W - 30), ay = G.kh - 6;
-      gTube.innerHTML = '<path class="snd2-tube-s" d="M' + f1(p[0]) + ' ' + f1(p[1] - r * .8) + ' C' + f1(p[0] + 4) + ' ' + f1(p[1] - r - 70) + ' ' + f1(ax) + ' ' + f1(ay + 110) + ' ' + f1(ax) + ' ' + f1(ay) + '"/>' +
-        '<path class="snd2-tube" d="M' + f1(p[0]) + ' ' + f1(p[1] - r * .8) + ' C' + f1(p[0] + 4) + ' ' + f1(p[1] - r - 70) + ' ' + f1(ax) + ' ' + f1(ay + 110) + ' ' + f1(ax) + ' ' + f1(ay) + '"/>';
+      // the tubing hangs from the chest piece down and outward, off the bottom of the picture (to the EMT's ears)
+      var cxm = G.ox + 300 * G.k, out = p[0] < cxm ? -1 : 1, bx, by, c2;
+      if(G.wide){ bx = clamp(p[0] + out * Math.max(50, 90 * G.k), G.fa.x + 6, G.fa.x + G.fa.w - 6); by = G.H + 12; c2 = [bx, by - 90]; }
+      else { bx = out < 0 ? -12 : G.W + 12; by = Math.min(p[1] + 120, G.fa.y + G.fa.h - 10); c2 = [bx - out * 60, by]; }
+      var dT = 'M' + f1(p[0]) + ' ' + f1(p[1] + r * .8) + ' C' + f1(p[0] + out * 6) + ' ' + f1(p[1] + r + 50) + ' ' + f1(c2[0]) + ' ' + f1(c2[1]) + ' ' + f1(bx) + ' ' + f1(by);
+      gTube.innerHTML = '<path class="snd2-tube-s" d="' + dT + '"/><path class="snd2-tube" d="' + dT + '"/>';
       // the leader from the chest piece to the lens, once it is on a spot
       var on = !!S().site && !St.moving, L = G.lens, dx = p[0] - L.x, dy = p[1] - L.y, dd = Math.sqrt(dx * dx + dy * dy) || 1;
       gLead.innerHTML = on ? '<line class="snd2-leader" x1="' + f1(p[0]) + '" y1="' + f1(p[1]) + '" x2="' + f1(L.x + dx / dd * L.r) + '" y2="' + f1(L.y + dy / dd * L.r) + '"/>' : '';
@@ -666,10 +681,11 @@
       if(!P.assessedHere(snd, s)) return 'faint here';
       return P.strength(snd, s) >= .5 ? 'heard here' : 'faint here';
     }
+    function drawnW(){ return (SZ.drawnTo - SZ.drawnFrom || 0) + (SZ.drawn2 ? SZ.drawn2[1] - SZ.drawn2[0] : 0); }
     function chain(all){
       var id = S().site, snd = cur(), I = INFO[S().key];
       if(!id){ cause.set([{ t: 'Off the chest', role: 'place' }, { t: 'nothing heard', role: 'snd' }]); return; }
-      var parts = [{ t: SHORT[id], role: 'place' }], heard = all || (play.started && (!SZ || SZ.kind !== 'heart' || (SZ.drawnTo - SZ.drawnFrom) > 2)) || (!snd && !play.on);
+      var parts = [{ t: SHORT[id], role: 'place' }], heard = all || (play.started && (!SZ || SZ.kind !== 'heart' || drawnW() > 2)) || (!snd && !play.on);
       if(!snd){ parts.push({ t: 'Normal: no extra sound', role: 'snd' }); parts.push({ t: I.ncause, role: 'why' }); cause.set(parts); return; }
       if(heard) parts.push({ t: (snd.id === 'heart-normal' ? 'Normal S1 S2' : I.key) + ', ' + loudWord(snd, id), role: 'snd', say: snd.label + ', ' + loudWord(snd, id) });
       if(heard && (all || play.lensOn)) parts.push({ t: snd.id === 'heart-normal' ? INFO['heart-normal'].cause : I.cause, role: 'why' });
@@ -744,7 +760,13 @@
     viewSw.addEventListener('click', function(e){ var b = e.target.closest('[data-view]'); if(b) setView(b.getAttribute('data-view')); });
     bPlay.addEventListener('click', function(){ if(play.on) stopSound(true), finishQuiet(); else if(S().site) listen(); });
     function finishQuiet(){ paintStrip(null, null, true); chain(true); }
-    hits.addEventListener('click', function(e){ var b = e.target.closest('.snd2-hit'); if(b) setSite(b.getAttribute('data-site'), true); });
+    hits.addEventListener('click', function(e){
+      var b = e.target.closest('.snd2-hit'); if(!b) return;
+      // spots sit close together (the heart's five): act on the one nearest the finger, not the top button
+      var id = b.getAttribute('data-site');
+      if(e.detail > 0){ var p = local(e), n = nearest(p[0], p[1], 40); if(n) id = n; }
+      setSite(id, true);
+    });
 
     // drag the chest piece; let go near a spot and it lands there (and plays); anywhere else it goes back
     var drag = null;
@@ -861,6 +883,7 @@
         strip: SZ && { kind: SZ.kind, from: SZ.drawnFrom, to: SZ.drawnTo, shown: Object.keys(SZ.shown), title: SZ.title.textContent, live: SZ.live ? SZ.live.length : 0 },
         raf: !!raf, timers: timers.length, anim: !!anim, on: St.on }; }
     };
+    window.NremtSoundExplore.last = api; // for the sweep and the tests
     return api;
   }
 
