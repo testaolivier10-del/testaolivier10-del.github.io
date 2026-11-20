@@ -310,7 +310,7 @@
     function shown(on){
       var was = onScreen;
       onScreen = !!on;
-      if(!on){ token++; pending = null; hideCue(false); if(tour.active()) tour.stop(); clearTimeout(ft); clearTimeout(rz); return; }
+      if(!on){ token++; pending = null; hideCue(false); if(tour.active()) tour.stop(); clearTimeout(ft); clearTimeout(rz); if(spots && spots.picked()) spots.pick(null, 'set'); cause.set([]); return; }
       if(!was) setTimeout(function(){ if(onScreen) enter(false); }, 0);
     }
     var api = {

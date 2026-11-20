@@ -299,7 +299,7 @@ async function frames() {
   }
   // reversal: a second tap while the first part still eases in: the first never gets its card
   const rv = await act('reversal', async () => { await tapAt('femur'); await page.waitForTimeout(90); await tapAt('frontal-bone'); });
-  const after = rv.fr.findIndex(f => f.sel === 'frontal-bone');
+  const fem = rv.fr.findIndex(f => f.sel === 'femur'), after = fem < 0 ? -1 : rv.fr.findIndex((f, i) => i > fem && f.sel === 'frontal-bone');
   T(after < 0 || !rv.fr.slice(after).some(f => f.card === 'Femur'), 'reversal: the first part named after the second tap');
   T(rv.fr.length && rv.fr[rv.fr.length - 1].card === 'Frontal bone', 'reversal: the second part is not the one named at the end');
   // region change: the camera travels, the card waits
@@ -341,6 +341,7 @@ async function frames() {
   const recs = await page.evaluate(() => window.__rec2);
   T(recs.length === 2 && recs.every(x => /^anatomy-3d:[a-z0-9-]+:(name|point):(true|false)$/.test(x)), `quiz: records ${JSON.stringify(recs)}`);
   await page.click('.ls-modes button:has-text("Explore")');
+  await until(page, () => /ax-slot/.test(document.querySelector('.a3-view').parentNode.className), null, 200);
   T(await settledCard(page), 'back to Explore: nothing named');
   T(await page.evaluate(() => /ax-slot/.test(document.querySelector('.a3-view').parentNode.className)), 'back to Explore: the body did not come back');
   T(!errs.length, `frames: console errors ${errs.join(' | ')}`);
