@@ -1310,3 +1310,35 @@ the line says "turn it away to read R or S". The reading is the turn of 1, 2, 3 
 matches the picture (unit tested over 4000 turns, and the mirror image always reads the other letter). The usual
 shortcut (H toward you: read and reverse) is not offered.
 - **Status:** decided for the owner.
+
+## Reaction Predictor, tools v2 (2026-11-19)
+
+Brief: `docs/tools-v2-reaction-predictor-brief.md`. The decision procedure (`predict`) is the old tool's; the picture
+now plays each path on a 3D sketch, so these points are visible to students.
+
+### rp-v2-tert-weak-base: a tertiary halide with a weakly basic anion
+With NaCN, NaN₃, NaSH or NaI on tert-butyl bromide or 2-bromo-2-methylbutane the tool says SN1 (E1 with heat), Klein's
+convention ("nucleophile only" reagents on a tertiary carbon). Reusch's table says E2 dominates on tertiary carbons
+"with most nucleophiles (even if they are weak bases)" in ordinary solvents, and cyanide in particular (pKa of HCN 9.2)
+gives mostly isobutylene with tert-butyl bromide in ethanol. Changing it changes Call the path and Check yourself
+answers (ids `tbubr/cn/...`, `mebubr/cn/...`).
+- **Status:** open; kept as before.
+
+### rp-v2-heat-e1: "heat makes E1 major"
+With a weak nucleophile and heat the tool calls E1 the major path (now shown as 60% alkene). Real tertiary solvolysis at
+moderate temperatures stays mostly substitution (83% alcohol at 25 °C for tert-butyl chloride in 80% ethanol); the "E1
+major with heat" rule is the course convention. The shares say "band, not yield" in "?".
+- **Status:** open; the convention kept, the share made modest.
+
+### rp-v2-mix-numbers: the bands changed in this round
+Secondary + strong base: 80% E2 (was 65), 90% on cyclohexyl, and an aprotic solvent now adds to E2 (it added to SN2)
+and the verdict says so. Solvolysis: 80% substitution at room temperature (was 55%). Sources in the brief.
+- **For a person:** a check of the new verdict sentence ("A polar aprotic solvent makes the base stronger still, so even
+  more of it goes to E2") and the bands.
+- **Status:** decided for the owner.
+
+### rp-v2-proton-out: where the proton goes
+In E1 the drawn base is the reagent when it is water, ethanol, a weak base or better, otherwise a solvent molecule
+(ethanol, or DMSO in an aprotic flask). A neutral nucleophile (water, ethanol, ammonia) loses its extra H⁺ "to the
+solvent": an H ball with a + badge that fades. A person may prefer a drawn solvent molecule taking it in every case.
+- **Status:** decided for the owner.

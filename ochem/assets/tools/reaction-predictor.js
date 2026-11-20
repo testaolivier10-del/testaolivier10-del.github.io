@@ -808,7 +808,9 @@
     var betaKey = (path === 'E2' && rgt.bulky && m.beta.b2) ? 'b2' : 'b1', beta = m.beta[betaKey];
     // a bond a step makes is known to the molecule from the start (order 0 until that step)
     function link(a, b){ if(!m.bonds.some(function(x){ return key2(x.a, x.b) === key2(a, b); })) m.bonds.push({ a: a, b: b, o: 0 }); }
-    function lg(N){ N.B[key2('a', 'lg')] = 0; N.LP.lg = 4; N.Q.lg = -1; N.P.lg = vadd(A, [BL.CBr + 0.9, 0.12, 0]); }
+    // bromide leaves along the C–Br axis (on the ring, a little toward the viewer, so it passes in front of the ring)
+    var lgOff = sub.id === 'cyhexbr' ? [BL.CBr + 0.9, 0.12, 0.7] : [BL.CBr + 0.9, 0.12, 0];
+    function lg(N){ N.B[key2('a', 'lg')] = 0; N.LP.lg = 4; N.Q.lg = -1; N.P.lg = vadd(A, lgOff); }
     function attackSub(N, who, at){
       link('a', who); N.B[key2('a', who)] = 1; N.LP[who] = (N.LP[who] || 0) - 1; N.Q[who] = (N.Q[who] || 0) + 1;
     }
@@ -818,9 +820,9 @@
       if(!hId) return;
       next('react', 1000, function(N){
         N.B[key2('r0', hId.id)] = 0; N.LP.r0 += 1; N.Q.r0 -= 1; N.Q[hId.id] = 1;
-        N.P[hId.id] = vadd(N.P[hId.id], [-0.7, -0.75, 0.3]);
+        N.P[hId.id] = vadd(N.P[hId.id], vmul(vnorm(vsub(N.P[hId.id], N.P.r0)), 0.75));   // straight out along its old bond
       }, { arrows: [{ from: { bond: ['r0', hId.id] }, to: { atom: 'r0' } }], say: 'H⁺ to the solvent' });
-      next('drift', 520, function(N){ N.P[hId.id] = vadd(N.P[hId.id], [-0.6, -0.5, 0]); N.O[hId.id] = 0; });
+      next('drift', 520, function(N){ N.P[hId.id] = vadd(N.P[hId.id], vmul(vnorm(vsub(N.P[hId.id], N.P.r0)), 0.4)); N.O[hId.id] = 0; });
     }
     function neutralNu(){ return !RG3[rgt.id].a.q; }
     if(path === 'SN2'){
@@ -1050,7 +1052,7 @@
     PHONE = W < 560;
     var showBar = !bar.hidden, bh = showBar ? bar.offsetTop + bar.offsetHeight + 8 : 14;
     // on a phone the first visit cue sits under the controls: the molecule starts below it (it refits once the cue goes)
-    if(showBar && PHONE && cue && cue.active()) bh += 44;
+    if(showBar && cueBelow && cue && cue.active()) bh += 44;
     var trayH = PHONE ? 132 : 150;
     LAY = { W: W, H: H, top: bh, trayH: trayH, box: { x: 12, y: bh, w: W - 24, h: Math.max(120, H - bh - trayH - 10) }, trayY: H - trayH };
     svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svgBack.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
@@ -1070,7 +1072,7 @@
   // the view that fits every frame of this sequence into the molecule's box (so the camera never moves while it plays)
   function fitView(S){
     var V = viewOf(S.view), x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
-    S.frames.forEach(function(F){ S.m.atoms.forEach(function(a){ if(!F.O[a.id]) return; var q = proj(F.P[a.id], V), r = radOf(a) * q.k + (a.el === 'H' ? 0.06 : 0.2);
+    S.frames.forEach(function(F){ S.m.atoms.forEach(function(a){ var q = proj(F.P[a.id], V), r = radOf(a) * q.k + (a.el === 'H' ? 0.06 : 0.2);
       x0 = Math.min(x0, q.x - r); x1 = Math.max(x1, q.x + r); y0 = Math.min(y0, q.y - r); y1 = Math.max(y1, q.y + r); }); });
     var b = LAY.box, L = Math.min(b.w / (x1 - x0), b.h / (y1 - y0), PHONE ? 80 : 140);
     V.L = L; V.ox = b.x + b.w / 2 - (x0 + x1) / 2 * L; V.oy = b.y + b.h / 2 - (y0 + y1) / 2 * L;
@@ -1329,7 +1331,7 @@
   /* ---- the tray: what is in the flask at the end, with its rough share ---------------- */
   var CARDS = [];
   function trayItems(c, p){
-    if(c.sub.generic) return [];
+    if(c.sub.generic) return [{ path: null, pct: null, mine: true }];
     if(p.major === 'No reaction') return [{ path: null, pct: null }];
     var mix = mixture(c, p) || [{ path: p.major, pct: 100 }];
     return mix.slice(0, 2).filter(function(x){ return x.path; });
@@ -1342,12 +1344,12 @@
       h += '<text class="rp2-trayh" x="' + f1(L0.W / 2) + '" y="' + f1(y + 17) + '" text-anchor="middle">In the flask</text>';
       var gap = 12, cw = Math.min(PHONE ? 200 : 240, (L0.W - 24 - gap * (items.length - 1)) / items.length), ch = H - 34, x0 = L0.W / 2 - (cw * items.length + gap * (items.length - 1)) / 2;
       items.forEach(function(it, i){
-        var x = x0 + i * (cw + gap), cy = y + 25, pr = it.path ? productOf(c.sub, c.rgt, it.path) : { st: build(DRAW[c.sub.id], 'Br'), name: 'unchanged' };
+        var x = x0 + i * (cw + gap), cy = y + 25, pr = it.path ? productOf(c.sub, c.rgt, it.path) : it.mine ? { st: c.sub.st, name: 'yours' } : { st: build(DRAW[c.sub.id], 'Br'), name: 'unchanged' };
         var box = { x: x + 8, y: cy + 4, w: cw - 16, h: ch - 34 };
-        var major = i === 0;
+        var major = i === 0 && !!it.path;
         h += '<g class="rp2-card' + (major ? ' is-major' : '') + '"><rect class="rs2-thumb' + (major ? ' is-on' : '') + '" x="' + f1(x) + '" y="' + f1(cy) + '" width="' + f1(cw) + '" height="' + f1(ch) + '" rx="12"/>';
         if(pr && pr.st){ var T = PB.fitFlat(pr.st, pr.st, box, { cap: 1.1 }); h += PB.drawFlat(pr.st, T, box); }
-        var tag = it.path ? it.path + '  ≈' + it.pct + '%' : 'No reaction';
+        var tag = it.path ? it.path + '  ≈' + it.pct + '%' : it.mine ? 'Product: work it out' : 'No reaction';
         h += '<text class="rp2-ctag ' + (it.path ? (isSub(it.path) ? 'is-sn' : 'is-el') : 'is-none') + '" x="' + f1(x + cw / 2) + '" y="' + f1(cy + ch - 15) + '" text-anchor="middle">' + esc(tag) + '</text>';
         if(it.path){
           var bw = cw - 24;
@@ -1360,7 +1362,7 @@
     }
     G.trayg.innerHTML = h;
     cardsEl.innerHTML = CARDS.map(function(cd, i){
-      var lab = cd.path ? 'Show how the ' + cd.name + ' forms: ' + cd.path + ', about ' + cd.pct + '% of the product' : 'No reaction: play it again';
+      var lab = cd.path ? 'Show how the ' + cd.name + ' forms: ' + cd.path + ', about ' + cd.pct + '% of the product' : cd.name === 'yours' ? 'Your substrate: play the first arrow again' : 'No reaction: play it again';
       return '<button type="button" class="rs2-tb rp2-cb" data-i="' + i + '" aria-label="' + esc(lab) + '" style="left:' + f1(cd.x) + 'px;top:' + f1(cd.y) + 'px;width:' + f1(cd.w) + 'px;height:' + f1(cd.h) + 'px"></button>';
     }).join('');
     // the cards arrive with the products: they rise in, and each share bar grows to its size
@@ -1393,7 +1395,7 @@
   function stopRun(settle){
     if(run && run.raf) cancelAnimationFrame(run.raf);
     var r = run; run = null;
-    G.ar.innerHTML = ''; G.fly.innerHTML = ''; AR = null;
+    if(r){ G.ar.innerHTML = ''; G.fly.innerHTML = ''; AR = null; }
     labsEl.classList.remove('is-wait'); cause.el.classList.remove('is-wait');
     if(settle && r && S && !S.generic) finish(r.opts);
   }
@@ -1486,7 +1488,7 @@
     var none = p.major === 'No reaction', sAt = { scr: {} };
     void sAt;
     placeNamesFlat([{ t: none ? 'No reaction' : TITLE[p.major], head: 1, cls: 'is-head ' + (none ? 'is-none' : isSub(p.major) ? 'is-sn' : 'is-el') }], d.A);
-    drawTray(c, p, false);
+    drawTray(c, p, true);
     var parts = causeParts(c, p, true); parts.push({ t: 'product: work it out', role: 'prod' });
     cause.set(parts);
     say(cause.text());
@@ -1521,21 +1523,26 @@
   }
 
   /* ---- the one first-visit cue, and Show me how ---------------------------------------- */
-  var cue = null;
+  var cue = null, cueBelow = false;
   function placeCue(){
     if(MODE.mode !== 'explore' || PHONE === null) return;
     var r = rgtSel.getBoundingClientRect(), sr = sceneBox.getBoundingClientRect();
     if(!r.width) return;
     // beside the reagent on a wide picture (the bar has room there), under the controls on a phone
-    var wide = sceneBox.clientWidth >= 560, cb = bar.getBoundingClientRect();
+    // beside it only when the bar has room to its right (the cue is about 200 px wide)
+    var cb = bar.getBoundingClientRect(), cr = bar.querySelector('.rp2-cond').getBoundingClientRect();
+    var roomEnd = cr.top < r.bottom - 2 && cr.bottom > r.top + 2 ? cr.left : cb.right;
+    var wide = r.right + 230 < roomEnd;
+    if(cue && cueBelow === wide){ cue.hide(false); cue = null; }
+    cueBelow = !wide;
     var at = wide ? [r.right - sr.left + 8, r.top - sr.top + r.height / 2] : [r.left - sr.left + r.width / 2, cb.bottom - sr.top - 24];
     if(!cue) cue = K.cue(layer, { key: 'ochem-rp-reagent', text: 'Pick a reagent', side: wide ? 'right' : 'below', at: function(){ return at; } });
     else cue.place();
     var was = cue.active();
     cue.show();
-    if(!was && cue.active() && !wide){ lay(); if(S && !S.generic && !run){ play(null, { quiet: true }); stopRun(true); } }
+    if(!was && cue.active() && cueBelow){ lay(); if(S && !S.generic && !run){ play(null, { quiet: true }); stopRun(true); } }
   }
-  function hideCue(used){ if(cue){ var was = cue.active(); cue.hide(used); if(was && PHONE) lay(); } }
+  function hideCue(used){ if(cue){ var was = cue.active(); cue.hide(used); if(was && cueBelow) lay(); } }
   var tour = K.tour ? K.tour({ key: 'ochem-rp', label: 'Show me how', steps: [
     { id: 'sub', text: 'Pick a substrate: look at the carbon that holds Br.', target: function(){ return subSel; } },
     { id: 'rgt', text: 'Pick a reagent: it reacts with the molecule at once.', target: function(){ return rgtSel; } },
@@ -1722,7 +1729,12 @@
   // a substrate drawn in another tool and sent here
   if(q.build && window.OchemToolHandoff){
     var bbox = ref.querySelector('#rpBuildBox');
-    if(bbox){ bbox.open = true; var api = openBuilder(); if(api) api.build(q.build); }
+    if(bbox){
+      bbox.open = true;
+      var api = openBuilder(), got = window.OchemToolHandoff.decode ? window.OchemToolHandoff.decode(q.build) : null;
+      // the link carries the builder's own text form (another tool's Send); a typed formula also works
+      if(api){ if(got && api.load) api.load(got); else api.build(q.build); }
+    }
   }
   // a new size draws the picture again, settled
   var lastW = 0, lastH = 0;
