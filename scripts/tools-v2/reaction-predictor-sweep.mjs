@@ -77,11 +77,18 @@ const probe = () => {
   q('.rp2-ch .rs2-badge circle, .rp2-lp .rs2-e').forEach(e => { const r = R(e), ex = (r.l + r.r) / 2, ey = (r.t + r.b) / 2;
     const ds = C.map(c => Math.hypot(ex - c.x, ey - c.y) - c.r).sort((a, c) => a - c);
     if (ds.length > 1 && ds[1] < r.w / 2 - 1) out.push('a ' + (e.closest('.rs2-badge') ? 'badge' : 'lone pair') + ' on another atom'); });
+  // every name is drawn (review round 1: names with no room were silently hidden)
+  if (+getComputedStyle(document.querySelector('.rs2-labs')).opacity > 0.05)
+    [...document.querySelectorAll('.rs2-labs .rs2-lab')].forEach(e => { const r = e.getBoundingClientRect(); if (!r.width || !r.height || getComputedStyle(e).display === 'none') out.push('name "' + e.textContent + '" not drawn'); });
+  // letters inside a tray card never overlap (review round 1: the cyclohexyl ether)
+  q('.rp2-card').forEach(g => { const ts = [...g.querySelectorAll('.rs2-fal')].map(t => ({ t: t.textContent, r: R(t) }));
+    for (let i = 0; i < ts.length; i++) for (let j = i + 1; j < ts.length; j++) if (hit(ts[i].r, ts[j].r, -0.5)) out.push('card letters overlap: ' + ts[i].t + ' / ' + ts[j].t); });
   // names
   const labs = q('.rs2-lab').map(e => ({ t: e.textContent, r: R(e) }));
   labs.forEach(x => inS(x.r, 'name "' + x.t + '"'));
   for (let i = 0; i < labs.length; i++) for (let j = i + 1; j < labs.length; j++) if (hit(labs[i].r, labs[j].r, 4)) out.push('names too close: "' + labs[i].t + '" and "' + labs[j].t + '"');
-  const solid = q('.rp2-at .rs2-ball, .rp2-ch .rs2-badge circle').map(R);
+  // balls, charge badges and lone pair dots are all solid to a name
+  const solid = q('.rp2-at .rs2-ball, .rp2-ch .rs2-badge circle, .rp2-lp .rs2-e').map(R);
   const ctrls = q('.rp2-bar select, .rp2-bar button, .tk2-cue').map(e => ({ n: e.tagName.toLowerCase() + (e.className ? '.' + String(e.className).split(' ')[0] : ''), r: R(e) }));
   labs.forEach(x => { const sc = solid.find(c => hit(x.r, c, 3.5)); if (sc) out.push('name "' + x.t + '" on a ball or badge (' + [x.r.l, x.r.t, x.r.r, x.r.b, sc.l, sc.t, sc.r, sc.b].map(Math.round).join(' ') + ')'); ctrls.forEach(c => { if (hit(x.r, c.r, 4)) out.push('name "' + x.t + '" on ' + c.n); }); });
   ctrls.forEach(c => { if (balls.some(x => hit(c.r, x, 2))) out.push('a ball under ' + c.n); });

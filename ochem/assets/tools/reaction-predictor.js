@@ -184,7 +184,12 @@
     }
 
     /* --- solvent --- */
-    if(solv.id === 'aprotic'){
+    if(solv.id === 'aprotic' && sub.cls === '2' && strongBase && !r.bulky){
+      /* Review round 1: on a secondary carbon with a strong, unhindered base the bare anion is a stronger base too, and
+         the elimination share goes up (isopropyl bromide with methoxide in DMSO: about 97% alkene). */
+      say('Solvent', 'E2',
+        'Polar aprotic. The anion is left bare, a stronger base as well as a stronger nucleophile, so on this carbon it adds to E2.', { E2:1 });
+    } else if(solv.id === 'aprotic'){
       say('Solvent', 'SN2',
         'Polar aprotic. There is no O–H to hydrogen-bond to the nucleophile, so the anion is left unsolvated and far more reactive. This is worth orders of magnitude to an SN2 rate.', { SN2:1 });
     } else {
@@ -363,21 +368,22 @@
       lead = 90; why.push('a primary carbon is the SN2 home ground, so even a strong base takes only about a tenth of it as E2');
     }
 
+    /* A strong base on a secondary carbon: about 80% E2 in ethanol (isopropyl bromide with ethoxide, 79 to 80%), and
+       more, not less, in a polar aprotic solvent, where the bare alkoxide is a stronger base (with methoxide in DMSO,
+       about 97% elimination). Accuracy review 2026-11-19: the old split started at 65 and gave the aprotic solvent
+       to SN2. A ring carbon is more crowded still (cyclohexyl bromide gives about 1% SN2). Set before heat and the solvent
+       add to it (review round 1: setting it after them made heat do nothing here). */
+    if(s.sub.cls === '2' && out.major === 'E2' && out.minor === 'SN2'){
+      lead = 80; why.push('on a secondary carbon a strong base takes the beta proton about four times in five');
+      if(s.sub.id === 'cyhexbr'){ lead += 5; why.push('a ring carbon is more crowded still'); }
+    }
     if(s.heat){
       if(isElim(out.major)){ lead += 12; why.push('heat widens the elimination’s lead'); }
       else if(isElim(out.minor)){ lead -= 12; why.push('heat pulls the elimination share up'); }
     }
-    /* A strong base on a secondary carbon: about 80% E2 in ethanol (isopropyl bromide with ethoxide, 79 to 80%), and
-       more, not less, in a polar aprotic solvent, where the bare alkoxide is a stronger base (with methoxide in DMSO,
-       about 97% elimination). Accuracy review 2026-11-19: the old split started at 65 and gave the aprotic solvent
-       to SN2. A ring carbon is more crowded still (cyclohexyl bromide gives about 1% SN2). */
-    if(s.sub.cls === '2' && out.major === 'E2' && out.minor === 'SN2'){
-      lead = 80; why.push('on a secondary carbon a strong base takes the beta proton about four times in five');
-      if(s.sub.id === 'cyhexbr'){ lead += 10; why.push('a ring carbon is more crowded still'); }
-    }
     if(s.solvent.id === 'aprotic'){
       if(out.major === 'SN2'){ lead += 8; why.push('the aprotic solvent sharpens the nucleophile'); }
-      else if(out.major === 'E2' && out.minor === 'SN2'){ lead += 10; why.push('the aprotic solvent leaves the base bare and stronger'); }
+      else if(out.major === 'E2' && out.minor === 'SN2'){ lead += 8; why.push('the aprotic solvent leaves the base bare and stronger'); }
     }
     if(s.rgt.bulky && isElim(out.major)){
       lead += 10; why.push('the bulk of the base makes the carbon harder still to reach');
@@ -388,7 +394,7 @@
     if(out.major === 'SN1'){ lead = 80; why.length = 0; why.push('at room temperature about four in five of the carbocations pick up the solvent rather than lose a proton'); }
     if(out.major === 'E1'){ lead = 60; why.length = 0; why.push('heat tips the carbocation toward losing a proton, though plenty still picks up the solvent'); }
 
-    lead = Math.max(55, Math.min(90, lead));
+    lead = Math.max(55, Math.min(95, lead));
     lead = Math.round(lead / 5) * 5;
 
     return [
@@ -631,8 +637,8 @@
   /* yaw and pitch of the view (degrees), the turn of the three arms about the C–Br axis (degrees) and how much the
      sketch widens everything across that axis, so no group hides behind another (VIEW_TUNE in the brief). */
   var VIEW0 = [24, 14, 0, 1];
-  var VIEW = { mebr: [-50, 30, 280, 1.3, 180], prbr: [40, 0, 120, 1.3], neopentyl: [40, 0, 260, 1.3], bubr2: [40, -20, 100, 1.3],
-    tbubr: [40, 30, 100, 1.3, 120], mebubr: [40, 30, 220, 1.3, 180], bnbr: [-40, 0, 240, 1.3], cyhexbr: [-50, -20, 80, 1.4, 210] };
+  var VIEW = { mebr: [55, 30, 280, 1.3, 120], prbr: [40, 0, 120, 1.3, 0], neopentyl: [50, -20, 0, 1.3, 60], bubr2: [40, 35, 100, 1.3, 120],
+    tbubr: [40, 30, 100, 1.3, 120], mebubr: [40, 25, 80, 1.3, 120], bnbr: [40, 15, 80, 1.3, 300], cyhexbr: [30, -30, 200, 1.3, 0] };
 
   function newMol(){ return { atoms: [], by: {}, bonds: [] }; }
   function atom(m, o){ o.lp = o.lp || 0; o.q = o.q || 0; m.atoms.push(o); m.by[o.id] = o; return o; }
@@ -777,15 +783,19 @@
      frames[i] are states; steps take the picture from one to the next: enter (the reagent slides in), hold (a pause
      with the names of what is there), approach, react (curved arrows draw in, the electron pairs fly along them and
      the bonds, charges and groups change with them), drift (the pieces part). */
-  var WAIT = [-2.6, -0.15, 0], ENTER = [-3.5, -0.15, 0];
-  function sequence(sub, rgt, solvent, path, p, phi0, tail){
+  /* The reagent waits close to the molecule (review round 1: the scene was too wide to read on a phone). face: the
+     side an SN1 nucleophile comes from, -1 the back (opposite where bromide left, inversion) or 1 the front (retention);
+     the page alternates it, so the two plays together show a racemic mix. */
+  var WAIT = [-2.3, -0.15, 0], ENTER = [-2.8, -0.15, 0], WAIT_F = [2.6, -1.8, 0], ENTER_F = [3.1, -1.8, 0], SN1_DRIFT = [0.05, 1.25, 0];
+  function sequence(sub, rgt, solvent, path, p, phi0, tail, face){
+    var front = path === 'SN1' && face === 1;
     TAIL = (tail == null ? ((VIEW[sub.id] || VIEW0)[4] || 0) : tail) * Math.PI / 180;
     var m = substrate3d(sub.id, phi0), K, frames = [], steps = [], mods = { start: null };
     var rg = addReagent(m, rgt.id, 'r');
     var e1Base = null;
     if(path === 'E1' && rgt.base === 0 && rgt.nu >= 2){ e1Base = addReagent(m, solvent.id === 'aprotic' ? 'sa' : 'sp', 's'); }
     K = initState(m);
-    putReagent(m, K, 'r', ENTER, [1, 0, 0]);
+    putReagent(m, K, 'r', front ? ENTER_F : ENTER, front ? [-1, 0.25, 0] : [1, 0, 0]);
     if(e1Base) putReagent(m, K, 's', vadd(ENTER, [0.3, 2.3, 0]), [1, 0, 0]);
     m.atoms.forEach(function(a){ if(a.rg) K.O[a.id] = 0; });
     frames.push(K);
@@ -799,17 +809,19 @@
       return N;
     }
     next('enter', 520, function(N){
-      putReagent(m, N, 'r', e1Base ? vadd(WAIT, [-0.4, -1.9, 0]) : WAIT, [1, 0, 0]);
+      if(front) putReagent(m, N, 'r', WAIT_F, [-1, 0.25, 0]);
+      else putReagent(m, N, 'r', e1Base ? vadd(WAIT, [-0.4, -1.9, 0]) : WAIT, [1, 0, 0]);
       if(e1Base) putReagent(m, N, 's', vadd(WAIT, [0.3, 2.3, 0]), [1, 0, 0]);
       m.atoms.forEach(function(a){ if(a.rg) N.O[a.id] = 1; });
     });
-    next('hold', 900, null, { names: 'start' });
+    next('hold', 520, null, { names: 'start' });
     var A = m.by.a.p, rA = 'r0';
     var betaKey = (path === 'E2' && rgt.bulky && m.beta.b2) ? 'b2' : 'b1', beta = m.beta[betaKey];
     // a bond a step makes is known to the molecule from the start (order 0 until that step)
     function link(a, b){ if(!m.bonds.some(function(x){ return key2(x.a, x.b) === key2(a, b); })) m.bonds.push({ a: a, b: b, o: 0 }); }
     // bromide leaves along the C–Br axis (on the ring, a little toward the viewer, so it passes in front of the ring)
-    var lgOff = sub.id === 'cyhexbr' ? [BL.CBr + 0.9, 0.12, 0.7] : [BL.CBr + 0.9, 0.12, 0];
+    var lgOff = sub.id === 'cyhexbr' ? [BL.CBr + 0.6, 0.12, 0.7] : [BL.CBr + 0.6, 0.12, 0];
+    var ring = !!m.fixed, eq = ring ? vnorm(vsub(m.by.ha.p, A)) : null;
     function lg(N){ N.B[key2('a', 'lg')] = 0; N.LP.lg = 4; N.Q.lg = -1; N.P.lg = vadd(A, lgOff); }
     function attackSub(N, who, at){
       link('a', who); N.B[key2('a', who)] = 1; N.LP[who] = (N.LP[who] || 0) - 1; N.Q[who] = (N.Q[who] || 0) + 1;
@@ -828,21 +840,28 @@
     if(path === 'SN2'){
       next('approach', 520, function(N){ putReagent(m, N, 'r', vadd(A, [-2.05, 0, 0]), [1, 0, 0]); });
       next('react', 1500, function(N){
-        putReagent(m, N, 'r', vadd(A, [-1.0, 0, 0]), [1, 0, 0]);
-        attackSub(N, rA); lg(N); reshape(m, N, 'a', 'mirror', { lg: 1, r0: 1 });
+        attackSub(N, rA); lg(N);
+        if(ring){
+          /* on the ring the carbon inverts in place: the nucleophile ends in hydrogen's old equatorial slot and the
+             hydrogen takes the axial one bromide left (Br up, Nu down: trans, as the backside attack makes it) */
+          putReagent(m, N, 'r', vadd(A, eq), vnorm(vsub([1, 0, 0], eq))); N.P.ha = vadd(A, [BL.XH, 0, 0]);
+        } else { putReagent(m, N, 'r', vadd(A, [-1.0, 0, 0]), [1, 0, 0]); reshape(m, N, 'a', 1, { lg: 1, r0: 1 }); }   // the umbrella: each group swings through to the other side, its branch carried along
       }, { arrows: [{ from: { lp: rA }, to: { atom: 'a' } }, { from: { bond: ['a', 'lg'] }, to: { atom: 'lg' } }] });
-      next('drift', 560, function(N){ N.P.lg = vadd(N.P.lg, [0.75, 0.08, 0]); });
+      next('drift', 560, function(N){ N.P.lg = vadd(N.P.lg, [0.45, 0.06, 0]); });
       if(neutralNu()) protonOff('r');
     } else if(path === 'SN1' || path === 'E1'){
       next('react', 1500, function(N){ lg(N); N.Q.a = 1; reshape(m, N, 'a', 'flat', { lg: 1 }); },
         { arrows: [{ from: { bond: ['a', 'lg'] }, to: { atom: 'lg' } }] });
-      next('drift', 520, function(N){ N.P.lg = vadd(N.P.lg, [0.7, 0.1, 0]); });
+      // bromide drifts off below the axis, so the cation's front face is open too
+      next('drift', 520, function(N){ N.P.lg = vadd(N.P.lg, SN1_DRIFT); });
       next('hold', 800, null, { names: 'cation' });
       if(path === 'SN1'){
-        next('approach', 560, function(N){ putReagent(m, N, 'r', vadd(A, [-2.05, 0, 0]), [1, 0, 0]); });
+        var sd = front ? 1 : -1;
+        next('approach', 560, function(N){ if(ring && !front) putReagent(m, N, 'r', vadd(A, vmul(eq, 2.05)), vnorm(vsub([1, 0, 0], eq))); else putReagent(m, N, 'r', vadd(A, [2.05 * sd, 0, 0]), [-sd, 0, 0]); });
         next('react', 1300, function(N){
-          putReagent(m, N, 'r', vadd(A, [-1.0, 0, 0]), [1, 0, 0]);
-          attackSub(N, rA); N.Q.a = 0; reshape(m, N, 'a', 1, { r0: 1 });
+          attackSub(N, rA); N.Q.a = 0;
+          if(ring && !front){ putReagent(m, N, 'r', vadd(A, eq), vnorm(vsub([1, 0, 0], eq))); N.P.ha = vadd(A, [BL.XH, 0, 0]); }
+          else { putReagent(m, N, 'r', vadd(A, [1.0 * sd, 0, 0]), [-sd, 0, 0]); reshape(m, N, 'a', -sd, { r0: 1 }); }
         }, { arrows: [{ from: { lp: rA }, to: { atom: 'a' } }] });
         if(neutralNu()) protonOff('r');
       } else {
@@ -855,7 +874,7 @@
           putReagent(m, N, bp, vadd(at, [-BL.XH, 0, 0]), [1, 0, 0]); N.P[beta.h] = at;
           reshape(m, N, beta.c, 'flat', mapOf(['a', beta.h]));
         }, { arrows: [{ from: { lp: b0 }, to: { atom: beta.h } }, { from: { bond: [beta.c, beta.h] }, to: { bond: ['a', beta.c] } }] });
-        next('drift', 560, function(N){ moveIds(N, m.atoms.filter(function(a){ return a.rg === bp; }).map(function(a){ return a.id; }).concat([beta.h]), [-0.75, -0.2, 0]); });
+        next('drift', 560, function(N){ moveIds(N, m.atoms.filter(function(a){ return a.rg === bp; }).map(function(a){ return a.id; }).concat([beta.h]), [-0.45, -0.2, 0]); });
       }
     } else if(path === 'E2'){
       next('approach', 560, function(N){ putReagent(m, N, 'r', vadd(N.P[beta.h], [-1.1, 0, 0]), [1, 0, 0]); });
@@ -869,8 +888,8 @@
         reshape(m, N, beta.c, 'flat', mapOf(['a', beta.h].concat(m.fixed ? Object.keys(m.fixed) : [])));
       }, { arrows: [{ from: { lp: rA }, to: { atom: beta.h } }, { from: { bond: [beta.c, beta.h] }, to: { bond: ['a', beta.c] } }, { from: { bond: ['a', 'lg'] }, to: { atom: 'lg' } }] });
       next('drift', 560, function(N){
-        N.P.lg = vadd(N.P.lg, [0.7, 0.1, 0]);
-        moveIds(N, rg.concat([beta.h]), [-0.75, -0.2, 0]);
+        N.P.lg = vadd(N.P.lg, [0.45, 0.08, 0]);
+        moveIds(N, rg.concat([beta.h]), [-0.45, -0.2, 0]);
       });
     } else {
       // no reaction: the reagent comes in to the back of the carbon and goes back
@@ -878,14 +897,16 @@
       next('bounce', 700, function(N){ putReagent(m, N, 'r', WAIT, [1, 0, 0]); }, { names: 'none' });
     }
     next('hold', 0, null, { names: 'end' });
-    return { m: m, frames: frames, steps: steps, path: path, beta: beta, view: VIEW[sub.id] || VIEW0 };
+    return { m: m, frames: frames, steps: steps, path: path, beta: beta, face: path === 'SN1' ? (front ? 1 : -1) : 0, view: VIEW[sub.id] || VIEW0 };
   }
   function mapOf(list){ var o = {}; list.forEach(function(k){ o[k] = 1; }); return o; }
 
   /* For scripts/test/ochem-tools-upgrade.test.mjs and tool-content.test.mjs: the engine, the drawings and the 3D
      sequences, so the products and every frame can be checked against the verdict they illustrate. */
   window.OchemReactionPredictor = { predict: predict, mixture: mixture, productDrawing: productDrawing, productOf: productOf,
-    sequence: sequence, substrate3d: substrate3d, sites: sites, build: build, DRAW: DRAW, SUBSTRATES: SUBSTRATES,
+    sequence: sequence, substrate3d: substrate3d,
+    // for the view search (scripts): where the front face nucleophile waits and where bromide drifts in SN1 and E1
+    tune: function(o){ if(o.waitF){ WAIT_F = o.waitF; ENTER_F = vadd(o.waitF, [0.5, 0, 0]); } if(o.drift) SN1_DRIFT = o.drift; }, sites: sites, build: build, DRAW: DRAW, SUBSTRATES: SUBSTRATES,
     REAGENTS: REAGENTS, SOLVENTS: SOLVENTS, MECH_LINK: MECH_LINK };
 
   var quizMounted = false;
@@ -1053,8 +1074,12 @@
     var showBar = !bar.hidden, bh = showBar ? bar.offsetTop + bar.offsetHeight + 8 : 14;
     // on a phone the first visit cue sits under the controls: the molecule starts below it (it refits once the cue goes)
     if(showBar && cueBelow && cue && cue.active()) bh += 44;
-    var trayH = PHONE ? 132 : 150;
-    LAY = { W: W, H: H, top: bh, trayH: trayH, box: { x: 12, y: bh, w: W - 24, h: Math.max(120, H - bh - trayH - 10) }, trayY: H - trayH };
+    var trayH = PHONE ? 148 : 150;
+    /* two fixed rows for names, outside the molecule's box (review round 1: names that found no room vanished): the
+       path's title on top, and a row under the molecule for any name that cannot sit beside what it names */
+    var TT = 30, NB = 26;
+    LAY = { W: W, H: H, top: bh, trayH: trayH, titleY: bh + TT / 2, box: { x: 12, y: bh + TT, w: W - 24, h: Math.max(120, H - bh - TT - NB - trayH - 10) }, trayY: H - trayH };
+    LAY.bandY = LAY.box.y + LAY.box.h + NB / 2 + 2;
     svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svgBack.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
     return LAY;
   }
@@ -1065,16 +1090,24 @@
     var p = [p0[0], p0[1] * V.w, p0[2] * V.w];
     var x = p[0] * V.cy + p[2] * V.sy, z = -p[0] * V.sy + p[2] * V.cy, y = p[1] * V.cp - z * V.sp, z2 = p[1] * V.sp + z * V.cp;
     var k = 1 / (1 - z2 * 0.07);
+    // a tall picture (a phone) turns the scene a quarter turn, so the reaction runs down it: reagent on top, bromide below
+    if(V.rot){ var t = x; x = -y; y = t; }
     return { x: V.ox + x * V.L * k, y: V.oy + y * V.L * k, z: z2, k: k };
   }
   var RB = 0.25;
   function radOf(a){ return (a.R || RAD[a.el] || 1) * RB; }
   // the view that fits every frame of this sequence into the molecule's box (so the camera never moves while it plays)
   function fitView(S){
-    var V = viewOf(S.view), x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
-    S.frames.forEach(function(F){ S.m.atoms.forEach(function(a){ var q = proj(F.P[a.id], V), r = radOf(a) * q.k + (a.el === 'H' ? 0.06 : 0.2);
-      x0 = Math.min(x0, q.x - r); x1 = Math.max(x1, q.x + r); y0 = Math.min(y0, q.y - r); y1 = Math.max(y1, q.y + r); }); });
-    var b = LAY.box, L = Math.min(b.w / (x1 - x0), b.h / (y1 - y0), PHONE ? 80 : 140);
+    var b = LAY.box, cap = PHONE ? 92 : 140, V = null, L = 0, x0, x1, y0, y1;
+    [false, true].forEach(function(rot){
+      var W0 = viewOf(S.view), a0 = Infinity, a1 = -Infinity, c0 = Infinity, c1 = -Infinity;
+      W0.rot = rot;
+      S.frames.forEach(function(F){ S.m.atoms.forEach(function(a){ var q = proj(F.P[a.id], W0), r = radOf(a) * q.k + (a.el === 'H' ? 0.06 : 0.2);
+        a0 = Math.min(a0, q.x - r); a1 = Math.max(a1, q.x + r); c0 = Math.min(c0, q.y - r); c1 = Math.max(c1, q.y + r); }); });
+      var l = Math.min(b.w / (a1 - a0), b.h / (c1 - c0), cap);
+      // turned only when that draws the molecule clearly bigger
+      if(!V || l > L * 1.12){ V = W0; L = l; x0 = a0; x1 = a1; y0 = c0; y1 = c1; }
+    });
     V.L = L; V.ox = b.x + b.w / 2 - (x0 + x1) / 2 * L; V.oy = b.y + b.h / 2 - (y0 + y1) / 2 * L;
     return V;
   }
@@ -1107,7 +1140,7 @@
       for(var i = 1; i < maxO[k]; i++) h.bo += '<line class="rs2-pi" data-b="' + k + '" data-i="' + i + '" stroke-width="' + f1(piW) + '"/>';
     });
     ['gl', 'sh', 'bo', 'at', 'lp', 'ch'].forEach(function(n){ G[n].innerHTML = h[n]; });
-    EL = { atoms: {}, sh: {}, lps: {}, gl: {}, badge: {}, bpos: {}, bonds: [], order: null, br: Math.max(8, 0.1 * L) };
+    EL = { atoms: {}, sh: {}, lps: {}, gl: {}, badge: {}, bpos: {}, lpos: [], sp: sp, bonds: [], order: null, br: Math.max(8, 0.1 * L) };
     [].forEach.call(G.at.children, function(g){ EL.atoms[g.getAttribute('data-k')] = g; });
     [].forEach.call(G.sh.children, function(c){ EL.sh[c.getAttribute('data-k')] = c; });
     [].forEach.call(G.lp.children, function(g){ (EL.lps[g.getAttribute('data-k')] = EL.lps[g.getAttribute('data-k')] || []).push(g); });
@@ -1144,6 +1177,7 @@
   }
   function paint(fr){
     var m = S.m, scr = fr.scr, L = V.L;
+    EL.lpos = [];
     // atoms, back to front
     var order = m.atoms.map(function(a){ return a.id; }).sort(function(p, q){ return scr[p].z - scr[q].z; }).join(',');
     if(order !== EL.order){ EL.order = order; order.split(',').forEach(function(k){ G.at.appendChild(EL.atoms[k]); }); }
@@ -1184,6 +1218,7 @@
         op *= s.op;
         var ang = sl[i] == null ? 0 : sl[i];
         g.setAttribute('transform', 'translate(' + f1(s.x + Math.cos(ang) * d) + ' ' + f1(s.y + Math.sin(ang) * d) + ') rotate(' + f1(ang * 180 / Math.PI) + ')');
+        if(op > 0.3) EL.lpos.push({ x: s.x + Math.cos(ang) * d, y: s.y + Math.sin(ang) * d, r: EL.sp * 2.1 });
         g.style.opacity = op > 0.999 ? '' : f1(op); g.style.display = op < 0.01 ? 'none' : '';
       });
       if(!hasQ) return;
@@ -1281,6 +1316,7 @@
         var pr = productOf(c.sub, c.rgt, S.path);
         if(pr) out.push({ t: pr.name, k: isSub(S.path) ? 'a' : S.beta.c, cls: 'is-prod' });
         out.push({ t: 'Br⁻', k: 'lg', cls: 'is-tag' });
+        if(S.face) out.push({ t: S.face > 0 ? 'front face' : 'back face', k: 'r0', cls: 'is-tag' });
       }
     }
     placeNames(out, s);
@@ -1294,11 +1330,13 @@
     // the controls, the first visit cue and every charge badge stay clear of the names
     // (the badges from where paint() put them, not from the page, so a name never trusts a stale box)
     if(EL && EL.bpos) Object.keys(EL.bpos).forEach(function(k){ var p = EL.bpos[k]; if(p.on) avoid.push({ l: p.x - p.r - 4, t: p.y - p.r - 4, r: p.x + p.r + 4, b: p.y + p.r + 4 }); });
+    // lone pairs too (review round 1: "Br⁻" sat on its own pairs)
+    if(EL && EL.lpos) EL.lpos.forEach(function(p){ avoid.push({ l: p.x - p.r - 3, t: p.y - p.r - 3, r: p.x + p.r + 3, b: p.y + p.r + 3 }); });
     [].forEach.call(sceneBox.querySelectorAll('.rp2-bar select, .rp2-bar button, .tk2-cue'), function(e){
       if(e.closest('[hidden]') || e.style.display === 'none') return;
       var r = e.getBoundingClientRect(); if(r.width) avoid.push({ l: r.left - sr.left - 4, t: r.top - sr.top - 4, r: r.right - sr.left + 4, b: r.bottom - sr.top + 4 }); });
     function clear(rc){
-      if(rc.l < 4 || rc.r > LAY.W - 4 || rc.t < bx.y - 2 || rc.b > LAY.trayY - 4) return false;
+      if(rc.l < 4 || rc.r > LAY.W - 4 || rc.t < bx.y - 2 || rc.b > bx.y + bx.h + 2) return false;
       if(placed.some(function(p){ return !(rc.r + 5 <= p.l || p.r + 5 <= rc.l || rc.b + 5 <= p.t || p.b + 5 <= rc.t); })) return false;
       if(avoid.some(function(p){ return !(rc.r <= p.l || p.r <= rc.l || rc.b <= p.t || p.b <= rc.t); })) return false;
       // a ball's whole square (and 4 px) stays clear of a name
@@ -1309,8 +1347,8 @@
     list.forEach(function(n, i){
       var e = els[i], w = sizes[i][0], h = sizes[i][1], spot = null;
       if(n.head){
-        var hy = bx.y + h / 2 + 2;
-        for(var dy = 0; dy < 90 && !spot; dy += 6){ var rc0 = { l: LAY.W / 2 - w / 2, t: hy + dy - h / 2, r: LAY.W / 2 + w / 2, b: hy + dy + h / 2 }; if(clear(rc0)) spot = { x: LAY.W / 2, y: hy + dy }; }
+        // the path's title has its own row above the molecule
+        spot = { x: LAY.W / 2, y: LAY.titleY };
       } else {
         var c = n.at || s[n.k], r0 = (n.at ? 0 : c.r) + 6;
         for(var ring = 0; ring < 5 && !spot; ring++){
@@ -1320,6 +1358,15 @@
             var rc = { l: cx - w / 2, t: cy - h / 2, r: cx + w / 2, b: cy + h / 2 };
             if(clear(rc)) spot = { x: cx, y: cy };
           }
+        }
+      }
+      if(!spot && !n.head){
+        // no room beside it: the row under the molecule, as near under it as the other names there allow
+        var ax = (n.at || s[n.k]).x, xs = [0];
+        for(var dx = 8; dx < LAY.W; dx += 8) xs.push(dx, -dx);
+        for(var xi = 0; xi < xs.length && !spot; xi++){
+          var bxc = Math.max(w / 2 + 6, Math.min(LAY.W - w / 2 - 6, ax + xs[xi])), rcb = { l: bxc - w / 2, t: LAY.bandY - h / 2, r: bxc + w / 2, b: LAY.bandY + h / 2 };
+          if(!placed.some(function(p){ return !(rcb.r + 5 <= p.l || p.r + 5 <= rcb.l || rcb.b + 5 <= p.t || p.b + 5 <= rcb.t); })) spot = { x: bxc, y: LAY.bandY };
         }
       }
       spots.push(spot);
@@ -1342,7 +1389,31 @@
     var mix = mixture(c, p) || [{ path: p.major, pct: 100 }];
     return mix.slice(0, 2).filter(function(x){ return x.path; });
   }
-  function drawTray(c, p, show){
+  /* A small drawing in a card, turned so its letters stay apart (review round 1: the cyclohexyl ether drew CH₂ on O
+     in a narrow card): of four turns, the first whose letters keep 2 px apart, else the one with the most room. */
+  function turned(st, deg){
+    var o = Chem.clone(st), a = deg * Math.PI / 180, c = Math.cos(a), s = Math.sin(a);
+    Object.keys(o.atoms).forEach(function(k){ var p = o.atoms[k], x = p.x, y = p.y; p.x = x * c - y * s; p.y = x * s + y * c; });
+    return o;
+  }
+  function fitCard(st, box){
+    var best = null;
+    [0, 90, -90, 180, 45, -45].some(function(deg){
+      var o = deg ? turned(st, deg) : st, T = PB.fitFlat(o, o, box, { cap: 1.1 }), boxes = [], inRing = {};
+      PB.sixRings(o).forEach(function(r){ r.forEach(function(k){ inRing[k] = 1; }); });
+      var bl = 40; o.bonds.some(function(b){ var a1 = o.atoms[b.a], a2 = o.atoms[b.b]; if(b.order > 0 && a1.el && a2.el && a1.el !== 'H' && a2.el !== 'H'){ bl = Math.hypot(a2.x - a1.x, a2.y - a1.y) * T.s; return true; } return false; });
+      var fs = Math.max(11, Math.min(15, bl * 0.42));
+      Object.keys(o.atoms).forEach(function(k){ var a = o.atoms[k]; if(!a.el || a.el === 'H') return; var lab = PB.flatLabel(o, k); if(lab === 'C' || (a.el === 'C' && inRing[k])) return;
+        var x = T.ox + a.x * T.s, y = T.oy + a.y * T.s, w = fs * 0.74 * lab.replace(/[₀-₉]/g, '').length + fs * 0.42 * (lab.match(/[₀-₉]/g) || []).length;
+        boxes.push({ l: x - w / 2, r: x + w / 2, t: y - fs * 0.62, b: y + fs * 0.62 }); });
+      var room = 99;
+      for(var i = 0; i < boxes.length; i++) for(var j = i + 1; j < boxes.length; j++){ var A = boxes[i], Z = boxes[j]; room = Math.min(room, Math.max(Z.l - A.r, A.l - Z.r, Z.t - A.b, A.t - Z.b)); }
+      if(!best || room > best.room) best = { st: o, T: T, room: room };
+      return room >= 3;
+    });
+    return best;
+  }
+  function drawTray(c, p, show, from){
     var L0 = LAY, items = show ? trayItems(c, p) : [], y = L0.trayY, H = L0.trayH;
     var h = '<rect class="rp2-tray" x="0" y="' + f1(y) + '" width="' + L0.W + '" height="' + H + '" fill="url(#rs2g-tray)"/><line class="rs2-trayedge" x1="0" x2="' + L0.W + '" y1="' + f1(y) + '" y2="' + f1(y) + '"/>';
     CARDS = [];
@@ -1354,7 +1425,7 @@
         var box = { x: x + 8, y: cy + 4, w: cw - 16, h: ch - 34 };
         var major = i === 0 && !!it.path;
         h += '<g class="rp2-card' + (major ? ' is-major' : '') + '"><rect class="rs2-thumb' + (major ? ' is-on' : '') + '" x="' + f1(x) + '" y="' + f1(cy) + '" width="' + f1(cw) + '" height="' + f1(ch) + '" rx="12"/>';
-        if(pr && pr.st){ var T = PB.fitFlat(pr.st, pr.st, box, { cap: 1.1 }); h += PB.drawFlat(pr.st, T, box); }
+        if(pr && pr.st){ var ft = fitCard(pr.st, box); h += PB.drawFlat(ft.st, ft.T, box); }
         var tag = it.path ? it.path + '  ≈' + it.pct + '%' : it.mine ? 'Product: work it out' : 'No reaction';
         h += '<text class="rp2-ctag ' + (it.path ? (isSub(it.path) ? 'is-sn' : 'is-el') : 'is-none') + '" x="' + f1(x + cw / 2) + '" y="' + f1(cy + ch - 15) + '" text-anchor="middle">' + esc(tag) + '</text>';
         if(it.path){
@@ -1371,11 +1442,23 @@
       var lab = cd.path ? 'Show how the ' + cd.name + ' forms: ' + cd.path + ', about ' + cd.pct + '% of the product' : cd.name === 'yours' ? 'Your substrate: play the first arrow again' : 'No reaction: play it again';
       return '<button type="button" class="rs2-tb rp2-cb" data-i="' + i + '" aria-label="' + esc(lab) + '" style="left:' + f1(cd.x) + 'px;top:' + f1(cd.y) + 'px;width:' + f1(cd.w) + 'px;height:' + f1(cd.h) + 'px"></button>';
     }).join('');
+    if(from && items.length){ shareTo(from); return; }
     // the cards arrive with the products: they rise in, and each share bar grows to its size
     if(show && items.length && !K.reduced() && svg.animate){
       [].forEach.call(G.trayg.querySelectorAll('.rp2-card'), function(g, i){ try{ g.animate([{ opacity: 0, transform: 'translateY(10px)' }, { opacity: 1, transform: 'none' }], { duration: 380, delay: i * 120, easing: 'ease-out', fill: 'backwards' }); }catch(e){} });
       [].forEach.call(G.trayg.querySelectorAll('.rp2-sfill'), function(r, i){ try{ r.animate([{ width: '0px' }, { width: r.getAttribute('data-w') + 'px' }], { duration: 520, delay: 160 + i * 120, easing: 'ease-out', fill: 'backwards' }); }catch(e){} });
     }
+  }
+  /* The shares move from where they were: each bar and its number together, so the two never disagree. */
+  var shareRaf = 0;
+  function shareTo(from){
+    if(shareRaf) cancelAnimationFrame(shareRaf);
+    var cards = [].slice.call(G.trayg.querySelectorAll('.rp2-card')).map(function(g, i){ var cd = CARDS[i]; return { cd: cd, tag: g.querySelector('.rp2-ctag'), fill: g.querySelector('.rp2-sfill'), bw: g.querySelector('.rp2-sbar') ? +g.querySelector('.rp2-sbar').getAttribute('width') : 0, a: from[cd.path] == null ? cd.pct : from[cd.path] }; });
+    function set(f){ cards.forEach(function(x){ if(!x.cd.path || !x.fill) return; var v = x.a + (x.cd.pct - x.a) * f;
+      x.fill.setAttribute('width', f1(x.bw * v / 100)); x.tag.textContent = x.cd.path + '  ≈' + Math.round(v) + '%'; }); }
+    if(K.reduced()){ set(1); return; }
+    var t0 = null;
+    (function step(ts){ if(t0 == null) t0 = ts; var f = Math.min(1, (ts - t0) / 480); set(ease(f)); shareRaf = f < 1 ? requestAnimationFrame(step) : 0; })(performance.now());
   }
   cardsEl.addEventListener('click', function(e){
     var b = e.target.closest('.rp2-cb'); if(!b) return;
@@ -1406,16 +1489,20 @@
     if(settle && r && S && !S.generic) finish(r.opts);
   }
   function settled(){ return !run; }
+  var sn1Face = 1;
   function setSeq(path, opts){
     var c = cur();
     lay();
     if(c.sub.generic){ S = { generic: true, path: path, m: newMol(), frames: [], steps: [] }; return; }
-    S = sequence(c.sub, c.rgt, c.solvent, path, predict(c));
+    // SN1: the nucleophile comes from the back and the front in turn (opts.face, or the next of the two)
+    var face = path === 'SN1' ? ((opts && opts.face) || ((opts && (opts.quiet || opts.still)) ? sn1Face : (sn1Face = -sn1Face))) : 0;
+    S = sequence(c.sub, c.rgt, c.solvent, path, predict(c), null, null, face);
     S.minor = !!(opts && opts.minor);
     V = fitView(S);
     buildEls();
     spot.setAttribute('cx', f1(proj([-0.6, 0, 0], V).x)); spot.setAttribute('cy', f1(proj([0, 0, 0], V).y));
-    spot.setAttribute('rx', f1(Math.min(LAY.W * 0.42, V.L * 4.2))); spot.setAttribute('ry', f1(Math.min(LAY.box.h * 0.6, V.L * 2.4)));
+    var rx = V.L * 4.2, ry = V.L * 2.4; if(V.rot){ var t0 = rx; rx = ry; ry = t0; }
+    spot.setAttribute('rx', f1(Math.min(LAY.W * 0.46, rx))); spot.setAttribute('ry', f1(Math.min(LAY.box.h * 0.62, ry)));
   }
   function showFrame(i, kindNames){
     var F = S.frames[i], fr = frameAt(F, F, 1, 'hold');
@@ -1511,7 +1598,21 @@
   function onChange(what){
     hideCue(true);
     if(tour && tour.active()) tour.did(what);
-    paintControls(); sync(); refFill();
+    paintControls(); sync();
+    setTimeout(refFill, 0);   // "?" is filled after the frame
+    /* Heat or the solvent that leaves the same paths: the molecule stays still and only the shares move (review round
+       1: replaying the whole mechanism for a share that went from 80 to 90 was motion with nothing happening) */
+    if((what === 'heat' || what === 'solv') && S && !S.generic && !S.minor){
+      var c = cur(), p = predict(c), items = trayItems(c, p);
+      var same = p.major === S.path && items.length === CARDS.length && items.every(function(it, i){ return it.path === CARDS[i].path; });
+      if(same){
+        if(run) stopRun(true);
+        var from = {}; CARDS.forEach(function(cd){ if(cd.path) from[cd.path] = cd.pct; });
+        drawTray(c, p, true, from);
+        cause.set(causeParts(c, p, true)); say(cause.text());
+        return;
+      }
+    }
     play();
   }
   subSel.addEventListener('change', function(){
@@ -1564,13 +1665,20 @@
     '<div id="rpRefFlask"></div>' +
     '<h3 class="rp2-ref-h">How to read the picture</h3>' +
     '<p class="rp2-ref-p">The molecule is a 3D sketch, not to scale: gray balls are carbon, white hydrogen, red oxygen, blue nitrogen, green bromine, iodine and sulfur; a dark ball with letters on it is a whole group (Et, tBu, DBU, SMe₂ for DMSO). The hydrogens on the reacting carbon are drawn as balls, and so is one hydrogen on each kind of beta carbon (the one that can leave); the rest are in the labels (CH₃, CH₂). Na⁺ and K⁺ do nothing here and are not drawn. Violet dots are electron pairs, violet arrows move them; a red glow is a negative charge, a blue glow a positive one (the carbocation).</p>' +
-    '<p class="rp2-ref-p">SN2 attacks the back of the carbon, so the three groups flip like an umbrella in the wind (inversion). SN1 and E1 wait for bromide to leave on its own: the carbon goes flat, and the nucleophile can then come from either face (the picture shows one), so a stereocenter comes out as a mix of both. E2 takes the beta hydrogen that sits anti to bromine. On a ring the ring stays put in the sketch.</p>' +
+    '<p class="rp2-ref-p">SN2 attacks the back of the carbon, so the three groups flip like an umbrella in the wind (inversion). SN1 and E1 wait for bromide to leave on its own: the carbon goes flat, and the nucleophile can then come from either face. Each play shows the other one (back face: the groups flip; front face: they do not), so a stereocenter comes out as a mix of both. E2 takes the beta hydrogen that sits anti to bromine. On the cyclohexane ring the ring itself stays still: in SN2 the new group ends equatorial and the hydrogen takes the axial place bromine left (trans to where bromine was).</p>' +
     '<p class="rp2-ref-p">The shares in the tray are bands, not yields: they move with concentration, the exact solvent and the time.</p>' +
     '<h3 class="rp2-ref-h">A method</h3><ol class="rp2-steps">' +
     '<li><b>The carbon.</b> Methyl or primary leans SN2; tertiary cannot do SN2 at all.</li>' +
     '<li><b>The reagent.</b> A bulky strong base (KOtBu, DBU) gives E2, even on a primary carbon. A strong base that is also a good nucleophile (NaOH, NaOEt) gives SN2 on primary and E2 on secondary or tertiary. A good nucleophile that is a weak base (CN⁻, I⁻, N₃⁻, HS⁻) gives SN2. A weak nucleophile (water, an alcohol) needs a carbocation, so SN1 or E1, and only on secondary or tertiary.</li>' +
     '<li><b>Solvent and heat.</b> Polar protic helps a carbocation form; polar aprotic speeds SN2; heat favors elimination.</li></ol>' +
     '<details class="tool-more rp2-build" id="rpBuildBox"><summary>Build your own substrate</summary><div id="rpBuilder"></div><div id="rpBuildMsg"></div><div id="rpSend"></div></details>';
+  function loses(m, c, p){
+    var r = c.rgt, weak = r.nu <= 1 && r.base <= 1;
+    if(p.major === 'No reaction') return 'loses: nothing here can make it go';
+    if(m === 'SN1' || m === 'E1') return weak ? (m === 'E1' ? 'loses: at room temperature the cation mostly takes the solvent' : 'loses: heat sends the cation to the alkene') : 'loses: the reagent acts before a cation can form';
+    if(m === 'SN2') return r.bulky ? 'loses: too bulky to reach the carbon' : r.nu <= 1 ? 'loses: too weak a nucleophile' : 'loses: the base takes a proton first';
+    return r.base < 3 ? 'loses: too weak a base to take a proton' : 'loses: substitution is faster here';
+  }
   function refFill(){
     var el = ref.querySelector('#rpRefFlask'); if(!el) return;
     var c = state, p = predict(c), mix = mixture(c, p), none = p.major === 'No reaction';
@@ -1587,7 +1695,9 @@
       '<table class="ttable rp2-tbl"><caption class="sr-only">Each path: its share of the product and what argues for it</caption><thead><tr><th scope="col">Path</th><th scope="col">Share</th><th scope="col">Driven by, or why not</th></tr></thead><tbody>' +
       ['SN1', 'SN2', 'E1', 'E2'].map(function(m){
         var blocked = p.blocked && p.blocked[m], pulls = (p.reasons || []).filter(function(r){ return r.votes && r.votes[m]; }).map(function(r){ return r.factor === 'Temperature' ? (c.heat ? 'heat' : 'room temp') : r.factor.toLowerCase(); });
-        return '<tr' + (m === p.major ? ' class="hl"' : '') + '><th scope="row">' + m + '</th><td>' + (blocked ? 'blocked' : sh[m] ? '≈' + sh[m] + '%' : '0') + '</td><td>' + esc(blocked || (pulls.length ? pulls.join(', ') : 'nothing here')) + '</td></tr>';
+        // a path with no share says why it loses, not what argued for it (review round 1)
+        var why = blocked || (sh[m] || (none && m === p.major) ? (pulls.length ? pulls.join(', ') : 'nothing here') : loses(m, c, p));
+        return '<tr' + (m === p.major ? ' class="hl"' : '') + '><th scope="row">' + m + '</th><td>' + (blocked ? 'blocked' : sh[m] ? '≈' + sh[m] + '%' : '0') + '</td><td>' + esc(why) + '</td></tr>';
       }).join('') + '</tbody></table>' +
       '<p class="rp2-ref-p"><b>' + esc(c.rgt.name) + '</b>: ' + esc(c.rgt.kind) + '. <span class="tmuted">Nucleophile ' + c.rgt.nu + ' of 4, base ' + c.rgt.base + ' of 4.</span></p>' +
       '<p class="rp2-ref-p tmuted">' + esc(clean(c.sub.note)) + '</p><p class="rp2-ref-p tmuted">' + esc(clean(c.solvent.note)) + '</p>' +

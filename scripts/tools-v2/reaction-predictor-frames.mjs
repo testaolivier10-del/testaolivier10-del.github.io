@@ -31,7 +31,7 @@ await new Promise(r => server.listen(0, '127.0.0.1', r));
 const BASE = 'http://127.0.0.1:' + server.address().port;
 const PREMIUM = readFileSync(join(ROOT, 'assets/premium.js'), 'utf8').replace('function has(course) {', 'function has(course) { return true;');
 const WIDTHS = (process.argv[2] || '390,1440').split(',').map(Number);
-const RUNS = process.env.RUNS ? JSON.parse(process.env.RUNS) : [['bubr2', 'oet', 0], ['mebubr', 'otbu', 0], ['mebr', 'oh', 0], ['tbubr', 'h2o', 0], ['tbubr', 'h2o', 1], ['cyhexbr', 'cn', 0], ['neopentyl', 'oet', 0], ['mebubr', 'i', 1]];
+const RUNS = process.env.RUNS ? JSON.parse(process.env.RUNS) : [['bubr2', 'oet', 0], ['mebubr', 'otbu', 0], ['mebr', 'oh', 0], ['tbubr', 'h2o', 0], ['tbubr', 'h2o', 0], ['bubr2', 'etoh', 0], ['bubr2', 'etoh', 0], ['tbubr', 'h2o', 1], ['cyhexbr', 'cn', 0], ['neopentyl', 'oet', 0], ['mebubr', 'i', 1]];
 const b = await chromium.launch({ executablePath: process.env.CHROME || '/opt/pw-browsers/chromium-1243/chrome-linux64/chrome' });
 const fails = []; let frames = 0;
 // in the page: watch every frame until the run settles

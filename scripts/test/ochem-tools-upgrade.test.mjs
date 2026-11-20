@@ -307,12 +307,12 @@ test('reaction predictor v2: every frame of every flask is a real structure, and
   const proj = (p0, v) => { const w = v[3], p = [p0[0], p0[1] * w, p0[2] * w], y = v[0] * Math.PI / 180, q = v[1] * Math.PI / 180;
     const x = p[0] * Math.cos(y) + p[2] * Math.sin(y), z = -p[0] * Math.sin(y) + p[2] * Math.cos(y), yy = p[1] * Math.cos(q) - z * Math.sin(q), z2 = p[1] * Math.sin(q) + z * Math.cos(q), k = 1 / (1 - z2 * 0.07);
     return [x * k, yy * k, k]; };
-  let n = 0, worst = 9;
+  let n = 0, worst = 9, worstAt = '';
   for (const c of combos(R)) {
     const p = R.predict(c);
-    for (const path of [p.major, p.minor].filter(Boolean)) {
-      const S = R.sequence(c.sub, c.rgt, c.solvent, path, p);
-      const tag = `${c.sub.id}/${c.rgt.id}/${c.solvent.id}/${c.heat}: ${path}`;
+    for (const [path, face] of [p.major, p.minor].filter(Boolean).flatMap(m => m === 'SN1' ? [[m, -1], [m, 1]] : [[m, 0]])) {
+      const S = R.sequence(c.sub, c.rgt, c.solvent, path, p, null, null, face);
+      const tag = `${c.sub.id}/${c.rgt.id}/${c.solvent.id}/${c.heat}: ${path}${face ? ' face ' + face : ''}`;
       assert.equal(S.path, path, tag);
       const m = S.m, last = S.frames[S.frames.length - 1], k2 = (a, b) => a < b ? a + '|' + b : b + '|' + a;
       S.frames.forEach((F, fi) => {
@@ -326,7 +326,7 @@ test('reaction predictor v2: every frame of every flask is a real structure, and
         }
         // no two balls on each other, in the page's own view (frames where the atoms are settled)
         const P = m.atoms.filter(a => F.O[a.id] > 0.5).map(a => { const q = proj(F.P[a.id], S.view); return { id: a.id, x: q[0], y: q[1], r: (a.R || RAD[a.el] || 1) * 0.25 * q[2] }; });
-        for (let i = 0; i < P.length; i++) for (let j = i + 1; j < P.length; j++) worst = Math.min(worst, Math.hypot(P[i].x - P[j].x, P[i].y - P[j].y) - P[i].r - P[j].r);
+        for (let i = 0; i < P.length; i++) for (let j = i + 1; j < P.length; j++){ const d = Math.hypot(P[i].x - P[j].x, P[i].y - P[j].y) - P[i].r - P[j].r; if (d < worst){ worst = d; worstAt = tag + ' ' + P[i].id + '/' + P[j].id; } }
       });
       const brOn = last.B[k2('a', 'lg')] > 0;
       if (path === 'No reaction') { assert.ok(brOn, tag + ': bromine left in a flask that does not react'); continue; }
@@ -342,5 +342,5 @@ test('reaction predictor v2: every frame of every flask is a real structure, and
     }
   }
   assert.ok(n > 300, `only ${n} flasks played`);
-  assert.ok(worst > -0.03, `two balls overlap by ${worst.toFixed(3)} bond lengths in some frame`);
+  assert.ok(worst > -0.03, `two balls overlap by ${worst.toFixed(3)} bond lengths in some frame (${worstAt})`);
 });
