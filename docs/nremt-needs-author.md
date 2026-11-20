@@ -139,6 +139,23 @@ Explore (`nremt/assets/mnemonics.js`) acts four mnemonics out on drawn, made up 
   The rider has one finding per DCAP-BTLS letter, including a burn on the right lower leg (from the exhaust pipe). Explore shows one finding per letter on one body; "?" says that a real exam checks every
   region for all eight.
 
+## Body map, tools v2 (2026-11-18)
+
+Points from the v2 rebuild of `nremt/body-map.html` (`docs/tools-v2-nremt-body-map-brief.md`); the body's content
+did not change. For a person to confirm:
+
+- **The child chart's age.** Burns' child chart (head and neck 18%, each leg 13.5%) is the infant and small child
+  Rule of Nines from the course notes. "?" says the shares move toward the adult chart as a child grows and that many
+  protocols use a Lund and Browder chart for children (burns.js said this before in its side panel). Should it name
+  an age (often "under about 1 year" for the 18% head)? Not guessed.
+- **Why each region carries its share.** The cause line now says "half of the arm's 9%", "one nine of the front's
+  18%", "half of the leg's 13.5%" (child), "the last 1%" (genitals). These restate burns.js's tables, which the unit
+  test checks add up to 100 on both charts.
+- **Over 10% or 10% and over.** The course notes and the tool say partial thickness burns "over 10%" of the body
+  surface meet burn center criteria. The American Burn Association's current referral page uses "partial thickness
+  ≥10% TBSA" (https://ameriburn.org/burnreferral). It only matters at exactly 10% (for example 9 + 1). Not changed
+  without the author.
+
 ## Sound trainer, tools v2 Explore (2026-11-18, branch claude/tools-v2-nremt-sound-trainer)
 
 Explore (`nremt/assets/sound-explore.js`) puts a stethoscope on the drawn chest; a lens beside it draws what makes

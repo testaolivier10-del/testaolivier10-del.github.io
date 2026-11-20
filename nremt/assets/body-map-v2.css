@@ -1,0 +1,203 @@
+/* NREMT Body map, tools v2 (nremt/assets/body-map-v2.js; docs/tools-v2-nremt-body-map-brief.md). Loaded only by
+   nremt/body-map.html, after studio/body-map.css (whose rules for the old frame still style Test yourself's dock).
+   One colour per idea, everywhere: each body system has its own colour (the card's system line and its pill in the
+   cause line); the part you tapped is the course teal (the viewer's own selection glow, the leader and its ring);
+   a burn is burn red (the figures, the share pill); the total is ink. */
+.bm2,.bm2-ref{--bm-resp:#2F6FB3;--bm-cardio:#B8322A;--bm-neuro:#7A4BB0;--bm-msk:#8A6A2E;--bm-abd:#2D7D52;--bm-skin:#B9663A;
+  --bm-burn:#B8432F;--bm-burn-ink:#9A3322;--bm-tot:#24415E;}
+:root[data-theme="dark"] .bm2,:root[data-theme="dark"] .bm2-ref{--bm-resp:#8DB8EA;--bm-cardio:#F2948A;--bm-neuro:#C3A3EE;--bm-msk:#DCC28C;--bm-abd:#8FD3A8;--bm-skin:#F0B08A;
+  --bm-burn:#F08A6E;--bm-burn-ink:#F6A890;--bm-tot:#BFD6EE;}
+.bm2{display:flex;flex-direction:column;gap:10px;min-height:0;flex:1 1 auto;}
+.bm2[hidden]{display:none;}
+.bm2 [hidden]{display:none !important;}
+@media (max-width:640px){ .bm2{gap:8px;} .bm2 .tk2-tabs.is-big .tk2-tab{flex:1 1 0;min-width:0;} }
+
+/* the picture: the 3D body, or the burn figures; it fills the stage */
+.bm2-scene{position:relative;flex:1 1 auto;min-height:520px;border-radius:18px;overflow:hidden;isolation:isolate;
+  background:radial-gradient(ellipse 70% 60% at 50% 42%,#fbfbfa,#e4e6e2);}
+:root[data-theme="dark"] .bm2-scene{background:radial-gradient(ellipse 70% 60% at 50% 42%,#26332f,#121a18);}
+@media (max-width:1023px){ .bm2-scene{flex:none;height:max(560px,min(78vh,820px));} }
+/* a phone: the picture, a card docked on it and the two rows of the cause line fit one screen (the scene's top sits
+   about 214 px down, the cause line takes about 80) */
+@media (max-width:640px){ .bm2-scene{height:max(340px,min(150vw,640px,calc(100svh - 296px)));min-height:0;border-radius:14px;}
+  .bm2-card.is-dock{max-height:54%;} }
+.bm2-3d,.bm2-burn{position:absolute;inset:0;}
+.bm2-home,.bm2-qstage .bm2-home{position:absolute;inset:0;}
+/* the viewer fills its home (studio/body-map.css bled it past the old stage's padding; not here) */
+.nx-body-map .bm2-home #bodyViewer{position:absolute;inset:0;margin:0;border:0;border-radius:0;box-shadow:none;background:none;overflow:hidden;}
+.nx-body-map .bm2-home .bv-canvas{width:100%;height:100%;min-height:0;}
+.nx-body-map .bm2-home .legend{left:10px;bottom:10px;max-width:calc(100% - 20px);}
+.nx-body-map .bm2-home .bv-reset{top:10px;right:10px;}
+
+/* Find a part: a dropdown on the picture, top left (the viewer's Reset view is top right) */
+.bm2-find{position:absolute;left:10px;top:10px;z-index:4;display:block;}
+.bm2-find select{appearance:none;-webkit-appearance:none;min-height:42px;max-width:min(240px,calc(100vw - 190px));padding:0 14px 0 38px;border:2px solid var(--line);border-radius:999px;
+  background:var(--overlay-bg,rgba(255,255,255,.94));color:var(--ink);font:800 14px var(--font-ui);cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.08);text-overflow:ellipsis;}
+:root[data-theme="dark"] .bm2-find select{background:var(--surface2);}
+.bm2-find select:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.bm2-find svg{position:absolute;left:13px;top:50%;width:18px;height:18px;margin-top:-9px;fill:none;stroke:var(--cink);stroke-width:2.4;stroke-linecap:round;pointer-events:none;}
+
+/* the card on the picture, and its leader to the part */
+.bm2-lead{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:3;overflow:visible;}
+.bm2-lead-l{fill:none;stroke:var(--cink);stroke-width:2;stroke-linecap:round;opacity:0;transition:opacity .18s ease .1s;}
+.bm2-lead-d{fill:var(--cink);stroke:#fff;stroke-width:2;opacity:0;transition:opacity .18s ease .1s;}
+.bm2-lead-r{fill:none;stroke:var(--cink);stroke-width:2;opacity:0;transform-box:fill-box;transform-origin:center;}
+.bm2-lead.is-in .bm2-lead-l,.bm2-lead.is-in .bm2-lead-d{opacity:1;}
+.bm2-lead.is-in .bm2-lead-r{animation:bm2-ping .7s ease-out 1;}
+@keyframes bm2-ping{0%{opacity:.9;transform:scale(.4);}100%{opacity:0;transform:scale(2.2);}}
+.bm2-card{position:absolute;z-index:5;width:330px;max-height:calc(100% - 76px);display:flex;flex-direction:column;padding:12px 14px 12px;border-radius:16px;
+  background:var(--white);box-shadow:0 0 0 1.5px color-mix(in srgb,var(--cink) 30%,transparent),0 10px 28px rgba(20,40,35,.18);
+  opacity:0;transform:translateY(6px) scale(.98);transition:opacity .18s ease,transform .2s cubic-bezier(.2,.9,.3,1.1);}
+:root[data-theme="dark"] .bm2-card{background:var(--surface2);box-shadow:0 0 0 1.5px color-mix(in srgb,var(--cink) 45%,transparent),0 10px 28px rgba(0,0,0,.45);}
+.bm2-card.is-in{opacity:1;transform:none;}
+.bm2-card.is-dock{left:8px;right:8px;bottom:8px;width:auto;max-height:46%;}
+.bm2-card-x{position:absolute;right:6px;top:6px;width:40px;height:40px;border:0;border-radius:50%;background:none;color:var(--muted);cursor:pointer;display:grid;place-items:center;}
+.bm2-card-x svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;}
+.bm2-card-x:hover{background:var(--track);color:var(--ink);}
+.bm2-card-x:focus-visible,.bm2-card-tab:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.bm2-card-s{margin:0 40px 0 0;font:900 12.5px var(--font-ui);color:var(--sys,var(--cink));display:flex;align-items:center;gap:6px;}
+.bm2-card-s::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--sys,var(--cink));flex:none;}
+.bm2-card-n{margin:2px 40px 8px 0;font:900 19px/1.2 var(--font-ui);color:var(--ink);}
+.bm2-card-t{display:flex;gap:4px;padding:3px;border-radius:999px;background:var(--track);flex:none;}
+.bm2-card-tab{flex:1 1 0;min-width:0;min-height:36px;border:0;border-radius:999px;background:transparent;color:var(--muted);font:800 13px var(--font-ui);cursor:pointer;white-space:nowrap;padding:0 6px;}
+.bm2-card-tab[aria-selected="true"]{background:var(--white);color:var(--ink);box-shadow:0 1px 2px rgba(20,40,35,.08),0 2px 8px rgba(20,40,35,.06);}
+:root[data-theme="dark"] .bm2-card-tab[aria-selected="true"]{background:var(--paper);}
+.bm2-card-tab .bm2-s{display:none;}
+.bm2-card-b{margin-top:8px;overflow-y:auto;min-height:0;font-size:14px;line-height:1.5;color:var(--ink);}
+.bm2-card-b p{margin:0 0 6px;}
+.bm2-card-b p:last-child{margin:0;}
+.bm2-card-b b{color:var(--ink);}
+.bm2-card-b.is-in{animation:bm2-fade .18s ease 1;}
+@keyframes bm2-fade{from{opacity:0;}to{opacity:1;}}
+@media (max-width:640px){
+  .bm2-card{padding:10px 12px;}
+  .bm2-card-n{font-size:17px;margin-bottom:6px;}
+  .bm2-card-b{font-size:13.5px;line-height:1.45;}
+}
+@media (max-width:400px){ .bm2-card-tab{font-size:12.5px;padding:0 4px;} }
+@media (max-width:339px){ .bm2-card-tab .bm2-l{display:none;} .bm2-card-tab .bm2-s{display:inline;} }
+
+/* the name under the mouse before a tap */
+.bm2-tip{position:absolute;left:0;top:0;z-index:4;padding:4px 10px;border-radius:999px;background:var(--ink);color:var(--paper);font:800 13px var(--font-ui);white-space:nowrap;pointer-events:none;}
+
+/* burns */
+.bm2-burn{display:flex;flex-direction:column;padding:10px 10px 6px;}
+.bm2-bbar{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;flex:none;position:relative;z-index:3;}
+.bm2-seg{display:inline-flex;padding:3px;border-radius:999px;background:var(--track);flex:none;}
+.bm2-seg button{min-height:40px;padding:0 14px;border:0;border-radius:999px;background:transparent;color:var(--muted);font:800 14px var(--font-ui);cursor:pointer;}
+.bm2-seg button[aria-checked="true"]{background:var(--white);color:var(--ink);box-shadow:0 1px 2px rgba(20,40,35,.08),0 2px 8px rgba(20,40,35,.06);}
+:root[data-theme="dark"] .bm2-seg button[aria-checked="true"]{background:var(--surface2);box-shadow:0 0 0 1.5px var(--line);}
+.bm2-seg button:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.bm2-burn .bm2-seg{background:var(--overlay-bg,rgba(255,255,255,.9));box-shadow:0 1px 4px rgba(0,0,0,.08);}
+:root[data-theme="dark"] .bm2-burn .bm2-seg{background:var(--track);}
+.bm2-tot{display:grid;justify-items:end;gap:2px;padding:6px 14px;border-radius:16px;background:var(--white);box-shadow:0 1px 4px rgba(0,0,0,.1);}
+:root[data-theme="dark"] .bm2-tot{background:var(--surface2);}
+.bm2-tot-k{font:800 12.5px var(--font-ui);color:var(--muted);}
+.bm2-tot-n{font:900 30px/1 var(--font-ui);color:var(--bm-tot);font-variant-numeric:tabular-nums;}
+.bm2-tot-f{font:900 12px/1.3 var(--font-ui);color:var(--bm-burn-ink);white-space:nowrap;visibility:hidden;}
+.bm2-tot-f.is-on{visibility:visible;}
+/* the sum of the burned shares ("9 + 4.5 = 13.5"): its line is kept even when empty, so nothing below ever moves */
+.bm2-tot-s{display:block;min-height:1.3em;font:800 12.5px/1.3 var(--font-ui);color:var(--bm-tot);white-space:nowrap;font-variant-numeric:tabular-nums;}
+.bm2-tot-f::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--bm-burn);margin-right:5px;vertical-align:1px;}
+/* the figures from burns.js, side by side, as large as the picture allows */
+.nx-body-map .bm2-figs{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:minmax(0,1fr);gap:0 8px;margin:4px 0 0;padding:0;border:0;box-shadow:none;background:none;position:relative;}
+.nx-body-map .bm2-figs .bn-fig{display:flex;flex-direction:column;min-height:0;}
+.nx-body-map .bm2-figs .bn-fig figcaption{align-self:center;font:800 13px var(--font-ui);text-transform:none;letter-spacing:0;color:var(--muted);margin:0 0 2px;}
+.nx-body-map .bm2-figs .bn-svg{flex:1;min-height:0;height:100%;max-height:none;}
+.nx-body-map .bm2-figs .bn-total{display:none;}
+.bm2-burn .bn-shape{transition:none;}
+.bm2-burn.is-swap .bn-svg{animation:bm2-fade .32s ease 1;}
+@media (max-width:640px){
+  .bm2-burn{padding:8px 4px 4px;}
+  .nx-body-map .bm2-figs{gap:0 2px;}
+  .bm2-tot{padding:5px 10px;}
+  .bm2-tot-n{font-size:24px;}
+  .bm2-seg button{padding:0 11px;font-size:13.5px;}
+  .nx-body-map .bm2-burn .bn-pct{font-size:46px;stroke-width:8px;}
+  .nx-body-map .bm2-burn .bn-pct--sm{font-size:40px;}
+}
+/* region boundaries: a solid hairline (a dashed one read as torn) */
+.bm2-figs .bn-shape{stroke-dasharray:none;stroke:rgba(255,255,255,.7);}
+.bm2-figs .bn-shape.is-full,.bm2-figs .bn-shape.is-half{stroke:#7E1E0C;}
+.bm2-figs .bn-shape.is-shown{stroke-dasharray:none;stroke-width:2.4;}
+
+/* under the picture */
+.bm2-lines{display:flex;align-items:center;justify-content:space-between;gap:6px 18px;flex-wrap:wrap;flex:none;}
+.bm2-acts{display:flex;align-items:center;gap:6px 14px;flex:none;margin-left:auto;}
+.bm2-acts .bm2-seg button{min-height:44px;}
+@media (max-width:640px){ .bm2-lines .tk2-cause{flex-basis:100%;} .bm2-acts{margin-left:0;width:100%;justify-content:space-between;} }
+.bm2 .tk2-cz.is-tap{--cz:var(--cink);--cz-ink:var(--cink);}
+.bm2 .tk2-cz.is-part{--cz:var(--cink);--cz-ink:var(--cink);color:#fff;background:var(--cink);border-color:var(--cink);}
+:root[data-theme="dark"] .bm2 .tk2-cz.is-part{color:#111D31;}
+.bm2 .tk2-cz.is-sys-resp{--cz-ink:var(--bm-resp);} .bm2 .tk2-cz.is-sys-cardio{--cz-ink:var(--bm-cardio);} .bm2 .tk2-cz.is-sys-neuro{--cz-ink:var(--bm-neuro);}
+.bm2 .tk2-cz.is-sys-msk{--cz-ink:var(--bm-msk);} .bm2 .tk2-cz.is-sys-abd{--cz-ink:var(--bm-abd);} .bm2 .tk2-cz.is-sys-skin{--cz-ink:var(--bm-skin);}
+.bm2 .tk2-cz.is-reg{--cz-ink:var(--bm-burn-ink);}
+.bm2 .tk2-cz.is-burn{--cz-ink:#fff;color:#fff;background:var(--bm-burn);border-color:var(--bm-burn);}
+:root[data-theme="dark"] .bm2 .tk2-cz.is-burn{color:#1B0F0C;}
+.bm2 .tk2-cz.is-tot{--cz-ink:var(--bm-tot);font-weight:900;}
+
+/* Test yourself: the body and the burn figures on their own stage */
+.bm2-qstage{position:relative;flex:1 1 auto;min-height:520px;border-radius:18px;overflow:hidden;isolation:isolate;
+  background:radial-gradient(ellipse 70% 60% at 50% 42%,#fbfbfa,#e4e6e2);}
+:root[data-theme="dark"] .bm2-qstage{background:radial-gradient(ellipse 70% 60% at 50% 42%,#26332f,#121a18);}
+@media (max-width:1023px){ .bm2-qstage{flex:none;height:max(480px,min(70vh,760px));} }
+@media (max-width:640px){ .bm2-qstage{height:max(460px,min(125vw,560px));min-height:0;border-radius:14px;} }
+.bm2-qstage[hidden]{display:none;}
+.bm2-qburn{display:flex;flex-direction:column;padding:8px;}
+.nx-body-map .bm2-qburn .bm2-figs{margin:0;padding-top:46px;}
+.nx-body-map .bm2-qburn .bm2-figs .bn-total{display:flex;position:absolute;left:50%;transform:translateX(-50%);top:0;margin:0;flex-direction:row;align-items:baseline;gap:8px;padding:6px 14px;border:0;border-radius:16px;background:var(--white);box-shadow:0 1px 4px rgba(0,0,0,.1);}
+.bm2-qdock{display:flex;flex-direction:column;gap:12px;}
+.bm2-qdock[hidden]{display:none;}
+
+/* "?" */
+.bm2-ref h3{margin:14px 0 8px;font:900 17px var(--font-ui);}
+.bm2-ref h3:first-child{margin-top:0;}
+.bm2-ref p,.bm2-ref li{font-size:14.5px;line-height:1.5;}
+.bm2-ref-s{color:var(--muted);font-size:13px !important;}
+.bm2-ref .bm-viewrow{display:flex;gap:10px;flex-wrap:wrap;}
+.bm2-ref .bm-browse > summary{min-height:44px;}
+
+@media (prefers-reduced-motion:reduce){
+  .bm2-card,.bm2-lead-l,.bm2-lead-d{transition:opacity .12s linear !important;transform:none !important;}
+  .bm2-lead.is-in .bm2-lead-r{animation:none;}
+  .bm2-card-b.is-in,.bm2-burn.is-swap .bn-svg{animation:bm2-fade .12s linear 1;}
+}
+
+/* a wide picture: the chart switch and the total float over the picture (the total between the two figures), so the
+   figures get its full height; the region numbers read about 16 px */
+@media (min-width:700px){
+  .bm2-burn{padding:14px 14px 8px;}
+  .bm2-bbar{position:absolute;left:14px;right:14px;top:14px;}
+  .bm2-tot{position:absolute;left:50%;top:0;transform:translateX(-50%);justify-items:center;}
+  .nx-body-map .bm2-figs{margin:0;gap:0 24px;}
+  .nx-body-map .bm2-burn .bn-pct{font-size:46px;stroke-width:8px;}
+  .nx-body-map .bm2-burn .bn-pct--sm{font-size:38px;}
+}
+.bm2-q3d .bm2-find{top:62px;}
+
+/* a wide screen (tools v2 review round 1): the body is the owner's favourite picture, so it gets the height. The tabs
+   (regular height) share one row with the purpose line, the picture runs to the stage's foot, and the cause line
+   rides the picture's foot (the 3D body has backdrop there; Burns keeps that band free under the feet) */
+@media (min-width:1024px){
+  .bm2{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);column-gap:20px;row-gap:8px;margin:-6px 0 -24px;}
+  .bm2 > .tk2-tabs{grid-column:1;grid-row:1;margin:0;}
+  .bm2 > .tk2-head{grid-column:2;grid-row:1;align-self:center;margin:0;min-width:0;}
+  .bm2 .tk2-tabs.is-big .tk2-tab{min-height:40px;font-size:15px;padding:0 18px 0 10px;}
+  .bm2 .tk2-tabs.is-big .tk2-tab-n{width:22px;height:22px;font-size:12px;}
+  .bm2 > .bm2-scene{grid-column:1 / -1;grid-row:2;min-height:0;height:auto;border-radius:18px 18px 0 0;}
+  .bm2 > .bm2-lines{grid-column:1 / -1;grid-row:2;align-self:end;position:relative;z-index:6;padding:0 14px 12px;pointer-events:none;}
+  .bm2 > .bm2-lines > *{pointer-events:auto;}
+  .bm2 > .tk2-sr,.bm2 > .bm2-burnroot{grid-column:1 / -1;}
+  .bm2 .bm2-burn{padding-bottom:64px;}
+  /* a docked card (a big part: liver, intestines) keeps the same 64 px foot as the floating card, so the cause line
+     never prints over it (recheck 1); centred, at a reading width */
+  .bm2 .bm2-card.is-dock{left:0;right:0;bottom:64px;margin:0 auto;width:min(520px,calc(100% - 16px));}
+  .bm2 .bm2-home .legend{left:50%;right:auto;top:12px;bottom:auto;transform:translateX(-50%);}
+}
+/* a phone: the total box keeps to two short rows (Burned 13.5% and the mark, then the sum), so the figures keep
+   their height on a short screen */
+@media (max-width:640px){
+  .bm2-tot{grid-template-columns:auto auto auto;grid-template-areas:"k n f" "s s s";column-gap:6px;row-gap:0;align-items:baseline;justify-items:end;padding:4px 10px;}
+  .bm2-tot-k{grid-area:k;} .bm2-tot-n{grid-area:n;font-size:22px;} .bm2-tot-f{grid-area:f;}
+  .bm2-tot-s{grid-area:s;font-size:11.5px;}
+}
