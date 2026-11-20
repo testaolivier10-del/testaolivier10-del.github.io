@@ -251,7 +251,7 @@
         var Wd = graphBox.clientWidth, Hd = graphBox.clientHeight;
         if(!Wd || !Hd) return null;
         var phone = Wd < 560;
-        var g = { W: Wd, H: Hd, L: phone ? 40 : 52, R: phone ? 96 : 100, T: 30, B: 56, IN: 14 };
+        var g = { W: Wd, H: Hd, L: phone ? 40 : 52, R: phone ? 96 : 100, T: 36, B: 56, IN: 14 };
         g.pw = Wd - g.L - g.R; g.ph = Hd - g.T - g.B;
         // the readings sit a little inside the axes, so a knob at 0 never covers a tick number
         g.x = function(t){ return g.L + g.IN + t / TMAX * (g.pw - g.IN); };
@@ -548,7 +548,7 @@
         if(fh < 1.5) d = 'M0 0';
         else { var nb = 5; d = 'M' + (fx - hwB).toFixed(1) + ' ' + base.toFixed(1) + 'L' + (fx - hwT).toFixed(1) + ' ' + (top + 3).toFixed(1); for(var i = 0; i < nb; i++){ var x0 = fx - hwT + 2 * hwT * i / nb, x1 = fx - hwT + 2 * hwT * (i + 1) / nb; d += 'Q' + ((x0 + x1) / 2).toFixed(1) + ' ' + (top - 5 * g.s * (i % 2 ? 0.6 : 1)).toFixed(1) + ' ' + x1.toFixed(1) + ' ' + (top + 3).toFixed(1); } d += 'L' + (fx + hwB).toFixed(1) + ' ' + base.toFixed(1) + 'Z'; }
         at(E.foamP, { d: d });
-        if(MD.tab === 'moment' && fh >= 6){ at(E.foamL, { x: fx + g.hw(top) + 6, y: top + 6 }); txt(E.foamL, rate >= 2.5 ? 'Fast fizz' : 'Slow fizz'); E.foamL.style.display = ''; }
+        if(MD.tab === 'moment' && fh >= 6){ at(E.foamL, { x: fx + g.hw(top) + 6, y: top + 6 }); txt(E.foamL, rate >= 3.5 ? 'Fast fizz' : rate <= 1.5 ? 'Slow fizz' : 'Fizzing'); E.foamL.style.display = ''; }
         else E.foamL.style.display = 'none';
         // the readings on the clipboard: the rows of the interval
         if(E.rows) E.rows.forEach(function(r, i){
@@ -715,15 +715,16 @@
 
       /* ---------------------------------------------------- the controls on the picture */
       function nearestIdx(t){ var best = 0, bd = 1e9; TS.forEach(function(x, i){ var d = Math.abs(x - t); if(d < bd){ bd = d; best = i; } }); return best; }
+      // every knob sits on what is DRAWN (DR), so it moves with the picture during a tween
       var hB = K.handle(gLayer, { key: 'rt2-end', chip: false, label: 'End of the interval (time)', value: TS.indexOf(MD.b), min: 1, max: N - 1, step: 1,
-        at: function(v){ return GG ? [GG.x(TS[v]), GG.y(VS[v])] : [NaN, NaN]; },
+        at: function(){ return GG ? [GG.x(DR.b), GG.y(f(DR.b))] : [NaN, NaN]; },
         pick: function(x, y, v){ var i = nearestIdx(GG.t(x)); return i <= TS.indexOf(MD.a) ? null : i; },
         keys: function(v, key, big){ var a = TS.indexOf(MD.a); if(key === 'ArrowRight' || key === 'ArrowUp') return Math.min(N - 1, v + 1); if(key === 'ArrowLeft' || key === 'ArrowDown') return Math.max(a + 1, v - 1); if(key === 'Home') return a + 1; if(key === 'End') return N - 1; return null; },
         valuetext: function(v){ return TS[v] + ' ' + UT + ', ' + F(VS[v], RUN.dp) + ' ' + UY; },
         onStart: function(){ hideCue(true); tourDid('end'); },
         onInput: function(v){ MD.b = TS[v]; go('b', MD.b); } });
       var hA = K.handle(gLayer, { key: 'rt2-start', quiet: true, label: 'Start of the interval (time)', value: TS.indexOf(MD.a), min: 0, max: N - 2, step: 1,
-        at: function(v){ return GG ? [GG.x(TS[v]), GG.y(VS[v])] : [NaN, NaN]; },
+        at: function(){ return GG ? [GG.x(DR.a), GG.y(f(DR.a))] : [NaN, NaN]; },
         pick: function(x, y, v){ var i = nearestIdx(GG.t(x)); return i >= TS.indexOf(MD.b) ? null : i; },
         keys: function(v, key){ var b = TS.indexOf(MD.b); if(key === 'ArrowRight' || key === 'ArrowUp') return Math.min(b - 1, v + 1); if(key === 'ArrowLeft' || key === 'ArrowDown') return Math.max(0, v - 1); if(key === 'Home') return 0; if(key === 'End') return b - 1; return null; },
         valuetext: function(v){ return TS[v] + ' ' + UT + ', ' + F(VS[v], RUN.dp) + ' ' + UY; },
@@ -731,16 +732,16 @@
         onInput: function(v){ MD.a = TS[v]; go('a', MD.a); } });
       var dragM = false;
       var hM = K.handle(gLayer, { key: 'rt2-moment', label: 'A moment on the curve (time)', value: MD.m, min: 0, max: TMAX, step: 0.1,
-        at: function(v){ return GG ? [GG.x(v), GG.y(f(v))] : [NaN, NaN]; },
+        at: function(){ return GG && MD.tab === 'moment' ? [GG.x(DR.m), GG.y(f(DR.m))] : [NaN, NaN]; },
         pick: function(x){ return clamp(r1(GG.t(x)), 0, TMAX); },
-        dir: function(v){ if(!GG) return 0; var dx = GG.pw / TMAX, dy = fd(v) * GG.ph / VMAX; return -Math.atan2(dy, dx) * 180 / Math.PI; },
+        dir: function(){ if(!GG) return 0; var dx = (GG.pw - GG.IN) / TMAX, dy = fd(DR.m) * (GG.ph - GG.IN) / VMAX; return -Math.atan2(dy, dx) * 180 / Math.PI; },
         keys: function(v, key, big){ var st = big ? 1 : 0.1; if(key === 'ArrowRight' || key === 'ArrowUp' || key === 'PageUp') return clamp(r1(v + (key === 'PageUp' ? 1 : st)), 0, TMAX); if(key === 'ArrowLeft' || key === 'ArrowDown' || key === 'PageDown') return clamp(r1(v - (key === 'PageDown' ? 1 : st)), 0, TMAX); if(key === 'Home') return 0; if(key === 'End') return TMAX; return null; },
         valuetext: function(v){ return tStr(v) + ' ' + UT + ', rate about ' + F(r1(fd(v)), 1) + ' ' + RU; },
         onStart: function(){ dragM = true; hideCue(true); tourDid('end'); },
         onEnd: function(){ dragM = false; kick(); },
         onInput: function(v){ MD.m = v; go('m', v, hM.dragging()); } });
       var hC = K.handle(sLayer, { key: 'rt2-core', chip: false, label: 'Mass of the core after a day (grams)', value: MD.c, min: CORE.min, max: CORE.max, step: 0.01,
-        at: function(v){ return G && G.tab === 'pct' ? [G.bal[1], G.pan - v * G.kM] : [NaN, NaN]; },
+        at: function(){ return G && G.tab === 'pct' ? [G.bal[1], G.pan - DR.c * G.kM] : [NaN, NaN]; },
         pick: function(x, y){ return clamp(r2((G.pan - y) / G.kM), CORE.min, CORE.max); },
         dir: function(){ return 90; },
         keys: function(v, key, big){ var st = big ? 0.35 : 0.05; if(key === 'ArrowUp' || key === 'ArrowRight' || key === 'PageUp') return clamp(r2(v + (key === 'PageUp' ? 0.35 : st)), CORE.min, CORE.max); if(key === 'ArrowDown' || key === 'ArrowLeft' || key === 'PageDown') return clamp(r2(v - (key === 'PageDown' ? 0.35 : st)), CORE.min, CORE.max); if(key === 'Home') return CORE.min; if(key === 'End') return CORE.max; return null; },

@@ -98,6 +98,10 @@ const AGREE = () => {
     const tB = GG.t(attr('.rt2-gend:nth-of-type(2)', 'cx') || 0);
     const pB = [...document.querySelectorAll('.rt2-gend')][1], tEnd = GG.t(parseFloat(pB.getAttribute('cx')));
     near(vb, X.f(tEnd), 0.03, 'gas in the cylinder vs the end point on the graph');
+    // the knob sits on the drawn end point
+    const gk = [...document.querySelectorAll('.rt2-graph .tk2-handle:not([hidden]) .tk2-knob')].map(k => k.getBoundingClientRect()), gr = document.querySelector('.rt2-gsvg').getBoundingClientRect();
+    const pbx = gr.left + parseFloat(pB.getAttribute('cx')), pby = gr.top + parseFloat(pB.getAttribute('cy'));
+    if (!gk.some(r => Math.hypot(r.left + r.width / 2 - pbx, r.top + r.height / 2 - pby) < 1.5)) out.push('no knob on the drawn end point');
     // the timer
     const secs = Math.round(tEnd * 60), want = Math.floor(secs / 60) + ':' + ('0' + secs % 60).slice(-2);
     const shown = lcd[0].split(':'), sec2 = +shown[0] * 60 + +shown[1];
@@ -143,6 +147,8 @@ const AGREE = () => {
     const ct = [...document.querySelectorAll('.rt2-coretop')][1], top = +ct.getAttribute('cy') - +ct.getAttribute('ry');
     const mass = (G.pan - top) / G.kM;
     near(mass, num(lcd[1]), 0.012, 'the core drawn vs its balance');
+    const ck = document.querySelector('.rt2-scene .tk2-handle:not([hidden]) .tk2-knob').getBoundingClientRect(), sr = document.querySelector('.rt2-svg').getBoundingClientRect();
+    near(ck.top + ck.height / 2 - sr.top, top, 1.5, 'the knob on the core’s drawn top');
     const pc = [...document.querySelectorAll('.rt2-scene .rt2-pill.is-pct text')][0].textContent;
     const want = Math.round((Math.round((num(lcd[1]) - 3.5) * 100) / 100) / 3.5 * 1000) / 10;
     near(num(pc), want, 1e-9, 'percent pill vs the balances');
@@ -304,27 +310,39 @@ if (FRAMES) {
 }
 
 if (PERF) {
+  // a full drag, out and back (24 mouse steps each way, 16 ms apart), at CPU x4; the flagship's fertilizer knob the same
+  const probe = async (page, sel, span) => {
+    await page.evaluate(() => { window.__ft = []; window.__fon = true; let last = performance.now(); (function loop(t){ if (!window.__fon) return; window.__ft.push(t - last); last = t; requestAnimationFrame(loop); })(performance.now()); });
+    const k = await page.evaluate((sel) => { const e = [...document.querySelectorAll(sel)].find(x => x.getBoundingClientRect().width > 0); const r = e.getBoundingClientRect(); return [r.x + r.width / 2, r.y + r.height / 2]; }, sel);
+    await page.mouse.move(k[0], k[1]); await page.mouse.down();
+    for (let i = 0; i <= 24; i++) { await page.mouse.move(k[0] + span[0] * i / 24, k[1] + span[1] * i / 24); await page.waitForTimeout(16); }
+    for (let i = 24; i >= 0; i--) { await page.mouse.move(k[0] + span[0] * i / 24, k[1] + span[1] * i / 24); await page.waitForTimeout(16); }
+    await page.mouse.up(); await page.waitForTimeout(700);
+    const ft = (await page.evaluate(() => { window.__fon = false; return window.__ft.slice(2); })).sort((a, b) => a - b);
+    const q = (p) => ft[Math.min(ft.length - 1, Math.floor(ft.length * p))];
+    return `${ft.length} frames, median ${q(0.5).toFixed(1)} ms, p95 ${q(0.95).toFixed(1)} ms, max ${ft[ft.length - 1].toFixed(1)} ms`;
+  };
   for (const w of [390, 1440]) {
-    for (const which of ['rates', 'flagship']) {
+    for (const which of ['rates end point', 'rates moment', 'rates core', 'FLAGSHIP fertilizer']) {
       const browser = await chromium.launch({ executablePath: EXE });
-      const ctx = await browser.newContext({ viewport: { width: w, height: w < 500 ? 844 : 900 }, serviceWorkers: 'block', hasTouch: false });
+      const ctx = await browser.newContext({ viewport: { width: w, height: w < 500 ? 844 : 900 }, serviceWorkers: 'block' });
       await ctx.route(u => !u.href.startsWith(`http://localhost:${PORT}`) && !u.href.startsWith('data:'), r => r.abort());
+      // the flagship is Premium: unlocked in this test only (never committed to the page)
+      await ctx.route(u => u.href.includes('/assets/premium.js'), async r => { const resp = await r.fetch(); const body = (await resp.text()).replace('function has(course) {', 'function has(course) { return true;'); await r.fulfill({ response: resp, body }); });
       const page = await ctx.newPage();
       await page.addInitScript(() => { localStorage.setItem('tk2c:apbio-rates', '1'); });
-      await page.goto(which === 'rates' ? URL0 : `http://localhost:${PORT}/environmental-science/tools/water-pollution.html`);
-      await page.waitForTimeout(1800);
+      const flag = /FLAG/.test(which);
+      await page.goto(flag ? `http://localhost:${PORT}/environmental-science/tools/water-pollution.html` : URL0);
+      if (flag) await page.waitForSelector('.tk2-knob', { state: 'attached', timeout: 15000 }); else await page.waitForSelector('.rt2-gas', { timeout: 15000 });
+      await page.waitForTimeout(1500);
+      if (/moment/.test(which)) await page.evaluate(() => window.__rt2.set({ tab: 'moment', m: 0.5 }));
+      if (/core/.test(which)) await page.evaluate(() => window.__rt2.set({ tab: 'pct', c: 5.0 }));
+      if (/end point/.test(which)) await page.evaluate(() => window.__rt2.set({ tab: 'avg', a: 0, b: 1 }));
+      await page.waitForTimeout(300);
+      const sel = flag ? '.tk2-knob' : /core/.test(which) ? '.rt2-scene .tk2-handle:not([hidden]) .tk2-knob' : '.rt2-graph .tk2-handle:not([hidden]) .tk2-knob';
+      const span = flag ? [Math.min(260, w * 0.3), 0] : /core/.test(which) ? [0, w < 500 ? 120 : 200] : [w < 500 ? 170 : 900, 0];
       const cdp = await ctx.newCDPSession(page); await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 });
-      const sel = which === 'rates' ? '.rt2-graph .tk2-handle:not([hidden]) .tk2-knob' : '.tk2-drag .tk2-knob, .tk2-knob';
-      await page.evaluate(() => { window.__ft = []; let last = performance.now(); (function loop(t){ window.__ft.push(t - last); last = t; if (window.__ft.length < 2000) requestAnimationFrame(loop); })(performance.now()); });
-      const kb = await page.evaluate((sel) => { const e = [...document.querySelectorAll(sel)].filter(x => x.getBoundingClientRect().width)[0]; const r = e.getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; }, sel);
-      await page.evaluate(() => { window.__ft = []; });
-      await page.mouse.move(kb[0], kb[1]); await page.mouse.down();
-      const span = which === 'rates' ? (w < 500 ? 230 : 1000) : (w < 500 ? 200 : 400);
-      for (let i = 0; i <= 60; i++) await page.mouse.move(kb[0] + (which === 'rates' ? span * Math.sin(i / 60 * Math.PI) : span * Math.sin(i / 60 * Math.PI) * 0.6), kb[1] + (which === 'rates' ? 0 : 0));
-      await page.mouse.up(); await page.waitForTimeout(600);
-      const ft = (await page.evaluate(() => window.__ft)).filter(x => x > 0).sort((a, b) => a - b);
-      const q = (p) => ft[Math.min(ft.length - 1, Math.floor(ft.length * p))];
-      console.log(`  perf ${which} ${w}: ${ft.length} frames, median ${q(0.5).toFixed(1)} ms, p95 ${q(0.95).toFixed(1)} ms`);
+      console.log(`  perf ${w} ${which} (CPU x4): ${await probe(page, sel, span)}`);
       await browser.close();
     }
   }
