@@ -5,7 +5,7 @@
    "light": "figures/body3d/opening-light.webp",
    "dark": "figures/body3d/opening-dark.webp"
   },
-  "about": "Explore (tools v2, docs/tools-v2-anp-anatomy-3d-brief.md): one tab per region. systems: the body systems in play on that tab (the rest stay as a faint ghost for orientation); first: the structure named when the tab first opens; frame (optional): the structures the camera frames, when not all of the tab's; dir (optional): the side the camera looks from ([x, y, z], default the front); purpose: the line above the picture. poster: the still of the opening view shown while the model loads (light and dark). A structure's at is where it is, in a few words, for the line under the picture (at most 50 characters).",
+  "about": "Explore (tools v2, docs/tools-v2-anp-anatomy-3d-brief.md): one tab per region. systems: the body systems in play on that tab (the rest stay as a faint ghost for orientation); first: the structure named when the tab first opens; frame (optional): the structures the camera frames, when not all of the tab's; dir (optional): the side the camera looks from ([x, y, z], default the front); purpose: the line above the picture. poster: the still of the opening view shown while the model loads (light and dark). A structure's label (optional) is the card's name in 1 to 3 words when its full name is longer; its at is where it is, in a few words, for the line under the picture (at most 50 characters).",
   "tabs": [
    {
     "id": "skeleton",
@@ -73,6 +73,17 @@
      "reproductive"
     ],
     "first": "liver",
+    "frame": [
+     "liver",
+     "stomach",
+     "pancreas",
+     "spleen",
+     "jejunum",
+     "ileum",
+     "colon",
+     "kidneys",
+     "urinary-bladder"
+    ],
     "purpose": "Find where each organ sits in the abdomen and pelvis"
    }
   ]
@@ -373,6 +384,7 @@
   },
   {
    "id": "cervical-vertebrae",
+   "label": "Cervical vertebrae",
    "name": "Cervical vertebrae (C3 to C7)",
    "system": "skeletal",
    "topic": "vertebral-column",
@@ -386,7 +398,7 @@
    ],
    "what": "The neck vertebrae. This model has C3 to C7; the atlas (C1) and axis (C2) are not in it.",
    "where": "The neck, between the skull and the first thoracic vertebra.",
-   "at": "the neck, below the skull",
+   "at": "the middle and lower neck",
    "features": "Small bodies and a transverse foramen in each transverse process, which no other region has. C7 has a long spinous process that is not split, the bump at the base of your neck.",
    "related": [
     "thoracic-vertebrae",
@@ -400,6 +412,7 @@
   },
   {
    "id": "thoracic-vertebrae",
+   "label": "Thoracic vertebrae",
    "name": "Thoracic vertebrae (T1 to T12)",
    "system": "skeletal",
    "topic": "vertebral-column",
@@ -435,6 +448,7 @@
   },
   {
    "id": "lumbar-vertebrae",
+   "label": "Lumbar vertebrae",
    "name": "Lumbar vertebrae (L1 to L5)",
    "system": "skeletal",
    "topic": "vertebral-column",
@@ -480,6 +494,7 @@
   },
   {
    "id": "sternum-body",
+   "label": "Sternal body",
    "name": "Body of the sternum",
    "system": "skeletal",
    "topic": "thoracic-cage",
@@ -503,6 +518,7 @@
   },
   {
    "id": "true-ribs",
+   "label": "True ribs",
    "name": "True ribs (ribs 1 to 7)",
    "system": "skeletal",
    "topic": "thoracic-cage",
@@ -541,6 +557,7 @@
   },
   {
    "id": "false-ribs",
+   "label": "False ribs",
    "name": "Ribs 8 to 10 (false ribs)",
    "system": "skeletal",
    "topic": "thoracic-cage",
@@ -569,6 +586,7 @@
   },
   {
    "id": "floating-ribs",
+   "label": "Floating ribs",
    "name": "Floating ribs (ribs 11 and 12)",
    "system": "skeletal",
    "topic": "thoracic-cage",
@@ -596,6 +614,7 @@
   },
   {
    "id": "costal-cartilages",
+   "label": "Costal cartilages",
    "name": "Costal cartilages (2nd and 7th)",
    "system": "skeletal",
    "topic": "thoracic-cage",
@@ -803,6 +822,7 @@
   },
   {
    "id": "hip-bone",
+   "label": "Hip bones",
    "name": "Hip bones (os coxae)",
    "system": "skeletal",
    "topic": "lower-limb",
@@ -1111,6 +1131,7 @@
   },
   {
    "id": "choroid-plexus",
+   "label": "Choroid plexus",
    "name": "Choroid plexus of the lateral ventricles",
    "system": "nervous",
    "topic": "brain-protection",
@@ -1225,6 +1246,7 @@
   },
   {
    "id": "central-canal",
+   "label": "Central canal",
    "name": "Central canal of the spinal cord (upper part)",
    "system": "nervous",
    "topic": "spinal-cord",
@@ -1453,6 +1475,7 @@
   },
   {
    "id": "septal-branches",
+   "label": "Septal branches",
    "name": "Septal branches of the coronary arteries",
    "system": "cardiovascular",
    "topic": "blood-flow-heart",
@@ -1718,7 +1741,7 @@
    ],
    "what": "The veins that carry oxygenated blood from the lungs to the left atrium.",
    "where": "From every lobe of each lung back to the heart, usually entering as four veins.",
-   "at": "from each lung back to the heart",
+   "at": "from each lung to the left atrium",
    "features": "The only veins after birth that carry oxygenated blood.",
    "related": [
     "pulmonary-arteries"
@@ -1731,6 +1754,7 @@
   },
   {
    "id": "right-upper-lobe",
+   "label": "Right superior lobe",
    "name": "Right lung, superior lobe",
    "system": "respiratory",
    "topic": "lower-airway-lungs",
@@ -1740,7 +1764,7 @@
    ],
    "what": "The top lobe of the right lung.",
    "where": "The upper right chest, rising above the clavicle at its apex.",
-   "at": "the upper right chest, up above the clavicle",
+   "at": "the upper right chest, its apex above the clavicle",
    "features": "The horizontal fissure separates it from the middle lobe and the oblique fissure from the inferior lobe. Each lobe gets its own secondary bronchus.",
    "related": [
     "right-middle-lobe",
@@ -1756,6 +1780,7 @@
   },
   {
    "id": "right-middle-lobe",
+   "label": "Right middle lobe",
    "name": "Right lung, middle lobe",
    "system": "respiratory",
    "topic": "lower-airway-lungs",
@@ -1781,6 +1806,7 @@
   },
   {
    "id": "right-lower-lobe",
+   "label": "Right inferior lobe",
    "name": "Right lung, inferior lobe",
    "system": "respiratory",
    "topic": "lower-airway-lungs",
@@ -1807,6 +1833,7 @@
   },
   {
    "id": "left-upper-lobe",
+   "label": "Left superior lobe",
    "name": "Left lung, superior lobe",
    "system": "respiratory",
    "topic": "lower-airway-lungs",
@@ -1832,6 +1859,7 @@
   },
   {
    "id": "left-lower-lobe",
+   "label": "Left inferior lobe",
    "name": "Left lung, inferior lobe",
    "system": "respiratory",
    "topic": "lower-airway-lungs",
@@ -2180,7 +2208,7 @@
    ],
    "what": "The bean-shaped organs that filter the blood and make urine.",
    "where": "Against the back wall of the abdomen, behind the peritoneum (retroperitoneal), from about T12 to L3.",
-   "at": "the back wall of the abdomen, about T12 to L3",
+   "at": "back of the abdomen, T12 to L3, the right lower",
    "features": "The right kidney sits a little lower because the liver is above it. Vessels and the ureter enter and leave at the hilum on its medial side.",
    "related": [
     "ureters",

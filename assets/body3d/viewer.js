@@ -42,6 +42,9 @@
                         the front, [0, -1, 0.12]; [1, -0.35, 0.15] looks at the left side)
      v.settling() -> true while the camera travels or a look is still easing (a card waits for both)
      v.set({ selectFly, fadeOthers })   change those two options later
+     opts.selectOnTop (or set())   the selected part is drawn over everything (a second pass), taps there pick it, and
+                        project() points at a spot on its own surface
+     opts.ghostContext: true   meshes drawn but never named (content "context") join the ghost under setOnly()
      v.hit(x, y) -> key | null   what a tap there would pick (a first visit cue points only where a tap names the part)
      v.project(name, part)   with a mesh name (FMA id) of that structure: where that one piece is drawn (the bone
                         that was tapped, of a pair or a set)
@@ -397,6 +400,8 @@
       scene.add(dl3);
 
       raycaster = new THREE.Raycaster();
+      raycaster.layers.enableAll();   // a part drawn on top (selectOnTop) sits on layer 1
+      scene.traverse(o => { if (o.isLight) o.layers.enableAll(); });
       pointer = new THREE.Vector2();
 
       window.addEventListener('resize', onResize);
@@ -415,6 +420,38 @@
       applyOffset();
     }
     let viewOffY = 0;
+    /* opts.selectOnTop: the selected part's meshes move to layer 1, drawn in a second pass over everything */
+    let onTopKey = null;
+    const anchors = {};   // a point on the named part's surface, per key and piece, where a tap there names it
+    function onTop(){
+      const k = opts.selectOnTop && selectedGroupKey && meshByGroup[selectedGroupKey] ? selectedGroupKey : null;
+      if (k === onTopKey) return;
+      if (onTopKey) for (const m of meshByGroup[onTopKey] || []) m.layers.set(0);
+      onTopKey = k;
+      if (k) for (const m of meshByGroup[k]) m.layers.set(1);
+      for (const a in anchors) delete anchors[a];
+      kick();
+    }
+    /* A surface point of the part (or of the tapped piece) near its middle: the ray through the middle of its box if
+       it meets the part, else through the vertex nearest that middle. Cached until the selection changes. */
+    function anchorOf(k, ms, centre){
+      const id = k + '|' + ms.map(m => m.userData.part).join(',');
+      if (anchors[id]) return anchors[id];
+      const T = L.THREE, rc = new T.Raycaster(), hitOn = (p) => {
+        rc.set(camera.position, p.clone().sub(camera.position).normalize()); rc.layers.enableAll();
+        const h = rc.intersectObjects(ms, false)[0]; return h ? h.point.clone() : null;
+      };
+      let at = hitOn(centre);
+      if (!at) {
+        let best = null, bd = Infinity; const v = new T.Vector3();
+        for (const m of ms) {
+          const pos = m.geometry.attributes.position, step = Math.max(1, Math.floor(pos.count / 400));
+          for (let i = 0; i < pos.count; i += step) { v.fromBufferAttribute(pos, i).applyMatrix4(m.matrixWorld); const d = v.distanceToSquared(centre); if (d < bd) { bd = d; best = v.clone(); } }
+        }
+        if (best) at = hitOn(best) || best;
+      }
+      return (anchors[id] = at || centre);
+    }
     /* opts.fade: ease every change of look. The look of every mesh is read before the change and after it, then
        eased from one to the other in the render loop; a change made mid ease starts from what is drawn. */
     const FADE_MS = opts.fade > 0 ? +opts.fade : 0;
@@ -591,7 +628,18 @@
       const moved = controls.update();
       if (tween) stepTween(now);
       if (moved || now < activeUntil || now - lastFrame > 1000) {
-        renderer.render(scene, camera);
+        const top = onTopKey && meshByGroup[onTopKey];
+        if (top) {
+          /* selectOnTop: the named part is drawn after everything else over a cleared depth, so it is seen wherever
+             it lies (an x-ray glow: the kidneys behind the stomach); it still hides its own far side */
+          renderer.render(scene, camera);
+          const bg = scene.background, auto = renderer.autoClear;
+          const su = renderer.shadowMap.autoUpdate;
+          renderer.autoClear = false; renderer.clearDepth(); renderer.shadowMap.autoUpdate = false;
+          scene.background = null; camera.layers.set(1);
+          renderer.render(scene, camera);
+          camera.layers.set(0); scene.background = bg; renderer.autoClear = auto; renderer.shadowMap.autoUpdate = su;
+        } else renderer.render(scene, camera);
         lastFrame = now;
         if (tagText) placeTag();
         // no kick here: a listener that only places something over the picture must not keep it rendering
@@ -665,6 +713,8 @@
       // hidden by a system filter (or the skin toggle) would otherwise still be
       // pickable through the gap it left behind — filter those out first.
       const visibleHits = hits.filter(h => h.object.visible && !h.object.userData.dim && !h.object.userData.context);
+      // a part drawn on top is what is under the pointer wherever it is hit
+      if (onTopKey) { const t = visibleHits.find(h => h.object.userData.groupKey === onTopKey); if (t) { lastPart = t.object.userData.part; return onTopKey; } }
       lastPart = null;
       // Landmark dots are drawn on top of everything, so a tap on one picks it.
       const dot = visibleHits.find(h => h.object.userData.isPoint);
@@ -845,6 +895,7 @@
         for (const m of meshByGroup[selectedGroupKey]) restore(m);
       }
       selectedGroupKey = groupKey;
+      onTop();
       highlightGroup(groupKey);
       updateOcclusionFade();
       const content = CONTENT_BY_KEY[groupKey];
@@ -860,6 +911,7 @@
       }
       const had = selectedGroupKey;
       selectedGroupKey = null;
+      onTop();
       tagEl.hidden = true;
       updateOcclusionFade();
       if (infoEl) infoEl.innerHTML = placeholder;
@@ -877,7 +929,8 @@
         const content = CONTENT_BY_KEY[groupKey];
         if (!content) continue;
         const show = visible(groupKey);
-        const dim = show && !content.context && !inPlay(groupKey);
+        // opts.ghostContext: unnamed context meshes join the ghost when only some structures are in play
+        const dim = show && (content.context ? !!(opts.ghostContext && onlySet) : !inPlay(groupKey));
         for (const m of meshByGroup[groupKey]) { m.visible = show; m.userData.dim = dim; }
       }
       if (selectedGroupKey && !inPlay(selectedGroupKey)) clear();
@@ -1122,16 +1175,18 @@
         if (piece) { const bx = new L.THREE.Box3().setFromObject(piece), c = new L.THREE.Vector3(), z = new L.THREE.Vector3(); bx.getCenter(c); bx.getSize(z); b = { center: c, size: z }; }
         if (!b) return null;
         /* A pair drawn as one part (the kidneys) has its middle on nothing (the spine): point at the nearer one. */
-        let at = b.center;
+        let at = b.center, near = piece ? [piece] : meshByGroup[k];
         const ms = piece ? [] : meshByGroup[k].filter(m => !m.userData.isPoint);
         if (ms.length > 1) {
           const boxes = ms.map(m => new L.THREE.Box3().setFromObject(m));
           if (!boxes.some(bx => bx.containsPoint(b.center))) {
-            let best = null, bd = Infinity;
-            for (const bx of boxes) { const c = new L.THREE.Vector3(); bx.getCenter(c); const d = c.distanceTo(camera.position); if (d < bd) { bd = d; best = c; } }
-            if (best) at = best;
+            let best = null, bd = Infinity, bi = -1;
+            boxes.forEach((bx, i) => { const c = new L.THREE.Vector3(); bx.getCenter(c); const d = c.distanceTo(camera.position); if (d < bd) { bd = d; best = c; bi = i; } });
+            if (best) { at = best; near = [ms[bi]]; }
           }
         }
+        // the named part drawn on top: point at its own surface, never at a box middle that lies on something else
+        if (k === onTopKey) at = anchorOf(k, near.filter(m => !m.userData.isPoint), at);
         const v = at.clone().project(camera);
         const w = canvas.clientWidth, h = canvas.clientHeight;
         const side = new L.THREE.Vector3().setFromMatrixColumn(camera.matrixWorld, 0).multiplyScalar(Math.min(b.size.length() * 0.35, 400));
@@ -1155,7 +1210,8 @@
       settling(){ return !!flyAnim || !!tween || easing > 0; },   // easing: a change is being made (its ease starts when it returns)
       /* selectFly and fadeOthers, changed after mount (one viewer, two screens: Explore keeps the camera and the
          region readable, Test yourself flies to a part and fades the rest, as before) */
-      set(o){ if (o && 'selectFly' in o) opts.selectFly = o.selectFly; if (o && 'fadeOthers' in o) opts.fadeOthers = o.fadeOthers; },
+      set(o){ if (o && 'selectFly' in o) opts.selectFly = o.selectFly; if (o && 'fadeOthers' in o) opts.fadeOthers = o.fadeOthers;
+        if (o && 'selectOnTop' in o) { opts.selectOnTop = !!o.selectOnTop; if (L) onTop(); } },
       /* Move what is drawn up by px (a panel docked over the picture's foot): the camera's view slides, so picking,
          project() and the drawing agree. 0 puts it back. */
       offset(px){ viewOffY = Math.max(0, +px || 0); applyOffset(); },

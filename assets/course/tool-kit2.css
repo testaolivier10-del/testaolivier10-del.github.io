@@ -383,7 +383,7 @@
 .tk2-tabs.is-big{gap:8px;padding:0;background:none;border-radius:0;overflow:visible;flex-wrap:nowrap;}
 .tk2-tabs.is-big .tk2-tab{min-height:50px;padding:0 20px 0 14px;font-size:17px;font-weight:900;color:var(--cink);background:var(--white);
   box-shadow:inset 0 0 0 2.5px var(--cink);transition:transform .12s ease;}
-.tk2-tabs.is-big .tk2-tab:hover{background:var(--ctint);color:var(--cink);transform:translateY(-1px);}
+@media (hover:hover){ .tk2-tabs.is-big .tk2-tab:hover{background:var(--ctint);color:var(--cink);transform:translateY(-1px);} }   /* no sticky tint on a touch screen */
 .tk2-tabs.is-big .tk2-tab-n{width:26px;height:26px;font-size:14px;background:var(--cink);color:var(--white);}
 .tk2-tabs.is-big .tk2-tab[aria-selected="true"]{background:var(--cink);color:var(--white);box-shadow:0 6px 14px rgba(20,40,35,.22);}
 .tk2-tabs.is-big .tk2-tab[aria-selected="true"] .tk2-tab-n{background:var(--white);color:var(--cink);}

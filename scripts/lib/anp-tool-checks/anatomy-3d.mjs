@@ -82,6 +82,8 @@ export function check(data, map) {
     if (!topics.has(s.topic)) E(`${at}: topic "${s.topic}" is not in the dependency map`);
     if (!KINDS.includes(s.kind)) E(`${at}: kind must be one of ${KINDS.join(', ')}`);
     for (const f of FIELDS) if (!str(s[f])) E(`${at}: ${f} is required`);
+    if (s.label != null && (!str(s.label) || /—/.test(s.label))) E(`${at}: label must be a short name without an em dash`);
+    if (String(s.label || s.name || '').trim().split(/\s+/).length > 3) E(`${at}: the card's name "${s.label || s.name}" is over 3 words; give it a label (rule 5)`);
     if (!str(s.at)) E(`${at}: at (where it is, a few words) is required`);
     else if (s.at.length > 50) E(`${at}: at is ${s.at.length} characters; keep it to 50 (two rows on a phone)`);
     if (!Array.isArray(s.parts) || !s.parts.length) E(`${at}: parts must list at least one mesh`);
@@ -93,7 +95,7 @@ export function check(data, map) {
     if (!Array.isArray(s.related)) E(`${at}: related must be an array`);
     if (s.inner && !Array.isArray(s.inner)) E(`${at}: inner must be an array of structure ids`);
     if (s.opacity != null && !(s.opacity > 0 && s.opacity <= 1)) E(`${at}: opacity must be in (0, 1]`);
-    for (const a of [s.name, ...(s.accept || [])]) {
+    for (const a of [s.name, ...(s.label ? [s.label] : []), ...(s.accept || [])]) {
       const k = norm(a);
       if (!k) continue;
       if (answers[k] && answers[k] !== s.id) E(`${at}: the answer "${a}" also names ${answers[k]}`);
@@ -101,7 +103,7 @@ export function check(data, map) {
     }
     // The ordering rule (docs/anp-spec.md section 7), as for every page.
     if (topicIndex.get(s.topic) !== undefined) {
-      const html = [s.name, s.what, s.where, s.at, s.features, s.note].filter(Boolean).map(x => `<p>${escHtml(textOf(x))}</p>`).join('');
+      const html = [s.name, s.label, s.what, s.where, s.at, s.features, s.note].filter(Boolean).map(x => `<p>${escHtml(textOf(x))}</p>`).join('');
       for (const p of scanPage(map, html, s.topic)) E(`${at}: ${p}`);
     }
     for (const x of [s.name, s.what, s.where, s.at, s.features, s.note, ...(s.accept || [])]) {

@@ -110,7 +110,8 @@
   function tol(k){ var n = k.replace(/ /g, '').length; return n <= 4 ? 0 : n <= 9 ? 1 : 2; }
   function variants(s){
     var v = [norm(s.name)];
-    (s.accept || []).forEach(function(a){ var k = norm(a); if(k && v.indexOf(k) < 0) v.push(k); });
+    // the short label Explore's card shows is a right answer too
+    (s.label ? [s.label] : []).concat(s.accept || []).forEach(function(a){ var k = norm(a); if(k && v.indexOf(k) < 0) v.push(k); });
     return v;
   }
   function grade(answer, s){
@@ -636,7 +637,7 @@
     var cv = view.querySelector('canvas'); if(cv) cv.style.height = '';
     setTimeout(function(){ window.dispatchEvent(new Event('resize')); }, 0);
     if(!viewer) return;
-    viewer.set({ selectFly: true, fadeOthers: 0 });
+    viewer.set({ selectFly: true, fadeOthers: 0, selectOnTop: false });
     if(!qChosen){
       qChosen = true;
       // the first visit opens a quiz round on the region Explore showed (unless a link chose a filter)
@@ -706,7 +707,7 @@
       viewer = window.LevlBodyViewer.mount(view, {
         content: content(), skin: !!pref('skin', false), hint: false,
         // v2: every change of look eases, and in Explore a tapped part glows where it is (the camera stays)
-        fade: V2 && KIT ? 380 : 0, selectFly: !(V2 && KIT),
+        fade: V2 && KIT ? 380 : 0, selectFly: !(V2 && KIT), ghostContext: !!(V2 && KIT),
         // the still of the opening view while the model loads (the one file preview inlines it as a data URL)
         poster: V2 && KIT && DATA.explore && DATA.explore.poster ? { light: at(DATA.explore.poster.light), dark: at(DATA.explore.poster.dark) } : null,
         list: det.querySelector('.a3-list'),

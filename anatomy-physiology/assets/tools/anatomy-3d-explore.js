@@ -80,12 +80,13 @@
     }
 
     function ids(t){ return t.items.map(function(s){ return s.id; }); }
-    function where(it){ return it ? [{ t: it.name, role: 'name' }, { t: it.at, role: 'at', say: it.at }] : []; }
+    function where(it){ return it ? [{ t: it.label || it.name, role: 'name', say: it.name }, { t: it.at, role: 'at', say: it.at }] : []; }
     var pending = null;            // the line waits with the card until the picture has settled
     function place(){
       if(!spots || !onScreen) return;
       spots.place();
-      if(pending && viewer && !viewer.settling() && spots.picked() === pending.it){
+      var cardEl = spots.el.querySelector('.tk2-spot-card');
+      if(pending && viewer && !viewer.settling() && spots.picked() === pending.it && cardEl && !cardEl.hidden){
         var it = pending.it; pending = null;
         cause.set(where(BY[it.id]));   // the piece tapped ("Right humerus") is the card's second line, on the picture
         if(pendingSay){ say(pendingSay); pendingSay = ''; }
@@ -94,9 +95,20 @@
     }
     var pendingSay = '';
 
-    function itemOf(s){ return { id: s.id, name: s.name, accept: s.accept || [] }; }
+    // the card names the part in 1 to 3 words (its short label when the full name is longer); find knows both
+    function itemOf(s){ return { id: s.id, name: s.label || s.name, accept: (s.label ? [s.name] : []).concat(s.accept || []) }; }
     var items = D.structures.filter(function(s){ return tabOfSys[s.system]; }).map(itemOf);
     var itemBy = {}; items.forEach(function(it){ itemBy[it.id] = it; });
+    /* the region's other parts' drawn middles, read at most every quarter second (the camera may be turning) */
+    var nb = { t: 0, id: null, pts: [] };
+    function neighbours(it){
+      var now = performance.now();
+      if(viewer && (now - nb.t > 250 || nb.id !== (it && it.id))){
+        nb.t = now; nb.id = it && it.id; nb.pts = [];
+        cur.items.forEach(function(s){ if(it && s.id === it.id) return; var p = viewer.project(s.id); if(p && p.front) nb.pts.push([p.x, p.y]); });
+      }
+      return nb.pts;
+    }
     function makeSpots(){
       spots = K.spots(layer, { key: 'anp-anatomy-3d-spots', label: 'Parts of the body', items: items, chip: false,
         project: function(it){
@@ -113,12 +125,14 @@
           if(drawnBox){ var r = over.getBoundingClientRect(), b = drawnBox; a.push({ left: r.left + b[0], top: r.top + b[1], width: b[2] - b[0], height: b[3] - b[1] }); }
           return a;
         },
+        // the other parts of the region, where they are drawn: the card keeps off them when it can (a lower weight)
+        others: function(it){ return neighbours(it); },
         onPick: function(it, how){
           cause.set([]);
           pending = it ? { it: it } : null;
           if(it){ picks[cur.id] = it.id; pref.picks = picks; save(pref); }
           if(how === 'tap' || how === 'key' || how === 'find'){ hideCue(true); tourDid(how === 'find' ? 'find' : 'tap'); }
-          pendingSay = it ? it.name + (piece[it.id] ? ', ' + piece[it.id].name : '') + ': ' + BY[it.id].at + '.' : '';
+          pendingSay = it ? BY[it.id].name + (piece[it.id] ? ', ' + piece[it.id].name : '') + ': ' + BY[it.id].at + '.' : '';
           refHtml();
         } });
     }
@@ -161,7 +175,7 @@
     }
     // the camera frames the tab's own list when it has one (the heart, not every vessel of the trunk), from its side
     function frameTab(){ if(viewer && viewer.loaded()) viewer.frame(cur.frame && cur.frame.length ? cur.frame : ids(cur), cur.pad || 1.3, cur.dir || null); }
-    function setTab(id, user, how){
+    function setTab(id, user, how, reframe){
       var t = TABS.filter(function(x){ return x.id === id; })[0]; if(!t) return;
       var was = cur;
       cur = t; tabs.value(t.id); head.purpose(t.purpose);
@@ -174,7 +188,7 @@
       if(viewer && viewer.loaded()){
         quiet++;
         try{ viewer.clear(); viewer.setOnly(ids(t)); } finally { quiet--; }
-        if(was !== t || user) frameTab();
+        if(was !== t || user || reframe) frameTab();
       }
       var first = picks[t.id] && BY[picks[t.id]] && t.systems.indexOf(BY[picks[t.id]].system) > -1 ? picks[t.id] : t.first;
       settled(function(){
@@ -301,11 +315,12 @@
       if(!viewer.loaded()) return;
       quiet++;
       try{
-        viewer.set({ selectFly: false, fadeOthers: 0.42 }); viewer.marks({}); viewer.highlight([]); viewer.tag(null); viewer.setPickSelects(true); viewer.setSkin(false);
+        viewer.set({ selectFly: false, fadeOthers: 0.42, selectOnTop: true }); viewer.marks({}); viewer.highlight([]); viewer.tag(null); viewer.setPickSelects(true); viewer.setSkin(false);
       } finally { quiet--; }
       // after the loading still has cross faded to the live body, the camera travels into the region
-      if(first) setTimeout(function(){ if(onScreen) setTab(cur.id, false); }, K.reduced() ? 0 : 520);
-      else setTab(cur.id, false);
+      // every entry (the first, and each return from Test yourself, whose camera flew close) frames the region again
+      if(first) setTimeout(function(){ if(onScreen) setTab(cur.id, false, null, true); }, K.reduced() ? 0 : 520);
+      else setTab(cur.id, false, null, true);
     }
     function shown(on){
       var was = onScreen;

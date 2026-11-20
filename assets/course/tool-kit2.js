@@ -157,7 +157,8 @@
                                     item is placed, with a small ring where its leader ends, and the card keeps off a
                                     disc of the item's size. o.wait() -> true while the picture still moves (a camera
                                     travelling): a new card waits, then grows once place() runs with wait() false (an open one follows). The
-                                    tool calls place() after every drawn frame. ask() is for pins only. An item's sub (set
+                                    tool calls place() after every drawn frame. o.others(item) -> [[x, y]]: the other
+                                    parts' drawn middles, which the card keeps off when it can. ask() is for pins only. An item's sub (set
                                     before pick) is a small second line on the card (the piece tapped: "Right scaphoid"). */
 (function(){
   'use strict';
@@ -475,6 +476,7 @@
       var it = cur, W = layer.el.clientWidth, H = layer.el.clientHeight;
       var lr = layer.el.getBoundingClientRect(), avoid = (o.avoid ? o.avoid() : []).map(function(a){ return [a.left - lr.left, a.top - lr.top, a.width, a.height]; });
       var others = []; if(!proj) items.forEach(function(j){ if(j !== it) j.at.forEach(function(q){ others.push(px(q)); }); });
+      else if(o.others) others = o.others(it) || [];
       var minePts = it.at.map(px);
       // 3D: the card stands off a disc of the part's drawn size (never on the part it names)
       var sz = size(it), cw = sz[0], ch = sz[1], P = px(it.at[0]), G = proj ? 22 + Math.min(it._r || 0, 90) * 0.55 : 22, R = proj ? clamp((it._r || 0) * 0.55, 13, 70) : 13;
@@ -513,7 +515,8 @@
         // a ring where the leader ends; on a frame that only follows the camera the same two nodes move
         var ring = '<circle class="tk2-spot-ring" cx="' + P[0].toFixed(1) + '" cy="' + P[1].toFixed(1) + '" r="5"/>';
         var pa = lines.querySelector('.tk2-spot-lead'), ci = lines.querySelector('.tk2-spot-ring');
-        if(!anim && ci && (pa || !d)){ ci.setAttribute('cx', P[0].toFixed(1)); ci.setAttribute('cy', P[1].toFixed(1)); if(pa) pa.setAttribute('d', d); }
+        // (a leader still waiting for its draw is started, so a settled card always has its line)
+        if(!anim && ci && (pa || !d)){ ci.setAttribute('cx', P[0].toFixed(1)); ci.setAttribute('cy', P[1].toFixed(1)); if(pa){ pa.setAttribute('d', d); if(!pa.classList.contains('is-in')) pa.classList.add('is-in'); } }
         else lines.innerHTML = (d ? '<path class="tk2-spot-lead" d="' + d + '" pathLength="1"/>' : '') + ring;
         if(!anim){ kNow = held; return; }
       } else
