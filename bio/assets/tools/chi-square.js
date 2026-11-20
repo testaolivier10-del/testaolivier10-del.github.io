@@ -639,7 +639,7 @@
         tally.list.forEach(function(v){ var b = binOf(v); bins[b] = (bins[b] || 0) + 1; tall = Math.max(tall, bins[b]); });
         // the pile's room: from the axis up to just under the critical value's two labels; every dot is drawn, and
         // all of them get smaller once the tallest column would not fit
-        var room = GG.base - GG.pileTop, step = Math.min(bw * 0.8, tall ? room / tall : room), rr = clamp(step * 0.6, 1.8, bw * 0.36);
+        var room = GG.base - GG.pileTop, step = Math.min(bw * 0.8, tall ? room / tall : room), rr = Math.max(3, Math.min(bw * 0.36, step * 0.6));   // the radius never goes under 3 px: only the spacing shrinks, so dots overlap
         bins = {};
         tally.list.forEach(function(v){
           var b = binOf(v), k = bins[b] || 0; bins[b] = k + 1;

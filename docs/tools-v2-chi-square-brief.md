@@ -181,7 +181,7 @@ Must fix:
    every width and its text, measured at the drawn scale (the smaller of width and height over the viewBox), is at
    least 11 px; the old check read only the width.
 3. **Run dots dropped**: every run is drawn; once the tallest column would not fit, every dot gets a smaller step
-   (radius 1.8 px at least; dots then overlap into a solid column). Sweep: 150 runs give 150 dots, inside the plot.
+   (recheck 1 polish: the radius stays at 3 px or more and only the spacing shrinks, so dots overlap). Sweep: 150 runs give 150 dots, inside the plot.
 4. **Dots over "5% tail"**: the label now sits under "critical value" at the top of the line, and the pile's room
    stops below both. Sweep: 150 runs heaped around the critical value cover no label, in both tabs.
 5. **A drag during a wander**: a grab (or a key) while bugs walk finishes the walk at once, counts the run as its own
