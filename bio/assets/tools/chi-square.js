@@ -540,7 +540,7 @@
       }
       function labelBtns(){
         if(!lastR) return;
-        chBtns.forEach(function(b, i){ b.setAttribute('aria-label', C().chambers[i].name + ': ' + lastR.counts[i] + ' bugs, expected ' + F(lastR.e, 1) + '. Enter moves a bug in, Delete moves one out.'); });
+        chBtns.forEach(function(b, i){ b.setAttribute('aria-label', C().chambers[i].name + ': ' + lastR.counts[i] + ' bugs, expected ' + F(lastR.e, lastR.e % 1 ? 1 : 0) + '. Enter moves a bug in, Delete moves one out.'); });
       }
 
       /* ---------------------------------------------------- the χ² graph */
@@ -559,14 +559,18 @@
         curveTop = 0;
         for(i = 1; i <= NP; i++){ var x = GG.xmax * i / NP, y = M.chiPdf(x, df); pts.push([x, y]); if(df > 1 || x >= 0.6) curveTop = Math.max(curveTop, y); }
         curveTop *= 1.05;
-        h.push('<defs><linearGradient id="cs2g-chance" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="cs2s-c0"/><stop offset="1" class="cs2s-c1"/></linearGradient></defs><rect class="cs2-paper" x="0" y="0" width="' + GG.W + '" height="' + GG.H + '" rx="14"/>');
-        var area = 'M' + gx(0) + ' ' + GG.base + (df === 1 ? ' L' + gx(0) + ' ' + GG.top : '') + ' ' + pts.map(function(q){ return 'L' + r1(gx(q[0])) + ' ' + r1(cyv(q[1])); }).join(' ') + ' L' + r1(gx(GG.xmax)) + ' ' + GG.base + 'Z';
+        h.push('<defs><linearGradient id="cs2g-chance" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="cs2s-c0"/><stop offset="1" class="cs2s-c1"/></linearGradient><linearGradient id="cs2g-up" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="cs2s-u0"/><stop offset="1" class="cs2s-c1"/></linearGradient></defs><rect class="cs2-paper" x="0" y="0" width="' + GG.W + '" height="' + GG.H + '" rx="14"/>');
+        // df 1: the density rises without limit at 0. The curve enters through the top edge where the density equals
+        // the top (found by halving); left of that the fill fades upward, so it reads as running off the top
+        var x0 = 0;
+        if(df === 1){ var lo = 0.001, hi = 2; for(var it = 0; it < 40; it++){ var mid = (lo + hi) / 2; if(M.chiPdf(mid, 1) > curveTop) lo = mid; else hi = mid; } x0 = hi; pts = pts.filter(function(q){ return q[0] > x0; }); pts.unshift([x0, curveTop]); }
+        var area = 'M' + r1(gx(x0)) + ' ' + GG.base + ' ' + pts.map(function(q){ return 'L' + r1(gx(q[0])) + ' ' + r1(cyv(q[1])); }).join(' ') + ' L' + r1(gx(GG.xmax)) + ' ' + GG.base + 'Z';
+        if(df === 1) h.push('<rect class="cs2-chance-up" x="' + r1(gx(0)) + '" y="' + GG.top + '" width="' + r1(gx(x0) - gx(0)) + '" height="' + r1(GG.base - GG.top) + '"/>');
         h.push('<path class="cs2-chance" d="' + area + '"/>');
         var tail = pts.filter(function(q){ return q[0] >= crit; });
         h.push('<path class="cs2-tail" d="M' + r1(gx(crit)) + ' ' + GG.base + ' L' + r1(gx(crit)) + ' ' + r1(cyv(M.chiPdf(crit, df))) + ' ' + tail.map(function(q){ return 'L' + r1(gx(q[0])) + ' ' + r1(cyv(q[1])); }).join(' ') + ' L' + r1(gx(GG.xmax)) + ' ' + GG.base + 'Z"/>');
         // df 1: the density rises without limit at 0, so the curve comes in from the top edge
-        var cpts = df === 1 ? pts.filter(function(q){ return q[1] <= curveTop; }) : pts;
-        h.push('<path class="cs2-curve" d="M' + (df === 1 ? r1(gx(cpts[0][0])) + ' ' + GG.top : r1(gx(0)) + ' ' + GG.base) + ' ' + cpts.map(function(q){ return 'L' + r1(gx(q[0])) + ' ' + r1(cyv(q[1])); }).join(' ') + '"/>');
+        h.push('<path class="cs2-curve" d="M' + (df === 1 ? r1(gx(x0)) + ' ' + GG.top : r1(gx(0)) + ' ' + GG.base) + ' ' + pts.map(function(q){ return 'L' + r1(gx(q[0])) + ' ' + r1(cyv(q[1])); }).join(' ') + '"/>');
         h.push('<line class="cs2-axis" x1="' + GG.L + '" x2="' + GG.R + '" y1="' + GG.base + '" y2="' + GG.base + '"/>');
         h.push('<rect class="cs2-track" x="' + GG.L + '" y="' + GG.mT + '" width="' + r1(GG.R - GG.L) + '" height="' + GG.mH + '" rx="' + (GG.mH / 2) + '"/>');
         var step = df === 1 ? 2 : 4;
@@ -576,10 +580,12 @@
         h.push('<line class="cs2-crit" x1="' + r1(cX) + '" x2="' + r1(cX) + '" y1="' + (GG.top - 4) + '" y2="' + r1(GG.mT + GG.mH + 3) + '"/>');
         var cl = 'critical value ' + F(crit, 2), clw = tw(cl, GG.fs, 800);
         h.push('<text class="cs2-critl" x="' + r1(cX + 6) + '" y="' + (GG.top + 8) + '" font-size="' + GG.fs + '">' + cl + '</text>');
-        var tl = '5% tail', tlx = cX + 6, tly = Math.min(GG.base - 6, cyv(M.chiPdf(crit + (GG.xmax - crit) * 0.15, df)) - 6);
-        h.push('<text class="cs2-taill" x="' + r1(tlx) + '" y="' + r1(Math.max(GG.top + 26, tly)) + '" font-size="' + (GG.fs - 1) + '">' + tl + '</text>');
+        // "5% tail" right under the critical value's name, at the top of the line, where no pile of dots reaches
+        var tl = '5% tail', tly = GG.top + 8 + GG.fs + 8;
+        h.push('<text class="cs2-taill" x="' + r1(cX + 6) + '" y="' + r1(tly) + '" font-size="' + (GG.fs - 1) + '">' + tl + '</text>');
+        GG.pileTop = tly + 6;
         // what the curve is, in its own empty corner
-        var ttl = GG.ph ? 'χ²; curve: chance alone' : 'χ²: the curve is chance alone (df ' + df + ')';
+        var ttl = GG.ph ? 'χ² (curve: chance alone)' : 'χ²: the curve is chance alone (df ' + df + ')';
         h.push('<text class="cs2-gtitle" x="' + GG.L + '" y="' + (GG.ph ? 17 : 19) + '" font-size="' + (GG.fs + 0.5) + '">' + ttl + '</text>');
         gsvg.setAttribute('viewBox', '0 0 ' + GG.W + ' ' + GG.H);
         gGs.innerHTML = h.join('');
@@ -628,11 +634,16 @@
       /* each chance run is a dot over its χ²: the dots pile up into the shape of the curve */
       function drawRuns(){
         if(!GG) return;
-        var bins = {}, bw = (GG.R - GG.L) / (GG.ph ? 26 : 44), rr = Math.min(4.5, bw * 0.36), h = '';
+        var bins = {}, bw = (GG.R - GG.L) / (GG.ph ? 26 : 44), h = '', tall = 0;
+        var binOf = function(v){ return Math.min(Math.floor(clamp(v, 0, GG.xmax * 0.999) / GG.xmax * (GG.R - GG.L) / bw), 999); };
+        tally.list.forEach(function(v){ var b = binOf(v); bins[b] = (bins[b] || 0) + 1; tall = Math.max(tall, bins[b]); });
+        // the pile's room: from the axis up to just under the critical value's two labels; every dot is drawn, and
+        // all of them get smaller once the tallest column would not fit
+        var room = GG.base - GG.pileTop, step = Math.min(bw * 0.8, tall ? room / tall : room), rr = clamp(step * 0.6, 1.8, bw * 0.36);
+        bins = {};
         tally.list.forEach(function(v){
-          var b = Math.min(Math.floor(clamp(v, 0, GG.xmax * 0.999) / GG.xmax * (GG.R - GG.L) / bw), 999), k = bins[b] || 0; bins[b] = k + 1;
-          var y = GG.base - rr - 1.5 - k * (rr * 2 + 1);
-          if(y < GG.top + 30) return;
+          var b = binOf(v), k = bins[b] || 0; bins[b] = k + 1;
+          var y = Math.max(GG.pileTop + rr, GG.base - rr - step * k);
           h += '<circle class="cs2-run' + (v > M.CHI_CRIT['0.05'][GG.df] ? ' is-past' : '') + '" cx="' + r1(GG.L + (b + 0.5) * bw) + '" cy="' + r1(y) + '" r="' + r1(rr) + '"/>';
         });
         gRuns.innerHTML = h;
@@ -676,7 +687,9 @@
         hideCue(true);
         if(!b) return;
         e.preventDefault();
-        if(b.path){ b.path = null; }
+        // a grab while the bugs walk (Let them wander, a tab switch, 80 bugs) finishes that change first, so its
+        // words and its chance run belong to it alone
+        if(busy()){ stopAll(); settled(); b = bugAt(p[0], p[1]); if(!b) return; }
         takeText = null;
         drag = { b: b, id: e.pointerId, from: chamberOf(b.x, b.y), dx: b.x - p[0], dy: b.y - p[1], moved: false };
         try{ hit.setPointerCapture(e.pointerId); }catch(er){}
@@ -717,7 +730,7 @@
         moveOne(into ? null : ci, into ? ci : null);
       });
       function moveOne(fromCi, toCi){
-        stopAll();
+        if(busy()){ stopAll(); settled(); }
         var c = drawnCounts(), i;
         if(fromCi == null){ fromCi = -1; for(i = 0; i < c.length; i++) if(i !== toCi && c[i] > 0 && (fromCi < 0 || c[i] > c[fromCi])) fromCi = i; }
         if(toCi == null){ toCi = -1; for(i = 0; i < c.length; i++) if(i !== fromCi && (toCi < 0 || c[i] < c[toCi])) toCi = i; }
@@ -896,7 +909,7 @@
         stage.setAttribute('data-view', ex ? 'explore' : 'goals');
         head.el.hidden = !ex;
         if(!ex){ hideCue(false); if(tour.active()) tour.stop(); }
-        if(was === 'explore' && !ex){ stopAll(); MD.counts[MD.ci] = drawnCounts(); Q.ex = { ci: MD.ci, big: MD.big, counts: MD.counts.map(function(c){ return c.slice(); }), tally: tally }; }
+        if(was === 'explore' && !ex){ stopAll(); if(G && bugs.length) MD.counts[MD.ci] = drawnCounts(); Q.ex = { ci: MD.ci, big: MD.big, counts: MD.counts.map(function(c){ return c.slice(); }), tally: tally }; }
         if(!ex && !goals){ stopAll(); return; }
         if(ex && Q.ex){ stopAll(); MD.ci = Q.ex.ci; MD.big = Q.ex.big; MD.counts = Q.ex.counts; tally = Q.ex.tally; Q.ex = null; paintN(); tabs.value(CASES[MD.ci].id); takeText = null; lastWH = ''; }
         if(goals && was !== 'goals'){ lastWH = ''; setTimeout(function(){ layoutNow(); fresh(); }, 30); return; }
@@ -918,7 +931,8 @@
       else window.addEventListener('resize', layoutNow);
       // for the sweep (scripts/tools-v2/chi-square-sweep.mjs): read the drawn state, set counts
       window.__cs2 = { counts: function(){ return drawnCounts(); }, busy: busy, G: function(){ return G; }, GG: function(){ return GG; }, bugs: function(){ return bugs.map(function(b){ return { x: b.x, y: b.y, on: b.on, s: b.s, held: drag && drag.b === b }; }); }, r: function(){ return lastR; }, tally: function(){ return tally; }, chamberOf: chamberOf, move: moveOne, wander: wander,
-        set: function(counts){ takeText = null; MD.counts[MD.ci] = counts.slice(); placeCounts(counts); settled(); } };
+        set: function(counts){ takeText = null; MD.counts[MD.ci] = counts.slice(); placeCounts(counts); settled(); },
+        runs: function(list){ tally = { n: list.length, over: list.filter(function(v){ return v > M.CHI_CRIT['0.05'][C().chambers.length - 1]; }).length, list: list.slice() }; drawRuns(); paintTally(); } };
     }, { studio: { kit2: function(ctx){ return ctx.kit2; } } });
   }
   /* The page loads the kit (pages.json "kit2": true). A cached copy of the old page would not: fetch it then. */

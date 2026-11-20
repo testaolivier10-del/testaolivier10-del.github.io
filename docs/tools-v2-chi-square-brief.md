@@ -90,6 +90,7 @@ Four chambers: 4 signs, 5 ticks, "4 gaps" in the cause line.
 | Bars and dashed expected boxes | Explore: bugs in chambers with signs; Problems keeps bars, with solid outlines |
 | Dragging a bar (N changed, expected boxes moved) | Dragging a bug between chambers (N fixed) |
 | The test picker (six contexts, 2 to 6 categories) | Two tabs (2 and 4 chambers). The six contexts (3, 5, 6 categories, df 2, 4, 5) stay in Problems |
+| Tests with unequal expected shares (seed mix 50/30/20, yeast 3 : 1) | Problems only (Explore's null is equal shares); logged in review round 1 |
 | −/+ steppers and arrow keys on a bar | Keys on each chamber (Enter in, Delete out) |
 | The stacked meter | The bar under the curve, one piece per chamber |
 | Readout (N, df, χ², critical) and the decision sentence | Cause line; "?" works the chamber out (o, e, o − e, (o − e)², (o − e)²/e, df, critical value, decision) |
@@ -125,10 +126,10 @@ Four chambers: 4 signs, 5 ticks, "4 gaps" in the cause line.
   rejecting does not say why. "p = 0.05" names the row of the table used.
 - Let them wander: each bug independently picks a chamber with equal chance (the null true). The real chance of a
   false alarm with whole bugs is not exactly 5%: 3.85% for 40 bugs in two chambers and 5.67% for 80 (exact binomial
-  sums), about 4.5% and 5.0% for four chambers (400,000 simulated runs each). So the tool says "about 1 run in 20"
+  sums), 4.52% and 4.89% for four chambers (exact multinomial sums, per the review). So the tool says "about 1 run in 20"
   and "?" gives the numbers (an earlier draft said "or fewer", which is false at 80 bugs).
-- Open points in `docs/apbio-needs-author.md`: chi-crit-p01-df1 (6.63 here, 6.64 in the appendix copy seen) and
-  chi-explore-pill-bugs (the setting, the wording of the 5%, the dark card).
+- p = 0.01, df 1 now prints 6.64 as the formula sheet appendix does (review round 1; chi-crit-p01-df1 closed).
+  Open: chi-explore-pill-bugs (the setting, the wording of the 5%, the dark card).
 
 ## What was built
 - `bio/assets/tools/chi-square.js` (rewritten; the practice figure kept and restyled), `bio/assets/tools/chi-square.css`
@@ -167,3 +168,26 @@ Four chambers: 4 signs, 5 ticks, "4 gaps" in the cause line.
 - On a phone in four chambers with 80 bugs, the bugs are about 18 px and crowd; they still count right.
 - The four chamber cause line names the gaps only as "4 gaps" (the per chamber gaps are on the signs and in the bar).
 - Bugs on the drag path are lifted over the dividers rather than walking through a doorway (a hand moving a bug).
+
+## Review round 1 (2026-11-19): BLOCK, fixed
+`/home/claude/review-chi-square/REVIEW.md`. Science and frame agreement confirmed. The branch already held the latest
+`claude/tools-v2-all` (nothing to merge; its `check-tool-use.mjs` untouched).
+
+Must fix:
+1. **Explore empty after a deep link** (`#goals`, `#practice`, `?seed=`): `shown()` saved `drawnCounts()` before the
+   scene had a layout. It now saves only once the scene is laid out. Sweep: each deep link, then Explore, shows 24, 16.
+2. **Problems figure collapsed** (the table sat in the fixed-height slot): the figure, its slot and the practice
+   stage keep their own height and the stage body scrolls, as on main. Sweep: the figure is at least 250 px tall at
+   every width and its text, measured at the drawn scale (the smaller of width and height over the viewBox), is at
+   least 11 px; the old check read only the width.
+3. **Run dots dropped**: every run is drawn; once the tallest column would not fit, every dot gets a smaller step
+   (radius 1.8 px at least; dots then overlap into a solid column). Sweep: 150 runs give 150 dots, inside the plot.
+4. **Dots over "5% tail"**: the label now sits under "critical value" at the top of the line, and the pile's room
+   stops below both. Sweep: 150 runs heaped around the critical value cover no label, in both tabs.
+5. **A drag during a wander**: a grab (or a key) while bugs walk finishes the walk at once, counts the run as its own
+   chance run, then the drag starts. Frames: no decision word while bugs walk; the tally rises by one, not two.
+
+Should fix: the df 1 fill left of where the curve enters now fades upward and the curve starts exactly at that point
+(found by halving); 6.64 (above); unequal expected tests logged (above); the phone graph title is "χ² (curve: chance
+alone)"; the chamber buttons say "expected 20"; needs-author rates corrected to 4.52% and 4.89%. Wander at 1440 with
+80 bugs: not changed beyond the compositor layer of round 0 (see "Not happy with").

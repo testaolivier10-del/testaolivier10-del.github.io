@@ -215,6 +215,24 @@ async function sweepWidth(w) {
       if (phone) { if (causeH == null) causeH = g.cause.h; else ok(Math.abs(g.cause.h - causeH) < 1.5, `${tag}: cause line height ${g.cause.h} vs ${causeH}`); }
       if (SHOTS && (w === 390 || w === 768 || w === 1440 || w === 360)) await page.screenshot({ path: join(SHOTS, `sweep-${w}-${theme}-${s.id}.png`) });
     }
+    // review round 1, must fix 3 and 4: every chance run is a dot (none dropped, however tall a column), the dots stay
+    // inside the plot and never cover a label; runs heaped near the critical value (the worst case for "5% tail")
+    for (const tab of [0, 1]) {
+      await page.click(`.cs2 .tk2-tab:nth-child(${tab + 1})`); await still(page);
+      const crit = tab ? 7.82 : 3.84, list = [];
+      for (let i = 0; i < 90; i++) list.push(crit + (i % 9) * 0.12 - 0.3);
+      for (let i = 0; i < 60; i++) list.push(0.2 + (i % 5) * 0.1);
+      await page.evaluate(l => window.__cs2.runs(l), list);
+      const d = await page.evaluate(() => { const R = e => { const r = e.getBoundingClientRect(); return { l: r.left, t: r.top, r: r.right, b: r.bottom }; };
+        const g = document.querySelector('.cs2-graph').getBoundingClientRect(), GG = window.__cs2.GG();
+        return { n: document.querySelectorAll('.cs2-run').length, tally: window.__cs2.tally().n, dots: [...document.querySelectorAll('.cs2-run')].map(R), texts: [...document.querySelectorAll('.cs2-gsvg text')].filter(t => t.textContent.trim()).map(t => ({ s: t.textContent, ...R(t) })), base: g.top + GG.base, top: g.top + GG.top }; });
+      ok(d.n === d.tally && d.n === 150, `${w} ${theme} tab ${tab}: ${d.n} dots for ${d.tally} runs`);
+      ok(d.dots.every(o => o.b <= d.base + 0.6 && o.t >= d.top - 0.6), `${w} ${theme} tab ${tab}: a dot outside the plot`);
+      const hit = d.texts.filter(t => d.dots.some(o => !(o.r <= t.l || t.r <= o.l || o.b <= t.t || t.b <= o.t)));
+      ok(!hit.length, `${w} ${theme} tab ${tab}: dots cover "${hit.map(t => t.s).join('", "')}"`);
+      await page.evaluate(() => window.__cs2.runs([]));
+    }
+    await page.click('.cs2 .tk2-tab:nth-child(1)'); await still(page);
     // Challenges: the same stage beside the challenge card
     await page.goto('about:blank'); await page.goto(URL0 + '#goals'); await page.waitForSelector('.cs2-bugs use'); await page.waitForTimeout(800); await still(page);
     g = await page.evaluate(GEO);
@@ -224,10 +242,23 @@ async function sweepWidth(w) {
     if (SHOTS && (w === 390 || w === 1440)) await page.screenshot({ path: join(SHOTS, `sweep-${w}-${theme}-goals.png`) });
     // Problems: the problem's figure and the table (text at least 11 px, no sideways scroll), the worked problem checked
     await page.goto('about:blank'); await page.goto(URL0 + '#practice'); await page.waitForSelector('.cs2-pfig'); await page.waitForTimeout(500);
-    const pf = await page.evaluate(() => ({ sw: document.documentElement.scrollWidth, vw: innerWidth, small: [...document.querySelectorAll('.cs2-pfig text, .cs2-ctab th, .cs2-ctab td, .cs2-ctab caption')].filter(t => t.offsetParent !== null || t.ownerSVGElement).map(t => { const s = t.ownerSVGElement, vb = s && s.viewBox.baseVal, k = vb && vb.width ? s.getBoundingClientRect().width / vb.width : 1; return { s: t.textContent, px: parseFloat(getComputedStyle(t).fontSize) * k }; }).filter(x => x.px < 10.99) }));
+    // review round 1, must fix 2: the figure is drawn at its own size (an svg scales to fit both ways, so the scale
+    // is the smaller of width and height over the viewBox), and its text is at least 11 px
+    const pf = await page.evaluate(() => { const sv = document.querySelector('.cs2-pfig'), r = sv.getBoundingClientRect(), vb = sv.viewBox.baseVal, k = Math.min(r.width / vb.width, r.height / vb.height);
+      return { sw: document.documentElement.scrollWidth, vw: innerWidth, h: vb.height * k, small: [...document.querySelectorAll('.cs2-pfig text, .cs2-ctab th, .cs2-ctab td, .cs2-ctab caption')].map(t => ({ s: t.textContent, px: parseFloat(getComputedStyle(t).fontSize) * (t.ownerSVGElement ? k : 1) })).filter(x => x.px < 10.99) }; });
+    ok(pf.h >= 250, `${w} ${theme} practice: the figure is ${pf.h.toFixed(0)} px tall`);
     ok(pf.sw <= pf.vw + 1, `${w} ${theme} practice: sideways scroll`);
     ok(!pf.small.length, `${w} ${theme} practice: small text ${JSON.stringify(pf.small.slice(0, 3))}`);
     if (SHOTS && (w === 390 || w === 1440)) await page.screenshot({ path: join(SHOTS, `sweep-${w}-${theme}-practice.png`), fullPage: w < 500 });
+    // review round 1, must fix 1: from a deep link to Explore, the chamber holds its opening bugs
+    for (const hash of ['#goals', '#practice', '?seed=777']) {
+      await page.goto('about:blank'); await page.goto(URL0 + hash); await page.waitForTimeout(900);
+      await page.evaluate(() => { const b = [...document.querySelectorAll('button, [role="tab"]')].find(b => b.textContent.trim() === 'Explore'); b.click(); });
+      await page.waitForTimeout(500); await still(page);
+      const r = await page.evaluate(READ);
+      ok(r.drawn.join() === '24,16', `${w} ${theme} ${hash} then Explore: ${r.drawn}`);
+      agree(r, `${w} ${theme} ${hash} then Explore`);
+    }
     ok(!errs.length, `${w} ${theme}: console errors ${errs.slice(0, 2)}`);
     await browser.close();
   }
@@ -268,6 +299,22 @@ async function frames(w) {
   n += await grab('tab-two', () => page.click('.cs2 .tk2-tab:nth-child(1)'), 1500); await still(page);
   // a wander interrupted by a drag: the drag wins and the words follow the bugs
   n += await grab('wander-interrupted', async () => { await page.click('.cs2-wander'); await page.waitForTimeout(300); await page.click('.cs2-wander'); }, 2600); await still(page);
+  // review round 1, must fix 5: a grab during a wander finishes the run first (one run, counted as chance alone), and
+  // no frame shows a decision while bugs still walk
+  {
+    const n0 = await page.evaluate(() => window.__cs2.tally().n);
+    await page.click('.cs2-wander'); await page.waitForTimeout(350);
+    n += await grab('drag-in-wander', async () => {
+      const g = await page.evaluate(() => { const G = window.__cs2.G(), r = document.querySelector('.cs2-scene').getBoundingClientRect(); const b = window.__cs2.bugs()[0]; return { x: r.left + b.x, y: r.top + b.y, tx: r.left + G.mx, ty: r.top + G.my }; });
+      await page.mouse.move(g.x, g.y); await page.mouse.down();
+      ok(!(await page.evaluate(() => window.__cs2.busy())), `${w} drag in wander: the bugs still walk after the grab`);
+      ok(await page.evaluate(() => window.__cs2.tally().n) === n0 + 1, `${w} drag in wander: the run was not finished and counted once`);
+      for (let i = 1; i <= 8; i++) { await page.mouse.move(g.x + (g.tx - g.x) * i / 8, g.y + (g.ty - g.y) * i / 8); await page.waitForTimeout(16); }
+      await page.mouse.up();
+    }, 900);
+    await still(page);
+    ok(await page.evaluate(() => window.__cs2.tally().n) === n0 + 1, `${w} drag in wander: the drag added a chance run`);
+  }
   const r = await page.evaluate(READ); agree(r, `${w} frames settled`);
   // leaving mid animation: Test yourself stops the bugs and the screen returns clean
   await page.click('.cs2-wander'); await page.waitForTimeout(300);

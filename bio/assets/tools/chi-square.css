@@ -103,6 +103,8 @@
 /* the χ² graph */
 .cs2-paper{fill:var(--cs-paper);stroke:color-mix(in srgb, var(--ink) 10%, transparent);}
 .cs2-chance{fill:url(#cs2g-chance);}
+.cs2-chance-up{fill:url(#cs2g-up);}
+.cs2s-u0{stop-color:var(--cs-chi);stop-opacity:0;}
 .cs2s-c0{stop-color:var(--cs-chi);stop-opacity:.02;} .cs2s-c1{stop-color:var(--cs-chi);stop-opacity:.16;}
 .cs2-tail{fill:var(--cs-tail);}
 .cs2-curve{fill:none;stroke:var(--cs-curve);stroke-width:2;}
@@ -154,3 +156,6 @@
 .cs2-ctab th,.cs2-ctab td{padding:5px 4px;border:1px solid var(--line);text-align:center;}
 .cs2-ctab td.is-df{background:color-mix(in srgb, var(--cs-crit, #B8327A) 16%, transparent);color:var(--ink);font-weight:900;}
 .cs2-lines .tk2-cause.is-take{align-items:center;}
+/* Problems: the figure keeps its own height (the stage body scrolls), so the table under it never squeezes it */
+.sk-fig:has(> svg.cs2-pfig){flex:none;}
+.bt-stage-slot:has(svg.cs2-pfig),.ls-prac-stage:has(svg.cs2-pfig){flex:none;}
