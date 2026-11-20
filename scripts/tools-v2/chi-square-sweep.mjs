@@ -309,6 +309,10 @@ async function frames(w) {
       await page.mouse.move(g.x, g.y); await page.mouse.down();
       ok(!(await page.evaluate(() => window.__cs2.busy())), `${w} drag in wander: the bugs still walk after the grab`);
       ok(await page.evaluate(() => window.__cs2.tally().n) === n0 + 1, `${w} drag in wander: the run was not finished and counted once`);
+      // the press may land beside a bug that was walking; then a drag of a bug where it now sits
+      await page.mouse.up();
+      const h = await page.evaluate(() => { const G = window.__cs2.G(), r = document.querySelector('.cs2-scene').getBoundingClientRect(); const b = window.__cs2.bugs()[0]; return { x: r.left + b.x, y: r.top + b.y, tx: r.left + G.mx, ty: r.top + G.my }; });
+      Object.assign(g, h); await page.mouse.move(g.x, g.y); await page.mouse.down();
       for (let i = 1; i <= 8; i++) { await page.mouse.move(g.x + (g.tx - g.x) * i / 8, g.y + (g.ty - g.y) * i / 8); await page.waitForTimeout(16); }
       await page.mouse.up();
     }, 900);

@@ -581,7 +581,7 @@
         var cl = 'critical value ' + F(crit, 2), clw = tw(cl, GG.fs, 800);
         h.push('<text class="cs2-critl" x="' + r1(cX + 6) + '" y="' + (GG.top + 8) + '" font-size="' + GG.fs + '">' + cl + '</text>');
         // "5% tail" right under the critical value's name, at the top of the line, where no pile of dots reaches
-        var tl = '5% tail', tly = GG.top + 8 + GG.fs + 8;
+        var tl = '5% tail', tly = GG.top + 8 + Math.ceil(GG.fs * 1.4) + 6;
         h.push('<text class="cs2-taill" x="' + r1(cX + 6) + '" y="' + r1(tly) + '" font-size="' + (GG.fs - 1) + '">' + tl + '</text>');
         GG.pileTop = tly + 6;
         // what the curve is, in its own empty corner
@@ -683,13 +683,14 @@
       function ptOf(e){ var r = sceneBox.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; }
       hit.addEventListener('pointerdown', function(e){
         if(!G || e.button > 0) return;
-        var p = ptOf(e), b = bugAt(p[0], p[1]);
+        var p = ptOf(e);
         hideCue(true);
+        // a press on the chamber while the bugs walk (Let them wander, a tab switch, 80 bugs) finishes that change
+        // first, so its words and its chance run belong to it alone; then the bug under the finger (if any) is grabbed
+        if(busy()){ stopAll(); settled(); }
+        var b = bugAt(p[0], p[1]);
         if(!b) return;
         e.preventDefault();
-        // a grab while the bugs walk (Let them wander, a tab switch, 80 bugs) finishes that change first, so its
-        // words and its chance run belong to it alone
-        if(busy()){ stopAll(); settled(); b = bugAt(p[0], p[1]); if(!b) return; }
         takeText = null;
         drag = { b: b, id: e.pointerId, from: chamberOf(b.x, b.y), dx: b.x - p[0], dy: b.y - p[1], moved: false };
         try{ hit.setPointerCapture(e.pointerId); }catch(er){}

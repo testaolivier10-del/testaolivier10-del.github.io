@@ -187,6 +187,10 @@ Must fix:
 5. **A drag during a wander**: a grab (or a key) while bugs walk finishes the walk at once, counts the run as its own
    chance run, then the drag starts. Frames: no decision word while bugs walk; the tally rises by one, not two.
 
+Checks after the fixes: sweep (ten widths, one process each, plus frames) **77,666 passed, 0 failed**; interact 167
+passed; AP Bio tests 74 pass; content check, build-apbio --check, check-site and check-weight pass. A press on the
+chamber during a walk finishes the walk even when no bug is under the finger.
+
 Should fix: the df 1 fill left of where the curve enters now fades upward and the curve starts exactly at that point
 (found by halving); 6.64 (above); unequal expected tests logged (above); the phone graph title is "χ² (curve: chance
 alone)"; the chamber buttons say "expected 20"; needs-author rates corrected to 4.52% and 4.89%. Wander at 1440 with
