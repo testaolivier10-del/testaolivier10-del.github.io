@@ -1285,7 +1285,7 @@
     }
     placeNames(out, s);
   }
-  function placeNames(list, s){
+  function placeNames(list, s, known){
     labsEl.innerHTML = list.map(function(n){ return '<span class="rs2-lab ' + n.cls + '">' + esc(n.t) + '</span>'; }).join('');
     var els = [].slice.call(labsEl.children), placed = [], balls = [];
     S.m.atoms.forEach(function(a){ var q = s[a.id]; if(q && q.op > 0.5) balls.push({ x: q.x, y: q.y, r: q.r * 1.03 + 5 }); });
@@ -1305,7 +1305,7 @@
       return !balls.some(function(c){ return !(rc.r <= c.x - c.r || c.x + c.r <= rc.l || rc.b <= c.y - c.r || c.y + c.r <= rc.t); });
     }
     // every name measured first, then all placed (one layout, not one per name)
-    var sizes = els.map(function(e){ var bb = e.getBoundingClientRect(); return [bb.width + 1, bb.height + 1]; }), spots = [];
+    var sizes = known || els.map(function(e){ var bb = e.getBoundingClientRect(); return [bb.width + 1, bb.height + 1]; }), spots = [];
     list.forEach(function(n, i){
       var e = els[i], w = sizes[i][0], h = sizes[i][1], spot = null;
       if(n.head){
@@ -1326,6 +1326,12 @@
       if(spot) placed.push({ l: spot.x - w / 2, t: spot.y - h / 2, r: spot.x + w / 2, b: spot.y + h / 2 });
     });
     els.forEach(function(e, i){ var sp = spots[i]; if(!sp){ e.style.display = 'none'; return; } e.style.left = f1(sp.x) + 'px'; e.style.top = f1(sp.y) + 'px'; });
+    // a name can render a little wider where it lands than where it was measured (its style settles once it is placed):
+    // measured again, and placed once more with the real sizes if any grew
+    if(!known){
+      var real = els.map(function(e, i){ if(!spots[i]) return sizes[i]; var bb = e.getBoundingClientRect(); return [Math.max(sizes[i][0], bb.width + 1), Math.max(sizes[i][1], bb.height + 1)]; });
+      if(real.some(function(z, i){ return z[0] > sizes[i][0] + 0.3 || z[1] > sizes[i][1] + 0.3; })) placeNames(list, s, real);
+    }
   }
 
   /* ---- the tray: what is in the flask at the end, with its rough share ---------------- */

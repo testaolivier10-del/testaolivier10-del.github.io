@@ -91,3 +91,6 @@
 .rp2-steps li{margin:0 0 6px;}
 .rp2-tbl{margin:0 0 10px;}
 .rp2-ref .ttable th,.rp2-tbl th{font-size:11px;}
+/* the studio raises words on a phone's picture to 12 px (tool-studio.js, "On-stage text under 12 px"): the names are
+   set there from the start, so they are measured at the size they are drawn */
+@media (max-width:640px){ .rp2 .rs2-lab:not(.is-head){font-size:12px;} }
