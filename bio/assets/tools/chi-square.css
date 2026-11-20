@@ -1,0 +1,145 @@
+/* Chi-square test, tools v2 (bio/assets/tools/chi-square.js; docs/tools-v2-chi-square-brief.md). Loaded only by the
+   chi-square page (bio/data/pages.json "kit2": true). One colour per chamber everywhere (its sign, its piece of the
+   χ² bar, its pill in the cause line); χ² purple; the critical value and its 5% tail magenta; reject red, fail to
+   reject teal. Wet chambers are blues, dry ones ambers; the dark ones are the deeper shade of each. */
+.cs2,.cs2-ref,.cs2-dock{--cs-wet:#0072B2;--cs-wet-ink:#005A8C;--cs-dry:#D99100;--cs-dry-ink:#875700;
+  --cs-wl:#56B4E9;--cs-wl-ink:#1E6E9E;--cs-wd:#0072B2;--cs-wd-ink:#005A8C;--cs-dl:#E69F00;--cs-dl-ink:#875700;--cs-dd:#8B5A2B;--cs-dd-ink:#6B4220;
+  --cs-chi:#6A3D9A;--cs-chi-ink:#55307D;--cs-crit:#B8327A;--cs-crit-ink:#962763;--cs-rej:#C62828;--cs-rej-ink:#A12020;--cs-keep:#00796B;--cs-keep-ink:#005F54;
+  --cs-bench0:#D7B588;--cs-grain:#B98F5E;--cs-tray:rgba(255,255,255,.55);--cs-tray-edge:#9DB2BA;--cs-wet0:#9FC6DA;--cs-wet-dot:#7FAFC8;--cs-drop:#E9F6FC;--cs-dry0:#EADDBE;--cs-grit:#C9B48A;--cs-grit-d:#A88E62;
+  --cs-wall:#C9D7DC;--cs-wall-edge:#8BA3AC;--cs-lid:rgba(28,34,44,.40);--cs-b0:#7D8792;--cs-b1:#4D5560;--cs-b-edge:#2C3238;--cs-b-plate:#A4ADB6;--cs-b-leg:#3A4048;
+  --cs-sign:#FFFDF8;--cs-sign-ink:#1F2328;--cs-paper:#FBFAF6;--cs-gridline:#E7E3D8;--cs-chance:rgba(106,61,154,.10);--cs-curve:#3B3F46;--cs-tail:rgba(184,50,122,.26);}
+:root[data-theme="dark"] .cs2,:root[data-theme="dark"] .cs2-ref,:root[data-theme="dark"] .cs2-dock{--cs-wet:#56B4E9;--cs-wet-ink:#8CCBF2;--cs-dry:#F0B63C;--cs-dry-ink:#F6CF75;
+  --cs-wl:#8CCBF2;--cs-wl-ink:#B5DDF6;--cs-wd:#3D9BD6;--cs-wd-ink:#8CCBF2;--cs-dl:#F0B63C;--cs-dl-ink:#F6CF75;--cs-dd:#C08A55;--cs-dd-ink:#E2B88A;
+  --cs-chi:#B796DB;--cs-chi-ink:#D2BBEC;--cs-crit:#E77FB4;--cs-crit-ink:#F2A9CE;--cs-rej:#F0857C;--cs-rej-ink:#F6AAA3;--cs-keep:#4FD1B8;--cs-keep-ink:#8EE5D3;
+  --cs-bench0:#4A3A28;--cs-grain:#5E4A33;--cs-tray:rgba(255,255,255,.14);--cs-tray-edge:#6E848C;--cs-wet0:#33576A;--cs-wet-dot:#3F6880;--cs-drop:#6F9AB0;--cs-dry0:#6A5D43;--cs-grit:#7E6E50;--cs-grit-d:#8C7A58;
+  --cs-wall:#7F949B;--cs-wall-edge:#4F6268;--cs-lid:rgba(0,0,0,.40);--cs-b0:#9AA4AE;--cs-b1:#68717B;--cs-b-edge:#1D2126;--cs-b-plate:#BCC4CC;--cs-b-leg:#20252A;
+  --cs-sign:#26231F;--cs-sign-ink:#F1EADF;--cs-paper:#1F2124;--cs-gridline:#33363B;--cs-chance:rgba(183,150,219,.14);--cs-curve:#D9DCE0;--cs-tail:rgba(231,127,180,.30);}
+.cs2{display:flex;flex-direction:column;gap:10px;min-height:0;flex:1 1 auto;}
+.cs2[hidden]{display:none;}
+.cs2 [hidden]{display:none !important;}
+.cs2-scene{position:relative;flex:1 1 auto;min-height:330px;border-radius:18px;overflow:hidden;background:var(--cs-bench0);}
+.cs2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+.cs2-over{pointer-events:none;}
+@media (max-width:1023px){ .cs2-scene{flex:none;height:min(56vw,460px);min-height:340px;} }
+@media (max-width:640px){ .cs2-scene{height:clamp(360px,104vw,440px);border-radius:14px;} .cs2{gap:8px;} }
+.cs2-graph{position:relative;flex:none;height:206px;}
+@media (max-width:640px){ .cs2-graph{height:200px;} }
+.cs2-gsvg{position:absolute;inset:0;width:100%;height:100%;display:block;font-family:var(--font-ui);overflow:visible;}
+.cs2-lines{display:flex;align-items:center;justify-content:space-between;gap:6px 18px;flex-wrap:wrap;flex:none;}
+.cs2-acts{display:flex;align-items:center;gap:6px 12px;flex:none;margin-left:auto;flex-wrap:wrap;}
+.cs2-n{display:inline-flex;border-radius:999px;box-shadow:inset 0 0 0 2px color-mix(in srgb, var(--ink) 22%, transparent);padding:3px;}
+.cs2-nb{min-height:38px;min-width:44px;padding:0 12px;border:0;border-radius:999px;background:none;color:var(--muted);font:800 13.5px var(--font-ui);cursor:pointer;white-space:nowrap;}
+.cs2-nb[aria-pressed="true"]{background:var(--cink);color:var(--white);}
+.cs2-nb:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+@media (max-width:640px){ .cs2-lines .tk2-cause{flex-basis:100%;} .cs2-acts{margin-left:0;width:100%;justify-content:space-between;} }
+/* the cause line: each chamber's gap in its own colour, then χ², the critical value and the decision */
+.cs2 .tk2-cz.is-wet{--cz:var(--cs-wet);--cz-ink:var(--cs-wet-ink);}
+.cs2 .tk2-cz.is-dry{--cz:var(--cs-dry);--cz-ink:var(--cs-dry-ink);}
+.cs2 .tk2-cz.is-wl{--cz:var(--cs-wl);--cz-ink:var(--cs-wl-ink);}
+.cs2 .tk2-cz.is-dl{--cz:var(--cs-dl);--cz-ink:var(--cs-dl-ink);}
+.cs2 .tk2-cz.is-wd{--cz:var(--cs-wd);--cz-ink:var(--cs-wd-ink);}
+.cs2 .tk2-cz.is-dd{--cz:var(--cs-dd);--cz-ink:var(--cs-dd-ink);}
+.cs2 .tk2-cz.is-chi{--cz:var(--cs-chi);--cz-ink:var(--cs-chi-ink);}
+.cs2 .tk2-cz.is-crit{--cz:var(--cs-crit);--cz-ink:var(--cs-crit-ink);}
+.cs2 .tk2-cz.is-rej{--cz:var(--cs-rej);--cz-ink:var(--cs-rej-ink);}
+.cs2 .tk2-cz.is-keep{--cz:var(--cs-keep);--cz-ink:var(--cs-keep-ink);}
+
+/* the bench and the choice chamber */
+.cs2-bench{fill:var(--cs-bench0);}
+.cs2-grain{fill:none;stroke:var(--cs-grain);stroke-width:1.2;opacity:.55;}
+.cs2-tshadow{fill:#000;opacity:.18;}
+.cs2-rim{fill:var(--cs-tray);stroke:var(--cs-tray-edge);stroke-width:2;}
+.cs2-rim-hi{fill:none;stroke:#fff;stroke-opacity:.55;stroke-width:1.5;}
+:root[data-theme="dark"] .cs2-rim-hi{stroke-opacity:.18;}
+.cs2-floor.is-wet{fill:var(--cs-wet0);}
+.cs2-floor.is-dry{fill:var(--cs-dry0);}
+.cs2-quilt{fill:var(--cs-wet-dot);opacity:.7;}
+.cs2-drop{fill:var(--cs-drop);opacity:.8;}
+.cs2-damp{fill:none;stroke:var(--cs-wet-dot);stroke-width:10;opacity:.35;stroke-linecap:round;}
+.cs2-grit{fill:var(--cs-grit);}
+.cs2-grit.is-d{fill:var(--cs-grit-d);}
+.cs2-wall{fill:var(--cs-wall);stroke:var(--cs-wall-edge);stroke-width:1.2;}
+.cs2-lid{fill:var(--cs-lid);}
+/* the pill bug */
+.cs2s-b0{stop-color:var(--cs-b0);} .cs2s-b1{stop-color:var(--cs-b1);}
+.cs2-b-sh{fill:#000;opacity:.22;}
+.cs2-b-leg{stroke:var(--cs-b-leg);stroke-width:1.6;stroke-linecap:round;fill:none;}
+.cs2-b-ant{stroke:var(--cs-b-leg);stroke-width:1.3;stroke-linecap:round;fill:none;}
+.cs2-b-uro{stroke:var(--cs-b-leg);stroke-width:1.6;stroke-linecap:round;fill:none;}
+.cs2-b-body{fill:url(#cs2g-body);stroke:var(--cs-b-edge);stroke-width:1.2;}
+.cs2-b-plate{fill:none;stroke:var(--cs-b-plate);stroke-width:1;opacity:.75;}
+.cs2-b-head{fill:var(--cs-b1);stroke:var(--cs-b-edge);stroke-width:1;}
+.cs2-b-hi{fill:#fff;opacity:.2;}
+.cs2-bugs.is-fade{animation:cs2-fade .24s ease-out;}
+@keyframes cs2-fade{from{opacity:.25;}to{opacity:1;}}
+/* the grab area over the floor; the chambers' keyboard buttons (the pointer never lands on them) */
+.cs2-hit{position:absolute;touch-action:none;cursor:grab;}
+.cs2-hit:active{cursor:grabbing;}
+.tk2-layer > .cs2-chb,.cs2-chb{position:absolute;margin:0;padding:0;border:0;background:none;pointer-events:none;border-radius:6px;}
+.cs2-chb:focus-visible{outline:3px solid var(--cink);outline-offset:-4px;}
+/* each chamber's sign */
+.cs2-sign-bg{fill:var(--cs-sign);stroke:color-mix(in srgb, var(--cs-sign-ink) 18%, transparent);stroke-width:1;filter:drop-shadow(0 2px 3px rgba(0,0,0,.18));}
+.cs2-sign-n{font-weight:800;}
+.cs2-sign-c{font-weight:900;fill:var(--cs-sign-ink);font-variant-numeric:tabular-nums;}
+.cs2-sign-cu{font-weight:700;fill:var(--muted);}
+.cs2-sign-e{font-weight:700;fill:var(--muted);}
+.cs2-sign.is-wet .cs2-sign-tab{fill:var(--cs-wet);} .cs2-sign.is-wet .cs2-sign-n{fill:var(--cs-wet-ink);}
+.cs2-sign.is-dry .cs2-sign-tab{fill:var(--cs-dry);} .cs2-sign.is-dry .cs2-sign-n{fill:var(--cs-dry-ink);}
+.cs2-sign.is-wl .cs2-sign-tab{fill:var(--cs-wl);} .cs2-sign.is-wl .cs2-sign-n{fill:var(--cs-wl-ink);}
+.cs2-sign.is-dl .cs2-sign-tab{fill:var(--cs-dl);} .cs2-sign.is-dl .cs2-sign-n{fill:var(--cs-dl-ink);}
+.cs2-sign.is-wd .cs2-sign-tab{fill:var(--cs-wd);} .cs2-sign.is-wd .cs2-sign-n{fill:var(--cs-wd-ink);}
+.cs2-sign.is-dd .cs2-sign-tab{fill:var(--cs-dd);} .cs2-sign.is-dd .cs2-sign-n{fill:var(--cs-dd-ink);}
+
+/* the χ² graph */
+.cs2-paper{fill:var(--cs-paper);stroke:color-mix(in srgb, var(--ink) 10%, transparent);}
+.cs2-chance{fill:url(#cs2g-chance);}
+.cs2s-c0{stop-color:var(--cs-chi);stop-opacity:.02;} .cs2s-c1{stop-color:var(--cs-chi);stop-opacity:.16;}
+.cs2-tail{fill:var(--cs-tail);}
+.cs2-curve{fill:none;stroke:var(--cs-curve);stroke-width:2;}
+.cs2-axis{stroke:var(--cs-curve);stroke-width:1.2;}
+.cs2-track{fill:color-mix(in srgb, var(--ink) 7%, transparent);}
+.cs2-tick{fill:var(--muted);font-weight:700;font-variant-numeric:tabular-nums;}
+.cs2-crit{stroke:var(--cs-crit);stroke-width:2.5;}
+.cs2-critl{fill:var(--cs-crit-ink);font-weight:800;}
+.cs2-taill{fill:var(--cs-crit-ink);font-weight:700;}
+.cs2-gtitle{fill:var(--ink);font-weight:800;}
+.cs2-tally{fill:var(--muted);font-weight:700;font-variant-numeric:tabular-nums;}
+.cs2-seg.is-wet{fill:var(--cs-wet);} .cs2-seg.is-dry{fill:var(--cs-dry);}
+.cs2-seg.is-wl{fill:var(--cs-wl);} .cs2-seg.is-dl{fill:var(--cs-dl);} .cs2-seg.is-wd{fill:var(--cs-wd);} .cs2-seg.is-dd{fill:var(--cs-dd);}
+.cs2-mark{stroke:var(--cs-chi);stroke-width:2.5;}
+.cs2-markbg{fill:var(--cs-chi);}
+.cs2-markl.is-past .cs2-markbg{fill:var(--cs-rej);}
+.cs2-markt{fill:#fff;font-weight:900;font-variant-numeric:tabular-nums;}
+:root[data-theme="dark"] .cs2-markt{fill:#16121C;}
+.cs2-run{fill:var(--cs-keep);opacity:.8;}
+.cs2-run.is-past{fill:var(--cs-rej);opacity:.95;}
+
+/* "?": this chamber worked out */
+.cs2-ref h3{margin:14px 0 6px;font:800 16px var(--font-ui);}
+.cs2-ref p{margin:0 0 8px;line-height:1.55;}
+.cs2-tab{border-collapse:collapse;font-variant-numeric:tabular-nums;width:100%;}
+.cs2-tab th,.cs2-tab td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:right;}
+.cs2-tab th:first-child{text-align:left;}
+.cs2-tab tfoot th{text-align:right;}
+.cs2-sw{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:-1px;}
+.cs2-sw.is-wet{background:var(--cs-wet);} .cs2-sw.is-dry{background:var(--cs-dry);} .cs2-sw.is-wl{background:var(--cs-wl);} .cs2-sw.is-dl{background:var(--cs-dl);} .cs2-sw.is-wd{background:var(--cs-wd);} .cs2-sw.is-dd{background:var(--cs-dd);}
+
+/* Test yourself, Problems: the problem's figure (outlines for expected counts, no dashes) and the table */
+.cs2-pfig .sk-exp{stroke-dasharray:none;stroke-width:2;}
+.cs2-pfig .sk-exp.mine{stroke:var(--muted);stroke-width:2.5;}
+.cs2-pfig .sk-crit.mine,.cs2-pfig .sk-mark.mine{stroke-dasharray:none;stroke:var(--muted);}
+.cs2-pfig .sk-crit.mine{stroke-width:3;}
+.cs2-g-die{fill:#FFFDF8;stroke:#4A4F57;stroke-width:1.2;} .cs2-g-pip{fill:#22262B;}
+.cs2-g-coin{fill:#D9A92E;stroke:#8A6512;stroke-width:1.2;} .cs2-g-coin-in{fill:none;stroke:#B98A1C;stroke-width:1;} .cs2-g-coin-m{fill:#A97B14;}
+.cs2-g-poppy{fill:#D7352B;} .cs2-g-poppy-c{fill:#2A2320;}
+.cs2-g-daisy{fill:#FFFFFF;stroke:#B9B3A4;stroke-width:.6;} .cs2-g-daisy-c{fill:#F2B705;}
+.cs2-g-cornflower{fill:#3B6FD8;} .cs2-g-cornflower-c{fill:#24418A;}
+.cs2-g-feed{fill:#E7DCC5;stroke:#7A5C38;stroke-width:1.2;} .cs2-g-arrow{fill:#5B4126;}
+.cs2-g-candy{stroke:rgba(0,0,0,.25);stroke-width:.8;} .cs2-g-shine{fill:#fff;opacity:.55;}
+.cs2-g-red{fill:#D62F2F;} .cs2-g-orange{fill:#EE8A1E;} .cs2-g-yellow{fill:#F2D027;} .cs2-g-green{fill:#3BA55C;} .cs2-g-purple{fill:#7B4FB8;}
+.cs2-g-agar{fill:#F1E3B8;stroke:#B9A574;stroke-width:1;} .cs2-g-colony-white{fill:#FFFFFF;stroke:#C9BFA6;stroke-width:.8;} .cs2-g-colony-red{fill:#C8373B;}
+.cs2-ctab{margin:10px auto 0;max-width:620px;overflow-x:auto;}
+.cs2-ctab table{border-collapse:collapse;width:100%;font:700 13px var(--font-ui);font-variant-numeric:tabular-nums;}
+.cs2-ctab caption{text-align:left;font:800 13.5px var(--font-ui);color:var(--muted);padding-bottom:4px;}
+.cs2-ctab th,.cs2-ctab td{padding:5px 4px;border:1px solid var(--line);text-align:center;}
+.cs2-ctab td.is-df{background:color-mix(in srgb, var(--cs-crit, #B8327A) 16%, transparent);color:var(--ink);font-weight:900;}
