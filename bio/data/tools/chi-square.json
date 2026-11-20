@@ -265,7 +265,7 @@
     }
   ],
   "explore": {
-    "about": "Tools v2 Explore (docs/tools-v2-chi-square-brief.md): a choice chamber of pill bugs. N bugs (and twice N); each case lists its chambers in the order col + 2 x row (wet column first, light row first), the opening counts and the null hypothesis. role names the chamber colour (chi-square.css).",
+    "about": "Tools v2 Explore (docs/tools-v2-chi-square-brief.md): a choice chamber of pill bugs. N bugs (and twice N); each case lists its chambers in the order col + 2 x row (wet column first, light row first), the opening counts and the null hypothesis. role names the chamber color (chi-square.css).",
     "purpose": "See when counts are too far off to blame on chance",
     "cue": "Drag a bug to the other side",
     "wander": "Let them wander",

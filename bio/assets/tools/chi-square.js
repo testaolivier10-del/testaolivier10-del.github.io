@@ -11,7 +11,7 @@
    (wet or dry, light or dark: df = 3). The null hypothesis is "no preference", so every chamber expects the same
    share of the bugs. ONE control on the picture: drag a bug into another chamber (keys: each chamber is a button;
    Enter brings one bug in, Delete sends one out). Each chamber's sign counts the bugs DRAWN in it and gives the
-   expected count. Under the scene the χ² graph: a bar along the χ² axis made of one coloured piece per chamber
+   expected count. Under the scene the χ² graph: a bar along the χ² axis made of one colored piece per chamber
    ((o − e)² / e), the chance curve for this df with its 5% tail past the critical value, and dots for the chance
    runs. "Let them wander" lets every bug pick a chamber at random (the null is true): they walk there through the
    doorways, and a dot lands on the graph; about 1 run in 20 lands past the line. "40 bugs | 80 bugs"
@@ -182,11 +182,11 @@
     var cap;
     if(chk){
       var big = 0; res.terms.forEach(function(t, i){ if(t > res.terms[big]) big = i; });
-      cap = 'Each coloured piece is one category’s (o − e)²/e; together they make χ² = <b>' + F(res.chi2, 2) + '</b>, and the biggest share comes from <b>' + esc(x.cats[big]) + '</b>. χ² lands ' + (res.reject ? '<b>past</b>' : '<b>short of</b>') + ' the critical value ' + F(res.crit, 2) + ', so ' + (res.reject ? 'reject' : 'fail to reject') + ' the null.' +
-        (v.chi2Mine != null && Math.abs(v.chi2Mine - res.chi2) > Math.max(0.01, res.chi2 * 0.01) ? ' Your χ² is the grey marker.' : '');
+      cap = 'Each colored piece is one category’s (o − e)²/e; together they make χ² = <b>' + F(res.chi2, 2) + '</b>, and the biggest share comes from <b>' + esc(x.cats[big]) + '</b>. χ² lands ' + (res.reject ? '<b>past</b>' : '<b>short of</b>') + ' the critical value ' + F(res.crit, 2) + ', so ' + (res.reject ? 'reject' : 'fail to reject') + ' the null.' +
+        (v.chi2Mine != null && Math.abs(v.chi2Mine - res.chi2) > Math.max(0.01, res.chi2 * 0.01) ? ' Your χ² is the gray marker.' : '');
     } else {
       var typed = mineE.filter(isFinite).length;
-      cap = typed ? 'Your expected counts are the grey outlines; each gap between a bar and its outline adds to χ².' + (v.chi2Mine != null ? ' Your χ² is the grey marker' + (df ? ' on the curve.' : '.') : '')
+      cap = typed ? 'Your expected counts are the gray outlines; each gap between a bar and its outline adds to χ².' + (v.chi2Mine != null ? ' Your χ² is the gray marker' + (df ? ' on the curve.' : '.') : '')
         : 'These are the observed counts. Type the expected counts and they appear as outlines; type df and its χ² curve appears.';
     }
     S.redraw(host, '<div class="sk-fig">' + draw(v) + '</div><p class="sk-cap">' + cap + '</p>' + critMini(chk ? res.df : df));

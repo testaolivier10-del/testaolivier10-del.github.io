@@ -60,10 +60,12 @@ for (const [w, h] of [[390, 844], [1440, 900]].filter(x => !ONLY || x[0] === ONL
   await probe(page, 'Let them wander, 80 bugs', w, async () => { await page.click('.cs2-wander'); await page.waitForTimeout(2600); }, false);
   if (FLAG) {
     const fp = await ctx.newPage();
-    await fp.goto(BASE + '/environmental-science/tools/water-pollution.html'); await fp.waitForSelector('.tk2-knob'); await fp.waitForTimeout(900);
+    // the flagship is Premium: unlocked for this measurement only (docs/tools-v2-builder-brief.md, step 6)
+    await fp.route('**/assets/premium.js', async r => { const res = await r.fetch(); const body = (await res.text()).replace('function has(course) {', 'function has(course) { return true;'); await r.fulfill({ response: res, body }); });
+    await fp.goto(BASE + '/environmental-science/tools/water-pollution.html'); await fp.waitForSelector('.tk2-knob', { state: 'attached' }); await fp.waitForTimeout(1500);
     const cdp2 = await ctx.newCDPSession(fp); await cdp2.send('Emulation.setCPUThrottlingRate', { rate: RATE });
     await probe(fp, 'FLAGSHIP water pollution, fertilizer knob end to end and back', w, async () => {
-      const k = await fp.locator('.tk2-knob').first().boundingBox(), x0 = k.x + k.width / 2, y = k.y + k.height / 2, span = Math.min(260, w * 0.3);
+      const k = await fp.evaluate(() => { const e = [...document.querySelectorAll('.tk2-knob')].find(x => x.getBoundingClientRect().width > 0); const r = e.getBoundingClientRect(); return { x: r.x, y: r.y, width: r.width, height: r.height }; }), x0 = k.x + k.width / 2, y = k.y + k.height / 2, span = Math.min(260, w * 0.3);
       await fp.mouse.move(x0, y); await fp.mouse.down();
       for (let i = 0; i <= 24; i++) { await fp.mouse.move(x0 + span * i / 24, y); await fp.waitForTimeout(16); }
       for (let i = 24; i >= 0; i--) { await fp.mouse.move(x0 + span * i / 24, y); await fp.waitForTimeout(16); }

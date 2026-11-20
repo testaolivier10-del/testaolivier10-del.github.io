@@ -20,6 +20,8 @@
 .cs2-scene{position:relative;flex:1 1 auto;min-height:330px;border-radius:18px;overflow:hidden;background:var(--cs-bench0);}
 .cs2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
 .cs2-over{pointer-events:none;}
+/* the bugs on their own layer: a walk repaints them, not the bench, the tray or the signs */
+.cs2-bugs{will-change:transform;}
 @media (max-width:1023px){ .cs2-scene{flex:none;height:min(56vw,460px);min-height:340px;} }
 @media (max-width:640px){ .cs2-scene{height:clamp(360px,104vw,440px);border-radius:14px;} .cs2{gap:8px;} }
 .cs2-graph{position:relative;flex:none;height:206px;}
@@ -151,3 +153,4 @@
 .cs2-ctab caption{text-align:left;font:800 13.5px var(--font-ui);color:var(--muted);padding-bottom:4px;}
 .cs2-ctab th,.cs2-ctab td{padding:5px 4px;border:1px solid var(--line);text-align:center;}
 .cs2-ctab td.is-df{background:color-mix(in srgb, var(--cs-crit, #B8327A) 16%, transparent);color:var(--ink);font-weight:900;}
+.cs2-lines .tk2-cause.is-take{align-items:center;}
