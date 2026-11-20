@@ -153,15 +153,21 @@ Rate at a moment: the oxygen pill and the foam word replace Δy and Δt in the s
   drawing (gas and band measured in the cylinder, the legs and the tangent measured on the graph, the core measured
   on its balance, the knob on the drawn point). Frames at 390 and 1440: a real drag of the end point out to 5 and
   back, keys (End, the start point stepping), Start over, the moment Home and End and a drag along the curve, the core
-  keyed and dragged, reduced motion; every frame checked. Final run in the report below.
+  keyed and dragged, reduced motion; every frame checked. Final run: **896 passed, 0 failed** (84 to 90 state checks a
+  width, each running every check above; frames: 1,117 at 390 and 1,341 at 1440, all agreeing).
 - Real touch drag of the end knob at 390 with the graph at the bottom of the screen: it moves, the page does not
   scroll. Problems: a wrong answer gives "Not yet" and the method line.
-- Perf, CPU x4, same hour as the flagship (machine load 6 on 2 cores), drag out and back: see the report below.
+- Perf, CPU x4, same hour as the flagship (machine at load 6 to 9 on 2 cores), drag out and back: the end point
+  median 16.7 ms at 390 and 1440, p95 33 ms at 390 and 33 to 67 ms at 1440 (between runs); the moment knob median
+  16.7, p95 17 to 33 ms; the core median 16.7, p95 17 ms. The flagship's fertilizer drag in the same runs: median
+  33 ms, p95 83 to 100 ms at 390 and 167 ms at 1440.
 
 ## Not done, and what I am not happy with
 - No real phone, no screen reader pass, no real students; the independent review is still to come.
 - The scene at 1440 leaves wall between the timer and the clipboard; the apparatus is sized by the scene's height.
 - The end knob tweens behind a fast drag (each snap is a short tween), so the knob trails the finger by up to a
   fraction of a second; the numbers stay right on every frame.
+- The end point drag at 1440 under CPU x4 had one run with p95 67 ms (load 9); the other run 33 ms. Each frame
+  repaints the whole scene SVG (one layer); not split further.
 - The rise label on the moment tab can be hidden when the rise is tiny and nothing near it is clear (the cause line
   still has the number); the sweep allows that.
