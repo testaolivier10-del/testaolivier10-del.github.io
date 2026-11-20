@@ -211,15 +211,20 @@ unchanged. Open points for a person: `docs/anp-needs-author.md`, "3D anatomy, to
   leaves nothing on screen and the body moves to Test yourself's stage; a quiz answer wrong and another recorded as
   `anatomy-3d:<structure>:name|point`; back to Explore the body returns; reduced motion: the card fades in (no grow);
   locked: the Premium card, the tool does not run.
-- Performance: see "Not done" (headless software WebGL cannot measure the drawing honestly).
+- Every part (`--all` at 1440, each of the 85 found by name and checked as above): 1,246 checks passed before the run
+  hit its 40 minute limit (about 73 of the 85 parts; the browser closed under the limit, counted as 1 failure).
+- Performance (`--perf`, CPU x4, same hour; headless software WebGL): turning the body, median 2,150 ms and p95 3,733
+  ms a frame at 1440 (1,817 and 3,550 at 390); the same viewer on the NREMT body map, untouched by this build,
+  2,783 and 4,333 at 1440; the flagship's knob 33 ms median (p95 83 at 1440, 133 at 390). Our own per frame work (the
+  card following the body) 1.0 ms median, p95 3.1 ms (1440) and 3.6 ms (390). So the drawing dominates and is no
+  worse than before; it cannot be judged headless (see below).
 - Shots and the preview: `/mnt/user-data/outputs/anp-anatomy-3d-v2/` (`shots.html` lists them; `index.html` is the one
   file preview, which shows the frame and the loading still: the 3D body needs the site's server).
 
 ## Not done, and what I am not happy with
-- Performance cannot be judged here: with CPU x4 on this loaded machine the body's drawing takes about 2 s a frame in
-  headless Chromium (software WebGL), while the flagship's knob holds a 33 ms median (p95 100 ms at 1440, 67 ms at
-  390) in the same hour. Our own per frame work (the card following the body) is about 1 ms median, 2.8 ms p95 at
-  CPU x4; the drawing is the viewer's, unchanged from the old tool and the NREMT body map. A real phone check is needed.
+- Performance cannot be judged here: headless software WebGL draws the body at about 2 s a frame at CPU x4 (the NREMT
+  body map's, same viewer, is slower still), against the flagship's 33 ms. The frame time rule is not met in this
+  measurement and a real phone check is needed; our own per frame code is about 1 ms.
 - On a wide desktop the standing skeleton is narrow in a wide stage: the backdrop fills the stage, but the body uses
   about a quarter of its width (a person is tall).
 - The card keeps off its own part but can cover a neighbour (the duodenum's card over the liver); the student turns
