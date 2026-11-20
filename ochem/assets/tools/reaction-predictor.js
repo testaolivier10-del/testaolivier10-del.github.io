@@ -1002,14 +1002,16 @@
   var head = K.head({ purpose: 'Substrate and reagent decide SN1, SN2, E1 or E2.', how: { label: 'Show me how', onClick: function(){ startTour(); } } });
   stage.appendChild(head.el);
   var sceneBox = mk('div', 'rp2-scene');
-  sceneBox.innerHTML = '<svg class="rp2-svg" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep" aria-hidden="true"><defs>' + PB.defs() + '</defs>' +
+  /* Two layers: the still backdrop and tray behind, the molecule and its arrows in front on a layer of its own, so a
+     frame repaints only what moves (performance at CPU x4). */
+  sceneBox.innerHTML = '<svg class="rp2-svg rp2-back" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep" aria-hidden="true"><defs>' + PB.defs() + '</defs>' +
     '<rect class="rp2-wall" x="0" y="0" width="100%" height="100%" fill="url(#rs2g-bg)"/><ellipse class="rp2-spot" fill="url(#rs2g-spot)"/>' +
-    '<g class="rp2-trayg"></g><g class="rp2-mol"><g class="rp2-gl"></g><g class="rp2-sh"></g><g class="rp2-bo"></g><g class="rp2-at"></g><g class="rp2-lp"></g><g class="rp2-ch"></g></g>' +
+    '<g class="rp2-trayg"></g></svg><svg class="rp2-svg rp2-front" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep" aria-hidden="true"><g class="rp2-mol"><g class="rp2-gl"></g><g class="rp2-sh"></g><g class="rp2-bo"></g><g class="rp2-at"></g><g class="rp2-lp"></g><g class="rp2-ch"></g></g>' +
     '<g class="rp2-ar"></g><g class="rp2-fly"></g></svg><div class="rs2-labs" aria-hidden="true"></div>';
   stage.appendChild(sceneBox);
-  var svg = sceneBox.querySelector('svg'), G = {};
-  ['trayg', 'mol', 'gl', 'sh', 'bo', 'at', 'lp', 'ch', 'ar', 'fly'].forEach(function(n){ G[n] = svg.querySelector('.rp2-' + n); });
-  var spot = svg.querySelector('.rp2-spot'), labsEl = sceneBox.querySelector('.rs2-labs'), layer = K.layer(sceneBox);
+  var svg = sceneBox.querySelector('.rp2-front'), svgBack = sceneBox.querySelector('.rp2-back'), G = {};
+  ['trayg', 'mol', 'gl', 'sh', 'bo', 'at', 'lp', 'ch', 'ar', 'fly'].forEach(function(n){ G[n] = sceneBox.querySelector('.rp2-' + n); });
+  var spot = svgBack.querySelector('.rp2-spot'), labsEl = sceneBox.querySelector('.rs2-labs'), layer = K.layer(sceneBox);
   var bar = mk('div', 'rp2-bar');
   bar.innerHTML = '<div class="rp2-picks"><label class="rs2-pick rp2-pick"><span>Substrate</span><select id="rpSubSel" aria-label="Substrate"></select></label>' +
     '<label class="rs2-pick rp2-pick is-main"><span>Reagent</span><select id="rpRgtSel" aria-label="Reagent"></select></label></div>' +
@@ -1051,7 +1053,7 @@
     if(showBar && PHONE && cue && cue.active()) bh += 44;
     var trayH = PHONE ? 132 : 150;
     LAY = { W: W, H: H, top: bh, trayH: trayH, box: { x: 12, y: bh, w: W - 24, h: Math.max(120, H - bh - trayH - 10) }, trayY: H - trayH };
-    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svgBack.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
     return LAY;
   }
 
@@ -1284,7 +1286,7 @@
   function placeNames(list, s){
     labsEl.innerHTML = list.map(function(n){ return '<span class="rs2-lab ' + n.cls + '">' + esc(n.t) + '</span>'; }).join('');
     var els = [].slice.call(labsEl.children), placed = [], balls = [];
-    S.m.atoms.forEach(function(a){ var q = s[a.id]; if(q && q.op > 0.5) balls.push({ x: q.x, y: q.y, r: q.r + 4 }); });
+    S.m.atoms.forEach(function(a){ var q = s[a.id]; if(q && q.op > 0.5) balls.push({ x: q.x, y: q.y, r: q.r * 1.03 + 5 }); });
     var bx = LAY.box, avoid = [];
     var sr = sceneBox.getBoundingClientRect();
     // the controls, the first visit cue and every charge badge stay clear of the names
@@ -1295,13 +1297,15 @@
       var r = e.getBoundingClientRect(); if(r.width) avoid.push({ l: r.left - sr.left - 4, t: r.top - sr.top - 4, r: r.right - sr.left + 4, b: r.bottom - sr.top + 4 }); });
     function clear(rc){
       if(rc.l < 4 || rc.r > LAY.W - 4 || rc.t < bx.y - 2 || rc.b > LAY.trayY - 4) return false;
-      if(placed.some(function(p){ return !(rc.r + 4 <= p.l || p.r + 4 <= rc.l || rc.b + 4 <= p.t || p.b + 4 <= rc.t); })) return false;
+      if(placed.some(function(p){ return !(rc.r + 5 <= p.l || p.r + 5 <= rc.l || rc.b + 5 <= p.t || p.b + 5 <= rc.t); })) return false;
       if(avoid.some(function(p){ return !(rc.r <= p.l || p.r <= rc.l || rc.b <= p.t || p.b <= rc.t); })) return false;
       // a ball's whole square (and 4 px) stays clear of a name
       return !balls.some(function(c){ return !(rc.r <= c.x - c.r || c.x + c.r <= rc.l || rc.b <= c.y - c.r || c.y + c.r <= rc.t); });
     }
+    // every name measured first, then all placed (one layout, not one per name)
+    var sizes = els.map(function(e){ var bb = e.getBoundingClientRect(); return [bb.width + 1, bb.height + 1]; }), spots = [];
     list.forEach(function(n, i){
-      var e = els[i], w = e.offsetWidth, h = e.offsetHeight, spot = null;
+      var e = els[i], w = sizes[i][0], h = sizes[i][1], spot = null;
       if(n.head){
         var hy = bx.y + h / 2 + 2;
         for(var dy = 0; dy < 90 && !spot; dy += 6){ var rc0 = { l: LAY.W / 2 - w / 2, t: hy + dy - h / 2, r: LAY.W / 2 + w / 2, b: hy + dy + h / 2 }; if(clear(rc0)) spot = { x: LAY.W / 2, y: hy + dy }; }
@@ -1316,10 +1320,10 @@
           }
         }
       }
-      if(!spot){ e.style.display = 'none'; return; }
-      e.style.left = f1(spot.x) + 'px'; e.style.top = f1(spot.y) + 'px';
-      placed.push({ l: spot.x - w / 2, t: spot.y - h / 2, r: spot.x + w / 2, b: spot.y + h / 2 });
+      spots.push(spot);
+      if(spot) placed.push({ l: spot.x - w / 2, t: spot.y - h / 2, r: spot.x + w / 2, b: spot.y + h / 2 });
     });
+    els.forEach(function(e, i){ var sp = spots[i]; if(!sp){ e.style.display = 'none'; return; } e.style.left = f1(sp.x) + 'px'; e.style.top = f1(sp.y) + 'px'; });
   }
 
   /* ---- the tray: what is in the flask at the end, with its rough share ---------------- */

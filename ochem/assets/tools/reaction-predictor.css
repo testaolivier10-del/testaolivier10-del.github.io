@@ -10,6 +10,7 @@
 .rp2 [hidden]{display:none !important;}
 .rp2-scene{position:relative;flex:1 1 auto;min-height:560px;border-radius:18px;overflow:hidden;background:var(--bg1);}
 .rp2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+.rp2-front{will-change:transform;overflow:visible;}
 @media (max-width:1023px){ .rp2-scene{flex:none;height:clamp(600px, calc(100vh - 300px), 780px);min-height:0;} }
 @media (max-width:640px){ .rp2-scene{height:540px;border-radius:14px;} .rp2{gap:8px;} }
 .rp2-lines{display:flex;align-items:center;gap:6px 18px;flex-wrap:wrap;flex:none;}
