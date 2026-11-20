@@ -94,6 +94,9 @@ const SHELL_BUDGETS = [
   /* NREMT scenario simulator, tools v2 Explore (nremt/assets/scenario-explore.js and .css): its own shell, loaded only
      by scenario-sim.html. Measured 35.3 KB (the drawn settings, five patient figures' clothes, faces and care). */
   ['nremt/scenario-explore', 36],
+  /* The NREMT v2 shared pieces: nremt-kit2.js (the adapter) and patient-draw.js (the drawn patient, review round 1 of the
+     scenario simulator). Measured 6.1 KB. */
+  ['nremt/kit2', 6.2],
   /* 249 -> 253 for cross-device sync (audit 2026-10, Fix-first 5). A sync
      used to replace whole namespaces and pull only on sign-in, so two signed-in
      devices erased each other's progress. account.js now carries a per-key
@@ -309,9 +312,7 @@ const SHELL_BUDGETS = [
      call's opening) and the six-call picker's "All calls" button. Measured 28.2 KB on scenario-sim.html. */
   /* 28.3 -> 28.8 (tool frame F2, docs/tools-frame-notes/nremt.md): task heads, the stage dropdowns and finished
      cards in the tool CSS. Measured 28.5 KB. */
-  /* 28.8 -> 30.4 (tools v2 scenario sim, 2026-11-19): scenario-sim.html now also loads the NREMT kit2 adapter
-     (nremt-kit2.js) and the monitor's shared callouts and pause; measured 30.2 KB on scenario-sim.html. */
-  ['nremt', 30.4],
+  ['nremt', 28.8],
   /* 92 -> 96. This is a first-paint cost on EVERY ochem page, so it is worth
      saying what moved rather than just moving the number: the course went from
      64 topics to 83 across four new chapters, and three shared files grew with
@@ -1210,6 +1211,9 @@ function bucketOf(relPath) {
   // The NREMT scenario simulator's Explore (tools v2, docs/tools-v2-nremt-scenario-sim-brief.md) loads only on that
   // tool's page, so it is its own shell (the drawn settings, patients and care: about 31 KB gzipped).
   if (parts[0] === 'nremt' && parts[1] === 'assets' && /^scenario-explore\./.test(parts[2] || '')) return 'nremt/scenario-explore';
+  // The NREMT tools v2 shared pieces (the kit2 adapter nremt-kit2.js and the drawn patient patient-draw.js) load only
+  // on the NREMT pages rebuilt to v2, so they are their own shell, not part of every NREMT page's.
+  if (parts[0] === 'nremt' && parts[1] === 'assets' && /^(nremt-kit2|patient-draw)\.js$/.test(parts[2] || '')) return 'nremt/kit2';
   // The shared 3D body (assets/body3d/viewer.js) loads only on the NREMT body
   // map and the A&P 3D anatomy tool, so it is its own shell too.
   if (parts[0] === 'assets' && parts[1] === 'body3d') return 'assets/body3d';

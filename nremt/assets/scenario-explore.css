@@ -11,27 +11,25 @@
 .scx[hidden]{display:none;}
 .scx [hidden]{display:none !important;}
 
-/* the scene: the picture and the call card */
 .scx-scene{position:relative;display:flex;flex-direction:column;border-radius:18px;overflow:hidden;isolation:isolate;background:var(--sx-wood1);}
 .scx-scene.is-wide{display:grid;grid-template-columns:minmax(0,1fr) 380px;height:clamp(540px,calc(100vh - 240px),700px);}
 @media (min-width:1200px){.scx-scene.is-wide{grid-template-columns:minmax(0,1fr) 420px;}}
 .scx-pic{position:relative;min-width:0;min-height:0;overflow:hidden;background:#BDB8AE;}
 .scx-scene.is-wide .scx-pic{height:100%;}
-.scx-svg{position:absolute;inset:0;width:100%;height:100%;display:block;transition:opacity .26s ease;}
-.scx-svg.is-fade{opacity:0;}
+.scx-layers{position:absolute;inset:0;transition:opacity .26s ease;}
+.scx-layers.is-fade{opacity:0;}
+.scx-svg{position:absolute;inset:0;width:100%;height:100%;display:block;will-change:transform;}
 .scx-lead{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2;}
 .scx-labs{position:absolute;inset:0;pointer-events:none;z-index:3;}
 .scx-mon{position:absolute;z-index:2;}
 .scx-who{position:absolute;left:10px;bottom:10px;margin:0;padding:4px 10px;border-radius:999px;background:rgba(20,26,28,.78);color:#fff;font:800 12.5px var(--font-ui);z-index:3;}
 
-/* the signs: each a layer that fades (the picture never swaps) */
 .scx-sk{opacity:0;transition:opacity .9s ease;}
 .scx-pale{fill:#F4F6F2;} .scx-pale.is-on{opacity:.42;}
 .scx-blue{fill:#5D79B0;} .scx-blue.is-on{opacity:.2;}
 .scx-hot{fill:#E35A44;} .scx-hot.is-on{opacity:.24;}
 .scx-mot{fill:url(#scx-mot);} .scx-mot.is-on{opacity:.95;}
 .scx-hives{opacity:0;transition:opacity .9s ease;} .scx-hives.is-on{opacity:1;}
-/* the face: the shared NREMT face (nremt/assets/patient-draw.js), styled as on the flowcharts */
 .scx-nose{fill:none;stroke:#B0735E;stroke-width:1.3;opacity:.7;}
 .scx-brow{fill:none;stroke:#5A4030;stroke-width:2.2;stroke-linecap:round;}
 .scx-lid{fill:none;stroke:#6E4A3A;stroke-width:1.6;stroke-linecap:round;}
@@ -42,7 +40,6 @@
 .scx-lips{fill:#C9867A;fill-opacity:.55;transition:fill .9s ease,fill-opacity .9s ease;}
 .scx-fig.is-blue .scx-lips{fill:#5B6FB8;fill-opacity:.8;}
 .scx-sweat{fill:#E7F4FF;stroke:#8DB8D9;stroke-width:1;opacity:0;transition:opacity .9s ease;} .scx-fig.is-sweat .scx-sweat{opacity:1;}
-/* gloves, forearms, pads, masks and the AED: the shared drawing, the flowcharts' colours */
 .scx-glove{fill:url(#scx-nit);stroke:#3A3492;stroke-width:1.5;stroke-linejoin:round;}
 .scx-cuff{fill:url(#scx-nit);} .scx-rim{fill:#9D99EE;stroke:#3A3492;stroke-width:1.3;}
 .scx-gl-cr{fill:none;stroke:#3A3492;stroke-width:1.2;stroke-linecap:round;opacity:.75;}
@@ -64,7 +61,6 @@
 @keyframes scx-br{0%,100%{opacity:0;transform:scale(.94);}45%{opacity:.16;transform:scale(1.04);}}
 .scx-fig.no-anim *,.scx-on.no-anim .scx-it{transition:none !important;}
 
-/* the care: each item settles on from slightly larger, as if put on from above; off, it fades */
 .scx-it{opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(1.14);transition:opacity .45s ease,transform .55s cubic-bezier(.2,.8,.3,1);}
 .scx-it.is-on{opacity:1;transform:none;}
 .scx-it[data-k="warm"]{transform:translateY(-6%);}
@@ -84,7 +80,6 @@
 .scx-pool.is-on{opacity:1;}
 .scx.is-off .scx-breath,.scx.is-off .scx-push,.scx.is-off .scx-bag,.scx.is-off .scx-jet{animation:none !important;}
 
-/* the words on the patient */
 .scx-lab{position:absolute;padding:3px 9px;border-radius:999px;font:800 12.5px/1.3 var(--font-ui);white-space:nowrap;background:#FFFFFF;color:var(--sx-pt-ink);
   border:2px solid var(--sx-pt);box-shadow:0 2px 6px rgba(0,0,0,.22);opacity:0;transition:opacity .3s ease;}
 .scx-lab.is-in{opacity:1;}
@@ -95,8 +90,6 @@
 .scx-ld{stroke:var(--sx-pt);stroke-width:2;} .scx-ld.is-act{stroke:var(--sx-act);} .scx-ld.is-bad{stroke:#B3261E;}
 .scx-dot{fill:#fff;stroke:var(--sx-pt);stroke-width:2;} .scx-dot.is-act{stroke:var(--sx-act);} .scx-dot.is-bad{stroke:#B3261E;}
 
-/* the monitor, on the scene (the run's monitor, smaller: the trace and the four numbers in a row). The page's own
-   monitor rules (scenario-sim.html, its phone pass) are stronger than a class, so these carry the stage's classes. */
 .scx-mon{overflow:hidden;border-radius:14px;}
 .ls-root .ls-stage .scx-scene .scx-mon .mon{margin:0;height:100%;display:flex;flex-direction:column;padding:6px 7px 7px;border-radius:14px;box-shadow:0 6px 16px rgba(0,0,0,.35);}
 .ls-root .ls-stage .scx-scene .scx-mon .mon-top{margin:0 2px 4px;}
@@ -121,7 +114,6 @@
 .ls-root .ls-stage .scx-scene:not(.is-wide) .scx-mon .mon-u{display:none;}
 .ls-root .ls-stage .scx-scene:not(.is-wide) .scx-mon .mon-tile[data-k="spo2"] .mon-u{display:block;}
 
-/* the call card: a wooden board, a metal clip, the paper */
 .scx-board{position:relative;padding:22px 12px 12px;background:linear-gradient(160deg,var(--sx-wood0),var(--sx-wood1));min-width:0;min-height:0;display:flex;}
 .scx-scene.is-wide .scx-board{padding:26px 14px 14px 12px;box-shadow:inset 6px 0 12px rgba(0,0,0,.18);}
 .scx-clip{position:absolute;left:50%;top:4px;transform:translateX(-50%);width:110px;height:26px;border-radius:7px 7px 10px 10px;
@@ -176,7 +168,6 @@
 .scx-cuehost{position:absolute;inset:0;pointer-events:none;z-index:5;}
 .scx-cuehost .tk2-cue{pointer-events:none;}
 
-/* the cause line under the picture: the same colours as the picture */
 .scx-lines{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;}
 .scx .tk2-cz.is-act{--cz:var(--sx-act);--cz-ink:var(--sx-act);}
 .scx .tk2-cz.is-pt{--cz:var(--sx-pt);--cz-ink:var(--sx-pt-ink);}
@@ -184,7 +175,6 @@
 .scx .tk2-cz.is-down{--cz:var(--sx-down);color:#fff;background:var(--sx-down);border-color:var(--sx-down);}
 .scx .tk2-cz.is-same{--cz:var(--sx-same);--cz-ink:var(--sx-same);}
 
-/* reduced motion: a short cross fade, the result at once */
 @media (prefers-reduced-motion: reduce){
   .scx-it,.scx-pool,.scx-stain{transition:opacity .2s ease !important;transform:none !important;}
   .scx-breath.is-on,.scx-push,.scx-bag,.scx-jet{animation:none !important;}
@@ -192,7 +182,6 @@
   .scx-board.is-turn .scx-body,.scx-board.is-turn .scx-acts{animation:none;}
 }
 
-/* "?" */
 .scx-ref h3{margin:0 0 6px;}
 .scx-ref-l{padding-left:18px;margin:8px 0;}
 .scx-ref-l li{margin:0 0 6px;}
@@ -206,13 +195,11 @@
 :root[data-theme="dark"] .scx-enext{color:#0F1F1B;}
 .scx-belly{transition:opacity 1s ease;} .scx-belly.is-off{opacity:0;}
 .scx-cop{fill:#1F2A3C;} .scx-cop2{fill:#26344A;}
-/* a newborn (NRP): three compressions, then one breath with the bag: 90 compressions and 30 breaths a minute */
 .scx-on.is-nrp .scx-it[data-k="cpr"].is-on .scx-push{animation:scx-nrp 2s linear infinite;}
 @keyframes scx-nrp{0%,25%,50%,75%,100%{transform:none;}12.5%,37.5%,62.5%{transform:scale(.93);}}
 .scx-on.is-nrp .scx-it[data-k="bvm"].is-on .scx-bag{animation:scx-nrpbag 2s linear infinite;transform-box:fill-box;transform-origin:center bottom;}
 @keyframes scx-nrpbag{0%,75%,100%{transform:none;}87.5%{transform:scaleX(.62);}}
 .scx.is-off .scx-on.is-nrp .scx-push,.scx.is-off .scx-on.is-nrp .scx-bag{animation:none !important;}
-/* phones: the cause line between the picture and the card, on a strip of paper; a slimmer monitor (no title bar) */
 .scx-scene > .scx-lines{background:var(--sx-paper);padding:6px 10px;}
 .ls-root .ls-stage .scx-scene:not(.is-wide) .scx-mon .mon-top{display:none;}
 .ls-root .ls-stage .scx-scene:not(.is-wide) .scx-mon .mon-lane{height:20px;}

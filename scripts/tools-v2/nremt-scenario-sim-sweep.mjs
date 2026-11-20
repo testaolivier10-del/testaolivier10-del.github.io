@@ -113,7 +113,11 @@ async function measure(page) {
     }
     const cause = document.querySelector('.scx .tk2-cause');
     const pills = [...cause.querySelectorAll('.tk2-cz')].map(p => Math.round(p.getBoundingClientRect().top));
-    return { P: R(pic, 'picture'), board: R(box.querySelector('.scx-board'), 'card'), labs, mon, who, tiles, cue: cue ? R(cue, 'cue') : null, ch, drawn, texts,
+    // review round 1, item 14: the tourniquet's letters on screen, the SpO2 unit never cut off
+    const tq = [...box.querySelectorAll('.scx-it.is-on .scx-tqt')].map(t => { const m = t.getScreenCTM(); return parseFloat(t.getAttribute('font-size')) * Math.hypot(m.a, m.b); });
+    const su = box.querySelector('.scx-mon .mon-tile[data-k="spo2"] .mon-u');
+    const unitCut = su && getComputedStyle(su).display !== 'none' ? su.scrollWidth > su.clientWidth + 1 : false;
+    return { tq, unitCut, unit: su ? su.textContent : '', chain: cause.textContent, P: R(pic, 'picture'), board: R(box.querySelector('.scx-board'), 'card'), labs, mon, who, tiles, cue: cue ? R(cue, 'cue') : null, ch, drawn, texts,
       scrollW: document.documentElement.scrollWidth, vw: innerWidth, vh: innerHeight, wide: box.classList.contains('is-wide'), causeH: cause.getBoundingClientRect().height,
       causeRows: cause.classList.contains('is-take') ? (() => { const r = document.createRange(); r.selectNodeContents(cause); return new Set([...r.getClientRects()].map(x => Math.round(x.top))).size; })() : new Set(pills).size };
   });
@@ -134,6 +138,9 @@ function check(m, tag, causeH0) {
   else ok(m.P.h >= m.vh * 0.4, `${tag}: the picture is only ${Math.round(m.P.h)} px tall`);
   const small = m.texts.filter(t => t.px < 11 - 0.01);
   ok(!small.length, `${tag}: text under 11 px: ${small.slice(0, 3).map(t => t.t + ' ' + t.px.toFixed(1)).join(', ')}`);
+  m.tq.forEach(px => ok(px >= 11 - 0.01, `${tag}: the TQ tag's letters are ${px.toFixed(1)} px`));
+  ok(!m.unitCut, `${tag}: the SpO2 unit "${m.unit}" is cut off`);
+  ok(!/\d+ findings?|\bBirth\b/.test(m.chain) && !m.labs.some(l => /\d+ findings?|"Birth"/.test(l.n)), `${tag}: a count or "Birth" named (${m.chain})`);
   if (m.vw <= 640) { ok(m.causeRows <= 2, `${tag}: cause line ${m.causeRows} rows`); if (causeH0 != null) ok(Math.abs(m.causeH - causeH0) < 1.5, `${tag}: cause line height changed ${causeH0} -> ${m.causeH}`); }
 }
 
@@ -154,6 +161,9 @@ async function sweep(w) {
           await choose(page, way === 'first' ? 0 : n - 1); await idle(page);
           m = await measure(page);
           check(m, `${w}${dark ? ' dark' : ''} ${id} ${way} step ${k + 1}`, causeH0);
+          const s2 = await S(page);
+          ok(!(s2.drawn.care.cpr && s2.drawn.care.o2), `${w} ${id} ${way} step ${k + 1}: an oxygen mask under compressions`);
+          if (s2.hadSpo2) ok(!/probe/.test(m.unit), `${w} ${id} ${way} step ${k + 1}: "probe not on yet" after a reading`);
         }
         const st = await S(page);
         ok(!!st.ending, `${w} ${id} ${way}: the walk reached an ending`);
@@ -244,6 +254,40 @@ async function frames() {
     ok(await page.evaluate(() => { const m = document.querySelector('#monHost .mon'); return !m || true; }), `${w} frames: Explore shown over a run`);
     ok(!errs.length, `${w} frames: console errors: ${errs.slice(0, 3).join(' | ')}`);
     if (SHOTS) await page.screenshot({ path: `${SHOTS}/frames-end-${w}.png` });
+    await browser.close();
+  }
+  // review round 1, items 1 to 9: the picture and the words follow the case
+  {
+    const { browser, page, errs } = await open(1440, false, { reduced: true, noCue: true });
+    const walk = async (id, picks) => { await call(page, id); await idle(page); const out = []; for (const i of picks) { await choose(page, i); out.push(await idle(page)); } return out; };
+    let r = await walk('s6', [0, 0, 0, 0]); let st = r[r.length - 1];
+    ok(st.node === 's6_shock_good' && !st.labs.includes('Not breathing') && !st.drawn.care.cpr && st.drawn.eyes === 'open', `case 1: s6 return of breathing clears "Not breathing", stops CPR, opens the eyes (${st.node} ${st.labs} ${st.drawn.care.cpr} ${st.drawn.eyes})`);
+    r = await walk('s18', [0, 0, 0]); st = r[r.length - 1];
+    ok(st.node === 's18_compressions' && !st.labs.includes('Not breathing') && !st.drawn.care.cpr, `case 1: s18 the newborn breathes and cries (${st.node} ${st.labs})`);
+    r = await walk('s6', [2, 0, 0, 1, 1]);
+    ok(r.every(x => !x.labs.includes('Pulse back') && !/Pulse back/.test(x.chain)), `case 2: no false "Pulse back" on s6's last choices (${r.map(x => x.labs).join(' | ')})`);
+    r = await walk('s6', [0, 0, 0]); st = r[r.length - 1];
+    ok(st.node === 's6_aed_good' && !st.drawn.care.cpr, `case 3: hands off the chest while the AED analyzes (${st.node} cpr ${st.drawn.care.cpr})`);
+    r = await walk('s3', [0]); st = r[0];
+    ok(st.node === 's3_watch_good' && !st.labs.includes('Coughing') && !/Coughing/.test(st.chain) && st.labs.includes('Cannot cough'), `case 4: s3 silent child is not "Coughing" (${st.labs} / ${st.chain})`);
+    for (const picks of [[0, 0, 0, 0, 0], [0, 0, 1, 0, 0]]) {
+      r = await walk('s15', picks);
+      ok(r.every(x => !x.labs.includes('Cyanosis')), `case 5: s15 no newborn "Cyanosis" on the mother (${r.map(x => x.node + ':' + x.labs).join(' | ')})`);
+      ok(r.every(x => !(x.shown && x.shown.hr === 128)), 'case 5: s15 the newborn HR 128 is not the mother\'s');
+      const nb = r.find(x => x.node === 's15_newborn'); if (nb) ok(!nb.labs.includes('Contractions') && !/Worse/.test(nb.chain), `case 5: after the birth, no "Contractions", no "Worse" from the baby's numbers (${nb.labs} / ${nb.chain})`);
+    }
+    for (const picks of [[0, 0, 0, 0], [1, 1, 1, 1]]) { r = await walk('s17', picks); ok(r.every(x => !x.labs.includes('Birth')), `case 6: s17 never "Birth" (${r.map(x => x.labs).join(' | ')})`); }
+    r = await walk('s24', [1, 0]); st = r[r.length - 1];
+    ok(!/Better|Worse/.test(st.chain), `case 7: HR 52 to 50 is not Better or Worse (${st.chain})`);
+    r = await walk('s14', [0, 0]); st = r[r.length - 1];
+    ok(/Still no pulse/.test(st.chain) && !/Worse/.test(st.chain), `case 7: s14 pulseless throughout is "Still no pulse" (${st.chain})`);
+    r = await walk('s5', [0, 0]); st = r[r.length - 1];
+    ok(st.drawn.care.epi && await page.evaluate(() => !!document.querySelector('.scx-it[data-k="epi"].is-on')), `case 8: the auto injector is drawn (${st.node})`);
+    r = await walk('s21', [0, 1, 0]); st = r[r.length - 1];
+    ok(!st.drawn.care.o2, `case 9: no oxygen mask on a pulseless, apneic patient (${st.node})`);
+    r = await walk('s21', [1]); st = r[0];
+    ok(st.node === 's21_prone' && st.view === 'prone' && st.labs.includes('Knee on his back'), `case 15: s21 face down with weight on his back (${st.view} ${st.labs})`);
+    ok(!errs.length, `cases: console errors: ${errs.slice(0, 3).join(' | ')}`);
     await browser.close();
   }
   // reduced motion: the result at once

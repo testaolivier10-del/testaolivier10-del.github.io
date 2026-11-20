@@ -27,7 +27,6 @@
   'use strict';
 
   /* ---- Reference ranges: reference-cards.html "Pediatric vital signs" ---- */
-  // [label, from (months, inclusive), to (months, exclusive), HR, RR, SBP low (array = range in the card)]
   var REF = [
     { key: 'newborn',    label: 'Newborn (0–1 mo)',     from: 0,   to: 1,   hr: [100, 180], rr: [30, 60], sbp: [60] },
     { key: 'infant',     label: 'Infant (1–12 mo)',     from: 1,   to: 12,  hr: [100, 160], rr: [25, 50], sbp: [70] },
@@ -45,15 +44,12 @@
     return REF[REF.length - 1];
   }
 
-  /* Lowest acceptable systolic. reference-cards.html: "For a child aged 1 to
-     10, ... roughly 70 + (2 x age in years)"; otherwise the row's figure
-     (the lower end where the card gives a range, the adult 90). */
+  /* Lowest acceptable systolic. reference-cards.html: "For a child aged 1 to */
   function sbpLow(months){
     var r = refFor(months);
     if(!r) return null;
     if(months >= 12 && months < 132) return 70 + 2 * Math.floor(months / 12);
-    /* Past 10 the floor stays at 90 (PALS); the school-age row's 82–90 means
-       90 at its older end. */
+    /* Past 10 the floor stays at 90 (PALS); the school-age row's 82–90 means */
     if(months >= 132 && r.key !== 'adult' && r.sbp.length > 1) return r.sbp[r.sbp.length - 1];
     return r.sbp[0];
   }
@@ -96,9 +92,7 @@
   }
 
   /* ---- The vitals line ---------------------------------------------------- */
-  /* "HR 118 · BP 108/70 · RR 22 · SpO₂ 96% · Temp 103.1 °F" and its variants.
-     Whatever is not one of the four monitor values stays as a note, worded
-     exactly as the case wrote it. */
+  /* "HR 118 · BP 108/70 · RR 22 · SpO₂ 96% · Temp 103.1 °F" and its variants. */
   function parseVitals(str){
     var o = { hr: null, sys: null, dia: null, rr: null, rrText: '', spo2: null, pulseless: false, notes: [] };
     if(!str) return o;
@@ -116,13 +110,11 @@
       if(/^CPR in progress$/i.test(p)){ o.pulseless = true; o.notes.push(p); used = true; }
       if(!used) o.notes.push(p);
     });
-    // "Observed: diaphoretic, RR 26" keeps its wording as a note too.
     return o;
   }
 
   /* ---- Time-critical forks ------------------------------------------------- */
-  /* fork node -> the node a "wait / something else first" choice leads to.
-     The drift heads for THAT node's printed vitals and stops there. */
+  /* fork node -> the node a "wait / something else first" choice leads to. */
   var HESITATE = {
     s1_start: 's1_delayed',
     s1_lifted_dressing: 's1_wait_worse',
@@ -158,9 +150,7 @@
     { key: 'legs',    label: 'Legs and feet', re: /\b(legs?|thighs?|knees?|hips?|ankles?|feet|foot)\b/i },
     { key: 'skin',    label: 'Skin', re: /\b(skin|pale|sweat|clammy|mottl|blotch|diaphore|hives|flush|cyan|blue|grey|gray|color|colour|hot|warm|cool|bruis)/i }
   ];
-  /* The back view's region. Not in REGIONS: it would change what the front
-     regions find (a "back blows" sentence is not a finding about the back of
-     the body), so it only matches the body's own back, buttocks and spine. */
+  /* The back view's region. Not in REGIONS: it would change what the front */
   var BACK = { key: 'back', label: 'Back and spine', re: /\b(back of (his|her|the) (body|trunk|chest)|across (his|her|the) (upper |lower )?back|on (his|her) back\b(?! seat)|upper back|lower back|spine|spinal|buttock)/i };
   var SURVEY = [
     { key: 'ms',   label: 'Mental status', re: /\b(alert|confused|unresponsive|responsive|drowsy|oriented|hard to wake|sleepy|agitated|awake|does not know|limp|floppy|answering|talking|quiet|seiz|shouting|wandering)/i },
@@ -184,8 +174,7 @@
     return String(text || '').replace(/\s+/g, ' ').split(/(?<=[.!?]["”']?)\s+(?=[A-Z"“'])/).map(function(s){ return s.trim(); }).filter(Boolean);
   }
 
-  /* Pure: findings for each region / survey item from a list of seen nodes,
-     newest first. [{ text, vitals, now }] -> { head: [{ text, now, dcap }] } */
+  /* Pure: findings for each region / survey item from a list of seen nodes, */
   function findings(seen, opt){
     var out = { birth: [] }, C = opt && opt.preg && window.NremtSim.care, all = everyRegion(C);
     all.forEach(function(r){ out[r.key] = []; });
@@ -269,8 +258,7 @@
     if(this.el.parentNode) this.el.parentNode.removeChild(this.el);
   };
 
-  /* Show a node's vitals. `hesitateTo` is the vitals string of the node waiting
-     costs, when this is a time-critical fork. */
+  /* Show a node's vitals. `hesitateTo` is the vitals string of the node waiting */
   Monitor.prototype.show = function(vitals, hesitateTo){
     var v = parseVitals(vitals);
     this.target = v;
@@ -279,7 +267,6 @@
     ['hr', 'sys', 'dia', 'rr', 'spo2'].forEach(function(k){ from[k] = self.shown[k]; });
     this.tween = { from: from, to: v, t0: performance.now(), dur: reduced() ? 0 : 1100 };
     if(this.tween.dur === 0) this.applyTween(1);
-    // Notes: the case's own words for everything that is not a monitor number.
     var notes = this.el.querySelector('.mon-notes');
     notes.innerHTML = v.notes.map(function(n){ return '<span class="mon-note">' + esc(n) + '</span>'; }).join('');
     notes.hidden = !v.notes.length;
@@ -330,8 +317,7 @@
       }
     }, 500);
   };
-  /* Off screen (another tab, Explore, "?"): the traces, the tween and the hesitation clock stop, and the time away
-     does not count as hesitating (tools v2: every timer stops when its stage hides). */
+  /* Off screen (another tab, Explore, "?"): the traces, the tween and the hesitation clock stop, and the time away */
   Monitor.prototype.pause = function(){
     if(this.paused) return;
     this.paused = Date.now();
@@ -371,8 +357,6 @@
     var r = function(x){ return Math.round(x); };
     set('hr', t.pulseless ? '0' : s.hr == null ? '—' : r(s.hr), t.pulseless ? 'low' : judge('hr', s.hr, m));
     set('spo2', s.spo2 == null ? '—' : r(s.spo2), judge('spo2', s.spo2, m));
-    // No saturation in the case yet: the probe is not on, which is what a real monitor would show (audit 2026-10).
-    // once a reading has been given, a later step without one is not "probe not on yet" (it was on): say nothing
     if(s.spo2 != null) this.hadSpo2 = true;
     el.querySelector('.mon-tile[data-k="spo2"] .mon-u').textContent = s.spo2 != null ? '%' : this.hadSpo2 ? '' : this.compact ? 'no probe' : 'probe not on yet';
     set('bp', s.sys == null ? '—' : r(s.sys) + '/' + r(s.dia), judge('sbp', s.sys, m));
@@ -383,11 +367,8 @@
     el.querySelector('[data-off="pleth"]').textContent = s.spo2 == null && !this.hadSpo2 ? 'Pulse ox not on yet' : '';
   };
 
-  /* Stylized traces. The ECG is a rate marker drawn as a generic complex, not
-     a rhythm to interpret (EMTs do not read rhythms; the label says
-     simulated). */
+  /* Stylized traces. The ECG is a rate marker drawn as a generic complex, not */
   function ecgY(p){
-    // p in [0,1) through one beat
     if(p < 0.10) return 0;
     if(p < 0.16) return 0.12 * Math.sin((p - 0.10) / 0.06 * Math.PI);     // P
     if(p < 0.22) return 0;
@@ -407,6 +388,7 @@
 
   Monitor.prototype.frame = function(t){
     this.raf = requestAnimationFrame(this.loop);
+    if(this.compact){ this.fc = (this.fc || 0) + 1; if(this.fc % 2) return; }
     if(this.tween && this.tween.dur){
       var f = Math.min(1, (t - this.tween.t0) / this.tween.dur);
       this.applyTween(1 - Math.pow(1 - f, 3));
@@ -416,8 +398,6 @@
     this.last = t;
     var still = reduced();
     var hr = this.target.pulseless ? null : this.shown.hr;
-    // the heart's own clock: beats advance at the shown rate, so a sweeping
-    // monitor writes each beat once where it happened
     var prev = this.beat || 0;
     if(hr != null && !still) this.beat = prev + dt * hr / 60;
     if(hr != null && !still && Math.floor(this.beat - 0.27) > Math.floor(prev - 0.27)){
@@ -432,18 +412,16 @@
 
   Monitor.prototype.drawLane = function(cv, rate, fn, kind, dt, still){
     if(!cv.isConnected) return;
-    var w = cv.clientWidth, h = cv.clientHeight, dpr = Math.min(2, window.devicePixelRatio || 1);
+    var w = cv.clientWidth, h = cv.clientHeight, dpr = this.compact ? 1 : Math.min(2, window.devicePixelRatio || 1), glow = !this.compact;
     if(!w || !h) return;
     if(cv.width !== Math.round(w * dpr) || cv.height !== Math.round(h * dpr)){ cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr); }
     var ctx = cv.getContext('2d');
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, w, h);
-    // monitor colours: ECG green, pleth cyan (the convention on bedside monitors)
     var col = kind === 'ecg' ? '#3DF08B' : '#3CD7F2';
     var mid = kind === 'ecg' ? h * 0.64 : h * 0.86, amp = kind === 'ecg' ? h * 0.5 : h * 0.66;
     var secs = 4; // seconds across the strip
     if(kind === 'ecg'){
-      // faint ECG paper grid: 0.2 s major squares
       ctx.strokeStyle = 'rgba(61,240,139,0.07)'; ctx.lineWidth = 1; ctx.beginPath();
       for(var gx = 0; gx <= w; gx += w / (secs * 5)){ ctx.moveTo(Math.round(gx) + 0.5, 0); ctx.lineTo(Math.round(gx) + 0.5, h); }
       for(var gy = mid % (w / (secs * 5)); gy <= h; gy += w / (secs * 5)){ ctx.moveTo(0, Math.round(gy) + 0.5); ctx.lineTo(w, Math.round(gy) + 0.5); }
@@ -480,39 +458,26 @@
       g.addColorStop(0, 'rgba(60,215,242,0.32)'); g.addColorStop(1, 'rgba(60,215,242,0.02)');
       ctx.fillStyle = g; path(true); ctx.fill();
     }
-    ctx.shadowColor = col; ctx.shadowBlur = 6;
+    if(glow){ ctx.shadowColor = col; ctx.shadowBlur = 6; }
     path(false); ctx.stroke();
     ctx.shadowBlur = 0;
     if(!still){
-      // the writing point
       var hp = (((now) % 1) + 1) % 1;
       ctx.fillStyle = '#fff';
-      ctx.shadowColor = col; ctx.shadowBlur = 10;
+      if(glow){ ctx.shadowColor = col; ctx.shadowBlur = 10; }
       ctx.beginPath(); ctx.arc(head * w, mid - fn(hp) * amp, 2.2, 0, Math.PI * 2); ctx.fill();
       ctx.shadowBlur = 0;
     }
   };
 
-  /* ---- The patient ------------------------------------------------------------
-     The figure is the body map's own 3D model (BodyParts3D, CC BY-SA 2.1 JP)
-     in the body map's look, translucent skin over the skeleton and organs,
-     rendered flat by scripts/build-body-figures.mjs; its region paths come
-     from the skeleton (neck line at the shoulders, arm lines down the axilla,
-     chest from abdomen at T12/L1, pelvis down to the groin). A child under 12
-     gets the child figure, with a child's larger head and shorter legs. Both
-     arms are one region and both legs another (findings name "arms" and
-     "legs", not sides); the back has its own view, and shows what the case
-     says about the back, buttocks or spine. A region with findings carries a
-     short callout beside the body: where (with the side, when the case names
-     one) and a word or two taken from the case's own words. */
+  /* ---- The patient ------------------------------------------------------------ */
   var VIEW_REGIONS = {
     front: [['head', ['simHead']], ['neck', ['simNeck']], ['chest', ['upper']], ['abdomen', ['simAbdomen']],
             ['arms', ['armL', 'armR']], ['legs', ['simLegL', 'simLegR']]],
     back:  [['head', ['simHead']], ['neck', ['simNeck']], ['back', ['simBack']], ['arms', ['armL', 'armR']], ['legs', ['legL', 'legR']]]
   };
   var SHORT = { head:'Head', neck:'Neck', chest:'Chest', abdomen:'Abdomen', arms:'Arms', legs:'Legs', back:'Back', ms:'Head', birth:'Perineum' };
-  /* Callout words: the first one or two of these the case's sentences contain,
-     most urgent first. `sev` marks the ones drawn in red. */
+  /* Callout words: the first one or two of these the case's sentences contain, */
   var WORDS = [
     [/\bspurt/i, 'Spurting bleed', 1], [/\b(bleeding heavily|heavy bleeding|pooling|soaked)/i, 'Heavy bleeding', 1],
     [/\b(no pulse|pulseless)/i, 'No pulse', 1], [/\b(not breathing|apneic)/i, 'Not breathing', 1], [/\bunresponsive/i, 'Unresponsive', 1],
@@ -551,8 +516,7 @@
     if(parent) parent.appendChild(n);
     return n;
   }
-  /* Where a region's callout points: the label anchor of its first path,
-     on the viewer's right-hand limb for arms and legs so callouts fan out. */
+  /* Where a region's callout points: the label anchor of its first path, */
   function anchorOf(f, key, paths){
     var k = paths.length > 1 ? paths[1] : paths[0];
     return f.anchors[k] || f.anchors[paths[0]];
@@ -562,8 +526,7 @@
     var self = this;
     this.months = opts.months;
     this.kid = this.months != null && this.months < 144;
-    /* The figure for the age: an infant under 1, a toddler under 5 (both in the
-       'case' figure set), the 5-to-12 child, or the adult. */
+    /* The figure for the age: an infant under 1, a toddler under 5 (both in the */
     this.kind = this.months == null || this.months >= 144 ? 'adult' : this.months < 12 ? 'infant' : this.months < 60 ? 'toddler' : 'child';
     this.he = !!opts.he;
     this.seen = [];
@@ -612,8 +575,6 @@
       this.ro = new ResizeObserver(function(){ self.layout(); });
       this.ro.observe(this.stage);
     }
-    // The case's findings can arrive before the figure does (the first step of
-    // every call): draw, then lay the callouts out for what has been seen.
     loadCare(function(){
       if(window.NremtSim.care) self.preg = window.NremtSim.care.pregnancy(self.open, self);
       if(self.F) self.update(self.seen);
@@ -670,14 +631,8 @@
     this.layout();
   };
 
-  /* The callouts: for each region with findings, a dot on the body, a leader
-     out to the side and a small card (where / what). A region of the case's
-     current step is coral, an earlier one the accent, a bleed red. The mental
-     status, which has no region of its own, rides on the head when the head
-     has nothing else to say. */
-  /* Pure: the callouts for a figure and the findings seen so far (also the scenario simulator's Explore,
-     nremt/assets/scenario-explore.js). fig: a body figure (front or back), view: 'front' | 'back', f: findings(),
-     res: the care layer's resolutions or null. -> [{ key, where, what, sev, fresh, x, y }] in the figure's px. */
+  /* The callouts: for each region with findings, a dot on the body, a leader */
+  /* Pure: the callouts for a figure and the findings seen so far (also the scenario simulator's Explore, */
   function pinsFor(fig, view, f, res){
     var items = [];
     if(!fig) return items;
@@ -687,8 +642,6 @@
       if(!list.length && key === 'head' && (f.ms || []).length){ list = f.ms; k = 'ms'; }
       if(!list.length) return;
       var at = anchorOf(fig, key, paths);
-      // a limb finding that names a side points at that limb (front view: the
-      // patient's right is on the viewer's left; back view: the reverse)
       if(paths.length > 1){
         var txt = list.map(function(x){ return x.text; }).join(' ');
         var R = /\bright\b/i.test(txt), L = /\bleft\b/i.test(txt);
@@ -696,7 +649,6 @@
           var viewerLeft = (R === (view !== 'back'));
           at = fig.anchors[paths[viewerLeft ? 0 : 1]] || at;
         }
-        // a thigh finding points at the thigh, not the knee
         if(key === 'legs' && /\bthigh/i.test(txt) && fig.lines && fig.lines.groinY) at = [at[0], fig.lines.groinY + (at[1] - fig.lines.groinY) * 0.55];
       }
       var w = words(list, res);
@@ -727,7 +679,6 @@
     var f = this.fig, st = this.stage, self = this;
     if(!f || !st.clientWidth) return;
     var SW = st.clientWidth, SH = st.clientHeight, bar = 46;
-    // the figure fills the stage height; the toolbar sits beside the feet
     var FH = SH - 18, FW = FH * f.w / f.h;
     if(FW > SW * 0.62){ FW = SW * 0.62; FH = FW * f.h / f.w; }
     var box = { x: (SW - FW) / 2, y: Math.max(8, (SH - FH) / 2 - 1), w: FW, h: FH }, k = FW / f.w;
@@ -787,7 +738,6 @@
       var base = (everyRegion(window.NremtSim.care).filter(function(r){ return r.key === key; })[0] || {}).label;
       if(b.tagName.toLowerCase() === 'g' && b.hasAttribute('data-r')) b.setAttribute('aria-label', base + (list.length ? ', ' + list.length + ' finding' + (list.length === 1 ? '' : 's') : ', nothing reported'));
     });
-    // the Back button says when the back has something to show
     var nb = (f.back || []).length;
     this.flip.classList.toggle('has', nb > 0);
     this.flip.classList.toggle('fresh', this.view === 'front' && (f.back || []).some(function(x){ return x.now; }));
