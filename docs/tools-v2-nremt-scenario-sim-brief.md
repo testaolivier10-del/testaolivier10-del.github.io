@@ -204,3 +204,16 @@ wide stages.
 Sweep checks added: items 1 to 9 and 15 as named cases in the frames run; in every walked step no oxygen mask under
 compressions and no "probe" word after a reading; at every state the TQ letters at least 11 px, the SpO2 unit not cut,
 no count or "Birth" named.
+
+Checks after round 1 (2026-11-19):
+- Sweep, one width per process: 360 8940, 390 8972, 430 8957, 600 9016, 768 8308, 820 8286, 1024 8614, 1280 8328,
+  1440 8476, 1920 8176 passed, 0 failed.
+- Frames run: 79 passed, 1 failed, the performance check: CPU x4, load average 6 to 10 (other sessions), choices at
+  1440 median 17.9 ms, p95 65 ms, the flagship's drag in the same process p95 20 ms; at 390 p95 49 ms (flagship 19 ms).
+  Main thread CPU per choice fell about a third after the layers (Performance metrics, 867 to 620 ms over 2 s at 1440)
+  but the noise of the machine is larger than the difference: to remeasure on a quiet machine before the final merge.
+- The flowcharts on the shared drawing: svg byte identical at 68 states; its kept sweep 390 1226 and 1440 1184 passed,
+  0 failed.
+- NREMT and kit tests 72 passed; check-site and check-weight pass; no conflict markers.
+- Also found and fixed: under the site's reduced motion rule every property gets a tiny transition, which left the
+  drawing's placement a frame behind when the words were placed (words on the face); placed groups never transition.
