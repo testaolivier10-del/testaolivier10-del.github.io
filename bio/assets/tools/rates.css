@@ -32,7 +32,7 @@
 @media (max-width:1023px){ .rt2-scene{flex:none;height:min(40vw,330px);min-height:280px;} .rt2[data-tab="pct"] .rt2-scene{height:min(60vw,440px);min-height:380px;} }
 @media (max-width:640px){ .rt2-scene{height:clamp(250px,72vw,300px);min-height:0;border-radius:14px;} .rt2[data-tab="pct"] .rt2-scene{height:clamp(340px,96vw,400px);min-height:0;} .rt2{gap:8px;} }
 .rt2-graph{position:relative;flex:none;height:250px;}
-@media (max-width:640px){ .rt2-graph{height:236px;} }
+@media (max-width:640px){ .rt2-graph{height:270px;} }
 .rt2-gsvg{position:absolute;inset:0;width:100%;height:100%;display:block;font-family:var(--font-ui);overflow:visible;touch-action:none;}
 .rt2-lines{display:flex;align-items:center;justify-content:space-between;gap:6px 18px;flex-wrap:wrap;flex:none;}
 .rt2-acts{display:flex;align-items:center;gap:6px 12px;flex:none;margin-left:auto;}
@@ -138,7 +138,8 @@
 .rt2-rtick.is-zero{stroke:var(--rt-start);stroke-width:2.4;}
 .rt2-rnum{fill:var(--rt-sub);font:700 11.5px var(--font-ui);}
 .rt2-rnum.is-zero{fill:var(--rt-start-ink);font-weight:900;}
-.rt2-clab{fill:var(--rt-ink);font:800 13px var(--font-ui);paint-order:stroke;stroke:var(--rt-wall0);stroke-width:3px;}
+.rt2-clab{fill:var(--rt-ink);font:800 13px var(--font-ui);paint-order:stroke;stroke:var(--rt-wood0);stroke-width:3px;}
+:root[data-theme="dark"] .rt2-clab{stroke:var(--rt-wood1);}
 /* the graph */
 .rt2-gpaper{fill:var(--rt-gpaper);stroke:color-mix(in srgb, var(--ink) 12%, transparent);}
 .rt2-ggrid{stroke:var(--rt-ggrid);stroke-width:1;}
@@ -162,3 +163,9 @@
 .rt-mine{stroke-dasharray:none;stroke-width:2;opacity:.9;}
 .rt-ghost{stroke-dasharray:none;stroke-width:2;}
 .rt-base{stroke-dasharray:none;stroke-width:1.2;}
+/* Problems: the figure keeps its own height (the stage body scrolls), so the table under it never squeezes it; its
+   words stay at least 11 px on a phone */
+.sk-fig:has(> svg.rt2-pfig){flex:none;}
+.bt-stage-slot:has(svg.rt2-pfig),.ls-prac-stage:has(svg.rt2-pfig){flex:none;}
+.rt2-pfig .tick,.rt2-pfig .lbl,.rt2-pfig .rt-d{font-size:14px;}
+.rt2-pfig .rt-lab{font-size:15px;}

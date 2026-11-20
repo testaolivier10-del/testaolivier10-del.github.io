@@ -99,7 +99,7 @@
       var on = (o.tris || []).some(function(tr){ return tr.i === i || tr.j === i; });
       p.push('<circle class="pt s1 rt-pt' + (on ? ' on' : '') + '" cx="' + sx(v).toFixed(1) + '" cy="' + sy(y[i]).toFixed(1) + '" r="5"/>');
     });
-    return '<svg class="bio-svg rt-fig" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(o.aria) + '">' + p.join('') + '</svg>';
+    return '<svg class="bio-svg rt-fig rt2-pfig" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(o.aria) + '">' + p.join('') + '</svg>';
   }
   function pctGraph(x, typed, chk){
     var n = x.items.length, top = 0;
@@ -120,7 +120,7 @@
       p.push('<text class="rt-d" x="' + (xi + bw / 2).toFixed(1) + '" y="' + (TP + ph + 30) + '" text-anchor="middle">start</text><text class="rt-d" x="' + (xf + bw / 2).toFixed(1) + '" y="' + (TP + ph + 30) + '" text-anchor="middle">end</text>');
       if(chk){ var pc = M.percentChange(it.initial, it.final); p.push('<text class="rt-lab" x="' + (xf + bw / 2).toFixed(1) + '" y="' + (Math.min(sy(it.final), sy(it.initial)) - 6).toFixed(1) + '" text-anchor="middle">' + (pc > 0 ? '+' : '') + F(pc, 1) + '%</text>'); }
     });
-    return '<svg class="bio-svg rt-fig" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc('Start and end values for ' + x.items.map(function(it){ return it.name; }).join(' and ') + '.') + '">' + p.join('') + '</svg>';
+    return '<svg class="bio-svg rt-fig rt2-pfig" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc('Start and end values for ' + x.items.map(function(it){ return it.name; }).join(' and ') + '.') + '">' + p.join('') + '</svg>';
   }
   function practiceStage(host, s){
     var x = s.input, a = s.answers || {}, chk = s.phase === 'checked', cap, svg;
@@ -251,11 +251,12 @@
         var Wd = graphBox.clientWidth, Hd = graphBox.clientHeight;
         if(!Wd || !Hd) return null;
         var phone = Wd < 560;
-        var g = { W: Wd, H: Hd, L: phone ? 40 : 52, R: phone ? 84 : 96, T: 30, B: 48 };
+        var g = { W: Wd, H: Hd, L: phone ? 40 : 52, R: phone ? 96 : 100, T: 30, B: 56, IN: 14 };
         g.pw = Wd - g.L - g.R; g.ph = Hd - g.T - g.B;
-        g.x = function(t){ return g.L + t / TMAX * g.pw; };
-        g.y = function(v){ return g.T + g.ph - v / VMAX * g.ph; };
-        g.t = function(x){ return (x - g.L) / g.pw * TMAX; };
+        // the readings sit a little inside the axes, so a knob at 0 never covers a tick number
+        g.x = function(t){ return g.L + g.IN + t / TMAX * (g.pw - g.IN); };
+        g.y = function(v){ return g.T + g.ph - g.IN - v / VMAX * (g.ph - g.IN); };
+        g.t = function(x){ return (x - g.L - g.IN) / (g.pw - g.IN) * TMAX; };
         return g;
       }
 
@@ -396,7 +397,7 @@
         E.pDy = pill(sLabs, 'is-dy'); E.pDt = pill(sLabs, 'is-dt'); E.pGas = pill(sLabs, 'is-gas');
         E.lcd = mk('text', 'rt2-lcdt', { x: g.lcd[0], y: g.lcd[1] + 6.5, 'text-anchor': 'middle' }, sLabs);
         E.what = mk('text', 'rt2-what', { x: fx, y: Math.min(g.H - 8, g.bench + 22), 'text-anchor': 'middle' }, sLabs); E.what.textContent = RUN.what;
-        E.foamL = mk('text', 'rt2-foaml', { 'text-anchor': 'end' }, sLabs);
+        E.foamL = mk('text', 'rt2-foaml', { 'text-anchor': 'start' }, sLabs);
         // the bubbles: a pool of circles, one transform each
         sBub.innerHTML = ''; bubs = [];
         for(var i = 0; i < 40; i++){ var c = mk('circle', 'rt2-bubble', { cx: 0, cy: 0, r: Math.max(2.4, 3.4 * s) }, sBub); c.style.display = 'none'; bubs.push({ el: c, on: false }); }
@@ -443,7 +444,7 @@
         // the ruler in tenths of the start mass
         var rl = mk('g', 'rt2-rulerg', null, sLive), lo = CORE.min / CORE.start - 1, hi = CORE.max / CORE.start - 1;
         mk('line', 'rt2-ruler', { x1: g.ruler, x2: g.ruler, y1: base - CORE.max * g.kM, y2: base - CORE.min * g.kM }, rl);
-        var stepPx = CORE.start * 0.1 * g.kM, every = stepPx >= 15 ? 1 : 2;
+        var stepPx = CORE.start * 0.1 * g.kM, every = stepPx >= 19 ? 1 : 2;
         g.rulerTicks = [];
         for(var k = Math.round(lo * 10); k <= Math.round(hi * 10); k++){
           var y = base - CORE.start * (1 + k / 10) * g.kM, big = k === 0;
@@ -453,8 +454,8 @@
         // labels
         sLabs.innerHTML = '';
         E.lStart = mk('text', 'rt2-clab', { x: g.bal[0], 'text-anchor': 'middle' }, sLabs); E.lStart.textContent = 'Start';
-        E.lAfter = mk('text', 'rt2-clab', { x: g.bal[1], 'text-anchor': 'end' }, sLabs); E.lAfter.textContent = 'After a day';
-        at(E.lStart, { y: g.startTop - 12 });
+        E.lAfter = mk('text', 'rt2-clab', { x: g.bal[1], y: Math.min(g.H - 8, g.bench + 24), 'text-anchor': 'middle' }, sLabs); E.lAfter.textContent = 'After a day';
+        at(E.lStart, { y: Math.min(g.H - 8, g.bench + 24) });
         E.lcd0 = mk('text', 'rt2-lcdt', { x: g.bal[0], y: g.bench - g.balH / 2 + 6, 'text-anchor': 'middle' }, sLabs); E.lcd0.textContent = F(CORE.start, CORE.dp) + ' ' + CORE.unit;
         E.lcd1 = mk('text', 'rt2-lcdt', { x: g.bal[1], y: g.bench - g.balH / 2 + 6, 'text-anchor': 'middle' }, sLabs);
         E.pPct = pill(sLabs, 'is-pct'); E.pChg = pill(sLabs, 'is-chg');
@@ -467,9 +468,9 @@
         var g = GG, h = [];
         gDefs.innerHTML = '<clipPath id="rt2-gclip"><rect x="' + g.L + '" y="' + g.T + '" width="' + g.pw + '" height="' + g.ph + '"/></clipPath>';
         h.push('<rect class="rt2-gpaper" x="0" y="0" width="' + g.W + '" height="' + g.H + '" rx="14"/>');
-        for(var v = 0; v <= VMAX + 1e-9; v += 5){ var y = g.y(v); h.push('<line class="rt2-ggrid" x1="' + g.L + '" x2="' + (g.L + g.pw) + '" y1="' + y.toFixed(1) + '" y2="' + y.toFixed(1) + '"/><text class="rt2-gtick" x="' + (g.L - 8) + '" y="' + (y + 4).toFixed(1) + '" text-anchor="end">' + v + '</text>'); }
-        for(var t = 0; t <= TMAX; t++){ var x = g.x(t); h.push('<line class="rt2-ggrid is-v" x1="' + x.toFixed(1) + '" x2="' + x.toFixed(1) + '" y1="' + g.T + '" y2="' + (g.T + g.ph) + '"/><text class="rt2-gtick" x="' + x.toFixed(1) + '" y="' + (g.T + g.ph + 17) + '" text-anchor="middle">' + t + '</text>'); }
-        h.push('<line class="rt2-gaxis" x1="' + g.L + '" x2="' + (g.L + g.pw) + '" y1="' + (g.T + g.ph) + '" y2="' + (g.T + g.ph) + '"/><line class="rt2-gaxis" x1="' + g.L + '" x2="' + g.L + '" y1="' + g.T + '" y2="' + (g.T + g.ph) + '"/>');
+        for(var v = 0; v <= VMAX + 1e-9; v += 5){ var y = g.y(v); h.push('<line class="rt2-ggrid" x1="' + g.x(0) + '" x2="' + (g.L + g.pw) + '" y1="' + y.toFixed(1) + '" y2="' + y.toFixed(1) + '"/><text class="rt2-gtick" x="' + (g.L - 8) + '" y="' + (y + 4).toFixed(1) + '" text-anchor="end">' + v + '</text>'); }
+        for(var t = 0; t <= TMAX; t++){ var x = g.x(t); h.push('<line class="rt2-ggrid is-v" x1="' + x.toFixed(1) + '" x2="' + x.toFixed(1) + '" y1="' + g.T + '" y2="' + g.y(0) + '"/><text class="rt2-gtick" x="' + x.toFixed(1) + '" y="' + (g.T + g.ph + 17) + '" text-anchor="middle">' + t + '</text>'); }
+        h.push('<line class="rt2-gaxis" x1="' + g.x(0) + '" x2="' + (g.L + g.pw) + '" y1="' + g.y(0) + '" y2="' + g.y(0) + '"/><line class="rt2-gaxis" x1="' + g.x(0) + '" x2="' + g.x(0) + '" y1="' + g.T + '" y2="' + g.y(0) + '"/>');
         h.push('<text class="rt2-gtitle" x="' + (g.L - 4) + '" y="18">' + esc(RUN.label + ' collected (' + UY + ')') + '</text>');
         h.push('<text class="rt2-gtick is-unit" x="' + (g.L + g.pw + 10) + '" y="' + (g.T + g.ph + 17) + '">' + esc('Time (' + UT + ')') + '</text>');
         var pts = []; for(var i = 0; i <= 120; i++){ var tt = TMAX * i / 120; pts.push(g.x(tt).toFixed(1) + ',' + g.y(f(tt)).toFixed(1)); }
@@ -533,7 +534,7 @@
           at(E.lvA, { y1: ya, y2: ya });
           var mid = clamp((ya + yb) / 2, g.cylIn[1] + 12, g.mouth - 12);
           E.pDy.set('Δy ' + F(dyR, RUN.dp) + ' ' + UY, cx + 18 * g.s + 8, mid, 'start');
-          E.pDt.set('Δt ' + dtS + ' ' + UT, g.tx, g.bench - 56 * g.s - 22, 'middle');
+          E.pDt.set('Δt ' + dtS + ' ' + UT, g.tx, Math.min(g.H - 14, g.bench + 22), 'middle');
           E.pGas.hide();
         } else {
           E.pDy.hide(); E.pDt.hide();
@@ -547,7 +548,7 @@
         if(fh < 1.5) d = 'M0 0';
         else { var nb = 5; d = 'M' + (fx - hwB).toFixed(1) + ' ' + base.toFixed(1) + 'L' + (fx - hwT).toFixed(1) + ' ' + (top + 3).toFixed(1); for(var i = 0; i < nb; i++){ var x0 = fx - hwT + 2 * hwT * i / nb, x1 = fx - hwT + 2 * hwT * (i + 1) / nb; d += 'Q' + ((x0 + x1) / 2).toFixed(1) + ' ' + (top - 5 * g.s * (i % 2 ? 0.6 : 1)).toFixed(1) + ' ' + x1.toFixed(1) + ' ' + (top + 3).toFixed(1); } d += 'L' + (fx + hwB).toFixed(1) + ' ' + base.toFixed(1) + 'Z'; }
         at(E.foamP, { d: d });
-        if(MD.tab === 'moment' && fh >= 6){ at(E.foamL, { x: fx - g.hw(top) - 6, y: top + 6 }); txt(E.foamL, rate >= 2.5 ? 'Fast fizz' : 'Slow fizz'); E.foamL.style.display = ''; }
+        if(MD.tab === 'moment' && fh >= 6){ at(E.foamL, { x: fx + g.hw(top) + 6, y: top + 6 }); txt(E.foamL, rate >= 2.5 ? 'Fast fizz' : 'Slow fizz'); E.foamL.style.display = ''; }
         else E.foamL.style.display = 'none';
         // the readings on the clipboard: the rows of the interval
         if(E.rows) E.rows.forEach(function(r, i){
@@ -558,7 +559,8 @@
       }
       function paintGraph(R){
         var g = GG, avg = MD.tab === 'avg', ta = DR.a, tb = tEnd(), xa = g.x(ta), ya = g.y(f(ta)), xb = g.x(tb), yb = g.y(f(tb));
-        var avoid = [];
+        var avoid = [], kpts = avg ? [[xa, ya], [xb, yb]] : [[xb, yb]];
+        var knobs = function(b){ return kpts.some(function(k){ var dx = Math.max(b[0] - k[0], 0, k[0] - b[2]), dy = Math.max(b[1] - k[1], 0, k[1] - b[3]); return Math.hypot(dx, dy) < 26; }); };
         if(avg){
           GE.tan.style.display = 'none';
           at(GE.legT, { x1: xa, y1: ya, x2: xb, y2: ya }); at(GE.legY, { x1: xb, y1: ya, x2: xb, y2: yb }); at(GE.hyp, { x1: xa, y1: ya, x2: xb, y2: yb });
@@ -570,18 +572,18 @@
           // Δt: under its leg when there is room, else a bracket under the time axis
           var yAx = g.T + g.ph, sDt = 'Δt ' + R.dtS + ' ' + UT, sDy = 'Δy ' + F(R.dyR, RUN.dp) + ' ' + UY;
           var hyp = function(b){ return hitsLine(b, xa, ya, xb, yb, 3); };
-          var onLeg = ya < yAx - 30 && placePill(GE.pDt, sDt, [[(xa + xb) / 2, ya + 16, 'middle']], [hyp]);
+          var onLeg = ya < yAx - 30 && placePill(GE.pDt, sDt, [[(xa + xb) / 2, ya + 16, 'middle']], [hyp, knobs]);
           if(!onLeg){
-            var by = yAx + 30;
+            var by = yAx + 38;
             at(GE.brk, { d: 'M' + xa.toFixed(1) + ' ' + (by - 12).toFixed(1) + 'V' + (by - 6).toFixed(1) + 'H' + xb.toFixed(1) + 'V' + (by - 12).toFixed(1) });
             var cxm = clamp((xa + xb) / 2, g.L + 30, g.L + g.pw - 10);
             GE.pDt.set(sDt, cxm, by + 4, 'middle');
           } else at(GE.brk, { d: 'M0 0' });
           avoid.push(function(b){ return overlap(b, GE.pDt.box(), 4); });
           var lowMid = Math.max((ya + yb) / 2, yb + 13);
-          placePill(GE.pDy, sDy, [[xb + 9, lowMid, 'start'], [xb + 9, Math.min(ya - 2, yb + 30), 'start'], [xb + 9, ya + 14, 'start'], [xb - 9, lowMid, 'end', true]], avoid.concat([hyp]));
+          placePill(GE.pDy, sDy, [[xb + 9, Math.max(lowMid, yb + 36), 'start'], [xb + 27, lowMid, 'start'], [xb + 27, yb + 28, 'start'], [xb + 9, ya + 14, 'start'], [xb - 9, lowMid, 'end', true]], avoid.concat([hyp, knobs]));
           avoid.push(function(b){ return overlap(b, GE.pDy.box(), 4); });
-          placePill(GE.pRate, 'slope ' + R.rateS + ' ' + RU, [[g.L + 10, g.T + 14, 'start'], [g.L + 10, g.T + 44, 'start']], avoid.concat([hyp]));
+          GE.pRate.set('slope ' + R.rateS + ' ' + RU, g.W - 8, 16, 'end');
         } else {
           [GE.legT, GE.legY, GE.hyp, GE.pA, GE.brk].forEach(function(e){ e.style.display = ''; });
           GE.pA.style.display = 'none'; at(GE.brk, { d: 'M0 0' });
@@ -597,17 +599,17 @@
           var tanHit = function(b){ return hitsLine(b, x0, g.y(f(tb) + sl * (g.t(x0) - tb)), x1, g.y(f(tb) + sl * (g.t(x1) - tb)), 3); };
           var sRun = 'run 1 ' + UT, sRise = 'rise ' + F(slR, 1) + ' ' + UY;
           var yAx2 = g.T + g.ph;
-          var okRun = placePill(GE.pDt, sRun, [[(xb + x2) / 2, yb + 16, 'middle']], [tanHit]);
+          var okRun = placePill(GE.pDt, sRun, [[(xb + x2) / 2, yb + 16, 'middle']], [tanHit, knobs]);
           if(!okRun){
-            var by2 = yAx2 + 30, lo = Math.min(xb, x2), hi = Math.max(xb, x2);
+            var by2 = yAx2 + 38, lo = Math.min(xb, x2), hi = Math.max(xb, x2);
             at(GE.brk, { d: 'M' + lo.toFixed(1) + ' ' + (by2 - 12).toFixed(1) + 'V' + (by2 - 6).toFixed(1) + 'H' + hi.toFixed(1) + 'V' + (by2 - 12).toFixed(1) });
             GE.pDt.set(sRun, clamp((xb + x2) / 2, g.L + 30, g.L + g.pw - 10), by2 + 4, 'middle');
           }
           avoid.push(function(b){ return overlap(b, GE.pDt.box(), 4); });
           var mid2 = (yb + y2) / 2;
-          placePill(GE.pDy, sRise, back ? [[x2 - 9, mid2, 'end'], [x2 - 9, y2 + 16, 'end'], [x2 - 9, y2 + 40, 'end']] : [[x2 + 9, mid2, 'start'], [x2 + 9, yb + 16, 'start'], [x2 + 9, yb + 40, 'start'], [x2 + 9, y2 - 14, 'start'], [x2 - 9, mid2, 'end']], avoid.concat([tanHit]));
+          placePill(GE.pDy, sRise, back ? [[x2 - 9, mid2, 'end'], [x2 - 9, yb - 16, 'end'], [x2 - 9, yb - 40, 'end'], [x2 - 9, y2 + 16, 'end']] : [[x2 + 9, mid2, 'start'], [x2 + 9, yb + 16, 'start'], [x2 + 9, yb + 40, 'start'], [x2 + 9, y2 - 14, 'start'], [x2 - 9, mid2, 'end']], avoid.concat([tanHit, knobs]));
           avoid.push(function(b){ return overlap(b, GE.pDy.box(), 4); });
-          placePill(GE.pRate, 'rate ≈ ' + R.rateS + ' ' + RU, [[g.L + 10, g.T + 14, 'start'], [g.L + g.pw - 10, g.T + g.ph - 18, 'end'], [g.L + 10, g.T + 44, 'start']], avoid.concat([tanHit]));
+          GE.pRate.set('rate ≈ ' + R.rateS + ' ' + RU, g.W - 8, 16, 'end');
         }
       }
       function paintCores(){
@@ -617,7 +619,7 @@
         at(E.coreHi, { d: 'M' + (bx - g.coreW * 0.22).toFixed(1) + ' ' + (top + g.coreW * 0.4).toFixed(1) + 'V' + (base - g.coreW * 0.2).toFixed(1) });
         E.coreHi.style.opacity = (0.25 + Math.min(0.6, gain * 2)).toFixed(2);
         E.drops.forEach(function(d, i){ var on = gain > 0.04 + i * 0.07; d.style.display = on ? '' : 'none'; if(on) at(d, { cx: bx + (i % 2 ? 1 : -1) * g.coreW * 0.24, cy: top + hgt * (0.3 + 0.22 * i) }); });
-        at(E.lAfter, { y: top - 30, x: g.bal[1] + g.coreW / 2 + 4 });
+        
         var mR = r2(m), chg = r2(mR - CORE.start), pc = chg / CORE.start * 100, pcR = r1(pc);
         txt(E.lcd1, F(mR, CORE.dp) + ' ' + CORE.unit);
         // the change bracket on the after core's left
@@ -795,14 +797,14 @@
           var a = TS.indexOf(MD.a), b = TS.indexOf(MD.b), k = a + ':' + b;
           if(!measured.length || measured[measured.length - 1].k !== k){ measured.push({ k: k, a: a, b: b, r: (VS[b] - VS[a]) / (TS[b] - TS[a]) }); if(measured.length > 3) measured.shift(); }
           var take = null;
-          if(a === 0 && b === N - 1) take = 'The average over the whole run, ' + F((VS[b] - VS[a]) / TMAX, RUN.d) + ' ' + RU + ', hides that the rate fell from ' + F(VS[1] - VS[0], RUN.d) + ' in the first minute to ' + F(VS[N - 1] - VS[N - 2], RUN.d) + ' in the last.';
-          else if(a >= N - 3 && b === N - 1) take = 'Flatter slope, smaller rate: the reaction is slowing down. ' + RUN.why;
+          if(a === 0 && b === N - 1) take = 'The average over the whole run hides the fall from ' + F(VS[1] - VS[0], RUN.d) + ' to ' + F(VS[N - 1] - VS[N - 2], RUN.d) + ' ' + RU + '.';
+          else if(a >= N - 3 && b === N - 1) take = 'Flatter slope, smaller rate: the reaction is slowing down.';
           if(take && St.mode === 'explore'){ cause.take(take); msg += ' ' + take; }
           goal('early', a === 0 && b === 1, 'The first minute: <b>' + F((VS[1] - VS[0]), RUN.d) + ' ' + esc(RU) + '</b>, the steepest stretch.');
           goal('late', a >= N - 3 && b === N - 1, 'Near the end: <b>' + F((VS[b] - VS[a]) / (TS[b] - TS[a]), RUN.d) + ' ' + esc(RU) + '</b>, smaller than at the start, so it is <b>slowing down</b>.');
           goal('whole', a === 0 && b === N - 1, 'The whole run averages <b>' + F((VS[N - 1] - VS[0]) / TMAX, RUN.d) + ' ' + esc(RU) + '</b>: faster than that at first, slower later.');
         } else if(R.tab === 'moment'){
-          if(DR.m >= TMAX * 0.75 && St.mode === 'explore'){ var tk = 'Late in the run the tangent is nearly flat: the rate has fallen. ' + RUN.why; cause.take(tk); msg += ' ' + tk; }
+          if(DR.m >= TMAX * 0.75 && St.mode === 'explore'){ var tk = 'A flatter tangent: the rate has fallen as the H₂O₂ runs out.'; cause.take(tk); msg += ' ' + tk; }
           goal('late', DR.m >= TMAX * 0.75, 'At ' + tStr(DR.m) + ' ' + esc(UT) + ' the tangent is nearly flat (about <b>' + F(r1(fd(DR.m)), 1) + ' ' + esc(RU) + '</b>): the reaction is <b>slowing down</b>.');
         } else {
           goal('loss', Math.abs(R.pc + 10) < 0.05, 'Lost <b>' + F(Math.abs(R.chg), CORE.dp) + ' ' + esc(CORE.unit) + '</b> of ' + F(CORE.start, CORE.dp) + ': <b>−10.0%</b>. A loss keeps its minus sign.');
@@ -812,7 +814,7 @@
       }
 
       /* ---------------------------------------------------- the first visit cue and "Show me how" */
-      var cue = K.cue(gLayer, { key: 'apbio-rates', text: EX.cue.avg, side: 'right', at: function(){ return GG ? [GG.x(MD.b) + 8, GG.y(f(MD.b))] : [0, 0]; } });
+      var cue = K.cue(gLayer, { key: 'apbio-rates', text: EX.cue.avg, side: 'above', at: function(){ return GG ? [GG.x(MD.b), GG.y(f(MD.b)) - 6] : [0, 0]; } });
       function hideCue(used){ if(cue.active()) cue.hide(used); }
       var tour = K.tour({ key: 'apbio-rates', label: 'Show me how', steps: [
         { id: 'end', text: 'Drag the knob. The rate between the two points is the slope: Δy ÷ Δt.', target: function(){ var h = MD.tab === 'avg' ? hB : MD.tab === 'moment' ? hM : hC; return h.knob; } },
