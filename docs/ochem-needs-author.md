@@ -1263,3 +1263,50 @@ intermediates) the board uses it on a wide screen. On a phone the two species st
 placed from that (the new bond in each atom's widest gap), so the same state can look different on a phone and on a
 desktop. Bonding and charges are the same.
 - **Status:** decided for the owner (review round 1).
+
+## 3D Molecule Viewer, tools v2 (2026-11-19)
+
+Brief: `docs/tools-v2-viewer-3d-brief.md`. The geometry is the unchanged `ochem/assets/mol3d-library.js`; what is new is
+that the picture now names shapes, draws one angle and reads R or S, so these points are visible to students.
+
+### v3-v2-expanded-octet: sp³d and sp³d² for PCl₅ and SF₆
+The VSEPR table (`mol3d.js`) gives PCl₅ sp³d and SF₆ sp³d², and the cause line and the Check yourself quiz say so (the
+quiz has asked it since before v2). Most general chemistry courses still teach these labels; current bonding models
+give d orbitals almost no part (three center four electron bonding). A note in "?" or dropping the hybridization for
+five and six groups would change quiz answers (record ids `phosphorus-pentachloride:hyb`, `sulfur-hexafluoride:hyb`).
+- **Status:** open; kept as before.
+
+### v3-v2-ideal-angles: idealized angles shown as "measured"
+The arc and the cause line show the angle measured from the drawn coordinates. Review round 1 (2026-11-19) found
+idealized angles shown as if measured (hydronium 107°, methanol's O at 109.5° with two lone pairs, formaldehyde 119°
+against 120° in "?", the chair at 109° and 109.5° on equivalent carbons, the boat at 105°). Decided for the owner:
+- **Measured where a solid value exists**, now drawn: ethene H–C–H 117.4° (OpenStax Organic Chemistry 1.8);
+  formaldehyde H–C–H 116.5° (microwave value; Roberts and Caserio 2.2 says 118°, so textbooks range 116 to 118°);
+  hydronium H–O–H about 113° (Wikipedia, citing Tang and Oka 1999 and Bell 1973), so it is drawn flatter than ammonia;
+  methanol C–O–H 108.5°, staggered; cyclopropane H–C–H 114.5° and C–H 1.08 Å (literature value quoted on the UW
+  Oshkosh cyclopropane page). Ammonia and water were already measured. Recheck 1: formamide's carbon at O=C–N 124.6°
+  and N–C–H 112.5° (equilibrium structure, Demaison et al.; Hirota et al. 124.7° and 112.7°; it had been drawn about
+  116° and 125°, as if N and H were swapped), and dimethyl ether's C–O–C at 111.7° (the reported value; it was 111.0°).
+- **Ideal where none is drawn**, labelled "ideal" on the picture and in the cause line ("tetrahedral ideal 109.5°"):
+  ethane, the stereocenter, the chair and the boat (rebuilt so every angle is exactly 109.47°; the measured chair
+  C–C–C is about 111°, said in its note), the methyl anion (now 109.5°, not ammonia's 107°), formamide's nitrogen, and the methyl
+  carbons of methanol, acetonitrile and dimethyl ether. A built molecule is all ideal.
+- **A three membered ring** says "tetrahedral, the ring squeezes it to 60°" (it said "tetrahedral 60°").
+- PhET's Real against Model switch was considered and not added (no new controls; rule 6). The "?" key lists which
+  angles are measured and which are ideal.
+- **Hydronium (recheck 1, reworded in recheck 2):** "?" ("This atom") says, for hydronium's oxygen only: "Measured wider
+  than 109.5°, though it has a lone pair. Oxygen holds electron pairs closer than nitrogen does, so the three bonding
+  pairs crowd each other and spread apart, and the hydrogens, which carry most of the ion's positive charge, push each
+  other away. Together these beat the lone pair's squeeze, which leaves ammonia at 107°." (Reviewer's wording; the +1
+  is formal and sits mostly on the hydrogens, so the oxygen is not called "positive".) Dimethyl ether's oxygen gets its
+  own line: wider than water's 104.5° though it has two lone pairs, because the methyl groups are much bigger than
+  hydrogens and push each other apart.
+- **For a person:** the formaldehyde value (116.5° or 118°), and a check of the hydronium and ether sentences above.
+- **Status:** decided for the owner; the two points above open.
+
+### v3-v2-back: when the H counts as "at the back"
+R or S is shown only while the lowest priority group points within 35° of straight away from the viewer; outside that
+the line says "turn it away to read R or S". The reading is the turn of 1, 2, 3 as drawn on screen, so it always
+matches the picture (unit tested over 4000 turns, and the mirror image always reads the other letter). The usual
+shortcut (H toward you: read and reverse) is not offered.
+- **Status:** decided for the owner.

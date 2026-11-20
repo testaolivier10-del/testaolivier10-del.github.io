@@ -98,7 +98,8 @@
       teaches: 'VSEPR, hybridization, stereochemistry',
       topic: ['molecular-geometry', 'hybridization', 'bonding'],
       terms: ['vsepr-theory', 'hybridization', 'wedge-and-dash-notation'],
-      studio: true
+      studio: true,
+      kit2: true     // tools v2 (docs/tools-v2-viewer-3d-brief.md)
     },
     {
       slug: 'conformations',
