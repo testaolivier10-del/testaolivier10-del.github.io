@@ -93,10 +93,10 @@ const SHELL_BUDGETS = [
   ['anatomy-physiology/predict-explore', 34],
   /* NREMT scenario simulator, tools v2 Explore (nremt/assets/scenario-explore.js and .css): its own shell, loaded only
      by scenario-sim.html. Measured 35.3 KB (the drawn settings, five patient figures' clothes, faces and care). */
-  ['nremt/scenario-explore', 36],
+  ['nremt/scenario-explore', 40], // 36 -> 40 (recheck 1): drawn postures (side, seated, laid flat then up), the newborn after a birth, the 3:1 sequence
   /* The NREMT v2 shared pieces: nremt-kit2.js (the adapter) and patient-draw.js (the drawn patient, review round 1 of the
      scenario simulator). Measured 6.1 KB. */
-  ['nremt/kit2', 6.2],
+  ['nremt/kit2', 7.4], // 6.2 -> 7.4 (recheck 1): the shared side lying (recovery) pose in patient-draw.js
   /* 249 -> 253 for cross-device sync (audit 2026-10, Fix-first 5). A sync
      used to replace whole namespaces and pull only on sign-in, so two signed-in
      devices erased each other's progress. account.js now carries a per-key

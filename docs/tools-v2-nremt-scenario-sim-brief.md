@@ -217,3 +217,47 @@ Checks after round 1 (2026-11-19):
 - NREMT and kit tests 72 passed; check-site and check-weight pass; no conflict markers.
 - Also found and fixed: under the site's reduced motion rule every property gets a tiny transition, which left the
   drawing's placement a frame behind when the words were placed (words on the face); placed groups never transition.
+
+## Recheck 1 (2026-11-19): BLOCK, fixed the same day
+
+Must fix:
+- N1. s3: once the grape is out the pin reads "Crying", not "Coughing", to the ending. An ending's words look back over
+  the call, so they no longer set what the patient does now (they had brought "Coughing" back from "effective cough").
+- N2. s18's right path plays the step as the case tells it: thumbs and bag at 3:1 for 4 s, then the hands come off, the
+  eyes open and the words say "Crying" (label and cause line). "Continue ventilation until his own breathing is
+  adequate" keeps the bag on.
+- N3. "Worse" for a lost pulse only when an earlier step showed one; a first finding of no pulse reads "No pulse".
+- N4. The cause line no longer splits a colon between digits ("Begin compressions at 3:1").
+- N5. The infant's encircling hands are the shared glove, two of them around the chest, thumbs on the lower sternum.
+- N6. Postures drawn, each change through the layers' cross fade:
+  - On the left side or the recovery position (s16, s17, s9, s8's wrong choice): a side lying pose in
+    `patient-draw.js` (`PD.lateral`: head in profile, both arms forward, upper knee bent, lower leg straight), sized
+    to the body; labelled "On her left side" or "Recovery position"; the oxygen mask and blow by drawn at the profile.
+  - Sitting: patients whose opening seats them (s11 on a kitchen chair, hands on her knees; s10 on the edge of his
+    bed; s2 on a bench; s20 on her bed) sit, knees toward us, the seat drawn. s11 "Lay her down" lays her flat for
+    2.6 s, then she sits back up as the words say; s10 "Lay him flat" lays him flat.
+- N7. Picture taller than wide (the 1024 stage): the monitor runs across the top and the patient lies head up, sized
+  to the picture, as on the phone.
+
+Should fix: s15 draws the newborn on her mother's chest once the case says she is born, and a step about the baby
+names the baby ("Baby HR 128, crying"), not the mother's steady numbers; s14 "AED pads" points at the back pad's edge;
+s12's mother's arm and hand are shaded with an edge and a soft light; the infant threshold is inclusive (s18 80 → 72
+reads "Worse"); the `nremt` budget is 28.0. Not done: s3 carried by her father (logged).
+
+Weight: `nremt/scenario-explore` 36 → 40 KB and `nremt/kit2` 6.2 → 7.4 KB for the poses, the newborn and the 3:1
+sequence (owner log).
+
+Sweep checks added (frames run): N1 (s3 no "Coughing" after the clear, "Crying" when it clears), N2 (in motion: the
+thumbs and the bag after picking compressions, then hands off and "Crying"; the bag kept on the next step), N3 (s6
+first checks not "Worse"), N4 ("3:1" whole in the cause line), N6 (s16, s17, s9, s8 drawn on the side with the pose
+and its word; s10 flat; s10 and s11 seated; s11 laid down then seated again).
+
+Checks after recheck 1 (2026-11-19):
+- Sweep, one width per process: 360 8952, 390 8959, 430 8864, 600 8999, 768 8220, 820 8145, 1024 8565, 1280 8567,
+  1440 8594, 1920 8518 passed, 0 failed.
+- Frames run: every functional check passes (104). Performance at CPU x4 swings with the machine's load (other
+  sessions, load average about 7): one run passed (390 choice p95 29.6 ms, 1440 24.8 ms against the flagship's 20 and
+  17.5), the last two failed (p95 58 to 92 ms with the flagship itself at 25 to 38). To remeasure on a quiet machine.
+- Flowcharts kept sweep (patient-draw.js gained `lateral`, which they do not call): 390 1226 and 1440 1184 passed.
+- NREMT and kit tests 72 passed; check-site and check-weight pass; no conflict markers.
+

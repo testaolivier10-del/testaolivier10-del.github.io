@@ -221,13 +221,12 @@ for a person to confirm:
   without normal breathing; no pulse with no breathing or only gasping). The page's BLS chart has two arms; unchanged.
 ## Scenario simulator, tools v2 Explore (2026-11-19, branch claude/tools-v2-nremt-scenario-sim)
 No case text, number or care rule changed. Drawing choices a person should check:
-- Posture is not drawn from the text: prone restraint (s21), recovery and left lateral positions stay face up; a
-  seated patient is laid down only for compressions or the AED. Is that acceptable, or should those nodes get a pose?
 - Cyanosis is drawn only while the case says blue and its SpO2 (when given) is under 94%; pallor stays until the
   case says the colour returned. Fair reading of the cases?
 - Compressions animate at about 109 a minute (AHA 100 to 120); the bag squeezes only at a rate the case gives.
 - The AED pad placement drawn: adult anterolateral; infant and toddler one anterior pad (the posterior pad not shown).
 - The epinephrine auto injector is drawn on the lateral thigh of the viewer's right (the patient's left).
-- (Review round 1) Still not drawn from the text: side lying / left lateral (s9, s16, s17), sitting forward in the
-  tripod position (s11), carried by her father (s3). The picture keeps them face up or upright.
+- (Recheck 1) Side lying, recovery position and seated postures are now drawn; still not drawn: s3 carried by her
+  father. The side pose is one generic recovery position (upper knee bent forward, arms forward): fine for a
+  pregnant patient on her left side (s16, s17)?
 - (Review round 1) Thresholds for "Better / Worse": HR 10 a minute or 10%, systolic 10, RR 4, SpO2 2 points. Reasonable?

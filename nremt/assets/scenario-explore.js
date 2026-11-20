@@ -653,7 +653,7 @@
     function seen(){
       var c = call(), out = [], n = node();
       if(!c || !n) return out;
-      out.push({ text: n.text, vitals: vline(n), now: true });
+      out.push({ text: n.ending ? '' : n.text, vitals: vline(n), now: true });  // an ending's words look back over the call: they are not what the patient does now
       for(var i = St.path.length - 1; i >= 0; i--){ var p = St.path[i], m = c.nodes[p.from]; if(m) out.push({ text: m.text, vitals: vline(m), now: false, did: p.text }); }
       return out;
     }
