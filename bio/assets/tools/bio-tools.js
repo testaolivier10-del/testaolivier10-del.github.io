@@ -860,7 +860,7 @@
       std: true, lede: lede ? lede.textContent.trim() : '',
       // the second tab, named for what is in it
       detailsTitle: ({ 'chi-square': 'Problem & critical values', 'confidence-intervals': 'Problem, formulas & settings',
-        'descriptive-stats': 'Problem & formulas', 'hardy-weinberg': 'Numbers & equations', 'rates': 'Problem & formulas',
+        'descriptive-stats': 'Problem & formulas', 'hardy-weinberg': 'Numbers & equations', 'rates': 'Numbers & formulas',
         'simpson-diversity': 'Numbers & formula', 'water-potential': 'Numbers & formulas', 'graph-builder': 'What full credit needs',
         'tree-reading': 'Trees & characters', 'design-drills': 'How it works', 'osmosis': 'Numbers & how it works' })[slug] || 'Data & settings',
       menu: {

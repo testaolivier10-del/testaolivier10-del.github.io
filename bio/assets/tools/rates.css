@@ -1,0 +1,164 @@
+/* Rates and percent change, tools v2 (bio/assets/tools/rates.js; docs/tools-v2-rates-brief.md). Loaded only by the
+   rates page (bio/data/pages.json "kit2": true). One colour per idea everywhere (the picture, the graph, the cause
+   line): Δy and the oxygen blue, Δt and time amber, the rate (the slope) purple; percent change: the start slate,
+   a gain teal, a loss red, the percent purple. */
+.rt2,.rt2-ref,.rt2-dock{--rt-dy:#009E73;--rt-dy-ink:#00664A;--rt-dt:#D99100;--rt-dt-ink:#7A4E00;--rt-rate:#6A3D9A;--rt-rate-ink:#55307D;
+  --rt-start:#5B6670;--rt-start-ink:#3E474F;--rt-chg:#00796B;--rt-chg-ink:#005F54;--rt-loss:#C62828;--rt-loss-ink:#A12020;
+  --rt-wall0:#EEF2F1;--rt-wall1:#E1E8E6;--rt-tile:#D2DCD9;--rt-wood0:#C9A06E;--rt-wood1:#A97F4E;--rt-edge:#8C6538;--rt-grain:#8E6A3F;
+  --rt-glass0:rgba(205,225,232,.40);--rt-glass1:rgba(255,255,255,.12);--rt-glass2:rgba(170,198,208,.42);--rt-glass-edge:#8FA9B3;
+  --rt-water0:#9CCBE4;--rt-water1:#5D9FC6;--rt-gas:#F7FBFD;--rt-band:rgba(0,158,115,.32);--rt-liq0:#EFE3A6;--rt-liq1:#D9C47A;--rt-bit:#E6D6A0;--rt-bit-edge:#BBA35C;
+  --rt-foam:#FFFDF6;--rt-foam-edge:#D8CFA8;--rt-bung:#7C3B2E;--rt-metal0:#8A939B;--rt-metal1:#D9DEE2;--rt-jaw:#3E474F;--rt-timer:#2E3A43;--rt-lcd:#C9DCC3;--rt-lcd-ink:#1D2A1A;
+  --rt-board:#9C7148;--rt-paper:#FFFEF9;--rt-row:rgba(0,158,115,.18);--rt-ink:#1F2328;--rt-sub:#55606A;--rt-shadow:rgba(0,0,0,.18);
+  --rt-core0:#D9C58C;--rt-core1:#F7EDCB;--rt-core2:#CDB574;--rt-core-edge:#A88E4A;--rt-core-top:#FBF4DC;--rt-bal0:#E9ECEE;--rt-bal1:#C3C9CE;--rt-bal-edge:#8A939B;--rt-drop:#BFE4F5;
+  --rt-gpaper:#FBFAF6;--rt-ggrid:#E7E3D8;--rt-curve:#3B3F46;--rt-pill:#FFFFFF;}
+:root[data-theme="dark"] .rt2,:root[data-theme="dark"] .rt2-ref,:root[data-theme="dark"] .rt2-dock{--rt-dy:#3DD39E;--rt-dy-ink:#8EE8C6;--rt-dt:#F0B63C;--rt-dt-ink:#F6CF75;--rt-rate:#B796DB;--rt-rate-ink:#D2BBEC;
+  --rt-start:#9AA6B1;--rt-start-ink:#C4CDD5;--rt-chg:#4FD1B8;--rt-chg-ink:#8EE5D3;--rt-loss:#F0857C;--rt-loss-ink:#F6AAA3;
+  --rt-wall0:#252B30;--rt-wall1:#1E2428;--rt-tile:#2F363C;--rt-wood0:#5A4630;--rt-wood1:#45351F;--rt-edge:#30251A;--rt-grain:#6B5539;
+  --rt-glass0:rgba(150,180,192,.22);--rt-glass1:rgba(255,255,255,.05);--rt-glass2:rgba(120,150,162,.26);--rt-glass-edge:#6E8C97;
+  --rt-water0:#2F6688;--rt-water1:#1F4A66;--rt-gas:#2D3439;--rt-band:rgba(61,211,158,.36);--rt-liq0:#6D6440;--rt-liq1:#585030;--rt-bit:#8A7C4C;--rt-bit-edge:#A8975D;
+  --rt-foam:#CFC9B4;--rt-foam-edge:#8E8668;--rt-bung:#8E4A3B;--rt-metal0:#5E676E;--rt-metal1:#A4ADB4;--rt-jaw:#1A1F23;--rt-timer:#11171B;--rt-lcd:#9DB596;--rt-lcd-ink:#121A10;
+  --rt-board:#6E5235;--rt-paper:#2A2D30;--rt-row:rgba(61,211,158,.24);--rt-ink:#F1EDE6;--rt-sub:#B8C0C7;--rt-shadow:rgba(0,0,0,.35);
+  --rt-core0:#9C8A57;--rt-core1:#D4C696;--rt-core2:#8E7C49;--rt-core-edge:#B9A266;--rt-core-top:#E2D6AE;--rt-bal0:#59626A;--rt-bal1:#3C444B;--rt-bal-edge:#7C868E;--rt-drop:#7FB9D6;
+  --rt-gpaper:#1F2124;--rt-ggrid:#33363B;--rt-curve:#D9DCE0;--rt-pill:#1B1D20;}
+.rt2{display:flex;flex-direction:column;gap:10px;min-height:0;flex:1 1 auto;container-type:inline-size;container-name:rt2;}
+.rt2[hidden]{display:none;}
+.rt2 [hidden]{display:none !important;}
+.rt2-scene{position:relative;flex:1 1 auto;min-height:280px;border-radius:18px;overflow:hidden;background:var(--rt-wall0);}
+.rt2-scene.is-fade{animation:rt2fade .26s ease-out;}
+@keyframes rt2fade{from{opacity:.35;}to{opacity:1;}}
+.rt2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+.rt2[data-tab="pct"] .rt2-graph{display:none;}
+.rt2[data-tab="pct"] .rt2-scene{min-height:400px;}
+@media (max-width:1023px){ .rt2-scene{flex:none;height:min(40vw,330px);min-height:280px;} .rt2[data-tab="pct"] .rt2-scene{height:min(60vw,440px);min-height:380px;} }
+@media (max-width:640px){ .rt2-scene{height:clamp(250px,72vw,300px);min-height:0;border-radius:14px;} .rt2[data-tab="pct"] .rt2-scene{height:clamp(340px,96vw,400px);min-height:0;} .rt2{gap:8px;} }
+.rt2-graph{position:relative;flex:none;height:250px;}
+@media (max-width:640px){ .rt2-graph{height:236px;} }
+.rt2-gsvg{position:absolute;inset:0;width:100%;height:100%;display:block;font-family:var(--font-ui);overflow:visible;touch-action:none;}
+.rt2-lines{display:flex;align-items:center;justify-content:space-between;gap:6px 18px;flex-wrap:wrap;flex:none;}
+.rt2-acts{display:flex;align-items:center;gap:6px 12px;flex:none;margin-left:auto;}
+@media (max-width:640px){ .rt2-lines .tk2-cause{flex-basis:100%;} .rt2-acts{margin-left:0;} }
+@media (min-width:641px){ .rt2-lines .tk2-cause{min-height:62px;} }
+.tk2-qs .rt2-acts{padding-right:52px;}
+.rt2[data-view="goals"] .rt2-scene{min-height:230px;}
+.rt2[data-view="goals"] .rt2-graph{height:226px;}
+/* the cause line: Δy, Δt and the rate in their colours */
+.rt2 .tk2-cz.is-dy{--cz:var(--rt-dy);--cz-ink:var(--rt-dy-ink);}
+.rt2 .tk2-cz.is-dt{--cz:var(--rt-dt);--cz-ink:var(--rt-dt-ink);}
+.rt2 .tk2-cz.is-rate{--cz:var(--rt-rate);--cz-ink:var(--rt-rate-ink);}
+.rt2 .tk2-cz.is-start{--cz:var(--rt-start);--cz-ink:var(--rt-start-ink);}
+.rt2 .tk2-cz.is-chg{--cz:var(--rt-chg);--cz-ink:var(--rt-chg-ink);}
+.rt2 .tk2-cz.is-loss{--cz:var(--rt-loss);--cz-ink:var(--rt-loss-ink);}
+.rt2 .tk2-cz.is-pct{--cz:var(--rt-rate);--cz-ink:var(--rt-rate-ink);}
+
+/* the room and the bench */
+.rt2s-wall0{stop-color:var(--rt-wall0);} .rt2s-wall1{stop-color:var(--rt-wall1);}
+.rt2s-wood0{stop-color:var(--rt-wood0);} .rt2s-wood1{stop-color:var(--rt-wood1);}
+.rt2s-glass0{stop-color:var(--rt-glass0);} .rt2s-glass1{stop-color:var(--rt-glass1);} .rt2s-glass2{stop-color:var(--rt-glass2);}
+.rt2s-water0{stop-color:var(--rt-water0);} .rt2s-water1{stop-color:var(--rt-water1);}
+.rt2s-liq0{stop-color:var(--rt-liq0);} .rt2s-liq1{stop-color:var(--rt-liq1);}
+.rt2s-metal0{stop-color:var(--rt-metal0);} .rt2s-metal1{stop-color:var(--rt-metal1);}
+.rt2s-core0{stop-color:var(--rt-core0);} .rt2s-core1{stop-color:var(--rt-core1);} .rt2s-core2{stop-color:var(--rt-core2);}
+.rt2s-bal0{stop-color:var(--rt-bal0);} .rt2s-bal1{stop-color:var(--rt-bal1);}
+.rt2-tile{stroke:var(--rt-tile);stroke-width:1;}
+.rt2-bench-edge{fill:var(--rt-edge);}
+.rt2-grain{fill:none;stroke:var(--rt-grain);stroke-width:1.2;opacity:.45;}
+.rt2-shadow{fill:var(--rt-shadow);}
+/* glassware and water */
+.rt2-flask,.rt2-cyl,.rt2-trough{stroke:var(--rt-glass-edge);stroke-width:1.6;}
+.rt2-flask{fill:var(--rt-glass1);}
+.rt2-trough{fill:var(--rt-glass0);fill-opacity:.55;}
+.rt2-trough-back{fill:var(--rt-glass2);opacity:.45;}
+.rt2-flask-hi,.rt2-glint{fill:none;stroke:#fff;stroke-opacity:.6;stroke-width:2;stroke-linecap:round;}
+:root[data-theme="dark"] .rt2-flask-hi,:root[data-theme="dark"] .rt2-glint{stroke-opacity:.2;}
+.rt2-water{opacity:.8;}
+.rt2-surface{stroke:#fff;stroke-opacity:.7;stroke-width:1.5;}
+:root[data-theme="dark"] .rt2-surface{stroke-opacity:.25;}
+.rt2-cyl-in{fill:var(--rt-gas);}
+.rt2-gas{fill:var(--rt-gas);}
+.rt2-band{fill:var(--rt-band);}
+.rt2-cwater{opacity:.85;}
+.rt2-level{stroke-width:2;}
+.rt2-level.is-a{stroke:var(--rt-start);}
+.rt2-level.is-b{stroke:var(--rt-dy);}
+.rt2-grad{stroke:var(--rt-sub);stroke-width:1;}
+.rt2-grad.is-long{stroke-width:1.6;}
+.rt2-gnum{fill:var(--rt-sub);font:700 11px var(--font-ui);}
+.rt2-foot{fill:var(--rt-glass2);stroke:var(--rt-glass-edge);stroke-width:1.4;}
+.rt2-shelf{fill:var(--rt-metal0);opacity:.75;}
+.rt2-standbase{fill:var(--rt-jaw);}
+.rt2-boss,.rt2-jaw{fill:var(--rt-jaw);}
+.rt2-jaw{fill-opacity:.85;}
+.rt2-liq{opacity:.92;}
+.rt2-bit{fill:var(--rt-bit);stroke:var(--rt-bit-edge);stroke-width:.8;}
+.rt2-foam{fill:var(--rt-foam);stroke:var(--rt-foam-edge);stroke-width:1;}
+.rt2-bung{fill:var(--rt-bung);}
+.rt2-tube{fill:none;stroke:var(--rt-glass-edge);stroke-linecap:round;stroke-linejoin:round;}
+.rt2-tube-in{fill:none;stroke:var(--rt-gas);stroke-linecap:round;stroke-linejoin:round;}
+.rt2-bubble{fill:var(--rt-gas);stroke:var(--rt-dy);stroke-width:1.2;}
+.rt2-timer{fill:var(--rt-timer);}
+.rt2-timer-btn{fill:var(--rt-metal0);}
+.rt2-lcd{fill:var(--rt-lcd);}
+.rt2-lcdt{fill:var(--rt-lcd-ink);font:800 16px var(--font-mono);}
+.rt2-board{fill:var(--rt-board);}
+.rt2-paper{fill:var(--rt-paper);}
+.rt2-th{fill:var(--rt-sub);font:800 11.5px var(--font-ui);}
+.rt2-trule{stroke:var(--rt-sub);stroke-width:1;opacity:.6;}
+.rt2-td{fill:var(--rt-ink);font:600 12.5px var(--font-mono);}
+.rt2-td.is-on{font-weight:800;fill:var(--rt-dy-ink);}
+.rt2-trow{fill:transparent;transition:fill .2s;}
+.rt2-trow.is-on{fill:var(--rt-row);}
+.rt2-what{fill:var(--rt-ink);font:800 12.5px var(--font-ui);paint-order:stroke;stroke:var(--rt-wood0);stroke-width:3px;}
+:root[data-theme="dark"] .rt2-what{stroke:var(--rt-wood1);}
+.rt2-foaml{fill:var(--rt-ink);font:800 12px var(--font-ui);paint-order:stroke;stroke:var(--rt-wall0);stroke-width:3px;}
+/* pills on the picture and the graph */
+.rt2-pill-bg{fill:var(--rt-pill);stroke-width:2;}
+.rt2-pill-t{font:800 12.5px var(--font-ui);}
+.rt2-pill.is-dy .rt2-pill-bg{stroke:var(--rt-dy);} .rt2-pill.is-dy .rt2-pill-t{fill:var(--rt-dy-ink);}
+.rt2-pill.is-dt .rt2-pill-bg{stroke:var(--rt-dt);} .rt2-pill.is-dt .rt2-pill-t{fill:var(--rt-dt-ink);}
+.rt2-pill.is-gas .rt2-pill-bg{stroke:var(--rt-dy);} .rt2-pill.is-gas .rt2-pill-t{fill:var(--rt-dy-ink);}
+.rt2-pill.is-rate .rt2-pill-bg{fill:var(--rt-rate);stroke:var(--rt-rate);} .rt2-pill.is-rate .rt2-pill-t{fill:#fff;font-size:13.5px;}
+:root[data-theme="dark"] .rt2-pill.is-rate .rt2-pill-t{fill:#1B1424;}
+.rt2-pill.is-pct .rt2-pill-bg{fill:var(--rt-rate);stroke:var(--rt-rate);} .rt2-pill.is-pct .rt2-pill-t{fill:#fff;}
+:root[data-theme="dark"] .rt2-pill.is-pct .rt2-pill-t{fill:#1B1424;}
+.rt2-pill.is-chg .rt2-pill-bg{stroke:var(--rt-chg);} .rt2-pill.is-chg .rt2-pill-t{fill:var(--rt-chg-ink);}
+.rt2-pill.is-chg.is-loss .rt2-pill-bg{stroke:var(--rt-loss);} .rt2-pill.is-chg.is-loss .rt2-pill-t{fill:var(--rt-loss-ink);}
+/* the cores and the balances */
+.rt2-balance{stroke:var(--rt-bal-edge);stroke-width:1.4;}
+.rt2-pan{fill:var(--rt-metal1);stroke:var(--rt-bal-edge);stroke-width:1.2;}
+.rt2-panpost{fill:var(--rt-metal0);}
+.rt2-core{stroke:var(--rt-core-edge);stroke-width:1.4;}
+.rt2-coretop{fill:var(--rt-core-top);stroke:var(--rt-core-edge);stroke-width:1.2;}
+.rt2-corehi{fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;}
+.rt2-drop{fill:var(--rt-drop);stroke:var(--rt-dy);stroke-width:.8;}
+.rt2-ref{stroke:var(--rt-start);stroke-width:1.6;}
+.rt2-chg{fill:none;stroke:var(--rt-chg);stroke-width:3;stroke-linejoin:round;}
+.rt2-chg.is-loss{stroke:var(--rt-loss);}
+.rt2-ruler{stroke:var(--rt-ink);stroke-width:2;}
+.rt2-rtick{stroke:var(--rt-ink);stroke-width:1.2;}
+.rt2-rtick.is-zero{stroke:var(--rt-start);stroke-width:2.4;}
+.rt2-rnum{fill:var(--rt-sub);font:700 11.5px var(--font-ui);}
+.rt2-rnum.is-zero{fill:var(--rt-start-ink);font-weight:900;}
+.rt2-clab{fill:var(--rt-ink);font:800 13px var(--font-ui);paint-order:stroke;stroke:var(--rt-wall0);stroke-width:3px;}
+/* the graph */
+.rt2-gpaper{fill:var(--rt-gpaper);stroke:color-mix(in srgb, var(--ink) 12%, transparent);}
+.rt2-ggrid{stroke:var(--rt-ggrid);stroke-width:1;}
+.rt2-gaxis{stroke:var(--rt-curve);stroke-width:1.4;}
+.rt2-gtick{fill:var(--rt-sub);font:700 12px var(--font-ui);}
+.rt2-gtitle{fill:var(--rt-ink);font:800 13px var(--font-ui);}
+.rt2-curve{fill:none;stroke:var(--rt-curve);stroke-width:2.6;stroke-linejoin:round;}
+.rt2-gpt{fill:var(--rt-curve);stroke:var(--rt-gpaper);stroke-width:1.5;}
+.rt2-leg{stroke-width:3.5;stroke-linecap:round;}
+.rt2-leg.is-dt{stroke:var(--rt-dt);} .rt2-leg.is-dy{stroke:var(--rt-dy);}
+.rt2-hyp{stroke:var(--rt-rate);stroke-width:4.5;stroke-linecap:round;}
+.rt2-tan{stroke:var(--rt-rate);stroke-width:3.5;stroke-linecap:round;}
+.rt2-brk{fill:none;stroke:var(--rt-dt);stroke-width:2;}
+.rt2-gend{fill:var(--rt-rate);stroke:var(--rt-gpaper);stroke-width:2;}
+/* "?" */
+.rt2-tab{border-collapse:collapse;font:600 14px var(--font-ui);}
+.rt2-tab th,.rt2-tab td{padding:4px 14px;border-bottom:1px solid color-mix(in srgb, var(--ink) 12%, transparent);text-align:right;}
+.rt2-tab tr.is-on td{background:var(--rt-row);font-weight:800;}
+.rt2-meas{margin:0;padding-left:20px;}
+/* Problems (the old practice figure): no dashed outlines */
+.rt-mine{stroke-dasharray:none;stroke-width:2;opacity:.9;}
+.rt-ghost{stroke-dasharray:none;stroke-width:2;}
+.rt-base{stroke-dasharray:none;stroke-width:1.2;}
