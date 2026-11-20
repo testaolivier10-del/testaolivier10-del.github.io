@@ -101,6 +101,10 @@ const probe = () => {
     if (!e.textContent.trim() || [...e.childNodes].every(n => n.nodeType !== 3 || !n.textContent.trim())) return;
     const fs = parseFloat(getComputedStyle(e).fontSize), r = e.getBoundingClientRect();
     if (fs < 10.95 && r.width > 0) out.push('text under 11 px (' + fs + '): "' + e.textContent.trim().slice(0, 24) + '"'); });
+  // a picker shows its whole name (never cut inside a word)
+  const cv = document.createElement('canvas').getContext('2d');
+  q('.rp2-bar select').forEach(e => { const cs = getComputedStyle(e); cv.font = cs.fontWeight + ' ' + cs.fontSize + ' ' + cs.fontFamily;
+    const t = e.options[e.selectedIndex] ? e.options[e.selectedIndex].text : ''; if (cv.measureText(t).width > e.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight) + 1) out.push('picker text cut: "' + t + '"'); });
   // the cause line
   const cz = [...document.querySelectorAll('.rp2 .tk2-cause')].filter(vis)[0];
   if (cz) { const pills = [...cz.querySelectorAll('.tk2-cz')].filter(vis).map(R); const rows = new Set(pills.map(p => Math.round(p.t / 8))); info.rows = rows.size; info.causeH = Math.round(R(cz).h); }

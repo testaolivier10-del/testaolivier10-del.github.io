@@ -646,7 +646,7 @@
     bondTo(m, 'a', 'lg', 1);
     m.beta = {};
     if(id === 'cyhexbr'){
-      // a chair with its axis along x: alpha's axial bond (to Br) points +x, its two ring neighbours' axial H's -x
+      // a chair with its axis along x: alpha's axial bond (to Br) points +x, its two ring neighbors' axial H's -x
       var cf = (phi0 == null ? (VIEW[id] || VIEW0)[2] : phi0) * Math.PI / 180;
       var h = 0.25, r = 0.866, P0 = [h, r * Math.cos(cf), r * Math.sin(cf)], ring = [];
       for(var i = 0; i < 6; i++){
@@ -1434,6 +1434,8 @@
   function play(path, opts){
     opts = opts || {};
     stopRun(false);
+    // nothing to draw while the stage is not shown (the Premium gate, a hidden tab): it draws when it appears
+    if(sceneBox.clientWidth < 60 || sceneBox.clientHeight < 60) return;
     var c = cur(), p = predict(c);
     path = path || p.major;
     setSeq(path, opts);
@@ -1555,7 +1557,7 @@
   ref.innerHTML = '<p class="rp2-ref-how"><button type="button" class="tk2-how" id="rpRefHow">Show me how</button></p>' +
     '<div id="rpRefFlask"></div>' +
     '<h3 class="rp2-ref-h">How to read the picture</h3>' +
-    '<p class="rp2-ref-p">The molecule is a 3D sketch, not to scale: grey balls are carbon, white hydrogen, red oxygen, blue nitrogen, green bromine, iodine, sulfur and the groups written on a ball (Et, tBu, DBU). The hydrogens on the reacting carbon are drawn as balls, and so is one hydrogen on each kind of beta carbon (the one that can leave); the rest are in the labels (CH₃, CH₂). Na⁺ and K⁺ do nothing here and are not drawn. Violet dots are electron pairs, violet arrows move them; a red glow is a negative charge, a blue glow a positive one (the carbocation).</p>' +
+    '<p class="rp2-ref-p">The molecule is a 3D sketch, not to scale: gray balls are carbon, white hydrogen, red oxygen, blue nitrogen, green bromine, iodine and sulfur; a dark ball with letters on it is a whole group (Et, tBu, DBU, SMe₂ for DMSO). The hydrogens on the reacting carbon are drawn as balls, and so is one hydrogen on each kind of beta carbon (the one that can leave); the rest are in the labels (CH₃, CH₂). Na⁺ and K⁺ do nothing here and are not drawn. Violet dots are electron pairs, violet arrows move them; a red glow is a negative charge, a blue glow a positive one (the carbocation).</p>' +
     '<p class="rp2-ref-p">SN2 attacks the back of the carbon, so the three groups flip like an umbrella in the wind (inversion). SN1 and E1 wait for bromide to leave on its own: the carbon goes flat, and the nucleophile can then come from either face (the picture shows one), so a stereocenter comes out as a mix of both. E2 takes the beta hydrogen that sits anti to bromine. On a ring the ring stays put in the sketch.</p>' +
     '<p class="rp2-ref-p">The shares in the tray are bands, not yields: they move with concentration, the exact solvent and the time.</p>' +
     '<h3 class="rp2-ref-h">A method</h3><ol class="rp2-steps">' +
@@ -1742,7 +1744,7 @@
     var w = sceneBox.clientWidth, h = sceneBox.clientHeight;
     if(!w || (w === lastW && h === lastH)) return;
     var first = !lastW; lastW = w; lastH = h;
-    if(first) return;
+    if(first && S) return;
     var call = MODE.mode === 'quiz' && MODE.part === 'call';
     if(run){ stopRun(false); }
     if(call && !quiz.revealed) play(null, { still: true }); else { play(null, { quiet: true }); stopRun(true); }

@@ -43,6 +43,8 @@
   .rp2 .rp2-pick select{max-width:none;width:100%;min-height:38px;}
   .rp2-cond{width:100%;justify-content:flex-end;order:-1;}
 }
+/* a narrow phone: each picker gets the whole width, so the longest name (2-bromo-2-methylbutane) is never cut */
+@media (max-width:520px){ .rp2-picks .rp2-pick{flex:1 1 100%;} }
 
 /* the tray: what is in the flask at the end */
 .rp2-trayh{font:800 12px var(--font-ui);fill:var(--minor-ink);}
