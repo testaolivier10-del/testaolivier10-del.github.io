@@ -203,3 +203,4 @@
 .scx-scene > .scx-lines{background:var(--sx-paper);padding:6px 10px;}
 .ls-root .ls-stage .scx-scene:not(.is-wide) .scx-mon .mon-top{display:none;}
 .ls-root .ls-stage .scx-scene:not(.is-wide) .scx-mon .mon-lane{height:20px;}
+.scx-body,.scx-acts,.scx-end{will-change:opacity,transform;}

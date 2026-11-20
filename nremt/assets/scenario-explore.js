@@ -624,7 +624,7 @@
     box.innerHTML =
       '<div class="scx-pic" role="img"><div class="scx-layers">' +
         '<svg class="scx-svg scx-l0" xmlns="' + NS + '" aria-hidden="true" data-ls-text="keep"><defs></defs><g class="scx-bg"></g><g class="scx-under"></g></svg>' +
-        '<svg class="scx-svg scx-l1" xmlns="' + NS + '" aria-hidden="true" data-ls-text="keep"><g class="scx-fig"></g></svg>' +
+        '<svg class="scx-svg scx-l1" xmlns="' + NS + '" aria-hidden="true" data-ls-text="keep"><g class="scx-poolg"></g><g class="scx-fig"></g></svg>' +
         '<svg class="scx-svg scx-l2" xmlns="' + NS + '" aria-hidden="true" data-ls-text="keep"><g class="scx-on"></g></svg></div>' +
         '<svg class="scx-lead" aria-hidden="true"></svg><div class="scx-labs" aria-hidden="true"></div><div class="scx-mon"></div><p class="scx-who"></p></div>' +
       '<div class="scx-board">' +
@@ -643,7 +643,7 @@
     stage.appendChild(box);
     var pic = box.querySelector('.scx-pic'), layers = box.querySelector('.scx-layers'), svgs = [].slice.call(box.querySelectorAll('.scx-svg')), svg = svgs[1], svgOn = svgs[2],
       defs = svgs[0].querySelector('defs'), gBg = svgs[0].querySelector('.scx-bg'), gUnder = svgs[0].querySelector('.scx-under'),
-      gFig = svg.querySelector('.scx-fig'), gOn = svgOn.querySelector('.scx-on'), lead = box.querySelector('.scx-lead'), labs = box.querySelector('.scx-labs'), monHost = box.querySelector('.scx-mon'),
+      gFig = svg.querySelector('.scx-fig'), gPool = svg.querySelector('.scx-poolg'), gOn = svgOn.querySelector('.scx-on'), lead = box.querySelector('.scx-lead'), labs = box.querySelector('.scx-labs'), monHost = box.querySelector('.scx-mon'),
       whoEl = box.querySelector('.scx-who'), board = box.querySelector('.scx-board'), pathEl = box.querySelector('.scx-path'), chEl = box.querySelector('.scx-ch'), whatEl = box.querySelector('.scx-what'),
       nowEl = box.querySelector('.scx-now'), actsEl = box.querySelector('.scx-acts'), endEl = box.querySelector('.scx-end'), bodyEl = box.querySelector('.scx-body');
     var layer = K.layer(box.querySelector('.scx-cuehost'));
@@ -746,9 +746,12 @@
       }
       var fnd0 = J.pure.findings(seen(), { preg: !!St.preg }), site = limbSite(f, fnd0);
       St.site = site;
-      if(site && G.view !== 'up') under.push('<g transform="' + T + '"><g class="scx-pool" style="transform-origin:' + f1(site.at[0] + (site.viewerLeft ? -1 : 1) * site.r * 1.4) + 'px ' + f1(site.at[1] + site.r * 0.6) + 'px"><path d="' +
+      var poolSvg = '';
+      if(site && G.view !== 'up') poolSvg = ('<g transform="' + T + '"><g class="scx-pool" style="transform-origin:' + f1(site.at[0] + (site.viewerLeft ? -1 : 1) * site.r * 1.4) + 'px ' + f1(site.at[1] + site.r * 0.6) + 'px"><path d="' +
         blob(site.at[0] + (site.viewerLeft ? -1 : 1) * site.r * 1.4, site.at[1] + site.r * 0.6, site.r * 2.3, site.r * 2.9) + '" fill="url(#scx-pool)"/><path d="' + blob(site.at[0] + (site.viewerLeft ? -1 : 1) * site.r * 1.1, site.at[1], site.r * 0.8, site.r * 1.1) + '" fill="#B8251A" opacity=".5"/></g></g>');
+      // the pool lies in the patient's layer, so the setting's layer never repaints
       gUnder.innerHTML = under.join('');
+      gPool.innerHTML = poolSvg;
       var shoe = SHOES[St.id], h = [];
       if(G.view !== 'up') h.push('<path d="' + f.outline + '" fill="rgba(20,20,20,.2)" transform="translate(' + f1(-M.cm * 1.2) + ' ' + f1(M.cm * 1.5) + ')"/>');
       h.push('<image href="' + St.F.url(f) + '" x="0" y="0" width="' + f.w + '" height="' + f.h + '"/>');
@@ -838,7 +841,7 @@
       });
       var stain = gOn.querySelector('.scx-stain'); if(stain) stain.classList.toggle('is-wet', S.bleed === 'bleed' || S.bleed === 'spurt');
       var jt = gOn.querySelector('.scx-jets'); if(jt) jt.classList.toggle('is-on', S.bleed === 'spurt');
-      var pool = gUnder.querySelector('.scx-pool');
+      var pool = gPool.querySelector('.scx-pool');
       if(pool){ var sc = S.pool ? Math.min(1.25, 0.45 + Math.sqrt(S.pool) * 0.34) : 0; pool.style.transform = 'scale(' + sc.toFixed(3) + ')'; pool.classList.toggle('is-on', sc > 0); }
       St.drawn = S;
     }
@@ -921,7 +924,7 @@
         void e.offsetWidth; e.classList.add('is-in');
       });
     }
-    function clearLabels(){ St.labsOn = false; labs.innerHTML = ''; lead.innerHTML = ''; }
+    function clearLabels(){ cancelAnimationFrame(St.labFrame); St.labFrame = 0; St.labsOn = false; labs.innerHTML = ''; lead.innerHTML = ''; }
 
     /* ------------------------------------------------------------------ the call */
     function vit(n){ var v = J.pure.parseVitals(vline(n)); v.pulseless = !!St.pls; return v; }
@@ -1065,7 +1068,8 @@
       board.classList.remove('is-busy');
       renderBoard(true);
       if(St.kbd){ St.kbd = false; var fc = chEl.querySelector('.scx-c') || endEl.querySelector('.scx-eb'); if(fc && !fc.closest('[hidden]')) fc.focus(); }
-      placeLabels(labelList(pd.prevCare));
+      var ll = labelList(pd.prevCare); St.labs = ll; St.labsOn = true;
+      cancelAnimationFrame(St.labFrame); St.labFrame = requestAnimationFrame(function(){ St.labFrame = 0; placeLabels(ll); });
       var parts = [{ t: shortAction(pd.actText), role: 'act' }];
       if(n.ending){
         if(monitor) monitor.pause();
