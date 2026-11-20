@@ -204,3 +204,9 @@
 .ls-root .ls-stage .scx-scene:not(.is-wide) .scx-mon .mon-top{display:none;}
 .ls-root .ls-stage .scx-scene:not(.is-wide) .scx-mon .mon-lane{height:20px;}
 .scx-body,.scx-acts,.scx-end{will-change:opacity,transform;}
+/* the drawing's placement never transitions (the site's reduced motion rule gives every property a tiny transition,
+   which left the geometry a frame behind when the words were placed) */
+.scx-svg g[transform]{transition:none !important;}
+.ls-root .ls-stage .scx-scene .scx-mon .mon-tile[data-k="spo2"] .mon-u{white-space:normal;overflow:visible;line-height:1.15;}
+.ls-root .ls-stage .scx-scene:not(.is-wide) .scx-mon .mon-flag{position:absolute;right:4px;top:3px;margin:0;}
+.ls-root .ls-stage .scx-scene:not(.is-wide) .scx-mon .mon-tile{padding:2px 5px 3px;}

@@ -1,21 +1,8 @@
-/* NREMT Scenario simulator, tools v2 Explore (docs/tools-v2-nremt-scenario-sim-brief.md; standard:
-   docs/tools-v2-standard.md). Loaded only by nremt/scenario-sim.html, after scenario-monitor.js.
-
-   ONE IDEA: each choice on a call changes the patient. The call's patient is drawn in their own setting with the
-   monitor beside them; the call card (a clipboard) holds what you see now and what you could do. Pick an action:
-   the care goes onto the patient, the monitor's numbers slide to what the case prints, the skin, the eyes and the
-   breathing follow the case's words, and only then the card turns to what happened. Free play: go back to any
-   decision, start over, switch calls. Nothing is graded or recorded here (the scored run is Test yourself).
-
-   NOTHING IS INVENTED. The numbers are the case's own vitals lines (NremtSim.Monitor); what is drawn on the body is
-   what the case's words say (stateOf, below: the newest step that mentions a sign decides it) and the care the
-   choices taken put on (NremtSim.care.care, the rules the old patient used, tested in nremt-cases.test.mjs); the
-   words on the patient are the old callouts (NremtSim.pure.pinsFor). Better or worse is read from the drawn numbers
-   against the site's reference ranges (NremtSim.pure.judge), never from the choice.
-
-     NremtScenarioExplore.build({ studio, scenarios, cats, catOf, gate, onAct }) ->
-       { stage, ref, show(id), id(), shown(), hidden(), refresh() }
-     NremtScenarioExplore.pure   stateOf, direction, shortAction, LOOK (for the sweep and the tests) */
+/* NREMT Scenario simulator, tools v2 Explore (docs/tools-v2-nremt-scenario-sim-brief.md). One idea: each choice on a
+   call changes the patient. Nothing is invented: the numbers are the case's vitals (NremtSim.Monitor), the signs its
+   words (stateOf), the care the old tested rules (NremtSim.care) plus the case's own words (careOf), the drawing the
+   shared NREMT patient (nremt/assets/patient-draw.js). Free play; the scored run is Test yourself.
+     NremtScenarioExplore.build({ studio, scenarios, cats, catOf, gate }) -> { stage, ref, show(id), shown(), hidden() } */
 (function(){
   'use strict';
   if(window.NremtScenarioExplore) return;
@@ -693,7 +680,7 @@
       var W = pic.clientWidth, H = pic.clientHeight, wide = box.classList.contains('is-wide'), f = fig();
       if(!W || !H || !f) return null;
       var g = { W: W, H: H, wide: wide, f: f, view: St.view };
-      var mw = wide ? clamp(W * 0.34, 270, 330) : W - 16, mh = wide ? 170 : 96;
+      var mw = wide ? clamp(W * 0.34, 270, 330) : W - 16, mh = wide ? 170 : 104;
       g.mon = { x: W - mw - 12, y: 12, w: mw, h: mh };
       var area = wide ? (g.view !== 'up' ? { x: 16, y: mh + 30, w: W - 32, h: H - mh - 38 } : { x: 8, y: 8, w: W - mw - 40, h: H - 8 })
         : { x: 8, y: mh + 24, w: W - 16, h: H - mh - 28 };
@@ -789,8 +776,8 @@
       whoEl.textContent = who(St.months, St.female, c ? c.nodes[c.startNode].text : '');
       var first = !St.drawn;
       paint(St.drawn || stateNow(), false); rates();
-      if(first && !St.busy){ placeLabels(labelList(null)); if(!St.path.length) cause.set(openCause()); }
-      else if(St.labsOn) placeLabels();
+      if(first && !St.busy){ var l0 = labelList(null); St.labs = l0; St.labsOn = true; if(!St.path.length) cause.set(openCause()); }
+      if(St.labsOn){ cancelAnimationFrame(St.labFrame); St.labFrame = requestAnimationFrame(function(){ St.labFrame = 0; if(St.labsOn) placeLabels(); }); }
     }
     function blob(cx, cy, rx, ry){
       var r = rng(Math.round(cx + cy)), n = 9, pts = [];
@@ -872,7 +859,7 @@
       if(J.care && cr) J.care.pins({ fig: f, f: fnd, careNow: cr, preg: St.preg, view: St.view === 'prone' ? 'back' : 'front' }, pins);
       if(St.view === 'prone'){ var wg = gOn.querySelector('.scx-weight .scx-cop2'); if(wg){ var wb = wg.getBBox(); out0.push({ text: 'Knee on his back', at: [wb.x + wb.width / 2, wb.y + wb.height / 2], tone: 'bad' }); } }
       var out = out0, it = St.drawn ? St.drawn.care : {};
-      var A = M, fresh = ITEM_ORDER.filter(function(k){ return ITEM_LABEL[k] && it[k] && !(prevCare && prevCare[k]); });
+      var fresh = ITEM_ORDER.filter(function(k){ return ITEM_LABEL[k] && it[k] && !(prevCare && prevCare[k]); });
       fresh.slice(0, 2).forEach(function(k){ var p = itemAt(k); if(p) out.push({ text: ITEM_LABEL[k], at: p, tone: 'act' }); });
       pins.sort(function(a, b){ return (b.fresh - a.fresh) || (b.sev - a.sev); });
       var bl = St.drawn ? St.drawn.bleed : 'none';
@@ -892,7 +879,6 @@
         if(/^\d+ findings?$/.test(t) || out.some(function(x){ return x.text === t; })) return;
         out.push({ text: t, at: at, tone: sev ? 'bad' : 'see' });
       });
-      void A;
       return out;
     }
     function itemAt(k){
@@ -971,7 +957,9 @@
       var S = stateNow();
       St.view = viewFor(S.careObj);
       clearLabels();
-      var go = function(){ layout(); draw(); paint(S, false); rates(); placeLabels(labelList(null)); if(!St.path.length) cause.set(openCause()); if(cue && cue.active()) cue.place(); };
+      // the words are placed on the next frame, once the new drawing's geometry is in (a new call's boxes)
+      var go = function(){ layout(); draw(); paint(S, false); rates(); var ll = labelList(null); St.labs = ll; St.labsOn = true; if(!St.path.length) cause.set(openCause());
+        cancelAnimationFrame(St.labFrame); St.labFrame = requestAnimationFrame(function(){ St.labFrame = 0; placeLabels(ll); if(cue && cue.active()) cue.place(); }); };
       if(St.F) go(); else loadFigs(go);
       renderBoard(false);
       cause.set(openCause(S));

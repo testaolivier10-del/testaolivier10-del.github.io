@@ -228,3 +228,6 @@ No case text, number or care rule changed. Drawing choices a person should check
 - Compressions animate at about 109 a minute (AHA 100 to 120); the bag squeezes only at a rate the case gives.
 - The AED pad placement drawn: adult anterolateral; infant and toddler one anterior pad (the posterior pad not shown).
 - The epinephrine auto injector is drawn on the lateral thigh of the viewer's right (the patient's left).
+- (Review round 1) Still not drawn from the text: side lying / left lateral (s9, s16, s17), sitting forward in the
+  tripod position (s11), carried by her father (s3). The picture keeps them face up or upright.
+- (Review round 1) Thresholds for "Better / Worse": HR 10 a minute or 10%, systolic 10, RR 4, SpO2 2 points. Reasonable?

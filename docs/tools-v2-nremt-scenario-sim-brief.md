@@ -145,3 +145,62 @@ words (Spurting bleed, Still bleeding, Bleeding stopped / Tourniquet holds) and 
 - The figures are mannequins with drawn faces; the infant in his mother's arms (s12) lies on her lap with no arms drawn.
 - Some steps have no numbers and no named finding, so the cause line has two pills (what you did, nothing more).
 - The Explore file is large (about 31 KB gzipped JS) because 20 settings are drawn in code.
+
+## Review round 1 (2026-11-19): BLOCK, fixed the same day
+Review: `/home/claude/review-nremt-scenario-sim/REVIEW.md` (16 must fix). First `claude/tools-v2-all` was merged in (the
+NREMT flowcharts with it; its `scripts/check-tool-use.mjs` kept). No case text, number or choice changed.
+
+Must fix, done:
+1. **Return of breathing and pulse.** `RESOLVE` (scenario-care.js) knows "breathe on his own", "breath of his own",
+   "starts to breathe", "then cries", "no further shock"; Explore's `careOf` reads the case's words step by step (a later
+   choice that puts care back wins): compressions stop at the return of circulation, the bag comes off once he breathes
+   adequately, the eyes open. s6_shock_good: "Breathing now", no hands; s18_compressions: he breathes and cries.
+2. **Negations.** A sentence that denies it ("never actually confirmed he has a pulse", "isn't going to start
+   breathing") no longer resolves anything (`NEG`, in the care layer and in Explore).
+3. **Hands off for the analysis and the shock.** A step that says the AED analyzes, "everyone is clear" or a shock is
+   advised takes the hands off the chest for that step; the next step that resumes compressions puts them back.
+4. **s3 "Coughing".** Each region's words come from its newest step only, and the newest sentence about her cough or
+   voice decides: "stops coughing ... can't make any sound" reads "Cannot cough" (red).
+5. **s15.** A vitals line about the newborn ("Newborn HR 128 · ...") is never the mother's: the monitor holds her
+   numbers, the signs and words skip it; after the birth the belly fades and "Contractions", "Crowning" and the birth
+   words leave her.
+6. **"Birth" fallback removed** (care layer: no word when nothing about the birth is named; the run benefits too).
+7. **Better / Worse only for a meaningful change** (HR 10 or 10%, systolic 10, RR 4, SpO2 2 points; otherwise "About the
+   same"); no pulse is carried across steps from the vitals or the case's words, so a patient pulseless throughout reads
+   "Still no pulse", never a new "Worse".
+8. **The auto injector is drawn** (from the dose count).
+9. **No oxygen mask under compressions or the bag, or with no pulse.**
+10. **The newborn (s18):** two thumbs on the lower breastbone with the hands round the chest, the baby visible, the
+    blanket off the chest; any newborn compressions run 3:1 (three compressions, then a breath: 90 and 30 a minute).
+    Where the step's own words already say he breathes and cries, the picture shows that end state (no compressions).
+11. **s12:** mottling is a lacy net below the neck (never spots, never the face), named at the neck where it shows; he
+    lies in his mother's arms (her forearm under him with his head in the crook of her elbow, her hand under his bottom,
+    her other forearm across his tummy) on her lap.
+12. **Shared drawing.** `nremt/assets/patient-draw.js` (`NremtPatientDraw`) holds the glove and two finger glove, the
+    two handed compressions with forearms, the face (with half closed eyes as an option), the bag valve mask, the pads
+    and leads, the AED, the cloth gradients, the keep-out list and the word placement. `flow-explore.js` and
+    `scenario-explore.js` both use it. The flowcharts' drawing is byte identical before and after the move (its svg
+    captured at 68 states, 390 and 1440, both orders of arms), and its kept sweep passes (390: 1226, 1440: 1184, 0 failed).
+13. **Weight:** `nremt-kit2.js` and `patient-draw.js` are their own shell `nremt/kit2` (6.2 KB); `nremt` stays 28.8
+    (measured 27.7); Explore 35.7 of 36; the page 62.5 of 62.7.
+14. **Text:** the TQ tag's letters are sized from the picture's scale (11 px at least, checked in the sweep); the small
+    monitor says "no probe" (fits) and, once a reading was given, nothing (the run's monitor too).
+15. **s21 face down:** the patient lies prone (the back figure, the back of his head) with an officer's knee and shin
+    across his upper back, named "Knee on his back", until the case says he is moved off his front.
+16. **Performance:** the picture is three layers (the setting, the patient, the care) so a change repaints only its
+    own; the ground's grain and grass are small pattern tiles (no hundreds of dots); the pool lives in the patient's
+    layer; the small monitor draws without glow at screen resolution, every other frame; a phone's picture height is
+    set once per width; the words are placed one frame after the card turns; the card's text animates on its own layers.
+    Measured with the CPU x4 under a load average of 6 to 7 (other sessions): see the checks below; to remeasure on a
+    quiet machine.
+
+Should fix, done: the s8 opening never names a count; Enter on a choice moves focus to the first new choice; the live
+region has no double period; the inhaler is held beside the face (never through the mask); the bag comes off once he
+breathes on his own; the AED pads word points at a pad, and a small child shows the back pad's edge; on a phone the cause
+line sits right under the picture and the monitor is slimmer. Not done (logged in `docs/nremt-needs-author.md`): side
+lying and sitting forward poses (s9, s16, s17, s11), s3 carried by her father; empty floor beside a lying patient on
+wide stages.
+
+Sweep checks added: items 1 to 9 and 15 as named cases in the frames run; in every walked step no oxygen mask under
+compressions and no "probe" word after a reading; at every state the TQ letters at least 11 px, the SpO2 unit not cut,
+no count or "Birth" named.
