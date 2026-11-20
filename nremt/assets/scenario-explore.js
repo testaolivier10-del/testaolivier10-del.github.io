@@ -64,7 +64,7 @@
   var EYES = [
     [/\b(unresponsive|limp|not breathing|apneic|hard to wake|harder to rouse|unconscious|barely responsive|no response|does not respond|not responding|eyes (are )?closed|lifeless|collapsed|slumped|goes limp|pulseless|no pulse|still pulseless|does not react)\b/ig, 'closed'],
     [/\b(drowsy|postictal|sleepy|less responsive)\b/ig, 'half'],
-    [/\b(alert|awake|talking|talks|answering|answers|crying|cries|opens? (his|her) eyes|eyes open|oriented|shouting|confused|agitated|pacing|calm|speaking|wakes|waking|more responsive|becoming more responsive|looks at you|insisting|groaning|moaning|coughing|wheezing|irritable|tearful|embarrassed|anxious|distressed|struggle|fights you|apologetic)\b/ig, 'open']
+    [/\b(alert|awake|talking|talks|answering|answers|crying|cries|opens? (his|her) eyes|eyes open|oriented|shouting|confused|agitated|pacing|calm|speaking|wakes|waking|more responsive|becoming more responsive|insisting|groaning|moaning|coughing|wheezing|irritable|tearful|embarrassed|anxious|distressed|struggle|fights you|apologetic|breathe on (his|her) own|breath of (his|her) own|moving (his|her) arms)\b/ig, 'open']
   ];
   /* A sentence about someone else (the mother says..., police are...) says nothing about the patient's body. */
   var OTHER = /^(her|his|the|a|one|both|all|everyone'?s?) ?(mother|father|parents?|wife|husband|partner|roommate|daughter|son|neighbou?r|caregiver|staff|bystanders?|police|officers?|family|volunteers?|crowd|dispatch|medical direction|stroke team|hospital|receiving)\b|^(bystanders?|police|staff|dispatch|medical direction|ALS)\b/i;
@@ -142,11 +142,45 @@
   /* The care on the patient: the old patient's rules over the choices taken (NremtSim.care), plus what the case's
      own words for this step say the EMT is doing ("You finally apply direct pressure"), so the hands on the wound
      and the words never disagree. */
-  var TEXT_CARE = [[/\byou (finally )?(re)?apply (firm |direct |sustained )*pressure\b/i, { gauze: 1 }]];
+  var NEG = /\b(never|not|no|without|until|if|unless|whether|confirm\w*|can't|cannot|isn't|wasn't|doesn't|didn't|won't|hasn't)\b|n't\b/i;
+  var TEXT_CARE = [
+    { re: /\byou (finally )?(re)?apply (firm |direct |sustained )*pressure\b/i, set: { gauze: 1 } },
+    // return of circulation or breathing: compressions stop; once he breathes adequately the bag comes off too
+    { re: /\b(breathe on (his|her) own|breath of (his|her) own|starts? (to )?breathe|then cries|cries strongly|return of spontaneous circulation|ROSC|pulse (returns|is back)|no further shock|achieves return)\b/i, set: { cpr: 0 } },
+    { re: /\b(breathing adequately|breathe on (his|her) own|breathing on (his|her) own|respiratory drive returns|then cries|cries strongly)\b/i, set: { bvm: 0 } },
+    // the AED analyses and shocks: everyone clear, hands off the chest (this step only)
+    { re: /\b(analy[sz]es|analy[sz]ing|everyone is clear|stand clear|shock advised|advises a shock)\b/i, set: { cpr: 0 }, now: true, unless: /\b(compressions resume|resume compressions|resumes? compressions)\b/i },
+    // no pulse: an oxygen mask does not breathe for him
+    { re: /\b(pulseless|no pulse)\b/i, set: { o2: 0 } }
+  ];
+  function sentencesOf(t){ return String(t || '').replace(/\s+/g, ' ').split(SENT); }
+  function textCare(text, now){
+    var out = {};
+    TEXT_CARE.forEach(function(r){
+      if(r.now && !now) return;
+      if(r.unless && r.unless.test(text)) return;
+      sentencesOf(text).forEach(function(x){ var m = r.re.exec(x); if(m && !NEG.test(x.slice(0, m.index))) for(var k in r.set) out[k] = r.set[k]; });
+    });
+    return out;
+  }
+  /* The care on the patient: the old patient's rules over the choices taken (NremtSim.care), then, step by step, what
+     the case's own words say happened to it (pressure applied, compressions stopped at the return of circulation,
+     hands off for the analysis and the shock, the bag off once he breathes). A later choice that puts it back wins. */
   function careOf(J, seen, opt){
-    var c = J.care ? J.care.care(seen, opt) : { on: {}, chips: [], epi: 0 };
-    var t = seen[0] ? seen[0].text || '' : '';
-    TEXT_CARE.forEach(function(r){ if(r[0].test(t)) for(var k in r[1]) c.on[k] = r[1][k]; });
+    var C = J.care;
+    if(!C) return { on: {}, chips: [], epi: 0 };
+    var c = C.care(seen, opt), ov = {}, prev = {};
+    for(var i = seen.length - 1; i >= 0; i--){
+      var cur = C.care(seen.slice(i + 1), opt).on, k;
+      for(k in cur) if(!!cur[k] !== !!prev[k]) delete ov[k];
+      for(k in prev) if(!(k in cur) && prev[k]) delete ov[k];
+      var t = textCare(own(seen[i].text, opt && opt.preg), i === 0);
+      for(k in t) ov[k] = t[k];
+      prev = cur;
+    }
+    for(var k2 in ov) c.on[k2] = ov[k2];
+    if(c.on.cpr || c.on.bvm) c.on.o2 = 0;     // an oxygen mask never sits under compressions or the bag
+    c.on.epi = c.epi > 0 ? 1 : 0;             // the dose given, drawn at the thigh
     if(c.on.gauze && !c.on.tq && c.chips.indexOf('Direct pressure') < 0) c.chips.unshift('Direct pressure');
     return c;
   }
@@ -164,23 +198,29 @@
     return null;
   }
   var VNAME = { hr: 'HR', sys: 'BP', rr: 'RR', spo2: 'SpO₂' };
+  /* a change counts only when it is big enough to mean something at the bedside: HR by 10 a minute or 10%, systolic
+     by 10, RR by 4, SpO2 by 2 points (review round 1: 58 -> 56 is not "Worse") */
+  var MEANS = { hr: function(v){ return Math.max(10, v * 0.1); }, sys: function(){ return 10; }, rr: function(){ return 4; }, spo2: function(){ return 2; } };
   function direction(J, a, b, months){
-    // a, b: { hr, sys, dia, rr, spo2, pulseless }
+    // a, b: { hr, sys, dia, rr, spo2, pulseless } (pulseless carried across the steps)
     if(!a || !b) return null;
+    if(a.pulseless && b.pulseless) return { dir: 'same', k: null, word: 'Still no pulse' };
     if(a.pulseless && !b.pulseless && b.hr != null) return { dir: 'better', k: 'hr', from: 0, to: b.hr, word: 'Pulse back' };
     if(!a.pulseless && b.pulseless) return { dir: 'worse', k: 'hr', from: a.hr, to: 0, word: 'No pulse' };
-    var sum = 0, n = 0, big = null;
+    var sum = 0, n = 0, big = null, seenAny = false;
     ['hr', 'sys', 'rr', 'spo2'].forEach(function(k){
       var x = a[k], y = b[k];
       if(x == null || y == null) return;
       var ox = off(J, k, x, months), oy = off(J, k, y, months);
       if(ox == null || oy == null) return;
-      n++; sum += oy - ox;
-      var mag = Math.abs(oy - ox) + Math.abs(y - x) / 1000;
+      seenAny = true;
+      var real = Math.abs(y - x) >= MEANS[k](x) - 1e-9;
+      if(real){ n++; sum += oy - ox; }
+      var mag = (real ? 10 : 0) + Math.abs(oy - ox) + Math.abs(y - x) / 1000;
       if(Math.round(x) !== Math.round(y) && (!big || mag > big.mag)) big = { k: k, from: x, to: y, mag: mag, d: oy - ox };
     });
-    if(!n) return null;
-    var dir = sum < -0.02 ? 'better' : sum > 0.02 ? 'worse' : 'same';
+    if(!seenAny) return null;
+    var dir = !n ? 'same' : sum < -0.02 ? 'better' : sum > 0.02 ? 'worse' : 'same';
     return { dir: dir, k: big ? big.k : null, from: big ? big.from : null, to: big ? big.to : null };
   }
   function pill2(d, b){
@@ -200,6 +240,8 @@
     return s.replace(/[.…]+$/, function(m){ return m.indexOf('…') >= 0 ? '…' : ''; });
   }
 
+  var SILENT = /\b(stops coughing|can't make (any )?sound|cannot make (a|any) sound|no air movement|not moving (any )?air|no sound)\b/i;
+  var BORN = /\b(body delivers|delivers quickly|is born|baby is born|the baby is out|baby is blue|placenta)\b/i;
   var PURE = { femaleOf: femaleOf, stateOf: stateOf, careOf: careOf, direction: direction, shortAction: shortAction, pill2: pill2, LOOK: LOOK };
 
   /* ---- the settings -------------------------------------------------------------------------------------------
@@ -216,11 +258,18 @@
     race: { g: 'asphalt', b: 'race' }, kitchenfloor: { g: 'tile', b: 'kitchen' }, living2: { g: 'wood', b: 'living2' }
   };
   function R(x, y, w, h, fill, extra){ return '<rect x="' + f1(x) + '" y="' + f1(y) + '" width="' + f1(Math.max(0, w)) + '" height="' + f1(Math.max(0, h)) + '" fill="' + fill + '"' + (extra || '') + '/>'; }
-  function grain(W, H, n, seed, cols, rmin, rmax, x0, y0){
+  /* the ground's grain as a small tile (a pattern), not hundreds of dots: one element however large the picture */
+  function grainTile(id, n, seed, cols, rmin, rmax, size){
     var r = rng(seed), out = [];
-    for(var i = 0; i < n; i++) out.push('<circle cx="' + f1((x0 || 0) + r() * W) + '" cy="' + f1((y0 || 0) + r() * H) + '" r="' + f1(rmin + r() * (rmax - rmin)) + '" fill="' + cols[i % cols.length] + '"/>');
-    return out.join('');
+    for(var i = 0; i < n; i++) out.push('<circle cx="' + f1(r() * size) + '" cy="' + f1(r() * size) + '" r="' + f1(rmin + r() * (rmax - rmin)) + '" fill="' + cols[i % cols.length] + '"/>');
+    return '<pattern id="' + id + '" width="' + size + '" height="' + size + '" patternUnits="userSpaceOnUse">' + out.join('') + '</pattern>';
   }
+  function bladeTile(){
+    var r = rng(29), g = [];
+    for(var b = 0; b < 26; b++){ var bx = r() * 70, by = r() * 70, a = -0.6 + r() * 1.2, L = 6 + r() * 9; g.push('M' + f1(bx) + ' ' + f1(by) + 'l' + f1(Math.sin(a) * L) + ' ' + f1(-Math.cos(a) * L)); }
+    return '<pattern id="scx-blades" width="70" height="70" patternUnits="userSpaceOnUse"><path d="' + g.join('') + '" stroke="#5E8F3E" stroke-width="1.6" stroke-linecap="round" opacity=".7"/></pattern>';
+  }
+  function grain(id, W, H, x0, y0){ return R(x0, y0, W, H, 'url(#' + id + ')'); }
   /* the ground seen from above, filling x0..x0+W, y0..y0+H; wide: the long side is horizontal */
   function ground(kind, W, H, x0, y0, o){
     o = o || {};
@@ -228,7 +277,7 @@
     x0 = x0 || 0; y0 = y0 || 0;
     if(kind === 'asphalt'){
       out.push(R(x0, y0, W, H, 'url(#scx-asph)'));
-      out.push(grain(W, H, Math.round(W * H / 900), 11, ['#6E7377', '#4B4F52', '#7A7F82', '#55595C'], 0.8, 2.2, x0, y0));
+      out.push(grain('scx-gr-a', W, H, x0, y0));
       if(o.lines !== false){
         // the painted edge line and, at the far side, the kerb and the pavement
         out.push(R(x0, y0 + H * 0.16, W, 7, '#E9E4D2', ' opacity=".85"'));
@@ -237,7 +286,7 @@
       }
     } else if(kind === 'concrete' || kind === 'pool'){
       out.push(R(x0, y0, W, H, kind === 'pool' ? '#D9D3C6' : '#BDB8AE'));
-      out.push(grain(W, H, Math.round(W * H / 1400), 13, ['#C9C4BA', '#AEA99F', '#B4AFA5'], 0.8, 2.4, x0, y0));
+      out.push(grain('scx-gr-c', W, H, x0, y0));
       for(var j = 160; j < W; j += 220) out.push(R(x0 + j, y0, 2.5, H, 'rgba(90,85,78,.35)'));
       for(var i2 = 150; i2 < H; i2 += 200) out.push(R(x0, y0 + i2, W, 2.5, 'rgba(90,85,78,.35)'));
       if(kind === 'pool'){
@@ -261,12 +310,9 @@
       }
     } else if(kind === 'grass'){
       out.push(R(x0, y0, W, H, 'url(#scx-lawn)'));
-      var n = Math.round(W * H / 260), g = [];
-      for(var b = 0; b < n; b++){ var bx = x0 + r() * W, by = y0 + r() * H, a = -0.6 + r() * 1.2, L = 6 + r() * 9;
-        g.push('M' + f1(bx) + ' ' + f1(by) + 'l' + f1(Math.sin(a) * L) + ' ' + f1(-Math.cos(a) * L)); }
-      out.push('<path d="' + g.join('') + '" stroke="#5E8F3E" stroke-width="1.6" stroke-linecap="round" opacity=".7"/>');
+      out.push(R(x0, y0, W, H, 'url(#scx-blades)'));
     } else if(kind === 'carpet'){
-      out.push(R(x0, y0, W, H, '#CDBFA6'), grain(W, H, Math.round(W * H / 220), 17, ['#C3B49A', '#D8CBB4', '#BBAD93'], 0.6, 1.4, x0, y0));
+      out.push(R(x0, y0, W, H, '#CDBFA6'), grain('scx-gr-k', W, H, x0, y0));
     } else if(kind === 'seat'){
       out.push(R(x0, y0, W, H, '#4A4F57'));
       for(var c = 0; c < 5; c++){ var cy = y0 + H * (0.1 + c * 0.2); out.push(R(x0, cy, W, H * 0.17, 'url(#scx-seat)'), R(x0, cy + H * 0.17, W, 3, '#2E3238')); }
@@ -281,7 +327,8 @@
     }
     return out.join('');
   }
-  var DEFS = '<linearGradient id="scx-asph" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5E6265"/><stop offset="1" stop-color="#4E5255"/></linearGradient>' +
+  var DEFS = grainTile('scx-gr-a', 14, 11, ['#6E7377', '#4B4F52', '#7A7F82', '#55595C'], 0.8, 2.2, 110) + grainTile('scx-gr-c', 9, 13, ['#C9C4BA', '#AEA99F', '#B4AFA5'], 0.8, 2.4, 110) +
+    grainTile('scx-gr-k', 30, 17, ['#C3B49A', '#D8CBB4', '#BBAD93'], 0.6, 1.4, 80) + bladeTile() + '<linearGradient id="scx-asph" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5E6265"/><stop offset="1" stop-color="#4E5255"/></linearGradient>' +
     '<linearGradient id="scx-water" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2E8FB8"/><stop offset="1" stop-color="#58B7D6"/></linearGradient>' +
     '<pattern id="scx-tile" width="54" height="54" patternUnits="userSpaceOnUse"><rect width="54" height="54" fill="#D9D2C3"/><rect width="27" height="27" fill="#E8E2D5"/><rect x="27" y="27" width="27" height="27" fill="#E8E2D5"/><path d="M0 0H54M0 27H54M0 0V54M27 0V54" stroke="#BDB4A2" stroke-width="1.5"/></pattern>' +
     '<pattern id="scx-btile" width="32" height="32" patternUnits="userSpaceOnUse"><rect width="32" height="32" fill="#F1F2EF"/><path d="M0 0H32M0 0V32" stroke="#C9CDC8" stroke-width="2"/></pattern>' +
@@ -297,10 +344,12 @@
     '<radialGradient id="scx-lamp"><stop offset="0" stop-color="#FFE7A6" stop-opacity=".75"/><stop offset="1" stop-color="#FFE7A6" stop-opacity="0"/></radialGradient>' +
     '<radialGradient id="scx-pool"><stop offset="0" stop-color="#6E0B07"/><stop offset=".7" stop-color="#8E130B"/><stop offset="1" stop-color="#A8190F"/></radialGradient>' +
     '<radialGradient id="scx-nit" cx=".4" cy=".35" r=".85"><stop offset="0" stop-color="#A29EF4"/><stop offset=".55" stop-color="#736ED9"/><stop offset="1" stop-color="#4E48B6"/></radialGradient>' +
+    '<radialGradient id="scx-nit2" cx=".4" cy=".35" r=".85"><stop offset="0" stop-color="#B3AFF7"/><stop offset=".55" stop-color="#837EE3"/><stop offset="1" stop-color="#5D57C4"/></radialGradient>' +
     '<radialGradient id="scx-belly" cx=".45" cy=".4" r=".6"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".38"/><stop offset=".7" stop-color="#FFFFFF" stop-opacity=".08"/><stop offset="1" stop-color="#000000" stop-opacity=".12"/></radialGradient>' +
     '<radialGradient id="scx-sheen"><stop offset="0" stop-color="#FFFFFF" stop-opacity="1"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></radialGradient>' +
     '<radialGradient id="scx-light" cx=".42" cy=".45" r=".7"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".16"/><stop offset="1" stop-color="#000000" stop-opacity=".16"/></radialGradient>' +
-    '<pattern id="scx-mot" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="6" cy="7" r="6" fill="#8E6FA0" opacity=".45"/><circle cx="19" cy="17" r="7" fill="#9A7BA8" opacity=".4"/><circle cx="20" cy="4" r="3" fill="#8E6FA0" opacity=".35"/></pattern>';
+    // mottling: a lacy, net-like blue-purple pattern (not spots)
+    '<pattern id="scx-mot" width="44" height="40" patternUnits="userSpaceOnUse"><path d="M0 8Q8 2 16 9T30 6T44 10M2 8Q6 20 2 30M16 9Q20 18 14 26Q10 34 16 40M30 6Q26 16 32 24Q38 30 34 40M44 10Q40 20 44 30M2 30Q10 24 14 26M14 26Q22 30 32 24M32 24Q38 22 44 30" fill="none" stroke="#7A5C9C" stroke-width="2.6" stroke-linecap="round" opacity=".55"/></pattern>';
 
   /* what is behind someone sitting or standing: the scene's wall or street, with the ground as a band at the foot */
   function back(kind, W, H, gnd){
@@ -401,10 +450,9 @@
     leggings: ['#2F3542', '#4A5264'], onesie: ['#BFE0D2', '#DCF1E8'], onesie2: ['#F6D58A', '#FCE8B6'], diaper: ['#ECECEA', '#FFFFFF'], swim: ['#E8546E', '#F57E94'],
     maternity: ['#5C8FB0', '#7EAFCF'], maternity2: ['#A07CC0', '#BD9CD8'], maternity3: ['#D4896A', '#E9A88A'], jacket2: ['#4C5A3E', '#6A7A52'],
     sweater: ['#9AA6B3', '#B8C3CE'], shirt: ['#D8D2C4', '#EEE9DE'], singlet: ['#1E88C8', '#4AA8E2'], cardigan: ['#8C6C9C', '#A98BB8'], flannel: ['#A33B32', '#C4564B'] };
-  function clothGrad(name){
-    var c = CLOTH[name]; if(!c) return '';
-    return '<linearGradient id="scx-c-' + name + '" x1="0" x2="1"><stop offset="0" stop-color="' + c[0] + '"/><stop offset=".5" stop-color="' + c[1] + '"/><stop offset="1" stop-color="' + c[0] + '"/></linearGradient>';
-  }
+  var PD = window.NremtPatientDraw;
+  // the clothes' shading (the shared gradient, one across the figure, so every piece of a garment matches)
+  function clothGrad(name, w){ var c = CLOTH[name]; return c ? PD.grads('scx-', [name + ':' + c[0] + ':' + c[1]], { x1: 0, x2: w || 480 }) : ''; }
   /* the figure's measures: head, face lines, the clothes' edges and centimetres to pixels */
   function measure(f, kind, months){
     var lm = f.landmarks, an = f.anchors, ln = f.lines || {};
@@ -412,13 +460,14 @@
     var top = hy - r * (kid ? 1.55 : 1.62), hcy = (top + chin) / 2, hry = (chin - top) / 2;
     var len = months == null || months >= 216 ? (kind === 'female' ? 165 : 175) : months <= 0 ? 50 : months < 12 ? 50 + months * 2.2 : months < 60 ? 75 + (months - 12) * 0.62 : months < 144 ? 105 + (months - 60) * 0.55 : 152 + (months - 144) * 0.3;
     var cm = f.h * 0.97 / len;
-    var knee = an.simLegL[1], groin = ln.groinY || lm.pubis[1];
-    var legW = an.simLegL[2];
+    var legA = an.simLegL || an.legL, legB = an.simLegR || an.legR;
+    var knee = legA[1], groin = ln.groinY || lm.pubis[1];
+    var legW = legA[2];
     return {
       hx: hx, hy: hy, r: r, chin: chin, top: top, hcy: hcy, hry: hry, hrx: r * 1.0, kid: kid, cm: cm,
       eyeY: hy + (chin - hy) * (kid ? 0.16 : 0.04), eyeDx: r * (kid ? 0.34 : 0.36), noseY: hy + (chin - hy) * 0.4, mouthY: hy + (chin - hy) * 0.64,
       notch: lm.sternalNotch[1], sAngle: lm.sternalAngle[1], xiph: lm.xiphoid[1], umb: lm.umbilicus[1], asis: lm.asisR[1], pubis: lm.pubis[1],
-      torsoL: lm.midaxR[0] - 6, torsoR: lm.midaxL[0] + 6, legL: an.simLegL[0] - legW * 1.05, legR: an.simLegR[0] + legW * 1.05,
+      torsoL: Math.min(lm.midaxR[0], lm.midaxL[0]) - 6, torsoR: Math.max(lm.midaxR[0], lm.midaxL[0]) + 6, legL: Math.min(legA[0], legB[0]) - legW * 1.05, legR: Math.max(legA[0], legB[0]) + legW * 1.05,
       groin: groin, knee: knee, ankle: f.h * 0.93, wrist: groin - f.h * 0.02, sleeve: lm.sternalNotch[1] + (an.armL[1] - lm.sternalNotch[1]) * 0.75,
       neckR: an.simNeck[2], neckY: an.simNeck[1], w: f.w, h: f.h
     };
@@ -426,7 +475,7 @@
   function clothes(M, top, bot){
     var out = [], shY = M.notch - (M.notch - M.chin) * 0.32, nw = M.neckR * 1.25, dip = M.notch + M.r * 0.12, waist = M.asis + M.r * 0.15;
     var neckline = 'M-40 ' + f1(shY) + 'L' + f1(M.hx - nw) + ' ' + f1(shY) + 'Q' + f1(M.hx) + ' ' + f1(dip + M.r * 0.25) + ' ' + f1(M.hx + nw) + ' ' + f1(shY) + 'L' + f1(M.w + 40) + ' ' + f1(shY);
-    function P(d, name){ return '<path class="scx-cl" d="' + d + '" fill="url(#scx-c-' + name + ')"/>'; }
+    function P(d, name){ return '<path class="scx-cl" d="' + d + '" fill="url(#scx-g-' + name + ')"/>'; }
     // the bottom half first, so a dress or a long top falls over it
     if(bot && bot !== 'none' && bot !== top){
       var end = bot === 'shorts' ? M.groin + (M.knee - M.groin) * 0.5 : bot === 'diaper' ? M.groin + (M.knee - M.groin) * 0.22 : M.ankle;
@@ -475,92 +524,76 @@
     }
     return out + '<path class="scx-hair" d="' + cap + '" fill="' + col + '"/><path d="' + cap + '" fill="url(#scx-light)"/>';
   }
-  function face(M){
-    var x = M.hx, ey = M.eyeY, dx = M.eyeDx, r = M.r, ew = r * 0.15, eh = r * 0.09;
-    function eye(cx){ return '<ellipse cx="' + f1(cx) + '" cy="' + f1(ey) + '" rx="' + f1(ew) + '" ry="' + f1(eh) + '" fill="#FBFBF8"/><circle cx="' + f1(cx) + '" cy="' + f1(ey) + '" r="' + f1(eh * 0.92) + '" fill="#4A3628"/><circle cx="' + f1(cx + eh * 0.25) + '" cy="' + f1(ey - eh * 0.3) + '" r="' + f1(eh * 0.28) + '" fill="#fff"/>'; }
-    function lid(cx, half){ return half ? '<path d="M' + f1(cx - ew * 1.05) + ' ' + f1(ey + eh * 0.1) + 'Q' + f1(cx) + ' ' + f1(ey - eh * 1.25) + ' ' + f1(cx + ew * 1.05) + ' ' + f1(ey + eh * 0.1) + 'Z" fill="#D7A88C"/><path d="M' + f1(cx - ew) + ' ' + f1(ey + eh * 0.1) + 'H' + f1(cx + ew) + '" stroke="#5A3A2C" stroke-width="' + f1(r * 0.035) + '"/>'
-      : '<path d="M' + f1(cx - ew) + ' ' + f1(ey) + 'Q' + f1(cx) + ' ' + f1(ey + eh * 1.1) + ' ' + f1(cx + ew) + ' ' + f1(ey) + '" fill="none" stroke="#5A3A2C" stroke-width="' + f1(r * 0.04) + '" stroke-linecap="round"/>'; }
-    var bw = r * 0.04;
-    return '<g class="scx-face">' +
-      '<path d="M' + f1(x - dx - ew) + ' ' + f1(ey - eh * 2.2) + 'q' + f1(ew) + ' ' + f1(-eh) + ' ' + f1(ew * 2) + ' 0M' + f1(x + dx - ew) + ' ' + f1(ey - eh * 2.2) + 'q' + f1(ew) + ' ' + f1(-eh) + ' ' + f1(ew * 2) + ' 0" stroke="#6B4A36" stroke-width="' + f1(bw * 1.2) + '" fill="none" stroke-linecap="round"/>' +
-      '<g class="scx-eo">' + eye(x - dx) + eye(x + dx) + '</g>' +
-      '<g class="scx-eh">' + eye(x - dx) + eye(x + dx) + lid(x - dx, 1) + lid(x + dx, 1) + '</g>' +
-      '<g class="scx-ec">' + lid(x - dx) + lid(x + dx) + '</g>' +
-      '<path d="M' + f1(x - r * 0.06) + ' ' + f1(M.noseY - r * 0.25) + 'Q' + f1(x - r * 0.16) + ' ' + f1(M.noseY) + ' ' + f1(x) + ' ' + f1(M.noseY + r * 0.04) + '" stroke="#B57E64" stroke-width="' + f1(bw) + '" fill="none" stroke-linecap="round"/>' +
-      '<ellipse class="scx-lips" cx="' + f1(x) + '" cy="' + f1(M.mouthY) + '" rx="' + f1(r * 0.26) + '" ry="' + f1(r * 0.085) + '"/>' +
-      '<path d="M' + f1(x - r * 0.24) + ' ' + f1(M.mouthY) + 'Q' + f1(x) + ' ' + f1(M.mouthY + r * 0.03) + ' ' + f1(x + r * 0.24) + ' ' + f1(M.mouthY) + '" stroke="#7A4A3C" stroke-width="' + f1(bw * 0.8) + '" fill="none"/>' +
-      '<g class="scx-sweat">' + [[-0.45, -0.95], [0.3, -1.05], [0.62, -0.55], [-0.68, -0.3], [0.7, 0.15]].map(function(p){ var sx = x + p[0] * r, sy = M.hcy + p[1] * M.hry * 0.62, s = r * 0.07;
-        return '<path d="M' + f1(sx) + ' ' + f1(sy - s * 1.6) + 'Q' + f1(sx + s) + ' ' + f1(sy) + ' ' + f1(sx) + ' ' + f1(sy + s * 0.6) + 'Q' + f1(sx - s) + ' ' + f1(sy) + ' ' + f1(sx) + ' ' + f1(sy - s * 1.6) + 'Z" fill="#DDF1FA" stroke="#9CC6DA" stroke-width="' + f1(r * 0.015) + '"/>'; }).join('') + '</g>' +
-      '</g>';
-  }
-  /* a nitrile glove, back of the hand up, fingers toward -y, wrist at +y; local units, an adult hand about 19 cm */
-  var GLOVE = '<path d="M-15 16C-18 4 -18 -10 -15 -22C-8 -27 9 -27 16 -21C19 -9 18 4 13 16Z"/><rect x="-15" y="-50" width="8" height="30" rx="4"/><rect x="-6" y="-55" width="8.5" height="35" rx="4.2"/>' +
-    '<rect x="3.5" y="-52" width="8" height="32" rx="4"/><rect x="12" y="-43" width="7" height="24" rx="3.5"/><path d="M13 -2C19 -10 25 -17 29 -16C33 -14 32 -9 29 -6L18 8Z"/><rect x="-15" y="13" width="29" height="13" rx="4"/>';
-  function glove(x, y, rot, cm, cls){ var s = cm * 19 / 82; return '<g class="scx-glove' + (cls ? ' ' + cls : '') + '" transform="translate(' + f1(x) + ' ' + f1(y) + ') rotate(' + f1(rot) + ') scale(' + s.toFixed(3) + ')">' + GLOVE + '</g>'; }
+  // the face: the shared NREMT face (nremt/assets/patient-draw.js) at this head's size, with half closed eyes
+  function face(M){ return PD.face('scx-', M.hx, M.eyeY, M.r / 44.3, { half: true }); }
+  // a nitrile glove (the shared one) at real size: an adult hand is about 19 cm, 1.45 on the adult figure (6.9 px a cm)
+  function glove(x, y, rot, cm, cls){ return PD.glove('scx-', f1(x), f1(y), f1(rot), cls || '', (1.45 * cm / 6.9).toFixed(3)); }
 
   /* the care on the patient, each item its own group (shown with is-on). site: the limb with the wound. */
-  function items(M, f, kind, site, view){
+  function items(M, f, kind, site, view, minFig){
     var out = {}, cm = M.cm, r = M.r, x = M.hx, lm = f.landmarks, an = f.anchors;
     var ped = kind === 'infant' || kind === 'toddler';
     // the limb: wound, gauze, the hand on it, the tourniquet above it
     if(site){
       var w = site.at, lr = site.r, wy = w[1], wx = w[0];
-      out.wound = '<ellipse cx="' + f1(wx) + '" cy="' + f1(wy) + '" rx="' + f1(lr * 0.32) + '" ry="' + f1(lr * 0.6) + '" fill="#7A100B"/><path d="M' + f1(wx - lr * 0.06) + ' ' + f1(wy - lr * 0.45) + 'Q' + f1(wx + lr * 0.12) + ' ' + f1(wy) + ' ' + f1(wx - lr * 0.04) + ' ' + f1(wy + lr * 0.45) + '" stroke="#3A0604" stroke-width="' + f1(lr * 0.06) + '" fill="none"/>';
+      out.wound = '<ellipse class="scx-wound-r" cx="' + f1(wx) + '" cy="' + f1(wy) + '" rx="' + f1(lr * 0.32) + '" ry="' + f1(lr * 0.6) + '" fill="#7A100B"/><path d="M' + f1(wx - lr * 0.06) + ' ' + f1(wy - lr * 0.45) + 'Q' + f1(wx + lr * 0.12) + ' ' + f1(wy) + ' ' + f1(wx - lr * 0.04) + ' ' + f1(wy + lr * 0.45) + '" stroke="#3A0604" stroke-width="' + f1(lr * 0.06) + '" fill="none"/>';
       out.gauze = '<rect x="' + f1(wx - cm * 5) + '" y="' + f1(wy - cm * 5) + '" width="' + f1(cm * 10) + '" height="' + f1(cm * 10) + '" rx="' + f1(cm * 0.8) + '" fill="#FBFBF6" stroke="#CFCFC4" stroke-width="2" transform="rotate(-8 ' + f1(wx) + ' ' + f1(wy) + ')"/>' +
         '<ellipse class="scx-stain" cx="' + f1(wx) + '" cy="' + f1(wy) + '" rx="' + f1(cm * 3) + '" ry="' + f1(cm * 3.6) + '" fill="#A3241B" opacity=".75"/>';
       out.press = glove(wx + (site.viewerLeft ? 1 : -1) * cm * 1, wy + cm * 3, site.viewerLeft ? -18 : 18, cm);
       var ty = wy - cm * 7, tw = lr * 1.1;
-      out.tq = '<rect x="' + f1(wx - tw) + '" y="' + f1(ty - cm * 1.9) + '" width="' + f1(tw * 2) + '" height="' + f1(cm * 3.8) + '" rx="' + f1(cm * 0.8) + '" fill="#23282B"/>' +
+      out.tq = '<rect x="' + f1(wx - tw) + '" y="' + f1(ty - cm * 1.9) + '" width="' + f1(tw * 2) + '" height="' + f1(cm * 3.8) + '" rx="' + f1(cm * 0.8) + '" fill="#23282B" class="scx-tq-b"/>' +
         '<rect x="' + f1(wx - tw) + '" y="' + f1(ty - cm * 0.3) + '" width="' + f1(tw * 2) + '" height="' + f1(cm * 0.6) + '" fill="#C9342A"/>' +
         '<rect x="' + f1(wx - cm * 7.5) + '" y="' + f1(ty - cm * 0.8) + '" width="' + f1(cm * 15) + '" height="' + f1(cm * 1.6) + '" rx="' + f1(cm * 0.8) + '" fill="#4B555A" stroke="#111" stroke-width="1.5" transform="rotate(-16 ' + f1(wx) + ' ' + f1(ty) + ')"/>' +
-        '<g transform="translate(' + f1(wx + (site.viewerLeft ? -1 : 1) * (tw + cm * 2) + (site.viewerLeft ? -cm * 13 : 0)) + ' ' + f1(ty - cm * 2.6) + ')"><rect width="' + f1(cm * 13) + '" height="' + f1(cm * 5.2) + '" rx="' + f1(cm * 0.6) + '" fill="#FFFDF4" stroke="#B9B39A" stroke-width="2"/>' +
-        '<text class="scx-tqt" x="' + f1(cm * 6.5) + '" y="' + f1(cm * 3.7) + '" text-anchor="middle" font-size="' + f1(cm * 2.9) + '" font-weight="900" font-family="var(--font-mono,monospace)" fill="#23282B">TQ</text></g>';
+        (function(){ var fs = Math.max(cm * 2.9, minFig || 0), tw2 = fs * 2.6, th = fs * 1.6;
+          return '<g transform="translate(' + f1(wx + (site.viewerLeft ? -1 : 1) * (tw + cm * 2) + (site.viewerLeft ? -tw2 : 0)) + ' ' + f1(ty - th / 2) + ')"><rect width="' + f1(tw2) + '" height="' + f1(th) + '" rx="' + f1(fs * 0.2) + '" fill="#FFFDF4" stroke="#B9B39A" stroke-width="2"/>' +
+          '<text class="scx-tqt" x="' + f1(tw2 / 2) + '" y="' + f1(th * 0.72) + '" text-anchor="middle" font-size="' + f1(fs) + '" font-weight="900" font-family="var(--font-mono,monospace)" fill="#23282B">TQ</text></g>'; })();
       out.splint = '<rect x="' + f1(wx - lr * 1.25) + '" y="' + f1(wy - lr * 4) + '" width="' + f1(lr * 0.36) + '" height="' + f1(lr * 8) + '" rx="' + f1(lr * 0.12) + '" fill="#E8D9A8" stroke="#A08B4E" stroke-width="2"/>' +
         '<rect x="' + f1(wx + lr * 0.89) + '" y="' + f1(wy - lr * 4) + '" width="' + f1(lr * 0.36) + '" height="' + f1(lr * 8) + '" rx="' + f1(lr * 0.12) + '" fill="#E8D9A8" stroke="#A08B4E" stroke-width="2"/>' +
         [-2.6, 0, 2.6].map(function(k){ return '<rect x="' + f1(wx - lr * 1.35) + '" y="' + f1(wy + k * lr - lr * 0.15) + '" width="' + f1(lr * 2.7) + '" height="' + f1(lr * 0.3) + '" rx="' + f1(lr * 0.1) + '" fill="#3A4A5C"/>'; }).join('');
     }
     // the face: an oxygen mask with its bag, blow by held off the face, the bag valve mask with a hand on it
     var mY = (M.noseY + M.mouthY) / 2, mrx = r * 0.5, mry = r * 0.6;
-    var mask = function(dx){ return '<ellipse cx="' + f1(x + dx) + '" cy="' + f1(mY) + '" rx="' + f1(mrx) + '" ry="' + f1(mry) + '" fill="#DDF1EA" fill-opacity=".55" stroke="#3E8A73" stroke-width="' + f1(r * 0.05) + '"/>' +
+    var mask = function(dx){ return '<ellipse class="scx-mask" cx="' + f1(x + dx) + '" cy="' + f1(mY) + '" rx="' + f1(mrx) + '" ry="' + f1(mry) + '" fill="#DDF1EA" fill-opacity=".55" stroke="#3E8A73" stroke-width="' + f1(r * 0.05) + '"/>' +
       '<ellipse cx="' + f1(x + dx) + '" cy="' + f1(mY + mry * 0.15) + '" rx="' + f1(mrx * 0.38) + '" ry="' + f1(mry * 0.3) + '" fill="#9CCFBF" fill-opacity=".7"/>'; };
     out.o2 = '<path d="M' + f1(x - mrx) + ' ' + f1(mY - mry * 0.3) + 'L' + f1(x - M.hrx * 1.05) + ' ' + f1(mY - mry * 0.6) + 'M' + f1(x + mrx) + ' ' + f1(mY - mry * 0.3) + 'L' + f1(x + M.hrx * 1.05) + ' ' + f1(mY - mry * 0.6) + '" stroke="#5B9C88" stroke-width="' + f1(r * 0.04) + '"/>' +
       '<ellipse cx="' + f1(x) + '" cy="' + f1(M.chin + mry * 0.9) + '" rx="' + f1(mrx * 0.9) + '" ry="' + f1(mry * 0.75) + '" fill="#BFE2D6" fill-opacity=".85" stroke="#6FA592" stroke-width="2"/>' + mask(0) +
       '<path d="M' + f1(x + mrx * 0.6) + ' ' + f1(M.chin + mry * 1.3) + 'Q' + f1(x + r * 1.6) + ' ' + f1(M.chin + r * 1.6) + ' ' + f1(x + r * 2.6) + ' ' + f1(M.chin + r * 0.8) + '" stroke="#7FBFA9" stroke-width="' + f1(r * 0.09) + '" fill="none" stroke-linecap="round"/>';
     out.blowby = mask(r * 0.95) + '<path d="M' + f1(x + r * 1.3) + ' ' + f1(mY + mry * 0.5) + 'Q' + f1(x + r * 2.2) + ' ' + f1(mY + r * 1.2) + ' ' + f1(x + r * 2.8) + ' ' + f1(mY + r * 0.4) + '" stroke="#7FBFA9" stroke-width="' + f1(r * 0.09) + '" fill="none" stroke-linecap="round"/>';
-    var bagL = (kind === 'infant' ? 17 : kind === 'toddler' || kind === 'child' ? 21 : 26) * cm, bagW = bagL * 0.42;
-    out.bvm = mask(0) + '<rect x="' + f1(x - r * 0.16) + '" y="' + f1(mY - mry - r * 0.32) + '" width="' + f1(r * 0.32) + '" height="' + f1(r * 0.36) + '" rx="' + f1(r * 0.06) + '" fill="#2F6B5A"/>' +
-      '<g class="scx-bag"><ellipse cx="' + f1(x) + '" cy="' + f1(mY - mry - r * 0.3 - bagL / 2) + '" rx="' + f1(bagW / 2) + '" ry="' + f1(bagL / 2) + '" fill="#D9E2E6" stroke="#7E8C93" stroke-width="2.5"/>' +
-      '<path d="M' + f1(x - bagW * 0.32) + ' ' + f1(mY - mry - r * 0.3 - bagL * 0.75) + 'Q' + f1(x) + ' ' + f1(mY - mry - r * 0.3 - bagL * 0.6) + ' ' + f1(x + bagW * 0.32) + ' ' + f1(mY - mry - r * 0.3 - bagL * 0.75) + '" stroke="#AAB6BC" stroke-width="2" fill="none"/></g>' +
-      glove(x - mrx * 0.95, mY - mry * 0.1, 70, cm);
-    // the chest: hands for compressions (two stacked; a child one; an infant two thumbs), the AED's pads
-    var hy2 = M.sAngle + (M.xiph - M.sAngle) * 0.62;
-    out.cpr = '<g class="scx-push">' + (kind === 'infant'
-      ? glove(x - cm * 4.2, hy2 + cm * 2, 20, cm) + glove(x + cm * 4.2, hy2 + cm * 2, -20, cm)
-      : kind === 'toddler' || kind === 'child' ? glove(x, hy2 + cm * 4, 0, cm)
-      : glove(x, hy2 + cm * 4, 0, cm) + glove(x + cm * 0.6, hy2 + cm * 2.4, 6, cm, 'is-top')) + '</g>';
-    var pad = function(px, py, pw, ph, rot){ return '<g transform="rotate(' + rot + ' ' + f1(px) + ' ' + f1(py) + ')"><rect x="' + f1(px - pw / 2) + '" y="' + f1(py - ph / 2) + '" width="' + f1(pw) + '" height="' + f1(ph) + '" rx="' + f1(ph * 0.18) + '" fill="#F4F1EA" stroke="#7A7A72" stroke-width="2"/>' +
-      '<path d="M' + f1(px - pw * 0.22) + ' ' + f1(py + ph * 0.05) + 'l' + f1(pw * 0.12) + ' ' + f1(-ph * 0.22) + 'l' + f1(pw * 0.06) + ' ' + f1(ph * 0.3) + 'l' + f1(pw * 0.12) + ' ' + f1(-ph * 0.22) + '" stroke="#C9342A" stroke-width="2.4" fill="none"/></g>'; };
-    var aedX = lm.acromionL[0] + cm * 16, aedY = M.sAngle - cm * 4, pads;
+    var fs1 = M.r / 44.3;
+    out.bvm = PD.bvm('scx-', x, M.mouthY - 3 * fs1, fs1) + glove(x - mrx * 0.95, mY - mry * 0.1, 70, cm);
+    // the chest: compressions. An adult or a child: the shared two hands, heel on the lower half of the breastbone,
+    // at real size; an infant (newborn): two thumbs side by side on the lower breastbone, the hands round the chest
+    var hy2 = M.sAngle + (M.xiph - M.sAngle) * 0.62, hs = cm / 6.9;
+    if(kind === 'infant'){
+      var cw = (lm.midaxL[0] - lm.midaxR[0]) / 2, th2 = function(dx, flip){
+        return '<g class="scx-gl"><path class="scx-glove" d="M' + f1(x + dx) + ' ' + f1(hy2 - cm * 0.9) + 'q' + f1(flip * cm * 0.9) + ' 0 ' + f1(flip * cm * 0.9) + ' ' + f1(cm * 1.1) + 'l0 ' + f1(cm * 3.2) + 'q0 ' + f1(cm * 0.7) + ' ' + f1(-flip * cm * 0.9) + ' ' + f1(cm * 0.7) + 'Z"/>' +
+          '<path class="scx-glove" d="M' + f1(x + dx + flip * cm * 0.9) + ' ' + f1(hy2 + cm * 2.2) + 'C' + f1(x + flip * cw * 0.7) + ' ' + f1(hy2 + cm * 2.4) + ' ' + f1(x + flip * (cw + cm * 0.6)) + ' ' + f1(hy2 + cm * 2) + ' ' + f1(x + flip * (cw + cm * 1.4)) + ' ' + f1(hy2 - cm * 0.2) +
+          'L' + f1(x + flip * (cw + cm * 1.4)) + ' ' + f1(hy2 + cm * 5) + 'C' + f1(x + flip * cw * 0.8) + ' ' + f1(hy2 + cm * 5.2) + ' ' + f1(x + flip * cm * 2) + ' ' + f1(hy2 + cm * 4.2) + ' ' + f1(x + dx + flip * cm * 0.6) + ' ' + f1(hy2 + cm * 3.6) + 'Z"/></g>'; };
+      out.cpr = '<g class="scx-push">' + th2(-cm * 0.15, -1) + th2(cm * 0.15, 1) + '</g>';
+    } else out.cpr = '<g class="scx-push">' + PD.cpr('scx-', x - 13 * hs, hy2 - 5 * hs, hs) + '</g>';
+    var aedS = cm * 28 / 170, aedX = lm.acromionL[0] + cm * 14, aedY = M.sAngle - cm * 10, wire = [aedX, aedY + 40 * aedS];
     if(!ped){
-      var p1 = [lm.clavicleMidR[0] + r * 0.1, lm.clavicleMidR[1] + cm * 7], p2 = [lm.midaxL[0] - cm * 3, (lm.heartApex || lm.midaxL)[1] + cm * 3];
-      pads = pad(p1[0], p1[1], cm * 12, cm * 9, -8) + pad(p2[0], p2[1], cm * 12, cm * 9, -65);
-      out.pads = '<path d="M' + f1(p1[0] + cm * 5) + ' ' + f1(p1[1] - cm * 3) + 'Q' + f1(x + cm * 6) + ' ' + f1(M.notch - cm * 6) + ' ' + f1(aedX - cm * 8) + ' ' + f1(aedY) + 'M' + f1(p2[0] + cm * 3) + ' ' + f1(p2[1]) + 'Q' + f1(aedX - cm * 6) + ' ' + f1(p2[1]) + ' ' + f1(aedX - cm * 8) + ' ' + f1(aedY + cm * 4) + '" stroke="#2A2A2A" stroke-width="' + f1(cm * 0.5) + '" fill="none"/>' + pads;
+      out.pads = PD.pads('scx-', [lm.clavicleMidR[0] + 9 * hs, lm.clavicleMidR[1] + 38 * hs], [lm.midaxL[0] + 11 * hs, lm.midaxL[1] + 5 * hs], hs, wire);
     } else {
-      out.pads = '<path d="M' + f1(x + cm * 3) + ' ' + f1(M.sAngle) + 'Q' + f1(aedX - cm * 10) + ' ' + f1(M.sAngle - cm * 2) + ' ' + f1(aedX - cm * 8) + ' ' + f1(aedY) + '" stroke="#2A2A2A" stroke-width="' + f1(cm * 0.5) + '" fill="none"/>' + pad(x, M.sAngle + cm * 3, cm * 8, cm * 6, 0);
+      // a small child: one pad on the front of the chest, the other on the back (its edge shows at the side)
+      var cy3 = M.sAngle + cm * 3, cw3 = (lm.midaxL[0] - lm.midaxR[0]) / 2;
+      out.pads = '<rect class="scx-pad scx-pad-back" x="' + f1(x + cw3 - cm * 1) + '" y="' + f1(cy3 - cm * 3.5) + '" width="' + f1(cm * 3) + '" height="' + f1(cm * 7) + '" rx="' + f1(cm * 1) + '"/>' +
+        '<rect class="scx-pad" x="' + f1(x - cm * 4) + '" y="' + f1(cy3 - cm * 3) + '" width="' + f1(cm * 8) + '" height="' + f1(cm * 6) + '" rx="' + f1(cm * 1.2) + '"/>' +
+        '<path class="scx-wire" d="M' + f1(x + cm * 3) + ' ' + f1(cy3 - cm * 2) + 'C' + f1(x + cm * 10) + ' ' + f1(cy3 - cm * 12) + ' ' + f1(wire[0] - cm * 8) + ' ' + f1(wire[1] + cm * 2) + ' ' + f1(wire[0]) + ' ' + f1(wire[1]) + 'M' + f1(x + cw3 + cm * 1.5) + ' ' + f1(cy3) + 'C' + f1(x + cw3 + cm * 6) + ' ' + f1(cy3 - cm * 2) + ' ' + f1(wire[0] - cm * 4) + ' ' + f1(wire[1] + cm * 6) + ' ' + f1(wire[0]) + ' ' + f1(wire[1] + cm * 2) + '"/>';
     }
-    out.pads += '<g transform="translate(' + f1(aedX - cm * 8) + ' ' + f1(aedY - cm * 6) + ')"><rect width="' + f1(cm * 22) + '" height="' + f1(cm * 26) + '" rx="' + f1(cm * 3) + '" fill="#E8EEF0" stroke="#5E6A70" stroke-width="2"/>' +
-      '<rect x="' + f1(cm * 3) + '" y="' + f1(cm * 3) + '" width="' + f1(cm * 16) + '" height="' + f1(cm * 8) + '" rx="' + f1(cm * 1.5) + '" fill="#2A3238"/>' +
-      '<circle cx="' + f1(cm * 11) + '" cy="' + f1(cm * 18) + '" r="' + f1(cm * 4) + '" fill="#D8492F"/><path d="M' + f1(cm * 10.5) + ' ' + f1(cm * 15.5) + 'l' + f1(-cm * 1.5) + ' ' + f1(cm * 3) + 'h' + f1(cm * 2.4) + 'l' + f1(-cm * 1.4) + ' ' + f1(cm * 2.6) + '" stroke="#FFF" stroke-width="' + f1(cm * 0.5) + '" fill="none"/></g>';
+    out.pads += PD.aed('scx-', aedX, aedY, aedS);
     // drugs: the auto injector on the outer thigh, naloxone at the nose, glucose gel at the cheek, an inhaler at the mouth
-    var thigh = an.simLegR, ey2 = M.groin + (M.knee - M.groin) * 0.3, ex2 = thigh[0] + thigh[2] * 0.7;
+    var thigh = an.simLegR || an.legR, ey2 = M.groin + (M.knee - M.groin) * 0.3, ex2 = thigh[0] + thigh[2] * 0.7;
     out.epi = '<g transform="rotate(14 ' + f1(ex2) + ' ' + f1(ey2) + ')"><rect x="' + f1(ex2 - cm * 1.2) + '" y="' + f1(ey2 - cm * 8) + '" width="' + f1(cm * 2.4) + '" height="' + f1(cm * 15) + '" rx="' + f1(cm * 1.1) + '" fill="#F3E6C8" stroke="#8A6A2E" stroke-width="2"/>' +
       '<rect x="' + f1(ex2 - cm * 1.2) + '" y="' + f1(ey2 + cm * 4.6) + '" width="' + f1(cm * 2.4) + '" height="' + f1(cm * 2.6) + '" rx="' + f1(cm * 0.6) + '" fill="#E07A2E"/><rect x="' + f1(ex2 - cm * 1.2) + '" y="' + f1(ey2 - cm * 8) + '" width="' + f1(cm * 2.4) + '" height="' + f1(cm * 2.2) + '" rx="' + f1(cm * 0.6) + '" fill="#2F6FA8"/></g>';
     out.nalox = '<g transform="rotate(-28 ' + f1(x + r * 0.08) + ' ' + f1(M.noseY) + ')"><rect x="' + f1(x + r * 0.02) + '" y="' + f1(M.noseY - cm * 0.5) + '" width="' + f1(cm * 2.4) + '" height="' + f1(cm * 6) + '" rx="' + f1(cm * 0.6) + '" fill="#FFFFFF" stroke="#2F5E9E" stroke-width="2"/>' +
       '<rect x="' + f1(x + r * 0.02 + cm * 0.7) + '" y="' + f1(M.noseY - cm * 2) + '" width="' + f1(cm * 1) + '" height="' + f1(cm * 1.8) + '" rx="' + f1(cm * 0.4) + '" fill="#2F5E9E"/></g>';
     out.gel = '<g transform="rotate(-24 ' + f1(x - r * 0.7) + ' ' + f1(M.mouthY) + ')"><rect x="' + f1(x - r * 0.7 - cm * 9) + '" y="' + f1(M.mouthY - cm * 1.5) + '" width="' + f1(cm * 9) + '" height="' + f1(cm * 3) + '" rx="' + f1(cm * 0.8) + '" fill="#E9EEF2" stroke="#6E7C86" stroke-width="2"/>' +
       '<rect x="' + f1(x - r * 0.7 - cm * 9) + '" y="' + f1(M.mouthY - cm * 1.5) + '" width="' + f1(cm * 2.4) + '" height="' + f1(cm * 3) + '" rx="' + f1(cm * 0.6) + '" fill="#E8B23E"/></g>';
-    out.mdi = '<g><rect x="' + f1(x - cm * 1.6) + '" y="' + f1(M.mouthY - cm * 0.2) + '" width="' + f1(cm * 3.2) + '" height="' + f1(cm * 3) + '" rx="' + f1(cm * 0.6) + '" fill="#4F8FC8"/>' +
-      '<rect x="' + f1(x - cm * 1.4) + '" y="' + f1(M.mouthY + cm * 2.4) + '" width="' + f1(cm * 2.8) + '" height="' + f1(cm * 8) + '" rx="' + f1(cm * 1) + '" fill="#D2DCE4" stroke="#5E7282" stroke-width="2"/></g>';
+    // the inhaler held beside the face (the oxygen mask, when on, stays on the face)
+    var ix = x + M.hrx * 1.35, iy = M.mouthY;
+    out.mdi = '<g transform="rotate(-70 ' + f1(ix) + ' ' + f1(iy) + ')"><rect x="' + f1(ix - cm * 1.6) + '" y="' + f1(iy - cm * 0.2) + '" width="' + f1(cm * 3.2) + '" height="' + f1(cm * 3) + '" rx="' + f1(cm * 0.6) + '" fill="#4F8FC8"/>' +
+      '<rect x="' + f1(ix - cm * 1.4) + '" y="' + f1(iy + cm * 2.4) + '" width="' + f1(cm * 2.8) + '" height="' + f1(cm * 8) + '" rx="' + f1(cm * 1) + '" fill="#D2DCE4" stroke="#5E7282" stroke-width="2"/></g>';
     // the neck: a cervical collar
     var c0 = M.chin - r * 0.05, c1 = M.notch + r * 0.1, nw = M.neckR * 1.7;
     out.collar = '<path d="M' + f1(x - nw) + ' ' + f1(c0) + 'Q' + f1(x) + ' ' + f1(c0 + r * 0.3) + ' ' + f1(x + nw) + ' ' + f1(c0) + 'L' + f1(x + nw * 1.08) + ' ' + f1(c1) + 'Q' + f1(x) + ' ' + f1(c1 + r * 0.25) + ' ' + f1(x - nw * 1.08) + ' ' + f1(c1) + 'Z" fill="#E8C77A" stroke="#9A7A2E" stroke-width="2"/>' +
@@ -570,8 +603,8 @@
     out.cool = pk(x - M.neckR * 1.7, M.notch - r * 0.2, 70) + pk(x + M.neckR * 1.7, M.notch - r * 0.2, -70) + pk(lm.midaxR[0] + cm * 2, lm.midaxR[1] - cm * 6, 80) + pk(lm.midaxL[0] - cm * 2, lm.midaxL[1] - cm * 6, -80) +
       pk((M.legL + M.hx) / 2, M.groin - cm * 2, 30) + pk((M.legR + M.hx) / 2, M.groin - cm * 2, -30);
     // a blanket: over the body from the chest down when lying, round the shoulders when sitting
-    var bt = view === 'floor' ? M.xiph : M.notch + r * 0.1;
-    out.warm = view === 'floor'
+    var bt = view !== 'up' ? (kind === 'infant' ? M.pubis - r * 0.2 : M.xiph) : M.notch + r * 0.1;
+    out.warm = view !== 'up'
       ? '<path d="M' + f1(-r * 0.6) + ' ' + f1(bt) + 'Q' + f1(x) + ' ' + f1(bt - r * 0.5) + ' ' + f1(f.w + r * 0.6) + ' ' + f1(bt) + 'L' + f1(f.w + r * 0.2) + ' ' + f1(f.h * 0.98) + 'L' + f1(-r * 0.2) + ' ' + f1(f.h * 0.98) + 'Z" fill="#6A8DAB"/>' +
         '<path d="M' + f1(-r * 0.6) + ' ' + f1(bt) + 'Q' + f1(x) + ' ' + f1(bt - r * 0.5) + ' ' + f1(f.w + r * 0.6) + ' ' + f1(bt) + '" stroke="#B6CBDC" stroke-width="' + f1(r * 0.22) + '" fill="none"/>' +
         [0.3, 0.5, 0.7].map(function(k){ return '<path d="M' + f1(f.w * k) + ' ' + f1(bt + r) + 'Q' + f1(f.w * k + r * 0.3) + ' ' + f1((bt + f.h) / 2) + ' ' + f1(f.w * k - r * 0.2) + ' ' + f1(f.h * 0.95) + '" stroke="rgba(30,50,70,.25)" stroke-width="' + f1(r * 0.12) + '" fill="none"/>'; }).join('')
@@ -665,7 +698,7 @@
     /* ------------------------------------------------------------------ the patient and the picture */
     var G = null, M = null, monitor = null, figLoaded = false;
     function look(){ return LOOK[St.id] || { v: 'floor', set: 'living', top: 'tee', bot: 'jeans' }; }
-    function fig(){ var F = St.F; if(!F) return null; return F.figs[St.kind + '-front'] || F.figs[(St.kind === 'female' ? 'adult' : St.months != null && St.months < 144 ? 'child' : 'adult') + '-front'] || F.figs['adult-front']; }
+    function fig(){ var F = St.F; if(!F) return null; if(St.view === 'prone' && F.figs[(St.kind === 'female' ? 'female' : 'adult') + '-back']) return F.figs[(St.kind === 'female' ? 'female' : 'adult') + '-back']; return F.figs[St.kind + '-front'] || F.figs[(St.kind === 'female' ? 'adult' : St.months != null && St.months < 144 ? 'child' : 'adult') + '-front'] || F.figs['adult-front']; }
     function loadFigs(cb){
       if(!window.LevlBodyFigs) return;
       window.LevlBodyFigs.load('body', function(F){ window.LevlBodyFigs.load('case', function(F2){ St.F = F2 || F; figLoaded = true; cb(); }); });
@@ -673,43 +706,59 @@
     function seen(){
       var c = call(), out = [], n = node();
       if(!c || !n) return out;
-      out.push({ text: n.text, vitals: n.vitals, now: true });
-      for(var i = St.path.length - 1; i >= 0; i--){ var p = St.path[i], m = c.nodes[p.from]; if(m) out.push({ text: m.text, vitals: m.vitals, now: false, did: p.text }); }
+      out.push({ text: n.text, vitals: vline(n), now: true });
+      for(var i = St.path.length - 1; i >= 0; i--){ var p = St.path[i], m = c.nodes[p.from]; if(m) out.push({ text: m.text, vitals: vline(m), now: false, did: p.text }); }
       return out;
     }
+    /* a step's vitals line, as the patient's: in a birth, a line about the newborn ("Newborn HR 128 · crying") is the
+       baby's, not the mother's, so the mother's monitor and signs never take it */
+    function vline(n){ var v = n && n.vitals || ''; return St.preg && /^\s*newborn\b/i.test(v) ? '' : v; }
     function careNow(sn){ return careOf(J, sn, { preg: !!St.preg, he: !St.female }); }
-    function viewFor(care){ var v = look().v; if(v === 'up' && care && (care.on.cpr || care.on.pads)) v = 'floor'; return v; }
+    /* how the patient lies: as the call opens, on the ground once compressions or the AED start, and face down while
+       the newest step that speaks of it says so (s21: face down with weight across his back) */
+    var PRONE = /\b(face-down|face down|prone|on his (front|stomach)|on her (front|stomach)|weight across (his|her) back)\b/i, UNPRONE = /\b(off (his|her) front|onto (his|her) back|turned (him|her) over|rolled (him|her) over|on (his|her) back|sits? up)\b/i;
+    function prone(){
+      var sn = seen();
+      for(var i = 0; i < sn.length; i++){ var t = own(sn[i].text, St.preg); if(UNPRONE.test(t)) return false; if(PRONE.test(t)) return true; }
+      return false;
+    }
+    function viewFor(care){ var v = look().v; if(v === 'up' && care && (care.on.cpr || care.on.pads)) v = 'floor'; if(prone() && !(care && care.on.cpr)) v = 'prone'; return v; }
 
     /* the layout: picture beside the card on a wide stage, the card under the picture on a narrow one */
     function layout(){
       var w = stage.clientWidth || box.clientWidth || 0;
       var wide = w >= 900;
       box.classList.toggle('is-wide', wide);
-      if(!wide){ var vh = window.innerHeight || 800; pic.style.height = Math.round(clamp(vh * 0.56, 360, 540)) + 'px'; }
+      // a phone's picture height is set once per width (the address bar showing or hiding never redraws it)
+      if(!wide){ if(St.lw !== w || !St.ph){ St.lw = w; St.ph = Math.round(clamp((window.innerHeight || 800) * 0.56, 360, 540)); } pic.style.height = St.ph + 'px'; }
       else pic.style.height = '';
+      // the cause line sits right under the picture on a phone (it says what the picture just did), under the scene
+      // beside the card on a wide stage
+      if(!wide && lines.parentNode !== box){ box.insertBefore(lines, board); }
+      else if(wide && lines.parentNode === box){ stage.insertBefore(lines, live); }
     }
     function geom(){
       var W = pic.clientWidth, H = pic.clientHeight, wide = box.classList.contains('is-wide'), f = fig();
       if(!W || !H || !f) return null;
       var g = { W: W, H: H, wide: wide, f: f, view: St.view };
       // the monitor: top right on a wide picture, a strip across the top on a narrow one
-      var mw = wide ? clamp(W * 0.34, 270, 330) : W - 16, mh = wide ? 170 : 128;
+      var mw = wide ? clamp(W * 0.34, 270, 330) : W - 16, mh = wide ? 170 : 96;
       g.mon = { x: W - mw - 12, y: 12, w: mw, h: mh };
-      var area = wide ? (g.view === 'floor' ? { x: 16, y: mh + 30, w: W - 32, h: H - mh - 38 } : { x: 8, y: 8, w: W - mw - 40, h: H - 8 })
+      var area = wide ? (g.view !== 'up' ? { x: 16, y: mh + 30, w: W - 32, h: H - mh - 38 } : { x: 8, y: 8, w: W - mw - 40, h: H - 8 })
         : { x: 8, y: mh + 24, w: W - 16, h: H - mh - 28 };
       g.area = area;
-      if(g.view === 'floor' && wide){
+      if(g.view !== 'up' && wide){
         // lying across the picture, head to the left (her right side nearest the bottom)
         var k = Math.min(area.w / (f.h * 1.02), area.h / (f.w * 1.04));
         g.k = k; g.rot = true;
         g.ox = area.x + (area.w - f.h * k) / 2; g.oy = area.y + area.h / 2 + f.w * k / 2;
-      } else if(g.view === 'floor'){
+      } else if(g.view !== 'up'){
         // a narrow picture frames the head to below the knees, so the patient is as large as the picture allows
-        var span = Math.min(f.h, f.anchors.simLegL[1] + (f.h - f.anchors.simLegL[1]) * 0.5), k2 = Math.min(area.h / (span * 1.02), area.w / (f.w * 1.1));
+        var span = Math.min(f.h, (f.anchors.simLegL || f.anchors.legL)[1] + (f.h - (f.anchors.simLegL || f.anchors.legL)[1]) * 0.5), k2 = Math.min(area.h / (span * 1.02), area.w / (f.w * 1.1));
         g.k = k2; g.rot = false; g.ox = area.x + (area.w - f.w * k2) / 2; g.oy = area.y + Math.max(0, (area.h - span * k2) / 2);
       } else {
         // sitting or standing: head to mid thigh fills the height
-        var cut = (f.lines.groinY) + (f.anchors.simLegL[1] - f.lines.groinY) * 0.62, k3 = Math.min(area.h / (cut + 10), area.w / (f.w * 1.15));
+        var cut = (f.lines.groinY) + ((f.anchors.simLegL || f.anchors.legL)[1] - f.lines.groinY) * 0.62, k3 = Math.min(area.h / (cut + 10), area.w / (f.w * 1.15));
         g.k = k3; g.rot = false; g.ox = area.x + (area.w - f.w * k3) / 2; g.oy = H - cut * k3;
         if(g.oy > 10) g.oy = Math.max(10, H - cut * k3);
       }
@@ -726,53 +775,77 @@
       svg.setAttribute('viewBox', '0 0 ' + G.W + ' ' + G.H);
       svg.setAttribute('width', G.W); svg.setAttribute('height', G.H);
       var top = L.top, bot = L.bot;
-      defs.innerHTML = DEFS + clothGrad(top) + clothGrad(bot) + '<clipPath id="scx-body"><path d="' + f.outline + '"/></clipPath>';
+      defs.innerHTML = DEFS + clothGrad(top, f.w) + clothGrad(bot, f.w) + '<clipPath id="scx-body"><path d="' + f.outline + '"/></clipPath>';
       // the setting
-      gBg.innerHTML = G.view === 'floor'
+      gBg.innerHTML = G.view !== 'up'
         ? ground(set.g, G.W, G.H, 0, 0, { wet: St.id === 's24', rug: L.set === 'living' || L.set === 'couch' }) + '<rect width="' + G.W + '" height="' + G.H + '" fill="url(#scx-light)"/>'
         : back(set.b, G.W, G.H, set.g);
       // props on the floor that the case names, under the patient
       var T = tf(), under = [];
-      if(G.view === 'floor' && L.set === 'road'){
+      if(G.view !== 'up' && L.set === 'road'){
         // his helmet, off and on the road beside his head
         var hc = M.cm;
         under.push('<g transform="' + T + '"><g transform="translate(' + f1(M.hx + M.r * 3.1) + ' ' + f1(M.hy + M.r * 0.8) + ') rotate(-25)"><ellipse rx="' + f1(hc * 11) + '" ry="' + f1(hc * 13) + '" fill="#C23A2B"/><ellipse rx="' + f1(hc * 11) + '" ry="' + f1(hc * 13) + '" fill="url(#scx-belly)"/>' +
           '<path d="M' + f1(-hc * 9.5) + ' ' + f1(-hc * 5) + 'Q0 ' + f1(-hc * 12) + ' ' + f1(hc * 9.5) + ' ' + f1(-hc * 5) + 'L' + f1(hc * 8.6) + ' ' + f1(-hc * 2.2) + 'Q0 ' + f1(-hc * 8.4) + ' ' + f1(-hc * 8.6) + ' ' + f1(-hc * 2.2) + 'Z" fill="#1D2226"/></g></g>');
       }
-      if(G.view === 'floor' && L.set === 'alley') under.push('<g transform="' + T + '"><g transform="translate(' + f1(f.anchors.armR[0] + M.cm * 18) + ' ' + f1(M.groin - M.cm * 4) + ') rotate(35)"><rect x="-' + f1(M.cm * 0.6) + '" y="-' + f1(M.cm * 5) + '" width="' + f1(M.cm * 1.2) + '" height="' + f1(M.cm * 8) + '" rx="' + f1(M.cm * 0.4) + '" fill="#F2F4F5" stroke="#8A969C" stroke-width="2"/>' +
+      if(G.view !== 'up' && L.set === 'alley') under.push('<g transform="' + T + '"><g transform="translate(' + f1(f.anchors.armR[0] + M.cm * 18) + ' ' + f1(M.groin - M.cm * 4) + ') rotate(35)"><rect x="-' + f1(M.cm * 0.6) + '" y="-' + f1(M.cm * 5) + '" width="' + f1(M.cm * 1.2) + '" height="' + f1(M.cm * 8) + '" rx="' + f1(M.cm * 0.4) + '" fill="#F2F4F5" stroke="#8A969C" stroke-width="2"/>' +
         '<rect x="-' + f1(M.cm * 0.15) + '" y="' + f1(M.cm * 3) + '" width="' + f1(M.cm * 0.3) + '" height="' + f1(M.cm * 3) + '" fill="#9AA4AA"/><rect x="-' + f1(M.cm * 1.1) + '" y="-' + f1(M.cm * 6) + '" width="' + f1(M.cm * 2.2) + '" height="' + f1(M.cm * 1) + '" fill="#E07A2E"/></g></g>');
+      // in his mother's arms (s12): her left forearm under him along his back, his head in the crook of her elbow,
+      // her hand under his bottom; her right forearm across his tummy (drawn over him, below)
+      var mom = '';
+      if(L.set === 'arms' && G.view !== 'up'){
+        var ac = M.cm, w5 = ac * 7.5, sk = '#D9A383', sl = '#B65A6E';
+        var limb = function(x0, y0, x1, y1, w, col){ return '<path d="M' + f1(x0) + ' ' + f1(y0) + 'L' + f1(x1) + ' ' + f1(y1) + '" stroke="' + col + '" stroke-width="' + f1(w) + '" stroke-linecap="round"/>'; };
+        var hand = function(x, y, rot){ return '<g transform="translate(' + f1(x) + ' ' + f1(y) + ') rotate(' + rot + ')"><ellipse rx="' + f1(ac * 5) + '" ry="' + f1(ac * 4) + '" fill="' + sk + '"/>' + [-1.5, -0.5, 0.5, 1.5].map(function(k){ return '<rect x="' + f1(ac * 3) + '" y="' + f1(k * ac * 1.6 - ac * 0.75) + '" width="' + f1(ac * 5.5) + '" height="' + f1(ac * 1.5) + '" rx="' + f1(ac * 0.75) + '" fill="' + sk + '" stroke="#B8826A" stroke-width="' + f1(ac * 0.2) + '"/>'; }).join('') + '</g>'; };
+        var ey0 = M.top - ac * 6;
+        under.push('<g transform="' + T + '"><rect x="' + f1(-ac * 30) + '" y="' + f1(M.top - ac * 20) + '" width="' + f1(f.w + ac * 60) + '" height="' + f1(f.h + ac * 30) + '" rx="' + f1(ac * 16) + '" fill="url(#scx-denim)" opacity=".9"/>' +
+          limb(M.hx - ac * 40, ey0 - ac * 10, M.hx, ey0, w5 * 1.25, sl) + limb(M.hx, ey0, M.hx, M.groin + ac * 2, w5, sk) + hand(M.hx, M.groin + ac * 6, 90) + '</g>');
+        mom = limb(f.w + ac * 34, M.umb + ac * 8, f.w + ac * 8, M.umb + ac * 5, w5 * 1.25, sl) + limb(f.w + ac * 8, M.umb + ac * 5, M.hx + ac * 6, M.umb + ac * 1, w5, sk) + hand(M.hx + ac * 2, M.umb, 180);
+      }
       // the pool of blood, under the body (it grows with each step the bleed ran)
       var fnd0 = J.pure.findings(seen(), { preg: !!St.preg }), site = limbSite(f, fnd0);
       St.site = site;
-      if(site && G.view === 'floor') under.push('<g transform="' + T + '"><g class="scx-pool" style="transform-origin:' + f1(site.at[0] + (site.viewerLeft ? -1 : 1) * site.r * 1.4) + 'px ' + f1(site.at[1] + site.r * 0.6) + 'px"><path d="' +
+      if(site && G.view !== 'up') under.push('<g transform="' + T + '"><g class="scx-pool" style="transform-origin:' + f1(site.at[0] + (site.viewerLeft ? -1 : 1) * site.r * 1.4) + 'px ' + f1(site.at[1] + site.r * 0.6) + 'px"><path d="' +
         blob(site.at[0] + (site.viewerLeft ? -1 : 1) * site.r * 1.4, site.at[1] + site.r * 0.6, site.r * 2.3, site.r * 2.9) + '" fill="url(#scx-pool)"/><path d="' + blob(site.at[0] + (site.viewerLeft ? -1 : 1) * site.r * 1.1, site.at[1], site.r * 0.8, site.r * 1.1) + '" fill="#B8251A" opacity=".5"/></g></g>');
       gUnder.innerHTML = under.join('');
       // the body: shadow, the rendered figure, the signs and the clothes clipped to it, the face and hair
       var shoe = SHOES[St.id], h = [];
-      if(G.view === 'floor') h.push('<path d="' + f.outline + '" fill="rgba(20,20,20,.2)" transform="translate(' + f1(-M.cm * 1.2) + ' ' + f1(M.cm * 1.5) + ')"/>');
+      if(G.view !== 'up') h.push('<path d="' + f.outline + '" fill="rgba(20,20,20,.2)" transform="translate(' + f1(-M.cm * 1.2) + ' ' + f1(M.cm * 1.5) + ')"/>');
       h.push('<image href="' + St.F.url(f) + '" x="0" y="0" width="' + f.w + '" height="' + f.h + '"/>');
       h.push('<g clip-path="url(#scx-body)">' +
-        '<path class="scx-sk scx-hot" d="' + f.outline + '"/><path class="scx-sk scx-mot" d="' + f.outline + '"/><path class="scx-sk scx-pale" d="' + f.outline + '"/><path class="scx-sk scx-blue" d="' + f.outline + '"/>' +
+        '<path class="scx-sk scx-hot" d="' + f.outline + '"/><rect class="scx-sk scx-mot" x="-40" y="' + f1(M.notch - M.neckR * 0.3) + '" width="' + f1(f.w + 80) + '" height="' + f1(f.h) + '"/><path class="scx-sk scx-pale" d="' + f.outline + '"/><path class="scx-sk scx-blue" d="' + f.outline + '"/>' +
         '<g class="scx-hives">' + hives(f, M) + '</g>' +
         clothes(M, top, bot) +
         (shoe ? '<rect x="0" y="' + f1(f.h * 0.94) + '" width="' + f.w + '" height="' + f1(f.h * 0.06) + '" fill="' + shoe + '"/>' : '') +
         '<ellipse class="scx-breath" cx="' + f1(M.hx) + '" cy="' + f1((M.sAngle + M.xiph) / 2) + '" rx="' + f1((f.landmarks.midaxL[0] - f.landmarks.midaxR[0]) * 0.4) + '" ry="' + f1((M.xiph - M.notch) * 0.6) + '"/>' +
         (St.preg ? '<ellipse class="scx-belly" cx="' + f1(M.hx) + '" cy="' + f1(M.umb) + '" rx="' + f1((f.landmarks.asisL[0] - f.landmarks.asisR[0]) * 0.62) + '" ry="' + f1((M.pubis - M.xiph) * 0.55) + '" fill="url(#scx-belly)"/>' : '') +
         '</g>');
-      h.push(face(M), hair(M, HAIR[St.id], St.kind, L));
+      if(St.view === 'prone'){
+        // face down: the back of his head (hair over all of it), and an officer's knee and shin across his upper back
+        var hcol = (HAIR[St.id] || ['#2B2B2B'])[0];
+        h.push('<ellipse cx="' + f1(M.hx) + '" cy="' + f1(M.hcy) + '" rx="' + f1(M.hrx * 1.04) + '" ry="' + f1(M.hry * 1.02) + '" fill="' + hcol + '"/><ellipse cx="' + f1(M.hx) + '" cy="' + f1(M.hcy) + '" rx="' + f1(M.hrx * 1.04) + '" ry="' + f1(M.hry * 1.02) + '" fill="url(#scx-light)"/>');
+      } else h.push(face(M), hair(M, HAIR[St.id], St.kind, L));
       gFig.setAttribute('transform', T);
       gFig.innerHTML = h.join('');
       // the care and the bleed, each its own group
-      var it = items(M, f, St.kind, site, G.view), sp = splintSite(f, fnd0);
-      if(!site){ var it2 = items(M, f, St.kind, sp, G.view); it.splint = it2.splint; }
+      var isBack = St.view === 'prone', it = isBack ? {} : items(M, f, St.kind, site, G.view, 12.5 / G.k);
+      if(!site && !isBack){ var it2 = items(M, f, St.kind, splintSite(f, fnd0), G.view, 12.5 / G.k); it.splint = it2.splint; }
       var on = [];
+      if(mom) on.push('<g class="scx-mom">' + mom + '</g>');
+      if(isBack){
+        // an officer's knee and shin across his upper back, a gloved hand on his shoulder (positional asphyxia)
+        var cm4 = M.cm, ky = M.notch + (M.xiph - M.notch) * 0.9;
+        on.push('<g class="scx-it is-on scx-weight" data-k="weight"><path class="scx-cop scx-sleeve" d="M' + f1(-cm4 * 40) + ' ' + f1(ky - cm4 * 6) + 'L' + f1(M.hx + cm4 * 2) + ' ' + f1(ky - cm4 * 9) + 'Q' + f1(M.hx + cm4 * 12) + ' ' + f1(ky - cm4 * 8) + ' ' + f1(M.hx + cm4 * 12) + ' ' + f1(ky + cm4 * 1) + 'L' + f1(M.hx + cm4 * 4) + ' ' + f1(ky + cm4 * 8) + 'L' + f1(-cm4 * 40) + ' ' + f1(ky + cm4 * 9) + 'Z"/>' +
+          '<ellipse class="scx-cop2 scx-sleeve" cx="' + f1(M.hx + cm4 * 4) + '" cy="' + f1(ky) + '" rx="' + f1(cm4 * 7.5) + '" ry="' + f1(cm4 * 8) + '"/>' +
+          glove(f.landmarks.acromionR[0] - cm4 * 2, f.landmarks.acromionR[1] + cm4 * 4, 200, cm4) + '</g>');
+      }
       ITEM_ORDER.forEach(function(k){ if(it[k]) on.push('<g class="scx-it" data-k="' + k + '">' + it[k] + '</g>'); });
       if(site) on.unshift('<g class="scx-it is-on" data-k="wound">' + it.wound + '</g>', '<g class="scx-jets" style="--hb:1s">' + jets(site) + '</g>');
       gOn.setAttribute('transform', T);
       gOn.innerHTML = on.join('');
       // the tourniquet's tag reads upright when the patient lies across the picture
       if(G.rot) gOn.querySelectorAll('.scx-tqt').forEach(function(t){ var x = t.getAttribute('x'), y = +t.getAttribute('y') - M.cm; t.setAttribute('transform', 'rotate(90 ' + x + ' ' + y + ')'); });
-      gFig.classList.toggle('is-floor', G.view === 'floor');
+      gFig.classList.toggle('is-floor', G.view !== 'up');
       // the monitor's place
       var m = G.mon; monHost.style.left = m.x + 'px'; monHost.style.top = m.y + 'px'; monHost.style.width = m.w + 'px'; monHost.style.height = m.h + 'px';
       whoEl.textContent = who(St.months, St.female, c ? c.nodes[c.startNode].text : '');
@@ -792,7 +865,7 @@
     function jets(site){
       var x = site.at[0], y = site.at[1], s = site.viewerLeft ? -1 : 1, r = site.r;
       return [[0.9, -0.2], [1.3, 0.5], [0.7, 0.9]].map(function(q, i){
-        return '<path class="scx-jet scx-jet' + i + '" d="M' + f1(x) + ' ' + f1(y) + 'Q' + f1(x + s * r * q[0] * 0.8) + ' ' + f1(y + r * (q[1] - 0.6)) + ' ' + f1(x + s * r * q[0] * 1.9) + ' ' + f1(y + r * q[1] * 1.6) + '"/>';
+        return '<path class="scx-jet scx-jet-e scx-jet' + i + '" d="M' + f1(x) + ' ' + f1(y) + 'Q' + f1(x + s * r * q[0] * 0.8) + ' ' + f1(y + r * (q[1] - 0.6)) + ' ' + f1(x + s * r * q[0] * 1.9) + ' ' + f1(y + r * q[1] * 1.6) + '"/>';
       }).join('');
     }
     function hives(f, M){
@@ -819,11 +892,14 @@
       svg.querySelector('.scx-hot').classList.toggle('is-on', sk === 'hot');
       svg.querySelector('.scx-mot').classList.toggle('is-on', sk === 'mottled');
       svg.querySelector('.scx-hives').classList.toggle('is-on', !!S.hives);
+      var belly = svg.querySelector('.scx-belly'); if(belly) belly.classList.toggle('is-off', !!S.born);
       gFig.setAttribute('data-eyes', S.eyes);
       gFig.classList.toggle('is-blue', blue);
       gFig.classList.toggle('is-sweat', !!S.sweat);
       gOn.querySelectorAll('.scx-it').forEach(function(g){
-        var k = g.getAttribute('data-k'), on = k === 'wound' ? S.bleed !== 'none' : k === 'press' ? !!(S.care.gauze && !S.care.tq) : !!S.care[k];
+        var k = g.getAttribute('data-k');
+        if(k === 'weight') return;
+        var on = k === 'wound' ? S.bleed !== 'none' : k === 'press' ? !!(S.care.gauze && !S.care.tq) : !!S.care[k];
         if(k === 'gauze') on = !!S.care.gauze;
         g.classList.toggle('is-on', on);
       });
@@ -839,6 +915,8 @@
       var rr = t.rrText === 'none' ? 0 : s.rr, hr = t.pulseless ? 0 : s.hr;
       var br = gFig.querySelector('.scx-breath');
       if(br){ br.classList.toggle('is-on', !!(rr && rr > 0) && !(St.drawn && St.drawn.care.bvm)); if(rr) gFig.style.setProperty('--br', (60 / rr).toFixed(2) + 's'); }
+      var dc = St.drawn ? St.drawn.care : {};
+      gOn.classList.toggle('is-nrp', St.months === 0 && !!dc.cpr);
       var bag = gOn.querySelector('.scx-bag');
       if(bag){ var ar = t.rrText === 'assisted' && rr ? rr : null; gOn.classList.toggle('is-bagging', !!ar); if(ar) gOn.style.setProperty('--bag', (60 / ar).toFixed(2) + 's'); }
       var jt = gOn.querySelector('.scx-jets'); if(jt && hr) jt.style.setProperty('--hb', (60 / hr).toFixed(2) + 's');
@@ -847,11 +925,20 @@
     /* ------------------------------------------------------------------ the words on the picture */
     function labelList(prevCare){
       if(!G) return [];
-      var f = G.f, sn = seen(), fnd = J.pure.findings(sn, { preg: !!St.preg }), res = J.care ? J.care.resolutions(sn) : null;
-      var pins = J.pure.pinsFor(f, 'front', fnd, res);
+      var out0 = [], f = G.f, sn = seen(), fnd = J.pure.findings(sn, { preg: !!St.preg }), res = J.care ? J.care.resolutions(sn) : null;
+      // each region's words come from its newest step only: the newest sentence decides ("stops coughing" is no
+      // longer "Coughing"); an older sign the case has since dropped is not named
+      var fnew = {}, k0;
+      for(k0 in fnd){ var L0 = fnd[k0] || []; fnew[k0] = !L0.length ? L0 : L0[0].now ? L0.filter(function(x){ return x.now; }) : [L0[0]]; }
+      var pins = J.pure.pinsFor(f, St.view === 'prone' ? 'back' : 'front', fnew, res);
+      // the newest sentence about her cough or her voice decides whether she can still cough
+      var silent = false;
+      sn.some(function(x){ return own(x.text, St.preg).split(SENT).reverse().some(function(y){ if(!/cough|sound|voice|cry|air/i.test(y)) return false; silent = SILENT.test(y); return true; }); });
+      var born = !!St.preg && BORN.test(sn.map(function(x){ return x.text; }).join(' '));
       var cr = St.drawn ? St.drawn.careObj : null;
-      if(J.care && cr) J.care.pins({ fig: f, f: fnd, careNow: cr, preg: St.preg, view: 'front' }, pins);
-      var out = [], it = St.drawn ? St.drawn.care : {};
+      if(J.care && cr) J.care.pins({ fig: f, f: fnd, careNow: cr, preg: St.preg, view: St.view === 'prone' ? 'back' : 'front' }, pins);
+      if(St.view === 'prone'){ var wg = gOn.querySelector('.scx-weight .scx-cop2'); if(wg){ var wb = wg.getBBox(); out0.push({ text: 'Knee on his back', at: [wb.x + wb.width / 2, wb.y + wb.height / 2], tone: 'bad' }); } }
+      var out = out0, it = St.drawn ? St.drawn.care : {};
       // the care this step put on first, then the newest and the worst findings
       var A = M, fresh = ITEM_ORDER.filter(function(k){ return ITEM_LABEL[k] && it[k] && !(prevCare && prevCare[k]); });
       fresh.slice(0, 2).forEach(function(k){ var p = itemAt(k); if(p) out.push({ text: ITEM_LABEL[k], at: p, tone: 'act' }); });
@@ -866,10 +953,15 @@
           sev = bl !== 'stop';
           if(bl === 'stop' && fresh.indexOf('tq') >= 0) return;
         }
+        // the birth is over: the words of labour leave her (the baby is not drawn here)
+        if(born && (p.key === 'birth' || /Contraction|Crowning|Baby born|Head delivered|Cord|Birth/.test(t))) return;
+        // the airway: a child who stops coughing and can make no sound cannot cough (complete obstruction)
+        if(/Cough/.test(t) && silent){ t = 'Cannot cough'; sev = true; }
         // the head's words: the newest state only ("Unresponsive", never "Unresponsive, alert")
         if(p.key === 'head' || p.key === 'ms') t = t.split(', ')[0];
         // words about the head point at the top of the head, never at the face
         var at = (p.key === 'head' || p.key === 'ms') && M ? [M.hx, M.top + M.hry * 0.18] : [p.x, p.y];
+        if(/^Mottled/.test(t) && M) at = [M.hx + M.neckR * 0.8, M.notch];
         // a count is not a finding to name, and one finding is named once
         if(/^\d+ findings?$/.test(t) || out.some(function(x){ return x.text === t; })) return;
         out.push({ text: t, at: at, tone: sev ? 'bad' : 'see' });
@@ -879,24 +971,14 @@
     }
     function itemAt(k){
       var g = gOn.querySelector('.scx-it[data-k="' + k + '"]'); if(!g) return null;
+      if(k === 'pads') g = g.querySelector('.scx-pad:not(.scx-pad-back)') || g;  // the word names a pad, not the AED
       try{ var b = g.getBBox(); return [b.x + b.width / 2, b.y + b.height / 2]; }catch(e){ return null; }
     }
     function rel(n){ var r = n.getBoundingClientRect(), h = pic.getBoundingClientRect(); if(!r.width) return null; return { l: r.left - h.left, t: r.top - h.top, r: r.right - h.left, b: r.bottom - h.top }; }
-    function drawnBoxes(){
-      var out = [];
-      // the face, and everything on the patient now (in picture px)
-      var fb = [M.hx - M.hrx, M.top, M.hx + M.hrx, M.chin];
-      var a = P(fb[0], fb[1]), b = P(fb[2], fb[3]);
-      out.push({ l: Math.min(a[0], b[0]), r: Math.max(a[0], b[0]), t: Math.min(a[1], b[1]), b: Math.max(a[1], b[1]) });
-      gOn.querySelectorAll('.scx-it.is-on').forEach(function(g){
-        if(g.getAttribute('data-k') === 'warm') return;
-        var bb; try{ bb = g.getBBox(); }catch(e){ return; }
-        if(!bb.width) return;
-        var c = [P(bb.x, bb.y), P(bb.x + bb.width, bb.y + bb.height)];
-        out.push({ l: Math.min(c[0][0], c[1][0]), r: Math.max(c[0][0], c[1][0]), t: Math.min(c[0][1], c[1][1]), b: Math.max(c[0][1], c[1][1]) });
-      });
-      return out;
-    }
+    // the shared keep-out list: the face and, of what is on the patient now, gloves, forearms, pads, the tourniquet,
+    // the wound, the jets and the masks (in picture px: the svg's own units)
+    var DRAWN = PD.DRAWN('scx-', '.scx-on > g.is-on');
+    function drawnBoxes(){ return PD.drawnBoxes(svg, DRAWN, function(x, y){ return [x, y]; }); }
     function placeLabels(list){
       if(list) St.labs = list;
       St.labsOn = true;
@@ -908,18 +990,8 @@
       var wr = rel(whoEl); if(wr) taken.push(wr);
       St.labs.forEach(function(L){
         var e = el('span', 'scx-lab is-' + L.tone, esc(L.text)); labs.appendChild(e);
-        var w = e.offsetWidth, h = e.offsetHeight, p = P(L.at[0], L.at[1]), best = null;
-        var dirs = [[1, -1], [-1, -1], [1, 1], [-1, 1], [0, -1], [0, 1], [1, 0], [-1, 0]];
-        [30, 48, 70, 96, 130, 170, 220].some(function(d){
-          return dirs.some(function(dd){
-            var cx = p[0] + dd[0] * (d + w / 2), cy = p[1] + dd[1] * (d * 0.7 + h / 2);
-            var bx = { l: cx - w / 2, t: cy - h / 2, r: cx + w / 2, b: cy + h / 2 };
-            if(bx.l < 6 || bx.r > G.W - 6 || bx.t < 6 || bx.b > G.H - 6) return false;
-            if(taken.some(function(t){ return !(bx.r + 5 < t.l || bx.l > t.r + 5 || bx.b + 5 < t.t || bx.t > t.b + 5); })) return false;
-            if(drawn.some(function(k){ return !(bx.r + 4 < k.l || bx.l > k.r + 4 || bx.b + 4 < k.t || bx.t > k.b + 4); })) return false;
-            best = bx; return true;
-          });
-        });
+        var w = e.offsetWidth, h = e.offsetHeight, p = P(L.at[0], L.at[1]);
+        var best = PD.place(p, w, h, { bounds: { x: 0, y: 0, w: G.W, h: G.H }, taken: taken, keep: null, drawn: drawn, dists: [30, 48, 70, 96, 130, 170, 220] });
         if(!best){ e.remove(); return; }
         e.style.left = best.l.toFixed(1) + 'px'; e.style.top = best.t.toFixed(1) + 'px';
         taken.push(best);
@@ -931,10 +1003,25 @@
     function clearLabels(){ St.labsOn = false; labs.innerHTML = ''; lead.innerHTML = ''; }
 
     /* ------------------------------------------------------------------ the call */
-    function vit(n){ return J.pure.parseVitals(n && n.vitals); }
+    function vit(n){ var v = J.pure.parseVitals(vline(n)); v.pulseless = !!St.pls; return v; }
+    /* no pulse, carried across the steps: the vitals line or the case's own words set it, a heart rate or the pulse's
+       return clears it; a step that says nothing keeps it (s14: pulseless throughout, not "newly" pulseless) */
+    var PLS_ON = /\b(pulseless|no pulse|can't feel a pulse|cannot feel a pulse|without a pulse)\b/i, PLS_OFF = /\b(pulse (returns|is back)|has a pulse|return of spontaneous circulation|ROSC|pulse is present|achieves return|no further shock|breathe on (his|her) own|breath of (his|her) own|starts? (to )?breathe)\b/i;
+    function plsNow(){
+      var sn = seen().slice().reverse(), on = false;
+      sn.forEach(function(x){
+        var v = J.pure.parseVitals(x.vitals), t = own(x.text, St.preg), m;
+        if(v.pulseless) on = true;
+        else if(v.hr != null) on = false;
+        else if((m = PLS_OFF.exec(t)) && !NEG.test(t.slice(0, m.index))) on = false;
+        else if((m = PLS_ON.exec(t)) && !NEG.test(t.slice(Math.max(0, m.index - 12), m.index))) on = true;
+      });
+      return on;
+    }
     function stateNow(){
       var sn = seen(), care = careNow(sn), S = stateOf(sn, care, St.months, St.preg);
       S.care = care.on; S.careObj = care;
+      S.born = !!St.preg && BORN.test(sn.map(function(x){ return x.text; }).join(' '));
       return S;
     }
     var T_CHANGE = 1150;
@@ -949,13 +1036,14 @@
       St.preg = J.care ? J.care.pregnancy(open, pt) : null;
       St.female = femaleOf(open, !pt.he);
       St.kind = St.months == null || St.months >= 144 ? (St.female ? 'female' : 'adult') : St.months < 12 ? 'infant' : St.months < 60 ? 'toddler' : 'child';
+      St.pls = plsNow();
       box.querySelector('.scx-call').textContent = c.title;
       box.setAttribute('data-call', id);
       if(pick && user !== 'pick') pick.value(id);
       if(monitor){ monitor.destroy(); monitor = null; }
-      monitor = new J.Monitor({ months: St.months });
+      monitor = new J.Monitor({ months: St.months, compact: true });
       monHost.innerHTML = ''; monHost.appendChild(monitor.el);
-      monitor.show(c.nodes[c.startNode].vitals, null);
+      monitor.show(vline(c.nodes[c.startNode]), null);
       if(!St.on) monitor.pause();
       var S = stateNow();
       St.view = viewFor(S.careObj);
@@ -971,7 +1059,7 @@
     function openCause(){
       var c = call(), w = who(St.months, St.female, c.nodes[c.startNode].text), tops = (St.labs || []).filter(function(l){ return l.tone !== 'act'; });
       var first = tops[0] ? tops[0].text : '';
-      if(!first && G){ var sn = seen(), p = J.pure.pinsFor(G.f, 'front', J.pure.findings(sn, { preg: !!St.preg }), null); if(p[0]) first = p[0].what; }
+      if(!first && G){ var sn = seen(), p = J.pure.pinsFor(G.f, 'front', J.pure.findings(sn, { preg: !!St.preg }), null).filter(function(x){ return !/^\d+ findings?$/.test(x.what); }); if(p[0]) first = p[0].what; }
       return [{ t: w, role: 'pt' }].concat(first ? [{ t: first, role: 'pt' }] : []);
     }
 
@@ -1019,6 +1107,7 @@
       if(cue) cue.hide(true);
       tour.did('pick');
       var before = vit(n), prevCare = St.drawn ? St.drawn.care : {};
+      St.kbd = !!(document.activeElement && board.contains(document.activeElement) && document.activeElement.matches(':focus-visible'));
       St.path.push({ from: St.node, index: i, text: ch.text, consequence: ch.consequence || '' });
       St.node = ch.next;
       step(before, prevCare, ch.text, 'pick', i);
@@ -1034,7 +1123,7 @@
       cause.set([{ t: shortAction(actText), role: 'act' }]);
       var go = function(){
         // an ending with no numbers of its own keeps the last ones, still (the call is over, nothing is measured anew)
-        if(monitor && !(n.ending && !n.vitals)) monitor.show(n.vitals, null);
+        if(monitor && !(n.ending && !vline(n)) && !(St.preg && n.vitals && !vline(n))) monitor.show(vline(n), null);
         if(v2 !== St.view){
           // sitting to lying (compressions, the AED): the picture fades to the patient on the ground
           St.view = v2;
@@ -1052,12 +1141,15 @@
       var c = call(), n = node();
       if(monitor && monitor.tween && monitor.tween.dur){ monitor.applyTween(1); monitor.tween = null; }
       rates();
-      var after = monitor ? { hr: monitor.shown.hr, sys: monitor.shown.sys, rr: monitor.shown.rr, spo2: monitor.shown.spo2, pulseless: monitor.target.pulseless } : vit(n);
+      St.pls = plsNow();
+      var after = monitor ? { hr: monitor.shown.hr, sys: monitor.shown.sys, rr: monitor.shown.rr, spo2: monitor.shown.spo2, pulseless: St.pls } : vit(n);
       var d = direction(J, pd.before, after, St.months);
       if(pd.how === 'pick') St.dirs[St.path.length - 1] = d ? d.dir : 'same';
       St.busy = false;
       board.classList.remove('is-busy');
       renderBoard(true);
+      // a choice made from the keyboard: focus goes to the first new choice (or the ending's first button)
+      if(St.kbd){ St.kbd = false; var fc = chEl.querySelector('.scx-c') || endEl.querySelector('.scx-eb'); if(fc && !fc.closest('[hidden]')) fc.focus(); }
       placeLabels(labelList(pd.prevCare));
       var parts = [{ t: shortAction(pd.actText), role: 'act' }];
       if(n.ending){
@@ -1073,10 +1165,10 @@
         var p2 = pill2(d, after);
         if(!p2){ var tops = (St.labs || []).filter(function(l){ return l.tone !== 'act'; }); p2 = tops[0] ? tops[0].text : ''; }
         if(p2) parts.push({ t: p2, role: 'pt' });
-        if(d && d.dir) parts.push({ t: d.dir === 'better' ? 'Better' : d.dir === 'worse' ? 'Worse' : 'No change', role: d.dir === 'better' ? 'up' : d.dir === 'worse' ? 'down' : 'same' });
+        if(d && d.dir) parts.push({ t: d.dir === 'better' ? 'Better' : d.dir === 'worse' ? 'Worse' : 'About the same', role: d.dir === 'better' ? 'up' : d.dir === 'worse' ? 'down' : 'same' });
         cause.set(parts);
         var last = St.path[St.path.length - 1];
-        say(cause.text() + '. ' + (pd.how === 'pick' && last && last.consequence ? last.consequence + ' ' : '') + n.text);
+        say(cause.text().replace(/\.+$/, '') + '. ' + (pd.how === 'pick' && last && last.consequence ? last.consequence + ' ' : '') + n.text);
       }
       if(!box.classList.contains('is-wide')) keepBoardInView();
     }

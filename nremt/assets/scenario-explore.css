@@ -31,9 +31,32 @@
 .scx-hot{fill:#E35A44;} .scx-hot.is-on{opacity:.24;}
 .scx-mot{fill:url(#scx-mot);} .scx-mot.is-on{opacity:.95;}
 .scx-hives{opacity:0;transition:opacity .9s ease;} .scx-hives.is-on{opacity:1;}
-.scx-lips{fill:#C9867A;transition:fill .9s ease;}
-.scx-fig.is-blue .scx-lips{fill:#5F6FA8;}
-.scx-sweat{opacity:0;transition:opacity .9s ease;} .scx-fig.is-sweat .scx-sweat{opacity:1;}
+/* the face: the shared NREMT face (nremt/assets/patient-draw.js), styled as on the flowcharts */
+.scx-nose{fill:none;stroke:#B0735E;stroke-width:1.3;opacity:.7;}
+.scx-brow{fill:none;stroke:#5A4030;stroke-width:2.2;stroke-linecap:round;}
+.scx-lid{fill:none;stroke:#6E4A3A;stroke-width:1.6;stroke-linecap:round;}
+.scx-lidh{fill:#D9A98F;stroke:#6E4A3A;stroke-width:1.4;}
+.scx-white{fill:#FBF7F2;stroke:#9A6A58;stroke-width:.8;} .scx-iris{fill:#5B6E80;} .scx-pupil{fill:#1B1B1B;}
+.scx-mouth{fill:none;stroke:#A0544C;stroke-width:1.8;stroke-linecap:round;}
+.scx-mo{display:none;}
+.scx-lips{fill:#C9867A;fill-opacity:.55;transition:fill .9s ease,fill-opacity .9s ease;}
+.scx-fig.is-blue .scx-lips{fill:#5B6FB8;fill-opacity:.8;}
+.scx-sweat{fill:#E7F4FF;stroke:#8DB8D9;stroke-width:1;opacity:0;transition:opacity .9s ease;} .scx-fig.is-sweat .scx-sweat{opacity:1;}
+/* gloves, forearms, pads, masks and the AED: the shared drawing, the flowcharts' colours */
+.scx-glove{fill:url(#scx-nit);stroke:#3A3492;stroke-width:1.5;stroke-linejoin:round;}
+.scx-cuff{fill:url(#scx-nit);} .scx-rim{fill:#9D99EE;stroke:#3A3492;stroke-width:1.3;}
+.scx-gl-cr{fill:none;stroke:#3A3492;stroke-width:1.2;stroke-linecap:round;opacity:.75;}
+.scx-gl-hi{fill:none;stroke:#FFFFFF;stroke-width:1.5;stroke-linecap:round;opacity:.5;}
+.scx-top .scx-glove{fill:url(#scx-nit2);}
+.scx-sleeve{fill:#24344A;} .scx-sleeve2{fill:#2E4260;}
+.scx-pad{fill:#FFFFFF;stroke:#9AA3AD;stroke-width:3;} .scx-wire{fill:none;stroke:#2E3A46;stroke-width:4;stroke-linecap:round;}
+.scx-mask{fill:rgba(220,236,245,.75);stroke:#7FA3B8;stroke-width:3;} .scx-mask-r{fill:none;stroke:#9FBCCD;stroke-width:3;}
+.scx-valve{fill:#4E6070;} .scx-bag{fill:#E2B341;stroke:#A9822A;stroke-width:3;}
+.scx-aed-b{fill:#F2C230;stroke:#9C7A12;stroke-width:3;} .scx-aed-s{fill:#13221B;}
+.scx-vf,.scx-aed-t,.scx-aed-t2{display:none;}
+.scx-aed-btn{fill:#D2382B;stroke:#7E1A12;stroke-width:2;} .scx-aed-bolt{fill:#FFE45C;}
+.scx-on.is-adv .scx-aed-btn{animation:scx-blink .8s ease-in-out infinite;}
+@keyframes scx-blink{50%{fill:#FF7A5C;}}
 .scx-eo,.scx-eh,.scx-ec{opacity:0;transition:opacity .45s ease;}
 .scx-fig[data-eyes="open"] .scx-eo,.scx-fig[data-eyes="half"] .scx-eh,.scx-fig[data-eyes="closed"] .scx-ec{opacity:1;}
 .scx-breath{fill:url(#scx-sheen);opacity:0;transform-box:fill-box;transform-origin:center;}
@@ -46,7 +69,6 @@
 .scx-it.is-on{opacity:1;transform:none;}
 .scx-it[data-k="warm"]{transform:translateY(-6%);}
 .scx-it[data-k="warm"].is-on{transform:none;}
-.scx-glove{fill:url(#scx-nit);stroke:#3E3896;stroke-width:1.4;}
 .scx-it[data-k="cpr"].is-on .scx-push{animation:scx-push .55s ease-in-out infinite;transform-box:fill-box;transform-origin:center;}
 @keyframes scx-push{0%,100%{transform:none;}50%{transform:scale(.93);}}
 .scx-on.is-bagging .scx-bag{animation:scx-bag var(--bag,5s) ease-in-out infinite;transform-box:fill-box;transform-origin:center bottom;}
@@ -97,6 +119,7 @@
 .ls-root .ls-stage .scx-scene:not(.is-wide) .scx-mon .mon-v{font-size:18px;}
 .ls-root .ls-stage .scx-scene:not(.is-wide) .scx-mon .mon-tile[data-k="bp"] .mon-v{font-size:14px;line-height:1.3;}
 .ls-root .ls-stage .scx-scene:not(.is-wide) .scx-mon .mon-u{display:none;}
+.ls-root .ls-stage .scx-scene:not(.is-wide) .scx-mon .mon-tile[data-k="spo2"] .mon-u{display:block;}
 
 /* the call card: a wooden board, a metal clip, the paper */
 .scx-board{position:relative;padding:22px 12px 12px;background:linear-gradient(160deg,var(--sx-wood0),var(--sx-wood1));min-width:0;min-height:0;display:flex;}
@@ -181,3 +204,15 @@
   .scx-what,.scx-now{font-size:13.5px;}
 }
 :root[data-theme="dark"] .scx-enext{color:#0F1F1B;}
+.scx-belly{transition:opacity 1s ease;} .scx-belly.is-off{opacity:0;}
+.scx-cop{fill:#1F2A3C;} .scx-cop2{fill:#26344A;}
+/* a newborn (NRP): three compressions, then one breath with the bag: 90 compressions and 30 breaths a minute */
+.scx-on.is-nrp .scx-it[data-k="cpr"].is-on .scx-push{animation:scx-nrp 2s linear infinite;}
+@keyframes scx-nrp{0%,25%,50%,75%,100%{transform:none;}12.5%,37.5%,62.5%{transform:scale(.93);}}
+.scx-on.is-nrp .scx-it[data-k="bvm"].is-on .scx-bag{animation:scx-nrpbag 2s linear infinite;transform-box:fill-box;transform-origin:center bottom;}
+@keyframes scx-nrpbag{0%,75%,100%{transform:none;}87.5%{transform:scaleX(.62);}}
+.scx.is-off .scx-on.is-nrp .scx-push,.scx.is-off .scx-on.is-nrp .scx-bag{animation:none !important;}
+/* phones: the cause line between the picture and the card, on a strip of paper; a slimmer monitor (no title bar) */
+.scx-scene > .scx-lines{background:var(--sx-paper);padding:6px 10px;}
+.ls-root .ls-stage .scx-scene:not(.is-wide) .scx-mon .mon-top{display:none;}
+.ls-root .ls-stage .scx-scene:not(.is-wide) .scx-mon .mon-lane{height:20px;}
