@@ -406,8 +406,10 @@
       function fxStep(b, t){
         var X = b.fx, u = clamp((t - X.t0) / X.dur, 0, 1);
         if(t < X.t0) return true;
-        if(X.kind === 'in'){ b.s = 0.4 + 0.6 * u; b.o = u; b.on = u >= 0.5; }
-        else { b.s = 1 + 0.25 * u; b.o = 1 - u; b.on = u < 0.5; }
+        // counted while at least half drawn (the opacity as drawn, to two places)
+        if(X.kind === 'in'){ b.s = 0.4 + 0.6 * u; b.o = Math.round(u * 100) / 100; }
+        else { b.s = 1 + 0.25 * u; b.o = Math.round((1 - u) * 100) / 100; }
+        b.on = b.o >= 0.5;
         put(b);
         if(u >= 1){ b.fx = null; if(X.kind === 'out'){ b.el.remove(); b.dead = true; } return false; }
         return true;
@@ -445,7 +447,7 @@
       /* ---------------------------------------------------- what the picture says: read from the bugs as drawn */
       function drawnCounts(){
         var c = G ? G.ch.map(function(){ return 0; }) : [];
-        bugs.forEach(function(b){ if(b.on && !b.dead && G) c[chamberOf(b.x, b.y)]++; });
+        bugs.forEach(function(b){ if(b.on && !b.dead && G) c[chamberOf(r1(b.x), r1(b.y))]++; });   // where it is drawn (the transform is rounded)
         return c;
       }
       function stats(counts){
@@ -463,6 +465,7 @@
       }
       function settled(){
         var fn = after; after = null;
+        if(layoutNow.pending){ layoutNow.pending = false; layoutNow(); }
         shownKey = ''; paint();
         if(fn) fn();
         refHtml();
@@ -580,7 +583,8 @@
         h.push('<text class="cs2-gtitle" x="' + GG.L + '" y="' + (GG.ph ? 17 : 19) + '" font-size="' + (GG.fs + 0.5) + '">' + ttl + '</text>');
         gsvg.setAttribute('viewBox', '0 0 ' + GG.W + ' ' + GG.H);
         gGs.innerHTML = h.join('');
-        GG.critX = cX; GG.critLabelR = cX + 6 + clw;
+        GG.critX = cX; GG.tailW = tw(tl, GG.fs - 1, 700); GG.critW = Math.max(clw, GG.tailW); GG.critSide = '1' + cl;
+        GG.critEls = [gGs.querySelector('.cs2-critl'), gGs.querySelector('.cs2-taill')];
         meterEls = null; drawRuns();
       }
       /* the bar: one piece per chamber, (o − e)² / e, end to end, and the χ² it adds up to */
@@ -605,6 +609,14 @@
         meterEls.bg.setAttribute('x', r1(lx)); meterEls.bg.setAttribute('y', r1(ly)); meterEls.bg.setAttribute('width', r1(w));
         meterEls.t.setAttribute('x', r1(lx + 8)); meterEls.t.setAttribute('y', r1(ly + GG.fs + 3));
         meterEls.lab.setAttribute('class', 'cs2-markl' + (r.chi2 > M.CHI_CRIT['0.05'][r.counts.length - 1] ? ' is-past' : ''));
+        // the critical value's two labels sit on the side of its line away from the χ² marker, so the marker's line
+        // never runs through them
+        var crit = M.CHI_CRIT['0.05'][GG.df], full = 'critical value ' + F(crit, 2), short = 'critical ' + F(crit, 2), side = 1, lab = full;
+        if(X > GG.critX - 2 && X < GG.critX + 10 + GG.critW){
+          if(GG.critX - 10 - Math.max(tw(full, GG.fs, 800), GG.tailW) >= GG.L) side = -1;
+          else if(GG.critX - 10 - Math.max(tw(short, GG.fs, 800), GG.tailW) >= GG.L){ side = -1; lab = short; }
+        }
+        if(side + lab !== GG.critSide){ GG.critSide = side + lab; GG.critEls[0].textContent = lab; GG.critEls.forEach(function(t){ t.setAttribute('x', r1(GG.critX + side * 6)); t.setAttribute('text-anchor', side < 0 ? 'end' : 'start'); }); }
         paintTally();
       }
       function paintTally(){
@@ -841,6 +853,9 @@
       function layoutNow(){
         var key = sceneBox.clientWidth + 'x' + sceneBox.clientHeight + ':' + graphBox.clientWidth + 'x' + graphBox.clientHeight;
         if(key === lastWH || !sceneBox.clientWidth) return;
+        // never in the middle of a walk: the new layout waits until the bugs have stopped (the svg scales meanwhile)
+        if(busy() && !layoutNow.force){ layoutNow.pending = true; return; }
+        layoutNow.pending = false;
         lastWH = key;
         stopAll(); relayout(false);
       }
@@ -901,7 +916,9 @@
       if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ mCache = {}; lastWH = ''; layoutNow(); });
       if(window.ResizeObserver){ var tm = null; var ro = new ResizeObserver(function(){ clearTimeout(tm); tm = setTimeout(layoutNow, 60); }); ro.observe(sceneBox); ro.observe(graphBox); }
       else window.addEventListener('resize', layoutNow);
-      window.__cs2 = { counts: function(){ return drawnCounts(); }, busy: busy, G: function(){ return G; }, GG: function(){ return GG; }, bugs: function(){ return bugs.map(function(b){ return { x: b.x, y: b.y, on: b.on, s: b.s, held: drag && drag.b === b }; }); }, r: function(){ return lastR; }, tally: function(){ return tally; }, chamberOf: chamberOf, move: moveOne, wander: wander };
+      // for the sweep (scripts/tools-v2/chi-square-sweep.mjs): read the drawn state, set counts
+      window.__cs2 = { counts: function(){ return drawnCounts(); }, busy: busy, G: function(){ return G; }, GG: function(){ return GG; }, bugs: function(){ return bugs.map(function(b){ return { x: b.x, y: b.y, on: b.on, s: b.s, held: drag && drag.b === b }; }); }, r: function(){ return lastR; }, tally: function(){ return tally; }, chamberOf: chamberOf, move: moveOne, wander: wander,
+        set: function(counts){ takeText = null; MD.counts[MD.ci] = counts.slice(); placeCounts(counts); settled(); } };
     }, { studio: { kit2: function(ctx){ return ctx.kit2; } } });
   }
   /* The page loads the kit (pages.json "kit2": true). A cached copy of the old page would not: fetch it then. */
