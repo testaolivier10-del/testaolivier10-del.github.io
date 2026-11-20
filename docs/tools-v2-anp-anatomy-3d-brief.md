@@ -190,7 +190,45 @@ unchanged. Open points for a person: `docs/anp-needs-author.md`, "3D anatomy, to
 - `docs/anp-spec.md` decision 105.
 
 ## Checks run (2026-11-19)
-See "Checks" below (filled in at the end of the build).
+- `node --test scripts/test/anp-*.test.mjs` 55 pass; `kit2-spots.test.mjs` passes (K.spots with pins unchanged);
+  `check-anp-content` 0 failing (the validator now checks `at`, the tabs and the stills); `build-anp --check` clean;
+  `check-site` OK; `check-weight --check` all 623 within budget (two raised, decision 12); `build-apcalc --check` and
+  `build-apmacro --check` clean (the shared kit changed); no conflict markers.
+- Sweep (`scripts/tools-v2/anp-anatomy-3d-sweep.mjs`, one width per process; headless WebGL is software, so the test's
+  copy of the viewer skips shadows and anti-aliasing, as premium.js is unlocked only in tests): 360, 390, 430, 600
+  202 checks each, 768, 820, 1024, 1280, 1440, 1920 183 each, light and dark, 0 failing. Per width: the loading still
+  fills the picture before the model; each region's landing (card inside the picture and 4 px clear of Find a part,
+  Reset view, the credit and the cue; off its own ring; card, viewer selection and cause line name the same part and
+  the line says its `at`; the body the largest thing; the canvas fills the picture; tab names fit their tabs; cause line
+  two rows at most and one height on phones; no text under 11 px; no sideways scroll); the cue's point is checked by a
+  real tap there (it names that part, the cue leaves); real taps (touch on phones) on two bones; a tap on empty space
+  lets go; find "duodenun" from the Skeleton switches to the abdomen and names the duodenum; no console errors.
+- Frames (`--frames`, 390 and 1440, motion on): 32 checks each, 0 failing: every animation frame through a tap, a
+  reversal (a second tap 90 ms into the first ease), a region change and a find across regions: the card never shows
+  while the picture still moves, the cause line never speaks before the card, both always name the viewer's part, and
+  the first part is never named after the second tap. This caught a real bug (the card grew on the frame of the tap,
+  before the glow's ease began: `settling()` now covers a change being made). Leaving for Test yourself mid change
+  leaves nothing on screen and the body moves to Test yourself's stage; a quiz answer wrong and another recorded as
+  `anatomy-3d:<structure>:name|point`; back to Explore the body returns; reduced motion: the card fades in (no grow);
+  locked: the Premium card, the tool does not run.
+- Performance: see "Not done" (headless software WebGL cannot measure the drawing honestly).
+- Shots and the preview: `/mnt/user-data/outputs/anp-anatomy-3d-v2/` (`shots.html` lists them; `index.html` is the one
+  file preview, which shows the frame and the loading still: the 3D body needs the site's server).
 
 ## Not done, and what I am not happy with
-See the end of this file.
+- Performance cannot be judged here: with CPU x4 on this loaded machine the body's drawing takes about 2 s a frame in
+  headless Chromium (software WebGL), while the flagship's knob holds a 33 ms median (p95 100 ms at 1440, 67 ms at
+  390) in the same hour. Our own per frame work (the card following the body) is about 1 ms median, 2.8 ms p95 at
+  CPU x4; the drawing is the viewer's, unchanged from the old tool and the NREMT body map. A real phone check is needed.
+- On a wide desktop the standing skeleton is narrow in a wide stage: the backdrop fills the stage, but the body uses
+  about a quarter of its width (a person is tall).
+- The card keeps off its own part but can cover a neighbour (the duodenum's card over the liver); the student turns
+  the body to see behind it.
+- The camera's framings are fixed per region; a part deep inside (the third ventricle, the septal branches) is named
+  and glows, but it is small from the region's distance until the student zooms.
+- The ghost of the other systems (13%) is visible through the region (the red heart behind the lungs); it gives
+  context but reads busy in the chest.
+- Test yourself is the old layout inside the new frame (its own stage, switch and side panel); not redesigned.
+- The NREMT body map's viewer hooks are taken byte for byte from its unmerged branch: integrate the body map first
+  (or together); `scripts/check-weight.mjs` repeats its budget comment so the two merge cleanly.
+- No real phone, no screen reader pass, no real students; the independent review is next.
