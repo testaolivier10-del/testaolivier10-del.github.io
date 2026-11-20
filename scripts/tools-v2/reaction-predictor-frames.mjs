@@ -1,6 +1,7 @@
 /* Frame by frame check of the Reaction Predictor (docs/tools-v2-reaction-predictor-brief.md): every animation frame of
    a set of runs, read in the page on each requestAnimationFrame, against what is drawn at that frame:
-     - the names on the picture show only while the picture holds still (a pause, or the end), never while it moves;
+     - the names on the picture show only while the picture holds still (a pause, or the end), never while it moves,
+       and then sit clear of every ball;
      - the cause line names a result, and the tray shows products, only once the run has ended;
      - bromide's minus badge shows only after its bond to carbon has mostly gone, and a carbocation's plus only once
        bromide has left (the charge words agree with the bonds drawn);
@@ -48,6 +49,10 @@ const watch = () => new Promise(res => {
     const moving = lastBalls !== null && sig !== lastBalls; lastBalls = sig;
     const named = !labs.classList.contains('is-wait') && labs.children.length && getComputedStyle(labs).opacity !== '0';
     if (named && moving) out.push('names shown while the molecule moves');
+    // a name shown in a pause sits clear of every ball (4 px), as in the sweep's still states
+    if (named) { const sr = scene.getBoundingClientRect();
+      [...labs.children].filter(e => e.style.display !== 'none').forEach(e => { const r = e.getBoundingClientRect(), L = { l: r.left - sr.left, r: r.right - sr.left, t: r.top - sr.top, b: r.bottom - sr.top };
+        balls.forEach(q => { if (!(L.r + 3.5 <= q.x - q.r || q.x + q.r + 3.5 <= L.l || L.b + 3.5 <= q.y - q.r || q.y + q.r + 3.5 <= L.t)) out.push('name "' + e.textContent + '" on ball ' + q.k); }); }); }
     const cause = document.querySelector('.rp2 .tk2-cause').textContent;
     if (!settled && /wins|→ *(SN1|SN2|E1|E2)|no reaction/.test(cause)) out.push('the cause line names a result mid run: ' + cause);
     if (!settled && document.querySelectorAll('.rp2-card').length) out.push('tray shows products mid run');

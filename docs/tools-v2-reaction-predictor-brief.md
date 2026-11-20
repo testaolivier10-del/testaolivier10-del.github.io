@@ -120,7 +120,7 @@ Each is also one line in `docs/tools-v2-owner-log.md`.
   pushes the SN2 share up", now "A polar aprotic solvent makes the base stronger still, so even more of it goes to E2";
   cyclohexyl about 90% (1% SN2 reported; capped at the tool's 90% band); room temperature solvolysis 80% substitution
   (tert-butyl chloride, 80% ethanol, 25 °C: 83% alcohol, 17% alkene).
-- **Every frame of every flask is a real structure** (unit test, 704 combinations' major and minor paths): each atom's
+- **Every frame of every flask is a real structure** (unit test: all 352 flasks, major and minor paths): each atom's
   drawn charge equals its formal charge from its bonds, lone pairs and the hydrogens in its label; bromide leaves with
   four pairs and −1; the nucleophile ends bonded to the carbon (SN1, SN2); the double bond is to the beta carbon whose H
   was taken (E1, E2); a bulky base takes the Hofmann H where two alkenes are possible (2-bromobutane, 2-bromo-2-
@@ -148,8 +148,50 @@ Each is also one line in `docs/tools-v2-owner-log.md`.
 - The view for each substrate (turn, tilt, arm turn, widening, reagent tail turn: `VIEW` in the code) was chosen by a
   search that keeps every ball apart in every frame of every flask; the unit test checks it.
 
-## Checks run (2026-11-19)
-See "Checks" at the end of this file (filled after the last change).
+## Checks run (2026-11-19, after the last change)
+- **Sweep** (`scripts/tools-v2/reaction-predictor-sweep.mjs`), one width per process at 360, 390, 430, 600, 768, 820,
+  1024, 1280, 1440 and 1920, light and dark: 80 states and 960 checks per width, **0 failures** (800 states, 9,600
+  checks). States: 32 flasks covering every path of every substrate (with heat and aprotic cases), a minor tray card
+  played, "?" open, Call the path before, after and Next flask, a first visit with the cue, a run left halfway for Test
+  yourself and back. Checks: nothing clipped, names 4 px clear of names, balls, badges, controls and the cue, no ball on
+  a ball, no badge or pair on another atom, the molecule bigger than any tray card, share bars in proportion, no text
+  under 11 px, pickers show their whole name, the cause line at most two rows and one height on phones, no sideways
+  scroll, no console errors, names and tray waiting mid run, the run stopped in Test yourself, Explore settled on return.
+- **Frame by frame** (`scripts/tools-v2/reaction-predictor-frames.mjs`): 8 runs at 390 and 1440, about 4,400 frames,
+  **0 failures**: names only while still and clear of every ball; no result on the cause line and no tray before the
+  end; Br⁻'s badge only once its bond is mostly gone, the carbocation's + only after bromide left; no ball on a ball in
+  any in between frame; nothing off the stage; a change mid run starts the new flask at once.
+- **Performance** (`scripts/tools-v2/reaction-predictor-perf.mjs`, CPU x4, three full runs per width, flagship measured
+  in the same run; load average about 4): 390 median 16.7 ms, p95 33.3 ms (flagship's Watch it happen 33.3 / 66.7);
+  1440 median 16.7 ms, p95 50 ms (flagship 66.6 / 133.3). Single frames at a change reach 300 to 380 ms (see below).
+  Earlier under load 7 to 10: 390 p95 50, 1440 p95 66.7 (flagship 200 to 280).
+- **Unit tests**: `ochem-tools-upgrade` (with the new frame test), `tool-content`, `ochem-url-compat`, `ochem-premium`,
+  `tool-use`, `question-ids`: 105 pass. `build-tool-pages --check`, `check-site`, `check-weight --check` pass; no
+  conflict markers.
+- **check-tool-use** with a local copy of its list (not committed): tool-open, tool-touch (explore), tool-mode (quiz),
+  tool-use, frame v2; nothing under automation.
+- **Premium**: with the real `premium.js` (not unlocked) the page shows the same Premium gate and the stage is hidden;
+  nothing is drawn behind it (no console errors).
+- **Links**: `?sub=&rgt=&solv=&heat=1` open that flask; `?build=CH3CH2CH(Br)CH3` loads Build your own and Substrate:
+  Yours; `#call` opens Call the path.
+- **Preview**: `/mnt/user-data/outputs/reaction-predictor-v2/index.html`; shots in
+  `/mnt/user-data/outputs/reaction-predictor-v2/shots/` (390, 768, 1440, light and dark: the first visit with the cue;
+  an E2 run at the pause with names, arrows drawing, electrons moving, bonds changing and the end; SN1 with bromide
+  leaving, the carbocation, water attacking and the end; the SN2 umbrella mid flip and its end; the Hofmann product; no
+  reaction; the minor card's SN2; Call the path before and after).
 
 ## What I am not happy with
-See the end of this file.
+- **Single slow frames at a change** (300 to 380 ms at CPU x4): building the new molecule's elements and, at the end,
+  the tray's two small drawings. The run itself holds 16.7 ms median. Not split across frames yet.
+- **The molecule is small on a phone** (a C–C bond about 45 px at 390): the reagent waits beside the substrate and
+  bromide leaves to the other side, so the scene is wide; the stage was made taller but width limits it.
+- **The ring sketches are sketches**: bromocyclohexane's chair stays still (only H, the nucleophile and bromide move),
+  and benzyl's ring is drawn as a flat hexagon of balls; turning views were chosen by a search for no overlaps, so some
+  substrates are seen from unusual angles (2-bromobutane from 40° to the side).
+- **Each change plays 3 to 7 seconds**; a student flipping reagents quickly sees each run restart (by design: the new
+  flask starts at once). A "skip to the end" was not added (Play it again and the tray cards cover replays).
+- **The contested chemistry is logged, not changed**: tertiary + CN⁻/N₃⁻/HS⁻/I⁻ stays SN1 (Klein) though Reusch's
+  data say mostly E2; "heat makes E1 major" is the course convention.
+- Accuracy was checked by the builder (sources above and the frame test); no separate chemistry reviewer in this
+  session, so the independent review should include the ochem accuracy pass. No real phone, no screen reader pass, no
+  real students.
