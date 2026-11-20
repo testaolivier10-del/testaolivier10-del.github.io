@@ -1152,7 +1152,7 @@
         const r = canvas.getBoundingClientRect();
         return keyAt({ clientX: r.left + x, clientY: r.top + y });
       },
-      settling(){ return !!flyAnim || !!tween; },
+      settling(){ return !!flyAnim || !!tween || easing > 0; },   // easing: a change is being made (its ease starts when it returns)
       /* selectFly and fadeOthers, changed after mount (one viewer, two screens: Explore keeps the camera and the
          region readable, Test yourself flies to a part and fades the rest, as before) */
       set(o){ if (o && 'selectFly' in o) opts.selectFly = o.selectFly; if (o && 'fadeOthers' in o) opts.fadeOthers = o.fadeOthers; },
