@@ -692,9 +692,10 @@ These stay open:
   temperature), `rabbit-fur-temperature` (patch size), `vestigial-temperature` (larval food). Add a
   clause to each setup ("each tube gets the same amount of KOH ...") or give those options a
   `whyOptions` line.
-- **rates-tangent-estimate** (logged). The rates tool's draggable tangent shows a centered
-  difference between neighbouring data points ("rate ≈"), so near t = 0 it underestimates the
-  initial rate of a slowing reaction. Labelled "about"; confirm that is enough.
+- **rates-tangent-estimate** (logged; updated tools v2, 2026-11-19). The old tool's draggable tangent showed a
+  centered difference between neighbouring readings, so near t = 0 it underestimated the initial rate. The rebuilt
+  tool (Rate at a moment tab) uses the slope of a monotone cubic through the six readings (5.65 mL/min at 0 min,
+  more than the first minute's 4.90), still shown with "≈". Confirm an estimate from a smooth curve is acceptable.
 - **osmosis-explore-plant-cell** (logged, tools v2, 2026-11-17). The rebuilt Osmosis tool's Explore uses an
   idealized plant cell (cell sap 0.30 osmol/L, just full, ψp = 0 in the isotonic solution, wall stiffness 60 bar),
   so it is flaccid at 0.30 M, turgid below and plasmolyzed from the next stop up (0.35 M), as textbooks draw it.
@@ -739,3 +740,14 @@ These stay open:
   plants, A purple dominant over a white (OpenStax uses pea plants for its Hardy-Weinberg example). Real peas mostly
   self pollinate, while the bed assumes random mating. Teacher: confirm peas are acceptable here, or name another
   complete dominance species with two flower colours.
+- **rates-formula-sheet** (open, tools v2, 2026-11-19). `bio/data/notes/stats-rates.html` says rates and percent
+  change are "Both ... on the formula sheet". The College Board AP® Biology Equations and Formulas sheet read on
+  2026-11-19 (Appendix A) lists Rate = dY/dt (dY = amount of change, dt = change in time) under Rate and Growth and
+  no percent change formula. The rebuilt tool says only that the sheet writes a rate as dY/dt. Owner or teacher:
+  confirm against the current sheet and reword the notes sentence ("A rate is on the formula sheet; percent change
+  is not, so learn it").
+- **rates-explore-catalase** (logged, tools v2, 2026-11-19). The rebuilt Rates tool's Explore draws invented
+  readings (0, 4.9, 8.3, 10.5, 12.0, 13.0 mL O₂ over 5 min) with four drawing conventions: the upside down
+  cylinder's numbers are printed to read the gas volume from the top; one bubble rises per 0.25 mL; the foam's
+  height follows the rate at that moment; a potato core's height is proportional to its mass (constant width).
+  Confirm none of these misleads.

@@ -176,6 +176,8 @@ const GEO = () => {
   }
   // labels clear of the knobs
   document.querySelectorAll('.rt2 .tk2-handle:not([hidden]) .tk2-knob').forEach(k => { if (!vis(k)) return; const r = k.getBoundingClientRect(); if (r.width < 43.5 || r.height < 43.5) out.push(`knob ${Math.round(r.width)} px`); lab.forEach(l => { const a = l[0]; if (a.left < r.right - 6 && a.right > r.left + 6 && a.top < r.bottom - 6 && a.bottom > r.top + 6 && l[2] === (k.closest('.rt2-scene') ? 'scene' : 'graph')) out.push(`knob covers "${l[1]}"`); }); });
+  // the first-time chip on a knob never covers a label
+  document.querySelectorAll('.rt2 .tk2-handle:not([hidden]) .tk2-chip').forEach(c => { if (!vis(c)) return; const r = c.getBoundingClientRect(); lab.forEach(l => { const a = l[0]; if (!/^\d+$/.test(l[1]) && a.left < r.right && a.right > r.left && a.top < r.bottom && a.bottom > r.top) out.push(`chip covers "${l[1]}"`); }); });
   // the cue never covers a label
   const cue = document.querySelector('.rt2 .tk2-cue');
   if (cue) { const r = cue.getBoundingClientRect(); lab.forEach(l => { const a = l[0]; if (!/^\d+$/.test(l[1]) && a.left < r.right && a.right > r.left && a.top < r.bottom && a.bottom > r.top) out.push(`cue covers "${l[1]}"`); }); inside(r, tab === 'pct' ? scene : graph, 'cue'); }

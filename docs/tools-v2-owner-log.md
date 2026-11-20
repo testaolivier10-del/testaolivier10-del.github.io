@@ -340,3 +340,19 @@ in each tool's brief.
 | 2026-11-19 | NREMT Flowcharts | The legend of the chart shapes and each chart's notes sit in Read's panel; the scope note moved to "?" | No side panel in Explore | `nremt/flowcharts.html` |
 | 2026-11-19 | NREMT Flowcharts | Review round 1: the whole patient is framed beside or above the card on every stage of 600 px and wider; phones keep the close camera | No part of the patient under the card | `layout()` in `flow-explore.js` |
 | 2026-11-19 | NREMT Flowcharts | Review round 1: the first box reads "Scene safe, hold head still" | The fall puts the spine in question from the start (NREMT trauma sheet) | `CALLS` |
+| 2026-11-19 | AP Bio Rates | Explore is the school catalase apparatus (flask, delivery tube, cylinder over a trough, timer) with its graph, and two potato cores on balances | The picture shows the thing whose rate is measured | `rates.js` drawCatalase, drawCores |
+| 2026-11-19 | AP Bio Rates | Three tabs: Rate over time, Rate at a moment, Percent change | One idea per screen | `explore.tabs` |
+| 2026-11-19 | AP Bio Rates | Tapping two points became two knobs (end loud, start quiet) that snap to the readings | One main control on the picture; rates from a data table | `hA`, `hB` |
+| 2026-11-19 | AP Bio Rates | One triangle at a time; the last three intervals measured are listed in "?" | No clutter; the comparison is kept | `refHtml()` |
+| 2026-11-19 | AP Bio Rates | Clear the triangles became Start over (per tab, animated) | Undo or reset always there | `reset()` |
+| 2026-11-19 | AP Bio Rates | The tangent and its Hide / Show toggle became its own tab, always shown | A different idea gets its own tab | `hM` |
+| 2026-11-19 | AP Bio Rates | The tangent is the slope of a smooth monotone curve through the readings, shown with "≈" (was a centered difference) | The tangent touches the curve that is drawn | `smooth()`; needs-author `rates-tangent-estimate` |
+| 2026-11-19 | AP Bio Rates | Explore uses fixed readings (0, 4.9, 8.3, 10.5, 12.0, 13.0 mL), not a generated run | Clean numbers, different from the worked problem | `explore.run` |
+| 2026-11-19 | AP Bio Rates | Percent change bars became two cores on balances, the after core dragged, a ruler in tenths of the start | The real thing drawn; the base is the start | `drawCores()` |
+| 2026-11-19 | AP Bio Rates | The "divide by the end" sentence moved to "?" | No walls of text on the stage | `refHtml()` |
+| 2026-11-19 | AP Bio Rates | The goals became Test yourself, Challenges, with a fourth (make the core lose 10%) | Explore is not graded; percent change had no goal | `explore.goals` |
+| 2026-11-19 | AP Bio Rates | Problems' dashed slope lines and predicted bar became thin solid lines; the figure keeps its height on phones and its words 11 px | No dashed ghosts; readable text | `rates.css` |
+| 2026-11-19 | AP Bio Rates | Δy is green (water stays blue); Δt amber; the rate purple | The oxygen collected never looks like the water | `rates.css` |
+| 2026-11-19 | AP Bio Rates | The rate's value sits in the graph's title row | Always in the same place, never over the curve | `paintGraph()` |
+| 2026-11-19 | AP Bio Rates | "?" title "Numbers & formulas"; hub blurb reworded; title, description and URL unchanged | Names what is in it | `bio-tools.js`, `pages.json` |
+| 2026-11-19 | AP Bio Rates | The tool never says percent change is on the formula sheet; the notes sentence that does is logged | The sheet we read lists only dY/dt | needs-author `rates-formula-sheet` |

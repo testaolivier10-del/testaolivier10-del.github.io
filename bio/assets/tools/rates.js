@@ -731,7 +731,7 @@
         onStart: function(){ hideCue(true); },
         onInput: function(v){ MD.a = TS[v]; go('a', MD.a); } });
       var dragM = false;
-      var hM = K.handle(gLayer, { key: 'rt2-moment', label: 'A moment on the curve (time)', value: MD.m, min: 0, max: TMAX, step: 0.1,
+      var hM = K.handle(gLayer, { key: 'rt2-moment', chip: false, label: 'A moment on the curve (time)', value: MD.m, min: 0, max: TMAX, step: 0.1,
         at: function(){ return GG && MD.tab === 'moment' ? [GG.x(DR.m), GG.y(f(DR.m))] : [NaN, NaN]; },
         pick: function(x){ return clamp(r1(GG.t(x)), 0, TMAX); },
         dir: function(){ if(!GG) return 0; var dx = (GG.pw - GG.IN) / TMAX, dy = fd(DR.m) * (GG.ph - GG.IN) / VMAX; return -Math.atan2(dy, dx) * 180 / Math.PI; },
