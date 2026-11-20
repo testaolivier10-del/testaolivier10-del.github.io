@@ -427,6 +427,15 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    credited) and Sample size (plants per group, ±2 SE bars, New plants). Every drill of the 16 experiments is Test
    yourself ("Experiment drills"), unchanged, with the same record ids. The kit adapter gained a part's own picture
    (`stage` on a part). Still free. Decisions made for the owner are in `docs/tools-v2-owner-log.md`.
+38. (2026-11-19, `docs/tools-v2-chi-square-brief.md`) **Chi-square test rebuilt to tools v2** (branch
+   `claude/tools-v2-chi-square`, waiting for the independent review; not merged). Explore is a drawn choice chamber of
+   pill bugs on a lab bench (the AP behavior lab): two tabs (two chambers, df 1; four chambers, df 3); drag a bug into
+   another chamber; each chamber's sign counts the bugs drawn in it against the expected count; under it the χ² graph
+   (one coloured piece per chamber, the chance curve, the critical value from the formula sheet at p = 0.05 and its 5%
+   tail); "Let them wander" (the null true: about 1 run in 20 crosses the line); 40 or 80 bugs. The old Practice is
+   Test yourself, "Problems" (unchanged content, grading and record ids; its figure gained drawings of what was counted
+   and the formula sheet table); the old goals are Test yourself, "Challenges". Still free. Open point:
+   chi-crit-p01-df1 in `docs/apbio-needs-author.md`.
 39. (2026-11-19, `docs/tools-v2-rates-brief.md`) **Rates and percent change rebuilt to tools v2** (branch
    `claude/tools-v2-rates`, waiting for the independent review; not merged). Explore: three tabs on a drawn bench.
    Rate over time: the catalase apparatus (flask, delivery tube, cylinder over a trough, timer, readings on a

@@ -35,6 +35,7 @@ States: building, review, fixing, recheck, PASS (waiting to integrate), integrat
 | Ochem 3D viewer | claude/tools-v2-viewer-3d | wt-viewer-3d | integrated | second explorer (`K.spots` over a turning molecule); Handedness opens with the H in front and reads R or S after "H to the back" (brief rule 8) |
 | NREMT flowcharts | claude/tools-v2-nremt-flowcharts | wt-nremt-flowcharts | integrated | fourth NREMT tool on `nremt-kit2.js`; Explore `nremt/assets/flow-explore.js` (two drawn calls); Read, Build it and Drill me are Test yourself |
 | NREMT body map | claude/tools-v2-nremt-body-map | wt-nremt-body-map | integrated | Explore `nremt/assets/body-map-v2.js` (The body, Burns); four additive hooks in `assets/body3d/viewer.js` (budget 17 KB); A&P 3D anatomy and lab practical still pass |
+| AP Bio chi square | claude/tools-v2-chi-square | wt-chi-square | integrated | choice chamber of pill bugs; kept sweep, frames, perf and interact scripts in `scripts/tools-v2/chi-square-*` |
 | AP Bio rates | claude/tools-v2-rates | wt-rates | review | three tabs (rate over time, at a moment, percent change); sweep `scripts/tools-v2/rates-sweep.mjs` (`--frames`, `--perf`) |
 
 2026-11-19: `main` merged in after PR #228 (ochem frame cleanup: chipPicker, scrollChips and .ls-chips-hidden gone; the v2
@@ -53,5 +54,5 @@ Before the final merge:
 - Time flowcharts after the glove polish on a quiet machine (p95 at CPU x4 was 66 to 133 ms under load).
 
 Next by use (rollout table):
-A&P anatomy 3d, NREMT scenario sim, AP Bio chi square, Ochem reaction
+A&P anatomy 3d, NREMT scenario sim, Ochem reaction
 predictor, AP Bio rates (rollout rows 20 to 26).
