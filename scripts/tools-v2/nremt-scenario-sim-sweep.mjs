@@ -290,6 +290,50 @@ async function frames() {
     ok(!errs.length, `cases: console errors: ${errs.slice(0, 3).join(' | ')}`);
     await browser.close();
   }
+  // recheck 1, N1 to N4 and N6: the cry after the grape, the 3:1 on the right path, a first finding is not a change,
+  // "3:1" whole, and the posture the choice names is drawn
+  {
+    const { browser, page, errs } = await open(1440, false, { reduced: true, noCue: true });
+    const walk = async (id, picks) => { await call(page, id); await idle(page); const out = []; for (const i of picks) { await choose(page, i); out.push(await idle(page)); } return out; };
+    let r = await walk('s3', [0, 0, 0, 0]);
+    const after = r.slice(1);
+    ok(after.every(x => !x.labs.includes('Coughing') && !/Coughing/.test(x.chain)), `N1: s3 no "Coughing" after the grape clears (${after.map(x => x.node + ':' + x.labs).join(' | ')})`);
+    ok(after[0].labs.includes('Crying'), `N1: s3 "Crying" once the grape is out (${after[0].labs})`);
+    r = await walk('s6', [0]);
+    ok(!/Worse/.test(r[0].chain), `N3: s6 the first check of a collapsed man is not "Worse" (${r[0].chain})`);
+    r = await walk('s6', [2]);
+    ok(!/No pulse.*Worse/.test(r[0].chain), `N3: s6 C reads no "No pulse, Worse" (${r[0].chain})`);
+    r = await walk('s18', [0, 0, 1, 0]);
+    ok(/3:1/.test(r[r.length - 1].chain), `N4: the cause line keeps "3:1" (${r[r.length - 1].chain})`);
+    r = await walk('s18', [0, 0, 0, 0]);
+    ok(r[3].node === 's18_end_good' && r[3].drawn.care.bvm, `N2: "continue ventilation until his own breathing is adequate" keeps the bag (${r[3].node} bvm ${r[3].drawn.care.bvm})`);
+    ok(r[2].labs.includes('Crying') && /Crying/.test(r[2].chain), `N2: after 3:1 the words say what he did (${r[2].labs} / ${r[2].chain})`);
+    const pose = [['s16', [0], 'side'], ['s17', [0], 'side'], ['s9', [0], 'side'], ['s8', [2], 'side'], ['s10', [2], 'floor'], ['s10', [], 'sit'], ['s11', [], 'sit'], ['s11', [2], 'sit'], ['s11', [0], 'sit']];
+    for (const [id, picks, view] of pose) {
+      r = await walk(id, picks); const st = picks.length ? r[r.length - 1] : await S(page);
+      ok(st.view === view, `N6: ${id} ${picks.join(',') || 'opening'} drawn ${view} (${st.view} at ${st.node})`);
+      if (view === 'side') ok(await page.evaluate(() => !!document.querySelector('.scx-lateral')) && st.labs.some(l => /left side|Recovery position/.test(l)), `N6: ${id} the side pose and its word (${st.labs})`);
+    }
+    ok(!errs.length, `recheck: console errors: ${errs.slice(0, 3).join(' | ')}`);
+    await browser.close();
+  }
+  // N2 and N6 in motion: the 3:1 with the bag plays before he cries; s11 is laid down, then sits back up
+  {
+    const { browser, page, errs } = await open(1440, false, { noCue: true });
+    await call(page, 's18'); await idle(page, 9000);
+    await choose(page, 0); await idle(page, 9000); await choose(page, 0); await idle(page, 9000);
+    await choose(page, 0); await page.waitForTimeout(1500);
+    let st = await S(page);
+    ok(st.drawn.care.cpr && st.drawn.care.bvm, `N2: s18 picking compressions shows the thumbs and the bag (${JSON.stringify(st.drawn.care)})`);
+    st = await idle(page, 9000);
+    ok(!st.drawn.care.cpr && st.labs.includes('Crying'), `N2: then the hands come off and he cries (${st.labs})`);
+    await call(page, 's11'); await idle(page, 9000);
+    await choose(page, 2); await page.waitForTimeout(1500);
+    st = await S(page); ok(st.view === 'floor', `N6: s11 "Lay her down" draws her lying (${st.view})`);
+    st = await idle(page, 9000); ok(st.view === 'sit', `N6: then she sits back up (${st.view})`);
+    ok(!errs.length, `recheck motion: console errors: ${errs.slice(0, 3).join(' | ')}`);
+    await browser.close();
+  }
   // reduced motion: the result at once
   {
     const { browser, page, errs } = await open(390, false, { reduced: true, noCue: true });

@@ -141,14 +141,14 @@
   function careOf(J, seen, opt){
     var C = J.care;
     if(!C) return { on: {}, chips: [], epi: 0 };
-    var c = C.care(seen, opt), ov = {}, prev = {};
+    var c = C.care(seen, opt), ov = {};
     for(var i = seen.length - 1; i >= 0; i--){
-      var cur = C.care(seen.slice(i + 1), opt).on, k;
-      for(k in cur) if(!!cur[k] !== !!prev[k]) delete ov[k];
-      for(k in prev) if(!(k in cur) && prev[k]) delete ov[k];
+      // the choice that led here (taken at the step before): whatever it puts on or takes off wins over the words
+      var pv = seen[i + 1];
+      if(pv && pv.did){ var one = C.care([{ text: '', did: pv.did }], opt).on; for(var k in one) delete ov[k]; }
+      if(opt && opt.skipNow && i === 0) continue;
       var t = textCare(own(seen[i].text, opt && opt.preg), i === 0);
-      for(k in t) ov[k] = t[k];
-      prev = cur;
+      for(var k1 in t) ov[k1] = t[k1];
     }
     for(var k2 in ov) c.on[k2] = ov[k2];
     if(c.on.cpr || c.on.bvm) c.on.o2 = 0;     // an oxygen mask never sits under compressions or the bag
@@ -169,12 +169,12 @@
   }
   var VNAME = { hr: 'HR', sys: 'BP', rr: 'RR', spo2: 'SpO₂' };
   /* a change counts only when it is big enough to mean something at the bedside: HR by 10 a minute or 10%, systolic */
-  var MEANS = { hr: function(v){ return Math.max(10, v * 0.1); }, sys: function(){ return 10; }, rr: function(){ return 4; }, spo2: function(){ return 2; } };
+  var MEANS = { hr: function(v, months){ return months != null && months < 12 ? Math.min(10, v * 0.1) : Math.max(10, v * 0.1); }, sys: function(){ return 10; }, rr: function(){ return 4; }, spo2: function(){ return 2; } };
   function direction(J, a, b, months){
     if(!a || !b) return null;
     if(a.pulseless && b.pulseless) return { dir: 'same', k: null, word: 'Still no pulse' };
     if(a.pulseless && !b.pulseless && b.hr != null) return { dir: 'better', k: 'hr', from: 0, to: b.hr, word: 'Pulse back' };
-    if(!a.pulseless && b.pulseless) return { dir: 'worse', k: 'hr', from: a.hr, to: 0, word: 'No pulse' };
+    if(!a.pulseless && b.pulseless) return a.hadPulse ? { dir: 'worse', k: 'hr', from: a.hr, to: 0, word: 'No pulse' } : { dir: null, k: null, word: 'No pulse' };
     var sum = 0, n = 0, big = null, seenAny = false;
     ['hr', 'sys', 'rr', 'spo2'].forEach(function(k){
       var x = a[k], y = b[k];
@@ -182,7 +182,7 @@
       var ox = off(J, k, x, months), oy = off(J, k, y, months);
       if(ox == null || oy == null) return;
       seenAny = true;
-      var real = Math.abs(y - x) >= MEANS[k](x) - 1e-9;
+      var real = Math.abs(y - x) >= MEANS[k](x, months) - 1e-9;
       if(real){ n++; sum += oy - ox; }
       var mag = (real ? 10 : 0) + Math.abs(oy - ox) + Math.abs(y - x) / 1000;
       if(Math.round(x) !== Math.round(y) && (!big || mag > big.mag)) big = { k: k, from: x, to: y, mag: mag, d: oy - ox };
@@ -202,13 +202,14 @@
   /* The action in a few words, for the cause line: the choice's first clause. */
   function shortAction(t){
     var s = String(t || '').replace(/\s+/g, ' ').trim();
-    s = s.split(/,|;| and then | then | while | before | rather than | instead of |:| — | – /)[0].trim();
+    s = s.split(/,|;| and then | then | while | before | rather than | instead of |(?<!\d):(?!\d)| — | – /)[0].trim();
     var w = s.split(' ');
     if(w.length > 4) s = w.slice(0, 4).join(' ') + '…';
     return s.replace(/[.…]+$/, function(m){ return m.indexOf('…') >= 0 ? '…' : ''; });
   }
 
   var SILENT = /\b(stops coughing|can't make (any )?sound|cannot make (a|any) sound|no air movement|not moving (any )?air|no sound)\b/i;
+  var CRYING = /\b(cry|cries|crying|pops free|flies out|comes out|huge, gasping breath|gasping breath)\b/i;
   var BORN = /\b(body delivers|delivers quickly|is born|baby is born|the baby is out|baby is blue|placenta)\b/i;
   var PURE = { femaleOf: femaleOf, stateOf: stateOf, careOf: careOf, direction: direction, shortAction: shortAction, pill2: pill2, LOOK: LOOK };
 
@@ -408,7 +409,7 @@
     leggings: ['#2F3542', '#4A5264'], onesie: ['#BFE0D2', '#DCF1E8'], onesie2: ['#F6D58A', '#FCE8B6'], diaper: ['#ECECEA', '#FFFFFF'], swim: ['#E8546E', '#F57E94'],
     maternity: ['#5C8FB0', '#7EAFCF'], maternity2: ['#A07CC0', '#BD9CD8'], maternity3: ['#D4896A', '#E9A88A'], jacket2: ['#4C5A3E', '#6A7A52'],
     sweater: ['#9AA6B3', '#B8C3CE'], shirt: ['#D8D2C4', '#EEE9DE'], singlet: ['#1E88C8', '#4AA8E2'], cardigan: ['#8C6C9C', '#A98BB8'], flannel: ['#A33B32', '#C4564B'] };
-  var PD = window.NremtPatientDraw;
+  var PD = window.NremtPatientDraw, DUMMY = { classList: { toggle: function(){} } };
   function clothGrad(name, w){ var c = CLOTH[name]; return c ? PD.grads('scx-', [name + ':' + c[0] + ':' + c[1]], { x1: 0, x2: w || 480 }) : ''; }
   /* the figure's measures: head, face lines, the clothes' edges and centimetres to pixels */
   function measure(f, kind, months){
@@ -509,14 +510,16 @@
       '<path d="M' + f1(x + mrx * 0.6) + ' ' + f1(M.chin + mry * 1.3) + 'Q' + f1(x + r * 1.6) + ' ' + f1(M.chin + r * 1.6) + ' ' + f1(x + r * 2.6) + ' ' + f1(M.chin + r * 0.8) + '" stroke="#7FBFA9" stroke-width="' + f1(r * 0.09) + '" fill="none" stroke-linecap="round"/>';
     out.blowby = mask(r * 0.95) + '<path d="M' + f1(x + r * 1.3) + ' ' + f1(mY + mry * 0.5) + 'Q' + f1(x + r * 2.2) + ' ' + f1(mY + r * 1.2) + ' ' + f1(x + r * 2.8) + ' ' + f1(mY + r * 0.4) + '" stroke="#7FBFA9" stroke-width="' + f1(r * 0.09) + '" fill="none" stroke-linecap="round"/>';
     var fs1 = M.r / 44.3;
-    out.bvm = PD.bvm('scx-', x, M.mouthY - 3 * fs1, fs1) + glove(x - mrx * 0.95, mY - mry * 0.1, 70, cm);
+    // an infant's sealing hand drawn smaller than life, so the baby stays visible
+    out.bvm = PD.bvm('scx-', x, M.mouthY - 3 * fs1, fs1) + glove(x - mrx * 0.95, mY - mry * 0.1, 70, kind === 'infant' ? cm * 0.45 : cm);
     var hy2 = M.sAngle + (M.xiph - M.sAngle) * 0.62, hs = cm / 6.9;
     if(kind === 'infant'){
-      var cw = (lm.midaxL[0] - lm.midaxR[0]) / 2, th2 = function(dx, flip){
-        return '<g class="scx-gl"><path class="scx-glove" d="M' + f1(x + dx) + ' ' + f1(hy2 - cm * 0.9) + 'q' + f1(flip * cm * 0.9) + ' 0 ' + f1(flip * cm * 0.9) + ' ' + f1(cm * 1.1) + 'l0 ' + f1(cm * 3.2) + 'q0 ' + f1(cm * 0.7) + ' ' + f1(-flip * cm * 0.9) + ' ' + f1(cm * 0.7) + 'Z"/>' +
-          '<path class="scx-glove" d="M' + f1(x + dx + flip * cm * 0.9) + ' ' + f1(hy2 + cm * 2.2) + 'C' + f1(x + flip * cw * 0.7) + ' ' + f1(hy2 + cm * 2.4) + ' ' + f1(x + flip * (cw + cm * 0.6)) + ' ' + f1(hy2 + cm * 2) + ' ' + f1(x + flip * (cw + cm * 1.4)) + ' ' + f1(hy2 - cm * 0.2) +
-          'L' + f1(x + flip * (cw + cm * 1.4)) + ' ' + f1(hy2 + cm * 5) + 'C' + f1(x + flip * cw * 0.8) + ' ' + f1(hy2 + cm * 5.2) + ' ' + f1(x + flip * cm * 2) + ' ' + f1(hy2 + cm * 4.2) + ' ' + f1(x + dx + flip * cm * 0.6) + ' ' + f1(hy2 + cm * 3.6) + 'Z"/></g>'; };
-      out.cpr = '<g class="scx-push">' + th2(-cm * 0.15, -1) + th2(cm * 0.15, 1) + '</g>';
+      // two thumb encircling: the shared gloves round the chest, fingers wrapping toward the back, and the two thumbs
+      // side by side on the lower breastbone
+      var cw = Math.abs(lm.midaxL[0] - lm.midaxR[0]) / 2, gs = (1.45 * cm / 6.9 * 0.42).toFixed(3);
+      var thumb = function(x0){ return '<rect class="scx-glove" x="' + f1(x0) + '" y="' + f1(hy2 - cm * 2.4) + '" width="' + f1(cm * 1.05) + '" height="' + f1(cm * 3.6) + '" rx="' + f1(cm * 0.52) + '"/>'; };
+      out.cpr = '<g class="scx-push">' + PD.glove('scx-', f1(x - cw * 0.72), f1(hy2 + cm * 2.2), -50, '', gs) + PD.glove('scx-', f1(x + cw * 0.72), f1(hy2 + cm * 2.2), 50, 'scx-top', gs) +
+        thumb(x - cm * 1.12) + thumb(x + cm * 0.07) + '</g>';
     } else out.cpr = '<g class="scx-push">' + PD.cpr('scx-', x - 13 * hs, hy2 - 5 * hs, hs) + '</g>';
     var aedS = cm * 28 / 170, aedX = lm.acromionL[0] + cm * 14, aedY = M.sAngle - cm * 10, wire = [aedX, aedY + 40 * aedS];
     if(!ped){
@@ -642,7 +645,7 @@
     /* ------------------------------------------------------------------ the patient and the picture */
     var G = null, M = null, monitor = null, figLoaded = false;
     function look(){ return LOOK[St.id] || { v: 'floor', set: 'living', top: 'tee', bot: 'jeans' }; }
-    function fig(){ var F = St.F; if(!F) return null; if(St.view === 'prone' && F.figs[(St.kind === 'female' ? 'female' : 'adult') + '-back']) return F.figs[(St.kind === 'female' ? 'female' : 'adult') + '-back']; return F.figs[St.kind + '-front'] || F.figs[(St.kind === 'female' ? 'adult' : St.months != null && St.months < 144 ? 'child' : 'adult') + '-front'] || F.figs['adult-front']; }
+    function fig(){ var F = St.F; if(!F) return null; if((St.view === 'prone' || St.view === 'side') && F.figs[St.kind + '-back']) return F.figs[St.kind + '-back']; return F.figs[St.kind + '-front'] || F.figs[(St.kind === 'female' ? 'adult' : St.months != null && St.months < 144 ? 'child' : 'adult') + '-front'] || F.figs['adult-front']; }
     function loadFigs(cb){
       if(!window.LevlBodyFigs) return;
       window.LevlBodyFigs.load('body', function(F){ window.LevlBodyFigs.load('case', function(F2){ St.F = F2 || F; figLoaded = true; cb(); }); });
@@ -664,7 +667,31 @@
       for(var i = 0; i < sn.length; i++){ var t = own(sn[i].text, St.preg); if(UNPRONE.test(t)) return false; if(PRONE.test(t)) return true; }
       return false;
     }
-    function viewFor(care){ var v = look().v; if(v === 'up' && care && (care.on.cpr || care.on.pads)) v = 'floor'; if(prone() && !(care && care.on.cpr)) v = 'prone'; return v; }
+    /* the posture the newest words give (a step's own text, then the choice that led to it, newest first): on the
+       side or in the recovery position, lying flat, sitting up */
+    var P_SIDE = /\b(onto (his|her) (left )?side|on (his|her) (left )?side|recovery position|left lateral)\b/i,
+      P_FLAT = /\b(lay (him|her) (flat|down)|flat on (his|her) back|lying flat|lie (him|her) flat|supine)\b/i,
+      P_SIT = /\b(sit (him|her) (back )?up|sits? (back )?up|sitting up|upright)\b/i,
+      SEATED = /\b(sitting (up )?on (the edge of )?(his|her|a|the) (bed|bench|kitchen chair|chair)|sitting forward)\b/i,
+      P_TRIP = /\b(sits? forward|sitting forward|leaning forward|tripod\w*|hands on (his|her) knees)\b/i;
+    function posture(){
+      var sn = seen(), test = function(t){ var out = null; [['side', P_SIDE], ['flat', P_FLAT], ['sit', P_SIT], ['trip', P_TRIP]].forEach(function(r){ var m = r[1].exec(t); if(m && !NEG.test(t.slice(Math.max(0, m.index - 20), m.index)) && (!out || m.index > out.at)) out = { p: r[0], at: m.index }; }); return out && out.p; };
+      for(var i = 0; i < sn.length; i++){
+        var a = test(own(sn[i].text, St.preg)); if(a) return a;
+        var nx = sn[i + 1]; if(nx && nx.did){ var b = test(nx.did); if(b) return b; }
+      }
+      return null;
+    }
+    function viewFor(care){
+      var v = look().v, ps = posture();
+      if(ps === 'flat' && v === 'up') v = 'floor';
+      if(ps === 'sit') v = look().v === 'up' ? 'up' : v;
+      if(v === 'up' && care && (care.on.cpr || care.on.pads)) v = 'floor';
+      if(v === 'up' && (ps === 'trip' || SEATED.test(call().nodes[call().startNode].text))) v = 'sit';
+      if(ps === 'side' && !(care && (care.on.cpr || care.on.bvm))) v = 'side';
+      if(prone() && !(care && care.on.cpr)) v = 'prone';
+      return v;
+    }
 
     /* the layout: picture beside the card on a wide stage, the card under the picture on a narrow one */
     function layout(){
@@ -679,21 +706,24 @@
     function geom(){
       var W = pic.clientWidth, H = pic.clientHeight, wide = box.classList.contains('is-wide'), f = fig();
       if(!W || !H || !f) return null;
-      var g = { W: W, H: H, wide: wide, f: f, view: St.view };
-      var mw = wide ? clamp(W * 0.34, 270, 330) : W - 16, mh = wide ? 170 : 104;
+      var g = { W: W, H: H, wide: wide, f: f, view: St.view === 'sit' ? 'up' : St.view };
+      // a wide stage whose picture is taller than wide (about 1024 px) is framed as a phone is: the monitor across the
+      // top, a lying patient head up and as large as the picture allows (never a strip on an empty floor)
+      var land = wide && H < W * 0.95;
+      var mw = land ? clamp(W * 0.34, 270, 330) : W - (wide ? 24 : 16), mh = land ? 170 : wide ? 150 : 104;
       g.mon = { x: W - mw - 12, y: 12, w: mw, h: mh };
-      var area = wide ? (g.view !== 'up' ? { x: 16, y: mh + 30, w: W - 32, h: H - mh - 38 } : { x: 8, y: 8, w: W - mw - 40, h: H - 8 })
+      var area = land ? (g.view !== 'up' ? { x: 16, y: mh + 30, w: W - 32, h: H - mh - 38 } : { x: 8, y: 8, w: W - mw - 40, h: H - 8 })
         : { x: 8, y: mh + 24, w: W - 16, h: H - mh - 28 };
       g.area = area;
-      if(g.view !== 'up' && wide){
+      if(g.view !== 'up' && land){
         var k = Math.min(area.w / (f.h * 1.02), area.h / (f.w * 1.04));
         g.k = k; g.rot = true;
         g.ox = area.x + (area.w - f.h * k) / 2; g.oy = area.y + area.h / 2 + f.w * k / 2;
       } else if(g.view !== 'up'){
-        var span = Math.min(f.h, (f.anchors.simLegL || f.anchors.legL)[1] + (f.h - (f.anchors.simLegL || f.anchors.legL)[1]) * 0.5), k2 = Math.min(area.h / (span * 1.02), area.w / (f.w * 1.1));
+        var span = Math.min(f.h, (f.anchors.simLegL || f.anchors.legL)[1] * 1.06), k2 = Math.min(area.h / (span * 1.02), area.w / (f.w * 1.1));
         g.k = k2; g.rot = false; g.ox = area.x + (area.w - f.w * k2) / 2; g.oy = area.y + Math.max(0, (area.h - span * k2) / 2);
       } else {
-        var cut = (f.lines.groinY) + ((f.anchors.simLegL || f.anchors.legL)[1] - f.lines.groinY) * 0.62, k3 = Math.min(area.h / (cut + 10), area.w / (f.w * 1.15));
+        var cut = St.view === 'sit' ? f.lines.groinY + (f.h - f.lines.groinY) * 0.6 : (f.lines.groinY) + ((f.anchors.simLegL || f.anchors.legL)[1] - f.lines.groinY) * 0.62, k3 = Math.min(area.h / (cut + 10), area.w / (f.w * 1.15));
         g.k = k3; g.rot = false; g.ox = area.x + (area.w - f.w * k3) / 2; g.oy = H - cut * k3;
         if(g.oy > 10) g.oy = Math.max(10, H - cut * k3);
       }
@@ -724,8 +754,16 @@
       var mom = '';
       if(L.set === 'arms' && G.view !== 'up'){
         var ac = M.cm, w5 = ac * 7.5, sk = '#D9A383', sl = '#B65A6E';
-        var limb = function(x0, y0, x1, y1, w, col){ return '<path d="M' + f1(x0) + ' ' + f1(y0) + 'L' + f1(x1) + ' ' + f1(y1) + '" stroke="' + col + '" stroke-width="' + f1(w) + '" stroke-linecap="round"/>'; };
-        var hand = function(x, y, rot){ return '<g transform="translate(' + f1(x) + ' ' + f1(y) + ') rotate(' + rot + ')"><ellipse rx="' + f1(ac * 5) + '" ry="' + f1(ac * 4) + '" fill="' + sk + '"/>' + [-1.5, -0.5, 0.5, 1.5].map(function(k){ return '<rect x="' + f1(ac * 3) + '" y="' + f1(k * ac * 1.6 - ac * 0.75) + '" width="' + f1(ac * 5.5) + '" height="' + f1(ac * 1.5) + '" rx="' + f1(ac * 0.75) + '" fill="' + sk + '" stroke="#B8826A" stroke-width="' + f1(ac * 0.2) + '"/>'; }).join('') + '</g>'; };
+        // the mother's arms: a darker edge, the colour, and a soft light down the middle, so they read round
+        var limb = function(x0, y0, x1, y1, w, col){ var d = 'M' + f1(x0) + ' ' + f1(y0) + 'L' + f1(x1) + ' ' + f1(y1);
+          return '<path d="' + d + '" stroke="rgba(60,30,20,.3)" stroke-width="' + f1(w + ac * 0.8) + '" stroke-linecap="round"/><path d="' + d + '" stroke="' + col + '" stroke-width="' + f1(w) + '" stroke-linecap="round"/>' +
+            '<path d="' + d + '" stroke="#FFFFFF" stroke-opacity=".16" stroke-width="' + f1(w * 0.4) + '" stroke-linecap="round"/>'; };
+        var hand = function(x, y, rot){ var e = 'stroke="rgba(60,30,20,.3)" stroke-width="' + f1(ac * 0.35) + '"';
+          return '<g transform="translate(' + f1(x) + ' ' + f1(y) + ') rotate(' + rot + ')"><ellipse rx="' + f1(ac * 4.8) + '" ry="' + f1(ac * 4) + '" fill="' + sk + '" ' + e + '/>' +
+            '<path d="M' + f1(ac * 2) + ' ' + f1(-ac * 3.4) + 'Q' + f1(ac * 9) + ' ' + f1(-ac * 3.6) + ' ' + f1(ac * 9) + ' 0Q' + f1(ac * 9) + ' ' + f1(ac * 3.6) + ' ' + f1(ac * 2) + ' ' + f1(ac * 3.4) + 'Z" fill="' + sk + '" ' + e + '/>' +
+            [-1.15, 0, 1.15].map(function(k){ return '<path d="M' + f1(ac * 4.5) + ' ' + f1(k * ac * 1.15) + 'L' + f1(ac * 8.2) + ' ' + f1(k * ac * 1.15) + '" stroke="rgba(120,70,50,.35)" stroke-width="' + f1(ac * 0.25) + '" stroke-linecap="round"/>'; }).join('') +
+            '<ellipse cx="' + f1(ac * 1) + '" cy="' + f1(-ac * 4) + '" rx="' + f1(ac * 3) + '" ry="' + f1(ac * 1.4) + '" fill="' + sk + '" ' + e + ' transform="rotate(25 ' + f1(ac) + ' ' + f1(-ac * 4) + ')"/>' +
+            '<ellipse cx="' + f1(ac * 1.5) + '" cy="' + f1(-ac * 1) + '" rx="' + f1(ac * 3) + '" ry="' + f1(ac * 2) + '" fill="#FFFFFF" fill-opacity=".14"/></g>'; };
         var ey0 = M.top - ac * 6;
         under.push('<g transform="' + T + '"><rect x="' + f1(-ac * 30) + '" y="' + f1(M.top - ac * 20) + '" width="' + f1(f.w + ac * 60) + '" height="' + f1(f.h + ac * 30) + '" rx="' + f1(ac * 16) + '" fill="url(#scx-denim)" opacity=".9"/>' +
           limb(M.hx - ac * 40, ey0 - ac * 10, M.hx, ey0, w5 * 1.25, sl) + limb(M.hx, ey0, M.hx, M.groin + ac * 2, w5, sk) + hand(M.hx, M.groin + ac * 6, 90) + '</g>');
@@ -740,26 +778,72 @@
       gUnder.innerHTML = under.join('');
       gPool.innerHTML = poolSvg;
       var shoe = SHOES[St.id], h = [];
+      if(St.view === 'side'){
+        var cc = function(n){ return CLOTH[n] ? CLOTH[n][0] : null; };
+        h.push(PD.lateral('scx-', { x: M.hx, hcy: M.hcy, hry: M.hry, notch: M.notch, groin: M.groin, knee: M.knee, ankle: M.ankle, cm: M.cm,
+          hair: (HAIR[St.id] || ['#2B2B2B'])[0], shirt: cc(top), pants: cc(bot) || cc(top), shoe: shoe, preg: St.preg }));
+      } else {
+      if(St.view === 'sit'){
+        // sitting forward on a chair, hands on the knees: the thighs come toward us, so only the knees and shins show
+        var sc2 = M.cm, kw = (M.legR - M.legL) / 2, ky2 = M.groin + sc2 * 5, pc = CLOTH[bot] || CLOTH[top] || ['#3E4450'];
+        defs.innerHTML += '<clipPath id="scx-sitclip"><rect x="-999" y="-999" width="' + f1(f.w + 1998) + '" height="' + f1(M.groin + sc2 * 2 + 999) + '"/>' +
+          '<rect x="-999" y="0" width="' + f1(M.legL + 999 - sc2 * 1.5) + '" height="' + f1(f.h * 0.64) + '"/><rect x="' + f1(M.legR + sc2 * 1.5) + '" y="0" width="999" height="' + f1(f.h * 0.64) + '"/></clipPath>';
+        var bed = /bedroom/.test(L.set);
+        // what she sits on: the edge of a bed (a mattress across the picture) or a chair or bench (a seat and two legs)
+        h.push(bed ? '<rect x="' + f1(-f.w) + '" y="' + f1(M.groin - sc2 * 4) + '" width="' + f1(f.w * 3) + '" height="' + f1(sc2 * 24) + '" rx="' + f1(sc2 * 3) + '" fill="#DCE3EA" stroke="rgba(0,0,0,.18)" stroke-width="' + f1(sc2 * 0.4) + '"/><rect x="' + f1(-f.w) + '" y="' + f1(M.groin + sc2 * 20) + '" width="' + f1(f.w * 3) + '" height="' + f1(sc2 * 6) + '" fill="#8C6A4E"/>'
+          : '<rect x="' + f1(M.hx - kw * 1.15) + '" y="' + f1(M.groin - sc2 * 3) + '" width="' + f1(kw * 2.3) + '" height="' + f1(sc2 * 5) + '" rx="' + f1(sc2) + '" fill="#8A5A3A"/>' +
+          '<rect x="' + f1(M.hx - kw * 1.05) + '" y="' + f1(M.groin + sc2 * 2) + '" width="' + f1(sc2 * 3) + '" height="' + f1(sc2 * 44) + '" fill="#6E4630"/><rect x="' + f1(M.hx + kw * 1.05 - sc2 * 3) + '" y="' + f1(M.groin + sc2 * 2) + '" width="' + f1(sc2 * 3) + '" height="' + f1(sc2 * 44) + '" fill="#6E4630"/>');
+        [-1, 1].forEach(function(sd){ var kx = sd < 0 ? M.legL - sc2 * 1.5 : M.legR + sc2 * 1.5;
+          h.push('<rect x="' + f1(kx - sc2 * 6) + '" y="' + f1(ky2) + '" width="' + f1(sc2 * 12) + '" height="' + f1(sc2 * 40) + '" rx="' + f1(sc2 * 5) + '" fill="' + pc[0] + '" stroke="rgba(0,0,0,.25)" stroke-width="' + f1(sc2 * 0.4) + '"/>' +
+            '<ellipse cx="' + f1(kx) + '" cy="' + f1(ky2 + sc2 * 40) + '" rx="' + f1(sc2 * 6.5) + '" ry="' + f1(sc2 * 3.5) + '" fill="' + (shoe || '#E9ECEF') + '"/>' +
+            '<ellipse cx="' + f1(kx) + '" cy="' + f1(ky2) + '" rx="' + f1(sc2 * 9) + '" ry="' + f1(sc2 * 7.5) + '" fill="' + (pc[1] || pc[0]) + '" stroke="rgba(0,0,0,.25)" stroke-width="' + f1(sc2 * 0.4) + '"/>'); });
+        h.push('<g clip-path="url(#scx-sitclip)">');
+      }
       if(G.view !== 'up') h.push('<path d="' + f.outline + '" fill="rgba(20,20,20,.2)" transform="translate(' + f1(-M.cm * 1.2) + ' ' + f1(M.cm * 1.5) + ')"/>');
       h.push('<image href="' + St.F.url(f) + '" x="0" y="0" width="' + f.w + '" height="' + f.h + '"/>');
       h.push('<g clip-path="url(#scx-body)">' +
         '<path class="scx-sk scx-hot" d="' + f.outline + '"/><rect class="scx-sk scx-mot" x="-40" y="' + f1(M.notch - M.neckR * 0.3) + '" width="' + f1(f.w + 80) + '" height="' + f1(f.h) + '"/><path class="scx-sk scx-pale" d="' + f.outline + '"/><path class="scx-sk scx-blue" d="' + f.outline + '"/>' +
         '<g class="scx-hives">' + hives(f, M) + '</g>' +
         clothes(M, top, bot) +
+        (St.view === 'sit' ? '<rect x="' + f1(M.legL) + '" y="' + f1(M.asis) + '" width="' + f1(M.legR - M.legL) + '" height="' + f1(M.groin - M.asis + M.cm * 3) + '" fill="' + (CLOTH[bot] || CLOTH[top] || ['#3E4450'])[0] + '"/>' : '') +
         (shoe ? '<rect x="0" y="' + f1(f.h * 0.94) + '" width="' + f.w + '" height="' + f1(f.h * 0.06) + '" fill="' + shoe + '"/>' : '') +
         '<ellipse class="scx-breath" cx="' + f1(M.hx) + '" cy="' + f1((M.sAngle + M.xiph) / 2) + '" rx="' + f1(Math.abs(f.landmarks.midaxL[0] - f.landmarks.midaxR[0]) * 0.4) + '" ry="' + f1((M.xiph - M.notch) * 0.6) + '"/>' +
         (St.preg ? '<ellipse class="scx-belly" cx="' + f1(M.hx) + '" cy="' + f1(M.umb) + '" rx="' + f1(Math.abs(f.landmarks.asisL[0] - f.landmarks.asisR[0]) * 0.62) + '" ry="' + f1((M.pubis - M.xiph) * 0.55) + '" fill="url(#scx-belly)"/>' : '') +
         '</g>');
-      if(St.view === 'prone'){
+      if(St.view === 'sit') h.push('</g>');
+      }
+      if(St.view === 'side'){ /* head drawn with the pose */ }
+      else if(St.view === 'prone'){
         var hcol = (HAIR[St.id] || ['#2B2B2B'])[0];
         h.push('<ellipse cx="' + f1(M.hx) + '" cy="' + f1(M.hcy) + '" rx="' + f1(M.hrx * 1.04) + '" ry="' + f1(M.hry * 1.02) + '" fill="' + hcol + '"/><ellipse cx="' + f1(M.hx) + '" cy="' + f1(M.hcy) + '" rx="' + f1(M.hrx * 1.04) + '" ry="' + f1(M.hry * 1.02) + '" fill="url(#scx-light)"/>');
       } else h.push(face(M), hair(M, HAIR[St.id], St.kind, L));
       gFig.setAttribute('transform', T);
       gFig.innerHTML = h.join('');
-      var isBack = St.view === 'prone', it = isBack ? {} : items(M, f, St.kind, site, G.view, 12.5 / G.k);
-      if(!site && !isBack){ var it2 = items(M, f, St.kind, splintSite(f, fnd0), G.view, 12.5 / G.k); it.splint = it2.splint; }
+      var isBack = St.view === 'prone', onSide = St.view === 'side', it = isBack ? {} : items(M, f, St.kind, site, G.view, 12.5 / G.k);
+      // on the side: only the blanket stays drawn (a mask on the face cannot be seen from behind)
+      if(onSide){ var mx = M.hx + M.cm * 2 + M.hry * 0.86, my = M.hcy + M.hry * 0.12, mr = M.hry * 0.3;
+        it = { warm: it.warm, o2: it.o2 && '<ellipse class="scx-mask" cx="' + f1(mx) + '" cy="' + f1(my) + '" rx="' + f1(mr * 0.85) + '" ry="' + f1(mr * 1.2) + '" fill="#DDF1EA" fill-opacity=".6" stroke="#3E8A73" stroke-width="' + f1(mr * 0.12) + '"/>' +
+          '<ellipse cx="' + f1(mx + mr * 0.9) + '" cy="' + f1(my + mr * 1.6) + '" rx="' + f1(mr * 0.9) + '" ry="' + f1(mr * 1.1) + '" fill="#BFE2D6" fill-opacity=".85" stroke="#6FA592" stroke-width="' + f1(mr * 0.08) + '"/>' +
+          '<path d="M' + f1(mx + mr * 1.6) + ' ' + f1(my + mr * 2.2) + 'Q' + f1(mx + mr * 4) + ' ' + f1(my + mr * 4) + ' ' + f1(mx + mr * 6) + ' ' + f1(my + mr * 2) + '" stroke="#7FBFA9" stroke-width="' + f1(mr * 0.25) + '" fill="none" stroke-linecap="round"/>',
+          blowby: it.blowby && '<ellipse class="scx-mask" cx="' + f1(mx + mr * 1.6) + '" cy="' + f1(my) + '" rx="' + f1(mr * 0.85) + '" ry="' + f1(mr * 1.2) + '" fill="#DDF1EA" fill-opacity=".6" stroke="#3E8A73" stroke-width="' + f1(mr * 0.12) + '"/>' +
+          '<path d="M' + f1(mx + mr * 2.4) + ' ' + f1(my + mr * 0.4) + 'Q' + f1(mx + mr * 4.5) + ' ' + f1(my + mr * 2) + ' ' + f1(mx + mr * 6) + ' ' + f1(my + mr * 0.6) + '" stroke="#7FBFA9" stroke-width="' + f1(mr * 0.25) + '" fill="none" stroke-linecap="round"/>' }; }
+      if(!site && !isBack && !onSide){ var it2 = items(M, f, St.kind, splintSite(f, fnd0), G.view, 12.5 / G.k); it.splint = it2.splint; }
       var on = [];
       if(mom) on.push('<g class="scx-mom">' + mom + '</g>');
+      if(St.preg && !onSide){
+        // the newborn on her chest once the case says the baby is born (shown by paint)
+        var bc = M.cm, bx = M.hx, by = M.xiph + (M.umb - M.xiph) * 0.45, sk3 = '#E8A89C', ln3 = 'rgba(0,0,0,.25)';
+        on.push('<g class="scx-nb">' +
+          '<ellipse cx="' + f1(bx - bc * 5) + '" cy="' + f1(by + bc * 10) + '" rx="' + f1(bc * 3) + '" ry="' + f1(bc * 5) + '" fill="' + sk3 + '" stroke="' + ln3 + '" stroke-width="' + f1(bc * 0.3) + '" transform="rotate(25 ' + f1(bx - bc * 5) + ' ' + f1(by + bc * 10) + ')"/>' +
+          '<ellipse cx="' + f1(bx + bc * 5) + '" cy="' + f1(by + bc * 10) + '" rx="' + f1(bc * 3) + '" ry="' + f1(bc * 5) + '" fill="' + sk3 + '" stroke="' + ln3 + '" stroke-width="' + f1(bc * 0.3) + '" transform="rotate(-25 ' + f1(bx + bc * 5) + ' ' + f1(by + bc * 10) + ')"/>' +
+          '<ellipse cx="' + f1(bx) + '" cy="' + f1(by + bc * 2) + '" rx="' + f1(bc * 7) + '" ry="' + f1(bc * 9.5) + '" fill="' + sk3 + '" stroke="' + ln3 + '" stroke-width="' + f1(bc * 0.3) + '"/>' +
+          '<path d="M' + f1(bx - bc * 8) + ' ' + f1(by + bc * 3) + ' Q' + f1(bx) + ' ' + f1(by - bc * 1) + ' ' + f1(bx + bc * 8) + ' ' + f1(by + bc * 3) + ' L' + f1(bx + bc * 7) + ' ' + f1(by + bc * 12) + ' Q' + f1(bx) + ' ' + f1(by + bc * 15) + ' ' + f1(bx - bc * 7) + ' ' + f1(by + bc * 12) + 'Z" fill="#F4EFE6" stroke="' + ln3 + '" stroke-width="' + f1(bc * 0.3) + '"/>' +
+          '<ellipse cx="' + f1(bx - bc * 6) + '" cy="' + f1(by - bc * 3) + '" rx="' + f1(bc * 2) + '" ry="' + f1(bc * 3.5) + '" fill="' + sk3 + '" stroke="' + ln3 + '" stroke-width="' + f1(bc * 0.3) + '"/>' +
+          '<ellipse cx="' + f1(bx + bc * 6) + '" cy="' + f1(by - bc * 3) + '" rx="' + f1(bc * 2) + '" ry="' + f1(bc * 3.5) + '" fill="' + sk3 + '" stroke="' + ln3 + '" stroke-width="' + f1(bc * 0.3) + '"/>' +
+          '<circle cx="' + f1(bx) + '" cy="' + f1(by - bc * 10) + '" r="' + f1(bc * 6) + '" fill="' + sk3 + '" stroke="' + ln3 + '" stroke-width="' + f1(bc * 0.3) + '"/>' +
+          '<path d="M' + f1(bx - bc * 2.4) + ' ' + f1(by - bc * 11) + ' q' + f1(bc * 1) + ' ' + f1(bc * 0.8) + ' ' + f1(bc * 2) + ' 0 M' + f1(bx + bc * 0.4) + ' ' + f1(by - bc * 11) + ' q' + f1(bc * 1) + ' ' + f1(bc * 0.8) + ' ' + f1(bc * 2) + ' 0" stroke="#5A3A30" stroke-width="' + f1(bc * 0.4) + '" fill="none" stroke-linecap="round"/>' +
+          '<ellipse cx="' + f1(bx) + '" cy="' + f1(by - bc * 7.6) + '" rx="' + f1(bc * 1.2) + '" ry="' + f1(bc * 0.9) + '" fill="#9A4A44"/></g>');
+      }
       if(isBack){
         var cm4 = M.cm, ky = M.notch + (M.xiph - M.notch) * 0.9;
         on.push('<g class="scx-it is-on scx-weight" data-k="weight"><path class="scx-cop scx-sleeve" d="M' + f1(-cm4 * 40) + ' ' + f1(ky - cm4 * 6) + 'L' + f1(M.hx + cm4 * 2) + ' ' + f1(ky - cm4 * 9) + 'Q' + f1(M.hx + cm4 * 12) + ' ' + f1(ky - cm4 * 8) + ' ' + f1(M.hx + cm4 * 12) + ' ' + f1(ky + cm4 * 1) + 'L' + f1(M.hx + cm4 * 4) + ' ' + f1(ky + cm4 * 8) + 'L' + f1(-cm4 * 40) + ' ' + f1(ky + cm4 * 9) + 'Z"/>' +
@@ -811,11 +895,11 @@
       gOn.classList.toggle('no-anim', !anim);
       svg.querySelector('.scx-pale') && svg.querySelector('.scx-pale').classList.toggle('is-on', sk === 'pale');
       var blue = sk === 'blue' && (spo2 == null || spo2 < J.pure.SPO2_LOW);
-      svg.querySelector('.scx-blue').classList.toggle('is-on', blue);
-      svg.querySelector('.scx-hot').classList.toggle('is-on', sk === 'hot');
-      svg.querySelector('.scx-mot').classList.toggle('is-on', sk === 'mottled');
-      svg.querySelector('.scx-hives').classList.toggle('is-on', !!S.hives);
-      var belly = svg.querySelector('.scx-belly'); if(belly) belly.classList.toggle('is-off', !!S.born);
+      (svg.querySelector('.scx-blue') || DUMMY).classList.toggle('is-on', blue);
+      (svg.querySelector('.scx-hot') || DUMMY).classList.toggle('is-on', sk === 'hot');
+      (svg.querySelector('.scx-mot') || DUMMY).classList.toggle('is-on', sk === 'mottled');
+      (svg.querySelector('.scx-hives') || DUMMY).classList.toggle('is-on', !!S.hives);
+      var belly = svg.querySelector('.scx-belly'); if(belly) belly.classList.toggle('is-off', !!S.born); var nbg = svgOn.querySelector('.scx-nb'); if(nbg) nbg.classList.toggle('is-on', !!S.born);
       gFig.setAttribute('data-eyes', S.eyes);
       gFig.classList.toggle('is-blue', blue);
       gFig.classList.toggle('is-sweat', !!S.sweat);
@@ -851,12 +935,13 @@
       var out0 = [], f = G.f, sn = seen(), fnd = J.pure.findings(sn, { preg: !!St.preg }), res = J.care ? J.care.resolutions(sn) : null;
       var fnew = {}, k0;
       for(k0 in fnd){ var L0 = fnd[k0] || []; fnew[k0] = !L0.length ? L0 : L0[0].now ? L0.filter(function(x){ return x.now; }) : [L0[0]]; }
-      var pins = J.pure.pinsFor(f, St.view === 'prone' ? 'back' : 'front', fnew, res);
-      var silent = false;
-      sn.some(function(x){ return own(x.text, St.preg).split(SENT).reverse().some(function(y){ if(!/cough|sound|voice|cry|air/i.test(y)) return false; silent = SILENT.test(y); return true; }); });
+      var pins = J.pure.pinsFor(f, St.view === 'prone' || St.view === 'side' ? 'back' : 'front', fnew, res);
+      var silent = false, crying = false;
+      sn.some(function(x){ return own(x.text, St.preg).split(SENT).reverse().some(function(y){ if(!/cough|sound|voice|cry|air|breath/i.test(y)) return false; silent = SILENT.test(y); crying = !silent && CRYING.test(y); return true; }); });
       var born = !!St.preg && BORN.test(sn.map(function(x){ return x.text; }).join(' '));
       var cr = St.drawn ? St.drawn.careObj : null;
-      if(J.care && cr) J.care.pins({ fig: f, f: fnd, careNow: cr, preg: St.preg, view: St.view === 'prone' ? 'back' : 'front' }, pins);
+      if(J.care && cr) J.care.pins({ fig: f, f: fnd, careNow: cr, preg: St.preg, view: St.view === 'prone' || St.view === 'side' ? 'back' : 'front' }, pins);
+      if(St.view === 'side') out0.push({ text: /recovery/i.test(sn.map(function(x){ return (x.did || '') + ' ' + x.text; }).join(' ')) ? 'Recovery position' : St.female ? 'On her left side' : 'On his left side', at: [f.w / 2, M.asis], tone: 'act' });
       if(St.view === 'prone'){ var wg = gOn.querySelector('.scx-weight .scx-cop2'); if(wg){ var wb = wg.getBBox(); out0.push({ text: 'Knee on his back', at: [wb.x + wb.width / 2, wb.y + wb.height / 2], tone: 'bad' }); } }
       var out = out0, it = St.drawn ? St.drawn.care : {};
       var fresh = ITEM_ORDER.filter(function(k){ return ITEM_LABEL[k] && it[k] && !(prevCare && prevCare[k]); });
@@ -873,17 +958,20 @@
         }
         if(born && (p.key === 'birth' || /Contraction|Crowning|Baby born|Head delivered|Cord|Birth/.test(t))) return;
         if(/Cough/.test(t) && silent){ t = 'Cannot cough'; sev = true; }
+        else if(/Cough/.test(t) && crying){ t = 'Crying'; sev = false; }
         if(p.key === 'head' || p.key === 'ms') t = t.split(', ')[0];
         var at = (p.key === 'head' || p.key === 'ms') && M ? [M.hx, M.top + M.hry * 0.18] : [p.x, p.y];
         if(/^Mottled/.test(t) && M) at = [M.hx + M.neckR * 0.8, M.notch];
         if(/^\d+ findings?$/.test(t) || out.some(function(x){ return x.text === t; })) return;
         out.push({ text: t, at: at, tone: sev ? 'bad' : 'see' });
       });
+      // a step that ends with the patient crying (the newborn after 3:1) says so even with no cough to replace
+      if(crying && M && sn[0] && /\b(cries|crying)\b/i.test(own(sn[0].text, St.preg)) && !out.some(function(x){ return x.text === 'Crying'; })) out.push({ text: 'Crying', at: [M.hx, M.chin], tone: 'see' });
       return out;
     }
     function itemAt(k){
       var g = gOn.querySelector('.scx-it[data-k="' + k + '"]'); if(!g) return null;
-      if(k === 'pads') g = g.querySelector('.scx-pad:not(.scx-pad-back)') || g;  // the word names a pad, not the AED
+      if(k === 'pads') g = g.querySelector('.scx-pad-back') || g.querySelector('.scx-pad') || g;  // a pad (the back pad's edge: the front one is under the hands), not the AED
       try{ var b = g.getBBox(); return [b.x + b.width / 2, b.y + b.height / 2]; }catch(e){ return null; }
     }
     function rel(n){ var r = n.getBoundingClientRect(), h = pic.getBoundingClientRect(); if(!r.width) return null; return { l: r.left - h.left, t: r.top - h.top, r: r.right - h.left, b: r.bottom - h.top }; }
@@ -913,7 +1001,12 @@
     function clearLabels(){ cancelAnimationFrame(St.labFrame); St.labFrame = 0; St.labsOn = false; labs.innerHTML = ''; lead.innerHTML = ''; }
 
     /* ------------------------------------------------------------------ the call */
-    function vit(n){ var v = J.pure.parseVitals(vline(n)); v.pulseless = !!St.pls; return v; }
+    function vit(n){ var v = J.pure.parseVitals(vline(n)); v.pulseless = !!St.pls; v.hadPulse = hadPulse(); return v; }
+    // did any step so far show a pulse (a heart rate, or the case's words)?
+    function hadPulse(){
+      return seen().some(function(x){ var v = J.pure.parseVitals(x.vitals), t = own(x.text, St.preg), m = PLS_OFF.exec(t);
+        return (v.hr != null && v.hr > 0 && !v.pulseless) || (m && !NEG.test(t.slice(0, m.index))); });
+    }
     /* no pulse, carried across the steps: the vitals line or the case's own words set it, a heart rate or the pulse's */
     var PLS_ON = /\b(pulseless|no pulse|can't feel a pulse|cannot feel a pulse|without a pulse)\b/i, PLS_OFF = /\b(pulse (returns|is back)|has a pulse|return of spontaneous circulation|ROSC|pulse is present|achieves return|no further shock|breathe on (his|her) own|breath of (his|her) own|starts? (to )?breathe)\b/i;
     function plsNow(){
@@ -927,8 +1020,8 @@
       });
       return on;
     }
-    function stateNow(){
-      var sn = seen(), care = careNow(sn), S = stateOf(sn, care, St.months, St.preg);
+    function stateNow(skipNow){
+      var sn = seen(), care = careOf(J, sn, { preg: !!St.preg, he: !St.female, skipNow: !!skipNow }), S = stateOf(sn, care, St.months, St.preg);
       S.care = care.on; S.careObj = care;
       S.born = !!St.preg && BORN.test(sn.map(function(x){ return x.text; }).join(' '));
       return S;
@@ -1030,6 +1123,27 @@
       board.classList.add('is-busy');
       var S = stateNow(), nv = vit(n), v2 = viewFor(S.careObj), anim = !rd();
       cause.set([{ t: shortAction(actText), role: 'act' }]);
+      /* a step whose own words tell a sequence (compressions with the bag at 3:1, then he breathes and cries): the
+         chosen care plays first, for a few cycles, then the picture turns to what the words say happened */
+      var Sm = how === 'pick' ? stateNow(true) : null, hold = 0;
+      /* laid flat by the choice, then the words sit her back up (s11): show her down first, then up again */
+      if(anim && how === 'pick' && P_FLAT.test(actText) && (v2 === 'up' || v2 === 'sit')){
+        var swap = function(v, S2){ St.view = v; layers.classList.add('is-fade'); later(function(){ draw(); paint(S2, false); rates(); layers.classList.remove('is-fade'); }, 260); };
+        swap('floor', Sm);
+        later(function(){ if(monitor && vline(n)) monitor.show(vline(n), null); swap(v2, S); }, 2600);
+        St.pend = { before: before, prevCare: prevCare, actText: actText, how: how };
+        later(function(){ finish(); }, 2600 + T_CHANGE);
+        return;
+      }
+      if(anim && Sm && v2 === St.view && ((Sm.care.cpr && !S.care.cpr) || (Sm.care.bvm && !S.care.bvm))){
+        hold = St.months === 0 ? 4000 : 3000;
+        Sm.eyes = St.drawn ? St.drawn.eyes : Sm.eyes; Sm.skin = St.drawn ? St.drawn.skin : Sm.skin;
+        paint(Sm, true); rates();
+        later(function(){ if(monitor && vline(n)) monitor.show(vline(n), null); paint(S, true); rates(); }, hold);
+        St.pend = { before: before, prevCare: prevCare, actText: actText, how: how };
+        later(function(){ finish(); }, hold + T_CHANGE);
+        return;
+      }
       var go = function(){
         if(monitor && !(n.ending && !vline(n)) && !(St.preg && n.vitals && !vline(n))) monitor.show(vline(n), null);
         if(v2 !== St.view){
@@ -1068,7 +1182,9 @@
         if(window.LevlAnalytics) window.LevlAnalytics.event('scenario-finish', { scenario: St.id, ending: n.ending, mode: 'explore' });
         say(oc + '. ' + n.text);
       } else {
-        var p2 = pill2(d, after);
+        var p2 = pill2(d, after), nb = St.preg && /^\s*newborn\b:?\s*/i.exec(n.vitals || '');
+        // a step about the baby: say what the baby does, not the mother's steady numbers
+        if(nb){ p2 = 'Baby ' + n.vitals.slice(nb[0].length).split('·').slice(0, 2).map(function(x){ return x.trim(); }).join(', '); d = null; }
         if(!p2){ var tops = (St.labs || []).filter(function(l){ return l.tone !== 'act'; }); p2 = tops[0] ? tops[0].text : ''; }
         if(p2) parts.push({ t: p2, role: 'pt' });
         if(d && d.dir) parts.push({ t: d.dir === 'better' ? 'Better' : d.dir === 'worse' ? 'Worse' : 'About the same', role: d.dir === 'better' ? 'up' : d.dir === 'worse' ? 'down' : 'same' });
@@ -1078,7 +1194,7 @@
       }
       if(!box.classList.contains('is-wide')) keepBoardInView();
     }
-    function finishNow(){ if(St.pend){ clearTimers(); layers.classList.remove('is-fade'); if(St.view !== viewFor(stateNow().careObj)){ St.view = viewFor(stateNow().careObj); draw(); } paint(stateNow(), false); finish(); } }
+    function finishNow(){ if(St.pend){ clearTimers(); var nn = node(); if(monitor && vline(nn) && !(nn.ending && !vline(nn))) monitor.show(vline(nn), null); layers.classList.remove('is-fade'); if(St.view !== viewFor(stateNow().careObj)){ St.view = viewFor(stateNow().careObj); draw(); } paint(stateNow(), false); finish(); } }
     /* back to an earlier decision (free play: the other branch is one tap away) */
     function backTo(i){
       if(St.busy){ finishNow(); }

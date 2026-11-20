@@ -312,7 +312,7 @@ const SHELL_BUDGETS = [
      call's opening) and the six-call picker's "All calls" button. Measured 28.2 KB on scenario-sim.html. */
   /* 28.3 -> 28.8 (tool frame F2, docs/tools-frame-notes/nremt.md): task heads, the stage dropdowns and finished
      cards in the tool CSS. Measured 28.5 KB. */
-  ['nremt', 28.8],
+  ['nremt', 28.0], // 28.8 -> 28.0 (tools v2 scenario sim recheck 1): the v2 shared pieces left this shell (nremt/kit2); measured 27.7
   /* 92 -> 96. This is a first-paint cost on EVERY ochem page, so it is worth
      saying what moved rather than just moving the number: the course went from
      64 topics to 83 across four new chapters, and three shared files grew with

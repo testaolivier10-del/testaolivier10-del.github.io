@@ -210,3 +210,6 @@
 .ls-root .ls-stage .scx-scene .scx-mon .mon-tile[data-k="spo2"] .mon-u{white-space:normal;overflow:visible;line-height:1.15;}
 .ls-root .ls-stage .scx-scene:not(.is-wide) .scx-mon .mon-flag{position:absolute;right:4px;top:3px;margin:0;}
 .ls-root .ls-stage .scx-scene:not(.is-wide) .scx-mon .mon-tile{padding:2px 5px 3px;}
+.scx-lateral{filter:drop-shadow(-6px 8px 4px rgba(20,20,20,.22));}
+.scx-nb{opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.85);transition:opacity .7s ease,transform .7s ease;}
+.scx-nb.is-on{opacity:1;transform:none;}
