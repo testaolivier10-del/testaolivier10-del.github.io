@@ -218,3 +218,25 @@ body only where the bubble has about 290 px, else under the chest. 1920 and 1440
 were rerun alone.) Size against `origin/main` (the reviewer's s8 method): 3D canvas 742 / 796 at 1440 x 900, 562 / 616
 at 1280 x 720; figures 644 / 684 and 464 / 502. Phones: 375 x 667 card text to 556 and cause line to 663; 390 x 800
 660 and 796. Preview and shots regenerated in `/mnt/user-data/outputs/nremt-body-map-v2/`.
+
+## Recheck 1 (2026-11-19, independent recheck BLOCK; fixed on this branch)
+Merged `origin/claude/tools-v2-all` (44863c4b) first; its `check-tool-use.mjs` kept; both sides of the standard's
+table, the owner log and the NREMT needs-author doc kept.
+Must fix: from 1024 px the cause line rides the picture's foot, and a big part (liver, intestines) docks its card
+along that same foot, so "Tapped Liver → Abdominal / GI / GU" printed over the card's "Job." line. From 1024 px a
+docked card now keeps the same 64 px foot as the floating card (`bottom:64px`), at most 520 px wide and centred; the
+phone view slide uses the card's real foot. The sweep picks the liver at every width, checks that no cause line pill
+comes within 4 px of the card, and at 1024 x 768, 1280 x 720 and 1440 x 900 picks the liver and the small intestine
+and asserts a docked card, at most 520 px wide, centred, clear of the cause line.
+Should fix: Burns' purpose line is now "Each region is a share of the body: add the burned ones." (two lines at
+360 px, like the Body tab's), so at 360 x 640 the crossing note's second row ends on screen; the sweep asserts it
+(360 x 640, at 13.5%). Change 13 corrected: on a short phone or tablet the picture is a little smaller than main's,
+to fit the picture, the card and the cause line on one screen.
+Checks: NREMT tests 71 pass; `check-site` OK; `check-weight --check` within budget; no conflict markers. Sweep, one
+process per width (the machine ran at a load of about 10 on 2 cores, so a width took 6 to 22 minutes): 360 (1228),
+390, 430, 600 (1227 each), 768, 820 (1184), 1024 (1228, with the liver and the small intestine at 1024 x 768), 1280
+(1232, at 1280 x 720), 1440 (1232, at 1440 x 900), 1920 (1220), 390 dark (1227), 1440 dark (1232) passed, 0 failed;
+frames 32 passed, 0 failed (390: 164 frames, 67 mid fade; 1440: 156, 48 mid fade). (1024, 1920, 1440 dark and the frame run first crashed on a 240 s screenshot timeout under that load, with
+no assertion failing, and were rerun alone; the machine restarted twice during the runs.) Preview and shots refreshed
+in `/mnt/user-data/outputs/nremt-body-map-v2/` (new: `sweep-body-liver-*x*`, `sweep-body-small_intestine-*x*`,
+`sweep-burns-cross-360x640`).
