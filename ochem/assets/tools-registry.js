@@ -117,13 +117,14 @@
       slug: 'reaction-predictor',
       name: 'Reaction Predictor',
       icon: ICONS.flask,
-      tagline: 'SN1, SN2, E1 or E2 — and why, factor by factor.',
+      tagline: 'SN1, SN2, E1 or E2, and why, factor by factor.',
       blurb: 'Pick a substrate and a reagent and see whether it goes SN1, SN2, E1 or E2.',
       teaches: 'Substitution vs. elimination',
       topic: ['sn1', 'sn2', 'e1', 'e2'],
       terms: ['sn1-reaction', 'sn2-reaction', 'e1-reaction', 'e2-reaction'],
-      // Tool Studio layout (docs/tools-calm.md): the calm stage + dock frame.
-      studio: true
+      studio: true,
+      kit2: true,    // tools v2 (docs/tools-v2-reaction-predictor-brief.md)
+      css: ['push-board']   // the shared board's look: balls, electrons, arrows, names (ochem/assets/push-board.js)
     },
     {
       slug: 'acid-base',

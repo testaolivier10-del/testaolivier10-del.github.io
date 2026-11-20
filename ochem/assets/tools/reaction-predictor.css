@@ -1,0 +1,90 @@
+/* Reaction Predictor, tools v2 (ochem/assets/tools/reaction-predictor.js; docs/tools-v2-reaction-predictor-brief.md).
+   Loaded only by its page (`kit2: true` in tools-registry.js), after the shared board's look
+   (ochem/assets/tools/push-board.css: balls, electrons, arrows, charges, names). Here: the stage, the controls on the
+   picture, the tray, the Test yourself dock and "?". One colour per idea: the reagent violet (it brings the electron
+   pair), substitution teal, elimination rose, heat amber, a product green, the carbon's class and the solvent grey. */
+.rp2{--sn:#0B7A86;--sn-ink:#06606A;--el:#B23A6E;--el-ink:#8E2655;
+  display:flex;flex-direction:column;gap:10px;min-height:0;flex:1 1 auto;}
+:root[data-theme="dark"] .rp2{--sn:#3CC3CF;--sn-ink:#8FE2EA;--el:#F07AAE;--el-ink:#F7B4D2;}
+.rp2[hidden]{display:none;}
+.rp2 [hidden]{display:none !important;}
+.rp2-scene{position:relative;flex:1 1 auto;min-height:560px;border-radius:18px;overflow:hidden;background:var(--bg1);}
+.rp2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+@media (max-width:1023px){ .rp2-scene{flex:none;height:clamp(600px, calc(100vh - 300px), 780px);min-height:0;} }
+@media (max-width:640px){ .rp2-scene{height:540px;border-radius:14px;} .rp2{gap:8px;} }
+.rp2-lines{display:flex;align-items:center;gap:6px 18px;flex-wrap:wrap;flex:none;}
+
+/* the controls on the picture: substrate and reagent (the main control), then the solvent, heat and play again */
+.rp2-bar{position:absolute;left:12px;right:12px;top:12px;z-index:4;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px;pointer-events:none;}
+.rp2-bar > *{pointer-events:auto;}
+.rp2-picks{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;min-width:0;}
+.rp2 .rp2-pick{position:static;}
+.rp2 .rp2-pick select{max-width:240px;}
+.rp2 .rp2-pick.is-main span{color:var(--e-ink);}
+.rp2 .rp2-pick.is-main select{border:2.5px solid var(--e);box-shadow:0 0 0 4px color-mix(in srgb, var(--e) 14%, transparent);font-weight:900;}
+.rp2-cond{display:flex;align-items:center;gap:8px;}
+.rp2-seg{display:inline-flex;border:1.5px solid var(--tr-edge);border-radius:999px;background:var(--white);padding:2px;}
+.rp2-seg button{min-height:34px;padding:0 12px;border:0;border-radius:999px;background:transparent;color:var(--minor-ink);font:800 13px var(--font-ui);cursor:pointer;}
+.rp2-seg button.on{background:var(--minor);color:#fff;}
+:root[data-theme="dark"] .rp2-seg button.on{color:#12142A;}
+.rp2-heat,.rp2-replay{display:inline-flex;align-items:center;gap:5px;min-height:38px;padding:0 12px 0 9px;border-radius:999px;border:1.5px solid var(--tr-edge);background:var(--white);color:var(--ink);font:800 13px var(--font-ui);cursor:pointer;}
+.rp2-heat svg{width:17px;height:17px;fill:none;stroke:var(--warn);stroke-width:2;stroke-linejoin:round;}
+.rp2-heat.on{background:var(--warn);border-color:var(--warn);color:#fff;}
+.rp2-heat.on svg{fill:#fff;stroke:#fff;}
+:root[data-theme="dark"] .rp2-heat.on{color:#12142A;} :root[data-theme="dark"] .rp2-heat.on svg{fill:#12142A;stroke:#12142A;}
+.rp2-replay{padding:0;width:38px;justify-content:center;}
+.rp2-replay svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
+.rp2-seg button:focus-visible,.rp2-heat:focus-visible,.rp2-replay:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+@media (max-width:640px){
+  .rp2-bar{left:8px;right:8px;top:8px;gap:6px;}
+  .rp2-picks{gap:6px;width:100%;}
+  .rp2-picks .rp2-pick{flex:1 1 0;min-width:0;}
+  .rp2 .rp2-pick select{max-width:none;width:100%;min-height:38px;}
+  .rp2-cond{width:100%;justify-content:flex-end;order:-1;}
+}
+
+/* the tray: what is in the flask at the end */
+.rp2-trayh{font:800 12px var(--font-ui);fill:var(--minor-ink);}
+.rp2-ctag{font:900 13px var(--font-ui);}
+.rp2-ctag.is-sn{fill:var(--sn-ink);} .rp2-ctag.is-el{fill:var(--el-ink);} .rp2-ctag.is-none{fill:var(--minor-ink);}
+.rp2-sbar{fill:var(--card-edge);}
+.rp2-sfill.is-sn{fill:var(--sn);} .rp2-sfill.is-el{fill:var(--el);}
+.rp2-card .rs2-thumb.is-on{stroke:var(--good);stroke-width:2.5;}
+.rp2-cards{position:absolute;inset:0;pointer-events:none;z-index:3;}
+
+/* names on the picture, in the colour of their idea */
+.rp2 .rs2-lab.is-sub{color:var(--minor-ink);box-shadow:inset 0 0 0 1.5px var(--minor),0 1px 3px rgba(20,16,50,.14);}
+.rp2 .rs2-lab.is-rgt{color:var(--e-ink);box-shadow:inset 0 0 0 1.5px var(--e),0 1px 3px rgba(20,16,50,.14);}
+.rp2 .rs2-lab.is-pos{color:var(--pos-ink);box-shadow:inset 0 0 0 1.5px var(--pos),0 1px 3px rgba(20,16,50,.14);}
+.rp2 .rs2-lab.is-prod{color:var(--good-ink);box-shadow:inset 0 0 0 1.5px var(--good),0 1px 3px rgba(20,16,50,.14);}
+.rp2 .rs2-lab.is-no{color:var(--neg-ink);box-shadow:inset 0 0 0 1.5px var(--neg),0 1px 3px rgba(20,16,50,.14);}
+.rp2 .rs2-lab.is-head.is-sn{color:var(--sn-ink);box-shadow:inset 0 0 0 2px var(--sn);}
+.rp2 .rs2-lab.is-head.is-el{color:var(--el-ink);box-shadow:inset 0 0 0 2px var(--el);}
+.rp2 .rs2-lab.is-head.is-none{color:var(--minor-ink);box-shadow:inset 0 0 0 2px var(--minor);}
+.rp2 .rs2-labs.is-wait{opacity:0;}
+
+/* the cause line: one colour per idea */
+.rp2 .tk2-cz.is-sub,.rp2 .tk2-cz.is-solv{--cz:var(--minor);--cz-ink:var(--minor-ink);}
+.rp2 .tk2-cz.is-rgt{--cz:var(--e);--cz-ink:var(--e-ink);}
+.rp2 .tk2-cz.is-heat{--cz:var(--warn);--cz-ink:var(--warn-ink);}
+.rp2 .tk2-cz.is-sn{--cz:var(--sn);--cz-ink:var(--sn-ink);}
+.rp2 .tk2-cz.is-el{--cz:var(--el);--cz-ink:var(--el-ink);}
+.rp2 .tk2-cz.is-prod{--cz:var(--good);--cz-ink:var(--good-ink);}
+.rp2 .tk2-cz.is-none{--cz:var(--neg);--cz-ink:var(--neg-ink);}
+
+/* Test yourself: Call the path */
+.rp2-dock{display:flex;flex-direction:column;gap:12px;}
+.rp2-calls{display:flex;flex-wrap:wrap;gap:8px;}
+.rp2-call{min-height:44px;min-width:64px;font-weight:900;}
+.rp2-call.is-right{background:var(--good,#0E8A5F);border-color:var(--good,#0E8A5F);color:#fff;}
+.rp2-call.is-wrong{text-decoration:line-through;opacity:.7;}
+.rp2-res:empty,.rp2-why:empty,.rp2-score:empty{display:none;}
+.rp2-why p,.rp2-why li{line-height:1.5;}
+/* "?" */
+.rp2-ref-how{margin:0 0 10px;}
+.rp2-ref-h{font:900 15px var(--font-ui);margin:10px 0 8px;}
+.rp2-ref-p{margin:0 0 10px;line-height:1.5;}
+.rp2-steps{margin:0 0 10px;padding-left:20px;line-height:1.5;}
+.rp2-steps li{margin:0 0 6px;}
+.rp2-tbl{margin:0 0 10px;}
+.rp2-ref .ttable th,.rp2-tbl th{font-size:11px;}
