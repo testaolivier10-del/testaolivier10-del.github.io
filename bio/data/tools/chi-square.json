@@ -263,5 +263,101 @@
         "decision": "Reject the null hypothesis"
       }
     }
-  ]
+  ],
+  "explore": {
+    "about": "Tools v2 Explore (docs/tools-v2-chi-square-brief.md): a choice chamber of pill bugs. N bugs (and twice N); each case lists its chambers in the order col + 2 x row (wet column first, light row first), the opening counts and the null hypothesis. role names the chamber color (chi-square.css).",
+    "purpose": "See when counts are too far off to blame on chance",
+    "cue": "Drag a bug to the other side",
+    "wander": "Let them wander",
+    "N": 40,
+    "cases": [
+      {
+        "id": "two",
+        "tab": "Two chambers",
+        "short": "2 chambers",
+        "start": [
+          24,
+          16
+        ],
+        "null": "the pill bugs have no preference, so each chamber gets half of them",
+        "chambers": [
+          {
+            "name": "Wet",
+            "short": "wet",
+            "wet": true,
+            "dark": false,
+            "role": "wet"
+          },
+          {
+            "name": "Dry",
+            "short": "dry",
+            "wet": false,
+            "dark": false,
+            "role": "dry"
+          }
+        ]
+      },
+      {
+        "id": "four",
+        "tab": "Four chambers",
+        "short": "4 chambers",
+        "start": [
+          13,
+          9,
+          11,
+          7
+        ],
+        "null": "the pill bugs have no preference, so each chamber gets a quarter of them",
+        "chambers": [
+          {
+            "name": "Wet, light",
+            "short": "wet light",
+            "wet": true,
+            "dark": false,
+            "role": "wl"
+          },
+          {
+            "name": "Dry, light",
+            "short": "dry light",
+            "wet": false,
+            "dark": false,
+            "role": "dl"
+          },
+          {
+            "name": "Wet, dark",
+            "short": "wet dark",
+            "wet": true,
+            "dark": true,
+            "role": "wd"
+          },
+          {
+            "name": "Dry, dark",
+            "short": "dry dark",
+            "wet": false,
+            "dark": true,
+            "role": "dd"
+          }
+        ]
+      }
+    ],
+    "goals": [
+      {
+        "id": "flip",
+        "text": "Drag bugs until the decision flips to reject the null."
+      },
+      {
+        "id": "double",
+        "text": "With χ² under the line, switch to 80 bugs: the same shares, twice the counts."
+      },
+      {
+        "id": "df",
+        "text": "Switch to four chambers and watch where the critical value goes."
+      },
+      {
+        "id": "chance",
+        "text": "Let them wander 20 times. How often does chance alone cross the line?"
+      }
+    ],
+    "refHtml": "<h3>What the test asks</h3><p>The null hypothesis says the bugs have no preference, so every chamber expects the same count: the total ÷ the number of chambers. χ² = Σ (o − e)² / e adds up how far each observed count (o) is from its expected count (e). A count that is too low adds to χ² just as much as one that is too high.</p><h3>The decision</h3><p>Degrees of freedom (df) = number of categories − 1. Find the critical value for that df in the p = 0.05 row of the formula sheet table. If χ² is greater than the critical value, <b>reject the null hypothesis</b>: a gap that big would happen by chance less than 5% of the time if the null were true. Otherwise <b>fail to reject the null hypothesis</b>: chance could explain the gap. Failing to reject is not proof that the null is true, and rejecting it does not say why the bugs went where they did.</p><h3>Let them wander</h3><p>Each bug picks a chamber at random with equal chance, so the null is true. Each run is a dot over its χ². The dots pile up into the shape of the curve, and about 1 run in 20 lands past the critical value: that 5% is the chance of a false alarm (a type I error). Bugs come in whole numbers, so the real chance is near 5% but not exactly 5% (about 4% for 40 bugs in two chambers, about 6% for 80); the curve is the smooth version the table comes from.</p><h3>Good practice</h3><p>Use counts, never percentages, and every expected count should be at least 5. More bugs give the same lean a bigger χ², so a big sample can detect a small preference.</p>"
+  }
 }
