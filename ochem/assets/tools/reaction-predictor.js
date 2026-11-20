@@ -631,8 +631,8 @@
   /* yaw and pitch of the view (degrees), the turn of the three arms about the C–Br axis (degrees) and how much the
      sketch widens everything across that axis, so no group hides behind another (VIEW_TUNE in the brief). */
   var VIEW0 = [24, 14, 0, 1];
-  var VIEW = { mebr: [-50, 30, 280, 1.3], prbr: [40, 0, 120, 1.3], neopentyl: [40, 0, 260, 1.3], bubr2: [40, -20, 100, 1.3],
-    tbubr: [40, 30, 100, 1.3], mebubr: [40, 30, 220, 1.3], bnbr: [-40, 0, 240, 1.3], cyhexbr: [-50, -20, 80, 1.4] };
+  var VIEW = { mebr: [-50, 30, 280, 1.3, 180], prbr: [40, 0, 120, 1.3], neopentyl: [40, 0, 260, 1.3], bubr2: [40, -20, 100, 1.3],
+    tbubr: [40, 30, 100, 1.3, 120], mebubr: [40, 30, 220, 1.3, 180], bnbr: [-40, 0, 240, 1.3], cyhexbr: [-50, -20, 80, 1.4, 210] };
 
   function newMol(){ return { atoms: [], by: {}, bonds: [] }; }
   function atom(m, o){ o.lp = o.lp || 0; o.q = o.q || 0; m.atoms.push(o); m.by[o.id] = o; return o; }
@@ -708,12 +708,12 @@
     cn:   { a: { el: 'C', lp: 1, q: -1 }, t: [{ el: 'N', p: [-1, 0, 0], o: 3, lp: 1 }] },
     n3:   { a: { el: 'N', lp: 2, q: -1 }, t: [{ el: 'N', p: [-1, 0, 0], o: 2, q: 1 }, { el: 'N', p: [-2, 0, 0], o: 2, q: -1, lp: 2, par: 1 }] },
     i:    { a: { el: 'I', lp: 4, q: -1 }, t: [] },
-    nh3:  { a: { el: 'N', lp: 1 }, t: [{ el: 'H', p: [-0.42, -0.52, 0.12] }, { el: 'H', p: [-0.5, 0.36, 0.38] }, { el: 'H', p: [-0.38, 0.22, -0.56] }] },
-    h2o:  { a: { el: 'O', lp: 2 }, t: [{ el: 'H', p: [-0.45, -0.5, 0.1] }, { el: 'H', p: [-0.5, 0.46, -0.14] }] },
-    etoh: { a: { el: 'O', lp: 2 }, t: [{ el: 'H', p: [-0.42, 0.52, 0.1] }, { grp: 'Et', p: [-0.9, -0.42, 0], R: 1.12 }] },
+    nh3:  { a: { el: 'N', lp: 1 }, t: [{ el: 'H', p: [-0.34, -0.59, 0] }, { el: 'H', p: [-0.68, 0, 0] }, { el: 'H', p: [-0.34, 0.59, 0] }] },
+    h2o:  { a: { el: 'O', lp: 2 }, t: [{ el: 'H', p: [-0.34, -0.58, 0] }, { el: 'H', p: [-0.34, 0.58, 0] }] },
+    etoh: { a: { el: 'O', lp: 2 }, t: [{ el: 'H', p: [-0.34, 0.58, 0] }, { grp: 'Et', p: [-0.5, -0.86, 0], R: 1.12 }] },
     // the solvent, when a proton has to go somewhere and the reagent cannot take it (E1 with iodide or azide)
-    sp:   { a: { el: 'O', lp: 2 }, t: [{ el: 'H', p: [-0.42, 0.52, 0.1] }, { grp: 'Et', p: [-0.9, -0.42, 0], R: 1.12 }] },
-    sa:   { a: { el: 'O', lp: 2 }, t: [{ grp: 'SMe₂', p: [-1.05, -0.3, 0], R: 1.4 }] }
+    sp:   { a: { el: 'O', lp: 2 }, t: [{ el: 'H', p: [-0.34, 0.58, 0] }, { grp: 'Et', p: [-0.5, -0.86, 0], R: 1.12 }] },
+    sa:   { a: { el: 'O', lp: 2 }, t: [{ grp: 'SMe₂', p: [-1.05, -0.3, 0], R: 1.4, o: 2 }] }
   };
   function addReagent(m, key, pre){
     var d = RG3[key], ids = [pre + '0'];
@@ -749,8 +749,10 @@
     return out;
   }
   // place a reagent: its attacking atom at `at`, its own +x along dir
+  var TAIL = 0;   // the turn (radians) of a reagent's trailing atoms about its line of approach, per substrate (VIEW[id][4])
   function putReagent(m, K, pre, at, dir){
-    var x = vnorm(dir), y = vnorm(vsub([0, 1, 0], vmul(x, vdot([0, 1, 0], x)))), z = vcross(x, y);
+    var up = [0, Math.cos(TAIL), Math.sin(TAIL)];
+    var x = vnorm(dir), y = vnorm(vsub(up, vmul(x, vdot(up, x)))), z = vcross(x, y);
     m.atoms.forEach(function(a){ if(a.rg !== pre) return; K.P[a.id] = vadd(at, vadd(vmul(x, a.loc[0]), vadd(vmul(y, a.loc[1]), vmul(z, a.loc[2])))); });
   }
   function moveIds(K, ids, d){ ids.forEach(function(k){ K.P[k] = vadd(K.P[k], d); }); }
@@ -776,14 +778,15 @@
      with the names of what is there), approach, react (curved arrows draw in, the electron pairs fly along them and
      the bonds, charges and groups change with them), drift (the pieces part). */
   var WAIT = [-2.6, -0.15, 0], ENTER = [-3.5, -0.15, 0];
-  function sequence(sub, rgt, solvent, path, p, phi0){
+  function sequence(sub, rgt, solvent, path, p, phi0, tail){
+    TAIL = (tail == null ? ((VIEW[sub.id] || VIEW0)[4] || 0) : tail) * Math.PI / 180;
     var m = substrate3d(sub.id, phi0), K, frames = [], steps = [], mods = { start: null };
     var rg = addReagent(m, rgt.id, 'r');
     var e1Base = null;
     if(path === 'E1' && rgt.base === 0 && rgt.nu >= 2){ e1Base = addReagent(m, solvent.id === 'aprotic' ? 'sa' : 'sp', 's'); }
     K = initState(m);
     putReagent(m, K, 'r', ENTER, [1, 0, 0]);
-    if(e1Base) putReagent(m, K, 's', vadd(ENTER, [0, 1.6, 0]), [1, 0, 0]);
+    if(e1Base) putReagent(m, K, 's', vadd(ENTER, [0.3, 2.3, 0]), [1, 0, 0]);
     m.atoms.forEach(function(a){ if(a.rg) K.O[a.id] = 0; });
     frames.push(K);
     function next(kind, ms, edit, extra){
@@ -796,16 +799,18 @@
       return N;
     }
     next('enter', 520, function(N){
-      putReagent(m, N, 'r', WAIT, [1, 0, 0]);
-      if(e1Base) putReagent(m, N, 's', vadd(WAIT, [0.2, 1.7, 0]), [1, 0, 0]);
+      putReagent(m, N, 'r', e1Base ? vadd(WAIT, [-0.4, -1.9, 0]) : WAIT, [1, 0, 0]);
+      if(e1Base) putReagent(m, N, 's', vadd(WAIT, [0.3, 2.3, 0]), [1, 0, 0]);
       m.atoms.forEach(function(a){ if(a.rg) N.O[a.id] = 1; });
     });
     next('hold', 900, null, { names: 'start' });
     var A = m.by.a.p, rA = 'r0';
     var betaKey = (path === 'E2' && rgt.bulky && m.beta.b2) ? 'b2' : 'b1', beta = m.beta[betaKey];
+    // a bond a step makes is known to the molecule from the start (order 0 until that step)
+    function link(a, b){ if(!m.bonds.some(function(x){ return key2(x.a, x.b) === key2(a, b); })) m.bonds.push({ a: a, b: b, o: 0 }); }
     function lg(N){ N.B[key2('a', 'lg')] = 0; N.LP.lg = 4; N.Q.lg = -1; N.P.lg = vadd(A, [BL.CBr + 0.9, 0.12, 0]); }
     function attackSub(N, who, at){
-      N.B[key2('a', who)] = 1; N.LP[who] = (N.LP[who] || 0) - 1; N.Q[who] = (N.Q[who] || 0) + 1;
+      link('a', who); N.B[key2('a', who)] = 1; N.LP[who] = (N.LP[who] || 0) - 1; N.Q[who] = (N.Q[who] || 0) + 1;
     }
     function protonOff(base){
       // a neutral nucleophile that bonded keeps an extra H: it goes to the solvent
@@ -844,7 +849,7 @@
         next('react', 1400, function(N){
           var at = vadd(N.P[beta.h], [-0.3, 0, 0]);
           N.B[key2(beta.c, beta.h)] = 0; N.B[key2('a', beta.c)] = 2; N.Q.a = 0;
-          N.B[key2(b0, beta.h)] = 1; N.LP[b0] -= 1; N.Q[b0] = (N.Q[b0] || 0) + 1;
+          link(b0, beta.h); N.B[key2(b0, beta.h)] = 1; N.LP[b0] -= 1; N.Q[b0] = (N.Q[b0] || 0) + 1;
           putReagent(m, N, bp, vadd(at, [-BL.XH, 0, 0]), [1, 0, 0]); N.P[beta.h] = at;
           reshape(m, N, beta.c, 'flat', mapOf(['a', beta.h]));
         }, { arrows: [{ from: { lp: b0 }, to: { atom: beta.h } }, { from: { bond: [beta.c, beta.h] }, to: { bond: ['a', beta.c] } }] });
@@ -855,7 +860,7 @@
       next('react', 1600, function(N){
         var at = vadd(N.P[beta.h], [-0.3, 0, 0]);
         N.B[key2(beta.c, beta.h)] = 0; N.B[key2('a', beta.c)] = 2;
-        N.B[key2(rA, beta.h)] = 1; N.LP[rA] -= 1; N.Q[rA] = (N.Q[rA] || 0) + 1;
+        link(rA, beta.h); N.B[key2(rA, beta.h)] = 1; N.LP[rA] -= 1; N.Q[rA] = (N.Q[rA] || 0) + 1;
         putReagent(m, N, 'r', vadd(at, [-BL.XH, 0, 0]), [1, 0, 0]); N.P[beta.h] = at;
         lg(N);
         reshape(m, N, 'a', 'flat', mapOf(['lg'].concat(m.fixed ? Object.keys(m.fixed) : [])));
@@ -1098,7 +1103,7 @@
       for(var i = 1; i < maxO[k]; i++) h.bo += '<line class="rs2-pi" data-b="' + k + '" data-i="' + i + '" stroke-width="' + f1(piW) + '"/>';
     });
     ['gl', 'sh', 'bo', 'at', 'lp', 'ch'].forEach(function(n){ G[n].innerHTML = h[n]; });
-    EL = { atoms: {}, sh: {}, lps: {}, gl: {}, badge: {}, bonds: [], order: null, br: Math.max(8, 0.1 * L) };
+    EL = { atoms: {}, sh: {}, lps: {}, gl: {}, badge: {}, bpos: {}, bonds: [], order: null, br: Math.max(8, 0.1 * L) };
     [].forEach.call(G.at.children, function(g){ EL.atoms[g.getAttribute('data-k')] = g; });
     [].forEach.call(G.sh.children, function(c){ EL.sh[c.getAttribute('data-k')] = c; });
     [].forEach.call(G.lp.children, function(g){ (EL.lps[g.getAttribute('data-k')] = EL.lps[g.getAttribute('data-k')] || []).push(g); });
@@ -1179,12 +1184,14 @@
       });
       if(!hasQ) return;
       var ba = sl[nmax] == null ? -Math.PI / 4 : sl[nmax], bd = s.r + EL.br * 0.6, bx = s.x + Math.cos(ba) * bd, by = s.y + Math.sin(ba) * bd;
+      EL.bpos[a.id] = { x: bx, y: by, r: EL.br, on: 0 };
       ['n', 'p'].forEach(function(tt){
         var g = EL.badge[a.id + tt]; if(!g) return;
         var v0 = (tt === 'n' ? q0 < 0 : q0 > 0) ? 1 : 0, v1 = (tt === 'n' ? q1 < 0 : q1 > 0) ? 1 : 0;
         var op = v0 === v1 ? v0 : react ? (v1 ? seg(t, 0.62, 0.9) : 1 - seg(t, 0.4, 0.66)) : lerp(v0, v1, fr.mv);
         op *= s.op;
         g.setAttribute('transform', 'translate(' + f1(bx) + ' ' + f1(by) + ')');
+        if(op > 0.3) EL.bpos[a.id].on = 1;
         g.style.opacity = op > 0.999 ? '' : f1(op); g.style.display = op < 0.01 ? 'none' : '';
         var gl = EL.gl[a.id + tt]; gl.setAttribute('cx', f1(s.x)); gl.setAttribute('cy', f1(s.y)); gl.style.opacity = f1(op); gl.style.display = op < 0.01 ? 'none' : '';
       });
@@ -1281,14 +1288,17 @@
     var bx = LAY.box, avoid = [];
     var sr = sceneBox.getBoundingClientRect();
     // the controls, the first visit cue and every charge badge stay clear of the names
-    [].forEach.call(sceneBox.querySelectorAll('.rp2-bar select, .rp2-bar button, .tk2-cue, .rp2-ch .rs2-badge'), function(e){
+    // (the badges from where paint() put them, not from the page, so a name never trusts a stale box)
+    if(EL && EL.bpos) Object.keys(EL.bpos).forEach(function(k){ var p = EL.bpos[k]; if(p.on) avoid.push({ l: p.x - p.r - 4, t: p.y - p.r - 4, r: p.x + p.r + 4, b: p.y + p.r + 4 }); });
+    [].forEach.call(sceneBox.querySelectorAll('.rp2-bar select, .rp2-bar button, .tk2-cue'), function(e){
       if(e.closest('[hidden]') || e.style.display === 'none') return;
       var r = e.getBoundingClientRect(); if(r.width) avoid.push({ l: r.left - sr.left - 4, t: r.top - sr.top - 4, r: r.right - sr.left + 4, b: r.bottom - sr.top + 4 }); });
     function clear(rc){
       if(rc.l < 4 || rc.r > LAY.W - 4 || rc.t < bx.y - 2 || rc.b > LAY.trayY - 4) return false;
       if(placed.some(function(p){ return !(rc.r + 4 <= p.l || p.r + 4 <= rc.l || rc.b + 4 <= p.t || p.b + 4 <= rc.t); })) return false;
       if(avoid.some(function(p){ return !(rc.r <= p.l || p.r <= rc.l || rc.b <= p.t || p.b <= rc.t); })) return false;
-      return !balls.some(function(c){ var nx = Math.max(rc.l, Math.min(c.x, rc.r)), ny = Math.max(rc.t, Math.min(c.y, rc.b)); return Math.hypot(nx - c.x, ny - c.y) < c.r; });
+      // a ball's whole square (and 4 px) stays clear of a name
+      return !balls.some(function(c){ return !(rc.r <= c.x - c.r || c.x + c.r <= rc.l || rc.b <= c.y - c.r || c.y + c.r <= rc.t); });
     }
     list.forEach(function(n, i){
       var e = els[i], w = e.offsetWidth, h = e.offsetHeight, spot = null;

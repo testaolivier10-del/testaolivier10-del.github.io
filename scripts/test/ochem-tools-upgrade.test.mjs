@@ -293,3 +293,54 @@ test('reaction predictor: a substrate with one possible alkene is not labelled Z
     }
   }
 });
+
+/* Reaction Predictor v2 (docs/tools-v2-reaction-predictor-brief.md): the 3D sketch the picture plays. Every frame of
+   every flask is a real structure (each atom's drawn charge is its formal charge from its bonds, lone pairs and the
+   hydrogens in its label), the path played is the one predict() names, the bonds that break and form are the
+   mechanism's, and no two balls sit on each other in the view the page uses. */
+test('reaction predictor v2: every frame of every flask is a real structure, and the path is the verdict', () => {
+  const s = load(...CORE, 'ochem/assets/tools/reaction-predictor.js');
+  const R = s.OchemReactionPredictor;
+  const VAL = { C: 4, N: 5, O: 6, S: 6, Br: 7, I: 7, H: 1 };
+  const nH = (lab) => { const m = /^CH([₁-₃]?)$/.exec(lab); return m ? (m[1] ? '₀₁₂₃'.indexOf(m[1]) : 1) : 0; };
+  const RAD = { C: 1, O: 0.95, N: 0.95, S: 1.12, H: 0.6, Br: 1.18, I: 1.28 };
+  const proj = (p0, v) => { const w = v[3], p = [p0[0], p0[1] * w, p0[2] * w], y = v[0] * Math.PI / 180, q = v[1] * Math.PI / 180;
+    const x = p[0] * Math.cos(y) + p[2] * Math.sin(y), z = -p[0] * Math.sin(y) + p[2] * Math.cos(y), yy = p[1] * Math.cos(q) - z * Math.sin(q), z2 = p[1] * Math.sin(q) + z * Math.cos(q), k = 1 / (1 - z2 * 0.07);
+    return [x * k, yy * k, k]; };
+  let n = 0, worst = 9;
+  for (const c of combos(R)) {
+    const p = R.predict(c);
+    for (const path of [p.major, p.minor].filter(Boolean)) {
+      const S = R.sequence(c.sub, c.rgt, c.solvent, path, p);
+      const tag = `${c.sub.id}/${c.rgt.id}/${c.solvent.id}/${c.heat}: ${path}`;
+      assert.equal(S.path, path, tag);
+      const m = S.m, last = S.frames[S.frames.length - 1], k2 = (a, b) => a < b ? a + '|' + b : b + '|' + a;
+      S.frames.forEach((F, fi) => {
+        for (const a of m.atoms) {
+          if (a.el === 'G' || !F.O[a.id]) continue;
+          const nb = m.bonds.filter(b => (b.a === a.id || b.b === a.id) && F.B[k2(b.a, b.b)] > 0);
+          if (nb.some(b => m.by[b.a === a.id ? b.b : b.a].el === 'G' && a.el === 'N')) continue;   // DBU's N is drawn bonded to one ball
+          const bonds = nb.reduce((t, b) => t + F.B[k2(b.a, b.b)], 0) + (a.el === 'C' ? nH(a.lab) : 0);
+          const fc = VAL[a.el] - 2 * (F.LP[a.id] || 0) - bonds;
+          assert.equal(fc, F.Q[a.id] || 0, `${tag}, frame ${fi}: ${a.id} (${a.lab}) has formal charge ${fc} but is drawn ${F.Q[a.id] || 0}`);
+        }
+        // no two balls on each other, in the page's own view (frames where the atoms are settled)
+        const P = m.atoms.filter(a => F.O[a.id] > 0.5).map(a => { const q = proj(F.P[a.id], S.view); return { id: a.id, x: q[0], y: q[1], r: (a.R || RAD[a.el] || 1) * 0.25 * q[2] }; });
+        for (let i = 0; i < P.length; i++) for (let j = i + 1; j < P.length; j++) worst = Math.min(worst, Math.hypot(P[i].x - P[j].x, P[i].y - P[j].y) - P[i].r - P[j].r);
+      });
+      const brOn = last.B[k2('a', 'lg')] > 0;
+      if (path === 'No reaction') { assert.ok(brOn, tag + ': bromine left in a flask that does not react'); continue; }
+      assert.ok(!brOn && last.Q.lg === -1, tag + ': bromide did not leave');
+      if (path === 'SN1' || path === 'SN2') assert.equal(last.B[k2('a', 'r0')], 1, tag + ': the nucleophile is not bonded to the carbon');
+      else {
+        assert.equal(last.B[k2('a', S.beta.c)], 2, tag + ': no double bond to the beta carbon');
+        const pr = R.productOf(c.sub, c.rgt, path);
+        if (path === p.major && p.alkene) assert.equal(pr.kind, p.alkene, tag + ': the tray alkene is not the verdict alkene');
+        if (path === 'E2' && c.rgt.bulky && S.m.beta.b2) assert.equal(S.beta, S.m.beta.b2, tag + ': a bulky base took the inner hydrogen');
+      }
+      n++;
+    }
+  }
+  assert.ok(n > 300, `only ${n} flasks played`);
+  assert.ok(worst > -0.03, `two balls overlap by ${worst.toFixed(3)} bond lengths in some frame`);
+});
