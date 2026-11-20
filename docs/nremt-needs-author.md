@@ -139,6 +139,23 @@ Explore (`nremt/assets/mnemonics.js`) acts four mnemonics out on drawn, made up 
   The rider has one finding per DCAP-BTLS letter, including a burn on the right lower leg (from the exhaust pipe). Explore shows one finding per letter on one body; "?" says that a real exam checks every
   region for all eight.
 
+## Body map, tools v2 (2026-11-18)
+
+Points from the v2 rebuild of `nremt/body-map.html` (`docs/tools-v2-nremt-body-map-brief.md`); the body's content
+did not change. For a person to confirm:
+
+- **The child chart's age.** Burns' child chart (head and neck 18%, each leg 13.5%) is the infant and small child
+  Rule of Nines from the course notes. "?" says the shares move toward the adult chart as a child grows and that many
+  protocols use a Lund and Browder chart for children (burns.js said this before in its side panel). Should it name
+  an age (often "under about 1 year" for the 18% head)? Not guessed.
+- **Why each region carries its share.** The cause line now says "half of the arm's 9%", "one nine of the front's
+  18%", "half of the leg's 13.5%" (child), "the last 1%" (genitals). These restate burns.js's tables, which the unit
+  test checks add up to 100 on both charts.
+- **Over 10% or 10% and over.** The course notes and the tool say partial thickness burns "over 10%" of the body
+  surface meet burn center criteria. The American Burn Association's current referral page uses "partial thickness
+  ≥10% TBSA" (https://ameriburn.org/burnreferral). It only matters at exactly 10% (for example 9 + 1). Not changed
+  without the author.
+
 ## Sound trainer, tools v2 Explore (2026-11-18, branch claude/tools-v2-nremt-sound-trainer)
 
 Explore (`nremt/assets/sound-explore.js`) puts a stethoscope on the drawn chest; a lens beside it draws what makes
@@ -176,3 +193,46 @@ management, primary assessment, principles of assessment, cardiac emergencies) a
   artery). Timing follows the same table as the sound: AV valves close at S1, aortic and pulmonic at S2 (split: aortic
   first), ventricles squeeze in systole, the atria at the end of diastole. The murmurs are one example each (aortic
   stenosis, aortic regurgitation), as the old page already said.
+
+## Skill sheets, tools v2 Explore (2026-11-19, branch claude/tools-v2-nremt-skillsheets)
+
+No step, critical criterion, order rule, examiner cue or finding was changed: Explore reuses station-patient.js as
+checked on 2026-11-10. For a person to confirm:
+- **Registry PDFs not reopened.** The proxy here refused content.nremt.org, so the ten sheets could not be read again
+  this session. If the Registry has published new EMT sheets since 2026-11-10, the step lists need a fresh check.
+- **Does the Registry still run these sheets?** Searches suggest psychomotor verification for EMT has moved to
+  programs and states in many places; the tool already says to verify against your program's sheet. Confirm the
+  wording on the page ("the official sheets") is still right for 2026 candidates.
+- **The short names and effects** on the clipboard and the cause line (`STEP`, `LIVE`, `TQ` in
+  `nremt/assets/skill-explore.js`) paraphrase each step's own text in 1 to 3 words. Worth a glance by an EMT
+  instructor, especially "Ventilate on rate" (one breath every 5 to 6 s), "Set the flow: at least 10 L/min",
+  "Breaths through vomit: vomit into the lungs" and "Tourniquet first: sheet wants pressure first".
+- **Review round 1 pictures (no content change).** The settings (a roadside for the supine spinal, a car for the
+  seated spinal, a lawn and ladder for the trauma case, a sports hall for the arrest, a room for oxygen and the
+  medical case) are illustrations of each case, not part of any sheet. The seated figure is the standing render
+  posed (lower legs moved to the front of the cushion); the arms on the spinal stations are turned in to lie at the
+  sides; the log roll is shown as the body narrowing and the board sliding in. Worth a glance that none of this
+  suggests a technique the sheet does not teach.
+
+## Flowcharts, tools v2 Explore (2026-11-19, branch claude/tools-v2-nremt-flowcharts)
+
+Explore (`nremt/assets/flow-explore.js`) walks two made up calls through a protocol on a drawn patient. Checked against
+the course notes, the AHA 2025 adult BLS algorithm (healthcare provider, accessible text) and the page's own charts;
+for a person to confirm:
+
+- **Circulation fork of the Primary assessment chart.** The page's chart asks "bleeding still uncontrolled / perfusion
+  adequate". A patient whose bleeding is controlled can still be in shock, so neither arm fits him. Explore asks "Signs
+  of shock?" (yes: keep him warm, high priority) and "?" says why; the chart itself (and Build it and Drill me, which
+  read it) is unchanged. Should the chart's fork be reworded?
+- **Order of AVPU and the bleeding check.** Explore follows the page's chart (AVPU, then life threatening bleeding).
+  Some programs teach X-ABC with massive bleeding controlled as soon as it is seen in the general impression; the
+  chart's note says bleeding comes before the airway in trauma, which Explore keeps.
+- **Jaw thrust for a fall.** A fall from a ladder puts the spine in question, so the snoring airway is opened with a
+  jaw thrust (course notes). The gloved hands stay on the jaw for the rest of the call (maintaining the airway); an
+  adjunct is not shown.
+- **Blue lips clearing after the jaw thrust.** After the wrong "airway open: yes" arm, the lips turn blue; they clear
+  once the jaw thrust opens the airway (oxygenation recovers). Everything else a wrong arm does stays (blood lost,
+  pallor, the clock).
+- **The lost time clock.** 1, 2 and 10 minutes are illustrative figures for the wrong arms, said in "?".
+- **Cardiac arrest, three way fork.** Explore uses AHA 2025's three outcomes (normal breathing and a pulse; a pulse
+  without normal breathing; no pulse with no breathing or only gasping). The page's BLS chart has two arms; unchanged.

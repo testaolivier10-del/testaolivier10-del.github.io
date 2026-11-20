@@ -739,3 +739,16 @@ These stay open:
   plants, A purple dominant over a white (OpenStax uses pea plants for its Hardy-Weinberg example). Real peas mostly
   self pollinate, while the bed assumes random mating. Teacher: confirm peas are acceptable here, or name another
   complete dominance species with two flower colours.
+- **chi-crit-p01-df1** (closed, tools v2 review round 1, 2026-11-19). The table printed 6.63 for p = 0.01, df 1;
+  the College Board's AP Biology "Equations and Formulas" (lab manual Appendix A, two copies seen by the builder and
+  the reviewer) prints 6.64 (the exact value is 6.6349). Changed to 6.64 everywhere it is sourced, together:
+  `ApBioMath.CHI_CRIT`, the validator, the chi-square notes table and the two chi-square question stimuli. The
+  p = 0.05 row (the one this course grades) was already right. Teacher: if the current sheet prints 6.63, change
+  those four places back together.
+- **chi-explore-pill-bugs** (logged, tools v2, 2026-11-19). The rebuilt chi-square tool's Explore is a choice
+  chamber of 40 (or 80) pill bugs; the null hypothesis is "no preference", so each chamber expects an equal share.
+  Let them wander has each bug pick a chamber at random with equal chance (the null true). With whole bugs the real
+  chance of crossing the p = 0.05 line is not exactly 5%: about 3.9% for 40 bugs in two chambers, 5.7% for 80, 4.52%
+  and 4.89% for four chambers (exact binomial and multinomial sums, review round 1); the tool says "about 1
+  run in 20" and "?" gives these numbers. The opening (24 wet, 16 dry) is illustrative, not data. Teacher: confirm
+  the wording and that a dark card over two chambers is an acceptable "dark" condition.

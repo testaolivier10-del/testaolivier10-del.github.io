@@ -71,14 +71,20 @@
 .run-patient{margin:6px 0 14px;}
 .sp-stage{position:relative;height:clamp(290px,42vh,600px);border-radius:18px;overflow:hidden;background:#d6d9d4;box-shadow:inset 0 0 0 1.5px var(--line);touch-action:manipulation;}
 :root[data-theme="dark"] .sp-stage{background:#3a423f;}
-.sp-svg{position:absolute;inset:0;width:100%;height:100%;display:block;}
+.sp-svg{position:absolute;inset:0;width:100%;height:100%;display:block;transform-origin:0 0;}
+.sp-svg0,.sp-svgA,.sp-svg2{pointer-events:none;}
+/* the camera pulling back: the words on the patient wait until it stops, rather than shrink under 11 px */
+.sp-stage.is-zooming .sp-plate,.sp-stage.is-zooming .sp-marks{visibility:hidden !important;}
 .sp-floor{fill:#d9dcd6;}
 :root[data-theme="dark"] .sp-floor{fill:#39413e;}
 .sp-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:20px;text-align:center;font:700 var(--ls-s,13px) var(--font-ui);color:var(--muted);}
 /* equipment and hands fade in where they are placed */
-.sp-item{opacity:0;transition:opacity .45s ease,transform .45s ease;pointer-events:none;}
-.sp-item.on{opacity:1;}
+.sp-item{opacity:0;scale:1.1;visibility:hidden;transform-box:fill-box;transform-origin:50% 50%;transition:opacity .45s ease,scale .55s cubic-bezier(.2,.8,.25,1),visibility 0s linear .55s;pointer-events:none;}
+.sp-item.on{opacity:1;scale:1;visibility:visible;transition-delay:0s;}
 .sp-fade{transition:opacity .9s ease;}
+/* the long board under the patient slides in on the log roll (station-patient.js rollBoard): no fade, no settle */
+.sp-item.sp-board{scale:1;transition:opacity .12s linear,visibility 0s linear .12s;}
+.sp-item.sp-board.on{transition-delay:0s;}
 .sp-handpart{stroke:rgba(30,30,60,.35);stroke-width:1;}
 .sp-knuckle{fill:none;stroke:rgba(20,20,50,.28);stroke-width:1.2;stroke-linecap:round;}
 /* the bleed: blood running off the thigh, and the wound's wet gleam */
@@ -108,7 +114,7 @@
 .sp-find-box{fill:#fff;stroke:#127264;stroke-width:1.4;}
 .sp-find-box.is-sev{stroke:#d1594a;}
 .sp-find-t{font:800 15px var(--font-ui,sans-serif);fill:#14201c;}
-.sp-wrongring{fill:none;stroke:#e0412f;stroke-width:3;stroke-dasharray:5 4;}
+.sp-wrongring{fill:none;stroke:#e0412f;stroke-width:3;}
 /* BVM: the chest rising, the bag squeezing, a pulse at the carotid */
 .sp-rise{opacity:0;}
 .sp-rise.go{animation:sp-rise 2.2s ease-in-out;}
@@ -166,7 +172,9 @@
   .sp-run,.sp-gleam,.sp-pulse,.sp-res,.sp-mark--bad .sp-mark-halo,.sp-rise.go,.sp-bag.go{animation:none;}
   .sp-rise.go{opacity:var(--rise,.42);}
   .sp-run{stroke-dasharray:none;}
-  .sp-item,.sp-fade,.sp-bleed{transition:none;}
+  .sp-item{scale:1;transition:opacity .2s linear,visibility 0s linear .2s;}
+  .sp-item.on{transition-delay:0s;}
+  .sp-fade,.sp-bleed{transition:opacity .2s linear;}
 }
 @media (min-width:1000px){
   .nx-skillsheets .run-live.has-vis .run-clockwrap{width:120px;height:120px;}
@@ -199,3 +207,36 @@
 .nx-skillsheets .run-step.is-late label{box-shadow:inset 0 0 0 2px var(--bad-text);}
 .nx-skillsheets .run-step.is-late .run-flag{color:var(--bad-text);}
 .nx-skillsheets .run-step.is-late .run-flag::after{content:": out of order";}
+
+/* ---- The room under and behind the patient (tools v2, 2026-11-19; station-patient.js room()) ---- */
+.sp-tile{fill:#d3d6cf;} .sp-tile-seam{fill:none;stroke:#c2c6be;stroke-width:3;}
+.sp-tiles{opacity:1;}
+.sp-mat-edge{fill:#2f6157;} .sp-mat{fill:#4a8274;} .sp-mat-fold{fill:none;stroke:#3a6c60;stroke-width:7;}
+.sp-mat-sheen{fill:none;stroke:#fff;stroke-width:34;opacity:.07;stroke-linecap:round;}
+.sp-wall{fill:#e6e2da;}
+.sp-seat{fill:#3f4954;} .sp-seat-in{fill:#4f5b68;} .sp-seat-seam{fill:none;stroke:#36404a;stroke-width:5;} .sp-seat-post{fill:#a3abb0;}
+:root[data-theme="dark"] .sp-tile{fill:#323a37;} :root[data-theme="dark"] .sp-tile-seam{stroke:#2a312e;}
+:root[data-theme="dark"] .sp-mat-edge{fill:#1b3832;} :root[data-theme="dark"] .sp-mat{fill:#2c5149;} :root[data-theme="dark"] .sp-mat-fold{stroke:#224039;}
+/* the settings (review round 1): a road, a sports hall, a lawn, a car's interior, a room; drawn in real colours, the
+   dark theme dims them */
+.sp-asphalt{fill:#62666a;} .sp-grit{fill:#55595d;} .sp-grit2{fill:#74787b;}
+.sp-kerb-top{fill:#a9a59b;} .sp-kerb-joint{fill:none;stroke:#8f8b82;stroke-width:3;} .sp-kerb{fill:#c9c5bb;} .sp-gutter{fill:#4f5357;}
+.sp-line-w{fill:#ecebe4;opacity:.92;} .sp-line-y{fill:#e7b52f;opacity:.9;} .sp-patch{fill:#4a4e52;opacity:.55;}
+.sp-maple{fill:#d9b27c;} .sp-maple-seam{fill:none;stroke:#b98f58;stroke-width:1.6;} .sp-maple-grain{fill:#cfa56e;opacity:.45;}
+.sp-court{fill:#1f6fae;opacity:.85;}
+.sp-grass{fill:#6f9a4c;} .sp-tuft{fill:none;stroke:#557d38;stroke-width:2;stroke-linecap:round;} .sp-tuft2{fill:none;stroke:#8bb663;stroke-width:2;stroke-linecap:round;}
+.sp-ladder rect{fill:#b9c0c4;stroke:#7d868b;stroke-width:1.5;}
+.sp-car-roof{fill:#3b3f44;} .sp-car-trim{fill:#2c2f33;} .sp-car-pillar{fill:#2f3337;} .sp-car-door{fill:#45494e;} .sp-car-line{fill:none;stroke:#2a2d31;stroke-width:4;}
+.sp-car-floor{fill:#2b2e31;} .sp-carpet{stroke:#34383c;stroke-width:1;}
+.sp-glass{fill:#bcd3de;} .sp-glass-hi{fill:#fff;opacity:.35;stroke:#fff;stroke-width:6;stroke-opacity:.3;}
+.sp-wall-stripe{stroke:#dcd6ca;stroke-width:14;opacity:.6;}
+.sp-win-frame{fill:#f4f1ea;stroke:#cfc8ba;stroke-width:2;} .sp-win-bar{fill:none;stroke:#f4f1ea;stroke-width:12;}
+.sp-wood{fill:#b98a5c;} .sp-wood-seam{fill:none;stroke:#9a6e45;stroke-width:2;} .sp-skirt{fill:#f2efe7;}
+.sp-room--room .sp-seat{fill:#5d6f5a;} .sp-room--room .sp-seat-in{fill:#6f846b;} .sp-room--room .sp-seat-seam{stroke:#4f604c;}
+.sp-dim{fill:#0b1210;opacity:0;} :root[data-theme="dark"] .sp-dim{opacity:.42;}
+.sp-stage.is-lying .sp-place{left:auto;max-width:300px;top:10px;right:10px;}
+/* Reduced motion: the site turns every transition off; an item still cross fades in 0.2 s (tools v2 rule 13) */
+@media (prefers-reduced-motion:reduce){
+  .sp-stage .sp-item{transition-duration:.2s,0s !important;transition-delay:0s,.2s !important;}
+  .sp-stage .sp-item.on{transition-delay:0s,0s !important;}
+}

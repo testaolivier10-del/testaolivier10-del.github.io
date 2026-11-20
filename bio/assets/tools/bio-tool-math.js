@@ -45,10 +45,10 @@
   function tol(answer, d, rel){ return Math.max(Math.pow(10, -(d || 0)), Math.abs(answer) * (rel == null ? 0.01 : rel)); }
 
   /* ------------------------------------------------------ chi-square */
-  /* Critical values of χ² as printed on the formula sheet, df 1-8 (df 3 at p = 0.05 is 7.815, printed 7.82). */
+  /* Critical values of χ² as printed on the formula sheet, df 1-8 (df 3 at p = 0.05 is 7.815, printed 7.82; df 1 at p = 0.01 is 6.635, printed 6.64). */
   var CHI_CRIT = {
     '0.05': [null, 3.84, 5.99, 7.82, 9.49, 11.07, 12.59, 14.07, 15.51],
-    '0.01': [null, 6.63, 9.21, 11.34, 13.28, 15.09, 16.81, 18.48, 20.09]
+    '0.01': [null, 6.64, 9.21, 11.34, 13.28, 15.09, 16.81, 18.48, 20.09]
   };
   function chiSquare(obs, exp){
     var terms = obs.map(function(o, i){ return (o - exp[i]) * (o - exp[i]) / exp[i]; });
