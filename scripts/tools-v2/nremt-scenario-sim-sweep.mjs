@@ -235,7 +235,7 @@ async function frames() {
     await page.click('[data-scenario="s1"]'); await page.waitForTimeout(400);
     for (let k = 0; k < 10; k++) { const b = await page.$('#nodeHost [data-choice="0"]'); if (!b) break; await b.click(); await page.waitForTimeout(250); }
     ok(await page.evaluate(() => !!document.querySelector('.ls-root[data-sim="end"]')), `${w} frames: the run reaches its debrief`);
-    ok(await page.evaluate(() => !!document.querySelector('.sim-card *')), `${w} frames: the score card shows`);
+    ok(await page.waitForFunction(() => !!document.querySelector('.sim-card *'), null, { timeout: 5000 }).then(() => true, () => false), `${w} frames: the score card shows`);
     const recs = await page.evaluate(() => Object.keys(localStorage).filter(k => /tool|result|missed/i.test(k)).length);
     ok(recs > 0, `${w} frames: the run's results are stored for Review`);
     await page.click('#simAgain').catch(() => page.evaluate(() => document.querySelector('#simAgain').click()));

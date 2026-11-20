@@ -770,12 +770,17 @@
       if(site) on.unshift('<g class="scx-it is-on" data-k="wound">' + it.wound + '</g>', '<g class="scx-jets" style="--hb:1s">' + jets(site) + '</g>');
       gOn.setAttribute('transform', T);
       gOn.innerHTML = on.join('');
+      // the tourniquet's tag reads upright when the patient lies across the picture
+      if(G.rot) gOn.querySelectorAll('.scx-tqt').forEach(function(t){ var x = t.getAttribute('x'), y = +t.getAttribute('y') - M.cm; t.setAttribute('transform', 'rotate(90 ' + x + ' ' + y + ')'); });
       gFig.classList.toggle('is-floor', G.view === 'floor');
       // the monitor's place
       var m = G.mon; monHost.style.left = m.x + 'px'; monHost.style.top = m.y + 'px'; monHost.style.width = m.w + 'px'; monHost.style.height = m.h + 'px';
       whoEl.textContent = who(St.months, St.female, c ? c.nodes[c.startNode].text : '');
-      if(St.drawn) paint(St.drawn, false);
-      if(St.labsOn) placeLabels();
+      // the first drawing can come before the stage had a size (figures already cached): paint the call's state then
+      var first = !St.drawn;
+      paint(St.drawn || stateNow(), false); rates();
+      if(first && !St.busy){ placeLabels(labelList(null)); if(!St.path.length) cause.set(openCause()); }
+      else if(St.labsOn) placeLabels();
     }
     function blob(cx, cy, rx, ry){
       var r = rng(Math.round(cx + cy)), n = 9, pts = [];

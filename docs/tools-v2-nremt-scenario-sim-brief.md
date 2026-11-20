@@ -126,8 +126,14 @@ words (Spurting bleed, Still bleeding, Bleeding stopped / Tourniquet holds) and 
 
 ## Checks (2026-11-19)
 - Sweep `scripts/tools-v2/nremt-scenario-sim-sweep.mjs`, one width per process (every opening, each call walked to
-  an ending by the first and by the last choice, light; openings and first-choice endings, dark): see the counts in
-  the last section of this file's commit log and the report.
+  an ending by the first and by the last choice, light; openings and first-choice endings, dark): 360 7644, 390 7636,
+  430 7664, 600 7664, 768 6974, 820 6974, 1024 7376, 1280 7376, 1440 7358, 1920 7366 passed, 0 failed.
+- Frames run (390, 1440; reduced motion; deep links; locked; Test yourself to the score card and Review records;
+  leaving mid change): 61 passed, 0 failed. Performance, CPU x4, same process as the flagship's drag, load average
+  about 1: choices median 16.6 ms, p95 21 to 37 ms at 390 and 1440; the flagship median 16.6 ms, p95 17 to 22 ms.
+- Preview `/mnt/user-data/outputs/nremt-scenario-sim-v2/index.html` (the body figures and care rules inlined by hand,
+  as for the flowcharts preview); shots in `shots/` (openings, mid change frames, after, endings, Test yourself; 390,
+  768, 1440, light and dark).
 - `node --test scripts/test/nremt-*.test.mjs scripts/test/kit2-spots.test.mjs`: 72 passed (new: Explore's drawn state).
 - check-site and check-weight pass; check-tool-use on a local copy listing this page reports tool-open,
   tool-touch(explore), tool-mode(quiz), tool-use, nothing under automation.
