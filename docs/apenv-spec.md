@@ -339,7 +339,7 @@ emissions savings; LD50 read from a curve; biomagnification factors; TFR and rep
     returns `{ picker, fresh }`). Owner rounds 2 to 4 (2026-11-17: clarity and visuals, instant response, controls
     never move each other) are in the brief.
 18. (2026-11-17, owner: "it's the standard", "go ahead") **Water pollution v2 is live and is the standard for every
-    tool.** The 11 rules and the process are `docs/tools-v2-standard.md`; the next tools are rebuilt to them, each
+    tool.** The rules (15 since 2026-11-17, 11 when approved) and the process are `docs/tools-v2-standard.md`; the next tools are rebuilt to them, each
     with its own brief. Finishing touches before the merge (brief, "Shipped"): a three line oxygen card, "Over 60
     days:" before the cause line, "Before the bloom" and "Recovered" on far days, Watch it happen always from day 0,
     the runoff stream only on the model's runoff days. Still Premium; the lock screen is unchanged.

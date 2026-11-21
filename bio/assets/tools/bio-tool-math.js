@@ -254,7 +254,29 @@
     out[n].W = W; out[n].lysed = lysed;
     return out;
   }
-  var osmosis = { simulate: simulate, trajectory: trajectory, psiParts: function(sys, c, W){ return psiParts(sys, osmo(sys, c), W); }, isotonicC: isotonicC, mass: massOf };
+  /* Where it settles (tools v2 Explore, docs/tools-v2-osmosis-brief.md): the water W at which ψ inside equals ψ
+     outside, found by bisection (ψ inside only rises with W), with no clock. Same fields as simulate. An animal
+     cell that would have to pass lyseAt first is lysed; a cell with nothing dissolved in it stops at Wmin. */
+  function equilibrium(sys, c){
+    var o = osmo(sys, c), Wmin = 0.02, lysed = false, W;
+    var Wl = sys.kind === 'animal' && sys.lyseAt ? (sys.lyseAt - sys.b) / (1 - sys.b) : 0;
+    var f = function(w){ return psiParts(sys, o, w).psi - o.psiO; };
+    if(f(Wmin) >= 0) W = Wmin;
+    else {
+      var hi = 1; while(f(hi) < 0 && hi < 64) hi *= 2;
+      if(f(hi) < 0) W = hi;
+      else { var lo = Wmin; for(var k = 0; k < 60; k++){ var mid = (lo + hi) / 2; if(f(mid) < 0) lo = mid; else hi = mid; } W = (lo + hi) / 2; }
+    }
+    if(Wl && W >= Wl){ lysed = true; W = Wl; }
+    var fin = psiParts(sys, o, W), start = psiParts(sys, o, 1), mass = massOf(sys, W), diff = o.psiO - fin.psi;
+    return {
+      W: W, mass: mass, pct: (mass - 1) * 100, lysed: lysed, state: osmosisState(sys, W, lysed),
+      psiO: o.psiO, start: start, end: fin,
+      startDir: Math.abs(o.psiO - start.psi) < 0.05 ? 'none' : o.psiO > start.psi ? 'in' : 'out',
+      nowDir: 'none', equilibrium: !lysed && Math.abs(diff) < 0.05
+    };
+  }
+  var osmosis = { simulate: simulate, trajectory: trajectory, equilibrium: equilibrium, state: osmosisState, psiParts: function(sys, c, W){ return psiParts(sys, osmo(sys, c), W); }, isotonicC: isotonicC, mass: massOf };
 
   /* ------------------------------------------- signal amplification */
   /* A G protein-coupled receptor pathway in a liver cell (epinephrine →

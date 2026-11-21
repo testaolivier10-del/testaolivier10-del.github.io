@@ -92,6 +92,17 @@
    tabs: big (large, filled, the first thing to notice after the picture). progress: big (a bar thick enough to grab,
                                     a 28 px thumb). player: labels({ play, again }) renames it per mode; class is-sm
                                     is the small secondary look ("Watch it happen" beside the time bar).
+   K.head({ purpose, how: { label, onClick } }) -> { el, purpose(text), how }
+                                    the line above the picture: what to understand (about 8 words) and, when how is
+                                    given, the small "Show me how" link beside it.
+   K.cause({ label }) -> { el, set(parts, pre), take(text | null), text() }
+                                    THE CAUSE LINE under the picture (standard rule 4: it is clear why): the chain for
+                                    this setting in a few words with arrows, live as a control moves. parts:
+                                    [{ t, role, join: '+', say }]; role names the idea ("is-" + role on the pill): the
+                                    tool gives each role its colour with --cz (fill) and --cz-ink (text), the same
+                                    colour the idea has in the picture. pre: a tiny grey lead ("Over 60 days:").
+                                    take(text): the takeaway sentence in its place (a tinted line with a bulb) until
+                                    the next set(). text(): the chain as a sentence (for a live region or a label).
    K.reduced()                      motion off (site toggle or the OS setting).
    K.used(key) / K.markUsed(key)    the first-time hint store (localStorage 'tk2h:' + key). A control with a key pulses
                                     until first used; chip: false keeps the pulse but drops the "Drag" / "Tap" chip
@@ -753,6 +764,34 @@
     });
     if(window.MutationObserver){ var mo = new MutationObserver(sync); mo.observe(s.root, { attributes: true, attributeFilter: ['class', 'data-mode'] }); mo.observe(sheet, { attributes: true, attributeFilter: ['hidden'] }); }
   }
+
+  /* ------------------------------------------------------------ the purpose line and the cause line */
+  K.head = function(o){
+    var box = el('div', 'tk2-head'), p = el('p', 'tk2-purpose'), how = null;
+    p.textContent = o.purpose || ''; box.appendChild(p);
+    if(o.how){
+      how = el('button', 'tk2-how'); how.type = 'button'; how.textContent = o.how.label || 'Show me how';
+      how.addEventListener('click', function(){ if(o.how.onClick) o.how.onClick(); });
+      box.appendChild(how);
+    }
+    return { el: box, how: how, purpose: function(t){ p.textContent = t; } };
+  };
+  K.cause = function(o){
+    o = o || {};
+    var p = el('p', 'tk2-cause'), parts = [], pre = '';
+    if(o.label) p.setAttribute('aria-label', o.label);
+    function text(){ return (pre ? pre + ' ' : '') + parts.map(function(x, i){ return (i ? (x.join === '+' ? ' and ' : ', then ') : '') + (x.say || x.t); }).join('') + (parts.length ? '.' : ''); }
+    function set(list, lead){
+      parts = list || []; pre = lead || '';
+      p.classList.remove('is-take');
+      var h = (pre ? '<span class="tk2-cz-pre">' + esc(pre) + '</span>' : '') + parts.map(function(x, i){
+        return (i ? '<span class="tk2-cz-a" aria-hidden="true">' + (x.join === '+' ? '+' : '\u2192') + '</span>' : '') + '<span class="tk2-cz is-' + esc(x.role || 'ink') + '">' + esc(x.t) + '</span>';
+      }).join('');
+      if(p.innerHTML !== h) p.innerHTML = h;
+    }
+    function take(t){ if(t == null) return set(parts, pre); p.classList.add('is-take'); p.textContent = t; }
+    return { el: p, set: set, take: take, text: text };
+  };
 
   window.LevlKit2 = K;
 })();
