@@ -269,3 +269,10 @@
 .le2 .tk2-handle.is-ring > .tk2-chip.is-up{transform:translate(-50%,calc(-100% - var(--le-ring,54px) / 2 - 4px));}
 .le2 .tk2-handle.is-ring > .tk2-chip.is-left{transform:translate(calc(-100% - var(--le-ring,54px) / 2 - 4px),-50%);}
 .le2 .tk2-handle.is-ring > .tk2-chip.is-right{transform:translate(calc(var(--le-ring,54px) / 2 + 4px),-50%);}
+/* review round 1: the zigzag band reads in dark mode too; the glass's road keeps its stroke widths when scaled */
+:root[data-theme="dark"] .le2-zig{stroke:#C9D6E6;stroke-opacity:.62;}
+:root[data-theme="dark"] .le2-band{fill:#9FB3C8;fill-opacity:.16;}
+.le2-lensroad path{vector-effect:non-scaling-stroke;}
+/* the cause line keeps one height whether it shows the chain or the takeaway */
+.le2 .tk2-cause{min-height:46px;align-content:center;}
+@media (max-width:640px){ .le2 .tk2-cause{min-height:84px;align-content:flex-start;} }

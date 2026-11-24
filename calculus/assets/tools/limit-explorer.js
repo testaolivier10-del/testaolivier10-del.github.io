@@ -529,13 +529,14 @@
        0 in tab 2). Off the picture (an asymptote) the car stays at the edge, level, with an arrow out. */
     function carGeo(side){
       var A = G.A, L = G.car, x = xOf(side), y = f(x), dir = S.tab === 'point' ? -side : side;
-      var Px = A.sx(x), Py = A.sy(y), lo = A.T + L * 0.87 + 34, hi = A.B - L * 0.3 - 34, out = 0;
+      var Px = A.sx(x), Py = A.sy(y), lo = A.T + L * 0.87 + 42, hi = A.B - L * 0.3 - 42, out = 0, Py0 = Py;
       if(!isFinite(Py)) Py = (lo + hi) / 2;
       if(Py < lo){ out = -1; Py = lo; } else if(Py > hi){ out = 1; Py = hi; }
       var ang = 0;
-      if(!out && !(dense() && Math.abs(x - S.P.a) < bandHalf(G.kx) + L * 1.2 / G.kx)){
+      if(!(dense() && Math.abs(x - S.P.a) < bandHalf(G.kx) + L * 1.2 / G.kx)){
+        // the road's direction at the nose (a car off the picture keeps it: it is seen climbing out, not parked)
         var Xb = Px - dir * L * 0.9, yb = f(A.ix(Xb));
-        if(isFinite(yb)){ var Yb = A.sy(yb); ang = dir > 0 ? Math.atan2(Py - Yb, Px - Xb) : Math.atan2(Yb - Py, Xb - Px); }
+        if(isFinite(yb) && isFinite(Py0)){ var Yb = A.sy(yb); ang = dir > 0 ? Math.atan2(Py0 - Yb, Px - Xb) : Math.atan2(Yb - Py0, Xb - Px); }
         ang = clamp(ang, -0.95, 0.95);
       }
       var ux = Math.cos(ang), uy = Math.sin(ang), Cx = Px - dir * ux * L / 2, Cy = Py - dir * uy * L / 2;
@@ -558,16 +559,36 @@
     }
     function knobsInLens(){ return S.tab === 'point' && LENS.show > 0.5 && (S.lensDrag || lensWanted()); }
     function lensTarget(){ return Math.max(S.dl, S.dr) / 0.7; }
+    /* The glass: a corner of the picture. Never over a car (the glass shrinks on a narrow picture until one corner is
+       clear), then never over the hole, a jump's ends, the lamp or the two height marks on the y axis, then not
+       across the road, then the corner farthest from a. Its handle points out to its own corner. */
+    var LG = { k: '', v: null };
     function lensGeo(){
-      var A = G.A, R = clamp(Math.min(A.W, A.H) * 0.25, 70, 132), Px = A.sx(S.P.a), Py = A.sy(lensYc());
-      var cands = [[A.R - R - 16, A.T + R + 16], [A.L + R + 16, A.T + R + 16], [A.R - R - 16, A.B - R - 16], [A.L + R + 16, A.B - R - 16]];
-      // the corner farthest from a whose glass the road does not cross (else the farthest)
-      function crosses(c){ for(var i = 0; i <= 16; i++){ var X = c[0] - R + 2 * R * i / 16, y = S.P.f(A.ix(X)); if(isFinite(y) && Math.abs(A.sy(y) - c[1]) < R + G.rw + 4) return true; } return false; }
-      // and never over a car (where it is drawn in the main picture)
-      function covers(c){ return mainMarks().some(function(q){ return Math.hypot((q[0] + q[2]) / 2 - c[0], (q[1] + q[3]) / 2 - c[1]) < R + 16; }) || [-1, 1].some(function(sd){ var x = xOf(sd), y = clamp(A.sy(S.P.f(x)), A.T, A.B); return Math.hypot(A.sx(x) - c[0], y - c[1]) < R + G.ringR + G.car * 0.6; }); }
-      function bad(c){ return covers(c) * 2 + crosses(c); }
-      cands.sort(function(p, q){ return (bad(p) - bad(q)) || (Math.hypot(q[0] - Px, q[1] - Py) - Math.hypot(p[0] - Px, p[1] - Py)); });
-      return { cx: cands[0][0], cy: cands[0][1], R: R };
+      var A = G.A, key = [G.W, G.H, S.P.id, S.dl, S.dr, S.fillK].join(',');
+      if(LG.k === key && LG.v) return LG.v;
+      var R0 = clamp(Math.min(A.W, A.H) * 0.25, 70, 132), Px = A.sx(S.P.a), Py = A.sy(lensYc()), best = null;
+      var cars = [-1, 1].map(function(sd){ var x = xOf(sd), Y = clamp(A.sy(S.P.f(x)), A.T, A.B), X = A.sx(x), dir = -sd; return [[X, Y], [X - dir * G.car * 0.5, Y - G.car * 0.3]]; });
+      var marks = mainMarks().map(function(q){ return [(q[0] + q[2]) / 2, (q[1] + q[3]) / 2]; });
+      [-1, 1].forEach(function(sd){ var Y = A.sy(S.P.f(xOf(sd))); if(Y >= A.T && Y <= A.B) marks.push([A.L + 13, Y], [A.L + 30, Y]); });
+      function near(c, R, p, pad){
+        if(Math.hypot(p[0] - c[0], p[1] - c[1]) < R + pad) return true;
+        var sx = c[0] < A.L + A.W / 2 ? -1 : 1, sy = c[1] < A.T + A.H / 2 ? -1 : 1, x0 = c[0] + sx * R * 0.72, y0 = c[1] + sy * R * 0.72, x1 = c[0] + sx * R * 0.95, y1 = c[1] + sy * R * 0.95;
+        var t = clamp(((p[0] - x0) * (x1 - x0) + (p[1] - y0) * (y1 - y0)) / ((x1 - x0) * (x1 - x0) + (y1 - y0) * (y1 - y0)), 0, 1);
+        if(Math.hypot(p[0] - x0 - t * (x1 - x0), p[1] - y0 - t * (y1 - y0)) < pad + 6) return true;
+        return Math.abs(p[0] - c[0]) < 60 && p[1] > c[1] + R - 4 && p[1] < c[1] + R + 28;
+      }
+      for(var R = R0; R >= 56 && !best; R *= 0.88){
+        var cands = [[A.R - R - 16, A.T + R + 16], [A.L + R + 16, A.T + R + 16], [A.R - R - 16, A.B - R - 16], [A.L + R + 16, A.B - R - 16]];
+        var crosses = function(c){ for(var i = 0; i <= 16; i++){ var X = c[0] - R + 2 * R * i / 16, y = S.P.f(A.ix(X)); if(isFinite(y) && Math.abs(A.sy(y) - c[1]) < R + G.rw + 4) return 1; } return 0; };
+        var clear = cands.filter(function(c){ return !cars.some(function(pp){ return pp.some(function(p){ return near(c, R, p, G.ringR + 6); }); }); });
+        if(!clear.length) continue;
+        var bad = function(c){ return (marks.some(function(p){ return near(c, R, p, 14); }) ? 2 : 0) + crosses(c); };
+        clear.sort(function(p, q){ return (bad(p) - bad(q)) || (Math.hypot(q[0] - Px, q[1] - Py) - Math.hypot(p[0] - Px, p[1] - Py)); });
+        best = { cx: clear[0][0], cy: clear[0][1], R: R };
+      }
+      if(!best) best = { cx: A.R - R0 - 16, cy: A.T + R0 + 16, R: R0 };
+      LG = { k: key, v: best };
+      return best;
     }
     function lensYc(){ if(S.P.id === 'osc') return 0; var a = S.P.a, yl = S.P.f(a - S.dl), yr = S.P.f(a + S.dr); return isFinite(yl + yr) ? (yl + yr) / 2 : 0; }
     function lensMap(Lg, w){
@@ -593,26 +614,12 @@
       // two lines from the spot on the road the glass looks at, to the glass
       var sx0 = A.sx(a), sy0 = A.sy(Lm.yc), d = Math.hypot(Lg.cx - sx0, Lg.cy - sy0) || 1, ux = (Lg.cx - sx0) / d, uy = (Lg.cy - sy0) / d;
       g.push('<path class="le2-beam" d="M' + r1(sx0) + ' ' + r1(sy0) + 'L' + r1(Lg.cx - uy * R) + ' ' + r1(Lg.cy + ux * R) + 'M' + r1(sx0) + ' ' + r1(sy0) + 'L' + r1(Lg.cx + uy * R) + ' ' + r1(Lg.cy - ux * R) + '"/>');
-      var hx = Lg.cx + R * 0.72 * (Lg.cx < A.L + A.W / 2 ? -1 : 1), hy = Lg.cy + R * 0.72 * (Lg.cy < A.T + A.H / 2 ? 1 : -1);
-      g.push('<line class="le2-lens-h" x1="' + r1(hx) + '" y1="' + r1(hy) + '" x2="' + r1(Lg.cx + (hx - Lg.cx) * 1.5) + '" y2="' + r1(Lg.cy + (hy - Lg.cy) * 1.5) + '"/>');
+      var hx = Lg.cx + R * 0.72 * (Lg.cx < A.L + A.W / 2 ? -1 : 1), hy = Lg.cy + R * 0.72 * (Lg.cy < A.T + A.H / 2 ? -1 : 1);
+      g.push('<line class="le2-lens-h" x1="' + r1(hx) + '" y1="' + r1(hy) + '" x2="' + r1(Lg.cx + (hx - Lg.cx) * 1.32) + '" y2="' + r1(Lg.cy + (hy - Lg.cy) * 1.32) + '"/>');
       g.push('<circle class="le2-lens-bg" cx="' + r1(Lg.cx) + '" cy="' + r1(Lg.cy) + '" r="' + r1(R) + '"/>');
       g.push('<g clip-path="url(#' + id + '-cL)">');
-      var w = lensW(), lo = a - w * 1.6, hi = a + w * 1.6;
-      var LF = { x: [lo, hi], L: Lg.cx - R * 1.6, R: Lg.cx + R * 1.6, T: Lg.cy - R * 3, B: Lg.cy + R * 3, sx: Lm.sx, sy: Lm.sy, ix: function(px){ return a + (px - Lg.cx) / Lm.px; } };
-      if(e.bounds) e.bounds.forEach(function(b){ g.push(railOf(Lm, b, lo, hi, 2)); });
-      if(e.dense){
-        g.push(bandZig(Lm, Lm.px, lo, hi));
-        g.push(roadOf(denseRuns(Lm, lo, hi, Lm.px), Math.round(G.rw * 0.7)));
-      } else {
-        var gp = e.kind === 'removable' ? G.rw * 0.95 / Lm.px : 1e-12, runs = [];
-        [[lo, a - gp], [a + gp, hi]].forEach(function(iv){
-          var n = 80, run = [];
-          for(var i = 0; i <= n; i++){ var x = iv[0] + (iv[1] - iv[0]) * i / n, y = e.f(x); if(isFinite(y)) run.push({ X: Lm.sx(x), Y: clamp(Lm.sy(y), Lg.cy - R * 3, Lg.cy + R * 3) }); }
-          if(run.length > 1) runs.push(run);
-        });
-        g.push(roadOf(runs, G.rw));
-        if(e.kind === 'jump') g.push(ptOf(Lm.sx(a), Lm.sy(e.left), true) + ptOf(Lm.sx(a), Lm.sy(e.f(a)), false));
-      }
+      g.push(lensRoad(Lg, Lm));
+      if(e.kind === 'jump') g.push(ptOf(Lm.sx(a), Lm.sy(e.left), true) + ptOf(Lm.sx(a), Lm.sy(e.f(a)), false));
       if(e.kind === 'removable') g.push(holeSvg(Lm.sx(a), Lm.sy(e.left), Lm.px, Lm.sy));
       [cl, cr].forEach(function(c){ var X = Lm.sx(c.x), Y = Lm.sy(c.y); g.push('<circle class="le2-ndot ' + (c.side < 0 ? 'l' : 'r') + '" cx="' + r1(X) + '" cy="' + r1(clamp(Y, Lg.cy - R - 8, Lg.cy + R + 8)) + '" r="5.5"/>'); });
       g.push('</g>');
@@ -628,6 +635,30 @@
       var cc = defs.querySelector('#' + id + '-cL circle'); if(cc){ cc.setAttribute('cx', r1(Lg.cx)); cc.setAttribute('cy', r1(Lg.cy)); cc.setAttribute('r', r1(R)); }
       boxes.push([Lg.cx - R - 8, Lg.cy - R - 8, Lg.cx + R + 8, Lg.cy + R + 8]);
       LENS.map = Lm;
+    }
+    /* The road in the glass is built once per zoom step (×1.25) in its own coordinates, then scaled into place each
+       frame by a transform (strokes keep their width): a drive into the hole rebuilds it a few times, not every frame. */
+    var LC = { k: '', s: '', px0: 1, py0: 1, yc0: 0 };
+    function lensRoad(Lg, Lm){
+      var e = S.P, a = e.a, R = Lg.R, step = Math.round(Math.log(lensW()) / Math.log(1.25)), rs = Math.round(Math.log(Lm.py / Lm.px) / Math.log(1.25));
+      var key = [e.id, step, rs, r1(R), G.rw].join(',');
+      if(LC.k !== key){
+        var w0 = Math.pow(1.25, step), px0 = R / w0, py0 = Math.pow(1.25, rs) * px0, yc0 = Lm.yc, lo = a - w0 * 1.9, hi = a + w0 * 1.9, o = [];
+        var L0 = { sx: function(x){ return (x - a) * px0; }, sy: function(y){ return clamp(-(y - yc0) * py0, -R * 4, R * 4); } };
+        if(e.bounds) e.bounds.forEach(function(b){ o.push(railOf(L0, b, lo, hi, 2)); });
+        if(e.dense){ o.push(bandZig(L0, px0, lo, hi)); o.push(roadOf(denseRuns(L0, lo, hi, px0), Math.round(G.rw * 0.7))); }
+        else {
+          var gp = e.kind === 'removable' ? G.rw * 0.95 / px0 : 1e-12, runs = [];
+          [[lo, a - gp], [a + gp, hi]].forEach(function(iv){
+            var n = 80, run = [];
+            for(var i = 0; i <= n; i++){ var x = iv[0] + (iv[1] - iv[0]) * i / n, y = e.f(x); if(isFinite(y)) run.push({ X: L0.sx(x), Y: L0.sy(y) }); }
+            if(run.length > 1) runs.push(run);
+          });
+          o.push(roadOf(runs, G.rw));
+        }
+        LC = { k: key, s: o.join(''), px0: px0, py0: py0, yc0: yc0 };
+      }
+      return '<g class="le2-lensroad" transform="translate(' + r1(Lg.cx) + ' ' + (Lg.cy + (Lm.yc - LC.yc0) * Lm.py).toFixed(2) + ') scale(' + (Lm.px / LC.px0).toFixed(5) + ' ' + (Lm.py / LC.py0).toFixed(5) + ')">' + LC.s + '</g>';
     }
     /* The hole at (a, L): a gap in the road with an open circle; "Fill the hole" lays a slab in and closes it. */
     function holeSvg(X, Y, kxp, sy){
@@ -674,13 +705,14 @@
           if(c.out) return;
           o.push('<line class="le2-hline ' + (c.side < 0 ? 'l' : 'r') + '" x1="' + r1(A.L) + '" y1="' + r1(c.Py) + '" x2="' + r1(c.Px) + '" y2="' + r1(c.Py) + '"/>' +
             '<path class="le2-hmark ' + (c.side < 0 ? 'l' : 'r') + '" d="' + arrowHead(A.L + (c.side < 0 ? 9 : 17), c.Py, Math.PI, 8) + '"/>');
+          boxes.push([A.L, c.Py - 7, A.L + 26, c.Py + 7]);
         });
       }
       o.push('</g>');
       [cl, cr].forEach(function(c){
         o.push(carSvg(c));
         o.push('<circle class="le2-nose ' + (c.side < 0 ? 'l' : 'r') + '" cx="' + r1(c.Px) + '" cy="' + r1(c.Py) + '" r="3.2"/>');
-        if(c.out){ var up = c.out < 0, ay = up ? c.Ry - c.r - 4 : c.Ry + c.r + 4; o.push('<path class="le2-outar ' + (c.side < 0 ? 'l' : 'r') + '" d="M' + r1(c.Px) + ' ' + r1(ay) + 'L' + r1(c.Px) + ' ' + r1(ay + (up ? -10 : 10)) + '"/><path class="le2-outtip ' + (c.side < 0 ? 'l' : 'r') + '" d="' + arrowHead(c.Px, ay + (up ? -18 : 18), up ? -Math.PI / 2 : Math.PI / 2, 9) + '"/>'); block(c.Px, ay + (up ? -10 : 10), 12); }
+        if(c.out){ var up = c.out < 0, ay = up ? Math.min(c.Ry - c.r, c.Py) - 4 : Math.max(c.Ry + c.r, c.Py) + 4; o.push('<path class="le2-outar ' + (c.side < 0 ? 'l' : 'r') + '" d="M' + r1(c.Px) + ' ' + r1(ay) + 'L' + r1(c.Px) + ' ' + r1(ay + (up ? -18 : 18)) + '"/><path class="le2-outtip ' + (c.side < 0 ? 'l' : 'r') + '" d="' + arrowHead(c.Px, ay + (up ? -30 : 30), up ? -Math.PI / 2 : Math.PI / 2, 13) + '"/>'); block(c.Px, ay + (up ? -16 : 16), 16); }
       });
       if(S.tab === 'point' && (LENS.show > 0.01)) drawLens(o, cl, cr);
       if(S.tab === 'point') placeFill(); else fillB.hidden = true;
@@ -704,15 +736,15 @@
         var Xa = A.sx(e.a);
         if(e.kind === 'removable' && !e.dense && (S.fillK === 0 || S.fillK === 1)){
           var Ya = A.sy(e.left), t = S.fillK === 1 ? 'f(' + e.a + ') = ' + limWord(e.fill) : 'hole';
-          label(o, t, 'le2-cink', [[Xa + 14, Ya - 14, 'start'], [Xa - 14, Ya - 14, 'end'], [Xa + 16, Ya + 24, 'start'], [Xa - 16, Ya + 26, 'end'], [Xa, Ya - 22, 'middle'], [Xa, Ya + 34, 'middle']], A, sm);
+          label(o, t, 'le2-cink', [[Xa + 14, Ya - 14, 'start'], [Xa - 14, Ya - 14, 'end'], [Xa + 16, Ya + 24, 'start'], [Xa - 16, Ya + 26, 'end'], [Xa, Ya - 22, 'middle'], [Xa, Ya + 34, 'middle'], [Xa + 24, Ya + 5, 'start'], [Xa - 24, Ya + 5, 'end'], [Xa + 20, Ya + 42, 'start'], [Xa - 20, Ya - 32, 'end'], [Xa + 20, Ya - 32, 'start'], [Xa - 20, Ya + 44, 'end']], A, sm);
         }
         if(e.id === 'move' && S.fillK === 0){ var Yl = A.sy(e.at); label(o, 'f(' + e.a + ') = ' + limWord(e.at), 'le2-cink', [[Xa + 20, Yl + 5, 'start'], [Xa - 20, Yl + 5, 'end'], [Xa + 18, Yl - 14, 'start'], [Xa - 18, Yl - 14, 'end'], [Xa + 18, Yl + 26, 'start']], A, sm); }
         if(e.kind === 'jump'){ var Yj = A.sy((e.left + e.right) / 2); label(o, 'jump', 'le2-cbad', [[Xa + 12, Yj + 4, 'start'], [Xa - 12, Yj + 4, 'end'], [Xa + 12, A.sy(e.right) - 16, 'start']], A, sm); }
         if(e.vasym != null) label(o, 'asymptote', 'le2-cbad', [[Xa - 8, A.sy(3), 'end'], [Xa + 8, A.sy(-3), 'start'], [Xa - 8, A.sy(1.5), 'end'], [Xa + 8, A.sy(-1.5), 'start'], [Xa + 8, A.T + 18, 'start'], [Xa - 8, A.B - 30, 'end']], A, sm);
         else label(o, 'x = ' + e.a, 'le2-cink', [[Xa + 6, A.B - 8, 'start'], [Xa - 6, A.B - 8, 'end'], [Xa + 6, A.T + 18, 'start'], [Xa - 6, A.T + 18, 'end']], A, sm);
         if(e.dense){
-          var xc = bandHalf(G.kx), b = boundsOf(), yb = A.sy(b[1](e.a + xc)), yb2 = A.sy(b[0](e.a + xc));
-          label(o, G.narrow ? 'too many swings' : 'too many swings to draw', 'le2-cink', [[Xa, yb - 10, 'middle'], [Xa, yb2 + 22, 'middle'], [Xa, A.T + 18, 'middle'], [Xa, A.B - 30, 'middle']], A, sm);
+          var xc = bandHalf(G.kx), b = boundsOf(), yb = A.sy(b[1](e.a + xc)), yb2 = A.sy(b[0](e.a + xc)), xp = xc * G.kx, ym = A.sy(0) + 4, tt = G.narrow ? 'too many swings' : 'too many swings to draw';
+          label(o, tt, 'le2-cink', [[Xa, yb - 10, 'middle'], [Xa, yb2 + 22, 'middle'], [Xa + xp + 10, ym, 'start'], [Xa - xp - 10, ym, 'end'], [Xa + xp + 10, yb - 4, 'start'], [Xa - xp - 10, yb2 + 16, 'end'], [Xa, yb - 30, 'middle'], [Xa, yb2 + 42, 'middle']], A, sm);
         }
         if(e.bounds){
           [[1, 'y = |x|', -10], [0, 'y = −|x|', 22]].forEach(function(q){
@@ -724,16 +756,16 @@
       } else {
         var Yh = A.sy(e.hasym);
         label(o, 'y = ' + e.hasym, 'le2-clim', [[A.sx(-3), Yh - 8, 'middle'], [A.sx(-3), Yh + 18, 'middle'], [A.sx(-6), Yh - 8, 'middle'], [A.sx(-1.5), Yh - 8, 'middle'], [A.L + 10, Yh - 18, 'start'], [A.R - 10, Yh + 26, 'end']], A, sm);
-        label(o, G.narrow ? 'x: steps ×10' : 'x: each grid step ×10', 'le2-cink', [[A.R - 8, A.B - 8, 'end'], [A.L + 8, A.B - 8, 'start'], [A.R - 8, A.T + 18, 'end']], A, sm);
+        label(o, G.narrow ? 'x: 1, 10, 100 …' : 'x: 1, 10, 100, 1,000 …', 'le2-cink', [[A.R - 8, A.B - 8, 'end'], [A.L + 8, A.B - 8, 'start'], [A.R - 8, A.T + 18, 'end']], A, sm);
       }
       roadLabel(o);
     }
     function roadLabel(o){
       var A = G.A, c = [], F = curE().f;
-      [0.12, 0.88, 0.3, 0.7, 0.2, 0.8].forEach(function(t){
+      [0.12, 0.88, 0.3, 0.7, 0.2, 0.8, 0.06, 0.94, 0.4, 0.6, 0.16, 0.84, 0.25, 0.75].forEach(function(t){
         var X = A.L + A.W * t, x = A.ix(X), y = F(x); if(!isFinite(y)) return; var Y = A.sy(y); if(Y < A.T + 20 || Y > A.B - 20) return;
         if(dense() && Math.abs(x - S.P.a) < 0.45) return;
-        c.push([X, Y - 16, 'middle'], [X, Y + 28, 'middle']);
+        c.push([X, Y - 16, 'middle'], [X, Y + 28, 'middle'], [X, Y - 30, 'middle'], [X + 10, Y + 5, 'start']);
       });
       label(o, 'y = f(x)', 'le2-croad', c, A, 13);
     }
@@ -802,7 +834,7 @@
       }
       return opp[t];
     }
-    function labelsFree(b){ return (S.labBoxes || []).every(function(q){ return !hitB(b, q); }); }
+    function labelsFree(b){ return (S.labBoxes || []).concat(S.fillBox && !fillB.hidden ? [S.fillBox] : []).every(function(q){ return !hitB(b, q); }); }
     /* the marks on the road a tag must never cover: the hole, a jump's two ends, the lamp */
     function mainMarks(){
       if(S.tab !== 'point' || !G) return [];
@@ -828,8 +860,9 @@
       return S.tab === 'point' ? 'f(' + fmtX(x, dOf(side)) + ') = ' + fmtY(y, dOf(side)) : 'f(' + fmtBig(x) + ') = ' + fmtY2(y);
     }
     function valueText(side){
-      var x = xOf(side), y = f(x), who = side < 0 ? 'Purple car, from the left' : 'Orange car, from the right';
-      if(S.tab === 'point') return who + ': x = ' + fmtX(x, dOf(side)) + ', f(x) = ' + fmtY(y, dOf(side)) + ', ' + fmtX(dOf(side), dOf(side)) + ' from x = ' + S.P.a;
+      // the value the car is going to (a key's glide ends there), not a frame of the glide
+      var d = S.tab === 'point' ? (side < 0 ? S.tl : S.tr) : (side < 0 ? S.txl : S.txr), x = S.tab === 'point' ? S.P.a + side * d : side * d, y = f(x), who = side < 0 ? 'Purple car, from the left' : 'Orange car, from the right';
+      if(S.tab === 'point') return who + ': x = ' + fmtX(x, d) + ', f(x) = ' + fmtY(y, d) + ', ' + fmtX(d, d) + ' from x = ' + S.P.a;
       return (side < 0 ? 'Purple car, toward minus infinity' : 'Orange car, toward infinity') + ': x = ' + fmtBig(x) + ', f(x) = ' + fmtY2(y);
     }
     function clampD(d){ return clamp(d, DMIN, dmax()); }
@@ -895,6 +928,7 @@
       var direct = hl.dragging() || hr.dragging() || K.reduced();
       var cv = S.tab === 'point' ? clampD(v) : clamp(v, xmin(), XMAX);
       if(cv !== v){ v = cv; (side < 0 ? hl : hr).value(v); }
+      if(!direct) S.glide = side;
       if(S.tab === 'point'){ if(side < 0){ S.tl = v; if(direct) S.dl = v; } else { S.tr = v; if(direct) S.dr = v; } S.closeV = 0; close.paint(); }
       else { if(side < 0){ S.txl = v; if(direct) S.xl = v; } else { S.txr = v; if(direct) S.xr = v; } S.driveV = 0; drive.paint(); }
       tourDid(side < 0 ? 'drag' : 'right');
@@ -915,7 +949,7 @@
       for(i = 0; i < cands.length && !found; i++){ b = [cands[i][0], cands[i][1], cands[i][0] + w, cands[i][1] + h]; if(inside(b, A) && free(b) && !roadHit(b)){ at = cands[i]; found = true; } }
       for(i = 0; i < cands.length && !found; i++){ b = [cands[i][0], cands[i][1], cands[i][0] + w, cands[i][1] + h]; if(inside(b, A) && free(b)){ at = cands[i]; found = true; } }
       at = [clamp(at[0], A.L + 4, A.R - w - 4), clamp(at[1], A.T + 4, A.B - h - 4)];
-      boxes.push([at[0] - 2, at[1] - 2, at[0] + w + 2, at[1] + h + 2]);
+      boxes.push([at[0] - 2, at[1] - 2, at[0] + w + 2, at[1] + h + 2]); S.fillBox = [at[0] - 4, at[1] - 4, at[0] + w + 4, at[1] + h + 4];
       fillB.style.left = (at[0] * k).toFixed(1) + 'px'; fillB.style.top = (at[1] * k).toFixed(1) + 'px';
     }
     /* does the road (or the lamp post) pass through box b? */
@@ -949,7 +983,7 @@
         if(!near) parts.push({ t: 'closer to x = ' + a, role: 'ink', say: 'drive both closer to x equals ' + a });
         else if(e.kind === 'removable') parts.push({ t: n ? 'both → ' + limWord(e.left) : 'both head for ' + limWord(e.left), role: 'lim' }, { t: 'limit ' + limWord(e.left), role: 'lim' });
         else if(e.kind === 'jump') parts.push({ t: 'they disagree', role: 'bad' }, { t: 'no limit', role: 'bad' });
-        else if(e.kind === 'infinite') parts.push({ t: n ? 'unbounded' : 'grow without bound', role: 'bad' }, { t: 'no limit', role: 'bad' });
+        else if(e.kind === 'infinite') parts.push({ t: 'unbounded', role: 'bad' }, { t: 'no limit', role: 'bad' });
         else parts.push({ t: n ? 'swinging' : 'keep swinging', role: 'bad' }, { t: 'no limit', role: 'bad' });
       } else {
         var fl = INF.f(-S.xl), fr = INF.f(S.xr), far = S.xl >= FAR - 1e-9 && S.xr >= FAR - 1e-9;
@@ -1040,6 +1074,7 @@
       draw();
       if(S.fillPending && S.fillK === ft) fillDone();
       if(busy) raf = requestAnimationFrame(frame);
+      else if(S.glide != null){ var gs = S.glide; S.glide = null; say(valueText(gs) + '. ' + cause.text()); }
     }
 
     /* ---------------------------------------------------- Close in (tab 1) and Drive out (tab 2) */
@@ -1190,9 +1225,9 @@
           '<h3 class="ls-title-l">The limits at infinity</h3><table class="ls-tbl le2-lims"><tbody><tr><th scope="row">' + tm('\\lim_{x \\to -\\infty} f(x)') + '</th><td>2</td></tr><tr><th scope="row">' + tm('\\lim_{x \\to \\infty} f(x)') + '</th><td>2</td></tr></tbody></table>' +
           '<p>For huge |x| only the highest powers matter: (2x² + 3x)/(x² + 1) behaves like 2x²/x² = 2. Top and bottom have the same degree, so the limit is the ratio of the leading coefficients, 2/1 = 2. A bottom of higher degree would give 0; a top of higher degree, no horizontal asymptote.</p>' +
           '<h3 class="ls-title-l">How to say it</h3><p>Since the leading terms of the top and bottom are 2x² and x², lim f(x) = 2 as x → ∞ and as x → −∞, so y = 2 is a horizontal asymptote. The graph may cross it: here f(x) = 2 at x = 2/3.</p>' +
-          '<h3 class="ls-title-l">The squeezed axis</h3><p>The x axis in this tab is squeezed: each grid step is ten times farther from 0 than the last (1, 10, 100, 1,000, 10,000), so the cars can drive very far out and stay in the picture. The heights are not squeezed: y is drawn to scale.</p>';
+          '<h3 class="ls-title-l">The squeezed axis</h3><p>The x axis in this tab is squeezed: past x = 1, each grid line is ten times farther from 0 than the last (1, 10, 100, 1,000, 10,000), so the cars can drive very far out and stay in the picture. The heights are not squeezed: y is drawn to scale.</p>';
       }
-      html += '<p class="bt-small">How it is drawn: the center line of the road is exactly y = f(x) on the grid, and each car’s nose is the point (x, f(x)); the thin line from it to the y axis is its height. The magnifier zooms in on the road around x = a so the farther car sits most of the way to its rim; for a jump it squeezes heights to keep both sides in the glass. Near 0, sin(1/x) swings faster than a screen can draw, so that strip is shaded between its bounds.</p>' +
+      html += '<p class="bt-small">How it is drawn: the center line of the road is exactly y = f(x) on the grid, and each car’s nose is the point (x, f(x)); the thin line from it to the y axis is its height. The magnifier zooms in on the road around x = a so the farther car sits most of the way to its rim; for a jump it squeezes heights to keep both sides in the glass. Near 0, sin(1/x) swings faster than a screen can draw, so that strip is drawn as a zigzag band between its bounds.</p>' +
         '<details class="le2-keys"><summary>Keyboard</summary><p class="bt-small">Tab to a car. Close in on a point: ← → move it along the road (Shift: ten steps), Page Down takes it ten times closer to a, Page Up ten times farther, Home and End go to the ends. Out to infinity: ← → drive it (each step about ×1.26), Page Up ten times farther out, Page Down ten times closer in.</p></details>' +
         '<p class="tool-about-n">Notes for this topic: <a href="../notes/' + (S.tab === 'point' ? ({ hole: 'limits-from-plots', move: 'discontinuity-types', jump: 'limits-from-plots', vasym: 'infinite-limits', osc: 'limits-from-plots', squeeze: 'squeeze-theorem' })[S.P.id] : 'limits-at-infinity') + '.html">' + (S.tab === 'point' ? ({ hole: 'Limits from graphs', move: 'Types of discontinuities', jump: 'Limits from graphs', vasym: 'Infinite limits', osc: 'Limits from graphs', squeeze: 'The squeeze theorem' })[S.P.id] : 'Limits at infinity') + '</a></p>';
       ref.innerHTML = html;
