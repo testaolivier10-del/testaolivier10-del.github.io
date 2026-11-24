@@ -21,7 +21,16 @@
        part    one part: its verb's demand, which answer earns the point, and
                (explain) the missing link of the chain
        verbs   every part of the question: what its verb demands
-       earns   every part: which of two answers earns the point */
+       earns   every part: which of two answers earns the point
+       write   one part to write yourself (the page's writing box with its
+               checklist), then which answer earns the point
+     The verb ladder (tools v2 Explore, docs/tools-v2-hug-frq-coach-brief.md):
+     each context's `ladder` is one answer in five pieces (name, features,
+     link, side, degree) and a prompt per rung. LADDER is the rung order,
+     WRITTEN the pieces on the page at a rung, NEEDED the pieces that rung's
+     rubric line asks for (a written piece not needed is drawn quiet),
+     ADDS the piece a rung adds, RUBRIC_LINE its rubric line.
+       ladderAnswer(ctx, verb) -> [{ role, text, needed }] in page order */
 (function(G){
   'use strict';
   var M = G.ApHugMath;
@@ -46,8 +55,31 @@
   var RULES = { identify: [], define: [], describe: [], explain: ['mechanism'], compare: ['both'], 'explain-degree': ['degree', 'mechanism'] };
   var SLIPS = ['identify-only', 'no-link', 'one-side', 'no-degree', 'example', 'vague'];
   var SLIP_NAME = { 'identify-only': 'Names it, no more', 'no-link': 'No link', 'one-side': 'One side only', 'no-degree': 'No degree', example: 'An example, not a meaning', vague: 'Too vague' };
-  var TYPES = ['part', 'verbs', 'earns'];
-  var TYPE_LABEL = { part: 'One part, step by step', verbs: 'What each verb demands', earns: 'Which answer earns the point' };
+  var TYPES = ['part', 'verbs', 'earns', 'write'];
+  var TYPE_LABEL = { part: 'One part, step by step', verbs: 'What each verb demands', earns: 'Which answer earns the point', write: 'Write a part yourself' };
+
+  /* ---------------------------------------------------------- the ladder */
+  var LADDER = ['identify', 'describe', 'explain', 'compare', 'explain-degree'];
+  var PIECES = ['degree', 'name', 'features', 'link', 'side'];
+  var WRITTEN = { identify: ['name'], describe: ['name', 'features'], explain: ['name', 'features', 'link'],
+    compare: ['name', 'features', 'link', 'side'], 'explain-degree': ['degree', 'name', 'features', 'link', 'side'] };
+  var NEEDED = { identify: ['name'], describe: ['name', 'features'], explain: ['name', 'features', 'link'],
+    compare: ['name', 'features', 'side'], 'explain-degree': ['degree', 'name', 'features', 'link'] };
+  var ADDS = { identify: 'name', describe: 'features', explain: 'link', compare: 'side', 'explain-degree': 'degree' };
+  var ADD_LABEL = { identify: 'a name', describe: 'its features', explain: 'how or why', compare: 'both sides', 'explain-degree': 'the degree first' };
+  var PIECE_NAME = { name: 'Name', features: 'Features', link: 'Because', side: 'Both sides', degree: 'Degree' };
+  var RUBRIC_LINE = {
+    identify: 'Names it. A word or a phrase earns the point.',
+    describe: 'Adds its features: what it is like, where, how much. A name alone earns nothing.',
+    explain: 'Adds how or why, with the link: because, so.',
+    compare: 'Speaks of both sides. The because is not needed here.',
+    'explain-degree': 'States the degree first, then explains it. The second side is not needed here.'
+  };
+  function ladderAnswer(ctx, verb){
+    var L = ctx.ladder, w = WRITTEN[verb], n = NEEDED[verb];
+    if(!L || !w) return [];
+    return PIECES.filter(function(k){ return w.indexOf(k) > -1; }).map(function(k){ return { role: k, text: L.pieces[k], needed: n.indexOf(k) > -1 }; });
+  }
 
   function flagsFor(part){
     var w = {};
@@ -106,6 +138,13 @@
     } else if(type === 'verbs'){
       only = parts;
       parts.forEach(function(p){ steps.push(demandStep(r, p, 'demand-' + p.label)); sol.push('<b>' + partLabel(p) + ', ' + VERBS[p.verb].name + ':</b> ' + VERBS[p.verb].demand); });
+    } else if(type === 'write'){
+      var q = r.pick(parts);
+      only = [q];
+      steps.push(earnsStep(r, q, 'earns-' + q.label));
+      sol.push('<b>' + VERBS[q.verb].name + ':</b> ' + VERBS[q.verb].demand);
+      sol.push('<b>Rubric line (' + partLabel(q) + '):</b> ' + q.rubric);
+      sol.push('<b>Full-credit sample:</b> ' + q.sample);
     } else {
       only = parts;
       parts.forEach(function(p){ steps.push(earnsStep(r, p, 'earns-' + p.label)); sol.push('<b>' + partLabel(p) + ' (' + VERBS[p.verb].name + '):</b> ' + p.rubric + ' Sample: ' + p.sample); });
@@ -115,6 +154,7 @@
 
   M.register('frqCoach', {
     VERBS: VERBS, VERB_ORDER: VERB_ORDER, RULES: RULES, SLIPS: SLIPS, SLIP_NAME: SLIP_NAME, TYPES: TYPES, TYPE_LABEL: TYPE_LABEL,
+    LADDER: LADDER, PIECES: PIECES, WRITTEN: WRITTEN, NEEDED: NEEDED, ADDS: ADDS, ADD_LABEL: ADD_LABEL, PIECE_NAME: PIECE_NAME, RUBRIC_LINE: RUBRIC_LINE, ladderAnswer: ladderAnswer,
     flagsFor: flagsFor, promptHtml: promptHtml, qText: qText, generate: generate
   });
 })(typeof window !== 'undefined' ? window : globalThis);

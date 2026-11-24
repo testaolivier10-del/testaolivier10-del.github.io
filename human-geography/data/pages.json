@@ -155,7 +155,8 @@
    "blurb": "Answer each part the way its task verb asks.",
    "lede": "Read the verb first, then write exactly what it demands.",
    "studio": true,
-   "premium": "tools"
+   "premium": "tools",
+   "kit2": true
   },
   {
    "slug": "scale-lab",

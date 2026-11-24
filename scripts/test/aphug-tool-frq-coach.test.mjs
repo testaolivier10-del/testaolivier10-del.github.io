@@ -75,3 +75,40 @@ test('frq-coach: planted mistakes are caught', () => {
   model.generate = (r, c, ty) => { const p = orig(r, c, ty); const s = p.steps.find(x => x.key.startsWith('earns')); if (s) s.correct = 1; return p; };
   try { assert.ok(check(data, map).some(e => /keyed answer is not the sample/.test(e))); } finally { model.generate = orig; }
 });
+
+test('frq-coach: the Explore ladder (tools v2): rungs, pieces and planted mistakes', () => {
+  assert.deepEqual(copy(model.LADDER), ['identify', 'describe', 'explain', 'compare', 'explain-degree']);
+  for (const c of data.contexts) {
+    // each rung writes the rungs below it plus its own piece; the rubric line asks for what the rung needs
+    let prev = [];
+    for (const v of model.LADDER) {
+      const a = model.ladderAnswer(c, v).map(x => x.role);
+      assert.ok(prev.every(k => a.includes(k)), `${c.id} ${v} keeps the pieces below it`);
+      assert.ok(a.includes(model.ADDS[v]), `${c.id} ${v} adds its piece`);
+      prev = a;
+    }
+    const cmp = model.ladderAnswer(c, 'compare'), deg = model.ladderAnswer(c, 'explain-degree');
+    assert.equal(cmp.find(x => x.role === 'link').needed, false, 'compare does not need the because');
+    assert.equal(deg.find(x => x.role === 'side').needed, false, 'explain the degree does not need the second side');
+    assert.equal(deg[0].role, 'degree', 'the degree comes first');
+  }
+  const bad = copy(data), L = bad.contexts[0].ladder;
+  L.pieces.features += ' because it is so';                 // the because before explain
+  L.pieces.degree = 'It worked, to a high degree.';          // degree not first
+  L.prompts.compare = 'Describe both.';                      // wrong verb
+  const errs = check(bad, map);
+  assert.ok(errs.some(e => /no link word/.test(e)), 'link word in features');
+  assert.ok(errs.some(e => /opens with the degree/.test(e) && /ladder/.test(e)), 'degree first');
+  assert.ok(errs.some(e => /compare prompt opens/.test(e)), 'prompt verb');
+  const none = copy(data); delete none.contexts[1].ladder;
+  assert.ok(check(none, map).some(e => /every context has a ladder/.test(e)));
+});
+
+test('frq-coach: a write drill is one part and its earns step', () => {
+  for (const c of data.contexts) {
+    const p = model.generate(M.rng(7), c, 'write');
+    assert.equal(p.steps.length, 1); assert.equal(p.parts.length, 1);
+    const part = c.parts.find(x => x.label === p.parts[0]);
+    assert.equal(p.steps[0].options[p.steps[0].correct], part.sample);
+  }
+});

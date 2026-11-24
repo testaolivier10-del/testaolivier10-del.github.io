@@ -18,7 +18,7 @@ import { frame, sweep } from './_drills.mjs';
 import { runtime } from './_shared.mjs';
 import { VERBS } from '../aphug-exams.mjs';
 
-export const TYPES = ['part', 'verbs', 'earns'];
+export const TYPES = ['part', 'verbs', 'earns', 'write'];
 const EMDASH = /—/;
 const LABELS = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 const words = s => String(s).trim().split(/\s+/).length;
@@ -65,6 +65,39 @@ function contextProblems(c, model, Grade, errs) {
   });
 }
 
+const LAD_ART = ['polders', 'wheat', 'city', 'chart', 'ship', 'borders', 'countrya', 'hdi'];
+function ladderProblems(c, model, Grade, errs) {
+  const w = `context ${c.id} ladder`, need = (ok, m) => { if (!ok) errs.push(`${w}: ${m}`); };
+  const L = c.ladder;
+  if (!L) { errs.push(`${w}: every context has a ladder (Explore)`); return; }
+  need(LAD_ART.includes(L.art), `art "${L.art}" is not one of ${LAD_ART.join(', ')}`);
+  for (const v of model.LADDER) {
+    const pr = (L.prompts || {})[v];
+    need(typeof pr === 'string' && new RegExp(`^${VERBS[v].name.replace(/ /g, '\\s+')}\\b`, 'i').test(pr) && /[.?]$/.test(pr), `the ${v} prompt opens with its verb and ends with a period`);
+    if (v === 'explain' && pr) need(!/^Explain the degree/i.test(pr), 'the explain prompt is not an explain the degree prompt');
+  }
+  const P = L.pieces || {}, K = L.keys || {};
+  for (const k of model.PIECES) {
+    need(typeof P[k] === 'string' && P[k].trim().length > 3, `piece "${k}" is required`);
+    need(typeof K[k] === 'string' && K[k].trim() && words(K[k]) <= 6, `key "${k}" is required, six words or fewer`);
+  }
+  if (model.PIECES.some(k => typeof P[k] !== 'string')) return;
+  const base = P.name + ' ' + P.features;
+  need(words(P.name) <= 8, 'the name is a word or a phrase (8 words or fewer)');
+  need(words(P.features) >= 12, 'the features give characteristics (12 words or more)');
+  need(!flagOk(Grade, 'mechanism', base), 'the name and features carry no link word (the because enters with explain)');
+  need(!flagOk(Grade, 'both', base) && !flagOk(Grade, 'both', P.link), 'no both-sides word before compare');
+  need(!flagOk(Grade, 'degree', base + ' ' + P.link + ' ' + P.side), 'no degree before explain the degree');
+  need(flagOk(Grade, 'mechanism', P.link), 'the link piece has its link word');
+  need(flagOk(Grade, 'both', P.side), 'the side piece speaks of both sides');
+  need(/^To an? \w+ degree/.test(P.degree) && flagOk(Grade, 'degree', P.degree), 'the degree piece opens with the degree');
+  for (const v of model.LADDER) {
+    const a = model.ladderAnswer(c, v), add = model.ADDS[v];
+    need(a.some(x => x.role === add && x.needed), `${v}: the piece it adds is written and needed`);
+    need(model.RUBRIC_LINE[v] && !EMDASH.test(model.RUBRIC_LINE[v]), `${v}: a rubric line`);
+  }
+}
+
 function recheck(p, c, w, errs) {
   const { model } = runtime('frq-coach');
   const bad = m => errs.push(`${w}: ${m}`);
@@ -85,8 +118,9 @@ function recheck(p, c, w, errs) {
     } else bad(`step ${s.key}: unknown step kind`);
     for (const x of [s.label, ...s.options, ...s.why]) if (EMDASH.test(x)) bad(`step ${s.key}: an em dash`);
   }
+  if (p.type === 'write' && (p.steps.length !== 1 || !p.steps[0].key.startsWith('earns-') || p.parts.length !== 1)) bad('a write drill is one part and its earns step');
   if (p.type === 'part' && p.steps.length !== (byLabel[p.parts[0]].chain ? 3 : 2)) bad('a part drill has demand, earns and (with a chain) link');
-  if (p.type !== 'part' && p.steps.length !== c.parts.length) bad('one step per part');
+  if (p.type !== 'part' && p.type !== 'write' && p.steps.length !== c.parts.length) bad('one step per part');
   if (model.TYPES.indexOf(p.type) < 0) bad(`type ${p.type}`);
 }
 
@@ -99,7 +133,7 @@ export function check(data, map) {
     if (!model.VERBS[k] || model.VERBS[k].demand !== VERBS[k].demand || model.VERBS[k].name !== VERBS[k].name) errs.push(`model VERBS.${k} differs from scripts/lib/aphug-exams.mjs`);
   }
   if (Object.keys(model.VERBS).length !== Object.keys(VERBS).length) errs.push('model VERBS has a verb the exam does not');
-  for (const c of data.contexts || []) contextProblems(c, model, Grade, errs);
+  for (const c of data.contexts || []) { contextProblems(c, model, Grade, errs); ladderProblems(c, model, Grade, errs); }
   const count = {};
   for (const c of data.contexts || []) for (const p of c.parts || []) count[p.verb] = (count[p.verb] || 0) + 1;
   for (const v of Object.keys(VERBS)) if ((count[v] || 0) < 2) errs.push(`verb ${v}: at least two parts across the file (has ${count[v] || 0})`);
