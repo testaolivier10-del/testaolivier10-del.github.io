@@ -156,8 +156,10 @@
          screen together. Wide (860 px and up): each beaker with its meter standing beside it and its counts above the
          meter. Narrower: the meter and the counts on the bench under each beaker. The beakers are always the largest
          things on the picture, and they never change size between the buffers or the amounts. */
+      // the lines under the picture take a fixed reserve (two rows of the cause line and Start over), never their
+      // measured height, so the beakers keep one size whatever the cause line says
       function availH(phone){
-        var lh = Math.max(lines.offsetHeight || 0, phone ? 76 : 44), sc = sceneBox.getBoundingClientRect();
+        var lh = phone ? 122 : sceneBox.getBoundingClientRect().width < 860 ? 124 : 52, sc = sceneBox.getBoundingClientRect();
         if(phone) return Math.max(440, window.innerHeight - lh - 22);
         return clamp(window.innerHeight - (sc.top + window.scrollY) - lh - (sc.width < 860 ? 28 : 36), 440, 1200);
       }
@@ -206,6 +208,8 @@
           mw = Math.round(Math.min(cw - 4, Math.max(bw + 10, g.keyW + 8)));
           g.mw = mw;
           var bench = 10 + meterH(mw).h + 10 + 3 * g.keyLH + 8;
+          // a tablet: the beakers from the height as well, so the droppers, the meters and the cause line fit together
+          if(!g.phone) while(bw > 160 && vert(bw).rimY + 1.15 * bw + bench > H) bw--;
           var v1 = vert(bw);
           bh = Math.round(clamp(H - v1.rimY - bench, 1.15 * bw, (g.phone ? 1.9 : 1.5) * bw));
         }
@@ -329,8 +333,8 @@
         return CV.spr[key];
       }
       // the charge sign: a white disc with a minus or a plus, the size of an H atom at least 9 px across
-      function badge(q){
-        var rr = Math.max(4.6, AR.H * G.s * 1.05), key = 'q' + q + rr.toFixed(2); if(CV.spr[key]) return CV.spr[key];
+      function badge(q, z){
+        var rr = Math.max(4.6, AR.H * G.s * 1.05) * (z || 1), key = 'q' + q + rr.toFixed(2); if(CV.spr[key]) return CV.spr[key];
         var d = CV.dpr, sz = Math.ceil((rr * 2 + 3) * d), c = document.createElement('canvas'); c.width = c.height = sz;
         var x = c.getContext('2d'), o = sz / 2 / d; x.scale(d, d);
         x.beginPath(); x.arc(o, o, rr, 0, Math.PI * 2); x.fillStyle = '#fff'; x.fill(); x.lineWidth = 1.1; x.strokeStyle = q < 0 ? CV.col.base : CV.col.acid; x.stroke();
@@ -341,7 +345,8 @@
       }
       function atomsOf(m, key){
         var k = key || m.key, t = TPL[k], out = [];
-        ORDER[k].forEach(function(i){ if(i === m.hide && k === m.hideKey) return; var a = t[i], p = rot(a.dx * G.s, a.dy * G.s, m.a); out.push({ el: a.el, x: m.x + p[0], y: m.y + p[1], r: a.r * G.s, i: i }); });
+        var sc = G.s * (m.zoom || 1);
+        ORDER[k].forEach(function(i){ if(i === m.hide && k === m.hideKey) return; var a = t[i], p = rot(a.dx * sc, a.dy * sc, m.a); out.push({ el: a.el, x: m.x + p[0], y: m.y + p[1], r: a.r * sc, i: i }); });
         return out;
       }
       function drawMol(x, m){
@@ -349,7 +354,7 @@
         if(m.alpha < 1) x.globalAlpha = CV.alpha * Math.max(0, m.alpha);
         atomsOf(m, k).forEach(function(a){ var sp = sprite(a.el, a.r); x.drawImage(sp.c, a.x - sp.h, a.y - sp.h, sp.h * 2, sp.h * 2); });
         var q = QPOS[m.key];
-        if(q){ var qp = rot(q.x * G.s, q.y * G.s, m.a), bs = badge(q.q); x.drawImage(bs.c, m.x + qp[0] - bs.h, m.y + qp[1] - bs.h, bs.h * 2, bs.h * 2); }
+        if(q){ var zq = G.s * (m.zoom || 1), qp = rot(q.x * zq, q.y * zq, m.a), bs = badge(q.q, m.zoom || 1); x.drawImage(bs.c, m.x + qp[0] - bs.h, m.y + qp[1] - bs.h, bs.h * 2, bs.h * 2); }
         if(m.alpha < 1) x.globalAlpha = CV.alpha;
       }
       function liquidPath(x, c, V){
@@ -384,12 +389,12 @@
         x.globalAlpha = alpha;
         BK.forEach(function(b){
           // the glow where an H⁺ is passing over
-          b.events.forEach(function(e){ if(e.glowA > 0){ x.beginPath(); x.arc(e.hAt[0], e.hAt[1], 16 * G.s + 6, 0, Math.PI * 2); x.fillStyle = 'rgba(255,227,138,' + (0.55 * e.glowA).toFixed(3) + ')'; x.fill(); x.lineWidth = 1.6; x.strokeStyle = 'rgba(245,184,61,' + e.glowA.toFixed(3) + ')'; x.stroke(); } });
+          b.events.forEach(function(e){ if(e.glowA > 0){ x.beginPath(); x.arc(e.hAt[0], e.hAt[1], (16 * G.s + 6) * ZOOM, 0, Math.PI * 2); x.fillStyle = 'rgba(255,227,138,' + (0.55 * e.glowA).toFixed(3) + ')'; x.fill(); x.lineWidth = 1.6; x.strokeStyle = 'rgba(245,184,61,' + e.glowA.toFixed(3) + ')'; x.stroke(); } });
           b.mols.forEach(function(m){ if(m.state !== 'whole') drawMol(x, m); });
           // the H on its way across, and each drop's shell around its ion
           b.events.forEach(function(e){
-            if(e.flyH){ var sp = sprite('H', AR.H * G.s); x.drawImage(sp.c, e.hAt[0] - sp.h, e.hAt[1] - sp.h, sp.h * 2, sp.h * 2); }
-            if(e.shellA > 0){ var ion = e.ion, rr = radiusOf(ion.drawKey || ion.key) * G.s + 4; x.beginPath(); x.arc(ion.x, ion.y, rr, 0, Math.PI * 2); var col = e.dir > 0 ? CV.col.base : CV.col.acid;
+            if(e.flyH){ var sp = sprite('H', AR.H * G.s * ZOOM); x.drawImage(sp.c, e.hAt[0] - sp.h, e.hAt[1] - sp.h, sp.h * 2, sp.h * 2); }
+            if(e.shellA > 0){ var ion = e.ion, rr = radiusOf(ion.drawKey || ion.key) * G.s * (ion.zoom || 1) + 4; x.beginPath(); x.arc(ion.x, ion.y, rr, 0, Math.PI * 2); var col = e.dir > 0 ? CV.col.base : CV.col.acid;
               x.globalAlpha = alpha * 0.2 * e.shellA; x.fillStyle = col; x.fill(); x.globalAlpha = alpha * 0.85 * e.shellA; x.lineWidth = 1.6; x.strokeStyle = col; x.stroke(); x.globalAlpha = alpha; }
           });
         });
@@ -483,7 +488,7 @@
           c.iconS = iconS;
           // in front of the canvas: the glass's rim, shine and its 50 and 100 mL marks
           f.push('<path class="bx2-glassrim" d="' + beakerPath(c) + '"/>');
-          f.push('<path class="bx2-shine" d="M' + f1(c.x0 + g.bw * 0.1) + ' ' + f1(c.top + g.bh * 0.12) + 'V' + f1(c.bot - g.bh * 0.14) + '"/>');
+          f.push('<path class="bx2-shine" d="M' + f1(c.x0 + Math.max(5, g.bw * 0.035)) + ' ' + f1(c.top + g.bh * 0.1) + 'V' + f1(c.top + g.bh * 0.42) + '"/>');
           [50, 100].forEach(function(v){ var yy = g.lev(c, v); f.push('<path class="bx2-grad" d="M' + f1(c.x0 + 1) + ' ' + f1(yy) + 'H' + f1(c.x0 + g.bw * (v === 100 ? 0.12 : 0.07)) + '"/>'); });
         });
         svg.innerHTML = p.join('');
@@ -601,16 +606,22 @@
             e.donor = donor; e.acc = acc;
             p[d.w]--;
             if(d.w === 'h') p.a++; else if(d.w === 'a') p.h++;
-            // where they meet: between the target and the surface, both inside the liquid
-            var Rr = RMAX * G.s, u0 = [ent[0] - tg.x, ent[1] - tg.y], ul = Math.hypot(u0[0], u0[1]) || 1; u0 = [u0[0] / ul, u0[1] / ul];
+            // where they meet: at the target, on the side the drop comes from, both inside the liquid
+            var u0 = [ent[0] - tg.x, ent[1] - tg.y], ul = Math.hypot(u0[0], u0[1]) || 1; u0 = [u0[0] / ul, u0[1] / ul];
             var phi = Math.atan2(u0[1], u0[0]) + (dir > 0 ? 0 : Math.PI);
-            var hd = hxVec(donor.key), ra = hxVec(PROTOF[acc.key]), sep = (Math.hypot(hd[0], hd[1]) + Math.hypot(ra[0], ra[1]) + 16) * G.s;
-            var Pm = [lerp(tg.x, ent[0], 0.45), lerp(tg.y, ent[1], 0.45)];
-            var lx0 = c.ix0 + Rr + sep / 2, lx1 = c.px - c.pw / 2 - Rr - sep / 2, ly0 = G.lev(c, b.vol) + Rr + sep / 2 + 2, ly1 = c.iy1 - Rr - sep / 2;
-            Pm = [clamp(Pm[0], lx0, Math.max(lx0, lx1)), clamp(Pm[1], ly0, Math.max(ly0, ly1))];
-            var ux = Math.cos(phi), uy = Math.sin(phi);
-            donor.meet = [Pm[0] - ux * sep / 2, Pm[1] - uy * sep / 2, phi - Math.atan2(hd[1], hd[0])];
-            acc.meet = [Pm[0] + ux * sep / 2, Pm[1] + uy * sep / 2, phi + Math.PI - Math.atan2(ra[1], ra[0])];
+            ZOOM = zoomFor();
+            var hd = hxVec(donor.key), ra = hxVec(PROTOF[acc.key]), sep = (Math.hypot(hd[0], hd[1]) + Math.hypot(ra[0], ra[1]) + 16) * G.s * ZOOM;
+            // the target stays where it is (it turns to face the drop) and the drop's ion comes down beside it, on the
+            // side it comes from; both are kept inside the liquid
+            var Ri = radiusOf(ion.key) * G.s * ZOOM, Rt = radiusOf(tg.key) * G.s * ZOOM;
+            var tP = [tg.x, tg.y], iP = [tg.x + u0[0] * sep, tg.y + u0[1] * sep], lev0 = G.lev(c, b.vol);
+            var dy = Math.max(0, lev0 + 3 + Ri - iP[1], lev0 + 3 + Rt - tP[1]); dy = Math.min(dy, Math.max(0, c.iy1 - 2 - Rt - tP[1]));
+            var xl = c.ix0 + 2, xr = c.px - c.pw / 2 - 2, push = Math.max(0, xl + Ri - iP[0], xl + Rt - tP[0]), room = Math.min(xr - Ri - iP[0], xr - Rt - tP[0]);
+            var dx = push > 0 ? push : room < 0 ? room : 0;
+            tP = [tP[0] + dx, tP[1] + dy]; iP = [iP[0] + dx, iP[1] + dy];
+            var dP = dir > 0 ? tP : iP, aP = dir > 0 ? iP : tP;
+            donor.meet = [dP[0], dP[1], phi - Math.atan2(hd[1], hd[0])];
+            acc.meet = [aP[0], aP[1], phi + Math.PI - Math.atan2(ra[1], ra[0])];
             tg.meet[2] = wrapTo(tg.meet[2], tg.a);
           } else {
             e.kind = 'stay';
@@ -626,6 +637,10 @@
       }
       // the timeline of one drop (ms). An ion that stays mixes at the same moment as a swap would (1025 ms), so the two
       // beakers always count the same drop on the same frame
+      // the two particles that react are drawn larger while they meet and trade the H (on a phone the particles are
+      // small), then go back to their size as they return
+      var ZOOM = 1.45;
+      function zoomFor(){ return G && G.s < 0.75 ? Math.min(1.6, 0.75 / G.s * 1.2) : 1.3; }
       var TM = { sq: 150, fall: 520, meet: 900, xfer: 1150, back: 1600, stay: 1150 };
       function stepEvent(b, e, tn){
         var t = tn - e.t0, ion = e.ion;
@@ -646,14 +661,14 @@
         if(t < TM.meet){
           var w = ease((t - TM.fall) / (TM.meet - TM.fall));
           ion.meet[2] = wrapTo(ion.meet[2], ion.from[2]);
-          [ion, tg].forEach(function(m){ poseAt(m, lerp(m.from[0], m.meet[0], w), lerp(m.from[1], m.meet[1], w), lerp(m.from[2], m.meet[2], w)); });
+          [ion, tg].forEach(function(m){ poseAt(m, lerp(m.from[0], m.meet[0], w), lerp(m.from[1], m.meet[1], w), lerp(m.from[2], m.meet[2], w)); m.zoom = lerp(1, ZOOM, w); });
           return;
         }
         if(!e.xStart){
           e.xStart = true;
           // the H leaves the donor: the donor draws as its base form, the acceptor as its protonated form without that H
-          [ion, tg].forEach(function(m){ poseAt(m, m.meet[0], m.meet[1], m.meet[2]); });
-          var hl = TPL[don.key][HX[don.key]], hp = rot(hl.dx * G.s, hl.dy * G.s, don.a), pk = PROTOF[acc.key], rl = TPL[pk][HX[pk]], rp = rot(rl.dx * G.s, rl.dy * G.s, acc.a);
+          [ion, tg].forEach(function(m){ poseAt(m, m.meet[0], m.meet[1], m.meet[2]); m.zoom = ZOOM; });
+          var zs = G.s * ZOOM, hl = TPL[don.key][HX[don.key]], hp = rot(hl.dx * zs, hl.dy * zs, don.a), pk = PROTOF[acc.key], rl = TPL[pk][HX[pk]], rp = rot(rl.dx * zs, rl.dy * zs, acc.a);
           e.hFrom = [don.x + hp[0], don.y + hp[1]]; e.hTo = [acc.x + rp[0], acc.y + rp[1]]; e.hAt = e.hFrom.slice();
           e.flyH = true; don.drawKey = BASEOF[don.key]; acc.drawKey = pk; acc.hideKey = pk; acc.hide = HX[pk];
         }
@@ -686,11 +701,11 @@
         var r = ease((t - TM.xfer) / (TM.back - TM.xfer)), fa = clamp((t - TM.xfer) / (TM.back - TM.xfer - 80), 0, 1);
         [don, acc].forEach(function(m){
           if(m.key === 'H2O'){ m.alpha = 1 - fa; poseAt(m, m.fadeFrom[0], m.fadeFrom[1] - 10 * fa, m.from[2] + 0.4 * fa); }
-          else poseAt(m, lerp(m.from[0], m.to[0], r), lerp(m.from[1], m.to[1], r), lerp(m.from[2], m.to[2], r));
+          else { poseAt(m, lerp(m.from[0], m.to[0], r), lerp(m.from[1], m.to[1], r), lerp(m.from[2], m.to[2], r)); m.zoom = lerp(ZOOM, 1, r); }
         });
         if(t >= TM.back){
           b.mols = b.mols.filter(function(m){ return !(m.key === 'H2O' && (m === don || m === acc)); });
-          [don, acc].forEach(function(m){ if(m.key !== 'H2O') m.state = 'whole'; });
+          [don, acc].forEach(function(m){ if(m.key !== 'H2O'){ m.state = 'whole'; m.zoom = 1; } });
           CV.baseDirty = true; e.done = true;
         }
       }

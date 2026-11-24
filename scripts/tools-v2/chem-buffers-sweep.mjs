@@ -220,6 +220,9 @@ if (!FRAMES && !PERF) for (const w of WIDTHS) {
     const after = await c.page.evaluate(() => window.__buf2.drawn());
     states++; checks += 2;
     if (after[0].a !== 6 || after[1].oh !== 1) fails.push(`${w} ${theme}: a tap on NaOH did not drop into both beakers (${JSON.stringify(after)})`);
+    // the screen fit again with Start over showing
+    const fit2 = await c.page.evaluate(fitProbe); checks += 6; fit2.forEach(m => fails.push(`${w}x${h} ${theme} screen fit after a drop: ${m}`));
+    if (SHOTS && theme === 'light') await c.page.screenshot({ path: join(SHOTS, `${W4(w)}-${theme}-8-screen.png`) });
     c.errs.forEach(e => fails.push(`${w} ${theme}: console ${e}`));
     await c.ctx.close();
     const q = await open({ w, h, theme, hash: '#quiz' });
