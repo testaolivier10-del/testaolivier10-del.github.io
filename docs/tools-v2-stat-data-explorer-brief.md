@@ -208,3 +208,29 @@ the picker, the stepper, the switch, Start over, Show me how.
 - People at nearby values overlap side by side; on phones a crowd at 10 to 20 minutes reads as a row of overlapping
   figures.
 - On a 375 x 667 phone the boxplot tab's histogram bars are short (about 25 px).
+
+## Review round 1 (2026-11-24): BLOCK, fixed
+`/home/claude/review-stat-data/REVIEW.md`. The statistics, the agreement and nothing dropped held. `origin/claude/tools-v2-all`
+merged in (docs tables kept from both sides); the spec decision is now 22 (the fourth AP® Statistics tool on the kit).
+Must fix:
+1. **M1** Only people with the same value stand on each other's shoulders, so a stack's height is the count at that
+   value; people at nearby values stand beside them, overlapping in depth ("?" says so). The sweep checks that the
+   levels at every value are 0, 1, ..., count − 1.
+2. **M2** On phones (and short desktops) the boxplot tab's boxplot band and histogram are small fixed sizes and the
+   people get the rest of the height; people are at least 15 px wide (sized to the room, at most about 1.8 data steps
+   wide). The sweep checks the drawn width (15 px) and that the people's drawing is larger than the boxplot and the
+   histogram's bars (the plank no longer counts).
+3. **M3** The flag, crate, slat, ropes and posts slide smoothly (eased, at most about 1.2 px a millisecond); a mark's
+   number fades out while it slides and its cause line pill reads "…" until it lands. The frames run checks no mark
+   moves more than 26 px between two frames.
+Should fix, all done: the spec renumbered; the pulse numbers (Q1 66, Q3 74, fences 54 and 86); the tilt worded as the
+code (420 × (mean − tip) ÷ range degrees, at most 6); the brief's decision list has all 16; a drag is read on the level
+scale, so a drop lands under the finger; the boxplot tab's trestles are splayed legs with a rail.
+
+Fix round checks (speed rule): sweep at 360 (with the 360 x 740 and 375 x 667 landings), 375 x 667, 390, 1024 and 1440,
+light and dark (dark asserted), **714 passed, 0 failed** (142 a state set, 144 at 360); frames **77 passed, 0 failed**
+(2,301 frames at 390 and 1440, every one agreeing, no mark jump over 26 px); AP Stats tests 167 pass, content check 0
+failing, `build-apstat`, `build-apcalc`, `build-apmacro --check`, `check-site`, `check-weight`. Perf on a loaded
+machine (load average 5.5 on 2 cores), CPU x4, same run: a person dragged p95 50.0 ms at 390 and 100.1 ms at 1440
+(boxplot tab 33.3 and 49.9); the flagship's fertilizer drag p95 100.1 and 100.0 ms. Shots:
+`/mnt/user-data/outputs/stat-data-explorer-v2/shots-r1/`.

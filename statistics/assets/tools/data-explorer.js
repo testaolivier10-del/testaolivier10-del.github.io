@@ -331,18 +331,13 @@
         g.sdY = g.clothY + g.clothH + (g.phone ? 17 : 20);
         g.stackTop = g.sdY + 40;           // room for the knob above the highest column
       } else {
-        g.signY = pad + 2; g.signH = g.phone ? (H < 380 ? 20 : 22) : 26;
-        var avail = H - 2 * pad - g.signH;
-        g.stackTop = g.signY + g.signH + (g.phone ? (H < 380 ? 22 : 32) : 40);
-        if(g.phone){
-          // phones: the people get the room; the boxplot band and the histogram take what they need
-          g.boxH = H < 380 ? 48 : 66;
-          var hh = H < 380 ? 64 : clamp(Math.round(H * 0.17), 64, 96);
-          g.PY = H - pad - 4 - hh - 6 - g.boxH - 6 - g.pt;
-        } else {
-          g.PY = g.signY + g.signH + Math.round(avail * (H < 560 ? 0.36 : 0.42));
-          g.boxH = H < 560 ? 88 : 100;
-        }
+        // the boxplot band and the histogram take fixed small sizes; the people get the rest of the height
+        var cpt = g.phone ? H < 380 : H < 420;
+        g.signY = pad + 2; g.signH = g.phone ? (H < 380 ? 20 : 22) : cpt ? 24 : 26;
+        g.stackTop = g.signY + g.signH + (g.phone ? (H < 380 ? 22 : 32) : cpt ? 30 : 40);
+        g.boxH = g.phone ? (H < 380 ? 48 : 66) : cpt ? 70 : H < 560 ? 88 : 100;
+        var hh = g.phone ? (H < 380 ? 64 : clamp(Math.round(H * 0.17), 64, 96)) : clamp(Math.round(H * 0.22), 78, 150);
+        g.PY = H - pad - 4 - hh - 6 - g.boxH - 6 - g.pt;
         g.boxTop = g.PY + g.pt + 6;
         g.histTop = g.boxTop + g.boxH + 6; g.histBot = H - pad - 4;
       }
@@ -631,7 +626,7 @@
       while(ol.length < groups.length) ol.push(mk('text', 'dx2-olab', null, gBoxp));
       var taken = [[clamp(xm, G.pad + wm / 2 + 2, W - G.pad - wm / 2 - 2) - wm / 2, yTop - fsQ, wm, fsQ + 2], [c1 - w1 / 2, yBot - fsQ, w1, fsQ + 2], [c3 - w3 / 2, yBot - fsQ, w3, fsQ + 2], [x1, cy - bh / 2, x3 - x1, bh]];
       outs.forEach(function(v){ var r0 = G.phone ? 4.5 : 5.5; taken.push([xv(v) - r0, cy - r0, 2 * r0, 2 * r0]); });
-      var free = function(b){ return b[0] >= G.pad && b[0] + b[2] <= W - G.pad && !taken.some(function(q){ return b[0] < q[0] + q[2] + 5 && q[0] < b[0] + b[2] + 5 && b[1] < q[1] + q[3] + 2 && q[1] < b[1] + b[3] + 2; }); };
+      var free = function(b){ return b[0] >= G.pad && b[0] + b[2] <= W - G.pad && b[1] >= G.PY + G.pt + 3 && !taken.some(function(q){ return b[0] < q[0] + q[2] + 5 && q[0] < b[0] + b[2] + 5 && b[1] < q[1] + q[3] + 2 && q[1] < b[1] + b[3] + 2; }); };
       ol.forEach(function(e, i){
         var g = groups[i]; if(!g){ hideEl(e); return; }
         var t = g.n > 1 ? 'outliers' : 'outlier', w = tw(t, fsQ, 800), xc = (g.x0 + g.x1) / 2, h = fsQ + 2;
@@ -647,13 +642,13 @@
     var bars = [], barLabs = [];
     function paintHist(s){
       var B = X.bins(s.xs, X.binStart(lo, S.bin), S.bin), mx = Math.max.apply(null, B.counts.concat([1]));
-      var top = G.histTop + (G.H < 380 ? 20 : G.phone ? 26 : 30), base = G.histBot - 5, fs = G.phone ? 11.5 : 12.5;
+      var fs = G.phone ? 11.5 : 12.5, top = G.histTop + (G.H < 380 ? 17 : G.phone ? 21 : 24) + fs + 12, base = G.histBot - 5;
       while(bars.length < B.counts.length){ bars.push(mk('rect', 'dx2-bar', null, gHist)); barLabs.push(mk('text', 'dx2-blab', null, gHist)); }
       var hb = LB.hbase || (LB.hbase = mk('line', 'dx2-hbase', null, gHist)); at(hb, { x1: G.l - 4, x2: G.r + 4, y1: base, y2: base });
       bars.forEach(function(r, j){
         var c = B.counts[j], lb = barLabs[j];
         if(j >= B.counts.length || !c){ hideEl(r); hideEl(lb); return; }
-        var a = B.edges[j][0], b = Math.min(B.edges[j][1], hi + S.bin), x0 = xv(a), x1 = xv(b), h = c / mx * (base - top - fs - 4), y = base - h;
+        var a = B.edges[j][0], b = Math.min(B.edges[j][1], hi + S.bin), x0 = xv(a), x1 = xv(b), h = c / mx * (base - top), y = base - h;
         showEl(r); at(r, { x: x0 + 0.6, y: y, width: Math.max(0.6, x1 - x0 - 1.2), height: h, rx: 2 });
         if(x1 - x0 >= tw(String(c), fs, 800) + 6){ showEl(lb); at(lb, { x: (x0 + x1) / 2, y: y - 4, 'text-anchor': 'middle', style: 'font-size:' + fs + 'px' }); txt(lb, String(c)); } else hideEl(lb);
       });

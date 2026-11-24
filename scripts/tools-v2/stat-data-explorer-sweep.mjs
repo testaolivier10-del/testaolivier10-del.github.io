@@ -19,7 +19,7 @@
    reduced motion.
    --perf: CPU x4 frame times of a person dragged out and back at 390 and 1440, beside the flagship's fertilizer drag.
    --shots <dir>: a picture of every state.
-   Usage: node scripts/tools-v2/stat-data-explorer-sweep.mjs [--width <px>] [--frames] [--perf] [--shots <dir>]
+   Usage: node scripts/tools-v2/stat-data-explorer-sweep.mjs [--width <px> [--height <px>]] [--frames] [--perf] [--shots <dir>]
    With no flag it runs each of the ten widths in its own process, then the frame checks.
    Needs playwright (PW_ROOT names a folder whose node_modules has it) and Chromium (CHROMIUM_PATH). */
 import { createServer } from 'node:http';
@@ -126,7 +126,7 @@ const AGREE = () => {
   if (window.__fr) {
     const key = tab + ':' + X.S.set.id + ':' + G.W + ':' + (window.__jumpReset || 0), xs = {};
     const ax = (sel, a) => { const e = document.querySelector(sel); if (e && e.style.display !== 'none' && e.getBoundingClientRect().width) xs[sel + a] = +e.getAttribute(a); };
-    ax('.dx2-pole', 'x1'); ax('.dx2-crate', 'x'); ax('.dx2-mslat', 'x1'); document.querySelectorAll('.dx2-post').forEach((e, k) => { if (e.style.display !== 'none') xs['post' + k] = +e.getAttribute('x'); });
+    ax('.dx2-pole', 'x1'); ax('.dx2-crate', 'x'); ax('.dx2-mslat', 'x1'); document.querySelectorAll('.dx2-post').forEach((e, k) => { if (e.style.display !== 'none' && e.getBoundingClientRect().width) xs['post' + k] = +e.getAttribute('x'); });
     const c = document.querySelector('.dx2-crate'); if (c && c.getBoundingClientRect().width) xs.crateR = +c.getAttribute('x') + +c.getAttribute('width');
     const pv = window.__marks; if (pv && pv.key === key) Object.keys(xs).forEach(k => { if (k in pv.xs && Math.abs(xs[k] - pv.xs[k]) > 26) out.push(`${k} jumped ${Math.abs(xs[k] - pv.xs[k]).toFixed(1)} px in one frame`); });
     window.__marks = { key, xs };
@@ -181,7 +181,7 @@ const AGREE = () => {
     if (!busy) { near(fen[0], S.fences[0], 0.006, 'lower fence at rest'); near(fen[1], S.fences[1], 0.006, 'upper fence at rest'); }
     // the rings: an outlier ring exactly on the people past the posts as drawn
     let rings = 0;
-    byEl.forEach((v, g) => { const out1 = g.classList.contains('is-out'), past = v < fen[0] - 1e-9 || v > fen[1] + 1e-9; if (out1) rings++; if (out1 !== past) out.push(`person at ${v}: ring ${out1} but past a post ${past} (fences ${fen})`); });
+    byEl.forEach((v, g) => { const out1 = g.classList.contains('is-out'), past = v < fen[0] - 1e-9 || v > fen[1] + 1e-9, edge = Math.min(Math.abs(v - fen[0]), Math.abs(v - fen[1])) < pxTol; if (out1) rings++; if (out1 !== past && !edge) out.push(`person at ${v}: ring ${out1} but past a post ${past} (fences ${fen})`); });
     const dots = [...document.querySelectorAll('.dx2-odot')].filter(e => e.style.display !== 'none');
     if (dots.length !== rings) out.push(`${dots.length} outlier dots vs ${rings} rings`);
     const ol = [...document.querySelectorAll('.dx2-olab')].filter(e => e.style.display !== 'none');
@@ -270,8 +270,8 @@ const FIT = () => {
 
 if (ONE) {
   const w = +ONE;
-  const h = w < 600 ? 844 : w <= 820 ? 1024 : w === 1024 ? 768 : w === 1280 ? 800 : w === 1920 ? 1080 : 900;
-  if (w === 360) {
+  const h = +arg('--height', 0) || (w < 600 ? 844 : w <= 820 ? 1024 : w === 1024 ? 768 : w === 1280 ? 800 : w === 1920 ? 1080 : 900);
+  if (w === 360 && !arg('--height', 0)) {
     for (const [sw, sh] of [[360, 740], [375, 667]]) {
       const { browser, page } = await open(sw, sh, false);
       const f = await page.evaluate(FIT);
@@ -280,7 +280,7 @@ if (ONE) {
     }
   }
   for (const dark of [false, true]) {
-    const tag = `${w}-${dark ? 'dark' : 'light'}`;
+    const tag = `${w}${arg('--height', 0) ? 'x' + h : ''}-${dark ? 'dark' : 'light'}`;
     const { browser, page, errs } = await open(w, h, dark);
     const X = (fn, a) => page.evaluate(fn, a);
     const shot = async (n) => { if (SHOTS) await page.screenshot({ path: `${SHOTS}/sweep-${tag}-${n}.png` }); };
