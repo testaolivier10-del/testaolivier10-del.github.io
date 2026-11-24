@@ -166,3 +166,30 @@ Science points and their sources:
 
 ## Checks run (2026-11-23)
 See the bottom of this file for the numbers of the last run.
+- `node --test scripts/test/appsych-*.test.mjs`: 153 pass (new: the short cause line phrases). `check-appsych-content
+  --check`, `build-appsych --check`, `check-site` (OK; the British "colour" in "?" fixed), `check-weight` (all 623
+  budgets; brain-map.js 29.5 KB gzipped against 17.2 KB before; the kit bucket 33.3 of 34 KB).
+- `scripts/check-tool-use.mjs` with a local copy listing this page: tool-open, tool-touch, tool-mode, tool-use, frame
+  v2; nothing sent under automation. Lab practical sweep at 1440 still 160 of 160 with the `K.spots` change.
+- Sweep (`brain-map-sweep.mjs`, one width per process, light and dark, ten widths): 0 failing at every width (211
+  checks at phone widths, 149 at 1024 and below, 146 above).
+- Frames (`brain-map-frames.mjs`): 663 frames, 26 checks, 0 failing (every 50 ms of all four split cases at 390 and
+  1440; damage words in real time; leaving mid run; reduced motion). It caught three real slips first (the
+  hemisphere named before it glowed, a stale bubble, a CSS opacity that kept the light rays drawn); all fixed.
+- Perf at CPU x4 (`brain-map-perf.mjs`, machine load 11 on 2 cores, same run as the flagship): split flash median
+  16.7 ms, p95 33 ms at 390 and 1440; eight taps with damage on: median 16.7 ms, p95 67 to 167 ms; main thread 3 to
+  4.3 ms a frame. The flagship's knob drag in the same run: median 50 ms, p95 100 ms. The moving layer was split
+  from the static brain after the first run (1440 outside went from median 50 ms to 16.7 ms).
+- Preview `/mnt/user-data/outputs/brain-map-v2/index.html`; 120 shots in `shots/` at 1440, 768 and 390, light and
+  dark (landing, picks, damage, mid grow and mid lesion, split mid run at four moments and the end of each case,
+  Test yourself).
+
+## Not done, and what I am not happy with
+- The folds are drawn streamlines: they read as a brain, but as an illustration, not an atlas photograph.
+- The tap-a-part p95 is above 50 ms on this loaded machine (the card and cause line rebuild on each tap); time it
+  on a quiet machine.
+- The split-brain scene's arms are straight tubes and the body figure is flat; the hemisphere labels sit beside the
+  head rather than on the hemispheres.
+- On phones the Inside view's fifteen pins are tight (they pass the 18 px rule; a tap on the part itself helps).
+- Test yourself is unchanged apart from its figures; a "find it" part on the picture (`K.spots.ask`) would be a
+  natural addition later.

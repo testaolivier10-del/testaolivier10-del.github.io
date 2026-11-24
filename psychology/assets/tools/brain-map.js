@@ -678,9 +678,9 @@
     function drawBrain(){
       var off = (FW - VW) / 2;
       svg.setAttribute('viewBox', '0 0 ' + FW + ' ' + VH);
-      svg.innerHTML = '<g transform="translate(' + off + ' 0)">' + brainSvg(view, { pid: 'bmx' + view, fx: true, px: px, head: FW >= 1180 }) + '</g>';
+      svg.innerHTML = '<g transform="translate(' + off + ' 0)">' + brainSvg(view, { pid: 'bmx' + view, fx: true, px: px, head: FW >= 1300 }) + '</g>';
       fxl.setAttribute('viewBox', '0 0 ' + FW + ' ' + VH); fxl.hidden = false;
-      fxl.innerHTML = '<g transform="translate(' + off + ' 0)">' + fxSvg(view, 'bmf' + view, { px: px, bx: FW >= 1180 ? Math.round(1000 + Math.min(off * 0.5, 170)) : 0 }) + '</g>';
+      fxl.innerHTML = '<g transform="translate(' + off + ' 0)">' + fxSvg(view, 'bmf' + view, { px: px, bx: FW >= 1300 ? Math.round(Math.min(1000 + off * 0.55, 1000 + off - 10 - 64 / px)) : 0 }) + '</g>';
       fxEl = {}; fxl.querySelectorAll('.bm-fx').forEach(function(e){ fxEl[e.getAttribute('data-lv')] = e; });
       svg.setAttribute('aria-label', view === 'outside' ? 'The left hemisphere seen from the left, front on the left: the four lobes, the motor and touch strips, the language areas, the cerebellum and the brainstem.' :
         'The brain cut down the middle, seen from the inside, front on the left: the corpus callosum, thalamus, hypothalamus, pituitary gland, brainstem and cerebellum, and the hippocampus, amygdala and reward center seen through the tissue.');
@@ -722,7 +722,7 @@
       dbtn.disabled = !sel; dbtn.setAttribute('aria-pressed', String(dmg && !!sel));
       // the words wait for the picture: a lesion's effect is named once the damage has spread over half the part
       var late = dmg && animate && !K.reduced() && !!sel;
-      if(!late) line();
+      if(!late) line(); else cause.set([{ t: R[sel].name, role: 'k' + (lobeOf(sel) || 'x') }]);   // the name at once, the damage once it shows
       if(!sel || !g.reg[sel]) return;
       var r = g.reg[sel], host = fxEl[r.lv]; if(!host) return;
       var pid = 'bmf' + view, gid = pid + 'grow' + (++S.grow);
@@ -962,7 +962,8 @@
     fin.addEventListener('keydown', function(e){ if(e.key === 'Escape'){ fin.value = ''; openFind(false); fb.focus(); } });
     var ft = 0;
     fin.addEventListener('input', function(){ clearTimeout(ft); ft = setTimeout(function(){ if(fin.value.trim().length >= 3) doFind(); else form.classList.remove('is-miss'); }, 320); });
-    plate.addEventListener('click', function(e){ if(e.target === plate && !isSplit() && spots[view] && spots[view].picked()) spots[view].pick(null, 'tap'); });
+    // a tap on the plate or on the picture beside the brain (the head, the backdrop) closes the card
+    plate.addEventListener('click', function(e){ if((e.target === plate || (pic.contains(e.target) && !e.target.closest('.tk2-layer'))) && !isSplit() && spots[view] && spots[view].picked()) spots[view].pick(null, 'tap'); });
 
     /* ------------------------------------------------------ cue */
     function makeCue(){
