@@ -247,5 +247,93 @@
         "pct-1": -27.5
       }
     }
-  ]
+  ],
+  "explore": {
+    "about": "Tools v2 Explore (docs/tools-v2-rates-brief.md). run: one catalase run, oxygen collected over a water trough in an upside down measuring cylinder; the curve through the readings is a monotone cubic (rates.js smooth()), so it passes exactly through every table value. core: one potato core weighed before and after a day in solution (mass in g). The core snaps to whole percents of its start (0.04 g) and ranges from −30% to +20%, the usual range for potato cores after a day in sucrose solutions or water.",
+    "tabs": [
+      {
+        "id": "avg",
+        "label": "Rate over time",
+        "short": "Rate"
+      },
+      {
+        "id": "moment",
+        "label": "Rate at a moment",
+        "short": "At a moment"
+      },
+      {
+        "id": "pct",
+        "label": "Percent change",
+        "short": "Percent"
+      }
+    ],
+    "purpose": {
+      "avg": "See why a rate is the slope of the graph",
+      "moment": "See the rate fall as the curve flattens",
+      "pct": "See why percent change divides by the start"
+    },
+    "cue": {
+      "avg": "Drag the end point",
+      "moment": "Drag along the curve",
+      "pct": "Drag the core taller or shorter"
+    },
+    "run": {
+      "label": "Oxygen",
+      "unitY": "mL",
+      "unitT": "min",
+      "times": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "values": [
+        0,
+        4.9,
+        8.3,
+        10.5,
+        12.0,
+        13.0
+      ],
+      "dp": 1,
+      "d": 2,
+      "open": [
+        0,
+        2
+      ],
+      "moment": 1.5,
+      "what": "Catalase + H₂O₂",
+      "why": "The reaction slows as the hydrogen peroxide (the substrate) is used up."
+    },
+    "core": {
+      "label": "Potato core",
+      "unit": "g",
+      "dp": 2,
+      "start": 4.0,
+      "open": 4.48,
+      "min": 2.8,
+      "max": 4.8
+    },
+    "goals": [
+      {
+        "id": "early",
+        "text": "Find the rate over the first minute."
+      },
+      {
+        "id": "late",
+        "text": "Find a rate near the end: is the reaction speeding up or slowing down?"
+      },
+      {
+        "id": "whole",
+        "text": "Take the rate over the whole run: an average hides how the rate changed."
+      },
+      {
+        "id": "loss",
+        "text": "In Percent change, make the core lose 10% of its start mass."
+      }
+    ],
+    "refHtml": "<h3>The formulas</h3><p class=\"bt-eq\">rate = Δy / Δt = (y₂ − y₁) / (t₂ − t₁)</p><p>The AP® Biology formula sheet writes a rate as <b>dY/dt</b>: dY is the amount of change and dt is the change in time. From a data table, take the change between two readings and divide by the time between them. The unit is always the amount per unit of time (here mL/min).</p><p class=\"bt-eq\">percent change = (final − initial) / initial × 100</p><p>Divide by the <b>initial</b> (start) value, and keep the sign: a loss is negative.</p><h3>Average rate and rate at a moment</h3><p>The slope between two readings is the <b>average</b> rate over that interval. The rate at one moment is the slope of the <b>tangent</b>, a line that just touches the curve there: pick any run along it, read the rise, and divide. Here the curve is a smooth line through the six readings, so a tangent's slope is an estimate.</p><h3>Why this run slows down</h3><p>Catalase breaks hydrogen peroxide into water and oxygen. As the hydrogen peroxide is used up, fewer substrate molecules meet an active site each second, so less oxygen is made each minute: the curve flattens and the rate falls.</p>"
+  }
 }

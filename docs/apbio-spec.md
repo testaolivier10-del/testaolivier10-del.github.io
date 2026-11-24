@@ -436,6 +436,14 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    Test yourself, "Problems" (unchanged content, grading and record ids; its figure gained drawings of what was counted
    and the formula sheet table); the old goals are Test yourself, "Challenges". Still free. Open point:
    chi-crit-p01-df1 in `docs/apbio-needs-author.md`.
+39. (2026-11-19, `docs/tools-v2-rates-brief.md`) **Rates and percent change rebuilt to tools v2** (branch
+   `claude/tools-v2-rates`, waiting for the independent review; not merged). Explore: three tabs on a drawn bench.
+   Rate over time: the catalase apparatus (flask, delivery tube, cylinder over a trough, timer, readings on a
+   clipboard) with its graph; drag the end of an interval along the readings and the slope triangle, the oxygen band
+   in the cylinder and Δy ÷ Δt agree on every frame. Rate at a moment: a tangent on a smooth curve through the
+   readings. Percent change: two potato cores on balances, a ruler in tenths of the start. Test yourself: Problems
+   (the old Practice, unchanged, same record ids) and Challenges (the old goals and one for percent change). Still
+   free. Open points: needs-author `rates-formula-sheet`, `rates-explore-catalase`, `rates-tangent-estimate`.
 
 ## 4. Map format (Phase 0)
 
