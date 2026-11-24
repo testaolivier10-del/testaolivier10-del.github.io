@@ -193,3 +193,8 @@ and 1440 (7650 and 7379 frames): 0 failures; AP Psych tests 153 pass; content ch
 - The brain map's adapter round (local branch `claude/tools-v2-brain-map` at 68e0fd31: the kit loader inside
   `ApPsychTools.kit2`, one `shown()` call) is merged; the neuron's own loader is gone and it calls `T.kit2` directly.
   That branch was committed but not yet pushed when merged; its push brings the same commits.
+- Checks (integration round): full sweep at all ten widths, light and dark, 90 states each: 0 failures; frames at
+  390 and 1440 (7670 and 7768 frames): 0 failures; AP Psych tests 153 pass; `build-appsych --check`, `check-weight`
+  and `check-site`: pass. Perf at CPU x4: every neuron run and drag median 16.7 ms, p95 16.8 to 50 ms at 390 and
+  1440 (the Synapse run 33.3 at 1440); the flagship in the same process median 33.3, p95 67 to 83. One 1440 run went
+  over while the machine's load average was 10.9; a rerun was clean.
