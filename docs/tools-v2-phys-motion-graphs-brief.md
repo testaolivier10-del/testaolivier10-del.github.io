@@ -40,7 +40,7 @@ the cause line reads them off the drawn frame.
    the cart itself), or hold the left or right arrow key (Shift is slow). The first touch starts a 10 s recording:
    the example's traces fade, the detector pings, the traces draw live. v and a are measured from the recorded
    positions (least squares slopes over ±0.2 s and ±0.4 s, positions every 0.05 s, said in "?"). After the run the
-   takeaway: "Where x-t is steepest, v is biggest; where v-t is flat, a is zero." Drag along the graphs (the kit's
+   takeaway: "Where x-t is steepest, the cart is fastest; where v-t is flat, a is zero." Drag along the graphs (the kit's
    scrub, knob above the x graph, or its arrow keys) and the cart goes back to that moment; Replay plays the run
    again. Cause line: "at 4.2 s: v +1.2 m/s + a −0.4 m/s² → slowing down" (speeding up, slowing down, steady to the
    left or right, at rest, turning around; "Example, at 10.0 s:" on the example).
@@ -137,3 +137,30 @@ same without the example and the scrub, with the 2 tip knobs and the quiet cart 
 - The wall above the arrows is plain (room for the a tip's knob).
 - A Match problem's link (`?seed=`) opens a problem of any kind, since a link carries no kind (the old Match had no
   link at all).
+
+## Review round 1 (2026-11-24, `/home/claude/review-phys-motion/REVIEW.md`, BLOCK): what changed
+- M1 the words at v = 0 read the drawn v around the cursor: "turning around" only where it changes sign; otherwise
+  "starting from rest", "stopping" or "at rest" (the Example at 0 s says "starting from rest"). The sweep asserts a
+  sign change around the cursor whenever it says "turning around".
+- M2 one a everywhere: a new v₀ or start keeps the run's pieces; a new a at the start replaces them; the a knob, the
+  a arrow, its aria text and the cause line all read the piece drawn now (stopped: the first). The cause line names
+  the pieces: "a −0.3, then +0.5 m/s² at 1.6 s". The sweep asserts the a knob's value equals the drawn arrow.
+- M3 the first visit cue goes when any run starts (Run, Replay, a let go).
+- M4 the Set landing is v₀ +2.0 m/s, a −0.4 m/s² (turns at 5.0 s, back at the start at 10 s), and each tip's knob
+  sits just past its arrow's tip (18 px), so a short arrow is never under its knob; a press within 18 px of the cart's
+  centre is zero. The arrow's name goes to the tail side (left at zero). The cue reads "Drag a tip" (fits 360 px).
+- M5 the takeaway and the tour: "the cart is fastest" where x-t is steepest (speed, not velocity).
+- M6 Match on a velocity target: "velocity above / below the target" (not a direction).
+- S(a) Match hides its problem code and link (a link carries no kind). S(b) Run becomes Pause, which holds the
+  moment (cart, arrows, tangents, area and words stay; the a tip still starts a new piece there), then Resume (logged).
+  S(c) the graph words have a 6 px halo. S(d) Match draws no tangents, area or their words. S(e) a hand drive's first
+  0.6 s reads "measuring" (a's window is not full). S(f) a turn and an end stop are both named ("turns at 5.0 s, end
+  stop at 8.8 s"). S(g) "slope = v" and "slope = a" have more places to sit (a short panel at t = 0). S(h) perf: with
+  the cached frames, 1440 p95 33.4 ms (flagship 83.3) in this round's run. S(i) a bigger cart on a desktop (7.5% of the
+  stage's width, up to 128 px) and the wall in panels with a skirting line. S(j) left as is (no force push).
+- The Match figure watches its stage's height (a phone's frame settles after it is placed), so it never runs under
+  the question.
+- Fix round: sweep at 360, 390, 1024, 1440, light and real dark, 0 failures (8 runs); frames at 390 light, 1440 light,
+  1024 dark, about 1,630 frames each, 0 failures (Show the answer within 0.1 px of the target); perf CPU x4: 390
+  16.7 / 16.8 ms (flagship 33.3 / 66.7), 1440 16.7 / 33.4 ms (flagship 50.0 / 83.3); `check-site`, `build-apphys
+  --check`, the motion graphs tests pass.

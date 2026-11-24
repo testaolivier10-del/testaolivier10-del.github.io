@@ -123,8 +123,9 @@ const probe = (o) => {
       const kr = R(kn), arr = svg.querySelector(sel), d = arr.getAttribute('d'), sv = R(svg);
       const kx = (kr.l + kr.w / 2 - sv.l) / k;
       const nums = d ? d.match(/-?[\d.]+/g).map(Number) : null, tipX = nums ? nums[4] : null;
-      const want = tipX != null ? tipX : (svg.querySelector('.mg2-cart').transform.baseVal.consolidate().matrix.e);
-      if (Math.abs(kx - want) > 1.5) out.push('a knob is not on its arrow’s tip (' + kx.toFixed(1) + ' vs ' + want.toFixed(1) + ')');
+      const cxx = svg.querySelector('.mg2-cart').transform.baseVal.consolidate().matrix.e;
+      const want = tipX != null ? tipX + (tipX < cxx ? -18 : 18) : cxx + 18;   // just past the tip
+      if (Math.abs(kx - want) > 1.5) out.push('a knob is not just past its arrow’s tip (' + kx.toFixed(1) + ' vs ' + want.toFixed(1) + ')');
     });
   }
   // the cause line: v, a and the result word from the drawn frame
@@ -139,13 +140,24 @@ const probe = (o) => {
         if (inRange('v', dv) && Math.abs(cv - dv) > 0.05 + tol('v')) out.push(`cause line v ${cv} but the drawn v is ${dv.toFixed(2)}`);
         if (inRange('a', da) && Math.abs(ca - da) > 0.05 + tol('a')) out.push(`cause line a ${ca} but the drawn a is ${da.toFixed(2)}`);
         if (ct != null && Math.abs(ct - L.curT()) > 0.051) out.push(`cause line time ${ct} but the cursor is at ${L.curT().toFixed(2)}`);
-        const ex = !!s.exact, ev = ex ? 0.02 : 0.08, ea = ex ? 0.02 : 0.4, d = Math.abs(va) < ev ? 0 : Math.sign(va), ad = Math.abs(aa) < ea ? 0 : Math.sign(aa);
-        const want = !d ? (ad ? 'turn' : 'rest') : !ad ? 'const' : ad === d ? 'up' : 'down';
-        if (res !== want) out.push(`result ${res} for the drawn v ${va.toFixed(2)}, a ${aa.toFixed(2)} (want ${want})`);
+        const ex = !!s.exact, ev = ex ? 0.02 : 0.08, ea = ex ? 0.02 : 0.4, d = Math.abs(va) < ev ? 0 : Math.sign(va), ad = Math.abs(aa) < ea ? 0 : Math.sign(aa), t = L.curT();
+        const vAt = tt => { const i = s.t.findIndex(q => q >= tt - 1e-9); return i <= 0 ? s.v[0] : s.v[i - 1] + (s.v[i] - s.v[i - 1]) * (tt - s.t[i - 1]) / ((s.t[i] - s.t[i - 1]) || 1); };
+        if (res === 'meas') { if (ex || t >= 0.6) out.push('"measuring" outside the first 0.6 s of a hand drive'); }
+        else if (!d) {
+          if (!['turn', 'start', 'stop', 'rest'].includes(res)) out.push(`result ${res} with the drawn v at 0`);
+          // "turning around" only where the drawn v changes sign around the cursor
+          if (res === 'turn') { const b = vAt(Math.max(0, t - 0.35)), f = vAt(Math.min(s.t[s.t.length - 1], t + 0.35)); if (!(b * f < 0)) out.push(`"turning around" where v does not change sign (${b.toFixed(2)} to ${f.toFixed(2)})`); }
+        } else {
+          const want = !ad ? 'const' : ad === d ? 'up' : 'down';
+          if (res !== want) out.push(`result ${res} for the drawn v ${va.toFixed(2)}, a ${aa.toFixed(2)} (want ${want})`);
+        }
       }
     } else {
-      const se = st.set, cv = num(/v₀ ([+−-]?[\d.]+) m\/s/), ca = num(/a ([+−-]?[\d.]+) m\/s²/);
-      if (cv !== +se.v0.toFixed(1) || ca !== +se.a.toFixed(1)) out.push(`cause line ${cause} for v₀ ${se.v0}, a ${se.a}`);
+      const se = st.set, cv = num(/v₀ ([+−-]?[\d.]+) m\/s/), ca = num(/a ([+−-]?[\d.]+)/);
+      if (cv !== +se.v0.toFixed(1) || ca !== +se.segs[0].a.toFixed(1)) out.push(`cause line ${cause} for v₀ ${se.v0}, a ${se.segs[0].a}`);
+      // one a everywhere: the a knob reads the drawn a
+      const akn = [...scene.querySelectorAll('.tk2-handle .tk2-knob')].find(e => /Acceleration/.test(e.getAttribute('aria-label') || ''));
+      if (akn && shown(akn) && akn.style.visibility !== 'hidden' && !st.back && Math.abs(+akn.getAttribute('aria-valuenow') - aa) > 1e-6) out.push(`the a knob says ${akn.getAttribute('aria-valuenow')}, the drawn a arrow ${aa}`);
       // before a run, the arrows are v₀ and a
       if (!st.play && !st.back && (Math.abs(va - se.v0) > 1e-6 || Math.abs(aa - se.segs[0].a) > 1e-6)) out.push('the arrows are not v₀ and a before the run');
       const tm = /turns at ([\d.]+) s/.exec(cause);
@@ -158,7 +170,8 @@ const probe = (o) => {
       // the newest piece of the run starts at its t0 with the drawn v there
       const t0 = se.segs[se.segs.length - 1].t0, run = se.run; let v1 = se.v0;
       if (t0 > 0) { const i = run.t.findIndex(tt => tt >= t0 - 1e-9); v1 = i <= 0 ? run.v[0] : run.v[i - 1] + (run.v[i] - run.v[i - 1]) * (t0 - run.t[i - 1]) / ((run.t[i] - run.t[i - 1]) || 1); v1 = +v1.toFixed(6); }
-      const want = Math.abs(v1) < 1e-9 && Math.abs(se.a) < 1e-9 ? 'rest' : Math.abs(se.a) < 1e-9 ? 'const' : Math.abs(v1) < 1e-9 ? 'up' : v1 * se.a > 0 ? 'up' : 'down';
+      const aL = se.segs[se.segs.length - 1].a;
+      const want = Math.abs(v1) < 1e-9 && Math.abs(aL) < 1e-9 ? 'rest' : Math.abs(aL) < 1e-9 ? 'const' : Math.abs(v1) < 1e-9 ? 'up' : v1 * aL > 0 ? 'up' : 'down';
       if (res.split(' ')[0] !== want) out.push(`Set result ${res} for v₀ ${se.v0}, a ${se.a}`);
     }
   }
@@ -379,8 +392,8 @@ async function runFrames(w, h) {
     await page.click('.ls-drill button:has-text("Show the answer")').catch(() => {});
     await page.waitForTimeout(10800);
     const sc = await page.evaluate(() => { const L = document.querySelector('.mg2-mfig').__mg.lab, s = L.series(), M = window.ApPhysMath.motionGraphs, tg = L.st && document.querySelector('.mg2-target') ? null : null; return { end: s.t[s.t.length - 1], n: s.t.length }; });
-    const fit = await page.evaluate(() => { const svg = document.querySelector('.mg2-mfig svg'), tp = svg.querySelector('.mg2-target').getAttribute('points').split(' ').map(p => p.split(',').map(Number)), cls = svg.querySelector('.mg2-pbg.is-target') ? [...svg.querySelectorAll('.mg2-pbg')].indexOf(svg.querySelector('.mg2-pbg.is-target')) : 0;
-      const tr = svg.querySelectorAll('.mg2-tr')[cls].getAttribute('points').split(' ').filter(Boolean).map(p => p.split(',').map(Number));
+    const fit = await page.evaluate(() => { const svg = document.querySelector('.mg2-mfig svg'), tp = svg.querySelector('.mg2-target').getAttribute('points').split(' ').map(p => p.split(',').map(Number)), kind = /c([xva])\)$/.exec(svg.querySelector('.mg2-target').getAttribute('clip-path'))[1];
+      const tr = svg.querySelector('.mg2-tr.' + { x: 's1', v: 's2', a: 's3' }[kind]).getAttribute('points').split(' ').filter(Boolean).map(p => p.split(',').map(Number));
       let worst = 0; tr.forEach(([x, y]) => { for (let i = 0; i < tp.length - 1; i++) if (x >= tp[i][0] - 0.01 && x <= tp[i + 1][0] + 0.01) { const f = (x - tp[i][0]) / ((tp[i + 1][0] - tp[i][0]) || 1), yt = tp[i][1] + f * (tp[i + 1][1] - tp[i][1]); worst = Math.max(worst, Math.abs(y - yt)); break; } }); return worst; });
     checks++; if (fit > 2.5) fails.push('Match: the shown answer is off its target by ' + fit.toFixed(1) + ' px');
     // the record (once the step is done): motion-graphs:match:<target>, the first try (wrong here)

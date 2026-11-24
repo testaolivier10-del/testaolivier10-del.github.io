@@ -38,7 +38,7 @@
   // resampled every 0.05 s (stated in "?").
   var HV = 0.2, HA = 0.4;
   var EX = { x0: -4, v0: 0, segs: [{ dur: 2, a: 0.6 }, { dur: 2, a: 0 }, { dur: 2, a: -0.6 }, { dur: 2, a: -0.6 }, { dur: 2, a: 0 }] };
-  var SET0 = { x0: -3, v0: 1.5, a: -0.3 };
+  var SET0 = { x0: -3, v0: 2.0, a: -0.4 };
   function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
   function n1(x){ return Math.round(x * 10) / 10; }
   function now(){ return window.performance ? performance.now() : Date.now(); }
@@ -89,10 +89,22 @@
     }
     return out;
   }
-  function describeText(v, a, exact){
+  /* The result word for the drawn moment t of series s. Near v = 0 it reads the drawn v around t: "turning around"
+     only where v changes sign there; "starting from rest" where it grows from rest; "stopping" where it falls to rest. */
+  function describeText(v, a, exact, s, t){
     var ev = exact ? 0.02 : 0.08, ea = exact ? 0.02 : 0.4;
+    // a hand drive's first 0.6 s: a's window is not full yet
+    if(!exact && s && t < HV + HA - 1e-9) return { t: 'measuring', k: 'meas' };
     var dir = Math.abs(v) < ev ? 0 : v > 0 ? 1 : -1, ad = Math.abs(a) < ea ? 0 : a > 0 ? 1 : -1;
-    if(!dir) return ad ? { t: 'turning around', k: 'turn' } : { t: 'at rest', k: 'rest' };
+    if(!dir){
+      if(!s) return { t: 'at rest', k: 'rest' };
+      var end = s.t[s.t.length - 1], dt = exact ? 0.3 : 0.35, ew = exact ? 0.02 : 0.12;
+      var vb = t - dt >= 0 ? at(s, 'v', t - dt) : null, va2 = t + dt <= end ? at(s, 'v', t + dt) : null;
+      if(vb != null && va2 != null && Math.abs(vb) > ew && Math.abs(va2) > ew && vb * va2 < 0) return { t: 'turning around', k: 'turn' };
+      if(va2 != null && Math.abs(va2) > ew && (vb == null || Math.abs(vb) <= ew)) return { t: 'starting from rest', k: 'start' };
+      if(vb != null && Math.abs(vb) > ew) return { t: 'stopping', k: 'stop' };
+      return { t: 'at rest', k: 'rest' };
+    }
     if(!ad) return { t: 'steady to the ' + (dir > 0 ? 'right' : 'left'), k: 'const' };
     return ad === dir ? { t: 'speeding up', k: 'up' } : { t: 'slowing down', k: 'down' };
   }
@@ -160,7 +172,7 @@
     function geo(W, Hin, phone, fitH){
       if(fitH == null) fitH = phone;
       var pad = phone ? 10 : clamp(Math.round(W * 0.025), 16, 36);
-      var cw = phone ? 60 : clamp(Math.round(W * 0.06), 76, 112), ch = Math.round(cw * 0.36), wr = Math.round(cw * 0.12);
+      var cw = phone ? 60 : clamp(Math.round(W * 0.075), 76, 128), ch = Math.round(cw * 0.36), wr = Math.round(cw * 0.12);
       var detW = phone ? 26 : 34;
       var xL = pad + detW + 14 + cw / 2, xR = W - pad - cw / 2 - 10, ppm = (xR - xL) / (TR.max - TR.min);
       // the scene, from the top: room for the a arrow's knob, the v arrow, the cart's knob, the cart, the rail, the bench
@@ -201,6 +213,10 @@
       // the lab: a wall, a bench top and its front edge
       p.push('<rect x="0" y="0" width="' + W + '" height="' + g.benchY + '" fill="url(#' + gid + 'w)"/>');
       for(var yy = 22; yy < g.benchY - 4; yy += 22) p.push('<line class="mg2-tile" x1="0" x2="' + W + '" y1="' + yy + '" y2="' + yy + '"/>');
+      // the lab wall in panels, a skirting board on the bench's line (no object that could be read as a part)
+      var pw2 = g.phone ? 120 : 180;
+      for(var xx2 = pw2; xx2 < W; xx2 += pw2) p.push('<line class="mg2-seam" x1="' + xx2 + '" x2="' + xx2 + '" y1="0" y2="' + g.benchY + '"/>');
+      p.push('<rect class="mg2-skirt" x="0" y="' + (g.benchY - 7) + '" width="' + W + '" height="7"/>');
       p.push('<rect x="0" y="' + g.benchY + '" width="' + W + '" height="' + (g.sceneH - g.benchY) + '" fill="url(#' + gid + 't)"/>');
       p.push('<rect class="mg2-edge" x="0" y="' + (g.sceneH - 4) + '" width="' + W + '" height="4"/>');
       // the track: an aluminum rail with a meter tape on its face, end stops
@@ -309,8 +325,9 @@
       var lv = vz ? 'v = 0' : 'v', la = az ? 'a = 0' : 'a';
       // the arrow's name sits at its tail, on the side away from the tip (the tip is free for its knob and the cue)
       function name(el, txt, len, y, hd){
-        var zero = Math.abs(len) < 0.5, gapK = hd ? Math.max(8, 21 - Math.abs(len)) : 8;
-        var right = zero || len < 0, xx = zero ? cx + (hd ? 22 : 9) : right ? cx + gapK : cx - gapK;
+        // (a tip's knob sits past the tip, on the right at zero: there the name goes left)
+        var zero = Math.abs(len) < 0.5, gapK = 8;
+        var right = zero ? !hd : len < 0, xx = zero ? (hd ? cx - 9 : cx + 9) : right ? cx + gapK : cx - gapK;
         var w = txt.length * 13 * 0.58 + 4;
         if(!right && xx - w < 4){ right = true; xx = cx + len + 8 + (hd ? 16 : 0); }
         if(right && xx + w > g.W - 4){ right = false; xx = cx + Math.min(len, 0) - 8 - (hd ? 16 : 0); }
@@ -340,7 +357,7 @@
       ['x', 'v', 'a'].forEach(function(k){ var d = D.dots[k]; if(!have){ d.setAttribute('cx', -20); return; } d.setAttribute('cx', cxg); d.setAttribute('cy', n1(clamp(gy(k, at(s, k, t)), g.top[k], g.top[k] + g.ph))); });
       var xNow = have ? at(s, 'x', t) : 0, vNow = va.v, aNow = va.a, half = 1.1;
       function tan(el, k, y0, slope){
-        if(!have){ el.setAttribute('x1', -9); el.setAttribute('x2', -9); return; }
+        if(!have || match){ el.setAttribute('x1', -9); el.setAttribute('x2', -9); return; }
         var ta = clamp(t - half, 0, WIN), tb = clamp(t + half, 0, WIN);
         el.setAttribute('x1', n1(gx(ta))); el.setAttribute('x2', n1(gx(tb)));
         el.setAttribute('y1', n1(gy(k, y0 + slope * (ta - t)))); el.setAttribute('y2', n1(gy(k, y0 + slope * (tb - t))));
@@ -349,7 +366,7 @@
       tan(D.tanV, 'x', xNow, vNow); tan(D.tanA, 'v', vNow, aNow);
       var areaD = '', dxArea = 0, ak = lastKey + '|' + t.toFixed(4);
       if(ak === areaKey){ areaD = null; dxArea = areaDx; }
-      else if(have && t > 0.02){
+      else if(have && t > 0.02 && !match){
         var pts2 = ['M' + n1(gx(0)) + ' ' + n1(gy('v', 0))];
         for(var i2 = 0; i2 < s.t.length && s.t[i2] < t; i2++) pts2.push('L' + n1(gx(s.t[i2])) + ' ' + n1(gy('v', s.v[i2])));
         pts2.push('L' + cxg + ' ' + n1(gy('v', vNow)) + 'L' + cxg + ' ' + n1(gy('v', 0)) + 'Z');
@@ -405,12 +422,12 @@
       g.kinds.forEach(function(k){ txt(g.L + 8, g.top[k] + 15, GNAME[k] + ' (' + UNIT[k] + ')', 'mg2-gn ' + CLS[k], 'start', true); });
       if(s && s === exampleRun) txt(g.L + g.pw - 8, g.top.x + 15, 'Example run', 'mg2-w is-ex', 'end', true);
       if(match) txt(g.L + g.pw - 8, g.top[match.kind] + 15, 'target', 'mg2-w is-tg', 'end', true);
-      if(s){
+      if(s && !match){
         var cx = gx(t), right = t < WIN * 0.62;
         // the slopes, by their tangents
         var yx = gy('x', at(s, 'x', t)), yv = gy('v', vNow);
         var tryAt = function(k, y0, label, cls){
-          var sides = right ? [[cx + 12, 'start'], [cx - 12, 'end']] : [[cx - 12, 'end'], [cx + 12, 'start']];
+          var sides = right ? [[cx + 12, 'start'], [cx + 64, 'start'], [cx - 12, 'end'], [cx + 116, 'start']] : [[cx - 12, 'end'], [cx - 64, 'end'], [cx + 12, 'start'], [cx - 116, 'end']];
           var ys = [y0 - 14, y0 + 24, y0 - 30, y0 + 40, g.top[k] + g.ph - 6, g.top[k] + 34];
           for(var j = 0; j < sides.length; j++) for(var i = 0; i < ys.length; i++){ var yy = clamp(ys[i], g.top[k] + 34, g.top[k] + g.ph - 5); if(txt(sides[j][0], yy, label, cls, sides[j][1])) return; }
         };
@@ -478,12 +495,12 @@
 
     /* ---------------------------------------------------------------- the loop (only while something moves) */
     function kick(){ if(!raf){ lastT = 0; raf = requestAnimationFrame(loop); } }
-    function busy(){ return st.drv.rec || !!st.play || !!st.back || st.fade > 0; }
+    function busy(){ return st.drv.rec || (!!st.play && !st.play.paused) || !!st.back || st.fade > 0; }
     function loop(ts){
       raf = 0;
       var dt = lastT ? Math.min(0.05, (ts - lastT) / 1000) : 0; lastT = ts;
       if(st.drv.rec && st.tab === 'drive') driveTick(dt);
-      if(st.play){
+      if(st.play && !st.play.paused){
         st.play.t = Math.min(st.play.end, st.play.t + dt);
         st.cursor = st.play.t;
         if(st.play.t >= st.play.end - 1e-9){ var pl = st.play; st.play = null; playEnded(pl); }
@@ -503,15 +520,18 @@
       if(raf){ cancelAnimationFrame(raf); raf = 0; }
       lastT = 0;
       if(st.drv.rec){ finishDrive(false); }
-      if(st.play){ var pl = st.play; st.play = null; st.cursor = pl.end; if(pl.kind === 'set'){ st.cursor = 0; } }
+      if(st.play){ var pl = st.play; st.play = null; st.cursor = pl.kind === 'set' ? 0 : pl.end; }
       if(st.back){ st.back = null; st.cursor = 0; }
       st.drv.kv = 0; st.drv.hold = false;
       afterBack();
     }
 
     /* ---------------------------------------------------------------- playing a run (Set v and a; Replay) */
+    /* Pause holds the moment (the old tool's Pause): the cart, its arrows and the cursor stay; Resume goes on. */
+    function pause(on){ if(!st.play) return; st.play.paused = !!on; lastT = 0; if(!on) kick(); afterPlay(); }
     function play(kind){
       var s = series(); if(!s) return;
+      hideCue(false);   // a run never plays under the first visit cue
       if(red()){
         // reduced motion: the end state at once (a short cross fade), then back to the start in Set
         fadeBox(); st.cursor = seriesEnd(s);
@@ -579,13 +599,13 @@
           onInput: function(v){ if(st.drv.rec) return; var s = series(); st.cursor = s ? Math.min(v, seriesEnd(s)) : 0; paint(); tourDid('scrub'); if(o.onState) o.onState(); } });
       } else {
         H_.v = K.handle(layer, { key: 'apphys-motion-graphs-v0', chip: false, label: 'Starting velocity, the velocity arrow’s tip', value: st.set.v0, min: -3, max: 3, step: 0.1,
-          at: function(v){ return [X(st.set.x0) + v * G.vs, G.vY]; }, dir: function(){ return 0; },
+          at: function(v){ return [tipAt(X(st.set.x0), v, G.vs), G.vY]; }, dir: function(){ return 0; },
           pick: function(x){ return tipPick(x, G.vs, -3, 3); },
           valuetext: function(v){ return 'v₀ = ' + sg(v) + ' m/s'; },
           onStart: function(){ hideCue(true); stopRun(); }, onInput: function(v){ setRun({ v0: r1(v) }); }, onEnd: function(){ tourDid('drag'); autoRun(); } });
         H_.a = K.handle(layer, { key: 'apphys-motion-graphs-a', label: 'Acceleration, the acceleration arrow’s tip', value: st.set.a, min: -2, max: 2, step: 0.1, chip: false,
           // while the cart runs this knob rides on the cart's a arrow: a change starts a new piece of the run
-          at: function(v){ return [X(st.play ? cartX() : st.set.x0) + v * G.as, G.aY]; }, dir: function(){ return 0; },
+          at: function(v){ return [tipAt(X(st.play ? cartX() : st.set.x0), v, G.as), G.aY]; }, dir: function(){ return 0; },
           pick: function(x){ return tipPick(x, G.as, -2, 2); },
           valuetext: function(v){ return 'a = ' + sg(v) + ' m/s²'; },
           onStart: function(){ hideCue(true); if(!st.play) stopRun(); }, onInput: function(v){ setRun({ a: r1(v) }); }, onEnd: function(){ tourDid('drag'); if(!st.play) autoRun(); } });
@@ -593,8 +613,15 @@
       placeControls();
       if(foL != null){ var nf = [].slice.call(box.querySelectorAll('.tk2-knob, .tk2-in')).filter(function(e){ return (e.getAttribute('aria-label') || '') === foL; })[0]; if(nf) try{ nf.focus({ preventScroll: true }); }catch(e){} }
     }
+    /* The a of the piece drawn now (stopped at the start, the first piece): the knob, the arrow and its words. */
+    function aShown(){ var sg2 = st.set.segs, t = st.play ? curT() : 0, a0 = sg2[0].a; sg2.forEach(function(q){ if(q.t0 <= t + 1e-9) a0 = q.a; }); return a0; }
+    /* Each tip's knob sits just past its arrow's tip (KO px), so a short arrow is never hidden under it; a press
+       within KO of the cart's centre is zero. */
+    var KO = 18;
+    function tipAt(cx, v, scale){ return cx + v * scale + (v < 0 ? -KO : KO); }
     function tipPick(x, scale, lo, hi){
-      var cx = X(st.play ? cartX() : st.set.x0), v = (clamp(x, 6, G.W - 6) - cx) / scale;
+      var cx = X(st.play ? cartX() : st.set.x0), d = clamp(x, 6, G.W - 6) - cx;
+      var v = d > KO ? (d - KO) / scale : d < -KO ? (d + KO) / scale : 0;
       return clamp(Math.round(v * 10) / 10, lo, hi);
     }
     function placeControls(){
@@ -605,7 +632,7 @@
       if(H_.cart){ H_.cart.value(st.tab === 'drive' ? cartX() : st.set.x0); H_.cart.hide(st.tab === 'set' && running); H_.cart.place(); }
       if(H_.v){ H_.v.value(st.set.v0); H_.v.hide(running); H_.v.place(); }
       // (stopped, the knob sits on the drawn arrow: the first piece's a; running, on the cart's arrow now)
-      if(H_.a){ H_.a.value(st.play ? st.set.a : st.set.segs[0].a); H_.a.hide(!!st.back || st.drv.rec); H_.a.place(); }
+      if(H_.a){ H_.a.value(aShown()); H_.a.hide(!!st.back || st.drv.rec); H_.a.place(); }
       if(scrub){ scrub.place([G.L, G.gTop, G.L + G.pw, G.axisY]); scrub.value(curT()); scrub.el.classList.toggle('is-rec', st.drv.rec); }
     }
     function grabCart(byKey){
@@ -624,17 +651,19 @@
     /* A change of v₀, a or the start: the whole run is redrawn at once. While the cart runs, a change of a starts a
        new straight piece on v-t from that moment (the run so far is kept). */
     function setRun(ch){
+      // a new a at the start replaces the run's pieces; a new v₀ or start keeps them (one a everywhere)
       var s = st.set, live = !!st.play && ch.a != null && ch.v0 == null && ch.x0 == null;
-      if(ch.x0 != null) s.x0 = ch.x0; if(ch.v0 != null) s.v0 = ch.v0; if(ch.a != null) s.a = ch.a;
+      if(ch.x0 != null) s.x0 = ch.x0; if(ch.v0 != null) s.v0 = ch.v0;
       if(live){
         var tc = +curT().toFixed(3);
-        s.segs = s.segs.filter(function(q){ return q.t0 < tc - 1e-9; }).concat([{ t0: tc, a: s.a }]);
-      } else s.segs = [{ t0: 0, a: s.a }];
+        s.segs = s.segs.filter(function(q){ return q.t0 < tc - 1e-9; }).concat([{ t0: tc, a: ch.a }]);
+      } else if(ch.a != null) s.segs = [{ t0: 0, a: ch.a }];
+      s.a = s.segs[0].a;
       s.run = exactRun(s.x0, s.v0, s.segs.map(function(q, i){ return { dur: (i + 1 < s.segs.length ? s.segs[i + 1].t0 : WIN) - q.t0, a: q.a }; }));
       if(live){ st.play.end = seriesEnd(s.run); if(st.play.t >= st.play.end){ var pl = st.play; st.play = null; playEnded(pl); } }
       else st.cursor = 0;
       if(H_.v){ H_.v.place(); H_.a.place(); }
-      if(H_.cart && ch.x0 != null){ H_.v.value(s.v0); H_.a.value(s.a); }
+      if(H_.cart && ch.x0 != null){ H_.v.value(s.v0); H_.a.value(aShown()); }
       paint(); if(o.onState) o.onState();
     }
     var autoT = 0;
@@ -665,6 +694,8 @@
       // (by the screen's width, as the stylesheet decides: a 1024 px screen is a desktop even if the stage is narrower)
       var vw = window.innerWidth || W, phone = vw < 600 || W < 420, fitH = vw < 1000 || !!match;
       if(fitH){
+        // Match: the stage it sits in can change height after it is placed (a phone's frame settles): watch it too
+        if(match && ro && !watched){ var sb = box.closest('.ls-stage-body') || box.closest('.ls-stage'); if(sb){ ro.observe(sb); watched = true; } }
         var vh = window.innerHeight || 800, avail = o.availH ? o.availH() : vh - 330;
         var g0 = geo(W, Math.max(avail, 0), phone, true);
         box.style.height = g0.H + 'px'; box.style.minHeight = '0px';
@@ -682,7 +713,7 @@
       if(cue && cue.active()) cue.place();
       if(o.onLayout) o.onLayout();
     }
-    var soonT = 0;
+    var soonT = 0, watched = false;
     function layoutSoon(){ if(!soonT) soonT = setTimeout(function(){ soonT = 0; layout(); }, 0); }
     var ro = null;
     if(window.ResizeObserver){ var tm = null; ro = new ResizeObserver(function(){ clearTimeout(tm); tm = setTimeout(layout, 40); }); ro.observe(box); }
@@ -691,6 +722,7 @@
     return {
       el: box, layer: layer, st: st, geo: function(){ return G; }, series: series, curT: curT, cartX: cartX, nowVA: nowVA, example: exampleRun,
       layout: layout, paint: paint, kick: kick, stopAll: stopAll, play: play, red: red, X: X,
+      pause: pause,
       setTab: function(t){ stopAll(); st.tab = t; st.cursor = t === 'set' ? 0 : WIN; built = ''; layout(); },
       setCue: function(c){ cue = c; }, setTour: function(f){ tourDid = f; },
       handles: function(){ return H_; }, scrubber: function(){ return scrub; },
@@ -704,7 +736,7 @@
 
   /* ================================================================ EXPLORE */
   var PURPOSE = { drive: 'Drive the cart and watch its three graphs draw.', set: 'Set v and a and see the motion they make.' };
-  var CUE = { drive: 'Drag the cart', set: 'Drag an arrow' };
+  var CUE = { drive: 'Drag the cart', set: 'Drag a tip' };
   function explore(host, data, kit){
     var K = window.LevlKit2, LS = null;
     var stage = document.createElement('div'); stage.className = 'mg2';
@@ -732,15 +764,16 @@
     function say(t){ clearTimeout(sayT); sayT = setTimeout(function(){ live.textContent = t; }, 60); }
     runB.addEventListener('click', function(){
       var st = L.st;
-      if(st.play){ L.stopAll(); L.paint(); paintButtons(); paintCause(); return; }
+      // Pause holds the moment (tangents, area and words stay readable there); Resume goes on
+      if(st.play){ L.pause(!st.play.paused); paintButtons(); paintCause(); return; }
       cause.take(null); L.play(st.tab); paintButtons();
     });
     again.addEventListener('click', function(){ if(cue) cue.hide(true); cause.take(null); if(L.st.tab === 'drive') L.resetDrive(); else L.resetSet(); paintCause(); paintButtons(); });
     function paintButtons(){
       var st = L.st, s = L.series();
-      runB.textContent = st.play ? 'Stop' : st.tab === 'set' ? 'Run' : 'Replay';
+      runB.textContent = st.play ? (st.play.paused ? 'Resume' : 'Pause') : st.tab === 'set' ? 'Run' : 'Replay';
       runB.hidden = st.tab === 'drive' && (!s || st.drv.rec);
-      runB.setAttribute('aria-label', st.play ? 'Stop the run' : st.tab === 'set' ? 'Run the motion' : 'Replay the run');
+      runB.setAttribute('aria-label', st.play ? (st.play.paused ? 'Resume the run' : 'Pause the run') : st.tab === 'set' ? 'Run the motion' : 'Replay the run');
     }
     function availH(){
       // a phone: the stage's room is the screen less the frame above the picture and the lines under it
@@ -757,36 +790,41 @@
       var st = L.st, g = L.geo(); if(!g) return;
       if(cause.el.classList.contains('is-take')) return;
       var s0 = L.series(), vq = s0 ? L.nowVA() : null;
-      var q = st.tab + '|' + (s0 ? [s0 === L.example, F(vq.v, 1), F(vq.a, 1), F(vq.t, 1), s0.exact].join(',') : '-') + '|' + (st.tab === 'set' ? [st.set.v0, st.set.a, st.set.segs.length, st.set.x0].join(',') : '');
+      var q = st.tab + '|' + (s0 ? [s0 === L.example, F(vq.v, 1), F(vq.a, 1), F(vq.t, 1), s0.exact].join(',') : '-') + '|' + (st.tab === 'set' ? [st.set.v0, JSON.stringify(st.set.segs), st.set.x0].join(',') : '');
       if(q === causeQ && cause.el.childNodes.length) return;
       causeQ = q;
       if(st.tab === 'drive'){
         var s = L.series();
         if(!s){ cause.set([{ t: 'Drag the cart', role: 'ink' }]); cause.el.setAttribute('data-res', ''); return; }
-        var va = L.nowVA(), d = describeText(va.v, va.a, !!s.exact);
+        var va = L.nowVA(), d = describeText(va.v, va.a, !!s.exact, s, va.t);
         cause.set([{ t: 'v ' + sg(va.v) + ' m/s', role: 'v', say: 'velocity ' + sg(va.v) + ' meters per second' }, { t: 'a ' + sg(va.a) + ' m/s²', role: 'a', join: '+', say: 'acceleration ' + sg(va.a) + ' meters per second squared' }, { t: d.t, role: 'res' }],
           (s === L.example ? 'Example, ' : '') + 'at ' + F(va.t, 1) + ' s:');
         cause.el.setAttribute('data-res', d.k);
       } else {
         // the newest piece of the run: from v₀ at 0 s, or from the v at the moment a was changed mid run
-        var se = st.set, run = se.run, last = se.segs[se.segs.length - 1], piece = last.t0 > 0;
+        // the a pill names every piece ("a −0.3, then +0.5 m/s² at 1.6 s"); the result word is the newest piece's
+        var se = st.set, run = se.run, a0 = se.segs[0].a, last = se.segs[se.segs.length - 1], piece = last.t0 > 0, aL = last.a;
         var v1 = piece ? +at(run, 'v', last.t0).toFixed(6) : se.v0;
-        var parts = [{ t: 'v₀ ' + sg(se.v0) + ' m/s', role: 'v', say: 'starting velocity ' + sg(se.v0) + ' meters per second' }, { t: 'a ' + sg(se.a) + ' m/s²' + (piece ? ' from ' + F(last.t0, 1) + ' s' : ''), role: 'a', join: '+', say: 'acceleration ' + sg(se.a) + ' meters per second squared' + (piece ? ' from ' + F(last.t0, 1) + ' seconds' : '') }];
+        var aT = piece ? 'a ' + sg(a0) + ', then ' + sg(aL) + ' m/s² at ' + F(last.t0, 1) + ' s' : 'a ' + sg(a0) + ' m/s²';
+        var parts = [{ t: 'v₀ ' + sg(se.v0) + ' m/s', role: 'v', say: 'starting velocity ' + sg(se.v0) + ' meters per second' }, { t: aT, role: 'a', join: '+', say: piece ? 'acceleration ' + sg(a0) + ', then ' + sg(aL) + ' meters per second squared from ' + F(last.t0, 1) + ' seconds' : 'acceleration ' + sg(a0) + ' meters per second squared' }];
         var tn = turnsOf(run, run.end, 0.01).filter(function(q){ return q.t >= last.t0 - 1e-9; })[0], res = '';
-        if(Math.abs(v1) < 1e-9 && Math.abs(se.a) < 1e-9){ parts.push({ t: 'stays at rest', role: 'res' }); res = 'rest'; }
-        else if(Math.abs(se.a) < 1e-9){ parts.push({ t: 'steady to the ' + (v1 > 0 ? 'right' : 'left'), role: 'res' }); res = 'const'; }
+        if(piece){ res = Math.abs(v1) < 1e-9 && Math.abs(aL) < 1e-9 ? 'rest' : Math.abs(aL) < 1e-9 ? 'const' : Math.abs(v1) < 1e-9 || v1 * aL > 0 ? 'up' : 'down'; }
+        else if(Math.abs(v1) < 1e-9 && Math.abs(aL) < 1e-9){ parts.push({ t: 'stays at rest', role: 'res' }); res = 'rest'; }
+        else if(Math.abs(aL) < 1e-9){ parts.push({ t: 'steady to the ' + (v1 > 0 ? 'right' : 'left'), role: 'res' }); res = 'const'; }
         else if(Math.abs(v1) < 1e-9){ parts.push({ t: 'speeds up from rest', role: 'res' }); res = 'up'; }
-        else if(v1 * se.a > 0){ parts.push({ t: 'speeds up', role: 'res' }); res = 'up'; }
+        else if(v1 * aL > 0){ parts.push({ t: 'speeds up', role: 'res' }); res = 'up'; }
         else { parts.push({ t: 'slows down', role: 'res' }); res = 'down'; }
-        if(tn) { parts.push({ t: 'turns at ' + F(tn.t, 1) + ' s', role: 'turn' }); res += ' turn'; }
+        // a turn and an end stop are both named when both happen
+        if(tn && run.hit) { parts.push({ t: 'turns at ' + F(tn.t, 1) + ' s, end stop at ' + F(run.hit.t, 1) + ' s', role: 'turn' }); res += ' turn hit'; }
+        else if(tn) { parts.push({ t: 'turns at ' + F(tn.t, 1) + ' s', role: 'turn' }); res += ' turn'; }
         else if(run.hit) { parts.push({ t: 'end stop at ' + F(run.hit.t, 1) + ' s', role: 'turn' }); res += ' hit'; }
         cause.set(parts);
         cause.el.setAttribute('data-res', res);
       }
     }
     function takeaway(){
-      cause.take('Where x-t is steepest, v is biggest; where v-t is flat, a is zero.');
-      say('Recorded 10 seconds. Where the position graph is steepest, the velocity is biggest; where the velocity graph is flat, the acceleration is zero.');
+      cause.take('Where x-t is steepest, the cart is fastest; where v-t is flat, a is zero.');
+      say('Recorded 10 seconds. Where the position graph is steepest, the cart is fastest; where the velocity graph is flat, the acceleration is zero.');
     }
 
     /* ---------------------------------------------------- "?" */
@@ -824,7 +862,7 @@
           var g = L.geo(); if(!g) return [0, 0];
           // (the kit puts a right-hand cue 30 px past this point)
           if(k === 'drive') return [L.X(L.cartX()) + g.cw / 2 - 18, g.cartTop + g.ch * 0.4];
-          return [L.X(L.st.set.x0) + Math.max(L.st.set.v0 * g.vs, 0), g.vY];
+          return [L.X(L.st.set.x0) + Math.max(L.st.set.v0 * g.vs, 0) + 18, g.vY];
         } });
       });
       cue = { show: function(){ return cues[L.st.tab].show(); }, hide: function(u){ Object.keys(cues).forEach(function(k){ if(cues[k].active()) cues[k].hide(u && k === L.st.tab); }); }, place: function(){ cues[L.st.tab].place(); }, active: function(){ return cues[L.st.tab].active(); } };
@@ -832,7 +870,7 @@
       var kr = function(sel){ var e = L.layer.el.querySelector(sel); return e ? e.getBoundingClientRect() : L.el.getBoundingClientRect(); };
       tours.drive = K.tour({ key: 'apphys-motion-graphs-drive', label: 'Show me how', steps: [
         { id: 'drag', text: 'Drag the cart along the track. The detector records 10 s and the graphs draw as you move.', target: function(){ return kr('.tk2-handle .tk2-knob'); } },
-        { id: 'slope', text: 'Steeper x graph, bigger v: the line touching x is in v’s color because its slope is v.', target: function(){ var e = L.el.querySelector('.mg2-tan.is-v'); return e ? e.getBoundingClientRect() : L.el.getBoundingClientRect(); } },
+        { id: 'slope', text: 'Steeper x graph, faster cart: the line touching x is in v’s color because its slope is v.', target: function(){ var e = L.el.querySelector('.mg2-tan.is-v'); return e ? e.getBoundingClientRect() : L.el.getBoundingClientRect(); } },
         { id: 'scrub', text: 'After a run, drag along the graphs: the cart goes back to that moment.', target: function(){ var e = L.el.querySelector('.mg2-pbg'); return e ? e.getBoundingClientRect() : L.el.getBoundingClientRect(); } }] });
       tours.set = K.tour({ key: 'apphys-motion-graphs-set', label: 'Show me how', steps: [
         { id: 'drag', text: 'Drag the tip of the velocity arrow or the acceleration arrow. The whole run redraws.', target: function(){ return kr('.tk2-handle:not(.is-quiet) .tk2-knob'); } },
@@ -945,7 +983,7 @@
     var key = 'apphys_mg_best_' + tg.id, best = Math.max(+(storeGet(key) || 0), res.score);
     storeSet(key, String(best));
     T.event('apphys-mg-match', { target: tg.id, score: res.score });
-    var w = res.worst && res.worst.t0 >= WIN ? Object.assign({}, res.worst, { t0: WIN - 1, t1: WIN }) : res.worst, off = w && Math.abs(w.mean) > 0.15 ? (tg.kind === 'x' ? (w.sign > 0 ? 'too far to the right' : 'too far to the left') : (w.sign > 0 ? 'moving too fast in the + direction' : 'moving too fast in the − direction')) : '';
+    var w = res.worst && res.worst.t0 >= WIN ? Object.assign({}, res.worst, { t0: WIN - 1, t1: WIN }) : res.worst, off = w && Math.abs(w.mean) > 0.15 ? (tg.kind === 'x' ? (w.sign > 0 ? 'too far to the right' : 'too far to the left') : (w.sign > 0 ? 'velocity above the target' : 'velocity below the target')) : '';
     var note = '<b>Match ' + res.score + '%</b> (best on this target ' + best + '%). ' + (res.score >= 80 ? 'Well driven.' : off ? 'Furthest off from ' + w.t0 + ' s to ' + w.t1 + ' s: ' + off + '. Grab the cart to drive again.' : 'Close. Grab the cart to drive again, more smoothly.');
     return { ok: res.score >= 80, note: note };
   }
@@ -993,10 +1031,11 @@
         }
         return p;
       },
-      extra: function(el, p){
+      extra: function(el, p, api){
         if(matchLab){ matchLab.destroy(); matchLab = null; }
         if(p.type === 'match'){
           el.innerHTML = '';
+          var code = api && api.area && api.area.querySelector('.bt-code'); if(code) code.hidden = true;
           // the Match figure takes the room the stage gives it (a phone's stage is short: no inner scroll)
           matchLab = lab({ kit: kit, match: p.target, availH: function(){
             var el2 = matchLab && matchLab.el, stg = el2 && (el2.closest('.ls-stage-body') || el2.closest('.ls-stage'));

@@ -124,7 +124,7 @@
 .mg2-cur{stroke:var(--mg2-ink);stroke-width:1.4;opacity:.6;}
 .mg2-dot{stroke:var(--mg2-panel);stroke-width:2.2;}
 .mg2-dot.s1{fill:var(--mg-x);} .mg2-dot.s2{fill:var(--mg-v);} .mg2-dot.s3{fill:var(--mg-a);}
-.mg2-words text{font-size:12.5px;font-weight:900;paint-order:stroke;stroke:var(--mg2-panel);stroke-width:3.5px;stroke-linejoin:round;}
+.mg2-words text{font-size:12.5px;font-weight:900;paint-order:stroke;stroke:var(--mg2-panel);stroke-width:6px;stroke-linejoin:round;}
 .mg2-gn.s1{fill:var(--mg-x-ink);} .mg2-gn.s2{fill:var(--mg-v-ink);} .mg2-gn.s3{fill:var(--mg-a-ink);}
 .mg2-w.is-v{fill:var(--mg-v-ink);} .mg2-w.is-a{fill:var(--mg-a-ink);} .mg2-w.is-x{fill:var(--mg-x-ink);}
 .mg2-w.is-turn{fill:var(--ink);} .mg2-w.is-ex{fill:var(--muted);} .mg2-w.is-tg{fill:var(--cink);}
@@ -146,3 +146,6 @@
 .mg2-mfig{margin:0;width:100%;}
 .ls-root .ls-drill-stage .mg2-mfig{flex:none;}
 :root[data-theme="dark"] .mg2-stop{fill:#C3CAD0;}
+
+.mg2-seam{stroke:var(--mg2-tile);stroke-width:1.5;}
+.mg2-skirt{fill:var(--mg2-edge);opacity:.35;}
