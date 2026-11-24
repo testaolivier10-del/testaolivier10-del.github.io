@@ -36,11 +36,12 @@ States: building, review, fixing, recheck, PASS (waiting to integrate), integrat
 | NREMT flowcharts | claude/tools-v2-nremt-flowcharts | wt-nremt-flowcharts | integrated | fourth NREMT tool on `nremt-kit2.js`; Explore `nremt/assets/flow-explore.js` (two drawn calls); Read, Build it and Drill me are Test yourself |
 | NREMT body map | claude/tools-v2-nremt-body-map | wt-nremt-body-map | integrated | Explore `nremt/assets/body-map-v2.js` (The body, Burns); four additive hooks in `assets/body3d/viewer.js` (budget 17 KB); A&P 3D anatomy and lab practical still pass |
 | AP Bio chi square | claude/tools-v2-chi-square | wt-chi-square | integrated | choice chamber of pill bugs; kept sweep, frames, perf and interact scripts in `scripts/tools-v2/chi-square-*` |
+| AP Bio rates | claude/tools-v2-rates | wt-rates | integrated | three tabs (rate over time, at a moment, percent change); sweep `scripts/tools-v2/rates-sweep.mjs` (`--frames`, `--perf`) |
 | A&P anatomy 3d | claude/tools-v2-anp-anatomy-3d | wt-anp-anatomy-3d | review | five regions on the shared viewer; viewer.js taken from the NREMT body map's branch (byte for byte) plus opt in hooks, so integrate the body map first; K.spots `project`; anp spec decision 105 |
 
 2026-11-19: `main` merged in after PR #228 (ochem frame cleanup: chipPicker, scrollChips and .ls-chips-hidden gone; the v2
 conformations, resonance and arrow pusher kept, kit2 kept). Ochem viewer 3d had `main` merged
-into it before integration (PR #228 rewrote `viewer-3d.js` and `viewer-3d.html` on main). Its sweep needs playwright 1.63 (`/opt/npm-tools`); the 1.49 under the repo's
+into it before integration (PR #228 rewrote `viewer-3d.js` and `viewer-3d.html` on main). Its sweep (and the reaction predictor's) needs playwright 1.63 (`/opt/npm-tools`); the 1.49 under the repo's
 `node_modules` fails `waitForFunction` under the page CSP (no unsafe-eval), so run it without that link.
 
 Owner 2026-11-19: the hidden legacy controls cleanup for the other 13 course kits (NREMT, A&P, Bio/Chem/Physics,
@@ -53,6 +54,11 @@ Before the final merge:
   above budget under load). If still over 50 ms, find the cause.
 - Time flowcharts after the glove polish on a quiet machine (p95 at CPU x4 was 66 to 133 ms under load).
 
+Plans (owner 2026-11-23): every remaining tool has a ready plan in `docs/tools-v2-plans/<course>-<tool>.md`
+(113 plans; difficulty lists in `README-core.md`, `README-econ.md`, `README-sci.md`, `README-soc.md`,
+`README-math.md`). A builder starts from its tool's plan and still opens the research links before building.
+Simpler tools first; Psych waits for the brain map's adapter; the first tool of a course without kit2 adds its adapter.
+
 Next by use (rollout table):
 A&P anatomy 3d, NREMT scenario sim, Ochem reaction
-predictor, AP Bio rates (rollout rows 20 to 26).
+predictor (rollout rows 20 to 26).
