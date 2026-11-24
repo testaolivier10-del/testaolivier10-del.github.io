@@ -104,7 +104,7 @@
 @media (min-width:641px){ .cs2-lines .tk2-cause{min-height:62px;} }
 .cs2-pad{position:absolute;pointer-events:auto;touch-action:none;cursor:ns-resize;}
 .cs2 .cs2-knob .tk2-dot{box-shadow:0 0 0 2.5px var(--cink),0 1px 3px rgba(11,26,51,.3);}
-@media (max-width:599.98px){ .cs2 .cs2-knob .tk2-dot{width:24px;height:24px;} }
+.cs2.cs2-xs .cs2-knob .tk2-dot{width:24px;height:24px;}   /* the picture's own phone layout (not the viewport) */
 /* the cause line in the colours of the picture */
 .cs2 .tk2-cz.is-up{--cz:var(--cs-up);--cz-ink:var(--cs-up-ink);}
 .cs2 .tk2-cz.is-down{--cz:var(--cs-dn);--cz-ink:var(--cs-dn-ink);}
@@ -196,3 +196,4 @@
 /* the words cue for narrow phones, at the start of the Show me how row */
 .cs2-wcue{display:inline-flex;align-items:center;font:800 13px var(--font-ui);color:var(--cink);white-space:nowrap;}
 .cs2-wcue[hidden]{display:none;}
+.cs2-more{fill:var(--cs-chi);}

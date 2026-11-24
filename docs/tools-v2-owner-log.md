@@ -665,3 +665,4 @@ in each tool's brief.
 | 2026-11-24 | AP Statistics Chi-square lab | Recheck 1: narrow phones (under 430 px) get a words cue "Drag the ↕ on a stack" in the head row, first visit only | No bubble fits on the picture there | `.cs2-wcue` |
 | 2026-11-24 | AP Statistics Chi-square lab | Recheck 1: the axis reaches each study's opening χ² (up to 4 times its usual range); the wide χ² panel is pinned to the top and ends at the plot | Every part of the opening bar on the axis; no empty bands | `plotScale`, `layout` |
 | 2026-11-24 | AP Statistics Chi-square lab | Recheck 1: the chance takeaway starts "Chance table: p = …" | "H₀ true: p" read as a claim that H₀ is true | the chance button |
+| 2026-11-24 | AP Statistics Chi-square lab | Recheck 2: the words cue shows wherever no bubble fits (not by width); an arrow end on the parts bar past the axis; the wide plot up to as tall as wide | A cue on every first visit; a cut bar is marked | `cueShow`, `Pe.more`, `layout` |

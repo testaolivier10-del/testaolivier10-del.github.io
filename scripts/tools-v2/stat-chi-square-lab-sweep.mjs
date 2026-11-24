@@ -228,7 +228,7 @@ if (ONE) {
   for (const [fw, fh, nc] of fits.flatMap(f => [[...f, false], [...f, true]])) {
     const { browser, page } = await open(fw, fh, false, { noCue: nc });
     const f = await page.evaluate(FOLD);
-    if (fw < 430 && !nc) ok(await page.evaluate(() => { const c = document.querySelector('.cs2-wcue'); return !!c && !c.hidden && c.getBoundingClientRect().right <= innerWidth; }), `${fw}x${fh}: no words cue on a first visit`);
+    if (fw < 400 && !nc) ok(await page.evaluate(() => { const c = document.querySelector('.cs2-wcue'); return !!c && !c.hidden && c.getBoundingClientRect().right <= innerWidth; }), `${fw}x${fh}: no words cue on a first visit`);
     ok(f.k && f.s && f.c && !f.inner, `${fw}x${fh}${nc ? '' : ' first visit'}: the knob, the picture and the cause line are not on one screen with no inner scroll ${JSON.stringify(f)}`);
     await browser.close();
   }
@@ -245,9 +245,9 @@ if (ONE) {
     };
     const th = await X(() => document.documentElement.getAttribute('data-theme') === 'dark');
     ok(th === dark, `${tag} theme: dark is ${th}`);
-    const cue = await X(() => !!document.querySelector('.cs2 .tk2-cue'));
-    // phones under 430 px have no free place beside a cell for the bubble: the knob's pulse is the cue there (brief)
-    ok(cue || w < 430, `${tag} no first visit cue`);
+    const cue = await X(() => { const w = document.querySelector('.cs2-wcue'); return !!document.querySelector('.cs2 .tk2-cue') || (!!w && !w.hidden); });
+    // the bubble on the picture, or the words cue in the head row where no bubble fits
+    ok(cue, `${tag} no first visit cue`);
     await check('00-first');
     const L = window => 0;
     await X(() => window.ApStatChiSquareLab.cue.hide(false));

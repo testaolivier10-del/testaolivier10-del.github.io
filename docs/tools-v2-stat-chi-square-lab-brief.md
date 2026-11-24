@@ -233,3 +233,14 @@ too (with the words cue) and that the words cue shows under 430 px.
 Checks: sweep 360 (with 375 x 667 and 360 x 740, first visit and later), 390, 1024 and 1440, light and dark, **331
 passed, 0 failed**; frames **50 passed, 0 failed**; AP Stats tests 166 pass; content check, `build-apstat`,
 `build-apcalc`, `build-apmacro --check`, `check-site`, `check-weight --check`.
+
+## Recheck 2 (2026-11-24): PASS, on the condition of a clean kept sweep; done
+`/home/claude/review-stat-chi/REVIEW-recheck2.md`. Fixed: the words cue shows whenever no bubble place exists (430 had
+none; the sweep accepts the bubble or the words cue); the phone knob size follows the picture's own phone layout (it
+followed the viewport, so at 600 a 32 px knob touched the count above it); the cutoff label stays 9 px above the curve
+and clear of the pill row ("cutoff 9.49" touched the peak at 1280; at 360 it then reached the pill). Optional, done: a
+purple arrow end on the parts bar when χ² runs past the axis; the wide plot may be as tall as it is wide.
+
+Kept sweep, all ten widths, one process each, light and dark: **789 passed, 0 failed** (360: 82, 390: 87, 430: 76,
+600: 76, 768: 76, 820: 76, 1024: 78, 1280: 78, 1440: 84, 1920: 76); frames **50 passed, 0 failed**; AP Stats tests 166
+pass; content check, `build-apstat`, `build-apcalc`, `build-apmacro --check`, `check-site`, `check-weight --check`.

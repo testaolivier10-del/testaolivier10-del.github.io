@@ -348,7 +348,7 @@
       // short phones (compact): no title row; the pill and the p-value's key share the top row, df joins the axis's name
       g.cmp = g.phone && H < 460;
       // the plot's block: on a tall wide panel at most 0.8 times as tall as it is wide, centred (no spike of a curve)
-      cv.bh = g.wide ? Math.min(cv.h, Math.round(cv.w * 0.8)) : cv.h; cv.by = cv.y;   // pinned to the top; the panel ends at the plot
+      cv.bh = g.wide ? Math.min(cv.h, Math.round(cv.w * 1.0)) : cv.h; cv.by = cv.y;   // pinned to the top; the panel ends at the plot
       cv.tY = cv.by + 16; cv.top = cv.by + (g.cmp ? 40 : 58); cv.ax = cv.by + cv.bh - (g.phone ? 42 : 44);
       return g;
     }
@@ -442,6 +442,7 @@
       Pe.parts = mk('text', 'cs2-partsl', { x: n1(cv.l), y: n1(cv.ax + 36) }, sPlot);
       Pe.parts.textContent = R() * C() + ' cell parts, end to end = χ²' + (g.cmp ? ', df = ' + df : '');
       if(g.cmp) Pe.title.style.display = 'none';
+      Pe.more = mk('path', 'cs2-more', null, sPlot);   // the bar runs on past the axis's end
       Pe.crit = mk('line', 'cs2-crit', null, sPlot);
       Pe.critT = mk('text', 'cs2-critl', null, sPlot);
       Pe.mark = mk('line', 'cs2-mark', null, sPlotF);
@@ -493,6 +494,8 @@
         var x1 = xs(a0), x2 = xs(acc), bs = t.signs[i][j], seg = Pe.bar[n++];
         at(seg, { x: x1, y: cv.ax - bh, width: Math.max(0, x2 - x1), 'class': 'cs2-seg ' + (bs > 0 ? 'is-up' : 'is-down') + (sel[0] === i && sel[1] === j ? ' is-sel' : '') });
       }
+      var bx2 = xs(PL.xmax);
+      at(Pe.more, { d: chi > PL.xmax ? 'M' + n1(bx2 + 3) + ' ' + n1(cv.ax - bh - 2) + 'l7 ' + n1(bh / 2 + 2) + 'l-7 ' + n1(bh / 2 + 2) + 'z' : 'M0 0' });
       var crit = Dist().invChi2(1 - S.alpha, PL.df), cx2 = xs(crit);
       at(Pe.crit, { x1: cx2, y1: cv.top + 2, x2: cx2, y2: cv.ax });
       // the cutoff's label: away from the χ² marker, on a side with room, in full or short ("cutoff 12.59")
@@ -502,8 +505,8 @@
       // the label sits above the curve where it runs under it (the highest point of the curve under the label, less 6 px)
       var cy = function(side, w){ var xa = side ? cx2 - 8 - w : cx2 + 4, xb = side ? cx2 - 4 : cx2 + 8 + w, top = Infinity;
         for(var q = 0; q <= 16; q++){ var px = xa + (xb - xa) * q / 16, xv = (px - cv.l) / (cv.r - cv.l) * PL.xmax; if(xv > 0) top = Math.min(top, ys(PL.f(xv))); }
-        return Math.min(cv.top + 14, top - 6); };
-      var floorY = cv.by + (g.cmp ? 34 : 56) + 11;
+        return Math.min(cv.top + 14, top - 9); };
+      var floorY = cv.by + (g.cmp ? 38 : 58) + 11;   // clear of the pill row
       // candidates in order: this side then the other, in full then short; each must have room and stay off the marker;
       // the first that also sits above the curve wins, else the name goes past the marker pointing back, else the highest
       var cands = [[left, cfull], [!left, cfull], [left, cshort], [!left, cshort]].map(function(c){ var w = tw(c[1], 11.5, 800); return { side: c[0], t: c[1], w: w, ok: room(c[0], w) && span(c[0], w), y: cy(c[0], w) }; }).filter(function(c){ return c.ok; });
