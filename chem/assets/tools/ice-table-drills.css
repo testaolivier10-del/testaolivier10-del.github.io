@@ -16,7 +16,8 @@
 .ix2 [hidden]{display:none !important;}
 .ix2 .tk2-tabs{margin:0;align-self:flex-start;max-width:100%;}
 .ix2-scene{position:relative;flex:none;border-radius:18px;overflow:hidden;background:var(--surface2);}
-.ix2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+.ix2-svg,.ix2-front{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+.ix2-mov{position:absolute;display:block;pointer-events:none;} .ix2-front{pointer-events:none;}
 @media (max-width:640px){ .ix2-scene{border-radius:14px;} .ix2{gap:8px;} }
 .ix2-lines{display:flex;align-items:center;justify-content:space-between;gap:6px 18px;flex-wrap:wrap;flex:none;}
 .ix2-again{flex:none;margin-left:auto;min-height:40px;padding:0 14px;font-size:14px;background:var(--white);color:var(--cink);box-shadow:inset 0 0 0 1.5px color-mix(in srgb, var(--cink) 45%, transparent);}
@@ -43,7 +44,8 @@
 :root[data-theme="dark"] .ix2-shine{stroke-opacity:.16;}
 .ix2-gas{transition:opacity .35s ease;} .ix2-gas.is-violet{fill:var(--violet);} .ix2-gas.is-brown{fill:var(--brown);}
 .ix2-stopper{fill:var(--stopper);} .ix2-stopperhi{stroke:#fff;stroke-opacity:.28;stroke-width:2;stroke-linecap:round;}
-.ix2-cork{fill:var(--cork);stroke:color-mix(in srgb, var(--cork) 70%, #000);stroke-width:1;}
+.ix2-cork{fill:color-mix(in srgb, var(--cork) 75%, #000);}
+.ix2-corkfront{fill:none;stroke:var(--cork);stroke-width:7;stroke-linecap:round;}
 .ix2-glow{fill:#FFE38A;fill-opacity:.55;stroke:#F5B83D;stroke-width:2;pointer-events:none;}
 /* the Q gauge on the neck */
 .ix2-clip{stroke:var(--glass);stroke-width:4;stroke-linecap:round;fill:none;}
@@ -52,7 +54,7 @@
 .ix2-knotch{stroke:var(--ix-k);stroke-width:4;stroke-linecap:round;}
 .ix2-klab{font:900 13px var(--font-ui);fill:var(--ix-k-ink);paint-order:stroke;stroke:var(--wall0);stroke-width:3px;}
 .ix2-qlab{font:900 12px var(--font-ui);fill:var(--ix-q-ink);}
-.ix2-needle path{fill:var(--ix-q);} .ix2-needle circle{fill:var(--ink);}
+.ix2-mov .ix2-needle path{fill:var(--ix-q);} .ix2-needle circle{fill:var(--ink);}
 .ix2-svg.is-eq .ix2-knotch{stroke-width:5.5;}
 /* the x rail */
 .ix2-rail{stroke:color-mix(in srgb, var(--ix-x) 55%, var(--bn1));stroke-width:5;stroke-linecap:round;fill:none;}
@@ -60,15 +62,14 @@
 .ix2-xlab{font:italic 900 18px var(--font-ui);fill:var(--ix-x-ink);}
 /* the clipboard and its page */
 .ix2-board{fill:var(--board);stroke:var(--board-edge);stroke-width:1.5;}
-.ix2-paper{fill:var(--paper);filter:drop-shadow(0 1px 1.5px rgba(0,0,0,.18));}
-.ix2-paper.is-flat{filter:drop-shadow(0 2px 3px rgba(0,0,0,.2));}
+.ix2-paper{fill:var(--paper);} .ix2-papershadow{fill:#000;fill-opacity:.16;}
 .ix2-clamp{fill:var(--clamp);stroke:color-mix(in srgb, var(--clamp) 70%, #000);stroke-width:1;} .ix2-clamphi{fill:#fff;fill-opacity:.35;}
 .ix2-ruled{stroke:var(--ruled);stroke-width:1;} .ix2-margin{stroke:var(--margin);stroke-width:1.2;}
 .ix2-book text{font-family:var(--font-ui);fill:var(--ink);}
-.ix2-book .ix-sub{font-size:.72em;}
-.ix2-book .ix-sup{font-size:.72em;}
+.ix2-book .ix-sub{font-size:.78em;}
+.ix2-book .ix-sup{font-size:.78em;}
 .ix2-eqn{font-weight:900;font-size:17px;}
-.ix2-kline{font-weight:800;font-size:14px;fill:var(--ix-k-ink) !important;}
+.ix2-kline{font-weight:800;font-size:14.5px;fill:var(--ix-k-ink) !important;}
 .ix2-unit{font-weight:800;font-size:12px;fill:var(--muted) !important;}
 .ix2-sp{font-weight:900;font-size:15.5px;}
 .ix2-tline{stroke:var(--ink);stroke-opacity:.6;stroke-width:1.4;} .ix2-rline{stroke:var(--ink);stroke-opacity:.18;stroke-width:1;}
@@ -82,8 +83,8 @@
 .ix2-eqband{fill:var(--ix-k);fill-opacity:0;transition:fill-opacity .3s ease;} .ix2-eqband.is-on{fill-opacity:.16;}
 .ix2-val.is-tick{animation:ix2-tick .38s ease-out;}
 @keyframes ix2-tick{0%{fill:var(--ix-x-ink);} 100%{fill:var(--ink);}}
-.is-narrow .ix2-eqn{font-size:15px;} .is-narrow .ix2-kline{font-size:12.5px;} .is-narrow .ix2-sp{font-size:14px;} .is-narrow .ix2-row{font-size:18px;}
-.is-narrow .ix2-expr{font-size:12px;} .is-narrow .ix2-val{font-size:15px;} .is-narrow .ix2-key{font-size:12px;} .is-narrow .ix2-qline{font-size:13.5px;}
+.is-narrow .ix2-eqn{font-size:15px;} .is-narrow .ix2-kline{font-size:14.5px;} .is-narrow .ix2-sp{font-size:14.5px;} .is-narrow .ix2-row{font-size:18px;}
+.is-narrow .ix2-expr{font-size:12px;} .is-narrow .ix2-val{font-size:15px;} .is-narrow .ix2-key{font-size:12px;} .is-narrow .ix2-qline{font-size:14.5px;}
 @media (prefers-reduced-motion: reduce){ .ix2-gas,.ix2-eqband{transition:none;} .ix2-val.is-tick{animation:none;} }
 /* "?" */
 .ix2-ref .ix2-list{padding-left:1.2em;}

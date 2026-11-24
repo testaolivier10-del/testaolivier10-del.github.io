@@ -55,10 +55,13 @@
       var head = K.head({ purpose: 'See how far a reaction runs before Q reaches K.', how: { label: 'Show me how', onClick: function(){ startTour(); } } });
       stage.appendChild(head.el);
       var sceneBox = document.createElement('div'); sceneBox.className = 'ix2-scene'; sceneBox.id = T.nid('ix2');
-      sceneBox.innerHTML = '<svg class="ix2-svg" role="img" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"></svg>';
+      // two layers: the still scene (the lab, the flask's glass, the gauge's face, the clipboard) and over it the moving
+      // parts on a canvas (the gas colour, the molecules, the glow of a reaction, the needle), so a moving molecule
+      // changes no element and the page never restyles for it
+      sceneBox.innerHTML = '<svg class="ix2-svg" role="img" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"></svg><canvas class="ix2-mov" aria-hidden="true"></canvas><svg class="ix2-front" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"></svg>';
       stage.appendChild(sceneBox);
       tabs.el.querySelectorAll('.tk2-tab').forEach(function(b){ b.setAttribute('aria-controls', sceneBox.id); });
-      var svg = sceneBox.querySelector('svg'), layer = K.layer(sceneBox);
+      var svg = sceneBox.querySelector('svg'), mov = sceneBox.querySelector('.ix2-mov'), front = sceneBox.querySelector('.ix2-front'), layer = K.layer(sceneBox);
       var lines = document.createElement('div'); lines.className = 'ix2-lines';
       var cause = K.cause({ label: 'Why' });
       var again = document.createElement('button'); again.type = 'button'; again.className = 'tk2-btn ix2-again'; again.textContent = 'Start over'; again.hidden = true;
@@ -90,42 +93,44 @@
       function xOf(r, counts){ return (r.n0[0] - counts[0]) / -r.species[0].nu * r.per; }
 
       /* ---------------------------------------------------- geometry */
+      /* Three arrangements. Wide (1000 px and up): the flask on the bench at the left, the clipboard with a roomy table
+         on the wall at the right. Middle (680 to 999): the same with a compact table (row letters only). Phone (under
+         680): the flask on top, the notebook page lying on the bench under it. The flask is always the largest object. */
       function geo(W){
-        var g = { W: W, narrow: W < 640 }, r = R();
+        var g = { W: W, narrow: W < 680, compact: W < 1000 }, r = R();
+        var n = r.species.length, pad = g.compact ? 12 : 18;
+        g.pad = pad; g.lw = g.compact ? 34 : 88;
+        // vertical rhythm from the text boxes: every text clears its neighbours by 4 px (an expression over its value)
+        g.tTop = g.compact ? 40 : 74;
+        g.hh = g.compact ? 46 : 52; g.rh = g.compact ? 46 : 52;
+        g.e1 = g.compact ? 15 : 17; g.e2 = g.compact ? 38 : 43;
+        g.nh = g.tTop + g.hh + 3 * g.rh + (g.compact ? 64 : 76);
         if(!g.narrow){
-          g.H = clamp(Math.round(W * 0.44), 470, 600);
+          g.nw = Math.round(g.compact ? clamp(W * 0.42, 298, 360) : clamp(W * 0.3, 360, 400));
+          g.R = Math.round(Math.min((W - 92 - g.nw) / 2, g.compact ? 200 : W * 0.165, (620 - 146) / 2.9));
+          g.H = Math.max(480, Math.round(2.9 * g.R + 146));
           g.yb = g.H - 112;
-          g.R = Math.round(Math.min(W * 0.16, (g.yb - 34) / 2.9));
-          g.cx = Math.round(Math.max(g.R + 40, W * 0.30));
+          g.cx = Math.round(Math.max(g.R + 30, (W - g.nw - 30) / 2));
           g.cy = g.yb - g.R - 4;
-          g.nw = Math.round(Math.min(W * 0.4, 480)); g.nx = Math.round(clamp(W * 0.73 - g.nw / 2, g.cx + g.R + 0.62 * g.R + 70, W - 22 - g.nw));
-          g.nw = Math.min(g.nw, W - 22 - g.nx);
-          g.ny = 26;
+          g.nx = W - 22 - g.nw;
+          g.ny = Math.max(22, Math.round((g.yb - 16 - g.nh) / 2));
           g.railY = g.yb + 50;
         } else {
-          g.R = Math.round(Math.min(W * 0.33, 150));
-          g.cx = Math.round(W * 0.42);
-          g.cy = 22 + Math.round(0.95 * g.R) + g.R;
+          g.R = Math.round(Math.min(W * 0.38, 170));
+          g.cx = Math.round(Math.max(g.R + 8, W * 0.42));
+          g.cy = 14 + Math.round(0.95 * g.R) + g.R;
           g.yb = g.cy + g.R + 4;
-          g.railY = g.yb + 44;
-          g.nx = 10; g.nw = W - 20; g.ny = g.yb + 92;
+          g.railY = g.yb + 40;
+          g.nw = Math.min(W - 20, 440); g.nx = Math.round((W - g.nw) / 2); g.ny = g.yb + 66;
+          g.H = g.ny + g.nh + 14;
         }
+        g.cw = (g.nw - 2 * pad - g.lw) / n;
         g.neck = Math.max(10, Math.round(0.17 * g.R));
         g.neckTop = g.cy - Math.round(1.6 * g.R);
         g.gr = Math.round(clamp(0.27 * g.R, 30, 44));
         g.gx = g.cx + g.neck + 14 + g.gr; g.gy = g.cy - Math.round(1.24 * g.R);
-        var span = Math.min(g.R * 1.08, g.cx - 34);
+        var span = Math.min(g.R * 1.08, g.cx - 50);
         g.rail = [g.cx - span, g.railY, g.cx + span, g.railY];
-        // the clipboard (wide: hanging on the wall) or the notebook page (phone: lying on the bench)
-        var n = r.species.length, pad = g.narrow ? 12 : 18;
-        g.pad = pad; g.fsV = g.narrow ? 15 : 17; g.fsE = g.narrow ? 12 : 13; g.fsH = g.narrow ? 14 : 15.5;
-        g.lw = g.narrow ? 34 : 64;
-        g.cw = (g.nw - 2 * pad - g.lw) / n;
-        g.tTop = (g.narrow ? 50 : 70);
-        g.hh = g.narrow ? 50 : 56; g.rh = g.narrow ? 46 : 52;
-        g.nh = g.tTop + g.hh + 3 * g.rh + (g.narrow ? 64 : 74);
-        if(g.narrow){ g.H = g.ny + g.nh + 16; }
-        else { g.ny = Math.max(22, Math.round((g.yb - 16 - g.nh) / 2)); }
         // molecule slots in the flask body: a staggered grid inside the circle, sized to hold the most molecules the
         // knob can draw (and a few spare), the molecule scale from the cell
         var most = 0; for(var k = 0; k <= r.steps; k++) most = Math.max(most, countsAt(r, k).reduce(function(a, b){ return a + b; }, 0));
@@ -160,26 +165,77 @@
           '<ellipse class="pt-hi" cx="' + f1(-rr * 0.36) + '" cy="' + f1(-rr * 0.4) + '" rx="' + f1(rr * 0.36) + '" ry="' + f1(rr * 0.24) + '" transform="rotate(-35 ' + f1(-rr * 0.36) + ' ' + f1(-rr * 0.4) + ')"/>';
       }
       var ELC = { H: 'ph', I: 'pi', N: 'pn', O: 'po' };
-      // one molecule: one <g> per atom (moved by transform), drawn back to front
+      // one molecule: its atoms (world positions, drawn back to front on the canvas)
+      function sortT(key){ return TEMPL[key].slice().sort(function(p, q){ return (p.z || 0) - (q.z || 0) || (q.r || 9) - (p.r || 9); }); }
       function newMol(key, x, y, a){
-        var t = TEMPL[key].slice().sort(function(p, q){ return (p.z || 0) - (q.z || 0) || (q.r || 9) - (p.r || 9); });
         var m = { key: key, x: x, y: y, a: a, atoms: [], state: 'whole' };
-        t.forEach(function(at){
-          var n = mk('g', 'pt-atom ' + (ELC[at.el] || 'pa'));
-          n.innerHTML = atomSvg(at.el, (at.r || 9) * G.s);
-          L.mols.appendChild(n);
-          m.atoms.push({ el: at.el, dx: at.dx, dy: at.dy, n: n, wx: 0, wy: 0 });
-        });
+        sortT(key).forEach(function(at){ m.atoms.push({ el: at.el, r: at.r || 9, dx: at.dx, dy: at.dy, wx: 0, wy: 0 }); });
         poseMol(m, x, y, a);
         return m;
       }
       function atomPos(m, at, x, y, a){ var p = rot(at.dx * G.s, at.dy * G.s, a); return [x + p[0], y + p[1]]; }
       function poseMol(m, x, y, a){
         m.x = x; m.y = y; m.a = a;
-        m.atoms.forEach(function(at){ var p = atomPos(m, at, x, y, a); setAtom(at, p[0], p[1]); });
+        m.atoms.forEach(function(at){ var p = atomPos(m, at, x, y, a); at.wx = p[0]; at.wy = p[1]; });
       }
-      function setAtom(at, x, y){ at.wx = x; at.wy = y; at.n.setAttribute('transform', 'translate(' + f1(x) + ' ' + f1(y) + ')'); }
-      function dropMol(m){ m.atoms.forEach(function(at){ at.n.remove(); }); }
+      /* ---- the canvas: atom sprites (the course's atom look: body, shade, highlight; no letters), drawn per frame */
+      var CV = { ctx: null, dpr: 1, spr: {}, col: {}, fade: null };
+      function cssVar(n){ return getComputedStyle(stage).getPropertyValue(n).trim(); }
+      function readColours(){
+        var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+        CV.col = { dark: dark, H: '#F4F6F8', I: '#8E4FB8', N: '#5677E0', O: '#EE5A4F', edge: dark ? 'rgba(0,0,0,.6)' : 'rgba(20,28,30,.55)',
+          violet: cssVar('--violet') || '#8E4FB8', brown: cssVar('--brown') || '#9A4A16', q: cssVar('--ix-q') || '#D55E00', ink: getComputedStyle(stage).color || '#10161a' };
+        CV.spr = {}; CV.baseDirty = true;
+      }
+      function sprite(el, rr){
+        var key = el + rr.toFixed(2); if(CV.spr[key]) return CV.spr[key];
+        var d = CV.dpr, sz = Math.ceil((rr * 2 + 4) * d), c = document.createElement('canvas'); c.width = c.height = sz;
+        var x = c.getContext('2d'), m = sz / 2;
+        x.scale(d, d); var o = m / d;
+        x.beginPath(); x.arc(o, o, rr, 0, Math.PI * 2); x.fillStyle = CV.col[el] || '#7DB8EE'; x.fill();
+        x.lineWidth = 0.9; x.strokeStyle = CV.col.edge; x.stroke();
+        // the shade on the lower right
+        x.save(); x.beginPath(); x.arc(o, o, rr, 0, Math.PI * 2); x.clip();
+        x.beginPath(); x.arc(o + rr * 0.32, o + rr * 0.32, rr * 1.02, 0, Math.PI * 2); x.arc(o - rr * 0.05, o - rr * 0.05, rr * 0.98, 0, Math.PI * 2, true);
+        x.fillStyle = 'rgba(11,26,36,' + (el === 'H' ? 0.13 : CV.col.dark ? 0.28 : 0.2) + ')'; x.fill('evenodd'); x.restore();
+        // the highlight on the upper left
+        x.save(); x.translate(o - rr * 0.36, o - rr * 0.4); x.rotate(-35 * Math.PI / 180); x.beginPath(); x.ellipse(0, 0, rr * 0.36, rr * 0.24, 0, 0, Math.PI * 2); x.fillStyle = 'rgba(255,255,255,.75)'; x.fill(); x.restore();
+        CV.spr[key] = { c: c, h: sz / d / 2 };
+        return CV.spr[key];
+      }
+      function paintCanvas(){
+        var x = CV.ctx; if(!x || !G) return;
+        var r = R(), d = CV.dpr;
+        var bx = CV.box, bw = bx[2] - bx[0], bh = bx[3] - bx[1];
+        x.setTransform(d, 0, 0, d, 0, 0);
+        x.clearRect(0, 0, bw, bh);
+        var fade = CV.fade, now0 = now(), alpha = 1;
+        if(fade){ var t = (now0 - fade.t0) / 300; if(t >= 1){ CV.fade = null; } else if(t < 0.5){ x.globalAlpha = 1 - t * 2; x.drawImage(fade.img, 0, 0, bw, bh); x.globalAlpha = 1; kick(); return; } else alpha = (t - 0.5) * 2; }
+        // picture units from here on
+        x.translate(-bx[0], -bx[1]);
+        x.globalAlpha = alpha;
+        // the gas colour, inside the flask
+        x.save(); x.clip(new Path2D(flaskPath())); x.globalAlpha = alpha * gasAlpha; x.fillStyle = r.tint.color === 'violet' ? CV.col.violet : CV.col.brown; x.fillRect(0, 0, G.W, G.yb); x.restore();
+        x.globalAlpha = alpha;
+        // the glow of each reaction under way, then the molecules (those forming are drawn by their events)
+        events.forEach(function(e){ if(e.glowA > 0){ x.beginPath(); x.arc(e.P[0], e.P[1], 30 * G.s, 0, Math.PI * 2); x.fillStyle = 'rgba(255,227,138,' + (0.55 * e.glowA).toFixed(3) + ')'; x.fill(); x.lineWidth = 2; x.strokeStyle = 'rgba(245,184,61,' + e.glowA.toFixed(3) + ')'; x.stroke(); } });
+        var draw = function(z, m){ m.atoms.forEach(function(at){ var sp = sprite(at.el, at.r * G.s); z.drawImage(sp.c, at.wx - sp.h, at.wy - sp.h, sp.h * 2, sp.h * 2); }); };
+        // the molecules at rest come from a cached layer, redrawn only when one starts or stops moving
+        if(CV.baseDirty){
+          var bc = CV.base.getContext('2d'); bc.setTransform(d, 0, 0, d, 0, 0); bc.clearRect(0, 0, bw, bh); bc.translate(-bx[0], -bx[1]);
+          mols.forEach(function(m){ if(m.state === 'whole') draw(bc, m); });
+          CV.baseDirty = false;
+        }
+        x.save(); x.setTransform(1, 0, 0, 1, 0, 0); x.globalAlpha = alpha; x.drawImage(CV.base, 0, 0); x.restore();
+        mols.forEach(function(m){ if(m.state !== 'whole' && m.state !== 'old') draw(x, m); });
+        events.forEach(function(e){ if(e.swapped && !e.formed) e.outs.forEach(function(m){ draw(x, m); }); });
+        // the needle
+        x.save(); x.translate(G.gx, G.gy); x.rotate(needle.a || Math.PI); x.beginPath(); x.moveTo(0, -2.4); x.lineTo(G.gr * 0.86, 0); x.lineTo(0, 2.4); x.closePath(); x.fillStyle = CV.col.q; x.fill(); x.restore();
+        x.beginPath(); x.arc(G.gx, G.gy, 4, 0, Math.PI * 2); x.fillStyle = CV.col.ink; x.fill();
+        x.globalAlpha = 1;
+        if(CV.fade) kick();
+      }
+      var gasAlpha = 0, gasTo = 0;
       function countsDrawn(){
         var r = R(), c = r.species.map(function(){ return 0; });
         // every molecule in the flask counts: a reactant until its products have formed, a product from then on
@@ -192,25 +248,17 @@
         var g = G, r = R(), W = g.W, H = g.H, p = [];
         p.push('<defs><linearGradient id="ix2g-wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="ix2s-wall0"/><stop offset="1" class="ix2s-wall1"/></linearGradient>' +
           '<linearGradient id="ix2g-bench" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="ix2s-bn0"/><stop offset="1" class="ix2s-bn1"/></linearGradient>' +
-          '<radialGradient id="ix2g-glass" cx="0.36" cy="0.32" r="0.75"><stop offset="0" class="ix2s-gl0"/><stop offset="1" class="ix2s-gl1"/></radialGradient>' +
-          '<clipPath id="ix2c-flask"><path d="' + flaskPath(0) + '"/></clipPath></defs>');
+          '<radialGradient id="ix2g-glass" cx="0.36" cy="0.32" r="0.75"><stop offset="0" class="ix2s-gl0"/><stop offset="1" class="ix2s-gl1"/></radialGradient></defs>');
         p.push('<rect class="ix2-wall" x="0" y="0" width="' + W + '" height="' + g.yb + '"/>');
         for(var ty = 46; ty < g.yb; ty += 58) p.push('<path class="ix2-grout" d="M0 ' + ty + 'H' + W + '"/>');
         p.push('<rect class="ix2-bench" x="0" y="' + g.yb + '" width="' + W + '" height="' + (H - g.yb) + '"/><path class="ix2-benchedge" d="M0 ' + (g.yb + 0.5) + 'H' + W + '"/>');
         // the cork ring the flask sits in, its shadow
         p.push('<ellipse class="ix2-shadow" cx="' + g.cx + '" cy="' + (g.yb + 6) + '" rx="' + Math.round(g.R * 0.8) + '" ry="7"/>');
         // the flask: glass body and neck, then the gas tint, the molecules, then the shine and the stopper on top
+        // the cork ring: its back half under the flask, its front half over the glass (drawn after it)
+        var crx = Math.round(g.R * 0.52), cry = Math.max(6, Math.round(g.R * 0.06));
+        p.push('<ellipse class="ix2-cork" cx="' + g.cx + '" cy="' + (g.yb - 2) + '" rx="' + crx + '" ry="' + cry + '"/>');
         p.push('<path class="ix2-glassbody" d="' + flaskPath(0) + '"/>');
-        p.push('<g clip-path="url(#ix2c-flask)"><rect class="ix2-gas is-' + r.tint.color + '" x="0" y="0" width="' + W + '" height="' + g.yb + '"/></g>');
-        p.push('<g class="ix2-mols"></g>');
-        p.push('<g class="ix2-fx"></g>');
-        p.push('<path class="ix2-glassrim" d="' + flaskPath(0) + '"/>');
-        p.push('<path class="ix2-shine" d="M' + f1(g.cx - g.R * 0.62) + ' ' + f1(g.cy - g.R * 0.38) + 'A' + g.R * 0.78 + ' ' + g.R * 0.78 + ' 0 0 1 ' + f1(g.cx - g.R * 0.18) + ' ' + f1(g.cy - g.R * 0.74) + '"/>');
-        p.push('<path class="ix2-shine is-thin" d="M' + f1(g.cx - g.neck * 0.45) + ' ' + f1(g.neckTop + 10) + 'V' + f1(g.cy - g.R * 1.02) + '"/>');
-        var sw = g.neck * 1.32, sTop = g.neckTop - Math.round(0.2 * g.R);
-        p.push('<path class="ix2-stopper" d="M' + f1(g.cx - sw) + ' ' + f1(sTop) + 'H' + f1(g.cx + sw) + 'L' + f1(g.cx + g.neck * 0.98) + ' ' + f1(g.neckTop + 0.12 * g.R) + 'H' + f1(g.cx - g.neck * 0.98) + 'Z"/>');
-        p.push('<path class="ix2-stopperhi" d="M' + f1(g.cx - sw + 3) + ' ' + f1(sTop + 3) + 'H' + f1(g.cx + sw - 3) + '"/>');
-        p.push('<path class="ix2-cork" d="M' + f1(g.cx - g.R * 0.62) + ' ' + f1(g.yb - 3) + 'Q' + g.cx + ' ' + f1(g.yb + 12) + ' ' + f1(g.cx + g.R * 0.62) + ' ' + f1(g.yb - 3) + 'L' + f1(g.cx + g.R * 0.56) + ' ' + f1(g.yb + 6) + 'Q' + g.cx + ' ' + f1(g.yb + 18) + ' ' + f1(g.cx - g.R * 0.56) + ' ' + f1(g.yb + 6) + 'Z"/>');
         // the Q gauge clipped to the neck: a dial, log scale, K as a fixed notch, the needle at Q
         var gx = g.gx, gy = g.gy, gr = g.gr, lo = r.gauge[0], hi = r.gauge[1];
         p.push('<path class="ix2-clip" d="M' + f1(g.cx + g.neck - 1) + ' ' + f1(gy + gr * 0.12) + 'H' + f1(gx - gr + 2) + '"/>');
@@ -220,26 +268,39 @@
         p.push('<path class="ix2-knotch" d="M' + f1(gx + k1[0]) + ' ' + f1(gy + k1[1]) + 'L' + f1(gx + k2[0]) + ' ' + f1(gy + k2[1]) + '"/>');
         p.push('<text class="ix2-klab" x="' + f1(gx + k3[0]) + '" y="' + f1(gy + k3[1] + 4) + '" text-anchor="middle">K</text>');
         p.push('<text class="ix2-qlab" x="' + f1(gx - gr * 0.5) + '" y="' + f1(gy + gr * 0.2) + '" text-anchor="middle">Q</text>');
-        p.push('<g class="ix2-needle"><path d="M0 -2.4L' + f1(gr * 0.86) + ' 0L0 2.4Z"/><circle r="4"/></g>');
+
         // the x rail on the bench: one tick per step of x (one reaction event)
         var rl = g.rail, n = r.steps;
         p.push('<path class="ix2-rail" d="M' + f1(rl[0]) + ' ' + rl[1] + 'H' + f1(rl[2]) + '"/>');
         for(var k = 0; k <= n; k++){ var tx = lerp(rl[0], rl[2], k / n); p.push('<path class="ix2-rtick" d="M' + f1(tx) + ' ' + (rl[1] + 7) + 'V' + (rl[1] + 12) + '"/>'); }
-        p.push('<text class="ix2-xlab" x="' + f1(rl[0] - 14) + '" y="' + (rl[1] + 5) + '" text-anchor="end">x</text>');
+        p.push('<text class="ix2-xlab" x="' + f1(rl[0] - 26) + '" y="' + (rl[1] + 5) + '" text-anchor="end">x</text>');
         // the clipboard (wide) or the notebook page on the bench (phone)
         var nx = g.nx, ny = g.ny, nw = g.nw, nh = g.nh;
         if(!g.narrow){
           p.push('<rect class="ix2-board" x="' + f1(nx - 10) + '" y="' + f1(ny - 12) + '" width="' + f1(nw + 20) + '" height="' + f1(nh + 24) + '" rx="10"/>');
-          p.push('<rect class="ix2-paper" x="' + nx + '" y="' + ny + '" width="' + nw + '" height="' + nh + '" rx="3"/>');
+          p.push('<rect class="ix2-papershadow" x="' + (nx + 1) + '" y="' + (ny + 2) + '" width="' + nw + '" height="' + nh + '" rx="3"/><rect class="ix2-paper" x="' + nx + '" y="' + ny + '" width="' + nw + '" height="' + nh + '" rx="3"/>');
           var cw = 92; p.push('<rect class="ix2-clamp" x="' + f1(nx + nw / 2 - cw / 2) + '" y="' + f1(ny - 20) + '" width="' + cw + '" height="26" rx="6"/><rect class="ix2-clamphi" x="' + f1(nx + nw / 2 - cw / 2 + 6) + '" y="' + f1(ny - 16) + '" width="' + (cw - 12) + '" height="5" rx="2.5"/>');
         } else {
-          p.push('<rect class="ix2-paper is-flat" x="' + nx + '" y="' + ny + '" width="' + nw + '" height="' + nh + '" rx="4"/>');
+          p.push('<rect class="ix2-papershadow" x="' + (nx + 2) + '" y="' + (ny + 3) + '" width="' + nw + '" height="' + nh + '" rx="4"/><rect class="ix2-paper is-flat" x="' + nx + '" y="' + ny + '" width="' + nw + '" height="' + nh + '" rx="4"/>');
         }
         for(var ly = ny + g.tTop - 8; ly < ny + nh - 6; ly += 26) p.push('<path class="ix2-ruled" d="M' + (nx + 6) + ' ' + ly + 'H' + (nx + nw - 6) + '"/>');
-        p.push('<path class="ix2-margin" d="M' + (nx + g.pad + g.lw - 6) + ' ' + (ny + 4) + 'V' + (ny + nh - 4) + '"/>');
+        // the page's margin line runs down the table only (clear of the title and the lines under it)
+        p.push('<path class="ix2-margin" d="M' + (nx + g.pad + g.lw - 6) + ' ' + (ny + g.tTop - 2) + 'V' + (ny + g.tTop + g.hh + 3 * g.rh) + '"/>');
         p.push('<g class="ix2-book"></g>');
+        // over the canvas: the glass's rim and shine, the stopper and the front of the cork ring (so the gas and the
+        // molecules sit inside the glass)
+        var f = [];
+        f.push('<path class="ix2-glassrim" d="' + flaskPath(0) + '"/>');
+        f.push('<path class="ix2-corkfront" d="M' + (g.cx - crx) + ' ' + (g.yb - 2) + 'A' + crx + ' ' + cry + ' 0 0 0 ' + (g.cx + crx) + ' ' + (g.yb - 2) + '"/>');
+        f.push('<path class="ix2-shine" d="M' + f1(g.cx - g.R * 0.62) + ' ' + f1(g.cy - g.R * 0.38) + 'A' + g.R * 0.78 + ' ' + g.R * 0.78 + ' 0 0 1 ' + f1(g.cx - g.R * 0.18) + ' ' + f1(g.cy - g.R * 0.74) + '"/>');
+        f.push('<path class="ix2-shine is-thin" d="M' + f1(g.cx - g.neck * 0.45) + ' ' + f1(g.neckTop + 10) + 'V' + f1(g.cy - g.R * 1.02) + '"/>');
+        var sw = g.neck * 1.32, sTop = g.neckTop - Math.round(0.2 * g.R);
+        f.push('<path class="ix2-stopper" d="M' + f1(g.cx - sw) + ' ' + f1(sTop) + 'H' + f1(g.cx + sw) + 'L' + f1(g.cx + g.neck * 0.98) + ' ' + f1(g.neckTop + 0.12 * g.R) + 'H' + f1(g.cx - g.neck * 0.98) + 'Z"/>');
+        f.push('<path class="ix2-stopperhi" d="M' + f1(g.cx - sw + 3) + ' ' + f1(sTop + 3) + 'H' + f1(g.cx + sw - 3) + '"/>');
         svg.innerHTML = p.join('');
-        L.mols = svg.querySelector('.ix2-mols'); L.fx = svg.querySelector('.ix2-fx'); L.gas = svg.querySelector('.ix2-gas'); L.needle = svg.querySelector('.ix2-needle');
+        front.innerHTML = f.join('');
+        [front].forEach(function(z){ z.setAttribute('viewBox', '0 0 ' + W + ' ' + H); });
+
         L.book = svg.querySelector('.ix2-book');
         drawBook();
       }
@@ -262,8 +323,9 @@
         var g = G, r = R(), x0 = g.nx + g.pad, y0 = g.ny, sp = r.species, u = unitOf(r);
         L.book.innerHTML = '';
         BK = { cells: { I: [], C: [], E: [] } };
-        txt('ix2-eqn', x0, y0 + (g.narrow ? 26 : 32), svgChem(eqText(r)));
-        txt('ix2-kline', x0, y0 + (g.narrow ? 44 : 54), 'K<tspan class="ix-sub" dy="0.28em">' + (r.K === 'Kp' ? 'p' : 'c') + '</tspan><tspan dy="-0.28em"> = ' + esc(String(r.Kval)) + ' at ' + esc(r.T) + '</tspan>');
+        // compact: the equation and K on one line (K to the right)
+        txt('ix2-eqn', x0, y0 + (g.compact ? 26 : 32), svgChem(eqText(r)));
+        txt('ix2-kline', g.compact ? g.nx + g.nw - g.pad : x0, y0 + (g.compact ? 26 : 61), 'K<tspan class="ix-sub" dy="0.28em">' + (r.K === 'Kp' ? 'p' : 'c') + '</tspan><tspan dy="-0.28em"> = ' + esc(String(r.Kval)) + ' at ' + esc(r.T) + '</tspan>', g.compact ? 'end' : null);
         var tt = y0 + g.tTop, colX = function(i){ return x0 + g.lw + g.cw * (i + 0.5); };
         // the E row's band: green once Q meets K
         BK.band = mk('rect', 'ix2-eqband', { x: f1(x0 - 6), y: f1(tt + g.hh + 2 * g.rh + 2), width: f1(g.nw - 2 * g.pad + 12), height: f1(g.rh - 4), rx: 6 });
@@ -272,8 +334,8 @@
         sp.forEach(function(s, i){
           var cx = colX(i);
           // the key: a small drawing of the molecule over its name (the flask draws no letters)
-          var icon = mk('g', 'ix2-icon', { transform: 'translate(' + f1(cx) + ' ' + f1(tt + (g.narrow ? 13 : 15)) + ')' });
-          var sc = g.narrow ? 0.5 : 0.62, t = TEMPL[s.key].slice().sort(function(p, q){ return (p.z || 0) - (q.z || 0) || (q.r || 9) - (p.r || 9); });
+          var icon = mk('g', 'ix2-icon', { transform: 'translate(' + f1(cx) + ' ' + f1(tt + (g.compact ? 13 : 15)) + ')' });
+          var sc = g.compact ? 0.5 : 0.62, t = TEMPL[s.key].slice().sort(function(p, q){ return (p.z || 0) - (q.z || 0) || (q.r || 9) - (p.r || 9); });
           icon.innerHTML = t.map(function(at){ return '<g class="pt-atom ' + (ELC[at.el] || 'pa') + '" transform="translate(' + f1(at.dx * sc) + ' ' + f1(at.dy * sc) + ')">' + atomSvg(at.el, (at.r || 9) * sc) + '</g>'; }).join('');
           L.book.appendChild(icon);
           txt('ix2-sp', cx, tt + g.hh - 10, r.K === 'Kp' ? 'P<tspan class="ix-sub" dy="0.28em">' + svgChem(s.html).replace(/<tspan class="ix-sub" dy="0.28em">/g, '<tspan>').replace(/<tspan dy="-0.28em"> <\/tspan>/g, '') + '</tspan><tspan dy="-0.28em"> </tspan>' : '[' + svgChem(s.html) + ']', 'middle');
@@ -282,19 +344,20 @@
         ROWS.forEach(function(rw, ri){
           var ry = tt + g.hh + ri * g.rh;
           if(ri) L.book.appendChild(mk('path', 'ix2-rline', { d: 'M' + f1(x0 - 4) + ' ' + f1(ry) + 'H' + f1(g.nx + g.nw - g.pad + 4) }));
-          txt('ix2-row', x0 + (g.narrow ? 4 : 2), ry + (g.narrow ? g.rh / 2 + 7 : g.rh / 2 + 2), rw[0]);
-          if(!g.narrow) BK['w' + rw[0]] = txt('ix2-roww', x0 + 2, ry + g.rh / 2 + 18, rw[0] === 'E' ? 'at this x' : rw[1].toLowerCase());
+          txt('ix2-row', x0 + (g.compact ? 4 : 2), ry + g.rh / 2 + 7, rw[0]);
+          // the row's name beside its letter (no room on a phone: the letters only)
+          if(!g.compact) BK['w' + rw[0]] = txt('ix2-roww', x0 + 22, ry + g.rh / 2 + 5, rw[0] === 'E' ? 'at this x' : rw[1].toLowerCase());
           sp.forEach(function(s, i){
             var cx = colX(i), cell = {};
             if(rw[0] === 'I') cell.v = txt('ix2-val', cx, ry + g.rh / 2 + 6, '', 'middle');
-            else { cell.e = txt('ix2-expr', cx, ry + g.rh / 2 - 6, '', 'middle'); cell.v = txt('ix2-val', cx, ry + g.rh / 2 + 14, '', 'middle'); }
+            else { cell.e = txt('ix2-expr', cx, ry + g.e1, '', 'middle'); cell.v = txt('ix2-val', cx, ry + g.e2, '', 'middle'); }
             BK.cells[rw[0]].push(cell);
           });
         });
         var by = tt + g.hh + 3 * g.rh;
         L.book.appendChild(mk('path', 'ix2-tline', { d: 'M' + f1(x0 - 4) + ' ' + f1(by) + 'H' + f1(g.nx + g.nw - g.pad + 4) }));
-        BK.key = txt('ix2-key', x0, by + (g.narrow ? 22 : 26), '1 molecule = ' + esc(String(r.per)) + ' ' + esc(u));
-        BK.q = txt('ix2-qline', x0, by + (g.narrow ? 48 : 56), '');
+        BK.key = txt('ix2-key', x0, by + (g.compact ? 22 : 26), '1 molecule = ' + esc(String(r.per)) + ' ' + esc(u));
+        BK.q = txt('ix2-qline', x0, by + (g.compact ? 50 : 58), '');
         // the fixed parts of the C and E rows (in x)
         sp.forEach(function(s, i){
           var c = Math.abs(s.nu) > 1 ? Math.abs(s.nu) : '';
@@ -321,6 +384,8 @@
         drawnKey = key;
         var x = xOf(r, c), q = Qof(r, c), ke = eqStep(r), k = Math.round(x / r.per), at = k === ke;
         shown = { c: c, x: x, q: q, k: k, at: at };
+        // the knob's tag first: it reads the layout, which is still clean before the writes below
+        if(slider) slider.place();
         r.species.forEach(function(s, i){
           var cv = BK.cells.C[i].v, ev = BK.cells.E[i].v;
           cv.textContent = x === 0 ? '0' : (s.nu < 0 ? '−' : '+') + fmt(Math.abs(s.nu) * x);
@@ -333,10 +398,9 @@
         svg.classList.toggle('is-eq', at);
         // the gas colour from the drawn coloured molecules
         var ti = idx(r.tint.key), most = 0; for(var kk = 0; kk <= r.steps; kk++) most = Math.max(most, countsAt(r, kk)[ti]);
-        L.gas.style.opacity = (0.08 + 0.5 * c[ti] / most).toFixed(3);
+        gasTo = 0.08 + 0.5 * c[ti] / most; if(force && !prev) gasAlpha = gasTo;
         needle.to = angOf(q); if(needle.a == null) needle.a = needle.to;
         kick();
-        if(slider) slider.place();   // the knob's tag follows the drawn x
         paintCause();
         again.hidden = k === 0 && S.target === 0;
       }
@@ -367,7 +431,7 @@
       function slotAngle(i){ var r = rng(7 + i * 13 + S.ri * 101); return (r() - 0.5) * 1.6; }
       // lay out the molecules for step k at once (a fresh picture: first draw, another reaction, Start over, reduced motion)
       function layoutAt(k){
-        mols.forEach(dropMol); mols = []; events = []; L.fx.innerHTML = '';
+        mols = []; events = []; CV.baseDirty = true;
         slotUse = G.slots.map(function(){ return null; });
         var r = R(), c = countsAt(r, k), order = G.slots.map(function(p, i){ return i; }), rr = rng(31 + S.ri * 7);
         for(var i = order.length - 1; i > 0; i--){ var j = Math.floor(rr() * (i + 1)), t = order[i]; order[i] = order[j]; order[j] = t; }
@@ -400,7 +464,7 @@
             if(m && ins.indexOf(m) > -1){ var alt = mols.filter(function(z){ return z.key === reac[a].key && idle(z) && ins.indexOf(z) < 0; }); m = alt.length ? alt.sort(function(p, q){ return Math.hypot(p.x - first.x, p.y - first.y) - Math.hypot(q.x - first.x, q.y - first.y); })[0] : null; }
             if(!m){ ins.forEach(function(z){ z.state = 'whole'; }); return false; }
             if(!first) first = m;
-            ins.push(m); m.state = 'busy';
+            ins.push(m); m.state = 'busy'; CV.baseDirty = true;
           }
         }
         var cx = ins.reduce(function(s, m){ return s + m.x; }, 0) / ins.length, cy = ins.reduce(function(s, m){ return s + m.y; }, 0) / ins.length;
@@ -417,7 +481,7 @@
           var off = (k - (np - 1) / 2) * 26 * G.s, pm = { key: p.key, atoms: [], state: 'forming', x: P[0] + off, y: P[1], a: np > 1 ? (p.key === 'NO2' && off > 0 ? -Math.PI / 2 : Math.PI / 2) : 0 };
           TEMPL[p.key].slice().sort(function(u, v){ return (u.z || 0) - (v.z || 0) || (v.r || 9) - (u.r || 9); }).forEach(function(at){
             var src = null; for(var q = 0; q < pool.length; q++) if(!pool[q].used && pool[q].at.el === at.el){ src = pool[q]; pool[q].used = true; break; }
-            pm.atoms.push({ el: at.el, dx: at.dx, dy: at.dy, src: src, n: null });
+            pm.atoms.push({ el: at.el, r: at.r || 9, dx: at.dx, dy: at.dy, src: src, wx: 0, wy: 0 });
           });
           outs.push(pm); k++;
         } });
@@ -444,11 +508,10 @@
           // the reactants' atoms now belong to the products being formed (the old molecules stay counted until formed)
           e.swapped = true;
           e.ins.forEach(function(m){ m.state = 'old'; m.atoms.forEach(function(at){ at.keep = [at.wx, at.wy]; }); });
-          e.outs.forEach(function(pm){ pm.atoms.forEach(function(a){ a.n = a.src.at.n; a.start = [a.src.at.wx, a.src.at.wy]; }); });
-          e.glow = mk('circle', 'ix2-glow', { cx: f1(e.P[0]), cy: f1(e.P[1]), r: f1(30 * G.s) }); L.fx.appendChild(e.glow);
+          e.outs.forEach(function(pm){ pm.atoms.forEach(function(a){ a.start = [a.src.at.wx, a.src.at.wy]; a.wx = a.start[0]; a.wy = a.start[1]; }); });
         }
         var gG = clamp((t - 0.4) / 0.15, 0, 1), gl = Math.sin(Math.PI * clamp((t - 0.38) / 0.24, 0, 1));
-        if(e.glow) e.glow.style.opacity = (0.75 * gl).toFixed(2);
+        e.glowA = 0.75 * gl;
         if(t < 0.55){
           var w = ease(gG);
           e.outs.forEach(function(pm){ pm.atoms.forEach(function(a){ var p = atomPos(pm, a, pm.x, pm.y, pm.a); setAtomN(a, lerp(a.start[0], p[0], w), lerp(a.start[1], p[1], w)); }); });
@@ -464,12 +527,12 @@
         var v = ease(clamp((t - 0.55) / 0.45, 0, 1));
         e.outs.forEach(function(pm){ var x = lerp(pm.from[0], pm.to[0], v), y = lerp(pm.from[1], pm.to[1], v), a = lerp(pm.from[2], pm.to[2], v); pm.x = x; pm.y = y; pm.a = a; pm.atoms.forEach(function(at){ var p = atomPos(pm, at, x, y, a); setAtomN(at, p[0], p[1]); }); });
         if(t >= 1){
-          e.outs.forEach(function(pm){ pm.state = 'whole'; });
-          if(e.glow) e.glow.remove();
+          e.outs.forEach(function(pm){ pm.state = 'whole'; }); CV.baseDirty = true;
+          e.glowA = 0;
           e.done = true;
         }
       }
-      function setAtomN(a, x, y){ a.wx = x; a.wy = y; a.n.setAttribute('transform', 'translate(' + f1(x) + ' ' + f1(y) + ')'); }
+      function setAtomN(a, x, y){ a.wx = x; a.wy = y; }
       function kick(){ if(!raf) raf = requestAnimationFrame(frame); }
       function frame(){
         raf = 0;
@@ -482,26 +545,27 @@
         events.forEach(function(e){ stepEvent(e, tn); });
         events = events.filter(function(e){ return !e.done; });
         // the needle eases to the drawn Q
-        if(needle.to != null){ var d = needle.to - needle.a; needle.a = Math.abs(d) < 0.002 ? needle.to : needle.a + d * 0.22; paintNeedle(); }
-        var more = events.length || S.target !== logicalK() + pendingK() || (needle.to != null && needle.a !== needle.to);
+        if(needle.to != null){ var d = needle.to - needle.a; needle.a = Math.abs(d) < 0.002 ? needle.to : needle.a + d * 0.22; }
+        // the gas colour eases to the drawn coloured molecules
+        var dg = gasTo - gasAlpha; gasAlpha = Math.abs(dg) < 0.002 ? gasTo : gasAlpha + dg * 0.18;
+        paintCanvas();
+        var more = events.length || S.target !== logicalK() + pendingK() || (needle.to != null && needle.a !== needle.to) || gasAlpha !== gasTo || !!CV.fade;
         if(more){ dirty = true; raf = requestAnimationFrame(frame); }
         else if(dirty){ dirty = false; paintCause(); settled(); }
       }
-      function paintNeedle(){ L.needle.setAttribute('transform', 'translate(' + G.gx + ' ' + G.gy + ') rotate(' + (needle.a * 180 / Math.PI).toFixed(2) + ')'); }
+      function paintNeedle(){ paintCanvas(); }
       // finish everything now (leaving Explore, the stage hidden, reduced motion): the picture of the knob's step
       function snap(){
         if(raf){ cancelAnimationFrame(raf); raf = 0; }
         if(!G) return;
-        layoutAt(S.target); drawnKey = ''; paintReadouts(true); needle.a = needle.to; paintNeedle(); settled();
+        layoutAt(S.target); drawnKey = ''; paintReadouts(true); needle.a = needle.to; gasAlpha = gasTo; CV.fade = null; paintNeedle(); settled();
       }
+      // a short cross fade on the canvas: the old picture out (0.15 s), the new one in (0.15 s)
       function crossFade(fn){
-        var old = L.mols.cloneNode(true); old.setAttribute('class', 'ix2-old');
-        L.mols.parentNode.insertBefore(old, L.mols.nextSibling);
+        var img = null;
+        if(CV.ctx && mov.width){ img = document.createElement('canvas'); img.width = mov.width; img.height = mov.height; img.getContext('2d').drawImage(mov, 0, 0); }
         fn();
-        if(!old.animate){ old.remove(); return; }
-        L.mols.style.opacity = '0';
-        var an = old.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 150, fill: 'forwards' });
-        an.onfinish = function(){ old.remove(); L.mols.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 150 }); L.mols.style.opacity = ''; };
+        if(img){ CV.fade = { img: img, t0: now() }; kick(); }
       }
 
       /* ---------------------------------------------------- the x knob */
@@ -518,7 +582,7 @@
       function setTarget(v){
         S.target = v; tourDid('drag');
         cause.take(null); clearTimeout(takeT);
-        if(K.reduced()){ crossFade(function(){ layoutAt(v); }); drawnKey = ''; paintReadouts(true); needle.a = needle.to; paintNeedle(); settled(); return; }
+        if(K.reduced()){ crossFade(function(){ layoutAt(v); }); drawnKey = ''; paintReadouts(true); needle.a = needle.to; gasAlpha = gasTo; paintNeedle(); settled(); return; }
         kick();
       }
 
@@ -528,12 +592,18 @@
         var r0 = sceneBox.getBoundingClientRect(), W = Math.round(r0.width);
         if(!W || (!force && W === lastW && G)) { if(cue.active()) cue.place(); return; }
         lastW = W;
-        phone = W < 640;
+        phone = W < 680;
         if(raf){ cancelAnimationFrame(raf); raf = 0; }
         G = geo(W);
         sceneBox.style.height = G.H + 'px';
         svg.setAttribute('viewBox', '0 0 ' + W + ' ' + G.H); svg.setAttribute('width', W); svg.setAttribute('height', G.H);
-        sceneBox.classList.toggle('is-narrow', phone);
+        // the canvas covers the flask and its gauge only (a small texture to upload each frame)
+        var bx = [Math.floor(G.cx - G.R - 6), Math.floor(Math.min(G.gy - G.gr - 6, G.neckTop - 4)), Math.ceil(Math.max(G.gx + G.gr, G.cx + G.R) + 6), Math.ceil(G.yb + 4)];
+        CV.box = bx; CV.dpr = Math.min(2, window.devicePixelRatio || 1);
+        mov.style.left = bx[0] + 'px'; mov.style.top = bx[1] + 'px'; mov.style.width = (bx[2] - bx[0]) + 'px'; mov.style.height = (bx[3] - bx[1]) + 'px';
+        mov.width = Math.round((bx[2] - bx[0]) * CV.dpr); mov.height = Math.round((bx[3] - bx[1]) * CV.dpr); CV.ctx = mov.getContext('2d');
+        CV.base = document.createElement('canvas'); CV.base.width = mov.width; CV.base.height = mov.height; CV.baseDirty = true; readColours();
+        sceneBox.classList.toggle('is-narrow', G.compact);
         drawStatic();
         layoutAt(S.target);
         drawnKey = ''; shown = null; paintReadouts(true); needle.a = needle.to; paintNeedle();
@@ -623,6 +693,8 @@
       if(!ctx.studio){ app.insertBefore(stage, app.firstChild); app.insertBefore(ref, stage.nextSibling); shownMode('explore'); }
       // the stage stops when it is hidden (another tab of the page, scrolled away mid change)
       if(window.IntersectionObserver) new IntersectionObserver(function(es){ es.forEach(function(en){ if(!en.isIntersecting && (busy() || raf) && S.mode === 'explore') snap(); }); }).observe(sceneBox);
+      // the canvas follows the site's theme switch
+      if(window.MutationObserver) new MutationObserver(function(){ if(G){ readColours(); paintCanvas(); } }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
       document.addEventListener('visibilitychange', function(){ if(document.hidden && (busy() || raf)) snap(); });
       if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ if(G) layoutNow(true); });
       if(window.ResizeObserver){ var tm = null; new ResizeObserver(function(){ clearTimeout(tm); tm = setTimeout(function(){ layoutNow(); }, 50); }).observe(sceneBox); }
@@ -632,7 +704,8 @@
         G: function(){ return G; }, busy: function(){ return busy() || !!raf; }, target: function(){ return S.target; }, react: function(){ return R(); },
         drawn: function(){ return countsDrawn(); }, shown: function(){ return shown; }, needle: function(){ return needle.a; }, angOf: angOf, Qof: function(c){ return Qof(R(), c); }, eqStep: function(){ return eqStep(R()); },
         mols: function(){ return mols.map(function(m){ return { key: m.key, state: m.state, atoms: m.atoms.map(function(a){ return [a.wx, a.wy]; }) }; }); },
-        events: function(){ return events.map(function(e){ return { dir: e.dir, formed: e.formed, swapped: !!e.swapped, ins: e.ins.map(function(m){ return m.key; }), atoms: e.outs.map(function(pm){ return pm.atoms.map(function(a){ return a.n ? [a.wx, a.wy] : null; }); }) }; }); },
+        events: function(){ return events.map(function(e){ return { dir: e.dir, formed: e.formed, swapped: !!e.swapped, ins: e.ins.map(function(m){ return m.key; }), glow: e.glowA || 0 }; }); },
+        gas: function(){ return { now: gasAlpha, to: gasTo }; },
         set: function(k){ slider.value(k, true); }, snap: snap
       };
     }, { studio: { kit2: function(ctx){ return ctx.kit2; } } });
