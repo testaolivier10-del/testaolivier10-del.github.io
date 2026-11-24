@@ -131,3 +131,51 @@ the report section below.
   reports frame v2, one of each event, nothing under automation.
 - Preview: `/mnt/user-data/outputs/neuron-v2/index.html`; shots in `shots/` (01 to 12, each tab at 1440, 768 and
   390, light and dark, with mid run frames 03a to 03d and mid animation frames in Myelin and Synapse).
+
+## Review round 1 (2026-11-23, `/home/claude/review-neuron/REVIEW.md`: BLOCK, 9 must fix, 12 should fix, 3 removals)
+All fixed in this round (the speed rule). Science and frame agreement were confirmed by the reviewer.
+
+Must fix:
+1. Synapse had two time cursors: the scrub now spans 0 to 12 ms like the graph, and the kit's own scrub line is hidden
+   (the drawn "now" line is the one cursor; the scrub steps 0.01 ms). The frame check asserts one line.
+2. `layoutNow` returns while the scene has no size (Test yourself, `?seed=`, `#quiz`): no fake layout, no console errors.
+3. The Na⁺ and K⁺ labels sit on the membrane beside their channels (Na⁺ to the left, K⁺ to the right; the channels
+   are placed so both fit), never over a mouth the ions use; ion seats avoid the labels. The frame check asserts no
+   label covers a moving ion or molecule.
+4. "+40 mV spike" sits right of the whole spike (spike + 2.4 ms) with a halo; the band is gone from Threshold.
+5. Phone Myelin: the axon takes the width (a stub of dendrites, no input, short terminals, a thicker axon); each
+   target spans its stretch and half of each node gap: at least 44 px at 360 (the sweep asserts 44 px targets).
+6. The myelin targets are invisible (focus ring only); hover or focus outlines the sheath itself (or the bare stretch).
+7. No "Tap" chip or pulse on the segments: the cue is the only hint.
+8. The tabs use the short "Refractory" up to 900 px (the sweep asserts no tab name is cut).
+9. The cleft's two names keep the moving parts off them: the molecules' range and the transporters (with the plug)
+   stay clear of "Synapse" and of the neurotransmitter's name; on a phone "Reuptake" is not on the picture (no free
+   spot among the vesicles; the cause line names it).
+
+Should fix:
+1. The two K⁺ ions cross from 0.55 to 1.75 and 1.75 to 2.95 ms; "K⁺ flows out" shows 0.5 to 3.0 ms only.
+2. Phone excitatory track 92 px (the control column is 128 px; the track runs to the input's bouton).
+3. Each input has its name above its track and its value under it.
+4. Cause line: "0 mV excitatory"; the inhibitory pill is joined with a minus ("+29 mV excitatory − 15 mV inhibitory",
+   a `join: '-'` added to `K.cause` in the kit); exactly 15 mV "reaches threshold".
+5. Inhibitory input 0 to 10 mV (the floor is −80 mV).
+6. GABA: its cause pills and the receiving neuron's glow are pink.
+7. "?" says potassium violet.
+8. The refractory band is drawn only in Refractory period.
+9. Cues: Threshold below the knob on desktop (its value waits while the cue shows), right of it on a phone;
+   Refractory period right of the 2nd pulse (off the spikes and the threshold line; on a phone the short "resting"
+   word waits). The stimulus row sits lower in the graph so the cue keeps off the tick numbers.
+10. Phone Myelin stage 250 px with the bigger axon.
+11. Test yourself draws the neuron and synapse figures with the Explore art (`figSvg`: own gradient ids; a part lit
+    and named only once answered; the drug only once its kind is named; no neurotransmitter name on the figure).
+    The trace figure keeps its graph.
+12. Perf: the ions and the cleft's molecules are built once per layout and moved by attribute; the faint run drawn
+    once per run. CPU x4 on a quiet machine: neuron median 16.7 ms everywhere, p95 16.8 to 50 ms (390 and 1440);
+    flagship in the same process median 33.3, p95 66.7.
+
+Merged `claude/tools-v2-brain-map` again (4cb0572c, its colour fix). Its adapter change (kit loader into
+`ApPsychTools.kit2`) was not pushed yet; the neuron still loads the kit itself when the page did not.
+
+Checks this round: sweep at 360, 390, 768, 1024 and 1440, light and dark (90 states each): 0 failures; frames at 390
+and 1440 (7650 and 7379 frames): 0 failures; AP Psych tests 153 pass; content check, `build-appsych --check`,
+`check-weight --check`: pass; `check-site`: OK.

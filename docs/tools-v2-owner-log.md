@@ -405,3 +405,8 @@ in each tool's brief.
 | 2026-11-23 | AP Psych Brain map | Short `job` and `hurt` phrases added to the model for the cause line | The full sentences do not fit two rows at 360 px | `math/brain-map.js` `SHORT`; tested |
 | 2026-11-23 | AP Psych Brain map | `K.spots` gained `under(x, y)`: a tap names the part drawn under the finger | A brain is areas, not points; acting on what is drawn | `assets/course/tool-kit2.js`; only tools that pass it change |
 | 2026-11-23 | AP Psych Brain map | AP Psychology's kit adapter is `ApPsychTools.kit2`, a thin wrapper of `modes()` that keeps the step drill as Test yourself | First AP Psychology tool on the kit; the other nine tools unchanged | `psy-tools.js`, `"kit2": true` in `psychology/data/pages.json` |
+| 2026-11-23 | AP Psych Neuron | Review round 1: inhibitory input 0 to 10 mV (was 20) | One inhibitory input stops near −80 mV, not −90 | `IMAX` |
+| 2026-11-23 | AP Psych Neuron | Review round 1: while a first visit cue shows, the value or word it would cover waits (Threshold value on desktop; "resting" on a phone in Refractory period) | Every other spot covers the spike, the bouton or a label | `neuron.css` (`.is-cue`) |
+| 2026-11-23 | AP Psych Neuron | Review round 1: no "Reuptake" label on the synapse picture on phones | No free spot among the vesicles; the cause line names it | `synStatic()` |
+| 2026-11-23 | AP Psych Neuron | Review round 1: `K.cause` accepts `join: '-'` (a minus between two pills) | "+29 mV excitatory − 15 mV inhibitory" | `assets/course/tool-kit2.js` |
+| 2026-11-23 | AP Psych Neuron | Review round 1: phone Myelin shows a stub of dendrites and no input axon | The axon needs the width for 44 px targets | `geo()` |
