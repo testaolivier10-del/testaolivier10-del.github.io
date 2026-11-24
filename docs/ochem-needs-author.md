@@ -1342,3 +1342,14 @@ In E1 the drawn base is the reagent when it is water, ethanol, a weak base or be
 (ethanol, or DMSO in an aprotic flask). A neutral nucleophile (water, ethanol, ammonia) loses its extra H⁺ "to the
 solvent": an H ball with a + badge that fades. A person may prefer a drawn solvent molecule taking it in every case.
 - **Status:** decided for the owner.
+
+### rp-v2-ring-sn2: SN2 on the cyclohexane sketch (review round 1, decided)
+The ring stays still; in SN2 the nucleophile ends equatorial and the hydrogen takes the axial place bromine left (Br
+up, Nu down: trans). A real ring passes through a twist and may flip after the step; the sketch shows the relaxed
+product. SN1 on the ring: back face as SN2, front face retention.
+- **Status:** decided for the owner.
+
+### rp-v2-share-cap: shares capped at 95% (review round 1)
+Bands are rounded to 5 and capped at 95 so a minor path always shows. Bromocyclohexane + a strong base in an aprotic
+solvent is 95% E2 with or without heat (the real value, about 99%, is above the cap), so there heat does not move it.
+- **Status:** decided for the owner.

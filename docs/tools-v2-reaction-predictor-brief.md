@@ -195,3 +195,51 @@ Each is also one line in `docs/tools-v2-owner-log.md`.
 - Accuracy was checked by the builder (sources above and the frame test); no separate chemistry reviewer in this
   session, so the independent review should include the ochem accuracy pass. No real phone, no screen reader pass, no
   real students.
+
+## Review round 1 (2026-11-19, `/home/claude/review-reaction-predictor/REVIEW.md`: BLOCK on 6 must fix items; all done)
+Where this section and the text above disagree, this section is the tool as it is now. The branch then took in
+`origin/claude/tools-v2-all` (a merge; its `check-tool-use.mjs` kept; both sides of the owner log, pipeline and status
+tables kept).
+
+### Must fix
+1. **Heat counts on a secondary carbon with a strong base.** `mixture()` set the secondary band after the heat step;
+   it now sets the band first, and heat and the solvent add to it (cap raised to 95). 2-bromobutane + NaOEt: protic
+   80 → 90 with heat; aprotic 90 → 95; bromocyclohexane 85 → 95 (aprotic is already 95, the cap).
+2. **The solvent argues what the verdict says.** On a secondary carbon with a strong, unhindered base an aprotic
+   solvent now leans E2 (`{E2:1}`): "Polar aprotic. The anion is left bare, a stronger base as well as a stronger
+   nucleophile, so on this carbon it adds to E2." The same reason feeds "?", Call the path and Check yourself.
+3. **No name is dropped.** The path's title has its own row above the molecule; a name with no room beside what it
+   names goes to a row under the molecule, as near under it as other names allow. The sweep now fails any name drawn
+   with no size.
+4. **Names clear of lone pairs.** Every drawn pair (and badge) is an obstacle for the names; the sweep counts pair dots
+   as solid.
+5. **Tray letters.** A card's drawing is turned (0, 90, −90, 180, 45, −45°) to the first turn whose letters keep 3 px
+   apart; the phone tray is taller (148 px). The sweep checks letters inside each card.
+6. **Readable on a phone.** On a tall stage the scene turns a quarter turn (reagent on top, bromide below) when that
+   draws it at least 12% bigger; the reagent waits closer (−2.3 C–C), bromide drifts less, and the phone stage is taller
+   (`clamp(720px, 100vw + 424px, 884px)`). 2-bromobutane at 390: C–C 71 px (was 50).
+
+### Should fix (done)
+- Heat or solvent that leaves the same paths: the molecule stays still and the tray's bars and numbers move together
+  (480 ms); the first pause is 520 ms (was 900).
+- SN1 from either face: each play alternates the back face (the groups flip) and the front face (they stay; the
+  nucleophile waits on bromide's side, bromide drifts off below the axis), named "back face" or "front face".
+- Ring SN2: the nucleophile ends in hydrogen's equatorial slot and hydrogen takes bromine's axial place (trans), as
+  the reviewer described; ring SN1 the same from the back, retention from the front.
+- SN2's umbrella now swings each group through (its branch translated), not a mirror image interpolated (that
+  squashed branches mid flip); every in between frame of all 352 flasks is checked for overlaps by script.
+- Views searched again for the new geometry, with the two rings shown more face on.
+- "?": a path with no share says why it loses ("loses: the reagent acts before a cation can form").
+- The shared Check yourself intro lost its dash (`ochem/assets/tool-quiz.js`, every ochem tool).
+- "?" is filled after the frame on a change.
+
+### Checks (this round, after the merge)
+- Sweep, one width per process at all ten widths, light and dark: 80 states and 960 checks each (800 states, 9,600
+  checks), **0 failures**, now also asserting every name is drawn with a size, lone pair dots are solid to names and
+  letters inside tray cards never overlap.
+- Frames: 6,997 frames at 390 and 1440 (now both SN1 faces), **0 failures**. A node scan of every in between frame of
+  all 352 flasks (both SN1 faces) finds no two balls overlapping.
+- Unit tests 105 pass (the frame test now runs both SN1 faces); `build-tool-pages --check`, `check-site`,
+  `check-weight --check` pass; no conflict markers.
+- Still open (not blocking): single slow frames at a change; the desktop molecule is a little smaller than in round 0
+  (the title and name rows take space).
