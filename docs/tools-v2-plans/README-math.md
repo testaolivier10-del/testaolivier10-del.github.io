@@ -100,6 +100,9 @@ the two or three named in the plan (rule 10) and say in the brief which were see
 (https://seeing-theory.brown.edu/), StatKey (https://www.lock5stat.com/StatKey), the Art of Stat apps
 (https://artofstat.com/web-apps) and the Rossman/Chance applets (https://www.rossmanchance.com/applets/index2021.html).
 
+**Cause line examples** in the plans show the format; their numbers are illustrations and must be recomputed from
+the model (and the tool's data) before they appear anywhere.
+
 **Risks every plan carries** (from "Caught in reviews"; each plan adds its own): numbers, labels and the cause line
 derived from what is drawn at that frame; labels at least 11 px and 4 px clear of every number and label in
 Explore and Test yourself; the cause line in two rows at 360 px; one cue at a time; no dashed shapes (the old
