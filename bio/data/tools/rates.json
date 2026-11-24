@@ -249,7 +249,7 @@
     }
   ],
   "explore": {
-    "about": "Tools v2 Explore (docs/tools-v2-rates-brief.md). run: one catalase run, oxygen collected over a water trough in an upside down measuring cylinder; the curve through the readings is a monotone cubic (rates.js smooth()), so it passes exactly through every table value. core: one potato core weighed before and after a day in solution (mass in g).",
+    "about": "Tools v2 Explore (docs/tools-v2-rates-brief.md). run: one catalase run, oxygen collected over a water trough in an upside down measuring cylinder; the curve through the readings is a monotone cubic (rates.js smooth()), so it passes exactly through every table value. core: one potato core weighed before and after a day in solution (mass in g). The core snaps to whole percents of its start (0.04 g) and ranges from −30% to +20%, the usual range for potato cores after a day in sucrose solutions or water.",
     "tabs": [
       {
         "id": "avg",
@@ -311,10 +311,10 @@
       "label": "Potato core",
       "unit": "g",
       "dp": 2,
-      "start": 3.5,
-      "open": 3.92,
-      "min": 1.75,
-      "max": 5.25
+      "start": 4.0,
+      "open": 4.48,
+      "min": 2.8,
+      "max": 4.8
     },
     "goals": [
       {

@@ -39,8 +39,9 @@
   function at(e, attrs){ for(var k in attrs){ var v = typeof attrs[k] === 'number' ? attrs[k].toFixed(2) : attrs[k]; if(e.getAttribute(k) !== v) e.setAttribute(k, v); } }
   function txt(e, s){ if(e.textContent !== s) e.textContent = s; }
   // a time shown in min: a whole number when it is one, else one decimal
-  function tStr(t){ return Math.abs(t - Math.round(t)) < 0.005 ? String(Math.round(t)) : F(t, 1); }
-  function tVal(t){ return Math.abs(t - Math.round(t)) < 0.005 ? Math.round(t) : r1(t); }
+  // round to one decimal first, then drop a trailing .0 (no flicker between "4.0" and "4")
+  function tVal(t){ var v = Math.round(t * 10) / 10; return Math.abs(v - Math.round(v)) < 1e-9 ? Math.round(v) : v; }
+  function tStr(t){ var v = tVal(t); return v === Math.round(v) ? String(v) : F(v, 1); }
   function sgn(v, d){ return (v > 0 ? '+' : '') + F(v, d); }
 
   /* A smooth curve through the readings (monotone cubic, Fritsch and Carlson): it passes through every reading
@@ -182,10 +183,10 @@
       var head = K.head({ purpose: EX.purpose[MD.tab], how: { label: 'Show me how', onClick: function(){ startTour(); } } });
       stage.appendChild(head.el);
       var sceneBox = document.createElement('div'); sceneBox.className = 'rt2-scene'; sceneBox.id = T.nid('rt2');
-      sceneBox.innerHTML = '<svg class="rt2-svg" role="img" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"><defs></defs><g class="rt2-static"></g><g class="rt2-live"></g><g class="rt2-bub"></g><g class="rt2-labs"></g></svg>';
+      sceneBox.innerHTML = '<svg class="rt2-svg" role="img" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"><defs></defs><g class="rt2-static"></g><g class="rt2-live"></g><g class="rt2-over"></g><g class="rt2-bub"></g><g class="rt2-labs"></g></svg>';
       stage.appendChild(sceneBox);
       tabs.el.querySelectorAll('.tk2-tab').forEach(function(b){ b.setAttribute('aria-controls', sceneBox.id); });
-      var svg = sceneBox.querySelector('svg'), sDefs = svg.querySelector('defs'), sStatic = svg.querySelector('.rt2-static'), sLive = svg.querySelector('.rt2-live'), sBub = svg.querySelector('.rt2-bub'), sLabs = svg.querySelector('.rt2-labs');
+      var svg = sceneBox.querySelector('svg'), sDefs = svg.querySelector('defs'), sStatic = svg.querySelector('.rt2-static'), sLive = svg.querySelector('.rt2-live'), sOver = svg.querySelector('.rt2-over'), sBub = svg.querySelector('.rt2-bub'), sLabs = svg.querySelector('.rt2-labs');
       var sLayer = K.layer(sceneBox);
       var graphBox = document.createElement('div'); graphBox.className = 'rt2-graph';
       graphBox.innerHTML = '<svg class="rt2-gsvg" role="img" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"><defs></defs><g class="rt2-gstatic"></g><g class="rt2-glive"></g><g class="rt2-glabs"></g></svg>';
@@ -220,7 +221,7 @@
           g.bal = [x0 + 80 * sp, x0 + 80 * sp + 175 * sp];   // balance centres
           g.balW = Math.max(130 * sp, 112); g.balH = Math.max(34 * sp, 32);
           g.pan = g.bench - g.balH - 8 * sp;                   // pan top (the cores stand on it)
-          g.coreW = clamp(44 * sp, 32, 70);
+          g.coreW = clamp((g.pan - 74) / CORE.max * CORE.start * 0.24, 32, 96);
           g.kM = (g.pan - 74) / CORE.max;   // px per gram (the tallest core leaves room for the tag)
           g.ruler = g.bal[1] + g.coreW / 2 + 22 * sp;                       // the ruler's line
           return g;
@@ -251,7 +252,7 @@
         var Wd = graphBox.clientWidth, Hd = graphBox.clientHeight;
         if(!Wd || !Hd) return null;
         var phone = Wd < 560;
-        var g = { W: Wd, H: Hd, L: phone ? 40 : 52, R: phone ? 96 : 100, T: 36, B: 56, IN: 14 };
+        var g = { W: Wd, H: Hd, L: phone ? 40 : 52, R: phone ? 96 : 100, T: 36, B: 56, IN: 22 };
         g.pw = Wd - g.L - g.R; g.ph = Hd - g.T - g.B;
         // the readings sit a little inside the axes, so a knob at 0 never covers a tick number
         g.x = function(t){ return g.L + g.IN + t / TMAX * (g.pw - g.IN); };
@@ -331,9 +332,10 @@
         E.cwater = mk('rect', 'rt2-cwater', { x: cx - g.cw, width: 2 * g.cw, fill: 'url(#rt2g-water)' }, sLive);
         E.lvA = mk('line', 'rt2-level is-a', { x1: cx - g.cw - 3 * s, x2: cx + g.cw + 3 * s }, sLive);
         E.lvB = mk('line', 'rt2-level is-b', { x1: cx - g.cw - 3 * s, x2: cx + g.cw + 3 * s }, sLive);
-        var st = [];
-        // graduations: every 1 mL, a number every 5 (printed on the glass, read from the top)
-        for(var v = 0; v <= 15; v++){ var y = g.gy0 + v * g.kV, long = v % 5 === 0; st.push('<line class="rt2-grad' + (long ? ' is-long' : '') + '" x1="' + (cx + g.cw - (long ? 9 : 5) * s).toFixed(1) + '" x2="' + (cx + g.cw).toFixed(1) + '" y1="' + y.toFixed(1) + '" y2="' + y.toFixed(1) + '"/>'); if(long && v) st.push('<text class="rt2-gnum" x="' + (cx - g.cw + 2).toFixed(1) + '" y="' + (y + 4).toFixed(1) + '">' + v + '</text>'); }
+        var st = [], ov = [];
+        // graduations: every 1 mL, a number every 5 (printed on the glass, read from the top), drawn ABOVE the gas,
+        // the band and the water so the cylinder can always be read against its scale
+        for(var v = 0; v <= 15; v++){ var y = g.gy0 + v * g.kV, long = v % 5 === 0; ov.push('<line class="rt2-grad' + (long ? ' is-long' : '') + '" x1="' + (cx + g.cw - (long ? 9 : 5) * s).toFixed(1) + '" x2="' + (cx + g.cw).toFixed(1) + '" y1="' + y.toFixed(1) + '" y2="' + y.toFixed(1) + '"/>'); if(long && v) ov.push('<text class="rt2-gnum" x="' + (cx - g.cw + 2).toFixed(1) + '" y="' + (y + 4).toFixed(1) + '">' + v + '</text>'); }
         st.push('<rect class="rt2-cyl" x="' + (cx - cw).toFixed(1) + '" y="' + cTop.toFixed(1) + '" width="' + (2 * cw).toFixed(1) + '" height="' + (g.mouth - cTop).toFixed(1) + '" fill="url(#rt2g-glass)"/>');
         st.push('<line class="rt2-glint" x1="' + (cx - cw + 4 * s).toFixed(1) + '" x2="' + (cx - cw + 4 * s).toFixed(1) + '" y1="' + Y(24).toFixed(1) + '" y2="' + Y(196).toFixed(1) + '"/>');
         // the clamp arm and its jaws
@@ -373,7 +375,15 @@
           st.push('<rect class="rt2-clipm" x="' + (cl + cwd / 2 - 24 * s).toFixed(1) + '" y="' + (ct - 4 * s).toFixed(1) + '" width="' + (48 * s).toFixed(1) + '" height="' + (16 * s).toFixed(1) + '" rx="' + (4 * s).toFixed(1) + '" fill="url(#rt2g-metal)"/>');
           g.paper = [cl + 9 * s, ct + 14 * s, cwd - 18 * s, cht - 22 * s];
         }
+        if(g.clip != null){
+          var k1 = Math.min(s, 1.3), tRight = g.tx + 40 * s, gap1 = g.clip - 10 - tRight, cRight = g.clip + 160 * s, gap2 = g.W - 8 - cRight;
+          var bw = 60 * k1, pw2 = 130 * k1;
+          if(gap2 >= pw2 + 16) st.unshift(propPotato(cRight + gap2 / 2, g.bench, k1));
+          if(gap1 >= bw + 24) st.unshift(propBottle(tRight + gap1 / 2, g.bench, k1));
+          else if(gap2 >= pw2 + bw + 40){ st.unshift(propBottle(cRight + gap2 * 0.78, g.bench, k1)); }
+        }
         sStatic.insertAdjacentHTML('beforeend', st.join(''));
+        sOver.innerHTML = ov.join('');
         E.foam = sStatic.querySelector('.rt2-foamg');
         E.foamP = mk('path', 'rt2-foam', null, E.foam);
         // the readings on the clipboard (live rows)
@@ -404,6 +414,55 @@
         svg.setAttribute('aria-label', 'Catalase and hydrogen peroxide in a flask; the oxygen collects in an upside down measuring cylinder over water.');
       }
 
+
+      /* ---------------------------------------------------- bench props that belong to the experiment (wide stages):
+         the stock bottle of hydrogen peroxide and a cut potato (catalase); the beaker the cores soaked in and the cork
+         borer that cut them (percent change). Real lab bench detail, never a number or a control. */
+      function f1(v){ return v.toFixed(1); }
+      function propBottle(cx, base, k){
+        var w = 48 * k, hb = 70 * k, top = base - hb, o = [];
+        o.push('<ellipse class="rt2-shadow" cx="' + f1(cx) + '" cy="' + f1(base + 2) + '" rx="' + f1(w * 0.6) + '" ry="' + f1(4 * k) + '"/>');
+        o.push('<path class="rt2-bottle" d="M' + f1(cx - w / 2) + ' ' + f1(base) + 'V' + f1(top + 12 * k) + 'Q' + f1(cx - w / 2) + ' ' + f1(top) + ' ' + f1(cx - 9 * k) + ' ' + f1(top - 2 * k) + 'V' + f1(top - 14 * k) + 'H' + f1(cx + 9 * k) + 'V' + f1(top - 2 * k) + 'Q' + f1(cx + w / 2) + ' ' + f1(top) + ' ' + f1(cx + w / 2) + ' ' + f1(top + 12 * k) + 'V' + f1(base) + 'Z"/>');
+        o.push('<rect class="rt2-cap" x="' + f1(cx - 11 * k) + '" y="' + f1(top - 24 * k) + '" width="' + f1(22 * k) + '" height="' + f1(11 * k) + '" rx="' + f1(2 * k) + '"/>');
+        o.push('<line class="rt2-bottle-hi" x1="' + f1(cx - w / 2 + 6 * k) + '" x2="' + f1(cx - w / 2 + 6 * k) + '" y1="' + f1(top + 14 * k) + '" y2="' + f1(base - 6 * k) + '"/>');
+        var lw = Math.max(w - 8 * k, tw('H₂O₂', 12, 800) + 10), lh = Math.max(22 * k, 20);
+        o.push('<rect class="rt2-blabel" x="' + f1(cx - lw / 2) + '" y="' + f1(base - hb / 2 - lh / 2) + '" width="' + f1(lw) + '" height="' + f1(lh) + '" rx="2"/>');
+        o.push('<text class="rt2-btext" x="' + f1(cx) + '" y="' + f1(base - hb / 2 + 4.5) + '" text-anchor="middle">H₂O₂</text>');
+        return o.join('');
+      }
+      function propPotato(cx, base, k){
+        var o = [], tw0 = 120 * k;
+        o.push('<ellipse class="rt2-shadow" cx="' + f1(cx) + '" cy="' + f1(base + 2) + '" rx="' + f1(tw0 * 0.55) + '" ry="' + f1(4 * k) + '"/>');
+        o.push('<rect class="rt2-tile0" x="' + f1(cx - tw0 / 2) + '" y="' + f1(base - 7 * k) + '" width="' + f1(tw0) + '" height="' + f1(7 * k) + '" rx="' + f1(2 * k) + '"/>');
+        // a half potato, cut face towards us, and a slice beside it
+        o.push('<path class="rt2-skin" d="M' + f1(cx - 46 * k) + ' ' + f1(base - 7 * k) + 'Q' + f1(cx - 48 * k) + ' ' + f1(base - 46 * k) + ' ' + f1(cx - 12 * k) + ' ' + f1(base - 48 * k) + 'Q' + f1(cx + 16 * k) + ' ' + f1(base - 46 * k) + ' ' + f1(cx + 16 * k) + ' ' + f1(base - 7 * k) + 'Z"/>');
+        o.push('<path class="rt2-flesh" d="M' + f1(cx - 40 * k) + ' ' + f1(base - 7 * k) + 'Q' + f1(cx - 41 * k) + ' ' + f1(base - 40 * k) + ' ' + f1(cx - 12 * k) + ' ' + f1(base - 42 * k) + 'Q' + f1(cx + 10 * k) + ' ' + f1(base - 40 * k) + ' ' + f1(cx + 10 * k) + ' ' + f1(base - 7 * k) + 'Z"/>');
+        [[-26, 20, 4], [-10, 28, 3.5], [-2, 16, 3], [-18, 34, 2.6]].forEach(function(h2){ o.push('<circle class="rt2-hole" cx="' + f1(cx + h2[0] * k) + '" cy="' + f1(base - 7 * k - h2[1] * k) + '" r="' + f1(h2[2] * k) + '"/>'); });
+        o.push('<ellipse class="rt2-skin" cx="' + f1(cx + 38 * k) + '" cy="' + f1(base - 11 * k) + '" rx="' + f1(17 * k) + '" ry="' + f1(5 * k) + '"/><ellipse class="rt2-flesh" cx="' + f1(cx + 38 * k) + '" cy="' + f1(base - 12 * k) + '" rx="' + f1(14 * k) + '" ry="' + f1(3.6 * k) + '"/>');
+        return o.join('');
+      }
+      function propBeaker(cx, base, k, cw){
+        var o = [], w = 100 * k, hb = 110 * k, top = base - hb, lq = base - hb * 0.62;
+        o.push('<ellipse class="rt2-shadow" cx="' + f1(cx) + '" cy="' + f1(base + 2) + '" rx="' + f1(w * 0.58) + '" ry="' + f1(4 * k) + '"/>');
+        o.push('<rect class="rt2-sol" x="' + f1(cx - w / 2 + 2) + '" y="' + f1(lq) + '" width="' + f1(w - 4) + '" height="' + f1(base - lq - 2) + '" fill="url(#rt2g-water)"/>');
+        // two cores soaking, lying on the bottom
+        var cl = Math.min(w * 0.7, 74 * k), ch = Math.min(cw * 0.7, 16 * k);
+        o.push('<rect class="rt2-soak" x="' + f1(cx - cl / 2) + '" y="' + f1(base - ch - 4 * k) + '" width="' + f1(cl) + '" height="' + f1(ch) + '" rx="' + f1(ch / 2) + '"/>');
+        o.push('<rect class="rt2-soak" x="' + f1(cx - cl / 2 + 6 * k) + '" y="' + f1(base - 2 * ch - 6 * k) + '" width="' + f1(cl * 0.9) + '" height="' + f1(ch) + '" rx="' + f1(ch / 2) + '" transform="rotate(-6 ' + f1(cx) + ' ' + f1(base - 2 * ch) + ')"/>');
+        o.push('<path class="rt2-flask" d="M' + f1(cx - w / 2 - 4 * k) + ' ' + f1(top) + 'H' + f1(cx - w / 2) + 'V' + f1(base - 4 * k) + 'Q' + f1(cx - w / 2) + ' ' + f1(base) + ' ' + f1(cx - w / 2 + 4 * k) + ' ' + f1(base) + 'H' + f1(cx + w / 2 - 4 * k) + 'Q' + f1(cx + w / 2) + ' ' + f1(base) + ' ' + f1(cx + w / 2) + ' ' + f1(base - 4 * k) + 'V' + f1(top) + '"/>');
+        for(var i = 1; i <= 4; i++){ var yy = base - hb * i / 5; o.push('<line class="rt2-grad" x1="' + f1(cx + w / 2 - 12 * k) + '" x2="' + f1(cx + w / 2 - 2) + '" y1="' + f1(yy) + '" y2="' + f1(yy) + '"/>'); }
+        o.push('<line class="rt2-surface" x1="' + f1(cx - w / 2 + 2) + '" x2="' + f1(cx + w / 2 - 2) + '" y1="' + f1(lq) + '" y2="' + f1(lq) + '"/>');
+        o.push('<line class="rt2-glint" x1="' + f1(cx - w / 2 + 7 * k) + '" x2="' + f1(cx - w / 2 + 7 * k) + '" y1="' + f1(top + 8 * k) + '" y2="' + f1(base - 10 * k) + '"/>');
+        return o.join('');
+      }
+      function propBorer(cx, base, k){
+        var o = [], L2 = 110 * k, r = 7 * k, y = base - r - 1;
+        o.push('<ellipse class="rt2-shadow" cx="' + f1(cx) + '" cy="' + f1(base + 1) + '" rx="' + f1(L2 * 0.55) + '" ry="' + f1(3 * k) + '"/>');
+        o.push('<rect x="' + f1(cx - L2 / 2) + '" y="' + f1(y - r) + '" width="' + f1(L2 * 0.78) + '" height="' + f1(2 * r) + '" rx="' + f1(2 * k) + '" fill="url(#rt2g-metal)" class="rt2-borer"/>');
+        o.push('<rect class="rt2-borer-h" x="' + f1(cx + L2 * 0.28) + '" y="' + f1(y - r * 1.6) + '" width="' + f1(L2 * 0.22) + '" height="' + f1(r * 3.2) + '" rx="' + f1(3 * k) + '"/>');
+        o.push('<ellipse class="rt2-borer-end" cx="' + f1(cx - L2 / 2) + '" cy="' + f1(y) + '" rx="' + f1(2.4 * k) + '" ry="' + f1(r) + '"/>');
+        return o.join('');
+      }
       /* ---------------------------------------------------- tab 3: two potato cores on two balances */
       function corePath(cx, base, hgt, w, wob){
         // an upright cylinder of potato: side outline with a wrinkle when it has lost water
@@ -424,8 +483,13 @@
           h.push('<rect class="rt2-pan" x="' + (bx - 44 * s).toFixed(1) + '" y="' + g.pan.toFixed(1) + '" width="' + (88 * s).toFixed(1) + '" height="' + (6 * s).toFixed(1) + '" rx="' + (3 * s).toFixed(1) + '"/>');
           h.push('<rect class="rt2-panpost" x="' + (bx - 5 * s).toFixed(1) + '" y="' + (g.pan + 6 * s).toFixed(1) + '" width="' + (10 * s).toFixed(1) + '" height="' + (g.bench - g.balH - g.pan - 6 * s).toFixed(1) + '"/>');
         });
+        var k2 = Math.min(s, 2), leftEnd = g.bal[0] - g.balW / 2 - 16, rightStart = g.ruler + 15 + tw('+50%', 11.5, 700) + 10 + 90;
+        if(leftEnd >= 120 * k2 + 16) h.push(propBeaker(leftEnd / 2 + 4, g.bench, k2, g.coreW));
+        var rFree = g.W - 8 - rightStart;
+        if(rFree >= 260 * k2) h.push(propBorer(rightStart + rFree * 0.3, g.bench, k2), propPotato(rightStart + rFree * 0.72, g.bench, k2));
+        else if(rFree >= 140 * k2) h.push(propPotato(rightStart + rFree / 2, g.bench, k2));
         sStatic.innerHTML = h.join('');
-        sLive.innerHTML = '';
+        sLive.innerHTML = ''; sOver.innerHTML = '';
         var base = g.pan;
         // the start core (fixed)
         var hs = CORE.start * g.kM;
@@ -444,7 +508,7 @@
         // the ruler in tenths of the start mass
         var rl = mk('g', 'rt2-rulerg', null, sLive), lo = CORE.min / CORE.start - 1, hi = CORE.max / CORE.start - 1;
         mk('line', 'rt2-ruler', { x1: g.ruler, x2: g.ruler, y1: base - CORE.max * g.kM, y2: base - CORE.min * g.kM }, rl);
-        var stepPx = CORE.start * 0.1 * g.kM, every = stepPx >= 19 ? 1 : 2;
+        var stepPx = CORE.start * 0.1 * g.kM, every = stepPx >= 22 ? 1 : 2;
         g.rulerTicks = [];
         for(var k = Math.round(lo * 10); k <= Math.round(hi * 10); k++){
           var y = base - CORE.start * (1 + k / 10) * g.kM, big = k === 0;
@@ -548,7 +612,7 @@
         if(fh < 1.5) d = 'M0 0';
         else { var nb = 5; d = 'M' + (fx - hwB).toFixed(1) + ' ' + base.toFixed(1) + 'L' + (fx - hwT).toFixed(1) + ' ' + (top + 3).toFixed(1); for(var i = 0; i < nb; i++){ var x0 = fx - hwT + 2 * hwT * i / nb, x1 = fx - hwT + 2 * hwT * (i + 1) / nb; d += 'Q' + ((x0 + x1) / 2).toFixed(1) + ' ' + (top - 5 * g.s * (i % 2 ? 0.6 : 1)).toFixed(1) + ' ' + x1.toFixed(1) + ' ' + (top + 3).toFixed(1); } d += 'L' + (fx + hwB).toFixed(1) + ' ' + base.toFixed(1) + 'Z'; }
         at(E.foamP, { d: d });
-        if(MD.tab === 'moment' && fh >= 6){ at(E.foamL, { x: fx + g.hw(top) + 6, y: top + 6 }); txt(E.foamL, rate >= 3.5 ? 'Fast fizz' : rate <= 1.5 ? 'Slow fizz' : 'Fizzing'); E.foamL.style.display = ''; }
+        if(MD.tab === 'moment'){ at(E.foamL, { x: fx + g.hw(top) + 6, y: Math.min(top + 6, base - 2) }); txt(E.foamL, rate >= 3.5 ? 'Fast fizz' : rate <= 1.5 ? 'Slow fizz' : 'Fizzing'); E.foamL.style.display = ''; }
         else E.foamL.style.display = 'none';
         // the readings on the clipboard: the rows of the interval
         if(E.rows) E.rows.forEach(function(r, i){
@@ -591,15 +655,17 @@
           GE.tan.style.display = '';
           at(GE.tan, { x1: x0, y1: g.y(f(tb) + sl * (g.t(x0) - tb)), x2: x1, y2: g.y(f(tb) + sl * (g.t(x1) - tb)) });
           at(GE.pB, { cx: xb, cy: yb });
-          // a 1 minute run along the tangent, to the right (to the left near the end)
+          // a 1 minute run under the tangent: from the point to 1 min later and up (near the end, from 1 min earlier
+          // on the tangent across to the point's time and up to the point), so the step always sits under the line
           var back = tb > TMAX - 1, t2 = back ? tb - 1 : tb + 1, x2 = g.x(t2), y2 = g.y(f(tb) + sl * (t2 - tb));
-          at(GE.legT, { x1: xb, y1: yb, x2: x2, y2: yb }); at(GE.legY, { x1: x2, y1: yb, x2: x2, y2: y2 });
+          if(back){ at(GE.legT, { x1: x2, y1: y2, x2: xb, y2: y2 }); at(GE.legY, { x1: xb, y1: y2, x2: xb, y2: yb }); }
+          else { at(GE.legT, { x1: xb, y1: yb, x2: x2, y2: yb }); at(GE.legY, { x1: x2, y1: yb, x2: x2, y2: y2 }); }
           GE.hyp.style.display = 'none';
           R.slR = slR; R.rateS = F(slR, 1); R.back = back;
           var tanHit = function(b){ return hitsLine(b, x0, g.y(f(tb) + sl * (g.t(x0) - tb)), x1, g.y(f(tb) + sl * (g.t(x1) - tb)), 3); };
           var sRun = 'run 1 ' + UT, sRise = 'rise ' + F(slR, 1) + ' ' + UY;
           var yAx2 = g.T + g.ph;
-          var okRun = placePill(GE.pDt, sRun, [[(xb + x2) / 2, yb + 16, 'middle']], [tanHit, knobs]);
+          var okRun = placePill(GE.pDt, sRun, [[(xb + x2) / 2, (back ? y2 : yb) + 16, 'middle']], [tanHit, knobs]);
           if(!okRun){
             var by2 = yAx2 + 38, lo = Math.min(xb, x2), hi = Math.max(xb, x2);
             at(GE.brk, { d: 'M' + lo.toFixed(1) + ' ' + (by2 - 12).toFixed(1) + 'V' + (by2 - 6).toFixed(1) + 'H' + hi.toFixed(1) + 'V' + (by2 - 12).toFixed(1) });
@@ -607,20 +673,21 @@
           }
           avoid.push(function(b){ return overlap(b, GE.pDt.box(), 4); });
           var mid2 = (yb + y2) / 2;
-          placePill(GE.pDy, sRise, back ? [[x2 - 9, mid2, 'end'], [x2 - 9, yb - 16, 'end'], [x2 - 9, yb - 40, 'end'], [x2 - 9, y2 + 16, 'end']] : [[x2 + 9, mid2, 'start'], [x2 + 9, yb + 16, 'start'], [x2 + 9, yb + 40, 'start'], [x2 + 9, y2 - 14, 'start'], [x2 - 9, mid2, 'end']], avoid.concat([tanHit, knobs]));
+          placePill(GE.pDy, sRise, back ? [[xb + 9, mid2, 'start'], [xb + 28, mid2, 'start'], [xb + 9, y2 + 14, 'start'], [xb + 28, y2 + 6, 'start'], [xb + 9, y2 + 38, 'start'], [x2 - 9, y2 + 14, 'end']] : [[x2 + 9, mid2, 'start'], [x2 + 9, yb + 16, 'start'], [x2 + 9, yb + 40, 'start'], [x2 + 9, y2 - 14, 'start'], [x2 - 9, mid2, 'end']], avoid.concat([tanHit, knobs]));
           avoid.push(function(b){ return overlap(b, GE.pDy.box(), 4); });
           GE.pRate.set('rate ≈ ' + R.rateS + ' ' + RU, g.W - 8, 16, 'end');
         }
       }
       function paintCores(){
         var g = G, s = g.s, m = DR.c, base = g.pan, hgt = m * g.kM, top = base - hgt, bx = g.bal[1], loss = Math.max(0, 1 - m / CORE.start), gain = Math.max(0, m / CORE.start - 1);
-        at(E.core, { d: corePath(bx, base, hgt, g.coreW, loss * 9 * s) });
+        at(E.core, { d: corePath(bx, base, hgt, g.coreW, loss * 10 * s) });
         at(E.coreTop, { cy: top + g.coreW * 0.14 });
         at(E.coreHi, { d: 'M' + (bx - g.coreW * 0.22).toFixed(1) + ' ' + (top + g.coreW * 0.4).toFixed(1) + 'V' + (base - g.coreW * 0.2).toFixed(1) });
         E.coreHi.style.opacity = (0.25 + Math.min(0.6, gain * 2)).toFixed(2);
         E.drops.forEach(function(d, i){ var on = gain > 0.04 + i * 0.07; d.style.display = on ? '' : 'none'; if(on) at(d, { cx: bx + (i % 2 ? 1 : -1) * g.coreW * 0.24, cy: top + hgt * (0.3 + 0.22 * i) }); });
         
-        var mR = r2(m), chg = r2(mR - CORE.start), pc = chg / CORE.start * 100, pcR = r1(pc);
+        // exact arithmetic in hundredths of a gram, halves rounded away from zero (−1.75% shows −1.8%)
+        var mR = r2(m), chH = Math.round((mR - CORE.start) * 100), sH = Math.round(CORE.start * 100), chg = chH / 100, pcR = (chH < 0 ? -1 : 1) * Math.round(Math.abs(chH) * 1000 / sH) / 10;
         txt(E.lcd1, F(mR, CORE.dp) + ' ' + CORE.unit);
         // the change bracket on the after core's left
         var xL = bx - g.coreW / 2 - 9 * s;
@@ -740,11 +807,14 @@
         onStart: function(){ dragM = true; hideCue(true); tourDid('end'); },
         onEnd: function(){ dragM = false; kick(); },
         onInput: function(v){ MD.m = v; go('m', v, hM.dragging()); } });
-      var hC = K.handle(sLayer, { key: 'rt2-core', chip: false, label: 'Mass of the core after a day (grams)', value: MD.c, min: CORE.min, max: CORE.max, step: 0.01,
+      // the after core snaps to whole percents of the start mass (forgiving: "lose 10%" is a real place to stop)
+      function pctOf(m){ return Math.round((m / CORE.start - 1) * 100); }
+      function massOf(pc){ pc = clamp(pc, pctOf(CORE.min), pctOf(CORE.max)); return r2(CORE.start * (1 + pc / 100)); }
+      var hC = K.handle(sLayer, { key: 'rt2-core', chip: false, label: 'Mass of the core after a day (grams)', value: MD.c, min: CORE.min, max: CORE.max, step: CORE.start / 100,
         at: function(){ return G && G.tab === 'pct' ? [G.bal[1], G.pan - DR.c * G.kM] : [NaN, NaN]; },
-        pick: function(x, y){ return clamp(r2((G.pan - y) / G.kM), CORE.min, CORE.max); },
+        pick: function(x, y){ return massOf(Math.round(((G.pan - y) / G.kM / CORE.start - 1) * 100)); },
         dir: function(){ return 90; },
-        keys: function(v, key, big){ var st = big ? 0.35 : 0.05; if(key === 'ArrowUp' || key === 'ArrowRight' || key === 'PageUp') return clamp(r2(v + (key === 'PageUp' ? 0.35 : st)), CORE.min, CORE.max); if(key === 'ArrowDown' || key === 'ArrowLeft' || key === 'PageDown') return clamp(r2(v - (key === 'PageDown' ? 0.35 : st)), CORE.min, CORE.max); if(key === 'Home') return CORE.min; if(key === 'End') return CORE.max; return null; },
+        keys: function(v, key, big){ var pc = pctOf(v), st = big ? 10 : 1; if(key === 'ArrowUp' || key === 'ArrowRight') return massOf(pc + st); if(key === 'ArrowDown' || key === 'ArrowLeft') return massOf(pc - st); if(key === 'PageUp') return massOf(pc + 10); if(key === 'PageDown') return massOf(pc - 10); if(key === 'Home') return CORE.min; if(key === 'End') return CORE.max; return null; },
         valuetext: function(v){ var pc = r1((r2(v) - CORE.start) / CORE.start * 100); return F(v, CORE.dp) + ' ' + CORE.unit + ', ' + sgn(pc, 1) + ' percent'; },
         onStart: function(){ hideCue(true); tourDid('end'); },
         onInput: function(v){ MD.c = v; go('c', v, hC.dragging()); } });
@@ -919,7 +989,7 @@
       window.__rt2 = { DR: DR, MD: MD, G: function(){ return G; }, GG: function(){ return GG; }, R: function(){ return lastR; }, busy: busy, f: f, fd: fd,
         set: function(o){ stopAll(); if(o.tab) setTab(o.tab, false); ['a', 'b', 'm', 'c'].forEach(function(k){ if(o[k] != null){ MD[k] = o[k]; DR[k] = o[k]; } }); hA.value(TS.indexOf(MD.a)); hB.value(TS.indexOf(MD.b)); hM.value(MD.m); hC.value(MD.c); cause.take(null); paint(); settled(); },
         go: function(k, v){ MD[k] = v; if(k === 'a') hA.value(TS.indexOf(v)); if(k === 'b') hB.value(TS.indexOf(v)); if(k === 'm') hM.value(v); if(k === 'c') hC.value(v); go(k, v); },
-        tab: function(v){ setTab(v, true); }, bubbles: function(){ return bubs.filter(function(b){ return b.on; }).length; } };
+        tab: function(v){ setTab(v, true); }, CORE: CORE, pickCore: function(y){ return hC && G && G.tab === 'pct' ? massOf(Math.round(((G.pan - y) / G.kM / CORE.start - 1) * 100)) : null; }, bubbles: function(){ return bubs.filter(function(b){ return b.on; }).length; } };
     }, { studio: { kit2: function(ctx){ return ctx.kit2; } } });
   }
   /* The page loads the kit (pages.json "kit2": true). A cached copy of the old page would not: fetch it then. */

@@ -137,7 +137,7 @@ const AGREE = () => {
       const gp = pills('.rt2-graph'), gRate = gp.find(s => /^rate/.test(s)), gRise = gp.find(s => /^rise/.test(s));
       if (!gRate) out.push('rate label missing');
       if (gRate) near(num(gRate.replace('≈', '')), slope, 0.051, 'rate label vs the tangent drawn');
-      if (gRise) near(num(gRise), rise, 0.051, 'rise label vs the rise leg');
+      if (gRise) near(num(gRise), rise, 0.051, 'rise label vs the rise leg'); else out.push('rise label missing');
       if (!take) { near(num(cz[0]), tEnd, 0.051, 'cause time'); near(num((cz[2] || '').replace('≈', '')), num((gRate || '').replace('≈', '')), 1e-9, 'cause rate'); }
       const sp = pills('.rt2-scene'), gas = sp.find(s => /O₂/.test(s));
       if (gas) near(num(gas), vb, 0.051, 'oxygen pill vs the gas drawn'); else out.push('oxygen pill missing');
@@ -150,7 +150,8 @@ const AGREE = () => {
     const ck = document.querySelector('.rt2-scene .tk2-handle:not([hidden]) .tk2-knob').getBoundingClientRect(), sr = document.querySelector('.rt2-svg').getBoundingClientRect();
     near(ck.top + ck.height / 2 - sr.top, top, 1.5, 'the knob on the core’s drawn top');
     const pc = [...document.querySelectorAll('.rt2-scene .rt2-pill.is-pct text')][0].textContent;
-    const want = Math.round((Math.round((num(lcd[1]) - 3.5) * 100) / 100) / 3.5 * 1000) / 10;
+    const S0 = X.CORE.start, chH = Math.round((num(lcd[1]) - S0) * 100), want = (chH < 0 ? -1 : 1) * Math.round(Math.abs(chH) * 1000 / Math.round(S0 * 100)) / 10;
+    if (!X.busy() && Math.abs(want - Math.round(want)) > 1e-9) out.push(`percent ${want} is not a whole percent at rest`);
     near(num(pc), want, 1e-9, 'percent pill vs the balances');
     if (!take) near(num((cz[2] || '').replace('× 100 =', '')), num(pc), 1e-9, 'cause percent');
   }
@@ -164,7 +165,7 @@ const GEO = () => {
   const vis = (e) => { const r = e.getBoundingClientRect(); return r.width > 0 && r.height > 0 && getComputedStyle(e).visibility !== 'hidden' && !e.closest('[style*="display: none"]'); };
   const inside = (r, b, what) => { if (r.left < b.left - 1 || r.right > b.right + 1 || r.top < b.top - 1 || r.bottom > b.bottom + 1) out.push(`${what} clipped (${Math.round(r.left)},${Math.round(r.top)},${Math.round(r.right)},${Math.round(r.bottom)})`); };
   const lab = [];
-  document.querySelectorAll('.rt2-scene .rt2-pill, .rt2-scene text').forEach(e => { if (!vis(e)) return; const r = e.getBoundingClientRect(); inside(r, scene, 'scene ' + (e.textContent || '').slice(0, 14)); if (e.matches('.rt2-pill') || e.matches('.rt2-clab, .rt2-foaml, .rt2-what')) lab.push([r, e.textContent, 'scene']); if (e.matches('.rt2-rnum')) lab.push([r, e.textContent, 'scene']); });
+  document.querySelectorAll('.rt2-scene .rt2-pill, .rt2-scene text').forEach(e => { if (!vis(e)) return; const r = e.getBoundingClientRect(); inside(r, scene, 'scene ' + (e.textContent || '').slice(0, 14)); if (e.matches('.rt2-pill') || e.matches('.rt2-clab, .rt2-foaml, .rt2-what, .rt2-btext, .rt2-gnum')) lab.push([r, e.textContent, 'scene']); if (e.matches('.rt2-rnum')) lab.push([r, e.textContent, 'scene']); });
   if (tab !== 'pct') document.querySelectorAll('.rt2-graph .rt2-pill, .rt2-graph text').forEach(e => { if (!vis(e) || e.closest('.rt2-pill') && !e.matches('.rt2-pill')) return; const r = e.getBoundingClientRect(); inside(r, graph, 'graph ' + e.textContent.slice(0, 14)); lab.push([r, e.textContent, 'graph']); });
   for (let i = 0; i < lab.length; i++) for (let j = i + 1; j < lab.length; j++) {
     const a = lab[i][0], b = lab[j][0];
@@ -176,6 +177,8 @@ const GEO = () => {
   }
   // labels clear of the knobs
   document.querySelectorAll('.rt2 .tk2-handle:not([hidden]) .tk2-knob').forEach(k => { if (!vis(k)) return; const r = k.getBoundingClientRect(); if (r.width < 43.5 || r.height < 43.5) out.push(`knob ${Math.round(r.width)} px`); lab.forEach(l => { const a = l[0]; if (a.left < r.right - 6 && a.right > r.left + 6 && a.top < r.bottom - 6 && a.bottom > r.top + 6 && l[2] === (k.closest('.rt2-scene') ? 'scene' : 'graph')) out.push(`knob covers "${l[1]}"`); }); });
+  // tick numbers keep 4 px clear of every knob's circle (22 px radius)
+  document.querySelectorAll('.rt2-graph .tk2-handle:not([hidden]) .tk2-knob').forEach(k => { if (!vis(k)) return; const r = k.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2; lab.forEach(l => { if (!/^\d+$/.test(l[1]) || l[2] !== 'graph') return; const a = l[0], dx = Math.max(a.left - cx, 0, cx - a.right), dy = Math.max(a.top - cy, 0, cy - a.bottom); if (Math.hypot(dx, dy) < 26) out.push(`knob within 4 px of tick "${l[1]}"`); }); });
   // the first-time chip on a knob never covers a label
   document.querySelectorAll('.rt2 .tk2-handle:not([hidden]) .tk2-chip').forEach(c => { if (!vis(c)) return; const r = c.getBoundingClientRect(); lab.forEach(l => { const a = l[0]; if (!/^\d+$/.test(l[1]) && a.left < r.right && a.right > r.left && a.top < r.bottom && a.bottom > r.top) out.push(`chip covers "${l[1]}"`); }); });
   // the cue never covers a label
@@ -196,7 +199,7 @@ const STATES = [
   ['avg-open', { tab: 'avg', a: 0, b: 2 }], ['avg-first', { tab: 'avg', a: 0, b: 1 }], ['avg-last', { tab: 'avg', a: 4, b: 5 }], ['avg-whole', { tab: 'avg', a: 0, b: 5 }],
   ['avg-late', { tab: 'avg', a: 3, b: 5 }], ['avg-mid', { tab: 'avg', a: 2, b: 3 }],
   ['mom-0', { tab: 'moment', m: 0 }], ['mom-open', { tab: 'moment', m: 1.5 }], ['mom-35', { tab: 'moment', m: 3.5 }], ['mom-42', { tab: 'moment', m: 4.2 }], ['mom-5', { tab: 'moment', m: 5 }],
-  ['pct-open', { tab: 'pct', c: 3.92 }], ['pct-zero', { tab: 'pct', c: 3.5 }], ['pct-loss10', { tab: 'pct', c: 3.15 }], ['pct-min', { tab: 'pct', c: 1.75 }], ['pct-max', { tab: 'pct', c: 5.25 }]];
+  ['pct-open', { tab: 'pct', c: 4.48 }], ['pct-zero', { tab: 'pct', c: 4.0 }], ['pct-loss10', { tab: 'pct', c: 3.6 }], ['pct-min', { tab: 'pct', c: 2.8 }], ['pct-max', { tab: 'pct', c: 4.8 }]];
 
 if (ONE) {
   const w = +ONE;
@@ -217,6 +220,26 @@ if (ONE) {
       ok(!a.length, `${w} ${theme} ${name}: ${a.join('; ')}`);
       (heights[s.tab] = heights[s.tab] || new Set()).add(g.causeH);
       if (SHOTS && (w === 390 || w === 1440 || w === 768)) await page.screenshot({ path: join(SHOTS, `sweep-${w}-${theme}-${name}.png`), fullPage: w < 500 });
+    }
+    if (theme === 'light') {
+      // the rise label (and every other check) at every 0.1 min, no exceptions
+      let bad = [];
+      for (let i = 0; i <= 50; i++) {
+        const m = i / 10;
+        await page.evaluate((m) => window.__rt2.set({ tab: 'moment', m }), m);
+        const g = await page.evaluate(GEO), a = await page.evaluate(AGREE);
+        if (g.out.length || a.length) bad.push(`${m}: ${g.out.concat(a).join('; ')}`);
+      }
+      ok(!bad.length, `${w} every 0.1 min: ${bad.length} bad: ${bad.slice(0, 3).join(' | ')}`);
+      // the core snaps to whole percents wherever it is grabbed
+      await page.evaluate(() => window.__rt2.set({ tab: 'pct', c: 4.48 }));
+      const snap = await page.evaluate(() => { const X = window.__rt2, G = X.G(), S0 = X.CORE.start, out = []; let hit10 = false; for (let y = G.pan - X.CORE.max * G.kM - 20; y <= G.pan - X.CORE.min * G.kM + 20; y += 0.5) { const m = X.pickCore(y), pc = (m - S0) / S0 * 100; if (Math.abs(pc - Math.round(pc)) > 1e-6) out.push(`${y}: ${m}`); if (Math.round(pc) === -10) hit10 = true; } return { out, hit10 }; });
+      ok(!snap.out.length && snap.hit10, `${w} core snapping: ${snap.out.slice(0, 3)} hit -10%: ${snap.hit10}`);
+      // keys from the opening reach -10%: PageDown twice (+12% to -8%) then two ArrowDown
+      await page.evaluate(() => document.querySelector('.rt2-scene .tk2-handle:not([hidden]) .tk2-knob').focus());
+      for (const k of ['PageDown', 'PageDown', 'ArrowDown', 'ArrowDown']) await page.keyboard.press(k);
+      await still(page);
+      ok(await page.evaluate(() => Math.abs(window.__rt2.MD.c - 3.6) < 1e-9), `${w} keys reach -10%`);
     }
     if (w <= 640) for (const t in heights) ok(heights[t].size === 1, `${w} ${theme} ${t}: the cause line changes height ${[...heights[t]]}`);
     ok(!errs.length, `${w} ${theme}: console ${errs.join(' | ')}`);
@@ -338,7 +361,7 @@ if (PERF) {
       if (flag) await page.waitForSelector('.tk2-knob', { state: 'attached', timeout: 15000 }); else await page.waitForSelector('.rt2-gas', { timeout: 15000 });
       await page.waitForTimeout(1500);
       if (/moment/.test(which)) await page.evaluate(() => window.__rt2.set({ tab: 'moment', m: 0.5 }));
-      if (/core/.test(which)) await page.evaluate(() => window.__rt2.set({ tab: 'pct', c: 5.0 }));
+      if (/core/.test(which)) await page.evaluate(() => window.__rt2.set({ tab: 'pct', c: 4.6 }));
       if (/end point/.test(which)) await page.evaluate(() => window.__rt2.set({ tab: 'avg', a: 0, b: 1 }));
       await page.waitForTimeout(300);
       const sel = flag ? '.tk2-knob' : /core/.test(which) ? '.rt2-scene .tk2-handle:not([hidden]) .tk2-knob' : '.rt2-graph .tk2-handle:not([hidden]) .tk2-knob';

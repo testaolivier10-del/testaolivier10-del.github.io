@@ -753,14 +753,15 @@ These stay open:
   and 4.89% for four chambers (exact binomial and multinomial sums, review round 1); the tool says "about 1
   run in 20" and "?" gives these numbers. The opening (24 wet, 16 dry) is illustrative, not data. Teacher: confirm
   the wording and that a dark card over two chambers is an acceptable "dark" condition.
-- **rates-formula-sheet** (open, tools v2, 2026-11-19). `bio/data/notes/stats-rates.html` says rates and percent
-  change are "Both ... on the formula sheet". The College Board AP® Biology Equations and Formulas sheet read on
-  2026-11-19 (Appendix A) lists Rate = dY/dt (dY = amount of change, dt = change in time) under Rate and Growth and
-  no percent change formula. The rebuilt tool says only that the sheet writes a rate as dY/dt. Owner or teacher:
-  confirm against the current sheet and reword the notes sentence ("A rate is on the formula sheet; percent change
-  is not, so learn it").
+- **rates-formula-sheet** (closed, tools v2 review round 1, 2026-11-19). `bio/data/notes/stats-rates.html` said rates
+  and percent change are "Both ... on the formula sheet". The current AP® Biology Equations and Formulas sheet (as
+  quoted by Cognito's "AP Biology formula sheet" page, read 2026-11-19; the College Board PDF link returned 404) lists
+  Rate = dY/dt (dY = amount of change, dt = change in time) under Rate and Growth and no percent change formula; the
+  older lab manual Appendix A agrees on both. Reworded in the notes ("A rate is on the formula sheet (written dY/dt);
+  percent change is not, so learn it.") and in the `stats-rates` lesson's formula line.
 - **rates-explore-catalase** (logged, tools v2, 2026-11-19). The rebuilt Rates tool's Explore draws invented
   readings (0, 4.9, 8.3, 10.5, 12.0, 13.0 mL O₂ over 5 min) with four drawing conventions: the upside down
   cylinder's numbers are printed to read the gas volume from the top; one bubble rises per 0.25 mL; the foam's
-  height follows the rate at that moment; a potato core's height is proportional to its mass (constant width).
-  Confirm none of these misleads.
+  height follows the rate at that moment; a potato core's height is proportional to its mass (constant width). The
+  core snaps to whole percents of a 4.00 g start and ranges from −30% to +20%, the usual range for potato cores after
+  a day in water or sucrose. Confirm none of these misleads.

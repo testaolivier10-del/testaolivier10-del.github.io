@@ -9,7 +9,8 @@ line each in `docs/tools-v2-owner-log.md`.
 **A rate is how much something changes per unit of time: Δy ÷ Δt, the slope of the amount against time; percent
 change compares a change with where it started.** CED skill `stats-rates`. The AP® Biology formula sheet (College
 Board, Equations and Formulas, Appendix A, read here) lists under Rate and Growth: Rate = dY/dt, with "dY = amount of
-change" and "dt = change in time". Percent change is not printed on the sheet we read (see Accuracy).
+change" and "dt = change in time" (the current sheet, via Cognito; the lab manual's Appendix A agrees). Percent change
+is not on the sheet.
 
 ## Research (rule 10)
 "Seen" means the page text was fetched and read here; "known" means only from its description.
@@ -17,8 +18,8 @@ change" and "dt = change in time". Percent change is not printed on the sheet we
 | Source | How it works | What we took |
 |---|---|---|
 | The old LevlPrep tool (`origin/main`, seen and used) | A line graph of a generated catalase run; tap two points for a slope triangle (up to three, a list of their rates); a draggable tangent (centered difference, "rate ≈"); a toggle to hide it; Clear; three goals. Percent change: a start bar cut in tenths, a draggable end bar, the "divide by the end" mistake in a sentence. Practice: generated and fixed problems | Every piece: the triangle (now one, on the drawn run), the tangent (its own tab), the tenths (a ruler), the mistake sentence ("?"), the goals (Challenges), Practice (unchanged) |
-| AP® Biology Equations and Formulas (College Board Appendix A, seen) | Rate dY/dt; dY amount of change, dt change in time | The "?" wording, exactly |
-| Cognito, "AP Biology formula sheet" (seen) | "dY/dt = change in Y per unit time"; lists no percent change formula | Confirms percent change is not on the sheet |
+| The current AP® Biology Equations and Formulas sheet, as quoted by Cognito's "AP Biology formula sheet" (seen; the College Board PDF link returned 404) | Rate dY/dt ("change in Y per unit time"); no percent change formula | The "?" wording; percent change is not on the sheet |
+| The older lab manual sheet (College Board Appendix A, seen) | Rate dY/dt; dY amount of change, dt change in time; no percent change | Agrees on both points |
 | Nuffield Foundation practical biology, catalase and hydrogen peroxide (seen) | Conical flask with a bung and delivery tube, an upside down measuring cylinder full of water over a trough, held by a clamp stand; read the oxygen volume and time it; rate = volume ÷ time | The scene: the real school apparatus, drawn as it is set up |
 | Desmos movable points and slope triangles (known) | Drag a point; the triangle and its numbers follow | The control: knobs riding the readings |
 | PhET (known; no rate of change sim in biology) | Controls on the picture, instant response | The standard's rules |
@@ -41,12 +42,12 @@ interval moves the gas in the cylinder, the timer and the triangle together, eac
   2. **Rate at a moment:** the same run. One knob slides along the curve (0.1 min steps); its tangent crosses the
      plot, a 1 min run (amber) and its rise (green) are drawn on it, the rate sits in the title row ("rate ≈ 3.4
      mL/min"); in the flask the foam is high while the reaction is fast ("Fast fizz", "Fizzing", "Slow fizz").
-  3. **Percent change:** two potato cores standing on two balances, "Start" (3.50 g) and "After a day". Drag the
-     after core taller or shorter (its mass, 1.75 to 5.25 g); it glistens with water when it gained and wrinkles
+  3. **Percent change:** two potato cores standing on two balances, "Start" (4.00 g) and "After a day". Drag the
+     after core taller or shorter (its mass, 2.80 to 4.80 g, −30% to +20%, snapping to whole percents of the start); it glistens with water when it gained and wrinkles
      when it lost. A ruler beside it is marked in tenths of the start mass (0% at the start's height, carried across
      by a line); a bracket shows the change (teal gain, red loss) and the percent sits at the core's top.
 - **Cause line** (`K.cause`): "Δy = 8.3 mL → ÷ Δt 2 min → = 4.15 mL/min"; "at 1.5 min → rises 3.4 mL in 1 min →
-  ≈ 3.4 mL/min"; "+0.42 g → ÷ start 3.50 g → × 100 = +12.0%". Takeaways when settled: the last interval ("Flatter
+  ≈ 3.4 mL/min"; "+0.48 g → ÷ start 4.00 g → × 100 = +12.0%". Takeaways when settled: the last interval ("Flatter
   slope, smaller rate: the reaction is slowing down."), the whole run ("The average over the whole run hides the fall
   from 4.90 to 1.00 mL/min."), a late moment ("A flatter tangent: the rate has fallen as the H₂O₂ runs out.").
 - **Every change is animated:** a snap to another reading tweens the drawn time (the gas level, the band, the timer,
@@ -171,3 +172,20 @@ Rate at a moment: the oxygen pill and the foam word replace Δy and Δt in the s
   repaints the whole scene SVG (one layer); not split further.
 - The rise label on the moment tab can be hidden when the rise is tiny and nothing near it is clear (the cause line
   still has the number); the sweep allows that.
+
+## Review round 1 (2026-11-19): BLOCK, fixed
+`/home/claude/review-rates/REVIEW.md`. Maths, frame agreement, perf, touch and nothing dropped confirmed.
+Must fix:
+1. **Cylinder scale under the gas:** the graduations and 5, 10, 15 are drawn in their own layer above the gas, band
+   and water, with a halo.
+2. **Rise label hidden late in the run:** near the end the step is drawn under the tangent (from the tangent 1 min
+   earlier, across to the point's time, up to the point) and the label has spots right of the point; the sweep sets
+   every 0.1 min from 0 to 5 at every width and fails on any missing rise label or any other check.
+3. **"Lose 10%" needed pixel input:** the core snaps to whole percents of the start for drag and keys (start now
+   4.00 g so each percent is an exact 0.04 g; keys step 1%, Shift or Page 10%). The sweep checks every half pixel
+   gives a whole percent and that PageDown, PageDown, ArrowDown, ArrowDown from the opening reach −10%.
+Should fix, all done: bench props on wide stages (catalase: H₂O₂ stock bottle, cut potato on a tile; percent change:
+the soaking beaker, cork borer, cut potato) and larger cores; the foam word to the end of the run; the current sheet
+cited (via Cognito); the notes sentence and the lesson's formula line reworded, `rates-formula-sheet` closed; the
+core's range −30% to +20%; Δt rounds before dropping ".0"; the readings sit 22 px inside the axes, so a knob at 0
+keeps 4 px from the tick numbers (a sweep check). Merged `claude/tools-v2-all` (chi-square integrated) first.

@@ -80,9 +80,9 @@
 .rt2-level{stroke-width:2;}
 .rt2-level.is-a{stroke:var(--rt-start);}
 .rt2-level.is-b{stroke:var(--rt-dy);}
-.rt2-grad{stroke:var(--rt-sub);stroke-width:1;}
+.rt2-grad{stroke:var(--rt-ink);stroke-width:1;opacity:.75;}
 .rt2-grad.is-long{stroke-width:1.6;}
-.rt2-gnum{fill:var(--rt-sub);font:700 11px var(--font-ui);}
+.rt2-gnum{fill:var(--rt-ink);font:800 11.5px var(--font-ui);paint-order:stroke;stroke:var(--rt-gas);stroke-width:3px;stroke-linejoin:round;}
 .rt2-foot{fill:var(--rt-glass2);stroke:var(--rt-glass-edge);stroke-width:1.4;}
 .rt2-shelf{fill:var(--rt-metal0);opacity:.75;}
 .rt2-standbase{fill:var(--rt-jaw);}
@@ -169,3 +169,18 @@
 .bt-stage-slot:has(svg.rt2-pfig),.ls-prac-stage:has(svg.rt2-pfig){flex:none;}
 .rt2-pfig .tick,.rt2-pfig .lbl,.rt2-pfig .rt-d{font-size:14px;}
 .rt2-pfig .rt-lab{font-size:15px;}
+/* bench props (wide stages): the stock bottle, a cut potato on a tile, the soaking beaker, the cork borer */
+.rt2-bottle{fill:#8A4B12;stroke:#5E300A;stroke-width:1.2;}
+:root[data-theme="dark"] .rt2-bottle{fill:#7A4314;stroke:#3E2006;}
+.rt2-bottle-hi{stroke:#fff;stroke-opacity:.35;stroke-width:3;stroke-linecap:round;}
+.rt2-cap{fill:var(--rt-jaw);}
+.rt2-blabel{fill:var(--rt-paper);stroke:var(--rt-sub);stroke-width:.8;}
+.rt2-btext{fill:var(--rt-ink);font:800 12px var(--font-ui);}
+.rt2-tile0{fill:var(--rt-paper);stroke:var(--rt-sub);stroke-width:.8;}
+.rt2-skin{fill:#A7774A;stroke:#7D5532;stroke-width:1;}
+.rt2-flesh{fill:var(--rt-core1);stroke:var(--rt-core-edge);stroke-width:.8;}
+.rt2-hole{fill:var(--rt-core2);}
+.rt2-sol{opacity:.55;}
+.rt2-soak{fill:var(--rt-core1);stroke:var(--rt-core-edge);stroke-width:1;}
+.rt2-borer-h{fill:var(--rt-jaw);}
+.rt2-borer-end{fill:var(--rt-metal0);}

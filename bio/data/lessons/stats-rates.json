@@ -53,7 +53,7 @@
   ],
   "ideas": [
     "<b>Worked example.</b> Depth 1.6 mm at 2 min, 3.2 mm at 8 min, 3.6 mm at 10 min. Rate 0-10 min = 3.6 ÷ 10 = 0.36 mm/min. Rate 8-10 min = (3.6 − 3.2) ÷ 2 = 0.20 mm/min. Percent change from 0.8 to 0.2 mm/min = (0.2 − 0.8) ÷ 0.8 × 100 = −75%.",
-    "Formula sheet: rate = change in y ÷ change in x; percent change = (final − initial) ÷ initial × 100. Always divide by the <b>initial</b> value.",
+    "The formula sheet gives rate = dY/dt (change in y ÷ change in time). Percent change is not on the sheet: (final − initial) ÷ initial × 100. Always divide by the <b>initial</b> value.",
     "The difference between two percentages (97.8% and 56.1%) is 41.7 <b>percentage points</b>; the <b>percent change</b> is (56.1 − 97.8) ÷ 97.8 × 100 = −42.6%.",
     "Prefixes: kilo 10³, centi 10⁻², milli 10⁻³, micro 10⁻⁶, nano 10⁻⁹. Areas convert by the factor squared, volumes by the factor cubed."
   ],
