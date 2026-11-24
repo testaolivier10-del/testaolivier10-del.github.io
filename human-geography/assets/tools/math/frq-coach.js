@@ -27,8 +27,9 @@
      The verb ladder (tools v2 Explore, docs/tools-v2-hug-frq-coach-brief.md):
      each context's `ladder` is one answer in five pieces (name, features,
      link, side, degree) and a prompt per rung. LADDER is the rung order,
-     WRITTEN the pieces on the page at a rung, NEEDED the pieces that rung's
-     rubric line asks for (a written piece not needed is drawn quiet),
+     NEEDED the pieces that rung's rubric line asks for, WRITTEN the pieces on
+     the page at a rung (the same: a full-credit answer writes only what the
+     verb asks for),
      ADDS the piece a rung adds, RUBRIC_LINE its rubric line.
        ladderAnswer(ctx, verb) -> [{ role, text, needed }] in page order */
 (function(G){
@@ -61,10 +62,10 @@
   /* ---------------------------------------------------------- the ladder */
   var LADDER = ['identify', 'describe', 'explain', 'compare', 'explain-degree'];
   var PIECES = ['degree', 'name', 'features', 'link', 'side'];
-  var WRITTEN = { identify: ['name'], describe: ['name', 'features'], explain: ['name', 'features', 'link'],
-    compare: ['name', 'features', 'link', 'side'], 'explain-degree': ['degree', 'name', 'features', 'link', 'side'] };
   var NEEDED = { identify: ['name'], describe: ['name', 'features'], explain: ['name', 'features', 'link'],
     compare: ['name', 'features', 'side'], 'explain-degree': ['degree', 'name', 'features', 'link'] };
+  // The answer on the page is exactly what the rung asks for (review round 1): no piece the prompt did not ask for.
+  var WRITTEN = NEEDED;
   var ADDS = { identify: 'name', describe: 'features', explain: 'link', compare: 'side', 'explain-degree': 'degree' };
   var ADD_LABEL = { identify: 'a name', describe: 'its features', explain: 'how or why', compare: 'both sides', 'explain-degree': 'the degree first' };
   var PIECE_NAME = { name: 'Name', features: 'Features', link: 'Because', side: 'Both sides', degree: 'Degree' };
@@ -116,13 +117,16 @@
       options: [c.link].concat(c.wrong.map(function(w){ return w.text; })), correct: 0,
       why: ['Right: it connects the cause to the effect, so the explanation has every link.'].concat(c.wrong.map(function(w){ return w.why; })) };
   }
-  function qText(ctx, only){
-    return '<p class="hug-fc-scn">' + ctx.scenario + '</p><ol class="hug-fc-parts">' + ctx.parts.map(function(p){
-      return '<li class="hug-fc-part' + (only && only.indexOf(p) < 0 ? ' is-dim' : '') + '"><span class="hug-fc-pl">' + p.label + '</span><span class="hug-fc-pt">' + promptHtml(p) + '</span></li>';
+  // The label carries a hidden ". " so a caption read as plain text says "A. Identify ..." (review round 1); with
+  // alone, only the asked parts are listed (the write kind).
+  function qText(ctx, only, alone){
+    return '<p class="hug-fc-scn">' + ctx.scenario + '</p><ol class="hug-fc-parts">' + ctx.parts.filter(function(p){ return !alone || !only || only.indexOf(p) > -1; }).map(function(p){
+      return '<li class="hug-fc-part' + (only && only.indexOf(p) < 0 ? ' is-dim' : '') + '"><span class="hug-fc-pl">' + p.label + '</span><span class="hug-fc-sep">. </span><span class="hug-fc-pt">' + promptHtml(p) + '</span></li>';
     }).join('') + '</ol>';
   }
   function generate(r, ctx, type){
-    type = type || r.pick(TYPES);
+    // "Any kind" picks from the first three kinds, so a problem link made before the write kind keeps its problem.
+    type = type || r.pick(TYPES.slice(0, 3));
     if(TYPES.indexOf(type) < 0) throw new Error('frqCoach: unknown type ' + type);
     var parts = ctx.parts, steps = [], sol = [], only;
     if(type === 'part'){
@@ -149,7 +153,7 @@
       only = parts;
       parts.forEach(function(p){ steps.push(earnsStep(r, p, 'earns-' + p.label)); sol.push('<b>' + partLabel(p) + ' (' + VERBS[p.verb].name + '):</b> ' + p.rubric + ' Sample: ' + p.sample); });
     }
-    return { type: type, ctx: ctx.id, topic: ctx.topic, parts: only.map(function(p){ return p.label; }), text: qText(ctx, only), steps: steps, solution: sol };
+    return { type: type, ctx: ctx.id, topic: ctx.topic, parts: only.map(function(p){ return p.label; }), text: qText(ctx, only, type === 'write'), steps: steps, solution: sol };
   }
 
   M.register('frqCoach', {

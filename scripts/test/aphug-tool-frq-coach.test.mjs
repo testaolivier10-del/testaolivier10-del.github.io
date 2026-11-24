@@ -79,17 +79,17 @@ test('frq-coach: planted mistakes are caught', () => {
 test('frq-coach: the Explore ladder (tools v2): rungs, pieces and planted mistakes', () => {
   assert.deepEqual(copy(model.LADDER), ['identify', 'describe', 'explain', 'compare', 'explain-degree']);
   for (const c of data.contexts) {
-    // each rung writes the rungs below it plus its own piece; the rubric line asks for what the rung needs
-    let prev = [];
+    // each rung writes exactly what its rubric line asks for (review round 1): its own piece, never an unasked one
+    const seen = new Set();
     for (const v of model.LADDER) {
-      const a = model.ladderAnswer(c, v).map(x => x.role);
-      assert.ok(prev.every(k => a.includes(k)), `${c.id} ${v} keeps the pieces below it`);
-      assert.ok(a.includes(model.ADDS[v]), `${c.id} ${v} adds its piece`);
-      prev = a;
+      const a = model.ladderAnswer(c, v);
+      assert.ok(a.every(x => x.needed), `${c.id} ${v} writes only needed pieces`);
+      assert.ok(a.some(x => x.role === model.ADDS[v]), `${c.id} ${v} adds its piece`);
+      const key = a.map(x => x.role).join(); assert.ok(!seen.has(key), `${c.id} ${v} is a different answer`); seen.add(key);
     }
     const cmp = model.ladderAnswer(c, 'compare'), deg = model.ladderAnswer(c, 'explain-degree');
-    assert.equal(cmp.find(x => x.role === 'link').needed, false, 'compare does not need the because');
-    assert.equal(deg.find(x => x.role === 'side').needed, false, 'explain the degree does not need the second side');
+    assert.ok(!cmp.some(x => x.role === 'link'), 'compare does not write the because');
+    assert.ok(!deg.some(x => x.role === 'side'), 'explain the degree does not write the second side');
     assert.equal(deg[0].role, 'degree', 'the degree comes first');
   }
   const bad = copy(data), L = bad.contexts[0].ladder;

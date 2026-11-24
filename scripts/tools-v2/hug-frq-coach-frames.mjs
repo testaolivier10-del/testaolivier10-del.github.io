@@ -3,7 +3,7 @@
    animation frame, while the answer writes and erases, the page must agree with itself: the cause line names the verb
    the ladder is on; its quoted words, and the rubric line, show only when the answer drawn is exactly that verb's
    answer; the prompt's verb is the ladder's (or the prompt is mid fade); every written piece is colored exactly when
-   the verb needs it; the slider's aria-valuetext names the verb. Runs through: a pointer drag up the ladder and back
+   the verb needs it; the slider's aria-valuetext names the verb; a word on show never moves. Runs through: a pointer drag up the ladder and back
    down fast, keyboard End and Home, a reversal in the middle of writing, Next question in the middle of writing,
    leaving for Test yourself in the middle of writing (the screen comes back clean), and reduced motion (the result
    at once). At 390 (touch drag) and 1440 (mouse), light.
@@ -47,6 +47,11 @@ const PROBE = () => {
     F.PIECES.forEach((k) => { const p = s.pieces[k]; if (p.shown > 0 && p.on !== F.NEEDED[v].includes(k)) bad(k + ' colored ' + p.on + ' on ' + v); });
     if (inp && inp.getAttribute('aria-valuetext').indexOf(F.VERBS[F.LADDER[+inp.value]].name) !== 0) bad('valuetext');
     if (+inp.value !== s.stop) bad('slider ' + inp.value + ' vs ' + s.stop);
+    // a word on show never moves: the first word of every piece with words on show keeps its place frame to frame
+    const pos = {};
+    document.querySelectorAll('.fcx-p').forEach((el) => { const w = el.querySelector('.fcx-w.is-in'); if (w) { const r = w.getBoundingClientRect(); pos[el.getAttribute('data-role')] = Math.round(r.left) + ',' + Math.round(r.top); } });
+    if (b.pos && b.q === E.ctx() && b.w === innerWidth) Object.keys(pos).forEach((k) => { if (b.pos[k] && b.pos[k] !== pos[k]) bad(k + ' moved ' + b.pos[k] + ' to ' + pos[k]); });
+    b.pos = pos; b.q = E.ctx(); b.w = innerWidth;
     if (window.__fxOn) requestAnimationFrame(loop);
   };
   requestAnimationFrame(loop);

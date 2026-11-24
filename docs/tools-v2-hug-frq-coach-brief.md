@@ -44,9 +44,15 @@ Home and End work (a real range input).
 
 What happens on a change: the prompt's verb changes first (a 0.13 s fade), then the answer erases or writes one piece
 at a time, word by word, in the verb's color: the name (blue), the features (green), the because link (orange), the
-second side (purple), the degree on its own first line (red). A written piece the verb does not need stays in place in
-gray: the because at Compare, the second side at Explain the degree. Earlier words never move: every piece is in the
-page from the start (unwritten words are invisible), and the question keeps the height of its longest prompt.
+second side (purple), the degree on its own first line (red). The answer is exactly what the verb asks for (review
+round 1): Compare has no because, Explain the degree no second side. Words on show never move: an empty piece takes no
+room, and a piece only opens or folds after every word on show (writing and erasing go in climb order); the degree's
+first line is always kept, and the question keeps the height of its longest prompt.
+
+Size (review round 1): the scene is as tall as its content. On wide screens the pages keep a booklet's shape (the desk
+shows at the sides), the hand is up to 30 px (20 px on phones) and the answer box fits the question's longest rung; the
+stimulus takes the left page's height above the prompt (drawings 120 to 282 units tall: the landscapes grow their sky,
+the maps and the chart use the height, the HDI is a clinic, a school and a paycheck feeding one score).
 
 Words read from what is drawn: the cause line is "Verb → what it adds → “the words that add it”"; the quoted words and
 the rubric line appear only when the answer drawn is exactly that verb's answer (frame checked). Takeaway, once all
@@ -78,6 +84,7 @@ by nature (an exam booklet); the plan asked to keep the outside count low, which
 | Rubric line any time; full-credit sample after a try | Write a part yourself: rubric line any time, the earns step (with the sample) after a try; the worked solution |
 | "Which answer earns the point?" step in Explore | Write a part yourself (its step) and the Which answer earns kind |
 | Next part, done ticks on the strip | New question in Test yourself; results go to mastery as before (ticks dropped) |
+| Choosing the question and the part to write | Write a part yourself draws a random question and part (New question draws again); logged |
 | Verb demand card and "the slip readers see most", "How a part is scored" | "?" (six verb table with the slip column, scoring notes) |
 | Drills part, verbs, earns; record ids | Test yourself, unchanged |
 | First visit tip "Start here: read the verb" | The kit cue "Drag the verb" |
@@ -86,8 +93,8 @@ by nature (an exam booklet); the plan asked to keep the outside count low, which
 1. Explore is a new drawn booklet with a verb ladder; one answer grows a piece at a time; nothing graded.
 2. The old Explore writing box moved to Test yourself as a new drill kind, Write a part yourself.
 3. Define is not on the ladder (a meaning, not a piece added); it stays in the drills and "?".
-4. Compare is on the ladder after Explain but does not need the because (gray there); the second side goes gray at
-   Explain the degree.
+4. Compare is on the ladder after Explain but does not need the because; Explain the degree does not need the second
+   side. Since review round 1 the answer writes only what each verb asks for (no gray pieces).
 5. The plan's takeaway ("one more thing than the one below") was reworded, since compare is not a superset of explain.
 6. Eight original ladder answers written (real dated places; Country A labeled invented); the rubric line per rung is
    the verb's demand in our words, not a released rubric. Open points: `docs/aphug-needs-author.md`
@@ -136,14 +143,27 @@ by nature (an exam booklet); the plan asked to keep the outside count low, which
 - Preview `/mnt/user-data/outputs/hug-frq-coach-v2/index.html`; shots (landing at every width, light and dark, rungs,
   fits, mid writing frames, Write a part, locked) in `/mnt/user-data/outputs/hug-frq-coach-v2/shots/`.
 
+## Review round 1 (2026-11-24, BLOCK; fixed the same day)
+Review: `/home/claude/review-hug-frq/REVIEW.md`. Merged `claude/tools-v2-all` first (only the append-only docs
+conflicted). Must fix: (1) empty paper on wide screens: the scene is sized from its content, pages keep a booklet's
+shape, the hand goes to 30 px wide and 20 px on phones, the stimulus grows into the left page, HDI and the transition
+chart redrawn as small scenes, degree pieces one short line so the answer never starts under blank lines; (2) the
+answer writes only what the verb asks for (`WRITTEN` = `NEEDED`; empty pieces fold, after every word on show); (3) the
+city ladder names the pattern ("Suburban sprawl."). Should fix: names 4 px clear of the knob on phones (the sweep now
+checks 4 px); no gray text left (the quiet style is 72% ink if it is ever used); Test yourself's question text has a
+hidden ". " after each letter and Write a part yourself lists only its own part; the write kind's random part is
+logged; "Any kind" draws from the first three kinds, so old problem links keep their problem; polders "the drained
+land"; the owner log's Define line cites framework.md. The frames check now also asserts that no word on show moves.
+
+Checks after the fixes (fix round: 360, 390, 768, 1024, 1440, light and dark): sweep 12,516 passed, 0 failed (the
+knob now 4 px clear of every name); frames at 390 and 1440 with the new "no word on show moves" assertion: 1,539
+passed, 0 failed; HuG tests 160 pass; content check 0 failing; `build-aphug`, `build-apcalc`, `build-apmacro --check`,
+`check-site`, `check-weight --check` clean; Write a part yourself reads "A. Define ..." with only its own part. Shots:
+`/mnt/user-data/outputs/hug-frq-coach-v2/shots/r1-*`.
+
 ## Not done, and what I am not happy with
-- The left page has empty paper under the prompt on wide screens (the booklet keeps both pages one height; the
-  answer page needs it at Explain the degree).
-- On phones at Explain the degree the knob sits just above "Explain the degree" (clear by the sweep's 2 px rule, but
-  close); on narrow phones that name takes three short lines.
-- The eight stimulus drawings are simple vignettes, a step below the flagship's lake; the booklet, desk and tabs carry
-  the scene.
-- Test yourself's question caption runs the parts together ("ADefine a ... BExplain"), as it did before this rebuild
-  (the shared drill's caption flattens the list); not changed here.
+- At Identify and Describe most of the answer page is ruled lines waiting for the longer rungs (by design: the box fits
+  the longest rung); on very wide screens a short band can stay under the prompt when the drawing reaches its tallest.
+- The stimulus drawings are better than round 0 but still simple next to the flagship's lake.
 - No real phone, no screen reader pass, no real students. The ladder content needs a teacher's read
   (`docs/aphug-needs-author.md`, `frq-coach-ladder`).

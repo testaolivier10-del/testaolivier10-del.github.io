@@ -490,3 +490,7 @@ piece per verb (name, features, because, second side, degree). For a teacher to 
 - **Degrees chosen** ("to a high degree" for polders, the Green Revolution's grain supply, cars and sprawl, stage 2,
   migration and English; "to a moderate degree" for superimposed boundaries and conflict, and the HDI) are defensible
   answers, not the only ones.
+- **Review round 1 changes (2026-11-24):** polders now say "the drained land stays dry enough to farm" (many polders
+  were lakes, peat or marsh, not sea floor); the city ladder names the pattern ("Suburban sprawl.") instead of a cause;
+  the degree lines are one short sentence and their qualifiers sit in the because piece (boundaries: "though poverty
+  and politics matter too"; the HDI: "although it hides inequality inside a country").

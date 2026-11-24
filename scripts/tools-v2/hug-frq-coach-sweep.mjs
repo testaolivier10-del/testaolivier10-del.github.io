@@ -88,7 +88,7 @@ const CHECK = () => {
     if (meet(a.r, b.r, 4)) out.push(a.name + ' within 4 px of ' + b.name);
   }
   // the knob clear of every text
-  const kn = document.querySelector('.fcx-drag .tk2-dot'); if (kn) { const kr = R(kn); T.forEach((t) => { if (meet(kr, t.r, 2)) out.push('knob on ' + t.name); }); }
+  const kn = document.querySelector('.fcx-drag .tk2-dot'); if (kn) { const kr = R(kn); T.forEach((t) => { if (meet(kr, t.r, 4)) out.push('knob within 4 px of ' + t.name); }); }
   // inside the scene; the answer never overflows its lines
   T.forEach((t) => { if (t.r.left < sc.left - 1 || t.r.right > sc.right + 1 || t.r.top < sc.top - 1 || t.r.bottom > sc.bottom + 1) out.push(t.name + ' outside the scene'); });
   const ans = document.querySelector('.fcx-ans'); if (ans.scrollHeight > ans.clientHeight + 1) out.push('answer overflows');

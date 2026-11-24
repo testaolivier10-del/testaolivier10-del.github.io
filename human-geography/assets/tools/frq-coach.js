@@ -98,11 +98,16 @@
     }
     function paintPiece(k){
       var p = P[k], n = Math.round(p.f * p.n);
-      if(p.f > 0 && n === 0) n = 0;
-      if(n === p.shown) return;
+      if(n === p.shown){ gone(k); return; }
       for(var i = Math.min(n, p.shown); i < Math.max(n, p.shown); i++) p.words[i].classList.toggle('is-in', i < n);
       p.shown = n;
+      gone(k);
     }
+    // An empty slot takes no room, so a rung's answer reads as one run of text (Compare has no hole where the because
+    // would be). Only empty slots fold and open, and the piece being written opens first: a slot opens or folds only
+    // after every visible word (writing and erasing go in climb order), so no visible word ever moves. The degree's
+    // first line is always kept.
+    function gone(k){ if(k === 'degree') return; var p = P[k], g = p.f <= 0 && p.shown === 0; if(p.el.classList.contains('is-gone') !== g) p.el.classList.toggle('is-gone', g); }
     function setAll(stopI){
       var w = F.WRITTEN[LAD[stopI]];
       F.PIECES.forEach(function(k){ P[k].f = w.indexOf(k) > -1 ? 1 : 0; paintPiece(k); });
@@ -128,7 +133,7 @@
       if(mv){ P[mv].f = Math.max(0, P[mv].f - dt * 70 / P[mv].n); }
       else {
         for(i = 0; i < WRITE_ORDER.length; i++){ k = WRITE_ORDER[i]; if(P[k].f < 1 && want(k)){ mv = k; break; } }
-        if(mv) P[mv].f = Math.min(1, P[mv].f + dt * (fast ? 52 : 32) / Math.max(4, P[mv].n));
+        if(mv){ P[mv].f = Math.min(1, P[mv].f + dt * (fast ? 52 : 32) / Math.max(4, P[mv].n)); P[mv].el.classList.remove('is-gone'); }
       }
       if(mv) paintPiece(mv);
       words();
@@ -249,10 +254,23 @@
       var room = vh - Math.min(top, vh * 0.4) - lines.offsetHeight - 22;
       var g = { W: W, wide: wide, pad: wide ? 16 : 8 };
       g.mid = W >= 560 && !wide;   // medium: one page, the art beside the prompt
-      g.H = Math.round(Math.max(wide ? 430 : 470, Math.min(wide ? 780 : 720, room)));
-      if(wide){
+      dims(g, Math.round(Math.max(wide ? 430 : 470, Math.min(wide ? 800 : 720, room))));
+      G = g;
+      scene.classList.toggle('is-wide', wide); scene.classList.toggle('is-mid', g.mid); scene.classList.toggle('is-narrow', !wide && !g.mid);
+      g.shrunk = false; g.pw = 0;
+      dims(g, g.H);
+      place();
+      return true;
+    }
+    function dims(g, H){
+      var W = g.W;
+      g.H = H;
+      if(g.wide){
         g.ladW = 196;
-        g.book = [g.pad + 4, g.pad + 6, W - g.pad * 2 - g.ladW - 8, g.H - g.pad * 2 - 12];
+        // pages keep a booklet's shape (about 4 wide to 5 tall): on a wide screen the desk shows at the sides
+        // instead of the answer spreading into a few long lines with empty paper under them
+        var avail = W - g.pad * 2 - g.ladW - 8, bh = g.H - g.pad * 2 - 12, pw0 = Math.min(avail / 2, g.pw || Math.max(360, bh * 0.8));
+        g.book = [g.pad + 4 + Math.round((avail - pw0 * 2) / 2), g.pad + 6, Math.round(pw0 * 2), bh];
         var b = g.book, pw = b[2] / 2;
         g.left = [b[0], b[1], pw, b[3]]; g.right = [b[0] + pw, b[1], pw, b[3]];
         g.m = Math.max(20, Math.min(34, pw * 0.07));
@@ -262,11 +280,7 @@
         g.left = g.book.slice(); g.right = g.book.slice();
         g.m = W < 420 ? 14 : 20;
       }
-      G = g;
       scene.style.height = g.H + 'px';
-      scene.classList.toggle('is-wide', wide); scene.classList.toggle('is-mid', g.mid); scene.classList.toggle('is-narrow', !wide && !g.mid);
-      place();
-      return true;
     }
     // the page text boxes (html over the drawing); the phone order: question, ladder, answer, rubric
     function place(){
@@ -274,9 +288,14 @@
       var m = g.m, L = g.left, R = g.right, st = stopsEl.querySelectorAll('.fcx-stop');
       reservePrompt();
       if(g.wide){
-        var ah = Math.min(L[3] * 0.48, (L[2] - m * 2) * 120 / 260), aw0 = ah * 260 / 120;
-        g.art = [L[0] + m + (L[2] - m * 2 - aw0) / 2, L[1] + 54, aw0, ah];
-        box(qBox, L[0] + m, L[1] + 12, L[2] - m * 2, null);
+        // the stimulus takes the left page's height that the prompt does not need (a taller drawing, not a blank band)
+        var lw = L[2] - m * 2;
+        box(qBox, L[0] + m, L[1] + 12, lw, null);
+        promptEl.style.marginTop = '0px'; reservePrompt();
+        var pH = promptEl.offsetHeight, artTop = L[1] + 56, ah = L[1] + L[3] - 22 - pH - 18 - artTop;
+        g.leftMin = 56 + lw * 120 / 260 + 18 + pH + 22;
+        ah = Math.max(lw * 120 / 260, Math.min(lw * 1.08, ah));
+        g.art = [L[0] + m, artTop, lw, ah];
         promptEl.style.marginTop = (g.art[3] + 18) + 'px';
         var ax = R[0] + m + 6, aw = R[2] - m * 2 - 18;
         box(aBox, ax, R[1] + 12, aw, null);
@@ -285,7 +304,7 @@
         var ansTop = R[1] + 12 + ans.offsetTop;
         g.ansBox = [ax, ansTop, aw, rubTop - 12 - ansTop];
         var t = g.track;
-        st.forEach(function(b, i){ var y = t[1] + (t[3] - t[1]) * i / (st.length - 1); b.style.left = (t[0] + 26) + 'px'; b.style.top = (y - 22) + 'px'; b.style.width = (g.W - t[0] - 26 - g.pad) + 'px'; b.style.height = '44px'; });
+        st.forEach(function(b, i){ var y = t[1] + (t[3] - t[1]) * i / (st.length - 1); b.style.left = (t[0] + 26) + 'px'; b.style.top = (y - 22) + 'px'; b.style.width = (g.book[0] + g.book[2] + g.ladW - 6 - t[0] - 26) + 'px'; b.style.height = '44px'; });
         drag.place([t[0], t[1], t[2], t[3]]);
       } else {
         var x = L[0] + m, w = L[2] - m * 2;
@@ -302,17 +321,26 @@
         st.forEach(function(b, i){ var cx = x0 + (x1 - x0) * i / (st.length - 1), bw = Math.min(84, (x1 - x0) / (st.length - 1) + 10), last = i === st.length - 1, first = i === 0;
           // the end names hang inward from the page edge, so the long last name never crowds Compare
           b.classList.toggle('is-end', last); b.classList.toggle('is-start', first);
-          b.style.left = (first ? x : last ? x + w - bw : cx - bw / 2) + 'px'; b.style.top = (ty + 22) + 'px'; b.style.width = bw + 'px'; b.style.height = (last && three ? 44 : 40) + 'px'; });
+          b.style.left = (first ? x : last ? x + w - bw : cx - bw / 2) + 'px'; b.style.top = (ty + 26) + 'px'; b.style.width = bw + 'px'; b.style.height = (last && three ? 44 : 40) + 'px'; });
         g.three = three;
         drag.place([x0, ty, x1, ty]);
-        var aTop = ty + 66;
+        var aTop = ty + 70;
         box(aBox, x, aTop, w, null);
         var rubH2 = rubHeight(w), rubTop2 = L[1] + L[3] - rubH2 - 10;
         box(rub, x, rubTop2, w, null);
         var ansTop2 = aTop + ans.offsetTop;
         g.ansBox = [x, ansTop2, w, rubTop2 - 10 - ansTop2];
       }
-      fitText();
+      var slack = fitText();
+      // the scene is as tall as its content: the longest answer at the hand size chosen, never extra ruled lines
+      // wide: first narrow the pages (the answer takes more lines), then, at the narrowest, shrink the scene
+      if(g.wide && slack > 24 && g.book[2] / 2 > 380){
+        g.pw = Math.max(370, g.book[2] / 2 - Math.max(16, slack * 0.35)); dims(g, g.H); place(); return;
+      }
+      if(!g.shrunk && slack > 4){
+        var cut = g.wide ? Math.min(slack, g.book[3] - g.leftMin) : slack;
+        if(cut > 4){ g.shrunk = true; dims(g, Math.round(g.H - cut)); place(); return; }
+      }
       drawBook();
       if(cue && cue.active()) cue.place();
     }
@@ -331,16 +359,25 @@
       rubT.textContent = keep || F.RUBRIC_LINE[LAD[stop]];
       return hMax;
     }
-    // the hand-written answer: the largest size at which the whole answer (all five pieces) fits its lines
+    // the hand-written answer: the largest size (up to 30 px wide, 20 px on a phone) at which this question's longest
+    // rung fits its lines; returns the spare height (the caller shrinks the scene by it)
+    function longest(){
+      var keep = F.PIECES.map(function(k){ return P[k].el.classList.contains('is-gone'); }), h = 0;
+      LAD.forEach(function(v){ F.PIECES.forEach(function(k){ if(k !== 'degree') P[k].el.classList.toggle('is-gone', F.WRITTEN[v].indexOf(k) < 0); }); h = Math.max(h, ans.scrollHeight); });
+      F.PIECES.forEach(function(k, i){ P[k].el.classList.toggle('is-gone', keep[i]); });
+      return h;
+    }
     function fitText(){
-      if(!G) return;
-      var hmax = Math.max(60, G.ansBox[3]), lo = G.wide ? 15 : 14, hi = G.wide ? 21 : 18.5, s = hi, LH = G.wide ? 1.62 : 1.52;
+      if(!G) return 0;
+      var hmax = Math.max(60, G.ansBox[3]), lo = G.wide ? 15 : 14, hi = G.wide ? 30 : 20, s = hi, LH = G.wide ? 1.6 : 1.52, h = 0;
       ans.style.height = 'auto';
-      for(; s >= lo; s -= 0.5){ ans.style.fontSize = s + 'px'; ans.style.setProperty('--lh', (s * LH).toFixed(2) + 'px'); if(ans.scrollHeight <= hmax) break; }
-      if(s < lo){ s = lo; ans.style.fontSize = s + 'px'; ans.style.setProperty('--lh', (s * LH).toFixed(2) + 'px'); }
-      ans.style.height = Math.max(hmax, ans.scrollHeight) + 'px';
-      var need = Math.ceil(ans.scrollHeight - hmax);
-      if(need > 0){ G.H += need; scene.style.height = G.H + 'px'; G.book[3] += need; G.left[3] = G.right[3] = G.book[3]; G.ansBox[3] += need; rub.style.top = (parseFloat(rub.style.top) + need) + 'px'; }
+      function size(x){ ans.style.fontSize = x + 'px'; ans.style.setProperty('--lh', (x * LH).toFixed(2) + 'px'); }
+      for(; s >= lo; s -= 0.5){ size(s); h = longest(); if(h <= hmax) break; }
+      if(s < lo){ s = lo; size(s); h = longest(); }
+      ans.style.height = Math.max(hmax, h) + 'px';
+      var need = Math.ceil(h - hmax);
+      if(need > 0){ G.H += need; scene.style.height = G.H + 'px'; G.book[3] += need; G.left[3] = G.right[3] = G.book[3]; G.ansBox[3] += need; rub.style.top = (parseFloat(rub.style.top) + need) + 'px'; return 0; }
+      return Math.floor(hmax - h);
     }
 
     /* ---------------------------------------------- the drawing: desk, booklet, ladder */
@@ -359,7 +396,7 @@
         // the ladder: index tabs that stick out of the booklet's right edge, one per verb, in its color
         var t = g.track;
         LAD.forEach(function(v, j){
-          var y2 = t[1] + (t[3] - t[1]) * j / (LAD.length - 1), x0 = b[0] + b[2] - 12, x1 = W - g.pad;
+          var y2 = t[1] + (t[3] - t[1]) * j / (LAD.length - 1), x0 = b[0] + b[2] - 12, x1 = b[0] + b[2] + g.ladW - 6;
           o.push('<path class="fcx-tab is-' + F.ADDS[v] + '" d="M' + r1(x0) + ' ' + r1(y2 - 20) + 'H' + r1(x1 - 12) + 'Q' + r1(x1) + ' ' + r1(y2 - 20) + ' ' + r1(x1) + ' ' + r1(y2 - 8) + 'V' + r1(y2 + 8) + 'Q' + r1(x1) + ' ' + r1(y2 + 20) + ' ' + r1(x1 - 12) + ' ' + r1(y2 + 20) + 'H' + r1(x0) + 'Z"/>');
         });
         o.push('<path class="fcx-rail" d="M' + t[0] + ' ' + r1(t[1] + 6) + 'V' + r1(t[3] - 6) + '"/>');
@@ -374,11 +411,11 @@
         o.push('<path class="fcx-edge" d="M' + (b[0] + 4) + ' ' + (b[1] + b[3] + 3) + 'H' + (b[0] + b[2] - 4) + '"/>');
         // the ladder printed across the page, in the verbs' colors
         var tr = g.track;
-        o.push('<rect class="fcx-band" x="' + r1(b[0] + g.m - 4) + '" y="' + r1(tr[1] - 24) + '" width="' + r1(b[2] - g.m * 2 + 8) + '" height="' + (g.three ? 86 : 82) + '" rx="12"/>');
+        o.push('<rect class="fcx-band" x="' + r1(b[0] + g.m - 4) + '" y="' + r1(tr[1] - 24) + '" width="' + r1(b[2] - g.m * 2 + 8) + '" height="' + (g.three ? 90 : 86) + '" rx="12"/>');
         o.push('<path class="fcx-rail" d="M' + tr[0] + ' ' + tr[1] + 'H' + tr[2] + '"/>');
         LAD.forEach(function(v, j){ var cx = tr[0] + (tr[2] - tr[0]) * j / (LAD.length - 1); o.push('<circle class="fcx-dot is-' + F.ADDS[v] + '" cx="' + r1(cx) + '" cy="' + tr[1] + '" r="7"/>'); });
         // the fold between the question and the answer
-        var fy = tr[1] + 62;
+        var fy = tr[1] + 66;
         o.push('<path class="fcx-fold" d="M' + (b[0] + 2) + ' ' + r1(fy) + 'H' + (b[0] + b[2] - 2) + '"/>');
         rules(o, g.ansBox);
       }
@@ -398,10 +435,13 @@
     /* ---------------------------------------------- the stimulus drawings (a 260 x 120 box, scaled) */
     function drawArt(){
       var g = G, grp = svg.querySelector('.fcx-art'); if(!g || !grp) return;
-      var a = g.art, k = Math.min(a[2] / 260, a[3] / 120), ox = a[0] + (a[2] - 260 * k) / 2, oy = a[1] + (a[3] - 120 * k) / 2;
-      var fs = r1(Math.max(12.5, Math.min(16, a[3] * 0.05)) / k);
+      // the drawing is 260 wide and 120 to 210 tall (VH): a taller box gets a taller scene, not empty bands
+      var a = g.art, k, VH;
+      if(a[3] / a[2] < 120 / 260){ k = a[3] / 120; VH = 120; } else { k = a[2] / 260; VH = Math.min(282, a[3] / k); }
+      var ox = a[0] + (a[2] - 260 * k) / 2, oy = a[1] + (a[3] - VH * k) / 2;
+      var fs = r1(Math.max(12.5, Math.min(16, a[2] * 0.03)) / k);
       grp.setAttribute('transform', 'translate(' + r1(ox) + ' ' + r1(oy) + ') scale(' + k.toFixed(4) + ')');
-      grp.innerHTML = ART[ctx.ladder.art] ? ART[ctx.ladder.art](fs) : '';
+      grp.innerHTML = ART[ctx.ladder.art] ? ART[ctx.ladder.art](fs, Math.round(VH)) : '';
       grp.setAttribute('data-art', ctx.ladder.art);
     }
 
@@ -477,76 +517,97 @@
 
   /* The stimulus drawings, one per question (a 260 x 120 box; fs: the label size that renders at 12.5 px). */
   function lbl(x, y, t, fs, anchor, cls){ return '<text class="fcx-al' + (cls ? ' ' + cls : '') + '" x="' + x + '" y="' + y + '" font-size="' + fs + '" text-anchor="' + (anchor || 'middle') + '">' + esc(t) + '</text>'; }
+  // VH: the drawing's height (120 to 210) in a 260 wide box; the landscapes keep their ground at the bottom and grow
+  // their sky, the maps and charts use the whole height.
+  function clouds(VH){
+    if(VH < 150) return '';
+    var y = (VH - 120) * 0.45;
+    return '<g class="a-cloud"><ellipse cx="60" cy="' + r1(y) + '" rx="22" ry="8"/><ellipse cx="74" cy="' + r1(y - 5) + '" rx="14" ry="8"/>' +
+      '<ellipse cx="170" cy="' + r1(y + 10) + '" rx="26" ry="8"/><ellipse cx="186" cy="' + r1(y + 5) + '" rx="14" ry="7"/></g>';
+  }
+  function up(VH, inner){ return '<g transform="translate(0 ' + (VH - 120) + ')">' + inner + '</g>'; }
   var ART = {
-    polders: function(fs){
-      return '<rect class="a-sky" x="0" y="0" width="260" height="120" rx="6"/>' +
-        '<path class="a-sea" d="M0 44H96L104 120H0Z"/><path class="a-wave" d="M6 52q6 -4 12 0t12 0t12 0M40 66q6 -4 12 0t12 0t12 0M10 82q6 -4 12 0t12 0t12 0"/>' +
+    polders: function(fs, VH){
+      var d = VH - 120;
+      return '<rect class="a-sky" x="0" y="0" width="260" height="' + VH + '" rx="6"/>' + clouds(VH) +
+        '<path class="a-sea" d="M0 ' + (44 + d) + 'H96L104 ' + VH + 'H0Z"/>' +
+        up(VH, '<path class="a-wave" d="M6 52q6 -4 12 0t12 0t12 0M40 66q6 -4 12 0t12 0t12 0M10 82q6 -4 12 0t12 0t12 0"/>' +
         '<path class="a-dike" d="M88 120L100 34H118L132 120Z"/><path class="a-dike-top" d="M100 34H118"/>' +
         '<path class="a-land" d="M128 74H260V120H128Z"/><path class="a-field" d="M134 74H258V80H134Z"/>' +
         '<path class="a-canal" d="M150 80H250V86H150Z"/>' +
         '<g class="a-mill" transform="translate(218 44)"><path d="M-6 30L-3 0H3L6 30Z" class="a-millb"/><path d="M0 0L-16 -14M0 0L14 -16M0 0L16 14M0 0L-14 16" class="a-sail"/><circle r="2.5" class="a-hub"/></g>' +
+        '<g class="a-cow" transform="translate(166 66)"><rect x="-7" y="-5" width="14" height="7" rx="3"/><path d="M-5 2v4M5 2v4M7 -4l3 -2"/></g>' +
         '<path class="a-sealev" d="M0 44H260"/>' +
-        lbl(48, 36, 'Sea', fs) + lbl(109, 26, 'Dike', fs) + lbl(176, 106, 'Polder', fs);
+        lbl(48, 36, 'Sea', fs) + lbl(109, 26, 'Dike', fs) + lbl(190, 106, 'Polder', fs));
     },
-    wheat: function(fs){
-      var o = '<rect class="a-sky" x="0" y="0" width="260" height="120" rx="6"/><circle class="a-sun" cx="226" cy="22" r="11"/>' +
-        '<path class="a-land" d="M0 62H260V120H0Z"/>';
-      for(var r = 0; r < 4; r++) for(var c = 0; c < 15; c++){ var x = 8 + c * 11 + (r % 2) * 5, y = 70 + r * 12; o += '<path class="a-stalk" d="M' + x + ' ' + (y + 10) + 'V' + y + '"/><ellipse class="a-ear" cx="' + x + '" cy="' + (y - 3) + '" rx="2.2" ry="5"/>'; }
-      o += '<g transform="translate(200 52)"><rect class="a-well" x="-12" y="0" width="24" height="18" rx="2"/><path class="a-pipe" d="M12 10H30V22"/><path class="a-water" d="M30 24q-3 8 0 18M26 26q-6 9 -18 16"/></g>' +
+    wheat: function(fs, VH){
+      var o = '<rect class="a-sky" x="0" y="0" width="260" height="' + VH + '" rx="6"/>' + clouds(VH) + '<circle class="a-sun" cx="226" cy="22" r="11"/>' +
+        '<path class="a-hill" d="M0 ' + (62 + VH - 120) + 'Q60 ' + (40 + VH - 120) + ' 130 ' + (58 + VH - 120) + 'T260 ' + (54 + VH - 120) + 'V' + VH + 'H0Z"/>';
+      var g = '<path class="a-land" d="M0 62H260V120H0Z"/>';
+      for(var r = 0; r < 4; r++) for(var c = 0; c < 15; c++){ var x = 8 + c * 11 + (r % 2) * 5, y = 70 + r * 12; g += '<path class="a-stalk" d="M' + x + ' ' + (y + 10) + 'V' + y + '"/><ellipse class="a-ear" cx="' + x + '" cy="' + (y - 3) + '" rx="2.2" ry="5"/>'; }
+      g += '<g transform="translate(200 52)"><rect class="a-well" x="-12" y="0" width="24" height="18" rx="2"/><path class="a-pipe" d="M12 10H30V22"/><path class="a-water" d="M30 24q-3 8 0 18M26 26q-6 9 -18 16"/></g>' +
         '<path class="a-chan" d="M204 120L230 76H238L214 120Z"/>';
-      return o + lbl(70, 52, 'Punjab, India', fs) + lbl(200, 46, 'Well', fs);
+      return o + up(VH, g + lbl(70, 52, 'Punjab, India', fs) + lbl(200, 46, 'Well', fs));
     },
-    city: function(fs){
-      var o = '<rect class="a-sky" x="0" y="0" width="260" height="120" rx="6"/><path class="a-land" d="M0 82H260V120H0Z"/>';
-      [[14, 40], [28, 26], [44, 34], [58, 18], [74, 38]].forEach(function(b){ o += '<rect class="a-tower" x="' + b[0] + '" y="' + b[1] + '" width="13" height="' + (82 - b[1]) + '"/>'; for(var y = b[1] + 5; y < 78; y += 8) o += '<path class="a-win" d="M' + (b[0] + 3) + ' ' + y + 'h7"/>'; });
-      o += '<path class="a-road" d="M88 100C130 96 170 92 258 90"/><path class="a-roadln" d="M92 100C134 96 172 92 256 90"/>';
-      [[112, 74], [134, 72], [156, 70], [180, 69], [204, 68], [228, 67], [150, 106], [190, 104], [230, 102]].forEach(function(h){ o += '<path class="a-house" d="M' + h[0] + ' ' + (h[1] + 10) + 'V' + (h[1] + 3) + 'L' + (h[0] + 6) + ' ' + (h[1] - 3) + 'L' + (h[0] + 12) + ' ' + (h[1] + 3) + 'V' + (h[1] + 10) + 'Z"/>'; });
-      o += '<rect class="a-car" x="166" y="90" width="12" height="5" rx="2"/>';
-      return o + lbl(46, 12, 'Downtown', fs) + lbl(196, 52, 'Suburbs', fs) + lbl(130, 116, 'Highway', fs);
+    city: function(fs, VH){
+      var d = VH - 120, o = '<rect class="a-sky" x="0" y="0" width="260" height="' + VH + '" rx="6"/>' + clouds(VH), g = '<path class="a-land" d="M0 82H260V120H0Z"/>';
+      [[14, 40 - d * 0.5], [28, 26 - d * 0.6], [44, 34 - d * 0.4], [58, 18 - d * 0.7], [74, 38 - d * 0.3]].forEach(function(b){ var y0 = Math.round(b[1]); g += '<rect class="a-tower" x="' + b[0] + '" y="' + y0 + '" width="13" height="' + (82 - y0) + '"/>'; for(var y = y0 + 5; y < 78; y += 8) g += '<path class="a-win" d="M' + (b[0] + 3) + ' ' + y + 'h7"/>'; });
+      g += '<path class="a-road" d="M88 100C130 96 170 92 258 90"/><path class="a-roadln" d="M92 100C134 96 172 92 256 90"/>';
+      [[112, 74], [134, 72], [156, 70], [180, 69], [204, 68], [228, 67], [150, 106], [190, 104], [230, 102]].forEach(function(h){ g += '<path class="a-house" d="M' + h[0] + ' ' + (h[1] + 10) + 'V' + (h[1] + 3) + 'L' + (h[0] + 6) + ' ' + (h[1] - 3) + 'L' + (h[0] + 12) + ' ' + (h[1] + 3) + 'V' + (h[1] + 10) + 'Z"/>'; });
+      g += '<rect class="a-car" x="166" y="90" width="12" height="5" rx="2"/><rect class="a-car" x="120" y="95" width="12" height="5" rx="2"/>';
+      return o + up(VH, g + lbl(46, Math.round(8 - d * 0.7), 'Downtown', fs) + lbl(196, 52, 'Suburbs', fs) + lbl(130, 116, 'Highway', fs));
     },
-    chart: function(fs){
-      var o = '<rect class="a-paper" x="0" y="0" width="260" height="120" rx="6"/>';
-      for(var x = 30; x <= 250; x += 22) o += '<path class="a-grid" d="M' + x + ' 10V100"/>';
-      for(var y = 10; y <= 100; y += 18) o += '<path class="a-grid" d="M30 ' + y + 'H250"/>';
-      o += '<path class="a-axis" d="M30 8V100H252"/>' +
-        '<path class="a-birth" d="M30 24C80 22 130 25 250 24"/>' +
-        '<path class="a-death" d="M30 28C70 30 100 52 140 70S220 86 250 88"/>';
-      return o + lbl(58, 16, 'Births', fs, 'start', 'is-birth') + lbl(210, 78, 'Deaths', fs, 'middle', 'is-death') + lbl(140, 114, 'Stage 2', fs);
+    chart: function(fs, VH){
+      // a figure on graph paper: births stay high, deaths fall (stage 2), with its axis titles
+      var t = 12, b = VH - 30, l = 34, r = 250, o = '<rect class="a-paper" x="0" y="0" width="260" height="' + VH + '" rx="6"/>';
+      for(var x = l; x <= r; x += 18) o += '<path class="a-grid" d="M' + x + ' ' + t + 'V' + b + '"/>';
+      for(var y = b; y >= t; y -= 18) o += '<path class="a-grid" d="M' + l + ' ' + y + 'H' + r + '"/>';
+      var Y = function(f){ return r1(t + (b - t) * f); };
+      o += '<path class="a-axis" d="M' + l + ' ' + (t - 2) + 'V' + b + 'H' + (r + 2) + '"/>' +
+        '<path class="a-nat" d="M' + l + ' ' + Y(0.17) + 'C90 ' + Y(0.15) + ' 150 ' + Y(0.17) + ' ' + r + ' ' + Y(0.16) + 'V' + Y(0.85) + 'C210 ' + Y(0.82) + ' 170 ' + Y(0.7) + ' 140 ' + Y(0.55) + 'S80 ' + Y(0.25) + ' ' + l + ' ' + Y(0.22) + 'Z"/>' +
+        '<path class="a-birth" d="M' + l + ' ' + Y(0.17) + 'C90 ' + Y(0.15) + ' 150 ' + Y(0.17) + ' ' + r + ' ' + Y(0.16) + '"/>' +
+        '<path class="a-death" d="M' + l + ' ' + Y(0.22) + 'C80 ' + Y(0.25) + ' 110 ' + Y(0.4) + ' 140 ' + Y(0.55) + 'S210 ' + Y(0.82) + ' ' + r + ' ' + Y(0.85) + '"/>';
+      return o + lbl(62, Y(0.08), 'Births', fs, 'start', 'is-birth') + lbl(206, Y(0.74), 'Deaths', fs, 'middle', 'is-death') +
+        lbl(142, VH - 10, 'Time, stage 2', fs) + '<text class="fcx-al" font-size="' + fs + '" transform="translate(' + r1(14 + fs * 0.35) + ' ' + r1((t + b) / 2) + ') rotate(-90)" text-anchor="middle">Rate</text>';
     },
-    ship: function(fs){
-      return '<rect class="a-seab" x="0" y="0" width="260" height="120" rx="6"/>' +
-        '<path class="a-landm" d="M14 30q10 -12 22 -6t14 18q-4 14 -18 14t-18 -26Z"/>' +
+    ship: function(fs, VH){
+      var d = (VH - 120) / 2, o = '<rect class="a-seab" x="0" y="0" width="260" height="' + VH + '" rx="6"/>';
+      for(var i = 0; i < Math.floor(VH / 30); i++) o += '<path class="a-wave2" d="M' + (20 + (i % 3) * 70) + ' ' + (16 + i * 28) + 'q6 -4 12 0t12 0"/>';
+      return o + '<g transform="translate(0 ' + r1(d) + ')"><path class="a-landm" d="M14 30q10 -12 22 -6t14 18q-4 14 -18 14t-18 -26Z"/>' +
         '<path class="a-landm" d="M190 70q22 -20 46 -6q18 12 8 30q-14 16 -34 10q-22 -6 -20 -34Z"/>' +
         '<path class="a-route" d="M44 52C90 40 150 52 190 76"/>' +
         '<g transform="translate(116 46)"><path class="a-hull" d="M-14 6H14L9 13H-9Z"/><path class="a-mast" d="M0 6V-16"/><path class="a-sailw" d="M1 -15L13 2H1Z"/><path class="a-sailw" d="M-1 -13L-11 2H-1Z"/></g>' +
-        lbl(34, 66, 'Britain', fs) + lbl(222, 112, 'Australia', fs) + lbl(130, 24, 'Settlers', fs);
+        lbl(34, 66, 'Britain', fs) + lbl(222, 112, 'Australia', fs) + lbl(130, 24, 'Settlers', fs) + '</g>';
     },
-    borders: function(fs){
-      return '<rect class="a-seab" x="0" y="0" width="260" height="120" rx="6"/>' +
-        '<path class="a-landm" d="M30 14H220Q236 30 232 60Q226 96 190 112H60Q24 92 22 54Q22 26 30 14Z"/>' +
+    borders: function(fs, VH){
+      var sy = VH / 120;
+      return '<rect class="a-seab" x="0" y="0" width="260" height="' + VH + '" rx="6"/>' +
+        '<g transform="scale(1 ' + sy.toFixed(3) + ')"><path class="a-landm" d="M30 14H220Q236 30 232 60Q226 96 190 112H60Q24 92 22 54Q22 26 30 14Z"/>' +
         '<path class="a-grp1" d="M44 30q40 -10 66 10q10 30 -14 46q-34 8 -52 -14q-10 -26 0 -42Z"/>' +
         '<path class="a-grp2" d="M120 46q34 -16 70 0q16 26 0 50q-34 14 -60 0q-20 -22 -10 -50Z"/>' +
-        '<path class="a-border" d="M104 14V112M104 62H232"/>' +
-        lbl(178, 36, 'Straight border', fs) + lbl(74, 104, 'Group A', fs, 'middle', 'is-g') + lbl(162, 84, 'Group B', fs, 'middle', 'is-g');
+        '<path class="a-border" d="M104 14V112M104 62H232" vector-effect="non-scaling-stroke"/></g>' +
+        lbl(178, r1(36 * sy), 'Straight border', fs) + lbl(74, r1(104 * sy), 'Group A', fs, 'middle', 'is-g') + lbl(162, r1(84 * sy), 'Group B', fs, 'middle', 'is-g');
     },
-    countrya: function(fs){
-      return '<rect class="a-seab" x="0" y="0" width="260" height="120" rx="6"/>' +
-        '<path class="a-landm" d="M24 20Q80 6 150 12Q226 14 238 46Q242 80 214 100Q160 114 100 108Q40 104 22 78Q12 46 24 20Z"/>' +
-        '<path class="a-hills" d="M40 36l12 -12l12 12l12 -14l12 14l12 -12l12 12"/>' +
-        '<g class="a-dots"><circle cx="120" cy="62" r="3"/><circle cx="128" cy="58" r="3"/><circle cx="114" cy="56" r="3"/><circle cx="126" cy="68" r="3"/><circle cx="134" cy="64" r="3"/><circle cx="118" cy="70" r="3"/>' +
-        '<circle cx="80" cy="100" r="3"/><circle cx="96" cy="102" r="3"/><circle cx="112" cy="100" r="3"/><circle cx="130" cy="102" r="3"/><circle cx="148" cy="100" r="3"/><circle cx="166" cy="98" r="3"/><circle cx="184" cy="94" r="3"/>' +
-        '<circle cx="70" cy="34" r="3"/><circle cx="200" cy="60" r="3"/></g>' +
-        '<g class="a-trees"><circle cx="196" cy="40" r="5"/><circle cx="208" cy="46" r="5"/><circle cx="214" cy="34" r="5"/><circle cx="222" cy="52" r="5"/></g>' +
-        lbl(130, 86, 'Capital Region', fs) + lbl(76, 52, 'Northern Hills', fs) + lbl(130, 118, 'South Coast', fs);
+    countrya: function(fs, VH){
+      var sy = VH / 120, P2 = function(x, y){ return x + ' ' + r1(y * sy); };
+      var dots = [[120, 62], [128, 58], [114, 56], [126, 68], [134, 64], [118, 70], [80, 100], [96, 102], [112, 100], [130, 102], [148, 100], [166, 98], [184, 94], [70, 34], [200, 60], [104, 64], [140, 72]];
+      return '<rect class="a-seab" x="0" y="0" width="260" height="' + VH + '" rx="6"/>' +
+        '<path class="a-landm" d="M' + P2(24, 20) + 'Q' + P2(80, 6) + ' ' + P2(150, 12) + 'Q' + P2(226, 14) + ' ' + P2(238, 46) + 'Q' + P2(242, 80) + ' ' + P2(214, 100) + 'Q' + P2(160, 114) + ' ' + P2(100, 108) + 'Q' + P2(40, 104) + ' ' + P2(22, 78) + 'Q' + P2(12, 46) + ' ' + P2(24, 20) + 'Z"/>' +
+        '<path class="a-hills" d="M40 ' + r1(36 * sy) + 'l12 -12l12 12l12 -14l12 14l12 -12l12 12"/>' +
+        '<g class="a-dots">' + dots.map(function(q){ return '<circle cx="' + q[0] + '" cy="' + r1(q[1] * sy) + '" r="3"/>'; }).join('') + '</g>' +
+        '<g class="a-trees">' + [[196, 40], [208, 46], [214, 34], [222, 52], [204, 58]].map(function(q){ return '<circle cx="' + q[0] + '" cy="' + r1(q[1] * sy) + '" r="5"/>'; }).join('') + '</g>' +
+        lbl(130, r1(84 * sy), 'Capital Region', fs) + lbl(76, r1(36 * sy + 16), 'Northern Hills', fs) + lbl(130, r1(VH - 4), 'South Coast', fs);
     },
-    hdi: function(fs){
-      return '<rect class="a-paper" x="0" y="0" width="260" height="120" rx="6"/>' +
-        '<g transform="translate(46 52)"><path class="a-heart" d="M0 12C-22 -2 -14 -18 0 -8C14 -18 22 -2 0 12Z"/></g>' +
-        '<g transform="translate(130 52)"><path class="a-book" d="M-18 -12H-2Q0 -10 2 -12H18V12H2Q0 14 -2 12H-18Z"/><path class="a-bookln" d="M0 -10V12"/></g>' +
-        '<g transform="translate(214 52)"><circle class="a-coin" r="15"/><text class="a-coint" y="5" text-anchor="middle" font-size="15">$</text></g>' +
-        '<path class="a-arrowh" d="M46 72L116 94M130 72V92M214 72L144 94"/>' +
-        '<rect class="a-score" x="104" y="92" width="52" height="22" rx="11"/>' + lbl(130, 108, 'HDI', fs, 'middle', 'is-score') +
-        lbl(46, 28, 'Health', fs) + lbl(130, 28, 'Education', fs) + lbl(214, 28, 'Income', fs);
+    hdi: function(fs, VH){
+      // three small scenes (a clinic, a school, a paycheck) that feed one score from 0 to 1
+      var z = Math.min(1.7, VH / 120), iy = Math.max(62, Math.round(VH * 0.4)), gy = VH - 24, o = '<rect class="a-paper" x="0" y="0" width="260" height="' + VH + '" rx="6"/>';
+      o += '<g transform="translate(46 ' + iy + ') scale(' + z.toFixed(2) + ')"><path class="a-bld" d="M-22 14V-8L0 -20L22 -8V14Z"/><rect class="a-cross" x="-3" y="-14" width="6" height="16"/><rect class="a-cross" x="-8" y="-9" width="16" height="6"/><rect class="a-door" x="-5" y="4" width="10" height="10"/></g>' +
+        '<g transform="translate(130 ' + iy + ') scale(' + z.toFixed(2) + ')"><path class="a-bld2" d="M-24 14V-6H24V14Z"/><path class="a-roof" d="M-28 -6L0 -20L28 -6Z"/><path class="a-flag" d="M18 -20V-34L28 -30L18 -26"/><rect class="a-door" x="-5" y="4" width="10" height="10"/><rect class="a-winb" x="-18" y="-1" width="8" height="6"/><rect class="a-winb" x="10" y="-1" width="8" height="6"/></g>' +
+        '<g transform="translate(214 ' + iy + ') scale(' + z.toFixed(2) + ')"><rect class="a-check" x="-24" y="-14" width="48" height="26" rx="3"/><path class="a-checkln" d="M-18 -6H6M-18 0H0M-18 6H12"/><circle class="a-coin" cx="18" cy="8" r="8"/></g>' +
+        '<path class="a-arrowh" d="M46 ' + r1(iy + 18 * z) + 'L112 ' + (gy - 8) + 'M130 ' + r1(iy + 18 * z) + 'V' + (gy - 12) + 'M214 ' + r1(iy + 18 * z) + 'L148 ' + (gy - 8) + '"/>' +
+        '<rect class="a-score" x="' + r1(130 - fs * 3.3) + '" y="' + r1(gy + 6 - fs * 1.05) + '" width="' + r1(fs * 6.6) + '" height="' + r1(fs * 1.6) + '" rx="' + r1(fs * 0.8) + '"/>';
+      return o + lbl(130, gy + 6, 'HDI, 0 to 1', fs, 'middle', 'is-score') +
+        lbl(46, r1(iy - 26 * z), 'Health', fs) + lbl(130, r1(iy - 38 * z), 'Education', fs) + lbl(214, r1(iy - 20 * z), 'Income', fs);
     }
   };
 
