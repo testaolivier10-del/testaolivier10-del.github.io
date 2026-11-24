@@ -518,6 +518,9 @@
        row    { row, cells: [cell...] }    one row of an ICE table, a cell per species
        coef   { row, cells: [cell...] }    the change row, typed as −x, +2x, 0
        choice { options, optionsHtml?, correct, fixed?, why: [...] }
+       task   { html?, check(api) -> { blank, ok, note }, reveal(api)?, shown? }   a step the tool grades
+                                           itself (an action on its figure); a context with only: true is
+                                           offered only when its kind is picked (never in "Any kind")
      Each step is checked on its own; a wrong answer gets the feedback for
      the specific slip it matches, and the student can try again or show the
      answer. The first try is what is recorded, as "<slug>:<context>:<step>".
@@ -544,8 +547,10 @@
     var sd = studioDrill(app, area, o);
     // The standard frame: the kind of problem is the scenario picker on the stage (the select it drives stays, out of sight).
     if(sd && sd.std && kp) sd.picker(kp, kinds, o.typeLabel || 'Problem type', function(v){ type = v; seed = freshSeed(); draw(true); });
-    function pickable(){ return contexts.filter(function(c){ return !type || (c.types ? c.types.indexOf(type) > -1 : c.mode ? c.mode === type : c.kind === type); }); }
-    function pickCtx(r){ var ok = pickable(); return r.pick(ok.length ? ok : contexts); }
+    // A context with only: true is offered only when its kind is picked, never in "Any kind" (so the problems a
+    // ?seed= link opens stay the same; Motion graphs' Match the graph, docs/tools-v2-phys-motion-graphs-brief.md).
+    function pickable(){ return contexts.filter(function(c){ return !type ? !c.only : (c.types ? c.types.indexOf(type) > -1 : c.mode ? c.mode === type : c.kind === type); }); }
+    function pickCtx(r){ var ok = pickable(); return r.pick(ok.length ? ok : contexts.filter(function(c){ return !c.only; })); }
     function draw(focus){
       var r = M.rng(seed), ctx = pickCtx(r), p = o.generate(r, ctx, type || undefined), results = [];
       area.innerHTML = '<div class="bt-prob-head"><h2 id="' + gid + '-h" tabindex="-1">' + esc(o.title ? o.title(p) : 'Practice problem') + '</h2><p class="bt-code">Problem code <b>' + seed + '</b> <a href="?seed=' + seed + '">Link to this problem</a></p></div>' +
@@ -576,6 +581,8 @@
             var id = sid + '-o' + k;
             return '<div class="bt-radio cd-opt" data-k="' + k + '"><input type="radio" name="' + sid + '" id="' + id + '" value="' + k + '"><label for="' + id + '">' + (s.optionsHtml ? '<span class="cd-pic-n">Picture ' + (n + 1) + '</span>' + s.optionsHtml[k] : s.options[k]) + '</label></div>';
           }).join('') + '</fieldset>';
+        } else if(s.kind === 'task'){
+          body = s.html || '';
         } else {
           body = '<p class="bt-small cd-rowhint">Type each value in the ' + esc(s.row) + ' row of the table.</p>';
         }
@@ -625,9 +632,10 @@
           if(s.kind === 'num' || s.kind === 'vol'){ input.value = shownNum(s.cell, s.d); if(range){ range.value = String(s.cell.answer); if(o.onVol) o.onVol(s.cell.answer, s, api); } }
           else if(s.kind === 'row') s.cells.forEach(function(c, k){ if(rowInputs[k]) rowInputs[k].value = M.fmt(c.answer, 3); });
           else if(s.kind === 'coef') s.cells.forEach(function(c, k){ if(rowInputs[k]) rowInputs[k].value = coefText(c.answer); });
+          else if(s.kind === 'task'){ if(s.reveal) s.reveal(api); }
           else { var c = el.querySelector('input[value="' + s.correct + '"]'); if(c) c.checked = true; }
           el.classList.add('is-shown');
-          fb.innerHTML = '<span class="phys-mark no">Shown</span> The answer is filled in. ' + (s.kind === 'choice' ? s.why[s.correct] : '');
+          fb.innerHTML = '<span class="phys-mark no">Shown</span> ' + (s.kind === 'task' ? (s.shown || '') : 'The answer is filled in. ' + (s.kind === 'choice' ? s.why[s.correct] : ''));
           lock(); next(false);
         }
         function check(){
@@ -649,6 +657,11 @@
               else if(!g.ok){ ok = false; notes.push('<b>' + esc(who) + ':</b> ' + (g.why || (s.kind === 'coef' ? 'Write the change as a multiple of x, from the coefficient: −x, +2x.' : 'Not this value. Recheck the arithmetic.'))); }
               rowInputs[k].classList.toggle('is-wrong', !!raw && !g.ok); rowInputs[k].classList.toggle('is-right', !!g.ok);
             });
+          } else if(s.kind === 'task'){
+            // a step the tool grades itself (Motion graphs' Match the graph): s.check(api) -> { blank, ok, note }
+            var gt = s.check(api) || { blank: true };
+            if(gt.blank){ fb.innerHTML = '<span class="bt-small">' + (gt.note || 'Do the task first.') + '</span>'; return; }
+            ok = !!gt.ok; if(gt.note) notes.push(gt.note);
           } else {
             var c = el.querySelector('input:checked');
             if(!c) blank = true;
@@ -658,7 +671,7 @@
           tries++;
           if(ok){
             el.classList.add('is-right');
-            fb.innerHTML = '<span class="phys-mark ok">Correct</span> ' + (s.kind === 'choice' ? notes[0] : '');
+            fb.innerHTML = '<span class="phys-mark ok">Correct</span> ' + (s.kind === 'choice' || s.kind === 'task' ? notes[0] || '' : '');
             lock(); next(tries === 1);
             return;
           }
