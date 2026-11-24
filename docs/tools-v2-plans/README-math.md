@@ -51,7 +51,7 @@ Order is the wave in `docs/tools-v2-rollout.md` section 5, then use rank inside 
 | 34 | 23 | AP® Precalculus Polynomials and rationals (128, Premium) | `pcalc-poly-rational.md` | medium |
 | 35 | 23 | AP® Precalculus Vectors and matrices (129, Premium) | `pcalc-vectors-matrices.md` | heavy: three tabs, beyond the exam |
 
-Simple 5, medium 21, heavy 9.
+Simple 4, medium 22, heavy 9.
 
 ## Shared for every plan (read once; each plan names only what differs)
 
