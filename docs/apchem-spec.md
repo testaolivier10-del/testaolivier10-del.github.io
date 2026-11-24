@@ -400,6 +400,13 @@ Chemistry science gets an independent accuracy check, as A&P and ochem do.
     drawn molecules, and a Q gauge beside the flask with K as a notch; sized from the screen height (review round 1). The drill is Test yourself, unchanged
     (ids, `?seed=`, `#quiz`). The adapter gains `placed: true` for a part that put itself in the frame. Data:
     `explore` in the tool's json, checked by its validator. Open: needs-author `ice-explore-n2o4`.
+31. (2026-11-24, tools v2; `docs/tools-v2-chem-buffers-brief.md`, branch `claude/tools-v2-chem-buffers`, not merged)
+    **Buffers on the kit.** `buffer-drills` gets `"kit2": true`. Explore is one screen: a buffer beaker (acetic acid or
+    ammonia, 5 or 10 mmol of each form in 100 mL) and a plain water beaker under a rack of 1.0 M HCl and NaOH droppers;
+    one tap is 1.0 mL (1.0 mmol, one particle) into each. The particles are drawn with their atoms and trade an H⁺ where
+    they meet; each beaker's pH meter reads its drawn particles (`ApChemMath.bufferMeter`: Henderson-Hasselbalch in the
+    1 : 10 to 10 : 1 range, the exact pH elsewhere). The drill is Test yourself, unchanged (ids, `?seed=`, `#quiz`). Data:
+    `explore` in the tool's json, checked by its validator. Open: needs-author `buffer-explore`.
 
 ## 8. Open items for the owner
 
