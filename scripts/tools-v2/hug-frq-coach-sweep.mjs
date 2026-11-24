@@ -11,7 +11,8 @@
      stop name (touch on phones) moves the ladder, Next question turns the page, the fit at 390x844, 1024x768 and
      1280x800 (knob, scene and cause line in view at once), and no console errors.
    Premium is unlocked only in this test (premium.js routed, never committed).
-   Usage: node scripts/tools-v2/hug-frq-coach-sweep.mjs [--width 390] [--dark] [--shots <dir>]
+   Usage: node scripts/tools-v2/hug-frq-coach-sweep.mjs [--width 390] [--height 667] [--dark] [--shots <dir>]
+   (short phones: --width 360 --height 640, --width 375 --height 667, --width 360 --height 740)
    Run one width per process. (needs playwright) */
 import { createServer } from 'node:http';
 import { existsSync, statSync, createReadStream, mkdirSync } from 'node:fs';
@@ -37,7 +38,7 @@ if (SHOTS) mkdirSync(SHOTS, { recursive: true });
 let fails = 0, checks = 0;
 const fail = (m) => { fails++; if (fails < 60) console.log('FAIL ' + m); };
 const ok = (c, m) => { checks++; if (!c) fail(m); };
-const sfx = DARK ? '-dark' : '';
+const sfx = (DARK ? '-dark' : '') + (arg('--height', '') ? 'x' + arg('--height', '') : '');
 
 async function open(ctx, h) {
   const page = await ctx.newPage();
@@ -92,7 +93,9 @@ const CHECK = () => {
   // inside the scene; the answer never overflows its lines
   T.forEach((t) => { if (t.r.left < sc.left - 1 || t.r.right > sc.right + 1 || t.r.top < sc.top - 1 || t.r.bottom > sc.bottom + 1) out.push(t.name + ' outside the scene'); });
   const ans = document.querySelector('.fcx-ans'); if (ans.scrollHeight > ans.clientHeight + 1) out.push('answer overflows');
-  const rub = R(document.querySelector('.fcx-rub')); if (words.length && Math.max(...words.map(w => R(w).bottom)) > rub.top - 2) out.push('answer runs into the rubric');
+  const rub = R(document.querySelector('.fcx-rub')); if (words.length && Math.max(...words.map(w => R(w).bottom)) > rub.top - 4) out.push('answer within 4 px of the rubric');
+  const g = E._G(); if (g.book[1] + g.book[3] + 4 > g.H) out.push('the booklet runs off the desk (' + Math.round(g.book[1] + g.book[3]) + ' of ' + g.H + ')');
+  if (rub.bottom > sc.bottom - 4) out.push('rubric at the scene edge');
   // no text under 11 px
   T.forEach((t) => { let fs; if (t.e instanceof SVGElement) { const m = t.e.getScreenCTM(); fs = parseFloat(t.e.getAttribute('font-size')) * (m ? Math.hypot(m.a, m.b) : 1); } else fs = parseFloat(getComputedStyle(t.e).fontSize); if (fs < 10.95) out.push(t.name + ' ' + fs.toFixed(1) + ' px'); });
   [...document.querySelectorAll('.fcx .tk2-cz, .fcx .tk2-purpose, .fcx .tk2-how')].forEach((e) => { const fs = parseFloat(getComputedStyle(e).fontSize); if (fs < 10.95) out.push(e.className + ' ' + fs + ' px'); });
@@ -110,7 +113,7 @@ const CHECK = () => {
 };
 
 for (const w of WIDTHS) {
-  const h = w < 500 ? 844 : w < 900 ? 1024 : w >= 1900 ? 1080 : 900;
+  const h = +arg('--height', 0) || (w < 500 ? 844 : w < 900 ? 1024 : w >= 1900 ? 1080 : 900);
   const ctx = await newCtx(w, h);
   const { page, errs } = await open(ctx, h);
   ok(await page.evaluate(() => document.documentElement.getAttribute('data-theme') === 'dark') === DARK, `${w}: theme is not ${DARK ? 'dark' : 'light'}`);

@@ -161,6 +161,21 @@ passed, 0 failed; HuG tests 160 pass; content check 0 failing; `build-aphug`, `b
 `check-site`, `check-weight --check` clean; Write a part yourself reads "A. Define ..." with only its own part. Shots:
 `/mnt/user-data/outputs/hug-frq-coach-v2/shots/r1-*`.
 
+## Recheck 1 (2026-11-24, BLOCK; fixed the same day)
+Must fix: on short phones (360x640, 375x667, 360x740) the last answer line ran under the rubric box. Cause: after Next
+question the new answer was laid out before its empty pieces folded, so it was sized wrong, and the rubric was placed
+from the box, not from the answer. Fixed: empty pieces fold from the start; the booklet is sized from the longest
+answer of all eight questions (a hidden measuring copy) and every prompt, so it keeps one size between questions;
+`settle()` puts the rubric under the answer box and grows the page and scene together. The sweep takes `--height`,
+checks a 4 px answer to rubric gap, the booklet on the desk and the rubric clear of the scene's edge, and runs at
+360x640, 375x667 and 360x740. Should fix: 1024x768 booklet on the desk (same fix); polders and Punjab grow their
+ground, not their sky; 768 lets the hand (26 px) and the drawing grow; "Deaths" moved off its curve.
+
+Checks after recheck 1's fixes: sweep at 360x640, 375x667, 360x740, 390x844, 768x1024, 1024x768 and 1440x900, light
+and dark: 17,525 passed, 0 failed; frames at 390 and 1440: 1,398 passed, 0 failed; the reviewer's overlap script at
+375x667, 360x640, 360x740 and 390x844: no answer under the rubric; HuG tests 160 pass; content check 0 failing; the
+three build checks, `check-site` and `check-weight --check` clean. Shots: `/mnt/user-data/outputs/hug-frq-coach-v2/shots/r2-*`.
+
 ## Not done, and what I am not happy with
 - At Identify and Describe most of the answer page is ruled lines waiting for the longer rungs (by design: the box fits
   the longest rung); on very wide screens a short band can stay under the prompt when the drawing reaches its tallest.

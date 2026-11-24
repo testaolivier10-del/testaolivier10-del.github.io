@@ -94,6 +94,7 @@
         if(k === 'degree'){ wrap = document.createElement('span'); wrap.className = 'fcx-dline'; wrap.appendChild(sp); }
         ans.appendChild(wrap);
         P[k] = { el: sp, words: [].slice.call(sp.querySelectorAll('.fcx-w')), n: ws.length, f: 0, shown: 0 };
+        if(k !== 'degree') sp.classList.add('is-gone');   // empty until written
       });
     }
     function paintPiece(k){
@@ -223,7 +224,7 @@
       qi = (qi + 1) % ctxs.length; pref.q = ctxs[qi].id; save(PREF, pref);
       if(raf){ cancelAnimationFrame(raf); raf = 0; }
       var turn = function(){
-        ctx = ctxs[qi]; buildAnswer(); paintQuestion(); if(G) place();
+        ctx = ctxs[qi]; buildAnswer(); paintQuestion(); if(G) fit();
         if(K.reduced()){ setAll(stop); crossfade(); words(); settled(); }
         else { fast = true; words(); run(); }
       };
@@ -251,7 +252,7 @@
       if(!stage.isConnected || !scene.clientWidth) return false;
       var W = scene.clientWidth, vh = window.innerHeight, wide = W >= 880;
       var top = scene.getBoundingClientRect().top + (window.scrollY || 0);
-      var room = vh - Math.min(top, vh * 0.4) - lines.offsetHeight - 22;
+      var room = vh - Math.min(top, vh * 0.4) - (W < 640 ? 78 : 50) - 22;   // a fixed allowance for the cause line, so its state never resizes the booklet
       var g = { W: W, wide: wide, pad: wide ? 16 : 8 };
       g.mid = W >= 560 && !wide;   // medium: one page, the art beside the prompt
       dims(g, Math.round(Math.max(wide ? 430 : 470, Math.min(wide ? 800 : 720, room))));
@@ -299,7 +300,7 @@
         promptEl.style.marginTop = (g.art[3] + 18) + 'px';
         var ax = R[0] + m + 6, aw = R[2] - m * 2 - 18;
         box(aBox, ax, R[1] + 12, aw, null);
-        var rubH = rubHeight(aw), rubTop = R[1] + R[3] - rubH - 16;
+        var rubH = rubHeight(aw), rubTop = R[1] + R[3] - rubH - 16; g.rubH = rubH;
         box(rub, ax, rubTop, aw, null);
         var ansTop = R[1] + 12 + ans.offsetTop;
         g.ansBox = [ax, ansTop, aw, rubTop - 12 - ansTop];
@@ -309,7 +310,8 @@
       } else {
         var x = L[0] + m, w = L[2] - m * 2;
         box(qBox, x, L[1] + 8, w, null);
-        if(g.mid){ g.art = [x, L[1] + 56, w * 0.4, Math.min(150, w * 0.4 * 120 / 260)]; promptEl.style.marginTop = '10px'; promptEl.style.marginLeft = (w * 0.4 + 16) + 'px'; }
+        if(g.mid){ promptEl.style.marginTop = '10px'; promptEl.style.marginLeft = (w * 0.44 + 16) + 'px'; reservePrompt();
+          g.art = [x, L[1] + 56, w * 0.44, Math.max(w * 0.44 * 120 / 260, Math.min(w * 0.44 * 0.9, promptEl.offsetHeight + 10))]; }
         else { g.art = [x, L[1] + 48, w, Math.min(g.W < 480 ? 92 : 124, w * 120 / 260)]; promptEl.style.marginLeft = '0px'; promptEl.style.marginTop = (g.art[3] + 10) + 'px'; }
         reservePrompt();
         var qBottom = Math.max(L[1] + 8 + qBox.offsetHeight, g.art[1] + g.art[3]);
@@ -326,7 +328,7 @@
         drag.place([x0, ty, x1, ty]);
         var aTop = ty + 70;
         box(aBox, x, aTop, w, null);
-        var rubH2 = rubHeight(w), rubTop2 = L[1] + L[3] - rubH2 - 10;
+        var rubH2 = rubHeight(w), rubTop2 = L[1] + L[3] - rubH2 - 10; g.rubH = rubH2;
         box(rub, x, rubTop2, w, null);
         var ansTop2 = aTop + ans.offsetTop;
         g.ansBox = [x, ansTop2, w, rubTop2 - 10 - ansTop2];
@@ -341,15 +343,27 @@
         var cut = g.wide ? Math.min(slack, g.book[3] - g.leftMin) : slack;
         if(cut > 4){ g.shrunk = true; dims(g, Math.round(g.H - cut)); place(); return; }
       }
+      settle();
       drawBook();
       if(cue && cue.active()) cue.place();
     }
+    // the rubric box always sits 10 px under the answer box as laid out; if it would leave the page, the page and the
+    // scene grow together (the desk keeps its margin under the booklet)
+    function settle(){
+      var g = G, aB = parseFloat(aBox.style.top) + ans.offsetTop + ans.offsetHeight, rt = parseFloat(rub.style.top), rh = g.rubH || rub.offsetHeight;
+      if(rt < aB + 10) rt = aB + 10;
+      var need = Math.ceil(rt + rh + (g.wide ? 16 : 10) - (g.book[1] + g.book[3]));
+      if(need > 0){ g.H += need; g.book[3] += need; g.left[3] = g.right[3] = g.book[3]; scene.style.height = g.H + 'px'; }
+      rub.style.top = r1(rt) + 'px';
+      g.ansBox[3] = ans.offsetHeight;
+    }
     // the question's box keeps the height of its longest prompt, so nothing under it moves when the verb changes
+    // (every question's prompts, so Next question never resizes the booklet)
     function reservePrompt(){
-      var keep = promptEl.innerHTML, hMax = 0;
+      var keep = promptEl.innerHTML, hMax = 0, c0 = ctx;
       promptEl.style.minHeight = '0px';
-      LAD.forEach(function(v){ promptEl.innerHTML = promptHtml(v); hMax = Math.max(hMax, promptEl.offsetHeight); });
-      promptEl.innerHTML = keep; promptEl.style.minHeight = hMax + 'px';
+      ctxs.forEach(function(c){ ctx = c; LAD.forEach(function(v){ promptEl.innerHTML = promptHtml(v); hMax = Math.max(hMax, promptEl.offsetHeight); }); });
+      ctx = c0; promptEl.innerHTML = keep; promptEl.style.minHeight = hMax + 'px';
     }
     function box(el, x, y, w, h){ el.style.left = r1(x) + 'px'; el.style.top = r1(y) + 'px'; el.style.width = r1(w) + 'px'; if(h != null) el.style.height = r1(h) + 'px'; }
     function rubHeight(w){
@@ -361,22 +375,34 @@
     }
     // the hand-written answer: the largest size (up to 30 px wide, 20 px on a phone) at which this question's longest
     // rung fits its lines; returns the spare height (the caller shrinks the scene by it)
+    // the longest rung of all eight questions, measured on a hidden copy of the answer (so the booklet keeps one size
+    // when Next question turns the page)
+    var meas = null;
     function longest(){
-      var keep = F.PIECES.map(function(k){ return P[k].el.classList.contains('is-gone'); }), h = 0;
-      LAD.forEach(function(v){ F.PIECES.forEach(function(k){ if(k !== 'degree') P[k].el.classList.toggle('is-gone', F.WRITTEN[v].indexOf(k) < 0); }); h = Math.max(h, ans.scrollHeight); });
-      F.PIECES.forEach(function(k, i){ P[k].el.classList.toggle('is-gone', keep[i]); });
+      if(!meas){
+        meas = document.createElement('div'); meas.className = 'fcx-ans fcx-meas'; meas.setAttribute('aria-hidden', 'true');
+        meas.innerHTML = ctxs.map(function(c){ return LAD.map(function(v){
+          var a = F.ladderAnswer(c, v), d = a.filter(function(x){ return x.role === 'degree'; })[0], rest = a.filter(function(x){ return x.role !== 'degree'; });
+          return '<div class="fcx-mrow"><span class="fcx-dline">' + (d ? esc(d.text) : '') + '</span>' + rest.map(function(x){ return esc(x.text); }).join(' ') + '</div>';
+        }).join(''); }).join('');
+        aBox.appendChild(meas);
+      }
+      meas.style.width = ans.clientWidth + 'px'; meas.style.fontSize = ans.style.fontSize; meas.style.setProperty('--lh', ans.style.getPropertyValue('--lh'));
+      var h = 0;
+      [].forEach.call(meas.children, function(r){ h = Math.max(h, r.offsetHeight); });
       return h;
     }
     function fitText(){
       if(!G) return 0;
-      var hmax = Math.max(60, G.ansBox[3]), lo = G.wide ? 15 : 14, hi = G.wide ? 30 : 20, s = hi, LH = G.wide ? 1.6 : 1.52, h = 0;
+      var hmax = Math.max(60, G.ansBox[3]), lo = G.wide ? 15 : 14, hi = G.wide ? 30 : G.mid ? 26 : 20, s = hi, LH = G.wide || G.mid ? 1.6 : 1.52, h = 0;
       ans.style.height = 'auto';
       function size(x){ ans.style.fontSize = x + 'px'; ans.style.setProperty('--lh', (x * LH).toFixed(2) + 'px'); }
       for(; s >= lo; s -= 0.5){ size(s); h = longest(); if(h <= hmax) break; }
       if(s < lo){ s = lo; size(s); h = longest(); }
       ans.style.height = Math.max(hmax, h) + 'px';
+      if(ans.scrollHeight > ans.clientHeight + 1){ h = ans.scrollHeight; ans.style.height = h + 'px'; }   // never clip the real answer
       var need = Math.ceil(h - hmax);
-      if(need > 0){ G.H += need; scene.style.height = G.H + 'px'; G.book[3] += need; G.left[3] = G.right[3] = G.book[3]; G.ansBox[3] += need; rub.style.top = (parseFloat(rub.style.top) + need) + 'px'; return 0; }
+      if(need > 0){ G.ansBox[3] += need; return 0; }   // settle() moves the rubric and grows the page
       return Math.floor(hmax - h);
     }
 
@@ -528,26 +554,34 @@
   function up(VH, inner){ return '<g transform="translate(0 ' + (VH - 120) + ')">' + inner + '</g>'; }
   var ART = {
     polders: function(fs, VH){
-      var d = VH - 120;
-      return '<rect class="a-sky" x="0" y="0" width="260" height="' + VH + '" rx="6"/>' + clouds(VH) +
-        '<path class="a-sea" d="M0 ' + (44 + d) + 'H96L104 ' + VH + 'H0Z"/>' +
-        up(VH, '<path class="a-wave" d="M6 52q6 -4 12 0t12 0t12 0M40 66q6 -4 12 0t12 0t12 0M10 82q6 -4 12 0t12 0t12 0"/>' +
+      // the horizon at about 42% of the box: a taller box gets more sea, dike and soil, not just sky
+      var dy = Math.max(0, Math.min(VH - 120, Math.round(VH * 0.42 - 44))), T = function(y){ return y + dy; };
+      var o = '<rect class="a-sky" x="0" y="0" width="260" height="' + VH + '" rx="6"/>' + (dy > 40 ? '<g transform="translate(0 ' + r1(dy - 40) + ')">' + clouds(160) + '</g>' : '') +
+        '<path class="a-sea" d="M0 ' + T(44) + 'H96L' + r1(104 + (VH - T(120)) * 0.06) + ' ' + VH + 'H0Z"/>' +
+        '<path class="a-dike" d="M' + r1(88 - (VH - T(120)) * 0.15) + ' ' + VH + 'L88 ' + T(120) + 'H132L' + r1(132 + (VH - T(120)) * 0.15) + ' ' + VH + 'Z"/>' +
+        '<path class="a-land" d="M128 ' + T(74) + 'H260V' + VH + 'H' + r1(128 + (VH - T(120)) * 0.15) + 'Z"/>';
+      for(var y = T(124); y < VH - 4; y += 14) o += '<path class="a-soil" d="M' + r1(140 + (y - T(120)) * 0.15) + ' ' + y + 'H256"/>';
+      return o + '<g transform="translate(0 ' + dy + ')">' +
+        '<path class="a-wave" d="M6 52q6 -4 12 0t12 0t12 0M40 66q6 -4 12 0t12 0t12 0M10 82q6 -4 12 0t12 0t12 0"/>' +
         '<path class="a-dike" d="M88 120L100 34H118L132 120Z"/><path class="a-dike-top" d="M100 34H118"/>' +
         '<path class="a-land" d="M128 74H260V120H128Z"/><path class="a-field" d="M134 74H258V80H134Z"/>' +
         '<path class="a-canal" d="M150 80H250V86H150Z"/>' +
         '<g class="a-mill" transform="translate(218 44)"><path d="M-6 30L-3 0H3L6 30Z" class="a-millb"/><path d="M0 0L-16 -14M0 0L14 -16M0 0L16 14M0 0L-14 16" class="a-sail"/><circle r="2.5" class="a-hub"/></g>' +
         '<g class="a-cow" transform="translate(166 66)"><rect x="-7" y="-5" width="14" height="7" rx="3"/><path d="M-5 2v4M5 2v4M7 -4l3 -2"/></g>' +
         '<path class="a-sealev" d="M0 44H260"/>' +
-        lbl(48, 36, 'Sea', fs) + lbl(109, 26, 'Dike', fs) + lbl(190, 106, 'Polder', fs));
+        lbl(48, 36, 'Sea', fs) + lbl(109, 26, 'Dike', fs) + lbl(190, 106, 'Polder', fs) + '</g>';
     },
     wheat: function(fs, VH){
-      var o = '<rect class="a-sky" x="0" y="0" width="260" height="' + VH + '" rx="6"/>' + clouds(VH) + '<circle class="a-sun" cx="226" cy="22" r="11"/>' +
-        '<path class="a-hill" d="M0 ' + (62 + VH - 120) + 'Q60 ' + (40 + VH - 120) + ' 130 ' + (58 + VH - 120) + 'T260 ' + (54 + VH - 120) + 'V' + VH + 'H0Z"/>';
-      var g = '<path class="a-land" d="M0 62H260V120H0Z"/>';
-      for(var r = 0; r < 4; r++) for(var c = 0; c < 15; c++){ var x = 8 + c * 11 + (r % 2) * 5, y = 70 + r * 12; g += '<path class="a-stalk" d="M' + x + ' ' + (y + 10) + 'V' + y + '"/><ellipse class="a-ear" cx="' + x + '" cy="' + (y - 3) + '" rx="2.2" ry="5"/>'; }
-      g += '<g transform="translate(200 52)"><rect class="a-well" x="-12" y="0" width="24" height="18" rx="2"/><path class="a-pipe" d="M12 10H30V22"/><path class="a-water" d="M30 24q-3 8 0 18M26 26q-6 9 -18 16"/></g>' +
-        '<path class="a-chan" d="M204 120L230 76H238L214 120Z"/>';
-      return o + up(VH, g + lbl(70, 52, 'Punjab, India', fs) + lbl(200, 46, 'Well', fs));
+      // the horizon at about 40%: a taller box gets more rows of the field
+      var dy = Math.max(0, Math.min(VH - 120, Math.round(VH * 0.4 - 62)));
+      var o = '<rect class="a-sky" x="0" y="0" width="260" height="' + VH + '" rx="6"/>' + (dy > 40 ? '<g transform="translate(0 ' + r1(dy - 40) + ')">' + clouds(160) + '</g>' : '') + '<circle class="a-sun" cx="226" cy="22" r="11"/>' +
+        '<path class="a-hill" d="M0 ' + (62 + dy) + 'Q60 ' + (44 + dy) + ' 130 ' + (58 + dy) + 'T260 ' + (54 + dy) + 'V' + VH + 'H0Z"/>' +
+        '<path class="a-land" d="M0 ' + (62 + dy) + 'H260V' + VH + 'H0Z"/>';
+      var rows = Math.max(4, Math.floor((VH - dy - 70) / 12));
+      for(var r = 0; r < rows; r++) for(var c = 0; c < 15; c++){ var x = 8 + c * 11 + (r % 2) * 5, y = 70 + r * 12 + dy; if(x > 192 && x < 244 && r > 2) continue; o += '<path class="a-stalk" d="M' + x + ' ' + (y + 10) + 'V' + y + '"/><ellipse class="a-ear" cx="' + x + '" cy="' + (y - 3) + '" rx="2.2" ry="5"/>'; }
+      o += '<path class="a-chan" d="M' + r1(204 - (VH - dy - 120) * 0.2) + ' ' + VH + 'L230 ' + (76 + dy) + 'H238L' + r1(214 - (VH - dy - 120) * 0.2) + ' ' + VH + 'Z"/>' +
+        '<g transform="translate(200 ' + (52 + dy) + ')"><rect class="a-well" x="-12" y="0" width="24" height="18" rx="2"/><path class="a-pipe" d="M12 10H30V22"/><path class="a-water" d="M30 24q-3 8 0 18M26 26q-6 9 -18 16"/></g>';
+      return o + lbl(70, 52 + dy, 'Punjab, India', fs) + lbl(200, 46 + dy, 'Well', fs);
     },
     city: function(fs, VH){
       var d = VH - 120, o = '<rect class="a-sky" x="0" y="0" width="260" height="' + VH + '" rx="6"/>' + clouds(VH), g = '<path class="a-land" d="M0 82H260V120H0Z"/>';
@@ -567,7 +601,7 @@
         '<path class="a-nat" d="M' + l + ' ' + Y(0.17) + 'C90 ' + Y(0.15) + ' 150 ' + Y(0.17) + ' ' + r + ' ' + Y(0.16) + 'V' + Y(0.85) + 'C210 ' + Y(0.82) + ' 170 ' + Y(0.7) + ' 140 ' + Y(0.55) + 'S80 ' + Y(0.25) + ' ' + l + ' ' + Y(0.22) + 'Z"/>' +
         '<path class="a-birth" d="M' + l + ' ' + Y(0.17) + 'C90 ' + Y(0.15) + ' 150 ' + Y(0.17) + ' ' + r + ' ' + Y(0.16) + '"/>' +
         '<path class="a-death" d="M' + l + ' ' + Y(0.22) + 'C80 ' + Y(0.25) + ' 110 ' + Y(0.4) + ' 140 ' + Y(0.55) + 'S210 ' + Y(0.82) + ' ' + r + ' ' + Y(0.85) + '"/>';
-      return o + lbl(62, Y(0.08), 'Births', fs, 'start', 'is-birth') + lbl(206, Y(0.74), 'Deaths', fs, 'middle', 'is-death') +
+      return o + lbl(62, Y(0.08), 'Births', fs, 'start', 'is-birth') + lbl(218, r1(Y(0.74) - 9), 'Deaths', fs, 'middle', 'is-death') +
         lbl(142, VH - 10, 'Time, stage 2', fs) + '<text class="fcx-al" font-size="' + fs + '" transform="translate(' + r1(14 + fs * 0.35) + ' ' + r1((t + b) / 2) + ') rotate(-90)" text-anchor="middle">Rate</text>';
     },
     ship: function(fs, VH){
