@@ -53,6 +53,11 @@ Before the final merge:
   above budget under load). If still over 50 ms, find the cause.
 - Time flowcharts after the glove polish on a quiet machine (p95 at CPU x4 was 66 to 133 ms under load).
 
+Plans (owner 2026-11-23): every remaining tool has a ready plan in `docs/tools-v2-plans/<course>-<tool>.md`
+(113 plans; difficulty lists in `README-core.md`, `README-econ.md`, `README-sci.md`, `README-soc.md`,
+`README-math.md`). A builder starts from its tool's plan and still opens the research links before building.
+Simpler tools first; Psych waits for the brain map's adapter; the first tool of a course without kit2 adds its adapter.
+
 Next by use (rollout table):
 A&P anatomy 3d, NREMT scenario sim, Ochem reaction
 predictor (rollout rows 20 to 26).
