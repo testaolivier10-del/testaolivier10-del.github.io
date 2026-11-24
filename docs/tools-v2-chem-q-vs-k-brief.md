@@ -78,7 +78,7 @@ on a phone), the plate (equation, arrow, K line, scale line), the tray (3 cups, 
 | Volume of the vessel slider (0.5 to 2 L) | Explore: the piston knob, 0.50 to 1.50 L |
 | Reaction picker (two particle reactions, random K per seed) | Explore: two tabs with fixed K (A + B ⇌ AB; CaCO₃ with its solids); the dimer A₂ ⇌ 2A and every numbers context stay in Test yourself |
 | New mixture | Test yourself (every problem is a new mixture) |
-| ApChemBeaker jar in `qk` mode with its Q pills and gauge | Explore: the drawn cylinder and the dial; the jar was used only by the old Explore (Test yourself draws its own box and bar); `live-beaker.js` still loads (the build's list is shared, left alone) |
+| ApChemBeaker jar in `qk` mode with its Q pills and gauge | Explore: the drawn cylinder and the dial; the jar was used only by the old Explore (Test yourself draws its own box and bar); `live-beaker.js` no longer loads on this page (review round 1) |
 | "Why?" with the concentrations line | "?": the live "Now:" concentrations or pressures and Q |
 | Equilibrium amounts after Let it react (exact, non whole) | "?" says why the cylinder stops at whole counts near K |
 | Drill types, ids, `?seed=`, `#quiz`, the Premium card when locked | Unchanged |
@@ -140,10 +140,42 @@ on a phone), the plate (equation, arrow, K line, scale line), the tray (3 cups, 
   10 widths, light and dark, the first visit, the takeaway, Test yourself; `*-mid-*` frames of particles going in, a
   join, a split, CO₂ into CaO, CO₂ out of CaCO₃ and the piston moving, at 1440 light, 768 dark and 390 light).
 
+## Review round 1 (2026-11-24): BLOCK, fixed
+Review: `/home/claude/review-chem-qk/REVIEW.md`. Science held.
+
+Must fix:
+1. **Phone landing.** A phone sizes the scene from where it starts on the page: the cylinder is as tall as leaves the
+   cups and the first visit cue on the first screen (390 × 844 and 360 × 740). The plate moved under the tray on a phone
+   (the dial stays top left, beside the piston's knob); scrolled to the scene's top, the plate and the cause line are in
+   view too. The room under the tray for the cue is kept only until the cue is used, then the bench shrinks to the tray
+   (nothing else moves). The sweep checks the landing at every width (cups, and the cue on a first visit).
+2. **A change finished at once** (reduced motion, leaving mid change, a hidden tab, scrolled away): `snap()` sets the
+   way it ran from the first event it takes, so the cause line says "ran forward" or "ran back", never "no net change".
+3. **An infinite Q** reads "very large (no A)"; "no value" is only for 0 / 0.
+4. **No bare wall, no empty bench.** Wide: the plate, the tray and the dial scale with the stage (× W / 1280, at most
+   1.45), the cylinder takes the width left after them (up to 760 px, at most 1.25 times its height), and the whole
+   composition is centred. Tablets keep the plate on the wall at the top right and the bench is the tray (and the cue's
+   room until it is used).
+
+Should fix, all done or answered: the gas is scattered up and down by up to 0.45 of the room the piston gives over
+0.50 L, so it no longer sits in rows at 1.00 or 1.50 L (at 0.50 L it is packed as before); particles are larger (A atom
+at 390 about 14 px, 1024 about 18 px, 1920 about 29 px; the gap between molecules is half the largest atom, was 0.6);
+the measured no event rates are below and in needs-author `qk-explore` (the piston stops are kept: owner log); "≈ K"
+no longer shows while particles are still going in or out (only the strict comparison then); `q-vs-k` is out of
+`BEAKER_TOOLS` (`live-beaker.js` no longer loads here); the long frames in a piston drag (up to 400 ms) came from stacked
+animation loops: a count change inside a frame asked for a new frame and the frame's end asked again, so every long
+change added a loop (about 59,000 frame calls in a ten second drag); now one loop only. Also done for it: the pills' and
+the tag's text nodes are rewritten in place (the Tool Studio watches the stage's elements and measured the page on each
+rewrite; the stage carries `data-ls-text="keep"`, its texts are sized by the tool and checked at 11 px and up), the tag
+no longer reads the layout, the needle is an svg group turned by its transform, a molecule is one cached picture and
+only the gas is redrawn during a glide; "?" calls it a quartz cylinder.
+
+No whole event (the reviewer's seeded random walk of single changes): A + B about 16% of changes (single piston steps
+31%; 13% stop with Q more than 20% from K, and the cause line then says why); CaCO₃ about 16%, almost all because a solid
+ran out (correct chemistry).
+
 ## Not done, and what I am not happy with
 - No real phone, no screen reader pass, no students; no independent review yet.
-- About one change in ten (from the simulation of random moves) runs no whole event: whole particles cannot shift by a
-  fraction. The cause line says so ("1 more AB overshoots"), but a student may expect something to happen.
-- The gas sits on a lightly jittered grid, so it can read as rows at a large volume.
-- The right half of the wall is fairly bare between the plate and the tray at 1440 and 1920.
-- Particles on a phone are small (an A atom about 14 px across at 390).
+- About one change in six (the reviewer's random walk; one piston step in three for A + B) runs no whole event: whole
+  particles cannot shift by a fraction. The cause line says so ("1 more AB overshoots"), but a student may expect something to happen.
+- Particles on a phone are still smallish (an A atom about 14 px across at 390, 10 px at 360 × 740).

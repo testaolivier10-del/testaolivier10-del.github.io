@@ -46,6 +46,9 @@
 
       /* ---------------------------------------------------- the stage */
       var stage = document.createElement('div'); stage.className = 'qk2';
+      // every text on this stage is sized by the tool (11 px and up, checked by the sweep), so the Tool Studio's phone
+      // text bump skips it; it measured the page on each change of the cause line (review round 1, the long frames)
+      stage.setAttribute('data-ls-text', 'keep');
       var tabs = K.tabs({ label: 'Reaction', value: RX[0].id, items: RX.map(function(r){ return { value: r.id, label: r.tab, short: r.chip }; }),
         onChange: function(v){ hideCue(true); pickReaction(v); } });
       stage.appendChild(tabs.el);
@@ -528,7 +531,7 @@
       /* ---------------------------------------------------- the readouts, from what is drawn */
       var shown = null, lastKey = '';
       function paintReadouts(force){
-        var r = R(), c = counts(), V = VD.v, q = Qof(r, c, V), key = c.join(',') + '|' + V.toFixed(4);
+        var r = R(), c = counts(), V = VD.v, q = Qof(r, c, V), key = c.join(',') + '|' + V;
         if(!force && key === lastKey) return;
         lastKey = key;
         var dir = 0, at = false, stuck = '';
@@ -745,9 +748,12 @@
         evs.forEach(function(e){ if(e.type === 'enter' && !e.p.counted){ c[idx(e.p.key)]++; } if(e.type === 'leave' && e.p.counted){ c[idx(e.p.key)]--; } });
         return c;
       }
-      function kick(){ if(!raf) raf = requestAnimationFrame(frame); }
+      // one animation loop only: a kick from inside a frame (a count changed) waits for the frame's own request at its end
+      // (two requests per frame stacked up loops while a long change ran: review round 1, the long frames)
+      var inFrame = false;
+      function kick(){ if(!raf && !inFrame) raf = requestAnimationFrame(frame); }
       function frame(){
-        raf = 0;
+        raf = 0; inFrame = true;
         var tn = now(), r = R();
         // the piston glides to its volume; the gas particles at rest follow it (they fill the space it leaves)
         if(VD.v !== VD.to){
@@ -770,7 +776,8 @@
         paintCanvas();
         var more = evs.length || VD.v !== VD.to || (needle.to != null && needle.a !== needle.to) || !!CV.fade || flights > 0 || (tn - lastChange <= 340 && nextDir(r, pendingC(), VD.v) !== 0);
         if(!more && nextDir(r, pendingC(), VD.v) !== 0) more = true;
-        if(more){ dirty = true; raf = requestAnimationFrame(frame); }
+        inFrame = false;
+        if(more){ dirty = true; if(!raf) raf = requestAnimationFrame(frame); }
         else if(dirty){ dirty = false; paintReadouts(true); settled(); }
       }
       // finish everything now (leaving Explore, hidden, reduced motion): the picture of where it all settles

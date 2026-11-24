@@ -46,7 +46,7 @@ States: building, review, fixing, recheck, PASS (waiting to integrate), integrat
 | AP Psych neuron | claude/tools-v2-neuron | wt-neuron | integrated | four tabs; on the brain map's `ApPsychTools.kit2` (brain map branch merged in); sweep `scripts/tools-v2/neuron-sweep.mjs` (`--frames`, `--perf`) |
 | AP Chem ICE tables | claude/tools-v2-chem-ice-tables | wt-chem-ice | integrated | flask of molecules, x knob, clipboard ICE table, Q gauge; drill as Test yourself (`placed` part); sweep `scripts/tools-v2/chem-ice-tables-sweep.mjs` (`--frames`, `--perf`) |
 | AP Stats interval capture | claude/tools-v2-stat-ci-capture | wt-stat-ci | integrated | first AP Stats tool on the kit: adapter `ApStatTools.studioKit2`, `"kit2": true` for this page only; sweep `scripts/tools-v2/stat-ci-capture-sweep.mjs` (`--frames`, `--perf`) |
-| AP Chem Q vs K | claude/tools-v2-chem-q-vs-k | wt-chem-qk | built, waiting for review | cylinder with a piston, tray of particles (3 per press), Q dial and arrow from what is drawn; drill as Test yourself (`placed`); sweep `scripts/tools-v2/chem-q-vs-k-sweep.mjs` (`--frames`, `--perf`) |
+| AP Chem Q vs K | claude/tools-v2-chem-q-vs-k | wt-chem-qk | round 1 BLOCK fixed, waiting for recheck | cylinder with a piston, tray of particles (3 per press), Q dial and arrow from what is drawn; drill as Test yourself (`placed`); sweep `scripts/tools-v2/chem-q-vs-k-sweep.mjs` (`--frames`, `--perf`) |
 
 2026-11-19: `main` merged in after PR #228 (ochem frame cleanup: chipPicker, scrollChips and .ls-chips-hidden gone; the v2
 conformations, resonance and arrow pusher kept, kit2 kept). Ochem viewer 3d had `main` merged

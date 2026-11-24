@@ -557,8 +557,10 @@ piston. Points for a person:
 2. A + B ⇌ AB with K<sub>c</sub> = 2.5 is made up, as the exam's particle diagrams are. Confirm a generic reaction is
    right here (a real one would be, for example, PCl₃ + Cl₂ ⇌ PCl₅, with large molecules that crowd a phone).
 3. The cylinder holds whole particles, so the reaction runs one event at a time and stops at the counts nearest K
-   (within 20% of K at every volume, checked; about one change in ten runs no whole event, and the cause line says
-   "1 more AB overshoots"). A real mixture would shift by a fraction of a particle. Confirm this is an acceptable
+   (within 20% of K at every volume from the start, checked). Measured in review round 1 by a seeded random walk of
+   single changes: A + B about 16% of changes run no whole event (single piston steps 31%; 13% stop with Q more than
+   20% from K), CaCO₃ about 16%, almost all because a solid ran out. The cause line then says why ("1 more AB
+   overshoots", "no CaCO₃ left"). A real mixture would shift by a fraction of a particle. Confirm this is an acceptable
    teaching simplification; each press adds three particles of a gas so most changes run at least one event.
 4. CaCO₃ and CaO are drawn as lumps that turn into each other one formula unit per CO₂; the lumps stand for amounts of
    solid, not single formula units of a crystal. "?" says pure solids are left out of Q because their concentration is
