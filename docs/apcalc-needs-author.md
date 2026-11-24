@@ -212,3 +212,10 @@ All 2026-10-13, answered by the independent reviewers or fixed; kept here so nob
   The tool also says lim f(x) = −∞ from the left and ∞ from the right at x = 2 for 1/(x − 2) "to describe that, but
   the limit does not exist: ∞ is not a number", which follows the CED's use of ∞ for unbounded behaviour. Owner or a
   teacher to confirm both.
+
+- (2026-11-24, tools v2 Slope fields) **slope-fields-x-plus-y**: Explore keeps y′ = x + y from the old tool. It is not
+  separable, so AB does not solve it; the cause line and "?" say so, the takeaway reads "traced: y′ = x + y is not
+  separable", and "Check with the formula" still draws its exact solution y = Ce^x − x − 1 (found outside AB, by an
+  integrating factor) to show that the traced curve is right. A teacher may prefer that line hidden for x + y. "?" also
+  calls y = 2 for y′ = y − 2 unstable and T = Tₐ for cooling stable: words the CED does not use, given as plain
+  descriptions ("solutions move away from it on both sides"). Owner or a teacher to confirm both.

@@ -115,7 +115,7 @@ graph drawn from the function it claims to show; independent accuracy review.
 | `curve-analyzer` | 5 | f, f′, f″ linked; sign charts; extrema and inflection with justification; candidates test; optimization scenes |
 | `riemann-sums` | 6 | Left, right, midpoint, trapezoid on functions and on tables with unequal widths; over/under estimates |
 | `accumulation` | 6, 8 | g(x) = ∫ f from a graph of f; area accumulating; FTC both parts; net change |
-| `slope-fields` | 7 | Draw slope fields, trace solution curves through a point, separation of variables, exponential models |
+| `slope-fields` | 7 | Tools v2 (2026-11-24): Explore is a river seen from above, the field drawn as current streaks; drop a leaf and the solution through it is drawn both ways, then the leaf floats along it; calm lines for equilibria; six equations (y − 2, xy, x / y, x + y, ky, cooling) with k and the room as quiet knobs; Check with the formula; separation of variables and the numbers in "?"; Test yourself unchanged. `docs/tools-v2-calc-slope-fields-brief.md` |
 | `area-volume` | 8 | Area between curves; volumes by discs/washers about a line and by cross sections, in 3D |
 
 Free: `tangent-tracer` (flagship), `limit-explorer`, `rule-drills`; the rest Premium. Owner to confirm.
@@ -253,3 +253,4 @@ a tool's data file exists and its topic is published.
 - 2026-11-16 (tools frame F4): every tool uses the standard tool frame (stage dropdown, hint ladder, finished card) from its course kit; notes in `docs/tools-frame-notes/`.
 - 2026-11-18 (tools v2): the Tangent tracer is the first calculus tool on the shared kit, through the adapter `ApCalcTools.studioKit2` (`"kit2": true` in `data/pages.json`; the generator adds the kit's files to that page only). Brief: `docs/tools-v2-tangent-tracer-brief.md`. Not merged until the tools v2 rollout merges.
 - 2026-11-24 (tools v2): the Limit explorer is the second calculus tool on the shared kit (`"kit2": true`; the same adapter, the model `tools/math/limit-explorer.js` and the quiz unchanged). Brief: `docs/tools-v2-calc-limit-explorer-brief.md`. Not merged until the tools v2 rollout merges.
+- 2026-11-24 (tools v2): Slope fields is the third calculus tool on the shared kit (`"kit2": true`; the same adapter, the model `tools/math/slope-fields.js` and the quiz unchanged). Brief: `docs/tools-v2-calc-slope-fields-brief.md`. Not merged until the tools v2 rollout merges.

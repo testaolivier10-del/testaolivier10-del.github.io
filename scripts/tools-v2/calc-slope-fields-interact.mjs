@@ -118,6 +118,13 @@ for (const theme of ['light', 'dark']) {
     // "?" follows the equation
     await page.selectOption('.sf2-sel', 'x/y'); await page.waitForTimeout(300);
     s = await S(page); ok(/Separate/.test(s.ref) && /x \/ y/.test(s.ref), `1440 ${theme}: "?" did not follow the picker`);
+    // the menu's Start over: back to y′ = y − 2 at (−2, 2.5), the formula's line off
+    await page.click('.ls-more'); await page.waitForTimeout(200);
+    await page.locator('[role="menu"] >> text=Start over, .ls-menu >> text=Start over').first().click().catch(async () => { await page.getByText('Start over', { exact: true }).first().click(); });
+    await page.waitForTimeout(300);
+    s = await S(page); ok(s.id === 'y-2' && s.x0 === -2 && s.y0 === 2.5 && !(await page.evaluate(() => window.ApCalcSlopeFields.st.exact)), `1440 ${theme}: Start over gave ${s.id} at (${s.x0}, ${s.y0})`);
+    await page.waitForTimeout(2600);
+    await page.selectOption('.sf2-sel', 'x/y'); await page.waitForTimeout(300);
     // leaving mid float for Test yourself stops it
     await page.evaluate(() => window.ApCalcSlopeFields.float()); await page.waitForTimeout(250);
     await page.getByRole('button', { name: 'Test yourself' }).first().click().catch(() => page.getByRole('tab', { name: 'Test yourself' }).first().click());

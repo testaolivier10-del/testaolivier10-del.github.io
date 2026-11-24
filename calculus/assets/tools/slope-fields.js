@@ -258,7 +258,8 @@
       var tk = '';
       G.tickXs = []; G.hid = '';
       tx2.forEach(function(t){ var X = A.sx(t); if(X < A.L + 6 && t !== v.x[0]) return; G.tickXs.push([X, textW(clean(t), 12)]); tk += '<text class="is-x" x="' + r1(X) + '" y="' + (A.B + 19) + '" text-anchor="middle">' + clean(t) + '</text>'; });
-      ty2.forEach(function(t){ var Y = A.sy(t); if(Y > A.B - 4 && Y < A.B + 1 && v.x[0] < 0) return; tk += '<text x="' + (A.L - 8) + '" y="' + r1(Y + 4) + '" text-anchor="end">' + clean(t) + '</text>'; });
+      G.tickYs = [];
+      ty2.forEach(function(t){ var Y = A.sy(t); if(Y > A.B - 4 && Y < A.B + 1 && v.x[0] < 0) return; G.tickYs.push([Y, textW(clean(t), 12)]); tk += '<text class="is-y" x="' + (A.L - 8) + '" y="' + r1(Y + 4) + '" text-anchor="end">' + clean(t) + '</text>'; });
       out.push('<g class="sf2-ticks">' + tk + '</g>');
       gS.innerHTML = out.join('');
       G.ticksX = tx2; G.ticksY = ty2;
@@ -370,6 +371,12 @@
       }
       return null;
     }
+    /* x + y has no AB formula: its line is labelled with the exact solution from outside AB, C to two decimals */
+    function exactText(){
+      if(st.id !== 'x+y') return null;
+      var C = (st.y0 + st.x0 + 1) * Math.exp(-st.x0);
+      return Math.abs(C) < 0.005 ? 'y = −x − 1' : 'y ≈ ' + (C < 0 ? '−' : '') + coef(+C.toFixed(2)) + 'e^x − x − 1';
+    }
     function takeaway(){
       var fm = formula();
       if(onEq()) return 'One starting point, one solution: the flat line ' + fm + '.';
@@ -458,6 +465,7 @@
       if(kD) kD.place(kTrack()); if(taD){ taD.place(taTrack()); taD.el.classList.toggle('is-low', prm().Ta < 9); }
       labels(cv, marks, ends);
       words(cv);
+      H.knob.setAttribute('aria-valuetext', valueText());   // after the words: it reads the line as it is now
       svg.setAttribute('aria-label', 'Slope field of ' + plainEq() + ', drawn as current streaks on a river, with the solution through (' + clean(st.x0) + ', ' + clean(st.y0) + ')' + (st.exact ? ' and the formula ' + (formula() || '') : '') + '.');
     }
     function labels(cv, marks, ends){
@@ -481,18 +489,19 @@
       });
       // the formula's line
       if(st.exact){
-        var fm = formula(), ex = exactFn();
+        var fm = formula() || exactText(), ex = exactFn();
         if(fm && ex){
           var c2 = [];
           [0.92, 0.85, 0.78, 0.7, 0.62, 0.55, 0.48, 0.4, 0.33, 0.26, 0.2, 0.14, 0.08, 0.03].forEach(function(f){
             var x = G.view.x[0] + (G.view.x[1] - G.view.x[0]) * f, y = x >= ex.lo && x <= ex.hi ? ex.fn(x) : NaN; if(!isFinite(y)) return;
             var X = A.sx(x), Y = A.sy(y); if(Y < A.T || Y > A.B) return;
-            c2.push([X + 8, Y + 18, 'start'], [X - 8, Y - 9, 'end'], [X - 8, Y + 18, 'end'], [X + 8, Y - 9, 'start'], [X + 14, Y + 4, 'start'], [X - 14, Y + 4, 'end'], [X, Y - 12, 'middle'], [X, Y + 22, 'middle']);
+            c2.push([X + 8, Y + 18, 'start'], [X - 8, Y - 9, 'end'], [X - 8, Y + 18, 'end'], [X + 8, Y - 9, 'start'], [X + 14, Y + 4, 'start'], [X - 14, Y + 4, 'end'], [X, Y - 12, 'middle'], [X, Y + 22, 'middle'],
+              [X + 12, Y + 32, 'start'], [X - 12, Y - 22, 'end'], [X - 12, Y + 32, 'end'], [X + 12, Y - 22, 'start']);
           });
           out.push(place(fm, 'sf2-cex', c2));
         }
       }
-      marks.forEach(function(mk){ out.push(place(mk[2], 'sf2-cmark', [[mk[0] + 7, mk[1] - 7, 'start'], [mk[0] - 7, mk[1] - 7, 'end'], [mk[0] + 7, mk[1] + 16, 'start'], [mk[0] - 7, mk[1] + 16, 'end']], 12)); });
+      marks.forEach(function(mk){ var c4 = []; [10, 24].forEach(function(r){ c4.push([mk[0] + r, mk[1] - 6, 'start'], [mk[0] - r, mk[1] - 6, 'end'], [mk[0] + r, mk[1] + 17, 'start'], [mk[0] - r, mk[1] + 17, 'end'], [mk[0] + r + 2, mk[1] + 5, 'start'], [mk[0] - r - 2, mk[1] + 5, 'end']); }); out.push(place(mk[2], 'sf2-cmark', c4, 12)); });
       ends.forEach(function(p){
         var c3 = [];
         [10, 30, 50].forEach(function(r){ c3.push([p[0] + r, p[1] - 8, 'start'], [p[0] - r, p[1] - 8, 'end'], [p[0] + r, p[1] + 18, 'start'], [p[0] - r, p[1] + 18, 'end'], [p[0] - r - 2, p[1] + 5, 'end'], [p[0] + r + 2, p[1] + 5, 'start'], [p[0], p[1] + 14 + r, 'middle'], [p[0], p[1] - 4 - r, 'middle']); });
@@ -506,10 +515,11 @@
       var yn = st.id === 'cool' ? 'T (°C)' : yv();
       out.push('<text class="sf2-axn" transform="translate(15 ' + r1(A.T + A.H / 2) + ') rotate(-90)" text-anchor="middle">' + esc(yn) + '</text>');
       gT.innerHTML = out.join('');
-      // drop a tick number that would touch the x name
-      var hid = '';
-      (G.tickXs || []).forEach(function(t, i){ if(t[0] + t[1] / 2 > xe - xw - 6 && t[0] - t[1] / 2 < xe + 2) hid += i + ','; });
-      if(hid !== G.hid){ G.hid = hid; [].slice.call(gS.querySelectorAll('.sf2-ticks text.is-x')).forEach(function(t, i){ t.style.visibility = (',' + hid).indexOf(',' + i + ',') >= 0 ? 'hidden' : ''; }); }
+      // drop a tick number that would touch the x name, or that a knob covers (it would only peek out from under it)
+      var hid = '', under = function(b){ return knobBoxes.some(function(k){ return b[0] < k[2] && k[0] < b[2] && b[1] < k[3] && k[1] < b[3]; }); };
+      (G.tickXs || []).forEach(function(t, i){ if((t[0] + t[1] / 2 > xe - xw - 6 && t[0] - t[1] / 2 < xe + 2) || under([t[0] - t[1] / 2, A.B + 7, t[0] + t[1] / 2, A.B + 22])) hid += 'x' + i + ','; });
+      (G.tickYs || []).forEach(function(t, i){ if(under([A.L - 8 - t[1], t[0] - 6, A.L - 8, t[0] + 6])) hid += 'y' + i + ','; });
+      if(hid !== G.hid){ G.hid = hid; ['x', 'y'].forEach(function(ax){ [].slice.call(gS.querySelectorAll('.sf2-ticks text.is-' + ax)).forEach(function(t, i){ t.style.visibility = (',' + hid).indexOf(',' + ax + i + ',') >= 0 ? 'hidden' : ''; }); }); }
     }
     /* the mug on the bank: its side reads the temperature where the leaf is drawn */
     function mugSvg(){
@@ -694,6 +704,8 @@
     checkB.addEventListener('click', function(){
       userActs();
       st.exact = !st.exact; checkB.setAttribute('aria-pressed', String(st.exact));
+      // on a phone the button is under the picture: bring the picture into view for the line drawing in
+      var sr = scene.getBoundingClientRect(); if(sr.top < 0 || sr.bottom > window.innerHeight) try{ scene.scrollIntoView({ block: 'nearest', behavior: K.reduced() ? 'auto' : 'smooth' }); }catch(e){}
       st.exactIn = st.exact && !K.reduced();
       draw(); tourDid('check');
       var ex = gD.querySelector('.sf2-exact');
@@ -790,6 +802,18 @@
       layout(true); refHtml();
       setTimeout(function(){ layout(true); refHtml(); if(st.mode === 'explore' && !tour.active()) cueShow(); }, 60);
     }
+    /* the menu's Start over: y′ = y − 2 at its first spot, k and the room back, the formula's line off; the leaf
+       floats from there (in Test yourself the page starts over, as before) */
+    function startOver(){
+      if(st.mode !== 'explore'){ location.reload(); return; }
+      cancelRide(); clearTimeout(rideT);
+      S.GALLERY.forEach(function(g){ if(g.params) params[g.id] = JSON.parse(JSON.stringify(g.params)); });
+      if(st.exact){ st.exact = false; checkB.setAttribute('aria-pressed', 'false'); }
+      st.took = null;
+      if(st.id !== 'y-2'){ pick.value = 'y-2'; setEq('y-2'); return; }
+      fadeOut([gD]); fn = S.fns(d, prm()); st.x0 = START['y-2'][0]; st.y0 = START['y-2'][1];
+      H.value(enc(st.x0, st.y0)); draw(); fadeIn([gD]); refLater(); floatLater(380);
+    }
     function stopAll(){ cancelRide(); clearTimeout(rideT); tour.stop(); if(cue.active()) cue.hide(false); }
     function shown(m){
       st.mode = m;
@@ -797,7 +821,7 @@
       setTimeout(function(){ layout(true); if(!tour.active()) cueShow(); }, 40);
     }
     return {
-      kit2: function(pane, s){ LS = s; boot(); return { stage: stage, ref: ref }; },
+      kit2: function(pane, s){ LS = s; if(s.startOver) s.startOver(startOver); boot(); return { stage: stage, ref: ref }; },
       plain: function(){ host.appendChild(stage); host.appendChild(ref); boot(); },
       shown: shown, stop: stopAll, redraw: function(){ layout(true); },
       // for the sweep and the browser checks only: window.ApCalcSlopeFields exists only when a test sets
@@ -806,7 +830,7 @@
         setEq: function(id){ pick.value = id; pick.dispatchEvent(new Event('change')); },
         set: function(x, y, ride){ clearTimeout(rideT); cancelRide(); var p = fit(x, y); H.value(enc(p[0], p[1]), true); if(ride) float(); },
         setK: function(v){ clearTimeout(rideT); if(kD){ kD.value(v, true); } }, setTa: function(v){ clearTimeout(rideT); if(taD){ taD.value(v, true); } },
-        check: function(){ checkB.click(); }, float: float, riding: function(){ return !!st.ride; }, kD: function(){ return kD; }, taD: function(){ return taD; } }
+        exactText: exactText, check: function(){ checkB.click(); }, startOver: function(){ startOver(); }, float: float, riding: function(){ return !!st.ride; }, kD: function(){ return kD; }, taD: function(){ return taD; } }
     };
   }
 

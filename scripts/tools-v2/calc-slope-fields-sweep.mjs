@@ -90,7 +90,7 @@ const probe = () => {
   chips.forEach(c => [...labs, ...tags, ...ticks].forEach(a => { if (hit(a.r, c.r)) out.push('the chip covers ' + a.n); }));
   // labels clear of the knobs (the leaf's ring and the quiet ones)
   const kn = q('.sf2 .tk2-knob').map(R);
-  labs.forEach(a => kn.forEach(c => { if (hit(a.r, c, 1)) out.push(a.n + ' under a knob'); }));
+  [...labs, ...ticks].forEach(a => kn.forEach(c => { if (hit(a.r, c, 1)) out.push(a.n + ' under a knob'); }));
   // the water is the largest thing
   const share = A.W * A.H / (G.W * G.H);
   if (share < 0.4) out.push('the water is ' + (share * 100).toFixed(0) + '% of the stage');
@@ -148,8 +148,9 @@ const probe = () => {
     const fm = T.formula();
     if (fm && !txt.includes(fm)) out.push('the takeaway does not give the formula ' + fm);
   }
-  if (st.exact) { const fm = T.formula(), lab = labs.find(a => a.e.classList.contains('sf2-cex')); if (fm && !lab) out.push('no label on the formula line'); if (lab && lab.e.textContent !== fm) out.push('formula label ' + lab.e.textContent + ' is not ' + fm); if (!document.querySelector('.sf2-exact')) out.push('no formula line'); }
+  if (st.exact) { const fm = T.formula() || T.exactText(), lab = labs.find(a => a.e.classList.contains('sf2-cex')); if (fm && !lab) out.push('no label on the formula line'); if (lab && lab.e.textContent !== fm) out.push('formula label ' + lab.e.textContent + ' is not ' + fm); if (!document.querySelector('.sf2-exact')) out.push('no formula line'); }
   if (st.id === 'cool') { const ml = labs.find(a => a.e.classList.contains('sf2-cmug')); if (!ml) out.push('no mug label'); else if (ml.e.textContent !== String(Math.round(A.iy(sy0))) + ' °C' && ml.e.textContent !== (+A.iy(sy0).toFixed(0)) + ' °C') out.push('the mug reads ' + ml.e.textContent + ', the leaf is at ' + A.iy(sy0).toFixed(1)); }
+  if (document.querySelectorAll('.sf2-mark').length !== labs.filter(a => a.e.classList.contains('sf2-cmark')).length) out.push('a doubling mark without its label');
   const rows = new Set(q('.sf2 .tk2-cz').map(e => Math.round(R(e).t))).size;
   if (innerWidth <= 640 && rows > 2) out.push('cause line is ' + rows + ' rows: ' + txt);
   if (document.documentElement.scrollWidth > innerWidth) out.push('sideways scroll');
