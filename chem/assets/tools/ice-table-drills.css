@@ -68,24 +68,25 @@
 .ix2-book text{font-family:var(--font-ui);fill:var(--ink);}
 .ix2-book .ix-sub{font-size:.78em;}
 .ix2-book .ix-sup{font-size:.78em;}
-.ix2-eqn{font-weight:900;font-size:17px;}
-.ix2-kline{font-weight:800;font-size:14.5px;fill:var(--ix-k-ink) !important;}
-.ix2-unit{font-weight:800;font-size:12px;fill:var(--muted) !important;}
-.ix2-sp{font-weight:900;font-size:15.5px;}
+.ix2-eqn{font-weight:900;}
+.ix2-kline{font-weight:800;fill:var(--ix-k-ink) !important;}
+.ix2-unit{font-weight:800;fill:var(--muted) !important;}
+.ix2-sp{font-weight:900;}
 .ix2-tline{stroke:var(--ink);stroke-opacity:.6;stroke-width:1.4;} .ix2-rline{stroke:var(--ink);stroke-opacity:.18;stroke-width:1;}
-.ix2-row{font-weight:900;font-size:21px;}
-.ix2-roww{font-weight:700;font-size:11.5px;fill:var(--muted) !important;}
-.ix2-expr{font-weight:700;font-size:13px;fill:var(--muted) !important;}
-.ix2-val{font:800 17px var(--font-mono);}
-.ix2-key{font-weight:700;font-size:13px;fill:var(--muted) !important;}
-.ix2-qline{font-weight:800;font-size:15px;}
+.ix2-row{font-weight:900;}
+.ix2-roww{font-weight:700;fill:var(--muted) !important;}
+.ix2-expr{font-weight:700;fill:var(--muted) !important;}
+.ix2-val{font-family:var(--font-mono);font-weight:800;}
+.ix2-key{font-weight:700;fill:var(--muted) !important;}
+.ix2-qline{font-weight:800;}
 .ix2-qv{fill:var(--ix-q-ink);font-weight:900;}
 .ix2-eqband{fill:var(--ix-k);fill-opacity:0;transition:fill-opacity .3s ease;} .ix2-eqband.is-on{fill-opacity:.16;}
 .ix2-val.is-tick{animation:ix2-tick .38s ease-out;}
 @keyframes ix2-tick{0%{fill:var(--ix-x-ink);} 100%{fill:var(--ink);}}
-.is-narrow .ix2-eqn{font-size:15px;} .is-narrow .ix2-kline{font-size:14.5px;} .is-narrow .ix2-sp{font-size:14.5px;} .is-narrow .ix2-row{font-size:18px;}
-.is-narrow .ix2-expr{font-size:12px;} .is-narrow .ix2-val{font-size:15px;} .is-narrow .ix2-key{font-size:12px;} .is-narrow .ix2-qline{font-size:14.5px;}
 @media (prefers-reduced-motion: reduce){ .ix2-gas,.ix2-eqband{transition:none;} .ix2-val.is-tick{animation:none;} }
 /* "?" */
 .ix2-ref .ix2-list{padding-left:1.2em;}
 .ix2-howref{margin:0 0 6px;}
+/* Test yourself's jar (the shared ApChemBeaker): no atom letters here, they would render under 11 px; the jar's key
+   names each species */
+.ls-drill-stage .ic-beaker .pt-atom text,.ls-drill-stage .ic-beaker .lb-disc text{display:none;}

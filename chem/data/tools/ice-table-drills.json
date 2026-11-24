@@ -282,7 +282,7 @@
     "T": "25 °C",
     "unit": "atm",
     "per": 0.025,
-    "steps": 14,
+    "steps": 10,
     "species": [
      {
       "key": "N2O4",
@@ -296,7 +296,7 @@
      }
     ],
     "n0": [
-     22,
+     15,
      0
     ],
     "tint": {
@@ -309,7 +309,7 @@
      2
     ],
     "source": "Kp = 0.146 at 298.15 K from NBS ΔG°f (NO₂ 51.31, N₂O₄ 97.89 kJ/mol), the same value as the Equilibrium and kinetics tool (chem/data/tools/equilibrium-kinetics.json). See docs/apchem-needs-author.md ice-explore-n2o4.",
-    "ref": "from standard Gibbs energies of formation, NBS tables: ΔG° = +4.73 kJ/mol"
+    "ref": "from standard Gibbs energies of formation, NBS tables: ΔG° = +4.73 kJ/mol, pressures in atm"
    }
   ]
  }

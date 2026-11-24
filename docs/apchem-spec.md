@@ -397,7 +397,7 @@ Chemistry science gets an independent accuracy check, as A&P and ochem do.
     merged) **ICE tables on the kit.** `ice-table-drills` gets `"kit2": true`. Explore is one screen: a sealed flask
     of real molecules (H₂ + I₂, K<sub>c</sub> 54.3 at 430 °C; N₂O₄, K<sub>p</sub> 0.146 at 25 °C), x as a knob on a
     rail under it, each step one reaction event drawn where it happens, the ICE table on a clipboard filled from the
-    drawn molecules, and a Q gauge on the flask's neck with K as a notch. The drill is Test yourself, unchanged
+    drawn molecules, and a Q gauge beside the flask with K as a notch; sized from the screen height (review round 1). The drill is Test yourself, unchanged
     (ids, `?seed=`, `#quiz`). The adapter gains `placed: true` for a part that put itself in the frame. Data:
     `explore` in the tool's json, checked by its validator. Open: needs-author `ice-explore-n2o4`.
 

@@ -541,7 +541,7 @@ the course's flasks agree. Two points for a person:
    K<sub>p</sub> with pressures in atm, which avoids stating a K<sub>c</sub>; confirm 0.146 (or pick one table for the
    course and change both tools).
 2. The flask holds whole molecules (0.025 M or 0.025 atm each), so x moves in steps and the equilibrium step gives
-   Q = 53.8 (HI, K 54.3) and Q = 0.147 (N₂O₄, K 0.146), within 1%; the exact x (0.2753 M, 0.1246 atm) rounds to the
+   Q = 53.8 (HI, K 54.3) and Q = 0.145 (N₂O₄ from 15 molecules at 0.375 atm, K 0.146), within 1%; the exact x (0.2753 M, 0.1002 atm) rounds to the
    drawn step at three significant figures, and "?" says so. The validator checks both. Confirm this is an
    acceptable teaching simplification (the alternative is a continuous x with fractional molecules, which the
    drawn counts could not match).

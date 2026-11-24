@@ -30,7 +30,7 @@ off the molecules that are drawn, so the ICE table is literally the flask writte
 - **Scene:** the course's lab wall and bench (the same as Units and significant figures). A sealed round bottom flask
   of gas stands in a cork ring on the bench: the molecules drawn with their atoms (H white, I purple, N blue, O red;
   the course's atom colours), the gas tinted by the coloured species drawn (violet I₂, brown NO₂), the glass, its
-  shine and a stopper. On the flask's neck a small Q gauge: a dial with a log scale, K as a green notch, the Q needle
+  shine and a stopper. Beside the bulb, on a short glass tube, a small Q gauge: a dial with a log scale, K as a green notch, the Q needle
   in vermillion. Under the flask on the bench a rail with one tick per step of x and the knob. On the wall to the
   right a clipboard (on a phone: a notebook page lying on the bench under the flask) with the equation and K, the ICE
   table (column heads carry a small drawing of each molecule as the key; rows I, C, E with their names; C as "−x" with
@@ -44,15 +44,16 @@ off the molecules that are drawn, so the ICE table is literally the flask writte
   colour) is computed from the molecules drawn at that frame; a molecule counts once it has formed. The knob may lead
   the picture during a fast drag; its tag says the drawn x and catches up.
 - **Equilibrium:** at the step nearest K the E row turns green and its name reads "equilibrium" (otherwise "at this
-  x"), the needle reaches the notch, and the cause line says "meets K"; a moment later the takeaway: "At equilibrium Q =
+  x"), the needle reaches the notch, and the cause line says "≈ K"; a moment later the takeaway: "At equilibrium Q =
   K: that is the x the ICE table solves for." Past it the knob still moves (Explore is free): Q passes K and the cause
   line says "would run back".
-- **Cause line:** "x 0.100 M → Q 0.640 → below K 54.3 → still runs forward"; "x 0.275 M → Q 53.8 → meets K 54.3 → at
+- **Cause line:** "x 0.100 M → Q 0.640 → below K 54.3 → still runs forward"; "x 0.275 M → Q 53.8 → ≈ K 54.3 → at
   equilibrium"; "x 0.300 M → Q 144 → above K 54.3 → would run back". Colours: x blue, Q vermillion, K green.
 - **Two reactions** (quiet tabs, "H₂ + I₂" and "N₂O₄" on a phone): H₂ + I₂ ⇌ 2HI, K<sub>c</sub> = 54.3 at 430 °C, 14 of
   each to start (0.350 M), equilibrium at x = 0.275 M (exact 0.2753); N₂O₄ ⇌ 2NO₂, K<sub>p</sub> = 0.146 at 25 °C,
-  22 N₂O₄ to start (0.550 atm), equilibrium at x = 0.125 atm (exact 0.1246). The knob stops one step before a
-  reactant would run out (13 and 14 steps), where Q is far above K.
+  15 N₂O₄ to start (0.375 atm), equilibrium at x = 0.100 atm (exact 0.1002, Q 0.145). The knob stops at 13 steps for H₂ +
+  I₂ (one before a reactant runs out) and at 10 for N₂O₄ (of a possible 15, so the flask stays countable), where Q
+  is far above K.
 - **Cue:** "Drag x", beside the knob along the rail, once per device. Show me how: three callouts (the knob, the
   table, the gauge).
 - **"?":** how the table follows the flask, Q and K for this reaction (only gases and dissolved species in K; no units
@@ -63,7 +64,7 @@ off the molecules that are drawn, so the ICE table is literally the flask writte
 
 ### What is on screen in Explore (counted at 1440, opening state)
 Outside the picture: 2 tabs, the purpose line (9 words), "Show me how", the cause line (4 pills and "Start:"),
-"Start over" once x has moved. On the picture: the flask (28 or 22 molecules at the start), the gauge with "Q" and
+"Start over" once x has moved. On the picture: the flask (28 or 15 molecules at the start), the gauge with "Q" and
 "K", the rail with "x", the knob with its tag, the clipboard (title, K line, unit, 3 column heads with drawings, 3 row
 letters with names, 9 cells, the scale line, the Q line). No side panel.
 
@@ -141,11 +142,44 @@ letters with names, 9 cells, the scale line, the Q line). No side panel.
   first visit, the takeaway, Test yourself; `*-mid-*` frames during a forward event, a reverse event, the N₂O₄
   split and the join, at 1440 light, 768 dark and 390 light).
 
+## Review round 1 (2026-11-23): BLOCK, fixed
+Review: `/home/claude/review-chem-ice/REVIEW.md`. `claude/tools-v2-all` merged in first.
+
+Must fix:
+1. **The scene fits the screen.** The picture is sized from the height the stage has left (`availH`): on a desktop the
+   card's own height under the tabs and above the cause line, on a phone the screen's. Phone: a short neck and
+   stopper, the gauge beside the bulb (up and to the right, on a glass tube), the knob's tag under the knob, and the
+   table's rows and fonts from measured text (`bookMetrics`), so with the scene at the top of a 390 × 844 screen the
+   knob, the E row, the Q line and the cause line are all in view. At 1024 × 768 and 1280 × 800 the card no longer
+   scrolls inside. The sweep checks this at each width's own screen height (`fitProbe`).
+2. **No bare wall on wide screens.** The same height-driven layout: the flask fills the left half of the stage and
+   the clipboard, scaled with it (fonts × k, within 85% of the flask's area), the right half.
+3. **The N₂O₄ flask can be counted.** Molecules sit in cells as wide as the widest molecule and as tall as the
+   tallest (a tilt of at most 0.1 rad), with the largest atom's diameter between cells, so at rest no two atoms of
+   different molecules are closer than one atom's width. The N₂O₄ start is now 15 molecules (0.375 atm, still landing
+   within 1% of K at x = 0.100, exact 0.1002) and the knob stops at 10 steps (25 molecules at most, was 36). The
+   sweep checks the clearance of every pair at every state.
+4. **The products count from the middle of the swap** (t = 0.475 of the 0.82 s event, when the atoms are halfway
+   to their new partners); they move to their places from t = 0.55. The frames check now measures each product
+   atom's drawn progress from its old place to its new bond and fails when the picture shows the products more than
+   58% formed but uncounted, or counted at under 42% (checked to fail with the old timing: 120 failures).
+5. **Row names on phones**, beside each letter at 11 px ("equilibrium" at the equilibrium step).
+6. **"equilibrium" clears the margin line**: the line is placed 8 px right of the longest measured row name; the
+   sweep checks every text 4 px clear of it.
+
+Should fix, all done: "≈ K" in place of "meets K"; the 0.146 source line says "pressures in atm"; the knob's tag sits
+under the knob, off the cork ring (checked); each tour step scrolls its target into view once (on a phone the C and
+E rows), and step 2 points at the C and E rows; tour step 1 says "Each step is one reaction event"; the mode memory
+line in the owner log and the knob's caps corrected above; Test yourself's jar draws no letters on its atoms (this
+page's sheet hides them; its key names each species); the sweep gains the clearance, line, tag and screen-fit checks.
+
+Checks: sweep at 360, 390, 1024 (×768), 1280 (×800) and 1440, light and dark (22 states and 382 checks each, 0
+failures), frames at 390 and 1440 (about 1160 frames each, 0 problems), AP Chem tests, content check, build `--check`,
+`check-site`.
+
 ## Not done, and what I am not happy with
 - No real phone, no screen reader pass, no students.
-- On a phone the stage is tall (the flask is kept the largest object): at 390 × 844 the E row sits near the bottom
-  of the screen with the flask in view, so a student may scroll a little to see both.
+- On a phone the molecules are small (an I atom about 8 px across at 390) so that they never touch.
 - The middle of a reaction event (about 0.12 s, the atoms changing partners) still counts the reactants: the
   numbers change when the products have formed.
-- Between the flask and the clipboard on wide screens there is plain wall.
 - Khan Academy's exercises were not opened (the search did not return them).

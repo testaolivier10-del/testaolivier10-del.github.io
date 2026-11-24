@@ -93,68 +93,160 @@
       function xOf(r, counts){ return (r.n0[0] - counts[0]) / -r.species[0].nu * r.per; }
 
       /* ---------------------------------------------------- geometry */
-      /* Three arrangements. Wide (1000 px and up): the flask on the bench at the left, the clipboard with a roomy table
-         on the wall at the right. Middle (680 to 999): the same with a compact table (row letters only). Phone (under
-         680): the flask on top, the notebook page lying on the bench under it. The flask is always the largest object. */
-      function geo(W){
-        var g = { W: W, narrow: W < 680, compact: W < 1000 }, r = R();
-        var n = r.species.length, pad = g.compact ? 12 : 18;
-        g.pad = pad; g.lw = g.compact ? 34 : 88;
-        // vertical rhythm from the text boxes: every text clears its neighbours by 4 px (an expression over its value)
-        g.tTop = g.compact ? 40 : 74;
-        g.hh = g.compact ? 46 : 52; g.rh = g.compact ? 46 : 52;
-        g.e1 = g.compact ? 15 : 17; g.e2 = g.compact ? 38 : 43;
-        g.nh = g.tTop + g.hh + 3 * g.rh + (g.compact ? 64 : 76);
-        if(!g.narrow){
-          g.nw = Math.round(g.compact ? clamp(W * 0.42, 298, 360) : clamp(W * 0.3, 360, 400));
-          g.R = Math.round(Math.min((W - 92 - g.nw) / 2, g.compact ? 200 : W * 0.165, (620 - 146) / 2.9));
-          g.H = Math.max(480, Math.round(2.9 * g.R + 146));
-          g.yb = g.H - 112;
-          // the flask and the clipboard as one group in the middle of the wall
-          var gap = Math.round(clamp(W * 0.07, 50, 130)), left = Math.max(30, Math.round((W - (2 * g.R + gap + g.nw)) / 2));
-          g.cx = left + g.R;
-          g.cy = g.yb - g.R - 4;
-          g.nx = Math.min(W - 22 - g.nw, g.cx + g.R + gap);
-          g.ny = Math.max(22, Math.round((g.yb - 16 - g.nh) / 2));
-          g.railY = g.yb + 50;
-        } else {
-          g.R = Math.round(Math.min(W * 0.38, 170));
-          g.cx = Math.round(Math.max(g.R + 8, W * 0.42));
-          g.cy = 14 + Math.round(0.95 * g.R) + g.R;
-          g.yb = g.cy + g.R + 4;
-          g.railY = g.yb + 40;
-          g.nw = Math.min(W - 20, 440); g.nx = Math.round((W - g.nw) / 2); g.ny = g.yb + 66;
-          g.H = g.ny + g.nh + 14;
-        }
-        g.cw = (g.nw - 2 * pad - g.lw) / n;
-        g.neck = Math.max(10, Math.round(0.17 * g.R));
-        g.neckTop = g.cy - Math.round(1.6 * g.R);
-        g.gr = Math.round(clamp(0.27 * g.R, 30, 44));
-        g.gx = g.cx + g.neck + 14 + g.gr; g.gy = g.cy - Math.round(1.24 * g.R);
-        var span = Math.min(g.R * 1.08, g.cx - 50);
-        g.rail = [g.cx - span, g.railY, g.cx + span, g.railY];
-        // molecule slots in the flask body: a staggered grid inside the circle, sized to hold the most molecules the
-        // knob can draw (and a few spare), the molecule scale from the cell
-        var most = 0; for(var k = 0; k <= r.steps; k++) most = Math.max(most, countsAt(r, k).reduce(function(a, b){ return a + b; }, 0));
-        var inner = g.R - 8, cell = inner, slots = [];
-        for(var c = inner; c > 8; c -= 0.5){
-          slots = gridIn(g.cx, g.cy + 2, inner, c);
-          if(slots.length >= most + 3){ cell = c; break; }
-        }
-        g.cell = cell; g.slots = slots;
-        g.s = Math.min(1.25, cell / 46);
-        return g;
+      /* The picture is sized from the height there is (review round 1): the knob, the flask, the table and the cause
+         line are on screen together. Wide (680 px and up): the flask on the bench in the left half, the clipboard on the
+         wall in the right half, both scaled to the height. Phone: a short necked flask with the gauge beside the bulb,
+         the notebook page lying on the bench under it. The flask is always the largest object. */
+      var MC = null;
+      function measure(t, fs, wt, mono){
+        if(!MC){ MC = document.createElement('canvas').getContext('2d'); }
+        var cs = getComputedStyle(stage), fam = mono ? (cs.getPropertyValue('--font-mono') || 'monospace') : (cs.getPropertyValue('--font-ui') || cs.fontFamily);
+        MC.font = (wt || 700) + ' ' + fs + 'px ' + fam;
+        return MC.measureText(String(t).replace(/<[^>]+>/g, '')).width;
       }
-      function gridIn(cx, cy, rad, c){
-        var out = [], h = c * 0.86, ext = c * 0.5;
-        for(var row = -Math.ceil(rad / h); row <= Math.ceil(rad / h); row++){
-          var y = cy + row * h, off = (row & 1) ? c / 2 : 0;
-          for(var col = -Math.ceil(rad / c) - 1; col <= Math.ceil(rad / c) + 1; col++){
-            var x = cx + col * c + off;
-            if(Math.hypot(x - cx, y - cy) <= rad - ext) out.push([x, y]);
+      // the space a template takes at scale 1 (its atoms' outer edges)
+      function extent(key, tilt){
+        var x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity, c = Math.cos(tilt || 0), sn = Math.abs(Math.sin(tilt || 0));
+        TEMPL[key].forEach(function(at){ var r = at.r || 9; x0 = Math.min(x0, at.dx - r); x1 = Math.max(x1, at.dx + r); y0 = Math.min(y0, at.dy - r); y1 = Math.max(y1, at.dy + r); });
+        var w = x1 - x0, h = y1 - y0;
+        // a molecule's box is centred on its origin only when its atoms are: use the larger side twice
+        var xw = 2 * Math.max(x1, -x0), yh = 2 * Math.max(y1, -y0);
+        return { w: xw * c + yh * sn, h: yh * c + xw * sn, maxD: Math.max.apply(null, TEMPL[key].map(function(at){ return 2 * (at.r || 9); })) };
+      }
+      // the height the scene may take: what the stage has left under the tabs and above the cause line
+      function availH(narrow){
+        var lh = Math.max(lines.offsetHeight || 0, narrow ? 76 : 44), sc = sceneBox.getBoundingClientRect();
+        if(narrow) return clamp(window.innerHeight - lh - 22, 560, 900);
+        var body = sceneBox.closest('.ls-stage-body') || sceneBox.closest('.ls-stage');
+        if(body && body.clientHeight){ var br = body.getBoundingClientRect(); return clamp(body.clientHeight - (sc.top - br.top + body.scrollTop) - lh - 26, 430, 900); }
+        return clamp(window.innerHeight - sc.top - lh - 30, 430, 900);
+      }
+      /* The clipboard's text and rows from measured text, for font sizes scaled by k: every text 4 px clear of the
+         next, the row names beside their letters and 6 px clear of the margin line. */
+      function bookMetrics(r, narrow, k, maxW){
+        var B = narrow ? { title: 15, kl: 14.5, sp: 14.5, unit: 12, row: 17, name: 11, expr: 12, val: 14.5, key: 12, q: 14.5 } : { title: 17, kl: 14.5, sp: 15.5, unit: 12.5, row: 21, name: 12.5, expr: 13, val: 17, key: 13, q: 15 };
+        // no text under 11 px: a line with subscripts (shown at 0.78 of its size) stays at 14.2 px or more
+        var SUBS = { title: 1, kl: 1, sp: 1, q: 1 };
+        var f = {}; for(var key in B) f[key] = Math.max(SUBS[key] ? 14.2 : 11, Math.round(B[key] * (narrow ? 1 : k) * 10) / 10);
+        var m = { fs: f, pad: Math.round((narrow ? 10 : 14) * (narrow ? 1 : k)) }, sp = r.species, n = sp.length, u = unitOf(r);
+        var letterW = measure('E', f.row, 900), nameW = Math.max.apply(null, ['initial', 'change', 'at this x', 'equilibrium'].map(function(t){ return measure(t, f.name, 700); }));
+        m.letterW = letterW; m.nameX = 2 + letterW + 6;
+        m.marginX = m.nameX + nameW + 8;      // the margin line, from the row's left
+        m.lw = m.marginX + 8;
+        var colW = 0;
+        sp.forEach(function(s, i){
+          var i0 = r.n0[i] * r.per, c = Math.abs(s.nu) > 1 ? Math.abs(s.nu) : '';
+          colW = Math.max(colW, measure((r.K === 'Kp' ? 'P' : '[') + plain(s.html) + ']', f.sp, 900), measure(i0 === 0 ? c + 'x' : fmt(i0) + ' − ' + c + 'x', f.expr, 700), measure('+0.0000', f.val, 800, true));
+        });
+        m.colW = colW + 16;
+        m.nw = Math.ceil(2 * m.pad + m.lw + n * m.colW);
+        var eqW = measure(eqText(r), f.title, 900), kW = measure('Kc = ' + r.Kval + ' at ' + r.T, f.kl, 800);
+        m.qW = measure('Q = ' + plain(qExprHtml(r)) + ' = 0.0000', f.q, 800) + 2 * m.pad;
+        m.nw = Math.max(m.nw, Math.ceil(m.qW));
+        // widen the page for a one line title when there is room (a shorter page)
+        if(maxW && eqW + kW + 20 + 2 * m.pad > m.nw && eqW + kW + 20 + 2 * m.pad <= maxW) m.nw = Math.ceil(eqW + kW + 20 + 2 * m.pad);
+        m.oneLine = eqW + kW + 20 <= m.nw - 2 * m.pad;
+        if(!m.oneLine) m.nw = Math.max(m.nw, Math.ceil(Math.max(eqW, kW) + 2 * m.pad));
+        // vertical: ascent about 1.02 of the size, descent 0.37, a subscript drops 0.22
+        m.tY = Math.round(m.pad * 0.7 + 1.02 * f.title);
+        m.kY = m.oneLine ? m.tY : Math.round(m.tY + 0.59 * f.title + 4 + 1.02 * f.kl);
+        m.tTop = Math.round(m.kY + 0.59 * f.kl + 8);
+        var ext = 0; sp.forEach(function(s){ ext = Math.max(ext, extent(s.key).h); });
+        m.iconS = f.sp / 25; m.iconH = ext * m.iconS;
+        m.iconY = 4 + m.iconH / 2;
+        m.spY = Math.round(4 + m.iconH + 5 + 1.02 * f.sp);
+        m.hh = Math.round(m.spY + 0.59 * f.sp + 5);
+        m.e1 = Math.round(3 + 1.02 * f.expr); m.e2 = Math.round(m.e1 + 0.37 * f.expr + 4 + 1.02 * f.val);
+        m.rh = Math.round(m.e2 + 0.37 * f.val + 4);
+        m.rowY = Math.round(m.rh / 2 + 0.36 * f.row);
+        m.keyY = Math.round(6 + 1.02 * f.key); m.qY = Math.round(m.keyY + 0.37 * f.key + 4 + 1.02 * f.q + 0.3 * f.q);
+        m.nh = Math.round(m.tTop + m.hh + 3 * m.rh + m.qY + 0.37 * f.q + m.pad * 0.7);
+        return m;
+      }
+      function geo(W){
+        var r = R(), g = { W: W, narrow: W < 680 }, H = availH(g.narrow);
+        var most = 0; for(var k = 0; k <= r.steps; k++) most = Math.max(most, countsAt(r, k).reduce(function(a, b){ return a + b; }, 0));
+        var nlF = g.narrow ? 0.26 : 0.4, shF = 0.16;
+        // the flask's block: the bulb, and the gauge beside it at the upper right
+        function gaugeAt(Rr, cx, cy){
+          var gr = Math.round(clamp(0.25 * Rr, 28, 50)), topY = cy - Rr - Rr * (nlF + 0.7 * shF);
+          // up and to the right of the bulb, as high as the flask's top allows (the K label above the dial included)
+          for(var deg = 50; deg >= 10; deg -= 2){
+            var th = deg * Math.PI / 180;
+            for(var dd = Rr * 0.6; dd < Rr * 3; dd += 1){
+              var gx = cx + dd * Math.cos(th), gy = cy - dd * Math.sin(th);
+              var bx = clamp(cx, gx - gr, gx + gr), by = clamp(cy, gy - gr - 18, gy + gr * 0.62);
+              if(Math.hypot(bx - cx, by - cy) >= Rr + 8){ if(gy - gr - 22 >= topY || deg <= 10) return { gx: Math.round(gx), gy: Math.round(gy), gr: gr }; break; }
+            }
           }
+          return { gx: cx + Rr + gr, gy: cy - Rr, gr: gr };
         }
-        return out;
+        function blockW(Rr){ var q = gaugeAt(Rr, 0, 0); return Rr + Math.max(Rr, q.gx + q.gr) + 4; }
+        var flaskH = function(Rr){ return Rr * (2 + nlF + 0.7 * shF); };
+        if(!g.narrow){
+          g.H = Math.round(H);
+          g.yb = g.H - 96;
+          var Rr = Math.min((g.yb - 16) / (2 + nlF + 0.7 * shF), 300);
+          while(Rr > 80 && blockW(Rr) > W / 2 - 40) Rr -= 1;
+          g.R = Math.round(Rr);
+          g.railY = g.yb + 30;
+          // the clipboard scaled with the flask, as large as fits its half, the height and 85% of the flask's area
+          var kk = clamp(g.R / 165, 0.88, 1.7), m;
+          for(;;){
+            m = bookMetrics(r, false, kk);
+            var fArea = 2 * g.R * flaskH(g.R);
+            if(kk <= 0.88 || (m.nw <= W / 2 - 40 && m.nh <= g.yb - 44 && m.nw * m.nh <= 0.85 * fArea)) break;
+            kk -= 0.02;
+          }
+          g.bm = m;
+          var bw = blockW(g.R);
+          g.cx = Math.round(Math.max(g.R + 44, W / 4 - bw / 2 + g.R));
+          g.cy = g.yb - g.R - 2;
+          g.nw = m.nw; g.nh = m.nh;
+          g.nx = Math.round(clamp(3 * W / 4 - m.nw / 2, g.cx - g.R + bw + 40, W - 22 - m.nw));
+          g.ny = Math.max(24, Math.round((g.yb - m.nh) / 2));
+        } else {
+          var mN = bookMetrics(r, true, 1, W - 16);
+          g.bm = mN; g.nw = Math.min(mN.nw, W - 16); g.nh = mN.nh;
+          var Rp = 160;
+          while(Rp > 100 && (blockW(Rp) > W - 12 || 8 + flaskH(Rp) + 2 + 76 + mN.nh + 10 > H)) Rp -= 1;
+          g.R = Math.round(Rp);
+          g.cx = 6 + g.R;
+          g.cy = Math.round(8 + g.R * (nlF + 0.7 * shF) + g.R);
+          g.yb = g.cy + g.R + 2;
+          g.railY = g.yb + 22;
+          g.nx = Math.round((W - g.nw) / 2); g.ny = g.yb + 76;
+          g.H = g.ny + g.nh + 10;
+        }
+        g.pad = g.bm.pad;
+        g.neck = Math.max(10, Math.round(0.17 * g.R));
+        g.neckTop = Math.round(g.cy - g.R - nlF * g.R);
+        g.stopH = Math.round(shF * g.R);
+        var ga = gaugeAt(g.R, g.cx, g.cy); g.gx = ga.gx; g.gy = ga.gy; g.gr = ga.gr;
+        var span = Math.min(g.R * 1.08, g.cx - 46);
+        g.rail = [g.cx - span, g.railY, g.cx + span, g.railY];
+        // molecule slots in the bulb: rows of cells as wide as the widest molecule and as tall as the tallest (with a
+        // slight tilt allowed), plus the largest atom's diameter between them, so no two atoms of different molecules are
+        // ever closer than one atom's width at rest; the
+        // molecule scale is the largest that still holds the most molecules the knob can draw
+        var tilt = 0.1, mw = 0, mh = 0, gap = 0;
+        r.species.forEach(function(sp0){ var e = extent(sp0.key, tilt); mw = Math.max(mw, e.w); mh = Math.max(mh, e.h); gap = Math.max(gap, e.maxD); });
+        var inner = g.R - 5, best = null;
+        for(var sc = 1.3; sc > 0.2; sc -= 0.01){
+          var cw = (mw + gap) * sc, ch = (mh + gap) * sc, hw = mw * sc / 2, hh = mh * sc / 2, list = [];
+          for(var row = -Math.ceil(inner / ch); row <= Math.ceil(inner / ch); row++){
+            var y = g.cy + row * ch, off = (row & 1) ? cw / 2 : 0;
+            for(var col = -Math.ceil(inner / cw) - 1; col <= Math.ceil(inner / cw) + 1; col++){
+              var x = g.cx + col * cw + off;
+              // the molecule's box stays inside the glass
+              if(Math.hypot(Math.abs(x - g.cx) + hw, Math.abs(y - g.cy) + hh) <= inner) list.push([x, y]);
+            }
+          }
+          if(list.length >= most + 2){ best = { s: sc, slots: list }; break; }
+        }
+        g.s = best ? best.s : 0.3; g.slots = best ? best.slots : [];
+        g.tilt = tilt;
+        return g;
       }
 
       /* ---------------------------------------------------- drawing the scene */
@@ -261,9 +353,10 @@
         var crx = Math.round(g.R * 0.52), cry = Math.max(6, Math.round(g.R * 0.06));
         p.push('<ellipse class="ix2-cork" cx="' + g.cx + '" cy="' + (g.yb - 2) + '" rx="' + crx + '" ry="' + cry + '"/>');
         p.push('<path class="ix2-glassbody" d="' + flaskPath(0) + '"/>');
-        // the Q gauge clipped to the neck: a dial, log scale, K as a fixed notch, the needle at Q
+        // the Q gauge beside the bulb, on a short glass tube into it: a dial, log scale, K as a fixed notch, the needle at Q
         var gx = g.gx, gy = g.gy, gr = g.gr, lo = r.gauge[0], hi = r.gauge[1];
-        p.push('<path class="ix2-clip" d="M' + f1(g.cx + g.neck - 1) + ' ' + f1(gy + gr * 0.12) + 'H' + f1(gx - gr + 2) + '"/>');
+        var tx0 = gx - gr * 0.55, ty0 = gy + gr * 0.55, tv = Math.hypot(tx0 - g.cx, ty0 - g.cy), tx1 = g.cx + (tx0 - g.cx) / tv * (g.R - 2), ty1 = g.cy + (ty0 - g.cy) / tv * (g.R - 2);
+        p.push('<path class="ix2-clip" d="M' + f1(tx0) + ' ' + f1(ty0) + 'L' + f1(tx1) + ' ' + f1(ty1) + '"/>');
         p.push('<path class="ix2-dial" d="M' + f1(gx - gr) + ' ' + f1(gy + gr * 0.62) + 'V' + gy + 'A' + gr + ' ' + gr + ' 0 0 1 ' + f1(gx + gr) + ' ' + gy + 'V' + f1(gy + gr * 0.62) + 'Z"/>');
         for(var d = lo; d <= hi; d++){ var a = angOf(Math.pow(10, d)), c1 = rot(gr * 0.78, 0, a), c2 = rot(gr * 0.92, 0, a); p.push('<path class="ix2-tick" d="M' + f1(gx + c1[0]) + ' ' + f1(gy + c1[1]) + 'L' + f1(gx + c2[0]) + ' ' + f1(gy + c2[1]) + '"/>'); }
         var ka = angOf(r.Kval), k1 = rot(gr * 0.62, 0, ka), k2 = rot(gr * 1.0, 0, ka), k3 = rot(gr + 11, 0, ka);
@@ -276,19 +369,19 @@
         var rl = g.rail, n = r.steps;
         p.push('<path class="ix2-rail" d="M' + f1(rl[0]) + ' ' + rl[1] + 'H' + f1(rl[2]) + '"/>');
         for(var k = 0; k <= n; k++){ var tx = lerp(rl[0], rl[2], k / n); p.push('<path class="ix2-rtick" d="M' + f1(tx) + ' ' + (rl[1] + 7) + 'V' + (rl[1] + 12) + '"/>'); }
-        p.push('<text class="ix2-xlab" x="' + f1(rl[0] - 26) + '" y="' + (rl[1] + 5) + '" text-anchor="end">x</text>');
+        p.push('<text class="ix2-xlab" x="' + f1(rl[0] - 24) + '" y="' + (rl[1] + 6) + '" text-anchor="end">x</text>');
         // the clipboard (wide) or the notebook page on the bench (phone)
         var nx = g.nx, ny = g.ny, nw = g.nw, nh = g.nh;
         if(!g.narrow){
           p.push('<rect class="ix2-board" x="' + f1(nx - 10) + '" y="' + f1(ny - 12) + '" width="' + f1(nw + 20) + '" height="' + f1(nh + 24) + '" rx="10"/>');
           p.push('<rect class="ix2-papershadow" x="' + (nx + 1) + '" y="' + (ny + 2) + '" width="' + nw + '" height="' + nh + '" rx="3"/><rect class="ix2-paper" x="' + nx + '" y="' + ny + '" width="' + nw + '" height="' + nh + '" rx="3"/>');
-          var cw = 92; p.push('<rect class="ix2-clamp" x="' + f1(nx + nw / 2 - cw / 2) + '" y="' + f1(ny - 20) + '" width="' + cw + '" height="26" rx="6"/><rect class="ix2-clamphi" x="' + f1(nx + nw / 2 - cw / 2 + 6) + '" y="' + f1(ny - 16) + '" width="' + (cw - 12) + '" height="5" rx="2.5"/>');
+          var cw = Math.round(nw * 0.24); p.push('<rect class="ix2-clamp" x="' + f1(nx + nw / 2 - cw / 2) + '" y="' + f1(ny - 20) + '" width="' + cw + '" height="26" rx="6"/><rect class="ix2-clamphi" x="' + f1(nx + nw / 2 - cw / 2 + 6) + '" y="' + f1(ny - 16) + '" width="' + (cw - 12) + '" height="5" rx="2.5"/>');
         } else {
           p.push('<rect class="ix2-papershadow" x="' + (nx + 2) + '" y="' + (ny + 3) + '" width="' + nw + '" height="' + nh + '" rx="4"/><rect class="ix2-paper is-flat" x="' + nx + '" y="' + ny + '" width="' + nw + '" height="' + nh + '" rx="4"/>');
         }
-        for(var ly = ny + g.tTop - 8; ly < ny + nh - 6; ly += 26) p.push('<path class="ix2-ruled" d="M' + (nx + 6) + ' ' + ly + 'H' + (nx + nw - 6) + '"/>');
-        // the page's margin line runs down the table only (clear of the title and the lines under it)
-        p.push('<path class="ix2-margin" d="M' + (nx + g.pad + g.lw - 6) + ' ' + (ny + g.tTop - 2) + 'V' + (ny + g.tTop + g.hh + 3 * g.rh) + '"/>');
+        var bm = g.bm;
+        // the page's margin line runs down the table only, 8 px right of the longest row name
+        p.push('<path class="ix2-margin" d="M' + f1(nx + bm.pad + bm.marginX) + ' ' + (ny + bm.tTop - 2) + 'V' + (ny + bm.tTop + bm.hh + 3 * bm.rh) + '"/>');
         p.push('<g class="ix2-book"></g>');
         // over the canvas: the glass's rim and shine, the stopper and the front of the cork ring (so the gas and the
         // molecules sit inside the glass)
@@ -296,9 +389,9 @@
         f.push('<path class="ix2-glassrim" d="' + flaskPath(0) + '"/>');
         f.push('<path class="ix2-corkfront" d="M' + (g.cx - crx) + ' ' + (g.yb - 2) + 'A' + crx + ' ' + cry + ' 0 0 0 ' + (g.cx + crx) + ' ' + (g.yb - 2) + '"/>');
         f.push('<path class="ix2-shine" d="M' + f1(g.cx - g.R * 0.62) + ' ' + f1(g.cy - g.R * 0.38) + 'A' + g.R * 0.78 + ' ' + g.R * 0.78 + ' 0 0 1 ' + f1(g.cx - g.R * 0.18) + ' ' + f1(g.cy - g.R * 0.74) + '"/>');
-        f.push('<path class="ix2-shine is-thin" d="M' + f1(g.cx - g.neck * 0.45) + ' ' + f1(g.neckTop + 10) + 'V' + f1(g.cy - g.R * 1.02) + '"/>');
-        var sw = g.neck * 1.32, sTop = g.neckTop - Math.round(0.2 * g.R);
-        f.push('<path class="ix2-stopper" d="M' + f1(g.cx - sw) + ' ' + f1(sTop) + 'H' + f1(g.cx + sw) + 'L' + f1(g.cx + g.neck * 0.98) + ' ' + f1(g.neckTop + 0.12 * g.R) + 'H' + f1(g.cx - g.neck * 0.98) + 'Z"/>');
+        f.push('<path class="ix2-shine is-thin" d="M' + f1(g.cx - g.neck * 0.45) + ' ' + f1(g.neckTop + g.stopH * 0.4 + 4) + 'V' + f1(g.cy - g.R * 1.0) + '"/>');
+        var sw = g.neck * 1.32, sTop = g.neckTop - Math.round(0.7 * g.stopH);
+        f.push('<path class="ix2-stopper" d="M' + f1(g.cx - sw) + ' ' + f1(sTop) + 'H' + f1(g.cx + sw) + 'L' + f1(g.cx + g.neck * 0.98) + ' ' + f1(g.neckTop + 0.3 * g.stopH) + 'H' + f1(g.cx - g.neck * 0.98) + 'Z"/>');
         f.push('<path class="ix2-stopperhi" d="M' + f1(g.cx - sw + 3) + ' ' + f1(sTop + 3) + 'H' + f1(g.cx + sw - 3) + '"/>');
         svg.innerHTML = p.join('');
         front.innerHTML = f.join('');
@@ -323,44 +416,44 @@
       var BK = {};
       function txt(cls, x, y, html, anchor){ var t = mk('text', cls, { x: f1(x), y: f1(y) }); if(anchor) t.setAttribute('text-anchor', anchor); t.innerHTML = html; L.book.appendChild(t); return t; }
       function drawBook(){
-        var g = G, r = R(), x0 = g.nx + g.pad, y0 = g.ny, sp = r.species, u = unitOf(r);
+        var g = G, bm = g.bm, f = bm.fs, r = R(), x0 = g.nx + bm.pad, y0 = g.ny, sp = r.species, u = unitOf(r);
         L.book.innerHTML = '';
         BK = { cells: { I: [], C: [], E: [] } };
-        // compact: the equation and K on one line (K to the right)
-        txt('ix2-eqn', x0, y0 + (g.compact ? 26 : 32), svgChem(eqText(r)));
-        txt('ix2-kline', g.compact ? g.nx + g.nw - g.pad : x0, y0 + (g.compact ? 26 : 61), 'K<tspan class="ix-sub" dy="0.28em">' + (r.K === 'Kp' ? 'p' : 'c') + '</tspan><tspan dy="-0.28em"> = ' + esc(String(r.Kval)) + ' at ' + esc(r.T) + '</tspan>', g.compact ? 'end' : null);
-        var tt = y0 + g.tTop, colX = function(i){ return x0 + g.lw + g.cw * (i + 0.5); };
-        // the E row's band: green once Q meets K
-        BK.band = mk('rect', 'ix2-eqband', { x: f1(x0 - 6), y: f1(tt + g.hh + 2 * g.rh + 2), width: f1(g.nw - 2 * g.pad + 12), height: f1(g.rh - 4), rx: 6 });
+        var T2 = function(cls, x, y, html, fs, anchor){ var t = txt(cls, x, y, html, anchor); t.style.fontSize = fs + 'px'; return t; };
+        // the equation and K: one line when they fit (K to the right), else two
+        T2('ix2-eqn', x0, y0 + bm.tY, svgChem(eqText(r)), f.title);
+        T2('ix2-kline', bm.oneLine ? g.nx + g.nw - bm.pad : x0, y0 + bm.kY, 'K<tspan class="ix-sub" dy="0.28em">' + (r.K === 'Kp' ? 'p' : 'c') + '</tspan><tspan dy="-0.28em"> = ' + esc(String(r.Kval)) + ' at ' + esc(r.T) + '</tspan>', f.kl, bm.oneLine ? 'end' : null);
+        var tt = y0 + bm.tTop, colX = function(i){ return x0 + bm.lw + bm.colW * (i + 0.5); }, right = g.nx + g.nw - bm.pad + 4;
+        BK.band = mk('rect', 'ix2-eqband', { x: f1(x0 - 6), y: f1(tt + bm.hh + 2 * bm.rh + 2), width: f1(right + 2 - x0 + 6), height: f1(bm.rh - 4), rx: 6 });
         L.book.appendChild(BK.band);
-        txt('ix2-unit', x0, tt + g.hh - 10, esc(u));
+        T2('ix2-unit', x0, tt + bm.spY, esc(u), f.unit);
         sp.forEach(function(s, i){
-          var cx = colX(i);
+          var cx = colX(i), sc = bm.iconS;
           // the key: a small drawing of the molecule over its name (the flask draws no letters)
-          var icon = mk('g', 'ix2-icon', { transform: 'translate(' + f1(cx) + ' ' + f1(tt + (g.compact ? 13 : 15)) + ')' });
-          var sc = g.compact ? 0.5 : 0.62, t = TEMPL[s.key].slice().sort(function(p, q){ return (p.z || 0) - (q.z || 0) || (q.r || 9) - (p.r || 9); });
+          var icon = mk('g', 'ix2-icon', { transform: 'translate(' + f1(cx) + ' ' + f1(tt + bm.iconY) + ')' });
+          var t = TEMPL[s.key].slice().sort(function(p, q){ return (p.z || 0) - (q.z || 0) || (q.r || 9) - (p.r || 9); });
           icon.innerHTML = t.map(function(at){ return '<g class="pt-atom ' + (ELC[at.el] || 'pa') + '" transform="translate(' + f1(at.dx * sc) + ' ' + f1(at.dy * sc) + ')">' + atomSvg(at.el, (at.r || 9) * sc) + '</g>'; }).join('');
           L.book.appendChild(icon);
-          txt('ix2-sp', cx, tt + g.hh - 10, r.K === 'Kp' ? 'P<tspan class="ix-sub" dy="0.28em">' + svgChem(s.html).replace(/<tspan class="ix-sub" dy="0.28em">/g, '<tspan>').replace(/<tspan dy="-0.28em"> <\/tspan>/g, '') + '</tspan><tspan dy="-0.28em"> </tspan>' : '[' + svgChem(s.html) + ']', 'middle');
+          T2('ix2-sp', cx, tt + bm.spY, r.K === 'Kp' ? 'P<tspan class="ix-sub" dy="0.28em">' + svgChem(s.html).replace(/<tspan class="ix-sub" dy="0.28em">/g, '<tspan>').replace(/<tspan dy="-0.28em"> <\/tspan>/g, '') + '</tspan><tspan dy="-0.28em"> </tspan>' : '[' + svgChem(s.html) + ']', f.sp, 'middle');
         });
-        L.book.appendChild(mk('path', 'ix2-tline', { d: 'M' + f1(x0 - 4) + ' ' + f1(tt + g.hh) + 'H' + f1(g.nx + g.nw - g.pad + 4) }));
+        L.book.appendChild(mk('path', 'ix2-tline', { d: 'M' + f1(x0 - 4) + ' ' + f1(tt + bm.hh) + 'H' + f1(right) }));
         ROWS.forEach(function(rw, ri){
-          var ry = tt + g.hh + ri * g.rh;
-          if(ri) L.book.appendChild(mk('path', 'ix2-rline', { d: 'M' + f1(x0 - 4) + ' ' + f1(ry) + 'H' + f1(g.nx + g.nw - g.pad + 4) }));
-          txt('ix2-row', x0 + (g.compact ? 4 : 2), ry + g.rh / 2 + 7, rw[0]);
-          // the row's name beside its letter (no room on a phone: the letters only)
-          if(!g.compact) BK['w' + rw[0]] = txt('ix2-roww', x0 + 22, ry + g.rh / 2 + 5, rw[0] === 'E' ? 'at this x' : rw[1].toLowerCase());
+          var ry = tt + bm.hh + ri * bm.rh;
+          if(ri) L.book.appendChild(mk('path', 'ix2-rline', { d: 'M' + f1(x0 - 4) + ' ' + f1(ry) + 'H' + f1(right) }));
+          T2('ix2-row', x0 + 2, ry + bm.rowY, rw[0], f.row);
+          // the row's name beside its letter, on every width ("equilibrium" at the equilibrium step)
+          BK['w' + rw[0]] = T2('ix2-roww', x0 + bm.nameX, ry + bm.rowY, rw[0] === 'E' ? 'at this x' : rw[1].toLowerCase(), f.name);
           sp.forEach(function(s, i){
             var cx = colX(i), cell = {};
-            if(rw[0] === 'I') cell.v = txt('ix2-val', cx, ry + g.rh / 2 + 6, '', 'middle');
-            else { cell.e = txt('ix2-expr', cx, ry + g.e1, '', 'middle'); cell.v = txt('ix2-val', cx, ry + g.e2, '', 'middle'); }
+            if(rw[0] === 'I') cell.v = T2('ix2-val', cx, ry + Math.round(bm.rh / 2 + 0.36 * f.val), '', f.val, 'middle');
+            else { cell.e = T2('ix2-expr', cx, ry + bm.e1, '', f.expr, 'middle'); cell.v = T2('ix2-val', cx, ry + bm.e2, '', f.val, 'middle'); }
             BK.cells[rw[0]].push(cell);
           });
         });
-        var by = tt + g.hh + 3 * g.rh;
-        L.book.appendChild(mk('path', 'ix2-tline', { d: 'M' + f1(x0 - 4) + ' ' + f1(by) + 'H' + f1(g.nx + g.nw - g.pad + 4) }));
-        BK.key = txt('ix2-key', x0, by + (g.compact ? 22 : 26), '1 molecule = ' + esc(String(r.per)) + ' ' + esc(u));
-        BK.q = txt('ix2-qline', x0, by + (g.compact ? 50 : 58), '');
+        var by = tt + bm.hh + 3 * bm.rh;
+        L.book.appendChild(mk('path', 'ix2-tline', { d: 'M' + f1(x0 - 4) + ' ' + f1(by) + 'H' + f1(right) }));
+        BK.key = T2('ix2-key', x0, by + bm.keyY, '1 molecule = ' + esc(String(r.per)) + ' ' + esc(u), f.key);
+        BK.q = T2('ix2-qline', x0, by + bm.qY, '', f.q);
         // the fixed parts of the C and E rows (in x)
         sp.forEach(function(s, i){
           var c = Math.abs(s.nu) > 1 ? Math.abs(s.nu) : '';
@@ -412,7 +505,7 @@
         var r = R(), s = shown, u = unitOf(r), parts;
         clearTimeout(takeT);
         var xs = s.x === 0 ? 'x 0' : 'x ' + fmt(s.x) + ' ' + u, Ks = 'K ' + r.Kval;
-        if(s.at) parts = [{ t: xs, role: 'x' }, { t: 'Q ' + fmtQ(s.q), role: 'q' }, { t: 'meets ' + Ks, role: 'k' }, { t: 'at equilibrium', role: 'eq' }];
+        if(s.at) parts = [{ t: xs, role: 'x' }, { t: 'Q ' + fmtQ(s.q), role: 'q' }, { t: '≈ ' + Ks, role: 'k', say: 'about equal to ' + Ks }, { t: 'at equilibrium', role: 'eq' }];
         else if(s.q < r.Kval) parts = [{ t: xs, role: 'x' }, { t: 'Q ' + fmtQ(s.q), role: 'q' }, { t: 'below ' + Ks, role: 'k' }, { t: s.k === 0 ? 'runs forward' : 'still runs forward', role: 'ink' }];
         else parts = [{ t: xs, role: 'x' }, { t: 'Q ' + fmtQ(s.q), role: 'q' }, { t: 'above ' + Ks, role: 'k' }, { t: 'would run back', role: 'ink', say: 'the reverse reaction would bring it back' }];
         cause.set(parts, s.k === 0 && S.target === 0 ? 'Start:' : '');
@@ -431,7 +524,7 @@
         G.slots.forEach(function(p, i){ if(slotUse[i] || (avoid && avoid.indexOf(i) > -1)) return; var d = Math.hypot(p[0] - x, p[1] - y); if(d < bd){ bd = d; best = i; } });
         return best;
       }
-      function slotAngle(i){ var r = rng(7 + i * 13 + S.ri * 101); return (r() - 0.5) * 1.6; }
+      function slotAngle(i){ var r = rng(7 + i * 13 + S.ri * 101); return (r() - 0.5) * 2 * G.tilt; }
       // lay out the molecules for step k at once (a fresh picture: first draw, another reaction, Start over, reduced motion)
       function layoutAt(k){
         mols = []; events = []; CV.baseDirty = true;
@@ -515,17 +608,22 @@
         }
         var gG = clamp((t - 0.4) / 0.15, 0, 1), gl = Math.sin(Math.PI * clamp((t - 0.38) / 0.24, 0, 1));
         e.glowA = 0.75 * gl;
+        // the products count from the middle of the swap (t = 0.475), when each atom is nearer its new partner than
+        // its old one (review round 1)
+        if(t >= 0.475 && !e.formed){
+          e.formed = true;
+          e.ins.forEach(function(m){ var i = mols.indexOf(m); if(i > -1) mols.splice(i, 1); });
+          e.outs.forEach(function(pm){ pm.state = 'forming'; mols.push(pm); });
+          paintReadouts();
+        }
         if(t < 0.55){
           var w = ease(gG);
           e.outs.forEach(function(pm){ pm.atoms.forEach(function(a){ var p = atomPos(pm, a, pm.x, pm.y, pm.a); setAtomN(a, lerp(a.start[0], p[0], w), lerp(a.start[1], p[1], w)); }); });
           return;
         }
-        if(!e.formed){
-          e.formed = true;
-          // formed: the old molecules go (their atom nodes now belong to the products), the products count
-          e.ins.forEach(function(m){ var i = mols.indexOf(m); if(i > -1) mols.splice(i, 1); });
-          e.outs.forEach(function(pm){ pm.state = 'moving'; pm.from = [pm.x, pm.y, pm.a]; var sp = G.slots[pm.slot]; pm.to = [sp[0], sp[1], slotAngle(pm.slot)]; mols.push(pm); });
-          paintReadouts();
+        if(!e.moving){
+          e.moving = true;
+          e.outs.forEach(function(pm){ pm.state = 'moving'; pm.from = [pm.x, pm.y, pm.a]; var sp = G.slots[pm.slot]; pm.to = [sp[0], sp[1], slotAngle(pm.slot)]; });
         }
         var v = ease(clamp((t - 0.55) / 0.45, 0, 1));
         e.outs.forEach(function(pm){ var x = lerp(pm.from[0], pm.to[0], v), y = lerp(pm.from[1], pm.to[1], v), a = lerp(pm.from[2], pm.to[2], v); pm.x = x; pm.y = y; pm.a = a; pm.atoms.forEach(function(at){ var p = atomPos(pm, at, x, y, a); setAtomN(at, p[0], p[1]); }); });
@@ -579,7 +677,7 @@
         slider = K.drag(layer, { key: 'apchem-ice-x', label: 'x, the extent of reaction', min: 0, max: r.steps, step: 1, value: S.target, track: G.rail,
           valuetext: function(v){ return 'x = ' + fmt(v * r.per) + ' ' + unitOf(r) + ', step ' + v + ' of ' + r.steps; },
           // the tag says the DRAWN x (it catches up as the molecules react)
-          tag: function(){ var x = shown ? shown.x : 0; return 'x = ' + (x === 0 ? '0' : fmt(x)) + ' ' + unitOf(r); }, tagSide: 'up', chip: false,
+          tag: function(){ var x = shown ? shown.x : 0; return 'x = ' + (x === 0 ? '0' : fmt(x)) + ' ' + unitOf(r); }, tagSide: 'down', chip: false,
           onInput: function(v){ setTarget(v); } });
       }
       function setTarget(v){
@@ -601,12 +699,12 @@
         sceneBox.style.height = G.H + 'px';
         svg.setAttribute('viewBox', '0 0 ' + W + ' ' + G.H); svg.setAttribute('width', W); svg.setAttribute('height', G.H);
         // the canvas covers the flask and its gauge only (a small texture to upload each frame)
-        var bx = [Math.floor(G.cx - G.R - 6), Math.floor(Math.min(G.gy - G.gr - 6, G.neckTop - 4)), Math.ceil(Math.max(G.gx + G.gr, G.cx + G.R) + 6), Math.ceil(G.yb + 4)];
+        var bx = [Math.floor(G.cx - G.R - 6), Math.floor(Math.min(G.gy - G.gr - 6, G.neckTop - 4)), Math.ceil(Math.max(G.gx + G.gr, G.cx + G.R) + 6), Math.ceil(Math.max(G.yb + 4, G.gy + G.gr))];
         CV.box = bx; CV.dpr = Math.min(2, window.devicePixelRatio || 1);
         mov.style.left = bx[0] + 'px'; mov.style.top = bx[1] + 'px'; mov.style.width = (bx[2] - bx[0]) + 'px'; mov.style.height = (bx[3] - bx[1]) + 'px';
         mov.width = Math.round((bx[2] - bx[0]) * CV.dpr); mov.height = Math.round((bx[3] - bx[1]) * CV.dpr); CV.ctx = mov.getContext('2d');
         CV.base = document.createElement('canvas'); CV.base.width = mov.width; CV.base.height = mov.height; CV.baseDirty = true; readColors();
-        sceneBox.classList.toggle('is-narrow', G.compact);
+        sceneBox.classList.toggle('is-narrow', G.narrow);
         drawStatic();
         layoutAt(S.target);
         drawnKey = ''; shown = null; paintReadouts(true); needle.a = needle.to; paintNeedle();
@@ -642,12 +740,15 @@
       stage.addEventListener('keydown', function(e){ if(sceneBox.contains(e.target) && /^(Arrow|Page|Home|End)/.test(e.key)) hideCue(true); }, true);
       function rectOf(x, y, w, h){ var r0 = svg.getBoundingClientRect(), k = r0.width / G.W; return { left: r0.left + x * k, top: r0.top + y * k, right: r0.left + (x + w) * k, bottom: r0.top + (y + h) * k, width: w * k, height: h * k }; }
       var tour = K.tour({ key: 'apchem-ice-tables', label: 'Show me how', steps: [
-        { id: 'drag', text: 'Drag x. Each step reacts a few more molecules in the flask.', target: function(){ return slider ? slider.el.querySelector('.tk2-knob') : sceneBox; } },
-        { id: 'table', text: 'The ICE table writes it down: C is the change in x, E is I + C.', target: function(){ return G ? rectOf(G.nx, G.ny, G.nw, G.nh) : sceneBox; } },
-        { id: 'gauge', text: 'Q climbs to the K notch. Where they meet is the equilibrium x.', target: function(){ return G ? rectOf(G.gx - G.gr - 4, G.gy - G.gr - 16, 2 * G.gr + 8, G.gr * 1.5 + 20) : sceneBox; } }],
+        { id: 'drag', text: 'Drag x. Each step is one reaction event in the flask.', target: function(){ return seen('drag', slider ? slider.el.querySelector('.tk2-knob') : sceneBox); } },
+        { id: 'table', text: 'The ICE table writes it down: C is the change in x, E is I + C.', target: function(){ if(!G) return sceneBox; var bm = G.bm, y = G.ny + bm.tTop + bm.hh + bm.rh; seen('table', BK.band); return rectOf(G.nx, y, G.nw, 2 * bm.rh); } },
+        { id: 'gauge', text: 'Q climbs to the K notch. Where they meet is the equilibrium x.', target: function(){ if(!G) return sceneBox; seen('gauge', mov); return rectOf(G.gx - G.gr - 4, G.gy - G.gr - 16, 2 * G.gr + 8, G.gr * 1.62 + 20); } }],
         onClose: function(had){ if(had) try{ head.how.focus({ preventScroll: true }); }catch(e){} } });
+      // each step's target is scrolled into view once (the page on a phone, the card's own scroll elsewhere)
+      var tourSeen = {};
+      function seen(id, el){ if(el && !tourSeen[id]){ tourSeen[id] = true; try{ el.scrollIntoView({ block: 'nearest' }); }catch(e){} } return el; }
       function tourDid(id){ if(tour.active()) tour.did(id); }
-      function startTour(){ if(S.mode !== 'explore') return; hideCue(false); tour.start(true); }
+      function startTour(){ if(S.mode !== 'explore') return; hideCue(false); tourSeen = {}; tour.start(true); }
 
       /* ---------------------------------------------------- "?" */
       var ref = document.createElement('div'); ref.className = 'ls-sec ix2-ref';
@@ -708,8 +809,11 @@
       window.__ice2 = {
         G: function(){ return G; }, busy: function(){ return busy() || !!raf; }, target: function(){ return S.target; }, react: function(){ return R(); },
         drawn: function(){ return countsDrawn(); }, shown: function(){ return shown; }, needle: function(){ return needle.a; }, angOf: angOf, Qof: function(c){ return Qof(R(), c); }, eqStep: function(){ return eqStep(R()); },
-        mols: function(){ return mols.map(function(m){ return { key: m.key, state: m.state, atoms: m.atoms.map(function(a){ return [a.wx, a.wy]; }) }; }); },
-        events: function(){ return events.map(function(e){ return { dir: e.dir, formed: e.formed, swapped: !!e.swapped, ins: e.ins.map(function(m){ return m.key; }), glow: e.glowA || 0 }; }); },
+        mols: function(){ return mols.map(function(m){ return { key: m.key, state: m.state, atoms: m.atoms.map(function(a){ return [a.wx, a.wy, a.r * G.s]; }) }; }); },
+        // each reaction under way: its reactants and, once the atoms swap, its products' drawn atoms with the reactant
+        // each came from (for the frames check: what the picture shows, by atom distances)
+        events: function(){ return events.map(function(e){ return { dir: e.dir, formed: e.formed, swapped: !!e.swapped, ins: e.ins.map(function(m){ return m.key; }), glow: e.glowA || 0,
+          outs: e.swapped && !e.moving ? e.outs.map(function(pm){ return { key: pm.key, atoms: pm.atoms.map(function(a){ var t = atomPos(pm, a, pm.x, pm.y, pm.a); return { at: [a.wx, a.wy], from: a.start, to: t }; }) }; }) : [] }; }); },
         gas: function(){ return { now: gasAlpha, to: gasTo }; },
         set: function(k){ slider.value(k, true); }, snap: snap
       };

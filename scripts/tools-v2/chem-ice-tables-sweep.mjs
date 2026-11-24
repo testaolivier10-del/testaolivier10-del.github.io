@@ -102,6 +102,19 @@ const probe = (o) => {
   // every atom inside the flask's body (or its neck)
   const sc = svg => svg.getBoundingClientRect().width / G.W, k = sc(scene.querySelector('svg'));
   X.mols().forEach(m => m.atoms.forEach(([x, y]) => { const d = Math.hypot(x - G.cx, y - (G.cy + 2)); if (d > G.R - 2) out.push(`an atom of ${m.key} is outside the flask (${d.toFixed(0)} of ${G.R})`); }));
+  // no two molecules touch at rest: their atoms stay at least one (the smaller) atom's width apart
+  const ms = X.mols();
+  let close = 0;
+  for (let i = 0; i < ms.length; i++) for (let j = i + 1; j < ms.length; j++) {
+    let worst = Infinity;
+    for (const a of ms[i].atoms) for (const b of ms[j].atoms) worst = Math.min(worst, Math.hypot(a[0] - b[0], a[1] - b[1]) - a[2] - b[2] - 2 * Math.min(a[2], b[2]));
+    if (worst < -0.5) close++;
+  }
+  if (close) out.push(close + ' pairs of molecules closer than one atom apart');
+  // text clears the drawn lines: the page's margin line by 4 px
+  const mg = scene.querySelector('.ix2-margin'); if (mg) { const L = R(mg); texts.forEach(x => { if (x.r.b > L.t && x.r.t < L.b && x.r.r + 4 > L.l && x.r.l - 4 < L.r) out.push(x.n + ' within 4 px of the margin line'); }); }
+  // the knob's tag stays off the cork ring and the flask
+  if (vis(tag)) { const tg = R(tag); ['.ix2-corkfront', '.ix2-glassrim'].forEach(sel => { const e = scene.querySelector(sel); if (e && gap(tg, R(e), 0)) { const er = R(e); if (sel === '.ix2-corkfront' || tg.t < er.b - 2) out.push('the knob tag touches ' + sel.slice(5)); } }); }
   // the words agree with the drawn molecules
   const c = X.drawn(), per = r.per, x = (r.n0[0] - c[0]) / -r.species[0].nu * per, q = X.Qof(c), fmt = v => M.fmt(v, 3), fq = v => v === 0 ? '0' : M.fmt(v, 3);
   const vals = [...scene.querySelectorAll('.ix2-val')].map(t => t.textContent), n = r.species.length;
@@ -133,10 +146,26 @@ const probe = (o) => {
   if (document.documentElement.scrollWidth > innerWidth) out.push('sideways scroll');
   return { out, causeH: Math.round(R(cause).h) };
 };
+/* The screen fit (review round 1, M1): with the scene's top at the top of the screen on a phone, or as the stage opens
+   elsewhere, the knob, the E row, the Q line and the cause line are all on screen, with no scrolling inside the card. */
+const fitProbe = () => {
+  const out = [], R = e => e.getBoundingClientRect();
+  const scene = document.querySelector('.ix2-scene');
+  if (innerWidth <= 640) window.scrollTo(0, R(scene).top + scrollY);
+  const body = scene.closest('.ls-stage-body') || scene.closest('.ls-stage');
+  if (innerWidth > 640 && body && body.scrollHeight - body.clientHeight > 2) out.push(`the card scrolls inside (${body.scrollHeight} in ${body.clientHeight})`);
+  const box = innerWidth > 640 && body ? R(body) : { top: 0, bottom: innerHeight };
+  const need = { knob: document.querySelector('.ix2 .tk2-drag .tk2-dot'), 'E row': document.querySelector('.ix2-eqband'), 'Q line': document.querySelector('.ix2-qline'), 'cause line': document.querySelector('.ix2 .tk2-cause') };
+  Object.keys(need).forEach(k => { const e = need[k]; if (!e) return out.push('no ' + k); const r = R(e); if (r.top < Math.max(0, box.top) - 1 || r.bottom > Math.min(innerHeight, box.bottom) + 1) out.push(`${k} off screen (${Math.round(r.top)} to ${Math.round(r.bottom)} of ${innerHeight})`); });
+  window.scrollTo(0, 0);
+  return out;
+};
 let checks = 0, states = 0; const fails = [];
 const W4 = w => String(w).padStart(4, '0');
+// each width at a screen height it really comes with (review round 1: 1024 x 768 and 1280 x 800 included)
+function HEIGHT(w) { return w <= 430 ? 844 : w <= 600 ? 960 : w <= 820 ? 1024 : w <= 1024 ? 768 : w <= 1280 ? 800 : w <= 1440 ? 900 : 1080; }
 if (!FRAMES && !PERF) for (const w of WIDTHS) {
-  const h = w <= 430 ? 844 : w <= 820 ? 1024 : w >= 1920 ? 1080 : 900;
+  const h = HEIGHT(w);
   for (const theme of ['light', 'dark']) {
     // a first visit: the cue is whole and covers nothing
     {
@@ -154,8 +183,9 @@ if (!FRAMES && !PERF) for (const w of WIDTHS) {
       await c.ctx.close();
     }
     const c = await open({ w, h, theme });
+    const fit = await c.page.evaluate(fitProbe); states++; checks += 5; fit.forEach(m => fails.push(`${w}x${h} ${theme} screen fit: ${m}`));
     const causeH = {};
-    for (const [rx, ks] of [['hi', [0, 4, 'eq', 13]], ['n2o4', [0, 3, 'eq', 14]]]) {
+    for (const [rx, ks] of [['hi', [0, 4, 'eq', 13]], ['n2o4', [0, 2, 'eq', 10]]]) {
       if (rx === 'n2o4') { await c.page.click('.tk2-tab[data-v=n2o4]'); await c.page.waitForTimeout(500); }
       for (const k0 of ks) {
         const k = k0 === 'eq' ? await c.page.evaluate(() => window.__ice2.eqStep()) : k0;
@@ -184,7 +214,7 @@ if (!FRAMES && !PERF) for (const w of WIDTHS) {
 
 /* ---------------------------------------------------------------- FRAMES */
 if (FRAMES) for (const w of WIDTHS) {
-  const h = w <= 430 ? 844 : 900;
+  const h = HEIGHT(w);
   const c = await open({ w, h });
   // in the page: record every animation frame's drawn state against every number shown
   await c.page.evaluate(() => {
@@ -201,6 +231,14 @@ if (FRAMES) for (const w of WIDTHS) {
       const qv = document.querySelector('.ix2-qv'); if (qv.textContent !== fq(q)) say(`Q ${qv.textContent} vs drawn ${fq(q)}`);
       const tag = document.querySelector('.ix2 .tk2-drag .tk2-tag').textContent; if (tag !== 'x = ' + (x === 0 ? '0' : fmt(x)) + ' ' + r.unit) say(`tag ${tag} vs drawn x ${fmt(x)}`);
       const cz = document.querySelector('.ix2 .tk2-cause'); if (!cz.classList.contains('is-take')) { const t = cz.innerText.replace(/\s+/g, ' '); if (!t.includes('Q ' + fq(q))) say('cause line ' + t + ' vs Q ' + fq(q)); if (!t.includes('x ' + (x === 0 ? '0' : fmt(x)))) say('cause line ' + t + ' vs x ' + fmt(x)); }
+      // the swap as drawn: an event's products count exactly when their atoms are drawn nearer the products' arrangement
+      // than the reactants' (the atoms' measured progress from where they were to where they bond), with a small band
+      // around the middle where either reading is fair
+      X.events().forEach(e => { if (!e.outs.length) return; let f = 0, n = 0;
+        e.outs.forEach(o => o.atoms.forEach(a => { const d = Math.hypot(a.to[0] - a.from[0], a.to[1] - a.from[1]); if (d > 0.5) { f += Math.hypot(a.at[0] - a.from[0], a.at[1] - a.from[1]) / d; n++; } }));
+        if (!n) return; f /= n;
+        if (f > 0.58 && !e.formed) say(`products drawn ${Math.round(f * 100)}% formed but not counted`);
+        if (f < 0.42 && e.formed) say(`products counted while drawn only ${Math.round(f * 100)}% formed`); });
       // whole molecules are drawn bonded: each atom where the template puts it
       const T = M.particles.templ, s = X.G().s;
       X.mols().forEach(m => { if (m.state !== 'whole') return; const t = T[m.key].slice().sort((p, q) => (p.z || 0) - (q.z || 0) || (q.r || 9) - (p.r || 9)); const a = m.atoms;
@@ -263,7 +301,7 @@ if (PERF) {
     if (gate && (r.med >= 20 || r.p95 > 50.2)) fails.push(`${w} ${label}: median ${r.med.toFixed(1)} ms, p95 ${r.p95.toFixed(1)} ms`);
   };
   for (const w of WIDTHS) {
-    const h = w <= 430 ? 844 : 900;
+    const h = HEIGHT(w);
     const c = await open({ w, h });
     const cdp = await c.ctx.newCDPSession(c.page); await cdp.send('Emulation.setCPUThrottlingRate', { rate: RATE });
     for (const rx of ['hi', 'n2o4']) {
