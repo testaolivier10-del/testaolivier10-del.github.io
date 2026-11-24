@@ -1,0 +1,1600 @@
+1
+00:00:00,000 --> 00:00:02,399
+It's six o'clock, and it's still ninety
+
+2
+00:00:02,560 --> 00:00:03,520
+five degrees.
+
+3
+00:00:04,281 --> 00:00:06,601
+Lena blows the whistle, and everybody has
+
+4
+00:00:06,641 --> 00:00:07,801
+to get out of the pool.
+
+5
+00:00:08,532 --> 00:00:10,977
+She's the lifeguard, and she thinks closing
+
+6
+00:00:11,057 --> 00:00:12,577
+this early is a mistake.
+
+7
+00:00:13,343 --> 00:00:15,503
+So she asks the city council to keep the
+
+8
+00:00:15,583 --> 00:00:17,263
+pool open until nine.
+
+9
+00:00:18,044 --> 00:00:20,524
+One council member leans forward and asks:
+
+10
+00:00:20,955 --> 00:00:24,390
+Do the town's teenagers actually want that?
+
+11
+00:00:24,470 --> 00:00:25,670
+You'll need to bring us data.
+
+12
+00:00:27,170 --> 00:00:29,570
+By the end, you'll turn Lena's survey into
+
+13
+00:00:29,730 --> 00:00:32,570
+one honest sentence the council can trust.
+
+14
+00:00:33,306 --> 00:00:35,386
+On the way, you'll see what statistics is
+
+15
+00:00:35,546 --> 00:00:37,626
+for, how to read a data table,
+
+16
+00:00:37,746 --> 00:00:39,866
+and how to get a percent right by picking
+
+17
+00:00:39,906 --> 00:00:40,746
+the right whole.
+
+18
+00:00:41,946 --> 00:00:43,786
+So why do we start here?
+
+19
+00:00:44,586 --> 00:00:46,986
+Five words come back in every unit of this
+
+20
+00:00:47,066 --> 00:00:50,141
+course: population, sample,
+
+21
+00:00:50,221 --> 00:00:54,266
+variable, parameter, and statistic.
+
+22
+00:00:54,306 --> 00:00:57,047
+And on the exam, a correct number with no
+
+23
+00:00:57,127 --> 00:01:00,312
+context can still lose the point.
+
+24
+00:01:00,392 --> 00:01:03,192
+Get these right now, and the rest gets easier.
+
+25
+00:01:06,992 --> 00:01:09,312
+Some questions have one answer you can just
+
+26
+00:01:09,392 --> 00:01:10,192
+look up.
+
+27
+00:01:10,733 --> 00:01:12,293
+What time does the pool close?
+
+28
+00:01:13,013 --> 00:01:15,633
+It closes at six, and that's the end of
+
+29
+00:01:15,673 --> 00:01:16,473
+it.
+
+30
+00:01:16,595 --> 00:01:18,675
+Others have answers that change from person
+
+31
+00:01:18,755 --> 00:01:19,555
+to person.
+
+32
+00:01:20,256 --> 00:01:22,256
+How many hours a week do teenagers in this
+
+33
+00:01:22,336 --> 00:01:23,456
+town swim?
+
+34
+00:01:24,151 --> 00:01:25,831
+Nobody can just look that up.
+
+35
+00:01:26,588 --> 00:01:29,508
+That second kind is what statistics is for.
+
+36
+00:01:30,673 --> 00:01:33,153
+So statistics is how we collect data,
+
+37
+00:01:33,233 --> 00:01:35,919
+sum it up, and make sense of it...
+
+38
+00:01:35,999 --> 00:01:37,279
+when the answers vary.
+
+39
+00:01:38,079 --> 00:01:41,039
+Data are the values you record: answers,
+
+40
+00:01:41,319 --> 00:01:42,639
+counts, measurements.
+
+41
+00:01:43,400 --> 00:01:46,550
+So a quick test for a good question is this:
+
+42
+00:01:46,630 --> 00:01:48,630
+would the answer differ from one person
+
+43
+00:01:48,710 --> 00:01:49,630
+to the next?
+
+44
+00:01:50,721 --> 00:01:53,606
+You'll hear two words all year.
+
+45
+00:01:53,686 --> 00:01:56,166
+The population is the whole group a question
+
+46
+00:01:56,246 --> 00:01:57,776
+is about.
+
+47
+00:01:57,896 --> 00:01:59,936
+The sample is the part of that group you
+
+48
+00:02:00,016 --> 00:02:02,576
+actually collect data from.
+
+49
+00:02:02,656 --> 00:02:04,627
+Data come from the sample,
+
+50
+00:02:04,667 --> 00:02:07,347
+and the conclusion goes back out to everyone.
+
+51
+00:02:07,547 --> 00:02:10,367
+So why don't we just ask everyone?
+
+52
+00:02:10,447 --> 00:02:13,697
+Usually it costs too much or takes too long,
+
+53
+00:02:13,817 --> 00:02:16,918
+because a country has millions of people.
+
+54
+00:02:16,958 --> 00:02:19,238
+But a sample only helps if it looks like
+
+55
+00:02:19,278 --> 00:02:22,323
+the population in the ways that matter.
+
+56
+00:02:22,403 --> 00:02:24,403
+What if you ask only the kids already at
+
+57
+00:02:24,443 --> 00:02:25,963
+the pool?
+
+58
+00:02:26,083 --> 00:02:28,403
+Of course they'll love longer hours,
+
+59
+00:02:28,483 --> 00:02:31,323
+so that sample leans one way from the start.
+
+60
+00:02:32,804 --> 00:02:35,629
+So that night, Lena makes a plan.
+
+61
+00:02:36,315 --> 00:02:38,555
+Her question is about every teenager in
+
+62
+00:02:38,635 --> 00:02:40,050
+town.
+
+63
+00:02:40,130 --> 00:02:42,476
+So how does she reach them?
+
+64
+00:02:42,556 --> 00:02:45,431
+Nearly all of them go to the one high school,
+
+65
+00:02:45,511 --> 00:02:47,271
+so she narrows her question to the high
+
+66
+00:02:47,351 --> 00:02:49,921
+school's students, and uses the school's
+
+67
+00:02:50,001 --> 00:02:52,241
+list of all two thousand of them.
+
+68
+00:02:52,927 --> 00:02:55,007
+She has a computer pick one hundred fifty
+
+69
+00:02:55,087 --> 00:02:56,207
+names at random.
+
+70
+00:02:56,958 --> 00:02:59,518
+Nobody chooses who's in, so no group gets
+
+71
+00:02:59,598 --> 00:03:00,793
+favored...
+
+72
+00:03:00,833 --> 00:03:02,673
+and the sample is likely to look like the
+
+73
+00:03:02,713 --> 00:03:03,513
+school.
+
+74
+00:03:04,049 --> 00:03:07,139
+Her population is the two thousand students,
+
+75
+00:03:07,179 --> 00:03:09,059
+and her sample is the one hundred fifty
+
+76
+00:03:09,139 --> 00:03:10,829
+she'll ask.
+
+77
+00:03:10,909 --> 00:03:13,469
+From now on, her answer speaks for the school's
+
+78
+00:03:13,709 --> 00:03:17,370
+students, not every teen in town.
+
+79
+00:03:17,490 --> 00:03:19,610
+Over the next week, she asks every one of
+
+80
+00:03:19,690 --> 00:03:21,850
+them the same question.
+
+81
+00:03:21,930 --> 00:03:23,810
+Would you swim between six and nine,
+
+82
+00:03:23,850 --> 00:03:26,741
+if the pool stayed open?
+
+83
+00:03:26,821 --> 00:03:29,181
+She counts the answers, and ninety six out
+
+84
+00:03:29,221 --> 00:03:32,201
+of one hundred fifty say yes.
+
+85
+00:03:32,281 --> 00:03:34,361
+When she divides ninety six by one hundred
+
+86
+00:03:34,441 --> 00:03:35,961
+fifty, she gets...
+
+87
+00:03:36,041 --> 00:03:38,436
+sixty four percent.
+
+88
+00:03:38,516 --> 00:03:40,836
+So can she tell the council that exactly
+
+89
+00:03:40,996 --> 00:03:42,916
+sixty four percent of the school's students
+
+90
+00:03:43,036 --> 00:03:45,856
+want evening hours?
+
+91
+00:03:45,936 --> 00:03:47,736
+No, she can't say that.
+
+92
+00:03:48,477 --> 00:03:50,397
+If she picked a second random group of one
+
+93
+00:03:50,477 --> 00:03:53,217
+hundred fifty, would exactly ninety six
+
+94
+00:03:53,297 --> 00:03:55,287
+say yes again?
+
+95
+00:03:55,367 --> 00:03:58,007
+Maybe ninety one would, or maybe a hundred
+
+96
+00:03:58,087 --> 00:03:58,887
+would.
+
+97
+00:03:59,293 --> 00:04:01,533
+Random samples from the same population
+
+98
+00:04:01,613 --> 00:04:03,803
+tend to land close to each other,
+
+99
+00:04:03,883 --> 00:04:05,483
+but they're rarely identical.
+
+100
+00:04:06,199 --> 00:04:09,124
+That's called sampling variability.
+
+101
+00:04:09,204 --> 00:04:12,004
+So sixty four percent is a fact about the
+
+102
+00:04:12,164 --> 00:04:12,964
+sample.
+
+103
+00:04:13,585 --> 00:04:15,825
+For the whole school, it's an estimate,
+
+104
+00:04:15,905 --> 00:04:17,305
+give or take a few points.
+
+105
+00:04:18,456 --> 00:04:20,976
+And you always say it in context.
+
+106
+00:04:21,776 --> 00:04:23,856
+So what is context?
+
+107
+00:04:24,641 --> 00:04:27,521
+It's the real situation behind the number:
+
+108
+00:04:27,601 --> 00:04:29,681
+who was studied, and what was measured.
+
+109
+00:04:30,467 --> 00:04:32,947
+If you just say sixty four percent,
+
+110
+00:04:33,027 --> 00:04:35,262
+what does the reader learn?
+
+111
+00:04:35,342 --> 00:04:37,252
+They learn nothing.
+
+112
+00:04:37,332 --> 00:04:39,492
+But if you say that sixty four percent of
+
+113
+00:04:39,572 --> 00:04:41,652
+the one hundred fifty students surveyed
+
+114
+00:04:41,772 --> 00:04:43,492
+said they'd swim in the evening,
+
+115
+00:04:43,572 --> 00:04:46,532
+now they know who, what, and how many.
+
+116
+00:04:47,288 --> 00:04:50,168
+On the exam, a bare number usually loses
+
+117
+00:04:50,248 --> 00:04:52,368
+credit, even when it's right.
+
+118
+00:04:53,568 --> 00:04:54,768
+Now it's your turn.
+
+119
+00:04:55,568 --> 00:04:57,728
+A cafeteria manager wants to know whether
+
+120
+00:04:57,808 --> 00:04:59,728
+the school's eight hundred students would
+
+121
+00:04:59,848 --> 00:05:01,488
+buy a salad bar lunch.
+
+122
+00:05:02,288 --> 00:05:04,288
+She picks fifty students at random,
+
+123
+00:05:04,368 --> 00:05:05,808
+and twenty say yes.
+
+124
+00:05:06,598 --> 00:05:09,478
+Name the population and the sample.
+
+125
+00:05:09,678 --> 00:05:12,158
+Then write the result in context.
+
+126
+00:05:19,361 --> 00:05:22,661
+The population is all eight hundred students,
+
+127
+00:05:22,821 --> 00:05:24,581
+because the question is about every one
+
+128
+00:05:24,661 --> 00:05:25,621
+of them.
+
+129
+00:05:25,781 --> 00:05:27,181
+So who's the sample?
+
+130
+00:05:27,937 --> 00:05:29,777
+It's the fifty who were asked,
+
+131
+00:05:29,897 --> 00:05:33,377
+and twenty out of fifty is forty percent.
+
+132
+00:05:33,457 --> 00:05:35,857
+In context, you'd write that forty percent
+
+133
+00:05:35,897 --> 00:05:38,097
+of the fifty students surveyed said they'd
+
+134
+00:05:38,177 --> 00:05:39,937
+buy a salad bar lunch.
+
+135
+00:05:40,017 --> 00:05:41,937
+That suggests about forty percent of the
+
+136
+00:05:42,097 --> 00:05:43,457
+school would, give or take.
+
+137
+00:05:44,257 --> 00:05:47,404
+The trap is calling the fifty the population,
+
+138
+00:05:47,484 --> 00:05:49,404
+just because that's who you talked to.
+
+139
+00:05:53,204 --> 00:05:55,364
+Data usually arrive as a table.
+
+140
+00:05:56,164 --> 00:05:58,884
+Each row is one thing the data are about,
+
+141
+00:05:59,299 --> 00:06:01,939
+and we call that an observational unit.
+
+142
+00:06:02,715 --> 00:06:04,555
+So what can a unit be?
+
+143
+00:06:05,241 --> 00:06:07,997
+It can be a person, a dog,
+
+144
+00:06:08,077 --> 00:06:09,337
+a car...
+
+145
+00:06:09,457 --> 00:06:10,257
+even a day.
+
+146
+00:06:10,937 --> 00:06:14,917
+So in a data table, each row is one observational
+
+147
+00:06:15,077 --> 00:06:15,877
+unit.
+
+148
+00:06:16,762 --> 00:06:19,322
+A variable is a characteristic you record
+
+149
+00:06:19,402 --> 00:06:22,638
+for every unit, one whose value can change
+
+150
+00:06:22,718 --> 00:06:23,958
+from unit to unit.
+
+151
+00:06:24,669 --> 00:06:28,874
+In a table, each column is one variable.
+
+152
+00:06:28,954 --> 00:06:31,880
+Eye color is a variable, and brown is one
+
+153
+00:06:31,920 --> 00:06:34,610
+of its values.
+
+154
+00:06:34,690 --> 00:06:37,015
+Here's Lena's spreadsheet.
+
+155
+00:06:37,095 --> 00:06:39,415
+Each row is one student she asked,
+
+156
+00:06:39,495 --> 00:06:42,515
+so a student is the observational unit,
+
+157
+00:06:42,635 --> 00:06:45,661
+and there are one hundred fifty rows.
+
+158
+00:06:45,781 --> 00:06:48,576
+And what did she record for each one?
+
+159
+00:06:48,656 --> 00:06:51,456
+Each row has six columns: grade,
+
+160
+00:06:51,576 --> 00:06:53,751
+side of town, whether they'd swim in the
+
+161
+00:06:53,831 --> 00:06:56,956
+evening, hours swum last week,
+
+162
+00:06:57,076 --> 00:06:58,716
+whether they hold a season pass,
+
+163
+00:06:58,796 --> 00:07:00,116
+and home zip code.
+
+164
+00:07:00,812 --> 00:07:03,512
+That's six variables, and they're not all
+
+165
+00:07:03,552 --> 00:07:04,672
+the same kind.
+
+166
+00:07:06,103 --> 00:07:08,503
+A categorical variable puts each unit in
+
+167
+00:07:08,583 --> 00:07:09,383
+a group.
+
+168
+00:07:09,863 --> 00:07:12,063
+Side of town is north or south.
+
+169
+00:07:12,779 --> 00:07:15,229
+Evening swim is yes or no,
+
+170
+00:07:15,309 --> 00:07:16,669
+and so is season pass.
+
+171
+00:07:17,469 --> 00:07:19,709
+A quantitative variable records a number
+
+172
+00:07:19,789 --> 00:07:22,979
+that's an amount, so hours swum last week
+
+173
+00:07:23,059 --> 00:07:24,219
+is quantitative.
+
+174
+00:07:24,930 --> 00:07:27,170
+The test is to ask whether an average would
+
+175
+00:07:27,250 --> 00:07:28,090
+make sense.
+
+176
+00:07:28,756 --> 00:07:31,076
+Would average hours swum mean something?
+
+177
+00:07:31,876 --> 00:07:34,496
+Sure it would, so that's quantitative.
+
+178
+00:07:35,296 --> 00:07:37,371
+Grade, nine through twelve,
+
+179
+00:07:37,411 --> 00:07:38,451
+is a number too.
+
+180
+00:07:39,137 --> 00:07:41,137
+But here it names a class year,
+
+181
+00:07:41,217 --> 00:07:43,517
+so Lena uses it as a group,
+
+182
+00:07:43,597 --> 00:07:45,197
+which makes it categorical.
+
+183
+00:07:46,358 --> 00:07:48,558
+Now comes the classic trap.
+
+184
+00:07:49,358 --> 00:07:52,339
+zip codes are written as numbers.
+
+185
+00:07:52,459 --> 00:07:55,944
+But what's the average of two zip codes?
+
+186
+00:07:56,024 --> 00:07:58,369
+It's a meaningless number.
+
+187
+00:07:58,449 --> 00:08:02,799
+A zip code is a label, so it's categorical.
+
+188
+00:08:02,879 --> 00:08:05,519
+Jersey numbers, phone area codes and locker
+
+189
+00:08:05,719 --> 00:08:07,920
+numbers work the same way.
+
+190
+00:08:07,960 --> 00:08:09,880
+They're written as numbers...
+
+191
+00:08:09,960 --> 00:08:12,040
+but they're used as names.
+
+192
+00:08:13,186 --> 00:08:15,986
+Quantitative variables come in two kinds.
+
+193
+00:08:16,146 --> 00:08:19,066
+Some are counts, like siblings or texts
+
+194
+00:08:19,146 --> 00:08:20,026
+sent today.
+
+195
+00:08:20,747 --> 00:08:22,797
+You can have two or three,
+
+196
+00:08:22,877 --> 00:08:24,517
+but never two and a half.
+
+197
+00:08:25,238 --> 00:08:26,638
+Those are discrete.
+
+198
+00:08:27,349 --> 00:08:29,949
+Others are measurements, like height or
+
+199
+00:08:29,989 --> 00:08:31,349
+the time to swim a lap.
+
+200
+00:08:32,030 --> 00:08:34,565
+They can land anywhere in a range,
+
+201
+00:08:34,645 --> 00:08:36,565
+and those are continuous.
+
+202
+00:08:37,666 --> 00:08:38,906
+It's your turn again!
+
+203
+00:08:39,627 --> 00:08:41,867
+An animal shelter keeps a table with one
+
+204
+00:08:41,947 --> 00:08:43,107
+row per dog.
+
+205
+00:08:43,818 --> 00:08:46,418
+The columns are breed, weight in pounds,
+
+206
+00:08:46,833 --> 00:08:49,613
+number of times adopted, and kennel number.
+
+207
+00:08:50,413 --> 00:08:53,124
+First, what's the observational unit?
+
+208
+00:08:53,915 --> 00:08:56,475
+Then, for each column, is it categorical
+
+209
+00:08:56,635 --> 00:08:57,595
+or quantitative?
+
+210
+00:08:58,361 --> 00:09:00,256
+And if it's quantitative,
+
+211
+00:09:00,336 --> 00:09:02,496
+is it discrete or continuous?
+
+212
+00:09:10,702 --> 00:09:13,662
+There's one row per dog, so a dog is the
+
+213
+00:09:13,822 --> 00:09:14,942
+observational unit.
+
+214
+00:09:15,742 --> 00:09:17,182
+Breed is categorical.
+
+215
+00:09:17,982 --> 00:09:20,302
+Weight is quantitative and continuous,
+
+216
+00:09:20,382 --> 00:09:21,422
+because it's a measurement.
+
+217
+00:09:22,203 --> 00:09:24,443
+Number of times adopted is quantitative
+
+218
+00:09:24,523 --> 00:09:26,868
+and discrete, because it's a count.
+
+219
+00:09:27,569 --> 00:09:29,969
+And is kennel number quantitative?
+
+220
+00:09:30,769 --> 00:09:33,809
+No, it's categorical, because it's a label
+
+221
+00:09:33,889 --> 00:09:35,809
+written as a number, like a zip code.
+
+222
+00:09:36,609 --> 00:09:38,929
+The average kennel number means nothing.
+
+223
+00:09:42,729 --> 00:09:44,809
+Now we need the next pair of words.
+
+224
+00:09:45,480 --> 00:09:47,720
+A number that describes a population is
+
+225
+00:09:47,800 --> 00:09:48,600
+a parameter.
+
+226
+00:09:49,371 --> 00:09:52,251
+A number that describes a sample is a statistic.
+
+227
+00:09:53,037 --> 00:09:54,477
+There's an easy way to remember it.
+
+228
+00:09:55,233 --> 00:09:57,838
+Population goes with Parameter,
+
+229
+00:09:57,918 --> 00:10:00,709
+and Sample goes with Statistic,
+
+230
+00:10:00,789 --> 00:10:03,329
+so P goes with P...
+
+231
+00:10:03,409 --> 00:10:04,849
+and S goes with S.
+
+232
+00:10:06,049 --> 00:10:08,049
+Parameters are usually unknown.
+
+233
+00:10:08,835 --> 00:10:09,715
+And why is that?
+
+234
+00:10:10,436 --> 00:10:12,596
+To get one, you'd have to measure everyone
+
+235
+00:10:12,636 --> 00:10:13,796
+in the population.
+
+236
+00:10:14,537 --> 00:10:17,477
+So you compute a statistic from a sample,
+
+237
+00:10:17,557 --> 00:10:19,557
+and use it to estimate the parameter.
+
+238
+00:10:20,357 --> 00:10:21,637
+So which one moves?
+
+239
+00:10:22,348 --> 00:10:25,499
+A parameter stays fixed, but a statistic
+
+240
+00:10:25,659 --> 00:10:27,419
+changes from sample to sample.
+
+241
+00:10:28,905 --> 00:10:31,305
+Lena finds one number she doesn't need to
+
+242
+00:10:31,385 --> 00:10:32,911
+estimate.
+
+243
+00:10:32,951 --> 00:10:35,656
+The school sells the season pool passes,
+
+244
+00:10:35,736 --> 00:10:37,576
+and its records show that thirty percent
+
+245
+00:10:37,616 --> 00:10:39,176
+of its students hold one.
+
+246
+00:10:39,886 --> 00:10:41,526
+That's about three in ten.
+
+247
+00:10:42,272 --> 00:10:44,992
+So is that a parameter or a statistic?
+
+248
+00:10:45,668 --> 00:10:47,988
+It comes from records on all two thousand
+
+249
+00:10:48,068 --> 00:10:50,893
+students, the whole population...
+
+250
+00:10:50,973 --> 00:10:52,413
+so it's a parameter.
+
+251
+00:10:53,109 --> 00:10:55,189
+In her sample, forty of the one hundred
+
+252
+00:10:55,349 --> 00:10:56,709
+fifty hold a pass.
+
+253
+00:10:57,365 --> 00:10:59,795
+That's about twenty seven percent,
+
+254
+00:10:59,875 --> 00:11:00,875
+a statistic.
+
+255
+00:11:01,576 --> 00:11:02,976
+Are the two numbers equal?
+
+256
+00:11:03,667 --> 00:11:06,297
+They're close, but they're not equal,
+
+257
+00:11:06,697 --> 00:11:09,028
+and that's normal, because every sample
+
+258
+00:11:09,108 --> 00:11:10,548
+comes out a little different.
+
+259
+00:11:11,969 --> 00:11:15,085
+There's one more word, and it's distribution.
+
+260
+00:11:15,846 --> 00:11:18,086
+The distribution of a variable tells you
+
+261
+00:11:18,166 --> 00:11:20,961
+what values it takes, and how often it takes
+
+262
+00:11:21,041 --> 00:11:21,841
+each one.
+
+263
+00:11:22,437 --> 00:11:25,712
+For side of town, it's simple: sixty students
+
+264
+00:11:25,792 --> 00:11:29,003
+from the north side, ninety from the south,
+
+265
+00:11:29,083 --> 00:11:30,443
+and a bar chart shows it.
+
+266
+00:11:31,138 --> 00:11:33,934
+For hours swum, it's how those one hundred
+
+267
+00:11:34,094 --> 00:11:36,044
+fifty numbers spread out,
+
+268
+00:11:36,124 --> 00:11:39,164
+from zero hours up to the most anyone swam.
+
+269
+00:11:39,870 --> 00:11:42,430
+Describing distributions is the job of most
+
+270
+00:11:42,470 --> 00:11:44,030
+of the rest of Unit 1.
+
+271
+00:11:45,176 --> 00:11:46,056
+Now you try one.
+
+272
+00:11:46,797 --> 00:11:48,637
+A school district's records show that the
+
+273
+00:11:48,797 --> 00:11:51,117
+average commute for all twelve hundred staff
+
+274
+00:11:51,197 --> 00:11:53,157
+members is twenty two minutes.
+
+275
+00:11:53,803 --> 00:11:56,043
+A reporter who hasn't seen those records
+
+276
+00:11:56,203 --> 00:11:58,718
+picks forty staff members at random,
+
+277
+00:11:58,798 --> 00:12:01,118
+and their average is twenty five minutes.
+
+278
+00:12:01,809 --> 00:12:03,869
+Which number is the parameter,
+
+279
+00:12:03,949 --> 00:12:05,469
+and which is the statistic?
+
+280
+00:12:06,145 --> 00:12:09,245
+And if another reporter took another forty,
+
+281
+00:12:09,325 --> 00:12:10,525
+which number would change?
+
+282
+00:12:17,802 --> 00:12:20,042
+Twenty two minutes comes from all twelve
+
+283
+00:12:20,082 --> 00:12:22,578
+hundred staff, the population.
+
+284
+00:12:23,308 --> 00:12:24,828
+So it's the parameter.
+
+285
+00:12:25,569 --> 00:12:27,729
+Twenty five minutes describes the forty
+
+286
+00:12:27,809 --> 00:12:30,509
+in the sample, so it's a statistic.
+
+287
+00:12:31,255 --> 00:12:33,495
+A second reporter would likely get a different
+
+288
+00:12:33,575 --> 00:12:34,375
+average.
+
+289
+00:12:34,911 --> 00:12:37,696
+The statistic changes, and the twenty two
+
+290
+00:12:37,776 --> 00:12:38,576
+stays put.
+
+291
+00:12:39,202 --> 00:12:41,442
+The trap is guessing from the size of the
+
+292
+00:12:41,522 --> 00:12:42,322
+number.
+
+293
+00:12:42,722 --> 00:12:45,282
+It's about who the number describes.
+
+294
+00:12:49,082 --> 00:12:51,082
+The first numbers you compute from data
+
+295
+00:12:51,162 --> 00:12:53,162
+are usually parts of a whole.
+
+296
+00:12:53,853 --> 00:12:55,553
+To get a part of a whole,
+
+297
+00:12:55,633 --> 00:12:57,393
+you divide the part by the whole.
+
+298
+00:12:58,170 --> 00:13:00,410
+Eighteen shaded boxes out of twenty four
+
+299
+00:13:00,570 --> 00:13:03,020
+is zero point seven five,
+
+300
+00:13:03,060 --> 00:13:05,420
+and statisticians call this a proportion.
+
+301
+00:13:06,151 --> 00:13:08,191
+Can it ever be bigger than one?
+
+302
+00:13:08,917 --> 00:13:09,717
+It can't.
+
+303
+00:13:10,273 --> 00:13:12,593
+The answer always lands between zero and
+
+304
+00:13:12,673 --> 00:13:15,963
+one, because the part sits inside the whole.
+
+305
+00:13:16,734 --> 00:13:19,649
+So if you do get a number bigger than one,
+
+306
+00:13:19,729 --> 00:13:21,769
+your fraction is upside down.
+
+307
+00:13:22,840 --> 00:13:25,971
+A percent means out of a hundred.
+
+308
+00:13:26,051 --> 00:13:28,361
+To turn a decimal into a percent,
+
+309
+00:13:28,441 --> 00:13:30,426
+you multiply by a hundred,
+
+310
+00:13:30,506 --> 00:13:32,506
+which moves the decimal point two places
+
+311
+00:13:32,586 --> 00:13:33,972
+right.
+
+312
+00:13:34,012 --> 00:13:36,817
+To go back, you divide by a hundred.
+
+313
+00:13:37,598 --> 00:13:40,088
+Small percents are tricky.
+
+314
+00:13:40,168 --> 00:13:42,888
+Eight percent is zero point zero eight,
+
+315
+00:13:43,088 --> 00:13:45,939
+not zero point eight.
+
+316
+00:13:46,019 --> 00:13:48,019
+The hardest part is usually picking the
+
+317
+00:13:48,219 --> 00:13:49,479
+whole.
+
+318
+00:13:49,559 --> 00:13:51,159
+You listen for the little word,
+
+319
+00:13:51,359 --> 00:13:52,159
+of.
+
+320
+00:13:52,515 --> 00:13:54,895
+Whatever group comes right after it...
+
+321
+00:13:54,975 --> 00:13:55,975
+that's your whole.
+
+322
+00:13:56,636 --> 00:13:58,716
+If the question asks what part of the pass
+
+323
+00:13:58,796 --> 00:14:01,786
+holders, the whole is the pass holders.
+
+324
+00:14:02,462 --> 00:14:05,307
+If it asks what part of all the students,
+
+325
+00:14:05,387 --> 00:14:06,747
+then the whole is everyone.
+
+326
+00:14:08,194 --> 00:14:10,514
+Lena digs into the forty pass holders,
+
+327
+00:14:10,634 --> 00:14:12,834
+and thirty four of them said yes to evening
+
+328
+00:14:13,034 --> 00:14:13,834
+hours.
+
+329
+00:14:14,114 --> 00:14:16,594
+So what part of the pass holders want it?
+
+330
+00:14:17,270 --> 00:14:19,650
+It's thirty four out of forty...
+
+331
+00:14:19,730 --> 00:14:21,610
+which is eighty five percent.
+
+332
+00:14:22,336 --> 00:14:24,416
+But what part of all the students surveyed
+
+333
+00:14:24,496 --> 00:14:26,336
+are pass holders who said yes?
+
+334
+00:14:27,027 --> 00:14:29,092
+It's the same thirty four...
+
+335
+00:14:29,172 --> 00:14:32,003
+but now it goes over one hundred fifty,
+
+336
+00:14:32,083 --> 00:14:34,043
+and that's about twenty three percent.
+
+337
+00:14:34,783 --> 00:14:37,529
+It's the same part with a different whole,
+
+338
+00:14:37,569 --> 00:14:39,769
+and it gives a very different answer.
+
+339
+00:14:41,105 --> 00:14:43,735
+There's one more rule, which is to compare
+
+340
+00:14:43,975 --> 00:14:46,511
+parts, not counts.
+
+341
+00:14:46,551 --> 00:14:50,276
+Lena splits her yes answers by side of town.
+
+342
+00:14:50,356 --> 00:14:52,756
+On the north side, forty two out of sixty
+
+343
+00:14:52,876 --> 00:14:54,471
+said yes.
+
+344
+00:14:54,511 --> 00:14:57,106
+On the south side, it was fifty four out
+
+345
+00:14:57,186 --> 00:14:58,226
+of ninety.
+
+346
+00:14:58,306 --> 00:15:01,457
+So does the south side want it more?
+
+347
+00:15:01,537 --> 00:15:05,717
+It has more yeses, but it's a bigger group.
+
+348
+00:15:05,837 --> 00:15:09,662
+So you divide each part by its own whole.
+
+349
+00:15:09,742 --> 00:15:12,132
+The north comes to seventy percent,
+
+350
+00:15:12,172 --> 00:15:13,732
+and the south comes to...
+
+351
+00:15:13,852 --> 00:15:15,732
+sixty percent.
+
+352
+00:15:15,812 --> 00:15:18,292
+A larger part of the north side wants evening
+
+353
+00:15:18,532 --> 00:15:19,923
+hours.
+
+354
+00:15:20,003 --> 00:15:21,918
+When groups differ in size,
+
+355
+00:15:21,998 --> 00:15:23,358
+you compare percents.
+
+356
+00:15:24,485 --> 00:15:26,165
+It's your turn one last time.
+
+357
+00:15:26,936 --> 00:15:28,776
+In a class of eighty seniors,
+
+358
+00:15:28,856 --> 00:15:30,776
+thirty two play a school sport,
+
+359
+00:15:30,856 --> 00:15:32,696
+and twelve of those play two sports.
+
+360
+00:15:33,496 --> 00:15:35,656
+What percent of the sport players play two
+
+361
+00:15:35,736 --> 00:15:37,176
+sports?
+
+362
+00:15:37,336 --> 00:15:39,416
+And what percent of all the seniors play
+
+363
+00:15:39,496 --> 00:15:40,296
+two sports?
+
+364
+00:15:48,436 --> 00:15:50,992
+For the sport players, the whole is the
+
+365
+00:15:51,032 --> 00:15:53,177
+thirty two players.
+
+366
+00:15:53,257 --> 00:15:55,337
+Twelve out of thirty two is thirty seven
+
+367
+00:15:55,497 --> 00:15:57,737
+and a half percent.
+
+368
+00:15:57,817 --> 00:16:01,682
+For all the seniors, the whole is eighty.
+
+369
+00:16:01,762 --> 00:16:04,162
+Twelve out of eighty is fifteen percent.
+
+370
+00:16:04,948 --> 00:16:07,668
+The trap is dividing by eighty for the first
+
+371
+00:16:07,748 --> 00:16:09,668
+one, just because it's the biggest number
+
+372
+00:16:09,708 --> 00:16:10,708
+on the page.
+
+373
+00:16:14,508 --> 00:16:16,028
+This is the whole path.
+
+374
+00:16:16,813 --> 00:16:18,853
+You start with a question whose answers
+
+375
+00:16:18,933 --> 00:16:22,094
+vary, about a population.
+
+376
+00:16:22,134 --> 00:16:23,854
+You take a random sample that looks like
+
+377
+00:16:23,934 --> 00:16:26,669
+it, where rows are units and columns are
+
+378
+00:16:26,989 --> 00:16:30,825
+variables, categorical or quantitative.
+
+379
+00:16:30,905 --> 00:16:32,640
+You pick the right whole,
+
+380
+00:16:32,680 --> 00:16:34,720
+and the sample's statistic estimates the
+
+381
+00:16:35,000 --> 00:16:37,165
+population's parameter.
+
+382
+00:16:37,205 --> 00:16:39,985
+And you always say it in context...
+
+383
+00:16:40,145 --> 00:16:41,825
+because the next sample would come out a
+
+384
+00:16:41,945 --> 00:16:42,865
+bit different.
+
+385
+00:16:46,665 --> 00:16:49,590
+A week later, Lena stands at the podium.
+
+386
+00:16:50,351 --> 00:16:53,152
+She tells them: Sixty four percent of the
+
+387
+00:16:53,232 --> 00:16:55,072
+one hundred fifty students I surveyed at
+
+388
+00:16:55,152 --> 00:16:57,392
+random said they'd swim between six and
+
+389
+00:16:57,472 --> 00:16:58,272
+nine.
+
+390
+00:16:58,827 --> 00:17:01,387
+So nearly two in three of the school's students
+
+391
+00:17:01,547 --> 00:17:03,913
+would, give or take a few points.
+
+392
+00:17:04,668 --> 00:17:06,268
+So what does the council do?
+
+393
+00:17:06,964 --> 00:17:09,164
+It votes for a two week trial.
+
+394
+00:17:09,880 --> 00:17:12,245
+That Friday, the pool lights come on at
+
+395
+00:17:12,285 --> 00:17:14,761
+dusk, and the water fills up.
+
+396
+00:17:15,432 --> 00:17:17,112
+You'll find the notes and practice for this
+
+397
+00:17:17,312 --> 00:17:21,287
+topic, free, on levlprep.com.
+
+398
+00:17:21,327 --> 00:17:23,998
+And next time, we'll turn a yes or no column
+
+399
+00:17:24,078 --> 00:17:26,878
+into a table and a graph that tell the story
+
+400
+00:17:26,918 --> 00:17:27,918
+at a glance.
+

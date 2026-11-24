@@ -337,18 +337,20 @@
         "statistics/notes/variables.html",
         "statistics/notes/math-fractions-percents.html"
       ],
-      "title": "",
-      "description_file": "",
-      "video": "",
-      "thumb": "",
-      "captions": "",
+      "title": "Intro to Statistics: Population, Sample and Variables | AP Statistics",
+      "description_file": "long/yt-stats-01-youtube.md",
+      "video": "long/yt-stats-01-intro-variables.mp4",
+      "thumb": "long/yt-stats-01-thumb.png",
+      "captions": "long/yt-stats-01-captions.srt",
       "playlist": "AP Statistics | LevlPrep",
-      "date": "",
-      "status": "building",
+      "date": "2026-11-24",
+      "status": "pending",
       "approved_on": "",
       "youtube_id": "",
       "added_on": "2026-11-19",
-      "note": "script audited 2026-11-19, not voiced (laptop unreachable); script in Project claude/levlprep-pipeline/long/st01_script.py"
+      "note": "DRAFT 3 (17:31) approved by Olivier in the build chat 2026-11-24; see claude/levlprep-queue-unpushed-2026-11-24-long.md",
+      "thumb_b": "long/yt-stats-01-thumb-b.png",
+      "thumb_c": "long/yt-stats-01-thumb-c.png"
     }
   ]
 }
