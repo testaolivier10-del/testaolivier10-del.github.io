@@ -157,7 +157,35 @@ the picker, the stepper, the switch, Start over, Show me how.
   `--perf`; `--shots`).
 
 ## Checks run
-See the section filled in at the end of the first build below.
+
+### First build (2026-11-24)
+- `node --test scripts/test/apstat-*.test.mjs` (167 pass), `check-apstat-content` (0 failing), `build-apstat --check`
+  (the other nine trainers unchanged), `build-apcalc --check`, `build-apmacro --check`, `check-site` (no broken
+  references; US spellings, also in code comments), `check-weight --check` (626 budgets within range);
+  `scripts/check-tool-use.mjs` with a local copy of its list (and playwright 1.63): the page sends tool-open,
+  tool-touch (explore), tool-mode (quiz), tool-use, nothing under automation. Free, as before (no lock).
+- Sweep, one process per width, light and dark (the dark runs assert `data-theme="dark"`, set through
+  `localStorage.nremt_theme`): **1,022 passed, 0 failed** over the ten widths (102 a width, 104 at 360 with the
+  360 x 740 and 375 x 667 landings): the first visit with its cue, a person dragged to each end, a tapped person, the
+  SD band, three added and one removed, 40 people (both tabs), Start over, 5 people, each data set in both tabs, the
+  boxplot tab with an outlier made and unmade, a picked person, the narrowest and widest bins, Start over, Test
+  yourself. Each state checks clipping, 4 px between labels, labels clear of the people, the knob, the posts, the
+  crate and the outlier dots, text at least 11 px, the plank and people the largest part, sideways scroll, the phone
+  cause line (two rows, constant height), that the picture, the knob and the cause line show together with no inner
+  scroll (390 x 844, 1024 x 768, 1280 x 800 and every other width), that "?" is filled and matches the people, and
+  AGREE.
+- Frames: **77 passed, 0 failed** (2,224 frames at 390 and 1440, every one agreeing): a real pointer drag out and
+  back, fast reversals, a tap (z-score), keys on the knob, arrows in the people group, add and remove, the SD band,
+  Start over, a data set change, the tab change, a drag that makes an outlier and back, a drag across the middle,
+  the bin knob, leaving to Test yourself mid change and back (clean), a real touch drag at 390 (the person moves, the
+  page does not scroll), reduced motion (at once, with the cross fade).
+- Perf, CPU x4, the same run as the flagship: a person dragged out and back, median 16.7 ms, p95 16.8 ms at 390 and
+  1440 (mean tab); 40 people on the boxplot tab p95 16.8 ms at both. The flagship's fertilizer drag: p95 50.0 ms at 390
+  and 66.6 ms at 1440.
+- Test yourself by hand: `?seed=12345#quiz` opens a z-score problem; a wrong 1 draws "yours: z = 1.00" on the dots;
+  −1.03 is accepted and draws the z scale.
+- Preview: `/mnt/user-data/outputs/stat-data-explorer-v2/index.html`; shots in `shots/` (every sweep state at all ten
+  widths light and dark; mid animation `mid-*-tilt`, `mid-*-arrive`, `mid-*-crate` at 390 and 1440).
 
 ## Not done, and what I am not happy with
 - No real phone, no screen reader pass, no real students; the independent review is still to come.
@@ -166,3 +194,8 @@ See the section filled in at the end of the first build below.
 - The pointer's value under a tipped plank is read along the plank, so a drag released while the plank is still
   tipping can land one unit from where the finger was over the flat scale.
 - People stacked on shoulders is a pictograph convention, not a realistic scene.
+- While a mark slides (a key press, Start over), the crate, slat, flag and posts step along the grid of numbers they
+  can take (0.5 for a quartile or median, 0.25 for a fence), so the label always names where the mark is drawn; at
+  1440 a long slide shows those steps.
+- The phone picture leaves sky above the commute stacks; the people are sized to fill about 80% of the room only up
+  to 22 px wide on a phone.

@@ -145,7 +145,7 @@ const AGREE = () => {
         if (/^SD /.test(t)) near(nums(t)[0], S.sd, 0.051, `cause "${t}"`);
         if (/^z = /.test(t)) { const v = nums(c0)[0]; near(nums(t)[0], (v - S.mean) / S.sd, 0.006, `cause "${t}" for ${v}`); }
       });
-      if (/→/.test(c0)) { const v1 = nums(c0)[1], cur = X.S.cur && X.dval(X.S.cur); if (Math.abs(v1 - cur) > 1e-6) out.push(`cause "${c0}" vs the moved person at ${cur}`); if (!vals.includes(v1)) out.push(`cause "${c0}": nobody stands at ${v1}`); }
+      if (/→/.test(c0)) { const v1 = nums(c0)[1], cur = X.S.cur && byEl.get(X.S.cur.el); if (Math.abs(v1 - cur) > 1e-6) out.push(`cause "${c0}" vs the moved person at ${cur}`); if (!vals.includes(v1)) out.push(`cause "${c0}": nobody stands at ${v1}`); }
     }
   } else {
     const vNum = (sel) => { const e = document.querySelector(sel); return e ? nums(e.textContent)[0] : NaN; };

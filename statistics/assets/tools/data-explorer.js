@@ -322,7 +322,7 @@
       g.pad = pad; g.l = pad + (g.phone ? 18 : 34); g.r = W - pad - (g.phone ? 18 : 34);
       g.fs = g.phone ? 12 : 13.5;
       g.pt = g.phone ? 22 : 28;             // the plank's thickness (its numbers on its face)
-      g.pw = g.phone ? clamp(W / 26, 13, 16) : clamp(W / 40, 15, 34);   // a person's width at full size
+      g.pw = g.phone ? 15 : 24;   // a person's width at full size (fitPw() then sizes them to the room)
       if(S.tab === 'mean'){
         g.grass = g.phone ? 40 : 54; g.wedgeH = g.phone ? 34 : 50;
         g.groundY = H - pad - g.grass;
@@ -392,25 +392,40 @@
     }
 
     /* ---------------------------------------------------- levels: people at the same place stand on each other's shoulders */
-    var sc = 1, levelH = 22;
+    var sc = 1, levelH = 22, pwD = null;
+    /* the people's size: the largest that keeps the stacks within about 80% of the room above the plank (worked out
+       when nothing is moving, then grown or shrunk smoothly; while a stack grows past the room the figures shrink) */
+    function stackOf(pw, vals){
+      var xs = vals.map(xv).sort(function(a, b){ return a - b; }), rows = [], maxL = 0;
+      xs.forEach(function(x){ var L = 0; while(rows[L] && rows[L].some(function(q){ return Math.abs(q - x) < pw * 0.94; })) L++; (rows[L] = rows[L] || []).push(x); if(L > maxL) maxL = L; });
+      return maxL + 1;
+    }
+    function fitPw(){
+      if(!G) return;
+      var vals = S.P.filter(function(p){ return p.st !== 'go' && p.st !== 'gone'; }).map(function(p){ return p.tw ? p.tw.b : p.v; });
+      var room = (G.PY - G.stackTop) * 0.8, hiW = G.phone ? 22 : 42, loW = G.phone ? 12 : 15, best = loW;
+      for(var pw = hiW; pw >= loW; pw -= 1){ if(stackOf(pw, vals) * 2.26 * pw <= room){ best = pw; break; } }
+      G.pw = best;
+      if(pwD == null || calm()) pwD = best;
+    }
     function levels(){
       var arr = S.P.filter(function(p){ return p.st !== 'gone'; }).slice().sort(function(a, b){ return a.d - b.d || a.id - b.id; });
-      var gap = G.pw * 0.94, rows = [], maxL = 0;
+      var pwNow = pwD == null ? G.pw : pwD, gap = pwNow * 0.94, rows = [], maxL = 0;
       arr.forEach(function(p){
         var x = xv(p.d), L = 0;
         while(rows[L] && rows[L].some(function(q){ return Math.abs(q - x) < gap; })) L++;
         (rows[L] = rows[L] || []).push(x); p.lt = L; if(L > maxL) maxL = L;
       });
       // the figures shrink when a column would reach the knob's room
-      var room = G.PY - G.stackTop, full = G.pw / 10 * 22.6;
-      sc = Math.min(G.pw / 10, room / ((maxL + 1) * 22.6));
+      var room = G.PY - G.stackTop, full = pwNow / 10 * 22.6;
+      sc = Math.min(pwNow / 10, room / ((maxL + 1) * 22.6));
       levelH = sc * 22.6;
       return full;
     }
     /* where a person's feet are, in the plank's (untilted) frame */
     function colTop(p){
       var x = xv(p.d), top = p.lv;
-      S.P.forEach(function(q){ if(q.st === 'gone') return; if(Math.abs(xv(q.d) - x) < G.pw * 0.94 && q.lv > top) top = q.lv; });
+      S.P.forEach(function(q){ if(q.st === 'gone') return; if(Math.abs(xv(q.d) - x) < (pwD || G.pw) * 0.94 && q.lv > top) top = q.lv; });
       return G.PY - (top + 1) * levelH;
     }
     /* the tilt: rotate the plank's frame about the wedge's tip */
@@ -424,6 +439,7 @@
     /* ---------------------------------------------------- the animation */
     function busy(){
       if(S.P.some(function(p){ return p.tw || p.st === 'come' || p.st === 'go' || Math.abs(p.lv - p.lt) > 0.01; })) return true;
+      if(pwD != null && G && pwD !== G.pw) return true;
       var s = drawnStats(); if(!s) return false;
       var eps = (hi - lo) * 1e-4;
       if(S.tab === 'mean') return Math.abs(Dr.f - s.mean) > eps || Math.abs(Dr.med - s.med) > eps || Math.abs(Dr.sdA - (S.sd ? 1 : 0)) > 0.01;
@@ -441,6 +457,7 @@
       });
       var gone = S.P.filter(function(p){ return p.st === 'gone'; });
       if(gone.length){ gone.forEach(function(p){ p.el.remove(); }); S.P = S.P.filter(function(p){ return p.st !== 'gone'; }); if(S.cur && S.cur.st === 'gone') S.cur = farthest(); }
+      if(pwD != null && pwD !== G.pw){ pwD = c ? G.pw : pwD + (G.pw - pwD) * (1 - Math.exp(-dt / 120)); if(Math.abs(pwD - G.pw) < 0.05) pwD = G.pw; }
       levels();
       S.P.forEach(function(p){ if(c) p.lv = p.lt; else { p.lv += (p.lt - p.lv) * (1 - Math.exp(-dt / 60)); if(Math.abs(p.lt - p.lv) < 0.01) p.lv = p.lt; } });
       var s = drawnStats(); if(!s) return;
@@ -470,9 +487,16 @@
     }
     function hideEl(e){ if(e && e.style.display !== 'none') e.style.display = 'none'; }
     function showEl(e){ if(e && e.style.display === 'none') e.style.display = ''; }
+    /* the moving marks are drawn at the numbers they show: a median or quartile of values on a step of 1 is a multiple
+       of 0.5 and a fence a multiple of 0.25, so while a mark slides it steps along that grid (its label always names the
+       place it is drawn) */
+    var Dv = {};
+    function grid(v, g){ return v == null ? v : Math.round(v / g) * g; }
+    function shownDr(){ var h = st() / 2, q = st() / 4; Dv.med = grid(Dr.med, h); Dv.q1 = grid(Dr.q1, h); Dv.q3 = grid(Dr.q3, h); Dv.f0 = grid(Dr.f0, q); Dv.f1 = grid(Dr.f1, q); Dv.w0 = grid(Dr.w0, st()); Dv.w1 = grid(Dr.w1, st()); }
     var lastCause = '';
     function paint(){
       if(!G) return;
+      shownDr();
       var s = drawnStats();
       // the people
       var drag = handle && handle.dragging();
@@ -480,7 +504,7 @@
         var f = [xv(p.d), G.PY - p.lv * levelH], dy = p.st === 'come' ? -(1 - easeOut(p.a)) * 36 : p.st === 'go' ? -(1 - p.a) * 30 : 0;
         p.el.setAttribute('transform', 'translate(' + f[0].toFixed(1) + ' ' + (f[1] + dy).toFixed(1) + ') scale(' + sc.toFixed(3) + ')');
         var o = p.a < 1 ? p.a.toFixed(2) : ''; if(p.el.style.opacity !== o) p.el.style.opacity = o;
-        var isSel = p === S.cur && (S.sel || drag), isOut = S.tab === 'box' && s && p.st === 'in' && (dval(p) < r2(Dr.f0) - 1e-9 || dval(p) > r2(Dr.f1) + 1e-9);
+        var isSel = p === S.cur && (S.sel || drag), isOut = S.tab === 'box' && s && p.st === 'in' && (dval(p) < Dv.f0 - 1e-9 || dval(p) > Dv.f1 + 1e-9);
         p.out = isOut;
         var cls = 'dx2-p sk' + (hash(p.id, 1) % 4) + ' sh' + (hash(p.id, 2) % 6) + ' hr' + (hash(p.id, 3) % 4) + (isSel ? ' is-sel' : '') + (isOut ? ' is-out' : '');
         if(p.el.getAttribute('class') !== cls) p.el.setAttribute('class', cls);
@@ -504,10 +528,10 @@
       var lx = clamp(mp[0], 6 + wL / 2 + 7, W - 6 - wL / 2 - 7);
       var mpill = pill('meanP', gLabs, 'dx2-mpill'); setPill(mpill, lx, G.groundY + G.grass / 2 + 1, tL, fsL, 'middle', 7);
       // the median flag (at the median's drawn place, on the plank)
-      var fx0 = xv(Dr.med), pole = LB.pole || (LB.pole = mk('line', 'dx2-pole', null, gFlag));
+      var fx0 = xv(Dv.med), pole = LB.pole || (LB.pole = mk('line', 'dx2-pole', null, gFlag));
       at(pole, { x1: fx0, x2: fx0, y1: G.clothY + 1, y2: G.PY + 1 });
       var knob = LB.knobf || (LB.knobf = mk('circle', 'dx2-polek', { r: 3 }, gFlag)); at(knob, { cx: fx0, cy: G.clothY });
-      var fsC = G.phone ? 12.5 : 14, tC = 'median ' + num(Dr.med, 2), wC = tw(tC, fsC, 900) + 18, right = fx0 + wC + 4 < W - 6;
+      var fsC = G.phone ? 12.5 : 14, tC = 'median ' + num(Dv.med, 2), wC = tw(tC, fsC, 900) + 18, right = fx0 + wC + 4 < W - 6;
       var cl = LB.cloth || (LB.cloth = mk('path', 'dx2-cloth', null, gFlag)), cx0 = right ? fx0 + 1 : fx0 - 1 - wC, ch = G.clothH;
       at(cl, { d: right ? 'M' + cx0.toFixed(1) + ' ' + G.clothY + ' H ' + (cx0 + wC).toFixed(1) + ' l -6 ' + (ch / 2) + ' l 6 ' + (ch / 2) + ' H ' + cx0.toFixed(1) + ' Z'
         : 'M' + (cx0 + wC).toFixed(1) + ' ' + G.clothY + ' H ' + cx0.toFixed(1) + ' l 6 ' + (ch / 2) + ' l -6 ' + (ch / 2) + ' H ' + (cx0 + wC).toFixed(1) + ' Z' });
@@ -537,7 +561,7 @@
       // fence posts (at the fences as drawn), each with its sign; off the scale: a sign at that edge with an arrow
       var signs = [];
       [0, 1].forEach(function(k){
-        var f = k ? Dr.f1 : Dr.f0, inside = f >= lo && f <= hi, x = xv(clamp(f, lo, hi));
+        var f = k ? Dv.f1 : Dv.f0, inside = f >= lo && f <= hi, x = xv(clamp(f, lo, hi));
         var post = LB['post' + k] || (LB['post' + k] = mk('rect', 'dx2-post', null, gPosts));
         if(inside){ showEl(post); at(post, { x: x - 2.5, y: G.signY + G.signH - 2, width: 5, height: G.PY + 1 - (G.signY + G.signH - 2), rx: 2 }); } else hideEl(post);
         var t = inside ? 'fence ' + num(f, 2) : (k ? 'fence ' + num(f, 2) + ' →' : '← fence ' + num(f, 2));
@@ -560,7 +584,7 @@
       // (they are at opposite ends of the box, so this only happens when both are off one edge, which cannot be)
       // the crate (box) from Q1 to Q3, the median slat, whisker ropes to stakes, outlier dots
       var cy = G.boxTop + G.boxH * 0.5, bh = Math.min(G.phone ? 28 : 36, G.boxH * 0.38);
-      var x1 = xv(Dr.q1), x3 = xv(Dr.q3), xm = xv(Dr.med), xw0 = xv(Dr.w0), xw1 = xv(Dr.w1);
+      var x1 = xv(Dv.q1), x3 = xv(Dv.q3), xm = xv(Dv.med), xw0 = xv(Dv.w0), xw1 = xv(Dv.w1);
       var rope0 = LB.rope0 || (LB.rope0 = mk('line', 'dx2-rope', null, gBoxp)), rope1 = LB.rope1 || (LB.rope1 = mk('line', 'dx2-rope', null, gBoxp));
       at(rope0, { x1: xw0, x2: x1, y1: cy, y2: cy }); at(rope1, { x1: x3, x2: xw1, y1: cy, y2: cy });
       var stk0 = LB.stk0 || (LB.stk0 = mk('path', 'dx2-stake', null, gBoxp)), stk1 = LB.stk1 || (LB.stk1 = mk('path', 'dx2-stake', null, gBoxp));
@@ -579,15 +603,15 @@
       // labels: median over the crate, Q1 and Q3 under it, "outlier" beside the outlier dots
       var fsQ = G.phone ? 11.5 : 13, yTop = cy - bh / 2 - 7, yBot = cy + bh / 2 + fsQ + 4;
       var tm = lab('tmed', 'dx2-qlab is-med', gBoxp), tq1 = lab('tq1', 'dx2-qlab', gBoxp), tq3 = lab('tq3', 'dx2-qlab', gBoxp);
-      var sm = 'median ' + num(Dr.med, 2), wm = tw(sm, fsQ, 800);
+      var sm = 'median ' + num(Dv.med, 2), wm = tw(sm, fsQ, 800);
       at(tm, { x: clamp(xm, G.pad + wm / 2 + 2, W - G.pad - wm / 2 - 2), y: yTop, 'text-anchor': 'middle', style: 'font-size:' + fsQ + 'px' }); txt(tm, sm);
-      var s1 = 'Q1 ' + num(Dr.q1, 2), s3 = 'Q3 ' + num(Dr.q3, 2), w1 = tw(s1, fsQ, 800), w3 = tw(s3, fsQ, 800);
+      var s1 = 'Q1 ' + num(Dv.q1, 2), s3 = 'Q3 ' + num(Dv.q3, 2), w1 = tw(s1, fsQ, 800), w3 = tw(s3, fsQ, 800);
       var c1 = clamp(x1, G.pad + w1 / 2 + 2, W - G.pad - w1 / 2 - 2), c3 = clamp(x3, G.pad + w3 / 2 + 2, W - G.pad - w3 / 2 - 2);
       if(c3 - c1 < (w1 + w3) / 2 + 8){ var mid = (c1 + c3) / 2, need = (w1 + w3) / 2 + 8; c1 = mid - need / 2; c3 = mid + need / 2; }
       at(tq1, { x: c1, y: yBot, 'text-anchor': 'middle', style: 'font-size:' + fsQ + 'px' }); txt(tq1, s1);
       at(tq3, { x: c3, y: yBot, 'text-anchor': 'middle', style: 'font-size:' + fsQ + 'px' }); txt(tq3, s3);
       // "outlier" names each group of outlier dots, on the side away from the box
-      var groups = []; outs.slice().sort(function(a, b){ return a - b; }).forEach(function(v){ var x = xv(v), g = groups[groups.length - 1]; if(g && x - g.x1 < 46 && (v > Dr.med) === g.hi) { g.x1 = x; g.n++; } else groups.push({ x0: x, x1: x, n: 1, hi: v > Dr.med }); });
+      var groups = []; outs.slice().sort(function(a, b){ return a - b; }).forEach(function(v){ var x = xv(v), g = groups[groups.length - 1]; if(g && x - g.x1 < 46 && (v > Dv.med) === g.hi) { g.x1 = x; g.n++; } else groups.push({ x0: x, x1: x, n: 1, hi: v > Dv.med }); });
       var ol = LB.ol || (LB.ol = []);
       while(ol.length < groups.length) ol.push(mk('text', 'dx2-olab', null, gBoxp));
       var taken = [[clamp(xm, G.pad + wm / 2 + 2, W - G.pad - wm / 2 - 2) - wm / 2, yTop - fsQ, wm, fsQ + 2], [c1 - w1 / 2, yBot - fsQ, w1, fsQ + 2], [c3 - w3 / 2, yBot - fsQ, w3, fsQ + 2], [x1, cy - bh / 2, x3 - x1, bh]];
@@ -626,15 +650,16 @@
 
     /* ---------------------------------------------------- the words: cause line and takeaways, from the drawn state */
     function words(s){
+      shownDr();
       if(S.take && !busy()) return;
       var parts = [], u = unit(), n = s.n;
       var ch = S.change, cp = ch && ch.p && ch.p.st === 'in' ? ch.p : null;
       if(S.tab === 'mean'){
         if(cp && dval(cp) !== ch.v0){
-          var dm = s.mean - ch.b.mean, md = Dr.med - ch.b.med;
+          var dm = s.mean - ch.b.mean, md = Dv.med - ch.b.med;
           parts.push({ t: num(ch.v0, 2) + ' → ' + num(dval(cp), 2) + ' ' + u, role: 'val' });
           parts.push({ t: 'mean ' + one(ch.b.mean) + ' → ' + one(s.mean), role: 'mean' });
-          parts.push({ t: Math.abs(md) < 1e-9 ? 'median stays ' + num(Dr.med, 2) : 'median ' + num(ch.b.med, 2) + ' → ' + num(Dr.med, 2), role: 'med' });
+          parts.push({ t: Math.abs(md) < 1e-9 ? 'median stays ' + num(Dv.med, 2) : 'median ' + num(ch.b.med, 2) + ' → ' + num(Dv.med, 2), role: 'med' });
         } else if(S.sel && S.cur && S.cur.st === 'in'){
           var v = dval(S.cur), z = s.sd > 0 ? (v - s.mean) / s.sd : 0;
           parts.push({ t: num(v, 2) + ' ' + u, role: 'val' });
@@ -643,12 +668,12 @@
         } else {
           parts.push({ t: plural(n, noun(1), noun(n)), role: 'val' });
           parts.push({ t: 'mean ' + one(s.mean), role: 'mean' });
-          parts.push({ t: 'median ' + num(Dr.med, 2), role: 'med' });
+          parts.push({ t: 'median ' + num(Dv.med, 2), role: 'med' });
           if(S.sd && Dr.sdA > 0.98) parts.push({ t: 'SD ' + one(s.sd), role: 'mean' });
         }
       } else {
         var outs = S.P.filter(function(p){ return p.out; }).map(dval).sort(function(a, b){ return a - b; });
-        var f0 = r2(Dr.f0), f1 = r2(Dr.f1);
+        var f0 = Dv.f0, f1 = Dv.f1;
         var where = function(v){ return v > f1 + 1e-9 ? { t: num(v, 2) + ' > Q3 + 1.5 × IQR = ' + num(f1, 2), out: true } : v < f0 - 1e-9 ? { t: num(v, 2) + ' < Q1 − 1.5 × IQR = ' + num(f0, 2), out: true } : { t: 'inside ' + num(f0, 2) + ' to ' + num(f1, 2), out: false }; };
         if(cp && dval(cp) !== ch.v0){
           var w = where(dval(cp));
@@ -661,8 +686,8 @@
           parts.push({ t: w2.t, role: 'fence' });
           parts.push({ t: w2.out ? 'outlier' : 'not an outlier', role: w2.out ? 'out' : 'box' });
         } else {
-          parts.push({ t: 'Q1 ' + num(Dr.q1, 2) + ' · Q3 ' + num(Dr.q3, 2), role: 'box' });
-          parts.push({ t: 'IQR ' + num(Dr.q3 - Dr.q1, 2), role: 'box' });
+          parts.push({ t: 'Q1 ' + num(Dv.q1, 2) + ' · Q3 ' + num(Dv.q3, 2), role: 'box' });
+          parts.push({ t: 'IQR ' + num(Dv.q3 - Dv.q1, 2), role: 'box' });
           parts.push({ t: 'fences ' + num(f0, 2) + ' and ' + num(f1, 2), role: 'fence' });
           parts.push({ t: !outs.length ? 'no outliers' : outs.length === 1 ? '1 outlier: ' + num(outs[0], 2) : outs.length + ' outliers', role: 'out' });
         }
@@ -675,6 +700,7 @@
     /* a change has settled: takeaways (once each), the reference, the live line */
     function settled(){
       var s = drawnStats(); if(!s) return;
+      if(G && !(handle && handle.dragging())){ var was = G.pw; fitPw(); if(G.pw !== was && !calm()){ kick(); return; } if(G.pw !== was){ step(now(), 16); paint(); } }
       words(s);
       var ch = S.change, cp = ch && ch.p && ch.p.st === 'in' ? ch.p : null;
       if(ch && !ch.told && cp && dval(cp) !== ch.v0 && !(handle && handle.dragging())){
@@ -892,6 +918,7 @@
       svg.setAttribute('viewBox', '0 0 ' + g.W + ' ' + g.H); svg.setAttribute('width', g.W); svg.setAttribute('height', g.H);
       svg.setAttribute('aria-label', S.set.name + ': ' + counted().length + ' people standing at their values on a plank marked in ' + S.set.unit + (S.tab === 'mean' ? '; the plank balances on a wedge at the mean, a flag stands at the median.' : '; under it the boxplot as a crate, whisker ropes and fence posts, then a histogram.'));
       drawBack();
+      pwD = null; fitPw();
       levels(); S.P.forEach(function(p){ p.lv = p.lt; });
       placeControls();
       paint();
