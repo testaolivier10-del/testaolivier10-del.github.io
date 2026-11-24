@@ -179,7 +179,29 @@ Checked against the course's phylogeny notes and Baum and Offner 2008 / Understa
   `--perf`; `--shots`; `--quick` (only the reduced motion and locked checks).
 
 ## Checks run
-See "Final run" below.
+### Final run (2026-11-24)
+- `node --test scripts/test/apbio-*.test.mjs` (74 pass), `check-apbio-content` (0 failing; the new explore checks run),
+  `build-apbio --check`, `build-apcalc --check`, `build-apmacro --check`, `check-site` (no broken references),
+  `check-weight --check` (626 budgets within range); `scripts/check-tool-use.mjs` with a local copy of its list: the
+  page sends tool-open, tool-touch (explore), tool-mode (quiz), tool-use with frame v2, nothing under automation.
+- Sweep, one process per width, light and dark (dark asserted to render dark: `data-theme` and the the site key
+  `nremt_theme`): **921 passed, 0 failed** (86 to 100 a width: 15 landmark states, the first visit with its cue,
+  Place the traits before and after its check, Build a tree, the questions, "?" filled on a fresh page and after a
+  rotation; the fit at 390 x 844, 375 x 667, 360 x 740, 1024 x 768 and 1280 x 800 in both tabs with no inner scroll).
+  Each state checks clipping, 4 px between labels and from every knot, 2 px from other organisms, text at least 11 px,
+  44 px targets, sideways scroll, the picture the largest thing, the phone cause line (two rows, one height) and that
+  everything shown agrees with what is drawn.
+- Frames: **35 passed, 0 failed** (272 frames at 390 and 270 at 1440, every one agreeing): the glow growing, a swing,
+  fast reversed rotations, a trait's climb and paint, a trait taken off mid climb, Start over mid swing, a new tree
+  growing, leaving to Test yourself mid animation and back, keys, reduced motion, the locked state, and real touch
+  taps on every organism, name and knot (38 at each of 360, 390 and 1440): 0 wrong.
+- Perf, CPU x4, the same run as the flagship (load about 3 on the 2 core machine): rotating a node every 330 ms
+  median 16.7 ms, p95 33.4 ms at 390 and median 16.8 ms, p95 50 ms at 1440; traits climbing median 16.7 ms, p95 33.3
+  ms at 390 and 50 ms at 1440. The flagship's fertilizer drag in the same run: median 33.3 ms, p95 66.7 ms at 390;
+  median 50 ms, p95 100 ms at 1440.
+- Preview: `/mnt/user-data/outputs/bio-tree-reading-v2/index.html`; shots in `shots/` (every state at 360, 390, 768,
+  1024 and 1440, light and dark, the opening at all ten widths, Place the traits, Build a tree, the questions, mid
+  animation `mid-*-swing`, `mid-*-glow`, `mid-*-climb`, `mid-*-grow`).
 
 ## Not done, and what I am not happy with
 - No real phone, no screen reader pass, no real students.
