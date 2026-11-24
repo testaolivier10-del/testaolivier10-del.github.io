@@ -2,7 +2,7 @@
  "slug": "data-explorer",
  "kind": "simulator",
  "topic": "summary-statistics",
- "intro": "<p>One data set drawn three ways at once: a dotplot, a histogram and a boxplot. Drag any dot and every summary and every graph is recomputed from the dots you see.</p>",
+ "intro": "<p>One data set, each value a person standing at it on a plank. The first tab balances the plank on the mean and plants a flag at the median; the second draws the boxplot, its fences and the histogram. Drag any person and every summary and picture is recomputed from where the people stand.</p>",
  "howItWorksTitle": "How the numbers are computed",
  "howItWorks": "<p>The mean is the total divided by n. The median is the middle of the ordered values. Quartiles follow the rule AP® Statistics uses: Q1 and Q3 are the medians of the lower and upper halves, with the median itself left out when n is odd. The standard deviation is the sample SD, dividing by n − 1. A value is an outlier when it is more than 1.5 × IQR below Q1 or above Q3, and the whiskers end at the most extreme values inside those fences. Histogram bins include their left edge, so a value on an edge counts in the bin to its right.</p><p>Test yourself problems are generated from a seed: the problem code reopens the same data.</p>",
  "partTopics": {
@@ -59,7 +59,8 @@
     "bin": 5,
     "binMin": 2,
     "binMax": 20,
-    "binStep": 1
+    "binStep": 1,
+    "pickShort": "Commutes"
    },
    {
     "id": "quiz",
@@ -98,7 +99,8 @@
     "bin": 5,
     "binMin": 1,
     "binMax": 10,
-    "binStep": 1
+    "binStep": 1,
+    "pickShort": "Quiz scores"
    },
    {
     "id": "pulse",
@@ -141,9 +143,21 @@
     "bin": 4,
     "binMin": 1,
     "binMax": 12,
-    "binStep": 1
+    "binStep": 1,
+    "pickShort": "Pulse rates"
    }
-  ]
+  ],
+  "purpose": {
+   "mean": "See which center one far value pulls",
+   "box": "See which values the boxplot calls outliers"
+  },
+  "takeaways": {
+   "resist": "The median resists outliers; the mean does not.",
+   "middle": "Crossing the middle moves the median; the mean shares any change among all n.",
+   "out": "More than 1.5 × IQR past the box: an outlier.",
+   "in": "Back inside the fences: not an outlier.",
+   "box": "The box holds the middle half, so one far value barely moves it."
+  }
  },
  "contexts": [
   {
