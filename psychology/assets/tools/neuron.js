@@ -238,7 +238,7 @@
     { value: 'myel', label: 'Myelin' }, { value: 'syn', label: 'Synapse' }];
   var PURPOSE = { fire: 'A neuron fires only when its input passes threshold', refr: 'Right after it fires, a neuron cannot fire again',
     myel: 'Myelin makes the signal jump, so it travels faster', syn: 'How drugs change the message at a synapse' };
-  var T0 = 2, DUR = { fire: 12, refr: 22 }, SREFR = 22, SMYEL = 22, EMAX = 40, IMAX = 20;
+  var T0 = 2, DUR = { fire: 12, refr: 22 }, SREFR = 22, SMYEL = 22, EMAX = 40, IMAX = 10;
   var DRUGS2 = [{ v: 'none', label: 'No drug', short: 'No drug' }, { v: 'agonist', label: 'Agonist', short: 'Agonist' },
     { v: 'antagonist', label: 'Antagonist', short: 'Antagonist' }, { v: 'reuptake', label: 'Reuptake inhibitor', short: 'Reuptake inhibitor' }];
 
@@ -251,6 +251,7 @@
     return function(t){ var r = 7; slow.forEach(function(w){ if(t >= w[0] && t <= w[1]) r = Math.min(r, w[2]); }); return r; };
   }
 
+  var FIG = null;   // the Explore art for the drills' figures (set by explore2)
   function explore2(app, data, ctx, K){
     var X = data.explore || {};
     var S = { tab: 'fire', E: X.strength2 != null ? X.strength2 : 12, I: 0, gap: 4, myel: [true, true, true, true, true, true], cls: 'none', nt: X.nt || 'dopamine', mode: 'explore' };
@@ -265,9 +266,9 @@
     var head = K.head({ purpose: PURPOSE[S.tab], how: { label: 'Show me how', onClick: function(){ startTour(); } } });
     stage.appendChild(head.el);
     var sceneBox = document.createElement('div'); sceneBox.className = 'nr2-scene';
-    sceneBox.innerHTML = '<svg class="nr2-svg" role="img" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"><g class="nr2-static"></g><g class="nr2-ghostl"></g><g class="nr2-dyn"></g><g class="nr2-fade"></g></svg>';
+    sceneBox.innerHTML = '<svg class="nr2-svg" role="img" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"><g class="nr2-static"></g><g class="nr2-ghostl"></g><g class="nr2-dyn"></g><g class="nr2-mov"></g><g class="nr2-fade"></g></svg>';
     stage.appendChild(sceneBox);
-    var svg = sceneBox.querySelector('svg'), gStatic = svg.querySelector('.nr2-static'), gDyn = svg.querySelector('.nr2-dyn'), gGhost = svg.querySelector('.nr2-ghostl'), ghostHtml = '', gFade = svg.querySelector('.nr2-fade'), layer = K.layer(sceneBox);
+    var svg = sceneBox.querySelector('svg'), gStatic = svg.querySelector('.nr2-static'), gDyn = svg.querySelector('.nr2-dyn'), gGhost = svg.querySelector('.nr2-ghostl'), gMov = svg.querySelector('.nr2-mov'), movKey = '', movEls = null, ghostHtml = '', gFade = svg.querySelector('.nr2-fade'), layer = K.layer(sceneBox);
     var lines = document.createElement('div'); lines.className = 'nr2-lines';
     var cause = K.cause({ label: 'Why' });
     lines.appendChild(cause.el);
@@ -336,7 +337,7 @@
       r.spikes.forEach(function(s, k){ if(t >= s){ f.since = t - s; f.spikeIdx = k; } });
       var s = f.since;
       f.na = s == null || s >= N.ABS ? 'closed' : s < 0.5 ? 'open' : 'locked';
-      f.k = s != null && s >= 0.5 && s < 3.2 ? 'open' : 'closed';
+      f.k = s != null && s >= 0.5 && s < 3.0 ? 'open' : 'closed';
       // the signal on the axon, one per spike still travelling; and the terminals once it arrives
       f.aps = []; f.term = 0;
       r.spikes.forEach(function(sp){
@@ -357,10 +358,10 @@
       var p = [];
       if(f.tab === 'fire'){
         var net = S.E - S.I, peak = N.REST + net, fired = f.run.spikes.length > 0;
-        p.push({ t: '+' + S.E + ' mV excitatory', role: 'ex', say: S.E + ' millivolts of excitatory input' });
-        if(S.I) p.push({ t: '−' + S.I + ' mV inhibitory', role: 'in', join: '+', say: S.I + ' millivolts of inhibitory input' });
+        p.push({ t: (S.E ? '+' : '') + S.E + ' mV excitatory', role: 'ex', say: S.E + ' millivolts of excitatory input' });
+        if(S.I) p.push({ t: S.I + ' mV inhibitory', role: 'in', join: '-', say: S.I + ' millivolts of inhibitory input' });
         if(f.t >= T0 + 0.4 || (fired && f.t >= f.run.spikes[0])){
-          if(fired) p.push({ t: 'passes threshold', role: 'sig', say: 'the charge reaches the threshold of minus 55 millivolts' });
+          if(fired) p.push({ t: net === N.THRESH - N.REST ? 'reaches threshold' : 'passes threshold', role: 'sig', say: 'the charge reaches the threshold of minus 55 millivolts' });
           else p.push({ t: 'reaches ' + mvT(peak), role: 'ink', say: 'the charge only reaches ' + sgn(peak) + ' millivolts' });
         }
         if(fired && f.t >= f.run.spikes[0] + 0.45) p.push({ t: 'fires: +40 mV spike', role: 'sig', say: 'it fires a full action potential to plus 40 millivolts' });
@@ -380,12 +381,13 @@
         if(f.arrived != null) p.push({ t: 'arrives in ' + c.total.toFixed(2) + ' ms', role: 'ink', say: 'it reaches the terminals in ' + c.total.toFixed(2) + ' milliseconds' });
       } else {
         var nt = N.NT[S.nt].name, cls = S.cls;
-        p.push({ t: nt + ' released', role: 'nt' });
+        var ntRole = S.nt === 'gaba' ? 'in' : 'nt';
+        p.push({ t: nt + ' released', role: ntRole });
         if(cls === 'agonist') p.push({ t: 'agonist activates receptors', role: 'drug' });
         else if(cls === 'antagonist') p.push({ t: 'antagonist blocks receptors', role: 'drug' });
         else if(cls === 'reuptake') p.push({ t: 'reuptake blocked: it stays', role: 'drug' });
         else p.push({ t: 'reuptake clears it', role: 'ink' });
-        if(view.preview || f.t >= N.SYN.dur - 1e-6){ var pc = N.signalPct(cls); p.push({ t: 'signal ' + pc + '%', role: pc > 100 ? 'nt' : pc < 100 ? 'drug' : 'ink', say: 'the receiving neuron gets ' + pc + ' percent of the normal signal' }); }
+        if(view.preview || f.t >= N.SYN.dur - 1e-6){ var pc = N.signalPct(cls); p.push({ t: 'signal ' + pc + '%', role: pc > 100 ? ntRole : pc < 100 ? 'drug' : 'ink', say: 'the receiving neuron gets ' + pc + ' percent of the normal signal' }); }
       }
       return p;
     }
@@ -451,7 +453,7 @@
     cE.el.classList.add('nr2-kE');
     var cI = K.drag(layer, { label: 'Inhibitory input, in millivolts of push down', min: 0, max: IMAX, step: 1, value: S.I, track: [0, 1, 0, 0], quiet: true,
       valuetext: function(v){ var r = fireRun(S.E, v); return 'Minus ' + v + ' millivolts inhibitory. ' + (r.spikes.length ? 'Still passes threshold: the neuron fires.' : 'Below threshold: no spike.'); },
-      tag: function(v){ return v ? '−' + v + ' mV' : '0 mV'; }, tagSide: 'up',
+      tag: function(v){ return v ? '−' + v + ' mV' : '0 mV'; }, tagSide: 'down',
       onInput: function(v){ begin('I', S.I); S.I = v; changed(); tourDid('in'); },
       onEnd: function(){ released(); } });
     cI.el.classList.add('nr2-kI');
@@ -460,19 +462,23 @@
       pick: function(x){ if(!G || !G.plot) return null; return clamp(Math.round((G.plot.T(x) - T0) * 2) / 2, 1, 10); },
       dir: function(){ return 0; },
       valuetext: function(v){ var r = refrRun(v), e = r.events[1].effect; return n1(v) + ' milliseconds after the first pulse. ' + (e === 'spike' ? 'It fires again.' : 'Still in the refractory period: no second spike.'); },
-      tag: function(v){ return n1(v) + ' ms'; }, tagSide: function(){ return 'right'; },
+      tag: function(v){ return n1(v) + ' ms'; }, tagSide: function(v){ return v >= 7 ? 'left' : 'up'; },
       onStart: function(v){ begin('gap', S.gap); },
       onInput: function(v){ begin('gap', S.gap); S.gap = v; changed(); tourDid('gap'); },
       onEnd: function(){ released(); } });
     hGap.el.classList.add('nr2-kG');
     var segTaps = S.myel.map(function(m, i){
-      var tp = K.tap(layer, { key: i === 0 ? 'appsych-neuron-myelin' : null, label: '', box: [0, 0, 1, 1], pressed: true, chip: i === 0 ? true : false,
+      var tp = K.tap(layer, { key: null, label: '', box: [0, 0, 1, 1], pressed: true, chip: false,
         onClick: function(){ hideCue(true); peel(i); } });
       tp.el.classList.add('nr2-seg');
+      tp.el.addEventListener('pointerenter', function(e){ if(e.pointerType === 'mouse'){ hoverSeg = i; drawStatic(); } });
+      tp.el.addEventListener('pointerleave', function(){ if(hoverSeg === i){ hoverSeg = -1; drawStatic(); } });
+      tp.el.addEventListener('focus', function(){ hoverSeg = i; drawStatic(); });
+      tp.el.addEventListener('blur', function(){ if(hoverSeg === i){ hoverSeg = -1; drawStatic(); } });
       return tp;
     });
     function segLabel(i){ return 'Myelin stretch ' + (i + 1) + ' of 6: ' + (S.myel[i] ? 'myelinated. Tap to strip it.' : 'bare. Tap to restore its myelin.'); }
-    var peelAt = {};
+    var peelAt = {}, hoverSeg = -1;
     function peel(i){
       begin('myel', null); prev.myel = S.myel.slice();
       S.myel[i] = !S.myel[i]; peelAt[i] = now();
@@ -492,13 +498,15 @@
       onStart: function(){ if(player.playing()) player.stop(); playing = false; hideCue(true); },
       onInput: function(v){ view.preview = false; view.t = clamp(v, tMin(), tMax()); paint(); } });
 
-    var CUE = { fire: { text: 'Drag the excitatory input', at: function(){ return G ? kPos(cE, G.kE) : [0, 0]; }, side: 'right' },
-      refr: { text: (window.innerWidth || 1000) < 400 ? 'Drag it closer' : 'Drag the 2nd pulse', at: function(){ return G && G.plot ? [G.plot.X(T0 + S.gap), G.plot.stimY] : [0, 0]; }, side: 'above' },
+    var CUE = { fire: { text: 'Drag the excitatory input', at: function(){ return G ? kPos(cE, G.kE) : [0, 0]; }, side: function(){ return G && G.ph ? 'right' : 'below'; } },
+      refr: { text: (window.innerWidth || 1000) < 400 ? 'Drag it closer' : 'Drag the 2nd pulse', at: function(){ return G && G.plot ? [G.plot.X(T0 + S.gap), G.plot.stimY] : [0, 0]; }, side: 'right' },
       myel: { text: 'Tap the myelin', at: function(){ var i = G && G.ph ? 3 : 2; return G ? [G.segs[i][0] + (G.segs[i][1] - G.segs[i][0]) / 2, G.sy + G.myR] : [0, 0]; }, side: 'below' },
       syn: { text: 'Tap a drug', at: function(){ var i = G && G.ph ? 2 : 1; return G && G.drugs ? [G.drugs[i].x + G.drugs[i].w / 2, G.drugs[i].y + G.drugs[i].h] : [0, 0]; }, side: 'below' } };
     function kPos(c, tr){ var f = (c.value() - c.input.min) / (c.input.max - c.input.min); return [tr[0] + (tr[2] - tr[0]) * f, tr[1] + (tr[3] - tr[1]) * f]; }
     var cues = {};
-    TABS.forEach(function(t){ cues[t.value] = K.cue(layer, { key: 'appsych-neuron-' + t.value, text: CUE[t.value].text, side: CUE[t.value].side, at: function(){ return CUE[t.value].at(); } }); });
+    TABS.forEach(function(t){ var co = { key: 'appsych-neuron-' + t.value, text: CUE[t.value].text, at: function(){ return CUE[t.value].at(); } };
+      Object.defineProperty(co, 'side', { get: function(){ var sd = CUE[t.value].side; return typeof sd === 'function' ? sd() : sd; } });
+      cues[t.value] = K.cue(layer, co); });
     function hideCue(used){ var c = cues[S.tab]; if(c && c.active()) c.hide(used); stage.classList.remove('is-cue'); }
     stage.addEventListener('pointerdown', function(e){ if(sceneBox.contains(e.target)) hideCue(true); }, true);
     stage.addEventListener('keydown', function(e){ if(sceneBox.contains(e.target) && /^(Arrow|Page|Home|End|Enter| )/.test(e.key)) hideCue(true); }, true);
@@ -538,63 +546,65 @@
 
     /* ================================================================ layout */
     function pillW(t, fs){ return t.length * fs * 0.58 + 18; }
-    function geo(W, H){
-      var ph = W < 600, tab = S.tab, g = { W: W, H: H, ph: ph, tab: tab };
+    function geo(W, H, tabF, fig){
+      var ph = W < 600, tab = tabF || S.tab, g = { W: W, H: H, ph: ph, tab: tab, fig: !!fig };
       var fs = ph ? 12 : 13.5, fsS = ph ? 11.5 : 12.5, pad = ph ? 8 : 16;
       g.fs = fs; g.fsS = fsS; g.pad = pad;
       if(tab === 'syn') return geoSyn(g);
-      var gh = tab === 'myel' ? (ph ? 118 : 124) : ph ? 176 : W < 900 ? 180 : clamp(H * 0.4, 196, 260);
+      var gh = fig ? 0 : tab === 'myel' ? (ph ? 118 : 124) : ph ? 176 : W < 900 ? 180 : clamp(H * 0.4, 196, 260);
       g.gTop = H - gh; g.nTop = pad; g.nBot = g.gTop - (ph ? 4 : 8);
       var nH = g.nBot - g.nTop;
-      g.ctlW = tab === 'fire' ? (ph ? 112 : clamp(W * 0.13, 150, 200)) : 0;
-      g.rs = tab === 'myel' && !ph ? clamp(nH * 0.15, 24, 52) : ph ? 21 : clamp(nH * 0.13, 24, 40);
+      g.ctlW = tab === 'fire' ? (ph ? 128 : clamp(W * 0.13, 150, 200)) : 0;
+      var pmy = ph && tab === 'myel';   // phone Myelin: the axon takes the width (44 px targets), a stub of dendrites, no input
+      g.rs = tab === 'myel' && !ph ? clamp(nH * 0.15, 24, 52) : pmy ? 14 : ph ? 21 : clamp(nH * 0.13, 24, 40);
       g.sy = g.nTop + nH * (tab === 'myel' ? 0.5 : 0.64);
-      if(ph && tab !== 'myel'){ g.inY1 = g.nTop + 104; g.sy = g.inY1 + g.rs * 2.8 + 52; g.nBot = g.sy + g.rs * 2.3 + 52; var room = H - gh - 4 - g.nBot; if(room > 0){ g.sy += room * 0.45; g.nBot += room; } g.gTop = g.nBot + 4; nH = g.nBot - g.nTop; }
-      var reach = g.rs * (ph ? 2.2 : 2.5);
+      if(ph && tab !== 'myel' && !fig){ g.inY1 = g.nTop + 104; g.sy = g.inY1 + g.rs * 2.8 + 52; g.nBot = g.sy + g.rs * 2.3 + 52; var room = H - gh - 4 - g.nBot; if(room > 0){ g.sy += room * 0.45; g.nBot += room; } g.gTop = g.nBot + 4; nH = g.nBot - g.nTop; }
+      var reach = g.rs * (pmy ? 1.3 : ph ? 2.2 : 2.5);
+      g.reach = reach;
       g.sx = pad + g.ctlW + reach + g.rs * 0.5;
-      g.termR = ph ? 40 : clamp(W * 0.065, 64, 104);
+      g.termR = pmy ? 18 : ph ? (tab === 'fire' ? 30 : 40) : clamp(W * 0.065, 64, 104);
       g.ax0 = g.sx + g.rs * 1.45; g.ax1 = W - pad - g.termR;
-      g.axR = ph ? 3.2 : clamp(g.rs * 0.16, 4, tab === 'myel' ? 7.5 : 5.6); g.myR = g.axR * (tab === 'myel' ? (ph ? 3.4 : 3.2) : 2.3);
-      var nodeGap = ph ? 7 : 10, segW = (g.ax1 - g.ax0 - nodeGap * (N.NSEG + 1)) / N.NSEG;
+      g.axR = pmy ? 5.6 : ph ? 3.2 : clamp(g.rs * 0.16, 4, tab === 'myel' ? 7.5 : 5.6); g.myR = g.axR * (tab === 'myel' ? (ph ? 3.4 : 3.2) : 2.3);
+      var nodeGap = pmy ? 5 : ph ? 7 : 10, segW = (g.ax1 - g.ax0 - nodeGap * (N.NSEG + 1)) / N.NSEG;
       g.segs = []; for(var s = 0; s < N.NSEG; s++){ var a = g.ax0 + nodeGap + s * (segW + nodeGap); g.segs.push([a, a + segW]); }
       g.nodes = [g.ax0 + nodeGap / 2].concat(g.segs.map(function(q){ return q[1] + nodeGap / 2; }));
       g.nodeGap = nodeGap;
       // the inputs (Threshold): an excitatory and an inhibitory axon from the left, ending on two dendrites
-      g.yE = g.sy - g.rs * (ph ? 2.8 : 2.4); g.yI = g.sy + g.rs * (ph ? 2.3 : 2.1);
+      g.yE = g.sy - g.rs * (ph ? 2.8 : 2.4); g.yI = ph ? g.sy + g.rs * 2.3 : Math.min(g.sy + g.rs * 2.1, g.gTop - 58);   // its value tag sits under it, above the graph
       g.dE = [g.sx - reach, g.yE]; g.dI = [g.sx - reach * 0.92, g.yI];
       if(tab === 'fire'){
         g.kE = [pad + (ph ? 30 : 34), g.yE, pad + g.ctlW - 12, g.yE];
-        g.kI = [pad + (ph ? 30 : 34), g.yI, pad + g.ctlW - 12, g.yI];
-      } else { g.dS = [g.sx - reach, g.sy - g.rs * 1.6]; }
+        g.kI = [pad + (ph ? 30 : 34), g.yI, pad + g.ctlW - (ph ? 30 : 40), g.yI];
+      } else if(!pmy){ g.dS = [g.sx - reach, g.sy - g.rs * 1.6]; }
       // the membrane close-up (tabs 1 and 2): above the axon, tied to the start of the axon
-      if(tab !== 'myel'){
-        var iw = ph ? W - pad * 2 : clamp((g.ax1 - g.ax0) * 0.62, 300, 440);
-        g.in = { x0: ph ? pad : g.ax0 + 40, y0: g.nTop + (ph ? 0 : 6) };
-        g.in.x1 = g.in.x0 + iw;
-        if(!ph && g.in.x1 > g.ax1 - 30) { g.in.x1 = g.ax1 - 30; }
+      if(tab !== 'myel' && !fig){
+        var iw = ph ? W - pad * 2 : clamp((g.ax1 - g.ax0) * 0.62, 380, 460);
+        g.in = { x0: ph ? pad : Math.max(g.sx + g.rs, Math.min(g.ax0 + 40, g.ax1 - 30 - iw)), y0: g.nTop + (ph ? 0 : 6) };
+        g.in.x1 = Math.min(g.in.x0 + iw, ph ? W - pad : g.ax1 - 30);
         g.in.y1 = ph ? g.inY1 : g.sy - g.myR - 34;
       }
       // the graph
-      if(tab === 'myel'){
+      if(fig){ g.sy = g.nTop + (g.nBot - g.nTop) * 0.55; }
+      else if(tab === 'myel'){
         g.bar = { x0: pad + (ph ? 12 : 22), x1: W - pad - (ph ? 12 : 22), y: g.gTop + (ph ? 72 : 76), max: N.NSEG * N.CRAWL + 0.2 };
       } else {
         var px0 = pad + (ph ? 42 : 46), px1 = W - pad - (ph ? 4 : 10), py0 = g.gTop + (ph ? 34 : 40), py1 = H - (ph ? 26 : 30);
-        var vLo = -138, vHi = 52, dur = DUR[tab];
+        var vLo = -150, vHi = 52, dur = DUR[tab];
         var P = { x0: px0, x1: px1, y0: py0, y1: py1, dur: dur, lo: vLo, hi: vHi };
         P.X = function(t){ return px0 + t / dur * (px1 - px0); };
         P.T = function(x){ return (x - px0) / (px1 - px0) * dur; };
         P.Y = function(v){ return py1 - (v - vLo) / (vHi - vLo) * (py1 - py0); };
-        P.stimY = P.Y(-112);
+        P.stimY = P.Y(-115);
         g.plot = P;
       }
       return g;
     }
     function geoSyn(g){
       var W = g.W, H = g.H, ph = g.ph, pad = g.pad;
-      var gh = ph ? 176 : clamp(H * 0.34, 176, 220);
+      var gh = g.fig ? 0 : ph ? 176 : clamp(H * 0.34, 176, 220);
       g.gTop = H - gh;
       // the drugs: four pills along the top (two rows on a phone)
-      var fsD = ph ? 12.5 : 14, dh = ph ? 40 : 44, gapD = ph ? 8 : 12;
+      var fsD = ph ? 12.5 : 14, dh = 44, gapD = ph ? 8 : 12;
       var widths = DRUGS2.map(function(d){ return pillW(d.label, fsD) + (ph ? 22 : 30); });
       g.drugs = [];
       if(ph){
@@ -605,7 +615,7 @@
         DRUGS2.forEach(function(d, i){ g.drugs.push({ x: x, y: pad, w: widths[i], h: dh }); x += widths[i] + gapD; });
       }
       g.fsD = fsD;
-      var top = g.drugs[g.drugs.length - 1].y + dh + (ph ? 10 : 14), bot = g.gTop - (ph ? 6 : 10), sh = bot - top;
+      var top = g.fig ? pad : g.drugs[g.drugs.length - 1].y + dh + (ph ? 10 : 14), bot = g.gTop - (g.fig ? pad : ph ? 6 : 10), sh = bot - top;
       g.sTop = top; g.sBot = bot;
       var z = clamp(Math.min(W / 520, sh / 250), ph ? 0.78 : 1, 1.9);
       g.z = z;
@@ -643,7 +653,7 @@
     /* The neuron: dendrites (a seeded tree), the cell body with its nucleus, the hillock, the axon with its myelin
        and nodes, and a fan of terminals. Everything from G, so the controls and the moving parts line up. */
     function neuronSvg(g){
-      var p = [], rng = M.rng(41), sx = g.sx, sy = g.sy, rs = g.rs, reach = g.rs * (g.ph ? 2.2 : 2.5), dend = [];
+      var p = [], rng = M.rng(41), sx = g.sx, sy = g.sy, rs = g.rs, reach = g.reach, dend = [];
       g.tips = [];
       function branch(x, y, ang, len, wd, depth, toward){
         var ex = x + Math.cos(ang) * len, ey = y + Math.sin(ang) * len;
@@ -662,14 +672,16 @@
         branch(bx, by, a + (rng() - 0.5) * 0.2, L0 * (i === 2 ? 1.05 : 0.9), Math.max(2.4, rs * 0.26), g.ph ? 1 : 2);
       });
       // the two (or one) dendrites that the inputs reach
-      var ins = g.tab === 'fire' ? [g.dE, g.dI] : [g.dS];
+      var ins = g.tab === 'fire' ? [g.dE, g.dI] : g.dS ? [g.dS] : [];
       ins.forEach(function(d){
         var a = Math.atan2(d[1] - sy, d[0] - sx), bx = sx + Math.cos(a) * rs * 0.9, by = sy + Math.sin(a) * rs * 0.9;
         branch(bx, by, a, 0, Math.max(2.6, rs * 0.24), 0, [d[0] + 6, d[1]]);
       });
-      p.push('<g class="nr2-dend">' + dend.map(function(d){ return '<path class="nr2-edge" d="' + d.d + '" stroke-width="' + n1(d.w + 2.4) + '"/>'; }).join('') +
+      var hiC = function(k){ return g.hi === k ? ' is-hi' : ''; };
+      p.push('<g class="nr2-dend' + hiC('dendrite') + '">' + dend.map(function(d){ return '<path class="nr2-edge" d="' + d.d + '" stroke-width="' + n1(d.w + 2.4) + '"/>'; }).join('') +
         dend.map(function(d){ return '<path class="nr2-den" d="' + d.d + '" stroke-width="' + n1(d.w) + '"/>'; }).join('') + '</g>');
       // the axon core, under the myelin
+      p.push('<g class="nr2-axg' + hiC('axon') + '">');
       p.push('<line class="nr2-edge" x1="' + n1(g.ax0 - 4) + '" y1="' + n1(sy) + '" x2="' + n1(g.ax1 + 2) + '" y2="' + n1(sy) + '" stroke-width="' + n1(g.axR * 2 + 2.4) + '"/>');
       p.push('<line class="nr2-ax" x1="' + n1(g.ax0 - 4) + '" y1="' + n1(sy) + '" x2="' + n1(g.ax1 + 2) + '" y2="' + n1(sy) + '" stroke-width="' + n1(g.axR * 2) + '"/>');
       // terminals: a fan of branches ending in round buttons
@@ -679,7 +691,8 @@
         var ty = sy + (j - (tn - 1) / 2) * spread / (tn - 1) * 2, tx = g.W - g.pad - g.axR * 2.4 - (j % 2) * (g.ph ? 5 : 9);
         g.fan.push({ d: 'M' + n1(g.ax1) + ' ' + n1(sy) + 'C' + n1(g.ax1 + (tx - g.ax1) * 0.45) + ' ' + n1(sy) + ' ' + n1(g.ax1 + (tx - g.ax1) * 0.5) + ' ' + n1(ty) + ' ' + n1(tx - 5) + ' ' + n1(ty), end: [tx, ty] });
       }
-      p.push('<g class="nr2-term">' + g.fan.map(function(t){
+      p.push('</g>');
+      p.push('<g class="nr2-term' + hiC('terminal') + '">' + g.fan.map(function(t){
         return '<path class="nr2-edge" d="' + t.d + '" stroke-width="' + n1(g.axR * 1.3 + 2.4) + '"/><path class="nr2-ax" d="' + t.d + '" stroke-width="' + n1(g.axR * 1.3) + '"/>' +
           '<ellipse class="nr2-btn" cx="' + n1(t.end[0]) + '" cy="' + n1(t.end[1]) + '" rx="' + n1(g.axR * 2.3) + '" ry="' + n1(g.axR * 1.9) + '"/>' +
           '<circle class="nr2-vdot" cx="' + n1(t.end[0] + g.axR * 0.5) + '" cy="' + n1(t.end[1] - g.axR * 0.4) + '" r="' + n1(g.axR * 0.45) + '"/><circle class="nr2-vdot" cx="' + n1(t.end[0] - g.axR * 0.7) + '" cy="' + n1(t.end[1] + g.axR * 0.5) + '" r="' + n1(g.axR * 0.45) + '"/>';
@@ -688,12 +701,12 @@
       var my = [];
       g.segs.forEach(function(q, i){
         var on = S.tab !== 'myel' || S.myel[i], age = peelAt[i] != null ? (now() - peelAt[i]) / 380 : 1;
-        if(!on && age >= 1) return;
+        if(!on && age >= 1){ if(S.tab === 'myel' && hoverSeg === i) my.push('<line class="nr2-bare is-hover" x1="' + n1(q[0]) + '" x2="' + n1(q[1]) + '" y1="' + n1(sy) + '" y2="' + n1(sy) + '" stroke-width="' + n1(g.axR * 2 + 6) + '"/>'); return; }
         var k = on ? (age < 1 ? sm(age) : 1) : 1 - sm(age), hh = g.myR * (0.55 + 0.45 * k), op = on ? 1 : k;
-        my.push('<g class="nr2-myel' + (on ? '' : ' is-going') + '" opacity="' + op.toFixed(2) + '"><rect x="' + n1(q[0]) + '" y="' + n1(sy - hh) + '" width="' + n1(q[1] - q[0]) + '" height="' + n1(hh * 2) + '" rx="' + n1(hh) + '"/>' +
+        my.push('<g class="nr2-myel' + (on ? '' : ' is-going') + (S.tab === 'myel' && hoverSeg === i ? ' is-hover' : '') + '" opacity="' + op.toFixed(2) + '"><rect x="' + n1(q[0]) + '" y="' + n1(sy - hh) + '" width="' + n1(q[1] - q[0]) + '" height="' + n1(hh * 2) + '" rx="' + n1(hh) + '"/>' +
           wraps(q[0], q[1], sy, hh) + '</g>');
       });
-      p.push('<g class="nr2-mys">' + my.join('') + '</g>');
+      p.push('<g class="nr2-mys' + hiC('myelin') + '">' + my.join('') + '</g>');
       // the cell body: a soft blob, the hillock tapering into the axon, the nucleus
       var bumps = 7, bp = [];
       for(var b = 0; b <= bumps; b++){ var a = b / bumps * Math.PI * 2, rr = rs * (1 + 0.08 * Math.sin(a * 3 + 1)); bp.push([sx + Math.cos(a) * rr, sy + Math.sin(a) * rr * 0.92]); }
@@ -702,10 +715,11 @@
       soma += 'Z';
       var hill = 'M' + n1(sx + rs * 0.7) + ' ' + n1(sy - rs * 0.5) + 'Q' + n1(sx + rs * 1.2) + ' ' + n1(sy - g.axR * 1.6) + ' ' + n1(g.ax0) + ' ' + n1(sy - g.axR) + 'L' + n1(g.ax0) + ' ' + n1(sy + g.axR) + 'Q' + n1(sx + rs * 1.2) + ' ' + n1(sy + g.axR * 1.6) + ' ' + n1(sx + rs * 0.7) + ' ' + n1(sy + rs * 0.5) + 'Z';
       g.hill = [sx + rs * 1.15, sy];
-      p.push('<path class="nr2-soma" d="' + hill + '"/><path class="nr2-soma" d="' + soma + '"/>');
+      p.push('<g class="nr2-somag' + hiC('soma') + '"><path class="nr2-soma" d="' + hill + '"/><path class="nr2-soma" d="' + soma + '"/>');
       var er = M.rng(7);
       for(var q2 = 0; q2 < 14; q2++){ var aa = er() * Math.PI * 2, dd = rs * (0.55 + er() * 0.32); p.push('<circle class="nr2-nissl" cx="' + n1(sx + Math.cos(aa) * dd) + '" cy="' + n1(sy + Math.sin(aa) * dd * 0.9) + '" r="' + n1(Math.max(0.9, rs * 0.045)) + '"/>'); }
       p.push('<ellipse class="nr2-nuc" cx="' + n1(sx - rs * 0.1) + '" cy="' + n1(sy - rs * 0.04) + '" rx="' + n1(rs * 0.4) + '" ry="' + n1(rs * 0.36) + '"/><circle class="nr2-nucl" cx="' + n1(sx - rs * 0.04) + '" cy="' + n1(sy - rs * 0.1) + '" r="' + n1(rs * 0.12) + '"/>');
+      p.push('</g>');
       return p.join('');
     }
     function wraps(a, b, y, hh){
@@ -724,7 +738,8 @@
     /* The membrane close-up's fixed parts: the two fluids, the bilayer, and its labels. */
     function insetStatic(g){
       var I = g.in, p = [], w = I.x1 - I.x0, h = I.y1 - I.y0, mid = I.y0 + h * 0.55, th = g.ph ? 11 : 14;
-      I.mid = mid; I.th = th; I.na = I.x0 + w * (g.ph ? 0.42 : 0.32); I.k = I.x0 + w * (g.ph ? 0.8 : 0.68);
+      I.mid = mid; I.th = th; var chW = (g.ph ? 13 : 16) + 4;   // each channel's label sits outward of it: Na+ to its left, K+ to its right
+      I.na = I.x0 + 10 + pillW('Na\u207A rushes in', g.fsS) + chW; I.k = I.x1 - 10 - pillW('K\u207A flows out', g.fsS) - chW;
       p.push('<path class="nr2-lead" d="M' + n1(I.x0 + 18) + ' ' + n1(I.y1) + 'L' + n1(g.ax0 + 2) + ' ' + n1(g.sy - g.axR - 2) + '"/>');
       p.push('<circle class="nr2-leaddot" cx="' + n1(g.ax0 + 2) + '" cy="' + n1(g.sy - g.axR - 1) + '" r="3"/>');
       p.push('<clipPath id="nr2c-in"><rect x="' + n1(I.x0) + '" y="' + n1(I.y0) + '" width="' + n1(w) + '" height="' + n1(h) + '" rx="14"/></clipPath>');
@@ -748,6 +763,8 @@
     var IONS = null;
     function ionSeats(g){
       var I = g.in, w = I.x1 - I.x0, r = M.rng(5), na = [], k = [], tries = 0;
+      // the boxes of the two channel labels at their longest, with room for an ion's radius and 4 px
+      var fsL = g.fsS, hh = (fsL + 10) / 2 + (g.ph ? 5 : 6.2) + 4, boxes = [[I.na - (g.ph ? 13 : 16) - pillW('Na⁺ rushes in', fsL) - 10, I.mid - hh, I.na, I.mid + hh], [I.k, I.mid - hh, I.k + (g.ph ? 13 : 16) + pillW('K⁺ flows out', fsL) + 10, I.mid + hh]];
       function free(list, x, y){ return list.every(function(q){ return Math.hypot(q[0] - x, q[1] - y) > (g.ph ? 15 : 19); }); }
       function seat(top, list, n){
         while(list.length < n && tries < 4000){
@@ -755,7 +772,8 @@
           var x = I.x0 + 14 + r() * (w - 28), y = top ? I.y0 + 22 + r() * (I.mid - I.th - I.y0 - 30) : I.mid + I.th + 8 + r() * (I.y1 - I.mid - I.th - 18);
           if(Math.abs(x - I.na) < 18 || Math.abs(x - I.k) < 18) continue;
           if(top && x < I.x0 + (g.ph ? 74 : 150) && y < I.y0 + 26) continue;   // the title
-          if(x > I.x1 - 62 && (top ? y < I.y0 + 26 : y > I.y1 - 22)) continue; // outside / inside words
+          if(top ? x > I.x1 - 62 && y < I.y0 + 26 : (g.ph ? x < I.x0 + 62 : x > I.x1 - 62) && y > I.y1 - 22) continue; // outside / inside words
+          if(boxes.some(function(b){ return x > b[0] && x < b[2] && y > b[1] && y < b[3]; })) continue;   // the channel labels
           if(free(na.concat(k), x, y)) list.push([x, y]);
         }
       }
@@ -780,7 +798,7 @@
       if(i >= nOut) return [s0[0], s0[1], false];
       var k = Math.floor(i / 2), j = i % 2;
       if(k >= spikes.length) return [s0[0], s0[1], false];
-      var a = f.t - spikes[k], w0 = kind === 'na' ? 0.02 + j * 0.14 : 0.55 + j * 0.45, dur = kind === 'na' ? 0.3 : 0.8;
+      var a = f.t - spikes[k], w0 = kind === 'na' ? 0.02 + j * 0.14 : 0.55 + j * 1.2, dur = kind === 'na' ? 0.3 : 1.2;
       var u = (a - w0) / dur;
       if(u <= 0) return [s0[0], s0[1], false];
       var cx = kind === 'na' ? I.na : I.k, dir = kind === 'na' ? 1 : -1;
@@ -798,7 +816,7 @@
       if(g.tab === 'syn'){ gStatic.innerHTML = p.join('') + synStatic(g); return; }
       p.push('<rect class="nr2-gband" x="0" y="' + n1(g.gTop) + '" width="' + g.W + '" height="' + n1(g.H - g.gTop) + '"/>');
       if(g.tab === 'fire'){ p.push(inputSvg(g, g.dE, g.yE, 'is-ex')); p.push(inputSvg(g, g.dI, g.yI, 'is-in')); }
-      else p.push(inputSvg(g, g.dS, g.dS[1], 'is-ex'));
+      else if(g.dS) p.push(inputSvg(g, g.dS, g.dS[1], 'is-ex'));
       p.push(neuronSvg(g));
       if(g.in){ p.push(insetStatic(g)); IONS = ionSeats(g); }
       p.push(labelsSvg(g));
@@ -814,11 +832,11 @@
       var dTop = Math.min.apply(null, g.tips.map(function(q){ return q[1]; }));
       if(g.tab === 'fire'){
         L(g.pad + 2, g.yE - (g.ph ? 36 : 36), 'Excitatory', 'is-ex', 'start');
-        L(g.pad + 2, g.yI + (g.ph ? 34 : 36), 'Inhibitory', 'is-in', 'start');
-        L(g.sx - g.rs * 1.5, g.sy + g.rs * (g.ph ? 3.3 : 2.9), 'Dendrites', 'is-cell', 'middle');
+        L(g.pad + 2, g.yI - (g.ph ? 34 : 36), 'Inhibitory', 'is-in', 'start');
+        if(!g.ph) L(g.sx - g.rs * 1.5, g.sy + g.rs * 2.9, 'Dendrites', 'is-cell', 'middle');
       } else if(g.tab === 'refr' || !g.ph){
         L(g.pad + 2, g.dS[1] - (g.ph ? 22 : 26), g.ph ? 'Input' : 'Input from a neuron', 'is-ex', 'start');
-        if(!g.ph) L(g.sx - g.rs * 1.2, g.sy + g.rs + 58, 'Dendrites', 'is-cell', 'middle');
+        if(!g.ph || g.tab === 'refr') L(g.sx - g.rs * 1.2, g.sy + g.rs + (g.ph ? 50 : 58), 'Dendrites', 'is-cell', 'middle');
       }
       L(g.sx + (g.tab === 'fire' ? 0 : g.rs * 0.8), g.sy + g.rs + (g.ph ? 22 : 24), 'Cell body', 'is-cell', 'middle');
       var s1 = g.segs[g.ph ? 2 : 1], sL = g.segs[g.ph ? 5 : 4], my = g.tab === 'myel';
@@ -839,7 +857,7 @@
       for(var t = 0; t <= P.dur + 1e-9; t += step){ var last = t + step > P.dur + 1e-9; p.push(txt(last ? P.X(t) + 6 : P.X(t), P.y1 + 18, last ? t + ' ms' : String(t), 'nr2-tk', last ? 'end' : 'middle', fs)); }
       p.push('<line class="nr2-thr" x1="' + n1(P.x0) + '" x2="' + n1(P.x1) + '" y1="' + n1(P.Y(N.THRESH)) + '" y2="' + n1(P.Y(N.THRESH)) + '"/>');
       p.push(txt(P.x1 - 4, P.Y(N.THRESH) - 5, 'threshold ' + mvT(N.THRESH), 'nr2-thr-t', 'end', fs));
-      p.push(txt(P.x1 - 4, P.Y(N.REST) + fs + 3, g.ph ? 'resting' : 'resting ' + mvT(N.REST), 'nr2-rest-t', 'end', fs));
+      p.push(txt(P.x1 - 4, P.Y(N.REST) + fs + 3, g.ph ? 'resting' : 'resting ' + mvT(N.REST), 'nr2-rest-t' + (g.ph ? ' is-short' : ''), 'end', fs));
       p.push('<line class="nr2-stimrow" x1="' + n1(P.x0) + '" x2="' + n1(P.x1) + '" y1="' + n1(P.stimY) + '" y2="' + n1(P.stimY) + '"/>');
       return p.join('');
     }
@@ -857,7 +875,7 @@
       var p = [], z = g.z, tl = g.tl, tr = g.tr, tBot = g.tBot, cx = g.cx, top = g.sTop;
       p.push('<rect class="nr2-gband" x="0" y="' + n1(g.gTop) + '" width="' + g.W + '" height="' + n1(g.H - g.gTop) + '"/>');
       // the drug pills
-      g.drugs.forEach(function(b, i){
+      if(!g.fig) g.drugs.forEach(function(b, i){
         var d = DRUGS2[i], on = d.v === S.cls, t = g.ph ? d.short : d.label, cyy = b.y + b.h / 2, ix = b.x + (g.ph ? 16 : 20);
         p.push('<g class="nr2-dpill' + (on ? ' is-on' : '') + '" data-drug="' + d.v + '"><rect x="' + n1(b.x) + '" y="' + n1(b.y) + '" width="' + n1(b.w) + '" height="' + n1(b.h) + '" rx="' + n1(b.h / 2) + '"/>' +
           drugIcon(d.v, ix, cyy, g.ph ? 6 : 7) + '<text x="' + n1(ix + (g.ph ? 12 : 16)) + '" y="' + n1(cyy + g.fsD * 0.36) + '" style="font-size:' + g.fsD + 'px">' + esc(t) + '</text></g>');
@@ -873,16 +891,21 @@
       var fs = g.fsS;
       // receptors and transporters (their positions are used by the moving parts)
       g.rec = []; for(var i = 0; i < 8; i++){ var x = tl + 30 * z + i * (g.tw - 60 * z) / 7, u = (x - x0) / (x1 - x0); g.rec.push([x, rT + 10 - 20 * 4 * u * (1 - u)]); }
-      g.trs = [[tl + 16 * z, tBot - 4 * z], [tr - 16 * z, tBot - 4 * z]];
+      // the cleft's two names (Synapse at the left, the neurotransmitter at the right on a phone) keep the moving
+      // parts off them: the molecules' range and the transporters (with a reuptake inhibitor's plug) stay clear
+      var synR = g.pad + 2 + pillW('Synapse', g.fsS), ntL = g.ph ? tr - 4 - pillW('Norepinephrine', g.fsS) : Infinity;
+      g.molLo = Math.max(tl + 34 * z, synR + 8 + 4 * z); g.molHi = Math.min(tr - 34 * z, ntL - 8 - 4 * z);
+      g.trs = [[Math.max(tl + 16 * z, synR + 12 * z), tBot - 4 * z], [Math.min(tr - 16 * z, ntL - 12 * z), tBot - 4 * z]];
       g.ves = []; for(var v = 0; v < 5; v++) g.ves.push([cx + (v - 2) * Math.min(46 * z, g.tw / 6), tBot - 32 * z - (v % 2) * 22 * z]);
       g.labs = [];
       function L(x, y, t, cls, anchor){ var w = pillW(t, fs), x0 = anchor === 'start' ? x : anchor === 'end' ? x - w : x - w / 2; x0 = clamp(x0, 3, g.W - 3 - w); g.labs.push({ x: x0, y: y, t: t, w: w, anchor: 'start' }); p.push(pill(x0, y, t, cls, 'start', fs)); }
       L(cx + g.tw * 0.2, top + (tBot - top) * 0.28, g.ph ? 'Sending' : 'Sending neuron', 'is-cell', 'start');
       L(cx, rB - fs - 2, 'Receiving neuron', 'is-cell', 'middle');
       L(g.pad + 2, tBot + g.cleft / 2, 'Synapse', 'is-cell', 'start');
-      L(g.trs[1][0] + 12 * z, g.trs[1][1] - 22 * z - 6, 'Reuptake', 'is-ink', 'middle');
+      if(!g.ph) L(g.trs[1][0] + 12 * z, g.trs[1][1] - 22 * z - 6, 'Reuptake', 'is-ink', 'middle');   // a phone has no free spot there (vesicles); the cause line names it
       L(g.rec[1][0], g.rec[1][1] + 26 * z + 10, 'Receptors', 'is-ink', 'middle');
       // the graph
+      if(g.fig) return p.join('');
       var P = g.plot;
       p.push(txt(g.pad + 2, g.gTop + (g.ph ? 20 : 24), 'Receptors activated (%)', 'nr2-gt', 'start', g.fs));
       p.push('<rect class="nr2-plotbg" x="' + n1(P.x0) + '" y="' + n1(P.y0) + '" width="' + n1(P.x1 - P.x0) + '" height="' + n1(P.y1 - P.y0) + '" rx="4"/>');
@@ -905,6 +928,7 @@
       lastF = f;
       view.clock = now();
       ghostNext = '';
+      if(S.tab === 'myel' && movKey){ movKey = ''; gMov.innerHTML = ''; }
       gDyn.innerHTML = S.tab === 'syn' ? synDyn(G, f) : neuronDyn(G, f);
       if(ghostNext !== ghostHtml){ ghostHtml = ghostNext; gGhost.innerHTML = ghostNext; }
       if(S.mode === 'explore' && !(wKey === 'take' && !playing && view.t >= tMax() - 1e-6)) syncWords(f);
@@ -920,7 +944,7 @@
         if(pu.age < 0 || pu.age > 0.9) return;
         var list = g.tab === 'fire' ? [['is-ex', g.dE, S.E], ['is-in', g.dI, S.I]] : [['is-ex', g.dS, SREFR]];
         list.forEach(function(L){
-          if(!L[2]) return;
+          if(!L[2] || !L[1]) return;
           var d = L[1], u = pu.age / 0.9, n = Math.max(2, Math.min(7, Math.round(L[2] / 4)));
           for(var i = 0; i < n; i++){ var a = (i / n - 0.5) * 1.6, rr = 4 + u * 14; p.push('<circle class="nr2-puff ' + L[0] + '" cx="' + n1(d[0] - 2 + Math.cos(a) * rr * 0.5) + '" cy="' + n1(d[1] + Math.sin(a) * rr) + '" r="' + n1(g.ph ? 2.1 : 2.6) + '" opacity="' + (1 - u).toFixed(2) + '"/>'); }
           var rip = clamp(pu.age / 0.4, 0, 1), rx = d[0] + (sx - rs - d[0]) * rip, ry = d[1] + (sy - d[1]) * rip;
@@ -948,21 +972,25 @@
         var I = g.in, rr = g.ph ? 5 : 6.2, q2 = [];
         q2.push(chan(I.na, I.mid, I.th, f.na, 'is-na', g));
         q2.push(chan(I.k, I.mid, I.th, f.k, 'is-k', g));
+        // the ions are built once per layout and moved by attribute (no rebuild each frame)
+        var mk = 'ions|' + g.W + 'x' + g.H + '|' + g.tab;
+        if(movKey !== mk){ movKey = mk; var hs = ['<g clip-path="url(#nr2c-in)">']; ['na', 'k'].forEach(function(kind){ IONS[kind].forEach(function(){ hs.push(ionSvg(0, 0, rr, 'is-' + kind).replace('<g class="', '<g transform="translate(0 0)" class="')); }); }); gMov.innerHTML = hs.join('') + '</g>'; movEls = gMov.querySelectorAll('.nr2-ion'); }
+        var ii = 0;
         ['na', 'k'].forEach(function(kind){
           IONS[kind].forEach(function(s0, i){
             var at = ionAt(kind, i, f, g), x = at[0], y = at[1];
             if(jit){ var ph = view.clock / 700 + i * 1.7 + (kind === 'k' ? 0.9 : 0); x += Math.sin(ph) * 1.6; y += Math.cos(ph * 1.3) * 1.4; }
-            q2.push(ionSvg(x, y, rr, 'is-' + kind));
+            var el = movEls[ii++], tr = 'translate(' + n1(x) + ' ' + n1(y) + ')';
+            if(el && el.getAttribute('transform') !== tr) el.setAttribute('transform', tr);
           });
         });
         // what the channels are doing, said where it happens
         var fs = g.fsS;
-        var yA = I.mid - I.th / 2 - (g.ph ? 19 : 22), yB = I.mid + I.th / 2 + (g.ph ? 19 : 22);
-        if(f.na === 'open') q2.push(pill(I.na, yA, 'Na⁺ rushes in', 'is-na', 'middle', fs, true));
-        else if(f.na === 'locked' && g.tab === 'refr') q2.push(pill(I.na, yB, 'Na⁺ locked', 'is-sig', 'middle', fs, true));
-        else q2.push(pill(I.na, yA, 'Na⁺', 'is-na', 'middle', fs));
-        if(f.k === 'open') q2.push(pill(I.k, yB, 'K⁺ flows out', 'is-k', 'middle', fs, true));
-        else q2.push(pill(I.k, yB, 'K⁺', 'is-k', 'middle', fs));
+        // what each channel is doing, said beside it on the membrane (never over a mouth the ions pass through)
+        var naT = f.na === 'open' ? 'Na⁺ rushes in' : f.na === 'locked' && g.tab === 'refr' ? 'Na⁺ locked' : 'Na⁺';
+        var kT = f.k === 'open' ? 'K⁺ flows out' : 'K⁺';
+        q2.push(pill(I.na - (g.ph ? 13 : 16), I.mid, naT, f.na === 'open' ? 'is-na' : f.na === 'locked' && g.tab === 'refr' ? 'is-sig' : 'is-na', 'end', fs, naT !== 'Na⁺'));
+        q2.push(pill(I.k + (g.ph ? 13 : 16), I.mid, kT, 'is-k', 'start', fs, kT !== 'K⁺'));
         p.push('<g clip-path="url(#nr2c-in)">' + q2.join('') + '</g>');
       }
       // the graph: the whole run faint, solid up to now, the cursor; the pulses; the refractory periods
@@ -986,8 +1014,8 @@
     function polyStr(pts, from, to){ var s = []; for(var i = from; i < to; i++) s.push(n1(pts[i][1]) + ',' + n1(pts[i][2])); return s.join(' '); }
     function plotDyn(g, f){
       var P = g.plot, p = [], r = f.run, pts = tracePts(g, r), t = f.t, fs = g.fsS;
-      // refractory periods after each spike drawn so far
-      r.spikes.forEach(function(sp){
+      // refractory periods after each spike drawn so far (Refractory period only: it is that tab's idea)
+      if(g.tab === 'refr') r.spikes.forEach(function(sp){
         if(t < sp) return;
         var a = P.X(sp), b = P.X(Math.min(P.dur, sp + Math.min(N.ABS, t - sp))), c = P.X(Math.min(P.dur, sp + Math.min(N.REL, t - sp)));
         p.push('<rect class="nr2-refa" x="' + n1(a) + '" y="' + n1(P.y0) + '" width="' + n1(b - a) + '" height="' + n1(P.Y(-86) - P.y0) + '"/>');
@@ -1004,7 +1032,7 @@
       var vx = P.X(t), vy = P.Y(f.V);
       p.push('<line class="nr2-now" x1="' + n1(vx) + '" x2="' + n1(vx) + '" y1="' + n1(P.y0) + '" y2="' + n1(P.Y(-86)) + '"/><circle class="nr2-head" cx="' + n1(vx) + '" cy="' + n1(vy) + '" r="4.5" data-v="' + f.V.toFixed(1) + '"/>');
       // the peak, once drawn
-      if(g.tab === 'fire' && r.spikes.length && t >= r.spikes[0] + 0.45){ var px = P.X(r.spikes[0] + 0.5); p.push(txt(px + 9, P.Y(N.PEAK) + 4, '+40 mV spike', 'nr2-peak-t', 'start', fs)); }
+      if(g.tab === 'fire' && r.spikes.length && t >= r.spikes[0] + 0.45){ var px = P.X(r.spikes[0] + 0.5); p.push(txt(P.X(r.spikes[0] + 2.4) + 4, P.Y(N.PEAK) + 4, '+40 mV spike', 'nr2-peak-t', 'start', fs)); }
       // the pulses: marks on the stimulus row (the second one carries the knob in Refractory period)
       r.events.forEach(function(e, i){
         var x = P.X(e.t), on = t >= e.t;
@@ -1035,7 +1063,7 @@
        the drug in its place, reuptake. Receptor counts follow the model's activation (8 receptors). */
     var REC2 = 8, ANT = [0, 1, 3, 4, 6, 7], AGO = [1, 4, 6];
     function synDyn(g, f){
-      var p = [], z = g.z, cls = S.cls, t = f.t, tBot = g.tBot, cx = g.cx, ntc = S.nt === 'gaba' ? 'is-in' : 'is-nt', jit = playing && !K.reduced(), fs = g.fsS;
+      var ntK = g.fig ? g.nt : S.nt, p = [], z = g.z, cls = g.fig ? g.cls : S.cls, t = f.t, tBot = g.tBot, cx = g.cx, ntc = ntK === 'gaba' ? 'is-in' : 'is-nt', jit = playing && !K.reduced(), fs = g.fsS;
       // the action potential coming down the terminal
       if(f.arrive != null){ var ay = g.sTop + (tBot - 40 * z - g.sTop) * f.arrive; p.push('<circle class="nr2-ap" cx="' + n1(cx) + '" cy="' + n1(ay) + '" r="' + n1(26 * Math.min(z, 1.3)) + '" opacity=".85"/>'); }
       else if(t < 0.8) p.push('<circle class="nr2-ap" cx="' + n1(cx) + '" cy="' + n1(tBot - 40 * z) + '" r="' + n1(26 * Math.min(z, 1.3)) + '" opacity="' + (0.85 * (1 - t / 0.8)).toFixed(2) + '"/>');
@@ -1068,7 +1096,7 @@
         else if(hd === 'nt') p.push('<circle class="nr2-ntm ' + ntc + '" cx="' + n1(x) + '" cy="' + n1(y + z) + '" r="' + n1(4.2 * z) + '"/>');
       });
       // the receiving neuron answers: a glow as strong as the share of receptors activated
-      if(f.act > 0.02) p.push('<rect class="nr2-rglow" x="' + n1(g.pad + 4) + '" y="' + n1(g.rTop + 14) + '" width="' + n1(g.W - g.pad * 2 - 8) + '" height="' + n1(Math.max(4, g.rBot - g.rTop - 40)) + '" rx="12" opacity="' + (0.6 * f.act).toFixed(2) + '"/>');
+      if(f.act > 0.02) p.push('<rect class="nr2-rglow' + (ntc === 'is-in' ? ' is-in' : '') + '" x="' + n1(g.pad + 4) + '" y="' + n1(g.rTop + 14) + '" width="' + n1(g.W - g.pad * 2 - 8) + '" height="' + n1(Math.max(4, g.rBot - g.rTop - 40)) + '" rx="12" opacity="' + (0.6 * f.act).toFixed(2) + '"/>');
       // transporters at the terminal's edges (plugged by a reuptake inhibitor)
       g.trs.forEach(function(tp){
         p.push('<g class="nr2-trans" transform="translate(' + n1(tp[0]) + ' ' + n1(tp[1]) + ') scale(' + n1(z) + ')"><rect x="-7" y="-10" width="14" height="18" rx="4"/><path d="M0 6 V-4 m-3 3 l3 -3 l3 3"/></g>');
@@ -1078,27 +1106,31 @@
       if(cls !== 'none'){
         var dr = M.rng(31);
         for(var m2 = 0; m2 < 4; m2++){
-          var dx = g.tl + 40 * z + dr() * (g.tw - 80 * z), dy = tBot + 8 * z + dr() * (g.cleft - 16 * z);
+          var dx = g.molLo + 6 * z + dr() * (g.molHi - g.molLo - 12 * z), dy = tBot + 8 * z + dr() * (g.cleft - 16 * z);
           if(jit){ dx += Math.sin(view.clock / 520 + m2) * 3; dy += Math.cos(view.clock / 610 + m2) * 2; }
           p.push(drugIcon(cls, dx, dy, 4.6 * z));
         }
       }
       // the neurotransmitter in the cleft (as many as the model's amount), and the ones going back
+      if(t < 0 && !g.fig) moveMols(g, [], ntc, z);
       if(t >= 0){
         var MOL = 22, inCleft = Math.round(MOL * f.cleft), mr = M.rng(23), u = Math.min(1, t / 0.6), going = [];
+        var molPos = [];
         for(var m = 0; m < MOL; m++){
-          var tx = g.tl + 34 * z + mr() * (g.tw - 68 * z), ty = tBot + 7 * z + mr() * (g.cleft - 14 * z), sx0 = cx + (mr() - 0.5) * 16 * z;
+          var tx = g.molLo + mr() * (g.molHi - g.molLo), ty = tBot + 7 * z + mr() * (g.cleft - 14 * z), sx0 = cx + (mr() - 0.5) * 16 * z;
           if(jit){ tx += Math.sin(view.clock / 400 + m * 1.3) * 2.2; ty += Math.cos(view.clock / 470 + m) * 1.8; }
-          if(m < inCleft) p.push('<circle class="nr2-ntm is-free ' + ntc + '" cx="' + n1(sx0 + (tx - sx0) * u) + '" cy="' + n1(tBot + (ty - tBot) * u) + '" r="' + n1(3.4 * z) + '"/>');
+          if(m < inCleft){ if(g.fig) p.push('<circle class="nr2-ntm is-free ' + ntc + '" cx="' + n1(sx0 + (tx - sx0) * u) + '" cy="' + n1(tBot + (ty - tBot) * u) + '" r="' + n1(3.4 * z) + '"/>'); else molPos.push([sx0 + (tx - sx0) * u, tBot + (ty - tBot) * u]); }
           else if(t > 0.4 && m < inCleft + 4) going.push([tx, ty, m]);
         }
+        if(!g.fig) moveMols(g, molPos, ntc, z);
         going.forEach(function(q){
-          if(cls === 'reuptake'){ var sd = q[0] < cx ? -1 : 1; p.push('<circle class="nr2-ntm ' + ntc + ' is-away" cx="' + n1(q[0] + sd * 30 * z) + '" cy="' + n1(q[1]) + '" r="' + n1(3 * z) + '"/>'); }
+          if(cls === 'reuptake'){ var sd = q[0] < cx ? -1 : 1; p.push('<circle class="nr2-ntm ' + ntc + ' is-away" cx="' + n1(clamp(q[0] + sd * 30 * z, g.molLo, g.molHi)) + '" cy="' + n1(q[1]) + '" r="' + n1(3 * z) + '"/>'); }
           else { var tp = g.trs[q[2] % 2]; p.push('<circle class="nr2-ntm ' + ntc + ' is-away" cx="' + n1(q[0] + (tp[0] - q[0]) * 0.65) + '" cy="' + n1(q[1] + (tp[1] - 6 - q[1]) * 0.65) + '" r="' + n1(3 * z) + '"/>'); }
         });
       }
       // the neurotransmitter's name, beside the cleft
-      p.push(pill(g.tr + (g.ph ? -4 : 14), tBot + g.cleft / 2, N.NT[S.nt].name, ntc === 'is-in' ? 'is-in' : 'is-nt', g.ph ? 'end' : 'start', fs));
+      if(!g.fig) p.push(pill(g.tr + (g.ph ? -4 : 14), tBot + g.cleft / 2, N.NT[ntK].name, ntc === 'is-in' ? 'is-in' : 'is-nt', g.ph ? 'end' : 'start', fs));
+      if(g.fig){ g.bound = bound; return p.join(''); }
       // the graph
       var P = g.plot, sr = synRun(), base = synBase(), upto = view.preview ? N.SYN.dur : t, line = function(R, a, b){ var q = []; for(var i = 0; i < R.t.length; i++){ if(R.t[i] < a - 1e-9 || R.t[i] > b + 1e-9) continue; q.push(n1(P.X(R.t[i])) + ',' + n1(P.Y(R.act[i]))); } return q.join(' '); };
       if(cls !== 'none'){ p.push('<polyline class="nr2-before" points="' + line(base, 0, N.SYN.dur) + '"/>'); p.push(txt(P.X(7.6), P.Y(0.16), 'no drug', 'nr2-mark-t', 'start', fs)); }
@@ -1107,6 +1139,17 @@
       if(t >= 0){ var vx = P.X(t); p.push('<line class="nr2-now" x1="' + n1(vx) + '" x2="' + n1(vx) + '" y1="' + n1(P.y0) + '" y2="' + n1(P.y1) + '"/><circle class="nr2-head is-syn" cx="' + n1(vx) + '" cy="' + n1(P.Y(f.act)) + '" r="4.5" data-act="' + f.act.toFixed(3) + '"/>'); }
       g.bound = bound;
       return p.join('');
+    }
+    /* The free molecules in the cleft: 22 circles built once per layout, shown and moved by attribute. */
+    function moveMols(g, pos, ntc, z){
+      var mk = 'mols|' + g.W + 'x' + g.H;
+      if(movKey !== mk){ movKey = mk; var hs = []; for(var i = 0; i < 22; i++) hs.push('<circle class="nr2-ntm" r="' + n1(3.4 * z) + '" cx="0" cy="0" visibility="hidden"/>'); gMov.innerHTML = hs.join(''); movEls = gMov.querySelectorAll('circle'); }
+      for(var j = 0; j < movEls.length; j++){
+        var el = movEls[j], on = j < pos.length, cl = on ? 'nr2-ntm is-free ' + ntc : 'nr2-ntm';
+        if(el.getAttribute('class') !== cl) el.setAttribute('class', cl);
+        if(on){ el.setAttribute('cx', n1(pos[j][0])); el.setAttribute('cy', n1(pos[j][1])); if(el.getAttribute('visibility')) el.removeAttribute('visibility'); }
+        else if(!el.getAttribute('visibility')) el.setAttribute('visibility', 'hidden');
+      }
     }
     function altText(f){
       if(S.tab === 'syn') return 'A synapse close up: the sending neuron’s terminal above, the receiving neuron below with 8 receptors. ' + N.NT[S.nt].name + '. ' + (DRUGS2.filter(function(d){ return d.v === S.cls; })[0].label) + '. ' + (lastBound()) + ' of 8 receptors activated now.';
@@ -1122,7 +1165,9 @@
     /* ---- placing the controls */
     function layoutNow(force){
       if(stage.hidden) return;
-      var r = sceneBox.getBoundingClientRect(), Wd = Math.max(300, Math.round(r.width)), H = Math.max(360, Math.round(r.height));
+      var r = sceneBox.getBoundingClientRect();
+      if(!r.width || !r.height || sceneBox.offsetParent === null) return;   // hidden (Test yourself, a closed tab): no layout
+      var Wd = Math.max(300, Math.round(r.width)), H = Math.max(300, Math.round(r.height));
       if(!force && G && G.W === Wd && G.H === H && G.tab === S.tab) return;
       svg.setAttribute('viewBox', '0 0 ' + Wd + ' ' + H); svg.setAttribute('width', Wd); svg.setAttribute('height', H);
       G = geo(Wd, H); trCache = {}; ghostKey = '';
@@ -1134,9 +1179,9 @@
       ntBox.hidden = t !== 'syn';
       if(t === 'fire'){ cE.place(G.kE); cI.place(G.kI); }
       if(t === 'refr') hGap.place();
-      if(t === 'myel') G.segs.forEach(function(q, i){ var hh = Math.max(44, G.myR * 2 + 16); segTaps[i].place([q[0] - 2, G.sy - hh / 2, q[1] - q[0] + 4, hh]); segTaps[i].el.setAttribute('aria-label', segLabel(i)); });
+      if(t === 'myel') G.segs.forEach(function(q, i){ var hh = Math.max(44, G.myR * 2 + 16); segTaps[i].place([q[0] - G.nodeGap / 2, G.sy - hh / 2, q[1] - q[0] + G.nodeGap, hh]); segTaps[i].el.setAttribute('aria-label', segLabel(i)); });
       if(t === 'syn') G.drugs.forEach(function(b, i){ drugTaps[i].place([b.x, b.y, b.w, b.h]); });
-      if(G.plot){ var P = G.plot; scrub.el.hidden = false; scrub.place([P.x0, P.y0, P.x1, t === 'syn' ? P.y1 : P.Y(-86)], t === 'syn' ? -SYN_PRE : 0, t === 'syn' ? N.SYN.dur : P.dur); }
+      if(G.plot){ var P = G.plot; scrub.el.hidden = false; scrub.place([P.x0, P.y0, P.x1, t === 'syn' ? P.y1 : P.Y(-86)], 0, t === 'syn' ? N.SYN.dur : P.dur); }
       else scrub.el.hidden = true;
       paint();
       var c = cues[t]; if(c && c.active()) c.place();
@@ -1165,7 +1210,7 @@
         '<h3 class="ls-title-l">Real drugs</h3><div class="table-wrap" tabindex="0" role="region" aria-label="Drug examples"><table class="ls-tbl"><thead><tr><th scope="col">Drug</th><th scope="col">Acts on</th><th scope="col">Kind</th></tr></thead><tbody>' +
           N.DRUGS.map(function(d){ return '<tr><td>' + esc(d.name) + '</td><td>' + esc(N.NT[d.nt].name) + '</td><td>' + esc(N.CLASSES[d.cls].name) + '</td></tr>'; }).join('') + '</tbody></table></div>' +
         '<h3 class="ls-title-l">About the model</h3>' +
-        '<p class="bt-small">A teaching model, not a recording. Rest ' + mvT(N.REST) + ', threshold ' + mvT(N.THRESH) + ' and peak +' + N.PEAK + ' mV are typical textbook values; real neurons vary. The close-up shows only a few of the ions that cross: real concentrations barely change during one spike. The sodium-potassium pump is left out (it is outside the course). Myelin: a myelinated stretch takes ' + N.JUMP + ' ms here and a bare one ' + N.CRAWL + ' ms; real myelin speeds a signal far more, up to about 50 to 100 times, but a bigger gap could not be watched. The synapse is in relative units: with an agonist the signal is ' + N.signalPct('agonist') + '% of no drug, an antagonist ' + N.signalPct('antagonist') + '%, a reuptake inhibitor ' + N.signalPct('reuptake') + '%. Colors: the signal and threshold vermillion, sodium amber, potassium blue, excitatory green, inhibitory pink, myelin cream, drugs gray.</p>' +
+        '<p class="bt-small">A teaching model, not a recording. Rest ' + mvT(N.REST) + ', threshold ' + mvT(N.THRESH) + ' and peak +' + N.PEAK + ' mV are typical textbook values; real neurons vary. The close-up shows only a few of the ions that cross: real concentrations barely change during one spike. The sodium-potassium pump is left out (it is outside the course). Myelin: a myelinated stretch takes ' + N.JUMP + ' ms here and a bare one ' + N.CRAWL + ' ms; real myelin speeds a signal far more, up to about 50 to 100 times, but a bigger gap could not be watched. The synapse is in relative units: with an agonist the signal is ' + N.signalPct('agonist') + '% of no drug, an antagonist ' + N.signalPct('antagonist') + '%, a reuptake inhibitor ' + N.signalPct('reuptake') + '%. Colors: the signal and threshold vermillion, sodium amber, potassium violet, excitatory green, inhibitory pink, myelin cream, drugs gray.</p>' +
         '<p class="bt-small">Sources: OpenStax Psychology 2e, 3.2 (threshold, all or none, nodes of Ranvier, reuptake, agonists and antagonists); OpenStax Biology 2e, 35.2 (excitatory and inhibitory potentials added at the axon hillock, sodium in and potassium out, saltatory conduction); the AP® Psychology course framework, topic 1.3.</p>' +
         '<p class="nr-notes">Notes for this topic: <a href="../notes/neural-firing.html">The Neuron and Neural Firing</a></p>';
     }
@@ -1185,6 +1230,25 @@
     document.addEventListener('visibilitychange', function(){ if(document.hidden && player.playing()){ player.stop(); playing = false; setT(tMax(), false); ended(); } });
     try{ new MutationObserver(function(){ if(G){ drawStatic(); paint(); } }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] }); }catch(e){}
     if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ layoutNow(true); });
+
+    /* The drills' figures (Test yourself) drawn with this same art: a neuron (its parts named and one lit only once
+       answered) or a synapse at its peak (the drug drawn only once its kind is named). Returns svg inner markup with
+       its own gradient ids, so it renders while Explore's picture is hidden. */
+    function figSvg(kind, o, W, H){
+      var g, out;
+      if(kind === 'synapse'){
+        g = geo(W, H, 'syn', true); g.cls = o.cls || 'none'; g.nt = o.nt || 'dopamine';
+        var sr = N.synapse(g.cls), i = Math.round(1.6 / N.SYN.dt);
+        out = DEFS + '<rect class="nr2-bg" x="0" y="0" width="' + W + '" height="' + H + '"/>' + synStatic(g) + synDyn(g, { t: 1.6, cleft: sr.cleft[i], act: sr.act[i], base: 0, arrive: null });
+      } else {
+        g = geo(W, H, 'refr', true); g.hi = o.part || null;
+        var keep = S.tab; S.tab = 'refr';
+        out = DEFS + '<rect class="nr2-bg" x="0" y="0" width="' + W + '" height="' + H + '"/>' + (g.dS ? inputSvg(g, g.dS, g.dS[1], 'is-ex') : '') + neuronSvg(g) + (o.labels ? labelsSvg(g) : '');
+        S.tab = keep;
+      }
+      return out.replace(/nr2g-/g, 'nr2f-').replace(/nr2c-/g, 'nr2fc-');
+    }
+    FIG = figSvg;
 
     // for the sweep and the frame check (scripts/tools-v2/neuron-sweep.mjs): the state, the drawn frame, the geometry
     window.__nr2 = { S: S, view: view, G: function(){ return G; }, F: function(){ return lastF; }, N: N, T0: T0, tMax: tMax, keyT: keyT, cond: cond,
@@ -1221,14 +1285,15 @@
     } else if(g.kind === 'synapse'){
       H = phone ? 260 : 300;
       var shown = st.cls ? g.cls : 'none';
-      out = synapseArt(4, 4, Wd - 8, H - 8, { nt: g.nt, cls: shown, t: 1.6, id: 'syq' }).svg;
+      out = FIG ? FIG('synapse', { nt: g.nt, cls: shown }, Wd, H) : synapseArt(4, 4, Wd - 8, H - 8, { nt: g.nt, cls: shown, t: 1.6, id: 'syq' }).svg;
       label = 'A synapse: the axon terminal above, receptors on the receiving neuron below, neurotransmitter in the cleft.' + (st.cls && g.cls !== 'none' ? ' The drug is drawn: ' + N.CLASSES[g.cls].name.toLowerCase() + '.' : '');
     } else {
-      H = phone ? 180 : 220;
-      out = neuronArt(8, 8, Wd - 16, H - 16, { part: st.part ? g.part : null, labels: !!st.part, id: 'nrq' }).svg;
+      H = phone ? 200 : 240;
+      out = FIG ? FIG('neuron', { part: st.part ? g.part : null, labels: !!st.part }, Wd, H) : neuronArt(8, 8, Wd - 16, H - 16, { part: st.part ? g.part : null, labels: !!st.part, id: 'nrq' }).svg;
       label = 'A neuron: dendrites, cell body, myelinated axon and axon terminals' + (st.part ? '; highlighted: ' + N.PARTS[g.part].name + '.' : '.');
     }
-    el.innerHTML = '<figure class="cd-fig nr-qfig"><svg class="nr-svg" viewBox="0 0 ' + Wd + ' ' + H + '" role="img" aria-label="' + esc(label) + '">' + out + '</svg></figure>';
+    var v2 = FIG && g.kind !== 'trace';
+    el.innerHTML = '<figure class="cd-fig nr-qfig' + (v2 ? ' nr2-figbox' : '') + '"><svg class="' + (v2 ? 'nr2-svg nr2-isfig' : 'nr-svg') + '" viewBox="0 0 ' + Wd + ' ' + H + '" role="img" aria-label="' + esc(label) + '">' + out + '</svg></figure>';
   }
 
   /* ------------------------------------------------------------ mount */

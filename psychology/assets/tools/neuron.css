@@ -102,13 +102,13 @@
    One colour per idea, everywhere (picture, labels, cause line, graph): the signal and the threshold vermillion,
    Na+ amber, K+ violet, excitatory input and neurotransmitter green, inhibitory input (and GABA) pink, myelin cream,
    drugs slate grey; the neuron itself the course cerulean (Okabe-Ito based; lighter in dark mode). */
-.nr2{--nr-sig:#D55E00;--nr-sig-ink:#A23F00;--nr-na:#E69F00;--nr-na-ink:#8A5A00;--nr-k:#8E6BC8;--nr-k-ink:#5B3D91;
+.nr2,.nr2-figbox{--nr-sig:#D55E00;--nr-sig-ink:#A23F00;--nr-na:#E69F00;--nr-na-ink:#8A5A00;--nr-k:#8E6BC8;--nr-k-ink:#5B3D91;
   --nr-ex:#009E73;--nr-ex-ink:#00704F;--nr-in:#CC79A7;--nr-in-ink:#97326E;--nr-drug:#6B7280;--nr-drug-ink:#3F4652;
   --nr-c0:#E3F1FA;--nr-c1:#B9DAEE;--nr-c2:#8EC0DF;--nr-edge:#084F78;--nr-nuc:#5E8FB0;--nr-my0:#FFFDF6;--nr-my1:#F1E7CF;--nr-my2:#D9C79F;--nr-myedge:#A89268;
   --nr-b0:#F6F3FA;--nr-b1:#ECE8F3;--nr-band:#FBFAFD;--nr-plot:#FFFFFF;--nr-grid:#D5DCE4;--nr-ink:#22303B;--nr-mute:#5B6B78;
   --nr-o0:#EAF4FB;--nr-o1:#DCEDF8;--nr-y0:#EEF5FB;--nr-y1:#DDEBF5;--nr-head:#C8B9A0;--nr-tail:#F3E9D2;
   display:flex;flex-direction:column;gap:10px;min-height:0;flex:1 1 auto;}
-:root[data-theme="dark"] .nr2{--nr-sig:#FF8A4C;--nr-sig-ink:#FFB088;--nr-na:#F0B63C;--nr-na-ink:#F6CF75;--nr-k:#B79AE8;--nr-k-ink:#D6C6F5;
+:root[data-theme="dark"] .nr2,:root[data-theme="dark"] .nr2-figbox{--nr-sig:#FF8A4C;--nr-sig-ink:#FFB088;--nr-na:#F0B63C;--nr-na-ink:#F6CF75;--nr-k:#B79AE8;--nr-k-ink:#D6C6F5;
   --nr-ex:#3CC79A;--nr-ex-ink:#8BE3C8;--nr-in:#E39BC6;--nr-in-ink:#F3C2DE;--nr-drug:#A3AAB8;--nr-drug-ink:#D3D8E0;
   --nr-c0:#2E5A75;--nr-c1:#234A62;--nr-c2:#1A3A4E;--nr-edge:#9CD0EE;--nr-nuc:#6F9FC0;--nr-my0:#E9E1CB;--nr-my1:#CDBE98;--nr-my2:#A8976E;--nr-myedge:#E9DCB9;
   --nr-b0:#1C1A24;--nr-b1:#16141D;--nr-band:#1A1921;--nr-plot:#14131A;--nr-grid:#3A3F4A;--nr-ink:#E8ECF2;--nr-mute:#A9B3BF;
@@ -121,7 +121,7 @@
 @media (max-width:640px){ .nr2-scene{height:540px;min-height:0;border-radius:14px;} .nr2{gap:8px;} }
 .nr2[data-tab="myel"] .nr2-scene{min-height:440px;}
 @media (max-width:1023px){ .nr2[data-tab="myel"] .nr2-scene{flex:none;height:440px;} }
-@media (max-width:640px){ .nr2[data-tab="myel"] .nr2-scene{height:340px;} }
+@media (max-width:640px){ .nr2[data-tab="myel"] .nr2-scene{height:250px;} }
 .nr2-lines{display:flex;align-items:center;justify-content:space-between;gap:8px 18px;flex-wrap:wrap;flex:none;}
 .nr2-side{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-left:auto;}
 .nr2-nt{display:inline-flex;align-items:center;gap:8px;font:700 14px var(--font-ui);color:var(--nr-mute);}
@@ -141,8 +141,10 @@
 .nr2 .nr2-kE.is-focus .tk2-dot,.nr2 .nr2-kG .tk2-knob:focus-visible .tk2-dot{box-shadow:0 0 0 3px var(--nr-ex-ink),0 0 0 6px var(--white),0 0 0 9px var(--nr-ex-ink);}
 .nr2 .nr2-kI.is-focus .tk2-dot{box-shadow:0 0 0 3px var(--nr-in-ink),0 0 0 6px var(--white),0 0 0 9px var(--nr-in-ink);}
 .nr2 .nr2-kE .tk2-groove::before,.nr2 .nr2-kI .tk2-groove::before{background:none;}
-.nr2 .nr2-seg,.nr2 .nr2-seg[aria-pressed="true"]{border-radius:14px;border:2px dashed color-mix(in srgb, var(--cink) 45%, transparent);background:transparent;}
-.nr2 .nr2-seg[aria-pressed="false"]{border:2px solid color-mix(in srgb, var(--nr-mute) 30%, transparent);}
+.nr2 .nr2-seg,.nr2 .nr2-seg:hover,.nr2 .nr2-seg[aria-pressed="true"],.nr2 .nr2-seg[aria-pressed="false"]{border:0;background:transparent;border-radius:14px;}
+.nr2 .nr2-seg::after{display:none;}
+.nr2-myel.is-hover rect{filter:brightness(1.06);stroke:var(--cink);stroke-width:2.4;}
+.nr2-bare{fill:none;stroke-linecap:round;} .nr2-bare.is-hover{stroke:var(--cink);stroke-opacity:.6;}
 .nr2 .nr2-drug{border-radius:999px;border-color:transparent;}
 .nr2 .nr2-drug:hover{border-color:color-mix(in srgb, var(--cink) 55%, transparent);border-style:dashed;}
 .nr2 .nr2-drug[aria-pressed="true"]{border-color:transparent;background:transparent;}
@@ -226,7 +228,7 @@
 .nr2-before{fill:none;stroke:var(--nr-mute);stroke-opacity:.5;stroke-width:1.6;stroke-dasharray:5 4;}
 .nr2-now{stroke:var(--nr-ink);stroke-opacity:.35;stroke-width:1.2;}
 .nr2-head{fill:var(--nr-plot);stroke:var(--nr-edge);stroke-width:2.4;}
-.nr2-peak-t{fill:var(--nr-sig-ink);font-weight:800;}
+.nr2-peak-t{fill:var(--nr-sig-ink);font-weight:800;paint-order:stroke;stroke:var(--nr-plot);stroke-width:4px;stroke-linejoin:round;}
 .nr2-refa{fill:var(--nr-sig);fill-opacity:.16;} .nr2-refb{fill:var(--nr-sig);fill-opacity:.07;}
 .nr2-refr-t{fill:var(--nr-sig-ink);font-weight:800;}
 .nr2-stim{fill:color-mix(in srgb, var(--nr-ex) 35%, var(--nr-plot));stroke:var(--nr-ex-ink);stroke-width:1.2;} .nr2-stim.is-on{fill:var(--nr-ex);}
@@ -264,4 +266,25 @@
 @media (prefers-reduced-motion:reduce){ .nr2 *{animation:none !important;} }
 /* four tabs: two rows on a phone, full names */
 @media (max-width:640px){ .nr2 .tk2-tabs.is-big{display:grid;grid-template-columns:1fr 1fr;gap:6px;} .nr2 .tk2-tabs.is-big .tk2-tab{min-height:44px;padding:0 10px;font-size:15px;} }
-.nr2.is-cue[data-tab="refr"] .nr2-refr-t{visibility:hidden;}
+/* the four tab names fit: the short "Refractory" up to 900 px */
+@media (max-width:900px){ .nr2 .tk2-tab:has(.tk2-tab-s) .tk2-tab-t{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;} .nr2 .tk2-tab-s{display:inline;} }
+.nr2-rglow.is-in{fill:var(--nr-in);}
+/* while a first visit cue shows: the value it would cover waits (Threshold on a desktop: the knob's value; Refractory
+   period on a phone: the short "resting" word under the cue) */
+@media (min-width:641px){ .nr2.is-cue[data-tab="fire"] .nr2-kE .tk2-tag{visibility:hidden;} }
+.nr2.is-cue[data-tab="refr"] .nr2-rest-t.is-short{visibility:hidden;}
+/* Test yourself figures drawn with the Explore art (their own gradient ids) */
+.nr2-figbox{display:block;}
+.nr2-figbox .nr2-svg{position:static;width:100%;height:auto;}
+.nr2-isfig .is-hi .nr2-edge,.nr2-isfig .is-hi .nr2-soma,.nr2-isfig .is-hi rect,.nr2-isfig .is-hi ellipse{stroke:var(--nr-sig);stroke-width:3;stroke-opacity:1;}
+.nr2-isfig .is-hi .nr2-den,.nr2-isfig .is-hi .nr2-ax{stroke:color-mix(in srgb, var(--nr-sig) 45%, var(--nr-c1));}
+.nr2-isfig .nr2-bg{fill:url(#nr2f-bg);}
+.nr2-isfig .nr2-soma{fill:url(#nr2f-soma);}
+.nr2-isfig .nr2-btn{fill:url(#nr2f-soma);}
+.nr2-isfig .nr2-myel rect{fill:url(#nr2f-my);}
+.nr2-isfig .nr2-outf{fill:url(#nr2f-out);}
+.nr2-isfig .nr2-ap{fill:url(#nr2f-ap);}
+.nr2-isfig .nr2-charge{fill:url(#nr2f-glow);}
+.nr2-isfig .nr2-calm{fill:url(#nr2f-calm);}
+.nr2-isfig .nr2-sterm{fill:url(#nr2f-term);}
+.nr2-isfig .nr2-rcv{fill:url(#nr2f-rcv);}

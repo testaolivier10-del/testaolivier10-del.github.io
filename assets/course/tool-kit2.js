@@ -119,7 +119,7 @@
    K.cause({ label }) -> { el, set(parts, pre), take(text | null), text() }
                                     THE CAUSE LINE under the picture (standard rule 4: it is clear why): the chain for
                                     this setting in a few words with arrows, live as a control moves. parts:
-                                    [{ t, role, join: '+', say }]; role names the idea ("is-" + role on the pill): the
+                                    [{ t, role, join: '+' | '-', say }]; role names the idea ("is-" + role on the pill): the
                                     tool gives each role its colour with --cz (fill) and --cz-ink (text), the same
                                     colour the idea has in the picture. pre: a tiny grey lead ("Over 60 days:").
                                     take(text): the takeaway sentence in its place (a tinted line with a bulb) until
@@ -1128,12 +1128,12 @@
     o = o || {};
     var p = el('p', 'tk2-cause'), parts = [], pre = '';
     if(o.label) p.setAttribute('aria-label', o.label);
-    function text(){ return (pre ? pre + ' ' : '') + parts.map(function(x, i){ return (i ? (x.join === '+' ? ' and ' : ', then ') : '') + (x.say || x.t); }).join('') + (parts.length ? '.' : ''); }
+    function text(){ return (pre ? pre + ' ' : '') + parts.map(function(x, i){ return (i ? (x.join === '+' ? ' and ' : x.join === '-' ? ' minus ' : ', then ') : '') + (x.say || x.t); }).join('') + (parts.length ? '.' : ''); }
     function set(list, lead){
       parts = list || []; pre = lead || '';
       p.classList.remove('is-take');
       var h = (pre ? '<span class="tk2-cz-pre">' + esc(pre) + '</span>' : '') + parts.map(function(x, i){
-        return (i ? '<span class="tk2-cz-a" aria-hidden="true">' + (x.join === '+' ? '+' : '\u2192') + '</span>' : '') + '<span class="tk2-cz is-' + esc(x.role || 'ink') + '">' + esc(x.t) + '</span>';
+        return (i ? '<span class="tk2-cz-a" aria-hidden="true">' + (x.join === '+' ? '+' : x.join === '-' ? '\u2212' : '\u2192') + '</span>' : '') + '<span class="tk2-cz is-' + esc(x.role || 'ink') + '">' + esc(x.t) + '</span>';
       }).join('');
       if(p.innerHTML !== h) p.innerHTML = h;
     }
