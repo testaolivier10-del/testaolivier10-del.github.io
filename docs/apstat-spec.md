@@ -175,7 +175,7 @@ feedback naming the slip, first try recorded as `<slug>:<context>:<step>`).
 | `sampling-distributions` | 2-4 | Flagship. Population (skewed, uniform, bimodal, proportion, draw your own), sample size n, "take 1 / 100 / 1000 samples"; the distribution of x̄ or p̂ builds live with its mean and SD against the formula; CLT and large-counts conditions shown failing and passing; the difference of two statistics |
 | `ci-capture` | 3-4 | 100 intervals from the same population, colour by whether they capture the parameter; confidence level and n sliders; margin of error parts (critical value × SE); interpret "95% confident" vs the wrong readings (graded choice of wording) |
 | `p-value-explorer` | 3-4 | Null distribution with the observed statistic; one or two-sided; shaded p-value; α line; then Type I, Type II and power with the alternative distribution overlaid, as a 2 × 2 table; drag the effect size and n |
-| `chi-square-lab` | 3 | Two-way table: expected counts filled cell by cell (row total × column total / grand total), components (O − E)²/E as a heat map, χ² on its distribution with df and p-value; homogeneity vs independence chooser with the matching hypotheses |
+| `chi-square-lab` | 3 | Two-way table: expected counts filled cell by cell (row total × column total / grand total), components (O − E)²/E as a heat map, χ² on its distribution with df and p-value; homogeneity vs independence chooser with the matching hypotheses (tools v2, decision 20: drawn as stacks with expected lines; the chooser is in Test yourself) |
 | `regression-lab` | 5 | Drag points on a scatterplot; the LSRL, r, r², residuals as segments and a live residual plot; influential points and outliers; interpret slope, intercept, r² and s in context (graded slot wording); extrapolation warning |
 
 Free: `sampling-distributions` (flagship), `data-explorer`, `probability-trees`; the rest Premium. Owner to
@@ -339,8 +339,13 @@ All grading is code; nothing is graded by an AI model. Formats in `docs/apstat-a
     `build-apstat.mjs` then writes the kit's two files into its page. Explore draws the population (a crowd), each
     sample flying down into its interval, and a rate plot against the level; Test yourself (the drill and its record
     ids) is unchanged. The other nine trainers are untouched.
+20. (2026-11-24, `docs/tools-v2-stat-chi-square-lab-brief.md`) **Tools v2: Chi-square lab on the kit.** Second AP®
+    Statistics tool on `ApStatTools.studioKit2` (`"kit2": true`). Explore draws the two-way table as stacks of
+    trays on counters (one per cell, the expected count a line on each), the parts of χ² as a bar under the
+    chi-square curve, the p-value shaded; the knob on the selected stack is the main control; α, a typed count and
+    every number are behind "?". Test yourself (the drill and its record ids) is unchanged.
 
-20. (2026-11-24, `docs/tools-v2-stat-design-randomizer-brief.md`) **Tools v2: Design randomizer on the shared kit**, through
+21. (2026-11-24, `docs/tools-v2-stat-design-randomizer-brief.md`) **Tools v2: Design randomizer on the shared kit**, through
     `ApStatTools.studioKit2` and `"kit2": true` (the second AP® Statistics tool). Explore draws the experiment (tomato
     seedlings on a sunny and a shady bench, or volunteers at tables, younger in front and older behind); a hand deals
     A and B in chance order, the plants grow to scale, and each estimate drops into its design's row, the design
