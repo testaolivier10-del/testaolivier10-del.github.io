@@ -184,11 +184,15 @@
     }
 
     /* --- solvent --- */
-    if(solv.id === 'aprotic' && sub.cls === '2' && strongBase && !r.bulky){
+    /* the flasks where E2 wins and SN2 is the minor path (a strong small base on a secondary carbon, a bulky one that
+       still attacks on a primary carbon): there the bare anion's basicity is what grows, the same condition mixture()
+       uses (recheck 1: 1-bromopropane + KOtBu) */
+    var e2OverSn2 = strongBase && ((sub.cls === '2' && !r.bulky) || (sub.cls === '1' && r.bulky && r.nu >= 1));
+    if(solv.id === 'aprotic' && e2OverSn2){
       /* Review round 1: on a secondary carbon with a strong, unhindered base the bare anion is a stronger base too, and
          the elimination share goes up (isopropyl bromide with methoxide in DMSO: about 97% alkene). */
       say('Solvent', 'E2',
-        'Polar aprotic. The anion is left bare, a stronger base as well as a stronger nucleophile, so on this carbon it adds to E2.', { E2:1 });
+        'Polar aprotic. The anion is left bare, a stronger base as well as a stronger nucleophile, so here it adds to E2.', { E2:1 });
     } else if(solv.id === 'aprotic'){
       say('Solvent', 'SN2',
         'Polar aprotic. There is no O–H to hydrogen-bond to the nucleophile, so the anion is left unsolvated and far more reactive. This is worth orders of magnitude to an SN2 rate.', { SN2:1 });
@@ -264,7 +268,7 @@
       } else if(strongBase){
         out.major = 'E2'; out.minor = 'SN2';
         out.verdict = 'E2 major, SN2 minor. This is the case that trips people up: the reagent is a good nucleophile as well, so SN2 really does compete — but on a secondary carbon a strong base takes the beta proton more often than it attacks the crowded carbon.' +
-          (heat ? ' Heating widens that gap further.' : '') +
+          (heat ? (sub.id === 'cyhexbr' && solv.id === 'aprotic' ? ' Heating would widen that gap further, but here it is already at the top of the bands this tool shows.' : ' Heating widens that gap further.') : '') +
           (solv.id === 'aprotic' ? ' A polar aprotic solvent makes the base stronger still, so even more of it goes to E2.' : '');
       } else if(r.nu >= 2){
         out.major = 'SN2'; out.minor = null;
@@ -375,7 +379,7 @@
        add to it (review round 1: setting it after them made heat do nothing here). */
     if(s.sub.cls === '2' && out.major === 'E2' && out.minor === 'SN2'){
       lead = 80; why.push('on a secondary carbon a strong base takes the beta proton about four times in five');
-      if(s.sub.id === 'cyhexbr'){ lead += 5; why.push('a ring carbon is more crowded still'); }
+      if(s.sub.id === 'cyhexbr'){ lead += 10; why.push('a ring carbon is more crowded still'); }
     }
     if(s.heat){
       if(isElim(out.major)){ lead += 12; why.push('heat widens the elimination’s lead'); }
@@ -394,6 +398,8 @@
     if(out.major === 'SN1'){ lead = 80; why.length = 0; why.push('at room temperature about four in five of the carbocations pick up the solvent rather than lose a proton'); }
     if(out.major === 'E1'){ lead = 60; why.length = 0; why.push('heat tips the carbocation toward losing a proton, though plenty still picks up the solvent'); }
 
+    // heat that cannot move a split already at the top band is not named as a reason for it
+    if(s.heat && isElim(out.major) && lead - 12 >= 95) why = why.filter(function(w){ return w.indexOf('heat') !== 0; });
     lead = Math.max(55, Math.min(95, lead));
     lead = Math.round(lead / 5) * 5;
 
@@ -637,8 +643,8 @@
   /* yaw and pitch of the view (degrees), the turn of the three arms about the C–Br axis (degrees) and how much the
      sketch widens everything across that axis, so no group hides behind another (VIEW_TUNE in the brief). */
   var VIEW0 = [24, 14, 0, 1];
-  var VIEW = { mebr: [55, 30, 280, 1.3, 120], prbr: [40, 0, 120, 1.3, 0], neopentyl: [50, -20, 0, 1.3, 60], bubr2: [40, 35, 100, 1.3, 120],
-    tbubr: [40, 30, 100, 1.3, 120], mebubr: [40, 25, 80, 1.3, 120], bnbr: [40, 15, 80, 1.3, 300], cyhexbr: [30, -30, 200, 1.3, 0] };
+  var VIEW = { mebr: [50, 30, 280, 1.3, 0], prbr: [40, -15, 160, 1.3, 60], neopentyl: [40, -5, 260, 1.15, 0], bubr2: [-30, 15, 320, 1.3, 300],
+    tbubr: [30, -20, 160, 1.3, 240], mebubr: [30, -20, 160, 1.3, 240], bnbr: [45, -30, 200, 1.3, 60], cyhexbr: [40, -15, 200, 1.3, 0] };
 
   function newMol(){ return { atoms: [], by: {}, bonds: [] }; }
   function atom(m, o){ o.lp = o.lp || 0; o.q = o.q || 0; m.atoms.push(o); m.by[o.id] = o; return o; }
@@ -765,16 +771,27 @@
   /* The groups on a carbon: flat (x component of each bond zeroed: a carbocation, or one end of a new double bond),
      lean (sign: the x component set to sign/3, tetrahedral, leaning away from what came in), or mirrored through the
      carbon (the SN2 umbrella). Each group's whole branch moves with it. skip: neighbours that stay. */
-  function reshape(m, K, c, how, skip){
+  /* how = 'flat' translates each branch (so a beta H stays along the empty p orbital, as E1 needs); a lean (a number)
+     turns each branch rigidly about the carbon, from its shape in ref (default: as it is now), so the angles inside a
+     branch stay tetrahedral through the umbrella flip (recheck 1). */
+  function rotTo(a, b){
+    var ax = vcross(a, b), sn = vlen(ax), cs = vdot(a, b);
+    if(sn < 1e-9) return function(v){ return v.slice(); };
+    ax = vmul(ax, 1 / sn);
+    return function(v){ return vadd(vadd(vmul(v, cs), vmul(vcross(ax, v), sn)), vmul(ax, vdot(ax, v) * (1 - cs))); };
+  }
+  function reshape(m, K, c, how, skip, ref){
     var cp = K.P[c];
     nbrs(m, K, c).forEach(function(n){
       if((skip && skip[n]) || (m.fixed && m.fixed[n])) return;
       var d = vsub(K.P[n], cp), L0 = vlen(d), ids = subtree(m, K, c, n);
       if(how === 'mirror'){ ids.forEach(function(k){ var p = K.P[k]; K.P[k] = [2 * cp[0] - p[0], p[1], p[2]]; }); return; }
       var yz = vnorm([0, d[1], d[2]]), t;
-      if(how === 'flat') t = yz;
-      else t = vadd([how / 3, 0, 0], vmul(yz, SQ));
-      moveIds(K, ids, vsub(vadd(cp, vmul(t, L0)), K.P[n]));
+      if(how === 'flat'){ moveIds(K, ids, vsub(vadd(cp, vmul(yz, L0)), K.P[n])); return; }
+      t = vadd([how / 3, 0, 0], vmul(yz, SQ));
+      var R0 = ref || K, c0 = R0.P[c], d0 = vnorm(vsub(R0.P[n], c0)), rot = rotTo(d0, vnorm(t));
+      var np = ids.map(function(k){ return vadd(cp, rot(vsub(R0.P[k], c0))); });
+      ids.forEach(function(k, i){ K.P[k] = np[i]; });
     });
   }
 
@@ -850,6 +867,7 @@
       next('drift', 560, function(N){ N.P.lg = vadd(N.P.lg, [0.45, 0.06, 0]); });
       if(neutralNu()) protonOff('r');
     } else if(path === 'SN1' || path === 'E1'){
+      var preIon = cloneS(frames[frames.length - 1]);   // the branches' shapes before the cation flattened them
       next('react', 1500, function(N){ lg(N); N.Q.a = 1; reshape(m, N, 'a', 'flat', { lg: 1 }); },
         { arrows: [{ from: { bond: ['a', 'lg'] }, to: { atom: 'lg' } }] });
       // bromide drifts off below the axis, so the cation's front face is open too
@@ -861,7 +879,7 @@
         next('react', 1300, function(N){
           attackSub(N, rA); N.Q.a = 0;
           if(ring && !front){ putReagent(m, N, 'r', vadd(A, eq), vnorm(vsub([1, 0, 0], eq))); N.P.ha = vadd(A, [BL.XH, 0, 0]); }
-          else { putReagent(m, N, 'r', vadd(A, [1.0 * sd, 0, 0]), [-sd, 0, 0]); reshape(m, N, 'a', -sd, { r0: 1 }); }
+          else { putReagent(m, N, 'r', vadd(A, [1.0 * sd, 0, 0]), [-sd, 0, 0]); reshape(m, N, 'a', -sd, { r0: 1 }, preIon); }
         }, { arrows: [{ from: { lp: rA }, to: { atom: 'a' } }] });
         if(neutralNu()) protonOff('r');
       } else {
