@@ -578,7 +578,7 @@
     out.push(lab([L.speech[0], L.speech[1]], ['Speech'], 'middle', px, 'sb-lab is-sm', true));
     out.push('<path class="sb-lead" d="M500 ' + r1(L.cc[1] + L.cc[3] + 4) + 'V' + r1(L.cy + L.ry * 1.06) + '"/>');
     out.push('<g data-sb="cclab">' + lab([500, L.cy + L.ry * 1.06 + 10 / px], ['Corpus callosum'], 'middle', px, 'sb-lab is-pill', true, 'cclab-t') + '</g>');
-    var hy = function(t){ return t[1] + t[3] + 12 / px; };
+    var hy = function(t){ return t[1] + t[3] - 15 / px; };   // inside the tray, clear of the table's edge
     out.push(lab([L.tray.left[0] + L.tray.left[2] / 2, hy(L.tray.left)], ['Left hand'], 'middle', px, 'sb-lab', false));
     out.push(lab([L.tray.right[0] + L.tray.right[2] / 2, hy(L.tray.right)], ['Right hand'], 'middle', px, 'sb-lab', false));
     return out.join('');
@@ -1145,10 +1145,12 @@
   /* The drill's figure, drawn by the same art. Nothing is highlighted or named before it is answered (a "locate"
      problem highlights the structure it asks about). */
   var figN = 0;
-  function figure(el, p, st){
+  function figure(el, p, st, wReal){
     st = st || {};
     var g = p.figure; if(!g){ el.innerHTML = ''; return; }
-    var phone = (window.innerWidth || 1280) <= 640, wpx = phone ? 330 : 600, inner, vb, label;
+    var phone = (window.innerWidth || 1280) <= 640, wpx = wReal || (phone ? 330 : 600), inner, vb, label;
+    // the words are sized in screen px: once the figure is on the page, draw it again at its real width
+    if(!wReal) requestAnimationFrame(function(){ var sv = el.querySelector('svg'), w = sv && sv.getBoundingClientRect().width; if(w && Math.abs(w - wpx) / wpx > 0.08 && el.contains(sv)) figure(el, p, st, w); });
     var pid = 'bmq' + (++figN);
     if(g.kind === 'brain'){
       var known = g.show === 'before' || st.region || st.where || st.name || st.side;

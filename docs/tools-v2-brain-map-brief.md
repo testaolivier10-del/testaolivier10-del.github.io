@@ -233,3 +233,9 @@ Merged `origin/claude/tools-v2-all` first (only the status tables conflicted; bo
   pass; check-site and check-weight pass. Perf at 1440, CPU x4, load 5: damage taps median 16.7 ms, p95 50 ms (was
   100 to 167 ms); split flash p95 33 ms; the flagship in the same run median 50 ms, p95 117 ms. A page without the
   kit's tags loads it through the adapter and works (no errors).
+
+## Recheck 1 (PASS) nits, fixed before integration
+- Test yourself's split figure is drawn again at its real width once on the page, so its words are 12 to 13 px like
+  Explore's (they were about 22 px at 1440).
+- "Left hand" and "Right hand" sit inside the trays, clear of the table's front edge. Sweep 390 and 1440, frames: 0
+  failing.
