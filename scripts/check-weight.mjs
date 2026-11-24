@@ -257,7 +257,9 @@ const SHELL_BUDGETS = [
   /* -> 57.0 (score card v3 on every mode, owner 2026-11-07): study.js and study.css plus card-loader.js. */
   /* -> 57.2 (overlap sweep 2026-11): the answer chip rules name Env Sci's, Macro's and Psychology's marks; measured 57.1 KB. */
   /* 57.2 -> 57.4 (same change): study.js wire() offers reminders after every score card; measured 57.3 KB. */
-  ['assets/course', 57.4],
+  /* 57.4 -> 57.7 (class assignments, owner 2026-11-23): practice-panel.js hides its settings while a teacher's
+     assignment card is up and reads topics= for assigned practice; measured 57.5 KB. */
+  ['assets/course', 57.7],
   /* 52.1 -> 56.6 (score card v3, 2026-11-07): study.js end() and the .cx-endp3 styles (56.4 measured before this
      branch), plus card-loader.js and the card's Tool Studio fixes for FRQ, justify and NREMT scenarios; measured 56.6. */
   /* 52.1 -> 56.5 (score card v3, owner 2026-11-07, docs/score-card.md): LevlStudy.end, miss and the .cx-endp3 styles; measured 56.4 KB. */
