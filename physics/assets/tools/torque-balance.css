@@ -215,3 +215,5 @@
 :root[data-theme="dark"] .tb2-arc.is-act{opacity:1;}
 :root[data-theme="dark"] .tb2-arc.is-beam{opacity:.42;}
 .tb2-again.is-pic{position:absolute;right:12px;top:12px;margin:0;}
+.tb2 .tk2-handle.is-racing .tk2-knob{opacity:0;}
+.tb2-armo{stroke:var(--tb2-wall1);stroke-width:7.5;stroke-linecap:round;opacity:.9;}

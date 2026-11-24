@@ -125,6 +125,8 @@ const probe = (o) => {
     if (tabv === 'ang') { const f = +pl.getAttribute('data-f'), a = +pl.getAttribute('data-ang'); add((s.pull.x - piv) / 100 * f * Math.sin(a * Math.PI / 180)); }
     const d = Math.abs(ccw - cw) > 1e-9 && n2(ccw) === n2(cw) ? 3 : 2, t1 = ccw.toFixed(d), t2 = cw.toFixed(d);
     if (!cause.includes('↺ ' + t1 + ' vs ↻ ' + t2) && !causeEl.classList.contains('is-take')) out.push(`cause line "${cause}" is not ↺ ${t1} vs ↻ ${t2}`);
+    // the ⊕ (the stick's centre) never sits on a printed number
+    const cm = qa('.tb2-cm')[0]; if (cm) { const cr = R(cm); q('.tb2-num').forEach(n => { if (gap(cr, R(n)) < 0) out.push('the stick\u2019s centre mark covers the number ' + n.textContent); }); }
     if (tabv === 'bal' && s.useMb && s.pivot !== 50 && !q('.tb2-swt').length) out.push('the stick\u2019s weight is a torque but is not named');
     if (!causeEl.classList.contains('is-take') && tabv === 'bal' && !/from fulcrum|on the fulcrum|fulcrum at/.test(cause)) out.push('the first pill does not say from where: ' + cause);
     if (tabv === 'bal') { const L = document.querySelector('.tb2-tq.is-ccw').textContent, Rr = document.querySelector('.tb2-tq.is-cw').textContent; if (L !== '↺ ' + t1 + ' N·m' || Rr !== '↻ ' + t2 + ' N·m') out.push(`curl numbers ${L} / ${Rr}, drawn masses give ${t1} / ${t2}`); }
@@ -150,6 +152,9 @@ const probe = (o) => {
       const al = R(document.querySelector('.tb2-armt')), gl = document.querySelector('.tb2-arm'), seg = [[gl.x1.baseVal.value, gl.y1.baseVal.value], [gl.x2.baseVal.value, gl.y2.baseVal.value]], svgR = R(document.querySelector('.tb2-svg'));
       let dmin = 1e9; for (let i = 0; i <= 40; i++) { const px = svgR.l + seg[0][0] + (seg[1][0] - seg[0][0]) * i / 40, py = svgR.t + seg[0][1] + (seg[1][1] - seg[0][1]) * i / 40; dmin = Math.min(dmin, Math.max(al.l - px, px - al.r, 0) ** 2 + Math.max(al.t - py, py - al.b, 0) ** 2); }
       if (Math.sqrt(dmin) > (Math.abs(Math.sin(a * Math.PI / 180)) > 0.97 ? 36 : 24)) out.push('the lever arm\u2019s name is ' + Math.sqrt(dmin).toFixed(0) + ' px from its line');
+      // most of the green line can be seen (nothing drawn over it): the top element along it is the line itself
+      let seen = 0, tot = 0; for (let i = 1; i < 20; i++) { const xx = svgR.l + seg[0][0] + (seg[1][0] - seg[0][0]) * i / 20, yy = svgR.t + seg[0][1] + (seg[1][1] - seg[0][1]) * i / 20; if (xx < 0 || yy < 0 || xx > innerWidth || yy > innerHeight) continue; tot++; const e = document.elementFromPoint(xx, yy); if (e && e.classList && e.classList.contains('tb2-arm')) seen++; }
+      if (tot > 4 && seen / tot < 0.7) out.push('only ' + Math.round(100 * seen / tot) + '% of the lever arm can be seen');
       // the angle's number sits inside its own arc (between the stick and the pull, seen from the hook)
       const ag = document.querySelector('.tb2-anglet'), hk = T.pullGeo().h, ax = +ag.getAttribute('x') - hk[0], ay = hk[1] - (+ag.getAttribute('y') - 4);
       const thr = +document.querySelector('.tb2-stick').getAttribute('data-th'), dirA = ((Math.atan2(ay, ax) * 180 / Math.PI - thr) % 360 + 540) % 360 - 180, lo = a <= 90 ? 0 : a, hi = a <= 90 ? a : 180;

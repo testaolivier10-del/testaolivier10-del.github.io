@@ -227,10 +227,11 @@
       var ph = W < 600, k = ph ? 0.9 : clamp(W / 1100, 0.95, 1.15);
       // the bench is as narrow as the weights falling past its ends allow, so the stands get the width
       var tl = ph ? 58 : Math.round(W * 0.13), tr = W - tl, cxA = Math.round(tl + (tr - tl) * 0.25), cxB = Math.round(tl + (tr - tl) * 0.75);
-      var arm = Math.round((tr - tl) * 0.235), pxpm = arm / 0.22;
-      var axleY = Math.round(ph ? 118 : clamp(Hin * 0.25, 118, 210)), armH = Math.round(ph ? 92 : clamp(Hin * 0.22, 110, 180));
+      var arm = Math.round((tr - tl) * (ph ? 0.215 : 0.235)), pxpm = arm / 0.22;   // (a phone: room for B's knob before the pulley's arm)
+      // (a desktop's bench sits low: the stands nearer the middle, the weights' fall below it no taller than needed)
+      var axleY = Math.round(ph ? 118 : clamp(Hin * 0.33, 130, 300)), armH = Math.round(ph ? 92 : clamp(Hin * 0.24, 110, 200));
       var tableY = axleY + armH, sY = axleY + Math.round((ph ? 24 : 32) * k);
-      var floorY = ph ? tableY + 200 : Math.min(Hin - 36, tableY + Math.round(clamp(Hin * 0.36, 170, 300))), H = ph ? floorY + 34 : Hin;
+      var floorY = ph ? tableY + 200 : Math.max(tableY + 150, Hin - 36), H = ph ? floorY + 34 : Math.max(Hin, floorY + 36);
       return { W: W, H: H, ph: ph, k: k, floorY: floorY, tableY: tableY, tl: tl, tr: tr, cx: [cxA, cxB], arm: arm, pxpm: pxpm, axleY: axleY, tilt: 0.36,
         pulY: sY, hubR: Math.max(10, Math.round(0.04 * pxpm)), band: H - floorY, sc: clamp(arm / 70, 0.85, 1.6) };
     }
@@ -321,16 +322,17 @@
         var X = g.x0 + c / 100 * g.ppm, big = c % 10 === 0, mid = c % 5 === 0;
         if(!big && !mid && g.ppm < 500) continue;
         ticks += 'M' + n1(X) + ' ' + n1(-g.thick / 2) + 'v' + (big ? 6 : mid ? 4 : 2.5);
-        if(big) nums += '<text class="tb2-num" x="' + n1(X) + '" y="' + n1(g.thick / 2 - 3) + '" text-anchor="middle">' + c + '</text>';
+        if(big) nums += '<text class="tb2-num" data-c="' + c + '" x="' + n1(X) + '" y="' + n1(g.thick / 2 - 3) + '" text-anchor="middle">' + c + '</text>';
       }
       svg.innerHTML = defs() + wallArt(g.W, g.H, g.benchY) + benchArt(g.W, g.H, g.benchY) +
         '<g class="tb2-standg"></g>' +
         '<g class="tb2-posts"><rect class="tb2-post" data-s="-1"/><rect class="tb2-post" data-s="1"/><rect class="tb2-pad" data-s="-1"/><rect class="tb2-pad" data-s="1"/></g>' +
         '<g class="tb2-arcs" aria-hidden="true"></g>' +
-        '<g class="tb2-loa" aria-hidden="true"></g>' +
         '<g class="tb2-strings"></g>' +
         '<g class="tb2-stick"><g class="tb2-stickin"><rect class="tb2-wood" x="' + g.x0 + '" y="' + n1(-g.thick / 2) + '" width="' + n1(g.ppm) + '" height="' + g.thick + '" rx="2" fill="url(#' + id + 'w)"/>' +
           '<path class="tb2-ticks" d="' + ticks + '"/>' + nums + '<g class="tb2-clamps"></g><g class="tb2-com"></g><g class="tb2-dim"></g></g></g>' +
+        // the lever arm and the line of action go over the stick: square to a straight up pull the arm lies along it
+        '<g class="tb2-loa" aria-hidden="true"></g>' +
         '<g class="tb2-dimtg" aria-hidden="true"></g><g class="tb2-swg" aria-hidden="true"></g><g class="tb2-masses"></g><g class="tb2-flyg"></g><g class="tb2-pullg"></g>' +
         '<g class="tb2-tray"></g>' +
         '<g class="tb2-labs" aria-hidden="true"><text class="tb2-tq is-ccw" text-anchor="end"></text><text class="tb2-tq is-cw" text-anchor="start"></text></g>';
@@ -417,6 +419,8 @@
         com += '<circle class="tb2-cm" cx="' + n1(C) + '" cy="0" r="' + (G.ph ? 4.5 : 5.5) + '"/><path class="tb2-cmx" d="M' + n1(C - 5) + ' 0h10M' + n1(C) + ' -5v10"/>';
       }
       if(D.comHtml !== com){ D.com.innerHTML = com; D.comHtml = com; }
+      // the ⊕ sits where the 50 is printed: the number steps aside while the ⊕ shows
+      var n50 = svg.querySelector('.tb2-num[data-c="50"]'), cmOn = s.useMb && s.pivot !== 50; if(n50 && n50.__off !== cmOn){ n50.style.display = cmOn ? 'none' : ''; n50.__off = cmOn; }
       paintDim(s);
       // off centre, the stick's own weight is a torque too: a short down arrow from its centre, named
       var sw = '';
@@ -564,6 +568,7 @@
       lo += '<line class="tb2-loaln" x1="' + n1(h[0] + ux * e1) + '" y1="' + n1(h[1] + uy * e1) + '" x2="' + n1(h[0] + ux * Math.max(e2, Lf + 4)) + '" y2="' + n1(h[1] + uy * Math.max(e2, Lf + 4)) + '"/>';
       var vx = foot[0] - P[0], vy = foot[1] - P[1], vl = Math.hypot(vx, vy) || 1, k9 = 9, sg = tt > 0 ? -1 : 1;
       var c1 = [foot[0] - vx / vl * k9, foot[1] - vy / vl * k9];
+      lo += '<line class="tb2-armo" x1="' + n1(P[0]) + '" y1="' + n1(P[1]) + '" x2="' + n1(foot[0]) + '" y2="' + n1(foot[1]) + '"/>';
       lo += '<line class="tb2-arm" x1="' + n1(P[0]) + '" y1="' + n1(P[1]) + '" x2="' + n1(foot[0]) + '" y2="' + n1(foot[1]) + '"/>';
       if(vl > 14) lo += '<path class="tb2-ra" d="M' + n1(c1[0]) + ' ' + n1(c1[1]) + 'l' + n1(sg * ux * k9) + ' ' + n1(sg * uy * k9) + 'l' + n1(vx / vl * k9) + ' ' + n1(vy / vl * k9) + '"/>';
       // its name and length, beside its middle, on the side away from the stick
@@ -670,7 +675,7 @@
         if(fulK){ var a = px(25), b = px(75), y = G.benchY - 5; fulK.place([a, y, b, y]); }
         if(holdB){ holdB.style.left = (G.ph ? 8 : 14) + 'px'; holdB.style.top = n1(st.tab === 'ang' ? G.benchY + 10 : G.benchY + (G.two ? 44 : 20)) + 'px'; }
         trayB.forEach(function(t, i){ var p = trayPos(i), z = bodySize(0.5, G.k * p.sc), w = Math.max(44, z.w + 6); var th2 = Math.max(44, z.h + 10); t.place([p.x - w / 2, Math.min(p.y - 6, G.H - th2 - 1), w, th2]); t.el.disabled = st.bal.masses.length >= 4; });
-      } else { if(slH.A) slH.A.place(); if(slH.B) slH.B.place(); }
+      } else { ['A', 'B'].forEach(function(w){ var h = slH[w]; if(!h) return; h.place(); h.el.classList.toggle('is-racing', st.ine.phase === 'race'); }); }   // (no knob over a turning arm)
       if(cue && cue.active()) cue.place();
     }
     function massHandle(s, q){
@@ -689,9 +694,20 @@
     }
     function massText(s, q){ var r = q.x - s.pivot; return 'at the ' + q.x + ' cm mark, ' + (r === 0 ? 'right over the fulcrum' : Math.abs(r) + ' cm ' + (r < 0 ? 'left' : 'right') + ' of the fulcrum') + '. Arrow keys move it, Delete takes it off.'; }
     /* A mass snaps to whole centimetres and keeps 4 cm from any other hook; pulled below the bench it comes off. */
+    /* How many rows the masses would hang in with q at mark c (the same rule as levels()). */
+    function rowsWith(s, q, c){
+      if(!G || !G.ppm) return 1;
+      var list = s.masses.map(function(o){ return { x: o === q ? c : o.x, m: o.m }; });
+      if(q && s.masses.indexOf(q) < 0) list.push({ x: c, m: q.m });
+      list.sort(function(a, b){ return a.x - b.x; });
+      var rows = [];
+      list.forEach(function(o){ var w = bodySize(o.m, G.k).w, x = o.x / 100 * G.ppm, L = 0; while(rows[L] && rows[L].some(function(r){ return Math.abs(r.x - x) < (r.w + w) / 2 + 6; })) L++; (rows[L] = rows[L] || []).push({ x: x, w: w }); });
+      return rows.length;
+    }
     function freeNear(s, q, cm){
       cm = clamp(Math.round(cm), 2, 98);
-      function ok(c){ return c >= 2 && c <= 98 && !s.masses.some(function(o){ return o !== q && Math.abs(o.x - c) < 4; }); }
+      // on a desktop a mass cannot crowd in as a third one hanging below another (the stick keeps its size)
+      function ok(c){ return c >= 2 && c <= 98 && !s.masses.some(function(o){ return o !== q && Math.abs(o.x - c) < 4; }) && (!wide() || rowsWith(s, q, c) <= 2); }
       if(ok(cm)) return cm;
       for(var d = 1; d < 100; d++){ if(ok(cm - d)) return cm - d; if(ok(cm + d)) return cm + d; }
       return q.x;
@@ -708,7 +724,7 @@
       if(big) d *= 10;
       var to = clamp(q.x + d, 2, 98), c = to;
       // jump over a neighbour in the way, in the direction pressed
-      while(c >= 2 && c <= 98 && s.masses.some(function(o){ return o !== q && Math.abs(o.x - c) < 4; })) c += d > 0 ? 1 : -1;
+      while(c >= 2 && c <= 98 && (s.masses.some(function(o){ return o !== q && Math.abs(o.x - c) < 4; }) || wide() && rowsWith(s, q, c) > 2)) c += d > 0 ? 1 : -1;
       return c >= 2 && c <= 98 ? c : q.x;
     }
     function pickPull(s, x, y){
@@ -766,7 +782,7 @@
     function addMass(m, i){
       var s = st.bal; if(s.masses.length >= 4) return;
       var spots = [10, 90, 20, 80, 15, 85, 35, 65, 5, 95, 40, 60, 25, 75, 45, 55];
-      var x = spots.filter(function(c){ return !s.masses.some(function(o){ return Math.abs(o.x - c) < 4; }) && Math.abs(c - s.pivot) > 3; })[0] || 50;
+      var x = spots.filter(function(c){ return !s.masses.some(function(o){ return Math.abs(o.x - c) < 4; }) && Math.abs(c - s.pivot) > 3 && (!wide() || rowsWith(s, { m: m }, c) <= 2); })[0] || 50;
       var q = { id: nextId++, m: m, x: x, lev: 0, ly: 0 };
       var from = trayPos(i), big = bodySize(0.5, G.k * from.sc), z = bodySize(m, G.k * from.sc);
       s.held = true; clearTimeout(relT); cause.take(null);

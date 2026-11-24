@@ -178,3 +178,14 @@ with their tags ("6 cm", "18 cm"), and the landing times after a race.
 - S2 "fulcrum" is the quiet knob's tag. S3 the outward lean is logged as it is (owner log). S4 the slider knobs sit
   20 px past their sliders along the arm; the cm tags hide while a race runs and after it. S5 dark curl arrows: the
   inactive pieces at 0.62. S6 the owner log rows are in the table (the merge from `claude/tools-v2-all` is in).
+
+## Recheck 1 (2026-11-24, BLOCK on R1): what changed
+- R1 the lever arm and the line of action are drawn over the stick, the arm with a light outline, so square to a
+  straight up pull (the arm along the stick) it is seen on the wood; the sweep asserts that 70% or more of the green
+  line is the top element along it.
+- S1 on a desktop a mass cannot crowd in as a third one hanging below another (it snaps to the nearest place where
+  two rows do), so the stage never needs three rows there; with two rows the stick still shrinks to keep the cause
+  line on screen (about half its width at 1024 × 768, only while masses hang one below another).
+- S2 the Inertia bench sits lower (the stands nearer the middle; the weights' fall below it shorter).
+- S3 the slider knobs are hidden while a race runs (still there for a grab or a key). S4 the stick's "50" steps aside
+  while the ⊕ shows (asserted). S5 on a phone the arms are a little shorter, clear of the pulley's arm.
