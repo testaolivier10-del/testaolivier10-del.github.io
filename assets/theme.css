@@ -2062,6 +2062,11 @@ h3{font-family:var(--font-display);font-weight:800;letter-spacing:-0.02em;}
 .site-header__brand .brand-mark{width:34px;height:34px;border-radius:9px;background:var(--navy);color:var(--accent-bright);font:900 24px/1 var(--font-display);box-shadow:none;}
 :root[data-theme="dark"] .site-header__brand .brand-mark{background:#0B1A33;box-shadow:inset 0 0 0 1px var(--line);}
 .site-header__brand .brand-mark svg{width:20px;height:20px;}
+/* The plus is drawn, not typed: a "+" glyph sits where the font puts it (low and left of centre in the square);
+   two bars are centred exactly (owner 2026-11-23). The typed "+" stays in the markup, hidden. */
+.site-header__brand .brand-mark{position:relative;font-size:0;}
+.site-header__brand .brand-mark::before,.site-header__brand .brand-mark::after{content:"";position:absolute;left:50%;top:50%;width:16px;height:4px;border-radius:1px;background:currentColor;transform:translate(-50%,-50%);}
+.site-header__brand .brand-mark::after{transform:translate(-50%,-50%) rotate(90deg);}
 .site-header__course{font:800 14px var(--font-ui);color:var(--ink);}
 .site-header__course::before{background:var(--line);}
 .theme-toggle{background:var(--white);box-shadow:var(--lift-sm);}

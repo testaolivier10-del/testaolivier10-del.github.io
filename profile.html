@@ -50,8 +50,8 @@
   .pf-co b{display:block;font:900 15.5px var(--font-ui);}
   .pf-co small{display:block;font:700 12.5px var(--font-ui);color:var(--muted);margin-top:2px;}
   .pf-co em{display:block;font:800 13px var(--font-ui);font-style:normal;color:var(--accent-text,var(--accent));margin-top:4px;}
-  .pf-cal{display:grid;grid-template-rows:repeat(7,16px);grid-auto-flow:column;grid-auto-columns:16px;gap:4px;overflow-x:auto;padding-bottom:2px;}
-  .pf-d{border-radius:4px;background:var(--surface2);box-shadow:inset 0 0 0 1px var(--line);}
+  .pf-cal{display:grid;grid-template-rows:repeat(7,auto);grid-auto-flow:column;gap:4px;padding-bottom:2px;}
+  .pf-d{aspect-ratio:1;border-radius:4px;background:var(--surface2);box-shadow:inset 0 0 0 1px var(--line);}
   .pf-d.off{visibility:hidden;}
   .pf-d.a{background:#9FE3D6;box-shadow:none;}.pf-d.b{background:#2BB3A0;box-shadow:none;}.pf-d.c{background:#0B6B62;box-shadow:none;}
   .pf-d.t{outline:2px solid var(--ink);outline-offset:1px;}
@@ -79,7 +79,7 @@
   .pf-grp h3 img{width:32px;height:32px;border-radius:8px;object-fit:cover;object-position:right center;background:var(--panel,#0B1A33);}
   .pf-ms h2,.pf-oc h2,.pf-oc h3{font-size:15px !important;margin-top:4px;}
   .pf-ms,.pf-oc>div:not(:empty){margin-top:16px;}
-  @media (max-width:640px){.pf-card{padding:18px;}.pf-row{flex-wrap:wrap;}.pf-cal{grid-template-rows:repeat(7,12px);grid-auto-columns:12px;gap:3px;}}
+  @media (max-width:640px){.pf-card{padding:18px;}.pf-row{flex-wrap:wrap;}.pf-cal{gap:3px;}}
 </style>
 </head>
 <body class="sp-page">
