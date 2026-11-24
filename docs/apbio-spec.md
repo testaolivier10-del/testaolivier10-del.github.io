@@ -459,6 +459,13 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    1 blocked, fixed 2026-11-24. Every number is read from the plants as drawn. Test yourself:
    Problems (the old Practice, unchanged, same record ids) and Challenges (the old goals). Still free. Open point:
    needs-author `ds-explore-radish`.
+42. (2026-11-24, `docs/tools-v2-bio-tree-reading-brief.md`) **Phylogenetic tree reading rebuilt to tools v2**
+   (branch `claude/tools-v2-bio-tree-reading`, waiting for the independent review; not merged). Explore: a drawn living
+   tree with the organisms at its tips (chordates, land plants, primates drawn to scale); tap two tips and glows run
+   down to their most recent common ancestor, tap a node and its branches swing round with nothing changing, and in
+   Traits a tick climbs to the branch where each shared derived trait arose. Test yourself: Place the traits and Build
+   a tree (the old record ids) and the questions (ids unchanged; the stimulus now reads the drawings left to right).
+   Still Premium. Open point: needs-author `tree-explore-v2`.
 
 ## 4. Map format (Phase 0)
 

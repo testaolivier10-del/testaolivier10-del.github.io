@@ -923,7 +923,7 @@ ${tail({ depth, section: '' })}
         ...(t.premium ? lockedLd('.bio-app-mount') : { isAccessibleForFree: true }), isPartOf: { '@id': COURSE_ID } },
       crumbs(orgCrumbs([{ name: 'Tools', url: `${SITE}${BASE}tools.html` }, { name: t.name, url }])),
     ] };
-    const extra = ['bio-questions.js', 'tools/bio-tool-math.js', ...(t.kind === 'skill' ? ['tools/bio-skill-problems.js'] : []), 'tools/bio-tools.js', ...(['energy-flow', 'population-growth', 'simpson-diversity', 'tree-reading'].includes(t.slug) ? ['tools/bio-art.js'] : []), ...(t.kind !== 'simulator' ? ['tools/bio-skill-stage.js'] : []), ...(scriptOk ? [`tools/${t.slug}.js`] : [])];
+    const extra = ['bio-questions.js', 'tools/bio-tool-math.js', ...(t.kind === 'skill' ? ['tools/bio-skill-problems.js'] : []), 'tools/bio-tools.js', ...(['energy-flow', 'population-growth', 'simpson-diversity'].includes(t.slug) ? ['tools/bio-art.js'] : []), ...(t.kind !== 'simulator' ? ['tools/bio-skill-stage.js'] : []), ...(scriptOk ? [`tools/${t.slug}.js`] : [])];
     const body = `
 ${bodyOpen(` data-app="tool-${t.slug}"`)}
 ${toolBand({ key: 'apbio', up: '../../', slug: t.slug, title: t.name, hand: esc(t.tag || t.blurb), lede: esc(t.desc), backHref: '../tools.html',

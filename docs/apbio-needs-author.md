@@ -783,3 +783,11 @@ These stay open:
   middle values). Conventions to confirm: mean and median shown to 2 decimals (data to 0.1 cm); mode and range only in
   "?" (with heights to 0.1 cm a small sample often has no mode, and "?" says "none" then); the ±1 SD band and SE
   bracket only on the Problems figure. Teacher: confirm the heights are plausible and the 2 decimal convention.
+- **tree-explore-v2** (logged, tools v2, 2026-11-24). The rebuilt tree reading tool's Explore (`bio/tools/tree-reading.html`,
+  `docs/tools-v2-bio-tree-reading-brief.md`) says a shared derived trait "arose once, below node N" and that the tips
+  above "inherit it": true on these trees under parsimony, but a trait can also be lost later or arise twice
+  (convergence), which "?" mentions only as "unless it is lost later". Cladogram nodes are drawn at heights set by
+  nesting (how far a node is from its tips), not by time; "?" says so and the primate tree is drawn to scale. "?" calls
+  a group that leaves out some descendants "not a clade (paraphyletic; sometimes called a grade)". The six primates and
+  the other organisms are original drawings (faces for the primates). Teacher: confirm the wording and that the
+  drawings read as the organisms named.
