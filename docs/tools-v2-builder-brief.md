@@ -5,6 +5,15 @@ The owner does not look at each tool. Nothing merges to `main` until all tools a
 the branch `claude/tools-v2-all`, which is merged once at the end. Similar tools stay separate (more tools, each
 more specific). Nothing a tool could do is silently dropped.
 
+Speed rules (owner 2026-11-23: faster, same quality):
+- First build and the round that goes to integration: full kept sweep at all ten widths, light and dark.
+  Fix rounds in between: sweep at 360, 390, 1024 and 1440 (light and dark) plus the frames run; the reviewer runs
+  the full ten widths only on the round it means to PASS.
+- Reviewers list every must fix and every should fix in one pass. Builders fix all of them in the same round, so
+  no separate polish round follows a PASS unless the PASS round itself finds something new.
+- Run one width per process, never several heavy checks at once, and stop servers as soon as a run ends.
+- Simpler tools go first in the queue; the slow 3D and NREMT patient tools are not started two at a time.
+
 ## Builder
 
 Setup: `cd /home/claude/testaolivier10-del.github.io && git fetch origin claude/tools-v2-all && git worktree add
