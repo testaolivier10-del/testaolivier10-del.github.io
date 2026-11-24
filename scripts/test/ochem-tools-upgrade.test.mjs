@@ -333,10 +333,10 @@ test('reaction predictor v2: every frame of every flask is a real structure, and
       assert.ok(!brOn && last.Q.lg === -1, tag + ': bromide did not leave');
       if (path === 'SN1' || path === 'SN2') assert.equal(last.B[k2('a', 'r0')], 1, tag + ': the nucleophile is not bonded to the carbon');
       // the umbrella turns each branch rigidly: a drawn beta H keeps its tetrahedral angle to the alpha carbon (recheck 1)
-      if ((path === 'SN1' || path === 'SN2') && !S.m.fixed) for (const b of ['b1', 'b2']) { const be = S.m.beta[b]; if (!be) continue;
+      if ((path === 'SN1' || path === 'SN2') && !S.m.fixed) { for (const b of ['b1', 'b2']) { const be = S.m.beta[b]; if (!be) continue;
         const u = [0, 1, 2].map(i => last.P[be.h][i] - last.P[be.c][i]), v = [0, 1, 2].map(i => last.P.a[i] - last.P[be.c][i]);
         const deg = Math.acos((u[0] * v[0] + u[1] * v[1] + u[2] * v[2]) / Math.hypot(...u) / Math.hypot(...v)) * 180 / Math.PI;
-        assert.ok(Math.abs(deg - 109.47) < 3, `${tag}: H–C–C at the beta carbon ends at ${deg.toFixed(1)}°`); }
+        assert.ok(Math.abs(deg - 109.47) < 3, `${tag}: H–C–C at the beta carbon ends at ${deg.toFixed(1)}°`); } } else if (path === 'SN1' || path === 'SN2') { /* the ring: no branch turns */ }
       else {
         assert.equal(last.B[k2('a', S.beta.c)], 2, tag + ': no double bond to the beta carbon');
         const pr = R.productOf(c.sub, c.rgt, path);
