@@ -63,7 +63,7 @@ const shot = async (page, name) => { if (!SHOTS) return; const narrow = (await p
 const tab = async (page, v) => { await page.click(`.tk2-tab[data-v=${v}]`); await page.waitForTimeout(450); };
 /* page.waitForFunction evaluates a string, which the page's CSP refuses (no unsafe-eval): poll with evaluate instead. */
 async function until(page, fn, arg, ms = 8000) { const t0 = Date.now(); for (;;) { if (await page.evaluate(fn, arg)) return; if (Date.now() - t0 > ms) throw new Error('timed out: ' + fn.toString().slice(0, 80)); await page.waitForTimeout(40); } }
-const settle = page => until(page, () => { const t = document.querySelector('.tb2').__tb, s = t.st[t.st.tab]; return t.st.tab === 'ine' ? ['ready', 'done'].includes(t.st.ine.phase) : !s.held && s.postT === 0 && s.om === 0 && !s.fly.length; }).then(() => page.waitForTimeout(80));
+const settle = page => until(page, () => { const t = document.querySelector('.tb2').__tb, s = t.st[t.st.tab]; return t.st.tab === 'ine' ? ['ready', 'done'].includes(t.st.ine.phase) : !s.held && s.postT === 0 && s.om === 0 && !s.fly.length; }).then(() => page.waitForTimeout(260));   // a stage redrawn for more rows settles too
 /* Move a mass (by index) to a mark with a real pointer drag; the stick is held level while it moves. */
 async function dragMass(page, i, cm, o = {}) {
   const k = page.locator('.tb2-mk .tk2-knob').nth(i), b = await k.boundingBox(), box = await page.locator('.tb2-scene').boundingBox();
@@ -123,9 +123,11 @@ const probe = (o) => {
     if (tabv === 'ang') { const f = +pl.getAttribute('data-f'), a = +pl.getAttribute('data-ang'); add((s.pull.x - piv) / 100 * f * Math.sin(a * Math.PI / 180)); }
     const d = Math.abs(ccw - cw) > 1e-9 && n2(ccw) === n2(cw) ? 3 : 2, t1 = ccw.toFixed(d), t2 = cw.toFixed(d);
     if (!cause.includes('↺ ' + t1 + ' vs ↻ ' + t2) && !causeEl.classList.contains('is-take')) out.push(`cause line "${cause}" is not ↺ ${t1} vs ↻ ${t2}`);
+    if (tabv === 'bal' && s.useMb && s.pivot !== 50 && !q('.tb2-swt').length) out.push('the stick\u2019s weight is a torque but is not named');
+    if (!causeEl.classList.contains('is-take') && tabv === 'bal' && !/from fulcrum|on the fulcrum|fulcrum at/.test(cause)) out.push('the first pill does not say from where: ' + cause);
     if (tabv === 'bal') { const L = document.querySelector('.tb2-tq.is-ccw').textContent, Rr = document.querySelector('.tb2-tq.is-cw').textContent; if (L !== '↺ ' + t1 + ' N·m' || Rr !== '↻ ' + t2 + ' N·m') out.push(`curl numbers ${L} / ${Rr}, drawn masses give ${t1} / ${t2}`); }
     const arcs = document.querySelector('.tb2-arcs'), dc = +arcs.getAttribute('data-ccw'), dw = +arcs.getAttribute('data-cw');
-    if (ccw > 0.01 && cw > 0.01 && Math.abs(dc / dw - ccw / cw) > 0.02 * (ccw / cw) + 0.01) out.push(`curl arrows ${dc.toFixed(1)}° : ${dw.toFixed(1)}° are not in proportion to ${F3(ccw)} : ${F3(cw)}`);
+    if (tabv === 'bal' && ccw > 0.01 && cw > 0.01 && Math.abs(dc / dw - ccw / cw) > 0.02 * (ccw / cw) + 0.01) out.push(`curl arrows ${dc.toFixed(1)}° : ${dw.toFixed(1)}° are not in proportion to ${F3(ccw)} : ${F3(cw)}`);
     if (Math.max(dc, dw) > 68.5) out.push('a curl arrow longer than 68°');
     // the result word follows the drawn tilt
     const th = +document.querySelector('.tb2-stick').getAttribute('data-th'), res = causeEl.getAttribute('data-res');
@@ -142,6 +144,14 @@ const probe = (o) => {
       if (an !== th2 + '°') out.push('the angle says ' + an + ', the pull is at ' + th2);
       if (am !== 'lever arm ' + arm.toFixed(2) + ' m') out.push(am + ', drawn lever arm ' + arm.toFixed(3));
       if (!cause.includes(f.toFixed(1) + ' N at ' + th2 + '°') || !cause.includes('lever arm ' + arm.toFixed(2) + ' m')) out.push('cause line disagrees with the pull: ' + cause);
+      // the lever arm's name is attached to its line (within 16 px of the green segment; 30 px when the arm lies along the tilted stick and the name must clear the stick's numbers)
+      const al = R(document.querySelector('.tb2-armt')), gl = document.querySelector('.tb2-arm'), seg = [[gl.x1.baseVal.value, gl.y1.baseVal.value], [gl.x2.baseVal.value, gl.y2.baseVal.value]], svgR = R(document.querySelector('.tb2-svg'));
+      let dmin = 1e9; for (let i = 0; i <= 40; i++) { const px = svgR.l + seg[0][0] + (seg[1][0] - seg[0][0]) * i / 40, py = svgR.t + seg[0][1] + (seg[1][1] - seg[0][1]) * i / 40; dmin = Math.min(dmin, Math.max(al.l - px, px - al.r, 0) ** 2 + Math.max(al.t - py, py - al.b, 0) ** 2); }
+      if (Math.sqrt(dmin) > (Math.abs(Math.sin(a * Math.PI / 180)) > 0.97 ? 30 : 16)) out.push('the lever arm\u2019s name is ' + Math.sqrt(dmin).toFixed(0) + ' px from its line');
+      // the angle's number sits inside its own arc (between the stick and the pull, seen from the hook)
+      const ag = document.querySelector('.tb2-anglet'), hk = T.pullGeo().h, ax = +ag.getAttribute('x') - hk[0], ay = hk[1] - (+ag.getAttribute('y') - 4);
+      const thr = +document.querySelector('.tb2-stick').getAttribute('data-th'), dirA = ((Math.atan2(ay, ax) * 180 / Math.PI - thr) % 360 + 540) % 360 - 180, lo = a <= 90 ? 0 : a, hi = a <= 90 ? a : 180;
+      if (!(dirA > lo - 1 && dirA < hi + 1)) out.push('the angle\u2019s number is outside its arc (' + dirA.toFixed(0) + '° for ' + lo + ' to ' + hi + ')');
       // the lever arm is drawn square to the line of action and as long as it says
       const ln = document.querySelector('.tb2-arm'), L2 = Math.hypot(ln.x2.baseVal.value - ln.x1.baseVal.value, ln.y2.baseVal.value - ln.y1.baseVal.value) / g.ppm;
       if (Math.abs(L2 - arm) > 0.004) out.push('the drawn lever arm is ' + L2.toFixed(3) + ' m, the label ' + arm.toFixed(3));
@@ -161,6 +171,8 @@ const probe = (o) => {
   const rows = new Set(q('.tb2 .tk2-cz').map(e => Math.round(R(e).t))).size;
   if (innerWidth <= 640 && rows > 2) out.push('cause line is ' + rows + ' rows: ' + cause);
   if (document.documentElement.scrollWidth > innerWidth) out.push('sideways scroll');
+  // a desktop shows the picture and the cause line together, without scrolling
+  if (innerWidth >= 1000 && R(causeEl).b > innerHeight + 0.5) out.push('the cause line is below the screen (' + Math.round(R(causeEl).b) + ' > ' + innerHeight + ')');
   return { out, causeH: Math.round(R(causeEl).h) };
 };
 
@@ -261,7 +273,7 @@ const frameProbe = () => {
   if (!causeEl.classList.contains('is-take') && !cause.includes('↺ ' + ccw.toFixed(d) + ' vs ↻ ' + cw.toFixed(d))) out.push('cause line ' + cause + ' against drawn ' + ccw.toFixed(3) + ' / ' + cw.toFixed(3));
   if (tabv === 'bal' && document.querySelector('.tb2-tq.is-ccw').textContent !== '↺ ' + ccw.toFixed(d) + ' N·m') out.push('curl number against the drawn masses');
   const arcs = document.querySelector('.tb2-arcs'), dc = +arcs.getAttribute('data-ccw'), dw = +arcs.getAttribute('data-cw'), k = +arcs.getAttribute('data-k');
-  if (Math.abs(dc - ccw * k) > 0.35 || Math.abs(dw - cw * k) > 0.35) out.push(`curl arrows ${dc.toFixed(2)}/${dw.toFixed(2)}° for ${(ccw * k).toFixed(2)}/${(cw * k).toFixed(2)}`);
+  if (tabv === 'bal' && (Math.abs(dc - ccw * k) > 0.35 || Math.abs(dw - cw * k) > 0.35)) out.push(`curl arrows ${dc.toFixed(2)}/${dw.toFixed(2)}° for ${(ccw * k).toFixed(2)}/${(cw * k).toFixed(2)}`);
   // result words only when the picture shows them
   const res = causeEl.getAttribute('data-res'), deg = th * 180 / Math.PI;
   if (!causeEl.classList.contains('is-take')) {
@@ -359,7 +371,8 @@ async function runPerf(w, h) {
 }
 
 for (const w of WIDTHS) {
-  const h = w <= 430 ? 844 : w <= 820 ? 1024 : w >= 1920 ? 1080 : 900;
+  // each width at a real screen's height (1024 × 768 and 1280 × 800 laptops among them)
+  const h = { 360: 740, 390: 844, 430: 932, 600: 960, 768: 1024, 820: 1180, 1024: 768, 1280: 800, 1440: 900, 1920: 1080 }[w] || (w < 600 ? 844 : 900);
   if (PERF) await runPerf(w, h);
   else if (FRAMES) await runFrames(w, h);
   else await runSweep(w, h);

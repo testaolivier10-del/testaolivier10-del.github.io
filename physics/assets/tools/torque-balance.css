@@ -123,7 +123,7 @@
 .tb2 .tk2-tabs{margin:0;align-self:flex-start;max-width:100%;}
 .tb2 .tk2-tabs.is-big .tk2-tab{flex:0 0 auto;}
 @media (max-width:420px){ .tb2 .tk2-tabs.is-big{gap:6px;} .tb2 .tk2-tabs.is-big .tk2-tab{padding:0 13px 0 9px;font-size:15px;gap:6px;} }
-.tb2-scene{position:relative;flex:1 1 auto;min-height:440px;border-radius:18px;overflow:hidden;background:var(--surface2);}
+.tb2-scene{position:relative;flex:1 1 auto;min-height:300px;border-radius:18px;overflow:hidden;background:var(--surface2);}
 @media (max-width:1023px){ .tb2-scene{flex:none;height:min(66vw,580px);min-height:440px;} }
 @media (max-width:599.98px){ .tb2-scene{border-radius:14px;min-height:0;} .tb2{gap:8px;} }
 .tb2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
@@ -201,6 +201,16 @@
 .tb2-leg{fill:var(--tb2-edge);}
 .tb2-cap{fill:var(--tb-metal-ink);}
 .tb2-dmark{stroke:var(--tb-metal-ink);stroke-width:1.6;}
-.tb2-cab{fill:var(--tb2-front);}
-.tb2-door{fill:none;stroke:var(--tb2-edge);stroke-width:2;}
-.tb2-knobd{fill:var(--tb-metal2);}
+
+
+
+.tb2-swa{stroke:var(--phys-s5);stroke-width:2.4;}
+.tb2-swh{fill:var(--phys-s5);}
+.tb2-swt{fill:var(--ink);font-size:12.5px;font-weight:800;paint-order:stroke;stroke:var(--tb2-wall1);stroke-width:3px;}
+/* dark: the arms, caps and strings in a light metal ink (they are what you act on) */
+:root[data-theme="dark"] .tb2-armr{stroke:#B8C2C9;}
+:root[data-theme="dark"] .tb2-cap{fill:#B8C2C9;}
+:root[data-theme="dark"] .tb2-string,:root[data-theme="dark"] .tb2-pstr{stroke:#D7DCE0;stroke-width:2;}
+:root[data-theme="dark"] .tb2-arc{opacity:.62;}
+:root[data-theme="dark"] .tb2-arc.is-act{opacity:1;}
+:root[data-theme="dark"] .tb2-arc.is-beam{opacity:.42;}

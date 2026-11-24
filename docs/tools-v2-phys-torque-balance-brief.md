@@ -44,8 +44,10 @@ with α = τ / I from the real model. The angle and the inertia ideas each get t
    controls: the fulcrum (a small knob on the stand's base, 25 to 75 cm), "Hold level" (keeps the supports up), the
    tray at the bench's end (tap 100, 200 or 500 g: it flies up to a free spot and hangs; drag a mass below the bench
    or press Delete and it flies back). Neighbours that would touch hang one below the other (strings of different
-   length; the torque is the same, said in "?"). The thin dimension line on the stick measures the moved mass's
-   distance from the fulcrum. Cause line: "100 g at 30 cm → ↺ 0.39 vs ↻ 0.29 N·m → left end down" (held level,
+   length; the torque is the same, said in "?"); the stage keeps room for one row and is redrawn, with a cross
+   fade, when masses hang in more. Off centre, the stick's own weight is a down arrow at its centre named "stick's
+   weight". The thin dimension line on the stick measures the moved mass's
+   distance from the fulcrum. Cause line: "100 g, 30 cm from fulcrum → ↺ 0.39 vs ↻ 0.29 N·m → left end down" ("fulcrum at 40 cm" first after the fulcrum moved) (held level,
    lifting level, turning ↺ / ↻, left end down, right end down, balanced). Takeaway after a balanced let go:
    "Twice the distance, half the mass: the same torque." (or the general sentence).
 2. **Angle**. Purpose: "See why a slanted pull turns the stick less." The same stick, a 200 g mass at the 30 cm mark
@@ -73,10 +75,10 @@ result green. Physics series colours (`--phys-s1`, `--phys-s2`, `--phys-s3`), da
 Outside the picture: 3 tabs, the purpose line (8 or 9 words), "Show me how", the cause line (Balance 3 pills, Angle 4,
 Inertia 3), "Start over". No side panel.
 On the picture, Balance: the stick and its 9 numbers, 2 masses (1 word each), 2 knobs, 2 curl arrows with their 2
-numbers, the dimension line and "30 cm", the stand and "fulcrum", 2 supports, "Hold level", the tray (3 weights),
-the fulcrum's quiet knob, the cue on a first visit. Angle: the stick, 1 mass, the scale with its reading, the hand
-and its knob, the arrow, the angle, the line of action, the lever arm and its name, 2 curl arrows (no numbers: they
-are in the cause line), "fulcrum", "Hold level". Inertia: 2 stands with "A" and "B", 2 weights ("200 g"), 2 knobs
+numbers, the dimension line and "30 cm", the stand, 2 supports, "Hold level", the tray (3 weights),
+the fulcrum's quiet knob with its tag "fulcrum", the cue on a first visit. Angle: the stick, 1 mass, the scale with its reading, the hand
+and its knob, the arrow, the angle, the line of action, the lever arm and its name, no curl arrows (both torques are in the
+cause line; the lever arm starts at the fulcrum), "fulcrum", "Hold level". Inertia: 2 stands with "A" and "B", 2 weights ("200 g"), 2 knobs
 with their tags ("6 cm", "18 cm"), and the landing times after a race.
 
 ## Explore against Test yourself (what moved; nothing dropped)
@@ -150,3 +152,24 @@ with their tags ("6 cm", "18 cm"), and the landing times after a race.
 - The landing picture already rests on its left support (no motion until you touch it); a stick that starts level
   would hide the imbalance the cue invites you to fix.
 - The wall behind is calm and plain; the flagship's scene is richer. Nothing was added that could be misread.
+
+## Review round 1 (2026-11-24, `/home/claude/review-phys-torque/REVIEW.md`, BLOCK): what changed
+- M1 the sweep sets `nremt_theme` (the page's key), so dark really runs; every dark run below is real dark mode.
+- M2 Balance fits the screen: room for one hanging row (more only while masses hang one below another, redrawn with
+  a cross fade); a desktop stage never grows (the stick shrinks); the stand is shorter with it. The sweep runs each
+  width at a real screen height (1024 × 768, 1280 × 800, 1440 × 900, 1920 × 1080, phones 740 to 932) and asserts the
+  cause line is on screen at 1000 px and wider.
+- M3 the first pill: "100 g, 30 cm from fulcrum", "100 g on the fulcrum", "fulcrum at 40 cm" after a fulcrum move.
+- M4 "stick's weight": a down arrow from the ⊕ with its name, placed clear of masses, the tilted stick, the curl
+  arrows and the distance (a longer arrow when needed); the sweep asserts it whenever the fulcrum is off centre.
+- M5 the lever arm's name sits beside its line (the sweep asserts within 16 px; 30 px when the arm lies along the
+  tilted stick), clear of the line of action, the stick, the mass, the hand and the reading; the hand stays past the
+  lever arm's foot (the string lengthens on a shallow pull); the Angle tab draws no curl arrows; a phone's pull stays
+  25° or more from the stick.
+- M6 the angle's number is on its arc's bisector, inside the arc (asserted); a shallow pull's reading lifts off the
+  tube, away from it.
+- M7 Inertia: light metal ink for the arms, caps and strings in dark mode; no cupboard; arms take their length from
+  the stage (about 0.23 of the bench's width); sliders, hub and caps scale with the arm.
+- S2 "fulcrum" is the quiet knob's tag. S3 the outward lean is logged as it is (owner log). S4 the slider knobs sit
+  20 px past their sliders along the arm; the cm tags hide while a race runs and after it. S5 dark curl arrows: the
+  inactive pieces at 0.62. S6 the owner log rows are in the table (the merge from `claude/tools-v2-all` is in).
