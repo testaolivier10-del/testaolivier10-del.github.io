@@ -747,7 +747,9 @@ const BUDGETS = [
   // reason: three new figures and three new steps. The ceiling leaves it 1 KB,
   // the headroom it had before. If it moves again without new figures or
   // steps, find out why first.
-  ['ochem/lessons/pka.html', 10],
+  /* 10 -> 11.5 (owner, 2026-11-24): a lesson now sits inside the textbook, so it carries the Learn band and
+     the course contents rail (25 chapters, the open chapter's lessons). Measured 11.2 KB. */
+  ['ochem/lessons/pka.html', 11.5],
   // e2.html sat at 10232 bytes and the ceiling is 10240, so the empty
   // <div class="course-nav"></div> every course page now ships — 30 bytes
   // raw, 8 gzipped — landed exactly on it. That div is the second chrome row

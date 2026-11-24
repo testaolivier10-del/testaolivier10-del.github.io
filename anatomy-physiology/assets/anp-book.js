@@ -113,7 +113,7 @@
           '<p class="tb-chapter-eyebrow">Chapter ' + ch.n + ' of ' + chapters.length + ' &middot; ' + esc(partTitle[ch.part] || '') + '</p>' +
           '<h1 class="tb-chapter-title" tabindex="-1">' + esc(ch.title) + '</h1>' +
           '<p class="tb-chapter-meta">' + ts.length + ' topics &middot; A&amp;P ' + esc(ch.course) + ' &middot; <span data-chap-meta="' + ch.id + '">not practiced yet</span></p>' +
-        '</div><p class="bk-chap-acts"><a class="bk-btn solid" href="practice.html?chapter=' + ch.id + '">Chapter quiz</a><a class="bk-btn ghost" href="chapters/' + ch.id + '.html">Chapter page</a></p></header>' +
+        '</div></header>' +
         ts.map(function(t){
           // Hidden until its prose and every earlier topic's has arrived, so
           // a topic landing never pushes the ones below it down the screen

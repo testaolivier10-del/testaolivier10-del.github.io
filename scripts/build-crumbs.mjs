@@ -19,6 +19,7 @@ import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { applyCrumbs } from './lib/crumbs.mjs';
+import { ochemLessonBook } from './lib/lesson-book.mjs';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const check = process.argv.includes('--check');
@@ -33,7 +34,8 @@ for (const dir of DIRS) {
     if (!f.endsWith('.html') || GENERATED.has(`${dir}/${f}`) || IN_PAGE.has(`${dir}/${f}`)) continue;
     const file = join(ROOT, dir, f);
     const html = readFileSync(file, 'utf8');
-    const want = applyCrumbs(html);
+    // An ochem lesson also gets the textbook's shell, with this breadcrumb in its band (lib/lesson-book.mjs).
+    const want = dir === 'ochem/lessons' ? ochemLessonBook(applyCrumbs(html), f) : applyCrumbs(html);
     if (want !== html) {
       stale.push(`${dir}/${f}`);
       if (!check) writeFileSync(file, want);

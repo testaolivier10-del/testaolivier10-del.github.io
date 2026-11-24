@@ -24,6 +24,7 @@ import { loadLessons } from './lib/nremt-lessons.mjs';
 import { courseTitle } from './lib/page-title.mjs';
 import { applyVideo } from './lib/videos.mjs';
 import { premiumData, lockedLd } from './lib/premium-data.mjs';
+import { lessonRailHtml, lessonBookOpen, LESSON_BOOK_CLOSE } from './lib/lesson-book.mjs';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 const CHECK = process.argv.includes('--check');
@@ -50,6 +51,16 @@ function put(rel, html) {
   if (before === html) return;
   stale.push(rel);
   if (!CHECK) { mkdirSync(dirname(file), { recursive: true }); writeFileSync(file, html); }
+}
+
+/* The course contents on a lesson page: every chapter, the lesson's own chapter open to its lessons. A chapter
+   head goes to that chapter's first lesson, or to its notes page when it has none yet. */
+function contentsRail(L) {
+  return lessonRailHtml({ id: 'nr-rail', groups: chapters.map((c) => {
+    const ls = lessons.filter((x) => x.chapter === c.num);
+    return { num: c.num, title: c.title, open: c.num === L.chapter, href: ls.length ? `${ls[0].id}.html` : `../notes/${chapterSlug(c)}.html`,
+      topics: ls.map((x) => ({ title: x.title, href: `${x.id}.html`, on: x.id === L.id })) };
+  }) });
 }
 
 /* A seeded shuffle (mulberry32 on a string hash), so the order is fixed per question. */
@@ -161,6 +172,8 @@ function lessonPage(L, i) {
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <link rel="stylesheet" href="../../assets/course/base.css">
 <!-- The Read | Interactive switch (assets/course/read-toggle.js) is styled in r3-reading.css. -->
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../../assets/course/r3.css">
 <link rel="stylesheet" href="../../assets/course/r3-reading.css">
 <link rel="stylesheet" href="../assets/nremt-lesson.css">
 <!-- levlprep-structured-data -->
@@ -171,19 +184,21 @@ ${JSON.stringify(ld).replace(/<\//g, '<\\/')}
 <body data-topic="${L.section}">
   <header id="site-header"></header>
 <div class="course-nav"></div>
-<div class="nl r3" data-cover="nremt" data-lesson="${L.id}" data-chapter="${chapterKey(L.chapter)}" data-notes="${notesHref}">
-  <aside class="nl-rail" aria-label="Lesson parts">
-    <p class="nl-k">Chapter ${ch.num} &middot; ${esc(ch.title)}</p>
-    <div class="nl-prog" hidden><div class="nl-track"><div class="nl-fill"></div></div><span class="nl-count">Step 1 / ${parts.length}</span></div>
-    <ol class="nl-steps">${parts.map((p, k) => `<li><a href="#${p.id}"><span class="n">${k + 1}</span><span class="t">${p.nav}</span></a></li>`).join('')}</ol>
-  </aside>
-  <main id="main" class="nl-main">
-    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">NREMT-EMT</a> <span aria-hidden="true">&rsaquo;</span> <a href="../notes/${chapterSlug(ch)}.html">${esc(ch.title)}</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Lesson</span></nav>
+${lessonBookOpen({ key: 'nremt', up: '../../', railId: 'nr-rail', rail: contentsRail(L),
+    crumb: `<nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">NREMT-EMT</a> <span aria-hidden="true">&rsaquo;</span> <a href="../notes/${chapterSlug(ch)}.html">${esc(ch.title)}</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Lesson</span></nav>` })}
+<div class="nl cx-ls" data-lesson="${L.id}" data-chapter="${chapterKey(L.chapter)}" data-notes="${notesHref}">
+  <main id="main" class="nl-main ls-main">
     <header class="nremt-ls-hero">
-      <p class="nl-eyebrow">Interactive lesson &middot; Chapter ${ch.num}.${si + 1}</p>
+      <p class="nl-eyebrow eyebrow">Interactive lesson &middot; Chapter ${ch.num}.${si + 1}</p>
       <h1>${esc(L.title)}</h1>
     </header>
-    <div class="nl-card">
+    <aside class="nl-rail nremt-ls-rail" aria-label="Lesson parts">
+      <p class="nl-k cx-ls-k">Chapter ${ch.num} &middot; ${esc(ch.title)}</p>
+      <div class="nl-prog cx-ls-prog" hidden><div class="nl-track"><div class="nl-fill"></div></div><span class="nl-count">Step 1 / ${parts.length}</span></div>
+      <button type="button" class="cx-ls-toggle" aria-expanded="false" aria-controls="lesson-steps"><span class="cx-ls-now">Step 1 of ${parts.length}</span><span class="cx-ls-all">All steps</span></button>
+      <ol class="nl-steps cx-ls-steps" id="lesson-steps">${parts.map((p, k) => `<li><a href="#${p.id}"><span class="n">${k + 1}</span><span class="t">${p.nav}</span></a></li>`).join('')}</ol>
+    </aside>
+    <div class="nl-card nremt-ls-card">
 ${parts.map((p, k) => `      <section class="nl-part${k === 0 ? ' is-on' : ''}" id="${p.id}" aria-labelledby="h-${p.id}">
         <p class="nl-part-k">Part ${k + 1} of ${parts.length}</p>
         <h2 id="h-${p.id}" tabindex="-1">${p.h}</h2>
@@ -194,6 +209,7 @@ ${parts.map((p, k) => `      <section class="nl-part${k === 0 ? ' is-on' : ''}" 
     <p class="nl-disclaimer">For exam study only. Follow your local protocols and medical direction.</p>
   </main>
 </div>
+${LESSON_BOOK_CLOSE}
 <div class="xshell">
   <footer>
     ${footerLinks('../../')}
@@ -206,6 +222,8 @@ ${parts.map((p, k) => `      <section class="nl-part${k === 0 ? ' is-on' : ''}" 
 <script src="../assets/nav.js" defer></script>
 <script src="../../assets/premium.js" defer></script>
 <script src="../../assets/course/read-toggle.js" data-rt="lesson" data-rt-book="../study-notes.html" data-rt-course="nremt" defer></script>
+<script src="../../assets/course/lesson.js" defer></script>
+<script src="../../assets/course/ls-rail.js" defer></script>
 <script src="../assets/nremt-lesson.js" defer></script>
 </body>
 </html>

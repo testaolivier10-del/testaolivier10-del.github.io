@@ -221,3 +221,5 @@ The owner's brief: "the toggle for learn and read should apply to the textbook a
 - Lessons are still their own pages (lessons/<id>.html). The lesson scripts, Premium lock and progress are unchanged.
 - NREMT and Ochem lessons keep their own layout. Their textbooks get the switch under Contents.
 - check-weight: three lesson budgets raised for the band and rail (reasons in the file).
+
+Follow-up, same day (owner: "nremt and ochem should be changed as well"): NREMT and Ochem lessons use the same textbook shell (scripts/lib/lesson-book.mjs). NREMT's builder writes it. Ochem's lesson pages are hand-written, so build-crumbs.mjs writes the shell between `<!-- ls-book:start -->` marks, and the step rail its engine builds is drawn as the strip. The phone Contents drawer on both is assets/course/ls-rail.js. Also removed: "Chapter quiz" and "Chapter page" from the A&P textbook's chapter head (anp-book.js), as on the other courses.
