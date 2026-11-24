@@ -83,3 +83,104 @@
 @media (max-width:640px){ .ls-root.ls-phone .rs-fig{padding-bottom:40px;} }
 /* The figure caption stays clear of the stage Enlarge button (bottom right). */
 .ls-root .ls-drill-stage .rs-qfig figcaption{padding-right:52px;}
+
+/* ============================================================ Explore, tools v2 (docs/tools-v2-calc-riemann-sums-brief.md)
+   One colour per idea: the water in the columns and the tank blue; a column below the axis (a negative term) reddish
+   purple; area a sum counts extra orange, area it misses green; the curve and "exact" ink. Lighter in dark mode. */
+.rs2{--rs-w0:#8DCDF2;--rs-w1:#3D97D0;--rs-wtop:#0B5E91;--rs-n0:#E2A5C8;--rs-n1:#B9578F;--rs-ntop:#7C2E5C;
+  --rs-extra:#E07B00;--rs-extra-ink:#A55200;--rs-miss:#009E73;--rs-miss-ink:#00704F;--rs-sum-ink:#0B5E91;--rs-neg-ink:#8E3A6C;
+  --rs-sky0:#E3F0FA;--rs-sky1:#F8FBFE;--rs-grid:rgba(40,70,110,.12);--rs-glass:rgba(150,190,220,.16);--rs-glass-s:rgba(70,110,150,.55);--rs-rim:#6B7785;
+  display:flex;flex-direction:column;gap:10px;min-height:0;flex:1 1 auto;}
+:root[data-theme="dark"] .rs2{--rs-w0:#5FB3E6;--rs-w1:#24689A;--rs-wtop:#A8DBF7;--rs-n0:#D68CB8;--rs-n1:#8A3F6C;--rs-ntop:#F0BFDC;
+  --rs-extra:#F29A3C;--rs-extra-ink:#F8BF80;--rs-miss:#3CC29A;--rs-miss-ink:#8FE0C4;--rs-sum-ink:#A8DBF7;--rs-neg-ink:#F0BFDC;
+  --rs-sky0:#10233A;--rs-sky1:#18324D;--rs-grid:rgba(200,220,245,.11);--rs-glass:rgba(160,200,235,.10);--rs-glass-s:rgba(190,220,245,.5);--rs-rim:#9AA6B6;}
+.rs2[hidden],.rs2 [hidden]{display:none !important;}
+.rs2 .tk2-tabs{margin:0;align-self:flex-start;max-width:100%;}
+.rs2 .tk2-head{gap:6px 12px;}
+.rs2-pick{display:inline-flex;align-items:center;gap:8px;flex:none;font:800 14px var(--font-ui);color:var(--muted);}
+.rs2-sel{min-height:38px;max-width:250px;padding:4px 30px 4px 10px;border:1.5px solid var(--line);border-radius:10px;background-color:var(--white);color:var(--ink);font:800 14px var(--font-ui);}
+.rs2-sel:focus-visible{outline:3px solid var(--cink);outline-offset:1px;}
+.rs2-scene{position:relative;flex:1 1 auto;min-height:380px;border-radius:18px;overflow:hidden;background:var(--surface2);}
+.rs2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;touch-action:pan-y;}
+@media (max-width:1023.98px){ .rs2-scene{flex:none;height:560px;min-height:0;} }
+@media (max-width:640px){ .rs2-scene{border-radius:14px;} .rs2{gap:8px;} .rs2-pick-k{display:none;} .rs2-sel{max-width:200px;font-size:13.5px;} }
+.rs2-lines{display:flex;align-items:center;justify-content:space-between;gap:6px 18px;flex-wrap:wrap;flex:none;}
+.rs2-lines .tk2-play{flex:none;margin-left:auto;}
+.rs2 .tk2-cause{min-height:46px;align-content:center;}
+@media (max-width:640px){ .rs2 .tk2-cause{min-height:84px;align-content:flex-start;} .rs2 .tk2-cause.is-take{font-size:14px;line-height:1.35;} }
+.rs2 .tk2-cz.is-n{--cz:var(--ink);}
+.rs2 .tk2-cz.is-sum{--cz:var(--rs-w1);--cz-ink:var(--rs-sum-ink);}
+.rs2 .tk2-cz.is-ex{--cz:var(--ink);}
+.rs2 .tk2-cz.is-extra{--cz:var(--rs-extra);--cz-ink:var(--rs-extra-ink);}
+.rs2 .tk2-cz.is-miss{--cz:var(--rs-miss);--cz-ink:var(--rs-miss-ink);}
+.rs2 .tk2-cz.is-neg{--cz:var(--rs-n1);--cz-ink:var(--rs-neg-ink);}
+.rs2 .tk2-cz.is-shape{--cz:var(--ink);}
+/* the four sums on the picture: quiet in tab 1, the main control in tab 2 */
+.rs2-seg{position:absolute;z-index:3;display:flex;gap:2px;padding:3px;border-radius:999px;background:color-mix(in srgb, var(--white) 88%, transparent);box-shadow:0 0 0 1px var(--line),0 1px 3px rgba(11,26,51,.12);}
+.rs2-seg > button{min-height:32px;padding:0 11px;border:0;border-radius:999px;background:transparent;color:var(--muted);font:800 13px var(--font-ui);cursor:pointer;white-space:nowrap;}
+.rs2-seg > button[aria-pressed="true"]{background:var(--white);color:var(--cink);box-shadow:0 0 0 2px var(--cink) inset;}
+.rs2-seg > button:disabled{opacity:.45;cursor:not-allowed;}
+.rs2-seg > button:focus-visible{outline:3px solid var(--cink);outline-offset:1px;}
+.rs2.is-ou .rs2-seg{box-shadow:0 0 0 2px var(--cink),0 2px 8px rgba(11,26,51,.18);}
+.rs2.is-ou .rs2-seg > button{min-height:38px;padding:0 13px;font-size:14px;color:var(--ink);}
+.rs2.is-ou .rs2-seg > button[aria-pressed="true"]{background:var(--cink);color:var(--white);box-shadow:none;}
+@media (max-width:640px){ .rs2-seg > button{padding:0 9px;font-size:12.5px;} .rs2.is-ou .rs2-seg > button{padding:0 9px;font-size:13px;min-height:36px;} }
+:root[data-theme="dark"] .rs2-seg{background:color-mix(in srgb, var(--white) 92%, transparent);}
+.rs2 .rs2-knob .tk2-tag{background:var(--ink);}
+:root[data-theme="dark"] .rs2 .rs2-knob .tk2-tag{color:var(--paper);}
+.rs2 .tk2-handle.is-quiet.is-new .tk2-dot::after{display:none;}
+/* the picture */
+.rs2s-sky0{stop-color:var(--rs-sky0);} .rs2s-sky1{stop-color:var(--rs-sky1);}
+.rs2s-w0{stop-color:var(--rs-w0);} .rs2s-w1{stop-color:var(--rs-w1);}
+.rs2s-g0{stop-color:var(--rs-glass-s);stop-opacity:.35;} .rs2s-g1{stop-color:#FFFFFF;stop-opacity:.05;}
+.rs2-band{fill:var(--white);fill-opacity:.35;}
+:root[data-theme="dark"] .rs2-band{fill:#0B1726;fill-opacity:.35;}
+.rs2-plotbg{fill:none;}
+.rs2-grid line{stroke:var(--rs-grid);stroke-width:1;}
+.rs2-axis line{stroke:var(--ink);stroke-opacity:.72;stroke-width:1.3;}
+.rs2-tick{font:700 11.5px var(--font-ui);fill:var(--muted);}
+.rs2-title{font:800 12.5px var(--font-ui);fill:var(--muted);}
+.rs2-groove{stroke:var(--line);stroke-width:6;stroke-linecap:round;}
+:root[data-theme="dark"] .rs2-groove{stroke:rgba(200,220,245,.25);}
+.rs2-rtk{stroke:var(--muted);stroke-opacity:.6;stroke-width:1.2;}
+.rs2-rlab{font:800 12px var(--font-ui);fill:var(--muted);}
+.rs2-tnote{font:800 13px var(--font-ui);fill:var(--muted);}
+.rs2-glass{fill:var(--rs-glass);stroke:none;}
+.rs2-svg .rs2-water{fill-opacity:.92;}
+.rs2-svg .rs2-water.is-neg{fill:var(--rs-n0);}
+.rs2-tops{fill:none;stroke:var(--rs-wtop);stroke-width:2;stroke-linejoin:round;}
+.rs2-walls{fill:none;stroke:var(--rs-wtop);stroke-width:1.2;stroke-opacity:.75;}
+.rs2-btk{fill:none;stroke:var(--rs-wtop);stroke-width:1;stroke-opacity:.6;}
+.rs2-sl{stroke:none;pointer-events:none;}
+.rs2-sl.is-extra{fill:var(--rs-extra);fill-opacity:.62;}
+.rs2-sl.is-miss{fill:var(--rs-miss);fill-opacity:.5;}
+.rs2.is-ou .rs2-sl.is-extra{fill-opacity:.78;} .rs2.is-ou .rs2-sl.is-miss{fill-opacity:.66;}
+.rs2-selp{fill:none;stroke:var(--ink);stroke-width:2.6;stroke-linejoin:round;}
+.rs2-curve{fill:none;stroke:var(--ink);stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round;}
+.rs2-dot{fill:var(--ink);stroke:var(--white);stroke-width:1.6;}
+.rs2-pour{fill:none;stroke:var(--rs-w1);stroke-width:5;stroke-linecap:round;stroke-dasharray:8 5;animation:rs2-pour .45s linear infinite;}
+.rs2-pour.is-neg{stroke:var(--rs-n1);}
+.rs2-drain{fill:none;stroke:var(--rs-w1);stroke-width:5;stroke-linecap:round;stroke-dasharray:8 5;animation:rs2-pour .45s linear infinite;}
+@keyframes rs2-pour{to{stroke-dashoffset:-13;}}
+@media (prefers-reduced-motion: reduce){ .rs2-pour,.rs2-drain{animation:none;} }
+.rs2-svg .rs2-tank-in{fill:var(--rs-glass);}
+.rs2-tank-foot{fill:var(--rs-rim);}
+.rs2-tw{fill-opacity:.9;}
+.rs2-tw-top{fill:none;stroke:var(--rs-wtop);stroke-width:2;}
+.rs2-tank-rim{fill:none;stroke:var(--rs-rim);stroke-width:3;}
+.rs2-exact{stroke:var(--ink);stroke-width:2;}
+.rs2-start{stroke:var(--muted);stroke-width:1.4;}
+.rs2-lab{font:800 13px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:3.5px;stroke-linejoin:round;}
+:root[data-theme="dark"] .rs2-lab{stroke:#0F1A28;}
+.rs2-big{font-size:13.5px;} .rs2-cink{fill:var(--rs-sum-ink);} .rs2-cex{fill:var(--ink);font-size:11.5px;} .rs2-cmut{fill:var(--muted);font-size:11.5px;}
+.rs2-ccur{fill:var(--ink);font-size:13.5px;} .rs2-cextra{fill:var(--rs-extra-ink);font-size:12.5px;} .rs2-cmiss{fill:var(--rs-miss-ink);font-size:12.5px;} .rs2-cneg{fill:var(--rs-neg-ink);font-size:12px;}
+.rs2-fade{pointer-events:none;}
+/* "?" */
+.rs2-ref .rs2-howref{margin:0 0 10px;}
+.rs2-kextra{color:var(--rs-extra-ink);} .rs2-kmiss{color:var(--rs-miss-ink);}
+.rs2-shine{fill:none;stroke:#FFFFFF;stroke-width:2.2;stroke-linecap:round;stroke-opacity:.55;}
+:root[data-theme="dark"] .rs2-shine{stroke-opacity:.3;}
+.rs2-tank-tk{fill:none;stroke:var(--rs-rim);stroke-width:1.2;stroke-opacity:.7;}
+.rs2-tank-glint{fill:none;stroke:#FFFFFF;stroke-width:3;stroke-linecap:round;stroke-opacity:.45;}
+:root[data-theme="dark"] .rs2-tank-glint{stroke-opacity:.2;}
+.rs2.is-ou .rs2-knob .tk2-chip{display:none;}

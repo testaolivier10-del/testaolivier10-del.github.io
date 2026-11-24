@@ -205,11 +205,12 @@
    "topic": "riemann-sums",
    "name": "Riemann sums",
    "title": "Riemann Sums Trainer",
-   "desc": "Left, right, midpoint and trapezoidal sums on functions and on tables with unequal widths, with over- and underestimates explained.",
-   "blurb": "Build left, right, midpoint and trapezoid sums, from graphs and tables.",
-   "lede": "Fill the area with rectangles and trapezoids.",
+   "desc": "Left, right, midpoint and trapezoidal sums as columns of water that fill a tank: more strips close in on the exact area, and over or under follows from rising, falling or bending. Functions and tables with unequal widths.",
+   "blurb": "Pour strips into a tank and watch the sum close in on the integral.",
+   "lede": "Thinner strips: the sum closes in on the exact area.",
    "premium": "tools",
-   "studio": true
+   "studio": true,
+   "kit2": true
   },
   {
    "slug": "accumulation",
