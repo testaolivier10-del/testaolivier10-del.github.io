@@ -239,5 +239,63 @@
         "conclusion": "The data do not show a statistically significant difference: chance could explain the gap between the means"
       }
     }
-  ]
+  ],
+  "explore": {
+    "about": "Tools v2 Explore (docs/tools-v2-bio-confidence-intervals-brief.md). Two trays of bean seedlings, heights in cm (invented). Each tray's plants are drawn at their heights; the clipboard bars are the mean ± 2 SE of the plants drawn. Changing the number of plants keeps each tray's mean and SD as they were (only n changes); New sample draws new plants from the same two populations (Full light mean 10.0 cm, SD 4.0 cm; Shade: the mean and SD set on the picture), means and SDs rounded to 0.1.",
+    "purpose": "See when error bars show a real difference",
+    "cue": "Drag the shade plants",
+    "unit": "cm",
+    "ruler": 30,
+    "axis": 25,
+    "counts": [
+      5,
+      10,
+      20
+    ],
+    "open": {
+      "n": 5,
+      "seed": 20261123
+    },
+    "groups": [
+      {
+        "id": "sun",
+        "name": "Full light",
+        "mean": 10,
+        "sd": 4
+      },
+      {
+        "id": "shade",
+        "name": "Shade",
+        "mean": 16,
+        "sd": 4
+      }
+    ],
+    "meanRange": [
+      4,
+      20
+    ],
+    "sdRange": [
+      1,
+      4.5
+    ],
+    "goals": [
+      {
+        "id": "gap",
+        "text": "Keep the means where they are and add plants until the bars stop overlapping."
+      },
+      {
+        "id": "sd",
+        "text": "Now spread the shade plants (drag the tallest one) until the bars overlap again."
+      },
+      {
+        "id": "four",
+        "text": "Find how many plants it takes to halve a bar, starting from 5."
+      },
+      {
+        "id": "flip",
+        "text": "With 5 plants a tray, press New sample until chance alone flips the verdict."
+      }
+    ],
+    "refHtml": "<h3>The formulas</h3><p class=\"bt-eq\">SE = s ÷ √n</p><p class=\"bt-eq\">95% CI ≈ x̄ ± 2 SE</p><p>s is the standard deviation of the heights in one tray and n the number of plants. Each bar on the clipboard is that tray's mean, and its error bar reaches 2 SE above and below it: the 95% confidence interval, the range that very likely holds the true mean height of plants grown that way. Four times the plants halves SE, so it halves the bar.</p><h3>Reading the bars (the rule this course uses)</h3><ul><li><b>No overlap:</b> the difference is unlikely to be due to chance. It is statistically significant: reject the null hypothesis of no difference.</li><li><b>Overlap:</b> the data do not show a difference: fail to reject the null hypothesis. That is not proof the means are equal; more plants might still show one.</li><li><b>The bars just touch:</b> that is still no overlap, so by the rule the difference is unlikely to be due to chance (bars of ±2 SE that just touch give p of about 0.01 to 0.02).</li></ul><h3>Strictly speaking</h3><p>±2 SE is about a 95% interval only for larger samples. The exact multiplier comes from the t distribution: about 2.78 for 5 plants, 2.26 for 10 and 2.09 for 20, so small samples have wider true intervals; the exam uses 2. 95% interval bars that overlap a little can still differ at p &lt; 0.05 (Krzywinski and Altman, Nature Methods 2013), and the rule assumes similar sample sizes (GraphPad). So say “may be chance” and “likely real”, never “proves”.</p><h3>The beans</h3><p>The heights are invented, for two week old bean seedlings. Seedlings in shade often grow taller and thinner: they stretch toward the light. Each plant is drawn at its height against the board, from the soil to the tip of its stem. Changing the number of plants keeps each tray's mean and SD as they were, so only n changes; New sample grows new plants from the same two populations (Full light: mean 10.0 cm, SD 4.0 cm; Shade: the mean and SD you set), so the means move by chance alone: a lot with 5 plants, much less with 20.</p>"
+  }
 }
