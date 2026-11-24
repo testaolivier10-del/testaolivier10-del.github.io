@@ -576,7 +576,7 @@
         var dn = Math.abs((cx2 - P[0]) * sty - (cy2 - P[1]) * stx) - (hw * Math.abs(sty) + hh * Math.abs(stx)) - G.thick / 2;
         var dm = mq ? Math.max(Math.abs(cx2 - mh[0]) - hw - mz.w / 2, Math.abs(cy2 - (mh[1] + G.str0 + mz.h / 2)) - hh - mz.h / 2 - G.str0 / 2) : 99;
         var dk = Math.max(Math.abs(cx2 - kn[0]) - hw - 22, Math.abs(cy2 - kn[1]) - hh - 22);
-        var de = Math.min(cx2 - hw - 4, G.W - 4 - cx2 - hw, cy2 - hh - 4, G.benchY - 4 - cy2 - hh);
+        var de = Math.min(cx2 - hw - 4, G.W - 4 - cx2 - hw, cy2 - hh - 4, G.benchY - 26 - cy2 - hh);   // (over the fulcrum's knob and tag on the stand's base)
         var dr = Math.max(Math.abs(cx2 - mid[0]) - hw - rw / 2, Math.abs(cy2 - mid[1]) - hh - 12) - 4;
         var da = Math.max(Math.abs(cx2 - tl[0]) - hw - 14, Math.abs(cy2 - (tl[1] - 4)) - hh - 8) - 4;
         // on a first visit the cue stands to the right of the hand: the name keeps off it

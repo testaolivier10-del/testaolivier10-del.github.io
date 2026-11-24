@@ -166,8 +166,13 @@ with their tags ("6 cm", "18 cm"), and the landing times after a race.
   tilted stick), clear of the line of action, the stick, the mass, the hand and the reading; the hand stays past the
   lever arm's foot (the string lengthens on a shallow pull); the Angle tab draws no curl arrows; a phone's pull stays
   25° or more from the stick.
-- M6 the angle's number is on its arc's bisector, inside the arc (asserted); a shallow pull's reading lifts off the
-  tube, away from it.
+- M6 the angle's number is on its arc's bisector, inside the arc (asserted); a wedge under 30° is too thin for it,
+  so there it sits just past the arc's end beside the pull; a shallow pull's reading lifts off the tube.
+- M5 detail: the hand (the knob) and the lever arm's foot both lie on the pull's line; the string is shortened, or on
+  a shallow pull lengthened, to keep them apart, so the knob never covers the lever arm. On a desktop "Start over"
+  sits in the picture's top right corner so the cause line keeps one row and stays on screen at 1024 × 768.
+- The pull's reach, printed by the sweep: toward the fulcrum to 15° (25° on a phone); away from it as far as the
+  scale stays in the picture: 90° (none) at 360 and 390, 60° at 1024, 40° at 1280, 45° at 1440.
 - M7 Inertia: light metal ink for the arms, caps and strings in dark mode; no cupboard; arms take their length from
   the stage (about 0.23 of the bench's width); sliders, hub and caps scale with the arm.
 - S2 "fulcrum" is the quiet knob's tag. S3 the outward lean is logged as it is (owner log). S4 the slider knobs sit
