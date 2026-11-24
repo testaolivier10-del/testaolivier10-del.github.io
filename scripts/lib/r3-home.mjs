@@ -81,12 +81,10 @@ function pathSkeleton(key, up, primaryHref) {
   const name = attr(D.name);
   const ret = `<script>try{if(localStorage.getItem(${JSON.stringify(`${key}_path_v1`)})||localStorage.getItem(${JSON.stringify(D.progress || 'x')}))document.getElementById('lpHome').classList.add('lp-ret')}catch(e){}</script>`;
   const side = `<div class="lp-card lp-selc lp-static" id="lpSel" aria-live="polite"><p class="lp-k">Up next</p><h3>${tName(t0)}</h3><div class="act"><a class="lp-btn gold" href="${open(t0) || primaryHref}">Start</a></div></div>
-<div id="lpSetup" class="lp-static"><div class="lp-card lp-make"><h3>Create your <span>personalized path</span></h3><p>Three quick questions and it starts in the right place.</p><button type="button" class="lp-btn gold sm" data-act="setup">Create my path</button></div></div>
-<div class="lp-card lp-map" id="lpMap" hidden></div>`;
-  const path = `<div class="lp-card lp-phead"><div><span class="lp-pill">Your path</span><h2 class="lp-h2" id="lpTitle">The <span>path</span> through ${name}</h2><p class="lp-p" id="lpSub">Every lesson, skill, practice set and unit test, in course order.</p></div><button type="button" class="lp-all" data-act="allunits" aria-pressed="false">Show every unit</button></div>
+<div id="lpSetup" class="lp-static"></div>`;
+  const path = `<div class="lp-card lp-phead"><div><h2 class="lp-h2" id="lpTitle">The <span>path</span> through ${name}</h2></div><button type="button" class="lp-all" data-act="allunits" aria-pressed="false">Show every unit</button></div>
 <div id="lpUnits">${units}</div>
-<p class="lp-hand lp-tnote">jump anywhere, everything you finish stays done</p>
-<p class="lp-note">Finishing a lesson or marking a stop done moves the path; practice answers do not. Your path&rsquo;s answers are saved on this device; what you finish counts everywhere you are logged in.</p>`;
+<p class="lp-hand lp-tnote">jump anywhere, everything you finish stays done</p>`;
   return { side, path, ret };
 }
 
@@ -115,7 +113,6 @@ export function r3HomeMain(key, ctx) {
 <p class="issue">${d.pill}${beta} <i></i> ${d.note}</p>
 <h1 class="mast${[d.t1, d.t2].some((w) => /\S{13,}/.test(String(w || '').replace(/<[^>]*>|&[a-z]+;/g, ''))) ? ' mast-long' : ''}" id="r3Title">${d.t1}<span>${d.t2}</span></h1>
 <p class="hand">${d.hand}</p>
-<p class="lede">${String(ctx.lede || d.lede).split(/(?<=[.!?])\s+(?=[A-Z])/)[0]}</p>
 <a class="hero-continue" id="r3Resume" href="#" hidden><small>Pick up where you left off</small><b id="r3ResumeLabel"></b></a>
 <script>try{var r=(JSON.parse(localStorage.getItem('levl_resume')||'{}')||{})[${JSON.stringify(key)}];if(r&&typeof r.url==='string'&&/^\\/[^\\/]/.test(r.url)){var a=document.getElementById('r3Resume');a.href=r.url;document.getElementById('r3ResumeLabel').textContent=r.label||'Your last page';a.hidden=false;}}catch(e){}</script>
 </div><div class="art" aria-hidden="true"><img src="${up}assets/covers/art/${key}.svg" alt="" width="640" height="400" decoding="async" fetchpriority="high"></div></div></section>`;
@@ -127,8 +124,8 @@ export function r3HomeMain(key, ctx) {
     ['review.html', 'Review', 'What you missed comes back right before you would forget it.', '<path d="M3 12a9 9 0 019-9 9 9 0 017 3.4M21 12a9 9 0 01-9 9 9 9 0 01-7-3.4"/><path d="M21 3v4h-4M3 21v-4h4"/>'],
     ['practice.html?m=exam', 'Exams', 'Timed and full length, like the real thing.', '<circle cx="12" cy="14" r="7"/><path d="M12 14V10.5M10 3h4M12 3v4M18.5 7.5l1.5-1.5"/>'],
   ];
-  const ways = `<section class="ways" aria-labelledby="ways-h"><span class="pill">Ways to study</span><h2 id="ways-h">Pick how you <span>want to work</span></h2><ul>${WAYS.map(([href, name, line, ic]) =>
-    `<li><a href="${href}"><span class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ic}</svg></span><span class="tx"><b>${name}</b><small>${line}</small></span></a></li>`).join('')}</ul></section>`;
+  const ways = `<section class="ways" aria-labelledby="ways-h"><h2 id="ways-h">Pick how you <span>want to work</span></h2><ul>${WAYS.map(([href, name, line, ic]) =>
+    `<li><a href="${href}"><span class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ic}</svg></span><span class="tx"><b>${name}</b></span></a></li>`).join('')}</ul></section>`;
 
   /* ---- fact strip ---- */
   const facts = `<div class="fact-row" aria-label="${d.strip_label}">${(ctx.strip || d.strip).map(([, b, st]) => `<span><span class="dot"></span><span><b>${b}</b> ${st}</span></span>`).join('')}</div>${d.strip_note ? `<p class="fact-note">${d.strip_label}. ${d.strip_note}</p>` : ''}`;
@@ -222,7 +219,7 @@ export function r3HomeMain(key, ctx) {
 
   /* ---- the course's Premium card, the one on the Premium page (scripts/lib/pricing-section.mjs), shown open ---- */
   const { COURSES } = premiumData();
-  const prem = COURSES[key] ? `<section class="lp-prem" aria-labelledby="pp-${key}">${courseSection(key, { up, open: true, start: ctx.primaryHref, source: 'course-home', h: 'h2' })}</section>${SECTION_SCRIPT}` : '';
+  const prem = COURSES[key] ? `<section class="lp-prem" aria-labelledby="pp-${key}">${courseSection(key, { up, open: true, start: ctx.primaryHref, source: 'course-home', h: 'h2', split: true })}</section>${SECTION_SCRIPT}` : '';
 
   /* ---- FAQ: the four questions Olivier kept for the home (course redesign r4, decision 2), the rest on About ---- */
   const AP = /^ap/.test(key);
@@ -278,7 +275,6 @@ ${home}
 ${progress}
 ${media}
 <div class="lp-np" data-np>
-${facts}
 ${prem}
 ${faq}
 </div>

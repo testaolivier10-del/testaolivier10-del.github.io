@@ -22,7 +22,7 @@
    Idempotent: a page that already has the band is returned as it is. */
 import { homeData } from './r3-home.mjs';
 import { COVERS } from './covers.mjs';
-import { learnBandHtml, bookSub, learnScript } from './learn-band.mjs';
+import { learnBandHtml, learnScript } from './learn-band.mjs';
 
 export const R3_HEAD_MARK = '<!-- r3:head -->';
 
@@ -318,7 +318,7 @@ export function learnShell(html, { key, up, shell, mainOpen }) {
   const crumb = find(between, /<nav class="[^"]*crumb[^"]*" aria-label="Breadcrumb">[\s\S]*?<\/nav>\s*/);
   let crumbHtml = '';
   if (crumb && crumb.start < 400) { crumbHtml = crumb.text.trim(); between = between.slice(0, crumb.start) + between.slice(crumb.end); }
-  const band = learnBandHtml({ key, active: 'book', up, crumb: crumbHtml, sub: bookSub(key) }) + learnScript(key, up);
+  const band = learnBandHtml({ key, active: 'book', up, crumb: crumbHtml, sub: '' }) + learnScript(key, up);
   const out = html.slice(0, shell.start) + band
     + `<div class="tb-shell bk ${shell.m[1]} r3 r3-read lap" data-cover="${key}">`
     + html.slice(shell.end, mainOpen.end) + between;

@@ -53,6 +53,7 @@ export function courseSection(key, o = {}) {
     : priceSpans(low.price);
   const sw = multi ? `
           <fieldset class="pp-switch"><legend class="sr-only">Pass length</legend>${c.passes.map((p) => `<label><input type="radio" name="pp-pass-${key}" value="${p.id}"${p === low ? ' checked' : ''}><span>${esc(p.label)}</span></label>`).join('')}</fieldset>` : '';
+  if (o.split) return splitSection(key, c, low, multi, h, sw, o, up);
   return `
         <details class="pp-course" id="${key}" data-path="${COURSE_URL[key]}"${o.open ? ' open' : ''}>
           <summary><img class="pp-cover" src="${up}assets/covers/thumb/${key}.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><${h} id="pp-${key}">${esc(c.name)}</${h}><span class="pp-from">${multi ? 'from ' : ''}${priceSpans(low.price)}${c.passes.length === 1 ? `<small class="pp-len">${c.passes[0].until ? 'school year' : esc(c.passes[0].label)}</small>` : ''}</span></summary>
@@ -75,3 +76,33 @@ export function courseSection(key, o = {}) {
    uses this one): the founding price ends on its date without a rebuild, a two-pass course's switch picks what the
    button buys, and premium.js writes each pass's price per day once it has loaded. */
 export const SECTION_SCRIPT = `<script>(function(){var n=Date.now();[].forEach.call(document.querySelectorAll('.pp-course [data-founding-until]'),function(e){if(n>Date.parse(e.getAttribute('data-founding-until')+'T23:59:59Z'))e.hidden=true;});[].forEach.call(document.querySelectorAll('.pp-course [data-founding-after]'),function(e){if(n>Date.parse(e.getAttribute('data-founding-after')+'T23:59:59Z'))e.hidden=false;});document.addEventListener('change',function(e){var r=e.target;if(!r||r.type!=='radio'||!/^pp-pass-/.test(r.name))return;var b=r.closest('.pp-body');b.querySelector('[data-premium-buy]').setAttribute('data-premium-buy',r.value);[].forEach.call(b.querySelectorAll('[data-pp-for]'),function(x){x.hidden=x.getAttribute('data-pp-for')!==r.value;});});document.addEventListener('DOMContentLoaded',function(){var P=window.LevlPremium;if(P&&P.perDay)[].forEach.call(document.querySelectorAll('.pp-day[data-pass]'),function(x){x.textContent=P.perDay(x.getAttribute('data-pass'));});});})();</script>`;
+
+
+/* The course home's card (owner 2026-11-24, from the decluttered mockup): Free and Premium side by side as two short
+   lists, one price, one button, and the small print under them. It reads the same rows and passes as the table on
+   premium.html (compareTable), so the two cannot disagree; only the layout differs. */
+function splitSection(key, c, low, multi, h, sw, o, up) {
+  const item = (label, v) => (v === 'yes' ? esc(label) : `${esc(label)}: ${esc(v)}`);
+  const free = c.rows.filter((r) => r[1] !== 'no').map((r) => `<li>${item(r[0], r[1])}</li>`).join('');
+  const prem = c.rows.filter((r) => r[1] === 'no' || (r[1] !== 'yes' && r[2] !== 'no')).map((r) => `<li>${item(r[0], r[2])}</li>`).join('');
+  const passSpans = (fn) => c.passes.map((p) => `<span data-pp-for="${p.id}"${p === low ? '' : ' hidden'}>${fn(p)}</span>`).join('');
+  const price = passSpans((p) => priceSpans(p.price));
+  const sub = passSpans((p) => (founding ? foundingNote(p) : esc(p.label)));
+  const sure = passSpans((p) => (p.until ? `One pass through ${esc(longDate(p.until))}` : `One payment for ${esc(p.label.toLowerCase())}`));
+  return `
+        <details class="pp-course" id="${key}" data-path="${COURSE_URL[key]}"${o.open ? ' open' : ''}>
+          <summary><img class="pp-cover" src="${up}assets/covers/thumb/${key}.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><${h} id="pp-${key}">${esc(c.name)}</${h}><span class="pp-from">${multi ? 'from ' : ''}${priceSpans(low.price)}</span></summary>
+          <div class="pp-body" data-premium-scope>${sw}
+          <div class="sp">
+            <div class="sp-free"><p class="sp-h">Free</p><p class="sp-p"><b>$0</b></p><ul>${free}</ul><a class="sp-start" href="${o.start || COURSE_URL[key]}">Start free</a></div>
+            <div class="sp-prem"><p class="sp-h">Premium <span>everything in Free, plus</span></p><p class="sp-p"><b>${price}</b><small>${sub}</small></p><ul>${prem}</ul>
+              <button type="button" class="btn-press pp-cta" data-premium-buy="${low.id}" data-premium-source="${o.source || 'pricing-page'}">Unlock Premium</button></div>
+          </div>
+          <p class="pp-msg" data-premium-msg role="status"></p>
+          <p class="sp-sure">${sure} &middot; ${esc(SURE)}</p>${c.compare ? `
+          <p class="sp-sure sp-2">For comparison: ${esc(c.compare)} Source: ${(COMPARE_SOURCES[key] || []).map(([n, u]) => `<a href="${u}" rel="noopener">${esc(n)}</a>`).join(', ')}. &middot; <a href="${up}terms.html#premium">Fine print and terms</a></p>` : `
+          <p class="sp-sure sp-2"><a href="${up}terms.html#premium">Fine print and terms</a></p>`}${c.guarantee ? `
+          <details class="pp-guarantee" id="pass-or-extend"><summary>Pass-or-extend: if you don&rsquo;t pass the NREMT during your pass, you can claim more days free.</summary><p>${esc(guaranteeText())} <a href="${up}terms.html#pass-or-extend">The full terms</a>.</p></details>` : ''}
+          </div>
+        </details>`;
+}

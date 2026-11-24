@@ -198,3 +198,14 @@ One footer link row everywhere (`scripts/lib/footer-links.mjs`, site rule `foote
 certificate page in the site-pages look, with certificates for all 13 courses (AP® units from `assets/path/`);
 the homepage says Free and Premium once, in one line; the changelog folds older months. Details per finding:
 `docs/consistency-audit-2026-11.md` section D.
+
+## First-visit declutter (owner, 2026-11-24)
+
+After a user test (a first-time visitor said the site felt like too much), the course home and the Learn page lost
+their extras: the band lede, the "Course progress" card, the "Create your personalized path" card, the path's pill,
+sub line and fine print, the "Ways to study" pill and the row descriptions, the exam facts row, the site home's
+tagline, handwritten note, course card descriptions and sign-in line, and, on Learn, the sub line, the topic count
+and the Practice this unit / Unit page buttons. Pressing Start with no path asks "Make your path first" once
+(assets/course/path.js, openFirst); skipping marks the path as course order. The course home's Premium card is two
+lists side by side (scripts/lib/pricing-section.mjs, splitSection), read from the same rows as premium.html.
+A&P and ochem Learn panels were not changed (different markup).

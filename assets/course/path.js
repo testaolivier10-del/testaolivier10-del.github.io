@@ -270,7 +270,7 @@
   /* ---------- drawing one unit's stretch of the path ----------
      Each unit is a <details> section on the course home; its stops are drawn when it is open (an open section has
      a width to draw into). The wave runs on across sections (the phase is the stop's place in the whole path). */
-  var SEL = null, GS = [], NOWG = -1;
+  var SEL = null, GS = [], NOWG = -1, PICKED = false;
   function trackHTML(g, k, W){
     var wide = W >= 560, gap = wide ? 104 : 96, top = 64, n = g.stops.length, H = top + (n - 1) * gap + 70, amp = Math.min(170, W * 0.26);
     var pts = g.stops.map(function(s, i){ var j = s.gi; return wide ? [Math.round(W / 2 + amp * Math.sin(j * 0.78)), top + i * gap] : [Math.round(52 + 22 * Math.sin(j * 0.9)), top + i * gap]; });
@@ -351,10 +351,10 @@
     if(sub) sub.textContent = !made ? 'Every lesson, skill, practice set and unit test, in course order.' : S.mode === 'cram' ? 'Built from your answers, around your test date.' : 'Built from your answers, in course order' + (deadline() ? ', around your exam date.' : '.');
     $('#lpSetup').innerHTML = made
       ? '<div class="lp-card lp-mine"><div class="hd"><h3>Your path</h3><button type="button" class="lp-link" data-act="setup">Change</button></div><p class="lp-meta2">' + metaHTML() + '</p>' + cramLink() + '</div>' + bannersHTML()
-      : '<div class="lp-card lp-make"><h3>Create your <span>personalized path</span></h3><p>Three quick questions and it starts in the right place.</p><button type="button" class="lp-btn gold sm" data-act="setup">Create my path</button></div>';
+      : '';
     $('#lpSel').innerHTML = selHTML(selStop());
     paintSticky();
-    var mp = $('#lpMap'); mp.innerHTML = mapHTML(GS); mp.hidden = false;
+    var mp = $('#lpMap'); if(mp){ mp.innerHTML = mapHTML(GS); mp.hidden = false; }
     $$('#lpHome .lp-static').forEach(function(x){ x.classList.remove('lp-static'); });
     home.classList.remove('lp-ret'); home.classList.add('lp-on');
     if(!made) S.mode = null;
@@ -362,13 +362,13 @@
   function selStopNow(){ for(var k = 0; k < GS.length; k++) for(var i = 0; i < GS[k].stops.length; i++) if(GS[k].stops[i].gi === NOWG) return GS[k].stops[i]; return null; }
   function openUnit(k){ var det = $('#lpu-' + k); if(det && !det.open){ det.open = true; drawUnit(det); } return det; }
   function select(key, scroll){
-    SEL = key;
+    SEL = key; PICKED = true;
     var k = groupOf(key); if(scroll && k >= 0) openUnit(k);
     $$('#lpUnits .lp-s').forEach(function(b){ var on = b.getAttribute('data-stop') === key; b.classList.toggle('sel', on); b.setAttribute('aria-pressed', on); });
     var made = !!S.mode; if(!made) S.mode = 'self';
     $('#lpSel').innerHTML = selHTML(selStop());
     paintSticky();
-    $('#lpMap').innerHTML = mapHTML(GS);
+    var mp2 = $('#lpMap'); if(mp2) mp2.innerHTML = mapHTML(GS);
     if(!made) S.mode = null;
     if(scroll){ var b = $('#lpUnits [data-stop="' + key.replace(/"/g, '') + '"]'); if(b) b.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
     // The stop's card is in the side column (under the path on a phone): bring it into view when it is off screen.
@@ -472,6 +472,11 @@
   }
   var lastFocus = null;
   function openM(html){ ensureUi(); onPick = null; lastFocus = document.activeElement; mod.innerHTML = html; ov.classList.add('open'); var f = $('.lp-opt,[data-dl],[data-ck],input,.lp-btn', mod) || $('button', mod); if(f) f.focus({ preventScroll: true }); }
+  /* First visit, Start pressed with no path yet: ask once. "Make my path" opens the setup; skipping marks the path as
+     "follow the course order" (as the setup's own skip does) and goes on to the stop. */
+  function openFirst(href){
+    openM('<div class="hd"><div><h2>Make your <span>path</span> first</h2><p class="lp-sub">Three quick questions, and it starts in the right place for you.</p></div><button type="button" class="x" data-act="close">Close</button></div><div class="lp-row"><button type="button" class="lp-btn gold" data-act="setup">Make my path</button><a class="lp-link" href="' + esc(href) + '" data-act="skipgo">Skip, start now</a></div>');
+  }
   function closeM(){ if(!ov) return; ov.classList.remove('open'); if(lastFocus && lastFocus.focus) try{ lastFocus.focus(); }catch(e){} }
   function toast(m){ ensureUi(); tst.textContent = m; tst.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(function(){ tst.hidden = true; }, 2800); }
 
@@ -609,12 +614,15 @@
     var a = e.target.closest('[data-act]'), sp = e.target.closest('#lpUnits [data-stop]'), go = e.target.closest('#lpMap [data-go]');
     if(sp){ select(sp.getAttribute('data-stop'), false); return; }
     if(go){ select(go.getAttribute('data-go'), true); return; }
+    var st0 = e.target.closest('#lpSel .act a.lp-btn.gold');
+    if(st0 && !S.mode && !PICKED){ e.preventDefault(); openFirst(st0.getAttribute('href')); return; }
     var mu = e.target.closest('#lpMap [data-unit]');
     if(mu){ e.preventDefault(); var det = openUnit(+mu.getAttribute('data-unit')); if(det) det.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
     if(!a || !(a.closest('.lp-ov') || a.closest('#lpHome') || a.closest('#lpEnd') || a.closest('.lp-secend'))) return;
     var act = a.getAttribute('data-act'), id = a.getAttribute('data-id');
     if(act === 'setup') openSetup();
     else if(act === 'allunits') toggleAll();
+    else if(act === 'skipgo'){ e.preventDefault(); var to = a.getAttribute('href'); closeM(); if(!S.mode){ S.mode = 'self'; S.seen = Date.now(); save(); track('path_made', { mode: 'skip' }); } location.href = to; }
     else if(act === 'skip'){ closeM(); if(!S.mode){ S.mode = 'self'; S.seen = Date.now(); save(); track('path_made', { mode: 'skip' }); } if(!$('#lpHome')) location.href = home(); else renderAll(); }
     else if(act === 'sunext'){ if(a.disabled) return; var st = suSteps(); if(SU.how && SU.i < st.length - 1){ SU.i++; stepSetup(); } else if(SU.how) applySetup(); }
     else if(act === 'suback'){ SU.i = Math.max(0, SU.i - 1); stepSetup(); }

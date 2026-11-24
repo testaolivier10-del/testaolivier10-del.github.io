@@ -113,8 +113,7 @@
         '<header class="tb-chapter-head bk-chap-head"><div>' +
           '<p class="tb-chapter-eyebrow">' + label(ch) + ' &middot; ' + esc(partTitle[ch.part] || '') + '</p>' +
           '<h1 class="tb-chapter-title" tabindex="-1">' + esc(ch.title) + '</h1>' +
-          '<p class="tb-chapter-meta">' + ts.length + ' topic' + (ts.length === 1 ? '' : 's') + ' &middot; <span data-unit-meta="' + ch.id + '">not practiced yet</span></p>' +
-        '</div><p class="bk-chap-acts"><a class="bk-btn solid" href="practice.html?unit=' + ch.id + '">Practice this unit</a><a class="bk-btn ghost" href="units/' + ch.id + '.html">Unit page</a></p></header>' +
+        '</div></header>' +
         ts.map(function(t){
           // Hidden until its prose and every earlier topic's has arrived, so
           // a topic landing never pushes the ones below it down the screen
