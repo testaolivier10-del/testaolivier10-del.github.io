@@ -129,7 +129,7 @@
                                     until first used; chip: false keeps the pulse but drops the "Drag" / "Tap" chip
                                     (one chip per screen reads best: give it to the first thing to touch).
    K.spots(layer, { key, label, items: [{ id, name, at: [[x, y], ...], side, accept: [] }], onPick(item, how),
-           chip, hint, avoid() -> [DOMRect], blank(x, y) -> bool, onMiss(nearest) }) -> { el, pick(id | null, how), picked(),
+           chip, hint, avoid() -> [DOMRect], blank(x, y) -> bool, onMiss(nearest), under(x, y) -> id | null }) -> { el, pick(id | null, how), picked(),
            find(text) -> item | null, match(text), ask(id | null, onAnswer(ok, item)), asking(), place(), hide(on), items }
                                     EXPLORERS (first: A&P Lab practical; docs/tools-v2-anp-lab-practical-brief.md).
                                     Named places on a picture (Complete Anatomy, Visible Body): each item is a pin at
@@ -149,7 +149,11 @@
                                     question waits (match(text) looks up without picking). ask(id,
                                     cb): the "find it" question mode: the next tap answers (cb(true | false, tapped
                                     item)), marks the tapped pin right or wrong and shows the asked one's card;
-                                    ask(null) leaves it. how in onPick: 'tap' | 'key' | 'find' | 'set'. */
+                                    ask(null) leaves it. how in onPick: 'tap' | 'key' | 'find' | 'set'.
+                                    under(x, y) (picture units; optional, first: AP® Psychology Brain map): for a
+                                    picture of areas, the id of the part drawn under the finger, which a tap names
+                                    before the nearest pin (a pin pressed itself names its own part; not while
+                                    asking). */
 (function(){
   'use strict';
   if(window.LevlKit2) return;
@@ -540,7 +544,15 @@
     box.addEventListener('click', function(e){
       if(e.target.closest('.tk2-spot') && e.detail === 0){ tapped(find(e.target.closest('.tk2-spot').getAttribute('data-id')), 'key'); return; }
       if(e.target === card || card.contains(e.target)){ return; }
-      var it = nearest(e.clientX, e.clientY);
+      // o.under(x, y): a picture whose parts are areas (the brain map) names the part drawn under the finger; a pin
+      // pressed itself still names its own part
+      var it = null;
+      if(o.under && !asking){
+        var pin = e.target.closest('.tk2-spot');
+        if(pin) it = find(pin.getAttribute('data-id'));
+        else { var hr = hit.getBoundingClientRect(), hk = layer.scale() || 1, u = o.under((e.clientX - hr.left) / hk, (e.clientY - hr.top) / hk); if(u) it = find(u); }
+      }
+      if(!it) it = nearest(e.clientX, e.clientY);
       if(!it && !(e.target === hit || e.target.closest('.tk2-spot'))) return;
       if(!it){ missed(e.clientX, e.clientY); return; }
       tapped(it, 'tap');
