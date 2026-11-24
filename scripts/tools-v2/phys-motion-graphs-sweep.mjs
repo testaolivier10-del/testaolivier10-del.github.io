@@ -248,6 +248,8 @@ async function runSweep(w, h) {
   await pickMatch(page);
   const mr = await page.evaluate(probe, { dark: DARK, root: '.mg2-mfig' }).catch(e => ({ out: ['no Match figure: ' + e.message] }));
   states++; checks += 12; mr.out.filter(m => !/cause line/.test(m)).forEach(m => fails.push(`${w} Match: ${m}`));
+  const mf = await page.evaluate(() => { const f = document.querySelector('.mg2-mfig .mg2-scene'), d = document.querySelector('.ls-root .ls-dock'); if (!f) return 'no figure'; const r = f.getBoundingClientRect(); if (r.bottom > innerHeight + 0.5) return 'the Match figure runs below the screen'; if (d && d.getClientRects().length) { const q = d.getBoundingClientRect(); if (q.left < r.right - 1 && q.right > r.left + 1 && q.top < r.bottom - 1 && q.bottom > r.top + 1) return 'the question covers the Match figure'; } let e = f.parentElement; while (e && e !== document.body) { const cs = getComputedStyle(e); if (/(auto|scroll)/.test(cs.overflowY) && e.scrollHeight > e.clientHeight + 1) return 'inner scroll around the Match figure'; e = e.parentElement; } return ''; });
+  checks++; if (mf) fails.push(`${w} Match: ${mf}`);
   await shot(page, `${W4(w)}-3-match.png`);
   // deep links: ?seed= opens that problem in Test yourself, #quiz opens Test yourself
   for (const hash of ['?seed=424242', '#quiz']) {
