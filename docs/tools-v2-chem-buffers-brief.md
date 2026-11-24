@@ -180,8 +180,9 @@ place 40 ms after Start over); the dropper hover is a faint solid outline and a 
 hover (`(hover: hover)`), never dashed; "Nearly spent" logged in "What moved" and the owner log; needs-author
 `buffer-explore` point 1 now says "at 5 mmol of each (0.050 M)".
 
-Checks (fix round): sweep at 360, 390, 1024 and 1440, light and dark; frames at 390 and 1440; AP Chem tests, content
-check, build `--check`, check-site (see the report for the counts).
+Checks (fix round): sweep at 360, 390, 1024 (×768) and 1440 (×900), light and dark: 4 runs of 34 states and 768 checks,
+0 failures; frames at 390 (2141 checks) and 1440 (939 checks), 0 failures, the buffer switch fade and the Start over
+pointer ease included; AP Chem tests (99 pass), content check, build `--check`, check-site, check-weight.
 
 ## Not done, and what I am not happy with
 - No real phone, no screen reader pass, no students; no independent review yet.
