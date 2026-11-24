@@ -127,10 +127,10 @@
       var sceneBox = document.createElement('div'); sceneBox.className = 'bx2-scene'; sceneBox.id = T.nid('bx2');
       // three layers: the still scene behind (the lab, the droppers, the probes, the meters), the moving parts on a
       // canvas (the liquid, the molecules, the drops, the glow of a reaction), and the glass in front of them
-      sceneBox.innerHTML = '<svg class="bx2-svg" role="img" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"></svg><canvas class="bx2-mov" aria-hidden="true"></canvas><svg class="bx2-front" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"></svg>';
+      sceneBox.innerHTML = '<svg class="bx2-svg" role="img" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"></svg><canvas class="bx2-mov" aria-hidden="true"></canvas><canvas class="bx2-mov" aria-hidden="true"></canvas><svg class="bx2-front" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"></svg>';
       stage.appendChild(sceneBox);
       tabs.el.querySelectorAll('.tk2-tab').forEach(function(b){ b.setAttribute('aria-controls', sceneBox.id); });
-      var svg = sceneBox.querySelector('svg'), mov = sceneBox.querySelector('.bx2-mov'), front = sceneBox.querySelector('.bx2-front'), layer = K.layer(sceneBox);
+      var svg = sceneBox.querySelector('svg'), movs = [].slice.call(sceneBox.querySelectorAll('.bx2-mov')), PCS = [], front = sceneBox.querySelector('.bx2-front'), layer = K.layer(sceneBox);
       var lines = document.createElement('div'); lines.className = 'bx2-lines';
       var cause = K.cause({ label: 'Why' });
       var again = document.createElement('button'); again.type = 'button'; again.className = 'tk2-btn bx2-again'; again.textContent = 'Start over'; again.hidden = true;
@@ -271,7 +271,7 @@
       /* ---------------------------------------------------- the beakers' contents */
       var BK = [];      // two beakers: { c, kind, mols, slotUse, events, plan, vol, volShown, mixed: { acid, base } }
       function newBeakers(){
-        BK = G.cols.map(function(c){ return { c: c, kind: c.kind, mols: [], slotUse: c.slots.map(function(){ return null; }), events: [], plan: { h: 0, a: 0, oh: 0, h3o: 0, acid: 0, base: 0 }, vol: EX.V0, volShown: EX.V0, mixed: { acid: 0, base: 0 } }; });
+        BK = G.cols.map(function(c){ return { c: c, kind: c.kind, ripples: [], mols: [], slotUse: c.slots.map(function(){ return null; }), events: [], plan: { h: 0, a: 0, oh: 0, h3o: 0, acid: 0, base: 0 }, vol: EX.V0, volShown: EX.V0, mixed: { acid: 0, base: 0 } }; });
       }
       function rng(seed){ return M.rng(seed); }
       function slotAngle(b, i){ var r = rng(7 + i * 13 + b.c.i * 71 + S.bi * 101); return (r() - 0.5) * 2 * TILT; }
@@ -286,8 +286,8 @@
       function keyFor(b, what){ var bf = BF(); return what === 'h' ? bf.HA.key : what === 'a' ? bf.A.key : what === 'oh' ? 'OH-' : 'H3O+'; }
       // lay the beakers out at a state at once (a fresh picture: first draw, another buffer, Start over, reduced motion)
       function layoutAt(acid, base){
-        CV.baseDirty = true;
         BK.forEach(function(b){
+          if(b.pc){ b.pc.baseDirty = true; b.pc.force = true; } b.ripples = [];
           b.mols = []; b.events = []; b.slotUse = b.c.slots.map(function(){ return null; });
           b.plan = planFor(b.kind, acid, base); b.mixed = { acid: acid, base: base };
           b.vol = EX.V0 + (acid + base) * EX.drop.mL; b.volShown = b.vol;
@@ -296,7 +296,7 @@
           var q = 0;
           ['h', 'a', 'oh', 'h3o'].forEach(function(w){ for(var z = 0; z < b.plan[w]; z++){ var sl = order[q++]; var m = newMol(keyFor(b, w), b.c.slots[sl][0], b.c.slots[sl][1], slotAngle(b, sl)); m.slot = sl; b.slotUse[sl] = m; b.mols.push(m); } });
         });
-        queue = []; ripples = [];
+        queue = [];
       }
       // what the picture shows: every particle out of its drop, by species (the water formed is the solvent: not counted)
       function drawn(b){
@@ -310,13 +310,13 @@
       }
 
       /* ---------------------------------------------------- the canvas: the liquid and the moving parts */
-      var CV = { ctx: null, dpr: 1, spr: {}, col: {}, fade: null, base: null, baseDirty: true, box: [0, 0, 0, 0] };
+      var CV = { dpr: 1, spr: {}, col: {}, alpha: 1 };
       function cssVar(n){ return getComputedStyle(stage).getPropertyValue(n).trim(); }
       function readColors(){
         var dark = document.documentElement.getAttribute('data-theme') === 'dark';
         CV.col = { dark: dark, H: '#F4F6F8', C: dark ? '#7C858C' : '#5A6268', O: '#EE5A4F', N: '#5677E0', edge: dark ? 'rgba(0,0,0,.6)' : 'rgba(20,28,30,.55)',
           liq: cssVar('--liq') || 'rgba(120,170,210,.22)', liqTop: cssVar('--liq-top') || 'rgba(120,170,210,.5)', acid: cssVar('--bx-acid') || '#D55E00', base: cssVar('--bx-base') || '#0072B2' };
-        CV.spr = {}; CV.baseDirty = true;
+        CV.spr = {}; dirtyAll();
       }
       function sprite(el, rr){
         var key = el + rr.toFixed(2); if(CV.spr[key]) return CV.spr[key];
@@ -361,46 +361,50 @@
         var ly = G.lev(c, V), r = Math.min(10, G.bw * 0.06);
         x.beginPath(); x.moveTo(c.ix0, ly); x.lineTo(c.ix0, c.iy1 - r); x.quadraticCurveTo(c.ix0, c.iy1, c.ix0 + r, c.iy1); x.lineTo(c.ix1 - r, c.iy1); x.quadraticCurveTo(c.ix1, c.iy1, c.ix1, c.iy1 - r); x.lineTo(c.ix1, ly); x.closePath();
       }
-      function paintCanvas(){
-        var x = CV.ctx; if(!x || !G) return;
-        var d = CV.dpr, bx = CV.box, bw = bx[2] - bx[0], bh = bx[3] - bx[1], tn = now();
+      /* One canvas per beaker (its drop path and its glass only, a small texture), repainted only while something in
+         it moves; the particles at rest come from a cached layer, redrawn only when one starts or stops moving. */
+      function moving(b){ return b.events.length > 0 || b.volShown !== b.vol || b.ripples.length > 0 || !!(b.pc && b.pc.fade) || (b.pc && b.pc.force); }
+      function paintCanvas(all){
+        if(!G) return;
+        BK.forEach(function(b){ if(all || moving(b)) paintOne(b); });
+      }
+      function paintOne(b){
+        var pc = b.pc, x = pc && pc.ctx; if(!x) return;
+        pc.force = false;
+        var d = CV.dpr, bx = pc.box, bw = bx[2] - bx[0], bh = bx[3] - bx[1], tn = now();
         x.setTransform(d, 0, 0, d, 0, 0);
         x.clearRect(0, 0, bw, bh);
-        var fade = CV.fade, alpha = 1;
-        if(fade){ var t = (tn - fade.t0) / 300; if(t >= 1){ CV.fade = null; } else if(t < 0.5){ x.globalAlpha = 1 - t * 2; x.drawImage(fade.img, 0, 0, bw, bh); x.globalAlpha = 1; return; } else alpha = (t - 0.5) * 2; }
+        var fade = pc.fade, alpha = 1;
+        if(fade){ var t = (tn - fade.t0) / 300; if(t >= 1){ pc.fade = null; } else if(t < 0.5){ x.globalAlpha = 1 - t * 2; x.drawImage(fade.img, 0, 0, bw, bh); x.globalAlpha = 1; return; } else alpha = (t - 0.5) * 2; }
         CV.alpha = alpha;
         x.translate(-bx[0], -bx[1]);
         x.globalAlpha = alpha;
         // the liquid, then its surface line
-        BK.forEach(function(b){
-          liquidPath(x, b.c, b.volShown); x.fillStyle = CV.col.liq; x.fill();
-          var ly = G.lev(b.c, b.volShown); x.beginPath(); x.moveTo(b.c.ix0, ly); x.lineTo(b.c.ix1, ly); x.lineWidth = 2; x.strokeStyle = CV.col.liqTop; x.stroke();
-        });
+        liquidPath(x, b.c, b.volShown); x.fillStyle = CV.col.liq; x.fill();
+        var ly = G.lev(b.c, b.volShown); x.beginPath(); x.moveTo(b.c.ix0, ly); x.lineTo(b.c.ix1, ly); x.lineWidth = 2; x.strokeStyle = CV.col.liqTop; x.stroke();
         // ripples where a drop went in
-        ripples = ripples.filter(function(rp){ var u = (tn - rp.t0) / 420; if(u >= 1) return false; x.beginPath(); x.ellipse(rp.x, rp.y, (6 + 22 * u) * Math.max(0.6, G.s * 1.6), (2 + 4 * u), 0, 0, Math.PI * 2); x.lineWidth = 1.5; x.strokeStyle = 'rgba(255,255,255,' + (0.8 * (1 - u)).toFixed(3) + ')'; x.stroke(); return true; });
-        // the molecules at rest come from a cached layer, redrawn only when one starts or stops moving
-        if(CV.baseDirty){
-          var bc = CV.base.getContext('2d'); bc.setTransform(d, 0, 0, d, 0, 0); bc.clearRect(0, 0, bw, bh); bc.translate(-bx[0], -bx[1]);
+        b.ripples = b.ripples.filter(function(rp){ var u = (tn - rp.t0) / 420; if(u >= 1) return false; x.beginPath(); x.ellipse(rp.x, rp.y, (6 + 22 * u) * Math.max(0.6, G.s * 1.6), (2 + 4 * u), 0, 0, Math.PI * 2); x.lineWidth = 1.5; x.strokeStyle = 'rgba(255,255,255,' + (0.8 * (1 - u)).toFixed(3) + ')'; x.stroke(); return true; });
+        if(pc.baseDirty){
+          var bc = pc.base.getContext('2d'); bc.setTransform(d, 0, 0, d, 0, 0); bc.clearRect(0, 0, bw, bh); bc.translate(-bx[0], -bx[1]);
           var a0 = CV.alpha; CV.alpha = 1;
-          BK.forEach(function(b){ b.mols.forEach(function(m){ if(m.state === 'whole') drawMol(bc, m); }); });
-          CV.alpha = a0; CV.baseDirty = false;
+          b.mols.forEach(function(m){ if(m.state === 'whole') drawMol(bc, m); });
+          CV.alpha = a0; pc.baseDirty = false;
         }
-        x.save(); x.setTransform(1, 0, 0, 1, 0, 0); x.globalAlpha = alpha; x.drawImage(CV.base, 0, 0); x.restore();
+        x.save(); x.setTransform(1, 0, 0, 1, 0, 0); x.globalAlpha = alpha; x.drawImage(pc.base, 0, 0); x.restore();
         x.globalAlpha = alpha;
-        BK.forEach(function(b){
-          // the glow where an H⁺ is passing over
-          b.events.forEach(function(e){ if(e.glowA > 0){ x.beginPath(); x.arc(e.hAt[0], e.hAt[1], (16 * G.s + 6) * ZOOM, 0, Math.PI * 2); x.fillStyle = 'rgba(255,227,138,' + (0.55 * e.glowA).toFixed(3) + ')'; x.fill(); x.lineWidth = 1.6; x.strokeStyle = 'rgba(245,184,61,' + e.glowA.toFixed(3) + ')'; x.stroke(); } });
-          b.mols.forEach(function(m){ if(m.state !== 'whole') drawMol(x, m); });
-          // the H on its way across, and each drop's shell around its ion
-          b.events.forEach(function(e){
-            if(e.flyH){ var sp = sprite('H', AR.H * G.s * ZOOM); x.drawImage(sp.c, e.hAt[0] - sp.h, e.hAt[1] - sp.h, sp.h * 2, sp.h * 2); }
-            if(e.shellA > 0){ var ion = e.ion, rr = radiusOf(ion.drawKey || ion.key) * G.s * (ion.zoom || 1) + 4; x.beginPath(); x.arc(ion.x, ion.y, rr, 0, Math.PI * 2); var col = e.dir > 0 ? CV.col.base : CV.col.acid;
-              x.globalAlpha = alpha * 0.2 * e.shellA; x.fillStyle = col; x.fill(); x.globalAlpha = alpha * 0.85 * e.shellA; x.lineWidth = 1.6; x.strokeStyle = col; x.stroke(); x.globalAlpha = alpha; }
-          });
+        // the glow where an H⁺ is passing over
+        b.events.forEach(function(e){ if(e.glowA > 0){ x.beginPath(); x.arc(e.hAt[0], e.hAt[1], (16 * G.s + 6) * ZOOM, 0, Math.PI * 2); x.fillStyle = 'rgba(255,227,138,' + (0.55 * e.glowA).toFixed(3) + ')'; x.fill(); x.lineWidth = 1.6; x.strokeStyle = 'rgba(245,184,61,' + e.glowA.toFixed(3) + ')'; x.stroke(); } });
+        b.mols.forEach(function(m){ if(m.state !== 'whole') drawMol(x, m); });
+        // the H on its way across, and each drop's shell around its ion
+        b.events.forEach(function(e){
+          if(e.flyH){ var sp = sprite('H', AR.H * G.s * ZOOM); x.drawImage(sp.c, e.hAt[0] - sp.h, e.hAt[1] - sp.h, sp.h * 2, sp.h * 2); }
+          if(e.shellA > 0){ var ion = e.ion, rr = radiusOf(ion.drawKey || ion.key) * G.s * (ion.zoom || 1) + 4; x.beginPath(); x.arc(ion.x, ion.y, rr, 0, Math.PI * 2); var col = e.dir > 0 ? CV.col.base : CV.col.acid;
+            x.globalAlpha = alpha * 0.2 * e.shellA; x.fillStyle = col; x.fill(); x.globalAlpha = alpha * 0.85 * e.shellA; x.lineWidth = 1.6; x.strokeStyle = col; x.stroke(); x.globalAlpha = alpha; }
         });
         x.globalAlpha = 1;
-        if(CV.fade) kick();
+        if(pc.fade) kick();
       }
+      function dirtyAll(){ BK.forEach(function(b){ if(b.pc){ b.pc.baseDirty = true; b.pc.force = true; } }); }
 
       /* ---------------------------------------------------- drawing the still scene */
       var L = {};
@@ -571,7 +575,7 @@
       }
 
       /* ---------------------------------------------------- the drops and their reactions */
-      var queue = [], ripples = [], raf = 0, lastLaunch = 0, dirty = false;
+      var queue = [], raf = 0, lastLaunch = 0, dirty = false;
       function busy(){ return queue.length > 0 || BK.some(function(b){ return b.events.length > 0; }); }
       function idleOf(b, key, near){
         var best = null, bd = Infinity;
@@ -600,7 +604,7 @@
           // the plan moves on now (the next drop is decided against it)
           var p = b.plan; if(dir > 0) p.base++; else p.acid++;
           if(d.key){
-            var tg = idleOf(b, d.key, ent); tg.state = 'busy'; CV.baseDirty = true;
+            var tg = idleOf(b, d.key, ent); tg.state = 'busy'; b.pc.baseDirty = true;
             e.kind = 'react'; e.target = tg; tg.from = [tg.x, tg.y, tg.a];
             var donor = dir > 0 ? tg : ion, acc = dir > 0 ? ion : tg;
             e.donor = donor; e.acc = acc;
@@ -646,7 +650,7 @@
         var t = tn - e.t0, ion = e.ion;
         if(t < TM.sq){ poseAt(ion, e.tip[0], e.tip[1], ion.a); return; }
         if(t < TM.fall){ var u = (t - TM.sq) / (TM.fall - TM.sq); poseAt(ion, e.tip[0], lerp(e.tip[1], e.entry[1] - 2, u * u), ion.a); return; }
-        if(!e.splashed){ e.splashed = true; ripples.push({ x: e.entry[0], y: G.lev(b.c, b.vol), t0: tn }); ion.from = [ion.x, ion.y, ion.a]; }
+        if(!e.splashed){ e.splashed = true; b.ripples.push({ x: e.entry[0], y: G.lev(b.c, b.vol), t0: tn }); ion.from = [ion.x, ion.y, ion.a]; }
         if(e.kind === 'stay'){
           var v = ease((t - TM.fall) / (TM.stay - TM.fall));
           e.shellA = clamp(1 - (t - TM.meet) / (TM.stay - TM.meet), 0, 1);
@@ -654,7 +658,7 @@
           poseAt(ion, lerp(ion.from[0], ion.to[0], v), lerp(ion.from[1], ion.to[1], v), lerp(ion.from[2], ion.to[2], v));
           // the ion counts once its drop has faded into the liquid
           if(!e.mixed && e.shellA <= 0.5){ e.mixed = true; ion.state = 'moving'; mixIn(b, e); }
-          if(t >= TM.stay){ ion.state = 'whole'; CV.baseDirty = true; e.done = true; }
+          if(t >= TM.stay){ ion.state = 'whole'; b.pc.baseDirty = true; e.done = true; }
           return;
         }
         var tg = e.target, don = e.donor, acc = e.acc;
@@ -706,7 +710,7 @@
         if(t >= TM.back){
           b.mols = b.mols.filter(function(m){ return !(m.key === 'H2O' && (m === don || m === acc)); });
           [don, acc].forEach(function(m){ if(m.key !== 'H2O'){ m.state = 'whole'; m.zoom = 1; } });
-          CV.baseDirty = true; e.done = true;
+          b.pc.baseDirty = true; b.pc.force = true; e.done = true;
         }
       }
       function poseAt(m, x, y, a){ m.x = x; m.y = y; m.a = a; }
@@ -726,7 +730,7 @@
         var pm = false;
         ptr.forEach(function(q, i){ if(q.to == null) return; var d = q.to - q.a; q.a = Math.abs(d) < 0.15 ? q.to : q.a + d * 0.25; L.ptr[i].setAttribute('transform', 'translate(' + q.a.toFixed(1) + ' 0)'); if(q.a !== q.to) pm = true; });
         paintCanvas();
-        var more = busy() || pm || BK.some(function(b){ return b.volShown !== b.vol; }) || ripples.length || !!CV.fade;
+        var more = busy() || pm || BK.some(moving);
         if(more){ dirty = true; raf = requestAnimationFrame(frame); }
         else if(dirty){ dirty = false; settled(); }
       }
@@ -735,13 +739,14 @@
         if(raf){ cancelAnimationFrame(raf); raf = 0; }
         if(!G) return;
         var p = BK[0].plan, a = p.acid + queue.filter(function(d){ return d < 0; }).length, bs = p.base + queue.filter(function(d){ return d > 0; }).length;
-        layoutAt(a, bs); drawnKey = ''; paintReadouts(true); ptr.forEach(function(q){ q.a = q.to; }); CV.fade = null; frame(); settled();
+        layoutAt(a, bs); BK.forEach(function(b){ b.pc.fade = null; }); drawnKey = ''; paintReadouts(true); ptr.forEach(function(q){ q.a = q.to; }); frame(); settled();
       }
       function crossFade(fn){
         var img = null;
-        if(CV.ctx && mov.width){ img = document.createElement('canvas'); img.width = mov.width; img.height = mov.height; img.getContext('2d').drawImage(mov, 0, 0); }
+        var imgs = BK.map(function(b){ var el = b.pc && b.pc.el; if(!el || !el.width) return null; var im = document.createElement('canvas'); im.width = el.width; im.height = el.height; im.getContext('2d').drawImage(el, 0, 0); return im; });
         fn();
-        if(img){ CV.fade = { img: img, t0: now() }; kick(); }
+        BK.forEach(function(b, i){ if(imgs[i] && b.pc){ b.pc.fade = { img: imgs[i], t0: now() }; } });
+        kick();
       }
       // a tap on a dropper: one drop of it into each beaker
       function tap(dir){
@@ -783,15 +788,19 @@
         G = geo(W);
         sceneBox.style.height = G.H + 'px';
         svg.setAttribute('viewBox', '0 0 ' + W + ' ' + G.H); svg.setAttribute('width', W); svg.setAttribute('height', G.H);
-        // the canvas covers the drops' path and the beakers only
-        var bx = [0, Math.floor(G.tipY - 4), W, Math.ceil(G.yb + 2)];
-        CV.box = bx; CV.dpr = Math.min(2, window.devicePixelRatio || 1);
-        mov.style.left = '0px'; mov.style.top = bx[1] + 'px'; mov.style.width = W + 'px'; mov.style.height = (bx[3] - bx[1]) + 'px';
-        mov.width = Math.round(W * CV.dpr); mov.height = Math.round((bx[3] - bx[1]) * CV.dpr); CV.ctx = mov.getContext('2d');
-        CV.base = document.createElement('canvas'); CV.base.width = mov.width; CV.base.height = mov.height; CV.baseDirty = true; readColors();
+        // a canvas per beaker: its drop path and its glass only
+        CV.dpr = Math.min(2, window.devicePixelRatio || 1); readColors();
+        PCS = movs.map(function(el, i){
+          var c = G.cols[i], bx = [Math.floor(c.x0 - 6), Math.floor(G.tipY - 4), Math.ceil(c.x1 + 4), Math.ceil(G.yb + 2)];
+          el.style.left = bx[0] + 'px'; el.style.top = bx[1] + 'px'; el.style.width = (bx[2] - bx[0]) + 'px'; el.style.height = (bx[3] - bx[1]) + 'px';
+          el.width = Math.round((bx[2] - bx[0]) * CV.dpr); el.height = Math.round((bx[3] - bx[1]) * CV.dpr);
+          var base = document.createElement('canvas'); base.width = el.width; base.height = el.height;
+          return { el: el, ctx: el.getContext('2d'), base: base, box: bx, baseDirty: true, force: true, fade: null };
+        });
         sceneBox.classList.toggle('is-narrow', G.narrow);
         drawStatic();
         newBeakers();
+        BK.forEach(function(b, i){ b.pc = PCS[i]; });
         layoutAt(keep.a, keep.b);
         drawnKey = ''; shown = null; ptr = [{ a: null, to: null }, { a: null, to: null }]; paintReadouts(true);
         ptr.forEach(function(q){ q.a = q.to; });
@@ -835,7 +844,7 @@
       function rectOf(x, y, w, h){ var r0 = svg.getBoundingClientRect(), k = r0.width / G.W; return { left: r0.left + x * k, top: r0.top + y * k, right: r0.left + (x + w) * k, bottom: r0.top + (y + h) * k, width: w * k, height: h * k }; }
       var tour = K.tour({ key: 'apchem-buffers', label: 'Show me how', steps: [
         { id: 'tap', text: 'Tap NaOH or HCl. One drop goes into each beaker.', target: function(){ return seen('tap', taps[1] ? taps[1].t.el : sceneBox); } },
-        { id: 'react', text: 'In the buffer one form takes each drop and turns into the other. In water nothing takes it.', target: function(){ if(!G) return sceneBox; var c = G.cols[0]; seen('react', mov); return rectOf(c.x0, G.lev(c, 100), G.bw, c.iy1 - G.lev(c, 100)); } },
+        { id: 'react', text: 'In the buffer one form takes each drop and turns into the other. In water nothing takes it.', target: function(){ if(!G) return sceneBox; var c = G.cols[0]; seen('react', movs[0]); return rectOf(c.x0, G.lev(c, 100), G.bw, c.iy1 - G.lev(c, 100)); } },
         { id: 'meters', text: 'Compare the meters: the buffer barely moves until a form runs out.', target: function(){ if(!G) return sceneBox; var c = G.cols[0]; seen('meters', L.meter[0]); return rectOf(c.mx, c.my, G.mw, G.mh); } }],
         onClose: function(had){ if(had) try{ head.how.focus({ preventScroll: true }); }catch(e){} } });
       var tourSeen = {};
