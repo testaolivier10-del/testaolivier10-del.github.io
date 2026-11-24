@@ -172,7 +172,7 @@ same without the example and the scrub, with the 2 tip knobs and the quiet cart 
 - R2 changes within 0.2 s of the newest piece's start fold into it (the last value, the first time); a piece equal
   to the one before is dropped; a drag of the a tip while the cart runs holds the moment for the drag (one piece),
   then the run goes on. The a pill names every piece ("a −0.4 m/s², +0.2 at 1.3 s, −0.7 at 1.8 s"); on a phone one
-  change reads "a −0.4, +0.2 m/s² at 1.3 s" and more are counted ("a −0.4 m/s² + 2 changes"), so the cause line
+  change reads "a −0.4, +0.2 m/s² at 1.3 s" and more are counted ("a −0.4 m/s², 2 changes"), so the cause line
   keeps two rows.
 - R3 keys never start a run (a pointer let go still does; Enter on a tip runs it); a knob that hides while a run
   plays hands the keyboard to the a tip (or to Pause / Run), never to the page.
@@ -183,3 +183,5 @@ same without the example and the scrub, with the 2 tip knobs and the quiet cart 
 - Recheck 1 fix round: sweep at 360, 390, 1024, 1440, light and real dark (8 runs, 25 states each), 0 failures; frames
   at 390 light, 1440 light, 1024 dark (about 1,630 frames each), 0 failures; AP Physics tests 159 pass; content check
   0 failing; `build-apphys --check` and `check-site` pass.
+- Recheck 2 PASS (2026-11-24); its wording fix: on a phone more than one change reads "a −0.4 m/s², 2 changes" (no
+  "+" beside the cause line's own "+" signs).

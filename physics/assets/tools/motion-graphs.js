@@ -840,7 +840,7 @@
         var v1 = piece ? +at(run, 'v', last.t0).toFixed(6) : se.v0;
         // every piece is named (on a phone, more than two are counted: "2 changes, last +0.5 at 3.3 s")
         var rest = se.segs.slice(1), narrow = (window.innerWidth || 1000) < 640;
-        var aT = !piece ? 'a ' + sg(a0) + ' m/s²' : narrow && rest.length > 1 ? 'a ' + sg(a0) + ' m/s² + ' + rest.length + ' changes'
+        var aT = !piece ? 'a ' + sg(a0) + ' m/s²' : narrow && rest.length > 1 ? 'a ' + sg(a0) + ' m/s², ' + rest.length + ' changes'
           : narrow ? 'a ' + sg(a0) + ', ' + sg(aL) + ' m/s² at ' + F(last.t0, 1) + ' s'
           : 'a ' + sg(a0) + ' m/s², ' + rest.map(function(q){ return sg(q.a) + ' at ' + F(q.t0, 1) + ' s'; }).join(', ');
         var parts = [{ t: 'v₀ ' + sg(se.v0) + ' m/s', role: 'v', say: 'starting velocity ' + sg(se.v0) + ' meters per second' }, { t: aT, role: 'a', join: '+', say: piece ? 'acceleration ' + sg(a0) + ' meters per second squared, then ' + rest.map(function(q){ return sg(q.a) + ' from ' + F(q.t0, 1) + ' seconds'; }).join(', then ') : 'acceleration ' + sg(a0) + ' meters per second squared' }];
