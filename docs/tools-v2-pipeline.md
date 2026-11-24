@@ -38,6 +38,10 @@ States: building, review, fixing, recheck, PASS (waiting to integrate), integrat
 | AP Bio chi square | claude/tools-v2-chi-square | wt-chi-square | integrated | choice chamber of pill bugs; kept sweep, frames, perf and interact scripts in `scripts/tools-v2/chi-square-*` |
 | AP Bio rates | claude/tools-v2-rates | wt-rates | integrated | three tabs (rate over time, at a moment, percent change); sweep `scripts/tools-v2/rates-sweep.mjs` (`--frames`, `--perf`) |
 | AP Bio confidence intervals | claude/tools-v2-bio-confidence-intervals | wt-bio-ci | review | bean trays and a clipboard of mean ± 2 SE; sweep `scripts/tools-v2/bio-confidence-intervals-sweep.mjs` (`--frames`, `--perf`) |
+| Ochem reaction predictor | claude/tools-v2-reaction-predictor | wt-reaction-predictor | integrated | 3D sketch of each path (`sequence()`), every frame unit tested as a real structure; three accuracy fixes in `mixture()`; sweep and perf scripts |
+| A&P anatomy 3d | claude/tools-v2-anp-anatomy-3d | wt-anp-anatomy-3d | integrated | five regions on the shared viewer; viewer.js taken from the NREMT body map's branch (byte for byte) plus opt in hooks, so integrate the body map first; K.spots `project`; anp spec decision 105 |
+| NREMT scenario sim | claude/tools-v2-nremt-scenario-sim | wt-nremt-scenario-sim | integrated | Explore `nremt/assets/scenario-explore.js` (own weight shell); the run is Test yourself; monitor pause/resume and `pinsFor` added; the shared NREMT drawn patient `nremt/assets/patient-draw.js` (flowcharts moved onto it); shell `nremt/kit2` |
+| AP Psych brain map | claude/tools-v2-brain-map | wt-brain-map | integrated | first AP Psych tool on the kit: adapter `ApPsychTools.kit2`; `K.spots` `under`; kept sweep, frames and perf in `scripts/tools-v2/brain-map-*` |
 
 2026-11-19: `main` merged in after PR #228 (ochem frame cleanup: chipPicker, scrollChips and .ls-chips-hidden gone; the v2
 conformations, resonance and arrow pusher kept, kit2 kept). Ochem viewer 3d had `main` merged
@@ -53,12 +57,18 @@ Before the final merge:
 - Time the skill sheets bleeding station's Blanket and Transport taps on a quiet machine or a real phone (p95 is
   above budget under load). If still over 50 ms, find the cause.
 - Time flowcharts after the glove polish on a quiet machine (p95 at CPU x4 was 66 to 133 ms under load).
+- Re-time the reaction predictor's single frames at a flask change on a quiet machine.
+- Test the A&P anatomy 3d frame rate on a real phone.
+- Time the scenario sim at 390 and 1440 on a quiet machine (under load its p95 swings above the
+  flagship's; on the quiet machine in recheck 1 both were under 50 ms).
+- `node scripts/build-body-figures.mjs --check` reports "stale" on main, on tools-v2-all and on the scenario sim
+  branch alike (the reviewer checked all three, 2026-11-23): older than the scenario sim, either stale data or a render
+  that differs between machines. CI does not run it (no workflow or `scripts/ci-local.sh` calls it, nor
+  `build-pose-figures.mjs`), so it cannot block a merge; not a regression.
 
 Plans (owner 2026-11-23): every remaining tool has a ready plan in `docs/tools-v2-plans/<course>-<tool>.md`
 (113 plans; difficulty lists in `README-core.md`, `README-econ.md`, `README-sci.md`, `README-soc.md`,
 `README-math.md`). A builder starts from its tool's plan and still opens the research links before building.
-Simpler tools first; Psych waits for the brain map's adapter; the first tool of a course without kit2 adds its adapter.
+Simpler tools first; Psych has its adapter now (the brain map, integrated); the first tool of a course without kit2 adds its adapter.
 
-Next by use (rollout table):
-A&P anatomy 3d, NREMT scenario sim, Ochem reaction
-predictor (rollout rows 20 to 26).
+Next by use (rollout table): rows 20 to 26 are all integrated; next comes from the plans above.

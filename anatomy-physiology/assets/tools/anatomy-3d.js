@@ -30,7 +30,15 @@
    on that structure. Events: anp-lab-station { set: 'anatomy-3d', correct }
    per answer, anp-practical-finish { stations, correct } after Timed.
    Deep links: #explore #study #quiz #timed #<structure>, ?system=, ?chapter=
-   (from the tools hub), ?focus=<structure id or name>. */
+   (from the tools hub), ?focus=<structure id or name>.
+
+   Tools v2 (docs/tools-v2-anp-anatomy-3d-brief.md): with the kit on the page (pages.json "kit2": true), Explore is
+   the five regions of tools/anatomy-3d-explore.js, and everything above (Cards, the old Explore with the full card;
+   Study; Quiz; Timed; the filters) is Test yourself, its own switch above the question. One viewer serves both: it
+   is mounted on its own element (view), which Explore and Test yourself take in turn. New deep links: #body/<region>
+   (an Explore tab), #cards (Test yourself's Cards); #explore and ?focus= open Explore (on that structure); ?system=
+   and ?chapter= open the Explore region that holds them (the filter still applies in Test yourself); #study, #quiz,
+   #timed and #<structure> open Test yourself as before. */
 (function(){
   'use strict';
   var KIND = 'anatomy-3d';
@@ -102,7 +110,8 @@
   function tol(k){ var n = k.replace(/ /g, '').length; return n <= 4 ? 0 : n <= 9 ? 1 : 2; }
   function variants(s){
     var v = [norm(s.name)];
-    (s.accept || []).forEach(function(a){ var k = norm(a); if(k && v.indexOf(k) < 0) v.push(k); });
+    // the short label Explore's card shows is a right answer too
+    (s.label ? [s.label] : []).concat(s.accept || []).forEach(function(a){ var k = norm(a); if(k && v.indexOf(k) < 0) v.push(k); });
     return v;
   }
   function grade(answer, s){
@@ -124,8 +133,11 @@
   }
 
   /* ------------------------------------------------------------ filters */
-  var filter = { system: '', chapter: '' };
+  var filter = { system: '', chapter: '', region: '' };
+  function regionOf(id){ var ts = (DATA && DATA.explore && DATA.explore.tabs) || []; for(var i = 0; i < ts.length; i++) if(ts[i].id === id) return ts[i]; return null; }
   function inFilter(s){
+    var rg = filter.region && regionOf(filter.region);
+    if(rg && rg.systems.indexOf(s.system) < 0) return false;
     if(filter.system && s.system !== filter.system) return false;
     if(filter.chapter && chapterOf(s) !== filter.chapter) return false;
     return true;
@@ -133,12 +145,13 @@
   function inPlay(){ return LIST.filter(inFilter); }
   function askable(){ return inPlay().filter(function(s){ return s.quiz !== false; }); }
   function filterLabel(){
+    if(filter.region && regionOf(filter.region)) return regionOf(filter.region).label;
     if(filter.system) return DATA.systems[filter.system];
     if(filter.chapter){ var c = chapterInfo(filter.chapter); return c ? c.title : filter.chapter; }
     return 'the whole body';
   }
   function applyFilter(){
-    var only = (filter.system || filter.chapter) ? inPlay().map(function(s){ return s.id; }).concat(['skin']) : null;
+    var only = (filter.system || filter.chapter || filter.region) ? inPlay().map(function(s){ return s.id; }).concat(['skin']) : null;
     if(viewer) viewer.setOnly(only);
     if(filterInfo) filterInfo.textContent = plural(inPlay().length, 'structure') + ' in play, ' + askable().length + ' in the quizzes.';
     paintFilterPill();
@@ -146,6 +159,18 @@
 
   /* ------------------------------------------------------------- studio */
   var ST = window.AnpToolKit && window.AnpToolKit.studio ? window.AnpToolKit.studio({ detailsTitle: 'Filter & options' }) : null;
+  /* v2: everything this file puts in the studio is Test yourself's (mode 'quiz'); Explore is anatomy-3d-explore.js */
+  var V2 = !!(ST && window.LevlKit2 && window.AnpAnatomyExplore && window.AnpToolKit.kit2), KIT = null, EX = null, qChosen = false;
+  if(V2){
+    (function(){
+      var put0 = ST.put, cap = ST.caption, pl = ST.pills, done = ST.done;
+      ST._v1 = { put: put0, caption: cap, pills: pl, done: done };
+      ST.put = function(r, els, opt){ return put0(r, els, Object.assign({ mode: 'quiz' }, opt || {})); };
+      ST.caption = function(h, m){ return cap.call(ST, h, m || 'quiz'); };
+      ST.pills = function(l, side, m){ return pl.call(ST, l, side, m || 'quiz'); };
+      if(done) ST.done = function(c, m){ return done.call(ST, c, m || 'quiz'); };
+    })();
+  }
   function put(region, els, o){
     if(ST) ST.put(region, els, o);
     else [].concat(els).forEach(function(x){ app.appendChild(x); });
@@ -159,6 +184,17 @@
   stage.innerHTML = '<noscript>The 3D model needs JavaScript.</noscript>';
   var anchor = el('span', 'a3-anchor'); anchor.setAttribute('aria-hidden', 'true');
   stage.appendChild(anchor);
+  // v2: the viewer's own element, which Explore and Test yourself take in turn (one model, one WebGL context)
+  var view = V2 ? el('div', 'a3-view') : stage;
+  if(V2) stage.appendChild(view);
+  var seg = V2 ? el('nav', 'a3-modes kt-seg') : null;
+  if(seg){
+    seg.setAttribute('aria-label', 'Test yourself');
+    seg.innerHTML = [['explore', 'Cards'], ['study', 'Study'], ['quiz', 'Quiz'], ['timed', 'Timed']].map(function(m){
+      return '<button type="button" data-m="' + m[0] + '" aria-pressed="false">' + m[1] + '</button>'; }).join('');
+    seg.addEventListener('click', function(e){ var b = e.target.closest('[data-m]'); if(b) go(b.getAttribute('data-m')); });
+  }
+  function paintSeg(){ if(seg) [].forEach.call(seg.children, function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-m') === MODE)); }); }
   var dockRow = el('div', 'ls-row a3-row');
   var dockQ = el('div', 'a3-q');            // the current question, answer box, verdict
   var live = el('p', 'a3-sr'); live.setAttribute('role', 'status'); live.setAttribute('aria-live', 'polite');
@@ -166,14 +202,14 @@
   var det = el('div', 'a3-det');
   var filterInfo = null;
   put('stage', stage);
-  put('dock', [dockRow, dockQ, live]);
+  put('dock', (seg ? [seg] : []).concat([dockRow, dockQ, live]));
   put('why', why);
   put('details', det);
   if(ST) ST.root.classList.add('a3-ls');
   caption('Loading the 3D body…');
 
   var MODE = 'explore';
-  if(ST) ST.modes({ items: [{ value: 'explore', label: 'Explore' }, { value: 'study', label: 'Study' }, { value: 'quiz', label: 'Quiz' }, { value: 'timed', label: 'Timed' }],
+  if(ST && !V2) ST.modes({ items: [{ value: 'explore', label: 'Explore' }, { value: 'study', label: 'Study' }, { value: 'quiz', label: 'Quiz' }, { value: 'timed', label: 'Timed' }],
     value: 'explore', onChange: function(v){ go(v); } });
 
   /* --------------------------------------------------------- the card */
@@ -205,7 +241,7 @@
     if(!b) return;
     var s = BY[b.getAttribute('data-go')];
     if(!s) return;
-    if(!inFilter(s)){ filter.system = ''; filter.chapter = ''; syncFilterUi(); applyFilter(); }
+    if(!inFilter(s)){ filter.system = ''; filter.chapter = ''; filter.region = ''; syncFilterUi(); applyFilter(); }
     if(MODE !== 'explore') go('explore');
     selectStructure(s, null, true);
     if(ST) ST.close();
@@ -431,7 +467,7 @@
     else if(g && g.near) msg = 'That names the ' + esc(g.near.name) + '. This is the <b>' + esc(s.name) + '</b>.';
     else msg = 'Not quite. This is the <b>' + esc(s.name) + '</b>.';
     pills([{ html: ok ? 'Right' : 'Missed', tone: ok ? 'good' : 'bad' }], 'left');
-    caption(msg);
+    // the verdict is said once, in the dock below (with the caption too it showed twice on a phone)
     live.textContent = msg.replace(/<[^>]+>/g, '');
     if(window.LevlSound) try{ window.LevlSound.answer(ok); }catch(e){}
     showCard(s, how.part && it.picked === s ? how.part : null);
@@ -480,7 +516,7 @@
   function retryMissed(){
     var missed = round.results.filter(function(x){ return !x.ok; });
     round = { items: missed.map(function(x){ return { s: x.s, kind: x.kind }; }), i: 0, right: 0, results: [], timed: false };
-    if(MODE !== 'quiz'){ MODE = 'quiz'; if(ST) ST.mode('quiz'); }
+    if(MODE !== 'quiz'){ MODE = 'quiz'; if(ST && !V2) ST.mode('quiz'); paintSeg(); }
     ask();
   }
 
@@ -511,9 +547,10 @@
     stopTimer();
     if(round && !round.over && round.results.length && (MODE === 'quiz' || MODE === 'timed') && m !== MODE) endRound(true);
     MODE = m;
-    if(ST) ST.mode(m);
+    if(ST && !V2) ST.mode(m);
+    paintSeg();
     if(ST && ST.done && m !== 'quiz' && m !== 'timed') ST.done(false);
-    try{ history.replaceState(null, '', location.pathname + location.search + '#' + (opts.first ? opts.first.id : m)); }catch(e){}
+    try{ history.replaceState(null, '', location.pathname + location.search + '#' + (opts.first ? opts.first.id : V2 && m === 'explore' ? 'cards' : m)); }catch(e){}
     viewer.marks({}); viewer.highlight([]); viewer.tag(null);
     pills([], 'left'); pills([], 'right');
     applyFilter();
@@ -529,10 +566,10 @@
 
   /* ----------------------------------------------------------- details */
   var sysSel, chSel;
-  function syncFilterUi(){ if(sysSel) sysSel.value = filter.system; if(chSel) chSel.value = filter.chapter; }
+  function syncFilterUi(){ if(sysSel) sysSel.value = filter.region ? 'r:' + filter.region : filter.system; if(chSel) chSel.value = filter.chapter; }
   function paintFilterPill(){
     if(!ST || MODE === 'quiz' || MODE === 'timed') return;
-    pills(filter.system || filter.chapter ? [{ html: esc(filterLabel()), tone: 'ghost' }] : [], 'right');
+    pills(filter.system || filter.chapter || filter.region ? [{ html: esc(filterLabel()), tone: 'ghost' }] : [], 'right');
   }
   function buildDetails(){
     var chapters = [];
@@ -540,7 +577,9 @@
     chapters.sort(function(a, b){ return (chapterInfo(a) || {}).n - (chapterInfo(b) || {}).n; });
     det.innerHTML =
       '<section class="ls-sec"><h3 class="ls-h">Show</h3>' +
-        '<label class="a3-lab">Body system<select class="a3-sel a3-sys"><option value="">Every system</option>' + DATA.order.map(function(k){ return '<option value="' + esc(k) + '">' + esc(DATA.systems[k]) + '</option>'; }).join('') + '</select></label>' +
+        '<label class="a3-lab">Body system<select class="a3-sel a3-sys"><option value="">Every system</option>' +
+          ((DATA.explore && DATA.explore.tabs || []).length ? '<optgroup label="Regions (the Explore tabs)">' + DATA.explore.tabs.map(function(t){ return '<option value="r:' + esc(t.id) + '">' + esc(t.label) + '</option>'; }).join('') + '</optgroup><optgroup label="Systems">' : '') +
+          DATA.order.map(function(k){ return '<option value="' + esc(k) + '">' + esc(DATA.systems[k]) + '</option>'; }).join('') + ((DATA.explore && DATA.explore.tabs || []).length ? '</optgroup>' : '') + '</select></label>' +
         '<label class="a3-lab">A&amp;P chapter<select class="a3-sel a3-ch"><option value="">Every chapter</option>' + chapters.map(function(c){ var ch = chapterInfo(c); return '<option value="' + esc(c) + '">' + esc(ch ? ch.n + '. ' + ch.title : c) + '</option>'; }).join('') + '</select></label>' +
         '<p class="a3-muted a3-count"></p>' +
         '<label class="a3-check"><input type="checkbox" class="a3-skin"> Show the skin</label>' +
@@ -552,8 +591,8 @@
       '<section class="ls-sec"><h3 class="ls-h">Pick a structure by name</h3><div class="a3-list" role="group" aria-label="Structures by name"></div></section>' +
       '<section class="ls-sec"><h3 class="ls-h">About the model</h3><p>' + esc(DATA.model.contains) + '</p><p>' + esc(DATA.model.missing) + '</p><p class="a3-credit">' + DATA.model.credit + ' 3D rendering: three.js (MIT).</p></section>';
     sysSel = det.querySelector('.a3-sys'); chSel = det.querySelector('.a3-ch'); filterInfo = det.querySelector('.a3-count');
-    sysSel.addEventListener('change', function(){ filter.system = sysSel.value; filter.chapter = ''; syncFilterUi(); refilter(); });
-    chSel.addEventListener('change', function(){ filter.chapter = chSel.value; filter.system = ''; syncFilterUi(); refilter(); });
+    sysSel.addEventListener('change', function(){ var v = sysSel.value; filter.region = /^r:/.test(v) ? v.slice(2) : ''; filter.system = filter.region ? '' : v; filter.chapter = ''; syncFilterUi(); refilter(); });
+    chSel.addEventListener('change', function(){ filter.chapter = chSel.value; filter.system = ''; filter.region = ''; syncFilterUi(); refilter(); });
     var skin = det.querySelector('.a3-skin'); skin.checked = !!pref('skin', false);
     skin.addEventListener('change', function(){ setPref('skin', skin.checked); viewer.setSkin(skin.checked); });
     var kind = det.querySelector('.a3-kind'); kind.value = pref('kind', 'mixed');
@@ -565,7 +604,94 @@
     applyFilter();
     if(MODE === 'quiz') go('quiz');
     else if(MODE === 'timed') paintTimedSetup();
-    else viewer.frame(filter.system || filter.chapter ? inPlay().map(function(s){ return s.id; }) : null);
+    else viewer.frame(filter.system || filter.chapter || filter.region ? inPlay().map(function(s){ return s.id; }) : null);
+  }
+
+  /* ---------------------------------------------------------- tools v2 */
+  function exploring(){ return !!(KIT && KIT.mode() === 'explore'); }
+  function at(u){ return /^data:/.test(u) ? u : BASE + u; }
+  function startV2(){
+    EX = window.AnpAnatomyExplore.build({ data: DATA, view: view, base: BASE, studio: ST,
+      // "Quiz me on this region" in Explore's "?": a quiz round on that region
+      onTest: function(tab){ filter.region = tab; filter.system = ''; filter.chapter = ''; syncFilterUi(); qChosen = true; MODE = 'quiz'; KIT.go('quiz'); } });
+    if(EX) KIT = window.AnpToolKit.kit2(ST, { stage: EX.stage, ref: EX.ref, onShow: onShowV2 });
+    if(!KIT){
+      V2 = false; EX = null;
+      if(ST._v1) Object.keys(ST._v1).forEach(function(k){ if(ST._v1[k]) ST[k] = ST._v1[k]; });
+      if(seg && seg.parentNode) seg.parentNode.removeChild(seg);
+      ST.modes({ items: [{ value: 'explore', label: 'Explore' }, { value: 'study', label: 'Study' }, { value: 'quiz', label: 'Quiz' }, { value: 'timed', label: 'Timed' }],
+        value: 'explore', onChange: function(v){ go(v); } });
+    }
+  }
+  function onShowV2(m, user){
+    if(EX) EX.shown(m === 'explore');
+    if(m === 'explore'){
+      // leaving Test yourself during a timed practical stops its clock; it starts again from its setup
+      if(round && round.timed && !round.over){ stopTimer(); round.paused = true; }
+      if(viewer) viewer.tag(null);
+      if(user) try{ history.replaceState(null, '', location.pathname + location.search + '#body/' + EX.tab()); }catch(e){}
+      return;
+    }
+    // Test yourself takes the viewer back, with the camera flying to what it selects, as before
+    if(view.parentNode !== stage) stage.appendChild(view);
+    var cv = view.querySelector('canvas'); if(cv) cv.style.height = '';
+    setTimeout(function(){ window.dispatchEvent(new Event('resize')); }, 0);
+    if(!viewer) return;
+    viewer.set({ selectFly: true, fadeOthers: 0, selectOnTop: false });
+    if(!qChosen){
+      qChosen = true;
+      // the first visit opens a quiz round on the region Explore showed (unless a link chose a filter)
+      if(user && !filter.system && !filter.chapter){ filter.region = EX.tab(); syncFilterUi(); MODE = 'quiz'; }
+      go(MODE);
+      return;
+    }
+    resume();
+  }
+  /* back in Test yourself: the screen it left, with the model as it was (Explore changed what is in play) */
+  function resume(){
+    viewer.setSkin(!!pref('skin', false));
+    var live = round && !round.over && (MODE === 'quiz' || MODE === 'timed');
+    if(live && round.paused){ round.over = true; round.paused = false; paintSeg(); applyFilter(); paintTimedSetup(); return; }
+    if(live){
+      var it = round.items[round.i];
+      if(!it.done){ ask(); return; }
+      var s = it.s, marks = {};
+      marks[s.id] = it.ok ? 'good' : 'bad';
+      if(it.kind === 'point' && it.picked && !it.ok){ marks[it.picked.id] = 'bad'; marks[s.id] = 'good'; }
+      viewer.setPickSelects(false);
+      viewer.setOnly(inPlay().filter(function(x){ return x.system === s.system || x === it.picked; }).map(function(x){ return x.id; }).concat(['skin']));
+      quiet = true; viewer.select(s.id); quiet = false;
+      viewer.marks(marks); viewer.tag(s.name);
+      return;
+    }
+    if(round && round.over && round.results && round.results.length && (MODE === 'quiz' || MODE === 'timed')){
+      cleanModel(); applyFilter(); viewer.setPickSelects(true); viewer.frame(null);
+      viewer.highlight(round.results.filter(function(x){ return !x.ok; }).map(function(x){ return x.s.id; }));
+      return;
+    }
+    go(MODE);
+  }
+  function routeV2(h, focus){
+    var hs = h.split('/');
+    var test = BY[h] || ['study', 'quiz', 'timed', 'cards'].indexOf(hs[0]) > -1;
+    if(test){
+      qChosen = true;
+      MODE = hs[0] === 'cards' ? 'explore' : BY[h] ? 'quiz' : hs[0];
+      KIT.go('quiz');   // resume() paints MODE
+      if(BY[h]){ filter.system = ''; filter.chapter = ''; filter.region = ''; syncFilterUi(); go('quiz', { first: BY[h] }); }
+      return;
+    }
+    // Explore: the region of #body/<tab>, of ?focus=, of ?system= or ?chapter=; else the last one used
+    var t = hs[0] === 'body' ? EX.tabFor({ tab: hs[1] }) : null;
+    if(!t && focus && !EX.pick(focus.id)){
+      // a structure on no Explore tab (the skin): Test yourself's Cards, as before
+      qChosen = true; MODE = 'explore'; KIT.go('quiz'); selectStructure(focus); return;
+    }
+    if(!t && !focus && filter.system) t = EX.tabFor({ system: filter.system });
+    if(!t && !focus && filter.chapter) t = EX.tabFor({ chapter: filter.chapter, chapterOf: chapterOf });
+    if(!t && !focus && (filter.system || filter.chapter)){ qChosen = true; MODE = 'explore'; KIT.go('quiz'); return; }
+    if(t) EX.tab(t);
+    KIT.go('explore');
   }
 
   /* -------------------------------------------------------------- boot */
@@ -577,30 +703,36 @@
       if(Q.get('system') && DATA.systems[Q.get('system')]) filter.system = Q.get('system');
       else if(Q.get('chapter')) filter.chapter = Q.get('chapter');
       syncFilterUi();
-      viewer = window.LevlBodyViewer.mount(stage, {
+      if(V2) startV2();
+      viewer = window.LevlBodyViewer.mount(view, {
         content: content(), skin: !!pref('skin', false), hint: false,
+        // v2: every change of look eases, and in Explore a tapped part glows where it is (the camera stays)
+        fade: V2 && KIT ? 380 : 0, selectFly: !(V2 && KIT), ghostContext: !!(V2 && KIT),
+        // the still of the opening view while the model loads (the one file preview inlines it as a data URL)
+        poster: V2 && KIT && DATA.explore && DATA.explore.poster ? { light: at(DATA.explore.poster.light), dark: at(DATA.explore.poster.dark) } : null,
         list: det.querySelector('.a3-list'),
         label: '3D model of the human body for anatomy. Drag to turn it; pick a structure by name in Filter and options to select it with the keyboard.',
         onSelect: function(key, c, part){
-          if(quiet) return;
+          if(quiet || exploring()) return;
           if(key && onPicked(key, part)) return;
           if(round && !round.over && (MODE === 'quiz' || MODE === 'timed')) return;
           if(key && BY[key]) onSelected(BY[key], part); else onCleared();
         },
-        onPick: function(key, c, part){ if(key) onPicked(key, part); },
+        onPick: function(key, c, part){ if(key && !exploring()) onPicked(key, part); },
         // A filter from the link (?system=, ?chapter=) frames its structures
         // once the model is in, so they fill the view instead of the whole body.
-        onLoad: function(){ if((filter.system || filter.chapter) && MODE === 'explore' && !viewer.selected()) viewer.frame(inPlay().map(function(s){ return s.id; })); },
+        onLoad: function(){ if(exploring()) return; if((filter.system || filter.chapter || filter.region) && MODE === 'explore' && !viewer.selected()) viewer.frame(inPlay().map(function(s){ return s.id; })); },
       });
-      if(window.ResizeObserver) new ResizeObserver(function(){ window.dispatchEvent(new Event('resize')); }).observe(stage);
-      applyFilter();
+      if(window.ResizeObserver) new ResizeObserver(function(){ if(!exploring()) window.dispatchEvent(new Event('resize')); }).observe(stage);
       var h = (location.hash || '').replace(/^#/, '');
       var focus = Q.get('focus') && (BY[Q.get('focus')] || LIST.filter(function(s){ return norm(s.name) === norm(Q.get('focus')); })[0]);
+      if(KIT){ EX.attach(viewer); routeV2(h, focus); app.classList.add('is-ready'); return; }
+      applyFilter();
       if(BY[h]){ filter.system = ''; filter.chapter = ''; syncFilterUi(); applyFilter(); go('quiz', { first: BY[h] }); }
       else if(['study', 'quiz', 'timed'].indexOf(h) > -1) go(h);
       else { go('explore'); if(focus) selectStructure(focus); }
       // Arriving on a structure (?focus=, from "See it in 3D"): its label is the point, so no coach over it.
-      if(ST && MODE === 'explore' && !focus) ST.hint({ target: anchor, text: touch ? 'Tap any part of the body' : 'Click any part of the body', key: 'anp-anatomy-3d', inside: true });
+      if(ST && !V2 && MODE === 'explore' && !focus) ST.hint({ target: anchor, text: touch ? 'Tap any part of the body' : 'Click any part of the body', key: 'anp-anatomy-3d', inside: true });
       app.classList.add('is-ready');
     }).catch(function(e){
       console.error(e);

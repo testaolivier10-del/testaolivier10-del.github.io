@@ -562,3 +562,15 @@ Site audit follow-up (2026-10-02, workstream W6):
     the first link not yet turned on a reversal; the arteriole's resistance and flow follow its radius at once and the flow
     shows no factor (the circuit includes the capillary bed); one threshold for "moved"; Explore's files are their own
     weight bucket.
+105. (2026-11-19) **3D anatomy on tools v2** (docs/tools-v2-standard.md; brief docs/tools-v2-anp-anatomy-3d-brief.md).
+    Explore is five regions of the real 3D body, one per tab (Skeleton; Brain and eyes, seen from the left side; Heart
+    and vessels; Lungs and airway; Abdomen and pelvis): the region's systems are drawn in full and every other
+    structure as a faint ghost. Tap a part: it glows where it is (the camera stays, so where it sits is on screen), its
+    name opens on a card beside it (the shared K.spots, projected from the 3D view; a piece of a group or pair is the
+    card's second line) and the cause line says where it is in a few words, a new `at` per structure held to the
+    ordering rule by the validator (data `explore.tabs`, 85 parts; the skin stays in Test yourself). A still of the
+    opening view holds the stage while the model loads and cross fades to it. Test yourself holds the whole decision 91
+    tool unchanged (Cards, the old Explore; Study; Quiz; Timed; the filters, now with the regions); one viewer serves
+    both. The shared viewer gained opt in hooks (fade, selectFly, fadeOthers, poster, settling, project of a piece, frame
+    with a side); the NREMT body map does not use them. Item ids, scoring, recording and deep links unchanged; new
+    `#body/<region>` and `#cards`. Open points in docs/anp-needs-author.md ("3D anatomy, tools v2 regions").

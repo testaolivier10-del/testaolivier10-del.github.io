@@ -209,3 +209,21 @@ From the hands-on tool audit (`docs/tool-audit-2026-11.md`), for the accuracy re
 - **Milgram, orders by telephone.** The social influence tool shows 22.5% (9 of 40; Milgram, 1974). Several
   textbooks print 20.5%. Left as it is.
 
+
+## brain-map-v2: the redrawn brain map (open, 2026-11-23)
+
+From the tools v2 rebuild of the Brain map (`docs/tools-v2-brain-map-brief.md`), for a teacher or reviewer:
+
+- **Deep parts on the midline view.** The hippocampus, amygdala and reward center (nucleus accumbens) are not on a
+  midsagittal cut; they are drawn see-through where they would project, over the thalamus and brainstem, as many
+  textbook limbic figures do. Check that the projection reads correctly and does not suggest they lie on the midline.
+- **Short cause line phrases** (`REGIONS[k].job`, `.hurt` in `psychology/assets/tools/math/brain-map.js`). Points to
+  confirm: "parietal: ignoring one side of space" (neglect mostly follows right parietal damage; the full text says
+  so); "pons: relays to the cerebellum; sleep, breathing"; "thalamus: relays the senses (not smell) to the cortex";
+  "hippocampus: no new memories of facts and events (H.M.)" (H.M.'s lesion was bilateral medial temporal, which
+  "?" says).
+- **Auditory cortex** drawn on the superior temporal gyrus below the lateral fissure (it lies mostly inside the
+  fissure, on Heschl's gyrus); the visual cortex at the occipital pole outside and along the calcarine sulcus inside.
+- **Split brain**: the picture draws the signal from both eyes through the optic chiasm to the hemisphere opposite
+  the visual field, and the motor paths crossing low in the brainstem. Speech is drawn in the left hemisphere ("for
+  most people" in "?").
