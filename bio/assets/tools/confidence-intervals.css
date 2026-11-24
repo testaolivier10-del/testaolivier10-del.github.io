@@ -1,0 +1,135 @@
+/* Confidence intervals and error bars, tools v2 (bio/assets/tools/confidence-intervals.js;
+   docs/tools-v2-bio-confidence-intervals-brief.md). Loaded only by this page (bio/data/pages.json "kit2": true).
+   One colour per idea everywhere (the trays, the bars, the cause line, the practice figure): Full light amber, Shade
+   blue, an overlap of the error bars purple, a gap between them green, "just touch" slate. */
+.ci2,.ci2-ref,.ci2-dock,.ls-root .ci-fig{--ci-sun:#D99100;--ci-sun-ink:#7A4E00;--ci-shade:#2F6FB0;--ci-shade-ink:#1F4F82;
+  --ci-ov:#7B4FB0;--ci-ov-ink:#5C3790;--ci-gap:#00866B;--ci-gap-ink:#006450;--ci-touch:#5B6670;--ci-touch-ink:#3E474F;
+  --ci-wall0:#EEF2F1;--ci-wall1:#DFE7E4;--ci-tile:#D2DCD9;--ci-wood0:#C9A06E;--ci-wood1:#A97F4E;--ci-edge:#8C6538;--ci-grain:#8E6A3F;--ci-btop:#C7A273;
+  --ci-board:#FBF8EF;--ci-rcol:#F1E6C8;--ci-rline:#E2D9C2;--ci-rtick:#8C7A55;--ci-rnum:#4E4430;
+  --ci-lamp:#3E474F;--ci-bulb:#FFF4C2;--ci-bulb-dim:#B9B3A0;--ci-sun0:rgba(255,214,102,.42);--ci-sun1:rgba(255,214,102,.06);--ci-dim0:rgba(120,130,140,.20);--ci-dim1:rgba(120,130,140,.03);
+  --ci-mesh:#3B4047;--ci-mesh-l:#5B626B;--ci-wire:#6B737B;
+  --ci-soil0:#6B4A2F;--ci-soil1:#4E3420;--ci-tray:#2D3236;--ci-rim:#454C52;--ci-tname:#FFFFFF;
+  --ci-stem:#4C8A2E;--ci-leaf:#5FA83A;--ci-leaf-edge:#3F7A22;--ci-rib:#3B6E20;--ci-stem-sh:#7BA247;--ci-leaf-sh:#9CC46A;--ci-leaf-sh-edge:#6E9A3E;--ci-cot:#C9B26A;
+  --ci-cb:#9C7148;--ci-cb-edge:#7C5634;--ci-paper:#FFFEF9;--ci-grid:#ECE7DA;--ci-axis:#3B3F46;--ci-clip:#9AA3AB;--ci-clip-hi:#D9DEE2;
+  --ci-ink:#1F2328;--ci-sub:#55606A;--ci-pill:#FFFFFF;--ci-shadow:rgba(0,0,0,.16);--ci-halo:rgba(255,255,255,.85);}
+:root[data-theme="dark"] .ci2,:root[data-theme="dark"] .ci2-ref,:root[data-theme="dark"] .ci2-dock,:root[data-theme="dark"] .ls-root .ci-fig{--ci-sun:#F0B63C;--ci-sun-ink:#F6CF75;--ci-shade:#6AA8E8;--ci-shade-ink:#A3CBF2;
+  --ci-ov:#B796DB;--ci-ov-ink:#D2BBEC;--ci-gap:#3DD3A8;--ci-gap-ink:#8EE8CE;--ci-touch:#9AA6B1;--ci-touch-ink:#C4CDD5;
+  --ci-wall0:#252B30;--ci-wall1:#1E2428;--ci-tile:#2F363C;--ci-wood0:#5A4630;--ci-wood1:#45351F;--ci-edge:#30251A;--ci-grain:#6B5539;--ci-btop:#4B3A27;
+  --ci-board:#2C2F33;--ci-rcol:#3A362C;--ci-rline:#3A3D42;--ci-rtick:#B7A57E;--ci-rnum:#E6DCC4;
+  --ci-lamp:#14181B;--ci-bulb:#FFE9A0;--ci-bulb-dim:#6E6A5E;--ci-sun0:rgba(255,214,102,.22);--ci-sun1:rgba(255,214,102,.03);--ci-dim0:rgba(150,160,170,.10);--ci-dim1:rgba(150,160,170,.02);
+  --ci-mesh:#0E1114;--ci-mesh-l:#3A4048;--ci-wire:#59616A;
+  --ci-soil0:#4A3422;--ci-soil1:#33231A;--ci-tray:#15181B;--ci-rim:#2E3438;--ci-tname:#F1EDE6;
+  --ci-stem:#5FA83A;--ci-leaf:#6CBF45;--ci-leaf-edge:#3F7A22;--ci-rib:#2F5A18;--ci-stem-sh:#8DB45A;--ci-leaf-sh:#A6CC74;--ci-leaf-sh-edge:#6E9A3E;--ci-cot:#9C8A57;
+  --ci-cb:#6E5235;--ci-cb-edge:#4E3A25;--ci-paper:#1F2124;--ci-grid:#33363B;--ci-axis:#D9DCE0;--ci-clip:#6E777F;--ci-clip-hi:#A4ADB4;
+  --ci-ink:#F1EDE6;--ci-sub:#B8C0C7;--ci-pill:#1B1D20;--ci-shadow:rgba(0,0,0,.35);--ci-halo:rgba(20,22,25,.8);}
+.ci2{display:flex;flex-direction:column;gap:10px;min-height:0;flex:1 1 auto;container-type:inline-size;container-name:ci2;}
+.ci2[hidden]{display:none;}
+.ci2 [hidden]{display:none !important;}
+.ci2-scene{position:relative;flex:1 1 auto;min-height:440px;border-radius:18px;overflow:hidden;background:var(--ci-wall0);}
+.ci2-scene.is-fade{animation:ci2fade .26s ease-out;}
+@keyframes ci2fade{from{opacity:.35;}to{opacity:1;}}
+.ci2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+@media (max-width:1023px){ .ci2-scene{flex:none;height:min(60vw,520px);min-height:430px;} }
+@media (min-width:641px) and (max-width:979px){ .ci2-scene{height:720px;} }
+@media (max-width:640px){ .ci2-scene{height:clamp(560px,154vw,620px);min-height:0;border-radius:14px;} .ci2{gap:8px;} }
+.ci2-lines{display:flex;align-items:center;justify-content:space-between;gap:6px 18px;flex-wrap:wrap;flex:none;}
+.ci2-acts{display:flex;align-items:center;gap:6px 10px;flex:none;margin-left:auto;flex-wrap:wrap;}
+.ci2-n{display:inline-flex;border-radius:999px;box-shadow:inset 0 0 0 2px color-mix(in srgb, var(--ink) 22%, transparent);padding:3px;}
+.ci2-nb{min-height:44px;min-width:46px;padding:0 10px;border:0;border-radius:999px;background:none;color:var(--muted);font:800 13.5px var(--font-ui);cursor:pointer;white-space:nowrap;}
+.ci2-nb[aria-pressed="true"]{background:var(--cink);color:var(--white);}
+.ci2-nb:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.ci2-nl{font:700 13px var(--font-ui);color:var(--muted);white-space:nowrap;margin-right:4px;}
+.ci2-new{box-shadow:inset 0 0 0 2px color-mix(in srgb, var(--ink) 22%, transparent);background:none;color:var(--ink);}
+@container ci2 (max-width:1100px){ .ci2-lines .tk2-cause{flex-basis:100%;} .ci2-acts{margin-left:0;width:100%;justify-content:flex-start;} }
+@media (max-width:640px){ .ci2-lines .tk2-cause{flex-basis:100%;} .ci2-acts{margin-left:0;width:100%;} }
+@media (min-width:641px){ .ci2-lines .tk2-cause{min-height:62px;} }
+.tk2-qs .ci2-acts{padding-right:52px;}
+.ci2[data-view="goals"] .ci2-scene{min-height:400px;}
+/* the cause line in the colours of the picture */
+.ci2 .tk2-cz.is-diff{--cz:var(--ci-touch);--cz-ink:var(--ci-touch-ink);}
+.ci2 .tk2-cz.is-ov{--cz:var(--ci-ov);--cz-ink:var(--ci-ov-ink);}
+.ci2 .tk2-cz.is-gap{--cz:var(--ci-gap);--cz-ink:var(--ci-gap-ink);}
+.ci2 .tk2-cz.is-touch{--cz:var(--ci-touch);--cz-ink:var(--ci-touch-ink);}
+/* the knobs: the mean's tag in the shade colour, the spread's tag quieter */
+.ci2 .ci2-hmean .tk2-tag{background:var(--ci-shade);}
+.ci2 .ci2-hsd .tk2-tag{background:var(--ci-pill);color:var(--ci-shade-ink);box-shadow:inset 0 0 0 2px var(--ci-shade);}
+.ci2 .tk2-tag{font-size:12.5px;}
+
+/* the room, the bench, the board */
+.ci2s-wall0{stop-color:var(--ci-wall0);} .ci2s-wall1{stop-color:var(--ci-wall1);}
+.ci2s-wood0{stop-color:var(--ci-wood0);} .ci2s-wood1{stop-color:var(--ci-wood1);}
+.ci2s-sun0{stop-color:var(--ci-sun0);} .ci2s-sun1{stop-color:var(--ci-sun1);}
+.ci2s-dim0{stop-color:var(--ci-dim0);} .ci2s-dim1{stop-color:var(--ci-dim1);}
+.ci2s-soil0{stop-color:var(--ci-soil0);} .ci2s-soil1{stop-color:var(--ci-soil1);}
+.ci2-tile{stroke:var(--ci-tile);stroke-width:1;}
+.ci2-bench-edge{fill:var(--ci-edge);}
+.ci2-benchtop{fill:var(--ci-btop);}
+.ci2-grain{fill:none;stroke:var(--ci-grain);stroke-width:1.2;opacity:.45;}
+.ci2-board{fill:var(--ci-board);stroke:var(--ci-rline);stroke-width:1;}
+.ci2-rulecol{fill:var(--ci-rcol);}
+.ci2-rline{stroke:var(--ci-rline);stroke-width:1;}
+.ci2-rtick{stroke:var(--ci-rtick);stroke-width:1;} .ci2-rtick.is-big{stroke-width:1.6;}
+.ci2-rnum{fill:var(--ci-rnum);font:800 12px var(--font-ui);}
+.ci2-rnum.is-unit{font-size:11px;font-weight:700;}
+/* lamps, light, the shade cloth */
+.ci2-wire{stroke:var(--ci-wire);stroke-width:1.2;}
+.ci2-lamp{fill:var(--ci-lamp);}
+.ci2-bulb{fill:var(--ci-bulb);} .ci2-bulb.is-dim{fill:var(--ci-bulb-dim);}
+.ci2-mesh-bg{fill:var(--ci-mesh);} .ci2-mesh-l{stroke:var(--ci-mesh-l);stroke-width:.8;}
+.ci2-cloth{opacity:.92;}
+/* the trays and the soil */
+.ci2-tray{fill:var(--ci-tray);}
+.ci2-rim{fill:var(--ci-rim);}
+.ci2-tname{fill:var(--ci-tname);font-weight:900;letter-spacing:.01em;}
+/* the plants: a stem, two cotyledons low down and two leaves at the tip (shade plants paler and thinner) */
+.ci2-stem{fill:none;stroke:var(--ci-stem);stroke-width:2.2;stroke-linecap:round;}
+.ci2-lf{fill:var(--ci-leaf);stroke:var(--ci-leaf-edge);stroke-width:1;vector-effect:non-scaling-stroke;}
+.ci2-rib{fill:none;stroke:var(--ci-rib);stroke-width:.8;vector-effect:non-scaling-stroke;}
+.ci2-bud{fill:var(--ci-leaf-edge);}
+.ci2-cotl{fill:var(--ci-cot);opacity:.9;}
+.ci2-pl.is-shade .ci2-stem{stroke:var(--ci-stem-sh);stroke-width:1.7;}
+.ci2-pl.is-shade .ci2-lf{fill:var(--ci-leaf-sh);stroke:var(--ci-leaf-sh-edge);}
+.ci2-pl[data-st="leave"] .ci2-lf{fill:var(--ci-cot);}
+/* the mean lines */
+.ci2-mhalo{stroke:var(--ci-halo);stroke-width:5;stroke-linecap:round;}
+.ci2-mline{stroke-width:2.5;stroke-linecap:round;}
+.ci2-mline.is-sun{stroke:var(--ci-sun);} .ci2-mline.is-shade{stroke:var(--ci-shade);}
+/* the clipboard */
+.ci2-cbshadow{fill:var(--ci-shadow);}
+.ci2-cb{fill:var(--ci-cb);stroke:var(--ci-cb-edge);stroke-width:1.5;}
+.ci2-paper{fill:var(--ci-paper);}
+.ci2-clip{fill:var(--ci-clip);stroke:var(--ci-axis);stroke-opacity:.3;}
+.ci2-clip-hi{fill:var(--ci-clip-hi);}
+.ci2-ctitle{fill:var(--ci-ink);font-weight:900;}
+.ci2-grid{stroke:var(--ci-grid);stroke-width:1;}
+.ci2-axis{stroke:var(--ci-axis);stroke-width:1.5;}
+.ci2-tick{fill:var(--ci-sub);font:800 12px var(--font-ui);}
+.ci2-tick.is-unit{font-size:11.5px;}
+.ci2-bname{font:900 13px var(--font-ui);} .ci2-bname.is-sun{fill:var(--ci-sun-ink);} .ci2-bname.is-shade{fill:var(--ci-shade-ink);}
+.ci2-nlab{fill:var(--ci-sub);font:800 12px var(--font-ui);}
+.ci2-bar{fill-opacity:.8;stroke-width:1.5;}
+.ci2-bar.is-sun{fill:var(--ci-sun);stroke:var(--ci-sun-ink);} .ci2-bar.is-shade{fill:var(--ci-shade);stroke:var(--ci-shade-ink);}
+.ci2-err{fill:none;stroke:var(--ci-ink);stroke-width:2.6;stroke-linecap:round;}
+.ci2-band.is-ov{fill:var(--ci-ov);fill-opacity:.3;}
+.ci2-band.is-gap{fill:var(--ci-gap);fill-opacity:.28;}
+.ci2-band.is-touch{fill:var(--ci-touch);fill-opacity:.6;}
+.ci2-elab{font:900 12.5px var(--font-ui);paint-order:stroke;stroke:var(--ci-paper);stroke-width:3px;}
+.ci2-elab.is-sun{fill:var(--ci-sun-ink);} .ci2-elab.is-shade{fill:var(--ci-shade-ink);}
+.ci2-pill rect{fill:var(--ci-pill);stroke-width:1.6;}
+.ci2-pill text{font-weight:800;font-family:var(--font-ui);}
+.ci2-pill.is-sun rect{stroke:var(--ci-sun);} .ci2-pill.is-sun text{fill:var(--ci-sun-ink);}
+.ci2-pill.is-ov rect{stroke:var(--ci-ov);} .ci2-pill.is-ov text{fill:var(--ci-ov-ink);}
+.ci2-pill.is-gap rect{stroke:var(--ci-gap);} .ci2-pill.is-gap text{fill:var(--ci-gap-ink);}
+.ci2-pill.is-touch rect{stroke:var(--ci-touch);} .ci2-pill.is-touch text{fill:var(--ci-touch-ink);}
+/* "?" */
+.ci2-ref-how{margin:0 0 6px;}
+.ci2-tab{border-collapse:collapse;font-size:14px;}
+.ci2-tab th,.ci2-tab td{padding:4px 8px;border-bottom:1px solid var(--line, #ddd);text-align:left;white-space:nowrap;}
+/* the practice figure (Test yourself): overlap purple and gap green, as in Explore; solid brackets */
+.ls-root .ci-fig .ci-band.ov{fill:var(--ci-ov);fill-opacity:.2;}
+.ls-root .ci-fig .ci-band.gap{fill:var(--ci-gap);fill-opacity:.2;}
+.ls-root .ci-fig .ci-bl.ov{fill:var(--ci-ov-ink);} .ls-root .ci-fig .ci-bl.gap{fill:var(--ci-gap-ink);}
+.ls-root .ci-fig .ci-mine{stroke-dasharray:none;}
+.sk-fig:has(> svg.ci2-pfig){flex:none;}
+.bt-stage-slot:has(svg.ci2-pfig),.ls-prac-stage:has(svg.ci2-pfig){flex:none;}
+.ci2-pfig .tick,.ci2-pfig .lbl,.ci2-pfig .ci-v{font-size:14px;} .ci2-pfig .ci-bl{font-size:14.6px;}
