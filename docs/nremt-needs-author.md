@@ -226,7 +226,7 @@ No case text, number or care rule changed. Drawing choices a person should check
 - Compressions animate at about 109 a minute (AHA 100 to 120); the bag squeezes only at a rate the case gives.
 - The AED pad placement drawn: adult anterolateral; infant and toddler one anterior pad (the posterior pad not shown).
 - The epinephrine auto injector is drawn on the lateral thigh of the viewer's right (the patient's left).
-- (Recheck 1) Side lying, recovery position and seated postures are now drawn; still not drawn: s3 carried by her
-  father. The side pose is one generic recovery position (upper knee bent forward, arms forward): fine for a
-  pregnant patient on her left side (s16, s17)?
+- (Recheck 2) Side lying and seated postures are rendered from the 3D body; still not drawn: s3 carried by her
+  father. The side pose is one recovery position (upper hip and knee bent, upper hand by the face, lower arm forward),
+  also used for the pregnant patients on their left side (s16, s17) and for the toddler after her seizure (s9). Fine?
 - (Review round 1) Thresholds for "Better / Worse": HR 10 a minute or 10%, systolic 10, RR 4, SpO2 2 points. Reasonable?

@@ -261,3 +261,40 @@ Checks after recheck 1 (2026-11-19):
 - Flowcharts kept sweep (patient-draw.js gained `lateral`, which they do not call): 390 1226 and 1440 1184 passed.
 - NREMT and kit tests 72 passed; check-site and check-weight pass; no conflict markers.
 
+## Recheck 2 (2026-11-23): BLOCK, fixed
+
+- R1. An ending's words look back over the call, but its sentences about the patient now ("he's unresponsive") still
+  set the eyes and the words. "Unresponsive" (unresponsive, goes limp, stops responding) outranks the cough or crying
+  word on the head: s3's last path reads "Unresponsive" first with the eyes closed; s1's poor ending reads
+  "Unresponsive", eyes closed, no "Alert".
+- R2. The side lying and seated poses are rendered from the same BodyParts3D skin as every other figure
+  (`scripts/build-pose-figures.mjs`, method in `scripts/body-figures/pose.js`). The skin is posed by rotating its
+  vertices about joints measured from the skeleton (femur, tibia and humerus ends), with smooth weights, before it is
+  subdivided and smoothed; rendered orthographically and shaded in the figures' own style (inflated silhouette, the
+  mesh's light, the same skin palette); clothes and hair coloured per pixel from each point's place in the unposed
+  body, so they bend with it; a soft line where one part lies over another. Eight figures, one per case and posture
+  (s16, s17, s9, s8 on the side; s11, s10, s2, s20 seated), loaded on demand (`body-figs/pose.js` and its images).
+  - On the side: the recovery position (upper hip and knee bent, the upper hand by the face, the lower arm forward);
+    s16 and s17 carry the gravid belly. The oxygen mask and blow by sit at the posed mouth.
+  - Seated: a three quarter view, so the thighs coming toward us read; the face drawn on the turned head (the same
+    drawn face, narrower). s11 sits forward with her hands on her knees (the hands placed by search through the pose,
+    so the arms really reach). The chair (seat, legs, back), the store's bench and the edge of the bed are drawn
+    from the figure's own hip, knee and foot points.
+  - The skin colours (pale, blue, mottled, flushed) tint only the bare skin of a posed figure (its own skin outline).
+  - A posture is drawn only where its posed figure exists; elsewhere the view stays as it was.
+  - The s15 newborn is shaded (a lit, rounded skin, a towel and a soft shadow).
+- R3. `patient-draw.js` is back to its round 1 state (no pose in it); `nremt/kit2` is back to 6.2 KB (measured 6.1).
+  Explore measures 40.4 KB; its budget is 40.8.
+- Should fix: s9 reads "On her side": the side is named only when the case names it.
+
+Sweep checks added: R1 (s3 limp: "Unresponsive" first, eyes closed; s1 poor ending: "Unresponsive", eyes closed, no
+"Alert"), R2 (each side and seated state is drawn from a posed figure; seated draws the seat), s9 names no side.
+
+Checks after recheck 2 (2026-11-23):
+- Sweep, one width per process: 360 9044, 390 9052, 430 9053, 600 9019, 768 8484, 820 8361, 1024 8629, 1280 8546,
+  1440 8439, 1920 8624 passed, 0 failed.
+- Frames run: 120 passed; the one failure is performance at 1440 (choice p95 81.8 ms against the flagship's 19, load
+  average 3 to 4 and rising to 10 from other sessions; 390 passed at p95 21.4 against 18.4). To time on a quiet machine.
+- Flowcharts kept sweep: 390 1226 and 1440 1184 passed (`patient-draw.js` identical to round 1).
+- NREMT and kit tests 73 passed; check-site and check-weight pass.
+

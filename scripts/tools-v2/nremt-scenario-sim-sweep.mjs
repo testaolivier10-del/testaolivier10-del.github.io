@@ -312,8 +312,18 @@ async function frames() {
     for (const [id, picks, view] of pose) {
       r = await walk(id, picks); const st = picks.length ? r[r.length - 1] : await S(page);
       ok(st.view === view, `N6: ${id} ${picks.join(',') || 'opening'} drawn ${view} (${st.view} at ${st.node})`);
-      if (view === 'side') ok(await page.evaluate(() => !!document.querySelector('.scx-lateral')) && st.labs.some(l => /left side|Recovery position/.test(l)), `N6: ${id} the side pose and its word (${st.labs})`);
+      // recheck 2, R2: the posture is the posed 3D figure (body-figs/pose-*.webp); seated adds the seat
+      if (view === 'side' || view === 'sit') ok(await page.evaluate(() => !!document.querySelector('.scx-fig image[href*="pose-"]')), `R2: ${id} ${view} drawn from the posed figure`);
+      if (view === 'side') ok(st.labs.some(l => /side|Recovery position/.test(l)), `N6: ${id} the side pose and its word (${st.labs})`);
+      if (view === 'sit') ok(await page.evaluate(() => !!document.querySelector('.scx-seat')), `R2: ${id} the seat is drawn`);
     }
+    // recheck 2, R1: "goes limp and stops responding" and an ending's "he's unresponsive" set the words and the eyes
+    r = await walk('s3', [2, 0]); let st = r[r.length - 1];
+    ok(st.labs[0] === 'Unresponsive' && /Unresponsive/.test(st.chain) && st.drawn.eyes === 'closed', `R1: s3 limp reads "Unresponsive" first, eyes closed (${st.labs} / ${st.chain} / ${st.drawn.eyes})`);
+    r = await walk('s1', [3, 0, 1, 1]); st = r[r.length - 1];
+    ok(st.node === 's1_end_bad' && st.labs.includes('Unresponsive') && !st.labs.includes('Alert') && st.drawn.eyes === 'closed', `R1: s1 poor ending "Unresponsive", eyes closed (${st.node} ${st.labs} ${st.drawn.eyes})`);
+    r = await walk('s9', [0]); st = r[0];
+    ok(st.labs.includes('On her side') && !st.labs.includes('On her left side'), `s9 names no side the case does not name (${st.labs})`);
     ok(!errs.length, `recheck: console errors: ${errs.slice(0, 3).join(' | ')}`);
     await browser.close();
   }

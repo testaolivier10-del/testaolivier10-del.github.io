@@ -208,6 +208,7 @@
     return s.replace(/[.…]+$/, function(m){ return m.indexOf('…') >= 0 ? '…' : ''; });
   }
 
+  var UNRESP = /\b(unresponsive|stops responding|no longer responding|not responding|goes limp|went limp)\b/i;
   var SILENT = /\b(stops coughing|can't make (any )?sound|cannot make (a|any) sound|no air movement|not moving (any )?air|no sound)\b/i;
   var CRYING = /\b(cry|cries|crying|pops free|flies out|comes out|huge, gasping breath|gasping breath)\b/i;
   var BORN = /\b(body delivers|delivers quickly|is born|baby is born|the baby is out|baby is blue|placenta)\b/i;
@@ -461,6 +462,29 @@
     if(top === 'flannel') for(var y = M.notch; y < bodyEnd; y += M.r * 0.55) out.push('<path d="M-40 ' + f1(y) + 'H' + f1(M.w + 40) + '" stroke="rgba(30,10,10,.25)" stroke-width="4"/>');
     return out.join('');
   }
+  /* what a seated patient sits on, under the posed figure (three quarter view, from its own hip, knee and foot points):
+     a chair (seat, legs and back), a bench (a long seat) or the edge of a bed (mattress and frame) */
+  function seat(f, set){
+    var lm = f.landmarks, hr = lm.hipR, hl = lm.hipL, kr = lm.kneeR, kl = lm.kneeL, fy = Math.max(lm.footR[1], lm.footL[1]);
+    var t = Math.max(8, (fy - (hr[1] + hl[1]) / 2) * 0.13), mix = function(a, b, k){ return [a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k + t]; };
+    var bed = /bedroom/.test(set), bench = set === 'store', e = bed ? f.w * 3 : bench ? f.w * 0.45 : t * 1.4;
+    var dR = [kr[0] - hr[0], kr[1] - hr[1]], back = bed ? -0.9 : -0.3, front = bed ? 0.72 : 0.78;
+    var p = [mix(hr, kr, back), mix(hl, kl, back), mix(hl, kl, front), mix(hr, kr, front)];
+    p[0][0] -= e; p[3][0] -= e; p[1][0] += e; p[2][0] += e;
+    var th = bed ? Math.max(t, fy - p[3][1] - t * 0.3) : t * 0.45, P = function(q){ return q.map(function(v){ return f1(v[0]) + ' ' + f1(v[1]); }).join(' L'); };
+    var top = bed ? '#E9EDF2' : bench ? '#9C7B5B' : '#8A5A3A', side = bed ? (set === 'bedroom2' ? '#B87C98' : '#6F8FBE') : bench ? '#7A5E43' : '#6E4630', out = [];
+    var down = function(q, d){ return [q[0], q[1] + d]; };
+    if(!bed && !bench){
+      // the chair back, behind her
+      var ht = Math.abs((lm.acromionR || hr)[1] - hr[1]) * 0.85;
+      out.push('<path d="M' + P([p[0], p[1], down(p[1], -ht), down(p[0], -ht)]) + 'Z" fill="' + side + '" stroke="rgba(0,0,0,.25)" stroke-width="2"/>');
+    }
+    if(bed) out.push('<path d="M' + P([down(p[3], th), down(p[2], th), down(p[2], th + t * 0.3), down(p[3], th + t * 0.3)]) + 'Z" fill="#8C6A4E"/>');
+    else [p[0], p[1], p[2], p[3]].forEach(function(c){ out.push('<rect x="' + f1(c[0] - t * 0.12) + '" y="' + f1(c[1]) + '" width="' + f1(t * 0.24) + '" height="' + f1(fy - c[1]) + '" fill="' + side + '"/>'); });
+    out.push('<path d="M' + P([p[3], p[2], down(p[2], th), down(p[3], th)]) + 'Z" fill="' + side + '" stroke="rgba(0,0,0,.2)" stroke-width="2"/>',
+      '<path d="M' + P(p) + 'Z" fill="' + top + '" stroke="rgba(0,0,0,.2)" stroke-width="2"/><path d="M' + P(p) + 'Z" fill="url(#scx-light)"/>');
+    return '<g class="scx-seat">' + out.join('') + '</g>';
+  }
   function hair(M, h, kind, look){
     if(!h) return '';
     var a = M.hrx * 1.07, b = M.hry * 1.04, cy = M.hcy, x = M.hx, col = h[0];
@@ -645,15 +669,18 @@
     /* ------------------------------------------------------------------ the patient and the picture */
     var G = null, M = null, monitor = null, figLoaded = false;
     function look(){ return LOOK[St.id] || { v: 'floor', set: 'living', top: 'tee', bot: 'jeans' }; }
-    function fig(){ var F = St.F; if(!F) return null; if((St.view === 'prone' || St.view === 'side') && F.figs[St.kind + '-back']) return F.figs[St.kind + '-back']; return F.figs[St.kind + '-front'] || F.figs[(St.kind === 'female' ? 'adult' : St.months != null && St.months < 144 ? 'child' : 'adult') + '-front'] || F.figs['adult-front']; }
+    function fig(){ var F = St.F; if(!F) return null; var pz = (St.view === 'side' || St.view === 'sit') && F.figs[St.id + '-' + St.view]; if(pz) return pz; if((St.view === 'prone' || St.view === 'side') && F.figs[St.kind + '-back']) return F.figs[St.kind + '-back']; return F.figs[St.kind + '-front'] || F.figs[(St.kind === 'female' ? 'adult' : St.months != null && St.months < 144 ? 'child' : 'adult') + '-front'] || F.figs['adult-front']; }
     function loadFigs(cb){
       if(!window.LevlBodyFigs) return;
-      window.LevlBodyFigs.load('body', function(F){ window.LevlBodyFigs.load('case', function(F2){ St.F = F2 || F; figLoaded = true; cb(); }); });
+      window.LevlBodyFigs.load('body', function(F){ window.LevlBodyFigs.load('case', function(F2){ window.LevlBodyFigs.load('pose', function(F3){ St.F = F3 || F2 || F; figLoaded = true; cb(); }); }); });
     }
+    /* an ending's words mostly look back over the call; only its sentences about the patient now ("he's unresponsive")
+       set the picture and the words */
+    function endNow(t){ return (t || '').split(SENT).filter(function(x){ return UNRESP.test(x) && /\b(is|he's|she's|goes|stops|remains|now)\b/i.test(x); }).join(' '); }
     function seen(){
       var c = call(), out = [], n = node();
       if(!c || !n) return out;
-      out.push({ text: n.ending ? '' : n.text, vitals: vline(n), now: true });  // an ending's words look back over the call: they are not what the patient does now
+      out.push({ text: n.ending ? endNow(n.text) : n.text, vitals: vline(n), now: true });
       for(var i = St.path.length - 1; i >= 0; i--){ var p = St.path[i], m = c.nodes[p.from]; if(m) out.push({ text: m.text, vitals: vline(m), now: false, did: p.text }); }
       return out;
     }
@@ -687,8 +714,10 @@
       if(ps === 'flat' && v === 'up') v = 'floor';
       if(ps === 'sit') v = look().v === 'up' ? 'up' : v;
       if(v === 'up' && care && (care.on.cpr || care.on.pads)) v = 'floor';
-      if(v === 'up' && (ps === 'trip' || SEATED.test(call().nodes[call().startNode].text))) v = 'sit';
-      if(ps === 'side' && !(care && (care.on.cpr || care.on.bvm))) v = 'side';
+      // a posture is drawn where its posed figure exists (scripts/build-pose-figures.mjs)
+      var has = function(k){ return !!(St.F && St.F.figs[St.id + '-' + k]); };
+      if(v === 'up' && (ps === 'trip' || SEATED.test(call().nodes[call().startNode].text)) && has('sit')) v = 'sit';
+      if(ps === 'side' && !(care && (care.on.cpr || care.on.bvm)) && has('side')) v = 'side';
       if(prone() && !(care && care.on.cpr)) v = 'prone';
       return v;
     }
@@ -723,7 +752,7 @@
         var span = Math.min(f.h, (f.anchors.simLegL || f.anchors.legL)[1] * 1.06), k2 = Math.min(area.h / (span * 1.02), area.w / (f.w * 1.1));
         g.k = k2; g.rot = false; g.ox = area.x + (area.w - f.w * k2) / 2; g.oy = area.y + Math.max(0, (area.h - span * k2) / 2);
       } else {
-        var cut = St.view === 'sit' ? f.lines.groinY + (f.h - f.lines.groinY) * 0.6 : (f.lines.groinY) + ((f.anchors.simLegL || f.anchors.legL)[1] - f.lines.groinY) * 0.62, k3 = Math.min(area.h / (cut + 10), area.w / (f.w * 1.15));
+        var cut = f.pose ? f.h : (f.lines.groinY) + ((f.anchors.simLegL || f.anchors.legL)[1] - f.lines.groinY) * 0.62, k3 = Math.min(area.h / (cut + 10), area.w / (f.w * 1.15));
         g.k = k3; g.rot = false; g.ox = area.x + (area.w - f.w * k3) / 2; g.oy = H - cut * k3;
         if(g.oy > 10) g.oy = Math.max(10, H - cut * k3);
       }
@@ -777,42 +806,30 @@
       // the pool lies in the patient's layer, so the setting's layer never repaints
       gUnder.innerHTML = under.join('');
       gPool.innerHTML = poolSvg;
-      var shoe = SHOES[St.id], h = [];
-      if(St.view === 'side'){
-        var cc = function(n){ return CLOTH[n] ? CLOTH[n][0] : null; };
-        h.push(PD.lateral('scx-', { x: M.hx, hcy: M.hcy, hry: M.hry, notch: M.notch, groin: M.groin, knee: M.knee, ankle: M.ankle, cm: M.cm,
-          hair: (HAIR[St.id] || ['#2B2B2B'])[0], shirt: cc(top), pants: cc(bot) || cc(top), shoe: shoe, preg: St.preg }));
+      var shoe = SHOES[St.id], h = [], posed = !!f.pose;
+      if(posed){
+        // a posed figure (on the side, seated): rendered from the same 3D body with its clothes and hair, so the
+        // drawing adds only what it sits on, the colour of the bare skin and (seated) the face
+        if(St.view === 'sit') h.push(seat(f, L.set));
+        if(G.view !== 'up') h.push('<path d="' + f.outline + '" fill="rgba(20,20,20,.2)" transform="translate(' + f1(-M.cm * 1.2) + ' ' + f1(M.cm * 1.5) + ')"/>');
+        h.push('<image href="' + St.F.url(f) + '" x="0" y="0" width="' + f.w + '" height="' + f.h + '"/>');
+        defs.innerHTML += '<clipPath id="scx-skin"><path d="' + (f.skinOutline || f.outline) + '"/></clipPath>';
+        var so = f.skinOutline || f.outline;
+        h.push('<g clip-path="url(#scx-skin)"><path class="scx-sk scx-hot" d="' + so + '"/><path class="scx-sk scx-mot" d="' + so + '"/><path class="scx-sk scx-pale" d="' + so + '"/><path class="scx-sk scx-blue" d="' + so + '"/></g>');
       } else {
-      if(St.view === 'sit'){
-        // sitting forward on a chair, hands on the knees: the thighs come toward us, so only the knees and shins show
-        var sc2 = M.cm, kw = (M.legR - M.legL) / 2, ky2 = M.groin + sc2 * 5, pc = CLOTH[bot] || CLOTH[top] || ['#3E4450'];
-        defs.innerHTML += '<clipPath id="scx-sitclip"><rect x="-999" y="-999" width="' + f1(f.w + 1998) + '" height="' + f1(M.groin + sc2 * 2 + 999) + '"/>' +
-          '<rect x="-999" y="0" width="' + f1(M.legL + 999 - sc2 * 1.5) + '" height="' + f1(f.h * 0.64) + '"/><rect x="' + f1(M.legR + sc2 * 1.5) + '" y="0" width="999" height="' + f1(f.h * 0.64) + '"/></clipPath>';
-        var bed = /bedroom/.test(L.set);
-        // what she sits on: the edge of a bed (a mattress across the picture) or a chair or bench (a seat and two legs)
-        h.push(bed ? '<rect x="' + f1(-f.w) + '" y="' + f1(M.groin - sc2 * 4) + '" width="' + f1(f.w * 3) + '" height="' + f1(sc2 * 24) + '" rx="' + f1(sc2 * 3) + '" fill="#DCE3EA" stroke="rgba(0,0,0,.18)" stroke-width="' + f1(sc2 * 0.4) + '"/><rect x="' + f1(-f.w) + '" y="' + f1(M.groin + sc2 * 20) + '" width="' + f1(f.w * 3) + '" height="' + f1(sc2 * 6) + '" fill="#8C6A4E"/>'
-          : '<rect x="' + f1(M.hx - kw * 1.15) + '" y="' + f1(M.groin - sc2 * 3) + '" width="' + f1(kw * 2.3) + '" height="' + f1(sc2 * 5) + '" rx="' + f1(sc2) + '" fill="#8A5A3A"/>' +
-          '<rect x="' + f1(M.hx - kw * 1.05) + '" y="' + f1(M.groin + sc2 * 2) + '" width="' + f1(sc2 * 3) + '" height="' + f1(sc2 * 44) + '" fill="#6E4630"/><rect x="' + f1(M.hx + kw * 1.05 - sc2 * 3) + '" y="' + f1(M.groin + sc2 * 2) + '" width="' + f1(sc2 * 3) + '" height="' + f1(sc2 * 44) + '" fill="#6E4630"/>');
-        [-1, 1].forEach(function(sd){ var kx = sd < 0 ? M.legL - sc2 * 1.5 : M.legR + sc2 * 1.5;
-          h.push('<rect x="' + f1(kx - sc2 * 6) + '" y="' + f1(ky2) + '" width="' + f1(sc2 * 12) + '" height="' + f1(sc2 * 40) + '" rx="' + f1(sc2 * 5) + '" fill="' + pc[0] + '" stroke="rgba(0,0,0,.25)" stroke-width="' + f1(sc2 * 0.4) + '"/>' +
-            '<ellipse cx="' + f1(kx) + '" cy="' + f1(ky2 + sc2 * 40) + '" rx="' + f1(sc2 * 6.5) + '" ry="' + f1(sc2 * 3.5) + '" fill="' + (shoe || '#E9ECEF') + '"/>' +
-            '<ellipse cx="' + f1(kx) + '" cy="' + f1(ky2) + '" rx="' + f1(sc2 * 9) + '" ry="' + f1(sc2 * 7.5) + '" fill="' + (pc[1] || pc[0]) + '" stroke="rgba(0,0,0,.25)" stroke-width="' + f1(sc2 * 0.4) + '"/>'); });
-        h.push('<g clip-path="url(#scx-sitclip)">');
-      }
       if(G.view !== 'up') h.push('<path d="' + f.outline + '" fill="rgba(20,20,20,.2)" transform="translate(' + f1(-M.cm * 1.2) + ' ' + f1(M.cm * 1.5) + ')"/>');
       h.push('<image href="' + St.F.url(f) + '" x="0" y="0" width="' + f.w + '" height="' + f.h + '"/>');
       h.push('<g clip-path="url(#scx-body)">' +
         '<path class="scx-sk scx-hot" d="' + f.outline + '"/><rect class="scx-sk scx-mot" x="-40" y="' + f1(M.notch - M.neckR * 0.3) + '" width="' + f1(f.w + 80) + '" height="' + f1(f.h) + '"/><path class="scx-sk scx-pale" d="' + f.outline + '"/><path class="scx-sk scx-blue" d="' + f.outline + '"/>' +
         '<g class="scx-hives">' + hives(f, M) + '</g>' +
         clothes(M, top, bot) +
-        (St.view === 'sit' ? '<rect x="' + f1(M.legL) + '" y="' + f1(M.asis) + '" width="' + f1(M.legR - M.legL) + '" height="' + f1(M.groin - M.asis + M.cm * 3) + '" fill="' + (CLOTH[bot] || CLOTH[top] || ['#3E4450'])[0] + '"/>' : '') +
         (shoe ? '<rect x="0" y="' + f1(f.h * 0.94) + '" width="' + f.w + '" height="' + f1(f.h * 0.06) + '" fill="' + shoe + '"/>' : '') +
         '<ellipse class="scx-breath" cx="' + f1(M.hx) + '" cy="' + f1((M.sAngle + M.xiph) / 2) + '" rx="' + f1(Math.abs(f.landmarks.midaxL[0] - f.landmarks.midaxR[0]) * 0.4) + '" ry="' + f1((M.xiph - M.notch) * 0.6) + '"/>' +
         (St.preg ? '<ellipse class="scx-belly" cx="' + f1(M.hx) + '" cy="' + f1(M.umb) + '" rx="' + f1(Math.abs(f.landmarks.asisL[0] - f.landmarks.asisR[0]) * 0.62) + '" ry="' + f1((M.pubis - M.xiph) * 0.55) + '" fill="url(#scx-belly)"/>' : '') +
         '</g>');
-      if(St.view === 'sit') h.push('</g>');
       }
-      if(St.view === 'side'){ /* head drawn with the pose */ }
+      // seated, a three quarter view: the face turned with the head (narrower across)
+      if(posed){ if(St.view === 'sit') h.push('<g class="scx-q3" transform="translate(' + f1(M.hx) + ' ' + f1(M.eyeY) + ') scale(.8 1) translate(' + f1(-M.hx) + ' ' + f1(-M.eyeY) + ')">' + face(M) + '</g>'); }
       else if(St.view === 'prone'){
         var hcol = (HAIR[St.id] || ['#2B2B2B'])[0];
         h.push('<ellipse cx="' + f1(M.hx) + '" cy="' + f1(M.hcy) + '" rx="' + f1(M.hrx * 1.04) + '" ry="' + f1(M.hry * 1.02) + '" fill="' + hcol + '"/><ellipse cx="' + f1(M.hx) + '" cy="' + f1(M.hcy) + '" rx="' + f1(M.hrx * 1.04) + '" ry="' + f1(M.hry * 1.02) + '" fill="url(#scx-light)"/>');
@@ -821,7 +838,7 @@
       gFig.innerHTML = h.join('');
       var isBack = St.view === 'prone', onSide = St.view === 'side', it = isBack ? {} : items(M, f, St.kind, site, G.view, 12.5 / G.k);
       // on the side: only the blanket stays drawn (a mask on the face cannot be seen from behind)
-      if(onSide){ var mx = M.hx + M.cm * 2 + M.hry * 0.86, my = M.hcy + M.hry * 0.12, mr = M.hry * 0.3;
+      if(onSide){ var mo = f.landmarks.mouth || [M.hx, M.hcy], mx = mo[0], my = mo[1], mr = M.r * 0.3;
         it = { warm: it.warm, o2: it.o2 && '<ellipse class="scx-mask" cx="' + f1(mx) + '" cy="' + f1(my) + '" rx="' + f1(mr * 0.85) + '" ry="' + f1(mr * 1.2) + '" fill="#DDF1EA" fill-opacity=".6" stroke="#3E8A73" stroke-width="' + f1(mr * 0.12) + '"/>' +
           '<ellipse cx="' + f1(mx + mr * 0.9) + '" cy="' + f1(my + mr * 1.6) + '" rx="' + f1(mr * 0.9) + '" ry="' + f1(mr * 1.1) + '" fill="#BFE2D6" fill-opacity=".85" stroke="#6FA592" stroke-width="' + f1(mr * 0.08) + '"/>' +
           '<path d="M' + f1(mx + mr * 1.6) + ' ' + f1(my + mr * 2.2) + 'Q' + f1(mx + mr * 4) + ' ' + f1(my + mr * 4) + ' ' + f1(mx + mr * 6) + ' ' + f1(my + mr * 2) + '" stroke="#7FBFA9" stroke-width="' + f1(mr * 0.25) + '" fill="none" stroke-linecap="round"/>',
@@ -832,12 +849,15 @@
       if(mom) on.push('<g class="scx-mom">' + mom + '</g>');
       if(St.preg && !onSide){
         // the newborn on her chest once the case says the baby is born (shown by paint)
-        var bc = M.cm, bx = M.hx, by = M.xiph + (M.umb - M.xiph) * 0.45, sk3 = '#E8A89C', ln3 = 'rgba(0,0,0,.25)';
-        on.push('<g class="scx-nb">' +
+        var bc = M.cm, bx = M.hx, by = M.xiph + (M.umb - M.xiph) * 0.45, sk3 = 'url(#scx-nbg)', ln3 = 'rgba(120,50,40,.35)';
+        // shaded like the figures: a lit, rounded skin and a soft shadow on her
+        on.push('<g class="scx-nb"><defs><radialGradient id="scx-nbg" cx=".38" cy=".32" r=".75"><stop offset="0" stop-color="#F6CDBE"/><stop offset=".55" stop-color="#E5A493"/><stop offset="1" stop-color="#B8705F"/></radialGradient>' +
+          '<radialGradient id="scx-nbt" cx=".4" cy=".3" r=".8"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".7" stop-color="#ECE5D8"/><stop offset="1" stop-color="#C9BFAE"/></radialGradient></defs>' +
+          '<ellipse cx="' + f1(bx - bc * 1.5) + '" cy="' + f1(by + bc * 2) + '" rx="' + f1(bc * 8.5) + '" ry="' + f1(bc * 14) + '" fill="rgba(40,20,10,.2)"/>' +
           '<ellipse cx="' + f1(bx - bc * 5) + '" cy="' + f1(by + bc * 10) + '" rx="' + f1(bc * 3) + '" ry="' + f1(bc * 5) + '" fill="' + sk3 + '" stroke="' + ln3 + '" stroke-width="' + f1(bc * 0.3) + '" transform="rotate(25 ' + f1(bx - bc * 5) + ' ' + f1(by + bc * 10) + ')"/>' +
           '<ellipse cx="' + f1(bx + bc * 5) + '" cy="' + f1(by + bc * 10) + '" rx="' + f1(bc * 3) + '" ry="' + f1(bc * 5) + '" fill="' + sk3 + '" stroke="' + ln3 + '" stroke-width="' + f1(bc * 0.3) + '" transform="rotate(-25 ' + f1(bx + bc * 5) + ' ' + f1(by + bc * 10) + ')"/>' +
           '<ellipse cx="' + f1(bx) + '" cy="' + f1(by + bc * 2) + '" rx="' + f1(bc * 7) + '" ry="' + f1(bc * 9.5) + '" fill="' + sk3 + '" stroke="' + ln3 + '" stroke-width="' + f1(bc * 0.3) + '"/>' +
-          '<path d="M' + f1(bx - bc * 8) + ' ' + f1(by + bc * 3) + ' Q' + f1(bx) + ' ' + f1(by - bc * 1) + ' ' + f1(bx + bc * 8) + ' ' + f1(by + bc * 3) + ' L' + f1(bx + bc * 7) + ' ' + f1(by + bc * 12) + ' Q' + f1(bx) + ' ' + f1(by + bc * 15) + ' ' + f1(bx - bc * 7) + ' ' + f1(by + bc * 12) + 'Z" fill="#F4EFE6" stroke="' + ln3 + '" stroke-width="' + f1(bc * 0.3) + '"/>' +
+          '<path d="M' + f1(bx - bc * 8) + ' ' + f1(by + bc * 3) + ' Q' + f1(bx) + ' ' + f1(by - bc * 1) + ' ' + f1(bx + bc * 8) + ' ' + f1(by + bc * 3) + ' L' + f1(bx + bc * 7) + ' ' + f1(by + bc * 12) + ' Q' + f1(bx) + ' ' + f1(by + bc * 15) + ' ' + f1(bx - bc * 7) + ' ' + f1(by + bc * 12) + 'Z" fill="url(#scx-nbt)" stroke="' + ln3 + '" stroke-width="' + f1(bc * 0.3) + '"/>' +
           '<ellipse cx="' + f1(bx - bc * 6) + '" cy="' + f1(by - bc * 3) + '" rx="' + f1(bc * 2) + '" ry="' + f1(bc * 3.5) + '" fill="' + sk3 + '" stroke="' + ln3 + '" stroke-width="' + f1(bc * 0.3) + '"/>' +
           '<ellipse cx="' + f1(bx + bc * 6) + '" cy="' + f1(by - bc * 3) + '" rx="' + f1(bc * 2) + '" ry="' + f1(bc * 3.5) + '" fill="' + sk3 + '" stroke="' + ln3 + '" stroke-width="' + f1(bc * 0.3) + '"/>' +
           '<circle cx="' + f1(bx) + '" cy="' + f1(by - bc * 10) + '" r="' + f1(bc * 6) + '" fill="' + sk3 + '" stroke="' + ln3 + '" stroke-width="' + f1(bc * 0.3) + '"/>' +
@@ -938,10 +958,14 @@
       var pins = J.pure.pinsFor(f, St.view === 'prone' || St.view === 'side' ? 'back' : 'front', fnew, res);
       var silent = false, crying = false;
       sn.some(function(x){ return own(x.text, St.preg).split(SENT).reverse().some(function(y){ if(!/cough|sound|voice|cry|air|breath/i.test(y)) return false; silent = SILENT.test(y); crying = !silent && CRYING.test(y); return true; }); });
+      // the newest words about how the patient responds: "goes limp and stops responding" outranks the airway's words
+      var unr = false; sn.some(function(x){ return own(x.text, St.preg).split(SENT).reverse().some(function(y){ if(!/respon|limp|alert|awake|answer|talk|cry|eyes open/i.test(y)) return false; unr = UNRESP.test(y) && !/\b(no longer|not) unresponsive\b/i.test(y); return true; }); });
       var born = !!St.preg && BORN.test(sn.map(function(x){ return x.text; }).join(' '));
       var cr = St.drawn ? St.drawn.careObj : null;
       if(J.care && cr) J.care.pins({ fig: f, f: fnd, careNow: cr, preg: St.preg, view: St.view === 'prone' || St.view === 'side' ? 'back' : 'front' }, pins);
-      if(St.view === 'side') out0.push({ text: /recovery/i.test(sn.map(function(x){ return (x.did || '') + ' ' + x.text; }).join(' ')) ? 'Recovery position' : St.female ? 'On her left side' : 'On his left side', at: [f.w / 2, M.asis], tone: 'act' });
+      if(St.view === 'side'){ var sw = sn.map(function(x){ return (x.did || '') + ' ' + x.text; }).join(' ');
+        // name the side only when the case does
+        out0.push({ text: /recovery/i.test(sw) ? 'Recovery position' : (St.female ? 'On her ' : 'On his ') + (/\bleft (side|lateral)\b/i.test(sw) ? 'left side' : 'side'), at: [f.w / 2, M.asis], tone: 'act' }); }
       if(St.view === 'prone'){ var wg = gOn.querySelector('.scx-weight .scx-cop2'); if(wg){ var wb = wg.getBBox(); out0.push({ text: 'Knee on his back', at: [wb.x + wb.width / 2, wb.y + wb.height / 2], tone: 'bad' }); } }
       var out = out0, it = St.drawn ? St.drawn.care : {};
       var fresh = ITEM_ORDER.filter(function(k){ return ITEM_LABEL[k] && it[k] && !(prevCare && prevCare[k]); });
@@ -957,7 +981,8 @@
           if(bl === 'stop' && fresh.indexOf('tq') >= 0) return;
         }
         if(born && (p.key === 'birth' || /Contraction|Crowning|Baby born|Head delivered|Cord|Birth/.test(t))) return;
-        if(/Cough/.test(t) && silent){ t = 'Cannot cough'; sev = true; }
+        if((p.key === 'head' || p.key === 'ms') && unr){ t = 'Unresponsive'; sev = true; }
+        else if(/Cough/.test(t) && silent){ t = 'Cannot cough'; sev = true; }
         else if(/Cough/.test(t) && crying){ t = 'Crying'; sev = false; }
         if(p.key === 'head' || p.key === 'ms') t = t.split(', ')[0];
         var at = (p.key === 'head' || p.key === 'ms') && M ? [M.hx, M.top + M.hry * 0.18] : [p.x, p.y];
@@ -966,7 +991,8 @@
         out.push({ text: t, at: at, tone: sev ? 'bad' : 'see' });
       });
       // a step that ends with the patient crying (the newborn after 3:1) says so even with no cough to replace
-      if(crying && M && sn[0] && /\b(cries|crying)\b/i.test(own(sn[0].text, St.preg)) && !out.some(function(x){ return x.text === 'Crying'; })) out.push({ text: 'Crying', at: [M.hx, M.chin], tone: 'see' });
+      if(unr && M && !out.some(function(x){ return x.text === 'Unresponsive'; })) out.push({ text: 'Unresponsive', at: [M.hx, M.top + M.hry * 0.18], tone: 'bad' });
+      if(!unr && crying && M && sn[0] && /\b(cries|crying)\b/i.test(own(sn[0].text, St.preg)) && !out.some(function(x){ return x.text === 'Crying'; })) out.push({ text: 'Crying', at: [M.hx, M.chin], tone: 'see' });
       return out;
     }
     function itemAt(k){

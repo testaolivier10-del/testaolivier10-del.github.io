@@ -167,40 +167,6 @@
     return best;
   }
 
-  // a patient on the left side (recovery position) seen from above: head turned, both arms forward, upper knee bent
-  // forward, lower leg straight. o: { x, hcy, hry, notch, groin, knee, ankle, cm, skin, hair, shirt, pants, shoe, preg, dir }
-  function lateral(p, o){
-    var c = o.cm * Math.min(1, (o.ankle - o.hcy) / (o.cm * 148)), d = o.dir || 1, x = o.x, X = function(v){ return q(x + d * v * c); }, Y = function(v){ return q(v); };
-    var sk = o.skin || '#D8A988', sh = o.shirt || '#6F8FA8', pa = o.pants || '#3E4450', out = [];
-    var limb = function(pts, w, col){ var d0 = 'M' + pts.map(function(t){ return X(t[0]) + ' ' + Y(t[1]); }).join(' L');
-      return '<path d="' + d0 + '" fill="none" stroke="rgba(0,0,0,.28)" stroke-width="' + q((w + 0.8) * c) + '" stroke-linecap="round" stroke-linejoin="round"/>' +
-        '<path class="' + p + 'limb" d="' + d0 + '" fill="none" stroke="' + col + '" stroke-width="' + q(w * c) + '" stroke-linecap="round" stroke-linejoin="round"/>'; };
-    var n = o.notch, g = o.groin, k = o.knee, a = o.ankle, th = (k - g), sn = (a - k);
-    // lower (left) leg straight, a little behind the body line
-    out.push(limb([[-2, g], [-3, k], [-3, a]], 13, pa), limb([[-3, a - 2 * c], [-3, a + 3 * c]], 9, o.shoe || sk));
-    // lower arm forward under the head
-    out.push(limb([[2, n + 4 * c], [20, n - 2 * c], [17, o.hcy + o.hry * 0.2]], 7, sh), '<circle cx="' + X(17) + '" cy="' + Y(o.hcy + o.hry * 0.2) + '" r="' + q(4.2 * c) + '" fill="' + sk + '"/>');
-    // torso: back curved, front flatter; a belly bulge in pregnancy
-    var bk = -12, fr = 11, mid = (n + g) / 2, bl = o.preg ? 22 : fr;
-    out.push('<path class="' + p + 'torso" d="M' + X(-6) + ' ' + Y(n - 2 * c) + ' Q' + X(bk - 2) + ' ' + Y(n + 4 * c) + ' ' + X(bk) + ' ' + Y(mid) +
-      ' Q' + X(bk - 1) + ' ' + Y(g - 2 * c) + ' ' + X(-8) + ' ' + Y(g + 6 * c) + ' L' + X(9) + ' ' + Y(g + 6 * c) + ' Q' + X(fr + 1) + ' ' + Y(g - 4 * c) + ' ' + X(bl) + ' ' + Y(mid + (g - mid) * 0.35) +
-      ' Q' + X(fr + 2) + ' ' + Y(n + 6 * c) + ' ' + X(6) + ' ' + Y(n - 2 * c) + ' Z" fill="' + sh + '" stroke="rgba(0,0,0,.28)" stroke-width="' + q(0.4 * c) + '"/>',
-      '<ellipse cx="' + X(0) + '" cy="' + Y(g) + '" rx="' + q(10.5 * c) + '" ry="' + q(9 * c) + '" fill="' + pa + '" stroke="rgba(0,0,0,.28)" stroke-width="' + q(0.4 * c) + '"/>');
-    // upper (right) leg: thigh forward, knee bent, shin back down
-    out.push(limb([[1, g], [th / c * 0.72, g + th * 0.42], [th / c * 0.66, g + th * 0.42 + sn * 0.78]], 14, pa), limb([[th / c * 0.66, g + th * 0.42 + sn * 0.74], [th / c * 0.66 + 4, g + th * 0.42 + sn * 0.8]], 9, o.shoe || sk));
-    // upper arm: elbow bent, hand on the floor in front of the chest
-    out.push(limb([[4, n + 3 * c], [16, n + 16 * c], [26, n + 24 * c]], 7.5, sh), '<circle cx="' + X(27) + '" cy="' + Y(n + 25 * c) + '" r="' + q(4.4 * c) + '" fill="' + sk + '"/>');
-    // head in profile, face toward the front and a little down, hair over the back of the head
-    var hr = o.hry, hx = x + d * 2 * c;
-    out.push('<path d="M' + X(0) + ' ' + Y(n) + ' L' + q(hx) + ' ' + Y(o.hcy + hr * 0.5) + '" stroke="' + sk + '" stroke-width="' + q(6.5 * c) + '" stroke-linecap="round"/>',
-      '<ellipse class="' + p + 'head" cx="' + q(hx - d * hr * 0.1) + '" cy="' + Y(o.hcy) + '" rx="' + q(hr * 0.88) + '" ry="' + q(hr) + '" fill="' + (o.hair || '#2B2B2B') + '" stroke="rgba(0,0,0,.28)" stroke-width="' + q(0.4 * c) + '"/>',
-      '<ellipse cx="' + q(hx + d * hr * 0.1) + '" cy="' + Y(o.hcy + hr * 0.1) + '" rx="' + q(hr * 0.72) + '" ry="' + q(hr * 0.84) + '" fill="' + sk + '"/>',
-      '<path d="M' + q(hx + d * hr * 0.78) + ' ' + Y(o.hcy - hr * 0.02) + ' l' + q(d * hr * 0.17) + ' ' + q(hr * 0.16) + ' l' + q(-d * hr * 0.18) + ' ' + q(hr * 0.08) + ' Z" fill="' + sk + '"/>',
-      '<ellipse cx="' + q(hx - d * hr * 0.05) + '" cy="' + Y(o.hcy + hr * 0.12) + '" rx="' + q(hr * 0.12) + '" ry="' + q(hr * 0.18) + '" fill="' + sk + '" stroke="rgba(0,0,0,.22)" stroke-width="' + q(0.4 * c) + '"/>',
-      '<path d="M' + q(hx + d * hr * 0.42) + ' ' + Y(o.hcy - hr * 0.18) + ' q' + q(d * hr * 0.1) + ' ' + q(hr * 0.06) + ' ' + q(d * hr * 0.2) + ' 0" fill="none" stroke="#2B2B2B" stroke-width="' + q(0.6 * c) + '" stroke-linecap="round"/>');
-    return '<g class="' + p + 'lateral">' + out.join('') + '</g>';
-  }
-
   window.NremtPatientDraw = { shapes: shapes, glove: glove, cpr: cpr, face: face, bvm: bvm, pads: pads, aed: aed, grads: grads, tp: tp,
-    lateral: lateral, DRAWN: DRAWN, drawnBoxes: drawnBoxes, place: place, FACE: FACE, KEEP_PARTS: KEEP_PARTS };
+    DRAWN: DRAWN, drawnBoxes: drawnBoxes, place: place, FACE: FACE, KEEP_PARTS: KEEP_PARTS };
 })();
