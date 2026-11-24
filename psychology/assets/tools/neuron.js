@@ -500,7 +500,7 @@
 
     var CUE = { fire: { text: 'Drag the excitatory input', at: function(){ return G ? kPos(cE, G.kE) : [0, 0]; }, side: function(){ return G && G.ph ? 'right' : 'below'; } },
       refr: { text: (window.innerWidth || 1000) < 400 ? 'Drag it closer' : 'Drag the 2nd pulse', at: function(){ return G && G.plot ? [G.plot.X(T0 + S.gap), G.plot.stimY] : [0, 0]; }, side: 'right' },
-      myel: { text: 'Tap the myelin', at: function(){ var i = G && G.ph ? 3 : 2; return G ? [G.segs[i][0] + (G.segs[i][1] - G.segs[i][0]) / 2, G.sy + G.myR] : [0, 0]; }, side: 'below' },
+      myel: { text: 'Tap the myelin', at: function(){ var i = 2; return G ? [G.segs[i][0] + (G.segs[i][1] - G.segs[i][0]) / 2, G.sy + G.myR] : [0, 0]; }, side: 'below' },
       syn: { text: 'Tap a drug', at: function(){ var i = G && G.ph ? 2 : 1; return G && G.drugs ? [G.drugs[i].x + G.drugs[i].w / 2, G.drugs[i].y + G.drugs[i].h] : [0, 0]; }, side: 'below' } };
     function kPos(c, tr){ var f = (c.value() - c.input.min) / (c.input.max - c.input.min); return [tr[0] + (tr[2] - tr[0]) * f, tr[1] + (tr[3] - tr[1]) * f]; }
     var cues = {};
@@ -557,7 +557,7 @@
       g.ctlW = tab === 'fire' ? (ph ? 128 : clamp(W * 0.13, 150, 200)) : 0;
       var pmy = ph && tab === 'myel';   // phone Myelin: the axon takes the width (44 px targets), a stub of dendrites, no input
       g.rs = tab === 'myel' && !ph ? clamp(nH * 0.15, 24, 52) : pmy ? 14 : ph ? 21 : clamp(nH * 0.13, 24, 40);
-      g.sy = g.nTop + nH * (tab === 'myel' ? 0.5 : 0.64);
+      g.sy = pmy ? g.nTop + 60 : g.nTop + nH * (tab === 'myel' ? 0.5 : 0.64);   // phone Myelin: names above, the cue's room below
       if(ph && tab !== 'myel' && !fig){ g.inY1 = g.nTop + 104; g.sy = g.inY1 + g.rs * 2.8 + 52; g.nBot = g.sy + g.rs * 2.3 + 52; var room = H - gh - 4 - g.nBot; if(room > 0){ g.sy += room * 0.45; g.nBot += room; } g.gTop = g.nBot + 4; nH = g.nBot - g.nTop; }
       var reach = g.rs * (pmy ? 1.3 : ph ? 2.2 : 2.5);
       g.reach = reach;
@@ -845,7 +845,7 @@
       if(my){ var nd = g.nodes[g.ph ? 5 : 4]; L(nd, g.sy - g.myR - (g.ph ? 18 : 22), 'Node', 'is-cell', 'middle'); }
       var fr = g.fan[g.fan.length - 1].end;
       var fr0 = g.fan[0].end;
-      L(g.W - g.pad, my ? fr0[1] - g.axR * 2 - (g.ph ? 18 : 20) : Math.min(g.nBot - 12, fr[1] + g.axR * 2 + (g.ph ? 18 : 20)), g.ph ? 'Terminals' : 'Axon terminals', 'is-cell', 'end');
+      L(g.W - g.pad, my && !g.ph ? fr0[1] - g.axR * 2 - 20 : Math.min(g.nBot - 12, fr[1] + g.axR * 2 + (g.ph ? 18 : 20)), g.ph ? 'Terminals' : 'Axon terminals', 'is-cell', 'end');
       return p.join('');
     }
     function plotStatic(g){
