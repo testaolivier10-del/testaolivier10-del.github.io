@@ -207,22 +207,27 @@
     if(course === 'nremt'){ var s = nremtArea(t); return 'practice.html' + (s ? q1('system', s) : ''); }
     return 'practice.html' + q1('topic', t);
   }
+  /* NREMT, ochem and A&P have no class runner, so their links start the assigned work at once through each page's
+     own go=1 contract (assets/course/practice-panel.js header): the student lands in the questions, never on the
+     page's settings (owner 2026-11-23). The count is the teacher's; mastery asks for its minimum. */
   function href(course, a){
-    var s = a.spec || {}, t = s.topics || [];
+    var s = a.spec || {}, t = s.topics || [], n = a.kind === 'mastery' ? (s.min | 0) || 10 : (s.count | 0) || 0;
+    var enc = encodeURIComponent, list = t.map(enc).join(',');
     if(course === 'nremt'){
       if(a.kind === 'review') return 'review.html?start=review';
-      if(a.kind === 'exam') return 'exams.html';
-      return t.length ? topicHref(course, t[0]) : 'practice.html';
+      if(a.kind === 'exam') return 'exams.html?go=1&exam=full';
+      var area = t.length ? nremtArea(t[0]) : null;
+      return 'practice.html?go=1&from=new' + (area ? '&area=' + enc('system:' + area) : '') + '&n=' + (n || 20);
     }
     if(course === 'ochem'){
-      if(a.kind === 'review') return 'practice.html?mode=mistakes';
-      if(a.kind === 'exam') return 'exams.html' + (s.unit ? '?kind=chapter&chapter=' + encodeURIComponent(s.unit) : '?kind=final');
-      return t.length ? topicHref(course, t[0]) + (a.kind === 'practice' && s.count ? '&count=' + (s.count | 0) : '') : 'practice.html';
+      if(a.kind === 'review') return 'practice.html?go=1&from=missed' + (n ? '&n=' + n : '');
+      if(a.kind === 'exam') return 'exams.html?go=1' + (s.unit ? '&kind=chapter&chapter=' + enc(s.unit) : '&kind=final');
+      return t.length ? 'practice.html?go=1&topics=' + list + '&n=' + (n || 10) : 'practice.html';
     }
     if(course === 'anp'){
-      if(a.kind === 'review') return 'review.html';
-      if(a.kind === 'exam') return 'exams.html' + (s.unit ? '?mode=system&chapter=' + encodeURIComponent(s.unit) : '?mode=final');
-      return t.length ? topicHref(course, t[0]) : 'practice.html';
+      if(a.kind === 'review') return 'practice.html?go=1&from=missed' + (t.length ? '&topics=' + list : '') + '&n=' + (n || 25);
+      if(a.kind === 'exam') return 'exams.html?go=1' + (s.unit ? '&mode=system&chapter=' + enc(s.unit) : '&mode=final');
+      return t.length ? 'practice.html?go=1&from=new&topics=' + list + '&n=' + (n || 10) : 'practice.html';
     }
     if(a.kind === 'review') return 'review.html';
     if(a.kind === 'exam') return 'exams.html' + (s.unit ? '?unit=' + encodeURIComponent(s.unit) : '?mode=full');

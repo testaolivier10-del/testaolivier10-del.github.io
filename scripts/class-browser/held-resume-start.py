@@ -9,6 +9,11 @@ COURSES = {'bio': ('apbio', 'unit-1', ['water-hydrogen-bonding']), 'calculus': (
            'macroeconomics': ('apmacro', 'unit-1', ['scarcity'])}
 if len(sys.argv) > 2: COURSES = {k: v for k, v in COURSES.items() if k in sys.argv[2].split(',')}
 fails = []
+def start(page):
+  """Presses Start, and Start now when timed work asks once more (owner 2026-11-23)."""
+  page.click('[data-lvr="start"]')
+  if page.query_selector('[data-sure]'): page.click('[data-sure]')
+
 def check(ok, m):
   print(('PASS ' if ok else 'FAIL ') + m)
   if not ok: fails.append(m)
@@ -41,7 +46,7 @@ def hide(pg): pg.evaluate("""() => { Object.defineProperty(document, 'visibility
 
 def run_practice(pg, d, id, course):
   pg.goto(f'{BASE}/{d}/practice.html?la={id}', wait_until='networkidle')
-  pg.click('[data-lvr="start"]')
+  start(pg)
   answered = []
   for k in range(15):
     pg.wait_for_selector('[data-qid]', timeout=15000); pg.wait_for_timeout(150)
@@ -82,7 +87,7 @@ with sync_playwright() as p:
     def block(route): route.abort()
     pg.route('**/assets/bank/unit-*.json', block)
     pg.goto(f'{BASE}/{d}/exams.html?unit={unit}&la=ex', wait_until='networkidle')
-    pg.click('[data-lvr="start"]'); pg.wait_for_timeout(1500)
+    start(pg); pg.wait_for_timeout(1500)
     btn = pg.query_selector('[data-lvr="start"]')
     msg = pg.inner_text('.lvr-card [role="status"]')
     check(btn and not btn.is_disabled() and 'did not load' in msg, f'{d}: failed exam load re-enables Start with a message ({msg!r})')
@@ -91,14 +96,14 @@ with sync_playwright() as p:
 
     # 4. exam without a limit: start, reload, clock resumes, tab leave counted before Start.
     pg.goto(f'{BASE}/{d}/exams.html?unit={unit}&la=ex', wait_until='networkidle')
-    pg.click('[data-lvr="start"]'); pg.wait_for_selector('[role="timer"]', timeout=20000)
+    start(pg); pg.wait_for_selector('[role="timer"]', timeout=20000)
     a0 = att(pg, 'ex')
     check(a0.get('start') and a0.get('limit'), f'{d}: exam attempt starts at load with its budget ({a0.get("limit")})')
     pg.wait_for_timeout(2500)
     pg.reload(wait_until='networkidle'); pg.wait_for_selector('.lvr-card', timeout=15000)
     hide(pg); pg.wait_for_timeout(200)
     check(att(pg, 'ex').get('tabs') == 1, f'{d}: tab leave counted after a reload, before Keep going')
-    pg.click('[data-lvr="start"]'); pg.wait_for_selector('[role="timer"]', timeout=20000); pg.wait_for_timeout(600)
+    start(pg); pg.wait_for_selector('[role="timer"]', timeout=20000); pg.wait_for_timeout(600)
     t = pg.inner_text('[role="timer"]'); lim = a0['limit'] // 1000
     parts = [int(x) for x in t.split(':')]; secs = parts[-1] + 60 * parts[-2] + (3600 * parts[0] if len(parts) == 3 else 0)
     check(secs <= lim - 2, f'{d}: the clock resumed, not restarted ({t} of {lim}s)')

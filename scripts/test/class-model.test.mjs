@@ -251,22 +251,23 @@ test('links: each course’s real practice, review and exam pages with the param
   const pr = (topics, extra = {}) => ({ kind: 'practice', spec: { topics, count: 10, ...extra } });
   assert.equal(M.href('apbio', pr(['t1'])), 'practice.html?topic=t1');
   assert.equal(M.href('apbio', { kind: 'exam', spec: { unit: 'unit-3' } }), 'exams.html?unit=unit-3');
-  assert.equal(M.href('anp', pr(['blood-composition'])), 'practice.html?topic=blood-composition');
-  assert.equal(M.href('anp', { kind: 'exam', spec: { unit: 'blood' } }), 'exams.html?mode=system&chapter=blood');
-  assert.equal(M.href('anp', { kind: 'exam', spec: {} }), 'exams.html?mode=final');
-  assert.equal(M.href('ochem', pr(['sn2'])), 'practice.html?topic=sn2&count=10');
-  assert.equal(M.href('ochem', { kind: 'review', spec: {} }), 'practice.html?mode=mistakes');
-  assert.equal(M.href('ochem', { kind: 'exam', spec: { unit: 'substitution-elimination' } }), 'exams.html?kind=chapter&chapter=substitution-elimination');
-  assert.equal(M.href('ochem', { kind: 'exam', spec: {} }), 'exams.html?kind=final');
-  assert.equal(M.href('nremt', pr(['pharmacology'])), 'practice.html?system=' + encodeURIComponent('Cardiac & Medical'), 'the topic area drill');
+  assert.equal(M.href('anp', pr(['blood-composition', 'hemostasis'])), 'practice.html?go=1&from=new&topics=blood-composition,hemostasis&n=10', 'starts at once, every topic');
+  assert.equal(M.href('anp', { kind: 'review', spec: { topics: [], count: 25 } }), 'practice.html?go=1&from=missed&n=25');
+  assert.equal(M.href('anp', { kind: 'exam', spec: { unit: 'blood' } }), 'exams.html?go=1&mode=system&chapter=blood');
+  assert.equal(M.href('anp', { kind: 'exam', spec: {} }), 'exams.html?go=1&mode=final');
+  assert.equal(M.href('ochem', pr(['sn2'])), 'practice.html?go=1&topics=sn2&n=10');
+  assert.equal(M.href('ochem', { kind: 'review', spec: {} }), 'practice.html?go=1&from=missed');
+  assert.equal(M.href('ochem', { kind: 'exam', spec: { unit: 'substitution-elimination' } }), 'exams.html?go=1&kind=chapter&chapter=substitution-elimination');
+  assert.equal(M.href('ochem', { kind: 'exam', spec: {} }), 'exams.html?go=1&kind=final');
+  assert.equal(M.href('nremt', pr(['pharmacology'])), 'practice.html?go=1&from=new&area=' + encodeURIComponent('system:Cardiac & Medical') + '&n=10', 'the topic area drill, the teacher’s count');
   assert.equal(M.href('nremt', { kind: 'review', spec: {} }), 'review.html?start=review');
-  assert.equal(M.href('nremt', { kind: 'exam', spec: {} }), 'exams.html');
+  assert.equal(M.href('nremt', { kind: 'exam', spec: {} }), 'exams.html?go=1&exam=full');
   // The pages really read those parameters.
-  assert.match(readFileSync('anatomy-physiology/assets/apps/practice.js', 'utf8'), /p\.get\('topic'\)/);
+  assert.match(readFileSync('assets/course/practice-panel.js', 'utf8'), /p\.get\('topics'\)[\s\S]*has\(s\.topics, x\.topic\)/);
   assert.match(readFileSync('anatomy-physiology/assets/apps/exams.js', 'utf8'), /p\.get\('chapter'\)[\s\S]*p\.get\('mode'\)/);
-  assert.match(readFileSync('ochem/assets/practice-page.js', 'utf8'), /params\.topic[\s\S]*'mistakes'/);
+  assert.match(readFileSync('ochem/assets/practice-page.js', 'utf8'), /params\.topics[\s\S]*missed: 'mistakes'/);
   assert.match(readFileSync('ochem/assets/exams-page.js', 'utf8'), /p\.get\('kind'\)[\s\S]*p\.get\('chapter'\)/);
-  assert.match(readFileSync('nremt/practice-engine.js', 'utf8'), /params\.get\('system'\)[\s\S]*review: loadMissed/);
+  assert.match(readFileSync('nremt/practice-engine.js', 'utf8'), /review: loadMissed[\s\S]*p\.get\('exam'\)[\s\S]*p\.get\('area'\)/);
   for (const u of RAW.nremt.units) assert.ok(readFileSync('nremt/practice.html', 'utf8').includes('value="system:' + u.system.replace(/&/g, '&amp;') + '"'), u.system);
 });
 

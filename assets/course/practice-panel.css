@@ -123,12 +123,12 @@ input.pp-sel{padding:10px 14px}
    its suggestions and concept lists under the card (only its builder and rail go); NREMT keeps its
    readiness card. */
 .pp-engine{margin-top:24px}
-.pp-wrap:not(.is-run):not(.is-go) .pp-engine #app{display:none}
-.pp-wrap.is-run .pp-v3,.pp-wrap.is-go .pp-v3{display:none}
-.pp-wrap.is-run .pp-engine,.pp-wrap.is-go .pp-engine{margin-top:0}
+.pp-wrap:not(.is-run):not(.is-go):not(.is-class) .pp-engine #app{display:none}
+.pp-wrap.is-run .pp-v3,.pp-wrap.is-go .pp-v3,.pp-wrap.is-class .pp-v3{display:none}
+.pp-wrap.is-run .pp-engine,.pp-wrap.is-go .pp-engine,.pp-wrap.is-class .pp-engine{margin-top:0}
 .pp-engine #ocBuilder,.pp-engine #practiceHome .cx-rail,.pp-engine #nrBuilder{display:none}
 .pp-engine #practiceHome > .cx-body{display:block}
-.pp-wrap:not(.is-run):not(.is-go) .pp-engine [class*="app-mount"]{min-height:0}
+.pp-wrap:not(.is-run):not(.is-go):not(.is-class) .pp-engine [class*="app-mount"]{min-height:0}
 
 /* Explanations at the end (practice.html?expl=end): the engine grades as usual, the feedback stays out of
    sight until the summary, where every question comes back with its explanation (.pp-kept). */
@@ -175,4 +175,4 @@ input.pp-sel{padding:10px 14px}
   .pp-clock{top:auto;bottom:84px;right:auto;left:14px}
 }
 /* A running session starts under the band, not over it (its bar has no card behind it). */
-.r3 .pp-wrap.is-run,.r3 .pp-wrap.is-go{margin-top:0;padding-top:22px}
+.r3 .pp-wrap.is-run,.r3 .pp-wrap.is-go,.r3 .pp-wrap.is-class{margin-top:0;padding-top:22px}

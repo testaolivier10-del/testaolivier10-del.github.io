@@ -22,6 +22,11 @@ COURSES = {k: v for k, v in COURSES_ALL.items() if len(sys.argv) < 4 or k in sys
 iso = lambda t: time.strftime('%Y-%m-%dT%H:%M:%S.000Z', time.gmtime(t / 1000))
 fails = []
 
+def start(page):
+  """Presses Start, and Start now when timed work asks once more (owner 2026-11-23)."""
+  page.click('[data-lvr="start"]')
+  if page.query_selector('[data-sure]'): page.click('[data-sure]')
+
 def check(ok, msg):
   print(('PASS ' if ok else 'FAIL ') + msg)
   if not ok: fails.append(msg)
@@ -104,7 +109,7 @@ with sync_playwright() as p:
     page.goto(f'{BASE}/{d}/practice.html?la=p-timed', wait_until='networkidle')
     page.wait_for_selector('.lvr-card [data-lvr="start"]', timeout=15000)
     check('9 min' not in page.inner_text('.lvr-card') and 'Time limit' in page.inner_text('.lvr-card'), f'{d}: start card names the time limit')
-    page.click('[data-lvr="start"]')
+    start(page)
     page.wait_for_selector('[data-qid]', timeout=15000)
     page.wait_for_timeout(600)
     t = page.inner_text('.lvr-strip')
@@ -134,7 +139,7 @@ with sync_playwright() as p:
       page.goto(f'{BASE}/{d}/practice.html?la=p-tq', wait_until='networkidle')
       page.wait_for_selector('[data-lvr="start"]', timeout=15000)
       check('1 question written by your teacher' in page.inner_text('.lvr-card'), f'{d}: start card counts the teacher question') if k == 0 else None
-      page.click('[data-lvr="start"]')
+      start(page)
       for step in range(6):
         page.wait_for_selector('[data-qid]', timeout=15000)
         page.wait_for_timeout(150)
@@ -160,7 +165,7 @@ with sync_playwright() as p:
     # 4. Mastery progress in the strip.
     page.goto(f'{BASE}/{d}/practice.html?la=m1', wait_until='networkidle')
     page.wait_for_selector('[data-lvr="start"]', timeout=15000)
-    page.click('[data-lvr="start"]')
+    start(page)
     page.wait_for_selector('[data-qid]', timeout=15000)
     page.wait_for_timeout(300)
     s0 = page.inner_text('.lvr-strip')
@@ -174,7 +179,7 @@ with sync_playwright() as p:
     # 5. Exam: class clock, no pause, held answers, results after hand-in.
     page.goto(f'{BASE}/{d}/exams.html?unit={unit}&la=e1', wait_until='networkidle')
     page.wait_for_selector('[data-lvr="start"]', timeout=15000)
-    page.click('[data-lvr="start"]')
+    start(page)
     page.wait_for_selector('[role="timer"]', timeout=20000)
     page.wait_for_timeout(700)
     tm = page.inner_text('[role="timer"]')

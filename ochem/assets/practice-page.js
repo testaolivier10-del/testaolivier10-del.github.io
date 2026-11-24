@@ -490,6 +490,10 @@
       var mods = C.MODULES || [], chosen = (params.chapters || '').split(',').filter(Boolean), tops = [];
       mods.forEach(function(m){ if(chosen.indexOf(m.id) !== -1) m.topics.forEach(function(t){ tops.push(t.id); }); });
       var n = params.n === '0' ? 999 : (parseInt(params.n, 10) || 10);
+      // topics=: several topics at once (a teacher's assignment); one topic runs as that topic's own drill.
+      var asked = (params.topics || '').split(',').filter(function(t){ return t && C.findTopic(t); });
+      if(asked.length === 1 && !params.topic) params.topic = asked[0];
+      else if(asked.length > 1) tops = asked;
       var mode = ({ weak: 'weak', missed: 'mistakes', studied: 'cumulative' })[params.from] || (params.topic && C.findTopic(params.topic) ? 'topic' : 'adaptive');
       var plan = E.makePlan(mode, { count: n, topic: params.topic, tiers: /^[1-4]$/.test(params.tier || '') ? [parseInt(params.tier, 10)] : null });
       if(mode === 'mistakes') plan.count = n;

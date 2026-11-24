@@ -43,6 +43,8 @@
   function ctlText(a){
     var c = ctl(a), out = [];
     if(c.timeLimit) out.push(c.timeLimit + ' min timed');
+    if(c.pick && c.pick.length) out.push(plural(c.pick.length, 'question') + ' you picked');
+    else if(c.same) out.push('same questions for everyone');
     if(c.shuffle) out.push('shuffled');
     if(c.release && c.release !== 'now') out.push('answers ' + RELEASE[c.release]);
     if(c.questions && c.questions.length) out.push(plural(c.questions.length, 'question') + ' of yours');
@@ -538,7 +540,7 @@
   function newDraft(arg){
     var now = new Date(), due = new Date(now.getTime() + 3 * DAY); due.setHours(23, 59, 0, 0);
     var d = { id: null, kind: 'practice', topics: [], count: 20, unit: '', frq: '', required: true, opens: '', due: local(due), late: 2, who: 'all', students: [], title: '', titleTouched: false,
-              target: 0.8, min: 10, timeLimit: 0, shuffle: false, release: 'now', questions: [], also: [] };
+              target: 0.8, min: 10, timeLimit: 0, shuffle: false, release: 'now', questions: [], also: [], qmode: '', pick: [] };
     if(arg && arg.indexOf('edit/') === 0){
       var a = D.assign.filter(function(x){ return x.id === arg.slice(5); })[0];
       if(a){ var dueT = a.due_at ? Date.parse(a.due_at) : null;
@@ -546,7 +548,8 @@
               opens: Date.parse(a.opens_at) > Date.now() ? local(new Date(a.opens_at)) : '', due: dueT ? local(new Date(dueT)) : '', late: a.late_until && dueT ? Math.round((Date.parse(a.late_until) - dueT) / DAY) : 0,
               who: a.students ? 'some' : 'all', students: (a.students || []).slice(), title: a.title, titleTouched: true,
               target: a.spec.target || 0.8, min: a.spec.min == null ? 10 : a.spec.min, timeLimit: ctl(a).timeLimit || 0, shuffle: !!ctl(a).shuffle,
-              release: ctl(a).release || 'now', questions: (ctl(a).questions || []).slice(), also: [] }; }
+              release: ctl(a).release || 'now', questions: (ctl(a).questions || []).slice(), also: [],
+              qmode: (ctl(a).pick || []).length ? 'pick' : ctl(a).same ? 'same' : 'own', pick: (ctl(a).pick || []).slice() }; }
     } else if(arg && arg.indexOf('student/') === 0){ d.who = 'some'; d.students = [arg.slice(8)]; }
     else if(arg && D.topics[arg]) d.topics = [arg];
     return d;
@@ -577,6 +580,51 @@
   function selH(id, opts, val){ return '<select class="pp-sel" id="' + id + '">' + opts.map(function(o){ return '<option value="' + esc(o[0]) + '"' + (String(val) === String(o[0]) ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') + '</select>'; }
   // A drop-down of checkboxes that looks like the select (practice-panel.css .pp-ms); key keeps it open across redraws.
   function msH(key, label, inner){ return '<details class="pp-ms" data-ms="' + key + '"' + (B.openMs === key ? ' open' : '') + '><summary class="pp-sel">' + label + '</summary><div class="pp-ms-list">' + inner + '</div></details>'; }
+  /* Which questions each student gets (owner 2026-11-23). Not chosen yet: the same set for work that counts or is
+     timed, each student's own draw for optional practice. An edited assignment keeps what it was saved with. */
+  function qmode(){
+    if(B.kind === 'review' || B.kind === 'mastery') return 'own';
+    var m = B.qmode || (B.kind === 'exam' || B.required || B.timeLimit ? 'same' : 'own');
+    return m === 'pick' && B.kind !== 'practice' ? 'same' : m;
+  }
+  function stem(x){ var d = document.createElement('div'); d.innerHTML = String(x.q || ''); var t = (d.textContent || '').replace(/\s+/g, ' ').trim(); return t.length > 120 ? t.slice(0, 118) + '…' : t; }
+  /* The bank questions in the picked topics, once their unit files are in (a redraw follows the load). */
+  function pickable(){
+    var units = {}, out = [], wait = [];
+    B.topics.forEach(function(t){ if(D.topics[t]) units[D.topics[t].unit] = 1; });
+    Object.keys(units).forEach(function(u){
+      var by = S.banks[course().dir + '/' + u];
+      if(!by){ wait.push(bankFor(u)); return; }
+      Object.keys(by).forEach(function(id){ if(B.topics.indexOf(by[id].topic) !== -1) out.push(by[id]); });
+    });
+    if(wait.length && !B.pickWait){ B.pickWait = true; var mine = B; Promise.all(wait).then(function(){ mine.pickWait = false; if(B === mine && location.hash.indexOf('#assign') === 0){ readForm(); drawAssign(); } }); }
+    return { items: out, loading: !!wait.length };
+  }
+  function whichHtml(){
+    if(B.kind === 'review' || B.kind === 'mastery')
+      return cellH('Which questions', '<p class="d5-mut" style="margin:0">Different for each student</p>', B.kind === 'review' ? 'Review is each student’s own missed questions.' : 'Mastery follows each student’s own answers.');
+    var m = qmode(), opts = [['same', 'Same for everyone', m === 'same'], ['own', 'Different for each student', m === 'own']];
+    if(B.kind === 'practice') opts.push(['pick', 'I’ll pick them', m === 'pick']);
+    var why = m === 'same' ? 'Every student gets the same ' + (B.kind === 'exam' ? 'exam' : 'set') + ', so scores compare fairly and your most missed questions mean more.'
+      : m === 'own' ? 'Each student gets questions they have not seen first, then ones they missed.' : 'The set is exactly the questions you tick, the same for everyone.';
+    var inner = chipsH('qmode', opts);
+    if(m === 'pick'){
+      if(!B.topics.length) inner += '<p class="d5-mut" style="margin:10px 0 0">Pick topics first, then tick questions here.</p>';
+      else {
+        var pk = pickable(), on = B.pick.filter(function(id){ return pk.loading || pk.items.some(function(x){ return String(x.id) === id; }); });
+        if(!pk.loading) B.pick = on;
+        var label = pk.loading ? 'Loading questions…' : on.length ? plural(on.length, 'question') + ' picked of ' + pk.items.length : 'Pick from ' + plural(pk.items.length, 'question');
+        var list = '';
+        B.topics.forEach(function(t){
+          var its = pk.items.filter(function(x){ return x.topic === t; });
+          if(!its.length) return;
+          list += '<p class="tm-msu">' + esc(topicName(t)) + ' &middot; ' + plural(its.length, 'question') + '</p>' + its.map(function(x){ return '<label class="pp-ms-o"><input type="checkbox" data-pickq="' + esc(x.id) + '"' + (B.pick.indexOf(String(x.id)) !== -1 ? ' checked' : '') + '> <span>' + esc(stem(x)) + (x.stimulus ? ' <small class="d5-mut">with a figure or data set</small>' : '') + '</span></label>'; }).join('');
+        });
+        inner += '<div style="margin-top:10px">' + msH('pickq', label, list || '<p class="d5-mut" style="margin:8px">' + (pk.loading ? 'Loading…' : 'No questions are published for these topics yet.') + '</p>') + '</div>';
+      }
+    }
+    return cellH('Which questions', inner, why, 'tm-wide');
+  }
   function controlsHtml(){
     if(B.kind === 'frq') return '';
     // Only the twelve AP® courses run assignments with controls (assets/class/class-run.js, ?la=); elsewhere, say so.
@@ -591,7 +639,8 @@
     return '<div class="pp-grp tm-2"><h3 class="pp-gh">Controls <small>optional, students see them before they start</small></h3>' +
       cellH('Time limit', selH('lvtTime', times, B.timeLimit), B.timeLimit ? (xt ? plural(xt, 'student') + ' with extra time get' + (xt === 1 ? 's' : '') + ' it on top. ' : '') + 'Set extra time on a student’s page.' : '') +
       cellH('Answers and explanations', selH('lvtRel', ['now', 'after_submit', 'after_due'].map(function(k){ return [k, RELEASE[k].charAt(0).toUpperCase() + RELEASE[k].slice(1)]; }), B.release)) +
-      cellH('Shuffle', '<label class="pp-ms-o tm-plain"><input type="checkbox" id="lvtShuf"' + (B.shuffle ? ' checked' : '') + '> Shuffle questions and choices for each student</label>') +
+      whichHtml() +
+      cellH('Shuffle', '<label class="pp-ms-o tm-plain"><input type="checkbox" id="lvtShuf"' + (B.shuffle ? ' checked' : '') + '> Put the questions and choices in a different order for each student</label>') +
       cellH('Your questions', mine) + '</div>';
   }
   function alsoHtml(){
@@ -634,7 +683,11 @@
         what += cellH('Mastery target', chipsH('target', [0.6, 0.7, 0.8, 0.9].map(function(v){ return [v, pct(v), B.target === v]; })), 'Mastery is the course’s own number: recent right answers on each topic, harder questions counting more.') +
           cellH('At least this many answers', '<input class="pp-sel tm-num" type="number" min="1" max="200" id="lvtMin" value="' + B.min + '">', 'A student who already masters a topic still answers the minimum.');
       } else {
-        what += cellH(B.kind === 'practice' ? 'Questions' : 'Most questions to redo', '<input class="pp-sel tm-num" type="number" min="1" max="100" id="lvtCount" value="' + B.count + '">');
+        // How many questions the picked topics hold, so a small topic is not asked for more than it has.
+        var have = B.topics.reduce(function(n, t){ return n + ((D.topics[t] && D.topics[t].qn) || 0); }, 0);
+        var haveNote = B.kind === 'practice' && B.topics.length && have ? 'These topics have ' + plural(have, 'question') + '.' + (B.count > have ? ' Students get all ' + have + '.' : '') : '';
+        if(B.kind === 'practice' && M.isAp(c.course) && qmode() === 'pick') what += cellH('Questions', '<p class="d5-mut" style="margin:0">' + (B.pick.length ? plural(B.pick.length, 'question') + ' picked' : 'The ones you tick below') + '</p>', 'Set under Which questions.');
+        else what += cellH(B.kind === 'practice' ? 'Questions' : 'Most questions to redo', '<input class="pp-sel tm-num" type="number" min="1" max="100" id="lvtCount" value="' + B.count + '">', haveNote);
       }
     } else if(B.kind === 'exam'){
       what = cellH('Unit test or full exam', selH('lvtUnit', [['', 'Full practice exam']].concat((course().unitExams === false ? [] : D.order).map(function(u){ return [u, esc(unitName(u) + ' test: ' + unitTitle(u))]; })), B.unit), 'Students take it on the course’s Exams page, timed as usual.');
@@ -655,7 +708,7 @@
       alsoHtml() + '</div>';
     // The summary, as students will see it.
     var subj = drillKind(B.kind) ? (B.topics.length ? B.topics.map(function(x){ var tt = D.topics[x]; return tt && tt.ced ? tt.ced : tt ? tt.title : x; }).slice(0, 4).join(', ') + (B.topics.length > 4 ? ' and more' : '') : B.kind === 'review' ? 'every miss' : 'no topics yet') : B.kind === 'exam' ? (B.unit ? unitName(B.unit) : 'full exam') : '';
-    var sumT = KIND[B.kind] + (B.kind === 'practice' ? ' &middot; ' + B.count + ' questions' : B.kind === 'mastery' ? ' &middot; to ' + pct(B.target) : B.kind === 'review' ? ' &middot; up to ' + B.count : '') + (B.timeLimit && B.kind !== 'frq' ? ' &middot; ' + B.timeLimit + ' min' : '');
+    var sumT = KIND[B.kind] + (B.kind === 'practice' ? ' &middot; ' + (M.isAp(S.rep.class.course) && qmode() === 'pick' ? B.pick.length : B.count) + ' questions' : B.kind === 'mastery' ? ' &middot; to ' + pct(B.target) : B.kind === 'review' ? ' &middot; up to ' + B.count : '') + (B.timeLimit && B.kind !== 'frq' ? ' &middot; ' + B.timeLimit + ' min' : '');
     var sumB = [esc(subj)].filter(Boolean).concat(B.due ? ['due ' + esc(day(Date.parse(B.due)))] : []).concat([B.required ? 'required' : 'optional', B.who === 'some' ? plural(B.students.length, 'student') : 'whole class']).join(' &middot; ');
     var go = B.id ? 'Save changes' : 'Assign to ' + esc(c.name) + (B.also.length && B.who !== 'some' ? ' and ' + plural(B.also.length, 'more class', 'more classes') : '');
     var side = '<aside class="pp-side"><div class="pp-sum"><div class="pp-sumcard"><p class="pp-sum-k">Students will see</p><p class="pp-sum-t">' + sumT + '</p><p class="pp-sum-b">' + sumB + '</p>' +
@@ -693,6 +746,9 @@
     if((B.kind === 'practice' || B.kind === 'mastery') && !B.topics.length) return bad('Pick at least one topic.');
     if(B.kind === 'frq' && !B.frq) return bad('Pick a free-response question.');
     if(B.who === 'some' && !B.students.length) return bad('Pick at least one student.');
+    var ap = M.isAp(S.rep.class.course), qm = ap && B.kind !== 'frq' ? qmode() : 'own';
+    if(qm === 'pick' && !B.pick.length) return bad('Tick the questions you want, or choose another option under Which questions.');
+    if(qm === 'pick') B.count = B.pick.length;
     if(!B.title.trim()) return bad('Give it a title.');
     var due = B.due ? new Date(B.due) : null, f = (S.frqs || []).filter(function(x){ return x.id === B.frq; })[0];
     var data = { kind: B.kind, title: B.title.trim(),
@@ -704,8 +760,8 @@
     if(!data.opens_at) delete data.opens_at;
     // qn: questions per topic for full mastery, so the student's browser grades it the same without the curriculum.
     if(B.kind === 'mastery'){ data.spec.target = B.target; data.spec.min = B.min; data.spec.qn = {}; B.topics.forEach(function(t){ if(D.topics[t] && D.topics[t].qn) data.spec.qn[t] = D.topics[t].qn; }); }
-    if(B.kind !== 'frq' && (B.timeLimit || B.shuffle || B.release !== 'now' || B.questions.length))
-      data.spec.controls = { timeLimit: B.timeLimit || null, shuffle: B.shuffle, release: B.release, questions: B.questions.slice() };
+    if(B.kind !== 'frq' && (B.timeLimit || B.shuffle || B.release !== 'now' || B.questions.length || qm !== 'own'))
+      data.spec.controls = { timeLimit: B.timeLimit || null, shuffle: B.shuffle, release: B.release, questions: B.questions.slice(), same: qm !== 'own', pick: qm === 'pick' ? B.pick.slice() : [] };
     var also = B.who === 'some' || B.id ? [] : B.also.slice();
     msg.textContent = 'Saving…'; msg.className = 'lv-msg';
     call('teach_save_assignment', { p_class: CLASS_ID, p_id: B.id, p_data: data }).then(function(id){
@@ -1212,6 +1268,7 @@
     else if(g('data-kind')){ e.preventDefault(); readForm(); B.kind = g('data-kind'); if(!B.titleTouched) B.title = ''; drawAssign(); }
     else if(g('data-req')){ e.preventDefault(); readForm(); B.required = g('data-req') === '1'; drawAssign(); }
     else if(g('data-who')){ e.preventDefault(); readForm(); B.who = g('data-who'); drawAssign(); }
+    else if(g('data-qmode')){ e.preventDefault(); readForm(); B.qmode = g('data-qmode'); if(B.qmode === 'pick') B.openMs = 'pickq'; drawAssign(); }
     else if(g('data-target')){ e.preventDefault(); readForm(); B.target = parseFloat(g('data-target')) || 0.8; drawAssign(); }
     else if(g('data-weak')){ e.preventDefault(); readForm(); B.topics = weakTopics(); drawAssign(); }
     else if(g('data-untopic')){ e.preventDefault(); readForm(); B.topics = B.topics.filter(function(x){ return x !== g('data-untopic'); }); drawAssign(); }
@@ -1272,6 +1329,7 @@
       B.topics = B.topics.filter(function(x){ return ids.indexOf(x) === -1; }).concat(t.checked ? ids : []); drawAssign(); }
     else if(t.hasAttribute('data-student')){ readForm(); var s = t.getAttribute('data-student'); B.students = t.checked ? B.students.concat([s]) : B.students.filter(function(x){ return x !== s; }); drawAssign(); }
     else if(t.hasAttribute('data-myq')){ readForm(); var mq = t.getAttribute('data-myq'); B.questions = t.checked ? B.questions.concat([mq]) : B.questions.filter(function(x){ return x !== mq; }); drawAssign(); }
+    else if(t.hasAttribute('data-pickq')){ readForm(); var pq = t.getAttribute('data-pickq'); B.pick = t.checked ? B.pick.concat([pq]) : B.pick.filter(function(x){ return x !== pq; }); drawAssign(); }
     else if(t.hasAttribute('data-also')){ readForm(); var ac = t.getAttribute('data-also'); B.also = t.checked ? B.also.concat([ac]) : B.also.filter(function(x){ return x !== ac; }); drawAssign(); }
     else if(t.id === 'lvtUnit' || t.id === 'lvtFrq' || t.id === 'lvtCount' || t.id === 'lvtDue' || t.id === 'lvtTime' || t.id === 'lvtMin' || t.id === 'lvtLate'){ readForm(); drawAssign(); }
   });
