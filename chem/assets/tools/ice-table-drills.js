@@ -114,12 +114,13 @@
         return { w: xw * c + yh * sn, h: yh * c + xw * sn, maxD: Math.max.apply(null, TEMPL[key].map(function(at){ return 2 * (at.r || 9); })) };
       }
       // the height the scene may take: what the stage has left under the tabs and above the cause line
-      function availH(narrow){
-        var lh = Math.max(lines.offsetHeight || 0, narrow ? 76 : 44), sc = sceneBox.getBoundingClientRect();
-        if(narrow) return clamp(window.innerHeight - lh - 22, 560, 900);
-        var body = sceneBox.closest('.ls-stage-body') || sceneBox.closest('.ls-stage');
-        if(body && body.clientHeight){ var br = body.getBoundingClientRect(); return clamp(body.clientHeight - (sc.top - br.top + body.scrollTop) - lh - 26, 430, 900); }
-        return clamp(window.innerHeight - sc.top - lh - 30, 430, 900);
+      function availH(phoneW){
+        var narrow = phoneW, lh = Math.max(lines.offsetHeight || 0, narrow ? 76 : 44), sc = sceneBox.getBoundingClientRect();
+        // a phone: the scene scrolled to the top of the screen; a tablet in portrait: the scene from where it starts
+        // a phone: the scene scrolled to the top of the screen; elsewhere the screen from where the scene starts (the
+        // card around the stage may grow with its content, so its own height says nothing)
+        if(narrow) return Math.max(400, window.innerHeight - lh - 22);
+        return clamp(window.innerHeight - (sc.top + window.scrollY) - lh - 28, 430, 1200);
       }
       /* The clipboard's text and rows from measured text, for font sizes scaled by k: every text 4 px clear of the
          next, the row names beside their letters and 6 px clear of the margin line. */
@@ -164,7 +165,8 @@
         return m;
       }
       function geo(W){
-        var r = R(), g = { W: W, narrow: W < 680 }, H = availH(g.narrow);
+        // under 860 px (phones and tablets in portrait) the flask stands over the notebook page; above, side by side
+        var r = R(), g = { W: W, narrow: W < 860, tablet: false }, H = availH(W <= 640);
         var most = 0; for(var k = 0; k <= r.steps; k++) most = Math.max(most, countsAt(r, k).reduce(function(a, b){ return a + b; }, 0));
         var nlF = g.narrow ? 0.26 : 0.4, shF = 0.16;
         // the flask's block: the bulb, and the gauge beside it at the upper right
@@ -186,37 +188,49 @@
         if(!g.narrow){
           g.H = Math.round(H);
           g.yb = g.H - 96;
-          var Rr = Math.min((g.yb - 16) / (2 + nlF + 0.7 * shF), 300);
-          while(Rr > 80 && blockW(Rr) > W / 2 - 40) Rr -= 1;
-          g.R = Math.round(Rr);
-          g.railY = g.yb + 30;
-          // the clipboard scaled with the flask, as large as fits its half, the height and 85% of the flask's area
-          var kk = clamp(g.R / 165, 0.88, 1.7), m;
-          for(;;){
-            m = bookMetrics(r, false, kk);
-            var fArea = 2 * g.R * flaskH(g.R);
-            if(kk <= 0.88 || (m.nw <= W / 2 - 40 && m.nh <= g.yb - 44 && m.nw * m.nh <= 0.85 * fArea)) break;
-            kk -= 0.02;
+          var Rr = Math.min((g.yb - 16) / (2 + nlF + 0.7 * shF), 300), m;
+          if(g.tablet){
+            // a tablet: the phone's compact page at the right, the flask as large as the rest of the width allows
+            m = bookMetrics(r, true, 1, Math.round(W * 0.42));
+            while(Rr > 80 && blockW(Rr) > W - m.nw - 100) Rr -= 1;
+            g.R = Math.round(Rr);
+          } else {
+            while(Rr > 80 && blockW(Rr) > W / 2 - 40) Rr -= 1;
+            g.R = Math.round(Rr);
+            // the clipboard scaled with the flask, as large as fits its half, the height and 85% of the flask's area
+            var kk = clamp(g.R / 165, 0.88, 1.7);
+            for(;;){
+              m = bookMetrics(r, false, kk);
+              var fArea = 2 * g.R * flaskH(g.R);
+              if(kk <= 0.88 || (m.nw <= W / 2 - 40 && m.nh <= g.yb - 44 && m.nw * m.nh <= 0.85 * fArea)) break;
+              kk -= 0.02;
+            }
           }
+          g.railY = g.yb + 30;
           g.bm = m;
           var bw = blockW(g.R);
-          g.cx = Math.round(Math.max(g.R + 44, W / 4 - bw / 2 + g.R));
+          g.cx = Math.round(g.tablet ? Math.max(g.R + 44, (W - m.nw - 40 - bw) / 2 + g.R) : Math.max(g.R + 44, W / 4 - bw / 2 + g.R));
           g.cy = g.yb - g.R - 2;
           g.nw = m.nw; g.nh = m.nh;
-          g.nx = Math.round(clamp(3 * W / 4 - m.nw / 2, g.cx - g.R + bw + 40, W - 22 - m.nw));
+          // the clipboard (frame included, 10 px) always inside the stage
+          g.nx = Math.round(Math.min(W - 22 - m.nw, Math.max(g.tablet ? g.cx - g.R + bw + 30 : 3 * W / 4 - m.nw / 2, g.cx - g.R + bw + 30)));
           g.ny = Math.max(24, Math.round((g.yb - m.nh) / 2));
         } else {
-          var mN = bookMetrics(r, true, 1, W - 16);
+          var mN = bookMetrics(r, true, 1, Math.min(W - 16, 360));
           g.bm = mN; g.nw = Math.min(mN.nw, W - 16); g.nh = mN.nh;
-          var Rp = 160;
-          while(Rp > 100 && (blockW(Rp) > W - 12 || 8 + flaskH(Rp) + 2 + 76 + mN.nh + 10 > H)) Rp -= 1;
+          // one flask size for both reactions: the tallest page of the two sets the height left for it. On a phone the
+          // flask is sized from the width alone (a short screen scrolls the table under the fold); on a tablet in
+          // portrait from the height too, so the knob, the flask, the table and the cause line fit together
+          var nhMax = Math.max.apply(null, RX.map(function(z){ return bookMetrics(z, true, 1, Math.min(W - 16, 360)).nh; }));
+          var Rp = W <= 640 ? 160 : 230;
+          while(Rp > 100 && (blockW(Rp) > W - 12 || (W > 640 && 8 + flaskH(Rp) + 2 + 72 + nhMax + 8 > H))) Rp -= 1;
           g.R = Math.round(Rp);
-          g.cx = 6 + g.R;
+          g.cx = Math.round(Math.max(6 + g.R, (W - blockW(g.R)) / 2 + g.R));
           g.cy = Math.round(8 + g.R * (nlF + 0.7 * shF) + g.R);
           g.yb = g.cy + g.R + 2;
           g.railY = g.yb + 22;
-          g.nx = Math.round((W - g.nw) / 2); g.ny = g.yb + 76;
-          g.H = g.ny + g.nh + 10;
+          g.nx = Math.round((W - g.nw) / 2); g.ny = g.yb + (W > 640 ? 72 : 76);
+          g.H = g.ny + g.nh + (W > 640 ? 8 : 10);
         }
         g.pad = g.bm.pad;
         g.neck = Math.max(10, Math.round(0.17 * g.R));
@@ -229,7 +243,7 @@
         // slight tilt allowed), plus the largest atom's diameter between them, so no two atoms of different molecules are
         // ever closer than one atom's width at rest; the
         // molecule scale is the largest that still holds the most molecules the knob can draw
-        var tilt = 0.1, mw = 0, mh = 0, gap = 0;
+        var tilt = 0.06, mw = 0, mh = 0, gap = 0;
         r.species.forEach(function(sp0){ var e = extent(sp0.key, tilt); mw = Math.max(mw, e.w); mh = Math.max(mh, e.h); gap = Math.max(gap, e.maxD); });
         var inner = g.R - 5, best = null;
         for(var sc = 1.3; sc > 0.2; sc -= 0.01){
@@ -242,7 +256,7 @@
               if(Math.hypot(Math.abs(x - g.cx) + hw, Math.abs(y - g.cy) + hh) <= inner) list.push([x, y]);
             }
           }
-          if(list.length >= most + 2){ best = { s: sc, slots: list }; break; }
+          if(list.length >= most + 1){ best = { s: sc, slots: list }; break; }
         }
         g.s = best ? best.s : 0.3; g.slots = best ? best.slots : [];
         g.tilt = tilt;
@@ -440,9 +454,9 @@
         ROWS.forEach(function(rw, ri){
           var ry = tt + bm.hh + ri * bm.rh;
           if(ri) L.book.appendChild(mk('path', 'ix2-rline', { d: 'M' + f1(x0 - 4) + ' ' + f1(ry) + 'H' + f1(right) }));
-          T2('ix2-row', x0 + 2, ry + bm.rowY, rw[0], f.row);
-          // the row's name beside its letter, on every width ("equilibrium" at the equilibrium step)
-          BK['w' + rw[0]] = T2('ix2-roww', x0 + bm.nameX, ry + bm.rowY, rw[0] === 'E' ? 'at this x' : rw[1].toLowerCase(), f.name);
+          // the row's letter and its name as one label ("equilibrium" at the equilibrium step), on every width
+          var rt = T2('ix2-row', x0 + 2, ry + bm.rowY, rw[0] + '<tspan class="ix2-roww" x="' + f1(x0 + bm.nameX) + '" style="font-size:' + f.name + 'px">' + (rw[0] === 'E' ? 'at this x' : rw[1].toLowerCase()) + '</tspan>', f.row);
+          BK['w' + rw[0]] = rt.querySelector('tspan');
           sp.forEach(function(s, i){
             var cx = colX(i), cell = {};
             if(rw[0] === 'I') cell.v = T2('ix2-val', cx, ry + Math.round(bm.rh / 2 + 0.36 * f.val), '', f.val, 'middle');
@@ -693,7 +707,7 @@
         var r0 = sceneBox.getBoundingClientRect(), W = Math.round(r0.width);
         if(!W || (!force && W === lastW && G)) { if(cue.active()) cue.place(); return; }
         lastW = W;
-        phone = W < 680;
+        phone = W < 860;
         if(raf){ cancelAnimationFrame(raf); raf = 0; }
         G = geo(W);
         sceneBox.style.height = G.H + 'px';

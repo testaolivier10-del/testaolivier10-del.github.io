@@ -177,9 +177,23 @@ Checks: sweep at 360, 390, 1024 (×768), 1280 (×800) and 1440, light and dark (
 failures), frames at 390 and 1440 (about 1160 frames each, 0 problems), AP Chem tests, content check, build `--check`,
 `check-site`.
 
+## Recheck 1 (2026-11-24): BLOCK on one item, fixed
+Review: `/home/claude/review-chem-ice/REVIEW.md` ("Recheck 1"). `claude/tools-v2-all` merged in first.
+- **M7, tablets in portrait (768 and 820 × 1024):** under 860 px the flask now stands over the notebook page (the
+  phone arrangement), centred, sized from the screen height left under the tabs, so the flask is the largest object,
+  the clipboard stays inside the stage and the card is filled (knob, table and cause line in view). The sweep now
+  clips the clipboard's frame too and checks the flask against the page at every width.
+- **S9:** molecules about 9% larger on phones (s 0.67 to 0.73 at 390): a tilt of at most 0.06 rad and one spare slot
+  instead of two, still a full atom apart (checked).
+- **S10:** a short phone (360 × 740) keeps the flask its full width-driven size; the table goes under the fold. The
+  sweep's screen fit check asks only for the knob on a phone under 800 px tall.
+- **S11:** one flask size for both reactions (a phone sizes it from the width; a tablet from the taller of the two
+  pages); the sweep checks it.
+- **S12:** the two stale lines below fixed. At 1920 the row letter and its name are one label (one text, the name a
+  tspan).
+
 ## Not done, and what I am not happy with
 - No real phone, no screen reader pass, no students.
-- On a phone the molecules are small (an I atom about 8 px across at 390) so that they never touch.
-- The middle of a reaction event (about 0.12 s, the atoms changing partners) still counts the reactants: the
-  numbers change when the products have formed.
+- On a phone the molecules are smallish so that they never touch: at 390 an I atom is about 17 px across and an H atom
+  about 9 px, N and O about 11 px.
 - Khan Academy's exercises were not opened (the search did not return them).

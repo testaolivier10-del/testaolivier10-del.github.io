@@ -99,6 +99,7 @@ const probe = (o) => {
   if (A(flask) < A(paper)) out.push(`the flask (${Math.round(A(flask))}) is smaller than the clipboard page (${Math.round(A(paper))})`);
   items.forEach(x => { if (A(x.r) > A(flask)) out.push(x.n + ' is larger than the flask'); });
   inS(flask, 'the flask'); inS(paper, 'the clipboard page');
+  const board = scene.querySelector('.ix2-board'); if (board) inS(R(board), 'the clipboard frame');
   // every atom inside the flask's body (or its neck)
   const sc = svg => svg.getBoundingClientRect().width / G.W, k = sc(scene.querySelector('svg'));
   X.mols().forEach(m => m.atoms.forEach(([x, y]) => { const d = Math.hypot(x - G.cx, y - (G.cy + 2)); if (d > G.R - 2) out.push(`an atom of ${m.key} is outside the flask (${d.toFixed(0)} of ${G.R})`); }));
@@ -155,7 +156,9 @@ const fitProbe = () => {
   const body = scene.closest('.ls-stage-body') || scene.closest('.ls-stage');
   if (innerWidth > 640 && body && body.scrollHeight - body.clientHeight > 2) out.push(`the card scrolls inside (${body.scrollHeight} in ${body.clientHeight})`);
   const box = innerWidth > 640 && body ? R(body) : { top: 0, bottom: innerHeight };
-  const need = { knob: document.querySelector('.ix2 .tk2-drag .tk2-dot'), 'E row': document.querySelector('.ix2-eqband'), 'Q line': document.querySelector('.ix2-qline'), 'cause line': document.querySelector('.ix2 .tk2-cause') };
+  // a short phone (under 800 px tall) keeps the flask full size and lets the table go under the fold: the knob only
+  const short = innerWidth <= 640 && innerHeight < 800;
+  const need = short ? { knob: document.querySelector('.ix2 .tk2-drag .tk2-dot') } : { knob: document.querySelector('.ix2 .tk2-drag .tk2-dot'), 'E row': document.querySelector('.ix2-eqband'), 'Q line': document.querySelector('.ix2-qline'), 'cause line': document.querySelector('.ix2 .tk2-cause') };
   Object.keys(need).forEach(k => { const e = need[k]; if (!e) return out.push('no ' + k); const r = R(e); if (r.top < Math.max(0, box.top) - 1 || r.bottom > Math.min(innerHeight, box.bottom) + 1) out.push(`${k} off screen (${Math.round(r.top)} to ${Math.round(r.bottom)} of ${innerHeight})`); });
   window.scrollTo(0, 0);
   return out;
@@ -163,7 +166,8 @@ const fitProbe = () => {
 let checks = 0, states = 0; const fails = [];
 const W4 = w => String(w).padStart(4, '0');
 // each width at a screen height it really comes with (review round 1: 1024 x 768 and 1280 x 800 included)
-function HEIGHT(w) { return w <= 430 ? 844 : w <= 600 ? 960 : w <= 820 ? 1024 : w <= 1024 ? 768 : w <= 1280 ? 800 : w <= 1440 ? 900 : 1080; }
+const hi0 = args.indexOf('--height'), HFIX = hi0 >= 0 ? +args[hi0 + 1] : 0;
+function HEIGHT(w) { return HFIX || (w <= 430 ? 844 : w <= 600 ? 960 : w <= 820 ? 1024 : w <= 1024 ? 768 : w <= 1280 ? 800 : w <= 1440 ? 900 : 1080); }
 if (!FRAMES && !PERF) for (const w of WIDTHS) {
   const h = HEIGHT(w);
   for (const theme of ['light', 'dark']) {
@@ -184,7 +188,7 @@ if (!FRAMES && !PERF) for (const w of WIDTHS) {
     }
     const c = await open({ w, h, theme });
     const fit = await c.page.evaluate(fitProbe); states++; checks += 5; fit.forEach(m => fails.push(`${w}x${h} ${theme} screen fit: ${m}`));
-    const causeH = {};
+    const causeH = {}, flaskR = [];
     for (const [rx, ks] of [['hi', [0, 4, 'eq', 13]], ['n2o4', [0, 2, 'eq', 10]]]) {
       if (rx === 'n2o4') { await c.page.click('.tk2-tab[data-v=n2o4]'); await c.page.waitForTimeout(500); }
       for (const k0 of ks) {
@@ -193,12 +197,14 @@ if (!FRAMES && !PERF) for (const w of WIDTHS) {
         const res = await c.page.evaluate(probe, {});
         states++; checks += 18; res.out.forEach(m => fails.push(`${w} ${theme} ${rx} step ${k}: ${m}`));
         (causeH[rx] = causeH[rx] || []).push(res.causeH);
+        flaskR.push(await c.page.evaluate(() => window.__ice2.G().R));
         if (SHOTS) await c.page.locator('.ix2').screenshot({ path: join(SHOTS, `${W4(w)}-${theme}-${rx}-${k0 === 'eq' ? 'eq' : String(k).padStart(2, '0')}.png`) });
         if (k0 === 'eq') { await c.page.waitForTimeout(1300); const res2 = await c.page.evaluate(probe, {}); checks += 18; res2.out.forEach(m => fails.push(`${w} ${theme} ${rx} takeaway: ${m}`));
           const tk = await c.page.evaluate(() => document.querySelector('.ix2 .tk2-cause').classList.contains('is-take')); if (!tk) fails.push(`${w} ${theme} ${rx}: no takeaway at equilibrium`);
           if (SHOTS) await c.page.locator('.ix2').screenshot({ path: join(SHOTS, `${W4(w)}-${theme}-${rx}-eq-takeaway.png`) }); }
       }
     }
+    if (new Set(flaskR).size > 1) fails.push(`${w} ${theme}: the flask changes size between the reactions (${flaskR.join(', ')})`);
     if (w <= 640) for (const rx in causeH) if (new Set(causeH[rx]).size > 1) fails.push(`${w} ${theme} ${rx}: the cause line changes height on a phone (${causeH[rx].join(', ')})`);
     c.errs.forEach(e => fails.push(`${w} ${theme}: console ${e}`));
     await c.ctx.close();
