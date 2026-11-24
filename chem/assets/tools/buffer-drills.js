@@ -174,7 +174,7 @@
         var keyW = 0;
         BUF.forEach(function(b){ keyLines(b, 'buf').concat(keyLines(b, 'wat')).forEach(function(t){ keyW = Math.max(keyW, measure(t, f.key, 800)); }); });
         g.iconW = Math.round(g.keyLH * 1.5);
-        g.keyW = Math.ceil(g.iconW + 6 + keyW);
+        g.keyW = Math.ceil(Math.max(g.iconW + 6 + keyW, measure('1 particle = 1 mmol', f.key, 700)));
         var headW = Math.max(measure('Buffer used up', f.head, 900), measure('Water', f.head, 900));
         // the droppers' labels on the wall
         g.labH = Math.round(f.lab * 1.55);
@@ -483,9 +483,11 @@
           p.push('<path class="bx2-ptr" data-c="' + c.i + '" d="M-5 ' + (sy - 7) + 'H5L0 ' + (sy - 1) + 'Z"/>');
           // the counts: a small drawing of each particle and how many are drawn
           var iconS = Math.min((g.keyLH - 4) / g.mh0, (g.iconW - 2) / g.mw0);
-          var rowsK = c.kind === 'buf' ? [bf.HA.key, bf.A.key, 'X'] : ['H3O+', 'OH-'];
+          var rowsK = c.kind === 'buf' ? [bf.HA.key, bf.A.key, 'X'] : ['H3O+', 'OH-', 'S'];
           rowsK.forEach(function(k, r){
             var yy = c.ky + r * g.keyLH + g.keyLH / 2, icx = c.kx + g.iconW / 2;
+            // the scale, in the water's free third row: one particle is one millimole
+            if(k === 'S'){ p.push('<text class="bx2-scale" x="' + f1(c.kx) + '" y="' + f1(yy + fz.key * 0.36) + '" style="font-size:' + fz.key + 'px">1 particle = 1 mmol</text>'); return; }
             p.push('<g class="bx2-krow" data-c="' + c.i + '" data-r="' + r + '">' + (k === 'X' ? '<g class="bx2-kx"></g>' : iconSvg(k, icx, yy, iconS)) +
               '<text class="bx2-kt" x="' + f1(c.kx + g.iconW + 6) + '" y="' + f1(yy + fz.key * 0.36) + '" style="font-size:' + fz.key + 'px"></text></g>');
           });
