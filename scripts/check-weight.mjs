@@ -103,6 +103,12 @@ const SHELL_BUDGETS = [
      by that tool's page (its landing), so it is its own shell, not part of every A&P page's (review round 1). Four drawn
      body systems and the chain engine. Measured 32.8 KB in review round 1; 33.3 KB after recheck 1 (the adaptive ambient rate, the keep-out for the "before" word, arrows held until the shown number moves). */
   ['anatomy-physiology/predict-explore', 34],
+  /* NREMT scenario simulator, tools v2 Explore (nremt/assets/scenario-explore.js and .css): its own shell, loaded only
+     by scenario-sim.html. Measured 35.3 KB (the drawn settings, five patient figures' clothes, faces and care). */
+  ['nremt/scenario-explore', 41.4], // 36 -> 41.4 (rechecks 1 to 3; measured 41.1; recheck 3 added the profile face, the call's pose fetched before its opening and the repeated-word filter): postures drawn from posed figures (side, seated: the seat, the turned face), laid flat then up, the newborn after a birth, the 3:1 sequence. The posed figures themselves (body-figs/pose.js and its images) load on demand, like case.js
+  /* The NREMT v2 shared pieces: nremt-kit2.js (the adapter) and patient-draw.js (the drawn patient, review round 1 of the
+     scenario simulator). Measured 6.1 KB. */
+  ['nremt/kit2', 6.2],
   /* 249 -> 253 for cross-device sync (audit 2026-10, Fix-first 5). A sync
      used to replace whole namespaces and pull only on sign-in, so two signed-in
      devices erased each other's progress. account.js now carries a per-key
@@ -318,7 +324,7 @@ const SHELL_BUDGETS = [
      call's opening) and the six-call picker's "All calls" button. Measured 28.2 KB on scenario-sim.html. */
   /* 28.3 -> 28.8 (tool frame F2, docs/tools-frame-notes/nremt.md): task heads, the stage dropdowns and finished
      cards in the tool CSS. Measured 28.5 KB. */
-  ['nremt', 28.8],
+  ['nremt', 28.0], // 28.8 -> 28.0 (tools v2 scenario sim recheck 1): the v2 shared pieces left this shell (nremt/kit2); measured 27.7
   /* 92 -> 96. This is a first-paint cost on EVERY ochem page, so it is worth
      saying what moved rather than just moving the number: the course went from
      64 topics to 83 across four new chapters, and three shared files grew with
@@ -725,7 +731,7 @@ const BUDGETS = [
   /* 57.6 -> 61.5 (fuller tool pages, 2026-11-12, docs/site-health.md): each call's title, kind, blurb and opening
      scene in a closed "About this tool" line, for readers without JavaScript and crawlers. Measured 61.2 KB. */
   /* 61.5 -> 62.2 (tool frame F2): the call head, the call switcher and the finished card. Measured 61.9 KB. */
-  ['nremt/scenario-sim.html', 62.2],
+  ['nremt/scenario-sim.html', 62.7], // 62.2 -> 62.7 (tools v2): the run moved into Test yourself, deep links, kit2 wiring
   // learn.html is a shell whose only real weight is the static table of
   // contents generated into it for readers without JavaScript — one line per
   // section. It crossed 3.0 KB when the IUPAC Nomenclature chapter added four
@@ -975,6 +981,9 @@ const DATA_BUDGETS = [
      If it grows past this, the repeated ref links and source labels per card
      are the saving. */
   ['nremt/assets/flashcards.json', 46],
+  /* The scenario simulator's posed figures (scripts/build-pose-figures.mjs): sizes, outlines and landmarks of the
+     eight posed patients, fetched only for a call that poses one. Measured 7.7 KB. */
+  ['nremt/assets/body-figs/pose.js', 9],
   /* The ochem index grows with the course itself — it is generated from the
      notes and the question bank — so it moves every time a chapter lands.
      Unlike practice-bank.json above, this one is genuinely not a first-paint
@@ -1214,6 +1223,12 @@ function bucketOf(relPath) {
   if (parts[0] === 'assets' && parts[1] === 'video') return 'assets/video';
   // A&P Predict the change's Explore (tools v2) loads only on that tool's page, so it is its own shell.
   if (parts[0] === 'anatomy-physiology' && parts[1] === 'assets' && parts[2] === 'tools' && /^predict-explore\./.test(parts[3] || '')) return 'anatomy-physiology/predict-explore';
+  // The NREMT scenario simulator's Explore (tools v2, docs/tools-v2-nremt-scenario-sim-brief.md) loads only on that
+  // tool's page, so it is its own shell (the drawn settings, patients and care: about 31 KB gzipped).
+  if (parts[0] === 'nremt' && parts[1] === 'assets' && /^scenario-explore\./.test(parts[2] || '')) return 'nremt/scenario-explore';
+  // The NREMT tools v2 shared pieces (the kit2 adapter nremt-kit2.js and the drawn patient patient-draw.js) load only
+  // on the NREMT pages rebuilt to v2, so they are their own shell, not part of every NREMT page's.
+  if (parts[0] === 'nremt' && parts[1] === 'assets' && /^(nremt-kit2|patient-draw)\.js$/.test(parts[2] || '')) return 'nremt/kit2';
   // The shared 3D body (assets/body3d/viewer.js) loads only on the NREMT body
   // map and the A&P 3D anatomy tool, so it is its own shell too.
   if (parts[0] === 'assets' && parts[1] === 'body3d') return 'assets/body3d';

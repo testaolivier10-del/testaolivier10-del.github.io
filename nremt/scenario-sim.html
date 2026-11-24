@@ -39,8 +39,12 @@
 <link rel="stylesheet" href="../assets/course/tool-studio.css">
 <link rel="stylesheet" href="assets/nremt-studio.css">
 <link rel="stylesheet" href="assets/studio/scenario-sim.css">
+<link rel="stylesheet" href="../assets/course/tool-kit2.css">
+<link rel="stylesheet" href="assets/scenario-explore.css">
 <script src="../assets/course/tool-studio.js" defer></script>
+<script src="../assets/course/tool-kit2.js" defer></script>
 <script src="assets/nremt-studio.js" defer></script>
+<script src="assets/nremt-kit2.js" defer></script>
 <!-- tool-studio:end -->
 <style>
   body{line-height:1.65;}
@@ -2223,17 +2227,27 @@ const studio = window.NremtStudio ? window.NremtStudio.mount({
   note: { label: 'Premium tool.', html: 'Part of NREMT-EMT Premium.' },
 }) : null;
 let simDock = null, simWhy = null;
+/* Tools v2 (docs/tools-v2-nremt-scenario-sim-brief.md): EXPLORE is the drawn call (assets/scenario-explore.js); TEST
+   YOURSELF is this run, as it was (scored, the drift at time-critical forks, the debrief and Review). Q scopes the
+   run's side panel, head and finished card to Test yourself. */
+const V2 = !!(studio && window.LevlKit2 && window.NremtScenarioExplore && window.NremtStudio.kit2 && window.NremtSim);
+const Q = V2 ? 'quiz' : undefined;
+let runStage = null;
 if (studio) {
   document.querySelector('.picker-cue').hidden = true;
   simDock = document.createElement('div'); simDock.className = 'sim-ls-dock';
   simWhy = document.createElement('div'); simWhy.className = 'sim-ls-why';
-  studio.add('stage', [document.getElementById('pickerScreen'), document.getElementById('simBox')]);
+  if (V2) {
+    runStage = document.createElement('div'); runStage.className = 'sim-run';
+    document.getElementById('pickerScreen').parentNode.insertBefore(runStage, document.getElementById('pickerScreen'));
+    runStage.appendChild(document.getElementById('pickerScreen')); runStage.appendChild(document.getElementById('simBox'));
+  } else studio.add('stage', [document.getElementById('pickerScreen'), document.getElementById('simBox')]);
   window.NremtStudio.scrollable(document.getElementById('pickerScreen'), 'Calls');
   window.NremtStudio.scrollable(document.getElementById('simBox'), 'The call');
-  studio.add('dock', simDock);
-  studio.add('why', simWhy);
+  if (!V2) studio.add('dock', simDock);
+  studio.add('why', simWhy, V2 ? { mode: 'quiz' } : undefined);
   studio.root.setAttribute('data-sim', 'picker');
-  studio.menu({ items: [{ label: 'All scenarios', icon: 'grid', onClick: () => backToPicker() }] });
+  studio.menu({ items: [{ label: 'All scenarios', icon: 'grid', onClick: () => { if (V2 && studio.kit2) studio.kit2.go('quiz'); backToPicker(); } }] });
   // "Examine the patient" turns the stage to the patient (phone).
   simDock.addEventListener('click', e => {
     const j = e.target.closest('.pt-jump'); if (!j) return;
@@ -2247,14 +2261,14 @@ if (studio) {
 let callPick = null;
 function simTask(){
   if (!studio || !studio.task) return;
-  studio.done(false);
+  studio.done(false, Q);
   const locked = window.NremtGates && !window.NremtGates.canUse('scenarios');
   if (!currentScenario) { studio.task(locked ? { kicker: 'Premium', title: 'Part of NREMT-EMT Premium.', todo: 'Unlock it to run every call.' }
-      : { kicker: 'Scenario', title: 'Pick a call.', todo: 'You choose each step; the patient responds.' }); studio.caption(''); if (callPick) callPick.el.classList.add('ls-off'); return; }
-  studio.task({ kicker: currentScenario.domain, title: currentScenario.title, todo: pathLog.length ? 'What do you do next? Pick below.' : 'Read the scene, then pick what you would do.' });
+      : { kicker: 'Scenario', title: 'Pick a call.', todo: 'You choose each step; the patient responds.' }, Q); studio.caption('', Q); if (callPick) callPick.el.classList.add('ls-off'); return; }
+  studio.task({ kicker: currentScenario.domain, title: currentScenario.title, todo: pathLog.length ? 'What do you do next? Pick below.' : 'Read the scene, then pick what you would do.' }, Q);
   if (studio.picker && !callPick) callPick = studio.picker({ label: 'Switch to another call', value: currentScenario.id,
     groups: CATS.map(c => ({ label: c.label, items: SCENARIOS.filter(x => catOf(x) === c.k).map(x => ({ value: x.id, label: x.title, sub: c.label })) })).filter(g => g.items.length),
-    onChange: v => startScenario(v) });
+    onChange: v => startScenario(v) }, Q);
   if (callPick) { callPick.el.classList.remove('ls-off'); callPick.value(currentScenario.id); }
 }
 /* Why: the call so far, newest last. */
@@ -2373,7 +2387,7 @@ function backToPicker(){
   if (studio) {
     simDock.innerHTML = '';
     studio.root.setAttribute('data-sim', 'picker');
-    studio.pills([]); studio.caption('Pick a call. You choose each step; the patient responds.');
+    studio.pills([], undefined, Q); studio.caption('Pick a call. You choose each step; the patient responds.', Q);
     simTask();
     studioWhy();
     return;
@@ -2564,8 +2578,8 @@ function renderNode(consequenceText){
     const deb = recordDebrief(), missedSteps = deb.missed, nxtCall = nextScenario();
     if (studio) {
       const outcome = node.ending === 'good' ? 'Good outcome' : node.ending === 'bad' ? 'Poor outcome' : 'Mixed outcome';
-      studio.pills([{ html: outcome, tone: node.ending === 'good' ? 'good' : node.ending === 'bad' ? 'bad' : 'warn' }]);
-      studio.caption('<b>' + outcome + '.</b> ' + (pathLog.length ? 'Your path is on the ' + (matchMedia('(min-width:1000px)').matches ? 'left' : 'screen above') + ': go back to any decision to try the other branch.' : ''));
+      studio.pills([{ html: outcome, tone: node.ending === 'good' ? 'good' : node.ending === 'bad' ? 'bad' : 'warn' }], undefined, Q);
+      studio.caption('<b>' + outcome + '.</b> ' + (pathLog.length ? 'Your path is on the ' + (matchMedia('(min-width:1000px)').matches ? 'left' : 'screen above') + ': go back to any decision to try the other branch.' : ''), Q);
       studioWhy();
       simDock.innerHTML = `
         <div class="sim-header">
@@ -2590,7 +2604,7 @@ function renderNode(consequenceText){
             (pathLog.some(p => p.alternatives.length) ? 'Go back to any decision in your path to try the other branch.' : ''),
           next: { label: 'Next call: ' + nxt.title, onClick: () => startScenario(nxt.id) },
           links: [{ label: 'Try this call again', onClick: () => startScenario(currentScenario.id) }, { label: 'All scenarios', onClick: () => backToPicker() }]
-            .concat([].slice.call(keep.querySelectorAll('a[href]'), 0, 2).map(a => ({ label: a.textContent.replace(/\s+/g, ' ').trim(), href: a.getAttribute('href') }))) });
+            .concat([].slice.call(keep.querySelectorAll('a[href]'), 0, 2).map(a => ({ label: a.textContent.replace(/\s+/g, ' ').trim(), href: a.getAttribute('href') })))  }, Q);
       }
       box.innerHTML = `
       <div class="sim-card"></div>
@@ -2680,10 +2694,10 @@ function renderNode(consequenceText){
   if (studio) {
     studio.root.setAttribute('data-sim', 'call');
     simTask();
-    studio.pills(hesitateTo ? [{ html: 'Time-critical', tone: 'bad' }] : [], 'right');
+    studio.pills(hesitateTo ? [{ html: 'Time-critical', tone: 'bad' }] : [], 'right', Q);
     // The caption is the situation; what the last choice did lands on the stage.
     // The opening call is never clamped: its details are the case (audit 2026-10).
-    studio.caption(node.text);
+    studio.caption(node.text, Q);
     studio.root.toggleAttribute('data-sim-first', !pathLog.length);
     // Pass 3: no numbers on arrival; the monitor opens on "Check vitals" or the first choice (time-critical: at once).
     studio.root.toggleAttribute('data-mon-wait', !pathLog.length && !hesitateTo && !monOpened);
@@ -2721,7 +2735,27 @@ function renderNode(consequenceText){
 // Called now and whenever access changes. A run already under way when access
 // lapses is left to finish; the next pick meets the gate.
 G.onChange(renderPicker);
-if (studio) studio.hint({ target: document.querySelector('#pickerGrid [data-scenario]'), text: 'Pick a call to start', round: 18 });
+if (studio && !V2) studio.hint({ target: document.querySelector('#pickerGrid [data-scenario]'), text: 'Pick a call to start', round: 18 });
+/* Tools v2: Explore first. Deep links: #call-<id> opens Explore on that call; ?scenario=<id> (Review's links) starts
+   that call's scored run in Test yourself; #test and #run open Test yourself. */
+let explore = null;
+if (V2) {
+  explore = window.NremtScenarioExplore.build({ studio, scenarios: SCENARIOS, cats: CATS, catOf,
+    gate: () => G.canUse('scenarios') ? '' : G.gate('scenarios', 'scenario-sim') });
+  window.NremtStudio.kit2(studio, { stage: explore.stage, ref: explore.ref,
+    parts: [{ value: 'run', label: 'Run a call', stage: runStage, dock: simDock }],
+    start: h => {
+      const m = /^#call-(s\d+)$/.exec(h || '');
+      if (m && SCENARIOS.some(s => s.id === m[1])) { explore.show(m[1]); return { mode: 'explore' }; }
+      if (new URLSearchParams(location.search).get('scenario') || /^#run\b/.test(h || '')) return { mode: 'quiz' };
+      return null;
+    },
+    onShow: m => {
+      if (m === 'explore') { if (monitor) monitor.pause(); explore.shown(); }
+      else { explore.hidden(); if (monitor) monitor.resume(); simTask(); }
+    } });
+  G.onChange(() => explore.refresh());
+}
 // From Review: scenario-sim.html?scenario=<id> opens that call.
 (function(){
   const id = new URLSearchParams(location.search).get('scenario');
@@ -2732,6 +2766,8 @@ if (studio) studio.hint({ target: document.querySelector('#pickerGrid [data-scen
 <script src="assets/tool-results.js" defer></script>
 <script src="assets/body-figures.js" defer></script>
 <script src="assets/scenario-monitor.js" defer></script>
+<script src="assets/patient-draw.js" defer></script>
+<script src="assets/scenario-explore.js" defer></script>
 <script src="../assets/course/card-loader.js" defer></script>
 <script src="assets/nav.js" defer></script>
 </body>
