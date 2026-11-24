@@ -143,7 +143,8 @@
    "desc": "Every function type on one stage: drag the parameters and watch the graph, table, formula and words change together, with zeros, asymptotes and end behavior.",
    "blurb": "Drag the parameters; graph, table and formula move together.",
    "lede": "Drag a parameter and watch every representation change at once.",
-   "studio": true
+   "studio": true,
+   "kit2": true
   },
   {
    "slug": "rate-of-change",
