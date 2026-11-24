@@ -176,6 +176,14 @@ and dark: 17,525 passed, 0 failed; frames at 390 and 1440: 1,398 passed, 0 faile
 375x667, 360x640, 360x740 and 390x844: no answer under the rubric; HuG tests 160 pass; content check 0 failing; the
 three build checks, `check-site` and `check-weight --check` clean. Shots: `/mnt/user-data/outputs/hug-frq-coach-v2/shots/r2-*`.
 
+## Recheck 2 (2026-11-24, PASS; two small fixes done before integration)
+1. At 1280x800 (8 px) and 1440x900 (1 px) the booklet ran off the desk: the scene, a flex child, shrank inside the
+   stage below the height the layout gave it. `.fcx-scene` no longer shrinks; the sweep's desk check now reads the
+   scene's real height and runs at 1280x800 and 1440x900.
+2. The polders dike is one trapezoid from its crest to the bottom, with the sea and the polder flush against its sides.
+Checks: sweep at 360x640, 390x844, 1024x768, 1280x800 and 1440x900, light and dark: 12,554 passed, 0 failed; HuG
+tests 160 pass; `build-aphug --check`, `check-weight --check` and `check-site` clean.
+
 ## Not done, and what I am not happy with
 - At Identify and Describe most of the answer page is ruled lines waiting for the longer rungs (by design: the box fits
   the longest rung); on very wide screens a short band can stay under the prompt when the drawing reaches its tallest.

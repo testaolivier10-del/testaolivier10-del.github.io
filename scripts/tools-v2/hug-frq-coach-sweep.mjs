@@ -94,7 +94,7 @@ const CHECK = () => {
   T.forEach((t) => { if (t.r.left < sc.left - 1 || t.r.right > sc.right + 1 || t.r.top < sc.top - 1 || t.r.bottom > sc.bottom + 1) out.push(t.name + ' outside the scene'); });
   const ans = document.querySelector('.fcx-ans'); if (ans.scrollHeight > ans.clientHeight + 1) out.push('answer overflows');
   const rub = R(document.querySelector('.fcx-rub')); if (words.length && Math.max(...words.map(w => R(w).bottom)) > rub.top - 4) out.push('answer within 4 px of the rubric');
-  const g = E._G(); if (g.book[1] + g.book[3] + 4 > g.H) out.push('the booklet runs off the desk (' + Math.round(g.book[1] + g.book[3]) + ' of ' + g.H + ')');
+  const g = E._G(), sh = scene.clientHeight; if (g.book[1] + g.book[3] + 4 > Math.min(g.H, sh)) out.push('the booklet runs off the desk (' + Math.round(g.book[1] + g.book[3]) + ' of ' + sh + ')');
   if (rub.bottom > sc.bottom - 4) out.push('rubric at the scene edge');
   // no text under 11 px
   T.forEach((t) => { let fs; if (t.e instanceof SVGElement) { const m = t.e.getScreenCTM(); fs = parseFloat(t.e.getAttribute('font-size')) * (m ? Math.hypot(m.a, m.b) : 1); } else fs = parseFloat(getComputedStyle(t.e).fontSize); if (fs < 10.95) out.push(t.name + ' ' + fs.toFixed(1) + ' px'); });

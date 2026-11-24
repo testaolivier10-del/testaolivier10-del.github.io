@@ -10,7 +10,7 @@
   --pg-a:#2A2D2C;--pg-b:#232624;--pg-ink:#ECE8DE;--pg-mute:#B4AE9F;--pg-rule:#3E5160;--pg-margin:#6A3E3E;
   --desk-a:#3A2C22;--desk-b:#2A2019;--grain:rgba(0,0,0,.28);}
 .fcx{display:flex;flex-direction:column;gap:8px;min-width:0;}
-.fcx-scene{position:relative;width:100%;min-height:420px;border-radius:14px;overflow:hidden;color:var(--pg-ink);}
+.fcx-scene{position:relative;flex:none;width:100%;min-height:420px;border-radius:14px;overflow:hidden;color:var(--pg-ink);}
 .fcx-svg{position:absolute;left:0;top:0;display:block;}
 .fcx-desk-a{stop-color:var(--desk-a);} .fcx-desk-b{stop-color:var(--desk-b);}
 .fcx-grain{fill:none;stroke:var(--grain);stroke-width:2;}

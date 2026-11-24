@@ -554,17 +554,19 @@
   function up(VH, inner){ return '<g transform="translate(0 ' + (VH - 120) + ')">' + inner + '</g>'; }
   var ART = {
     polders: function(fs, VH){
-      // the horizon at about 42% of the box: a taller box gets more sea, dike and soil, not just sky
+      // the horizon at about 42% of the box: a taller box gets more sea, dike and soil, not just sky. The dike is one
+      // trapezoid from its crest to the bottom; the sea and the polder lie flush against its two sides.
       var dy = Math.max(0, Math.min(VH - 120, Math.round(VH * 0.42 - 44))), T = function(y){ return y + dy; };
+      var xL = function(y){ return r1(100 - (y - T(34)) * 12 / 86); }, xR = function(y){ return r1(118 + (y - T(34)) * 14 / 86); };
       var o = '<rect class="a-sky" x="0" y="0" width="260" height="' + VH + '" rx="6"/>' + (dy > 40 ? '<g transform="translate(0 ' + r1(dy - 40) + ')">' + clouds(160) + '</g>' : '') +
-        '<path class="a-sea" d="M0 ' + T(44) + 'H96L' + r1(104 + (VH - T(120)) * 0.06) + ' ' + VH + 'H0Z"/>' +
-        '<path class="a-dike" d="M' + r1(88 - (VH - T(120)) * 0.15) + ' ' + VH + 'L88 ' + T(120) + 'H132L' + r1(132 + (VH - T(120)) * 0.15) + ' ' + VH + 'Z"/>' +
-        '<path class="a-land" d="M128 ' + T(74) + 'H260V' + VH + 'H' + r1(128 + (VH - T(120)) * 0.15) + 'Z"/>';
-      for(var y = T(124); y < VH - 4; y += 14) o += '<path class="a-soil" d="M' + r1(140 + (y - T(120)) * 0.15) + ' ' + y + 'H256"/>';
+        '<path class="a-sea" d="M0 ' + T(44) + 'H' + xL(T(44)) + 'L' + xL(VH) + ' ' + VH + 'H0Z"/>' +
+        '<path class="a-land" d="M' + xR(T(74)) + ' ' + T(74) + 'H260V' + VH + 'H' + xR(VH) + 'Z"/>' +
+        '<path class="a-dike" d="M' + xL(VH) + ' ' + VH + 'L100 ' + T(34) + 'H118L' + xR(VH) + ' ' + VH + 'Z"/>';
+      for(var y = T(96); y < VH - 4; y += 14) o += '<path class="a-soil" d="M' + r1(+xR(y) + 6) + ' ' + y + 'H256"/>';
       return o + '<g transform="translate(0 ' + dy + ')">' +
         '<path class="a-wave" d="M6 52q6 -4 12 0t12 0t12 0M40 66q6 -4 12 0t12 0t12 0M10 82q6 -4 12 0t12 0t12 0"/>' +
-        '<path class="a-dike" d="M88 120L100 34H118L132 120Z"/><path class="a-dike-top" d="M100 34H118"/>' +
-        '<path class="a-land" d="M128 74H260V120H128Z"/><path class="a-field" d="M134 74H258V80H134Z"/>' +
+        '<path class="a-dike-top" d="M100 34H118"/>' +
+        '<path class="a-field" d="M134 74H258V80H134Z"/>' +
         '<path class="a-canal" d="M150 80H250V86H150Z"/>' +
         '<g class="a-mill" transform="translate(218 44)"><path d="M-6 30L-3 0H3L6 30Z" class="a-millb"/><path d="M0 0L-16 -14M0 0L14 -16M0 0L16 14M0 0L-14 16" class="a-sail"/><circle r="2.5" class="a-hub"/></g>' +
         '<g class="a-cow" transform="translate(166 66)"><rect x="-7" y="-5" width="14" height="7" rx="3"/><path d="M-5 2v4M5 2v4M7 -4l3 -2"/></g>' +
