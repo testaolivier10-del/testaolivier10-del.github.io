@@ -1,27 +1,29 @@
-/* Skills tool: 95% confidence intervals and error bars. The solver and the seeded problem generator are
-   ApBioProblems.solve.ci and generate.ci (bio-skill-problems.js);
-   the contexts, the fixed problems and the formula box are data
-   (bio/data/tools/confidence-intervals.json); the page is ApBioTools.skillTool.
+/* Confidence intervals and error bars, tools v2 (docs/tools-v2-bio-confidence-intervals-brief.md; standard
+   docs/tools-v2-standard.md). Built on the shared kit (assets/course/tool-kit2.js) through the course adapter
+   ApBioTools.studioKit2. The solver and the seeded problem generator are ApBioProblems.solve.ci and generate.ci
+   (bio-skill-problems.js); the contexts, the fixed problems and the formula box are data
+   (bio/data/tools/confidence-intervals.json, its "explore" block drives Explore).
 
-   The picture: two means as bars with their ±2 SE error bars (the 95% CI,
-   ApBioMath.seFrom and ci95), the gap or overlap between the intervals
-   marked and named (ApBioMath.overlap).
-     Explore: sliders for each group's mean, SD and n (and one "n for both");
-     the bars resize live and the verdict flips between overlap and gap.
-     Tool audit 2026-10 (nothing on the stage was draggable): drag a bar's
-     top to move that group's mean, or drag an error bar's whisker to set
-     its SD; "New sample" draws a fresh sample of the same size from the
-     same groups, so the means and intervals jump about as real samples do.
-     Practice: the problem's bars; the student's typed interval ends are
-     drawn as brackets beside the true bars as they type; after Check, the
-     true intervals with the gap or overlap marked. */
+   EXPLORE, one screen: two trays of bean seedlings on a lab bench, "Full light" under a lamp and "Shade" under a
+   shade cloth, every plant drawn at its height in cm against a measuring board. Beside them (below on a phone) a
+   clipboard graph: each tray's mean as a bar with its ±2 SE error bar (the 95% confidence interval), the overlap
+   (or the gap) between the two error bars tinted.
+     Main control: the knob on the Shade tray's mean line; dragging it grows or shrinks every shade plant together.
+     Quiet: the knob on the tallest shade plant spreads the plants from their mean (the SD); "5 | 10 | 20" plants per
+     tray (new plants sprout, extra ones go back into the soil; each tray keeps its mean and SD, so only n changes);
+     New sample (new plants from the same two populations: chance alone moves the means); Start over.
+   Every number, bar, error bar, tint and the cause line is read from the plants AS DRAWN in that frame: a plant is
+   counted once it has finished sprouting and stops counting when it starts to leave.
+   TEST YOURSELF: Problems (the old practice: new numbers or the worked problems, record ids
+   confidence-intervals:<cid>:<part>, unchanged) and Challenges (the old goals, on the Explore picture). */
 (function(){
   'use strict';
   var T = window.ApBioTools, S = window.ApBioSkillStage, M = window.ApBioMath;
   if(!T || !S) return;
-  var F = T.F, esc = T.esc;
+  var F = T.F, esc = T.esc, SLUG = 'confidence-intervals', NS = 'http://www.w3.org/2000/svg';
   var W = 420, L = 52, R = 16, TP = 14, B = 40, H = 280, pw = W - L - R, ph = H - TP - B;
 
+  /* ------------------------------------------------------------------ the practice figure (Test yourself, unchanged) */
   /* g: [{ name, mean, sd, n }], o: { unit, yLabel, ymax, mine: [{lo, hi}], marks } */
   function draw(g, o){
     var iv = g.map(function(x){ return M.ci95(x.mean, M.seFrom(x.sd, x.n)); });
@@ -66,69 +68,7 @@
     return { svg: '<svg class="bio-svg ci-fig" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(o.aria || '') + '">' + p.join('') + '</svg>', iv: iv, ov: ov };
   }
 
-  /* ------------------------------------------------------- explore */
-  function explore(app, data){
-    var ctx = data.contexts[0];
-    var g = [{ name: ctx.groups[0], mean: 8.0, sd: 1.6, n: 5 }, { name: ctx.groups[1], mean: 9.5, sd: 1.6, n: 5 }];
-    var sec = S.card(app, { title: 'Change n and SD, watch the error bars', lead: esc(ctx.yLabel || 'Mean') + ' for two groups. Each error bar is ±2 SE, the 95% confidence interval. More samples shrink it; more spread widens it.' });
-    sec.insertAdjacentHTML('beforeend', '<div class="sk-fig sk-drag ci-xfig"></div><div class="bt-buttons ci-btns"><button type="button" class="bt-btn ci-new">New sample</button></div><div class="ci-verdict" role="status" aria-live="polite"></div><div class="bt-controls ci-ctl"></div><details class="bt-how ci-more"><summary>Set each group separately</summary><div class="bt-how-body bt-controls ci-ctl2"></div></details><p class="sk-say" aria-live="polite"></p><div class="sk-goalhost"></div>');
-    var fig = sec.querySelector('.ci-xfig'), ver = sec.querySelector('.ci-verdict'), sayEl = sec.querySelector('.sk-say');
-    var last = null, maxY = 14;
-    var done = S.goals(sec.querySelector('.sk-goalhost'), [
-      { id: 'gap', text: 'Keep the means where they are and raise n until the intervals <b>stop overlapping</b>.' },
-      { id: 'sd', text: 'Then raise the SD until they overlap again.' },
-      { id: 'four', text: 'Notice: to halve an error bar you need <b>four times</b> the n (SE = SD / √n).' }
-    ]);
-    var nBoth = T.slider({ label: 'n, samples per group (both)', min: 2, max: 40, step: 1, value: 5, onInput: function(v){ g[0].n = g[1].n = v; n1.set(v); n2.set(v); upd('n'); } });
-    var sdBoth = T.slider({ label: 'SD in each group (both)', min: 0.2, max: 4, step: 0.1, value: 1.6, unit: ctx.unit, onInput: function(v){ g[0].sd = g[1].sd = v; s1.set(v); s2.set(v); upd('sd'); } });
-    sec.querySelector('.ci-ctl').appendChild(nBoth.el); sec.querySelector('.ci-ctl').appendChild(sdBoth.el);
-    var m1 = T.slider({ label: g[0].name + ': mean', min: 2, max: 12, step: 0.1, value: g[0].mean, unit: ctx.unit, onInput: function(v){ g[0].mean = v; setTrue(); upd('m'); } });
-    var m2 = T.slider({ label: g[1].name + ': mean', min: 2, max: 12, step: 0.1, value: g[1].mean, unit: ctx.unit, onInput: function(v){ g[1].mean = v; setTrue(); upd('m'); } });
-    var n1 = T.slider({ label: g[0].name + ': n', min: 2, max: 40, step: 1, value: 5, onInput: function(v){ g[0].n = v; upd('n'); } });
-    var n2 = T.slider({ label: g[1].name + ': n', min: 2, max: 40, step: 1, value: 5, onInput: function(v){ g[1].n = v; upd('n'); } });
-    var s1 = T.slider({ label: g[0].name + ': SD', min: 0.2, max: 4, step: 0.1, value: 1.6, unit: ctx.unit, onInput: function(v){ g[0].sd = v; upd('sd'); } });
-    var s2 = T.slider({ label: g[1].name + ': SD', min: 0.2, max: 4, step: 0.1, value: 1.6, unit: ctx.unit, onInput: function(v){ g[1].sd = v; upd('sd'); } });
-    [m1, m2, n1, n2, s1, s2].forEach(function(x){ sec.querySelector('.ci-ctl2').appendChild(x.el); });
-    var firstN = null, base = g.map(function(x){ return { mean: x.mean }; }), draws = 0;
-    // a "true" mean per group for New sample: set by the sliders and drags
-    function setTrue(){ base = g.map(function(x){ return { mean: x.mean }; }); }
-    function svgY(v){ var ph2 = H - TP - B; return maxY * (TP + ph2 - v) / ph2; }
-    S.drag(fig, '[data-k]', { move: function(k, pt){
-      var i = +k.slice(1);
-      if(k.charAt(0) === 'm'){ g[i].mean = Math.max(2, Math.min(12, M.round(svgY(pt.y), 1))); (i ? m2 : m1).set(g[i].mean); setTrue(); upd('m'); }
-      else { var top = svgY(pt.y), se = Math.max(0.05, (top - g[i].mean) / 2); g[i].sd = Math.max(0.2, Math.min(4, M.round(se * Math.sqrt(g[i].n), 1))); (i ? s2 : s1).set(g[i].sd); upd('sd'); }
-    } });
-    S.keys(fig, '[data-k]', function(k, d, big){
-      var i = +k.slice(1);
-      if(k.charAt(0) === 'm'){ g[i].mean = Math.max(2, Math.min(12, M.round(g[i].mean + d * (big ? 1 : 0.1), 1))); (i ? m2 : m1).set(g[i].mean); setTrue(); upd('m'); }
-      else { g[i].sd = Math.max(0.2, Math.min(4, M.round(g[i].sd + d * (big ? 0.5 : 0.1), 1))); (i ? s2 : s1).set(g[i].sd); upd('sd'); }
-    });
-    sec.querySelector('.ci-new').addEventListener('click', function(){
-      // a new sample of n from each group: its mean lands within about ±SE of the true mean (normal draw, seeded per click)
-      var r = M.rng(9001 + 17 * (++draws));
-      g.forEach(function(x, i){ x.mean = Math.max(2, Math.min(12, M.round(base[i].mean + r.normal(0, x.sd / Math.sqrt(x.n)), 2))); });
-      m1.set(g[0].mean); m2.set(g[1].mean);
-      upd('sample');
-    });
-    function upd(what){
-      if(what === 'n' || what === 'sd' || what === '') { /* the sliders and drags keep the sample's means */ }
-      var r = draw(g, { unit: ctx.unit, yLabel: ctx.yLabel, ymax: maxY, marks: true, d: 2, drag: true, aria: g.map(function(x){ var c = M.ci95(x.mean, M.seFrom(x.sd, x.n)); return x.name + ': mean ' + F(x.mean, 1) + ', 95% CI ' + F(c.lo, 2) + ' to ' + F(c.hi, 2); }).join('. ') + '.' });
-      S.redraw(fig, r.svg);
-      ver.innerHTML = '<p class="sk-decide">' + (r.ov ? '<span class="sk-verdict keep">Overlap</span> <span>Chance could explain the difference: these data cannot tell the two means apart.</span>' : '<span class="sk-verdict rej">No overlap</span> <span>The difference is likely statistically significant: chance alone rarely gives a gap like this.</span>') + '</p>' +
-        S.readout(g.map(function(x){ return [esc(x.name) + ' SE', F(M.seFrom(x.sd, x.n), 2)]; }).concat(g.map(function(x){ var c = M.ci95(x.mean, M.seFrom(x.sd, x.n)); return [esc(x.name) + ' 95% CI', F(c.lo, 2) + '–' + F(c.hi, 2)]; })));
-      var se = M.seFrom(g[0].sd, g[0].n), msg = '';
-      if(what === 'n'){ msg = 'n = ' + g[0].n + ': SE = SD / √n = ' + F(g[0].sd, 1) + ' / ' + F(Math.sqrt(g[0].n), 2) + ' = ' + F(se, 2) + '.'; if(firstN == null) firstN = { n: g[0].n, se: se }; else if(g[0].n >= 4 * firstN.n){ msg += ' n is ' + F(g[0].n / firstN.n, 1) + ' times bigger and SE is ' + F(firstN.se / se, 1) + ' times smaller.'; done('four'); } }
-      if(what === 'sample') msg = 'A new sample of ' + g[0].n + ' per group from the same two populations: the means moved by chance (' + F(g[0].mean, 2) + ' and ' + F(g[1].mean, 2) + '). With a small n they jump about; raise n and they settle near the true means.';
-      if(what === 'sd') msg = 'SD = ' + F(g[0].sd, 1) + ': more spread in the data gives a wider interval (SE = ' + F(se, 2) + ').';
-      if(last != null && last !== r.ov){ msg = (r.ov ? 'The intervals overlap again. ' : 'Now there is a gap. ') + msg; if(!r.ov && what === 'n') done('gap'); if(r.ov && what === 'sd') done('sd'); }
-      if(what) sayEl.textContent = msg;
-      last = r.ov;
-    }
-    upd('');
-  }
-
-  /* ---------------------------------------------------- practice stage */
-  function stage(host, s){
+  function stage0(host, s){
     var x = s.input, a = s.answers || {}, chk = s.phase === 'checked', d = x.d == null ? 2 : x.d;
     var mine = x.groups.map(function(gr, k){ return { lo: S.num(a['lo-' + k]), hi: S.num(a['hi-' + k]) }; });
     var r = draw(x.groups, { unit: x.unit, yLabel: x.yLabel, marks: chk, d: d, mine: chk ? [] : mine, aria: 'Bar graph of ' + (x.yLabel || 'the means') + ' for ' + x.groups.map(function(gr){ return gr.name; }).join(' and ') + ', each with error bars of plus or minus 2 SE.' + (chk ? ' The intervals ' + (M.overlap(M.ci95(x.groups[0].mean, M.seFrom(x.groups[0].sd, x.groups[0].n)), M.ci95(x.groups[1].mean, M.seFrom(x.groups[1].sd, x.groups[1].n))) ? 'overlap.' : 'do not overlap.') : '') });
@@ -139,13 +79,632 @@
     S.redraw(host, '<div class="sk-fig">' + r.svg + '</div><p class="sk-cap">' + cap + '</p>');
   }
 
-  T.mount('confidence-intervals', function(app, data){
-    explore(app, data);
-    T.skillTool(app, data, { slug: 'confidence-intervals', kind: 'ci', stage: stage });
-  }, {
-    // Tool Studio (docs/tools-calm.md; bio-tools.js studioArrange)
-    studio: { hint: { target: '.ci-grip', text: 'Drag a bar up or down' },
-      caption: function(g){ var v = g.$('.sk-decide'), k = v && v.querySelector('.sk-verdict'); if(!v) return null; var rest = v.textContent.replace(k ? k.textContent : '', '').trim(); return '<b>' + T.esc(k ? k.textContent : '') + '.</b> ' + T.esc(rest); },
-      pills: function(g){ var k = g.$('.sk-decide .sk-verdict'); return k ? [{ html: T.esc(k.textContent), tone: k.classList.contains('keep') ? 'warn' : 'good' }] : []; },
-      pillsR: function(g){ return [{ html: 'SE ' + g.ro(0) + ' · ' + g.ro(1), tone: 'ghost' }]; } } });
+
+  /* ------------------------------------------------------------------ helpers */
+  function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
+  function now(){ return window.performance ? performance.now() : Date.now(); }
+  function r1(v){ return Math.round(v * 10 + (v >= 0 ? 1e-9 : -1e-9)) / 10; }
+  function n1(v){ return Math.round(v * 10) / 10; }
+  function ease(x){ return x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2; }
+  function mk(tag, cls, attrs, parent){ var e = document.createElementNS(NS, tag); if(cls) e.setAttribute('class', cls); if(attrs) for(var k in attrs) e.setAttribute(k, attrs[k]); if(parent) parent.appendChild(e); return e; }
+  function at(e, attrs){ for(var k in attrs){ var v = typeof attrs[k] === 'number' ? String(n1(attrs[k])) : attrs[k]; if(e.getAttribute(k) !== v) e.setAttribute(k, v); } }
+  function txt(e, s){ if(e.textContent !== s) e.textContent = s; }
+  var mctx = null, mCache = {}, FONT = 'Nunito, "Segoe UI", system-ui, sans-serif';
+  function tw(s, px, wt){
+    var k = (wt || 800) + '|' + px + '|' + s;
+    if(mCache[k] != null) return mCache[k];
+    if(!mctx){ var c = document.createElement('canvas'); mctx = c.getContext('2d'); }
+    mctx.font = (wt || 800) + ' ' + px + 'px ' + FONT;
+    return (mCache[k] = mctx.measureText(s).width);
+  }
+  /* n standardized values (mean 0, SD 1 with n − 1), none beyond ±2.2 */
+  function zset(n, r){
+    for(var t = 0; t < 80; t++){
+      var a = [], s = 0, q = 0, i;
+      for(i = 0; i < n; i++){ a.push(r.normal(0, 1)); s += a[i]; }
+      var m = s / n; for(i = 0; i < n; i++) q += (a[i] - m) * (a[i] - m);
+      var sd = Math.sqrt(q / (n - 1));
+      a = a.map(function(v){ return (v - m) / sd; });
+      if(a.every(function(v){ return Math.abs(v) <= 2.2; })) return a;
+    }
+    return a;
+  }
+  function statsOf(hs){
+    var n = hs.length; if(!n) return { n: 0, mean: NaN, sd: NaN, e2: NaN };
+    var s = 0, q = 0; hs.forEach(function(h){ s += h; }); var m = s / n;
+    hs.forEach(function(h){ q += (h - m) * (h - m); });
+    var sd = n > 1 ? Math.sqrt(q / (n - 1)) : NaN;
+    return { n: n, mean: m, sd: sd, e2: n > 1 ? 2 * sd / Math.sqrt(n) : NaN };
+  }
+
+  function boot(){
+    var K = window.LevlKit2;
+    T.mount(SLUG, function(app, data, ctx){
+      var EX = data.explore, U = EX.unit, RMAX = EX.ruler, AMAX = EX.axis, COUNTS = EX.counts, GR = EX.groups;
+      var HLO = 0.8, HHI = RMAX - 0.3;   // the shortest and tallest a plant may be drawn (cm)
+      var draws = 0, uid = 0;
+      function calm(){ return K.reduced() || !window.requestAnimationFrame; }
+      var ZOPEN = GR.map(function(g, i){ return zset(EX.open.n, M.rng(EX.open.seed + 101 * i)); });
+      // the model: each tray's sample mean and SD (the plants' targets) and the population New sample draws from
+      var Mo = [], P = [[], []], St = { mode: 'explore', part: null, n: EX.open.n }, lastAct = null, before = null;
+      function openModel(){ Mo = GR.map(function(g){ return { m: g.mean, s: g.sd, mu: g.mean, sig: g.sd }; }); }
+      openModel();
+
+      /* ---------------------------------------------------- the stage */
+      var stage = document.createElement('div'); stage.className = 'ci2';
+      var head = K.head({ purpose: EX.purpose, how: { label: 'Show me how', onClick: function(){ startTour(); } } });
+      stage.appendChild(head.el);
+      var sceneBox = document.createElement('div'); sceneBox.className = 'ci2-scene';
+      sceneBox.innerHTML = '<svg class="ci2-svg" role="img" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"><defs></defs><g class="ci2-static"></g><g class="ci2-plants"><g class="ci2-pl0"></g><g class="ci2-pl1"></g></g><g class="ci2-front"></g><g class="ci2-live"></g><g class="ci2-labs"></g></svg>';
+      stage.appendChild(sceneBox);
+      var svg = sceneBox.querySelector('svg'), sDefs = svg.querySelector('defs'), sStatic = svg.querySelector('.ci2-static'), sFront = svg.querySelector('.ci2-front'), sLive = svg.querySelector('.ci2-live'), sLabs = svg.querySelector('.ci2-labs');
+      var gPl = [svg.querySelector('.ci2-pl0'), svg.querySelector('.ci2-pl1')];
+      var layer = K.layer(sceneBox);
+      var lines = document.createElement('div'); lines.className = 'ci2-lines';
+      var cause = K.cause({ label: 'Why' });
+      var acts = document.createElement('div'); acts.className = 'ci2-acts';
+      acts.innerHTML = '<span class="ci2-n" role="group" aria-label="Plants per tray">' + COUNTS.map(function(c){ return '<button type="button" class="ci2-nb" data-n="' + c + '" aria-pressed="' + (c === St.n) + '">' + c + '</button>'; }).join('') + '</span><span class="ci2-nl" aria-hidden="true">plants each</span>' +
+        '<button type="button" class="tk2-btn ci2-new">New sample</button><button type="button" class="tk2-link ci2-reset">Start over</button>';
+      var nBtns = Array.prototype.slice.call(acts.querySelectorAll('.ci2-nb')), bNew = acts.querySelector('.ci2-new'), bReset = acts.querySelector('.ci2-reset');
+      nBtns.forEach(function(b){ b.setAttribute('aria-label', b.getAttribute('data-n') + ' plants in each tray'); });
+      lines.appendChild(cause.el); lines.appendChild(acts);
+      stage.appendChild(lines);
+      var live = document.createElement('p'); live.className = 'tk2-sr'; live.setAttribute('aria-live', 'polite');
+      stage.appendChild(live);
+      var lastSaid = '';
+      function say(t){ if(t === lastSaid) return; lastSaid = t; live.textContent = ''; setTimeout(function(){ live.textContent = t; }, 40); }
+
+      /* ---------------------------------------------------- geometry (picture units = CSS px of the scene) */
+      var G = null;
+      function layout(){
+        var Wd = sceneBox.clientWidth, Hd = sceneBox.clientHeight;
+        if(!Wd || !Hd) return null;
+        var g = { W: Wd, H: Hd, wide: Wd >= 600 };
+        var pad = g.wide ? 16 : 8, trayEnd, top0;
+        if(g.wide){
+          g.benchH = clamp(Hd * 0.1, 38, 60); g.yB = Hd - g.benchH;
+          trayEnd = Wd * 0.6;
+          // the clipboard stands on the bench, right of the trays
+          g.cb = { x: Wd * 0.635, y: 18, w: Wd - pad - Wd * 0.635, h: g.yB + 6 - 18 };
+          top0 = 0;
+        } else {
+          g.clipH = clamp(Wd * 0.68, 230, 270);
+          g.topH = Hd - g.clipH;
+          g.benchH = 22; g.yB = g.topH - g.benchH;
+          trayEnd = Wd - pad;
+          g.cb = { x: pad + 2, y: g.topH + 10, w: Wd - 2 * pad - 4, h: g.clipH - 18 };
+          top0 = 0;
+        }
+        g.pad = pad;
+        g.lampY = top0 + 10; g.lampH = g.wide ? 13 : 10;
+        g.trayH = g.wide ? 30 : 24;
+        g.ySoil = g.yB + 4 - g.trayH + 3;
+        g.yTop = g.lampY + g.lampH + (g.wide ? 30 : 22);
+        g.k = (g.ySoil - g.yTop) / RMAX;
+        g.rw = g.wide ? 34 : 24;
+        var gp = g.wide ? 30 : 14, mr = g.wide ? 34 : 26, x0 = pad + g.rw + 4;
+        g.tw = (trayEnd - x0 - gp - mr) / 2;
+        g.tx = [x0, x0 + g.tw + gp];
+        g.board = [pad, g.yTop - 8, trayEnd - pad, g.ySoil - g.yTop + 8];
+        g.knobX = g.tx[1] + g.tw + mr / 2;
+        // the clipboard's paper and plot
+        var c = g.cb, ins = g.wide ? 14 : 10;
+        c.px = c.x + ins; c.py = c.y + (g.wide ? 26 : 20); c.pw = c.w - 2 * ins; c.ph = c.h - (g.wide ? 26 : 20) - ins;
+        c.fs = g.wide ? 15 : 13;
+        c.l = c.px + (g.wide ? 46 : 34); c.r = c.px + c.pw - (g.wide ? 16 : 10);
+        c.t = c.py + (g.wide ? 58 : 48); c.b = c.py + c.ph - (g.wide ? 46 : 40);
+        c.cx = [c.l + (c.r - c.l) * 0.3, c.l + (c.r - c.l) * 0.72];
+        c.bw = Math.min((c.r - c.l) * 0.24, 74); c.cap = Math.min(c.bw * 0.55, 26);
+        c.y = c.y; c.ky = (c.b - c.t) / AMAX;
+        return g;
+      }
+      function yH(h){ return G.ySoil - h * G.k; }
+      function yA(v){ return G.cb.b - clamp(v, 0, AMAX) * G.cb.ky; }
+      function plantX(g, f){ return G.tx[g] + 6 + f * (G.tw - 12); }
+
+      /* ---------------------------------------------------- the still parts of the scene */
+      function drawStatic(){
+        var g = G, o = '', d = '';
+        d += '<linearGradient id="ci2-wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="ci2s-wall0"/><stop offset="1" class="ci2s-wall1"/></linearGradient>' +
+          '<linearGradient id="ci2-wood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="ci2s-wood0"/><stop offset="1" class="ci2s-wood1"/></linearGradient>' +
+          '<linearGradient id="ci2-sun" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="ci2s-sun0"/><stop offset="1" class="ci2s-sun1"/></linearGradient>' +
+          '<linearGradient id="ci2-dim" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="ci2s-dim0"/><stop offset="1" class="ci2s-dim1"/></linearGradient>' +
+          '<pattern id="ci2-mesh" width="5" height="5" patternUnits="userSpaceOnUse"><rect width="5" height="5" class="ci2-mesh-bg"/><path d="M0 0L5 5M5 0L0 5" class="ci2-mesh-l"/></pattern>' +
+          '<linearGradient id="ci2-soil" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="ci2s-soil0"/><stop offset="1" class="ci2s-soil1"/></linearGradient>';
+        o += '<rect x="0" y="0" width="' + g.W + '" height="' + (g.wide ? g.H : g.topH) + '" fill="url(#ci2-wall)"/>';
+        // wall tiles, faint
+        for(var ty = 40; ty < g.yB; ty += 44) o += '<line class="ci2-tile" x1="0" x2="' + g.W + '" y1="' + ty + '" y2="' + ty + '"/>';
+        // the bench
+        o += '<rect x="0" y="' + n1(g.yB) + '" width="' + g.W + '" height="' + n1(g.benchH) + '" fill="url(#ci2-wood)"/><rect class="ci2-bench-edge" x="0" y="' + n1(g.yB) + '" width="' + g.W + '" height="3"/>';
+        for(var gx = 20; gx < g.W; gx += 130) o += '<path class="ci2-grain" d="M' + gx + ' ' + n1(g.yB + g.benchH * 0.45) + 'q40 -4 90 2"/>';
+        if(!g.wide){
+          // the bench top below, where the clipboard lies
+          o += '<rect x="0" y="' + n1(g.topH) + '" width="' + g.W + '" height="' + n1(g.clipH) + '" class="ci2-benchtop"/>';
+          for(var gy = g.topH + 30; gy < g.H; gy += 46) o += '<path class="ci2-grain" d="M0 ' + gy + 'q' + n1(g.W * 0.3) + ' -6 ' + n1(g.W * 0.6) + ' 2t' + n1(g.W * 0.5) + ' 0"/>';
+        }
+        // the measuring board behind the plants: a line every 5 cm, numbers in its left column
+        var b = g.board;
+        o += '<rect class="ci2-board" x="' + n1(b[0]) + '" y="' + n1(b[1]) + '" width="' + n1(b[2]) + '" height="' + n1(b[3]) + '" rx="4"/>';
+        o += '<rect class="ci2-rulecol" x="' + n1(b[0]) + '" y="' + n1(b[1]) + '" width="' + g.rw + '" height="' + n1(b[3]) + '" rx="4"/>';
+        for(var cm = 1; cm <= RMAX; cm++){
+          var y = yH(cm), big = cm % 5 === 0;
+          o += '<line class="ci2-rtick' + (big ? ' is-big' : '') + '" x1="' + n1(b[0] + g.rw - (big ? 9 : 5)) + '" x2="' + n1(b[0] + g.rw) + '" y1="' + n1(y) + '" y2="' + n1(y) + '"/>';
+          if(big) o += '<line class="ci2-rline" x1="' + n1(b[0] + g.rw) + '" x2="' + n1(b[0] + b[2]) + '" y1="' + n1(y) + '" y2="' + n1(y) + '"/>';
+        }
+        // the lamps: a bright one over Full light, the same lamp behind a shade cloth over Shade
+        [0, 1].forEach(function(i){
+          var x = g.tx[i] + g.tw * 0.06, w = g.tw * 0.88, ly = g.lampY, lh = g.lampH;
+          o += '<line class="ci2-wire" x1="' + n1(x + 6) + '" x2="' + n1(x + 6) + '" y1="0" y2="' + ly + '"/><line class="ci2-wire" x1="' + n1(x + w - 6) + '" x2="' + n1(x + w - 6) + '" y1="0" y2="' + ly + '"/>';
+          o += '<path class="ci2-beam' + (i ? ' is-dim' : '') + '" d="M' + n1(x + 4) + ' ' + n1(ly + lh) + 'L' + n1(x + w - 4) + ' ' + n1(ly + lh) + 'L' + n1(g.tx[i] + g.tw + 2) + ' ' + n1(g.ySoil) + 'L' + n1(g.tx[i] - 2) + ' ' + n1(g.ySoil) + 'Z" fill="url(#ci2-' + (i ? 'dim' : 'sun') + ')"/>';
+          o += '<rect class="ci2-lamp" x="' + n1(x) + '" y="' + ly + '" width="' + n1(w) + '" height="' + lh + '" rx="3"/><rect class="ci2-bulb' + (i ? ' is-dim' : '') + '" x="' + n1(x + 3) + '" y="' + n1(ly + lh - 3.5) + '" width="' + n1(w - 6) + '" height="3" rx="1.5"/>';
+          if(i) o += '<rect class="ci2-cloth" x="' + n1(x - 3) + '" y="' + n1(ly + lh + 2) + '" width="' + n1(w + 6) + '" height="' + (g.wide ? 12 : 9) + '" fill="url(#ci2-mesh)" rx="1.5"/>';
+        });
+        sDefs.innerHTML = d;
+        sStatic.innerHTML = o;
+        // the trays' fronts (over the stems' feet) and their names
+        var f = '';
+        [0, 1].forEach(function(i){
+          var x = g.tx[i], w = g.tw, y = g.ySoil - 3;
+          f += '<rect class="ci2-soil" x="' + n1(x + 2) + '" y="' + n1(g.ySoil - 2.5) + '" width="' + n1(w - 4) + '" height="5" rx="2" fill="url(#ci2-soil)"/>';
+          f += '<path class="ci2-tray" d="M' + n1(x) + ' ' + n1(y) + 'L' + n1(x + w) + ' ' + n1(y) + 'L' + n1(x + w - 4) + ' ' + n1(y + g.trayH) + 'L' + n1(x + 4) + ' ' + n1(y + g.trayH) + 'Z"/><rect class="ci2-rim" x="' + n1(x - 1) + '" y="' + n1(y - 1) + '" width="' + n1(w + 2) + '" height="4" rx="2"/>';
+          var nm = GR[i].name, fs = g.wide ? 14 : 12.5;
+          f += '<text class="ci2-tname is-' + GR[i].id + '" data-lab="tray" x="' + n1(x + w / 2) + '" y="' + n1(y + g.trayH / 2 + fs * 0.42) + '" text-anchor="middle" style="font-size:' + fs + 'px">' + esc(nm) + '</text>';
+        });
+        // the ruler's numbers (on top, so the soil never hides them)
+        for(var c2 = 5; c2 <= RMAX; c2 += 5){ if(!g.wide && c2 % 10) continue; var yy = yH(c2); f += '<text class="ci2-rnum" data-lab="rnum" x="' + n1(b[0] + g.rw - 11) + '" y="' + n1(yy + 4) + '" text-anchor="end">' + c2 + '</text>'; }
+        f += '<text class="ci2-rnum is-unit" data-lab="rnum" x="' + n1(b[0] + g.rw / 2 - 1) + '" y="' + n1(b[1] + 13) + '" text-anchor="middle">cm</text>';
+        // the clipboard: board, clip, paper, axes, title
+        var c = g.cb;
+        f += '<rect class="ci2-cbshadow" x="' + n1(c.x + 4) + '" y="' + n1(c.y + 6) + '" width="' + n1(c.w) + '" height="' + n1(c.h) + '" rx="10"/>';
+        f += '<rect class="ci2-cb" x="' + n1(c.x) + '" y="' + n1(c.y) + '" width="' + n1(c.w) + '" height="' + n1(c.h) + '" rx="10"/>';
+        f += '<rect class="ci2-paper" x="' + n1(c.px) + '" y="' + n1(c.py) + '" width="' + n1(c.pw) + '" height="' + n1(c.ph) + '" rx="3"/>';
+        var cw = Math.min(110, c.w * 0.36);
+        f += '<rect class="ci2-clip" x="' + n1(c.x + c.w / 2 - cw / 2) + '" y="' + n1(c.y + 4) + '" width="' + n1(cw) + '" height="' + (g.wide ? 30 : 24) + '" rx="6"/><rect class="ci2-clip-hi" x="' + n1(c.x + c.w / 2 - cw / 2 + 8) + '" y="' + n1(c.y + 9) + '" width="' + n1(cw - 16) + '" height="4" rx="2"/>';
+        var title = 'Mean height ± 2 SE';
+        f += '<text class="ci2-ctitle" data-lab="ctitle" x="' + n1(c.px + c.pw / 2) + '" y="' + n1(c.py + (g.wide ? 44 : 36)) + '" text-anchor="middle" style="font-size:' + c.fs + 'px">' + esc(title) + '</text>';
+        for(var v = 0; v <= AMAX; v += 5){
+          f += '<line class="ci2-grid" x1="' + n1(c.l) + '" x2="' + n1(c.r) + '" y1="' + n1(yA(v)) + '" y2="' + n1(yA(v)) + '"/>';
+          f += '<text class="ci2-tick" data-lab="tick" x="' + n1(c.l - 6) + '" y="' + n1(yA(v) + 4) + '" text-anchor="end">' + v + '</text>';
+        }
+        f += '<text class="ci2-tick is-unit" data-lab="tick" x="' + n1(c.l - 6) + '" y="' + n1(c.t - 12) + '" text-anchor="end">cm</text>';
+        f += '<line class="ci2-axis" x1="' + n1(c.l) + '" x2="' + n1(c.l) + '" y1="' + n1(c.t - 4) + '" y2="' + n1(c.b) + '"/><line class="ci2-axis" x1="' + n1(c.l) + '" x2="' + n1(c.r) + '" y1="' + n1(c.b) + '" y2="' + n1(c.b) + '"/>';
+        [0, 1].forEach(function(i){ f += '<text class="ci2-bname is-' + GR[i].id + '" data-lab="bname" x="' + n1(c.cx[i]) + '" y="' + n1(c.b + 18) + '" text-anchor="middle">' + esc(GR[i].name) + '</text>'; });
+        sFront.innerHTML = f;
+        // the live parts: mean lines, bars, error bars, the band and their labels (built once per layout)
+        sLive.innerHTML = '';
+        E = {};
+        E.ml = [0, 1].map(function(i){ return { halo: mk('line', 'ci2-mhalo', null, sLive), line: mk('line', 'ci2-mline is-' + GR[i].id, null, sLive) }; });
+        E.band = mk('rect', 'ci2-band', null, sLive);
+        E.bar = [0, 1].map(function(i){ return mk('rect', 'ci2-bar is-' + GR[i].id, null, sLive); });
+        E.err = [0, 1].map(function(){ return mk('path', 'ci2-err', null, sLive); });
+        sLabs.innerHTML = '';
+        E.pMean = pill('ci2-pill is-sun', 'mean');
+        E.pBand = pill('ci2-pill is-band', 'band');
+        E.pE = [0, 1].map(function(i){ return mk('text', 'ci2-elab is-' + GR[i].id, { 'text-anchor': 'middle', 'data-lab': 'elab' }, sLabs); });
+        E.nl = [0, 1].map(function(i){ return mk('text', 'ci2-nlab', { 'text-anchor': 'middle', 'data-lab': 'nlab', x: n1(G.cb.cx[i]), y: n1(G.cb.b + 34) }, sLabs); });
+      }
+      var E = {};
+      function pill(cls, lab){
+        var g = mk('g', cls, { 'data-lab': lab }, sLabs), r = mk('rect', null, { rx: 9 }, g), t = mk('text', null, { 'text-anchor': 'middle' }, g);
+        var o = { g: g, r: r, t: t, s: null,
+          set: function(s, x, y, anchor){
+            var fs = G.wide ? 13 : 12, w = tw(s, fs, 800) + 14, h = fs + 9, x0 = anchor === 'start' ? x : anchor === 'end' ? x - w : x - w / 2;
+            g.style.display = '';
+            if(o.s !== s){ o.s = s; t.textContent = s; t.style.fontSize = fs + 'px'; }
+            at(r, { x: x0, y: y - h / 2, width: w, height: h }); at(t, { x: x0 + w / 2, y: y + fs * 0.36 });
+            o.box = [x0, y - h / 2, x0 + w, y + h / 2];
+          },
+          hide: function(){ g.style.display = 'none'; o.box = null; } };
+        return o;
+      }
+
+      /* ---------------------------------------------------- the plants: one group each, the stem and the top set per frame */
+      var LEAF = '<path class="ci2-lf" d="M0 0C.18-.5.82-.56 1 0C.82.5.18.46 0 0Z"/><path class="ci2-rib" d="M.06 0L.9 0"/>';
+      function plantEl(p){
+        var e = document.createElementNS(NS, 'g');
+        e.setAttribute('class', 'ci2-pl' + (p.g ? ' is-shade' : ''));
+        e.innerHTML = '<path class="ci2-stem"/><g class="ci2-cot"><ellipse class="ci2-cotl" cx="-2.2" cy="0" rx="2.6" ry="1.7"/><ellipse class="ci2-cotl" cx="2.2" cy="0" rx="2.6" ry="1.7"/></g><g class="ci2-top"><g transform="rotate(144)">' + LEAF + '</g><g transform="rotate(36)">' + LEAF + '</g><circle class="ci2-bud" r=".16"/></g>';
+        p.el = e; p.stem = e.querySelector('.ci2-stem'); p.cot = e.querySelector('.ci2-cot'); p.top = e.querySelector('.ci2-top');
+        p.sway = ((((p.id * 37) % 9) - 4) * 0.7);
+        p._c = {};
+        gPl[p.g].appendChild(e);
+        return e;
+      }
+      function setA(p, k, e, name, v){ if(p._c[k] !== v){ p._c[k] = v; e.setAttribute(name, v); } }
+      function paintPlant(p){
+        var hp = Math.max(0, p.h) * G.k, x = plantX(p.g, p.x);
+        setA(p, 'tr', p.el, 'transform', 'translate(' + n1(x) + ' ' + n1(G.ySoil) + ')');
+        var op = p.op < 0.999 ? String(Math.round(p.op * 100) / 100) : '1';
+        if(p._c.op !== op){ p._c.op = op; p.el.style.opacity = op === '1' ? '' : op; }
+        p.el.setAttribute('data-st', p.st);
+        if(hp < 0.4){ setA(p, 'd', p.stem, 'd', ''); setA(p, 'tv', p.top, 'visibility', 'hidden'); setA(p, 'cv', p.cot, 'visibility', 'hidden'); return; }
+        var sw = p.sway * Math.min(1, hp / 50), L = G.leaf * (0.45 + 0.55 * Math.min(1, p.h / 6));
+        // the stem's tip is exactly the plant's height above the soil
+        setA(p, 'd', p.stem, 'd', 'M0 0Q' + n1(sw * 0.6) + ' ' + n1(-hp * 0.5) + ' ' + n1(sw) + ' ' + n1(-hp));
+        setA(p, 'tv', p.top, 'visibility', 'visible');
+        setA(p, 't', p.top, 'transform', 'translate(' + n1(sw) + ' ' + n1(-hp) + ') scale(' + n1(L) + ')');
+        var f = 0.24, cx = 2 * (1 - f) * f * sw * 0.6 + f * f * sw;
+        setA(p, 'cv', p.cot, 'visibility', p.h > 3 ? 'visible' : 'hidden');
+        setA(p, 'c', p.cot, 'transform', 'translate(' + n1(cx) + ' ' + n1(-hp * f) + ') scale(' + n1(Math.min(1.25, G.leaf / 9)) + ')');
+      }
+      function active(g){ return P[g].filter(function(p){ return p.st !== 'leave'; }); }
+      function counted(g){ return P[g].filter(function(p){ return p.st === 'grown'; }); }
+      function target(p){ return Mo[p.g].m + Mo[p.g].s * p.z; }
+
+      /* ---------------------------------------------------- tweens */
+      function twn(p, key, to, dur, delay){
+        if(calm() || !dur){ p[key] = to; delete p.tw[key]; return; }
+        if(Math.abs(p[key] - to) < 1e-9 && !p.tw[key]){ return; }
+        p.tw[key] = { from: p[key], to: to, t0: now() + (delay || 0), dur: dur };
+      }
+      function busy(){ for(var g = 0; g < 2; g++) for(var i = 0; i < P[g].length; i++){ var p = P[g][i]; if(p.st !== 'grown') return true; for(var k in p.tw) return true; } return false; }
+      var raf = 0;
+      function kick(){ if(calm()){ if(raf){ cancelAnimationFrame(raf); raf = 0; } frame(); fade(); return; } if(!raf) raf = requestAnimationFrame(frame); }
+      function fade(){ sceneBox.classList.remove('is-fade'); void sceneBox.offsetWidth; sceneBox.classList.add('is-fade'); }
+      function step(p, t){
+        for(var k in p.tw){
+          var w = p.tw[k]; if(t < w.t0) continue;
+          var f = clamp((t - w.t0) / w.dur, 0, 1);
+          p[k] = w.from + (w.to - w.from) * ease(f);
+          if(f >= 1){ p[k] = w.to; delete p.tw[k]; }
+        }
+        if(p.st === 'sprout' && !p.tw.h) p.st = 'grown';
+      }
+      function frame(){
+        raf = 0;
+        var t = now();
+        for(var g = 0; g < 2; g++){
+          for(var i = P[g].length - 1; i >= 0; i--){
+            var p = P[g][i]; step(p, t);
+            if(p.st === 'leave' && !p.tw.op && !p.tw.h){ if(p.el) p.el.remove(); P[g].splice(i, 1); continue; }
+            if(G) paintPlant(p);
+          }
+        }
+        paint();
+        if(busy() && !calm()) raf = requestAnimationFrame(frame);
+        else settled();
+      }
+      // finish every change at once (leaving the stage, a new change on top of one still playing)
+      function stopAll(){
+        if(raf){ cancelAnimationFrame(raf); raf = 0; }
+        for(var g = 0; g < 2; g++){
+          for(var i = P[g].length - 1; i >= 0; i--){
+            var p = P[g][i];
+            for(var k in p.tw){ p[k] = p.tw[k].to; } p.tw = {};
+            if(p.st === 'leave'){ if(p.el) p.el.remove(); P[g].splice(i, 1); continue; }
+            p.st = 'grown';
+            if(G) paintPlant(p);
+          }
+        }
+      }
+
+      /* ---------------------------------------------------- changes to the model, each shown */
+      // the tallest shade plant carries the spread knob: keep it away from the tray's ends (the mean knob is at the right)
+      function arrange(g, list){
+        if(g !== 1 || list.length < 5) return list;
+        var mi = 0; list.forEach(function(s, i){ if(s.z > list[mi].z) mi = i; });
+        if(mi === 0 || mi >= list.length - 2){ var mid = Math.floor(list.length / 2), tmp = list[mid]; list[mid] = list[mi]; list[mi] = tmp; }
+        return list;
+      }
+      /* slots: the final order, each { p: an existing plant or null, z }; the others leave */
+      function morph(g, slots, o){
+        o = o || {};
+        var n = slots.length, keep = slots.map(function(s){ return s.p; });
+        P[g].forEach(function(p){ if(p.st !== 'leave' && keep.indexOf(p) < 0){ p.st = 'leave'; twn(p, 'op', 0, 420); twn(p, 'h', 0, 420); if(calm()){ p.op = 0; p.h = 0; } } });
+        slots.forEach(function(s, i){
+          var fx = (i + 0.5) / n, p = s.p;
+          if(!p){
+            p = { g: g, id: ++uid, z: s.z, h: 0, x: fx, op: 1, st: 'sprout', tw: {} };
+            P[g].push(p); if(G) plantEl(p);
+            twn(p, 'h', target(p), 620, (o.stagger || 45) * i);
+            if(calm()){ p.h = target(p); p.st = 'grown'; }
+          } else {
+            p.z = s.z;
+            twn(p, 'x', fx, 380);
+            twn(p, 'h', target(p), o.dur || 420, o.wave ? 22 * i : 0);
+          }
+        });
+      }
+      function heightsOk(g, zs, m, s){ return zs.every(function(z){ var h = m + s * z; return h >= HLO && h <= HHI; }); }
+      function restd(zs){ var st = statsOf(zs); return zs.map(function(z){ return (z - st.mean) / st.sd; }); }
+      function setN(n, user){
+        if(n === St.n) return;
+        stopAll();
+        var from = St.n; St.n = n;
+        [0, 1].forEach(function(g){
+          var a = active(g), k = a.length, slots;
+          if(n > k){
+            // new plants chosen so the tray keeps its mean and SD exactly: only n changes
+            var j = n - k, d = Math.sqrt(j / (j - 1)), add = null;
+            for(var t = 0; t < 40; t++){ var u = zset(j, M.rng(7919 + 131 * (++draws))); add = u.map(function(v){ return v * d; }); if(heightsOk(g, add, Mo[g].m, Mo[g].s)) break; }
+            slots = new Array(n);
+            a.forEach(function(p, i){ slots[Math.min(n - 1, Math.round((i + 0.5) * n / k - 0.5))] = { p: p, z: p.z }; });
+            var q = 0; for(var i = 0; i < n; i++) if(!slots[i]) slots[i] = { p: null, z: add[q++] };
+          } else {
+            var keepI = []; for(var i2 = 0; i2 < n; i2++) keepI.push(Math.round((i2 + 0.5) * k / n - 0.5));
+            var ks = keepI.map(function(i){ return a[i]; }), zs = restd(ks.map(function(p){ return p.z; }));
+            slots = ks.map(function(p, i){ return { p: p, z: zs[i] }; });
+          }
+          morph(g, arrange(g, slots));
+        });
+        lastAct = { kind: 'n', from: from, to: n, was: verdictNow() };
+        paintN();
+        kick();
+      }
+      function newSample(){
+        stopAll();
+        var was = verdictNow();
+        [0, 1].forEach(function(g){
+          var n = active(g).length, mo = Mo[g], r = M.rng(4099 + 977 * (++draws) + g), m = mo.mu, s = mo.sig, zs = null;
+          for(var t = 0; t < 60; t++){
+            var raw = []; for(var i = 0; i < n; i++) raw.push(r.normal(mo.mu, mo.sig));
+            var st = statsOf(raw);
+            m = clamp(r1(st.mean), EX.meanRange[0], EX.meanRange[1]); s = clamp(r1(st.sd), EX.sdRange[0], EX.sdRange[1]);
+            zs = raw.map(function(v){ return (v - st.mean) / st.sd; });
+            if(zs.every(function(z){ return Math.abs(z) <= 2.2; }) && heightsOk(g, zs, m, s)) break;
+          }
+          mo.m = m; mo.s = s;
+          var a = active(g), list = arrange(g, zs.map(function(z){ return { z: z }; }));
+          // the new heights go to the plants where they stand (the tallest shade plant away from the ends)
+          morph(g, a.map(function(p, i){ return { p: p, z: list[i].z }; }), { dur: 700, wave: true });
+        });
+        lastAct = { kind: 'sample', was: was, n: St.n };
+        hMean.value(Mo[1].m); hSd.value(Mo[1].s); hMean.before(null);
+        kick();
+      }
+      function zRange(g){ var a = active(g), lo = 0, hi = 0; a.forEach(function(p){ lo = Math.min(lo, p.z); hi = Math.max(hi, p.z); }); return [lo, hi]; }
+      function meanLim(){ var z = zRange(1), s = Mo[1].s; return [Math.max(EX.meanRange[0], r1(HLO - s * z[0] + 0.05)), Math.min(EX.meanRange[1], r1(HHI - s * z[1] - 0.05))]; }
+      function sdLim(){ var z = zRange(1), m = Mo[1].m; return [EX.sdRange[0], Math.min(EX.sdRange[1], Math.floor(Math.min((HHI - m) / Math.max(z[1], 1e-6), (m - HLO) / Math.max(-z[0], 1e-6)) * 10) / 10)]; }
+      function retarget(g, dur){
+        P[g].forEach(function(p){
+          if(p.st === 'leave') return;
+          var t = target(p);
+          if(p.st === 'sprout' && p.tw.h){ p.tw.h.to = t; return; }
+          if(!dur){ p.h = t; delete p.tw.h; } else twn(p, 'h', t, dur);
+        });
+      }
+      function setMean(v, drag){ var lim = meanLim(); v = clamp(r1(v), lim[0], lim[1]); Mo[1].m = v; Mo[1].mu = v; retarget(1, drag ? 0 : 240); if(hMean.value() !== v) hMean.value(v); kick(); }
+      function setSd(v, drag){ var lim = sdLim(); v = clamp(r1(v), lim[0], lim[1]); Mo[1].s = v; Mo[1].sig = v; retarget(1, drag ? 0 : 240); if(hSd.value() !== v) hSd.value(v); kick(); }
+      function paintN(){ nBtns.forEach(function(b){ b.setAttribute('aria-pressed', String(+b.getAttribute('data-n') === St.n)); }); }
+
+      /* ---------------------------------------------------- the knobs on the picture */
+      function tallest(){ var a = counted(1).length ? counted(1) : active(1), best = null; a.forEach(function(p){ if(!best || p.h > best.h) best = p; }); return best; }
+      var drawn = [null, null];   // what is drawn this frame: the stats of the counted plants
+      var hMean = K.handle(layer, { key: 'ci2-mean', chip: false, label: 'Mean height of the shade plants (cm)', value: Mo[1].m, min: EX.meanRange[0], max: EX.meanRange[1], step: 0.1,
+        at: function(){ return G && drawn[1] && isFinite(drawn[1].mean) ? [G.knobX, yH(drawn[1].mean)] : [NaN, NaN]; },
+        pick: function(x, y){ var v = r1((G.ySoil - y) / G.k), lim = meanLim(); return clamp(v, lim[0], lim[1]); },
+        dir: function(){ return 90; },
+        keys: function(v, key, big){ var st = big ? 1 : 0.1, lim = meanLim(); if(key === 'ArrowUp' || key === 'ArrowRight') return clamp(r1(v + st), lim[0], lim[1]); if(key === 'ArrowDown' || key === 'ArrowLeft') return clamp(r1(v - st), lim[0], lim[1]); if(key === 'PageUp') return clamp(r1(v + 1), lim[0], lim[1]); if(key === 'PageDown') return clamp(r1(v - 1), lim[0], lim[1]); if(key === 'Home') return lim[0]; if(key === 'End') return lim[1]; return null; },
+        valuetext: function(){ var d = drawn[1]; return d && isFinite(d.mean) ? 'Shade plants, mean ' + F(r1(d.mean), 1) + ' ' + U : ''; },
+        tag: function(){ var d = drawn[1]; return d && isFinite(d.mean) ? 'mean ' + F(r1(d.mean), 1) + ' ' + U : ''; }, tagSide: function(){ return 'down'; },
+        bounds: function(){ return G ? [G.tx[1], 0, G.W - 4, G.H] : null; },
+        onStart: function(v){ hideCue(true); tourDid('mean'); if(before == null){ before = v; } lastAct = { kind: 'mean', was: verdictNow() }; },
+        onEnd: function(){ kick(); },
+        onInput: function(v){ var dr = hMean.dragging(); setMean(v, dr); if(before != null) hMean.before(before); } });
+      hMean.el.classList.add('ci2-hmean');
+      var hSd = K.handle(layer, { key: 'ci2-sd', quiet: true, label: 'Spread of the shade plants, the SD (cm): drag the tallest plant', value: Mo[1].s, min: EX.sdRange[0], max: EX.sdRange[1], step: 0.1,
+        at: function(){ var p = G && tallest(); return p ? [plantX(1, p.x) + p.sway * Math.min(1, p.h * G.k / 50), yH(p.h)] : [NaN, NaN]; },
+        pick: function(x, y){ var p = tallest(); if(!p || p.z < 0.2) return null; var top = (G.ySoil - y) / G.k, lim = sdLim(); return clamp(r1((top - Mo[1].m) / p.z), lim[0], lim[1]); },
+        dir: function(){ return 90; },
+        keys: function(v, key, big){ var st = big ? 0.5 : 0.1, lim = sdLim(); if(key === 'ArrowUp' || key === 'ArrowRight' || key === 'PageUp') return clamp(r1(v + (key === 'PageUp' ? 0.5 : st)), lim[0], lim[1]); if(key === 'ArrowDown' || key === 'ArrowLeft' || key === 'PageDown') return clamp(r1(v - (key === 'PageDown' ? 0.5 : st)), lim[0], lim[1]); if(key === 'Home') return lim[0]; if(key === 'End') return lim[1]; return null; },
+        valuetext: function(){ var d = drawn[1]; return d && isFinite(d.sd) ? 'Shade plants, SD ' + F(r1(d.sd), 1) + ' ' + U : ''; },
+        tag: function(){ var d = drawn[1]; return d && isFinite(d.sd) ? 'SD ' + F(r1(d.sd), 1) + ' ' + U : ''; }, tagSide: function(){ return 'up'; },
+        bounds: function(){ return G ? [G.tx[1] - 8, 0, G.W - 4, G.H] : null; },
+        onStart: function(){ hideCue(true); lastAct = { kind: 'sd', was: verdictNow() }; },
+        onEnd: function(){ kick(); },
+        onInput: function(v){ setSd(v, hSd.dragging()); } });
+      hSd.el.classList.add('ci2-hsd');
+
+      /* ---------------------------------------------------- paint: everything read from the plants as drawn */
+      function verdictOf(a, b){
+        if(!a || !b || !(a.n > 1) || !(b.n > 1)) return null;
+        var A = { m: r1(a.mean), e: r1(a.e2), x: a }, Bq = { m: r1(b.mean), e: r1(b.e2), x: b };
+        var lo = A.m <= Bq.m ? A : Bq, up = lo === A ? Bq : A;
+        // the overlap from the numbers as shown (each to 0.1), so the cause line adds up
+        var ov = Math.round(((lo.m + lo.e) - (up.m - up.e)) * 10) / 10;
+        return { lo: lo, up: up, diff: Math.round((up.m - lo.m) * 10) / 10, ov: ov, kind: ov > 0 ? 'ov' : ov < 0 ? 'gap' : 'touch', loI: lo === A ? 0 : 1 };
+      }
+      function verdictNow(){ return lastV ? lastV.kind : null; }
+      var lastV = null;
+      function paint(){
+        if(!G) return;
+        var c = G.cb;
+        drawn = [0, 1].map(function(g){ return statsOf(counted(g).map(function(p){ return p.h; })); });
+        [0, 1].forEach(function(g){
+          var d = drawn[g], ok = d.n > 0, y = ok ? yH(d.mean) : 0, x0 = G.tx[g] + 2, x1 = G.tx[g] + G.tw - 2 + (g ? 8 : 0);
+          var ml = E.ml[g]; ml.line.style.display = ml.halo.style.display = ok ? '' : 'none';
+          if(ok){ at(ml.halo, { x1: x0, x2: x1, y1: y, y2: y }); at(ml.line, { x1: x0, x2: x1, y1: y, y2: y }); }
+          // the bar and its error bar on the clipboard
+          var bar = E.bar[g], er = E.err[g], cx = c.cx[g];
+          if(ok){ var yt = yA(d.mean); at(bar, { x: cx - c.bw / 2, y: yt, width: c.bw, height: Math.max(0, c.b - yt) }); bar.style.display = ''; } else bar.style.display = 'none';
+          if(d.n > 1){
+            var ylo = yA(d.mean - d.e2), yhi = yA(d.mean + d.e2), cp = c.cap / 2;
+            at(er, { d: 'M' + n1(cx) + ' ' + n1(yhi) + 'V' + n1(ylo) + 'M' + n1(cx - cp) + ' ' + n1(yhi) + 'h' + n1(c.cap) + 'M' + n1(cx - cp) + ' ' + n1(ylo) + 'h' + n1(c.cap) });
+            er.style.display = '';
+            var et = E.pE[g]; txt(et, '±' + F(r1(d.e2), 1)); at(et, { x: cx, y: yhi - 7 }); et.style.display = '';
+          } else { er.style.display = 'none'; E.pE[g].style.display = 'none'; }
+          txt(E.nl[g], 'n = ' + d.n);
+        });
+        // the full light tray's mean, on a pill under its line, at its left end
+        var d0 = drawn[0];
+        if(d0.n > 0) E.pMean.set('mean ' + F(r1(d0.mean), 1) + ' ' + U, G.tx[0] + 5, yH(d0.mean) + (G.wide ? 17 : 15), 'start'); else E.pMean.hide();
+        // the overlap or the gap between the two error bars
+        var V = verdictOf(drawn[0], drawn[1]); lastV = V;
+        stage.setAttribute('data-v', V ? V.kind : '');
+        if(V){
+          var loHi = V.lo.x.mean + V.lo.x.e2, upLo = V.up.x.mean - V.up.x.e2, ya = yA(Math.max(loHi, upLo)), yb = yA(Math.min(loHi, upLo));
+          if(V.kind === 'touch' || yb - ya < 1.5){ var ym = (ya + yb) / 2; ya = ym - 1; yb = ym + 1; }
+          var bx0 = c.cx[0], bx1 = c.cx[1];
+          at(E.band, { x: bx0, y: ya, width: bx1 - bx0, height: yb - ya, 'class': 'ci2-band is-' + V.kind }); E.band.style.display = '';
+          E.pBand.g.setAttribute('class', 'ci2-pill is-' + V.kind);
+          E.pBand.set(V.kind === 'ov' ? 'overlap' : V.kind === 'gap' ? 'gap' : 'touch', (bx0 + bx1) / 2, (ya + yb) / 2, 'middle');
+        } else { E.band.style.display = 'none'; E.pBand.hide(); }
+        paintCause(V);
+        hMean.place(); hSd.place();
+        if(cue.active()) cue.place();
+      }
+      function paintCause(V){
+        if(cause.el.classList.contains('is-take') && busy()) cause.take(null);
+        if(cause.el.classList.contains('is-take')) return;
+        if(!V){ cause.set([{ t: 'Growing', role: 'diff' }]); return; }
+        var d = { t: 'means ' + F(V.diff, 1) + ' ' + U + ' apart', role: 'diff', say: 'The means are ' + F(V.diff, 1) + ' ' + U + ' apart' };
+        if(V.kind === 'ov') cause.set([d, { t: 'bars overlap by ' + F(V.ov, 1) + ' ' + U, role: 'ov', say: 'the error bars overlap by ' + F(V.ov, 1) + ' ' + U }, { t: 'may be chance', role: 'ov', say: 'so the difference may be due to chance' }]);
+        else if(V.kind === 'gap') cause.set([d, { t: 'bars ' + F(-V.ov, 1) + ' ' + U + ' apart', role: 'gap', say: 'the error bars are ' + F(-V.ov, 1) + ' ' + U + ' apart' }, { t: 'unlikely to be chance', role: 'gap', say: 'so the difference is unlikely to be due to chance' }]);
+        else cause.set([d, { t: 'bars just touch', role: 'touch', say: 'the error bars just touch' }, { t: 'too close to call', role: 'touch', say: 'too close to call from the picture' }]);
+      }
+
+      /* ---------------------------------------------------- settled: takeaways, challenges, live text, "?" */
+      function settled(){
+        if(busy() || !G) return;
+        var V = lastV, msg = cause.text(), take = null, a = lastAct;
+        if(a && V && St.mode === 'explore'){
+          if(a.kind === 'n' && a.to === 4 * a.from) take = 'Four times the plants, half the bar: SE = SD ÷ √n.';
+          else if(a.kind === 'n' && a.was === 'ov' && V.kind === 'gap') take = 'More plants made the bars shorter, so the real difference shows.';
+          else if(a.kind === 'sample') take = St.n <= COUNTS[0] ? 'With ' + St.n + ' plants a tray, chance alone moves the means a lot.' : St.n >= COUNTS[COUNTS.length - 1] ? 'With ' + St.n + ' plants a tray, a new sample hardly moves the means.' : null;
+          else if(a.kind === 'sd' && a.was === 'gap' && V.kind === 'ov') take = 'More spread, longer bars: the same difference is harder to see.';
+        }
+        if(take){ cause.take(take); msg += ' ' + take; }
+        if(a && V){
+          goal('gap', a.kind === 'n' && V.kind === 'gap' && Mo[0].m === GR[0].mean && Mo[1].m === GR[1].mean, 'With ' + St.n + ' plants a tray the bars are <b>' + F(-V.ov, 1) + ' ' + esc(U) + ' apart</b>: the same means, but shorter bars, so the difference is <b>unlikely to be chance</b>.');
+          goal('sd', a.kind === 'sd' && V.kind === 'ov', 'SD ' + F(Mo[1].s, 1) + ' ' + esc(U) + ': more spread makes the Shade bar longer, and the bars <b>overlap</b> again.');
+          if(a.kind === 'n' && a.to === 4 * a.from){ var s = Mo[1].s; goal('four', true, a.from + ' to ' + a.to + ' plants, <b>four times</b> as many: the Shade bar went from ±' + F(r1(2 * s / Math.sqrt(a.from)), 1) + ' to <b>±' + F(r1(2 * s / Math.sqrt(a.to)), 1) + '</b>, half as long, because SE = SD ÷ √n.'); }
+          goal('flip', a.kind === 'sample' && St.n === COUNTS[0] && a.was && a.was !== V.kind, 'Same trays, new plants, and the verdict changed to <b>' + (V.kind === 'gap' ? 'bars apart' : V.kind === 'ov' ? 'bars overlap' : 'bars touch') + '</b>. With 5 plants, chance alone can do that.');
+        }
+        say(msg);
+        refHtml();
+      }
+
+      /* ---------------------------------------------------- the first visit cue and "Show me how" */
+      var cue = K.cue(layer, { key: 'apbio-ci', text: EX.cue, side: 'left', at: function(){ return G && drawn[1] && isFinite(drawn[1].mean) ? [G.knobX - 26, yH(drawn[1].mean)] : [0, 0]; } });
+      function hideCue(used){ if(cue.active()) cue.hide(used); }
+      var tour = K.tour({ key: 'apbio-ci', label: 'Show me how', steps: [
+        { id: 'mean', text: 'Drag the knob: every shade plant grows or shrinks. Their mean is the blue bar on the clipboard.', target: function(){ return hMean.knob; } },
+        { id: 'clip', text: 'Each error bar reaches 2 SE above and below the mean. Overlap: the difference may be chance.', target: function(){ var r = sceneBox.getBoundingClientRect(); return G ? { left: r.left + G.cb.x, top: r.top + G.cb.y, width: G.cb.w, height: G.cb.h, right: r.left + G.cb.x + G.cb.w, bottom: r.top + G.cb.y + G.cb.h } : sceneBox; } },
+        { id: 'n', text: 'More plants make the bars shorter, so a small real difference can show.', target: function(){ return acts.querySelector('.ci2-n'); } }],
+        onClose: function(had){ if(had) try{ head.how.focus({ preventScroll: true }); }catch(e){} } });
+      function tourDid(id){ if(tour.active()) tour.did(id); }
+      function startTour(){ if(St.mode !== 'explore') return; hideCue(false); tour.start(true); }
+
+      /* ---------------------------------------------------- "?": the numbers worked out */
+      var ref = document.createElement('div'); ref.className = 'ci2-ref';
+      ref.innerHTML = '<p class="ci2-ref-how"><button type="button" class="tk2-how ci2-ref-tour">Show me how</button></p><div class="ci2-ref-live"></div>' + EX.refHtml;
+      ref.querySelector('.ci2-ref-tour').addEventListener('click', function(){ if(St.mode !== 'explore') return; var x = document.querySelector('.ls-sheet-x, .ls-sheet .ls-x'); if(x) x.click(); setTimeout(startTour, 60); });
+      var refLive = ref.querySelector('.ci2-ref-live');
+      function refHtml(){
+        var V = lastV; if(!V) return;
+        var rows = [0, 1].map(function(g){ var d = drawn[g], se = d.sd / Math.sqrt(d.n), m = r1(d.mean), e = r1(d.e2); return '<tr><th scope="row">' + esc(GR[g].name) + '</th><td>' + d.n + '</td><td>' + F(m, 1) + '</td><td>' + F(r1(d.sd), 1) + '</td><td>' + F(r1(d.sd), 1) + ' ÷ ' + F(Math.sqrt(d.n), 2) + ' = ' + F(se, 2) + '</td><td>' + F(m, 1) + ' ± ' + F(e, 1) + ' = ' + F(r1(m - e), 1) + ' to ' + F(r1(m + e), 1) + '</td></tr>'; }).join('');
+        refLive.innerHTML = '<h3>This picture, worked out</h3><div class="bt-tablewrap"><table class="ci2-tab"><thead><tr><th scope="col">Tray</th><th scope="col">n</th><th scope="col">Mean (' + esc(U) + ')</th><th scope="col">SD</th><th scope="col">SE = SD ÷ √n</th><th scope="col">95% CI ≈ mean ± 2 SE</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
+          '<p>' + (V.kind === 'ov' ? 'The error bars overlap by ' + F(V.ov, 1) + ' ' + esc(U) + ', so the difference may be due to chance: the data do not show a real difference.' : V.kind === 'gap' ? 'The error bars are ' + F(-V.ov, 1) + ' ' + esc(U) + ' apart, so the difference is unlikely to be due to chance: it is likely a real difference.' : 'The error bars just touch: too close to call from the picture.') + '</p>';
+      }
+
+      /* ---------------------------------------------------- Test yourself, "Challenges" */
+      var dock = document.createElement('div'); dock.className = 'ci2-dock';
+      var chal = K.challenges({ store: 'apbio-ci-goals', items: EX.goals,
+        done: { title: 'All four done.', text: 'Error bars of ±2 SE shrink with more plants and grow with more spread. Apart: likely a real difference. Overlapping: it may be chance.' },
+        onShow: function(){ if(St.mode === 'quiz' && St.part === 'goals') fresh(); }, onReset: function(){ fresh(); } });
+      dock.appendChild(chal.el);
+      function goal(id, ok, html){
+        if(!ok || St.mode !== 'quiz' || St.part !== 'goals') return;
+        var c = chal.current(); if(!c || c.id !== id || chal.isMet(id)) return;
+        chal.met(id, html);
+      }
+
+      /* ---------------------------------------------------- the opening, Start over */
+      function build(){
+        // the opening plants at once (a first visit, Challenges)
+        stopAll();
+        P.forEach(function(a){ a.forEach(function(p){ if(p.el) p.el.remove(); }); });
+        P = [[], []]; openModel(); St.n = EX.open.n; lastAct = null; before = null;
+        [0, 1].forEach(function(g){ var zs = arrange(g, ZOPEN[g].map(function(z){ return { z: z }; })).map(function(s){ return s.z; }); zs.forEach(function(z, i){ var p = { g: g, id: ++uid, z: z, h: 0, x: (i + 0.5) / zs.length, op: 1, st: 'grown', tw: {} }; p.h = target(p); P[g].push(p); if(G) plantEl(p); }); });
+        hMean.value(Mo[1].m); hSd.value(Mo[1].s); hMean.before(null); paintN();
+      }
+      function reset(){
+        // Start over: the opening, shown (extra plants go back into the soil, the rest grow or shrink to their place)
+        stopAll(); openModel(); var from = St.n; St.n = EX.open.n; before = null; hMean.before(null);
+        [0, 1].forEach(function(g){
+          var a = active(g), zs = arrange(g, ZOPEN[g].map(function(z){ return { z: z }; })).map(function(s){ return s.z; }), k = a.length, n = zs.length, slots = [];
+          for(var i = 0; i < n; i++){ var j = Math.round((i + 0.5) * k / n - 0.5); slots.push({ p: k ? a[Math.min(k - 1, j)] : null, z: zs[i] }); }
+          // a plant is never used twice
+          var seen = []; slots.forEach(function(s){ if(s.p && seen.indexOf(s.p) > -1) s.p = null; else if(s.p) seen.push(s.p); });
+          morph(g, slots, { dur: 520 });
+        });
+        lastAct = null; hMean.value(Mo[1].m); hSd.value(Mo[1].s); paintN(); cause.take(null);
+        kick();
+      }
+      function fresh(){ build(); lastWH = ''; layoutNow(true); settled(); }
+      nBtns.forEach(function(b){ b.addEventListener('click', function(){ hideCue(true); tourDid('n'); cause.take(null); setN(+b.getAttribute('data-n'), true); }); });
+      bNew.addEventListener('click', function(){ hideCue(true); cause.take(null); newSample(); });
+      bReset.addEventListener('click', function(){ hideCue(true); reset(); });
+
+      /* ---------------------------------------------------- layout */
+      var lastWH = '';
+      function layoutNow(force){
+        var key = sceneBox.clientWidth + 'x' + sceneBox.clientHeight;
+        if(!force && key === lastWH) return;
+        if(!sceneBox.clientWidth) return;
+        lastWH = key;
+        var g = layout(); if(!g) return;
+        var fewest = g.tw / COUNTS[COUNTS.length - 1];
+        g.leaf = clamp(fewest * 1.15, 7, g.wide ? 17 : 12) * (1 + 0.35 * clamp((COUNTS[COUNTS.length - 1] / Math.max(1, St.n) - 1) / 3, 0, 1));
+        G = g; svg.setAttribute('viewBox', '0 0 ' + g.W + ' ' + g.H);
+        drawStatic();
+        P.forEach(function(a){ a.forEach(function(p){ if(!p.el || !p.el.parentNode) plantEl(p); p._c = {}; paintPlant(p); }); });
+        paint();
+      }
+      function leafFor(){ if(!G) return; var fewest = G.tw / COUNTS[COUNTS.length - 1]; G.leaf = clamp(fewest * 1.15, 7, G.wide ? 17 : 12) * (1 + 0.35 * clamp((COUNTS[COUNTS.length - 1] / Math.max(1, St.n) - 1) / 3, 0, 1)); }
+
+      /* ---------------------------------------------------- the two modes (the adapter calls this) */
+      var saved = null;
+      function snapshot(){ return { n: St.n, Mo: Mo.map(function(o){ return { m: o.m, s: o.s, mu: o.mu, sig: o.sig }; }), z: P.map(function(a){ return active(P.indexOf(a)).map(function(p){ return p.z; }); }) }; }
+      function restore(sv){
+        stopAll(); P.forEach(function(a){ a.forEach(function(p){ if(p.el) p.el.remove(); }); }); P = [[], []];
+        Mo = sv.Mo; St.n = sv.n;
+        [0, 1].forEach(function(g){ sv.z[g].forEach(function(z, i){ var p = { g: g, id: ++uid, z: z, h: 0, x: (i + 0.5) / sv.z[g].length, op: 1, st: 'grown', tw: {} }; p.h = target(p); P[g].push(p); if(G) plantEl(p); }); });
+        hMean.value(Mo[1].m); hSd.value(Mo[1].s); paintN();
+      }
+      function shown(mode, part){
+        var was = St.mode === 'explore' ? 'explore' : St.part === 'goals' ? 'goals' : 'other';
+        St.mode = mode; St.part = part;
+        var ex = mode === 'explore', goals = mode === 'quiz' && part === 'goals';
+        stage.setAttribute('data-view', ex ? 'explore' : 'goals');
+        head.el.hidden = !ex;
+        if(!ex){ hideCue(false); if(tour.active()) tour.stop(); }
+        if(was === 'explore' && !ex){ stopAll(); saved = snapshot(); }
+        if(!ex && !goals){ stopAll(); return; }
+        if(ex && saved){ restore(saved); saved = null; }
+        cause.take(null); lastAct = null;
+        if(goals && was !== 'goals'){ setTimeout(function(){ fresh(); }, 30); return; }
+        setTimeout(function(){ leafFor(); layoutNow(true); settled(); if(ex && !tour.active()){ if(cue.show()) cue.place(); } }, 30);
+      }
+      ctx.kit2 = { stage: stage, ref: ref, othersLabel: 'On the picture',
+        parts: [{ value: 'practice', label: 'Problems', practice: true },
+          { value: 'goals', label: 'Challenges', dock: dock, task: { kicker: 'Challenges', title: 'Change the picture to meet each challenge.', todo: 'Drag the knobs, change the plants.' } }],
+        onShow: function(m, p){ shown(m, p); } };
+      // the practice problems (unchanged): the adapter puts them in Test yourself
+      T.skillTool(app, data, { slug: SLUG, kind: 'ci', stage: stage0 });
+      build();
+      if(!ctx.studio){ app.insertBefore(stage, app.firstChild); app.insertBefore(ref, stage.nextSibling); shown('explore', null); }
+      // the whole stage stops when it is hidden (Test yourself, "?" on a phone, another page tab)
+      if(window.IntersectionObserver) new IntersectionObserver(function(es){ es.forEach(function(en){ if(!en.isIntersecting && busy() && !hMean.dragging() && !hSd.dragging()){ stopAll(); paint(); settled(); } }); }).observe(sceneBox);
+      document.addEventListener('visibilitychange', function(){ if(document.hidden && busy()){ stopAll(); paint(); settled(); } });
+      if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ mCache = {}; lastWH = ''; layoutNow(true); });
+      if(window.ResizeObserver){ var tm = null; new ResizeObserver(function(){ clearTimeout(tm); tm = setTimeout(function(){ if(busy()){ stopAll(); } leafFor(); layoutNow(false); settled(); }, 60); }).observe(sceneBox); }
+      else window.addEventListener('resize', function(){ layoutNow(false); });
+      // n changes the leaf size a little (fewer plants, bigger leaves): set it as the count changes
+      var setN0 = setN; setN = function(n, u){ setN0(n, u); var o = G && G.leaf; leafFor(); if(G && o !== G.leaf) P.forEach(function(a){ a.forEach(function(p){ p._c.t = null; }); }); kick(); };
+      // for the sweep (scripts/tools-v2/bio-confidence-intervals-sweep.mjs): the drawn state and the geometry
+      window.__ci2 = { G: function(){ return G; }, P: function(){ return P; }, Mo: function(){ return Mo; }, St: St, busy: busy, drawn: function(){ return drawn; }, V: function(){ return lastV; },
+        set: function(o){ stopAll(); if(o.n && o.n !== St.n){ setN(o.n); stopAll(); } if(o.mean != null){ setMean(o.mean); } if(o.sd != null){ setSd(o.sd); } stopAll(); cause.take(null); lastAct = null; paint(); settled(); },
+        open: function(){ fresh(); }, setN: function(n){ setN(n); }, sample: function(){ newSample(); }, reset: function(){ reset(); },
+        mean: function(v){ setMean(v); }, sd: function(v){ setSd(v); } };
+    }, { studio: { kit2: function(ctx){ return ctx.kit2; } } });
+  }
+  /* The page loads the kit (pages.json "kit2": true). A cached copy of the old page would not: fetch it then. */
+  if(window.LevlKit2) boot();
+  else {
+    var up = (window.ApBioBase || '../') + '../assets/course/';
+    var l = document.createElement('link'); l.rel = 'stylesheet'; l.href = up + 'tool-kit2.css'; document.head.appendChild(l);
+    var l2 = document.createElement('link'); l2.rel = 'stylesheet'; l2.href = (window.ApBioBase || '../') + 'assets/tools/confidence-intervals.css'; document.head.appendChild(l2);
+    var sc = document.createElement('script'); sc.src = up + 'tool-kit2.js'; sc.onload = boot; document.head.appendChild(sc);
+  }
 })();
