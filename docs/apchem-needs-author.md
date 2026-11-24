@@ -529,3 +529,19 @@ approximate. A real 50 mL cylinder is marked every 1 mL; the coarse one is a tea
 Still open, on purpose: a reading's uncertainty. Texts differ (half the smallest division, or one tenth of it, or
 "± 1 in the estimated digit"), and the AP® Chemistry exam does not ask for one. Decide whether "?" should give one
 convention.
+
+## ice-explore-n2o4: the N₂O₄ constant and the drawn steps in the ICE tables Explore (open, 2026-11-23)
+
+The ICE tables tool's Explore (tools v2, `docs/tools-v2-chem-ice-tables-brief.md`) draws two real reactions. H₂ + I₂ ⇌
+2HI uses the drill's K<sub>c</sub> = 54.3 at 430 °C (ice-hi-k above). N₂O₄ ⇌ 2NO₂ uses K<sub>p</sub> = 0.146 at
+298.15 K from NBS ΔG°f (NO₂ 51.31, N₂O₄ 97.89 kJ/mol), the value the Equilibrium and kinetics tool already uses, so
+the course's flasks agree. Two points for a person:
+1. Many textbooks quote K<sub>c</sub> = 4.63 × 10⁻³ at 25 °C for this reaction, while the same NBS data give
+   K<sub>c</sub> = K<sub>p</sub>/(RT) ≈ 6.0 × 10⁻³ (and other tables give K<sub>p</sub> 0.11 to 0.15). The tool shows
+   K<sub>p</sub> with pressures in atm, which avoids stating a K<sub>c</sub>; confirm 0.146 (or pick one table for the
+   course and change both tools).
+2. The flask holds whole molecules (0.025 M or 0.025 atm each), so x moves in steps and the equilibrium step gives
+   Q = 53.8 (HI, K 54.3) and Q = 0.145 (N₂O₄ from 15 molecules at 0.375 atm, K 0.146), within 1%; the exact x (0.2753 M, 0.1002 atm) rounds to the
+   drawn step at three significant figures, and "?" says so. The validator checks both. Confirm this is an
+   acceptable teaching simplification (the alternative is a continuous x with fractional molecules, which the
+   drawn counts could not match).

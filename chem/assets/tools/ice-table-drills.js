@@ -1,161 +1,841 @@
-/* Drill: ICE tables (Unit 7). Job: set up and solve an ICE table, and see
-   what each row means for the mixture.
+/* ICE tables, tools v2 (docs/tools-v2-chem-ice-tables-brief.md; the standard: docs/tools-v2-standard.md). On the shared
+   kit (assets/course/tool-kit2.js) through the course adapter ApChemTools.studioKit2 (chem-tools.js).
 
-   Problems come from ApChemMath.ice.generate (chem-tool-math.js), seeded;
-   contexts are data (chem/data/tools/ice-table-drills.json); the
-   step-by-step checking is ApChemTools.drill. This file draws the ICE table
-   the I, C and E rows are typed into (a real table, one labelled text box per
-   cell, the active row highlighted) and, beside it, the mixture live:
-
-   - a bar chart of each species' concentration (or pressure): the I bars
-     from the I row, arrows from the C row, the E bars from the E row,
-     redrawn as each cell is typed (a typed value is drawn hatched until its
-     step is checked);
-   - a live beaker (ApChemBeaker, readout 'qk') whose particles follow the
-     same numbers on one fixed scale, with Q against K: Q of the I row first,
-     then Q of the typed E row, closing in on K as the E row comes right.
-     For "find K" problems K is the answer, so the gauge appears only once
-     the K step is done.
-   Every Q is ApChemMath.Q of the typed or checked numbers.
-
-   Explore (the first tab): the same reaction and starting amounts, with x
-   on a slider. The ICE table is on the stage beside the jar (the bar chart
-   opens on tap; Q against K appears once x moves):
-   the C row in x with this x worked out, the E row in x and as numbers
-   (labelled "at this x" until Q = K). The bars and the jar follow, and Q
-   slides toward K; "Solve for x" jumps to the exact
-   extent (ApChemMath.solveExtent). The drill is the "Test yourself" tab;
-   problem codes (?seed=) open it. */
+   THE ONE IDEA: a reaction runs forward by x until Q reaches K; the ICE table is that change written down.
+   EXPLORE: a sealed round bottom flask of gas on a lab bench (H₂ and violet I₂; or colorless N₂O₄ that browns as NO₂
+   forms), the molecules drawn with their atoms, and a clipboard on the wall with the ICE table. The main control is x,
+   a knob on a rail under the flask: every step of x is one reaction event, drawn where it happens (an H₂ and an I₂
+   meet, swap partners and leave as two HI; an N₂O₄ splits into two NO₂), so the drawn counts ARE the table (one
+   molecule = 0.025 M, or 0.025 atm for Kp). The C row writes the change in x and its value, the E row I + C, and the
+   clipboard's last line puts the E row into the K expression: Q. A small Q gauge on the flask's neck has K as a fixed
+   notch; the needle reaches it at the equilibrium x. Past it the knob still moves (Explore is free): Q overshoots and
+   the cause line says the reverse reaction would bring it back. The data (chem/data/tools/ice-table-drills.json
+   "explore") is checked by scripts/lib/apchem-tool-checks/ice-table-drills.mjs (a step lands Q within 2% of K, and the
+   exact x rounds to that step).
+   Every number shown (table, Q, the knob's tag, the cause line, the needle, the gas color) comes from the molecules
+   DRAWN at that frame: a molecule counts once it has formed. Reduced motion: a short cross fade to the new state.
+   TEST YOURSELF: the drill, unchanged (T.drill: Find K, Small K and the 5% check, Perfect square; ids
+   "ice-table-drills:<context>:<step>", ?seed= and #quiz open it), with its typed table, live beaker and bar chart. */
 (function(){
   'use strict';
+  var SLUG = 'ice-table-drills';
   var T = window.ApChemTools;
   if(!T) return;
   var TITLE = { findK: 'Find K from equilibrium data', smallx: 'Equilibrium amounts when K is small', square: 'Equilibrium amounts: a perfect square' };
   var ROWS = [['I', 'Initial'], ['C', 'Change'], ['E', 'Equilibrium']];
   var plain = function(h){ return String(h).replace(/<[^>]+>/g, ''); };
-  // The bar chart (start against now) is depth: it opens on tap, under the
-  // table, so the landing shows the table and the jar only.
+  var NS = 'http://www.w3.org/2000/svg';
+  function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
+  function now(){ return window.performance ? performance.now() : Date.now(); }
+  function ease(t){ return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
+  function lerp(a, b, t){ return a + (b - a) * t; }
+  function f1(v){ return (+v).toFixed(1); }
+  function rot(dx, dy, a){ var c = Math.cos(a), s = Math.sin(a); return [dx * c - dy * s, dx * s + dy * c]; }
+  function mk(tag, cls, attrs){ var e = document.createElementNS(NS, tag); if(cls) e.setAttribute('class', cls); for(var k in attrs) e.setAttribute(k, attrs[k]); return e; }
+  // a subscript digit or letter in a species name, drawn as a lowered smaller tspan (H₂ -> H<tspan>2</tspan>)
+  var SUBD = { '₀': '0', '₁': '1', '₂': '2', '₃': '3', '₄': '4', '₅': '5', '₆': '6', '₇': '7', '₈': '8', '₉': '9' };
+  function svgChem(t){
+    return String(t).replace(/[₀-₉]+/g, function(m){ return '<tspan class="ix-sub" dy="0.28em">' + m.split('').map(function(c){ return SUBD[c]; }).join('') + '</tspan><tspan dy="-0.28em"> </tspan>'; });
+  }
+  function esc(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
   var BARS = '<details class="ic-barsd"><summary>Bar chart</summary><figure class="ic-bars"><div class="ic-chart"></div></figure></details>';
-  T.mount('ice-table-drills', function(app, data){
-    var M = window.ApChemMath;
-    var ex = null;
-    T.modes(app, { slug: 'ice-table-drills', labels: ['Explore x', 'Test yourself'], explore: function(h){ ex = explore(h, data, M); }, quiz: function(h){ quiz(h, data, M); },
-      studio: { explore: function(pane, s){ if(ex) ex.studio(pane, s); } } });
-  });
 
-  function explore(host, data, M){
-    var F = T.F, esc = T.esc, ctxs = data.contexts || [], ci = 0, seed = 1 + Math.floor(Math.random() * 9999), p, sp, x = 0, xlo, xhi, xs, beaker, slider, moved = false;
-    host.innerHTML = '<section class="bt-problem ic-ex" aria-labelledby="icx-h"><div class="tx-head"><h2 id="icx-h" class="bt-eq ic-eqn"></h2><p class="bt-small ic-setup"></p></div>' +
-      '<div class="ic-wrap"><div class="ic-show"><div class="ic-tab"></div><div class="ic-live"><div class="ic-beaker"></div>' + BARS + '</div></div>' +
-      '<div class="ic-ctl"><div class="ic-x"></div><div class="bt-buttons"><button type="button" class="btn-press sm ic-solve">Solve for x</button></div>' +
-      '<div class="ic-why"></div></div></div>' + T.moreHtml('<div class="bt-pick ic-pick"></div><div class="bt-buttons"><button type="button" class="bt-btn ic-new">New numbers</button></div>', 'another reaction, new numbers') + '</section>';
-    // Lookups reach the Tool Studio too, where these parts move (studio()).
-    var LS = null, SP = null;
-    function $(sel){ return host.querySelector(sel) || (LS ? LS.root.querySelector(sel) : null); }
-    var pick = $('.ic-pick'), start = null;
-    var sel = T.choiceSelect({ label: 'Reaction', options: ctxs.map(function(c, i){ return { value: i, label: M.eqHtml(c.species).replace(/<[^>]+>/g, '') }; }), value: 0, onChange: function(v){ ci = +v; build(); } });
-    sel.el.classList.add('bt-inline'); pick.appendChild(sel.el);
-    $('.ic-new').addEventListener('click', function(){ seed++; build(); });
-    $('.ic-solve').addEventListener('click', function(){ moved = true; setX(xs); });
-    $('.ic-barsd').addEventListener('toggle', function(){ draw(); });
-    function build(){
-      var c = ctxs[ci], type = c.types.indexOf('findK') > -1 ? 'findK' : c.types[0];
-      p = M.ice.generate(M.rng(seed), c, type); sp = p.species;
-      xs = p.x;
-      // x can run from where a product hits 0 (reverse) to where a reactant does.
-      xlo = 0; xhi = Infinity;
-      sp.forEach(function(s, i){ if(s.nu < 0) xhi = Math.min(xhi, p.c0[i] / -s.nu); else xlo = Math.max(xlo, -p.c0[i] / s.nu); });
-      xhi = M.sig(xhi * 0.999, 3);
-      x = 0; moved = false;
-      $('.ic-eqn').innerHTML = p.equation + ' &nbsp; ' + (p.Kp ? 'K<sub>p</sub>' : 'K<sub>c</sub>') + ' = ' + M.fmt(p.K, 3);
-      $('.ic-setup').innerHTML = 'Start: ' + sp.map(function(s, i){ return (p.Kp ? 'P<sub>' + s.html + '</sub>' : '[' + s.html + ']') + ' = ' + M.fmt(p.c0[i], 3) + ' ' + p.unit; }).join(', ') + '. Move x and watch Q.';
-      var xh = $('.ic-x'); xh.innerHTML = '';
-      start = T.cue('Drag the x slider and watch Q move toward K.');
-      xh.appendChild(start.el);
-      var step = M.sig(xhi / 200, 1);
-      slider = T.slider({ label: 'x, the extent of reaction (' + p.unit + ')', min: 0, max: M.round(Math.floor(xhi / step) * step, 6), step: step, value: 0, decimals: Math.max(2, -Math.floor(Math.log10(step))), onInput: function(v){ x = v; moved = true; draw(); } });
-      xh.appendChild(slider.el);
-      if(beaker) beaker.destroy();
-      beaker = window.ApChemBeaker.mount($('.ic-beaker'), { species: sp.map(function(s, i){ return { key: 's' + i, label: plain(s.html), name: plain(s.html), tone: i + 1 }; }), readout: 'qk', title: 'The mixture', max: 22, seed: 9, vessel: 'gas' });
-      draw();
-    }
-    function setX(v){ x = v; slider.set(v); draw(); }
-    /* The live ICE table: the I row fixed, the C row in x with this x worked
-       out, the E row as initial + change in x and as the number it comes to.
-       The E row is labelled "at this x" until Q reaches K, when it is the
-       equilibrium row. */
-    function tableHtml(E, q){
-      var at = Math.abs(q / p.K - 1) <= 0.01, u = p.Kp ? 'atm' : 'M';
-      var sgn = function(v){ return v === 0 ? '0' : (v > 0 ? '+' : '−') + M.fmt(Math.abs(v), 3); };
-      var xIn = function(s, i){
-        var c = Math.abs(s.nu) > 1 ? Math.abs(s.nu) : '', c0 = p.c0[i];
-        return c0 === 0 ? (s.nu < 0 ? '−' : '') + c + 'x' : M.fmt(c0, 3) + ' ' + (s.nu < 0 ? '−' : '+') + ' ' + c + 'x';
-      };
-      var head = function(s){ return p.Kp ? 'P<sub>' + s.html + '</sub>' : '[' + s.html + ']'; };
-      return '<div class="table-wrap" tabindex="0" role="region" aria-label="ICE table at x = ' + M.fmt(x, 3) + ' ' + u + '"><table class="chem-data cd-ice ic-xt' + (at ? ' is-eq' : '') + '"><caption class="sr-only">ICE table (' + (p.Kp ? 'atm' : 'M') + ') at x = ' + M.fmt(x, 3) + '</caption>' +
-        '<thead><tr><th scope="col" class="ic-xk"><span class="sr-only">Row</span><span aria-hidden="true">x = <b>' + M.fmt(x, 3) + '</b></span></th>' + sp.map(function(s){ return '<th scope="col">' + head(s) + ' <small>' + u + '</small></th>'; }).join('') + '</tr></thead><tbody>' +
-        '<tr class="ic-ri"><th scope="row">I <span>Initial</span></th>' + p.c0.map(function(v){ return '<td><b>' + M.fmt(v, 3) + '</b></td>'; }).join('') + '</tr>' +
-        '<tr class="ic-rc"><th scope="row">C <span>Change</span></th>' + sp.map(function(s){ return '<td><span class="ic-xe">' + M.coefText(s.nu) + '</span><b>' + sgn(s.nu * x) + '</b></td>'; }).join('') + '</tr>' +
-        '<tr class="ic-re is-active"><th scope="row">E <span>' + (at ? 'Equilibrium' : 'At this x') + '</span></th>' + sp.map(function(s, i){ return '<td><span class="ic-xe">' + xIn(s, i) + '</span><b>' + M.fmt(E[i], 3) + '</b></td>'; }).join('') + '</tr>' +
-        '</tbody></table></div>';
-    }
-    function draw(){
-      var E = M.at(sp, p.c0, x), q = M.Q(sp, E), top = Math.max.apply(null, p.c0.concat(M.at(sp, p.c0, xhi), M.at(sp, p.c0, 0))) * 1.15, perP = top / 9;
-      $('.ic-tab').innerHTML = tableHtml(E, q);
-      var fb = T.fitBox($('.ic-chart'), 320, 170, { w: 150, h: 120 }), W = fb.w, H = fb.h, L = 34, B = 30, Tp = fb.fit ? 22 : 8, pw = W - L - 8, ph = H - Tp - B, n = sp.length, gw = pw / n, g = [];
-      var y = function(v){ return Tp + ph - Math.max(0, Math.min(top, v)) / top * ph; };
-      g.push('<line class="axis" x1="' + L + '" x2="' + (L + pw) + '" y1="' + (Tp + ph) + '" y2="' + (Tp + ph) + '"/>');
-      for(var i = 0; i < n; i++){
-        var cx = L + gw * (i + 0.5), bw = Math.min(30, gw * 0.3);
-        g.push('<rect class="ic-bi" x="' + (cx - bw - 3).toFixed(1) + '" y="' + y(p.c0[i]).toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + (Tp + ph - y(p.c0[i])).toFixed(1) + '"/>');
-        g.push('<rect class="ic-be" x="' + (cx + 3).toFixed(1) + '" y="' + y(E[i]).toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + (Tp + ph - y(E[i])).toFixed(1) + '"/>');
-        // The concentration at this x, read straight off the bar (the same
-        // value as the E row; on a phone the table beside it carries it).
-        if(!fb.fit) g.push('<text class="tick" x="' + (cx + 3 + bw / 2).toFixed(1) + '" y="' + (y(E[i]) - 4).toFixed(1) + '" text-anchor="middle">' + M.fmt(E[i], 3) + '</text>');
-        g.push('<text class="lbl" x="' + cx.toFixed(1) + '" y="' + (H - 10) + '" text-anchor="middle">' + esc(plain(sp[i].html)) + '</text>');
+  function boot(){
+    var K = window.LevlKit2, M = window.ApChemMath;
+    T.mount(SLUG, function(app, data, ctx){
+      var EX = data.explore, RX = EX.reactions, TEMPL = M.particles.templ;
+      var S = { ri: 0, mode: 'explore', target: 0 };
+      var G = null, phone = false;
+
+      /* ---------------------------------------------------- the stage */
+      var stage = document.createElement('div'); stage.className = 'ix2';
+      var tabs = K.tabs({ label: 'Reaction', value: RX[0].id, items: RX.map(function(r){ return { value: r.id, label: eqText(r), short: r.chip }; }),
+        onChange: function(v){ hideCue(true); pickReaction(v); } });
+      stage.appendChild(tabs.el);
+      var head = K.head({ purpose: 'See how far a reaction runs before Q reaches K.', how: { label: 'Show me how', onClick: function(){ startTour(); } } });
+      stage.appendChild(head.el);
+      var sceneBox = document.createElement('div'); sceneBox.className = 'ix2-scene'; sceneBox.id = T.nid('ix2');
+      // two layers: the still scene (the lab, the flask's glass, the gauge's face, the clipboard) and over it the moving
+      // parts on a canvas (the gas color, the molecules, the glow of a reaction, the needle), so a moving molecule
+      // changes no element and the page never restyles for it
+      sceneBox.innerHTML = '<svg class="ix2-svg" role="img" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"></svg><canvas class="ix2-mov" aria-hidden="true"></canvas><svg class="ix2-front" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"></svg>';
+      stage.appendChild(sceneBox);
+      tabs.el.querySelectorAll('.tk2-tab').forEach(function(b){ b.setAttribute('aria-controls', sceneBox.id); });
+      var svg = sceneBox.querySelector('svg'), mov = sceneBox.querySelector('.ix2-mov'), front = sceneBox.querySelector('.ix2-front'), layer = K.layer(sceneBox);
+      var lines = document.createElement('div'); lines.className = 'ix2-lines';
+      var cause = K.cause({ label: 'Why' });
+      var again = document.createElement('button'); again.type = 'button'; again.className = 'tk2-btn ix2-again'; again.textContent = 'Start over'; again.hidden = true;
+      again.addEventListener('click', function(){ hideCue(true); startOver(); });
+      lines.appendChild(cause.el); lines.appendChild(again);
+      stage.appendChild(lines);
+      var live = document.createElement('p'); live.className = 'tk2-sr'; live.setAttribute('aria-live', 'polite');
+      stage.appendChild(live);
+      var sayT = 0;
+      function say(t){ clearTimeout(sayT); sayT = setTimeout(function(){ live.textContent = t; }, 350); }
+
+      function R(){ return RX[S.ri]; }
+      function eqText(r){ return r.species.filter(function(s){ return s.nu < 0; }).map(function(s){ return (s.nu < -1 ? -s.nu : '') + s.html; }).join(' + ') + ' ⇌ ' + r.species.filter(function(s){ return s.nu > 0; }).map(function(s){ return (s.nu > 1 ? s.nu : '') + s.html; }).join(' + '); }
+      function unitOf(r){ return r.unit; }
+      function fmt(v){ return M.fmt(v, 3); }
+      function fmtQ(q){ return q === 0 ? '0' : M.fmt(q, 3); }
+      function Kname(r){ return r.K === 'Kp' ? 'Kp' : 'Kc'; }
+
+      /* ---------------------------------------------------- the model: counts of drawn molecules */
+      function countsAt(r, k){ return r.n0.map(function(n, i){ return n + r.species[i].nu * k; }); }
+      function Qof(r, counts){
+        var q = 1;
+        for(var i = 0; i < counts.length; i++){ var c = counts[i] * r.per, nu = r.species[i].nu; if(nu > 0 && c === 0) return 0; q *= Math.pow(c, nu); }
+        return q;
       }
-      g.push('<rect class="ic-bi" x="' + L + '" y="2" width="10" height="10"/><text class="tick" x="' + (L + 14) + '" y="11">start</text><rect class="ic-be" x="' + (L + (fb.fit ? 62 : 52)) + '" y="2" width="10" height="10"/><text class="tick" x="' + (L + (fb.fit ? 76 : 66)) + '" y="11">at this x (M)</text>');
-      $('.ic-chart').innerHTML = '<svg class="chem-svg ic-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Bars: initial (faint) and at this x (solid): ' + esc(sp.map(function(s, i){ return plain(s.html) + ' ' + M.fmt(p.c0[i], 3) + ' to ' + M.fmt(E[i], 3); }).join('; ')) + '.">' + g.join('') + '</svg>';
-      var counts = {}; E.forEach(function(v, i){ counts['s' + i] = Math.round(Math.max(0, v) / perP); });
-      // Q against K appears once the student moves x (cause, then effect).
-      beaker.update(q > 0 && moved ? { counts: counts, Q: q, K: p.K } : { counts: counts });
-      var r = q / p.K, cl = Math.abs(r - 1) <= 0.01;
-      if(x > 0 && start) start.done();
-      T.explain($('.ic-why'), '<b>' + (!moved ? 'Move x to react some of the I row.' : q === 0 ? 'x = 0: no products, Q = 0.' : cl ? 'Q = K: this x is the equilibrium.' : r < 1 ? 'Q < K: more x.' : 'Q > K: too far; less x.') + '</b>',
-        '<p>' + (q === 0 ? 'Nothing has reacted yet, so the forward reaction runs.' : 'Q = ' + p.expr + ' = ' + M.fmt(q, 3) + ' at x = ' + M.fmt(x, 3) + ' ' + p.unit + '. ' + (cl ? 'Every E entry is initial + change with this x; putting them back into the K expression returns K.' : r < 1 ? 'Products are still too low for K: the reaction keeps going forward.' : 'Too much product for K: the real mixture would stop before this x.')) +
-        ' K is fixed at this temperature; only Q moves.</p>');
-      if(LS) studioDraw(q, r, cl);
-    }
-    /* Tool Studio: Q as the one pill (K is in the equation; the gauge
-       comparing them appears once x moves);
-       the one-line verdict as the caption. */
-    function studioDraw(q, r, cl){
-      // One live number on the picture (Q); K is in the equation above it,
-      // and the verdict is the caption.
-      LS.pills([{ k: 'Q', html: q === 0 ? '0' : M.fmt(q, 3), tone: 'readout' }], 'left', 'explore');
-      LS.pills([], 'right', 'explore');
-      LS.caption(T.sayHead($('.ic-why')), 'explore');
-      SP.setup($('.ic-eqn').textContent.replace(/\s+K[cp]\s*=.*$/, '').trim() || 'Reaction');
-      SP.open();
-    }
-    /* Tool Studio arrangement: the equation, the live ICE table and the
-       mixture on the stage (its Q-K gauge appears once x moves; the bar chart
-       opens on tap under the table); the x slider and Solve for x in the dock;
-       what this x means in Why; another reaction and new numbers in
-       Details. */
-    function studio(pane, s){
-      LS = s;
-      $('.ic-solve').classList.add('ls-btn', 'ls-pri');
-      SP = T.studioPane(pane, s, { stage: [$('.ic-eqn'), $('.ic-show')], dock: [$('.ic-x'), $('.ic-solve')], setup: 'Reaction', moreLabel: 'Another reaction, new numbers',
-        why: [$('.ic-why'), $('.ic-setup')] });
-      draw();
-      T.watchBox($('.ic-chart'), draw);
-      if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.ic-x input[type=range]'), text: 'Drag x and watch Q move toward K', round: 999 });
-    }
-    build();
-    return { studio: studio };
+      // the step of x whose Q is nearest K (the data guarantee within 2%): "at equilibrium" there and only there
+      function eqStep(r){ var best = 0; for(var k = 1; k <= r.steps; k++) if(Math.abs(Math.log(Qof(r, countsAt(r, k)) / r.Kval)) < Math.abs(Math.log(Qof(r, countsAt(r, best)) / r.Kval) || Infinity)) best = k; return best; }
+      // x from the DRAWN counts: the first reactant's fall over its coefficient
+      function xOf(r, counts){ return (r.n0[0] - counts[0]) / -r.species[0].nu * r.per; }
+
+      /* ---------------------------------------------------- geometry */
+      /* The picture is sized from the height there is (review round 1): the knob, the flask, the table and the cause
+         line are on screen together. Wide (680 px and up): the flask on the bench in the left half, the clipboard on the
+         wall in the right half, both scaled to the height. Phone: a short necked flask with the gauge beside the bulb,
+         the notebook page lying on the bench under it. The flask is always the largest object. */
+      var MC = null;
+      function measure(t, fs, wt, mono){
+        if(!MC){ MC = document.createElement('canvas').getContext('2d'); }
+        var cs = getComputedStyle(stage), fam = mono ? (cs.getPropertyValue('--font-mono') || 'monospace') : (cs.getPropertyValue('--font-ui') || cs.fontFamily);
+        MC.font = (wt || 700) + ' ' + fs + 'px ' + fam;
+        return MC.measureText(String(t).replace(/<[^>]+>/g, '')).width;
+      }
+      // the space a template takes at scale 1 (its atoms' outer edges)
+      function extent(key, tilt){
+        var x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity, c = Math.cos(tilt || 0), sn = Math.abs(Math.sin(tilt || 0));
+        TEMPL[key].forEach(function(at){ var r = at.r || 9; x0 = Math.min(x0, at.dx - r); x1 = Math.max(x1, at.dx + r); y0 = Math.min(y0, at.dy - r); y1 = Math.max(y1, at.dy + r); });
+        var w = x1 - x0, h = y1 - y0;
+        // a molecule's box is centred on its origin only when its atoms are: use the larger side twice
+        var xw = 2 * Math.max(x1, -x0), yh = 2 * Math.max(y1, -y0);
+        return { w: xw * c + yh * sn, h: yh * c + xw * sn, maxD: Math.max.apply(null, TEMPL[key].map(function(at){ return 2 * (at.r || 9); })) };
+      }
+      // the height the scene may take: what the stage has left under the tabs and above the cause line
+      function availH(phoneW){
+        var narrow = phoneW, lh = Math.max(lines.offsetHeight || 0, narrow ? 76 : 44), sc = sceneBox.getBoundingClientRect();
+        // a phone: the scene scrolled to the top of the screen; a tablet in portrait: the scene from where it starts
+        // a phone: the scene scrolled to the top of the screen; elsewhere the screen from where the scene starts (the
+        // card around the stage may grow with its content, so its own height says nothing)
+        if(narrow) return Math.max(400, window.innerHeight - lh - 22);
+        // side by side, the card below has its own padding to clear too
+        return clamp(window.innerHeight - (sc.top + window.scrollY) - lh - (sceneBox.getBoundingClientRect().width < 860 ? 28 : 36), 430, 1200);
+      }
+      /* The clipboard's text and rows from measured text, for font sizes scaled by k: every text 4 px clear of the
+         next, the row names beside their letters and 6 px clear of the margin line. */
+      function bookMetrics(r, narrow, k, maxW){
+        var B = narrow ? { title: 15, kl: 14.5, sp: 14.5, unit: 12, row: 17, name: 11, expr: 12, val: 14.5, key: 12, q: 14.5 } : { title: 17, kl: 14.5, sp: 15.5, unit: 12.5, row: 21, name: 12.5, expr: 13, val: 17, key: 13, q: 15 };
+        // no text under 11 px: a line with subscripts (shown at 0.78 of its size) stays at 14.2 px or more
+        var SUBS = { title: 1, kl: 1, sp: 1, q: 1 };
+        var f = {}; for(var key in B) f[key] = Math.max(SUBS[key] ? 14.2 : 11, Math.round(B[key] * (narrow ? 1 : k) * 10) / 10);
+        var m = { fs: f, pad: Math.round((narrow ? 10 : 14) * (narrow ? 1 : k)) }, sp = r.species, n = sp.length, u = unitOf(r);
+        var letterW = measure('E', f.row, 900), nameW = Math.max.apply(null, ['initial', 'change', 'at this x', 'equilibrium'].map(function(t){ return measure(t, f.name, 700); }));
+        m.letterW = letterW; m.nameX = 2 + letterW + 6;
+        m.marginX = m.nameX + nameW + 8;      // the margin line, from the row's left
+        m.lw = m.marginX + 8;
+        var colW = 0;
+        sp.forEach(function(s, i){
+          var i0 = r.n0[i] * r.per, c = Math.abs(s.nu) > 1 ? Math.abs(s.nu) : '';
+          colW = Math.max(colW, measure((r.K === 'Kp' ? 'P' : '[') + plain(s.html) + ']', f.sp, 900), measure(i0 === 0 ? c + 'x' : fmt(i0) + ' − ' + c + 'x', f.expr, 700), measure('+0.0000', f.val, 800, true));
+        });
+        m.colW = colW + 16;
+        m.nw = Math.ceil(2 * m.pad + m.lw + n * m.colW);
+        var eqW = measure(eqText(r), f.title, 900), kW = measure('Kc = ' + r.Kval + ' at ' + r.T, f.kl, 800);
+        m.qW = measure('Q = ' + plain(qExprHtml(r)) + ' = 0.0000', f.q, 800) + 2 * m.pad;
+        m.nw = Math.max(m.nw, Math.ceil(m.qW));
+        // widen the page for a one line title when there is room (a shorter page)
+        if(maxW && eqW + kW + 20 + 2 * m.pad > m.nw && eqW + kW + 20 + 2 * m.pad <= maxW) m.nw = Math.ceil(eqW + kW + 20 + 2 * m.pad);
+        m.oneLine = eqW + kW + 20 <= m.nw - 2 * m.pad;
+        if(!m.oneLine) m.nw = Math.max(m.nw, Math.ceil(Math.max(eqW, kW) + 2 * m.pad));
+        // vertical: ascent about 1.02 of the size, descent 0.37, a subscript drops 0.22
+        m.tY = Math.round(m.pad * 0.7 + 1.02 * f.title);
+        m.kY = m.oneLine ? m.tY : Math.round(m.tY + 0.59 * f.title + 4 + 1.02 * f.kl);
+        m.tTop = Math.round(m.kY + 0.59 * f.kl + 8);
+        var ext = 0; sp.forEach(function(s){ ext = Math.max(ext, extent(s.key).h); });
+        m.iconS = f.sp / 25; m.iconH = ext * m.iconS;
+        m.iconY = 4 + m.iconH / 2;
+        m.spY = Math.round(4 + m.iconH + 5 + 1.02 * f.sp);
+        m.hh = Math.round(m.spY + 0.59 * f.sp + 5);
+        m.e1 = Math.round(3 + 1.02 * f.expr); m.e2 = Math.round(m.e1 + 0.37 * f.expr + 4 + 1.02 * f.val);
+        m.rh = Math.round(m.e2 + 0.37 * f.val + 4);
+        m.rowY = Math.round(m.rh / 2 + 0.36 * f.row);
+        m.keyY = Math.round(6 + 1.02 * f.key); m.qY = Math.round(m.keyY + 0.37 * f.key + 4 + 1.02 * f.q + 0.3 * f.q);
+        m.nh = Math.round(m.tTop + m.hh + 3 * m.rh + m.qY + 0.37 * f.q + m.pad * 0.7);
+        return m;
+      }
+      function geo(W){
+        // under 860 px (phones and tablets in portrait) the flask stands over the notebook page; above, side by side
+        var r = R(), g = { W: W, narrow: W < 860, tablet: false }, H = availH(W <= 640);
+        var most = 0; for(var k = 0; k <= r.steps; k++) most = Math.max(most, countsAt(r, k).reduce(function(a, b){ return a + b; }, 0));
+        var nlF = g.narrow ? 0.26 : 0.4, shF = 0.16;
+        // the flask's block: the bulb, and the gauge beside it at the upper right
+        function gaugeAt(Rr, cx, cy){
+          var gr = Math.round(clamp(0.25 * Rr, 28, 50)), topY = cy - Rr - Rr * (nlF + 0.7 * shF);
+          // up and to the right of the bulb, as high as the flask's top allows (the K label above the dial included)
+          for(var deg = 50; deg >= 10; deg -= 2){
+            var th = deg * Math.PI / 180;
+            for(var dd = Rr * 0.6; dd < Rr * 3; dd += 1){
+              var gx = cx + dd * Math.cos(th), gy = cy - dd * Math.sin(th);
+              var bx = clamp(cx, gx - gr, gx + gr), by = clamp(cy, gy - gr - 18, gy + gr * 0.62);
+              if(Math.hypot(bx - cx, by - cy) >= Rr + 8){ if(gy - gr - 22 >= topY || deg <= 10) return { gx: Math.round(gx), gy: Math.round(gy), gr: gr }; break; }
+            }
+          }
+          return { gx: cx + Rr + gr, gy: cy - Rr, gr: gr };
+        }
+        function blockW(Rr){ var q = gaugeAt(Rr, 0, 0); return Rr + Math.max(Rr, q.gx + q.gr) + 4; }
+        var flaskH = function(Rr){ return Rr * (2 + nlF + 0.7 * shF); };
+        if(!g.narrow){
+          g.H = Math.round(H);
+          g.yb = g.H - 96;
+          var Rr = Math.min((g.yb - 16) / (2 + nlF + 0.7 * shF), 300), m;
+          if(g.tablet){
+            // a tablet: the phone's compact page at the right, the flask as large as the rest of the width allows
+            m = bookMetrics(r, true, 1, Math.round(W * 0.42));
+            while(Rr > 80 && blockW(Rr) > W - m.nw - 100) Rr -= 1;
+            g.R = Math.round(Rr);
+          } else {
+            while(Rr > 80 && blockW(Rr) > W / 2 - 40) Rr -= 1;
+            g.R = Math.round(Rr);
+            // the clipboard scaled with the flask, as large as fits its half, the height and 85% of the flask's area
+            var kk = clamp(g.R / 165, 0.88, 1.7);
+            for(;;){
+              m = bookMetrics(r, false, kk);
+              var fArea = 2 * g.R * flaskH(g.R);
+              if(kk <= 0.88 || (m.nw <= W / 2 - 40 && m.nh <= g.yb - 44 && m.nw * m.nh <= 0.85 * fArea)) break;
+              kk -= 0.02;
+            }
+          }
+          g.railY = g.yb + 30;
+          g.bm = m;
+          var bw = blockW(g.R);
+          g.cx = Math.round(g.tablet ? Math.max(g.R + 44, (W - m.nw - 40 - bw) / 2 + g.R) : Math.max(g.R + 44, W / 4 - bw / 2 + g.R));
+          g.cy = g.yb - g.R - 2;
+          g.nw = m.nw; g.nh = m.nh;
+          // the clipboard (frame included, 10 px) always inside the stage
+          g.nx = Math.round(Math.min(W - 22 - m.nw, Math.max(g.tablet ? g.cx - g.R + bw + 30 : 3 * W / 4 - m.nw / 2, g.cx - g.R + bw + 30)));
+          g.ny = Math.max(24, Math.round((g.yb - m.nh) / 2));
+        } else {
+          var mN = bookMetrics(r, true, 1, Math.min(W - 16, 360));
+          g.bm = mN; g.nw = Math.min(mN.nw, W - 16); g.nh = mN.nh;
+          // one flask size for both reactions: the tallest page of the two sets the height left for it. On a phone the
+          // flask is sized from the width alone (a short screen scrolls the table under the fold); on a tablet in
+          // portrait from the height too, so the knob, the flask, the table and the cause line fit together
+          var nhMax = Math.max.apply(null, RX.map(function(z){ return bookMetrics(z, true, 1, Math.min(W - 16, 360)).nh; }));
+          var Rp = W <= 640 ? 160 : 230;
+          while(Rp > 100 && (blockW(Rp) > W - 12 || (W > 640 && 8 + flaskH(Rp) + 2 + 72 + nhMax + 8 > H))) Rp -= 1;
+          g.R = Math.round(Rp);
+          g.cx = Math.round(Math.max(6 + g.R, (W - blockW(g.R)) / 2 + g.R));
+          g.cy = Math.round(8 + g.R * (nlF + 0.7 * shF) + g.R);
+          g.yb = g.cy + g.R + 2;
+          g.railY = g.yb + 22;
+          g.nx = Math.round((W - g.nw) / 2); g.ny = g.yb + (W > 640 ? 72 : 76);
+          g.H = g.ny + g.nh + (W > 640 ? 8 : 10);
+        }
+        g.pad = g.bm.pad;
+        g.neck = Math.max(10, Math.round(0.17 * g.R));
+        g.neckTop = Math.round(g.cy - g.R - nlF * g.R);
+        g.stopH = Math.round(shF * g.R);
+        var ga = gaugeAt(g.R, g.cx, g.cy); g.gx = ga.gx; g.gy = ga.gy; g.gr = ga.gr;
+        var span = Math.min(g.R * 1.08, g.cx - 46);
+        g.rail = [g.cx - span, g.railY, g.cx + span, g.railY];
+        // molecule slots in the bulb: rows of cells as wide as the widest molecule and as tall as the tallest (with a
+        // slight tilt allowed), plus the largest atom's diameter between them, so no two atoms of different molecules are
+        // ever closer than one atom's width at rest; the
+        // molecule scale is the largest that still holds the most molecules the knob can draw
+        var tilt = 0.06, mw = 0, mh = 0, gap = 0;
+        r.species.forEach(function(sp0){ var e = extent(sp0.key, tilt); mw = Math.max(mw, e.w); mh = Math.max(mh, e.h); gap = Math.max(gap, e.maxD); });
+        var inner = g.R - 5, best = null;
+        for(var sc = 1.3; sc > 0.2; sc -= 0.01){
+          var cw = (mw + gap) * sc, ch = (mh + gap) * sc, hw = mw * sc / 2, hh = mh * sc / 2, list = [];
+          for(var row = -Math.ceil(inner / ch); row <= Math.ceil(inner / ch); row++){
+            var y = g.cy + row * ch, off = (row & 1) ? cw / 2 : 0;
+            for(var col = -Math.ceil(inner / cw) - 1; col <= Math.ceil(inner / cw) + 1; col++){
+              var x = g.cx + col * cw + off;
+              // the molecule's box stays inside the glass
+              if(Math.hypot(Math.abs(x - g.cx) + hw, Math.abs(y - g.cy) + hh) <= inner) list.push([x, y]);
+            }
+          }
+          if(list.length >= most + 1){ best = { s: sc, slots: list }; break; }
+        }
+        g.s = best ? best.s : 0.3; g.slots = best ? best.slots : [];
+        g.tilt = tilt;
+        return g;
+      }
+
+      /* ---------------------------------------------------- drawing the scene */
+      var L = {};   // layers and nodes
+      var mols = [], events = [], raf = 0, lastLaunch = 0, dirty = false, takeT = 0, drawnKey = '';
+      var needle = { a: null, to: null };
+      function rng(seed){ return M.rng(seed); }
+      function atomSvg(el, rr){
+        return '<circle r="' + f1(rr) + '"/><path class="pt-shade" d="M' + f1(-rr * 0.707) + ' ' + f1(rr * 0.707) + 'A' + f1(rr) + ' ' + f1(rr) + ' 0 0 0 ' + f1(rr * 0.707) + ' ' + f1(-rr * 0.707) + 'A' + f1(rr * 1.15) + ' ' + f1(rr * 1.15) + ' 0 0 1 ' + f1(-rr * 0.707) + ' ' + f1(rr * 0.707) + 'Z"/>' +
+          '<ellipse class="pt-hi" cx="' + f1(-rr * 0.36) + '" cy="' + f1(-rr * 0.4) + '" rx="' + f1(rr * 0.36) + '" ry="' + f1(rr * 0.24) + '" transform="rotate(-35 ' + f1(-rr * 0.36) + ' ' + f1(-rr * 0.4) + ')"/>';
+      }
+      var ELC = { H: 'ph', I: 'pi', N: 'pn', O: 'po' };
+      // one molecule: its atoms (world positions, drawn back to front on the canvas)
+      function sortT(key){ return TEMPL[key].slice().sort(function(p, q){ return (p.z || 0) - (q.z || 0) || (q.r || 9) - (p.r || 9); }); }
+      function newMol(key, x, y, a){
+        var m = { key: key, x: x, y: y, a: a, atoms: [], state: 'whole' };
+        sortT(key).forEach(function(at){ m.atoms.push({ el: at.el, r: at.r || 9, dx: at.dx, dy: at.dy, wx: 0, wy: 0 }); });
+        poseMol(m, x, y, a);
+        return m;
+      }
+      function atomPos(m, at, x, y, a){ var p = rot(at.dx * G.s, at.dy * G.s, a); return [x + p[0], y + p[1]]; }
+      function poseMol(m, x, y, a){
+        m.x = x; m.y = y; m.a = a;
+        m.atoms.forEach(function(at){ var p = atomPos(m, at, x, y, a); at.wx = p[0]; at.wy = p[1]; });
+      }
+      /* ---- the canvas: atom sprites (the course's atom look: body, shade, highlight; no letters), drawn per frame */
+      var CV = { ctx: null, dpr: 1, spr: {}, col: {}, fade: null };
+      function cssVar(n){ return getComputedStyle(stage).getPropertyValue(n).trim(); }
+      function readColors(){
+        var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+        CV.col = { dark: dark, H: '#F4F6F8', I: '#8E4FB8', N: '#5677E0', O: '#EE5A4F', edge: dark ? 'rgba(0,0,0,.6)' : 'rgba(20,28,30,.55)',
+          violet: cssVar('--violet') || '#8E4FB8', brown: cssVar('--brown') || '#9A4A16', q: cssVar('--ix-q') || '#D55E00', ink: getComputedStyle(stage).color || '#10161a' };
+        CV.spr = {}; CV.baseDirty = true;
+      }
+      function sprite(el, rr){
+        var key = el + rr.toFixed(2); if(CV.spr[key]) return CV.spr[key];
+        var d = CV.dpr, sz = Math.ceil((rr * 2 + 4) * d), c = document.createElement('canvas'); c.width = c.height = sz;
+        var x = c.getContext('2d'), m = sz / 2;
+        x.scale(d, d); var o = m / d;
+        x.beginPath(); x.arc(o, o, rr, 0, Math.PI * 2); x.fillStyle = CV.col[el] || '#7DB8EE'; x.fill();
+        x.lineWidth = 0.9; x.strokeStyle = CV.col.edge; x.stroke();
+        // the shade on the lower right
+        x.save(); x.beginPath(); x.arc(o, o, rr, 0, Math.PI * 2); x.clip();
+        x.beginPath(); x.arc(o + rr * 0.32, o + rr * 0.32, rr * 1.02, 0, Math.PI * 2); x.arc(o - rr * 0.05, o - rr * 0.05, rr * 0.98, 0, Math.PI * 2, true);
+        x.fillStyle = 'rgba(11,26,36,' + (el === 'H' ? 0.13 : CV.col.dark ? 0.28 : 0.2) + ')'; x.fill('evenodd'); x.restore();
+        // the highlight on the upper left
+        x.save(); x.translate(o - rr * 0.36, o - rr * 0.4); x.rotate(-35 * Math.PI / 180); x.beginPath(); x.ellipse(0, 0, rr * 0.36, rr * 0.24, 0, 0, Math.PI * 2); x.fillStyle = 'rgba(255,255,255,.75)'; x.fill(); x.restore();
+        CV.spr[key] = { c: c, h: sz / d / 2 };
+        return CV.spr[key];
+      }
+      function paintCanvas(){
+        var x = CV.ctx; if(!x || !G) return;
+        var r = R(), d = CV.dpr;
+        var bx = CV.box, bw = bx[2] - bx[0], bh = bx[3] - bx[1];
+        x.setTransform(d, 0, 0, d, 0, 0);
+        x.clearRect(0, 0, bw, bh);
+        var fade = CV.fade, now0 = now(), alpha = 1;
+        if(fade){ var t = (now0 - fade.t0) / 300; if(t >= 1){ CV.fade = null; } else if(t < 0.5){ x.globalAlpha = 1 - t * 2; x.drawImage(fade.img, 0, 0, bw, bh); x.globalAlpha = 1; kick(); return; } else alpha = (t - 0.5) * 2; }
+        // picture units from here on
+        x.translate(-bx[0], -bx[1]);
+        x.globalAlpha = alpha;
+        // the gas color, inside the flask
+        x.save(); x.clip(new Path2D(flaskPath())); x.globalAlpha = alpha * gasAlpha; x.fillStyle = r.tint.color === 'violet' ? CV.col.violet : CV.col.brown; x.fillRect(0, 0, G.W, G.yb); x.restore();
+        x.globalAlpha = alpha;
+        // the glow of each reaction under way, then the molecules (those forming are drawn by their events)
+        events.forEach(function(e){ if(e.glowA > 0){ x.beginPath(); x.arc(e.P[0], e.P[1], 30 * G.s, 0, Math.PI * 2); x.fillStyle = 'rgba(255,227,138,' + (0.55 * e.glowA).toFixed(3) + ')'; x.fill(); x.lineWidth = 2; x.strokeStyle = 'rgba(245,184,61,' + e.glowA.toFixed(3) + ')'; x.stroke(); } });
+        var draw = function(z, m){ m.atoms.forEach(function(at){ var sp = sprite(at.el, at.r * G.s); z.drawImage(sp.c, at.wx - sp.h, at.wy - sp.h, sp.h * 2, sp.h * 2); }); };
+        // the molecules at rest come from a cached layer, redrawn only when one starts or stops moving
+        if(CV.baseDirty){
+          var bc = CV.base.getContext('2d'); bc.setTransform(d, 0, 0, d, 0, 0); bc.clearRect(0, 0, bw, bh); bc.translate(-bx[0], -bx[1]);
+          mols.forEach(function(m){ if(m.state === 'whole') draw(bc, m); });
+          CV.baseDirty = false;
+        }
+        x.save(); x.setTransform(1, 0, 0, 1, 0, 0); x.globalAlpha = alpha; x.drawImage(CV.base, 0, 0); x.restore();
+        mols.forEach(function(m){ if(m.state !== 'whole' && m.state !== 'old') draw(x, m); });
+        events.forEach(function(e){ if(e.swapped && !e.formed) e.outs.forEach(function(m){ draw(x, m); }); });
+        // the needle
+        x.save(); x.translate(G.gx, G.gy); x.rotate(needle.a || Math.PI); x.beginPath(); x.moveTo(0, -2.4); x.lineTo(G.gr * 0.86, 0); x.lineTo(0, 2.4); x.closePath(); x.fillStyle = CV.col.q; x.fill(); x.restore();
+        x.beginPath(); x.arc(G.gx, G.gy, 4, 0, Math.PI * 2); x.fillStyle = CV.col.ink; x.fill();
+        x.globalAlpha = 1;
+        if(CV.fade) kick();
+      }
+      var gasAlpha = 0, gasTo = 0;
+      function countsDrawn(){
+        var r = R(), c = r.species.map(function(){ return 0; });
+        // every molecule in the flask counts: a reactant until its products have formed, a product from then on
+        mols.forEach(function(m){ var i = idx(m.key); if(i > -1) c[i]++; });
+        return c;
+      }
+      function idx(key){ var sp = R().species; for(var i = 0; i < sp.length; i++) if(sp[i].key === key) return i; return -1; }
+
+      function drawStatic(){
+        var g = G, r = R(), W = g.W, H = g.H, p = [];
+        p.push('<defs><linearGradient id="ix2g-wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="ix2s-wall0"/><stop offset="1" class="ix2s-wall1"/></linearGradient>' +
+          '<linearGradient id="ix2g-bench" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="ix2s-bn0"/><stop offset="1" class="ix2s-bn1"/></linearGradient>' +
+          '<radialGradient id="ix2g-glass" cx="0.36" cy="0.32" r="0.75"><stop offset="0" class="ix2s-gl0"/><stop offset="1" class="ix2s-gl1"/></radialGradient></defs>');
+        p.push('<rect class="ix2-wall" x="0" y="0" width="' + W + '" height="' + g.yb + '"/>');
+        for(var ty = 46; ty < g.yb; ty += 58) p.push('<path class="ix2-grout" d="M0 ' + ty + 'H' + W + '"/>');
+        p.push('<rect class="ix2-bench" x="0" y="' + g.yb + '" width="' + W + '" height="' + (H - g.yb) + '"/><path class="ix2-benchedge" d="M0 ' + (g.yb + 0.5) + 'H' + W + '"/>');
+        // the cork ring the flask sits in, its shadow
+        p.push('<ellipse class="ix2-shadow" cx="' + g.cx + '" cy="' + (g.yb + 6) + '" rx="' + Math.round(g.R * 0.8) + '" ry="7"/>');
+        // the flask: glass body and neck, then the gas tint, the molecules, then the shine and the stopper on top
+        // the cork ring: its back half under the flask, its front half over the glass (drawn after it)
+        var crx = Math.round(g.R * 0.52), cry = Math.max(6, Math.round(g.R * 0.06));
+        p.push('<ellipse class="ix2-cork" cx="' + g.cx + '" cy="' + (g.yb - 2) + '" rx="' + crx + '" ry="' + cry + '"/>');
+        p.push('<path class="ix2-glassbody" d="' + flaskPath(0) + '"/>');
+        // the Q gauge beside the bulb, on a short glass tube into it: a dial, log scale, K as a fixed notch, the needle at Q
+        var gx = g.gx, gy = g.gy, gr = g.gr, lo = r.gauge[0], hi = r.gauge[1];
+        var tx0 = gx - gr * 0.55, ty0 = gy + gr * 0.55, tv = Math.hypot(tx0 - g.cx, ty0 - g.cy), tx1 = g.cx + (tx0 - g.cx) / tv * (g.R - 2), ty1 = g.cy + (ty0 - g.cy) / tv * (g.R - 2);
+        p.push('<path class="ix2-clip" d="M' + f1(tx0) + ' ' + f1(ty0) + 'L' + f1(tx1) + ' ' + f1(ty1) + '"/>');
+        p.push('<path class="ix2-dial" d="M' + f1(gx - gr) + ' ' + f1(gy + gr * 0.62) + 'V' + gy + 'A' + gr + ' ' + gr + ' 0 0 1 ' + f1(gx + gr) + ' ' + gy + 'V' + f1(gy + gr * 0.62) + 'Z"/>');
+        for(var d = lo; d <= hi; d++){ var a = angOf(Math.pow(10, d)), c1 = rot(gr * 0.78, 0, a), c2 = rot(gr * 0.92, 0, a); p.push('<path class="ix2-tick" d="M' + f1(gx + c1[0]) + ' ' + f1(gy + c1[1]) + 'L' + f1(gx + c2[0]) + ' ' + f1(gy + c2[1]) + '"/>'); }
+        var ka = angOf(r.Kval), k1 = rot(gr * 0.62, 0, ka), k2 = rot(gr * 1.0, 0, ka), k3 = rot(gr + 11, 0, ka);
+        p.push('<path class="ix2-knotch" d="M' + f1(gx + k1[0]) + ' ' + f1(gy + k1[1]) + 'L' + f1(gx + k2[0]) + ' ' + f1(gy + k2[1]) + '"/>');
+        p.push('<text class="ix2-klab" x="' + f1(gx + k3[0]) + '" y="' + f1(gy + k3[1] + 4) + '" text-anchor="middle">K</text>');
+        // "Q" under the hub, below where the needle can sweep (it moves over the top half only)
+        p.push('<text class="ix2-qlab" x="' + gx + '" y="' + f1(gy + gr * 0.5) + '" text-anchor="middle">Q</text>');
+
+        // the x rail on the bench: one tick per step of x (one reaction event)
+        var rl = g.rail, n = r.steps;
+        p.push('<path class="ix2-rail" d="M' + f1(rl[0]) + ' ' + rl[1] + 'H' + f1(rl[2]) + '"/>');
+        for(var k = 0; k <= n; k++){ var tx = lerp(rl[0], rl[2], k / n); p.push('<path class="ix2-rtick" d="M' + f1(tx) + ' ' + (rl[1] + 7) + 'V' + (rl[1] + 12) + '"/>'); }
+        p.push('<text class="ix2-xlab" x="' + f1(rl[0] - 24) + '" y="' + (rl[1] + 6) + '" text-anchor="end">x</text>');
+        // the clipboard (wide) or the notebook page on the bench (phone)
+        var nx = g.nx, ny = g.ny, nw = g.nw, nh = g.nh;
+        if(!g.narrow){
+          p.push('<rect class="ix2-board" x="' + f1(nx - 10) + '" y="' + f1(ny - 12) + '" width="' + f1(nw + 20) + '" height="' + f1(nh + 24) + '" rx="10"/>');
+          p.push('<rect class="ix2-papershadow" x="' + (nx + 1) + '" y="' + (ny + 2) + '" width="' + nw + '" height="' + nh + '" rx="3"/><rect class="ix2-paper" x="' + nx + '" y="' + ny + '" width="' + nw + '" height="' + nh + '" rx="3"/>');
+          var cw = Math.round(nw * 0.24); p.push('<rect class="ix2-clamp" x="' + f1(nx + nw / 2 - cw / 2) + '" y="' + f1(ny - 20) + '" width="' + cw + '" height="26" rx="6"/><rect class="ix2-clamphi" x="' + f1(nx + nw / 2 - cw / 2 + 6) + '" y="' + f1(ny - 16) + '" width="' + (cw - 12) + '" height="5" rx="2.5"/>');
+        } else {
+          p.push('<rect class="ix2-papershadow" x="' + (nx + 2) + '" y="' + (ny + 3) + '" width="' + nw + '" height="' + nh + '" rx="4"/><rect class="ix2-paper is-flat" x="' + nx + '" y="' + ny + '" width="' + nw + '" height="' + nh + '" rx="4"/>');
+        }
+        var bm = g.bm;
+        // the page's margin line runs down the table only, 8 px right of the longest row name
+        p.push('<path class="ix2-margin" d="M' + f1(nx + bm.pad + bm.marginX) + ' ' + (ny + bm.tTop - 2) + 'V' + (ny + bm.tTop + bm.hh + 3 * bm.rh) + '"/>');
+        p.push('<g class="ix2-book"></g>');
+        // over the canvas: the glass's rim and shine, the stopper and the front of the cork ring (so the gas and the
+        // molecules sit inside the glass)
+        var f = [];
+        f.push('<path class="ix2-glassrim" d="' + flaskPath(0) + '"/>');
+        f.push('<path class="ix2-corkfront" d="M' + (g.cx - crx) + ' ' + (g.yb - 2) + 'A' + crx + ' ' + cry + ' 0 0 0 ' + (g.cx + crx) + ' ' + (g.yb - 2) + '"/>');
+        f.push('<path class="ix2-shine" d="M' + f1(g.cx - g.R * 0.62) + ' ' + f1(g.cy - g.R * 0.38) + 'A' + g.R * 0.78 + ' ' + g.R * 0.78 + ' 0 0 1 ' + f1(g.cx - g.R * 0.18) + ' ' + f1(g.cy - g.R * 0.74) + '"/>');
+        f.push('<path class="ix2-shine is-thin" d="M' + f1(g.cx - g.neck * 0.45) + ' ' + f1(g.neckTop + g.stopH * 0.4 + 4) + 'V' + f1(g.cy - g.R * 1.0) + '"/>');
+        var sw = g.neck * 1.32, sTop = g.neckTop - Math.round(0.7 * g.stopH);
+        f.push('<path class="ix2-stopper" d="M' + f1(g.cx - sw) + ' ' + f1(sTop) + 'H' + f1(g.cx + sw) + 'L' + f1(g.cx + g.neck * 0.98) + ' ' + f1(g.neckTop + 0.3 * g.stopH) + 'H' + f1(g.cx - g.neck * 0.98) + 'Z"/>');
+        f.push('<path class="ix2-stopperhi" d="M' + f1(g.cx - sw + 3) + ' ' + f1(sTop + 3) + 'H' + f1(g.cx + sw - 3) + '"/>');
+        svg.innerHTML = p.join('');
+        front.innerHTML = f.join('');
+        [front].forEach(function(z){ z.setAttribute('viewBox', '0 0 ' + W + ' ' + H); });
+
+        L.book = svg.querySelector('.ix2-book');
+        drawBook();
+      }
+      function flaskPath(){
+        var g = G, R0 = g.R, n = g.neck, cx = g.cx, cy = g.cy, top = g.neckTop;
+        // where the neck meets the round body
+        var jy = cy - Math.sqrt(R0 * R0 - n * n);
+        return 'M' + f1(cx - n) + ' ' + f1(top) + 'V' + f1(jy) + 'A' + R0 + ' ' + R0 + ' 0 1 0 ' + f1(cx + n) + ' ' + f1(jy) + 'V' + f1(top) + 'Z';
+      }
+      function angOf(q){
+        var r = R(), lo = r.gauge[0], hi = r.gauge[1];
+        var f = q <= 0 ? -0.04 : clamp((Math.log10(q) - lo) / (hi - lo), -0.04, 1.04);
+        return Math.PI + f * Math.PI;   // left (low) to right (high) over the top
+      }
+
+      /* ---- the clipboard: the equation, K, the ICE table, the scale and Q */
+      var BK = {};
+      function txt(cls, x, y, html, anchor){ var t = mk('text', cls, { x: f1(x), y: f1(y) }); if(anchor) t.setAttribute('text-anchor', anchor); t.innerHTML = html; L.book.appendChild(t); return t; }
+      function drawBook(){
+        var g = G, bm = g.bm, f = bm.fs, r = R(), x0 = g.nx + bm.pad, y0 = g.ny, sp = r.species, u = unitOf(r);
+        L.book.innerHTML = '';
+        BK = { cells: { I: [], C: [], E: [] } };
+        var T2 = function(cls, x, y, html, fs, anchor){ var t = txt(cls, x, y, html, anchor); t.style.fontSize = fs + 'px'; return t; };
+        // the equation and K: one line when they fit (K to the right), else two
+        T2('ix2-eqn', x0, y0 + bm.tY, svgChem(eqText(r)), f.title);
+        T2('ix2-kline', bm.oneLine ? g.nx + g.nw - bm.pad : x0, y0 + bm.kY, 'K<tspan class="ix-sub" dy="0.28em">' + (r.K === 'Kp' ? 'p' : 'c') + '</tspan><tspan dy="-0.28em"> = ' + esc(String(r.Kval)) + ' at ' + esc(r.T) + '</tspan>', f.kl, bm.oneLine ? 'end' : null);
+        var tt = y0 + bm.tTop, colX = function(i){ return x0 + bm.lw + bm.colW * (i + 0.5); }, right = g.nx + g.nw - bm.pad + 4;
+        BK.band = mk('rect', 'ix2-eqband', { x: f1(x0 - 6), y: f1(tt + bm.hh + 2 * bm.rh + 2), width: f1(right + 2 - x0 + 6), height: f1(bm.rh - 4), rx: 6 });
+        L.book.appendChild(BK.band);
+        T2('ix2-unit', x0, tt + bm.spY, esc(u), f.unit);
+        sp.forEach(function(s, i){
+          var cx = colX(i), sc = bm.iconS;
+          // the key: a small drawing of the molecule over its name (the flask draws no letters)
+          var icon = mk('g', 'ix2-icon', { transform: 'translate(' + f1(cx) + ' ' + f1(tt + bm.iconY) + ')' });
+          var t = TEMPL[s.key].slice().sort(function(p, q){ return (p.z || 0) - (q.z || 0) || (q.r || 9) - (p.r || 9); });
+          icon.innerHTML = t.map(function(at){ return '<g class="pt-atom ' + (ELC[at.el] || 'pa') + '" transform="translate(' + f1(at.dx * sc) + ' ' + f1(at.dy * sc) + ')">' + atomSvg(at.el, (at.r || 9) * sc) + '</g>'; }).join('');
+          L.book.appendChild(icon);
+          T2('ix2-sp', cx, tt + bm.spY, r.K === 'Kp' ? 'P<tspan class="ix-sub" dy="0.28em">' + svgChem(s.html).replace(/<tspan class="ix-sub" dy="0.28em">/g, '<tspan>').replace(/<tspan dy="-0.28em"> <\/tspan>/g, '') + '</tspan><tspan dy="-0.28em"> </tspan>' : '[' + svgChem(s.html) + ']', f.sp, 'middle');
+        });
+        L.book.appendChild(mk('path', 'ix2-tline', { d: 'M' + f1(x0 - 4) + ' ' + f1(tt + bm.hh) + 'H' + f1(right) }));
+        ROWS.forEach(function(rw, ri){
+          var ry = tt + bm.hh + ri * bm.rh;
+          if(ri) L.book.appendChild(mk('path', 'ix2-rline', { d: 'M' + f1(x0 - 4) + ' ' + f1(ry) + 'H' + f1(right) }));
+          // the row's letter and its name as one label ("equilibrium" at the equilibrium step), on every width
+          var rt = T2('ix2-row', x0 + 2, ry + bm.rowY, rw[0] + '<tspan class="ix2-roww" x="' + f1(x0 + bm.nameX) + '" style="font-size:' + f.name + 'px">' + (rw[0] === 'E' ? 'at this x' : rw[1].toLowerCase()) + '</tspan>', f.row);
+          BK['w' + rw[0]] = rt.querySelector('tspan');
+          sp.forEach(function(s, i){
+            var cx = colX(i), cell = {};
+            if(rw[0] === 'I') cell.v = T2('ix2-val', cx, ry + Math.round(bm.rh / 2 + 0.36 * f.val), '', f.val, 'middle');
+            else { cell.e = T2('ix2-expr', cx, ry + bm.e1, '', f.expr, 'middle'); cell.v = T2('ix2-val', cx, ry + bm.e2, '', f.val, 'middle'); }
+            BK.cells[rw[0]].push(cell);
+          });
+        });
+        var by = tt + bm.hh + 3 * bm.rh;
+        L.book.appendChild(mk('path', 'ix2-tline', { d: 'M' + f1(x0 - 4) + ' ' + f1(by) + 'H' + f1(right) }));
+        BK.key = T2('ix2-key', x0, by + bm.keyY, '1 molecule = ' + esc(String(r.per)) + ' ' + esc(u), f.key);
+        BK.q = T2('ix2-qline', x0, by + bm.qY, '', f.q);
+        // the fixed parts of the C and E rows (in x)
+        sp.forEach(function(s, i){
+          var c = Math.abs(s.nu) > 1 ? Math.abs(s.nu) : '';
+          BK.cells.C[i].e.textContent = (s.nu < 0 ? '−' : '+') + c + 'x';
+          var i0 = r.n0[i] * r.per;
+          BK.cells.E[i].e.textContent = i0 === 0 ? c + 'x' : fmt(i0) + ' ' + (s.nu < 0 ? '−' : '+') + ' ' + c + 'x';
+          BK.cells.I[i].v.textContent = fmt(i0);
+        });
+      }
+      function qExprHtml(r){
+        var name = function(s){ return r.K === 'Kp' ? 'P<tspan class="ix-sub" dy="0.28em">' + svgChem(s.html).replace(/<tspan class="ix-sub" dy="0.28em">/g, '<tspan>').replace(/<tspan dy="-0.28em"> <\/tspan>/g, '') + '</tspan><tspan dy="-0.28em"> </tspan>' : '[' + svgChem(s.html) + ']'; };
+        var pw = function(s){ var n = Math.abs(s.nu); return n > 1 ? '<tspan class="ix-sup" dy="-0.45em">' + n + '</tspan><tspan dy="0.45em"> </tspan>' : ''; };
+        var top = r.species.filter(function(s){ return s.nu > 0; }).map(function(s){ return name(s) + pw(s); }).join('');
+        var bot = r.species.filter(function(s){ return s.nu < 0; }).map(function(s){ return name(s) + pw(s); }).join('');
+        return top + ' / ' + (r.species.filter(function(s){ return s.nu < 0; }).length > 1 ? '(' + bot + ')' : bot);
+      }
+
+      /* ---- the readouts, from the drawn counts */
+      var shown = null;
+      function paintReadouts(force){
+        var r = R(), c = countsDrawn(), key = c.join(',');
+        if(!force && key === drawnKey) return;
+        var prev = shown ? shown.c : null;
+        drawnKey = key;
+        var x = xOf(r, c), q = Qof(r, c), ke = eqStep(r), k = Math.round(x / r.per), at = k === ke;
+        shown = { c: c, x: x, q: q, k: k, at: at };
+        // the knob's tag first: it reads the layout, which is still clean before the writes below
+        if(slider) slider.place();
+        r.species.forEach(function(s, i){
+          var cv = BK.cells.C[i].v, ev = BK.cells.E[i].v;
+          cv.textContent = x === 0 ? '0' : (s.nu < 0 ? '−' : '+') + fmt(Math.abs(s.nu) * x);
+          ev.textContent = fmt(c[i] * r.per);
+          if(prev && prev[i] !== c[i]){ tick(ev); tick(cv); }
+        });
+        BK.q.innerHTML = 'Q = ' + qExprHtml(r) + ' = <tspan class="ix2-qv">' + esc(fmtQ(q)) + '</tspan>';
+        BK.band.classList.toggle('is-on', at);
+        if(BK.wE) BK.wE.textContent = at ? 'equilibrium' : 'at this x';
+        svg.classList.toggle('is-eq', at);
+        // the gas color from the drawn colored molecules
+        var ti = idx(r.tint.key), most = 0; for(var kk = 0; kk <= r.steps; kk++) most = Math.max(most, countsAt(r, kk)[ti]);
+        gasTo = 0.08 + 0.5 * c[ti] / most; if(force && !prev) gasAlpha = gasTo;
+        needle.to = angOf(q); if(needle.a == null) needle.a = needle.to;
+        kick();
+        paintCause();
+        again.hidden = k === 0 && S.target === 0;
+      }
+      function tick(t){ t.classList.remove('is-tick'); requestAnimationFrame(function(){ t.classList.add('is-tick'); }); }
+      function paintCause(){
+        var r = R(), s = shown, u = unitOf(r), parts;
+        clearTimeout(takeT);
+        var xs = s.x === 0 ? 'x 0' : 'x ' + fmt(s.x) + ' ' + u, Ks = 'K ' + r.Kval;
+        if(s.at) parts = [{ t: xs, role: 'x' }, { t: 'Q ' + fmtQ(s.q), role: 'q' }, { t: '≈ ' + Ks, role: 'k', say: 'about equal to ' + Ks }, { t: 'at equilibrium', role: 'eq' }];
+        else if(s.q < r.Kval) parts = [{ t: xs, role: 'x' }, { t: 'Q ' + fmtQ(s.q), role: 'q' }, { t: 'below ' + Ks, role: 'k' }, { t: s.k === 0 ? 'runs forward' : 'still runs forward', role: 'ink' }];
+        else parts = [{ t: xs, role: 'x' }, { t: 'Q ' + fmtQ(s.q), role: 'q' }, { t: 'above ' + Ks, role: 'k' }, { t: 'would run back', role: 'ink', say: 'the reverse reaction would bring it back' }];
+        cause.set(parts, s.k === 0 && S.target === 0 ? 'Start:' : '');
+      }
+      function settled(){
+        var s = shown; if(!s) return;
+        say(cause.text());
+        clearTimeout(takeT);
+        if(s.at && S.mode === 'explore') takeT = setTimeout(function(){ if(!busy() && shown.at) cause.take('At equilibrium Q = K: that is the x the ICE table solves for.'); }, 1100);
+      }
+
+      /* ---------------------------------------------------- the molecules and their reactions */
+      var slotUse = [];
+      function freeSlotNear(x, y, avoid){
+        var best = -1, bd = Infinity;
+        G.slots.forEach(function(p, i){ if(slotUse[i] || (avoid && avoid.indexOf(i) > -1)) return; var d = Math.hypot(p[0] - x, p[1] - y); if(d < bd){ bd = d; best = i; } });
+        return best;
+      }
+      function slotAngle(i){ var r = rng(7 + i * 13 + S.ri * 101); return (r() - 0.5) * 2 * G.tilt; }
+      // lay out the molecules for step k at once (a fresh picture: first draw, another reaction, Start over, reduced motion)
+      function layoutAt(k){
+        mols = []; events = []; CV.baseDirty = true;
+        slotUse = G.slots.map(function(){ return null; });
+        var r = R(), c = countsAt(r, k), order = G.slots.map(function(p, i){ return i; }), rr = rng(31 + S.ri * 7);
+        for(var i = order.length - 1; i > 0; i--){ var j = Math.floor(rr() * (i + 1)), t = order[i]; order[i] = order[j]; order[j] = t; }
+        var n = 0;
+        r.species.forEach(function(s, si){ for(var q = 0; q < c[si]; q++){ var sl = order[n++]; var m = newMol(s.key, G.slots[sl][0], G.slots[sl][1], slotAngle(sl)); m.slot = sl; slotUse[sl] = m; mols.push(m); } });
+      }
+      function busy(){ return events.length > 0; }
+      // the net steps on their way and not yet drawn (an event counts from its start until its products have formed)
+      function pendingK(){ return events.reduce(function(a, e){ return a + (e.formed ? 0 : e.dir); }, 0); }
+      function logicalK(){ var r = R(), c = countsDrawn(); return Math.round(xOf(r, c) / r.per); }
+      function idle(m){ return m.state === 'whole'; }
+      function pickNear(key, x, y, not){
+        var best = null, bd = Infinity;
+        mols.forEach(function(m){ if(m.key !== key || !idle(m) || m === not) return; var d = Math.hypot(m.x - x, m.y - y); if(d < bd){ bd = d; best = m; } });
+        return best;
+      }
+      function pickAny(key, seed){ var list = mols.filter(function(m){ return m.key === key && idle(m); }); if(!list.length) return null; return list[Math.floor(rng(seed)() * list.length)]; }
+      var evSeed = 1;
+      function inside(x, y, pad){ var dx = x - G.cx, dy = y - (G.cy + 2), d = Math.hypot(dx, dy), lim = G.R - 8 - pad; if(d <= lim) return [x, y]; return [G.cx + dx / d * lim, G.cy + 2 + dy / d * lim]; }
+      /* One reaction event. Forward: the reactants of one step meet, their atoms swap partners (a short glow), the
+         products leave to the reactants' places. Reverse: the same, backward. The reactants count until the products
+         have formed (t = 0.55); then the products count. */
+      function launch(dir){
+        var r = R(), sp = r.species, reac = sp.filter(function(s){ return dir > 0 ? s.nu < 0 : s.nu > 0; }), prod = sp.filter(function(s){ return dir > 0 ? s.nu > 0 : s.nu < 0; });
+        // the molecules that go in: every coefficient's worth, the first picked at random, the rest the nearest to it
+        var ins = [], first = null;
+        for(var a = 0; a < reac.length; a++){
+          for(var b = 0; b < Math.abs(reac[a].nu); b++){
+            var m = !first ? pickAny(reac[a].key, 1000 + (evSeed++) * 17) : pickNear(reac[a].key, first.x, first.y, null);
+            if(m && ins.indexOf(m) > -1){ var alt = mols.filter(function(z){ return z.key === reac[a].key && idle(z) && ins.indexOf(z) < 0; }); m = alt.length ? alt.sort(function(p, q){ return Math.hypot(p.x - first.x, p.y - first.y) - Math.hypot(q.x - first.x, q.y - first.y); })[0] : null; }
+            if(!m){ ins.forEach(function(z){ z.state = 'whole'; }); return false; }
+            if(!first) first = m;
+            ins.push(m); m.state = 'busy'; CV.baseDirty = true;
+          }
+        }
+        var cx = ins.reduce(function(s, m){ return s + m.x; }, 0) / ins.length, cy = ins.reduce(function(s, m){ return s + m.y; }, 0) / ins.length;
+        var P = inside(cx, cy, 30 * G.s);
+        // where each reactant waits at the meeting point (stacked, level)
+        var gap = 13 * G.s;
+        ins.forEach(function(m, i){ m.from = [m.x, m.y, m.a]; m.meet = [P[0], P[1] + (i - (ins.length - 1) / 2) * gap * 2, 0]; });
+        // the products: their atoms come from the reactants' atoms, element by element
+        var pool = [];
+        ins.forEach(function(m){ m.atoms.forEach(function(at){ pool.push({ m: m, at: at }); }); });
+        var outs = [], k = 0, np = prod.reduce(function(s, p){ return s + Math.abs(p.nu); }, 0);
+        prod.forEach(function(p){ for(var b = 0; b < Math.abs(p.nu); b++){
+          // two products side by side, turned so each takes the atoms on its own side (NO₂ faces outward)
+          var off = (k - (np - 1) / 2) * 26 * G.s, pm = { key: p.key, atoms: [], state: 'forming', x: P[0] + off, y: P[1], a: np > 1 ? (p.key === 'NO2' && off > 0 ? -Math.PI / 2 : Math.PI / 2) : 0 };
+          TEMPL[p.key].slice().sort(function(u, v){ return (u.z || 0) - (v.z || 0) || (v.r || 9) - (u.r || 9); }).forEach(function(at){
+            var src = null; for(var q = 0; q < pool.length; q++) if(!pool[q].used && pool[q].at.el === at.el){ src = pool[q]; pool[q].used = true; break; }
+            pm.atoms.push({ el: at.el, r: at.r || 9, dx: at.dx, dy: at.dy, src: src, wx: 0, wy: 0 });
+          });
+          outs.push(pm); k++;
+        } });
+        // their places: the reactants' places first, then the nearest free ones
+        var freed = ins.map(function(m){ return m.slot; });
+        outs.forEach(function(pm, i){
+          var sl = i < freed.length ? freed[i] : freeSlotNear(P[0], P[1], freed);
+          pm.slot = sl;
+        });
+        ins.forEach(function(m){ if(outs.every(function(pm){ return pm.slot !== m.slot; })) slotUse[m.slot] = null; });
+        outs.forEach(function(pm){ slotUse[pm.slot] = pm; });
+        var e = { dir: dir, ins: ins, outs: outs, P: P, t0: now(), dur: 820, formed: false, glow: null };
+        events.push(e);
+        return true;
+      }
+      function stepEvent(e, tn){
+        var t = clamp((tn - e.t0) / e.dur, 0, 1);
+        if(t < 0.4){
+          var u = ease(t / 0.4);
+          e.ins.forEach(function(m){ poseMol(m, lerp(m.from[0], m.meet[0], u), lerp(m.from[1], m.meet[1], u), lerp(m.from[2], m.meet[2], u)); });
+          return;
+        }
+        if(!e.swapped){
+          // the reactants' atoms now belong to the products being formed (the old molecules stay counted until formed)
+          e.swapped = true;
+          e.ins.forEach(function(m){ m.state = 'old'; m.atoms.forEach(function(at){ at.keep = [at.wx, at.wy]; }); });
+          e.outs.forEach(function(pm){ pm.atoms.forEach(function(a){ a.start = [a.src.at.wx, a.src.at.wy]; a.wx = a.start[0]; a.wy = a.start[1]; }); });
+        }
+        var gG = clamp((t - 0.4) / 0.15, 0, 1), gl = Math.sin(Math.PI * clamp((t - 0.38) / 0.24, 0, 1));
+        e.glowA = 0.75 * gl;
+        // the products count from the middle of the swap (t = 0.475), when each atom is nearer its new partner than
+        // its old one (review round 1)
+        if(t >= 0.475 && !e.formed){
+          e.formed = true;
+          e.ins.forEach(function(m){ var i = mols.indexOf(m); if(i > -1) mols.splice(i, 1); });
+          e.outs.forEach(function(pm){ pm.state = 'forming'; mols.push(pm); });
+          paintReadouts();
+        }
+        if(t < 0.55){
+          var w = ease(gG);
+          e.outs.forEach(function(pm){ pm.atoms.forEach(function(a){ var p = atomPos(pm, a, pm.x, pm.y, pm.a); setAtomN(a, lerp(a.start[0], p[0], w), lerp(a.start[1], p[1], w)); }); });
+          return;
+        }
+        if(!e.moving){
+          e.moving = true;
+          e.outs.forEach(function(pm){ pm.state = 'moving'; pm.from = [pm.x, pm.y, pm.a]; var sp = G.slots[pm.slot]; pm.to = [sp[0], sp[1], slotAngle(pm.slot)]; });
+        }
+        var v = ease(clamp((t - 0.55) / 0.45, 0, 1));
+        e.outs.forEach(function(pm){ var x = lerp(pm.from[0], pm.to[0], v), y = lerp(pm.from[1], pm.to[1], v), a = lerp(pm.from[2], pm.to[2], v); pm.x = x; pm.y = y; pm.a = a; pm.atoms.forEach(function(at){ var p = atomPos(pm, at, x, y, a); setAtomN(at, p[0], p[1]); }); });
+        if(t >= 1){
+          e.outs.forEach(function(pm){ pm.state = 'whole'; }); CV.baseDirty = true;
+          e.glowA = 0;
+          e.done = true;
+        }
+      }
+      function setAtomN(a, x, y){ a.wx = x; a.wy = y; }
+      function kick(){ if(!raf) raf = requestAnimationFrame(frame); }
+      function frame(){
+        raf = 0;
+        var tn = now();
+        // launch the steps still needed toward the knob, a little apart (closer when far behind)
+        var want = S.target - (logicalK() + pendingK());
+        if(want !== 0 && events.length < 5 && tn - lastLaunch > Math.max(60, 150 - 12 * Math.abs(want))){
+          if(launch(want > 0 ? 1 : -1)) lastLaunch = tn;
+        }
+        events.forEach(function(e){ stepEvent(e, tn); });
+        events = events.filter(function(e){ return !e.done; });
+        // the needle eases to the drawn Q
+        if(needle.to != null){ var d = needle.to - needle.a; needle.a = Math.abs(d) < 0.002 ? needle.to : needle.a + d * 0.22; }
+        // the gas color eases to the drawn colored molecules
+        var dg = gasTo - gasAlpha; gasAlpha = Math.abs(dg) < 0.002 ? gasTo : gasAlpha + dg * 0.18;
+        paintCanvas();
+        var more = events.length || S.target !== logicalK() + pendingK() || (needle.to != null && needle.a !== needle.to) || gasAlpha !== gasTo || !!CV.fade;
+        if(more){ dirty = true; raf = requestAnimationFrame(frame); }
+        else if(dirty){ dirty = false; paintCause(); settled(); }
+      }
+      function paintNeedle(){ paintCanvas(); }
+      // finish everything now (leaving Explore, the stage hidden, reduced motion): the picture of the knob's step
+      function snap(){
+        if(raf){ cancelAnimationFrame(raf); raf = 0; }
+        if(!G) return;
+        layoutAt(S.target); drawnKey = ''; paintReadouts(true); needle.a = needle.to; gasAlpha = gasTo; CV.fade = null; paintNeedle(); settled();
+      }
+      // a short cross fade on the canvas: the old picture out (0.15 s), the new one in (0.15 s)
+      function crossFade(fn){
+        var img = null;
+        if(CV.ctx && mov.width){ img = document.createElement('canvas'); img.width = mov.width; img.height = mov.height; img.getContext('2d').drawImage(mov, 0, 0); }
+        fn();
+        if(img){ CV.fade = { img: img, t0: now() }; kick(); }
+      }
+
+      /* ---------------------------------------------------- the x knob */
+      var slider = null;
+      function makeSlider(){
+        if(slider) slider.el.remove();
+        var r = R();
+        slider = K.drag(layer, { key: 'apchem-ice-x', label: 'x, the extent of reaction', min: 0, max: r.steps, step: 1, value: S.target, track: G.rail,
+          valuetext: function(v){ return 'x = ' + fmt(v * r.per) + ' ' + unitOf(r) + ', step ' + v + ' of ' + r.steps; },
+          // the tag says the DRAWN x (it catches up as the molecules react)
+          tag: function(){ var x = shown ? shown.x : 0; return 'x = ' + (x === 0 ? '0' : fmt(x)) + ' ' + unitOf(r); }, tagSide: 'down', chip: false,
+          onInput: function(v){ setTarget(v); } });
+      }
+      function setTarget(v){
+        S.target = v; tourDid('drag');
+        cause.take(null); clearTimeout(takeT);
+        if(K.reduced()){ crossFade(function(){ layoutAt(v); }); drawnKey = ''; paintReadouts(true); needle.a = needle.to; gasAlpha = gasTo; paintNeedle(); settled(); return; }
+        kick();
+      }
+
+      /* ---------------------------------------------------- layout */
+      var lastW = 0;
+      function layoutNow(force){
+        var r0 = sceneBox.getBoundingClientRect(), W = Math.round(r0.width);
+        if(!W || (!force && W === lastW && G)) { if(cue.active()) cue.place(); return; }
+        lastW = W;
+        phone = W < 860;
+        if(raf){ cancelAnimationFrame(raf); raf = 0; }
+        G = geo(W);
+        sceneBox.style.height = G.H + 'px';
+        svg.setAttribute('viewBox', '0 0 ' + W + ' ' + G.H); svg.setAttribute('width', W); svg.setAttribute('height', G.H);
+        // the canvas covers the flask and its gauge only (a small texture to upload each frame)
+        var bx = [Math.floor(G.cx - G.R - 6), Math.floor(Math.min(G.gy - G.gr - 6, G.neckTop - 4)), Math.ceil(Math.max(G.gx + G.gr, G.cx + G.R) + 6), Math.ceil(Math.max(G.yb + 4, G.gy + G.gr))];
+        CV.box = bx; CV.dpr = Math.min(2, window.devicePixelRatio || 1);
+        mov.style.left = bx[0] + 'px'; mov.style.top = bx[1] + 'px'; mov.style.width = (bx[2] - bx[0]) + 'px'; mov.style.height = (bx[3] - bx[1]) + 'px';
+        mov.width = Math.round((bx[2] - bx[0]) * CV.dpr); mov.height = Math.round((bx[3] - bx[1]) * CV.dpr); CV.ctx = mov.getContext('2d');
+        CV.base = document.createElement('canvas'); CV.base.width = mov.width; CV.base.height = mov.height; CV.baseDirty = true; readColors();
+        sceneBox.classList.toggle('is-narrow', G.narrow);
+        drawStatic();
+        layoutAt(S.target);
+        drawnKey = ''; shown = null; paintReadouts(true); needle.a = needle.to; paintNeedle();
+        makeSlider();
+        svg.setAttribute('aria-label', describe());
+        if(cue.active()) cue.place();
+        settled();
+      }
+      function describe(){
+        var r = R();
+        return 'A sealed flask of ' + eqText(r).replace(' ⇌ ', ' reacting to ') + ', the molecules drawn with their atoms; a clipboard with the ICE table; a Q gauge on the flask with K marked.';
+      }
+      function pickReaction(v){
+        var i = RX.map(function(r){ return r.id; }).indexOf(v); if(i < 0 || i === S.ri) return;
+        if(raf){ cancelAnimationFrame(raf); raf = 0; }
+        S.ri = i; S.target = 0; cause.take(null);
+        crossFade(function(){});
+        layoutNow(true); refHtml();
+      }
+      function startOver(){
+        if(raf){ cancelAnimationFrame(raf); raf = 0; }
+        S.target = 0; cause.take(null);
+        crossFade(function(){ layoutAt(0); });
+        drawnKey = ''; paintReadouts(true); needle.a = needle.to; paintNeedle();
+        slider.value(0); settled();
+      }
+
+      /* ---------------------------------------------------- the cue and Show me how */
+      // the one first visit cue, along the rail to the right of the knob (it covers no label or number)
+      var cue = K.cue(layer, { key: 'apchem-ice-x', text: 'Drag x', side: 'right', at: function(){ var x = G ? lerp(G.rail[0], G.rail[2], S.target / R().steps) : 0; return G ? [x, G.rail[1]] : [0, 0]; } });
+      function hideCue(used){ if(cue.active()) cue.hide(used); }
+      stage.addEventListener('pointerdown', function(e){ if(sceneBox.contains(e.target)) hideCue(true); }, true);
+      stage.addEventListener('keydown', function(e){ if(sceneBox.contains(e.target) && /^(Arrow|Page|Home|End)/.test(e.key)) hideCue(true); }, true);
+      function rectOf(x, y, w, h){ var r0 = svg.getBoundingClientRect(), k = r0.width / G.W; return { left: r0.left + x * k, top: r0.top + y * k, right: r0.left + (x + w) * k, bottom: r0.top + (y + h) * k, width: w * k, height: h * k }; }
+      var tour = K.tour({ key: 'apchem-ice-tables', label: 'Show me how', steps: [
+        { id: 'drag', text: 'Drag x. Each step is one reaction event in the flask.', target: function(){ return seen('drag', slider ? slider.el.querySelector('.tk2-knob') : sceneBox); } },
+        { id: 'table', text: 'The ICE table writes it down: C is the change in x, E is I + C.', target: function(){ if(!G) return sceneBox; var bm = G.bm, y = G.ny + bm.tTop + bm.hh + bm.rh; seen('table', BK.band); return rectOf(G.nx, y, G.nw, 2 * bm.rh); } },
+        { id: 'gauge', text: 'Q climbs to the K notch. Where they meet is the equilibrium x.', target: function(){ if(!G) return sceneBox; seen('gauge', mov); return rectOf(G.gx - G.gr - 4, G.gy - G.gr - 16, 2 * G.gr + 8, G.gr * 1.62 + 20); } }],
+        onClose: function(had){ if(had) try{ head.how.focus({ preventScroll: true }); }catch(e){} } });
+      // each step's target is scrolled into view once (the page on a phone, the card's own scroll elsewhere)
+      var tourSeen = {};
+      function seen(id, el){ if(el && !tourSeen[id]){ tourSeen[id] = true; try{ el.scrollIntoView({ block: 'nearest' }); }catch(e){} } return el; }
+      function tourDid(id){ if(tour.active()) tour.did(id); }
+      function startTour(){ if(S.mode !== 'explore') return; hideCue(false); tourSeen = {}; tour.start(true); }
+
+      /* ---------------------------------------------------- "?" */
+      var ref = document.createElement('div'); ref.className = 'ls-sec ix2-ref';
+      function refHtml(){
+        var r = R(), u = unitOf(r), ke = eqStep(r), c = countsAt(r, ke), x = ke * r.per, i0 = r.n0[0] * r.per;
+        var sp = r.species, reac = sp.filter(function(s){ return s.nu < 0; }), prod = sp.filter(function(s){ return s.nu > 0; });
+        var nm = function(s){ return (r.K === 'Kp' ? 'P(' + s.html + ')' : '[' + s.html + ']') + (Math.abs(s.nu) > 1 ? '<sup>' + Math.abs(s.nu) + '</sup>' : ''); };
+        var expr = prod.map(nm).join('') + ' / ' + (reac.length > 1 ? '(' + reac.map(nm).join('') + ')' : reac.map(nm).join(''));
+        var step = r.id === 'hi' ? 'one H₂ and one I₂ become two HI, so [H₂] and [I₂] each fall by x and [HI] rises by 2x' : 'one N₂O₄ splits into two NO₂, so P(N₂O₄) falls by x and P(NO₂) rises by 2x';
+        ref.innerHTML = '<p class="ix2-howref"><button type="button" class="tk2-how" data-how>Show me how</button> to use it, step by step.</p>' +
+          '<h3 class="ls-title-l">The flask and the table</h3><p>Each step of x is one reaction event in the flask: ' + step + '. One molecule stands for ' + r.per + ' ' + u + ', so the table\'s numbers are the molecules you can count. I is what was put in; C is the change, written in x from the coefficients (reactants −, products +); E is I + C.</p>' +
+          '<h3 class="ls-title-l">Q and K</h3><p>' + (r.K === 'Kp' ? 'K<sub>p</sub>' : 'K<sub>c</sub>') + ' = ' + expr + ' = ' + r.Kval + ' at ' + esc(r.T) + '. Q is the same expression with the amounts at this x. Q below K: the reaction still runs forward. Q above K: the reverse reaction runs until Q comes back down to K. At equilibrium Q = K, and that is the x an ICE problem solves for. K changes only with temperature; moving x changes Q, never K.</p>' +
+          '<p>Only gases and dissolved species go into K. A pure solid or a pure liquid is left out (adding more of it does not change its concentration). Both reactions here are all gas, so every species is in the expression. On the exam K is written without units.</p>' +
+          '<h3 class="ls-title-l">Why Q lands near K, not on it</h3><p>The flask holds whole molecules, so x moves in steps of ' + r.per + ' ' + u + '. The step nearest K is x = ' + fmt(x) + ' ' + u + ', where Q = ' + fmtQ(Qof(r, c)) + ' (within ' + Math.max(1, Math.round(100 * Math.abs(Qof(r, c) / r.Kval - 1))) + '% of K). Solved exactly, x = ' + M.fmt(exactX(r), 4) + ' ' + u + ', which is the drawn step to three significant figures.</p>' +
+          '<h3 class="ls-title-l">When x is small: the 5% rule</h3><p>When K is small, x is small next to the starting amount, so you may write (' + fmt(i0) + ' − x) ≈ ' + fmt(i0) + ', solve, then check: if the change is more than 5% of the starting amount, the shortcut is not good enough and you solve the full equation (the quadratic formula). It does not apply here: x is ' + Math.round(100 * x * Math.abs(reac[0].nu) / i0) + '% of the starting ' + (r.K === 'Kp' ? 'P(' + reac[0].html + ')' : '[' + reac[0].html + ']') + '. Test yourself has small K problems with the 5% check.</p>' +
+          '<h3 class="ls-title-l">K<sub>c</sub> and K<sub>p</sub></h3><p>H₂ + I₂ uses concentrations in mol/L (K<sub>c</sub>); N₂O₄ here uses partial pressures in atm (K<sub>p</sub>). The table works the same way with either. At a fixed volume and temperature a gas\'s partial pressure is proportional to its number of molecules, so one molecule stands for a fixed pressure.</p>' +
+          '<h3 class="ls-title-l">The colors</h3><p>I₂ vapor is violet and NO₂ is brown; H₂, HI and N₂O₄ are colorless, so the gas in the flask fades as I₂ is used up, or browns as NO₂ forms. Atoms: H white, I purple, N blue, O red. The flask\'s molecules are drawn still between reactions; in a real gas they never stop moving.</p>' +
+          '<h3 class="ls-title-l">The constants</h3><ul class="ix2-list">' + RX.map(function(z){ return '<li>' + esc(eqText(z)) + ': ' + (z.K === 'Kp' ? 'K<sub>p</sub>' : 'K<sub>c</sub>') + ' = ' + z.Kval + ' at ' + esc(z.T) + ' (' + esc(z.ref) + ').</li>'; }).join('') + '</ul>' +
+          '<h3 class="ls-title-l">' + esc(data.howItWorksTitle || 'How Test yourself checks') + '</h3>' + T.wrapTables(data.howItWorks) +
+          '<p class="bt-small">Notes: <a href="../notes/equilibrium-concentrations.html">Calculating equilibrium concentrations</a></p>';
+      }
+      function exactX(r){
+        var Qx = function(x){ return r.n0.reduce(function(q, n, i){ return q * Math.pow(n * r.per + r.species[i].nu * x, r.species[i].nu); }, 1); };
+        var lo = 0, hi = r.steps * r.per; for(var i = 0; i < 100; i++){ var m = (lo + hi) / 2; if(Qx(m) < r.Kval) lo = m; else hi = m; }
+        return lo;
+      }
+      ref.addEventListener('click', function(e){ var b = e.target.closest('[data-how]'); if(!b) return; if(ctx.studio) ctx.studio.close(); if(S.mode !== 'explore' && ctx.studio && ctx.studio.kit2) ctx.studio.kit2.go('explore'); setTimeout(startTour, 60); });
+
+      /* ================================================== TEST YOURSELF: the drill, unchanged */
+      var qz = document.createElement('div'); qz.className = 'bt-pane bt-pane-quiz ix2-quiz';
+      app.appendChild(qz);
+      quiz(qz, data, M);
+      var drillStage = ctx.studio ? ctx.studio.root.querySelector('.ls-drill-stage') : null, drillDock = ctx.studio ? ctx.studio.root.querySelector('.ls-drill') : qz.querySelector('.cd-problem');
+      // the drill's own About repeats the intro (it is in About once, with Explore's line, and its rules are in "?")
+      if(ctx.studio){ var dab = ctx.studio.root.querySelector('.bt-about'); if(dab) dab.remove(); }
+      function shownMode(mode){
+        var was = S.mode; S.mode = mode;
+        tour.stop();
+        stage.setAttribute('data-view', mode);
+        if(mode !== 'explore'){ hideCue(false); clearTimeout(takeT); if(was === 'explore' && G && (busy() || raf)) snap(); return; }
+        setTimeout(function(){ layoutNow(); if(!tour.active()) cue.show(); if(cue.active()) cue.place(); }, 30);
+      }
+      ctx.kit2 = { stage: stage, ref: ref, onShow: shownMode,
+        parts: [{ value: 'quiz', label: 'Problems', placed: true, stage: drillStage, dock: drillDock }],
+        about: [(function(){ var d = document.createElement('div'); d.className = 'bt-intro'; d.innerHTML = '<p><b>Explore:</b> drag x and watch the molecules in a sealed flask react one step at a time, while the ICE table, Q and the gauge follow what is drawn, until Q reaches K.</p><p><b>Test yourself:</b></p>' + data.intro; return d; })()],
+        start: function(){ try{ if(/[?&#]seed=\d+/.test(location.search + location.hash) || /^#quiz\b/.test(location.hash)) return { mode: 'quiz', part: 'quiz' }; }catch(e){} return null; } };
+      refHtml();
+      if(!ctx.studio){ app.insertBefore(stage, app.firstChild); app.insertBefore(ref, stage.nextSibling); shownMode('explore'); }
+      // the stage stops when it is hidden (another tab of the page, scrolled away mid change)
+      if(window.IntersectionObserver) new IntersectionObserver(function(es){ es.forEach(function(en){ if(!en.isIntersecting && (busy() || raf) && S.mode === 'explore') snap(); }); }).observe(sceneBox);
+      // the canvas follows the site's theme switch
+      if(window.MutationObserver) new MutationObserver(function(){ if(G){ readColors(); paintCanvas(); } }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+      document.addEventListener('visibilitychange', function(){ if(document.hidden && (busy() || raf)) snap(); });
+      if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ if(G) layoutNow(true); });
+      if(window.ResizeObserver){ var tm = null; new ResizeObserver(function(){ clearTimeout(tm); tm = setTimeout(function(){ layoutNow(); }, 50); }).observe(sceneBox); }
+      else window.addEventListener('resize', function(){ layoutNow(); });
+      // for the sweep and the frames check (scripts/tools-v2/chem-ice-tables-sweep.mjs): the drawn state
+      window.__ice2 = {
+        G: function(){ return G; }, busy: function(){ return busy() || !!raf; }, target: function(){ return S.target; }, react: function(){ return R(); },
+        drawn: function(){ return countsDrawn(); }, shown: function(){ return shown; }, needle: function(){ return needle.a; }, angOf: angOf, Qof: function(c){ return Qof(R(), c); }, eqStep: function(){ return eqStep(R()); },
+        mols: function(){ return mols.map(function(m){ return { key: m.key, state: m.state, atoms: m.atoms.map(function(a){ return [a.wx, a.wy, a.r * G.s]; }) }; }); },
+        // each reaction under way: its reactants and, once the atoms swap, its products' drawn atoms with the reactant
+        // each came from (for the frames check: what the picture shows, by atom distances)
+        events: function(){ return events.map(function(e){ return { dir: e.dir, formed: e.formed, swapped: !!e.swapped, ins: e.ins.map(function(m){ return m.key; }), glow: e.glowA || 0,
+          outs: e.swapped && !e.moving ? e.outs.map(function(pm){ return { key: pm.key, atoms: pm.atoms.map(function(a){ var t = atomPos(pm, a, pm.x, pm.y, pm.a); return { at: [a.wx, a.wy], from: a.start, to: t }; }) }; }) : [] }; }); },
+        gas: function(){ return { now: gasAlpha, to: gasTo }; },
+        set: function(k){ slider.value(k, true); }, snap: snap
+      };
+    }, { studio: { kit2: function(ctx){ return ctx.kit2; } } });
   }
 
+  /* ================================================== the drill (Test yourself), as before the rebuild */
   function quiz(app, data, M){
     var Q = window.ApChemQuestions, live = null;
     T.drill(app, data, {
@@ -255,5 +935,13 @@
     }
     T.watchBox(chart, draw);
     return { read: read, checked: checked, draw: draw };
+  }
+
+  /* The page loads the kit (pages.json "kit2": true). A cached copy of the old page would not: fetch it then. */
+  if(window.LevlKit2) boot();
+  else {
+    var up = (window.ApChemBase || '../') + '../assets/course/';
+    var l = document.createElement('link'); l.rel = 'stylesheet'; l.href = up + 'tool-kit2.css'; document.head.appendChild(l);
+    var sc = document.createElement('script'); sc.src = up + 'tool-kit2.js'; sc.onload = boot; document.head.appendChild(sc);
   }
 })();

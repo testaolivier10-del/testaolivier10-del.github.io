@@ -1021,9 +1021,12 @@
                             full width (no side panel, nothing graded).
        o.ref      element   the reference behind "?" (how it works, rules, links).
        o.about    [element] moved to About (the intro).
-       o.parts    [{ value, label, group, stage: element, dock: element, task: { kicker, title, todo } | fn }]
+       o.parts    [{ value, label, group, stage: element, dock: element, task: { kicker, title, todo } | fn, placed }]
                             TEST YOURSELF parts: the question goes in the side panel (dock); a part with its own
                             stage shows it in place of the picture. Parts may share a stage or a dock element.
+                            placed: true for a part that put itself in the frame (a drill: T.drill's own studio
+                            arrangement, in Test yourself only): its stage and dock are only shown and hidden here,
+                            and its task head is the drill's (ICE tables, docs/tools-v2-chem-ice-tables-brief.md).
        o.start    fn() -> { mode, part } | null   where a link opens (a problem code, #quiz); default Explore.
        o.onShow(mode, part) after every switch: mode 'explore' | 'quiz', part the Test yourself part or null.
      Two modes only: Explore and Test yourself. With more than one part, ONE dropdown on the stage ("What to
@@ -1040,8 +1043,8 @@
     if(o.ref) s.add('details', o.ref);
     var stages = [], docks = [];
     parts.forEach(function(p){
-      if(p.stage && stages.indexOf(p.stage) < 0){ stages.push(p.stage); s.add('stage', p.stage, { mode: 'quiz' }); }
-      if(p.dock && docks.indexOf(p.dock) < 0){ docks.push(p.dock); s.add('dock', p.dock, { mode: 'quiz' }); }
+      if(p.stage && stages.indexOf(p.stage) < 0){ stages.push(p.stage); if(!p.placed) s.add('stage', p.stage, { mode: 'quiz' }); }
+      if(p.dock && docks.indexOf(p.dock) < 0){ docks.push(p.dock); if(!p.placed) s.add('dock', p.dock, { mode: 'quiz' }); }
     });
     var groups = [];
     parts.forEach(function(p){ var g = groups.filter(function(x){ return x.label === (p.group || ''); })[0]; if(!g){ g = { label: p.group || '', items: [] }; groups.push(g); } g.items.push({ value: p.value, label: p.label }); });
@@ -1056,7 +1059,7 @@
       stages.forEach(function(el){ el.hidden = !(quiz && p.stage === el); });
       docks.forEach(function(el){ el.hidden = !(quiz && p.dock === el); });
       if(pick && quiz && pick.value() !== p.value) pick.value(p.value);
-      if(quiz){ s.task(typeof p.task === 'function' ? p.task() : p.task || null, 'quiz'); s.caption('', 'quiz'); }
+      if(quiz && !p.placed){ s.task(typeof p.task === 'function' ? p.task() : p.task || null, 'quiz'); s.caption('', 'quiz'); }
       if(o.onShow) o.onShow(cur.mode, quiz ? cur.part : null);
       if(user) event('apchem-tool-mode', { tool: slug, mode: quiz ? cur.part : 'explore' });
     }
