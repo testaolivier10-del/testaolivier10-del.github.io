@@ -159,6 +159,19 @@ inline stimuli are the source of record, and `kick-components.svg` has a hand ed
 undo (u1). Port to `scripts/apphys-figures/` only if figures will be regenerated. Likewise the unit
 authors' item builders were scratch scripts: edit the JSON directly (ids are positional).
 
+## torque-balance-v2: the rebuilt torque balance tool (open, review)
+
+Tools v2 rebuild (`docs/tools-v2-phys-torque-balance-brief.md`, 2026-11-23). For a physics teacher to confirm:
+- The picture's torque numbers are about the fulcrum with the stick level (the moment it starts to turn); while it
+  turns, every weight's lever arm is r cos θ, so the numbers are not redrawn per degree. Said in "?".
+- The stick is only let go once the supports have brought it level, so a balanced stick stays level. With the pivot
+  on the stick's line a balanced stick is in neutral equilibrium (it would also rest at a tilt); the tool never
+  shows that case. Should a later tool teach "balanced does not mean level"?
+- The inertia stands treat the sliders as point masses (I = I<sub>hub</sub> + 2 m d²), as the old tool did; the
+  sliders' own I about their centres is neglected. The 0.80 m drop and the 0.040 m pulley are the old values.
+- The angle marked at the hook is the acute angle between the stick and the pull; τ = r F sin θ uses the angle
+  between r and F. "?" says sin θ = sin(180° − θ), so either gives the torque.
+
 ## Resolved
 
 - **og-image** (2026-10-12): `physics/assets/og-image.png` rendered with

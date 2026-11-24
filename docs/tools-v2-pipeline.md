@@ -40,6 +40,7 @@ States: building, review, fixing, recheck, PASS (waiting to integrate), integrat
 | Ochem reaction predictor | claude/tools-v2-reaction-predictor | wt-reaction-predictor | integrated | 3D sketch of each path (`sequence()`), every frame unit tested as a real structure; three accuracy fixes in `mixture()`; sweep and perf scripts |
 | A&P anatomy 3d | claude/tools-v2-anp-anatomy-3d | wt-anp-anatomy-3d | integrated | five regions on the shared viewer; viewer.js taken from the NREMT body map's branch (byte for byte) plus opt in hooks, so integrate the body map first; K.spots `project`; anp spec decision 105 |
 | NREMT scenario sim | claude/tools-v2-nremt-scenario-sim | wt-nremt-scenario-sim | integrated | Explore `nremt/assets/scenario-explore.js` (own weight shell); the run is Test yourself; monitor pause/resume and `pinsFor` added; the shared NREMT drawn patient `nremt/assets/patient-draw.js` (flowcharts moved onto it); shell `nremt/kit2` |
+| AP Physics 1 torque balance | claude/tools-v2-phys-torque-balance | wt-phys-torque | review | first physics tool on kit2: adapter `ApPhysTools.studioKit2` (Test yourself stays on the shared drill); sweep `scripts/tools-v2/phys-torque-balance-sweep.mjs` (`--frames`, `--perf`) |
 
 2026-11-19: `main` merged in after PR #228 (ochem frame cleanup: chipPicker, scrollChips and .ls-chips-hidden gone; the v2
 conformations, resonance and arrow pusher kept, kit2 kept). Ochem viewer 3d had `main` merged

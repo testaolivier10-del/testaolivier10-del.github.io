@@ -1,0 +1,115 @@
+# Tools v2: AP® Physics 1 Torque balance (brief and build notes)
+
+Status file for the v2 rebuild of `physics/tools/torque-balance.html` (Premium; rollout row 75, group P, wave 17).
+The first AP® Physics 1 tool on the kit, so it adds the physics adapter. Standard: `docs/tools-v2-standard.md`; plan:
+`docs/tools-v2-plans/phys-torque-balance.md`. Branch `claude/tools-v2-phys-torque-balance`, cut from
+`claude/tools-v2-all`. NOT merged: an independent review comes first. Decisions made for the owner are also one line
+each in `docs/tools-v2-owner-log.md`.
+
+## The physics adapter (`ApPhysTools.studioKit2`)
+- `physics/assets/tools/phys-tools.js`: `modes(app, { ..., studio: { kit2(pane, s) -> { stage, ref, about } } })`
+  hands the stage, the "?" reference and the About text to the frame on the chemistry adapter's pattern
+  (`ApChemTools.studioKit2`: the tool builds its own stage with the kit). Test yourself stays on the shared drill
+  (`ApPhysTools.drill`, arranged by `studioDrill`), as `ApCalcTools.studioKit2` does, so its grading, records
+  (`torque-balance:<context>:<step>`), `?seed=` and `#quiz` are untouched. With kit2 every visit lands on Explore
+  (no "last mode" memory; a link still opens Test yourself). Without `kit2` nothing changes for the other ten tools.
+- `scripts/build-apphys.mjs`: a tool with `"kit2": true` in `physics/data/pages.json` loads `tool-kit2.css` and
+  `tool-kit2.js` after `tool-studio.*` (as `build-apchem.mjs`). Only `torque-balance` has it; the other ten generated
+  pages are byte-identical (`build-apphys.mjs --check`).
+- The tool still fetches the kit itself when a cached old page lacks it (as Units and significant figures does).
+
+## Research (rule 10): what exists and what we took
+Seen means the page itself was opened and read; text only means only a description or a guide could be read.
+
+| Source | How it works | Works | Confuses or is missing | What we took |
+|---|---|---|---|---|
+| PhET Balancing Act (page seen; its teacher guide PDF read, the HTML5 sim itself not run here) | Drag bricks onto a plank; supports hold it; remove them and it tips at once; distance marks; a level indicator; Game screen | Supports you remove, the instant tip, marks to read distance | Students pile many objects on (an Intro screen was added for that); no torque shown, only forces; the plank's pivot sits above its centre so balanced means level | The supports (here they rise while you move something and drop when you let go, so there is no Remove supports step); the instant tip; the marks; few masses (a tray of three, at most four on the stick) |
+| The Physics Classroom, Balance Beam interactive (teacher notes read) | Drag masses onto a beam to balance unequal masses | Minimal directions, find the rule yourself | Text says nothing of torque numbers | Explore without instructions; the takeaway names the rule once it has been seen |
+| The Physics Classroom, Torque Balancer (teacher notes read) | Place weights to balance problems; stars | Mass and distance together | A quiz | The quiz kind stays in Test yourself ("Where to hang a mass") |
+| The Physics Classroom, Getting a Handle on Torque (notes read) | Which way does the stick turn, from force and distance | Direction as clockwise / counterclockwise | Text says nothing of the angle | ↺ / ↻ only, no right hand rule (the CED boundary) |
+
+What ours does better: the torque is drawn, not only the forces: two curl arrows around the fulcrum, one per sense,
+made of one piece per mass and sized by its torque, change at once while you drag; the distance from the fulcrum is
+measured on the stick for the mass you move; the cause line says it in numbers; and letting go shows the result
+with α = τ / I from the real model. The angle and the inertia ideas each get their own picture.
+
+## Three ideas, three tabs (rule 11)
+1. **Balance** (opens here). Purpose: "See how mass and distance make a torque." A wooden meter stick (numbers every
+   10 cm) on a knife edge on a lab stand, on a bench; a 200 g mass at the 30 cm mark and a 100 g mass at the 80 cm
+   mark, so the landing picture already rests on its left support. Main control: drag a mass (its knob or the mass
+   itself) along the stick, 1 cm steps, never within 4 cm of another hook. While you move it the two supports come up
+   and hold the stick level (animated, 0.3 s) and the curl arrows and numbers change at once. Let go: once the
+   supports are all the way up they drop, and the stick turns with α = τ<sub>net</sub>/I (the model's integrator,
+   lever arms shrinking as cos θ) until it rests on a support, or stays level when the torques are equal. Quiet
+   controls: the fulcrum (a small knob on the stand's base, 25 to 75 cm), "Hold level" (keeps the supports up), the
+   tray at the bench's end (tap 100, 200 or 500 g: it flies up to a free spot and hangs; drag a mass below the bench
+   or press Delete and it flies back). Neighbours that would touch hang one below the other (strings of different
+   length; the torque is the same, said in "?"). The thin dimension line on the stick measures the moved mass's
+   distance from the fulcrum. Cause line: "100 g at 30 cm → ↺ 0.39 vs ↻ 0.29 N·m → left end down" (held level,
+   lifting level, turning ↺ / ↻, left end down, right end down, balanced). Takeaway after a balanced let go:
+   "Twice the distance, half the mass: the same torque." (or the general sentence).
+2. **Angle**. Purpose: "See why a slanted pull turns the stick less." The same stick, a 200 g mass at the 30 cm mark
+   (↺ 0.39 N·m), and a spring scale hooked at the 10 cm mark pulled by a hand. Main control: drag the hand (the
+   scale's top): its direction (15° to 165° from the stick, 5° steps) and its size (0.2 to 3.0 N, the spring
+   stretches). The pull is one whole arrow from its point of application (no components, the guide's rule); its
+   line of action is a thin grey line, and the lever arm a solid green line from the fulcrum, square to that line,
+   labelled "lever arm 0.35 m"; it shortens as the pull slants. The scale's face reads the force; the angle between
+   stick and pull is marked at the hook. Cause line: "1.5 N at 60° → lever arm 0.35 m → ↺ 0.39 vs ↻ 0.52 N·m → right
+   end down". Takeaway after a balanced slanted let go: "A slanted pull has a shorter lever arm, so it needs more
+   force." Extremes are real: at 15° even 3 N cannot balance it.
+3. **Inertia**. Purpose: "See why mass farther out spins up slower." Two rotational inertia stands on a lab bench
+   (a cross arm turning in a horizontal plane, seen from a little above, with two brass sliders; a string from the
+   step pulley over a pulley at the bench's edge to a 200 g weight). Main control: drag B's slider along the arm
+   (4 to 20 cm; the other slider moves with it); A's is quiet. Let go: both weights drop 0.80 m together, the arms
+   spin, and each landing time appears over its weight when it is down. Grabbing a slider again winds the weights
+   back up (animated). Cause line: "A 6 cm, B 18 cm out → I of B 5.4× → A lands 1.67 s sooner"; takeaway: "Same mass,
+   farther out: more rotational inertia, so it spins up more slowly."
+
+One colour per idea, everywhere (picture, numbers, cause line): counterclockwise blue, clockwise vermillion, the
+lever arm green, the pull grey (the physics FBD colour for an applied force), rotational inertia purple, a balanced
+result green. Physics series colours (`--phys-s1`, `--phys-s2`, `--phys-s3`), dark variants for dark mode.
+
+## What is on screen in Explore (1440, landing of each tab)
+Outside the picture: 3 tabs, the purpose line (8 or 9 words), "Show me how", the cause line (Balance 3 pills, Angle 4,
+Inertia 3), "Start over". No side panel.
+On the picture, Balance: the stick and its 9 numbers, 2 masses (1 word each), 2 knobs, 2 curl arrows with their 2
+numbers, the dimension line and "30 cm", the stand and "fulcrum", 2 supports, "Hold level", the tray (3 weights),
+the fulcrum's quiet knob, the cue on a first visit. Angle: the stick, 1 mass, the scale with its reading, the hand
+and its knob, the arrow, the angle, the line of action, the lever arm and its name, 2 curl arrows (no numbers: they
+are in the cause line), "fulcrum", "Hold level". Inertia: 2 stands with "A" and "B", 2 weights ("200 g"), 2 knobs
+with their tags ("6 cm", "18 cm"), and the landing times after a race.
+
+## Explore against Test yourself (what moved; nothing dropped)
+| Old tool | Where it is now |
+|---|---|
+| Drag a mass along the stick; arrow keys, Delete | Balance, the main control (same keys; Page Up / Down 10 cm) |
+| + 100 g, + 200 g, + 500 g | Balance, the tray at the bench's end (tap); at most 4 masses on the stick |
+| Remove every mass | "Start over" (puts the two starting masses back) and dragging a mass off |
+| Hold level, Release | Automatic: the supports hold while you move something and drop when you let go; "Hold level" keeps them up |
+| Fulcrum position (slider in Settings) | Balance and Angle: the quiet knob on the stand's base |
+| Count the stick's own mass | "?" setting, as before (on by default) |
+| The torque bars (↺, ↻, net) | The two curl arrows and their numbers; net and every torque in the "?" table |
+| "Why?" text, the numbers table, I, α, support force | "?" (How it works, the torques table with I, α at let go and the support force) |
+| Add a pull at an angle (F, where, angle sliders) | Angle tab: drag the hand (size and direction); where it acts is fixed at the 10 cm mark |
+| Inertia race (wheel A and B sliders, Race, Reset) | Inertia tab: drag the sliders; the race starts when you let go; Start over |
+| Energy columns K and K_rot per wheel | "?" (K and K_rot at the floor in the stands' table, and the energy sentence) |
+| Live time pill, A/B times | The landing time over each weight; the gap in the cause line |
+| Test yourself: five drills, ids, `?seed=`, `#quiz` | Unchanged |
+| Last mode remembered | Not kept: every visit lands on Explore (the v2 rule); links still open Test yourself |
+
+## Accuracy
+- τ = r F sin θ about the fulcrum, counterclockwise positive, only ↺ / ↻ (the guide's exclusion: no right hand
+  rule). The model (`physics/assets/tools/math/torque-balance.js`) is unchanged; the screen numbers come from
+  `torques()` with the stick level (stated in "?": tilted, every weight's lever arm shrinks by the same cos θ, so the
+  winning side never changes; the pull keeps its angle to the stick, as in the model).
+- The let go: `tip()` (velocity Verlet on I θ'' = τ(θ)) with the support's height as the stop (10°). A stick is let
+  go only once it is level, so a balanced stick always stays level (with the pivot on the stick's line a balanced
+  stick is in neutral equilibrium: it would also stay at any tilt; the tool never leaves it askew).
+- The inertia race: a = m g / (m + I / r²), I = I<sub>hub</sub> + 2 m d² (sliders as point masses), hand check:
+  d = 6 cm, I = 0.0033 kg·m², a = 0.866 m/s², t = 1.36 s; d = 18 cm, I = 0.0177 kg·m², a = 0.174 m/s², t = 3.03 s
+  (g = 9.8 m/s², from the model's `race.at`). The arm turns by θ = y / r (the string unwinds off the pulley).
+- New wording checked: "?" lines on the level torques, string length, the supports, the CED's directions, g.
+- Open points for a physics teacher: `docs/apphys-needs-author.md`, "torque-balance-v2".
+
+## Checks run
+See the last section (filled in at hand in).

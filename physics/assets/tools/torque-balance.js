@@ -186,6 +186,7 @@
       '<h3 class="ls-title-l tb2-nums-h">The torques about the fulcrum</h3><div class="tb2-nums"></div>' +
       '<div class="tb2-set"><h3 class="ls-title-l">Setting</h3><label class="tb-check"><input type="checkbox" class="tb2-usemb" checked> <span>Count the stick’s own mass (0.12 kg, acting at its 50 cm mark)</span></label></div>' +
       '<h3 class="ls-title-l">How this picture is drawn</h3><ul class="tb2-list"><li>The torques shown are about the fulcrum with the stick level, the moment it starts to turn. Tilted, every weight’s lever arm shrinks by the same factor (cos θ), so the side that wins never changes.</li>' +
+      '<li>Angle: the angle marked at the hook is between the stick and the pull. sin θ is the same for θ and 180° − θ, so either angle gives the torque r F sin θ; the lever arm r sin θ is the perpendicular distance from the fulcrum to the pull\u2019s line.</li>' +
       '<li>A hanging weight pulls straight down on its hook, so its lever arm is its distance from the fulcrum along the level stick. How long its string is does not matter.</li>' +
       '<li>While you move something, the two supports hold the stick level. Let go and they drop: an unbalanced stick turns with α = τ<sub>net</sub> / I until it rests on a support; a balanced one stays level.</li>' +
       '<li>Counterclockwise (↺) and clockwise (↻) are the only directions used, as on the AP® exam. g = 9.8 m/s².</li>' +
@@ -201,11 +202,12 @@
       var mx = ph ? 16 : Math.max(44, Math.round(W * 0.05)), two = W < 1000, band = two ? 96 : 84, str0 = Math.round(34 * k);
       var ppm = W - 2 * mx, ang = tab === 'ang';
       function need(p){
-        var R = clamp(p * (ang ? 0.075 : 0.1), ph ? 46 : 64, ang ? 90 : 118), drop = 0.5 * p * Math.sin(STOP), bh = bodySize(0.5, k).h + 8;
+        var R = clamp(p * (ang ? 0.075 : 0.1), ph ? 46 : 64, ang ? 90 : 118), drop = 0.5 * p * Math.sin(STOP), bh = bodySize(0.5, k).h + 24;
         // Balance: room for the masses to hang one below the other (three rows only when hooks 8 cm apart can touch)
         var rows = ang ? 1 : 0.08 * p >= bodySize(0.5, k).w + 6 ? 2 : 3;
         // Angle: one mass at 20 cm from the fulcrum; the stick's ends still need to clear the bench
         var below = ang ? Math.max(drop + 24, 0.2 * p * Math.sin(STOP) + thick / 2 + str0 + bh + 10) : drop + thick / 2 + str0 + rows * bh + 10;
+        below += 14;   // the fulcrum's quiet knob sits on the stand's base, just over the bench
         // above: the curl arrows and their two numbers; Angle: the spring scale and the hand, at the stick's left end
         var above = ang ? Math.max(R + 40, 0.4 * p * Math.sin(STOP) + pullReach(ph, k) + 10) : Math.max(R + 40, drop + 26) + (ph ? 14 : 22);
         return { R: R, below: below, above: above, H: above + below + band, rows: rows };
@@ -221,7 +223,7 @@
       var H = ph ? Math.round(clamp(W * 1.3, 450, 540)) : Hin, floorY = H - band;
       var tl = ph ? 58 : Math.round(W * 0.2), tr = W - tl, cxA = Math.round(tl + (tr - tl) * 0.26), cxB = Math.round(tl + (tr - tl) * 0.74);
       var arm = Math.round(Math.min((tr - tl) * 0.2, ph ? 62 : 175)), pxpm = arm / 0.22;
-      var axleY = Math.round(ph ? 92 : clamp(H * 0.2, 96, 150)), armH = Math.round(ph ? 84 : clamp(H * 0.2, 100, 150));
+      var axleY = Math.round(ph ? 134 : clamp(H * 0.22, 132, 160)), armH = Math.round(ph ? 84 : clamp(H * 0.2, 100, 150));
       var tableY = axleY + armH, sY = axleY + Math.round((ph ? 22 : 30) * k);
       return { W: W, H: H, ph: ph, k: k, floorY: floorY, tableY: tableY, tl: tl, tr: tr, cx: [cxA, cxB], arm: arm, pxpm: pxpm, axleY: axleY, tilt: 0.3,
         pulY: sY, hubR: Math.max(10, Math.round(0.04 * pxpm)), band: band };
@@ -322,10 +324,10 @@
         '<g class="tb2-strings"></g>' +
         '<g class="tb2-stick"><g class="tb2-stickin"><rect class="tb2-wood" x="' + g.x0 + '" y="' + n1(-g.thick / 2) + '" width="' + n1(g.ppm) + '" height="' + g.thick + '" rx="2" fill="url(#' + id + 'w)"/>' +
           '<path class="tb2-ticks" d="' + ticks + '"/>' + nums + '<g class="tb2-clamps"></g><g class="tb2-com"></g><g class="tb2-dim"></g></g></g>' +
-        '<g class="tb2-masses"></g><g class="tb2-flyg"></g><g class="tb2-pullg"></g>' +
+        '<g class="tb2-dimtg" aria-hidden="true"></g><g class="tb2-masses"></g><g class="tb2-flyg"></g><g class="tb2-pullg"></g>' +
         '<g class="tb2-tray"></g>' +
         '<g class="tb2-labs" aria-hidden="true"><text class="tb2-tq is-ccw" text-anchor="end"></text><text class="tb2-tq is-cw" text-anchor="start"></text></g>';
-      D = { stick: svg.querySelector('.tb2-stick'), stickin: svg.querySelector('.tb2-stickin'), clamps: svg.querySelector('.tb2-clamps'), com: svg.querySelector('.tb2-com'), dim: svg.querySelector('.tb2-dim'),
+      D = { stick: svg.querySelector('.tb2-stick'), stickin: svg.querySelector('.tb2-stickin'), clamps: svg.querySelector('.tb2-clamps'), com: svg.querySelector('.tb2-com'), dim: svg.querySelector('.tb2-dim'), dimt: svg.querySelector('.tb2-dimtg'),
         masses: svg.querySelector('.tb2-masses'), strings: svg.querySelector('.tb2-strings'), fly: svg.querySelector('.tb2-flyg'), arcs: svg.querySelector('.tb2-arcs'), loa: svg.querySelector('.tb2-loa'),
         pull: svg.querySelector('.tb2-pullg'), tray: svg.querySelector('.tb2-tray'), stand: svg.querySelector('.tb2-standg'), posts: svg.querySelectorAll('.tb2-post'), pads: svg.querySelectorAll('.tb2-pad'),
         tqL: svg.querySelector('.tb2-tq.is-ccw'), tqR: svg.querySelector('.tb2-tq.is-cw'), mg: {} };
@@ -365,7 +367,7 @@
         (rows[L] = rows[L] || []).push({ x: x, w: w }); q.lev = Math.min(L, G.rows - 1);
       });
     }
-    function rowY(lev){ var big = bodySize(0.5, G.k).h + 8; return lev * big; }
+    function rowY(lev){ var big = bodySize(0.5, G.k).h + 24; return lev * big; }
     function massNode(s, q){
       var g = D.mg[q.id];
       if(g) return g;
@@ -413,22 +415,25 @@
     }
     /* The distance from the fulcrum of the mass last moved: a thin dimension line on the stick. */
     function paintDim(s){
-      var q = s.masses.filter(function(m){ return m.id === s.active; })[0], html = '';
+      var q = s.masses.filter(function(m){ return m.id === s.active; })[0], html = '', txt = '';
       if(q && q.x !== s.pivot && st.tab === 'bal'){
         var a = px(s.pivot), b = px(q.x), y = -G.thick / 2 - (G.ph ? 9 : 11), d = Math.abs(q.x - s.pivot);
         // its number sits over the line's middle, or past the curl arrows when the middle is under them
         var tw = (String(d).length + 3) * 7.6, sg = b > a ? 1 : -1, mid = (a + b) / 2, clear = G.R + tw / 2 + 8;
         if(Math.abs(mid - a) < clear) mid = a + sg * (Math.abs(b - a) >= clear + tw / 2 ? clear : Math.abs(b - a) + tw / 2 + 10);
-        html = '<path class="tb2-dimln" d="M' + n1(a) + ' ' + n1(y) + 'H' + n1(b) + 'M' + n1(a) + ' ' + n1(y - 4) + 'v8M' + n1(b) + ' ' + n1(y - 4) + 'v8"/>' +
-          '<text class="tb2-dimt" x="' + n1(mid) + '" y="' + n1(y - 5) + '" text-anchor="middle">' + d + ' cm</text>';
+        html = '<path class="tb2-dimln" d="M' + n1(a) + ' ' + n1(y) + 'H' + n1(b) + 'M' + n1(a) + ' ' + n1(y - 4) + 'v8M' + n1(b) + ' ' + n1(y - 4) + 'v8"/>';
+        // the number stays upright: its middle rides the tilted stick, a little above the line
+        var lx = mid - a, ly = y - 13, c = Math.cos(s.th), sn = Math.sin(s.th);
+        txt = '<text class="tb2-dimt" x="' + n1(a + lx * c + ly * sn) + '" y="' + n1(G.py - lx * sn + ly * c + 4.5) + '" text-anchor="middle">' + d + ' cm</text>';
       }
       if(D.dimHtml !== html){ D.dim.innerHTML = html; D.dimHtml = html; }
+      if(D.dimtHtml !== txt){ D.dimt.innerHTML = txt; D.dimtHtml = txt; }
     }
     /* The curl arrows: one per sense around the fulcrum, a piece per mass (the active one strong), the bigger side
        68° long; the sizes are proportional to the torques. */
     function arcPt(cx, cy, R, a){ var r = a / RAD; return [cx + R * Math.sin(r), cy - R * Math.cos(r)]; }
     function paintArcs(s){
-      var t = torquesOf(s), cx = px(s.pivot), cy = G.py, R = G.R, k = s.scale || arcScale(s), html = '';
+      var t = torquesOf(s), cx = px(s.pivot), cy = G.py, R = G.R, k = Math.min(s.scale || arcScale(s), 68 / Math.max(t.ccw, t.cw, 1e-9)), html = '';
       var act = activeItem(s, t);
       [['ccw', -1], ['cw', 1]].forEach(function(sd){
         var list = t.items.filter(function(it){ return sd[1] < 0 ? it.tau > 1e-12 : it.tau < -1e-12; });
@@ -449,7 +454,7 @@
       D.arcs.setAttribute('data-k', k.toFixed(4));
       if(D.arcHtml !== html){ D.arcs.innerHTML = html; D.arcHtml = html; }
       // the two numbers sit side by side over the top of the curls, where the arrows start
-      var pr = pairTxt(t.ccw, t.cw), lx = cx - (G.ph ? 7 : 10), ly = cy - R - (G.ph ? 13 : 16), rx = cx + (G.ph ? 7 : 10);
+      var pr = pairTxt(t.ccw, t.cw), lx = cx - (G.ph ? 7 : 10), ly = cy - R - (G.ph ? 20 : 16), rx = cx + (G.ph ? 7 : 10);
       // Angle: the numbers are in the cause line (the scale and the lever arm need the room over the fulcrum)
       setText(D.tqL, st.tab === 'ang' ? '' : '↺ ' + pr[0] + ' N·m', lx, ly); setText(D.tqR, st.tab === 'ang' ? '' : '↻ ' + pr[1] + ' N·m', rx, ly);
     }
@@ -469,7 +474,7 @@
       var p = s.pull, h = hookAt(s, p.x), a = p.ang / RAD + s.th, ux = Math.cos(a), uy = -Math.sin(a), sc = pullScale(G.ph, G.k);
       var fpx = 46 * sc, str = Math.round(72 * sc), body = Math.round(58 * sc), stretch = p.F * 8 * sc;
       var top = str + body + stretch;   // the ring
-      return { h: h, ux: ux, uy: uy, fpx: fpx, str: str, body: body, stretch: stretch, top: top, ring: [h[0] + ux * top, h[1] + uy * top], sc: sc };
+      return { h: h, ux: ux, uy: uy, fpx: fpx, str: str, body: body, stretch: stretch, top: top, ring: [h[0] + ux * top, h[1] + uy * top], hand: [h[0] + ux * (top + 26 * sc), h[1] + uy * (top + 26 * sc)], sc: sc };
     }
     function paintPull(s){
       var g = pullGeo(s), h = g.h, ux = g.ux, uy = g.uy, P = [px(s.pivot), G.py], sc = g.sc, p = s.pull;
@@ -483,19 +488,21 @@
         '<path class="tb2-pmarks" d="' + [0.2, 0.35, 0.5, 0.65, 0.8].map(function(f){ return 'M' + n1(g.stretch + g.body * f) + ' ' + (-bw / 2 + 3) + 'v' + (bw / 2 - 2); }).join('') + '"/>' +
         '<circle class="tb2-pring" cx="' + n1(g.stretch + g.body + 8 * sc) + '" cy="0" r="' + n1(7 * sc) + '"/></g>';
       // the hand holding the ring (a simple fist, drawn in the scale's direction)
-      var hp = at(g.top + 18 * sc);
+      var hp = at(g.top + 26 * sc);
       html += '<g class="tb2-hand" transform="translate(' + n1(hp[0]) + ' ' + n1(hp[1]) + ') rotate(' + n1(ang + 90) + ')"><path d="M' + n1(-13 * sc) + ' ' + n1(4 * sc) + 'q0 -16 13 -16q13 0 13 16v8q0 6 -6 6h-14q-6 0 -6 -6z"/><path class="tb2-hand-l" d="M' + n1(-6 * sc) + ' ' + n1(-8 * sc) + 'v10M0 ' + n1(-10 * sc) + 'v12M' + n1(6 * sc) + ' ' + n1(-8 * sc) + 'v10"/></g>';
       // the force: one whole arrow from the hook (its point of application), its size and label
       var Lf = p.F * g.fpx, tip = at(Lf);
       html += S.arrow(h[0], h[1], ux * Lf, uy * Lf, { cls: 'f-applied', width: 4, head: 12 });
-      // the reading on the scale: F on a pill beside the tube
-      var mid = at(g.str + g.stretch + g.body / 2), nx = -uy, ny = ux, side = nx > 0 ? 1 : -1, off = (bw / 2 + (G.ph ? 30 : 36));
+      // the reading on the scale's face: F on a pill on the tube
+      // (a shallow pull lies close to the stick: its reading moves up off the tube, away from the stick's numbers)
+      var mid = at(g.str + g.stretch + g.body / 2), rw = G.ph ? 44 : 50, lift = Math.max(0, 14 * (1 - 2 * Math.abs(Math.sin(p.ang / RAD))));
+      if(lift){ var nx0 = -uy, ny0 = ux; if(ny0 > 0){ nx0 = -nx0; ny0 = -ny0; } mid = [mid[0] + nx0 * lift * 1.6, mid[1] + ny0 * lift * 1.6]; }
       var rd = F(p.F, 1) + ' N';
-      html += '<g class="tb2-read" transform="translate(' + n1(mid[0] + nx * off * side) + ' ' + n1(mid[1] + ny * off * side) + ')"><rect x="-' + (G.ph ? 23 : 27) + '" y="-12" width="' + (G.ph ? 46 : 54) + '" height="24" rx="12"/><text x="0" y="5" text-anchor="middle">' + rd + '</text></g>';
+      html += '<g class="tb2-read" transform="translate(' + n1(mid[0]) + ' ' + n1(mid[1]) + ')"><rect x="-' + (rw / 2) + '" y="-12" width="' + rw + '" height="24" rx="12"/><text x="0" y="5" text-anchor="middle">' + rd + '</text></g>';
       // the angle between the stick and the pull at the hook
-      var sa = (p.ang <= 90 ? 0 : 180) - s.th * RAD, ea = p.ang - s.th * RAD, ar = G.ph ? 26 : 34;
+      var sa = (p.ang <= 90 ? 0 : 180) + s.th * RAD, ea = p.ang + s.th * RAD, ar = G.ph ? 26 : 34;
       var q0 = [h[0] + ar * Math.cos(sa / RAD), h[1] - ar * Math.sin(sa / RAD)], q1 = [h[0] + ar * Math.cos(ea / RAD), h[1] - ar * Math.sin(ea / RAD)];
-      var th = p.ang <= 90 ? p.ang : 180 - p.ang, mida = (sa + ea) / 2, tl = [h[0] + (ar + (G.ph ? 14 : 16)) * Math.cos(mida / RAD), h[1] - (ar + (G.ph ? 14 : 16)) * Math.sin(mida / RAD) + 4];
+      var th = p.ang <= 90 ? p.ang : 180 - p.ang, mida = ea + (p.ang <= 90 ? 30 : -30), ra = ar + (G.ph ? 14 : 12), tl = [h[0] + ra * Math.cos(mida / RAD), h[1] - ra * Math.sin(mida / RAD) + 4];
       html += '<path class="tb2-angle" d="M' + n1(q0[0]) + ' ' + n1(q0[1]) + 'A' + ar + ' ' + ar + ' 0 0 ' + (p.ang <= 90 ? 0 : 1) + ' ' + n1(q1[0]) + ' ' + n1(q1[1]) + '"/>' +
         '<text class="tb2-anglet" x="' + n1(tl[0]) + '" y="' + n1(tl[1]) + '" text-anchor="middle">' + Math.round(th) + '°</text>';
       if(D.pullHtml !== html){ D.pull.innerHTML = html; D.pullHtml = html; }
@@ -509,11 +516,31 @@
       lo += '<line class="tb2-arm" x1="' + n1(P[0]) + '" y1="' + n1(P[1]) + '" x2="' + n1(foot[0]) + '" y2="' + n1(foot[1]) + '"/>';
       if(vl > 14) lo += '<path class="tb2-ra" d="M' + n1(c1[0]) + ' ' + n1(c1[1]) + 'l' + n1(sg * ux * k9) + ' ' + n1(sg * uy * k9) + 'l' + n1(vx / vl * k9) + ' ' + n1(vy / vl * k9) + '"/>';
       // its name and length, beside its middle, on the side away from the stick
-      // its name beside the line, past the curl arrows (never over them)
-      var ft = clamp((G.R + 34) / vl, 0.5, 0.8), mx = P[0] + vx * ft, my = P[1] + vy * ft, ox = -vy / vl, oy = vx / vl;
-      if(oy > 0){ ox = -ox; oy = -oy; }
-      var lt = 'lever arm ' + F(arm, 2) + ' m', lx = mx + ox * (G.ph ? 14 : 16), ly = my + oy * (G.ph ? 14 : 16) + 4;
-      lo += '<text class="tb2-armt" x="' + n1(lx) + '" y="' + n1(ly) + '" text-anchor="' + (Math.abs(ox) < 0.35 ? 'middle' : ox < 0 ? 'end' : 'start') + '">' + lt + '</text>';
+      // its name: beside the line, past the curl arrows, clear of the stick, the hanging mass, the scale and the hand
+      var lt = 'lever arm ' + F(arm, 2) + ' m', tw = lt.length * (G.ph ? 7.1 : 7.6), hw = tw / 2 + 3, hh = 9, best = null;
+      var mq = s.masses[0], mh = mq ? hookAt(s, mq.x) : null, mz = mq ? bodySize(mq.m, G.k) : null, kn = pullGeo(s).hand;
+      var stx = Math.cos(s.th), sty = -Math.sin(s.th);
+      function clearOf(cx2, cy2){
+        // the box's distance from the stick's line, from the mass's box, from the hand's knob, from the stage's edges
+        var dn = Math.abs((cx2 - P[0]) * sty - (cy2 - P[1]) * stx) - (hw * Math.abs(sty) + hh * Math.abs(stx)) - G.thick / 2;
+        var dm = mq ? Math.max(Math.abs(cx2 - mh[0]) - hw - mz.w / 2, Math.abs(cy2 - (mh[1] + G.str0 + mz.h / 2)) - hh - mz.h / 2 - G.str0 / 2) : 99;
+        var dk = Math.max(Math.abs(cx2 - kn[0]) - hw - 22, Math.abs(cy2 - kn[1]) - hh - 22);
+        var de = Math.min(cx2 - hw - 4, G.W - 4 - cx2 - hw, cy2 - hh - 4, G.benchY - 4 - cy2 - hh);
+        var dr = Math.max(Math.abs(cx2 - mid[0]) - hw - rw / 2, Math.abs(cy2 - mid[1]) - hh - 12) - 4;
+        var da = Math.max(Math.abs(cx2 - tl[0]) - hw - 14, Math.abs(cy2 - (tl[1] - 4)) - hh - 8) - 4;
+        // on a first visit the cue stands to the right of the hand: the name keeps off it
+        var dc = cue && cue.active() ? Math.max(cx2 - hw - (kn[0] + 196), kn[0] + 30 - (cx2 + hw), Math.abs(cy2 - kn[1]) - hh - 22) - 4 : 99;
+        return Math.min(dn - 4, dm - 4, dk, de, dr, da, dc, 30);
+      }
+      [0.3, 0.5, (G.R + 34) / vl, 0.7, 0.9, 1.15, 1.4].forEach(function(f){
+        [-1, 1, -2, 2].forEach(function(sd){
+          var ox = -vy / vl * Math.sign(sd), oy = vx / vl * Math.sign(sd), gp = (hh + 6 + hw * Math.abs(ox) + 3) * Math.abs(sd);
+          var cx2 = P[0] + vx * f + ox * gp, cy2 = P[1] + vy * f + oy * gp, sc2 = clearOf(cx2, cy2) - (Math.abs(f - 0.6) * 4);
+          if(!best || sc2 > best.s) best = { s: sc2, x: cx2, y: cy2 };
+        });
+      });
+      var lx = best.x, ly = best.y + 4, ox = 0;
+      lo += '<text class="tb2-armt" x="' + n1(lx) + '" y="' + n1(ly) + '" text-anchor="middle">' + lt + '</text>';
       if(D.loaHtml !== lo){ D.loa.innerHTML = lo; D.loaHtml = lo; }
       D.loa.setAttribute('data-arm', arm.toFixed(4));
     }
@@ -545,7 +572,7 @@
       }
       if(st.tab === 'ang'){
         pullH = K.handle(layer, { key: 'apphys-tb-pull', label: 'Spring scale: drag to aim the pull and change its size', value: s.pull.ang, min: 15, max: 165, step: 5,
-          at: function(){ return pullGeo(s).ring; }, dir: function(){ var g = pullGeo(s); return Math.atan2(g.uy, g.ux) * RAD + 90; }, chip: false,
+          at: function(){ return pullGeo(s).hand; }, dir: function(){ var g = pullGeo(s); return Math.atan2(g.uy, g.ux) * RAD + 90; }, chip: false,
           pick: function(x, y){ return pickPull(s, x, y); },
           keys: function(v, key){ return keyPull(s, key); },
           valuetext: function(){ return pullText(s); },
@@ -580,13 +607,13 @@
         if(pullH) pullH.place();
         if(fulK){ var a = px(25), b = px(75), y = G.benchY - 5; fulK.place([a, y, b, y]); }
         if(holdB){ holdB.style.left = (G.ph ? 8 : 14) + 'px'; holdB.style.top = n1(G.benchY + (G.two ? 44 : 20)) + 'px'; }
-        trayB.forEach(function(t, i){ var p = trayPos(i), z = bodySize(0.5, G.k * p.sc), w = Math.max(44, z.w + 6); t.place([p.x - w / 2, p.y - 6, w, Math.max(44, z.h + 10)]); t.el.disabled = st.bal.masses.length >= 4; });
+        trayB.forEach(function(t, i){ var p = trayPos(i), z = bodySize(0.5, G.k * p.sc), w = Math.max(44, z.w + 6); var th2 = Math.max(44, z.h + 10); t.place([p.x - w / 2, Math.min(p.y - 6, G.H - th2 - 1), w, th2]); t.el.disabled = st.bal.masses.length >= 4; });
       } else { if(slH.A) slH.A.place(); if(slH.B) slH.B.place(); }
       if(cue && cue.active()) cue.place();
     }
     function massHandle(s, q){
       var h = K.handle(layer, { key: q.id === 2 ? 'apphys-tb-mass' : null, chip: false, label: gLabel(q.m) + ' mass', value: q.x, min: 2, max: 98, step: 1,
-        at: function(){ var hk = hookAt(s, q.x); return [hk[0], hk[1] + G.thick / 2 + G.str0 + rowY(q.ly) + 2]; },
+        at: function(){ var hk = hookAt(s, q.x); return [hk[0], hk[1] + G.thick / 2 + G.str0 + rowY(q.ly) - 4]; },
         pick: function(x, y){ return pickMass(s, q, x, y); },
         keys: function(v, key, big){ return keyMass(s, q, key, big); },
         valuetext: function(){ return massText(s, q); },
@@ -625,17 +652,31 @@
     function pickPull(s, x, y){
       var h = hookAt(s, s.pull.x), dx = x - h[0], dy = h[1] - y, g = pullGeo(s);
       var a = Math.atan2(dy, dx) * RAD - s.th * RAD, ang = clamp(Math.round(a / 5) * 5, 15, 165);
-      var len = Math.hypot(dx, dy), Fv = clamp(Math.round((len - g.str - g.body) / (8 * g.sc) * 10) / 10, 0.2, FMAX);
+      var len = Math.hypot(dx, dy), Fv = clamp(Math.round((len - 26 * g.sc - g.str - g.body) / (8 * g.sc) * 10) / 10, 0.2, FMAX);
+      ang = fitAng(s, ang, Fv);
       s.pull.F = Fv; s.pull.ang = ang;
       return ang;
     }
     function keyPull(s, key){
       var p = s.pull;
-      if(key === 'ArrowLeft'){ p.ang = clamp(p.ang + 5, 15, 165); return p.ang; }
-      if(key === 'ArrowRight'){ p.ang = clamp(p.ang - 5, 15, 165); return p.ang; }
+      if(key === 'ArrowLeft'){ p.ang = fitAng(s, clamp(p.ang + 5, 15, 165), p.F); return p.ang; }
+      if(key === 'ArrowRight'){ p.ang = fitAng(s, clamp(p.ang - 5, 15, 165), p.F); return p.ang; }
       if(key === 'ArrowUp'){ p.F = clamp(Math.round((p.F + 0.1) * 10) / 10, 0.2, FMAX); changed(); return p.ang; }
       if(key === 'ArrowDown'){ p.F = clamp(Math.round((p.F - 0.1) * 10) / 10, 0.2, FMAX); changed(); return p.ang; }
       return null;
+    }
+    /* A pull leaning far out would take the scale and the hand off a narrow stage: the angle stops where they still
+       fit, with the stick at either stop. */
+    function fitAng(s, ang, Fv){
+      var keep = { F: s.pull.F, ang: s.pull.ang, th: s.th };
+      function fits(a){
+        s.pull.F = Fv; s.pull.ang = a;
+        return [-STOP, 0, STOP].every(function(t){ s.th = t; var g = pullGeo(s), e = 30 * g.sc, x = g.hand[0], y = g.hand[1]; return x > e && x < G.W - e && y > e; });
+      }
+      var a = ang;
+      while(!fits(a) && a !== 90) a += a > 90 ? -5 : 5;
+      s.pull.F = keep.F; s.pull.ang = keep.ang; s.th = keep.th;
+      return a;
     }
     function pullText(s){ var p = s.pull, th = p.ang <= 90 ? p.ang : 180 - p.ang; return F(p.F, 1) + ' newtons at ' + th + ' degrees to the stick, ' + (p.ang < 90 ? 'leaning toward the fulcrum' : p.ang > 90 ? 'leaning away from the fulcrum' : 'straight up') + '. Left and right turn it, up and down change its size.'; }
 
@@ -653,7 +694,8 @@
     window.addEventListener('pointercancel', function(){ ptrUpT = now(); }, true);
     function byPointer(){ return now() - ptrUpT < 120; }
     function endDrag(){ dragging = false; letGo(byPointer() ? 140 : 650); }
-    function letGo(ms){ clearTimeout(relT); relT = setTimeout(function(){ var s = st[st.tab]; if(st.tab === 'ine' || s.lock) { kick(); return; } dragging = false; s.held = false; kick(); }, ms); }
+    // let go only once the supports are all the way up (the stick is level), so a quick touch never leaves it askew
+    function letGo(ms){ clearTimeout(relT); relT = setTimeout(function go(){ var s = st[st.tab]; if(st.tab === 'ine' || s.lock) { kick(); return; } if(s.postT < 1 && s.held){ relT = setTimeout(go, 40); return; } dragging = false; s.held = false; kick(); }, ms); }
     function grabStick(){ var s = st[st.tab]; s.held = true; kick(); }
     function changed(){ var s = st[st.tab]; paintStick(); paintCause(); kick(); }
     function addMass(m, i){
@@ -946,14 +988,14 @@
     }
     if(kit){
       ['bal', 'ang', 'ine'].forEach(function(k){
-        cues[k] = K.cue(layer, { key: 'apphys-torque-balance-' + k, text: CUE[k], side: k === 'ang' ? 'right' : 'below', at: function(){
+        cues[k] = K.cue(layer, { key: 'apphys-torque-balance-' + k, text: CUE[k], side: k === 'ang' ? 'right' : k === 'ine' ? 'above' : 'below', at: function(){
           if(!G) return [0, 0];
           if(k === 'bal'){ var s = st.bal, q = s.masses.filter(function(m){ return m.id === 2; })[0] || s.masses[0]; if(!q) return [G.W / 2, G.py]; var hk = hookAt(s, q.x); return [hk[0], hk[1] + G.thick / 2 + G.str0 + rowY(q.ly) + bodySize(q.m, G.k).h + 6]; }
-          if(k === 'ang'){ var r = pullGeo(st.ang).ring; return [r[0] + 14, r[1]]; }
-          var p = sliderPt(1, 1); return [p[0], p[1] + 12];
+          if(k === 'ang'){ var r = pullGeo(st.ang).hand; return [r[0] + 14, r[1]]; }
+          var p = sliderPt(1, 1); return [p[0], p[1] - 46];
         } });
       });
-      cue = { show: function(){ return cues[st.tab].show(); }, hide: function(u){ cues[st.tab].hide(u); }, place: function(){ cues[st.tab].place(); }, active: function(){ return cues[st.tab].active(); } };
+      cue = { show: function(){ var r = cues[st.tab].show(); if(r && st.tab === 'ang' && G && D.loa) paintStick(); return r; }, hide: function(u){ cues[st.tab].hide(u); }, place: function(){ cues[st.tab].place(); }, active: function(){ return cues[st.tab].active(); } };
     }
     function hideCue(used){ Object.keys(cues).forEach(function(k){ if(cues[k].active()) cues[k].hide(used && k === st.tab); }); }
     var tour = null, tours = {};

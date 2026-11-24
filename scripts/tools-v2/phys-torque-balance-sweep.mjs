@@ -61,7 +61,9 @@ async function open(o) {
 const W4 = w => String(w).padStart(4, '0') + (DARK ? 'd' : 'l');
 const shot = async (page, name) => { if (!SHOTS) return; const narrow = (await page.viewportSize()).width < 900; return narrow ? page.locator('.tb2').screenshot({ path: join(SHOTS, name) }) : page.screenshot({ path: join(SHOTS, name) }); };
 const tab = async (page, v) => { await page.click(`.tk2-tab[data-v=${v}]`); await page.waitForTimeout(450); };
-const settle = page => page.waitForFunction(() => { const t = document.querySelector('.tb2').__tb, s = t.st[t.st.tab]; return t.st.tab === 'ine' ? ['ready', 'done'].includes(t.st.ine.phase) : !s.held && s.postT === 0 && s.om === 0 && !s.fly.length; }, null, { timeout: 8000 }).then(() => page.waitForTimeout(80));
+/* page.waitForFunction evaluates a string, which the page's CSP refuses (no unsafe-eval): poll with evaluate instead. */
+async function until(page, fn, arg, ms = 8000) { const t0 = Date.now(); for (;;) { if (await page.evaluate(fn, arg)) return; if (Date.now() - t0 > ms) throw new Error('timed out: ' + fn.toString().slice(0, 80)); await page.waitForTimeout(40); } }
+const settle = page => until(page, () => { const t = document.querySelector('.tb2').__tb, s = t.st[t.st.tab]; return t.st.tab === 'ine' ? ['ready', 'done'].includes(t.st.ine.phase) : !s.held && s.postT === 0 && s.om === 0 && !s.fly.length; }).then(() => page.waitForTimeout(80));
 /* Move a mass (by index) to a mark with a real pointer drag; the stick is held level while it moves. */
 async function dragMass(page, i, cm, o = {}) {
   const k = page.locator('.tb2-mk .tk2-knob').nth(i), b = await k.boundingBox(), box = await page.locator('.tb2-scene').boundingBox();
@@ -77,6 +79,8 @@ const probe = (o) => {
   const R = e => { const r = e.getBoundingClientRect(); return { l: r.left, t: r.top, r: r.right, b: r.bottom, w: r.width, h: r.height }; };
   const vis = e => e && e.getClientRects().length && getComputedStyle(e).visibility !== 'hidden' && !e.closest('[hidden]') && getComputedStyle(e).display !== 'none' && (e.textContent || '').trim() !== '';
   const q = s => [...document.querySelectorAll(s)].filter(vis), out = [];
+  const shown = e => e && e.getClientRects().length && getComputedStyle(e).visibility !== 'hidden' && !e.closest('[hidden]');
+  const qa = s => [...document.querySelectorAll(s)].filter(shown);
   const T = document.querySelector('.tb2').__tb, st = T.st, tabv = st.tab, S = R(document.querySelector('.tb2-scene'));
   const inS = (x, name, tol = 0.6) => { if (x.l < S.l - tol || x.r > S.r + tol || x.t < S.t - tol || x.b > S.b + tol) out.push('clipped: ' + name); };
   const gap = (a, c) => Math.max(c.l - a.r, a.l - c.r, c.t - a.b, a.t - c.b);
@@ -87,8 +91,8 @@ const probe = (o) => {
   texts.forEach(x => { const fs = parseFloat(getComputedStyle(x.el).fontSize) * (x.el.ownerSVGElement.getBoundingClientRect().width / x.el.ownerSVGElement.viewBox.baseVal.width); if (fs < 10.95) out.push('text under 11 px: ' + x.n + ' ' + fs.toFixed(1)); inS(x.r, x.n); });
   const tags = q('.tb2 .tk2-tag').map(e => ({ n: 'tag "' + e.textContent + '"', r: R(e) }));
   const reads = q('.tb2-read').map(e => ({ n: 'reading', r: R(e) }));
-  const knobs = q('.tb2 .tk2-handle .tk2-dot, .tb2 .tk2-drag .tk2-dot').map(e => ({ n: 'knob', r: R(e), el: e }));
-  const btns = q('.tb2-hold').map(e => ({ n: 'hold button', r: R(e) }));
+  const knobs = qa('.tb2 .tk2-handle .tk2-dot, .tb2 .tk2-drag .tk2-dot').map(e => ({ n: 'knob', r: R(e), el: e }));
+  const btns = qa('.tb2-hold').map(e => ({ n: 'hold button', r: R(e) }));
   const trays = [...document.querySelectorAll('.tb2-traytap')].filter(e => e.getClientRects().length).map(e => ({ n: 'tray tap', r: R(e) }));
   [...tags, ...reads, ...btns, ...trays].forEach(x => inS(x.r, x.n));
   knobs.forEach(x => inS(x.r, 'knob', 2));
@@ -105,8 +109,10 @@ const probe = (o) => {
   const n2 = x => x.toFixed(2), F3 = x => x.toFixed(3);
   if (tabv !== 'ine') {
     const s = st[tabv], g = T.geo(), stick = R(document.querySelector('.tb2-wood'));
-    const others = q('.tb2-mass, .tb2-pullg, .tb2-standg, .tb2-tray').map(e => ({ n: e.getAttribute('class'), r: R(e) }));
-    others.forEach(x => { if (area(x.r) > area(stick)) out.push('the stick is not the largest object (' + x.n + ')'); });
+    // the fulcrum's stand is a thin rod under the stick (taller than wide on a phone, where the masses need room to hang), not a competing object
+    const others = q('.tb2-mass, .tb2-pullg, .tb2-tray').map(e => ({ n: e.getAttribute('class'), r: R(e) }));
+    // the stick is the longest thing drawn (a stand's box is mostly empty wall, so sizes are compared by length)
+    others.forEach(x => { if (Math.max(x.r.w, x.r.h) > Math.max(stick.w, stick.h)) out.push('the stick is not the largest object (' + x.n + ')'); });
     // torques from the drawn hooks (each mass's data-x and the drawn fulcrum), with the stick level
     const piv = s.pivot, gg = 9.8, ms = [...document.querySelectorAll('.tb2-mass')].map(e => ({ x: +e.getAttribute('data-x'), m: s.masses.find(q => String(q.id) === e.getAttribute('data-id')).m }));
     let ccw = 0, cw = 0;
@@ -141,9 +147,9 @@ const probe = (o) => {
       if (Math.abs(L2 - arm) > 0.004) out.push('the drawn lever arm is ' + L2.toFixed(3) + ' m, the label ' + arm.toFixed(3));
     }
   } else {
-    const s = st.ine, arms = q('.tb2-armr').map(R), wts = q('.tb2-wt').map(R);
-    const armW = Math.max(...arms.map(a => a.w));
-    wts.forEach(w => { if (w.w > armW * 2) out.push('a weight is larger than the stand’s arm'); });
+    const s = st.ine, arms = qa('.tb2-armr').map(R), wts = qa('.tb2-wt').map(R);
+    const armW = 2 * T.geo().arm;   // the arm's length (it turns in depth, so its drawn width changes)
+    wts.forEach(w => { if (w.w > armW) out.push('a weight is larger than the stand’s arm'); });
     const I = d => 0.0015 + 2 * 0.25 * (d / 100) ** 2, ra = I(s.dB) / I(s.dA), more = ra >= 1 ? 'B' : 'A', rr = ra >= 1 ? ra : 1 / ra;
     if (!causeEl.classList.contains('is-take')) {
       if (!cause.includes('A ' + s.dA + ' cm, B ' + s.dB + ' cm out')) out.push('cause line does not name the sliders: ' + cause);
@@ -210,9 +216,9 @@ async function runSweep(w, h) {
   // Inertia: ready, then a race to the end
   await tab(page, 'ine'); await check('inertia ready'); await shot(page, `${W4(w)}-3-ine-ready.png`);
   await page.focus('.tb2 .tk2-handle:not(.is-quiet) .tk2-knob'); await page.keyboard.press('End');
-  await page.waitForFunction(() => document.querySelector('.tb2').__tb.st.ine.phase === 'race', null, { timeout: 5000 });
+  await until(page, () => document.querySelector('.tb2').__tb.st.ine.phase === 'race', null, 5000);
   await page.waitForTimeout(600); await check('inertia racing'); await shot(page, `${W4(w)}-3-ine-racing.png`);
-  await page.waitForFunction(() => document.querySelector('.tb2').__tb.st.ine.phase === 'done', null, { timeout: 9000 });
+  await until(page, () => document.querySelector('.tb2').__tb.st.ine.phase === 'done', null, 9000);
   await page.waitForTimeout(200); await check('inertia done'); await shot(page, `${W4(w)}-3-ine-done.png`);
   await page.focus('.tb2 .tk2-handle.is-quiet .tk2-knob'); await page.keyboard.press('End'); await page.waitForTimeout(150); await check('inertia rewinding, same I');
   // Test yourself: the drill on the same frame
@@ -272,12 +278,14 @@ const frameProbe = () => {
 };
 async function sample(page, label, ms) {
   // read the drawn state after every animation frame for ms milliseconds
-  const res = await page.evaluate(async ([fp, ms]) => {
-    const f = new Function('return (' + fp + ')')(), out = [], seen = new Set(); let n = 0;
+  // the probe goes in as an inline script (the CSP allows those, not eval)
+  if (!(await page.evaluate(() => !!window.__fp))) await page.addScriptTag({ content: 'window.__fp = ' + frameProbe.toString() + ';' });
+  const res = await page.evaluate(async ([ms]) => {
+    const f = window.__fp, out = [], seen = new Set(); let n = 0;
     const t0 = performance.now();
     await new Promise(done => { function tick() { const r = f(); n++; seen.add(r.k); r.out.forEach(m => out.push(m)); if (performance.now() - t0 < ms) requestAnimationFrame(tick); else done(); } requestAnimationFrame(tick); });
     return { out: [...new Set(out)], n, distinct: seen.size };
-  }, [frameProbe.toString(), ms]);
+  }, [ms]);
   states += res.n; checks += res.n * 6;
   res.out.forEach(m => fails.push(`frames ${label}: ${m}`));
   return res;
