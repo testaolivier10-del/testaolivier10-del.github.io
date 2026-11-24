@@ -266,11 +266,11 @@
         tanV: svg.querySelector('.mg2-tan.is-v'), tanA: svg.querySelector('.mg2-tan.is-a'), cur: svg.querySelector('.mg2-cur'), dots: { x: svg.querySelector('.mg2-dot.s1'), v: svg.querySelector('.mg2-dot.s2'), a: svg.querySelector('.mg2-dot.s3') },
         words: svg.querySelector('.mg2-words') };
       D.ping.querySelectorAll('path').forEach(function(pth, k){ var r = 9 + k * 7, x0 = D.detF[0] + 2, y0 = D.detF[1]; pth.setAttribute('d', 'M' + n1(x0 + r * 0.42) + ' ' + n1(y0 - r * 0.9) + 'A' + r + ' ' + r + ' 0 0 1 ' + n1(x0 + r * 0.42) + ' ' + n1(y0 + r * 0.9)); });
-      lastPts = { x: '', v: '', a: '' }; lastWords = '';
+      lastPts = { x: '', v: '', a: '' }; lastWords = ''; lastKey = ''; lastS = null; wordsCache = null; areaKey = '';
     }
 
     /* ---------------------------------------------------------------- painting a frame */
-    var lastPts = { x: '', v: '', a: '' }, lastWords = '';
+    var lastPts = { x: '', v: '', a: '' }, lastWords = '', lastKey = '', lastS = null, wordsCache = null, areaKey = '', areaDx = 0;
     function arrowPath(x0, y, len, head){
       if(Math.abs(len) < 0.5) return '';
       var s = len > 0 ? 1 : -1, hl = Math.min(head, Math.abs(len)), x1 = x0 + len, xb = x1 - s * hl;
@@ -308,6 +308,8 @@
         var w = txt.length * 13 * 0.58 + 4;
         if(!right && xx - w < 4){ right = true; xx = cx + len + 8 + (hd ? 16 : 0); }
         if(right && xx + w > g.W - 4){ right = false; xx = cx + Math.min(len, 0) - 8 - (hd ? 16 : 0); }
+        var q = n1(xx) + '|' + n1(y + 4.5) + '|' + right + '|' + txt;
+        if(el.__q === q) return; el.__q = q;
         el.setAttribute('x', n1(xx)); el.setAttribute('y', n1(y + 4.5)); el.setAttribute('text-anchor', right ? 'start' : 'end');
         if(el.textContent !== txt) el.textContent = txt;
       }
@@ -316,12 +318,16 @@
       var measuring = (st.tab === 'drive' && st.drv.rec) || !!st.play;
       D.ping.classList.toggle('is-on', measuring && !red());
       D.led.classList.toggle('is-on', measuring);
-      // the traces (rebuilt only when what is drawn changes)
-      ['x', 'v', 'a'].forEach(function(k){
-        var pts = '';
-        if(s){ var arr = []; for(var i = 0; i < s.t.length; i++) arr.push(n1(gx(s.t[i])) + ',' + n1(gy(k, s[k][i]))); pts = arr.join(' '); }
-        if(pts !== lastPts[k]){ D.tr[k].setAttribute('points', pts); lastPts[k] = pts; }
-      });
+      // the traces (rebuilt only when what is drawn changes: a new point, a new run)
+      var key = s ? (s === lastS ? 'same' : 'new') + ':' + s.t.length + ':' + s.v[s.v.length - 1] + ':' + s.a[s.a.length - 1] + ':' + s.x[s.x.length - 1] : 'none';
+      if(key !== lastKey || s !== lastS){
+        lastKey = key; lastS = s; wordsCache = null;
+        ['x', 'v', 'a'].forEach(function(k){
+          var pts = '';
+          if(s){ var arr = []; for(var i = 0; i < s.t.length; i++) arr.push(n1(gx(s.t[i])) + ',' + n1(gy(k, s[k][i]))); pts = arr.join(' '); }
+          if(pts !== lastPts[k]){ D.tr[k].setAttribute('points', pts); lastPts[k] = pts; }
+        });
+      }
       // the cursor, its dots, the tangents and the area at the drawn moment
       var have = !!s, cxg = n1(gx(t));
       D.cur.setAttribute('x1', cxg); D.cur.setAttribute('x2', cxg); D.cur.style.display = have ? '' : 'none';
@@ -335,20 +341,24 @@
         el.setAttribute('data-slope', slope.toFixed(4));
       }
       tan(D.tanV, 'x', xNow, vNow); tan(D.tanA, 'v', vNow, aNow);
-      var areaD = '', dxArea = 0;
-      if(have && t > 0.02){
+      var areaD = '', dxArea = 0, ak = lastKey + '|' + t.toFixed(4);
+      if(ak === areaKey){ areaD = null; dxArea = areaDx; }
+      else if(have && t > 0.02){
         var pts2 = ['M' + n1(gx(0)) + ' ' + n1(gy('v', 0))];
         for(var i2 = 0; i2 < s.t.length && s.t[i2] < t; i2++) pts2.push('L' + n1(gx(s.t[i2])) + ' ' + n1(gy('v', s.v[i2])));
         pts2.push('L' + cxg + ' ' + n1(gy('v', vNow)) + 'L' + cxg + ' ' + n1(gy('v', 0)) + 'Z');
         areaD = pts2.join('');
         dxArea = MG.areaTo(s.t, s.v, 0, t);
       }
-      D.area.setAttribute('d', areaD); D.area.setAttribute('data-area', dxArea.toFixed(4));
+      if(areaD !== null){ areaKey = ak; areaDx = dxArea; D.area.setAttribute('d', areaD); D.area.setAttribute('data-area', dxArea.toFixed(4)); }
       words(s, t, vNow, aNow, dxArea);
       paintAria(s, t, x, vNow, aNow);
     }
     /* The words on the graphs (one string; set only when it changes). */
     function words(s, t, vNow, aNow, dxArea){
+      var wk = lastKey + '|' + t.toFixed(3) + '|' + vNow.toFixed(4) + '|' + aNow.toFixed(4);
+      if(wk === wordsCache) return;
+      wordsCache = wk;
       var g = G, P = placer(), out = [], fs = g.phone ? 12 : 12.5;
       // a word never sits on a drawn line: the traces, the tangents, the cursor
       var lines = [];
@@ -359,14 +369,19 @@
         lines.push({ k: 'v', f: function(tt){ return Math.abs(tt - t0) <= 1.1 ? gy('v', vNow + aNow * (tt - t0)) : null; } });
         if(match) lines.push({ k: match.kind, f: function(tt){ return gy(match.kind, MG.plAt(match.pts, tt)); }, w: 6 });
       }
+      function yAt(L2, px){
+        var c = L2.c || (L2.c = {}), key = px | 0;
+        if(!(key in c)) c[key] = L2.f((key - g.L) / g.pw * WIN);
+        return c[key];
+      }
       function onLine(b){
         var cxg = gx(t);
         if(s && b[0] - 3 < cxg && b[2] + 3 > cxg && b[1] < g.axisY && b[3] > g.top.x) return true;
         for(var i = 0; i < lines.length; i++){
           var L2 = lines[i], top = g.top[L2.k], w = L2.w || 3;
           if(b[3] < top || b[1] > top + g.ph) continue;
-          for(var px = Math.max(g.L, b[0] - 2); px <= Math.min(g.L + g.pw, b[2] + 2); px += 2){
-            var yy = L2.f((px - g.L) / g.pw * WIN);
+          for(var px = Math.max(g.L, b[0] - 2); px <= Math.min(g.L + g.pw, b[2] + 2); px += 3){
+            var yy = yAt(L2, px);
             if(yy != null && yy >= b[1] - w && yy <= b[3] + w) return true;
           }
         }
@@ -476,6 +491,8 @@
       if(busy()) raf = requestAnimationFrame(loop); else lastT = 0;
     }
     function fadeBox(){ box.classList.remove('is-fade'); void box.offsetWidth; box.classList.add('is-fade'); }
+    // a new run: the old traces give way with a short fade of the traces alone (cheap on a phone)
+    function fadeTraces(){ box.classList.remove('is-fadetr'); void box.offsetWidth; box.classList.add('is-fadetr'); }
     function stopAll(){
       if(raf){ cancelAnimationFrame(raf); raf = 0; }
       lastT = 0;
@@ -592,7 +609,7 @@
         // a new run starts from where the cart is drawn now; the old run (or the example) fades out
         var x0 = cartX(), had = !!series();
         newDrive(x0); d.example = false;
-        if(had) fadeBox();
+        if(had) fadeTraces();
         if(o.onStart) o.onStart();
       }
       d.hold = !byKey;
@@ -693,7 +710,7 @@
     var L = lab({ kit: kit, availH: availH,
       onStart: function(){ cause.take(null); },
       onState: function(){ paintCause(); paintButtons(); },
-      onFrame: function(){ paintCause(); paintRef(); },
+      onFrame: function(){ paintCause(); if(ref.offsetParent) paintRef(); },
       onDone: function(kind){ paintButtons(); if(kind === 'drive' && L.st.tab === 'drive' && !L.st.play){ takeaway(); } else if(kind === 'set') say(cause.text()); } });
     stage.appendChild(L.el);
     if(tabs) tabs.el.querySelectorAll('.tk2-tab').forEach(function(b){ b.setAttribute('aria-controls', L.el.id); });
@@ -728,10 +745,15 @@
     }
 
     /* ---------------------------------------------------- the cause line: read from the drawn frame */
+    var causeQ = '';
     function paintCause(){
       if(!kit) return;
       var st = L.st, g = L.geo(); if(!g) return;
       if(cause.el.classList.contains('is-take')) return;
+      var s0 = L.series(), vq = s0 ? L.nowVA() : null;
+      var q = st.tab + '|' + (s0 ? [s0 === L.example, F(vq.v, 1), F(vq.a, 1), F(vq.t, 1), s0.exact].join(',') : '-') + '|' + (st.tab === 'set' ? [st.set.v0, st.set.a, st.set.segs.length, st.set.x0].join(',') : '');
+      if(q === causeQ && cause.el.childNodes.length) return;
+      causeQ = q;
       if(st.tab === 'drive'){
         var s = L.series();
         if(!s){ cause.set([{ t: 'Drag the cart', role: 'ink' }]); cause.el.setAttribute('data-res', ''); return; }

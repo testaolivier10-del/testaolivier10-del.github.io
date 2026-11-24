@@ -73,6 +73,7 @@
 .mg2-scene.is-match{flex:none;min-height:0;border-radius:14px;}
 .mg2-svg,.cd-fig .mg2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;max-width:none;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
 .mg2-scene.is-fade .mg2-svg{animation:mg2-fade .3s ease-out;}
+.mg2-scene.is-fadetr .mg2-tr,.mg2-scene.is-fadetr .mg2-area{animation:mg2-fade .3s ease-out;}
 @keyframes mg2-fade{from{opacity:.25;}to{opacity:1;}}
 .mg-root .mg2-wall1{stop-color:var(--mg2-wall1);} .mg-root .mg2-wall2{stop-color:var(--mg2-wall2);}
 .mg-root .mg2-t1{stop-color:var(--mg2-t1);} .mg-root .mg2-t2{stop-color:var(--mg2-t2);}

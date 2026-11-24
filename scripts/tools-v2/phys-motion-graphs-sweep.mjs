@@ -353,6 +353,7 @@ async function runFrames(w, h) {
   else {
     await page.mouse.move(mk.x + mk.width / 2, mk.y + mk.height / 2); await page.mouse.down(); await page.mouse.move(mk.x + ppm, mk.y + mk.height / 2, { steps: 10 }); await page.mouse.up();
     await page.waitForTimeout(400);
+    await page.evaluate(() => { const C = window.ApPhysCore, f = C.toolResult; window.__recs = []; C.toolResult = function(slug, items){ (items || []).forEach(i => window.__recs.push(i)); return f.apply(this, arguments); }; });
     await page.click('.ls-drill button:has-text("Check")'); await page.waitForTimeout(200);
     const early = await page.evaluate(() => (document.querySelector('.ls-drill .cd-fb') || {}).textContent || '');
     checks++; if (!/Keep driving|whole 10 s/.test(early)) fails.push('Match: Check mid run did not ask to keep driving: ' + early);
@@ -361,6 +362,19 @@ async function runFrames(w, h) {
     const fb = await page.evaluate(() => (document.querySelector('.ls-drill .cd-fb') || {}).textContent || '');
     checks++; if (!/Match \d+%/.test(fb)) fails.push('Match: no score after a run: ' + fb);
     console.log('  Match feedback: ' + fb.slice(0, 120));
+    // Show the answer: the cart drives the target, and its graph lies on it
+    await page.click('.ls-drill button:has-text("Show the answer")').catch(() => {});
+    await page.waitForTimeout(10800);
+    const sc = await page.evaluate(() => { const L = document.querySelector('.mg2-mfig').__mg.lab, s = L.series(), M = window.ApPhysMath.motionGraphs, tg = L.st && document.querySelector('.mg2-target') ? null : null; return { end: s.t[s.t.length - 1], n: s.t.length }; });
+    const fit = await page.evaluate(() => { const svg = document.querySelector('.mg2-mfig svg'), tp = svg.querySelector('.mg2-target').getAttribute('points').split(' ').map(p => p.split(',').map(Number)), cls = svg.querySelector('.mg2-pbg.is-target') ? [...svg.querySelectorAll('.mg2-pbg')].indexOf(svg.querySelector('.mg2-pbg.is-target')) : 0;
+      const tr = svg.querySelectorAll('.mg2-tr')[cls].getAttribute('points').split(' ').filter(Boolean).map(p => p.split(',').map(Number));
+      let worst = 0; tr.forEach(([x, y]) => { for (let i = 0; i < tp.length - 1; i++) if (x >= tp[i][0] - 0.01 && x <= tp[i + 1][0] + 0.01) { const f = (x - tp[i][0]) / ((tp[i + 1][0] - tp[i][0]) || 1), yt = tp[i][1] + f * (tp[i + 1][1] - tp[i][1]); worst = Math.max(worst, Math.abs(y - yt)); break; } }); return worst; });
+    checks++; if (fit > 2.5) fails.push('Match: the shown answer is off its target by ' + fit.toFixed(1) + ' px');
+    // the record (once the step is done): motion-graphs:match:<target>, the first try (wrong here)
+    const rec = await page.evaluate(() => (window.__recs || []).map(r => r.id + ':' + r.correct).join(','));
+    checks++; if (!/^motion-graphs:match:[a-z-]+:false$/.test(rec)) fails.push('Match: recorded ' + rec);
+    console.log('  Match recorded ' + rec);
+    console.log('  Match answer shown: drawn trace within ' + fit.toFixed(2) + ' px of the target, run ' + JSON.stringify(sc));
   }
   // reduced motion: a Set run shows its end at once
   const rm = await open({ w, h, reduced: true });
