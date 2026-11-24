@@ -341,6 +341,8 @@
       }
       function busy(){ if(LF.tw) return true; for(var g = 0; g < 2; g++) for(var i = 0; i < P[g].length; i++){ var p = P[g][i]; if(p.st !== 'grown') return true; for(var k in p.tw) return true; } return false; }
       var raf = 0;
+      // repaint now (a change just began): the plants' states and every label read from them stay in step
+      function paintAll(){ if(!G) return; P.forEach(function(a){ a.forEach(function(p){ if(p.el) paintPlant(p); }); }); paint(); }
       function kick(){ if(calm()){ if(raf){ cancelAnimationFrame(raf); raf = 0; } frame(); fade(); return; } if(!raf) raf = requestAnimationFrame(frame); }
       function fade(){ sceneBox.classList.remove('is-fade'); void sceneBox.offsetWidth; sceneBox.classList.add('is-fade'); }
       function step(p, t){
@@ -433,7 +435,7 @@
           morph(g, arrange(g, slots));
         });
         lastAct = { kind: 'n', from: from, to: n, was: verdictNow() };
-        paintN();
+        paintN(); paintAll();
         kick();
       }
       function newSample(){
@@ -454,7 +456,7 @@
           morph(g, a.map(function(p, i){ return { p: p, z: list[i].z }; }), { dur: 700, wave: true });
         });
         lastAct = { kind: 'sample', was: was, n: St.n };
-        hMean.value(Mo[1].m); hSd.value(Mo[1].s); hMean.before(null);
+        hMean.value(Mo[1].m); hSd.value(Mo[1].s); hMean.before(null); paintAll();
         kick();
       }
       function zRange(g){ var a = active(g), lo = 0, hi = 0; a.forEach(function(p){ lo = Math.min(lo, p.z); hi = Math.max(hi, p.z); }); return [lo, hi]; }
@@ -642,12 +644,14 @@
           morph(g, slots, { dur: 520 });
         });
         lastAct = null; hMean.value(Mo[1].m); hSd.value(Mo[1].s); paintN(); cause.take(null);
-        leafFor(); kick();
+        leafFor(); paintAll(); kick();
       }
       function fresh(){ build(); lastWH = ''; layoutNow(true); settled(); }
-      nBtns.forEach(function(b){ b.addEventListener('click', function(){ hideCue(true); tourDid('n'); cause.take(null); setN(+b.getAttribute('data-n'), true); }); });
-      bNew.addEventListener('click', function(){ hideCue(true); cause.take(null); newSample(); });
-      bReset.addEventListener('click', function(){ hideCue(true); reset(); });
+      // a button under the picture on a phone: bring the trays back into view so the change is seen
+      function showPic(){ var r = sceneBox.getBoundingClientRect(); if(r.top < 0 && window.scrollBy) window.scrollBy({ top: r.top - 8, behavior: calm() ? 'auto' : 'smooth' }); }
+      nBtns.forEach(function(b){ b.addEventListener('click', function(){ hideCue(true); tourDid('n'); cause.take(null); showPic(); setN(+b.getAttribute('data-n'), true); }); });
+      bNew.addEventListener('click', function(){ hideCue(true); cause.take(null); showPic(); newSample(); });
+      bReset.addEventListener('click', function(){ hideCue(true); showPic(); reset(); });
 
       /* ---------------------------------------------------- layout */
       var lastWH = '';

@@ -138,3 +138,36 @@ On the picture: 2 tray names, the board's numbers (5 to 30 and "cm"; 10, 20, 30 
 
 ## Checks run (2026-11-23)
 See the bottom of this file ("Final run").
+
+### Final run (2026-11-23)
+- `node --test scripts/test/apbio-*.test.mjs` (74 pass), `check-apbio-content` (0 failing), `build-apbio --check`,
+  `check-site` (no broken references), `check-weight --check` (623 budgets within range); `scripts/check-tool-use.mjs`
+  with a local copy of its list: the page sends tool-open, tool-touch (explore), tool-mode (quiz), tool-use, nothing
+  under automation.
+- Sweep, one process per width, light and dark: **800 passed, 0 failed** (81 a width at 360 to 600, 79 at 768 to 1920:
+  14 landmark states, the first visit with its cue, Challenges and Problems; at 360 to 600 also the shade mean at
+  every 0.5 cm from 4 to 20 cm at 5 and at 20 plants). Each state checks clipping, 4 px between labels (and from the
+  error bars' ends), text and leaves at least 11 px and 8 px, knobs 44 px and 30 px apart, sideways scroll, the phone
+  cause line, and that every number agrees with the plants as drawn.
+- Frames: **47 passed, 0 failed** (1,260 frames at 390 and 1,337 at 1440, every one agreeing): a real drag of the
+  mean out and back past the other tray, keys, the SD drag, 5 to 20 and back, a change on top of one still playing,
+  New sample at 20 and 5, a drag while plants sprout, Start over, leaving to Test yourself mid change and back, a real
+  touch drag at 390 (the mean moves, the page does not scroll), reduced motion (at once, with the cross fade).
+- Challenges run by hand: all four meet with their sentences; Problems unchanged.
+- Perf, CPU x4, the same hour as the flagship (load 5.4 on the machine): the mean drag at 20 plants median 16.7 ms,
+  p95 16.8 ms at 390 and 33.4 ms at 1440; the spread drag p95 16.8 ms at both; 5 to 20 plants sprouting p95 33 ms at
+  390 and 50 ms at 1440. The flagship's fertilizer drag in the same run: median 33.4 ms, p95 83 ms at 390 and 317 ms
+  at 1440.
+- Preview: `/mnt/user-data/outputs/bio-confidence-intervals-v2/index.html`; shots in `shots/` (sweep states at 390,
+  768 and 1440 light and dark, Challenges and Problems, mid animation `mid-*-sprout`, `mid-*-sample`,
+  `mid-*-startover`).
+
+## Not done, and what I am not happy with
+- No real phone, no screen reader pass, no real students; the independent review is still to come.
+- At 20 plants on a phone each tray is a dense row of small seedlings (leaves 8 px); still drawn plants, not dots.
+- While plants sprout, the leaves of every plant resize toward the new spacing at the same time; mid change the
+  plants look thin for about half a second.
+- The clipboard's bars start at 0 cm (honest), so a small gap at 10 plants is only a few pixels on a phone; the
+  cause line carries the number.
+- The sprouting change at 1440 under CPU x4 reached p95 50 ms (the budget's edge) on a loaded machine.
+- The overlap tint sits between the two error bars only, so on narrow clipboards it is a short strip.
