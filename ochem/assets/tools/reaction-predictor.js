@@ -1136,7 +1136,7 @@
     [false, true].forEach(function(rot){
       var W0 = viewOf(S.view), a0 = Infinity, a1 = -Infinity, c0 = Infinity, c1 = -Infinity;
       W0.rot = rot;
-      S.frames.forEach(function(F, fi){ S.m.atoms.forEach(function(a){ if(fi === 0 && a.rg) return; var q = proj(F.P[a.id], W0), r = radOf(a) * q.k + (a.el === 'H' ? 0.05 : 0.12);
+      S.frames.forEach(function(F, fi){ S.m.atoms.forEach(function(a){ if(fi === 0 && a.rg) return; var q = proj(F.P[a.id], W0), r = radOf(a) * q.k + (a.el === 'H' ? 0.05 : (F.LP[a.id] || F.Q[a.id]) ? 0.24 : 0.12);   // room for lone pairs and charge badges
         a0 = Math.min(a0, q.x - r); a1 = Math.max(a1, q.x + r); c0 = Math.min(c0, q.y - r); c1 = Math.max(c1, q.y + r); }); });
       var l = Math.min(b.w / (a1 - a0), b.h / (c1 - c0), cap);
       // turned only when that draws the molecule clearly bigger
