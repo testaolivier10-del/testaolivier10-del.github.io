@@ -209,3 +209,34 @@ From the hands-on tool audit (`docs/tool-audit-2026-11.md`), for the accuracy re
 - **Milgram, orders by telephone.** The social influence tool shows 22.5% (9 of 40; Milgram, 1974). Several
   textbooks print 20.5%. Left as it is.
 
+
+## neuron-v2: teaching simplifications in the rebuilt neuron (open, 2026-11-23)
+
+From `docs/tools-v2-neuron-brief.md`, for the accuracy reviewer:
+
+- **Myelin speed.** The Myelin tab draws a myelinated stretch 7.5 times faster than a bare one (0.12 ms against
+  0.9 ms); real myelinated axons conduct about 50 to 100 times faster than unmyelinated ones. "?" says so. A
+  stripped stretch still conducts slowly here; in multiple sclerosis conduction can also fail (also in "?").
+- **Excitatory minus inhibitory.** Inputs are added as one push with one time course (net mV); real EPSPs and IPSPs
+  differ in shape and timing. Fair at AP® depth (Myers: excitatory minus inhibitory must pass threshold)?
+- **Ions.** Two Na⁺ and two K⁺ are drawn crossing per spike; the K⁺ channel is drawn open from 0.5 to 3.2 ms after
+  threshold, the Na⁺ channel locked (inactivated) until 2 ms. Check the wording "Na⁺ locked".
+- **Colours.** GABA is drawn pink (inhibitory); the other seven green, although dopamine, serotonin and
+  norepinephrine can excite or inhibit depending on the receptor.
+## brain-map-v2: the redrawn brain map (open, 2026-11-23)
+
+From the tools v2 rebuild of the Brain map (`docs/tools-v2-brain-map-brief.md`), for a teacher or reviewer:
+
+- **Deep parts on the midline view.** The hippocampus, amygdala and reward center (nucleus accumbens) are not on a
+  midsagittal cut; they are drawn see-through where they would project, over the thalamus and brainstem, as many
+  textbook limbic figures do. Check that the projection reads correctly and does not suggest they lie on the midline.
+- **Short cause line phrases** (`REGIONS[k].job`, `.hurt` in `psychology/assets/tools/math/brain-map.js`). Points to
+  confirm: "parietal: ignoring one side of space" (neglect mostly follows right parietal damage; the full text says
+  so); "pons: relays to the cerebellum; sleep, breathing"; "thalamus: relays the senses (not smell) to the cortex";
+  "hippocampus: no new memories of facts and events (H.M.)" (H.M.'s lesion was bilateral medial temporal, which
+  "?" says).
+- **Auditory cortex** drawn on the superior temporal gyrus below the lateral fissure (it lies mostly inside the
+  fissure, on Heschl's gyrus); the visual cortex at the occipital pole outside and along the calcarine sulcus inside.
+- **Split brain**: the picture draws the signal from both eyes through the optic chiasm to the hemisphere opposite
+  the visual field, and the motor paths crossing low in the brainstem. Speech is drawn in the left hemisphere ("for
+  most people" in "?").

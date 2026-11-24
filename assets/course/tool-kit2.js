@@ -119,7 +119,7 @@
    K.cause({ label }) -> { el, set(parts, pre), take(text | null), text() }
                                     THE CAUSE LINE under the picture (standard rule 4: it is clear why): the chain for
                                     this setting in a few words with arrows, live as a control moves. parts:
-                                    [{ t, role, join: '+', say }]; role names the idea ("is-" + role on the pill): the
+                                    [{ t, role, join: '+' | '-', say }]; role names the idea ("is-" + role on the pill): the
                                     tool gives each role its colour with --cz (fill) and --cz-ink (text), the same
                                     colour the idea has in the picture. pre: a tiny grey lead ("Over 60 days:").
                                     take(text): the takeaway sentence in its place (a tinted line with a bulb) until
@@ -129,7 +129,7 @@
                                     until first used; chip: false keeps the pulse but drops the "Drag" / "Tap" chip
                                     (one chip per screen reads best: give it to the first thing to touch).
    K.spots(layer, { key, label, items: [{ id, name, at: [[x, y], ...], side, accept: [] }], onPick(item, how),
-           chip, hint, avoid() -> [DOMRect], blank(x, y) -> bool, onMiss(nearest) }) -> { el, pick(id | null, how), picked(),
+           chip, hint, avoid() -> [DOMRect], blank(x, y) -> bool, onMiss(nearest), under(x, y) -> id | null }) -> { el, pick(id | null, how), picked(),
            find(text) -> item | null, match(text), ask(id | null, onAnswer(ok, item)), asking(), place(), hide(on), items }
                                     EXPLORERS (first: A&P Lab practical; docs/tools-v2-anp-lab-practical-brief.md).
                                     Named places on a picture (Complete Anatomy, Visible Body): each item is a pin at
@@ -159,7 +159,11 @@
                                     travelling): a new card waits, then grows once place() runs with wait() false (an open one follows). The
                                     tool calls place() after every drawn frame. o.others(item) -> [[x, y]]: the other
                                     parts' drawn middles, which the card keeps off when it can. ask() is for pins only. An item's sub (set
-                                    before pick) is a small second line on the card (the piece tapped: "Right scaphoid"). */
+                                    before pick) is a small second line on the card (the piece tapped: "Right scaphoid").
+                                    under(x, y) (picture units; optional, first: AP® Psychology Brain map): for a
+                                    picture of areas, the id of the part drawn under the finger, which a tap names
+                                    before the nearest pin (a tap on a pin, or within 16 px of it, names that pin's
+                                    part; not while asking). */
 (function(){
   'use strict';
   if(window.LevlKit2) return;
@@ -584,7 +588,18 @@
     box.addEventListener('click', function(e){
       if(e.target.closest('.tk2-spot') && e.detail === 0){ tapped(find(e.target.closest('.tk2-spot').getAttribute('data-id')), 'key'); return; }
       if(e.target === card || card.contains(e.target)){ return; }
-      var it = nearest(e.clientX, e.clientY);
+      // o.under(x, y): a picture whose parts are areas (the brain map) names the part drawn under the finger; a pin
+      // pressed itself still names its own part
+      var it = null;
+      if(o.under && !asking){
+        // a tap on (or within 16 px of) a pin names that pin's part; elsewhere the part drawn under the finger
+        var pin = e.target.closest('.tk2-spot'), hr = hit.getBoundingClientRect(), hk = layer.scale() || 1, px0 = e.clientX - hr.left, py0 = e.clientY - hr.top, nd = 1e9, np = null;
+        items.forEach(function(j){ j.at.forEach(function(q){ var Q = px(q), dd = Math.hypot(Q[0] - px0, Q[1] - py0); if(dd < nd){ nd = dd; np = j; } }); });
+        if(pin) it = find(pin.getAttribute('data-id'));
+        else if(np && nd <= 16) it = np;
+        else { var u = o.under(px0 / hk, py0 / hk); if(u) it = find(u); }
+      }
+      if(!it) it = nearest(e.clientX, e.clientY);
       if(!it && !(e.target === hit || e.target.closest('.tk2-spot'))) return;
       if(!it){ missed(e.clientX, e.clientY); return; }
       tapped(it, 'tap');
@@ -1160,12 +1175,12 @@
     o = o || {};
     var p = el('p', 'tk2-cause'), parts = [], pre = '';
     if(o.label) p.setAttribute('aria-label', o.label);
-    function text(){ return (pre ? pre + ' ' : '') + parts.map(function(x, i){ return (i ? (x.join === '+' ? ' and ' : ', then ') : '') + (x.say || x.t); }).join('') + (parts.length ? '.' : ''); }
+    function text(){ return (pre ? pre + ' ' : '') + parts.map(function(x, i){ return (i ? (x.join === '+' ? ' and ' : x.join === '-' ? ' minus ' : ', then ') : '') + (x.say || x.t); }).join('') + (parts.length ? '.' : ''); }
     function set(list, lead){
       parts = list || []; pre = lead || '';
       p.classList.remove('is-take');
       var h = (pre ? '<span class="tk2-cz-pre">' + esc(pre) + '</span>' : '') + parts.map(function(x, i){
-        return (i ? '<span class="tk2-cz-a" aria-hidden="true">' + (x.join === '+' ? '+' : '\u2192') + '</span>' : '') + '<span class="tk2-cz is-' + esc(x.role || 'ink') + '">' + esc(x.t) + '</span>';
+        return (i ? '<span class="tk2-cz-a" aria-hidden="true">' + (x.join === '+' ? '+' : x.join === '-' ? '\u2212' : '\u2192') + '</span>' : '') + '<span class="tk2-cz is-' + esc(x.role || 'ink') + '">' + esc(x.t) + '</span>';
       }).join('');
       if(p.innerHTML !== h) p.innerHTML = h;
     }

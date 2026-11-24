@@ -98,7 +98,9 @@ const SHELL_BUDGETS = [
      5.5 KB). */
   /* 34 -> 34.6 (tools v2 A&P 3D anatomy, 2026-11-19): K.spots for 3D viewers (project, wait, the ring, a card's second
      line); measured 34.1 KB. */
-  ['assets/course/kit2', 34.6],
+  /* 34.6 -> 35 (tools v2 AP Psych brain map merged on top, 2026-11-24): K.spots under(), the part drawn under the
+     finger; measured 34.6 KB with both. */
+  ['assets/course/kit2', 35],
   /* A&P Predict the change's Explore, tools/predict-explore.js and .css (docs/tools-v2-anp-predict-brief.md): loaded only
      by that tool's page (its landing), so it is its own shell, not part of every A&P page's (review round 1). Four drawn
      body systems and the chain engine. Measured 32.8 KB in review round 1; 33.3 KB after recheck 1 (the adaptive ambient rate, the keep-out for the "before" word, arrows held until the shown number moves). */

@@ -765,3 +765,13 @@ These stay open:
   height follows the rate at that moment; a potato core's height is proportional to its mass (constant width). The
   core snaps to whole percents of a 4.00 g start and ranges from −30% to +20%, the usual range for potato cores after
   a day in water or sucrose. Confirm none of these misleads.
+- **ci-explore-beans** (logged, tools v2, 2026-11-23). The rebuilt confidence intervals tool's Explore draws invented
+  heights of two week old bean seedlings: Full light mean 10.0 cm, Shade 16.0 cm, SD 4.0 cm each, 5, 10 or 20 plants a
+  tray, with the shade plants taller because seedlings in shade stretch toward the light. Conventions: changing the
+  number of plants keeps each tray's mean and SD exactly (new plants are chosen to fit), so only n changes; New sample
+  draws plants from the population and rescales them to their own mean and SD rounded to 0.1 cm; error bars are ±2 SE
+  (not the t multiplier, see `ci-two-se`); the overlap is worked out from the shown numbers, and "just touch" (0.0 cm)
+  counts as no overlap, "unlikely to be chance" (review round 1: touching ±2 SE bars give p of about 0.01 to 0.02,
+  Cumming and Finch about 0.01). The opening (10.0 and 16.0 cm, 5 plants) overlaps by 1.2 cm, so the course rule says
+  "may be chance" while a t test gives p = 0.045; the live "?" line says "by the course's rule" and points to the
+  strict note. Teacher: confirm the shade taller convention and the opening.
