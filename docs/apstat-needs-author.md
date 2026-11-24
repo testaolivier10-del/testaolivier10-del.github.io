@@ -169,3 +169,20 @@ From `docs/apstat-reviews/tools.md`. Every drill key passed an independent SciPy
   sampling act, not the sample's members. (3) The takeaway is shortened to fit two rows on a phone: "Over many
   samples, about 95% of 95% intervals capture the true value." The full template sentence ("If we took many random
   samples of this size and built a 95% interval from each ...") stays in "?" and in Test yourself. Confirm.
+- **Design randomizer v2 (`design-randomizer-v2`, 2026-11-24, `docs/tools-v2-stat-design-randomizer-brief.md`).**
+  (1) The memory study's "no random assignment" case changed from "the volunteers choose their own pill" to "the
+  researcher hands the caffeine pills to the volunteers who seem most alert, mostly the younger ones; the pills still
+  look alike". Volunteers who choose their pill know which one they took, so the old scene could be shown "blind"
+  while it could not be; the Test yourself context `caffeine` still describes self-selection (an observational
+  comparison) and is unchanged. Confirm. (2) Review round 1: "biased" (the vermillion "centered" and "true 1.5: biased") is shown only for rows that can be
+  biased by design (someone picks, or not blind runs), with the old test (a row's mean more than three standard errors
+  and 0.3 units from the true effect), which flags those rows every time. A random design is never called biased:
+  checked after every run, that test had falsely flagged 2.4 to 4.5% of students on the random rows. (3) Review round
+  1: the memory study's age effect is now 7 words of 30 (was 4), so blocking by age visibly narrows the row; the
+  blocking takeaway (block SD under 85% of the completely randomized SD) now shows for 96% of students at 20 runs and
+  100% at 100 (plants: 100%). Confirm 7 words is a fair younger and older gap in free recall of 30 words.
+  (4) Matched pairs here pair neighbours in the same row or age group, alike in the other variable (light, age group)
+  but no more alike than any two units of that row or group in the model; the text says only that (review round 1),
+  and "?" names the other form (each unit gets both treatments). (5) When the researcher picks who gets caffeine,
+  the researcher knows, so that study is at best single blind (the volunteers can still be kept from knowing); "?"
+  says so for that design.

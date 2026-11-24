@@ -340,6 +340,13 @@ All grading is code; nothing is graded by an AI model. Formats in `docs/apstat-a
     sample flying down into its interval, and a rate plot against the level; Test yourself (the drill and its record
     ids) is unchanged. The other nine trainers are untouched.
 
+20. (2026-11-24, `docs/tools-v2-stat-design-randomizer-brief.md`) **Tools v2: Design randomizer on the shared kit**, through
+    `ApStatTools.studioKit2` and `"kit2": true` (the second AP® Statistics tool). Explore draws the experiment (tomato
+    seedlings on a sunny and a shady bench, or volunteers at tables, younger in front and older behind); a hand deals
+    A and B in chance order, the plants grow to scale, and each estimate drops into its design's row, the design
+    cards being the rows' heads. The model gains `dealOrder()`; the memory study's "no random assignment" case is now
+    the researcher choosing (needs-author `design-randomizer-v2`). Test yourself and its record ids are unchanged.
+
 ## 9. Open items for the owner
 
 Before Phase 1 (built as proposed in Phase 0, each easy to change; decision 11):

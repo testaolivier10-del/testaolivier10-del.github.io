@@ -161,6 +161,7 @@
    "blurb": "Randomize an experiment and see why it allows cause and effect.",
    "lede": "Assign treatments at random, block, and name the design.",
    "studio": true,
+   "kit2": true,
    "premium": "tools"
   },
   {
