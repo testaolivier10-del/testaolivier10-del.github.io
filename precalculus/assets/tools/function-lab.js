@@ -78,7 +78,7 @@
     var lines = el('div', 'fl2-lines'), cause = K.cause({ label: 'What the change did' });
     lines.appendChild(cause.el);
     var acts = el('div', 'fl2-acts');
-    var steps = K.player({ min: 0, max: 1, speed: function(){ return 1 / (0.95 * Math.max(1, PH.length)); }, hold: 0.5,
+    var SMAX = 1.04, steps = K.player({ min: 0, max: SMAX, speed: function(){ return 1 / (0.95 * Math.max(1, PH.length)); }, hold: 0.5,
       labels: { play: 'Show the steps', pause: 'Pause', again: 'Show the steps', next: 'Next step', rest: 'Show the steps' },
       get: function(){ return S.steps; }, set: function(v){ stepTo(v); }, stops: function(){ return stepStops(); },
       before: function(){ return stepsStart(); }, onEnd: function(){ stepsEnd(); } });
@@ -187,7 +187,11 @@
     function stopAnim(){ if(raf){ cancelAnimationFrame(raf); raf = 0; } ['sx', 'sy', 'h', 'k'].forEach(function(k){ if(TW[k]){ D[k] = TW[k].to; TW[k] = null; } }); MORPH = null; ARW = 0; }
     function fadeOnce(){ svg.classList.remove('is-fade'); void svg.getBoundingClientRect(); svg.classList.add('is-fade'); }
     var setT = 0;
-    function settled(){ clearTimeout(setT); setT = setTimeout(function(){ refLater(); }, 60); }
+    function settled(){
+      // the live region speaks once the picture and the cause line show the end of the change
+      if(S.sayNext != null){ var pre = S.sayNext; S.sayNext = null; say(pre + cause.text()); }
+      clearTimeout(setT); setT = setTimeout(function(){ refLater(); }, 60);
+    }
 
     /* ---------------------------------------------------- pin limits */
     /* a value in tenths kept inside [lo, hi] (rounded inward at the ends) */
@@ -217,15 +221,22 @@
     function encAB(p){ var i = BL.indexOf(BL.reduce(function(s, x){ return Math.abs(x - Math.abs(p.b)) < Math.abs(s - Math.abs(p.b)) ? x : s; }, BL[0])); return (Math.round(p.a * 10) + 1000) * 10000 + (p.b < 0 ? 500 : 0) + i; }
     function decAB(v){ var A = Math.floor(v / 10000), r = v - A * 10000, neg = r >= 500, i = neg ? r - 500 : r; return { a: (A - 1000) / 10, b: (neg ? -1 : 1) * BL[i] }; }
     function decHK(v){ var A = Math.floor(v / 10000); return { h: (A - 1000) / 10, k: (v - A * 10000 - 1000) / 10 }; }
-    function hkAt(){ return G ? [G.sx(D.h), G.sy(D.k)] : null; }
-    function abAt(){ if(!G) return null; var Fa = Fm(), q = imgOf(D, Fa.keys[Fa.shape]); return [G.sx(q[0]), G.sy(q[1])]; }
+    /* where the pins and their numbers are read from: what is drawn, except in the first half of Show the steps'
+       cross fade back onto f, where the pins (fading out) still hold g's places */
+    var XF = null;
+    function PD(){ return XF && XF.u < 0.5 ? XF.D0 : D; }
+    function hkAt(){ var d = PD(); return G ? [G.sx(d.h), G.sy(d.k)] : null; }
+    function abAt(){ if(!G) return null; var Fa = Fm(), q = imgOf(PD(), Fa.keys[Fa.shape]); return [G.sx(q[0]), G.sy(q[1])]; }
     function shownP(){
-      // the parameters as drawn now (b from the drawn width; mid flip it reads the cap on the side drawn)
-      var b = Math.abs(D.sx) < 1 / 3.02 ? (D.sx < 0 ? -3 : 3) : 1 / D.sx;
-      return { a: r1(D.sy) || (D.sy < 0 ? -0.1 : 0.1), b: Math.abs(b - bNice(b)) < 0.02 ? bNice(b) : Math.round(b * 100) / 100, h: r1(D.h), k: r1(D.k) };
+      // the parameters as drawn now. While a flip passes through flat (|drawn b| over 3, |drawn a| under 0.05) that
+      // number is not a value of the slider: it reads null ("flipping")
+      var d = PD(), b = Math.abs(d.sx) < 1 / 3.02 ? null : 1 / d.sx;
+      return { a: Math.abs(d.sy) < 0.05 ? null : r1(d.sy), b: b == null ? null : Math.abs(b - bNice(b)) < 0.02 ? bNice(b) : Math.round(b * 100) / 100, h: r1(d.h), k: r1(d.k) };
     }
+    function aT(q){ return q.a == null ? 'a flipping' : 'a = ' + num(q.a); }
+    function bT(q){ return q.b == null ? 'b flipping' : 'b = ' + bText(q.b); }
     function hkTag(){ var q = shownP(); return 'h = ' + num(q.h) + ', k = ' + num(q.k); }
-    function abTag(){ var q = shownP(); return 'a = ' + num(q.a) + ', b = ' + bText(q.b); }
+    function abTag(){ var q = shownP(); return aT(q) + ', ' + bT(q); }
     /* a tag goes on the side of its pin away from the other pin, inside the board, clear of the other pin's knob and
        tag (the square pin's tag is placed first, the round pin's after it) */
     function sideAway(h, from, to, ban){
@@ -236,7 +247,11 @@
       var txt = h === hk ? hkTag() : abTag(), stay = [knobBox(to, 23)];
       if(h === ab){ var ot = hk.el.querySelector('.tk2-tag'); if(ot && !ot.hidden) stay.push(tagBox(hk, hkTag(), ot.className.replace(/.*is-/, ''))); }
       var inside = function(b){ return b && b[0] >= G.L + 2 && b[2] <= G.R - 2 && b[1] >= G.T + 2 && b[3] <= G.B - 2; };
-      for(var i = 0; i < order.length; i++){ var b = tagBox(h, txt, order[i], true); if(inside(b) && !hitAny(b, stay.filter(Boolean), 5)) return order[i]; }
+      // among the sides clear of the other pin and its tag, the one that covers the fewest axis numbers (so a half axis
+      // keeps its numbers); ties go in the order above
+      var tk = (E.tickBoxes || []).filter(function(b, i){ return !E.tickEls[i]._spare; }), bestS0 = null, bestN = Infinity;
+      for(var i = 0; i < order.length; i++){ var b = tagBox(h, txt, order[i], true); if(inside(b) && !hitAny(b, stay.filter(Boolean), 5)){ var nT = tk.filter(function(t){ return hitAny(b, [t], 8); }).length; if(nT < bestN){ bestN = nT; bestS0 = order[i]; } } }
+      if(bestS0) return bestS0;
       // nothing is wholly clear (both pins in a corner): the side that covers the least
       var area = function(b){ var t = 0; stay.filter(Boolean).forEach(function(c){ t += Math.max(0, Math.min(b[2], c[2]) - Math.max(b[0], c[0]) + 5) * Math.max(0, Math.min(b[3], c[3]) - Math.max(b[1], c[1]) + 5); }); return t; };
       var bestS = null, bestA = Infinity;
@@ -252,7 +267,7 @@
       valuetext: function(){ return hkTag() + '. ' + cause.text(); },
       tag: function(){ return hkTag(); },
       tagSide: function(){ var a = hkAt(), b = abAt(); return a && b ? sideAway(hk, a, b, cueOn() ? { below: 'down', above: 'up', left: 'left', right: 'right' }[cueO.side] : null) : 'down'; },
-      bounds: function(){ return G ? [G.L + 2, G.T, G.R - 2, G.B] : null; },
+      bounds: function(){ return tagBounds(hk); },
       onStart: function(){ grab('hk'); }, onInput: function(v){ var q = decHK(v); setP({ h: q.h, k: q.k }, 'hk', hk.dragging() ? 70 : 220); },
       onEnd: function(){ letGo(); } });
     var ab = K.handle(layer, { key: 'apprecalc-function-lab-drag', label: 'Round pin on a key point of g: up and down changes a, sideways changes b. Arrow keys move it.',
@@ -265,7 +280,7 @@
       tag: function(){ return abTag(); },
       tagSide: function(){ var a = abAt(), b = hkAt(); return a && b ? sideAway(ab, a, b) : 'up'; },
       chipSide: function(){ var s = ab.el.querySelector('.tk2-tag').className.replace(/.*is-/, '') || 'up'; return { up: 'right', down: 'right', left: 'down', right: 'down' }[s]; },
-      bounds: function(){ return G ? [G.L + 2, G.T, G.R - 2, G.B] : null; },
+      bounds: function(){ return tagBounds(ab); },
       onStart: function(){ grab('ab'); }, onInput: function(v){ var q = decAB(v); setP({ a: q.a, b: q.b }, 'ab', ab.dragging() ? 70 : 220); },
       onEnd: function(){ letGo(); } });
     hk.el.classList.add('fl2-hk'); ab.el.classList.add('fl2-ab', 'is-wait');
@@ -330,12 +345,12 @@
       return okAB(full) ? encAB(full) : encAB(p);
     }
     function grab(who){
-      if(steps.playing() || S.steps > 0 && S.steps < 1) stepsAbort();
+      if(steps.playing() || S.steps > 0 && S.steps < SMAX) stepsAbort();
       S.moving = 1; S.d0 = Object.assign({}, S.p); S.last = who; hideCue(true); tourDid(who);
       if(who === 'hk' && ab.el.classList.contains('is-wait')) wakeAB();
       kick();
     }
-    function letGo(){ S.moving = 0; kick(); say(cause.text()); }
+    function letGo(){ S.moving = 0; S.sayNext = ''; kick(); }
     function wakeAB(){ ab.el.classList.remove('is-wait'); }
     function setP(ch, who, dur){
       Object.keys(ch).forEach(function(k){ S.p[k] = Math.round(ch[k] * 1000) / 1000; });
@@ -357,11 +372,11 @@
       if(Math.abs(p.k) > 1e-9) out.push({ key: 'k', from: { k: 0 }, to: { k: p.k } });
       return out;
     }
-    function stepStops(){ var n = PH.length; return PH.map(function(x, i){ return (i + 1) / n; }).slice(0, -1); }
+    function stepStops(){ var n = PH.length; return PH.map(function(x, i){ return (i + 1) / n; }); }   // the last one too: step n is seen done before the takeaway
     function stepsStart(){
       if(S.mode !== 'explore') return false;
       // reduced motion: each press is the next step of the same run
-      if(S.last === 'steps' && S.steps > 0 && S.steps < 1 && PH.length) return true;
+      if(S.last === 'steps' && S.steps > 0 && S.steps < SMAX && PH.length) return true;
       stopAnim(); hideCue(true); tourDid('steps'); wakeAB();
       PH = phases();
       if(PH.length < 2){ cause.set([{ t: 'g = f', role: 'ink' }, { t: 'nothing to show: move a pin first', role: 'ink' }]); return false; }
@@ -372,20 +387,24 @@
     }
     /* v in [0, 1] over all the phases: D is set from the phase that v is in (the earlier ones done, the later ones not) */
     function stepTo(v){
-      S.steps = v; var n = PH.length, f = clamp(v * n, 0, n), i = Math.min(n - 1, Math.floor(f)), u = ease(clamp(f - i, 0, 1));
+      S.steps = v; var n = PH.length, f = clamp(Math.min(v, 1) * n, 0, n), i = Math.min(n - 1, Math.floor(f)), u = ease(clamp(f - i, 0, 1));
+      // at a stop (a hold, or each press with reduced motion) the step just done is named, with its result
+      if(f > 0.5 && Math.abs(f - Math.round(f)) < 1e-9){ i = Math.round(f) - 1; u = 1; }
       var d = { sx: 1, sy: 1, h: 0, k: 0 };
       for(var j = 1; j < n; j++){ var ph = PH[j], w = j < i ? 1 : j === i ? u : 0; Object.keys(ph.to).forEach(function(k){ if(w > 0) d[k] = lerp(ph.from[k], ph.to[k], w); }); }
-      if(i === 0){ ['sx', 'sy', 'h', 'k'].forEach(function(k){ d[k] = lerp(D0[k], d[k], u); }); }
+      // the first phase cross fades g back onto f (nothing passes through flat, the pins never meet)
+      XF = i === 0 && u < 1 ? { u: u, D0: D0 } : null;
       Object.assign(D, d);
+      if(K.reduced()) fadeOnce();
       S.phase = i; S.phaseU = f - i;
       draw();
     }
     function stepsEnd(){
-      S.steps = 1; S.phase = -1; Object.assign(D, targetD(S.p));
+      S.steps = SMAX; S.phase = -1; XF = null; Object.assign(D, targetD(S.p));
       S.took = 'Every point moves the same way: (x, y) → (x/b + h, a·y + k).';
       draw(); say(S.took); refLater();
     }
-    function stepsAbort(){ steps.stop(); S.steps = 0; S.phase = -1; PH = []; aim(260); }
+    function stepsAbort(){ steps.stop(); S.steps = 0; S.phase = -1; PH = []; XF = null; aim(260); }
 
     /* ---------------------------------------------------- the words: the cause line, from what is drawn */
     function shiftWords(h, k, to){
@@ -406,26 +425,26 @@
         var ph = PH[S.phase], n = PH.length - 1, pre = ph.key === 'start' ? 'First:' : 'Step ' + S.phase + ' of ' + n + ':';
         if(ph.key === 'start') cause.set([{ t: 'start from the parent f', role: 'ink' }], pre);
         else if(ph.key === 'b') cause.set([{ t: 'b = ' + bText(Math.abs(q.b)), role: 'size' }, { t: 'horizontal dilation: ' + dil(1 / q.b, 'wide'), role: 'size' }], pre);
-        else if(ph.key === 'bf') cause.set([{ t: 'b = ' + bText(q.b), role: 'size' }, { t: 'reflected over the y-axis', role: 'size' }], pre);
+        else if(ph.key === 'bf') cause.set([{ t: 'b = ' + bText(S.p.b), role: 'size' }, { t: 'reflected over the y-axis', role: 'size' }], pre);
         else if(ph.key === 'h') cause.set([{ t: 'h = ' + num(q.h), role: 'move' }, { t: shiftWords(q.h, 0, { h: S.p.h, k: 0 }), role: 'move' }], pre);
         else if(ph.key === 'a') cause.set([{ t: 'a = ' + num(Math.abs(q.a)), role: 'size' }, { t: 'vertical dilation: ' + dil(q.a, 'tall'), role: 'size' }], pre);
-        else if(ph.key === 'af') cause.set([{ t: 'a = ' + num(q.a), role: 'size' }, { t: 'reflected over the x-axis', role: 'size' }], pre);
+        else if(ph.key === 'af') cause.set([{ t: 'a = ' + num(S.p.a), role: 'size' }, { t: 'reflected over the x-axis', role: 'size' }], pre);
         else if(ph.key === 'k') cause.set([{ t: 'k = ' + num(q.k), role: 'move' }, { t: shiftWords(0, q.k, { h: 0, k: S.p.k }), role: 'move' }], pre);
         return;
       }
       if(S.last === 'ab'){
         var d0 = S.d0 || S.p, ca = Math.abs(d0.a - S.p.a) > 1e-9, cb = Math.abs(d0.b - S.p.b) > 1e-9;
-        if(!ca && !cb){ ca = Math.abs(q.a - 1) > 1e-9 || !(Math.abs(q.b - 1) > 1e-9); cb = Math.abs(q.b - 1) > 1e-9; }
+        if(!ca && !cb){ ca = q.a == null || Math.abs(q.a - 1) > 1e-9 || !(q.b == null || Math.abs(q.b - 1) > 1e-9); cb = q.b == null || Math.abs(q.b - 1) > 1e-9; }
         var parts = [];
-        if(ca) parts.push({ t: 'a = ' + num(q.a), role: 'size' }, { t: aWords(q.a), role: 'size' });
-        if(cb){ parts.push({ t: 'b = ' + bText(q.b), role: 'size', join: parts.length ? '+' : null }, { t: bWords(q.b), role: 'size' }); }
+        if(ca) parts.push({ t: aT(q), role: 'size' }, { t: q.a == null ? 'flipping upside down' : aWords(q.a), role: 'size' });
+        if(cb){ parts.push({ t: bT(q), role: 'size', join: parts.length ? '+' : null }, { t: q.b == null ? 'flipping left to right' : bWords(q.b), role: 'size' }); }
         cause.set(parts);
         return;
       }
       if(S.last === 'fam'){ cause.set([{ t: 'new parent: ' + PARENT_LAB[S.fam].replace(/^f, /, ''), role: 'ink' }, { t: 'the same a, b, h and k', role: 'ink' }]); return; }
       if(S.last === 'reset'){
-        var home = Math.abs(q.a - 1) < 1e-9 && Math.abs(q.b - 1) < 1e-9 && Math.abs(q.h) < 1e-9 && Math.abs(q.k) < 1e-9;
-        cause.set([{ t: 'a = ' + num(q.a) + ', b = ' + bText(q.b) + ', h = ' + num(q.h) + ', k = ' + num(q.k), role: 'ink' }, { t: home ? 'g is the parent f' : 'going back to f', role: 'ink' }]); return; }
+        var home = q.a != null && q.b != null && Math.abs(q.a - 1) < 1e-9 && Math.abs(q.b - 1) < 1e-9 && Math.abs(q.h) < 1e-9 && Math.abs(q.k) < 1e-9;
+        cause.set([{ t: aT(q) + ', ' + bT(q) + ', h = ' + num(q.h) + ', k = ' + num(q.k), role: 'ink' }, { t: home ? 'g is the parent f' : 'going back to f', role: 'ink' }]); return; }
       cause.set([{ t: 'h = ' + num(q.h) + ', k = ' + num(q.k), role: 'move' }, { t: shiftWords(q.h, q.k), role: 'move' }]);
     }
 
@@ -475,11 +494,11 @@
     function gLabel(){
       // g(x) = a·f(b(x − h)) + k with the numbers that are not 1 or 0, each tinted with its pin's colour
       var q = shownP(), r = [['g(x) = ']];
-      if(Math.abs(q.a + 1) < 1e-9) r.push(['−', 'size']); else if(Math.abs(q.a - 1) > 1e-9) r.push([num(q.a), 'size'], ['·']);
+      if(q.a == null) r.push(['a', 'size'], ['·']); else if(Math.abs(q.a + 1) < 1e-9) r.push(['−', 'size']); else if(Math.abs(q.a - 1) > 1e-9) r.push([num(q.a), 'size'], ['·']);
       r.push(['f(']);
       var inner = [], hh = Math.abs(q.h) > 1e-9;
       // a fraction for b goes in brackets, so (1/4)x never reads as 1/(4x)
-      if(Math.abs(q.b - 1) > 1e-9){ var bt = Math.abs(q.b + 1) < 1e-9 ? '−' : bText(q.b); if(bt.indexOf('/') > -1) bt = bt.charAt(0) === '−' ? '−(' + bt.slice(1) + ')' : '(' + bt + ')'; inner.push([bt, 'size']); inner.push([hh ? '(' : '']); }
+      if(q.b == null || Math.abs(q.b - 1) > 1e-9){ var bt = q.b == null ? 'b' : Math.abs(q.b + 1) < 1e-9 ? '−' : bText(q.b); if(bt.indexOf('/') > -1) bt = bt.charAt(0) === '−' ? '−(' + bt.slice(1) + ')' : '(' + bt + ')'; inner.push([bt, 'size']); inner.push([hh ? '(' : '']); }
       inner.push(['x']);
       if(hh) inner.push([q.h > 0 ? ' − ' : ' + '], [num(Math.abs(q.h)), 'move']);
       if(Math.abs(q.b - 1) > 1e-9 && hh) inner.push([')']);
@@ -514,14 +533,20 @@
       a.push('<path class="fl2-axhead" d="M' + (g.R - 4) + ' ' + ax + 'l-9 -4.5v9zM' + ay + ' ' + (g.T + 4) + 'l-4.5 9h9z"/>');
       var lab = g.u >= 40 ? 1 : 2, tk = [];
       E.ticks = [];
-      function tickT(x, y, s, anchor){ tk.push('<text class="fl2-tick" x="' + r1(x) + '" y="' + r1(y) + '" text-anchor="' + anchor + '">' + s + '</text>'); }
-      if(sine){ for(var q2 = Math.ceil(g.x0 / (PI / 2)); q2 * PI / 2 <= g.x1; q2++){ var xx = g.sx(q2 * PI / 2); if(q2 && xx > g.L + 16 && xx < g.R - 22) tickT(xx, +ax + 16, piLab(q2 * PI / 2), 'middle'); } }
-      else for(var tx = Math.ceil(g.x0); tx <= g.x1; tx++){ var x2 = g.sx(tx); if(tx && !(tx % lab) && x2 > g.L + 12 && x2 < g.R - 22) tickT(x2, +ax + 16, num(tx), 'middle'); }
-      for(var ty = Math.ceil(g.y0); ty <= g.y1; ty++){ var y2 = g.sy(ty); if(ty && !(ty % lab) && y2 > g.T + 22 && y2 < g.B - 10) tickT(+ay - 7, y2 + 4, num(ty), 'end'); }
+      // every number also has a spare copy on the other side of its axis (above the x-axis, right of the y-axis), shown
+      // only when every number of that half axis is covered
+      function tickT(x, y, s, anchor, grp, spare){
+        tk.push('<text class="fl2-tick' + (spare ? ' is-spare' : '') + '" data-g="' + grp + '" x="' + r1(x) + '" y="' + r1(y) + '" text-anchor="' + anchor + '"' + (spare ? ' style="visibility:hidden"' : '') + '>' + s + '</text>');
+        var xa = anchor === 'end', x2 = xa ? +ay + 7 : x, y2 = xa ? y : +ax - 8;
+        tk.push('<text class="fl2-tick is-spare" data-g="' + grp + '" x="' + r1(x2) + '" y="' + r1(y2) + '" text-anchor="' + (xa ? 'start' : anchor) + '" style="visibility:hidden">' + s + '</text>');
+      }
+      if(sine){ for(var q2 = Math.ceil(g.x0 / (PI / 4)); q2 * PI / 4 <= g.x1; q2++){ var xx = g.sx(q2 * PI / 4); if(q2 && xx > g.L + 16 && xx < g.R - 22) tickT(xx, +ax + 16, q2 % 2 ? (q2 < 0 ? '−' : '') + (Math.abs(q2) === 1 ? '' : Math.abs(q2)) + 'π/4' : piLab(q2 * PI / 4), 'middle', q2 > 0 ? 'x+' : 'x-', q2 % 2); } }
+      else for(var tx = Math.ceil(g.x0); tx <= g.x1; tx++){ var x2 = g.sx(tx); if(tx && x2 > g.L + 12 && x2 < g.R - 22) tickT(x2, +ax + 16, num(tx), 'middle', tx > 0 ? 'x+' : 'x-', tx % lab); }
+      for(var ty = Math.ceil(g.y0); ty <= g.y1; ty++){ var y2 = g.sy(ty); if(ty && y2 > g.T + 22 && y2 < g.B - 10) tickT(+ay - 7, y2 + 4, num(ty), 'end', ty > 0 ? 'y+' : 'y-', ty % lab); }
       tk.push('<text class="fl2-axl" x="' + (g.R - 10) + '" y="' + (+ax - 10) + '" text-anchor="end">x</text><text class="fl2-axl" x="' + (+ay + 10) + '" y="' + (g.T + 20) + '">y</text>');
       gS.innerHTML = o.join('') + a.join('') + '<g class="fl2-ticks">' + tk.join('') + '</g>';
       E.tickBoxes = []; E.tickEls = [];
-      [].forEach.call(gS.querySelectorAll('.fl2-ticks text'), function(t){ try{ var b = t.getBBox(); E.tickBoxes.push([b.x - 2, b.y - 1, b.x + b.width + 2, b.y + b.height + 1]); E.tickEls.push(t); }catch(e){} });
+      [].forEach.call(gS.querySelectorAll('.fl2-ticks text'), function(t){ try{ var b = t.getBBox(); E.tickBoxes.push([b.x - 2, b.y - 1, b.x + b.width + 2, b.y + b.height + 1]); E.tickEls.push(t); t._spare = t.classList.contains('is-spare'); t._h = t._spare; }catch(e){} });
     }
     function piLab(v){ var k = Math.round(v / (PI / 2)); if(!k) return '0'; var neg = k < 0; k = Math.abs(k); return (neg ? '−' : '') + (k % 2 ? (k === 1 ? '' : k) + 'π/2' : (k / 2 === 1 ? '' : k / 2) + 'π'); }
 
@@ -542,8 +567,32 @@
       var w = tagCv.measureText(txt).width + 20, hh = 25, x0, y0;
       if(side === 'up'){ x0 = p[0] - w / 2; y0 = p[1] - 25 - hh; } else if(side === 'down'){ x0 = p[0] - w / 2; y0 = p[1] + 26; }
       else if(side === 'left'){ x0 = p[0] - 26 - w; y0 = p[1] - hh / 2; } else { x0 = p[0] + 26; y0 = p[1] - hh / 2; }
-      if(side === 'up' || side === 'down') x0 = clamp(x0, G.L + 2, G.R - 2 - w);
+      if(side === 'up' || side === 'down'){ x0 = clamp(x0, G.L + 2, G.R - 2 - w); x0 += tagShift(h, [x0, y0, x0 + w, y0 + hh], p); }
       return [x0, y0, x0 + w, y0 + hh];
+    }
+    /* a tag above or below its pin slides sideways (at most 60 px, staying on its pin) when it would cover every number
+       of a half axis, so each half axis keeps one number to read */
+    function tagShift(h, b, p){
+      if(!E.tickEls) return 0;
+      var other = knobBox(h === hk ? abAt() : hkAt(), 23);
+      function bad(dx){
+        var bx = [b[0] + dx, b[1], b[2] + dx, b[3]];
+        if(bx[0] < G.L + 2 || bx[2] > G.R - 2 || bx[0] > p[0] - 14 || bx[2] < p[0] + 14 || hitAny(bx, [other], 5)) return true;
+        var free = {}, has = {};
+        E.tickEls.forEach(function(t, i){ var gp = t.getAttribute('data-g'); has[gp] = 1; if(!hitAny(E.tickBoxes[i], [bx], 8) && !hitAny(E.tickBoxes[i], [other], 8)) free[gp] = 1; });
+        return Object.keys(has).some(function(gp){ return !free[gp]; });
+      }
+      var tries = [0, 20, -20, 40, -40, 60, -60];
+      for(var i = 0; i < tries.length; i++) if(!bad(tries[i])) return tries[i];
+      return 0;
+    }
+    function tagBounds(h){
+      // the kit slides a tag to stay inside these bounds: a narrowed side moves it by the shift above
+      if(!G) return null;
+      var side = h.el.querySelector('.tk2-tag').className.replace(/.*is-/, '');
+      if(side !== 'up' && side !== 'down') return [G.L + 2, G.T, G.R - 2, G.B];
+      var b = tagBox(h, h === hk ? hkTag() : abTag(), side), p = h === hk ? hkAt() : abAt(), w = b[2] - b[0], cx = clamp(p[0] - w / 2, G.L + 2, G.R - 2 - w), dx = b[0] - cx;
+      return dx > 0 ? [b[0], G.T, G.R - 2, G.B] : dx < 0 ? [G.L + 2, G.T, b[2], G.B] : [G.L + 2, G.T, G.R - 2, G.B];
     }
     function cueBox(){
       var c = cueOn() && layer.el.querySelector('.tk2-cue'); if(!c) return null;
@@ -564,7 +613,7 @@
         var dd = (w / 2) * Math.abs(nx) + (h / 2) * Math.abs(ny) + 9 + (far || 0);
         return { f: f, sd: sd, far: far || 0, x: p[0] + sd * nx * dd, y: p[1] + sd * ny * dd };
       }
-      [0, 30, 64].forEach(function(far){ prefs.forEach(function(f){ [1, -1].forEach(function(sd){ cands.push(at(f, sd, far)); }); }); });   // further out (a longer leader) only when nothing nearer fits
+      [0, 26].forEach(function(far){ prefs.forEach(function(f){ [1, -1].forEach(function(sd){ cands.push(at(f, sd, far)); }); }); });   // further out (a longer leader) only when nothing nearer fits
       function ok(c){
         var b = [c.x - w / 2, c.y - h / 2, c.x + w / 2, c.y + h / 2];
         if(b[0] < G.L + 4 || b[2] > G.R - 4 || b[1] < G.T + 4 || b[3] > G.B - 4) return false;
@@ -582,13 +631,15 @@
       });
       // a crowded board (a phone): the free spot nearest the line, with a longer leader; kept while it stays free
       if(!best && free){
+        var cap = typeof free === 'number' ? free : 40;
         keep = keep0.slice(0, 1);
-        var near = function(x, y){ var bi = 0, bd = Infinity; for(var i = 0; i < n; i += 2){ var dq = Math.hypot(pts[i][0] - x, pts[i][1] - y); if(dq < bd){ bd = dq; bi = i; } } return { d: bd, i: bi }; };
-        if(g._pos && g._pos.free){ var cf = { x: g._pos.x, y: g._pos.y }, bf = ok(cf); if(bf){ var nf = near(cf.x, cf.y); if(nf.d < 240){ cf.f = nf.i / Math.max(1, n - 1); cf.free = true; best = { c: cf, b: bf }; } } }
+        // the leader runs from the pill's edge to the nearest point of its line: at most 40 px, or it reads as a line of the graph
+        var near = function(x, y){ var bi = 0, bd = Infinity; for(var i = 0; i < n; i += 2){ var dx = Math.max(0, Math.abs(pts[i][0] - x) - w / 2), dy = Math.max(0, Math.abs(pts[i][1] - y) - h / 2), dq = Math.hypot(dx, dy); if(dq < bd){ bd = dq; bi = i; } } return { d: bd, i: bi }; };
+        if(g._pos && g._pos.free){ var cf = { x: g._pos.x, y: g._pos.y }, bf = ok(cf); if(bf){ var nf = near(cf.x, cf.y); if(nf.d <= cap){ cf.f = nf.i / Math.max(1, n - 1); cf.free = true; best = { c: cf, b: bf }; } } }
         if(!best){
           var cand = null;
           for(var y2 = G.T + h / 2 + 6; y2 <= G.B - h / 2 - 6; y2 += 5) for(var x2 = G.L + w / 2 + 6; x2 <= G.R - w / 2 - 6; x2 += 12){
-            var c2 = { x: x2, y: y2 }, nn = near(x2, y2); if(nn.d > 240 || (cand && nn.d >= cand.d)) continue;
+            var c2 = { x: x2, y: y2 }, nn = near(x2, y2); if(nn.d > cap || (cand && nn.d >= cand.d)) continue;
             var b2 = ok(c2); if(b2) cand = { d: nn.d, c: { x: x2, y: y2, f: nn.i / Math.max(1, n - 1), free: true }, b: b2 };
           }
           if(cand) best = { c: cand.c, b: cand.b };
@@ -614,14 +665,24 @@
       E.pLine.setAttribute('d', pd); E.pShadow.setAttribute('d', pd);
       E.wDark.setAttribute('d', wd); E.wMid.setAttribute('d', wd); E.wHi.setAttribute('d', wd); E.wShadow.setAttribute('d', wd);
       E.pLine.style.opacity = E.pShadow.style.opacity = MORPH ? mw : '';
-      [E.wDark, E.wMid, E.wHi, E.wShadow].forEach(function(x){ x.style.opacity = MORPH ? mw : ''; });
+      if(XF){ mw = XF.u; }
+      [E.wDark, E.wMid, E.wHi, E.wShadow].forEach(function(x){ x.style.opacity = MORPH || XF ? mw : ''; });
+      // the pins never sit on each other: in a played change (a step passing through flat, Back to f) the round pin
+      // fades out while it comes within 40 px of the square pin, and back as it leaves (a drag never brings it there)
+      var played = !S.moving && (XF || steps.playing() || (S.steps > 0 && S.steps < SMAX) || TW.sx || TW.sy || TW.h || TW.k);
+      var hp0 = hkAt(), ap0 = abAt(), near = played && hp0 && ap0 ? clamp((Math.hypot(hp0[0] - ap0[0], hp0[1] - ap0[1]) - 30) / 10, 0, 1) : 1;
+      var xo = XF ? Math.abs(1 - 2 * XF.u) : 1;
+      [hk.el, E.pinS[0]].forEach(function(x){ x.style.opacity = xo < 1 ? xo.toFixed(2) : ''; });
+      [ab.el, E.pinS[1]].forEach(function(x){ x.style.opacity = xo * near < 1 ? (xo * near).toFixed(2) : ''; });
+      ab.knob.style.pointerEvents = xo * near < 0.3 ? 'none' : '';
       if(MORPH){ var od = pathOf(runs(MORPH.from, d)), op = MORPH.op || (MORPH.op = pathOf(runs(MORPH.from, ID_D))); E.wOld.setAttribute('d', od); E.wOld.style.opacity = 1 - mw; E.pOld.setAttribute('d', op); E.pOld.style.opacity = 1 - mw; E.wOld.style.display = E.pOld.style.display = ''; }
+      else if(XF){ E.wOld.setAttribute('d', pathOf(runs(fam, XF.D0))); E.wOld.style.opacity = 1 - XF.u; E.wOld.style.display = ''; E.pOld.style.display = 'none'; }
       else { E.wOld.style.display = E.pOld.style.display = 'none'; }
       // the asymptotes: thin threads tied across the board, each named
       var as = asymOf(fam, d);
       E.asym.forEach(function(g, i){
         var a = as[i]; if(!a){ g.style.display = 'none'; return; }
-        g.style.display = ''; g.style.opacity = MORPH ? mw : '';
+        g.style.display = ''; g.style.opacity = (MORPH || XF) ? mw : '';
         var s = g.querySelector('.fl2-asym-s'), l = g.querySelector('.fl2-asym-l');
         if(a.v){ var X0 = r1(G.sx(a.x)); [s, l].forEach(function(e){ e.setAttribute('x1', X0); e.setAttribute('x2', X0); e.setAttribute('y1', G.T); e.setAttribute('y2', G.B); }); s.setAttribute('transform', 'translate(1.5 2)'); }
         else { var Y0 = r1(G.sy(a.y)); [s, l].forEach(function(e){ e.setAttribute('y1', Y0); e.setAttribute('y2', Y0); e.setAttribute('x1', G.L); e.setAttribute('x2', G.R); }); s.setAttribute('transform', 'translate(1.5 2)'); }
@@ -633,9 +694,9 @@
         var kp = keys[i]; if(!kp){ b.style.display = 'none'; E.pdots[i].style.display = 'none'; E.arw[i].style.display = 'none'; return; }
         var im = imgOf(d, kp), X0 = G.sx(im[0]), Y0 = G.sy(im[1]), pX = G.sx(kp[0]), pY = G.sy(kp[1]);
         var inB = X0 > G.L + 4 && X0 < G.R - 4 && Y0 > G.T + 4 && Y0 < G.B - 4, inP = pX > G.L + 4 && pX < G.R - 4 && pY > G.T + 4 && pY < G.B - 4;
-        b.style.display = inB ? '' : 'none'; b.style.opacity = MORPH ? mw : '';
+        b.style.display = inB ? '' : 'none'; b.style.opacity = (MORPH || XF) ? mw : '';
         if(inB){ b.setAttribute('transform', 'translate(' + r1(X0) + ' ' + r1(Y0) + ')'); b.classList.toggle('is-open', !!(Fa.open && Fa.open.indexOf(i) > -1)); boxes.push([X0 - 7, Y0 - 7, X0 + 7, Y0 + 7]); }
-        var pdot = E.pdots[i]; pdot.style.display = inP ? '' : 'none'; pdot.style.opacity = MORPH ? mw : '';
+        var pdot = E.pdots[i]; pdot.style.display = inP ? '' : 'none'; pdot.style.opacity = (MORPH || XF) ? mw : '';
         if(inP){ pdot.setAttribute('cx', r1(pX)); pdot.setAttribute('cy', r1(pY)); pdot.classList.toggle('is-open', !!(Fa.open && Fa.open.indexOf(i) > -1)); boxes.push([pX - 5, pY - 5, pX + 5, pY + 5]); }
         var aw = E.arw[i], len = Math.hypot(X0 - pX, Y0 - pY);
         if(ARW > 0.01 && inB && inP && len > 24){
@@ -657,16 +718,31 @@
       // a number painted on the board is hidden while a pin, its tag, the chip or the cue sits on it (never half covered)
       var over = [knobBox(hkP, 23), knobBox(abP, 23)].concat(tb.filter(Boolean)); if(cb) over.push(cb);
       if(chipBx) over.push(chipBx);
-      (E.tickEls || []).forEach(function(t, i){ var hide = hitAny(E.tickBoxes[i], over, 8); if(t._h !== hide){ t._h = hide; t.style.visibility = hide ? 'hidden' : ''; } });
+      var want = (E.tickEls || []).map(function(t, i){ return !t._spare && !hitAny(E.tickBoxes[i], over, 8); }), seen = {};
+      (E.tickEls || []).forEach(function(t, i){ if(want[i]) seen[t.getAttribute('data-g')] = 1; });
+      // a half axis whose numbers are all covered shows one spare (odd) number instead, so it can still be read
+      (E.tickEls || []).forEach(function(t, i){ var gp = t.getAttribute('data-g'); if(t._spare && !seen[gp] && !hitAny(E.tickBoxes[i], over, 8)){ want[i] = true; seen[gp] = 1; } });
+      (E.tickEls || []).forEach(function(t, i){ var hide = !want[i]; if(t._h !== hide){ t._h = hide; t.style.visibility = hide ? 'hidden' : ''; } });
       var avoid = boxes.concat(E.tickBoxes.filter(function(b, i){ return !E.tickEls[i]._h; })), wf = flat(wr), pf = flat(pr);
       setLab(E.lab, gLabel());
-      var b1 = placeLab(E.lab, wf, [0.88, 0.72, 0.12, 0.3, 0.6, 0.95, 0.05, 0.45, 0.8, 0.2, 0.66, 0.36], avoid, [wf, pf], true);
-      // a crowded phone board: the wire's name matters more than one painted number, which hides under the pill
-      if(!b1){ var soft = boxes.slice(); b1 = placeLab(E.lab, wf, [0.88, 0.72, 0.12, 0.3, 0.6, 0.95, 0.05, 0.45], soft, [wf, pf], true);
-        if(b1) (E.tickEls || []).forEach(function(t, i){ if(!t._h && hitAny(E.tickBoxes[i], [b1], 8)){ t._h = true; t.style.visibility = 'hidden'; } }); }
-      if(b1) avoid.push(b1);
+      // each label: clear of everything; else (a crowded phone board) it may cover a painted number, which hides
+      // under the pill; a leader of at most 40 px (70 px for the last try, a wire mostly off the board)
+      var placed = [], keepNum = [], kg = {};
+      // one number per half axis that no label may cover, even on a crowded board (the shown one, else a free spare)
+      (E.tickEls || []).forEach(function(t, i){ var gp = t.getAttribute('data-g'); if(!kg[gp] && !t._h){ kg[gp] = 1; keepNum.push(E.tickBoxes[i]); } });
+      (E.tickEls || []).forEach(function(t, i){ var gp = t.getAttribute('data-g'); if(!kg[gp] && !hitAny(E.tickBoxes[i], over, 8)){ kg[gp] = 1; keepNum.push(E.tickBoxes[i]); } });
+      function place2(g, pts, prefs, keep){
+        var b = placeLab(g, pts, prefs, avoid, keep, 40);
+        if(!b){ [40, 70].forEach(function(cap){ if(!b) b = placeLab(g, pts, prefs, boxes.concat(placed, keepNum), keep, cap); });
+          if(!b) [40, 70].forEach(function(cap){ if(!b) b = placeLab(g, pts, prefs, boxes.concat(placed), keep, cap); });
+          if(b) (E.tickEls || []).forEach(function(t, i){ if(!t._h && hitAny(E.tickBoxes[i], [b], 8)){ t._h = true; t.style.visibility = 'hidden'; } }); }
+        if(b){ avoid.push(b); placed.push(b); }
+        return b;
+      }
+      setLab(E.lab, gLabel());
+      place2(E.lab, wf, [0.88, 0.72, 0.12, 0.3, 0.6, 0.95, 0.05, 0.45, 0.8, 0.2, 0.66, 0.36], [wf, pf]);
       setLab(E.plab, [[PARENT_LAB[fam]]]);
-      var b2 = placeLab(E.plab, pf, [0.2, 0.08, 0.35, 0.8, 0.92, 0.5, 0.65, 0.28, 0.14], avoid, [pf, wf], true); if(b2) avoid.push(b2);
+      place2(E.plab, pf, [0.2, 0.08, 0.35, 0.8, 0.92, 0.5, 0.65, 0.28, 0.14], [pf, wf]);
       E.plab.style.opacity = E.lab.style.opacity = MORPH ? Math.max(0.15, mw) : '';
       E.alab.forEach(function(g, i){
         var a = as[i]; if(!a){ g.style.display = 'none'; g._pos = null; return; }
@@ -676,10 +752,13 @@
         var pts = [];
         if(a.v){ for(var y = G.T + 14; y <= G.B - 14; y += 4) pts.push([G.sx(a.x), y]); }
         else { for(var x = G.L + 14; x <= G.R - 14; x += 4) pts.push([x, G.sy(a.y)]); }
-        bb = placeLab(g, pts, [0.03, 0.97, 0.15, 0.85, 0.3, 0.7, 0.5], avoid, [wf, pf], true);
-        if(bb) avoid.push(bb);
-        g.style.opacity = MORPH ? mw : '';
+        bb = place2(g, pts, [0.03, 0.97, 0.15, 0.85, 0.3, 0.7, 0.5], [wf, pf]);
+        g.style.opacity = (MORPH || XF) ? mw : '';
       });
+      // a half axis left with no number (under pins, tags or a label) shows a spare one where nothing covers it
+      var cover = over.concat(placed), seen2 = {};
+      (E.tickEls || []).forEach(function(t){ if(!t._h) seen2[t.getAttribute('data-g')] = 1; });
+      (E.tickEls || []).forEach(function(t, i){ var gp = t.getAttribute('data-g'); if(!seen2[gp] && t._h && !hitAny(E.tickBoxes[i], cover, 8)){ t._h = false; t.style.visibility = ''; seen2[gp] = 1; } });
       svg.setAttribute('aria-label', 'A pegboard: the graph of ' + gLabel().map(function(r){ return r[0]; }).join('') + ' as a steel wire, with the parent ' + PARENT_LAB[fam] + ' as a gray wire behind it' + (as.length ? ' and its asymptote' + (as.length > 1 ? 's' : '') : '') + '.');
       if(cueOn()) cue.place();
     }
@@ -718,7 +797,7 @@
     /* ---------------------------------------------------- the parent picker and Back to f */
     pick.addEventListener('change', function(){
       var from = S.fam; if(pick.value === from) return;
-      if(steps.playing() || (S.steps > 0 && S.steps < 1)) stepsAbort();
+      if(steps.playing() || (S.steps > 0 && S.steps < SMAX)) stepsAbort();
       hideCue(true);
       S.fam = pick.value; S.last = 'fam'; S.took = null;
       E.lab._pos = E.plab._pos = null;
@@ -726,16 +805,16 @@
       if(from === 'sine' || S.fam === 'sine') drawStatic();
       if(K.reduced()){ MORPH = null; Object.assign(D, targetD(S.p)); fadeOnce(); draw(); }
       else { MORPH = { from: from, t0: now(), dur: 420, w: 0 }; aim(300); }
-      say(PARENT_LAB[S.fam] + '. ' + cause.text()); refLater();
+      S.sayNext = PARENT_LAB[S.fam] + '. '; if(K.reduced()) settled(); refLater();
     });
     reset.addEventListener('click', function(){
-      if(steps.playing() || (S.steps > 0 && S.steps < 1)) stepsAbort();
+      if(steps.playing() || (S.steps > 0 && S.steps < SMAX)) stepsAbort();
       hideCue(true); S.d0 = Object.assign({}, S.p);
       S.p = { a: 1, b: 1, h: 0, k: 0 };
       if(!pinsOk(S.p)) fit();
       hk.value(encHK(S.p)); ab.value(encAB(S.p));
       S.last = 'reset'; S.took = null; aim(360);
-      setTimeout(function(){ say(cause.text()); }, 400); refLater();
+      S.sayNext = ''; refLater();
     });
 
     /* ---------------------------------------------------- "?": the formula, the words, the table, the features */
@@ -749,7 +828,9 @@
       var Z = FL.zeros(fam, p, win), En = FL.ends(fam, p), vas = FL.vas(fam, p), has = FL.has(fam, p);
       var conc = fam === 'piecewise' ? '' : tex(FL.tex(fam, p, 'g'));
       var tpl = 'g(x) = a·f(b(x − h)) + k, with a = ' + num(p.a) + ', b = ' + bText(p.b) + ', h = ' + num(p.h) + ', k = ' + num(p.k);
-      var zt = !Z.length ? 'none on the board' : fam === 'sine' ? Z.length + ' on the board: ' + (Z.length > 4 ? Z.slice(0, 4).map(num).join(', ') + ', …' : Z.map(num).join(', ')) : 'x = ' + Z.map(num).join(', x = ');
+      // no zero at all (0 outside the range) says so; "on the board" only when there are zeros off it
+      var none = fam === 'sine' ? Math.abs(p.k) > Math.abs(p.a) + 1e-9 : !FL.zeros(fam, p, [-1e6, 1e6]).length;
+      var zt = !Z.length ? (none ? 'none' : 'none on the board') : fam === 'sine' ? Z.length + ' on the board: ' + (Z.length > 4 ? Z.slice(0, 4).map(num).join(', ') + ', …' : Z.map(num).join(', ')) : 'x = ' + Z.map(num).join(', x = ');
       var rows = [['Zeros', esc(zt)]];
       vas.forEach(function(v){ rows.push(['Vertical asymptote', 'x = ' + num(v.x) + (v.right ? '<br>' + limHtml(v.x, v.right, '+') : '') + (v.left ? '<br>' + limHtml(v.x, v.left, '-') : '')]); });
       has.forEach(function(a){ rows.push(['Horizontal asymptote', 'y = ' + num(a.y)]); });
@@ -788,7 +869,7 @@
       E.lab && (E.lab._pos = E.plab._pos = null);
       build(); drawStatic(); draw();
     }
-    if(window.ResizeObserver){ var rt = 0; new ResizeObserver(function(){ var r = scene.getBoundingClientRect(); if(Math.round(r.width) + 'x' + Math.round(r.height) === lastWH) return; cancelAnimationFrame(rt); rt = requestAnimationFrame(layout); }).observe(scene); }
+    if(window.ResizeObserver){ new ResizeObserver(function(){ var r = scene.getBoundingClientRect(); if(Math.round(r.width) + 'x' + Math.round(r.height) === lastWH) return; layout(); }).observe(scene); }
     else window.addEventListener('resize', layout);
 
     function boot(){
@@ -797,6 +878,8 @@
       Object.assign(D, targetD(S.p));
       refHtml(); layout();
       setTimeout(function(){ layout(); if(S.mode === 'explore' && !tour.active()) cueShow(); }, 60);
+      // labels and numbers are measured with the page's font: measure again once the web fonts have loaded
+      try{ if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ lastWH = ''; if(E.lab) E.lab._pos = E.plab._pos = null; layout(); }); }catch(e){}
     }
     function shown(m){
       S.mode = m;
@@ -809,7 +892,7 @@
       shown: shown, redraw: function(){ layout(); },
       // for the sweep and the browser checks only: window.ApPrecalcFunctionLab is set only when a test sets
       // window.LevlToolTest before the page loads (never in production)
-      _t: { S: S, D: D, E: E, G: function(){ return G; }, hk: hk, ab: ab, steps: steps, cause: cause, FL: FL, shownP: shownP, BL: BL,
+      _t: { S: S, D: D, E: E, PD: function(){ return PD(); }, G: function(){ return G; }, hk: hk, ab: ab, steps: steps, cause: cause, FL: FL, shownP: shownP, BL: BL,
         set: function(p, fam){ if(fam && fam !== S.fam){ pick.value = fam; pick.dispatchEvent(new Event('change')); stopAnim(); } ['a', 'b', 'h', 'k'].forEach(function(k){ if(p[k] != null) S.p[k] = p[k]; }); fit(); hk.value(encHK(S.p)); ab.value(encAB(S.p)); S.last = p.last || 'hk'; S.d0 = null; S.took = null; stopAnim(); Object.assign(D, targetD(S.p)); draw(); refHtml(); },
         busy: function(){ return !!raf; }, pinsOk: pinsOk, encAB: encAB, encHK: encHK }
     };

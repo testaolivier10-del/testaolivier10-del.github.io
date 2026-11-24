@@ -53,7 +53,7 @@ async function open(o) {
   await page.route(/^https?:\/\/(?!127\.0\.0\.1)/, r => r.abort());
   await page.addInitScript(([theme, keys, cue]) => { window.LevlToolTest = true; try { localStorage.setItem('nremt_theme', theme); if (!cue) keys.forEach(k => localStorage.setItem(k, '1')); } catch (e) {} }, [o.theme, KEYS, !!o.cue]);
   await page.goto(BASE + '/precalculus/tools/function-lab.html' + (o.hash || ''), { waitUntil: 'load' });
-  if (!o.hash) { await page.waitForSelector('.fl2-svg .fl2-wire-h'); await page.waitForTimeout(400); }
+  if (!o.hash) { await page.waitForSelector('.fl2-svg .fl2-wire-h'); await page.evaluate(() => document.fonts && document.fonts.ready); await page.waitForTimeout(400); }
   return { ctx, page, errs };
 }
 const shot = (page, name) => SHOTS ? page.locator('.fl2').screenshot({ path: join(SHOTS, name) }) : null;
@@ -101,7 +101,7 @@ const probe = (theme) => {
   const P = T.shownP(), num = v => String(+(+v).toFixed(2)).replace('-', '−');
   const tg = document.querySelector('.fl2-hk .tk2-tag').textContent, ta = document.querySelector('.fl2-ab .tk2-tag').textContent;
   if (tg !== 'h = ' + num(P.h) + ', k = ' + num(P.k)) out.push('square pin tag ' + tg + ' is not h = ' + P.h + ', k = ' + P.k);
-  if (!ta.startsWith('a = ' + num(P.a) + ', b = ')) out.push('round pin tag ' + ta + ' is not a = ' + P.a);
+  if (!ta.startsWith((P.a == null ? 'a flipping' : 'a = ' + num(P.a)) + ', b')) out.push('round pin tag ' + ta + ' is not a = ' + P.a);
   const causeEl = document.querySelector('.fl2 .tk2-cause'), cause = causeEl.innerText.replace(/\n/g, ' '), take = causeEl.classList.contains('is-take');
   if (!take && S.last === 'hk' && !cause.includes(tg)) out.push('cause line and square pin disagree: ' + cause + ' / ' + tg);
   if (!take && S.last === 'ab') { const am = cause.match(/a = (\S+)/), bm = cause.match(/b = (\S+)/); if (am && !ta.includes('a = ' + am[1])) out.push('cause line a and tag disagree: ' + cause + ' / ' + ta); if (bm && !ta.includes('b = ' + bm[1])) out.push('cause line b and tag disagree: ' + cause + ' / ' + ta); }
@@ -112,6 +112,10 @@ const probe = (theme) => {
     if (Math.abs(P.k) > 1e-9 && !t.includes(num(Math.abs(P.k)))) out.push('the wire label lacks k: ' + t);
   } else out.push('the wire has no label');
   if (!vis(document.querySelector('.fl2-lab.is-f'))) out.push('the parent has no label');
+  // (review round 1) a leader never reads as a line of the graph: at most 40 px (70 px only for a wire mostly off the board)
+  q('.fl2-labs .fl2-lab').forEach(g => { const l = g.querySelector('.fl2-lead'); if (!l) return; const len = Math.hypot(l.x2.baseVal.value - l.x1.baseVal.value, l.y2.baseVal.value - l.y1.baseVal.value) * k; if (len > 71) out.push('leader of ' + Math.round(len) + ' px: ' + g.textContent); });
+  // (review round 1) each half axis keeps at least one number on show
+  ['x+', 'x-', 'y+', 'y-'].forEach(gp => { const all = [...document.querySelectorAll('.fl2-ticks text[data-g="' + gp + '"]')]; if (all.length && !all.some(vis)) out.push('no number left on the ' + gp + ' half axis'); });
   // asymptote threads are named
   const nA = (Fa.va ? 1 : 0) + (Fa.ha ? 1 : 0), nAl = q('.fl2-lab.is-a').length;
   if (nAl !== nA) out.push(nA + ' asymptotes but ' + nAl + ' asymptote labels');
@@ -183,7 +187,11 @@ for (const w of WIDTHS) {
     }
     // Show the steps to its end (reduced motion: each press is the next step), then the takeaway
     await page.evaluate(() => window.ApPrecalcFunctionLab.set({ a: -2, b: 2, h: 1, k: 1 }, 'quadratic'));
-    for (let i = 0; i < 8; i++) { const end = await page.evaluate(() => document.querySelector('.fl2 .tk2-cause').classList.contains('is-take')); if (end) break; await page.click('.fl2 .tk2-play'); await page.waitForTimeout(60); }
+    const said = [];
+    for (let i = 0; i < 8; i++) { const end = await page.evaluate(() => document.querySelector('.fl2 .tk2-cause').classList.contains('is-take')); if (end) break; await page.click('.fl2 .tk2-play'); await page.waitForTimeout(60); said.push(await page.evaluate(() => document.querySelector('.fl2 .tk2-cause').innerText.replace(/\n/g, ' '))); }
+    // (review round 1) with reduced motion each press shows a step done and names it with its result
+    { checks++; const want = ['start from the parent f', 'b = 2 → horizontal dilation: half as wide', 'h = 1 → every point right 1', 'a = 2 → vertical dilation: twice as tall', 'a = −2 → reflected over the x-axis', 'k = 1 → every point up 1'];
+      const all = said.join(' | '); want.forEach(x => { if (!all.includes(x)) fail(w, theme, 'steps', ['no press shows "' + x + '": ' + all]); }); }
     { const r = await page.evaluate(() => { const c = document.querySelector('.fl2 .tk2-cause'); return { take: c.classList.contains('is-take'), t: c.textContent }; });
       checks++; if (!r.take || !/Every point moves the same way/.test(r.t)) fail(w, theme, 'steps', ['no takeaway after Show the steps: ' + r.t]); }
     await run('steps-end', { fn: () => {}, arg: null });

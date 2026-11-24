@@ -141,8 +141,8 @@
    "name": "Function lab",
    "title": "Function Lab",
    "desc": "Every function type on one stage: drag the parameters and watch the graph, table, formula and words change together, with zeros, asymptotes and end behavior.",
-   "blurb": "Drag the parameters; graph, table and formula move together.",
-   "lede": "Drag a parameter and watch every representation change at once.",
+   "blurb": "Drag two pins and watch every point of a graph move.",
+   "lede": "Drag the pins and watch every point of f move.",
    "studio": true,
    "kit2": true
   },

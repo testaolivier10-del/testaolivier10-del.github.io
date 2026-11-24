@@ -46,7 +46,7 @@ await page.evaluate(() => {
   function check() {
     if (!W.on) return;
     W.frames++;
-    const G = T.G(), D = T.D, S = T.S, P = T.shownP(), sc = document.querySelector('.fl2-scene').getBoundingClientRect(), k = sc.width / G.W;
+    const G = T.G(), D = T.PD(), S = T.S, P = T.shownP(), sc = document.querySelector('.fl2-scene').getBoundingClientRect(), k = sc.width / G.W;
     const out = [], Fa = T.FL.FAMILIES[S.fam], kp = Fa.keys[Fa.shape];
     const at = n => { const r = document.querySelector('.fl2-' + n + ' .tk2-knob').getBoundingClientRect(); return [(r.left + r.width / 2 - sc.left) / k, (r.top + r.height / 2 - sc.top) / k]; };
     const hk = at('hk'), ab = at('ab'), wh = [G.sx(D.h), G.sy(D.k)], wa = [G.sx(kp[0] * D.sx + D.h), G.sy(kp[1] * D.sy + D.k)];
@@ -54,16 +54,21 @@ await page.evaluate(() => {
     if (Math.hypot(ab[0] - wa[0], ab[1] - wa[1]) > 1.5) out.push('round pin off its drawn bead by ' + Math.hypot(ab[0] - wa[0], ab[1] - wa[1]).toFixed(1));
     const tg = document.querySelector('.fl2-hk .tk2-tag').textContent, ta = document.querySelector('.fl2-ab .tk2-tag').textContent;
     if (tg !== 'h = ' + num(P.h) + ', k = ' + num(P.k)) out.push('square tag ' + tg + ' vs drawn h = ' + P.h + ', k = ' + P.k);
-    if (!ta.startsWith('a = ' + num(P.a) + ', b = ')) out.push('round tag ' + ta + ' vs drawn a = ' + P.a);
+    if (!ta.startsWith((P.a == null ? 'a flipping' : 'a = ' + num(P.a)) + ', b')) out.push('round tag ' + ta + ' vs drawn a = ' + P.a);
+    if (P.b == null ? !ta.endsWith('b flipping') : ta.endsWith('b flipping')) out.push('round tag ' + ta + ' vs drawn b ' + P.b);
+    // (review round 1) the pins never meet: while both show (a pin near the other fades out), their knobs (32 px) never touch
+    const op = Math.min(+(getComputedStyle(document.querySelector('.fl2-hk')).opacity), +(getComputedStyle(document.querySelector('.fl2-ab')).opacity));
+    if (op > 0.3 && Math.hypot((hk[0] - ab[0]) * k, (hk[1] - ab[1]) * k) < 33) out.push('the pins meet: ' + Math.hypot((hk[0] - ab[0]) * k, (hk[1] - ab[1]) * k).toFixed(0) + ' px');
     const c = document.querySelector('.fl2 .tk2-cause'), ct = c.textContent;
-    if (!c.classList.contains('is-take')) {
+    if (!c.classList.contains('is-take') && !/reflected|flipping/.test(ct)) {
       const m = (re) => { const x = ct.match(re); return x ? x[1] : null; };
       const ch = m(/h = ([−\d.]+)/), ck = m(/k = ([−\d.]+)/), ca = m(/a = ([−\d.]+)/), cb = m(/b = ([−\d./]+)/);
       if (ch != null && ch !== num(P.h)) out.push('cause h ' + ch + ' vs drawn ' + P.h);
       if (ck != null && ck !== num(P.k)) out.push('cause k ' + ck + ' vs drawn ' + P.k);
       if (ca != null && ca !== num(Math.abs(P.a)) && ca !== num(P.a)) out.push('cause a ' + ca + ' vs drawn ' + P.a);
       if (cb != null && !ta.includes('b = ' + cb) && !ta.includes('b = −' + cb)) out.push('cause b ' + cb + ' vs tag ' + ta);
-      const st = ct.match(/Step (\d) of/); if (st) W.steps.add(st[1]);
+    }
+    { const st = ct.match(/Step (\d) of/); if (st) W.steps.add(st[1]);
     }
     const gl = document.querySelector('.fl2-lab.is-g');
     if (gl && gl.style.display !== 'none') { const t = gl.textContent;
@@ -120,6 +125,11 @@ for (const t of [300, 1500, 3000]) { await page.waitForTimeout(t === 300 ? 300 :
 { let end = false; for (let i = 0; i < 40 && !end; i++) { await page.waitForTimeout(500); end = await page.evaluate(() => document.querySelector('.fl2 .tk2-cause').classList.contains('is-take')); } if (!end) fails.push('Show the steps did not end on the takeaway'); }
 await shot('d-steps-end');
 n++; { const s = await page.evaluate(() => [...window.__flw.steps].sort().join(',')); if (s !== '1,2,3,4,5') fails.push('steps named: ' + s + ' (want 1 to 5)'); }
+// 5b (review round 1) a < 0 and b < 0: the first phase cross fades, the pins never meet
+await page.evaluate(() => window.ApPrecalcFunctionLab.set({ a: -1.5, b: -1, h: 0.6, k: -0.3 }, 'quadratic'));
+await watch('show the steps, both flips');
+await page.click('.fl2 .tk2-play'); await page.waitForTimeout(500); await shot('c-steps-start-flips');
+{ let end = false; for (let i = 0; i < 40 && !end; i++) { await page.waitForTimeout(500); end = await page.evaluate(() => document.querySelector('.fl2 .tk2-cause').classList.contains('is-take')); } if (!end) fails.push('Show the steps (both flips) did not end'); }
 // 6 a new parent (the morph) and Back to f
 await watch('new parent');
 await page.selectOption('.fl2-sel', 'reciprocal'); await page.waitForTimeout(140); await shot('e-morph-mid'); await page.waitForTimeout(500);
