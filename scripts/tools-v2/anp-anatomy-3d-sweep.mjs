@@ -242,6 +242,7 @@ async function sweep() {
   await shot(page, 'find');
   if (has('--all')) {
     for (const t of DATA.explore.tabs) for (const s of DATA.structures.filter(x => t.systems.includes(x.system))) {
+      if (process.env.LIVE) console.log('part ' + s.id);
       await page.evaluate(id => window.AnpAnatomyExplore.current.show(id), s.id);
       T(await settledCard(page), `all ${s.id}: no card`);
       await page.waitForTimeout(150);

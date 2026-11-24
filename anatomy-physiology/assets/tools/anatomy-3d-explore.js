@@ -91,6 +91,14 @@
         cause.set(where(BY[it.id]));   // the piece tapped ("Right humerus") is the card's second line, on the picture
         if(pendingSay){ say(pendingSay); pendingSay = ''; }
         if(onScreen && !started){ started = true; makeCue(); }
+      } else if(pending && viewer && !viewer.settling() && spots.picked() === pending.it && !pending.framed){
+        // a part found by name that lies off the region's picture (the far end of the inferior vena cava): the camera
+        // takes in the region and that part, once, then the card grows
+        var pp = viewer.project(pending.it.id), w = over.clientWidth, h = over.clientHeight;
+        if(!pp || !pp.front || pp.x < 0 || pp.y < 0 || pp.x > w || pp.y > h){
+          pending.framed = true;
+          viewer.frame((cur.frame && cur.frame.length ? cur.frame : ids(cur)).concat([pending.it.id]), cur.pad || 1.3, cur.dir || null);
+        }
       }
     }
     var pendingSay = '';
