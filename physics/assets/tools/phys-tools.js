@@ -29,6 +29,7 @@
        drill(app, data, { slug, generate, types, extra, onVol })
      Explore, then test yourself (apchem decision 21):
        modes(app, { explore(pane), quiz(pane), studio? }) the two-mode switch
+         (studio: { kit2(pane, s) -> { stage, ref, about } }: a tools v2 Explore, see studioKit2)
        studioPane(pane, studio, { stage, dock, caption, why, details })
        cue(text) "Start here"; moreHtml(inner) "More options"; explain(el, head, body) one line + "Why?"
      Recording: record(slug, items) -> ApPhysCore.toolResult, so every item
@@ -718,23 +719,49 @@
       if(o.onShow) o.onShow(m);
     }
     bar.addEventListener('click', function(e){ var b = e.target.closest('.bt-mode'); if(b) show(b.getAttribute('data-m'), true); });
-    var st = studioOf(app);
+    var st = studioOf(app), kit2 = !!(st && o.studio && o.studio.kit2 && window.LevlKit2);
     o.explore(ex);
     var start = 'explore';
     try{
       if(seedFromUrl() || /#quiz\b/.test(location.hash)) start = 'quiz';
-      else if(localStorage.getItem(key) === 'quiz') start = 'quiz';
+      // tools v2: every visit lands on Explore (a link still opens Test yourself)
+      else if(!kit2 && localStorage.getItem(key) === 'quiz') start = 'quiz';
     }catch(e){}
     if(st){
       var eb = bar.querySelector('[data-m="explore"]');
       if(/^Explore\b/.test(eb.textContent)) eb.textContent = 'Explore';
       st.modes({ el: bar, value: start });
       // After the switch, so the arrangement knows the mode it opens on.
-      if(o.studio && o.studio.explore) o.studio.explore(ex, st);
-      stdExplore(st, eb.textContent.trim());
+      if(kit2) studioKit2(ex, st, o.studio.kit2(ex, st));
+      else {
+        if(o.studio && o.studio.explore) o.studio.explore(ex, st);
+        stdExplore(st, eb.textContent.trim());
+      }
     }
     show(start, false);
     return { explore: ex, quiz: qz, show: show, bar: bar };
+  }
+  /* studioKit2(pane, s, k): the tools v2 arrangement (docs/tools-v2-standard.md), this course layer's adapter for the
+     shared kit (assets/course/tool-kit2.js, loaded by a page with "kit2": true in physics/data/pages.json; first used
+     by Torque balance, docs/tools-v2-phys-torque-balance-brief.md). The same pattern as ApChemTools.studioKit2 (the
+     tool builds its own stage with the kit and hands it over), with Test yourself left on the shared drill, as
+     ApCalcTools.studioKit2 does. A trainer passes modes(app, { ..., onShow, studio: { kit2: function(pane, s){
+     return { stage, ref, about }; } } }):
+       k.stage   element    the picture with its controls on it and the lines around it. EXPLORE shows it alone,
+                            full width (no side panel, nothing graded, no task line).
+       k.ref     element    the reference behind "?" in Explore (how it works, the numbers, the settings).
+       k.about   [element]  moved to About.
+     TEST YOURSELF is unchanged: the drill arranges itself on the same frame (studioDrill), its records, ?seed= and
+     #quiz too. Every visit lands on Explore (no mode memory). The tool hears each switch through modes({ onShow }).
+     Other trainers (no kit2) are untouched. */
+  function studioKit2(pane, s, k){
+    var K = window.LevlKit2, only = { mode: 'explore' };
+    K.on(s);
+    s.add('stage', k.stage, only);
+    if(k.ref) s.add('details', k.ref, only);
+    (k.about || []).forEach(function(el){ if(el) s.add('about', el); });
+    Array.prototype.slice.call(pane.children).forEach(function(c){ if(c !== k.stage && c !== k.ref && c.textContent.trim()) s.add('details', c, only); });
+    return s;
   }
   /* Motion off? (site toggle or the OS setting) */
   function reduced(){
@@ -990,7 +1017,7 @@
   function sayHead(el){ var h = el && el.querySelector('.bt-say-h'); return h ? h.innerHTML : ''; }
 
   window.ApPhysTools = {
-    stdPicker: stdPicker,
+    stdPicker: stdPicker, studioKit2: studioKit2,
     studioOf: studioOf, studioPane: studioPane, sayHead: sayHead, sceneAsk: sceneAsk,
     modes: modes, reduced: reduced, cue: cue, moreHtml: moreHtml, explain: explain,
     esc: esc, F: F, nid: nid, mount: mount, frame: frame, kindPicker: kindPicker, keepGoing: keepGoing, slider: slider, choiceSelect: choiceSelect, announcer: announcer,
