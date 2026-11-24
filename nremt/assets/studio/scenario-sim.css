@@ -1,5 +1,8 @@
 /* Scenario simulator in the Tool Studio (docs/tools-calm.md): fits this tool's own parts
    into the frame. Loaded after nremt-studio.css, on scenario-sim.html only. */
+/* tools v2: the run is Test yourself, in its own stage holder (the picker and the call inside it, as before) */
+.nx-scenario-sim .sim-run{flex:1;min-height:0;display:flex;flex-direction:column;}
+.nx-scenario-sim .sim-run[hidden]{display:none;}
 .nx-scenario-sim #pickerScreen{flex:1;min-height:0;overflow:auto;margin:0 -14px -14px;padding:4px 14px 14px;}
 .nx-scenario-sim[data-sim=call] #pickerScreen,.nx-scenario-sim[data-sim=end] #pickerScreen{display:none !important;}
 .nx-scenario-sim .picker-grid{grid-template-columns:1fr;gap:10px;}

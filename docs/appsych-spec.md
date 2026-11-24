@@ -261,6 +261,17 @@ with one rubric line per point and full-credit samples.
 15. (2026-11-10, tool review build) **The four FIX tools of `docs/tool-review/psychology.md` rebuilt in place**
     (conditioning lab, development, memory lab, neuron); nothing removed, no data or storage keys changed. What
     changed and what was checked: `docs/tool-review/done/psych.md`.
+16. (2026-11-23, tools v2) **Brain map rebuilt to the tools v2 standard** (`docs/tools-v2-brain-map-brief.md`), the
+    first AP® Psychology tool on the shared kit: the course adapter `ApPsychTools.kit2` (`psy-tools.js`, a page opts in
+    with `"kit2": true` in `psychology/data/pages.json`; `build-appsych.mjs` loads the kit), Explore with three tabs
+    (Outside, Inside, Split brain) on a drawn brain, "If damaged", find by name, and the split-brain run; Test yourself
+    and every record id unchanged. The model gained short `job` and `hurt` phrases. Decisions for the owner in
+    `docs/tools-v2-owner-log.md`; open science points in needs-author `brain-map-v2`. Not merged: collects on
+    `claude/tools-v2-all` after an independent review.
+17. (2026-11-23, tools v2) **The neuron rebuilt on the tools v2 kit** (`docs/tools-v2-neuron-brief.md`): four Explore
+    tabs (Threshold with excitatory and inhibitory input, Refractory period, Myelin, Synapse) through the brain map's
+    adapter `ApPsychTools.kit2`; the drills, record ids and links unchanged; decisions in `docs/tools-v2-owner-log.md`.
+   
 
 ## 9. Open items for the owner
 

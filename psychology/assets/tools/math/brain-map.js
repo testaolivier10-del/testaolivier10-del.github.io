@@ -62,6 +62,34 @@
     reward: { name: 'Reward center', view: 'inside', group: 'deep', deep: true, does: 'Dopamine pathways deep in the brain (including the nucleus accumbens) that make things feel rewarding and drive motivation; central to addiction.', damage: 'Less motivation and pleasure from rewards.' },
     callosum: { name: 'Corpus callosum', view: 'inside', group: 'link', does: 'A thick band of axons that connects the two hemispheres so they share information.', damage: 'When it is cut (split-brain surgery for severe epilepsy), each hemisphere keeps what it alone sees.' }
   };
+  /* The picture's cause line (tools v2, docs/tools-v2-brain-map-brief.md): job (what it does) and hurt (what damage
+     there changes), the same as does and damage said shorter, each at most 44 characters so the line fits two rows
+     on a 360 px phone. A named real case is the one the drills cite. */
+  var SHORT = {
+    frontal: ['plans, decides and starts movement', 'poor planning; weakness on one side'],
+    parietal: ['touch, and where things are in space', 'numbness; ignoring one side of space'],
+    temporal: ['hearing, language and faces', 'trouble understanding speech or faces'],
+    occipital: ['vision', 'blind in part of what the eyes see'],
+    prefrontal: ['plans, judges and holds back impulses', 'impulsive, poor judgment (Phineas Gage)'],
+    motor: ['moves the opposite side of the body', 'weak or paralyzed on the opposite side'],
+    somatosensory: ['feels touch on the opposite side', 'numb on the opposite side'],
+    broca: ['produces speech', 'slow, effortful speech'],
+    wernicke: ['understands language', 'fluent speech that makes little sense'],
+    auditory: ['processes sound', 'trouble recognizing sounds'],
+    visual: ['first stop for vision in the cortex', 'blind in part of the visual field'],
+    cerebellum: ['balance, coordination, motor skills', 'clumsy, unsteady movement'],
+    medulla: ['heartbeat and breathing', 'breathing and heartbeat fail'],
+    pons: ['relays to the cerebellum; sleep, breathing', 'trouble with movement, sleep, breathing'],
+    ras: ['arousal: keeps you awake and alert', 'coma: cannot be woken'],
+    thalamus: ['relays the senses (not smell) to the cortex', 'lost or distorted sensation'],
+    hypothalamus: ['hunger, thirst, temperature; the pituitary', 'eating, temperature and hormones upset'],
+    pituitary: ['master gland: releases hormones', 'hormone problems, such as abnormal growth'],
+    hippocampus: ['forms new long-term memories', 'no new memories of facts and events (H.M.)'],
+    amygdala: ['fear and emotional memories', 'little fear of real danger (patient S.M.)'],
+    reward: ['reward and motivation (dopamine)', 'less motivation and pleasure'],
+    callosum: ['links the two hemispheres', 'cut: each hemisphere keeps what it sees']
+  };
+  Object.keys(SHORT).forEach(function(k){ REGIONS[k].job = SHORT[k][0]; REGIONS[k].hurt = SHORT[k][1]; });
   var ORDER = Object.keys(REGIONS);
   var METHODS = {
     eeg: { name: 'EEG', long: 'Electroencephalogram (EEG)', does: 'Electrodes on the scalp record the brain’s electrical activity, millisecond by millisecond (great timing, poor location).' },

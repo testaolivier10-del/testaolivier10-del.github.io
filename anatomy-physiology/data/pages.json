@@ -101,7 +101,10 @@
       "data": "anatomy-3d.json",
       "siteScripts": ["body3d/viewer.js"],
       "body3d": true,
-      "studio": true
+      "studio": true,
+      "kit2": true,
+      "extraScripts": ["tools/anatomy-3d-explore.js"],
+      "extraCss": ["tools/anatomy-3d-explore.css"]
     },
     {
       "slug": "predict",

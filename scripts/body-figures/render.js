@@ -992,3 +992,6 @@ function ellipse(cx, cy, rx, ry){
   const p = []; for(let i = 0; i < 24; i++){ const a = i / 24 * Math.PI * 2; p.push([cx + rx * Math.cos(a), cy + ry * Math.sin(a)]); }
   return 'M' + p.map(q => r1(q[0]) + ' ' + r1(q[1])).join('L') + 'Z';
 }
+
+/* Shared with scripts/body-figures/pose.js (the scenario simulator's posed figures). */
+export { THREE, GLTFLoader, MeshoptDecoder, mergeVertices, subdivide, taubin, skinGeometry, worldPositions, bbox, pts, WARPS, morph, components, fillHoles, edt, poisson, blurF, smooth, trace, pathD, r1 };
