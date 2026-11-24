@@ -118,8 +118,7 @@ on a phone), the plate (equation, arrow, K line, scale line), the tray (3 cups, 
   yourself). Checked: clipping, 4 px between every text, no text under 11 px, the cylinder the largest object, every
   counted particle inside the gas under the piston, no two gas particles touching, Q, the needle, the arrow, the tag and
   the cause line against the drawn particles and piston, phone cause line at most two rows and one height, one cylinder
-  size, no sideways scroll, no console errors. 360 × 740 (a short phone): the cause line goes under the fold, as ICE
-  tables' S10; the sweep asks only for the cups, the cylinder and the knob there.
+  size, no sideways scroll, no console errors. (Round 1 replaced the short phone exception: see below.)
 - Frames (`--frames`) at 390 and 1440: taps on the cups, two fast taps, a tap on an AB, the piston down and up while it
   reacts, six fast mixed taps, CO₂ in, a lump in, CO₂ out twice, the piston on CaCO₃: about 2000 to 3100 frames each, 0
   problems (on every frame the cause line's Q, the tag and the arrow equal what the drawn particles at the drawn volume
@@ -169,6 +168,16 @@ the tag's text nodes are rewritten in place (the Tool Studio watches the stage's
 rewrite; the stage carries `data-ls-text="keep"`, its texts are sized by the tool and checked at 11 px and up), the tag
 no longer reads the layout, the needle is an svg group turned by its transform, a molecule is one cached picture and
 only the gas is redrawn during a glide; "?" calls it a quartz cylinder.
+
+Checks (fix round): sweep at 360, 390, 1024 and 1440 (each at its screen height) and 360 × 740, light and dark: 5 runs
+of 36 states and 685 checks, 0 failures (the landing checks added: the cups, and the cue on a first visit, on the first
+screen; the short phone now keeps the cause line in view once scrolled to the scene's top, so its exception is gone);
+frames at 390 and 1440 (3387 and 2674 frames, 0 problems); perf at CPU x4 beside the flagship (load 2.4 to 2.6 on 2
+cores): 390 px taps median 16.7 ms, p95 16.8, piston median 16.7, p95 33.3, max 33; 1440 px taps median 16.7, p95 33.3,
+piston median 16.7, p95 33.4, max 67; flagship median 50, p95 83 to 100. AP Chem tests (99 pass), content check, build
+`--check` (AP Chem, AP Calculus AB, AP Macroeconomics), `check-site`, `check-weight`; the behaviour run (touch drag, a
+touch tap out, Enter and Delete on cups, the piston by keys, Start over, the tour, `?seed=`, a wrong Q, the locked
+page) and reduced motion ("added 3 B → ran forward → Q 2.57 → ≈ K 2.5").
 
 No whole event (the reviewer's seeded random walk of single changes): A + B about 16% of changes (single piston steps
 31%; 13% stop with Q more than 20% from K, and the cause line then says why); CaCO₃ about 16%, almost all because a solid
