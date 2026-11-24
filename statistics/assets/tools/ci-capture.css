@@ -164,3 +164,6 @@
 .ci3-build.is-arrive{animation:ci3arrive .3s ease-out;}
 @keyframes ci3arrive{from{opacity:0;transform:scale(.92);}to{opacity:1;transform:none;}}
 @media (prefers-reduced-motion: reduce){ .ci3-build.is-arrive{animation:ci3fade .26s ease-out;} }
+/* the row under the cause line keeps Build's height while Build sits on the board, so the picture does not shrink
+   when it comes back (recheck 1) */
+.ci3-acts{min-height:44px;}

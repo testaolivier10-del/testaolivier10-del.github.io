@@ -43,7 +43,7 @@ States: building, review, fixing, recheck, PASS (waiting to integrate), integrat
 | NREMT scenario sim | claude/tools-v2-nremt-scenario-sim | wt-nremt-scenario-sim | integrated | Explore `nremt/assets/scenario-explore.js` (own weight shell); the run is Test yourself; monitor pause/resume and `pinsFor` added; the shared NREMT drawn patient `nremt/assets/patient-draw.js` (flowcharts moved onto it); shell `nremt/kit2` |
 | AP Psych brain map | claude/tools-v2-brain-map | wt-brain-map | integrated | first AP Psych tool on the kit: adapter `ApPsychTools.kit2`; `K.spots` `under`; kept sweep, frames and perf in `scripts/tools-v2/brain-map-*` |
 | AP Psych neuron | claude/tools-v2-neuron | wt-neuron | integrated | four tabs; on the brain map's `ApPsychTools.kit2` (brain map branch merged in); sweep `scripts/tools-v2/neuron-sweep.mjs` (`--frames`, `--perf`) |
-| AP Stats interval capture | claude/tools-v2-stat-ci-capture | wt-stat-ci | review | first AP Stats tool on the kit: adapter `ApStatTools.studioKit2`, `"kit2": true` for this page only; sweep `scripts/tools-v2/stat-ci-capture-sweep.mjs` (`--frames`, `--perf`) |
+| AP Stats interval capture | claude/tools-v2-stat-ci-capture | wt-stat-ci | PASS (waiting to integrate) | first AP Stats tool on the kit: adapter `ApStatTools.studioKit2`, `"kit2": true` for this page only; sweep `scripts/tools-v2/stat-ci-capture-sweep.mjs` (`--frames`, `--perf`) |
 
 2026-11-19: `main` merged in after PR #228 (ochem frame cleanup: chipPicker, scrollChips and .ls-chips-hidden gone; the v2
 conformations, resonance and arrow pusher kept, kit2 kept). Ochem viewer 3d had `main` merged

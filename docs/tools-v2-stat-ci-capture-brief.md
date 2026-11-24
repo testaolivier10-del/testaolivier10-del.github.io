@@ -196,3 +196,12 @@ Fix round checks (speed rule): sweep at 360 (73, with the 360 x 740 landing), 39
 dark (the dark runs assert `data-theme="dark"`), **289 passed, 0 failed**; frames **52 passed, 0 failed** (2,870
 frames at 390 and 1440); AP Stats tests 166 pass, content check 0 failing, `build-apstat --check`, `check-site`,
 `check-weight --check`.
+
+## Recheck 1 (2026-11-24): PASS; its should fixes done before integration
+1. Phones under 700 px tall let the picture shrink to 330 px, so Build and its cue show on the landing at 375 x 667
+   (and 360 x 740); the sweep checks both.
+2. The row under the cause line keeps Build's 44 px while Build sits on the board, so at 1000 to 1100 px wide
+   (1024 x 768) the picture keeps its height when Build comes back to its row; the sweep checks the height.
+3. Nit: the rate plot's floor moves only once about 10 rings have landed.
+Checks: sweep at 360 (with 375 x 667 and 360 x 740), 390, 1024 and 1440, light and dark, **298 passed, 0 failed**;
+frames **52 passed, 0 failed** (2,438 frames); AP Stats tests, `build-apstat --check`, `check-site`, `check-weight`.

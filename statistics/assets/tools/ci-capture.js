@@ -588,7 +588,8 @@
       // the samples still in the air are not counted: the rate is the drawn rows plus every older sample
       var older = S.smps.length - R.length, cOld = older > 0 ? capOld(dCrit, older) : 0, rate = (cOld + Dn.hit) / (older + Dn.built) * 100;
       var triedR = Dn.built === R.length ? Object.keys(tried).filter(function(k){ return Math.abs(+k - dl) >= 0.004; }).map(function(k){ var L = +k; return [L, capAt(critOf(L)) / S.smps.length * 100]; }) : [];
-      stepFloor(now(), floorFor([rate].concat(triedR.map(function(a){ return a[1]; }))));
+      // the floor moves only once about 10 rings have landed (a few first rings would swing it about)
+      stepFloor(now(), older + Dn.built >= 10 ? floorFor([rate].concat(triedR.map(function(a){ return a[1]; }))) : rFto);
       var x = rX(dl * 100), y = rY(rate);
       // the line's name sits under the line, at the end away from the current dot
       at(Lb.rdot, { cx: x, cy: y }); Lb.rdot.style.display = '';
@@ -948,7 +949,7 @@
       var top = sceneBox.getBoundingClientRect().top + (window.scrollY || window.pageYOffset || 0);
       var below = lines.offsetHeight || 120;
       var hh = Math.round(vh - Math.min(top, vh * 0.32) - below - 18);
-      sceneBox.style.height = clamp(hh, vw < 600 ? 400 : 520, vw < 600 ? 720 : 860) + 'px';
+      sceneBox.style.height = clamp(hh, vw < 600 ? (vh < 700 ? 330 : 400) : 520, vw < 600 ? 720 : 860) + 'px';
     }
     var roT = 0;
     function onResize(){ clearTimeout(roT); roT = setTimeout(function(){ fitHeight(); relayout(); }, 40); }

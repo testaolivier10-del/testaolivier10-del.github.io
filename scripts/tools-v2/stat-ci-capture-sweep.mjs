@@ -202,10 +202,12 @@ if (ONE) {
   const h = w < 600 ? 844 : w <= 820 ? 1024 : w === 1024 ? 768 : w === 1280 ? 800 : w === 1920 ? 1080 : 900;
   if (w === 360) {
     // a short phone (360 x 740): Build and its cue show on the first screen
-    const { browser, page } = await open(360, 740, false);
-    const f = await page.evaluate(() => { const b = document.querySelector('.ci3-build').getBoundingClientRect(), c = document.querySelector('.ci3 .tk2-cue'); return { b: b.bottom <= innerHeight, c: !!c && c.getBoundingClientRect().bottom <= innerHeight }; });
-    ok(f.b && f.c, `360x740 landing: Build or its cue below the fold ${JSON.stringify(f)}`);
-    await browser.close();
+    for (const [sw, sh] of [[360, 740], [375, 667]]) {
+      const { browser, page } = await open(sw, sh, false);
+      const f = await page.evaluate(() => { const b = document.querySelector('.ci3-build').getBoundingClientRect(), c = document.querySelector('.ci3 .tk2-cue'); return { b: b.bottom <= innerHeight, c: !!c && c.getBoundingClientRect().bottom <= innerHeight }; });
+      ok(f.b && f.c, `${sw}x${sh} landing: Build or its cue below the fold ${JSON.stringify(f)}`);
+      await browser.close();
+    }
   }
   for (const dark of [false, true]) {
     const tag = `${w}-${dark ? 'dark' : 'light'}`;
@@ -234,7 +236,10 @@ if (ONE) {
     const fold = await X(() => { const b = document.querySelector('.ci3-build').getBoundingClientRect(), c = document.querySelector('.ci3 .tk2-cause').getBoundingClientRect(), s = document.querySelector('.ci3-scene').getBoundingClientRect(); return { b: b.bottom <= innerHeight, c: c.bottom <= innerHeight, s: s.top >= 0 && s.bottom <= innerHeight }; });
     ok(fold.b && fold.c && fold.s, `${tag} picture, Build and cause line not on one screen: ${JSON.stringify(fold)}`);
     await check('00-first');
+    const h0 = await X(() => document.querySelector('.ci3-scene').getBoundingClientRect().height);
     await page.click('.ci3-build'); await page.waitForTimeout(300);
+    const h1 = await X(() => document.querySelector('.ci3-scene').getBoundingClientRect().height);
+    ok(Math.abs(h1 - h0) < 1, `${tag} the picture changed height when Build left the board: ${h0} -> ${h1}`);
     if (SHOTS && w % 390 === 0 || SHOTS && w === 1440) { await page.waitForTimeout(500); await shot('mid-build'); }
     await check('01-built95');
     // after a build the level knob, the Build button and the cause line show with the picture
