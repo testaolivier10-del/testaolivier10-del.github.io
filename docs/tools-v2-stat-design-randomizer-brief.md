@@ -59,7 +59,7 @@ the true effect.
   0.3 units); a picked unit "Plant 6 → sunny row → A: new → 31.2 cm".
 - **Takeaways** (once each per experiment, at rest): "Random assignment centers the estimates on the true effect.";
   "Blocking by sunlight makes the estimates vary less around the truth." (only when the block row's SD is under 85% of
-  the completely randomized row's); "Pairing similar plants makes the estimates vary less around the truth."; "The
+  the completely randomized row's); "Pairing plants by sunlight makes the estimates vary less around the truth."; "The
   gardener gave A to the sunny pots: the estimates are biased."; "Not blind: expecting caffeine to help raises
   scores, so estimates run high."
 - **Cue:** "Start here" under Randomize and run, once per device. "Show me how" (three steps: a card, Randomize and
@@ -118,8 +118,8 @@ pill. Controls: Randomize and run, 4 cards, the units (tap or arrows), Run 100, 
 - The model is unchanged apart from `dealOrder()` (tested: every unit once; one block then the other; pair by pair;
   every A first when someone picks). Assignments are equal groups; block and pairs balance the other variable exactly
   (the validator checks it); the estimate is mean A minus mean B (checked).
-- True effects: plants 2.5 cm (sunlight adds 6 cm), memory 1.5 words (older volunteers recall 4 fewer; an unblinded
-  placebo effect adds 1.8 to caffeine). "Biased" uses the old tool's rule (3 standard errors and 0.3 units).
+- True effects: plants 2.5 cm (sunlight adds 6 cm), memory 1.5 words (older volunteers recall 7 fewer; an unblinded
+  placebo effect adds 1.8 to caffeine). "Biased" uses the old tool's rule (3 standard errors and 0.3 units), only for rows that can be biased by design (someone picks, not blind runs).
 - Scope: "?" says random assignment allows cause and effect for units like these, and generalizing needs random
   sampling, which these units did not have.
 - Open points: `docs/apstat-needs-author.md` "Design randomizer v2".
@@ -174,3 +174,23 @@ pill. Controls: Randomize and run, 4 cards, the units (tap or arrows), Run 100, 
 - Rows of dots compress (overlap) once a design has several hundred runs; Start over clears them.
 - Research: the Art of Stat apps were not reached; the Rossman/Chance applet itself was not operated (a lab page
   that uses it was read).
+
+## Review round 1 (2026-11-24): BLOCK, fixed
+`/home/claude/review-stat-design/REVIEW.md`. The model, every frame agreeing, the layout and nothing dropped held.
+Must fix:
+1. **M1** A random design is never called biased: the flag (vermillion "centered", "true: biased") fires only for
+   someone picks and not blind runs, which the test flags every time (`biased(st, d, ub)`). The reviewer's simulation:
+   the old rule falsely flagged 2.4 to 4.5% of students on the random rows.
+2. **M2** A row with both blindings draws a triangle per blinding at that blinding's mean (hollow for not blind), and
+   its card counts the blinding in use ("100 not blind", "100 blind"), as the cause line does. The sweep checks both
+   triangles against the drawn dots and the card in a mixed row, with blinding in use on and off.
+Should fix, all done: (3) memory age effect 7 words (blocking takeaway 96% at 20 runs, 100% at 100); (4) pairing
+words and takeaway say only same light or same age group; (5) the axis covers the tail (400 runs per design and half a
+tick more each side); (6) dots shrink by steps to 2 px before a stack is squeezed; (7) the picker's short names on
+phones, full width on desktop; (8) faces on the volunteers, soft shading on pots, benches and tables; (9) cards 118 px
+under 1200 px wide; (10) "?" adds the CED condition (too large to be explained by chance alone) and that the
+researcher picking is at best single blind. Needs-author `design-randomizer-v2` updated.
+
+Fix round checks (speed rule): sweep at 360 (88, with the 360 x 740 and 375 x 667 landings), 390, 1024 and 1440 (86
+each), light and dark (dark asserted), **346 passed, 0 failed**; frames **68 passed, 0 failed**; AP Stats tests 167
+pass, content check 0 failing, `build-apstat --check`, `check-site`, `check-weight`.

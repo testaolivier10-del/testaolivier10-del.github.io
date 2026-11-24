@@ -133,7 +133,22 @@ const AGREE = () => {
     const y0 = q.top + k * q.rh, y1 = y0 + q.rh;
     const inRow = X.rows[d].filter(o => o.land);
     const cel = [...document.querySelectorAll('.dr3-ccount')][k], card = cel.textContent, cm = /^(\d+) runs?$/.exec(card);
-    if (cel.style.display !== 'none' && (!cm || +cm[1] !== inRow.length)) out.push(`card ${d} "${card}" vs ${inRow.length} landed`);
+    // a row with both blindings: the card counts the blinding in use, and each blinding has its own triangle at its own mean
+    const kinds = [inRow.filter(o => !o.ub), inRow.filter(o => o.ub)], mixed = kinds[0].length && kinds[1].length, useUb = S.sc.placebo && !S.blind ? 1 : 0;
+    if (cel.style.display !== 'none') {
+      if (mixed) { const mm = /^(\d+) (not blind|blind)$/.exec(card); if (!mm || +mm[1] !== kinds[useUb].length || (mm[2] === 'not blind') !== !!useUb) out.push(`card ${d} "${card}" vs ${kinds[useUb].length} ${useUb ? 'not blind' : 'blind'}`); }
+      else if (!cm || +cm[1] !== inRow.length) out.push(`card ${d} "${card}" vs ${inRow.length} landed`);
+    }
+    const marks = [...document.querySelectorAll('.dr3-centre')].filter(m => m.style.display !== 'none' && (() => { const b = m.getBoundingClientRect(), sv = document.querySelector('.dr3-svg').getBoundingClientRect(); const yy = b.top - sv.top; return yy >= y0 && yy <= y1 + 2; })());
+    [0, 1].forEach(u => {
+      const dots = [...document.querySelectorAll('.dr3-dots .dr3-dot')].filter(c => c.style.display !== 'none' && /is-ub/.test(c.getAttribute('class')) === !!u && +c.getAttribute('cy') >= y0 && +c.getAttribute('cy') <= y1);
+      const mk = marks.find(m => /is-ub/.test(m.getAttribute('class')) === !!u);
+      if (kinds[u].length >= 5 && !X.busy()) {
+        if (!mk) { out.push(`row ${d}: no ${u ? 'hollow' : 'filled'} triangle`); return; }
+        const mx = +/^M([-\d.]+)/.exec(mk.getAttribute('d'))[1], mean = dots.reduce((a, c) => a + vx(+c.getAttribute('cx')), 0) / dots.length;
+        if (Math.abs(vx(mx) - mean) > (dom[1] - dom[0]) / 1500 + 0.01) out.push(`row ${d}: ${u ? 'hollow' : 'filled'} triangle at ${vx(mx).toFixed(2)} vs its dots' mean ${mean.toFixed(2)}`);
+      } else if (mk && kinds[u].length < 5) out.push(`row ${d}: a triangle for ${kinds[u].length} runs`);
+    });
     inRow.forEach(o => { if (!o.el) return; const cx = +o.el.getAttribute('cx'), cy = +o.el.getAttribute('cy'); if (Math.abs(vx(cx) - o.v) > (dom[1] - dom[0]) / 2000 + 0.01) out.push(`dot in ${d} at ${vx(cx)} vs ${o.v}`); if (cy < y0 || cy > y1) out.push(`dot of ${d} outside its row`); });
     const pressed = document.querySelectorAll('.dr3-ctap')[k].getAttribute('aria-pressed') === 'true';
     if (pressed !== (S.design === d)) out.push(`card ${d} pressed ${pressed} vs design ${S.design}`);
@@ -252,6 +267,8 @@ if (ONE) {
     await X(() => window.ApStatDesignRandomizer.go()); await check('07-memory-run');
     await X(() => window.ApStatDesignRandomizer.hundred()); await check('08-memory-cr-100');
     await X(() => window.ApStatDesignRandomizer.setBlind(false)); await X(() => window.ApStatDesignRandomizer.hundred()); await check('09-memory-not-blind');
+    await X(() => window.ApStatDesignRandomizer.setBlind(true)); await check('09b-memory-mixed-blind-in-use');
+    await X(() => window.ApStatDesignRandomizer.setBlind(false));
     await X(() => window.ApStatDesignRandomizer.setDesign('block')); await X(() => window.ApStatDesignRandomizer.hundred()); await check('10-memory-block-not-blind');
     await X(() => window.ApStatDesignRandomizer.setBlind(true)); await X(() => window.ApStatDesignRandomizer.setDesign('none')); await X(() => window.ApStatDesignRandomizer.hundred()); await check('11-memory-none');
     await X(() => window.ApStatDesignRandomizer.setDesign('pairs')); await X(() => window.ApStatDesignRandomizer.go()); await check('12-memory-pairs-run');

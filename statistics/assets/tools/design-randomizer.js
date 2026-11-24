@@ -116,7 +116,7 @@
       R.floor = people() ? 44 : 0;
       // the plot: a title row, four rows (each a card and its dots), the axis
       var Pq = g.P; Pq.th = 28; Pq.axH = 50; Pq.top = Pq.y + Pq.th; Pq.bot = Pq.y + Pq.h - Pq.axH; Pq.rh = (Pq.bot - Pq.top) / 4;
-      Pq.cardW = g.phone ? clamp(Math.ceil(Math.max(tw('Matched pairs', 12, 900), tw(sc().noneCard, 12, 900))) + 22, 104, 126) : g.wide ? 152 : 142;
+      Pq.cardW = g.phone ? clamp(Math.ceil(Math.max(tw('Matched pairs', 12, 900), tw(sc().noneCard, 12, 900))) + 22, 104, 126) : g.wide ? (W < 1200 ? 118 : 152) : 142;
       Pq.longNames = Pq.rh >= 76 && !g.phone;
       Pq.l = Pq.x + Pq.cardW + 18; Pq.r = Pq.x + Pq.w - 12;
       Pq.rr = g.phone ? 2.7 : 3.6;
@@ -163,6 +163,13 @@
       mk('rect', 'dr3-panel', { x: R.x, y: R.y, width: R.w, height: R.h, rx: 14 }, gBack);
       var clip = 'dr3clip' + Math.floor(Math.random() * 1e6), defs = svg.querySelector('defs');
       defs.textContent = '';
+      // soft shading: pots lit from the left, bench and table fronts darker at the bottom
+      var gid = clip + 'g';
+      [['pot', 1, 0, 'dr3s-pot0', 'dr3s-pot1'], ['wood', 0, 1, 'dr3s-wd0', 'dr3s-wd1']].forEach(function(z){
+        var lg = mk('linearGradient', null, { id: gid + z[0], x1: 0, y1: 0, x2: z[1], y2: z[2] }, defs);
+        mk('stop', z[3], { offset: '0' }, lg); mk('stop', z[4], { offset: '1' }, lg);
+      });
+      BG.fillPot = 'url(#' + gid + 'pot)'; BG.fillWood = 'url(#' + gid + 'wood)';
       var cp = mk('clipPath', null, { id: clip }, defs); mk('rect', null, { x: R.x, y: R.y, width: R.w, height: R.h, rx: 14 }, cp);
       var gb = mk('g', null, { 'clip-path': 'url(#' + clip + ')' }, gBack);
       mk('rect', 'dr3-band', { x: R.x, y: R.y, width: R.w, height: R.band }, gb);
@@ -184,7 +191,7 @@
         BG.rows.forEach(function(b, r){
           mk('rect', 'dr3-leg', { x: R.x + 22, y: b.plank + b.pk, width: 8, height: 6 }, gb);
           mk('rect', 'dr3-leg', { x: R.x + R.w - 30, y: b.plank + b.pk, width: 8, height: 6 }, gb);
-          mk('rect', 'dr3-plank', { x: R.x + 6, y: b.plank, width: R.w - 12, height: b.pk, rx: 3 }, gb);
+          mk('rect', 'dr3-plank', { x: R.x + 6, y: b.plank, width: R.w - 12, height: b.pk, rx: 3 }, gb).style.fill = BG.fillWood;
           mk('rect', 'dr3-plank-top', { x: R.x + 6, y: b.plank, width: R.w - 12, height: 3, rx: 1.5 }, gb);
           // the ruler post at the bench's left end (cm from the soil line)
           var rx = R.x + 10, base = b.plank - BG.ph + 3;
@@ -202,7 +209,7 @@
         var ay = BG.rows[s.lurk.rows[0]].y0 - 14;
         mk('rect', 'dr3-aisle', { x: R.x, y: ay, width: R.w, height: 14 }, gb);
         BG.rows.forEach(function(b){
-          mk('rect', 'dr3-table', { x: R.x + 6, y: b.plank, width: R.w - 12, height: b.pk, rx: 3 }, gb);
+          mk('rect', 'dr3-table', { x: R.x + 6, y: b.plank, width: R.w - 12, height: b.pk, rx: 3 }, gb).style.fill = BG.fillWood;
           mk('rect', 'dr3-table-top', { x: R.x + 6, y: b.plank, width: R.w - 12, height: 3, rx: 1.5 }, gb);
         });
       }
@@ -242,7 +249,7 @@
           e.leaves = []; for(var k = 0; k < 7; k++) e.leaves.push(mk('path', 'dr3-leaf', null, g));
           e.tip = mk('path', 'dr3-leaf dr3-tip', null, g);
           var pw = a.w, ph = a.ph;
-          mk('path', 'dr3-pot', { d: 'M' + (a.cx - pw / 2) + ' ' + a.potTop + ' h ' + pw + ' l ' + (-pw * 0.12) + ' ' + ph + ' h ' + (-pw * 0.76) + ' Z' }, g);
+          mk('path', 'dr3-pot', { d: 'M' + (a.cx - pw / 2) + ' ' + a.potTop + ' h ' + pw + ' l ' + (-pw * 0.12) + ' ' + ph + ' h ' + (-pw * 0.76) + ' Z' }, g).style.fill = BG.fillPot;
           mk('rect', 'dr3-rim', { x: a.cx - pw / 2 - 2, y: a.potTop - 1, width: pw + 4, height: clamp(ph * 0.2, 4, 7), rx: 2 }, g);
           mk('ellipse', 'dr3-soil', { cx: a.cx, cy: a.potTop + 1, rx: pw / 2 - 1, ry: 2.2 }, g);
           var st = clamp(pw * 0.42, 15, 20);
@@ -254,6 +261,10 @@
           g.setAttribute('class', 'dr3-u dr3-p sk' + sk + ' hr' + hair);
           mk('path', 'dr3-shirt dr3-sh' + hash(i, 7) % 4, { d: 'M' + (cx - hr * 1.7) + ' ' + a.plank + ' Q ' + (cx - hr * 1.7) + ' ' + (hy + hr * 1.25) + ' ' + cx + ' ' + (hy + hr * 1.2) + ' Q ' + (cx + hr * 1.7) + ' ' + (hy + hr * 1.25) + ' ' + (cx + hr * 1.7) + ' ' + a.plank + ' Z' }, g);
           mk('circle', 'dr3-head', { cx: cx, cy: hy, r: hr }, g);
+          // a simple face: two eyes and a mouth
+          mk('circle', 'dr3-eye', { cx: cx - hr * 0.36, cy: hy + hr * 0.12, r: Math.max(0.9, hr * 0.1) }, g);
+          mk('circle', 'dr3-eye', { cx: cx + hr * 0.36, cy: hy + hr * 0.12, r: Math.max(0.9, hr * 0.1) }, g);
+          mk('path', 'dr3-mouth', { d: 'M' + n1(cx - hr * 0.28) + ' ' + n1(hy + hr * 0.5) + ' q ' + n1(hr * 0.28) + ' ' + n1(hr * 0.22) + ' ' + n1(hr * 0.56) + ' 0' }, g);
           mk('path', 'dr3-hair', { d: 'M' + (cx - hr * 1.04) + ' ' + (hy + 1) + ' A ' + hr * 1.04 + ' ' + hr * 1.04 + ' 0 0 1 ' + (cx + hr * 1.04) + ' ' + (hy + 1) + ' Q ' + (cx + hr * 0.3) + ' ' + (hy - hr * (old ? 0.25 : 0.6)) + ' ' + (cx - hr * 1.04) + ' ' + (hy + 1) + ' Z' }, g);
           if(old && hash(i, 8) % 2) mk('path', 'dr3-glasses', { d: 'M' + (cx - hr * 0.72) + ' ' + (hy + hr * 0.15) + ' h ' + hr * 0.5 + ' M ' + (cx + hr * 0.22) + ' ' + (hy + hr * 0.15) + ' h ' + hr * 0.5 + ' M ' + (cx - hr * 0.22) + ' ' + (hy + hr * 0.15) + ' h ' + hr * 0.44 }, g);
           // the recall score: a gauge beside the person, filled to words out of 30
@@ -310,8 +321,8 @@
         var tn = names.map(function(nm, j){ var t = mk('text', 'dr3-cname', { x: q.x + 16, y: cy + j * lh }, gLabs); t.textContent = nm; t.style.fontSize = fs + 'px'; return t; });
         var cnt = mk('text', 'dr3-ccount', { x: q.x + 16, y: cy + names.length * lh }, gLabs);
         if(G.phone) cnt.style.display = 'none';   // a phone's card has room for the name only; the count is in the cause line and "?"
-        var mark = mk('path', 'dr3-centre', null, gPlot);
-        PE.rows.push({ d: d, y0: y0, base: base, card: card, names: tn, cnt: cnt, mark: mark });
+        var mark = mk('path', 'dr3-centre', null, gPlot), markU = mk('path', 'dr3-centre is-ub', null, gPlot);
+        PE.rows.push({ d: d, y0: y0, base: base, card: card, names: tn, cnt: cnt, mark: mark, markU: markU });
       });
       // the axis, its numbers and the truth
       var ax = q.bot;
@@ -347,10 +358,18 @@
     function dotEl(o){ var e = mk('circle', 'dr3-dot' + (o.ub ? ' is-ub' : ''), { r: G.P.rr }, gDots); o.el = e; return e; }
     function rowStack(d){
       // place every landed dot of a row: bins of one dot width, stacked up from the row's base
-      var q = G.P, rw = PE.rows[DES.indexOf(d)], list = rows[d], rr = q.rr, bw = rr * 2 + 0.8, cnt = {}, maxC = 1;
-      list.forEach(function(o){ o.bin = Math.floor((xv(o.v) - q.l) / bw); });
-      list.forEach(function(o){ if(o.land){ cnt[o.bin] = (cnt[o.bin] || 0) + 1; maxC = Math.max(maxC, cnt[o.bin]); } });
-      var room = rw.base - (rw.y0 + 6) - rr * 2, stp = Math.min(rr * 2 + 0.6, room / Math.max(1, maxC - 1 + 0.001));
+      var q = G.P, rw = PE.rows[DES.indexOf(d)], list = rows[d], rr = q.rr, bw, cnt, maxC, room;
+      // the dots get smaller (down to 2 px) before a stack is squeezed, so hollow and filled stay apart
+      for(;;){
+        bw = rr * 2 + 0.8; cnt = {}; maxC = 1;
+        list.forEach(function(o){ o.bin = Math.floor((xv(o.v) - q.l) / bw); });
+        list.forEach(function(o){ if(o.land){ cnt[o.bin] = (cnt[o.bin] || 0) + 1; maxC = Math.max(maxC, cnt[o.bin]); } });
+        room = rw.base - (rw.y0 + 6) - rr * 2;
+        if(rr <= 2 || (maxC - 1) * (rr * 2 + 0.6) <= room) break;
+        rr = Math.max(2, rr - 0.2);
+      }
+      rw.rr = rr;
+      var stp = Math.min(rr * 2 + 0.6, room / Math.max(1, maxC - 1 + 0.001));
       var seen = {};
       list.forEach(function(o){ var lv = o.land ? (seen[o.bin] = (seen[o.bin] || 0) + 1) - 1 : (cnt[o.bin] || 0) + ((seen['f' + o.bin] = (seen['f' + o.bin] || 0) + 1) - 1); o.lvl = lv; o.ty = rw.base - rr - Math.min(lv, maxC + 2) * stp; });
       return stp;
@@ -500,24 +519,30 @@
     function paintDots(t){
       DES.forEach(function(d, k){
         var rw = PE.rows[k], list = rows[d];
-        var on0 = d === S.design, flying = list.some(function(o){ return !o.land; }), lastKey = list.length + '|' + on0 + '|' + (list.length ? list[list.length - 1].last : '');
+        var on0 = d === S.design, flying = list.some(function(o){ return !o.land; }), lastKey = list.length + '|' + on0 + '|' + S.blind + '|' + (list.length ? list[list.length - 1].last : '');
         // a row at rest whose dots and state have not changed since the last paint is left alone (Run 100 on a full plot)
         if(!flying && rw._key === lastKey){ return; }
         rw._key = flying ? null : lastKey;
         rowStack(d);
-        var top = rw.y0 + 4, nLand = 0, sum = 0;
+        var top = rw.y0 + 4, nLand = 0, sum = 0, nb = [0, 0], sb = [0, 0];
         list.forEach(function(o){
           var e = o.el || dotEl(o), x = xv(o.v), y;
-          if(o.land){ y = o.ty; nLand++; sum += o.v; }
+          if(o.land){ y = o.ty; nLand++; sum += o.v; nb[o.ub ? 1 : 0]++; sb[o.ub ? 1 : 0] += o.v; }
           else { var f = clamp((t - o.t0) / o.dur, 0, 1); y = f <= 0 ? -100 : top + (o.ty - top) * easeIO(f); }
-          var k2 = n1(x) + '|' + n1(y) + '|' + o.last + '|' + (f <= 0 && !o.land);
-          if(o._k !== k2){ o._k = k2; at(e, { cx: x, cy: y }); e.style.display = !o.land && y < 0 ? 'none' : ''; e.classList.toggle('is-last', o.last && o.land); }
+          var k2 = n1(x) + '|' + n1(y) + '|' + o.last + '|' + (f <= 0 && !o.land) + '|' + (o.land ? rw.rr : 0);
+          if(o._k !== k2){ o._k = k2; at(e, { cx: x, cy: y, r: o.land ? rw.rr : G.P.rr }); e.style.display = !o.land && y < 0 ? 'none' : ''; e.classList.toggle('is-last', o.last && o.land); }
         });
-        txt(rw.cnt, nLand === 1 ? '1 run' : nLand + ' runs');
-        rw.cntN = nLand;
+        // a row holding both blindings counts and marks each on its own (the hollow triangle: the not blind runs)
+        var mixed = nb[0] && nb[1], useUb = sc().placebo && !S.blind ? 1 : 0;
+        if(mixed) txt(rw.cnt, nb[useUb] + (useUb ? ' not blind' : ' blind'));
+        else txt(rw.cnt, nLand === 1 ? '1 run' : nLand + ' runs');
+        rw.cntN = mixed ? nb[useUb] : nLand;
         rw.mean = nLand ? sum / nLand : null;
-        if(nLand >= 5){ var mx = xv(rw.mean); at(rw.mark, { d: 'M' + n1(mx) + ' ' + n1(rw.base + 1) + ' l -5 7 h 10 Z' }); rw.mark.style.display = ''; }
-        else rw.mark.style.display = 'none';
+        [[rw.mark, 0], [rw.markU, 1]].forEach(function(m){
+          var n = nb[m[1]];
+          if(n >= 5){ var mx = xv(sb[m[1]] / n); at(m[0], { d: 'M' + n1(mx) + ' ' + n1(rw.base + 1) + ' l -5 7 h 10 Z' }); m[0].style.display = ''; }
+          else m[0].style.display = 'none';
+        });
         var on = d === S.design;
         rw.card.classList.toggle('is-on', on);
         rw.names.forEach(function(n){ n.classList.toggle('is-on', on); });
@@ -573,7 +598,7 @@
       if(busy()){ parts.push({ t: 'estimate ' + fx(est, 1) + ' ' + unitOf(), role: 'est' }); cause.set(parts); return; }
       var st = rowStats(run.design);
       if(run.fast || rowN >= 20){
-        var sub = st && run.ub !== undefined ? rowStats(run.design, run.ub) : st, bias = sub ? biased(sub) : 0;
+        var sub = st && run.ub !== undefined ? rowStats(run.design, run.ub) : st, bias = sub ? biased(sub, run.design, run.ub) : 0;
         if(take()) return;
         cause.set([{ t: dn, role: 'des' }, { t: sub.n + ' runs' + (sc().placebo ? (run.ub ? ', not blind' : ', blind') : ''), role: 'ink' }, { t: 'centered ' + fx(sub.mean, 1) + ' ' + unitOf(), role: bias ? 'bias' : 'est' }, { t: 'true ' + fx(trueEff(), 1) + (bias ? ': biased' : ''), role: 'tru' }]);
         return;
@@ -584,7 +609,8 @@
       cause.set(parts);
     }
     /* centred off the truth: more than three standard errors and a third of a unit */
-    function biased(st){ if(!st || st.n < 10) return 0; var off = st.mean - trueEff(); return Math.abs(off) > 3 * st.sd / Math.sqrt(st.n) && Math.abs(off) > 0.3 ? (off > 0 ? 1 : -1) : 0; }
+    /* only a row that can be biased (someone picks, or not blind runs) is ever called biased: random assignment never is */
+    function biased(st, d, ub){ if(!st || st.n < 10 || !(d === 'none' || ub)) return 0; var off = st.mean - trueEff(); return Math.abs(off) > 3 * st.sd / Math.sqrt(st.n) && Math.abs(off) > 0.3 ? (off > 0 ? 1 : -1) : 0; }
     /* the takeaway, once each, when the picture at rest shows it */
     var shownTake = null;
     function take(){
@@ -595,10 +621,10 @@
       if(!run || busy()) { words(); return; }
       var s = sc(), d = run.design, st = rowStats(d, s.placebo ? run.ub : null), cr = rowStats('cr', s.placebo ? false : null), t = null, k = null;
       if(st && st.n >= 20){
-        if(run.ub && st.n >= 20 && biased(st) > 0){ k = 'ub'; t = s.unblindTake; }
-        else if(d === 'none' && biased(st)){ k = 'none'; t = s.noneTake; }
-        else if(d === 'cr' && !biased(st)){ k = 'cr'; t = 'Random assignment centers the estimates on the true effect.'; }
-        else if((d === 'block' || d === 'pairs') && !biased(st) && cr && cr.n >= 20 && st.sd < cr.sd * 0.85){ k = d; t = d === 'block' ? 'Blocking by ' + s.lurk.what + ' makes the estimates vary less around the truth.' : 'Pairing similar ' + s.units + ' makes the estimates vary less around the truth.'; }
+        if(run.ub && st.n >= 20 && biased(st, d, true) > 0){ k = 'ub'; t = s.unblindTake; }
+        else if(d === 'none' && biased(st, d, run.ub)){ k = 'none'; t = s.noneTake; }
+        else if(d === 'cr' && !run.ub){ k = 'cr'; t = 'Random assignment centers the estimates on the true effect.'; }
+        else if((d === 'block' || d === 'pairs') && !run.ub && cr && cr.n >= 20 && st.sd < cr.sd * 0.85){ k = d; t = d === 'block' ? 'Blocking by ' + s.lurk.what + ' makes the estimates vary less around the truth.' : 'Pairing ' + s.units + ' by ' + s.lurk.what + ' makes the estimates vary less around the truth.'; }
       }
       shownTake = null;
       if(t && !S.took[s.id + ':' + k]){ S.took[s.id + ':' + k] = true; shownTake = t; }
@@ -631,9 +657,9 @@
     }
     function domain(){
       var r0 = M.rng(31), all = [trueEff()], s = sc();
-      DES.forEach(function(d){ [false, true].forEach(function(ub){ if(ub && !s.placebo) return; all = all.concat(D.many(r0, S.U, d, s, 120, { unblind: ub }).diffs); }); });
+      DES.forEach(function(d){ [false, true].forEach(function(ub){ if(ub && !s.placebo) return; all = all.concat(D.many(r0, S.U, d, s, 400, { unblind: ub }).diffs); }); });
       var lo = Math.min.apply(null, all), hi = Math.max.apply(null, all), tk = P && P.ticks ? P.ticks(lo, hi, 6) : [lo, hi], stp = tk.length > 1 ? tk[1] - tk[0] : 1;
-      dom = [Math.floor(lo / stp) * stp, Math.ceil(hi / stp) * stp];
+      dom = [Math.floor((lo - stp * 0.6) / stp) * stp, Math.ceil((hi + stp * 0.6) / stp) * stp];   // half a tick and more beyond the long tail
     }
     function setScene(i){
       finishRun(); run = null; shownTake = null; S.sel = -1;
@@ -721,6 +747,8 @@
       var key = g.W + 'x' + g.H + ':' + sc().id;
       if(!force && G && key === G.key) return;
       g.key = key; G = g;
+      // the picker's names: short on a phone, so the menu never clips its text
+      [].forEach.call(pick.options, function(o, i){ var x = SCN[i]; txt(o, g.phone && x.pickShort ? x.pickShort : x.name); });
       svg.setAttribute('viewBox', '0 0 ' + g.W + ' ' + g.H); svg.setAttribute('width', g.W); svg.setAttribute('height', g.H);
       svg.setAttribute('aria-label', sc().name + ': ' + S.U.length + ' ' + sc().units + ' and a plot of the estimated effect for each design.');
       unitGeo(); drawPlot(); drawBack(); drawKey();
@@ -752,11 +780,11 @@
       };
       var h = '<p class="dr3-howref"><button type="button" class="tk2-how" data-how>Show me how</button> to use it, step by step.</p>';
       h += '<h3>What you are looking at</h3><p><b>The experiment.</b> ' + esc(cap(s.count)) + ' are the experimental units. The explanatory variable is the treatment: <b>A</b>, ' + esc(A) + ', or <b>B</b>, ' + esc(B) + '. The response variable is ' + esc(s.response) + '. ' + (people() ? 'Age matters too: older volunteers recall fewer words whatever pill they take, so age can be confounded with the pill.' : 'Sunlight matters too: the pots on the back bench, by the window, grow taller whatever they are fed, so sunlight can be confounded with fertilizer.') + '</p>';
-      h += '<p><b>One dot, one experiment.</b> Each run assigns the treatments, measures every ' + esc(s.unit) + ', and computes the estimate: mean of A minus mean of B. Its dot drops into the row of the design used. The line marks the true effect built into this simulation (' + fx(trueEff(), 1) + ' ' + esc(unitOf()) + '); in a real study nobody knows it. The small triangle under a row marks the mean of its dots.</p>';
+      h += '<p><b>One dot, one experiment.</b> Each run assigns the treatments, measures every ' + esc(s.unit) + ', and computes the estimate: mean of A minus mean of B. Its dot drops into the row of the design used. The line marks the true effect built into this simulation (' + fx(trueEff(), 1) + ' ' + esc(unitOf()) + '); in a real study nobody knows it. The small triangle under a row marks the mean of its dots (a hollow one, the mean of the not blind runs).</p>';
       h += '<h3>This design: ' + esc(d === 'none' ? s.noneCard + ' (no random assignment)' : { cr: 'completely randomized', block: 'randomized block', pairs: 'matched pairs' }[d]) + '</h3><p>' + esc(HOW[d]) + '</p>';
       h += '<p><b>Reading the rows.</b> Random assignment centers the dots on the true effect (no bias). Blocking and pairing make them hug it (less variability), because each comparison is made between similar units. Someone choosing pushes them off it: the effect of ' + esc(s.lurk.what) + ' is mixed in (confounding).</p>';
-      if(s.placebo) h += '<h3>Blinding</h3><p>' + esc(s.blindWhy) + ' The switch under the tables turns blinding off; runs that are not blind show as hollow dots in the same row.</p>';
-      h += '<h3>What a study like this allows</h3><p>Random assignment allows a cause and effect conclusion: the treatment caused the difference, for units like these. Generalizing to a larger population needs random sampling, which these ' + esc(s.units) + ' did not have: they were not chosen at random from all ' + (people() ? 'adults' : 'tomato plants') + '.</p>';
+      if(s.placebo) h += '<h3>Blinding</h3><p>' + esc(s.blindWhy) + ' The switch under the tables turns blinding off; runs that are not blind show as hollow dots in the same row, with a hollow triangle at their mean.' + (d === 'none' ? ' When the researcher picks, the researcher knows who got caffeine, so the study is at best single blind: the volunteers can still be kept from knowing.' : '') + '</p>';
+      h += '<h3>What a study like this allows</h3><p>Random assignment allows a cause and effect conclusion when the difference is too large to be explained by chance alone (statistically significant): then the treatment caused the difference, for units like these. Generalizing to a larger population needs random sampling, which these ' + esc(s.units) + ' did not have: they were not chosen at random from all ' + (people() ? 'adults' : 'tomato plants') + '.</p>';
       if(run && drawnEst() != null){
         h += '<h3>This experiment</h3><div class="table-wrap" tabindex="0" role="region" aria-label="Each unit, its treatment and response"><table class="ls-tbl"><thead><tr><th scope="col">' + esc(cap(s.unit)) + '</th><th scope="col">' + esc(cap(s.lurk.what)) + '</th><th scope="col">Treatment</th><th scope="col">' + esc(cap(unitOf())) + '</th></tr></thead><tbody>' +
           S.U.map(function(u){ return '<tr><th scope="row">' + u.label + '</th><td>' + esc(s.lurk.names[u.block]) + (u.age != null ? ' (' + u.age + ')' : '') + '</td><td>' + (run.tr[u.i] === 'A' ? 'A: ' + esc(s.tA) : 'B: ' + esc(s.tB)) + '</td><td class="r">' + fx(run.res.y[u.i], s.decimals) + '</td></tr>'; }).join('') + '</tbody></table></div>' +

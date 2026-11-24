@@ -174,11 +174,15 @@ From `docs/apstat-reviews/tools.md`. Every drill key passed an independent SciPy
   researcher hands the caffeine pills to the volunteers who seem most alert, mostly the younger ones; the pills still
   look alike". Volunteers who choose their pill know which one they took, so the old scene could be shown "blind"
   while it could not be; the Test yourself context `caffeine` still describes self-selection (an observational
-  comparison) and is unchanged. Confirm. (2) "Biased" in the cause line uses the old tool's rule: a row's mean is more
-  than three standard errors and 0.3 units from the true effect (a simulation check, not an AP test). (3) The
-  blocking and pairing takeaway says the estimates "vary less around the truth" and appears only when that row's SD is
-  under 85% of the completely randomized row's. Over 300 seeds of 100 runs each: plants, both takeaways show every
-  time (SD ratio at most 0.50); memory, pairing every time and blocking 253 of 300 (age's effect, 4 words, is small
-  next to the person to person spread). A completely randomized row was flagged "biased" 1 time in 300 (plants).
-  (4) Matched pairs here pair neighbours in the same row or age group (similar units), not one unit receiving both
-  treatments; "?" names the other form.
+  comparison) and is unchanged. Confirm. (2) Review round 1: "biased" (the vermillion "centered" and "true 1.5: biased") is shown only for rows that can be
+  biased by design (someone picks, or not blind runs), with the old test (a row's mean more than three standard errors
+  and 0.3 units from the true effect), which flags those rows every time. A random design is never called biased:
+  checked after every run, that test had falsely flagged 2.4 to 4.5% of students on the random rows. (3) Review round
+  1: the memory study's age effect is now 7 words of 30 (was 4), so blocking by age visibly narrows the row; the
+  blocking takeaway (block SD under 85% of the completely randomized SD) now shows for 96% of students at 20 runs and
+  100% at 100 (plants: 100%). Confirm 7 words is a fair younger and older gap in free recall of 30 words.
+  (4) Matched pairs here pair neighbours in the same row or age group, alike in the other variable (light, age group)
+  but no more alike than any two units of that row or group in the model; the text says only that (review round 1),
+  and "?" names the other form (each unit gets both treatments). (5) When the researcher picks who gets caffeine,
+  the researcher knows, so that study is at best single blind (the volunteers can still be kept from knowing); "?"
+  says so for that design.
