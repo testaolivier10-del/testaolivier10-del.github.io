@@ -26,7 +26,7 @@
 .cs-rule{stroke:var(--line);stroke-width:1.2;}
 .cs-curve{fill:none;stroke:var(--stat-s5);stroke-width:2.4;}
 .cs-pshade{fill:var(--cink);fill-opacity:.4;}
-.cs-crit{stroke:var(--muted);stroke-width:1.5;stroke-dasharray:5 4;}
+.cs-crit{stroke:var(--muted);stroke-width:1.5;}
 .cs-critl,.cs-dfl{fill:var(--muted);font-size:11.5px;font-weight:700;}
 .cs-axis{stroke:var(--ink);stroke-width:1.4;}
 .cs-tick{stroke:var(--muted);stroke-width:1.2;}
@@ -92,7 +92,7 @@
 .cs2-pick{display:inline-flex;align-items:center;gap:8px;font:800 13px var(--font-ui);color:var(--muted);}
 .cs2-sel{min-height:40px;max-width:250px;padding:0 30px 0 12px;border-radius:999px;border:1.5px solid var(--line);background:var(--white);color:var(--ink);font:800 14px var(--font-ui);}
 .cs2-sel:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
-.cs2-scene{position:relative;flex:1 1 auto;min-height:420px;border-radius:18px;overflow:hidden;}
+.cs2-scene{position:relative;flex:1 1 auto;min-height:320px;border-radius:18px;overflow:hidden;}
 .cs2-scene.is-fade{animation:cs2fade .26s ease-out;}
 @keyframes cs2fade{from{opacity:.35;}to{opacity:1;}}
 .cs2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
@@ -182,3 +182,4 @@
 .cs2-type{width:7ch;min-height:44px;padding:4px 8px;border-radius:10px;border:2px solid var(--line);background:var(--white);color:var(--ink);font:800 16px var(--font-mono);text-align:center;box-sizing:border-box;}
 .cs2-a[aria-pressed="true"]{background:var(--ctint);box-shadow:inset 0 0 0 2px var(--cink);color:var(--cink);}
 @media (prefers-reduced-motion: reduce){ .cs2-scene.is-fade{animation:cs2fade .26s ease-out;} }
+.cs2-o.is-hid,.cs2-e.is-hid,.cs2-eglyph.is-hid{visibility:hidden;}

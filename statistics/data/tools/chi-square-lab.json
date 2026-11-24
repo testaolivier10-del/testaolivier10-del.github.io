@@ -16,7 +16,7 @@
         "rowVar": "school", "colVar": "lunch choice", "groups": "the three schools", "pop": "students at the three schools",
         "story": "Random samples of 100 students at each of three schools were asked what they usually eat for lunch." },
       { "id": "news", "topic": "chi-square-test", "name": "Age and news source (independence)", "short": "News sources", "design": "independence",
-        "icons": ["social", "tv", "web"], "token": "card", "noun": "adults", "unit": "card", "claim": "of an association between age and news source", "random": "one random sample of 340 adults.",
+        "icons": ["social", "tv", "web"], "token": "card", "noun": "adults", "unit": "card", "claim": "that age and news source are associated", "random": "one random sample of 340 adults.",
         "rows": ["18 to 34", "35 to 54", "55 and over"], "cols": ["Social media", "TV", "Websites"], "obs": [[62, 18, 40], [38, 34, 44], [17, 56, 31]],
         "rowVar": "age group", "colVar": "main news source", "groups": "the three age groups", "pop": "adults in the city",
         "story": "A random sample of 340 adults in a city were asked their age and their main source of news." },

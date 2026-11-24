@@ -295,17 +295,24 @@
         g.tb = { x: padp, y: padp, w: W - 2 * padp - gap - cw0, h: H - 2 * padp };
         g.cv = { x: g.tb.x + g.tb.w + gap, y: padp, w: cw0, h: H - 2 * padp };
       } else {
-        var chh = clamp(H * (g.phone ? 0.29 : 0.33), g.phone ? 138 : 170, 236);
+        var chh = clamp(H * (g.phone ? 0.29 : 0.33), g.phone ? (H < 460 ? 126 : 138) : 170, 236);
         g.tb = { x: padp, y: padp, w: W - 2 * padp, h: H - 2 * padp - gap - chh };
         g.cv = { x: padp, y: g.tb.y + g.tb.h + gap, w: W - 2 * padp, h: chh };
       }
       var tb = g.tb, r = R(), c = C();
       tb.labW = g.phone ? clamp(tb.w * 0.19, 56, 74) : clamp(tb.w * 0.14, 92, 140);
       tb.totW = g.phone ? 40 : 66;
-      tb.headH = g.phone ? 46 : 54; tb.footH = g.phone ? 26 : 30;
-      tb.x0 = tb.x + tb.labW; tb.cw = (tb.w - tb.labW - tb.totW) / c;
+      // a column head is an icon and its name (one or two lines: the head grows by a line when any name wraps)
+      g.hlh = g.phone ? 11.5 : 13; g.hl = [];
+      tb.cw = (tb.w - tb.labW - tb.totW) / c;
+      for(var hj = 0; hj < c; hj++) g.hl.push(lines2(S.st.cols[hj], tb.cw - 6, g.phone ? 11.5 : 12.5, 800));
+      g.hlines = Math.max.apply(null, g.hl.map(function(l){ return l.length; }));
+      tb.headH = (g.phone ? 40 : 50) + (g.hlines - 1) * g.hlh; tb.footH = g.phone ? 24 : 30;
+      tb.x0 = tb.x + tb.labW;
       tb.rowH = (tb.h - tb.headH - tb.footH) / r;
-      g.band = g.phone ? 16 : 22; g.knobRoom = g.phone ? 12 : 18; g.ctr = g.phone ? 6 : 8;
+      // phones: the knob may rise over its own cell's numbers (they are in the cause line then, and hide); wider: room above
+      g.band = g.phone ? 16 : 22; g.knobRoom = g.phone ? 5 : 22; g.ctr = g.phone ? 6 : 8; g.kr = g.phone ? 12 : 16;
+      g.kFloor = g.kr - 2;   // at a low count the knob stays this far above the counter, clear of the row below
       g.fO = g.phone ? 13 : 16; g.fE = g.phone ? 11 : 12.5;
       g.sw = clamp(tb.cw * (g.phone ? 0.5 : 0.46), 16, 84);
       g.rows = [];
@@ -321,7 +328,9 @@
       // the χ² panel
       var cv = g.cv;
       cv.l = cv.x + (g.phone ? 12 : 20); cv.r = cv.x + cv.w - (g.phone ? 12 : 20);
-      cv.tY = cv.y + 18; cv.top = cv.y + 54; cv.ax = cv.y + cv.h - (g.phone ? 38 : 40);
+      // short phones (compact): no title row; the pill and the p-value's key share the top row, df joins the axis's name
+      g.cmp = g.phone && H < 460;
+      cv.tY = cv.y + 16; cv.top = cv.y + (g.cmp ? 40 : 58); cv.ax = cv.y + cv.h - (g.phone ? 42 : 44);
       return g;
     }
     var PL = null;   // the plot's scale for this study: df, xmax, the cutoff, the curve's peak
@@ -357,8 +366,8 @@
         var hx = g.cx(j), hg = mk('g', 'cs2-head', null, sBack);
         var ic = mk('g', 'cs2-ic', { transform: 'translate(' + n1(hx) + ' ' + n1(tb.y + (g.phone ? 13 : 17)) + ') scale(' + (g.phone ? 0.9 : 1.25) + ')' }, hg);
         ic.innerHTML = ICONS[(st.icons || [])[j]] || '';
-        var hl = lines2(st.cols[j], tb.cw - 6, g.phone ? 11.5 : 12.5, 800);
-        wtext(mk('g', null, null, hg), 'cs2-ch', hx, tb.y + (g.phone ? 33 : 42) + (hl.length > 1 ? 2 : 0), hl, g.phone ? 11.5 : 13);
+        var hl = g.hl[j];
+        wtext(mk('g', null, null, hg), 'cs2-ch', hx, tb.y + (g.phone ? 33 : 42) + (hl.length - 1) * g.hlh / 2, hl, g.hlh);
       }
       var th = mk('text', 'cs2-tk', { x: n1(tb.x + tb.w - tb.totW / 2), y: n1(tb.y + (g.phone ? 33 : 42)), 'text-anchor': 'middle' }, sBack); th.textContent = 'Total';
       // the rows: a sign with the group's name, a counter the stacks stand on
@@ -411,8 +420,9 @@
       mk('line', 'cs2-axis', { x1: n1(cv.l), y1: n1(cv.ax), x2: n1(cv.r), y2: n1(cv.ax) }, sPlot);
       var stp = PL.xmax > 40 ? 10 : PL.xmax > 16 ? (g.phone && PL.xmax > 24 ? 10 : 5) : PL.xmax > 7 ? 2 : 1;
       for(k = 0; k <= PL.xmax + 1e-9; k += stp){ var tx0 = xs(k); mk('line', 'cs2-tick', { x1: n1(tx0), y1: n1(cv.ax), x2: n1(tx0), y2: n1(cv.ax + 5) }, sPlot); var tt = mk('text', 'cs2-tl', { x: n1(tx0), y: n1(cv.ax + 18), 'text-anchor': 'middle' }, sPlot); tt.textContent = String(k); }
-      Pe.parts = mk('text', 'cs2-partsl', { x: n1(cv.l), y: n1(cv.ax + 33) }, sPlot);
-      Pe.parts.textContent = R() * C() + ' cell parts, end to end = χ²';
+      Pe.parts = mk('text', 'cs2-partsl', { x: n1(cv.l), y: n1(cv.ax + 36) }, sPlot);
+      Pe.parts.textContent = R() * C() + ' cell parts, end to end = χ²' + (g.cmp ? ', df = ' + df : '');
+      if(g.cmp) Pe.title.style.display = 'none';
       Pe.crit = mk('line', 'cs2-crit', null, sPlot);
       Pe.critT = mk('text', 'cs2-critl', null, sPlot);
       Pe.mark = mk('line', 'cs2-mark', null, sPlotF);
@@ -438,11 +448,13 @@
         // two small pointers at the line's ends: a mark on the stack, not a tray's rim
         at(ce.eTri, { d: 'M' + n1(x0 - 10) + ' ' + n1(yE - 4.5) + 'l6 4.5l-6 4.5zM' + n1(x0 + sw + 10) + ' ' + n1(yE - 4.5) + 'l-6 4.5l6 4.5z', 'class': 'cs2-etri' + (Ex < 5 ? ' is-low' : '') });
         var bx = tb.x0 + j * tb.cw, by = g.rows[i].y + g.band - (g.phone ? 3 : 5);
-        at(ce.o, { x: bx + (g.phone ? 4 : 6), y: by, 'class': 'cs2-o' + (sg > 0 ? ' is-up' : sg < 0 ? ' is-down' : '') }); stx(ce.o, String(O));
+        // the selected cell's numbers give way when its knob rises over them (phones); the cause line has them
+        var hid = isSel && kY(i, O) - g.kr < g.rows[i].y + g.band + 3 ? ' is-hid' : '';
+        at(ce.o, { x: bx + (g.phone ? 4 : 6), y: by, 'class': 'cs2-o' + (sg > 0 ? ' is-up' : sg < 0 ? ' is-down' : '') + hid }); stx(ce.o, String(O));
         var eTxt = (g.wide && tb.cw > 150 ? 'expected ' : '') + F(Ex, 1);
-        at(ce.e, { x: bx + tb.cw - (g.phone ? 4 : 6), y: by - (g.phone ? 0.5 : 1), 'class': 'cs2-e' + (Ex < 5 ? ' is-low' : '') }); stx(ce.e, eTxt);
+        at(ce.e, { x: bx + tb.cw - (g.phone ? 4 : 6), y: by - (g.phone ? 0.5 : 1), 'class': 'cs2-e' + (Ex < 5 ? ' is-low' : '') + hid }); stx(ce.e, eTxt);
         var ew = tw(eTxt, g.fE, 800), gx1 = bx + tb.cw - (g.phone ? 4 : 6) - ew - (g.phone ? 3 : 4);
-        at(ce.eg, { x1: gx1 - (g.phone ? 6 : 10), y1: by - 4, x2: gx1, y2: by - 4 });
+        at(ce.eg, { x1: gx1 - (g.phone ? 6 : 10), y1: by - 4, x2: gx1, y2: by - 4, 'class': 'cs2-eglyph' + hid });
         at(ce.sel, { 'class': 'cs2-selr' + (isSel ? ' is-on' : '') });
       }
       for(i = 0; i < r; i++){ stx(Te.rows[i], String(t.rowTotals[i])); at(Te.rows[i], { 'class': 'cs2-tot' + (sel[0] === i ? ' is-hl' : '') }); }
@@ -464,18 +476,39 @@
       }
       var crit = Dist().invChi2(1 - S.alpha, PL.df), cx2 = xs(crit);
       at(Pe.crit, { x1: cx2, y1: cv.top + 2, x2: cx2, y2: cv.ax });
-      var ctext = (g.phone ? 'cutoff ' : 'α = ' + A2(S.alpha) + ' cutoff ') + F(crit, 2), cwid = tw(ctext, 11.5, 800), left = mxX > cx2;
-      if(left && cx2 - 6 - cwid < cv.l) left = false; if(!left && cx2 + 6 + cwid > cv.r) left = true;
-      at(Pe.critT, { x: cx2 + (left ? -6 : 6), y: cv.top + 14, 'text-anchor': left ? 'end' : 'start' }); stx(Pe.critT, ctext);
-      at(Pe.mark, { x1: mxX, y1: cv.y + 50, x2: mxX, y2: cv.ax });
+      // the cutoff's label: away from the χ² marker, on a side with room, in full or short ("cutoff 12.59")
+      var cfull = (g.phone ? 'cutoff ' : 'α = ' + A2(S.alpha) + ' cutoff ') + F(crit, 2), cshort = 'cutoff ' + F(crit, 2), ctext = cfull, left = mxX > cx2;
+      var room = function(side, w){ return side ? cx2 - 6 - w >= cv.l : cx2 + 6 + w <= cv.r; };
+      var span = function(side, w){ var xa = side ? cx2 - 8 - w : cx2 + 4, xb = side ? cx2 - 4 : cx2 + 8 + w; return mxX < xa - 6 || mxX > xb + 6; };
+      // the label sits above the curve where it runs under it (the highest point of the curve under the label, less 6 px)
+      var cy = function(side, w){ var xa = side ? cx2 - 8 - w : cx2 + 4, xb = side ? cx2 - 4 : cx2 + 8 + w, top = Infinity;
+        for(var q = 0; q <= 16; q++){ var px = xa + (xb - xa) * q / 16, xv = (px - cv.l) / (cv.r - cv.l) * PL.xmax; if(xv > 0) top = Math.min(top, ys(PL.f(xv))); }
+        return Math.min(cv.top + 14, top - 6); };
+      var floorY = cv.y + (g.cmp ? 34 : 56) + 11;
+      // candidates in order: this side then the other, in full then short; each must have room and stay off the marker;
+      // the first that also sits above the curve wins, else the name goes past the marker pointing back, else the highest
+      var cands = [[left, cfull], [!left, cfull], [left, cshort], [!left, cshort]].map(function(c){ var w = tw(c[1], 11.5, 800); return { side: c[0], t: c[1], w: w, ok: room(c[0], w) && span(c[0], w), y: cy(c[0], w) }; }).filter(function(c){ return c.ok; });
+      var pick = cands.filter(function(c){ return c.y >= floorY; })[0], past = false, ylab;
+      if(!pick){
+        var pt = '← ' + cshort, pwd = tw(pt, 11.5, 800);
+        if(mxX + 10 + pwd <= cv.r){ past = true; ctext = pt; }
+        else if(cands.length){ pick = cands.slice().sort(function(a, b){ return b.y - a.y; })[0]; }
+        else { pick = { side: room(true, tw(cshort, 11.5, 800)), t: cshort, y: floorY }; }
+      }
+      if(pick){ left = pick.side; ctext = pick.t; ylab = Math.max(pick.y, floorY); }
+      at(Pe.critT, { x: past ? mxX + 8 : cx2 + (left ? -6 : 6), y: past ? cv.top + 14 : ylab, 'text-anchor': past || !left ? 'start' : 'end' }); stx(Pe.critT, ctext);
+      var pY = g.cmp ? cv.y + 8 : cv.y + 30;
+      at(Pe.mark, { x1: mxX, y1: pY + 24, x2: mxX, y2: cv.ax });
       var ptxt = 'χ² = ' + F(chi, 2) + (chi > PL.xmax ? ' →' : ''), pw = tw(ptxt, 13, 900) + 20, pl = clamp(mxX - pw / 2, cv.x + 6, cv.x + cv.w - 6 - pw);
-      at(Pe.pillR, { x: pl, y: cv.y + 27, width: pw }); at(Pe.pillT, { x: pl + pw / 2, y: cv.y + 43.5 }); stx(Pe.pillT, ptxt);
+      at(Pe.pillR, { x: pl, y: pY, width: pw }); at(Pe.pillT, { x: pl + pw / 2, y: pY + 16.5 }); stx(Pe.pillT, ptxt);
       var pv = P4(t.p), ktxt = 'p-value ' + (pv.charAt(0) === '<' ? pv : '= ' + pv), kw = tw(ktxt, 12.5, 900);
-      at(Pe.pkT, { x: cv.r, y: cv.tY + 4 }); stx(Pe.pkT, ktxt); at(Pe.pkR, { x: cv.r - kw - 18, y: cv.tY - 6 });
+      // compact: the key on the side of the pill with more room
+      var kRight = !g.cmp || cv.r - (pl + pw) >= pl - cv.l, kx = kRight ? cv.r : cv.l + kw + 18;
+      at(Pe.pkT, { x: kx, y: cv.tY + 4 }); stx(Pe.pkT, ktxt); at(Pe.pkR, { x: kx - kw - 18, y: cv.tY - 6 });
       at(Pe.pk, { 'class': 'cs2-pk' + (t.p < S.alpha ? ' is-low' : '') });
       // the title gives way to the key when both do not fit on one row
       var tWide = tw(Pe.title.textContent, 13, 900);
-      Pe.title.style.display = cv.l - 4 + tWide + 10 > cv.r - kw - 20 ? 'none' : '';
+      Pe.title.style.display = g.cmp || cv.l - 4 + tWide + 10 > cv.r - kw - 20 ? 'none' : '';
       placeKnob();
       words(t);
     }
@@ -486,14 +519,14 @@
     function words(t){
       var i = S.sel[0], j = S.sel[1], O = S.D[i][j], Ex = t.expected[i][j], sg = t.signs[i][j], role = sg > 0 ? 'up' : sg < 0 ? 'down' : 'ink';
       var pv = P4(t.p), cellName = S.st.cols[j] + ', ' + S.st.rows[i];
-      var parts = [{ t: cellName + ': ' + O + ' vs ' + F(Ex, 1), role: role, say: cellName + ': observed ' + O + ', expected ' + F(Ex, 1) },
+      var parts = [{ t: (G && G.phone ? '' : cellName + ': ') + O + ' vs ' + F(Ex, 1) + (G && G.phone ? ' expected' : ''), role: role, say: cellName + ': observed ' + O + ', expected ' + F(Ex, 1) },
         { t: 'part ' + F(t.components[i][j], 2), role: role, say: 'its part of chi-square ' + F(t.components[i][j], 2) },
         { t: 'χ² ' + F(t.chi2, 2), role: 'chi', say: 'chi-square ' + F(t.chi2, 2) },
         { t: 'p ' + (pv.charAt(0) === '<' ? pv : '= ' + pv), role: 'p', say: 'p-value ' + (pv.charAt(0) === '<' ? 'less than 0.0001' : pv) }];
-      if(!t.ok) parts.push({ t: 'an expected count under 5', role: 'bad' });
+      if(!t.ok) parts.push({ t: 'E under 5', role: 'bad', say: 'an expected count is under 5' });
       var key = parts.map(function(p){ return p.t; }).join('|');
       if(S.take && !busy()){ var tk = S.take; S.take = null; cause.take(tk); say(tk); settledKey = key; }
-      else if(key !== settledKey){ settledKey = key; cause.set(parts); }
+      else if(key !== settledKey || (busy() && cause.el.classList.contains('is-take'))){ settledKey = key; cause.set(parts); }
       if(!busy()) say(cause.el.classList.contains('is-take') ? cause.el.textContent : cause.text());
       sTitle.textContent = 'Stacks of ' + (S.st.noun || 'counts') + ' for each ' + S.st.rowVar + ' and ' + S.st.colVar + ', each with a line at its expected count; below, the chi-square curve with df ' + t.df + ', chi-square ' + F(t.chi2, 2) + ' and the p-value ' + (pv.charAt(0) === '<' ? 'less than 0.0001' : pv) + ' shaded.';
       knobText();
@@ -518,8 +551,10 @@
     // Move the drawn table toward a new one: trays go on or come off one at a time, every cell together.
     function go(tbl, dur, ease){
       S.T = copyT(tbl);
-      if(calm() || !dur){ A = null; S.D = copyT(tbl); paint(); settled(); return; }
+      if(knob.value() !== S.T[S.sel[0]][S.sel[1]]) knob.value(S.T[S.sel[0]][S.sel[1]]);   // the knob's own value follows the table (Start over, a chance table)
+      if(calm() || !dur){ A = null; if(dur && !sameT(S.D, tbl) && !hopt._drag) fade(); S.D = copyT(tbl); paint(); settled(); return; }
       A = { from: copyT(S.D), to: copyT(tbl), t0: now(), dur: dur, ease: ease || easeIO };
+      if(cause.el.classList.contains('is-take')){ settledKey = ''; }   // a takeaway goes as soon as anything moves
       kick();
     }
     function settled(){ if(!S.take) { refHtml(); return; } paint(); refHtml(); }
@@ -528,17 +563,20 @@
     /* ---------------------------------------------------- the main control: the selected stack's top */
     var grabOff = 0, dragFrom = null;
     var hopt = { key: 'apstat-chi-square-lab', label: 'Count', value: 0, min: 0, max: 60, step: 1, chip: false,
-      at: function(){ if(!G) return null; var i = S.sel[0], j = S.sel[1]; return [G.cx(j), G.y(i, S.D[i][j])]; },
+      at: function(){ if(!G) return null; var i = S.sel[0], j = S.sel[1]; return [G.cx(j), kY(i, S.D[i][j])]; },
       pick: function(x, y){ if(!G) return null; var i = S.sel[0], rg = rangeOf(i, S.sel[1]); return clamp(Math.round((G.rows[i].sBot - (y - grabOff)) / G.pxc), rg[0], rg[1]); },
       dir: function(){ return 90; },
       keys: function(v, k){ if(k === 'ArrowLeft' || k === 'ArrowRight') return null; return undefined; },
       valuetext: function(v){ return knobVal(v); },
-      onStart: function(){ hideCue(true); if(!dragFrom) dragFrom = { chi: derive().chi2, p: derive().p }; },
+      onStart: function(){ hideCue(true); hopt._drag = true; if(!dragFrom) dragFrom = { chi: derive().chi2, p: derive().p }; },
       onInput: function(v){ setCount(v); tourDid('drag'); },
-      onEnd: function(){ endDrag(); } };
+      onEnd: function(){ hopt._drag = false; endDrag(); } };
     var knob = K.handle(layer, hopt);
+    // the knob rides on the stack's drawn top; near the counter it stays a little above it (clear of the next row)
+    function kY(i, v){ return Math.min(G.y(i, v), G.rows[i].sBot - G.kFloor); }
     knob.el.classList.add('cs2-knob');
-    function knobVal(v){ var i = S.sel[0], j = S.sel[1], t = derive(); return v + ' ' + (S.st ? S.st.noun || '' : '') + ', expected ' + F(t.expected[i][j], 1); }
+    // what a screen reader hears: the new count and the expected count it makes (from the table with this count in it)
+    function knobVal(v){ var i = S.sel[0], j = S.sel[1], tt = copyT(S.T); tt[i][j] = v; var t = CS.table(tt); return v + ' ' + (S.st ? S.st.noun || '' : '') + ', expected ' + (t.minExpected > 0 || t.expected[i][j] > 0 ? F(t.expected[i][j], 1) : 'none'); }
     function knobText(){
       if(!S.st) return;
       var i = S.sel[0], j = S.sel[1], rg = rangeOf(i, j);
@@ -604,13 +642,15 @@
       // a table from H0 with an empty column has no expected count there: draw again
       for(var g2 = 0; g2 < 20 && !(CS.table(nt).minExpected > 0); g2++) nt = CS.chance(r, S.T);
       var t = CS.table(nt);
-      S.take = 'A chance table (H₀ true): p ' + (P4(t.p).charAt(0) === '<' ? P4(t.p) : '= ' + P4(t.p)) + '. About 95 in 100 of these give p above 0.05.';
-      if(S.alpha !== 0.05) S.take = 'A chance table (H₀ true): p ' + (P4(t.p).charAt(0) === '<' ? P4(t.p) : '= ' + P4(t.p)) + '. About ' + Math.round((1 - S.alpha) * 100) + ' in 100 of these give p above ' + A2(S.alpha) + '.';
-      go(nt, 700, easeIO);
+      S.take = 'Drawn with H₀ true: p ' + (P4(t.p).charAt(0) === '<' ? P4(t.p) : '= ' + P4(t.p)) + '. About ' + Math.round((1 - S.alpha) * 100) + ' in 100 land above ' + A2(S.alpha) + '.';
+      scrollIn(); go(nt, 700, easeIO);
     });
-    bReset.addEventListener('click', function(){ hideCue(true); S.take = null; go(S.base, 600, easeIO); });
+    bReset.addEventListener('click', function(){ hideCue(true); S.take = null; scrollIn(); go(S.base, 600, easeIO); });
+    // a button under the picture on a phone: bring the picture into view so the change is seen
+    function scrollIn(){ var r = sceneBox.getBoundingClientRect(); if(r.top < 0 || r.bottom > (window.innerHeight || 800)) try{ sceneBox.scrollIntoView({ block: 'nearest', behavior: calm() ? 'auto' : 'smooth' }); }catch(e){} }
+    function fade(){ sceneBox.classList.remove('is-fade'); void sceneBox.offsetWidth; sceneBox.classList.add('is-fade'); }
     pick.addEventListener('change', function(){ hideCue(true); setStudy(pick.value, true); });
-    function setStudy(idv, fade){
+    function setStudy(idv, doFade){
       var st = studies.filter(function(s){ return s.id === idv; })[0] || studies[0];
       stopAll();
       S.st = st; pick.value = st.id;
@@ -620,8 +660,9 @@
       // start on the cell with the biggest part of χ²
       var t = CS.table(st.obs), b = -1; for(var i = 0; i < st.obs.length; i++) for(var j = 0; j < st.obs[0].length; j++) if(t.components[i][j] > b){ b = t.components[i][j]; S.sel = [i, j]; }
       plotScale();
+      G = null;   // the old study's geometry no longer fits this table
       knob.value(S.T[S.sel[0]][S.sel[1]]);
-      if(fade){ sceneBox.classList.remove('is-fade'); void sceneBox.offsetWidth; sceneBox.classList.add('is-fade'); }
+      if(doFade) fade();
       relayout(true); refHtml();
     }
 
@@ -630,10 +671,15 @@
       // beside the knob, on the side where the bubble stays off the row signs and the totals (else under the cell)
       at: function(){
         if(!G) return [0, 0];
-        var i = S.sel[0], j = S.sel[1], x = G.cx(j), y = G.y(i, S.D[i][j]), bw = tw(cueO.text, 15, 800) + 52, tb = G.tb, kr = G.phone ? 13 : 19;
-        if(x + kr + 4 + bw <= tb.x + tb.w - tb.totW) { cueO.side = 'right'; return [x + kr + 4, y]; }
-        if(x - kr - 4 - bw >= tb.x0) { cueO.side = 'left'; return [x - kr - 4, y]; }
-        cueO.side = 'right'; return [x + kr + 4, y]; } };
+        // the kit sets the bubble 30 px off its point: the point is placed so the bubble starts 6 px past the knob
+        var i = S.sel[0], j = S.sel[1], x = G.cx(j), y = cueY(i, j), bw = cueW(), tb = G.tb, kr = G.kr + 2;
+        if(x + kr + 6 + bw <= tb.x + tb.w - tb.totW) { cueO.side = 'right'; return [x + kr + 6 - 30, y]; }
+        if(x - kr - 6 - bw >= tb.x0) { cueO.side = 'left'; return [x - kr - 6 + 30, y]; }
+        cueO.side = 'right'; return [x + kr + 6 - 30, y]; } };
+    // at the knob's height, moved down or up as needed so the bubble keeps off this row's numbers and the next row's
+    // (it then points at the stack itself, which drags from anywhere on its cell)
+    function cueY(i, j){ var y = kY(i, S.D[i][j]), lo = G.rows[i].y + G.band + 22, hi = G.rows[i].sBot + G.ctr + (G.phone ? 3 : 5) - 20; return lo <= hi ? clamp(y, lo, hi) : (lo + hi) / 2; }
+    function cueW(){ return tw(cueO.text, G && G.phone ? 14.5 : 15, 800) + (G && G.phone ? 50 : 56); }
     var cue = K.cue(layer, cueO);
     function hideCue(used){ if(used) S.touched = true; if(cue.active()) cue.hide(used); }
     var tour = K.tour({ key: 'apstat-chi-square-lab', label: 'Show me how', steps: [
@@ -667,7 +713,7 @@
       var top = sceneBox.getBoundingClientRect().top + (window.scrollY || window.pageYOffset || 0);
       var below = lines.offsetHeight || 120;
       var hh = Math.round(vh - Math.min(top, vh * 0.32) - below - 18);
-      sceneBox.style.height = clamp(hh, vw < 600 ? (vh < 700 ? 400 : 440) : 520, vw < 600 ? 720 : 860) + 'px';
+      sceneBox.style.height = clamp(hh, vw < 600 ? (vh < 700 ? 340 : 440) : 520, vw < 600 ? 720 : 860) + 'px';
     }
     var roT = 0;
     function onResize(){ clearTimeout(roT); roT = setTimeout(function(){ fitHeight(); relayout(); }, 40); }
@@ -684,7 +730,7 @@
       x += '<h3>What you are looking at</h3><p><b>The study.</b> ' + esc(st.story) + '</p>';
       x += '<p><b>One stack per cell</b> of the two-way table: ' + esc(st.rowVar) + ' (rows) by ' + esc(st.colVar) + ' (columns). Each ' + esc(st.unit || 'tray') + ' in a stack is ' + G_u() + ' ' + esc(st.noun || 'counts') + ', so a stack’s height is its observed count (the top ' + esc(st.unit || 'tray') + ' can be part of one). The line across each stack is its <b>expected count</b>: what that cell would hold if ' + tx('$H_0$') + ' were true. Orange above the line: more than expected. Blue below it: fewer.</p>';
       x += '<p><b>Expected count</b> = (row total)(column total) / (grand total). For ' + esc(st.cols[j] + ', ' + st.rows[i]) + ': ' + tx('$\\frac{(' + t.rowTotals[i] + ')(' + t.colTotals[j] + ')}{' + t.total + '} = ' + F(t.expected[i][j], 2) + '$') + '. Change one count and its row total, its column total and the grand total change, so every expected count moves a little: watch the lines.</p>';
-      x += '<p><b>Its part of χ².</b> ' + tx('$\\frac{(O - E)^2}{E} = \\frac{(' + S.T[i][j] + ' - ' + F(t.expected[i][j], 2) + ')^2}{' + F(t.expected[i][j], 2) + '} = ' + F(t.components[i][j], 3) + '$') + '. ' + tx('$\\chi^2 = \\sum \\frac{(O - E)^2}{E} = ' + F(t.chi2, 2) + '$') + ' adds the parts of all ' + (r * cc) + ' cells: the coloured bar on the curve’s axis, cell by cell, ends at χ².</p>';
+      x += '<p><b>Its part of χ².</b> ' + tx('$\\frac{(O - E)^2}{E} = \\frac{(' + S.T[i][j] + ' - ' + F(t.expected[i][j], 2) + ')^2}{' + F(t.expected[i][j], 2) + '} = ' + F(t.components[i][j], 3) + '$') + '. ' + tx('$\\chi^2 = \\sum \\frac{(O - E)^2}{E} = ' + F(t.chi2, 2) + '$') + ' adds the parts of all ' + (r * cc) + ' cells: the colored bar on the curve’s axis, cell by cell, ends at χ².</p>';
       x += '<p><b>The curve</b> is the chi-square distribution with ' + tx('$df = (r - 1)(c - 1) = (' + r + ' - 1)(' + cc + ' - 1) = ' + t.df + '$') + ': the χ² values tables would give if ' + tx('$H_0$') + ' were true. The <b>p-value</b> is the shaded area to the right of χ²: assuming ' + tx('$H_0$') + ' is true, the probability of a χ² of ' + F(t.chi2, 2) + ' or larger, here ' + pw + '. It is not the probability that ' + tx('$H_0$') + ' is true.</p>';
       x += '<h3>This study’s test</h3><p><b>' + (ind ? 'A chi-square test for independence.' : 'A chi-square test for homogeneity.') + '</b> ' + (ind ? 'One random sample, each person classified on two categorical variables (' + esc(st.rowVar) + ' and ' + esc(st.colVar) + ').' : (st.experiment ? 'Treatment groups made by random assignment, compared on one categorical variable (' + esc(st.colVar) + ').' : 'Separate random samples from ' + esc(st.groups) + ', compared on one categorical variable (' + esc(st.colVar) + ').')) + ' The arithmetic is the same for both tests; the hypotheses and the conclusion are not. ' + (ind ? 'A test for homogeneity would not fit: there were not separate samples for each ' + esc(st.rowVar) + '.' : 'A test for independence would not fit: the groups were ' + (st.experiment ? 'assigned' : 'sampled') + ' separately, not one sample classified two ways.') + '</p>';
       x += '<p>' + tx('$H_0$: ' + h.h0) + '<br>' + tx('$H_a$: ' + h.ha) + '</p>';
@@ -725,7 +771,7 @@
     }
     /* On the first visit the cue sits beside the knob: start on the cell with the biggest part of χ² among those where
        it fits beside the knob without covering a sign, a total or a number (phones have little room beside a cell). */
-    function cueFits(i, j){ var x = G.cx(j), bw = tw(cueO.text, 15, 800) + 52, kr = G.phone ? 13 : 19, tb = G.tb; return x + kr + 4 + bw <= tb.x + tb.w - tb.totW || x - kr - 4 - bw >= tb.x0; }
+    function cueFits(i, j){ var x = G.cx(j), bw = cueW(), kr = G.kr + 2, tb = G.tb; return x + kr + 6 + bw <= tb.x + tb.w - tb.totW || x - kr - 6 - bw >= tb.x0; }
     function cueShow(){
       if(S.mode !== 'explore' || !G || S.touched) return;
       try{ if(localStorage.getItem('tk2c:' + cueO.key)) return; }catch(e){}
@@ -734,7 +780,7 @@
         for(var i = 0; i < R(); i++) for(var j = 0; j < C(); j++) if(cueFits(i, j) && t.components[i][j] > b){ b = t.components[i][j]; best = [i, j]; }
         if(best) select(best[0], best[1]);
       }
-      if(cueFits(S.sel[0], S.sel[1])) cue.show();
+      if(cueFits(S.sel[0], S.sel[1])){ cueO.at(); cue.show(); }   // at() picks the side before the bubble is made
     }
     function shown(m){
       S.mode = m;
@@ -749,7 +795,7 @@
       // for the sweep test only: window.ApStatChiSquareLab when the test sets window.LevlToolTest before the page loads
       _t: { S: S, G: function(){ return G; }, Z: function(){ return derive(); }, Ce: function(){ return Ce; }, Pe: function(){ return Pe; }, PL: function(){ return PL; }, busy: busy, xs: function(v){ return xs(v); }, ys: function(v){ return ys(v); },
         setStudy: function(id){ setStudy(id, true); }, select: select, setCount: function(v){ knob.value(v); setCount(v); }, chance: function(){ bChance.click(); }, reset: function(){ bReset.click(); },
-        knob: knob, cause: cause, alpha: function(a){ S.alpha = a; settledKey = ''; paint(); refHtml(); }, relayout: relayout, finish: function(){ stopAll(); paint(); }, cue: cue, tour: tour,
+        knob: knob, drag: function(v){ hopt.onStart(); knob.value(v, true); hopt.onEnd(); }, cause: cause, alpha: function(a){ S.alpha = a; settledKey = ''; paint(); refHtml(); }, relayout: relayout, finish: function(){ stopAll(); paint(); }, cue: cue, tour: tour,
         go: function(m){ var b = document.querySelector('.bt-mode[data-m="' + m + '"]'); if(b) b.click(); } }
     };
   }
