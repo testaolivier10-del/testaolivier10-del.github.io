@@ -203,3 +203,7 @@ with their tags ("6 cm", "18 cm"), and the landing times after a race.
   takes two short lines ("lever arm" / "0.39 m") beside its line.
 - At 360 B's knob keeps 7 px or more from the right pulley's bracket (shorter phone arms, the knob nearer its slider,
   the string's height a little lower).
+- Integration round (2026-11-24): the kept sweep at all ten widths, light and real dark, one width per process: 20 runs,
+  480 states, about 4,060 checks, 0 failures; frames at 1440 light, 390 light and 1024 dark (about 1,380 frames each),
+  0 failures; `build-apphys --check`, `check-apphys-content --check`, AP Physics tests (159 pass), `check-site`,
+  `check-weight --check` pass.
