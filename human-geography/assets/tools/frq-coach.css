@@ -54,7 +54,7 @@
 .fcx-verb.is-degree{background:color-mix(in srgb,var(--r-degree) 22%,transparent);}
 
 /* the answer page: hand-written pieces; a word comes in as it is written */
-.fcx-akick{margin:0 0 6px;font:800 12.5px/1.3 var(--font-ui);color:var(--pg-mute);letter-spacing:.02em;}
+.fcx-akick{width:fit-content;margin:0 0 6px;font:800 12.5px/1.3 var(--font-ui);color:var(--pg-mute);letter-spacing:.02em;}
 .fcx-ans{font-family:'Kalam',var(--font-ui);font-weight:700;line-height:var(--lh,1.62em);color:var(--pg-ink);overflow:hidden;}
 .fcx-dline{display:block;min-height:var(--lh,1.62em);}
 .fcx-w{opacity:0;transition:opacity .16s,background-color .35s,color .35s;padding:1px 0;border-radius:2px;}
@@ -80,13 +80,16 @@
 .fcx-scene.is-wide .fcx-stop{color:#fff;font-size:14.5px;padding-left:14px;}
 :root[data-theme="dark"] .fcx-scene.is-wide .fcx-stop{color:#17191A;}
 .fcx-scene:not(.is-wide) .fcx-stop{align-items:center;text-align:center;font-size:12.5px;padding:0 2px;}
+.fcx-scene:not(.is-wide) .fcx-stop.is-end{align-items:flex-end;text-align:right;}
+.fcx-scene:not(.is-wide) .fcx-stop[data-lines="3"]{line-height:1.02;font-size:12px;}
+.fcx-scene:not(.is-wide) .fcx-stop.is-start{align-items:flex-start;text-align:left;}
 .fcx-stop[aria-pressed="true"]{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px;}
 .fcx-scene.is-wide .fcx-stop.is-name{color:#fff;}
 .fcx-drag .tk2-knob{z-index:3;}
 .fcx-drag .tk2-groove::before{background:none;}
 
 /* the lines under the picture */
-.fcx-lines{display:flex;flex-wrap:wrap;align-items:center;gap:8px;min-width:0;}
+.fcx-lines{display:flex;flex-wrap:wrap;align-items:center;gap:8px;min-width:0;min-height:46px;}
 .fcx .tk2-cz.is-name{--cz:var(--r-name);--cz-ink:var(--ink);border-color:var(--r-name);}
 .fcx .tk2-cz.is-features{--cz:var(--r-features);--cz-ink:var(--ink);border-color:var(--r-features);}
 .fcx .tk2-cz.is-link{--cz:var(--r-link);--cz-ink:var(--ink);border-color:var(--r-link);}

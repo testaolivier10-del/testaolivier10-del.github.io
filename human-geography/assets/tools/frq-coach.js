@@ -256,7 +256,7 @@
         var b = g.book, pw = b[2] / 2;
         g.left = [b[0], b[1], pw, b[3]]; g.right = [b[0] + pw, b[1], pw, b[3]];
         g.m = Math.max(20, Math.min(34, pw * 0.07));
-        g.track = [b[0] + b[2] + 30, b[1] + b[3] - 64, b[0] + b[2] + 30, b[1] + 36];
+        g.track = [b[0] + b[2] + 30, b[1] + b[3] - 82, b[0] + b[2] + 30, b[1] + 34];
       } else {
         g.book = [g.pad, g.pad, W - g.pad * 2, g.H - g.pad * 2];
         g.left = g.book.slice(); g.right = g.book.slice();
@@ -289,13 +289,20 @@
       } else {
         var x = L[0] + m, w = L[2] - m * 2;
         box(qBox, x, L[1] + 8, w, null);
-        if(g.mid){ g.art = [x, L[1] + 52, w * 0.4, Math.min(150, w * 0.4 * 0.5)]; promptEl.style.marginTop = '0px'; promptEl.style.marginLeft = (w * 0.4 + 16) + 'px'; }
+        if(g.mid){ g.art = [x, L[1] + 56, w * 0.4, Math.min(150, w * 0.4 * 120 / 260)]; promptEl.style.marginTop = '10px'; promptEl.style.marginLeft = (w * 0.4 + 16) + 'px'; }
         else { g.art = [x, L[1] + 48, w, Math.min(g.W < 480 ? 92 : 124, w * 120 / 260)]; promptEl.style.marginLeft = '0px'; promptEl.style.marginTop = (g.art[3] + 10) + 'px'; }
         reservePrompt();
         var qBottom = Math.max(L[1] + 8 + qBox.offsetHeight, g.art[1] + g.art[3]);
-        var ty = qBottom + 30, x0 = x + 26, x1 = x + w - 26;
+        var ty = qBottom + 30, x0 = x + 18, x1 = x + w - 16;
         g.track = [x0, ty, x1, ty];
-        st.forEach(function(b, i){ var cx = x0 + (x1 - x0) * i / (st.length - 1), bw = Math.min(84, (x1 - x0) / (st.length - 1) + 10); b.style.left = (cx - bw / 2) + 'px'; b.style.top = (ty + 22) + 'px'; b.style.width = bw + 'px'; b.style.height = '40px'; });
+        // a narrow phone: the long last name takes three short lines, so it stays clear of Compare
+        var lastB = st[st.length - 1], three = (x1 - x0) / (st.length - 1) < 84, lines3 = three ? ['Explain', 'the', 'degree'] : STOP_LINES['explain-degree'];
+        if(lastB.getAttribute('data-lines') !== String(lines3.length)){ lastB.setAttribute('data-lines', lines3.length); lastB.innerHTML = lines3.map(function(t){ return '<span>' + esc(t) + '</span>'; }).join(''); }
+        st.forEach(function(b, i){ var cx = x0 + (x1 - x0) * i / (st.length - 1), bw = Math.min(84, (x1 - x0) / (st.length - 1) + 10), last = i === st.length - 1, first = i === 0;
+          // the end names hang inward from the page edge, so the long last name never crowds Compare
+          b.classList.toggle('is-end', last); b.classList.toggle('is-start', first);
+          b.style.left = (first ? x : last ? x + w - bw : cx - bw / 2) + 'px'; b.style.top = (ty + 22) + 'px'; b.style.width = bw + 'px'; b.style.height = (last && three ? 44 : 40) + 'px'; });
+        g.three = three;
         drag.place([x0, ty, x1, ty]);
         var aTop = ty + 66;
         box(aBox, x, aTop, w, null);
@@ -366,7 +373,7 @@
         o.push('<path class="fcx-edge" d="M' + (b[0] + 4) + ' ' + (b[1] + b[3] + 3) + 'H' + (b[0] + b[2] - 4) + '"/>');
         // the ladder printed across the page, in the verbs' colors
         var tr = g.track;
-        o.push('<rect class="fcx-band" x="' + r1(b[0] + g.m - 4) + '" y="' + r1(tr[1] - 24) + '" width="' + r1(b[2] - g.m * 2 + 8) + '" height="82" rx="12"/>');
+        o.push('<rect class="fcx-band" x="' + r1(b[0] + g.m - 4) + '" y="' + r1(tr[1] - 24) + '" width="' + r1(b[2] - g.m * 2 + 8) + '" height="' + (g.three ? 86 : 82) + '" rx="12"/>');
         o.push('<path class="fcx-rail" d="M' + tr[0] + ' ' + tr[1] + 'H' + tr[2] + '"/>');
         LAD.forEach(function(v, j){ var cx = tr[0] + (tr[2] - tr[0]) * j / (LAD.length - 1); o.push('<circle class="fcx-dot is-' + F.ADDS[v] + '" cx="' + r1(cx) + '" cy="' + tr[1] + '" r="7"/>'); });
         // the fold between the question and the answer
@@ -462,7 +469,7 @@
         F.PIECES.forEach(function(k){ var p = P[k]; out.pieces[k] = { shown: p.shown, n: p.n, on: p.el.classList.contains('is-on'), quiet: p.el.classList.contains('is-quiet') }; });
         return out;
       },
-      _G: function(){ return G; }, _cue: function(){ touched = false; makeCue(); return !!(cue && cue.active()); } };
+      _key: function(){ return ctx.ladder.keys[F.ADDS[LAD[stop]]]; }, _G: function(){ return G; }, _cue: function(){ touched = false; makeCue(); return !!(cue && cue.active()); } };
     window.FrqCoachExplore = api;   // for the sweep, frame and perf checks (scripts/tools-v2/hug-frq-coach-*.mjs)
     return api;
   }

@@ -471,3 +471,22 @@ The Phase 3 builder did not run the generator into the repo (the shared runtime 
 integrator lands, run `node scripts/build-aphug.mjs`: it adds `human-geography/models.html` and updates
 `formula-sheet.html` (shorter title, a link to the models page) and `assets/justify.json` (the "legend" skill).
 The forms, items and unit tests are served once their units are published.
+
+## frq-coach-ladder: the FRQ coach's verb ladder (tools v2, 2026-11-24)
+
+`human-geography/data/tools/frq-coach.json` (`ladder` on each question) holds eight original answers that grow one
+piece per verb (name, features, because, second side, degree). For a teacher to read:
+- **The ladder's framing.** Identify, describe, explain and explain the degree are shown as a climb (each adds a
+  piece); compare is shown as needing both sides but not the because (CED: "describe or explain similarities and/or
+  differences"). "?" says extra correct detail does not cost the point and that any degree earns it when the
+  explanation supports it (2025 set 2 Chief Reader report, Q2F: "first indicate a degree ... and then support it").
+  Confirm both lines against the current scoring guidelines.
+- **Facts written for it** (please check): Dutch polders, dikes and pumps, many below sea level; Ifugao rice terraces
+  of the Philippine Cordilleras; Punjab from the late 1960s with high-yield wheat and rice, fertilizer and wells,
+  India importing less grain; yields rising far less on rain-fed farms in Sub-Saharan Africa; US suburbs lower in
+  density than many Western European cities; British settlers in Australia from 1788; superimposed boundaries
+  across Africa after the Berlin Conference of 1884 and 1885 (the conference set rules; the lines were drawn
+  later); the HDI (UNDP) combining health, schooling and income into a score from 0 to 1, hiding inequality.
+- **Degrees chosen** ("to a high degree" for polders, the Green Revolution's grain supply, cars and sprawl, stage 2,
+  migration and English; "to a moderate degree" for superimposed boundaries and conflict, and the HDI) are defensible
+  answers, not the only ones.
