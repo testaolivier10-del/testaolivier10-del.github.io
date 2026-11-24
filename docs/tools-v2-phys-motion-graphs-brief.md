@@ -81,6 +81,7 @@ same without the example and the scrub, with the 2 tip knobs and the quiet cart 
 | Tap or arrow along the graphs (time cursor) | The kit's scrub on the graphs (Drive it); the Set run sweeps the cursor itself |
 | Cursor readout: slopes, areas, Δx, Δv with numbers | Drawn at the cursor (tangents, area); every number in "?" "At the time cursor" |
 | Readings table (x, v, a, cursor), pills | The cause line and the "?" table |
+| Match: three graphs with the target on one | Match the graph shows the scene and only the target's graph (a phone's stage has room for one) |
 | Match: target, New target, score, best, where furthest off, record per run | Test yourself "Match the graph": a target picked per problem (New problem), Check scores it (80% or more is a match), best kept (`apphys_mg_best_<id>`), where furthest off, recorded once per problem as `motion-graphs:match:<target>` (the first Check), Show the answer drives the target |
 | Seven drills, ids `motion-graphs:<ctx>:<step>`, `?seed=`, `#quiz` | Unchanged (Match is never dealt by "Any kind") |
 | Bumper stop note, measured-data note | "?" |

@@ -131,6 +131,8 @@
     if(match){ st.drv.example = false; st.cursor = 0; }
     else st.drv.x = at(exampleRun, 'x', WIN);
     var G = null, W = 640, H = 480, built = '', D = {};
+    var KINDS = match ? [match.kind] : ['x', 'v', 'a'];
+    function shownK(k){ return KINDS.indexOf(k) > -1; }
     var raf = 0, lastT = 0, listeners = [];
 
     function startOfTarget(tg){ return tg.kind === 'x' ? tg.pts[0][1] : tg.x0 != null ? tg.x0 : 0; }
@@ -162,19 +164,23 @@
       var detW = phone ? 26 : 34;
       var xL = pad + detW + 14 + cw / 2, xR = W - pad - cw / 2 - 10, ppm = (xR - xL) / (TR.max - TR.min);
       // the scene, from the top: room for the a arrow's knob, the v arrow, the cart's knob, the cart, the rail, the bench
-      var aY = 22, vY = aY + 36, kY = vY + 34, cartTop = kY + 20;
+      // (Match has no arrow knobs: its rows sit closer)
+      var aY = match ? 17 : 22, vY = aY + (match ? 27 : 36), kY = vY + 34, cartTop = kY + 20;
       var railTop = cartTop + ch + 2 * wr - 2, railH = phone ? 17 : 19, benchY = railTop + railH + 3, sceneH = benchY + (phone ? 16 : 22);
       var gTop = sceneH + 22, gap = phone ? 9 : 11, axisB = 27, L = phone ? 36 : 46, R = phone ? 44 : 40;
-      var ph = fitH ? clamp(Math.floor((Hin - gTop - axisB - 2 * gap) / 3), 64, phone ? 112 : 130) : Math.floor((Hin - gTop - axisB - 2 * gap) / 3);
+      // the panels shown (Match shows only its target's graph), stacked on one time axis
+      var kinds = KINDS, n = kinds.length;
+      var ph = fitH ? clamp(Math.floor((Hin - gTop - axisB - (n - 1) * gap) / n), 64, n === 1 ? 170 : phone ? 112 : 130) : Math.floor((Hin - gTop - axisB - (n - 1) * gap) / n);
       if(!fitH && ph > 170){ ph = 170; }
-      var Hh = gTop + 3 * ph + 2 * gap + axisB;
+      var Hh = gTop + n * ph + (n - 1) * gap + axisB;
       if(!fitH) Hh = Math.max(Hh, Hin);
-      var top = { x: gTop, v: gTop + ph + gap, a: gTop + 2 * (ph + gap) };
+      var top = { x: -1e4, v: -1e4, a: -1e4 };
+      kinds.forEach(function(k, i){ top[k] = gTop + i * (ph + gap); });
       // the arrows' scales: the longest (3 m/s, 2 m/s²) fits on the picture from any start (−3 m to 3 m)
       var room = Math.min(xL + 2 * ppm, W - (xL + 8 * ppm)) - 22;
       var vs = Math.min(56, room / 3), as = Math.min(70, room / 2);
       return { W: W, H: Hh, phone: phone, fitH: fitH, pad: pad, cw: cw, ch: ch, wr: wr, detW: detW, xL: xL, xR: xR, ppm: ppm, aY: aY, vY: vY, kY: kY, cartTop: cartTop,
-        railTop: railTop, railH: railH, benchY: benchY, sceneH: sceneH, gTop: gTop, gap: gap, L: L, R: R, pw: W - L - R, ph: ph, top: top, axisY: top.a + ph, vs: vs, as: as };
+        railTop: railTop, railH: railH, benchY: benchY, sceneH: sceneH, gTop: gTop, gap: gap, L: L, R: R, pw: W - L - R, ph: ph, top: top, kinds: kinds, gTop: gTop, axisY: gTop + n * ph + (n - 1) * gap, vs: vs, as: as };
     }
     function X(x){ return G.xL + (x - TR.min) * G.ppm; }
     // a panel's tick numbers: the top one under the scrub's knob, the bottom one clear of the next panel's top
@@ -236,7 +242,7 @@
       p.push('<g class="mg2-arrows"><path class="mg2-arr mg2-va" d=""/><path class="mg2-arr mg2-aa" d=""/>' +
         '<text class="mg2-al is-v" x="0" y="0"></text><text class="mg2-al is-a" x="0" y="0"></text></g>');
       // the graphs: three stacked panels sharing one time axis
-      ['x', 'v', 'a'].forEach(function(k){
+      g.kinds.forEach(function(k){
         var t0 = g.top[k], r = RANGE[k];
         p.push('<rect class="mg2-pbg' + (match && match.kind === k ? ' is-target' : '') + '" x="' + g.L + '" y="' + t0 + '" width="' + g.pw + '" height="' + g.ph + '" rx="6"/>');
         for(var t = 1; t < WIN; t++) p.push('<line class="mg2-grid" x1="' + n1(gx(t)) + '" x2="' + n1(gx(t)) + '" y1="' + t0 + '" y2="' + (t0 + g.ph) + '"/>');
@@ -254,7 +260,7 @@
       if(match) p.push('<polyline class="mg2-target" clip-path="url(#' + gid + 'c' + match.kind + ')" points="' + match.pts.map(function(q){ return n1(gx(q[0])) + ',' + n1(gy(match.kind, q[1])); }).join(' ') + '"/>');
       ['x', 'v', 'a'].forEach(function(k){ p.push('<polyline class="mg2-tr ' + CLS[k] + '" clip-path="url(#' + gid + 'c' + k + ')" points=""/>'); });
       p.push('<line class="mg2-tan is-v" clip-path="url(#' + gid + 'cx)"/><line class="mg2-tan is-a" clip-path="url(#' + gid + 'cv)"/>');
-      p.push('<line class="mg2-cur" x1="0" x2="0" y1="' + g.top.x + '" y2="' + g.axisY + '"/>');
+      p.push('<line class="mg2-cur" x1="0" x2="0" y1="' + g.gTop + '" y2="' + g.axisY + '"/>');
       ['x', 'v', 'a'].forEach(function(k){ p.push('<circle class="mg2-dot ' + CLS[k] + '" r="5" cx="-20" cy="-20"/>'); });
       // the words on the graphs: each panel's name, the slopes, the area, a turn, the example's name, the target's name
       p.push('<g class="mg2-words"></g>');
@@ -363,10 +369,10 @@
       // a word never sits on a drawn line: the traces, the tangents, the cursor
       var lines = [];
       if(s){
-        ['x', 'v', 'a'].forEach(function(k){ lines.push({ k: k, f: function(tt){ return gy(k, at(s, k, tt)); } }); });
+        g.kinds.forEach(function(k){ lines.push({ k: k, f: function(tt){ return gy(k, at(s, k, tt)); } }); });
         var t0 = t;
-        lines.push({ k: 'x', f: function(tt){ return Math.abs(tt - t0) <= 1.1 ? gy('x', at(s, 'x', t0) + vNow * (tt - t0)) : null; } });
-        lines.push({ k: 'v', f: function(tt){ return Math.abs(tt - t0) <= 1.1 ? gy('v', vNow + aNow * (tt - t0)) : null; } });
+        if(shownK('x')) lines.push({ k: 'x', f: function(tt){ return Math.abs(tt - t0) <= 1.1 ? gy('x', at(s, 'x', t0) + vNow * (tt - t0)) : null; } });
+        if(shownK('v')) lines.push({ k: 'v', f: function(tt){ return Math.abs(tt - t0) <= 1.1 ? gy('v', vNow + aNow * (tt - t0)) : null; } });
         if(match) lines.push({ k: match.kind, f: function(tt){ return gy(match.kind, MG.plAt(match.pts, tt)); }, w: 6 });
       }
       function yAt(L2, px){
@@ -376,7 +382,7 @@
       }
       function onLine(b){
         var cxg = gx(t);
-        if(s && b[0] - 3 < cxg && b[2] + 3 > cxg && b[1] < g.axisY && b[3] > g.top.x) return true;
+        if(s && b[0] - 3 < cxg && b[2] + 3 > cxg && b[1] < g.axisY && b[3] > g.gTop) return true;
         for(var i = 0; i < lines.length; i++){
           var L2 = lines[i], top = g.top[L2.k], w = L2.w || 3;
           if(b[3] < top || b[1] > top + g.ph) continue;
@@ -394,9 +400,9 @@
         P.add(b); out.push('<text class="' + cls + '" x="' + n1(x) + '" y="' + n1(y) + '"' + (anchor && anchor !== 'start' ? ' text-anchor="' + anchor + '"' : '') + '>' + esc(s2) + '</text>'); return true;
       }
       // the tick numbers and the cursor's dots are things too: reserve them
-      ['x', 'v', 'a'].forEach(function(k){ var r = RANGE[k]; [r[1], 0, r[0]].forEach(function(y){ var yy2 = tickY(k, y); P.add(P.box(g.L - 5, yy2, M.minus(String(y)), 11.5, 'end')); }); });
+      g.kinds.forEach(function(k){ var r = RANGE[k]; [r[1], 0, r[0]].forEach(function(y){ var yy2 = tickY(k, y); P.add(P.box(g.L - 5, yy2, M.minus(String(y)), 11.5, 'end')); }); });
       // each panel's name, top left inside it
-      ['x', 'v', 'a'].forEach(function(k){ txt(g.L + 8, g.top[k] + 15, GNAME[k] + ' (' + UNIT[k] + ')', 'mg2-gn ' + CLS[k], 'start', true); });
+      g.kinds.forEach(function(k){ txt(g.L + 8, g.top[k] + 15, GNAME[k] + ' (' + UNIT[k] + ')', 'mg2-gn ' + CLS[k], 'start', true); });
       if(s && s === exampleRun) txt(g.L + g.pw - 8, g.top.x + 15, 'Example run', 'mg2-w is-ex', 'end', true);
       if(match) txt(g.L + g.pw - 8, g.top[match.kind] + 15, 'target', 'mg2-w is-tg', 'end', true);
       if(s){
@@ -408,10 +414,10 @@
           var ys = [y0 - 14, y0 + 24, y0 - 30, y0 + 40, g.top[k] + g.ph - 6, g.top[k] + 34];
           for(var j = 0; j < sides.length; j++) for(var i = 0; i < ys.length; i++){ var yy = clamp(ys[i], g.top[k] + 34, g.top[k] + g.ph - 5); if(txt(sides[j][0], yy, label, cls, sides[j][1])) return; }
         };
-        tryAt('x', yx, 'slope = v', 'mg2-w is-v');
-        tryAt('v', yv, 'slope = a', 'mg2-w is-a');
+        if(shownK('x')) tryAt('x', yx, 'slope = v', 'mg2-w is-v');
+        if(shownK('v')) tryAt('v', yv, 'slope = a', 'mg2-w is-a');
         // the area under v-t: named inside it when it is wide enough
-        if(t > 1.6 && Math.abs(dxArea) > 0.3){
+        if(shownK('v') && t > 1.6 && Math.abs(dxArea) > 0.3){
           var yz = gy('v', 0), pos = dxArea > 0;
           [t / 2, t / 3, 2 * t / 3].some(function(tm){
             return [pos ? yz - 6 : yz + 16, pos ? yz + 16 : yz - 6].some(function(ya){ return txt(gx(tm), clamp(ya, g.top.v + 30, g.top.v + g.ph - 4), 'area = Δx', 'mg2-w is-x', 'middle'); });
@@ -419,14 +425,14 @@
         }
         // the turns, on x-t (only those already drawn)
         var tEnd = st.tab === 'drive' && st.drv.rec ? seriesEnd(s) : seriesEnd(s);
-        turnsOf(s, tEnd, s.exact ? 0.01 : 0.12).slice(0, 3).forEach(function(q){
+        if(shownK('x')) turnsOf(s, tEnd, s.exact ? 0.01 : 0.12).slice(0, 3).forEach(function(q){
           var y0 = gy('x', q.x), yy = q.peak ? y0 - 10 : y0 + 19;
           if(yy < g.top.x + 12 || yy > g.top.x + g.ph - 2) yy = q.peak ? y0 + 19 : y0 - 10;
           txt(gx(q.t), clamp(yy, g.top.x + 12, g.top.x + g.ph - 3), 'turns', 'mg2-w is-turn', 'middle');
         });
         // the end stop
-        if(s.hit && t >= s.hit.t - 1e-6) txt(clamp(gx(s.hit.t), g.L + 40, g.L + g.pw - 40), g.top.x + g.ph - 6, 'end stop', 'mg2-w is-turn', 'middle');
-      } else if(!match) txt(g.L + g.pw / 2, g.top.x + g.ph / 2 + 4, 'Your run draws here', 'mg2-w is-ex', 'middle');
+        if(s.hit && t >= s.hit.t - 1e-6 && shownK('x')) txt(clamp(gx(s.hit.t), g.L + 40, g.L + g.pw - 40), g.top.x + g.ph - 6, 'end stop', 'mg2-w is-turn', 'middle');
+      } else if(!match) txt(g.L + g.pw / 2, g.gTop + g.ph / 2 + 4, 'Your run draws here', 'mg2-w is-ex', 'middle');
       var h = out.join('');
       if(h !== lastWords){ D.words.innerHTML = h; lastWords = h; }
     }
@@ -568,7 +574,7 @@
         H_.cart.knob.addEventListener('keyup', release); H_.cart.knob.addEventListener('blur', function(){ if(!rebuilding) release(); });
         // the time cursor along the graphs: the cart goes back to that moment
         scrub = K.scrub(box, { key: '', label: 'Time cursor on the graphs', min: 0, max: WIN, step: DT, value: curT(), chip: false,
-          rect: [G.L, G.top.x, G.L + G.pw, G.axisY], valuetext: function(v){ return 't = ' + F(v, 1) + ' s'; },
+          rect: [G.L, G.gTop, G.L + G.pw, G.axisY], valuetext: function(v){ return 't = ' + F(v, 1) + ' s'; },
           onStart: function(){ hideCue(true); if(st.play){ st.play = null; } },
           onInput: function(v){ if(st.drv.rec) return; var s = series(); st.cursor = s ? Math.min(v, seriesEnd(s)) : 0; paint(); tourDid('scrub'); if(o.onState) o.onState(); } });
       } else {
@@ -600,7 +606,7 @@
       if(H_.v){ H_.v.value(st.set.v0); H_.v.hide(running); H_.v.place(); }
       // (stopped, the knob sits on the drawn arrow: the first piece's a; running, on the cart's arrow now)
       if(H_.a){ H_.a.value(st.play ? st.set.a : st.set.segs[0].a); H_.a.hide(!!st.back || st.drv.rec); H_.a.place(); }
-      if(scrub){ scrub.place([G.L, G.top.x, G.L + G.pw, G.axisY]); scrub.value(curT()); scrub.el.classList.toggle('is-rec', st.drv.rec); }
+      if(scrub){ scrub.place([G.L, G.gTop, G.L + G.pw, G.axisY]); scrub.value(curT()); scrub.el.classList.toggle('is-rec', st.drv.rec); }
     }
     function grabCart(byKey){
       var d = st.drv;
@@ -991,7 +997,15 @@
         if(matchLab){ matchLab.destroy(); matchLab = null; }
         if(p.type === 'match'){
           el.innerHTML = '';
-          matchLab = lab({ kit: kit, match: p.target, availH: function(){ return Math.min(560, (window.innerHeight || 800) - 260); } });
+          // the Match figure takes the room the stage gives it (a phone's stage is short: no inner scroll)
+          matchLab = lab({ kit: kit, match: p.target, availH: function(){
+            var el2 = matchLab && matchLab.el, stg = el2 && (el2.closest('.ls-stage-body') || el2.closest('.ls-stage'));
+            if(!stg) return Math.min(560, (window.innerHeight || 800) - 260);
+            // (on a phone the question's sheet covers the stage's foot: stop above it)
+            var r = stg.getBoundingClientRect(), b = el2.getBoundingClientRect(), dock = document.querySelector('.ls-root .ls-dock'), bot = r.bottom;
+            if(dock && dock.getClientRects().length){ var dr = dock.getBoundingClientRect(); if(dr.top > b.top + 100 && dr.top < bot) bot = dr.top; }
+            return Math.min(560, Math.max(230, bot - b.top - 8));
+          } });
           var fig = document.createElement('div'); fig.className = 'cd-fig mg2-mfig';
           fig.appendChild(matchLab.el); el.appendChild(fig);
           fig.__mg = { lab: matchLab, st: matchLab.st };   // tests read the drawn state here
