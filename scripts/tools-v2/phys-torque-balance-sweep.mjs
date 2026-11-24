@@ -59,7 +59,7 @@ async function open(o) {
   return { page, errs, ctx };
 }
 const W4 = w => String(w).padStart(4, '0') + (DARK ? 'd' : 'l');
-const shot = async (page, name) => { if (!SHOTS) return; const narrow = (await page.viewportSize()).width < 900; return narrow ? page.locator('.tb2').screenshot({ path: join(SHOTS, name) }) : page.screenshot({ path: join(SHOTS, name) }); };
+const shot = async (page, name) => { if (!SHOTS) return; const narrow = (await page.viewportSize()).width < 900 && await page.locator('.tb2').isVisible(); return narrow ? page.locator('.tb2').screenshot({ path: join(SHOTS, name) }) : page.screenshot({ path: join(SHOTS, name), fullPage: (await page.viewportSize()).width < 900 }); };
 const tab = async (page, v) => { await page.click(`.tk2-tab[data-v=${v}]`); await page.waitForTimeout(450); };
 /* page.waitForFunction evaluates a string, which the page's CSP refuses (no unsafe-eval): poll with evaluate instead. */
 async function until(page, fn, arg, ms = 8000) { const t0 = Date.now(); for (;;) { if (await page.evaluate(fn, arg)) return; if (Date.now() - t0 > ms) throw new Error('timed out: ' + fn.toString().slice(0, 80)); await page.waitForTimeout(40); } }
@@ -269,7 +269,8 @@ const frameProbe = () => {
     if (res === 'down-right' && !(deg < -9.9 && s.om === 0)) out.push('right end down at ' + deg.toFixed(2) + '°');
     if (res === 'held' && Math.abs(deg) > 0.01) out.push('held level at ' + deg.toFixed(2) + '°');
     if (res === 'level' && (Math.abs(deg) > 0.01 || Math.abs(ccw - cw) > 1e-9)) out.push('balanced at ' + deg.toFixed(2) + '°');
-    if (/^turn/.test(res) && s.om === 0) out.push('turning with the stick still');
+    if (/^turn/.test(res) && s.om === 0 && (s.postT === 0 || s.postT === 1) && Math.abs(Math.abs(deg) - 10) < 1e-4) out.push('turning with the stick at rest on a support');
+    if (/^turn/.test(res) && Math.abs(deg) < 1e-6 && s.om === 0) out.push('turning with the stick still and level');
     if (res === 'turn-ccw' && s.om < 0 || res === 'turn-cw' && s.om > 0) out.push('turning the wrong way');
   }
   // the stick never turns toward the smaller torque from rest, and stays inside the supports' stops

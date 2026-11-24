@@ -284,9 +284,10 @@
     function resultOf(s){
       var n = netOf(s);
       if(s.held) return s.postT > 0.98 || Math.abs(s.th) < 1e-4 ? 'held' : 'lift';
-      if(Math.abs(s.om) > 1e-4) return s.om > 0 ? 'turn-ccw' : 'turn-cw';
-      if(s.th > 1e-4) return 'down-left';
-      if(s.th < -1e-4) return 'down-right';
+      // at rest on a support only once the supports are down and it has stopped; until then it is still turning
+      // (it may ride a falling support down)
+      if(s.postT === 0 && Math.abs(s.om) < 1e-7 && Math.abs(Math.abs(s.th) - STOP) < 1e-6) return s.th > 0 ? 'down-left' : 'down-right';
+      if(Math.abs(s.om) > 1e-7 || Math.abs(s.th) > 1e-4) return (Math.abs(s.om) > 1e-7 ? s.om : s.th) > 0 ? 'turn-ccw' : 'turn-cw';
       if(n === 0) return 'level';
       return 'held';
     }
@@ -365,6 +366,7 @@
     }
     /* The masses' hanging levels: neighbours whose bodies would touch hang one below the other. */
     function levels(s){
+      if(!G || !G.rows) return;   // not drawn yet (a link that opens on Test yourself)
       var list = s.masses.slice().sort(function(a, b){ return a.x - b.x; }), rows = [];
       list.forEach(function(q){
         var w = bodySize(q.m, G.k).w, x = q.x / 100 * G.ppm, L = 0;

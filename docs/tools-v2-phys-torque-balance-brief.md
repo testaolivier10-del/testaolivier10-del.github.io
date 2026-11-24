@@ -111,5 +111,42 @@ with their tags ("6 cm", "18 cm"), and the landing times after a race.
 - New wording checked: "?" lines on the level torques, string length, the supports, the CED's directions, g.
 - Open points for a physics teacher: `docs/apphys-needs-author.md`, "torque-balance-v2".
 
-## Checks run
-See the last section (filled in at hand in).
+## Checks run (2026-11-23, first build)
+- Kept sweep `scripts/tools-v2/phys-torque-balance-sweep.mjs`, one width per process: 360, 390, 430, 600, 768, 820,
+  1024, 1280, 1440, 1920, light and dark: 20 runs, 480 states, about 4,030 checks, 0 failures (first visit cue per
+  tab; Balance landing, balanced, both ends down, four masses, crowded hooks hanging at three heights, fulcrum at 25
+  and 75, held; Angle at 7 pulls from 15° to 165° and 0.2 to 3 N; Inertia ready, racing, done, rewinding; Test
+  yourself). Asserts no clipping, 4 px between labels and numbers, no knob over a label, no text under 11 px, the
+  stick (and the stands' arms) largest, the curl numbers, arrows and cause line equal to the torques recomputed from
+  the drawn hooks, the result word matching the drawn tilt, the reading, angle and lever arm matching the drawn pull
+  (the drawn lever arm's length too), phone cause line at most two rows with one height per tab, no sideways scroll,
+  no console errors.
+- Frames (`--frames`) at 1440 light, 390 light and 1024 dark: about 1,400 sampled frames each, 0 failures: let go to
+  balance and to tip, a fast drag, a reversal mid turn, keyboard jumps, a mass flying in from the tray and back by
+  Delete, a fulcrum drag, the Angle drag and let go, the race and a rewind mid race; on every frame the masses hang
+  from the drawn stick, the curl numbers, arrows and cause line are those of the drawn masses, result words only once
+  the picture shows them, landing times only over weights that are down; leaving for Test yourself mid race and mid
+  turn stops everything and Explore comes back clean; reduced motion shows the end state at once.
+- Perf (`--perf`), CPU x4, a full drag, same run as the flagship (Water pollution's sacks): 390 median 16.7 ms, p95
+  16.8 ms (flagship 33.3 / 66.6); 1440 median 16.7, p95 16.8 (flagship 33.3 / 50.0).
+- `node --test scripts/test/apphys-*.test.mjs` 159 pass; `check-apphys-content --check` 0 failing; `build-apphys
+  --check` (only `torque-balance.html` differs from the collecting branch: the two kit lines); `check-site`;
+  `check-weight --check` (626 budgets in range, none raised); `build-apcalc --check`, `build-apmacro --check`;
+  `scripts/check-tool-use.mjs` run with a local copy of its list: torque balance reports frame v2 (one tool-open,
+  tool-touch, tool-mode, tool-use; nothing under automation).
+- Test yourself by `?seed=` at 390 and 1440: opens on the drill, a wrong answer opens "Show the answer", the next
+  step follows; no console errors. The real locked state (premium.js not unlocked) shows the Premium card as before.
+- Free body diagrams, Rotation lab, Collision lab and Motion graphs still load in the old frame, without the kit, with
+  no console errors.
+- Preview: `/mnt/user-data/outputs/phys-torque-balance-v2/index.html`; shots (landings, extremes, mid animation:
+  lifting, turning, a mass flying, mid race) in `shots/`.
+
+## Not happy with (for the reviewer)
+- On a phone the Balance stage is tall: room is kept for masses hanging three deep (hooks 4 cm apart touch there), so
+  the stand looks tall under the stick.
+- The lever arm's name for a very short arm (a 15° pull) can sit a little away from its line, where it finds room.
+- A far outward lean of the pull stops early on a narrow stage (the scale must stay in the picture); the physics is
+  the same as leaning toward the fulcrum.
+- The landing picture already rests on its left support (no motion until you touch it); a stick that starts level
+  would hide the imbalance the cue invites you to fix.
+- The wall behind is calm and plain; the flagship's scene is richer. Nothing was added that could be misread.
