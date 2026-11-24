@@ -75,7 +75,7 @@ const W = +arg('--width', 390);
 const H = W < 500 ? 844 : W < 1100 ? 1024 : W >= 1900 ? 1080 : 900;
 const PHONE = W <= 640;
 let pass = 0; const fails = [];
-const T = (c, msg) => { if (c) pass++; else fails.push(msg); };
+const T = (c, msg) => { if (c) pass++; else { fails.push(msg); if (process.env.LIVE) console.log('FAIL ' + msg); } };
 if (SHOTS) mkdirSync(SHOTS, { recursive: true });
 const DATA = JSON.parse(readFileSync(join(ROOT, 'anatomy-physiology/data/tools/anatomy-3d.json'), 'utf8'));
 const BYID = Object.fromEntries(DATA.structures.map(s => [s.id, s]));
@@ -129,9 +129,12 @@ async function check(page, tag, opts = {}) {
     const kids = [...stage.children].filter(e => e.offsetParent).map(e => ({ c: e.className, a: R(e).width * R(e).height }));
     const ringC = ring ? { x: +ring.getAttribute('cx') + R(q('.ax-over')).left, y: +ring.getAttribute('cy') + R(q('.ax-over')).top } : null;
     const sel = v.selected(), s = sel && window.AnpAnatomyExplore.current.tabs.flatMap(t => t.items).find(x => x.id === sel);
+    // what a tap on the ring would pick (the viewer's own picker), and the leader of a card standing off its ring
+    const ringHit = ring ? v.hit(+ring.getAttribute('cx'), +ring.getAttribute('cy')) : null;
+    const lead = q('.ax .tk2-spot-lead'), leadOk = !!lead && lead.classList.contains('is-in') && lead.getAttribute('d');
     return { scroll: document.documentElement.scrollWidth - innerWidth, scene: rect(scene), card: rect(card), cardText: card && !card.hidden ? card.querySelector('.tk2-spot-t').textContent : null,
       find: rect(q('.ax-find')), reset: rect(q('.ax-reset')), credit: rect(q('.ax-credit')), cue: rect(q('.tk2-cue')), cause: rect(cause), pills, small,
-      kids, ringC, sel, selName: s ? s.name : null, selAt: s ? s.at : null, tabs: [...document.querySelectorAll('.ax .tk2-tab')].map(rect), stage: rect(stage),
+      kids, ringC, ringHit, leadOk, sel, selName: s ? (s.label || s.name) : null, selAt: s ? s.at : null, tabs: [...document.querySelectorAll('.ax .tk2-tab')].map(rect), stage: rect(stage),
       tabFit: [...document.querySelectorAll('.ax .tk2-tab')].map(b => b.scrollWidth <= b.clientWidth + 1 && [...b.children].every(c => { const cr = R(c), br = R(b); return cr.width <= 1 || (cr.left >= br.left - 1 && cr.right <= br.right + 1); })),
       canvas: rect(q('.ax-slot canvas')) };
   });
@@ -155,6 +158,9 @@ async function check(page, tag, opts = {}) {
       T(!r.cue || !meet(r.card, r.cue), `${tag}: the card meets the cue`);
       T(!r.ringC || !(r.ringC.x > r.card.l - 4 && r.ringC.x < r.card.r + 4 && r.ringC.y > r.card.t - 4 && r.ringC.y < r.card.b + 4), `${tag}: the card covers the point it names`);
       T(r.cardText === r.selName, `${tag}: the card says ${r.cardText}, the viewer selected ${r.selName}`);
+      T(r.ringHit === r.sel, `${tag}: a tap on the ring picks ${r.ringHit}, not ${r.sel}`);
+      if (r.ringC) { const dx = Math.max(r.card.l - r.ringC.x, 0, r.ringC.x - r.card.r), dy = Math.max(r.card.t - r.ringC.y, 0, r.ringC.y - r.card.b);
+        T(Math.hypot(dx, dy) < 14 || r.leadOk, `${tag}: the card stands ${Math.round(Math.hypot(dx, dy))} px off its ring with no leader`); }
       T(r.pills[0] && r.pills[0].t === r.selName && r.pills[1] && r.pills[1].t === r.selAt, `${tag}: the cause line says ${r.pills.map(p => p.t).join(' / ')} for ${r.selName}`);
       if (opts.expect) T(r.sel === opts.expect, `${tag}: expected ${opts.expect}, selected ${r.sel}`);
     }
@@ -240,6 +246,26 @@ async function sweep() {
       T(await settledCard(page), `all ${s.id}: no card`);
       await page.waitForTimeout(150);
       const r = await check(page, `all ${s.id}`, { expect: s.id });
+      /* the named part's glow is drawn round its ring: the pixels there (card layer hidden) change when the part is let
+         go (its glow eases out), so the part is what is drawn under the ring, not something in front of it */
+      if (r.ringC) {
+        const clip = { x: Math.max(0, r.ringC.x - 8), y: Math.max(0, r.ringC.y - 8), width: 16, height: 16 };
+        await page.evaluate(() => { document.querySelector('.ax-over').style.visibility = 'hidden'; });
+        const a = await page.screenshot({ clip, timeout: 300000 });
+        await page.evaluate(() => { const v = window.AnpAnatomyExplore.current._viewer(); v.clear(); });
+        await until(page, () => !window.AnpAnatomyExplore.current._viewer().settling(), null, 100);
+        await page.waitForTimeout(250);
+        const b = await page.screenshot({ clip, timeout: 300000 });
+        await page.evaluate(() => { document.querySelector('.ax-over').style.visibility = ''; });
+        const changed = await page.evaluate(async ([x, y]) => {
+          const px = async b64 => { const im = new Image(); im.src = 'data:image/png;base64,' + b64; await im.decode();
+            const c = document.createElement('canvas'); c.width = im.width; c.height = im.height; const g = c.getContext('2d'); g.drawImage(im, 0, 0); return g.getImageData(0, 0, c.width, c.height).data; };
+          const p = await px(x), q = await px(y); let n = 0;
+          for (let i = 0; i < p.length; i += 4) if (Math.abs(p[i] - q[i]) + Math.abs(p[i + 1] - q[i + 1]) + Math.abs(p[i + 2] - q[i + 2]) > 40) n++;
+          return n;
+        }, [a.toString('base64'), b.toString('base64')]);
+        T(changed > 12, `all ${s.id}: no glow drawn at its ring (${changed} of 256 pixels change when it is let go)`);
+      }
       if (SHOTS && (s.id === 'cervical-vertebrae' || s.id === 'septal-branches' || s.id === 'papillary-muscles')) await shot(page, `all-${s.id}`);
       void r;
     }
@@ -265,7 +291,7 @@ async function frames() {
     };
     requestAnimationFrame(tick);
   });
-  const names = Object.fromEntries(DATA.structures.map(s => [s.id, s.name]));
+  const names = Object.fromEntries(DATA.structures.map(s => [s.id, s.label || s.name]));
   async function act(label, fn, wait = 6000) {
     await page.evaluate(() => { window.__fr = []; });
     const t0 = await page.evaluate(() => performance.now());

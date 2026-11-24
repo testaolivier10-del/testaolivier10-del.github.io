@@ -437,19 +437,26 @@
     function anchorOf(k, ms, centre){
       const id = k + '|' + ms.map(m => m.userData.part).join(',');
       if (anchors[id]) return anchors[id];
-      const T = L.THREE, rc = new T.Raycaster(), hitOn = (p) => {
-        rc.set(camera.position, p.clone().sub(camera.position).normalize()); rc.layers.enableAll();
-        const h = rc.intersectObjects(ms, false)[0]; return h ? h.point.clone() : null;
+      const T = L.THREE, rc = new T.Raycaster(); rc.layers.enableAll();
+      const meet = (ndc) => { rc.setFromCamera(ndc, camera); const h = rc.intersectObjects(ms, false)[0]; return h ? h.point.clone() : null; };
+      const w = canvas.clientWidth || 1, h = canvas.clientHeight || 1, dx = 3 / w, dy = 3 / h;
+      /* a spot where a tap lands on the part with room to spare: its own ray and four rays 1.5 px round it meet the
+         part. Tried at the middle, then at the vertices nearest the middle. */
+      const solid = (p) => {
+        const n = p.clone().project(camera); n.z = 0;
+        const c = meet(n); if (!c) return null;
+        for (const o of [[dx, 0], [-dx, 0], [0, dy], [0, -dy]]) if (!meet(new T.Vector2(n.x + o[0], n.y + o[1]))) return null;
+        return c;
       };
-      let at = hitOn(centre);
-      if (!at) {
-        let best = null, bd = Infinity; const v = new T.Vector3();
-        for (const m of ms) {
-          const pos = m.geometry.attributes.position, step = Math.max(1, Math.floor(pos.count / 400));
-          for (let i = 0; i < pos.count; i += step) { v.fromBufferAttribute(pos, i).applyMatrix4(m.matrixWorld); const d = v.distanceToSquared(centre); if (d < bd) { bd = d; best = v.clone(); } }
-        }
-        if (best) at = hitOn(best) || best;
+      const vs = [[0, centre.clone()]], v = new T.Vector3();
+      for (const m of ms) {
+        const pos = m.geometry.attributes.position, step = Math.max(1, Math.floor(pos.count / 400));
+        for (let i = 0; i < pos.count; i += step) { v.fromBufferAttribute(pos, i).applyMatrix4(m.matrixWorld); vs.push([v.distanceToSquared(centre), v.clone().lerp(centre, 0.04)]); }
       }
+      vs.sort((a, b) => a[0] - b[0]);
+      let at = null;
+      for (let i = 0; i < Math.min(vs.length, 80) && !at; i++) at = solid(vs[i][1]);
+      if (!at) for (let i = 0; i < Math.min(vs.length, 80) && !at; i++) at = meet(Object.assign(vs[i][1].clone().project(camera), { z: 0 }));
       return (anchors[id] = at || centre);
     }
     /* opts.fade: ease every change of look. The look of every mesh is read before the change and after it, then
