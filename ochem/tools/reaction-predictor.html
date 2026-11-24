@@ -120,30 +120,11 @@
 <!-- tool-studio:start -->
 <link rel="stylesheet" href="../../assets/course/tool-studio.css">
 <script src="../../assets/course/tool-studio.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/tool-kit2.css">
+<script src="../../assets/course/tool-kit2.js" defer></script>
+<link rel="stylesheet" href="../assets/tools/push-board.css">
+<link rel="stylesheet" href="../assets/tools/reaction-predictor.css">
 <!-- tool-studio:end -->
-<style>
-/* Pass 3: substrate and reagent pickers match "Solvent and heat". */
-.rp-ls .rp-picker > summary{flex-wrap:nowrap;white-space:nowrap;font-size:var(--ls-s);font-weight:800;color:var(--muted);}
-.rp-ls .rp-picker .tool-more__now{min-width:0;overflow:hidden;text-overflow:ellipsis;font-size:var(--ls-m);}
-.rp-ls .rp-picker .rp-chips{display:flex;flex-wrap:wrap;gap:8px;overflow:visible;}
-.rp-ls .rp-picker .rp-rgtnote{margin-top:10px;}
-.rp-setup{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;}
-  /* Two wide columns on a desktop: four narrow ones cut the reagent and substrate
-     names off mid-word at 1440 px (site audit 2026-10). */
-  @media(min-width:900px){ .rp-setup{grid-template-columns:1fr 1fr;} }
-  .rp-setup .tfield{margin-bottom:0;}
-  .rp-equation{
-    display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px;
-    margin-top:18px;padding:16px 12px;background:var(--paper);
-    border:var(--bw) solid var(--line-soft);border-radius:var(--radius);
-  }
-  .rp-term{font:900 16px var(--font-mono);color:var(--ink);}
-  .rp-term--product{color:var(--accent);}
-  .rp-op{font:900 16px var(--font-mono);color:var(--muted);}
-  .rp-arrow{display:flex;flex-direction:column;align-items:center;min-width:110px;}
-  .rp-over,.rp-under{font:800 10.5px var(--font-ui);color:var(--muted);}
-  .rp-line{font:900 20px var(--font-mono);color:var(--ink);line-height:1;}
-</style>
 </head>
 <body>
 <header id="site-header"></header>
@@ -160,7 +141,7 @@
 <!-- tool-top:start -->
 <div class="tool-topbar"><a class="tool-back" href="../tools.html">&larr; All tools</a><div class="tool-share" id="tool-share"></div></div><div class="tool-title"><span class="tool-tile__mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3v6L4 19a1.6 1.6 0 0 0 1.4 2h13.2A1.6 1.6 0 0 0 20 19l-5-10V3" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M7.5 3h9M6.7 14h10.6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><h1>Reaction Predictor</h1></div><p class="tool-lede">Pick a substrate and a reagent and see whether it goes SN1, SN2, E1 or E2.</p>
 <!-- tool-top:end --></div>
-  <div id="rpRoot" class="tool-root"><!-- tool-about:start --><details class="tool-about"><summary>About this tool</summary><p>SN1, SN2, E1 or E2: and why, factor by factor. Pick a substrate and a reagent and see whether it goes SN1, SN2, E1 or E2.</p><p>What it teaches: Substitution vs. elimination.</p><h2 class="tool-about-h">The topics it covers</h2><ul><li><a href="../mechanisms/sn1.html">SN1</a>: Warm tert-butyl bromide, (CH3)3C–Br, in water and it slowly turns into tert-butanol, (CH3)3C–OH.</li><li><a href="../mechanisms/sn2.html">SN2</a>: SN2 mechanism notes: the concerted step, backside attack and inversion of configuration, steric hindrance, second-order rate law, solvent and nucleophile.</li><li><a href="../mechanisms/e1.html">E1</a>: Warm 2-bromo-2-methylbutane in ethanol, and part of it turns into alkenes. No strong base is present, yet the molecule still loses H and Br.</li><li><a href="../mechanisms/e2.html">E2</a>: Warm 2-bromopropane, CH3CHBrCH3, with sodium ethoxide in ethanol, and most of it turns into propene, CH2=CH–CH3.</li></ul><h2 class="tool-about-h">Terms you will use</h2><ul><li><b>SN1 reaction</b>: Unimolecular nucleophilic substitution: the leaving group departs first to give a carbocation (the slow step), then the nucleophile adds to either face. Rate = k[substrate]; favored at 3°, allylic and benzylic carbons in polar protic solvents.</li><li><b>SN2 reaction</b>: Bimolecular nucleophilic substitution: in one concerted step the nucleophile attacks from the back as the leaving group leaves, inverting the carbon. Rate = k[Nu][substrate]; fastest at methyl and 1° carbons, impossible at 3°.</li><li><b>E1 reaction</b>: Unimolecular elimination: the leaving group departs to form a carbocation, then a weak base removes a β-hydrogen. It is not stereospecific, can rearrange, and usually gives the Zaitsev product.</li><li><b>E2 reaction</b>: Bimolecular elimination: in one concerted step a base removes a β-hydrogen while the leaving group departs, forming a C=C. The H and leaving group must be anti-periplanar; rate = k[base][substrate].</li></ul></details><!-- tool-about:end --></div>
+  <div id="rpRoot" class="tool-root"><!-- tool-about:start --><details class="tool-about"><summary>About this tool</summary><p>SN1, SN2, E1 or E2, and why, factor by factor. Pick a substrate and a reagent and see whether it goes SN1, SN2, E1 or E2.</p><p>What it teaches: Substitution vs. elimination.</p><h2 class="tool-about-h">The topics it covers</h2><ul><li><a href="../mechanisms/sn1.html">SN1</a>: Warm tert-butyl bromide, (CH3)3C–Br, in water and it slowly turns into tert-butanol, (CH3)3C–OH.</li><li><a href="../mechanisms/sn2.html">SN2</a>: SN2 mechanism notes: the concerted step, backside attack and inversion of configuration, steric hindrance, second-order rate law, solvent and nucleophile.</li><li><a href="../mechanisms/e1.html">E1</a>: Warm 2-bromo-2-methylbutane in ethanol, and part of it turns into alkenes. No strong base is present, yet the molecule still loses H and Br.</li><li><a href="../mechanisms/e2.html">E2</a>: Warm 2-bromopropane, CH3CHBrCH3, with sodium ethoxide in ethanol, and most of it turns into propene, CH2=CH–CH3.</li></ul><h2 class="tool-about-h">Terms you will use</h2><ul><li><b>SN1 reaction</b>: Unimolecular nucleophilic substitution: the leaving group departs first to give a carbocation (the slow step), then the nucleophile adds to either face. Rate = k[substrate]; favored at 3°, allylic and benzylic carbons in polar protic solvents.</li><li><b>SN2 reaction</b>: Bimolecular nucleophilic substitution: in one concerted step the nucleophile attacks from the back as the leaving group leaves, inverting the carbon. Rate = k[Nu][substrate]; fastest at methyl and 1° carbons, impossible at 3°.</li><li><b>E1 reaction</b>: Unimolecular elimination: the leaving group departs to form a carbocation, then a weak base removes a β-hydrogen. It is not stereospecific, can rearrange, and usually gives the Zaitsev product.</li><li><b>E2 reaction</b>: Bimolecular elimination: in one concerted step a base removes a β-hydrogen while the leaving group departs, forming a C=C. The H and leaving group must be anti-periplanar; rate = k[base][substrate].</li></ul></details><!-- tool-about:end --></div>
 
   <div id="tool-quiz"></div>
 
@@ -185,6 +166,7 @@
 <script src="../assets/tool-shell.js" defer></script>
 <script src="../assets/molecules.js" defer></script>
 <script src="../assets/chem-core.js" defer></script>
+<script src="../assets/push-board.js" defer></script>
 <script src="../assets/mol3d.js" defer></script>
 <script src="../assets/mol-builder.js" defer></script>
 <script src="../assets/builder-ui.js" defer></script>

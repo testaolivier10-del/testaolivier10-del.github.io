@@ -2183,3 +2183,22 @@ choices behind the numbers on the pictures.
   rises a little with filling. Sarcomere length 1.8 to 2.2 um across the filling range, shortening during each beat.
 - **px-pace** (decided, for review). Each link follows its cause with a lag of 0.2 to 0.65 s so the order is seen; "?"
   says the real times (CO2 over minutes, the kidney over hours).
+
+## 3D anatomy, tools v2 regions (2026-11-19): items for review
+Brief: `docs/tools-v2-anp-anatomy-3d-brief.md`. Explore's cause line says where each part is in a few words (`at` in
+data/tools/anatomy-3d.json), written from its reviewed `where`.
+- **a3x-at-phrases** (decided, for review). 86 short phrases, at most 50 characters each. Shortened on purpose: the
+  thoracic vertebrae "behind the chest" (the where text says the thoracic cavity), the floating ribs "the back of the
+  lower chest" (the where text adds "and sides"), the fourth ventricle "behind the brainstem" (the where text names the
+  pons and medulla), the pulmonary veins "from each lung back to the heart" (they enter the left atrium; the where text
+  does not say so either), the colon "framing the small intestine: up, across and down". Please read the whole list.
+- **a3x-kidney-level** (closed in review round 1: "back of the abdomen, T12 to L3, the right lower"). "About T12 to L3" for both kidneys; OpenStax 25.3 gives T12 to L3 for the
+  left and says the right sits lower. Say so on the card, or keep the one range?
+- **a3x-regions** (decided, for review). The five regions group the systems as: brain and eyes (nervous and special
+  senses; the central canal of the spinal cord is there too), abdomen and pelvis (digestive, spleen, urinary, adrenal
+  glands, testes and prostate; the testes sit outside the pelvis, which their phrase says). Is "Abdomen and pelvis" a
+  fair name for a tab that holds the testes?
+- **a3x-pulmonary-colours** (for review, not changed). In the model's own colours the pulmonary arteries are drawn red
+  and the pulmonary veins blue on some branches; textbooks often draw the pulmonary arteries blue (they carry
+  deoxygenated blood). The tool did not change the October colours; a reviewer may want them swapped.
+

@@ -94,42 +94,12 @@
   ];
   var BY = {}; CALLS.forEach(function(c){ BY[c.id] = c; });
 
-  /* the face, in image px (from the mnemonics tool: the head is about 200..282 across, 8..150 down) */
-  var FACE = {
-    brow: 'M215 66Q224 60 233 64M247 64Q256 60 265 66',
-    lidC: 'M216 77Q224 81 232 77M248 77Q256 81 264 77',
-    nose: 'M240 80Q237 92 236 99Q240 103 245 99',
-    mouthN: 'M230 119Q240 123 250 119',
-    mouthO: 'M231 117Q240 113 249 117Q248 128 240 129Q232 128 231 117Z'
-  };
-  // a gloved hand seen from above, fingers toward -y, wrist at +y (local px, about 40 wide)
-  // a nitrile glove seen from the back of the hand, fingers toward -y, wrist at +y: palm, four fingers, the thumb
-  // out to the side, knuckle creases, a highlight down each finger and a rolled cuff (local px, about 46 wide)
-  var GLOVE = '<g class="fx2-gl"><path class="fx2-glove" d="M13 -4C18 -11 24 -18 29 -18C33 -17 33 -12 30 -8L19 6Z"/>' +
-    '<rect class="fx2-glove" x="-15" y="-50" width="8" height="30" rx="4"/><rect class="fx2-glove" x="-6" y="-54" width="8.5" height="34" rx="4.2"/>' +
-    '<rect class="fx2-glove" x="3.5" y="-51" width="8" height="31" rx="4"/><rect class="fx2-glove" x="12" y="-43" width="7" height="23" rx="3.5"/>' +
-    '<path class="fx2-glove" d="M-16 16C-19 4 -18 -12 -15 -24C-8 -28 9 -28 17 -22C20 -10 18 4 13 16Z"/>' +
-    '<path class="fx2-gl-cr" d="M-14 -23q3 -2.5 6 0M-5 -25q3.2 -2.5 6.4 0M4.5 -24q3 -2.5 6 0M12.5 -21q2.6 -2 5.2 0M-6 -6q6 3 13 0"/>' +
-    '<path class="fx2-gl-hi" d="M-12.5 -45V-30M-3.4 -49V-31M6 -46V-30M14.5 -39V-27M-12 6C-14 -4 -14 -12 -12 -19"/>' +
-    '<rect class="fx2-glove fx2-cuff" x="-15" y="12" width="29" height="12" rx="4"/><rect class="fx2-rim" x="-16" y="21" width="31" height="5" rx="2.5"/></g>';
-
-  // a glove at (x, y) turned rot degrees; adult hand size (a hand is about 7 inches, the figure about 70 tall)
-  // two fingers out, the others curled (a pulse check)
-  var TWO = '<g class="fx2-gl"><path class="fx2-glove" d="M-15 -4C-21 -10 -23 -18 -19 -22C-15 -24 -12 -18 -11 -12Z"/>' +
-    '<rect class="fx2-glove" x="-9.5" y="-60" width="8.5" height="44" rx="4.2"/><rect class="fx2-glove" x="0.5" y="-66" width="8.5" height="50" rx="4.2"/>' +
-    '<rect class="fx2-glove" x="8" y="-30" width="8" height="14" rx="4"/><rect class="fx2-glove" x="13.5" y="-26" width="7" height="12" rx="3.5"/>' +
-    '<path class="fx2-glove" d="M-16 22C-19 8 -18 -6 -15 -18C-8 -22 9 -22 17 -16C20 -4 18 10 13 22Z"/>' +
-    '<path class="fx2-gl-cr" d="M-8 -17q3 -2.5 6 0M1.5 -17q3 -2.5 6 0M9 -18q3 -2 6 0M14 -15q2.6 -2 5.2 0"/>' +
-    '<path class="fx2-gl-hi" d="M-7 -55V-22M3 -61V-22M-12 12C-14 2 -14 -6 -12 -13"/>' +
-    '<rect class="fx2-glove fx2-cuff" x="-15" y="18" width="29" height="12" rx="4"/><rect class="fx2-rim" x="-16" y="27" width="31" height="5" rx="2.5"/></g>';
-  // at adult size: a hand is about 0.8 of his head's length
-  function glove(x, y, rot, cls, sc, shape){ return '<g' + (cls ? ' class="' + cls + '"' : '') + ' transform="translate(' + x + ' ' + y + ') rotate(' + rot + ') scale(' + (sc || 1.45) + ')">' + (shape || GLOVE) + '</g>'; }
-  // the jaw thrust, the EMT at his head: fingers hooked behind the angle of the jaw, the thumb on the cheekbone (one
-  // side; the other is its mirror)
-  // CPR: the heel of one hand on the lower half of the breastbone, the other hand on top, fingers laced and lifted
-  // across his chest; the EMT's forearms come in from his right side (image px)
-  var CPRH = '<path class="fx2-sleeve" d="M60 262L212 268L212 290L60 294Z"/><path class="fx2-sleeve fx2-sleeve2" d="M60 306L214 292L214 312L60 336Z"/>' +
-    glove(224, 279, 96, '', 1.35) + glove(230, 301, 84, 'fx2-top', 1.35);
+  /* the face is the shared one (PD.face): in image px the head is about 200..282 across, 8..150 down */
+  // the glove, two fingers out, and compressions: the shared NREMT patient drawing (nremt/assets/patient-draw.js)
+  var PD = window.NremtPatientDraw;
+  var GLOVE = PD.shapes('fx2-').glove, TWO = PD.shapes('fx2-').two;
+  function glove(x, y, rot, cls, sc, shape){ return PD.glove('fx2-', x, y, rot, cls, sc, shape); }
+  var CPRH = PD.cpr('fx2-', 227, 290, 1);
   // the jaw thrust (one side; the other is its mirror): fingers down the side of the face to the angle of the jaw,
   // the thumb in on the cheekbone, the fingertips hooked behind the angle
   var JAW = '<g transform="translate(192 72) rotate(180) scale(-1.3 1.3)">' + GLOVE + '</g><path class="fx2-gl-hook" d="M174 141Q190 153 210 146"/>';
@@ -280,8 +250,7 @@
       defs.innerHTML = '<clipPath id="fx2-sc"><rect x="' + G.sc.x + '" y="' + G.sc.y + '" width="' + G.sc.w + '" height="' + G.sc.h + '" rx="' + (G.wide ? 16 : 12) + '"/></clipPath>' +
         '<radialGradient id="fx2-poolg"><stop offset="0" stop-color="#7A0A06"/><stop offset=".75" stop-color="#9E1209"/><stop offset="1" stop-color="#B5190E"/></radialGradient>' +
         '<linearGradient id="fx2-blg" x1="0" x2="1"><stop offset="0" stop-color="#7C5E96"/><stop offset=".45" stop-color="#9677B2"/><stop offset="1" stop-color="#7A5C94"/></linearGradient>' +
-        ['tee:#C29630:#E2BC55', 'work:#46543A:#677852', 'pants:#2C3646:#4A586D', 'blue:#628BB6:#93B9DE'].map(function(g){ var q = g.split(':');
-          return '<linearGradient id="fx2-g-' + q[0] + '" x1="0" x2="1"><stop offset="0" stop-color="' + q[1] + '"/><stop offset=".5" stop-color="' + q[2] + '"/><stop offset="1" stop-color="' + q[1] + '"/></linearGradient>'; }).join('') +
+        PD.grads('fx2-', ['tee:#C29630:#E2BC55', 'work:#46543A:#677852', 'pants:#2C3646:#4A586D', 'blue:#628BB6:#93B9DE']) +
         '<radialGradient id="fx2-nit" cx=".4" cy=".35" r=".85"><stop offset="0" stop-color="#A29EF4"/><stop offset=".55" stop-color="#736ED9"/><stop offset="1" stop-color="#4E48B6"/></radialGradient>' +
         '<radialGradient id="fx2-nit2" cx=".4" cy=".35" r=".85"><stop offset="0" stop-color="#B3AFF7"/><stop offset=".55" stop-color="#837EE3"/><stop offset="1" stop-color="#5D57C4"/></radialGradient>' +
         '<radialGradient id="fx2-flash"><stop offset="0" stop-color="#FFF7C2" stop-opacity=".95"/><stop offset="1" stop-color="#FFE45C" stop-opacity="0"/></radialGradient>' +
@@ -317,11 +286,7 @@
           '<ellipse class="fx2-fpale" cx="240" cy="80" rx="44" ry="70"/><ellipse class="fx2-fgray" cx="240" cy="80" rx="44" ry="70"/></g>');
         h.push(c.scene === 'garage' ? '<path class="fx2-hair" d="M199 70C196 30 214 5 240 4C267 5 285 30 281 70C276 50 266 38 254 34C244 31 236 31 226 34C214 38 204 50 199 70Z"/>'
           : '<path class="fx2-hair is-gray" d="M200 60C200 40 210 22 222 18C230 30 250 30 258 18C270 22 280 40 280 60C272 46 262 40 240 40C218 40 208 46 200 60Z"/>');
-        h.push('<g class="fx2-face"><path class="fx2-nose" d="' + FACE.nose + '"/><path class="fx2-brow" d="' + FACE.brow + '"/>' +
-          '<g class="fx2-eo">' + eye(224) + eye(256) + '</g><g class="fx2-ec"><path class="fx2-lid" d="' + FACE.lidC + '"/></g>' +
-          '<path class="fx2-mouth fx2-mn" d="' + FACE.mouthN + '"/><path class="fx2-mo" d="' + FACE.mouthO + '"/>' +
-          '<ellipse class="fx2-lips" cx="240" cy="120" rx="13" ry="6"/>' +
-          '<path class="fx2-sweat" d="M222 40q-3 6 0 9q3 -3 0 -9zM252 36q-3 6 0 9q3 -3 0 -9zM268 52q-3 6 0 9q3 -3 0 -9zM212 88q-3 6 0 9q3 -3 0 -9zM270 94q-3 6 0 9q3 -3 0 -9z"/></g>');
+        h.push(PD.face('fx2-', 240, 77, 1));
       }
       // on him: each effect its own group, shown by state (paintFx)
       if(c.id === 'primary'){
@@ -342,19 +307,16 @@
         on.push('<g class="fx2-taps"><g class="fx2-tapl">' + glove(146, 118, 180) + '</g><g class="fx2-tapr">' + glove(334, 118, 180) + '</g></g>');
         on.push('<g class="fx2-carotid">' + glove(144, 170, 90, '', 1.45, TWO) + '</g>');
         on.push('<g class="fx2-gasp"><path class="fx2-rl" d="M118 250Q104 330 118 410"/><path class="fx2-rl" d="M362 250Q376 330 362 410"/></g>');
-        on.push('<g class="fx2-pads"><rect class="fx2-pad" x="160" y="226" width="64" height="46" rx="10" transform="rotate(-10 192 249)"/><rect class="fx2-pad" x="318" y="318" width="50" height="66" rx="10"/>' +
-          '<path class="fx2-wire" d="M190 228C200 160 320 120 520 90M346 318C380 260 470 160 520 110"/></g>');
+        on.push('<g class="fx2-pads">' + PD.pads('fx2-', [192, 249], [343, 351], 1, [520, 90]) + '</g>');
         on.push('<g class="fx2-cpr"><g class="fx2-cpr-h">' + CPRH + '</g></g>');
         on.push('<g class="fx2-zap"><circle cx="270" cy="300" r="120" fill="url(#fx2-flash)"/><path class="fx2-bolt" d="M196 250L248 300L232 306L300 360"/></g>');
       }
-      on.push('<g class="fx2-bvm"><ellipse class="fx2-mask" cx="240" cy="120" rx="32" ry="38"/><ellipse class="fx2-mask-r" cx="240" cy="120" rx="22" ry="27"/><rect class="fx2-valve" x="226" y="56" width="28" height="22" rx="6"/>' +
-        '<ellipse class="fx2-bag" cx="240" cy="-24" rx="34" ry="70"/></g>');
+      on.push('<g class="fx2-bvm">' + PD.bvm('fx2-', 240, 120, 1) + '</g>');
       gUnder.innerHTML = u.join('');
       gFig.innerHTML = h.join('');
       gOn.innerHTML = on.join('');
       paintFx(true);
     }
-    function eye(x){ return '<ellipse class="fx2-white" cx="' + x + '" cy="77" rx="7.5" ry="4.2"/><circle class="fx2-iris" cx="' + x + '" cy="77" r="3.4"/><circle class="fx2-pupil" cx="' + x + '" cy="77" r="1.5"/>'; }
 
     /* props in stage px (never rotated, so their words read): the AED and the cot */
     function props(c){
@@ -363,11 +325,7 @@
         var v = cam(lookFor(c.steps[2])), a = P(560, 60, v), s = clamp(v.k * 1.25, 0.68, 1.1), w = 170 * s, hh = 118 * s;
         var x = clamp(a[0] - w / 2, G.sc.x + 8, G.sc.x + G.sc.w - w - 8), y = clamp(a[1] - hh / 2, G.sc.y + 8, G.sc.y + G.sc.h - hh - 8);
         f.aedBox = [x, y, w, hh];
-        h.push('<g class="fx2-aed" transform="translate(' + x.toFixed(1) + ' ' + y.toFixed(1) + ') scale(' + s.toFixed(3) + ')">' +
-          '<rect class="fx2-aed-b" x="0" y="0" width="170" height="118" rx="16"/><rect class="fx2-aed-s" x="10" y="10" width="150" height="64" rx="6"/>' +
-          '<path class="fx2-vf" transform="translate(0 64) scale(1 .62) translate(0 -54)" d="M22 54q6 -16 10 0t10 0t9 -2t11 4t9 -14t10 12t10 -6t9 10t10 -12t9 4t9 -6t9 6t9 -8"/>' +
-          '<text class="fx2-aed-t" x="85" y="32" text-anchor="middle">Shock advised</text><text class="fx2-aed-t2" x="85" y="48" text-anchor="middle">Shock given</text>' +
-          '<circle class="fx2-aed-btn" cx="85" cy="96" r="14"/><path class="fx2-aed-bolt" d="M82 88l-5 9h6l-3 8l9 -11h-6l3 -6z"/></g>');
+        h.push(PD.aed('fx2-', x, y, s));
       }
       gProps.innerHTML = h.join('');
       paintFx(true);
@@ -418,18 +376,7 @@
         var kb = L.keep || KEEP[L.text] || (L.at !== 'aed' && L.at[0] > FACEBOX[0] && L.at[0] < FACEBOX[2] && L.at[1] > FACEBOX[1] && L.at[1] < FACEBOX[3] ? FACEBOX : null), keep = null;
         if(kb){ var k1 = P(kb[0], kb[1]), k2 = P(kb[2], kb[3]); keep = { l: Math.min(k1[0], k2[0]), r: Math.max(k1[0], k2[0]), t: Math.min(k1[1], k2[1]), b: Math.max(k1[1], k2[1]) }; }
         var w = e.offsetWidth, h = e.offsetHeight, ab = T().fx.aedBox, p = L.at === 'aed' && ab ? [ab[0] + ab[2] / 2, ab[1] + ab[3] * 0.32] : P(L.at[0], L.at[1]), best = null;
-        var dirs = [[0, -1], [0, 1], [1, -1], [-1, -1], [1, 1], [-1, 1], [1, 0], [-1, 0]];
-        [26, 44, 64, 88, 120, 160].some(function(d){
-          return dirs.some(function(dd){
-            var cx = p[0] + dd[0] * (d + w / 2), cy = p[1] + dd[1] * (d * 0.8 + h / 2);
-            var b = { l: cx - w / 2, t: cy - h / 2, r: cx + w / 2, b: cy + h / 2 };
-            if(b.l < sc.x + 6 || b.r > sc.x + sc.w - 6 || b.t < sc.y + 6 || b.b > sc.y + sc.h - 6) return false;
-            if(taken.some(function(t){ return !(b.r + 5 < t.l || b.l > t.r + 5 || b.b + 5 < t.t || b.t > t.b + 5); })) return false;
-            if(keep && !(b.r + 4 < keep.l || b.l > keep.r + 4 || b.b + 4 < keep.t || b.t > keep.b + 4)) return false;
-            if(drawn.some(function(k){ return !(b.r + 3 < k.l || b.l > k.r + 3 || b.b + 3 < k.t || b.t > k.b + 3); })) return false;
-            best = b; return true;
-          });
-        });
+        best = PD.place(p, w, h, { bounds: sc, taken: taken, keep: keep, drawn: drawn });
         if(!best){ var bx = clamp(p[0] - w / 2, sc.x + 6, sc.x + sc.w - w - 6), by = clamp(p[1] - h - 20, sc.y + 6, sc.y + sc.h - h - 6); best = { l: bx, t: by, r: bx + w, b: by + h }; }
         e.style.left = best.l.toFixed(1) + 'px'; e.style.top = best.t.toFixed(1) + 'px';
         taken.push(best);
@@ -441,21 +388,8 @@
     }
     // everything a label must never cover: his face and what is drawn on him now (gloves, forearms, pads, the
     // tourniquet, the wound and the jets, the mask), in stage px from the target camera
-    var DRAWN = '.fx2-face, .fx2-on > g.is-on .fx2-glove, .fx2-on > g.is-on .fx2-sleeve, .fx2-on > g.is-on .fx2-pad, .fx2-on > g.is-on .fx2-tq-b, .fx2-on > g.is-on .fx2-jet-e, .fx2-on > g.is-on .fx2-wound-r, .fx2-on > g.is-on .fx2-mask';
-    function drawnBoxes(){
-      var out = [], cm = gCam.getCTM();
-      if(!cm) return out;
-      var inv = cm.inverse();
-      gCam.querySelectorAll(DRAWN).forEach(function(e){
-        var bb, m; try{ bb = e.getBBox(); m = inv.multiply(e.getCTM()); }catch(err){ return; }
-        if(!bb.width && !bb.height) return;
-        var xs = [], ys = [];
-        [[bb.x, bb.y], [bb.x + bb.width, bb.y], [bb.x, bb.y + bb.height], [bb.x + bb.width, bb.y + bb.height]].forEach(function(c){
-          var q = new DOMPoint(c[0], c[1]).matrixTransform(m), s2 = P(q.x, q.y); xs.push(s2[0]); ys.push(s2[1]); });
-        out.push({ l: Math.min.apply(0, xs), r: Math.max.apply(0, xs), t: Math.min.apply(0, ys), b: Math.max.apply(0, ys) });
-      });
-      return out;
-    }
+    var DRAWN = PD.DRAWN('fx2-', '.fx2-on > g.is-on');
+    function drawnBoxes(){ return PD.drawnBoxes(gCam, DRAWN, function(x, y){ return P(x, y); }); }
     function rel(node){ var r = node.getBoundingClientRect(), h = box.getBoundingClientRect(); if(!r.width) return null; return { l: r.left - h.left, t: r.top - h.top, r: r.right - h.left, b: r.bottom - h.top }; }
     function speak(kind, text){
       if(!text){ bub.classList.remove('is-on'); return; }

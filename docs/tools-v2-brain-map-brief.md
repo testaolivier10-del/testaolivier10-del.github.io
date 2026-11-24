@@ -226,3 +226,16 @@ Merged `origin/claude/tools-v2-all` first (only the status tables conflicted; bo
   start (through `onShow`), not twice.
 - **Removed.** The "Front" chip on wide stages, where the head is drawn (it stays on phones and tablets).
 - Not changed: item 14 (a text conflict with anatomy 3d in the `K.spots` header comment) is for whoever merges second.
+- Checks run for round 1: sweep 360, 390, 1024 and 1440 light and dark plus 390 with reduced motion (reached by a
+  real tab tap): 0 failing (240 checks at phones, 178 at 1024, 175 at 1440). The sweep now taps every pin of both
+  views and checks the trays and inline font sizes. Frames: 707 frames, 28 checks, 0 failing (adds the light against
+  the field labels and the word under reduced motion). Lab practical sweep at 390: 231 of 231. AP Psych tests 153
+  pass; check-site and check-weight pass. Perf at 1440, CPU x4, load 5: damage taps median 16.7 ms, p95 50 ms (was
+  100 to 167 ms); split flash p95 33 ms; the flagship in the same run median 50 ms, p95 117 ms. A page without the
+  kit's tags loads it through the adapter and works (no errors).
+
+## Recheck 1 (PASS) nits, fixed before integration
+- Test yourself's split figure is drawn again at its real width once on the page, so its words are 12 to 13 px like
+  Explore's (they were about 22 px at 1440).
+- "Left hand" and "Right hand" sit inside the trays, clear of the table's front edge. Sweep 390 and 1440, frames: 0
+  failing.

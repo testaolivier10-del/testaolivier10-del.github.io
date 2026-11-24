@@ -102,18 +102,21 @@
      word. [what the case says now, the pin words it cancels, the new words] */
   var RESOLVE = [
     [/\b(bleeding (stops|has stopped|is controlled|is under control)|stops the bleeding|bleeding is controlled|no longer bleeding)/i, /bleed/i, 'Bleeding controlled'],
-    [/\b(starts? breathing|breathing on (his|her) own|begins to breathe|cries strongly|is crying|breathing better)/i, /Not breathing/, 'Breathing now'],
-    [/\b(pulse (returns|is back)|has a pulse|ROSC|return of spontaneous circulation)/i, /No pulse/, 'Pulse back'],
+    [/\b(starts? (to )?breath(e|ing)|breathing on (his|her) own|breathe on (his|her) own|breath of (his|her) own|begins to breathe|begins breathing|cries strongly|is crying|then cries|breathing better|breathing adequately|respiratory drive returns|no further shock)/i, /Not breathing/, 'Breathing now'],
+    [/\b(pulse (returns|is back)|has a pulse|ROSC|return of spontaneous circulation|no further shock)/i, /No pulse/, 'Pulse back'],
     [/\b(grape|object|piece) (comes|pops|flies) out|\bis expelled\b|\bdislodges\b/i, /Choking/, 'Airway cleared'],
     [/\b(wakes|opens (his|her) eyes|becoming more responsive|more alert|answering)/i, /Unresponsive/, 'Waking']
   ];
   /* newest-first list of all sentences seen -> [{ re, words, at }] */
+  var NEG = /\b(never|not|no|without|until|if|unless|whether|confirm\w*|can't|cannot|isn't|wasn't|doesn't|didn't|won't|hasn't)\b|n't\b/i;
   function resolutions(seen){
     var out = [], i = 0;
     seen.forEach(function(n){
       sentences(n.text).forEach(function(s){
         i++;
-        RESOLVE.forEach(function(r){ if(r[0].test(s)) out.push({ cancels: r[1], words: r[2], at: i }); });
+        // a sentence that denies it does not count ("you never actually confirmed he has a pulse", "he isn't going to
+        // start breathing on his own")
+        RESOLVE.forEach(function(r){ var m = r[0].exec(s); if(m && !NEG.test(s.slice(0, m.index))) out.push({ cancels: r[1], words: r[2], at: i }); });
       });
     });
     return out;
@@ -131,7 +134,8 @@
     var now = list.filter(function(x){ return x.now; });
     var pool = now.some(function(x){ return BIRTH_WORDS.some(function(w){ return w[0].test(x.text); }); }) ? now : list;
     for(var j = 0; j < BIRTH_WORDS.length; j++) for(var i = 0; i < pool.length; i++) if(BIRTH_WORDS[j][0].test(pool[i].text)) return { text: BIRTH_WORDS[j][1], sev: /Crowning|Head delivered|Cord|bleeding/.test(BIRTH_WORDS[j][1]) };
-    return { text: 'Birth', sev: false };
+    // nothing about the birth is named yet: no word (a woman at 34 weeks who has not delivered is not "Birth")
+    return null;
   }
   /* A pregnant patient (review 2026-11). In the OB calls the case also talks
      about the baby: "you see the top of the head at the vaginal opening" is
@@ -199,7 +203,7 @@
     var bl = fs.birth || [];
     if(pt.preg && bl.length && pt.view === 'front' && f.landmarks && f.landmarks.pubis){
       var bw = birthWords(bl), p = f.landmarks.pubis, hr = (f.anchors.simHead || [0, 0, 44])[2];
-      items.push({ key: 'birth', where: 'Perineum', what: bw.text, sev: bw.sev, fresh: bl.some(function(x){ return x.now; }), x: p[0], y: p[1] + hr * 0.35 });
+      if(bw) items.push({ key: 'birth', where: 'Perineum', what: bw.text, sev: bw.sev, fresh: bl.some(function(x){ return x.now; }), x: p[0], y: p[1] + hr * 0.35 });
     }
   }
 

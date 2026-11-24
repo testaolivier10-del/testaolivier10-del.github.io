@@ -236,3 +236,14 @@ for a person to confirm:
 - **The lost time clock.** 1, 2 and 10 minutes are illustrative figures for the wrong arms, said in "?".
 - **Cardiac arrest, three way fork.** Explore uses AHA 2025's three outcomes (normal breathing and a pulse; a pulse
   without normal breathing; no pulse with no breathing or only gasping). The page's BLS chart has two arms; unchanged.
+## Scenario simulator, tools v2 Explore (2026-11-19, branch claude/tools-v2-nremt-scenario-sim)
+No case text, number or care rule changed. Drawing choices a person should check:
+- Cyanosis is drawn only while the case says blue and its SpO2 (when given) is under 94%; pallor stays until the
+  case says the colour returned. Fair reading of the cases?
+- Compressions animate at about 109 a minute (AHA 100 to 120); the bag squeezes only at a rate the case gives.
+- The AED pad placement drawn: adult anterolateral; infant and toddler one anterior pad (the posterior pad not shown).
+- The epinephrine auto injector is drawn on the lateral thigh of the viewer's right (the patient's left).
+- (Recheck 2) Side lying and seated postures are rendered from the 3D body; still not drawn: s3 carried by her
+  father. The side pose is one recovery position (upper hip and knee bent, upper hand by the face, lower arm forward),
+  also used for the pregnant patients on their left side (s16, s17) and for the toddler after her seizure (s9). Fine?
+- (Review round 1) Thresholds for "Better / Worse": HR 10 a minute or 10%, systolic 10, RR 4, SpO2 2 points. Reasonable?

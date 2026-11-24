@@ -240,3 +240,25 @@ test('care and resolved findings follow the choices taken', () => {
   const s18 = sim.care([{ text: '', now: true }, { text: '', did: 'Stop compressions, continue ventilation until his own breathing is adequate, keep him warm, and transport with the mother' }, { text: '', did: 'Add chest compressions, coordinated with ventilation at 3 compressions to 1 breath' }], {});
   assert.ok(!s18.on.cpr && s18.on.bvm && s18.on.warm);
 });
+
+/* Tools v2 Explore (nremt/assets/scenario-explore.js): the drawn state reads the case, never the choice. */
+test('scenario Explore: drawn state, better or worse, who the patient is', () => {
+  const s = sandbox();
+  vm.runInContext(read('nremt/assets/scenario-monitor.js'), s);
+  vm.runInContext(read('nremt/assets/scenario-care.js'), s);
+  vm.runInContext(read('nremt/assets/scenario-explore.js'), s);
+  const J = s.NremtSim, X = s.NremtScenarioExplore.pure, SC = loadScenarios();
+  const c1 = SC.find(c => c.id === 's1'), n = c1.nodes;
+  const seenOf = (ids, dids) => ids.slice().reverse().map((id, i) => ({ text: n[id].text, vitals: n[id].vitals, now: i === 0, did: i === 0 ? undefined : dids[ids.length - 1 - i] }));
+  const st0 = X.stateOf(seenOf(['s1_start'], []), X.careOf(J, seenOf(['s1_start'], []), {}), 336);
+  assert.equal(st0.bleed, 'spurt'); assert.equal(st0.eyes, 'open');
+  const path = ['s1_start', 's1_tourniquet_first'], dids = [n.s1_start.choices[0].text];
+  const sn = seenOf(path, dids), care = X.careOf(J, sn, {});
+  const st1 = X.stateOf(sn, care, 336);
+  assert.ok(care.on.tq, 'the tourniquet is on'); assert.equal(st1.bleed, 'stop'); assert.ok(st1.pool >= 1, 'the pool stays');
+  const d = X.direction(J, J.pure.parseVitals(n.s1_start.vitals), J.pure.parseVitals(n.s1_tourniquet_first.vitals), 336);
+  assert.equal(d.dir, 'better');
+  assert.equal(X.femaleOf(SC.find(c => c.id === 's3').nodes.s3_start.text, false), true, 'his 2-year-old daughter is a girl');
+  // every node of every call gives a drawn state without throwing
+  for (const c of SC) for (const id in c.nodes) X.stateOf([{ text: c.nodes[id].text, vitals: c.nodes[id].vitals, now: true }], X.careOf(J, [{ text: c.nodes[id].text, now: true }], {}), null);
+});

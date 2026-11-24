@@ -24,12 +24,30 @@
      v.setSystems(['cardio']); v.setSkin(false); v.structures(); v.info(key); v.on('select', fn);
      v.setOnly(['Heart','Aorta']) / null; v.inPlay(name); v.marks({ Heart: 'good' }); v.tag('Heart') / null
      v.hunt({ panel, live, onAnswer, onStop }).start() / .stop() / .active()
-     v.project('Heart') -> { x, y, r, front } | null   where a structure's middle is drawn, in px from the
+     v.project('Heart') -> { x, y, r, front, box } | null   where a structure's middle is drawn, in px from the
        canvas's top left (r: about half its drawn size; front: false when it is behind the camera)
      v.flying() -> true while the camera is still travelling to a selection (a card waits for it)
      v.offset(px)   draw everything px higher (a panel docked over the picture's foot); 0 restores
      v.on('frame', fn)   after every frame that was drawn (the camera moved: a card on the picture follows)
      v.on('hover', fn(key | null, info))   the pointer moved onto a structure, or off it (mouse only)
+     A&P 3D anatomy, tools v2 (docs/tools-v2-anp-anatomy-3d-brief.md), all off unless asked for:
+     opts.fade: 380     a change of look (select, clear, setOnly, marks, highlight, skin) eases from the old look
+                        to the new one over that many ms instead of swapping (reduced motion: 120 ms)
+     opts.selectFly: false   a selection glows where it is; the camera stays (a tap again lets go, no fly home)
+     opts.poster: { light, dark }   a still of the opening view (transparent, the canvas's full height) shown while
+                        the model loads, then cross faded to the live body
+     opts.fadeOthers: 0.45   with a part selected, the other organs and vessels in play fade to this opacity (default 0.1);
+                        the region stays readable round the part
+     v.frame(names, pad, dir)   pad: room round them (default 1.15); dir: [x, y, z] from them to the camera (default
+                        the front, [0, -1, 0.12]; [1, -0.35, 0.15] looks at the left side)
+     v.settling() -> true while the camera travels or a look is still easing (a card waits for both)
+     v.set({ selectFly, fadeOthers })   change those two options later
+     opts.selectOnTop (or set())   the selected part is drawn over everything (a second pass), taps there pick it, and
+                        project() points at a spot on its own surface
+     opts.ghostContext: true   meshes drawn but never named (content "context") join the ghost under setOnly()
+     v.hit(x, y) -> key | null   what a tap there would pick (a first visit cue points only where a tap names the part)
+     v.project(name, part)   with a mesh name (FMA id) of that structure: where that one piece is drawn (the bone
+                        that was tapped, of a pair or a set)
 
    Names are the labels in the body map's Browse-by-name list, matched
    case-insensitively; keys work too. The host page needs the three.js import
@@ -178,6 +196,13 @@
 .bv-reset svg{width:16px;height:16px;}
 .bv-reset ~ .bv-hint{top:60px;}
 .bv-hint{position:absolute;top:10px;right:10px;background:var(--overlay-bg);border:2px solid var(--line);border-radius:8px;padding:6px 9px;font-size:11px;color:var(--muted);text-align:right;line-height:1.5;pointer-events:none;}
+.bv-loading.has-poster{justify-content:flex-end;padding-bottom:14px;background:radial-gradient(ellipse 72% 72% at 50% 42%,#fbfbfa 0%,#e4e6e2 100%);transition:opacity .45s ease-out;}
+:root[data-theme="dark"] .bv-loading.has-poster{background:radial-gradient(ellipse 72% 72% at 50% 42%,#26332f 0%,#121a18 100%);}
+.bv-loading.has-poster.is-out{opacity:0;pointer-events:none;}
+.bv-poster{position:absolute;top:0;left:50%;height:100%;width:auto;max-width:none;transform:translateX(-50%);pointer-events:none;user-select:none;}
+.bv-loading.has-poster .bv-spinner{position:relative;}
+.bv-loading.has-poster .bv-load-text{position:relative;padding:3px 10px;border-radius:999px;background:var(--overlay-bg,rgba(255,255,255,.9));}
+@media (prefers-reduced-motion: reduce){.bv-loading.has-poster{transition-duration:.12s;}}
 `;
     document.head.appendChild(st);
   }
@@ -235,6 +260,14 @@
     const spinner = loading.querySelector('.bv-spinner');
     const loadText = loading.querySelector('.bv-load-text');
     const loadBtn = loading.querySelector('.bv-load-btn');
+    if (opts.poster) {
+      const pi = document.createElement('img');
+      pi.className = 'bv-poster'; pi.alt = ''; pi.decoding = 'async'; pi.setAttribute('aria-hidden', 'true');
+      const posterSrc = () => (typeof opts.poster === 'string' ? opts.poster : opts.poster[isDark() ? 'dark' : 'light'] || opts.poster.light);
+      pi.src = posterSrc();
+      loading.classList.add('has-poster');
+      loading.insertBefore(pi, loading.firstChild);
+    }
     el.insertBefore(loading, el.firstChild);
     el.insertBefore(canvas, el.firstChild);
     // Reset view on the model itself (owner 2026-10-27).
@@ -367,6 +400,8 @@
       scene.add(dl3);
 
       raycaster = new THREE.Raycaster();
+      raycaster.layers.enableAll();   // a part drawn on top (selectOnTop) sits on layer 1
+      scene.traverse(o => { if (o.isLight) o.layers.enableAll(); });
       pointer = new THREE.Vector2();
 
       window.addEventListener('resize', onResize);
@@ -385,6 +420,86 @@
       applyOffset();
     }
     let viewOffY = 0;
+    /* opts.selectOnTop: the selected part's meshes move to layer 1, drawn in a second pass over everything */
+    let onTopKey = null;
+    const anchors = {};   // a point on the named part's surface, per key and piece, where a tap there names it
+    function onTop(){
+      const k = opts.selectOnTop && selectedGroupKey && meshByGroup[selectedGroupKey] ? selectedGroupKey : null;
+      if (k === onTopKey) return;
+      if (onTopKey) for (const m of meshByGroup[onTopKey] || []) m.layers.set(0);
+      onTopKey = k;
+      if (k) for (const m of meshByGroup[k]) m.layers.set(1);
+      for (const a in anchors) delete anchors[a];
+      kick();
+    }
+    /* A surface point of the part (or of the tapped piece) near its middle: the ray through the middle of its box if
+       it meets the part, else through the vertex nearest that middle. Cached until the selection changes. */
+    function anchorOf(k, ms, centre){
+      const id = k + '|' + ms.map(m => m.userData.part).join(',');
+      if (anchors[id]) return anchors[id];
+      const T = L.THREE, rc = new T.Raycaster(); rc.layers.enableAll();
+      const meet = (ndc) => { rc.setFromCamera(ndc, camera); const h = rc.intersectObjects(ms, false)[0]; return h ? h.point.clone() : null; };
+      const w = canvas.clientWidth || 1, h = canvas.clientHeight || 1, dx = 3 / w, dy = 3 / h;
+      /* a spot where a tap lands on the part with room to spare: its own ray and four rays 1.5 px round it meet the
+         part. Tried at the middle, then at the vertices nearest the middle. */
+      const solid = (p) => {
+        const n = p.clone().project(camera); n.z = 0;
+        const c = meet(n); if (!c) return null;
+        for (const o of [[dx, 0], [-dx, 0], [0, dy], [0, -dy]]) if (!meet(new T.Vector2(n.x + o[0], n.y + o[1]))) return null;
+        return c;
+      };
+      const vs = [[0, centre.clone()]], v = new T.Vector3();
+      for (const m of ms) {
+        const pos = m.geometry.attributes.position, step = Math.max(1, Math.floor(pos.count / 400));
+        for (let i = 0; i < pos.count; i += step) { v.fromBufferAttribute(pos, i).applyMatrix4(m.matrixWorld); vs.push([v.distanceToSquared(centre), v.clone().lerp(centre, 0.04)]); }
+      }
+      vs.sort((a, b) => a[0] - b[0]);
+      let at = null;
+      for (let i = 0; i < Math.min(vs.length, 80) && !at; i++) at = solid(vs[i][1]);
+      if (!at) for (let i = 0; i < Math.min(vs.length, 80) && !at; i++) at = meet(Object.assign(vs[i][1].clone().project(camera), { z: 0 }));
+      return (anchors[id] = at || centre);
+    }
+    /* opts.fade: ease every change of look. The look of every mesh is read before the change and after it, then
+       eased from one to the other in the render loop; a change made mid ease starts from what is drawn. */
+    const FADE_MS = opts.fade > 0 ? +opts.fade : 0;
+    let tween = null;
+    function lookOf(m){ const t = m.material; return { o: t.opacity, c: t.color.getHex(), e: t.emissive.getHex(), ei: t.emissiveIntensity, tr: t.transparent, dw: t.depthWrite }; }
+    function lookAt(x, k){
+      const t = x.m.material;
+      t.opacity = x.a.o + (x.b.o - x.a.o) * k;
+      t.color.copy(x.ca).lerp(x.cb, k);
+      t.emissive.copy(x.ea).lerp(x.eb, k);
+      t.emissiveIntensity = x.a.ei + (x.b.ei - x.a.ei) * k;
+      if (k < 1) { t.transparent = x.a.tr || x.b.tr || t.opacity < 1; t.depthWrite = x.a.dw && x.b.dw; }
+      else { t.transparent = x.b.tr; t.depthWrite = x.b.dw; }
+    }
+    let easing = 0;   // a change made inside another (an onSelect handler) is part of the outer one
+    function eased(fn){
+      if (!FADE_MS || !L || !loaded || easing) return fn();
+      const now = allPickable.map(lookOf);
+      if (tween) { tween.items.forEach(x => lookAt(x, 1)); tween = null; }   // the change starts from the ease's end state
+      let out;
+      easing++;
+      try { out = fn(); } finally { easing--; }
+      const items = [], C3 = L.THREE.Color;
+      allPickable.forEach((m, i) => {
+        const a = now[i], b = lookOf(m);
+        if (a.o !== b.o || a.c !== b.c || a.e !== b.e || a.ei !== b.ei) items.push({ m, a, b, ca: new C3(a.c), cb: new C3(b.c), ea: new C3(a.e), eb: new C3(b.e) });
+      });
+      if (items.length) {
+        items.forEach(x => lookAt(x, 0));
+        const ms = reducedMotion() ? Math.min(FADE_MS, 120) : FADE_MS;
+        tween = { items, t0: performance.now(), ms };
+        kick(ms + 200);
+      }
+      return out;
+    }
+    function stepTween(now){
+      if (!tween) return;
+      const k = Math.min(1, (now - tween.t0) / tween.ms), e = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+      tween.items.forEach(x => lookAt(x, e));
+      if (k >= 1) tween = null;
+    }
     function applyOffset(){
       if (!camera) return;
       const w = canvas.clientWidth || el.clientWidth, h = canvas.clientHeight || 560;
@@ -482,9 +597,14 @@
         if (selectedGroupKey && meshByGroup[selectedGroupKey]) {
           highlightGroup(selectedGroupKey);
           updateOcclusionFade();
-          flyToGroup(selectedGroupKey);
+          if (opts.selectFly !== false) flyToGroup(selectedGroupKey);
         }
-        loading.hidden = true;
+        if (opts.poster && !reducedMotion()) {
+          // the still cross fades to the live body (the first frames are drawn under it)
+          kick(900);
+          requestAnimationFrame(() => requestAnimationFrame(() => loading.classList.add('is-out')));
+          setTimeout(() => { loading.hidden = true; }, 520);
+        } else loading.hidden = true;
         emit('load');
       }, (xhr) => {
         if (xhr.total) loadText.textContent = 'Loading 3D model… ' + Math.round((xhr.loaded / xhr.total) * 100) + '%';
@@ -513,8 +633,20 @@
       rafId = requestAnimationFrame(animate);
       const now = performance.now();
       const moved = controls.update();
+      if (tween) stepTween(now);
       if (moved || now < activeUntil || now - lastFrame > 1000) {
-        renderer.render(scene, camera);
+        const top = onTopKey && meshByGroup[onTopKey];
+        if (top) {
+          /* selectOnTop: the named part is drawn after everything else over a cleared depth, so it is seen wherever
+             it lies (an x-ray glow: the kidneys behind the stomach); it still hides its own far side */
+          renderer.render(scene, camera);
+          const bg = scene.background, auto = renderer.autoClear;
+          const su = renderer.shadowMap.autoUpdate;
+          renderer.autoClear = false; renderer.clearDepth(); renderer.shadowMap.autoUpdate = false;
+          scene.background = null; camera.layers.set(1);
+          renderer.render(scene, camera);
+          camera.layers.set(0); scene.background = bg; renderer.autoClear = auto; renderer.shadowMap.autoUpdate = su;
+        } else renderer.render(scene, camera);
         lastFrame = now;
         if (tagText) placeTag();
         // no kick here: a listener that only places something over the picture must not keep it rendering
@@ -576,7 +708,7 @@
       if (!groupKey) { emit('pick', null, null, null); return; }
       const part = lastPart;
       emit('pick', groupKey, CONTENT_BY_KEY[groupKey], part);
-      if (pickSelects) { pickedPart = part; selectGroup(groupKey); pickedPart = null; }
+      if (pickSelects) { pickedPart = part; eased(() => selectGroup(groupKey)); pickedPart = null; }
     }
     function onPointerMove(e){
       const groupKey = keyAt(e);
@@ -588,6 +720,8 @@
       // hidden by a system filter (or the skin toggle) would otherwise still be
       // pickable through the gap it left behind — filter those out first.
       const visibleHits = hits.filter(h => h.object.visible && !h.object.userData.dim && !h.object.userData.context);
+      // a part drawn on top is what is under the pointer wherever it is hit
+      if (onTopKey) { const t = visibleHits.find(h => h.object.userData.groupKey === onTopKey); if (t) { lastPart = t.object.userData.part; return onTopKey; } }
       lastPart = null;
       // Landmark dots are drawn on top of everything, so a tap on one picks it.
       const dot = visibleHits.find(h => h.object.userData.isPoint);
@@ -679,7 +813,7 @@
           m.material.depthWrite = !m.userData.baseTransparent;
         } else if (selectedGroupKey) {
           m.material.transparent = true;
-          m.material.opacity = FADE_OPACITY;
+          m.material.opacity = opts.fadeOthers > 0 ? +opts.fadeOthers : FADE_OPACITY;
           m.material.depthWrite = false;
         } else {
           m.material.transparent = m.userData.baseTransparent;
@@ -761,18 +895,19 @@
       // and clear the selection, instead of re-selecting a no-op.
       if (groupKey === selectedGroupKey) {
         if (how === 'focus' || how === 'reveal') return;
-        reset();
+        if (opts.selectFly === false) clear(); else reset();
         return;
       }
       if (selectedGroupKey && meshByGroup[selectedGroupKey]) {
         for (const m of meshByGroup[selectedGroupKey]) restore(m);
       }
       selectedGroupKey = groupKey;
+      onTop();
       highlightGroup(groupKey);
       updateOcclusionFade();
       const content = CONTENT_BY_KEY[groupKey];
       if (content && infoEl) infoEl.innerHTML = infoHtml(content);
-      flyToGroup(groupKey);
+      if (opts.selectFly !== false) flyToGroup(groupKey);
       renderList();
       emit('select', groupKey, content, pickedPart);
       placeTag();
@@ -783,6 +918,7 @@
       }
       const had = selectedGroupKey;
       selectedGroupKey = null;
+      onTop();
       tagEl.hidden = true;
       updateOcclusionFade();
       if (infoEl) infoEl.innerHTML = placeholder;
@@ -800,7 +936,8 @@
         const content = CONTENT_BY_KEY[groupKey];
         if (!content) continue;
         const show = visible(groupKey);
-        const dim = show && !content.context && !inPlay(groupKey);
+        // opts.ghostContext: unnamed context meshes join the ghost when only some structures are in play
+        const dim = show && (content.context ? !!(opts.ghostContext && onlySet) : !inPlay(groupKey));
         for (const m of meshByGroup[groupKey]) { m.visible = show; m.userData.dim = dim; }
       }
       if (selectedGroupKey && !inPlay(selectedGroupKey)) clear();
@@ -828,7 +965,7 @@
     if (listEl) {
       listEl.addEventListener('click', (e) => {
         const btn = e.target.closest('button[data-key]');
-        if (btn) selectGroup(btn.dataset.key);
+        if (btn) eased(() => selectGroup(btn.dataset.key));
       });
     }
 
@@ -982,35 +1119,37 @@
     const api = {
       el,
       /* Select and frame a structure by Browse-by-name label or key. Returns the key, or null if unknown. */
-      select(name){ const k = resolve(name); if (k) selectGroup(k, 'focus'); return k; },
+      select(name){ const k = resolve(name); if (k) eased(() => selectGroup(k, 'focus')); return k; },
       find: resolve,
-      clear,
-      reset,
+      clear(){ eased(clear); },
+      reset(){ eased(reset); },
       selected(){ return selectedGroupKey; },
       /* A softer glow on several structures at once, without selecting; [] clears. */
       highlight(names){
         const keys = (Array.isArray(names) ? names : [names]).map(resolve).filter(Boolean);
         const old = highlighted;
         highlighted = keys;
-        if (L) old.forEach(k => { if (k !== selectedGroupKey) for (const m of meshByGroup[k] || []) restore(m); });
-        if (L) keys.forEach(k => { if (k !== selectedGroupKey) highlightGroup(k, 0.35); });
+        eased(() => {
+          if (L) old.forEach(k => { if (k !== selectedGroupKey) for (const m of meshByGroup[k] || []) restore(m); });
+          if (L) keys.forEach(k => { if (k !== selectedGroupKey) highlightGroup(k, 0.35); });
+        });
         return keys;
       },
-      setSystems(list){ activeSystems = new Set(list || ALL_SYSTEMS); applyLayers(); emit('layers', api.layers()); },
+      setSystems(list){ activeSystems = new Set(list || ALL_SYSTEMS); eased(applyLayers); emit('layers', api.layers()); },
       /* The structures in play (keys or names); null = all. Others stay as a faint ghost. */
-      setOnly(list){ onlySet = list ? new Set(list.map(resolve).filter(Boolean)) : null; applyLayers(); emit('layers', api.layers()); },
+      setOnly(list){ onlySet = list ? new Set(list.map(resolve).filter(Boolean)) : null; eased(applyLayers); emit('layers', api.layers()); },
       inPlay(name){ const k = resolve(name); return !!k && inPlay(k); },
       /* Color structures by result: { name: 'good' | 'bad' | 'accent' }; {} clears. */
       marks(map){
         const old = markMap; markMap = {};
         for (const n in (map || {})) { const k = resolve(n); if (k) markMap[k] = map[n]; }
-        if (L) for (const k of new Set(Object.keys(old).concat(Object.keys(markMap)))) if (k !== selectedGroupKey) for (const m of meshByGroup[k] || []) restore(m);
+        eased(() => { if (L) for (const k of new Set(Object.keys(old).concat(Object.keys(markMap)))) if (k !== selectedGroupKey) for (const m of meshByGroup[k] || []) restore(m); });
         kick();
       },
       /* Canvas picks select (explore) or only report (a quiz). */
       setPickSelects(on){ pickSelects = !!on; },
       /* Fly to frame several structures (null: the whole body). */
-      frame(names){
+      frame(names, pad, dir){
         if (!camera) return;
         if (!names) { animateCamera(new L.THREE.Vector3(...HOME_POS), new L.THREE.Vector3(...HOME_TARGET), 650); return; }
         const box = new L.THREE.Box3(); let has = false;
@@ -1023,39 +1162,69 @@
         const c = new L.THREE.Vector3(), sz = new L.THREE.Vector3(); box.getCenter(c); box.getSize(sz);
         const aspect = canvas.clientWidth / Math.max(1, canvas.clientHeight);
         const need = Math.max(sz.z, sz.x / Math.max(aspect, 0.3)) * 0.5 / Math.tan(16 * Math.PI / 180);
-        const dist = Math.min(Math.max(need * 1.15, 220), 3200);
+        const dist = Math.min(Math.max(need * (pad || 1.15), 220), 3200);
+        if (dir) {
+          const d = new L.THREE.Vector3(dir[0], dir[1], dir[2]).normalize();
+          // seen from the side the box's depth is its width on screen
+          const side = Math.abs(d.x) > Math.abs(d.y) ? Math.max(sz.z, sz.y / Math.max(aspect, 0.3)) * 0.5 / Math.tan(16 * Math.PI / 180) : need;
+          const dd = Math.min(Math.max(side * (pad || 1.15), 220), 3200);
+          animateCamera(c.clone().addScaledVector(d, dd), c, 650);
+          return;
+        }
         animateCamera(new L.THREE.Vector3(c.x, c.y - dist, c.z + dist * 0.12), c, 650);
       },
       /* Where a structure is drawn now (css px from the canvas's top left), or null before the model is in. */
-      project(name){
+      project(name, part){
         const k = resolve(name);
         if (!k || !camera || !meshByGroup[k]) return null;
-        const b = groupBounds(k);
+        const piece = part ? meshByGroup[k].find(m => m.userData.part === part) : null;
+        let b = groupBounds(k);
+        if (piece) { const bx = new L.THREE.Box3().setFromObject(piece), c = new L.THREE.Vector3(), z = new L.THREE.Vector3(); bx.getCenter(c); bx.getSize(z); b = { center: c, size: z }; }
         if (!b) return null;
         /* A pair drawn as one part (the kidneys) has its middle on nothing (the spine): point at the nearer one. */
-        let at = b.center;
-        const ms = meshByGroup[k].filter(m => !m.userData.isPoint);
+        let at = b.center, near = piece ? [piece] : meshByGroup[k];
+        const ms = piece ? [] : meshByGroup[k].filter(m => !m.userData.isPoint);
         if (ms.length > 1) {
           const boxes = ms.map(m => new L.THREE.Box3().setFromObject(m));
           if (!boxes.some(bx => bx.containsPoint(b.center))) {
-            let best = null, bd = Infinity;
-            for (const bx of boxes) { const c = new L.THREE.Vector3(); bx.getCenter(c); const d = c.distanceTo(camera.position); if (d < bd) { bd = d; best = c; } }
-            if (best) at = best;
+            let best = null, bd = Infinity, bi = -1;
+            boxes.forEach((bx, i) => { const c = new L.THREE.Vector3(); bx.getCenter(c); const d = c.distanceTo(camera.position); if (d < bd) { bd = d; best = c; bi = i; } });
+            if (best) { at = best; near = [ms[bi]]; }
           }
         }
+        // the named part drawn on top: point at its own surface, never at a box middle that lies on something else
+        if (k === onTopKey) at = anchorOf(k, near.filter(m => !m.userData.isPoint), at);
         const v = at.clone().project(camera);
         const w = canvas.clientWidth, h = canvas.clientHeight;
         const side = new L.THREE.Vector3().setFromMatrixColumn(camera.matrixWorld, 0).multiplyScalar(Math.min(b.size.length() * 0.35, 400));
         const e = at.clone().add(side).project(camera);
-        return { x: (v.x + 1) / 2 * w, y: (1 - v.y) / 2 * h, r: Math.abs(e.x - v.x) / 2 * w, front: v.z <= 1 };
+        /* box: the whole structure's drawn extent (every piece of a pair), [x0, y0, x1, y1] px, so a card can keep off all of it */
+        const gb = groupBounds(k), lo = gb.center.clone().addScaledVector(gb.size, -0.5), x = [Infinity, Infinity, -Infinity, -Infinity];
+        for (let i = 0; i < 8; i++) {
+          const q = new L.THREE.Vector3(lo.x + (i & 1 ? gb.size.x : 0), lo.y + (i & 2 ? gb.size.y : 0), lo.z + (i & 4 ? gb.size.z : 0)).project(camera);
+          const qx = (q.x + 1) / 2 * w, qy = (1 - q.y) / 2 * h;
+          x[0] = Math.min(x[0], qx); x[1] = Math.min(x[1], qy); x[2] = Math.max(x[2], qx); x[3] = Math.max(x[3], qy);
+        }
+        return { x: (v.x + 1) / 2 * w, y: (1 - v.y) / 2 * h, r: Math.abs(e.x - v.x) / 2 * w, front: v.z <= 1, box: x };
       },
       flying(){ return !!flyAnim; },
+      /* What a tap at (x, y) (css px from the canvas's top left) would pick: a key, or null. */
+      hit(x, y){
+        if (!camera) return null;
+        const r = canvas.getBoundingClientRect();
+        return keyAt({ clientX: r.left + x, clientY: r.top + y });
+      },
+      settling(){ return !!flyAnim || !!tween || easing > 0; },   // easing: a change is being made (its ease starts when it returns)
+      /* selectFly and fadeOthers, changed after mount (one viewer, two screens: Explore keeps the camera and the
+         region readable, Test yourself flies to a part and fades the rest, as before) */
+      set(o){ if (o && 'selectFly' in o) opts.selectFly = o.selectFly; if (o && 'fadeOthers' in o) opts.fadeOthers = o.fadeOthers;
+        if (o && 'selectOnTop' in o) { opts.selectOnTop = !!o.selectOnTop; if (L) onTop(); } },
       /* Move what is drawn up by px (a panel docked over the picture's foot): the camera's view slides, so picking,
          project() and the drawing agree. 0 puts it back. */
       offset(px){ viewOffY = Math.max(0, +px || 0); applyOffset(); },
       /* A floating name tag over the selected structure: text, or null to hide. */
       tag(text){ tagText = text == null ? null : String(text); placeTag(); },
-      setSkin(on){ skinOn = !!on; applyLayers(); emit('layers', api.layers()); },
+      setSkin(on){ skinOn = !!on; eased(applyLayers); emit('layers', api.layers()); },
       layers(){ return { systems: Array.from(activeSystems), skin: skinOn }; },
       info(name){ const k = resolve(name); return k ? Object.assign({ key: k }, CONTENT_BY_KEY[k]) : null; },
       structures(all){
