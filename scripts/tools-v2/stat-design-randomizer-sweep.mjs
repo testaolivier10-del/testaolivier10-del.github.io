@@ -251,6 +251,9 @@ if (ONE) {
     ok(cue && cue.below && !cue.over && cue.inView, `${tag} first visit cue: ${JSON.stringify(cue)}`);
     const fold = await X(() => { const b = document.querySelector('.dr3-run').getBoundingClientRect(), c = document.querySelector('.dr3 .tk2-cause').getBoundingClientRect(), s = document.querySelector('.dr3-scene').getBoundingClientRect(), r1 = document.querySelector('.dr3-100').getBoundingClientRect(); return { b: b.top >= 0 && b.bottom <= innerHeight, c: c.bottom <= innerHeight, s: s.top >= 0 && s.bottom <= innerHeight, r: r1.bottom <= innerHeight }; });
     ok(fold.b && fold.c && fold.s && fold.r, `${tag} picture, Randomize, cause line and Run 100 not on one screen: ${JSON.stringify(fold)}`);
+    // "?" is filled from the first paint and names the design in use after every change
+    const refOk = (want) => X((want) => { const r = document.querySelector('.dr3-ref'); return !!r && r.textContent.length > 400 && r.textContent.indexOf('This design: ' + want) > -1; }, want);
+    ok(await refOk('completely randomized'), `${tag} "?" empty or wrong on a fresh page`);
     await check('00-first');
     await page.click('.dr3-run');
     if (SHOTS && (w === 390 || w === 1440)) { await page.waitForTimeout(800); await shot('mid-deal'); await page.waitForTimeout(1400); await shot('mid-grow'); }
@@ -258,12 +261,14 @@ if (ONE) {
     await X(() => window.ApStatDesignRandomizer.hundred()); await check('02-cr-100');
     for (const d of ['block', 'pairs', 'none']) {
       await X((d) => window.ApStatDesignRandomizer.setDesign(d), d); await check(`03-${d}-fresh`);
+      ok(await refOk({ block: 'randomized block', pairs: 'matched pairs', none: 'Gardener picks' }[d]), `${tag} "?" does not name ${d} after the change`);
       await X(() => window.ApStatDesignRandomizer.hundred()); await check(`04-${d}-100`);
     }
     await X(() => window.ApStatDesignRandomizer.select(5)); await check('05-picked');
     await X(() => window.ApStatDesignRandomizer.select(-1));
     // the memory study
     await X(() => window.ApStatDesignRandomizer.setScene(1)); await check('06-memory-empty');
+    ok(await X(() => /Blinding/.test(document.querySelector('.dr3-ref').textContent) && /Researcher picks/.test(document.querySelector('.dr3-ref').textContent)), `${tag} "?" not updated after the scene change`);
     await X(() => window.ApStatDesignRandomizer.go()); await check('07-memory-run');
     await X(() => window.ApStatDesignRandomizer.hundred()); await check('08-memory-cr-100');
     await X(() => window.ApStatDesignRandomizer.setBlind(false)); await X(() => window.ApStatDesignRandomizer.hundred()); await check('09-memory-not-blind');
@@ -273,6 +278,7 @@ if (ONE) {
     await X(() => window.ApStatDesignRandomizer.setBlind(true)); await X(() => window.ApStatDesignRandomizer.setDesign('none')); await X(() => window.ApStatDesignRandomizer.hundred()); await check('11-memory-none');
     await X(() => window.ApStatDesignRandomizer.setDesign('pairs')); await X(() => window.ApStatDesignRandomizer.go()); await check('12-memory-pairs-run');
     await X(() => window.ApStatDesignRandomizer.startOver()); await check('13-start-over');
+    ok(await refOk('matched pairs') && await X(() => !/Every design so far/.test(document.querySelector('.dr3-ref').textContent)), `${tag} "?" stale after Start over`);
     // Test yourself: the drill and its figure
     await X(() => window.ApStatDesignRandomizer.kmode('quiz'));
     await page.waitForTimeout(700);

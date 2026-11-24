@@ -194,3 +194,12 @@ researcher picking is at best single blind. Needs-author `design-randomizer-v2` 
 Fix round checks (speed rule): sweep at 360 (88, with the 360 x 740 and 375 x 667 landings), 390, 1024 and 1440 (86
 each), light and dark (dark asserted), **346 passed, 0 failed**; frames **68 passed, 0 failed**; AP Stats tests 167
 pass, content check 0 failing, `build-apstat --check`, `check-site`, `check-weight`.
+
+## Recheck 1 (2026-11-24): BLOCK on one must fix, fixed
+R1: "?" was empty before the first run and stale after a design, blinding, scene change or Start over (`settled()`
+returned before `refHtml()` with no run). `settled()` now refreshes "?" whenever nothing is moving, so every control
+that ends in `settled()` updates it. The sweep checks "?" is filled on a fresh page, names the design after each change,
+after the scene change and after Start over. Also: dots' `cx` carries two decimals, so a row's centre read back from the
+dots matches its number at every width (a 360 rounding edge the new wider axis showed).
+Checks: sweep at 360 (100), 390, 1024 and 1440 (98 each), light and dark, **392 passed, 0 failed**; frames **68
+passed, 0 failed**; AP Stats tests 167 pass, content check 0 failing, `build-apstat --check`.

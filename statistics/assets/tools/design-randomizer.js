@@ -530,7 +530,7 @@
           if(o.land){ y = o.ty; nLand++; sum += o.v; nb[o.ub ? 1 : 0]++; sb[o.ub ? 1 : 0] += o.v; }
           else { var f = clamp((t - o.t0) / o.dur, 0, 1); y = f <= 0 ? -100 : top + (o.ty - top) * easeIO(f); }
           var k2 = n1(x) + '|' + n1(y) + '|' + o.last + '|' + (f <= 0 && !o.land) + '|' + (o.land ? rw.rr : 0);
-          if(o._k !== k2){ o._k = k2; at(e, { cx: x, cy: y, r: o.land ? rw.rr : G.P.rr }); e.style.display = !o.land && y < 0 ? 'none' : ''; e.classList.toggle('is-last', o.last && o.land); }
+          if(o._k !== k2){ o._k = k2; at(e, { cy: y, r: o.land ? rw.rr : G.P.rr }); e.setAttribute('cx', x.toFixed(2)); /* two decimals: a row's centre read back from the dots matches its number */ e.style.display = !o.land && y < 0 ? 'none' : ''; e.classList.toggle('is-last', o.last && o.land); }
         });
         // a row holding both blindings counts and marks each on its own (the hollow triangle: the not blind runs)
         var mixed = nb[0] && nb[1], useUb = sc().placebo && !S.blind ? 1 : 0;
@@ -618,7 +618,8 @@
       return false;
     }
     function settled(){
-      if(!run || busy()) { words(); return; }
+      // "?" follows every change, also before the first run and after a new bench (recheck 1)
+      if(!run || busy()) { words(); if(!busy()) refHtml(); return; }
       var s = sc(), d = run.design, st = rowStats(d, s.placebo ? run.ub : null), cr = rowStats('cr', s.placebo ? false : null), t = null, k = null;
       if(st && st.n >= 20){
         if(run.ub && st.n >= 20 && biased(st, d, true) > 0){ k = 'ub'; t = s.unblindTake; }
