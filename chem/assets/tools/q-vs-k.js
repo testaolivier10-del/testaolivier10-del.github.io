@@ -525,7 +525,7 @@
         else if(S.solidAct && S.act && !isGas(S.act.key)){
           parts.push({ t: 'Q stays ' + fq(s.q), role: 'q' }); parts.push({ t: 'solids are not in Q', role: 'dir' });
         } else if(s.at){
-          if(same(s.q, r.Kval) || (s.near && !s.stuck)) { var eq0 = same(s.q, r.Kval); parts.push({ t: 'Q ' + fq(s.q), role: 'q' }); parts.push({ t: (eq0 ? '= ' : '≈ ') + K0, role: 'k', say: (eq0 ? 'equal to ' : 'about equal to ') + K0 }); if(!S.ran) parts.push({ t: 'no net change', role: 'dir' }); }
+          if(same(s.q, r.Kval) || (s.near && !/ left$|full$/.test(s.stuck))) { var eq0 = same(s.q, r.Kval); parts.push({ t: 'Q ' + fq(s.q), role: 'q' }); parts.push({ t: (eq0 ? '= ' : '≈ ') + K0, role: 'k', say: (eq0 ? 'equal to ' : 'about equal to ') + K0 }); if(!S.ran && !evs.some(function(e){ return e.type !== 'rx'; })) parts.push({ t: 'no net change', role: 'dir' }); }
           else { parts.push({ t: 'Q ' + fq(s.q), role: 'q' }); parts.push({ t: (s.q < r.Kval ? '< ' : '> ') + K0, role: 'k', say: (s.q < r.Kval ? 'less than ' : 'greater than ') + K0 }); parts.push({ t: s.stuck, role: 'dir' }); }
         } else {
           parts.push({ t: 'Q ' + fq(s.q), role: 'q' }); parts.push({ t: (s.q < r.Kval ? '< ' : '> ') + K0, role: 'k', say: (s.q < r.Kval ? 'less than ' : 'greater than ') + K0 });
