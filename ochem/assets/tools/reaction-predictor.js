@@ -1108,7 +1108,7 @@
        picture the title sits in the controls' row when there is room between them (recheck 1: more room for the
        molecule). On a phone the title row also holds Play it again, at its right end. */
     var TT = PHONE ? 36 : 30, NB = 22, tx = W / 2, ty = null;
-    if(showBar && !PHONE){
+    if(showBar && !PHONE && !(cue && cue.active())){   // (not while the first visit cue sits in that gap)
       var sr = sceneBox.getBoundingClientRect(), pr = bar.querySelector('.rp2-picks').getBoundingClientRect(), cr = bar.querySelector('.rp2-cond').getBoundingClientRect();
       if(Math.abs(pr.top - cr.top) < 8 && cr.left - pr.right >= 250){ tx = (pr.right + cr.left) / 2 - sr.left; ty = (pr.top + pr.bottom) / 2 - sr.top; TT = 0; }
     }
@@ -1257,6 +1257,15 @@
       });
       if(!hasQ) return;
       var ba = sl[nmax] == null ? -Math.PI / 4 : sl[nmax], bd = s.r + EL.br * 0.6, bx = s.x + Math.cos(ba) * bd, by = s.y + Math.sin(ba) * bd;
+      // a badge never sits on another atom's ball (recheck 1: a waiting anion close to the substrate): the free slot if
+      // it is clear, else the clear direction farthest from this atom's bonds and pairs
+      var onOther = function(x, y){ return m.atoms.some(function(o){ if(o.id === a.id) return false; var q = scr[o.id]; return q.op > 0.5 && Math.hypot(q.x - x, q.y - y) < q.r + EL.br + 1; }); };
+      if(onOther(bx, by)){
+        var taken = (occ[a.id] || []).concat(sl.slice(0, nmax)), bestA = null, bestS = -1;
+        for(var ci = 0; ci < 24; ci++){ var ca = ci * Math.PI / 12, cx = s.x + Math.cos(ca) * bd, cy2 = s.y + Math.sin(ca) * bd; if(onOther(cx, cy2)) continue;
+          var sc = Math.min.apply(null, taken.map(function(o){ return PB.angDist(ca, o); }).concat([Math.PI])); if(sc > bestS){ bestS = sc; bestA = ca; } }
+        if(bestA != null){ ba = bestA; bx = s.x + Math.cos(ba) * bd; by = s.y + Math.sin(ba) * bd; }
+      }
       EL.bpos[a.id] = { x: bx, y: by, r: EL.br, on: 0 };
       ['n', 'p'].forEach(function(tt){
         var g = EL.badge[a.id + tt]; if(!g) return;
