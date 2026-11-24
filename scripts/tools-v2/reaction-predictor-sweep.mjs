@@ -134,7 +134,21 @@ const PLAYS = [
   ['cyhexbr', 'h2o', 1], ['tbubr', 'oet'], ['tbubr', 'h2o'], ['tbubr', 'h2o', 1], ['tbubr', 'i', 1], ['mebubr', 'oet'], ['mebubr', 'otbu'], ['mebubr', 'dbu'],
   ['mebubr', 'i', 1], ['mebubr', 'etoh'], ['bnbr', 'cn'], ['bnbr', 'h2o'], ['bnbr', 'dbu'], ['bnbr', 'otbu'], ['bubr2', 'oet', 0, 'aprotic'], ['tbubr', 'h2o', 0, 'aprotic']
 ];
+// on a phone's first screen the whole result is in view after a run: the tray's cards and the cause line (recheck 1)
+const FOLD = { 360: 740, 390: 844, 430: 932 };
 for (const w of WIDTHS) {
+  if (FOLD[w]) for (const theme of THEMES) {
+    const o = await open({ w, h: FOLD[w], theme });
+    for (const [sub, rgt] of [['bubr2', 'oet'], ['tbubr', 'h2o'], ['neopentyl', 'oet']]) {
+      await o.page.selectOption('#rpSubSel', sub); await o.page.selectOption('#rpRgtSel', rgt); await o.page.waitForTimeout(150);
+      const r = await o.page.evaluate(() => { const ih = innerHeight, out = [];
+        [...document.querySelectorAll('.rp2-card .rs2-thumb'), document.querySelector('.rp2 .tk2-cause')].forEach(e => { const q = e.getBoundingClientRect(); if (q.top < 0 || q.bottom > ih + 0.5) out.push((e.closest('.rp2-card') ? 'a tray card' : 'the cause line') + ' ends at ' + Math.round(q.bottom) + ' (fold ' + ih + ')'); });
+        if (!document.querySelector('.rp2-card')) out.push('no tray cards'); return out; });
+      r.forEach(x => fails.push(w + 'x' + FOLD[w] + ' ' + theme + ' ' + sub + '+' + rgt + ': ' + x)); states++; checks += 3;
+    }
+    if (o.errs.length) fails.push(w + ' fold: ' + o.errs.join(' | '));
+    await o.ctx.close();
+  }
   const h = w < 641 ? 844 : w < 1100 ? 1024 : 900;
   for (const theme of THEMES) {
     const T = w + ' ' + theme;
@@ -173,7 +187,7 @@ for (const w of WIDTHS) {
     // a first visit: the cue, whole, on nothing
     ({ page, errs, ctx } = await open({ w, h, theme, cue: true }));
     const cueOk = await page.evaluate(() => { const c = document.querySelector('.tk2-cue'); if (!c) return 'no cue'; const r = c.getBoundingClientRect(), s = document.querySelector('.rp2-scene').getBoundingClientRect();
-      if (r.left < s.left || r.right > s.right || r.top < s.top) return 'cue clipped';
+      if (r.left < s.left || r.right > s.right || r.top < s.top) return 'cue clipped (' + [r.left, r.top, r.right, r.bottom, s.left, s.top, s.right].map(Math.round).join(' ') + ')';
       const hit = [...document.querySelectorAll('.rp2-at .rs2-ball, .rs2-lab, .rp2-bar select, .rp2-bar button')].some(e => { const q = e.getBoundingClientRect(); return q.width && !(r.right <= q.left || q.right <= r.left || r.bottom <= q.top || q.bottom <= r.top); });
       return hit ? 'cue covers something' : ''; });
     if (cueOk) fails.push(T + ': ' + cueOk);

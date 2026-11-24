@@ -591,14 +591,14 @@
     if(path === 'SN1' || path === 'SN2'){
       var g = GROUP[rgt.id]; if(!g) return null;
       var st = build(DRAW[sub.id], g);
-      return st ? { st: st, name: PNAME[g] } : null;
+      return st ? { st: st, name: PNAME[g], formula: rgt.x && !sub.generic ? sub.sub.replace('{X}', rgt.x) : null } : null;
     }
     if(path === 'E1' || path === 'E2'){
       var alk = ALKENE[sub.id]; if(!alk) return null;
       var hof = path === 'E2' && rgt.bulky && !!alk.h;
       var r = B.parse(hof ? alk.h : alk.z);
       var kind = alk.h ? (hof ? 'Hofmann' : 'Zaitsev') : null;
-      return r && r.st ? { st: r.st, name: kind ? kind + ' alkene' : 'alkene', kind: kind } : null;
+      return r && r.st ? { st: r.st, name: kind ? kind + ' alkene' : 'alkene', kind: kind, formula: hof ? sub.hofmann : sub.zaitsev } : null;
     }
     return null;
   }
@@ -803,7 +803,7 @@
   /* The reagent waits close to the molecule (review round 1: the scene was too wide to read on a phone). face: the
      side an SN1 nucleophile comes from, -1 the back (opposite where bromide left, inversion) or 1 the front (retention);
      the page alternates it, so the two plays together show a racemic mix. */
-  var WAIT = [-2.3, -0.15, 0], ENTER = [-2.8, -0.15, 0], WAIT_F = [2.6, -1.8, 0], ENTER_F = [3.1, -1.8, 0], SN1_DRIFT = [0.05, 1.25, 0];
+  var WAIT = [-2.12, -0.15, 0], ENTER = [-2.45, -0.15, 0], WAIT_F = [2.6, -1.8, 0], ENTER_F = [2.95, -1.8, 0], SN1_DRIFT = [0.05, 1.25, 0];
   function sequence(sub, rgt, solvent, path, p, phi0, tail, face){
     var front = path === 'SN1' && face === 1;
     TAIL = (tail == null ? ((VIEW[sub.id] || VIEW0)[4] || 0) : tail) * Math.PI / 180;
@@ -837,7 +837,7 @@
     // a bond a step makes is known to the molecule from the start (order 0 until that step)
     function link(a, b){ if(!m.bonds.some(function(x){ return key2(x.a, x.b) === key2(a, b); })) m.bonds.push({ a: a, b: b, o: 0 }); }
     // bromide leaves along the C–Br axis (on the ring, a little toward the viewer, so it passes in front of the ring)
-    var lgOff = sub.id === 'cyhexbr' ? [BL.CBr + 0.6, 0.12, 0.7] : [BL.CBr + 0.6, 0.12, 0];
+    var lgOff = sub.id === 'cyhexbr' ? [BL.CBr + 0.5, 0.12, 0.7] : [BL.CBr + 0.5, 0.12, 0];
     var ring = !!m.fixed, eq = ring ? vnorm(vsub(m.by.ha.p, A)) : null;
     function lg(N){ N.B[key2('a', 'lg')] = 0; N.LP.lg = 4; N.Q.lg = -1; N.P.lg = vadd(A, lgOff); }
     function attackSub(N, who, at){
@@ -864,7 +864,7 @@
           putReagent(m, N, 'r', vadd(A, eq), vnorm(vsub([1, 0, 0], eq))); N.P.ha = vadd(A, [BL.XH, 0, 0]);
         } else { putReagent(m, N, 'r', vadd(A, [-1.0, 0, 0]), [1, 0, 0]); reshape(m, N, 'a', 1, { lg: 1, r0: 1 }); }   // the umbrella: each group swings through to the other side, its branch carried along
       }, { arrows: [{ from: { lp: rA }, to: { atom: 'a' } }, { from: { bond: ['a', 'lg'] }, to: { atom: 'lg' } }] });
-      next('drift', 560, function(N){ N.P.lg = vadd(N.P.lg, [0.45, 0.06, 0]); });
+      next('drift', 560, function(N){ N.P.lg = vadd(N.P.lg, [0.3, 0.06, 0]); });
       if(neutralNu()) protonOff('r');
     } else if(path === 'SN1' || path === 'E1'){
       var preIon = cloneS(frames[frames.length - 1]);   // the branches' shapes before the cation flattened them
@@ -906,7 +906,7 @@
         reshape(m, N, beta.c, 'flat', mapOf(['a', beta.h].concat(m.fixed ? Object.keys(m.fixed) : [])));
       }, { arrows: [{ from: { lp: rA }, to: { atom: beta.h } }, { from: { bond: [beta.c, beta.h] }, to: { bond: ['a', beta.c] } }, { from: { bond: ['a', 'lg'] }, to: { atom: 'lg' } }] });
       next('drift', 560, function(N){
-        N.P.lg = vadd(N.P.lg, [0.45, 0.08, 0]);
+        N.P.lg = vadd(N.P.lg, [0.3, 0.08, 0]);
         moveIds(N, rg.concat([beta.h]), [-0.45, -0.2, 0]);
       });
     } else {
@@ -1085,18 +1085,34 @@
   }
 
   /* ---- layout ----------------------------------------------------------------- */
+  /* On a phone the stage is as tall as the first screen allows, so the tray and the cause line end at the fold
+     (recheck 1): the screen's height less the stage's top on the page, the cause line and the gap. In Call the path
+     the question comes first on a phone, so the stage keeps its own height there. */
+  function sizeStage(){
+    var phone = window.innerWidth <= 640, call = MODE.mode === 'quiz' && MODE.part === 'call';
+    if(!phone || call){ if(sceneBox.style.height) sceneBox.style.height = ''; return; }
+    var top = sceneBox.getBoundingClientRect().top + (window.scrollY || window.pageYOffset || 0);
+    var h = Math.round(Math.max(480, Math.min(884, window.innerHeight - top - lines.offsetHeight - 16)));
+    if(sceneBox.style.height !== h + 'px'){ sceneBox.style.height = h + 'px'; if(cue && cue.active()) requestAnimationFrame(function(){ placeCue(); }); }
+  }
   var LAY = null;
   function lay(){
     var W = sceneBox.clientWidth, H = sceneBox.clientHeight;
     PHONE = W < 560;
-    var showBar = !bar.hidden, bh = showBar ? bar.offsetTop + bar.offsetHeight + 8 : 14;
+    var showBar = !bar.hidden, bh = showBar ? bar.offsetTop + bar.offsetHeight + 6 : 14;
     // on a phone the first visit cue sits under the controls: the molecule starts below it (it refits once the cue goes)
     if(showBar && cueBelow && cue && cue.active()) bh += 44;
-    var trayH = PHONE ? 148 : 150;
+    var trayH = PHONE ? 96 : 104;
     /* two fixed rows for names, outside the molecule's box (review round 1: names that found no room vanished): the
-       path's title on top, and a row under the molecule for any name that cannot sit beside what it names */
-    var TT = 30, NB = 26;
-    LAY = { W: W, H: H, top: bh, trayH: trayH, titleY: bh + TT / 2, box: { x: 12, y: bh + TT, w: W - 24, h: Math.max(120, H - bh - TT - NB - trayH - 10) }, trayY: H - trayH };
+       path's title on top, and a row under the molecule for any name that cannot sit beside what it names. On a wide
+       picture the title sits in the controls' row when there is room between them (recheck 1: more room for the
+       molecule). On a phone the title row also holds Play it again, at its right end. */
+    var TT = PHONE ? 36 : 30, NB = 22, tx = W / 2, ty = null;
+    if(showBar && !PHONE){
+      var sr = sceneBox.getBoundingClientRect(), pr = bar.querySelector('.rp2-picks').getBoundingClientRect(), cr = bar.querySelector('.rp2-cond').getBoundingClientRect();
+      if(Math.abs(pr.top - cr.top) < 8 && cr.left - pr.right >= 250){ tx = (pr.right + cr.left) / 2 - sr.left; ty = (pr.top + pr.bottom) / 2 - sr.top; TT = 0; }
+    }
+    LAY = { W: W, H: H, top: bh, trayH: trayH, titleX: tx, titleY: ty == null ? bh + TT / 2 : ty, box: { x: 12, y: bh + TT, w: W - 24, h: Math.max(120, H - bh - TT - NB - trayH - 8) }, trayY: H - trayH };
     LAY.bandY = LAY.box.y + LAY.box.h + NB / 2 + 2;
     svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svgBack.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
     return LAY;
@@ -1120,7 +1136,7 @@
     [false, true].forEach(function(rot){
       var W0 = viewOf(S.view), a0 = Infinity, a1 = -Infinity, c0 = Infinity, c1 = -Infinity;
       W0.rot = rot;
-      S.frames.forEach(function(F){ S.m.atoms.forEach(function(a){ var q = proj(F.P[a.id], W0), r = radOf(a) * q.k + (a.el === 'H' ? 0.06 : 0.2);
+      S.frames.forEach(function(F, fi){ S.m.atoms.forEach(function(a){ if(fi === 0 && a.rg) return; var q = proj(F.P[a.id], W0), r = radOf(a) * q.k + (a.el === 'H' ? 0.05 : 0.12);
         a0 = Math.min(a0, q.x - r); a1 = Math.max(a1, q.x + r); c0 = Math.min(c0, q.y - r); c1 = Math.max(c1, q.y + r); }); });
       var l = Math.min(b.w / (a1 - a0), b.h / (c1 - c0), cap);
       // turned only when that draws the molecule clearly bigger
@@ -1366,7 +1382,7 @@
       var e = els[i], w = sizes[i][0], h = sizes[i][1], spot = null;
       if(n.head){
         // the path's title has its own row above the molecule
-        spot = { x: LAY.W / 2, y: LAY.titleY };
+        spot = { x: LAY.titleX, y: LAY.titleY };
       } else {
         var c = n.at || s[n.k], r0 = (n.at ? 0 : c.r) + 6;
         for(var ring = 0; ring < 5 && !spot; ring++){
@@ -1436,20 +1452,32 @@
     var h = '<rect class="rp2-tray" x="0" y="' + f1(y) + '" width="' + L0.W + '" height="' + H + '" fill="url(#rs2g-tray)"/><line class="rs2-trayedge" x1="0" x2="' + L0.W + '" y1="' + f1(y) + '" y2="' + f1(y) + '"/>';
     CARDS = [];
     if(items.length){
-      h += '<text class="rp2-trayh" x="' + f1(L0.W / 2) + '" y="' + f1(y + 17) + '" text-anchor="middle">In the flask</text>';
-      var gap = 12, cw = Math.min(PHONE ? 200 : 240, (L0.W - 24 - gap * (items.length - 1)) / items.length), ch = H - 34, x0 = L0.W / 2 - (cw * items.length + gap * (items.length - 1)) / 2;
+      /* compact cards (recheck 1: the tray must fit on a phone's first screen): the product drawn on the left, its path,
+         share and bar on the right */
+      var gap = 12, cw = Math.min(PHONE ? 230 : 300, (L0.W - 24 - gap * (items.length - 1)) / items.length), ch = H - 14, x0 = L0.W / 2 - (cw * items.length + gap * (items.length - 1)) / 2;
+      if(!PHONE && x0 - 24 >= 96) h += '<text class="rp2-trayh" x="' + f1(x0 - 16) + '" y="' + f1(y + H / 2 + 4) + '" text-anchor="end">In the flask</text>';
       items.forEach(function(it, i){
-        var x = x0 + i * (cw + gap), cy = y + 25, pr = it.path ? productOf(c.sub, c.rgt, it.path) : it.mine ? { st: c.sub.st, name: 'yours' } : { st: build(DRAW[c.sub.id], 'Br'), name: 'unchanged' };
-        var box = { x: x + 8, y: cy + 4, w: cw - 16, h: ch - 34 };
-        var major = i === 0 && !!it.path;
+        var x = x0 + i * (cw + gap), cy = y + 7, pr = it.path ? productOf(c.sub, c.rgt, it.path) : it.mine ? { st: c.sub.st, name: 'yours' } : { st: build(DRAW[c.sub.id], 'Br'), name: 'unchanged' };
+        var dw = Math.round(cw * 0.68), box = { x: x + 6, y: cy + 5, w: dw - 8, h: ch - 10 };
+        var major = i === 0 && !!it.path, rx = x + dw + (cw - dw) / 2 - 4, rw = cw - dw - 10;
         h += '<g class="rp2-card' + (major ? ' is-major' : '') + '"><rect class="rs2-thumb' + (major ? ' is-on' : '') + '" x="' + f1(x) + '" y="' + f1(cy) + '" width="' + f1(cw) + '" height="' + f1(ch) + '" rx="12"/>';
-        if(pr && pr.st){ var ft = fitCard(pr.st, box); h += PB.drawFlat(ft.st, ft.T, box); }
-        var tag = it.path ? it.path + '  ≈' + it.pct + '%' : it.mine ? 'Product: work it out' : 'No reaction';
-        h += '<text class="rp2-ctag ' + (it.path ? (isSub(it.path) ? 'is-sn' : 'is-el') : 'is-none') + '" x="' + f1(x + cw / 2) + '" y="' + f1(cy + ch - 15) + '" text-anchor="middle">' + esc(tag) + '</text>';
+        if(pr && pr.st){
+          var ft = fitCard(pr.st, box), form = pr.formula || (it.path ? null : c.sub.formula);
+          // a card too small for the drawing's letters (a long ether on a phone) shows the condensed formula instead
+          if(ft.room < 1 && form){
+            var fs = 12, parts = 0.62 * fs * form.length > box.w ? form.split('–') : [form];
+            if(parts.length > 1) parts = [parts[0] + '–', parts.slice(1).join('–')];
+            h += '<text class="rp2-cform" x="' + f1(box.x + box.w / 2) + '" y="' + f1(box.y + box.h / 2 + 4 - (parts.length - 1) * 8) + '" text-anchor="middle" font-size="' + fs + '">' +
+              parts.map(function(t, j){ return '<tspan x="' + f1(box.x + box.w / 2) + '"' + (j ? ' dy="1.35em"' : '') + '>' + esc(t) + '</tspan>'; }).join('') + '</text>';
+          } else h += PB.drawFlat(ft.st, ft.T, box);
+        }
+        var l1 = it.path ? it.path : it.mine ? 'Work it' : 'No', l2 = it.path ? '≈' + it.pct + '%' : it.mine ? 'out' : 'reaction';
+        h += '<text class="rp2-ctag ' + (it.path ? (isSub(it.path) ? 'is-sn' : 'is-el') : 'is-none') + '" x="' + f1(rx) + '" y="' + f1(cy + ch * 0.4) + '" text-anchor="middle">' +
+          '<tspan class="rp2-cpath" x="' + f1(rx) + '">' + esc(l1) + '</tspan><tspan class="rp2-cpct" x="' + f1(rx) + '" dy="1.25em">' + esc(l2) + '</tspan></text>';
         if(it.path){
-          var bw = cw - 24;
-          h += '<rect class="rp2-sbar" x="' + f1(x + 12) + '" y="' + f1(cy + ch - 8) + '" width="' + f1(bw) + '" height="4" rx="2"/>' +
-            '<rect class="rp2-sfill ' + (isSub(it.path) ? 'is-sn' : 'is-el') + '" data-w="' + f1(bw * it.pct / 100) + '" x="' + f1(x + 12) + '" y="' + f1(cy + ch - 8) + '" width="' + f1(bw * it.pct / 100) + '" height="4" rx="2"/>';
+          var bx0 = rx - rw / 2, by0 = cy + ch - 14;
+          h += '<rect class="rp2-sbar" x="' + f1(bx0) + '" y="' + f1(by0) + '" width="' + f1(rw) + '" height="4" rx="2"/>' +
+            '<rect class="rp2-sfill ' + (isSub(it.path) ? 'is-sn' : 'is-el') + '" data-w="' + f1(rw * it.pct / 100) + '" x="' + f1(bx0) + '" y="' + f1(by0) + '" width="' + f1(rw * it.pct / 100) + '" height="4" rx="2"/>';
         }
         h += '</g>';
         CARDS.push({ x: x, y: cy, w: cw, h: ch, path: it.path, pct: it.pct, name: pr ? pr.name : '' });
@@ -1473,7 +1501,7 @@
     if(shareRaf) cancelAnimationFrame(shareRaf);
     var cards = [].slice.call(G.trayg.querySelectorAll('.rp2-card')).map(function(g, i){ var cd = CARDS[i]; return { cd: cd, tag: g.querySelector('.rp2-ctag'), fill: g.querySelector('.rp2-sfill'), bw: g.querySelector('.rp2-sbar') ? +g.querySelector('.rp2-sbar').getAttribute('width') : 0, a: from[cd.path] == null ? cd.pct : from[cd.path] }; });
     function set(f){ cards.forEach(function(x){ if(!x.cd.path || !x.fill) return; var v = x.a + (x.cd.pct - x.a) * f;
-      x.fill.setAttribute('width', f1(x.bw * v / 100)); x.tag.textContent = x.cd.path + '  ≈' + Math.round(v) + '%'; }); }
+      x.fill.setAttribute('width', f1(x.bw * v / 100)); var pc = x.tag.querySelector('.rp2-cpct'); if(pc) pc.textContent = '≈' + Math.round(v) + '%'; }); }
     if(K.reduced()){ set(1); return; }
     var t0 = null;
     (function step(ts){ if(t0 == null) t0 = ts; var f = Math.min(1, (ts - t0) / 480); set(ease(f)); shareRaf = f < 1 ? requestAnimationFrame(step) : 0; })(performance.now());
@@ -1805,6 +1833,7 @@
   /* ---- modes ------------------------------------------------------------------------------ */
   function onShow(mode, part){
     stopRun(false);
+    MODE.mode = mode; MODE.part = part; sizeStage();
     hideCue(false);
     if(tour && tour.active()) tour.stop();
     MODE.mode = mode; MODE.part = part;
@@ -1885,6 +1914,8 @@
     if(cue && MODE.mode === 'explore') placeCue();
   }
   if(window.ResizeObserver) new ResizeObserver(resized).observe(sceneBox); else window.addEventListener('resize', resized);
+  window.addEventListener('resize', sizeStage);
+  sizeStage();
   lastW = sceneBox.clientWidth; lastH = sceneBox.clientHeight;
   if(MODE.mode === 'explore'){ play(); placeCue(); }
   if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ if(!run && S){ if(MODE.mode === 'explore' || quiz.revealed){ play(null, { quiet: true }); stopRun(true); } } });
