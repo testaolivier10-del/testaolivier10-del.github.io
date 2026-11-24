@@ -43,7 +43,7 @@ event at a time until Q is back at K. Every number is read off the drawn particl
 - **Numbers from the picture:** a particle counts once it is drawn inside the glass (in or out through the port); an
   event's products count from its middle (t = 0.475), its reactants until then; Q uses the volume the piston is drawn at
   (it glides 0.36 s; the tag says the drawn volume).
-- **Cause line:** "added 3 B → Q 1.82 → < K 2.5 → runs forward"; settled "Q 2.57 → ≈ K 2.5 → no net change"; when whole
+- **Cause line:** "added 3 B → Q 1.82 → < K 2.5 → runs forward"; settled "added 3 B → ran forward → Q 2.57 → ≈ K 2.5"; at the start "Start: Q 2.50 → = K 2.5 → no net change"; when whole
   particles stop it short of 20% "Q 1.33 → < K 2.5 → 1 more AB overshoots", or "no CaCO₃ left", "the cylinder is full";
   a solid: "added CaCO₃ (solid) → Q stays 0.220 → solids are not in Q". Takeaway after it settles: "The reaction always
   runs toward Q = K." (a solid: "A pure solid is left out of Q, so adding or removing it changes nothing.").
@@ -104,8 +104,41 @@ on a phone), the plate (equation, arrow, K line, scale line), the tray (3 cups, 
 - No change to the chemistry adapter or the kit. `scripts/check-tool-use.mjs` is NOT changed.
 - Sweep, frames and perf: `scripts/tools-v2/chem-q-vs-k-sweep.mjs` (`--frames`, `--perf`, `--shots`, `--height`).
 
-## Checks run
-See "Checks run (2026-11-24)" below (filled in by the build).
+## Checks run (2026-11-24)
+- `node --test scripts/test/apchem-*.test.mjs` (99 pass), `check-apchem-content --check` (the new Explore checks
+  included), `build-apchem --check`, `build-apcalc --check`, `build-apmacro --check`, `check-site`, `check-weight --check`
+  (all 626 budgets within range).
+- `check-tool-use` with a local, uncommitted copy of its list plus this tool: tool-open, tool-touch(explore),
+  tool-mode(quiz), tool-use; nothing sent under automation. The committed file is untouched.
+- Sweep, one width per process at 360, 390, 430, 600, 768, 820, 1024, 1280, 1440 and 1920, light and dark (the dark run
+  asserts the page is dark), each at its screen height (844 up to 430, 960 at 600, 1024 at 768 and 820, 768 at 1024, 800
+  at 1280, 900 at 1440, 1080 at 1920): 10 runs of 36 states and 683 checks, 0 failures (both reactions: start, 3 B or CO₂
+  in and the takeaway, 3 A in twice, AB or CO₂ out, a solid lump in, the piston at 0.50 and 1.50 L, A or CaCO₃ used up;
+  the first visit cue; a real click on a cup and a real mouse drag from a cup into the cylinder; the screen fit; Test
+  yourself). Checked: clipping, 4 px between every text, no text under 11 px, the cylinder the largest object, every
+  counted particle inside the gas under the piston, no two gas particles touching, Q, the needle, the arrow, the tag and
+  the cause line against the drawn particles and piston, phone cause line at most two rows and one height, one cylinder
+  size, no sideways scroll, no console errors. 360 × 740 (a short phone): the cause line goes under the fold, as ICE
+  tables' S10; the sweep asks only for the cups, the cylinder and the knob there.
+- Frames (`--frames`) at 390 and 1440: taps on the cups, two fast taps, a tap on an AB, the piston down and up while it
+  reacts, six fast mixed taps, CO₂ in, a lump in, CO₂ out twice, the piston on CaCO₃: about 2000 to 3100 frames each, 0
+  problems (on every frame the cause line's Q, the tag and the arrow equal what the drawn particles at the drawn volume
+  give; a particle counts exactly when drawn inside the glass; nothing left moving; it never stops while an event could
+  still bring Q nearer K). Leaving for Test yourself mid change stops the stage and Explore comes back right; reduced
+  motion shows the result at once.
+- Perf (`--perf`, CPU x4, the flagship in the same run; the machine was loaded, load 6.3 on 2 cores): 390 px taps median
+  16.7 ms, p95 16.8; piston median 16.7, p95 49.9; flagship median 33.4, p95 83.3. 1440 px taps median 16.7, p95 33.3;
+  piston median 16.7, p95 50.0; flagship median 33.4, p95 100. One canvas over the cylinder and the dial, resting
+  particles cached; the piston is one SVG transform.
+- Behaviour (Playwright): a real CDP touch drag from the B cup into the cylinder at 390 after scrolling to the end of the
+  page; a touch tap on an AB takes three out; Enter on the A cup, Delete on the AB cup (the live region says the chain),
+  ArrowUp on the piston (1.25 L, its valuetext); Start over; Show me how opens the tour; `?seed=` opens the same problem
+  twice; a wrong Q gets its feedback; no page errors. Without Premium the page shows the Premium card and no stage
+  (unchanged).
+- Preview: `node scripts/tool-preview.mjs chem/tools/q-vs-k.html /mnt/user-data/outputs/chem-q-vs-k-v2/index.html`
+  (Premium unlocked in the preview only); shots in `/mnt/user-data/outputs/chem-q-vs-k-v2/shots/` (every sweep state at
+  10 widths, light and dark, the first visit, the takeaway, Test yourself; `*-mid-*` frames of particles going in, a
+  join, a split, CO₂ into CaO, CO₂ out of CaCO₃ and the piston moving, at 1440 light, 768 dark and 390 light).
 
 ## Not done, and what I am not happy with
 - No real phone, no screen reader pass, no students; no independent review yet.
