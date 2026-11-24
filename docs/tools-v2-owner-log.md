@@ -662,3 +662,6 @@ in each tool's brief.
 | 2026-11-24 | AP Statistics Chi-square lab | Review round 1: a chance table moves trays in pairs within each row, so row totals never change mid animation | Each row (sample) keeps its total | `goPairs` |
 | 2026-11-24 | AP Statistics Chi-square lab | Review round 1: phones cap counts at 1.05 times the largest; short phones drop the column icons; the axis runs to at most 2.5 times its usual range; the wide plot is at most 0.8 times as tall as wide | Taller stacks on phones; no spike of a curve | `layout`, `plotScale` |
 | 2026-11-24 | AP Statistics Chi-square lab | Review round 1: the short expected label is "E 30.7" | The bare bar read as a minus sign | `paint` |
+| 2026-11-24 | AP Statistics Chi-square lab | Recheck 1: narrow phones (under 430 px) get a words cue "Drag the ↕ on a stack" in the head row, first visit only | No bubble fits on the picture there | `.cs2-wcue` |
+| 2026-11-24 | AP Statistics Chi-square lab | Recheck 1: the axis reaches each study's opening χ² (up to 4 times its usual range); the wide χ² panel is pinned to the top and ends at the plot | Every part of the opening bar on the axis; no empty bands | `plotScale`, `layout` |
+| 2026-11-24 | AP Statistics Chi-square lab | Recheck 1: the chance takeaway starts "Chance table: p = …" | "H₀ true: p" read as a claim that H₀ is true | the chance button |

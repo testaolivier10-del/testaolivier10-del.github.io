@@ -224,10 +224,12 @@ if (ONE) {
   const h = w < 600 ? 844 : w <= 820 ? 1024 : w === 1024 ? 768 : w === 1280 ? 800 : w === 1920 ? 1080 : 900;
   // the fit on the screens the brief names
   const fits = w === 360 ? [[360, 740], [375, 667]] : w === 390 ? [[390, 844]] : w === 1024 ? [[1024, 768]] : w === 1280 ? [[1280, 800]] : [];
-  for (const [fw, fh] of fits) {
-    const { browser, page } = await open(fw, fh, false, { noCue: true });
+  // the fit on a first visit (the cue or, on narrow phones, the words cue in the head row) and on a later one
+  for (const [fw, fh, nc] of fits.flatMap(f => [[...f, false], [...f, true]])) {
+    const { browser, page } = await open(fw, fh, false, { noCue: nc });
     const f = await page.evaluate(FOLD);
-    ok(f.k && f.s && f.c && !f.inner, `${fw}x${fh}: the knob, the picture and the cause line are not on one screen with no inner scroll ${JSON.stringify(f)}`);
+    if (fw < 430 && !nc) ok(await page.evaluate(() => { const c = document.querySelector('.cs2-wcue'); return !!c && !c.hidden && c.getBoundingClientRect().right <= innerWidth; }), `${fw}x${fh}: no words cue on a first visit`);
+    ok(f.k && f.s && f.c && !f.inner, `${fw}x${fh}${nc ? '' : ' first visit'}: the knob, the picture and the cause line are not on one screen with no inner scroll ${JSON.stringify(f)}`);
     await browser.close();
   }
   for (const dark of DARKS === 'both' ? [false, true] : [DARKS === 'dark']) {

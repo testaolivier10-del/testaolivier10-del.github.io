@@ -124,10 +124,11 @@ every cell as a press target).
 12. Test yourself figure: the old dashed cutoff line is solid.
 13. Review round 1: the knob sits beside the selected stack's top, not on it (on phones the last column's on the left).
 14. Review round 1: the first visit cue goes where it covers nothing (above or beside the knob, its arrow on the stack);
-    phones under 430 px have no such place, and there the knob's pulse is the cue.
+    phones under 430 px have no such place, so there a words cue ("Drag the ↕ on a stack") sits in the head row
+    (recheck 1).
 15. Review round 1: a chance table moves trays within each row in pairs, so the row totals never change while it plays.
 16. Review round 1: phones cap a count at 1.05 times the study's largest; short phones show the column names without
-    icons; the curve's axis runs to at most 2.5 times its usual range; the wide panel's plot is at most 0.8 times as tall
+    icons; the curve's axis reaches the study's opening χ² (up to 4 times its usual range; recheck 1); the wide panel's plot is at most 0.8 times as tall
     as wide.
 17. Review round 1: the short expected label is "E 30.7" (no bare bar).
 
@@ -218,3 +219,17 @@ Fix round checks (speed rule): sweep at 360 (with 375 x 667 and 360 x 740), 390,
 **324 passed, 0 failed**; frames **50 passed, 0 failed** (with the row totals held through a chance table); AP Stats
 tests 166 pass, content check 0 failing, `build-apstat`, `build-apcalc`, `build-apmacro --check`, `check-site`,
 `check-weight --check`.
+
+## Recheck 1 (2026-11-24): BLOCK, fixed
+`/home/claude/review-stat-chi/REVIEW-recheck1.md`. Must fix: (1) the chance takeaway reads "Chance table: p = 0.3802.
+About 95 in 100 chance tables give p above 0.05." (it had read "H₀ true: p = …"); (2) the cue's arrow was drawn over
+its words when the bubble slid (`--tk2-cue-dx`): the words now sit above the arrow; the arrow tip stops 4 px above the
+higher of the stack's top and its line's pointers (and above the knob's ring). Should fix: the axis reaches each
+study's opening χ² again (News' parts bar whole); the wide χ² panel is pinned to the top and ends at the plot (no
+empty bands inside it); narrow phones (under 430 px, where no bubble fits) get a words cue, "Drag the ↕ on a stack", at
+the start of the Show me how row on a first visit, gone at the first touch. The sweep checks the fit on a first visit
+too (with the words cue) and that the words cue shows under 430 px.
+
+Checks: sweep 360 (with 375 x 667 and 360 x 740, first visit and later), 390, 1024 and 1440, light and dark, **331
+passed, 0 failed**; frames **50 passed, 0 failed**; AP Stats tests 166 pass; content check, `build-apstat`,
+`build-apcalc`, `build-apmacro --check`, `check-site`, `check-weight --check`.

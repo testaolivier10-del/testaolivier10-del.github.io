@@ -191,3 +191,8 @@
 .cs2.cs2-sm .tk2-cue .tk2-i{width:15px;height:15px;}
 .cs2.cs2-xs .tk2-cue{font-size:11.5px;line-height:1.2;padding:3px 7px 3px 5px;gap:3px;border-radius:9px;}
 .cs2.cs2-xs .tk2-cue .tk2-i{width:13px;height:13px;}
+/* the cue's arrow under its words (it slides with --tk2-cue-dx and crossed a letter; recheck 1) */
+.cs2 .tk2-cue > :not(.tk2-cue-ar){position:relative;z-index:1;}
+/* the words cue for narrow phones, at the start of the Show me how row */
+.cs2-wcue{display:inline-flex;align-items:center;font:800 13px var(--font-ui);color:var(--cink);white-space:nowrap;}
+.cs2-wcue[hidden]{display:none;}

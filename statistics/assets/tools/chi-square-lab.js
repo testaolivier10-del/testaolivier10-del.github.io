@@ -250,6 +250,9 @@
     pick.innerHTML = studies.map(function(s){ return '<option value="' + esc(s.id) + '">' + esc(s.short || s.name) + '</option>'; }).join('');
     pickWrap.appendChild(pick);
     head.el.insertBefore(pickWrap, head.how);
+    // phones under 430 px have no room on the picture for the cue bubble: a words cue at the start of this row instead
+    var wcue = el('span', 'cs2-wcue', 'Drag the ↕ on a stack'); wcue.hidden = true; wcue.setAttribute('aria-hidden', 'true');
+    head.el.insertBefore(wcue, head.how);
     stage.appendChild(head.el);
     var sceneBox = el('div', 'cs2-scene');
     sceneBox.innerHTML = '<svg class="cs2-svg" role="img" xmlns="' + NS + '" data-ls-text="keep"><title></title><defs></defs><g class="cs2-back"></g><g class="cs2-cells"></g><g class="cs2-tots"></g><g class="cs2-plot"></g><g class="cs2-plotf"></g></svg>';
@@ -345,14 +348,14 @@
       // short phones (compact): no title row; the pill and the p-value's key share the top row, df joins the axis's name
       g.cmp = g.phone && H < 460;
       // the plot's block: on a tall wide panel at most 0.8 times as tall as it is wide, centred (no spike of a curve)
-      cv.bh = g.wide ? Math.min(cv.h, Math.round(cv.w * 0.8)) : cv.h; cv.by = cv.y + (cv.h - cv.bh) / 2;
+      cv.bh = g.wide ? Math.min(cv.h, Math.round(cv.w * 0.8)) : cv.h; cv.by = cv.y;   // pinned to the top; the panel ends at the plot
       cv.tY = cv.by + 16; cv.top = cv.by + (g.cmp ? 40 : 58); cv.ax = cv.by + cv.bh - (g.phone ? 42 : 44);
       return g;
     }
     var PL = null;   // the plot's scale for this study: df, xmax, the cutoff, the curve's peak
     function plotScale(){
       var t = CS.table(S.st.obs), df = t.df, D = Dist();
-      var crit1 = D.invChi2(0.99, df), x0 = Math.max(crit1 * 1.3, df + 4.2 * Math.sqrt(2 * df)), xmax = Math.max(x0, Math.min(t.chi2 * 1.12, x0 * 2.5));   // the study's own χ² fits on the axis
+      var crit1 = D.invChi2(0.99, df), x0 = Math.max(crit1 * 1.3, df + 4.2 * Math.sqrt(2 * df)), xmax = Math.max(x0, Math.min(t.chi2 * 1.12, x0 * 4));   // the axis reaches the study's opening χ² (review recheck 1)   // the study's own χ² fits on the axis
       var f = function(x){ return D.chi2Pdf(x, df); }, peak = 0;
       for(var k = 1; k <= 200; k++){ var fx = f(xmax * k / 200); if(isFinite(fx) && fx > peak) peak = fx; }
       if(df === 1) peak = Math.min(peak, f(xmax * 0.06)); else if(df === 2) peak = 0.5;   // df 1 runs off to infinity at 0; df 2 starts at its peak, 1/2
@@ -376,7 +379,7 @@
       mk('rect', 'cs2-wall', { x: tb.x, y: tb.y, width: tb.w, height: tb.h, rx: g.phone ? 12 : 16, fill: 'url(#cs2-wall-' + seed + ')' }, sBack);
       var tiles = mk('g', 'cs2-tiles', null, sBack), tsz = g.phone ? 22 : 30;
       for(var ty = tb.y + tb.headH + tsz; ty < tb.y + tb.h - tb.footH - 4; ty += tsz) mk('line', 'cs2-tile', { x1: tb.x + 8, y1: n1(ty), x2: tb.x + tb.w - 8, y2: n1(ty) }, tiles);
-      mk('rect', 'cs2-panel', { x: cv.x, y: cv.y, width: cv.w, height: cv.h, rx: g.phone ? 12 : 16 }, sBack);
+      mk('rect', 'cs2-panel', { x: cv.x, y: cv.y, width: cv.w, height: cv.bh, rx: g.phone ? 12 : 16 }, sBack);
       // column heads: what was counted, drawn and named
       for(j = 0; j < c; j++){
         var hx = g.cx(j), hg = mk('g', 'cs2-head', null, sBack);
@@ -677,7 +680,7 @@
       // a table from H0 with an empty column has no expected count there: draw again
       for(var g2 = 0; g2 < 20 && !(CS.table(nt).minExpected > 0); g2++) nt = CS.chance(r, S.T);
       var t = CS.table(nt);
-      S.take = 'H₀ true: p ' + (P4(t.p).charAt(0) === '<' ? P4(t.p) : '= ' + P4(t.p)) + '. About ' + Math.round((1 - S.alpha) * 100) + ' in 100 chance tables give p above ' + A2(S.alpha) + '.';
+      S.take = 'Chance table: p ' + (P4(t.p).charAt(0) === '<' ? P4(t.p) : '= ' + P4(t.p)) + '. About ' + Math.round((1 - S.alpha) * 100) + ' in 100 chance tables give p above ' + A2(S.alpha) + '.';
       scrollIn(); goPairs(nt, 700);
     });
     bReset.addEventListener('click', function(){ hideCue(true); S.take = null; scrollIn(); go(S.base, 600, easeIO); });
@@ -727,8 +730,9 @@
     function cueSpot(i, j){
       var g = G, kx = g.kx(j), ky = kY(i, S.T[i][j]), b = cueBox(), w = b[0], h = b[1], kr = g.kr + 4, tb = g.tb, obs = obstacles(), obsA = obstacles(i, j);
       obs.push([kx - g.kr, ky - g.kr, 2 * g.kr, 2 * g.kr]); obsA.push([kx - g.kr, ky - g.kr, 2 * g.kr, 2 * g.kr]);
-      var sx = g.cx(j), topS = Math.min(g.y(i, S.T[i][j]), g.y(i, CS.table(S.T).expected[i][j])) - 5;
-      var sides = [['above', kx - w / 2, ky - g.kr - 4 - h, [kx, ky - g.kr - 4 + 30]], ['above', sx - w / 2, topS - h, [sx, topS + 30]], ['above', kx - g.kr - 3 - w, topS - h, [sx, topS + 30], (kx - g.kr - 3 - w / 2) - sx], ['right', kx + kr, ky - h / 2, [kx + kr - 30, ky]], ['left', kx - kr - w, ky - h / 2, [kx - kr + 30, ky]],
+      // the arrow (9 px under the bubble) stops 4 px above the higher of the stack's top and its line's pointers
+      var sx = g.cx(j), topS = Math.min(g.y(i, S.T[i][j]), g.y(i, CS.table(S.T).expected[i][j]) - 4.5) - 13;
+      var sides = [['above', kx - w / 2, ky - g.kr - 13 - h, [kx, ky - g.kr - 13 + 30]], ['above', sx - w / 2, topS - h, [sx, topS + 30]], ['above', kx - g.kr - 3 - w, topS - h, [sx, topS + 30], (kx - g.kr - 3 - w / 2) - sx], ['right', kx + kr, ky - h / 2, [kx + kr - 30, ky]], ['left', kx - kr - w, ky - h / 2, [kx - kr + 30, ky]],
         ['above', kx - w / 2, ky - kr - h, [kx, ky - kr + 30]], ['below', kx - w / 2, ky + kr, [kx, ky + kr - 30]]];
       for(var q = 0; q < sides.length; q++){
         var r = [sides[q][1], sides[q][2]];
@@ -741,7 +745,7 @@
       return null;
     }
     var cue = K.cue(layer, cueO);
-    function hideCue(used){ if(used) S.touched = true; if(cue.active()) cue.hide(used); }
+    function hideCue(used){ if(used) S.touched = true; if(cue.active()) cue.hide(used); if(!wcue.hidden){ wcue.hidden = true; if(used) try{ localStorage.setItem('tk2c:' + cueO.key, '1'); }catch(e){} } }
     var tour = K.tour({ key: 'apstat-chi-square-lab', label: 'Show me how', steps: [
       { id: 'drag', text: 'Drag a stack up or down. The line on it is the count we would expect if H₀ were true.', target: function(){ return knob.knob; } },
       { id: 'curve', text: 'Every cell’s gap adds a part to χ². A bigger χ² leaves a smaller shaded p-value.', target: function(){ return G ? rectOf(G.cv) : sceneBox; } },
@@ -837,7 +841,7 @@
       for(var i = 0; i < R(); i++) for(var j = 0; j < C(); j++) cells.push([t.components[i][j], i, j]);
       cells.sort(function(a, b){ return b[0] - a[0]; });
       ['Drag a stack', 'Drag'].some(function(txt){ cueO.text = txt; return cells.some(function(c){ spot = cueSpot(c[1], c[2]); return !!spot; }); });
-      if(!spot) return;
+      if(!spot){ wcue.hidden = false; return; }
       cueO.spot = spot; cueO.side = spot.side; select(spot.i, spot.j); cue.show(); cueDx();
     }
     function shown(m){
