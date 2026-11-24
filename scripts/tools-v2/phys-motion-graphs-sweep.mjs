@@ -220,7 +220,7 @@ async function runSweep(w, h) {
   await idle(page); await check('set back at start');
   // Test yourself: a drill problem, then Match the graph
   await page.click('.ls-root button:has-text("Test yourself")'); await page.waitForTimeout(600);
-  const ty = await page.evaluate(() => ({ fig: !!document.querySelector('.ls-drill-stage svg, .ls-drill-stage .ls-drill-text'), step: !!document.querySelector('.ls-drill input, .ls-drill button'), sw: document.documentElement.scrollWidth > innerWidth, ex: !!document.querySelector('.mg2') && document.querySelector('.mg2').getClientRects().length > 0 }));
+  const ty = await page.evaluate(() => ({ fig: !!document.querySelector('.ls-drill-stage svg, .ls-drill-stage .ls-drill-text'), step: !!document.querySelector('.cd-step'), sw: document.documentElement.scrollWidth > innerWidth, ex: !!document.querySelector('.mg2') && document.querySelector('.mg2').getClientRects().length > 0 }));
   checks += 4; if (!ty.fig) fails.push(`${w} Test yourself: no figure or problem on the stage`); if (!ty.step) fails.push(`${w} Test yourself: no step`); if (ty.sw) fails.push(`${w} Test yourself: sideways scroll`); if (ty.ex) fails.push(`${w} Test yourself: the Explore stage still shows`);
   await shot(page, `${W4(w)}-3-test.png`);
   await pickMatch(page);

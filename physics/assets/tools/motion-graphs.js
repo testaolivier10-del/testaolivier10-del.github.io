@@ -162,7 +162,7 @@
       var detW = phone ? 26 : 34;
       var xL = pad + detW + 14 + cw / 2, xR = W - pad - cw / 2 - 10, ppm = (xR - xL) / (TR.max - TR.min);
       // the scene, from the top: room for the a arrow's knob, the v arrow, the cart's knob, the cart, the rail, the bench
-      var aY = 22, vY = aY + 36, kY = vY + 30, cartTop = kY + 20;
+      var aY = 22, vY = aY + 36, kY = vY + 34, cartTop = kY + 20;
       var railTop = cartTop + ch + 2 * wr - 2, railH = phone ? 17 : 19, benchY = railTop + railH + 3, sceneH = benchY + (phone ? 16 : 22);
       var gTop = sceneH + 22, gap = phone ? 9 : 11, axisB = 27, L = phone ? 36 : 46, R = phone ? 44 : 40;
       var ph = fitH ? clamp(Math.floor((Hin - gTop - axisB - 2 * gap) / 3), 64, phone ? 112 : 130) : Math.floor((Hin - gTop - axisB - 2 * gap) / 3);
@@ -382,6 +382,8 @@
       ['x', 'v', 'a'].forEach(function(k){ var r = RANGE[k]; [r[1], 0, r[0]].forEach(function(y){ var yy2 = tickY(k, y); P.add(P.box(g.L - 5, yy2, M.minus(String(y)), 11.5, 'end')); }); });
       // each panel's name, top left inside it
       ['x', 'v', 'a'].forEach(function(k){ txt(g.L + 8, g.top[k] + 15, GNAME[k] + ' (' + UNIT[k] + ')', 'mg2-gn ' + CLS[k], 'start', true); });
+      if(s && s === exampleRun) txt(g.L + g.pw - 8, g.top.x + 15, 'Example run', 'mg2-w is-ex', 'end', true);
+      if(match) txt(g.L + g.pw - 8, g.top[match.kind] + 15, 'target', 'mg2-w is-tg', 'end', true);
       if(s){
         var cx = gx(t), right = t < WIN * 0.62;
         // the slopes, by their tangents
@@ -409,9 +411,7 @@
         });
         // the end stop
         if(s.hit && t >= s.hit.t - 1e-6) txt(clamp(gx(s.hit.t), g.L + 40, g.L + g.pw - 40), g.top.x + g.ph - 6, 'end stop', 'mg2-w is-turn', 'middle');
-        if(s === exampleRun) txt(g.L + g.pw - 8, g.top.x + 15, 'Example run', 'mg2-w is-ex', 'end', true);
       } else if(!match) txt(g.L + g.pw / 2, g.top.x + g.ph / 2 + 4, 'Your run draws here', 'mg2-w is-ex', 'middle');
-      if(match) txt(g.L + g.pw - 8, g.top[match.kind] + 15, 'target', 'mg2-w is-tg', 'end', true);
       var h = out.join('');
       if(h !== lastWords){ D.words.innerHTML = h; lastWords = h; }
     }
@@ -504,8 +504,9 @@
       afterPlay();
       if(o.onDone) o.onDone(pl.kind);
     }
-    function afterPlay(){ placeControls(); if(o.onState) o.onState(); }
-    function afterBack(){ placeControls(); if(o.onState) o.onState(); }
+    // the picture is painted before the words that read it (the cause line never runs a frame ahead)
+    function afterPlay(){ placeControls(); if(G) paint(); if(o.onState) o.onState(); }
+    function afterBack(){ placeControls(); if(G) paint(); if(o.onState) o.onState(); }
 
     /* ---------------------------------------------------------------- the controls on the picture */
     var H_ = {}, scrub = null, grabOff = null;
@@ -620,7 +621,8 @@
       var r = box.getBoundingClientRect();
       if(!r.width) return;
       W = Math.max(280, Math.round(r.width));
-      var phone = W < 600, fitH = phone || !!match;
+      // a phone or a tablet (it scrolls) takes the height its picture needs; a desktop fills the stage
+      var phone = W < 600, fitH = W < 1000 || !!match;
       if(fitH){
         var vh = window.innerHeight || 800, avail = o.availH ? o.availH() : vh - 330;
         var g0 = geo(W, Math.max(avail, 0), phone, true);
@@ -659,7 +661,7 @@
 
   /* ================================================================ EXPLORE */
   var PURPOSE = { drive: 'Drive the cart and watch its three graphs draw.', set: 'Set v and a and see the motion they make.' };
-  var CUE = { drive: 'Drag the cart', set: 'Drag the arrow’s tip' };
+  var CUE = { drive: 'Drag the cart', set: 'Drag an arrow' };
   function explore(host, data, kit){
     var K = window.LevlKit2, LS = null;
     var stage = document.createElement('div'); stage.className = 'mg2';
@@ -769,8 +771,9 @@
       ['drive', 'set'].forEach(function(k){
         cues[k] = K.cue(L.layer, { key: 'apphys-motion-graphs-' + k, text: CUE[k], side: 'right', at: function(){
           var g = L.geo(); if(!g) return [0, 0];
-          if(k === 'drive') return [L.X(L.cartX()) + g.cw / 2 + 12, g.cartTop + g.ch * 0.4];
-          return [L.X(L.st.set.x0) + L.st.set.v0 * g.vs + 22, g.vY];
+          // (the kit puts a right-hand cue 30 px past this point)
+          if(k === 'drive') return [L.X(L.cartX()) + g.cw / 2 - 18, g.cartTop + g.ch * 0.4];
+          return [L.X(L.st.set.x0) + Math.max(L.st.set.v0 * g.vs, 0), g.vY];
         } });
       });
       cue = { show: function(){ return cues[L.st.tab].show(); }, hide: function(u){ Object.keys(cues).forEach(function(k){ if(cues[k].active()) cues[k].hide(u && k === L.st.tab); }); }, place: function(){ cues[L.st.tab].place(); }, active: function(){ return cues[L.st.tab].active(); } };
@@ -891,7 +894,7 @@
     var key = 'apphys_mg_best_' + tg.id, best = Math.max(+(storeGet(key) || 0), res.score);
     storeSet(key, String(best));
     T.event('apphys-mg-match', { target: tg.id, score: res.score });
-    var w = res.worst, off = w && Math.abs(w.mean) > 0.15 ? (tg.kind === 'x' ? (w.sign > 0 ? 'too far to the right' : 'too far to the left') : (w.sign > 0 ? 'moving too fast in the + direction' : 'moving too fast in the − direction')) : '';
+    var w = res.worst && res.worst.t0 >= WIN ? Object.assign({}, res.worst, { t0: WIN - 1, t1: WIN }) : res.worst, off = w && Math.abs(w.mean) > 0.15 ? (tg.kind === 'x' ? (w.sign > 0 ? 'too far to the right' : 'too far to the left') : (w.sign > 0 ? 'moving too fast in the + direction' : 'moving too fast in the − direction')) : '';
     var note = '<b>Match ' + res.score + '%</b> (best on this target ' + best + '%). ' + (res.score >= 80 ? 'Well driven.' : off ? 'Furthest off from ' + w.t0 + ' s to ' + w.t1 + ' s: ' + off + '. Grab the cart to drive again.' : 'Close. Grab the cart to drive again, more smoothly.');
     return { ok: res.score >= 80, note: note };
   }
