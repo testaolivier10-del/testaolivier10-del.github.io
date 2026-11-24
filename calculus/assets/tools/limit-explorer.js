@@ -645,7 +645,7 @@
     /* ---------------------------------------------------- the moving picture */
     function draw(){
       if(!G || !S.ready) return;
-      boxes = []; labBoxes = [];
+      boxes = []; labBoxes = []; SEQ++; tagSize(-1); tagSize(1);
       var A = G.A, o = [], cl = carGeo(-1), cr = carGeo(1), inL = knobsInLens(), e = curE();
       S.drawn = { cl: cl, cr: cr };
       blockCar(cl); blockCar(cr);
@@ -745,7 +745,14 @@
       if(knobsInLens() && LENS.map){ var Lg = { cx: LENS.cx, cy: LENS.cy, R: LENS.R }, Y = LENS.map.sy(c.y); return [LENS.map.sx(c.x), clamp(Y, Lg.cy - Lg.R - 8, Lg.cy + Lg.R + 8)]; }
       return [c.Rx, c.Ry];
     }
-    function tagSize(side){ var h = side < 0 ? hl : hr, t = h && h.el.querySelector('.tk2-tag'), k = layer.scale() || 1; return [t && t.offsetWidth ? t.offsetWidth / k : 120, t && t.offsetHeight ? t.offsetHeight / k : 24]; }
+    /* tag sizes are read once a frame, before anything is written (no layout thrash during a drive) */
+    var TS = { seq: -1, v: {} }, SEQ = 0, SIDE = {};
+    function tagSize(side){
+      if(TS.seq === SEQ && TS.v[side]) return TS.v[side];
+      var h = side < 0 ? hl : hr, t = h && h.el.querySelector('.tk2-tag'), k = layer.scale() || 1, v = [t && t.offsetWidth ? t.offsetWidth / k : 120, t && t.offsetHeight ? t.offsetHeight / k : 24];
+      if(TS.seq !== SEQ){ TS = { seq: SEQ, v: {} }; }
+      TS.v[side] = v; return v;
+    }
     function tagBoxAt(side, sd, x, y, off){
       var s = tagSize(side), w = s[0], h = s[1];
       return sd === 'up' ? [x - w / 2, y - off - h, x + w / 2, y - off] : sd === 'down' ? [x - w / 2, y + off, x + w / 2, y + off + h] : sd === 'right' ? [x + off, y - h / 2, x + off + w, y + h / 2] : [x - off - w, y - h / 2, x - off, y + h / 2];
@@ -753,6 +760,11 @@
     function slideIn(b){ var A = G.A, dx = b[0] < A.L + 2 ? A.L + 2 - b[0] : b[2] > A.R - 2 ? A.R - 2 - b[2] : 0; return [b[0] + dx, b[1], b[2] + dx, b[3]]; }
     function tagSideOf(side){
       if(!G) return 'up';
+      var key = SEQ + ':' + side + ':' + (knobsInLens() ? 1 : 0);
+      if(SIDE[side] && SIDE[side].k === key) return SIDE[side].v;
+      var v = tagSideOf0(side); SIDE[side] = { k: key, v: v }; return v;
+    }
+    function tagSideOf0(side){
       var A = G.A, p = knobAt(side); if(!p) return 'up';
       if(knobsInLens()){
         var ql = knobAt(-1), qr = knobAt(1), lowL = ql && qr && ql[1] > qr[1] + 2, keep = lensKeys().concat(carBoxes(), mainMarks());

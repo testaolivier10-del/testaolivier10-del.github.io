@@ -51,6 +51,7 @@ States: building, review, fixing, recheck, PASS (waiting to integrate), integrat
 | AP Precalc function lab | claude/tools-v2-pcalc-function-lab | wt-pcalc-fn | integrated | first AP Precalc tool on the kit: adapter `ApPrecalcTools.studioKit2`, `kit2` links in `build-apprecalc.mjs`; kept sweep, frames and perf `scripts/tools-v2/pcalc-function-lab-*.mjs` |
 | AP Chem Q vs K | claude/tools-v2-chem-q-vs-k | wt-chem-qk | integrated | cylinder with a piston, tray of particles (3 per press), Q dial and arrow from what is drawn; drill as Test yourself (`placed`); sweep `scripts/tools-v2/chem-q-vs-k-sweep.mjs` (`--frames`, `--perf`) |
 | APES age structure | claude/tools-v2-apenv-age-structure | wt-apenv-age | integrated | pyramid of rows of people, the mother on the children per woman track, quiet life expectancy knob, replacement mark from the life table (`ApEnvMath.ageStructure.stable`); drill unchanged; sweep `scripts/tools-v2/apenv-age-structure-sweep.mjs` (`--frames`, `--perf`) |
+| AP Calc limit explorer | claude/tools-v2-calc-limit-explorer | wt-calc-limit | review | two cars on a road, magnifier, Close in, Fill the hole, Out to infinity on a squeezed axis; model and quiz unchanged; sweep `scripts/tools-v2/calc-limit-explorer-sweep.mjs` (`--dark`, `--fit`, `--frames`), `-perf.mjs`, `-interact.mjs` |
 
 2026-11-19: `main` merged in after PR #228 (ochem frame cleanup: chipPicker, scrollChips and .ls-chips-hidden gone; the v2
 conformations, resonance and arrow pusher kept, kit2 kept). Ochem viewer 3d had `main` merged

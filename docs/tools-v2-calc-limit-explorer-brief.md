@@ -151,4 +151,43 @@ On the picture: the road, 2 cars (2 main controls) with their tags "f(0) = 1" an
 
 ## Checks run (2026-11-24)
 
-See the "Checks" section at the end (filled in after the runs).
+`node --test scripts/test/apcalc-*.test.mjs` (156 pass), `apcalcbc-*` (71 pass), `check-apcalc-content --check`,
+`build-apcalc --check` (333), `build-apcalcbc --check` (420), `build-apmacro --check` (203), `check-site`, `check-weight
+--check` all clean; `check-tool-use` with a local copy of the list (never the committed file): this page reports
+tool-open, tool-touch, tool-mode and tool-use as frame v2, nothing under automation.
+
+- Sweep (`calc-limit-explorer-sweep.mjs`, one width per process): 60 states and a first visit at each of 360, 390,
+  430, 600, 768, 820, 1024, 1280, 1440 and 1920, light and dark (dark asserted): 1,200 states, 23,660 checks, 0
+  failures.
+- Fit (`--fit`) at 390x844, 1024x768, 1280x800, both tabs: both car knobs, the picture and the cause line in view at
+  once, no inner scroll.
+- Frames (`--frames`) at 390 dark and 1440 light: every frame of Close in, Back out, a Page Down glide, Fill the hole,
+  Undo, a jump's Close in and Drive out (about 1,900 frames): each tag reads its car's drawn nose, the cause line the
+  tags, no takeaway before the picture shows it, motion seen on every drive and glide, no car drawn at NaN; leaving
+  for Test yourself mid Close in stops it.
+- Browser checks (`calc-limit-explorer-interact.mjs`): 59 passing: real touch drag at 390 (CDP), keys (←, Page Down,
+  End, aria-valuetext current), Close in with motion and its takeaway, the picture in view after it, Fill the hole
+  closes the circle, "?" has the five row table, a mouse drag into the magnifier and inside it at 1440, a press on
+  the road brings that side's car, the picker opens tab 2, Drive out, back by the tab, reduced motion (Close in lands
+  at once), Test yourself by `?seed=7#quiz` (a wrong answer marked, Show the answer offered, the tries recorded as
+  `limit-explorer:<context>:<step>`, the same problem on a second load), no lock on the free tool, no console errors,
+  light and dark.
+- Perf at CPU x4 (`calc-limit-explorer-perf.mjs`, the machine at load 5 to 7 from other runs; the flagship in the same
+  run): 390: drag in and back median 16.7 ms, p95 33 ms (4.3 ms main thread a frame); Close in on sin(1/x) median
+  33 ms, p95 50 ms (5.5 ms); Drive out 16.7 / 50 ms (4.2 ms); a new curve 16.7 / 16.8 ms; flagship 33 / 100 ms (9.3
+  ms). 1440 (before the per frame tag size cache): drag 16.7 / 33 ms; Close in on sin(1/x) 33 / 83 ms (7.2 ms);
+  Drive out 33 / 67 ms; flagship 50 / 83 ms. Main thread work is within budget everywhere; the frame target is missed
+  on the heavy drives only while the machine is loaded, as the flagship's is.
+
+Preview: `/mnt/user-data/outputs/calc-limit-explorer-v2/index.html`, shots in `shots/` (sweep states at 360, 390,
+768 and 1440, light and dark, and the frames runs).
+
+## Not done, and what I am not happy with
+
+- The picture is still a graph with a road on it (the grid must stay for exact heights); less of a scene than the lake.
+- On a phone the magnifier, two tags and the cars crowd the upper corner; the tags fall back to the height alone.
+- sin(1/x) near 0 is a zigzag band, an honest "too many swings to draw" but not a road.
+- Close in on sin(1/x) is the heaviest drive (about 33 ms a frame at CPU x4 under load).
+- The squeezed axis in tab 2 is a choice a teacher may question (logged in `docs/apcalc-needs-author.md`).
+- Desmos and 3Blue1Brown pages could not be fetched here; GeoGebra pages were read as text, applets not run.
+- No real phone, no screen reader pass, no real students; the independent review is next.
