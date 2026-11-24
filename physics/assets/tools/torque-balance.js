@@ -198,10 +198,12 @@
     /* ---------------------------------------------------- geometry */
     var G = null, W = 640, H = 420, phone = false, built = '';
     function geoStick(W, Hin, tab){
-      var ph = W < 600, k = ph ? 1 : clamp(W / 1060, 0.95, 1.3), thick = ph ? 15 : Math.round(18 * k);
-      var mx = ph ? 16 : Math.max(44, Math.round(W * 0.05)), two = W < 1000, band = two ? 96 : 84, str0 = Math.round(34 * k);
+      var ph = W < 600, two = W < 1000, band = two ? 96 : 84, mx = ph ? 16 : Math.max(44, Math.round(W * 0.05));
       var ppm = W - 2 * mx, ang = tab === 'ang';
+      // the masses, the stick's thickness and the hooks' strings scale with the stick on a wide stage
+      function kOf(p){ return ph ? 1 : clamp(p / 1000, 0.95, 1.25); }
       function need(p){
+        var k = kOf(p), thick = ph ? 15 : Math.round(18 * k), str0 = Math.round(34 * k);
         var R = clamp(p * (ang ? 0.075 : 0.1), ph ? 46 : 64, ang ? 90 : 118), drop = 0.5 * p * Math.sin(STOP), bh = bodySize(0.5, k).h + 30;
         // Balance: room for the masses to hang one below the other (three rows only when hooks 8 cm apart can touch)
         var rows = ang ? 1 : 0.08 * p >= bodySize(0.5, k).w + 6 ? 2 : 3;
@@ -210,15 +212,16 @@
         below += 14;   // the fulcrum's quiet knob sits on the stand's base, just over the bench
         // above: the curl arrows and their two numbers; Angle: the spring scale and the hand, at the stick's left end
         var above = ang ? Math.max(R + 40, 0.4 * p * Math.sin(STOP) + pullReach(ph, k) + 10) : Math.max(R + 40, drop + 26) + (ph ? 14 : 22);
-        return { R: R, below: below, above: above, H: above + below + band, rows: rows };
+        return { k: k, thick: thick, str0: str0, R: R, below: below, above: above, H: above + below + band, rows: rows };
       }
       var n = need(ppm);
-      // a short stage first gives up some of the stick's length (at most a fifth), then grows taller
+      // a short stage gives up some of the stick's length (a desktop keeps the whole tool in view; a tablet, which
+      // scrolls like a phone, gives up at most a fifth and then grows taller)
       var p0 = ppm;
-      if(!ph){ while(n.H > Hin && ppm > p0 * 0.8){ ppm *= 0.96; n = need(ppm); } }
+      if(!ph){ while(n.H > Hin && ppm > p0 * (two ? 0.8 : 0.55)){ ppm *= 0.97; n = need(ppm); } }
       var Hh = ph ? Math.round(n.H) : Math.max(Hin, Math.ceil(n.H)), benchY = Hh - band;
       var py = benchY - n.below, x0 = Math.round((W - ppm) / 2);
-      return { W: W, H: Hh, ph: ph, k: k, thick: thick, ppm: ppm, x0: x0, py: Math.round(py), benchY: benchY, band: band, two: two, R: Math.round(n.R), str0: str0, rows: n.rows };
+      return { W: W, H: Hh, ph: ph, k: n.k, thick: n.thick, ppm: ppm, x0: x0, py: Math.round(py), benchY: benchY, band: band, two: two, R: Math.round(n.R), str0: n.str0, rows: n.rows };
     }
     function geoIne(W, Hin){
       var ph = W < 600, band = ph ? 36 : 48, k = ph ? 0.9 : clamp(W / 1100, 0.95, 1.15);
