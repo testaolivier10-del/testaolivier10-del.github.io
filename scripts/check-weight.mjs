@@ -85,12 +85,20 @@ const SHELL_BUDGETS = [
      a card on the picture follows; measured 16.3 KB. */
   /* 16.4 -> 17 (the same tool, review round 1, 2026-11-19): project() points at the nearer of a pair (the kidneys)
      and offset() slides the view above a card docked on a phone; measured 16.8 KB. */
-  ['assets/body3d', 17],
+  /* 17 -> 19.2 (tools v2 A&P 3D anatomy, 2026-11-19, docs/tools-v2-anp-anatomy-3d-brief.md): the opt in fade (every
+     change of look eases), selectFly and fadeOthers (with set()), the loading still that cross fades to the live body,
+     settling(), project() of one piece and of the whole drawn box, and frame() with room and a side; measured 19.0 KB. */
+  /* 19.2 -> 21 (the same tool, review round 1, 2026-11-19): selectOnTop (the named part drawn in a second pass over
+     everything, taps there pick it, the ring on its own surface), ghostContext, hit(); measured 20.6 KB, with some
+     headroom as the review asked. */
+  ['assets/body3d', 21],
   /* The tools v2 kit, assets/course/tool-kit2.js and .css (docs/tools-v2-standard.md): loaded only by tools rebuilt to
      v2, so it is its own shell, not part of every course page's assets/course (review of the Lab practical, 2026-11-18).
      Measured 33.0 KB with K.spots (the explorers' named places, with its miss, card sizing and find-it mode: about
      5.5 KB). */
-  ['assets/course/kit2', 34],
+  /* 34 -> 34.6 (tools v2 A&P 3D anatomy, 2026-11-19): K.spots for 3D viewers (project, wait, the ring, a card's second
+     line); measured 34.1 KB. */
+  ['assets/course/kit2', 34.6],
   /* A&P Predict the change's Explore, tools/predict-explore.js and .css (docs/tools-v2-anp-predict-brief.md): loaded only
      by that tool's page (its landing), so it is its own shell, not part of every A&P page's (review round 1). Four drawn
      body systems and the chain engine. Measured 32.8 KB in review round 1; 33.3 KB after recheck 1 (the adaptive ambient rate, the keep-out for the "before" word, arrows held until the shown number moves). */

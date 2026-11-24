@@ -38,6 +38,7 @@ States: building, review, fixing, recheck, PASS (waiting to integrate), integrat
 | AP Bio chi square | claude/tools-v2-chi-square | wt-chi-square | integrated | choice chamber of pill bugs; kept sweep, frames, perf and interact scripts in `scripts/tools-v2/chi-square-*` |
 | AP Bio rates | claude/tools-v2-rates | wt-rates | integrated | three tabs (rate over time, at a moment, percent change); sweep `scripts/tools-v2/rates-sweep.mjs` (`--frames`, `--perf`) |
 | Ochem reaction predictor | claude/tools-v2-reaction-predictor | wt-reaction-predictor | integrated | 3D sketch of each path (`sequence()`), every frame unit tested as a real structure; three accuracy fixes in `mixture()`; sweep and perf scripts |
+| A&P anatomy 3d | claude/tools-v2-anp-anatomy-3d | wt-anp-anatomy-3d | integrated | five regions on the shared viewer; viewer.js taken from the NREMT body map's branch (byte for byte) plus opt in hooks, so integrate the body map first; K.spots `project`; anp spec decision 105 |
 
 2026-11-19: `main` merged in after PR #228 (ochem frame cleanup: chipPicker, scrollChips and .ls-chips-hidden gone; the v2
 conformations, resonance and arrow pusher kept, kit2 kept). Ochem viewer 3d had `main` merged
@@ -54,6 +55,7 @@ Before the final merge:
   above budget under load). If still over 50 ms, find the cause.
 - Time flowcharts after the glove polish on a quiet machine (p95 at CPU x4 was 66 to 133 ms under load).
 - Re-time the reaction predictor's single frames at a flask change on a quiet machine.
+- Test the A&P anatomy 3d frame rate on a real phone.
 
 Plans (owner 2026-11-23): every remaining tool has a ready plan in `docs/tools-v2-plans/<course>-<tool>.md`
 (113 plans; difficulty lists in `README-core.md`, `README-econ.md`, `README-sci.md`, `README-soc.md`,
@@ -61,4 +63,4 @@ Plans (owner 2026-11-23): every remaining tool has a ready plan in `docs/tools-v
 Simpler tools first; Psych waits for the brain map's adapter; the first tool of a course without kit2 adds its adapter.
 
 Next by use (rollout table):
-A&P anatomy 3d, NREMT scenario sim (rollout rows 20 to 26).
+NREMT scenario sim (rollout rows 20 to 26).

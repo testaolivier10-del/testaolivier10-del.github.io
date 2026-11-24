@@ -37,7 +37,9 @@ test('K.spots: tap, miss, blank, Escape, find, ask', { skip: !chromium || !EXE ?
     const errs = [];
     page.on('pageerror', (e) => errs.push(e.message));
     await page.setContent(PAGE);
-    await page.waitForTimeout(50);
+    // a cold first browser start can be slow: wait until the pins are placed (up to 15 s), then a moment more
+    await page.waitForFunction(() => { const b = document.querySelector('.tk2-spot'); return !!(b && b.style.left); }, null, { timeout: 15000 });
+    await page.waitForTimeout(150);
     const card = () => page.evaluate(() => { const c = document.querySelector('.tk2-spot-card'); return c.hidden ? null : c.textContent; });
     const log = () => page.evaluate(() => window.log.slice());
 

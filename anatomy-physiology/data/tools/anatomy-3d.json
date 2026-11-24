@@ -1,5 +1,93 @@
 {
  "about": "Content for the A&P 3D anatomy tool (anatomy-physiology/tools/anatomy-3d.html). Each structure is one or more meshes of the shared BodyParts3D model (assets/body3d/body3d.glb), named by FMA id; every name was checked against the BodyParts3D 4.0 concept tables and the FMA. parts: the meshes; partNames: what each mesh is when it is tapped; context: meshes drawn but never named because their identity could not be confirmed. Validated by scripts/lib/anp-tool-checks/anatomy-3d.mjs.",
+ "explore": {
+  "poster": {
+   "light": "figures/body3d/opening-light.webp",
+   "dark": "figures/body3d/opening-dark.webp"
+  },
+  "about": "Explore (tools v2, docs/tools-v2-anp-anatomy-3d-brief.md): one tab per region. systems: the body systems in play on that tab (the rest stay as a faint ghost for orientation); first: the structure named when the tab first opens; frame (optional): the structures the camera frames, when not all of the tab's; dir (optional): the side the camera looks from ([x, y, z], default the front); purpose: the line above the picture. poster: the still of the opening view shown while the model loads (light and dark). A structure's label (optional) is the card's name in 1 to 3 words when its full name is longer; its at is where it is, in a few words, for the line under the picture (at most 50 characters).",
+  "tabs": [
+   {
+    "id": "skeleton",
+    "label": "Skeleton",
+    "short": "Bones",
+    "systems": [
+     "skeletal"
+    ],
+    "first": "femur",
+    "purpose": "Find where each bone sits in the body"
+   },
+   {
+    "id": "brain",
+    "label": "Brain and eyes",
+    "short": "Brain",
+    "systems": [
+     "nervous",
+     "senses"
+    ],
+    "first": "cerebellum",
+    "dir": [
+     1,
+     -0.35,
+     0.15
+    ],
+    "purpose": "Find each brain part inside the head"
+   },
+   {
+    "id": "heart",
+    "label": "Heart and vessels",
+    "short": "Heart",
+    "systems": [
+     "cardiovascular"
+    ],
+    "first": "aortic-arch",
+    "frame": [
+     "heart-wall",
+     "ascending-aorta",
+     "aortic-arch",
+     "superior-vena-cava",
+     "pulmonary-arteries",
+     "pulmonary-veins"
+    ],
+    "purpose": "Find each heart part and great vessel in the chest"
+   },
+   {
+    "id": "lungs",
+    "label": "Lungs and airway",
+    "short": "Lungs",
+    "systems": [
+     "respiratory"
+    ],
+    "first": "right-middle-lobe",
+    "purpose": "Find each lung lobe and airway part in the chest"
+   },
+   {
+    "id": "abdomen",
+    "label": "Abdomen and pelvis",
+    "short": "Abdomen",
+    "systems": [
+     "digestive",
+     "lymphatic",
+     "urinary",
+     "endocrine",
+     "reproductive"
+    ],
+    "first": "liver",
+    "frame": [
+     "liver",
+     "stomach",
+     "pancreas",
+     "spleen",
+     "jejunum",
+     "ileum",
+     "colon",
+     "kidneys",
+     "urinary-bladder"
+    ],
+    "purpose": "Find where each organ sits in the abdomen and pelvis"
+   }
+  ]
+ },
  "model": {
   "credit": "BodyParts3D, &copy; The Database Center for Life Science, <a href=\"https://creativecommons.org/licenses/by/4.0/\" rel=\"noopener license\">CC BY 4.0</a> (<a href=\"https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html\" rel=\"noopener\">license</a>). Meshes grouped and colored by LevlPrep.",
   "contains": "This is a real anatomical model, but a partial one. It has the bones of the skull vault and jaw, most of the vertebral column, the ribs, the girdles and limb bones; the heart wall, three valves and some coronary vessels; the great vessels; the lung lobes and the trachea; the main organs of the abdomen and the male pelvis; parts of the brain; and the skin.",
@@ -200,6 +288,7 @@
    ],
    "what": "A cranial bone: one of the eight bones that enclose the brain.",
    "where": "The forehead, from the hairline down to the upper edge of each eye socket.",
+   "at": "the forehead, down to the top of each eye socket",
    "features": "It forms the roof of each orbit and holds the frontal sinuses. It meets the two parietal bones at the coronal suture.",
    "related": [
     "parietal-bone",
@@ -218,6 +307,7 @@
    ],
    "what": "A pair of cranial bones that form most of the roof and upper sides of the skull.",
    "where": "Top and upper sides of the head, behind the frontal bone.",
+   "at": "the top and upper sides of the head",
    "features": "The two meet each other at the sagittal suture, the frontal bone at the coronal suture and the occipital bone at the lambdoid suture.",
    "related": [
     "frontal-bone",
@@ -240,6 +330,7 @@
    ],
    "what": "A pair of cranial bones on the lower sides of the skull.",
    "where": "Each side of the head, around and behind the ear.",
+   "at": "each side of the head, around the ear",
    "features": "Each holds the external acoustic meatus (the ear canal opening), the mastoid process behind it, and the mandibular fossa where the mandible forms the jaw joint.",
    "related": [
     "mandible",
@@ -261,6 +352,7 @@
    ],
    "what": "The cranial bone that forms the back and base of the skull.",
    "where": "The back of the head, curving under to the skull base.",
+   "at": "the back of the head and the skull base",
    "features": "The foramen magnum, the large opening in its base, is where the brain continues into the spinal cord. The occipital condyles beside it rest on the first cervical vertebra.",
    "related": [
     "parietal-bone",
@@ -279,6 +371,7 @@
    ],
    "what": "The lower jaw: a facial bone, and the only skull bone that moves.",
    "where": "The lower face and chin.",
+   "at": "the lower face and chin",
    "features": "Its body holds the lower teeth; each ramus rises to a condylar process that forms the jaw joint with the temporal bone.",
    "related": [
     "temporal-bone"
@@ -291,6 +384,7 @@
   },
   {
    "id": "cervical-vertebrae",
+   "label": "Cervical vertebrae",
    "name": "Cervical vertebrae (C3 to C7)",
    "system": "skeletal",
    "topic": "vertebral-column",
@@ -303,7 +397,8 @@
     "FMA12525"
    ],
    "what": "The neck vertebrae. This model has C3 to C7; the atlas (C1) and axis (C2) are not in it.",
-   "where": "The neck, between the skull and the first thoracic vertebra.",
+   "where": "The middle and lower neck, between C2 and the first thoracic vertebra.",
+   "at": "the middle and lower neck",
    "features": "Small bodies and a transverse foramen in each transverse process, which no other region has. C7 has a long spinous process that is not split, the bump at the base of your neck.",
    "related": [
     "thoracic-vertebrae",
@@ -317,6 +412,7 @@
   },
   {
    "id": "thoracic-vertebrae",
+   "label": "Thoracic vertebrae",
    "name": "Thoracic vertebrae (T1 to T12)",
    "system": "skeletal",
    "topic": "vertebral-column",
@@ -337,6 +433,7 @@
    ],
    "what": "The 12 vertebrae of the chest, each carrying a pair of ribs.",
    "where": "The upper and middle back, behind the thoracic cavity.",
+   "at": "the upper and middle back, behind the chest",
    "features": "Heart-shaped bodies, long spinous processes that slope down, and costal facets where the ribs meet them.",
    "related": [
     "cervical-vertebrae",
@@ -351,6 +448,7 @@
   },
   {
    "id": "lumbar-vertebrae",
+   "label": "Lumbar vertebrae",
    "name": "Lumbar vertebrae (L1 to L5)",
    "system": "skeletal",
    "topic": "vertebral-column",
@@ -364,6 +462,7 @@
    ],
    "what": "The five vertebrae of the lower back.",
    "where": "The lower back, between the thoracic vertebrae and the sacrum.",
+   "at": "the lower back, above the sacrum",
    "features": "The largest, thickest bodies in the column, because they carry the weight of the whole trunk. Short, blunt spinous processes and no transverse foramina or costal facets.",
    "related": [
     "thoracic-vertebrae",
@@ -386,6 +485,7 @@
    ],
    "what": "One triangular bone formed when five vertebrae fuse in early adulthood.",
    "where": "The back of the pelvis, between the two hip bones, below L5.",
+   "at": "the back of the pelvis, between the hip bones",
    "features": "It joins each hip bone at the back of the pelvis, so the weight of the trunk passes through it to the legs. The coccyx (tailbone) below it is not in this model.",
    "related": [
     "lumbar-vertebrae",
@@ -394,6 +494,7 @@
   },
   {
    "id": "sternum-body",
+   "label": "Sternal body",
    "name": "Body of the sternum",
    "system": "skeletal",
    "topic": "thoracic-cage",
@@ -403,6 +504,7 @@
    ],
    "what": "The long middle piece of the sternum (breastbone). The manubrium above it and the xiphoid process below it are not in this model.",
    "where": "The middle of the front of the chest.",
+   "at": "the middle of the front of the chest",
    "features": "The costal cartilages of ribs 2 to 7 attach along its sides. It meets the manubrium at the sternal angle, level with the second ribs.",
    "related": [
     "costal-cartilages",
@@ -416,6 +518,7 @@
   },
   {
    "id": "true-ribs",
+   "label": "True ribs",
    "name": "True ribs (ribs 1 to 7)",
    "system": "skeletal",
    "topic": "thoracic-cage",
@@ -438,6 +541,7 @@
    ],
    "what": "Ribs whose own costal cartilage reaches the sternum directly.",
    "where": "The upper seven pairs of ribs.",
+   "at": "ribs 1 to 7, the upper chest",
    "features": "The first rib is the shortest, flattest and most curved, tucked under the collarbone. Behind, each rib meets the thoracic vertebrae at its head and tubercle.",
    "related": [
     "false-ribs",
@@ -453,6 +557,7 @@
   },
   {
    "id": "false-ribs",
+   "label": "False ribs",
    "name": "Ribs 8 to 10 (false ribs)",
    "system": "skeletal",
    "topic": "thoracic-cage",
@@ -467,6 +572,7 @@
    ],
    "what": "Ribs that reach the sternum only indirectly: each one's cartilage joins the cartilage of the rib above.",
    "where": "Ribs 8, 9 and 10, below the true ribs.",
+   "at": "ribs 8 to 10, below the true ribs",
    "features": "Their joined cartilages form the curved lower edge of the front of the rib cage. This course counts ribs 8 to 12 as false ribs; here ribs 8 to 10 are one structure and the floating ribs (11 and 12) another.",
    "related": [
     "true-ribs",
@@ -480,6 +586,7 @@
   },
   {
    "id": "floating-ribs",
+   "label": "Floating ribs",
    "name": "Floating ribs (ribs 11 and 12)",
    "system": "skeletal",
    "topic": "thoracic-cage",
@@ -492,6 +599,7 @@
    ],
    "what": "The last two pairs of ribs, which have no attachment at the front. They are counted among the false ribs.",
    "where": "The lowest ribs, at the back and sides of the lower chest.",
+   "at": "the lowest ribs, back of the lower chest",
    "features": "Their tips end in the muscles of the abdominal wall. They lie behind the upper part of each kidney.",
    "related": [
     "false-ribs",
@@ -506,6 +614,7 @@
   },
   {
    "id": "costal-cartilages",
+   "label": "Costal cartilages",
    "name": "Costal cartilages (2nd and 7th)",
    "system": "skeletal",
    "topic": "thoracic-cage",
@@ -518,6 +627,7 @@
    ],
    "what": "Bars of hyaline cartilage that join the front ends of ribs to the sternum. Only the second and seventh pairs are labeled in this model.",
    "where": "The front of the chest, between the rib ends and the sternum.",
+   "at": "the front of the chest, rib ends to sternum",
    "features": "The cartilage keeps the rib cage flexible, so the chest can widen when you breathe in. The second costal cartilage meets the sternum at the sternal angle.",
    "related": [
     "sternum-body",
@@ -542,6 +652,7 @@
    ],
    "what": "The collarbone: the front bone of the pectoral girdle.",
    "where": "Across the top of the chest, from the sternum to the shoulder.",
+   "at": "across the top of the chest, sternum to shoulder",
    "features": "An S-shaped strut. Its medial end meets the manubrium and its lateral end meets the acromion of the scapula, holding the arm out from the trunk.",
    "related": [
     "scapula",
@@ -565,6 +676,7 @@
    ],
    "what": "The shoulder blade: the back bone of the pectoral girdle.",
    "where": "The upper back, over ribs 2 to 7.",
+   "at": "the upper back, over ribs 2 to 7",
    "features": "A flat triangle with a spine across its back that ends in the acromion. The shallow glenoid cavity holds the head of the humerus at the shoulder joint.",
    "related": [
     "clavicle",
@@ -587,6 +699,7 @@
    ],
    "what": "The single bone of the arm, from shoulder to elbow.",
    "where": "The arm, between the scapula and the forearm.",
+   "at": "the arm, between shoulder and elbow",
    "features": "Its rounded head fits the glenoid cavity. At the elbow, the trochlea meets the ulna and the capitulum meets the radius.",
    "related": [
     "scapula",
@@ -606,6 +719,7 @@
    ],
    "what": "The lateral bone of the forearm, on the thumb side.",
    "where": "The forearm, on the thumb side in anatomical position.",
+   "at": "the forearm, on the thumb side",
    "features": "Its head spins at the elbow when you turn your palm down. Its wide lower end meets the carpals and carries most of the wrist.",
    "related": [
     "ulna",
@@ -629,6 +743,7 @@
    ],
    "what": "The medial bone of the forearm, on the little-finger side.",
    "where": "The forearm, on the little-finger side in anatomical position.",
+   "at": "the forearm, on the little finger side",
    "features": "Its trochlear notch grips the trochlea of the humerus, so it hinges at the elbow and stays still when you turn your palm. The olecranon is the point of your elbow.",
    "related": [
     "radius",
@@ -663,6 +778,7 @@
    ],
    "what": "The eight short bones of the wrist, in two rows of four. Seven are modeled on each side; the triquetrum is not in this model.",
    "where": "The wrist, between the radius and ulna and the metacarpals.",
+   "at": "the wrist, between forearm and palm",
    "features": "Proximal row, thumb side first: scaphoid, lunate, triquetrum, pisiform. Distal row: trapezium, trapezoid, capitate, hamate. Tap one to see which it is.",
    "related": [
     "metacarpals",
@@ -694,6 +810,7 @@
    ],
    "what": "The five long bones of the palm, numbered 1 (thumb) to 5.",
    "where": "The palm, between the carpals and the finger bones.",
+   "at": "the palm, between wrist and fingers",
    "features": "Their heads are your knuckles. The phalanges (finger bones) are not in this model.",
    "related": [
     "carpals"
@@ -705,6 +822,7 @@
   },
   {
    "id": "hip-bone",
+   "label": "Hip bones",
    "name": "Hip bones (os coxae)",
    "system": "skeletal",
    "topic": "lower-limb",
@@ -715,6 +833,7 @@
    ],
    "what": "The pair of bones that form the pelvic girdle; with the sacrum and coccyx they form the bony pelvis. Each is three bones fused: ilium, ischium and pubis.",
    "where": "The sides and front of the pelvis.",
+   "at": "the sides and front of the pelvis",
    "features": "The iliac crest is the ridge you feel at your waist. The acetabulum is the deep socket for the head of the femur. The two hip bones meet in front at the pubic symphysis.",
    "related": [
     "sacrum",
@@ -741,6 +860,7 @@
    ],
    "what": "The thigh bone: the longest and strongest bone in the body.",
    "where": "The thigh, from the hip to the knee.",
+   "at": "the thigh, from hip to knee",
    "features": "Its head fits the acetabulum, and a long neck angles it away from the shaft. The greater trochanter is the bump at the side of your hip. Its two condyles rest on the tibia.",
    "related": [
     "hip-bone",
@@ -765,6 +885,7 @@
    ],
    "what": "The kneecap: a sesamoid bone, which forms inside a tendon.",
    "where": "The front of the knee.",
+   "at": "the front of the knee",
    "features": "It sits in the tendon of the large muscle on the front of the thigh and glides on the front of the femur, giving that muscle more leverage.",
    "related": [
     "femur",
@@ -787,6 +908,7 @@
    ],
    "what": "The shin bone: the medial and weight-bearing bone of the leg.",
    "where": "The leg (knee to ankle), on the big-toe side.",
+   "at": "the leg, knee to ankle, on the big toe side",
    "features": "The tibial tuberosity below the knee anchors the ligament that runs down from the patella. The medial malleolus is the inner bump of your ankle.",
    "related": [
     "fibula",
@@ -810,6 +932,7 @@
    ],
    "what": "The thin lateral bone of the leg, which carries little weight.",
    "where": "The leg, on the little-toe side, beside the tibia.",
+   "at": "the leg, on the little toe side of the tibia",
    "features": "It anchors muscles and steadies the ankle. Its lower end is the lateral malleolus, the outer bump of your ankle.",
    "related": [
     "tibia",
@@ -844,6 +967,7 @@
    ],
    "what": "The seven bones of the ankle and back of the foot.",
    "where": "The ankle, heel and arch of the foot.",
+   "at": "the ankle, heel and arch of the foot",
    "features": "The talus meets the tibia and fibula at the ankle; the calcaneus is the heel. The navicular, cuboid and three cuneiforms complete the group. Tap one to see which it is.",
    "related": [
     "metatarsals",
@@ -876,6 +1000,7 @@
    ],
    "what": "The five long bones of the middle of the foot, numbered 1 (big toe) to 5.",
    "where": "The foot, between the tarsals and the toe bones.",
+   "at": "the foot, between the ankle and the toes",
    "features": "With the tarsals they form the arches of the foot. The phalanges (toe bones) are not in this model.",
    "related": [
     "tarsals"
@@ -896,6 +1021,7 @@
    ],
    "what": "The white matter of the cerebral hemispheres: bundles of myelinated axons under the cortex.",
    "where": "Inside each cerebral hemisphere, under the outer gray matter. This model has no cortex (gray surface) or gyri.",
+   "at": "inside each hemisphere, under the gray matter",
    "features": "Its tracts link areas within a hemisphere, link the two hemispheres (the corpus callosum) and run down to the brainstem. Shown see-through so the ventricles inside it can be tapped.",
    "related": [
     "lateral-ventricles",
@@ -928,6 +1054,7 @@
    ],
    "what": "Two C-shaped spaces filled with cerebrospinal fluid (CSF), one in each cerebral hemisphere.",
    "where": "Deep in each hemisphere, curving from the frontal lobe back and down into the temporal lobe.",
+   "at": "deep in each hemisphere, curving back and down",
    "features": "They hold the largest choroid plexuses. Each opens into the third ventricle through an interventricular foramen.",
    "related": [
     "third-ventricle",
@@ -950,6 +1077,7 @@
    ],
    "what": "A narrow, CSF-filled slit in the midline of the diencephalon.",
    "where": "The middle of the brain, between the two halves of the thalamus.",
+   "at": "the brain's midline, between the thalamus halves",
    "features": "The thalamus and hypothalamus form its walls. CSF from the lateral ventricles enters it and leaves through the cerebral aqueduct.",
    "related": [
     "lateral-ventricles",
@@ -968,6 +1096,7 @@
    ],
    "what": "A narrow canal through the midbrain that carries CSF.",
    "where": "The midbrain, between the third and fourth ventricles.",
+   "at": "in the midbrain, third to fourth ventricle",
    "features": "It is the narrowest point of the CSF path, so a blockage here backs fluid up into the third and lateral ventricles (hydrocephalus).",
    "related": [
     "third-ventricle",
@@ -992,6 +1121,7 @@
    ],
    "what": "A tent-shaped, CSF-filled space in the hindbrain.",
    "where": "Between the pons and medulla in front and the cerebellum behind.",
+   "at": "in front of the cerebellum, behind the brainstem",
    "features": "CSF leaves the ventricles through openings in its walls (the apertures) into the subarachnoid space around the brain and cord.",
    "related": [
     "cerebral-aqueduct",
@@ -1001,6 +1131,7 @@
   },
   {
    "id": "choroid-plexus",
+   "label": "Choroid plexus",
    "name": "Choroid plexus of the lateral ventricles",
    "system": "nervous",
    "topic": "brain-protection",
@@ -1011,6 +1142,7 @@
    ],
    "what": "Tufts of capillaries covered by modified ependymal cells that make most of the CSF.",
    "where": "In the body and inferior horn of each lateral ventricle. Every ventricle has one; only the lateral ventricles' are modeled.",
+   "at": "inside each lateral ventricle",
    "features": "It secretes about 500 mL of CSF a day, so the whole volume is replaced three to four times daily.",
    "related": [
     "lateral-ventricles"
@@ -1035,6 +1167,7 @@
    ],
    "what": "An arching band of white matter, part of the limbic system.",
    "where": "Under the corpus callosum, curving over the thalamus on each side.",
+   "at": "under the corpus callosum, over the thalamus",
    "features": "It carries output from the hippocampus (memory) forward and down to the hypothalamus. The two sides are joined by a commissure.",
    "related": [
     "lateral-ventricles",
@@ -1058,6 +1191,7 @@
    ],
    "what": "The top part of the brainstem.",
    "where": "Below the diencephalon, above the pons.",
+   "at": "below the diencephalon, above the pons",
    "features": "A narrow fluid canal runs through it. It relays visual and auditory reflexes and carries motor tracts. The pons and medulla below it are not in this model.",
    "related": [
     "cerebral-peduncles",
@@ -1079,6 +1213,7 @@
    ],
    "what": "The two large stalks on the front of the midbrain.",
    "where": "The front of the midbrain, one on each side.",
+   "at": "the front of the midbrain, one on each side",
    "features": "They carry the descending motor tracts from the cerebral cortex down through the brainstem.",
    "related": [
     "midbrain"
@@ -1101,6 +1236,7 @@
    ],
    "what": "The \"little brain\" behind the brainstem that coordinates movement.",
    "where": "The back of the skull, under the occipital lobes of the cerebrum.",
+   "at": "the back of the skull, under the cerebrum",
    "features": "It compares the movement you intend with what your body is doing and corrects it, for smooth, accurate movement and balance.",
    "related": [
     "fourth-ventricle",
@@ -1110,6 +1246,7 @@
   },
   {
    "id": "central-canal",
+   "label": "Central canal",
    "name": "Central canal of the spinal cord (upper part)",
    "system": "nervous",
    "topic": "spinal-cord",
@@ -1119,6 +1256,7 @@
    ],
    "what": "The thin CSF-filled canal that runs down the middle of the spinal cord. Only a short upper piece is modeled, and the cord itself is not.",
    "where": "The center of the gray matter of the spinal cord, here in the upper neck.",
+   "at": "the middle of the spinal cord, in the neck",
    "features": "It is continuous with the fourth ventricle above.",
    "related": [
     "fourth-ventricle",
@@ -1141,6 +1279,7 @@
    ],
    "what": "The eye itself: a sphere with three layers (tunics) around the lens and humors. Both eyes are one piece in this model.",
    "where": "Each in its orbit, under the frontal bone.",
+   "at": "each in its orbit, under the frontal bone",
    "features": "Outer fibrous tunic (sclera and cornea), middle vascular tunic (choroid, ciliary body, iris), inner retina. This model shows only its outer surface.",
    "related": [
     "frontal-bone"
@@ -1164,6 +1303,7 @@
    ],
    "what": "The wall of the heart, mostly myocardium (cardiac muscle), lined by endocardium and covered by epicardium. Shown see-through so the valves inside can be tapped.",
    "where": "In the mediastinum, behind the sternum, with its apex pointing down and to the left.",
+   "at": "behind the sternum, apex down and to the left",
    "features": "The left ventricle's wall is the thickest, because it pumps against about five times the pressure the right ventricle does.",
    "related": [
     "mitral-valve",
@@ -1197,6 +1337,7 @@
    ],
    "what": "The right atrioventricular (AV) valve, with three cusps.",
    "where": "Between the right atrium and the right ventricle.",
+   "at": "between the right atrium and right ventricle",
    "features": "It closes when the right ventricle contracts, so blood goes out to the lungs instead of back into the atrium. Chordae tendineae tie its cusps to papillary muscles.",
    "related": [
     "mitral-valve",
@@ -1220,6 +1361,7 @@
    ],
    "what": "The left atrioventricular (AV) valve, with two cusps.",
    "where": "Between the left atrium and the left ventricle.",
+   "at": "between the left atrium and left ventricle",
    "features": "It closes when the left ventricle contracts, so blood goes into the aorta instead of back into the left atrium.",
    "related": [
     "tricuspid-valve",
@@ -1245,6 +1387,7 @@
    ],
    "what": "A semilunar valve with three pocket-like cusps.",
    "where": "At the exit of the right ventricle, where the pulmonary trunk begins.",
+   "at": "at the exit of the right ventricle",
    "features": "It opens when the right ventricle contracts and closes when the ventricle relaxes, so blood cannot fall back. The aortic valve, its twin on the left, is not in this model.",
    "related": [
     "tricuspid-valve",
@@ -1271,6 +1414,7 @@
    ],
    "what": "Cone-shaped muscles that rise from the inner wall of each ventricle.",
    "where": "Inside the right and left ventricles.",
+   "at": "inside the right and left ventricles",
    "features": "They contract with the ventricle and pull on the chordae tendineae, which keeps the AV valve cusps from turning inside out into the atria.",
    "related": [
     "tricuspid-valve",
@@ -1293,6 +1437,7 @@
    ],
    "what": "One of the two arteries that supply the heart muscle itself.",
    "where": "It leaves the aorta just above the aortic valve and runs in the coronary sulcus to the right.",
+   "at": "from the aorta, round the right of the heart",
    "features": "Its marginal branch runs along the right edge of the heart. It supplies the right atrium and most of the right ventricle.",
    "related": [
     "left-coronary-artery",
@@ -1315,6 +1460,7 @@
    ],
    "what": "The short main stem of the left coronary circulation.",
    "where": "It leaves the aorta just above the aortic valve, behind the pulmonary trunk.",
+   "at": "from the aorta, behind the pulmonary trunk",
    "features": "It splits almost at once into the anterior interventricular (left anterior descending) and circumflex arteries, which are not modeled.",
    "related": [
     "right-coronary-artery"
@@ -1329,6 +1475,7 @@
   },
   {
    "id": "septal-branches",
+   "label": "Septal branches",
    "name": "Septal branches of the coronary arteries",
    "system": "cardiovascular",
    "topic": "blood-flow-heart",
@@ -1339,6 +1486,7 @@
    ],
    "what": "Small branches that dive into the interventricular septum.",
    "where": "Inside the wall between the two ventricles.",
+   "at": "inside the wall between the two ventricles",
    "features": "They feed the septum, the thick muscular wall between the two ventricles.",
    "related": [
     "right-coronary-artery",
@@ -1362,6 +1510,7 @@
    ],
    "what": "A wide vein that collects blood from the heart wall.",
    "where": "In the coronary sulcus on the back of the heart.",
+   "at": "in the groove on the back of the heart",
    "features": "The cardiac veins drain into it, and it empties into the right atrium.",
    "related": [
     "posterior-lv-vein",
@@ -1380,6 +1529,7 @@
    ],
    "what": "A cardiac vein that drains the back of the left ventricle (also called the posterior vein of the left ventricle).",
    "where": "On the back surface of the left ventricle.",
+   "at": "on the back of the left ventricle",
    "features": "It empties into the coronary sinus.",
    "related": [
     "coronary-sinus"
@@ -1403,6 +1553,7 @@
    ],
    "what": "The first part of the aorta, rising out of the left ventricle.",
    "where": "Above the heart, behind the sternum.",
+   "at": "rising from the heart, behind the sternum",
    "features": "The two arteries that feed the heart muscle itself branch from its base.",
    "related": [
     "aortic-arch",
@@ -1421,6 +1572,7 @@
    ],
    "what": "The curve of the aorta over the top of the heart.",
    "where": "Behind the manubrium, curving back and to the left.",
+   "at": "above the heart, curving back and to the left",
    "features": "Three large arteries leave its top, carrying blood to the head, neck and arms.",
    "related": [
     "ascending-aorta",
@@ -1445,6 +1597,7 @@
    ],
    "what": "The long part of the aorta that runs down through the chest (thoracic aorta) and abdomen (abdominal aorta).",
    "where": "In front of the vertebral column, to the left of the midline.",
+   "at": "in front of the spine, left of the midline",
    "features": "It passes through the diaphragm into the abdomen and splits into the common iliac arteries in the lower abdomen.",
    "related": [
     "aortic-arch",
@@ -1469,6 +1622,7 @@
    ],
    "what": "The main arteries of the neck, one on each side.",
    "where": "Up each side of the neck, beside the trachea.",
+   "at": "up each side of the neck, beside the trachea",
    "features": "The left one leaves the aortic arch directly; the right one comes from the brachiocephalic trunk. Each splits into internal and external carotid arteries.",
    "related": [
     "aortic-arch",
@@ -1494,6 +1648,7 @@
    ],
    "what": "The large veins that drain the brain, face and neck.",
    "where": "Down each side of the neck, beside the common carotid artery.",
+   "at": "down each side of the neck, beside the carotid",
    "features": "Each joins the subclavian vein to form a brachiocephalic vein, which leads to the superior vena cava.",
    "related": [
     "common-carotid",
@@ -1518,6 +1673,7 @@
    ],
    "what": "The large vein that returns blood from the upper body to the heart.",
    "where": "To the right of the ascending aorta, entering the top of the right atrium.",
+   "at": "into the top of the right atrium",
    "features": "It forms where the large veins from the two sides of the head, neck and arms join.",
    "related": [
     "inferior-vena-cava",
@@ -1539,6 +1695,7 @@
    ],
    "what": "The largest vein, returning blood from the lower body to the heart.",
    "where": "Up the back of the abdomen to the right of the aorta, through the diaphragm into the right atrium.",
+   "at": "up the back of the abdomen to the right atrium",
    "features": "It runs behind the liver and collects veins from the kidneys and liver on its way.",
    "related": [
     "superior-vena-cava",
@@ -1561,6 +1718,7 @@
    ],
    "what": "The arteries that carry deoxygenated blood from the right ventricle to the lungs.",
    "where": "From the split of the pulmonary trunk, under the aortic arch, into the root of each lung and out to every lobe. The pulmonary trunk itself is not in this model.",
+   "at": "under the aortic arch, out to each lung",
    "features": "They are the only arteries after birth that carry deoxygenated blood, which is why \"artery\" means \"away from the heart\", not \"oxygenated\".",
    "related": [
     "pulmonary-veins",
@@ -1583,6 +1741,7 @@
    ],
    "what": "The veins that carry oxygenated blood from the lungs to the left atrium.",
    "where": "From every lobe of each lung back to the heart, usually entering as four veins.",
+   "at": "from each lung to the left atrium",
    "features": "The only veins after birth that carry oxygenated blood.",
    "related": [
     "pulmonary-arteries"
@@ -1595,6 +1754,7 @@
   },
   {
    "id": "right-upper-lobe",
+   "label": "Right superior lobe",
    "name": "Right lung, superior lobe",
    "system": "respiratory",
    "topic": "lower-airway-lungs",
@@ -1604,6 +1764,7 @@
    ],
    "what": "The top lobe of the right lung.",
    "where": "The upper right chest, rising above the clavicle at its apex.",
+   "at": "the upper right chest, its apex above the clavicle",
    "features": "The horizontal fissure separates it from the middle lobe and the oblique fissure from the inferior lobe. Each lobe gets its own secondary bronchus.",
    "related": [
     "right-middle-lobe",
@@ -1619,6 +1780,7 @@
   },
   {
    "id": "right-middle-lobe",
+   "label": "Right middle lobe",
    "name": "Right lung, middle lobe",
    "system": "respiratory",
    "topic": "lower-airway-lungs",
@@ -1628,6 +1790,7 @@
    ],
    "what": "The middle lobe, which only the right lung has.",
    "where": "The front of the lower right chest, between the horizontal and oblique fissures.",
+   "at": "the front of the lower right chest",
    "features": "The right lung has three lobes and the left only two, because the heart takes up room on the left.",
    "related": [
     "right-upper-lobe",
@@ -1643,6 +1806,7 @@
   },
   {
    "id": "right-lower-lobe",
+   "label": "Right inferior lobe",
    "name": "Right lung, inferior lobe",
    "system": "respiratory",
    "topic": "lower-airway-lungs",
@@ -1652,6 +1816,7 @@
    ],
    "what": "The bottom lobe of the right lung.",
    "where": "The lower back of the right chest, resting on the diaphragm.",
+   "at": "lower back of the right chest, on the diaphragm",
    "features": "Below the oblique fissure. Its base sits higher than the left lung's because the liver pushes the right dome of the diaphragm up.",
    "related": [
     "right-middle-lobe",
@@ -1668,6 +1833,7 @@
   },
   {
    "id": "left-upper-lobe",
+   "label": "Left superior lobe",
    "name": "Left lung, superior lobe",
    "system": "respiratory",
    "topic": "lower-airway-lungs",
@@ -1677,6 +1843,7 @@
    ],
    "what": "The top lobe of the left lung.",
    "where": "The upper left chest and the front of the left lung.",
+   "at": "the upper left chest and front of the left lung",
    "features": "Its front edge has the cardiac notch, a hollow that makes room for the heart.",
    "related": [
     "left-lower-lobe",
@@ -1692,6 +1859,7 @@
   },
   {
    "id": "left-lower-lobe",
+   "label": "Left inferior lobe",
    "name": "Left lung, inferior lobe",
    "system": "respiratory",
    "topic": "lower-airway-lungs",
@@ -1701,6 +1869,7 @@
    ],
    "what": "The bottom lobe of the left lung.",
    "where": "The lower back of the left chest, resting on the diaphragm.",
+   "at": "lower back of the left chest, on the diaphragm",
    "features": "The oblique fissure, the left lung's only fissure, separates it from the superior lobe.",
    "related": [
     "left-upper-lobe",
@@ -1725,6 +1894,7 @@
    ],
    "what": "The windpipe: the airway from the larynx to the primary bronchi.",
    "where": "The front of the neck and upper chest, in front of the esophagus.",
+   "at": "the front of the neck and upper chest",
    "features": "About 10 to 12 cm long, held open by 16 to 20 C-shaped rings of hyaline cartilage that are open at the back, where the trachealis muscle lies against the esophagus.",
    "related": [
     "thyroid-cartilage",
@@ -1747,6 +1917,7 @@
    ],
    "what": "The largest cartilage of the larynx.",
    "where": "The front of the neck; its ridge is the laryngeal prominence (Adam's apple).",
+   "at": "the front of the neck: the Adam's apple",
    "features": "Two plates of hyaline cartilage meet in front to shield the vocal folds behind them. It is larger in males after puberty.",
    "related": [
     "trachea"
@@ -1769,6 +1940,7 @@
    ],
    "what": "The dome-shaped muscle that separates the thoracic and abdominopelvic cavities, and the main muscle of breathing.",
    "where": "Across the bottom of the rib cage, domed up under the lungs and heart.",
+   "at": "across the bottom of the rib cage, domed up",
    "features": "Contracting flattens it, which enlarges the chest and draws air in. The esophagus and the largest blood vessels pass through openings in it.",
    "related": [
     "right-lower-lobe",
@@ -1788,6 +1960,7 @@
    ],
    "what": "The muscular tube that carries swallowed food from the pharynx to the stomach.",
    "where": "Down the chest behind the trachea and heart, through the diaphragm, to the stomach.",
+   "at": "behind the trachea and heart, down to the stomach",
    "features": "About 25 cm long. Its lining is stratified squamous epithelium, which resists scraping by food. Peristalsis moves food down it.",
    "related": [
     "trachea",
@@ -1811,6 +1984,7 @@
    ],
    "what": "A J-shaped muscular sac that stores food and begins protein digestion.",
    "where": "The upper left abdomen, under the diaphragm.",
+   "at": "the upper left abdomen, under the diaphragm",
    "features": "Four regions: cardia, fundus, body and pylorus. Gastric glands make hydrochloric acid and pepsinogen. The pyloric sphincter lets chyme into the small intestine a little at a time.",
    "related": [
     "esophagus",
@@ -1830,6 +2004,7 @@
    ],
    "what": "The largest internal organ: an accessory digestive organ that makes bile and processes nutrients from the gut.",
    "where": "The upper right abdomen, under the diaphragm, mostly behind the lower right ribs.",
+   "at": "the upper right abdomen, under the diaphragm",
    "features": "It receives blood from the hepatic portal vein and the hepatic artery. Its tiny lobules process nutrients, store glycogen, make plasma proteins and break down toxins.",
    "related": [
     "gallbladder",
@@ -1849,6 +2024,7 @@
    ],
    "what": "A small sac that stores and concentrates bile.",
    "where": "Under the right lobe of the liver.",
+   "at": "under the right lobe of the liver",
    "features": "When fatty chyme reaches the duodenum, the hormone CCK makes it contract and push bile through the bile duct into the duodenum.",
    "related": [
     "liver",
@@ -1870,6 +2046,7 @@
    ],
    "what": "A gland that is both exocrine (digestive enzymes) and endocrine (insulin and glucagon).",
    "where": "Behind the stomach, with its head in the curve of the duodenum and its tail reaching toward the spleen.",
+   "at": "behind the stomach, head in the duodenum curve",
    "features": "Its acinar cells make pancreatic juice with bicarbonate and enzymes for every nutrient; its islets release hormones into the blood.",
    "related": [
     "duodenum",
@@ -1889,6 +2066,7 @@
    ],
    "what": "The first and shortest part of the small intestine.",
    "where": "A C-shaped curve around the head of the pancreas, just past the stomach.",
+   "at": "just past the stomach, curving round the pancreas",
    "features": "Bile and the digestive juice of the pancreas enter it, so it is where stomach acid is neutralized and much of chemical digestion takes place.",
    "related": [
     "stomach",
@@ -1908,6 +2086,7 @@
    ],
    "what": "The middle part of the small intestine.",
    "where": "Coiled mostly in the upper left abdomen.",
+   "at": "coiled mostly in the upper left abdomen",
    "features": "About two fifths of the length after the duodenum. It absorbs most nutrients, with tall, close-set folds and villi.",
    "related": [
     "duodenum",
@@ -1926,6 +2105,7 @@
    ],
    "what": "The last and longest part of the small intestine.",
    "where": "Coiled in the lower right abdomen and pelvis.",
+   "at": "coiled in the lower right abdomen and pelvis",
    "features": "It absorbs vitamin B12, reclaims parts of bile for reuse, and has many Peyer's patches. It ends at the ileocecal valve, where it joins the large intestine.",
    "related": [
     "jejunum",
@@ -1945,6 +2125,7 @@
    ],
    "what": "The longest part of the large intestine, in four sections: ascending, transverse, descending and sigmoid.",
    "where": "It frames the small intestine: up the right side, across the top and down the left side of the abdomen.",
+   "at": "framing the small intestine: up, across and down",
    "features": "Teniae coli bunch its wall into pouches called haustra. It absorbs most of the remaining water and electrolytes, and its bacteria ferment leftover fiber.",
    "related": [
     "ileum",
@@ -1964,6 +2145,7 @@
    ],
    "what": "A narrow tube of lymphoid tissue, about 8 cm long.",
    "where": "Hanging from the cecum (not modeled) in the lower right abdomen.",
+   "at": "the lower right abdomen",
    "features": "Its lymphoid tissue makes it one of the secondary lymphoid organs. Inflamed (appendicitis), it causes pain that settles in the right lower quadrant.",
    "related": [
     "colon",
@@ -1985,6 +2167,7 @@
    ],
    "what": "The straight final part of the large intestine before the anal canal.",
    "where": "In the pelvis, in front of the sacrum.",
+   "at": "in the pelvis, in front of the sacrum",
    "features": "Stretch of its wall by feces triggers the defecation reflex.",
    "related": [
     "colon",
@@ -2004,6 +2187,7 @@
    ],
    "what": "The largest lymphoid organ, which filters blood, not lymph.",
    "where": "The upper left abdomen, behind the stomach, under the 9th to 11th ribs.",
+   "at": "the upper left abdomen, under ribs 9 to 11",
    "features": "Its white pulp holds lymphocytes that respond to antigens in the blood; its red pulp removes old and damaged red blood cells.",
    "related": [
     "stomach",
@@ -2024,6 +2208,7 @@
    ],
    "what": "The bean-shaped organs that filter the blood and make urine.",
    "where": "Against the back wall of the abdomen, behind the peritoneum (retroperitoneal), from about T12 to L3.",
+   "at": "back of the abdomen, T12 to L3, the right lower",
    "features": "The right kidney sits a little lower because the liver is above it. Vessels and the ureter enter and leave at the hilum on its medial side.",
    "related": [
     "ureters",
@@ -2047,6 +2232,7 @@
    ],
    "what": "The tubes that carry urine from each kidney to the urinary bladder.",
    "where": "Down the back wall of the abdomen into the pelvis.",
+   "at": "down the back of the abdomen into the pelvis",
    "features": "Waves of smooth muscle contraction (peristalsis) push urine along. They enter the bladder at an angle, which keeps urine from flowing back.",
    "related": [
     "kidneys",
@@ -2068,6 +2254,7 @@
    ],
    "what": "A hollow, stretchy organ that stores urine.",
    "where": "In the pelvis, behind the pubic symphysis.",
+   "at": "in the pelvis, behind the pubic symphysis",
    "features": "Its wall is the detrusor muscle. The trigone on its floor is the triangle between the two ureter openings and the urethra.",
    "related": [
     "ureters",
@@ -2091,6 +2278,7 @@
    ],
    "what": "Endocrine glands that are really two glands in one: an outer cortex and an inner medulla.",
    "where": "On top of each kidney.",
+   "at": "on top of each kidney",
    "features": "The cortex makes steroids (aldosterone, cortisol and androgens); the medulla releases epinephrine and norepinephrine.",
    "related": [
     "kidneys"
@@ -2114,6 +2302,7 @@
    ],
    "what": "The male gonads, which make sperm and testosterone.",
    "where": "In the scrotum, outside the pelvis.",
+   "at": "in the scrotum, outside the pelvis",
    "features": "Their seminiferous tubules make sperm; interstitial cells between the tubules make testosterone. The scrotum keeps them a few degrees below body temperature.",
    "related": [
     "prostate"
@@ -2136,6 +2325,7 @@
    ],
    "what": "A male accessory gland that adds fluid to semen.",
    "where": "Just below the urinary bladder, around the first part of the urethra.",
+   "at": "just below the bladder, around the urethra",
    "features": "The urethra and the ejaculatory ducts pass through it. When it enlarges with age it can squeeze the urethra and slow urine flow.",
    "related": [
     "urinary-bladder",
@@ -2157,6 +2347,7 @@
    ],
    "what": "The largest organ: the epidermis and the dermis, over the hypodermis.",
    "where": "The whole outer surface of the body.",
+   "at": "the whole outer surface of the body",
    "features": "Shown as a see-through shell. The model has no separate layers, hair or glands.",
    "related": [],
    "accept": [
