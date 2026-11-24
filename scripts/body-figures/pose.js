@@ -207,7 +207,7 @@ function poseGeometry(mesh, warp, R){
   }
   // the coarse feet end in long points: the toes drawn back a little and the sole rounded
   const fy0 = J0ankleY(R);
-  for(let i = 0; i < P.length; i += 3) if(foot(P[i], P[i+1], P[i+2])){ const d = fy0 - 70 - P[i+1]; if(d > 0) P[i+1] = fy0 - 70 - d * 0.7; }
+  for(let i = 0; i < P.length; i += 3) if(foot(P[i], P[i+1], P[i+2])){ const d = fy0 - 55 - P[i+1]; if(d > 0) P[i+1] = fy0 - 55 - d * 0.5; }
   P = taubin(P, J, 40, (x, y, z) => (hand(x, y, z) || foot(x, y, z)) ? 1 : 0);
   P = taubin(P, J, 3);
   if(warp) for(let i = 0; i < P.length; i += 3){ const w = warp(P[i], P[i+1], P[i+2], true); P[i] = w[0]; P[i+1] = w[1]; P[i+2] = w[2]; }
@@ -321,6 +321,7 @@ window.renderPoses = async function(list){
       mouth: pt(0, R.headY - (side ? 80 : 105), R.chin + 45), eye: pt(side ? -40 : 0, R.headY - (side ? 62 : 85), R.chin + 120),
       hipR: pt(J.hip[0][0], 0, J.hip[0][2]), hipL: pt(J.hip[1][0], 0, J.hip[1][2]), kneeR, kneeL,
       footR: pt(J.ankle[0][0], J.ankle[0][1], J.ankle[0][2] - 60), footL: pt(J.ankle[1][0], J.ankle[1][1], J.ankle[1][2] - 60),
+      toeR: pt(J.ankle[0][0], J.ankle[0][1] - 85, 35), toeL: pt(J.ankle[1][0], J.ankle[1][1] - 85, 35),
       handR: pt(-235, 0, R.wrist - 85), handL: pt(235, 0, R.wrist - 85)
     };
     // 1. silhouette: the largest piece, holes filled, edges smoothed
@@ -336,6 +337,17 @@ window.renderPoses = async function(list){
         let wgt = 0; for(const e of ends){ const d = Math.hypot(x - e[0], y - e[1]); wgt = Math.max(wgt, ss((rr - d) / (rr * 0.4))); }
         if(wgt > 0){ const i = y * w + x; m[i] = (m[i] * (1 - wgt) + sm[i] * wgt) >= 0.42 ? 1 : 0; } }
       // and each hand ends in a rounded palm, not a point
+      // the toes end blunt and round: a disc over the front of each foot, and nothing pointed beyond it
+      const tr = 40 * pxPerMm;
+      for(const e of [lm.toeR, lm.toeL]) for(let y = Math.max(0, Math.floor(e[1] - tr * 2.2)); y < Math.min(h, e[1] + tr * 2.2); y++) for(let x = Math.max(0, Math.floor(e[0] - tr * 2.2)); x < Math.min(w, e[0] + tr * 2.2); x++){
+        const d = Math.hypot(x - e[0], y - e[1]); if(d < tr && sm[y * w + x] > 0.1) m[y * w + x] = 1; else if(d > tr * 1.15 && d < tr * 2.2){
+          // past the disc, away from the ankle: cut the point off
+          const an = e === lm.toeR ? lm.footR : lm.footL, ax = e[0] - an[0], ay = e[1] - an[1], al = Math.hypot(ax, ay) || 1;
+          if(((x - e[0]) * ax + (y - e[1]) * ay) / al > tr * 0.55) m[y * w + x] = 0; } }
+      // seated, the feet stand on the floor: the soles end on one line (no toes hanging below it), rounded at the toe
+      if(!side){ const fl = Math.round(Math.max(lm.toeR[1], lm.toeL[1]) + 10 * pxPerMm);
+        for(let y = fl; y < h; y++) for(let x = 0; x < w; x++) m[y * w + x] = 0;
+        const sm2 = blurF(m, w, h, 3, 2); for(let y = Math.round(fl - 60 * pxPerMm); y < fl; y++) for(let x = 0; x < w; x++){ const i = y * w + x; m[i] = sm2[i] >= 0.5 ? 1 : 0; } }
       const hr2 = 52 * pxPerMm; for(const e of [lm.handR, lm.handL]) for(let y = Math.max(0, Math.floor(e[1] - hr2)); y < Math.min(h, e[1] + hr2); y++) for(let x = Math.max(0, Math.floor(e[0] - hr2)); x < Math.min(w, e[0] + hr2); x++)
         if(Math.hypot(x - e[0], y - e[1]) < hr2 && sm[y * w + x] > 0.15) m[y * w + x] = 1; }
     // 2. region and depth per pixel
@@ -346,6 +358,10 @@ window.renderPoses = async function(list){
       reg[i] = regionOf([c3(0) * 1000 - 500, c3(1) * 1000 - 500, c3(2) * 1800 - 50], R, it);
       dz[i] = dep[i*4] / 255 + dep[i*4+1] / 65025;
     }
+    // the silhouette's edge pixels the data passes missed take a neighbour's region (no skin rim around a sock or sleeve)
+    for(let pass = 0; pass < 3; pass++) for(let y = 1; y < h - 1; y++) for(let x = 1; x < w - 1; x++){
+      const i = y * w + x; if(!m[i] || hi[i*4+3]) continue;
+      for(const j of [i - 1, i + 1, i - w, i + w]) if(hi[j*4+3]){ reg[i] = reg[j]; hi[i*4+3] = 1; break; } }
     // 3. form: the inflated silhouette and the mesh's own light
     const dist = edt(m, w, h), Hp = poisson(m, w, h), Hs = new Float32Array(w * h);
     for(let i = 0; i < w * h; i++) Hs[i] = Math.sqrt(Math.max(0, Hp[i])) * 2.2;
@@ -387,7 +403,7 @@ window.renderPoses = async function(list){
     const legW = r1(70 * pxPerMm), a = (p, rr) => [p[0], p[1], rr];
     const anchors = {
       // seated (three quarter view): the head anchor sits on the face, so the drawn face and the mask land on it
-      head: a(headC, headR), simHead: side ? a(headC, headR) : a([r1(headC[0] + (lm.eye[0] - headC[0]) * 0.5), lm.eye[1] + headR * 0.08], headR), simNeck: a(pt(0, R.headY, J.neckZ), r1(48 * pxPerMm)),
+      head: a(headC, headR), simHead: side ? a(headC, headR) : a([r1(headC[0] + (lm.eye[0] - headC[0]) * 0.32), lm.eye[1] + headR * 0.08], headR), simNeck: a(pt(0, R.headY, J.neckZ), r1(48 * pxPerMm)),
       upper: a(pt(0, -80, (R.notch + R.xiph) / 2), r1(90 * pxPerMm)), lower: a(pt(0, -100, R.umb), r1(90 * pxPerMm)), simAbdomen: a(pt(0, -100, R.umb), r1(90 * pxPerMm)),
       armR: a(pt(-235, 0, R.elb), r1(40 * pxPerMm)), armL: a(pt(235, 0, R.elb), r1(40 * pxPerMm)),
       legR: a(kneeR, legW), legL: a(kneeL, legW), simLegR: a(kneeR, legW), simLegL: a(kneeL, legW), genitals: a(lm.pubis, r1(40 * pxPerMm))

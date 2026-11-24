@@ -323,6 +323,11 @@ async function frames() {
     ok(st.labs[0] === 'Unresponsive' && /Unresponsive/.test(st.chain) && st.drawn.eyes === 'closed', `R1: s3 limp reads "Unresponsive" first, eyes closed (${st.labs} / ${st.chain} / ${st.drawn.eyes})`);
     r = await walk('s1', [3, 0, 1, 1]); st = r[r.length - 1];
     ok(st.node === 's1_end_bad' && st.labs.includes('Unresponsive') && !st.labs.includes('Alert') && st.drawn.eyes === 'closed', `R1: s1 poor ending "Unresponsive", eyes closed (${st.node} ${st.labs} ${st.drawn.eyes})`);
+    // recheck 4: the newest step's words win (s6 breathes after the shock), and a pulseless patient is "Not breathing"
+    r = await walk('s6', [0, 0, 0, 0]); st = r[r.length - 1];
+    ok(st.node === 's6_shock_good' && st.labs.includes('Breathing now') && !st.labs.includes('Unresponsive') && /Breathing now/.test(st.chain), `B1: s6 after the shock "Breathing now", no "Unresponsive" (${st.labs} / ${st.chain})`);
+    r = await walk('s14', [0, 0]); st = r[r.length - 1];
+    ok(st.labs.includes('Not breathing') && !st.labs.includes('Unresponsive'), `s14 pulseless keeps "Not breathing" (${st.labs})`);
     r = await walk('s9', [0]); st = r[0];
     ok(st.labs.includes('On her side') && !st.labs.includes('On her left side'), `s9 names no side the case does not name (${st.labs})`);
     // recheck 3: the seated pose is there at the call's opening (no standing first); the poses are fetched only for

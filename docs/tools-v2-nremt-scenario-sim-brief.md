@@ -330,3 +330,18 @@ Checks after recheck 3 (2026-11-24):
   flagship's 30.3; 1440 757 ms against 40.6). To time on a quiet machine before the merge (pipeline note).
 - Flowcharts kept sweep at 390: 1226 passed. NREMT and kit tests 73 passed; check-site and check-weight pass.
 
+## Recheck 4 (2026-11-24): BLOCK, fixed
+
+- B1. Only this step's own words can make the head read "Unresponsive", and not when they say the patient breathes,
+  moves, opens the eyes or has a pulse back; an older step's "unresponsive" never outranks the newest finding. s6 after
+  the shock reads "Breathing now" again. "Unresponsive" replaces only a cough, crying or alertness word on the head,
+  and is not added beside "Not breathing" or "No pulse" (so s14 keeps "Not breathing" while pulseless).
+- B2. The seated face: the drawn nose is back (the mesh's is pressed flat under it), and the drawn face is a little
+  smaller across and down (0.8 by 0.84) and nearer the head's middle, so the mouth sits inside the jaw line.
+- B3. The seated feet stand on one floor line: nothing hangs below it, the toes end blunt and rounded; the silhouette's
+  edge pixels take a neighbour's colour, so no skin rim shows around a sock or a shoe.
+- Not changed for performance: placing the words already reads the drawn boxes once a placement; the reviewer's trace
+  puts the cost in script, style and paint, not in the pose images.
+
+Sweep checks added: s6's right path ("Breathing now" after the shock, no "Unresponsive"); s14 keeps "Not breathing".
+

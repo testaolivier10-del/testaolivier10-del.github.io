@@ -212,4 +212,3 @@
 .ls-root .ls-stage .scx-scene:not(.is-wide) .scx-mon .mon-tile{padding:2px 5px 3px;}
 .scx-nb{opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.85);transition:opacity .7s ease,transform .7s ease;}
 .scx-nb.is-on{opacity:1;transform:none;}
-.scx-q3 .scx-nose{display:none;}

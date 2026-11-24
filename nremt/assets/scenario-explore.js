@@ -842,7 +842,7 @@
           '<g class="scx-ec"><path d="M' + E(-1.6, -0.1) + 'Q' + E(0.1, 0.9) + ' ' + E(1.8, -0.1) + '" stroke="#4A3428" stroke-width="' + f1(q * 0.45) + '" fill="none" stroke-linecap="round"/></g>' +
           '<path d="M' + f1(mo2[0] - q * 1.6) + ' ' + f1(mo2[1] + q * 0.2) + 'Q' + f1(mo2[0] - q * 0.4) + ' ' + f1(mo2[1] + q * 0.7) + ' ' + f1(mo2[0] + q * 0.6) + ' ' + f1(mo2[1]) + '" stroke="#9A4A44" stroke-width="' + f1(q * 0.55) + '" fill="none" stroke-linecap="round"/></g>');
       }
-      if(posed){ if(St.view === 'sit') h.push('<g class="scx-q3" transform="translate(' + f1(M.hx) + ' ' + f1(M.eyeY) + ') scale(.8 1) translate(' + f1(-M.hx) + ' ' + f1(-M.eyeY) + ')">' + face(M) + '</g>'); }
+      if(posed){ if(St.view === 'sit') h.push('<g class="scx-q3" transform="translate(' + f1(M.hx) + ' ' + f1(M.eyeY) + ') scale(.8 .84) translate(' + f1(-M.hx) + ' ' + f1(-M.eyeY) + ')">' + face(M) + '</g>'); }
       else if(St.view === 'prone'){
         var hcol = (HAIR[St.id] || ['#2B2B2B'])[0];
         h.push('<ellipse cx="' + f1(M.hx) + '" cy="' + f1(M.hcy) + '" rx="' + f1(M.hrx * 1.04) + '" ry="' + f1(M.hry * 1.02) + '" fill="' + hcol + '"/><ellipse cx="' + f1(M.hx) + '" cy="' + f1(M.hcy) + '" rx="' + f1(M.hrx * 1.04) + '" ry="' + f1(M.hry * 1.02) + '" fill="url(#scx-light)"/>');
@@ -972,7 +972,10 @@
       var silent = false, crying = false;
       sn.some(function(x){ return own(x.text, St.preg).split(SENT).reverse().some(function(y){ if(!/cough|sound|voice|cry|air|breath/i.test(y)) return false; silent = SILENT.test(y); crying = !silent && CRYING.test(y); return true; }); });
       // the newest words about how the patient responds: "goes limp and stops responding" outranks the airway's words
-      var unr = false; sn.some(function(x){ return own(x.text, St.preg).split(SENT).reverse().some(function(y){ if(!/respon|limp|alert|awake|answer|talk|cry|eyes open/i.test(y)) return false; unr = UNRESP.test(y) && !/\b(no longer|not) unresponsive\b/i.test(y); return true; }); });
+      // this step's own words about how the patient responds ("goes limp and stops responding"): an older step's
+      // "unresponsive" never outranks what the patient does now (breathing, moving, a pulse back)
+      var unr = !!sn[0] && own(sn[0].text, St.preg).split(SENT).reverse().some(function(y){ return UNRESP.test(y) && !/\b(no longer|not) unresponsive\b/i.test(y); }) &&
+        !/\b(breath\w* on (his|her) own|begins? moving|starts? to (breathe|move|cry)|pulse (is )?back|opens? (his|her) eyes|wakes)\b/i.test(own(sn[0].text, St.preg));
       var born = !!St.preg && BORN.test(sn.map(function(x){ return x.text; }).join(' '));
       var cr = St.drawn ? St.drawn.careObj : null;
       if(J.care && cr) J.care.pins({ fig: f, f: fnd, careNow: cr, preg: St.preg, view: St.view === 'prone' || St.view === 'side' ? 'back' : 'front' }, pins);
@@ -994,7 +997,7 @@
           if(bl === 'stop' && fresh.indexOf('tq') >= 0) return;
         }
         if(born && (p.key === 'birth' || /Contraction|Crowning|Baby born|Head delivered|Cord|Birth/.test(t))) return;
-        if((p.key === 'head' || p.key === 'ms') && unr){ t = 'Unresponsive'; sev = true; }
+        if((p.key === 'head' || p.key === 'ms') && unr && /cough|cry|alert|awake|talk|answer|calm|drows/i.test(t)){ t = 'Unresponsive'; sev = true; }
         else if(/Cough/.test(t) && silent){ t = 'Cannot cough'; sev = true; }
         else if(/Cough/.test(t) && crying){ t = 'Crying'; sev = false; }
         if(p.key === 'head' || p.key === 'ms') t = t.split(', ')[0];
@@ -1004,7 +1007,7 @@
         out.push({ text: t, at: at, tone: sev ? 'bad' : 'see' });
       });
       // a step that ends with the patient crying (the newborn after 3:1) says so even with no cough to replace
-      if(unr && M && !out.some(function(x){ return x.text === 'Unresponsive'; })) out.push({ text: 'Unresponsive', at: [M.hx, M.top + M.hry * 0.18], tone: 'bad' });
+      if(unr && M && !out.some(function(x){ return /^(Unresponsive|Not breathing|No pulse)/.test(x.text); })) out.unshift({ text: 'Unresponsive', at: [M.hx, M.top + M.hry * 0.18], tone: 'bad' });
       if(!unr && crying && M && sn[0] && /\b(cries|crying)\b/i.test(own(sn[0].text, St.preg)) && !out.some(function(x){ return x.text === 'Crying'; })) out.push({ text: 'Crying', at: [M.hx, M.chin], tone: 'see' });
       // a word already said inside a longer label ("Alert" beside "Alert, in pain") is dropped
       var parts = function(t){ return t.toLowerCase().split(/,\s*/); };
