@@ -49,6 +49,7 @@ States: building, review, fixing, recheck, PASS (waiting to integrate), integrat
 | AP Physics 1 torque balance | claude/tools-v2-phys-torque-balance | wt-phys-torque | integrated | first physics tool on kit2: adapter `ApPhysTools.studioKit2` (Test yourself stays on the shared drill); sweep `scripts/tools-v2/phys-torque-balance-sweep.mjs` (`--frames`, `--perf`) |
 | AP Chem buffers | claude/tools-v2-chem-buffers | wt-chem-buffers | integrated | buffer and water beakers, droppers, meters from the drawn particles (`ApChemMath.bufferMeter`); drill as Test yourself (`placed` part); sweep `scripts/tools-v2/chem-buffers-sweep.mjs` (`--frames`, `--perf`) |
 | AP Precalc function lab | claude/tools-v2-pcalc-function-lab | wt-pcalc-fn | integrated | first AP Precalc tool on the kit: adapter `ApPrecalcTools.studioKit2`, `kit2` links in `build-apprecalc.mjs`; kept sweep, frames and perf `scripts/tools-v2/pcalc-function-lab-*.mjs` |
+| AP Physics 1 motion graphs | claude/tools-v2-phys-motion-graphs | wt-phys-motion | review | Drive it and Set v and a on one cart and track over three stacked graphs; Match the graph in Test yourself through the drill's new `task` step; sweep `scripts/tools-v2/phys-motion-graphs-sweep.mjs` (`--frames`, `--perf`) |
 
 2026-11-19: `main` merged in after PR #228 (ochem frame cleanup: chipPicker, scrollChips and .ls-chips-hidden gone; the v2
 conformations, resonance and arrow pusher kept, kit2 kept). Ochem viewer 3d had `main` merged

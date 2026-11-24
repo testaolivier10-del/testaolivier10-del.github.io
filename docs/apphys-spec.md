@@ -250,6 +250,13 @@ Owner to confirm (needs-author `tools-premium`).
     bench, Test yourself is the unchanged drill. Brief: `docs/tools-v2-phys-torque-balance-brief.md`; open points:
     `docs/apphys-needs-author.md` "torque-balance-v2". The other ten trainers are unchanged.
 
+16. (2026-11-24, tools v2) **Motion graphs rebuilt to the tools v2 standard.** `"kit2": true` on motion-graphs too;
+    Explore is two tabs (Drive it, Set v and a) on one cart, track and detector over three stacked graphs; Test
+    yourself is the unchanged drill plus "Match the graph" (the old Match), through two small drill additions in
+    `phys-tools.js`: a `task` step the tool grades and `only` contexts that "Any kind" never deals (so `?seed=` links
+    are unchanged). Brief: `docs/tools-v2-phys-motion-graphs-brief.md`; open points: `docs/apphys-needs-author.md`
+    "motion-graphs-v2". The other nine trainers are unchanged.
+
 ## 8. Open items for the owner
 
 - **Launch checklist: done 2026-10-13.** Migration `2026-10f-apphys.sql` applied in Supabase (live function
