@@ -92,7 +92,7 @@ counts (2 lines under the buffer, 2 lines and the scale line under the water). N
 | pH readout | The buffer's pH meter |
 | The pH against mmol added graph (with the faint whole curve and pure water dashed) | The two meters, side by side on every drop; "?" has the pH after every drop for this buffer and water as a table; a whole curve is the Titration curve reader's job |
 | "Show the reasoning" (the exam's method, the exact pH when it differs, the water comparison) | "?": a live "Now:" line with the method for what is drawn; the water's pH is its meter |
-| Tool Studio pills ("Buffered", "Capacity reached", "Past capacity") | The meter header "Buffer used up", the cause line and the takeaway |
+| Tool Studio pills ("Buffered", "Nearly spent", "Capacity reached", "Past capacity") | "Nearly spent" (both forms there, the ratio outside 1 : 10 to 10 : 1): the pointer leaving the green pKa ± 1 band and the meter's exact pH; the others: the meter header "Buffer used up", the cause line ("all CH₃COOH used", "2 OH⁻ left over") and the takeaway |
 | Tool Studio Details (numbers table, particles list) | The meters and the counts on the picture; "?" |
 | Start over | Start over |
 | Drill types, ids, `?seed=`, `#quiz` | Unchanged |
@@ -161,6 +161,27 @@ counts (2 lines under the buffer, 2 lines and the scale line under the water). N
   10 widths, light and dark, the first visit, the takeaway, the full screen after a drop, Test yourself; `*-mid-*`
   frames of a NaOH drop, an HCl drop and a drop past capacity at fall, meet, swap and return, at 1440 light, 768 dark and
   390 light).
+
+## Review round 1 (2026-11-24): BLOCK, fixed
+Review: `/home/claude/review-chem-buffers/REVIEW.md`. The chemistry and the frame by frame agreement held.
+
+Must fix:
+1. **No repo paths in "?".** The two buffers' source lines (`explore.buffers[].ref`) now name only the value and its
+   source ("the value the drill and Unit 8 use (CRC Handbook: 1.75 × 10⁻⁵)"); the needs-author pointer stays in this
+   brief and in `explore.note`'s doc reference.
+2. **Another buffer cross fades.** `pickBuffer` takes the old canvases' pictures first, lays out the new buffer, then
+   fades the old pictures out over the new canvases (0.3 s), and the still scene (meters, counts, the pKa band) fades in
+   (`.is-swap`, 0.32 s). The frames run checks both canvases fade and the scene's animation runs on a tab switch.
+
+Should fix, all done: past capacity the chain stays at rest ("2 OH⁻ left over → pH ... + water ..."): the takeaway
+follows only the drop that empties a form (the sweep checks the four past capacity states have no takeaway after 1.4 s);
+Start over and the amount chip ease the meter pointers (the frames run checks the pointer is between its old and new
+place 40 ms after Start over); the dropper hover is a faint solid outline and a 6% tint, only where a real pointer can
+hover (`(hover: hover)`), never dashed; "Nearly spent" logged in "What moved" and the owner log; needs-author
+`buffer-explore` point 1 now says "at 5 mmol of each (0.050 M)".
+
+Checks (fix round): sweep at 360, 390, 1024 and 1440, light and dark; frames at 390 and 1440; AP Chem tests, content
+check, build `--check`, check-site (see the report for the counts).
 
 ## Not done, and what I am not happy with
 - No real phone, no screen reader pass, no students; no independent review yet.

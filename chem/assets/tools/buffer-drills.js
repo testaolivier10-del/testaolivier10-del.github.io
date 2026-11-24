@@ -566,7 +566,9 @@
         if(!shown) return;
         say(cause.text());
         clearTimeout(takeT);
-        if(shown.spent && S.mode === 'explore') takeT = setTimeout(function(){ if(!busy() && shown.spent) cause.take('A buffer holds its pH until one of its two forms runs out.'); }, 1100);
+        // the takeaway follows the drop that empties a form; past it the chain stays (what is left over, and water)
+        var c0 = shown.c[0], empt = shown.spent && !c0.oh && !c0.h3o;
+        if(empt && S.mode === 'explore') takeT = setTimeout(function(){ var c1 = shown.c[0]; if(!busy() && shown.spent && !c1.oh && !c1.h3o) cause.take('A buffer holds its pH until one of its two forms runs out.'); }, 1100);
         refNow();
       }
       function paintDroppers(){
@@ -743,8 +745,10 @@
         var p = BK[0].plan, a = p.acid + queue.filter(function(d){ return d < 0; }).length, bs = p.base + queue.filter(function(d){ return d > 0; }).length;
         layoutAt(a, bs); BK.forEach(function(b){ b.pc.fade = null; }); drawnKey = ''; paintReadouts(true); ptr.forEach(function(q){ q.a = q.to; }); frame(); settled();
       }
+      function snapshots(){
+        return BK.map(function(b){ var el = b.pc && b.pc.el; if(!el || !el.width) return null; var im = document.createElement('canvas'); im.width = el.width; im.height = el.height; im.getContext('2d').drawImage(el, 0, 0); return im; });
+      }
       function crossFade(fn){
-        var img = null;
         var imgs = BK.map(function(b){ var el = b.pc && b.pc.el; if(!el || !el.width) return null; var im = document.createElement('canvas'); im.width = el.width; im.height = el.height; im.getContext('2d').drawImage(el, 0, 0); return im; });
         fn();
         BK.forEach(function(b, i){ if(imgs[i] && b.pc){ b.pc.fade = { img: imgs[i], t0: now() }; } });
@@ -820,9 +824,14 @@
         var i = BUF.map(function(b){ return b.id; }).indexOf(v); if(i < 0 || i === S.bi) return;
         if(raf){ cancelAnimationFrame(raf); raf = 0; }
         S.bi = i; queue = []; cause.take(null);
-        crossFade(function(){});
+        // the old picture's canvases, taken before the new beakers are drawn, fade out over the new ones; the still
+        // scene (meters, counts, the pKa band) fades in with them
+        var imgs = snapshots();
         BK = [];
         layoutNow(true); refHtml();
+        BK.forEach(function(b, k){ if(imgs[k] && b.pc) b.pc.fade = { img: imgs[k], t0: now() }; });
+        sceneBox.classList.remove('is-swap'); void sceneBox.offsetWidth; sceneBox.classList.add('is-swap');
+        kick();
       }
       function pickAmount(n){
         if(n === S.n) return;
@@ -830,13 +839,13 @@
         S.n = n; queue = []; cause.take(null);
         amt.querySelectorAll('.bx2-amt-b').forEach(function(b){ b.setAttribute('aria-pressed', String(+b.getAttribute('data-n') === n)); });
         crossFade(function(){ layoutAt(0, 0); });
-        drawnKey = ''; paintReadouts(true); ptr.forEach(function(q){ q.a = q.to; }); frame(); settled(); refHtml();
+        drawnKey = ''; paintReadouts(true); frame(); settled(); refHtml();
       }
       function startOver(){
         if(raf){ cancelAnimationFrame(raf); raf = 0; }
         queue = []; cause.take(null);
         crossFade(function(){ layoutAt(0, 0); });
-        drawnKey = ''; paintReadouts(true); ptr.forEach(function(q){ q.a = q.to; }); frame(); settled();
+        drawnKey = ''; paintReadouts(true); frame(); settled();
       }
 
       /* ---------------------------------------------------- the cue and Show me how */
@@ -927,7 +936,7 @@
         mols: function(){ return BK.map(function(b){ return b.mols.map(function(m){ return { key: m.key, drawKey: m.drawKey || m.key, state: m.state, alpha: m.alpha, atoms: atomsOf(m, m.drawKey || m.key).map(function(a){ return [a.x, a.y, a.r, a.i]; }) }; }); }); },
         tpl: function(k){ return TPL[k]; }, order: function(k){ return ORDER[k]; }, hx: function(k){ return HX[k]; },
         events: function(){ return BK.map(function(b){ return b.events.map(function(e){ return { kind: e.kind, dir: e.dir, mixed: e.mixed, shell: e.shellA, hu: e.flyH ? e.hu : null, glow: e.glowA || 0 }; }); }); },
-        queue: function(){ return queue.slice(); },
+        queue: function(){ return queue.slice(); }, fading: function(){ return BK.map(function(b){ return !!(b.pc && b.pc.fade); }); },
         tap: tap, snap: snap,
         set: function(acid, base){ if(raf){ cancelAnimationFrame(raf); raf = 0; } queue = []; layoutAt(acid, base); drawnKey = ''; paintReadouts(true); ptr.forEach(function(q){ q.a = q.to; }); frame(); settled(); }
       };

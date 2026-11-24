@@ -205,6 +205,12 @@ if (!FRAMES && !PERF) for (const w of WIDTHS) {
       causeH.push(res.causeH);
       sizes.push(await c.page.evaluate(() => { const g = window.__buf2.G(); return [g.bw, g.bh, g.s].join('/'); }));
       if (SHOTS) await c.page.locator('.bx2').screenshot({ path: join(SHOTS, `${W4(w)}-${theme}-${st[0]}-${st[1]}-${st[4]}.png`) });
+      if (st[4] === 'past' || st[4] === 'acidpast' || st[4] === 'n10past' || st[4] === 'n10acidpast') {
+        // past capacity the chain stays at rest (the left over ion and the water), never the takeaway (review round 1)
+        await c.page.waitForTimeout(1400); checks++;
+        const tk = await c.page.evaluate(() => document.querySelector('.bx2 .tk2-cause').classList.contains('is-take'));
+        if (tk) fails.push(`${w} ${theme} ${st.join(' ')}: the takeaway hides the left over ion past capacity`);
+      }
       if (st[4] === 'spent') {
         await c.page.waitForTimeout(1400); const r2 = await c.page.evaluate(probe); checks += 24; r2.out.forEach(m => fails.push(`${w} ${theme} ${st.join(' ')} takeaway: ${m}`));
         const tk = await c.page.evaluate(() => document.querySelector('.bx2 .tk2-cause').classList.contains('is-take')); if (!tk) fails.push(`${w} ${theme} ${st[0]}: no takeaway when a form is used up`);
@@ -283,6 +289,20 @@ if (FRAMES) for (const w of WIDTHS) {
   // 5. the ammonia buffer, HCl past capacity
   await c.page.click('.tk2-tab[data-v=ammonia]'); await c.page.waitForTimeout(500);
   await run('ammonia HCl past capacity', [0, 0], [7, 0], async () => { for (let i = 0; i < 7; i++) await clickTap(0, 120); });
+  // 5b. another buffer cross fades (review round 1): both canvases fade from the old picture and the still scene fades in
+  await c.page.click('.tk2-tab[data-v=acetic]'); await c.page.waitForTimeout(80);
+  const sw = await c.page.evaluate(() => ({ f: window.__buf2.fading(), a: getComputedStyle(document.querySelector('.bx2-svg')).animationName, b: window.__buf2.buffer().id }));
+  states++; checks += 3;
+  if (sw.b !== 'acetic' || sw.f.some(x => !x) || sw.a !== 'bx2-swap') fails.push(`${w}: switching the buffer does not fade (${JSON.stringify(sw)})`);
+  await settle(c.page); await c.page.click('.tk2-tab[data-v=ammonia]'); await settle(c.page);
+  // 5c. Start over eases the meter pointers back (no jump)
+  await c.page.evaluate(() => window.__buf2.set(0, 4)); await settle(c.page);
+  const p0 = await c.page.evaluate(() => window.__buf2.ptr()[0].a);
+  await c.page.evaluate(() => document.querySelector('.bx2-again').click()); await c.page.waitForTimeout(40);
+  const p1 = await c.page.evaluate(() => window.__buf2.ptr()[0]);
+  states++; checks++;
+  if (!(Math.abs(p1.a - p1.to) > 0.5 && Math.abs(p1.a - p0) > 0.01)) fails.push(`${w}: Start over snaps the meter pointer (${p0.toFixed(1)} to ${p1.a.toFixed(1)}, target ${p1.to.toFixed(1)})`);
+  await settle(c.page);
   // 6. at the limit a tap does nothing
   const lim = await c.page.evaluate(() => { window.__buf2.set(8, 0); return window.__buf2.drawn(); });
   await clickTap(0); await c.page.waitForTimeout(400);

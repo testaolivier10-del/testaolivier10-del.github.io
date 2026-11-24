@@ -27,6 +27,9 @@
 .bx2-scene{position:relative;flex:none;border-radius:18px;overflow:hidden;background:var(--surface2);}
 .bx2-svg,.bx2-front{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
 .bx2-mov{position:absolute;display:block;pointer-events:none;} .bx2-front{pointer-events:none;}
+/* another buffer: the still scene (meters, counts, the pKa band) fades in as the canvases cross fade */
+.bx2-scene.is-swap .bx2-svg,.bx2-scene.is-swap .bx2-front{animation:bx2-swap .32s ease-out;}
+@keyframes bx2-swap{0%{opacity:.25;} 100%{opacity:1;}}
 @media (max-width:640px){ .bx2-scene{border-radius:14px;} .bx2{gap:8px;} }
 .bx2-lines{display:flex;align-items:center;justify-content:space-between;gap:6px 18px;flex-wrap:wrap;flex:none;}
 .bx2-again{flex:none;margin-left:auto;min-height:40px;padding:0 14px;font-size:14px;background:var(--white);color:var(--cink);box-shadow:inset 0 0 0 1.5px color-mix(in srgb, var(--cink) 45%, transparent);}
@@ -59,8 +62,9 @@
 :root[data-theme="dark"] .bx2-lab{fill:var(--surface2);}
 .bx2-labt{font-weight:900;} .bx2-labt.is-acid{fill:var(--bx-acid-ink);} .bx2-labt.is-base{fill:var(--bx-base-ink);}
 .bx2-dropper{transition:opacity .2s ease;} .bx2-dropper.is-off{opacity:.42;}
-.bx2 .tk2-tap.bx2-tap{border-color:transparent;}
-.bx2 .tk2-tap.bx2-tap:hover{border-color:color-mix(in srgb, var(--cink) 45%, transparent);border-style:dashed;}
+.bx2 .tk2-tap.bx2-tap,.bx2 .tk2-tap.bx2-tap:hover{border:2px solid transparent;background:transparent;}
+/* a hover tint where there is a real pointer only (on a phone a hover sticks after a tap); never a dashed box */
+@media (hover: hover){ .bx2 .tk2-tap.bx2-tap:hover:not(:disabled){border-color:color-mix(in srgb, var(--cink) 25%, transparent);background:color-mix(in srgb, var(--cink) 6%, transparent);} }
 .bx2 .tk2-tap.bx2-tap .tk2-badge{display:none;}
 .bx2 .tk2-tap.bx2-tap:disabled{cursor:not-allowed;}
 /* the beakers */
@@ -98,7 +102,7 @@
 @keyframes bx2-tick{0%{fill:var(--bx-buf-ink);} 100%{fill:var(--ink);}}
 .bx2-at{stroke:rgba(20,28,30,.55);stroke-width:.8;} .bx2-at.is-H{fill:#F4F6F8;} .bx2-at.is-C{fill:#5A6268;} .bx2-at.is-O{fill:#EE5A4F;} .bx2-at.is-N{fill:#5677E0;}
 :root[data-theme="dark"] .bx2-at{stroke:rgba(0,0,0,.6);} :root[data-theme="dark"] .bx2-at.is-C{fill:#7C858C;}
-@media (prefers-reduced-motion: reduce){ .bx2-dropper.is-sq .bx2-bulb,.bx2-ph.is-tick,.bx2-kt.is-tick{animation:none;} .bx2-dropper{transition:none;} }
+@media (prefers-reduced-motion: reduce){ .bx2-scene.is-swap .bx2-svg,.bx2-scene.is-swap .bx2-front{animation-duration:.2s;} .bx2-dropper.is-sq .bx2-bulb,.bx2-ph.is-tick,.bx2-kt.is-tick{animation:none;} .bx2-dropper{transition:none;} }
 /* "?" */
 .bx2-ref .bx2-list{padding-left:1.2em;}
 .bx2-howref{margin:0 0 6px;}

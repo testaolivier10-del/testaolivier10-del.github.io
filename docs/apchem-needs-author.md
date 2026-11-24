@@ -554,8 +554,9 @@ mmol. Points for a person:
 1. **What the meter reads.** While both forms are there in a ratio from 1 : 10 to 10 : 1 the meter shows the
    Henderson-Hasselbalch pH; elsewhere (a form almost or fully gone, past capacity, water) the exact pH from the charge
    balance with water and the volume after the drops. Inside the range the two differ by under 0.01 (the validator
-   checks every drop), but at equal amounts the exact pH is pK<sub>a</sub> + 0.0003 for 0.050 M acetic acid, which
-   rounds to 4.75 against pK<sub>a</sub> 4.74 (and 9.25 against 9.26 for ammonia). The tool therefore shows the exam's
+   checks every drop), but at equal amounts, at 5 mmol of each (0.050 M), the exact pH is pK<sub>a</sub> + 0.0003 for
+   acetic acid (4.74504), which rounds to 4.75 against pK<sub>a</sub> 4.74, and 9.25496 for ammonia, which rounds to
+   9.25 against 9.26 (at 10 mmol of each both round to pK<sub>a</sub>). The tool therefore shows the exam's
    method there, so "pH = pK<sub>a</sub>" reads true; "?" states the rule. Confirm, or prefer the exact pH everywhere
    with three decimals.
 2. **The drop.** "One squeeze" is 1.0 mL, larger than a real drop (about 0.05 mL); it keeps one particle = 1 mmol and

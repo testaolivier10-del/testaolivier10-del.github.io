@@ -152,7 +152,7 @@
      "key": "CH3COO-",
      "html": "CH₃COO⁻"
     },
-    "ref": "Ka 1.8 × 10⁻⁵ at 25 °C, the value the drill and Unit 8 use (docs/apchem-needs-author.md unit8-values; CRC Handbook 1.75 × 10⁻⁵)"
+    "ref": "Ka 1.8 × 10⁻⁵ at 25 °C, the value the drill and Unit 8 use (CRC Handbook: 1.75 × 10⁻⁵)"
    },
    {
     "id": "ammonia",
@@ -168,7 +168,7 @@
      "key": "NH3",
      "html": "NH₃"
     },
-    "ref": "Kb 1.8 × 10⁻⁵ at 25 °C, the value the drill and Unit 8 use (docs/apchem-needs-author.md unit8-values; CRC Handbook 1.8 × 10⁻⁵)"
+    "ref": "Kb 1.8 × 10⁻⁵ at 25 °C, the value the drill and Unit 8 use (CRC Handbook: 1.8 × 10⁻⁵)"
    }
   ]
  }
