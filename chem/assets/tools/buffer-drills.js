@@ -374,8 +374,9 @@
         var d = CV.dpr, bx = pc.box, bw = bx[2] - bx[0], bh = bx[3] - bx[1], tn = now();
         x.setTransform(d, 0, 0, d, 0, 0);
         x.clearRect(0, 0, bw, bh);
-        var fade = pc.fade, alpha = 1;
-        if(fade){ var t = (tn - fade.t0) / 300; if(t >= 1){ pc.fade = null; } else if(t < 0.5){ x.globalAlpha = 1 - t * 2; x.drawImage(fade.img, 0, 0, bw, bh); x.globalAlpha = 1; return; } else alpha = (t - 0.5) * 2; }
+        // a cross fade: the new state drawn whole, the old picture over it at 1 − t (the beaker never looks empty)
+        var fade = pc.fade, alpha = 1, fadeA = 0;
+        if(fade){ var t = (tn - fade.t0) / 300; if(t >= 1) pc.fade = null; else fadeA = 1 - t; }
         CV.alpha = alpha;
         x.translate(-bx[0], -bx[1]);
         x.globalAlpha = alpha;
@@ -402,6 +403,7 @@
             x.globalAlpha = alpha * 0.2 * e.shellA; x.fillStyle = col; x.fill(); x.globalAlpha = alpha * 0.85 * e.shellA; x.lineWidth = 1.6; x.strokeStyle = col; x.stroke(); x.globalAlpha = alpha; }
         });
         x.globalAlpha = 1;
+        if(fadeA > 0){ x.save(); x.setTransform(1, 0, 0, 1, 0, 0); x.globalAlpha = fadeA; x.drawImage(fade.img, 0, 0); x.restore(); }
         if(pc.fade) kick();
       }
       function dirtyAll(){ BK.forEach(function(b){ if(b.pc){ b.pc.baseDirty = true; b.pc.force = true; } }); }
@@ -662,7 +664,8 @@
           poseAt(ion, lerp(ion.from[0], ion.to[0], v), lerp(ion.from[1], ion.to[1], v), lerp(ion.from[2], ion.to[2], v));
           // the ion counts once its drop has faded into the liquid
           if(!e.mixed && e.shellA <= 0.5){ e.mixed = true; ion.state = 'moving'; mixIn(b, e); }
-          if(t >= TM.stay){ ion.state = 'whole'; b.pc.baseDirty = true; e.done = true; }
+          // the last frame repaints the beaker whole, so no faded shell is left behind
+          if(t >= TM.stay){ ion.state = 'whole'; b.pc.baseDirty = true; b.pc.force = true; e.done = true; }
           return;
         }
         var tg = e.target, don = e.donor, acc = e.acc;
@@ -936,7 +939,11 @@
         mols: function(){ return BK.map(function(b){ return b.mols.map(function(m){ return { key: m.key, drawKey: m.drawKey || m.key, state: m.state, alpha: m.alpha, atoms: atomsOf(m, m.drawKey || m.key).map(function(a){ return [a.x, a.y, a.r, a.i]; }) }; }); }); },
         tpl: function(k){ return TPL[k]; }, order: function(k){ return ORDER[k]; }, hx: function(k){ return HX[k]; },
         events: function(){ return BK.map(function(b){ return b.events.map(function(e){ return { kind: e.kind, dir: e.dir, mixed: e.mixed, shell: e.shellA, hu: e.flyH ? e.hu : null, glow: e.glowA || 0 }; }); }); },
-        queue: function(){ return queue.slice(); }, fading: function(){ return BK.map(function(b){ return !!(b.pc && b.pc.fade); }); },
+        queue: function(){ return queue.slice(); },
+        // the liquid's alpha at the bottom of each beaker as drawn now (a fade must never empty it), and how many pixels
+        // differ from a fresh repaint once settled (nothing may be left behind)
+        liquid: function(){ return BK.map(function(b){ var pc = b.pc, c = b.c, d = CV.dpr, x = Math.round((c.ix0 + 3 - pc.box[0]) * d), y = Math.round((c.iy1 - 3 - pc.box[1]) * d); return pc.ctx.getImageData(x, y, 1, 1).data[3]; }); },
+        stale: function(){ return BK.map(function(b){ var pc = b.pc, w = pc.el.width, h = pc.el.height, a = pc.ctx.getImageData(0, 0, w, h).data; pc.baseDirty = true; paintOne(b); var z = pc.ctx.getImageData(0, 0, w, h).data, n = 0; for(var i = 3; i < a.length; i += 4) if(Math.abs(a[i] - z[i]) > 8) n++; return n; }); }, fading: function(){ return BK.map(function(b){ return !!(b.pc && b.pc.fade); }); },
         tap: tap, snap: snap,
         set: function(acid, base){ if(raf){ cancelAnimationFrame(raf); raf = 0; } queue = []; layoutAt(acid, base); drawnKey = ''; paintReadouts(true); ptr.forEach(function(q){ q.a = q.to; }); frame(); settled(); }
       };

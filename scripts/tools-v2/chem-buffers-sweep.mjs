@@ -30,7 +30,9 @@
    alternating taps, the ammonia buffer), sampled on every animation frame: each meter, count and the cause line equal
    what the drawn particles give at that frame; a swap counts exactly when its H is drawn halfway across, a drop's ion
    exactly when its drop has faded halfway; every whole particle is drawn bonded; the drop counts never leave the range
-   tapped; nothing is left moving at the end; leaving for Test yourself mid drop stops the stage; reduced motion shows the
+   tapped; nothing is left moving at the end and the settled canvases equal a fresh repaint (no faded shell left
+   behind); every cross fade (another buffer, the amount chip, Start over, a reduced motion tap) keeps the liquid drawn
+   (at least 80% of its alpha) and fades only the parts that change; leaving for Test yourself mid drop stops the stage; reduced motion shows the
    result at once.
    PERF: eight quick NaOH taps then eight HCl taps (CPU throttled, default x4) at the given widths, then the flagship's
    fertilizer knob dragged end to end and back in the same run. Target: median about 16 ms, p95 at or under 50 ms.
@@ -252,6 +254,8 @@ if (FRAMES) for (const w of WIDTHS) {
       F.n++;
       const say = m => { if (F.bad.length < 40) F.bad.push(`frame ${F.n}: ${m}`); };
       const ag = window.__agree(); ag.out.forEach(say);
+      // a cross fade never shows an empty beaker: the liquid at the bottom stays at least 80% of its full alpha
+      if (X.fading().some(Boolean)) { const lq = X.liquid(); F.fades++; lq.forEach((a, i) => { if (a < 0.8 * F.liq[i]) say('beaker ' + i + ' liquid drawn at ' + a + ' of ' + F.liq[i] + ' during a cross fade'); }); }
       // the drop counts never leave the range tapped
       const mx = X.mixed()[0]; if (mx.acid < F.lo[0] || mx.acid > F.hi[0] || mx.base < F.lo[1] || mx.base > F.hi[1]) say('drops mixed ' + JSON.stringify(mx) + ' outside the range tapped');
       // a swap counts when its H is drawn halfway across; an ion that stays counts when its drop has faded halfway
@@ -265,7 +269,7 @@ if (FRAMES) for (const w of WIDTHS) {
         for (let i = 1; i < a.length; i++) { const p = t[a[i][3]], q = t[a[0][3]], want = Math.hypot(p.dx - q.dx, p.dy - q.dy) * s, got = Math.hypot(a[i][0] - a[0][0], a[i][1] - a[0][1]); if (Math.abs(want - got) > 0.6) { say(m.key + ' drawn apart'); break; } } }));
       requestAnimationFrame(loop);
     };
-    window.__frStart = (lo, hi) => { Object.assign(window.__fr, { lo, hi, on: true }); requestAnimationFrame(loop); };
+    window.__frStart = (lo, hi) => { Object.assign(window.__fr, { lo, hi, on: true, fades: 0 }); if (!window.__fr.liq) window.__fr.liq = window.__buf2.liquid(); requestAnimationFrame(loop); };
   });
   const run = async (label, lo, hi, act) => {
     await c.page.evaluate(([a, b]) => window.__frStart(a, b), [lo, hi]);
@@ -273,6 +277,10 @@ if (FRAMES) for (const w of WIDTHS) {
     const r = await c.page.evaluate(() => { window.__fr.on = false; const F = window.__fr, out = { n: F.n, bad: F.bad.slice() }; F.bad = []; F.n = 0; return out; });
     const left = await c.page.evaluate(() => window.__buf2.events().flat().length + window.__buf2.queue().length);
     if (left) r.bad.push('something left moving at the end');
+    // nothing left behind on the canvases (a faded shell or ring): settled, they equal a fresh repaint
+    await c.page.waitForTimeout(400);
+    const st = await c.page.evaluate(() => window.__buf2.stale()); checks += 2;
+    if (st.some(n => n > 0)) r.bad.push('the canvases differ from a fresh repaint by ' + st.join(' and ') + ' pixels (something left behind)');
     states++; checks += r.n; r.bad.forEach(m => fails.push(`${w} frames ${label}: ${m}`));
     console.log(`${w} frames ${label}: ${r.n} frames, ${r.bad.length} problems`);
   };
@@ -291,18 +299,28 @@ if (FRAMES) for (const w of WIDTHS) {
   await run('ammonia HCl past capacity', [0, 0], [7, 0], async () => { for (let i = 0; i < 7; i++) await clickTap(0, 120); });
   // 5b. another buffer cross fades (review round 1): both canvases fade from the old picture and the still scene fades in
   await c.page.click('.tk2-tab[data-v=acetic]'); await c.page.waitForTimeout(80);
-  const sw = await c.page.evaluate(() => ({ f: window.__buf2.fading(), a: getComputedStyle(document.querySelector('.bx2-svg')).animationName, b: window.__buf2.buffer().id }));
+  const sw = await c.page.evaluate(() => ({ f: window.__buf2.fading(), a: getComputedStyle(document.querySelector('.bx2-ph')).animationName, wall: getComputedStyle(document.querySelector('.bx2-svg')).animationName, b: window.__buf2.buffer().id }));
   states++; checks += 3;
   if (sw.b !== 'acetic' || sw.f.some(x => !x) || sw.a !== 'bx2-swap') fails.push(`${w}: switching the buffer does not fade (${JSON.stringify(sw)})`);
+  if (sw.wall !== 'none') fails.push(`${w}: the whole still scene dims on a buffer switch`);
   await settle(c.page); await c.page.click('.tk2-tab[data-v=ammonia]'); await settle(c.page);
   // 5c. Start over eases the meter pointers back (no jump)
   await c.page.evaluate(() => window.__buf2.set(0, 4)); await settle(c.page);
   const p0 = await c.page.evaluate(() => window.__buf2.ptr()[0].a);
-  await c.page.evaluate(() => document.querySelector('.bx2-again').click()); await c.page.waitForTimeout(40);
-  const p1 = await c.page.evaluate(() => window.__buf2.ptr()[0]);
+  // sampled in the page on every frame after the click: the pointer passes through places between the two
+  const path = await c.page.evaluate(() => new Promise(res => { const X = window.__buf2, out = []; document.querySelector('.bx2-again').click(); const loop = () => { out.push(X.ptr()[0].a); if (out.length < 12) requestAnimationFrame(loop); else res({ path: out, to: X.ptr()[0].to }); }; loop(); }));
   states++; checks++;
-  if (!(Math.abs(p1.a - p1.to) > 0.5 && Math.abs(p1.a - p0) > 0.01)) fails.push(`${w}: Start over snaps the meter pointer (${p0.toFixed(1)} to ${p1.a.toFixed(1)}, target ${p1.to.toFixed(1)})`);
+  const mid = path.path.filter(a => Math.abs(a - path.to) > 0.5 && Math.abs(a - p0) > 0.01).length;
+  if (mid < 2) fails.push(`${w}: Start over snaps the meter pointer (${p0.toFixed(1)}: ${path.path.map(a => a.toFixed(1)).join(' ')}, target ${path.to.toFixed(1)})`);
   await settle(c.page);
+  // 5d. every cross fade sampled frame by frame: the buffer switch, the amount chip, Start over (the liquid stays)
+  await c.page.evaluate(() => window.__buf2.set(0, 3)); await settle(c.page);
+  await run('cross fade: buffer switch', [0, 0], [99, 99], async () => { await c.page.click('.tk2-tab[data-v=acetic]'); await c.page.waitForTimeout(400); });
+  await run('cross fade: amount chip', [0, 0], [99, 99], async () => { await c.page.click('.bx2-amt-b[data-n="10"]'); await c.page.waitForTimeout(400); await c.page.click('.bx2-amt-b[data-n="5"]'); await c.page.waitForTimeout(400); });
+  await c.page.evaluate(() => window.__buf2.set(0, 4)); await settle(c.page);
+  await run('cross fade: Start over', [0, 0], [99, 99], async () => { await c.page.evaluate(() => document.querySelector('.bx2-again').click()); await c.page.waitForTimeout(400); });
+  const nf = await c.page.evaluate(() => window.__fr.fades); if (!nf) fails.push(`${w}: no cross fade frame was sampled`);
+  await c.page.click('.tk2-tab[data-v=ammonia]'); await settle(c.page);
   // 6. at the limit a tap does nothing
   const lim = await c.page.evaluate(() => { window.__buf2.set(8, 0); return window.__buf2.drawn(); });
   await clickTap(0); await c.page.waitForTimeout(400);
@@ -324,11 +342,15 @@ if (FRAMES) for (const w of WIDTHS) {
   // 8. reduced motion: the full result at once (a cross fade), the numbers right
   const rm = await open({ w, h, reduced: true });
   const [x, y] = await (async () => { const b = await rm.page.locator('.bx2 .tk2-tap').nth(1).boundingBox(); return [b.x + b.width / 2, b.y + b.height / 2]; })();
+  await rm.page.evaluate(() => { window.__rmLiq = window.__buf2.liquid(); window.__rmBad = []; window.__rmN = 0; const loop = () => { if (window.__buf2.fading().some(Boolean)) { window.__rmN++; window.__buf2.liquid().forEach((a, i) => { if (a < 0.8 * window.__rmLiq[i]) window.__rmBad.push(a); }); } if (window.__rmN < 60 && performance.now() < 1e12) requestAnimationFrame(loop); }; requestAnimationFrame(loop); });
   await rm.page.mouse.click(x, y); await rm.page.waitForTimeout(60);
   const rd = await rm.page.evaluate(() => window.__buf2.drawn());
   const ra = await rm.page.evaluate(() => window.__agree().out);
   states++; checks += 3; ra.forEach(m => fails.push(`${w} reduced motion: ${m}`));
   if (rd[0].a !== 6 || rd[1].oh !== 1) fails.push(`${w} reduced motion: the result is not shown at once (${JSON.stringify(rd)})`);
+  await rm.page.waitForTimeout(500);
+  const rmf = await rm.page.evaluate(() => ({ n: window.__rmN, bad: window.__rmBad.length })); checks++;
+  if (!rmf.n || rmf.bad) fails.push(`${w} reduced motion: the cross fade shows an empty beaker (${JSON.stringify(rmf)})`);
   await rm.ctx.close();
 }
 

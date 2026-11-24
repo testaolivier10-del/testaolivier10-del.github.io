@@ -184,6 +184,16 @@ Checks (fix round): sweep at 360, 390, 1024 (×768) and 1440 (×900), light and 
 0 failures; frames at 390 (2141 checks) and 1440 (939 checks), 0 failures, the buffer switch fade and the Start over
 pointer ease included; AP Chem tests (99 pass), content check, build `--check`, check-site, check-weight.
 
+## Recheck 1 (2026-11-24): PASS, its two should fix items done before integration
+- **No empty beaker in a cross fade.** Every cross fade (another buffer, the amount chip, Start over, a reduced motion
+  tap) draws the new state whole and lays the old picture over it at 1 − t (it used to fade the old out, then the new
+  in, so for about 200 ms the beaker was empty). On a buffer switch only the parts that change fade in (the readings,
+  the meter names, the counts, the pKa band, mark and pointers), so the bench no longer blinks. The frames run samples
+  the liquid's alpha at the bottom of each beaker on every fade frame (at least 80% of its full alpha) and checks the
+  wall stays put; it fails on the old fade (24 frames at 390).
+- **No ring left behind.** The last frame of a drop that stays repaints its beaker whole. After every frames scenario
+  the settled canvases are compared with a fresh repaint, pixel by pixel; it fails without the fix (11 and 14 pixels).
+
 ## Not done, and what I am not happy with
 - No real phone, no screen reader pass, no students; no independent review yet.
 - On a phone the particles are small (CH₃COOH about 25 px across at 390, an H atom about 5 px); the reacting pair is

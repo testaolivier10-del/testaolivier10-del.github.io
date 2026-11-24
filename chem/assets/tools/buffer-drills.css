@@ -28,7 +28,8 @@
 .bx2-svg,.bx2-front{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
 .bx2-mov{position:absolute;display:block;pointer-events:none;} .bx2-front{pointer-events:none;}
 /* another buffer: the still scene (meters, counts, the pKa band) fades in as the canvases cross fade */
-.bx2-scene.is-swap .bx2-svg,.bx2-scene.is-swap .bx2-front{animation:bx2-swap .32s ease-out;}
+/* only the parts that change fade in (the readings, the names, the counts, the pKa band and mark); the bench stays */
+.bx2-scene.is-swap :is(.bx2-ph,.bx2-mhead,.bx2-krow,.bx2-band,.bx2-pkaline,.bx2-pka,.bx2-ptr){animation:bx2-swap .32s ease-out;}
 @keyframes bx2-swap{0%{opacity:.25;} 100%{opacity:1;}}
 @media (max-width:640px){ .bx2-scene{border-radius:14px;} .bx2{gap:8px;} }
 .bx2-lines{display:flex;align-items:center;justify-content:space-between;gap:6px 18px;flex-wrap:wrap;flex:none;}
@@ -102,7 +103,7 @@
 @keyframes bx2-tick{0%{fill:var(--bx-buf-ink);} 100%{fill:var(--ink);}}
 .bx2-at{stroke:rgba(20,28,30,.55);stroke-width:.8;} .bx2-at.is-H{fill:#F4F6F8;} .bx2-at.is-C{fill:#5A6268;} .bx2-at.is-O{fill:#EE5A4F;} .bx2-at.is-N{fill:#5677E0;}
 :root[data-theme="dark"] .bx2-at{stroke:rgba(0,0,0,.6);} :root[data-theme="dark"] .bx2-at.is-C{fill:#7C858C;}
-@media (prefers-reduced-motion: reduce){ .bx2-scene.is-swap .bx2-svg,.bx2-scene.is-swap .bx2-front{animation-duration:.2s;} .bx2-dropper.is-sq .bx2-bulb,.bx2-ph.is-tick,.bx2-kt.is-tick{animation:none;} .bx2-dropper{transition:none;} }
+@media (prefers-reduced-motion: reduce){ .bx2-scene.is-swap :is(.bx2-ph,.bx2-mhead,.bx2-krow,.bx2-band,.bx2-pkaline,.bx2-pka,.bx2-ptr){animation-duration:.2s;} .bx2-dropper.is-sq .bx2-bulb,.bx2-ph.is-tick,.bx2-kt.is-tick{animation:none;} .bx2-dropper{transition:none;} }
 /* "?" */
 .bx2-ref .bx2-list{padding-left:1.2em;}
 .bx2-howref{margin:0 0 6px;}
