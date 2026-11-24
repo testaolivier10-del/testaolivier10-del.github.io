@@ -455,7 +455,8 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    (branch `claude/tools-v2-bio-descriptive-stats`, waiting for the independent review; not merged). Explore: a tray
    of radish seedlings lined up by height against a measuring board, the mean (blue) and median (amber) as lines
    across it, the middle plant glowing, and a clipboard where the same plants are dots on a plank balanced at the
-   mean; drag any plant, add or remove one (3 to 10). Every number is read from the plants as drawn. Test yourself:
+   mean; drag any plant, add or remove one (3 to 10, fewer on a phone so each plant's column is 44 px). Review round
+   1 blocked, fixed 2026-11-24. Every number is read from the plants as drawn. Test yourself:
    Problems (the old Practice, unchanged, same record ids) and Challenges (the old goals). Still free. Open point:
    needs-author `ds-explore-radish`.
 

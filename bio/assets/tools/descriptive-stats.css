@@ -126,3 +126,10 @@
 /* a knob keeps a small ring after a pointer drag (the kit's big focus ring is for the keyboard) */
 .ds2 .ds2-hd.is-quiet.is-focus .tk2-dot{box-shadow:0 0 0 2.5px var(--ds-plant),0 1px 3px rgba(11,26,51,.3);}
 .ds2 .ds2-hd.is-quiet.is-focus:has(.tk2-knob:focus-visible) .tk2-dot{box-shadow:0 0 0 2.5px var(--ds-plant),0 0 0 4.5px var(--white),0 0 0 7px var(--cink);}
+/* phones: a small knob on each plant's top so the seed leaves stay visible (the 44 px hit area is the kit's, invisible) */
+@media (max-width:640px){
+  .ds2 .ds2-hd.is-quiet .tk2-dot{width:8px;height:8px;box-shadow:0 0 0 1.8px var(--ds-plant),0 1px 2px rgba(11,26,51,.3);}
+  .ds2 .ds2-hd.is-quiet.is-focus .tk2-dot{box-shadow:0 0 0 1.8px var(--ds-plant),0 1px 2px rgba(11,26,51,.3);}
+  .ds2 .ds2-hd.is-drag .tk2-dot{box-shadow:0 0 0 2px var(--ds-plant),0 0 0 4px color-mix(in srgb, var(--ds-plant) 25%, transparent);}
+  .ds2 .ds2-hd.is-quiet.is-focus:has(.tk2-knob:focus-visible) .tk2-dot{box-shadow:0 0 0 1.8px var(--ds-plant),0 0 0 3.5px var(--white),0 0 0 5.5px var(--cink);}
+}

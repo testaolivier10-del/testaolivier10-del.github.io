@@ -776,8 +776,8 @@ These stay open:
   "may be chance" while a t test gives p = 0.045; the live "?" line says "by the course's rule" and points to the
   strict note. Teacher: confirm the shade taller convention and the opening.
 - **ds-explore-radish** (logged, tools v2, 2026-11-24). The rebuilt descriptive statistics tool's Explore draws invented
-  heights of radish seedlings 7 days after sowing (3.6, 4.5, 5.0, 5.4, 5.9, 6.3, 7.2 cm, then 5.6, 4.8, 6.6 as plants
-  are added; 3 to 10 plants), measured from the soil to where the two seed leaves meet; a plant may be dragged from
+  heights of radish seedlings 7 days after sowing (3.8, 4.4, 5.2, 6.6, 7.6, 4.9, 5.9 cm, then 5.5, 4.6, 6.2 as plants
+  are added; 3 to 10 plants, fewer on a phone), measured from the soil to where the two seed leaves meet; a plant may be dragged from
   1.0 to 15.0 cm (15 cm is a very tall, stretched seedling, the outlier the tool is about). Statistics follow the
   AP® Biology Equations and Formulas sheet exactly (s with n − 1, SE = s ÷ √n, the even n median the mean of the two
   middle values). Conventions to confirm: mean and median shown to 2 decimals (data to 0.1 cm); mode and range only in

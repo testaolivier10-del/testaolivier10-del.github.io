@@ -31,32 +31,37 @@ the student grows one by hand; the mean and median are lines across the same tra
 middle plant glows, and the same plants stand as dots on a plank that balances on the mean, all on one frame.
 
 ## The design
-- **Picture:** a lab bench. Left (top on narrow stages): a black seed tray of radish seedlings at day 7, lined up from
+- **Picture:** a lab bench. Above: a black seed tray of radish seedlings at day 7, lined up from
   shortest to tallest against a measuring board (a ruler down its left edge: a tick every 0.5 cm, numbers every 2 cm,
   every 4 on phones, 0 to 16 cm). Each plant drawn as a radish seedling: the red top of its root at the soil, a rose
   stem, two heart shaped seed leaves (cotyledons, notched at the tip) where the stem ends; its height is soil to where
   the leaves meet. A blue line across the tray at the mean height, an amber line at the median; their names on pills
-  at the right end of each line, in a strip of board kept free of plants ("mean 5.41 cm" and "median 5.40 cm"; on a
+  at the right end of each line, in a strip of board kept free of plants ("mean 5.49 cm" and "median 5.20 cm"; on a
   phone "mean" and "median", the values are in the cause line); when the lines are closer than a pill and 4 px, the
-  higher line's name sits just over the lower one's. The middle plant (the two middle plants when n is even) glows
-  amber. Right (below on narrow stages): a clipboard, "Each plant's height (cm)": the heights in order with the
-  middle one(s) amber, on a tall paper a worked line each ("mean = 37.9 ÷ 7 = 5.41 cm", "median = the middle value =
-  5.40 cm" or "(5.4 + 5.6) ÷ 2 = 5.50 cm"), and every plant as a dot on a wooden plank (a number line 0 to 16 cm) that
+  higher line's name sits just over the lower one's. Both lines' white halos are drawn first, then the 5 px blue
+  mean line, then the 2.4 px amber median line, so close lines show as blue rims around the amber. The middle plant (the two middle plants when n is even) glows
+  amber. Below, lying on the bench at every width: a clipboard, "Each plant's height (cm)": the heights in order with
+  the middle one(s) amber; on a paper 640 px or wider the words take a column at the left with a worked line each
+  ("mean = 38.4 ÷ 7 = 5.49 cm", "median = the middle value = 5.20 cm" or "(5.2 + 5.5) ÷ 2 = 5.35 cm") and the plank the
+  rest of the paper, and every plant as a dot on a wooden plank (a number line 0 to 16 cm) that
   rests on a blue pivot at the mean ("mean"); the middle dot(s) amber with "median" over them (or beside the top dot
   when the stack is tall).
-- **Main control, on the picture:** every plant. A quiet knob sits where its seed leaves meet; a press anywhere in a
-  plant's column takes that plant (the one drawn under the finger), so the target is the whole column. Drag up or
+- **Main control, on the picture:** every plant. A small knob sits where its seed leaves meet (8 px on phones, its
+  44 px hit area invisible); a press anywhere in a plant's column, on a knob or not, takes the plant whose column is
+  under the finger, so the target is the whole column, at least 44 px wide (a narrow tray holds fewer plants: 5 at
+  360, 6 at 390, 7 at 430, up to 10 on larger screens). Drag up or
   down: the plant grows or shrinks (1.0 to 15.0 cm, to 0.1 cm) and stays where it stands while held; on release the
   row sorts itself again and the plants slide to their places. Keys on a knob: arrows 0.1 cm, Shift or Page 1 cm,
   Home and End the ends; its value text says "Plant 3 of 7 from the shortest, 5.0 cm, a middle plant".
 - **Quiet controls, under the picture:** "− 7 plants +" (Add a plant sows the next seedling: it sprouts in its place
-  in the row while the others make room; Remove one pulls the last one sown: it rises out of the soil and fades; 3 to
-  10 plants) and Start over.
-- **Opens** on 7 plants, 3.6, 4.5, 5.0, 5.4, 5.9, 6.3 and 7.2 cm: mean 5.41 cm, median 5.40 cm, SD 1.19, SE 0.45.
-  The tallest plant to 14.0 cm: mean 6.39 cm, median stays 5.40 cm.
-- **Cause line** (`K.cause`): at rest "7 plants → mean 5.41 cm → median 5.40 cm → SD 1.19 · SE 0.45"; after a drag
-  "one plant to 14.0 cm → mean 6.39 (was 5.41) → median stays 5.40 → SD 3.47 · SE 1.31"; after Add or Remove "8 plants
-  → mean 5.44 (was 5.41) → median (5.4 + 5.6) ÷ 2 = 5.50 → ...". The SD and SE pill rides along only while the line
+  in the row while the others make room; Remove one pulls the last one sown: it rises out of the soil and fades; 3 plants
+  up to what the tray holds) and Start over.
+- **Opens** on 7 plants, 3.8, 4.4, 4.9, 5.2, 5.9, 6.6 and 7.6 cm: mean 5.49 cm, median 5.20 cm, SD 1.31, SE 0.50 (on a
+  phone that holds fewer, the first 5 sown: 3.8, 4.4, 5.2, 6.6, 7.6, mean 5.52, median 5.20). The two centres open
+  0.29 cm apart, so both lines show. The tallest plant to 14.0 cm: mean 6.40 cm, median stays 5.20 cm.
+- **Cause line** (`K.cause`): at rest "7 plants → mean 5.49 cm → median 5.20 cm → SD 1.31 · SE 0.50"; after a drag
+  "one plant to 14.0 cm → mean 6.40 (was 5.49) → median stays 5.20 → SD 3.48 · SE 1.31"; after Add or Remove "8 plants
+  → mean stays 5.49 → median (5.2 + 5.5) ÷ 2 = 5.35 → ...". The SD and SE pill rides along only while the line
   fits two rows (measured; otherwise it is in "?"). Every number is worked out from the plants as drawn.
 - **Takeaways** (when a change settles, Explore only): an outlier made by a drag, "With an outlier, the median
   describes the typical plant better."; a middle plant dragged so the median moved more than the mean, "The median
@@ -70,11 +75,13 @@ middle plant glows, and the same plants stand as dots on a plank that balances o
 - **Every number is read from the plants as drawn:** a plant counts once it has finished sprouting and stops counting
   as it starts to leave; the lines, the pills, the glow (the middle rank by drawn height, so it is right mid drag
   before the row sorts), the plant count, the dots, the pivot, the sorted values, the worked lines, the cause line and
-  the "?" table all come from the counted plants' drawn heights in that frame.
+  the "?" table all come from the counted plants' drawn heights in that frame. The numbers are worked out from the
+  heights to the 0.1 cm the clipboard lists (so the list, its sum, the mean and every pill agree on every frame, mid
+  change too); the lines, the pivot and the dots sit at the exact drawn heights.
 - **Sizing:** the scene's height comes from the window: the window's height less what sits above the scene in the
   tool and the cause line with its buttons, so the plants (the main control) and the cause line show together at
-  every width (390 × 844, 1024 × 768, 1280 × 800 included; phones 440 to 640 px, larger 380 to 820 px). The layout
-  is side by side when the scene is 900 px wide (or 640 px and short), stacked otherwise.
+  every width (390 × 844, 1024 × 768, 1280 × 800 included; phones 440 to 640 px, larger 380 to 820 px). The tray is
+  above and the clipboard below at every width (review round 1: side by side left bare paper on wide screens).
 - **Cue:** "Drag a plant taller" above the tallest plant, its arrow on that plant's knob, once per device; it covers
   no label or plant. "Show me how" (three pointers: a plant, the clipboard, the plant count) from the purpose line and
   from "?".
@@ -106,7 +113,7 @@ values, 2 worked lines, the plank's numbers (0 to 16), "median", "mean", and on 
 | A dot plot of plant heights; drag a dot | Drag a radish plant on the board; the same plants are dots on the clipboard's plank |
 | Mean (solid) and median (dashed) lines | Blue and amber lines across the tray, the pivot and "median" on the plank |
 | ±1 SD band and ±1 SE bracket on the Explore plot | Not drawn in Explore (the idea is centre, not spread); SD and SE are numbers in the cause line and worked out in "?"; the band and bracket stay on the Problems figure |
-| Add a dot (up to 16), Remove a dot (at least 3) | Add a plant, Remove one (3 to 10: a tray of 10 keeps every plant a 30 px target on a phone) |
+| Add a dot (up to 16), Remove a dot (at least 3) | Add a plant, Remove one (3 to what the tray holds: 10 on larger screens, 5 at 360 and 6 at 390, so every column is at least 44 px) |
 | Reset | Start over (shown, not swapped) |
 | The readout: n, mean, median, SD (s), SE | The cause line and the plant count; "?" works out this picture (mean, median, mode, range, s, SE) |
 | The sentence after each change (mean moved vs median moved, SE = SD ÷ √n) | The cause line ("(was …)", "stays") and the takeaways |
@@ -118,10 +125,11 @@ values, 2 worked lines, the plank's numbers (0 to 16), "median", "mean", and on 
 1. Explore is a tray of radish seedlings against a measuring board with a clipboard plank, not a bare dot plot.
 2. The row stays sorted shortest to tallest; a dragged plant keeps its place until let go, then the row sorts (so
    the median is literally the middle plant).
-3. Every plant is a knob, and a press anywhere in a plant's column takes it; columns are about 30 px wide at 10
-   plants on a 360 px phone (the plan asked 44 px; ten plants do not fit at 44).
+3. Every plant is a knob, and a press anywhere in a plant's column (on a knob or not) takes that plant; every column
+   is at least 44 px wide, so a narrow tray holds fewer plants: 5 at 360 px, 6 at 390, 7 at 430, up to 10 (review
+   round 1; first build allowed 10 everywhere, 23.6 px columns at 360).
 4. Add and Remove are a quiet "− n plants +" under the picture (the plan put them on the picture at the end of the
-   row); 3 to 10 plants (the old tool allowed 16).
+   row); 3 plants up to what the tray holds (the old tool allowed 16).
 5. The ±1 SD band and ±1 SE bracket leave Explore; SD and SE stay as numbers (cause line, "?") and on the Problems figure.
 6. Mean and median are shown to 2 decimals everywhere in Explore (data to 0.1 cm), so an even n median such as 5.65 is exact.
 7. On phones the line pills say only "mean" and "median"; the values are in the cause line.
@@ -130,8 +138,11 @@ values, 2 worked lines, the plank's numbers (0 to 16), "median", "mean", and on 
 10. The clipboard shows the sorted heights and, on a tall paper, the worked mean and median lines.
 11. The Explore scene's height comes from the window's height (the plants and the cause line fit together).
 12. The practice figure takes Explore's colours (mean blue, median amber, solid lines, rose dots) and larger words.
-13. Challenges: the old n = 12 goal becomes n = 10.
+13. Challenges: the old n = 12 goal becomes "until the tray is full" (10 on larger screens).
 14. Blurb reworded; the page title, description and URL unchanged.
+15. The tray above and the clipboard below at every width; a wide paper puts its words in a left column (review round 1).
+16. The opening heights changed so the mean and median open 0.29 cm apart (review round 1).
+17. Every number is worked out from the heights to 0.1 cm as the clipboard lists them (review round 1).
 
 ## Accuracy
 - The AP® Biology Equations and Formulas sheet: x̄ = (1 ÷ n) Σxᵢ; s = √(Σ(xᵢ − x̄)² ÷ (n − 1)); SE = s ÷ √n; median the
@@ -179,13 +190,35 @@ See "Final run" at the bottom.
   768 and 1440 light and dark, Challenges and Problems, mid animation `mid-*-sort`, `mid-*-sprout`, `mid-*-pull`,
   `mid-*-startover`).
 
+## Review round 1 (2026-11-24): BLOCK, fixed
+`/home/claude/review-bio-desc/REVIEW.md`. Statistics, frame agreement, fit, the cue and perf confirmed. Merged
+`claude/tools-v2-all` first (the builder brief's new lessons; no conflicts).
+Must fix:
+1. **The mean line hidden under the median at the opening.** Both halos are drawn first, then the 5 px blue mean
+   line, then the 2.4 px amber median line, so close lines show as blue rims around the amber; the opening heights
+   changed (mean 5.49, median 5.20) so the two lines open 0.29 cm apart. The sweep checks the draw order and widths.
+2. **Taps on phones took the wrong plant** (36 in 100 at 360). A press, on a knob or not, always takes the plant whose
+   column is under the finger (`plantAt`); every column is at least 44 px, so a narrow tray holds fewer plants (5 at
+   360, 6 at 390, 7 at 430, 10 on larger screens; the opening is 7, or the largest odd number the tray holds). The
+   first build's columns were 23.6 px at 360 and 26.6 px at 390, not "about 30 px". The frames run taps every plant
+   for real (touch) on its knob centre, ±6 and ±12 px across, and its stem, at 360 and 390: 66 taps, 0 wrong.
+3. **A press mid slide made the row jump 218 to 480 px.** Only the pressed plant's growth ends at once (`hold`); the
+   row's slide goes on. The frames run presses a plant 60 ms after a release and checks that no plant moves more than
+   a third of its way in one frame.
+4. **Bare clipboard paper on wide screens.** The tray is above and the clipboard below at every width; a paper 640 px
+   or wider puts its words in a left column and gives the plank the rest, the dots sized from the room (up to 13 px).
+Should fix: S5 every number from the heights to 0.1 cm (the worked mean is its own sum over n on every frame, and the
+sweep checks it); S6 the knobs are put back in row order after each sort, so Tab goes left to right (focus kept); S7
+phone knobs are 8 px dots (the 44 px hit area is invisible), the focus ring small; S8 the Problems figure's mean and
+median labels read inward near an edge; S9 the brief's figures corrected (above and in the owner log).
+Checks after the fixes (speed rule, fix round): sweep at 360, 390 (87 each), 1024, 1280 and 1440 (85 each), light
+and dark, **429 passed, 0 failed**; frames **61 passed, 0 failed** (818 frames at 390 and 721 at 1440, 66 real touch
+taps at 360 and 390, the mid slide press); AP Bio tests, content check, `build-apbio --check`, `check-site`.
+
 ## Not done, and what I am not happy with
-- No real phone, no screen reader pass, no real students; the independent review is still to come.
-- At 10 plants on a 360 px phone each plant's column is about 30 px, under the 44 px the plan asked; the press takes
-  the nearest plant, so a near miss takes a neighbour.
-- After the row sorts, the knobs' Tab order is the order the plants were sown, not left to right.
-- Pressing a plant while the row is still sliding finishes the slide at once (a small jump) before the drag starts.
-- The clipboard on a wide screen still has empty paper between the worked lines and the plank at rest (room for a
-  tall stack of dots); the dots are plain rose discs, not drawn radishes.
-- On phones the board is short (16 cm in about 200 px), so the seed leaves are small (11 to 18 px).
-- When mean and median are within a few hundredths the blue line shows only as a rim around the amber one.
+- No real phone, no screen reader pass, no real students.
+- A phone holds 5 or 6 plants, so the "fill the tray" challenge and an even count of 8 or 10 are seen only on larger
+  screens (the even count is still there at 4 and 6).
+- The dots are plain rose discs, not drawn radishes.
+- On a wide screen the tray is long and low (16 cm in about 350 px at 1440 × 900), with much board above the plants
+  at the opening (the room for an outlier).

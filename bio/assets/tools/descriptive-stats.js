@@ -53,7 +53,9 @@
       var cy = AY - rad - 1 - lvl[i] * (2 * rad - 1);
       p.push('<circle class="ds-dot' + (v.hot === i ? ' hot' : '') + '"' + (v.drag ? ' data-k="' + i + '" tabindex="0" role="slider" aria-label="Value ' + (i + 1) + '" aria-valuemin="' + v.lo + '" aria-valuemax="' + v.hi + '" aria-valuenow="' + M.round(x, v.dp) + '" aria-valuetext="Value ' + (i + 1) + ': ' + F(x, v.dp) + (v.unit ? ' ' + esc(v.unit) : '') + '"' : '') + ' cx="' + sx(x).toFixed(1) + '" cy="' + cy.toFixed(1) + '" r="' + rad + '"/>');
     });
-    function line(x, cls, lab, y, anchor){ if(!isFinite(x)) return; var X = sx(Math.min(v.hi, Math.max(v.lo, x))); p.push('<line class="ds-' + cls + '" x1="' + X.toFixed(1) + '" x2="' + X.toFixed(1) + '" y1="76" y2="' + AY + '"/><text class="ds-ml ' + cls + '" x="' + X.toFixed(1) + '" y="' + y + '" text-anchor="' + anchor + '" dx="' + (anchor === 'end' ? -4 : anchor === 'start' ? 4 : 0) + '">' + lab + '</text>'); }
+    function line(x, cls, lab, y, anchor){ if(!isFinite(x)) return; var X = sx(Math.min(v.hi, Math.max(v.lo, x)));
+      // a label near an edge reads inward, so a value off the plot never runs out of the figure
+      if(X > W - R - 80) anchor = 'end'; else if(X < L + 80) anchor = 'start'; p.push('<line class="ds-' + cls + '" x1="' + X.toFixed(1) + '" x2="' + X.toFixed(1) + '" y1="76" y2="' + AY + '"/><text class="ds-ml ' + cls + '" x="' + X.toFixed(1) + '" y="' + y + '" text-anchor="' + anchor + '" dx="' + (anchor === 'end' ? -4 : anchor === 'start' ? 4 : 0) + '">' + lab + '</text>'); }
     var mm = v.mean != null ? v.mean : v.mine && v.mine.mean, md = v.median != null ? v.median : v.mine && v.mine.median, mine = v.mean == null;
     var meanLeft = isFinite(mm) && isFinite(md) && mm < md;
     line(md, 'median' + (mine ? ' mine' : ''), (mine ? 'your ' : '') + 'median', 86, meanLeft ? 'start' : 'end');
@@ -168,20 +170,16 @@
       function layout(){
         var Wd = sceneBox.clientWidth, Hd = sceneBox.clientHeight;
         if(!Wd || !Hd) return null;
-        var g = { W: Wd, H: Hd, big: Wd >= 600, wide: Wd >= 900 || (Wd >= 640 && Hd < 600) };
+        // the tray above, the clipboard lying on the bench below it, at every width (a wide clipboard puts its
+        // words in a column at the left and gives the plank the rest, so no paper or wall is left bare)
+        var g = { W: Wd, H: Hd, big: Wd >= 600, wide: false };
         var pad = g.big ? 16 : 8, trayEnd;
-        if(g.wide){
-          g.benchH = clamp(Hd * 0.1, 38, 60); g.yB = Hd - g.benchH;
-          trayEnd = Wd * 0.58;
-          g.cb = { x: Wd * 0.61, y: 18, w: Wd - pad - Wd * 0.61, h: g.yB + 6 - 18 };
-        } else {
-          g.clipH = g.big ? clamp(Hd * 0.36, 230, 290) : clamp(Hd * 0.37, 196, 232);
-          g.topH = Hd - g.clipH;
-          g.benchH = 20; g.yB = g.topH - g.benchH;
-          trayEnd = Wd - pad;
-          var cw0 = Math.min(Wd - 2 * pad, 640);
-          g.cb = { x: (Wd - cw0) / 2, y: g.topH + 8, w: cw0, h: g.clipH - 14 };
-        }
+        g.clipH = g.big ? clamp(Hd * 0.34, 210, 260) : clamp(Hd * 0.37, 196, 232);
+        g.topH = Hd - g.clipH;
+        g.benchH = 20; g.yB = g.topH - g.benchH;
+        trayEnd = Wd - pad;
+        var cw0 = Wd - 2 * pad;
+        g.cb = { x: (Wd - cw0) / 2, y: g.topH + 8, w: cw0, h: g.clipH - 14 };
         g.pad = pad; g.trayEnd = trayEnd;
         g.trayH = g.big ? 30 : 22;
         g.ySoil = g.yB + 4 - g.trayH + 3;
@@ -190,26 +188,44 @@
         g.rw = g.big ? 34 : 26;
         g.board = [pad, g.yTop - (g.big ? 28 : 26), trayEnd - pad, g.ySoil - g.yTop + (g.big ? 28 : 26)];
         // the strip at the right of the board where the mean and median lines are named (sized from the longest name)
-        var fsP = g.big ? 13 : 12; g.gut = (g.big ? tw('median 14.95 ' + U, fsP, 800) : tw('median', fsP, 800)) + 14 + (g.big ? 14 : 8); g.gx = g.big ? 8 : 4;
+        var fsP = g.big ? 13 : 12; g.pp = g.big ? 14 : 12; g.gut = (g.big ? tw('median 14.95 ' + U, fsP, 800) : tw('median', fsP, 800)) + g.pp + (g.big ? 14 : 8); g.gx = g.big ? 8 : 4;
         g.tx0 = pad + g.rw + 6; g.tx1 = trayEnd - 4 - g.gut;
+        // every plant's column is at least 44 px wide: a narrow tray holds fewer plants
+        g.cap = clamp(Math.floor((g.tx1 - g.tx0) / 44), NMIN, NMAX);
         // the clipboard's paper and its plank (a number line in cm the dots sit on)
         var c = g.cb, ins = g.big ? 14 : 10;
         c.px = c.x + ins; c.py = c.y + (g.big ? 26 : 20); c.pw = c.w - 2 * ins; c.ph = c.h - (g.big ? 26 : 20) - ins;
         c.fs = g.big ? 15 : 12.5;
-        c.l = c.px + (g.big ? 22 : 14); c.r = c.px + c.pw - (g.big ? 22 : 14);
         c.plH = g.big ? 18 : 16;
-        // the plank sits low enough for the pivot and "mean" under it; the dots stand on it
-        c.ly = c.py + c.ph - (g.big ? 46 : 36) - c.plH;
-        c.top = c.py + (g.big ? 40 : 30);
+        c.two = c.pw >= 640;
+        c.ly = c.py + c.ph - (g.big ? 44 : 36) - c.plH;
+        if(c.two){
+          // the words in a column at the left (title, the heights in order, the mean and median worked out)
+          c.colW = clamp(c.pw * 0.3, 290, 380); c.cx = c.px + c.colW / 2;
+          c.l = c.px + c.colW + 34; c.r = c.px + c.pw - 22;
+          c.tY = c.py + 20; c.listY = c.py + 50; c.work = true; c.f1 = c.listY + 32; c.f2 = c.f1 + 26;
+          c.free = c.py + 8;
+        } else {
+          c.colW = c.pw; c.cx = c.px + c.pw / 2;
+          c.l = c.px + (g.big ? 22 : 14); c.r = c.px + c.pw - (g.big ? 22 : 14);
+          c.tY = c.py + (g.big ? 26 : 18); c.listY = c.py + (g.big ? 48 : 41); c.work = false;
+          c.free = c.listY + 8;
+        }
+        c.ax0 = c.two ? c.l - 16 : c.px + 2; c.ax1 = c.two ? c.r + 16 : c.px + c.pw - 2;
         c.kx = (c.r - c.l) / RMAX;
-        c.dr = clamp(c.pw / 44, 5.5, g.big ? 9 : 7);
-        c.ly = g.wide ? c.py + c.ph - 74 - c.plH : c.ly;
-        c.listY = c.py + (g.wide ? 54 : g.big ? 48 : 41);
-        // a tall paper also works the two out in a line each (mean = Σx ÷ n, median = the middle value)
-        c.work = c.ph >= 330 && c.pw >= 300;
-        c.f1 = c.listY + 34; c.f2 = c.f1 + 26;
-        c.free = c.work ? c.f2 + 8 : c.listY + 8;
+        // the dots as big as the room above the plank allows (a stack of about five), never under 5.5 px
+        c.dr = clamp(Math.min(c.kx * 0.42, (c.ly - c.free - 18) / 10), 5.5, c.two ? 13 : 7);
         return g;
+      }
+      // the most plants the tray holds at this width, and the opening (7, or the largest odd number that fits)
+      function capN(){ return G ? G.cap : NMAX; }
+      function openN(){ var c = Math.min(EX.open, capN()); return c % 2 ? c : c - 1; }
+      // a narrower screen holds fewer plants: the newest ones go (at once, as the layout changes)
+      function fitN(){
+        var lim = St.opening ? openN() : capN(), a = active(), cut = false;
+        while(a.length > lim){ var q = a.reduce(function(b, x){ return x.id > b.id ? x : b; }, a[0]); drop(q); P.splice(P.indexOf(q), 1); a = active(); cut = true; }
+        if(cut){ sortRow(0); P.forEach(function(p){ delete p.tw.x; }); }
+        paintN();
       }
       function yH(h){ return G.ySoil - h * G.k; }
       function xP(f){ return G.tx0 + f * (G.tx1 - G.tx0); }
@@ -258,7 +274,7 @@
         f += '<rect class="ds2-paper" x="' + n1(c.px) + '" y="' + n1(c.py) + '" width="' + n1(c.pw) + '" height="' + n1(c.ph) + '" rx="3"/>';
         var cw = Math.min(110, c.w * 0.3);
         f += '<rect class="ds2-clip" x="' + n1(c.x + c.w / 2 - cw / 2) + '" y="' + n1(c.y + 4) + '" width="' + n1(cw) + '" height="' + (g.big ? 30 : 24) + '" rx="6"/><rect class="ds2-clip-hi" x="' + n1(c.x + c.w / 2 - cw / 2 + 8) + '" y="' + n1(c.y + 9) + '" width="' + n1(cw - 16) + '" height="4" rx="2"/>';
-        f += '<text class="ds2-ctitle" data-lab="ctitle" x="' + n1(c.px + c.pw / 2) + '" y="' + n1(c.py + (g.big ? 26 : 18)) + '" text-anchor="middle" style="font-size:' + c.fs + 'px">Each plant’s height (cm)</text>';
+        f += '<text class="ds2-ctitle" data-lab="ctitle" x="' + n1(c.cx) + '" y="' + n1(c.tY) + '" text-anchor="middle" style="font-size:' + c.fs + 'px">Each plant’s height (cm)</text>';
         // the plank: a wooden number line, a tick every cm and its numbers printed on it
         f += '<rect class="ds2-plank" x="' + n1(c.l - 10) + '" y="' + n1(c.ly) + '" width="' + n1(c.r - c.l + 20) + '" height="' + c.plH + '" rx="4" fill="url(#ds2-plank)"/>';
         for(var v = 0; v <= RMAX; v++){
@@ -269,8 +285,10 @@
         sFront.innerHTML = f;
         // the live parts (built once per layout): the two lines, the plank's dots, the pivot and the labels
         sLive.innerHTML = ''; sLabs.innerHTML = '';
-        E.ml = { halo: mk('line', 'ds2-lhalo', null, sLive), line: mk('line', 'ds2-mline', null, sLive) };
-        E.dl = { halo: mk('line', 'ds2-lhalo', null, sLive), line: mk('line', 'ds2-dline', null, sLive) };
+        // both halos first, then the thick blue mean line, then the thin amber median line on top: when the two values
+        // are close the blue shows as a rim on both sides of the amber
+        E.ml = { halo: mk('line', 'ds2-lhalo', null, sLive) }; E.dl = { halo: mk('line', 'ds2-lhalo', null, sLive) };
+        E.ml.line = mk('line', 'ds2-mline', null, sLive); E.dl.line = mk('line', 'ds2-dline', null, sLive);
         E.dots = mk('g', 'ds2-dots', null, sLive);
         E.piv = mk('path', 'ds2-pivot', null, sLive);
         E.mdTick = mk('path', 'ds2-mdtick', null, sLive);
@@ -285,7 +303,7 @@
       function pill(cls, lab){
         var g = mk('g', cls, { 'data-lab': lab }, sLabs), r = mk('rect', null, { rx: 9 }, g), t = mk('text', null, { 'text-anchor': 'middle' }, g);
         var o = { g: g, r: r, t: t, s: null, box: null,
-          size: function(s){ var fs = G.big ? 13 : 12; return [tw(s, fs, 800) + 14, fs + 9]; },
+          size: function(s){ var fs = G.big ? 13 : 12; return [tw(s, fs, 800) + G.pp, fs + 9]; },
           set: function(s, x0, yc){
             var fs = G.big ? 13 : 12, sz = o.size(s), w = sz[0], h = sz[1];
             show(g, true);
@@ -388,7 +406,19 @@
         rows.forEach(function(p, r){ var fx = (r + 0.5) / n; if(p.st === 'sprout' && !p.tw.x) p.x = fx; else twn(p, 'x', fx, dur == null ? 320 : dur); });
         // P keeps the row order (the leaving plants at the end)
         P = rows.concat(P.filter(function(p){ return p.st === 'leave'; }));
+        // the knobs in row order, so Tab goes left to right (a knob that has focus keeps it)
+        var fe = document.activeElement, now0 = Array.prototype.slice.call(layer.el.querySelectorAll('.ds2-hd')), want = rows.filter(function(p){ return p.hd; }).map(function(p){ return p.hd.el; });
+        if(want.some(function(el, i){ return now0[i] !== el; })){
+          want.forEach(function(el){ layer.el.appendChild(el); });
+          if(fe && fe !== document.activeElement && fe.isConnected) try{ fe.focus({ preventScroll: true }); }catch(e){}
+        }
         leafFor();
+      }
+      // a plant taken while others still move: only its own growth ends at once; the row's slide goes on
+      function hold(p){
+        if(p.tw.h){ p.h = p.tw.h.to; delete p.tw.h; }
+        if(p.st === 'sprout'){ p.st = 'grown'; }
+        if(G && p.el){ paintPlant(p); paint(); }
       }
       function newPlant(id, v, h){
         var p = { id: id, v: v, h: h == null ? v : h, x: 0.5, op: 1, lift: 0, st: 'grown', tw: {} };
@@ -398,7 +428,8 @@
       }
       function sow(){
         stopAll();
-        var a = active(); if(a.length >= NMAX) return;
+        var a = active(); if(a.length >= capN()) return;
+        St.opening = false;
         var ids = a.map(function(p){ return p.id; }), id = 0; while(ids.indexOf(id) > -1) id++;
         var was = drawn, p = newPlant(id, POOL[id], 0);
         p.st = 'sprout';
@@ -414,6 +445,7 @@
       }
       function pull(){
         stopAll();
+        St.opening = false;
         var a = active(); if(a.length <= NMIN) return;
         var was = drawn, p = a.reduce(function(b, q){ return q.id > b.id ? q : b; }, a[0]);
         // the last one sown is pulled out of the soil: it stops counting at once, rises and fades
@@ -435,8 +467,8 @@
       function paintN(){
         var n = active().length;
         txt(nVal, (drawn.n || 0) + ' plants');
-        bAdd.disabled = n >= NMAX; bRm.disabled = n <= NMIN;
-        bAdd.title = n >= NMAX ? 'Ten plants fill the tray' : 'Add a plant'; bRm.title = n <= NMIN ? 'Keep at least three plants' : 'Remove a plant';
+        bAdd.disabled = n >= capN(); bRm.disabled = n <= NMIN;
+        bAdd.title = n >= capN() ? 'The tray is full' : 'Add a plant'; bRm.title = n <= NMIN ? 'Keep at least three plants' : 'Remove a plant';
       }
       function paintAll(){ if(!G) return; P.forEach(function(p){ if(p.el) paintPlant(p); }); paint(); }
 
@@ -451,7 +483,7 @@
           dir: function(){ return 90; },
           keys: function(v, key, big){ var s = big ? 1 : 0.1; if(key === 'ArrowUp' || key === 'ArrowRight') return clamp(r1(v + s), HLO, HHI); if(key === 'ArrowDown' || key === 'ArrowLeft') return clamp(r1(v - s), HLO, HHI); if(key === 'PageUp') return clamp(r1(v + 1), HLO, HHI); if(key === 'PageDown') return clamp(r1(v - 1), HLO, HHI); if(key === 'Home') return HLO; if(key === 'End') return HHI; return null; },
           valuetext: function(){ return valueText(p); },
-          onStart: function(v){ hideCue(true); tourDid('drag'); stopAll(); dragP = p; begin(p); },
+          onStart: function(v){ hideCue(true); tourDid('drag'); hold(p); dragP = p; begin(p); },
           onEnd: function(){ dragP = null; hd.before(null); sortRow(); kick(); },
           onInput: function(v){ setH(p, v, hd.dragging()); if(hd.dragging() && lastAct) hd.before(lastAct.h0); } });
         hd.el.classList.add('ds2-hd');
@@ -463,6 +495,7 @@
       }
       function begin(p){
         var d = drawn;
+        St.opening = false;
         if(!(lastAct && lastAct.kind === 'plant' && lastAct.p === p && Date.now() - lastAct.t < 1500)) lastAct = { kind: 'plant', p: p, h0: p.v, was: snap(d) };
         lastAct.t = Date.now();
       }
@@ -475,21 +508,24 @@
       sceneBox.addEventListener('pointerdown', function(e){
         if(!G || St.mode === 'quiz' && St.part !== 'goals') return;
         var r = sceneBox.getBoundingClientRect(), k = layer.scale() || 1, x = (e.clientX - r.left) / k, y = (e.clientY - r.top) / k;
+        // always the plant whose column is under the finger, even on a knob (a neighbour's 44 px knob can reach over)
         var kn = e.target.closest && e.target.closest('.tk2-knob'), p = null;
-        if(kn){ P.forEach(function(q){ if(q.hd && q.hd.knob === kn) p = q; }); }
-        else if(x > G.tx0 - 10 && x < G.tx1 + 10 && y < G.ySoil + 6 && y > G.board[1]) p = plantAt(x);
-        if(!p) return;
-        gOff = y - knobY(p);
-        if(!kn){ gOff = clamp(gOff, -60, 400); p.hd.grab(e); }
+        if(kn || (x > G.tx0 - 10 && x < G.tx1 + 10 && y < G.ySoil + 6 && y > G.board[1])) p = plantAt(x);
+        if(!p){ if(kn){ e.stopPropagation(); e.preventDefault(); } return; }
+        gOff = clamp(y - knobY(p), -60, 400);
+        if(kn) e.stopPropagation();
+        p.hd.grab(e);
       }, true);
 
       /* ---------------------------------------------------- paint: everything read from the plants as drawn */
-      var mids = [];
+      var mids = [], XS = { n: 0 };
       function isMid(p){ return mids.indexOf(p) > -1; }
       function paint(){
         if(!G) return;
         var c = G.cb, cn = counted();
-        drawn = statsOf(cn.map(function(p){ return p.h; }));
+        // the numbers from the heights as the clipboard lists them (to 0.1 cm), so the list, the sum, the mean and
+        // every pill agree on every frame; the lines and the pivot sit at the exact drawn values
+        drawn = statsOf(cn.map(function(p){ return r1(p.h); })); XS = statsOf(cn.map(function(p){ return p.h; }));
         var d = drawn, ok = d.n > 0;
         // the middle plant(s): by height as drawn (ties by place in the row), so the glow is right mid drag
         var byH = cn.slice().sort(function(a, b){ return a.h - b.h || a.x - b.x; });
@@ -503,7 +539,7 @@
         });
         // the two lines across the tray
         var x0 = G.tx0 - 6, x1 = G.tx1 + G.gx + 2;
-        [[E.ml, d.mean], [E.dl, d.median]].forEach(function(q){
+        [[E.ml, XS.mean], [E.dl, XS.median]].forEach(function(q){
           show(q[0].line, ok); show(q[0].halo, ok);
           if(ok){ var y = yH(q[1]); at(q[0].halo, { x1: x0, x2: x1, y1: y, y2: y }); at(q[0].line, { x1: x0, x2: x1, y1: y, y2: y }); }
         });
@@ -531,7 +567,7 @@
       // closer than a pill and 4 px, the higher line's name goes just over the lower one's
       function paintPills(d){
         if(!(d.n > 0)){ E.pMean.hide(); E.pMed.hide(); return; }
-        var t = pillTexts(d), zM = E.pMean.size(t[0]), zD = E.pMed.size(t[1]), yM = yH(d.mean), yD = yH(d.median), h = Math.max(zM[1], zD[1]);
+        var t = pillTexts(d), zM = E.pMean.size(t[0]), zD = E.pMed.size(t[1]), yM = yH(XS.mean), yD = yH(XS.median), h = Math.max(zM[1], zD[1]);
         var lo = G.board[1] + h / 2 + 3, hi = G.ySoil - h / 2 - 6, x0 = G.tx1 + G.gx;
         if(Math.abs(yM - yD) < h + 6){
           var mid = (yM + yD) / 2, up = yM <= yD;
@@ -562,30 +598,30 @@
         });
         for(var id in E.dotEls) if(!seen[id]){ E.dotEls[id].remove(); delete E.dotEls[id]; }
         // the heights in order, shortest first, the middle one(s) in amber: the median is the middle value
-        var fsv = G.wide ? 15 : G.big ? 13 : 12, nl = list.length;
-        while(fsv > 11 && nl * (tw('14.0', fsv, 900) + 7) > c.pw - 16) fsv -= 0.5;
-        var span = Math.min(c.pw - 16, nl * (tw('14.0', fsv, 900) + (G.big ? 18 : 8)));
+        var fsv = c.two ? 14 : G.big ? 13 : 12, nl = list.length;
+        while(fsv > 11 && nl * (tw('14.0', fsv, 900) + 7) > c.colW - 16) fsv -= 0.5;
+        var span = Math.min(c.colW - 16, nl * (tw('14.0', fsv, 900) + (G.big ? 14 : 8)));
         while(E.valEls.length < nl) E.valEls.push(mk('text', 'ds2-val', { 'text-anchor': 'middle', 'data-lab': 'val' }, E.vals));
         E.valEls.forEach(function(e, i){
           if(i >= nl){ show(e, false); return; }
           var p = list[i]; show(e, true);
           txt(e, F(r1(p.h), 1)); e.style.fontSize = fsv + 'px';
-          at(e, { x: c.px + c.pw / 2 - span / 2 + span * (i + 0.5) / nl, y: c.listY });
+          at(e, { x: c.cx - span / 2 + span * (i + 0.5) / nl, y: c.listY });
           var cls = 'ds2-val' + (isMid(p) ? ' is-mid' : ''); if(e.getAttribute('class') !== cls) e.setAttribute('class', cls);
         });
         show(E.f1, c.work && d.n > 0); show(E.f2, c.work && d.n > 0);
         if(c.work && d.n > 0){
-          var fw = G.wide ? 15 : 14, sum = 0; list.forEach(function(p){ sum += r1(p.h); });
+          var fw = 14, sum = 0; list.forEach(function(p){ sum += r1(p.h); });
           txt(E.f1, 'mean = ' + F(r1(sum), 1) + ' ÷ ' + d.n + ' = ' + F(r2(d.mean), 2) + ' ' + U);
           txt(E.f2, d.n % 2 ? 'median = the middle value = ' + F(r2(d.median), 2) + ' ' + U : 'median = (' + F(d.srt[d.n / 2 - 1], 1) + ' + ' + F(d.srt[d.n / 2], 1) + ') ÷ 2 = ' + F(r2(d.median), 2) + ' ' + U);
-          [E.f1, E.f2].forEach(function(e, i){ e.style.fontSize = fw + 'px'; at(e, { x: c.px + c.pw / 2, y: i ? c.f2 : c.f1 }); });
+          [E.f1, E.f2].forEach(function(e, i){ e.style.fontSize = fw + 'px'; at(e, { x: c.cx, y: i ? c.f2 : c.f1 }); });
         }
         if(!(d.n > 0)){ show(E.piv, false); show(E.wMean, false); show(E.wMed, false); show(E.mdTick, false); return; }
         // the pivot under the plank at the mean, "mean" under it
-        var mx = xA(d.mean), ph = G.big ? 16 : 13, yb = c.ly + c.plH;
+        var mx = xA(XS.mean), ph = G.big ? 16 : 13, yb = c.ly + c.plH;
         at(E.piv, { d: 'M' + n1(mx) + ' ' + n1(yb) + 'l' + n1(ph * 0.72) + ' ' + ph + 'h' + n1(-ph * 1.44) + 'Z' }); show(E.piv, true);
         var fs = G.big ? 13 : 12;
-        txt(E.wMean, 'mean'); at(E.wMean, { x: clamp(mx, c.px + 24, c.px + c.pw - 24), y: yb + ph + fs + 2 }); E.wMean.style.fontSize = fs + 'px'; show(E.wMean, true);
+        txt(E.wMean, 'mean'); at(E.wMean, { x: clamp(mx, c.ax0 + 22, c.ax1 - 22), y: yb + ph + fs + 2 }); E.wMean.style.fontSize = fs + 'px'; show(E.wMean, true);
         // "median" over the middle dot(s), clear of every dot under it
         var mdx = xA(d.median), wtop = c.ly;
         var wlab = tw('median', fs, 900) / 2 + 4;
@@ -593,13 +629,13 @@
         // "median" over the middle dot(s); with no room there, beside the top dot on the side that is clear
         var wl = tw('median', fs, 900), boxes = list.filter(function(p){ return p._dot; }).map(function(p){ return [p._dot[0] - rr, p._dot[1] - rr, p._dot[0] + rr, p._dot[1] + rr]; });
         var cands = [], ty = wtop - 9;
-        cands.push({ x: clamp(mdx, c.px + wl / 2 + 4, c.px + c.pw - wl / 2 - 4), y: ty - 3, tick: true });
-        cands.push({ x: clamp(mdx, c.px + wl / 2 + 4, c.px + c.pw - wl / 2 - 4), y: wtop - 7 });
+        cands.push({ x: clamp(mdx, c.ax0 + wl / 2 + 2, c.ax1 - wl / 2 - 2), y: ty - 3, tick: true });
+        cands.push({ x: clamp(mdx, c.ax0 + wl / 2 + 2, c.ax1 - wl / 2 - 2), y: wtop - 7 });
         for(var lv2 = 0; lv2 < 8; lv2++){ var yy = wtop + rr + fs * 0.36 + lv2 * rr; for(var kk = 0; kk < 8; kk++) [1, -1].forEach(function(sd){ cands.push({ x: mdx + sd * (rr * (1 + 2 * kk) + 6 + wl / 2), y: yy }); }); }
         var pick = cands[cands.length - 1];
         for(var ci = 0; ci < cands.length; ci++){
           var q = cands[ci], bb = [q.x - wl / 2, q.y - fs * 0.95, q.x + wl / 2, q.y + fs * 0.3];
-          if(bb[0] < c.px + 2 || bb[2] > c.px + c.pw - 2 || bb[1] < c.free + 2 || bb[3] > c.ly - 4) continue;
+          if(bb[0] < c.ax0 || bb[2] > c.ax1 || bb[1] < c.free + 2 || bb[3] > c.ly - 4) continue;
           if(boxes.some(function(b){ return hit(bb, b, 3); })) continue;
           if(q.tick && boxes.some(function(b){ return hit([mdx - 4, ty, mdx + 4, ty + 6], b, 2); })) continue;
           pick = q; break;
@@ -664,7 +700,7 @@
         if(a && a.was && d.n > 1){
           goal('outlier', a.kind === 'plant' && d.max > 11 && Math.abs(d.mean - a.was.mean) > Math.abs(d.median - a.was.median), 'One plant at <b>' + F(d.max, 1) + ' ' + esc(U) + '</b>: the mean moved <b>' + F(r2(Math.abs(d.mean - a.was.mean)), 2) + ' ' + esc(U) + '</b>, the median only ' + F(r2(Math.abs(d.median - a.was.median)), 2) + ' ' + esc(U) + '. The mean uses the size of every value; the median only which one is in the middle.');
           goal('sd', d.n >= 3 && r2(d.sd) <= 0.3, 'SD <b>' + F(r2(d.sd), 2) + ' ' + esc(U) + '</b>: every plant is close to the mean, so the spread is tiny.');
-          goal('n', a.kind === 'n' && d.n >= NMAX, NMAX + ' plants: SE = s ÷ √n is <b>' + F(r2(d.se), 2) + ' ' + esc(U) + '</b>, while the SD is ' + F(r2(d.sd), 2) + ' ' + esc(U) + '. More plants pin down the mean better; they do not make the plants less varied.');
+          goal('n', a.kind === 'n' && d.n >= capN(), d.n + ' plants: SE = s ÷ √n is <b>' + F(r2(d.se), 2) + ' ' + esc(U) + '</b>, while the SD is ' + F(r2(d.sd), 2) + ' ' + esc(U) + '. More plants pin down the mean better; they do not make the plants less varied.');
         }
         say(msg);
         refHtml();
@@ -725,17 +761,19 @@
       function build(){
         stopAll();
         P.forEach(drop); P = [];
-        for(var i = 0; i < EX.open; i++) P.push(newPlant(i, POOL[i]));
+        St.opening = true;
+        for(var i = 0; i < openN(); i++) P.push(newPlant(i, POOL[i]));
         lastAct = null; sortRow(0); P.forEach(function(p){ p.tw = {}; }); paintN();
       }
       function reset(){
         // Start over: the opening, shown (extra plants are pulled, missing ones sprout, the rest grow or shrink back)
         stopAll(); var was = drawn;
         active().forEach(function(p){
-          if(p.id >= EX.open){ p.st = 'leave'; if(p.hd){ p.hd.el.remove(); p.hd = null; } twn(p, 'lift', G ? G.k * 2.2 : 30, 420); twn(p, 'op', 0, 420); }
+          if(p.id >= openN()){ p.st = 'leave'; if(p.hd){ p.hd.el.remove(); p.hd = null; } twn(p, 'lift', G ? G.k * 2.2 : 30, 420); twn(p, 'op', 0, 420); }
           else { p.v = POOL[p.id]; if(p.hd) p.hd.value(p.v); twn(p, 'h', p.v, 520); }
         });
-        for(var i = 0; i < EX.open; i++) if(!P.some(function(p){ return p.id === i && p.st !== 'leave'; })){ var q = newPlant(i, POOL[i], 0); q.st = 'sprout'; q.x = 0.5; P.push(q); twn(q, 'h', q.v, 620, 120); if(calm()){ q.h = q.v; q.st = 'grown'; } }
+        St.opening = true;
+        for(var i = 0; i < openN(); i++) if(!P.some(function(p){ return p.id === i && p.st !== 'leave'; })){ var q = newPlant(i, POOL[i], 0); q.st = 'sprout'; q.x = 0.5; P.push(q); twn(q, 'h', q.v, 620, 120); if(calm()){ q.h = q.v; q.st = 'grown'; } }
         sortRow(420);
         lastAct = null; cause.take(null); paintN(); paintAll(); kick(); if(calm()){ stopAll(); fade(); }
         void was;
@@ -756,7 +794,7 @@
         if(!sceneBox.clientWidth) return;
         lastWH = key;
         var g = layout(); if(!g) return;
-        G = g; leafFor(true); svg.setAttribute('viewBox', '0 0 ' + g.W + ' ' + g.H);
+        G = g; fitN(); leafFor(true); svg.setAttribute('viewBox', '0 0 ' + g.W + ' ' + g.H);
         drawStatic();
         P.forEach(function(p){ if(!p.el || !p.el.parentNode){ if(p.el) p.el.remove(); if(p.glow) p.glow.remove(); plantEl(p); } p._c = {}; paintPlant(p); });
         paint();
@@ -807,10 +845,10 @@
       window.addEventListener('resize', function(){ fitHeight(); });
       // for the sweep (scripts/tools-v2/bio-descriptive-stats-sweep.mjs): the drawn state and the geometry
       window.__ds2 = { G: function(){ return G; }, P: function(){ return P; }, St: St, busy: busy, drawn: function(){ return drawn; }, mids: function(){ return mids; },
-        set: function(hs){ stopAll(); P.forEach(drop); P = hs.map(function(v, i){ return newPlant(i, v); }); sortRow(0); P.forEach(function(p){ p.tw = {}; }); lastAct = null; cause.take(null); paintN(); layoutNow(true); paint(); settled(); },
+        set: function(hs){ stopAll(); St.opening = false; P.forEach(drop); P = hs.map(function(v, i){ return newPlant(i, v); }); sortRow(0); P.forEach(function(p){ p.tw = {}; }); lastAct = null; cause.take(null); paintN(); layoutNow(true); paint(); settled(); },
         open: function(){ fresh(); }, noCue: function(){ hideCue(true); }, sow: function(){ sow(); }, pull: function(){ pull(); }, reset: function(){ reset(); },
         drag: function(i, v){ var p = active()[i]; if(dragP !== p) begin(p); dragP = p; setH(p, v, true); paintAll(); }, end: function(){ dragP = null; sortRow(); kick(); },
-        stopAll: stopAll, fit: fitHeight };
+        stopAll: stopAll, fit: fitHeight, openN: function(){ return openN(); }, cap: function(){ return capN(); } };
     }, { studio: { kit2: function(ctx){ return ctx.kit2; } } });
   }
   /* The page loads the kit (pages.json "kit2": true). A cached copy of the old page would not: fetch it then. */

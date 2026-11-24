@@ -104,6 +104,10 @@ const AGREE = () => {
   const med = n % 2 ? srt[(n - 1) / 2] : (srt[n / 2 - 1] + srt[n / 2]) / 2;
   const sd = Math.sqrt(hs.reduce((a, h) => a + (h - mean) ** 2, 0) / (n - 1)), se = sd / Math.sqrt(n);
   const yH = (h) => G.ySoil - h * G.k, xA = (v) => c.l + Math.max(0, Math.min(16, v)) * c.kx;
+  // the clipboard lists the heights to 0.1 cm; every number shown is worked out exactly from that list
+  const vals = [...document.querySelectorAll('.ds2-val')].filter(vis).map(e => +e.textContent);
+  const Ls = vals.slice().sort((a, b) => a - b), Lm = Ls.reduce((a, b) => a + b, 0) / Ls.length, Lmed = Ls.length % 2 ? Ls[(Ls.length - 1) / 2] : (Ls[Ls.length / 2 - 1] + Ls[Ls.length / 2]) / 2;
+  const Lsd = Math.sqrt(Ls.reduce((a, h) => a + (h - Lm) ** 2, 0) / (Ls.length - 1)), Lse = Lsd / Math.sqrt(Ls.length);
   // the lines
   near(+document.querySelector('.ds2-mline').getAttribute('y1'), yH(mean), 0.3, 'mean line vs the plants');
   near(+document.querySelector('.ds2-dline').getAttribute('y1'), yH(med), 0.3, 'median line vs the plants');
@@ -113,7 +117,7 @@ const AGREE = () => {
   pl.filter(p => p.st !== 'grown' && p.mid).forEach(() => out.push('a plant that is not counted is lit'));
   // the names of the lines
   const pM = document.querySelector('.ds2-pill.is-mean text').textContent, pD = document.querySelector('.ds2-pill.is-median text').textContent;
-  if (G.big) { near(nums(pM)[0], r2(mean), 0.011, 'mean pill'); near(nums(pD)[0], r2(med), 0.011, 'median pill'); }
+  if (G.big) { near(nums(pM)[0], r2(Lm), 0.0051, 'mean pill'); near(nums(pD)[0], r2(Lmed), 0.0051, 'median pill'); }
   else if (pM !== 'mean' || pD !== 'median') out.push(`pill words ${pM} / ${pD}`);
   // the knobs sit on the plants' tops
   const sr = document.querySelector('.ds2-svg').getBoundingClientRect();
@@ -124,11 +128,10 @@ const AGREE = () => {
   if (dx.length !== n) out.push(`${dx.length} dots for ${n} plants`); else dx.forEach((x, i) => near(x, ex[i], 0.3, 'dot ' + i));
   const md = [...document.querySelectorAll('.ds2-dot.is-mid')].length; if (md !== want.length) out.push(`${md} amber dots`);
   near(+/^M([-\d.]+)/.exec(document.querySelector('.ds2-pivot').getAttribute('d'))[1], xA(mean), 0.3, 'pivot at the mean');
-  const vals = [...document.querySelectorAll('.ds2-val')].filter(vis).map(e => +e.textContent);
   if (vals.length !== n || vals.some((v, i) => Math.abs(v - srt[i]) > 0.0505 + 0.006)) out.push(`sorted values ${vals} vs ${srt.map(r1)}`);
   const vm = [...document.querySelectorAll('.ds2-val.is-mid')].map(e => +e.textContent); if (vm.length !== want.length) out.push(`${vm.length} amber values`);
   const f1 = document.querySelector('.ds2-work.is-mean');
-  if (f1 && vis(f1)) { const a = nums(f1.textContent); near(a[0], Math.round(vals.reduce((s, v) => s + v, 0) * 10) / 10, 0.001, 'worked sum is the sum of the values shown'); near(a[0], sum, 0.0505 * n + 0.01, 'worked sum vs the plants'); near(a[1], n, 0, 'worked n'); near(a[2], r2(mean), 0.011, 'worked mean'); const b = nums(document.querySelector('.ds2-work.is-median').textContent); near(b[b.length - 1], r2(med), 0.011, 'worked median'); }
+  if (f1 && vis(f1)) { const a = nums(f1.textContent); near(a[0], Math.round(vals.reduce((s, v) => s + v, 0) * 10) / 10, 0.001, 'worked sum is the sum of the values shown'); near(a[0], sum, 0.0505 * n + 0.01, 'worked sum vs the plants'); near(a[1], n, 0, 'worked n'); near(a[2], r2(Lm), 0.0051, 'worked mean'); near(a[2], a[0] / a[1], 0.0051, 'worked mean is its own sum over n'); const b = nums(document.querySelector('.ds2-work.is-median').textContent); near(b[b.length - 1], r2(Lmed), 0.0051, 'worked median'); }
   near(nums(document.querySelector('.ds2-nv').textContent)[0], n, 0, 'plant count');
   // the cause line (unless the takeaway holds it)
   const take = document.querySelector('.ds2 .tk2-cause.is-take');
@@ -137,11 +140,11 @@ const AGREE = () => {
     const get = (role) => cz.find(e => e.classList.contains('is-' + role));
     const czM = get('mean'), czD = get('median'), czS = get('sd'), czP = get('plant');
     if (!czM || !czD) out.push('cause line without mean or median'); else {
-      near(nums(czM.textContent)[0], r2(mean), 0.011, 'cause mean');
-      const b = nums(czD.textContent); near(/=/.test(czD.textContent) ? b[b.length - 1] : b[0], r2(med), 0.011, 'cause median');
-      if (/=/.test(czD.textContent)) { near(b[0], r1(srt[n / 2 - 1]), 0.051, 'cause middle 1'); near(b[1], r1(srt[n / 2]), 0.051, 'cause middle 2'); }
+      near(nums(czM.textContent)[0], r2(Lm), 0.0051, 'cause mean');
+      const b = nums(czD.textContent); near(/=/.test(czD.textContent) ? b[b.length - 1] : b[0], r2(Lmed), 0.0051, 'cause median');
+      if (/=/.test(czD.textContent)) { near(b[0], Ls[n / 2 - 1], 0.001, 'cause middle 1'); near(b[1], Ls[n / 2], 0.001, 'cause middle 2'); }
     }
-    if (czS) { const b = nums(czS.textContent); near(b[0], r2(sd), 0.011, 'cause SD'); near(b[1], r2(se), 0.011, 'cause SE'); }
+    if (czS) { const b = nums(czS.textContent); near(b[0], r2(Lsd), 0.0051, 'cause SD'); near(b[1], r2(Lse), 0.0051, 'cause SE'); }
     if (czP) { const v = nums(czP.textContent)[0]; if (/one plant/.test(czP.textContent)) { if (!hs.some(h => Math.abs(r1(h) - v) < 0.051)) out.push(`cause plant ${v} not drawn`); } else near(v, n, 0, 'cause plant count'); }
   }
   return out;
@@ -187,6 +190,13 @@ const GEO = () => {
   const cz = document.querySelector('.ds2 .tk2-cause'), cr = cz.getBoundingClientRect(), rows = new Set([...cz.querySelectorAll('.tk2-cz')].map(e => Math.round(e.getBoundingClientRect().top))).size;
   if (phone && rows > 2) out.push(`cause line ${rows} rows`);
   const lf = window.__ds2.G().leaf; if (lf < 10.9) out.push(`leaves ${lf} px`);
+  // every plant's column at least 44 px; the mean line drawn under the median line, both halos under both
+  { const G0 = window.__ds2.G(), n0 = window.__ds2.P().filter(p => p.st !== 'leave').length, sv0 = document.querySelector('.ds2-svg').getBoundingClientRect(), col = (G0.tx1 - G0.tx0) / n0 * sv0.width / G0.W; if (col < 43.9) out.push(`columns ${col.toFixed(1)} px`); }
+  { const kids = [...document.querySelector('.ds2-live').children], ih = kids.map((e, i) => e.matches('.ds2-lhalo') ? i : -1).filter(i => i > -1), im = kids.findIndex(e => e.matches('.ds2-mline')), id = kids.findIndex(e => e.matches('.ds2-dline'));
+    if (!(Math.max(...ih) < im && im < id)) out.push('draw order: halos, mean, median');
+    if (!(parseFloat(getComputedStyle(kids[im]).strokeWidth) > parseFloat(getComputedStyle(kids[id]).strokeWidth) + 1.5)) out.push('the mean line is not wider than the median line'); }
+  // Tab goes left to right: the knobs' order in the page is the row's
+  { const xs = [...document.querySelectorAll('.ds2 .ds2-hd .tk2-knob')].filter(k => k.style.visibility !== 'hidden').map(k => k.getBoundingClientRect().left); if (xs.some((x, i) => i && x < xs[i - 1] - 1) && !window.__ds2.busy()) out.push('knob order is not left to right'); }
   // the clipboard's words stay on its paper
   const G = window.__ds2.G(), c = G.cb, sv = document.querySelector('.ds2-svg').getBoundingClientRect(), k = sv.width / G.W;
   const paper = { left: sv.left + c.px * k, top: sv.top + c.py * k, right: sv.left + (c.px + c.pw) * k, bottom: sv.top + (c.py + c.ph) * k };
@@ -202,12 +212,14 @@ const FIT = () => {
   return { top: Math.round(top), causeBottom: Math.round(cz.bottom), acts: Math.round(acts.bottom), vh: innerHeight, scrollY };
 };
 
-const OPEN = [3.6, 4.5, 5.0, 5.4, 5.9, 6.3, 7.2];
+// the heights the tool opens on (in sowing order). A narrow phone holds fewer plants (each column at least 44 px)
+// and keeps the first ones, so every state lists the plant it is about first.
+const OPEN = [3.8, 4.4, 5.2, 6.6, 7.6, 4.9, 5.9];
 const STATES = [
-  ['open', OPEN], ['outlier', OPEN.slice(0, 6).concat([14.0])], ['low', [1.0].concat(OPEN.slice(1))], ['top', OPEN.slice(0, 6).concat([15.0])],
-  ['even8', OPEN.concat([5.6])], ['n10', OPEN.concat([5.6, 4.8, 6.6])], ['n3', [3.6, 4.5, 5.0]],
-  ['bunched', [5.3, 5.4, 5.4, 5.5, 5.4, 5.3, 5.5]], ['skew-up', [3.6, 4.5, 5.0, 5.4, 14.6, 14.8, 15.0]], ['skew-down', [1.0, 1.2, 1.4, 5.4, 5.9, 6.3, 7.2]],
-  ['n10-wide', [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 15.0, 15.0]], ['n10-out', [3.6, 4.5, 5.0, 5.4, 5.9, 6.3, 7.2, 5.6, 4.8, 15.0]],
+  ['open', OPEN], ['outlier', [14.0, 3.8, 4.4, 5.2, 6.6, 4.9, 5.9]], ['low', [1.0, 4.4, 5.2, 6.6, 7.6, 4.9, 5.9]], ['top', [15.0, 3.8, 4.4, 5.2, 6.6, 4.9, 5.9]],
+  ['even4', [3.8, 4.4, 5.2, 6.6]], ['even6', [3.8, 4.4, 5.2, 6.6, 7.6, 4.9]], ['even8', OPEN.concat([5.5])], ['n10', OPEN.concat([5.5, 4.6, 6.2])], ['n3', [3.8, 4.4, 5.2]],
+  ['bunched', [5.3, 5.4, 5.4, 5.5, 5.4, 5.3, 5.5]], ['skew-up', [15.0, 14.8, 3.8, 4.4, 5.2, 14.6, 5.0]], ['skew-down', [1.0, 1.2, 5.9, 6.3, 1.4, 7.2, 5.4]],
+  ['n10-wide', [15.0, 1.0, 8.0, 2.0, 15.0, 3.0, 4.0, 5.0, 6.0, 7.0]], ['n10-out', [15.0, 3.8, 4.4, 5.2, 6.6, 7.6, 4.9, 5.9, 5.5, 4.6]],
   ['mid-drag', 'drag']];
 async function setState(page, s) {
   if (s === 'drag') { await page.evaluate((o) => window.__ds2.set(o), OPEN); await page.evaluate(() => window.__ds2.drag(0, 9.4)); return; }
@@ -240,8 +252,8 @@ if (ONE) {
     if (theme === 'light') {
       // the tallest plant at every 0.5 cm from 1 to 15 cm, at 7 and at 10 plants: every check, no exceptions
       const bad = [];
-      for (const base of [OPEN, OPEN.concat([5.6, 4.8, 6.6])]) for (let v = 1; v <= 15.001; v += 0.5) {
-        await page.evaluate(([b, v]) => { const hs = b.slice(); hs[6] = Math.round(v * 10) / 10; window.__ds2.set(hs); }, [base, v]); await still(page);
+      for (const base of [OPEN, OPEN.concat([5.5, 4.6, 6.2])]) for (let v = 1; v <= 15.001; v += 0.5) {
+        await page.evaluate(([b, v]) => { const hs = b.slice(); hs[0] = Math.round(v * 10) / 10; window.__ds2.set(hs); }, [base, v]); await still(page);
         const g = await page.evaluate(GEO), a = await page.evaluate(AGREE);
         if (g.out.length || a.length) bad.push(`${base.length} ${v}: ${g.out.concat(a).join('; ')}`);
       }
@@ -253,7 +265,7 @@ if (ONE) {
     await page.goto('about:blank'); await page.goto(URL0 + '#goals'); await page.waitForSelector('.ds2-pl'); await page.waitForTimeout(900); await still(page);
     const gg = await page.evaluate(GEO); ok(!gg.out.length, `${w} ${theme} goals: ${gg.out.join('; ')}`);
     const ag = await page.evaluate(AGREE); ok(!ag.length, `${w} ${theme} goals: ${ag.join('; ')}`);
-    ok(await page.evaluate(() => window.__ds2.drawn().n === 7 && !!document.querySelector('.tk2-chal')), `${w} ${theme} goals: from the opening with the challenge card`);
+    ok(await page.evaluate(() => window.__ds2.drawn().n === window.__ds2.openN() && !!document.querySelector('.tk2-chal')), `${w} ${theme} goals: from the opening with the challenge card`);
     if (SHOTS && [390, 1440].includes(w)) await page.screenshot({ path: join(SHOTS, `sweep-${w}-${theme}-goals.png`) });
     // Problems
     await page.goto('about:blank'); await page.goto(URL0 + '#practice'); await page.waitForSelector('.ds-fig'); await page.waitForTimeout(500);
@@ -266,7 +278,32 @@ if (ONE) {
   }
 }
 
+/* Real touch taps on every plant, on its knob (centre, ±6, ±12 px across) and on its stem: each must move that
+   plant and only that plant. */
+async function tapTest(page, w) {
+  await page.evaluate(() => window.__ds2.reset()); await still(page);
+  // a full tray: the most plants this width holds
+  for (let i = 0; i < 10; i++) { if (await page.evaluate(() => document.querySelector('.ds2-add').disabled)) break; await page.click('.ds2-add'); await still(page); }
+  const cdp = await page.context().newCDPSession(page);
+  const tp = (type, x, y) => cdp.send('Input.dispatchTouchEvent', { type, touchPoints: type === 'touchEnd' ? [] : [{ x, y }] });
+  let tries = 0, wrong = 0; const bad = [];
+  const n = await page.evaluate(() => window.__ds2.P().filter(p => p.st !== 'leave').length);
+  for (let i = 0; i < n; i++) for (const spot of ['k0', 'k-6', 'k6', 'k-12', 'k12', 'stem']) {
+    const t = await page.evaluate(([i, spot]) => { const X = window.__ds2, p = X.P().filter(q => q.st !== 'leave')[i], r = p.hd.knob.getBoundingClientRect(), G = X.G(), sv = document.querySelector('.ds2-svg').getBoundingClientRect(), k = sv.width / G.W;
+      const cx = r.left + r.width / 2, cy = r.top + r.height / 2, dx = spot === 'stem' ? 0 : +spot.slice(1);
+      return { id: p.id, x: cx + dx, y: spot === 'stem' ? (cy + (sv.top + G.ySoil * k)) / 2 : cy, before: X.P().map(q => [q.id, q.v]) }; }, [i, spot]);
+    await tp('touchStart', t.x, t.y); for (let d = 0; d >= -18; d -= 6) await tp('touchMove', t.x, t.y + d); await tp('touchEnd'); await still(page);
+    const moved = await page.evaluate((before) => { const m = new Map(before); return window.__ds2.P().filter(q => q.st !== 'leave' && Math.abs(q.v - m.get(q.id)) > 0.05).map(q => q.id); }, t.before);
+    tries++; if (moved.length !== 1 || moved[0] !== t.id) { wrong++; if (bad.length < 3) bad.push(`plant ${i} ${spot}: moved ${moved}`); }
+    // put it back where it was (keeps the tray the same for the next tap)
+    await page.evaluate((before) => { window.__ds2.set(before.map(b => b[1])); }, t.before.slice().sort((a, b) => a[0] - b[0])); await still(page);
+  }
+  ok(!wrong, `${w} real touch taps: ${wrong} of ${tries} moved the wrong plant ${bad.join(' | ')}`);
+  return tries;
+}
+
 if (FRAMES) {
+  { const t = await open(360, false, { noCue: true }); const n = await tapTest(t.page, 360); console.log(`  360: ${n} real touch taps`); await t.browser.close(); }
   for (const w of [390, 1440]) {
     const { browser, page, errs } = await open(w, false, { noCue: true });
     let frames = 0;
@@ -290,21 +327,31 @@ if (FRAMES) {
     });
     if (SHOTS) { await page.evaluate(() => window.__ds2.reset()); await still(page); const k = await tallKnob(); await page.mouse.move(k[0], k[1]); await page.mouse.down(); for (let d = 0; d <= 4.5 * G.k; d += G.k / 2) await page.mouse.move(k[0], k[1] + d); await page.mouse.up(); await page.waitForTimeout(140); await page.screenshot({ path: join(SHOTS, `mid-${w}-sort.png`) }); await still(page); }
     await watch('Start over', async () => { await page.evaluate(() => window.__ds2.reset()); });
+    // a press while the row still slides: the slide goes on (no plant jumps more than a third of its way in a frame)
+    { await page.evaluate(() => window.__ds2.reset()); await still(page);
+      const k = await tallKnob(); await page.mouse.move(k[0], k[1]); await page.mouse.down();
+      for (let d = 0; d <= 6.5 * G.k; d += G.k / 2) await page.mouse.move(k[0], k[1] + d);
+      await page.evaluate(() => { const X = window.__ds2; window.__dsJ = { on: true, last: null, steps: [], from: null }; (function loop(){ const J = window.__dsJ; if (!J.on) return; const xs = {}; X.P().forEach(p => { const tr = /translate\(([-\d.]+)/.exec(p.el && p.el.getAttribute('transform') || ''); if (tr) xs[p.id] = +tr[1]; }); if (J.last) for (const id in xs) if (id in J.last) J.steps.push([id, Math.abs(xs[id] - J.last[id])]); if (!J.from) J.from = xs; J.last = xs; requestAnimationFrame(loop); })(); });
+      await page.mouse.up(); await page.waitForTimeout(60);
+      const m = await kOf(3); await page.mouse.move(m[0], m[1]); await page.mouse.down(); await page.mouse.move(m[0], m[1] - 10); await page.waitForTimeout(450); await page.mouse.up(); await still(page);
+      const r = await page.evaluate(() => { const J = window.__dsJ; J.on = false; const travel = {}; for (const id in J.last) travel[id] = Math.abs(J.last[id] - J.from[id]); let worst = 0, wid = null; J.steps.forEach(([id, s]) => { const t = travel[id] || 0; if (t > 20 && s / t > worst) { worst = s / t; wid = id; } }); return { worst: +worst.toFixed(2), wid, travel: travel[wid] }; });
+      ok(r.worst < 0.34, `${w}: a press mid slide lets the slide go on ${JSON.stringify(r)}`); }
+    await still(page); const H0 = await page.evaluate(() => { const o = {}; window.__ds2.P().forEach(p => { o[p.id] = p.v; }); return o; });
     await watch('a press in a plant\'s column away from its knob takes that plant', async () => {
       const k = await kOf(2); await page.mouse.move(k[0] + 2, k[1] + 1.2 * G.k); await page.mouse.down();
       for (let d = 0; d >= -4 * G.k; d -= G.k / 2) await page.mouse.move(k[0] + 2, k[1] + 1.2 * G.k + d);
       await page.mouse.up();
     });
-    ok(await page.evaluate(() => { const d = window.__ds2.drawn(); return d.n === 7 && Math.abs(d.max - 9.0) < 0.31; }), `${w}: the column press moved the third plant up about 4 cm`);
+    ok(await page.evaluate((h0) => { const a = window.__ds2.P().filter(p => p.st !== 'leave'), moved = a.filter(p => Math.abs(p.v - h0[p.id]) > 0.05); return moved.length === 1 && Math.abs(moved[0].v - h0[moved[0].id] - 4) < 0.6; }, H0), `${w}: the column press moved only that plant, up about 4 cm`);
     await watch('keys on a plant: PageUp x3, End, Home, ArrowDown', async () => {
       await page.evaluate(() => window.__ds2.P().filter(p => p.st !== 'leave')[3].hd.knob.focus());
       for (const key of ['PageUp', 'PageUp', 'PageUp', 'End', 'Home', 'ArrowDown']) { await page.keyboard.press(key); await page.waitForTimeout(90); }
     });
     await watch('Start over', async () => { await page.click('.ds2-reset'); });
-    if (SHOTS) { await page.evaluate(() => { window.__ds2.drag(6, 14); window.__ds2.end(); }); await still(page); await page.click('.ds2-reset'); await page.waitForTimeout(220); await page.screenshot({ path: join(SHOTS, `mid-${w}-startover.png`) }); await still(page); }
+    if (SHOTS) { await page.evaluate(() => { window.__ds2.drag(window.__ds2.P().filter(p => p.st !== 'leave').length - 1, 14); window.__ds2.end(); }); await still(page); await page.click('.ds2-reset'); await page.waitForTimeout(220); await page.screenshot({ path: join(SHOTS, `mid-${w}-startover.png`) }); await still(page); }
     await watch('sow a plant (it sprouts, the row makes room)', async () => { await page.click('.ds2-add'); });
-    if (SHOTS) { await page.click('.ds2-add'); await page.waitForTimeout(360); await page.screenshot({ path: join(SHOTS, `mid-${w}-sprout.png`) }); await still(page); await page.click('.ds2-rm'); await still(page); }
-    await watch('sow, then sow again while it still grows, then pull', async () => { await page.click('.ds2-add'); await page.waitForTimeout(150); await page.click('.ds2-add'); await page.waitForTimeout(200); await page.click('.ds2-rm'); });
+    if (SHOTS) { await page.click('.ds2-rm'); await still(page); await page.click('.ds2-add'); await page.waitForTimeout(360); await page.screenshot({ path: join(SHOTS, `mid-${w}-sprout.png`) }); await still(page); }
+    await watch('pull, then sow while it still leaves, then pull while that one grows', async () => { await page.click('.ds2-rm'); await page.waitForTimeout(150); await page.click('.ds2-add'); await page.waitForTimeout(200); await page.click('.ds2-rm'); });
     if (SHOTS) { await page.click('.ds2-rm'); await page.waitForTimeout(200); await page.screenshot({ path: join(SHOTS, `mid-${w}-pull.png`) }); await still(page); await page.click('.ds2-add'); await still(page); }
     await watch('pull down to 3 plants', async () => { for (let i = 0; i < 8; i++) { if (await page.evaluate(() => document.querySelector('.ds2-rm').disabled)) break; await page.click('.ds2-rm'); await page.waitForTimeout(120); } });
     ok(await page.evaluate(() => window.__ds2.drawn().n === 3 && document.querySelector('.ds2-rm').disabled), `${w}: 3 plants at least, Remove then off`);
@@ -316,7 +363,8 @@ if (FRAMES) {
     ok(await page.evaluate(() => !window.__ds2.busy()), `${w}: leaving mid change stops it`);
     await page.evaluate(() => { const b = [...document.querySelectorAll('button, [role=tab]')].find(x => /^Explore$/.test(x.textContent.trim())); b && b.click(); }); await page.waitForTimeout(400);
     const back = await page.evaluate(() => window.__dsAgree()); ok(!back.length, `${w}: back from Test yourself: ${back.join('; ')}`);
-    ok(await page.evaluate(() => window.__ds2.drawn().n === 8), `${w}: back from Test yourself with the 8 plants`);
+    ok(await page.evaluate(() => window.__ds2.drawn().n === window.__ds2.openN() + 1), `${w}: back from Test yourself with the plants as they were`);
+    if (w < 500) { const n = await tapTest(page, w); console.log(`  ${w}: ${n} real touch taps`); }
     // real touch drag of a plant at the phone width (the page must not scroll)
     if (w < 500) {
       await page.click('.ds2-reset'); await still(page);
@@ -330,8 +378,8 @@ if (FRAMES) {
     // reduced motion: the result at once with a cross fade
     const rm = await open(w, false, { noCue: true, reduced: true });
     await rm.page.click('.ds2-add'); await rm.page.waitForTimeout(80);
-    const rmR = await rm.page.evaluate(() => ({ busy: window.__ds2.busy(), n: window.__ds2.drawn().n, fade: document.querySelector('.ds2-scene').classList.contains('is-fade') }));
-    ok(!rmR.busy && rmR.n === 8 && rmR.fade, `${w} reduced motion: at once with a cross fade ${JSON.stringify(rmR)}`);
+    const rmR = await rm.page.evaluate(() => ({ want: window.__ds2.openN() + 1, busy: window.__ds2.busy(), n: window.__ds2.drawn().n, fade: document.querySelector('.ds2-scene').classList.contains('is-fade') }));
+    ok(!rmR.busy && rmR.n === rmR.want && rmR.fade, `${w} reduced motion: at once with a cross fade ${JSON.stringify(rmR)}`);
     await rm.page.evaluate(`window.__dsAgree = ${AGREE.toString()}`);
     const rmA = await rm.page.evaluate(() => window.__dsAgree()); ok(!rmA.length, `${w} reduced motion agrees: ${rmA.join('; ')}`);
     await rm.browser.close();
@@ -365,7 +413,7 @@ if (PERF) {
       await page.goto(flag ? `http://localhost:${PORT}/environmental-science/tools/water-pollution.html` : URL0);
       if (flag) await page.waitForSelector('.tk2-knob', { state: 'attached', timeout: 15000 }); else await page.waitForSelector('.ds2-pl', { timeout: 15000 });
       await page.waitForTimeout(1500);
-      if (!flag && /drag/.test(which)) { await page.evaluate(() => window.__ds2.set([3.6, 4.5, 5.0, 5.4, 5.9, 6.3, 7.2, 5.6, 4.8, 6.6])); await page.waitForTimeout(300); }
+      if (!flag && /drag/.test(which)) { await page.evaluate(() => window.__ds2.set([3.8, 4.4, 5.2, 6.6, 7.6, 4.9, 5.9, 5.5, 4.6, 6.2])); await page.waitForTimeout(300); }
       const cdp = await ctx.newCDPSession(page); await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 });
       if (/sow/.test(which)) {
         await page.evaluate(() => { window.__ft = []; window.__fon = true; let last = performance.now(); (function loop(t){ if (!window.__fon) return; window.__ft.push(t - last); last = t; requestAnimationFrame(loop); })(performance.now()); });
