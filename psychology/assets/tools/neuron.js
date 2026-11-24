@@ -462,7 +462,7 @@
       pick: function(x){ if(!G || !G.plot) return null; return clamp(Math.round((G.plot.T(x) - T0) * 2) / 2, 1, 10); },
       dir: function(){ return 0; },
       valuetext: function(v){ var r = refrRun(v), e = r.events[1].effect; return n1(v) + ' milliseconds after the first pulse. ' + (e === 'spike' ? 'It fires again.' : 'Still in the refractory period: no second spike.'); },
-      tag: function(v){ return n1(v) + ' ms'; }, tagSide: function(v){ return v >= 7 ? 'left' : 'up'; },
+      tag: function(v){ return n1(v) + ' ms'; }, tagSide: function(v){ return v >= 6 ? 'left' : 'right'; },   // level with the stimulus row, never on the plot
       onStart: function(v){ begin('gap', S.gap); },
       onInput: function(v){ begin('gap', S.gap); S.gap = v; changed(); tourDid('gap'); },
       onEnd: function(){ released(); } });
@@ -589,7 +589,7 @@
         g.bar = { x0: pad + (ph ? 12 : 22), x1: W - pad - (ph ? 12 : 22), y: g.gTop + (ph ? 72 : 76), max: N.NSEG * N.CRAWL + 0.2 };
       } else {
         var px0 = pad + (ph ? 42 : 46), px1 = W - pad - (ph ? 4 : 10), py0 = g.gTop + (ph ? 34 : 40), py1 = H - (ph ? 26 : 30);
-        var vLo = -150, vHi = 52, dur = DUR[tab];
+        var vLo = -150, vHi = 74, dur = DUR[tab];
         var P = { x0: px0, x1: px1, y0: py0, y1: py1, dur: dur, lo: vLo, hi: vHi };
         P.X = function(t){ return px0 + t / dur * (px1 - px0); };
         P.T = function(x){ return (x - px0) / (px1 - px0) * dur; };
@@ -803,7 +803,7 @@
       if(u <= 0) return [s0[0], s0[1], false];
       var cx = kind === 'na' ? I.na : I.k, dir = kind === 'na' ? 1 : -1;
       var mouthA = [cx, I.mid - dir * (I.th / 2 + 12)], mouthB = [cx, I.mid + dir * (I.th / 2 + 12)];
-      var dest = [cx + (j ? 1 : -1) * (g.ph ? 22 : 34) + (kind === 'na' ? 6 : -6), kind === 'na' ? I.mid + I.th / 2 + (I.y1 - I.mid - I.th / 2) * 0.5 : I.y0 + (I.mid - I.th / 2 - I.y0) * 0.55];
+      var dest = [cx + (j ? 1 : -1) * (g.ph ? 22 : 34) * (1 + k * 0.6) + (kind === 'na' ? 6 : -6), kind === 'na' ? I.mid + I.th / 2 + (I.y1 - I.mid - I.th / 2) * 0.5 : I.y0 + (I.mid - I.th / 2 - I.y0) * 0.55];
       if(u >= 1) return [dest[0], dest[1], true];
       var pts = [s0, mouthA, mouthB, dest], seg = Math.min(2, Math.floor(u * 3)), v = sm(u * 3 - seg), A = pts[seg], B = pts[seg + 1];
       return [A[0] + (B[0] - A[0]) * v, A[1] + (B[1] - A[1]) * v, u > 0.5];
@@ -902,7 +902,8 @@
       L(cx + g.tw * 0.2, top + (tBot - top) * 0.28, g.ph ? 'Sending' : 'Sending neuron', 'is-cell', 'start');
       L(cx, rB - fs - 2, 'Receiving neuron', 'is-cell', 'middle');
       L(g.pad + 2, tBot + g.cleft / 2, 'Synapse', 'is-cell', 'start');
-      if(!g.ph) L(g.trs[1][0] + 12 * z, g.trs[1][1] - 22 * z - 6, 'Reuptake', 'is-ink', 'middle');   // a phone has no free spot there (vesicles); the cause line names it
+      if(!g.ph) L(g.trs[1][0] + 12 * z, g.trs[1][1] - 22 * z - 6, 'Reuptake', 'is-ink', 'middle');
+      else { var rw = pillW('Reuptake', fs), rx = g.trs[1][0] + 11 * z; if(rx + rw > tr - 4) rx = g.trs[1][0] - 11 * z - rw; L(rx, g.trs[1][1] - 2 * z, 'Reuptake', 'is-ink', 'start'); }   // a phone: beside the right transporter, under the vesicles
       L(g.rec[1][0], g.rec[1][1] + 26 * z + 10, 'Receptors', 'is-ink', 'middle');
       // the graph
       if(g.fig) return p.join('');
@@ -1020,7 +1021,7 @@
         var a = P.X(sp), b = P.X(Math.min(P.dur, sp + Math.min(N.ABS, t - sp))), c = P.X(Math.min(P.dur, sp + Math.min(N.REL, t - sp)));
         p.push('<rect class="nr2-refa" x="' + n1(a) + '" y="' + n1(P.y0) + '" width="' + n1(b - a) + '" height="' + n1(P.Y(-86) - P.y0) + '"/>');
         if(c > b) p.push('<rect class="nr2-refb" x="' + n1(b) + '" y="' + n1(P.y0) + '" width="' + n1(c - b) + '" height="' + n1(P.Y(-86) - P.y0) + '"/>');
-        if(g.tab === 'refr' && t >= sp + 1 && sp === r.spikes[0]) p.push(txt(P.X(sp + 1.2), P.Y(10), 'refractory', 'nr2-refr-t', 'start', fs));
+        if(g.tab === 'refr' && t >= sp + 1 && sp === r.spikes[0]) p.push(txt(P.X(sp + 1.2), P.y0 + fs + 3, 'refractory', 'nr2-refr-t', 'start', fs));
       });
       // the setting before the change (Threshold): its whole trace, faint
       // the whole run faint (and the setting before the change), drawn once per run in its own layer
@@ -1032,7 +1033,7 @@
       var vx = P.X(t), vy = P.Y(f.V);
       p.push('<line class="nr2-now" x1="' + n1(vx) + '" x2="' + n1(vx) + '" y1="' + n1(P.y0) + '" y2="' + n1(P.Y(-86)) + '"/><circle class="nr2-head" cx="' + n1(vx) + '" cy="' + n1(vy) + '" r="4.5" data-v="' + f.V.toFixed(1) + '"/>');
       // the peak, once drawn
-      if(g.tab === 'fire' && r.spikes.length && t >= r.spikes[0] + 0.45){ var px = P.X(r.spikes[0] + 0.5); p.push(txt(P.X(r.spikes[0] + 2.4) + 4, P.Y(N.PEAK) + 4, '+40 mV spike', 'nr2-peak-t', 'start', fs)); }
+      if(g.tab === 'fire' && r.spikes.length && t >= r.spikes[0] + 0.45){ var px = P.X(r.spikes[0] + 0.5); p.push(txt(px, P.Y(N.PEAK) - 9, '+40 mV spike', 'nr2-peak-t', 'middle', fs)); }
       // the pulses: marks on the stimulus row (the second one carries the knob in Refractory period)
       r.events.forEach(function(e, i){
         var x = P.X(e.t), on = t >= e.t;
@@ -1133,10 +1134,12 @@
       if(g.fig){ g.bound = bound; return p.join(''); }
       // the graph
       var P = g.plot, sr = synRun(), base = synBase(), upto = view.preview ? N.SYN.dur : t, line = function(R, a, b){ var q = []; for(var i = 0; i < R.t.length; i++){ if(R.t[i] < a - 1e-9 || R.t[i] > b + 1e-9) continue; q.push(n1(P.X(R.t[i])) + ',' + n1(P.Y(R.act[i]))); } return q.join(' '); };
-      if(cls !== 'none'){ p.push('<polyline class="nr2-before" points="' + line(base, 0, N.SYN.dur) + '"/>'); p.push(txt(P.X(7.6), P.Y(0.16), 'no drug', 'nr2-mark-t', 'start', fs)); }
-      p.push('<polyline class="nr2-ghost is-syn" points="' + line(sr, Math.max(0, upto), N.SYN.dur) + '"/>');
-      if(upto > 0){ var pc = line(sr, 0, upto); p.push('<polygon class="nr2-actarea" points="' + n1(P.X(0)) + ',' + n1(P.Y(0)) + ' ' + pc + ' ' + n1(P.X(Math.min(upto, N.SYN.dur))) + ',' + n1(P.Y(0)) + '"/><polyline class="nr2-act" points="' + pc + '"/>'); }
-      if(t >= 0){ var vx = P.X(t); p.push('<line class="nr2-now" x1="' + n1(vx) + '" x2="' + n1(vx) + '" y1="' + n1(P.y0) + '" y2="' + n1(P.y1) + '"/><circle class="nr2-head is-syn" cx="' + n1(vx) + '" cy="' + n1(P.Y(f.act)) + '" r="4.5" data-act="' + f.act.toFixed(3) + '"/>'); }
+      // the no drug curve and the whole run faint: drawn once per setting, in their own layer
+      var gin = ntc === 'is-in' ? ' is-in' : '', gk = 'syn|' + g.W + 'x' + g.H + '|' + cls + '|' + gin;
+      if(ghostKey !== gk){ ghostKey = gk; ghostStr = (cls !== 'none' ? '<polyline class="nr2-before" points="' + line(base, 0, N.SYN.dur) + '"/>' + txt(P.X(7.6), P.Y(0.16), 'no drug', 'nr2-mark-t', 'start', fs) : '') + '<polyline class="nr2-ghost is-syn' + gin + '" points="' + line(sr, 0, N.SYN.dur) + '"/>'; }
+      ghostNext = ghostStr;
+      if(upto > 0){ var pc = line(sr, 0, upto); p.push('<polygon class="nr2-actarea' + gin + '" points="' + n1(P.X(0)) + ',' + n1(P.Y(0)) + ' ' + pc + ' ' + n1(P.X(Math.min(upto, N.SYN.dur))) + ',' + n1(P.Y(0)) + '"/><polyline class="nr2-act' + gin + '" points="' + pc + '"/>'); }
+      if(t >= 0){ var vx = P.X(t); p.push('<line class="nr2-now" x1="' + n1(vx) + '" x2="' + n1(vx) + '" y1="' + n1(P.y0) + '" y2="' + n1(P.y1) + '"/><circle class="nr2-head is-syn' + gin + '" cx="' + n1(vx) + '" cy="' + n1(P.Y(f.act)) + '" r="4.5" data-act="' + f.act.toFixed(3) + '"/>'); }
       g.bound = bound;
       return p.join('');
     }
@@ -1237,7 +1240,7 @@
     function figSvg(kind, o, W, H){
       var g, out;
       if(kind === 'synapse'){
-        g = geo(W, H, 'syn', true); g.cls = o.cls || 'none'; g.nt = o.nt || 'dopamine';
+        g = geo(W, H, 'syn', true); g.cls = o.cls || 'none'; g.nt = o.neutral ? 'dopamine' : o.nt || 'dopamine';   // neutral: GABA's pink would give the answer away
         var sr = N.synapse(g.cls), i = Math.round(1.6 / N.SYN.dt);
         out = DEFS + '<rect class="nr2-bg" x="0" y="0" width="' + W + '" height="' + H + '"/>' + synStatic(g) + synDyn(g, { t: 1.6, cleft: sr.cleft[i], act: sr.act[i], base: 0, arrive: null });
       } else {
@@ -1285,7 +1288,7 @@
     } else if(g.kind === 'synapse'){
       H = phone ? 260 : 300;
       var shown = st.cls ? g.cls : 'none';
-      out = FIG ? FIG('synapse', { nt: g.nt, cls: shown }, Wd, H) : synapseArt(4, 4, Wd - 8, H - 8, { nt: g.nt, cls: shown, t: 1.6, id: 'syq' }).svg;
+      out = FIG ? FIG('synapse', { nt: g.nt, cls: shown, neutral: p.type === 'transmitter' && !st.nt }, Wd, H) : synapseArt(4, 4, Wd - 8, H - 8, { nt: g.nt, cls: shown, t: 1.6, id: 'syq' }).svg;
       label = 'A synapse: the axon terminal above, receptors on the receiving neuron below, neurotransmitter in the cleft.' + (st.cls && g.cls !== 'none' ? ' The drug is drawn: ' + N.CLASSES[g.cls].name.toLowerCase() + '.' : '');
     } else {
       H = phone ? 200 : 240;

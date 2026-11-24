@@ -121,7 +121,7 @@
 @media (max-width:640px){ .nr2-scene{height:540px;min-height:0;border-radius:14px;} .nr2{gap:8px;} }
 .nr2[data-tab="myel"] .nr2-scene{min-height:440px;}
 @media (max-width:1023px){ .nr2[data-tab="myel"] .nr2-scene{flex:none;height:440px;} }
-@media (max-width:640px){ .nr2[data-tab="myel"] .nr2-scene{height:250px;} }
+@media (max-width:640px){ .nr2[data-tab="myel"] .nr2-scene{height:230px;min-height:0;} }
 .nr2-lines{display:flex;align-items:center;justify-content:space-between;gap:8px 18px;flex-wrap:wrap;flex:none;}
 .nr2-side{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-left:auto;}
 .nr2-nt{display:inline-flex;align-items:center;gap:8px;font:700 14px var(--font-ui);color:var(--nr-mute);}
@@ -289,3 +289,5 @@
 .nr2-isfig .nr2-sterm{fill:url(#nr2f-term);}
 .nr2-isfig .nr2-rcv{fill:url(#nr2f-rcv);}
 .nr2 .tk2-scrub .tk2-cur{display:none;}   /* the drawn "now" line is the one cursor */
+.nr2-act.is-in,.nr2-ghost.is-syn.is-in,.nr2-head.is-syn.is-in{stroke:var(--nr-in-ink);} .nr2-actarea.is-in{fill:var(--nr-in);}
+.nr2.is-cue[data-tab="refr"] .nr2-kG .tk2-tag{visibility:hidden;}
