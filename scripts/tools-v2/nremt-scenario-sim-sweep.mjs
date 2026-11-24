@@ -295,6 +295,7 @@ async function frames() {
   {
     const { browser, page, errs } = await open(1440, false, { reduced: true, noCue: true });
     const walk = async (id, picks) => { await call(page, id); await idle(page); const out = []; for (const i of picks) { await choose(page, i); out.push(await idle(page)); } return out; };
+    ok(await page.evaluate(() => !window.LevlBodyFigs.sets.pose), 'recheck 3: the posed figures are not fetched for a call without one (s3)');
     let r = await walk('s3', [0, 0, 0, 0]);
     const after = r.slice(1);
     ok(after.every(x => !x.labs.includes('Coughing') && !/Coughing/.test(x.chain)), `N1: s3 no "Coughing" after the grape clears (${after.map(x => x.node + ':' + x.labs).join(' | ')})`);
@@ -324,6 +325,17 @@ async function frames() {
     ok(st.node === 's1_end_bad' && st.labs.includes('Unresponsive') && !st.labs.includes('Alert') && st.drawn.eyes === 'closed', `R1: s1 poor ending "Unresponsive", eyes closed (${st.node} ${st.labs} ${st.drawn.eyes})`);
     r = await walk('s9', [0]); st = r[0];
     ok(st.labs.includes('On her side') && !st.labs.includes('On her left side'), `s9 names no side the case does not name (${st.labs})`);
+    // recheck 3: the seated pose is there at the call's opening (no standing first); the poses are fetched only for
+    // calls that use one
+    for (const id of ['s2', 's10', 's11', 's20']) {
+      await call(page, id); st = await idle(page);
+      const img = await page.evaluate(() => (document.querySelector('.scx-fig image') || {}).getAttribute?.('href') || '');
+      ok(st.view === 'sit' && /pose-/.test(img) && await page.evaluate(() => !!document.querySelector('.scx-seat')), `R3-1: ${id} opens seated, on its seat (${st.view} ${img})`);
+    }
+    await call(page, 's16'); await choose(page, 0); st = await idle(page);
+    ok(await page.evaluate(() => !!document.querySelector('.scx-pf .scx-eo') && !!document.querySelector('.scx-pf path[stroke="#9A4A44"]')), `R3-3: the side pose has an eye and a mouth (${st.view})`);
+    r = await walk('s2', [0]); st = r[0];
+    ok(!st.labs.some(a => st.labs.some(b => b !== a && b.toLowerCase().split(/,\s*/).length > a.toLowerCase().split(/,\s*/).length && a.toLowerCase().split(/,\s*/).every(x => b.toLowerCase().split(/,\s*/).includes(x)))), `s2 no word said twice (${st.labs})`);
     ok(!errs.length, `recheck: console errors: ${errs.slice(0, 3).join(' | ')}`);
     await browser.close();
   }

@@ -93,7 +93,7 @@ const SHELL_BUDGETS = [
   ['anatomy-physiology/predict-explore', 34],
   /* NREMT scenario simulator, tools v2 Explore (nremt/assets/scenario-explore.js and .css): its own shell, loaded only
      by scenario-sim.html. Measured 35.3 KB (the drawn settings, five patient figures' clothes, faces and care). */
-  ['nremt/scenario-explore', 40.8], // 36 -> 40.8 (rechecks 1 and 2; measured 40.4): postures drawn from posed figures (side, seated: the seat, the turned face), laid flat then up, the newborn after a birth, the 3:1 sequence. The posed figures themselves (body-figs/pose.js and its images) load on demand, like case.js
+  ['nremt/scenario-explore', 41.4], // 36 -> 41.4 (rechecks 1 to 3; measured 41.1; recheck 3 added the profile face, the call's pose fetched before its opening and the repeated-word filter): postures drawn from posed figures (side, seated: the seat, the turned face), laid flat then up, the newborn after a birth, the 3:1 sequence. The posed figures themselves (body-figs/pose.js and its images) load on demand, like case.js
   /* The NREMT v2 shared pieces: nremt-kit2.js (the adapter) and patient-draw.js (the drawn patient, review round 1 of the
      scenario simulator). Measured 6.1 KB. */
   ['nremt/kit2', 6.2],
@@ -969,6 +969,9 @@ const DATA_BUDGETS = [
      If it grows past this, the repeated ref links and source labels per card
      are the saving. */
   ['nremt/assets/flashcards.json', 46],
+  /* The scenario simulator's posed figures (scripts/build-pose-figures.mjs): sizes, outlines and landmarks of the
+     eight posed patients, fetched only for a call that poses one. Measured 7.7 KB. */
+  ['nremt/assets/body-figs/pose.js', 9],
   /* The ochem index grows with the course itself — it is generated from the
      notes and the question bank — so it moves every time a chapter lands.
      Unlike practice-bank.json above, this one is genuinely not a first-paint

@@ -408,7 +408,7 @@
     dress: ['#E07A9A', '#F4A0BA'], tee: ['#4F7F6E', '#6FA08D'], tee2: ['#E2A93B', '#F4C866'], shorts: ['#33465E', '#4F6684'], tank: ['#C0392B', '#DC5A4C'],
     gown: ['#B9C7E8', '#D6E0F6'], hoodie: ['#56606B', '#76818D'], pjs: ['#F2B8C8', '#FAD6E0'], pjs2: ['#8DB7E0', '#B2D3F2'], tee3: ['#7E62B5', '#A086D2'],
     leggings: ['#2F3542', '#4A5264'], onesie: ['#BFE0D2', '#DCF1E8'], onesie2: ['#F6D58A', '#FCE8B6'], diaper: ['#ECECEA', '#FFFFFF'], swim: ['#E8546E', '#F57E94'],
-    maternity: ['#5C8FB0', '#7EAFCF'], maternity2: ['#A07CC0', '#BD9CD8'], maternity3: ['#D4896A', '#E9A88A'], jacket2: ['#4C5A3E', '#6A7A52'],
+    maternity: ['#5C8FB0', '#7EAFCF'], maternity2: ['#A07CC0', '#BD9CD8'], maternity3: ['#3E8E8A', '#5FB0AA'], jacket2: ['#4C5A3E', '#6A7A52'],
     sweater: ['#9AA6B3', '#B8C3CE'], shirt: ['#D8D2C4', '#EEE9DE'], singlet: ['#1E88C8', '#4AA8E2'], cardigan: ['#8C6C9C', '#A98BB8'], flannel: ['#A33B32', '#C4564B'] };
   var PD = window.NremtPatientDraw, DUMMY = { classList: { toggle: function(){} } };
   function clothGrad(name, w){ var c = CLOTH[name]; return c ? PD.grads('scx-', [name + ':' + c[0] + ':' + c[1]], { x1: 0, x2: w || 480 }) : ''; }
@@ -670,9 +670,14 @@
     var G = null, M = null, monitor = null, figLoaded = false;
     function look(){ return LOOK[St.id] || { v: 'floor', set: 'living', top: 'tee', bot: 'jeans' }; }
     function fig(){ var F = St.F; if(!F) return null; var pz = (St.view === 'side' || St.view === 'sit') && F.figs[St.id + '-' + St.view]; if(pz) return pz; if((St.view === 'prone' || St.view === 'side') && F.figs[St.kind + '-back']) return F.figs[St.kind + '-back']; return F.figs[St.kind + '-front'] || F.figs[(St.kind === 'female' ? 'adult' : St.months != null && St.months < 144 ? 'child' : 'adult') + '-front'] || F.figs['adult-front']; }
-    function loadFigs(cb){
+    // the posed figures (body-figs/pose.js) are fetched only for the calls that use one, before their first drawing
+    var POSED = { s2: 1, s8: 1, s9: 1, s10: 1, s11: 1, s16: 1, s17: 1, s20: 1 };
+    function loadFigs(cb, id){
       if(!window.LevlBodyFigs) return;
-      window.LevlBodyFigs.load('body', function(F){ window.LevlBodyFigs.load('case', function(F2){ window.LevlBodyFigs.load('pose', function(F3){ St.F = F3 || F2 || F; figLoaded = true; cb(); }); }); });
+      var B = window.LevlBodyFigs;
+      B.load('body', function(F){ B.load('case', function(F2){
+        if(!POSED[id]){ St.F = F2 || F; figLoaded = true; cb(); return; }
+        B.load('pose', function(F3){ St.F = F3 || F2 || F; figLoaded = true; cb(); }); }); });
     }
     /* an ending's words mostly look back over the call; only its sentences about the patient now ("he's unresponsive")
        set the picture and the words */
@@ -829,6 +834,14 @@
         '</g>');
       }
       // seated, a three quarter view: the face turned with the head (narrower across)
+      if(posed && St.view === 'side'){
+        // the face in profile, looking to the front: one eye (open, half or closed, as the drawn faces) and the mouth
+        var e = f.landmarks.eye, mo2 = f.landmarks.mouth, q = M.r * 0.085, E = function(x, y){ return f1(e[0] + x * q) + ' ' + f1(e[1] + y * q); };
+        h.push('<g class="scx-face scx-pf"><g class="scx-eo"><path d="M' + E(-1.6, 0) + 'Q' + E(0, -1.5) + ' ' + E(1.8, -0.2) + 'Q' + E(0.2, 1) + ' ' + E(-1.6, 0) + 'Z" fill="#FBF7F2" stroke="#4A3428" stroke-width="' + f1(q * 0.35) + '"/><circle cx="' + f1(e[0] + q * 0.6) + '" cy="' + f1(e[1] - q * 0.15) + '" r="' + f1(q * 0.62) + '" fill="#3B2A20"/><path d="M' + E(-1.8, -1.6) + 'Q' + E(0, -2.6) + ' ' + E(1.8, -1.7) + '" stroke="#4A3428" stroke-width="' + f1(q * 0.45) + '" fill="none" stroke-linecap="round"/></g>' +
+          '<g class="scx-eh"><path d="M' + E(-1.6, 0) + 'Q' + E(0.2, 0.9) + ' ' + E(1.8, -0.1) + 'L' + E(1.6, -0.5) + 'Q' + E(0, -0.6) + ' ' + E(-1.6, 0) + 'Z" fill="#FBF7F2" stroke="#4A3428" stroke-width="' + f1(q * 0.35) + '"/></g>' +
+          '<g class="scx-ec"><path d="M' + E(-1.6, -0.1) + 'Q' + E(0.1, 0.9) + ' ' + E(1.8, -0.1) + '" stroke="#4A3428" stroke-width="' + f1(q * 0.45) + '" fill="none" stroke-linecap="round"/></g>' +
+          '<path d="M' + f1(mo2[0] - q * 1.6) + ' ' + f1(mo2[1] + q * 0.2) + 'Q' + f1(mo2[0] - q * 0.4) + ' ' + f1(mo2[1] + q * 0.7) + ' ' + f1(mo2[0] + q * 0.6) + ' ' + f1(mo2[1]) + '" stroke="#9A4A44" stroke-width="' + f1(q * 0.55) + '" fill="none" stroke-linecap="round"/></g>');
+      }
       if(posed){ if(St.view === 'sit') h.push('<g class="scx-q3" transform="translate(' + f1(M.hx) + ' ' + f1(M.eyeY) + ') scale(.8 1) translate(' + f1(-M.hx) + ' ' + f1(-M.eyeY) + ')">' + face(M) + '</g>'); }
       else if(St.view === 'prone'){
         var hcol = (HAIR[St.id] || ['#2B2B2B'])[0];
@@ -842,7 +855,7 @@
         it = { warm: it.warm, o2: it.o2 && '<ellipse class="scx-mask" cx="' + f1(mx) + '" cy="' + f1(my) + '" rx="' + f1(mr * 0.85) + '" ry="' + f1(mr * 1.2) + '" fill="#DDF1EA" fill-opacity=".6" stroke="#3E8A73" stroke-width="' + f1(mr * 0.12) + '"/>' +
           '<ellipse cx="' + f1(mx + mr * 0.9) + '" cy="' + f1(my + mr * 1.6) + '" rx="' + f1(mr * 0.9) + '" ry="' + f1(mr * 1.1) + '" fill="#BFE2D6" fill-opacity=".85" stroke="#6FA592" stroke-width="' + f1(mr * 0.08) + '"/>' +
           '<path d="M' + f1(mx + mr * 1.6) + ' ' + f1(my + mr * 2.2) + 'Q' + f1(mx + mr * 4) + ' ' + f1(my + mr * 4) + ' ' + f1(mx + mr * 6) + ' ' + f1(my + mr * 2) + '" stroke="#7FBFA9" stroke-width="' + f1(mr * 0.25) + '" fill="none" stroke-linecap="round"/>',
-          blowby: it.blowby && '<ellipse class="scx-mask" cx="' + f1(mx + mr * 1.6) + '" cy="' + f1(my) + '" rx="' + f1(mr * 0.85) + '" ry="' + f1(mr * 1.2) + '" fill="#DDF1EA" fill-opacity=".6" stroke="#3E8A73" stroke-width="' + f1(mr * 0.12) + '"/>' +
+          blowby: it.blowby && '<ellipse class="scx-mask" cx="' + f1(mx + mr * 1.2) + '" cy="' + f1(my) + '" rx="' + f1(mr * 0.85) + '" ry="' + f1(mr * 1.2) + '" fill="#DDF1EA" fill-opacity=".6" stroke="#3E8A73" stroke-width="' + f1(mr * 0.12) + '"/>' +
           '<path d="M' + f1(mx + mr * 2.4) + ' ' + f1(my + mr * 0.4) + 'Q' + f1(mx + mr * 4.5) + ' ' + f1(my + mr * 2) + ' ' + f1(mx + mr * 6) + ' ' + f1(my + mr * 0.6) + '" stroke="#7FBFA9" stroke-width="' + f1(mr * 0.25) + '" fill="none" stroke-linecap="round"/>' }; }
       if(!site && !isBack && !onSide){ var it2 = items(M, f, St.kind, splintSite(f, fnd0), G.view, 12.5 / G.k); it.splint = it2.splint; }
       var on = [];
@@ -993,6 +1006,9 @@
       // a step that ends with the patient crying (the newborn after 3:1) says so even with no cough to replace
       if(unr && M && !out.some(function(x){ return x.text === 'Unresponsive'; })) out.push({ text: 'Unresponsive', at: [M.hx, M.top + M.hry * 0.18], tone: 'bad' });
       if(!unr && crying && M && sn[0] && /\b(cries|crying)\b/i.test(own(sn[0].text, St.preg)) && !out.some(function(x){ return x.text === 'Crying'; })) out.push({ text: 'Crying', at: [M.hx, M.chin], tone: 'see' });
+      // a word already said inside a longer label ("Alert" beside "Alert, in pain") is dropped
+      var parts = function(t){ return t.toLowerCase().split(/,\s*/); };
+      out = out.filter(function(l){ var a = parts(l.text); return l.tone === 'act' || !out.some(function(m){ if(m === l || m.tone === 'act') return false; var b = parts(m.text); return b.length > a.length && a.every(function(x){ return b.indexOf(x) > -1; }); }); });
       return out;
     }
     function itemAt(k){
@@ -1077,9 +1093,9 @@
       St.view = viewFor(S.careObj);
       clearLabels();
       // the words are placed on the next frame, once the new drawing's geometry is in (a new call's boxes)
-      var go = function(){ layout(); draw(); paint(S, false); rates(); var ll = labelList(null); St.labs = ll; St.labsOn = true; if(!St.path.length) cause.set(openCause());
+      var go = function(){ if(St.id !== id) return; St.view = viewFor(S.careObj); layout(); draw(); paint(S, false); rates(); var ll = labelList(null); St.labs = ll; St.labsOn = true; if(!St.path.length) cause.set(openCause());
         cancelAnimationFrame(St.labFrame); St.labFrame = requestAnimationFrame(function(){ St.labFrame = 0; placeLabels(ll); if(cue && cue.active()) cue.place(); }); };
-      if(St.F) go(); else loadFigs(go);
+      if(St.F && (!POSED[id] || window.LevlBodyFigs.sets.pose === 'done')) go(); else loadFigs(go, id);
       renderBoard(false);
       cause.set(openCause(S));
       if(user && o.onAct) o.onAct('call', id);

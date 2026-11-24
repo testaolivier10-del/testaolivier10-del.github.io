@@ -298,3 +298,35 @@ Checks after recheck 2 (2026-11-23):
 - Flowcharts kept sweep: 390 1226 and 1440 1184 passed (`patient-draw.js` identical to round 1).
 - NREMT and kit tests 73 passed; check-site and check-weight pass.
 
+## Recheck 3 (2026-11-24): BLOCK, fixed
+
+1. Seated at the opening: a call with a posed figure fetches `body-figs/pose.js` before its first drawing and works the
+   view out again then, so s2, s10, s11 and s20 open seated on their seat, with no standing frame first. Other calls
+   never fetch it.
+2. One face when seated: the mesh's nose, lips and brow are pressed back under the drawn face (seated poses only; the
+   side poses keep the profile).
+3. The recovery position: the upper hand is placed by search at the lower face (in front of the cheek, on our side),
+   the lower arm bent at a right angle toward the head. The profile has an eye (open, half or closed, as the drawn
+   faces) and a mouth.
+4. The child (s9): her own gentler angles (`sideKid`), and the arm/leg split measured every 20 mm of height (one width
+   had cut the outer thigh off the leg, which deformed the limbs and tore the trousers).
+5. Hands and feet: mittens (fingers drawn together and shortened a little, smoothed harder), a rounded palm, the toes
+   drawn back; socks or shoes on every posed patient (footed pyjamas for the small children). The trousers' tears and
+   the shirt's shoulder notch came from the same arm/leg split and the neckline; both fixed (the neckline is low at
+   the front, higher behind, and covers the shoulders).
+6. s17's top is teal (both in the standing figure's `CLOTH` and the posed build).
+
+Should fix: `pose.js` has its own data budget (9 KB, measured 7.7); repeated words are dropped (a label whose words
+another label already says, as s2's "Alert" beside "Alert, in pain"). Explore measures 41.1 KB; budget 41.4.
+
+Sweep checks added: s2, s10, s11 and s20 open seated on their seat from a posed figure; no `pose.js` for a call
+without a pose; the side pose has an eye and a mouth; s2 says no word twice.
+
+Checks after recheck 3 (2026-11-24):
+- Sweep, one width per process (all ten, run before the new four-width rule arrived): 360 8885, 390 9170, 430 9198,
+  600 9151, 768 8324, 820 8452, 1024 8469, 1280 8559, 1440 8495, 1920 8332 passed, 0 failed (1280's first run lost its
+  browser under load and was rerun).
+- Frames run: 126 passed; the two failures are performance at load average 9 to 10 (390 choice p95 74.7 ms against the
+  flagship's 30.3; 1440 757 ms against 40.6). To time on a quiet machine before the merge (pipeline note).
+- Flowcharts kept sweep at 390: 1226 passed. NREMT and kit tests 73 passed; check-site and check-weight pass.
+

@@ -34,7 +34,7 @@ States: building, review, fixing, recheck, PASS (waiting to integrate), integrat
 | NREMT skill sheets | claude/tools-v2-nremt-skillsheets | wt-nremt-skillsheets | integrated | third NREMT tool on `nremt-kit2.js` (unchanged); Explore `nremt/assets/skill-explore.js`, the run is Test yourself |
 | Ochem 3D viewer | claude/tools-v2-viewer-3d | wt-viewer-3d | integrated | second explorer (`K.spots` over a turning molecule); Handedness opens with the H in front and reads R or S after "H to the back" (brief rule 8) |
 | NREMT flowcharts | claude/tools-v2-nremt-flowcharts | wt-nremt-flowcharts | integrated | fourth NREMT tool on `nremt-kit2.js`; Explore `nremt/assets/flow-explore.js` (two drawn calls); Read, Build it and Drill me are Test yourself |
-| NREMT scenario sim | claude/tools-v2-nremt-scenario-sim | wt-nremt-scenario-sim | recheck 3 (recheck 2 BLOCK fixed) | Explore `nremt/assets/scenario-explore.js` (own weight shell); the run is Test yourself; monitor pause/resume and `pinsFor` added; the shared NREMT drawn patient `nremt/assets/patient-draw.js` (flowcharts moved onto it); shell `nremt/kit2` |
+| NREMT scenario sim | claude/tools-v2-nremt-scenario-sim | wt-nremt-scenario-sim | recheck 4 (recheck 3 BLOCK fixed) | Explore `nremt/assets/scenario-explore.js` (own weight shell); the run is Test yourself; monitor pause/resume and `pinsFor` added; the shared NREMT drawn patient `nremt/assets/patient-draw.js` (flowcharts moved onto it); shell `nremt/kit2` |
 
 2026-11-19: `main` merged in after PR #228 (ochem frame cleanup: chipPicker, scrollChips and .ls-chips-hidden gone; the v2
 conformations, resonance and arrow pusher kept, kit2 kept). Ochem viewer 3d had `main` merged
@@ -50,6 +50,12 @@ Before the final merge:
 - Time the skill sheets bleeding station's Blanket and Transport taps on a quiet machine or a real phone (p95 is
   above budget under load). If still over 50 ms, find the cause.
 - Time flowcharts after the glove polish on a quiet machine (p95 at CPU x4 was 66 to 133 ms under load).
+- Time the scenario sim at 390 and 1440 on a quiet machine before its merge (under load its p95 swings above the
+  flagship's; on the quiet machine in recheck 1 both were under 50 ms).
+- `node scripts/build-body-figures.mjs --check` reports "stale" on main, on tools-v2-all and on the scenario sim
+  branch alike (the reviewer checked all three, 2026-11-23): older than the scenario sim, either stale data or a render
+  that differs between machines. CI does not run it (no workflow or `scripts/ci-local.sh` calls it, nor
+  `build-pose-figures.mjs`), so it cannot block a merge; not a regression.
 
 Next by use (rollout table):
 NREMT body map (fixing recheck 1),

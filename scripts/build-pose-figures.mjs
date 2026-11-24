@@ -28,18 +28,18 @@ const previewDir = args.includes('--preview') ? args[args.indexOf('--preview') +
 const only = args.includes('--only') ? args[args.indexOf('--only') + 1].split(',') : null;
 
 // the cases whose words pose the patient (colours: scenario-explore.js CLOTH, HAIR, SHOES)
-const C = { maternity2: ['#A07CC0', '#BD9CD8'], maternity3: ['#D4896A', '#E9A88A'], slacks: ['#3E4450', '#5C6472'], pjs: ['#F2B8C8', '#FAD6E0'],
+const C = { maternity2: ['#A07CC0', '#BD9CD8'], maternity3: ['#3E8E8A', '#5FB0AA'], slacks: ['#3E4450', '#5C6472'], pjs: ['#F2B8C8', '#FAD6E0'],
   hoodie: ['#56606B', '#76818D'], jeans: ['#3C5A80', '#5878A4'], tee3: ['#7E62B5', '#A086D2'], leggings: ['#2F3542', '#4A5264'], pjs2: ['#8DB7E0', '#B2D3F2'],
   blouse: ['#C26D82', '#DD90A4'], sweater: ['#9AA6B3', '#B8C3CE'] };
 const LIST = [
-  { name: 's16-side', kind: 'female', pose: 'side', preg: true, top: C.maternity2, bot: C.slacks, longSleeve: true, hair: '#8C4A2C', long: true },
-  { name: 's17-side', kind: 'female', pose: 'side', preg: true, top: C.maternity3, bot: C.slacks, longSleeve: true, hair: '#1E1A19', long: true },
-  { name: 's9-side', kind: 'toddler', pose: 'side', top: C.pjs, bot: C.pjs, longSleeve: true, hair: '#A7774A', long: true },
+  { name: 's16-side', kind: 'female', pose: 'side', preg: true, top: C.maternity2, bot: C.slacks, longSleeve: true, hair: '#8C4A2C', long: true, shoe: '#D5D9E0' },
+  { name: 's17-side', kind: 'female', pose: 'side', preg: true, top: C.maternity3, bot: C.slacks, longSleeve: true, hair: '#1E1A19', long: true, shoe: '#CBD0D8' },
+  { name: 's9-side', kind: 'toddler', pose: 'side', top: C.pjs, bot: C.pjs, longSleeve: true, hair: '#A7774A', long: true, shoe: '#F2B8C8' },
   { name: 's8-side', kind: 'adult', pose: 'side', top: C.hoodie, bot: C.jeans, longSleeve: true, hair: '#1F1B1A', shoe: '#2B2B2B' },
-  { name: 's11-sit', kind: 'child', pose: 'tripod', top: C.tee3, bot: C.leggings, hair: '#2B1F1A', long: true },
-  { name: 's10-sit', kind: 'toddler', pose: 'sit', top: C.pjs2, bot: C.pjs2, longSleeve: true, hair: '#5A3E2B' },
-  { name: 's2-sit', kind: 'female', pose: 'sit', top: C.blouse, bot: C.slacks, longSleeve: true, hair: '#8D8378' },
-  { name: 's20-sit', kind: 'female', pose: 'sit', top: C.sweater, bot: C.leggings, longSleeve: true, hair: '#5B4232', long: true }
+  { name: 's11-sit', kind: 'child', pose: 'tripod', top: C.tee3, bot: C.leggings, hair: '#2B1F1A', long: true, shoe: '#EEEEF0' },
+  { name: 's10-sit', kind: 'toddler', pose: 'sit', top: C.pjs2, bot: C.pjs2, longSleeve: true, hair: '#5A3E2B', shoe: '#8DB7E0' },
+  { name: 's2-sit', kind: 'female', pose: 'sit', top: C.blouse, bot: C.slacks, longSleeve: true, hair: '#8D8378', shoe: '#5A4636' },
+  { name: 's20-sit', kind: 'female', pose: 'sit', top: C.sweater, bot: C.leggings, longSleeve: true, hair: '#5B4232', long: true, shoe: '#D9D4E0' }
 ].filter(x => !only || only.includes(x.name));
 
 const { chromium } = await import('playwright');

@@ -994,4 +994,4 @@ function ellipse(cx, cy, rx, ry){
 }
 
 /* Shared with scripts/body-figures/pose.js (the scenario simulator's posed figures). */
-export { THREE, GLTFLoader, MeshoptDecoder, skinGeometry, worldPositions, bbox, pts, WARPS, morph, components, fillHoles, edt, poisson, blurF, smooth, trace, pathD, r1 };
+export { THREE, GLTFLoader, MeshoptDecoder, mergeVertices, subdivide, taubin, skinGeometry, worldPositions, bbox, pts, WARPS, morph, components, fillHoles, edt, poisson, blurF, smooth, trace, pathD, r1 };

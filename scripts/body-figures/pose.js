@@ -21,7 +21,7 @@
    window.renderPoses(list) resolves to { name: { webp, w, h, outline, landmarks,
    anchors, lines } } in each image's own pixels (model space: +x patient's
    left, -y front, +z up, mm). */
-import { THREE, GLTFLoader, MeshoptDecoder, skinGeometry, worldPositions, bbox, pts, WARPS, morph, components, fillHoles, edt, poisson, blurF, smooth, trace, pathD, r1 } from './render.js';
+import { THREE, GLTFLoader, MeshoptDecoder, mergeVertices, subdivide, taubin, skinGeometry, worldPositions, bbox, pts, WARPS, morph, components, fillHoles, edt, poisson, blurF, smooth, trace, pathD, r1 } from './render.js';
 
 const ss = t => { t = Math.max(0, Math.min(1, t)); return t * t * (3 - 2 * t); };
 // rotate about the lateral (x) axis through c: a > 0 swings a hanging limb forward (toward -y)
@@ -37,7 +37,9 @@ function rotY(p, c, a, sd){
 const D = Math.PI / 180;
 const POSES = {
   // the recovery position (patient on the left side): the upper (right) hip and knee bent, the lower leg a little bent, arms forward
-  side: { hip: [72, 18], knee: [-88, -22], abd: [0, 0], arm: [84, 84], elbow: [86, 6], armAbd: [0, 0], lean: 6, head: 0 },
+  side: { hip: [72, 18], knee: [-88, -22], abd: [0, 0], arm: [84, 84], elbow: [86, 78], armAbd: [0, 0], lean: 6, head: 0, cheek: true },
+  // a small child: the same position with gentler angles, so the short, thick limbs keep their shape and never cross
+  sideKid: { hip: [52, 10], knee: [-58, -10], abd: [6, 0], arm: [80, 80], elbow: [60, 70], armAbd: [0, 0], lean: 4, head: 0, cheek: true },
   // seated upright, hands resting on the thighs (the hands placed by reach, below)
   sit: { hip: [88, 88], knee: [-88, -88], abd: [7, 7], arm: [0, 0], elbow: [0, 0], armAbd: [0, 0], lean: 8, head: 0, hands: 0.55 },
   // seated, leaning forward, hands on the knees (the tripod position)
@@ -65,10 +67,10 @@ function measureJoints(W){
 }
 
 /* the pose as a warp: q is the rest (adult, unwarped) position, p the variant-warped one */
-function poser(pose, J, Jw, armX){
+function poser(pose, J, Jw, armT){
   return function(q, p){
     const sd = q[0] < 0 ? 0 : 1, sg = sd ? 1 : -1, ax = Math.abs(q[0]);
-    const isArm = ss((ax - armX) / 14) * (q[2] < J.sh[sd][2] + 60 ? 1 : 0);
+    const isArm = ss((ax - armT(q[2])) / 10) * (q[2] < J.sh[sd][2] + 60 ? 1 : 0);
     const wLeg = (1 - isArm) * ss((J.hip[sd][2] + 40 - q[2]) / 130);
     const wKnee = (1 - isArm) * ss((J.knee[sd][2] + 30 - q[2]) / 70);
     if(wLeg > 0){
@@ -91,7 +93,7 @@ function poser(pose, J, Jw, armX){
 
 /* region of each vertex, from its rest position: 0 skin, 1 hair, 2 top, 3 bottom, 4 shoe */
 function regionOf(q, R, look){
-  const [x, y, z] = q, ax = Math.abs(x), arm = ax > R.armX && z < R.sh + 60;
+  const [x, y, z] = q, ax = Math.abs(x), arm = ax > R.armT(z) && z < R.sh + 60;
   const H = R.top - R.chin;
   if(z > R.chin + H * 0.15){
     if(!look.hair) return 0;
@@ -100,7 +102,8 @@ function regionOf(q, R, look){
     return z > zl ? 1 : 0;
   }
   if(look.hair && look.long && y > R.headY + 20 && z > R.notch - 70 && ax < 95) return 1;
-  const neck = R.notch + (y > 20 ? 30 : 6);
+  // the neckline: low at the front, higher behind; out over the shoulders the top covers everything up to the neck
+  const neck = R.notch + 6 + 24 * ss(y / 40) + 300 * ss((ax - 72) / 36);
   const top = look.top, bot = look.bot;
   const waist = /maternity/.test(top) ? R.pubis + 15 : /dress/.test(top) ? R.knee + 60 : R.asis - 35;
   if(top && z < neck){
@@ -150,24 +153,70 @@ function render(cam, meshes, w, h, lights, data){
 const hex = s => [parseInt(s.slice(1, 3), 16), parseInt(s.slice(3, 5), 16), parseInt(s.slice(5, 7), 16)];
 /* hands placed by reach: the shoulder, elbow and arm-out angles that put each wrist on its thigh (hands: 0 at the hip,
    1 at the knee), found by search through the same pose, so the arms really reach */
-function reach(pose, J, Jw, armX, wrist){
-  if(pose.hands == null) return pose;
+function reach(pose, J, Jw, armT, wrist, cheek){
+  if(pose.hands == null && !pose.cheek) return pose;
   const P = JSON.parse(JSON.stringify(pose));
-  for(const sd of [0, 1]){
-    const sg = sd ? 1 : -1, f = poser(P, J, Jw, armX);
-    const k = f(J.knee[sd].slice(), Jw.knee[sd].slice()), h = f(J.hip[sd].slice(), Jw.hip[sd].slice());
-    const t = [h[0] + (k[0] - h[0]) * pose.hands, h[1] + (k[1] - h[1]) * pose.hands - 10, h[2] + (k[2] - h[2]) * pose.hands + 75];
+  for(const sd of (pose.cheek ? [0] : [0, 1])){
+    const sg = sd ? 1 : -1, f = poser(P, J, Jw, armT);
+    let t;
+    if(pose.cheek) t = f(cheek[0].slice(), cheek[1].slice());   // the upper (right) hand under the cheek
+    else { const k = f(J.knee[sd].slice(), Jw.knee[sd].slice()), h = f(J.hip[sd].slice(), Jw.hip[sd].slice());
+      t = [h[0] + (k[0] - h[0]) * pose.hands, h[1] + (k[1] - h[1]) * pose.hands - 10, h[2] + (k[2] - h[2]) * pose.hands + 75]; }
     const wr = [sg * 228, 30, wrist], wrw = Jw.wr[sd];
     let best = 1e18, bp = null;
-    for(let a = -40; a <= 70; a += 3) for(let e = 0; e <= 110; e += 4) for(let b = -16; b <= 20; b += 3){
+    const A = pose.cheek ? [40, 150] : [-40, 70], E = pose.cheek ? [40, 150] : [0, 110], Bb = pose.cheek ? [-10, 30] : [-16, 20];
+    for(let a = A[0]; a <= A[1]; a += 3) for(let e = E[0]; e <= E[1]; e += 4) for(let b = Bb[0]; b <= Bb[1]; b += 3){
       P.arm[sd] = a; P.elbow[sd] = e; P.armAbd[sd] = b;
-      const q = poser(P, J, Jw, armX)(wr, wrw.slice());
+      const q = poser(P, J, Jw, armT)(wr, wrw.slice());
       const d = (q[0] - t[0]) ** 2 + (q[1] - t[1]) ** 2 + (q[2] - t[2]) ** 2 + e * 2;
       if(d < best){ best = d; bp = [a, e, b]; }
     }
     [P.arm[sd], P.elbow[sd], P.armAbd[sd]] = bp;
   }
   return P;
+}
+
+/* The skin as render.js builds it (de-duplicated, smoothed, subdivided twice), with the hands made mittens and the
+   feet smoothed harder first: posed, the coarse mesh's fingers and toes read as claws and paddles. */
+const J0ankleY = R => R.ankleY;
+function poseGeometry(mesh, warp, R){
+  let geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(worldPositions(mesh), 3));
+  geo.setIndex(Array.from(mesh.geometry.index.array));
+  geo = mergeVertices(geo, 0.5);
+  const I0 = geo.index.array, seen = new Set(), I = [];
+  for(let t = 0; t < I0.length; t += 3){
+    const a = I0[t], b = I0[t+1], c = I0[t+2];
+    if(a === b || b === c || a === c) continue;
+    const k = [a, b, c].sort((p, q) => p - q).join('_');
+    if(seen.has(k)) continue;
+    seen.add(k); I.push(a, b, c);
+  }
+  let P = Array.from(geo.attributes.position.array), J = I;
+  const hand = (x, y, z) => z < R.wrist + 30 && Math.abs(x) > R.armT(z) - 4, foot = (x, y, z) => z < R.ankle + 45;
+  const ext = (x, y, z) => (hand(x, y, z) || foot(x, y, z)) ? 1 : (Math.abs(x) < 70 && y < 0 && z > 700 && z < 860) ? 0.6 : 0;
+  P = taubin(P, J, 30, ext);
+  // mittens: the fingers drawn together toward each hand's own axis
+  for(const sg of [-1, 1]){
+    const ids = []; for(let i = 0; i < P.length; i += 3) if(Math.sign(P[i]) === sg && hand(P[i], P[i+1], P[i+2])) ids.push(i);
+    if(!ids.length) continue;
+    const cx = ids.reduce((s, i) => s + P[i], 0) / ids.length, cy = ids.reduce((s, i) => s + P[i+1], 0) / ids.length;
+    // and the fingers shortened a little toward a relaxed, closed hand
+    const f0 = R.wrist - 55;
+    for(const i of ids){ const k = ss((R.wrist + 30 - P[i+2]) / 60); P[i] = cx + (P[i] - cx) * (1 - 0.6 * k); P[i+1] = cy + (P[i+1] - cy) * (1 - 0.4 * k); if(P[i+2] < f0) P[i+2] = f0 - (f0 - P[i+2]) * 0.6; }
+  }
+  // the coarse feet end in long points: the toes drawn back a little and the sole rounded
+  const fy0 = J0ankleY(R);
+  for(let i = 0; i < P.length; i += 3) if(foot(P[i], P[i+1], P[i+2])){ const d = fy0 - 70 - P[i+1]; if(d > 0) P[i+1] = fy0 - 70 - d * 0.7; }
+  P = taubin(P, J, 40, (x, y, z) => (hand(x, y, z) || foot(x, y, z)) ? 1 : 0);
+  P = taubin(P, J, 3);
+  if(warp) for(let i = 0; i < P.length; i += 3){ const w = warp(P[i], P[i+1], P[i+2], true); P[i] = w[0]; P[i+1] = w[1]; P[i+2] = w[2]; }
+  [P, J] = subdivide(P, J); P = taubin(P, J, 6);
+  [P, J] = subdivide(P, J); P = taubin(P, J, 4);
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.Float32BufferAttribute(P, 3));
+  g.setIndex(J); g.computeVertexNormals();
+  return g;
 }
 
 const SKIN = { LIGHT: [247, 214, 192], MID: [228, 178, 148], DARK: [172, 116, 92] };
@@ -190,16 +239,26 @@ window.renderPoses = async function(list){
     chin: mand.lo[2], top: restGeo.boundingBox.max.z, headY: (mand.lo[1] + mand.hi[1]) / 2 + 30, notch,
     xiph: st.lo[2], sAngle: st.hi[2], umb: (l3.lo[2] + l3.hi[2]) / 2,
     asis: hipR.filter(v => v[2] > 880).sort((a, b) => a[1] - b[1])[0][2], pubis: hipR.filter(v => Math.abs(v[0]) < 25).sort((a, b) => a[1] - b[1])[0][2],
-    hip: J.hip[0][2], knee: J.knee[0][2], ankle: J.ankle[0][2], sh: J.sh[0][2], elb: J.elb[0][2], wrist: J.elb[0][2] - 250, armX: 0
+    hip: J.hip[0][2], knee: J.knee[0][2], ankle: J.ankle[0][2], ankleY: J.ankle[0][1], sh: J.sh[0][2], elb: J.elb[0][2], wrist: J.elb[0][2] - 250, armX: 0
   };
-  // the arms hang just outside the trunk: the gap at the waist between the elbow and the hip
-  { const P = pts(restP).filter(v => Math.abs(v[2] - (R.elb - 30)) < 15 && v[1] > -60 && v[1] < 60);
-    const xs = P.map(v => Math.abs(v[0])).sort((a, b) => a - b); let gap = 0, at = 190;
-    for(let i = 1; i < xs.length; i++) if(xs[i] - xs[i - 1] > gap && xs[i - 1] > 120 && xs[i] < 260){ gap = xs[i] - xs[i - 1]; at = (xs[i] + xs[i - 1]) / 2; }
-    R.armX = at; }
+  // the arms hang just outside the trunk and the thighs: the gap between them, measured every 20 mm of height (a
+  // single width cut the outer thigh off the leg, which tore the trousers and left the thigh behind when the hip bent)
+  { const P = pts(restP), band = {};
+    for(let z = Math.round(R.wrist - 160); z <= R.elb + 80; z += 20){
+      const xs = P.filter(v => Math.abs(v[2] - z) < 12 && Math.abs(v[1]) < 90).map(v => Math.abs(v[0])).sort((a, b) => a - b);
+      let gap = 0, at = null;
+      for(let i = 1; i < xs.length; i++) if(xs[i] - xs[i - 1] > gap && xs[i - 1] > 110 && xs[i] < 300){ gap = xs[i] - xs[i - 1]; at = (xs[i] + xs[i - 1]) / 2; }
+      band[z] = gap > 6 ? at : null;
+    }
+    const zs = Object.keys(band).map(Number).filter(z => band[z] != null).sort((a, b) => a - b);
+    // above the elbow the upper arm lies against the chest and the measured gap falls inside the deltoid: there the
+    // arm starts just outside the chest wall
+    R.armT = z => { if(z > R.elb + 70) return 162; if(!zs.length) return 175; if(z <= zs[0]) return band[zs[0]]; if(z >= zs[zs.length - 1]) return band[zs[zs.length - 1]];
+      let i = 1; while(zs[i] < z) i++; const a = zs[i - 1], b = zs[i]; return band[a] + (band[b] - band[a]) * (z - a) / (b - a); };
+    R.armX = R.armT(R.elb - 30); }
   J.neckZ = (R.chin + R.notch) / 2; J.neck = [0, R.headY, J.neckZ];
 
-  const out = { _joints: { J, R } };
+  const out = { _joints: { J, R, armT: Array.from({ length: 40 }, (_, i) => { const z = Math.round(R.wrist - 160 + i * 20); return [z, Math.round(R.armT(z))]; }) } };
   for(const it of list){
     const base = WARPS[it.kind] || null;
     const bw = base || ((x, y, z) => [x, y, z]);
@@ -208,9 +267,15 @@ window.renderPoses = async function(list){
     const Jw = {};
     for(const k of ['hip', 'knee', 'ankle', 'sh', 'elb']) Jw[k] = J[k].map(p => wv(...p));
     Jw.hipMid = wv(...J.hipMid); Jw.neck = wv(...J.neck); Jw.wr = [wv(-228, 30, R.wrist), wv(228, 30, R.wrist)];
-    const pose = poser(reach(POSES[it.pose], J, Jw, R.armX, R.wrist), J, Jw, R.armX);
-    const full = (x, y, z) => { let p = wv(x, y, z); if(belly) p = belly([x, y, z], p); return pose([x, y, z], p); };
-    const geo = skinGeometry(skinMesh, full);
+    const P0 = POSES[it.pose === 'side' && (it.kind === 'toddler' || it.kind === 'infant') ? 'sideKid' : it.pose];
+    const cheekR = [-25, R.headY - 105, R.chin - 5];   // just in front of the lower face, on our side, so the hand shows
+    const pose = poser(reach(P0, J, Jw, R.armT, R.wrist, [cheekR, wv(...cheekR)]), J, Jw, R.armT);
+    // seated (three quarter view): the face is drawn on the head, so the mesh's own nose, lips and brow are pressed back
+    const flat = it.pose !== 'side' ? (q, p) => { const H = R.top - R.chin, f0 = R.headY - 48, d = f0 - q[1];
+      if(d <= 0 || q[2] < R.chin - 15 || q[2] > R.chin + H * 0.82) return p;
+      const k = ss((q[2] - (R.chin - 15)) / 30) * ss((R.chin + H * 0.82 - q[2]) / 30); return [p[0], p[1] + d * 0.78 * k, p[2]]; } : null;
+    const full = (x, y, z) => { let p = wv(x, y, z); if(belly) p = belly([x, y, z], p); if(flat) p = flat([x, y, z], p); return pose([x, y, z], p); };
+    const geo = poseGeometry(skinMesh, full, R);
     // the rest mesh has the same vertex order (subdivision is topological), so each vertex knows where it was
     geo.computeBoundingBox();
     const bb = geo.boundingBox, side = it.pose === 'side';
@@ -253,10 +318,10 @@ window.renderPoses = async function(list){
       chin, sternalNotch: pt(0, -70, R.notch), sternalAngle: pt(0, -90, R.sAngle), xiphoid: pt(0, -100, R.xiph), umbilicus: pt(0, -110, R.umb),
       asisR: pt(-110, -80, R.asis), asisL: pt(110, -80, R.asis), pubis: pt(0, -90, R.pubis),
       midaxR: pt(-150, 0, R.xiph - 30), midaxL: pt(150, 0, R.xiph - 30), acromionR: pt(-185, 0, R.sh + 30), acromionL: pt(185, 0, R.sh + 30), clavicleMidR: pt(-85, -70, R.notch - 15), clavicleMidL: pt(85, -70, R.notch - 15),
-      mouth: pt(0, R.headY - 105, R.chin + 45), eye: pt(side ? -40 : 0, R.headY - 85, R.chin + 120),
+      mouth: pt(0, R.headY - (side ? 80 : 105), R.chin + 45), eye: pt(side ? -40 : 0, R.headY - (side ? 62 : 85), R.chin + 120),
       hipR: pt(J.hip[0][0], 0, J.hip[0][2]), hipL: pt(J.hip[1][0], 0, J.hip[1][2]), kneeR, kneeL,
       footR: pt(J.ankle[0][0], J.ankle[0][1], J.ankle[0][2] - 60), footL: pt(J.ankle[1][0], J.ankle[1][1], J.ankle[1][2] - 60),
-      handR: pt(-235, 0, R.wrist - 60), handL: pt(235, 0, R.wrist - 60)
+      handR: pt(-235, 0, R.wrist - 85), handL: pt(235, 0, R.wrist - 85)
     };
     // 1. silhouette: the largest piece, holes filled, edges smoothed
     let m = new Uint8Array(w * h);
@@ -269,7 +334,10 @@ window.renderPoses = async function(list){
     { const ends = [lm.handR, lm.handL, lm.footR, lm.footL], rr = 95 * pxPerMm, sm = blurF(m, w, h, 4, 3);
       for(let y = 0; y < h; y++) for(let x = 0; x < w; x++){
         let wgt = 0; for(const e of ends){ const d = Math.hypot(x - e[0], y - e[1]); wgt = Math.max(wgt, ss((rr - d) / (rr * 0.4))); }
-        if(wgt > 0){ const i = y * w + x; m[i] = (m[i] * (1 - wgt) + sm[i] * wgt) >= 0.42 ? 1 : 0; } } }
+        if(wgt > 0){ const i = y * w + x; m[i] = (m[i] * (1 - wgt) + sm[i] * wgt) >= 0.42 ? 1 : 0; } }
+      // and each hand ends in a rounded palm, not a point
+      const hr2 = 52 * pxPerMm; for(const e of [lm.handR, lm.handL]) for(let y = Math.max(0, Math.floor(e[1] - hr2)); y < Math.min(h, e[1] + hr2); y++) for(let x = Math.max(0, Math.floor(e[0] - hr2)); x < Math.min(w, e[0] + hr2); x++)
+        if(Math.hypot(x - e[0], y - e[1]) < hr2 && sm[y * w + x] > 0.15) m[y * w + x] = 1; }
     // 2. region and depth per pixel
     const reg = new Uint8Array(w * h), dz = new Float32Array(w * h);
     for(let i = 0; i < w * h; i++){
