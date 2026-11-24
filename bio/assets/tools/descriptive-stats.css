@@ -123,3 +123,6 @@
 .ls-root .ds2-pfig .tick,.ls-root .ds2-pfig .ds-bl{font-size:14px;} .ls-root .ds2-pfig .sk-ph,.ls-root .ds2-pfig .ds-ml{font-size:14.6px;}
 .sk-fig:has(> svg.ds2-pfig){flex:none;}
 .bt-stage-slot:has(svg.ds2-pfig),.ls-prac-stage:has(svg.ds2-pfig){flex:none;}
+/* a knob keeps a small ring after a pointer drag (the kit's big focus ring is for the keyboard) */
+.ds2 .ds2-hd.is-quiet.is-focus .tk2-dot{box-shadow:0 0 0 2.5px var(--ds-plant),0 1px 3px rgba(11,26,51,.3);}
+.ds2 .ds2-hd.is-quiet.is-focus:has(.tk2-knob:focus-visible) .tk2-dot{box-shadow:0 0 0 2.5px var(--ds-plant),0 0 0 4.5px var(--white),0 0 0 7px var(--cink);}

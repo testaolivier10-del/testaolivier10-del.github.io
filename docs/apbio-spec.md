@@ -451,6 +451,13 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    (they sprout one by one and each error bar steps shorter), New sample. Every number is read from the plants as
    drawn. Test yourself: Problems (the old Practice, unchanged, same record ids) and Challenges (the old goals and one
    on chance flipping the verdict). Still free. Open point: needs-author `ci-explore-beans`.
+41. (2026-11-24, `docs/tools-v2-bio-descriptive-stats-brief.md`) **Descriptive statistics rebuilt to tools v2**
+   (branch `claude/tools-v2-bio-descriptive-stats`, waiting for the independent review; not merged). Explore: a tray
+   of radish seedlings lined up by height against a measuring board, the mean (blue) and median (amber) as lines
+   across it, the middle plant glowing, and a clipboard where the same plants are dots on a plank balanced at the
+   mean; drag any plant, add or remove one (3 to 10). Every number is read from the plants as drawn. Test yourself:
+   Problems (the old Practice, unchanged, same record ids) and Challenges (the old goals). Still free. Open point:
+   needs-author `ds-explore-radish`.
 
 ## 4. Map format (Phase 0)
 

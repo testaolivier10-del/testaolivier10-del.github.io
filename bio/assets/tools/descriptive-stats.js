@@ -175,7 +175,7 @@
           trayEnd = Wd * 0.58;
           g.cb = { x: Wd * 0.61, y: 18, w: Wd - pad - Wd * 0.61, h: g.yB + 6 - 18 };
         } else {
-          g.clipH = g.big ? clamp(Hd * 0.32, 220, 270) : clamp(Hd * 0.37, 196, 232);
+          g.clipH = g.big ? clamp(Hd * 0.36, 230, 290) : clamp(Hd * 0.37, 196, 232);
           g.topH = Hd - g.clipH;
           g.benchH = 20; g.yB = g.topH - g.benchH;
           trayEnd = Wd - pad;
@@ -185,10 +185,10 @@
         g.pad = pad; g.trayEnd = trayEnd;
         g.trayH = g.big ? 30 : 22;
         g.ySoil = g.yB + 4 - g.trayH + 3;
-        g.yTop = g.big ? 40 : 30;
+        g.yTop = g.big ? 44 : 36;
         g.k = (g.ySoil - g.yTop) / RMAX;
         g.rw = g.big ? 34 : 26;
-        g.board = [pad, g.yTop - (g.big ? 26 : 20), trayEnd - pad, g.ySoil - g.yTop + (g.big ? 26 : 20)];
+        g.board = [pad, g.yTop - (g.big ? 28 : 26), trayEnd - pad, g.ySoil - g.yTop + (g.big ? 28 : 26)];
         // the strip at the right of the board where the mean and median lines are named (sized from the longest name)
         var fsP = g.big ? 13 : 12; g.gut = (g.big ? tw('median 14.95 ' + U, fsP, 800) : tw('median', fsP, 800)) + 14 + (g.big ? 14 : 8); g.gx = g.big ? 8 : 4;
         g.tx0 = pad + g.rw + 6; g.tx1 = trayEnd - 4 - g.gut;
@@ -202,13 +202,13 @@
         c.ly = c.py + c.ph - (g.big ? 46 : 36) - c.plH;
         c.top = c.py + (g.big ? 40 : 30);
         c.kx = (c.r - c.l) / RMAX;
-        c.dr = clamp(c.pw / 44, 5.5, 9);
+        c.dr = clamp(c.pw / 44, 5.5, g.big ? 9 : 7);
         c.ly = g.wide ? c.py + c.ph - 74 - c.plH : c.ly;
-        c.listY = c.py + (g.big ? 52 : 36);
+        c.listY = c.py + (g.wide ? 54 : g.big ? 48 : 41);
         // a tall paper also works the two out in a line each (mean = Σx ÷ n, median = the middle value)
         c.work = c.ph >= 330 && c.pw >= 300;
         c.f1 = c.listY + 34; c.f2 = c.f1 + 26;
-        c.free = c.work ? c.f2 + 8 : c.listY + 6;
+        c.free = c.work ? c.f2 + 8 : c.listY + 8;
         return g;
       }
       function yH(h){ return G.ySoil - h * G.k; }
@@ -251,7 +251,7 @@
         var fs = g.big ? 14 : 12;
         f += '<text class="ds2-tname" data-lab="tray" x="' + n1(x + w / 2) + '" y="' + n1(yt + g.trayH / 2 + fs * 0.42) + '" text-anchor="middle" style="font-size:' + fs + 'px">Radish seedlings, day 7</text>';
         for(var c2 = 2; c2 <= RMAX; c2 += 2){ if(!g.big && c2 % 4) continue; f += '<text class="ds2-rnum" data-lab="rnum" x="' + n1(b[0] + g.rw - 11) + '" y="' + n1(yH(c2) + 4) + '" text-anchor="end">' + c2 + '</text>'; }
-        f += '<text class="ds2-rnum is-unit" data-lab="rnum" x="' + n1(b[0] + g.rw / 2) + '" y="' + n1(b[1] + 13) + '" text-anchor="middle">cm</text>';
+        f += '<text class="ds2-rnum is-unit" data-lab="rnum" x="' + n1(b[0] + g.rw / 2) + '" y="' + n1(b[1] + 12) + '" text-anchor="middle">cm</text>';
         var c = g.cb;
         f += '<rect class="ds2-cbshadow" x="' + n1(c.x + 4) + '" y="' + n1(c.y + 6) + '" width="' + n1(c.w) + '" height="' + n1(c.h) + '" rx="10"/>';
         f += '<rect class="ds2-cb" x="' + n1(c.x) + '" y="' + n1(c.y) + '" width="' + n1(c.w) + '" height="' + n1(c.h) + '" rx="10"/>';
@@ -434,7 +434,7 @@
       }
       function paintN(){
         var n = active().length;
-        txt(nVal, n + ' plants');
+        txt(nVal, (drawn.n || 0) + ' plants');
         bAdd.disabled = n >= NMAX; bRm.disabled = n <= NMIN;
         bAdd.title = n >= NMAX ? 'Ten plants fill the tray' : 'Add a plant'; bRm.title = n <= NMIN ? 'Keep at least three plants' : 'Remove a plant';
       }
@@ -509,6 +509,7 @@
         });
         paintPills(d);
         paintPlank(d, cn);
+        txt(nVal, d.n + ' plants');
         paintCause(d);
         P.forEach(function(p){ if(p.hd) p.hd.place(); });
         if(cue.active()) placeCue();
@@ -532,10 +533,10 @@
         if(!(d.n > 0)){ E.pMean.hide(); E.pMed.hide(); return; }
         var t = pillTexts(d), zM = E.pMean.size(t[0]), zD = E.pMed.size(t[1]), yM = yH(d.mean), yD = yH(d.median), h = Math.max(zM[1], zD[1]);
         var lo = G.board[1] + h / 2 + 3, hi = G.ySoil - h / 2 - 6, x0 = G.tx1 + G.gx;
-        if(Math.abs(yM - yD) < h + 4){
+        if(Math.abs(yM - yD) < h + 6){
           var mid = (yM + yD) / 2, up = yM <= yD;
-          mid = clamp(mid, lo + (h + 4) / 2, hi - (h + 4) / 2);
-          yM = mid + (up ? -1 : 1) * (h + 4) / 2; yD = mid + (up ? 1 : -1) * (h + 4) / 2;
+          mid = clamp(mid, lo + (h + 6) / 2, hi - (h + 6) / 2);
+          yM = mid + (up ? -1 : 1) * (h + 6) / 2; yD = mid + (up ? 1 : -1) * (h + 6) / 2;
         } else { yM = clamp(yM, lo, hi); yD = clamp(yD, lo, hi); }
         E.pMean.set(t[0], x0, yM); E.pMed.set(t[1], x0, yD);
       }
@@ -561,7 +562,9 @@
         });
         for(var id in E.dotEls) if(!seen[id]){ E.dotEls[id].remove(); delete E.dotEls[id]; }
         // the heights in order, shortest first, the middle one(s) in amber: the median is the middle value
-        var fsv = G.wide ? 15 : G.big ? 13 : 12, nl = list.length, span = Math.min(c.pw - 16, nl * (tw('14.0', fsv, 900) + (G.big ? 18 : 8)));
+        var fsv = G.wide ? 15 : G.big ? 13 : 12, nl = list.length;
+        while(fsv > 11 && nl * (tw('14.0', fsv, 900) + 7) > c.pw - 16) fsv -= 0.5;
+        var span = Math.min(c.pw - 16, nl * (tw('14.0', fsv, 900) + (G.big ? 18 : 8)));
         while(E.valEls.length < nl) E.valEls.push(mk('text', 'ds2-val', { 'text-anchor': 'middle', 'data-lab': 'val' }, E.vals));
         E.valEls.forEach(function(e, i){
           if(i >= nl){ show(e, false); return; }
@@ -587,15 +590,23 @@
         var mdx = xA(d.median), wtop = c.ly;
         var wlab = tw('median', fs, 900) / 2 + 4;
         list.forEach(function(p){ if(p._dot && Math.abs(p._dot[0] - mdx) < wlab + rr) wtop = Math.min(wtop, p._dot[1] - rr); });
-        var ty = wtop - 9, wx = clamp(mdx, c.px + 28, c.px + c.pw - 28), wy = ty - 3;
+        // "median" over the middle dot(s); with no room there, beside the top dot on the side that is clear
+        var wl = tw('median', fs, 900), boxes = list.filter(function(p){ return p._dot; }).map(function(p){ return [p._dot[0] - rr, p._dot[1] - rr, p._dot[0] + rr, p._dot[1] + rr]; });
+        var cands = [], ty = wtop - 9;
+        cands.push({ x: clamp(mdx, c.px + wl / 2 + 4, c.px + c.pw - wl / 2 - 4), y: ty - 3, tick: true });
+        cands.push({ x: clamp(mdx, c.px + wl / 2 + 4, c.px + c.pw - wl / 2 - 4), y: wtop - 7 });
+        for(var lv2 = 0; lv2 < 8; lv2++){ var yy = wtop + rr + fs * 0.36 + lv2 * rr; for(var kk = 0; kk < 8; kk++) [1, -1].forEach(function(sd){ cands.push({ x: mdx + sd * (rr * (1 + 2 * kk) + 6 + wl / 2), y: yy }); }); }
+        var pick = cands[cands.length - 1];
+        for(var ci = 0; ci < cands.length; ci++){
+          var q = cands[ci], bb = [q.x - wl / 2, q.y - fs * 0.95, q.x + wl / 2, q.y + fs * 0.3];
+          if(bb[0] < c.px + 2 || bb[2] > c.px + c.pw - 2 || bb[1] < c.free + 2 || bb[3] > c.ly - 4) continue;
+          if(boxes.some(function(b){ return hit(bb, b, 3); })) continue;
+          if(q.tick && boxes.some(function(b){ return hit([mdx - 4, ty, mdx + 4, ty + 6], b, 2); })) continue;
+          pick = q; break;
+        }
+        var wx = pick.x, wy = pick.y;
         txt(E.wMed, 'median'); E.wMed.style.fontSize = fs + 'px'; show(E.wMed, true);
-        if(wy - fs < c.free){
-          // no room over the stack (a tall stack on a short clipboard): the word beside its top dot, the side with room
-          var right = mdx + wlab * 2 + rr + 8 < c.px + c.pw - 4, sx = right ? mdx + rr + 6 + wlab : mdx - rr - 6 - wlab;
-          var blocked = list.some(function(p){ return p._dot && Math.abs(p._dot[1] - (wtop + rr)) < rr * 2 && Math.abs(p._dot[0] - sx) < wlab + rr + 4; });
-          if(blocked) sx = right ? mdx - rr - 6 - wlab : mdx + rr + 6 + wlab;
-          wx = sx; wy = wtop + rr + fs * 0.36; show(E.mdTick, false);
-        } else { at(E.mdTick, { d: 'M' + n1(mdx) + ' ' + n1(ty + 5.5) + 'l-4 -5h8Z' }); show(E.mdTick, true); }
+        if(pick.tick){ at(E.mdTick, { d: 'M' + n1(mdx) + ' ' + n1(ty + 5.5) + 'l-4 -5h8Z' }); show(E.mdTick, true); } else show(E.mdTick, false);
         at(E.wMed, { x: wx, y: wy });
       }
       function paintCause(d){
@@ -798,7 +809,7 @@
       window.__ds2 = { G: function(){ return G; }, P: function(){ return P; }, St: St, busy: busy, drawn: function(){ return drawn; }, mids: function(){ return mids; },
         set: function(hs){ stopAll(); P.forEach(drop); P = hs.map(function(v, i){ return newPlant(i, v); }); sortRow(0); P.forEach(function(p){ p.tw = {}; }); lastAct = null; cause.take(null); paintN(); layoutNow(true); paint(); settled(); },
         open: function(){ fresh(); }, noCue: function(){ hideCue(true); }, sow: function(){ sow(); }, pull: function(){ pull(); }, reset: function(){ reset(); },
-        drag: function(i, v){ var p = active()[i]; if(dragP !== p) begin(p); dragP = p; setH(p, v, true); paint(); }, end: function(){ dragP = null; sortRow(); kick(); },
+        drag: function(i, v){ var p = active()[i]; if(dragP !== p) begin(p); dragP = p; setH(p, v, true); paintAll(); }, end: function(){ dragP = null; sortRow(); kick(); },
         stopAll: stopAll, fit: fitHeight };
     }, { studio: { kit2: function(ctx){ return ctx.kit2; } } });
   }
