@@ -798,10 +798,29 @@
        o.explore(host) -> { stage, ref, shown(mode), ready(s) }   the tool builds its own stage with the kit: the
                      picture with its controls on it and the lines around it. EXPLORE shows it alone, full width
                      (no side panel, nothing graded); ref is the reference behind "?"; ready(s) runs once both
-                     are placed in the frame; shown(mode) after every switch.
+                     are placed in the frame; shown(mode) after every switch (once at the start too).
        o.quiz(host)  TEST YOURSELF, built the first time it opens (the course's step drill, T.drill, as before).
-     Without the kit or the frame the stage simply stays in the Explore pane. */
+     Returns what modes() returns: { explore, quiz, show(mode, user), bar } (explore and quiz are the two panes;
+     show('quiz', true) switches as a tap on the switch would). A cached copy of an old page may not load the kit:
+     then kit2 loads tool-kit2.css and .js itself and sets up once they arrive; the object it returns forwards
+     show() to the real one, and explore, quiz and bar fill in then. Without the frame the stage simply stays in
+     the Explore pane. */
   function kit2(app, o){
+    if(window.LevlKit2) return kit2Now(app, o);
+    var api = { explore: null, quiz: null, bar: null, pending: null, show: function(m, user){ if(api.real) api.real.show(m, user); else api.pending = [m, user]; } };
+    var up = base() + '../assets/course/';
+    if(!document.querySelector('link[href$="tool-kit2.css"]')){ var l = document.createElement('link'); l.rel = 'stylesheet'; l.href = up + 'tool-kit2.css'; document.head.appendChild(l); }
+    var sc = document.createElement('script'); sc.src = up + 'tool-kit2.js';
+    sc.onload = function(){
+      var r = kit2Now(app, o); api.real = r; api.explore = r.explore; api.quiz = r.quiz; api.bar = r.bar;
+      var st = studioOf(app); if(st && st.mode) st.mode(st.mode());
+      if(api.pending) r.show(api.pending[0], api.pending[1]);
+    };
+    sc.onerror = function(){ api.real = kit2Now(app, o); };
+    document.head.appendChild(sc);
+    return api;
+  }
+  function kit2Now(app, o){
     var K = window.LevlKit2, ex = null;
     return modes(app, { slug: o.slug, labels: o.labels,
       explore: function(host){ ex = o.explore(host) || {}; },
@@ -814,7 +833,6 @@
         if(ex.ref){ s.add('details', ex.ref, { mode: 'explore' }); ex.ref.setAttribute('data-ls-only', 'explore'); }
         s.mode(s.mode());
         if(ex.ready) ex.ready(s);
-        if(ex.shown) ex.shown(s.mode());
       } } });
   }
   /* Motion off? (site toggle or the OS setting) */

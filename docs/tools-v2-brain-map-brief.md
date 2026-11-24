@@ -193,3 +193,36 @@ See the bottom of this file for the numbers of the last run.
 - On phones the Inside view's fifteen pins are tight (they pass the 18 px rule; a tap on the part itself helps).
 - Test yourself is unchanged apart from its figures; a "find it" part on the picture (`K.spots.ask`) would be a
   natural addition later.
+
+## Review round 1 (2026-11-23, `/home/claude/review-brain-map/REVIEW.md`: BLOCK, every item fixed in one round)
+Merged `origin/claude/tools-v2-all` first (only the status tables conflicted; both sides kept).
+- **Must fix 1, a pin naming another part.** `K.spots` with `under`: a tap on a pin, or within 16 px of one, names
+  that pin's part (the hit layer sat over the pins, so only the keyboard got this before); the part drawn under the
+  finger only elsewhere. The RAS's hit area is now its dotted core (x 562 to 589), so the pons and medulla own what is
+  drawn as them; the medulla's pin moved onto the medulla proper. The sweep now taps every pin of both views.
+- **Must fix 2, objects.** Each tray holds the flashed object and two others (`trayObjs`); the one the hand takes
+  leaves its tray while the hand holds it. Test yourself figures do the same.
+- **Must fix 3, the phone text bump.** `data-ls-text="keep"` on the picture, the effect layers and the drill figure;
+  the sweep reaches Split brain by a real tab tap under reduced motion and fails on any inline font size.
+- **Must fix 4, reduced motion.** The flashed word stays in its field at the end state (a still mark).
+- **Must fix 5, light over the labels.** The light starts at the screen's lower edge and the field labels are drawn
+  over it; the frames check fails if the light's box crosses a field label.
+- **Should fix 6.** A table the person leans over spans the whole frame (screen and trays stand on it); the trays sit
+  at a natural reach beside the head, the arms bend at the elbow, the body has a shoulder line. The phone layout is
+  1000 x 1000 with the head lower, so the cue sits between the screen and the eyes.
+- **Should fix 7.** The motor paths are drawn over the brain (faint; lit when a hand acts).
+- **Should fix 8.** Hippocampus, amygdala and reward center are drawn at 50% under the brainstem's outline and lines.
+- **Should fix 9.** A faint line marks the prefrontal cortex's border inside the frontal lobe.
+- **Should fix 10.** On phones the brain views crop to the brain (910 x 690 picture units): the brain draws about 10%
+  larger. The pins, taps and cue are placed in picture units (`TX`, `TY`), so the kit's layer is the picture again.
+- **Should fix 11.** The split cue prefers the plate beside the screen and never covers the eyes (nor the head on a
+  wide stage).
+- **Should fix 12.** Each picked part's colour, edge and lesion are drawn in their own small svg the size of the part's
+  box (`.bmx-fxp`), so only that box repaints while they grow; the full-size overlay keeps only the body figure.
+- **Should fix 13, the adapter** (`ApPsychTools.kit2`, API unchanged for neuron): (a) when `LevlKit2` is missing (a
+  cached old page) it loads `tool-kit2.css` and `.js` itself and sets up once they arrive; the object it returns
+  forwards `show()` until then, so neuron's own loader can go when it integrates; (b) the header documents the
+  return value, what `modes()` returns: `{ explore, quiz, show(mode, user), bar }`; (c) `shown()` is called once at the
+  start (through `onShow`), not twice.
+- **Removed.** The "Front" chip on wide stages, where the head is drawn (it stays on phones and tablets).
+- Not changed: item 14 (a text conflict with anatomy 3d in the `K.spots` header comment) is for whoever merges second.

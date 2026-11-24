@@ -165,13 +165,13 @@
       g.amy = ell(470, 450, 25, 18, -12);
       g.hip = ribbon([[494, 454], [548, 450], [600, 444], [644, 424], [676, 388], [690, 346]], [26, 28, 26, 22, 17, 11]);
       g.rew = ell(360, 352, 22, 15, -10);
-      g.ras = [[548, 398], [596, 396], [606, 480], [600, 560], [594, 640], [566, 640], [560, 560], [552, 480]];
+      g.ras = [[562, 398], [589, 398], [589, 640], [562, 640]];   // the dotted core only: the pons and medulla own the rest
       region('callosum', g.cc, [], 'top', [470, 212]);
       region('thalamus', g.thal, [], 'top', [530, 320]);
       region('hypothalamus', g.hyp, [], 'top', [452, 388]);
       region('pituitary', g.pit, [], 'top', [404, 474]);
       region('pons', g.stem.pons, [], 'top', [530, 508]);
-      region('medulla', g.stem.medulla, [], 'top', [590, 620]);
+      region('medulla', g.stem.medulla, [], 'top', [604, 618]);
       region('ras', g.ras, [], 'top', [584, 432]);
       region('cerebellum', g.cbl, [], 'top', [802, 560]);
       region('reward', g.rew, [], 'top', [360, 352]);
@@ -358,6 +358,7 @@
       out.push('<path class="bm-groove" d="' + dOf(g.lines.cen, false) + '"/><path class="bm-groove-hi" d="' + dOf(g.lines.cen, false) + '" transform="translate(-2.5 -3)"/>');
       out.push('<path class="bm-fiss" d="' + dOf(g.lines.syl, false) + '"/><path class="bm-groove-hi" d="' + dOf(g.lines.syl, false) + '" transform="translate(-2 -4)"/>');
       out.push('<path class="bm-sul is-faint" d="' + dOf(g.lines.po, false) + '"/>');
+      out.push('<path class="bm-pfc" d="' + dOf(curve([[352, 40], [330, 150], [310, 250], [292, 330], [279, 400], [272, 430]], false, 8), false) + '"/>');
     } else {
       out.push(sulcus(g.lines.cing.slice(0, -6))); out.push('<path class="bm-groove" d="' + dOf(g.lines.po, false) + '"/>'); out.push('<path class="bm-groove" d="' + dOf(g.lines.cal, false) + '"/>');
       out.push('<path class="bm-groove" d="M548 58 Q552 76 560 92"/>');
@@ -368,19 +369,21 @@
     if(view === 'inside'){
       // what the cut shows: the cerebellum and brainstem, the corpus callosum and the parts round the third ventricle
       out.push(cbl(g, pid, true));
-      out.push('<path class="bm-stem is-cut" d="' + dOf(g.stemAll) + '" fill="url(#' + pid + 'stg)"/>');
+      out.push('<path class="bm-stem is-cut is-fill" d="' + dOf(g.stemAll) + '" fill="url(#' + pid + 'stg)"/>');
+      // the deep parts lie to the side of the cut: drawn see-through under the brainstem's outline
+      out.push('<g class="bm-seen"><path class="bm-deep is-rew" d="' + dOf(g.rew) + '"/><path class="bm-deep is-amy" d="' + dOf(g.amy) + '"/><path class="bm-deep is-hip" d="' + dOf(g.hip) + '"/>' +
+        '<path class="bm-hip-l" d="' + dOf(curve([[500, 454], [560, 450], [610, 442], [650, 420], [676, 386]], false, 6), false) + '"/></g>');
+      out.push('<path class="bm-stem-e" d="' + dOf(g.stemAll) + '"/>');
       out.push('<path class="bm-stem-g" d="M512 468 Q574 462 630 480M520 548 Q576 560 616 558"/><path class="bm-stem-l" d="M520 490 Q570 486 620 496M516 512 Q570 508 626 516M520 530 Q568 530 622 534M566 600 Q576 650 586 700"/>');
       out.push('<path class="bm-v4" d="' + dOf(g.v4) + '"/>');
       var rr = seeded(77), dots = '';
-      for(var i = 0; i < 46; i++){ var yy = 404 + rr() * 228, half = 14 + (yy > 470 && yy < 560 ? 4 : 0), xx = 575 + (rr() - 0.5) * 2 * half; dots += 'M' + r1(xx) + ' ' + r1(yy) + 'h.1'; }
+      for(var i = 0; i < 46; i++){ var yy = 404 + rr() * 228, half = 11, xx = 575.5 + (rr() - 0.5) * 2 * half; dots += 'M' + r1(xx) + ' ' + r1(yy) + 'h.1'; }
       out.push('<path class="bm-ras" d="' + dots + '"/>');
       out.push('<path class="bm-fornix" d="' + dOf(g.fornix) + '"/>');
       out.push('<path class="bm-thal" d="' + dOf(g.thal) + '"/><path class="bm-thal-l" d="M480 316 Q522 302 566 318"/>');
       out.push('<path class="bm-hyp" d="' + dOf(g.hyp) + '"/><path class="bm-chi" d="' + dOf(g.chiasm) + '"/><path class="bm-hyp" d="' + dOf(g.mam) + '"/>');
       out.push('<path class="bm-stalk" d="M440 418 Q426 440 414 460"/><path class="bm-pit" d="' + dOf(g.pit) + '"/>');
       out.push('<path class="bm-cc" d="' + dOf(g.cc) + '"/><path class="bm-cc-l" d="M330 300 Q340 262 380 240 Q460 222 540 222 Q600 228 640 252"/>');
-      out.push('<path class="bm-deep is-rew" d="' + dOf(g.rew) + '"/><path class="bm-deep is-amy" d="' + dOf(g.amy) + '"/><path class="bm-deep is-hip" d="' + dOf(g.hip) + '"/>');
-      out.push('<path class="bm-hip-l" d="' + dOf(curve([[500, 454], [560, 450], [610, 442], [650, 420], [676, 386]], false, 6), false) + '"/>');
       out.push(fx('top'));
     }
     out.push('</g>');
@@ -391,13 +394,7 @@
   }
   /* Explore's moving layer, a second svg over the picture: the picked part's color and edge, its lesion, and the
      body figure. Only this small layer repaints while something grows, never the folded brain under it. */
-  function fxSvg(view, pid, o){
-    var g = G[view], d = '<defs><clipPath id="' + pid + 'out"><path d="' + dOf(g.outline) + '"/></clipPath>';
-    ['frontal', 'parietal', 'temporal', 'occipital'].forEach(function(k){ if(g.reg[k]) d += '<clipPath id="' + pid + 'r-' + k + '"><path d="' + dOf(g.reg[k].poly) + '"/></clipPath>'; });
-    d += '<mask id="' + pid + 'low" maskUnits="userSpaceOnUse" x="-400" y="-200" width="1800" height="1200"><rect x="-400" y="-200" width="1800" height="1200" fill="#fff"/><path d="' + dOf(g.outline) + '" fill="#000"/></mask>' +
-      '<pattern id="' + pid + 'hatch" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(40)"><rect width="12" height="12" class="bm-dmg-bg"/><path d="M0 0V12" class="bm-dmg-ln"/></pattern></defs>';
-    return d + '<g class="bm-fx" data-lv="low" mask="url(#' + pid + 'low)"></g><g class="bm-fx" data-lv="high"></g><g class="bm-fx" data-lv="top"></g>' + (view === 'outside' ? bodySvg(o) : '');
-  }
+  function fxSvg(view, pid, o){ return view === 'outside' ? bodySvg(o) : ''; }
   function cbl(g, pid, cut){
     var s = '<path class="bm-cbl" d="' + dOf(g.cbl) + '" fill="url(#' + pid + 'cbg)"/><g clip-path="url(#' + pid + 'cb)">';
     var defs = '<clipPath id="' + pid + 'cb"><path d="' + dOf(g.cbl) + '"/></clipPath>';
@@ -448,15 +445,17 @@
   /* ------------------------------------------------------- split brain */
   /* A person seen from above, front (the screen) at the top, so their left is on the viewer's left. Two layouts:
      wide (1000 x 720) and tall for phones (1000 x 1150). Picture units; words are sized in screen pixels (px). */
+  var SPLIT_TALL_H = 1000;
   function splitLay(tall, extra){
     extra = tall ? 0 : Math.max(0, extra || 0);
-    var L = tall ? { W: 1000, H: 1150, scr: [70, 14, 860, 176], cx: 500, cy: 566, rx: 250, ry: 292 }
-      : { W: 1000, H: 720, scr: [250, 14, 500, 130], cx: 500, cy: 368, rx: 150, ry: 180 };
-    L.tall = !!tall;
+    var L = tall ? { W: 1000, H: SPLIT_TALL_H, scr: [70, 14, 860, 176], cx: 500, cy: 630, rx: 240, ry: 270 }
+      : { W: 1000, H: 720, scr: [250, 14, 500, 130], cx: 500, cy: 372, rx: 150, ry: 178 };
+    L.tall = !!tall; L.extra = extra;
     var hx = function(u){ return L.cx + u * L.rx; }, hy = function(v){ return L.cy + v * L.ry; };
     L.P = function(u, v){ return [r1(hx(u)), r1(hy(v))]; };
     L.fix = [500, L.scr[1] + L.scr[3] / 2];
-    L.word = { left: [L.scr[0] + L.scr[2] * 0.25, L.fix[1]], right: [L.scr[0] + L.scr[2] * 0.75, L.fix[1]] };
+    var wy = L.scr[1] + L.scr[3] * 0.4;   // the word sits above its field's label
+    L.word = { left: [L.scr[0] + L.scr[2] * 0.25, wy], right: [L.scr[0] + L.scr[2] * 0.75, wy] };
     L.eye = { left: L.P(-0.34, -0.83), right: L.P(0.34, -0.83) };
     L.chi = L.P(0, -0.56);
     L.occ = { left: L.P(-0.33, 0.62), right: L.P(0.33, 0.62) };
@@ -464,12 +463,26 @@
     L.speech = L.P(-0.42, -0.30);
     L.cc = [hx(-0.13), hy(-0.12), L.rx * 0.26, L.ry * 0.42];
     L.sh = { left: [hx(-0.98), hy(1.12)], right: [hx(0.98), hy(1.12)] };
-    if(tall){ L.tray = { left: [24, 948, 270, 180], right: [706, 948, 270, 180] }; L.hand = { left: [262, 990], right: [738, 990] }; }
-    else { var e = extra * 0.7; L.tray = { left: [26 - e, 548, 210, 150], right: [764 + e, 548, 210, 150] }; L.hand = { left: [232 - e, 600], right: [768 + e, 600] }; }
-    L.extra = extra;
-    L.reach = { left: [L.tray.left[0] + L.tray.left[2] * 0.42, L.tray.left[1] + L.tray.left[3] * 0.58], right: [L.tray.right[0] + L.tray.right[2] * 0.58, L.tray.right[1] + L.tray.right[3] * 0.58] };
-    L.bub = tall ? [570, 214, 410, 60] : [664, 156, 300, 64];
+    // the table the person leans over: the screen and both trays stand on it; it spans the whole frame
+    L.table = [-extra + 10, L.scr[1] + L.scr[3] * 0.55, 1000 + 2 * extra - 20, hy(0.92) - (L.scr[1] + L.scr[3] * 0.55)];
+    if(tall){ L.tray = { left: [24, 600, 190, 170], right: [786, 600, 190, 170] }; L.hand = { left: [214, 758], right: [786, 758] }; }
+    else { L.tray = { left: [130, 362, 190, 146], right: [680, 362, 190, 146] }; L.hand = { left: [316, 498], right: [684, 498] }; }
+    // a natural reach into the tray, about two thirds of the way in
+    L.reach = { left: [L.tray.left[0] + L.tray.left[2] * 0.45, L.tray.left[1] + L.tray.left[3] * 0.5], right: [L.tray.right[0] + L.tray.right[2] * 0.55, L.tray.right[1] + L.tray.right[3] * 0.5] };
+    L.bub = tall ? [570, 196, 410, 60] : [664, 156, 300, 64];
     return L;
+  }
+  /* an arm from the shoulder to the hand, bent at the elbow (out to the side and a little back) */
+  function armD(L, h, x, y){
+    var sh = L.sh[h], s = h === 'left' ? -1 : 1, ex = (sh[0] + x) / 2 + s * L.rx * 0.36, ey = Math.max(sh[1], y) + L.ry * 0.05;
+    return 'M' + sh.map(r1).join(' ') + 'L' + r1(ex) + ' ' + r1(ey) + 'L' + r1(x) + ' ' + r1(y);
+  }
+  /* the objects in a tray: the flashed one and two others */
+  function trayObjs(L, h, object){
+    var t = L.tray[h], others = B.OBJECTS.filter(function(o){ return o !== object; }), k0 = B.OBJECTS.indexOf(object);
+    var list = h === 'left' ? [others[(k0 + 2) % others.length], object, others[(k0 + 5) % others.length]] : [others[(k0 + 4) % others.length], others[(k0 + 1) % others.length], object];
+    return list.map(function(ob, k){ var g = objSvg(ob, t[0] + t[2] * (0.24 + 0.26 * k), t[1] + t[3] * (0.38 + (k % 2) * 0.3), Math.min(t[2], t[3]) * 0.17, 'sb-ob');
+      return ob === object ? g.replace('<g class="sb-ob"', '<g class="sb-ob" data-pick="1"') : g; }).join('');
   }
   function hemiPts(L, side){
     var s = side === 'left' ? -1 : 1;
@@ -490,35 +503,33 @@
     var pid = st.pid || 'sb';
     out.push('<defs><radialGradient id="' + pid + 'g" cx="50%" cy="40%" r="60%"><stop offset="0" class="sb-h0"/><stop offset="1" class="sb-h1"/></radialGradient>' +
       '<radialGradient id="' + pid + 'w" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#FFD54A" stop-opacity=".95"/><stop offset="1" stop-color="#FFB000" stop-opacity="0"/></radialGradient></defs>');
-    // the screen and its fixation dot
+    // the table, then the screen on it
+    var tb = L.table;
+    out.push('<rect class="sb-table" x="' + r1(tb[0]) + '" y="' + r1(tb[1]) + '" width="' + r1(tb[2]) + '" height="' + r1(tb[3]) + '" rx="22"/><rect class="sb-table-e" x="' + r1(tb[0]) + '" y="' + r1(tb[1] + tb[3] - 14) + '" width="' + r1(tb[2]) + '" height="14" rx="7"/>');
     out.push('<rect class="sb-desk" x="' + (S[0] - 14) + '" y="' + (S[1] + S[3] - 6) + '" width="' + (S[2] + 28) + '" height="16" rx="8"/>');
     out.push('<rect class="sb-scr" x="' + S[0] + '" y="' + S[1] + '" width="' + S[2] + '" height="' + S[3] + '" rx="14"/><rect class="sb-glass" x="' + (S[0] + 8) + '" y="' + (S[1] + 8) + '" width="' + (S[2] - 16) + '" height="' + (S[3] - 16) + '" rx="9"/>');
     out.push('<path class="sb-mid" d="M500 ' + (S[1] + 14) + 'V' + (S[1] + S[3] - 14) + '"/>');
     out.push('<path class="sb-fix" d="M' + (500 - 9 / px) + ' ' + L.fix[1] + 'h' + 18 / px + 'M500 ' + (L.fix[1] - 9 / px) + 'v' + 18 / px + '"/>');
-    ['left', 'right'].forEach(function(f){
-      var w = L.word[f];
-      out.push('<text class="sb-field" x="' + r1(w[0]) + '" y="' + r1(S[1] + S[3] - 18) + '" text-anchor="middle" font-size="' + fs(12) + '">' + (f === 'left' ? 'Left field' : 'Right field') + '</text>');
-    });
     out.push('<g data-sb="word" opacity="0"><text class="sb-word" x="0" y="0" text-anchor="middle" font-size="' + fs(L.tall ? 20 : 24) + '" dy=".35em"></text></g>');
     // light from the word to the eyes
     out.push('<path data-sb="rays" class="sb-ray" d="" opacity="0"/>');
+    // the field labels over the light (drawn after it)
+    ['left', 'right'].forEach(function(f){
+      var w = L.word[f];
+      out.push('<text class="sb-field" x="' + r1(w[0]) + '" y="' + r1(S[1] + S[3] - 14) + '" text-anchor="middle" font-size="' + fs(12) + '">' + (f === 'left' ? 'Left field' : 'Right field') + '</text>');
+    });
     // body (shoulders and arms below the head), the trays of hidden objects, the hands
-    out.push('<ellipse class="sb-torso" cx="500" cy="' + r1(L.cy + L.ry * 1.42) + '" rx="' + r1(L.rx * 1.32) + '" ry="' + r1(L.ry * 0.5) + '"/>');
+    var top = L.cy + L.ry * 0.96, X0 = L.cx - L.rx * 1.36, X1 = L.cx + L.rx * 1.36, Hb = L.H + 20;
+    out.push('<path class="sb-torso" d="M' + r1(X0) + ' ' + Hb + 'L' + r1(X0) + ' ' + r1(top + L.ry * 0.34) + 'Q' + r1(X0) + ' ' + r1(top) + ' ' + r1(L.cx - L.rx * 0.9) + ' ' + r1(top) + 'H' + r1(L.cx + L.rx * 0.9) +
+      'Q' + r1(X1) + ' ' + r1(top) + ' ' + r1(X1) + ' ' + r1(top + L.ry * 0.34) + 'L' + r1(X1) + ' ' + Hb + 'Z"/>');
     ['left', 'right'].forEach(function(h){
       var t = L.tray[h];
-      out.push('<rect class="sb-tray" x="' + t[0] + '" y="' + t[1] + '" width="' + t[2] + '" height="' + t[3] + '" rx="16"/>');
-      var objs = (st.objects || B.OBJECTS).slice(0, 3), k = 0;
-      objs.forEach(function(ob){ out.push(objSvg(ob, t[0] + t[2] * (0.24 + 0.26 * k), t[1] + t[3] * ((L.tall ? 0.3 : 0.36) + (k % 2) * (L.tall ? 0.22 : 0.3)), Math.min(t[2], t[3]) * 0.17, 'sb-ob')); k++; });
-    });
-    // motor paths: each hemisphere runs the hand on the opposite side (they cross low in the brainstem)
-    ['left', 'right'].forEach(function(h){
-      var from = h === 'left' ? 'right' : 'left', s = from === 'left' ? -1 : 1, sh = L.sh[h];
-      var d = dOf(curve([P(s * 0.30, -0.18), P(s * 0.22, 0.40), P(s * 0.05, 0.92), P(-s * 0.18, 1.04), sh], false, 8), false);
-      out.push('<path class="sb-mot" data-sb="mot-' + h + '" d="' + d + '"/>');
+      out.push('<rect class="sb-tray" x="' + t[0] + '" y="' + t[1] + '" width="' + t[2] + '" height="' + t[3] + '" rx="16"/><rect class="sb-tray-in" x="' + (t[0] + 10) + '" y="' + (t[1] + 10) + '" width="' + (t[2] - 20) + '" height="' + (t[3] - 20) + '" rx="10"/>');
+      out.push('<g data-sb="tray-' + h + '">' + trayObjs(L, h, st.object || 'key') + '</g>');
     });
     ['left', 'right'].forEach(function(h){
-      var sh = L.sh[h], hd = L.hand[h];
-      out.push('<g data-sb="arm-' + h + '"><path class="sb-arm" data-sb="armp-' + h + '" d="M' + sh.join(' ') + 'L' + hd.join(' ') + '"/>' +
+      var hd = L.hand[h];
+      out.push('<g data-sb="arm-' + h + '"><path class="sb-arm" data-sb="armp-' + h + '" d="' + armD(L, h, hd[0], hd[1]) + '"/>' +
         '<g data-sb="hand-' + h + '" transform="translate(' + hd.join(' ') + ')">' + handSvg(h, L.tall ? 1.35 : 1) + '<g data-sb="hold-' + h + '" opacity="0">' + objSvg(st.object || 'key', 0, 0, L.tall ? 30 : 24, 'sb-held') + '</g></g></g>');
     });
     // the head from above with the brain shown inside it
@@ -547,6 +558,12 @@
       '<path class="sb-snip" data-sb="snip" d="M' + r1(500 - c[2] * 0.12) + ' ' + r1(c[1] - 6) + 'L' + r1(500 + c[2] * 0.12) + ' ' + r1(c[1] + c[3] + 6) + 'M' + r1(500 + c[2] * 0.12) + ' ' + r1(c[1] - 6) + 'L' + r1(500 - c[2] * 0.12) + ' ' + r1(c[1] + c[3] + 6) + '" opacity="0"/></g>');
     out.push('<path class="sb-cross" data-sb="cross" d="M' + L.mid.left.join(' ') + 'Q500 ' + r1(L.cc[1] + L.cc[3] * 0.5) + ' ' + L.mid.right.join(' ') + '" opacity="0"/>');
     out.push('</g>');
+    // motor paths over the brain: each hemisphere runs the hand on the opposite side (they cross low in the brainstem)
+    ['left', 'right'].forEach(function(h){
+      var from = h === 'left' ? 'right' : 'left', s = from === 'left' ? -1 : 1, sh = L.sh[h];
+      var d = dOf(curve([P(s * 0.30, -0.18), P(s * 0.22, 0.40), P(s * 0.05, 0.92), P(-s * 0.18, 1.04), sh], false, 8), false);
+      out.push('<path class="sb-mot" data-sb="mot-' + h + '" d="' + d + '"/>');
+    });
     // signals in motion (dots that travel the paths)
     out.push('<circle class="sb-pulse" data-sb="p0" r="' + r1(L.tall ? 13 : 9) + '" opacity="0"/><circle class="sb-pulse" data-sb="p1" r="' + r1(L.tall ? 13 : 9) + '" opacity="0"/><circle class="sb-pulse" data-sb="p2" r="' + r1(L.tall ? 13 : 9) + '" opacity="0"/>');
     out.push('<g data-sb="block" opacity="0"><circle class="sb-block" cx="500" cy="' + r1(L.cc[1] + L.cc[3] * 0.5) + '" r="' + r1(L.rx * 0.11) + '"/><path class="sb-block-x" d="M' + r1(500 - L.rx * 0.05) + ' ' + r1(L.cc[1] + L.cc[3] * 0.5 - L.rx * 0.05) + 'l' + r1(L.rx * 0.1) + ' ' + r1(L.rx * 0.1) + 'm0 ' + r1(-L.rx * 0.1) + 'l' + r1(-L.rx * 0.1) + ' ' + r1(L.rx * 0.1) + '"/></g>');
@@ -561,7 +578,7 @@
     out.push(lab([L.speech[0], L.speech[1]], ['Speech'], 'middle', px, 'sb-lab is-sm', true));
     out.push('<path class="sb-lead" d="M500 ' + r1(L.cc[1] + L.cc[3] + 4) + 'V' + r1(L.cy + L.ry * 1.06) + '"/>');
     out.push('<g data-sb="cclab">' + lab([500, L.cy + L.ry * 1.06 + 10 / px], ['Corpus callosum'], 'middle', px, 'sb-lab is-pill', true, 'cclab-t') + '</g>');
-    var hy = L.tall ? function(t){ return t[1] + t[3] - 16 / px; } : function(t){ return t[1] - 10 / px; };
+    var hy = function(t){ return t[1] + t[3] + 12 / px; };
     out.push(lab([L.tray.left[0] + L.tray.left[2] / 2, hy(L.tray.left)], ['Left hand'], 'middle', px, 'sb-lab', false));
     out.push(lab([L.tray.right[0] + L.tray.right[2] / 2, hy(L.tray.right)], ['Right hand'], 'middle', px, 'sb-lab', false));
     return out.join('');
@@ -590,6 +607,23 @@
       default: d = '<path d="M-20 -1h24M4 -6v10M8 -6v10M12 -6v10M16 -6v10" class="ln2"/><path d="M4 -2h12v4h-12z" class="m"/>';
     }
     return '<g class="' + cls + '" transform="' + t + '">' + d + '</g>';
+  }
+
+  /* the box a part is drawn in (its polygon cut to the cerebrum and its lobe), for its effect svg */
+  function boxOf(view, id){
+    var g = G[view], r = g.reg[id], b = [1e9, 1e9, -1e9, -1e9];
+    r.poly.forEach(function(p){ b[0] = Math.min(b[0], p[0]); b[1] = Math.min(b[1], p[1]); b[2] = Math.max(b[2], p[0]); b[3] = Math.max(b[3], p[1]); });
+    r.within.forEach(function(w){ var pts = w === 'out' ? g.outline : g.reg[w].poly, c = [1e9, 1e9, -1e9, -1e9];
+      pts.forEach(function(p){ c[0] = Math.min(c[0], p[0]); c[1] = Math.min(c[1], p[1]); c[2] = Math.max(c[2], p[0]); c[3] = Math.max(c[3], p[1]); });
+      b = [Math.max(b[0], c[0]), Math.max(b[1], c[1]), Math.min(b[2], c[2]), Math.min(b[3], c[3])]; });
+    return [b[0] - 8, b[1] - 8, b[2] + 8, b[3] + 8];
+  }
+  /* the clip paths, mask and hatch one part's effect needs, with this svg's own ids */
+  function partDefs(view, id, pid){
+    var g = G[view], r = g.reg[id], d = '';
+    r.within.forEach(function(w){ d += '<clipPath id="' + pid + (w === 'out' ? 'out' : 'r-' + w) + '"><path d="' + dOf(w === 'out' ? g.outline : g.reg[w].poly) + '"/></clipPath>'; });
+    if(r.lv === 'low') d += '<mask id="' + pid + 'low" maskUnits="userSpaceOnUse" x="-400" y="-200" width="1800" height="1200"><rect x="-400" y="-200" width="1800" height="1200" fill="#fff"/><path d="' + dOf(g.outline) + '" fill="#000"/></mask>';
+    return d + '<pattern id="' + pid + 'hatch" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(40)"><rect width="12" height="12" class="bm-dmg-bg"/><path d="M0 0V12" class="bm-dmg-ln"/></pattern>';
   }
 
   /* ------------------------------------------------------------ mount */
@@ -626,7 +660,7 @@
     var head = K.head({ purpose: '', how: { label: 'Show me how', onClick: function(){ startTour(); } } });
     stage.appendChild(head.el);
     var scene = document.createElement('div'); scene.className = 'bmx-scene'; scene.id = 'bmx-scene';
-    scene.innerHTML = '<div class="bmx-plate"><div class="bmx-pic"><svg class="bmx-svg" xmlns="http://www.w3.org/2000/svg" role="img" focusable="false"></svg><svg class="bmx-fxl" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"></svg></div>' +
+    scene.innerHTML = '<div class="bmx-plate"><div class="bmx-pic"><svg class="bmx-svg" xmlns="http://www.w3.org/2000/svg" role="img" focusable="false" data-ls-text="keep"></svg><svg class="bmx-fxl" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" data-ls-text="keep"></svg></div>' +
       '<p class="bmx-front" aria-hidden="true"><span>Front</span></p>' +
       '<form class="bmx-find" role="search"><button type="button" class="bmx-find-b" aria-label="Find a part by name" aria-expanded="false"></button><label class="tk2-sr" for="bmx-find-in">Find a part by name</label>' +
       '<input id="bmx-find-in" class="bmx-find-in" type="search" placeholder="Find a part" autocomplete="off" spellcheck="false" enterkeyhint="search"></form></div>';
@@ -648,8 +682,11 @@
     var view = tabV === 'split' ? 'outside' : tabV, spots = {}, taps = [], L = null, px = 0.6;
     function isSplit(){ return tabV === 'split'; }
     /* -------------------------------------------- size: the picture fits the stage */
-    var FW = VW;   // the brain views' frame width: wider on a wide stage, the brain centred in it with the head round it
-    function frame(){ return isSplit() ? [FW, L ? L.H : 720] : [FW, VH]; }
+    /* The frame in picture units (the svg viewBox) and where the drawing's own units sit in it (TX, TY): on a wide
+       stage the frame is wider and the drawing centred (the head round the brain); on a phone the brain views are
+       cropped to the brain, so it is drawn larger. The pins, taps and cue use picture units. */
+    var FW = VW, FH = VH, TX = 0, TY = 0;
+    function frame(){ return [FW, FH]; }
     function fit(){
       if(!stage.isConnected || !scene.clientWidth) return false;
       var ps = getComputedStyle(plate), padX = parseFloat(ps.paddingLeft) + parseFloat(ps.paddingRight), padY = parseFloat(ps.paddingTop) + parseFloat(ps.paddingBottom);
@@ -660,43 +697,49 @@
         var sb = LS && LS.stage ? LS.stage.getBoundingClientRect().bottom : H, bottom = Math.min(H, sb > 0 ? sb : H);
         room = Math.max(300, bottom - plate.getBoundingClientRect().top - lines.offsetHeight - 20 - padY);
       } else room = H * (window.innerWidth <= 640 ? (isSplit() ? 0.7 : 0.6) : 0.62) - padY;
-      var baseH = isSplit() ? (tall ? 1150 : 720) : VH;
+      var baseH = isSplit() ? (tall ? SPLIT_TALL_H : VH) : VH;
       FW = !tall && w / room > 1.62 && w >= 700 ? Math.round(Math.min(1640, baseH * w / room)) : VW;
-      if(isSplit() && (!L || L.tall !== tall || L.extra !== (FW - VW) / 2)){ L = splitLay(tall, (FW - VW) / 2); }
+      FH = baseH; TX = (FW - VW) / 2; TY = 0;
+      if(!isSplit() && w < 640){ FW = 910; FH = 690; TX = -45; TY = -30; }
+      if(isSplit() && (!L || L.tall !== tall || L.extra !== TX)){ L = splitLay(tall, TX); }
       var f = frame();
       var k = Math.min(w / f[0], room / f[1], 1.25);
       var W = Math.round(f[0] * k), Hh = Math.round(f[1] * k);
       var changed = Math.abs(W - (pic._w || 0)) > 1 || Math.abs(Hh - (pic._h || 0)) > 1;
       pic.style.width = W + 'px'; pic.style.height = Hh + 'px'; pic._w = W; pic._h = Hh;
-      var npx = W / f[0], off = (FW - VW) / 2;
-      layer.el.style.left = (off * npx).toFixed(1) + 'px'; layer.el.style.width = (VW * npx).toFixed(1) + 'px'; layer.el.style.right = 'auto';
-      if(changed || Math.abs(npx - px) > 0.001){ px = npx; return true; }
+      var npx = W / f[0], key = FW + '|' + FH + '|' + TX + '|' + TY;
+      if(changed || Math.abs(npx - px) > 0.001 || key !== fit._k){ px = npx; fit._k = key; return true; }
       return false;
     }
     /* --------------------------------------------- the brain views */
-    var fxEl = {}, sel = null, anim = {};
+    var sel = null, anim = {};
     function drawBrain(){
-      var off = (FW - VW) / 2;
-      svg.setAttribute('viewBox', '0 0 ' + FW + ' ' + VH);
-      svg.innerHTML = '<g transform="translate(' + off + ' 0)">' + brainSvg(view, { pid: 'bmx' + view, fx: true, px: px, head: FW >= 1300 }) + '</g>';
-      fxl.setAttribute('viewBox', '0 0 ' + FW + ' ' + VH); fxl.hidden = false;
-      fxl.innerHTML = '<g transform="translate(' + off + ' 0)">' + fxSvg(view, 'bmf' + view, { px: px, bx: FW >= 1300 ? Math.round(Math.min(1000 + off * 0.55, 1000 + off - 10 - 64 / px)) : 0 }) + '</g>';
-      fxEl = {}; fxl.querySelectorAll('.bm-fx').forEach(function(e){ fxEl[e.getAttribute('data-lv')] = e; });
+      var off = TX, head = FW >= 1300, tf = '<g transform="translate(' + TX + ' ' + TY + ')">';
+      svg.setAttribute('viewBox', '0 0 ' + FW + ' ' + FH);
+      svg.innerHTML = tf + brainSvg(view, { pid: 'bmx' + view, fx: true, px: px, head: head }) + '</g>';
+      fxl.setAttribute('viewBox', '0 0 ' + FW + ' ' + FH); fxl.hidden = false;
+      fxl.innerHTML = tf + fxSvg(view, 'bmf' + view, { px: px, bx: head ? Math.round(Math.min(1000 + off * 0.55, 1000 + off - 10 - 64 / px)) : 0 }) + '</g>';
+      front.hidden = head;   // the face shows the front on a wide stage
+      makeSpots(view);
+      if(cue && cue.active()) setTimeout(function(){ if(cue && cue.active()) requestAnimationFrame(makeCue); }, 40);
       svg.setAttribute('aria-label', view === 'outside' ? 'The left hemisphere seen from the left, front on the left: the four lobes, the motor and touch strips, the language areas, the cerebellum and the brainstem.' :
         'The brain cut down the middle, seen from the inside, front on the left: the corpus callosum, thalamus, hypothalamus, pituitary gland, brainstem and cerebellum, and the hippocampus, amygdala and reward center seen through the tissue.');
       paintSel(false);
     }
     function itemsFor(v){
       var g = G[v], out = [];
-      g.order.forEach(function(id){ out.push({ id: id, name: R[id].name, at: [g.reg[id].pin], side: g.reg[id].pin[0] > 520 ? 'right' : 'left', accept: ACCEPT[id] || [] }); });
+      g.order.forEach(function(id){ var q = g.reg[id].pin; out.push({ id: id, name: R[id].name, at: [[q[0] + TX, q[1] + TY]], side: q[0] > 520 ? 'right' : 'left', accept: ACCEPT[id] || [] }); });
       return out;
     }
     function makeSpots(v){
-      if(spots[v]) return spots[v];
+      var key = TX + '|' + TY, old = spots[v];
+      if(old && old._key === key) return old;
+      if(old) old.el.remove();
+      var tx = TX, ty = TY;
       var sp = K.spots(layer, { key: 'appsych-brainmap-spots', label: v === 'outside' ? 'Parts of the brain, outside' : 'Parts of the brain, inside', items: itemsFor(v), chip: false,
         avoid: function(){ var a = [fb.getBoundingClientRect(), front.getBoundingClientRect()], bt = fxl.querySelector('.bm-body.is-on .bm-bd-t'); if(bt && bt.textContent) a.push(bt.getBoundingClientRect()); return a; },
-        under: function(x, y){ return regAt(v, x, y); },
-        blank: function(x, y){ return !onBrain(v, x, y); },
+        under: function(x, y){ return regAt(v, x - tx, y - ty); },
+        blank: function(x, y){ return !onBrain(v, x - tx, y - ty); },
         onMiss: function(){ hideCue(true); },
         onPick: function(it, how){
           if(v !== view) return;
@@ -705,7 +748,10 @@
           paintSel(how !== 'set' || !!it);
           if(how === 'tap' || how === 'key' || how === 'find'){ hideCue(true); tourDid(how === 'find' ? 'find' : 'tap'); if(it) say(R[it.id].name + ': ' + (dmg ? 'if it is damaged, ' + R[it.id].hurt : R[it.id].job) + '.'); }
         } });
-      spots[v] = sp;
+      spots[v] = sp; sp._key = key;
+      sp.hide(v !== view || isSplit());
+      // a rebuilt set keeps the part that was named
+      if(old && old.picked()){ var was = old.picked().id; if(v === view){ sp.pick(was, 'set'); } }
       return sp;
     }
     /* the selected part: its color grows from the pin, its edge draws; damage spreads from the pin */
@@ -713,10 +759,7 @@
       Object.keys(anim).forEach(function(k){ cancelAnimationFrame(anim[k]); });
       anim = {};
       var g = G[view];
-      Object.keys(fxEl).forEach(function(k){
-        var old = fxEl[k].querySelectorAll('.bm-fx-on');
-        old.forEach(function(e){ e.classList.remove('bm-fx-on'); e.classList.add('bm-fx-off'); setTimeout(function(){ if(e.parentNode) e.parentNode.removeChild(e); }, K.reduced() ? 160 : 260); });
-      });
+      pic.querySelectorAll('.bmx-fxp.bm-fx-on').forEach(function(e){ e.classList.remove('bm-fx-on'); e.classList.add('bm-fx-off'); setTimeout(function(){ if(e.parentNode) e.parentNode.removeChild(e); }, K.reduced() ? 160 : 260); });
       var body = fxl.querySelector('[data-body]');
       if(body){ var bon = sel === 'motor' || sel === 'somatosensory'; body.classList.toggle('is-on', bon); if(!bon) body.classList.remove('is-hurt'); }
       dbtn.disabled = !sel; dbtn.setAttribute('aria-pressed', String(dmg && !!sel));
@@ -724,17 +767,23 @@
       var late = dmg && animate && !K.reduced() && !!sel;
       if(!late) line(); else cause.set([{ t: R[sel].name, role: 'k' + (lobeOf(sel) || 'x') }]);   // the name at once, the damage once it shows
       if(!sel || !g.reg[sel]) return;
-      var r = g.reg[sel], host = fxEl[r.lv]; if(!host) return;
-      var pid = 'bmf' + view, gid = pid + 'grow' + (++S.grow);
+      var r = g.reg[sel];
+      var pid = 'bmp' + (++S.grow), gid = pid + 'grow';
       var reach = 0; r.poly.forEach(function(p){ reach = Math.max(reach, Math.hypot(p[0] - r.pin[0], p[1] - r.pin[1])); });
       reach = Math.min(reach, 1300) + 10;
-      var wrap = document.createElementNS(NS, 'g'); wrap.setAttribute('class', 'bm-fx-on' + (dmg ? ' is-dmg' : ''));
+      // the part's own small svg, the size of its box: only it repaints while the colour or the lesion grows
+      var bb = boxOf(view, sel), wrap = document.createElementNS(NS, 'svg');
+      wrap.setAttribute('class', 'bmx-fxp bm-fx-on' + (dmg ? ' is-dmg' : '')); wrap.setAttribute('aria-hidden', 'true'); wrap.setAttribute('data-ls-text', 'keep');
+      wrap.setAttribute('viewBox', [bb[0], bb[1], bb[2] - bb[0], bb[3] - bb[1]].map(r1).join(' '));
+      wrap.style.left = ((bb[0] + TX) * px).toFixed(1) + 'px'; wrap.style.top = ((bb[1] + TY) * px).toFixed(1) + 'px';
+      wrap.style.width = ((bb[2] - bb[0]) * px).toFixed(1) + 'px'; wrap.style.height = ((bb[3] - bb[1]) * px).toFixed(1) + 'px';
       var d = dOf(r.poly), k = lobeOf(sel) || 'x', red = K.reduced() || !animate;
-      wrap.innerHTML = '<defs><clipPath id="' + gid + '"><circle cx="' + r.pin[0] + '" cy="' + r.pin[1] + '" r="' + (red ? reach : 0) + '"/></clipPath></defs>' +
+      wrap.innerHTML = '<defs><clipPath id="' + gid + '"><circle cx="' + r.pin[0] + '" cy="' + r.pin[1] + '" r="' + (red ? reach : 0) + '"/></clipPath>' + partDefs(view, sel, pid) + '</defs>' +
         within(view, sel, pid, '<g clip-path="url(#' + gid + ')"><path class="bm-hl-f bm-k-' + k + '" d="' + d + '"/>' + (dmg ? '<path class="bm-dmg" d="' + d + '" fill="url(#' + pid + 'hatch)"/><path class="bm-dmg-t" d="' + d + '"/>' : '') + '</g>') +
         within(view, sel, pid, '<path class="bm-hl-e' + (dmg ? ' is-dmg' : '') + '" d="' + d + '" pathLength="1"' + (red ? '' : ' style="stroke-dasharray:1;stroke-dashoffset:1"') + '/>');
+      if(r.lv === 'low'){ var inner = wrap.innerHTML.replace('</defs>', '</defs><g mask="url(#' + pid + 'low)">'); wrap.innerHTML = inner + '</g>'; }
       if(red){ wrap.classList.add('is-fade'); }
-      host.appendChild(wrap);
+      pic.insertBefore(wrap, fxl);
       if(red){ requestAnimationFrame(function(){ wrap.classList.add('is-in'); }); return; }
       var circ = wrap.querySelector('clipPath circle'), edge = wrap.querySelector('.bm-hl-e'), t0 = performance.now(), dur = dmg ? 560 : 340;
       function step(now){
@@ -762,8 +811,8 @@
     function drawSplit(){
       if(!L) L = splitLay(false);
       fxl.innerHTML = ''; fxl.hidden = true;
-      svg.setAttribute('viewBox', '0 0 ' + FW + ' ' + L.H);
-      svg.innerHTML = '<g transform="translate(' + (FW - VW) / 2 + ' 0)">' + splitSvg(L, { pid: 'sbx', px: px, object: B.OBJECTS[S.word % B.OBJECTS.length] }) + '</g>';
+      svg.setAttribute('viewBox', '0 0 ' + FW + ' ' + FH);
+      svg.innerHTML = '<g transform="translate(' + TX + ' ' + TY + ')">' + splitSvg(L, { pid: 'sbx', px: px, object: B.OBJECTS[S.word % B.OBJECTS.length] }) + '</g>';
       SB = {}; svg.querySelectorAll('[data-sb]').forEach(function(e){ SB[e.getAttribute('data-sb')] = e; });
       fitPills();
       paintCut(false);
@@ -782,11 +831,11 @@
       taps.forEach(function(t){ t.el.remove(); }); taps = [];
       var S0 = L.scr;
       ['left', 'right'].forEach(function(f){
-        var t = K.tap(layer, { key: 'appsych-brainmap-flash', label: 'Flash the word in the ' + f + ' visual field', box: [f === 'left' ? S0[0] + 10 : 500 + 4, S0[1] + 10, S0[2] / 2 - 14, S0[3] - 20], chip: false,
+        var t = K.tap(layer, { key: 'appsych-brainmap-flash', label: 'Flash the word in the ' + f + ' visual field', box: [(f === 'left' ? S0[0] + 10 : 500 + 4) + TX, S0[1] + 10 + TY, S0[2] / 2 - 14, S0[3] - 20], chip: false,
           onClick: function(){ hideCue(true); tourDid('flash'); flash(f); } });
         t.el.classList.add('bmx-tap-scr'); taps.push(t);
       });
-      var c = L.cc, ct = K.tap(layer, { key: 'appsych-brainmap-cut', label: '', box: [c[0] - 10, c[1] - 10, c[2] + 20, c[3] + 20], chip: false, onClick: function(){ hideCue(true); tourDid('cut'); toggleCut(); } });
+      var c = L.cc, ct = K.tap(layer, { key: 'appsych-brainmap-cut', label: '', box: [c[0] - 10 + TX, c[1] - 10 + TY, c[2] + 20, c[3] + 20], chip: false, onClick: function(){ hideCue(true); tourDid('cut'); toggleCut(); } });
       ct.el.classList.add('bmx-tap-cc'); taps.push(ct);
       ccLabel();
     }
@@ -833,7 +882,7 @@
       var obj = B.OBJECTS[S.word];
       SB.word.querySelector('text').textContent = obj.toUpperCase();
       SB.bub.querySelector('text').textContent = '';
-      ['left', 'right'].forEach(function(h){ var o = SB['hold-' + h]; if(o) o.innerHTML = objSvg(obj, 0, 0, L.tall ? 30 : 24, 'sb-held'); });
+      ['left', 'right'].forEach(function(h){ var o = SB['hold-' + h]; if(o) o.innerHTML = objSvg(obj, 0, 0, L.tall ? 30 : 24, 'sb-held'); if(SB['tray-' + h]) SB['tray-' + h].innerHTML = trayObjs(L, h, obj); });
       splitLine(0, field);
       if(K.reduced()){ svg.classList.add('is-fade'); frameAt(field, S.cut, 9); requestAnimationFrame(function(){ svg.classList.remove('is-fade'); }); splitDone(field); return; }
       if(window.innerWidth < 1000){ var rc = pic.getBoundingClientRect(); if(rc.top < 0 || rc.bottom > window.innerHeight) pic.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
@@ -861,12 +910,15 @@
       if(!SB.word) return;
       var sb = B.splitBrain(field, cut), to = sb.first, other = to === 'left' ? 'right' : 'left';
       var idle = t < 0, wv = idle ? 0 : t < 0.3 ? t / 0.3 : t < 0.9 ? 1 : t < 1.2 ? 1 - (t - 0.9) / 0.3 : 0;
+      // reduced motion shows the end at once: the word stays in its field, a still mark of what was flashed
+      if(t > DUR && K.reduced()) wv = 1;
       var w = L.word[field];
       SB.word.setAttribute('opacity', r1(wv * 100) / 100);
       SB.word.setAttribute('transform', 'translate(' + r1(w[0]) + ' ' + r1(w[1]) + ') scale(' + r1(0.7 + 0.3 * Math.min(1, wv * 1.4)) + ')');
       // light to the eyes
       var rv = idle ? 0 : t < 0.3 ? 0 : t < 0.7 ? (t - 0.3) / 0.4 : t < 1.4 ? 1 - (t - 0.7) / 0.7 : 0;
-      SB.rays.setAttribute('d', 'M' + r1(w[0]) + ' ' + r1(w[1] + 12) + 'L' + L.eye.left.join(' ') + 'M' + r1(w[0]) + ' ' + r1(w[1] + 12) + 'L' + L.eye.right.join(' '));
+      var ry0 = L.scr[1] + L.scr[3] + 2;   // from the screen's lower edge, below the field's label
+      SB.rays.setAttribute('d', 'M' + r1(w[0]) + ' ' + r1(ry0) + 'L' + L.eye.left.join(' ') + 'M' + r1(w[0]) + ' ' + r1(ry0) + 'L' + L.eye.right.join(' '));
       SB.rays.setAttribute('opacity', r1(rv * 100) / 100);
       // the optic routes
       ['left', 'right'].forEach(function(f){ [0, 1].forEach(function(i){ var n = SB['nerve-' + f + '-' + i]; if(n) n.classList.toggle('is-on', !idle && f === field && t >= 0.7); }); });
@@ -903,7 +955,8 @@
         var go = hv < 0.5 ? ease(hv * 2) : 1 - ease((hv - 0.5) * 2) * 0.7;
         var x = a[0] + (z[0] - a[0]) * go, y = a[1] + (z[1] - a[1]) * go;
         hand.setAttribute('transform', 'translate(' + r1(x) + ' ' + r1(y) + ')');
-        arm.setAttribute('d', 'M' + L.sh[h].join(' ') + 'L' + r1(x) + ' ' + r1(y));
+        arm.setAttribute('d', armD(L, h, x, y));
+        var pk = SB['tray-' + h] && SB['tray-' + h].querySelector('[data-pick]'); if(pk) pk.style.opacity = hv >= 0.5 ? '0' : '';
         hold.setAttribute('opacity', hv >= 0.5 ? '1' : '0');
         mot.classList.toggle('is-on', !idle && has && t >= 2.5);
       });
@@ -922,6 +975,7 @@
       stage.setAttribute('data-tab', v);
       hideCue(false);
       Object.keys(spots).forEach(function(k){ spots[k].hide(true); });
+      pic.querySelectorAll('.bmx-fxp').forEach(function(e){ e.remove(); });
       taps.forEach(function(x){ x.el.remove(); }); taps = [];
       pic.classList.add('is-swap');
       var token = ++S.swap;
@@ -929,14 +983,14 @@
         if(token !== S.swap) return;
         if(v === 'split'){ S.stage = 0; S.field = null; L = null; fit(); drawSplit(); dbtn.hidden = true; form.hidden = true; front.hidden = true; }
         else {
-          view = v; dbtn.hidden = false; form.hidden = false; front.hidden = false;
+          view = v; dbtn.hidden = false; form.hidden = false;
           fit(); drawBrain();
           var sp = makeSpots(v); sp.hide(false); sp.place();
           var first = picks[v] && G[v].reg[picks[v]] ? picks[v] : G[v].order[0];
           if(!sp.picked() || sp.picked().id !== first) sp.pick(first, 'set'); else { sel = first; paintSel(false); }
         }
         requestAnimationFrame(function(){ if(token === S.swap) pic.classList.remove('is-swap'); });
-        if(onScreen) setTimeout(makeCue, K.reduced() ? 60 : 300);
+        if(onScreen) setTimeout(function(){ requestAnimationFrame(makeCue); }, K.reduced() ? 220 : 300);
       }, user && !K.reduced() ? 150 : 0);
       fin.value = ''; form.classList.remove('is-miss', 'is-open');
       refHtml();
@@ -972,22 +1026,24 @@
       var cands = [], text, key = 'appsych-brainmap-' + (isSplit() ? 'split' : 'map');
       if(isSplit()){
         text = 'Tap a side of the screen';
-        cands = [[[L.word.left[0], L.scr[1] + L.scr[3] - 4], 'below'], [[L.scr[0] + 8, L.fix[1]], 'left'], [[L.word.right[0], L.scr[1] + L.scr[3] - 4], 'below']];
+        var pu = function(q){ return [q[0] + TX, q[1] + TY]; };
+        cands = (L.tall ? [] : [[pu([L.scr[0] - 6, L.fix[1]]), 'left']]).concat([[pu([L.word.left[0], L.scr[1] + L.scr[3] - 4]), 'below'], [pu([L.word.right[0], L.scr[1] + L.scr[3] - 4]), 'below']]);
       } else {
         var sp = spots[view]; if(!sp || !sp.picked()) return;
         text = 'Tap any part';
         var open = sp.picked();
         sp.items.filter(function(it){ return it !== open; }).sort(function(a, b){ return Math.hypot(b.at[0][0] - open.at[0][0], b.at[0][1] - open.at[0][1]) - Math.hypot(a.at[0][0] - open.at[0][0], a.at[0][1] - open.at[0][1]); })
-          .forEach(function(it){ ['below', 'right', 'left'].forEach(function(sd){ cands.push([it.at[0], sd]); }); });
+          .forEach(function(it){ ['below', 'right', 'left'].forEach(function(sd){ cands.push([it.at[0], sd, it.id]); }); });
       }
       var R2 = function(e){ return e.getBoundingClientRect(); }, meet = function(a, b){ return a.left < b.right + 3 && a.right > b.left - 3 && a.top < b.bottom + 3 && a.bottom > b.top - 3; };
       for(var i = 0; i < cands.length; i++){
-        var c = K.cue(layer, { key: key, text: text, side: cands[i][1], at: (function(q){ return function(){ return q; }; })(cands[i][0]) });
+        // a pin's cue follows that pin when the frame changes (a rebuilt set of pins has new picture units)
+        var c = K.cue(layer, { key: key, text: text, side: cands[i][1], at: (function(q, id){ return function(){ var sp = id && spots[view], it = sp && sp.items.filter(function(x){ return x.id === id; })[0]; return it ? it.at[0] : q; }; })(cands[i][0], cands[i][2]) });
         if(!c.show()) return;
         var box = layer.el.querySelector('.tk2-cue'), r = box && R2(box), pr = R2(pic), bad = !r || r.left < pr.left || r.right > pr.right || r.top < pr.top || r.bottom > pr.bottom;
         if(!bad) [].forEach.call(layer.el.querySelectorAll('.tk2-spots:not([hidden]) .tk2-spot-pin, .tk2-spot-card:not([hidden]), .tk2-tap .tk2-badge'), function(e){ if(e.offsetParent !== null && meet(R2(e), r)) bad = true; });
         [fb, front].forEach(function(e){ if(!bad && e.offsetParent !== null && !e.closest('[hidden]') && meet(R2(e), r)) bad = true; });
-        if(isSplit() && !bad) svg.querySelectorAll('text').forEach(function(t){ if(!bad && t.textContent && meet(R2(t), r)) bad = true; });
+        if(isSplit() && !bad) svg.querySelectorAll(L.tall ? 'text, .sb-eye' : 'text, .sb-head, .sb-eye').forEach(function(t){ if(!bad && (t.textContent || t.tagName !== 'text') && meet(R2(t), r)) bad = true; });
         if(!bad){ cue = c; return; }
         c.hide(false);
       }
@@ -1043,7 +1099,8 @@
       var ch = fit();
       if(isSplit()){ if(ch) drawSplit(); }
       else { if(ch) drawBrain(); if(spots[view]) spots[view].place(); }
-      if(cue && cue.active()) cue.place();
+      // a new frame moves the pins in picture units: place the cue again from scratch, not just its old point
+      if(cue && cue.active()) makeCue();
       taps.forEach(function(t){ t.place(); });
     }
     function resized(){ clearTimeout(rz); rz = setTimeout(relayout, 60); }
@@ -1054,6 +1111,7 @@
       onScreen = m === 'explore';
       if(!onScreen){ var was = !!S.run; stopRun(false); if(S.field && (was || S.stage)) frameAt(S.field, S.cut, 9); hideCue(false); [tour, tourSplit].forEach(function(t){ if(t.active()) t.stop(); }); clearTimeout(ft); clearTimeout(rz); return; }
       setTimeout(function(){ relayout(); makeCue(); }, 40);
+      setTimeout(function(){ if(onScreen && cue && cue.active()) makeCue(); }, 700);   // once more when the page has settled
     }
     function ready(s){
       LS = s; setTab(tabV, false); refHtml();
@@ -1068,7 +1126,7 @@
       frameAt: function(t){ frameAt(S.field || 'left', S.cut, t); }, running: function(){ return !!S.run; },
       // the frame check: stop any run and draw the flash of this field at time t (seconds)
       _seek: function(field, t){ stopRun(false); if(S.field !== field){ S.field = field; } frameAt(field, S.cut, t); }, _dur: DUR,
-      _spots: function(){ return spots[view]; }, _regAt: regAt, _G: G, _L: function(){ return L; }, _px: function(){ return px; }, _view: function(){ return view; } };
+      _spots: function(){ return spots[view]; }, _regAt: regAt, _G: G, _L: function(){ return L; }, _px: function(){ return px; }, _t: function(){ return { tx: TX, ty: TY, px: px }; }, _cue: function(){ cueDone = false; makeCue(); return !!(cue && cue.active()); }, _view: function(){ return view; } };
     window.BrainMapExplore = api;   // for the sweep and frame checks (scripts/tools-v2/brain-map-*.mjs)
     return api;
   }
@@ -1105,11 +1163,11 @@
       inner = splitSvg(Ls, { pid: pid, px: wpx / Ls.W, object: g.object });
       vb = '0 0 ' + Ls.W + ' ' + Ls.H;
       label = 'A split-brain test seen from above: the word ' + g.object + ' flashes in the ' + g.field + ' visual field; the corpus callosum is ' + (g.cut ? 'cut' : 'intact') + '.';
-      el.innerHTML = '<figure class="cd-fig bm-qfig"><svg class="bm-qsvg" viewBox="' + vb + '" preserveAspectRatio="xMidYMid meet" role="img" aria-label="' + esc(label) + '">' + inner + '</svg></figure>';
+      el.innerHTML = '<figure class="cd-fig bm-qfig"><svg class="bm-qsvg" data-ls-text="keep" viewBox="' + vb + '" preserveAspectRatio="xMidYMid meet" role="img" aria-label="' + esc(label) + '">' + inner + '</svg></figure>';
       staticSplit(el.querySelector('svg'), Ls, g, stage, wpx / Ls.W);
       return;
     }
-    el.innerHTML = '<figure class="cd-fig bm-qfig"><svg class="bm-qsvg" viewBox="' + vb + '" preserveAspectRatio="xMidYMid meet" role="img" aria-label="' + esc(label) + '">' + inner + '</svg></figure>';
+    el.innerHTML = '<figure class="cd-fig bm-qfig"><svg class="bm-qsvg" data-ls-text="keep" viewBox="' + vb + '" preserveAspectRatio="xMidYMid meet" role="img" aria-label="' + esc(label) + '">' + inner + '</svg></figure>';
   }
   /* a Test yourself split-brain figure at one moment: the word in its field, then (as steps are answered) the
      hemisphere that got it, what was said, which hand found it */
@@ -1128,7 +1186,7 @@
       ['left', 'right'].forEach(function(h){
         var has = h === 'left' ? sb.leftHand : sb.rightHand; if(!has || (g.hand && g.hand !== 'both' && g.hand !== h)) return;
         var z = L.reach[h], a = L.hand[h], x = a[0] + (z[0] - a[0]) * 0.3, y = a[1] + (z[1] - a[1]) * 0.3;
-        E['hand-' + h].setAttribute('transform', 'translate(' + r1(x) + ' ' + r1(y) + ')'); E['armp-' + h].setAttribute('d', 'M' + L.sh[h].join(' ') + 'L' + r1(x) + ' ' + r1(y));
+        E['hand-' + h].setAttribute('transform', 'translate(' + r1(x) + ' ' + r1(y) + ')'); E['armp-' + h].setAttribute('d', armD(L, h, x, y)); var pk = E['tray-' + h].querySelector('[data-pick]'); if(pk) pk.style.opacity = '0';
         E['hold-' + h].innerHTML = objSvg(g.object, 0, 0, L.tall ? 30 : 24, 'sb-held'); E['hold-' + h].setAttribute('opacity', '1'); E['mot-' + h].classList.add('is-on');
       });
     }

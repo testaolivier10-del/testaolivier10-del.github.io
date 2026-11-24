@@ -15,7 +15,8 @@
 .bmx-pic{position:relative;flex:none;max-width:100%;}
 .bmx-svg{display:block;width:100%;height:100%;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;font-family:var(--font-ui);transition:opacity .2s ease-out;}
 .bmx-fxl{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
-.bmx-pic.is-swap .bmx-svg,.bmx-pic.is-swap .bmx-fxl,.bmx-pic.is-swap .tk2-spots{opacity:0;transition:none;}
+.bmx-fxp{position:absolute;pointer-events:none;overflow:visible;}
+.bmx-pic.is-swap .bmx-svg,.bmx-pic.is-swap .bmx-fxl,.bmx-pic.is-swap .bmx-fxp,.bmx-pic.is-swap .tk2-spots{opacity:0;transition:none;}
 .bmx-pic .tk2-spots{transition:opacity .2s ease-out;}
 .bmx-svg.is-fade{opacity:.15;transition:none;}
 .bmx .tk2-spot-card{font-size:15px;}
@@ -70,7 +71,7 @@
 .bmx .tk2-cz.is-yes{--cz:var(--bm-yes);--cz-ink:var(--bm-yes);}
 
 /* --------------------------------------------------------------- the brain (both views and the drill figures) */
-.bmx-svg,.bmx-fxl,.bm-qsvg{
+.bmx-svg,.bmx-fxl,.bmx-fxp,.bm-qsvg{
   --t0:#F7E2DA;--t1:#EBC5B8;--t2:#C99183;--sul:#A86E61;--sulhi:rgba(255,246,242,.75);--groove:#8C564B;--edge:#83544A;--rim:rgba(110,52,40,.32);
   --c0:#EFCDC1;--c1:#C58D7E;--fol:#A06657;--s0:#D9A99B;--s1:#F0CFC4;--s2:#C99384;--stl:rgba(150,90,78,.45);--arbor:#FFF1EA;
   --lf:rgba(40,130,215,.36);--lp:rgba(236,170,30,.28);--lt:rgba(46,158,107,.25);--lo:rgba(154,98,196,.25);
@@ -78,7 +79,7 @@
   --cc:#FFF5EE;--ccE:#B4877B;--thal:#E9C2B4;--deepE:#9E6A5E;--v4:#5B3330;--ras:#A2457E;
   --hip:rgba(214,80,150,.36);--hipE:#B23C82;--amy:rgba(226,96,60,.42);--amyE:#C2502C;--rew:rgba(232,160,20,.42);--rewE:#B87A00;
   --dmgbg:rgba(110,16,8,.42);--dmgln:#8E1C12;--floor0:rgba(40,25,25,.2);--body:#C9D2DA;--bodyOn:#0B6FA8;--bodyHurt:#B3261E;--tagbg:#fff;--tagE:#084F78;--tagT:#10202C;}
-:root[data-theme="dark"] .bmx-svg,:root[data-theme="dark"] .bmx-fxl,:root[data-theme="dark"] .bm-qsvg{
+:root[data-theme="dark"] .bmx-svg,:root[data-theme="dark"] .bmx-fxl,:root[data-theme="dark"] .bmx-fxp,:root[data-theme="dark"] .bm-qsvg{
   --t0:#E6C4BA;--t1:#C99A8D;--t2:#916258;--sul:#80493E;--sulhi:rgba(255,236,230,.45);--groove:#6A3A32;--edge:#F0D3CA;--rim:rgba(40,12,8,.42);
   --c0:#D9B1A4;--c1:#9A6658;--fol:#7B4537;--s0:#B88576;--s1:#DDB4A7;--s2:#9C6A5C;--stl:rgba(90,45,36,.5);--arbor:#F8E6DE;
   --lf:rgba(110,180,240,.42);--lp:rgba(246,196,70,.42);--lt:rgba(90,205,150,.4);--lo:rgba(190,150,235,.42);
@@ -123,6 +124,10 @@
 .bm-cc{fill:var(--cc);stroke:var(--ccE);stroke-width:2.5;}
 .bm-cc-l{fill:none;stroke:var(--ccE);stroke-width:2;opacity:.45;}
 .bm-deep{stroke-width:3;}
+.bm-seen{opacity:.5;}
+.bm-stem.is-fill{stroke:none;}
+.bm-stem-e{fill:none;stroke:var(--edge);stroke-width:2.5;}
+.bm-pfc{fill:none;stroke:var(--hedge);stroke-width:3.5;stroke-linecap:round;opacity:.38;}
 .bm-deep.is-hip{fill:var(--hip);stroke:var(--hipE);} .bm-deep.is-amy{fill:var(--amy);stroke:var(--amyE);} .bm-deep.is-rew{fill:var(--rew);stroke:var(--rewE);}
 .bm-hip-l{fill:none;stroke:var(--hipE);stroke-width:2;opacity:.55;}
 .bm-floor{pointer-events:none;}
@@ -161,9 +166,9 @@
 
 /* --------------------------------------------------------------- split brain */
 .bmx-svg,.bm-qsvg{--skin:#F3D2BC;--skin1:#DDAE91;--skinE:#A87A60;--hemi:#EFCBBF;--hemiE:#A9776A;--gyr:rgba(150,90,78,.5);--nerve:#C8A193;
-  --scr:#24303B;--glass:#0F171F;--fieldT:#9FB4C6;--tray:#C49A6C;--trayE:#8D6A44;--cloth:#5D7184;--lab:#10202C;--halo:#fff;--mot:rgba(11,111,168,.28);}
+  --scr:#24303B;--glass:#0F171F;--table:#E7D6BF;--tableE:#B99A74;--shirt:#6E8FB0;--shirtE:#4A6684;--fieldT:#9FB4C6;--tray:#C49A6C;--trayE:#8D6A44;--cloth:#5D7184;--lab:#10202C;--halo:#fff;--mot:rgba(11,111,168,.18);}
 :root[data-theme="dark"] .bmx-svg,:root[data-theme="dark"] .bm-qsvg{--skin:#C9A088;--skin1:#9C7660;--skinE:#E9C8B2;--hemi:#D7AEA1;--hemiE:#F4D6CC;--gyr:rgba(110,55,45,.6);--nerve:#9A7366;
-  --scr:#2E3B48;--glass:#0A1016;--fieldT:#9FB4C6;--tray:#8E6A46;--trayE:#D2AE86;--cloth:#45576A;--lab:#F2F5F9;--halo:#0C151F;--mot:rgba(124,196,238,.3);}
+  --scr:#2E3B48;--glass:#0A1016;--table:#3A3128;--tableE:#7A644A;--shirt:#40586F;--shirtE:#7E9CB8;--fieldT:#9FB4C6;--tray:#8E6A46;--trayE:#D2AE86;--cloth:#45576A;--lab:#F2F5F9;--halo:#0C151F;--mot:rgba(124,196,238,.2);}
 .sb-h0{stop-color:var(--skin);} .sb-h1{stop-color:var(--skin1);}
 .sb-desk{fill:color-mix(in srgb, var(--scr) 40%, transparent);}
 .sb-scr{fill:var(--scr);} .sb-glass{fill:var(--glass);}
@@ -172,16 +177,18 @@
 .sb-field{fill:var(--fieldT);font-weight:800;}
 .sb-word{fill:#FFD24D;font-weight:900;letter-spacing:.04em;}
 .sb-ray{fill:none;stroke:#FFC83D;stroke-width:4;stroke-linecap:round;}
-.sb-torso{fill:var(--skin1);stroke:var(--skinE);stroke-width:2.5;}
+.sb-torso{fill:var(--shirt);stroke:var(--shirtE);stroke-width:3;}
+.sb-table{fill:var(--table);stroke:var(--tableE);stroke-width:2.5;} .sb-table-e{fill:var(--tableE);opacity:.45;}
+.sb-tray-in{fill:rgba(0,0,0,.12);}
 .sb-tray{fill:var(--tray);stroke:var(--trayE);stroke-width:3;}
 .sb-cloth{fill:var(--cloth);}
 .sb-ob .m,.sb-held .m{fill:#B9C2CA;stroke:#5E6B76;stroke-width:1.5;} .sb-ob .h,.sb-held .h{fill:var(--tray);}
 .sb-ob .y,.sb-held .y{fill:#F2C230;stroke:#8C6A00;stroke-width:1.5;} .sb-ob .w,.sb-held .w{fill:#F1D7B8;} .sb-ob .p,.sb-held .p{fill:#D2697A;}
 .sb-ob .r,.sb-held .r{fill:#E2553F;} .sb-ob .c,.sb-held .c{fill:#5BA4D8;stroke:#2A5F86;stroke-width:1.5;}
 .sb-ob .ln,.sb-held .ln{fill:none;stroke:rgba(0,0,0,.45);stroke-width:2;} .sb-ob .ln2,.sb-held .ln2{fill:none;stroke:#5E6B76;stroke-width:3;stroke-linecap:round;}
-.sb-arm{fill:none;stroke:var(--skin1);stroke-width:30;stroke-linecap:round;}
+.sb-arm{fill:none;stroke:var(--skin1);stroke-width:30;stroke-linecap:round;stroke-linejoin:round;}
 .sb-hand path{fill:var(--skin);stroke:var(--skinE);stroke-width:2;}
-.sb-mot{fill:none;stroke:var(--mot);stroke-width:5;stroke-linecap:round;transition:stroke .25s,stroke-width .25s;}
+.sb-mot{fill:none;stroke:var(--mot);stroke-width:5;stroke-dasharray:none;stroke-linecap:round;transition:stroke .25s,stroke-width .25s;}
 .sb-mot.is-on{stroke:var(--bodyOn,#0B6FA8);stroke-width:8;}
 .sb-ear{fill:var(--skin1);stroke:var(--skinE);stroke-width:2.5;}
 .sb-head{stroke:var(--skinE);stroke-width:3;}

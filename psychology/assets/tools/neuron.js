@@ -1300,26 +1300,17 @@
   }
 
   /* ------------------------------------------------------------ mount */
-  function boot(){
-    var K = window.LevlKit2;
-    T.mount('neuron', function(app, data){
-      // the course adapter (T.kit2, psy-tools.js): Explore is this stage, full width; Test yourself the drills
-      var ctx = { studio: null, go: null }, ex = null;
-      var md = T.kit2(app, { slug: 'neuron',
-        explore: function(host){
-          ex = explore2(app, data, ctx, K);
-          host.appendChild(ex.stage); host.appendChild(ex.ref);
-          return { stage: ex.stage, ref: ex.ref, shown: function(m){ ex.shown(m); }, ready: function(s){ ctx.studio = s; } };
-        },
-        quiz: function(host){ quiz(host, data); } });
-      ctx.go = function(m){ md.show(m, true); };
-    });
-  }
-  /* The page loads the kit (pages.json "kit2": true). A cached copy of the old page would not: fetch it then. */
-  if(window.LevlKit2) boot();
-  else {
-    var up = (window.ApPsychBase || '../') + '../assets/course/';
-    var l = document.createElement('link'); l.rel = 'stylesheet'; l.href = up + 'tool-kit2.css'; document.head.appendChild(l);
-    var sc = document.createElement('script'); sc.src = up + 'tool-kit2.js'; sc.onload = boot; document.head.appendChild(sc);
-  }
+  // the course adapter (T.kit2, psy-tools.js): Explore is this stage, full width; Test yourself the drills. It loads
+  // the kit itself when a cached page did not, and calls shown() once at the start and after every switch.
+  T.mount('neuron', function(app, data){
+    var ctx = { studio: null, go: null }, ex = null;
+    var md = T.kit2(app, { slug: 'neuron',
+      explore: function(host){
+        ex = explore2(app, data, ctx, window.LevlKit2);
+        host.appendChild(ex.stage); host.appendChild(ex.ref);
+        return { stage: ex.stage, ref: ex.ref, shown: function(m){ ex.shown(m); }, ready: function(s){ ctx.studio = s; } };
+      },
+      quiz: function(host){ quiz(host, data); } });
+    ctx.go = function(m){ md.show(m, true); };
+  });
 })();
