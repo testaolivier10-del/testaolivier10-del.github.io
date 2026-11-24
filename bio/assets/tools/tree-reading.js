@@ -450,7 +450,7 @@
         // tips: the organism on its branch end, its name above
         var sel = St.mode === 'explore' && St.tab === 'anc' ? St.sel : [];
         var sw = V.swing, moving = sw ? sw.moving : null;
-        // where each name goes: just above its organism; on two staggered rows, the upper row clears both neighbours
+        // where each name goes: just above its organism; on two staggered rows, the upper row clears both neighbors
         var tgt = sw ? sw.to : V.slot, bySlot = [], baseOf = {};
         P.leaves(r).forEach(function(nd){ bySlot[tgt[nd.name]] = nd.name; baseOf[nd.name] = G.hy[nd.name] - G.S * (A.has(nd.name) ? A.top(nd.name) : 0.8) - 13; });
         var nameY = {};
