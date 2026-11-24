@@ -225,7 +225,7 @@
 .nr2-stimrow{stroke:var(--nr-grid);stroke-width:1;}
 .nr2-trace{fill:none;stroke:var(--nr-edge);stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round;}
 .nr2-ghost{fill:none;stroke:var(--nr-edge);stroke-opacity:.22;stroke-width:2;stroke-linejoin:round;}
-.nr2-before{fill:none;stroke:var(--nr-mute);stroke-opacity:.5;stroke-width:1.6;stroke-dasharray:5 4;}
+.nr2-before{fill:none;stroke:var(--nr-mute);stroke-opacity:.45;stroke-width:1.4;}
 .nr2-now{stroke:var(--nr-ink);stroke-opacity:.35;stroke-width:1.2;}
 .nr2-head{fill:var(--nr-plot);stroke:var(--nr-edge);stroke-width:2.4;}
 .nr2-peak-t{fill:var(--nr-sig-ink);font-weight:800;paint-order:stroke;stroke:var(--nr-plot);stroke-width:4px;stroke-linejoin:round;}

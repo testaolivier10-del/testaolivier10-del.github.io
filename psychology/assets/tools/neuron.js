@@ -1024,10 +1024,10 @@
         if(c > b) p.push('<rect class="nr2-refb" x="' + n1(b) + '" y="' + n1(P.y0) + '" width="' + n1(c - b) + '" height="' + n1(P.Y(-86) - P.y0) + '"/>');
         if(g.tab === 'refr' && t >= sp + 1 && sp === r.spikes[0]) p.push(txt(P.X(sp + 1.2), P.y0 + fs + 3, 'refractory', 'nr2-refr-t', 'start', fs));
       });
-      // the setting before the change (Threshold): its whole trace, faint
+      // the faint full trace of this setting (no dashed trace of the previous setting: the tick on the control marks it)
       // the whole run faint (and the setting before the change), drawn once per run in its own layer
       var gk = g.W + 'x' + g.H + '|' + r.S + '|' + r.gap + '|' + r.mode + '|' + (prev && prev.run && prev.tab === g.tab && prev.run !== r ? prev.run.S + '|' + prev.run.gap : '');
-      if(ghostKey !== gk){ ghostKey = gk; var gq = ''; if(prev && prev.run && prev.tab === g.tab && prev.run !== r){ var pp = N.series(prev.run, 0.05).map(function(q){ return [q[0], P.X(q[0]), P.Y(q[1])]; }); gq += '<polyline class="nr2-before" points="' + polyStr(pp, 0, pp.length) + '"/>'; } gq += '<polyline class="nr2-ghost" points="' + polyStr(pts, 0, pts.length) + '"/>'; ghostStr = gq; }
+      if(ghostKey !== gk){ ghostKey = gk; var gq = ''; gq += '<polyline class="nr2-ghost" points="' + polyStr(pts, 0, pts.length) + '"/>'; ghostStr = gq; }
       ghostNext = ghostStr;
       var k = 0; while(k < pts.length && pts[k][0] <= t + 1e-9) k++;
       if(k > 1) p.push('<polyline class="nr2-trace" points="' + polyStr(pts, 0, k) + '"/>');
