@@ -297,15 +297,26 @@
   }
   function eOf(l){ var L = 0; for(var i = 0; i < l.length - 1; i++) L += (l[i] + l[i + 1]) / 2; return L; }
   var LT = {};
-  function lifeTable(e0){
-    var key = (Math.round(e0 * 10) / 10).toFixed(1);
+  /* whole years are solved; a tenth between two whole years is the straight mix of their two tables (its life
+     expectancy is then exactly the mix, as e0 is a sum of l) */
+  function whole(E){
+    var key = String(E);
     if(LT[key]) return LT[key];
-    var E = +key, lo = -8, hi = 5;
-    for(var i = 0; i < 48; i++){ var m = (lo + hi) / 2; if(eOf(ltOf(Math.exp(m))) > E) lo = m; else hi = m; }
+    var lo = -8, hi = 5;
+    for(var i = 0; i < 40; i++){ var m = (lo + hi) / 2; if(eOf(ltOf(Math.exp(m))) > E) lo = m; else hi = m; }
     var l = ltOf(Math.exp((lo + hi) / 2)), L = [];
     for(var a = 0; a < 110; a++) L.push((l[a] + l[a + 1]) / 2);
-    var keys = Object.keys(LT); if(keys.length > 400) LT = {};
     return (LT[key] = { e0: E, l: l, L: L });
+  }
+  var LF = {};
+  function lifeTable(e0){
+    var E = Math.round(e0 * 10) / 10, f = Math.floor(E + 1e-9), w = Math.round((E - f) * 10) / 10;
+    if(w < 0.05) return whole(f);
+    var key = E.toFixed(1);
+    if(LF[key]) return LF[key];
+    var p = whole(f), q = whole(f + 1), l = p.l.map(function(v, i){ return v + (q.l[i] - v) * w; }), L = p.L.map(function(v, i){ return v + (q.L[i] - v) * w; });
+    if(Object.keys(LF).length > 1200) LF = {};
+    return (LF[key] = { e0: E, l: l, L: L });
   }
   function stable(tfr, e0){
     var F = lifeTable(e0 + 2.5), Mt = lifeTable(e0 - 2.5), girls = 1 / (1 + SRB);

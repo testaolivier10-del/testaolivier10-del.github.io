@@ -148,7 +148,7 @@
     return p > 0 ? { dir: 1, pill: 'Grows ' + pc + '% a year', part: 'grows ' + pc + '% a year', two: 'doubles in ' + yrs + ' years' }
       : { dir: -1, pill: 'Shrinks ' + pc + '% a year', part: 'shrinks ' + pc + '% a year', two: 'halves in ' + yrs + ' years' };
   }
-  var TAKE = 'Above replacement the base widens and the population grows; below it, the base narrows and the population shrinks.';
+  var TAKE = 'Above replacement the population grows; below it, it shrinks.';
   var SHAPE_WORD = { expansive: 'expansive', stable: 'stable', constrictive: 'constrictive' };
 
   /* a person in a box w × h (feet at the bottom middle): head, body, two legs */
@@ -222,8 +222,8 @@
       pick: function(x){ return G ? Math.round(clamp(G.v(x), TMIN, TMAX) * 10) / 10 : null; },
       dir: function(){ return 0; },
       valuetext: function(v){ return n1(v) + ' children per woman'; },
-      tag: function(v){ return n1(v) + ' children'; },
-      tagSide: function(v){ if(!G) return 'right'; var w = tw(n1(v) + ' children', 13, 900) + 18; return G.x(v) + 26 + w <= G.W - 6 ? 'right' : 'left'; },
+      tag: function(v){ return n1(v); },
+      tagSide: function(v){ if(!G) return 'right'; var w = tw(n1(v), 13, 900) + 18; return G.x(v) + 26 + w <= G.W - 6 ? 'right' : 'left'; },
       onStart: function(v){ S.side = Math.sign(v - model(S.t, S.e).repl); },
       onInput: function(v){ used(); S.t = v; kick(); tourDid('tfr'); },
       onEnd: function(v){ var sd = Math.sign(v - model(S.t, S.e).repl); if(S.side && sd && sd !== S.side){ S.take = true; if(!moving() && shown) words(shown); } } });
@@ -240,7 +240,7 @@
       var r = svg.getBoundingClientRect(), k = r.width / G.W, x = (e.clientX - r.left) / k, y = (e.clientY - r.top) / k;
       // the mother, her children and the track: drag the rate from there; the life track: drag the life expectancy
       if(e.target.closest('.tk2-knob, .tk2-cue')) return;
-      if(y >= G.yG - G.momH - 4 && y <= G.yN + 6 && x >= G.x(0) - 20 && x <= G.x(TMAX) + 24) cT.grab(e);
+      if(y >= G.yG - G.momH - 4 && y <= G.yN + 6 && x >= G.x(0) - 20 && x <= G.x(TMAX) + G.momH * 0.5) cT.grab(e);
       else if(Math.abs(y - G.eY) <= 16 && x >= G.ex(EMIN) - 12 && x <= G.ex(EMAX) + 12) cE.grab(e);
     });
 
@@ -255,9 +255,9 @@
       g.H = H;
       g.f = { age: ph ? 11.5 : 12.5, sex: ph ? 13 : 14, tick: 11.5, pill: ph ? 14 : 16, life: ph ? 12.5 : 13.5, num: ph ? 12.5 : 13.5, cap: ph ? 12 : 13 };
       g.headH = ph ? 76 : 72;
-      g.momH = ph ? 46 : 64; g.kidH = Math.round(g.momH * 0.62);
-      var plazaTop0 = H - (g.momH + 6 + 20 + 30 + 22 + 10);
-      g.yG = plazaTop0 + g.momH + 6; g.yT = g.yG + 20; g.yN = g.yT + 32; g.yC = g.yN + 20;
+      g.momH = ph ? 46 : Math.round(clamp(H * 0.105, 50, 64)); g.kidH = Math.round(g.momH * 0.62);
+      var cp = ph || H < 600, capGap = cp ? 22 : 25, numGap = ph ? 32 : 38, plazaTop0 = H - (g.momH + 6 + 20 + numGap + capGap + 8);
+      g.yG = plazaTop0 + g.momH + 6; g.yT = g.yG + 20; g.yN = g.yT + numGap; g.yC = g.yN + capGap;
       g.plazaTop = g.yG - g.momH - 10;
       g.axisH = 18;
       g.rowTop = g.headH; g.rowBot = g.plazaTop - g.axisH;
@@ -277,6 +277,8 @@
       g.ex = function(v){ return g.eX0 + (v - EMIN) / (EMAX - EMIN) * (g.eX1 - g.eX0); };
       g.ev = function(x){ return EMIN + (x - g.eX0) / (g.eX1 - g.eX0) * (EMAX - EMIN); };
       g.sexY = g.headH - 8;
+      // the mother stands just right of her rate, so the children (cut at the rate) are never behind her
+      g.momX = function(v){ return g.x(v) + g.momH * 0.22; };
       return g;
     }
 
@@ -308,7 +310,9 @@
       [5, 10, 15].forEach(function(v){ [-1, 1].forEach(function(sg){ var xx = g.cx + sg * (g.spine / 2 + g.sx(v)); o.push('<path class="agv-grid" d="M' + n1(xx) + ' ' + n1(g.rowTop - 2) + 'V' + n1(g.rowBot + 3) + '"/>'); o.push('<text class="agv-tk" x="' + n1(xx) + '" y="' + n1(g.rowBot + 14) + '" text-anchor="middle" style="font-size:' + g.f.tick + 'px">' + v + '%</text>'); }); });
       // the spine: the age bands
       o.push('<rect class="agv-spine" x="' + n1(g.cx - g.spine / 2 + 2) + '" y="' + n1(g.rowTop - 1) + '" width="' + n1(g.spine - 4) + '" height="' + n1(g.rowBot - g.rowTop + 2) + '" rx="6"/>');
-      for(var i = 0; i < 17; i++){ var yy = g.rowBot - (i + 0.5) * g.pitch; o.push('<text class="agv-age" x="' + n1(g.cx) + '" y="' + n1(yy + g.f.age * 0.36) + '" text-anchor="middle" style="font-size:' + g.f.age + 'px">' + A.GROUPS[i] + '</text>'); }
+      // every band named when the rows are tall enough for the label and 4 px; else every other band (0–4, 10–14, ...)
+      g.ageStep = g.pitch >= g.f.age * 1.36 + 4.5 ? 1 : 2;
+      for(var i = 0; i < 17; i += g.ageStep){ var yy = g.rowBot - (i + 0.5) * g.pitch; o.push('<text class="agv-age" x="' + n1(g.cx) + '" y="' + n1(yy + g.f.age * 0.36) + '" text-anchor="middle" style="font-size:' + g.f.age + 'px">' + A.GROUPS[i] + '</text>'); }
       o.push('<text class="agv-sex is-m" x="' + n1(g.cx - g.spine / 2 - 4) + '" y="' + n1(g.sexY) + '" text-anchor="end" style="font-size:' + g.f.sex + 'px">Males</text>');
       o.push('<text class="agv-sex is-f" x="' + n1(g.cx + g.spine / 2 + 4) + '" y="' + n1(g.sexY) + '" text-anchor="start" style="font-size:' + g.f.sex + 'px">Females</text>');
       // the children per woman track and its numbers
@@ -363,7 +367,7 @@
       var mom = gDyn.querySelector('.agv-mom');
       var mk = g.W + '/' + g.H;
       if(mk !== momKey){ momKey = mk; mom.innerHTML = '<ellipse class="agv-shadow" cx="0" cy="' + n1(g.yG) + '" rx="' + n1(g.momH * 0.26) + '" ry="3"/>' + figure2(-g.momH * 0.45, g.yG - g.momH, g.momH * 0.9, g.momH, { kind: 'mom', skin: SKIN[1] }); }
-      mom.setAttribute('transform', 'translate(' + n1(xs) + ' 0)');
+      mom.setAttribute('transform', 'translate(' + n1(g.momX(t)) + ' 0)');
       // the numbers under the track, and replacement where this life expectancy puts it
       var rp = d.repl, rx = g.x(rp), rt = 'replacement ' + n1(rp), rw = tw(rt, g.f.num, 800), nums = '';
       for(var m = TMIN; m <= TMAX; m++){ var nx = g.x(m), nwid = tw(String(m), g.f.num, 800); if(Math.abs(nx - rx) < rw / 2 + nwid / 2 + 6) continue; nums += '<text class="agv-num" x="' + n1(nx) + '" y="' + n1(g.yN) + '" text-anchor="middle" style="font-size:' + g.f.num + 'px">' + m + '</text>'; }
@@ -396,9 +400,10 @@
     /* ---- the loop: each row eases to the rate, the base first, the rows above a little later */
     function moving(){ if(Math.abs(S.E - S.e) > 1e-6) return true; for(var i = 0; i < 17; i++) if(Math.abs(S.T[i] - S.t) > 1e-6) return true; return false; }
     function kick(){
-      S.take = false;
+      var wasTake = S.take; S.take = false;
       if(K.reduced()){ settle(); flash(); paint(); return; }
       if(!raf){ lastT = 0; stage.setAttribute('data-busy', '1'); raf = requestAnimationFrame(tick); }
+      if(wasTake) words(shown || drawn());
       paintSquare(shown || drawn());
     }
     function settle(){ for(var i = 0; i < 17; i++) S.T[i] = S.t; S.E = S.e; }
@@ -407,8 +412,11 @@
       raf = 0;
       var dt = lastT ? Math.min(0.05, (ts - lastT) / 1000) : 0.016; lastT = ts;
       for(var i = 0; i < 17; i++){
-        var tau = 0.05 + 0.028 * i, a = 1 - Math.exp(-dt / tau), v = S.T[i] + (S.t - S.T[i]) * a;
-        S.T[i] = Math.abs(S.t - v) < 0.004 ? S.t : v;
+        var tau = 0.05 + 0.022 * i, a = 1 - Math.exp(-dt / tau), v = S.T[i] + (S.t - S.T[i]) * a;
+        // a thousandth: the memo's key, so the row drawn is exactly the model at S.T[i] (and always a step on)
+        var q = Math.abs(S.t - v) < 0.015 ? S.t : Math.round(v * 1000) / 1000;
+        if(q === S.T[i] && q !== S.t) q = Math.round((q + (S.t > q ? 0.001 : -0.001)) * 1000) / 1000;
+        S.T[i] = q;
       }
       var e = S.E + (S.e - S.E) * (1 - Math.exp(-dt / 0.12));
       // life expectancy eases in steps of 0.1 year (each a cached life table)
@@ -488,13 +496,17 @@
       window.addEventListener('resize', function(){ setTimeout(function(){ layoutNow(); }, 60); });
       if(s.mode() === 'explore') cue.show();
       startTour(false);
+      // warm the whole year life tables (women e0 + 2.5, men e0 - 2.5) a few at a time, so a life expectancy drag
+      // never solves one mid frame
+      var we = 27;
+      (function warm(){ for(var k = 0; k < 3 && we <= 88; k++, we++) A.lifeTable(we); if(we <= 88) setTimeout(warm, 40); })();
     }
     // "?" follows the picture once it settles
     var refT = null;
     var paint0 = paint; paint = function(){ paint0(); if(!moving()){ clearTimeout(refT); refT = setTimeout(refHtml, 120); } };
 
     // test hooks (read only, plus set for the sweeps)
-    window.__age = { G: function(){ return G; }, busy: function(){ return !!raf; }, drawn: function(){ return shown; }, S: function(){ return S; },
+    window.__age = { gw: growthWords, G: function(){ return G; }, busy: function(){ return !!raf; }, drawn: function(){ return shown; }, S: function(){ return S; },
       target: function(){ return model(S.t, S.e); }, rows: function(){ return rowEls.map(function(e){ return +e.getAttribute('width'); }); },
       set: function(t, e){ if(t != null){ cT.value(t, true); } if(e != null){ cE.value(e, true); } } };
     return {

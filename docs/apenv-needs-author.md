@@ -257,3 +257,21 @@ Real beef returns nearer 3% of feed calories and all livestock about 12% (Cassid
 is generous; "?" says so. Open for a teacher: keep the exam's 10% here (consistent with every drill), or use a real
 beef figure. Also open: a real ecosystem's measured pyramid (Odum's Silver Springs is the classic) for "?" of the
 10% rule chapter; the per level numbers could not be checked against the 1957 paper in this session, so none is shown.
+
+## Age structure tool, Explore v2 (tools v2, 2026-11-24)
+Explore draws a stable population: the age shares that a total fertility rate and a life expectancy lead to once they
+have held for a long time, with no migration (`ApEnvMath.ageStructure.stable()`). Points for a person to check:
+- The life table is a teaching model (a Siler style hazard solved to the exact life expectancy). Deaths before age 5
+  come out at about 46% for a life expectancy of 30, 17% at 55, 4% at 72 and 0.3% at 85; Coale and Demeny West puts
+  the first nearer 38%. Women are given 2.5 years more than the life expectancy set and men 2.5 fewer; 105 boys per 100
+  girls; births by mother's age from the drills' schedule (peak 20 to 29).
+- Replacement fertility is computed from that table (2.08 at 80 years, 2.44 at 60, 4.35 at 30). The literature gives
+  about 2.1 in low mortality countries and above 3 where mortality is high (Espenshade, Guzman and Westoff 2003; the
+  journal page could not be opened in this session, only its press release).
+- A stable population ages much more than a real low fertility country today (at 1.3 children and 84 years it is 9%
+  under 15 and 39% 65 and over; Japan is about 12% and 29%), because real countries still carry larger earlier
+  generations. "?" says Explore shows where a setting leads, not a country now; the drills keep their model fitted to
+  rounded UN shares. Open: whether a teacher prefers a projection (cohort component, as Our World in Data's simulator)
+  over the stable shape.
+- Population momentum: "?" cites UN World Population Prospects 2024, Key Messages: momentum "will account for 79 per
+  cent of the population increase through 2054".

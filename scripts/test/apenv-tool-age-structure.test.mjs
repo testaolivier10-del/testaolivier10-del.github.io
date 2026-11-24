@@ -96,3 +96,24 @@ test('age-structure: no em dashes in what a student reads', () => {
   for (const f of ['age-structure.js', 'math/age-structure.js']) assert.ok(!/—/.test(readFileSync(join(ROOT, 'environmental-science', 'assets', 'tools', f), 'utf8')), f);
   assert.ok(!/—/.test(JSON.stringify(data)));
 });
+
+test('age-structure: Explore v2 stable population (life table at the exact e0, replacement, growth = CBR - CDR)', () => {
+  for (const e of [30, 47.5, 60, 72.3, 85]) {
+    const t = A.lifeTable(e); let L = 0; for (let i = 0; i < 110; i++) L += t.L[i];
+    assert.ok(Math.abs(L - e) < 0.01, `life table e0 ${L} for ${e}`);
+  }
+  let last = Infinity;
+  for (const e of [30, 45, 60, 72, 80, 85]) {
+    const p = A.stable(2, e), sum = p.male.concat(p.female).reduce((a, b) => a + b, 0);
+    assert.ok(Math.abs(sum - 100) < 1e-6);
+    assert.ok(p.repl < last, 'replacement falls as life expectancy rises'); last = p.repl;
+    assert.ok(Math.abs(A.stable(p.repl, e).r) < 1e-6, 'no growth at replacement');
+    for (const tfr of [1, 2.5, 5, 7]) { const q = A.stable(tfr, e); assert.ok(Math.abs(q.cbr - q.cdr - 1000 * q.r) < 1e-9); assert.equal(Math.sign(q.r), Math.sign(tfr - q.repl)); }
+  }
+  assert.ok(Math.abs(A.stable(2, 80).repl - 2.08) < 0.03 && A.stable(2, 30).repl > 4, 'about 2.1 with low mortality, far higher with high');
+  assert.equal(A.shape(A.stable(5, 60)), 'expansive');
+  assert.equal(A.shape(A.stable(2.1, 80)), 'stable');
+  assert.equal(A.shape(A.stable(1.3, 84)), 'constrictive');
+  let mx = 0; for (let e = 30; e <= 85; e += 5) for (let t = 1; t <= 7; t += 0.5) { const p = A.stable(t, e); mx = Math.max(mx, ...p.male, ...p.female); }
+  assert.ok(mx < 15, 'every band fits the fixed 15% scale');
+});
