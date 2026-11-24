@@ -155,7 +155,7 @@
           '<div class="tpanel__head"><span>Check yourself</span></div>' +
           '<p class="tquiz__intro">' + esc(cfg.intro || 'A few questions on what this tool shows.') + '</p>' +
           '<p class="tquiz__fine">' + rounds + ' questions, answers explained as you go. ' +
-            'Nothing here is scored or added to your level — it only notes which topics to bring back later.</p>' +
+            'Nothing here is scored or added to your level: it only notes which topics to bring back later.</p>' +
           '<button type="button" class="btn-press" id="tqStart">Start</button>' +
         '</div>';
       el.querySelector('#tqStart').addEventListener('click', start);
