@@ -331,9 +331,10 @@
         '<g class="tb2-strings"></g>' +
         '<g class="tb2-stick"><g class="tb2-stickin"><rect class="tb2-wood" x="' + g.x0 + '" y="' + n1(-g.thick / 2) + '" width="' + n1(g.ppm) + '" height="' + g.thick + '" rx="2" fill="url(#' + id + 'w)"/>' +
           '<path class="tb2-ticks" d="' + ticks + '"/>' + nums + '<g class="tb2-clamps"></g><g class="tb2-com"></g><g class="tb2-dim"></g></g></g>' +
-        // the lever arm and the line of action go over the stick: square to a straight up pull the arm lies along it
-        '<g class="tb2-loa" aria-hidden="true"></g>' +
-        '<g class="tb2-dimtg" aria-hidden="true"></g><g class="tb2-swg" aria-hidden="true"></g><g class="tb2-masses"></g><g class="tb2-flyg"></g><g class="tb2-pullg"></g>' +
+        // the lever arm and the line of action go over the stick and the hanging mass (square to a straight up pull the
+        // arm lies along the stick; leaning away, it passes behind the mass)
+        '<g class="tb2-dimtg" aria-hidden="true"></g><g class="tb2-swg" aria-hidden="true"></g><g class="tb2-masses"></g><g class="tb2-flyg"></g>' +
+        '<g class="tb2-loa" aria-hidden="true"></g><g class="tb2-pullg"></g>' +
         '<g class="tb2-tray"></g>' +
         '<g class="tb2-labs" aria-hidden="true"><text class="tb2-tq is-ccw" text-anchor="end"></text><text class="tb2-tq is-cw" text-anchor="start"></text></g>';
       D = { stick: svg.querySelector('.tb2-stick'), stickin: svg.querySelector('.tb2-stickin'), clamps: svg.querySelector('.tb2-clamps'), com: svg.querySelector('.tb2-com'), dim: svg.querySelector('.tb2-dim'), dimt: svg.querySelector('.tb2-dimtg'), sw: svg.querySelector('.tb2-swg'),
@@ -752,7 +753,12 @@
       var keep = { F: s.pull.F, ang: s.pull.ang, th: s.th };
       function fits(a){
         s.pull.F = Fv; s.pull.ang = a;
-        return [-STOP, 0, STOP].every(function(t){ s.th = t; var g = pullGeo(s), e = 30 * g.sc, x = g.hand[0], y = g.hand[1]; return x > e && x < G.W - e && y > e; });
+        return [-STOP, 0, STOP].every(function(t){
+          s.th = t; var g = pullGeo(s), e = 30 * g.sc, x = g.hand[0], y = g.hand[1];
+          // and the lever arm's foot stays on the picture, over the bench (leaning away, it falls below the stick)
+          var tf = (px(s.pivot) - g.h[0]) * g.ux + (G.py - g.h[1]) * g.uy, fy = g.h[1] + g.uy * tf, fx = g.h[0] + g.ux * tf;
+          return x > e && x < G.W - e && y > e && fy < G.benchY - 24 && fx > 8 && fx < G.W - 8;
+        });
       }
       var a = ang;
       while(!fits(a) && a !== 90) a += a > 90 ? -5 : 5;

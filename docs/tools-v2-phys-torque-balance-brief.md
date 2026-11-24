@@ -171,8 +171,9 @@ with their tags ("6 cm", "18 cm"), and the landing times after a race.
 - M5 detail: the hand (the knob) and the lever arm's foot both lie on the pull's line; the string is shortened, or on
   a shallow pull lengthened, to keep them apart, so the knob never covers the lever arm. On a desktop "Start over"
   sits in the picture's top right corner so the cause line keeps one row and stays on screen at 1024 × 768.
-- The pull's reach, printed by the sweep: toward the fulcrum to 15° (25° on a phone); away from it as far as the
-  scale stays in the picture: 90° (none) at 360 and 390, 60° at 1024, 40° at 1280, 45° at 1440.
+- The pull's reach, printed by the sweep: toward the fulcrum to 15° (25° on a phone); away from it only as far as the
+  scale, the hand and the lever arm's foot stay in the picture (recheck 1: the foot, below the stick when leaning
+  away, fell off the picture's bottom): none at 360 and 390, to 80° at 1024 and 85° at 1440 (the sweep prints it).
 - M7 Inertia: light metal ink for the arms, caps and strings in dark mode; no cupboard; arms take their length from
   the stage (about 0.23 of the bench's width); sliders, hub and caps scale with the arm.
 - S2 "fulcrum" is the quiet knob's tag. S3 the outward lean is logged as it is (owner log). S4 the slider knobs sit
@@ -189,3 +190,6 @@ with their tags ("6 cm", "18 cm"), and the landing times after a race.
 - S2 the Inertia bench sits lower (the stands nearer the middle; the weights' fall below it shorter).
 - S3 the slider knobs are hidden while a race runs (still there for a grab or a key). S4 the stick's "50" steps aside
   while the ⊕ shows (asserted). S5 on a phone the arms are a little shorter, clear of the pulley's arm.
+- Recheck 1 (sweep catch): leaning away, the lever arm's foot lies below the stick and fell off the picture's bottom at
+  1440; the lean now also stops where the foot would leave the picture (logged), and the lever arm and line of action
+  are drawn over the hanging mass too.

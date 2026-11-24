@@ -233,13 +233,13 @@ async function runSweep(w, h) {
     if (a === 90 || a === 15 || a === 120) await shot(page, `${W4(w)}-2-ang-${F}N-${a}.png`);
   }
   // the pull's range by keys: toward the fulcrum to 15° (25° on a phone); away until the scale would leave the picture
-  // (at least 65° from the stick at 1000 px and wider; logged)
+  // (at least straight up; the lever arm's foot must stay on the picture too; logged)
   await page.focus('.tb2 .tk2-handle .tk2-knob');
   for (let i = 0; i < 34; i++) await page.keyboard.press('ArrowRight');
   const inMin = await page.evaluate(() => document.querySelector('.tb2').__tb.st.ang.pull.ang);
   for (let i = 0; i < 34; i++) await page.keyboard.press('ArrowLeft');
   const outMax = await page.evaluate(() => document.querySelector('.tb2').__tb.st.ang.pull.ang);
-  checks += 2; if (inMin !== (w < 600 ? 25 : 15)) fails.push(`${w} angle: toward the fulcrum stops at ${inMin}°`); if (w >= 1000 && outMax < 115) fails.push(`${w} angle: away from the fulcrum stops at ${outMax}°`);
+  checks += 2; if (inMin !== (w < 600 ? 25 : 15)) fails.push(`${w} angle: toward the fulcrum stops at ${inMin}°`); if (outMax < 90) fails.push(`${w} angle: away from the fulcrum stops at ${outMax}°`);
   console.log(`  ${w}: the pull reaches ${180 - outMax}° from the stick leaning away and ${inMin}° leaning toward the fulcrum`);
   await settle(page);
   // Inertia: ready, then a race to the end
