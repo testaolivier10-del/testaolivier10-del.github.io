@@ -273,10 +273,12 @@ if (ONE) {
       await page.click('.tr2-pchip'); await page.waitForTimeout(1400);
       const a = await page.evaluate(() => { const r = document.querySelector('.tr2-scene').getBoundingClientRect(); return [Math.round(r.top), Math.round(r.bottom), innerHeight]; });
       ok(a[0] >= 0 && a[1] <= a[2], `${tag} place: the tree in view after picking up a trait (${a})`);
-      await page.click('.tr2-pchip'); await page.evaluate(() => window.scrollTo(0, 0));
+      // a list choice keeps the page where it is (recheck 1: placing five traits by their lists is not five trips)
+      await page.click('.tr2-pchip'); await page.waitForTimeout(300);
+      const y0 = await page.evaluate(() => { const s = document.querySelector('.tr2-plist select'); s.scrollIntoView({ block: 'center' }); return Math.round(scrollY); });
       await page.selectOption('.tr2-plist select >> nth=1', { index: 2 }); await page.waitForTimeout(1400);
-      const b = await page.evaluate(() => { const r = document.querySelector('.tr2-scene').getBoundingClientRect(); return [Math.round(r.top), Math.round(r.bottom), innerHeight]; });
-      ok(b[0] >= 0 && b[1] <= b[2], `${tag} place: the tree in view after choosing from a list (${b})`);
+      const b = await page.evaluate(() => Math.round(scrollY));
+      ok(Math.abs(b - y0) < 4, `${tag} place: a list choice keeps the page in place (${y0} then ${b})`);
       await page.goto('about:blank'); await page.goto(URL0 + '#place'); await page.waitForSelector('.tr2-tip'); await page.waitForTimeout(700);
     }
     await page.evaluate(() => { const X = window.__tr2; X.place('backbone', 'frog,kangaroo,lamprey,lizard,mouse,shark'); X.place('jaws', 'frog,kangaroo,lizard,mouse,shark'); X.place('limbs', 'kangaroo,lizard,mouse'); });

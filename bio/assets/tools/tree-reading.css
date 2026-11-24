@@ -118,13 +118,13 @@
 /* the organisms (ApBioTreeArt): flat tones, a soft outline */
 .tr2-defs path,.tr2-defs circle,.tr2-defs ellipse{stroke-linejoin:round;stroke-linecap:round;}
 #tr2-o-lancelet .o-lanc{fill:#F1D7C4;stroke:#9C6E57;stroke-width:1.6;} #tr2-o-lancelet .o-lanc-s{fill:#D9B39C;}
-.o-fin{fill:#E9CDB9;stroke:#9C6E57;stroke-width:1;}
+.o-fin{fill:#F3E0D2;stroke:#B48A72;stroke-width:1;}
 .o-line{fill:none;stroke:#3B2A20;stroke-width:1.6;} .o-thin{fill:none;stroke:#3B2A20;stroke-width:1;opacity:.7;}
 .o-eye{fill:#1C1613;} .o-eyew{fill:#FFFBEF;} .o-dark{fill:#2E2420;}
-.o-lamp{fill:#8A7A6C;stroke:#4E4238;stroke-width:1.6;} .o-lamp-s{fill:#B8AC9E;} .o-mouth{fill:#C7A08E;stroke:#4E4238;stroke-width:1.4;}
+.o-lamp-o{fill:none;stroke:#4E4238;stroke-width:12.5;} .o-lamp-b{fill:none;stroke:#8A7A6C;stroke-width:9.5;} .o-lamp-l{fill:none;stroke:#B8AC9E;stroke-width:2.6;opacity:.8;} .o-mouth{fill:#C7A08E;stroke:#4E4238;stroke-width:1.4;}
 .o-shark{fill:#7F96A8;stroke:#3F5263;stroke-width:1.6;} .o-shark-s{fill:#E7EEF2;}
 .o-frog{fill:#5DAA3E;stroke:#2E6B1D;stroke-width:1.6;} .o-frog-s{fill:#3F8A2A;stroke:#2E6B1D;stroke-width:1.2;} .o-belly{fill:#D7E9A8;}
-.o-liz{fill:#7FA34A;stroke:#46622A;stroke-width:1.6;} .o-liz-s{fill:#C6D88E;} .o-dots{fill:none;stroke:#46622A;stroke-width:2.2;stroke-linecap:round;}
+.o-liz{fill:#7FA34A;stroke:#46622A;stroke-width:1.6;} .o-liz-s{fill:#C6D88E;} .o-limb{fill:none;stroke:#46622A;stroke-width:3.4;} .o-limb + .o-liz{} .o-dots{fill:none;stroke:#46622A;stroke-width:2.2;stroke-linecap:round;}
 .o-roo{fill:#B57A45;stroke:#6E4422;stroke-width:1.6;} .o-roo-s{fill:#D9AE7E;}
 .o-mouse{fill:#9A9590;stroke:#57524E;stroke-width:1.6;} .o-mouse-s{fill:#D6D1CB;} .o-ear{fill:#E7A9A9;} .o-nose{fill:#D77C86;} .o-tail{fill:none;stroke:#D79A9A;stroke-width:2.4;}
 .o-pool{fill:#9CCBE0;stroke:#5E95AE;stroke-width:1.4;} .o-pool-s{fill:none;stroke:#E7F5FB;stroke-width:1.6;}

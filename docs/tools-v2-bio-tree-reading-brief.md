@@ -133,7 +133,8 @@ tip taps).
    there is room (the newest always gets its name first, a thin line to it when it sits a step away).
 10. Graded placing moves to Test yourself "Place the traits" (tap a trait then a branch, or the lists; same record
     ids); after a check the tree shows every right branch, as before. Dragging a chip onto a branch is dropped
-    (review round 1); on a phone, picking up a trait or choosing from a list brings the tree into view.
+    (review round 1); on a phone, picking up a trait brings the tree into view; a list choice keeps the page where it is
+    and is said aloud (recheck 1).
 11. Build a tree keeps its old interaction in Test yourself; its result is drawn as a still tree.
 12. Short names on the picture: "Alga" (charophyte alga), "Chimp" (chimpanzee); full names in lists, labels and "?".
     Traits get short names of 1 to 3 words (the content check enforces both).
@@ -207,8 +208,7 @@ Checked against the course's phylogeny notes and Baum and Offner 2008 / Understa
 
 ## Not done, and what I am not happy with
 - No real phone, no screen reader pass, no real students.
-- The flat animals (lancelet, lamprey, lizard) are thin at a tip's size; on a 360 px phone every organism is about
-  45 px.
+- The lancelet is a thin animal and stays thin at a tip's size; on a 360 px phone every organism is about 45 px.
 - With every trait placed on a 360 px phone, some older trait names sit a step from their ticks with a thin line;
   the chips take two rows of the ground.
 - Names sit at different heights (each just above its own organism), so the row of names is ragged.
@@ -235,3 +235,20 @@ and 1440 (86), light and dark, **372 passed, 0 failed**, including the new phone
 picking up a trait and after a list choice; frames **37 passed, 0 failed** (the last trait's line, then the takeaway;
 real touch taps on 38 targets at 360, 390 and 1440, 0 wrong); AP Bio tests 74 pass, content check 0 failing,
 `build-apbio`, `build-apcalc`, `build-apmacro --check`, `check-site`, `check-weight`.
+
+## Recheck 1 (2026-11-24): BLOCK on one must fix, fixed
+`/home/claude/review-bio-tree/REVIEW.md` (Recheck 1). Everything else held, the tap fix included.
+Must fix: **the uneven stretch made the thin animals into other things** (the lancelet a leaf, the lamprey a slug, the
+lizard a grasshopper). No stretch is used any more: rotation and an even scale only. The lancelet is redrawn slender
+and pointed at both ends (a low fin widening into a lance shaped tail, faint muscle blocks, a mouth hood with short
+tentacles), swimming up a little; the lamprey is redrawn as an eel shaped body in an S curve with its round sucking
+disc and seven gill openings; the lizard has four short legs splayed out to the sides, elbows and knees bent, and
+climbs a little. Looked at by eye at 130 px and at phone size, and in the sweep shots at 360, 390 and 1440, light
+and dark. On two staggered rows of names, the lower row now also clears both neighbors' organisms.
+Should fix: on a phone only picking up a trait brings the tree into view; a list choice keeps the page where it is
+(placing five traits by their lists is not five trips) and the live region says where the trait went. The sweep
+checks both.
+Checks after the fixes: sweep at 360 (92), 390 (104, with 375 x 667 and 360 x 740), 1024 (90) and 1440 (86), light
+and dark, **372 passed, 0 failed**; frames **37 passed, 0 failed** (then 22 of 22 again at 390 after the name rows
+change; real touch taps 0 wrong); AP Bio tests 74 pass, content check 0 failing, `build-apbio`, `build-apcalc`,
+`build-apmacro --check`, `check-site`, `check-weight`.

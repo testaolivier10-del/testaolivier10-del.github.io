@@ -39,19 +39,25 @@
   var ART = {
     /* ---- chordates */
     lancelet: function(){
-      // a small, see-through filter feeder: pointed at both ends, a fin along the back, V-shaped muscle blocks
-      var v = ''; for(var i = 0; i < 9; i++){ var x = -26 + i * 6.5; v += 'M' + (x + 2) + ' -33L' + (x - 2) + ' -27L' + (x + 2) + ' -21'; }
-      return p('o-fin', 'M-40 -30C-20 -40 20 -40 44 -28L44 -26C20 -34 -20 -34 -40 -27Z') +
-        p('o-lanc', 'M-46 -26C-30 -36 18 -36 46 -27C20 -15 -30 -15 -46 -26Z') +
-        p('o-lanc-s', 'M-44 -25C-26 -19 18 -18 44 -26C20 -15 -30 -15 -44 -25Z') +
-        p('o-line', 'M-40 -27H38') + p('o-thin', v) + c('o-eye', -38, -27, 1.6);
+      // a small, see-through filter feeder, slender and pointed at both ends: a low fin along the back that widens into
+      // a lance shaped tail, faint V-shaped muscle blocks and a mouth hood with short tentacles; swimming up a little
+      var v = ''; for(var i = 0; i < 8; i++){ var x = -24 + i * 7; v += 'M' + (x + 1.4) + ' -27L' + (x - 1.2) + ' -24.4L' + (x + 1.4) + ' -21.8'; }
+      return '<g transform="translate(0 0) rotate(-14 0 -24)">' +
+        p('o-fin', 'M-30 -27.6C-8 -32 18 -32 34 -27.8C40 -28.5 44 -27 48 -24.4C44 -21.8 40 -20.5 34 -21C18 -17 -8 -17 -30 -20.6Z') +
+        p('o-lanc', 'M-46 -24.4C-34 -29 18 -29.5 42 -24.4C18 -19.4 -34 -19.6 -46 -24.4Z') +
+        p('o-lanc-s', 'M-42 -23.4C-28 -21 16 -20.8 40 -24C18 -20 -30 -20 -42 -23.4Z') +
+        p('o-thin', v + 'M-46 -24.4l-4 -2.4M-46 -24.4l-4.4 0M-46 -24.4l-4 2.4') + c('o-eye', -38, -25.4, 1.3) + '</g>';
     },
     lamprey: function(){
-      // an eel shape with a round sucking disc for a mouth and a row of seven gill openings
-      var g = ''; for(var i = 0; i < 7; i++) g += c('o-dark', -26 + i * 4.4, -27, 1.4);
-      return p('o-lamp', 'M-44 -26C-44 -34 -36 -36 -28 -34C-10 -31 10 -38 26 -33C36 -30 46 -26 48 -22C40 -20 30 -24 22 -22C8 -19 -14 -16 -30 -18C-38 -18 -44 -20 -44 -26Z') +
-        p('o-lamp-s', 'M-42 -21C-30 -17 -10 -18 8 -21C22 -24 34 -23 46 -22C38 -18 28 -21 20 -20C6 -17 -14 -14 -30 -16C-36 -16 -40 -18 -42 -21Z') +
-        p('o-fin', 'M4 -34C14 -40 24 -38 30 -33Z') + e('o-mouth', -45, -26, 3.2, 6) + c('o-eye', -36, -30, 1.8);
+      // an eel shaped body in an S curve, the round sucking disc of its mouth at the front and seven gill openings
+      function bz(a, b, c2, d, t){ var u = 1 - t; return [u * u * u * a[0] + 3 * u * u * t * b[0] + 3 * u * t * t * c2[0] + t * t * t * d[0], u * u * u * a[1] + 3 * u * u * t * b[1] + 3 * u * t * t * c2[1] + t * t * t * d[1]]; }
+      var A = [[-42, -8], [-28, -30], [-8, 4], [6, -20]], B = [[6, -20], [20, -44], [28, -58], [38, -64]];
+      var d = 'M-42 -8C-28 -30 -8 4 6 -20C20 -44 28 -58 38 -64', g = '';
+      for(var i = 0; i < 7; i++){ var q = bz(B[0], B[1], B[2], B[3], 0.4 + i * 0.055); g += c('o-dark', (q[0] + 2.2).toFixed(1), (q[1] + 1.2).toFixed(1), 1.1); }
+      var ey = bz(B[0], B[1], B[2], B[3], 0.86), tail = bz(A[0], A[1], A[2], A[3], 0.12);
+      return '<path class="o-lamp-o" d="' + d + '"/><path class="o-lamp-b" d="' + d + '"/><path class="o-lamp-l" d="' + d + '" transform="translate(1.6 1.6)"/>' +
+        p('o-fin', 'M' + tail[0].toFixed(1) + ' ' + tail[1].toFixed(1) + 'l-6 -9l9 3Z') + g +
+        '<circle class="o-mouth" cx="41" cy="-66" r="5.6"/>' + c('o-dark', 41, -66, 2) + c('o-eye', (ey[0] - 1.6).toFixed(1), (ey[1] - 1.8).toFixed(1), 1.6);
     },
     shark: function(){
       return p('o-shark', 'M-46 -26C-34 -38 -4 -42 20 -36L34 -52L36 -34C40 -32 44 -32 48 -40L46 -24L48 -10C44 -16 40 -18 36 -18C20 -14 -20 -12 -46 -26Z') +
@@ -68,9 +74,11 @@
         c('o-frog', 14, -44, 8) + c('o-eyew', 15, -45, 5.6) + c('o-eye', 16.5, -45, 3) + p('o-line', 'M18 -30C24 -28 30 -29 35 -31');
     },
     lizard: function(){
-      return p('o-liz', 'M-48 -10C-36 -8 -24 -14 -14 -16H18C26 -16 34 -22 44 -22C48 -22 50 -18 48 -16C44 -12 36 -12 30 -10H-12C-24 -6 -36 -4 -48 -10Z') +
+      // a long tail, a low body and four short legs splayed out to the sides, elbows and knees bent
+      return p('o-limb', 'M-6 -13C-12 -17 -18 -16 -19 -10L-21 -3M-21 -3h-4M-21 -3l1 -3M18 -14C24 -18 30 -16 30 -10L31 -3M31 -3h4M31 -3l-2 -3') +
+        p('o-liz', 'M-48 -10C-36 -8 -24 -14 -14 -16H18C26 -16 34 -22 44 -22C48 -22 50 -18 48 -16C44 -12 36 -12 30 -10H-12C-24 -6 -36 -4 -48 -10Z') +
         p('o-liz-s', 'M-12 -11H30C24 -10 18 -9 12 -9H-10Z') +
-        p('o-liz', 'M-6 -14L-14 -2H-8L-2 -12M18 -14L12 -2H18L24 -12M-2 -12L4 -2H10L4 -13M22 -12L28 -2H34L28 -13') +
+        p('o-limb', 'M0 -12C4 -9 8 -9 9 -5L10 -2M10 -2h4M24 -12C27 -9 30 -9 30 -6L31 -2M31 -2h4') +
         p('o-dots', 'M-4 -15h3M4 -16h3M12 -16h3M20 -16h3') + c('o-eye', 40, -19, 1.8);
     },
     kangaroo: function(){
@@ -171,11 +179,10 @@
     }
   };
   // how high each drawing reaches in its box (0..1), so a tip's name sits just above what is drawn
-  var TOP = { lancelet: 0.75, lamprey: 0.8, shark: 0.58, frog: 0.54, lizard: 0.56, kangaroo: 0.8, mouse: 0.45, alga: 0.5, moss: 0.62, fern: 0.9, pine: 0.97, rose: 0.93, grass: 0.9,
+  var TOP = { lancelet: 0.44, lamprey: 0.74, shark: 0.58, frog: 0.54, lizard: 0.33, kangaroo: 0.8, mouse: 0.45, alga: 0.5, moss: 0.62, fern: 0.9, pine: 0.97, rose: 0.93, grass: 0.9,
     human: 0.93, chimp: 0.92, gorilla: 0.97, orangutan: 0.93, macaque: 0.91, baboon: 0.93 };
-  // the flat animals swim or climb up at a slant and are drawn thicker, so they fill their box like the others
-  var POSE = { lancelet: 'translate(0 -40) rotate(-26) scale(0.96 1.5) translate(0 26)', lamprey: 'translate(0 -40) rotate(-26) scale(0.94 1.75) translate(0 26)',
-    lizard: 'translate(0 -21) rotate(-14) scale(0.92 1.7) translate(0 8)' };
+  // the lizard climbs a little (the lancelet and lamprey are drawn at their own slant, in true proportions)
+  var POSE = { lizard: 'translate(0 -3) rotate(-8 0 -10) scale(0.96)' };   // rotation and an even scale only, never a stretch
   function defs(){
     var s = '';
     for(var k in ART) s += '<symbol id="tr2-o-' + k + '" viewBox="-50 -100 100 100" overflow="visible">' + (POSE[k] ? '<g transform="' + POSE[k] + '">' + ART[k]() + '</g>' : ART[k]()) + '</symbol>';
@@ -447,9 +454,13 @@
         var tgt = sw ? sw.to : V.slot, bySlot = [], baseOf = {};
         P.leaves(r).forEach(function(nd){ bySlot[tgt[nd.name]] = nd.name; baseOf[nd.name] = G.hy[nd.name] - G.S * (A.has(nd.name) ? A.top(nd.name) : 0.8) - 13; });
         var nameY = {};
+        // on two rows a name is wider than its column, so the lower row also clears both neighbors' organisms
         bySlot.forEach(function(id, s){
-          if(G.rows === 2 && s % 2 === 1){ var b = baseOf[id]; [bySlot[s - 1], bySlot[s + 1]].forEach(function(o){ if(o) b = Math.min(b, baseOf[o]); }); nameY[id] = b - G.nameH; }
-          else nameY[id] = baseOf[id];
+          if(G.rows === 2 && s % 2 === 0){ var b = baseOf[id]; [bySlot[s - 1], bySlot[s + 1]].forEach(function(o){ if(o) b = Math.min(b, baseOf[o]); }); nameY[id] = b; }
+          else if(G.rows !== 2) nameY[id] = baseOf[id];
+        });
+        if(G.rows === 2) bySlot.forEach(function(id, s){
+          if(s % 2 === 1){ var b = baseOf[id]; [bySlot[s - 1], bySlot[s + 1]].forEach(function(o){ if(o) b = Math.min(b, nameY[o]); }); nameY[id] = b - G.nameH; }
         });
         P.leaves(r).forEach(function(nd){
           var id = nd.name, e = E.tips[id], q = pos[keyOf(nd)], S = G.S, x = q.x, y = q.y, on = sel.indexOf(id) >= 0;
@@ -1053,7 +1064,7 @@
         });
         V.ticks = V.ticks.filter(function(k){ return want[k.cid]; });
       }
-      // on a phone the side panel sits away from the picture: arming a trait or choosing a branch brings the tree into view
+      // on a phone the side panel sits away from the picture: picking up a trait (to tap its branch) brings the tree into view
       function toScene(){
         if((window.innerWidth || 800) >= 600) return;
         var r = sceneBox.getBoundingClientRect(), vh = window.innerHeight || 800;
@@ -1066,7 +1077,9 @@
         t.characters.forEach(function(c, i){
           var row = document.createElement('div'); row.className = 'tr2-prow';
           row.innerHTML = '<button type="button" class="tr2-pchip' + (St.armed === c.id ? ' is-armed' : '') + (pl[c.id] ? ' is-placed' : '') + '" data-pc="' + esc(c.id) + '" aria-pressed="' + (St.armed === c.id) + '"' + (chk ? ' disabled' : '') + ' aria-label="' + esc((i + 1) + '. ' + c.name + ': tap it, then tap its branch') + '"><b>' + (i + 1) + '</b> ' + esc(c.short || c.name) + '</button>';
-          var s = T.choiceSelect({ label: 'Branch for ' + (i + 1) + '. ' + c.short, value: pl[c.id] || '', options: branchOptions(t), onChange: function(v){ pl[c.id] = v; St.armed = null; placeTicks(); plist(); kick(); paint(); if(v) setTimeout(toScene, 160); } });
+          var s = T.choiceSelect({ label: 'Branch for ' + (i + 1) + '. ' + c.short, value: pl[c.id] || '', options: branchOptions(t), onChange: function(v){ pl[c.id] = v; St.armed = null; placeTicks(); plist(); kick(); paint();
+            // a list choice keeps the page where it is (placing five traits by their lists is not five trips); it is said instead
+            if(v){ var nd = P.find(rootOf(t.id), v.split(',')); say(c.name + ' placed on the branch leading to ' + nodeLabel(t, nd) + '.'); } } });
           if(chk) s.select.disabled = true;
           row.appendChild(s.el); box.appendChild(row);
         });
