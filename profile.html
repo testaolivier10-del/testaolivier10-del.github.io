@@ -43,13 +43,7 @@
   .pf-st span{display:block;font:700 12.5px var(--font-ui);color:var(--muted);margin-top:2px;}
   .pf-xp{display:block;height:6px;border-radius:99px;background:var(--track,var(--line));margin-top:8px;overflow:hidden;}
   .pf-xp i{display:block;height:100%;border-radius:99px;background:var(--accent);}
-  .pf-courses{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;}
-  .pf-co{display:flex;gap:12px;align-items:center;border:1px solid var(--line);border-radius:16px;padding:12px;text-decoration:none;color:var(--ink);}
-  .pf-co:hover{border-color:var(--accent);}
   .pf-cv{width:56px;height:56px;border-radius:12px;object-fit:cover;object-position:right center;flex:none;background:var(--panel,#0B1A33);}
-  .pf-co b{display:block;font:900 15.5px var(--font-ui);}
-  .pf-co small{display:block;font:700 12.5px var(--font-ui);color:var(--muted);margin-top:2px;}
-  .pf-co em{display:block;font:800 13px var(--font-ui);font-style:normal;color:var(--accent-text,var(--accent));margin-top:4px;}
   .pf-cal{display:grid;grid-template-rows:repeat(7,auto);grid-auto-flow:column;gap:4px;padding-bottom:2px;}
   .pf-d{aspect-ratio:1;border-radius:4px;background:var(--surface2);box-shadow:inset 0 0 0 1px var(--line);}
   .pf-d.off{visibility:hidden;}
@@ -65,20 +59,42 @@
   .pf-row select{font:700 14px var(--font-ui);padding:9px 10px;border:1.5px solid var(--line);border-radius:10px;background:var(--white);color:var(--ink);}
   .pf .pf-link{font:800 14px var(--font-ui);color:var(--accent-text,var(--accent));text-decoration:underline;text-underline-offset:3px;background:none;border:0;padding:0;cursor:pointer;}
   .pf-btn{font:800 14px var(--font-ui);padding:10px 14px;border-radius:12px;border:0;background:#0B1A33;color:#fff;cursor:pointer;min-height:42px;}
-  .pf-badges{list-style:none;padding:0;margin:0 0 6px;display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:10px;}
-  .pf-badges li{text-align:center;padding:12px 8px;border-radius:16px;background:var(--surface2);}
-  .pf-badges li.off{opacity:.5;}
-  .pf-med{width:46px;height:46px;border-radius:50%;margin:0 auto 6px;display:grid;place-items:center;font:900 15px var(--font-ui);color:#fff;background:#0B6B62;}
-  .pf-badges li.off .pf-med{background:#94A3B8;}
-  .pf-badges b{display:block;font:800 13px var(--font-ui);color:var(--ink);}
-  .pf-badges small{display:block;font:700 11.5px var(--font-ui);color:var(--muted);}
   .pf-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);}
-  .pf-ms:empty{display:none;}
-  .pf-grp+.pf-grp{margin-top:22px;padding-top:20px;border-top:1px solid var(--line);}
-  .pf-grp h3{display:flex;align-items:center;gap:10px;font:900 17px var(--font-ui);margin:0 0 12px;color:var(--ink);}
-  .pf-grp h3 img{width:32px;height:32px;border-radius:8px;object-fit:cover;object-position:right center;background:var(--panel,#0B1A33);}
-  .pf-ms h2,.pf-oc h2,.pf-oc h3{font-size:15px !important;margin-top:4px;}
-  .pf-ms,.pf-oc>div:not(:empty){margin-top:16px;}
+  .pf-oc h2,.pf-oc h3{font-size:15px !important;margin-top:4px;}
+  .pf-oc>div:not(:empty){margin-top:16px;}
+  .pf-all{margin-top:0;}
+  /* Profile v2 (owner 2026-11-23): courses fold open, drawn badges, locked ones with a note on hover or tap. */
+  .pf-cxs{display:grid;gap:12px}
+  .pf-cx{border:1px solid var(--line);border-radius:16px;background:var(--white)}
+  .pf-cx>summary{display:flex;align-items:center;gap:12px;padding:12px;cursor:pointer;list-style:none;border-radius:16px}
+  .pf-cx>summary::-webkit-details-marker{display:none}
+  .pf-cx>summary:hover{background:var(--surface2)}
+  .pf-cx-t{flex:1;min-width:0}
+  .pf-cx-t b{display:block;font:900 16px var(--font-ui);color:var(--ink)}
+  .pf-cx-t small{display:block;font:700 12.5px var(--font-ui);color:var(--muted);margin-top:2px}
+  .pf-cx-n{font:800 13px var(--font-ui);color:var(--muted);white-space:nowrap}
+  .pf-cx-v{width:10px;height:10px;border-right:2.5px solid var(--muted);border-bottom:2.5px solid var(--muted);transform:rotate(45deg);margin:0 8px 4px 4px;transition:transform .15s}
+  .pf-cx[open] .pf-cx-v{transform:rotate(-135deg);margin-bottom:-4px}
+  .pf-cx-b{padding:4px 16px 16px;border-top:1px solid var(--line)}
+  .pf-cx-s{font:700 13.5px var(--font-ui);color:var(--muted);margin:12px 0 14px}
+  .bds{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:10px}
+  .bd{text-align:center;padding:14px 8px 12px;border-radius:16px;background:var(--surface2)}
+  .bd-art{display:block;margin:0 auto 8px;filter:drop-shadow(0 4px 6px rgba(11,26,51,.18))}
+  .bd b{display:block;font:800 13.5px var(--font-ui);color:var(--ink)}
+  .bd small{display:block;font:700 11.5px var(--font-ui);color:var(--muted);margin-top:1px}
+  .bd-cert{display:inline-block;margin-top:6px;font:800 12px var(--font-ui);color:var(--accent-text,var(--accent))}
+  .bd-more{display:flex;align-items:center;gap:14px;margin-top:14px;padding-top:14px;border-top:1px dashed var(--line);flex-wrap:wrap}
+  .bds.is-row{display:flex;flex-wrap:wrap;gap:8px}
+  .bd.is-locked{padding:0;background:none;position:relative}
+  .bd-lock{all:unset;display:block;cursor:pointer;border-radius:10px;position:relative}
+  .bd-lock:focus-visible{outline:3px solid var(--gold,#F2B01E);outline-offset:2px}
+  .bd-tip{display:none;position:absolute;left:50%;bottom:calc(100% + 8px);transform:translateX(-50%);width:190px;background:#0B1A33;color:#fff;font:600 12.5px/1.4 var(--font-ui);padding:9px 11px;border-radius:10px;text-align:left;z-index:5;box-shadow:0 8px 20px rgba(11,26,51,.3)}
+  .bd-tip b{display:block;font-weight:900;font-size:13px;margin-bottom:2px;color:#fff}
+  .bd-tip::after{content:"";position:absolute;left:calc(50% + var(--ax,0px));top:100%;margin-left:-6px;border:6px solid transparent;border-top-color:#0B1A33}
+  .bd-lock:hover .bd-tip,.bd-lock:focus-visible .bd-tip,.bd-lock.is-on .bd-tip{display:block}
+  .bd.is-locked .bd-art{width:40px;height:40px;margin:0;filter:none}
+  .pf-cx-go{margin:14px 0 0}
+  @media (max-width:640px){.pf-cx-n{display:none}.bds{grid-template-columns:repeat(auto-fill,minmax(104px,1fr))}}
   @media (max-width:640px){.pf-card{padding:18px;}.pf-row{flex-wrap:wrap;}.pf-cal{gap:3px;}}
 </style>
 </head>
@@ -111,6 +127,8 @@
 <link rel="stylesheet" href="assets/milestones.css">
 <script src="assets/milestones.js" defer></script>
 <script src="assets/progress-backup.js" defer></script>
+<script src="assets/class/class-model.js" defer></script>
+<script src="assets/profile-badges.js" defer></script>
 <script src="assets/profile.js" defer></script>
 </body>
 </html>

@@ -212,7 +212,9 @@ const SHELL_BUDGETS = [
      removed. Measured 353.2 KB.
      353.5 -> 353.8 (Progress and Profile, owner 2026-11-13, docs/progress-profile.md): assets/profile.js (loaded
      only by profile.html, but every file in /assets counts here) and the Profile entry in both menus. Measured 353.5 KB. */
-  ['site', 353.8],
+  /* 353.8 -> 354.3 (Profile v2, owner 2026-11-23, docs/progress-profile.md): assets/profile-badges.js, the badge sets and
+     their drawn art (loaded only by profile.html, but every file in /assets counts here). */
+  ['site', 354.3],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on

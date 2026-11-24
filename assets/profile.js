@@ -1,12 +1,17 @@
 /* Profile (profile.html; owner 2026-11-13, option 1, docs/progress-profile.md): everything about the student
    rather than one course, moved here from each course's Progress page. One column:
      you and your stats   level (shared across courses), streak, longest streak, badges earned
-     your courses         each course you have started: XP there, last studied, link to its Progress
-     streak               the last 18 weeks, daily goal, streak freezes, study reminders
-     badges and certificates   NREMT badges, ochem concept badges and achievements, every course's milestones
+     all time             questions answered, practice exams, lessons, free responses, days studied (every course)
+     your courses         each course you have started, folding open: its numbers, the badges earned in it (each
+                          with its own art, assets/profile-badges.js), the rest locked and grey with what it
+                          takes on hover or tap, ochem's concept badges and achievements, a link to its Progress
+     streak               as many weeks as fit, daily goal, streak freezes, study reminders
      your data            kept in this browser, sign in to sync, download a backup
-   Nothing new is stored: it reads HubProgress (hub_xp_v1, hub_activity_v1), the courses' own records and
-   LevlMilestones, and writes only the daily goal (HubProgress.setGoal) and NREMT's in-browser reminder. */
+   Profile v2 (owner 2026-11-23, mockup "LevlPrep Profile mockup"): All time is new, and Your courses took in the
+   old Badges and certificates card so nothing is listed twice. Only numbers that never go down are shown.
+   Nothing new is stored: it reads HubProgress (hub_xp_v1, hub_activity_v1), the courses' own records
+   (LevlClassModel.raw) and LevlMilestones, and writes only the daily goal (HubProgress.setGoal), NREMT's
+   in-browser reminder and which courses are folded open (levl_profile_open_v1). */
 (function(){
   'use strict';
   // courses:begin COURSE_LIST key,name,path,dir (generated from assets/courses.js by scripts/build-courses.mjs; edit there)
@@ -30,7 +35,7 @@
   // courses:end
   var root = document.getElementById('pfRoot');
   var HP = window.HubProgress;
-  if(!root || !HP) return;
+  if(!root || !HP || !window.LevlBadges) return;
   var DAY = 86400000;
   function esc(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
   function plural(n, w, ws){ return n + ' ' + (n === 1 ? w : (ws || w + 's')); }
@@ -44,43 +49,90 @@
       .filter(function(x){ return x.xp > 0 || x.last; }).sort(function(a, b){ return (b.last || '').localeCompare(a.last || '') || b.xp - a.xp; });
   }
 
-  /* NREMT's badges, read from its own records (the six Progress used to show). */
-  function nremtBadges(st, lvl){
-    var history = (readJSON('nremt_exam100_history', []) || []).filter(function(x){ return x && x.total > 0; });
-    var ds = readJSON('nremt_domain_stats_all', {}) || {}, all = 0;
-    Object.keys(ds).forEach(function(d){ all += (ds[d] && ds[d].total) || 0; });
-    var best = history.length ? Math.max.apply(null, history.map(function(x){ return Math.round(x.score / x.total * 100); })) : 0;
-    return [
-      ['7', '7-day streak', st.longest, 7, function(n){ return 'best ' + plural(n, 'day'); }],
-      ['30', '30-day streak', st.longest, 30, function(n){ return 'best ' + plural(n, 'day'); }],
-      ['1st', 'First full exam', history.length, 1, function(){ return 'take one full exam'; }],
-      ['90%', '90%+ exam', best, 90, function(n){ return n ? 'best ' + n + '%' : 'score 90% on a full exam'; }],
-      ['500', '500 questions', all, 500, function(n){ return n.toLocaleString() + ' so far'; }],
-      ['L10', 'Level 10', lvl, 10, function(n){ return plural(10 - n, 'level') + ' away'; }]
-    ].map(function(b){ var e = b[2] >= b[3]; return { icon: b[0], label: b[1], earned: e, sub: e ? 'NREMT' : b[4](Math.min(b[2], b[3])) }; });
-  }
-
-  function heroCard(st, info, badges){
+  function heroCard(st, info){
     var u = window.StudyHubAccount && window.StudyHubAccount.user ? window.StudyHubAccount.user() : null;
     var name = u && u.email ? u.email.split('@')[0] : 'You';
-    var earned = badges.filter(function(b){ return b.earned; }).length;
     return '<section class="pf-card pf-hero" aria-labelledby="pfName"><div class="pf-who"><span class="pf-av" aria-hidden="true">' + esc(name.charAt(0).toUpperCase()) + '</span><div>' +
       '<h1 id="pfName">' + esc(name) + '</h1><p class="pf-mut">' + (u ? 'Signed in, synced across devices' : 'Kept in this browser') + '</p></div></div>' +
       '<div class="pf-stats">' +
         '<div class="pf-st"><b>Level ' + info.level + '</b><span>' + Number(info.toNext).toLocaleString() + ' XP to ' + (info.level + 1) + '</span><i class="pf-xp"><i style="width:' + Math.round(info.into / Math.max(1, info.span) * 100) + '%"></i></i></div>' +
         '<div class="pf-st"><b>' + (st.current ? plural(st.current, 'day') : 'No streak') + '</b><span>current streak</span></div>' +
         '<div class="pf-st"><b>' + plural(st.longest || 0, 'day') + '</b><span>longest streak</span></div>' +
-        '<div class="pf-st"><b>' + earned + ' of ' + badges.length + '</b><span>badges earned</span></div>' +
+        '<div class="pf-st"><b id="pfBadgeN">&ndash;</b><span>badges earned</span></div>' +
       '</div></section>';
   }
 
-  function coursesCard(list){
-    if(!list.length) return '<section class="pf-card" aria-labelledby="pfC"><h2 id="pfC">Your courses</h2><p class="pf-mut">Start any course and it shows up here, with what you have earned in it. <a href="/">See every course</a>.</p></section>';
-    return '<section class="pf-card" aria-labelledby="pfC"><h2 id="pfC">Your courses</h2><div class="pf-courses">' + list.map(function(x){
+  /* ---- the numbers and badges of each course ---- */
+  var CM = window.LevlClassModel, LB = window.LevlBadges, LM = window.LevlMilestones;
+  function get(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+  function courseStats(key, st){
+    var part = null;
+    try{ part = CM ? CM.raw(key, get) : null; }catch(e){ part = null; }
+    return LB.stats(key, part, st.days || {});
+  }
+  var OPEN_KEY = 'levl_profile_open_v1';
+  function openSet(list){
+    var o = readJSON(OPEN_KEY, null);
+    if(o && typeof o === 'object') return o;
+    o = {}; if(list[0]) o[list[0].c.key] = 1;   // first visit: the course studied last is open
+    return o;
+  }
+  function allTimeCard(st){
+    var t = { answers: 0, exams: 0, lessons: 0, frq: 0 }, days = 0;
+    COURSE_LIST.forEach(function(c){ var s = courseStats(c.key, st); t.answers += s.answers; t.exams += s.exams; t.lessons += s.lessons; t.frq += s.frq; });
+    Object.keys(st.days || {}).forEach(function(k){ var d = st.days[k] || {}; if(Object.keys(d).some(function(c){ return d[c] > 0; })) days++; });
+    function tile(n, w){ return '<div class="pf-st"><b>' + Number(n).toLocaleString() + '</b><span>' + w + '</span></div>'; }
+    return '<section class="pf-card" aria-labelledby="pfA"><h2 id="pfA">All time</h2><div class="pf-stats pf-all">' +
+      tile(t.answers, 'questions answered') + tile(t.exams, 'practice exams taken') + tile(t.lessons, 'lessons finished') + tile(t.frq, 'free responses written') + tile(days, 'days studied') + '</div></section>';
+  }
+  function coursesCard(list, st){
+    if(!list.length) return '<section class="pf-card" aria-labelledby="pfC"><h2 id="pfC">Your courses</h2><p class="pf-mut">Start any course and it shows up here, with the badges you earn in it. <a href="/">See every course</a>.</p></section>';
+    var open = openSet(list);
+    return '<section class="pf-card" aria-labelledby="pfC"><h2 id="pfC">Your courses</h2><div class="pf-cxs">' + list.map(function(x){
       var last = x.last ? (function(){ var p = x.last.split('-').map(Number), d = Math.round((new Date().setHours(0, 0, 0, 0) - new Date(p[0], p[1] - 1, p[2]).getTime()) / DAY); return d <= 0 ? 'studied today' : d === 1 ? 'studied yesterday' : 'last studied ' + plural(d, 'day') + ' ago'; })() : 'not studied recently';
-      return '<a class="pf-co" href="' + esc(x.c.path) + 'dashboard.html"><img class="pf-cv" src="/assets/covers/' + esc(x.c.key) + '.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><span><b>' + esc(x.c.name) + '</b>' +
-        '<small>' + Number(x.xp).toLocaleString() + ' XP &middot; ' + last + '</small><em>Progress &rarr;</em></span></a>';
+      var k = x.c.key, s = courseStats(k, st);
+      var line = [plural(s.answers, 'question') + ' answered', plural(s.exams, 'practice exam'), plural(s.lessons, 'lesson') + ' finished'];
+      if(k === 'nremt' && s.best) line.push('best exam ' + s.best + '%');
+      return '<details class="pf-cx" data-cx="' + esc(k) + '"' + (open[k] ? ' open' : '') + '><summary><img class="pf-cv" src="/assets/covers/' + esc(k) + '.svg" alt="" width="640" height="320" loading="lazy" decoding="async">' +
+        '<span class="pf-cx-t"><b>' + esc(x.c.name) + '</b><small>' + Number(x.xp).toLocaleString() + ' XP &middot; ' + last + '</small></span>' +
+        '<span class="pf-cx-n" data-cxn="' + esc(k) + '"></span><span class="pf-cx-v" aria-hidden="true"></span></summary>' +
+        '<div class="pf-cx-b"><p class="pf-cx-s">' + line.join(' &middot; ') + '</p><div data-cxb="' + esc(k) + '"></div>' +
+        (k === 'ochem' ? '<div class="pf-oc"><div id="gameConcepts"></div><div id="gameAchievements"></div></div>' : '') +
+        '<p class="pf-cx-go"><a class="pf-link" href="' + esc(x.c.path) + 'dashboard.html">Open Progress &rarr;</a></p></div></details>';
     }).join('') + '</div></section>';
+  }
+  /* One course's badges: the earned ones as cards, the rest as a row of locked shapes that say what they are. */
+  function badgesHtml(key, list){
+    var got = list.filter(function(b){ return b.earned; }), todo = list.filter(function(b){ return !b.earned; });
+    var on = got.map(function(b){
+      return '<li class="bd">' + LB.art(b, key) + '<b>' + esc(b.label) + '</b>' + (b.sub ? '<small>' + esc(b.sub) + '</small>' : '') +
+        (b.cert && LM ? '<a class="bd-cert" href="' + esc(LM.certUrl(key, b.cert)) + '">Certificate<span class="pf-sr">: ' + esc(b.label) + '</span></a>' : '') + '</li>';
+    }).join('');
+    var off = todo.map(function(b){
+      return '<li class="bd is-locked"><button type="button" class="bd-lock" aria-label="Locked badge: ' + esc(b.label) + '. ' + esc(b.tip) + '">' + LB.art(b, key, true) +
+        '<span class="bd-tip" role="tooltip"><b>' + esc(b.label) + '</b>' + esc(b.tip) + '</span></button></li>';
+    }).join('');
+    return (got.length ? '<ul class="bds">' + on + '</ul>' : '<p class="pf-mut">No badges here yet. Tap a locked one to see what it takes.</p>') +
+      (todo.length ? '<div class="bd-more"><ul class="bds is-row">' + off + '</ul><p class="pf-mut">' + todo.length + ' more to earn</p></div>' : '');
+  }
+  /* Fills each open course once its units are known (LevlMilestones reads the course map); the hero's count last. */
+  function fillBadges(list, st, info){
+    var total = { got: 0, all: 0 }, left = list.length;
+    function put(key, ms){
+      var b = LB.forCourse(key, courseStats(key, st), ms, { longest: st.longest, level: info.level });
+      var got = b.filter(function(x){ return x.earned; }).length;
+      total.got += got; total.all += b.length;
+      var box = root.querySelector('[data-cxb="' + key + '"]'), n = root.querySelector('[data-cxn="' + key + '"]');
+      if(box) box.innerHTML = badgesHtml(key, b);
+      if(n) n.textContent = got + ' of ' + b.length + ' badges';
+      if(--left <= 0){ var h = document.getElementById('pfBadgeN'); if(h) h.textContent = total.got + ' of ' + total.all; }
+    }
+    if(!list.length){ var h0 = document.getElementById('pfBadgeN'); if(h0) h0.textContent = '0'; }
+    list.forEach(function(x){
+      var key = x.c.key;
+      if(!LM || !LM.COURSES[key]) return put(key, []);
+      LM.ensure(key).then(function(){ var ms = []; try{ ms = LM.list(key) || []; }catch(e){} put(key, ms); }, function(){ put(key, []); });
+    });
   }
 
   function streakCard(st, list){
@@ -114,20 +166,6 @@
       '</section>';
   }
 
-  /* One group per started course, under its name: its badges (NREMT), concept badges and achievements (ochem),
-     then its milestones and certificates, drawn by LevlMilestones. */
-  function badgesCard(badges, list){
-    if(!list.length) return '<section class="pf-card" aria-labelledby="pfB"><h2 id="pfB">Badges and certificates</h2><p class="pf-mut">Badges and certificates come from finishing things: a unit at Strong, a full exam at 80%, a streak.</p></section>';
-    return '<section class="pf-card" aria-labelledby="pfB"><h2 id="pfB">Badges and certificates</h2>' + list.map(function(x){
-      var k = x.c.key, inner = '';
-      if(k === 'nremt' && badges.length) inner += '<ul class="pf-badges">' + badges.map(function(b){
-        return '<li class="' + (b.earned ? 'on' : 'off') + '"><span class="pf-med" aria-hidden="true">' + esc(b.icon) + '</span><b>' + esc(b.label) + '</b><small>' + esc(b.earned ? 'earned' : b.sub) + '</small><span class="pf-sr">' + (b.earned ? 'earned' : 'not yet') + '</span></li>';
-      }).join('') + '</ul>';
-      if(k === 'ochem') inner += '<div class="pf-oc"><div id="gameConcepts"></div><div id="gameAchievements"></div></div>';
-      return '<div class="pf-grp"><h3><img src="/assets/covers/' + esc(k) + '.svg" alt="" width="640" height="320" loading="lazy" decoding="async">' + esc(x.c.name) + '</h3>' + inner + '<div class="pf-ms" data-ms="' + esc(k) + '"></div></div>';
-    }).join('') + '</section>';
-  }
-
   function dataCard(){
     var u = window.StudyHubAccount && window.StudyHubAccount.user ? window.StudyHubAccount.user() : null;
     return '<section class="pf-card" aria-labelledby="pfD"><h2 id="pfD">Your data</h2>' +
@@ -139,12 +177,9 @@
 
   function draw(){
     var st = HP.streak(), info = HP.levelInfo(), list = started();
-    var badges = list.some(function(x){ return x.c.key === 'nremt'; }) ? nremtBadges(st, info.level) : [];
-    root.innerHTML = heroCard(st, info, badges) + coursesCard(list) + streakCard(st, list) + badgesCard(badges, list) + dataCard();
+    root.innerHTML = heroCard(st, info) + allTimeCard(st) + coursesCard(list, st) + streakCard(st, list) + dataCard();
     wire();
-    // Every started course's milestones and certificates, drawn by the code that owns them.
-    function ms(M){ Array.prototype.forEach.call(root.querySelectorAll('[data-ms]'), function(el){ M.renderList(el, el.getAttribute('data-ms')); }); }
-    if(window.LevlMilestones) ms(window.LevlMilestones);
+    fillBadges(list, st, info);
     // Ochem's concept badges and achievements live in its own scripts; load them only for a student who has started it.
     if(document.getElementById('gameConcepts')) loadOchem();
   }
@@ -182,6 +217,13 @@
       if(Notification.permission === 'granted') return done(true);
       Notification.requestPermission().then(function(pm){ done(pm === 'granted', pm === 'granted' ? '' : 'Reminders need notification permission.'); });
     });
+    // Which courses are folded open is kept on this device.
+    Array.prototype.forEach.call(root.querySelectorAll('details[data-cx]'), function(d){
+      d.addEventListener('toggle', function(){
+        var o = {}; Array.prototype.forEach.call(root.querySelectorAll('details[data-cx]'), function(x){ if(x.open) o[x.getAttribute('data-cx')] = 1; });
+        try{ localStorage.setItem(OPEN_KEY, JSON.stringify(o)); }catch(e){}
+      });
+    });
     var si = document.getElementById('pfSignIn');
     if(si) si.addEventListener('click', function(){ if(window.StudyHubAccount && window.StudyHubAccount.openAuthModal) window.StudyHubAccount.openAuthModal(); });
     var bk = document.getElementById('pfBackup'), dn = document.getElementById('pfDataNote');
@@ -190,6 +232,22 @@
       if(dn) dn.textContent = r && r.ok === false ? r.error : 'Your backup file is downloading.';
     });
   }
+
+  /* A locked badge's note: on hover and keyboard focus by CSS, on tap by .is-on; kept inside the window's edges. */
+  function place(btn){
+    var tip = btn.querySelector('.bd-tip'), r = btn.getBoundingClientRect(), mid = r.left + r.width / 2, half = 103;
+    var shift = Math.max(half, Math.min(window.innerWidth - half, mid)) - mid;
+    tip.style.left = 'calc(50% + ' + shift + 'px)'; tip.style.setProperty('--ax', (-shift) + 'px');
+  }
+  function lockOf(e){ return e.target && e.target.closest ? e.target.closest('.bd-lock') : null; }
+  root.addEventListener('mouseover', function(e){ var b = lockOf(e); if(b) place(b); });
+  root.addEventListener('focusin', function(e){ var b = lockOf(e); if(b) place(b); });
+  document.addEventListener('click', function(e){
+    var b = lockOf(e), was = b && b.classList.contains('is-on');
+    Array.prototype.forEach.call(root.querySelectorAll('.bd-lock.is-on'), function(x){ x.classList.remove('is-on'); });
+    if(b && !was){ place(b); b.classList.add('is-on'); }
+  });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') Array.prototype.forEach.call(root.querySelectorAll('.bd-lock.is-on'), function(x){ x.classList.remove('is-on'); }); });
 
   draw();
   if(window.StudyHubAccount && window.StudyHubAccount.onAuthChange) window.StudyHubAccount.onAuthChange(function(){ draw(); });
