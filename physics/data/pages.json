@@ -219,6 +219,7 @@
    "blurb": "Balance a meter stick with masses; lever arms, torques and rotational inertia.",
    "lede": "Hang masses on a beam and make it balance.",
    "studio": true,
+   "kit2": true,
    "premium": "tools"
   },
   {

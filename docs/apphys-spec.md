@@ -244,6 +244,12 @@ Owner to confirm (needs-author `tools-premium`).
     lab's stool test figure carries every given. Scaling drills Test draws unit powers, conversions and the student's
     wrong factor. Motion graphs' small a-t choices read at about 12 px on wide screens.
 
+15. (2026-11-23, tools v2) **Torque balance rebuilt to the tools v2 standard; the physics kit2 adapter.**
+    `ApPhysTools.studioKit2` (`phys-tools.js`) and the `kit2` flag in `build-apphys.mjs` (`"kit2": true` in
+    `physics/data/pages.json`, torque balance only); Explore is three tabs (Balance, Angle, Inertia) drawn as a lab
+    bench, Test yourself is the unchanged drill. Brief: `docs/tools-v2-phys-torque-balance-brief.md`; open points:
+    `docs/apphys-needs-author.md` "torque-balance-v2". The other ten trainers are unchanged.
+
 ## 8. Open items for the owner
 
 - **Launch checklist: done 2026-10-13.** Migration `2026-10f-apphys.sql` applied in Supabase (live function
