@@ -345,3 +345,11 @@ Checks after recheck 3 (2026-11-24):
 
 Sweep checks added: s6's right path ("Breathing now" after the shock, no "Unresponsive"); s14 keeps "Not breathing".
 
+Checks after recheck 4 (2026-11-24):
+- Sweep, one width per process: 360 8928, 390 8943, 430 8982, 600 9131 (before a machine restart), 768 8395, 820 8381,
+  1024 8525, 1280 8459, 1440 8309, 1920 8293 (after it, same code) passed, 0 failed.
+- Frames run: 129 passed; the one failure is performance at 1440 under load average 8 (choice p95 68.1 ms against the
+  flagship's 36.6; at 390 26.7 against 28.8 passed). To time at 1440 on a quiet machine before the merge.
+- Flowcharts kept sweep at 390: 1226 passed. NREMT and kit tests 73 passed; check-weight passes (Explore 41.2 of 41.4,
+  `nremt/kit2` 6.1 of 6.2, `pose.js` 7.4 of 9).
+
