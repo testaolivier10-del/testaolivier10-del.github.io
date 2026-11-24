@@ -14,7 +14,8 @@
   --tk2-spot:#A8D8F0;--tk2-spot-fill:#0F1A26;}
 .bmx-pic{position:relative;flex:none;max-width:100%;}
 .bmx-svg{display:block;width:100%;height:100%;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;font-family:var(--font-ui);transition:opacity .2s ease-out;}
-.bmx-pic.is-swap .bmx-svg,.bmx-pic.is-swap .tk2-spots{opacity:0;transition:none;}
+.bmx-fxl{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
+.bmx-pic.is-swap .bmx-svg,.bmx-pic.is-swap .bmx-fxl,.bmx-pic.is-swap .tk2-spots{opacity:0;transition:none;}
 .bmx-pic .tk2-spots{transition:opacity .2s ease-out;}
 .bmx-svg.is-fade{opacity:.15;transition:none;}
 .bmx .tk2-spot-card{font-size:15px;}
@@ -69,7 +70,7 @@
 .bmx .tk2-cz.is-yes{--cz:var(--bm-yes);--cz-ink:var(--bm-yes);}
 
 /* --------------------------------------------------------------- the brain (both views and the drill figures) */
-.bmx-svg,.bm-qsvg{
+.bmx-svg,.bmx-fxl,.bm-qsvg{
   --t0:#F7E2DA;--t1:#EBC5B8;--t2:#C99183;--sul:#A86E61;--sulhi:rgba(255,246,242,.75);--groove:#8C564B;--edge:#83544A;--rim:rgba(110,52,40,.32);
   --c0:#EFCDC1;--c1:#C58D7E;--fol:#A06657;--s0:#D9A99B;--s1:#F0CFC4;--s2:#C99384;--stl:rgba(150,90,78,.45);--arbor:#FFF1EA;
   --lf:rgba(40,130,215,.36);--lp:rgba(236,170,30,.28);--lt:rgba(46,158,107,.25);--lo:rgba(154,98,196,.25);
@@ -77,7 +78,7 @@
   --cc:#FFF5EE;--ccE:#B4877B;--thal:#E9C2B4;--deepE:#9E6A5E;--v4:#5B3330;--ras:#A2457E;
   --hip:rgba(214,80,150,.36);--hipE:#B23C82;--amy:rgba(226,96,60,.42);--amyE:#C2502C;--rew:rgba(232,160,20,.42);--rewE:#B87A00;
   --dmgbg:rgba(110,16,8,.42);--dmgln:#8E1C12;--floor0:rgba(40,25,25,.2);--body:#C9D2DA;--bodyOn:#0B6FA8;--bodyHurt:#B3261E;--tagbg:#fff;--tagE:#084F78;--tagT:#10202C;}
-:root[data-theme="dark"] .bmx-svg,:root[data-theme="dark"] .bm-qsvg{
+:root[data-theme="dark"] .bmx-svg,:root[data-theme="dark"] .bmx-fxl,:root[data-theme="dark"] .bm-qsvg{
   --t0:#E6C4BA;--t1:#C99A8D;--t2:#916258;--sul:#80493E;--sulhi:rgba(255,236,230,.45);--groove:#6A3A32;--edge:#F0D3CA;--rim:rgba(40,12,8,.42);
   --c0:#D9B1A4;--c1:#9A6658;--fol:#7B4537;--s0:#B88576;--s1:#DDB4A7;--s2:#9C6A5C;--stl:rgba(90,45,36,.5);--arbor:#F8E6DE;
   --lf:rgba(110,180,240,.42);--lp:rgba(246,196,70,.42);--lt:rgba(90,205,150,.4);--lo:rgba(190,150,235,.42);
@@ -125,6 +126,10 @@
 .bm-deep.is-hip{fill:var(--hip);stroke:var(--hipE);} .bm-deep.is-amy{fill:var(--amy);stroke:var(--amyE);} .bm-deep.is-rew{fill:var(--rew);stroke:var(--rewE);}
 .bm-hip-l{fill:none;stroke:var(--hipE);stroke-width:2;opacity:.55;}
 .bm-floor{pointer-events:none;}
+.bm-head{fill:rgba(226,180,150,.16);stroke:rgba(150,100,80,.4);stroke-width:3;}
+:root[data-theme="dark"] .bm-head{fill:rgba(230,190,165,.07);stroke:rgba(240,200,180,.3);}
+.bm-head-l{fill:none;stroke:rgba(150,100,80,.4);stroke-width:3;stroke-linecap:round;}
+:root[data-theme="dark"] .bm-head-l{stroke:rgba(240,200,180,.3);}
 /* the picked part: its colour (the lobe's, or the course colour) and an edge */
 .bm-hl-f{fill:var(--hx);} .bm-hl-f.bm-k-f{fill:var(--hf);} .bm-hl-f.bm-k-p{fill:var(--hp);} .bm-hl-f.bm-k-t{fill:var(--ht);} .bm-hl-f.bm-k-o{fill:var(--ho);}
 .bm-hl-e{fill:none;stroke:var(--hedge);stroke-width:7;stroke-linejoin:round;}
@@ -166,7 +171,7 @@
 .sb-fix{stroke:#fff;stroke-width:4;stroke-linecap:round;}
 .sb-field{fill:var(--fieldT);font-weight:800;}
 .sb-word{fill:#FFD24D;font-weight:900;letter-spacing:.04em;}
-.sb-ray{fill:none;stroke:#FFC83D;stroke-width:4;stroke-linecap:round;opacity:.8;}
+.sb-ray{fill:none;stroke:#FFC83D;stroke-width:4;stroke-linecap:round;}
 .sb-torso{fill:var(--skin1);stroke:var(--skinE);stroke-width:2.5;}
 .sb-tray{fill:var(--tray);stroke:var(--trayE);stroke-width:3;}
 .sb-cloth{fill:var(--cloth);}
@@ -227,5 +232,6 @@
 }
 @media (min-width:641px) and (max-width:1100px){
   .bmx .tk2-tabs.is-big .tk2-tab-n{display:none;}
+  .bmx-lines{min-height:92px;align-items:flex-start;}
 }
 @media (prefers-reduced-motion: reduce){ .bmx *{transition-duration:.12s !important;} }

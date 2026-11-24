@@ -80,6 +80,7 @@
      drawing use the same points) and the clip paths it is drawn inside (the cerebrum's outline, its lobe). */
   var VW = 1000, VH = 720;
   var TOP = [[72, 330], [80, 265], [112, 205], [165, 152], [232, 112], [312, 82], [400, 64], [495, 56], [590, 62], [680, 82], [760, 118], [830, 168], [884, 228], [920, 292], [938, 352], [935, 405], [912, 445]];
+  var HEAD = curve([[300, 830], [250, 760], [150, 742], [52, 734], [18, 700], [12, 652], [-4, 628], [6, 608], [-10, 588], [2, 566], [-14, 548], [-52, 516], [-48, 490], [8, 448], [26, 404], [14, 360], [22, 300], [44, 222], [96, 140], [180, 76], [300, 34], [440, 16], [590, 22], [730, 52], [850, 112], [944, 200], [1000, 308], [1018, 430], [1004, 540], [958, 640], [900, 720], [880, 830]], true, 8);
   var G = { outside: build('outside'), inside: build('inside') };
   function build(view){
     var g = { view: view, reg: {}, order: [], sulci: [], minor: [] };
@@ -322,8 +323,10 @@
       '</defs>');
     out.push('<ellipse class="bm-floor" cx="520" cy="' + (view === 'outside' ? 676 : 676) + '" rx="440" ry="34" fill="url(#' + pid + 'shd)"/>');
     var tf = o.mirror ? ' transform="translate(' + VW + ' 0) scale(-1 1)"' : '';
+    // on a wide stage the head is drawn round the brain, faint, so its front reads as the face
+    if(o.head) out.push('<path class="bm-head" d="' + dOf(HEAD) + '"/><path class="bm-head-l" d="M22 414 Q44 402 66 412"/>');
     out.push('<g class="bm-brain"' + tf + '>');
-    function fx(lv){ return o.fx ? '<g class="bm-fx" data-lv="' + lv + '"></g>' : staticFx(lv); }
+    function fx(lv){ return o.fx ? '' : staticFx(lv); }
     function staticFx(lv){
       var s = '';
       if(o.sel && g.reg[o.sel] && g.reg[o.sel].lv === lv){
@@ -382,9 +385,18 @@
     }
     out.push('</g>');
     // the body a motor or touch strip serves (seen from behind, so its right is on the right)
-    if(view === 'outside' && (o.fx || o.body)) out.push(bodySvg(o));
+    if(view === 'outside' && o.body) out.push(bodySvg(o));
     (o.labels || []).forEach(function(l){ out.push(tag(view, l.id, l.text, o.px || 0.6, !!o.mirror)); });
     return out.join('');
+  }
+  /* Explore's moving layer, a second svg over the picture: the picked part's colour and edge, its lesion, and the
+     body figure. Only this small layer repaints while something grows, never the folded brain under it. */
+  function fxSvg(view, pid, o){
+    var g = G[view], d = '<defs><clipPath id="' + pid + 'out"><path d="' + dOf(g.outline) + '"/></clipPath>';
+    ['frontal', 'parietal', 'temporal', 'occipital'].forEach(function(k){ if(g.reg[k]) d += '<clipPath id="' + pid + 'r-' + k + '"><path d="' + dOf(g.reg[k].poly) + '"/></clipPath>'; });
+    d += '<mask id="' + pid + 'low" maskUnits="userSpaceOnUse" x="-400" y="-200" width="1800" height="1200"><rect x="-400" y="-200" width="1800" height="1200" fill="#fff"/><path d="' + dOf(g.outline) + '" fill="#000"/></mask>' +
+      '<pattern id="' + pid + 'hatch" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(40)"><rect width="12" height="12" class="bm-dmg-bg"/><path d="M0 0V12" class="bm-dmg-ln"/></pattern></defs>';
+    return d + '<g class="bm-fx" data-lv="low" mask="url(#' + pid + 'low)"></g><g class="bm-fx" data-lv="high"></g><g class="bm-fx" data-lv="top"></g>' + (view === 'outside' ? bodySvg(o) : '');
   }
   function cbl(g, pid, cut){
     var s = '<path class="bm-cbl" d="' + dOf(g.cbl) + '" fill="url(#' + pid + 'cbg)"/><g clip-path="url(#' + pid + 'cb)">';
@@ -407,14 +419,15 @@
   /* the small figure for the motor and touch strips, bottom left of the outside view */
   function bodySvg(o){
     var on = o.body || '', cls = 'bm-body' + (on ? ' is-on' : '') + (o.dmg && on ? ' is-hurt' : '') + (o.mirror ? ' is-flip' : '');
-    var x = 128, y = 492;
+    var x = o.bx || 128, y = 492;
     var head = '<circle cx="' + x + '" cy="' + (y + 22) + '" r="21"/>';
     var L = '<path d="M' + (x - 2) + ' ' + (y + 48) + 'h-30q-10 0 -12 12l-6 66h48z"/><path d="M' + (x - 44) + ' ' + (y + 58) + 'q-12 4 -14 18l-10 62q-1 8 7 9q8 1 9 -7l10 -58z"/><path d="M' + (x - 2) + ' ' + (y + 126) + 'h-40l-4 88q0 8 8 8h16q8 0 9 -8z"/>';
     var Rr = '<path d="M' + (x + 2) + ' ' + (y + 48) + 'h30q10 0 12 12l6 66h-48z"/><path d="M' + (x + 44) + ' ' + (y + 58) + 'q12 4 14 18l10 62q1 8 -7 9q-8 1 -9 -7l-10 -58z"/><path d="M' + (x + 2) + ' ' + (y + 126) + 'h40l4 88q0 8 -8 8h-16q-8 0 -9 -8z"/>';
     // seen from behind: the person's right is on the viewer's right; a right hemisphere (mirror) lights the left
     var fs = 13 / (o.px || 0.6), txt = bodyText(on, o.dmg, o.mirror);
     return '<g class="' + cls + '" data-body><g class="bm-bd-c">' + head + '</g><g class="bm-bd-a">' + L + '</g><g class="bm-bd-b">' + Rr + '</g>' +
-      '<text class="bm-bd-t" x="' + r1(x + 66 + 4 / (o.px || 0.6)) + '" y="' + (y + 104) + '" dy=".35em" font-size="' + r1(fs) + '">' + esc(txt) + '</text></g>';
+      (o.bx ? '<text class="bm-bd-t" x="' + x + '" y="' + r1(y - fs) + '" text-anchor="middle" font-size="' + r1(fs) + '">' + esc(txt) + '</text></g>'
+        : '<text class="bm-bd-t" x="' + r1(x + 66 + 4 / (o.px || 0.6)) + '" y="' + (y + 104) + '" dy=".35em" font-size="' + r1(fs) + '">' + esc(txt) + '</text></g>');
   }
   function bodyText(on, hurt, mirror){
     if(!on) return '';
@@ -435,7 +448,8 @@
   /* ------------------------------------------------------- split brain */
   /* A person seen from above, front (the screen) at the top, so their left is on the viewer's left. Two layouts:
      wide (1000 x 720) and tall for phones (1000 x 1150). Picture units; words are sized in screen pixels (px). */
-  function splitLay(tall){
+  function splitLay(tall, extra){
+    extra = tall ? 0 : Math.max(0, extra || 0);
     var L = tall ? { W: 1000, H: 1150, scr: [70, 14, 860, 176], cx: 500, cy: 566, rx: 250, ry: 292 }
       : { W: 1000, H: 720, scr: [250, 14, 500, 130], cx: 500, cy: 368, rx: 150, ry: 180 };
     L.tall = !!tall;
@@ -451,9 +465,10 @@
     L.cc = [hx(-0.13), hy(-0.12), L.rx * 0.26, L.ry * 0.42];
     L.sh = { left: [hx(-0.98), hy(1.12)], right: [hx(0.98), hy(1.12)] };
     if(tall){ L.tray = { left: [24, 948, 270, 180], right: [706, 948, 270, 180] }; L.hand = { left: [262, 990], right: [738, 990] }; }
-    else { L.tray = { left: [26, 548, 210, 150], right: [764, 548, 210, 150] }; L.hand = { left: [232, 600], right: [768, 600] }; }
+    else { var e = extra * 0.7; L.tray = { left: [26 - e, 548, 210, 150], right: [764 + e, 548, 210, 150] }; L.hand = { left: [232 - e, 600], right: [768 + e, 600] }; }
+    L.extra = extra;
     L.reach = { left: [L.tray.left[0] + L.tray.left[2] * 0.42, L.tray.left[1] + L.tray.left[3] * 0.58], right: [L.tray.right[0] + L.tray.right[2] * 0.58, L.tray.right[1] + L.tray.right[3] * 0.58] };
-    L.bub = tall ? [560, 194, 420, 62] : [664, 156, 300, 64];
+    L.bub = tall ? [570, 214, 410, 60] : [664, 156, 300, 64];
     return L;
   }
   function hemiPts(L, side){
@@ -493,7 +508,7 @@
       var t = L.tray[h];
       out.push('<rect class="sb-tray" x="' + t[0] + '" y="' + t[1] + '" width="' + t[2] + '" height="' + t[3] + '" rx="16"/>');
       var objs = (st.objects || B.OBJECTS).slice(0, 3), k = 0;
-      objs.forEach(function(ob){ out.push(objSvg(ob, t[0] + t[2] * (0.24 + 0.26 * k), t[1] + t[3] * (0.36 + (k % 2) * 0.3), Math.min(t[2], t[3]) * 0.17, 'sb-ob')); k++; });
+      objs.forEach(function(ob){ out.push(objSvg(ob, t[0] + t[2] * (0.24 + 0.26 * k), t[1] + t[3] * ((L.tall ? 0.52 : 0.36) + (k % 2) * (L.tall ? 0.24 : 0.3)), Math.min(t[2], t[3]) * 0.17, 'sb-ob')); k++; });
     });
     // motor paths: each hemisphere runs the hand on the opposite side (they cross low in the brainstem)
     ['left', 'right'].forEach(function(h){
@@ -546,8 +561,9 @@
     out.push(lab([L.speech[0], L.speech[1]], ['Speech'], 'middle', px, 'sb-lab is-sm', true));
     out.push('<path class="sb-lead" d="M500 ' + r1(L.cc[1] + L.cc[3] + 4) + 'V' + r1(L.cy + L.ry * 1.06) + '"/>');
     out.push('<g data-sb="cclab">' + lab([500, L.cy + L.ry * 1.06 + 10 / px], ['Corpus callosum'], 'middle', px, 'sb-lab is-pill', true, 'cclab-t') + '</g>');
-    out.push(lab([L.tray.left[0] + L.tray.left[2] / 2, L.tray.left[1] - 10 / px], ['Left hand'], 'middle', px, 'sb-lab', false));
-    out.push(lab([L.tray.right[0] + L.tray.right[2] / 2, L.tray.right[1] - 10 / px], ['Right hand'], 'middle', px, 'sb-lab', false));
+    var hy = L.tall ? function(t){ return t[1] + 12 / px; } : function(t){ return t[1] - 10 / px; };
+    out.push(lab([L.tray.left[0] + L.tray.left[2] / 2, hy(L.tray.left)], ['Left hand'], 'middle', px, 'sb-lab', false));
+    out.push(lab([L.tray.right[0] + L.tray.right[2] / 2, hy(L.tray.right)], ['Right hand'], 'middle', px, 'sb-lab', false));
     return out.join('');
   }
   function lab(p, lines, anchor, px, cls, pill, nm){
@@ -610,14 +626,14 @@
     var head = K.head({ purpose: '', how: { label: 'Show me how', onClick: function(){ startTour(); } } });
     stage.appendChild(head.el);
     var scene = document.createElement('div'); scene.className = 'bmx-scene'; scene.id = 'bmx-scene';
-    scene.innerHTML = '<div class="bmx-plate"><div class="bmx-pic"><svg class="bmx-svg" xmlns="http://www.w3.org/2000/svg" role="img" focusable="false"></svg></div>' +
+    scene.innerHTML = '<div class="bmx-plate"><div class="bmx-pic"><svg class="bmx-svg" xmlns="http://www.w3.org/2000/svg" role="img" focusable="false"></svg><svg class="bmx-fxl" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"></svg></div>' +
       '<p class="bmx-front" aria-hidden="true"><span>Front</span></p>' +
       '<form class="bmx-find" role="search"><button type="button" class="bmx-find-b" aria-label="Find a part by name" aria-expanded="false"></button><label class="tk2-sr" for="bmx-find-in">Find a part by name</label>' +
       '<input id="bmx-find-in" class="bmx-find-in" type="search" placeholder="Find a part" autocomplete="off" spellcheck="false" enterkeyhint="search"></form></div>';
     stage.appendChild(scene);
     tabs.el.querySelectorAll('.tk2-tab').forEach(function(b){ b.setAttribute('aria-controls', scene.id); });
     var plate = scene.querySelector('.bmx-plate'), pic = scene.querySelector('.bmx-pic'), svg = scene.querySelector('.bmx-svg'),
-      form = scene.querySelector('.bmx-find'), fin = scene.querySelector('.bmx-find-in'), fb = scene.querySelector('.bmx-find-b'), front = scene.querySelector('.bmx-front');
+      fxl = scene.querySelector('.bmx-fxl'), form = scene.querySelector('.bmx-find'), fin = scene.querySelector('.bmx-find-in'), fb = scene.querySelector('.bmx-find-b'), front = scene.querySelector('.bmx-front');
     var layer = K.layer(pic);
     var lines = document.createElement('div'); lines.className = 'bmx-lines';
     var cause = K.cause({ label: 'What it does' });
@@ -632,32 +648,40 @@
     var view = tabV === 'split' ? 'outside' : tabV, spots = {}, taps = [], L = null, px = 0.6;
     function isSplit(){ return tabV === 'split'; }
     /* -------------------------------------------- size: the picture fits the stage */
-    function frame(){ return isSplit() ? [L ? L.W : 1000, L ? L.H : 720] : [VW, VH]; }
+    var FW = VW;   // the brain views' frame width: wider on a wide stage, the brain centred in it with the head round it
+    function frame(){ return isSplit() ? [FW, L ? L.H : 720] : [FW, VH]; }
     function fit(){
       if(!stage.isConnected || !scene.clientWidth) return false;
       var ps = getComputedStyle(plate), padX = parseFloat(ps.paddingLeft) + parseFloat(ps.paddingRight), padY = parseFloat(ps.paddingTop) + parseFloat(ps.paddingBottom);
       var w = scene.clientWidth - padX, H = window.innerHeight, room;
       var tall = isSplit() && w < 560;
-      if(isSplit() && (!L || L.tall !== tall)){ L = splitLay(tall); }
-      var f = frame();
+
       if(window.innerWidth >= 1000){
         var sb = LS && LS.stage ? LS.stage.getBoundingClientRect().bottom : H, bottom = Math.min(H, sb > 0 ? sb : H);
         room = Math.max(300, bottom - plate.getBoundingClientRect().top - lines.offsetHeight - 20 - padY);
       } else room = H * (window.innerWidth <= 640 ? (isSplit() ? 0.7 : 0.6) : 0.62) - padY;
+      var baseH = isSplit() ? (tall ? 1150 : 720) : VH;
+      FW = !tall && w / room > 1.62 && w >= 700 ? Math.round(Math.min(1640, baseH * w / room)) : VW;
+      if(isSplit() && (!L || L.tall !== tall || L.extra !== (FW - VW) / 2)){ L = splitLay(tall, (FW - VW) / 2); }
+      var f = frame();
       var k = Math.min(w / f[0], room / f[1], 1.25);
       var W = Math.round(f[0] * k), Hh = Math.round(f[1] * k);
       var changed = Math.abs(W - (pic._w || 0)) > 1 || Math.abs(Hh - (pic._h || 0)) > 1;
       pic.style.width = W + 'px'; pic.style.height = Hh + 'px'; pic._w = W; pic._h = Hh;
-      var npx = W / f[0];
+      var npx = W / f[0], off = (FW - VW) / 2;
+      layer.el.style.left = (off * npx).toFixed(1) + 'px'; layer.el.style.width = (VW * npx).toFixed(1) + 'px'; layer.el.style.right = 'auto';
       if(changed || Math.abs(npx - px) > 0.001){ px = npx; return true; }
       return false;
     }
     /* --------------------------------------------- the brain views */
     var fxEl = {}, sel = null, anim = {};
     function drawBrain(){
-      svg.setAttribute('viewBox', '0 0 ' + VW + ' ' + VH);
-      svg.innerHTML = brainSvg(view, { pid: 'bmx' + view, fx: true, px: px });
-      fxEl = {}; svg.querySelectorAll('.bm-fx').forEach(function(e){ fxEl[e.getAttribute('data-lv')] = e; });
+      var off = (FW - VW) / 2;
+      svg.setAttribute('viewBox', '0 0 ' + FW + ' ' + VH);
+      svg.innerHTML = '<g transform="translate(' + off + ' 0)">' + brainSvg(view, { pid: 'bmx' + view, fx: true, px: px, head: FW >= 1180 }) + '</g>';
+      fxl.setAttribute('viewBox', '0 0 ' + FW + ' ' + VH); fxl.hidden = false;
+      fxl.innerHTML = '<g transform="translate(' + off + ' 0)">' + fxSvg(view, 'bmf' + view, { px: px, bx: FW >= 1180 ? Math.round(1000 + Math.min(off * 0.5, 170)) : 0 }) + '</g>';
+      fxEl = {}; fxl.querySelectorAll('.bm-fx').forEach(function(e){ fxEl[e.getAttribute('data-lv')] = e; });
       svg.setAttribute('aria-label', view === 'outside' ? 'The left hemisphere seen from the left, front on the left: the four lobes, the motor and touch strips, the language areas, the cerebellum and the brainstem.' :
         'The brain cut down the middle, seen from the inside, front on the left: the corpus callosum, thalamus, hypothalamus, pituitary gland, brainstem and cerebellum, and the hippocampus, amygdala and reward center seen through the tissue.');
       paintSel(false);
@@ -670,7 +694,7 @@
     function makeSpots(v){
       if(spots[v]) return spots[v];
       var sp = K.spots(layer, { key: 'appsych-brainmap-spots', label: v === 'outside' ? 'Parts of the brain, outside' : 'Parts of the brain, inside', items: itemsFor(v), chip: false,
-        avoid: function(){ return [fb.getBoundingClientRect(), front.getBoundingClientRect()]; },
+        avoid: function(){ var a = [fb.getBoundingClientRect(), front.getBoundingClientRect()], bt = fxl.querySelector('.bm-body.is-on .bm-bd-t'); if(bt && bt.textContent) a.push(bt.getBoundingClientRect()); return a; },
         under: function(x, y){ return regAt(v, x, y); },
         blank: function(x, y){ return !onBrain(v, x, y); },
         onMiss: function(){ hideCue(true); },
@@ -693,7 +717,7 @@
         var old = fxEl[k].querySelectorAll('.bm-fx-on');
         old.forEach(function(e){ e.classList.remove('bm-fx-on'); e.classList.add('bm-fx-off'); setTimeout(function(){ if(e.parentNode) e.parentNode.removeChild(e); }, K.reduced() ? 160 : 260); });
       });
-      var body = svg.querySelector('[data-body]');
+      var body = fxl.querySelector('[data-body]');
       if(body){ var bon = sel === 'motor' || sel === 'somatosensory'; body.classList.toggle('is-on', bon); if(!bon) body.classList.remove('is-hurt'); }
       dbtn.disabled = !sel; dbtn.setAttribute('aria-pressed', String(dmg && !!sel));
       // the words wait for the picture: a lesion's effect is named once the damage has spread over half the part
@@ -701,7 +725,7 @@
       if(!late) line();
       if(!sel || !g.reg[sel]) return;
       var r = g.reg[sel], host = fxEl[r.lv]; if(!host) return;
-      var pid = 'bmx' + view, gid = pid + 'grow' + (++S.grow);
+      var pid = 'bmf' + view, gid = pid + 'grow' + (++S.grow);
       var reach = 0; r.poly.forEach(function(p){ reach = Math.max(reach, Math.hypot(p[0] - r.pin[0], p[1] - r.pin[1])); });
       reach = Math.min(reach, 1300) + 10;
       var wrap = document.createElementNS(NS, 'g'); wrap.setAttribute('class', 'bm-fx-on' + (dmg ? ' is-dmg' : ''));
@@ -724,7 +748,7 @@
     }
     function line(){
       if(isSplit()) return;
-      var body = svg.querySelector('[data-body]');
+      var body = fxl.querySelector('[data-body]');
       if(body && (sel === 'motor' || sel === 'somatosensory')){ body.classList.toggle('is-hurt', dmg); body.querySelector('.bm-bd-t').textContent = bodyText(sel, dmg, false); }
       if(!sel){ cause.set([]); return; }
       var r = R[sel], role = 'k' + (lobeOf(sel) || 'x');
@@ -737,8 +761,9 @@
     var SB = {};
     function drawSplit(){
       if(!L) L = splitLay(false);
-      svg.setAttribute('viewBox', '0 0 ' + L.W + ' ' + L.H);
-      svg.innerHTML = splitSvg(L, { pid: 'sbx', px: px, object: B.OBJECTS[S.word % B.OBJECTS.length] });
+      fxl.innerHTML = ''; fxl.hidden = true;
+      svg.setAttribute('viewBox', '0 0 ' + FW + ' ' + L.H);
+      svg.innerHTML = '<g transform="translate(' + (FW - VW) / 2 + ' 0)">' + splitSvg(L, { pid: 'sbx', px: px, object: B.OBJECTS[S.word % B.OBJECTS.length] }) + '</g>';
       SB = {}; svg.querySelectorAll('[data-sb]').forEach(function(e){ SB[e.getAttribute('data-sb')] = e; });
       fitPills();
       paintCut(false);
@@ -870,8 +895,7 @@
       var bv = idle ? 0 : clamp((t - 2.4) / 0.25, 0, 1);
       SB.bub.setAttribute('opacity', r1(bv * 100) / 100);
       SB.bub.style.transform = 'scale(' + r1(0.6 + 0.4 * ease(bv)) + ')';
-      if(bv > 0 && !SB.bub.querySelector('text').textContent) SB.bub.querySelector('text').textContent = sb.says ? '“' + B.OBJECTS[S.word].charAt(0).toUpperCase() + B.OBJECTS[S.word].slice(1) + '!”' : '“I saw nothing.”';
-      if(idle) SB.bub.querySelector('text').textContent = '';
+      SB.bub.querySelector('text').textContent = bv > 0 ? (sb.says ? '“' + B.OBJECTS[S.word].charAt(0).toUpperCase() + B.OBJECTS[S.word].slice(1) + '!”' : '“I saw nothing.”') : '';
       SB.bub.classList.toggle('is-no', !sb.says);
       ['left', 'right'].forEach(function(h){
         var has = h === 'left' ? sb.leftHand : sb.rightHand, hand = SB['hand-' + h], hold = SB['hold-' + h], mot = SB['mot-' + h], arm = SB['armp-' + h];
@@ -884,7 +908,7 @@
         mot.classList.toggle('is-on', !idle && has && t >= 2.5);
       });
       // the cause line follows the picture
-      var stg = idle ? 0 : t >= 3.2 ? 4 : t >= 2.55 ? 3 : t >= (cut ? 2.2 : 2.45) ? 2 : t >= 1.6 ? 1 : 0;
+      var stg = idle ? 0 : t >= 3.2 ? 4 : t >= 2.55 ? 3 : t >= (cut ? 2.2 : 2.45) ? 2 : t >= 1.72 ? 1 : 0;
       if(t > DUR) stg = 4;
       if(stg !== S.stage || idle){ S.stage = idle ? 0 : stg; if(isSplit()) splitLine(stg, idle ? null : field); }
     }
@@ -1027,7 +1051,7 @@
 
     function shown(m){
       onScreen = m === 'explore';
-      if(!onScreen){ stopRun(false); if(S.field && S.stage) frameAt(S.field, S.cut, 9); hideCue(false); [tour, tourSplit].forEach(function(t){ if(t.active()) t.stop(); }); clearTimeout(ft); clearTimeout(rz); return; }
+      if(!onScreen){ var was = !!S.run; stopRun(false); if(S.field && (was || S.stage)) frameAt(S.field, S.cut, 9); hideCue(false); [tour, tourSplit].forEach(function(t){ if(t.active()) t.stop(); }); clearTimeout(ft); clearTimeout(rz); return; }
       setTimeout(function(){ relayout(); makeCue(); }, 40);
     }
     function ready(s){
@@ -1041,6 +1065,8 @@
       damage: function(on){ if(on === undefined) return dmg; if(!!on !== dmg){ dbtn.click(); } },
       flash: flash, cut: function(on){ if(on === undefined) return S.cut; if(!!on !== S.cut) toggleCut(); },
       frameAt: function(t){ frameAt(S.field || 'left', S.cut, t); }, running: function(){ return !!S.run; },
+      // the frame check: stop any run and draw the flash of this field at time t (seconds)
+      _seek: function(field, t){ stopRun(false); if(S.field !== field){ S.field = field; } frameAt(field, S.cut, t); }, _dur: DUR,
       _spots: function(){ return spots[view]; }, _regAt: regAt, _G: G, _L: function(){ return L; }, _px: function(){ return px; }, _view: function(){ return view; } };
     window.BrainMapExplore = api;   // for the sweep and frame checks (scripts/tools-v2/brain-map-*.mjs)
     return api;
