@@ -117,9 +117,11 @@ export function r3HomeMain(key, ctx) {
 
   /* ---- ways to study: in place of the try one question (owner 2026-11-04: it was clutter). The three
      ways a student works outside the path, each to the course's own page. ---- */
+  /* Each names its tile on the Practice tab (?m=): without it the tab reopens the tile used last, so "Practice"
+     opened Exams after one exam, and review.html is the older review page (owner, 2026-11-24). */
   const WAYS = [
-    ['practice.html', 'Practice', 'Questions on any topic, and every answer explains why.', '<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/>'],
-    ['review.html', 'Review', 'What you missed comes back right before you would forget it.', '<path d="M3 12a9 9 0 019-9 9 9 0 017 3.4M21 12a9 9 0 01-9 9 9 9 0 01-7-3.4"/><path d="M21 3v4h-4M3 21v-4h4"/>'],
+    ['practice.html?m=set', 'Practice', 'Questions on any topic, and every answer explains why.', '<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/>'],
+    ['practice.html?m=rev', 'Review', 'What you missed comes back right before you would forget it.', '<path d="M3 12a9 9 0 019-9 9 9 0 017 3.4M21 12a9 9 0 01-9 9 9 9 0 01-7-3.4"/><path d="M21 3v4h-4M3 21v-4h4"/>'],
     ['practice.html?m=exam', 'Exams', 'Timed and full length, like the real thing.', '<circle cx="12" cy="14" r="7"/><path d="M12 14V10.5M10 3h4M12 3v4M18.5 7.5l1.5-1.5"/>'],
   ];
   const ways = `<section class="ways" aria-labelledby="ways-h"><h2 id="ways-h">Pick how you <span>want to work</span></h2><ul>${WAYS.map(([href, name, line, ic]) =>
