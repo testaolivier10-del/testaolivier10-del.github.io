@@ -155,12 +155,19 @@ const probe = (o) => {
     } else {
       const se = st.set, cv = num(/v₀ ([+−-]?[\d.]+) m\/s/), ca = num(/a ([+−-]?[\d.]+)/);
       if (cv !== +se.v0.toFixed(1) || ca !== +se.segs[0].a.toFixed(1)) out.push(`cause line ${cause} for v₀ ${se.v0}, a ${se.segs[0].a}`);
+      // every change of a is a straight step (the boundary drawn twice) and is named; no two pieces closer than 0.2 s
+      const apts = svg.querySelector('.mg2-tr.s3').getAttribute('points').split(' ').filter(Boolean).map(p => p.split(',').map(Number));
+      se.segs.slice(1).forEach(q => { const px = G.L + q.t0 / 10 * G.pw; const two = apts.filter(p => Math.abs(p[0] - px) < 0.11); if (two.length < 2 || Math.abs(two[0][1] - two[two.length - 1][1]) < 0.5) out.push('the a step at ' + q.t0.toFixed(2) + ' s is not drawn straight up'); });
+      for (let i = 2; i < se.segs.length; i++) if (se.segs[i].t0 - se.segs[i - 1].t0 < 0.19) out.push('two pieces of a within 0.2 s');
+      const apill = [...root.querySelectorAll('.tk2-cz.is-a')].map(e => e.textContent)[0] || '';
+      const named = (apill.match(/ at /g) || []).length, counted = /(\d+) changes/.exec(apill);
+      if ((counted ? +counted[1] : named) !== se.segs.length - 1) out.push('the a pill names ' + (counted ? counted[1] : named) + ' changes, the run has ' + (se.segs.length - 1));
       // one a everywhere: the a knob reads the drawn a
       const akn = [...scene.querySelectorAll('.tk2-handle .tk2-knob')].find(e => /Acceleration/.test(e.getAttribute('aria-label') || ''));
       if (akn && shown(akn) && akn.style.visibility !== 'hidden' && !st.back && Math.abs(+akn.getAttribute('aria-valuenow') - aa) > 1e-6) out.push(`the a knob says ${akn.getAttribute('aria-valuenow')}, the drawn a arrow ${aa}`);
       // before a run, the arrows are v₀ and a
       if (!st.play && !st.back && (Math.abs(va - se.v0) > 1e-6 || Math.abs(aa - se.segs[0].a) > 1e-6)) out.push('the arrows are not v₀ and a before the run');
-      const tm = /turns at ([\d.]+) s/.exec(cause);
+      const tm = /turns (?:at )?([\d.]+) s/.exec(cause);
       if (tm) {
         const T = +tm[1], xs = svg.querySelector('.mg2-tr.s1').getAttribute('points').split(' ').filter(Boolean).map(p => p.split(',').map(Number));
         const px = G.L + T / 10 * G.pw, i = xs.reduce((b, p, j) => Math.abs(p[0] - px) < Math.abs(xs[b][0] - px) ? j : b, 0);
@@ -242,6 +249,16 @@ async function runSweep(w, h) {
   }
   await page.focus('.mg2 .tk2-handle.is-quiet .tk2-knob'); await page.keyboard.press('End'); await page.waitForTimeout(100); await check('set start at 3');
   await page.keyboard.press('Home'); await page.waitForTimeout(100);
+  // keys on the v₀ tip never start a run and never drop the keyboard; Enter runs it and the keyboard stays in the tool
+  { const vi = (await page.evaluate(() => [...document.querySelectorAll('.mg2 .tk2-handle .tk2-knob')].map(e => e.getAttribute('aria-label')))).findIndex(l => /velocity/.test(l));
+    await page.locator('.mg2 .tk2-handle .tk2-knob').nth(vi).focus(); for (let i = 0; i < 3; i++) await page.keyboard.press('ArrowUp');
+    await page.waitForTimeout(700);
+    const k1 = await page.evaluate(() => ({ play: !!document.querySelector('.mg2').__mg.st.play, f: (document.activeElement.getAttribute('aria-label') || document.activeElement.tagName) }));
+    checks += 2; if (k1.play) fails.push(`${w} a key on the v₀ tip started the run`); if (!/velocity/.test(k1.f)) fails.push(`${w} keys on the v₀ tip lost the keyboard to ${k1.f}`);
+    await page.keyboard.press('Enter'); await page.waitForTimeout(400);
+    const k2 = await page.evaluate(() => ({ play: !!document.querySelector('.mg2').__mg.st.play, inTool: !!document.activeElement.closest('.mg2') }));
+    checks += 2; if (!k2.play) fails.push(`${w} Enter on the v₀ tip did not run`); if (!k2.inTool) fails.push(`${w} the keyboard left the tool when the run started`);
+    await page.click('.mg2-again'); await page.waitForTimeout(300); }
   // a real drag of the v tip, then let go: the run plays and comes back
   b = await page.locator('.mg2 .tk2-handle:not(.is-quiet) .tk2-knob').nth(1).boundingBox().catch(() => null);
   const vb = await page.evaluate(() => { const k = document.querySelectorAll('.mg2 .tk2-handle:not(.is-quiet) .tk2-knob'); return [...k].map(e => e.getAttribute('aria-label')); });
@@ -252,6 +269,13 @@ async function runSweep(w, h) {
   const aIdx = (await page.evaluate(() => [...document.querySelectorAll('.mg2 .tk2-handle .tk2-knob')].map(e => e.getAttribute('aria-label')))).findIndex(l => /Acceleration/.test(l));
   await page.locator('.mg2 .tk2-handle .tk2-knob').nth(aIdx).focus(); for (let i = 0; i < 6; i++) await page.keyboard.press('ArrowUp');
   await page.waitForTimeout(300); await check('set a changed mid run'); await shot(page, `${W4(w)}-2-set-a-mid-run.png`);
+  // paused right after a change: the arrow, the dot, the knob and the cause line read the new a at the boundary
+  await page.click('.mg2-run'); await page.waitForTimeout(150);
+  await page.locator('.mg2 .tk2-handle .tk2-knob').nth(aIdx).focus(); for (let i = 0; i < 9; i++) await page.keyboard.press('ArrowDown');
+  await page.waitForTimeout(150); await check('set paused, a changed by keys'); await shot(page, `${W4(w)}-2-set-paused-a.png`);
+  await page.click('.mg2-run'); await page.waitForTimeout(900);
+  await page.locator('.mg2 .tk2-handle .tk2-knob').nth(aIdx).focus(); for (let i = 0; i < 4; i++) await page.keyboard.press('ArrowUp');
+  await page.waitForTimeout(200); await check('set three pieces');
   await idle(page); await check('set back at start'); await shot(page, `${W4(w)}-2-set-back.png`);
   // Test yourself: a drill problem, then Match the graph
   await page.click('.ls-root button:has-text("Test yourself")'); await page.waitForTimeout(600);
@@ -261,7 +285,8 @@ async function runSweep(w, h) {
   await pickMatch(page);
   const mr = await page.evaluate(probe, { dark: DARK, root: '.mg2-mfig' }).catch(e => ({ out: ['no Match figure: ' + e.message] }));
   states++; checks += 12; mr.out.filter(m => !/cause line/.test(m)).forEach(m => fails.push(`${w} Match: ${m}`));
-  const mf = await page.evaluate(() => { const f = document.querySelector('.mg2-mfig .mg2-scene'), d = document.querySelector('.ls-root .ls-dock'); if (!f) return 'no figure'; const r = f.getBoundingClientRect(); if (r.bottom > innerHeight + 0.5) return 'the Match figure runs below the screen'; if (d && d.getClientRects().length) { const q = d.getBoundingClientRect(); if (q.left < r.right - 1 && q.right > r.left + 1 && q.top < r.bottom - 1 && q.bottom > r.top + 1) return 'the question covers the Match figure'; } let e = f.parentElement; while (e && e !== document.body) { const cs = getComputedStyle(e); if (/(auto|scroll)/.test(cs.overflowY) && e.scrollHeight > e.clientHeight + 1) return 'inner scroll around the Match figure'; e = e.parentElement; } return ''; });
+  const mf = await page.evaluate(() => { const f = document.querySelector('.mg2-mfig .mg2-scene'), d = document.querySelector('.ls-root .ls-dock'); if (!f) return 'no figure'; const r = f.getBoundingClientRect(); if (r.bottom > innerHeight + 0.5) return 'the Match figure runs below the screen';
+    const enl = [...document.querySelectorAll('.ls-enl')].find(e => e.getClientRects().length && getComputedStyle(e).display !== 'none'); if (enl) { const er = enl.getBoundingClientRect(); const hit = [...f.querySelectorAll('svg text')].find(t => { const tr = t.getBoundingClientRect(); return t.textContent.trim() && !(tr.right <= er.left || er.right <= tr.left || tr.bottom <= er.top || er.bottom <= tr.top); }); if (hit) return 'the Enlarge button covers "' + hit.textContent + '"'; } if (d && d.getClientRects().length) { const q = d.getBoundingClientRect(); if (q.left < r.right - 1 && q.right > r.left + 1 && q.top < r.bottom - 1 && q.bottom > r.top + 1) return 'the question covers the Match figure'; } let e = f.parentElement; while (e && e !== document.body) { const cs = getComputedStyle(e); if (/(auto|scroll)/.test(cs.overflowY) && e.scrollHeight > e.clientHeight + 1) return 'inner scroll around the Match figure'; e = e.parentElement; } return ''; });
   checks++; if (mf) fails.push(`${w} Match: ${mf}`);
   await shot(page, `${W4(w)}-3-match.png`);
   // deep links: ?seed= opens that problem in Test yourself, #quiz opens Test yourself

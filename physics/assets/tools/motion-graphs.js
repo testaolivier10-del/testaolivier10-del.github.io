@@ -60,7 +60,20 @@
   function exactRun(x0, v0, segs){
     var mo = MG.motion(x0, v0, segs), tEnd = MG.edgeTime(mo, WIN), s = { t: [], x: [], v: [], a: [], hit: null, exact: true };
     var n = Math.floor(tEnd / DT + 1e-9);
-    for(var i = 0; i <= n; i++){ var q = mo.at(i * DT); s.t.push(i * DT); s.x.push(q.x); s.v.push(q.v); s.a.push(q.a); }
+    // each change of a is drawn as a step: the boundary twice, same t, x and v, the old a then the new one (the
+    // cursor at the boundary reads the new piece)
+    var bounds = [], tb = 0;
+    (segs || []).forEach(function(q, i){ tb += q.dur; if(i < segs.length - 1 && tb > 1e-9 && tb < tEnd - 1e-9) bounds.push({ t: tb, a0: q.a, a1: segs[i + 1].a }); });
+    var bi = 0;
+    for(var i = 0; i <= n; i++){
+      var ti = i * DT;
+      while(bi < bounds.length && bounds[bi].t <= ti + 1e-9){
+        var b = bounds[bi++], qb = mo.at(b.t);
+        s.t.push(b.t); s.x.push(qb.x); s.v.push(qb.v); s.a.push(b.a0); s.t.push(b.t); s.x.push(qb.x); s.v.push(qb.v); s.a.push(b.a1);
+      }
+      if(s.t.length && Math.abs(s.t[s.t.length - 1] - ti) < 1e-9) continue;
+      var q = mo.at(ti); s.t.push(ti); s.x.push(q.x); s.v.push(q.v); s.a.push(q.a);
+    }
     if(tEnd < WIN - 1e-9){
       var e = mo.at(tEnd), xe = clamp(e.x, TR.min, TR.max);
       if(s.t[s.t.length - 1] < tEnd - 1e-6){ s.t.push(tEnd); s.x.push(xe); s.v.push(e.v); s.a.push(e.a); }
@@ -180,6 +193,8 @@
       var aY = match ? 17 : 22, vY = aY + (match ? 27 : 36), kY = vY + 34, cartTop = kY + 20;
       var railTop = cartTop + ch + 2 * wr - 2, railH = phone ? 17 : 19, benchY = railTop + railH + 3, sceneH = benchY + (phone ? 16 : 22);
       var gTop = sceneH + 22, gap = phone ? 9 : 11, axisB = 27, L = phone ? 36 : 46, R = phone ? 44 : 40;
+      // Match on a phone: the stage's Enlarge button sits at the bottom right, so "t (s)" moves left and the axis ends short of it
+      var tLeft = !!match && phone; if(tLeft){ L = 44; R = 62; }
       // the panels shown (Match shows only its target's graph), stacked on one time axis
       var kinds = KINDS, n = kinds.length;
       var ph = fitH ? clamp(Math.floor((Hin - gTop - axisB - (n - 1) * gap) / n), 64, n === 1 ? 170 : phone ? 112 : 130) : Math.floor((Hin - gTop - axisB - (n - 1) * gap) / n);
@@ -192,7 +207,7 @@
       var room = Math.min(xL + 2 * ppm, W - (xL + 8 * ppm)) - 22;
       var vs = Math.min(56, room / 3), as = Math.min(70, room / 2);
       return { W: W, H: Hh, phone: phone, fitH: fitH, pad: pad, cw: cw, ch: ch, wr: wr, detW: detW, xL: xL, xR: xR, ppm: ppm, aY: aY, vY: vY, kY: kY, cartTop: cartTop,
-        railTop: railTop, railH: railH, benchY: benchY, sceneH: sceneH, gTop: gTop, gap: gap, L: L, R: R, pw: W - L - R, ph: ph, top: top, kinds: kinds, gTop: gTop, axisY: gTop + n * ph + (n - 1) * gap, vs: vs, as: as };
+        railTop: railTop, railH: railH, benchY: benchY, sceneH: sceneH, gTop: gTop, gap: gap, L: L, R: R, pw: W - L - R, ph: ph, top: top, kinds: kinds, gTop: gTop, tLeft: tLeft, axisY: gTop + n * ph + (n - 1) * gap, vs: vs, as: as };
     }
     function X(x){ return G.xL + (x - TR.min) * G.ppm; }
     // a panel's tick numbers: the top one under the scrub's knob, the bottom one clear of the next panel's top
@@ -270,7 +285,7 @@
       p.push('<line class="mg2-axis" x1="' + g.L + '" x2="' + (g.L + g.pw) + '" y1="' + g.axisY + '" y2="' + g.axisY + '"/>');
       var every = g.pw < 420 ? 2 : 1;
       for(var t2 = 0; t2 <= WIN; t2 += every) p.push('<text class="mg2-tk" x="' + n1(gx(t2)) + '" y="' + (g.axisY + 19) + '" text-anchor="middle">' + t2 + '</text>');
-      p.push('<text class="mg2-tk mg2-tn" x="' + (g.W - 4) + '" y="' + (g.axisY + 19) + '" text-anchor="end">t (s)</text>');
+      p.push(g.tLeft ? '<text class="mg2-tk mg2-tn" x="4" y="' + (g.axisY + 19) + '">t (s)</text>' : '<text class="mg2-tk mg2-tn" x="' + (g.W - 4) + '" y="' + (g.axisY + 19) + '" text-anchor="end">t (s)</text>');
       // live layers: the area under v-t, the target (Match), the traces, the tangents, the cursor
       p.push('<path class="mg2-area" clip-path="url(#' + gid + 'cv)" d=""/>');
       if(match) p.push('<polyline class="mg2-target" clip-path="url(#' + gid + 'c' + match.kind + ')" points="' + match.pts.map(function(q){ return n1(gx(q[0])) + ',' + n1(gy(match.kind, q[1])); }).join(' ') + '"/>');
@@ -552,7 +567,7 @@
     function afterBack(){ placeControls(); if(G) paint(); if(o.onState) o.onState(); }
 
     /* ---------------------------------------------------------------- the controls on the picture */
-    var H_ = {}, scrub = null, grabOff = null;
+    var H_ = {}, scrub = null, grabOff = null, byPtr = false, heldByDrag = false;
     function red(){ return kit ? K.reduced() : T.reduced(); }
     var rebuilding = false;
     function makeControls(){
@@ -602,13 +617,23 @@
           at: function(v){ return [tipAt(X(st.set.x0), v, G.vs), G.vY]; }, dir: function(){ return 0; },
           pick: function(x){ return tipPick(x, G.vs, -3, 3); },
           valuetext: function(v){ return 'v₀ = ' + sg(v) + ' m/s'; },
-          onStart: function(){ hideCue(true); stopRun(); }, onInput: function(v){ setRun({ v0: r1(v) }); }, onEnd: function(){ tourDid('drag'); autoRun(); } });
+          onStart: function(){ hideCue(true); stopRun(); }, onInput: function(v){ setRun({ v0: r1(v) }); }, onEnd: function(){ tourDid('drag'); if(byPtr) autoRun(); } });
         H_.a = K.handle(layer, { key: 'apphys-motion-graphs-a', label: 'Acceleration, the acceleration arrow’s tip', value: st.set.a, min: -2, max: 2, step: 0.1, chip: false,
           // while the cart runs this knob rides on the cart's a arrow: a change starts a new piece of the run
           at: function(v){ return [tipAt(X(st.play ? cartX() : st.set.x0), v, G.as), G.aY]; }, dir: function(){ return 0; },
           pick: function(x){ return tipPick(x, G.as, -2, 2); },
           valuetext: function(v){ return 'a = ' + sg(v) + ' m/s²'; },
-          onStart: function(){ hideCue(true); if(!st.play) stopRun(); }, onInput: function(v){ setRun({ a: r1(v) }); }, onEnd: function(){ tourDid('drag'); if(!st.play) autoRun(); } });
+          onStart: function(){ hideCue(true); if(!st.play) stopRun(); else if(byPtr && !st.play.paused){ heldByDrag = true; pause(true); } },
+          onInput: function(v){ setRun({ a: r1(v) }); },
+          onEnd: function(){ tourDid('drag'); if(heldByDrag){ heldByDrag = false; pause(false); } else if(!st.play && byPtr) autoRun(); } });
+        // a press of a tip by pointer or by key (keys never start a run; Enter on a tip runs it)
+        [H_.v, H_.a].forEach(function(h){
+          h.knob.addEventListener('pointerdown', function(){ byPtr = true; }, true);
+          h.knob.addEventListener('keydown', function(e){
+            byPtr = false;
+            if(e.key === 'Enter' && !st.play && !st.back){ e.preventDefault(); clearTimeout(autoT); play('set'); }
+          }, true);
+        });
       }
       placeControls();
       if(foL != null){ var nf = [].slice.call(box.querySelectorAll('.tk2-knob, .tk2-in')).filter(function(e){ return (e.getAttribute('aria-label') || '') === foL; })[0]; if(nf) try{ nf.focus({ preventScroll: true }); }catch(e){} }
@@ -629,6 +654,8 @@
       if(G && !G.fitH && (Math.abs(box.clientHeight - G.H) > 1 || Math.abs(box.clientWidth - G.W) > 1)) layoutSoon();
       if(!kit || !G) return;
       var running = !!st.play || !!st.back || st.drv.rec;
+      var ae = document.activeElement, hideV = H_.v && running, hideC = H_.cart && st.tab === 'set' && running, hideA = H_.a && (!!st.back || st.drv.rec);
+      if(ae && ((hideV && H_.v.el.contains(ae)) || (hideC && H_.cart.el.contains(ae)) || (hideA && H_.a.el.contains(ae)))){ if(o.keepFocus) o.keepFocus(); else if(H_.a && !hideA) H_.a.knob.focus({ preventScroll: true }); }
       if(H_.cart){ H_.cart.value(st.tab === 'drive' ? cartX() : st.set.x0); H_.cart.hide(st.tab === 'set' && running); H_.cart.place(); }
       if(H_.v){ H_.v.value(st.set.v0); H_.v.hide(running); H_.v.place(); }
       // (stopped, the knob sits on the drawn arrow: the first piece's a; running, on the cart's arrow now)
@@ -655,8 +682,12 @@
       var s = st.set, live = !!st.play && ch.a != null && ch.v0 == null && ch.x0 == null;
       if(ch.x0 != null) s.x0 = ch.x0; if(ch.v0 != null) s.v0 = ch.v0;
       if(live){
-        var tc = +curT().toFixed(3);
-        s.segs = s.segs.filter(function(q){ return q.t0 < tc - 1e-9; }).concat([{ t0: tc, a: ch.a }]);
+        var tc = curT(), lastP = s.segs[s.segs.length - 1];   // (unrounded: the cursor at the boundary reads the new piece)
+        // changes within 0.2 s of the newest piece's start are one change (keys, a drag): the last value, the first time
+        if(lastP.t0 > 0 && tc - lastP.t0 < 0.2 - 1e-9) lastP.a = ch.a;
+        else s.segs = s.segs.filter(function(q){ return q.t0 < tc - 1e-9; }).concat([{ t0: tc, a: ch.a }]);
+        // a piece that ends up equal to the one before it is no change
+        s.segs = s.segs.filter(function(q, i, arr){ return i === 0 || Math.abs(q.a - arr[i - 1].a) > 1e-9; });
       } else if(ch.a != null) s.segs = [{ t0: 0, a: ch.a }];
       s.a = s.segs[0].a;
       s.run = exactRun(s.x0, s.v0, s.segs.map(function(q, i){ return { dur: (i + 1 < s.segs.length ? s.segs[i + 1].t0 : WIN) - q.t0, a: q.a }; }));
@@ -748,6 +779,8 @@
     var L = lab({ kit: kit, availH: availH,
       onStart: function(){ cause.take(null); },
       onState: function(){ paintCause(); paintButtons(); },
+      // a knob that hides (a run starts, the cart fades back) hands the keyboard on: to the a tip while it shows, else to Run
+      keepFocus: function(){ var ha = L.handles().a; if(ha && !L.st.back && !L.st.drv.rec && L.st.tab === 'set') ha.knob.focus({ preventScroll: true }); else (runB.hidden ? again : runB).focus({ preventScroll: true }); },
       onFrame: function(){ paintCause(); if(ref.offsetParent) paintRef(); },
       onDone: function(kind){ paintButtons(); if(kind === 'drive' && L.st.tab === 'drive' && !L.st.play){ takeaway(); } else if(kind === 'set') say(cause.text()); } });
     stage.appendChild(L.el);
@@ -805,8 +838,12 @@
         // the a pill names every piece ("a −0.3, then +0.5 m/s² at 1.6 s"); the result word is the newest piece's
         var se = st.set, run = se.run, a0 = se.segs[0].a, last = se.segs[se.segs.length - 1], piece = last.t0 > 0, aL = last.a;
         var v1 = piece ? +at(run, 'v', last.t0).toFixed(6) : se.v0;
-        var aT = piece ? 'a ' + sg(a0) + ', then ' + sg(aL) + ' m/s² at ' + F(last.t0, 1) + ' s' : 'a ' + sg(a0) + ' m/s²';
-        var parts = [{ t: 'v₀ ' + sg(se.v0) + ' m/s', role: 'v', say: 'starting velocity ' + sg(se.v0) + ' meters per second' }, { t: aT, role: 'a', join: '+', say: piece ? 'acceleration ' + sg(a0) + ', then ' + sg(aL) + ' meters per second squared from ' + F(last.t0, 1) + ' seconds' : 'acceleration ' + sg(a0) + ' meters per second squared' }];
+        // every piece is named (on a phone, more than two are counted: "2 changes, last +0.5 at 3.3 s")
+        var rest = se.segs.slice(1), narrow = (window.innerWidth || 1000) < 640;
+        var aT = !piece ? 'a ' + sg(a0) + ' m/s²' : narrow && rest.length > 1 ? 'a ' + sg(a0) + ' m/s² + ' + rest.length + ' changes'
+          : narrow ? 'a ' + sg(a0) + ', ' + sg(aL) + ' m/s² at ' + F(last.t0, 1) + ' s'
+          : 'a ' + sg(a0) + ' m/s², ' + rest.map(function(q){ return sg(q.a) + ' at ' + F(q.t0, 1) + ' s'; }).join(', ');
+        var parts = [{ t: 'v₀ ' + sg(se.v0) + ' m/s', role: 'v', say: 'starting velocity ' + sg(se.v0) + ' meters per second' }, { t: aT, role: 'a', join: '+', say: piece ? 'acceleration ' + sg(a0) + ' meters per second squared, then ' + rest.map(function(q){ return sg(q.a) + ' from ' + F(q.t0, 1) + ' seconds'; }).join(', then ') : 'acceleration ' + sg(a0) + ' meters per second squared' }];
         var tn = turnsOf(run, run.end, 0.01).filter(function(q){ return q.t >= last.t0 - 1e-9; })[0], res = '';
         if(piece){ res = Math.abs(v1) < 1e-9 && Math.abs(aL) < 1e-9 ? 'rest' : Math.abs(aL) < 1e-9 ? 'const' : Math.abs(v1) < 1e-9 || v1 * aL > 0 ? 'up' : 'down'; }
         else if(Math.abs(v1) < 1e-9 && Math.abs(aL) < 1e-9){ parts.push({ t: 'stays at rest', role: 'res' }); res = 'rest'; }
@@ -815,7 +852,7 @@
         else if(v1 * aL > 0){ parts.push({ t: 'speeds up', role: 'res' }); res = 'up'; }
         else { parts.push({ t: 'slows down', role: 'res' }); res = 'down'; }
         // a turn and an end stop are both named when both happen
-        if(tn && run.hit) { parts.push({ t: 'turns at ' + F(tn.t, 1) + ' s, end stop at ' + F(run.hit.t, 1) + ' s', role: 'turn' }); res += ' turn hit'; }
+        if(tn && run.hit) { parts.push({ t: narrow ? 'turns ' + F(tn.t, 1) + ' s, end stop ' + F(run.hit.t, 1) + ' s' : 'turns at ' + F(tn.t, 1) + ' s, end stop at ' + F(run.hit.t, 1) + ' s', role: 'turn' }); res += ' turn hit'; }
         else if(tn) { parts.push({ t: 'turns at ' + F(tn.t, 1) + ' s', role: 'turn' }); res += ' turn'; }
         else if(run.hit) { parts.push({ t: 'end stop at ' + F(run.hit.t, 1) + ' s', role: 'turn' }); res += ' hit'; }
         cause.set(parts);

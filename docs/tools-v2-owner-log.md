@@ -617,3 +617,4 @@ in each tool's brief.
 | 2026-11-24 | AP Physics 1 Motion graphs | Review round 1: the Set landing is v₀ +2.0 m/s, a −0.4 m/s², and each tip's knob sits just past its arrow's tip | A short a arrow was hidden under its knob | `SET0`, `tipAt`, `tipPick` |
 | 2026-11-24 | AP Physics 1 Motion graphs | Review round 1: Match hides its problem code and link, and draws no tangents, area or their words | A link carries no kind; the task is the trace | `extra` in `quiz()`, `match` checks in `paint()` |
 | 2026-11-24 | AP Physics 1 Motion graphs | Review round 1: a hand drive's first 0.6 s reads "measuring" | a's window is not full yet | `describeText` |
+| 2026-11-24 | AP Physics 1 Motion graphs | Recheck 1: keys on a tip never start a run (Enter does; a pointer let go still does); changes of a within 0.2 s are one piece; a drag of the a tip mid run holds the moment | Keyboard users keep their place; no hairline pieces | `byPtr`, `setRun` fold, `heldByDrag` |
