@@ -265,9 +265,9 @@
     var head = K.head({ purpose: PURPOSE[S.tab], how: { label: 'Show me how', onClick: function(){ startTour(); } } });
     stage.appendChild(head.el);
     var sceneBox = document.createElement('div'); sceneBox.className = 'nr2-scene';
-    sceneBox.innerHTML = '<svg class="nr2-svg" role="img" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"><g class="nr2-static"></g><g class="nr2-dyn"></g><g class="nr2-fade"></g></svg>';
+    sceneBox.innerHTML = '<svg class="nr2-svg" role="img" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"><g class="nr2-static"></g><g class="nr2-ghostl"></g><g class="nr2-dyn"></g><g class="nr2-fade"></g></svg>';
     stage.appendChild(sceneBox);
-    var svg = sceneBox.querySelector('svg'), gStatic = svg.querySelector('.nr2-static'), gDyn = svg.querySelector('.nr2-dyn'), gFade = svg.querySelector('.nr2-fade'), layer = K.layer(sceneBox);
+    var svg = sceneBox.querySelector('svg'), gStatic = svg.querySelector('.nr2-static'), gDyn = svg.querySelector('.nr2-dyn'), gGhost = svg.querySelector('.nr2-ghostl'), ghostHtml = '', gFade = svg.querySelector('.nr2-fade'), layer = K.layer(sceneBox);
     var lines = document.createElement('div'); lines.className = 'nr2-lines';
     var cause = K.cause({ label: 'Why' });
     lines.appendChild(cause.el);
@@ -728,12 +728,13 @@
       p.push('<clipPath id="nr2c-in"><rect x="' + n1(I.x0) + '" y="' + n1(I.y0) + '" width="' + n1(w) + '" height="' + n1(h) + '" rx="14"/></clipPath>');
       p.push('<g clip-path="url(#nr2c-in)"><rect class="nr2-outf" x="' + n1(I.x0) + '" y="' + n1(I.y0) + '" width="' + n1(w) + '" height="' + n1(mid - I.y0) + '"/><rect class="nr2-cyt" x="' + n1(I.x0) + '" y="' + n1(mid) + '" width="' + n1(w) + '" height="' + n1(I.y1 - mid) + '"/>');
       // the bilayer: two rows of heads with tails
-      var heads = [], step = g.ph ? 6.5 : 7.5;
-      for(var x = I.x0 + 3; x < I.x1; x += step){
-        if(Math.abs(x - I.na) < (g.ph ? 13 : 16) || Math.abs(x - I.k) < (g.ph ? 13 : 16)) continue;
-        heads.push('<circle cx="' + n1(x) + '" cy="' + n1(mid - th / 2) + '" r="' + n1(step * 0.36) + '"/><circle cx="' + n1(x) + '" cy="' + n1(mid + th / 2) + '" r="' + n1(step * 0.36) + '"/>');
-      }
-      p.push('<rect class="nr2-tails" x="' + n1(I.x0) + '" y="' + n1(mid - th / 2) + '" width="' + n1(w) + '" height="' + n1(th) + '"/><g class="nr2-heads">' + heads.join('') + '</g></g>');
+      // the bilayer's heads: one patterned band (hundreds of circles cost every frame a repaint)
+      var step = g.ph ? 6.5 : 7.5, hr = step * 0.36;
+      p.push('<pattern id="nr2p-heads" patternUnits="userSpaceOnUse" x="' + n1(I.x0 + 3 - step / 2) + '" y="' + n1(mid - th / 2 - hr) + '" width="' + n1(step) + '" height="' + n1(th + hr * 2) + '"><circle class="nr2-headc" cx="' + n1(step / 2) + '" cy="' + n1(hr) + '" r="' + n1(hr) + '"/><circle class="nr2-headc" cx="' + n1(step / 2) + '" cy="' + n1(th + hr) + '" r="' + n1(hr) + '"/></pattern>');
+      p.push('<rect class="nr2-tails" x="' + n1(I.x0) + '" y="' + n1(mid - th / 2) + '" width="' + n1(w) + '" height="' + n1(th) + '"/>');
+      var gapW = g.ph ? 13 : 16, cuts = [I.na, I.k].sort(function(a, c){ return a - c; }), xs = [I.x0, cuts[0] - gapW, cuts[0] + gapW, cuts[1] - gapW, cuts[1] + gapW, I.x1];
+      for(var q = 0; q < 6; q += 2) p.push('<rect fill="url(#nr2p-heads)" x="' + n1(xs[q]) + '" y="' + n1(mid - th / 2 - hr) + '" width="' + n1(Math.max(0, xs[q + 1] - xs[q])) + '" height="' + n1(th + hr * 2) + '"/>');
+      p.push('</g>');
       p.push('<rect class="nr2-inframe" x="' + n1(I.x0) + '" y="' + n1(I.y0) + '" width="' + n1(w) + '" height="' + n1(h) + '" rx="14"/>');
       var fsS = g.fsS;
       p.push(txt(I.x1 - 10, I.y0 + fsS + 5, 'outside', 'nr2-side-t', 'end', fsS - 0.5));
@@ -901,7 +902,9 @@
       var f = frameAt(view.t);
       lastF = f;
       view.clock = now();
+      ghostNext = '';
       gDyn.innerHTML = S.tab === 'syn' ? synDyn(G, f) : neuronDyn(G, f);
+      if(ghostNext !== ghostHtml){ ghostHtml = ghostNext; gGhost.innerHTML = ghostNext; }
       if(S.mode === 'explore' && !(wKey === 'take' && !playing && view.t >= tMax() - 1e-6)) syncWords(f);
       var al = altText(f);
       if(paint.al !== al){ paint.al = al; svg.setAttribute('aria-label', al); }
@@ -970,7 +973,7 @@
       }
       return p.join('');
     }
-    var trCache = {};
+    var trCache = {}, ghostKey = '', ghostStr = '', ghostNext = '';
     function tracePts(g, r){
       var key = g.W + 'x' + g.H + g.tab + r.S + '|' + r.gap + '|' + r.mode;
       if(trCache.key === key) return trCache.pts;
@@ -990,9 +993,11 @@
         if(g.tab === 'refr' && t >= sp + 1 && sp === r.spikes[0]) p.push(txt(P.X(sp + 1.2), P.Y(10), 'refractory', 'nr2-refr-t', 'start', fs));
       });
       // the setting before the change (Threshold): its whole trace, faint
-      if(prev && prev.run && prev.tab === g.tab && prev.run !== r){ var pp = tracePts(g, prev.run); trCache = { key: '' }; p.push('<polyline class="nr2-before" points="' + polyStr(pp, 0, pp.length) + '"/>'); }
+      // the whole run faint (and the setting before the change), drawn once per run in its own layer
+      var gk = g.W + 'x' + g.H + '|' + r.S + '|' + r.gap + '|' + r.mode + '|' + (prev && prev.run && prev.tab === g.tab && prev.run !== r ? prev.run.S + '|' + prev.run.gap : '');
+      if(ghostKey !== gk){ ghostKey = gk; var gq = ''; if(prev && prev.run && prev.tab === g.tab && prev.run !== r){ var pp = N.series(prev.run, 0.05).map(function(q){ return [q[0], P.X(q[0]), P.Y(q[1])]; }); gq += '<polyline class="nr2-before" points="' + polyStr(pp, 0, pp.length) + '"/>'; } gq += '<polyline class="nr2-ghost" points="' + polyStr(pts, 0, pts.length) + '"/>'; ghostStr = gq; }
+      ghostNext = ghostStr;
       var k = 0; while(k < pts.length && pts[k][0] <= t + 1e-9) k++;
-      p.push('<polyline class="nr2-ghost" points="' + polyStr(pts, Math.max(0, k - 1), pts.length) + '"/>');
       if(k > 1) p.push('<polyline class="nr2-trace" points="' + polyStr(pts, 0, k) + '"/>');
       var vx = P.X(t), vy = P.Y(f.V);
       p.push('<line class="nr2-now" x1="' + n1(vx) + '" x2="' + n1(vx) + '" y1="' + n1(P.y0) + '" y2="' + n1(P.Y(-86)) + '"/><circle class="nr2-head" cx="' + n1(vx) + '" cy="' + n1(vy) + '" r="4.5" data-v="' + f.V.toFixed(1) + '"/>');
@@ -1118,7 +1123,7 @@
       var r = sceneBox.getBoundingClientRect(), Wd = Math.max(300, Math.round(r.width)), H = Math.max(360, Math.round(r.height));
       if(!force && G && G.W === Wd && G.H === H && G.tab === S.tab) return;
       svg.setAttribute('viewBox', '0 0 ' + Wd + ' ' + H); svg.setAttribute('width', Wd); svg.setAttribute('height', H);
-      G = geo(Wd, H); trCache = {};
+      G = geo(Wd, H); trCache = {}; ghostKey = '';
       drawStatic();
       var t = S.tab;
       cE.hide(t !== 'fire'); cI.hide(t !== 'fire'); hGap.hide(t !== 'refr');

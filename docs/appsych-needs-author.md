@@ -209,3 +209,17 @@ From the hands-on tool audit (`docs/tool-audit-2026-11.md`), for the accuracy re
 - **Milgram, orders by telephone.** The social influence tool shows 22.5% (9 of 40; Milgram, 1974). Several
   textbooks print 20.5%. Left as it is.
 
+
+## neuron-v2: teaching simplifications in the rebuilt neuron (open, 2026-11-23)
+
+From `docs/tools-v2-neuron-brief.md`, for the accuracy reviewer:
+
+- **Myelin speed.** The Myelin tab draws a myelinated stretch 7.5 times faster than a bare one (0.12 ms against
+  0.9 ms); real myelinated axons conduct about 50 to 100 times faster than unmyelinated ones. "?" says so. A
+  stripped stretch still conducts slowly here; in multiple sclerosis conduction can also fail (also in "?").
+- **Excitatory minus inhibitory.** Inputs are added as one push with one time course (net mV); real EPSPs and IPSPs
+  differ in shape and timing. Fair at AP® depth (Myers: excitatory minus inhibitory must pass threshold)?
+- **Ions.** Two Na⁺ and two K⁺ are drawn crossing per spike; the K⁺ channel is drawn open from 0.5 to 3.2 ms after
+  threshold, the Na⁺ channel locked (inactivated) until 2 ms. Check the wording "Na⁺ locked".
+- **Colours.** GABA is drawn pink (inhibitory); the other seven green, although dopamine, serotonin and
+  norepinephrine can excite or inhibit depending on the receptor.

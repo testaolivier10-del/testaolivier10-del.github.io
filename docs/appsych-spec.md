@@ -261,6 +261,10 @@ with one rubric line per point and full-credit samples.
 15. (2026-11-10, tool review build) **The four FIX tools of `docs/tool-review/psychology.md` rebuilt in place**
     (conditioning lab, development, memory lab, neuron); nothing removed, no data or storage keys changed. What
     changed and what was checked: `docs/tool-review/done/psych.md`.
+17. (2026-11-23, tools v2) **The neuron rebuilt on the tools v2 kit** (`docs/tools-v2-neuron-brief.md`): four Explore
+    tabs (Threshold with excitatory and inhibitory input, Refractory period, Myelin, Synapse) through the brain map's
+    adapter `ApPsychTools.kit2`; the drills, record ids and links unchanged; decisions in `docs/tools-v2-owner-log.md`.
+    (16 is the brain map's.)
 
 ## 9. Open items for the owner
 

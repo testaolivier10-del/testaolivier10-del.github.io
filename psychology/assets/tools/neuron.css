@@ -188,7 +188,7 @@
 :root[data-theme="dark"] .nr2-pill.is-solid.is-k text,:root[data-theme="dark"] .nr2-pill.is-solid.is-sig text{fill:#160F1F;}
 /* the membrane close-up */
 .nr2-outf{fill:url(#nr2g-out);} .nr2-cyt{fill:url(#nr2g-cyt);}
-.nr2-tails{fill:var(--nr-tail);} .nr2-heads circle{fill:var(--nr-head);}
+.nr2-tails{fill:var(--nr-tail);} .nr2-headc{fill:var(--nr-head);}
 .nr2-inframe{fill:none;stroke:var(--nr-edge);stroke-width:1.6;stroke-opacity:.6;}
 .nr2-lead{fill:none;stroke:var(--nr-edge);stroke-width:1.4;stroke-opacity:.55;}
 .nr2-leaddot{fill:var(--nr-edge);fill-opacity:.7;}
@@ -264,3 +264,4 @@
 @media (prefers-reduced-motion:reduce){ .nr2 *{animation:none !important;} }
 /* four tabs: two rows on a phone, full names */
 @media (max-width:640px){ .nr2 .tk2-tabs.is-big{display:grid;grid-template-columns:1fr 1fr;gap:6px;} .nr2 .tk2-tabs.is-big .tk2-tab{min-height:44px;padding:0 10px;font-size:15px;} }
+.nr2.is-cue[data-tab="refr"] .nr2-refr-t{visibility:hidden;}

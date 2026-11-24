@@ -382,3 +382,13 @@ in each tool's brief.
 | 2026-11-19 | AP Bio Rates | Review round 1: the notes sentence "Both are on the formula sheet" now says a rate is on the sheet (dY/dt) and percent change is not; the stats-rates lesson's formula line says the same | The current sheet lists only dY/dt | `bio/data/notes/stats-rates.html`, `bio/data/lessons/stats-rates.json` |
 | 2026-11-19 | AP Bio Rates | Review round 1: Δt rounds to one decimal before dropping ".0"; the readings sit 22 px inside the axes | No "4.0 min" / "4 min" flicker; a knob at 0 keeps 4 px from the tick numbers | `tVal()`, `layoutGraph()` |
 | 2026-11-19 | AP Bio Rates | Recheck 1 polish: when the rise is shorter than the knob (after 4 min) the step turns at t − 1 (run back from the point, rise at t − 1); the shrunken core's waves vary in size | Both legs visible beside the knob; the core never reads as a bellows | `paintGraph()`, `corePath()` |
+| 2026-11-23 | AP Psych Neuron | Four tabs (Threshold, Refractory period, Myelin, Synapse) replace the two scenes (Fire, Synapse) | Each teaches a different CED 1.3 idea; one control each | `docs/tools-v2-neuron-brief.md` |
+| 2026-11-23 | AP Psych Neuron | Excitatory and inhibitory input share the Threshold tab (inhibitory knob quiet) | The neuron adds both before it decides; they are one idea | `explore2()` in `neuron.js` |
+| 2026-11-23 | AP Psych Neuron | A run plays by itself when a knob is let go or a drug or myelin stretch is tapped; while dragging, the picture holds the key moment | The process is the lesson; no Stimulate button to find | `restart()` |
+| 2026-11-23 | AP Psych Neuron | "Held on" (a stronger held stimulus fires more often) leaves Explore for "?" (rates) and the drills (held traces) | Keeps Threshold to one idea | `refHtml()` |
+| 2026-11-23 | AP Psych Neuron | Tap a part for its card leaves Explore; parts are labelled on the picture and listed in "?" | Labels carry it; no card over the scene | `labelsSvg()` |
+| 2026-11-23 | AP Psych Neuron | Myelin is drawn 7.5 times faster than bare axon (real: about 50 to 100) | Both must be watchable; said in "?" and needs-author | `N.JUMP`, `N.CRAWL` |
+| 2026-11-23 | AP Psych Neuron | Refractory period tab opens with the 2nd pulse 4 ms after the first (fires again) | The first drag closer shows the block | `S.gap` |
+| 2026-11-23 | AP Psych Neuron | Test yourself keeps the old drill figures | Unchanged drills and grading; a new figure set is later work | `figure()` |
+| 2026-11-23 | AP Psych Neuron | No teaser in Explore | Screen kept quiet (as osmosis) | |
+| 2026-11-23 | AP Psych Neuron | A push of exactly threshold minus rest (15 mV) now fires | It said it reached −55 mV and did not fire | `simulate()` |
