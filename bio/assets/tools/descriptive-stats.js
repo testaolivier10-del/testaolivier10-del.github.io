@@ -668,6 +668,11 @@
           parts.push({ t: 'median ' + md + ' ' + U, role: 'median', say: 'the median is ' + md + ' ' + U });
         }
         // SD and SE ride along when the line still fits two rows (else they are in "?": the worked table)
+        // in Challenge 3 (SE as plants are added) the SD and SE stay: the even count's median working shortens first
+        if(rows(parts.concat([sdp])) > 2 && St.mode === 'quiz' && St.part === 'goals'){
+          var mi = -1; parts.forEach(function(q, i){ if(q.role === 'median' && /=/.test(q.t)) mi = i; });
+          if(mi > -1) parts[mi] = { t: 'median ' + md, role: 'median', say: parts[mi].say };
+        }
         if(rows(parts.concat([sdp])) <= 2) parts.push(sdp);
         cause.set(parts);
       }

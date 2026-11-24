@@ -241,3 +241,10 @@ slide press); AP Bio tests 74 pass, content check 0 failing, `build-apbio --chec
 - The dots are plain rose discs, not drawn radishes.
 - On a wide screen the tray is long and low (16 cm in about 350 px at 1440 × 900), with much board above the plants
   at the opening (the room for an outlier).
+
+## Recheck 2 (2026-11-24): PASS, one should fix done
+In Challenge 3 the SD and SE pill stays in the cause line at every count: when it would need a third row (an even
+count on a 360 px phone), the median pill drops its working ("median 5.35" for "median (5.2 + 5.5) ÷ 2 = 5.35"; the
+spoken line keeps the working). The sweep checks the pill at every count of Challenge 3. Checks: sweep at 360 and 390
+(91 each), 1024 and 1440 (89 each), light and dark, **360 passed, 0 failed**; frames **61 passed, 0 failed** (66 real
+touch taps, 0 wrong).

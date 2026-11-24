@@ -515,3 +515,4 @@ in each tool's brief.
 | 2026-11-24 | AP Bio Descriptive statistics | Review round 1: phone knobs are 8 px dots with an invisible 44 px hit area | The knob hid the seed leaves | `descriptive-stats.css` |
 | 2026-11-24 | AP Bio Descriptive statistics | Recheck 1: sowing order 3.8, 7.6, 5.2, 4.4, 6.6, 4.9, 5.9, 5.5, 4.6, 6.2 (openings unchanged); Challenge 3 starts on 3 plants | The SE must fall with every plant added, and phones must have room to add | `explore.heights`, `fresh` |
 | 2026-11-24 | AP Bio Descriptive statistics | Recheck 1: a wide but short scene (1024 x 768) keeps a 150 px clipboard without the worked lines | The plants got only a 70 px strip | `layout` (`g.short`) |
+| 2026-11-24 | AP Bio Descriptive statistics | Recheck 2: in Challenge 3 the SD and SE pill stays; the even count's median pill drops its working when the line would need a third row | Challenge 3 is about SE | `paintCause` |

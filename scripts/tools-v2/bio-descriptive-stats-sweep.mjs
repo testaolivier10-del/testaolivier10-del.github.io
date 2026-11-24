@@ -271,7 +271,9 @@ if (ONE) {
     await page.evaluate(() => window.__ds2.chal('n')); await page.waitForTimeout(200); await still(page);
     const c3 = await page.evaluate(() => ({ n: window.__ds2.drawn().n, add: !document.querySelector('.ds2-add').disabled, se: window.__ds2.drawn().se }));
     const ses = [c3.se];
-    for (let i = 0; i < 10; i++) { if (await page.evaluate(() => document.querySelector('.ds2-add').disabled)) break; await page.click('.ds2-add'); await still(page); await page.waitForTimeout(80); ses.push(await page.evaluate(() => window.__ds2.drawn().se)); }
+    const sdPill = [];
+    for (let i = 0; i < 10; i++) { if (await page.evaluate(() => document.querySelector('.ds2-add').disabled)) break; await page.click('.ds2-add'); await still(page); await page.waitForTimeout(80); ses.push(await page.evaluate(() => window.__ds2.drawn().se)); sdPill.push(await page.evaluate(() => !!document.querySelector('.ds2 .tk2-cause.is-take') || !!document.querySelector('.ds2 .tk2-cause .tk2-cz.is-sd'))); }
+    ok(sdPill.every(Boolean), `${w} ${theme} challenge 3: the SD and SE pill stays at every count ${sdPill}`);
     const c3e = await page.evaluate(() => ({ n: window.__ds2.drawn().n, cap: window.__ds2.cap(), met: !!document.querySelector('.tk2-chal .is-met, .tk2-chal [class*="met"], .tk2-chal-ok') || /SE = s ÷ √n is/.test(document.querySelector('.tk2-chal') ? document.querySelector('.tk2-chal').textContent : '') }));
     ok(c3.n === 3 && c3.add && ses.every((v, i) => !i || v < ses[i - 1]) && c3e.n === c3e.cap && c3e.met, `${w} ${theme} challenge 3: from 3 plants, SE falls each step to a full tray and is met ${JSON.stringify({ c3, ses: ses.map(v => +v.toFixed(3)), c3e })}`);
     if (SHOTS && [360, 390, 1440].includes(w)) await page.screenshot({ path: join(SHOTS, `sweep-${w}-${theme}-challenge3.png`) });
