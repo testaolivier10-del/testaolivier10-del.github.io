@@ -593,7 +593,6 @@ export function courseCard({ href, tint, cover, t1, t2, hand, name, tag, line })
   return `        <a class="ccard" href="${href}" data-tint="${tint}">
           <span class="cover" data-cover="${cover}"><img src="assets/covers/${cover}.svg" alt="" width="640" height="320" loading="lazy" decoding="async"><span class="cv-t"><b>${t1}<span>${t2}</span></b><em>${hand}</em></span></span>
           <span class="cmeta"><span class="cname">${name}</span><span class="tag${tag === 'Beta' ? ' tag--beta' : ''}">${tag}</span></span>
-          <span class="cdesc">${line}</span>
         </a>`;
 }
 const published = (all, topics, rest) => (all ? `All ${fmt(topics)} published topics, ${rest}.` : `${fmt(topics)} published topic${topics === 1 ? '' : 's'} so far, ${rest}.`);
