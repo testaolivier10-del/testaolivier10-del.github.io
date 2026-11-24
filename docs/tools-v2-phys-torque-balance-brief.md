@@ -193,3 +193,13 @@ with their tags ("6 cm", "18 cm"), and the landing times after a race.
 - Recheck 1 (sweep catch): leaning away, the lever arm's foot lies below the stick and fell off the picture's bottom at
   1440; the lean now also stops where the foot would leave the picture (logged), and the lever arm and line of action
   are drawn over the hanging mass too.
+
+## Recheck 2 (2026-11-24): PASS, and its polish
+- The sweep's lever arm checks (its visibility and how far its name sits from it) convert picture units to screen
+  pixels by the picture's scale.
+- At 600 the phone sized stage was stretched by the tablet CSS minimum (440 px): a phone sized stage now sets its own
+  minimum, so the picture and its knobs agree (the knob no longer sits on a stick number).
+- Leaning away at 768, where one line found no room between the stick, the mass and the bench, the lever arm's name
+  takes two short lines ("lever arm" / "0.39 m") beside its line.
+- At 360 B's knob keeps 7 px or more from the right pulley's bracket (shorter phone arms, the knob nearer its slider,
+  the string's height a little lower).

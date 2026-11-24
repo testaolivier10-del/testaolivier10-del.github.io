@@ -143,17 +143,17 @@ const probe = (o) => {
     }
     if (tabv === 'ang') {
       const f = +pl.getAttribute('data-f'), a = +pl.getAttribute('data-ang'), th2 = a <= 90 ? a : 180 - a, arm = Math.abs((s.pull.x - piv) / 100 * Math.sin(a * Math.PI / 180));
-      const rd = document.querySelector('.tb2-read text').textContent, an = document.querySelector('.tb2-anglet').textContent, am = document.querySelector('.tb2-armt').textContent;
+      const rd = document.querySelector('.tb2-read text').textContent, an = document.querySelector('.tb2-anglet').textContent, am = (t => t.querySelector('tspan') ? [...t.querySelectorAll('tspan')].map(x => x.textContent).join(' ') : t.textContent)(document.querySelector('.tb2-armt'))   // (one line, or two short ones);
       if (rd !== f.toFixed(1) + ' N') out.push('the scale reads ' + rd + ', the pull is ' + f);
       if (an !== th2 + '°') out.push('the angle says ' + an + ', the pull is at ' + th2);
       if (am !== 'lever arm ' + arm.toFixed(2) + ' m') out.push(am + ', drawn lever arm ' + arm.toFixed(3));
       if (!cause.includes(f.toFixed(1) + ' N at ' + th2 + '°') || !cause.includes('lever arm ' + arm.toFixed(2) + ' m')) out.push('cause line disagrees with the pull: ' + cause);
       // the lever arm's name is attached to its line (within 24 px of the green segment; 36 px when the arm lies along the tilted stick and the name must clear the stick's numbers)
-      const al = R(document.querySelector('.tb2-armt')), gl = document.querySelector('.tb2-arm'), seg = [[gl.x1.baseVal.value, gl.y1.baseVal.value], [gl.x2.baseVal.value, gl.y2.baseVal.value]], svgR = R(document.querySelector('.tb2-svg'));
-      let dmin = 1e9; for (let i = 0; i <= 40; i++) { const px = svgR.l + seg[0][0] + (seg[1][0] - seg[0][0]) * i / 40, py = svgR.t + seg[0][1] + (seg[1][1] - seg[0][1]) * i / 40; dmin = Math.min(dmin, Math.max(al.l - px, px - al.r, 0) ** 2 + Math.max(al.t - py, py - al.b, 0) ** 2); }
+      const al = R(document.querySelector('.tb2-armt')), gl = document.querySelector('.tb2-arm'), seg = [[gl.x1.baseVal.value, gl.y1.baseVal.value], [gl.x2.baseVal.value, gl.y2.baseVal.value]], svgR = R(document.querySelector('.tb2-svg')), vk = svgR.w / document.querySelector('.tb2-svg').viewBox.baseVal.width;   // (picture units to screen px)
+      let dmin = 1e9; for (let i = 0; i <= 40; i++) { const px = svgR.l + (seg[0][0] + (seg[1][0] - seg[0][0]) * i / 40) * vk, py = svgR.t + (seg[0][1] + (seg[1][1] - seg[0][1]) * i / 40) * vk; dmin = Math.min(dmin, Math.max(al.l - px, px - al.r, 0) ** 2 + Math.max(al.t - py, py - al.b, 0) ** 2); }
       if (Math.sqrt(dmin) > (Math.abs(Math.sin(a * Math.PI / 180)) > 0.97 ? 36 : 24)) out.push('the lever arm\u2019s name is ' + Math.sqrt(dmin).toFixed(0) + ' px from its line');
       // most of the green line can be seen (nothing drawn over it): the top element along it is the line itself
-      let seen = 0, tot = 0; for (let i = 1; i < 20; i++) { const xx = svgR.l + seg[0][0] + (seg[1][0] - seg[0][0]) * i / 20, yy = svgR.t + seg[0][1] + (seg[1][1] - seg[0][1]) * i / 20; if (xx < 0 || yy < 0 || xx > innerWidth || yy > innerHeight) continue; tot++; const e = document.elementFromPoint(xx, yy); if (e && e.classList && e.classList.contains('tb2-arm')) seen++; }
+      let seen = 0, tot = 0; for (let i = 1; i < 20; i++) { const xx = svgR.l + (seg[0][0] + (seg[1][0] - seg[0][0]) * i / 20) * vk, yy = svgR.t + (seg[0][1] + (seg[1][1] - seg[0][1]) * i / 20) * vk; if (xx < 0 || yy < 0 || xx > innerWidth || yy > innerHeight) continue; tot++; const e = document.elementFromPoint(xx, yy); if (e && e.classList && e.classList.contains('tb2-arm')) seen++; }
       if (tot > 4 && seen / tot < 0.7) out.push('only ' + Math.round(100 * seen / tot) + '% of the lever arm can be seen');
       // the angle's number sits inside its own arc (between the stick and the pull, seen from the hook)
       const ag = document.querySelector('.tb2-anglet'), hk = T.pullGeo().h, ax = +ag.getAttribute('x') - hk[0], ay = hk[1] - (+ag.getAttribute('y') - 4);
@@ -239,7 +239,8 @@ async function runSweep(w, h) {
   const inMin = await page.evaluate(() => document.querySelector('.tb2').__tb.st.ang.pull.ang);
   for (let i = 0; i < 34; i++) await page.keyboard.press('ArrowLeft');
   const outMax = await page.evaluate(() => document.querySelector('.tb2').__tb.st.ang.pull.ang);
-  checks += 2; if (inMin !== (w < 600 ? 25 : 15)) fails.push(`${w} angle: toward the fulcrum stops at ${inMin}°`); if (outMax < 90) fails.push(`${w} angle: away from the fulcrum stops at ${outMax}°`);
+  checks += 2; const phoneGeo = await page.evaluate(() => document.querySelector('.tb2').__tb.geo().ph);
+  if (inMin !== (phoneGeo ? 25 : 15)) fails.push(`${w} angle: toward the fulcrum stops at ${inMin}°`); if (outMax < 90) fails.push(`${w} angle: away from the fulcrum stops at ${outMax}°`);
   console.log(`  ${w}: the pull reaches ${180 - outMax}° from the stick leaning away and ${inMin}° leaning toward the fulcrum`);
   await settle(page);
   // Inertia: ready, then a race to the end

@@ -227,10 +227,10 @@
       var ph = W < 600, k = ph ? 0.9 : clamp(W / 1100, 0.95, 1.15);
       // the bench is as narrow as the weights falling past its ends allow, so the stands get the width
       var tl = ph ? 58 : Math.round(W * 0.13), tr = W - tl, cxA = Math.round(tl + (tr - tl) * 0.25), cxB = Math.round(tl + (tr - tl) * 0.75);
-      var arm = Math.round((tr - tl) * (ph ? 0.215 : 0.235)), pxpm = arm / 0.22;   // (a phone: room for B's knob before the pulley's arm)
+      var arm = Math.round((tr - tl) * (ph ? 0.18 : 0.235)), pxpm = arm / 0.22;   // (a phone: room for B's knob before the pulley's arm)
       // (a desktop's bench sits low: the stands nearer the middle, the weights' fall below it no taller than needed)
       var axleY = Math.round(ph ? 118 : clamp(Hin * 0.33, 130, 300)), armH = Math.round(ph ? 92 : clamp(Hin * 0.24, 110, 200));
-      var tableY = axleY + armH, sY = axleY + Math.round((ph ? 24 : 32) * k);
+      var tableY = axleY + armH, sY = axleY + Math.round((ph ? 31 : 32) * k);
       var floorY = ph ? tableY + 200 : Math.max(tableY + 150, Hin - 36), H = ph ? floorY + 34 : Math.max(Hin, floorY + 36);
       return { W: W, H: H, ph: ph, k: k, floorY: floorY, tableY: tableY, tl: tl, tr: tr, cx: [cxA, cxB], arm: arm, pxpm: pxpm, axleY: axleY, tilt: 0.36,
         pulY: sY, hubR: Math.max(10, Math.round(0.04 * pxpm)), band: H - floorY, sc: clamp(arm / 70, 0.85, 1.6) };
@@ -593,22 +593,31 @@
       function offLine(cx2, cy2, ax, ay, dx, dy){ var L = Math.hypot(dx, dy) || 1, nx = -dy / L, ny = dx / L; return Math.abs((cx2 - ax) * nx + (cy2 - ay) * ny) - (hw * Math.abs(nx) + hh * Math.abs(ny)); }
       // candidates, in order: beside the lever arm's middle (either side, just clear of it), then beside it nearer
       // either end, then past its foot along it (a very short arm); the first fully clear one wins
-      var cands = [];
-      [1, 1.35, 1.9].forEach(function(mul){ [0.5, 0.35, 0.65, 0.2, 0.8, 0.9].forEach(function(f){ [-mul, mul].forEach(function(sd){
-        var ox = -vy / vl * Math.sign(sd), oy = vx / vl * Math.sign(sd), gp = (hh * Math.abs(oy) + hw * Math.abs(ox) + 5) * Math.abs(sd);
-        cands.push({ x: P[0] + vx * f + ox * gp, y: P[1] + vy * f + oy * gp, f: f });
-      }); }); });
-      var ext = (hw * Math.abs(vx / vl) + hh * Math.abs(vy / vl) + 6) / vl;
-      cands.push({ x: P[0] + vx * (1 + ext), y: P[1] + vy * (1 + ext), f: 1 + ext, past: true });
-      cands.forEach(function(c){
-        var cl = clearOf(c.x, c.y);
-        // never across the line of action (the string and the arrow lie on it) or the lever arm itself
-        cl = Math.min(cl, offLine(c.x, c.y, foot[0], foot[1], ux, uy) - 3);
-        if(!c.past) cl = Math.min(cl, offLine(c.x, c.y, P[0], P[1], vx, vy) - 2);
-        c.s = cl;
-        if(!best || (best.s < 0 && cl > best.s)) best = c;
-      });      var lx = best.x, ly = best.y + 4, ox = 0;
-      lo += '<text class="tb2-armt" x="' + n1(lx) + '" y="' + n1(ly) + '" text-anchor="middle">' + lt + '</text>';
+      function search(){
+        best = null;
+        var cands = [];
+        [1, 1.35, 1.9].forEach(function(mul){ [0.5, 0.35, 0.65, 0.2, 0.8, 0.9].forEach(function(f){ [-mul, mul].forEach(function(sd){
+          var ox = -vy / vl * Math.sign(sd), oy = vx / vl * Math.sign(sd), gp = (hh * Math.abs(oy) + hw * Math.abs(ox) + 5) * Math.abs(sd);
+          cands.push({ x: P[0] + vx * f + ox * gp, y: P[1] + vy * f + oy * gp, f: f });
+        }); }); });
+        var ext = (hw * Math.abs(vx / vl) + hh * Math.abs(vy / vl) + 6) / vl;
+        cands.push({ x: P[0] + vx * (1 + ext), y: P[1] + vy * (1 + ext), f: 1 + ext, past: true });
+        cands.forEach(function(c){
+          var cl = clearOf(c.x, c.y);
+          // never across the line of action (the string and the arrow lie on it) or the lever arm itself
+          cl = Math.min(cl, offLine(c.x, c.y, foot[0], foot[1], ux, uy) - 3);
+          if(!c.past) cl = Math.min(cl, offLine(c.x, c.y, P[0], P[1], vx, vy) - 2);
+          c.s = cl;
+          if(!best || (best.s < 0 && cl > best.s)) best = c;
+        });
+        return best;
+      }
+      var one = search(), two = false;
+      // nowhere clear on one line (a lean away puts it between the stick, the mass and the bench): try two short lines
+      if(one.s < 0){ var hw1 = hw, hh1 = hh; hw = (G.ph ? 7.1 : 7.6) * 9 / 2 + 3; hh = 17; var b2 = search(); if(b2.s > one.s){ two = true; } else { hw = hw1; hh = hh1; best = one; } }
+      var lx = best.x, ly = best.y + 4;
+      lo += two ? '<text class="tb2-armt" x="' + n1(lx) + '" y="' + n1(ly - 8) + '" text-anchor="middle"><tspan x="' + n1(lx) + '">lever arm</tspan><tspan x="' + n1(lx) + '" dy="16">' + F(arm, 2) + ' m</tspan></text>'
+        : '<text class="tb2-armt" x="' + n1(lx) + '" y="' + n1(ly) + '" text-anchor="middle">' + lt + '</text>';
       if(D.loaHtml !== lo){ D.loa.innerHTML = lo; D.loaHtml = lo; }
       D.loa.setAttribute('data-arm', arm.toFixed(4));
     }
@@ -929,7 +938,7 @@
     /* A slider's point: the cross arm turns in a horizontal plane, seen from a little above (its circle is an ellipse). */
     /* The knob sits a little past the slider along the arm (KO px), so it never hides the slider or the hub. */
     var KO = 20;
-    function knobPt(i){ var p = sliderPt(i, 1), a = raceState(i).theta, ux = Math.cos(a), uy = Math.sin(a) * G.tilt, L = Math.hypot(ux, uy) || 1; return [p[0] + ux / L * KO, p[1] + uy / L * KO]; }
+    function knobPt(i){ var ko = G.ph ? 12 : KO, p = sliderPt(i, 1), a = raceState(i).theta, ux = Math.cos(a), uy = Math.sin(a) * G.tilt, L = Math.hypot(ux, uy) || 1; return [p[0] + ux / L * ko, p[1] + uy / L * ko]; }
     function sliderPt(i, sgn, d){
       var g = G, s = st.ine, dd = (d != null ? d : i ? s.dB : s.dA) / 100 * g.pxpm, a = raceState(i).theta;
       return [g.cx[i] + sgn * dd * Math.cos(a), g.axleY + sgn * dd * Math.sin(a) * g.tilt];
@@ -937,7 +946,7 @@
     function armDir(i){ var a = raceState(i).theta, dx = Math.cos(a), dy = Math.sin(a) * G.tilt; return Math.atan2(dy, dx) * RAD; }
     function pickSlider(i, x, y){
       var a = raceState(i).theta, ux = Math.cos(a), uy = Math.sin(a) * G.tilt, L = Math.hypot(ux, uy) || 1;
-      var d = (((x - G.cx[i]) * ux + (y - G.axleY) * uy) / L - KO) / L / G.pxpm * 100;
+      var d = (((x - G.cx[i]) * ux + (y - G.axleY) * uy) / L - (G.ph ? 12 : KO)) / L / G.pxpm * 100;
       return clamp(Math.round(d), 4, 20);
     }
     function changedIne(){ paintIne(); paintCauseIne(); }
@@ -1067,7 +1076,7 @@
       again.classList.toggle('is-pic', inPic);
       if(phone){
         var need = st.tab === 'ine' ? geoIne(W, 0).H : geoStick(W, 0, st.tab, rowsFor()).H;
-        box.style.height = need + 'px';
+        box.style.height = need + 'px'; box.style.minHeight = '0px';   // (the tablet CSS minimum must not stretch a phone-sized stage)
       } else {
         box.style.height = ''; box.style.minHeight = '';
         // a tablet (it scrolls, like a phone) may grow the stage; a desktop keeps the whole tool in view, except while
