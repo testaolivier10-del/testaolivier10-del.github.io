@@ -207,7 +207,7 @@ All 2026-10-13, answered by the independent reviewers or fixed; kept here so nob
   real rate. Owner to confirm.
 
 - (2026-11-24, tools v2 Limit explorer) Out to infinity draws f(x) = (2x² + 3x)/(x² + 1) on an x axis squeezed by
-  powers of ten (grid lines at 0, ±1, ±10, …, ±10,000; "x: each grid step ×10" on the picture; heights to scale), so
+  powers of ten (grid lines at 0, ±1, ±10, …, ±10,000; "x: 1, 10, 100, 1,000 …" on the picture; heights to scale), so
   the cars can drive to ±10,000 in one picture. A teacher may prefer a linear axis that zooms out (the old tool did).
   The tool also says lim f(x) = −∞ from the left and ∞ from the right at x = 2 for 1/(x − 2) "to describe that, but
   the limit does not exist: ∞ is not a number", which follows the CED's use of ∞ for unbounded behaviour. Owner or a

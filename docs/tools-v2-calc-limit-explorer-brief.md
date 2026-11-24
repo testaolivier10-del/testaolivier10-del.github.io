@@ -62,14 +62,14 @@ limit") appears only when both cars really are within 0.01, so it is never claim
   for a removable point) lays a slab of road into the gap (or lifts the lamp into the hole) and closes the circle; it
   then reads "Undo". The curve picker beside "Show me how".
 - **Cause line:** "from the left 1.95 + from the right 2.04 → closer to x = 1"; with both cars within 0.01: "… → both
-  head for 2 → limit 2"; a jump "… → they disagree → no limit"; the asymptote "… → grow without bound → no limit";
+  head for 2 → limit 2"; a jump "… → they disagree → no limit"; the asymptote "… → unbounded → no limit";
   sin(1/x) "… → keep swinging → no limit". A phone says "left 1.95", "right 2.04", "both → 2".
 - **Takeaways:** after Close in, for example "The limit is 2, even though f(1) is not defined, so f is not continuous
   at x = 1."; after Fill the hole "Now f(1) = 2, the limit, so f is continuous at x = 1." (only once the slab is in).
 
 ### Tab 2, "Out to infinity"
-- f(x) = (2x² + 3x)/(x² + 1) on an x axis **squeezed by powers of ten** (each grid step ×10: 1, 10, 100, 1,000,
-  10,000; "x: each grid step ×10" on the picture); y to scale; the asymptote y = 2 as a blue line. The cars drive
+- f(x) = (2x² + 3x)/(x² + 1) on an x axis **squeezed by powers of ten** (grid lines at 0, ±1, ±10, …, ±10,000;
+  "x: 1, 10, 100, 1,000 …" on the picture); y to scale; the asymptote y = 2 as a blue line. The cars drive
   outward (noses out, bodies toward 0), from x = ±3 (farther on a phone, so the rings never touch) to ±10,000.
 - Cause line "f(−3) = 0.9 + f(3) = 2.7 → drive farther out"; beyond 1,000 on both sides "… → both level off at 2".
   "Drive out" ends on "Far out on both sides f(x) heads for 2, so y = 2 is a horizontal asymptote (the curve crosses
@@ -136,16 +136,17 @@ On the picture: the road, 2 cars (2 main controls) with their tags "f(0) = 1" an
 - Phones show the height alone on each car's tag ("1.95"); wider screens "f(0.95) = 1.95".
 - The road, car and magnifier are redrawn in this tool's file, not lifted into a shared piece (the Tangent tracer is
   untouched).
-- The tool's About text (intro and how it works) was reworded for the new Explore; title, description, blurb and URL
-  unchanged.
+- The tool's About text (intro and how it works), the page line, the description and the blurb were reworded for the
+  new Explore (in `calculus/data/tools/limit-explorer.json` and `calculus/data/pages.json`); title and URL unchanged.
 - No new curve was added for "does not level off" at infinity (the old gallery had none; a later tool or round).
 
 ## What was built
 
 - `calculus/assets/tools/limit-explorer.js`: the Explore (`explore()`) and the mount rewritten; the quiz code kept.
   `calculus/assets/tools/limit-explorer.css`: the v2 styles appended (`.le2*`; the old ones stay for the quiz
-  figures). `calculus/data/pages.json`: `"kit2": true` for this tool. `calculus/assets/tool-data/limit-explorer.json`:
-  intro and how it works reworded (contexts unchanged).
+  figures). `calculus/data/pages.json`: `"kit2": true`, the description, blurb and page line reworded.
+  `calculus/data/tools/limit-explorer.json` (the source; `assets/tool-data/` is built from it): intro and how it works
+  reworded (contexts unchanged).
 - `scripts/tools-v2/calc-limit-explorer-sweep.mjs` (layout, `--fit`, `--frames`, `--dark`, `--shots`) and
   `scripts/tools-v2/calc-limit-explorer-perf.mjs`.
 
@@ -191,3 +192,35 @@ Preview: `/mnt/user-data/outputs/calc-limit-explorer-v2/index.html`, shots in `s
 - The squeezed axis in tab 2 is a choice a teacher may question (logged in `docs/apcalc-needs-author.md`).
 - Desmos and 3Blue1Brown pages could not be fetched here; GeoGebra pages were read as text, applets not run.
 - No real phone, no screen reader pass, no real students; the independent review is next.
+
+## Review round 1 (2026-11-24)
+
+The independent review (`/home/claude/review-calc-limit/REVIEW.md`) blocked on five must fix items; all fixed:
+1. **Dark mode band.** The sin(1/x) and squeeze zigzag and its fill have light dark mode colours (`.le2-zig`,
+   `.le2-band`), in the picture and in the glass.
+2. **The glass on the height marks.** `lensGeo()` now keeps the glass, its handle and its zoom label off the hole, a
+   jump's ends, the lamp and the two height marks on the y axis; the handle points out to its own corner; the marks are
+   boxes the zoom label avoids.
+3. **The glass on a car.** A car is a hard reject: on a narrow picture the glass shrinks (×0.88 steps, down to 56 px
+   radius) until a corner is clear of both cars.
+4. **The chip on Fill the hole.** The chip avoids the Fill button and the cue; Fill avoids the chip; the first visit
+   draws three times so they settle. The sweep's first visit now checks the chip as well as the cue.
+5. **About text.** The first round edited the built copy (`assets/tool-data/`), which the build overwrote. The source
+   `calculus/data/tools/limit-explorer.json` (intro, how it works) and `calculus/data/pages.json` (page line,
+   description, blurb) are reworded now and AB rebuilt; the owner log line is corrected.
+
+Should fix, done: a car off the picture keeps the road's direction (climbing out) with a longer arrow; the pill reads
+"unbounded" everywhere; "too many swings to draw" tries spots beside the band before any far one (and is dropped if none
+fits); more spots for "hole" and "y = f(x)" (phones now show both); a car's screen reader value is where a key takes it
+and the final value is said when the glide ends; "?" says "drawn as a zigzag band"; the squeezed axis label reads
+"x: 1, 10, 100, 1,000 …"; the cause line keeps one height (46 px, phones 84 px) for the chain and the takeaway. Perf:
+the glass's road is built once per ×1.25 zoom step in its own coordinates and scaled into place by a transform
+(strokes keep their width); the rest of the moving layer is still rewritten each frame (cars, tags and labels change on
+every frame of a drive).
+
+Checks after round 1: sweep 360, 390, 1024, 1440 light and dark (480 states, 9,464 checks, 0 failures); frames at 390
+dark and 1440 light (1,986 checks, 0 failures); browser checks 59 passing; perf at CPU ×4 (load 3.6, flagship in the
+same run): 1440 Close in on sin(1/x) median 33 ms, p95 67 ms, 5.7 ms main thread a frame (was 7.2), drag in 16.7 / 33
+ms (4.2), Drive out 33 / 50 ms (4.7); 390 Close in on sin(1/x) 33 / 50 ms (5.1), drag in 16.7 / 33 ms (3.5); flagship
+33 / 67 to 83 ms (8.0 to 8.8). AB 156 and BC 71 tests pass; content check, `build-apcalc`, `build-apcalcbc`,
+`build-apmacro --check`, `check-site` and `check-weight` clean.

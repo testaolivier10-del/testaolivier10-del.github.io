@@ -834,7 +834,7 @@
       }
       return opp[t];
     }
-    function labelsFree(b){ return (S.labBoxes || []).concat(S.fillBox && !fillB.hidden ? [S.fillBox] : []).every(function(q){ return !hitB(b, q); }); }
+    function labelsFree(b){ return (S.labBoxes || []).concat(S.fillBox && !fillB.hidden ? [S.fillBox] : [], S.cueBox && cue.active() ? [S.cueBox] : []).every(function(q){ return !hitB(b, q); }); }
     /* the marks on the road a tag must never cover: the hole, a jump's two ends, the lamp */
     function mainMarks(){
       if(S.tab !== 'point' || !G) return [];
@@ -948,6 +948,15 @@
       var found = false, i, b;
       for(i = 0; i < cands.length && !found; i++){ b = [cands[i][0], cands[i][1], cands[i][0] + w, cands[i][1] + h]; if(inside(b, A) && free(b) && !roadHit(b)){ at = cands[i]; found = true; } }
       for(i = 0; i < cands.length && !found; i++){ b = [cands[i][0], cands[i][1], cands[i][0] + w, cands[i][1] + h]; if(inside(b, A) && free(b)){ at = cands[i]; found = true; } }
+      // else the free spot nearest the hole, on a 12 px grid over the picture
+      if(!found){
+        var bestD = Infinity;
+        for(var gy = A.T + 4; gy + h < A.B - 4; gy += 12) for(var gx = A.L + 4; gx + w < A.R - 4; gx += 12){
+          b = [gx, gy, gx + w, gy + h]; if(!free(b)) continue;
+          var dd = Math.hypot(gx + w / 2 - Xa, gy + h / 2 - Ya) + (roadHit(b) ? 400 : 0);
+          if(dd < bestD){ bestD = dd; at = [gx, gy]; }
+        }
+      }
       at = [clamp(at[0], A.L + 4, A.R - w - 4), clamp(at[1], A.T + 4, A.B - h - 4)];
       boxes.push([at[0] - 2, at[1] - 2, at[0] + w + 2, at[1] + h + 2]); S.fillBox = [at[0] - 4, at[1] - 4, at[0] + w + 4, at[1] + h + 4];
       fillB.style.left = (at[0] * k).toFixed(1) + 'px'; fillB.style.top = (at[1] * k).toFixed(1) + 'px';
@@ -1137,10 +1146,14 @@
     var cueO = { key: 'apcalc-limit-explorer', text: 'Drag the car toward x = 1', side: 'left',
       at: function(){ if(!G || !S.drawn) return [0, 0]; var c = S.drawn.cl; return cueO.side === 'left' ? [c.Rx - c.r + 6, c.Ry] : [c.Rx + c.r - 6, c.Ry]; } };
     var cue = K.cue(layer, cueO);
-    function cueShow(){ if(!G || !S.drawn) return; var c = S.drawn.cl, room = c.Rx - c.r - G.A.L; cueO.text = room > 300 ? 'Drag the car toward x = ' + S.P.a : 'Drag the car'; cueO.side = room > 190 ? 'left' : 'right'; if(cue.show()) draw(); }
+    function cueShow(){ if(!G || !S.drawn) return; var c = S.drawn.cl, room = c.Rx - c.r - G.A.L; cueO.text = room > 300 ? 'Drag the car toward x = ' + S.P.a : 'Drag the car'; cueO.side = room > 190 ? 'left' : 'right'; if(cue.show()){ draw(); draw(); draw(); } }
     function blockCue(){
+      S.cueBox = null;
+      var ch = hl.el.querySelector('.tk2-chip');
+      if(ch && ch.offsetWidth){ var cr = ch.getBoundingClientRect(), sr0 = scene.getBoundingClientRect(), k0 = layer.scale() || 1; boxes.push([(cr.left - sr0.left) / k0 - 3, (cr.top - sr0.top) / k0 - 3, (cr.right - sr0.left) / k0 + 3, (cr.bottom - sr0.top) / k0 + 3]); }
       var c = cue.active() && scene.querySelector('.tk2-cue'); if(!c) return;
       var r = c.getBoundingClientRect(), sr = scene.getBoundingClientRect(), k = layer.scale() || 1;
+      S.cueBox = [(r.left - sr.left) / k - 4, (r.top - sr.top) / k - 4, (r.right - sr.left) / k + 4, (r.bottom - sr.top) / k + 4];
       boxes.push([(r.left - sr.left) / k, (r.top - sr.top) / k, (r.right - sr.left) / k, (r.bottom - sr.top) / k]);
     }
     function hideCue(used){ if(cue.active()) cue.hide(used); }

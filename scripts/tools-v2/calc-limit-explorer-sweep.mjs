@@ -239,6 +239,8 @@ if (FIT) {
         const r = R(cues[0]), S = R(document.querySelector('.le2-scene')), out = [];
         if (r.left < S.left || r.right > S.right || r.top < S.top || r.bottom > S.bottom) out.push('the cue is clipped by the stage');
         [...document.querySelectorAll('.le2-dyn text.le2-lab, .le2-static .le2-ticks text, .le2 .tk2-tag, .le2-fill, .le2 .tk2-chip')].forEach(e => { const q = R(e); if (q.width && !(q.right <= r.left || q.left >= r.right || q.bottom <= r.top || q.top >= r.bottom)) out.push('the cue covers "' + e.textContent + '"'); });
+        // the first-time chip covers no label, tag or the Fill button either
+        const chip = document.querySelector('.le2 .tk2-chip'); if (chip && R(chip).width) { const c = R(chip); [...document.querySelectorAll('.le2-dyn text.le2-lab, .le2-static .le2-ticks text, .le2 .tk2-tag, .le2-fill')].forEach(e => { const q = R(e); if (q.width && !(q.right <= c.left || q.left >= c.right || q.bottom <= c.top || q.top >= c.bottom)) out.push('the chip covers "' + e.textContent + '"'); }); }
         return out; });
       checks += 3; states++;
       bad.forEach(x => fails.push(`${w} first visit: ${x}`));
