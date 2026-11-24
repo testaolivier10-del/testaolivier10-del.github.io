@@ -158,9 +158,10 @@ the picker, the stepper, the switch, Start over, Show me how.
   while the wedge catches up is 420 × (x̄ − tip) ÷ the scale's range degrees (at most 6), so it has the sign of the
   turning effect about the tip and is zero only with the tip under the mean; its size is a picture, not a physics
   model. The balance is said in "?".
-- Histogram bins hold their left edge, as before, except that the last bin stops at the scale's maximum and holds it
-  (recheck 1: a person at the maximum used to fall in a bin past the scale); the first starts at the minimum. Said in
-  "?"; the bin table in "?" reads "to" for that bin.
+- Histogram bins are all the same width and start at the scale's minimum: the knob offers only widths that split the
+  scale exactly (commute 0 to 70: 2, 5, 7, 10, 14 where they fit; quiz 10 to 50: 1, 2, 4, 5, 8, 10; pulse 45 to 95:
+  1, 2, 5, 10, default 5), and only those wide enough on that screen (22 px) for each bar's count. A bin holds its left
+  edge; the last bin also holds the scale's maximum. Said in "?" with the widths offered.
 - Open points: `docs/apstat-needs-author.md` "Data explorer v2".
 
 ## What was built
@@ -253,3 +254,16 @@ Checks: the kept sweep at all ten widths plus 375 x 667, one process each, light
 passed, 0 failed** (182 a width, 184 at 360 with its landings); frames **77 passed, 0 failed** (2,316 frames at 390 and
 1440, every one agreeing, no mark jump over 26 px); AP Stats tests 167 pass, content check 0 failing, `build-apstat`,
 `build-apcalc`, `build-apmacro --check`, `check-site`, `check-weight`. Shots: `/mnt/user-data/outputs/stat-data-explorer-v2/shots-r2/`.
+
+## Recheck 2 (2026-11-24): BLOCK on one thing, fixed
+1. **M1** Every bin is the same width: the bin knob now steps through the widths that split the scale exactly from its
+   minimum (and are at least 22 px on that screen, so every bar's count fits); the pulse default is 5 (was 4); the last
+   bin also holds the maximum. "?" names the widths offered. The sweep checks every bar is one bin width wide, that the
+   width divides the scale, and that the counts shown on the bars add up to the people; it walks every offered width
+   on every data set with people at the maximum.
+Should fix: portrait tablets cap the picture at 0.85 of the width (820 x 1180: 697 px); a long slide's speed is set to
+land in about 260 ms plus its easing (about 450 ms); the 375 x 667 histogram band is 74 px.
+Checks: the kept sweep at all ten widths plus 375 x 667, one process each, light and dark (dark asserted), **2,572
+passed, 0 failed** (more states now: every offered bin width on every data set); frames **77 passed, 0 failed** (2,291
+frames at 390 and 1440); AP Stats tests 167 pass, content check 0 failing, `build-apstat`, `build-apcalc`,
+`build-apmacro --check`, `check-site`, `check-weight`. Shots: `/mnt/user-data/outputs/stat-data-explorer-v2/shots-r3/`.

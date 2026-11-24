@@ -204,6 +204,6 @@ From `docs/apstat-reviews/tools.md`. Every drill key passed an independent SciPy
   `tools-review` above); Explore no longer says the shape in the cause line. (3) New people added with "+" land
   between Q1 − IQR/2 and Q3 + IQR/2 (a golden ratio fraction of that span); the old tool put them just above or below the
   median. Either way they are made up values, not data; confirm students will not read them as part of the data set
-  (Start over restores it). (5) The histogram's last bin stops at the scale's maximum and holds it (bins otherwise hold their left edge), so a
-  value at the maximum is counted on the board; "?" says so. Confirm. (4) The quartile note in "?" says a TI-84's 1-Var Stats uses the same rule as the course
+  (Start over restores it). (5) The histogram offers only bin widths that split each data set's scale into equal bins (pulse rates now default to
+  bins of 5 on 45 to 95); a bin holds its left edge and the last also holds the maximum. Confirm. (4) The quartile note in "?" says a TI-84's 1-Var Stats uses the same rule as the course
   and that some software interpolates; confirm the wording.

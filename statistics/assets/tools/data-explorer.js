@@ -336,7 +336,7 @@
         g.signY = pad + 2; g.signH = g.phone ? (H < 380 ? 20 : 22) : cpt ? 24 : 26;
         g.stackTop = g.signY + g.signH + (g.phone ? (H < 380 ? 22 : 32) : cpt ? 30 : 40);
         g.boxH = g.phone ? (H < 380 ? 48 : 66) : cpt ? 70 : H < 560 ? 88 : 100;
-        var hh = g.phone ? (H < 380 ? 64 : clamp(Math.round(H * 0.2), 64, 100)) : W < 1000 ? clamp(Math.round(H * 0.16), 80, 120) : clamp(Math.round(H * 0.22), 78, 150);
+        var hh = g.phone ? (H < 380 ? 74 : clamp(Math.round(H * 0.2), 64, 100)) : W < 1000 ? clamp(Math.round(H * 0.16), 80, 120) : clamp(Math.round(H * 0.22), 78, 150);
         g.PY = H - pad - 4 - hh - 6 - g.boxH - 6 - g.pt;
         g.boxTop = g.PY + g.pt + 6;
         g.histTop = g.boxTop + g.boxH + 6; g.histBot = H - pad - 4;
@@ -456,7 +456,7 @@
     function chase(k, target, dt, tau, eps){
       var v = Dr[k], upp = (hi - lo) / (G.r - G.l);
       // a new target: the speed cap is 1.2 px a millisecond, or faster when the slide is long, so it lands within about 450 ms
-      if(TG[k] !== target){ VS[k] = Math.max(1.2, v == null ? 1.2 : Math.abs(target - v) / upp / 380); }
+      if(TG[k] !== target){ VS[k] = Math.max(1.2, v == null ? 1.2 : Math.abs(target - v) / upp / 260); }
       TG[k] = target;
       if(v == null || calm()){ Dr[k] = target; return; }
       var d = (target - v) * (1 - Math.exp(-dt / tau)), cap = (VS[k] || 1.2) * dt * upp;
@@ -646,11 +646,11 @@
       paintHist(s);
     }
     var bars = [], barLabs = [];
-    /* the histogram's bins on the picture's scale: bins hold their left edge, except that the last bin stops at the
-       scale's maximum and holds it (so nothing falls past the end of the scale); the first starts at the minimum */
+    /* the histogram's bins on the picture's scale: equal widths from the scale's minimum (the widths offered divide the
+       scale exactly); each bin holds its left edge, and the last bin also holds the scale's maximum */
     function hbins(xs, w){
-      var start = X.binStart(lo, w), nb = Math.max(1, Math.ceil((hi - start) / w - 1e-9)), counts = [], edges = [];
-      for(var j = 0; j < nb; j++){ counts.push(0); edges.push([Math.max(lo, M.round(start + j * w, 6)), Math.min(hi, M.round(start + (j + 1) * w, 6))]); }
+      var start = lo, nb = Math.max(1, Math.round((hi - lo) / w)), counts = [], edges = [];
+      for(var j = 0; j < nb; j++){ counts.push(0); edges.push([M.round(start + j * w, 6), M.round(start + (j + 1) * w, 6)]); }
       xs.forEach(function(v){ var j = v >= hi - 1e-9 ? nb - 1 : Math.floor((v - start) / w + 1e-9); if(j >= 0 && j < nb) counts[j]++; });
       return { counts: counts, edges: edges };
     }
@@ -853,7 +853,7 @@
         else { p.st = 'go'; p.t0 = now(); }
       });
       for(var i = c.length; i < vals.length; i++) S.P.push(person(vals[i], !calm()));
-      S.change = null; S.take = null; S.sel = false; S.fresh = true; S.bin = S.set.bin; binKnob.value(S.bin);
+      S.change = null; S.take = null; S.sel = false; S.fresh = true; S.bin = nearestW(S.set.bin); binKnob.value(WID.indexOf(S.bin));
       if(calm()){ fade(); step(now(), 16); }
       S.cur = farthestByValue(); handle.value(S.cur.v);
       if(calm()){ paint(); settled(); } else kick();
@@ -896,10 +896,23 @@
     }
     var binKnob = null;
     function binTrack(){ var w = G.phone ? 96 : 150, y = G.histTop + (G.H < 380 ? 10 : G.phone ? 13 : 16); return [G.r - w, y, G.r - 8, y]; }
+    /* The bin widths offered: only widths that tile the scale exactly from its minimum (every bin the same width, so
+       bar areas compare honestly, as AP® Statistics draws them), and wide enough on this screen for each bar's count. */
+    var WID = [];
+    function widths(){
+      var span = hi - lo, out = [], px = G ? (G.r - G.l) / span : 99;
+      for(var w = S.set.binMin; w <= S.set.binMax + 1e-9; w = M.round(w + S.set.binStep, 6)){
+        var k = span / w; if(Math.abs(k - Math.round(k)) < 1e-9 && w * px >= 22) out.push(w);
+      }
+      if(!out.length){ for(var w2 = S.set.binMax; w2 >= S.set.binMin; w2 = M.round(w2 - S.set.binStep, 6)){ var k2 = span / w2; if(Math.abs(k2 - Math.round(k2)) < 1e-9){ out.push(w2); break; } } }
+      return out.length ? out : [span];
+    }
+    function nearestW(v){ var b = WID[0]; WID.forEach(function(w){ if(Math.abs(w - v) < Math.abs(b - v) - 1e-9) b = w; }); return b; }
     function makeBin(){
-      binKnob = K.drag(layer, { key: null, label: 'Histogram bin width', min: S.set.binMin, max: S.set.binMax, step: S.set.binStep, value: S.bin, quiet: true, track: G ? binTrack() : [0, 0, 10, 0],
-        valuetext: function(v){ return 'bins of ' + num(v, 2) + ' ' + S.set.unit; },
-        onInput: function(v){ S.bin = v; hideCue(true); S.change = null; S.take = null; fade(); paint(); settled(); } });
+      WID = widths(); S.bin = nearestW(S.bin);
+      binKnob = K.drag(layer, { key: null, label: 'Histogram bin width', min: 0, max: Math.max(1, WID.length - 1), step: 1, value: WID.indexOf(S.bin), quiet: true, track: G ? binTrack() : [0, 0, 10, 0],
+        valuetext: function(i){ return 'bins of ' + num(WID[Math.min(i, WID.length - 1)], 2) + ' ' + S.set.unit; },
+        onInput: function(i){ S.bin = WID[Math.min(i, WID.length - 1)]; hideCue(true); S.change = null; S.take = null; fade(); paint(); settled(); } });
       binKnob.el.classList.add('dx2-binknob');
       binKnob.hide(S.tab !== 'box');
     }
@@ -944,6 +957,7 @@
       drawBack();
       pwD = null; fitPw();
       levels(); S.P.forEach(function(p){ p.lv = p.lt; });
+      if(binKnob && widths().join() !== WID.join()){ binKnob.el.remove(); makeBin(); }
       placeControls();
       paint();
       if(busy()) kick();
@@ -955,7 +969,8 @@
       // phones: the picture, its knob and the cause line together on the first screen (the quiet buttons may sit below)
       var below = vw < 600 ? (cause.el.offsetHeight || 70) + 12 : lines.offsetHeight || 120;
       var hh = Math.round(vh - (vw < 600 ? top : Math.min(top, vh * 0.34)) - below - 16);
-      sceneBox.style.height = clamp(hh, vw < 600 ? (vh < 700 ? 300 : vh < 800 ? 360 : 400) : 520, vw < 600 ? 720 : 900) + 'px';
+      // portrait tablets: no taller than about 0.85 of the width, so the picture does not become mostly sky
+      sceneBox.style.height = clamp(hh, vw < 600 ? (vh < 700 ? 300 : vh < 800 ? 360 : 400) : 520, vw < 600 ? 720 : Math.min(900, Math.round(vw * 0.85))) + 'px';
     }
     var roT = 0;
     function onResize(){ clearTimeout(roT); roT = setTimeout(function(){ fitHeight(); relayout(); }, 40); }
@@ -975,7 +990,7 @@
       h += '<h3>Outliers: the 1.5 × IQR rule</h3><p>A value is an outlier when it is below Q1 − 1.5 × IQR = ' + esc(num(s.fences[0], 2)) + ' or above Q3 + 1.5 × IQR = ' + esc(num(s.fences[1], 2)) + ' (the fence posts). Here: ' + esc(outs) + '. The whiskers (the ropes) end at the most extreme values inside the fences (' + esc(num(s.whiskers[0], 2)) + ' and ' + esc(num(s.whiskers[1], 2)) + '); each outlier is its own dot.</p>';
       h += '<h3>Shape</h3><p>These ' + esc(S.set.what) + 's look ' + esc(s.shape.word) + '. In a skewed distribution the mean is pulled toward the long tail, away from the median. ' + esc(X.SHAPE_RULE) + ' (Skewness here: ' + esc(fx(s.g, 2)) + '.) A boxplot cannot show gaps or how many peaks there are: the people and the histogram can.</p>';
       h += '<h3>z-scores</h3><p>Tap a person to read their z-score, z = (value − mean) ÷ SD: how many standard deviations above (+) or below (−) the mean they are.</p>';
-      h += '<h3>Bins</h3><p>The histogram counts the people in each bin of ' + esc(num(S.bin, 2)) + ' ' + esc(u) + ' (a bin holds its left edge, not its right; the last bin stops at the scale’s end, ' + esc(num(hi, 2)) + ', and holds it, so it can be narrower than the others). Wide bins hide detail; narrow bins look ragged. Drag the small knob on the histogram to change them.</p>';
+      h += '<h3>Bins</h3><p>The histogram counts the people in each bin of ' + esc(num(S.bin, 2)) + ' ' + esc(u) + ' from ' + esc(num(lo, 2)) + ' to ' + esc(num(hi, 2)) + ', every bin the same width (a bin holds its left edge, not its right; the last bin also holds ' + esc(num(hi, 2)) + '). Wide bins hide detail; narrow bins look ragged. Drag the small knob on the histogram to change them: it offers the widths that split the scale into equal bins (here ' + esc(WID.map(function(w){ return num(w, 2); }).join(', ')) + ' ' + esc(u) + ').</p>';
       h += '<h3>Every summary, from the people</h3><div class="table-wrap" tabindex="0" role="region" aria-label="Summary statistics"><table class="ls-tbl dx-tbl"><tbody>' +
         [['n', String(s.n)], ['Mean, x̄', fx(s.mean, 2)], ['Standard deviation, s', fx(s.sd, 2)], ['Minimum', num(s.min, 2)], ['Q1', num(s.q1, 2)], ['Median', num(s.med, 2)], ['Q3', num(s.q3, 2)], ['Maximum', num(s.max, 2)], ['Range', num(s.range, 2)], ['IQR', num(s.iqr, 2)], ['Fences', num(s.fences[0], 2) + ' and ' + num(s.fences[1], 2)], ['Outliers', s.outliers.length ? s.outliers.map(function(v){ return num(v, 2); }).join(', ') : 'none']]
           .map(function(r){ return '<tr><th scope="row">' + r[0] + '</th><td class="r">' + esc(r[1]) + '</td></tr>'; }).join('') + '</tbody></table></div>';
@@ -1027,7 +1042,7 @@
         levelH: function(){ return levelH; }, sc: function(){ return sc; }, knobAt: knobAt, rot: rot,
         move: function(p, v){ S.cur = p; handle.value(p.v); begin(); handle.value(v, true); },
         select: function(p){ setCur(p, true); S.change = null; paint(); settled(); },
-        bin: function(v){ binKnob.value(v, true); }, finish: function(){ finishAll(); }, relayout: relayout,
+        bin: function(v){ binKnob.value(WID.indexOf(nearestW(v)), true); }, widths: function(){ return WID.slice(); }, finish: function(){ finishAll(); }, relayout: relayout,
         kmode: function(m){ var b = document.querySelector('.bt-mode[data-m="' + m + '"]'); if(b) b.click(); } }
     };
   }

@@ -189,10 +189,13 @@ const AGREE = () => {
     // the histogram
     const bt = document.querySelector('.dx2-htitle').textContent + ' ' + document.querySelector('.dx2-binl').textContent, B = nums(bt)[0];
     // the tool's bins: left edge in, but the last bin stops at the scale's maximum and holds it
-    const start = MX.binStart(lo, B), nbin = Math.max(1, Math.ceil((hi - start) / B - 1e-9)), H = { counts: new Array(nbin).fill(0) };
+    if (Math.abs((hi - lo) / B - Math.round((hi - lo) / B)) > 1e-9) out.push(`bins of ${B} do not split the scale ${lo} to ${hi} into equal bins`);
+    const start = lo, nbin = Math.max(1, Math.round((hi - lo) / B)), H = { counts: new Array(nbin).fill(0) };
     vals.forEach(v => { const j = v >= hi - 1e-9 ? nbin - 1 : Math.floor((v - start) / B + 1e-9); if (j >= 0 && j < nbin) H.counts[j]++; });
     const bars = [...document.querySelectorAll('.dx2-bar')].filter(e => e.style.display !== 'none');
-    bars.forEach(b => { const x0 = +b.getAttribute('x'), x1 = x0 + +b.getAttribute('width'); if (x0 < G.l - 1 || x1 > G.r + 1) out.push(`a bar runs past the scale (${x0.toFixed(1)} to ${x1.toFixed(1)})`); });
+    bars.forEach(b => { const x0 = +b.getAttribute('x'), wd = +b.getAttribute('width'), x1 = x0 + wd; if (x0 < G.l - 1 || x1 > G.r + 1) out.push(`a bar runs past the scale (${x0.toFixed(1)} to ${x1.toFixed(1)})`); if (Math.abs(wd + 1.2 - B / upp) > 0.25) out.push(`a bar ${(wd + 1.2).toFixed(1)} px wide, not the bin width ${(B / upp).toFixed(1)} px`); });
+    // every bar's count is written on it, and the counts add up to the people
+    if (!busy) { const labs = [...document.querySelectorAll('.dx2-blab')].filter(e => e.style.display !== 'none').map(e => +e.textContent); const sum = labs.reduce((a, c) => a + c, 0); if (labs.length !== bars.length || sum !== vals.length) out.push(`bar counts shown ${labs.length} of ${bars.length}, adding to ${sum} for ${vals.length} people`); }
     const nz = H.counts.filter(c => c > 0);
     if (bars.length !== nz.length) out.push(`${bars.length} bars vs ${nz.length} bins with people`);
     else { const mx = Math.max(...H.counts), hmx = Math.max(...bars.map(b => +b.getAttribute('height'))); bars.forEach((b, i) => { const want = nz[i] / mx * hmx; if (Math.abs(+b.getAttribute('height') - want) > 0.6) out.push(`bar ${i} height vs its count ${nz[i]}`); }); }
@@ -341,8 +344,9 @@ if (ONE) {
       await X((i) => { const X = window.ApStatDataExplorer; X.setSet(i); X.setTab('box'); }, i);
       await X(() => { const X = window.ApStatDataExplorer; X.move(X.S.cur, X.hi()); X.move(X.S.P[2], X.hi()); });
       await check(`18b-set${i}-at-max`);
-      await X(() => { const X = window.ApStatDataExplorer, s = X.S.set; let b = s.binMax; for (let v = s.binMax; v >= s.binMin; v -= s.binStep) if (((X.hi() - X.lo()) / v) % 1 > 0.01) { b = v; break; } X.bin(b); });
-      await check(`18c-set${i}-at-max-odd-bins`);
+      // every bin width the knob offers, each splitting the scale into equal bins
+      const ws = await X(() => window.ApStatDataExplorer.widths());
+      for (const b of ws) { await X((b) => window.ApStatDataExplorer.bin(b), b); await check(`18c-set${i}-at-max-bins-${b}`); }
     }
     await X(() => { const X = window.ApStatDataExplorer; X.setSet(0); X.setTab('box'); });
     // Test yourself: the drill and its figure
