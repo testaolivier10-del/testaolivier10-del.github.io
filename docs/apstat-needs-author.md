@@ -186,3 +186,13 @@ From `docs/apstat-reviews/tools.md`. Every drill key passed an independent SciPy
   and "?" names the other form (each unit gets both treatments). (5) When the researcher picks who gets caffeine,
   the researcher knows, so that study is at best single blind (the volunteers can still be kept from knowing); "?"
   says so for that design.
+- **Data explorer v2 (`data-explorer-v2`, 2026-11-24, `docs/tools-v2-stat-data-explorer-brief.md`).** (1) The mean is
+  shown as the balance point of a plank resting on a wedge; the plank is treated as weightless ("?" says so), so the
+  people alone decide the balance, and while the wedge catches up the plank tips by an amount proportional to
+  n(x̄ − tip). A real seesaw's own weight would move its balance point; confirm the idealization is acceptable as
+  stated. (2) The shape word in "?" still comes from the stated skewness rule of thumb (`SHAPE_RULE`, see
+  `tools-review` above); Explore no longer says the shape in the cause line. (3) New people added with "+" land
+  inside the middle half (Q1 plus a golden ratio fraction of the IQR); the old tool put them just above or below the
+  median. Either way they are made up values, not data; confirm students will not read them as part of the data set
+  (Start over restores it). (4) The quartile note in "?" says a TI-84's 1-Var Stats uses the same rule as the course
+  and that some software interpolates; confirm the wording.

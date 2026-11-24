@@ -236,14 +236,16 @@
   /* a number as the picture writes it: at most d decimals, no trailing zeros, a real minus sign */
   function num(v, d){ var s = String(+(+v).toFixed(d == null ? 2 : d)); if(s === '-0') s = '0'; return s.charAt(0) === '-' ? '−' + s.slice(1) : s; }
   function one(v){ return fx(v, 1); }
+  /* a fence as its sign writes it: an outlier is judged against the number shown */
+  function r2(v){ return Math.round(v * 100) / 100; }
   function plural(n, a, b){ return n + ' ' + (n === 1 ? a : b); }
 
   function explore(host, data){
     var K = window.LevlKit2, E = data.explore || {};
     var SETS = (E.datasets || []).filter(function(d){ return d.values && d.values.length > 2; });
     var S = { tab: 'mean', set: SETS[0], P: [], cur: null, sel: false, sd: false, bin: SETS[0].bin, mode: 'explore', change: null, took: {}, take: null, fresh: true };
-    var uid = 0, raf = 0, tLast = 0;
-    var MOVE = 240, COME = 520, GO = 420, TAU_D = 70, TAU_F = 170;
+    var uid = 0, raf = 0, tLast = 0, adds = 0;
+    var MOVE = 240, COME = 520, GO = 420, TAU_D = 70, TAU_F = 260;
     function calm(){ return K.reduced() || !window.requestAnimationFrame; }
     function st(){ return S.set.step || 1; }
     function snap(v){ var s = st(); return clamp(M.round(Math.round(v / s) * s, 6), S.set.x[0], S.set.x[1]); }
@@ -302,7 +304,8 @@
       return p;
     }
     function counted(){ return S.P.filter(function(p){ return p.st === 'in'; }); }
-    function dval(p){ return snap(p.d); }
+    /* a person's value is read from where they are drawn (the picture's x to 0.1 px, as written), to the data's step */
+    function dval(p){ return G ? snap(vx(+xv(p.d).toFixed(1))) : snap(p.d); }
     /* the summaries of the people as drawn (each counted person's drawn place, to the data's step) */
     function drawnStats(){
       var c = counted(), xs = c.map(dval);
@@ -330,9 +333,9 @@
       } else {
         g.signY = pad + 2; g.signH = g.phone ? 22 : 26;
         var avail = H - 2 * pad - g.signH;
-        g.PY = g.signY + g.signH + Math.round(avail * (g.phone ? 0.40 : H < 560 ? 0.36 : 0.42));
+        g.PY = g.signY + g.signH + Math.round(avail * (H < 380 ? 0.36 : g.phone ? 0.40 : H < 560 ? 0.36 : 0.42));
         g.stackTop = g.signY + g.signH + 40;
-        g.boxTop = g.PY + g.pt + 6; g.boxH = g.phone ? 82 : H < 560 ? 88 : 100;
+        g.boxTop = g.PY + g.pt + 6; g.boxH = H < 380 ? 66 : g.phone ? 82 : H < 560 ? 88 : 100;
         g.histTop = g.boxTop + g.boxH + 6; g.histBot = H - pad - 4;
       }
       return g;
@@ -356,9 +359,6 @@
       // far hills, a soft line of trees
       var hy = S.tab === 'mean' ? G.groundY - (G.phone ? 70 : 110) : G.PY - (G.phone ? 46 : 70);
       mk('path', 'dx2-hill', { d: 'M0 ' + (hy + 30) + ' Q ' + W * 0.2 + ' ' + (hy - 10) + ' ' + W * 0.42 + ' ' + (hy + 18) + ' T ' + W * 0.8 + ' ' + (hy + 6) + ' T ' + W + ' ' + (hy + 20) + ' V ' + H + ' H 0 Z' }, gBack);
-      // a few far trees on the hill line (small and pale, so they never read as people)
-      for(var i = 0; i < 5; i++){ var tx = W * (0.1 + i * 0.2) + (hash(i, 9) % 40) - 20, tr = (G.phone ? 7 : 10) + hash(i, 5) % 4, ty = hy + 4 - (hash(i, 4) % 8);
-        mk('rect', 'dx2-trunk', { x: tx - 1.5, y: ty, width: 3, height: tr * 1.3 }, gBack); mk('ellipse', 'dx2-tree', { cx: tx, cy: ty - tr * 0.4, rx: tr * 0.8, ry: tr * 1.15 }, gBack); }
       if(S.tab === 'mean'){
         mk('rect', 'dx2-grass', { x: 0, y: G.groundY, width: W, height: H - G.groundY }, gBack);
         mk('rect', 'dx2-grass-hi', { x: 0, y: G.groundY, width: W, height: 3 }, gBack);
@@ -450,7 +450,7 @@
         chase('med', s.med, dt, TAU_D, eps);
         Dr.sdA = c ? (S.sd ? 1 : 0) : Dr.sdA + ((S.sd ? 1 : 0) - Dr.sdA) * (1 - Math.exp(-dt / 90)); if(Math.abs(Dr.sdA - (S.sd ? 1 : 0)) < 0.01) Dr.sdA = S.sd ? 1 : 0;
         // the plank tips toward the side the mean has moved to, until the wedge is under it again (torque about the tip ∝ n(mean − tip))
-        Dr.th = clamp(70 * (s.mean - Dr.f) / (hi - lo), -7, 7); if(Math.abs(Dr.th) < 0.01) Dr.th = 0;
+        Dr.th = clamp(420 * (s.mean - Dr.f) / (hi - lo), -6, 6); if(Math.abs(Dr.th) < 0.01) Dr.th = 0;
       } else {
         Dr.th = 0;
         chase('med', s.med, dt, TAU_D, eps); chase('q1', s.q1, dt, TAU_D, eps); chase('q3', s.q3, dt, TAU_D, eps);
@@ -480,7 +480,7 @@
         var f = [xv(p.d), G.PY - p.lv * levelH], dy = p.st === 'come' ? -(1 - easeOut(p.a)) * 36 : p.st === 'go' ? -(1 - p.a) * 30 : 0;
         p.el.setAttribute('transform', 'translate(' + f[0].toFixed(1) + ' ' + (f[1] + dy).toFixed(1) + ') scale(' + sc.toFixed(3) + ')');
         var o = p.a < 1 ? p.a.toFixed(2) : ''; if(p.el.style.opacity !== o) p.el.style.opacity = o;
-        var isSel = p === S.cur && (S.sel || drag), isOut = S.tab === 'box' && s && p.st === 'in' && (dval(p) < Dr.f0 - 1e-9 || dval(p) > Dr.f1 + 1e-9);
+        var isSel = p === S.cur && (S.sel || drag), isOut = S.tab === 'box' && s && p.st === 'in' && (dval(p) < r2(Dr.f0) - 1e-9 || dval(p) > r2(Dr.f1) + 1e-9);
         p.out = isOut;
         var cls = 'dx2-p sk' + (hash(p.id, 1) % 4) + ' sh' + (hash(p.id, 2) % 6) + ' hr' + (hash(p.id, 3) % 4) + (isSel ? ' is-sel' : '') + (isOut ? ' is-out' : '');
         if(p.el.getAttribute('class') !== cls) p.el.setAttribute('class', cls);
@@ -535,17 +535,27 @@
       gTilt.setAttribute('transform', '');
       var W = G.W, fs = G.phone ? 12 : 13.5;
       // fence posts (at the fences as drawn), each with its sign; off the scale: a sign at that edge with an arrow
+      var signs = [];
       [0, 1].forEach(function(k){
         var f = k ? Dr.f1 : Dr.f0, inside = f >= lo && f <= hi, x = xv(clamp(f, lo, hi));
         var post = LB['post' + k] || (LB['post' + k] = mk('rect', 'dx2-post', null, gPosts));
-        if(inside){ showEl(post); at(post, { x: x - 2.5, y: G.signY + G.signH - 2, width: 5, height: G.boxTop + G.boxH * 0.86 - (G.signY + G.signH - 2), rx: 2 }); } else hideEl(post);
+        if(inside){ showEl(post); at(post, { x: x - 2.5, y: G.signY + G.signH - 2, width: 5, height: G.PY + 1 - (G.signY + G.signH - 2), rx: 2 }); } else hideEl(post);
         var t = inside ? 'fence ' + num(f, 2) : (k ? 'fence ' + num(f, 2) + ' →' : '← fence ' + num(f, 2));
         var w = tw(t, fs, 800) + 14, anchor = 'middle', px = x;
         if(!inside){ anchor = k ? 'end' : 'start'; px = k ? W - G.pad - 2 : G.pad + 2; }
         else if(x - w / 2 < G.pad + 2){ anchor = 'start'; px = G.pad + 2; }
         else if(x + w / 2 > W - G.pad - 2){ anchor = 'end'; px = W - G.pad - 2; }
-        var sg = pill('sign' + k, gPosts, 'dx2-sign'); setPill(sg, px, G.signY + G.signH / 2, t, fs, anchor, 7);
+        signs[k] = { t: t, w: w, x: px, anchor: anchor, post: x, inside: inside };
       });
+      // two signs that would touch: each slides to the outer side of its post (the lower to the left, the upper to the right)
+      var bx = function(q){ return q.anchor === 'end' ? [q.x - q.w, q.x] : q.anchor === 'start' ? [q.x, q.x + q.w] : [q.x - q.w / 2, q.x + q.w / 2]; };
+      if(bx(signs[0])[1] + 6 > bx(signs[1])[0]){
+        if(signs[0].inside){ signs[0].anchor = 'end'; signs[0].x = Math.max(G.pad + 2 + signs[0].w, signs[0].post + 10); }
+        if(signs[1].inside){ signs[1].anchor = 'start'; signs[1].x = Math.min(W - G.pad - 2 - signs[1].w, signs[1].post - 10); }
+        var a0 = bx(signs[0]), a1 = bx(signs[1]);
+        if(a0[1] + 6 > a1[0]){ var mid = (a0[0] + a1[1]) / 2, need = signs[0].w + signs[1].w + 6, l0 = clamp(mid - need / 2, G.pad + 2, W - G.pad - 2 - need); signs[0].anchor = 'start'; signs[0].x = l0; signs[1].anchor = 'start'; signs[1].x = l0 + signs[0].w + 6; }
+      }
+      [0, 1].forEach(function(k){ var q = signs[k], sg = pill('sign' + k, gPosts, 'dx2-sign'); setPill(sg, q.x, G.signY + G.signH / 2, q.t, fs, q.anchor, 7); });
       // the two signs never sit on each other (a narrow box): the upper one moves to the right
       // (they are at opposite ends of the box, so this only happens when both are off one edge, which cannot be)
       // the crate (box) from Q1 to Q3, the median slat, whisker ropes to stakes, outlier dots
@@ -580,13 +590,18 @@
       var groups = []; outs.slice().sort(function(a, b){ return a - b; }).forEach(function(v){ var x = xv(v), g = groups[groups.length - 1]; if(g && x - g.x1 < 46 && (v > Dr.med) === g.hi) { g.x1 = x; g.n++; } else groups.push({ x0: x, x1: x, n: 1, hi: v > Dr.med }); });
       var ol = LB.ol || (LB.ol = []);
       while(ol.length < groups.length) ol.push(mk('text', 'dx2-olab', null, gBoxp));
+      var taken = [[clamp(xm, G.pad + wm / 2 + 2, W - G.pad - wm / 2 - 2) - wm / 2, yTop - fsQ, wm, fsQ + 2], [c1 - w1 / 2, yBot - fsQ, w1, fsQ + 2], [c3 - w3 / 2, yBot - fsQ, w3, fsQ + 2], [x1, cy - bh / 2, x3 - x1, bh]];
+      outs.forEach(function(v){ var r0 = G.phone ? 4.5 : 5.5; taken.push([xv(v) - r0, cy - r0, 2 * r0, 2 * r0]); });
+      var free = function(b){ return b[0] >= G.pad && b[0] + b[2] <= W - G.pad && !taken.some(function(q){ return b[0] < q[0] + q[2] + 5 && q[0] < b[0] + b[2] + 5 && b[1] < q[1] + q[3] + 2 && q[1] < b[1] + b[3] + 2; }); };
       ol.forEach(function(e, i){
         var g = groups[i]; if(!g){ hideEl(e); return; }
-        var t = g.n > 1 ? 'outliers' : 'outlier', w = tw(t, fsQ, 800), x = g.hi ? g.x1 + 9 : g.x0 - 9, anchor = g.hi ? 'start' : 'end';
-        if(g.hi && x + w > W - G.pad){ x = (g.x0 + g.x1) / 2; anchor = 'middle'; }
-        if(!g.hi && x - w < G.pad){ x = (g.x0 + g.x1) / 2; anchor = 'middle'; }
-        var y = anchor === 'middle' ? yTop : cy + fsQ * 0.36;
-        showEl(e); at(e, { x: anchor === 'middle' ? clamp(x, G.pad + w / 2, W - G.pad - w / 2) : x, y: y, 'text-anchor': anchor, style: 'font-size:' + fsQ + 'px' }); txt(e, t);
+        var t = g.n > 1 ? 'outliers' : 'outlier', w = tw(t, fsQ, 800), xc = (g.x0 + g.x1) / 2, h = fsQ + 2;
+        var tries = g.hi ? [[g.x1 + 9, cy - h / 2], [xc - w / 2, yTop - fsQ], [xc - w / 2, yBot - fsQ], [g.x0 - 9 - w, cy - h / 2]] : [[g.x0 - 9 - w, cy - h / 2], [xc - w / 2, yTop - fsQ], [xc - w / 2, yBot - fsQ], [g.x1 + 9, cy - h / 2]];
+        var pick = null;
+        tries.some(function(c){ var b = [clamp(c[0], G.pad, W - G.pad - w), c[1], w, h]; if(free(b)){ pick = b; return true; } return false; });
+        if(!pick){ hideEl(e); return; }
+        taken.push(pick);
+        showEl(e); at(e, { x: pick[0], y: pick[1] + fsQ * 0.86, 'text-anchor': 'start', style: 'font-size:' + fsQ + 'px' }); txt(e, t);
       });
       paintHist(s);
     }
@@ -601,10 +616,11 @@
         if(j >= B.counts.length || !c){ hideEl(r); hideEl(lb); return; }
         var a = B.edges[j][0], b = Math.min(B.edges[j][1], hi + S.bin), x0 = xv(a), x1 = xv(b), h = c / mx * (base - top - fs - 4), y = base - h;
         showEl(r); at(r, { x: x0 + 0.6, y: y, width: Math.max(0.6, x1 - x0 - 1.2), height: h, rx: 2 });
-        if(x1 - x0 >= tw(String(c), fs, 800) + 2){ showEl(lb); at(lb, { x: (x0 + x1) / 2, y: y - 4, 'text-anchor': 'middle', style: 'font-size:' + fs + 'px' }); txt(lb, String(c)); } else hideEl(lb);
+        if(x1 - x0 >= tw(String(c), fs, 800) + 6){ showEl(lb); at(lb, { x: (x0 + x1) / 2, y: y - 4, 'text-anchor': 'middle', style: 'font-size:' + fs + 'px' }); txt(lb, String(c)); } else hideEl(lb);
       });
-      var bt = binTrack(), bl = lab('binL', 'dx2-binl', gHist); at(bl, { x: bt[0] - 12, y: bt[1] + 4, 'text-anchor': 'end', style: 'font-size:' + fs + 'px' }); txt(bl, 'bin width');
-      var t = lab('htitle', 'dx2-htitle', gHist), tt = (G.phone ? 'Histogram, bins of ' : 'Histogram, bins of ') + num(S.bin, 2) + ' ' + unit();
+      // phones: "Histogram" and the knob's own "bins of 5 min"; wider: the title names the bins, the knob says "bin width"
+      var bt = binTrack(), bl = lab('binL', 'dx2-binl', gHist); at(bl, { x: bt[0] - 12, y: bt[1] + 4, 'text-anchor': 'end', style: 'font-size:' + fs + 'px' }); txt(bl, G.phone ? 'bins of ' + num(S.bin, 2) + ' ' + unit() : 'bin width');
+      var t = lab('htitle', 'dx2-htitle', gHist), tt = G.phone ? 'Histogram' : 'Histogram, bins of ' + num(S.bin, 2) + ' ' + unit();
       at(t, { x: G.l - 4, y: G.histTop + (G.phone ? 17 : 20), style: 'font-size:' + (G.phone ? 12 : 13.5) + 'px' }); txt(t, tt);
     }
 
@@ -632,7 +648,7 @@
         }
       } else {
         var outs = S.P.filter(function(p){ return p.out; }).map(dval).sort(function(a, b){ return a - b; });
-        var f0 = Dr.f0, f1 = Dr.f1;
+        var f0 = r2(Dr.f0), f1 = r2(Dr.f1);
         var where = function(v){ return v > f1 + 1e-9 ? { t: num(v, 2) + ' > Q3 + 1.5 × IQR = ' + num(f1, 2), out: true } : v < f0 - 1e-9 ? { t: num(v, 2) + ' < Q1 − 1.5 × IQR = ' + num(f0, 2), out: true } : { t: 'inside ' + num(f0, 2) + ' to ' + num(f1, 2), out: false }; };
         if(cp && dval(cp) !== ch.v0){
           var w = where(dval(cp));
@@ -654,7 +670,7 @@
       var key = parts.map(function(x){ return x.t; }).join('|');
       if(key !== lastCause){ lastCause = key; cause.set(parts); }
       txt(nLab, G && G.phone ? 'n = ' + n : plural(n, noun(1), noun(n)));
-      bRm.disabled = n <= 5 || S.P.some(function(p){ return p.st === 'go'; }); bAdd.disabled = n >= 40;
+      bRm.disabled = n <= 5; bAdd.disabled = S.P.filter(function(p){ return p.st !== 'go'; }).length >= 40;
     }
     /* a change has settled: takeaways (once each), the reference, the live line */
     function settled(){
@@ -684,7 +700,7 @@
     var handle = null;
     function knobAt(){
       var p = S.cur; if(!p || !G || p.st === 'gone') return null;
-      var x = xv(p.d), y = colTop(p) - 17;
+      var x = xv(p.d), y = colTop(p) - 22;
       return rot([x, y]);
     }
     function makeHandle(){
@@ -696,7 +712,7 @@
           return snap(vx(q[0]));
         },
         valuetext: function(v){ var p = S.cur; if(!p) return ''; var s = drawnStats(), out = S.tab === 'box' && p.out; return num(v, 2) + ' ' + S.set.unit + (out ? ', an outlier' : '') + (s ? '; mean ' + one(s.mean) + ', median ' + num(s.med, 2) : ''); },
-        tag: function(v){ return (handle && handle.dragging() && press && press.moved) || keyed ? num(S.cur ? dval(S.cur) : v, 2) + ' ' + unit() : ''; },
+        tag: function(v){ return (handle && handle.dragging() && press && press.moved) || (keyed && S.cur && S.cur.tw) ? num(S.cur ? dval(S.cur) : v, 2) + ' ' + unit() : ''; },
         tagSide: function(){ var p = knobAt(); return p && p[0] > G.W / 2 ? 'left' : 'right'; },
         onStart: function(v){ begin(); },
         onInput: function(v){
@@ -714,6 +730,8 @@
           if(!busy()) settled(); else kick();
         } });
       handle.knob.addEventListener('blur', function(){ keyed = false; handle.place(); });
+      // Delete or Backspace on the knob takes that person away (as the old tool's keys did)
+      handle.knob.addEventListener('keydown', function(e){ if(e.key === 'Delete' || e.key === 'Backspace'){ e.preventDefault(); S.sel = true; remove(); } });
     }
     var keyed = false, wasSel = false, sameP = false;
     function begin(){
@@ -748,6 +766,7 @@
       if(e.key === 'ArrowRight' || e.key === 'ArrowUp'){ e.preventDefault(); hideCue(true); setCur(arr[Math.min(arr.length - 1, i + 1)] || arr[0], true); S.change = null; paint(); settled(); say(cause.text()); }
       else if(e.key === 'ArrowLeft' || e.key === 'ArrowDown'){ e.preventDefault(); hideCue(true); setCur(arr[Math.max(0, i - 1)] || arr[0], true); S.change = null; paint(); settled(); say(cause.text()); }
       else if(e.key === 'Escape'){ S.sel = false; S.change = null; paint(); settled(); }
+      else if((e.key === 'Delete' || e.key === 'Backspace') && S.sel){ e.preventDefault(); remove(); }
     });
 
     /* ---------------------------------------------------- the quiet controls */
@@ -758,8 +777,9 @@
       return b;
     }
     function add(){
-      var s = drawnStats(); if(!s || s.n >= 40) return;
-      var v = snap(s.med + (s.n % 2 ? 1 : -1) * Math.max(st(), s.iqr / 3));
+      var s = drawnStats(), here = S.P.filter(function(p){ return p.st !== 'go'; }).length; if(!s || here >= 40) return;
+      // a new value inside the middle half, spread by the golden ratio so new people do not pile on one spot
+      adds++; var v = snap(s.q1 + ((adds * 0.6180339887) % 1) * Math.max(s.iqr, 2 * st()));
       var p = person(v, !calm()); S.P.push(p);
       S.change = null; S.take = null; S.fresh = false; S.cur = p; S.sel = false; handle.value(v);
       tourDid('count');
@@ -767,7 +787,7 @@
       say('Added ' + num(v, 2) + ' ' + S.set.unit + '.');
     }
     function remove(){
-      var s = drawnStats(); if(!s || s.n <= 5) return;
+      var s = drawnStats(); if(!s || counted().length <= 5) return;
       var c = counted(), p = S.sel && S.cur && S.cur.st === 'in' ? S.cur : c[c.length - 1];
       p.st = 'go'; p.t0 = now();
       S.change = null; S.take = null; S.fresh = false; S.sel = false;
@@ -847,13 +867,17 @@
     function tourDid(x){ if(tour.active()) tour.did(x); }
     function startTour(){ if(S.mode !== 'explore') return; hideCue(false); tour.start(true); }
 
-    bAdd.addEventListener('click', function(){ hideCue(true); add(); });
-    bRm.addEventListener('click', function(){ hideCue(true); remove(); });
-    bSD.addEventListener('click', function(){ hideCue(true); setSD(!S.sd); });
-    bReset.addEventListener('click', function(){ startOver(); });
+    bAdd.addEventListener('click', function(){ hideCue(true); scrollIn(); add(); });
+    bRm.addEventListener('click', function(){ hideCue(true); scrollIn(); remove(); });
+    bSD.addEventListener('click', function(){ hideCue(true); scrollIn(); setSD(!S.sd); });
+    bReset.addEventListener('click', function(){ scrollIn(); startOver(); });
     pick.addEventListener('change', function(){ setSet(+pick.value); });
 
     /* ---------------------------------------------------- layout and full redraws */
+    function scrollIn(){
+      var r = sceneBox.getBoundingClientRect();
+      if(r.top < 0) try{ sceneBox.scrollIntoView({ block: 'start', behavior: calm() ? 'auto' : 'smooth' }); }catch(e){}
+    }
     function fade(){ sceneBox.classList.remove('is-fade'); void sceneBox.offsetWidth; sceneBox.classList.add('is-fade'); }
     function placeControls(){
       pickBox.style.cssText = 'left:0;top:' + (G.stackTop - 24) + 'px;width:' + G.W + 'px;height:' + (G.PY + G.pt - G.stackTop + 24) + 'px';
@@ -877,9 +901,10 @@
       var vw = window.innerWidth || 1024, vh = window.innerHeight || 800;
       if(vw >= 1000){ sceneBox.style.height = ''; return; }
       var top = sceneBox.getBoundingClientRect().top + (window.scrollY || window.pageYOffset || 0);
-      var below = lines.offsetHeight || 120;
-      var hh = Math.round(vh - Math.min(top, vh * 0.34) - below - 16);
-      sceneBox.style.height = clamp(hh, vw < 600 ? (vh < 700 ? 330 : 400) : 520, vw < 600 ? 720 : 900) + 'px';
+      // phones: the picture, its knob and the cause line together on the first screen (the quiet buttons may sit below)
+      var below = vw < 600 ? (cause.el.offsetHeight || 70) + 12 : lines.offsetHeight || 120;
+      var hh = Math.round(vh - (vw < 600 ? top : Math.min(top, vh * 0.34)) - below - 16);
+      sceneBox.style.height = clamp(hh, vw < 600 ? (vh < 700 ? 300 : vh < 800 ? 360 : 400) : 520, vw < 600 ? 720 : 900) + 'px';
     }
     var roT = 0;
     function onResize(){ clearTimeout(roT); roT = setTimeout(function(){ fitHeight(); relayout(); }, 40); }
@@ -893,7 +918,7 @@
       var outs = s.outliers.length ? s.outliers.map(function(v){ return num(v, 2); }).join(', ') + ' ' + u : 'none';
       var h = '<p class="dx2-howref"><button type="button" class="tk2-how" data-how>Show me how</button> to use it, step by step.</p>';
       h += '<h3>What you are looking at</h3><p>' + esc(S.set.lead) + ' Each person stands at their value on a plank marked in ' + esc(u) + '; people with the same value stand on each other’s shoulders, like the dots of a dotplot.</p>';
-      h += '<h3>Mean and median</h3><p>The <b>mean</b> (' + esc(fx(s.mean, 2)) + ' ' + esc(u) + ') adds every value and divides by n = ' + s.n + '. It is the <b>balance point</b>: the plank balances only when the wedge is under it, because the distances to the values on the left and on the right add up the same (the deviations from the mean sum to 0). Move one value and the mean moves by that change divided by n, so one far value pulls it. The <b>median</b> (' + esc(num(s.med, 2)) + ') is the middle of the ordered values' + (s.n % 2 ? ' (the ' + ((s.n + 1) / 2) + 'th)' : ' (the mean of the ' + (s.n / 2) + 'th and ' + (s.n / 2 + 1) + 'th)') + ': it only moves when a value crosses the middle. The median is <b>resistant</b>; the mean is not.</p>';
+      h += '<h3>Mean and median</h3><p>The <b>mean</b> (' + esc(fx(s.mean, 2)) + ' ' + esc(u) + ') adds every value and divides by n = ' + s.n + '. It is the <b>balance point</b>: the plank (drawn as if it weighed nothing, so only the people count) balances only when the wedge is under it, because the distances to the values on the left and on the right add up the same (the deviations from the mean sum to 0). Move one value and the mean moves by that change divided by n, so one far value pulls it. The <b>median</b> (' + esc(num(s.med, 2)) + ') is the middle of the ordered values' + (s.n % 2 ? ' (the ' + ((s.n + 1) / 2) + 'th)' : ' (the mean of the ' + (s.n / 2) + 'th and ' + (s.n / 2 + 1) + 'th)') + ': it only moves when a value crosses the middle. The median is <b>resistant</b>; the mean is not.</p>';
       h += '<h3>Spread: SD and IQR</h3><p>The sample standard deviation s = ' + esc(fx(s.sd, 2)) + ' ' + esc(u) + ' (squared distances from the mean, divided by n − 1, then the square root) uses every value: not resistant. The IQR = Q3 − Q1 = ' + esc(num(s.q3, 2)) + ' − ' + esc(num(s.q1, 2)) + ' = ' + esc(num(s.iqr, 2)) + ' is the width of the box, the middle half: resistant. The ± 1 SD switch shades the mean ± one SD.</p>';
       h += '<h3>Quartiles, the way AP® Statistics finds them</h3><p>Order the values. Q1 is the median of the lower half and Q3 the median of the upper half; when n is odd the median itself is left out of both halves. This is also what a TI-84’s 1-Var Stats gives. Some software uses other rules and can give slightly different quartiles.</p>';
       h += '<h3>Outliers: the 1.5 × IQR rule</h3><p>A value is an outlier when it is below Q1 − 1.5 × IQR = ' + esc(num(s.fences[0], 2)) + ' or above Q3 + 1.5 × IQR = ' + esc(num(s.fences[1], 2)) + ' (the fence posts). Here: ' + esc(outs) + '. The whiskers (the ropes) end at the most extreme values inside the fences (' + esc(num(s.whiskers[0], 2)) + ' and ' + esc(num(s.whiskers[1], 2)) + '); each outlier is its own dot.</p>';
@@ -906,7 +931,7 @@
       h += '<h3>The values, in order</h3><p class="dx-vals">' + esc(srt.map(function(v){ return num(v, 2); }).join(', ')) + ' ' + esc(u) + '</p>';
       h += '<h3>Histogram counts</h3><div class="table-wrap" tabindex="0" role="region" aria-label="Histogram bin counts"><table class="ls-tbl dx-tbl"><thead><tr><th scope="col">Bin</th><th scope="col">Count</th></tr></thead><tbody>' +
         B.counts.map(function(c, j){ return '<tr><td>' + esc(num(B.edges[j][0], 2) + ' to under ' + num(B.edges[j][1], 2)) + '</td><td class="r">' + c + '</td></tr>'; }).join('') + '</tbody></table></div>';
-      h += '<h3>Keys</h3><p>Tab to the people, then the left and right arrows pick a person (their z-score or place against the fences shows under the picture); Tab again to the knob above them, whose arrows move them one ' + esc(S.set.unit.replace(/s$/, '')) + ' (Shift or Page Up and Down: ten). Escape clears the pick.</p>';
+      h += '<h3>Keys</h3><p>Tab to the people, then the left and right arrows pick a person (their z-score or place against the fences shows under the picture); Tab again to the knob above them, whose arrows move them one ' + esc(S.set.unit.replace(/s$/, '')) + ' (Shift or Page Up and Down: ten). Delete takes the picked person away; Escape clears the pick.</p>';
       h += '<div class="dx2-about">' + (data.intro || '') + (data.howItWorks ? '<h3>' + esc(data.howItWorksTitle || 'How it works') + '</h3>' + data.howItWorks : '') + '</div>';
       if(ref._h !== h){ ref._h = h; ref.innerHTML = h; var hw = ref.querySelector('[data-how]'); if(hw) hw.addEventListener('click', function(){ startTour(); }); }
     }

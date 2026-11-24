@@ -347,6 +347,14 @@ All grading is code; nothing is graded by an AI model. Formats in `docs/apstat-a
     cards being the rows' heads. The model gains `dealOrder()`; the memory study's "no random assignment" case is now
     the researcher choosing (needs-author `design-randomizer-v2`). Test yourself and its record ids are unchanged.
 
+21. (2026-11-24, `docs/tools-v2-stat-data-explorer-brief.md`) **Tools v2: Data explorer on the shared kit**, through
+    `ApStatTools.studioKit2` and `"kit2": true` (the third AP® Statistics tool; still free). Two tabs on one picture of
+    the same people standing at their values on a plank: Mean and median (the plank balances on a wedge at the mean,
+    a flag at the median, a quiet ± 1 SD band) and Outliers and the boxplot (a crate from Q1 to Q3, whisker ropes,
+    fence posts with signs, rings on the outliers, the histogram with a quiet bin knob). Every summary is read from the
+    people as drawn. The model and Test yourself (drill, figure, record ids) are unchanged (needs-author
+    `data-explorer-v2`).
+
 ## 9. Open items for the owner
 
 Before Phase 1 (built as proposed in Phase 0, each easy to change; decision 11):
