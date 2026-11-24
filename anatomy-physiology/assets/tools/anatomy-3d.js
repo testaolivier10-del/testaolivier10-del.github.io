@@ -467,7 +467,7 @@
     else if(g && g.near) msg = 'That names the ' + esc(g.near.name) + '. This is the <b>' + esc(s.name) + '</b>.';
     else msg = 'Not quite. This is the <b>' + esc(s.name) + '</b>.';
     pills([{ html: ok ? 'Right' : 'Missed', tone: ok ? 'good' : 'bad' }], 'left');
-    caption(msg);
+    // the verdict is said once, in the dock below (with the caption too it showed twice on a phone)
     live.textContent = msg.replace(/<[^>]+>/g, '');
     if(window.LevlSound) try{ window.LevlSound.answer(ok); }catch(e){}
     showCard(s, how.part && it.picked === s ? how.part : null);

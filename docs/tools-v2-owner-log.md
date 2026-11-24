@@ -399,3 +399,4 @@ in each tool's brief.
 | 2026-11-19 | A&P 3D anatomy | Review round 1: the abdomen tab frames its organs only (not the esophagus and testes) | The organs were 12% of the stage's width | `frame` on the abdomen tab |
 | 2026-11-19 | A&P 3D anatomy | Review round 1: the two unnamed cartilage meshes join the ghost in Explore | They stood solid over the liver and lungs | viewer `ghostContext` |
 | 2026-11-19 | A&P 3D anatomy | Review round 1: `assets/body3d` budget 19.2 to 21 KB | selectOnTop and ghostContext, with headroom | `scripts/check-weight.mjs` |
+| 2026-11-23 | A&P 3D anatomy | Recheck 1: Test yourself's verdict is said once, in the dock, not also in the caption | It showed twice on a phone (as on main) | `answer()` in `anatomy-3d.js` |

@@ -89,7 +89,7 @@ const SHELL_BUDGETS = [
      change of look eases), selectFly and fadeOthers (with set()), the loading still that cross fades to the live body,
      settling(), project() of one piece and of the whole drawn box, and frame() with room and a side; measured 19.0 KB. */
   /* 19.2 -> 21 (the same tool, review round 1, 2026-11-19): selectOnTop (the named part drawn in a second pass over
-     everything, taps there pick it, the ring on its own surface), ghostContext, hit(); measured 20.4 KB, with some
+     everything, taps there pick it, the ring on its own surface), ghostContext, hit(); measured 20.6 KB, with some
      headroom as the review asked. */
   ['assets/body3d', 21],
   /* The tools v2 kit, assets/course/tool-kit2.js and .css (docs/tools-v2-standard.md): loaded only by tools rebuilt to

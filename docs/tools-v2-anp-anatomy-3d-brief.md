@@ -281,3 +281,12 @@ parts: the ring picks the part and its glow changes the pixels under the ring). 
 failing. On this branch: NREMT body map sweep at 390 1227 passed, 0 failed; A&P lab practical sweep at 390 231 checks,
 0 failing.
 
+
+## Recheck 1 (2026-11-23, PASS; its should fix items done in the same round)
+Merged `origin/claude/tools-v2-all` again (AP Bio Rates; only the three docs tables conflicted, both sides kept).
+Test yourself says its verdict once, in the dock (the caption repeated it, which showed it twice on a phone; that was
+already so on `origin/main`). After the camera widens for a part found off the region's picture, the next part named
+takes the camera back to the region's own frame once. The cervical vertebrae's "where" says "The middle and lower neck,
+between C2 and the first thoracic vertebra". The check-weight comment says 20.6 KB (measured). `kit2-spots.test.mjs`
+waits up to 15 s for the pins on a cold first start. Not changed (nit): the right middle lobe's upper face reads near
+white where it is lit from above while drawn on top; it reads as part of the lobe.

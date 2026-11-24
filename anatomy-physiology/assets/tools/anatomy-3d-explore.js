@@ -96,12 +96,12 @@
         // takes in the region and that part, once, then the card grows
         var pp = viewer.project(pending.it.id), w = over.clientWidth, h = over.clientHeight;
         if(!pp || !pp.front || pp.x < 0 || pp.y < 0 || pp.x > w || pp.y > h){
-          pending.framed = true;
+          pending.framed = true; wide = pending.it.id;
           viewer.frame((cur.frame && cur.frame.length ? cur.frame : ids(cur)).concat([pending.it.id]), cur.pad || 1.3, cur.dir || null);
         }
       }
     }
-    var pendingSay = '';
+    var pendingSay = '', wide = null;
 
     // the card names the part in 1 to 3 words (its short label when the full name is longer); find knows both
     function itemOf(s){ return { id: s.id, name: s.label || s.name, accept: (s.label ? [s.name] : []).concat(s.accept || []) }; }
@@ -138,6 +138,9 @@
         onPick: function(it, how){
           cause.set([]);
           pending = it ? { it: it } : null;
+          // after the camera widened for a part off the region's picture, the next part goes back to the region's
+          // own frame once (if that one is off the picture too, the camera widens for it again)
+          if(it && wide && it.id !== wide){ wide = null; frameTab(); }
           if(it){ picks[cur.id] = it.id; pref.picks = picks; save(pref); }
           if(how === 'tap' || how === 'key' || how === 'find'){ hideCue(true); tourDid(how === 'find' ? 'find' : 'tap'); }
           pendingSay = it ? BY[it.id].name + (piece[it.id] ? ', ' + piece[it.id].name : '') + ': ' + BY[it.id].at + '.' : '';
@@ -190,7 +193,7 @@
       pref.tab = t.id; save(pref);
       token++;
       if(spots && spots.picked()) spots.pick(null, 'set');
-      cause.set([]); pending = null;
+      cause.set([]); pending = null; wide = null;
       hideCue(!!user);
       fin.value = ''; form.classList.remove('is-miss');
       if(viewer && viewer.loaded()){
