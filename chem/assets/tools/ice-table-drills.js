@@ -120,7 +120,8 @@
         // a phone: the scene scrolled to the top of the screen; elsewhere the screen from where the scene starts (the
         // card around the stage may grow with its content, so its own height says nothing)
         if(narrow) return Math.max(400, window.innerHeight - lh - 22);
-        return clamp(window.innerHeight - (sc.top + window.scrollY) - lh - 28, 430, 1200);
+        // side by side, the card below has its own padding to clear too
+        return clamp(window.innerHeight - (sc.top + window.scrollY) - lh - (sceneBox.getBoundingClientRect().width < 860 ? 28 : 36), 430, 1200);
       }
       /* The clipboard's text and rows from measured text, for font sizes scaled by k: every text 4 px clear of the
          next, the row names beside their letters and 6 px clear of the margin line. */

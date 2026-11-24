@@ -192,6 +192,11 @@ Review: `/home/claude/review-chem-ice/REVIEW.md` ("Recheck 1"). `claude/tools-v2
 - **S12:** the two stale lines below fixed. At 1920 the row letter and its name are one label (one text, the name a
   tspan).
 
+Checks (integration round): sweep at all ten widths, one per process, light and dark, each at a real screen height
+(844 up to 430, 960 at 600, 1024 at 768 and 820, 768 at 1024, 800 at 1280, 900 at 1440, 1080 at 1920), plus 360 × 740:
+11 runs of 22 states and 382 checks, 0 failures; frames at 390 and 1440 (about 1000 to 1140 frames each, 0 problems);
+AP Chem tests (99 pass), content check, build `--check`, `check-site`.
+
 ## Not done, and what I am not happy with
 - No real phone, no screen reader pass, no students.
 - On a phone the molecules are smallish so that they never touch: at 390 an I atom is about 17 px across and an H atom
