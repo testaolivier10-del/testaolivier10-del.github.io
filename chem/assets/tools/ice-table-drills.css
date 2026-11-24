@@ -1,24 +1,90 @@
-/* ICE table drills, the tool's own sheet (pass 3 cleanup, docs/tool-review/pass3/chem.md).
-   The judge found the table and the jar small in a mostly empty stage: on a
-   wide stage the jar gets the larger column and the full height, and the
-   table's type grows to match; on a phone the table packs tighter so the jar
-   has the room. Loaded after chem-tools.css, so these win. */
-.ls-root:not(.ls-phone) .chem-ls-stage .ic-show{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:0 28px;}
-.ls-root:not(.ls-phone) .chem-ls-stage .ic-show .ic-beaker{display:flex;}
-.ls-root:not(.ls-phone) .chem-ls-stage .ic-show .ic-beaker .lb-svg{max-height:100%;}
-.ls-root:not(.ls-phone) .chem-ls-stage .ic-xt thead th{font-size:17px;padding-top:10px;padding-bottom:10px;}
-.ls-root:not(.ls-phone) .chem-ls-stage .ic-xt th[scope=row]{font-size:24px;}
-.ls-root:not(.ls-phone) .chem-ls-stage .ic-xt td{padding-top:12px;padding-bottom:12px;}
-.ls-root:not(.ls-phone) .chem-ls-stage .ic-xt td b{font-size:21px;}
-.ls-root:not(.ls-phone) .chem-ls-stage .ic-xt .ic-rc td b{font-size:17px;}
-.ls-root:not(.ls-phone) .chem-ls-stage .ic-xt .ic-xe{font-size:14px;}
-/* Phone: the row names on one line and less padding, so the jar below can grow. */
-.ls-root.ls-phone .chem-ls-stage .ic-show{gap:4px;}
-.ls-root.ls-phone .chem-ls-stage .ic-xt th,.ls-root.ls-phone .chem-ls-stage .ic-xt td{padding-top:4px;padding-bottom:4px;}
-.ls-root.ls-phone .chem-ls-stage .ic-xt th[scope=row]{width:3.2em;font-size:17px;}
-.ls-root.ls-phone .chem-ls-stage .ic-xt th[scope=row] span{display:none;}
-.ls-root.ls-phone .chem-ls-stage .ic-xt td b{font-size:15px;}
-.ls-root.ls-phone .chem-ls-stage .ic-live{gap:0;}
-.ls-root.ls-phone .chem-ls-stage .ic-barsd > summary{padding:2px 10px;}
-/* Before x moves there is no gauge yet: the empty gauge row gives its room to the jar. */
-.ls-root .chem-ls-stage .ic-beaker .lb-side:has(> .lb-read:empty){display:none;}
+/* ICE tables, tools v2 (chem/assets/tools/ice-table-drills.js; docs/tools-v2-chem-ice-tables-brief.md). Loaded only by
+   this page (chem/data/pages.json "kit2": true), after chem-tools.css. One colour per idea, everywhere (Okabe-Ito,
+   lighter in dark mode): x blue (the knob's rail, the cause line), Q vermillion (the needle, the Q value), K bluish
+   green (the notch, the equilibrium row). The lab wall and bench are the Units and significant figures tool's, so the
+   course's tools look like one family. Atoms use the course's colours (chem-tools.css .pt-atom). */
+.ix2{--ix-x:#0072B2;--ix-x-ink:#005A8C;--ix-q:#D55E00;--ix-q-ink:#A64700;--ix-k:#009E73;--ix-k-ink:#00704F;
+  --wall0:#EEF3F7;--wall1:#E2EAF0;--grout:#D3DDE5;--bn0:#D9D2C5;--bn1:#C4BBA9;--bn-edge:#A99F8E;--bn-ink:#4A4336;
+  --glass:#8FA9BF;--gl0:rgba(255,255,255,.55);--gl1:rgba(214,230,242,.38);--paper:#FFFDF7;--ruled:#DCE6F2;--margin:#E8A3A3;--board:#B48A5A;--board-edge:#94703F;
+  --clamp:#9AA6B2;--violet:#8E4FB8;--brown:#9A4A16;--stopper:#6E7A86;--cork:#C79A63;--dial:#FFFFFF;
+  display:flex;flex-direction:column;gap:10px;min-height:0;flex:1 1 auto;}
+:root[data-theme="dark"] .ix2{--ix-x:#56B4E9;--ix-x-ink:#8CCBF2;--ix-q:#F08A4B;--ix-q-ink:#F6A878;--ix-k:#2FB88F;--ix-k-ink:#8BE3C8;
+  --wall0:#1E2A36;--wall1:#18232E;--grout:#24323F;--bn0:#33302B;--bn1:#262420;--bn-edge:#4A453D;--bn-ink:#D8D0C2;
+  --glass:#7F97AD;--gl0:rgba(140,170,195,.16);--gl1:rgba(80,110,140,.10);--paper:#2B323C;--ruled:#364150;--margin:#7A4A4A;--board:#6B5235;--board-edge:#4F3C26;
+  --clamp:#5E6A76;--violet:#B07AD6;--brown:#C0703A;--stopper:#56616C;--cork:#8A6B45;--dial:#1E2833;}
+.ix2[hidden]{display:none;}
+.ix2 [hidden]{display:none !important;}
+.ix2 .tk2-tabs{margin:0;align-self:flex-start;max-width:100%;}
+.ix2-scene{position:relative;flex:none;border-radius:18px;overflow:hidden;background:var(--surface2);}
+.ix2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+@media (max-width:640px){ .ix2-scene{border-radius:14px;} .ix2{gap:8px;} }
+.ix2-lines{display:flex;align-items:center;justify-content:space-between;gap:6px 18px;flex-wrap:wrap;flex:none;}
+.ix2-again{flex:none;margin-left:auto;min-height:40px;padding:0 14px;font-size:14px;background:var(--white);color:var(--cink);box-shadow:inset 0 0 0 1.5px color-mix(in srgb, var(--cink) 45%, transparent);}
+:root[data-theme="dark"] .ix2-again{background:transparent;}
+/* cause line colours */
+.ix2 .tk2-cz.is-x{--cz:var(--ix-x);--cz-ink:var(--ix-x-ink);}
+.ix2 .tk2-cz.is-q{--cz:var(--ix-q);--cz-ink:var(--ix-q-ink);}
+.ix2 .tk2-cz.is-k{--cz:var(--ix-k);--cz-ink:var(--ix-k-ink);}
+.ix2 .tk2-cz.is-eq{--cz:var(--ix-k);--cz-ink:var(--ix-k-ink);}
+.ix2 .tk2-cz.is-ink{--cz:var(--ink);--cz-ink:var(--ink);}
+/* the knob on the x rail: the course's knob, its tag in the x colour */
+.ix2 .tk2-drag .tk2-tag{background:var(--ix-x);}
+:root[data-theme="dark"] .ix2 .tk2-drag .tk2-tag{color:#0B1A24;}
+/* the lab: wall, bench */
+.ix2-wall{fill:url(#ix2g-wall);} .ix2s-wall0{stop-color:var(--wall0);} .ix2s-wall1{stop-color:var(--wall1);}
+.ix2-grout{stroke:var(--grout);stroke-width:1;fill:none;}
+.ix2-bench{fill:url(#ix2g-bench);} .ix2s-bn0{stop-color:var(--bn0);} .ix2s-bn1{stop-color:var(--bn1);}
+.ix2-benchedge{stroke:var(--bn-edge);stroke-width:1.5;fill:none;}
+.ix2-shadow{fill:#000;fill-opacity:.14;}
+/* the flask */
+.ix2-glassbody{fill:url(#ix2g-glass);} .ix2s-gl0{stop-color:var(--gl0);} .ix2s-gl1{stop-color:var(--gl1);}
+.ix2-glassrim{fill:none;stroke:var(--glass);stroke-width:2.6;stroke-linejoin:round;}
+.ix2-shine{fill:none;stroke:#fff;stroke-opacity:.7;stroke-width:5;stroke-linecap:round;} .ix2-shine.is-thin{stroke-width:3;stroke-opacity:.55;}
+:root[data-theme="dark"] .ix2-shine{stroke-opacity:.16;}
+.ix2-gas{transition:opacity .35s ease;} .ix2-gas.is-violet{fill:var(--violet);} .ix2-gas.is-brown{fill:var(--brown);}
+.ix2-stopper{fill:var(--stopper);} .ix2-stopperhi{stroke:#fff;stroke-opacity:.28;stroke-width:2;stroke-linecap:round;}
+.ix2-cork{fill:var(--cork);stroke:color-mix(in srgb, var(--cork) 70%, #000);stroke-width:1;}
+.ix2-glow{fill:#FFE38A;fill-opacity:.55;stroke:#F5B83D;stroke-width:2;pointer-events:none;}
+/* the Q gauge on the neck */
+.ix2-clip{stroke:var(--glass);stroke-width:4;stroke-linecap:round;fill:none;}
+.ix2-dial{fill:var(--dial);stroke:var(--ink);stroke-opacity:.55;stroke-width:1.6;}
+.ix2-tick{stroke:var(--ink);stroke-opacity:.55;stroke-width:1.4;}
+.ix2-knotch{stroke:var(--ix-k);stroke-width:4;stroke-linecap:round;}
+.ix2-klab{font:900 13px var(--font-ui);fill:var(--ix-k-ink);paint-order:stroke;stroke:var(--wall0);stroke-width:3px;}
+.ix2-qlab{font:900 12px var(--font-ui);fill:var(--ix-q-ink);}
+.ix2-needle path{fill:var(--ix-q);} .ix2-needle circle{fill:var(--ink);}
+.ix2-svg.is-eq .ix2-knotch{stroke-width:5.5;}
+/* the x rail */
+.ix2-rail{stroke:color-mix(in srgb, var(--ix-x) 55%, var(--bn1));stroke-width:5;stroke-linecap:round;fill:none;}
+.ix2-rtick{stroke:var(--bn-ink);stroke-opacity:.5;stroke-width:1.5;}
+.ix2-xlab{font:italic 900 18px var(--font-ui);fill:var(--ix-x-ink);}
+/* the clipboard and its page */
+.ix2-board{fill:var(--board);stroke:var(--board-edge);stroke-width:1.5;}
+.ix2-paper{fill:var(--paper);filter:drop-shadow(0 1px 1.5px rgba(0,0,0,.18));}
+.ix2-paper.is-flat{filter:drop-shadow(0 2px 3px rgba(0,0,0,.2));}
+.ix2-clamp{fill:var(--clamp);stroke:color-mix(in srgb, var(--clamp) 70%, #000);stroke-width:1;} .ix2-clamphi{fill:#fff;fill-opacity:.35;}
+.ix2-ruled{stroke:var(--ruled);stroke-width:1;} .ix2-margin{stroke:var(--margin);stroke-width:1.2;}
+.ix2-book text{font-family:var(--font-ui);fill:var(--ink);}
+.ix2-book .ix-sub{font-size:.72em;}
+.ix2-book .ix-sup{font-size:.72em;}
+.ix2-eqn{font-weight:900;font-size:17px;}
+.ix2-kline{font-weight:800;font-size:14px;fill:var(--ix-k-ink) !important;}
+.ix2-unit{font-weight:800;font-size:12px;fill:var(--muted) !important;}
+.ix2-sp{font-weight:900;font-size:15.5px;}
+.ix2-tline{stroke:var(--ink);stroke-opacity:.6;stroke-width:1.4;} .ix2-rline{stroke:var(--ink);stroke-opacity:.18;stroke-width:1;}
+.ix2-row{font-weight:900;font-size:21px;}
+.ix2-roww{font-weight:700;font-size:11.5px;fill:var(--muted) !important;}
+.ix2-expr{font-weight:700;font-size:13px;fill:var(--muted) !important;}
+.ix2-val{font:800 17px var(--font-mono);}
+.ix2-key{font-weight:700;font-size:13px;fill:var(--muted) !important;}
+.ix2-qline{font-weight:800;font-size:15px;}
+.ix2-qv{fill:var(--ix-q-ink);font-weight:900;}
+.ix2-eqband{fill:var(--ix-k);fill-opacity:0;transition:fill-opacity .3s ease;} .ix2-eqband.is-on{fill-opacity:.16;}
+.ix2-val.is-tick{animation:ix2-tick .38s ease-out;}
+@keyframes ix2-tick{0%{fill:var(--ix-x-ink);} 100%{fill:var(--ink);}}
+.is-narrow .ix2-eqn{font-size:15px;} .is-narrow .ix2-kline{font-size:12.5px;} .is-narrow .ix2-sp{font-size:14px;} .is-narrow .ix2-row{font-size:18px;}
+.is-narrow .ix2-expr{font-size:12px;} .is-narrow .ix2-val{font-size:15px;} .is-narrow .ix2-key{font-size:12px;} .is-narrow .ix2-qline{font-size:13.5px;}
+@media (prefers-reduced-motion: reduce){ .ix2-gas,.ix2-eqband{transition:none;} .ix2-val.is-tick{animation:none;} }
+/* "?" */
+.ix2-ref .ix2-list{padding-left:1.2em;}
+.ix2-howref{margin:0 0 6px;}

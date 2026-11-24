@@ -227,5 +227,88 @@
    ],
    "moles": true
   }
- ]
+ ],
+ "explore": {
+  "note": "Explore (tools v2, docs/tools-v2-chem-ice-tables-brief.md): two real reactions drawn as molecules in a sealed flask. Each step of x is one reaction event (Kc: one molecule = per M; Kp: one molecule = per atm, a partial pressure at fixed volume and temperature). n0 and per are chosen so one whole step lands Q within 2% of K and the exact x rounds to that step at three significant figures; scripts/lib/apchem-tool-checks/ice-table-drills.mjs checks it.",
+  "reactions": [
+   {
+    "id": "hi",
+    "chip": "H₂ + I₂",
+    "K": "Kc",
+    "Kval": 54.3,
+    "T": "430 °C",
+    "unit": "M",
+    "per": 0.025,
+    "steps": 13,
+    "species": [
+     {
+      "key": "H2",
+      "html": "H₂",
+      "nu": -1
+     },
+     {
+      "key": "I2",
+      "html": "I₂",
+      "nu": -1
+     },
+     {
+      "key": "HI",
+      "html": "HI",
+      "nu": 2
+     }
+    ],
+    "n0": [
+     14,
+     14,
+     0
+    ],
+    "tint": {
+     "key": "I2",
+     "color": "violet",
+     "why": "I₂ vapour is violet; H₂ and HI are colourless"
+    },
+    "gauge": [
+     -2,
+     3
+    ],
+    "source": "Kc = 54.3 at 430 °C, as the drill's hydrogen-iodide context (docs/apchem-needs-author.md ice-hi-k)."
+   },
+   {
+    "id": "n2o4",
+    "chip": "N₂O₄",
+    "K": "Kp",
+    "Kval": 0.146,
+    "T": "25 °C",
+    "unit": "atm",
+    "per": 0.025,
+    "steps": 14,
+    "species": [
+     {
+      "key": "N2O4",
+      "html": "N₂O₄",
+      "nu": -1
+     },
+     {
+      "key": "NO2",
+      "html": "NO₂",
+      "nu": 2
+     }
+    ],
+    "n0": [
+     22,
+     0
+    ],
+    "tint": {
+     "key": "NO2",
+     "color": "brown",
+     "why": "NO₂ is brown; N₂O₄ is colourless"
+    },
+    "gauge": [
+     -3,
+     2
+    ],
+    "source": "Kp = 0.146 at 298.15 K from NBS ΔG°f (NO₂ 51.31, N₂O₄ 97.89 kJ/mol), the same value as the Equilibrium and kinetics tool (chem/data/tools/equilibrium-kinetics.json). See docs/apchem-needs-author.md ice-explore-n2o4."
+   }
+  ]
+ }
 }

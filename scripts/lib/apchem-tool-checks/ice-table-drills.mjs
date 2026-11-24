@@ -47,6 +47,41 @@ export function check(data, map) {
   }, c => c.types);
   for (const t of new Set((data.contexts || []).flatMap(c => c.types || []))) if (!seenTypes.has(t)) errs.push(`no problem of type ${t} was generated`);
   if (!(data.contexts || []).some(c => c.Kfail)) errs.push('no context exercises a failed 5% check');
+  exploreCheck(data.explore, errs);
   return errs;
+}
+/* Explore (tools v2, docs/tools-v2-chem-ice-tables-brief.md): each step of x is one reaction event, drawn as whole
+   molecules. Recomputed here: the atoms balance, every species stays at or above zero over the handle's range, Q of the
+   drawn counts crosses K once, the step nearest K is within 2% of it, the exact x (Q = K, solved by bisection) rounds
+   to that step at three significant figures, and the gauge's range holds K and Q from the first step to the last. */
+const ATOMS = { H2: { H: 2 }, I2: { I: 2 }, HI: { H: 1, I: 1 }, N2O4: { N: 2, O: 4 }, NO2: { N: 1, O: 2 } };
+function exploreCheck(ex, errs) {
+  if (!ex || !Array.isArray(ex.reactions) || ex.reactions.length !== 2) { errs.push('explore: two reactions expected'); return; }
+  const sig3 = v => Number(v.toPrecision(3));
+  for (const r of ex.reactions) {
+    const w = 'explore ' + r.id, sp = r.species;
+    if (!['Kc', 'Kp'].includes(r.K) || (r.K === 'Kc') !== (r.unit === 'M')) errs.push(`${w}: Kc goes with M and Kp with atm`);
+    const bal = {};
+    sp.forEach(s => { const a = ATOMS[s.key]; if (!a) errs.push(`${w}: no atoms for ${s.key}`); else for (const [el, n] of Object.entries(a)) bal[el] = (bal[el] || 0) + n * s.nu; });
+    if (Object.values(bal).some(v => v !== 0)) errs.push(`${w}: the equation does not balance`);
+    if (r.n0.length !== sp.length) errs.push(`${w}: n0 has the wrong length`);
+    const at = k => r.n0.map((n, i) => n + sp[i].nu * k), Qk = k => at(k).reduce((q, n, i) => q * (n * r.per) ** sp[i].nu, 1);
+    for (let k = 0; k <= r.steps; k++) if (at(k).some(n => n < 0)) errs.push(`${w}: a species runs out before step ${k}`);
+    if (at(r.steps).some(n => n <= 0)) errs.push(`${w}: the last step leaves a species at zero (Q would have no value)`);
+    let cross = 0;
+    for (let k = 1; k <= r.steps; k++) if ((Qk(k - 1) - r.Kval) * (Qk(k) - r.Kval) < 0) cross++;
+    if (cross !== 1) errs.push(`${w}: Q should cross K exactly once over the handle (crosses ${cross})`);
+    let best = 0; for (let k = 1; k <= r.steps; k++) if (Math.abs(Math.log(Qk(k) / r.Kval)) < Math.abs(Math.log(Qk(best) / r.Kval))) best = k;
+    if (Math.abs(Qk(best) / r.Kval - 1) > 0.02) errs.push(`${w}: the nearest step gives Q ${Qk(best)}, more than 2% from K ${r.Kval}`);
+    // the exact x: Q(x) = K on concentrations, by bisection between the two steps around it
+    const Qx = x => r.n0.reduce((q, n, i) => q * (n * r.per + sp[i].nu * x) ** sp[i].nu, 1);
+    let lo = 0, hi = (r.steps) * r.per; for (let i = 0; i < 200; i++) { const m = (lo + hi) / 2; if (Qx(m) < r.Kval) lo = m; else hi = m; }
+    if (sig3(lo) !== sig3(best * r.per)) errs.push(`${w}: the exact x ${lo} does not round to the drawn step ${best * r.per}`);
+    const [g0, g1] = r.gauge;
+    if (!(Math.log10(r.Kval) > g0 && Math.log10(r.Kval) < g1)) errs.push(`${w}: K is off the gauge`);
+    if (!(Math.log10(Qk(1)) >= g0 - 1e-9)) errs.push(`${w}: the first step's Q ${Qk(1)} is below the gauge`);
+    if (!(Math.log10(Qk(r.steps)) <= g1 + 1e-9)) errs.push(`${w}: the last step's Q ${Qk(r.steps)} is above the gauge`);
+    if (!(r.Kval > 0) || !r.T || !r.source) errs.push(`${w}: K, its temperature and its source are needed`);
+  }
 }
 function s(sp, i) { return sp[i].html; }
