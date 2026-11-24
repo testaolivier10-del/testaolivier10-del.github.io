@@ -159,8 +159,9 @@
       function layout(){
         var Wd = sceneBox.clientWidth, Hd = sceneBox.clientHeight;
         if(!Wd || !Hd) return null;
-        var g = { W: Wd, H: Hd, wide: Wd >= 600 };
-        var pad = g.wide ? 16 : 8, trayEnd, top0;
+        // side by side when there is room across, or too little height to stack; sizes follow the width
+        var g = { W: Wd, H: Hd, big: Wd >= 600, wide: Wd >= 900 || (Wd >= 600 && Hd < 600) };
+        var pad = g.big ? 16 : 8, trayEnd, top0;
         if(g.wide){
           g.benchH = clamp(Hd * 0.1, 38, 60); g.yB = Hd - g.benchH;
           trayEnd = Wd * 0.6;
@@ -168,31 +169,32 @@
           g.cb = { x: Wd * 0.635, y: 18, w: Wd - pad - Wd * 0.635, h: g.yB + 6 - 18 };
           top0 = 0;
         } else {
-          g.clipH = clamp(Wd * 0.72, 250, 290);
+          g.clipH = g.big ? clamp(Hd * 0.46, 300, 340) : clamp(Wd * 0.72, 250, 290);
           g.topH = Hd - g.clipH;
           g.benchH = 22; g.yB = g.topH - g.benchH;
           trayEnd = Wd - pad;
-          g.cb = { x: pad + 2, y: g.topH + 10, w: Wd - 2 * pad - 4, h: g.clipH - 18 };
+          var cw0 = Math.min(Wd - 2 * pad - 4, 560);
+          g.cb = { x: (Wd - cw0) / 2, y: g.topH + 10, w: cw0, h: g.clipH - 18 };
           top0 = 0;
         }
         g.pad = pad;
-        g.lampY = top0 + 10; g.lampH = g.wide ? 13 : 10;
-        g.trayH = g.wide ? 30 : 24;
+        g.lampY = top0 + 10; g.lampH = g.big ? 13 : 10;
+        g.trayH = g.big ? 30 : 24;
         g.ySoil = g.yB + 4 - g.trayH + 3;
-        g.yTop = g.lampY + g.lampH + (g.wide ? 30 : 22);
+        g.yTop = g.lampY + g.lampH + (g.big ? 30 : 22);
         g.k = (g.ySoil - g.yTop) / RMAX;
-        g.rw = g.wide ? 34 : 24;
-        var gp = g.wide ? 30 : 14, mr = g.wide ? 34 : 26, x0 = pad + g.rw + 4;
+        g.rw = g.big ? 34 : 24;
+        var gp = g.big ? 30 : 14, mr = g.big ? 34 : 26, x0 = pad + g.rw + 4;
         g.tw = (trayEnd - x0 - gp - mr) / 2;
         g.tx = [x0, x0 + g.tw + gp];
         g.board = [pad, g.yTop - 26, trayEnd - pad, g.ySoil - g.yTop + 26];
         g.knobX = g.tx[1] + g.tw + mr / 2;
         // the clipboard's paper and plot
-        var c = g.cb, ins = g.wide ? 14 : 10;
-        c.px = c.x + ins; c.py = c.y + (g.wide ? 26 : 20); c.pw = c.w - 2 * ins; c.ph = c.h - (g.wide ? 26 : 20) - ins;
-        c.fs = g.wide ? 15 : 13;
-        c.l = c.px + (g.wide ? 46 : 34); c.r = c.px + c.pw - (g.wide ? 16 : 10);
-        c.t = c.py + (g.wide ? 60 : 60); c.b = c.py + c.ph - (g.wide ? 56 : 50);
+        var c = g.cb, ins = g.big ? 14 : 10;
+        c.px = c.x + ins; c.py = c.y + (g.big ? 26 : 20); c.pw = c.w - 2 * ins; c.ph = c.h - (g.big ? 26 : 20) - ins;
+        c.fs = g.big ? 15 : 13;
+        c.l = c.px + (g.big ? 46 : 34); c.r = c.px + c.pw - (g.big ? 16 : 10);
+        c.t = c.py + (g.big ? 60 : 60); c.b = c.py + c.ph - (g.big ? 56 : 50);
         c.cx = [c.l + (c.r - c.l) * 0.3, c.l + (c.r - c.l) * 0.72];
         c.bw = Math.min((c.r - c.l) * 0.24, 74); c.cap = Math.min(c.bw * 0.55, 26);
         c.y = c.y; c.ky = (c.b - c.t) / AMAX;
@@ -237,7 +239,7 @@
           o += '<line class="ci2-wire" x1="' + n1(x + 6) + '" x2="' + n1(x + 6) + '" y1="0" y2="' + ly + '"/><line class="ci2-wire" x1="' + n1(x + w - 6) + '" x2="' + n1(x + w - 6) + '" y1="0" y2="' + ly + '"/>';
           o += '<path class="ci2-beam' + (i ? ' is-dim' : '') + '" d="M' + n1(x + 4) + ' ' + n1(ly + lh) + 'L' + n1(x + w - 4) + ' ' + n1(ly + lh) + 'L' + n1(g.tx[i] + g.tw + 2) + ' ' + n1(g.ySoil) + 'L' + n1(g.tx[i] - 2) + ' ' + n1(g.ySoil) + 'Z" fill="url(#ci2-' + (i ? 'dim' : 'sun') + ')"/>';
           o += '<rect class="ci2-lamp" x="' + n1(x) + '" y="' + ly + '" width="' + n1(w) + '" height="' + lh + '" rx="3"/><rect class="ci2-bulb' + (i ? ' is-dim' : '') + '" x="' + n1(x + 3) + '" y="' + n1(ly + lh - 3.5) + '" width="' + n1(w - 6) + '" height="3" rx="1.5"/>';
-          if(i) o += '<rect class="ci2-cloth" x="' + n1(x - 3) + '" y="' + n1(ly + lh + 2) + '" width="' + n1(w + 6) + '" height="' + (g.wide ? 12 : 9) + '" fill="url(#ci2-mesh)" rx="1.5"/>';
+          if(i) o += '<rect class="ci2-cloth" x="' + n1(x - 3) + '" y="' + n1(ly + lh + 2) + '" width="' + n1(w + 6) + '" height="' + (g.big ? 12 : 9) + '" fill="url(#ci2-mesh)" rx="1.5"/>';
         });
         sDefs.innerHTML = d;
         sStatic.innerHTML = o;
@@ -247,11 +249,11 @@
           var x = g.tx[i], w = g.tw, y = g.ySoil - 3;
           f += '<rect class="ci2-soil" x="' + n1(x + 2) + '" y="' + n1(g.ySoil - 2.5) + '" width="' + n1(w - 4) + '" height="5" rx="2" fill="url(#ci2-soil)"/>';
           f += '<path class="ci2-tray" d="M' + n1(x) + ' ' + n1(y) + 'L' + n1(x + w) + ' ' + n1(y) + 'L' + n1(x + w - 4) + ' ' + n1(y + g.trayH) + 'L' + n1(x + 4) + ' ' + n1(y + g.trayH) + 'Z"/><rect class="ci2-rim" x="' + n1(x - 1) + '" y="' + n1(y - 1) + '" width="' + n1(w + 2) + '" height="4" rx="2"/>';
-          var nm = GR[i].name, fs = g.wide ? 14 : 12.5;
+          var nm = GR[i].name, fs = g.big ? 14 : 12.5;
           f += '<text class="ci2-tname is-' + GR[i].id + '" data-lab="tray" x="' + n1(x + w / 2) + '" y="' + n1(y + g.trayH / 2 + fs * 0.42) + '" text-anchor="middle" style="font-size:' + fs + 'px">' + esc(nm) + '</text>';
         });
         // the ruler's numbers (on top, so the soil never hides them)
-        for(var c2 = 5; c2 <= RMAX; c2 += 5){ if(!g.wide && c2 % 10) continue; var yy = yH(c2); f += '<text class="ci2-rnum" data-lab="rnum" x="' + n1(b[0] + g.rw - 11) + '" y="' + n1(yy + 4) + '" text-anchor="end">' + c2 + '</text>'; }
+        for(var c2 = 5; c2 <= RMAX; c2 += 5){ if(!g.big && c2 % 10) continue; var yy = yH(c2); f += '<text class="ci2-rnum" data-lab="rnum" x="' + n1(b[0] + g.rw - 11) + '" y="' + n1(yy + 4) + '" text-anchor="end">' + c2 + '</text>'; }
         f += '<text class="ci2-rnum is-unit" data-lab="rnum" x="' + n1(b[0] + g.rw / 2 - 1) + '" y="' + n1(b[1] + 13) + '" text-anchor="middle">cm</text>';
         // the clipboard: board, clip, paper, axes, title
         var c = g.cb;
@@ -259,9 +261,9 @@
         f += '<rect class="ci2-cb" x="' + n1(c.x) + '" y="' + n1(c.y) + '" width="' + n1(c.w) + '" height="' + n1(c.h) + '" rx="10"/>';
         f += '<rect class="ci2-paper" x="' + n1(c.px) + '" y="' + n1(c.py) + '" width="' + n1(c.pw) + '" height="' + n1(c.ph) + '" rx="3"/>';
         var cw = Math.min(110, c.w * 0.36);
-        f += '<rect class="ci2-clip" x="' + n1(c.x + c.w / 2 - cw / 2) + '" y="' + n1(c.y + 4) + '" width="' + n1(cw) + '" height="' + (g.wide ? 30 : 24) + '" rx="6"/><rect class="ci2-clip-hi" x="' + n1(c.x + c.w / 2 - cw / 2 + 8) + '" y="' + n1(c.y + 9) + '" width="' + n1(cw - 16) + '" height="4" rx="2"/>';
+        f += '<rect class="ci2-clip" x="' + n1(c.x + c.w / 2 - cw / 2) + '" y="' + n1(c.y + 4) + '" width="' + n1(cw) + '" height="' + (g.big ? 30 : 24) + '" rx="6"/><rect class="ci2-clip-hi" x="' + n1(c.x + c.w / 2 - cw / 2 + 8) + '" y="' + n1(c.y + 9) + '" width="' + n1(cw - 16) + '" height="4" rx="2"/>';
         var title = 'Mean height ± 2 SE';
-        f += '<text class="ci2-ctitle" data-lab="ctitle" x="' + n1(c.px + c.pw / 2) + '" y="' + n1(c.py + (g.wide ? 44 : 36)) + '" text-anchor="middle" style="font-size:' + c.fs + 'px">' + esc(title) + '</text>';
+        f += '<text class="ci2-ctitle" data-lab="ctitle" x="' + n1(c.px + c.pw / 2) + '" y="' + n1(c.py + (g.big ? 44 : 36)) + '" text-anchor="middle" style="font-size:' + c.fs + 'px">' + esc(title) + '</text>';
         for(var v = 0; v <= AMAX; v += 5){
           f += '<line class="ci2-grid" x1="' + n1(c.l) + '" x2="' + n1(c.r) + '" y1="' + n1(yA(v)) + '" y2="' + n1(yA(v)) + '"/>';
           f += '<text class="ci2-tick" data-lab="tick" x="' + n1(c.l - 6) + '" y="' + n1(yA(v) + 4) + '" text-anchor="end">' + v + '</text>';
@@ -281,14 +283,14 @@
         E.pMean = pill('ci2-pill is-sun', 'mean');
         E.pBand = pill('ci2-pill is-band', 'band');
         E.pE = [0, 1].map(function(i){ return mk('text', 'ci2-elab is-' + GR[i].id, { 'text-anchor': 'middle', 'data-lab': 'elab' }, sLabs); });
-        E.nl = [0, 1].map(function(i){ return mk('text', 'ci2-nlab', { 'text-anchor': 'middle', 'data-lab': 'nlab', x: n1(G.cb.cx[i]), y: n1(G.cb.b + (G.wide ? 43 : 42)) }, sLabs); });
+        E.nl = [0, 1].map(function(i){ return mk('text', 'ci2-nlab', { 'text-anchor': 'middle', 'data-lab': 'nlab', x: n1(G.cb.cx[i]), y: n1(G.cb.b + (G.big ? 43 : 42)) }, sLabs); });
       }
       var E = {}, LF = { v: null, tw: null };   // the leaf size, tweened when the number of plants changes
       function pill(cls, lab){
         var g = mk('g', cls, { 'data-lab': lab }, sLabs), r = mk('rect', null, { rx: 9 }, g), t = mk('text', null, { 'text-anchor': 'middle' }, g);
         var o = { g: g, r: r, t: t, s: null,
           set: function(s, x, y, anchor){
-            var fs = G.wide ? 13 : 12, w = tw(s, fs, 800) + 14, h = fs + 9, x0 = anchor === 'start' ? x : anchor === 'end' ? x - w : x - w / 2;
+            var fs = G.big ? 13 : 12, w = tw(s, fs, 800) + 14, h = fs + 9, x0 = anchor === 'start' ? x : anchor === 'end' ? x - w : x - w / 2;
             g.style.display = '';
             if(o.s !== s){ o.s = s; t.textContent = s; t.style.fontSize = fs + 'px'; }
             at(r, { x: x0, y: y - h / 2, width: w, height: h }); at(t, { x: x0 + w / 2, y: y + fs * 0.36 });
@@ -530,7 +532,7 @@
         });
         // the full light tray's mean, on a pill under its line, at its left end
         var d0 = drawn[0];
-        if(d0.n > 0) E.pMean.set('mean ' + F(r1(d0.mean), 1) + ' ' + U, G.tx[0] + 5, yH(d0.mean) + (G.wide ? 17 : 15), 'start'); else E.pMean.hide();
+        if(d0.n > 0) E.pMean.set('mean ' + F(r1(d0.mean), 1) + ' ' + U, G.tx[0] + 5, yH(d0.mean) + (G.big ? 17 : 15), 'start'); else E.pMean.hide();
         // the overlap or the gap between the two error bars
         var V = verdictOf(drawn[0], drawn[1]); lastV = V;
         stage.setAttribute('data-v', V ? V.kind : '');
@@ -540,7 +542,15 @@
           var bx0 = c.cx[0] + c.cap / 2 + 4, bx1 = c.cx[1] - c.cap / 2 - 4;
           at(E.band, { x: bx0, y: ya, width: bx1 - bx0, height: yb - ya, 'class': 'ci2-band is-' + V.kind }); E.band.style.display = '';
           E.pBand.g.setAttribute('class', 'ci2-pill is-' + V.kind);
-          E.pBand.set(V.kind === 'ov' ? 'overlap' : V.kind === 'gap' ? 'gap' : 'touch', (bx0 + bx1) / 2, (ya + yb) / 2, 'middle');
+          // the band's word: on the band, or just under or over it when a ± label is in the way (4 px clear)
+          var word = V.kind === 'ov' ? 'overlap' : V.kind === 'gap' ? 'gap' : 'touch', fsb = G.big ? 13 : 12, wb = tw(word, fsb, 800) + 14, hb = fsb + 9, mx = (bx0 + bx1) / 2;
+          var boxes = [0, 1].map(function(g){ var d = drawn[g]; if(!(d.n > 1)) return null; var yy = yA(d.mean + d.e2) - 7, w2 = tw('±' + F(r1(d.e2), 1), 12.5, 900) / 2; return [c.cx[g] - w2, yy - 13, c.cx[g] + w2, yy + 4]; });
+          var cands = [(ya + yb) / 2, yb + hb / 2 + 4, ya - hb / 2 - 4], yw = cands[0];
+          for(var ci = 0; ci < cands.length; ci++){
+            var bb = [mx - wb / 2 - 4, cands[ci] - hb / 2 - 4, mx + wb / 2 + 4, cands[ci] + hb / 2 + 4];
+            if(!boxes.some(function(q){ return q && q[0] < bb[2] && q[2] > bb[0] && q[1] < bb[3] && q[3] > bb[1]; })){ yw = cands[ci]; break; }
+          }
+          E.pBand.set(word, mx, yw, 'middle');
         } else { E.band.style.display = 'none'; E.pBand.hide(); }
         paintCause(V);
         hMean.place(); hSd.place();
@@ -655,7 +665,7 @@
       // the leaves: as big as the plants' spacing allows (fewer plants, bigger leaves), never under 7 px
       function leafFor(instant){
         if(!G) return;
-        var to = clamp(G.tw / Math.max(1, St.n) * 0.6, 8, G.wide ? 30 : 16);
+        var to = clamp(G.tw / Math.max(1, St.n) * 0.6, 8, G.wide ? 30 : G.big ? 24 : 16);
         if(LF.v == null || instant || calm()){ LF.v = to; LF.tw = null; }
         else if(Math.abs(to - LF.v) > 0.01) LF.tw = { from: LF.v, to: to, t0: now(), dur: 420 };
         G.leaf = LF.v;

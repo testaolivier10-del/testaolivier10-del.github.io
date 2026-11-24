@@ -444,6 +444,13 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    readings. Percent change: two potato cores on balances, a ruler in tenths of the start. Test yourself: Problems
    (the old Practice, unchanged, same record ids) and Challenges (the old goals and one for percent change). Still
    free. Open points: needs-author `rates-formula-sheet`, `rates-explore-catalase`, `rates-tangent-estimate`.
+40. (2026-11-23, `docs/tools-v2-bio-confidence-intervals-brief.md`) **Confidence intervals and error bars rebuilt to
+   tools v2** (branch `claude/tools-v2-bio-confidence-intervals`, waiting for the independent review; not merged).
+   Explore: two trays of bean seedlings (full light, shade) against a measuring board and a clipboard graph of each
+   tray's mean ± 2 SE; drag the shade tray's mean, spread its plants from the tallest one, choose 5, 10 or 20 plants
+   (they sprout one by one and each error bar steps shorter), New sample. Every number is read from the plants as
+   drawn. Test yourself: Problems (the old Practice, unchanged, same record ids) and Challenges (the old goals and one
+   on chance flipping the verdict). Still free. Open point: needs-author `ci-explore-beans`.
 
 ## 4. Map format (Phase 0)
 

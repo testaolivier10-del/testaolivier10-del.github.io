@@ -30,6 +30,7 @@
 @keyframes ci2fade{from{opacity:.35;}to{opacity:1;}}
 .ci2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
 @media (max-width:1023px){ .ci2-scene{flex:none;height:min(60vw,520px);min-height:430px;} }
+@media (min-width:641px) and (max-width:979px){ .ci2-scene{height:720px;} }
 @media (max-width:640px){ .ci2-scene{height:clamp(540px,146vw,600px);min-height:0;border-radius:14px;} .ci2{gap:8px;} }
 .ci2-lines{display:flex;align-items:center;justify-content:space-between;gap:6px 18px;flex-wrap:wrap;flex:none;}
 .ci2-acts{display:flex;align-items:center;gap:6px 10px;flex:none;margin-left:auto;flex-wrap:wrap;}
