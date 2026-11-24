@@ -21,7 +21,17 @@
        part    one part: its verb's demand, which answer earns the point, and
                (explain) the missing link of the chain
        verbs   every part of the question: what its verb demands
-       earns   every part: which of two answers earns the point */
+       earns   every part: which of two answers earns the point
+       write   one part to write yourself (the page's writing box with its
+               checklist), then which answer earns the point
+     The verb ladder (tools v2 Explore, docs/tools-v2-hug-frq-coach-brief.md):
+     each context's `ladder` is one answer in five pieces (name, features,
+     link, side, degree) and a prompt per rung. LADDER is the rung order,
+     NEEDED the pieces that rung's rubric line asks for, WRITTEN the pieces on
+     the page at a rung (the same: a full-credit answer writes only what the
+     verb asks for),
+     ADDS the piece a rung adds, RUBRIC_LINE its rubric line.
+       ladderAnswer(ctx, verb) -> [{ role, text, needed }] in page order */
 (function(G){
   'use strict';
   var M = G.ApHugMath;
@@ -46,8 +56,31 @@
   var RULES = { identify: [], define: [], describe: [], explain: ['mechanism'], compare: ['both'], 'explain-degree': ['degree', 'mechanism'] };
   var SLIPS = ['identify-only', 'no-link', 'one-side', 'no-degree', 'example', 'vague'];
   var SLIP_NAME = { 'identify-only': 'Names it, no more', 'no-link': 'No link', 'one-side': 'One side only', 'no-degree': 'No degree', example: 'An example, not a meaning', vague: 'Too vague' };
-  var TYPES = ['part', 'verbs', 'earns'];
-  var TYPE_LABEL = { part: 'One part, step by step', verbs: 'What each verb demands', earns: 'Which answer earns the point' };
+  var TYPES = ['part', 'verbs', 'earns', 'write'];
+  var TYPE_LABEL = { part: 'One part, step by step', verbs: 'What each verb demands', earns: 'Which answer earns the point', write: 'Write a part yourself' };
+
+  /* ---------------------------------------------------------- the ladder */
+  var LADDER = ['identify', 'describe', 'explain', 'compare', 'explain-degree'];
+  var PIECES = ['degree', 'name', 'features', 'link', 'side'];
+  var NEEDED = { identify: ['name'], describe: ['name', 'features'], explain: ['name', 'features', 'link'],
+    compare: ['name', 'features', 'side'], 'explain-degree': ['degree', 'name', 'features', 'link'] };
+  // The answer on the page is exactly what the rung asks for (review round 1): no piece the prompt did not ask for.
+  var WRITTEN = NEEDED;
+  var ADDS = { identify: 'name', describe: 'features', explain: 'link', compare: 'side', 'explain-degree': 'degree' };
+  var ADD_LABEL = { identify: 'a name', describe: 'its features', explain: 'how or why', compare: 'both sides', 'explain-degree': 'the degree first' };
+  var PIECE_NAME = { name: 'Name', features: 'Features', link: 'Because', side: 'Both sides', degree: 'Degree' };
+  var RUBRIC_LINE = {
+    identify: 'Names it. A word or a phrase earns the point.',
+    describe: 'Adds its features: what it is like, where, how much. A name alone earns nothing.',
+    explain: 'Adds how or why, with the link: because, so.',
+    compare: 'Speaks of both sides. The because is not needed here.',
+    'explain-degree': 'States the degree first, then explains it. The second side is not needed here.'
+  };
+  function ladderAnswer(ctx, verb){
+    var L = ctx.ladder, w = WRITTEN[verb], n = NEEDED[verb];
+    if(!L || !w) return [];
+    return PIECES.filter(function(k){ return w.indexOf(k) > -1; }).map(function(k){ return { role: k, text: L.pieces[k], needed: n.indexOf(k) > -1 }; });
+  }
 
   function flagsFor(part){
     var w = {};
@@ -84,13 +117,16 @@
       options: [c.link].concat(c.wrong.map(function(w){ return w.text; })), correct: 0,
       why: ['Right: it connects the cause to the effect, so the explanation has every link.'].concat(c.wrong.map(function(w){ return w.why; })) };
   }
-  function qText(ctx, only){
-    return '<p class="hug-fc-scn">' + ctx.scenario + '</p><ol class="hug-fc-parts">' + ctx.parts.map(function(p){
-      return '<li class="hug-fc-part' + (only && only.indexOf(p) < 0 ? ' is-dim' : '') + '"><span class="hug-fc-pl">' + p.label + '</span><span class="hug-fc-pt">' + promptHtml(p) + '</span></li>';
+  // The label carries a hidden ". " so a caption read as plain text says "A. Identify ..." (review round 1); with
+  // alone, only the asked parts are listed (the write kind).
+  function qText(ctx, only, alone){
+    return '<p class="hug-fc-scn">' + ctx.scenario + '</p><ol class="hug-fc-parts">' + ctx.parts.filter(function(p){ return !alone || !only || only.indexOf(p) > -1; }).map(function(p){
+      return '<li class="hug-fc-part' + (only && only.indexOf(p) < 0 ? ' is-dim' : '') + '"><span class="hug-fc-pl">' + p.label + '</span><span class="hug-fc-sep">. </span><span class="hug-fc-pt">' + promptHtml(p) + '</span></li>';
     }).join('') + '</ol>';
   }
   function generate(r, ctx, type){
-    type = type || r.pick(TYPES);
+    // "Any kind" picks from the first three kinds, so a problem link made before the write kind keeps its problem.
+    type = type || r.pick(TYPES.slice(0, 3));
     if(TYPES.indexOf(type) < 0) throw new Error('frqCoach: unknown type ' + type);
     var parts = ctx.parts, steps = [], sol = [], only;
     if(type === 'part'){
@@ -106,15 +142,23 @@
     } else if(type === 'verbs'){
       only = parts;
       parts.forEach(function(p){ steps.push(demandStep(r, p, 'demand-' + p.label)); sol.push('<b>' + partLabel(p) + ', ' + VERBS[p.verb].name + ':</b> ' + VERBS[p.verb].demand); });
+    } else if(type === 'write'){
+      var q = r.pick(parts);
+      only = [q];
+      steps.push(earnsStep(r, q, 'earns-' + q.label));
+      sol.push('<b>' + VERBS[q.verb].name + ':</b> ' + VERBS[q.verb].demand);
+      sol.push('<b>Rubric line (' + partLabel(q) + '):</b> ' + q.rubric);
+      sol.push('<b>Full-credit sample:</b> ' + q.sample);
     } else {
       only = parts;
       parts.forEach(function(p){ steps.push(earnsStep(r, p, 'earns-' + p.label)); sol.push('<b>' + partLabel(p) + ' (' + VERBS[p.verb].name + '):</b> ' + p.rubric + ' Sample: ' + p.sample); });
     }
-    return { type: type, ctx: ctx.id, topic: ctx.topic, parts: only.map(function(p){ return p.label; }), text: qText(ctx, only), steps: steps, solution: sol };
+    return { type: type, ctx: ctx.id, topic: ctx.topic, parts: only.map(function(p){ return p.label; }), text: qText(ctx, only, type === 'write'), steps: steps, solution: sol };
   }
 
   M.register('frqCoach', {
     VERBS: VERBS, VERB_ORDER: VERB_ORDER, RULES: RULES, SLIPS: SLIPS, SLIP_NAME: SLIP_NAME, TYPES: TYPES, TYPE_LABEL: TYPE_LABEL,
+    LADDER: LADDER, PIECES: PIECES, WRITTEN: WRITTEN, NEEDED: NEEDED, ADDS: ADDS, ADD_LABEL: ADD_LABEL, PIECE_NAME: PIECE_NAME, RUBRIC_LINE: RUBRIC_LINE, ladderAnswer: ladderAnswer,
     flagsFor: flagsFor, promptHtml: promptHtml, qText: qText, generate: generate
   });
 })(typeof window !== 'undefined' ? window : globalThis);

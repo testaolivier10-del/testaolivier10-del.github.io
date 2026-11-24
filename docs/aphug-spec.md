@@ -189,7 +189,7 @@ Each has Explore and Test yourself (seeded drills, feedback naming the slip), as
 | Slug | Unit | What |
 |---|---|---|
 | `model-studio` | 2-7 | Flagship. Build, apply and critique every named model |
-| `frq-coach` | 1-7 | Task verbs: answer FRQ parts one at a time with the verb's demand checked |
+| `frq-coach` | 1-7 | Task verbs: Explore, one answer that grows as the verb climbs a ladder; Test yourself, answer FRQ parts one at a time with the verb's demand checked |
 | `scale-lab` | 1 | Scale of analysis vs map scale; the same data at four scales tells different stories |
 | `map-reader` | 1 | Map types (choropleth, dot, graduated symbol, isoline, cartogram), patterns, legends, named places |
 | `population-lab` | 2 | Population pyramids, the transition stages, rates, doubling time, dependency ratio (`ApHugCalc`) |
@@ -299,6 +299,12 @@ key, the slip named; FRQs self-scored with one rubric line per point, the verb's
     places sits under it). Borders lab: boundary types on drawn land (hills, rivers, where each people lives, towns as
     houses), forces drawn on the base Country A (`figures/base/country-a.json`, as the diffusion lab), state shapes
     with a capital, 300 km rings and the far edge's distance. Notes: `docs/tool-review/done/hug.md`.
+- **2026-11-24, tools v2: FRQ coach rebuilt** (`docs/tools-v2-hug-frq-coach-brief.md`): the first HuG tool on the
+  shared kit (`ApHugTools.kit2`, `"kit2": true` in `pages.json`, kit links in `build-aphug.mjs`). Explore is an exam
+  booklet with a verb ladder (identify, describe, explain, compare, explain the degree) on which one full-credit answer
+  grows a piece at a time (`ladder` on each question in `frq-coach.json`, checked by the content check); the writing
+  box moved to Test yourself as "Write a part yourself" (`write` drill type). Open points: needs-author
+  `frq-coach-ladder`.
 
 ## 9. Open items for the owner
 
