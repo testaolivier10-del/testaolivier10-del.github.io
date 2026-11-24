@@ -14,7 +14,7 @@ often.
 - Rossman/Chance "Simulating confidence intervals" (https://www.rossmanchance.com/applets/index2021.html): 100
   intervals, captures green, misses red, the running rate. Take: one row per interval, the running rate.
 - Online Statistics Education "Confidence interval simulation" (https://onlinestatbook.com/stat_sim/conf_interval/instructions.html):
-  50 and 95 percent intervals for the same samples. Take: the same samples rebuilt at a new level.
+  95 and 99 percent intervals for the same samples. Take: the same samples rebuilt at a new level.
 - Seeing Theory "Frequentist inference: confidence intervals" (https://seeing-theory.brown.edu/frequentist-inference/index.html):
   intervals falling onto the parameter line. Take: each interval arriving, not appearing.
 

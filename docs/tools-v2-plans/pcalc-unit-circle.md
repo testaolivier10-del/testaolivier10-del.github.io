@@ -51,8 +51,8 @@ coordinates (CED 3.2 to 3.5, 3.8; OpenStax Precalculus §5.1 to 5.4). Exact valu
 
 ## Reuse
 `ApPrecalcTools.studioKit2`, `"kit2": true` in `precalculus/data/pages.json`; `K.handle` (a point on a circle; BC
-Polar lab uses the same pattern in its own course), `K.tabs`, `K.cause`; `ApPrecalcPlot.loop`. `build-apprecalc
---check`.
+Polar lab uses the same pattern in its own course), `K.tabs`, `K.cause`; `ApPrecalcPlot.loop`. 
+`build-apprecalc --check`.
 
 ## Risks reviewers will likely block on
 - The rolling wheel must not leave the picture after one turn (the graph scrolls, or the window holds 0 to 2π).

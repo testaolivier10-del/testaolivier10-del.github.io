@@ -15,7 +15,7 @@ precise; letting someone choose the groups biases it.
   assignment balances a lurking variable, shown over many runs. Take: the lurking variable's balance made visible.
 - Art of Stat "Random assignment" (https://artofstat.com/web-apps): treatment labels dealt to units. Take: labels
   dealt one by one.
-- Seeing Theory has no design tool; StatKey "Randomization test for a difference in means"
+- StatKey "Randomization test for a difference in means"
   (https://www.lock5stat.com/StatKey): a dotplot of differences. Take: the row of estimates.
 
 ## Old tool inventory (origin/main) and where each goes
