@@ -73,3 +73,112 @@
 .cs-hlh{fill:none;stroke:var(--cink);stroke-width:2;stroke-dasharray:5 4;}
 .cs-yours rect{fill:var(--bad-text);}
 .cs-yours text{fill:var(--white);font-size:12.5px;font-weight:800;}
+
+/* ---------------------------------------------------------------- tools v2 Explore (docs/tools-v2-stat-chi-square-lab-brief.md)
+   One colour per idea everywhere (picture, cause line, "?"): more than expected orange (--stat-s2, as the old heat map),
+   fewer than expected blue (--stat-s1), the expected count the ink line, χ² purple, the p-value the course colour (its
+   shaded area), an expected count under 5 red. The stacks themselves are neutral (a tray, a card, a seedling flat), so
+   only the gap carries a colour. */
+.cs2,.cs2-ref{--cs-up:var(--stat-s2);--cs-up-ink:#A84A00;--cs-dn:var(--stat-s1);--cs-dn-ink:#005A8C;--cs-chi:#7B4FB8;--cs-chi-ink:#5E3A94;
+  --cs-low:#C62828;--cs-ink:#1F2328;--cs-sub:#55606A;--cs-panel:#FFFFFF;--cs-edge:#D8E0DE;--cs-halo:rgba(255,255,255,.92);
+  --cs-w0:#F4EFE4;--cs-w1:#E9E1D0;--cs-tile:rgba(120,100,70,.13);--cs-c0:#B98552;--cs-c1:#8A5D35;--cs-csh:rgba(60,40,20,.18);
+  --cs-sign:#FFFDF8;--cs-bay:rgba(255,255,255,.55);--cs-sign-edge:#CDBFA6;--cs-t0:#E9EEF1;--cs-t1:#C9D3DA;--cs-t2:#AEBBC4;--cs-trl:rgba(40,55,70,.42);--cs-trh:rgba(255,255,255,.85);}
+:root[data-theme="dark"] .cs2,:root[data-theme="dark"] .cs2-ref{--cs-up-ink:#FFB385;--cs-dn-ink:#8FCBF2;--cs-chi:#B79BE8;--cs-chi-ink:#CDB8F2;
+  --cs-low:#FF7A70;--cs-ink:#F1EDE6;--cs-sub:#B8C0C7;--cs-panel:#1B1F23;--cs-edge:#343B42;--cs-halo:rgba(20,22,25,.88);
+  --cs-w0:#2A2722;--cs-w1:#221F1B;--cs-tile:rgba(255,240,210,.07);--cs-c0:#7A5634;--cs-c1:#5A3E25;--cs-csh:rgba(0,0,0,.4);
+  --cs-sign:#2B2925;--cs-bay:rgba(255,255,255,.04);--cs-sign-edge:#5A5245;--cs-t0:#AAB6BF;--cs-t1:#8796A2;--cs-t2:#6F7D89;--cs-trl:rgba(10,15,20,.55);--cs-trh:rgba(255,255,255,.45);}
+.cs2{display:flex;flex-direction:column;gap:10px;min-height:0;flex:1 1 auto;}
+.cs2 [hidden]{display:none !important;}
+.cs2-pick{display:inline-flex;align-items:center;gap:8px;font:800 13px var(--font-ui);color:var(--muted);}
+.cs2-sel{min-height:40px;max-width:250px;padding:0 30px 0 12px;border-radius:999px;border:1.5px solid var(--line);background:var(--white);color:var(--ink);font:800 14px var(--font-ui);}
+.cs2-sel:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.cs2-scene{position:relative;flex:1 1 auto;min-height:420px;border-radius:18px;overflow:hidden;}
+.cs2-scene.is-fade{animation:cs2fade .26s ease-out;}
+@keyframes cs2fade{from{opacity:.35;}to{opacity:1;}}
+.cs2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+@media (max-width:999.98px){ .cs2-scene{flex:none;height:600px;} }
+@media (max-width:640px){ .cs2-scene{border-radius:14px;} .cs2{gap:8px;} .cs2-pick-k{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);} .cs2-sel{max-width:200px;font-size:13.5px;} }
+.cs2-lines{display:flex;align-items:center;justify-content:space-between;gap:6px 18px;flex-wrap:wrap;flex:none;}
+.cs2-acts{position:relative;display:flex;align-items:center;gap:6px 12px;flex:none;margin-left:auto;min-height:44px;}
+@media (max-width:1100px){ .cs2-lines .tk2-cause{flex-basis:100%;} .cs2-acts{margin-left:0;} }
+@media (min-width:641px){ .cs2-lines .tk2-cause{min-height:62px;} }
+.cs2-pad{position:absolute;pointer-events:auto;touch-action:none;cursor:ns-resize;}
+.cs2 .cs2-knob .tk2-dot{box-shadow:0 0 0 2.5px var(--cink),0 1px 3px rgba(11,26,51,.3);}
+@media (max-width:599.98px){ .cs2 .cs2-knob .tk2-dot{width:24px;height:24px;} }
+/* the cause line in the colours of the picture */
+.cs2 .tk2-cz.is-up{--cz:var(--cs-up);--cz-ink:var(--cs-up-ink);}
+.cs2 .tk2-cz.is-down{--cz:var(--cs-dn);--cz-ink:var(--cs-dn-ink);}
+.cs2 .tk2-cz.is-chi{--cz:var(--cs-chi);--cz-ink:var(--cs-chi-ink);}
+.cs2 .tk2-cz.is-p{--cz:var(--cink);--cz-ink:var(--cink);}
+.cs2 .tk2-cz.is-bad{--cz:var(--cs-low);}
+/* the cafeteria: a tiled wall, wooden counters, a sign for each row */
+.cs2s-w0{stop-color:var(--cs-w0);} .cs2s-w1{stop-color:var(--cs-w1);} .cs2s-c0{stop-color:var(--cs-c0);} .cs2s-c1{stop-color:var(--cs-c1);}
+.cs2s-t0{stop-color:var(--cs-t0);} .cs2s-t1{stop-color:var(--cs-t1);} .cs2s-t2{stop-color:var(--cs-t2);}
+.cs2-tile{stroke:var(--cs-tile);stroke-width:1;}
+.cs2-panel{fill:var(--cs-panel);stroke:var(--cs-edge);stroke-width:1.2;}
+.cs2-ctrsh{fill:var(--cs-csh);}
+.cs2-sign{fill:var(--cs-sign);stroke:var(--cs-sign-edge);stroke-width:1.2;}
+.cs2-rh{fill:var(--cs-ink);font-weight:900;font-size:13px;}
+.cs2-ch{fill:var(--cs-ink);font-weight:800;font-size:12.5px;}
+.cs2-tk{fill:var(--cs-sub);font-weight:800;font-size:12px;}
+.cs2-rule{stroke:var(--cs-sign-edge);stroke-width:1.2;}
+.cs2-tot{fill:var(--cs-ink);font-weight:900;font-size:14px;font-variant-numeric:tabular-nums;paint-order:stroke;stroke:var(--cs-halo);stroke-width:3px;stroke-linejoin:round;}
+.cs2-tot.is-hl{fill:var(--cink);}
+.cs2-gt{fill:var(--cs-sub);}
+/* the stacks: neutral slabs, a tray (card, flat) line every u counts */
+.tok-card{--cs-t0:#FFF8E6;--cs-t1:#F1E3BF;--cs-t2:#DCC89A;--cs-trl:rgba(120,90,40,.5);}
+.tok-flat{--cs-t0:#4E7D4A;--cs-t1:#3C6338;--cs-t2:#2E4F2B;--cs-trh:rgba(170,220,150,.55);}
+:root[data-theme="dark"] .tok-card{--cs-t0:#E3D6B4;--cs-t1:#C9B98F;--cs-t2:#AE9C72;--cs-trl:rgba(60,40,10,.6);}
+:root[data-theme="dark"] .tok-flat{--cs-t0:#5C8F57;--cs-t1:#4A7746;--cs-t2:#3A6037;}
+.cs2-stk{stroke:rgba(30,40,50,.35);stroke-width:.8;}
+.cs2-trl{fill:var(--cs-trl);} .cs2-trh{fill:var(--cs-trh);}
+.cs2-lip{fill:var(--cs-trh);} .cs2-lip.is-off{display:none;}
+.cs2-gap.is-up{fill:var(--cs-up);fill-opacity:.72;}
+.cs2-gap.is-down{fill:var(--cs-dn);fill-opacity:.38;stroke:var(--cs-dn);stroke-width:1;stroke-opacity:.6;}
+.cs2-bay{fill:var(--cs-bay);}
+.cs2-etri{fill:var(--cs-ink);} .cs2-etri.is-low{fill:var(--cs-low);}
+.cs2-eline{stroke:var(--cs-ink);stroke-width:2.4;stroke-linecap:round;}
+.cs2-eline.is-low{stroke:var(--cs-low);}
+.cs2-eglyph{stroke:var(--cs-ink);stroke-width:2.4;stroke-linecap:round;}
+.cs2-o{fill:var(--cs-ink);font-weight:900;font-size:16px;font-variant-numeric:tabular-nums;}
+.cs2-o.is-up{fill:var(--cs-up-ink);} .cs2-o.is-down{fill:var(--cs-dn-ink);}
+.cs2-e{fill:var(--cs-sub);font-weight:800;font-size:12.5px;font-variant-numeric:tabular-nums;}
+.cs2-e.is-low{fill:var(--cs-low);}
+.cs2-selr{fill:none;stroke:none;}
+.cs2-selr.is-on{stroke:var(--cink);stroke-width:2.5;}
+.cs2-svg.is-ph .cs2-o{font-size:13px;} .cs2-svg.is-ph .cs2-e{font-size:11px;} .cs2-svg.is-ph .cs2-rh{font-size:11.5px;} .cs2-svg.is-ph .cs2-ch{font-size:11.5px;} .cs2-svg.is-ph .cs2-tot{font-size:13px;} .cs2-svg.is-ph .cs2-tk{font-size:11px;}
+/* the icons of what was counted */
+.ic-cheese{fill:#F4C95D;stroke:#C98B2E;stroke-width:.8;} .ic-crust{fill:none;stroke:#C98B2E;stroke-width:2.6;stroke-linecap:round;} .ic-pep{fill:#C8452F;}
+.ic-leaf{fill:#5E9E44;} .ic-leaf2{fill:#7DBA55;} .ic-tom{fill:#D9452F;} .ic-bowl{fill:#F2F4F5;stroke:#8C9AA3;stroke-width:1;}
+.ic-bread{fill:#E8C07A;} .ic-lett{stroke:#5E9E44;stroke-width:2;fill:none;} .ic-ham{stroke:#D98A8A;stroke-width:1.6;fill:none;} .ic-crusto{fill:none;stroke:#A87632;stroke-width:1.2;stroke-linejoin:round;}
+.ic-steam{fill:none;stroke:#9AA6AE;stroke-width:1.4;stroke-linecap:round;} .ic-soup{fill:#B9532F;stroke:#7A3518;stroke-width:1;} .ic-rim{stroke:#7A3518;stroke-width:1.6;}
+.ic-dev{fill:#2B2F36;} .ic-scr{fill:#6CB8EC;} .ic-scr2{fill:#7FB0D6;} .ic-bub{fill:#FFFFFF;} .ic-stand{stroke:#2B2F36;stroke-width:2;stroke-linecap:round;}
+.ic-page{fill:#EEF3F7;} .ic-bar{stroke:#6CB8EC;stroke-width:1.6;} .ic-base{fill:#8A939C;}
+.ic-stem{stroke:#4E8A3A;stroke-width:1.6;stroke-linecap:round;fill:none;} .ic-lf{fill:#5E9E44;}
+.ic-bloom circle,.ic-bloom1{fill:#E26DA0;} .ic-ctr circle,.ic-ctr1{fill:#F4C95D;}
+/* the χ² panel */
+.cs2-ptitle{fill:var(--cs-ink);font-weight:900;font-size:13px;}
+.cs2-curve{fill:none;stroke:var(--cs-sub);stroke-width:2.2;}
+.cs2-shade{fill:var(--cink);fill-opacity:.38;}
+:root[data-theme="dark"] .cs2-shade{fill-opacity:.5;}
+.cs2-axis{stroke:var(--cs-ink);stroke-width:1.5;} .cs2-tick{stroke:var(--cs-sub);stroke-width:1.2;}
+.cs2-tl{fill:var(--cs-sub);font-weight:700;font-size:11.5px;font-variant-numeric:tabular-nums;}
+.cs2-partsl{fill:var(--cs-sub);font-weight:800;font-size:11.5px;}
+.cs2-seg{stroke:var(--cs-panel);stroke-width:1;}
+.cs2-seg.is-up{fill:var(--cs-up);} .cs2-seg.is-down{fill:var(--cs-dn);}
+.cs2-seg.is-sel{stroke:var(--cs-ink);stroke-width:2;}
+.cs2-crit{stroke:var(--cs-sub);stroke-width:1.5;}
+.cs2-critl{fill:var(--cs-sub);font-weight:800;font-size:11.5px;paint-order:stroke;stroke:var(--cs-halo);stroke-width:3.5px;stroke-linejoin:round;}
+.cs2-mark{stroke:var(--cs-chi);stroke-width:2.4;}
+.cs2-pill rect{fill:var(--cs-chi);} .cs2-pill text{fill:#FFFFFF;font-weight:900;font-size:13px;}
+:root[data-theme="dark"] .cs2-pill text{fill:#16121E;}
+.cs2-pksw{fill:var(--cink);fill-opacity:.5;}
+.cs2-pkt{fill:var(--cink);font-weight:900;font-size:12.5px;}
+/* "?" */
+.cs2-ref h3{font:900 15px var(--font-ui);margin:16px 0 6px;}
+.cs2-ref .cs2-small{font-size:13px;color:var(--muted);}
+.cs2-set{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin:8px 0;font-weight:700;}
+.cs2-setk{font-weight:800;}
+.cs2-type{width:7ch;min-height:44px;padding:4px 8px;border-radius:10px;border:2px solid var(--line);background:var(--white);color:var(--ink);font:800 16px var(--font-mono);text-align:center;box-sizing:border-box;}
+.cs2-a[aria-pressed="true"]{background:var(--ctint);box-shadow:inset 0 0 0 2px var(--cink);color:var(--cink);}
+@media (prefers-reduced-motion: reduce){ .cs2-scene.is-fade{animation:cs2fade .26s ease-out;} }

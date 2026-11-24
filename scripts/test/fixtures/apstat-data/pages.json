@@ -232,6 +232,7 @@
    "blurb": "Fill in expected counts and watch the chi-square statistic build.",
    "lede": "Build a chi-square test from a two-way table, cell by cell.",
    "studio": true,
+   "kit2": true,
    "premium": "tools"
   },
   {
