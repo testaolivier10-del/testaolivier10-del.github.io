@@ -1558,6 +1558,7 @@
   }
   function finish(opts){
     var c = cur(), p = predict(c);
+    if(cue && cue.active() && MODE.mode === 'explore') placeCue();
     showFrame(S.frames.length - 1, 'end');
     labsEl.classList.remove('is-wait'); cause.el.classList.remove('is-wait');
     var quizHidden = MODE.mode === 'quiz' && MODE.part === 'call' && !quiz.revealed;
@@ -1690,7 +1691,8 @@
     var wide = r.right + 230 < roomEnd;
     if(cue && cueBelow === wide){ cue.hide(false); cue = null; }
     cueBelow = !wide;
-    var at = wide ? [r.right - sr.left + 8, r.top - sr.top + r.height / 2] : [r.left - sr.left + r.width / 2, cb.bottom - sr.top - 24];
+    // (under it, never so near the picture's edge that the bubble could stick out before the kit slides it in)
+    var at = wide ? [r.right - sr.left + 8, r.top - sr.top + r.height / 2] : [Math.max(100, r.left - sr.left + r.width / 2), cb.bottom - sr.top - 24];
     if(!cue) cue = K.cue(layer, { key: 'ochem-rp-reagent', text: 'Pick a reagent', side: wide ? 'right' : 'below', at: function(){ return at; } });
     else cue.place();
     var was = cue.active();
