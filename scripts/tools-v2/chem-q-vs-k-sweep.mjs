@@ -88,6 +88,10 @@ const probe = () => {
   if (vis(knob)) items.push({ n: 'knob', r: R(knob) });
   items.forEach(x => inS(x.r, x.n));
   [...scene.querySelectorAll('.qk2-wellbtn')].forEach((b, i) => inS(R(b), 'cup ' + i));
+  // the cups' pictures (canvases): inside their cups and 4 px clear of every text (recheck 1: they spilled over the names)
+  [...scene.querySelectorAll('.qk2-wellart')].forEach((cv, i) => { const ar = R(cv), cup = R(cv.closest('.qk2-wellbtn'));
+    if (ar.l < cup.l - 0.5 || ar.r > cup.r + 0.5 || ar.t < cup.t - 0.5 || ar.b > cup.b + 0.5) out.push(`cup ${i}'s picture spills out of the cup`);
+    texts.forEach(x => { if (gap(ar, x.r, 4)) out.push(`cup ${i}'s picture within 4 px of ${x.n}`); }); });
   for (let i = 0; i < items.length; i++) for (let j = i + 1; j < items.length; j++) {
     const a = items[i], c = items[j];
     if (a.n === 'knob' || c.n === 'knob') { if (gap(a.r, c.r, 0)) out.push('overlap: ' + a.n + ' and ' + c.n); continue; }

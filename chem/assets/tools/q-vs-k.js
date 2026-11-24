@@ -46,9 +46,7 @@
 
       /* ---------------------------------------------------- the stage */
       var stage = document.createElement('div'); stage.className = 'qk2';
-      // every text on this stage is sized by the tool (11 px and up, checked by the sweep), so the Tool Studio's phone
-      // text bump skips it; it measured the page on each change of the cause line (review round 1, the long frames)
-      stage.setAttribute('data-ls-text', 'keep');
+
       var tabs = K.tabs({ label: 'Reaction', value: RX[0].id, items: RX.map(function(r){ return { value: r.id, label: r.tab, short: r.chip }; }),
         onChange: function(v){ hideCue(true); pickReaction(v); } });
       stage.appendChild(tabs.el);
@@ -60,6 +58,9 @@
       sceneBox.innerHTML = '<svg class="qk2-svg" role="img" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"></svg><canvas class="qk2-mov" aria-hidden="true"></canvas><svg class="qk2-front" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"></svg>';
       stage.appendChild(sceneBox);
       tabs.el.querySelectorAll('.tk2-tab').forEach(function(b){ b.setAttribute('aria-controls', sceneBox.id); });
+      // every text in the picture is sized by the tool (11 px and up, checked by the sweep), so the Tool Studio's phone
+      // text raise skips the scene (the tabs and the cause line still get it)
+      sceneBox.setAttribute('data-ls-text', 'keep');
       var svg = sceneBox.querySelector('svg'), mov = sceneBox.querySelector('.qk2-mov'), front = sceneBox.querySelector('.qk2-front'), layer = K.layer(sceneBox);
       var lines = document.createElement('div'); lines.className = 'qk2-lines';
       var cause = K.cause({ label: 'Why' });
@@ -252,12 +253,13 @@
                 var fy = rows === 1 ? 0.5 : (mh * s / 2 + row * (hMin - mh * s) / (rows - 1)) / hMin;
                 // jy: a scatter up or down that grows with the room the piston gives above VMIN (at most 0.45 of the
                 // extra row spacing each way, so neighbours never come closer than at VMIN); the edge rows only inward
-                var jy = rows === 1 ? 0 : (rr() - 0.5) * 0.9; if(row === 0) jy = Math.abs(jy); if(row === rows - 1) jy = -Math.abs(jy);
-                list.push({ x: xs + off + col * cw + (rr() - 0.5) * gap * 0.4, fy: fy, jy: jy, a: (rr() - 0.5) * 0.1 });
+                var jy = rows === 1 ? 0 : (rr() - 0.5) * 0.96; if(row === 0) jy = Math.abs(jy); if(row === rows - 1) jy = -Math.abs(jy);
+                list.push({ x: xs + off + col * cw, fy: fy, jy: jy, a: (rr() - 0.5) * 0.1 });
               }
               void span;
             }
-            return { s: s, gas: list, hMin: hMin, rowsp: rows > 1 ? (hMin - mh * s) / (rows - 1) : 0 };
+            list.forEach(function(sl){ sl.jx = (rr() - 0.5) * 0.9; });
+            return { s: s, gas: list, hMin: hMin, rowsp: rows > 1 ? (hMin - mh * s) / (rows - 1) : 0, ch: ch, xroom: Math.max(0, cw - mw * s - 2), half: mw * s / 2 };
           }
         }
         return { s: 0.3, gas: [], hMin: hMin };
@@ -274,7 +276,9 @@
       var needle = { a: null, to: null }, VD = { v: EX.V0, from: EX.V0, to: EX.V0, t0: 0 };
       var gasUse = [], lumpUse = [];
       function sc(){ return G.rs[S.ri].s; }
-      function slotPos(i, V){ var r = R(), sl = G.gasSlots[i], h = gasH(G, r, V) - 8, rs = G.rs[S.ri]; return [sl.x, gasFloor(G, r) - 4 - sl.fy * h - sl.jy * rs.rowsp * Math.max(0, h / rs.hMin - 1)]; }
+      function slotPos(i, V){ var r = R(), sl = G.gasSlots[i], h = gasH(G, r, V) - 8, rs = G.rs[S.ri]; // the scatter: up to 0.48 of the room between neighbouring rows beyond one molecule's height and gap (so two rows moving
+        // toward each other stay a full cell apart), the same across in a row
+        var pitch = rs.rowsp * h / rs.hMin; return [clamp(sl.x + sl.jx * rs.xroom, G.x0 + rs.half + 3, G.x1 - rs.half - 3), gasFloor(G, r) - 4 - sl.fy * h - sl.jy * Math.max(0, pitch - rs.ch)]; }
       function newP(key, x, y, a){ return { key: key, gas: isGas(key), x: x, y: y, a: a || 0, slot: -1, state: 'rest', counted: true, scale: 1 }; }
       function freeGas(nearX, nearY){
         var best = -1, bd = Infinity;
@@ -517,13 +521,20 @@
       function paintPiston(){ if(L.piston) L.piston.setAttribute('transform', 'translate(0 ' + f1(pistonY(VD.v)) + ')'); }
 
       /* ---- the tray's sprites (drawn into the well buttons) and the cluster carried by a drag */
+      function clusterSize(key, n, big){
+        var s = sc() * (big || 1), gas = isGas(key), e = gas ? extent(key) : null;
+        var w = gas ? (e.w * s + 4) * (n > 1 ? 2.75 : 1) : G.lumpW * 1.1 * (big || 1), h = gas ? (e.h * s + 6) * (n > 1 ? 1.9 : 1) : G.lumpH * 1.2 * (big || 1);
+        return [Math.ceil(w + 6), Math.ceil(h + 6)];
+      }
+      // the largest scale (at most big) at which a cup's picture fits inside the cup, 4 px clear of its edges (recheck 1)
+      function fitBig(key, n, big, cw, ch){ var b = big; for(var i = 0; i < 40; i++){ var z = clusterSize(key, n, b); if(z[0] <= cw - 8 && z[1] <= ch - 8) return b; b *= 0.96; } return b; }
       function clusterCanvas(key, n, big){
         var s = sc() * (big || 1), gas = isGas(key), c = document.createElement('canvas'), d = CV.dpr, e = gas ? extent(key) : null;
-        var w = gas ? (e.w * s + 4) * (n > 1 ? 1.75 : 1) : G.lumpW * 1.1, h = gas ? (e.h * s + 6) * (n > 1 ? 3.1 : 1) : G.lumpH * 1.2;
-        w = Math.ceil(w + 6); h = Math.ceil(h + 6);
+        var z = clusterSize(key, n, big), w = z[0], h = z[1];
         c.width = Math.round(w * d); c.height = Math.round(h * d); c.style.width = w + 'px'; c.style.height = h + 'px';
         var x = c.getContext('2d'); x.scale(d, d);
-        var pos = n > 1 ? [[0.34, 0.25], [0.62, 0.5], [0.38, 0.77]] : [[0.5, 0.5]];
+        // three side by side in a shallow V (the cups are wider than tall)
+        var pos = n > 1 ? [[0.19, 0.32], [0.5, 0.68], [0.81, 0.32]] : [[0.5, 0.5]];
         pos.slice(0, n).forEach(function(q, i){ var p = newP(key, q[0] * w, q[1] * h, (i === 1 ? -0.18 : 0.12 * (i ? 1 : -1))); if(!gas){ p.x = w / 2; p.y = h / 2; } p.scale = big || 1; drawP(x, p); });
         return c;
       }
@@ -715,7 +726,7 @@
             var m = e.ins[0], s3 = sc();
             if(!e.formed){ var sp = ease(clamp(t / 0.475, 0, 1)); m.atomsAt = null; var base = restPos(m); m.x = base[0]; m.y = base[1]; m.a = lerp(base[2], 0, sp); e.P = [m.x, m.y];
               // the bond stretches
-              var dd = 9 * s3 * (1 + 0.5 * sp); m.atomsAt = [{ el: 'A', r: 9 * s3, x: m.x - dd, y: m.y }, { el: 'B', r: 9 * s3, x: m.x + dd, y: m.y }]; m.state = 'busy2'; }
+              var dd = 9 * s3 * (1 + 0.5 * sp), mx = clamp(m.x, G.x0 + dd + 9 * s3 + 2, G.x1 - dd - 9 * s3 - 2); m.atomsAt = [{ el: 'A', r: 9 * s3, x: mx - dd, y: m.y }, { el: 'B', r: 9 * s3, x: mx + dd, y: m.y }]; m.state = 'busy2'; e.P = [mx, m.y]; }
             if(t >= 0.475 && !e.formed){ e.formed = true; var i2 = ps.indexOf(m); if(i2 > -1) ps.splice(i2, 1); e.out.forEach(function(p){ p.counted = true; p.state = 'move'; ps.push(p); }); paintReadouts(); }
             if(e.formed){ var w = ease(clamp((t - 0.5) / 0.5, 0, 1)), dd2 = 9 * s3 * 1.5;
               e.out.forEach(function(p, k){ var to2 = restPos(p), sx = e.P[0] + (k ? dd2 : -dd2); p.x = lerp(sx, to2[0], w); p.y = lerp(e.P[1], to2[1], w); p.a = to2[2] * w; }); }
@@ -811,7 +822,7 @@
           b.setAttribute('aria-label', s.html.replace(/[₀-₉]/g, function(m){ return SUBD[m]; }) + (gas ? '' : ' (solid)') + ': press to add ' + n + (gas ? ' particles' : ' lump') + ', Delete to take ' + n + ' out');
           b.setAttribute('aria-keyshortcuts', 'Enter Delete');
           b.dataset.key = s.key;
-          var cv = clusterCanvas(s.key, n, gas ? 1 : 1.05); cv.className = 'qk2-wellart'; b.appendChild(cv);
+          var kk = layer.scale() || 1, cv = clusterCanvas(s.key, n, fitBig(s.key, n, gas ? 1 : 1.05, wl.w * kk, wl.h * kk)); cv.className = 'qk2-wellart'; b.appendChild(cv);
           layer.el.appendChild(b); wellBtns.push(b);
           b.addEventListener('pointerdown', function(ev){ wellDown(ev, wl, b); });
           b.addEventListener('click', function(ev){ if(ev.detail === 0) { add(s.key); } });
@@ -881,8 +892,18 @@
         var gas = isGas(key), n = gas ? DROP : 1;
         for(var i = 0; i < n; i++) enter(key, i * 110);
         S.act = { kind: 'add', key: key, d: 1, n: n }; S.solidAct = !gas; S.ran = 0;
+        firstScroll();
         if(K.reduced()){ changed(); return; }
         changed(); paintReadouts(true); placeWells();
+      }
+      // on a phone the plate (its arrow) and the cause line are under the tray: the first press of a visit brings the
+      // scene's top up, once, gently (at once in reduced motion), when they are below the screen (recheck 1)
+      var scrolled = false;
+      function firstScroll(){
+        if(scrolled || !G || !G.phone) return; scrolled = true;
+        var r0 = sceneBox.getBoundingClientRect(), cb = cause.el.getBoundingClientRect();
+        if(cb.bottom <= window.innerHeight) return;
+        try{ window.scrollTo({ top: Math.max(0, window.scrollY + r0.top - 4), behavior: K.reduced() ? 'auto' : 'smooth' }); }catch(e){ window.scrollTo(0, window.scrollY + r0.top - 4); }
       }
       // three of a kind (one lump of a solid) leave through the port: the picked one and the nearest others
       function takeOut(key, p0){
@@ -893,6 +914,7 @@
         var go = [first].concat(list.filter(function(p){ return p !== first; }).sort(function(a, b){ return Math.hypot(a.x - first.x, a.y - first.y) - Math.hypot(b.x - first.x, b.y - first.y); })).slice(0, n);
         go.forEach(function(p, i){ leave(p, i * 110); });
         S.act = { kind: 'out', key: key, d: -1, n: go.length }; S.solidAct = !gas; S.ran = 0;
+        firstScroll();
         hideCue(true);
         changed(); paintReadouts(true); placeWells();
       }
@@ -931,6 +953,7 @@
         S.V = v; hideCue(true); tourDid('vol');
         VD.from = VD.v; VD.to = v; VD.t0 = now();
         S.act = { kind: 'vol', V: v }; S.solidAct = false; S.ran = 0;
+        firstScroll();
         changed();
       }
 
