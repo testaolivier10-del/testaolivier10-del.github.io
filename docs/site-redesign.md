@@ -209,3 +209,5 @@ and the Practice this unit / Unit page buttons. Pressing Start with no path asks
 (assets/course/path.js, openFirst); skipping marks the path as course order. The course home's Premium card is two
 lists side by side (scripts/lib/pricing-section.mjs, splitSection), read from the same rows as premium.html.
 A&P and ochem Learn panels were not changed (different markup).
+
+Follow-up, same day (owner): the "Pick up where you left off" banner is gone from the r3 course home hero, and the Read / Builds on / Leads to rows are gone from A&P interactive lessons. Reason: both were extra things to read before starting. The NREMT and Ochem resume banner (course-home.mjs) is unchanged.

@@ -250,11 +250,6 @@ ${parts.map((p, i) => `  <section class="anp-part anp-step${i === 0 ? ' is-on' :
   </section>`).join('\n')}
     <div class="anp-ls-actions anp-nav-ref"><button type="button" class="anp-ls-back">&larr; Previous</button><button type="button" class="anp-ls-go">Continue &rarr;</button><a class="anp-ls-go" hidden href="${nxBuilt ? `${nx.id}.html">Next lesson` : `../chapters/${ch.id}.html">Back to the chapter`} &rarr;</a></div>
   </div>
-  <nav class="anp-ls-related anp-nav-ref" aria-label="Related lessons">
-    ${chipRow('Read', `<a href="../notes/${id}.html">${esc(t.title)} notes</a>`)}
-    ${earlier.length ? chipRow('Builds on', earlier.map(chip).join('')) : ''}
-    ${later.length ? chipRow('Leads to', later.slice(0, 6).map(chip).join('') + (later.length > 6 ? `<details><summary>${later.length - 6} more</summary>${later.slice(6).map(chip).join('')}</details>` : '')) : ''}
-  </nav>
   ${disclaimer(L.hook + L.summary)}
   </main>
 </div>

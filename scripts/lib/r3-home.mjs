@@ -113,8 +113,6 @@ export function r3HomeMain(key, ctx) {
 <p class="issue">${d.pill}${beta} <i></i> ${d.note}</p>
 <h1 class="mast${[d.t1, d.t2].some((w) => /\S{13,}/.test(String(w || '').replace(/<[^>]*>|&[a-z]+;/g, ''))) ? ' mast-long' : ''}" id="r3Title">${d.t1}<span>${d.t2}</span></h1>
 <p class="hand">${d.hand}</p>
-<a class="hero-continue" id="r3Resume" href="#" hidden><small>Pick up where you left off</small><b id="r3ResumeLabel"></b></a>
-<script>try{var r=(JSON.parse(localStorage.getItem('levl_resume')||'{}')||{})[${JSON.stringify(key)}];if(r&&typeof r.url==='string'&&/^\\/[^\\/]/.test(r.url)){var a=document.getElementById('r3Resume');a.href=r.url;document.getElementById('r3ResumeLabel').textContent=r.label||'Your last page';a.hidden=false;}}catch(e){}</script>
 </div><div class="art" aria-hidden="true"><img src="${up}assets/covers/art/${key}.svg" alt="" width="640" height="400" decoding="async" fetchpriority="high"></div></div></section>`;
 
   /* ---- ways to study: in place of the try one question (owner 2026-11-04: it was clutter). The three
