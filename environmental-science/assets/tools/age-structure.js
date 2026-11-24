@@ -4,16 +4,12 @@
    the content environmental-science/data/tools/age-structure.json (served
    filtered as assets/tool-data/age-structure.json).
 
-   Explore: one country you steer through the demographic transition.
-     Stage chips 1 to 4 set its birth and death rates, fertility and life
-     expectancy to the stage's typical values; the TFR and life expectancy
-     sliders fine-tune them. The pyramid is the model's (every bar the % of the
-     population in that band, men left, women right), and morphs between
-     states (reduced motion: no tween). Beside it, the transition chart: crude
-     birth and death rate curves through the four stages, the gap between
-     them shaded as growth, and a marker at this country. A strip under the
-     pyramid gives the young, working and old shares and the growth rate.
-     Tap a bar (or arrow keys on the pyramid) to read that band.
+   Explore (tools v2, docs/tools-v2-apenv-age-structure-brief.md; kit assets/course/tool-kit2.js): one screen, no
+     tabs. A population pyramid built of rows of people over a town square; drag the mother along the children per
+     woman track (her children stand beside her) and the base widens or narrows, the rows above following; a quiet
+     life expectancy knob fills out or thins the top. One number on the picture (grows or shrinks, % a year), the
+     replacement mark on the track, and the cause line. The stage table, the dependency ratio and the row values
+     are in "?"; the stage drills in Test yourself.
    Test yourself: ApEnvTools.drill over the model's generate(): growth rate
    and doubling year, TFR from age-specific rates, reading a pyramid's shape,
    the stage from crude rates and why countries move on, and the dependency
@@ -24,8 +20,6 @@
   var T = window.ApEnvTools, M = window.ApEnvMath, P = window.ApEnvPlot;
   if(!T || !M || !M.ageStructure) return;
   var A = M.ageStructure, esc = T.esc, nf = A.nf;
-  var app0 = document.getElementById('app');
-  if(app0 && !app0.getAttribute('data-details-title')) app0.setAttribute('data-details-title', 'Numbers & settings');
   function r1(v){ return Math.round(v * 10) / 10; }
   function tx(x, y, s, cls, anchor){ return '<text x="' + r1(x) + '" y="' + r1(y) + '"' + (cls ? ' class="' + cls + '"' : '') + (anchor ? ' text-anchor="' + anchor + '"' : '') + '>' + esc(s) + '</text>'; }
   function reduced(){ return P && P.reduced ? P.reduced() : T.reduced(); }
@@ -36,7 +30,7 @@
     T.modes(app, { slug: 'age-structure',
       explore: function(host){ ex = explore(host, data); },
       quiz: function(host){ quiz(host, data); },
-      onShow: function(m){ if(m !== 'explore' && ex) ex.stop(); },
+      onShow: function(m){ if(ex) ex.shown(m); },
       studio: { explore: function(pane, s){ ex.studio(pane, s); } } });
   });
 
@@ -119,113 +113,398 @@
     return best;
   }
 
-  /* --------------------------------------------------------- explore */
+  /* ====================================================================== Explore v2
+     (docs/tools-v2-apenv-age-structure-brief.md; kit assets/course/tool-kit2.js). One idea, one screen: fertility sets
+     the base of the pyramid, and the base becomes the future population.
+       The picture: a town square at the foot of a population pyramid built of rows of small people (men left, women
+       right, 5 year bands, every width the model's share at one fixed scale). On the square a mother stands on the
+       children per woman track with her children beside her (as many as the rate; a part of a child for a fraction):
+       she is the main control (drag her, or her knob; keys). Quiet: the life expectancy knob in the top corner.
+       The model: A.stable(tfr, e0), the population that rate and life expectancy settle into (no migration), so the
+       growth, the shape word and the replacement mark come from one honest life table (replacement rises when many
+       children die). A change eases in from the base up: each row follows its own copy of the rate a little later
+       than the row below (the new children first, the older rows as they would over decades), and every row is
+       drawn at the model's value for the rate it holds at that frame. The number on the picture, the shape word and
+       the cause line read the rows as drawn. Reduced motion: the new pyramid at once with a short cross fade. */
+  var K = window.LevlKit2;
+  var SVGNS = 'http://www.w3.org/2000/svg';
+  var PURPOSE = 'How fertility today shapes a population’s future';
+  var SCALE = 15;   // % of all people at the end of each half: the widest band anywhere in the ranges is 14.7%
+  var TMIN = 1, TMAX = 7, EMIN = 30, EMAX = 85;
+  function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
+  function n1(v){ return (Math.round(v * 10) / 10).toFixed(1); }
+  var MC = null;
+  function tw(t, fs, wt){
+    if(!MC){ try{ MC = document.createElement('canvas').getContext('2d'); }catch(e){ MC = null; } }
+    if(!MC) return String(t).length * fs * 0.56;
+    MC.font = (wt || 800) + ' ' + fs + 'px Nunito, system-ui, sans-serif';
+    return MC.measureText(String(t)).width;
+  }
+  /* growth words from a rate r (a fraction per year): the number on the picture and the cause line */
+  function growthWords(r){
+    var p = r * 100, a = Math.abs(p);
+    if(a < 0.05) return { dir: 0, pill: 'About steady', part: 'about steady', two: '' };
+    var pc = (Math.round(a * 10) / 10).toFixed(1), yrs = Math.round(70 / (Math.round(a * 10) / 10));
+    return p > 0 ? { dir: 1, pill: 'Grows ' + pc + '% a year', part: 'grows ' + pc + '% a year', two: 'doubles in ' + yrs + ' years' }
+      : { dir: -1, pill: 'Shrinks ' + pc + '% a year', part: 'shrinks ' + pc + '% a year', two: 'halves in ' + yrs + ' years' };
+  }
+  var TAKE = 'Above replacement the base widens and the population grows; below it, the base narrows and the population shrinks.';
+  var SHAPE_WORD = { expansive: 'expansive', stable: 'stable', constrictive: 'constrictive' };
+
+  /* a person in a box w × h (feet at the bottom middle): head, body, two legs */
+  function personPath(x, y, w, h){
+    var hr = Math.min(w * 0.24, h * 0.13), cx = x + w / 2, hy = y + hr + h * 0.04, bt = hy + hr + h * 0.04, bw = w * 0.36, bb = y + h * 0.66, lw = w * 0.13;
+    return 'M' + n1(cx + hr) + ' ' + n1(hy) + 'a' + n1(hr) + ' ' + n1(hr) + ' 0 1 1 ' + n1(-2 * hr) + ' 0a' + n1(hr) + ' ' + n1(hr) + ' 0 1 1 ' + n1(2 * hr) + ' 0Z' +
+      'M' + n1(cx - bw) + ' ' + n1(bb) + 'L' + n1(cx - bw * 0.82) + ' ' + n1(bt + 2) + 'Q' + n1(cx - bw * 0.8) + ' ' + n1(bt) + ' ' + n1(cx - bw * 0.5) + ' ' + n1(bt) + 'H' + n1(cx + bw * 0.5) + 'Q' + n1(cx + bw * 0.8) + ' ' + n1(bt) + ' ' + n1(cx + bw * 0.82) + ' ' + n1(bt + 2) + 'L' + n1(cx + bw) + ' ' + n1(bb) + 'Z' +
+      'M' + n1(cx - bw * 0.62) + ' ' + n1(bb - 1) + 'h' + n1(lw * 2) + 'V' + n1(y + h) + 'h' + n1(-lw * 2) + 'Z' +
+      'M' + n1(cx + bw * 0.62 - lw * 2) + ' ' + n1(bb - 1) + 'h' + n1(lw * 2) + 'V' + n1(y + h) + 'h' + n1(-lw * 2) + 'Z';
+  }
+  /* the mother and a child on the square: drawn figures with a face, hair and clothes (box w × h, feet at y + h) */
+  function figure2(x, y, w, h, o){
+    var s = h / 100, cx = x + w / 2;
+    var g = '<g transform="translate(' + n1(cx - 50 * s) + ' ' + n1(y) + ') scale(' + s.toFixed(4) + ')">';
+    if(o.kind === 'mom'){
+      g += '<path d="M40 64 L36 98 H45 L48 68Z M60 64 L64 98 H55 L52 68Z" fill="#3B3F4A"/>' +
+        '<path d="M30 70 C30 44 38 34 50 34 C62 34 70 44 70 70 L74 74 H26Z" class="agv-dress"/>' +
+        '<path d="M32 48 C24 56 22 64 26 70" stroke="' + o.skin + '" stroke-width="7" stroke-linecap="round" fill="none"/><path d="M68 48 C76 56 78 64 74 70" stroke="' + o.skin + '" stroke-width="7" stroke-linecap="round" fill="none"/>' +
+        '<path d="M35 21 C35 5 65 5 65 21 L67 44 C63 46 60 44 59 40 L59 24 H41 L41 40 C40 44 37 46 33 44Z" fill="#3A2A20"/>' +
+        '<circle cx="50" cy="22" r="13" fill="' + o.skin + '"/><path d="M37 19 C40 9 60 8 63 19 C56 14 44 14 37 19Z" fill="#3A2A20"/>' +
+        '<circle cx="45.5" cy="23" r="1.6" fill="#1b1b1b"/><circle cx="54.5" cy="23" r="1.6" fill="#1b1b1b"/><path d="M46 28 Q50 31 54 28" stroke="#7a3b2a" stroke-width="1.6" fill="none" stroke-linecap="round"/>';
+    } else {
+      g += '<rect x="38" y="66" width="10" height="32" rx="5" fill="#3B3F4A"/><rect x="52" y="66" width="10" height="32" rx="5" fill="#33363F"/>' +
+        '<path d="M28 76 C28 46 37 38 50 38 C63 38 72 46 72 76Z" class="' + o.cls + '"/>' +
+        '<circle cx="50" cy="24" r="15" fill="' + o.skin + '"/><path d="M35 22 C37 8 63 7 65 21 C58 15 43 15 35 22Z" fill="' + o.hair + '"/>' +
+        '<circle cx="45" cy="25" r="1.8" fill="#1b1b1b"/><circle cx="55" cy="25" r="1.8" fill="#1b1b1b"/>';
+    }
+    return g + '</g>';
+  }
+  var SKIN = ['#E8B994', '#C68B62', '#8D5B3E', '#F0C8A8', '#B67A50', '#DDA57E', '#7A4A30'];
+  var HAIR = ['#3A2A20', '#1F1A17', '#6B4423', '#2B211B', '#8A5A2B', '#3A2A20', '#151210'];
+
   function explore(host, data){
-    var stage = 2, tfr = A.STAGES[2].tfr, e0 = A.STAGES[2].e0, cbr = A.STAGES[2].cbr, cdr = A.STAGES[2].cdr, sel = null, LS = null, touched = false, anim = null, shown = null, nid = T.nid('ap');
-    function $(q){ return host.querySelector(q) || (LS ? LS.root.querySelector(q) : null); }
-    host.innerHTML = '<section class="bt-problem ap-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Age structure</h2>' +
-      '<div class="ap-stage"><div class="ap-strip" aria-hidden="true"></div><div class="ap-fig"><svg class="ap-svg" role="img" tabindex="0" xmlns="http://www.w3.org/2000/svg"></svg></div></div>' +
-      '<div class="ap-ctl">' +
-        '<div class="ap-stages tseg" role="group" aria-label="Stage of the demographic transition">' + [1, 2, 3, 4].map(function(s){ return '<button type="button" class="ap-st" data-s="' + s + '" aria-pressed="' + (s === stage) + '">Stage ' + s + '</button>'; }).join('') + '</div>' +
-        '<div class="ap-sl-t"></div>' +
-      '</div>' +
-      '<div class="ap-say"></div>' +
-      T.moreHtml('<div class="ap-sl-e"></div><p class="bt-small">Life expectancy at birth. Low values mostly mean many children die young.</p>', 'life expectancy') +
-      '<div class="ap-nums"></div><p class="sr-only ap-live" role="status" aria-live="polite"></p></section>';
-    var say = T.announcer($('.ap-live'));
-    var cue = T.cue('Step through stages 1 to 4 and watch the pyramid change shape.');
-    $('.ap-ctl').insertBefore(cue.el, $('.ap-ctl').firstChild);
-    function act(){ if(!touched){ touched = true; cue.done(); } }
-    var slT = T.slider({ label: 'Total fertility rate (children per woman)', min: 1.0, max: 7.0, step: 0.1, value: tfr, decimals: 1, onInput: function(v){ tfr = v; act(); custom(); } });
-    var slE = T.slider({ label: 'Life expectancy (years)', min: 30, max: 85, step: 1, value: e0, decimals: 0, onInput: function(v){ e0 = v; act(); custom(); } });
-    $('.ap-sl-t').appendChild(slT.el); $('.ap-sl-e').appendChild(slE.el);
-    var svg = $('.ap-svg');
-    /* Moving a slider: the crude rates follow from the model population (births
-       and deaths per 1,000 people it implies), so the dot on the transition chart moves too. */
-    function custom(){
-      var pyr = A.pyramid(tfr, e0), b = A.broad(pyr), women = 0;
-      for(var i = 3; i <= 9; i++) women += pyr.female[i];
-      cbr = Math.round(tfr / 35 * women * 10);
-      var surv = A.survival(e0); cdr = Math.round(Math.max(4, Math.min(45, 1000 / e0 * (0.55 + b.old / 40) * (e0 > 70 ? 0.85 : 1))));
-      stage = A.stageOf(cbr, cdr);
-      draw(true);
+    var S = { t: 5, e: 60, T: [], E: 60, mode: 'explore', side: 0, take: false };
+    for(var i0 = 0; i0 < 17; i0++) S.T.push(S.t);
+    var LS = null, nid = T.nid('agv'), G = null, raf = 0, lastT = 0, tour = null;
+    var stage = document.createElement('div'); stage.className = 'agv';
+    var head = K.head({ purpose: PURPOSE, how: { label: 'Show me how', onClick: function(){ startTour(true); } } });
+    stage.appendChild(head.el);
+    var sceneBox = document.createElement('div'); sceneBox.className = 'agv-scene'; sceneBox.id = nid + '-sc';
+    sceneBox.innerHTML = '<svg class="agv-svg" role="img" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"><defs></defs><g class="agv-static"></g><g class="agv-rows"></g><g class="agv-dyn"></g></svg><div class="agv-fade" aria-hidden="true"></div>';
+    stage.appendChild(sceneBox);
+    var svg = sceneBox.querySelector('svg'), defs = svg.querySelector('defs'), gStatic = svg.querySelector('.agv-static'), gRows = svg.querySelector('.agv-rows'), gDyn = svg.querySelector('.agv-dyn'), fade = sceneBox.querySelector('.agv-fade');
+    var layer = K.layer(sceneBox);
+    var lines = document.createElement('div'); lines.className = 'agv-lines';
+    var cause = K.cause({ label: 'Why' });
+    lines.appendChild(cause.el); stage.appendChild(lines);
+    var live = document.createElement('p'); live.className = 'tk2-sr'; live.setAttribute('aria-live', 'polite'); stage.appendChild(live);
+    host.appendChild(stage);
+    var ref = document.createElement('div'); ref.className = 'agv-ref';
+
+    /* ---- the model at a rate and a life expectancy (memo: a drag revisits the same tenths) */
+    var memo = {}, memoN = 0;
+    function model(t, e){
+      var k = t.toFixed(3) + '/' + e.toFixed(1);
+      if(memo[k]) return memo[k];
+      if(++memoN > 3000){ memo = {}; memoN = 0; }
+      return (memo[k] = A.stable(t, e));
     }
-    function setStage(s){ stage = s; var S0 = A.STAGES[s]; tfr = S0.tfr; e0 = S0.e0; cbr = S0.cbr; cdr = S0.cdr; slT.set(tfr); slE.set(e0); draw(true); }
-    function size(){ var b = svg.getBoundingClientRect(); return [Math.max(300, Math.round(b.width || 640)), Math.max(300, Math.round(b.height || 420))]; }
-    function draw(tween){
-      var target = A.pyramid(tfr, e0);
-      if(tween && shown && !reduced() && P){
-        if(anim) anim.stop();
-        var from = shown;
-        anim = P.loop(function(dt, t){ var k = Math.min(1, t / 0.45), e = k * (2 - k); render({ groups: target.groups, male: from.male.map(function(v, i){ return v + (target.male[i] - v) * e; }), female: from.female.map(function(v, i){ return v + (target.female[i] - v) * e; }) }); return k < 1; },
-          { duration: 0.5, onEnd: function(){ render(target); anim = null; } });
-        anim.start();
-      } else render(target);
-      words(target);
+    /* what is drawn this frame: each row at the model's value for its own rate; the growth and the rates from the base row's */
+    function drawn(){
+      var male = [], female = [];
+      for(var i = 0; i < 17; i++){ var m = model(S.T[i], S.E); male.push(m.male[i]); female.push(m.female[i]); }
+      var b = model(S.T[0], S.E);
+      return { groups: A.GROUPS, male: male, female: female, t: S.T[0], e: S.E, r: b.r, cbr: b.cbr, cdr: b.cdr, repl: b.repl };
     }
-    function render(pyr){
-      shown = pyr;
-      var wh = size(), W = wh[0], H = wh[1], side = W >= 700, pw = side ? Math.round(W * 0.56) : W, tw = side ? W - pw - 24 : W;
-      svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
-      var pyrH = side ? H : Math.round(H * 0.64);
-      var big = Math.max.apply(null, pyr.male.concat(pyr.female)) * 1.12, mx = [5, 8, 12, 16, 20].filter(function(v){ return v >= big; })[0] || 26;
-      var out = pyrSvg(pyr, { W: W, w: pw, H: pyrH, sel: sel, max: mx, bands: true, shares: A.broad(pyr) });
-      out += '<g transform="translate(' + (side ? pw + 24 : 0) + ' ' + (side ? 0 : pyrH + 6) + ')">' + transSvg({ w: tw, enl: !side, H: side ? H : H - pyrH - 6, stage: stage, cbr: cbr, cdr: cdr, pos: posOf(cbr, cdr, stage), top: side ? 26 : 22 }) + '</g>';
-      svg.innerHTML = out;
-    }
-    function words(pyr){
-      var sh = A.shape(pyr), b = A.broad(pyr), g = A.growth(cbr, cdr), S0 = A.STAGES[stage];
-      var head = !touched ? 'A stage 2 country: deaths have fallen but births are still high, so the base is wide. Try stage 3 and 4.' :
-        SHAPE_NAME[sh] + ' pyramid, ' + S0.name.toLowerCase().replace(/^stage (\d)/, 'stage $1') + '. Growth ' + nf(g, 1) + '% a year' + (g > 0.05 ? ' (doubling in about ' + nf(70 / g, 0) + ' years).' : g < -0.05 ? ' (shrinking).' : ' (about zero).');
-      $('.ap-strip').hidden = true;   // pass 3: the shares are on the brackets
-      if(false) $('.ap-strip').innerHTML = '<span class="ap-chip is-young"><b>' + nf(b.young, 0) + '%</b> under 15</span><span class="ap-chip is-old"><b>' + nf(b.old, 0) + '%</b> 65 and over</span>';
-      var why = '<p><b>' + esc(S0.name) + '.</b> ' + esc(S0.what) + ' ' + esc(S0.why) + '</p>' +
-        '<p><b>Reading the shape.</b> Expansive (a triangle): many children, high births, fast growth ahead. Stable (a column): births near replacement. Constrictive (a vase): fewer children than young adults, so the population ages and will shrink without immigration.</p>' +
-        '<p><b>Total fertility rate</b> ' + nf(tfr, 1) + ' against replacement level, about 2.1 children per woman (2 to replace the parents, a little more because some children die young). Above 2.1 the base widens; below, it narrows.</p>' +
-        '<p><b>Growth rate</b> = (CBR − CDR) / 10 = (' + cbr + ' − ' + cdr + ') / 10 = ' + nf(g, 1) + '% a year. The shaded gap between the two curves is that growth: widest in stage 2.</p>' +
-        '<p class="bt-small">Some books add a stage 5: births fall below deaths and the population declines. Stage 4 here includes that edge.</p>';
-      T.explain($('.ap-say'), '<b>' + esc(head) + '</b>', why);
-      nums(pyr, g);
-      svg.setAttribute('aria-label', 'Population pyramid, ' + SHAPE_NAME[sh].toLowerCase() + ': ' + nf(b.young, 0) + '% under 15, ' + nf(b.old, 0) + '% 65 and over. Demographic transition chart: stage ' + stage + ', birth rate ' + cbr + ' and death rate ' + cdr + ' per 1,000.' + (sel != null ? ' Selected band ' + pyr.groups[sel] + ': ' + nf(pyr.male[sel] + pyr.female[sel], 1) + '%.' : '') + ' Up and down arrows read the age bands.');
-      say(head);
-      if(LS){
-        LS.caption('<b>' + esc(head) + '</b>', 'explore');
-        LS.pills([], 'left', 'explore');   // pass 2: the fertility rate is the slider's readout
-        LS.pills([{ k: 'Growth', html: nf(g, 1) + '%', tone: 'readout' }], 'right', 'explore');
-      }
-    }
-    function nums(pyr, g){
-      var bb = A.broad(pyr);
-      $('.ap-nums').innerHTML = '<h3 class="ls-title-l">This country</h3><dl class="ap-dl"><div><dt>Ages 15 to 64</dt><dd>' + nf(bb.work, 0) + '%</dd></div><div><dt>Crude birth rate</dt><dd>' + cbr + ' per 1,000</dd></div><div><dt>Crude death rate</dt><dd>' + cdr + ' per 1,000</dd></div><div><dt>Growth rate</dt><dd>' + nf(g, 1) + '%</dd></div><div><dt>Doubling time</dt><dd>' + (g > 0.05 ? nf(70 / g, 0) + ' yr' : '·') + '</dd></div></dl>' +
-        '<h3 class="ls-title-l">The pyramid’s bars</h3><div class="table-wrap" tabindex="0" role="region" aria-label="Pyramid values"><table class="ls-tbl"><caption class="sr-only">Percent of the population in each age band</caption><thead><tr><th scope="col">Age</th><th scope="col">Male %</th><th scope="col">Female %</th></tr></thead><tbody>' +
-        pyr.groups.map(function(gp, i){ return '<tr><th scope="row">' + gp + '</th><td class="r">' + nf(pyr.male[i], 1) + '</td><td class="r">' + nf(pyr.female[i], 1) + '</td></tr>'; }).reverse().join('') + '</tbody></table></div>';
-    }
-    function pickBand(i){ sel = sel === i ? null : i; act(); render(shown || A.pyramid(tfr, e0)); words(A.pyramid(tfr, e0)); }
-    function onClick(e){
-      var b = e.target.closest('.ap-st'); if(b){ act(); setStage(+b.getAttribute('data-s')); (LS ? LS.root : host).querySelectorAll('.ap-st').forEach(function(x){ x.setAttribute('aria-pressed', String(+x.getAttribute('data-s') === stage)); }); return; }
-      var h = e.target.closest('.ap-hit'); if(h) pickBand(+h.getAttribute('data-i'));
-    }
-    host.addEventListener('click', onClick);
-    svg.addEventListener('keydown', function(e){
-      var n = A.GROUPS.length, i = sel == null ? 0 : sel;
-      if(e.key === 'ArrowUp') i = sel == null ? 0 : Math.min(n - 1, i + 1); else if(e.key === 'ArrowDown') i = sel == null ? 0 : Math.max(0, i - 1); else if(e.key === 'Escape') { sel = null; draw(); return; } else return;
-      e.preventDefault(); sel = i; act(); render(A.pyramid(tfr, e0)); words(A.pyramid(tfr, e0));
+
+    /* ---- controls on the picture */
+    var cT = K.handle(layer, { key: 'apenv-age-tfr', label: 'Children per woman (total fertility rate)', value: S.t, min: TMIN, max: TMAX, step: 0.1, chip: false,
+      at: function(v){ return G ? [G.x(v), G.yT] : [0, 0]; },
+      pick: function(x){ return G ? Math.round(clamp(G.v(x), TMIN, TMAX) * 10) / 10 : null; },
+      dir: function(){ return 0; },
+      valuetext: function(v){ return n1(v) + ' children per woman'; },
+      tag: function(v){ return n1(v) + ' children'; },
+      tagSide: function(v){ if(!G) return 'right'; var w = tw(n1(v) + ' children', 13, 900) + 18; return G.x(v) + 26 + w <= G.W - 6 ? 'right' : 'left'; },
+      onStart: function(v){ S.side = Math.sign(v - model(S.t, S.e).repl); },
+      onInput: function(v){ used(); S.t = v; kick(); tourDid('tfr'); },
+      onEnd: function(v){ var sd = Math.sign(v - model(S.t, S.e).repl); if(S.side && sd && sd !== S.side){ S.take = true; if(!moving() && shown) words(shown); } } });
+    var cE = K.handle(layer, { label: 'Life expectancy at birth, in years', value: S.e, min: EMIN, max: EMAX, step: 1, quiet: true,
+      at: function(v){ return G ? [G.ex(v), G.eY] : [0, 0]; },
+      pick: function(x){ return G ? Math.round(clamp(G.ev(x), EMIN, EMAX)) : null; },
+      valuetext: function(v){ return v + ' years'; },
+      onInput: function(v){ used(); S.e = v; kick(); tourDid('life'); } });
+    var cue = K.cue(layer, { key: 'apenv-age-tfr', text: 'Drag the mother', side: 'left', at: function(){ return G ? [G.x(S.t) - 4, G.yT] : [0, 0]; } });
+    function used(){ if(cue.active()) cue.hide(true); }
+    sceneBox.addEventListener('pointerdown', function(e){
+      used();
+      if(!G || S.mode !== 'explore') return;
+      var r = svg.getBoundingClientRect(), k = r.width / G.W, x = (e.clientX - r.left) / k, y = (e.clientY - r.top) / k;
+      // the mother, her children and the track: drag the rate from there; the life track: drag the life expectancy
+      if(e.target.closest('.tk2-knob, .tk2-cue')) return;
+      if(y >= G.yG - G.momH - 4 && y <= G.yN + 6 && x >= G.x(0) - 20 && x <= G.x(TMAX) + 24) cT.grab(e);
+      else if(Math.abs(y - G.eY) <= 16 && x >= G.ex(EMIN) - 12 && x <= G.ex(EMAX) + 12) cE.grab(e);
     });
-    var oldSet = setStage;
-    setStage = function(s){ oldSet(s); (LS ? LS.root : host).querySelectorAll('.ap-st').forEach(function(x){ x.setAttribute('aria-pressed', String(+x.getAttribute('data-s') === stage)); }); };
-    var oldCustom = custom;
-    custom = function(){ oldCustom(); (LS ? LS.root : host).querySelectorAll('.ap-st').forEach(function(x){ x.setAttribute('aria-pressed', String(+x.getAttribute('data-s') === stage)); }); };
-    function stop(){ if(anim){ anim.stop(); anim = null; } }
+
+    /* ---- geometry, from the width and the height there is (the mother, the pyramid and the cause line in view) */
+    function availH(phone){
+      var sc = sceneBox.getBoundingClientRect(), lh = phone ? 96 : 60;
+      if(phone) return clamp(window.innerHeight - lh - 24, 440, 620);
+      return clamp(window.innerHeight - (sc.top + window.scrollY) - lh - 36, 430, 860);
+    }
+    function geo(W){
+      var g = { W: W, phone: W <= 640 }, H = availH(g.phone), ph = g.phone;
+      g.H = H;
+      g.f = { age: ph ? 11.5 : 12.5, sex: ph ? 13 : 14, tick: 11.5, pill: ph ? 14 : 16, life: ph ? 12.5 : 13.5, num: ph ? 12.5 : 13.5, cap: ph ? 12 : 13 };
+      g.headH = ph ? 76 : 72;
+      g.momH = ph ? 46 : 64; g.kidH = Math.round(g.momH * 0.62);
+      var plazaTop0 = H - (g.momH + 6 + 20 + 30 + 22 + 10);
+      g.yG = plazaTop0 + g.momH + 6; g.yT = g.yG + 20; g.yN = g.yT + 32; g.yC = g.yN + 20;
+      g.plazaTop = g.yG - g.momH - 10;
+      g.axisH = 18;
+      g.rowTop = g.headH; g.rowBot = g.plazaTop - g.axisH;
+      g.pitch = (g.rowBot - g.rowTop) / 17;
+      g.spine = Math.ceil(Math.max(tw('75–79', g.f.age, 800), tw('80+', g.f.age, 800))) + 14;
+      g.cx = W / 2;
+      g.hw = Math.min(W / 2 - g.spine / 2 - (ph ? 20 : 30), (g.rowBot - g.rowTop) * 1.9);
+      g.sx = function(v){ return g.hw * v / SCALE; };
+      // the children per woman track: one slot per child, centred under the pyramid
+      var u = clamp((W - (ph ? 28 : 80)) / 7.6, 38, 74);
+      g.u = u; g.x0 = W / 2 - 3.5 * u;
+      g.x = function(v){ return g.x0 + v * u; };
+      g.v = function(x){ return (x - g.x0) / u; };
+      // the life expectancy track, top right
+      var tl = ph ? 120 : 170;
+      g.eX1 = W - (ph ? 22 : 30); g.eX0 = g.eX1 - tl; g.eY = ph ? 44 : 44; g.eLY = ph ? 18 : 18;
+      g.ex = function(v){ return g.eX0 + (v - EMIN) / (EMAX - EMIN) * (g.eX1 - g.eX0); };
+      g.ev = function(x){ return EMIN + (x - g.eX0) / (g.eX1 - g.eX0) * (EMAX - EMIN); };
+      g.sexY = g.headH - 8;
+      return g;
+    }
+
+    /* ---- the still scene: sky, the square, the grid, the age spine, the tracks */
+    function drawStatic(){
+      var g = G, W = g.W, H = g.H, o = [];
+      defs.innerHTML = '<linearGradient id="' + nid + '-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="agv-sky0"/><stop offset="1" class="agv-sky1"/></linearGradient>' +
+        '<linearGradient id="' + nid + '-pl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="agv-pl0"/><stop offset="1" class="agv-pl1"/></linearGradient>' +
+        patternDef('m', 'agv-pm') + patternDef('f', 'agv-pf');
+      o.push('<rect x="0" y="0" width="' + W + '" height="' + H + '" fill="url(#' + nid + '-sky)"/>');
+      // the square: paving, a curb at its back edge; on wide screens a lamp and a planter at each end, clear of the
+      // track (decoration kept quiet, nothing that could read as data); two pale clouds in the sky
+      var hz = g.plazaTop;
+      [[0.16, 0.3], [0.8, 0.22]].forEach(function(c, k){ var cx0 = W * c[0], cy0 = g.headH + (g.rowBot - g.headH) * c[1], sc = g.phone ? 0.6 : 1; o.push('<path class="agv-cloud" transform="translate(' + n1(cx0) + ' ' + n1(cy0) + ') scale(' + sc + ')" d="M-46 10 C-50 -4 -32 -10 -24 -4 C-20 -20 6 -22 12 -8 C22 -16 40 -10 38 4 C50 4 52 16 40 18 H-38 C-52 18 -54 10 -46 10Z"/>'); });
+      o.push('<rect x="0" y="' + n1(hz) + '" width="' + W + '" height="' + n1(H - hz) + '" fill="url(#' + nid + '-pl)"/>');
+      o.push('<path class="agv-curb" d="M0 ' + n1(hz) + 'H' + W + '"/>');
+      for(var ty = hz + 18; ty < H; ty += 18) o.push('<path class="agv-tile" d="M0 ' + n1(ty) + 'H' + W + '"/>');
+      for(var tx2 = 22; tx2 < W; tx2 += 46) o.push('<path class="agv-tile" d="M' + tx2 + ' ' + n1(hz) + 'V' + H + '"/>');
+      if(W >= 900){
+        [Math.min(g.x(0) - 70, W * 0.1), Math.max(g.x(TMAX) + 120, W * 0.9)].forEach(function(lx, k){
+          if(lx < 30 || lx > W - 30) return;
+          var top = hz - 6 - g.momH * 1.5, base = g.yN + 4;
+          o.push('<g class="agv-lamp"><rect x="' + n1(lx - 2.5) + '" y="' + n1(top) + '" width="5" height="' + n1(base - top) + '" rx="2"/><rect x="' + n1(lx - 9) + '" y="' + n1(base - 6) + '" width="18" height="7" rx="2"/><path d="M' + n1(lx - 10) + ' ' + n1(top + 2) + 'h20l-4 -14h-12Z"/></g><circle class="agv-glow" cx="' + n1(lx) + '" cy="' + n1(top - 5) + '" r="5"/>');
+          var px = lx + (k ? -44 : 44);
+          o.push('<g class="agv-planter"><circle cx="' + n1(px - 9) + '" cy="' + n1(base - 30) + '" r="12"/><circle cx="' + n1(px + 8) + '" cy="' + n1(base - 33) + '" r="14"/><circle cx="' + n1(px) + '" cy="' + n1(base - 42) + '" r="12"/></g><rect class="agv-pot" x="' + n1(px - 20) + '" y="' + n1(base - 22) + '" width="40" height="22" rx="4"/>');
+        });
+      }
+      // the pyramid's grid: 5%, 10%, 15% each side, with ticks under the rows
+      [5, 10, 15].forEach(function(v){ [-1, 1].forEach(function(sg){ var xx = g.cx + sg * (g.spine / 2 + g.sx(v)); o.push('<path class="agv-grid" d="M' + n1(xx) + ' ' + n1(g.rowTop - 2) + 'V' + n1(g.rowBot + 3) + '"/>'); o.push('<text class="agv-tk" x="' + n1(xx) + '" y="' + n1(g.rowBot + 14) + '" text-anchor="middle" style="font-size:' + g.f.tick + 'px">' + v + '%</text>'); }); });
+      // the spine: the age bands
+      o.push('<rect class="agv-spine" x="' + n1(g.cx - g.spine / 2 + 2) + '" y="' + n1(g.rowTop - 1) + '" width="' + n1(g.spine - 4) + '" height="' + n1(g.rowBot - g.rowTop + 2) + '" rx="6"/>');
+      for(var i = 0; i < 17; i++){ var yy = g.rowBot - (i + 0.5) * g.pitch; o.push('<text class="agv-age" x="' + n1(g.cx) + '" y="' + n1(yy + g.f.age * 0.36) + '" text-anchor="middle" style="font-size:' + g.f.age + 'px">' + A.GROUPS[i] + '</text>'); }
+      o.push('<text class="agv-sex is-m" x="' + n1(g.cx - g.spine / 2 - 4) + '" y="' + n1(g.sexY) + '" text-anchor="end" style="font-size:' + g.f.sex + 'px">Males</text>');
+      o.push('<text class="agv-sex is-f" x="' + n1(g.cx + g.spine / 2 + 4) + '" y="' + n1(g.sexY) + '" text-anchor="start" style="font-size:' + g.f.sex + 'px">Females</text>');
+      // the children per woman track and its numbers
+      o.push('<path class="agv-track" d="M' + n1(g.x(TMIN)) + ' ' + n1(g.yT) + 'H' + n1(g.x(TMAX)) + '"/>');
+      for(var n = TMIN; n <= TMAX; n++) o.push('<path class="agv-tick" d="M' + n1(g.x(n)) + ' ' + n1(g.yT - 5) + 'V' + n1(g.yT + 5) + '"/>');
+      o.push('<text class="agv-cap" x="' + n1(g.cx) + '" y="' + n1(g.yC) + '" text-anchor="middle" style="font-size:' + g.f.cap + 'px">children per woman</text>');
+      // the life expectancy track
+      o.push('<path class="agv-etrack" d="M' + n1(g.eX0) + ' ' + n1(g.eY) + 'H' + n1(g.eX1) + '"/>');
+      gStatic.innerHTML = o.join('');
+      // the rows: one rect per side per band (filled with rows of people), made once
+      var r = [];
+      for(var j = 0; j < 17; j++){ var y0 = g.rowBot - (j + 1) * g.pitch + 1; r.push('<rect class="agv-row is-m" y="' + n1(y0) + '" height="' + n1(g.pitch - 2) + '" fill="url(#' + nid + '-m)"/><rect class="agv-row is-f" y="' + n1(y0) + '" height="' + n1(g.pitch - 2) + '" fill="url(#' + nid + '-f)"/>'); }
+      gRows.innerHTML = r.join('');
+      rowEls = [].slice.call(gRows.querySelectorAll('.agv-row'));
+      // the dynamic layer: kids, the mother, the replacement mark, the numbers, the growth pill, the life label
+      gDyn.innerHTML = '<g class="agv-kids"></g><g class="agv-mom"></g><g class="agv-nums"></g><g class="agv-repl"></g><g class="agv-pill"></g><text class="agv-life" text-anchor="end"></text>';
+    }
+    /* one person per tile, side by side from the spine outward: a row is literally people (a part of a person at the
+       end, so the width is exact) */
+    function patternDef(sx, cls){
+      var g = G, h = g.pitch, w = Math.max(7, Math.min(h * 0.5, 13)), x0 = sx === 'm' ? g.cx - g.spine / 2 : g.cx + g.spine / 2, y0 = g.rowBot - 17 * h;
+      return '<pattern id="' + nid + '-' + sx + '" patternUnits="userSpaceOnUse" x="' + n1(x0) + '" y="' + n1(y0) + '" width="' + n1(w) + '" height="' + n1(h) + '">' +
+        '<rect x="0" y="0" width="' + n1(w) + '" height="' + n1(h) + '" class="' + cls + '-bg"/>' +
+        '<path class="' + cls + '" d="' + personPath(w * 0.06, 2.5, w * 0.88, h - 4.5) + '"/></pattern>';
+    }
+    var rowEls = [];
+
+    /* ---- painting one frame from what S holds */
+    var shown = null;
+    function paint(){
+      if(!G) return;
+      var g = G, d = drawn(); shown = d;
+      for(var i = 0; i < 17; i++){
+        var wm = g.sx(d.male[i]), wf = g.sx(d.female[i]), em = rowEls[2 * i], ef = rowEls[2 * i + 1];
+        em.setAttribute('x', n1(g.cx - g.spine / 2 - wm)); em.setAttribute('width', n1(Math.max(0, wm)));
+        ef.setAttribute('x', n1(g.cx + g.spine / 2)); ef.setAttribute('width', n1(Math.max(0, wf)));
+      }
+      paintSquare(d); paintHead(d); words(d);
+    }
+    var kidsKey = '', momKey = '';
+    function paintSquare(d){
+      var g = G, t = S.t, kids = gDyn.querySelector('.agv-kids'), n = Math.ceil(t - 1e-9), xs = g.x(t);
+      // the children: slot k from x(k - 1) to x(k); the last only up to the mother (a part of a child for a fraction)
+      var kk = n + '/' + g.W + '/' + g.H;
+      if(kk !== kidsKey){
+        kidsKey = kk;
+        var h = '';
+        for(var k = 1; k <= n; k++){ var cw = g.u * 0.78; h += figure2(g.x(k - 0.5) - cw / 2, g.yG - g.kidH, cw, g.kidH, { kind: 'kid', cls: k % 2 ? 'agv-kid-f' : 'agv-kid-m', skin: SKIN[(k * 3) % 7], hair: HAIR[(k * 5) % 7] }); }
+        kids.innerHTML = '<clipPath id="' + nid + '-kc"><rect class="agv-kclip" x="0" y="0" height="' + n1(g.H) + '"/></clipPath><g clip-path="url(#' + nid + '-kc)">' + h + '</g>';
+      }
+      var cr = kids.querySelector('.agv-kclip'); cr.setAttribute('x', n1(g.x(0) - 4)); cr.setAttribute('width', n1(Math.max(0, xs - g.x(0) + 4)));
+      var mom = gDyn.querySelector('.agv-mom');
+      var mk = g.W + '/' + g.H;
+      if(mk !== momKey){ momKey = mk; mom.innerHTML = '<ellipse class="agv-shadow" cx="0" cy="' + n1(g.yG) + '" rx="' + n1(g.momH * 0.26) + '" ry="3"/>' + figure2(-g.momH * 0.45, g.yG - g.momH, g.momH * 0.9, g.momH, { kind: 'mom', skin: SKIN[1] }); }
+      mom.setAttribute('transform', 'translate(' + n1(xs) + ' 0)');
+      // the numbers under the track, and replacement where this life expectancy puts it
+      var rp = d.repl, rx = g.x(rp), rt = 'replacement ' + n1(rp), rw = tw(rt, g.f.num, 800), nums = '';
+      for(var m = TMIN; m <= TMAX; m++){ var nx = g.x(m), nwid = tw(String(m), g.f.num, 800); if(Math.abs(nx - rx) < rw / 2 + nwid / 2 + 6) continue; nums += '<text class="agv-num" x="' + n1(nx) + '" y="' + n1(g.yN) + '" text-anchor="middle" style="font-size:' + g.f.num + 'px">' + m + '</text>'; }
+      gDyn.querySelector('.agv-nums').innerHTML = nums;
+      var ra = clamp(rx, g.x(TMIN) - 30 + rw / 2, g.W - 6 - rw / 2);
+      gDyn.querySelector('.agv-repl').innerHTML = '<path class="agv-rmark" d="M' + n1(rx) + ' ' + n1(g.yT - 9) + 'V' + n1(g.yT + 9) + '"/><text class="agv-rtext" x="' + n1(ra) + '" y="' + n1(g.yN) + '" text-anchor="middle" style="font-size:' + g.f.num + 'px">' + rt + '</text>';
+    }
+    function paintHead(d){
+      var g = G, gw = growthWords(d.r), pill = gDyn.querySelector('.agv-pill'), fs = g.f.pill, w = tw(gw.pill, fs, 900) + 22 + fs, h = fs + 12, x = g.phone ? 8 : 16, y = g.phone ? 10 : 14;
+      var ar = gw.dir > 0 ? 'M0 5 L5 -1 L10 5 M5 -1 V10' : gw.dir < 0 ? 'M0 4 L5 10 L10 4 M5 10 V-1' : 'M0 4.5 H10';
+      pill.setAttribute('class', 'agv-pill ' + (gw.dir > 0 ? 'is-up' : gw.dir < 0 ? 'is-down' : 'is-flat'));
+      pill.innerHTML = '<rect x="' + n1(x) + '" y="' + n1(y) + '" width="' + n1(w) + '" height="' + n1(h) + '" rx="' + n1(h / 2) + '"/>' +
+        '<path class="agv-par" transform="translate(' + n1(x + 11) + ' ' + n1(y + h / 2 - 4.5) + ') scale(' + (fs / 14).toFixed(3) + ')" d="' + ar + '"/>' +
+        '<text x="' + n1(x + 16 + fs * 0.9) + '" y="' + n1(y + h / 2 + fs * 0.36) + '" style="font-size:' + fs + 'px">' + gw.pill + '</text>';
+      var lf = gDyn.querySelector('.agv-life');
+      lf.setAttribute('x', n1(g.eX1 + 8)); lf.setAttribute('y', n1(g.eLY + g.f.life * 0.36)); lf.style.fontSize = g.f.life + 'px';
+      lf.textContent = 'Life expectancy ' + Math.round(S.E) + ' years';
+    }
+    var lastSay = '';
+    function words(d){
+      var gw = growthWords(d.r), sh = A.shape(d), settled = !moving();
+      var parts = [{ t: n1(d.t) + ' children per woman', role: 'tfr', say: n1(d.t) + ' children per woman' }, { t: SHAPE_WORD[sh], role: 'shape', say: 'an ' + SHAPE_WORD[sh] + ' pyramid' }, { t: gw.part, role: gw.dir > 0 ? 'up' : gw.dir < 0 ? 'down' : 'flat' }];
+      if(gw.two) parts.push({ t: gw.two, role: gw.dir > 0 ? 'up' : 'down' });
+      if(settled && S.take) cause.take(TAKE); else cause.set(parts);
+      var say = cause.text();
+      if(settled && say !== lastSay){ lastSay = say; live.textContent = say; }
+      svg.setAttribute('aria-label', 'Population pyramid built of people, males left and females right, in 5 year age bands: ' + SHAPE_WORD[sh] + ', ' + Math.round(A.broad(d).young) + '% under 15 and ' + Math.round(A.broad(d).old) + '% 65 and over. ' + n1(d.t) + ' children per woman, life expectancy ' + Math.round(S.E) + ' years: ' + gw.part + '. Replacement here is ' + n1(d.repl) + ' children per woman.');
+    }
+
+    /* ---- the loop: each row eases to the rate, the base first, the rows above a little later */
+    function moving(){ if(Math.abs(S.E - S.e) > 1e-6) return true; for(var i = 0; i < 17; i++) if(Math.abs(S.T[i] - S.t) > 1e-6) return true; return false; }
+    function kick(){
+      S.take = false;
+      if(K.reduced()){ settle(); flash(); paint(); return; }
+      if(!raf){ lastT = 0; stage.setAttribute('data-busy', '1'); raf = requestAnimationFrame(tick); }
+      paintSquare(shown || drawn());
+    }
+    function settle(){ for(var i = 0; i < 17; i++) S.T[i] = S.t; S.E = S.e; }
+    function flash(){ fade.classList.remove('is-on'); void fade.offsetWidth; fade.classList.add('is-on'); }
+    function tick(ts){
+      raf = 0;
+      var dt = lastT ? Math.min(0.05, (ts - lastT) / 1000) : 0.016; lastT = ts;
+      for(var i = 0; i < 17; i++){
+        var tau = 0.05 + 0.028 * i, a = 1 - Math.exp(-dt / tau), v = S.T[i] + (S.t - S.T[i]) * a;
+        S.T[i] = Math.abs(S.t - v) < 0.004 ? S.t : v;
+      }
+      var e = S.E + (S.e - S.E) * (1 - Math.exp(-dt / 0.12));
+      // life expectancy eases in steps of 0.1 year (each a cached life table)
+      e = Math.abs(S.e - e) < 0.06 ? S.e : Math.round(e * 10) / 10;
+      if(e === S.E && S.E !== S.e) e = S.E + (S.e > S.E ? 0.1 : -0.1);
+      S.E = +e.toFixed(1);
+      var mv = moving();
+      paint();
+      stage.setAttribute('data-busy', mv ? '1' : '');
+      if(mv) raf = requestAnimationFrame(tick);
+      else words(shown);
+    }
+    function stopLoop(){ if(raf){ cancelAnimationFrame(raf); raf = 0; } settle(); stage.setAttribute('data-busy', ''); paint(); }
+
+    /* ---- layout */
+    var lastW = 0, lastH = 0;
+    function layoutNow(force){
+      var W = Math.round(sceneBox.getBoundingClientRect().width);
+      if(!W) return;
+      var H0 = availH(W <= 640);
+      if(!force && W === lastW && H0 === lastH && G){ if(cue.active()) cue.place(); return; }
+      lastW = W; lastH = H0;
+      G = geo(W);
+      sceneBox.style.height = G.H + 'px';
+      svg.setAttribute('viewBox', '0 0 ' + W + ' ' + G.H);
+      kidsKey = ''; momKey = '';
+      drawStatic(); paint();
+      cT.place(); cE.place();
+      if(cue.active()) cue.place();
+      if(tour && tour.active()) tour.place();
+    }
+
+    /* ---- Show me how */
+    function knobOf(c){ return c.knob || c.el; }
+    function startTour(force){
+      if(S.mode !== 'explore') return;
+      stopTour(); if(force) cue.hide(false);
+      tour = K.tour({ key: 'apenv-age', label: 'Show me how', steps: [
+        { id: 'tfr', text: 'Drag the mother: more or fewer children per woman.', target: function(){ return knobOf(cT); } },
+        { id: 'base', text: 'The base changes first; the rows above follow as those children grow up.', target: function(){ return sceneBox; } },
+        { id: 'life', text: 'Longer lives fill out the top of the pyramid.', target: function(){ return knobOf(cE); } }] });
+      if(force) tour.start(true);
+    }
+    function stopTour(){ if(tour){ tour.stop(); tour = null; } }
+    function tourDid(id){ if(tour && tour.active()) tour.did(id); }
+
+    /* ---- "?" */
+    function pc(v){ return (Math.round(v * 10) / 10).toFixed(1) + '%'; }
+    function refHtml(){
+      var d = shown || drawn(), b = A.broad(d), gw = growthWords(d.r), dep = (b.young + b.old) / b.work * 100;
+      var h = '<p class="agv-howref"><button type="button" class="tk2-how" data-how>Show me how</button> to use this screen.</p>' +
+        '<p><b>What the pyramid is.</b> Each row is one 5 year age group; its length is that group’s share of all the people (men left, women right; one scale for every setting, so the shapes compare). It shows where a fertility rate and a life expectancy lead once they have held for a long time, with no migration: the base is the newest children, and those children become the rows above. Real countries rarely sit at that shape: a country whose births fell recently still has the wide rows of its earlier, larger generations.</p>' +
+        '<p><b>Now.</b> ' + n1(d.t) + ' children per woman, life expectancy ' + Math.round(d.e) + ' years: crude birth rate ' + n1(d.cbr) + ' and crude death rate ' + n1(d.cdr) + ' per 1,000 people a year.</p>' +
+        '<p><b>Growth rate</b> = (CBR − CDR) / 10 = (' + n1(d.cbr) + ' − ' + n1(d.cdr) + ') / 10 = ' + (d.r < 0 ? '−' : '') + pc(Math.abs(d.r * 100)) + ' a year' + (gw.two ? '. <b>Rule of 70:</b> ' + (gw.dir > 0 ? 'doubling' : 'halving') + ' time = 70 / ' + (Math.round(Math.abs(d.r * 1000)) / 10).toFixed(1) + ' = ' + gw.two.replace(/^\w+ in /, '') : ' (no change to speak of)') + '.</p>' +
+        '<p><b>Replacement level.</b> The children per woman that just replace the parents: about 2.1 where few children die (2 for the parents, a little more because some girls die before they have children and slightly more boys than girls are born). Where many children die it is higher: here, with a life expectancy of ' + Math.round(d.e) + ' years, it is ' + n1(d.repl) + '. Above it each generation of mothers is larger than the last (the base widens); below it, smaller.</p>' +
+        '<p><b>Reading the shape.</b> Expansive: a wide base that narrows fast (many children; fast growth ahead). Stable, also called stationary: about the same width up to middle age (births near replacement). Constrictive: a base narrower than the middle (births below replacement; the population ages and, without immigration, shrinks).</p>' +
+        '<p><b>Population momentum.</b> A wide base keeps a population growing for decades after births per woman fall to replacement: the many children already born grow up and have children of their own. The United Nations expects momentum to account for 79% of the world’s population increase through 2054 (World Population Prospects 2024).</p>' +
+        '<p><b>Dependency.</b> Under 15: ' + pc(b.young) + '; 15 to 64: ' + pc(b.work) + '; 65 and over: ' + pc(b.old) + '. Dependency ratio = (under 15 + 65 and over) / (15 to 64) × 100 = ' + Math.round(dep) + ' dependents per 100 people of working age.</p>' +
+        '<h3 class="ls-title-l">The four stages of the demographic transition</h3>' + T.dataTable(['Stage', 'Birth rate', 'Death rate', 'Children per woman', 'Life expectancy', 'What happens'], [1, 2, 3, 4].map(function(s){ var x = A.STAGES[s]; return [esc(x.name), x.cbr + ' per 1,000', x.cdr + ' per 1,000', String(x.tfr), x.e0 + ' years', esc(x.what + ' ' + x.why)]; }), 'Typical values for each stage') +
+        '<p class="bt-small">Some books add a stage 5: births fall below deaths and the population declines. The stage drills are in Test yourself.</p>' +
+        '<h3 class="ls-title-l">The rows now (% of all people)</h3>' + T.dataTable(['Age', 'Males', 'Females'], d.groups.map(function(gp, i){ return [gp, pc(d.male[i]), pc(d.female[i])]; }).reverse(), 'Percent of the population in each age band') +
+        '<p class="bt-small">How it is drawn: a stable population model. Survival to each age comes from a model life table with exactly the life expectancy set (women live 5 years longer than men, as the world average is about 5 years apart; 105 boys are born per 100 girls); births by the mother’s age peak in her twenties. The growth rate is the one at which those births and that survival keep the shape (Lotka’s equation), so birth rate minus death rate equals it exactly. A teaching model, not any one country. Each small figure in a row is a piece of the bar, not a set number of people.</p>';
+      ref.innerHTML = h;
+    }
+    ref.addEventListener('click', function(e){ if(e.target.closest('[data-how]')){ if(LS && LS.close) LS.close(); setTimeout(function(){ startTour(true); }, 280); } });
+
     function studio(pane, s){
       LS = s;
-      T.studioPane(pane, s, { task: { title: 'How births and deaths shape a population.' }, stage: [$('.ap-stage')], dock: [$('.ap-ctl')], primary: [slT.el], why: [$('.ap-say')], details: [$('.ap-nums')] });
-      host.removeEventListener('click', onClick); s.root.addEventListener('click', onClick);
-      draw();
-      if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.ap-st[data-s="3"]'), text: 'Start here: try stage 3' });
-      if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(function(){ render(A.pyramid(tfr, e0)); }, 60); }).observe($('.ap-fig')); }
+      K.on(s);
+      s.add('stage', stage, { mode: 'explore' });
+      s.add('details', ref, { mode: 'explore' });
+      stage.setAttribute('data-ls-only', 'explore'); ref.setAttribute('data-ls-only', 'explore');
+      var ab = pane.querySelector('details.tool-about, .tool-about'); if(ab) s.add('about', ab, { mode: 'explore' });
+      s.mode(s.mode());
+      layoutNow(true); refHtml();
+      if(window.ResizeObserver){ var tm = null; new ResizeObserver(function(){ clearTimeout(tm); tm = setTimeout(function(){ layoutNow(); }, 50); }).observe(sceneBox); }
+      window.addEventListener('resize', function(){ setTimeout(function(){ layoutNow(); }, 60); });
+      if(s.mode() === 'explore') cue.show();
+      startTour(false);
     }
-    draw();
-    return { stop: stop, studio: studio };
+    // "?" follows the picture once it settles
+    var refT = null;
+    var paint0 = paint; paint = function(){ paint0(); if(!moving()){ clearTimeout(refT); refT = setTimeout(refHtml, 120); } };
+
+    // test hooks (read only, plus set for the sweeps)
+    window.__age = { G: function(){ return G; }, busy: function(){ return !!raf; }, drawn: function(){ return shown; }, S: function(){ return S; },
+      target: function(){ return model(S.t, S.e); }, rows: function(){ return rowEls.map(function(e){ return +e.getAttribute('width'); }); },
+      set: function(t, e){ if(t != null){ cT.value(t, true); } if(e != null){ cE.value(e, true); } } };
+    return {
+      studio: studio,
+      shown: function(m){
+        S.mode = m;
+        if(m === 'explore'){ setTimeout(function(){ layoutNow(true); cue.show(); }, 30); }
+        else { stopLoop(); stopTour(); cue.hide(false); }
+      }
+    };
   }
 
   /* ------------------------------------------------------ test yourself */

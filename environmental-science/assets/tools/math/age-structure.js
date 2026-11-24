@@ -268,6 +268,67 @@
     return { text: text, steps: steps, solution: sol, figure: { kind: 'pyr', tfr: tfr, e0: e0, bands: true }, given: { young: young, old: old } };
   };
 
+  /* ------------------------------------------- the stable population (Explore v2)
+     Explore draws the population a fertility and a life expectancy settle into (a stable population, no migration),
+     from a life table that really has the life expectancy set (the drills keep pyramid() above, unchanged).
+       lifeTable(e0)     l(x), survivors to each exact age 0..110 of 1 born: a Siler style hazard (child deaths that
+                         fall fast with age, a constant background, an adult hazard that doubles about every 7 years),
+                         its level solved so the life expectancy at birth is exactly e0. Child deaths fall faster than
+                         adult deaths as e0 rises (by about e0 30: 46% die before 5; e0 72: 4%; e0 85: 0.3%), close to
+                         the Coale and Demeny West model tables (teaching model; docs/apenv-needs-author.md).
+       stable(tfr, e0)   { groups, male, female (% of all people in each band), r (growth per year, a fraction),
+                         cbr, cdr (per 1,000 per year; cbr - cdr = 1000 r exactly), repl (the TFR that gives r = 0 at
+                         this e0), nrr }. Women live e0 + 2.5 years, men e0 - 2.5 (UN WPP 2024: about 5 years apart);
+                         105 boys per 100 girls; births by mother's age as the drills' schedule (peak 20 to 29).
+                         r solves Lotka's equation: sum over ages of e^(-r a) l(a) m(a) = 1. */
+  var SRB = 1.05, FSHAPE = [0.25, 1, 1.1, 0.85, 0.5, 0.15, 0.03], FAGE = (function(){
+    var s = FSHAPE.reduce(function(a, b){ return a + b; }, 0), out = [];
+    for(var a = 15; a < 50; a++) out.push(FSHAPE[Math.floor((a - 15) / 5)] / s / 5);
+    return out;
+  })();
+  function ltOf(k){
+    var l = [1], s = 1, dt = 0.25, ck = Math.pow(k, 1.5) * 0.2, bk = k * 0.004, ak = Math.pow(k, 0.4) * 0.000035;
+    for(var i = 0; i < 440; i++){
+      var x = i * dt, h = ck * Math.exp(-1.3 * x) + bk + ak * Math.exp(0.1 * x);
+      s *= Math.exp(-h * dt);
+      if(i % 4 === 3) l.push(s);
+    }
+    return l;
+  }
+  function eOf(l){ var L = 0; for(var i = 0; i < l.length - 1; i++) L += (l[i] + l[i + 1]) / 2; return L; }
+  var LT = {};
+  function lifeTable(e0){
+    var key = (Math.round(e0 * 10) / 10).toFixed(1);
+    if(LT[key]) return LT[key];
+    var E = +key, lo = -8, hi = 5;
+    for(var i = 0; i < 48; i++){ var m = (lo + hi) / 2; if(eOf(ltOf(Math.exp(m))) > E) lo = m; else hi = m; }
+    var l = ltOf(Math.exp((lo + hi) / 2)), L = [];
+    for(var a = 0; a < 110; a++) L.push((l[a] + l[a + 1]) / 2);
+    var keys = Object.keys(LT); if(keys.length > 400) LT = {};
+    return (LT[key] = { e0: E, l: l, L: L });
+  }
+  function stable(tfr, e0){
+    var F = lifeTable(e0 + 2.5), Mt = lifeTable(e0 - 2.5), girls = 1 / (1 + SRB);
+    // Lotka: f(r) = sum e^(-r(a + .5)) L_f(a) m(a) = 1, by Newton from r = ln(NRR) / 28
+    var nrr = 0; for(var a = 15; a < 50; a++) nrr += F.L[a] * tfr * girls * FAGE[a - 15];
+    var r = Math.log(nrr) / 28;
+    for(var it = 0; it < 30; it++){
+      var f = 0, d = 0;
+      for(var b = 15; b < 50; b++){ var t = Math.exp(-r * (b + 0.5)) * F.L[b] * tfr * girls * FAGE[b - 15]; f += t; d -= (b + 0.5) * t; }
+      var nr = r - (f - 1) / d; if(Math.abs(nr - r) < 1e-12){ r = nr; break; } r = nr;
+    }
+    var w = [], tot = 0, mw = [], fw = [];
+    for(var g = 0; g < GROUPS.length; g++){ mw.push(0); fw.push(0); }
+    for(var x = 0; x < 110; x++){
+      var e = Math.exp(-r * (x + 0.5)), gi = Math.min(16, Math.floor(x / 5));
+      fw[gi] += e * F.L[x]; mw[gi] += e * Mt.L[x] * SRB; tot += e * (F.L[x] + Mt.L[x] * SRB);
+    }
+    var male = mw.map(function(v){ return v / tot * 100; }), female = fw.map(function(v){ return v / tot * 100; });
+    var cbr = (1 + SRB) / tot * 1000, rep = 0;
+    for(var c = 15; c < 50; c++) rep += F.L[c] * girls * FAGE[c - 15];
+    return { groups: GROUPS.slice(), male: male, female: female, tfr: tfr, e0: e0, r: r, nrr: nrr, cbr: cbr, cdr: cbr - 1000 * r, repl: 1 / rep };
+  }
+
   function generate(r, ctx, type){
     var t = type && ctx.types && ctx.types.indexOf(type) > -1 ? type : (ctx.types || [])[0];
     var g = GEN[t];
@@ -279,7 +340,7 @@
 
   M.register('ageStructure', {
     TYPES: TYPES, GROUPS: GROUPS, STAGES: STAGES, SHAPE_TXT: SHAPE_TXT,
-    survival: survival, pyramid: pyramid, broad: broad, shape: shape, stageOf: stageOf, growth: growth, nf: nf,
+    survival: survival, pyramid: pyramid, lifeTable: lifeTable, stable: stable, broad: broad, shape: shape, stageOf: stageOf, growth: growth, nf: nf,
     generate: generate
   });
 })(typeof window !== 'undefined' ? window : globalThis);
