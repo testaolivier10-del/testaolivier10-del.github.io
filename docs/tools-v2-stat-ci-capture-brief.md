@@ -129,4 +129,41 @@ picker, Show me how.
   `--shots`), `scripts/tools-v2/stat-ci-capture-cover.mjs` (the skewed long run table).
 
 ## Checks run
-See "Final run" below.
+
+### Final run (2026-11-24)
+- `node --test scripts/test/apstat-*.test.mjs` (166 pass), `check-apstat-content` (0 failing), `build-apstat --check`
+  (the other nine trainers unchanged), `check-site` (no broken references), `check-weight --check` (626 budgets
+  within range); `scripts/check-tool-use.mjs` with a local copy of its list: the page sends tool-open,
+  tool-touch (explore), tool-mode (quiz), tool-use, nothing under automation. The locked state is unchanged (no
+  Premium: the lock, no tool, no console errors).
+- Sweep, one process per width, light and dark (the dark runs assert `data-theme="dark"`, set through
+  `localStorage.nremt_theme`): **720 passed, 0 failed** (72 a width: the first visit with its cue, 100 at 95%, the
+  level at 80 and 99, a picked row, the smallest and largest n, five builds, every population empty and built, the
+  skewed one at 80%, Test yourself). Each state checks clipping, 4 px between labels, labels clear of every ring,
+  the peg, the axis, the rate line and its dots, text at least 11 px, the board the largest part, sideways scroll,
+  the phone cause line (two rows, constant height), that the picture, Build and the cause line (and after a build
+  the level knob) show together at every width, including 390 x 844, 1024 x 768 and 1280 x 800, and that every
+  number agrees with the rings as drawn.
+- Frames: **52 passed, 0 failed** (2,543 frames at 390 and 1440, every one agreeing): a build, keys on the level,
+  two quick keys mid change (PageDown then ArrowLeft lands on 88%), a real pointer drag out and back, the level
+  mid build, n up and down, a population change and a build, Start over, leaving to Test yourself mid build and
+  back (clean, all 100 landed), a real touch drag at 390 (the level moves, the page does not scroll), reduced motion
+  (at once, with the cross fade).
+- Perf, CPU x4, the same run as the flagship: build 100 median 16.7 ms, p95 16.7 ms at 390 and 33.4 ms at 1440;
+  level drag p95 16.8 ms at 390 and 33.4 ms at 1440. The flagship's fertilizer drag: p95 66.7 ms at 390 and 83.4 ms
+  at 1440.
+- Preview: `/mnt/user-data/outputs/stat-ci-capture-v2/index.html`; shots in `shots/` (sweep states at 360, 390,
+  768, 1024 and 1440 light and dark; mid animation `mid-*-scoop`, `mid-*-fill`, `mid-*-level`, `mid-*-newn`).
+
+## Not done, and what I am not happy with
+- No real phone, no screen reader pass, no real students; the independent review is still to come.
+- 100 rows on a phone are about 2.4 px apart: the board reads as a dense stack (misses still stand out by colour,
+  thickness and crosses); a tap picks the nearest drawn row.
+- The crowd on phones is 100 small figures (about 16 px tall); on the rare trait the 8 blue people are few.
+- The scoop in the crowd shows the act of sampling; it is not the sample's members (the samples come from the
+  model; said in "?" and in needs-author).
+- The rate plot's y axis is fixed at 50 to 100% so the worst case (rare trait, n = 10: 56%) fits; the band the line
+  covers (80 to 99%) is the top 40% of the plot.
+- While a key's change plays (320 ms) the knob rides with the rings; a drag moves the rings with the finger.
+- Test yourself is the old drill unchanged, apart from the claim figure's labels (the claim's name above its line,
+  the estimate's label beside it), so they no longer touch lines.
