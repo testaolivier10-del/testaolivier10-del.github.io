@@ -85,7 +85,9 @@
 
   function streakCard(st, list){
     var today = new Date(); today.setHours(0, 0, 0, 0);
-    var cells = '', weeks = 18, start = new Date(today); start.setDate(start.getDate() - (weeks * 7 - 1) - ((today.getDay() + 6) % 7 === 6 ? 0 : 0));
+    // As many weeks as fill the card's width (owner 2026-11-23: the grid stopped a third of the way across), 12 to 52.
+    var inner = ((root && root.clientWidth) || 980) - (window.innerWidth <= 640 ? 38 : 54);
+    var cells = '', weeks = Math.max(12, Math.min(52, Math.floor((inner + 4) / (window.innerWidth <= 640 ? 16 : 22))));
     // Columns are weeks (Monday on top), the last one ends today.
     var first = new Date(today); first.setDate(first.getDate() - ((today.getDay() + 6) % 7) - (weeks - 1) * 7);
     var studied = 0;
@@ -101,7 +103,7 @@
     var hasNremt = list.some(function(x){ return x.c.key === 'nremt'; }), nr = readJSON('nremt_streak', {}) || {};
     var hours = [12, 14, 16, 18, 19, 20, 21].map(function(h){ return '<option value="' + h + '"' + ((nr.reminderHour || 18) === h ? ' selected' : '') + '>' + (h > 12 ? (h - 12) + ' PM' : '12 PM') + '</option>'; }).join('');
     return '<section class="pf-card" aria-labelledby="pfS"><h2 id="pfS">Streak</h2>' +
-      '<div class="pf-cal" role="img" aria-label="' + esc(studied + ' days studied in the last ' + weeks + ' weeks') + '">' + cells + '</div>' +
+      '<div class="pf-cal" style="grid-template-columns:repeat(' + weeks + ',1fr)" role="img" aria-label="' + esc(studied + ' days studied in the last ' + weeks + ' weeks') + '">' + cells + '</div>' +
       '<p class="pf-mut pf-cal-k">' + plural(studied, 'day') + ' studied in the last ' + weeks + ' weeks &middot; today ' + st.todayCount + ' of ' + st.goal + (st.eased ? ' (eased off while you were away)' : '') + '</p>' +
       '<div class="pf-row"><div><b><label for="pfGoal">Daily goal</label></b><span>Any course counts. Miss several days and it eases off on its own until you are back.</span></div>' +
         '<select id="pfGoal">' + [10, 15, 20, 30, 50].map(function(g){ return '<option value="' + g + '"' + (goal === g ? ' selected' : '') + '>' + g + ' questions a day</option>'; }).join('') + '</select></div>' +
