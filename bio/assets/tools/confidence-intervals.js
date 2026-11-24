@@ -573,7 +573,7 @@
         if(V){
           var loHi = V.lo.x.mean + V.lo.x.e2, upLo = V.up.x.mean - V.up.x.e2, ya = yA(Math.max(loHi, upLo)), yb = yA(Math.min(loHi, upLo));
           if(V.kind === 'touch' || yb - ya < 1.5){ var ym = (ya + yb) / 2; ya = ym - 1; yb = ym + 1; }
-          var bx0 = c.cx[0], bx1 = c.cx[1];   // from one bar's centre to the other's
+          var bx0 = c.cx[0], bx1 = c.cx[1];   // from one bar's center to the other's
           at(E.band, { x: bx0, y: ya, width: bx1 - bx0, height: yb - ya, 'class': 'ci2-band is-' + V.kind }); E.band.style.display = '';
           E.pBand.g.setAttribute('class', 'ci2-pill is-' + V.kind);
           // the band's word: on the band, or just under or over it when a ± label is in the way (4 px clear)
@@ -625,7 +625,7 @@
 
       /* ---------------------------------------------------- the first visit cue and "Show me how" */
       // the cue sits on the empty board above the shade plants, pointing down at the knob: never on a plant or the line
-      var cue = K.cue(layer, { key: 'apbio-ci', text: EX.cue, side: 'above', at: function(){ var t = tallest(); return G && t ? [G.knobX, yH(t.h) - 6] : [0, 0]; } });
+      var cue = K.cue(layer, { key: 'apbio-ci', text: EX.cue, side: 'above', at: function(){ var t = tallest(); if(!G || !t) return [0, 0]; var half = tw(EX.cue, 15, 800) / 2 + 34, lim = (G.wide ? G.cb.x + 20 : G.W - 4) - half; return [Math.min(G.knobX, lim), yH(t.h) - 6]; } });   // on wide stages it stops short of the clipboard
       function hideCue(used){ if(cue.active()){ cue.hide(used); hSd.place(); } }
       var tour = K.tour({ key: 'apbio-ci', label: 'Show me how', steps: [
         { id: 'mean', text: 'Drag the knob: every shade plant grows or shrinks. Their mean is the blue bar on the clipboard.', target: function(){ return hMean.knob; } },

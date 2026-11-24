@@ -192,3 +192,7 @@ Should fix: S1 the opening kept (the 10 plant gap stays 1.0 cm), the live "?" li
 points to the strict note; S2 leaves never under 11 px and resize over the whole sprouting; S3 "so" dropped from the
 spoken cause line; S4 "moves the means much less"; S5 the SD tag says "(max)" at its cap; S6 the brief's name in the
 data fixed.
+Checks after the fixes (speed rule, fix round): sweep at 360 and 390 (81 each), 1024 and 1440 (79 each), light and
+dark, **320 passed, 0 failed**; frames **65 passed, 0 failed** (1,152 frames at 390 and 1,315 at 1440, plus the
+eighteen "only n changes" runs); AP Bio tests 74 pass, content check 0 failing, `build-apbio --check`, `check-site`.
+The cue stops short of the clipboard on wide stages, so it never covers a tick number.
