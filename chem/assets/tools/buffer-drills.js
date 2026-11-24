@@ -732,7 +732,7 @@
         var tn = now();
         if(queue.length && tn - lastLaunch > 300 && canLaunch(queue[0])){ launch(queue.shift()); lastLaunch = tn; }
         BK.forEach(function(b){ b.events.forEach(function(e){ stepEvent(b, e, tn); }); b.events = b.events.filter(function(e){ return !e.done; });
-          var dv = b.vol - b.volShown; b.volShown = Math.abs(dv) < 0.02 ? b.vol : b.volShown + dv * 0.2; });
+          var dv = b.vol - b.volShown; if(dv){ if(Math.abs(dv) < 0.02){ b.volShown = b.vol; if(b.pc) b.pc.force = true; } else b.volShown += dv * 0.2; } });
         // the meters' pointers ease to the drawn pH
         var pm = false;
         ptr.forEach(function(q, i){ if(q.to == null) return; var d = q.to - q.a; q.a = Math.abs(d) < 0.15 ? q.to : q.a + d * 0.25; L.ptr[i].setAttribute('transform', 'translate(' + q.a.toFixed(1) + ' 0)'); if(q.a !== q.to) pm = true; });

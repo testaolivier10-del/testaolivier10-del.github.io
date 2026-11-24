@@ -44,7 +44,7 @@ States: building, review, fixing, recheck, PASS (waiting to integrate), integrat
 | AP Psych brain map | claude/tools-v2-brain-map | wt-brain-map | integrated | first AP Psych tool on the kit: adapter `ApPsychTools.kit2`; `K.spots` `under`; kept sweep, frames and perf in `scripts/tools-v2/brain-map-*` |
 | AP Psych neuron | claude/tools-v2-neuron | wt-neuron | integrated | four tabs; on the brain map's `ApPsychTools.kit2` (brain map branch merged in); sweep `scripts/tools-v2/neuron-sweep.mjs` (`--frames`, `--perf`) |
 | AP Chem ICE tables | claude/tools-v2-chem-ice-tables | wt-chem-ice | integrated | flask of molecules, x knob, clipboard ICE table, Q gauge; drill as Test yourself (`placed` part); sweep `scripts/tools-v2/chem-ice-tables-sweep.mjs` (`--frames`, `--perf`) |
-| AP Chem buffers | claude/tools-v2-chem-buffers | wt-chem-buffers | review | buffer and water beakers, droppers, meters from the drawn particles (`ApChemMath.bufferMeter`); drill as Test yourself (`placed` part); sweep `scripts/tools-v2/chem-buffers-sweep.mjs` (`--frames`, `--perf`) |
+| AP Chem buffers | claude/tools-v2-chem-buffers | wt-chem-buffers | PASS (waiting to integrate) | buffer and water beakers, droppers, meters from the drawn particles (`ApChemMath.bufferMeter`); drill as Test yourself (`placed` part); sweep `scripts/tools-v2/chem-buffers-sweep.mjs` (`--frames`, `--perf`) |
 
 2026-11-19: `main` merged in after PR #228 (ochem frame cleanup: chipPicker, scrollChips and .ls-chips-hidden gone; the v2
 conformations, resonance and arrow pusher kept, kit2 kept). Ochem viewer 3d had `main` merged

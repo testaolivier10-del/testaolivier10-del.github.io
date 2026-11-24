@@ -1,5 +1,7 @@
 # Tools v2: AP® Chemistry Buffers (brief and build notes)
 
+Status: review round 1 BLOCK, fixed; recheck 1 PASS (2026-11-24), its two should fix items done; waiting to integrate.
+
 Status file for the v2 rebuild of `chem/tools/buffer-drills.html` (Premium; rollout row 105, group P, wave 12). Plan:
 `docs/tools-v2-plans/chem-buffer-drills.md`. Standard: `docs/tools-v2-standard.md`. Branch `claude/tools-v2-chem-buffers`,
 cut from `claude/tools-v2-all`. NOT merged: an independent review comes first; decisions made for the owner are also
@@ -190,9 +192,17 @@ pointer ease included; AP Chem tests (99 pass), content check, build `--check`, 
   in, so for about 200 ms the beaker was empty). On a buffer switch only the parts that change fade in (the readings,
   the meter names, the counts, the pKa band, mark and pointers), so the bench no longer blinks. The frames run samples
   the liquid's alpha at the bottom of each beaker on every fade frame (at least 80% of its full alpha) and checks the
-  wall stays put; it fails on the old fade (24 frames at 390).
+  wall stays put; it fails on the old fade.
 - **No ring left behind.** The last frame of a drop that stays repaints its beaker whole. After every frames scenario
   the settled canvases are compared with a fresh repaint, pixel by pixel; it fails without the fix (11 and 14 pixels).
+  The same check found that the liquid's last eased step (under 0.02 mL) was never painted at 1440 (692 pixels of the
+  surface line); that frame now repaints its beaker.
+
+Checks (integration round, on the final code): the kept sweep at all ten widths, one per process, light and dark (the
+dark run asserts the page is dark), each at its screen height, plus 360 × 740: 11 runs of 34 states and 768 checks, 0
+failures; frames at 390 (1014 checks) and 1440 (877 checks), 0 failures, the cross fades and the repaint check included;
+AP Chem tests (99 pass), content check, `build-apchem`, `build-apcalc` and `build-apmacro --check`, check-site,
+check-weight (626 budgets in range); no conflict markers.
 
 ## Not done, and what I am not happy with
 - No real phone, no screen reader pass, no students; no independent review yet.
