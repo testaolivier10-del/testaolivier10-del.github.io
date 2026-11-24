@@ -138,7 +138,7 @@ const AGREE = () => {
     const pressed = document.querySelectorAll('.dr3-ctap')[k].getAttribute('aria-pressed') === 'true';
     if (pressed !== (S.design === d)) out.push(`card ${d} pressed ${pressed} vs design ${S.design}`);
   });
-  const cm2 = cz.map(t => /^centred (−?[\d.]+)/.exec(t)).find(Boolean);
+  const cm2 = cz.map(t => /^centered (−?[\d.]+)/.exec(t)).find(Boolean);
   if (cm2 && !X.busy()) {
     const k = DES.indexOf(S.design), y0 = q.top + k * q.rh, y1 = y0 + q.rh, ubW = cz.some(t => /not blind/.test(t)), blW = cz.some(t => /, blind$/.test(t));
     const vals = circles.filter(c => { const cy = +c.getAttribute('cy'); if (cy < y0 || cy > y1) return false; const ub = /is-ub/.test(c.getAttribute('class')); return ubW ? ub : blW ? !ub : true; }).map(c => vx(+c.getAttribute('cx')));
@@ -188,6 +188,9 @@ const LAYOUT = (phone) => {
     const a = l.r, b = o.r;
     if (a.left < b.right + 1 && b.left < a.right + 1 && a.top < b.bottom + 1 && b.top < a.bottom + 1) out.push(`"${l.w}" touches a ${o.c}`);
   }));
+  // every card's name inside its card
+  const cards = [...document.querySelectorAll('.dr3-card')].map(c => c.getBoundingClientRect());
+  document.querySelectorAll('.dr3-cname, .dr3-ccount').forEach(t => { if (!vis(t)) return; const r = t.getBoundingClientRect(), c = cards.find(c => r.top >= c.top - 1 && r.bottom <= c.bottom + 1); if (!c || r.left < c.left + 3 || r.right > c.right - 3) out.push(`card text outside its card: "${t.textContent}"`); });
   // the stickers keep apart from each other
   const st = [...document.querySelectorAll('.dr3-units .dr3-tag')].filter(vis).map(e => e.getBoundingClientRect());
   for (let i = 0; i < st.length; i++) for (let j = i + 1; j < st.length; j++) { const a = st[i], b = st[j]; if (a.left < b.right && b.left < a.right && a.top < b.bottom && b.top < a.bottom) out.push('stickers overlap'); }

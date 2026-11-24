@@ -19,7 +19,7 @@ allows generalizing.
 |---|---|---|
 | The old LevlPrep tool (`origin/main`, read and used) | Two illustrated scenes, four design chips in the panel, Randomize (markers in chance order, plants grow), a dotplot with one row per design (and per blinding), Run 100, a blinding checkbox, per unit tables | All of it (see "What moved") |
 | Rossman/Chance applet index (seen as text) | Lists "Randomizing Subjects", "Matched Pairs" and "Randomized Block Design" applets; the applets themselves not opened | Known by name only |
-| A course lab built on Rossman/Chance "Randomizing Subjects" (nfriedrichsen.github.io Design lab, seen) | 24 subject cards (sex, height, a hidden gene) randomized into two groups; many randomizations give a plot of the difference in a lurking variable, centred at zero | The lurking variable's balance made visible: here the sunny pots (or older volunteers) that got A and B, in the cause line, every run |
+| A course lab built on Rossman/Chance "Randomizing Subjects" (nfriedrichsen.github.io Design lab, seen) | 24 subject cards (sex, height, a hidden gene) randomized into two groups; many randomizations give a plot of the difference in a lurking variable, centered at zero | The lurking variable's balance made visible: here the sunny pots (or older volunteers) that got A and B, in the cause line, every run |
 | StatKey (lock5stat.com, seen as text only: the index page) | Randomization test for a difference in means, a dotplot of differences | The row of estimates as a dotplot |
 | Art of Stat web apps | Not reached (the fetch was not approved in time) | The plan's "labels dealt one by one" taken from the plan's note |
 
@@ -51,13 +51,13 @@ the true effect.
 - **Every number is read from the picture as drawn:** a sticker counts once it is down at full size; the balance
   pill counts the stickers on the second block; the estimate is the mean drawn height (stem length over the ruler's
   scale) or gauge score of A minus that of B, shown only when every sticker is down and the growth is done; a row's
-  count, centre (the triangle) and the cause line's "centred" are the dots that have landed.
+  count, centre (the triangle) and the cause line's "centered" are the dots that have landed.
 - **Cause line:** landing "Randomized → chance deals A and B → estimate = mean A − mean B"; dealing "Randomized →
   dealt by chance 7 of 16"; growing "Randomized → sunny: 5 A, 3 B → week 3"; landed "Randomized → sunny: 5 A, 3 B →
-  estimate 3.1 cm → true 2.5"; after Run 100 (or 20 runs in the row) "Blocked → 101 runs → centred 2.5 cm → true 2.5"
-  ("centred 7.2 cm" in vermillion and "true 2.5: biased" when the row's mean is off by more than 3 standard errors and
+  estimate 3.1 cm → true 2.5"; after Run 100 (or 20 runs in the row) "Blocked → 101 runs → centered 2.5 cm → true 2.5"
+  ("centered 7.2 cm" in vermillion and "true 2.5: biased" when the row's mean is off by more than 3 standard errors and
   0.3 units); a picked unit "Plant 6 → sunny row → A: new → 31.2 cm".
-- **Takeaways** (once each per experiment, at rest): "Random assignment centres the estimates on the true effect.";
+- **Takeaways** (once each per experiment, at rest): "Random assignment centers the estimates on the true effect.";
   "Blocking by sunlight makes the estimates vary less around the truth." (only when the block row's SD is under 85% of
   the completely randomized row's); "Pairing similar plants makes the estimates vary less around the truth."; "The
   gardener gave A to the sunny pots: the estimates are biased."; "Not blind: expecting caffeine to help raises
@@ -134,7 +134,43 @@ pill. Controls: Randomize and run, 4 cards, the units (tap or arrows), Run 100, 
   `--perf`; `--shots`).
 
 ## Checks run
-(filled in below by the final run)
+
+### First build (2026-11-24)
+- `node --test scripts/test/apstat-*.test.mjs` (167 pass, one new: the deal order), `check-apstat-content` (0
+  failing), `build-apstat --check` (the other nine trainers unchanged), `build-apcalc --check`, `build-apmacro --check`,
+  `check-site` (no broken references; American spellings in visible text), `check-weight --check` (626 budgets within
+  range); `scripts/check-tool-use.mjs` with a local copy of its list: tool-open, tool-touch (explore), tool-mode
+  (quiz), tool-use; nothing under automation. The locked state is unchanged (no Premium: the course's lock card, no
+  tool, no console errors).
+- Sweep, one process per width, light and dark (the dark runs assert `data-theme="dark"`, set through
+  `localStorage.nremt_theme`): **822 passed, 0 failed** over the ten widths (82 a width, 84 at 360 with the 360 x 740
+  and 375 x 667 landings): the first visit with its cue, one run, Run 100 for every design, each design fresh, a picked
+  unit, the memory study empty, run, Run 100 blind and not blind, block not blind, someone picks, pairs, Start over,
+  Test yourself. Each state checks clipping, 4 px between labels, labels clear of dots, stickers, the truth line and
+  the button, card text inside its card, text at least 11 px, the experiment the largest part, sideways scroll, the
+  phone cause line (two rows, constant height), that the picture, Randomize and run, the cause line and Run 100 show
+  together (390 x 844, 1024 x 768, 1280 x 800 and every other width), and AGREE.
+- Frames: **68 passed, 0 failed** (about 2,900 frames at 390 and 1440, every one agreeing): a run (deal, grow, drop),
+  Run 100, a design change mid run (no dot from the dropped run), a real tap (touch at 390) on a unit and arrows, a
+  real tap on a card and Enter on a card, the memory study, blinding off mid run, Run 100 not blind, Start over,
+  leaving to Test yourself mid run and back (clean, the run finished, its dot landed, the hand gone), reduced motion
+  (at once, with the cross fade). The card fit at phone widths changed after this run; 360, 390 and 430 were run again
+  (248 passed, 0 failed).
+- Perf, CPU x4, the same run as the flagship: one run (plants) median 16.7 ms, p95 16.8 ms at 390 and 33.3 ms at
+  1440; one run (memory) p95 33.3 and 50.0 ms; Run 100 on a plot already holding 500 dots p95 33.3 and 50.0 ms. The
+  flagship's fertilizer drag: median 33.4 ms, p95 83.3 ms at 390 and 66.7 ms at 1440.
+- Preview: `/mnt/user-data/outputs/stat-design-randomizer-v2/index.html`; shots in `shots/` (every sweep state at 360,
+  390, 768, 1024 and 1440 light and dark; mid animation `mid-deal`, `mid-grow` at 390 and 1440).
 
 ## Not done, and what I am not happy with
-(filled in below)
+- No real phone, no screen reader pass, no real students; the independent review is still to come.
+- The plants grow to true scale, so the treatment effect (2.5 cm) is only a few pixels on a phone; the lesson is in
+  the rows of dots, but a student looking only at the bench sees sunlight's effect, not the fertilizer's.
+- The memory study at 360 px is crowded (24 people in about 340 px); readable, but the gauges are thin.
+- Blocking shows its narrower row in the memory study only most of the time (253 of 300 seeds in a simulation), so
+  that takeaway may not appear there; the plants scene always shows it.
+- "Biased" can flag a completely randomized row by chance (about 1 in 300 batches of 100).
+- The hand is a simple drawn hand; it reads as a hand at 1440 but is small on a phone.
+- Rows of dots compress (overlap) once a design has several hundred runs; Start over clears them.
+- Research: the Art of Stat apps were not reached; the Rossman/Chance applet itself was not operated (a lab page
+  that uses it was read).
