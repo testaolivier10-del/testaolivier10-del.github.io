@@ -2192,7 +2192,7 @@ data/tools/anatomy-3d.json), written from its reviewed `where`.
   lower chest" (the where text adds "and sides"), the fourth ventricle "behind the brainstem" (the where text names the
   pons and medulla), the pulmonary veins "from each lung back to the heart" (they enter the left atrium; the where text
   does not say so either), the colon "framing the small intestine: up, across and down". Please read the whole list.
-- **a3x-kidney-level** (decided, for review). "About T12 to L3" for both kidneys; OpenStax 25.3 gives T12 to L3 for the
+- **a3x-kidney-level** (closed in review round 1: "back of the abdomen, T12 to L3, the right lower"). "About T12 to L3" for both kidneys; OpenStax 25.3 gives T12 to L3 for the
   left and says the right sits lower. Say so on the card, or keep the one range?
 - **a3x-regions** (decided, for review). The five regions group the systems as: brain and eyes (nervous and special
   senses; the central canal of the spinal cord is there too), abdomen and pelvis (digestive, spleen, urinary, adrenal

@@ -237,3 +237,37 @@ unchanged. Open points for a person: `docs/anp-needs-author.md`, "3D anatomy, to
 - The NREMT body map's viewer hooks are taken byte for byte from its unmerged branch: integrate the body map first
   (or together); `scripts/check-weight.mjs` repeats its budget comment so the two merge cleanly.
 - No real phone, no screen reader pass, no real students; the independent review is next.
+
+## Review round 1 (2026-11-19, independent review BLOCK; fixed on this branch)
+The review (`/home/claude/review-anp-anatomy-3d/REVIEW.md`) passed the shared hooks (off unless asked; the NREMT body map
+and lab practical sweeps clean on a merged copy), the accuracy apart from four wordings, the tool's own per frame cost
+and the deep links. Merged `origin/claude/tools-v2-all` first (it now holds the NREMT body map): `viewer.js` and the
+body3d budget take this branch's side (a superset), the docs tables keep both sides; `check-tool-use.mjs` untouched.
+
+Must fix:
+1. **The ring on the named part, and the part always seen.** With `selectOnTop` (new viewer option, Explore only) the
+   named part's meshes go to layer 1 and are drawn in a second pass over a cleared depth: the kidneys glow through the
+   stomach, a thoracic vertebra through the sternum, and the part still hides its own far side. A tap where it is drawn
+   picks it (the picker prefers it), and `project()` points at a spot on its own surface: the middle of the tapped
+   piece (or the nearer of a pair) if a ray there and four rays 1.5 px round it meet the part, else the nearest of its
+   vertices that passes the same test (`anchorOf`, cached per selection). The sweep's `--all` checks, for every one of
+   the 85 parts, that `viewer.hit()` at the ring is that part and that the pixels under the ring change when the part
+   is let go (its glow is drawn there).
+2. **Back from Test yourself the region is framed again** (every entry reframes), and the cause line is set only once
+   the card is actually drawn.
+3. **Abdomen framed** on its organs (liver, stomach, pancreas, spleen, small intestine, colon, kidneys, bladder), as
+   the heart tab is.
+4. Merge done; no conflict markers.
+
+Should fix, done: the two unnamed cartilage meshes (context) join the ghost under a region (`ghostContext`); every
+card name is 1 to 3 words (a `label` for the 17 longer names, for example "Septal branches", "Right middle lobe";
+the full name stays in "?", the live region and Test yourself, and a label is accepted as a typed answer there; the
+validator holds the card name to 3 words); the card keeps off the region's other parts where it can (`others` in
+K.spots, a lower weight than the buttons and the part itself); a settled card always has its leader (a leader still
+waiting for its draw is started on the next frame); wordings: kidneys "back of the abdomen, T12 to L3, the right
+lower" (closes a3x-kidney-level), right superior lobe "the upper right chest, its apex above the clavicle", pulmonary
+veins "from each lung to the left atrium", cervical vertebrae "the middle and lower neck"; the big tabs' hover tint
+only with a mouse (`@media (hover:hover)` in the kit); `assets/body3d` budget 19.2 to 21 KB (measured 20.4).
+Not changed: "Right: Gallbladder." shown in both the caption and the dock in Test yourself on a phone is the same on
+`origin/main` (both lines were there before this rebuild).
+
