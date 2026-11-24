@@ -173,6 +173,10 @@ test('validators catch planted mistakes', async () => {
   assert.ok((await v('particle-diagrams'))(pd, map).some(e => /mostly un-ionized/.test(e)), 'a weak acid that is far from "mostly un-ionized" is caught');
   const bf = data('buffer-drills'); bf.contexts[0].base = bf.contexts[4].base;
   assert.ok((await v('buffer-drills'))(bf, map).some(e => /not both/.test(e)));
+  const bx = data('buffer-drills'); bx.explore.buffers[0].Ka = 1.8e-4;
+  assert.ok((await v('buffer-drills'))(bx, map).some(e => /differ from the drill context/.test(e)), 'the Explore buffer must match its drill context');
+  const bx2 = data('buffer-drills'); bx2.explore.drop.mL = 2;
+  assert.ok((await v('buffer-drills'))(bx2, map).some(e => /one particle/.test(e)), 'one drop is one particle');
   const us = data('units-sig-figs'); us.contexts.push({ id: 'ap-note', topic: 'math-sig-figs', kind: 'muldiv', note: 'AP Chemistry' });
   assert.ok((await v('units-sig-figs'))(us, map).some(e => /AP/.test(e)), 'trademark wording is checked');
 });
