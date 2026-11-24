@@ -56,7 +56,8 @@
             "lizard",
             "kangaroo",
             "mouse"
-          ]
+          ],
+          "short": "backbone"
         },
         {
           "id": "jaws",
@@ -67,7 +68,8 @@
             "lizard",
             "kangaroo",
             "mouse"
-          ]
+          ],
+          "short": "jaws"
         },
         {
           "id": "limbs",
@@ -77,7 +79,8 @@
             "lizard",
             "kangaroo",
             "mouse"
-          ]
+          ],
+          "short": "four limbs"
         },
         {
           "id": "amnion",
@@ -86,7 +89,8 @@
             "lizard",
             "kangaroo",
             "mouse"
-          ]
+          ],
+          "short": "amnion"
         },
         {
           "id": "hair",
@@ -94,7 +98,8 @@
           "has": [
             "kangaroo",
             "mouse"
-          ]
+          ],
+          "short": "hair"
         }
       ]
     },
@@ -110,7 +115,8 @@
       "taxa": [
         {
           "id": "alga",
-          "name": "Charophyte alga"
+          "name": "Charophyte alga",
+          "short": "Alga"
         },
         {
           "id": "moss",
@@ -143,7 +149,8 @@
             "pine",
             "rose",
             "grass"
-          ]
+          ],
+          "short": "embryo"
         },
         {
           "id": "vascular",
@@ -153,7 +160,8 @@
             "pine",
             "rose",
             "grass"
-          ]
+          ],
+          "short": "vascular tissue"
         },
         {
           "id": "seeds",
@@ -162,7 +170,8 @@
             "pine",
             "rose",
             "grass"
-          ]
+          ],
+          "short": "seeds"
         },
         {
           "id": "flowers",
@@ -170,7 +179,8 @@
           "has": [
             "rose",
             "grass"
-          ]
+          ],
+          "short": "flowers"
         }
       ]
     },
@@ -190,7 +200,8 @@
         },
         {
           "id": "chimp",
-          "name": "Chimpanzee"
+          "name": "Chimpanzee",
+          "short": "Chimp"
         },
         {
           "id": "gorilla",
@@ -642,5 +653,31 @@
         "sample": "<p>It joins the clade of vascular plants, branching off below the seed plants, near the fern. It shares the derived embryo and vascular tissue characters with fern, pine, rose and grass, so it belongs to that clade, but it lacks seeds, so it is outside the clade of pine, rose and grass. These four characters cannot tell whether it is closer to fern or to the seed plants, so it and fern would join the same node.</p>"
       }
     ]
+  },
+  "explore": {
+    "purpose": {
+      "anc": "Read kinship from the most recent common ancestor",
+      "traits": "A shared trait marks the branch where it arose"
+    },
+    "trees": [
+      {
+        "id": "vertebrates",
+        "chip": "Animals"
+      },
+      {
+        "id": "plants",
+        "chip": "Plants"
+      },
+      {
+        "id": "primates",
+        "chip": "Primates (DNA)"
+      }
+    ],
+    "traitTrees": [
+      "vertebrates",
+      "plants"
+    ],
+    "takeRotate": "Rotating a node never changes who is related to whom.",
+    "takeTraits": "A shared derived trait marks one clade: its branch and every tip above it."
   }
 }

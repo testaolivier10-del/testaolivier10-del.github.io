@@ -1,0 +1,147 @@
+/* Phylogenetic tree reading, tools v2 (bio/assets/tools/tree-reading.js; docs/tools-v2-bio-tree-reading-brief.md).
+   Loaded only by this page (bio/data/pages.json "kit2": true). One colour per idea everywhere (picture, cause line):
+   tapped tips blue, the common ancestor and its clade amber, traits violet; the tree is bark on a soft ground. */
+.tr2,.tr2-ref,.tr2-dock,.tr2-bstage,.tr-draw2,.ls-root{--tr-tip:#2F6FB0;--tr-tip-ink:#1F4F82;--tr-anc:#C26A00;--tr-anc-ink:#8A4A00;--tr-glow:#F2A93B;--tr-trait:#7B4FB8;--tr-trait-ink:#5A3592;
+  --tr-sky0:#E6F1F4;--tr-hill0:#CFE3C6;--tr-hill1:#B6D49F;--tr-soil:#8A6744;--tr-turf:#6E9E45;--tr-peb:#6E5136;
+  --tr-bark:#7A5634;--tr-bark-hi:#A27A50;--tr-bark-edge:#5A3D22;--tr-knot:#FFF8EC;--tr-knot-edge:#5A3D22;--tr-ink:#1F2328;--tr-sub:#55606A;--tr-halo:rgba(255,255,255,.9);
+  --tr-pad:rgba(70,50,30,.28);--tr-time:#7D8A90;--tr-pill:#FFFFFF;}
+:root[data-theme="dark"] .tr2,:root[data-theme="dark"] .tr2-ref,:root[data-theme="dark"] .tr2-dock,:root[data-theme="dark"] .tr2-bstage,:root[data-theme="dark"] .tr-draw2,:root[data-theme="dark"] .ls-root{
+  --tr-tip:#6AA8E8;--tr-tip-ink:#A3CBF2;--tr-anc:#F0A43C;--tr-anc-ink:#F6C982;--tr-glow:#F6B651;--tr-trait:#B08AE8;--tr-trait-ink:#D3BCF5;
+  --tr-sky0:#1D2930;--tr-hill0:#24362B;--tr-hill1:#2C4331;--tr-soil:#4A3826;--tr-turf:#3F6A2A;--tr-peb:#33261A;
+  --tr-bark:#8E6A46;--tr-bark-hi:#B48C60;--tr-bark-edge:#3A2816;--tr-knot:#2A2520;--tr-knot-edge:#C9A67E;--tr-ink:#F1EDE6;--tr-sub:#B8C0C7;--tr-halo:rgba(20,24,28,.85);
+  --tr-pad:rgba(0,0,0,.4);--tr-time:#8E9AA0;--tr-pill:#1B1D20;}
+.tr2{display:flex;flex-direction:column;gap:10px;min-height:0;flex:1 1 auto;container-type:inline-size;container-name:tr2;}
+.tr2[hidden]{display:none;}
+.tr2 [hidden]{display:none !important;}
+.tr2 .tk2-tabs{flex:none;}
+/* the height is set from the window's room (tree-reading.js fitHeight); this is the fallback before it runs */
+.tr2-scene{position:relative;flex:none;height:560px;border-radius:18px;overflow:hidden;background:var(--tr-sky0);}
+.tr2-scene.is-fade{animation:tr2fade .26s ease-out;}
+@keyframes tr2fade{from{opacity:.35;}to{opacity:1;}}
+.tr2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;touch-action:manipulation;}
+@media (max-width:640px){ .tr2-scene{border-radius:14px;} .tr2{gap:8px;} }
+.tr2-lines{display:flex;align-items:center;justify-content:space-between;gap:6px 18px;flex-wrap:wrap;flex:none;}
+.tr2-acts{display:flex;align-items:center;gap:6px 12px;flex:none;margin-left:auto;flex-wrap:wrap;}
+.tr2-trees{display:inline-flex;flex-wrap:wrap;gap:4px;}
+.tr2-tb{min-height:44px;padding:0 12px;border:0;border-radius:999px;background:none;color:var(--ink);font:800 14px var(--font-ui);cursor:pointer;box-shadow:inset 0 0 0 1.5px color-mix(in srgb, var(--ink) 18%, transparent);}
+.tr2-tb.is-on{background:color-mix(in srgb, var(--ink) 9%, transparent);box-shadow:inset 0 0 0 2px color-mix(in srgb, var(--ink) 45%, transparent);}
+.tr2-tb:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+@container tr2 (max-width:1100px){ .tr2-lines .tk2-cause{flex-basis:100%;} .tr2-acts{margin-left:0;width:100%;justify-content:flex-start;} }
+@media (max-width:640px){ .tr2-lines .tk2-cause{flex-basis:100%;} .tr2-acts{margin-left:0;width:100%;} .tr2-tb{padding:0 10px;font-size:13.5px;} }
+@media (min-width:641px){ .tr2-lines .tk2-cause{min-height:62px;} }
+/* the cause line in the colours of the picture */
+.tr2 .tk2-cz.is-tip{--cz:var(--tr-tip);--cz-ink:var(--tr-tip-ink);}
+.tr2 .tk2-cz.is-anc{--cz:var(--tr-anc);--cz-ink:var(--tr-anc-ink);}
+.tr2 .tk2-cz.is-trait{--cz:var(--tr-trait);--cz-ink:var(--tr-trait-ink);}
+.tr2 .tk2-cz.is-dna{--cz:#4D7F6B;--cz-ink:#2F5A48;}
+:root[data-theme="dark"] .tr2 .tk2-cz.is-dna{--cz:#7FB9A2;--cz-ink:#B5DCCB;}
+
+/* the outdoors */
+.tr2-sky{fill:var(--tr-sky0);}
+.tr2-hill{fill:var(--tr-hill1);} .tr2-hill.is-far{fill:var(--tr-hill0);}
+.tr2-soil{fill:var(--tr-soil);}
+.tr2-turf{stroke:var(--tr-turf);stroke-width:3;}
+.tr2-peb{fill:var(--tr-peb);opacity:.55;}
+.tr2-time{stroke:var(--tr-time);stroke-width:2;fill:none;}
+.tr2-time-h{fill:var(--tr-time);}
+.tr2-tword{fill:var(--tr-sub);font-weight:800;}
+/* the tree: bark limbs with a light edge, knots where it splits */
+.tr2-bark{fill:var(--tr-bark);stroke:var(--tr-bark-edge);stroke-width:1;stroke-linejoin:round;}
+.tr2-bark-hi{fill:none;stroke:var(--tr-bark-hi);stroke-linecap:round;opacity:.75;}
+.tr2-halo{fill:none;stroke-linecap:round;stroke:var(--tr-glow);}
+.tr2-halo.is-anc{stroke:color-mix(in srgb, var(--tr-glow) 30%, transparent);}
+.tr2-halo.is-trait{stroke:color-mix(in srgb, var(--tr-trait) 34%, transparent);}
+.tr2-glow{fill:none;stroke:var(--tr-glow);stroke-width:6;stroke-linecap:round;stroke-dasharray:1 1;stroke-dashoffset:1;filter:none;}
+.tr2-brhit{fill:none;stroke:transparent;stroke-width:26;pointer-events:none;}
+.tr2-scene.is-armed .tr2-brhit{pointer-events:stroke;cursor:pointer;}
+.tr2-knot{fill:var(--tr-knot);stroke:var(--tr-knot-edge);stroke-width:2;}
+.tr2-node.is-m .tr2-knot{fill:var(--tr-glow);stroke:var(--tr-anc-ink);stroke-width:2.5;}
+.tr2-nn{fill:var(--tr-ink);font-weight:900;pointer-events:none;}
+.tr2-node.is-m .tr2-nn{fill:#3A2200;}
+.tr2-nhit{fill:transparent;cursor:pointer;}
+/* the tips: an organism on a pad at the end of its branch, its name above it */
+.tr2-thit{fill:transparent;cursor:pointer;}
+.tr2-scene[data-tab="traits"] .tr2-thit{cursor:default;}
+.tr2-pad{fill:var(--tr-pad);}
+.tr2-ring{fill:none;stroke-width:4;}
+.tr2-ring.is-anc{stroke:color-mix(in srgb, var(--tr-glow) 80%, transparent);}
+.tr2-ring.is-trait{stroke:var(--tr-trait);}
+.tr2-npill{fill:transparent;}
+.tr2-nt{fill:var(--tr-ink);font-weight:900;paint-order:stroke;stroke:var(--tr-halo);stroke-width:3px;stroke-linejoin:round;}
+.tr2-tip.is-sel .tr2-npill{fill:var(--tr-tip);}
+.tr2-tip.is-sel .tr2-nt{fill:#fff;stroke:none;}
+:root[data-theme="dark"] .tr2-tip.is-sel .tr2-nt{fill:#0F1A26;}
+.tr2-tip.is-sel .tr2-pad{fill:var(--tr-tip);opacity:.7;}
+.tr2-disc{fill:#E8E1D2;stroke:var(--tr-bark-edge);stroke-width:1.5;}
+.tr2-dl{fill:#3A2A14;font-weight:900;}
+/* the pill at the common ancestor */
+.tr2-pill rect{fill:var(--tr-anc);}
+.tr2-pill text{fill:#fff;font-weight:900;font-family:var(--font-ui);}
+:root[data-theme="dark"] .tr2-pill text{fill:#2A1700;}
+/* trait ticks */
+.tr2-bead{fill:var(--tr-trait);stroke:#fff;stroke-width:2;}
+.tr2-bar{fill:var(--tr-trait);stroke:#fff;stroke-width:1.5;}
+.tr2-tl rect{fill:var(--tr-trait);}
+.tr2-lead{fill:none;stroke:var(--tr-trait);stroke-width:2;}
+.tr2-tl text{fill:#fff;font-weight:900;font-family:var(--font-ui);}
+:root[data-theme="dark"] .tr2-tl text{fill:#1B0E30;}
+.tr2-tick.is-num .tr2-tl rect{fill:var(--tr-trait);}
+.tr2-lead{fill:none;stroke:var(--tr-trait);stroke-width:2;}
+/* the keyboard path: a real button over each tip and node (the pointer acts on what is drawn) */
+.tr2-keys{position:absolute;inset:0;pointer-events:none;}
+.tr2-key{position:absolute;padding:0;margin:0;border:0;background:none;pointer-events:none;border-radius:12px;opacity:1;}
+.tr2-key.is-node{border-radius:50%;}
+.tr2-key:focus-visible{outline:3px solid var(--cink);outline-offset:1px;}
+/* the trait chips on the ground */
+.tr2-chips{position:absolute;display:flex;flex-wrap:wrap;gap:6px 8px;justify-content:center;z-index:2;}
+.tr2-chip{min-height:44px;display:inline-flex;align-items:center;gap:6px;padding:0 14px;border-radius:999px;border:2px solid var(--tr-trait);background:var(--tr-pill);color:var(--tr-trait-ink);font:800 14px var(--font-ui);cursor:pointer;box-shadow:0 2px 0 rgba(0,0,0,.18);}
+.tr2-chip .tr2-tickmark{display:inline-block;width:10px;height:4px;border-radius:2px;background:var(--tr-trait);}
+.tr2-chip.is-on{background:var(--tr-trait);color:#fff;}
+.tr2-chip.is-on .tr2-tickmark{background:#fff;}
+:root[data-theme="dark"] .tr2-chip.is-on{color:#1B0E30;}
+:root[data-theme="dark"] .tr2-chip.is-on .tr2-tickmark{background:#1B0E30;}
+.tr2-chip:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+@media (max-width:640px){ .tr2-chip{padding:0 10px;font-size:13px;gap:6px;} }
+/* "?" and Test yourself */
+.tr2-ref-how{margin:0 0 6px;}
+.tr2-dock .tr2-prow{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:6px 0;}
+.tr2-pchip{min-height:44px;padding:0 12px;border-radius:999px;border:2px solid var(--tr-trait);background:none;color:var(--ink);font:800 14px var(--font-ui);cursor:pointer;text-align:left;}
+.tr2-pchip b{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--tr-trait);color:#fff;font-size:12px;margin-right:4px;}
+.tr2-pchip.is-armed{background:var(--tr-trait);color:#fff;}
+.tr2-pchip.is-placed:not(.is-armed){background:color-mix(in srgb, var(--tr-trait) 14%, transparent);}
+.tr2-pchip:disabled{opacity:.6;cursor:default;}
+.tr2-pchip:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.tr2-bstage{display:flex;flex-direction:column;gap:12px;}
+.tr2-still{display:block;width:100%;max-width:600px;height:auto;font-family:var(--font-ui);}
+.tr2-still .tr2-nt{stroke-width:3px;}
+.tr-draw2{display:flex;flex-wrap:wrap;gap:12px;}
+.tr-draw2 figure{margin:0;flex:1 1 260px;max-width:440px;}
+.tr-draw2 figcaption{font-weight:800;margin-bottom:4px;}
+
+/* the organisms (ApBioTreeArt): flat tones, a soft outline */
+.tr2-defs path,.tr2-defs circle,.tr2-defs ellipse{stroke-linejoin:round;stroke-linecap:round;}
+#tr2-o-lancelet .o-lanc{fill:#F1D7C4;stroke:#9C6E57;stroke-width:1.6;} #tr2-o-lancelet .o-lanc-s{fill:#D9B39C;}
+.o-fin{fill:#E9CDB9;stroke:#9C6E57;stroke-width:1;}
+.o-line{fill:none;stroke:#3B2A20;stroke-width:1.6;} .o-thin{fill:none;stroke:#3B2A20;stroke-width:1;opacity:.7;}
+.o-eye{fill:#1C1613;} .o-eyew{fill:#FFFBEF;} .o-dark{fill:#2E2420;}
+.o-lamp{fill:#8A7A6C;stroke:#4E4238;stroke-width:1.6;} .o-lamp-s{fill:#B8AC9E;} .o-mouth{fill:#C7A08E;stroke:#4E4238;stroke-width:1.4;}
+.o-shark{fill:#7F96A8;stroke:#3F5263;stroke-width:1.6;} .o-shark-s{fill:#E7EEF2;}
+.o-frog{fill:#5DAA3E;stroke:#2E6B1D;stroke-width:1.6;} .o-frog-s{fill:#3F8A2A;stroke:#2E6B1D;stroke-width:1.2;} .o-belly{fill:#D7E9A8;}
+.o-liz{fill:#7FA34A;stroke:#46622A;stroke-width:1.6;} .o-liz-s{fill:#C6D88E;} .o-dots{fill:none;stroke:#46622A;stroke-width:2.2;stroke-linecap:round;}
+.o-roo{fill:#B57A45;stroke:#6E4422;stroke-width:1.6;} .o-roo-s{fill:#D9AE7E;}
+.o-mouse{fill:#9A9590;stroke:#57524E;stroke-width:1.6;} .o-mouse-s{fill:#D6D1CB;} .o-ear{fill:#E7A9A9;} .o-nose{fill:#D77C86;} .o-tail{fill:none;stroke:#D79A9A;stroke-width:2.4;}
+.o-pool{fill:#9CCBE0;stroke:#5E95AE;stroke-width:1.4;} .o-pool-s{fill:none;stroke:#E7F5FB;stroke-width:1.6;}
+.o-stalk{fill:none;stroke:#3F8A2A;stroke-width:3;} .o-whorl{fill:none;stroke:#5DAA3E;stroke-width:2.2;} .o-alga{fill:#5DAA3E;}
+.o-moss{fill:#6FB548;stroke:#3C7A24;stroke-width:1.4;} .o-moss-s{fill:#4C8F30;} .o-seta{fill:none;stroke:#B07A3A;stroke-width:1.8;} .o-caps{fill:#C98C3E;stroke:#7D5320;stroke-width:1;}
+.o-fern{fill:#4FA23A;stroke:#2F6B20;stroke-width:.8;} .o-rach{fill:none;stroke:#2F6B20;stroke-width:2;} .o-curl{fill:none;stroke:#4FA23A;stroke-width:2.6;}
+.o-trunk{fill:#7A5634;} .o-pine{fill:#2F7A4A;} .o-pine-s{fill:#1F5C36;stroke:#164227;stroke-width:1.4;} .o-cone{fill:#A2683A;stroke:#5E3A1E;stroke-width:1;}
+.o-stem{fill:none;stroke:#3F8A2A;stroke-width:3;} .o-leaf{fill:#5DAA3E;stroke:#2E6B1D;stroke-width:1.2;}
+.o-petal{fill:#D63A54;} .o-petal-s{fill:#A82440;stroke:#7A1530;stroke-width:1.4;} .o-petal-l{fill:#F07A8C;} .o-sepal{fill:#3F8A2A;}
+.o-grass{fill:#7DB548;stroke:#4C7F26;stroke-width:1.2;} .o-grass-s{fill:#5E9A36;} .o-stalk2{fill:none;stroke:#8F9A3A;stroke-width:2;} .o-head{fill:#C9B35A;stroke:#8F7A2A;stroke-width:1.2;}
+.o-skin{fill:#E3B38E;stroke:#8E5E3E;stroke-width:1.6;} .o-hair-h{fill:#4A3021;} .o-shirt{fill:#3F7CC0;stroke:#24517F;stroke-width:1.6;}
+.o-fur{fill:#2E2620;stroke:#120E0B;stroke-width:1.6;} .o-ear-c{fill:#C9A587;stroke:#3A2A20;stroke-width:1.4;} .o-face-c{fill:#D2B193;stroke:#5C4332;stroke-width:1.2;} .o-brow{fill:none;stroke:#3A2A20;stroke-width:2.2;}
+.o-fur-g{fill:#26292C;stroke:#0E1012;stroke-width:1.6;} .o-face-g{fill:#3E4246;} .o-brow-g{fill:#16181A;} .o-nose-g{fill:#16181A;}
+.o-fur-o{fill:#C7642A;stroke:#7A3A14;stroke-width:1.6;} .o-pad{fill:#8E6A55;stroke:#4E3A2E;stroke-width:1.2;} .o-face-o{fill:#A88069;stroke:#5C4332;stroke-width:1.2;}
+.o-fur-m{fill:#A89478;stroke:#5E5040;stroke-width:1.6;} .o-face-m{fill:#E59A94;stroke:#9E5652;stroke-width:1.2;}
+.o-fur-b{fill:#8E8460;stroke:#4F4730;stroke-width:1.6;} .o-face-b{fill:#5E5A58;stroke:#2E2A28;stroke-width:1.2;} .o-nose-b{fill:#2A2624;}
+.tr2-org,.tr2-still use{overflow:visible;}
