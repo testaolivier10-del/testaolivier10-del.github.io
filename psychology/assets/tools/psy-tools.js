@@ -30,6 +30,8 @@
        drill(app, data, { slug, generate, types, extra, onVol })
      Explore, then test yourself (apchem decision 21):
        modes(app, { explore(pane), quiz(pane), studio? }) the two-mode switch
+       kit2(app, { slug, explore(host) -> { stage, ref, shown, ready }, quiz(host) }) the same switch for a tool
+         rebuilt on the tools v2 kit (Explore is the tool's own stage, full width)
        studioPane(pane, studio, { stage, dock, caption, why, details })
        cue(text) "Start here"; moreHtml(inner) "More options"; explain(el, head, body) one line + "Why?"
      Recording: record(slug, items) -> ApPsychCore.toolResult, so every item
@@ -789,6 +791,50 @@
     show(start, false);
     return { explore: ex, quiz: qz, show: show, bar: bar };
   }
+  /* kit2(app, o): tools v2 (docs/tools-v2-standard.md), this course layer's adapter for the shared kit
+     (assets/course/tool-kit2.js, loaded by a page with "kit2": true in psychology/data/pages.json; first:
+     Brain map, docs/tools-v2-brain-map-brief.md). The same two modes as modes() (its switch, its stored choice,
+     ?seed= and #quiz open Test yourself), with the v2 arrangement in Explore:
+       o.explore(host) -> { stage, ref, shown(mode), ready(s) }   the tool builds its own stage with the kit: the
+                     picture with its controls on it and the lines around it. EXPLORE shows it alone, full width
+                     (no side panel, nothing graded); ref is the reference behind "?"; ready(s) runs once both
+                     are placed in the frame; shown(mode) after every switch (once at the start too).
+       o.quiz(host)  TEST YOURSELF, built the first time it opens (the course's step drill, T.drill, as before).
+     Returns what modes() returns: { explore, quiz, show(mode, user), bar } (explore and quiz are the two panes;
+     show('quiz', true) switches as a tap on the switch would). A cached copy of an old page may not load the kit:
+     then kit2 loads tool-kit2.css and .js itself and sets up once they arrive; the object it returns forwards
+     show() to the real one, and explore, quiz and bar fill in then. Without the frame the stage simply stays in
+     the Explore pane. */
+  function kit2(app, o){
+    if(window.LevlKit2) return kit2Now(app, o);
+    var api = { explore: null, quiz: null, bar: null, pending: null, show: function(m, user){ if(api.real) api.real.show(m, user); else api.pending = [m, user]; } };
+    var up = base() + '../assets/course/';
+    if(!document.querySelector('link[href$="tool-kit2.css"]')){ var l = document.createElement('link'); l.rel = 'stylesheet'; l.href = up + 'tool-kit2.css'; document.head.appendChild(l); }
+    var sc = document.createElement('script'); sc.src = up + 'tool-kit2.js';
+    sc.onload = function(){
+      var r = kit2Now(app, o); api.real = r; api.explore = r.explore; api.quiz = r.quiz; api.bar = r.bar;
+      var st = studioOf(app); if(st && st.mode) st.mode(st.mode());
+      if(api.pending) r.show(api.pending[0], api.pending[1]);
+    };
+    sc.onerror = function(){ api.real = kit2Now(app, o); };
+    document.head.appendChild(sc);
+    return api;
+  }
+  function kit2Now(app, o){
+    var K = window.LevlKit2, ex = null;
+    return modes(app, { slug: o.slug, labels: o.labels,
+      explore: function(host){ ex = o.explore(host) || {}; },
+      quiz: o.quiz,
+      onShow: function(m){ if(ex && ex.shown) ex.shown(m); if(o.onShow) o.onShow(m); },
+      studio: { explore: function(pane, s){
+        if(!ex || !ex.stage) return;
+        if(K) K.on(s);
+        s.add('stage', ex.stage, { mode: 'explore' }); ex.stage.setAttribute('data-ls-only', 'explore');
+        if(ex.ref){ s.add('details', ex.ref, { mode: 'explore' }); ex.ref.setAttribute('data-ls-only', 'explore'); }
+        s.mode(s.mode());
+        if(ex.ready) ex.ready(s);
+      } } });
+  }
   /* Motion off? (site toggle or the OS setting) */
   function reduced(){
     try{ if(window.LevlMotion && window.LevlMotion.reduced) return !!window.LevlMotion.reduced(); return matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){ return false; }
@@ -1073,7 +1119,7 @@
 
   window.ApPsychTools = {
     studioOf: studioOf, studioPane: studioPane, isStd: isStd, stagePick: stagePick, sayHead: sayHead, hintSlot: hintSlot,
-    modes: modes, reduced: reduced, cue: cue, moreHtml: moreHtml, explain: explain,
+    modes: modes, kit2: kit2, reduced: reduced, cue: cue, moreHtml: moreHtml, explain: explain,
     esc: esc, F: F, nid: nid, mount: mount, frame: frame, kindPicker: kindPicker, keepGoing: keepGoing, slider: slider, choiceSelect: choiceSelect, announcer: announcer,
     plot: plot, niceMax: niceMax, niceStep: niceStep, dataTable: dataTable, wrapTables: wrapTables, box: box,
     record: record, report: report, event: event, questions: questions, frq: frq, skillTool: skillTool,

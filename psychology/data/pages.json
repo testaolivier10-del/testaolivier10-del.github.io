@@ -177,7 +177,8 @@
    "desc": "The brain region by region: tap a structure or a lobe to see what it does, then read lesion, imaging and split-brain cases and name the region.",
    "blurb": "Tap a region to see what it does, and what damage there changes.",
    "lede": "Tap a region, then name it from a case.",
-   "studio": true
+   "studio": true,
+   "kit2": true
   },
   {
    "slug": "sensation",

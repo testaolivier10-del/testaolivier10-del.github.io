@@ -40,6 +40,7 @@ States: building, review, fixing, recheck, PASS (waiting to integrate), integrat
 | Ochem reaction predictor | claude/tools-v2-reaction-predictor | wt-reaction-predictor | integrated | 3D sketch of each path (`sequence()`), every frame unit tested as a real structure; three accuracy fixes in `mixture()`; sweep and perf scripts |
 | A&P anatomy 3d | claude/tools-v2-anp-anatomy-3d | wt-anp-anatomy-3d | integrated | five regions on the shared viewer; viewer.js taken from the NREMT body map's branch (byte for byte) plus opt in hooks, so integrate the body map first; K.spots `project`; anp spec decision 105 |
 | NREMT scenario sim | claude/tools-v2-nremt-scenario-sim | wt-nremt-scenario-sim | integrated | Explore `nremt/assets/scenario-explore.js` (own weight shell); the run is Test yourself; monitor pause/resume and `pinsFor` added; the shared NREMT drawn patient `nremt/assets/patient-draw.js` (flowcharts moved onto it); shell `nremt/kit2` |
+| AP Psych brain map | claude/tools-v2-brain-map | wt-brain-map | integrated | first AP Psych tool on the kit: adapter `ApPsychTools.kit2`; `K.spots` `under`; kept sweep, frames and perf in `scripts/tools-v2/brain-map-*` |
 
 2026-11-19: `main` merged in after PR #228 (ochem frame cleanup: chipPicker, scrollChips and .ls-chips-hidden gone; the v2
 conformations, resonance and arrow pusher kept, kit2 kept). Ochem viewer 3d had `main` merged
@@ -67,6 +68,6 @@ Before the final merge:
 Plans (owner 2026-11-23): every remaining tool has a ready plan in `docs/tools-v2-plans/<course>-<tool>.md`
 (113 plans; difficulty lists in `README-core.md`, `README-econ.md`, `README-sci.md`, `README-soc.md`,
 `README-math.md`). A builder starts from its tool's plan and still opens the research links before building.
-Simpler tools first; Psych waits for the brain map's adapter; the first tool of a course without kit2 adds its adapter.
+Simpler tools first; Psych has its adapter now (the brain map, integrated); the first tool of a course without kit2 adds its adapter.
 
 Next by use (rollout table): rows 20 to 26 are all integrated; next comes from the plans above.

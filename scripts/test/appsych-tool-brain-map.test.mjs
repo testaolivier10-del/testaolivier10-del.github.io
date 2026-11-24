@@ -68,6 +68,22 @@ test('brain-map: every structure has a function, damage and a place', () => {
   }
 });
 
+test('brain-map: the picture’s cause line has a short job and damage line for every structure (tools v2)', () => {
+  for (const [k, r] of Object.entries(B.REGIONS)) {
+    assert.ok(r.job && r.hurt, `${k}: job and hurt`);
+    assert.ok(r.job.length <= 44 && r.hurt.length <= 44, `${k}: at most 44 characters, so the line fits two rows at 360 px`);
+    assert.ok(!/—/.test(r.job + r.hurt), `${k}: no em dash`);
+    assert.ok(!/\b(left|right)-brain(ed)?\b/i.test(r.job + r.hurt), `${k}: no left or right brained people`);
+  }
+  // the named real cases the line cites are the drills' own
+  assert.match(B.REGIONS.hippocampus.hurt, /H\.M\./);
+  assert.match(B.REGIONS.amygdala.hurt, /S\.M\./);
+  assert.match(B.REGIONS.prefrontal.hurt, /Gage/);
+  assert.equal(B.LESIONS.find(c => c.id === 'hm').region, 'hippocampus');
+  assert.equal(B.LESIONS.find(c => c.id === 'sm').region, 'amygdala');
+  assert.equal(B.LESIONS.find(c => c.id === 'gage').region, 'prefrontal');
+});
+
 test('brain-map: planted mistakes are caught', () => {
   const p = B.generate(M.rng(5), ctx('neurology-ward'), 'lesion'), e1 = [];
   p.given.region = p.given.region === 'medulla' ? 'pons' : 'medulla';
