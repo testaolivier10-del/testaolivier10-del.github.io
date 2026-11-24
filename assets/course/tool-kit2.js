@@ -152,8 +152,8 @@
                                     ask(null) leaves it. how in onPick: 'tap' | 'key' | 'find' | 'set'.
                                     under(x, y) (picture units; optional, first: AP® Psychology Brain map): for a
                                     picture of areas, the id of the part drawn under the finger, which a tap names
-                                    before the nearest pin (a pin pressed itself names its own part; not while
-                                    asking). */
+                                    before the nearest pin (a tap on a pin, or within 16 px of it, names that pin's
+                                    part; not while asking). */
 (function(){
   'use strict';
   if(window.LevlKit2) return;
@@ -548,9 +548,12 @@
       // pressed itself still names its own part
       var it = null;
       if(o.under && !asking){
-        var pin = e.target.closest('.tk2-spot');
+        // a tap on (or within 16 px of) a pin names that pin's part; elsewhere the part drawn under the finger
+        var pin = e.target.closest('.tk2-spot'), hr = hit.getBoundingClientRect(), hk = layer.scale() || 1, px0 = e.clientX - hr.left, py0 = e.clientY - hr.top, nd = 1e9, np = null;
+        items.forEach(function(j){ j.at.forEach(function(q){ var Q = px(q), dd = Math.hypot(Q[0] - px0, Q[1] - py0); if(dd < nd){ nd = dd; np = j; } }); });
         if(pin) it = find(pin.getAttribute('data-id'));
-        else { var hr = hit.getBoundingClientRect(), hk = layer.scale() || 1, u = o.under((e.clientX - hr.left) / hk, (e.clientY - hr.top) / hk); if(u) it = find(u); }
+        else if(np && nd <= 16) it = np;
+        else { var u = o.under(px0 / hk, py0 / hk); if(u) it = find(u); }
       }
       if(!it) it = nearest(e.clientX, e.clientY);
       if(!it && !(e.target === hit || e.target.closest('.tk2-spot'))) return;

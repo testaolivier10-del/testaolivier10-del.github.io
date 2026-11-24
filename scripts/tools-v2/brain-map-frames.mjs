@@ -54,6 +54,8 @@ for (const [w, h] of [[390, 844], [1440, 900]]) {
             if (cut && gOther > 0) errs.push(`${T}: the cut corpus callosum let the word across`);
             if (t > 1.45 && op('[data-sb="rays"]') > 0.01) errs.push(`${T}: light still drawn from the screen after the flash`);
             if (t > 1.25 && op('[data-sb="word"]') > 0.01) errs.push(`${T}: the word still on the screen after its flash`);
+            if (op('[data-sb="rays"]') > 0.01) { const ry = document.querySelector('[data-sb="rays"]').getBoundingClientRect(); document.querySelectorAll('.sb-field').forEach((f) => { const fr = f.getBoundingClientRect(); if (ry.top < fr.bottom - 1 && ry.left < fr.right && ry.right > fr.left) errs.push(`${T}: the light is drawn over "${f.textContent}"`); }); }
+            ['left', 'right'].forEach((hd) => { if (op(`[data-sb="hold-${hd}"]`) > 0.5 && document.querySelector(`[data-sb="hold-${hd}"]`).innerHTML.replace(/sb-held/g, '') === '') errs.push(`${T}: an empty hold`); });
           }
           return { errs, n };
         }, { field, cut });
@@ -96,8 +98,10 @@ for (const [w, h] of [[390, 844], [1440, 900]]) {
       await page.evaluate(() => window.BrainMapExplore.damage(false));
     } else {
       await page.evaluate(() => window.BrainMapExplore.flash('left')); await page.waitForTimeout(150);
-      const r = await page.evaluate(() => ({ run: window.BrainMapExplore.running(), line: document.querySelector('.bmx .tk2-cause').textContent, hold: document.querySelector('[data-sb="hold-left"]').getAttribute('opacity') }));
+      const r = await page.evaluate(() => ({ run: window.BrainMapExplore.running(), line: document.querySelector('.bmx .tk2-cause').textContent, hold: document.querySelector('[data-sb="hold-left"]').getAttribute('opacity'),
+        word: parseFloat(getComputedStyle(document.querySelector('[data-sb="word"]')).opacity), text: document.querySelector('[data-sb="word"] text').textContent }));
       ok(!r.run && /left hand finds it/.test(r.line) && r.hold === '1', `${w} reduced motion: the flash end is not shown at once ${JSON.stringify(r)}`);
+      ok(r.word > 0.99 && r.text, `${w} reduced motion: the flashed word is not shown ${JSON.stringify(r)}`);
       if (SHOTS) await page.screenshot({ path: join(SHOTS, `reduced-split-${w}.png`) });
     }
     ok(!errs.length, `${w}: page errors ${errs.join(' | ')}`);

@@ -51,8 +51,7 @@ for (const [w, h] of [[390, 844], [1440, 900]].filter(x => !ONLY || x[0] === ONL
   for (const view of ['outside', 'inside']) {
     await page.goto(BASE + '/psychology/tools/brain-map.html#view/' + view); await page.reload(); await page.waitForSelector('.tk2-spot'); await page.waitForTimeout(1200);
     const cdp = await ctx.newCDPSession(page); await cdp.send('Emulation.setCPUThrottlingRate', { rate: RATE });
-    const pts = await page.evaluate(() => { const A = window.BrainMapExplore, pic = document.querySelector('.bmx-pic svg').getBoundingClientRect(), lay = document.querySelector('.bmx-pic .tk2-layer').getBoundingClientRect(), k = lay.width / 1000;
-      return A._spots().items.slice(0, 8).map((it) => [lay.left + it.at[0][0] * k + 3, lay.top + it.at[0][1] * k + 3]); });
+    const pts = await page.evaluate(() => [...document.querySelectorAll('.tk2-spots:not([hidden]) .tk2-spot-pin')].slice(0, 8).map((e) => { const r = e.getBoundingClientRect(); return [r.left + r.width / 2 + 3, r.top + r.height / 2 + 3]; }));
     await page.evaluate(() => window.BrainMapExplore.damage(true));
     await probe(page, `${view}: tap eight parts with If damaged on`, w, async () => {
       for (const p of pts) { if (w < 900) await page.touchscreen.tap(p[0], p[1]); else await page.mouse.click(p[0], p[1]); await page.waitForTimeout(260); }

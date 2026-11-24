@@ -21,7 +21,7 @@ import { mkdirSync } from 'fs';
 import { join } from 'path';
 
 const arg = (k, d) => { const i = process.argv.indexOf(k); return i > -1 ? process.argv[i + 1] : d; };
-const PORT = arg('--port', '8961'), SHOTS = arg('--shots', ''), DARK = process.argv.includes('--dark');
+const PORT = arg('--port', '8961'), SHOTS = arg('--shots', ''), DARK = process.argv.includes('--dark'), REDUCE = process.argv.includes('--reduce');
 const ALL = [360, 390, 430, 600, 768, 820, 1024, 1280, 1440, 1920];
 const WIDTHS = arg('--width', '') ? [+arg('--width', '')] : ALL;
 const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1243/chrome-linux64/chrome' });
@@ -30,20 +30,27 @@ let fails = 0, checks = 0;
 const fail = (m) => { fails++; console.log('FAIL ' + m); };
 const ok = (c, m) => { checks++; if (!c) fail(m); };
 const URL = `http://127.0.0.1:${PORT}/psychology/tools/brain-map.html`;
-const sfx = DARK ? '-dark' : '';
+const sfx = (DARK ? '-dark' : '') + (REDUCE ? '-reduce' : '');
 
 async function ready(page) {
   for (let i = 0; i < 150; i++) {
     if (await page.evaluate(() => !!(window.BrainMapExplore && document.querySelector('.bmx-pic') && !document.querySelector('.bmx-pic.is-swap')))) break;
     await page.waitForTimeout(100);
   }
-  await page.waitForTimeout(450);
+  // then until the layout has settled (the pins and the cue stop moving)
+  let last = '';
+  for (let i = 0; i < 30; i++) {
+    await page.waitForTimeout(150);
+    const now = await page.evaluate(() => [...document.querySelectorAll('.tk2-spots:not([hidden]) .tk2-spot-pin, .tk2-cue, .bmx-pic')].map((e) => { const r = e.getBoundingClientRect(); return Math.round(r.left) + ',' + Math.round(r.top); }).join(';'));
+    if (now === last) break;
+    last = now;
+  }
 }
 
 for (const w of WIDTHS) {
   const h = w < 500 ? 844 : w < 900 ? 1024 : w >= 1900 ? 1080 : 900;
   const touch = w < 900;
-  const ctx = await browser.newContext({ viewport: { width: w, height: h }, serviceWorkers: 'block', hasTouch: touch, isMobile: w < 500 });
+  const ctx = await browser.newContext({ viewport: { width: w, height: h }, serviceWorkers: 'block', hasTouch: touch, isMobile: w < 500, reducedMotion: REDUCE ? 'reduce' : 'no-preference' });
   await ctx.route(/^https?:\/\/(?!127\.0\.0\.1)/, (r) => r.abort());
   await ctx.addInitScript((d) => { try { localStorage.setItem('nremt_theme', d ? 'dark' : 'light'); } catch (e) {} }, DARK);
   const page = await ctx.newPage();
@@ -125,6 +132,14 @@ for (const w of WIDTHS) {
       }
     }
     await page.evaluate(() => window.BrainMapExplore.damage(false));
+    // a real tap on each pin (mouse, or touch on a phone) names that pin's part, never the part drawn around it
+    for (const id of ids) {
+      const c = await page.evaluate((i) => { const r = document.querySelector('.tk2-spots:not([hidden]) .tk2-spot[data-id="' + i + '"] .tk2-spot-pin').getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; }, id);
+      if (touch) await page.touchscreen.tap(c[0], c[1]); else await page.mouse.click(c[0], c[1]);
+      await page.waitForTimeout(120);
+      const got = await page.evaluate(() => document.querySelector('.tk2-spots:not([hidden]) .tk2-spot[aria-pressed="true"]')?.getAttribute('data-id'));
+      ok(got === id, `${w} ${view}: a tap on the ${id} pin named ${got}`);
+    }
     if (w <= 1100) ok(lineH.size === 1, `${w} ${view}: the lines box changes height (${[...lineH].join(', ')})`);
   }
 
@@ -133,9 +148,9 @@ for (const w of WIDTHS) {
   await page.reload({ waitUntil: 'load' });
   await ready(page);
   const at = await page.evaluate(() => {
-    const A = window.BrainMapExplore, pic = document.querySelector('.bmx-pic .tk2-layer').getBoundingClientRect(), k = pic.width / 1000;
+    const A = window.BrainMapExplore, pic = document.querySelector('.bmx-pic').getBoundingClientRect(), t = A._t();
     const pin = A._G.outside.reg.motor.pin;
-    for (let y = 330; y > 150; y -= 6) for (let x = 380; x < 560; x += 4) { if (A._regAt('outside', x, y) === 'motor' && Math.hypot(x - pin[0], y - pin[1]) > 60) return [pic.left + x * k, pic.top + y * k]; }
+    for (let y = 330; y > 150; y -= 6) for (let x = 380; x < 560; x += 4) { if (A._regAt('outside', x, y) === 'motor' && Math.hypot(x - pin[0], y - pin[1]) > 60) return [pic.left + (x + t.tx) * t.px, pic.top + (y + t.ty) * t.px]; }
     return null;
   });
   ok(!!at, `${w}: no point in the motor strip found`);
@@ -160,10 +175,15 @@ for (const w of WIDTHS) {
   ok(await page.evaluate(() => window.BrainMapExplore.tab() === 'inside' && document.querySelector('.tk2-spots:not([hidden]) .tk2-spot[aria-pressed="true"]')?.getAttribute('data-id') === 'thalamus'), `${w}: find "thalamus" from outside did not open it inside`);
 
   // split brain: every case at its end
-  await page.goto(`${URL}#view/split`, { waitUntil: 'load' });
+  await page.goto(`${URL}#view/${REDUCE ? 'outside' : 'split'}`, { waitUntil: 'load' });
   await page.evaluate(() => { try { Object.keys(localStorage).forEach((k) => { if (/^tk2c:/.test(k)) localStorage.removeItem(k); }); } catch (e) {} });
   await page.reload({ waitUntil: 'load' });
   await ready(page);
+  if (REDUCE) {   // the way a student gets there: a tap on the tab (tool-studio's phone text bump must leave the labels alone)
+    const tb = await page.evaluate(() => { const r = [...document.querySelectorAll('.bmx .tk2-tab')].find((b) => /Split/.test(b.textContent)).getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; });
+    if (touch) await page.touchscreen.tap(tb[0], tb[1]); else await page.mouse.click(tb[0], tb[1]);
+    await page.waitForTimeout(1200);
+  }
   const scue = await page.evaluate(() => {
     const c = document.querySelector('.tk2-cue'); if (!c) return { none: true };
     const r = c.getBoundingClientRect(), pic = document.querySelector('.bmx-pic').getBoundingClientRect(), hits = [];
@@ -194,6 +214,11 @@ for (const w of WIDTHS) {
       out.causeH = Math.round(zr.height); out.lines = Math.round(R(document.querySelector('.bmx-lines')).height);
       cz.querySelectorAll('.tk2-cz').forEach((p) => { const q = R(p); if (q.right > zr.right + 1) out.errs.push('a pill sticks out'); });
       out.text = cz.textContent;
+      // the flashed object is in each tray, and the hand that finds it holds that object
+      ['left', 'right'].forEach((hd) => { if (document.querySelectorAll(`[data-sb="tray-${hd}"] [data-pick]`).length !== 1) out.errs.push('the flashed object is not in the ' + hd + ' tray'); });
+      // the words keep their own size (no phone text bump)
+      document.querySelectorAll('.bmx-svg text').forEach((t) => { if (t.style.fontSize) out.errs.push('"' + t.textContent + '" has an inline font size ' + t.style.fontSize); });
+      if (document.querySelector('.bmx-svg').hasAttribute('data-ls-fs0') || document.querySelector('.bmx-svg [data-ls-fs0]')) out.errs.push('the phone text bump touched the picture');
       out.hscroll = document.scrollingElement.scrollWidth > innerWidth + 1;
       return out;
     });
