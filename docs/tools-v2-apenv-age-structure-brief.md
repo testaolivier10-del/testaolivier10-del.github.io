@@ -132,4 +132,46 @@ replacement mark and label, the caption and the knob's tag. No side panel.
 - Sweep, frames and perf: `scripts/tools-v2/apenv-age-structure-sweep.mjs` (`--frames`, `--perf`, `--shots`, `--height`).
 
 ## Checks run (2026-11-24)
-See the section filled in at the end of the build below.
+- `node --test scripts/test/apenv-*.test.mjs`: 187 pass (one new model test: each life table has exactly its life
+  expectancy, no growth at replacement, replacement falls as life expectancy rises, CBR − CDR = growth, the three
+  shapes, every band under the 15% scale). The build test's fixture copy of `pages.json` carries the new `"kit2"`.
+  `check-apenv-content` (0 failing), `build-apenv --check`, `build-apcalc --check`, `build-apmacro --check`,
+  `check-site` (no broken references), `check-weight --check` (all 626 budgets within range).
+- `check-tool-use` with a local, uncommitted copy of its list plus this tool: tool-open, tool-touch(explore),
+  tool-mode(quiz), tool-use; nothing sent under automation. The script itself is unchanged.
+- Sweep, one width per process at 360, 390, 430, 600, 768, 820, 1024, 1280, 1440 and 1920, light and dark (the dark run
+  asserts the page is dark), each at its screen height: 10 runs of 36 states and 1088 checks, 0 failures (13 states
+  per theme: the opening state, replacement, both ends of both controls, the four stage presets, three between; the
+  first visit cue; a real drag across replacement and its takeaway; a drag that grabs the mother herself; the screen fit
+  before and after; Test yourself). Checked: clipping, 4 px between every text and from the knob's tag, no text under
+  11 px, the knobs and the tag cover no text, the pyramid the largest object, every row's width against the model at the
+  fixed scale, the pill, replacement mark and label, cause line, children and mother against what is drawn, the scene
+  the same size in every state, at least three shapes shown, phone cause line at most two rows and one height (the
+  takeaway too), no sideways scroll, no console errors. The phone widths were run again after the last change (the
+  track moved left on phones).
+- Frames (`--frames`) at 390 and 1440, mouse and real touch (CDP touch events, also at the scrolled end of the page):
+  a slow drag 5 to 1, a fast drag 1 to 7, a reversal mid change, Home, End and Page keys, the life knob both ways: about
+  1,000 to 2,000 frames per width, 0 problems (every row drawn at the model's value for the rate it holds, between the
+  rates the run passed through; on one way changes no row above leads the base; the pill, cause line, replacement and
+  aria-valuetext read what is drawn; at rest every row is the target). Leaving for Test yourself mid change stops the
+  loop and Explore comes back right; reduced motion shows the result at once with the cross fade.
+- Perf (`--perf`, CPU x4, the flagship in the same run, machine load about 2.5 on 2 cores): 390 px, the mother end to
+  end and back median 16.7 ms, p95 33.4; life expectancy end to end median 16.7, p95 33.3; flagship median 33.4, p95
+  83.3. 1440 px: mother median 16.7, p95 33.4; life expectancy median 16.7, p95 50.1 (at the limit); flagship median
+  50.0, p95 100.0. One rect per row and side (a pattern fill), the model memoised per thousandth of a rate, whole year
+  life tables warmed after load and tenths mixed from them.
+- Behaviour (Playwright): keys move the knob and the live region says the new chain; Show me how opens the three
+  callouts; "?" shows the live numbers; `?seed=` opens the same drill twice; a wrong answer in Test yourself gets its
+  feedback; no page errors. Without Premium the page shows the Premium card and no stage (unchanged).
+- Preview: `node scripts/tool-preview.mjs environmental-science/tools/age-structure.html
+  /mnt/user-data/outputs/apenv-age-v2/index.html`; shots in `/mnt/user-data/outputs/apenv-age-v2/shots/` (every sweep
+  state at 390, 768 and 1440 light, three in dark, the first visit, the takeaway, the full screen, Test yourself;
+  `mid-*-a/b/c` are 180 ms, 430 ms and settled after a jump from 5 to 1.5 children and 60 to 80 years).
+
+## What I am not happy with
+- The fixed 15% scale makes the pyramid narrow at most settings, most of all on phones (about half the width at the
+  opening state); it is the price of widths that never lie between settings.
+- Explore's stable shape and the drills' fitted pyramids differ for low fertility countries (Explore ages more); "?"
+  and the About text say so, and it is in `docs/apenv-needs-author.md`.
+- The life expectancy drag at 1440 sits at the p95 limit under load (50.1 ms); the mother drag is well inside.
+- The lamps and planters on wide screens are plain; the square could carry more life without reading as data.

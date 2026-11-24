@@ -267,8 +267,9 @@
       g.hw = Math.min(W / 2 - g.spine / 2 - (ph ? 20 : 30), (g.rowBot - g.rowTop) * 1.9);
       g.sx = function(v){ return g.hw * v / SCALE; };
       // the children per woman track: one slot per child, centred under the pyramid
-      var u = clamp((W - (ph ? 28 : 80)) / 7.6, 38, 74);
-      g.u = u; g.x0 = W / 2 - 3.5 * u;
+      // (on a phone the track sits a little left of centre, so the mother at 7 keeps a margin at the right edge)
+      var u = clamp((W - (ph ? 28 + g.momH * 0.3 : 80)) / 7.6, 38, 74);
+      g.u = u; g.x0 = W / 2 - 3.5 * u - (ph ? g.momH * 0.2 : 0);
       g.x = function(v){ return g.x0 + v * u; };
       g.v = function(x){ return (x - g.x0) / u; };
       // the life expectancy track, top right
