@@ -382,18 +382,6 @@ in each tool's brief.
 | 2026-11-19 | AP Bio Rates | Review round 1: the notes sentence "Both are on the formula sheet" now says a rate is on the sheet (dY/dt) and percent change is not; the stats-rates lesson's formula line says the same | The current sheet lists only dY/dt | `bio/data/notes/stats-rates.html`, `bio/data/lessons/stats-rates.json` |
 | 2026-11-19 | AP Bio Rates | Review round 1: Δt rounds to one decimal before dropping ".0"; the readings sit 22 px inside the axes | No "4.0 min" / "4 min" flicker; a knob at 0 keeps 4 px from the tick numbers | `tVal()`, `layoutGraph()` |
 | 2026-11-19 | AP Bio Rates | Recheck 1 polish: when the rise is shorter than the knob (after 4 min) the step turns at t − 1 (run back from the point, rise at t − 1); the shrunken core's waves vary in size | Both legs visible beside the knob; the core never reads as a bellows | `paintGraph()`, `corePath()` |
-<<<<<<< HEAD
-| 2026-11-23 | AP Psych Neuron | Four tabs (Threshold, Refractory period, Myelin, Synapse) replace the two scenes (Fire, Synapse) | Each teaches a different CED 1.3 idea; one control each | `docs/tools-v2-neuron-brief.md` |
-| 2026-11-23 | AP Psych Neuron | Excitatory and inhibitory input share the Threshold tab (inhibitory knob quiet) | The neuron adds both before it decides; they are one idea | `explore2()` in `neuron.js` |
-| 2026-11-23 | AP Psych Neuron | A run plays by itself when a knob is let go or a drug or myelin stretch is tapped; while dragging, the picture holds the key moment | The process is the lesson; no Stimulate button to find | `restart()` |
-| 2026-11-23 | AP Psych Neuron | "Held on" (a stronger held stimulus fires more often) leaves Explore for "?" (rates) and the drills (held traces) | Keeps Threshold to one idea | `refHtml()` |
-| 2026-11-23 | AP Psych Neuron | Tap a part for its card leaves Explore; parts are labelled on the picture and listed in "?" | Labels carry it; no card over the scene | `labelsSvg()` |
-| 2026-11-23 | AP Psych Neuron | Myelin is drawn 7.5 times faster than bare axon (real: about 50 to 100) | Both must be watchable; said in "?" and needs-author | `N.JUMP`, `N.CRAWL` |
-| 2026-11-23 | AP Psych Neuron | Refractory period tab opens with the 2nd pulse 4 ms after the first (fires again) | The first drag closer shows the block | `S.gap` |
-| 2026-11-23 | AP Psych Neuron | Test yourself keeps the old drill figures | Unchanged drills and grading; a new figure set is later work | `figure()` |
-| 2026-11-23 | AP Psych Neuron | No teaser in Explore | Screen kept quiet (as osmosis) | |
-| 2026-11-23 | AP Psych Neuron | A push of exactly threshold minus rest (15 mV) now fires | It said it reached −55 mV and did not fire | `simulate()` |
-=======
 | 2026-11-19 | Ochem Reaction Predictor | Explore's main control is the reagent picker (grouped by kind); "tap the path you think wins" is Test yourself's Call the path | Explore is free play; the reagent is the thing to change | `docs/tools-v2-reaction-predictor-brief.md` |
 | 2026-11-19 | Ochem Reaction Predictor | The picture is a 3D ball and stick sketch; H balls only on the reacting carbon and one per kind of beta carbon, the rest in labels (CH₃, CH₂) | The H's that move must be seen; all of them would bury the carbon | `ARMS`, `substrate3d` in `reaction-predictor.js` |
 | 2026-11-19 | Ochem Reaction Predictor | Every change plays the whole mechanism at once (3 to 7 s); Play it again repeats it; a tray card plays that product's path | Instant response; the minor product is a real path too | `play()` |
@@ -452,7 +440,16 @@ in each tool's brief.
 | 2026-11-23 | NREMT Scenario simulator | Recheck 2: an ending's present-tense sentences about the patient set the picture again; "Unresponsive" outranks cough or crying. Budgets: `nremt/kit2` back to 6.2 KB; Explore 40.8 KB (measured 40.4); posed figures load on demand and are not counted, like the case figures. |
 | 2026-11-24 | NREMT Scenario simulator | Recheck 3: posed patients wear socks or shoes (footed pyjamas for s9 and s10); s17's maternity top is teal, not skin coloured; the recovery position's upper hand lies at the lower face and the lower arm is bent toward the head. Explore budget 41.4 KB (measured 41.1); `body-figs/pose.js` gets its own 9 KB data budget. |
 | 2026-11-24 | NREMT Scenario simulator | Recheck 4: "Unresponsive" comes only from the step's own words and never over breathing, movement or a pulse back, nor beside "Not breathing"; seated posed feet end on the floor line with blunt toes; the seated drawn face is slightly smaller and nearer the head's middle. |
->>>>>>> origin/claude/tools-v2-all
+| 2026-11-23 | AP Psych Neuron | Four tabs (Threshold, Refractory period, Myelin, Synapse) replace the two scenes (Fire, Synapse) | Each teaches a different CED 1.3 idea; one control each | `docs/tools-v2-neuron-brief.md` |
+| 2026-11-23 | AP Psych Neuron | Excitatory and inhibitory input share the Threshold tab (inhibitory knob quiet) | The neuron adds both before it decides; they are one idea | `explore2()` in `neuron.js` |
+| 2026-11-23 | AP Psych Neuron | A run plays by itself when a knob is let go or a drug or myelin stretch is tapped; while dragging, the picture holds the key moment | The process is the lesson; no Stimulate button to find | `restart()` |
+| 2026-11-23 | AP Psych Neuron | "Held on" (a stronger held stimulus fires more often) leaves Explore for "?" (rates) and the drills (held traces) | Keeps Threshold to one idea | `refHtml()` |
+| 2026-11-23 | AP Psych Neuron | Tap a part for its card leaves Explore; parts are labelled on the picture and listed in "?" | Labels carry it; no card over the scene | `labelsSvg()` |
+| 2026-11-23 | AP Psych Neuron | Myelin is drawn 7.5 times faster than bare axon (real: about 50 to 100) | Both must be watchable; said in "?" and needs-author | `N.JUMP`, `N.CRAWL` |
+| 2026-11-23 | AP Psych Neuron | Refractory period tab opens with the 2nd pulse 4 ms after the first (fires again) | The first drag closer shows the block | `S.gap` |
+| 2026-11-23 | AP Psych Neuron | Test yourself keeps the old drill figures | Unchanged drills and grading; a new figure set is later work | `figure()` |
+| 2026-11-23 | AP Psych Neuron | No teaser in Explore | Screen kept quiet (as osmosis) | |
+| 2026-11-23 | AP Psych Neuron | A push of exactly threshold minus rest (15 mV) now fires | It said it reached −55 mV and did not fire | `simulate()` |
 | 2026-11-23 | AP Psych Brain map | Drawn in 2D, not on the shared 3D body model | The 3D model has no lobes, strips or language areas, and it is 3.3 MB for a free tool | `brain-map.js` art; a 3D brain would be a later separate tool |
 | 2026-11-23 | AP Psych Brain map | Map / Split brain and Outside / Inside switches became three tabs: Outside, Inside, Split brain | One idea per tab; the split-brain test teaches a different idea | `TABS` in `brain-map.js` |
 | 2026-11-23 | AP Psych Brain map | No printed labels in Explore; every name opens on a card when the part is tapped (the labels select is gone) | The picture stays clean; naming without labels is Test yourself's "Name the structure" | Reverse: print names from `G[view].reg` pins |
