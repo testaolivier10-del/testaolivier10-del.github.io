@@ -134,10 +134,11 @@
    "topic": "limits-from-plots",
    "name": "Limit explorer",
    "title": "Limit Explorer",
-   "desc": "Zoom in on a graph near a point: one-sided limits, holes, jumps, asymptotes and the squeeze theorem, with a table of values closing in.",
-   "blurb": "Zoom in on a point and watch the limit from each side.",
-   "lede": "Zoom in on a graph and a table until the limit is clear.",
-   "studio": true
+   "desc": "Drive two cars along a curve toward a point: one-sided limits, holes, jumps, asymptotes, sin(1/x) and the squeeze theorem, with a magnifier closing in.",
+   "blurb": "Close in on a point from each side and watch the limit.",
+   "lede": "Close in on a point from both sides until the limit is clear.",
+   "studio": true,
+   "kit2": true
   },
   {
    "slug": "tangent-tracer",

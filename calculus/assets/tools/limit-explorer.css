@@ -149,3 +149,130 @@
 .le-fsel{width:100%;min-height:44px;border-radius:12px;border:1.5px solid var(--line);background:var(--white);color:var(--ink);font:700 15px var(--font-ui);padding:0 12px;}
 .le-pre .le-side{display:none;}
 .ls-root.ls-phone .le-check,.ls-root.ls-phone .le-check *{font-size:13px;}
+
+/* ================================================================== tools v2 Explore (docs/tools-v2-calc-limit-explorer-brief.md)
+   One colour per idea, everywhere: from the left purple (s5), from the right orange (s4), the limit blue (s2), "no
+   limit" the warning red; the road in ink. Lighter in dark mode. The road, car and magnifier follow the Tangent
+   tracer's look (tangent-tracer.css .tt2-*), drawn here under .le2. */
+.le2{--le-l:#7A4F9E;--le-l-ink:#5E3A7E;--le-r:#D55E00;--le-r-ink:#A84800;--le-lim:#0072B2;--le-lim-ink:#005A8C;--le-bad:#A83B2C;
+  --le-sky0:#CFE6F7;--le-sky1:#F5FAFE;--le-grid:rgba(40,70,110,.13);--le-hill:#6E9C52;--le-road:#4A5058;--le-shoulder:#C9BD9F;--le-lane:#F7EBC4;
+  --le-l-dk:#4B2C66;--le-r-dk:#8E3E00;--le-glass:#DCEBF6;--le-tire:#222831;--le-rail:#7C8895;
+  display:flex;flex-direction:column;gap:10px;min-height:0;flex:1 1 auto;}
+:root[data-theme="dark"] .le2{--le-l:#B48ED8;--le-l-ink:#D8C2EC;--le-r:#E07A2E;--le-r-ink:#F6B98C;--le-lim:#6BB4E8;--le-lim-ink:#9BCDF0;--le-bad:#E0705F;
+  --le-sky0:#0F2338;--le-sky1:#1A3450;--le-grid:rgba(200,220,245,.12);--le-hill:#4E7A3A;--le-road:#262B31;--le-shoulder:#6B6352;--le-lane:#E8D9A8;
+  --le-l-dk:#3A1F52;--le-r-dk:#7A3505;--le-glass:#9FC3E0;--le-tire:#0B0F14;--le-rail:#A9B6C4;}
+.le2[hidden],.le2 [hidden]{display:none !important;}
+.le2 .tk2-tabs{margin:0;align-self:flex-start;max-width:100%;}
+.le2 .tk2-head{gap:6px 12px;}
+.le2-pick{display:inline-flex;align-items:center;gap:8px;flex:none;font:800 14px var(--font-ui);color:var(--muted);}
+.le2-sel{min-height:38px;max-width:240px;padding:4px 30px 4px 10px;border:1.5px solid var(--line);border-radius:10px;background-color:var(--white);color:var(--ink);font:800 14px var(--font-ui);}
+.le2-sel:focus-visible{outline:3px solid var(--cink);outline-offset:1px;}
+.le2-scene{position:relative;flex:1 1 auto;min-height:360px;border-radius:18px;overflow:hidden;background:var(--surface2);}
+.le2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;touch-action:pan-y;}
+@media (max-width:1023px){ .le2-scene{flex:none;height:min(72vw,560px);min-height:400px;} }
+@media (max-width:640px){ .le2-scene{height:max(420px,min(118vw,520px));border-radius:14px;} .le2{gap:8px;} .le2-pick-k{display:none;} .le2-sel{max-width:190px;font-size:13.5px;} }
+.le2-lines{display:flex;align-items:center;justify-content:space-between;gap:6px 18px;flex-wrap:wrap;flex:none;}
+.le2-lines .tk2-play{flex:none;margin-left:auto;}
+.le2 .tk2-cz.is-l{--cz:var(--le-l);--cz-ink:var(--le-l-ink);}
+.le2 .tk2-cz.is-r{--cz:var(--le-r);--cz-ink:var(--le-r-ink);}
+.le2 .tk2-cz.is-lim{--cz:var(--le-lim);--cz-ink:var(--le-lim-ink);}
+.le2 .tk2-cz.is-bad{--cz:var(--le-bad);}
+.le2 .le2-hl .tk2-tag{background:var(--le-l-ink);}
+.le2 .le2-hr .tk2-tag{background:var(--le-r-ink);}
+:root[data-theme="dark"] .le2 .tk2-tag{color:#160B05;}
+.le2 .tk2-handle.is-quiet.is-new .tk2-dot::after{display:none;}
+.le2 .tk2-handle.is-glide .tk2-knob,.le2 .tk2-handle.is-glide .tk2-tag{transition:left .32s ease,top .32s ease;}
+@media (prefers-reduced-motion: reduce){ .le2 .tk2-handle.is-glide .tk2-knob,.le2 .tk2-handle.is-glide .tk2-tag{transition:none;} }
+/* each car's knob is a clear ring with the car inside it (the car is never hidden); still the kit's slider */
+.le2 .tk2-handle.is-ring > .tk2-knob{width:var(--le-ring,54px);height:var(--le-ring,54px);margin:calc(var(--le-ring,54px) / -2) 0 0 calc(var(--le-ring,54px) / -2);}
+.le2 .tk2-handle.is-ring .tk2-dot,:root[data-theme="dark"] .le2 .tk2-handle.is-ring .tk2-dot{width:calc(var(--le-ring,54px) - 6px);height:calc(var(--le-ring,54px) - 6px);background:transparent;
+  box-shadow:0 0 0 3px var(--cink),0 0 0 5px color-mix(in srgb, var(--white) 80%, transparent);}
+.le2 .le2-hl.is-ring .tk2-dot,:root[data-theme="dark"] .le2 .le2-hl.is-ring .tk2-dot{box-shadow:0 0 0 3px var(--le-l),0 0 0 5px color-mix(in srgb, var(--white) 80%, transparent);}
+.le2 .le2-hr.is-ring .tk2-dot,:root[data-theme="dark"] .le2 .le2-hr.is-ring .tk2-dot{box-shadow:0 0 0 3px var(--le-r),0 0 0 5px color-mix(in srgb, var(--white) 80%, transparent);}
+.le2 .tk2-handle.is-ring .tk2-ar{display:none;}
+.le2 .tk2-handle.is-ring .tk2-knob:hover .tk2-dot,.le2 .tk2-handle.is-ring.is-drag .tk2-dot{transform:scale(1.04);}
+.le2 .tk2-handle.is-ring.is-focus .tk2-dot{box-shadow:0 0 0 3px var(--cink),0 0 0 6px var(--white),0 0 0 9px var(--cink) !important;}
+.le2 .tk2-handle.is-ring.is-quiet .tk2-dot{box-shadow:0 0 0 2px color-mix(in srgb, var(--ink) 55%, transparent) !important;}
+.le2 .tk2-handle.is-ring .tk2-tag.is-up{transform:translate(-50%,calc(-100% - var(--le-ring,54px) / 2 - 6px));}
+.le2 .tk2-handle.is-ring .tk2-tag.is-down{transform:translate(-50%,calc(var(--le-ring,54px) / 2 + 6px));}
+.le2 .tk2-handle.is-ring .tk2-tag.is-left{transform:translate(calc(-100% - var(--le-ring,54px) / 2 - 6px),-50%);}
+.le2 .tk2-handle.is-ring .tk2-tag.is-right{transform:translate(calc(var(--le-ring,54px) / 2 + 6px),-50%);}
+/* in the magnifier the knobs sit on the noses, in each car's colour */
+.le2 .le2-hl:not(.is-ring) .tk2-dot{box-shadow:0 0 0 3px var(--le-l),0 1px 3px rgba(11,26,51,.3);}
+.le2 .le2-hr:not(.is-ring) .tk2-dot{box-shadow:0 0 0 3px var(--le-r),0 1px 3px rgba(11,26,51,.3);}
+/* Fill the hole: quiet, on the picture beside the hole */
+.le2-fill{position:absolute;z-index:3;min-height:32px;padding:4px 12px;border:1.5px solid var(--le-lim);border-radius:999px;background:var(--white);color:var(--le-lim-ink);
+  font:800 13.5px var(--font-ui);white-space:nowrap;cursor:pointer;box-shadow:0 1px 3px rgba(11,26,51,.15);}
+.le2-fill:hover{background:color-mix(in srgb, var(--le-lim) 10%, var(--white));}
+.le2-fill:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.le2-fill[aria-pressed="true"]{border-color:var(--line);color:var(--ink);}
+/* the picture */
+.le2s-sky0{stop-color:var(--le-sky0);} .le2s-sky1{stop-color:var(--le-sky1);}
+.le2-grid line{stroke:var(--le-grid);stroke-width:1;}
+.le2-axis line{stroke:var(--ink);stroke-opacity:.72;stroke-width:1.3;}
+.le2-ticks text{font:700 11.5px var(--font-ui);fill:var(--muted);}
+.le2-frame{fill:none;stroke:var(--line);stroke-width:1;}
+.le2-hill{fill:var(--le-hill);stroke:none;}
+.le2-hill.h1{fill-opacity:.32;} .le2-hill.h2{fill-opacity:.17;} .le2-hill.h3{fill-opacity:.07;}
+.le2-shoulder{fill:none;stroke:var(--le-shoulder);stroke-linejoin:round;stroke-linecap:round;}
+.le2-road{fill:none;stroke:var(--le-road);stroke-linejoin:round;stroke-linecap:round;}
+.le2-lane{fill:none;stroke:var(--le-lane);stroke-width:2;stroke-linejoin:round;stroke-linecap:round;}
+.le2-band{fill:var(--le-road);fill-opacity:.16;stroke:none;}
+.le2-zig{fill:none;stroke:var(--le-road);stroke-width:1.6;stroke-linejoin:round;stroke-opacity:.85;}
+.le2-rail{fill:none;stroke:var(--le-rail);stroke-width:3.2;stroke-linecap:round;}
+.le2-pt{fill:var(--ink);stroke:var(--le-lane);stroke-width:2.5;}
+.le2-pt.is-open{fill:var(--le-sky1);stroke:var(--ink);stroke-width:2.5;}
+.le2-aline{stroke:var(--ink);stroke-opacity:.3;stroke-width:1.3;}
+.le2-vasym{stroke:var(--le-bad);stroke-opacity:.7;stroke-width:1.6;}
+.le2-hasym{stroke:var(--le-lim);stroke-width:2.2;stroke-opacity:.85;}
+.le2-hline{stroke-width:1.5;stroke-opacity:.7;}
+.le2-hline.l{stroke:var(--le-l);} .le2-hline.r{stroke:var(--le-r);}
+.le2-hmark.l{fill:var(--le-l);} .le2-hmark.r{fill:var(--le-r);}
+.le2-nose{stroke:var(--white);stroke-width:1.5;}
+.le2-nose.l,.le2-ndot.l{fill:var(--le-l);} .le2-nose.r,.le2-ndot.r{fill:var(--le-r);}
+.le2-ndot{stroke:var(--white);stroke-width:2;}
+.le2-outar{stroke-width:3;stroke-linecap:round;fill:none;}
+.le2-outar.l{stroke:var(--le-l);} .le2-outar.r{stroke:var(--le-r);}
+.le2-outtip.l{fill:var(--le-l);} .le2-outtip.r{fill:var(--le-r);}
+.le2-post{stroke:#6B7682;stroke-width:4;stroke-linecap:round;}
+.le2-post-b{fill:#6B7682;}
+.le2-glow{fill:#FFD54A;fill-opacity:.38;}
+.le2-cone path{fill:#E8731A;stroke:#9C4A0B;stroke-width:1;stroke-linejoin:round;}
+.le2-cone path.le2-cone-s{fill:none;stroke:#FFFFFF;stroke-width:2.4;}
+.le2-car-b{stroke-width:1.2;stroke-linejoin:round;}
+.le2-car.l .le2-car-b{fill:var(--le-l);stroke:var(--le-l-dk);}
+.le2-car.r .le2-car-b{fill:var(--le-r);stroke:var(--le-r-dk);}
+.le2-car-w{fill:var(--le-glass);stroke:rgba(0,0,0,.35);stroke-width:.8;}
+.le2-car-l{fill:#FFE9A8;}
+.le2-car-t{fill:var(--le-tire);}
+.le2-car-h{fill:#C9CED6;}
+.le2-lab{font:800 13px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:3.5px;stroke-linejoin:round;}
+:root[data-theme="dark"] .le2-lab{stroke:#0F1A28;}
+.le2-cink{fill:var(--ink);} .le2-cbad{fill:var(--le-bad);} .le2-clim{fill:var(--le-lim-ink);} .le2-croad{fill:var(--ink);} .le2-crail{fill:var(--muted);}
+.le2-zoom{fill:var(--ink);font-size:12.5px;}
+/* the magnifier */
+.le2-lens-bg{fill:var(--le-sky1);}
+.le2-lens-rim{fill:none;stroke:#5C6673;stroke-width:6;}
+:root[data-theme="dark"] .le2-lens-rim{stroke:#9AA6B6;}
+.le2-lens-h{stroke:#5C6673;stroke-width:9;stroke-linecap:round;}
+:root[data-theme="dark"] .le2-lens-h{stroke:#9AA6B6;}
+.le2-beam{stroke:#5C6673;stroke-opacity:.45;stroke-width:1.3;fill:none;}
+.le2-fade{pointer-events:none;}
+/* "?" */
+.le2-ref .le2-howref{margin:0 0 10px;}
+.le2-tab{border-collapse:collapse;font:600 15px var(--font-mono);font-variant-numeric:tabular-nums;}
+.le2-tab th,.le2-tab td{padding:3px 10px;text-align:right;border-bottom:1px solid var(--line);}
+.le2-tab .l{color:var(--le-l-ink);} .le2-tab .r{color:var(--le-r-ink);}
+.le2-check li.yes b{color:var(--le-lim-ink);} .le2-check li.no b{color:var(--le-bad);}
+@media (max-width:640px){ .le2 .tk2-cause{min-height:72px;align-content:flex-start;} }
+.le2 .tk2-handle.is-ring > .tk2-chip{transform:translate(-50%,calc(var(--le-ring,54px) / 2 + 4px));}
+.le2 .tk2-handle.is-ring > .tk2-chip.is-up{transform:translate(-50%,calc(-100% - var(--le-ring,54px) / 2 - 4px));}
+.le2 .tk2-handle.is-ring > .tk2-chip.is-left{transform:translate(calc(-100% - var(--le-ring,54px) / 2 - 4px),-50%);}
+.le2 .tk2-handle.is-ring > .tk2-chip.is-right{transform:translate(calc(var(--le-ring,54px) / 2 + 4px),-50%);}
+/* review round 1: the zigzag band reads in dark mode too; the glass's road keeps its stroke widths when scaled */
+:root[data-theme="dark"] .le2-zig{stroke:#C9D6E6;stroke-opacity:.62;}
+:root[data-theme="dark"] .le2-band{fill:#9FB3C8;fill-opacity:.16;}
+.le2-lensroad path{vector-effect:non-scaling-stroke;}
+/* the cause line keeps one height whether it shows the chain or the takeaway */
+.le2 .tk2-cause{min-height:46px;align-content:center;}
+@media (max-width:640px){ .le2 .tk2-cause{min-height:84px;align-content:flex-start;} }
