@@ -249,14 +249,14 @@
       var room = vh - Math.min(top, vh * 0.4) - lines.offsetHeight - 22;
       var g = { W: W, wide: wide, pad: wide ? 16 : 8 };
       g.mid = W >= 560 && !wide;   // medium: one page, the art beside the prompt
-      g.H = Math.round(Math.max(wide ? 430 : 470, Math.min(wide ? 640 : 720, room)));
+      g.H = Math.round(Math.max(wide ? 430 : 470, Math.min(wide ? 780 : 720, room)));
       if(wide){
         g.ladW = 196;
         g.book = [g.pad + 4, g.pad + 6, W - g.pad * 2 - g.ladW - 8, g.H - g.pad * 2 - 12];
         var b = g.book, pw = b[2] / 2;
         g.left = [b[0], b[1], pw, b[3]]; g.right = [b[0] + pw, b[1], pw, b[3]];
         g.m = Math.max(20, Math.min(34, pw * 0.07));
-        g.track = [b[0] + b[2] + 30, b[1] + b[3] - 82, b[0] + b[2] + 30, b[1] + 34];
+        g.track = [b[0] + b[2] + 30, b[1] + b[3] - 100, b[0] + b[2] + 30, b[1] + 34];
       } else {
         g.book = [g.pad, g.pad, W - g.pad * 2, g.H - g.pad * 2];
         g.left = g.book.slice(); g.right = g.book.slice();
@@ -274,10 +274,11 @@
       var m = g.m, L = g.left, R = g.right, st = stopsEl.querySelectorAll('.fcx-stop');
       reservePrompt();
       if(g.wide){
-        g.art = [L[0] + m, L[1] + 54, L[2] - m * 2, Math.min(L[3] * 0.5, (L[2] - m * 2) * 120 / 260)];
+        var ah = Math.min(L[3] * 0.48, (L[2] - m * 2) * 120 / 260), aw0 = ah * 260 / 120;
+        g.art = [L[0] + m + (L[2] - m * 2 - aw0) / 2, L[1] + 54, aw0, ah];
         box(qBox, L[0] + m, L[1] + 12, L[2] - m * 2, null);
         promptEl.style.marginTop = (g.art[3] + 18) + 'px';
-        var ax = R[0] + m + 6, aw = R[2] - m * 2 - 6;
+        var ax = R[0] + m + 6, aw = R[2] - m * 2 - 18;
         box(aBox, ax, R[1] + 12, aw, null);
         var rubH = rubHeight(aw), rubTop = R[1] + R[3] - rubH - 16;
         box(rub, ax, rubTop, aw, null);
@@ -398,7 +399,7 @@
     function drawArt(){
       var g = G, grp = svg.querySelector('.fcx-art'); if(!g || !grp) return;
       var a = g.art, k = Math.min(a[2] / 260, a[3] / 120), ox = a[0] + (a[2] - 260 * k) / 2, oy = a[1] + (a[3] - 120 * k) / 2;
-      var fs = r1(12.5 / k);
+      var fs = r1(Math.max(12.5, Math.min(16, a[3] * 0.05)) / k);
       grp.setAttribute('transform', 'translate(' + r1(ox) + ' ' + r1(oy) + ') scale(' + k.toFixed(4) + ')');
       grp.innerHTML = ART[ctx.ladder.art] ? ART[ctx.ladder.art](fs) : '';
       grp.setAttribute('data-art', ctx.ladder.art);
@@ -412,7 +413,7 @@
       // wide: under the knob, below its tab; phone: beside the knob on the printed ladder (over the line, never a name)
       var side = G.wide ? 'below' : stop >= 2 ? 'left' : 'right';
       cue = K.cue(layer, { key: 'aphug-frq-ladder', text: 'Drag the verb', side: side,
-        at: function(){ var t = G.track, f = stop / (LAD.length - 1); return G.wide ? [t[0], t[1] + (t[3] - t[1]) * f + 24] : [t[0] + (t[2] - t[0]) * f + (stop >= 2 ? -24 : 24), t[1]]; } });
+        at: function(){ var t = G.track, f = stop / (LAD.length - 1); return G.wide ? [t[0] + 16, t[1] + (t[3] - t[1]) * f + 18] : [t[0] + (t[2] - t[0]) * f + (stop >= 2 ? -24 : 24), t[1]]; } });
       if(!cue.show()) cue = null;
     }
     function hideCue(used){ if(cue && cue.active()) cue.hide(used); }
@@ -433,7 +434,7 @@
       '<p>Each part earns one point or none. Readers score what you wrote against the rubric line, so the verb decides what counts: a name earns an identify point, but not a describe or an explain point. Extra correct detail does not cost the point.</p>' +
       '<p>For explain the degree, state the degree first (high, moderate or low) and then explain it. Any degree can earn the point when the explanation supports it.</p>' +
       '<h3 class="ls-h">About the ladder</h3>' +
-      '<p>The ladder shows five of the verbs in the order they usually grow. Compare is a step to the side: it needs both sides, not the because, so the because stays on the page in grey. Explain the degree needs the degree and the explanation, not the second side. Define is not on the ladder: it asks for a meaning in your own words, and it is in Test yourself.</p>' +
+      '<p>The ladder shows five of the verbs in the order they usually grow. Compare is a step to the side: it needs both sides, not the because, so the because stays on the page in gray. Explain the degree needs the degree and the explanation, not the second side. Define is not on the ladder: it asks for a meaning in your own words, and it is in Test yourself.</p>' +
       '<p class="ls-sub">The questions are original and short, never released exam questions. On the exam each free-response question has parts A to G, one point each. Country A is an invented country. Facts: polders (Rijkswaterstaat); the Green Revolution in India from the late 1960s; the HDI of the UN Development Programme.</p>';
     ref.addEventListener('click', function(e){ if(e.target.closest('[data-how]')){ if(LS && LS.close) LS.close(); setTimeout(startTour, 280); } });
 
