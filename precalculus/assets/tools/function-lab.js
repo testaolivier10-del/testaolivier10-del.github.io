@@ -69,9 +69,11 @@
     head.el.insertBefore(pickWrap, head.how);
     stage.appendChild(head.el);
     var scene = el('div', 'fl2-scene'); scene.id = id + '-scene';
-    scene.innerHTML = '<svg class="fl2-svg" role="img" aria-label="" xmlns="' + NS + '" data-ls-text="keep"><defs></defs><g class="fl2-static"></g><g class="fl2-dyn"></g><g class="fl2-labs"></g></svg>';
+    // two layers: the board (painted once per layout) and, over it, the wires, beads and labels (every frame)
+    scene.innerHTML = '<svg class="fl2-bg" aria-hidden="true" xmlns="' + NS + '"><defs></defs><g class="fl2-static"></g></svg>' +
+      '<svg class="fl2-svg" role="img" aria-label="" xmlns="' + NS + '" data-ls-text="keep"><g class="fl2-dyn"></g><g class="fl2-labs"></g></svg>';
     stage.appendChild(scene);
-    var svg = scene.querySelector('svg'), defs = svg.querySelector('defs'), gS = svg.querySelector('.fl2-static'), gD = svg.querySelector('.fl2-dyn'), gL = svg.querySelector('.fl2-labs');
+    var svgB = scene.querySelector('.fl2-bg'), svg = scene.querySelector('.fl2-svg'), defs = svgB.querySelector('defs'), gS = svgB.querySelector('.fl2-static'), gD = svg.querySelector('.fl2-dyn'), gL = svg.querySelector('.fl2-labs');
     var layer = K.layer(scene);
     var lines = el('div', 'fl2-lines'), cause = K.cause({ label: 'What the change did' });
     lines.appendChild(cause.el);
@@ -188,6 +190,8 @@
     function settled(){ clearTimeout(setT); setT = setTimeout(function(){ refLater(); }, 60); }
 
     /* ---------------------------------------------------- pin limits */
+    /* a value in tenths kept inside [lo, hi] (rounded inward at the ends) */
+    function inT(v, lo, hi){ return clamp(r1(v), Math.ceil(lo * 10 - 1e-9) / 10, Math.floor(hi * 10 + 1e-9) / 10); }
     function inBoard(x, y){ return x >= G.px0 - 1e-9 && x <= G.px1 + 1e-9 && y >= G.py0 - 1e-9 && y <= G.py1 + 1e-9; }
     function shapePt(p, fam){ var Fa = Fm(fam); return imgOf(targetD(p), Fa.keys[Fa.shape]); }
     function pinsOk(p){
@@ -201,8 +205,8 @@
       var p = S.p, c = Object.assign({}, p);
       if(pinsOk(c)) return false;
       var q = shapePt(c), dx = q[0] - c.h, dy = q[1] - c.k;
-      c.h = r1(clamp(c.h, Math.max(G.px0, G.px0 - dx), Math.min(G.px1, G.px1 - dx)));
-      c.k = r1(clamp(c.k, Math.max(G.py0, G.py0 - dy), Math.min(G.py1, G.py1 - dy)));
+      c.h = inT(c.h, Math.max(G.px0, G.px0 - dx), Math.min(G.px1, G.px1 - dx));
+      c.k = inT(c.k, Math.max(G.py0, G.py0 - dy), Math.min(G.py1, G.py1 - dy));
       if(!pinsOk(c)){ c.a = 1; c.b = 1; c.h = 0; c.k = 0; if(!pinsOk(c)){ c.h = r1(G.px0 + 0.5); c.k = r1(G.py0 + 0.5); } }
       S.p = c; return true;
     }
@@ -222,15 +226,22 @@
     }
     function hkTag(){ var q = shownP(); return 'h = ' + num(q.h) + ', k = ' + num(q.k); }
     function abTag(){ var q = shownP(); return 'a = ' + num(q.a) + ', b = ' + bText(q.b); }
-    function sideAway(from, to, ban){
-      // a tag goes on the side of its pin away from the other pin, and stays inside the board
+    /* a tag goes on the side of its pin away from the other pin, inside the board, clear of the other pin's knob and
+       tag (the square pin's tag is placed first, the round pin's after it) */
+    function sideAway(h, from, to, ban){
       if(!G) return 'down';
       var dx = to[0] - from[0], dy = to[1] - from[1], c = Math.abs(dx) > Math.abs(dy) * 1.2 ? (dx > 0 ? 'left' : 'right') : (dy > 0 ? 'up' : 'down');
-      var room = { up: from[1] - G.T, down: G.B - from[1], left: from[0] - G.L, right: G.R - from[0] }, need = { up: 52, down: 52, left: 150, right: 150 };
-      if(room[c] >= need[c] && c !== ban) return c;
-      var alt = ['down', 'up', 'right', 'left'].filter(function(s){ return room[s] >= need[s] && s !== ban; });
-      var opp = { up: 'down', down: 'up', left: 'right', right: 'left' };
-      return alt.filter(function(s){ return s !== opp[c]; })[0] || alt[0] || 'down';
+      var opp = { up: 'down', down: 'up', left: 'right', right: 'left' }, perp = c === 'up' || c === 'down' ? ['right', 'left'] : ['down', 'up'];
+      var order = [c].concat(perp, [opp[c]]).filter(function(x){ return x !== ban; });
+      var txt = h === hk ? hkTag() : abTag(), stay = [knobBox(to, 23)];
+      if(h === ab){ var ot = hk.el.querySelector('.tk2-tag'); if(ot && !ot.hidden) stay.push(tagBox(hk, hkTag(), ot.className.replace(/.*is-/, ''))); }
+      var inside = function(b){ return b && b[0] >= G.L + 2 && b[2] <= G.R - 2 && b[1] >= G.T + 2 && b[3] <= G.B - 2; };
+      for(var i = 0; i < order.length; i++){ var b = tagBox(h, txt, order[i], true); if(inside(b) && !hitAny(b, stay.filter(Boolean), 5)) return order[i]; }
+      // nothing is wholly clear (both pins in a corner): the side that covers the least
+      var area = function(b){ var t = 0; stay.filter(Boolean).forEach(function(c){ t += Math.max(0, Math.min(b[2], c[2]) - Math.max(b[0], c[0]) + 5) * Math.max(0, Math.min(b[3], c[3]) - Math.max(b[1], c[1]) + 5); }); return t; };
+      var bestS = null, bestA = Infinity;
+      order.forEach(function(sd){ var b = tagBox(h, txt, sd, true); if(!inside(b)) return; var a = area(b); if(a < bestA){ bestA = a; bestS = sd; } });
+      return bestS || order[0];
     }
     var hk = K.handle(layer, { key: 'apprecalc-function-lab-hk', label: 'Square pin at (h, k), where the parent’s origin goes: drag it to move every point. Arrow keys move it (Shift: one unit).',
       value: encHK(S.p), chip: false,
@@ -240,7 +251,7 @@
       keys: function(v, k, big){ return keyHK(k, big); },
       valuetext: function(){ return hkTag() + '. ' + cause.text(); },
       tag: function(){ return hkTag(); },
-      tagSide: function(){ var a = hkAt(), b = abAt(); return a && b ? sideAway(a, b, cueOn() ? { below: 'down', above: 'up', left: 'left', right: 'right' }[cueO.side] : null) : 'down'; },
+      tagSide: function(){ var a = hkAt(), b = abAt(); return a && b ? sideAway(hk, a, b, cueOn() ? { below: 'down', above: 'up', left: 'left', right: 'right' }[cueO.side] : null) : 'down'; },
       bounds: function(){ return G ? [G.L + 2, G.T, G.R - 2, G.B] : null; },
       onStart: function(){ grab('hk'); }, onInput: function(v){ var q = decHK(v); setP({ h: q.h, k: q.k }, 'hk', hk.dragging() ? 70 : 220); },
       onEnd: function(){ letGo(); } });
@@ -252,8 +263,8 @@
       keys: function(v, k, big){ return keyAB(k, big); },
       valuetext: function(){ return abTag() + '. ' + cause.text(); },
       tag: function(){ return abTag(); },
-      tagSide: function(){ var a = abAt(), b = hkAt(); return a && b ? sideAway(a, b) : 'up'; },
-      chipSide: function(){ var a = abAt(), b = hkAt(), s = a && b ? sideAway(a, b) : 'up'; return { up: 'right', down: 'right', left: 'down', right: 'down' }[s]; },
+      tagSide: function(){ var a = abAt(), b = hkAt(); return a && b ? sideAway(ab, a, b) : 'up'; },
+      chipSide: function(){ var s = ab.el.querySelector('.tk2-tag').className.replace(/.*is-/, '') || 'up'; return { up: 'right', down: 'right', left: 'down', right: 'down' }[s]; },
       bounds: function(){ return G ? [G.L + 2, G.T, G.R - 2, G.B] : null; },
       onStart: function(){ grab('ab'); }, onInput: function(v){ var q = decAB(v); setP({ a: q.a, b: q.b }, 'ab', ab.dragging() ? 70 : 220); },
       onEnd: function(){ letGo(); } });
@@ -262,11 +273,11 @@
     [hk, ab].forEach(function(h){ var ar = h.el.querySelector('.tk2-ar'); ar.innerHTML = '<path d="M12 3v18M3 12h18M12 3l-3 3M12 3l3 3M12 21l-3-3M12 21l3-3M3 12l3-3M3 12l3 3M21 12l-3-3M21 12l-3 3"/>'; });
     function pickHK(x, y){
       if(!G) return null;
-      var c = { a: S.p.a, b: S.p.b, h: r1(clamp(G.ix(x), G.px0, G.px1)), k: r1(clamp(G.iy(y), G.py0, G.py1)) };
+      var c = { a: S.p.a, b: S.p.b, h: inT(G.ix(x), G.px0, G.px1), k: inT(G.iy(y), G.py0, G.py1) };
       var q = shapePt(c), dx = q[0] - c.h, dy = q[1] - c.k;
       // the round pin rides on the wire: (h, k) stops where it would leave the board
-      c.h = r1(clamp(c.h, Math.max(G.px0, G.px0 - dx), Math.min(G.px1, G.px1 - dx)));
-      c.k = r1(clamp(c.k, Math.max(G.py0, G.py0 - dy), Math.min(G.py1, G.py1 - dy)));
+      c.h = inT(c.h, Math.max(G.px0, G.px0 - dx), Math.min(G.px1, G.px1 - dx));
+      c.k = inT(c.k, Math.max(G.py0, G.py0 - dy), Math.min(G.py1, G.py1 - dy));
       return inBoard(c.h, c.k) && inBoard(c.h + dx, c.k + dy) ? encHK(c) : null;
     }
     function keyHK(k, big){
@@ -349,6 +360,8 @@
     function stepStops(){ var n = PH.length; return PH.map(function(x, i){ return (i + 1) / n; }).slice(0, -1); }
     function stepsStart(){
       if(S.mode !== 'explore') return false;
+      // reduced motion: each press is the next step of the same run
+      if(S.last === 'steps' && S.steps > 0 && S.steps < 1 && PH.length) return true;
       stopAnim(); hideCue(true); tourDid('steps'); wakeAB();
       PH = phases();
       if(PH.length < 2){ cause.set([{ t: 'g = f', role: 'ink' }, { t: 'nothing to show: move a pin first', role: 'ink' }]); return false; }
@@ -410,7 +423,9 @@
         return;
       }
       if(S.last === 'fam'){ cause.set([{ t: 'new parent: ' + PARENT_LAB[S.fam].replace(/^f, /, ''), role: 'ink' }, { t: 'the same a, b, h and k', role: 'ink' }]); return; }
-      if(S.last === 'reset'){ cause.set([{ t: 'a = 1, b = 1, h = 0, k = 0', role: 'ink' }, { t: 'g is the parent f', role: 'ink' }]); return; }
+      if(S.last === 'reset'){
+        var home = Math.abs(q.a - 1) < 1e-9 && Math.abs(q.b - 1) < 1e-9 && Math.abs(q.h) < 1e-9 && Math.abs(q.k) < 1e-9;
+        cause.set([{ t: 'a = ' + num(q.a) + ', b = ' + bText(q.b) + ', h = ' + num(q.h) + ', k = ' + num(q.k), role: 'ink' }, { t: home ? 'g is the parent f' : 'going back to f', role: 'ink' }]); return; }
       cause.set([{ t: 'h = ' + num(q.h) + ', k = ' + num(q.k), role: 'move' }, { t: shiftWords(q.h, q.k), role: 'move' }]);
     }
 
@@ -445,7 +460,18 @@
       var rc = g.querySelector('rect'); rc.setAttribute('width', r1(g._w)); rc.setAttribute('height', g._h); rc.setAttribute('x', r1(-g._w / 2)); rc.setAttribute('y', -g._h / 2);
       t.setAttribute('x', 0); t.setAttribute('y', 0);
     }
-    function labW(key, t){ if(E.labCache[key] == null){ var w = 0; try{ w = t.getComputedTextLength(); }catch(e){} if(!(w > 0)) return key.length * 7.2; E.labCache[key] = w; } return E.labCache[key]; }
+    /* a label's width, measured once per text with the label's own font (no layout read, the same on every frame) */
+    var labCv = null;
+    function labW(key, t){
+      if(E.labCache[key] == null){
+        if(!labCv) labCv = document.createElement('canvas').getContext('2d');
+        var cs = getComputedStyle(t), w = 0;
+        [].forEach.call(t.childNodes, function(sp){ labCv.font = (sp.getAttribute && sp.getAttribute('class') ? '900 ' : cs.fontWeight + ' ') + cs.fontSize + ' ' + cs.fontFamily; w += labCv.measureText(sp.textContent).width; });
+        if(!(w > 0)) return 200;
+        E.labCache[key] = w * 1.03 + 2;
+      }
+      return E.labCache[key];
+    }
     function gLabel(){
       // g(x) = a·f(b(x − h)) + k with the numbers that are not 1 or 0, each tinted with its pin's colour
       var q = shownP(), r = [['g(x) = ']];
@@ -493,8 +519,8 @@
       for(var ty = Math.ceil(g.y0); ty <= g.y1; ty++){ var y2 = g.sy(ty); if(ty && !(ty % lab) && y2 > g.T + 22 && y2 < g.B - 10) tickT(+ay - 7, y2 + 4, num(ty), 'end'); }
       tk.push('<text class="fl2-axl" x="' + (g.R - 10) + '" y="' + (+ax - 10) + '" text-anchor="end">x</text><text class="fl2-axl" x="' + (+ay + 10) + '" y="' + (g.T + 20) + '">y</text>');
       gS.innerHTML = o.join('') + a.join('') + '<g class="fl2-ticks">' + tk.join('') + '</g>';
-      E.tickBoxes = [];
-      [].forEach.call(gS.querySelectorAll('.fl2-ticks text'), function(t){ try{ var b = t.getBBox(); E.tickBoxes.push([b.x - 2, b.y - 1, b.x + b.width + 2, b.y + b.height + 1]); }catch(e){} });
+      E.tickBoxes = []; E.tickEls = [];
+      [].forEach.call(gS.querySelectorAll('.fl2-ticks text'), function(t){ try{ var b = t.getBBox(); E.tickBoxes.push([b.x - 2, b.y - 1, b.x + b.width + 2, b.y + b.height + 1]); E.tickEls.push(t); }catch(e){} });
     }
     function piLab(v){ var k = Math.round(v / (PI / 2)); if(!k) return '0'; var neg = k < 0; k = Math.abs(k); return (neg ? '−' : '') + (k % 2 ? (k === 1 ? '' : k) + 'π/2' : (k / 2 === 1 ? '' : k / 2) + 'π'); }
 
@@ -512,10 +538,10 @@
       var p = h === hk ? hkAt() : abAt(); if(!p) return null;
       if(!tagFont){ var te = layer.el.querySelector('.tk2-tag'); tagFont = te ? getComputedStyle(te).font : '900 13px sans-serif'; tagCv = document.createElement('canvas').getContext('2d'); }
       tagCv.font = tagFont;
-      var w = tagCv.measureText(txt).width + 18, hh = 23, x0, y0;
-      if(side === 'up'){ x0 = p[0] - w / 2; y0 = p[1] - 26 - hh; } else if(side === 'down'){ x0 = p[0] - w / 2; y0 = p[1] + 26; }
+      var w = tagCv.measureText(txt).width + 20, hh = 25, x0, y0;
+      if(side === 'up'){ x0 = p[0] - w / 2; y0 = p[1] - 25 - hh; } else if(side === 'down'){ x0 = p[0] - w / 2; y0 = p[1] + 26; }
       else if(side === 'left'){ x0 = p[0] - 26 - w; y0 = p[1] - hh / 2; } else { x0 = p[0] + 26; y0 = p[1] - hh / 2; }
-      x0 = clamp(x0, G.L + 2, G.R - 2 - w);
+      if(side === 'up' || side === 'down') x0 = clamp(x0, G.L + 2, G.R - 2 - w);
       return [x0, y0, x0 + w, y0 + hh];
     }
     function cueBox(){
@@ -524,23 +550,24 @@
       return [r.left - sr.left, r.top - sr.top, r.right - sr.left, r.bottom - sr.top];
     }
     /* place a label beside a run of points: the candidate spots in order, the last good one kept while it stays good */
-    function placeLab(g, pts, prefs, avoid, keep){
+    function placeLab(g, pts, prefs, avoid, keep, free){
       if(!pts.length){ g.style.display = 'none'; g._pos = null; return null; }
+      if(g._pos && g._pos.free === undefined && g._pos.f == null) g._pos = null;
       g.style.display = '';
       var w = g._w, h = g._h, n = pts.length, cands = [];
       // beside the line at that spot: pushed out along its normal until the pill clears it
-      function at(f, sd){
+      function at(f, sd, far){
         var i = Math.round(clamp(f, 0, 1) * (n - 1)), p = pts[i], a = pts[Math.max(0, i - 3)], b = pts[Math.min(n - 1, i + 3)];
         var tx = b[0] - a[0], ty = b[1] - a[1], tl = Math.hypot(tx, ty) || 1, nx = -ty / tl, ny = tx / tl;
         if(ny > 0 || (ny === 0 && nx < 0)){ nx = -nx; ny = -ny; }   // sd 1: above (or right of) the line
-        var dd = (w / 2) * Math.abs(nx) + (h / 2) * Math.abs(ny) + 9;
-        return { f: f, sd: sd, x: p[0] + sd * nx * dd, y: p[1] + sd * ny * dd };
+        var dd = (w / 2) * Math.abs(nx) + (h / 2) * Math.abs(ny) + 9 + (far || 0);
+        return { f: f, sd: sd, far: far || 0, x: p[0] + sd * nx * dd, y: p[1] + sd * ny * dd };
       }
-      prefs.forEach(function(f){ [1, -1].forEach(function(sd){ cands.push(at(f, sd)); }); });
+      [0, 30, 64].forEach(function(far){ prefs.forEach(function(f){ [1, -1].forEach(function(sd){ cands.push(at(f, sd, far)); }); }); });   // further out (a longer leader) only when nothing nearer fits
       function ok(c){
         var b = [c.x - w / 2, c.y - h / 2, c.x + w / 2, c.y + h / 2];
         if(b[0] < G.L + 4 || b[2] > G.R - 4 || b[1] < G.T + 4 || b[3] > G.B - 4) return false;
-        if(hitAny(b, avoid, 4)) return false;
+        if(hitAny(b, avoid, 6)) return false;
         // never on its own wire or on the other one
         for(var i = 0; i < keep.length; i++){ var L = keep[i]; for(var j = 0; j < L.length; j += 2){ var q = L[j]; if(q[0] > b[0] - 3 && q[0] < b[2] + 3 && q[1] > b[1] - 3 && q[1] < b[3] + 3) return false; } }
         return b;
@@ -549,11 +576,25 @@
       // first clear of both wires; failing that, it may cross the thin parent wire (never its own)
       [keep0, keep0.slice(0, 1)].forEach(function(kp){
         if(best) return; keep = kp;
-        if(g._pos){ var c0 = at(g._pos.f, g._pos.sd), b0 = ok(c0); if(b0) best = { c: c0, b: b0 }; }
+        if(g._pos && !g._pos.free){ var c0 = at(g._pos.f, g._pos.sd, g._pos.far), b0 = ok(c0); if(b0) best = { c: c0, b: b0 }; }
         for(var k = 0; !best && k < cands.length; k++){ var b1 = ok(cands[k]); if(b1) best = { c: cands[k], b: b1 }; }
       });
+      // a crowded board (a phone): the free spot nearest the line, with a longer leader; kept while it stays free
+      if(!best && free){
+        keep = keep0.slice(0, 1);
+        var near = function(x, y){ var bi = 0, bd = Infinity; for(var i = 0; i < n; i += 2){ var dq = Math.hypot(pts[i][0] - x, pts[i][1] - y); if(dq < bd){ bd = dq; bi = i; } } return { d: bd, i: bi }; };
+        if(g._pos && g._pos.free){ var cf = { x: g._pos.x, y: g._pos.y }, bf = ok(cf); if(bf){ var nf = near(cf.x, cf.y); if(nf.d < 240){ cf.f = nf.i / Math.max(1, n - 1); cf.free = true; best = { c: cf, b: bf }; } } }
+        if(!best){
+          var cand = null;
+          for(var y2 = G.T + h / 2 + 6; y2 <= G.B - h / 2 - 6; y2 += 5) for(var x2 = G.L + w / 2 + 6; x2 <= G.R - w / 2 - 6; x2 += 12){
+            var c2 = { x: x2, y: y2 }, nn = near(x2, y2); if(nn.d > 240 || (cand && nn.d >= cand.d)) continue;
+            var b2 = ok(c2); if(b2) cand = { d: nn.d, c: { x: x2, y: y2, f: nn.i / Math.max(1, n - 1), free: true }, b: b2 };
+          }
+          if(cand) best = { c: cand.c, b: cand.b };
+        }
+      }
       if(!best){ g.style.display = 'none'; g._pos = null; return null; }
-      g._pos = { f: best.c.f, sd: best.c.sd };
+      g._pos = best.c.free ? { free: true, x: best.c.x, y: best.c.y } : { f: best.c.f, sd: best.c.sd, far: best.c.far };
       g.setAttribute('transform', 'translate(' + r1(best.c.x) + ' ' + r1(best.c.y) + ')');
       // a short leader from the pill to the spot on its line, so the label names that line and no other
       var ip = pts[Math.round(clamp(best.c.f, 0, 1) * (n - 1))], lx = ip[0] - best.c.x, ly = ip[1] - best.c.y, ex = clamp(lx, -w / 2, w / 2), ey = clamp(ly, -h / 2, h / 2), ld = g.firstChild;
@@ -610,12 +651,20 @@
       var tb = [tagBox(hk, hkTag(), hk.el.querySelector('.tk2-tag').className.replace(/.*is-/, '')), tagBox(ab, abTag(), ab.el.querySelector('.tk2-tag').className.replace(/.*is-/, ''))];
       tb.forEach(function(b){ if(b) boxes.push(b); });
       var cb = cueBox(); if(cb) boxes.push(cb);
-      var chip = ab.el.querySelector('.tk2-chip'); if(chip && !ab.el.classList.contains('is-wait')){ var cr = chip.getBoundingClientRect(), sr = scene.getBoundingClientRect(); boxes.push([cr.left - sr.left, cr.top - sr.top, cr.right - sr.left, cr.bottom - sr.top]); }
-      var avoid = boxes.concat(E.tickBoxes), wf = flat(wr), pf = flat(pr);
+      var chip = ab.el.querySelector('.tk2-chip'), chipBx = null; if(chip && !ab.el.classList.contains('is-wait')){ var cr = chip.getBoundingClientRect(), sr = scene.getBoundingClientRect(); chipBx = [cr.left - sr.left, cr.top - sr.top, cr.right - sr.left, cr.bottom - sr.top]; boxes.push(chipBx); }
+      // a number painted on the board is hidden while a pin, its tag, the chip or the cue sits on it (never half covered)
+      var over = [knobBox(hkP, 23), knobBox(abP, 23)].concat(tb.filter(Boolean)); if(cb) over.push(cb);
+      if(chipBx) over.push(chipBx);
+      (E.tickEls || []).forEach(function(t, i){ var hide = hitAny(E.tickBoxes[i], over, 8); if(t._h !== hide){ t._h = hide; t.style.visibility = hide ? 'hidden' : ''; } });
+      var avoid = boxes.concat(E.tickBoxes.filter(function(b, i){ return !E.tickEls[i]._h; })), wf = flat(wr), pf = flat(pr);
       setLab(E.lab, gLabel());
-      var b1 = placeLab(E.lab, wf, [0.88, 0.72, 0.12, 0.3, 0.6, 0.95, 0.05, 0.45, 0.8, 0.2, 0.66, 0.36], avoid, [wf, pf]); if(b1) avoid.push(b1);
+      var b1 = placeLab(E.lab, wf, [0.88, 0.72, 0.12, 0.3, 0.6, 0.95, 0.05, 0.45, 0.8, 0.2, 0.66, 0.36], avoid, [wf, pf], true);
+      // a crowded phone board: the wire's name matters more than one painted number, which hides under the pill
+      if(!b1){ var soft = boxes.slice(); b1 = placeLab(E.lab, wf, [0.88, 0.72, 0.12, 0.3, 0.6, 0.95, 0.05, 0.45], soft, [wf, pf], true);
+        if(b1) (E.tickEls || []).forEach(function(t, i){ if(!t._h && hitAny(E.tickBoxes[i], [b1], 8)){ t._h = true; t.style.visibility = 'hidden'; } }); }
+      if(b1) avoid.push(b1);
       setLab(E.plab, [[PARENT_LAB[fam]]]);
-      var b2 = placeLab(E.plab, pf, [0.2, 0.08, 0.35, 0.8, 0.92, 0.5, 0.65, 0.28, 0.14], avoid, [pf, wf]); if(b2) avoid.push(b2);
+      var b2 = placeLab(E.plab, pf, [0.2, 0.08, 0.35, 0.8, 0.92, 0.5, 0.65, 0.28, 0.14], avoid, [pf, wf], true); if(b2) avoid.push(b2);
       E.plab.style.opacity = E.lab.style.opacity = MORPH ? Math.max(0.15, mw) : '';
       E.alab.forEach(function(g, i){
         var a = as[i]; if(!a){ g.style.display = 'none'; g._pos = null; return; }
@@ -625,12 +674,12 @@
         var pts = [];
         if(a.v){ for(var y = G.T + 14; y <= G.B - 14; y += 4) pts.push([G.sx(a.x), y]); }
         else { for(var x = G.L + 14; x <= G.R - 14; x += 4) pts.push([x, G.sy(a.y)]); }
-        bb = placeLab(g, pts, [0.03, 0.97, 0.15, 0.85, 0.3, 0.7, 0.5], avoid, [wf, pf]);
+        bb = placeLab(g, pts, [0.03, 0.97, 0.15, 0.85, 0.3, 0.7, 0.5], avoid, [wf, pf], true);
         if(bb) avoid.push(bb);
         g.style.opacity = MORPH ? mw : '';
       });
       words();
-      svg.setAttribute('aria-label', 'A pegboard: the graph of ' + gLabel().map(function(r){ return r[0]; }).join('') + ' as a steel wire, with the parent ' + PARENT_LAB[fam] + ' as a grey wire behind it' + (as.length ? ' and its asymptote' + (as.length > 1 ? 's' : '') : '') + '.');
+      svg.setAttribute('aria-label', 'A pegboard: the graph of ' + gLabel().map(function(r){ return r[0]; }).join('') + ' as a steel wire, with the parent ' + PARENT_LAB[fam] + ' as a gray wire behind it' + (as.length ? ' and its asymptote' + (as.length > 1 ? 's' : '') : '') + '.');
       if(cueOn()) cue.place();
     }
     var ID_D = { sx: 1, sy: 1, h: 0, k: 0 };
@@ -712,8 +761,8 @@
       var h = '<p class="fl2-howref"><button type="button" class="tk2-how" data-how>Show me how</button> to use it, step by step.</p>' +
         '<h3 class="ls-title-l">This graph</h3><p>' + tex('f(x) = ' + Fa.tex) + '</p><p>' + esc(tpl) + '</p>' + (conc ? '<p>' + conc + '</p>' : '') +
         '<p>' + esc(words) + '</p>' +
-        '<h3 class="ls-title-l">Key points: the beads</h3><p class="bt-small">Each point (x, y) of f goes to (x/b + h, a·y + k) on g. The colours match the beads on the wire.</p>' +
-        '<table class="ls-tbl fl2-tbl"><caption class="sr-only">Key points of f and where they go on g</caption><thead><tr><th scope="col"><span class="sr-only">Colour</span></th><th scope="col">on f</th><th scope="col">on g</th></tr></thead><tbody>' +
+        '<h3 class="ls-title-l">Key points: the beads</h3><p class="bt-small">Each point (x, y) of f goes to (x/b + h, a·y + k) on g. The colors match the beads on the wire.</p>' +
+        '<table class="ls-tbl fl2-tbl"><caption class="sr-only">Key points of f and where they go on g</caption><thead><tr><th scope="col"><span class="sr-only">Color</span></th><th scope="col">on f</th><th scope="col">on g</th></tr></thead><tbody>' +
         Fa.keys.map(function(kp, i){ var q = FL.image(p, kp), open = Fa.open && Fa.open.indexOf(i) > -1;
           return '<tr><td><i class="fl2-sw c' + i + (i === Fa.shape ? ' is-pin' : '') + '"></i>' + (i === Fa.shape ? '<span class="bt-small"> round pin</span>' : '') + '</td><td>(' + pnum(kp[0]) + ', ' + pnum(kp[1]) + ')' + (open ? ' <span class="bt-small">open</span>' : '') + '</td><td>(' + num(q[0]) + ', ' + num(q[1]) + ')</td></tr>'; }).join('') + '</tbody></table>' +
         '<h3 class="ls-title-l">Features of g</h3><dl class="fl-feats">' + rows.map(function(r){ return '<div><dt>' + r[0] + '</dt><dd>' + r[1] + '</dd></div>'; }).join('') + '</dl>' +
@@ -732,7 +781,7 @@
       if(stage.hidden || !stage.isConnected) return;
       var r = scene.getBoundingClientRect(), W = Math.round(r.width), H = Math.round(r.height);
       if(W < 200 || H < 200) return;
-      svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.setAttribute('width', W); svg.setAttribute('height', H);
+      [svgB, svg].forEach(function(e){ e.setAttribute('viewBox', '0 0 ' + W + ' ' + H); e.setAttribute('width', W); e.setAttribute('height', H); });
       G = geo(W, H); lastWH = W + 'x' + H;
       if(fit()){ hk.value(encHK(S.p)); ab.value(encAB(S.p)); Object.assign(D, targetD(S.p)); }
       E.lab && (E.lab._pos = E.plab._pos = null);
@@ -759,8 +808,8 @@
       shown: shown, redraw: function(){ layout(); },
       // for the sweep and the browser checks only: window.ApPrecalcFunctionLab is set only when a test sets
       // window.LevlToolTest before the page loads (never in production)
-      _t: { S: S, D: D, G: function(){ return G; }, hk: hk, ab: ab, steps: steps, cause: cause, FL: FL, shownP: shownP, BL: BL,
-        set: function(p, fam){ if(fam && fam !== S.fam){ pick.value = fam; pick.dispatchEvent(new Event('change')); stopAnim(); } Object.assign(S.p, p); fit(); hk.value(encHK(S.p)); ab.value(encAB(S.p)); S.last = p.last || 'hk'; S.d0 = null; S.took = null; stopAnim(); Object.assign(D, targetD(S.p)); draw(); refHtml(); },
+      _t: { S: S, D: D, E: E, G: function(){ return G; }, hk: hk, ab: ab, steps: steps, cause: cause, FL: FL, shownP: shownP, BL: BL,
+        set: function(p, fam){ if(fam && fam !== S.fam){ pick.value = fam; pick.dispatchEvent(new Event('change')); stopAnim(); } ['a', 'b', 'h', 'k'].forEach(function(k){ if(p[k] != null) S.p[k] = p[k]; }); fit(); hk.value(encHK(S.p)); ab.value(encAB(S.p)); S.last = p.last || 'hk'; S.d0 = null; S.took = null; stopAnim(); Object.assign(D, targetD(S.p)); draw(); refHtml(); },
         busy: function(){ return !!raf; }, pinsOk: pinsOk, encAB: encAB, encHK: encHK }
     };
   }

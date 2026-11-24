@@ -137,6 +137,8 @@
 .fl2-sel:focus-visible{outline:3px solid var(--cink);outline-offset:1px;}
 .fl2-scene{position:relative;flex:1 1 auto;min-height:380px;border-radius:16px;overflow:hidden;background:var(--fl2-w1);box-shadow:0 2px 4px rgba(40,25,10,.18),0 10px 26px rgba(40,25,10,.16);}
 .fl2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;touch-action:pan-y;}
+.fl2-bg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);pointer-events:none;user-select:none;-webkit-user-select:none;}
+.fl2-svg{will-change:transform;}
 .fl2-svg.is-fade .fl2-dyn,.fl2-svg.is-fade .fl2-labs{animation:fl2-fade .22s ease-out;}
 @keyframes fl2-fade{from{opacity:.25;}to{opacity:1;}}
 /* the stage fits the screen's height (the pins, the board and the cause line in view at once) */
@@ -214,3 +216,5 @@
 .fl2-lead{stroke:var(--fl2-wd);stroke-width:1.6;stroke-linecap:round;}
 .fl2-lab.is-f .fl2-lead{stroke:var(--fl2-par);}
 .fl2-lab.is-a .fl2-lead{display:none;}
+/* the pins follow the drawn wire every frame: no transition (the site's reduced-motion 0.01 ms one would leave a knob a frame behind) */
+.fl2 .tk2-handle .tk2-knob,.fl2 .tk2-handle .tk2-tag,.fl2 .tk2-handle .tk2-chip{transition:none !important;}
