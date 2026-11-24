@@ -219,8 +219,10 @@
               var xs = g.cx - span / 2 - off / 2;
               for(var col = 0; col < nc; col++){
                 // y as a fraction of the gas column (the piston squeezes the rows together; a small jitter keeps it gas)
-                var fy = rows === 1 ? 0.5 : ((mh * s / 2 + 4) + row * (hMin - mh * s - 8) / (rows - 1) + 4) / (hMin + 8);
-                list.push({ x: xs + off + col * cw + (rr() - 0.5) * gap * 0.4, fy: clamp(fy + (rr() - 0.5) * (rows > 1 ? 0.3 * gap / (hMin / (rows - 1)) * (hMin - mh * s - 8) / (hMin + 8) : 0), 0.04, 0.96), a: (rr() - 0.5) * 0.1 });
+                // fractions of the drawn column (gasH − 8): the rows at least a cell apart at VMIN, the edge rows half a
+                // molecule in from the floor and the piston
+                var fy = rows === 1 ? 0.5 : (mh * s / 2 + row * (hMin - mh * s) / (rows - 1)) / hMin;
+                list.push({ x: xs + off + col * cw + (rr() - 0.5) * gap * 0.4, fy: clamp(fy + (rr() - 0.5) * (rows > 1 ? 0.2 * gap / hMin : 0), mh * s / 2 / hMin, 1 - mh * s / 2 / hMin), a: (rr() - 0.5) * 0.1 });
               }
               void span;
             }
