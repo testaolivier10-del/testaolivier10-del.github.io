@@ -264,12 +264,13 @@
         // the Q gauge clipped to the neck: a dial, log scale, K as a fixed notch, the needle at Q
         var gx = g.gx, gy = g.gy, gr = g.gr, lo = r.gauge[0], hi = r.gauge[1];
         p.push('<path class="ix2-clip" d="M' + f1(g.cx + g.neck - 1) + ' ' + f1(gy + gr * 0.12) + 'H' + f1(gx - gr + 2) + '"/>');
-        p.push('<path class="ix2-dial" d="M' + f1(gx - gr) + ' ' + f1(gy + gr * 0.26) + 'V' + gy + 'A' + gr + ' ' + gr + ' 0 0 1 ' + f1(gx + gr) + ' ' + gy + 'V' + f1(gy + gr * 0.26) + 'Z"/>');
+        p.push('<path class="ix2-dial" d="M' + f1(gx - gr) + ' ' + f1(gy + gr * 0.62) + 'V' + gy + 'A' + gr + ' ' + gr + ' 0 0 1 ' + f1(gx + gr) + ' ' + gy + 'V' + f1(gy + gr * 0.62) + 'Z"/>');
         for(var d = lo; d <= hi; d++){ var a = angOf(Math.pow(10, d)), c1 = rot(gr * 0.78, 0, a), c2 = rot(gr * 0.92, 0, a); p.push('<path class="ix2-tick" d="M' + f1(gx + c1[0]) + ' ' + f1(gy + c1[1]) + 'L' + f1(gx + c2[0]) + ' ' + f1(gy + c2[1]) + '"/>'); }
         var ka = angOf(r.Kval), k1 = rot(gr * 0.62, 0, ka), k2 = rot(gr * 1.0, 0, ka), k3 = rot(gr + 11, 0, ka);
         p.push('<path class="ix2-knotch" d="M' + f1(gx + k1[0]) + ' ' + f1(gy + k1[1]) + 'L' + f1(gx + k2[0]) + ' ' + f1(gy + k2[1]) + '"/>');
         p.push('<text class="ix2-klab" x="' + f1(gx + k3[0]) + '" y="' + f1(gy + k3[1] + 4) + '" text-anchor="middle">K</text>');
-        p.push('<text class="ix2-qlab" x="' + f1(gx - gr * 0.5) + '" y="' + f1(gy + gr * 0.2) + '" text-anchor="middle">Q</text>');
+        // "Q" under the hub, below where the needle can sweep (it moves over the top half only)
+        p.push('<text class="ix2-qlab" x="' + gx + '" y="' + f1(gy + gr * 0.5) + '" text-anchor="middle">Q</text>');
 
         // the x rail on the bench: one tick per step of x (one reaction event)
         var rl = g.rail, n = r.steps;

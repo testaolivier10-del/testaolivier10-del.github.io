@@ -112,8 +112,34 @@ letters with names, 9 cells, the scale line, the Q line). No side panel.
   Checks).
 - Sweep, frames and perf: `scripts/tools-v2/chem-ice-tables-sweep.mjs` (`--frames`, `--perf`).
 
-## Checks run
-See the end of this file (filled in after the runs).
+## Checks run (2026-11-23)
+- `node --test scripts/test/apchem-*.test.mjs` (99 pass), `check-apchem-content --check` (the validator's new
+  Explore checks included), `build-apchem --check`, `check-site`, `check-weight --check` (all budgets within range).
+  No shared file changed (`chem-tools.js` is the course's own), so `build-apcalc` and `build-apmacro` were not needed.
+- `check-tool-use` with a local, uncommitted copy of its list plus this tool (the committed file is untouched):
+  tool-open, tool-touch(explore), tool-mode(quiz), tool-use; nothing sent under automation.
+- Sweep, one width per process at 360, 390, 430, 600, 768, 820, 1024, 1280, 1440 and 1920, light and dark: 200
+  states, 3720 checks, 0 failures (clipping, 4 px clearance between every text on the picture, no text under 11 px,
+  the flask the largest object, atoms inside the flask, every number against the drawn molecules, the needle, the
+  gas color, "at equilibrium" and the takeaway only at the equilibrium step, the phone cause line at most two rows and
+  one height, no sideways scroll, no console errors, the first visit cue, Test yourself).
+- Frames (`--frames`) at 390 and 1440: a fast pointer drag from 0 past equilibrium, a reversal mid change (End, then
+  back to 2 while it reacts), arrow keys, End then Home, the N₂O₄ flask dragged across equilibrium and back, leaving
+  for Test yourself mid change, reduced motion: about 1000 to 1160 frames per width, 0 problems (on every frame the E and C
+  rows, Q, the knob's tag and the cause line equal what the drawn molecules give; every whole molecule is drawn
+  bonded; the drawn step never leaves the range of the change; nothing left moving).
+- Perf (`--perf`, CPU x4, mouse drag end to end and back, the flagship in the same run): 390 px: HI median 16.7 ms,
+  p95 16.8 ms; N₂O₄ median 16.7, p95 33.3; flagship median 33.3, p95 66.6. 1440 px: HI median 16.7, p95 33.3; N₂O₄
+  median 16.7, p95 33.3; flagship median 33.3, p95 83.3. The molecules, the gas color and the needle are drawn on a
+  canvas over the flask only (the molecules at rest cached), so a moving molecule changes no element; the first
+  build (SVG elements per atom) missed p95 at 1440 because every frame restyled the page.
+- Behaviour (Playwright): a real CDP touch drag on the knob at 390 (x moves, the flask reacts, the cue goes), End,
+  Home, Page Up, Start over, "?" text, About once, Show me how opens the tour, Test yourself shows the drill and a
+  wrong I row gets its feedback, back to Explore clean, `?seed=` opens the same problem, no page errors.
+- Preview: `node scripts/tool-preview.mjs chem/tools/ice-table-drills.html /mnt/user-data/outputs/chem-ice-tables-v2/index.html`;
+  shots in `/mnt/user-data/outputs/chem-ice-tables-v2/shots/` (every sweep state at 10 widths, light and dark, the
+  first visit, the takeaway, Test yourself; `*-mid-*` frames during a forward event, a reverse event, the N₂O₄
+  split and the join, at 1440 light, 768 dark and 390 light).
 
 ## Not done, and what I am not happy with
 - No real phone, no screen reader pass, no students.
