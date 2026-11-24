@@ -128,7 +128,7 @@
 .mg2-w.is-v{fill:var(--mg-v-ink);} .mg2-w.is-a{fill:var(--mg-a-ink);} .mg2-w.is-x{fill:var(--mg-x-ink);}
 .mg2-w.is-turn{fill:var(--ink);} .mg2-w.is-ex{fill:var(--muted);} .mg2-w.is-tg{fill:var(--cink);}
 @media (max-width:599.98px){ .mg2-words text{font-size:12px;} }
-.mg2-lines{display:flex;align-items:center;gap:6px 12px;flex-wrap:wrap;flex:none;}
+.mg2-lines{display:flex;align-items:center;gap:6px 12px;flex-wrap:wrap;flex:none;min-height:50px;}
 .mg2-btns{display:flex;gap:8px;margin-left:auto;flex:none;}
 .mg2-btns .tk2-btn{min-height:40px;padding:0 14px;background:var(--white);color:var(--ink);box-shadow:inset 0 0 0 2px color-mix(in srgb, var(--ink) 18%, transparent);font:800 14px var(--font-ui);}
 .mg2 .tk2-cz.is-v{--cz:var(--mg-v);--cz-ink:var(--mg-v-ink);}

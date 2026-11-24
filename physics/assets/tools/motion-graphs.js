@@ -123,7 +123,7 @@
       tab: 'drive', mode: 'explore',
       // Drive it: the recorded run (raw frame samples and the 0.05 s grid with measured v and a)
       drv: { raw: { t: [], x: [] }, g: null, clock: 0, rec: false, done: false, x: match ? startOfTarget(match) : EX.x0, kv: 0, hold: false, example: !match },
-      set: { x0: SET0.x0, v0: SET0.v0, a: SET0.a, run: null },
+      set: { x0: SET0.x0, v0: SET0.v0, a: SET0.a, segs: [{ t0: 0, a: SET0.a }], run: null },
       cursor: WIN, play: null, back: null, fade: 0, pulse: 0
     };
     var exampleRun = exactRun(EX.x0, EX.v0, EX.segs);
@@ -173,12 +173,12 @@
       // the arrows' scales: the longest (3 m/s, 2 m/s²) fits on the picture from any start (−3 m to 3 m)
       var room = Math.min(xL + 2 * ppm, W - (xL + 8 * ppm)) - 22;
       var vs = Math.min(56, room / 3), as = Math.min(70, room / 2);
-      return { W: W, H: Hh, phone: phone, pad: pad, cw: cw, ch: ch, wr: wr, detW: detW, xL: xL, xR: xR, ppm: ppm, aY: aY, vY: vY, kY: kY, cartTop: cartTop,
+      return { W: W, H: Hh, phone: phone, fitH: fitH, pad: pad, cw: cw, ch: ch, wr: wr, detW: detW, xL: xL, xR: xR, ppm: ppm, aY: aY, vY: vY, kY: kY, cartTop: cartTop,
         railTop: railTop, railH: railH, benchY: benchY, sceneH: sceneH, gTop: gTop, gap: gap, L: L, R: R, pw: W - L - R, ph: ph, top: top, axisY: top.a + ph, vs: vs, as: as };
     }
     function X(x){ return G.xL + (x - TR.min) * G.ppm; }
     // a panel's tick numbers: the top one under the scrub's knob, the bottom one clear of the next panel's top
-    function tickY(k, y){ var r = RANGE[k]; return y === r[1] ? G.top[k] + 14 : y === r[0] ? G.top[k] + G.ph - 3 : gy(k, y) + 4; }
+    function tickY(k, y){ var r = RANGE[k]; return y === r[1] ? G.top[k] + 12.5 : y === r[0] ? G.top[k] + G.ph - 3 : gy(k, y) + 4; }
     function gx(t){ return G.L + t / WIN * G.pw; }
     function gy(k, y){ var r = RANGE[k]; return G.top[k] + G.ph - (y - r[0]) / (r[1] - r[0]) * G.ph; }
 
@@ -299,19 +299,19 @@
       var vLen = v * g.vs, aLen = a * g.as;
       D.va.setAttribute('d', arrowPath(cx, g.vY, vLen, 11)); D.aa.setAttribute('d', arrowPath(cx, g.aY, aLen, 10));
       D.va.setAttribute('data-v', v.toFixed(4)); D.aa.setAttribute('data-a', a.toFixed(4));
-      var vz = Math.abs(vLen) < 0.5, az = Math.abs(aLen) < 0.5, setHandles = st.tab === 'set' && !st.play && !st.back;
+      var vz = Math.abs(vLen) < 0.5, az = Math.abs(aLen) < 0.5, setHandles = st.tab === 'set' && !st.play && !st.back, aHandle = st.tab === 'set' && !st.back;
       var lv = vz ? 'v = 0' : 'v', la = az ? 'a = 0' : 'a';
       // the arrow's name sits at its tail, on the side away from the tip (the tip is free for its knob and the cue)
-      function name(el, txt, len, y){
-        var zero = Math.abs(len) < 0.5, gapK = setHandles ? Math.max(8, 21 - Math.abs(len)) : 8;
-        var right = zero || len < 0, xx = zero ? cx + (setHandles ? 22 : 9) : right ? cx + gapK : cx - gapK;
+      function name(el, txt, len, y, hd){
+        var zero = Math.abs(len) < 0.5, gapK = hd ? Math.max(8, 21 - Math.abs(len)) : 8;
+        var right = zero || len < 0, xx = zero ? cx + (hd ? 22 : 9) : right ? cx + gapK : cx - gapK;
         var w = txt.length * 13 * 0.58 + 4;
-        if(!right && xx - w < 4){ right = true; xx = cx + len + 8 + (setHandles ? 16 : 0); }
-        if(right && xx + w > g.W - 4){ right = false; xx = cx + Math.min(len, 0) - 8 - (setHandles ? 16 : 0); }
+        if(!right && xx - w < 4){ right = true; xx = cx + len + 8 + (hd ? 16 : 0); }
+        if(right && xx + w > g.W - 4){ right = false; xx = cx + Math.min(len, 0) - 8 - (hd ? 16 : 0); }
         el.setAttribute('x', n1(xx)); el.setAttribute('y', n1(y + 4.5)); el.setAttribute('text-anchor', right ? 'start' : 'end');
         if(el.textContent !== txt) el.textContent = txt;
       }
-      name(D.vl, lv, vLen, g.vY); name(D.al, la, aLen, g.aY);
+      name(D.vl, lv, vLen, g.vY, setHandles); name(D.al, la, aLen, g.aY, aHandle);
       // the detector pings while it measures
       var measuring = (st.tab === 'drive' && st.drv.rec) || !!st.play;
       D.ping.classList.toggle('is-on', measuring && !red());
@@ -472,7 +472,7 @@
         if(st.back.k >= st.back.hold && !st.back.faded){ st.back.faded = true; fadeBox(); st.cursor = 0; afterBack(); }
         if(st.back && st.back.k >= st.back.hold + 0.3){ st.back = null; afterBack(); }
       }
-      paint(); if(o.onFrame) o.onFrame();
+      paint(); if(st.play && H_.a && st.tab === 'set') H_.a.place(); if(scrub) scrub.value(curT()); if(o.onFrame) o.onFrame();
       if(busy()) raf = requestAnimationFrame(loop); else lastT = 0;
     }
     function fadeBox(){ box.classList.remove('is-fade'); void box.offsetWidth; box.classList.add('is-fade'); }
@@ -511,8 +511,13 @@
     /* ---------------------------------------------------------------- the controls on the picture */
     var H_ = {}, scrub = null, grabOff = null;
     function red(){ return kit ? K.reduced() : T.reduced(); }
+    var rebuilding = false;
     function makeControls(){
+      // a redraw keeps the keyboard where it was (and a held key keeps driving)
+      var fo = document.activeElement, foL = fo && box.contains(fo) ? (fo.getAttribute('aria-label') || '') : null;
+      rebuilding = true;
       box.querySelectorAll('.tk2-handle, .tk2-scrub').forEach(function(e){ e.remove(); });
+      rebuilding = false;
       H_ = {}; scrub = null;
       if(!kit) return;
       // the cart's knob, over the cart: Drive (main: drag to drive) or Set (quiet: where it starts)
@@ -543,7 +548,7 @@
           kick();
         }, true);
         var release = function(e){ if(!e || /Arrow/.test(e.key)) st.drv.kv = 0; };
-        H_.cart.knob.addEventListener('keyup', release); H_.cart.knob.addEventListener('blur', function(){ release(); });
+        H_.cart.knob.addEventListener('keyup', release); H_.cart.knob.addEventListener('blur', function(){ if(!rebuilding) release(); });
         // the time cursor along the graphs: the cart goes back to that moment
         scrub = K.scrub(box, { key: '', label: 'Time cursor on the graphs', min: 0, max: WIN, step: DT, value: curT(), chip: false,
           rect: [G.L, G.top.x, G.L + G.pw, G.axisY], valuetext: function(v){ return 't = ' + F(v, 1) + ' s'; },
@@ -556,23 +561,28 @@
           valuetext: function(v){ return 'v₀ = ' + sg(v) + ' m/s'; },
           onStart: function(){ hideCue(true); stopRun(); }, onInput: function(v){ setRun({ v0: r1(v) }); }, onEnd: function(){ tourDid('drag'); autoRun(); } });
         H_.a = K.handle(layer, { key: 'apphys-motion-graphs-a', label: 'Acceleration, the acceleration arrow’s tip', value: st.set.a, min: -2, max: 2, step: 0.1, chip: false,
-          at: function(v){ return [X(st.set.x0) + v * G.as, G.aY]; }, dir: function(){ return 0; },
+          // while the cart runs this knob rides on the cart's a arrow: a change starts a new piece of the run
+          at: function(v){ return [X(st.play ? cartX() : st.set.x0) + v * G.as, G.aY]; }, dir: function(){ return 0; },
           pick: function(x){ return tipPick(x, G.as, -2, 2); },
           valuetext: function(v){ return 'a = ' + sg(v) + ' m/s²'; },
-          onStart: function(){ hideCue(true); stopRun(); }, onInput: function(v){ setRun({ a: r1(v) }); }, onEnd: function(){ tourDid('drag'); autoRun(); } });
+          onStart: function(){ hideCue(true); if(!st.play) stopRun(); }, onInput: function(v){ setRun({ a: r1(v) }); }, onEnd: function(){ tourDid('drag'); if(!st.play) autoRun(); } });
       }
       placeControls();
+      if(foL != null){ var nf = [].slice.call(box.querySelectorAll('.tk2-knob, .tk2-in')).filter(function(e){ return (e.getAttribute('aria-label') || '') === foL; })[0]; if(nf) try{ nf.focus({ preventScroll: true }); }catch(e){} }
     }
     function tipPick(x, scale, lo, hi){
-      var cx = X(st.set.x0), v = (clamp(x, 6, G.W - 6) - cx) / scale;
+      var cx = X(st.play ? cartX() : st.set.x0), v = (clamp(x, 6, G.W - 6) - cx) / scale;
       return clamp(Math.round(v * 10) / 10, lo, hi);
     }
     function placeControls(){
+      // the picture always matches its box (a stale viewBox would letterbox the drawing under the knobs)
+      if(G && !G.fitH && (Math.abs(box.clientHeight - G.H) > 1 || Math.abs(box.clientWidth - G.W) > 1)) layoutSoon();
       if(!kit || !G) return;
       var running = !!st.play || !!st.back || st.drv.rec;
       if(H_.cart){ H_.cart.value(st.tab === 'drive' ? cartX() : st.set.x0); H_.cart.hide(st.tab === 'set' && running); H_.cart.place(); }
       if(H_.v){ H_.v.value(st.set.v0); H_.v.hide(running); H_.v.place(); }
-      if(H_.a){ H_.a.value(st.set.a); H_.a.hide(running); H_.a.place(); }
+      // (stopped, the knob sits on the drawn arrow: the first piece's a; running, on the cart's arrow now)
+      if(H_.a){ H_.a.value(st.play ? st.set.a : st.set.segs[0].a); H_.a.hide(!!st.back || st.drv.rec); H_.a.place(); }
       if(scrub){ scrub.place([G.L, G.top.x, G.L + G.pw, G.axisY]); scrub.value(curT()); scrub.el.classList.toggle('is-rec', st.drv.rec); }
     }
     function grabCart(byKey){
@@ -588,11 +598,18 @@
       d.hold = !byKey;
       kick(); afterPlay();
     }
+    /* A change of v₀, a or the start: the whole run is redrawn at once. While the cart runs, a change of a starts a
+       new straight piece on v-t from that moment (the run so far is kept). */
     function setRun(ch){
-      var s = st.set;
+      var s = st.set, live = !!st.play && ch.a != null && ch.v0 == null && ch.x0 == null;
       if(ch.x0 != null) s.x0 = ch.x0; if(ch.v0 != null) s.v0 = ch.v0; if(ch.a != null) s.a = ch.a;
-      s.run = exactRun(s.x0, s.v0, [{ dur: WIN, a: s.a }]);
-      st.cursor = 0;
+      if(live){
+        var tc = +curT().toFixed(3);
+        s.segs = s.segs.filter(function(q){ return q.t0 < tc - 1e-9; }).concat([{ t0: tc, a: s.a }]);
+      } else s.segs = [{ t0: 0, a: s.a }];
+      s.run = exactRun(s.x0, s.v0, s.segs.map(function(q, i){ return { dur: (i + 1 < s.segs.length ? s.segs[i + 1].t0 : WIN) - q.t0, a: q.a }; }));
+      if(live){ st.play.end = seriesEnd(s.run); if(st.play.t >= st.play.end){ var pl = st.play; st.play = null; playEnded(pl); } }
+      else st.cursor = 0;
       if(H_.v){ H_.v.place(); H_.a.place(); }
       if(H_.cart && ch.x0 != null){ H_.v.value(s.v0); H_.a.value(s.a); }
       paint(); if(o.onState) o.onState();
@@ -622,7 +639,8 @@
       if(!r.width) return;
       W = Math.max(280, Math.round(r.width));
       // a phone or a tablet (it scrolls) takes the height its picture needs; a desktop fills the stage
-      var phone = W < 600, fitH = W < 1000 || !!match;
+      // (by the screen's width, as the stylesheet decides: a 1024 px screen is a desktop even if the stage is narrower)
+      var vw = window.innerWidth || W, phone = vw < 600 || W < 420, fitH = vw < 1000 || !!match;
       if(fitH){
         var vh = window.innerHeight || 800, avail = o.availH ? o.availH() : vh - 330;
         var g0 = geo(W, Math.max(avail, 0), phone, true);
@@ -641,6 +659,8 @@
       if(cue && cue.active()) cue.place();
       if(o.onLayout) o.onLayout();
     }
+    var soonT = 0;
+    function layoutSoon(){ if(!soonT) soonT = setTimeout(function(){ soonT = 0; layout(); }, 0); }
     var ro = null;
     if(window.ResizeObserver){ var tm = null; ro = new ResizeObserver(function(){ clearTimeout(tm); tm = setTimeout(layout, 40); }); ro.observe(box); }
     else window.addEventListener('resize', layout);
@@ -652,7 +672,7 @@
       setCue: function(c){ cue = c; }, setTour: function(f){ tourDid = f; },
       handles: function(){ return H_; }, scrubber: function(){ return scrub; },
       resetDrive: function(){ stopAll(); st.drv = { raw: { t: [], x: [] }, g: null, clock: 0, rec: false, done: false, x: match ? startOfTarget(match) : at(exampleRun, 'x', WIN), kv: 0, hold: false, example: !match }; st.cursor = match ? 0 : WIN; built = ''; layout(); },
-      resetSet: function(){ stopAll(); st.set = { x0: SET0.x0, v0: SET0.v0, a: SET0.a, run: exactRun(SET0.x0, SET0.v0, [{ dur: WIN, a: SET0.a }]) }; st.cursor = 0; built = ''; layout(); },
+      resetSet: function(){ stopAll(); st.set = { x0: SET0.x0, v0: SET0.v0, a: SET0.a, segs: [{ t0: 0, a: SET0.a }], run: exactRun(SET0.x0, SET0.v0, [{ dur: WIN, a: SET0.a }]) }; st.cursor = 0; built = ''; layout(); },
       /* Show a run as if driven (Match's "Show the answer"): replayed from the start. */
       showRun: function(s){ stopAll(); st.drv.g = s; st.drv.done = true; st.drv.example = false; play('drive'); },
       destroy: function(){ stopAll(); clearTimeout(autoT); if(ro) ro.disconnect(); listeners.forEach(function(f){ f(); }); }
@@ -720,12 +740,15 @@
           (s === L.example ? 'Example, ' : '') + 'at ' + F(va.t, 1) + ' s:');
         cause.el.setAttribute('data-res', d.k);
       } else {
-        var se = st.set, run = se.run, parts = [{ t: 'v₀ ' + sg(se.v0) + ' m/s', role: 'v', say: 'starting velocity ' + sg(se.v0) + ' metres per second' }, { t: 'a ' + sg(se.a) + ' m/s²', role: 'a', join: '+', say: 'acceleration ' + sg(se.a) + ' metres per second squared' }];
-        var tn = turnsOf(run, run.end, 0.01)[0], res = '';
-        if(Math.abs(se.v0) < 1e-9 && Math.abs(se.a) < 1e-9){ parts.push({ t: 'stays at rest', role: 'res' }); res = 'rest'; }
-        else if(Math.abs(se.a) < 1e-9){ parts.push({ t: 'steady to the ' + (se.v0 > 0 ? 'right' : 'left'), role: 'res' }); res = 'const'; }
-        else if(Math.abs(se.v0) < 1e-9){ parts.push({ t: 'speeds up from rest', role: 'res' }); res = 'up'; }
-        else if(se.v0 * se.a > 0){ parts.push({ t: 'speeds up', role: 'res' }); res = 'up'; }
+        // the newest piece of the run: from v₀ at 0 s, or from the v at the moment a was changed mid run
+        var se = st.set, run = se.run, last = se.segs[se.segs.length - 1], piece = last.t0 > 0;
+        var v1 = piece ? +at(run, 'v', last.t0).toFixed(6) : se.v0;
+        var parts = [{ t: 'v₀ ' + sg(se.v0) + ' m/s', role: 'v', say: 'starting velocity ' + sg(se.v0) + ' metres per second' }, { t: 'a ' + sg(se.a) + ' m/s²' + (piece ? ' from ' + F(last.t0, 1) + ' s' : ''), role: 'a', join: '+', say: 'acceleration ' + sg(se.a) + ' metres per second squared' + (piece ? ' from ' + F(last.t0, 1) + ' seconds' : '') }];
+        var tn = turnsOf(run, run.end, 0.01).filter(function(q){ return q.t >= last.t0 - 1e-9; })[0], res = '';
+        if(Math.abs(v1) < 1e-9 && Math.abs(se.a) < 1e-9){ parts.push({ t: 'stays at rest', role: 'res' }); res = 'rest'; }
+        else if(Math.abs(se.a) < 1e-9){ parts.push({ t: 'steady to the ' + (v1 > 0 ? 'right' : 'left'), role: 'res' }); res = 'const'; }
+        else if(Math.abs(v1) < 1e-9){ parts.push({ t: 'speeds up from rest', role: 'res' }); res = 'up'; }
+        else if(v1 * se.a > 0){ parts.push({ t: 'speeds up', role: 'res' }); res = 'up'; }
         else { parts.push({ t: 'slows down', role: 'res' }); res = 'down'; }
         if(tn) { parts.push({ t: 'turns at ' + F(tn.t, 1) + ' s', role: 'turn' }); res += ' turn'; }
         else if(run.hit) { parts.push({ t: 'end stop at ' + F(run.hit.t, 1) + ' s', role: 'turn' }); res += ' hit'; }
@@ -747,7 +770,7 @@
       '<li>Right is the + direction. x is where the cart’s centre is on the track’s tape; the track runs from −5 m to +5 m.</li>' +
       '<li>At the time cursor: the line touching the x graph is drawn in v’s colour, because its slope is v; the line touching the v graph is drawn in a’s colour, because its slope is a; the shaded area under the v graph from 0 is Δx (below the axis it counts as negative).</li>' +
       '<li>Drive it: the detector records the cart’s position every frame. v and a are measured from those positions as a real detector does: least squares slopes over ±0.2 s for v and ±0.4 s for a, from positions taken every 0.05 s. So a hand drive gives a slightly bumpy, slightly late v and a, and slopes and areas agree only roughly. The newest point uses only the time before it.</li>' +
-      '<li>Set v and a: the motion is exact, x = x₀ + v₀t + ½at² and v = v₀ + at. “turns” marks where v crosses zero, the top or bottom of the x graph. At an end stop the cart stops dead: v drops to 0 at once, a spike on the a graph too narrow to draw.</li>' +
+      '<li>Set v and a: the motion is exact, x = x₀ + v₀t + ½at² and v = v₀ + at. Change a while the cart runs (its arrow’s tip rides with the cart) and a new straight piece starts on v-t from that moment. “turns” marks where v crosses zero, the top or bottom of the x graph. At an end stop the cart stops dead: v drops to 0 at once, a spike on the a graph too narrow to draw.</li>' +
       '<li>The detector here reads the whole 10 m track. A classroom motion detector reads from about 0.15 m to 3.5 m (6 m for some), so a real track is shorter; the numbers here are kept as the problems use them.</li>' +
       '<li>The graphs show v from −4 to 4 m/s and a from −3 to 3 m/s²; a line that goes past runs off the panel.</li></ul>' +
       '<h3 class="ls-title-l">Keys</h3><p class="bt-small">Drive it: Tab to the cart’s knob and hold the left or right arrow key to drive (Shift drives slowly); Tab on to the time cursor and use the arrow keys. Set v and a: on an arrow’s tip, the arrow keys change it by 0.1 (Page Up and Page Down by 1); the cart’s knob moves the start 0.5 m.</p>';

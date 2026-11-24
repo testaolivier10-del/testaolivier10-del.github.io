@@ -78,6 +78,7 @@ const probe = (o) => {
   for (let i = 0; i < texts.length; i++) for (let j = i + 1; j < texts.length; j++) if (gap(texts[i].r, texts[j].r) < 4) out.push('words closer than 4 px: ' + texts[i].n + ' and ' + texts[j].n);
   texts.forEach(a => knobs.forEach(kk => { if (gap(a.r, kk.r) < 0) out.push('a knob covers ' + a.n); }));
   for (let i = 0; i < knobs.length; i++) for (let j = i + 1; j < knobs.length; j++) if (gap(knobs[i].r, knobs[j].r) < 2) out.push('two knobs touch');
+  if (Math.abs(svg.viewBox.baseVal.height * k - R(svg).h) > 1.5 && !scene.classList.contains('is-match')) out.push('the drawing does not fill its box (stale size)');
   // the cart is the biggest thing on the track; the track spans the graphs
   const cart = R(svg.querySelector('.mg2-body')), det = R(svg.querySelector('.mg2-det-b')), rail = R(svg.querySelector('.mg2-rail')), pan = R(svg.querySelector('.mg2-pbg'));
   if (cart.w * cart.h < det.w * det.h) out.push('the detector is bigger than the cart');
@@ -114,6 +115,18 @@ const probe = (o) => {
       if (!(above && below)) out.push('"turns" where v does not cross zero');
     });
   }
+  // Set: each tip's knob sits on its drawn arrow's tip
+  if (st.tab === 'set' && !st.back) {
+    [['.mg2-va', /velocity/], ['.mg2-aa', /Acceleration/]].forEach(([sel, re]) => {
+      const kn = [...scene.querySelectorAll('.tk2-handle .tk2-knob')].find(e => re.test(e.getAttribute('aria-label') || ''));
+      if (!kn || !shown(kn) || kn.style.visibility === 'hidden') return;
+      const kr = R(kn), arr = svg.querySelector(sel), d = arr.getAttribute('d'), sv = R(svg);
+      const kx = (kr.l + kr.w / 2 - sv.l) / k;
+      const nums = d ? d.match(/-?[\d.]+/g).map(Number) : null, tipX = nums ? nums[4] : null;
+      const want = tipX != null ? tipX : (svg.querySelector('.mg2-cart').transform.baseVal.consolidate().matrix.e);
+      if (Math.abs(kx - want) > 1.5) out.push('a knob is not on its arrow’s tip (' + kx.toFixed(1) + ' vs ' + want.toFixed(1) + ')');
+    });
+  }
   // the cause line: v, a and the result word from the drawn frame
   const causeEl = root.querySelector('.tk2-cause');
   if (causeEl && !causeEl.classList.contains('is-take') && s) {
@@ -134,7 +147,7 @@ const probe = (o) => {
       const se = st.set, cv = num(/v₀ ([+−-]?[\d.]+) m\/s/), ca = num(/a ([+−-]?[\d.]+) m\/s²/);
       if (cv !== +se.v0.toFixed(1) || ca !== +se.a.toFixed(1)) out.push(`cause line ${cause} for v₀ ${se.v0}, a ${se.a}`);
       // before a run, the arrows are v₀ and a
-      if (!st.play && !st.back && (Math.abs(va - se.v0) > 1e-6 || Math.abs(aa - se.a) > 1e-6)) out.push('the arrows are not v₀ and a before the run');
+      if (!st.play && !st.back && (Math.abs(va - se.v0) > 1e-6 || Math.abs(aa - se.segs[0].a) > 1e-6)) out.push('the arrows are not v₀ and a before the run');
       const tm = /turns at ([\d.]+) s/.exec(cause);
       if (tm) {
         const T = +tm[1], xs = svg.querySelector('.mg2-tr.s1').getAttribute('points').split(' ').filter(Boolean).map(p => p.split(',').map(Number));
@@ -177,7 +190,7 @@ async function runSweep(w, h) {
   const { page, errs, ctx } = await open({ w, h });
   const heights = { drive: new Set(), set: new Set() };
   const check = async (what, fit) => {
-    const r = await page.evaluate(probe, { dark: DARK, fit: !!fit });
+    const r = await page.evaluate(probe, { dark: DARK, fit: !!fit});
     states++; checks += 20; r.out.forEach(m => fails.push(`${w} ${what}: ${m}`));
     const tv = await page.evaluate(() => document.querySelector('.mg2').__mg.st.tab);
     if (w <= 640 && heights[tv]) heights[tv].add(r.causeH);
@@ -198,7 +211,9 @@ async function runSweep(w, h) {
   await page.focus('.mg2 .tk2-scrub input'); await page.keyboard.press('Home'); for (let i = 0; i < 40; i++) await page.keyboard.press('ArrowRight');
   await page.waitForTimeout(100); await check('drive scrubbed to 2 s'); await shot(page, `${W4(w)}-1-drive-scrub.png`);
   // drive by keys (hold right 1.5 s, hold left 1 s)
-  await page.focus('.mg2 .tk2-handle .tk2-knob'); await page.keyboard.down('ArrowRight'); await page.waitForTimeout(1500); await page.keyboard.up('ArrowRight');
+  await page.focus('.mg2 .tk2-handle .tk2-knob'); const kx0 = await page.evaluate(() => document.querySelector('.mg2').__mg.lab.cartX());
+  await page.keyboard.down('ArrowRight'); await page.waitForTimeout(1500); await page.keyboard.up('ArrowRight');
+  const kx1 = await page.evaluate(() => document.querySelector('.mg2').__mg.lab.cartX()); checks++; if (!(kx1 - kx0 > 0.8)) fails.push(`${w} holding the right arrow key moved the cart only ${(kx1 - kx0).toFixed(2)} m`);
   await page.keyboard.down('ArrowLeft'); await page.waitForTimeout(1000); await page.keyboard.up('ArrowLeft');
   await check('driving by keys'); await idle(page); await check('key drive done');
   await page.click('.mg2-run'); await page.waitForTimeout(1600); await check('replay mid'); await shot(page, `${W4(w)}-1-drive-replay.png`);
@@ -217,7 +232,11 @@ async function runSweep(w, h) {
   const vk = page.locator('.mg2 .tk2-handle:not(.is-quiet) .tk2-knob').nth(vb.findIndex(l => /velocity/.test(l)));
   b = await vk.boundingBox(); await page.mouse.move(b.x + b.width / 2, b.y + b.height / 2); await page.mouse.down(); await page.mouse.move(b.x + b.width / 2 + ppm * 1.2, b.y + b.height / 2, { steps: 6 }); await page.mouse.up();
   await page.waitForTimeout(1500); await check('set running'); await shot(page, `${W4(w)}-2-set-running.png`);
-  await idle(page); await check('set back at start');
+  // a change of a mid run: a new straight piece on v-t from that moment
+  const aIdx = (await page.evaluate(() => [...document.querySelectorAll('.mg2 .tk2-handle .tk2-knob')].map(e => e.getAttribute('aria-label')))).findIndex(l => /Acceleration/.test(l));
+  await page.locator('.mg2 .tk2-handle .tk2-knob').nth(aIdx).focus(); for (let i = 0; i < 6; i++) await page.keyboard.press('ArrowUp');
+  await page.waitForTimeout(300); await check('set a changed mid run'); await shot(page, `${W4(w)}-2-set-a-mid-run.png`);
+  await idle(page); await check('set back at start'); await shot(page, `${W4(w)}-2-set-back.png`);
   // Test yourself: a drill problem, then Match the graph
   await page.click('.ls-root button:has-text("Test yourself")'); await page.waitForTimeout(600);
   const ty = await page.evaluate(() => ({ fig: !!document.querySelector('.ls-drill-stage svg, .ls-drill-stage .ls-drill-text'), step: !!document.querySelector('.cd-step'), sw: document.documentElement.scrollWidth > innerWidth, ex: !!document.querySelector('.mg2') && document.querySelector('.mg2').getClientRects().length > 0 }));
@@ -265,7 +284,7 @@ const frameProbe = () => {
       if (nv == null || na == null) out.push('cause line without numbers');
       else { if (inR('v', dv) && Math.abs(nv - dv) > 0.05 + tol('v')) out.push(`cause v ${nv} vs drawn ${dv.toFixed(2)}`); if (inR('a', da) && Math.abs(na - da) > 0.05 + tol('a')) out.push(`cause a ${na} vs drawn ${da.toFixed(2)}`); }
     }
-    if (st.tab === 'set' && !st.play && !st.back && (Math.abs(va - st.set.v0) > 1e-6 || Math.abs(aa - st.set.a) > 1e-6)) out.push('Set: arrows not v₀ and a while stopped');
+    if (st.tab === 'set' && !st.play && !st.back && (Math.abs(va - st.set.v0) > 1e-6 || Math.abs(aa - st.set.segs[0].a) > 1e-6)) out.push('Set: arrows not v₀ and a while stopped');
   }
   // "turns" words only over a drawn crossing (cheap check: none before 0.1 s of trace)
   return { out, k: [st.tab, cx.toFixed(3), va.toFixed(3), L.curT().toFixed(2)].join(':') };
@@ -310,7 +329,7 @@ async function runFrames(w, h) {
   }, 4000);
   await idle(page);
   await sampleWhile('Set: keys on a, run, stop mid run', async () => { await page.focus('.mg2 .tk2-handle:not(.is-quiet) .tk2-knob >> nth=0'); await page.keyboard.press('End'); await page.waitForTimeout(1200); await page.click('.mg2-run'); }, 1800);
-  await sampleWhile('Set: run to the end and back', async () => { await page.click('.mg2-run'); }, 11000);
+  await sampleWhile('Set: run, a changed mid run, to the end and back', async () => { await page.click('.mg2-run'); await page.waitForTimeout(2500); const k = await tip(/Acceleration/); await page.mouse.move(k[0], k[1]); await page.mouse.down(); await page.mouse.move(k[0] + ppm * 0.6, k[1], { steps: 8 }); await page.mouse.up(); }, 11000);
   // leaving mid run: Test yourself stops everything; Explore comes back clean
   await page.click('.mg2-run'); await page.waitForTimeout(700);
   await page.click('.ls-root button:has-text("Test yourself")'); await page.waitForTimeout(300);
