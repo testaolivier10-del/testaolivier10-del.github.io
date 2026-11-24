@@ -59,4 +59,4 @@ build byte-identical.
 - Five drawn scenes at flagship level: the main cost; weight budget for the course page (measure each).
 - Arrow lengths must equal the shown rates at every frame, including Run and reversed drags.
 - Labels on small scenes (cone, ripple) at 360 px: at most two numbers on the picture.
-- The ladder at the floor: the irreversible end state must not heal on a drag back (rule in the builder brief).
+- The ladder near the floor: the knob stops before y = 0 (the rate grows without bound) and the label says why.
