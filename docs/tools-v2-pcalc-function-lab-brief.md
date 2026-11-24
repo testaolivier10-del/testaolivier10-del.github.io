@@ -160,3 +160,69 @@ threads and their labels, the arrows (while a pin moves), the round pin's "Drag"
 - Frame times on this shared machine are noisy (other builders' sweeps ran at the same time); compare with the flagship
   row of the same run.
 - No real phone, no screen reader pass, no real students; the independent review is next.
+
+## Review round 1 (2026-11-24)
+
+The independent review (`/home/claude/review-pcalc-fn/REVIEW.md`) blocked on three must fix items. All are fixed, along with every should fix:
+1. **Numbers mid flip.** While a flip passes through flat (|drawn b| over 3, |drawn a| under 0.05), that number is
+   not a value of the slider. It now reads "flipping": the tag says "a = 2, b flipping", the wire's label shows the
+   letter ("g(x) = 2·f(b(x − 2)) − 1"), and the cause line says "b flipping → flipping left to right". This holds in
+   drags, Back to f and the steps. A reflection step names its own value for the whole step ("b = −0.7 → reflected
+   over the y-axis").
+2. **Show the steps' first phase.** It now cross fades g back onto f: the old wire fades out, the parent fades in, and
+   the pins fade out at g's places and back in at f's. Nothing passes through flat in that phase. In any played change
+   (a step through flat, Back to f) the round pin fades out while it is within 40 px of the square pin, so the knobs
+   never sit on each other; a drag still keeps them 38 to 44 px apart. The frames check asserts this every frame
+   (knobs never touch while both show), including a run with a < 0 and b < 0.
+3. **Reduced motion steps.** At a stop (each press with reduced motion, and each hold with motion on), the step just
+   done is shown finished and named with its result ("Step 1 of 4: b = 0.5 → horizontal dilation: twice as wide").
+   The last step has its own stop before the takeaway. The sweep asserts that every step's result is named.
+
+Should fix, done:
+- Leaders are at most 40 px (70 px only for a wire mostly off the board). Before a longer leader is used, a label may
+  cover a painted number instead.
+- The live region speaks once the glide has settled, so it reads the new state.
+- The page lede is now "Drag the pins and watch every point of f move." and the blurb "Drag two pins and watch every
+  point of a graph move." (desc kept).
+- "?" Zeros says "none" when g has no zero at all, and "none on the board" only when its zeros are off the board.
+- Each half axis keeps at least one number on show. Tags choose the side that covers the fewest numbers and slide up
+  to 60 px; labels never cover a half axis's last number; a covered half axis shows a spare (an odd number, or the same
+  number on the other side of the axis).
+
+The sweep and the frames check gained these assertions. The sweep also waits for the web fonts (labels and numbers are
+measured with them), and the tool measures again once they load. A resize now lays the board out again before the next
+paint (in the ResizeObserver callback, not a frame later). That one frame of old geometry was the cause of the 1920
+flake; after the change, two full 1920 runs were clean.
+
+Checks after round 1: the sweep at 360, 390, 1024, 1440 and 1920, light and dark, 0 failures; frames at 390 and 1440,
+0 failures; `apprecalc-*` 143 pass, content check, the three builds `--check`, `check-site`, `check-weight` clean.
+(These docs were first written into the wrong worktree by mistake and moved here in recheck 1.)
+
+## Recheck 1 (2026-11-24)
+
+The recheck held all eight round 1 items and blocked on two must fix items. Both are fixed, along with every should fix:
+1. **The wire is never unlabelled.** The label tries, in order: a spot clear of everything with a leader of at most
+   40 px; the same while covering a painted number (one number per half axis is kept); a leader of at most 70 px; then
+   ever longer "loose" leaders. A loose leader stops at the first pin or tag it meets: the pin sits on the wire, so it
+   still points at it. The sweep fails any state without a wire label. It gained the reviewer's two states, the square
+   pin low left and the round pin across h, for every parent.
+2. **Label in the cross fade.** In the first half of Show the steps' cross fade, the wire's label sits on g's fading
+   wire and fades with it (and with the pins); in the second half it comes back on f.
+
+Should fix, done:
+- No leader passes under a tag, a knob, the chip or the cue. Leaders are measured as drawn, and a clear anchor on the
+  line is searched for. The sweep checks both and counts states with a leader over 41 px: 10 of 186 at 360 and 8 at 390,
+  all corner or crowded states.
+- The round pin's keys skip any value or rung too close to the square pin, so they can flip a and reach b < 0. The
+  frames check asserts this at 390.
+- This round's decisions are logged here and in the owner log.
+- Labels are measured from the drawn text when the browser has it, and the tool measures again each time a font finishes
+  loading (a weight is fetched the first time it is used).
+
+Checks after recheck 1: the sweep at 360, 390, 1024 and 1440, light and dark: 744 states, 15456 checks, 0 failures.
+The frames check ran about 1400 frames each at 390 and 1440, with 0 failures (7 end checks, the key flip included).
+Not happy with: the first exponential state after a parent change failed its first probe at 390, 1024 and 1440 (a wire
+label off the board for an instant) and passed 300 ms later. The sweep now probes a failing state a second time and
+lists each such case ("second look"). The likely cause is the late re-measure after a font loads on a loaded shared
+machine (load about 6 on 2 cores); not reproduced when that width ran alone.
+

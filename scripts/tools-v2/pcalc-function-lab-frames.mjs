@@ -117,6 +117,13 @@ await watch('keys');
 await page.focus('.fl2-hk .tk2-knob'); await page.keyboard.press('Shift+ArrowLeft'); await page.keyboard.press('ArrowUp'); await page.keyboard.press('Shift+ArrowUp');
 await page.focus('.fl2-ab .tk2-knob'); await page.keyboard.press('Shift+ArrowUp'); await page.keyboard.press('ArrowLeft'); await page.keyboard.press('ArrowLeft'); await page.keyboard.press('ArrowRight');
 await page.waitForTimeout(500);
+// 4b (recheck 1) the keys can flip a and reach b < 0: a value too close to the square pin is skipped
+await page.evaluate(() => window.ApPrecalcFunctionLab.set({ a: 0.5, b: 1, h: 0, k: 0 }, 'quadratic'));
+await page.focus('.fl2-ab .tk2-knob');
+for (let i = 0; i < 12; i++) await page.keyboard.press('ArrowDown');
+for (let i = 0; i < 30; i++) await page.keyboard.press('ArrowLeft');
+await page.waitForTimeout(500);
+n++; { const p = await page.evaluate(() => window.ApPrecalcFunctionLab.S.p); if (!(p.a < 0 && p.b < 0)) fails.push('keys did not flip a and b: ' + JSON.stringify(p)); }
 // 5 Show the steps, start to end
 await page.evaluate(() => window.ApPrecalcFunctionLab.set({ a: -2, b: 2, h: 1, k: 1 }, 'quadratic'));
 await watch('show the steps');

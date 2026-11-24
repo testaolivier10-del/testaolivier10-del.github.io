@@ -332,12 +332,15 @@
         var st = (k === 'PageUp' || k === 'PageDown' || big ? 1 : 0.1) * (k === 'ArrowUp' || k === 'PageUp' ? 1 : -1) * (Fa.keys[Fa.shape][1] > 0 ? 1 : -1), a = r1(p.a + st);
         if(Math.abs(a) < 0.05) a = st > 0 ? 0.1 : -0.1;
         c.a = clamp(a, -3, 3);
+        // a value too close to the square pin is skipped: on to the first one that fits (so the keys can flip a)
+        for(var g2 = 0; g2 < 70 && !okAB(Object.assign({ h: p.h, k: p.k }, c)) && Math.abs(c.a) < 3; g2++){ var a2 = r1(c.a + (st > 0 ? 0.1 : -0.1)); if(Math.abs(a2) < 0.05) a2 = st > 0 ? 0.1 : -0.1; c.a = clamp(a2, -3, 3); }
       } else if(k === 'ArrowRight' || k === 'ArrowLeft'){
         // the pin moves the way of the arrow: the next rung that puts it further that way
         var x0 = p.h + u0 / p.b, dir = k === 'ArrowRight' ? 1 : -1, cand = [];
         BL.forEach(function(m){ [m, -m].forEach(function(b){ var px = p.h + u0 / b; if((px - x0) * dir > 1e-9 && px >= G.px0 && px <= G.px1) cand.push({ b: b, d: Math.abs(px - x0) }); }); });
         cand.sort(function(s, t){ return s.d - t.d; });
-        var pickc = cand[big ? Math.min(cand.length - 1, 4) : 0];
+        // the next rung that fits (a rung too close to the square pin is skipped, so the keys can reach b < 0)
+        var fits = cand.filter(function(x){ return okAB({ a: c.a, b: x.b, h: p.h, k: p.k }); }), pickc = fits[big ? Math.min(fits.length - 1, 4) : 0];
         if(!pickc) return encAB(p);
         c.b = pickc.b;
       } else if(k === 'Home'){ c.a = 1; c.b = 1; } else return null;
@@ -486,8 +489,13 @@
         if(!labCv) labCv = document.createElement('canvas').getContext('2d');
         var cs = getComputedStyle(t), w = 0;
         [].forEach.call(t.childNodes, function(sp){ labCv.font = (sp.getAttribute && sp.getAttribute('class') ? '900 ' : cs.fontWeight + ' ') + cs.fontSize + ' ' + cs.fontFamily; w += labCv.measureText(sp.textContent).width; });
+        // the drawn text is the truth when the browser has it (a weight still loading would measure too narrow)
+        var real = 0; try{ real = t.getComputedTextLength(); }catch(e){}
+        if(real > 0) w = Math.max(w, real);
         if(!(w > 0)) return 200;
-        E.labCache[key] = w * 1.03 + 2;
+        w = w * 1.03 + 2;
+        if(!document.fonts || document.fonts.status === 'loaded') E.labCache[key] = w;
+        return w;
       }
       return E.labCache[key];
     }
@@ -600,11 +608,22 @@
       return [r.left - sr.left, r.top - sr.top, r.right - sr.left, r.bottom - sr.top];
     }
     /* place a label beside a run of points: the candidate spots in order, the last good one kept while it stays good */
-    function placeLab(g, pts, prefs, avoid, keep, free){
+    function placeLab(g, pts, prefs, avoid, keep, free, loose){
       if(!pts.length){ g.style.display = 'none'; g._pos = null; return null; }
       if(g._pos && g._pos.free === undefined && g._pos.f == null) g._pos = null;
       g.style.display = '';
-      var w = g._w, h = g._h, n = pts.length, cands = [];
+      var w = g._w, h = g._h, n = pts.length, cands = [], capL = typeof free === 'number' ? free : 40;
+      function anchorOf(c){ return pts[Math.round(clamp(c.f, 0, 1) * (n - 1))]; }
+      /* the drawn leader: from the pill's edge to its spot on the line; at most capL long, never under a pin, a tag,
+         the chip or the cue (a hidden leader names nothing) */
+      function leadOk(c, ip){
+        var lx = ip[0] - c.x, ly = ip[1] - c.y, ex = clamp(lx, -w / 2, w / 2), ey = clamp(ly, -h / 2, h / 2), len = Math.hypot(lx - ex, ly - ey);
+        if(len > capL + 0.5) return false;
+        if(loose) return true;   // the last tries: the drawn leader stops at the first pin or tag it meets
+        for(var t = 0; t <= len; t += 3){ var f = len ? t / len : 0, px = c.x + ex + (lx - ex) * f, py = c.y + ey + (ly - ey) * f;
+          for(var i = 0; i < (E.block || []).length; i++){ var B = E.block[i]; if(px > B[0] - 2 && px < B[2] + 2 && py > B[1] - 2 && py < B[3] + 2) return false; } }
+        return true;
+      }
       // beside the line at that spot: pushed out along its normal until the pill clears it
       function at(f, sd, far){
         var i = Math.round(clamp(f, 0, 1) * (n - 1)), p = pts[i], a = pts[Math.max(0, i - 3)], b = pts[Math.min(n - 1, i + 3)];
@@ -614,8 +633,9 @@
         return { f: f, sd: sd, far: far || 0, x: p[0] + sd * nx * dd, y: p[1] + sd * ny * dd };
       }
       [0, 26].forEach(function(far){ prefs.forEach(function(f){ [1, -1].forEach(function(sd){ cands.push(at(f, sd, far)); }); }); });   // further out (a longer leader) only when nothing nearer fits
-      function ok(c){
+      function ok(c, ip){
         var b = [c.x - w / 2, c.y - h / 2, c.x + w / 2, c.y + h / 2];
+        if(!leadOk(c, ip || anchorOf(c))) return false;
         if(b[0] < G.L + 4 || b[2] > G.R - 4 || b[1] < G.T + 4 || b[3] > G.B - 4) return false;
         if(hitAny(b, avoid, 6)) return false;
         // never on its own wire or on the other one
@@ -634,13 +654,20 @@
         var cap = typeof free === 'number' ? free : 40;
         keep = keep0.slice(0, 1);
         // the leader runs from the pill's edge to the nearest point of its line: at most 40 px, or it reads as a line of the graph
-        var near = function(x, y){ var bi = 0, bd = Infinity; for(var i = 0; i < n; i += 2){ var dx = Math.max(0, Math.abs(pts[i][0] - x) - w / 2), dy = Math.max(0, Math.abs(pts[i][1] - y) - h / 2), dq = Math.hypot(dx, dy); if(dq < bd){ bd = dq; bi = i; } } return { d: bd, i: bi }; };
-        if(g._pos && g._pos.free){ var cf = { x: g._pos.x, y: g._pos.y }, bf = ok(cf); if(bf){ var nf = near(cf.x, cf.y); if(nf.d <= cap){ cf.f = nf.i / Math.max(1, n - 1); cf.free = true; best = { c: cf, b: bf }; } } }
+        // the nearest point of the line whose leader is clear (not under a pin, a tag, the chip or the cue)
+        var near = function(x, y){
+          var list = [];
+          for(var i = 0; i < n; i += 2){ var dx = Math.max(0, Math.abs(pts[i][0] - x) - w / 2), dy = Math.max(0, Math.abs(pts[i][1] - y) - h / 2), dq = Math.hypot(dx, dy); if(dq <= cap) list.push([dq, i]); }
+          list.sort(function(p1, p2){ return p1[0] - p2[0]; });
+          for(var j = 0; j < list.length && j < 12; j++) if(leadOk({ x: x, y: y }, pts[list[j][1]])) return { d: list[j][0], i: list[j][1] };
+          return { d: Infinity, i: 0 };
+        };
+        if(g._pos && g._pos.free){ var cf = { x: g._pos.x, y: g._pos.y }, nf = near(cf.x, cf.y), bf = nf.d <= cap ? ok(cf, pts[nf.i]) : null; if(bf){ cf.f = nf.i / Math.max(1, n - 1); cf.free = true; best = { c: cf, b: bf }; } }
         if(!best){
           var cand = null;
           for(var y2 = G.T + h / 2 + 6; y2 <= G.B - h / 2 - 6; y2 += 5) for(var x2 = G.L + w / 2 + 6; x2 <= G.R - w / 2 - 6; x2 += 12){
             var c2 = { x: x2, y: y2 }, nn = near(x2, y2); if(nn.d > cap || (cand && nn.d >= cand.d)) continue;
-            var b2 = ok(c2); if(b2) cand = { d: nn.d, c: { x: x2, y: y2, f: nn.i / Math.max(1, n - 1), free: true }, b: b2 };
+            var b2 = ok(c2, pts[nn.i]); if(b2) cand = { d: nn.d, c: { x: x2, y: y2, f: nn.i / Math.max(1, n - 1), free: true }, b: b2 };
           }
           if(cand) best = { c: cand.c, b: cand.b };
         }
@@ -650,6 +677,9 @@
       g.setAttribute('transform', 'translate(' + r1(best.c.x) + ' ' + r1(best.c.y) + ')');
       // a short leader from the pill to the spot on its line, so the label names that line and no other
       var ip = pts[Math.round(clamp(best.c.f, 0, 1) * (n - 1))], lx = ip[0] - best.c.x, ly = ip[1] - best.c.y, ex = clamp(lx, -w / 2, w / 2), ey = clamp(ly, -h / 2, h / 2), ld = g.firstChild;
+      // (a loose leader stops where it would go under a pin or a tag: the pin sits on the wire, so it still points at it)
+      if(loose){ var L0 = Math.hypot(lx - ex, ly - ey); for(var t = 0; t <= L0; t += 2){ var fr = L0 ? t / L0 : 0, px = best.c.x + ex + (lx - ex) * fr, py = best.c.y + ey + (ly - ey) * fr;
+        if((E.block || []).some(function(B){ return px > B[0] - 3 && px < B[2] + 3 && py > B[1] - 3 && py < B[3] + 3; })){ lx = ex + (lx - ex) * Math.max(0, t - 2) / (L0 || 1); ly = ey + (ly - ey) * Math.max(0, t - 2) / (L0 || 1); break; } } }
       ld.setAttribute('x1', r1(ex)); ld.setAttribute('y1', r1(ey)); ld.setAttribute('x2', r1(lx)); ld.setAttribute('y2', r1(ly));
       return best.b;
     }
@@ -714,16 +744,19 @@
       var tb = [tagBox(hk, hkTag(), hk.el.querySelector('.tk2-tag').className.replace(/.*is-/, '')), tagBox(ab, abTag(), ab.el.querySelector('.tk2-tag').className.replace(/.*is-/, ''))];
       tb.forEach(function(b){ if(b) boxes.push(b); });
       var cb = cueBox(); if(cb) boxes.push(cb);
+      E.block = [knobBox(hkP, 20), knobBox(abP, 20)].concat(tb.filter(Boolean)); if(cb) E.block.push(cb);
       var chip = ab.el.querySelector('.tk2-chip'), chipBx = null; if(chip && !ab.el.classList.contains('is-wait')){ var cr = chip.getBoundingClientRect(), sr = scene.getBoundingClientRect(); chipBx = [cr.left - sr.left, cr.top - sr.top, cr.right - sr.left, cr.bottom - sr.top]; boxes.push(chipBx); }
       // a number painted on the board is hidden while a pin, its tag, the chip or the cue sits on it (never half covered)
       var over = [knobBox(hkP, 23), knobBox(abP, 23)].concat(tb.filter(Boolean)); if(cb) over.push(cb);
-      if(chipBx) over.push(chipBx);
+      if(chipBx){ over.push(chipBx); E.block.push(chipBx); }
       var want = (E.tickEls || []).map(function(t, i){ return !t._spare && !hitAny(E.tickBoxes[i], over, 8); }), seen = {};
       (E.tickEls || []).forEach(function(t, i){ if(want[i]) seen[t.getAttribute('data-g')] = 1; });
       // a half axis whose numbers are all covered shows one spare (odd) number instead, so it can still be read
       (E.tickEls || []).forEach(function(t, i){ var gp = t.getAttribute('data-g'); if(t._spare && !seen[gp] && !hitAny(E.tickBoxes[i], over, 8)){ want[i] = true; seen[gp] = 1; } });
       (E.tickEls || []).forEach(function(t, i){ var hide = !want[i]; if(t._h !== hide){ t._h = hide; t.style.visibility = hide ? 'hidden' : ''; } });
       var avoid = boxes.concat(E.tickBoxes.filter(function(b, i){ return !E.tickEls[i]._h; })), wf = flat(wr), pf = flat(pr);
+      // first half of the cross fade into the steps: the label still names g, so it sits on g's fading wire and fades with it
+      if(XF && XF.u < 0.5) wf = flat(runs(fam, XF.D0));
       setLab(E.lab, gLabel());
       // each label: clear of everything; else (a crowded phone board) it may cover a painted number, which hides
       // under the pill; a leader of at most 40 px (70 px for the last try, a wire mostly off the board)
@@ -733,8 +766,7 @@
       (E.tickEls || []).forEach(function(t, i){ var gp = t.getAttribute('data-g'); if(!kg[gp] && !hitAny(E.tickBoxes[i], over, 8)){ kg[gp] = 1; keepNum.push(E.tickBoxes[i]); } });
       function place2(g, pts, prefs, keep){
         var b = placeLab(g, pts, prefs, avoid, keep, 40);
-        if(!b){ [40, 70].forEach(function(cap){ if(!b) b = placeLab(g, pts, prefs, boxes.concat(placed, keepNum), keep, cap); });
-          if(!b) [40, 70].forEach(function(cap){ if(!b) b = placeLab(g, pts, prefs, boxes.concat(placed), keep, cap); });
+        if(!b){ [[40, 1], [40, 0], [70, 1], [70, 0], [40, 0, 1], [70, 0, 1], [140, 0, 1], [1e4, 0, 1]].forEach(function(t){ if(!b) b = placeLab(g, pts, prefs, boxes.concat(placed, t[1] ? keepNum : []), keep, t[0], t[2]); });
           if(b) (E.tickEls || []).forEach(function(t, i){ if(!t._h && hitAny(E.tickBoxes[i], [b], 8)){ t._h = true; t.style.visibility = 'hidden'; } }); }
         if(b){ avoid.push(b); placed.push(b); }
         return b;
@@ -743,7 +775,8 @@
       place2(E.lab, wf, [0.88, 0.72, 0.12, 0.3, 0.6, 0.95, 0.05, 0.45, 0.8, 0.2, 0.66, 0.36], [wf, pf]);
       setLab(E.plab, [[PARENT_LAB[fam]]]);
       place2(E.plab, pf, [0.2, 0.08, 0.35, 0.8, 0.92, 0.5, 0.65, 0.28, 0.14], [pf, wf]);
-      E.plab.style.opacity = E.lab.style.opacity = MORPH ? Math.max(0.15, mw) : '';
+      E.plab.style.opacity = MORPH ? Math.max(0.15, mw) : '';
+      E.lab.style.opacity = MORPH ? Math.max(0.15, mw) : XF ? Math.abs(1 - 2 * XF.u).toFixed(2) : '';
       E.alab.forEach(function(g, i){
         var a = as[i]; if(!a){ g.style.display = 'none'; g._pos = null; return; }
         setLab(g, [['asymptote ' + (a.v ? 'x = ' + num(q.h) : 'y = ' + num(q.k))]]);
@@ -879,7 +912,10 @@
       refHtml(); layout();
       setTimeout(function(){ layout(); if(S.mode === 'explore' && !tour.active()) cueShow(); }, 60);
       // labels and numbers are measured with the page's font: measure again once the web fonts have loaded
-      try{ if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ lastWH = ''; if(E.lab) E.lab._pos = E.plab._pos = null; layout(); }); }catch(e){}
+      // (a weight is fetched the first time it is used, so every font that finishes loading triggers a new measure)
+      try{ if(document.fonts){ var refit = function(){ lastWH = ''; if(E.lab) E.lab._pos = E.plab._pos = null; tagFont = null; layout(); };
+        if(document.fonts.ready) document.fonts.ready.then(refit);
+        if(document.fonts.addEventListener) document.fonts.addEventListener('loadingdone', refit); } }catch(e){}
     }
     function shown(m){
       S.mode = m;

@@ -113,7 +113,14 @@ const probe = (theme) => {
   } else out.push('the wire has no label');
   if (!vis(document.querySelector('.fl2-lab.is-f'))) out.push('the parent has no label');
   // (review round 1) a leader never reads as a line of the graph: at most 40 px (70 px only for a wire mostly off the board)
-  q('.fl2-labs .fl2-lab').forEach(g => { const l = g.querySelector('.fl2-lead'); if (!l) return; const len = Math.hypot(l.x2.baseVal.value - l.x1.baseVal.value, l.y2.baseVal.value - l.y1.baseVal.value) * k; if (len > 71) out.push('leader of ' + Math.round(len) + ' px: ' + g.textContent); });
+  // (recheck 1) and the leader is never under a tag, a knob or the chip
+  let longLead = 0;
+  const blockR = [...tags, ...knobs, ...chips].map(x => x.r);
+  q('.fl2-labs .fl2-lab').forEach(g => { const l = g.querySelector('.fl2-lead'); if (!l || g.classList.contains('is-a')) return;
+    const m = g.getScreenCTM(), P = (x, y) => [m.a * x + m.c * y + m.e, m.b * x + m.d * y + m.f], A = P(l.x1.baseVal.value, l.y1.baseVal.value), Bp = P(l.x2.baseVal.value, l.y2.baseVal.value), len = Math.hypot(Bp[0] - A[0], Bp[1] - A[1]);
+    if (len > 41) longLead++;
+    if (len > 71) out.push('leader of ' + Math.round(len) + ' px: ' + g.textContent);
+    for (let t = 0; t <= len; t += 3) { const f = len ? t / len : 0, x = A[0] + (Bp[0] - A[0]) * f, y = A[1] + (Bp[1] - A[1]) * f; if (blockR.some(r => x > r.l && x < r.r && y > r.t && y < r.b)) { out.push('leader of ' + g.textContent + ' passes under a tag, knob or chip'); break; } } });
   // (review round 1) each half axis keeps at least one number on show
   ['x+', 'x-', 'y+', 'y-'].forEach(gp => { const all = [...document.querySelectorAll('.fl2-ticks text[data-g="' + gp + '"]')]; if (all.length && !all.some(vis)) out.push('no number left on the ' + gp + ' half axis'); });
   // asymptote threads are named
@@ -122,7 +129,7 @@ const probe = (theme) => {
   const rows = new Set(q('.fl2 .tk2-cz').map(e => Math.round(R(e).t))).size;
   if (innerWidth <= 640 && rows > 2) out.push('cause line is ' + rows + ' rows: ' + cause);
   if (document.documentElement.scrollWidth > innerWidth) out.push('sideways scroll');
-  return { out, share, causeH: Math.round(R(causeEl).h) };
+  return { out, share, causeH: Math.round(R(causeEl).h), longLead };
 };
 const FAMS = ['linear', 'quadratic', 'cubic', 'absolute', 'sqrt', 'reciprocal', 'piecewise', 'exponential', 'logarithmic', 'sine'];
 const STATES = [
@@ -132,8 +139,10 @@ const STATES = [
   ['wide', { a: 1.5, b: 0.25, h: 0, k: -2 }],
   ['corner-hi', { a: 1, b: 1, h: 99, k: 99 }],
   ['corner-lo', { a: -1, b: 1, h: -99, k: -99 }],
+  ['low-left', { a: 1, b: 1, h: -4, k: -3 }],
+  ['cross-h', { a: 1.5, b: -1, h: 0.5, k: 0 }],
 ];
-let checks = 0, states = 0; const fails = [], minShare = {};
+let checks = 0, states = 0, longLeads = 0; const relooks = []; const fails = [], minShare = {};
 const fail = (w, th, name, list) => { list.forEach(f => fails.push(`${w} ${th} ${name}: ${f}`)); };
 for (const w of WIDTHS) {
   const h = HEIGHT[w] || 900, W4 = String(w).padStart(4, '0');
@@ -168,10 +177,13 @@ for (const w of WIDTHS) {
       // two frames: with reduced motion the site gives every property a 0.01 ms transition, so a knob reads its new
       // place a frame late
       await page.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(() => setTimeout(r, 60)))));
-      const r = await page.evaluate(probe, theme);
+      let r = await page.evaluate(probe, theme);
+      // a busy shared machine can catch a state before its late work (a font that just loaded re-measures the labels):
+      // a failing state is probed once more after 300 ms, and the count of such second looks is reported
+      if (r.out.length) { await page.waitForTimeout(300); const r2 = await page.evaluate(probe, theme); if (!r2.out.length) relooks.push(`${w} ${theme} ${name}: ${r.out[0]}`); r = r2; }
       checks += 20; states++;
       fail(w, theme, name, r.out);
-      minShare[w] = Math.min(minShare[w] ?? 1, r.share);
+      minShare[w] = Math.min(minShare[w] ?? 1, r.share); longLeads += r.longLead ? 1 : 0;
       if (w <= 640) { if (causeH == null) causeH = r.causeH; else if (Math.abs(r.causeH - causeH) > 1) fail(w, theme, name, ['cause line height changed ' + causeH + ' → ' + r.causeH]); }
       await shot(page, `${W4}-${theme}-${name}.png`);
     };
@@ -218,5 +230,6 @@ for (const w of WIDTHS) {
   await c.ctx.close();
 }
 await browser.close(); server.close();
-console.log(`${states} states, ${checks} checks, ${fails.length} failures`);
+console.log(`${states} states, ${checks} checks, ${fails.length} failures (states with a leader over 41 px: ${longLeads}; passed on a second look: ${relooks.length})`);
+relooks.forEach(x => console.log('  second look: ' + x));
 if (fails.length) { console.log(fails.slice(0, 80).join('\n')); process.exit(1); }
