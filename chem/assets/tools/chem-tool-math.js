@@ -1074,6 +1074,18 @@
     return r;
   }
 
+  /* The buffers tool's pH meter (tools v2, docs/tools-v2-chem-buffers-brief.md), from what is drawn: o = { Ka, h, a
+     (mmol of the acid and base forms), oh, h3o (mmol of strong base or acid left over), V (mL) }. While both forms are
+     there in a ratio from 1 : 10 to 10 : 1 it reads the Henderson-Hasselbalch pH (the exam's method; the exact pH
+     differs by under 0.01 there); everywhere else the exact pH from bufferState (charge balance with water). water(net,
+     V): the exact pH of pure water given net mmol of strong base (negative: acid) in V mL. */
+  function bufferMeter(o){
+    var s = bufferState({ Ka: o.Ka, nHA: o.h / 1000, nA: o.a / 1000, V: o.V / 1000, b: ((o.oh || 0) - (o.h3o || 0)) / 1000 });
+    if(o.h > 0 && o.a > 0){ var q = o.a / o.h; if(q >= 0.1 - 1e-12 && q <= 10 + 1e-12) return { pH: -Math.log10(o.Ka) + Math.log10(q), how: 'hh', exact: s.pH, ratio: q }; }
+    return { pH: s.pH, how: 'exact', exact: s.pH, ratio: o.h > 0 ? o.a / o.h : Infinity };
+  }
+  bufferMeter.water = function(net, V){ var cb = net / V, Kw = M.C.Kw, root = Math.sqrt(cb * cb + 4 * Kw); return -Math.log10(cb > 0 ? 2 * Kw / (cb + root) : (root - cb) / 2); };
+
   /* Q vs K with amounts: n (mol per species) in V liters. equilibrate()
      returns the amounts once the net reaction has run until Q = K. */
   function concOf(n, V){ return n.map(function(x){ return x / V; }); }
@@ -1127,7 +1139,7 @@
 
   var D = {
     fmt: fmt, sup: sup, cell: cell, diagnose: diagnose, near: near, list: list, parseCoef: parseCoef, coefText: coefText,
-    bufferState: bufferState, equilibrate: equilibrate, concOf: concOf, atomsOf: atomsOf,
+    bufferState: bufferState, bufferMeter: bufferMeter, equilibrate: equilibrate, concOf: concOf, atomsOf: atomsOf,
     unitParse: unitParse, unitMul: unitMul, unitText: unitText, unitSame: unitSame,
     Q: Q, Qflat: Qflat, at: at, inQ: inQ, solveExtent: solveExtent, smallX: smallX, eqHtml: eqHtml, exprHtml: exprHtml,
     ice: { generate: iceGenerate },

@@ -123,5 +123,53 @@
     0.4
    ]
   }
- ]
+ ],
+ "explore": {
+  "note": "Explore (tools v2, docs/tools-v2-chem-buffers-brief.md): a buffer beaker and a water beaker side by side, one drop of 1.0 M HCl or NaOH (1.0 mL, 1.0 mmol) into each at once. One particle = 1 mmol; Na⁺, Cl⁻ and the water itself are not drawn. The meter shows the Henderson-Hasselbalch pH while both forms are present in a ratio from 1 : 10 to 10 : 1, and the exact pH (charge balance with water, the added volume included) everywhere else; scripts/lib/apchem-tool-checks/buffer-drills.mjs checks every drop.",
+  "V0": 100,
+  "drop": {
+   "mL": 1,
+   "M": 1
+  },
+  "amounts": [
+   5,
+   10
+  ],
+  "extra": 3,
+  "maxDrops": 20,
+  "buffers": [
+   {
+    "id": "acetic",
+    "tab": "Acetic acid",
+    "short": "Acetic",
+    "context": "acetic-acid",
+    "Ka": 1.8e-05,
+    "HA": {
+     "key": "CH3COOH",
+     "html": "CH₃COOH"
+    },
+    "A": {
+     "key": "CH3COO-",
+     "html": "CH₃COO⁻"
+    },
+    "ref": "Ka 1.8 × 10⁻⁵ at 25 °C, the value the drill and Unit 8 use (docs/apchem-needs-author.md unit8-values; CRC Handbook 1.75 × 10⁻⁵)"
+   },
+   {
+    "id": "ammonia",
+    "tab": "Ammonia",
+    "short": "Ammonia",
+    "context": "ammonia",
+    "Kb": 1.8e-05,
+    "HA": {
+     "key": "NH4+",
+     "html": "NH₄⁺"
+    },
+    "A": {
+     "key": "NH3",
+     "html": "NH₃"
+    },
+    "ref": "Kb 1.8 × 10⁻⁵ at 25 °C, the value the drill and Unit 8 use (docs/apchem-needs-author.md unit8-values; CRC Handbook 1.8 × 10⁻⁵)"
+   }
+  ]
+ }
 }
