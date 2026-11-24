@@ -196,3 +196,14 @@ From `docs/apstat-reviews/tools.md`. Every drill key passed an independent SciPy
   associated", "that flowering differs by fertilizer"); the full four part conclusion stays in "?" and in Test
   yourself. Confirm. (3) For the fertilizer experiment "?" adds that a rejection is evidence the fertilizer causes the
   difference (random assignment); for the news sample it adds that an association is not cause and effect.
+- **Data explorer v2 (`data-explorer-v2`, 2026-11-24, `docs/tools-v2-stat-data-explorer-brief.md`).** (1) The mean is
+  shown as the balance point of a plank resting on a wedge; the plank is treated as weightless ("?" says so), so the
+  people alone decide the balance, and while the wedge catches up the plank tips by 420 × (x̄ − tip) ÷ the scale's range
+  degrees (at most 6): a picture of the sign of the turning effect, not a physics model. A real seesaw's own weight would move its balance point; confirm the idealization is acceptable as
+  stated. (2) The shape word in "?" still comes from the stated skewness rule of thumb (`SHAPE_RULE`, see
+  `tools-review` above); Explore no longer says the shape in the cause line. (3) New people added with "+" land
+  between Q1 − IQR/2 and Q3 + IQR/2 (a golden ratio fraction of that span); the old tool put them just above or below the
+  median. Either way they are made up values, not data; confirm students will not read them as part of the data set
+  (Start over restores it). (5) The histogram offers only bin widths that split each data set's scale into equal bins (pulse rates now default to
+  bins of 5 on 45 to 95); a bin holds its left edge and the last also holds the maximum. Confirm. (4) The quartile note in "?" says a TI-84's 1-Var Stats uses the same rule as the course
+  and that some software interpolates; confirm the wording.
