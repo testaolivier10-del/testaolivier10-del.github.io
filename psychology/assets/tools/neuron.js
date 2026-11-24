@@ -394,7 +394,7 @@
         var r = fireRun(S.E, S.I);
         if(r.spikes.length) return 'All or none: any push past threshold fires the same full spike.';
         if(S.E - S.I < 0) return 'Inhibitory input pushed the charge down, away from firing.';
-        if(S.E >= 15 && S.I) return 'The inhibitory input cancelled part of the push, so no spike.';
+        if(S.E >= 15 && S.I) return 'The inhibitory input canceled part of the push, so no spike.';
         return 'Too weak: the charge faded before it reached threshold.';
       }
       if(S.tab === 'refr') return refrRun(S.gap).spikes.length > 1 ? 'The 2nd pulse came after the refractory period, so it fired again.' : 'Right after a spike, the neuron needs a moment before it can fire again.';
@@ -429,6 +429,8 @@
       if(!play){ setT(keyT(), true); return; }
       if(K.reduced()){ var old = gDyn.innerHTML; setT(tMax(), false); crossFade(old); ended(); return; }
       view.preview = false; view.t = pO.min; player.reset(); player.start();
+      // on a phone, a run started below the picture brings the picture into view
+      try{ var rr = sceneBox.getBoundingClientRect(); if(innerWidth <= 640 && (rr.top < 0 || rr.bottom > innerHeight)) sceneBox.scrollIntoView({ block: 'nearest', behavior: K.reduced() ? 'auto' : 'smooth' }); }catch(e){}
     }
     function crossFade(old){
       gFade.innerHTML = old;
@@ -1163,7 +1165,7 @@
         '<h3 class="ls-title-l">Real drugs</h3><div class="table-wrap" tabindex="0" role="region" aria-label="Drug examples"><table class="ls-tbl"><thead><tr><th scope="col">Drug</th><th scope="col">Acts on</th><th scope="col">Kind</th></tr></thead><tbody>' +
           N.DRUGS.map(function(d){ return '<tr><td>' + esc(d.name) + '</td><td>' + esc(N.NT[d.nt].name) + '</td><td>' + esc(N.CLASSES[d.cls].name) + '</td></tr>'; }).join('') + '</tbody></table></div>' +
         '<h3 class="ls-title-l">About the model</h3>' +
-        '<p class="bt-small">A teaching model, not a recording. Rest ' + mvT(N.REST) + ', threshold ' + mvT(N.THRESH) + ' and peak +' + N.PEAK + ' mV are typical textbook values; real neurons vary. The close-up shows only a few of the ions that cross: real concentrations barely change during one spike. The sodium-potassium pump is left out (it is outside the course). Myelin: a myelinated stretch takes ' + N.JUMP + ' ms here and a bare one ' + N.CRAWL + ' ms; real myelin speeds a signal far more, up to about 50 to 100 times, but a bigger gap could not be watched. The synapse is in relative units: with an agonist the signal is ' + N.signalPct('agonist') + '% of no drug, an antagonist ' + N.signalPct('antagonist') + '%, a reuptake inhibitor ' + N.signalPct('reuptake') + '%. Colors: the signal and threshold vermillion, sodium amber, potassium blue, excitatory green, inhibitory pink, myelin cream, drugs grey.</p>' +
+        '<p class="bt-small">A teaching model, not a recording. Rest ' + mvT(N.REST) + ', threshold ' + mvT(N.THRESH) + ' and peak +' + N.PEAK + ' mV are typical textbook values; real neurons vary. The close-up shows only a few of the ions that cross: real concentrations barely change during one spike. The sodium-potassium pump is left out (it is outside the course). Myelin: a myelinated stretch takes ' + N.JUMP + ' ms here and a bare one ' + N.CRAWL + ' ms; real myelin speeds a signal far more, up to about 50 to 100 times, but a bigger gap could not be watched. The synapse is in relative units: with an agonist the signal is ' + N.signalPct('agonist') + '% of no drug, an antagonist ' + N.signalPct('antagonist') + '%, a reuptake inhibitor ' + N.signalPct('reuptake') + '%. Colors: the signal and threshold vermillion, sodium amber, potassium blue, excitatory green, inhibitory pink, myelin cream, drugs gray.</p>' +
         '<p class="bt-small">Sources: OpenStax Psychology 2e, 3.2 (threshold, all or none, nodes of Ranvier, reuptake, agonists and antagonists); OpenStax Biology 2e, 35.2 (excitatory and inhibitory potentials added at the axon hillock, sodium in and potassium out, saltatory conduction); the AP® Psychology course framework, topic 1.3.</p>' +
         '<p class="nr-notes">Notes for this topic: <a href="../notes/neural-firing.html">The Neuron and Neural Firing</a></p>';
     }

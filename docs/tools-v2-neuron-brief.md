@@ -108,5 +108,26 @@ Files: `psychology/assets/tools/neuron.js` (Explore v2 plus the kept drill art a
 (`"kit2": true`), `scripts/tools-v2/neuron-sweep.mjs` (layout, `--frames`, `--perf`). Results of the checks are in
 the report section below.
 
-## Checks
-See "Checks run" (filled at hand in).
+## Checks run (2026-11-23)
+- Sweep (`node scripts/tools-v2/neuron-sweep.mjs`, one width per process): 360, 390, 430, 600, 768, 820, 1024, 1280,
+  1440, 1920, light and dark, 90 states and 1804 checks per width (landmark settings of all four tabs, mid run frames,
+  the first visit cue of each tab, Test yourself): 0 failures. Nothing clipped, every label, number, tag, knob and
+  cue 4 px clear, no text under 11 px, the neuron (or synapse) the largest object, the cause line at most two rows
+  and one height per tab on phones, no sideways scroll, no console errors.
+- Frames (`--frames`, 390 and 1440): 7458 and 6897 frames (every 0.05 ms forward, a reversal, jumps, and every
+  animation frame of a real played run, 13 settings over the four tabs; a keyboard End on the knob; a real pointer
+  drag, read mid drag; reduced motion): 0 failures. The trace's head sits on the model's charge; Na⁺ open and "Na⁺
+  rushes in" only in the rising phase; "K⁺ flows out" only while K⁺ flows; each action potential where the
+  conduction model puts it; the travel bar's time; "fires" and "arrives" only once drawn; in Synapse the lit
+  receptors, the free molecules and the graph's head match the model.
+- Perf (`--perf`, CPU x4), flagship (Water pollution, sacks dragged) in the same process: 390: neuron runs median
+  16.7 ms, p95 16.8 to 50 ms, drag p95 33.4 ms; flagship median 33.4, p95 116.6. 1440 (measured while check-site
+  ran): neuron median 16.7 (synapse run 33.3), p95 33 to 200 ms; flagship median 50, p95 167. Paint plus layout per
+  frame at x4, measured alone: median 0.2 to 5.7 ms, p95 at most 17 ms in every tab.
+- `node --test scripts/test/appsych-*.test.mjs` 153 pass (the fixture pages.json follows the real one);
+  `check-appsych-content --check --tools` 0 failing; `build-appsych --check`; `check-weight --check` all within;
+  `check-site`: the neuron is clean; 2 failures remain in the merged brain map's `brain-map.js` (lines 1024, 1026,
+  "colour" in visible text), for that branch to fix; `check-tool-use` with a local copy of its list: the neuron
+  reports frame v2, one of each event, nothing under automation.
+- Preview: `/mnt/user-data/outputs/neuron-v2/index.html`; shots in `shots/` (01 to 12, each tab at 1440, 768 and
+  390, light and dark, with mid run frames 03a to 03d and mid animation frames in Myelin and Synapse).
