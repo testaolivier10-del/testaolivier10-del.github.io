@@ -136,7 +136,11 @@ const fitProbe = () => {
   const body = scene.closest('.ls-stage-body') || scene.closest('.ls-stage');
   if (innerWidth > 640 && body && body.scrollHeight - body.clientHeight > 2) out.push(`the card scrolls inside (${body.scrollHeight} in ${body.clientHeight})`);
   const box = innerWidth > 640 && body ? R(body) : { top: 0, bottom: innerHeight };
-  const need = { cups: document.querySelector('.qk2-trayb'), cylinder: document.querySelector('.qk2-glassrim'), 'piston knob': document.querySelector('.qk2 .tk2-drag .tk2-dot'), 'cause line': document.querySelector('.qk2 .tk2-cause') };
+  // a short phone (under 800 px tall) keeps the cylinder its size and lets the cause line go under the fold (as ICE
+  // tables, review S10): the cups and the cylinder only
+  const short = innerWidth <= 640 && innerHeight < 800;
+  const need = { cups: document.querySelector('.qk2-trayb'), cylinder: document.querySelector('.qk2-glassrim'), 'piston knob': document.querySelector('.qk2 .tk2-drag .tk2-dot') };
+  if (!short) need['cause line'] = document.querySelector('.qk2 .tk2-cause');
   Object.keys(need).forEach(k => { const e = need[k]; if (!e) return out.push('no ' + k); const r = R(e); if (r.top < Math.max(0, box.top) - 1 || r.bottom > Math.min(innerHeight, box.bottom) + 1) out.push(`${k} off screen (${Math.round(r.top)} to ${Math.round(r.bottom)} of ${innerHeight})`); });
   window.scrollTo(0, 0);
   return out;

@@ -519,11 +519,13 @@
         var r = R(), s = shown, K0 = 'K ' + r.Kval, parts = [], a = actPill();
         clearTimeout(takeT);
         if(a) parts.push(a);
+        // once it has settled after running, the chain keeps the way it ran (added 3 B → ran forward → Q ≈ K)
+        if(s.at && S.ran) parts.push({ t: S.ran > 0 ? 'ran forward' : 'ran back', role: 'dir' });
         if(s.q !== s.q){ parts.push({ t: 'Q has no value', role: 'q' }); parts.push({ t: 'nothing can react', role: 'dir' }); }
         else if(S.solidAct && S.act && !isGas(S.act.key)){
           parts.push({ t: 'Q stays ' + fq(s.q), role: 'q' }); parts.push({ t: 'solids are not in Q', role: 'dir' });
         } else if(s.at){
-          if(same(s.q, r.Kval) || (s.near && !s.stuck)) { var eq0 = same(s.q, r.Kval); parts.push({ t: 'Q ' + fq(s.q), role: 'q' }); parts.push({ t: (eq0 ? '= ' : '≈ ') + K0, role: 'k', say: (eq0 ? 'equal to ' : 'about equal to ') + K0 }); parts.push({ t: 'no net change', role: 'dir' }); }
+          if(same(s.q, r.Kval) || (s.near && !s.stuck)) { var eq0 = same(s.q, r.Kval); parts.push({ t: 'Q ' + fq(s.q), role: 'q' }); parts.push({ t: (eq0 ? '= ' : '≈ ') + K0, role: 'k', say: (eq0 ? 'equal to ' : 'about equal to ') + K0 }); if(!S.ran) parts.push({ t: 'no net change', role: 'dir' }); }
           else { parts.push({ t: 'Q ' + fq(s.q), role: 'q' }); parts.push({ t: (s.q < r.Kval ? '< ' : '> ') + K0, role: 'k', say: (s.q < r.Kval ? 'less than ' : 'greater than ') + K0 }); parts.push({ t: s.stuck, role: 'dir' }); }
         } else {
           parts.push({ t: 'Q ' + fq(s.q), role: 'q' }); parts.push({ t: (s.q < r.Kval ? '< ' : '> ') + K0, role: 'k', say: (s.q < r.Kval ? 'less than ' : 'greater than ') + K0 });
@@ -583,6 +585,7 @@
          middle of the event (t = 0.475), the new ones from then. */
       function launch(dir){
         var r = R(), e = { type: 'rx', dir: dir, t0: now(), dur: 840, formed: false };
+        if(!S.ran) S.ran = dir;
         if(r.id === 'ab'){
           if(dir > 0){
             var a = pickRest('A'), b = a ? nearestRest('B', a.x, a.y) : null; if(!a || !b) return false;
@@ -795,7 +798,7 @@
         if(!canAdd(key)){ nudgeFull(key); return; }
         var gas = isGas(key), n = gas ? DROP : 1;
         for(var i = 0; i < n; i++) enter(key, i * 110);
-        S.act = { kind: 'add', key: key, d: 1, n: n }; S.solidAct = !gas;
+        S.act = { kind: 'add', key: key, d: 1, n: n }; S.solidAct = !gas; S.ran = 0;
         if(K.reduced()){ changed(); return; }
         changed(); paintReadouts(true); placeWells();
       }
@@ -807,7 +810,7 @@
         var first = p0 && list.indexOf(p0) > -1 ? p0 : list.slice().sort(function(a, b){ return Math.hypot(a.x - G.x1, a.y - G.portY) - Math.hypot(b.x - G.x1, b.y - G.portY); })[0];
         var go = [first].concat(list.filter(function(p){ return p !== first; }).sort(function(a, b){ return Math.hypot(a.x - first.x, a.y - first.y) - Math.hypot(b.x - first.x, b.y - first.y); })).slice(0, n);
         go.forEach(function(p, i){ leave(p, i * 110); });
-        S.act = { kind: 'out', key: key, d: -1, n: go.length }; S.solidAct = !gas;
+        S.act = { kind: 'out', key: key, d: -1, n: go.length }; S.solidAct = !gas; S.ran = 0;
         hideCue(true);
         changed(); paintReadouts(true); placeWells();
       }
@@ -845,7 +848,7 @@
         if(v === S.V) return;
         S.V = v; hideCue(true); tourDid('vol');
         VD.from = VD.v; VD.to = v; VD.t0 = now();
-        S.act = { kind: 'vol', V: v }; S.solidAct = false;
+        S.act = { kind: 'vol', V: v }; S.solidAct = false; S.ran = 0;
         changed();
       }
 
@@ -882,13 +885,13 @@
       function pickReaction(v){
         var i = RX.map(function(r){ return r.id; }).indexOf(v); if(i < 0 || i === S.ri) return;
         if(raf){ cancelAnimationFrame(raf); raf = 0; }
-        S.ri = i; S.V = EX.V0; S.act = null; S.solidAct = false; cause.take(null); clearTimeout(takeT);
+        S.ri = i; S.V = EX.V0; S.act = null; S.solidAct = false; S.ran = 0; S.ran = 0; cause.take(null); clearTimeout(takeT);
         G = null; crossFade(function(){});
         layoutNow(true); refHtml();
       }
       function startOver(){
         if(raf){ cancelAnimationFrame(raf); raf = 0; }
-        S.V = EX.V0; S.act = null; S.solidAct = false; cause.take(null); clearTimeout(takeT); flights = 0; ghostOff();
+        S.V = EX.V0; S.act = null; S.solidAct = false; S.ran = 0; cause.take(null); clearTimeout(takeT); flights = 0; ghostOff();
         VD.v = VD.from = VD.to = S.V; paintPiston();
         crossFade(function(){ layoutAt(R().n0.slice()); });
         lastKey = ''; paintReadouts(true); needle.a = needle.to; paintCanvas();
