@@ -92,3 +92,4 @@
 .qk2-cable{fill:none;stroke:#2B2F33;stroke-opacity:.7;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;}
 :root[data-theme="dark"] .qk2-cable{stroke:#AAB4BE;stroke-opacity:.6;}
 .qk2-probe{fill:var(--steel0);}
+.qk2-needle path{fill:var(--qk-q);} .qk2-needle circle{fill:var(--ink);}

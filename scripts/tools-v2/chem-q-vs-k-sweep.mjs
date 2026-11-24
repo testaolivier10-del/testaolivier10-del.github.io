@@ -110,7 +110,7 @@ const probe = () => {
   for (let i = 0; i < gs.length; i++) for (let j = i + 1; j < gs.length; j++) { let w = Infinity; for (const a of gs[i].atoms) for (const b of gs[j].atoms) w = Math.min(w, Math.hypot(a[0] - b[0], a[1] - b[1]) - a[2] - b[2]); if (w < 2) close++; }
   if (close) out.push(close + ' pairs of particles touching');
   // the words agree with the drawing
-  const c = X.drawn(), q = X.Qof(c, V), fq = v => v !== v ? 'no value' : v === 0 ? '0' : !isFinite(v) ? 'no value' : M.fmt(v, 3);
+  const c = X.drawn(), q = X.Qof(c, V), fq = v => v !== v ? 'no value' : v === 0 ? '0' : !isFinite(v) ? 'very large' : M.fmt(v, 3);
   const cause = document.querySelector('.qk2 .tk2-cause'), ct = cause.innerText.replace(/\s+/g, ' '), take = cause.classList.contains('is-take');
   if (!take) {
     if (q === q && !ct.includes('Q ' + fq(q)) && !ct.includes('Q stays ' + fq(q))) out.push(`cause line Q disagrees: ${ct} (drawn ${fq(q)})`);
@@ -161,6 +161,9 @@ if (!FRAMES && !PERF) for (const w of WIDTHS) {
         const r = R(q), S = R(document.querySelector('.qk2-scene')), out = [];
         if (r.left < S.left || r.right > S.right || r.top < S.top || r.bottom > S.bottom) out.push('the cue is clipped by the stage');
         if (parseFloat(getComputedStyle(q).fontSize) < 11) out.push('the cue text is under 11 px');
+        // the landing (no scroll): the cups and the cue are on the first screen (review round 1, M1)
+        if (r.bottom > innerHeight + 1 || r.top < 0) out.push(`the cue is off the first screen (${Math.round(r.top)} to ${Math.round(r.bottom)} of ${innerHeight})`);
+        const tb = R(document.querySelector('.qk2-trayb')); if (tb.bottom > innerHeight + 1) out.push(`the cups are off the first screen (bottom ${Math.round(tb.bottom)} of ${innerHeight})`);
         [...document.querySelectorAll('.qk2-scene svg text, .qk2-scene .tk2-tag, .qk2-scene .tk2-dot, .qk2-wellbtn, .qk2-glassrim')].filter(e => e.getClientRects().length && !e.closest('[hidden]')).forEach(e => { const x = R(e); if (!(r.right <= x.left || x.right <= r.left || r.bottom <= x.top || x.bottom <= r.top)) out.push('the cue covers ' + (e.textContent || e.getAttribute('class')).toString().trim().slice(0, 24)); });
         return out; });
       states++; checks += 3; bad.forEach(m => fails.push(`${w} ${theme} first visit: ${m}`));
@@ -170,6 +173,7 @@ if (!FRAMES && !PERF) for (const w of WIDTHS) {
     }
     const c = await open({ w, h, theme });
     if (theme === 'dark') { const dk = await c.page.evaluate(() => document.documentElement.getAttribute('data-theme') === 'dark' && getComputedStyle(document.querySelector('.qk2-scene')).getPropertyValue('--wall0').trim() !== '#EEF3F7'); if (!dk) fails.push(`${w} dark: the page is not dark`); checks++; }
+    { const tb = await c.page.evaluate(() => document.querySelector('.qk2-trayb').getBoundingClientRect().bottom); checks++; if (tb > h + 1) fails.push(`${w}x${h} ${theme} landing: the cups end at ${Math.round(tb)}, under the first screen`); }
     const fit = await c.page.evaluate(fitProbe); states++; checks += 5; fit.forEach(m => fails.push(`${w}x${h} ${theme} screen fit: ${m}`));
     const causeH = [], cylR = [];
     const shot = async name => { if (SHOTS) await c.page.locator('.qk2').screenshot({ path: join(SHOTS, `${W4(w)}-${theme}-${name}.png`) }); };
@@ -223,7 +227,7 @@ if (FRAMES) for (const w of WIDTHS) {
     const X = window.__qk2, M = window.ApChemMath;
     const loop = () => {
       const F = window.__fr; if (!F.on) return;
-      const G = X.G(), V = X.V(), c = X.drawn(), q = X.Qof(c, V), fq = v => v !== v ? 'no value' : v === 0 ? '0' : !isFinite(v) ? 'no value' : M.fmt(v, 3);
+      const G = X.G(), V = X.V(), c = X.drawn(), q = X.Qof(c, V), fq = v => v !== v ? 'no value' : v === 0 ? '0' : !isFinite(v) ? 'very large' : M.fmt(v, 3);
       F.n++;
       const say = m => { if (F.bad.length < 40) F.bad.push(`frame ${F.n} (${c.join(',')} at ${V.toFixed(3)} L): ${m}`); };
       const cz = document.querySelector('.qk2 .tk2-cause');

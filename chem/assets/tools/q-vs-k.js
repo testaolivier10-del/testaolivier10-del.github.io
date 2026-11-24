@@ -75,7 +75,13 @@
         return r.species.filter(function(s){ return s.nu < 0; }).map(function(s){ return (s.nu < -1 ? -s.nu : '') + s.html + ph(s); }).join(' + ') + ' ⇌ ' +
           r.species.filter(function(s){ return s.nu > 0; }).map(function(s){ return (s.nu > 1 ? s.nu : '') + s.html + ph(s); }).join(' + ');
       }
-      function fq(q){ return q === 0 ? '0' : !isFinite(q) ? 'no value' : M.fmt(q, 3); }
+      // Q as words: "no value" only for 0 / 0; an infinite Q (a reactant gas gone, a product there) is "very large (no A)"
+      function fq(q, c){
+        if(q !== q) return 'no value';
+        if(q === 0) return '0';
+        if(!isFinite(q)){ var r = R(), cc = c || (shown ? shown.c : r.n0), miss = r.species.filter(function(sp, i){ return sp.phase === 'g' && sp.nu < 0 && cc[i] === 0; })[0]; return 'very large' + (miss ? ' (no ' + miss.html + ')' : ''); }
+        return M.fmt(q, 3);
+      }
       function Kname(r){ return r.K === 'Kp' ? 'Kp' : 'Kc'; }
       function idx(key){ var sp = R().species; for(var i = 0; i < sp.length; i++) if(sp[i].key === key) return i; return -1; }
       function isGas(key){ var i = idx(key); return i > -1 && R().species[i].phase === 'g'; }
@@ -126,7 +132,9 @@
       }
       function availH(phone){
         var lh = Math.max(lines.offsetHeight || 0, phone ? 76 : 44), sc = sceneBox.getBoundingClientRect();
-        if(phone) return Math.max(560, window.innerHeight - lh - 22);
+        // a phone: the scene from where it starts on the page down to the screen's bottom (the landing shows the cups and
+        // the cue; scrolled to the scene's top, the cause line is in view too)
+        if(phone) return Math.max(470, window.innerHeight - (sc.top + window.scrollY) - 6);
         return clamp(window.innerHeight - (sc.top + window.scrollY) - lh - (sc.width < 860 ? 28 : 36), 470, 1100);
       }
       function extent(key){
@@ -135,61 +143,78 @@
         return { w: 2 * Math.max(x1, -x0), h: 2 * Math.max(y1, -y0), d: Math.max.apply(null, TEMPL[key].map(function(at){ return 2 * (at.r || 9); })) };
       }
       // the plate's text: the equation, K and the scale, from measured text
-      function plateMetrics(narrow){
-        // lines with a subscript (shown at 0.78 of the size) stay at 14.5 px or more, so no text is under 11 px
-        var fs = { eq: narrow ? 15 : 17, k: narrow ? 14.5 : 15, key: 14.5 };
+      function plateMetrics(narrow, k){
+        // lines with a subscript (shown at 0.78 of the size) stay at 14.5 px or more, so no text is under 11 px; a wide
+        // screen scales the plate up with the stage (k)
+        k = k || 1;
+        var fs = { eq: Math.round((narrow ? 15 : 17) * k * 10) / 10, k: Math.round((narrow ? 14.5 : 15) * k * 10) / 10, key: Math.round(14.5 * k * 10) / 10 };
         var w = 0;
         RX.forEach(function(r){ w = Math.max(w, measure(eqText(r), fs.eq, 900), measure(kText(r), fs.k, 800), measure(r.perText, fs.key, 700)); });
-        var pad = narrow ? 10 : 14, arrowH = narrow ? 22 : 26;
+        var pad = Math.round((narrow ? 10 : 14) * k), arrowH = Math.round((narrow ? 22 : 26) * k);
         var y1 = Math.round(pad + 1.02 * fs.eq), ya = Math.round(y1 + 0.37 * fs.eq + 4 + arrowH / 2), y2 = Math.round(ya + arrowH / 2 + 4 + 1.02 * fs.k), y3 = Math.round(y2 + 0.37 * fs.k + 0.22 * fs.k + 7 + 1.02 * fs.key);
         return { fs: fs, pad: pad, w: Math.ceil(w + 2 * pad), h: Math.round(y3 + 0.37 * fs.key + 0.22 * fs.key + pad), y1: y1, ya: ya, y2: y2, y3: y3, arrowH: arrowH };
       }
       function kText(r){ return Kname(r) + ' = ' + r.Kval + (r.T ? ' at ' + r.T : ''); }
+      function cueSeen(){ try{ return !!localStorage.getItem('tk2c:apchem-qk-tray'); }catch(e){ return true; } }
       function geo(W){
         var g = { W: W, narrow: W < 860, phone: W <= 640 }, H = availH(g.phone), r = R();
-        // the tray's cups: as wide as the tray's room allows (wide: about a third of the stage; narrow: the width)
-        var wellW = g.narrow ? Math.round(clamp((Math.min(W, 520) - 16 - 4 * 12) / 3, 70, 120)) : Math.round(clamp((W * 0.34 - 4 * 12) / 3, 84, 130));
+        // wide screens scale the plate, the tray and the dial with the stage, so the scene fills it (no bare wall)
+        var k = g.narrow ? 1 : clamp(W / 1280, 1, 1.45);
+        g.k = k;
+        var wellW = g.narrow ? Math.round(clamp((Math.min(W, 520) - 16 - 4 * 12) / 3, 70, 120)) : Math.round(clamp(100 * k, 96, 150));
         g.wellW = function(){ return wellW; };
-        var pm = plateMetrics(g.narrow);
+        var pm = plateMetrics(g.narrow, k);
         g.pm = pm;
-        g.wh = g.narrow ? 58 : 62;                          // a cup's height
-        g.gr = Math.round(g.narrow ? 34 : clamp(W * 0.032, 38, 54));
-        // horizontal: the cylinder's inside width (room for the dial at its left and the port at its right when wide)
-        if(g.narrow) g.iw = Math.round(clamp(W - 2 * 50 - 8, 200, 430));
-        else g.iw = Math.round(clamp(W * 0.27, 240, 430));
+        g.wh = g.narrow ? 58 : Math.round(62 * k);           // a cup's height
+        g.gr = Math.round(g.narrow ? 34 : clamp(42 * k, 42, 60));
+        // narrow: room under the tray for the first visit cue, only until it is used (then the bench shrinks to the tray)
+        g.cueRoom = g.narrow && !cueSeen() ? 54 : 0;
         // vertical: a band at the top (narrow: the plate and the dial), the knob over the piston's top place, the
         // cylinder, its foot, the bench with the tray
-        var benchH = g.narrow ? g.wh + 112 : 48, band = g.narrow ? Math.max(pm.h, 2 * g.gr + 26) + 14 : 0;
+        // narrow: the dial at the top left beside the piston's knob, the tray under the cylinder, the cue's room under the
+        // tray, then the plate (a phone sizes the cylinder so the cups and the cue end on the first screen; the plate and
+        // the cause line follow once the scene is scrolled to its top)
+        // (a tablet keeps the plate on the wall at the top right, beside the dial)
+        var plateH = g.phone ? 12 + pm.h + 12 : 0, band = g.narrow && !g.phone ? pm.h + 22 : 0;
+        var benchH = g.narrow ? 12 + g.wh + 22 + 12 + g.cueRoom + plateH : 48;
         g.stem = 30;
-        g.yRim = Math.round(band + 22 + g.stem + 12);       // the open top of the glass
-        g.lumpW = Math.round(clamp(g.iw / 8 - 6, 22, 40)); g.lumpH = Math.round(g.lumpW * 0.7);
-        g.hs = 2 * g.lumpH + 10;                            // the floor layer the solids lie in (CaCO₃)
-        var tot = H - benchH - 14 - g.yRim - 8;
-        tot = clamp(tot, 300, g.narrow ? Math.min(560, g.iw * 1.5) : 600);
+        g.yRim = g.phone ? Math.round(Math.max(10 + 20 + 2 * g.gr * 0.81 + 12, 16 + g.stem + 12)) : Math.round(band + 22 + g.stem + 12);
+        var tot = g.phone ? H - (g.yRim + 8 + 14 + 12 + g.wh + 84 + 4) : H - benchH - 14 - g.yRim - 8;
+        // horizontal: the cylinder's inside width. Narrow: the width less the port. Wide: what is left of the stage
+        // after the dial (left), the port and the plate and tray (right), at most about 1.25 times as wide as it is tall
+        var rightW = Math.max(pm.w, trayW(g)), leftW = 2 * g.gr + 40 + 24, portL = g.narrow ? 34 : 44;
+        if(g.narrow){ g.iw = Math.round(clamp(W - 2 * 50 - 8, 200, 430)); tot = clamp(tot, 200, Math.min(560, g.iw * 1.5)); }
+        else { tot = clamp(tot, 300, 640); g.iw = Math.round(clamp(Math.min(W - leftW - portL - 56 - rightW - 36, tot * 1.25), 240, 760)); }
         g.tot = Math.round(tot);                            // inside height from the floor to the piston at VMAX
+        g.lumpW = Math.round(clamp(g.iw / 8 - 6, 22, 44)); g.lumpH = Math.round(g.lumpW * 0.7);
+        g.hs = 2 * g.lumpH + 10;                            // the floor layer the solids lie in (CaCO₃)
         g.yF = g.yRim + 8 + g.tot;                          // the inside floor
         g.yb = g.yF + 14;                                   // the bench
         g.H = Math.round(g.yb + benchH);
-        if(g.narrow) g.cx = Math.round(W / 2 - 6); else g.cx = Math.round(clamp(W * 0.34, 2 * g.gr + 70 + g.iw / 2, W / 2 - 40));
+        // wide: the whole composition (dial, cylinder, port, plate and tray) centred on the stage
+        var off = g.narrow ? 0 : Math.max(0, (W - (leftW + g.iw + portL + 56 + rightW)) / 2);
+        if(g.narrow) g.cx = Math.round(W / 2 - 6); else g.cx = Math.round(off + leftW + g.iw / 2);
         g.x0 = g.cx - g.iw / 2; g.x1 = g.cx + g.iw / 2;
         // the port on the right wall, low enough to stay under the piston at VMIN
         g.portY = Math.round(g.yF - g.hs - Math.min(0.4 * (g.tot - g.hs) * VMIN / VMAX, 36));
-        g.portL = g.narrow ? 34 : 44;
+        g.portL = portL;
         g.portX = g.x1 + g.portL;
         // the dial: wide, left of the cylinder; narrow, at the top left beside the plate. A cable runs to a probe low on
         // the cylinder's left wall.
         if(g.narrow){ g.gx = Math.round(12 + g.gr); g.gy = Math.round(10 + 20 + g.gr); }
         else { g.gx = Math.round(g.x0 - 40 - g.gr); g.gy = Math.round(g.yRim + 26 + g.gr); }
         g.probeY = Math.round(g.yF - g.hs - 14);
-        g.handleW = Math.round(clamp(g.iw * 0.3, 56, 96));
-        // the plate and the tray
+        g.handleW = Math.round(clamp(g.iw * 0.3, 56, 110));
+        // the plate and the tray: narrow, the plate at the top and the tray under the cylinder; wide, both in a column
+        // just right of the port
         if(g.narrow){
-          g.px = Math.round(Math.max(g.gx + g.gr + 16, (W - pm.w) / 2 + 30)); if(g.px + pm.w > W - 8) g.px = W - 8 - pm.w; g.py = 8;
-          g.trayY = g.yb + 18; g.trayX = Math.round(W / 2 - trayW(g) / 2);
+          g.trayY = g.yb + 12; g.trayX = Math.round(W / 2 - trayW(g) / 2);
+          if(g.phone){ g.px = Math.round((W - pm.w) / 2); g.py = g.trayY + g.wh + 22 + 12 + g.cueRoom; }
+          else { g.px = Math.round(Math.max(g.gx + g.gr + 30, (W - pm.w) / 2 + 30)); if(g.px + pm.w > W - 12) g.px = W - 12 - pm.w; g.py = 10; }
         } else {
-          var rx0 = g.portX + 40, rx1 = W - 24, mid = (rx0 + rx1) / 2;
-          g.px = Math.round(clamp(mid - pm.w / 2, rx0, rx1 - pm.w)); g.py = Math.round(g.yRim + 10);
-          g.trayX = Math.round(clamp(mid - trayW(g) / 2, rx0, rx1 - trayW(g))); g.trayY = g.yb + 34 - g.wh - 22;
+          var rx0 = g.portX + 56, mid = rx0 + rightW / 2;
+          g.px = Math.round(mid - pm.w / 2); g.py = Math.round(g.yRim + 10);
+          g.trayX = Math.round(mid - trayW(g) / 2); g.trayY = g.yb + 34 - g.wh - 22;
         }
         // particle scales: the largest that holds the gas cap at VMIN with clear space between molecules
         g.rs = RX.map(function(rr){ return slotsFor(g, rr); });
@@ -204,8 +229,8 @@
         var keys = r.species.filter(function(s){ return s.phase === 'g'; }).map(function(s){ return s.key; });
         var mw = 0, mh = 0, md = 0; keys.forEach(function(k){ var e = extent(k); mw = Math.max(mw, e.w); mh = Math.max(mh, e.h); md = Math.max(md, e.d); });
         var need = r.gasCap + 4, hMin = gasH(g, r, VMIN) - 8, wIn = g.iw - 10;
-        for(var s = 1.05; s > 0.3; s -= 0.01){
-          var gap = 0.6 * md * s, cw = mw * s + gap, ch = mh * s + gap;
+        for(var s = 1.6; s > 0.3; s -= 0.01){
+          var gap = 0.5 * md * s, cw = mw * s + gap, ch = mh * s + gap;
           var cols = Math.floor((wIn - mw * s) / cw) + 1, rows = Math.floor((hMin - mh * s) / ch) + 1;
           if(cols < 2 || rows < 1) continue;
           // staggered rows hold one fewer when the offset does not fit
@@ -222,11 +247,14 @@
                 // fractions of the drawn column (gasH − 8): the rows at least a cell apart at VMIN, the edge rows half a
                 // molecule in from the floor and the piston
                 var fy = rows === 1 ? 0.5 : (mh * s / 2 + row * (hMin - mh * s) / (rows - 1)) / hMin;
-                list.push({ x: xs + off + col * cw + (rr() - 0.5) * gap * 0.4, fy: clamp(fy + (rr() - 0.5) * (rows > 1 ? 0.2 * gap / hMin : 0), mh * s / 2 / hMin, 1 - mh * s / 2 / hMin), a: (rr() - 0.5) * 0.1 });
+                // jy: a scatter up or down that grows with the room the piston gives above VMIN (at most 0.45 of the
+                // extra row spacing each way, so neighbours never come closer than at VMIN); the edge rows only inward
+                var jy = rows === 1 ? 0 : (rr() - 0.5) * 0.9; if(row === 0) jy = Math.abs(jy); if(row === rows - 1) jy = -Math.abs(jy);
+                list.push({ x: xs + off + col * cw + (rr() - 0.5) * gap * 0.4, fy: fy, jy: jy, a: (rr() - 0.5) * 0.1 });
               }
               void span;
             }
-            return { s: s, gas: list, hMin: hMin };
+            return { s: s, gas: list, hMin: hMin, rowsp: rows > 1 ? (hMin - mh * s) / (rows - 1) : 0 };
           }
         }
         return { s: 0.3, gas: [], hMin: hMin };
@@ -243,7 +271,7 @@
       var needle = { a: null, to: null }, VD = { v: EX.V0, from: EX.V0, to: EX.V0, t0: 0 };
       var gasUse = [], lumpUse = [];
       function sc(){ return G.rs[S.ri].s; }
-      function slotPos(i, V){ var r = R(), sl = G.gasSlots[i]; return [sl.x, gasFloor(G, r) - 4 - sl.fy * (gasH(G, r, V) - 8)]; }
+      function slotPos(i, V){ var r = R(), sl = G.gasSlots[i], h = gasH(G, r, V) - 8, rs = G.rs[S.ri]; return [sl.x, gasFloor(G, r) - 4 - sl.fy * h - sl.jy * rs.rowsp * Math.max(0, h / rs.hMin - 1)]; }
       function newP(key, x, y, a){ return { key: key, gas: isGas(key), x: x, y: y, a: a || 0, slot: -1, state: 'rest', counted: true, scale: 1 }; }
       function freeGas(nearX, nearY){
         var best = -1, bd = Infinity;
@@ -297,6 +325,15 @@
         CV.spr[key] = { c: c, h: sz / d / 2 };
         return CV.spr[key];
       }
+      function molSprite(key, a){
+        var aq = Math.round(a * 100) / 100, k = 'm' + key + aq + '|' + sc().toFixed(3); if(CV.spr[k]) return CV.spr[k];
+        var e = extent(key), half = Math.ceil(Math.max(e.w, e.h) * sc() / 2 + 3), d = CV.dpr, c = document.createElement('canvas');
+        c.width = c.height = Math.ceil(2 * half * d);
+        var x = c.getContext('2d'); x.scale(d, d);
+        atomsOf({ key: key, x: half, y: half, a: aq, scale: 1 }).forEach(function(at){ var sp = sprite(at.el, at.r); x.drawImage(sp.c, at.x - sp.h, at.y - sp.h, sp.h * 2, sp.h * 2); });
+        CV.spr[k] = { c: c, h: half };
+        return CV.spr[k];
+      }
       function sortT(key){ return TEMPL[key].slice().sort(function(p, q){ return (p.z || 0) - (q.z || 0) || (q.r || 9) - (p.r || 9); }); }
       // a particle's atoms where they are drawn (picture units); a split or join moves them apart or together (p.sep)
       function atomsOf(p){
@@ -309,7 +346,10 @@
         if(!p.gas){ drawLump(z, p); return; }
         var al = p.alpha == null ? 1 : p.alpha; if(al <= 0) return;
         if(al < 1){ z.save(); z.globalAlpha *= al; }
-        atomsOf(p).forEach(function(at){ var sp = sprite(at.el, at.r); z.drawImage(sp.c, at.x - sp.h, at.y - sp.h, sp.h * 2, sp.h * 2); });
+        // a whole molecule at rest or moving as one: one cached picture of it (its angle to a hundredth of a radian); a
+        // molecule mid split draws its atoms one by one
+        if(!p.atomsAt && (p.scale || 1) === 1){ var ms = molSprite(p.key, p.a); z.drawImage(ms.c, p.x - ms.h, p.y - ms.h, ms.h * 2, ms.h * 2); }
+        else atomsOf(p).forEach(function(at){ var sp = sprite(at.el, at.r); z.drawImage(sp.c, at.x - sp.h, at.y - sp.h, sp.h * 2, sp.h * 2); });
         if(al < 1) z.restore();
       }
       // a lump of solid: CaCO₃ a faceted white crystal (calcite), CaO a rounded chalky lump; p.mix (0 to 1) is CaCO₃'s share
@@ -351,23 +391,29 @@
         x.globalAlpha = alpha;
         // glows of the events under way
         evs.forEach(function(e){ if(e.glowA > 0){ x.beginPath(); x.arc(e.P[0], e.P[1], 22 * sc() + 6, 0, Math.PI * 2); x.fillStyle = 'rgba(255,227,138,' + (0.55 * e.glowA).toFixed(3) + ')'; x.fill(); x.lineWidth = 2; x.strokeStyle = 'rgba(245,184,61,' + e.glowA.toFixed(3) + ')'; x.stroke(); } });
-        if(CV.baseDirty){
+        // while the piston glides every particle moves: draw them straight onto the canvas (rebuilding the cached layer and
+        // copying it over on each frame doubled the work: review round 1, the long frames)
+        // the cached layer holds what is still: the lumps always, the gas too unless the piston is gliding
+        var gliding = VD.v !== VD.to, mode = gliding ? 'solid' : 'all';
+        if(CV.baseDirty || CV.baseMode !== mode){
           var bc = CV.base.getContext('2d'); bc.setTransform(d, 0, 0, d, 0, 0); bc.clearRect(0, 0, bw, bh); bc.translate(-bx[0], -bx[1]);
-          ps.forEach(function(p){ if(p.state === 'rest') drawP(bc, p); });
-          CV.baseDirty = false;
+          ps.forEach(function(p){ if(p.state === 'rest' && (!gliding || !p.gas)) drawP(bc, p); });
+          CV.baseDirty = false; CV.baseMode = mode;
         }
         x.save(); x.setTransform(1, 0, 0, 1, 0, 0); x.globalAlpha = alpha; x.drawImage(CV.base, 0, 0); x.restore();
+        if(gliding) ps.forEach(function(p){ if(p.state === 'rest' && p.gas) drawP(x, p); });
         x.globalAlpha = alpha;
         // the picked particle's ring (a tap or drag that takes it out)
         if(pick && pick.p){ var pp = pick.p, rr = pp.gas ? Math.max(extent(pp.key).w, extent(pp.key).h) * sc() / 2 + 5 : G.lumpW * 0.62; x.beginPath(); x.arc(pp.x, pp.y, rr, 0, Math.PI * 2); x.lineWidth = 2.5; x.strokeStyle = CV.col.hi; x.stroke(); }
         ps.forEach(function(p){ if(p.state !== 'rest') drawP(x, p); });
         evs.forEach(function(e){ if(e.extra) e.extra.forEach(function(p){ drawP(x, p); }); });
-        // the needle
-        x.save(); x.translate(G.gx, G.gy); x.rotate(needle.a == null ? Math.PI : needle.a); x.beginPath(); x.moveTo(0, -2.6); x.lineTo(G.gr * 0.86, 0); x.lineTo(0, 2.6); x.closePath(); x.fillStyle = CV.col.q; x.fill(); x.restore();
-        x.beginPath(); x.arc(G.gx, G.gy, 4.2, 0, Math.PI * 2); x.fillStyle = CV.col.ink; x.fill();
+        paintNeedle();
         x.globalAlpha = 1;
         if(CV.fade) kick();
       }
+      // the needle: one svg group over the dial, turned by its transform (the canvas covers the cylinder only)
+      var needleA = null;
+      function paintNeedle(){ if(!L.needle) return; var a = needle.a == null ? Math.PI : needle.a; if(a === needleA) return; needleA = a; L.needle.setAttribute('transform', 'translate(' + G.gx + ' ' + G.gy + ') rotate(' + (a * 180 / Math.PI).toFixed(2) + ')'); }
       function angOf(q){
         var r = R(), lk = Math.log10(r.Kval), lo = lk - DSPAN, hi = lk + DSPAN;
         var f = q !== q ? 0.5 : q <= 0 ? -0.04 : !isFinite(q) ? 1.04 : clamp((Math.log10(q) - lo) / (hi - lo), -0.04, 1.04);
@@ -423,11 +469,13 @@
         p.push('<g class="qk2-tray"></g>');
         // over the canvas: the glass rim, the shine, the volume marks
         f.push('<path class="qk2-glassrim" d="' + cylPath() + '"/>');
+        f.push('<g class="qk2-needle"><path d="M0 -2.6L' + f1(g.gr * 0.86) + ' 0L0 2.6Z"/><circle r="4.2" cx="' + f1(-0) + '" cy="0"/></g>');
         f.push('<path class="qk2-shine" d="M' + (g.x0 + 9) + ' ' + (g.yRim + 16) + 'V' + (g.yF - 14) + '"/>');
         VOL.forEach(function(v){ var y = Math.round(gasFloor(g, r) - gasH(g, r, v)); f.push('<path class="qk2-mark" d="M' + (g.x1 - 10) + ' ' + y + 'H' + (g.x1 + 2) + '"/>'); });
         svg.innerHTML = p.join('');
         front.innerHTML = f.join('');
         front.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+        L.needle = front.querySelector('.qk2-needle'); needleA = null;
         L.piston = svg.querySelector('.qk2-piston'); L.book = svg.querySelector('.qk2-book'); L.tray = svg.querySelector('.qk2-tray');
         drawPlate(); drawTray();
       }
@@ -496,7 +544,9 @@
         var run = q === q && !at ? dir : 0, far = run ? clamp(dist(r, q) / Math.log(4), 0, 1) : 0;
         L.arrows.setAttribute('data-dir', q !== q ? 'none' : run > 0 ? 'fwd' : run < 0 ? 'rev' : 'eq');
         L.arrows.style.setProperty('--qk-aw', f1(3 + 5 * far));
-        if(slider) slider.place();
+        // the knob's tag says the drawn volume: a text write only (placing the knob reads the layout, which on every frame
+        // of a piston glide forced a style pass of the page: review round 1, the 400 ms frames)
+        if(slider){ var tg = slider.el.querySelector('.tk2-tag'), tv = V.toFixed(2) + ' L'; if(tg && tg.textContent !== tv){ if(tg.firstChild && tg.firstChild.nodeType === 3 && tg.childNodes.length === 1) tg.firstChild.nodeValue = tv; else tg.textContent = tv; } }
         paintCause(); kick();
         again.hidden = sameAsStart();
       }
@@ -521,20 +571,42 @@
         if(a) parts.push(a);
         // once it has settled after running, the chain keeps the way it ran (added 3 B → ran forward → Q ≈ K)
         if(s.at && S.ran) parts.push({ t: S.ran > 0 ? 'ran forward' : 'ran back', role: 'dir' });
-        if(s.q !== s.q){ parts.push({ t: 'Q has no value', role: 'q' }); parts.push({ t: 'nothing can react', role: 'dir' }); }
+        // while particles are still going in or out: only the strict comparison, no word on which way it runs yet (no
+        // "≈ K" flash between the first and the last of three)
+        var io = evs.some(function(e){ return e.type !== 'rx'; });
+        if(io && s.q === s.q && !(S.solidAct && S.act && !isGas(S.act.key))){
+          parts.push({ t: 'Q ' + fq(s.q, s.c), role: 'q' }); parts.push({ t: (same(s.q, r.Kval) ? '= ' : s.q < r.Kval ? '< ' : '> ') + K0, role: 'k', say: (same(s.q, r.Kval) ? 'equal to ' : s.q < r.Kval ? 'less than ' : 'greater than ') + K0 });
+        }
+        else if(s.q !== s.q){ parts.push({ t: 'Q has no value', role: 'q' }); parts.push({ t: 'nothing can react', role: 'dir' }); }
         else if(S.solidAct && S.act && !isGas(S.act.key)){
-          parts.push({ t: 'Q stays ' + fq(s.q), role: 'q' }); parts.push({ t: 'solids are not in Q', role: 'dir' });
+          parts.push({ t: 'Q stays ' + fq(s.q, s.c), role: 'q' }); parts.push({ t: 'solids are not in Q', role: 'dir' });
         } else if(s.at){
-          if(same(s.q, r.Kval) || (s.near && !/ left$|full$/.test(s.stuck))) { var eq0 = same(s.q, r.Kval); parts.push({ t: 'Q ' + fq(s.q), role: 'q' }); parts.push({ t: (eq0 ? '= ' : '≈ ') + K0, role: 'k', say: (eq0 ? 'equal to ' : 'about equal to ') + K0 }); if(!S.ran && !evs.some(function(e){ return e.type !== 'rx'; })) parts.push({ t: 'no net change', role: 'dir' }); }
-          else { parts.push({ t: 'Q ' + fq(s.q), role: 'q' }); parts.push({ t: (s.q < r.Kval ? '< ' : '> ') + K0, role: 'k', say: (s.q < r.Kval ? 'less than ' : 'greater than ') + K0 }); parts.push({ t: s.stuck, role: 'dir' }); }
+          if(same(s.q, r.Kval) || (s.near && !/ left$|full$/.test(s.stuck))) { var eq0 = same(s.q, r.Kval); parts.push({ t: 'Q ' + fq(s.q, s.c), role: 'q' }); parts.push({ t: (eq0 ? '= ' : '≈ ') + K0, role: 'k', say: (eq0 ? 'equal to ' : 'about equal to ') + K0 }); if(!S.ran) parts.push({ t: 'no net change', role: 'dir' }); }
+          else { parts.push({ t: 'Q ' + fq(s.q, s.c), role: 'q' }); parts.push({ t: (s.q < r.Kval ? '< ' : '> ') + K0, role: 'k', say: (s.q < r.Kval ? 'less than ' : 'greater than ') + K0 }); parts.push({ t: s.stuck, role: 'dir' }); }
         } else {
-          parts.push({ t: 'Q ' + fq(s.q), role: 'q' }); parts.push({ t: (s.q < r.Kval ? '< ' : '> ') + K0, role: 'k', say: (s.q < r.Kval ? 'less than ' : 'greater than ') + K0 });
+          parts.push({ t: 'Q ' + fq(s.q, s.c), role: 'q' }); parts.push({ t: (s.q < r.Kval ? '< ' : '> ') + K0, role: 'k', say: (s.q < r.Kval ? 'less than ' : 'greater than ') + K0 });
           parts.push({ t: s.dir > 0 ? 'runs forward' : 'runs back', role: 'dir', say: s.dir > 0 ? 'runs forward, toward products' : 'runs back, toward reactants' });
         }
-        cause.set(parts, a ? '' : 'Start:');
+        setCause(parts, a ? '' : 'Start:');
       }
+      /* The cause line: when only the words in its pills change (Q on each frame of a piston glide), the text nodes are
+         rewritten in place. A new element list on every frame made the Tool Studio's watchers (they observe the stage's
+         elements) measure the page on every frame: review round 1, the long frames. */
+      var lastCz = null;
+      function setCause(parts, pre){
+        var el = cause.el, pills = el.querySelectorAll('.tk2-cz'), preEl = el.querySelector('.tk2-cz-pre');
+        var same = lastCz && !el.classList.contains('is-take') && lastCz.pre === pre && lastCz.parts.length === parts.length && pills.length === parts.length &&
+          parts.every(function(x, i){ return x.role === lastCz.parts[i].role && !x.join === !lastCz.parts[i].join && pills[i].childNodes.length === 1 && pills[i].firstChild.nodeType === 3; }) && (!pre || preEl);
+        lastCz = { parts: parts, pre: pre };
+        if(same){ parts.forEach(function(x, i){ if(pills[i].firstChild.nodeValue !== x.t) pills[i].firstChild.nodeValue = x.t; }); czStale = true; return; }
+        czStale = false; cause.set(parts, pre);
+      }
+      var czStale = false;
+      // the kit's own copy of the chain (for the live region and the takeaway) follows once it settles
+      function syncCause(){ if(czStale && lastCz){ czStale = false; cause.set(lastCz.parts, lastCz.pre); } }
       function settled(){
         if(!shown) return;
+        syncCause();
         say(cause.text());
         clearTimeout(takeT);
         if(S.mode !== 'explore' || !S.act) return;
@@ -680,7 +752,7 @@
         // the piston glides to its volume; the gas particles at rest follow it (they fill the space it leaves)
         if(VD.v !== VD.to){
           var u = clamp((tn - VD.t0) / 360, 0, 1); VD.v = u >= 1 ? VD.to : lerp(VD.from, VD.to, ease(u));
-          CV.baseDirty = true; paintPiston();
+          paintPiston();
           ps.forEach(function(p){ if(p.state === 'rest' && p.gas){ var xy = slotPos(p.slot, VD.v); p.x = xy[0]; p.y = xy[1]; } });
           paintReadouts();
           if(VD.v === VD.to) lastChange = tn;
@@ -706,7 +778,10 @@
         if(raf){ cancelAnimationFrame(raf); raf = 0; }
         if(!G) return;
         flights = 0; ghostOff();
-        var r = R(), c = settleFrom(r, pendingC(), S.V);
+        var r = R(), c0 = pendingC();
+        // the way it runs when the change is finished at once (reduced motion, leaving, hidden): the first event it takes
+        if(!S.ran){ var d0 = nextDir(r, c0, S.V); if(d0) S.ran = d0; }
+        var c = settleFrom(r, c0, S.V);
         VD.v = VD.from = VD.to = S.V; paintPiston();
         layoutAt(c); lastKey = ''; paintReadouts(true); needle.a = needle.to; CV.fade = null; paintCanvas(); settled();
       }
@@ -717,7 +792,7 @@
         if(img){ CV.fade = { img: img, t0: now() }; kick(); }
       }
       // a change by the student: in reduced motion the result at once (a cross fade)
-      function changed(){ lastChange = now(); cause.take(null); clearTimeout(takeT); if(K.reduced()){ crossFade(function(){ snap(); }); return; } kick(); }
+      function changed(){ lastChange = now(); syncCause(); cause.take(null); clearTimeout(takeT); if(K.reduced()){ crossFade(function(){ snap(); }); return; } kick(); }
 
       /* ---------------------------------------------------- the main control: the tray */
       var wellBtns = [];
@@ -863,7 +938,7 @@
         G = geo(W);
         sceneBox.style.height = G.H + 'px';
         svg.setAttribute('viewBox', '0 0 ' + W + ' ' + G.H); svg.setAttribute('width', W); svg.setAttribute('height', G.H);
-        var bx = [Math.floor(Math.min(G.gx - G.gr - 8, G.x0 - 12)), Math.floor(Math.min(G.gy - G.gr - 8, G.yRim - 4)), Math.ceil(G.portX + 16), Math.ceil(G.yb + 2)];
+        var bx = [Math.floor(G.x0 - 12), Math.floor(G.yRim - 4), Math.ceil(G.portX + 16), Math.ceil(G.yb + 2)];
         CV.box = bx; CV.dpr = Math.min(2, window.devicePixelRatio || 1);
         mov.style.left = bx[0] + 'px'; mov.style.top = bx[1] + 'px'; mov.style.width = (bx[2] - bx[0]) + 'px'; mov.style.height = (bx[3] - bx[1]) + 'px';
         mov.width = Math.round((bx[2] - bx[0]) * CV.dpr); mov.height = Math.round((bx[3] - bx[1]) * CV.dpr); CV.ctx = mov.getContext('2d');
@@ -880,18 +955,18 @@
       }
       function describe(){
         var r = R();
-        return 'A glass cylinder with a piston holding ' + (r.id === 'ab' ? 'A, B and AB particles' : 'CO₂ gas over lumps of CaCO₃ and CaO, heated to 800 °C') + ' for ' + eqText(r) + '; a dial reads Q with K marked; a tray of particles to add.';
+        return 'A glass cylinder with a piston holding ' + (r.id === 'ab' ? 'A, B and AB particles' : 'CO₂ gas over lumps of CaCO₃ and CaO, in a quartz cylinder heated to 800 °C') + ' for ' + eqText(r) + '; a dial reads Q with K marked; a tray of particles to add.';
       }
       function pickReaction(v){
         var i = RX.map(function(r){ return r.id; }).indexOf(v); if(i < 0 || i === S.ri) return;
         if(raf){ cancelAnimationFrame(raf); raf = 0; }
-        S.ri = i; S.V = EX.V0; S.act = null; S.solidAct = false; S.ran = 0; S.ran = 0; cause.take(null); clearTimeout(takeT);
+        S.ri = i; S.V = EX.V0; S.act = null; S.solidAct = false; S.ran = 0; S.ran = 0; syncCause(); cause.take(null); clearTimeout(takeT);
         G = null; crossFade(function(){});
         layoutNow(true); refHtml();
       }
       function startOver(){
         if(raf){ cancelAnimationFrame(raf); raf = 0; }
-        S.V = EX.V0; S.act = null; S.solidAct = false; S.ran = 0; cause.take(null); clearTimeout(takeT); flights = 0; ghostOff();
+        S.V = EX.V0; S.act = null; S.solidAct = false; S.ran = 0; syncCause(); cause.take(null); clearTimeout(takeT); flights = 0; ghostOff();
         VD.v = VD.from = VD.to = S.V; paintPiston();
         crossFade(function(){ layoutAt(R().n0.slice()); });
         lastKey = ''; paintReadouts(true); needle.a = needle.to; paintCanvas();
@@ -903,7 +978,16 @@
       // covers neither the cylinder nor a cup's name)
       var cue = K.cue(layer, { key: 'apchem-qk-tray', text: 'Drag B into the cylinder', side: window.innerWidth < 860 ? 'below' : 'above',
         at: function(){ if(!G || !L.wells) return [0, 0]; var wl = L.wells[1]; return G.narrow ? [wl.x + wl.w / 2, wl.y + wl.h + 16] : [wl.x + wl.w / 2, wl.y - 12]; } });
-      function hideCue(used){ if(cue.active()) cue.hide(used); }
+      function hideCue(used){ if(cue.active()){ cue.hide(used); if(used) dropCueRoom(); } }
+      // the narrow bench kept room under the tray for the cue; once it is used the bench shrinks to the tray (nothing else
+      // moves)
+      function dropCueRoom(){
+        if(!G || !G.cueRoom) return;
+        G.H -= G.cueRoom; if(G.phone) G.py -= G.cueRoom; G.cueRoom = 0;
+        sceneBox.style.height = G.H + 'px';
+        svg.setAttribute('viewBox', '0 0 ' + G.W + ' ' + G.H); svg.setAttribute('height', G.H);
+        drawStatic(); paintPiston(); placeWells(); lastKey = ''; paintReadouts(true);
+      }
       stage.addEventListener('keydown', function(e){ if(sceneBox.contains(e.target) && /^(Arrow|Page|Home|End|Enter| |Delete)/.test(e.key)) hideCue(true); }, true);
       function rectOf(x, y, w, h){ var r0 = svg.getBoundingClientRect(), k = r0.width / G.W; return { left: r0.left + x * k, top: r0.top + y * k, right: r0.left + (x + w) * k, bottom: r0.top + (y + h) * k, width: w * k, height: h * k }; }
       var tour = K.tour({ key: 'apchem-q-vs-k', label: 'Show me how', steps: [
@@ -927,7 +1011,7 @@
           '<h3 class="ls-title-l">Q and K</h3><p>Q has the same form as K, with the amounts right now: ' + expr + '. Compare them: <b>Q &lt; K</b>, the reaction runs forward (toward products) until Q rises to K; <b>Q &gt; K</b>, it runs back (toward reactants) until Q falls to K; <b>Q = K</b>, it is at equilibrium: the forward and reverse reactions go on at equal rates, so there is no net change. K changes only with temperature; adding, removing or squeezing changes Q, never K. On the exam the comparison of Q with K is the justification ("Q &lt; K, so the net reaction goes forward"); Le Chatelier\'s principle is only a prediction.</p>' +
           '<h3 class="ls-title-l">Counting Q from the picture</h3><p>' + esc(r.perText) + '. Count each gas, turn the count into ' + (r.K === 'Kp' ? 'a pressure' : 'a concentration') + ', then put the numbers into Q. Now: ' + conc.join('; ') + '. So Q = ' + fq(Qof(r, c, V)) + ' and K = ' + r.Kval + '.</p>' +
           (r.id === 'ab' ? '<h3 class="ls-title-l">The volume</h3><p>Each gas particle\'s concentration is its amount over the volume, so squeezing the cylinder raises every concentration by the same factor. Q has one gas particle on top (AB) and two on the bottom (A and B), so Q goes as the volume: halving the volume halves Q, so Q &lt; K and the reaction runs forward, toward the side with fewer gas particles. Making it larger raises Q and it runs back.</p>'
-            : '<h3 class="ls-title-l">The solids</h3><p>CaCO₃ and CaO are pure solids: their concentration is fixed by their own density, so they are left out of Q and K. K<sub>p</sub> = P(CO₂). Adding a lump of either solid changes nothing; adding CO₂ makes Q &gt; K and CO₂ goes into the CaO, which turns to CaCO₃; taking CO₂ out makes Q &lt; K and CaCO₃ gives off CO₂. Squeezing the cylinder raises P(CO₂), so some CO₂ goes back into the solid, until P(CO₂) is K again: at equilibrium the pressure of CO₂ is the same whatever the volume. If one of the solids is used up, the reaction cannot run that way any further.</p>') +
+            : '<h3 class="ls-title-l">The solids</h3><p>The cylinder here is quartz, which stays hard at 800 °C. CaCO₃ and CaO are pure solids: their concentration is fixed by their own density, so they are left out of Q and K. K<sub>p</sub> = P(CO₂). Adding a lump of either solid changes nothing; adding CO₂ makes Q &gt; K and CO₂ goes into the CaO, which turns to CaCO₃; taking CO₂ out makes Q &lt; K and CaCO₃ gives off CO₂. Squeezing the cylinder raises P(CO₂), so some CO₂ goes back into the solid, until P(CO₂) is K again: at equilibrium the pressure of CO₂ is the same whatever the volume. If one of the solids is used up, the reaction cannot run that way any further.</p>') +
           '<h3 class="ls-title-l">Why Q lands near K, not on it</h3><p>The cylinder holds whole particles, so the reaction runs one event at a time and stops at the counts nearest K. When one more event would take Q farther from K than it is, the reaction stops there and the cause line says so (a real mixture would shift by a fraction of a particle). Each press of a cup adds three particles of a gas, enough to make at least one whole event run in most mixtures.</p>' +
           '<h3 class="ls-title-l">The dial</h3><p>The dial is a log scale: each tick is twice the last, from K ÷ 4 at the left to K × 4 at the right (a Q beyond rests at the end). K is the green notch; the needle is Q, read from the particles drawn. The arrow under the equation points the way the reaction runs, thicker the farther Q is from K; a thin arrow with two heads means no net change.</p>' +
           '<h3 class="ls-title-l">The constants</h3><ul class="qk2-list">' + RX.map(function(z){ return '<li>' + esc(eqText(z)) + ': ' + (z.K === 'Kp' ? 'K<sub>p</sub>' : 'K<sub>c</sub>') + ' = ' + z.Kval + (z.T ? ' at ' + esc(z.T) : '') + ' (' + esc(z.ref) + ').</li>'; }).join('') + '</ul>' +
