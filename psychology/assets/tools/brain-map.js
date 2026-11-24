@@ -815,7 +815,7 @@
     }
     function splitLine(stg, field){
       if(!isSplit()) return;
-      if(!field){ cause.set(S.cut ? [{ t: 'Corpus callosum cut', role: 'cut' }, { t: 'halves cannot share', role: 'job' }] : [{ t: 'Corpus callosum intact', role: 'cc' }, { t: 'halves share', role: 'job' }]); return; }
+      if(!field){ cause.set(S.cut ? [{ t: 'Corpus callosum cut', role: 'cut' }, { t: 'hemispheres can’t share', role: 'job' }] : [{ t: 'Corpus callosum intact', role: 'cc' }, { t: 'hemispheres share', role: 'job' }]); return; }
       var sb = B.splitBrain(field, S.cut), parts = [{ t: field === 'left' ? 'Left field' : 'Right field', role: 'word' }];
       if(stg >= 1) parts.push({ t: sb.first + ' hemisphere', role: 'hemi' });
       if(stg >= 2 && !S.cut) parts.push({ t: 'crosses over', role: 'cc' });
@@ -1029,7 +1029,7 @@
           '<h3 class="ls-h">What lights up during a task (fMRI)</h3><ul class="bm-list">' + B.ACTIVE.map(function(a){ return '<li>Participants ' + esc(a.task) + ': <b>' + esc(R[a.region].name) + '</b>' + (a.side ? ' (' + a.side + ' hemisphere)' : '') + '.</li>'; }).join('') + '</ul>' +
           '<h3 class="ls-h">How we study the brain</h3><ul class="bm-list">' + Object.keys(B.METHODS).map(function(k){ return '<li><b>' + esc(B.METHODS[k].long) + '</b>: ' + esc(B.METHODS[k].does) + '</li>'; }).join('') + '</ul>' +
           '<p class="psy-myth">The hemispheres specialize, but everyone uses both, all the time. There are no “left-brained” or “right-brained” people, and we use far more than 10% of the brain.</p>' +
-          '<p class="ls-sub">Named cases: Phineas Gage (Harlow, 1868), H.M. (Scoville and Milner, 1957), S.M. (Feinstein and colleagues, 2011). The drawing is a simplified illustration. Test yourself asks about damage cases, imaging methods and fMRI, split brain, one side of the body and naming a structure.</p>';
+          '<p class="ls-sub">Named cases: Phineas Gage (Harlow, 1868); H.M. (Scoville and Milner, 1957), whose surgery removed parts of both medial temporal lobes, including most of both hippocampi; S.M. (Feinstein and colleagues, 2011), with damage to the amygdala on both sides. The drawing is a simplified illustration. Test yourself asks about damage cases, imaging methods and fMRI, split brain, one side of the body and naming a structure.</p>';
       }
       ref.innerHTML = h;
     }
