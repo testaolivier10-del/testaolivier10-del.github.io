@@ -137,7 +137,8 @@
    "desc": "Zoom in on a graph near a point: one-sided limits, holes, jumps, asymptotes and the squeeze theorem, with a table of values closing in.",
    "blurb": "Zoom in on a point and watch the limit from each side.",
    "lede": "Zoom in on a graph and a table until the limit is clear.",
-   "studio": true
+   "studio": true,
+   "kit2": true
   },
   {
    "slug": "tangent-tracer",
