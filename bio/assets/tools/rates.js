@@ -467,9 +467,10 @@
       function corePath(cx, base, hgt, w, wob){
         // an upright cylinder of potato: side outline with a wrinkle when it has lost water
         var l = cx - w / 2, r = cx + w / 2, top = base - hgt, n = Math.max(2, Math.round(hgt / 14)), d = 'M' + l.toFixed(1) + ' ' + (top + w * 0.14).toFixed(1);
-        for(var i = 1; i <= n; i++){ var y = top + w * 0.14 + (hgt - w * 0.14) * i / n; d += 'Q' + (l + (i % 2 ? wob : -wob * 0.5)).toFixed(1) + ' ' + (y - (hgt / n) / 2).toFixed(1) + ' ' + l.toFixed(1) + ' ' + y.toFixed(1); }
+        function amp(i){ return 0.5 + 0.5 * Math.abs(Math.sin(i * 1.73 + 0.4)); }   // uneven, so a shrunken core never looks like a bellows
+        for(var i = 1; i <= n; i++){ var y = top + w * 0.14 + (hgt - w * 0.14) * i / n; d += 'Q' + (l + (i % 2 ? wob : -wob * 0.5) * amp(i)).toFixed(1) + ' ' + (y - (hgt / n) / 2).toFixed(1) + ' ' + l.toFixed(1) + ' ' + y.toFixed(1); }
         d += 'Q' + cx.toFixed(1) + ' ' + (base + w * 0.16).toFixed(1) + ' ' + r.toFixed(1) + ' ' + base.toFixed(1);
-        for(i = n - 1; i >= 0; i--){ var y2 = top + w * 0.14 + (hgt - w * 0.14) * i / n; d += 'Q' + (r - (i % 2 ? wob * 0.5 : -wob)).toFixed(1) + ' ' + (y2 + (hgt / n) / 2).toFixed(1) + ' ' + r.toFixed(1) + ' ' + y2.toFixed(1); }
+        for(i = n - 1; i >= 0; i--){ var y2 = top + w * 0.14 + (hgt - w * 0.14) * i / n; d += 'Q' + (r - (i % 2 ? wob * 0.5 : -wob) * amp(i + 3)).toFixed(1) + ' ' + (y2 + (hgt / n) / 2).toFixed(1) + ' ' + r.toFixed(1) + ' ' + y2.toFixed(1); }
         return d + 'Z';
       }
       function drawCores(){
@@ -658,14 +659,18 @@
           // a 1 minute run under the tangent: from the point to 1 min later and up (near the end, from 1 min earlier
           // on the tangent across to the point's time and up to the point), so the step always sits under the line
           var back = tb > TMAX - 1, t2 = back ? tb - 1 : tb + 1, x2 = g.x(t2), y2 = g.y(f(tb) + sl * (t2 - tb));
-          if(back){ at(GE.legT, { x1: x2, y1: y2, x2: xb, y2: y2 }); at(GE.legY, { x1: xb, y1: y2, x2: xb, y2: yb }); }
+          // a rise shorter than the knob would hide under it: then the step turns at t − 1 (run back from the point,
+          // down to the tangent there), so both legs sit outside the knob
+          var alt = back && Math.abs(y2 - yb) < 30;
+          if(alt){ at(GE.legT, { x1: xb, y1: yb, x2: x2, y2: yb }); at(GE.legY, { x1: x2, y1: yb, x2: x2, y2: y2 }); }
+          else if(back){ at(GE.legT, { x1: x2, y1: y2, x2: xb, y2: y2 }); at(GE.legY, { x1: xb, y1: y2, x2: xb, y2: yb }); }
           else { at(GE.legT, { x1: xb, y1: yb, x2: x2, y2: yb }); at(GE.legY, { x1: x2, y1: yb, x2: x2, y2: y2 }); }
           GE.hyp.style.display = 'none';
           R.slR = slR; R.rateS = F(slR, 1); R.back = back;
           var tanHit = function(b){ return hitsLine(b, x0, g.y(f(tb) + sl * (g.t(x0) - tb)), x1, g.y(f(tb) + sl * (g.t(x1) - tb)), 3); };
           var sRun = 'run 1 ' + UT, sRise = 'rise ' + F(slR, 1) + ' ' + UY;
           var yAx2 = g.T + g.ph;
-          var okRun = placePill(GE.pDt, sRun, [[(xb + x2) / 2, (back ? y2 : yb) + 16, 'middle']], [tanHit, knobs]);
+          var okRun = placePill(GE.pDt, sRun, [[(xb + x2) / 2, (back && !alt ? y2 : yb) + 16, 'middle']], [tanHit, knobs]);
           if(!okRun){
             var by2 = yAx2 + 38, lo = Math.min(xb, x2), hi = Math.max(xb, x2);
             at(GE.brk, { d: 'M' + lo.toFixed(1) + ' ' + (by2 - 12).toFixed(1) + 'V' + (by2 - 6).toFixed(1) + 'H' + hi.toFixed(1) + 'V' + (by2 - 12).toFixed(1) });
@@ -673,7 +678,7 @@
           }
           avoid.push(function(b){ return overlap(b, GE.pDt.box(), 4); });
           var mid2 = (yb + y2) / 2;
-          placePill(GE.pDy, sRise, back ? [[xb + 9, mid2, 'start'], [xb + 28, mid2, 'start'], [xb + 9, y2 + 14, 'start'], [xb + 28, y2 + 6, 'start'], [xb + 9, y2 + 38, 'start'], [x2 - 9, y2 + 14, 'end']] : [[x2 + 9, mid2, 'start'], [x2 + 9, yb + 16, 'start'], [x2 + 9, yb + 40, 'start'], [x2 + 9, y2 - 14, 'start'], [x2 - 9, mid2, 'end']], avoid.concat([tanHit, knobs]));
+          placePill(GE.pDy, sRise, alt ? [[x2 + 9, yb - 16, 'start'], [x2 - 9, yb - 16, 'end'], [x2 - 9, mid2, 'end'], [x2 - 9, yb - 40, 'end'], [x2 + 9, yb - 40, 'start'], [x2 + 9, y2 + 22, 'start'], [x2 + 9, y2 + 40, 'start']] : back ? [[xb + 9, mid2, 'start'], [xb + 28, mid2, 'start'], [xb + 9, y2 + 14, 'start'], [xb + 28, y2 + 6, 'start'], [xb + 9, y2 + 38, 'start'], [x2 - 9, y2 + 14, 'end']] : [[x2 + 9, mid2, 'start'], [x2 + 9, yb + 16, 'start'], [x2 + 9, yb + 40, 'start'], [x2 + 9, y2 - 14, 'start'], [x2 - 9, mid2, 'end']], avoid.concat([tanHit, knobs]));
           avoid.push(function(b){ return overlap(b, GE.pDy.box(), 4); });
           GE.pRate.set('rate ≈ ' + R.rateS + ' ' + RU, g.W - 8, 16, 'end');
         }
