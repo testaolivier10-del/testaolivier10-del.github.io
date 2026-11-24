@@ -53,7 +53,8 @@ written at once, and a trait climbs the trunk to the branch where it arose and p
   beside it (a thin line to the tick when the name had to sit a step away), then the clade above it is painted
   violet (limbs and rings). A second tap takes the trait off (the tick fades). Taps on nodes still rotate; the ticks
   ride along.
-- **Cause line** (`K.cause`), read from what is drawn: at rest "tap 2 animals → see their common ancestor"; one tip
+- **Cause line** (`K.cause`), read from what is drawn (the last trait placed shows its own line for 2 s before the
+  takeaway): at rest "tap 2 animals → see their common ancestor"; one tip
   "frog → tap one more"; two or more "frog + lizard → common ancestor 4 → not a clade: leaves out kangaroo + mouse",
   or with a pair before it "frog + shark → common ancestor 3 → less close than frog + lizard" ("closer kin than",
   "as close as"; nothing when the two ancestors sit on separate branches of a cladogram); the primate tree adds
@@ -109,7 +110,7 @@ tip taps).
 | Clear the selection | Tap the sky, or tap a tapped tip again |
 | Rotate node buttons, tap a node | Tap a node (or its key button): a 300 ms swing |
 | Restore the first drawing | Start over (shown) |
-| Character chips drag or tap onto a branch, branch dropdowns, Check my placements, Try again | Explore Traits: the ticks place themselves (ungraded); graded placing is Test yourself, Place the traits (same record ids) |
+| Character chips drag or tap onto a branch, branch dropdowns, Check my placements, Try again | Explore Traits: the ticks place themselves (ungraded); graded placing is Test yourself, Place the traits (same record ids): tap a trait then a branch, or the lists. Dragging a chip onto a branch is dropped (logged) |
 | Build a tree | Test yourself, Build a tree (same interaction and record ids) |
 | Text description of the tree, character table, DNA difference table | "?" (follows every rotation) |
 | MRCA bracket on the right | The clade tint and rings |
@@ -131,7 +132,8 @@ tip taps).
 9. Traits are one color (violet); only the newest trait's clade is painted; older ticks keep their names where
    there is room (the newest always gets its name first, a thin line to it when it sits a step away).
 10. Graded placing moves to Test yourself "Place the traits" (tap a trait then a branch, or the lists; same record
-    ids); after a check the tree shows every right branch, as before.
+    ids); after a check the tree shows every right branch, as before. Dragging a chip onto a branch is dropped
+    (review round 1); on a phone, picking up a trait or choosing from a list brings the tree into view.
 11. Build a tree keeps its old interaction in Test yourself; its result is drawn as a still tree.
 12. Short names on the picture: "Alga" (charophyte alga), "Chimp" (chimpanzee); full names in lists, labels and "?".
     Traits get short names of 1 to 3 words (the content check enforces both).
@@ -211,3 +213,25 @@ Checked against the course's phylogeny notes and Baum and Offner 2008 / Understa
   the chips take two rows of the ground.
 - Names sit at different heights (each just above its own organism), so the row of names is ragged.
 - The cladogram's node heights come from nesting; a student may still read them as dates (said in "?").
+
+## Review round 1 (2026-11-24): BLOCK on one must fix, fixed
+`/home/claude/review-bio-tree/REVIEW.md`. The science check held completely. Merged `claude/tools-v2-all` first (docs
+tables kept on both sides).
+Must fix: **Place the traits on a phone sent the student 900 px away from the tree.** Under 600 px, picking up a trait
+or choosing a branch from a list now scrolls the tree into view (smooth, at once with reduced motion); a trait button's
+click no longer triggers the frame's reveal of the next empty list (which pulled the page back up). The sweep checks it
+at 360 and 390: after arming and after a list choice the whole scene is in the window.
+Should fix: S1 the lancelet, lamprey and lizard are drawn thicker and at a slant so they fill their box (phones use
+the full column, organisms about 45 to 50 px at 360); S2 the last trait's own line shows for 2 s before the takeaway;
+S3 "?": "The pair with the smallest difference shares the most recent common ancestor."; S4 the dropped drag is in
+"What moved" and the owner log; S5 the Place the traits buttons carry the short trait names (full names in their
+labels), so none wraps at 1440. Nit: the bar before each trait chip's name is gone.
+Also found in the fix round: a touch tap that Chrome nudges toward something clickable (its click lands up to about
+20 px from where the finger went down) was dropped as a scroll at 1440 (one tap in 38). A tap is now read where the
+finger went down, and only a move of more than 30 px counts as a drag. Everything drawn over the tips and knots (pill,
+glows, tints, ticks) lets taps through.
+Checks after the fixes (speed rule, fix round): sweep at 360 (92), 390 (104, with 375 x 667 and 360 x 740), 1024 (90)
+and 1440 (86), light and dark, **372 passed, 0 failed**, including the new phone checks that the tree is in view after
+picking up a trait and after a list choice; frames **37 passed, 0 failed** (the last trait's line, then the takeaway;
+real touch taps on 38 targets at 360, 390 and 1440, 0 wrong); AP Bio tests 74 pass, content check 0 failing,
+`build-apbio`, `build-apcalc`, `build-apmacro --check`, `check-site`, `check-weight`.

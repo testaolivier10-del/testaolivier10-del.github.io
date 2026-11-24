@@ -95,12 +95,9 @@
 /* the trait chips on the ground */
 .tr2-chips{position:absolute;display:flex;flex-wrap:wrap;gap:6px 8px;justify-content:center;z-index:2;}
 .tr2-chip{min-height:44px;display:inline-flex;align-items:center;gap:6px;padding:0 14px;border-radius:999px;border:2px solid var(--tr-trait);background:var(--tr-pill);color:var(--tr-trait-ink);font:800 14px var(--font-ui);cursor:pointer;box-shadow:0 2px 0 rgba(0,0,0,.18);}
-.tr2-chip .tr2-tickmark{display:inline-block;width:10px;height:4px;border-radius:2px;background:var(--tr-trait);}
 .tr2-chip.is-on{background:var(--tr-trait);color:#fff;}
-.tr2-chip.is-on .tr2-tickmark{background:#fff;}
 :root[data-theme="dark"] .tr2-chip.is-on{color:#1B0E30;}
-:root[data-theme="dark"] .tr2-chip.is-on .tr2-tickmark{background:#1B0E30;}
-.tr2-chip:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+:root[data-theme="dark"] .tr2-chip:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
 @media (max-width:640px){ .tr2-chip{padding:0 10px;font-size:13px;gap:6px;} }
 /* "?" and Test yourself */
 .tr2-ref-how{margin:0 0 6px;}
@@ -145,3 +142,5 @@
 .o-fur-m{fill:#A89478;stroke:#5E5040;stroke-width:1.6;} .o-face-m{fill:#E59A94;stroke:#9E5652;stroke-width:1.2;}
 .o-fur-b{fill:#8E8460;stroke:#4F4730;stroke-width:1.6;} .o-face-b{fill:#5E5A58;stroke:#2E2A28;stroke-width:1.2;} .o-nose-b{fill:#2A2624;}
 .tr2-org,.tr2-still use{overflow:visible;}
+/* only tips, knots and (in Place the traits) limbs take taps: everything drawn over them lets the tap through */
+.tr2-halos,.tr2-glows,.tr2-limbs,.tr2-ticks,.tr2-pills,.tr2-bg,.tr2-pad,.tr2-ring,.tr2-name{pointer-events:none;}

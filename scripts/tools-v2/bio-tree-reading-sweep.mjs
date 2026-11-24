@@ -267,6 +267,18 @@ if (ONE) {
     // Test yourself: Place the traits, checked with one wrong
     await page.evaluate(() => document.querySelector('.ls-modes [data-v="quiz"], [data-mode-btn="quiz"], .ls-mode[data-v="quiz"]') && 0);
     await page.goto('about:blank'); await page.goto(URL0 + '#place'); await page.waitForSelector('.tr2-tip'); await page.waitForTimeout(700);
+    // a phone: picking up a trait, or choosing a branch from a list, brings the tree into view (review round 1)
+    if (w < 600) {
+      await page.evaluate(() => window.scrollTo(0, 0));
+      await page.click('.tr2-pchip'); await page.waitForTimeout(1400);
+      const a = await page.evaluate(() => { const r = document.querySelector('.tr2-scene').getBoundingClientRect(); return [Math.round(r.top), Math.round(r.bottom), innerHeight]; });
+      ok(a[0] >= 0 && a[1] <= a[2], `${tag} place: the tree in view after picking up a trait (${a})`);
+      await page.click('.tr2-pchip'); await page.evaluate(() => window.scrollTo(0, 0));
+      await page.selectOption('.tr2-plist select >> nth=1', { index: 2 }); await page.waitForTimeout(1400);
+      const b = await page.evaluate(() => { const r = document.querySelector('.tr2-scene').getBoundingClientRect(); return [Math.round(r.top), Math.round(r.bottom), innerHeight]; });
+      ok(b[0] >= 0 && b[1] <= b[2], `${tag} place: the tree in view after choosing from a list (${b})`);
+      await page.goto('about:blank'); await page.goto(URL0 + '#place'); await page.waitForSelector('.tr2-tip'); await page.waitForTimeout(700);
+    }
     await page.evaluate(() => { const X = window.__tr2; X.place('backbone', 'frog,kangaroo,lamprey,lizard,mouse,shark'); X.place('jaws', 'frog,kangaroo,lizard,mouse,shark'); X.place('limbs', 'kangaroo,lizard,mouse'); });
     await still(page);
     { const L = await page.evaluate(LAYOUT, [w]); L.out.forEach(f => fails.push(`${tag} place: ${f}`)); if (!L.out.length) pass++; }
@@ -300,7 +312,7 @@ if (ONE) {
 }
 
 if (FRAMES) {
-  for (const w of (process.argv.includes('--quick') ? [] : [390, 1440])) {
+  for (const w of (process.argv.includes('--quick') ? [] : arg('--fw', null) ? [+arg('--fw')] : [390, 1440])) {
     const { browser, page, errs } = await open(w, false, { noCue: true });
     // watch every frame of an action: each frame runs AGREE plus the checks for that action
     const watch = async (src, extra, ms) => page.evaluate(async ([src, extra, ms, AG]) => {
@@ -323,6 +335,15 @@ if (FRAMES) {
     total += await run('trait climb', async (X) => { X.tab('traits'); X.stopAll(); X.trait('amnion'); }, ((X) => { const o = []; document.querySelectorAll('.tr2-tick').forEach(g => { const arr = g.querySelector('.tr2-bar').getAttribute('opacity') === '1', lab = g.querySelector('.tr2-tl').getAttribute('opacity') === '1'; if (lab && !arr) o.push('label before arrival'); }); const k = X.V.ticks[X.V.ticks.length - 1], c = document.querySelector('.tr2 .tk2-cause').textContent; if (k && k.paint < 1 && /inherit/.test(c)) o.push('cause line before the paint'); if (k && k.s < 1 && [...document.querySelectorAll('.tr2-ring')].some(r => +r.getAttribute('opacity') > 0)) o.push('rings before arrival'); return o; }).toString(), 900);
     // a trait taken off mid climb, another added
     total += await run('trait off mid climb', async (X) => { X.tab('traits'); X.stopAll(); X.trait('hair'); await new Promise(r => setTimeout(r, 150)); X.trait('hair'); X.trait('jaws'); }, null, 900);
+    // the last trait: its own line first, then the takeaway on the next beat
+    await reset();
+    await page.evaluate(() => { const X = window.__tr2; X.tab('traits'); X.stopAll(); X.St.traits = {}; ['backbone', 'jaws', 'limbs', 'amnion', 'hair'].forEach(c => X.trait(c)); });
+    await still(page); await page.waitForTimeout(200);
+    const l1 = await page.evaluate(() => document.querySelector('.tr2 .tk2-cause').textContent);
+    await page.waitForTimeout(2300);
+    const l2 = await page.evaluate(() => document.querySelector('.tr2 .tk2-cause').textContent);
+    ok(/hair/.test(l1) && /inherit/.test(l1) && /marks one clade/.test(l2), `${w}: the last trait's line, then the takeaway ("${l1}" then "${l2}")`);
+    await page.evaluate(() => { const X = window.__tr2; X.St.traits = {}; X.tab('anc'); X.stopAll(); });
     // Start over mid swing
     total += await run('start over mid swing', async (X) => { X.tap('frog'); X.tap('lizard'); X.stopAll(); X.rot(2); await new Promise(r => setTimeout(r, 120)); X.reset(); }, null, 600);
     // the tree switch: a new tree grows from the ground
@@ -357,7 +378,7 @@ if (FRAMES) {
         document.querySelectorAll('.tr2-node').forEach(g => { const id = g.getAttribute('data-node'); [[0, 0], [8, 0], [-8, 0], [0, 8]].forEach(d => out.push({ kind: 'node', id, d })); });
         return out;
       });
-      let wrong = 0;
+      let wrong = 0; const bad = [];
       for (const q of pts) {
         const was = await p2.evaluate(() => ({ sel: window.__tr2.St.sel.join(), order: window.__tr2.P.leaves(window.__tr2.root()).map(l => l.name).join() }));
         // where the target is drawn now (the knots and tips move after a swing)
@@ -367,10 +388,10 @@ if (FRAMES) {
         }, q);
         await p2.touchscreen.tap(x, y); await still(p2);
         const now = await p2.evaluate(() => ({ sel: window.__tr2.St.sel.join(), order: window.__tr2.P.leaves(window.__tr2.root()).map(l => l.name).join() }));
-        if (q.kind === 'tip') { const s0 = was.sel ? was.sel.split(',') : [], want = s0.includes(q.id) ? s0.filter(z => z !== q.id) : s0.concat(q.id); if (now.sel !== want.join() || now.order !== was.order) wrong++; }
-        else if (now.order === was.order || now.sel !== was.sel) wrong++;
+        if (q.kind === 'tip') { const s0 = was.sel ? was.sel.split(',') : [], want = s0.includes(q.id) ? s0.filter(z => z !== q.id) : s0.concat(q.id); if (now.sel !== want.join() || now.order !== was.order) { wrong++; bad.push(`${q.id} ${q.sel}`); } }
+        else if (now.order === was.order || now.sel !== was.sel) { wrong++; bad.push(`node ${q.id} ${q.d}`); }
       }
-      ok(wrong === 0, `${tw}: real touch taps on ${pts.length} drawn tips, names and knots: ${wrong} wrong`);
+      ok(wrong === 0, `${tw}: real touch taps on ${pts.length} drawn tips, names and knots: ${wrong} wrong ${bad.join('; ')}`);
       await b2.close();
     }
     ok(!errs.length, `${w} frames: console errors ${errs.join(' | ')}`);

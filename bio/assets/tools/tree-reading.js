@@ -171,11 +171,14 @@
     }
   };
   // how high each drawing reaches in its box (0..1), so a tip's name sits just above what is drawn
-  var TOP = { lancelet: 0.42, lamprey: 0.42, shark: 0.58, frog: 0.54, lizard: 0.3, kangaroo: 0.8, mouse: 0.45, alga: 0.5, moss: 0.62, fern: 0.9, pine: 0.97, rose: 0.93, grass: 0.9,
+  var TOP = { lancelet: 0.75, lamprey: 0.8, shark: 0.58, frog: 0.54, lizard: 0.56, kangaroo: 0.8, mouse: 0.45, alga: 0.5, moss: 0.62, fern: 0.9, pine: 0.97, rose: 0.93, grass: 0.9,
     human: 0.93, chimp: 0.92, gorilla: 0.97, orangutan: 0.93, macaque: 0.91, baboon: 0.93 };
+  // the flat animals swim or climb up at a slant and are drawn thicker, so they fill their box like the others
+  var POSE = { lancelet: 'translate(0 -40) rotate(-26) scale(0.96 1.5) translate(0 26)', lamprey: 'translate(0 -40) rotate(-26) scale(0.94 1.75) translate(0 26)',
+    lizard: 'translate(0 -21) rotate(-14) scale(0.92 1.7) translate(0 8)' };
   function defs(){
     var s = '';
-    for(var k in ART) s += '<symbol id="tr2-o-' + k + '" viewBox="-50 -100 100 100" overflow="visible">' + ART[k]() + '</symbol>';
+    for(var k in ART) s += '<symbol id="tr2-o-' + k + '" viewBox="-50 -100 100 100" overflow="visible">' + (POSE[k] ? '<g transform="' + POSE[k] + '">' + ART[k]() + '</g>' : ART[k]()) + '</symbol>';
     return '<svg class="tr2-defs" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden">' + s + '</svg>';
   }
   window.ApBioTreeArt = { defs: defs, has: function(id){ return !!ART[id]; }, top: function(id){ return TOP[id] || 0.86; } };
@@ -311,7 +314,7 @@
         g.groundH = cr ? cr * 44 + (cr - 1) * 6 + (ph ? 14 : 18) : (ph ? 30 : 38);
         g.groundY = H - g.groundH;
         // the organisms: as large as the column and the height allow
-        g.S = clamp(ph ? Math.min(g.col * 0.96, 56, H * 0.13) : Math.min(g.col * 0.8, 116, (H - g.groundH) * 0.2), 30, 116);
+        g.S = clamp(ph ? Math.min(g.col, 60, H * 0.14) : Math.min(g.col * 0.8, 116, (H - g.groundH) * 0.2), 30, 116);
         g.tipY = g.top + g.rows * g.nameH + 2 + g.S;
         g.rootY = g.groundY - (ph ? 22 : 30);
         g.rootX = null;
@@ -749,7 +752,7 @@
       var tickId = 0;
       function tapTrait(cid){
         if(!(St.mode === 'explore' && St.tab === 'traits')) return;
-        hideCue(true); tourDid('trait');
+        hideCue(true); tourDid('trait'); clearTimeout(takeT); takeT = 0;
         var tid = treeId(), on = (St.traits[tid] = St.traits[tid] || []), i = on.indexOf(cid);
         St.took = null;
         if(i >= 0){ on.splice(i, 1); V.ticks.forEach(function(k){ if(k.cid === cid && !k.leaving){ k.leaving = true; k.out = 0; } }); }
@@ -789,8 +792,9 @@
       svg.addEventListener('pointerdown', function(e){ downAt = [e.clientX, e.clientY]; hideCue(true); });
       svg.addEventListener('click', function(e){
         if(!G) return;
-        if(downAt && Math.hypot(e.clientX - downAt[0], e.clientY - downAt[1]) > 12) return;   // a scroll, not a tap
-        var h = hitAt(e.clientX, e.clientY);
+        if(downAt && Math.hypot(e.clientX - downAt[0], e.clientY - downAt[1]) > 30) return;   // a drag, not a tap (a touch's click may be nudged toward something clickable; a scroll fires no click)
+        // the place the finger went down (a touch's click can be nudged a few px toward something clickable)
+        var h = downAt ? hitAt(downAt[0], downAt[1]) : hitAt(e.clientX, e.clientY);
         if(h.node != null) rotate(h.node);
         else if(h.tip) tapTip(h.tip);
         else if(h.br && St.mode === 'quiz' && St.part === 'place' && St.armed) placeChar(St.armed, h.br);
@@ -806,7 +810,7 @@
         var t = tree(), on = St.mode === 'explore' && St.tab === 'traits' && !!t.characters;
         chipBox.hidden = !on;
         if(!on){ chipBox.innerHTML = ''; return; }
-        chipBox.innerHTML = t.characters.map(function(c){ return '<button type="button" class="tr2-chip" data-ch="' + esc(c.id) + '" aria-pressed="false"><span class="tr2-tickmark" aria-hidden="true"></span>' + esc(c.short || c.name) + '</button>'; }).join('');
+        chipBox.innerHTML = t.characters.map(function(c){ return '<button type="button" class="tr2-chip" data-ch="' + esc(c.id) + '" aria-pressed="false">' + esc(c.short || c.name) + '</button>'; }).join('');
         chipBox.querySelectorAll('.tr2-chip').forEach(function(b){ b.setAttribute('aria-label', charOf(t, b.getAttribute('data-ch')).name + ': place it on the tree'); });
         paintChips();
       }
@@ -833,7 +837,7 @@
         return out;
       }
       function names(t, ids){ var a = ids.map(function(x){ return lower(nm(t, x)); }); return a.length <= 3 ? a.join(' + ') : a.length + ' ' + word(t); }
-      var wKey = '';
+      var wKey = '', takeT = 0;
       function words(){
         var t = tree(), r = root(), parts = [], took = null;
         if(St.mode === 'quiz'){ if(St.part === 'place') cause.set([]); return; }
@@ -868,7 +872,10 @@
               { t: k <= 3 ? names(t, ch.has) + ' inherit it' : 'all ' + k + ' tips above inherit it', role: 'tip', say: list(ch.has.map(function(x){ return taxon(t, x).name; })) + ' inherit it' }];
             if(!cl.kids.length) parts[1].t = 'arose on one branch';
             parts = fit(parts, 2);
-            if(on.length === t.characters.length && V.ticks.every(function(x){ return x.s >= 1 && x.paint >= 1 && !x.leaving; })) took = EX.takeTraits;
+            // every trait placed: this trait's line shows first, the takeaway follows on the next beat (2 s)
+            if(on.length === t.characters.length && V.ticks.every(function(x){ return x.s >= 1 && x.paint >= 1 && !x.leaving; }) && !St.took && !takeT){
+              takeT = setTimeout(function(){ takeT = 0; if(St.mode === 'explore' && St.tab === 'traits' && (St.traits[treeId()] || []).length === tree().characters.length){ St.took = EX.takeTraits; words(); } }, calm() ? 1200 : 2000);
+            }
           }
           if(St.took && !took) took = St.took;
         }
@@ -933,7 +940,7 @@
         showPic();
       });
       function newTree(){
-        stopAll();
+        stopAll(); clearTimeout(takeT); takeT = 0;
         St.sel = []; St.lastPair = St.prevPair = null; St.took = null; V.glow = { tips: [], m: null, p: 0, to: 0 }; V.pop = 0; glowK = {};
         V.ticks = (St.traits[treeId()] || []).map(function(cid){ return { id: 'k' + (++tickId), cid: cid, s: 1, paint: 1, dur: 0.5 }; });
         paintTreeBtns(); lastWH = ''; layoutNow(true);
@@ -941,6 +948,7 @@
         settled();
       }
       function reset(){
+        clearTimeout(takeT); takeT = 0;
         // Start over: every rotation unwinds (shown), the taps and traits go
         hideCue(true);
         var r = root(), from = {}; P.leaves(r).forEach(function(l){ from[l.name] = drawnSlot(l.name); });
@@ -961,6 +969,7 @@
       /* ---------------------------------------------------- tabs */
       function goTab(v){
         if(St.tab === v) return;
+        clearTimeout(takeT); takeT = 0;
         stopAll(); hideCue(false); if(tour.active()) tour.stop(); if(tourT.active()) tourT.stop();
         St.tab = v; St.took = null;
         head.purpose(EX.purpose[v]);
@@ -1012,7 +1021,7 @@
         var t = tree(), r = root(), h = '<h3 class="ls-title-l">This drawing: ' + esc(t.title) + '</h3><p class="bt-small">' + esc(t.about) + '</p>' + describe(t, r);
         if(t.characters) h += '<h3 class="ls-title-l">Which organisms have each trait</h3>' + T.dataTable(['Taxon'].concat(t.characters.map(function(c){ return esc(c.name); })), t.taxa.map(function(x){ return [esc(x.name)].concat(t.characters.map(function(c){ return c.has.indexOf(x.id) >= 0 ? 'Yes' : 'No'; })); }), 'Yes = has the shared derived trait (' + esc(taxon(t, t.outgroup).name) + ' is the outgroup)') +
           '<p class="bt-small">A shared derived trait arose once, in the common ancestor of a clade, and every descendant inherits it (unless it is lost later). The outgroup branched off first: what it has is treated as the older state.</p>';
-        if(t.kind === 'dna'){ var ids = t.taxa.map(function(x){ return x.id; }); h += '<h3 class="ls-title-l">DNA differences read from the tree</h3><p class="bt-small">Each value is the sum of the branch lengths between two tips, in ' + esc(t.unit) + '. The smallest difference marks the most recent common ancestor.</p>' +
+        if(t.kind === 'dna'){ var ids = t.taxa.map(function(x){ return x.id; }); h += '<h3 class="ls-title-l">DNA differences read from the tree</h3><p class="bt-small">Each value is the sum of the branch lengths between two tips, in ' + esc(t.unit) + '. The pair with the smallest difference shares the most recent common ancestor.</p>' +
           T.dataTable(['Taxon'].concat(t.taxa.map(function(x){ return esc(x.name); })), ids.map(function(a){ return [esc(taxon(t, a).name)].concat(ids.map(function(b){ return a === b ? '—' : F(P.distance(r, a, b), 1); })); }), 'Percent of DNA bases that differ'); }
         h += '<h3 class="ls-title-l">Reading a tree</h3><ul class="bt-small"><li>Time runs from the root (the past) up to the tips; every tip is alive today, so no tip is the ancestor of another.</li><li>Two tips are closer kin when their most recent common ancestor is more recent (nearer the tips), not when they stand side by side.</li><li>Rotating a node swaps the order of its branches, like spinning a hanging mobile: the tips move, every node keeps the same descendants.</li><li>A clade is an ancestor and all of its descendants. A group that leaves some of them out, such as moss and fern without the seed plants, is not a clade (paraphyletic; such a group is sometimes called a grade).</li><li>No tip is “more evolved”: the left and right of a tree mean nothing. In a cladogram the heights of the branch points only show which split came first along each line, not dates; the primate tree is drawn to scale.</li></ul>';
         if(refLive.__h !== h){ refLive.__h = h; refLive.innerHTML = h; }
@@ -1044,19 +1053,27 @@
         });
         V.ticks = V.ticks.filter(function(k){ return want[k.cid]; });
       }
+      // on a phone the side panel sits away from the picture: arming a trait or choosing a branch brings the tree into view
+      function toScene(){
+        if((window.innerWidth || 800) >= 600) return;
+        var r = sceneBox.getBoundingClientRect(), vh = window.innerHeight || 800;
+        if(r.top >= 0 && r.bottom <= vh) return;
+        try{ sceneBox.scrollIntoView({ block: r.height > vh ? 'start' : 'center', behavior: calm() ? 'auto' : 'smooth' }); }catch(e){ sceneBox.scrollIntoView(); }
+      }
       function plist(){
         var t = byId(St.treeP), pl = St.place[t.id] = St.place[t.id] || {}, box = pDock.querySelector('.tr2-plist'), chk = St.checked[t.id];
         box.innerHTML = '';
         t.characters.forEach(function(c, i){
           var row = document.createElement('div'); row.className = 'tr2-prow';
-          row.innerHTML = '<button type="button" class="tr2-pchip' + (St.armed === c.id ? ' is-armed' : '') + (pl[c.id] ? ' is-placed' : '') + '" data-pc="' + esc(c.id) + '" aria-pressed="' + (St.armed === c.id) + '"' + (chk ? ' disabled' : '') + '><b>' + (i + 1) + '</b> ' + esc(c.name) + '</button>';
-          var s = T.choiceSelect({ label: 'Branch for ' + (i + 1) + '. ' + c.short, value: pl[c.id] || '', options: branchOptions(t), onChange: function(v){ pl[c.id] = v; St.armed = null; placeTicks(); plist(); kick(); paint(); } });
+          row.innerHTML = '<button type="button" class="tr2-pchip' + (St.armed === c.id ? ' is-armed' : '') + (pl[c.id] ? ' is-placed' : '') + '" data-pc="' + esc(c.id) + '" aria-pressed="' + (St.armed === c.id) + '"' + (chk ? ' disabled' : '') + ' aria-label="' + esc((i + 1) + '. ' + c.name + ': tap it, then tap its branch') + '"><b>' + (i + 1) + '</b> ' + esc(c.short || c.name) + '</button>';
+          var s = T.choiceSelect({ label: 'Branch for ' + (i + 1) + '. ' + c.short, value: pl[c.id] || '', options: branchOptions(t), onChange: function(v){ pl[c.id] = v; St.armed = null; placeTicks(); plist(); kick(); paint(); if(v) setTimeout(toScene, 160); } });
           if(chk) s.select.disabled = true;
           row.appendChild(s.el); box.appendChild(row);
         });
       }
       pDock.addEventListener('click', function(e){
-        var b = e.target.closest('.tr2-pchip'); if(b){ var id = b.getAttribute('data-pc'); St.armed = St.armed === id ? null : id; plist(); var nb = pDock.querySelector('[data-pc="' + id + '"]'); if(nb) nb.focus(); sceneBox.classList.toggle('is-armed', !!St.armed); say(St.armed ? 'Now tap the branch where this trait first appeared.' : ''); return; }
+        // a trait picked up leads to the picture, not to the next empty list (the frame's own reveal stays out of it)
+        var b = e.target.closest('.tr2-pchip'); if(b){ e.stopPropagation(); var id = b.getAttribute('data-pc'); St.armed = St.armed === id ? null : id; plist(); var nb = pDock.querySelector('[data-pc="' + id + '"]'); if(nb) try{ nb.focus({ preventScroll: true }); }catch(er){ nb.focus(); } sceneBox.classList.toggle('is-armed', !!St.armed); if(St.armed) setTimeout(toScene, 160); say(St.armed ? 'Now tap the branch where this trait first appeared.' : ''); return; }
         var c = e.target.closest('[data-c]'); if(!c) return;
         if(c.getAttribute('data-c') === 'check') checkPlace();
         else if(c.getAttribute('data-c') === 'again'){ var t = byId(St.treeP); St.checked[t.id] = false; St.place[t.id] = {}; placeOpen(); var f = pDock.querySelector('.tr2-pchip'); if(f) f.focus(); }
@@ -1237,7 +1254,7 @@
       window.__tr2 = { G: function(){ return G; }, POS: function(){ return POS; }, St: St, V: V, busy: busy, root: root, tree: tree, P: P,
         tap: function(id){ tapTip(id); }, rot: function(id){ rotate(id); }, trait: function(cid){ tapTrait(cid); }, tab: function(v){ tabs.value(v); goTab(v); }, reset: reset,
         setTree: function(id){ if(St.tab === 'anc') St.treeA = id; else St.treeT = id; newTree(); }, stopAll: function(){ stopAll(); settled(); }, noCue: function(){ hideCue(true); },
-        place: function(cid, br){ placeChar(cid, br); }, fit: fitHeight, layout: function(){ lastWH = ''; layoutNow(true); } };
+        place: function(cid, br){ placeChar(cid, br); }, hit: function(x, y){ return hitAt(x, y); }, fit: fitHeight, layout: function(){ lastWH = ''; layoutNow(true); } };
     }, { studio: { kit2: function(ctx){ return ctx.kit2; } } });
   }
   /* The page loads the kit (pages.json "kit2": true). A cached copy of the old page would not: fetch it then. */

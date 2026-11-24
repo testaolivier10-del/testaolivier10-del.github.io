@@ -746,3 +746,6 @@ in each tool's brief.
 | 2026-11-24 | AP Bio Tree reading | Cladogram nodes are placed by nesting, not time (said in "?"); the primate tree is drawn to scale | Cladograms carry no dates | `layout()` `g.hy` |
 | 2026-11-24 | AP Bio Tree reading | "?" adds a short Reading a tree list (time from root to tips, rotation, no more evolved side, clades and grades) | Depth behind "?" | `refHtml()` |
 | 2026-11-24 | AP Bio Tree reading | Blurb and intro reworded; title, description and URL unchanged; the page no longer loads bio-art.js | The tool draws its own organisms | `pages.json`, `build-apbio.mjs` |
+| 2026-11-24 | AP Bio Tree reading | Review round 1: dragging a trait chip onto a branch (old Place the characters) is dropped; Place the traits is tap a trait then a branch, or the lists, and on a phone the tree scrolls into view | Taps and lists cover it; one way to place on every screen | `pDock`, `toScene()`. Reverse: add `K.draw` style dragging |
+| 2026-11-24 | AP Bio Tree reading | Review round 1: the lancelet, lamprey and lizard are drawn at a slant and thicker | They were slivers at phone size | `POSE` in `ApBioTreeArt` |
+| 2026-11-24 | AP Bio Tree reading | Review round 1: the last trait's own line shows for 2 s, then the takeaway | Every tap's result is said | `words()` |
