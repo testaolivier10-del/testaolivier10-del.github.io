@@ -1,8 +1,8 @@
 /* Brain map (psychology/assets/tools/brain-map.js; tools v2, docs/tools-v2-brain-map-brief.md). OWNED BY THIS TOOL.
-   The brain is drawn as tissue (a lit, folded surface) with the four lobes tinted one colour each, the same colour
+   The brain is drawn as tissue (a lit, folded surface) with the four lobes tinted one color each, the same color
    everywhere (picture, card, cause line): frontal blue, parietal amber, temporal green, occipital purple; parts that
-   are not cortex take the course colour when picked. Damage is a dark red hatch; the word's signal in the split-brain
-   test is gold. Every part is also named (card, cause line), so colour is never the only cue. Light and dark. */
+   are not cortex take the course color when picked. Damage is a dark red hatch; the word's signal in the split-brain
+   test is gold. Every part is also named (card, cause line), so color is never the only cue. Light and dark. */
 .bmx{display:flex;flex-direction:column;gap:8px;min-height:0;
   --bm-f:#3E8ED0;--bm-p:#E0A21B;--bm-t:#2E9E6B;--bm-o:#9A62C4;--bm-x:#0B6FA8;--bm-dmg:#B3261E;--bm-word:#E8A800;--bm-yes:#0B7A55;}
 :root[data-theme="dark"] .bmx{--bm-f:#7DB8EC;--bm-p:#F2C14E;--bm-t:#5FCB98;--bm-o:#C49BE6;--bm-x:#7CC4EE;--bm-dmg:#FF8A7A;--bm-word:#FFD24D;--bm-yes:#6FD9AE;}
@@ -53,7 +53,7 @@
 .bmx-dmg:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
 .bmx[data-tab="split"] .bmx-dmg{display:none;}
 
-/* the cause line: a part's name in its lobe's colour (course colour for the rest), its job in ink, damage in red */
+/* the cause line: a part's name in its lobe's color (course color for the rest), its job in ink, damage in red */
 .bmx .tk2-cz.is-kf{--cz:var(--bm-f);--cz-ink:color-mix(in srgb, var(--bm-f) 70%, var(--ink));}
 .bmx .tk2-cz.is-kp{--cz:var(--bm-p);--cz-ink:color-mix(in srgb, var(--bm-p) 45%, var(--ink));}
 .bmx .tk2-cz.is-kt{--cz:var(--bm-t);--cz-ink:color-mix(in srgb, var(--bm-t) 60%, var(--ink));}
@@ -130,7 +130,7 @@
 :root[data-theme="dark"] .bm-head{fill:rgba(230,190,165,.07);stroke:rgba(240,200,180,.3);}
 .bm-head-l{fill:none;stroke:rgba(150,100,80,.4);stroke-width:3;stroke-linecap:round;}
 :root[data-theme="dark"] .bm-head-l{stroke:rgba(240,200,180,.3);}
-/* the picked part: its colour (the lobe's, or the course colour) and an edge */
+/* the picked part: its color (the lobe's, or the course color) and an edge */
 .bm-hl-f{fill:var(--hx);} .bm-hl-f.bm-k-f{fill:var(--hf);} .bm-hl-f.bm-k-p{fill:var(--hp);} .bm-hl-f.bm-k-t{fill:var(--ht);} .bm-hl-f.bm-k-o{fill:var(--ho);}
 .bm-hl-e{fill:none;stroke:var(--hedge);stroke-width:7;stroke-linejoin:round;}
 .bm-hl-e.is-dmg{stroke:var(--dmgln);}

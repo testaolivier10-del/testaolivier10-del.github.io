@@ -92,3 +92,4 @@ decision made on the owner's behalf, so he can skim it later and reverse any of 
 | AP® Biology, Chi-square test | Built 2026-11-19; review round 1 blocked, fixed the same day. Review PASS 2026-11-19 (recheck 1); integrated on the collecting branch `claude/tools-v2-all` (not on main) | `docs/tools-v2-chi-square-brief.md` |
 | AP® Biology, Rates and percent change | Built 2026-11-19; review round 1 blocked, fixed. Review PASS 2026-11-23 (recheck 1); integrated on the collecting branch `claude/tools-v2-all` (not on main) | `docs/tools-v2-rates-brief.md` |
 | AP® Psychology, Neuron | Built 2026-11-23, waiting for the independent review (not merged); on the brain map's adapter | `docs/tools-v2-neuron-brief.md` |
+| AP® Psychology, Brain map | Built 2026-11-23, waiting for the independent review (not merged); first AP® Psychology tool on the kit (adapter `ApPsychTools.kit2`); `K.spots` `under` | `docs/tools-v2-brain-map-brief.md` |

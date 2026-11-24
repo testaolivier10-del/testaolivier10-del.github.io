@@ -392,3 +392,16 @@ in each tool's brief.
 | 2026-11-23 | AP Psych Neuron | Test yourself keeps the old drill figures | Unchanged drills and grading; a new figure set is later work | `figure()` |
 | 2026-11-23 | AP Psych Neuron | No teaser in Explore | Screen kept quiet (as osmosis) | |
 | 2026-11-23 | AP Psych Neuron | A push of exactly threshold minus rest (15 mV) now fires | It said it reached −55 mV and did not fire | `simulate()` |
+| 2026-11-23 | AP Psych Brain map | Drawn in 2D, not on the shared 3D body model | The 3D model has no lobes, strips or language areas, and it is 3.3 MB for a free tool | `brain-map.js` art; a 3D brain would be a later separate tool |
+| 2026-11-23 | AP Psych Brain map | Map / Split brain and Outside / Inside switches became three tabs: Outside, Inside, Split brain | One idea per tab; the split-brain test teaches a different idea | `TABS` in `brain-map.js` |
+| 2026-11-23 | AP Psych Brain map | No printed labels in Explore; every name opens on a card when the part is tapped (the labels select is gone) | The picture stays clean; naming without labels is Test yourself's "Name the structure" | Reverse: print names from `G[view].reg` pins |
+| 2026-11-23 | AP Psych Brain map | "Light up a task (as fMRI would)" left Explore | A different idea (imaging); a third control on the map | The task list is in "?"; "Methods and fMRI" in Test yourself. Candidate for a later separate tool |
+| 2026-11-23 | AP Psych Brain map | The mirror view (right hemisphere) left Explore with the fMRI tasks | Only the fMRI tasks used it | Test yourself figures still draw the right hemisphere where a case needs it |
+| 2026-11-23 | AP Psych Brain map | "Word to flash" picker removed; each flash uses the next of the same eight words | The word teaches nothing; one control less | The list is in "?" |
+| 2026-11-23 | AP Psych Brain map | "If damaged" is one switch that stays on while other parts are tapped | Compare damage across parts quickly | `dbtn` in `brain-map.js` |
+| 2026-11-23 | AP Psych Brain map | Hippocampus, amygdala and reward center drawn see-through and solid (not dashed) on the midline view | No dashed ghost shapes (builder brief) | needs-author brain-map-v2 |
+| 2026-11-23 | AP Psych Brain map | Tapping a cut corpus callosum brings in a different person with it intact (it never heals) | Irreversible states do not heal (builder brief) | `toggleCut()` |
+| 2026-11-23 | AP Psych Brain map | On wide stages the head is drawn faintly round the brain; phones keep a larger brain and a "Front" chip | Fills the stage and shows which way the face is | `HEAD`, `FW` in `brain-map.js` |
+| 2026-11-23 | AP Psych Brain map | Short `job` and `hurt` phrases added to the model for the cause line | The full sentences do not fit two rows at 360 px | `math/brain-map.js` `SHORT`; tested |
+| 2026-11-23 | AP Psych Brain map | `K.spots` gained `under(x, y)`: a tap names the part drawn under the finger | A brain is areas, not points; acting on what is drawn | `assets/course/tool-kit2.js`; only tools that pass it change |
+| 2026-11-23 | AP Psych Brain map | AP Psychology's kit adapter is `ApPsychTools.kit2`, a thin wrapper of `modes()` that keeps the step drill as Test yourself | First AP Psychology tool on the kit; the other nine tools unchanged | `psy-tools.js`, `"kit2": true` in `psychology/data/pages.json` |

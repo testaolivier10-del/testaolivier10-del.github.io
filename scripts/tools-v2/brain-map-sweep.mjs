@@ -133,7 +133,7 @@ for (const w of WIDTHS) {
   await page.reload({ waitUntil: 'load' });
   await ready(page);
   const at = await page.evaluate(() => {
-    const A = window.BrainMapExplore, pic = document.querySelector('.bmx-pic').getBoundingClientRect(), k = pic.width / 1000;
+    const A = window.BrainMapExplore, pic = document.querySelector('.bmx-pic .tk2-layer').getBoundingClientRect(), k = pic.width / 1000;
     const pin = A._G.outside.reg.motor.pin;
     for (let y = 330; y > 150; y -= 6) for (let x = 380; x < 560; x += 4) { if (A._regAt('outside', x, y) === 'motor' && Math.hypot(x - pin[0], y - pin[1]) > 60) return [pic.left + x * k, pic.top + y * k]; }
     return null;
