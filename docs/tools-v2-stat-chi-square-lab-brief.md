@@ -121,6 +121,15 @@ every cell as a press target).
 9. A cell can go to 0 unless its row or column would be empty (then 1); the cap is 1.15 × the study's largest count.
 10. Goodness of fit appears only as a "Going further" line in "?" (out of the revised course).
 11. Takeaways: crossing α (decision and evidence words), the first big change, a chance table ("about 95 in 100").
+12. Test yourself figure: the old dashed cutoff line is solid.
+13. Review round 1: the knob sits beside the selected stack's top, not on it (on phones the last column's on the left).
+14. Review round 1: the first visit cue goes where it covers nothing (above or beside the knob, its arrow on the stack);
+    phones under 430 px have no such place, and there the knob's pulse is the cue.
+15. Review round 1: a chance table moves trays within each row in pairs, so the row totals never change while it plays.
+16. Review round 1: phones cap a count at 1.05 times the study's largest; short phones show the column names without
+    icons; the curve's axis runs to at most 2.5 times its usual range; the wide panel's plot is at most 0.8 times as tall
+    as wide.
+17. Review round 1: the short expected label is "E 30.7" (no bare bar).
 
 ## Accuracy
 - Every expected count, component, χ², df and p-value comes from `ApStatDist.chi2table` / `chi2Sf` / `invChi2`
@@ -180,3 +189,32 @@ every cell as a press target).
   honest drawn state, and it ends on the kept totals.
 - Test yourself is the old drill unchanged (its figure is the old table; only its cutoff line is now solid, not
   dashed).
+
+## Review round 1 (2026-11-24): BLOCK, fixed
+`/home/claude/review-stat-chi/REVIEW.md`. Statistics and frame agreement held. Must fix:
+1. The curve's title names the null by design: "(no association)" for independence, "(same distributions)" for
+   homogeneity.
+2. The short expected count reads "E 30.7" (the bare bar read as a minus sign); "expected 30.7" on wide cells.
+3. The first visit cue is placed by `cueSpot`: above the knob, above the stack (its arrow on the stack, the bubble slid
+   clear of the knob), beside or below, at the first place where it covers no stack, gap, expected line, number, sign,
+   total or the knob, trying the cells from the biggest part of χ² down and "Drag a stack" then "Drag"; a smaller bubble
+   under 1100 px and a smaller one on phones. Phones under 430 px have no such place: no cue there, the knob pulses
+   (owner log). The sweep's cue check now covers stacks, gaps, lines and pointers.
+4. The knob sits beside the stack's top (right of it; on phones the last column's on the left, clear of the totals),
+   never above the numbers band, so it never hides the gap or the line.
+5. Test yourself: the figure fits the stage less the expand button's 44 px (the Total row shows on first load at 390),
+   and a wrong answer's pill goes under the table with a row kept for it.
+Should fix, all done: a chance table moves trays in pairs within each row (the row totals never move; the frames run
+checks it); "?" reads "Because the p-value (less than 0.0001) is less than"; the 10% condition with numbers ("100
+students is less than 10% of all students at each school", "340 adults ..."); "?" works the expected count and its part
+with E to 3 places; the chance takeaway "About 95 in 100 chance tables give p above 0.05" (α as set), and the tour step
+says "above α"; the expected count hint renders at full size (`math-style: normal`, at least 12 px); short phones get
+the stacks more room (names only in the heads, a slimmer totals row, the phone cap 1.05, the curve panel 112 px); the
+wide panel's plot is at most 0.8 times as tall as wide, and the axis runs to at most 2.5 times its usual range (News'
+χ² then pins at the end with "→"); bigger drawn icons (a TV picture, a web page, flowers in pots); the brief lists every
+owner log decision.
+
+Fix round checks (speed rule): sweep at 360 (with 375 x 667 and 360 x 740), 390, 1024 and 1440, light and dark,
+**324 passed, 0 failed**; frames **50 passed, 0 failed** (with the row totals held through a chance table); AP Stats
+tests 166 pass, content check 0 failing, `build-apstat`, `build-apcalc`, `build-apmacro --check`, `check-site`,
+`check-weight --check`.

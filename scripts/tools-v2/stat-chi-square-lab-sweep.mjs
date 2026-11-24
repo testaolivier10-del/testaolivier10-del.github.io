@@ -87,7 +87,7 @@ async function open(w, h, dark, opts = {}) {
       // after every animation frame callback, check the picture against itself
       const raf = window.requestAnimationFrame.bind(window);
       window.__fr = { n: 0, bad: [] };
-      window.requestAnimationFrame = (cb) => raf((t) => { cb(t); if (window.__AGREE && window.ApStatChiSquareLab) { window.__fr.n++; const b = window.__AGREE(); if (b.length && window.__fr.bad.length < 20) window.__fr.bad.push(b.join('; ')); } });
+      window.requestAnimationFrame = (cb) => raf((t) => { cb(t); if (window.__rows) window.__rows.add([...document.querySelectorAll('.cs2-tots .cs2-tot')].slice(0, window.ApStatChiSquareLab.S.T.length).map(e => e.textContent).join('|')); if (window.__AGREE && window.ApStatChiSquareLab) { window.__fr.n++; const b = window.__AGREE(); if (b.length && window.__fr.bad.length < 20) window.__fr.bad.push(b.join('; ')); } });
     }
   }, [dark, !!opts.noCue, !!opts.frames]);
   await page.goto(URL0 + (opts.hash || ''));
@@ -153,7 +153,7 @@ const AGREE = () => {
   } else if (cz && X.busy()) out.push('a takeaway while the stacks still move');
   // the knob rides on the selected stack's drawn top
   const kd = document.querySelector('.cs2 .cs2-knob .tk2-knob'), sv = document.querySelector('.cs2-svg').getBoundingClientRect();
-  if (kd) { const r = kd.getBoundingClientRect(), [i, j] = X.S.sel, ky = r.top + r.height / 2 - sv.top, want = Math.min(G.rows[i].sBot - O[i][j] * G.pxc, G.rows[i].sBot - G.kFloor); if (Math.abs(ky - want) > 1) out.push(`knob at ${ky.toFixed(1)}, the stack's top at ${want.toFixed(1)}`); }
+  if (kd) { const r = kd.getBoundingClientRect(), [i, j] = X.S.sel, ky = r.top + r.height / 2 - sv.top, want = Math.max(Math.min(G.rows[i].sBot - O[i][j] * G.pxc, G.rows[i].sBot - G.kFloor), G.rows[i].y + G.band + G.kr + 6); if (Math.abs(ky - want) > 1) out.push(`knob at ${ky.toFixed(1)}, the stack's top at ${want.toFixed(1)}`); }
   return out;
 };
 
@@ -198,6 +198,8 @@ const LAYOUT = (phone) => {
   if (cue && vis(cue)) {
     const r = cue.getBoundingClientRect(); inS(r, 'cue');
     labs.forEach(l => { if (touch(r, l.r, 0, 0)) out.push(`cue covers "${l.w}"`); });
+    // nor any stack, gap, expected line or its pointers (review round 1)
+    drawn.forEach(o => { if (/cs2-(stk|gap|eline|etri)/.test(o.c) && touch(r, o.r, 0, 0)) out.push(`cue covers ${o.c.split(' ')[0]}`); });
     if (knob && touch(r, knob.getBoundingClientRect(), 0, 0)) out.push('cue covers the knob');
   }
   // the stacks' table is the largest part of the picture
@@ -242,7 +244,8 @@ if (ONE) {
     const th = await X(() => document.documentElement.getAttribute('data-theme') === 'dark');
     ok(th === dark, `${tag} theme: dark is ${th}`);
     const cue = await X(() => !!document.querySelector('.cs2 .tk2-cue'));
-    ok(cue, `${tag} no first visit cue`);
+    // phones under 430 px have no free place beside a cell for the bubble: the knob's pulse is the cue there (brief)
+    ok(cue || w < 430, `${tag} no first visit cue`);
     await check('00-first');
     const L = window => 0;
     await X(() => window.ApStatChiSquareLab.cue.hide(false));
@@ -259,7 +262,9 @@ if (ONE) {
     await X(() => window.ApStatChiSquareLab.alpha(0.05));
     // a drag that crosses α gives the decision takeaway
     await T('08-cross', () => { const X = window.ApStatChiSquareLab; X.reset(); });
-    await T('08-take', () => { const X = window.ApStatChiSquareLab, S = X.S; X.select(0, 0); X.drag(S.cap); });
+    // the first cell whose drag to its cap crosses α (the cap depends on the width)
+    await T('08-take', () => { const X = window.ApStatChiSquareLab, S = X.S, M = window.ApStatMath.chiSquareLab;
+      for (let i = 0; i < S.T.length; i++) for (let j = 0; j < S.T[0].length; j++) { const t = S.base.map(r => r.slice()); t[i][j] = S.cap; if (M.table(t).p < 0.05) { X.select(i, j); X.drag(S.cap); return; } } });
     const tk2 = await X(() => document.querySelector('.cs2 .tk2-cause').textContent);
     ok(/convincing evidence/.test(tk2), `${tag} no decision takeaway after crossing α: ${tk2}`);
     await T('09-news', () => window.ApStatChiSquareLab.setStudy('news'));
@@ -334,7 +339,8 @@ if (FRAMES) {
       await page.keyboard.press('Shift+ArrowUp'); await page.waitForTimeout(30); await page.keyboard.press('PageDown'); await page.waitForTimeout(200);
       await page.keyboard.press('Home'); await page.waitForTimeout(300); await page.keyboard.press('End'); await page.waitForTimeout(100); await page.keyboard.press('ArrowRight');
     }, () => { const X = window.ApStatChiSquareLab, S = X.S; return (S.sel[0] === 0 && S.sel[1] === 2 && S.T[0][1] === S.cap) || 'sel ' + S.sel + ' T01 ' + S.T[0][1]; });
-    await run('Chance table', async () => { await page.click('.cs2-chance'); });
+    await run('Chance table', async () => { await X(() => { window.__rows = new Set(); }); await page.click('.cs2-chance'); });
+    { const rs = await X(() => { const a = [...window.__rows]; window.__rows = null; return a; }); ok(rs.length === 1, `${tag} row totals moved during a chance table: ${rs.join(' / ')}`); }
     await run('Start over', async () => { await page.click('.cs2-reset'); });
     await run('a study change', async () => { await page.selectOption('.cs2-sel', 'news'); await page.waitForTimeout(50); await page.click('.cs2-chance'); });
     await run('leave to Test yourself mid change, come back', async () => {

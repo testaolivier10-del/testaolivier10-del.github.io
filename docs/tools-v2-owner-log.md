@@ -657,3 +657,8 @@ in each tool's brief.
 | 2026-11-24 | AP Statistics Chi-square lab | Goodness of fit only as a Going further line in "?" | Out of the revised 2026-27 course | `refHtml` |
 | 2026-11-24 | AP Statistics Chi-square lab | Takeaways: crossing α (decision and evidence words), the first big change of χ², a chance table ("about 95 in 100 land above 0.05") | Words only when the stacks have stopped | `endDrag`, the chance button |
 | 2026-11-24 | AP Statistics Chi-square lab | Test yourself figure: the old dashed cutoff line is solid | No dashed shapes | `.cs-crit` |
+| 2026-11-24 | AP Statistics Chi-square lab | Review round 1: the knob sits beside the selected stack's top, not on it (phones: the last column's on the left) | It hid the gap and the expected line | `g.kx`, `kY` |
+| 2026-11-24 | AP Statistics Chi-square lab | Review round 1: the first visit cue only where it covers nothing; on phones under 430 px there is no such place, so no cue there (the knob pulses) | A cue never covers a stack, a number or the knob | `cueSpot`, `cueShow`; reverse: allow it over empty cell space |
+| 2026-11-24 | AP Statistics Chi-square lab | Review round 1: a chance table moves trays in pairs within each row, so row totals never change mid animation | Each row (sample) keeps its total | `goPairs` |
+| 2026-11-24 | AP Statistics Chi-square lab | Review round 1: phones cap counts at 1.05 times the largest; short phones drop the column icons; the axis runs to at most 2.5 times its usual range; the wide plot is at most 0.8 times as tall as wide | Taller stacks on phones; no spike of a curve | `layout`, `plotScale` |
+| 2026-11-24 | AP Statistics Chi-square lab | Review round 1: the short expected label is "E 30.7" | The bare bar read as a minus sign | `paint` |
