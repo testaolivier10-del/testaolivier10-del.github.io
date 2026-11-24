@@ -14,7 +14,7 @@
 @media (max-width:1023px){ .rp2-scene{flex:none;height:clamp(600px, calc(100vh - 300px), 780px);min-height:0;} }
 /* a phone: sized to the screen by the script (sizeStage), so the tray and the cause line end at the fold; this is the
    fallback before it runs */
-@media (max-width:640px){ .rp2-scene{height:clamp(480px, calc(100svh - 240px), 884px);border-radius:14px;} .rp2{gap:8px;} }
+@media (max-width:640px){ .rp2-scene{height:clamp(430px, calc(100svh - 240px), 884px);border-radius:14px;} .rp2{gap:8px;} }
 .rp2-lines{display:flex;align-items:center;gap:6px 18px;flex-wrap:wrap;flex:none;}
 
 /* the controls on the picture: substrate and reagent (the main control), then the solvent, heat and play again */

@@ -135,16 +135,17 @@ const PLAYS = [
   ['mebubr', 'i', 1], ['mebubr', 'etoh'], ['bnbr', 'cn'], ['bnbr', 'h2o'], ['bnbr', 'dbu'], ['bnbr', 'otbu'], ['bubr2', 'oet', 0, 'aprotic'], ['tbubr', 'h2o', 0, 'aprotic']
 ];
 // on a phone's first screen the whole result is in view after a run: the tray's cards and the cause line (recheck 1)
-const FOLD = { 360: 740, 390: 844, 430: 932 };
+const FOLD = { 360: [740], 390: [844, 667], 430: [932] };   // 390 also stands for a short phone (375×667, recheck 2)
 for (const w of WIDTHS) {
-  if (FOLD[w]) for (const theme of THEMES) {
-    const o = await open({ w, h: FOLD[w], theme });
+  if (FOLD[w]) for (const fh of FOLD[w]) for (const theme of THEMES) {
+    const fw = fh === 667 ? 375 : w;
+    const o = await open({ w: fw, h: fh, theme });
     for (const [sub, rgt] of [['bubr2', 'oet'], ['tbubr', 'h2o'], ['neopentyl', 'oet']]) {
       await o.page.selectOption('#rpSubSel', sub); await o.page.selectOption('#rpRgtSel', rgt); await o.page.waitForTimeout(150);
       const r = await o.page.evaluate(() => { const ih = innerHeight, out = [];
         [...document.querySelectorAll('.rp2-card .rs2-thumb'), document.querySelector('.rp2 .tk2-cause')].forEach(e => { const q = e.getBoundingClientRect(); if (q.top < 0 || q.bottom > ih + 0.5) out.push((e.closest('.rp2-card') ? 'a tray card' : 'the cause line') + ' ends at ' + Math.round(q.bottom) + ' (fold ' + ih + ')'); });
         if (!document.querySelector('.rp2-card')) out.push('no tray cards'); return out; });
-      r.forEach(x => fails.push(w + 'x' + FOLD[w] + ' ' + theme + ' ' + sub + '+' + rgt + ': ' + x)); states++; checks += 3;
+      r.forEach(x => fails.push(fw + 'x' + fh + ' ' + theme + ' ' + sub + '+' + rgt + ': ' + x)); states++; checks += 3;
     }
     if (o.errs.length) fails.push(w + ' fold: ' + o.errs.join(' | '));
     await o.ctx.close();

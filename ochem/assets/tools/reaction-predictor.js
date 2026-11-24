@@ -402,6 +402,9 @@
     if(s.heat && isElim(out.major) && lead - 12 >= 95) why = why.filter(function(w){ return w.indexOf('heat') !== 0; });
     lead = Math.max(55, Math.min(95, lead));
     lead = Math.round(lead / 5) * 5;
+    // the secondary carbon's line names the share it ends at, not the starting band (recheck 2)
+    var SAY = { 80: 'about four times in five', 85: 'about 17 times in 20', 90: 'about nine times in ten', 95: 'about 19 times in 20' };
+    why = why.map(function(w){ return w.indexOf('on a secondary carbon a strong base takes the beta proton') === 0 ? 'on this secondary carbon the base takes the beta proton ' + (SAY[lead] || 'about ' + lead + ' times in 100') + ' in all' : w; });
 
     return [
       { path: out.major, pct: lead },
@@ -586,8 +589,14 @@
   /* What one path makes from this flask, for the tray: { st, name, kind } or null. The same formulas the old tool
      drew its product from (build, ALKENE), and the same Zaitsev / Hofmann rule as predict(). */
   var PNAME = { OH:'alcohol', OCH2CH3:'ether', 'OC(CH3)3':'ether', SH:'thiol', 'C#N':'nitrile', 'N=N+=N-':'azide', I:'alkyl iodide', NH2:'amine' };
+  var products = {};
   function productOf(sub, rgt, path){
     if(!B || !Chem || sub.generic) return null;
+    var pk = sub.id + '/' + rgt.id + '/' + path;
+    if(!(pk in products)) products[pk] = productOf0(sub, rgt, path);
+    return products[pk];
+  }
+  function productOf0(sub, rgt, path){
     if(path === 'SN1' || path === 'SN2'){
       var g = GROUP[rgt.id]; if(!g) return null;
       var st = build(DRAW[sub.id], g);
@@ -644,7 +653,7 @@
      sketch widens everything across that axis, so no group hides behind another (VIEW_TUNE in the brief). */
   var VIEW0 = [24, 14, 0, 1];
   var VIEW = { mebr: [50, 30, 280, 1.3, 0], prbr: [40, -15, 160, 1.3, 60], neopentyl: [40, -5, 260, 1.15, 0], bubr2: [-30, 15, 320, 1.3, 300],
-    tbubr: [30, -20, 160, 1.3, 240], mebubr: [30, -20, 160, 1.3, 240], bnbr: [45, -30, 200, 1.3, 60], cyhexbr: [40, -15, 200, 1.3, 0] };
+    tbubr: [30, -20, 160, 1.3, 240], mebubr: [30, -20, 160, 1.3, 240], bnbr: [45, -30, 200, 1.3, 60], cyhexbr: [30, -30, 200, 1.15, 0] };
 
   function newMol(){ return { atoms: [], by: {}, bonds: [] }; }
   function atom(m, o){ o.lp = o.lp || 0; o.q = o.q || 0; m.atoms.push(o); m.by[o.id] = o; return o; }
@@ -1092,7 +1101,7 @@
     var phone = window.innerWidth <= 640, call = MODE.mode === 'quiz' && MODE.part === 'call';
     if(!phone || call){ if(sceneBox.style.height) sceneBox.style.height = ''; return; }
     var top = sceneBox.getBoundingClientRect().top + (window.scrollY || window.pageYOffset || 0);
-    var h = Math.round(Math.max(480, Math.min(884, window.innerHeight - top - lines.offsetHeight - 16)));
+    var h = Math.round(Math.max(430, Math.min(884, window.innerHeight - top - lines.offsetHeight - 16)));
     if(sceneBox.style.height !== h + 'px'){ sceneBox.style.height = h + 'px'; if(cue && cue.active()) requestAnimationFrame(function(){ placeCue(); }); }
   }
   var LAY = null;
@@ -1107,7 +1116,7 @@
        path's title on top, and a row under the molecule for any name that cannot sit beside what it names. On a wide
        picture the title sits in the controls' row when there is room between them (recheck 1: more room for the
        molecule). On a phone the title row also holds Play it again, at its right end. */
-    var TT = PHONE ? 36 : 30, NB = 22, tx = W / 2, ty = null;
+    var TT = PHONE ? 36 : 30, NB = PHONE ? 0 : 22, tx = W / 2, ty = null;   // (a phone's spare names go beside the title)
     if(showBar && !PHONE && !(cue && cue.active())){   // (not while the first visit cue sits in that gap)
       var sr = sceneBox.getBoundingClientRect(), pr = bar.querySelector('.rp2-picks').getBoundingClientRect(), cr = bar.querySelector('.rp2-cond').getBoundingClientRect();
       if(Math.abs(pr.top - cr.top) < 8 && cr.left - pr.right >= 250){ tx = (pr.right + cr.left) / 2 - sr.left; ty = (pr.top + pr.bottom) / 2 - sr.top; TT = 0; }
@@ -1140,7 +1149,7 @@
         a0 = Math.min(a0, q.x - r); a1 = Math.max(a1, q.x + r); c0 = Math.min(c0, q.y - r); c1 = Math.max(c1, q.y + r); }); });
       var l = Math.min(b.w / (a1 - a0), b.h / (c1 - c0), cap);
       // turned only when that draws the molecule clearly bigger
-      if(!V || l > L * 1.12){ V = W0; L = l; x0 = a0; x1 = a1; y0 = c0; y1 = c1; }
+      if(!V || l > L * 1.04){ V = W0; L = l; x0 = a0; x1 = a1; y0 = c0; y1 = c1; }
     });
     V.L = L; V.ox = b.x + b.w / 2 - (x0 + x1) / 2 * L; V.oy = b.y + b.h / 2 - (y0 + y1) / 2 * L;
     return V;
@@ -1403,6 +1412,18 @@
           }
         }
       }
+      if(!spot && !n.head && PHONE){
+        // a phone has no row under the molecule (recheck 2: its height goes to the molecule): beside the title instead,
+        // in the title row's free space, then low in the molecule's box where no ball is
+        var tyr = LAY.titleY;
+        for(var tx2 = 6 + w / 2; tx2 <= LAY.W - 6 - w / 2 && !spot; tx2 += 6){
+          var rct = { l: tx2 - w / 2, t: tyr - h / 2, r: tx2 + w / 2, b: tyr + h / 2 };
+          if(!placed.some(function(p){ return !(rct.r + 5 <= p.l || p.r + 5 <= rct.l || rct.b + 5 <= p.t || p.b + 5 <= rct.t); }) &&
+             !avoid.some(function(p){ return !(rct.r <= p.l || p.r <= rct.l || rct.b <= p.t || p.b <= rct.t); })) spot = { x: tx2, y: tyr };
+        }
+        for(var yy2 = bx.y + bx.h - h / 2; yy2 > bx.y + h && !spot; yy2 -= 6) for(var xx2 = 6 + w / 2; xx2 <= LAY.W - 6 - w / 2 && !spot; xx2 += 8){
+          var rcl = { l: xx2 - w / 2, t: yy2 - h / 2, r: xx2 + w / 2, b: yy2 + h / 2 }; if(clear(rcl)) spot = { x: xx2, y: yy2 }; }
+      }
       if(!spot && !n.head){
         // no room beside it: the row under the molecule, as near under it as the other names there allow
         var ax = (n.at || s[n.k]).x, xs = [0];
@@ -1439,7 +1460,10 @@
     Object.keys(o.atoms).forEach(function(k){ var p = o.atoms[k], x = p.x, y = p.y; p.x = x * c - y * s; p.y = x * s + y * c; });
     return o;
   }
-  function fitCard(st, box){
+  var cardFits = {};
+  function fitCard(st, box, key){
+    var ck = key ? key + '|' + Math.round(box.w) + 'x' + Math.round(box.h) : null;
+    if(ck && cardFits[ck]) return cardFits[ck];
     var best = null;
     [0, 90, -90, 180, 45, -45].some(function(deg){
       var o = deg ? turned(st, deg) : st, T = PB.fitFlat(o, o, box, { cap: 1.1 }), boxes = [], inRing = {};
@@ -1454,6 +1478,7 @@
       if(!best || room > best.room) best = { st: o, T: T, room: room };
       return room >= 3;
     });
+    if(ck) cardFits[ck] = best;
     return best;
   }
   function drawTray(c, p, show, from){
@@ -1471,7 +1496,7 @@
         var major = i === 0 && !!it.path, rx = x + dw + (cw - dw) / 2 - 4, rw = cw - dw - 10;
         h += '<g class="rp2-card' + (major ? ' is-major' : '') + '"><rect class="rs2-thumb' + (major ? ' is-on' : '') + '" x="' + f1(x) + '" y="' + f1(cy) + '" width="' + f1(cw) + '" height="' + f1(ch) + '" rx="12"/>';
         if(pr && pr.st){
-          var ft = fitCard(pr.st, box), form = pr.formula || (it.path ? null : c.sub.formula);
+          var ft = fitCard(pr.st, box, c.sub.generic ? null : c.sub.id + '/' + c.rgt.id + '/' + (it.path || 'none')), form = pr.formula || (it.path ? null : c.sub.formula);
           // a card too small for the drawing's letters (a long ether on a phone) shows the condensed formula instead
           if(ft.room < 1 && form){
             var fs = 12, parts = 0.62 * fs * form.length > box.w ? form.split('–') : [form];
@@ -1571,7 +1596,9 @@
     showFrame(S.frames.length - 1, 'end');
     labsEl.classList.remove('is-wait'); cause.el.classList.remove('is-wait');
     var quizHidden = MODE.mode === 'quiz' && MODE.part === 'call' && !quiz.revealed;
-    drawTray(c, p, !quizHidden);
+    // the tray's drawings a frame after the end picture, so the change's own frame stays light (recheck 2)
+    if(K.reduced() || !window.requestAnimationFrame) drawTray(c, p, !quizHidden);
+    else { drawTray(c, p, false); requestAnimationFrame(function(){ if(!run && S && !S.generic) drawTray(c, p, !quizHidden); }); }
     if(!quizHidden){
       cause.set(causeParts(c, p, true));
       if(!(opts && opts.quiet)) say(cause.text());
