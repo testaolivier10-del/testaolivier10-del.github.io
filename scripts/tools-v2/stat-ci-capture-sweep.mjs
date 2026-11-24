@@ -200,6 +200,13 @@ const LAYOUT = (phone) => {
 if (ONE) {
   const w = +ONE;
   const h = w < 600 ? 844 : w <= 820 ? 1024 : w === 1024 ? 768 : w === 1280 ? 800 : w === 1920 ? 1080 : 900;
+  if (w === 360) {
+    // a short phone (360 x 740): Build and its cue show on the first screen
+    const { browser, page } = await open(360, 740, false);
+    const f = await page.evaluate(() => { const b = document.querySelector('.ci3-build').getBoundingClientRect(), c = document.querySelector('.ci3 .tk2-cue'); return { b: b.bottom <= innerHeight, c: !!c && c.getBoundingClientRect().bottom <= innerHeight }; });
+    ok(f.b && f.c, `360x740 landing: Build or its cue below the fold ${JSON.stringify(f)}`);
+    await browser.close();
+  }
   for (const dark of [false, true]) {
     const tag = `${w}-${dark ? 'dark' : 'light'}`;
     const { browser, page, errs } = await open(w, h, dark);
@@ -215,9 +222,13 @@ if (ONE) {
     const th = await X(() => document.documentElement.getAttribute('data-theme') === 'dark');
     ok(th === dark, `${tag} theme: dark is ${th}`);
     // the first visit: the cue sits right of Build, on the same row, covering nothing
-    const cue = await X(() => { const c = document.querySelector('.ci3 .tk2-cue'), b = document.querySelector('.ci3-build'); if (!c) return null; const r = c.getBoundingClientRect(), q = b.getBoundingClientRect();
-      const hits = [...document.querySelectorAll('.ci3 .tk2-cz, .ci3 .tk2-cz-a, .ci3-reset, .ci3-scene')].filter(e => e.getBoundingClientRect().width).some(e => { const z = e.getBoundingClientRect(); return r.top < z.bottom && r.bottom > z.top && r.left < z.right && r.right > z.left; });
-      return { cl: Math.round(r.left), br: Math.round(q.right), right: r.left >= q.right + 8 || r.right <= q.left - 8, row: Math.abs((r.top + r.bottom) / 2 - (q.top + q.bottom) / 2) < 6, overCause: hits, inView: r.right <= innerWidth - 2 && r.left >= 2 }; });
+    const cue = await X(() => {
+      const c = document.querySelector('.ci3 .tk2-cue'), b = document.querySelector('.ci3-build'); if (!c) return null;
+      const r = c.getBoundingClientRect(), q = b.getBoundingClientRect(), board = !!b.closest('.ci3-scene');
+      const over = (sel) => [...document.querySelectorAll(sel)].filter(e => e.getBoundingClientRect().width).some(e => { const z = e.getBoundingClientRect(); return r.top < z.bottom && r.bottom > z.top && r.left < z.right && r.right > z.left; });
+      if (board) return { board, right: r.top >= q.bottom - 1 && r.left < q.right && r.right > q.left, row: true, overCause: over('.ci3-peg, .ci3-labs text, .ci3-labs g, .ci3 .tk2-knob'), inView: r.bottom <= innerHeight && r.left >= 2 && r.right <= innerWidth - 2 };
+      return { cl: Math.round(r.left), br: Math.round(q.right), right: r.left >= q.right + 8 || r.right <= q.left - 8, row: Math.abs((r.top + r.bottom) / 2 - (q.top + q.bottom) / 2) < 6, overCause: over('.ci3 .tk2-cz, .ci3 .tk2-cz-a, .ci3-reset, .ci3-scene'), inView: r.right <= innerWidth - 2 && r.left >= 2 && r.bottom <= innerHeight };
+    });
     ok(cue && cue.right && cue.row && !cue.overCause && cue.inView, `${tag} first visit cue: ${JSON.stringify(cue)}`);
     // the picture, Build and the cause line show together on the first screen
     const fold = await X(() => { const b = document.querySelector('.ci3-build').getBoundingClientRect(), c = document.querySelector('.ci3 .tk2-cause').getBoundingClientRect(), s = document.querySelector('.ci3-scene').getBoundingClientRect(); return { b: b.bottom <= innerHeight, c: c.bottom <= innerHeight, s: s.top >= 0 && s.bottom <= innerHeight }; });

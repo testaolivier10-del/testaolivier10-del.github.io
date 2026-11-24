@@ -100,13 +100,20 @@
       } else v = S.useZ ? (2 * D.tCdf(D.invNorm(1 - (1 - L) / 2), s.n - 1) - 1) * 100 : L * 100;
       return (covCache[k] = v);
     }
-    function lrWord(L){ var v = longRun(L), d = v - L * 100; return !isFinite(v) ? '' : d < -2 ? 'below' : d > 2 ? 'above' : 'about'; }
-    function condWhy(){
+    /* Which AP condition fails, if any: large counts (a proportion), a skewed population with n under 30, z* for a
+       mean. Only then does the cause line say "below" or "above" (review round 1, M3): when the conditions hold the
+       method captures about C%, and the z interval's small wobble is told in "?". */
+    function condFail(){
       var s = setup();
-      if(s.kind === 'prop'){ var a = s.n * s.p, b = s.n * (1 - s.p); if(a < 10 || b < 10) return 'counts'; return lrWord(S.level) === 'about' ? '' : 'wobble'; }
+      if(s.kind === 'prop') return s.n * s.p < 10 || s.n * (1 - s.p) < 10 ? 'counts' : '';
       if(S.useZ) return 'z';
-      if(s.shape === 'skewed' && lrWord(S.level) !== 'about') return 'skew';
-      return '';
+      return s.shape === 'skewed' && s.n < 30 ? 'skew' : '';
+    }
+    function lrWord(L){ var v = longRun(L), d = v - L * 100; if(!isFinite(v) || !condFail()) return 'about'; return d < -2 ? 'below' : d > 2 ? 'above' : 'about'; }
+    function condWhy(){
+      var cf = condFail(); if(cf) return cf;
+      var s = setup();
+      return s.kind === 'prop' && Math.abs(longRun(S.level) - S.level * 100) > 0.5 ? 'wobble' : '';
     }
 
     /* ---------------------------------------------------- the stage */
@@ -210,7 +217,7 @@
       var pr = srng(91 + POPS.indexOf(S.pop) * 7), out = [], small = !!(G && G.phone);
       CMsmall = small;
       if(kind() === 'prop'){
-        var N = small ? 100 : 250, yes = Math.round(N * S.pTrue), flags = [];
+        var N = small ? 100 : 200, yes = Math.round(N * S.pTrue), flags = [];
         for(var i = 0; i < N; i++) flags.push(i < yes);
         for(var j = N - 1; j > 0; j--){ var k = Math.floor(pr() * (j + 1)), t = flags[j]; flags[j] = flags[k]; flags[k] = t; }
         flags.forEach(function(f, i){ out.push({ yes: f, sk: Math.floor(pr() * 5), hair: Math.floor(pr() * 4), jx: pr() - 0.5, jy: pr() - 0.5 }); });
@@ -316,10 +323,9 @@
         var xx = xs(t); if(xx < s.l - 1 || xx > s.r + 1) return;
         if(kind() === 'prop' && (t < -1e-9 || t > 1 + 1e-9)) return;
         o += '<line class="ci3-tick" x1="' + n1(xx) + '" x2="' + n1(xx) + '" y1="' + n1(ay) + '" y2="' + n1(ay + 5) + '"/>';
-        var lab = minus(String(+t.toPrecision(6))), lw = tw(lab, 11.5, 700);
+        var lab = (S.pop.money && kind() === 'mean' ? '$' : '') + minus(String(+t.toPrecision(6))), lw = tw(lab, 11.5, 700);
         if(Math.abs(xx - pegX) < pegW / 2 + lw / 2 + 6) return;
         if(xx - lw / 2 < s.x + 4 || xx + lw / 2 > s.x + s.w - 4) return;
-        if(xx + lw / 2 > s.r - axW - 6) return;
         o += '<text class="ci3-tk" x="' + n1(xx) + '" y="' + n1(ay + 18) + '" text-anchor="middle">' + lab + '</text>';
       });
       // a proportion below 0 cannot happen: the axis shows where 0 is
@@ -344,7 +350,7 @@
       var ptv = kind() === 'prop' ? pct(S.pTrue, 0) + ' ' + (S.pop.yes || 'yes') : 'mean ' + (S.pop.money ? '$' : '') + F(S.pop.mu, 0) + (S.pop.money || g.phone ? '' : ' ' + (S.pop.unit || ''));
       var ptk = S.pop.crowd || S.pop.name;
       // the title fits its panel: a shorter name when it would not
-      if(tw(ptk + ': ' + ptv, 13.5, 900) > p.w - 24) ptk = ptk.replace(/^All /, '');
+      if(tw(ptk + ': ' + ptv, 13.5, 900) > p.w - 24){ ptk = ptk.replace(/^All /, ''); ptk = ptk.charAt(0).toUpperCase() + ptk.slice(1); }
       if(tw(ptk + ': ' + ptv, 13.5, 900) > p.w - 24 && kind() === 'prop'){ ptv = pct(S.pTrue, 0) + ' ' + (S.pop.yes || 'yes').split(' ')[0]; }
       Lb.pt.innerHTML = esc(ptk) + ': <tspan class="ci3-pv">' + esc(ptv) + '</tspan>';
       if(kind() === 'mean'){
@@ -367,11 +373,10 @@
       // the rate plot's axes
       var ro = '';
       ro += '<text class="ci3-rtitle" data-lab="rt" x="' + n1(q.x + (g.phone ? 10 : 12)) + '" y="' + n1(q.y + 19) + '">' + (g.phone ? 'Captured' : 'Captured, at each level') + '</text>';
-      (g.phone ? [50, 100] : [50, 75, 100]).forEach(function(t){ var yy = rY(t); ro += '<line class="ci3-rgrid" x1="' + n1(q.l) + '" x2="' + n1(q.r) + '" y1="' + n1(yy) + '" y2="' + n1(yy) + '"/><text class="ci3-tk" data-lab="rtk" x="' + n1(q.l - 5) + '" y="' + n1(yy + 4) + '" text-anchor="end">' + t + '%</text>'; });
       [80, 90, 99].forEach(function(t){ var xx = rX(t); ro += '<line class="ci3-tick" x1="' + n1(xx) + '" x2="' + n1(xx) + '" y1="' + n1(q.b) + '" y2="' + n1(q.b + 4) + '"/><text class="ci3-tk" data-lab="rtk" x="' + n1(xx) + '" y="' + n1(q.b + 16) + '" text-anchor="middle">' + t + '%</text>'; });
       ro += '<line class="ci3-raxis" x1="' + n1(q.l) + '" x2="' + n1(q.r) + '" y1="' + n1(q.b) + '" y2="' + n1(q.b) + '"/>';
-      ro += '<line class="ci3-diag" x1="' + n1(rX(80)) + '" y1="' + n1(rY(80)) + '" x2="' + n1(rX(99)) + '" y2="' + n1(rY(99)) + '"/>';
       var rg = mk('g', 'ci3-rstat', null, sLabs); rg.innerHTML = ro;
+      Lb.rax = mk('g', 'ci3-rax', null, sLabs); Lb.rax._f = null; drawRateAxes();
       Lb.diag = mk('text', 'ci3-diagt', { 'data-lab': 'diag', 'text-anchor': 'end' }, sLabs);
       txt(Lb.diag, 'rate = level');
       Lb.rdots = mk('g', 'ci3-rdots', null, sLabs);
@@ -395,7 +400,25 @@
       at(Lb.diag, { x: best[0], y: best[1], 'text-anchor': 'start' });
     }
     function rX(l){ var q = G.rate; return q.l + 16 + (l - 80) / 19 * (q.r - q.l - 22); }
-    function rY(c){ var q = G.rate; return q.b - (clamp(c, 50, 100) - 50) / 50 * (q.b - q.t); }
+    /* The rate plot's floor follows the lowest value it must show: 70%, else 50%, else 0% (review round 1, M4, S2);
+       a change of floor is animated (the grid, the line and the dots move together). */
+    var rF = 70, rFfrom = 70, rFto = 70, rFt0 = 0, RFD = 320;
+    function rY(c){ var q = G.rate; return q.b - (clamp(c, rF, 100) - rF) / (100 - rF) * (q.b - q.t); }
+    function rfBusy(){ return rFfrom !== rFto && now() < rFt0 + RFD; }
+    function floorFor(vals){ var m = Math.min.apply(null, vals.concat([100])); return m >= 72 ? 70 : m >= 52 ? 50 : 0; }
+    function stepFloor(t, target){
+      if(target !== rFto){ rFfrom = rF; rFto = target; rFt0 = t; if(calm()) rF = rFfrom = rFto; else kick(); }
+      if(rF !== rFto) rF = t >= rFt0 + RFD ? rFto : rFfrom + (rFto - rFfrom) * easeIO(clamp((t - rFt0) / RFD, 0, 1));
+      drawRateAxes();
+    }
+    function drawRateAxes(){
+      if(!Lb.rax || Lb.rax._f === rF) return;
+      Lb.rax._f = rF;
+      var q = G.rate, ro = '', f0 = rFto, ts = f0 === 70 ? (G.phone ? [70, 100] : [70, 85, 100]) : f0 === 50 ? (G.phone ? [50, 100] : [50, 75, 100]) : (G.phone ? [0, 100] : [0, 50, 100]);
+      ts.forEach(function(t){ if(t < rF - 1e-9) return; var yy = rY(t); ro += '<line class="ci3-rgrid" x1="' + n1(q.l) + '" x2="' + n1(q.r) + '" y1="' + n1(yy) + '" y2="' + n1(yy) + '"/><text class="ci3-tk" data-lab="rtk" x="' + n1(q.l - 5) + '" y="' + n1(yy + 4) + '" text-anchor="end">' + t + '%</text>'; });
+      ro += '<line class="ci3-diag" x1="' + n1(rX(80)) + '" y1="' + n1(rY(80)) + '" x2="' + n1(rX(99)) + '" y2="' + n1(rY(99)) + '"/>';
+      Lb.rax.innerHTML = ro;
+    }
     function pill(cls, lab){
       var gg = mk('g', cls, { 'data-lab': lab }, sLabs), rr = mk('rect', null, { rx: 9 }, gg), t = mk('text', null, { 'text-anchor': 'middle' }, gg);
       var o = { g: gg, s: null, box: null,
@@ -421,6 +444,9 @@
     function curCrit(t){ if(cDur <= 0 || t >= cT0 + cDur) return crit1; return crit0 + (crit1 - crit0) * easeIO(clamp((t - cT0) / cDur, 0, 1)); }
     /* one row as drawn now: its ring's ends in px (rounded as drawn), and whether those ends hold the peg */
     function paintRow(r, i, t){
+      // a ring still waiting for (or flying with) its sample has nothing drawn yet: paint it once
+      if((r.st === 'wait' || r.st === 'fly') && r._idle && r._idleY === G.key){ return r.drawn; }
+      if(r.st === 'wait' || r.st === 'fly'){ r._idle = true; r._idleY = G.key; } else r._idle = false;
       var s = G.st, y = rowY(i), pegX = n1(xs(trueVal())), me = dCrit * r.se;
       var f = r.st === 'grow' ? r.f : r.st === 'done' || r.st === 'leave' ? 1 : 0;
       var x0 = n1(xs(r.est - me * f)), x1 = n1(xs(r.est + me * f)), xc = n1(xs(r.est));
@@ -478,7 +504,7 @@
 
     /* ---------------------------------------------------- the loop */
     var raf = 0, lastT = 0;
-    function busy(){ return fly.length || leaving.length || R.some(function(r){ return r.st !== 'done'; }) || (cDur > 0 && now() < cT0 + cDur) || flips(); }
+    function busy(){ return fly.length || leaving.length || R.some(function(r){ return r.st !== 'done'; }) || (cDur > 0 && now() < cT0 + cDur) || rfBusy() || (!calm() && flips()); }
     function flips(){ var t = now(); return R.some(function(r){ return r.flip && t - r.flip < 420; }); }
     function kick(){ if(!raf && !calm()) raf = requestAnimationFrame(frame); }
     function frame(){
@@ -558,19 +584,23 @@
     function paintRate(dl){
       var landedAll = S.smps.length - (R.length - Dn.built);   // samples whose rings have landed
       var q = G.rate;
-      if(landedAll <= 0 || !R.length){ placeDiag([]); Lb.rdot.style.display = 'none'; txt(Lb.rall, ''); if(Lb.rdots.innerHTML) Lb.rdots.innerHTML = ''; return; }
+      if(landedAll <= 0 || !R.length){ stepFloor(now(), 70); if(Lb.diag._k !== '-'){ Lb.diag._k = '-'; placeDiag([]); } Lb.rdot.style.display = 'none'; if(Lb.rall._s){ Lb.rall._s = ''; txt(Lb.rall, ''); } if(Lb.rdots.innerHTML) Lb.rdots.innerHTML = ''; return; }
       // the samples still in the air are not counted: the rate is the drawn rows plus every older sample
       var older = S.smps.length - R.length, cOld = older > 0 ? capOld(dCrit, older) : 0, rate = (cOld + Dn.hit) / (older + Dn.built) * 100;
+      var triedR = Dn.built === R.length ? Object.keys(tried).filter(function(k){ return Math.abs(+k - dl) >= 0.004; }).map(function(k){ var L = +k; return [L, capAt(critOf(L)) / S.smps.length * 100]; }) : [];
+      stepFloor(now(), floorFor([rate].concat(triedR.map(function(a){ return a[1]; }))));
       var x = rX(dl * 100), y = rY(rate);
       // the line's name sits under the line, at the end away from the current dot
       at(Lb.rdot, { cx: x, cy: y }); Lb.rdot.style.display = '';
-      Lb.rall.innerHTML = '<tspan class="ci3-rv">' + F(rate, 1) + '%</tspan> of ' + big(older + Dn.built);
-      placeDiag([[x, y]].concat(Dn.built === R.length ? Object.keys(tried).filter(function(k){ return Math.abs(+k - dl) >= 0.004; }).map(function(k){ var L = +k; return [rX(L * 100), rY(capAt(critOf(L)) / S.smps.length * 100)]; }) : []));
+      var rs = '<tspan class="ci3-rv">' + F(rate, 1) + '%</tspan> of ' + big(older + Dn.built);
+      if(Lb.rall._s !== rs){ Lb.rall._s = rs; Lb.rall.innerHTML = rs; }
+      var pts = [[x, y]].concat(triedR.map(function(a){ return [rX(a[0] * 100), rY(a[1])]; })), pk = pts.map(function(p){ return Math.round(p[0]) + ',' + Math.round(p[1]); }).join(' ');
+      if(Lb.diag._k !== pk){ Lb.diag._k = pk; placeDiag(pts); }
 
       // the levels tried, small: their rates with the same samples
       var key = '', dots = '';
       if(Dn.built === R.length){
-        Object.keys(tried).forEach(function(k){ var L = +k; if(Math.abs(L - dl) < 0.004) return; var c = critOf(L), rr = capAt(c) / S.smps.length * 100; dots += '<circle class="ci3-rold" r="3.5" cx="' + n1(rX(L * 100)) + '" cy="' + n1(rY(rr)) + '"/>'; key += k + ','; });
+        triedR.forEach(function(a){ dots += '<circle class="ci3-rold" r="3.5" cx="' + n1(rX(a[0] * 100)) + '" cy="' + n1(rY(a[1])) + '"/>'; });
       }
       if(Lb.rdots._k !== dots){ Lb.rdots._k = dots; Lb.rdots.innerHTML = dots; }
     }
@@ -598,6 +628,7 @@
     function select(i, how){
       if(i === S.sel && how === 'tap') i = -1;
       S.sel = i;
+      take = null; wKey = '';   // a picked row's parts take the cause line (review round 1, M1)
       R.forEach(function(r){ r._sel = null; });
       paint(now());
       var r = R[i];
@@ -607,12 +638,21 @@
       var me = dCrit * r.se, lo = r.est - me, hi = r.est + me;
       return 'Interval ' + (i + 1) + ': ' + statName() + ' = ' + F(r.est, kind() === 'prop' ? 3 : 2) + ', plus or minus ' + F(dCrit, 3) + ' times ' + F(r.se, kind() === 'prop' ? 4 : 3) + ', from ' + F(lo, 3) + ' to ' + F(hi, 3) + (r.drawn && r.drawn.hit ? ': it captures ' : ': it misses ') + parName() + '.';
     }
-    function nearestRow(clientY){
-      var rc = sceneBox.getBoundingClientRect(), y = clientY - rc.top, best = -1, bd = Infinity;
+    /* the row a finger means: among the rings drawn within about 8 px, the nearest by its drawn ring (x as well as y),
+       a miss (drawn thicker, what students tap) first; else the nearest row (review round 1, S1) */
+    function nearestRow(clientX, clientY){
+      var rc = sceneBox.getBoundingClientRect(), x = clientX - rc.left, y = clientY - rc.top, best = -1, bd = Infinity, near = Math.max(8, G.st.rowH * 1.5);
+      R.forEach(function(r, i){
+        if(r.st !== 'done' || !r.drawn) return;
+        var dy = Math.abs(rowY(i) - y); if(dy > near) return;
+        var dx = x < r.drawn.lo ? r.drawn.lo - x : x > r.drawn.hi ? x - r.drawn.hi : 0, d = Math.hypot(dx, dy) - (r.drawn.hit ? 0 : 4);
+        if(d < bd){ bd = d; best = i; }
+      });
+      if(best > -1) return best;
       R.forEach(function(r, i){ if(r.st !== 'done') return; var d = Math.abs(rowY(i) - y); if(d < bd){ bd = d; best = i; } });
       return bd <= Math.max(22, G.st.rowH * 2) ? best : -1;
     }
-    pickBox.addEventListener('click', function(e){ if(!G || !R.length) return; hideCue(true); var i = nearestRow(e.clientY); if(i < 0){ select(-1); return; } select(i, 'tap'); });
+    pickBox.addEventListener('click', function(e){ if(!G || !R.length) return; hideCue(true); var i = nearestRow(e.clientX, e.clientY); if(i < 0){ select(-1); return; } select(i, 'tap'); });
     pickBox.addEventListener('keydown', function(e){
       if(!R.length) return;
       var i = S.sel;
@@ -639,7 +679,7 @@
       if(d.built) out.push({ t: d.hit + ' of ' + d.built + ' capture ' + parName(), role: 'hit' });
       if(d.built === d.all && d.all === 100 && !(S.lastWhy && S.lastWhy.at > 0)){
         var w = lrWord(L);
-        out.push({ t: (w === 'about' ? 'about ' : w + ' ') + Math.round(L * 100) + '% in the long run', role: w === 'about' ? 'hit' : 'miss', say: (w === 'about' ? 'about ' : w + ' ') + Math.round(L * 100) + ' percent of intervals built this way capture ' + parName() + ' in the long run' });
+        out.push({ t: (w === 'about' ? 'about ' : w + ' ') + Math.round(L * 100) + '% in the long run', role: w === 'about' ? 'hit' : w === 'below' ? 'miss' : 'ink', say: (w === 'about' ? 'about ' : w + ' ') + Math.round(L * 100) + ' percent of intervals built this way capture ' + parName() + ' in the long run' });
       }
       return out;
     }
@@ -687,6 +727,7 @@
         fly.push({ r: row, i: i, t0: st, dur: slow ? 700 : clamp(160 + sp * 0.25, 220, 340), from: from, to: to, arc: clamp(sp * 0.12, 10, 60), scoop: slow, sr: [clamp(G.pop.w * 0.09, 16, 34), clamp((G.pop.cBot - G.pop.cTop) * 0.14, 9, 22)] });
       });
       bBuild.textContent = 'Build 100 more';
+      placeBuild();
       bReset.hidden = false;
       levelKnob(true);
       if(S.builds === 1) S.firstPending = true;
@@ -758,7 +799,7 @@
       S.pop = p; if(pTrue != null) S.pTrue = pTrue; else if(p.kind === 'prop') S.pTrue = p.p;
       pick.value = p.id;
       resetSamples(); S.builds = 0; S.lastWhy = null; take = null; covCache = {};
-      bBuild.textContent = 'Build 100 intervals'; bReset.hidden = true;
+      bBuild.textContent = 'Build 100 intervals'; bReset.hidden = true; placeBuild();
       CM = crowdModel(); D0 = dom();
       crit0 = crit1 = dCrit = critOf(S.level); cDur = 0;
       relayout(true);
@@ -770,7 +811,7 @@
     function startOver(){
       hideCue(true);
       stopAll(); clearRows(true); resetSamples(); S.builds = 0; S.lastWhy = null; take = null; S.sel = -1;
-      bBuild.textContent = 'Build 100 intervals'; bReset.hidden = true;
+      bBuild.textContent = 'Build 100 intervals'; bReset.hidden = true; placeBuild();
       levelKnob(false);
       paint(now()); kick(); refHtml();
       try{ bBuild.focus({ preventScroll: true }); }catch(e){}
@@ -783,14 +824,16 @@
       if(S.firstPending){
         S.firstPending = false;
         var w = lrWord(S.level);
-        if(!S.took.first){ S.took.first = 1; take = w === 'about' ? 'Over many samples, about ' + L + '% of ' + L + '% intervals capture the true value.'
+        if(!S.took.first){ S.took.first = 1; take = w === 'about' ? 'Over many samples, about ' + L + '% of these intervals capture the true value.'
           : 'In the long run ' + (w === 'below' ? 'fewer' : 'more') + ' than ' + L + '% of these capture ' + parName() + ': see ? for why.'; }
       } else if(S.lastWhy && S.lastWhy.dir){
-        var dir = S.lastWhy.dir;
-        if(!S.took['lv' + dir]){ S.took['lv' + dir] = 1; take = dir > 0 ? 'A higher level makes every interval wider, so more of them capture ' + parName() + '.' : 'A lower level makes every interval narrower, so more of them miss ' + parName() + '.'; }
+        // only when the drawn count moved the way the sentence says (review round 1, S3)
+        var dir = S.lastWhy.dir, moved = S.hitBase != null && (dir > 0 ? d.hit > S.hitBase : d.hit < S.hitBase);
+        if(moved && !S.took['lv' + dir]){ S.took['lv' + dir] = 1; take = dir > 0 ? 'A higher level makes every interval wider, so more of them capture ' + parName() + '.' : 'A lower level makes every interval narrower, so more of them miss ' + parName() + '.'; }
       } else if(S.lastWhy && S.lastWhy.n){
         if(!S.took.n){ S.took.n = 1; take = 'Larger samples, narrower intervals; about the same share still capture ' + parName() + '.'; if(/smaller/.test(S.lastWhy.t)) take = 'Smaller samples, wider intervals; about the same share still capture ' + parName() + '.'; if(lrWord(S.level) !== 'about') take = null; }
       }
+      S.hitBase = d.built === d.all ? d.hit : S.hitBase;
       wKey = '';
       words(now());
       say(d.hit + ' of ' + d.built + ' intervals capture ' + parName() + ' at a ' + L + '% level. ' + cause.text());
@@ -826,9 +869,31 @@
     var cueO = { key: 'apstat-ci-capture', text: 'Start here', side: 'right',
       at: function(){ var a = acts.getBoundingClientRect(), b = bBuild.getBoundingClientRect(); var k = actLayer.scale() || 1; return [(cueO.side === 'left' ? b.left - a.left - 4 : b.right - a.left + 4) / k, (b.top - a.top + b.height / 2) / k]; } };   // the layer reads its scale from the first svg inside (the cue's own icon)
     var cue = K.cue(actLayer, cueO);
-    function hideCue(used){ if(cue.active()) cue.hide(used); acts.classList.remove('has-cue'); }
+    /* On a wide landing (no intervals yet) Build sits on the empty board, in the middle of its right half, its cue under
+       it; the first build moves it to its row under the picture (review round 1, S9). */
+    var boardGo = el('div', 'ci3-boardgo'); layer.el.appendChild(boardGo);
+    var bcueO = { key: 'apstat-ci-capture', text: 'Start here', side: 'below',
+      at: function(){ var bb = boardGo.getBoundingClientRect(), sr = sceneBox.getBoundingClientRect(), k = layer.scale() || 1; return [(bb.left + bb.width / 2 - sr.left) / k, (bb.bottom - sr.top + 2) / k]; } };
+    var bcue = K.cue(layer, bcueO);
+    function onBoard(){ return !!(G && G.wide && !R.length && S.mode === 'explore'); }
+    function placeBuild(){
+      var on = onBoard(), had = document.activeElement === bBuild;
+      if(on){
+        var x = (xs(trueVal()) + G.st.r) / 2, y = (G.st.top + G.st.bot) / 2 - 20;
+        boardGo.style.left = x + 'px'; boardGo.style.top = y + 'px'; boardGo.hidden = false;
+        if(bBuild.parentNode !== boardGo){ boardGo.appendChild(bBuild); arrive(); }
+      } else {
+        boardGo.hidden = true;
+        if(bBuild.parentNode !== acts){ acts.insertBefore(bBuild, acts.firstChild); arrive(); }
+      }
+      if(had) try{ bBuild.focus({ preventScroll: true }); }catch(e){}
+    }
+    function arrive(){ bBuild.classList.remove('is-arrive'); void bBuild.offsetWidth; bBuild.classList.add('is-arrive'); }
+    function hideCue(used){ if(cue.active()) cue.hide(used); if(bcue.active()) bcue.hide(used); acts.classList.remove('has-cue'); }
     function cueShow(){
       if(S.mode !== 'explore' || R.length) return;
+      placeBuild();
+      if(bBuild.parentNode === boardGo){ if(!cue.active()) bcue.show(); return; }
       // beside Build, on the side with room (right of it when the button starts its row, left of it when it ends one)
       var a = acts.getBoundingClientRect(), b = bBuild.getBoundingClientRect();
       cueO.side = a.right - b.right >= 180 ? 'right' : 'left';
@@ -849,6 +914,8 @@
 
     /* ---------------------------------------------------- layout and full redraws */
     function placeControls(){
+      placeBuild();
+      if(bcue.active()) bcue.place();
       var s = G.st, p = G.pop;
       kLevel.place(s.track);
       kN.place(p.track);
@@ -881,7 +948,7 @@
       var top = sceneBox.getBoundingClientRect().top + (window.scrollY || window.pageYOffset || 0);
       var below = lines.offsetHeight || 120;
       var hh = Math.round(vh - Math.min(top, vh * 0.32) - below - 18);
-      sceneBox.style.height = clamp(hh, vw < 600 ? 470 : 520, vw < 600 ? 720 : 860) + 'px';
+      sceneBox.style.height = clamp(hh, vw < 600 ? 400 : 520, vw < 600 ? 720 : 860) + 'px';
     }
     var roT = 0;
     function onResize(){ clearTimeout(roT); roT = setTimeout(function(){ fitHeight(); relayout(); }, 40); }
@@ -898,10 +965,15 @@
       h += '<p><b>One row, one sample.</b> Each row is ' + art(L) + ' confidence interval built from its own random sample of ' + s.n + '. The orange dot is that sample’s ' + (isP ? 'proportion p̂' : 'mean x̄') + '; the posts are its ends. The blue peg is the true ' + (isP ? 'proportion' : 'mean') + ', which in real life we never see. A green ring captures it; a vermillion one with a cross misses.</p>';
       h += '<p><b>What ' + L + ' confident means.</b> The method captures the true value in about ' + L + ' of samples: if we took many random samples of this size and built ' + art(L) + ' interval from each, about ' + L + ' of the intervals would capture the true ' + (isP ? 'proportion' : 'mean') + '. Any one interval either captures it or misses; the ' + L + ' describes the method, not one interval. That is why the count in one batch of 100 wobbles (96, 93, 95) while the rate over many batches settles.</p>';
       h += '<p><b>The margin of error</b> is critical value × standard error: ' + (isP ? th('$z^* \\sqrt{\\hat{p}(1 - \\hat{p})/n}$') : th(S.useZ ? '$z^* \\, s/\\sqrt{n}$' : '$t^* \\, s/\\sqrt{n}$ with $df = n - 1$')) + '. A higher level needs a larger critical value, so every interval gets wider and more of them capture the true value. A sample 4 times as large halves the standard error, so the intervals get about half as wide; the share that capture stays about the level.</p>';
-      if(cw === 'counts') h += '<p><b>Why fewer capture here.</b> With n = ' + s.n + ' and p = ' + F(s.p, 2) + ', the expected ' + (s.n * s.p < 10 ? 'successes' : 'failures') + ' are ' + F(Math.min(s.n * s.p, s.n * (1 - s.p)), 1) + ', under 10: the large counts condition fails. The sampling distribution of p̂ is not close to normal (and a sample with p̂ = 0 gives an interval of width 0), so the z interval’s long run capture rate is ' + F(longRun(S.level), 1) + '%, not ' + L + '.</p>';
-      if(cw === 'wobble') h += '<p><b>Why not exactly ' + L + '.</b> p̂ can only take the values 0, 1/n, 2/n, …, so the z interval’s long run capture rate wobbles around the level when n is small, even when the large counts condition holds: here it is ' + F(longRun(S.level), 1) + '%.</p>';
-      if(cw === 'skew') h += '<p><b>Why fewer capture here.</b> The population is skewed right and n = ' + s.n + ' is small, so the sampling distribution of x̄ is still skewed and the t interval’s long run capture rate is about ' + F(longRun(S.level), 1) + '%, under ' + L + '. With n ≥ 30 (the central limit theorem) it comes close to the level.</p>';
-      if(cw === 'z') h += '<p><b>Why fewer capture here.</b> z* is too small for a mean with s in place of σ: the intervals are too narrow, and their long run capture rate is about ' + F(longRun(S.level), 1) + '%, under ' + L + '. The t* with ' + (s.n - 1) + ' degrees of freedom fixes it.</p>';
+      // the note's words follow the sign of the long run rate minus the level (review round 1, M2)
+      var lrv = longRun(S.level), dd = lrv - S.level * 100, lrs = F(lrv, 1) + '%';
+      // the same 2 point band as the cause line's "below" / "about" / "above"
+      var headW = dd < -2 ? 'Why fewer capture here.' : dd > 2 ? 'Why more capture here.' : 'Why this rate cannot be trusted here.';
+      var cmpW = dd < -2 ? 'under ' + L : dd > 2 ? 'over ' + L : 'close to ' + L + ' here, but with this condition failing the method cannot be relied on';
+      if(cw === 'counts') h += '<p><b>' + headW + '</b> With n = ' + s.n + ' and p = ' + F(s.p, 2) + ', the expected ' + (s.n * s.p < 10 ? 'successes' : 'failures') + ' are ' + F(Math.min(s.n * s.p, s.n * (1 - s.p)), 1) + ', under 10: the large counts condition fails. The sampling distribution of p̂ is not close to normal (and a sample with p̂ = 0 gives an interval of width 0), so the z interval’s long run capture rate is ' + lrs + ', ' + cmpW + '.</p>';
+      if(cw === 'wobble') h += '<p><b>Why not exactly ' + L + '.</b> The conditions hold, so the method captures about ' + L + '. Exactly, it is ' + lrs + ': p̂ can only take the values 0, 1/n, 2/n, …, so the z interval’s long run capture rate wobbles as the level changes, mostly a little below the level, and the wobble shrinks as n grows.</p>';
+      if(cw === 'skew') h += '<p><b>' + headW + '</b> The population is skewed right and n = ' + s.n + ' is under 30, so the sampling distribution of x̄ is still skewed and the t interval’s long run capture rate is about ' + lrs + ', ' + cmpW + '. With n ≥ 30 (the central limit theorem) it comes close to the level.</p>';
+      if(cw === 'z') h += '<p><b>' + headW + '</b> z* is too small for a mean with s in place of σ: the intervals are too narrow, and their long run capture rate is about ' + lrs + ', ' + cmpW + '. The t* with ' + (s.n - 1) + ' degrees of freedom fixes it.</p>';
       h += '<p><b>Say it right.</b> "We are ' + L + ' confident that the interval from … to … captures the true ' + (isP ? 'proportion' : 'mean') + ' of all ' + esc(S.pop.noun || '…') + ' …". Not "' + L + ' of the data", not "a ' + L + ' chance the true ' + (isP ? 'proportion' : 'mean') + ' is in this interval": once it is built, an interval either holds the true value or it does not.</p>';
       if(v && v.drawn){
         var me = dCrit * v.se, sd = isP ? null : v.se * Math.sqrt(s.n);
@@ -926,6 +998,8 @@
     }
 
     function boot(){
+      // the bundles that fly are made once, before the first build (review round 1, S4)
+      var pre = []; for(var pi = 0; pi < 40; pi++) pre.push(flyEl()); pre.forEach(flyFree);
       fitHeight();
       relayout(true);
       paint(now());
@@ -1032,7 +1106,7 @@
     }
     var estKnown = p.type !== 'prop' || st.phat;
     // the estimate's label keeps clear of the claim's line (v2 review rule: labels never touch drawn lines)
-    var eLab = sym + (estKnown ? ' = ' + T.F(g.est, g.d) + unit : ', the sample proportion'), ex = x2(g.est), eAnch = 'middle', eHalf = eLab.length * 4.2 + 8;
+    var eLab = sym + (estKnown ? ' = ' + T.F(g.est, g.d) + unit : ', the sample proportion'), ex = x2(g.est), eAnch = 'middle', eHalf = tw(eLab, 12.5, 800) / 2 + 8;
     if(g.p0 != null && Math.abs(x2(g.p0) - ex) < eHalf){ eAnch = x2(g.p0) > ex ? 'end' : 'start'; ex = x2(g.p0) + (x2(g.p0) > ex ? -8 : 8); }
     out.push('<circle class="ci-est" cx="' + x2(g.est).toFixed(1) + '" cy="' + y + '" r="6"/><text class="ci-lab ci-c-samp" x="' + ex.toFixed(1) + '" y="' + (y + 26) + '" text-anchor="' + eAnch + '">' + eLab + '</text>');
     // the claim: a line through the interval's row, its name above it (clear of the student's dashed interval below)

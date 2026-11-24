@@ -167,3 +167,32 @@ picker, Show me how.
 - While a key's change plays (320 ms) the knob rides with the rings; a drag moves the rings with the finger.
 - Test yourself is the old drill unchanged, apart from the claim figure's labels (the claim's name above its line,
   the estimate's label beside it), so they no longer touch lines.
+
+## Review round 1 (2026-11-24): BLOCK, fixed
+`/home/claude/review-stat-ci/REVIEW.md`. Statistics, frame agreement, the adapter and nothing dropped confirmed.
+Must fix:
+1. **M1** A picked row's parts now replace a takeaway in the cause line (`select()` clears it).
+2. **M2** The "?" condition note words its heading and sentence by the sign of the long run rate minus the level,
+   with the cause line's 2 point band ("Why fewer capture here", "Why more capture here", "Why this rate cannot be
+   trusted here"); the wobble note says "mostly a little below the level".
+3. **M3** "below" or "above" C% (the miss colour, the "fewer than C%" takeaway) only when an AP condition fails:
+   large counts under 10, a skewed population with n < 30, z* for a mean (`condFail`). When the conditions hold the
+   cause line says "about C%" and "?" keeps the exact rate. Owner log line (reversible); needs-author item 1 updated.
+4. **M4** The rate plot's floor follows the lowest value it shows: 70%, else 50%, else 0% (animated rescale); p =
+   0.02, n = 10 draws its 17% dot at 17% with 0%, 50%, 100% on the axis.
+Should fix: S1 a tap picks among the rings within about 8 px by distance to the drawn ring, a miss first (35 of 40
+taps at a miss's centre and 3 and 5 px above and below at 390 picked that miss); S2 the axis starts at 70%; S3 the
+level takeaway only when the drawn count moved its way, and reduced motion shows it (flips no longer count as busy
+when motion is off); S4 the 40 flying bundles are made at boot, waiting rings paint once, the rate value and its
+line label only redraw when they change (CPU x4, a loaded machine, same run: first build p95 33.4 ms at 390 and 50.0
+ms at 1440, level drag 33.3 and 50.0; the flagship's fertilizer drag 83.3 and 83.3); S5 the phone axis keeps a
+number right of the peg (the axis name sits under the numbers); S6 desktop crowds are 200 figures; S7 the phone
+picture's minimum height is 400 px, so Build and its cue show on the landing at 360 x 740 (the sweep checks it);
+S8 the shortened phone title is capitalised; S9 on a wide landing Build sits on the empty board with its cue under
+it and moves to its row at the first build. Nits done: the takeaway reads "about 95% of these intervals"; the
+skewed board axis shows "$"; the drill figure measures its estimate label.
+
+Fix round checks (speed rule): sweep at 360 (73, with the 360 x 740 landing), 390, 1024 and 1440 (72 each), light and
+dark (the dark runs assert `data-theme="dark"`), **289 passed, 0 failed**; frames **52 passed, 0 failed** (2,870
+frames at 390 and 1440); AP Stats tests 166 pass, content check 0 failing, `build-apstat --check`, `check-site`,
+`check-weight --check`.

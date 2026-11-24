@@ -158,3 +158,9 @@
 .ci3-nrail{stroke:color-mix(in srgb, var(--ci-samp) 70%, var(--ci-ink));stroke-width:3;stroke-linecap:round;opacity:.75;}
 .ci3-nnotch{stroke:color-mix(in srgb, var(--ci-samp) 70%, var(--ci-ink));stroke-width:1.6;opacity:.75;}
 .ci3-rv{fill:var(--ci-hit-ink);font-weight:900;font-size:13px;}
+/* the wide landing: Build on the empty board (review round 1, S9) */
+.ci3-boardgo{position:absolute;transform:translate(-50%,-50%);pointer-events:auto;z-index:3;}
+.ci3-boardgo .ci3-build{min-height:52px;padding:0 26px;font-size:17px;}
+.ci3-build.is-arrive{animation:ci3arrive .3s ease-out;}
+@keyframes ci3arrive{from{opacity:0;transform:scale(.92);}to{opacity:1;transform:none;}}
+@media (prefers-reduced-motion: reduce){ .ci3-build.is-arrive{animation:ci3fade .26s ease-out;} }

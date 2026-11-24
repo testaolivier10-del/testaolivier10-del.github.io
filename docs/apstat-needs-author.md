@@ -156,13 +156,15 @@ From `docs/apstat-reviews/tools.md`. Every drill key passed an independent SciPy
 - **Very small p-values in Explore** (fixed at launch: "< 0.0001", worded "less than 0.0001" in sentences). `chi-square-lab` and `p-value-explorer` show a p-value under
   0.00005 as 0.0000 in the Explore pills and Why sentence ("Because 0.0000 is less than α"). The drills
   never reach it. Consider "less than 0.0001" there.
-- **Interval capture v2 (`ci-capture-v2`, 2026-11-24, `docs/tools-v2-stat-ci-capture-brief.md`).** (1) The cause line
-  says "about 95% in the long run" when the method's true long run rate is within 2 points of the level, and
-  "below 95% in the long run" otherwise. The long run rate is exact for a proportion (a sum over the binomial, the
+- **Interval capture v2 (`ci-capture-v2`, 2026-11-24, `docs/tools-v2-stat-ci-capture-brief.md`).** (1) After review round 1 the cause
+  line says "below" or "above" C% in the long run only when an AP condition fails (large counts under 10, a skewed
+  population with n < 30, z* for a mean) and the method's rate is more than 2 points off; when the conditions hold
+  it always says "about C%", and "?" gives the exact rate. Before that it said "below" whenever the rate was more
+  than 2 points under the level, conditions or not. The long run rate is exact for a proportion (a sum over the binomial, the
   plain z interval the course teaches) and a normal mean, and simulated (200,000 samples per n) for the skewed one.
-  With this rule the z interval for p = 0.40 at n = 30 and 90% reads "below 90%" (85.8%) although the large counts
-  condition holds: "?" says the rate wobbles because p̂ takes only a few values. Confirm the 2 point band and that
-  this wobble is worth showing. (2) The crowd is a picture of the population ("each figure stands for many"); the
+  The z interval for p = 0.40 at n = 30 and 90% (85.8%) now reads "about 90%" (the conditions hold); "?" says the
+  rate wobbles, mostly a little below the level, because p̂ takes only a few values. Confirm this framing (the
+  reviewer's call) and the 2 point band used when a condition fails. (2) The crowd is a picture of the population ("each figure stands for many"); the
   samples are drawn from the population model, not from the drawn figures, and the scoop in the crowd is the
   sampling act, not the sample's members. (3) The takeaway is shortened to fit two rows on a phone: "Over many
   samples, about 95% of 95% intervals capture the true value." The full template sentence ("If we took many random
