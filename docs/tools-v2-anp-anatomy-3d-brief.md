@@ -271,3 +271,13 @@ only with a mouse (`@media (hover:hover)` in the kit); `assets/body3d` budget 19
 Not changed: "Right: Gallbladder." shown in both the caption and the dock in Test yourself on a phone is the same on
 `origin/main` (both lines were there before this rebuild).
 
+Checks after round 1 (on the merged branch): A&P tests 55 pass; `kit2-spots.test.mjs` passes (one flaky failure under
+load, clean on the rerun); `check-anp-content` 0 failing; `build-anp --check` clean; `check-site` OK; `check-weight
+--check` all 623 within; `check-tool-use.mjs` unchanged; no conflict markers. Sweep, one width per process, light and
+dark: 360, 390, 430, 600 220 checks each, 768, 820, 1024, 1280, 1440, 1920 201 each, 0 failing (1920 dark crashed once
+when the browser was closed under load, clean on the rerun); every check now also asks the viewer what a tap on the
+ring picks and requires a leader on a card standing off its ring. `--all` at 1440: 2071 checks, 0 failing (all 85
+parts: the ring picks the part and its glow changes the pixels under the ring). Frames at 390 and 1440: 32 each, 0
+failing. On this branch: NREMT body map sweep at 390 1227 passed, 0 failed; A&P lab practical sweep at 390 231 checks,
+0 failing.
+
