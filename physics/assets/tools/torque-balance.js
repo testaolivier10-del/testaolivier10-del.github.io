@@ -202,7 +202,7 @@
       var mx = ph ? 16 : Math.max(44, Math.round(W * 0.05)), two = W < 1000, band = two ? 96 : 84, str0 = Math.round(34 * k);
       var ppm = W - 2 * mx, ang = tab === 'ang';
       function need(p){
-        var R = clamp(p * (ang ? 0.075 : 0.1), ph ? 46 : 64, ang ? 90 : 118), drop = 0.5 * p * Math.sin(STOP), bh = bodySize(0.5, k).h + 24;
+        var R = clamp(p * (ang ? 0.075 : 0.1), ph ? 46 : 64, ang ? 90 : 118), drop = 0.5 * p * Math.sin(STOP), bh = bodySize(0.5, k).h + 30;
         // Balance: room for the masses to hang one below the other (three rows only when hooks 8 cm apart can touch)
         var rows = ang ? 1 : 0.08 * p >= bodySize(0.5, k).w + 6 ? 2 : 3;
         // Angle: one mass at 20 cm from the fulcrum; the stick's ends still need to clear the bench
@@ -213,8 +213,10 @@
         return { R: R, below: below, above: above, H: above + below + band, rows: rows };
       }
       var n = need(ppm);
-      if(!ph){ while(n.H > Hin && ppm > 360){ ppm *= 0.96; n = need(ppm); } }
-      var Hh = ph ? Math.round(n.H) : Hin, benchY = Hh - band;
+      // a short stage first gives up some of the stick's length (at most a fifth), then grows taller
+      var p0 = ppm;
+      if(!ph){ while(n.H > Hin && ppm > p0 * 0.8){ ppm *= 0.96; n = need(ppm); } }
+      var Hh = ph ? Math.round(n.H) : Math.max(Hin, Math.ceil(n.H)), benchY = Hh - band;
       var py = benchY - n.below, x0 = Math.round((W - ppm) / 2);
       return { W: W, H: Hh, ph: ph, k: k, thick: thick, ppm: ppm, x0: x0, py: Math.round(py), benchY: benchY, band: band, two: two, R: Math.round(n.R), str0: str0, rows: n.rows };
     }
@@ -367,7 +369,7 @@
         (rows[L] = rows[L] || []).push({ x: x, w: w }); q.lev = Math.min(L, G.rows - 1);
       });
     }
-    function rowY(lev){ var big = bodySize(0.5, G.k).h + 24; return lev * big; }
+    function rowY(lev){ var big = bodySize(0.5, G.k).h + 30; return lev * big; }
     function massNode(s, q){
       var g = D.mg[q.id];
       if(g) return g;
@@ -690,7 +692,7 @@
     }
     // a pointer let go shows the result at once; keys wait a moment after the last press
     var ptrUpT = 0;
-    window.addEventListener('pointerup', function(){ ptrUpT = now(); }, true);
+    window.addEventListener('pointerup', function(){ ptrUpT = now(); if(dragging) setTimeout(function(){ if(dragging && !layer.el.querySelector('.is-drag')) endDrag(); }, 60); }, true);
     window.addEventListener('pointercancel', function(){ ptrUpT = now(); }, true);
     function byPointer(){ return now() - ptrUpT < 120; }
     function endDrag(){ dragging = false; letGo(byPointer() ? 140 : 650); }
@@ -975,7 +977,11 @@
       if(phone){
         var need = st.tab === 'ine' ? geoIne(W, 0).H : geoStick(W, 0, st.tab).H;
         box.style.height = need + 'px';
-      } else box.style.height = '';
+      } else {
+        box.style.height = ''; box.style.minHeight = '';
+        var r0 = box.getBoundingClientRect(), nd = st.tab === 'ine' ? 0 : geoStick(W, Math.max(360, Math.round(r0.height)), st.tab).H;
+        box.style.minHeight = nd > Math.round(r0.height) ? nd + 'px' : '';
+      }
       r = box.getBoundingClientRect();
       H = phone ? parseFloat(box.style.height) : Math.max(360, Math.round(r.height));
       svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.setAttribute('width', W); svg.setAttribute('height', H);
