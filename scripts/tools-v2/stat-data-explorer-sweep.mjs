@@ -188,7 +188,11 @@ const AGREE = () => {
     if (rings && !ol.length) out.push('outliers drawn but not named'); if (!rings && ol.length) out.push('"outlier" named with no outlier');
     // the histogram
     const bt = document.querySelector('.dx2-htitle').textContent + ' ' + document.querySelector('.dx2-binl').textContent, B = nums(bt)[0];
-    const H = MX.bins(vals, MX.binStart(lo, B), B), bars = [...document.querySelectorAll('.dx2-bar')].filter(e => e.style.display !== 'none');
+    // the tool's bins: left edge in, but the last bin stops at the scale's maximum and holds it
+    const start = MX.binStart(lo, B), nbin = Math.max(1, Math.ceil((hi - start) / B - 1e-9)), H = { counts: new Array(nbin).fill(0) };
+    vals.forEach(v => { const j = v >= hi - 1e-9 ? nbin - 1 : Math.floor((v - start) / B + 1e-9); if (j >= 0 && j < nbin) H.counts[j]++; });
+    const bars = [...document.querySelectorAll('.dx2-bar')].filter(e => e.style.display !== 'none');
+    bars.forEach(b => { const x0 = +b.getAttribute('x'), x1 = x0 + +b.getAttribute('width'); if (x0 < G.l - 1 || x1 > G.r + 1) out.push(`a bar runs past the scale (${x0.toFixed(1)} to ${x1.toFixed(1)})`); });
     const nz = H.counts.filter(c => c > 0);
     if (bars.length !== nz.length) out.push(`${bars.length} bars vs ${nz.length} bins with people`);
     else { const mx = Math.max(...H.counts), hmx = Math.max(...bars.map(b => +b.getAttribute('height'))); bars.forEach((b, i) => { const want = nz[i] / mx * hmx; if (Math.abs(+b.getAttribute('height') - want) > 0.6) out.push(`bar ${i} height vs its count ${nz[i]}`); }); }
@@ -288,7 +292,7 @@ if (ONE) {
       await still(page); await page.waitForTimeout(40);
       const lay = await X(LAYOUT, w < 600); lay.forEach(f => ok(false, `${tag} ${n}: ${f}`)); ok(!lay.length, '');
       const ag = await X(AGREE); ag.forEach(f => ok(false, `${tag} ${n}: ${f}`)); ok(!ag.length, '');
-      if (!/forty/.test(n)) { const pw = await X(() => { const b = [...document.querySelectorAll('.dx2-people .dx2-p .dx2-body')].map(e => e.getBoundingClientRect().width).sort((a, c) => a - c); return b[b.length >> 1] / 0.88; }); ok(pw >= 14.5, `${tag} ${n}: people drawn ${pw.toFixed(1)} px wide (under 15)`); }
+      { const pw = await X(() => { const b = [...document.querySelectorAll('.dx2-people .dx2-p .dx2-body')].map(e => e.getBoundingClientRect().width).sort((a, c) => a - c); return b[b.length >> 1] / 0.88; }); ok(pw >= 14.5, `${tag} ${n}: people drawn ${pw.toFixed(1)} px wide (under 15)`); }
       await shot(n);
     };
     const th = await X(() => document.documentElement.getAttribute('data-theme') === 'dark');
@@ -332,6 +336,15 @@ if (ONE) {
     await X(() => window.ApStatDataExplorer.bin(window.ApStatDataExplorer.S.set.binMin)); await check('16-bins-narrow');
     await X(() => window.ApStatDataExplorer.bin(window.ApStatDataExplorer.S.set.binMax)); await check('17-bins-wide');
     await X(() => window.ApStatDataExplorer.startOver()); await check('18-box-start-over');
+    // a person dragged to the scale's right end, on every data set, with a bin width that does not divide the range
+    for (const i of [0, 1, 2]) {
+      await X((i) => { const X = window.ApStatDataExplorer; X.setSet(i); X.setTab('box'); }, i);
+      await X(() => { const X = window.ApStatDataExplorer; X.move(X.S.cur, X.hi()); X.move(X.S.P[2], X.hi()); });
+      await check(`18b-set${i}-at-max`);
+      await X(() => { const X = window.ApStatDataExplorer, s = X.S.set; let b = s.binMax; for (let v = s.binMax; v >= s.binMin; v -= s.binStep) if (((X.hi() - X.lo()) / v) % 1 > 0.01) { b = v; break; } X.bin(b); });
+      await check(`18c-set${i}-at-max-odd-bins`);
+    }
+    await X(() => { const X = window.ApStatDataExplorer; X.setSet(0); X.setTab('box'); });
     // Test yourself: the drill and its figure
     await X(() => window.ApStatDataExplorer.kmode('quiz'));
     await page.waitForTimeout(700);

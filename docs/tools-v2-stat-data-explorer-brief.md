@@ -133,8 +133,8 @@ the picker, the stepper, the switch, Start over, Show me how.
 7. The mean ± 1 SD band is a quiet switch under the cause line (tab 1 only); the fences are always on in tab 2 and
    off in tab 1.
 8. The mean is not drawn on the boxplot tab (orange means outlier there).
-9. Add, Remove and Reset became a stepper and Start over; a new person lands inside the middle half (spread by the
-   golden ratio so they do not pile on one value).
+9. Add, Remove and Reset became a stepper and Start over; a new person lands between Q1 − IQR/2 and Q3 + IQR/2
+   (spread by the golden ratio so they do not pile on one value).
 10. The shape words and every summary table moved to "?".
 11. After a drag the cause line names the mean and median before and after; the old SD and IQR before and after
     moved (the IQR shows as the crate in tab 2; both are in "?").
@@ -144,8 +144,9 @@ the picker, the stepper, the switch, Start over, Show me how.
 14. Delete or Backspace on the knob (or a picked person) removes that person, as the old dot keys did.
 15. People are sized to the room (at least 15 px wide, at most about 1.8 data steps wide), resized smoothly, never
     during a drag.
-16. The flag, crate, slat, ropes and posts slide smoothly (at most about 1.2 px a millisecond); a mark's number fades
-    out while it slides and its cause line pill reads "…" until it lands.
+16. The flag, crate, slat, ropes and posts slide smoothly (at most about 1.2 px a millisecond, faster on a long slide so
+    each lands within about 450 ms); a mark's number fades out while it slides and its cause line pill reads "…" until
+    it lands.
 
 ## Accuracy
 - Every summary is `ApStatMath.dataExplorer.stats` over the drawn values (`ApStatDist.summary` underneath: AP quartile
@@ -157,7 +158,9 @@ the picker, the stepper, the switch, Start over, Show me how.
   while the wedge catches up is 420 × (x̄ − tip) ÷ the scale's range degrees (at most 6), so it has the sign of the
   turning effect about the tip and is zero only with the tip under the mean; its size is a picture, not a physics
   model. The balance is said in "?".
-- Histogram bins hold their left edge (`X.bins`), as before.
+- Histogram bins hold their left edge, as before, except that the last bin stops at the scale's maximum and holds it
+  (recheck 1: a person at the maximum used to fall in a bin past the scale); the first starts at the minimum. Said in
+  "?"; the bin table in "?" reads "to" for that bin.
 - Open points: `docs/apstat-needs-author.md` "Data explorer v2".
 
 ## What was built
@@ -234,3 +237,19 @@ failing, `build-apstat`, `build-apcalc`, `build-apmacro --check`, `check-site`, 
 machine (load average 5.5 on 2 cores), CPU x4, same run: a person dragged p95 50.0 ms at 390 and 100.1 ms at 1440
 (boxplot tab 33.3 and 49.9); the flagship's fertilizer drag p95 100.1 and 100.0 ms. Shots:
 `/mnt/user-data/outputs/stat-data-explorer-v2/shots-r1/`.
+
+## Recheck 1 (2026-11-24): BLOCK on two small things, fixed
+1. **M1** The last histogram bin stops at the scale's maximum and holds it, so a person at 70 min, 50 pts or 95 bpm
+   is counted in the last bin on the board (no bar past the scale); "?" says so. The sweep drags people to the right
+   end on every data set, with the default bins and with a width that does not divide the range, and checks no bar
+   runs past the scale.
+2. **M2** Tablets get the fixed bands (a histogram of 16% of the height, 80 to 120 px); people may be up to 3.3 data
+   steps wide (as on phones), so at 768 and 820 they fill the room above the plank.
+Should fix: a mark's slide lands within about 450 ms (its speed cap rises on a long slide); a stack taller than the
+room makes the figures up to 30% squatter before they get narrower, so with 40 people at 375 x 667 they stay at least
+15 px wide (the sweep's width check now includes the 40 people states); the knob never rises into the signs' row;
+phone histograms get 20% of the height (up to 100 px); added people land between Q1 − IQR/2 and Q3 + IQR/2.
+Checks: the kept sweep at all ten widths plus 375 x 667, one process each, light and dark (dark asserted), **2,004
+passed, 0 failed** (182 a width, 184 at 360 with its landings); frames **77 passed, 0 failed** (2,316 frames at 390 and
+1440, every one agreeing, no mark jump over 26 px); AP Stats tests 167 pass, content check 0 failing, `build-apstat`,
+`build-apcalc`, `build-apmacro --check`, `check-site`, `check-weight`. Shots: `/mnt/user-data/outputs/stat-data-explorer-v2/shots-r2/`.

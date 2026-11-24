@@ -202,7 +202,8 @@ From `docs/apstat-reviews/tools.md`. Every drill key passed an independent SciPy
   degrees (at most 6): a picture of the sign of the turning effect, not a physics model. A real seesaw's own weight would move its balance point; confirm the idealization is acceptable as
   stated. (2) The shape word in "?" still comes from the stated skewness rule of thumb (`SHAPE_RULE`, see
   `tools-review` above); Explore no longer says the shape in the cause line. (3) New people added with "+" land
-  inside the middle half (Q1 plus a golden ratio fraction of the IQR); the old tool put them just above or below the
+  between Q1 − IQR/2 and Q3 + IQR/2 (a golden ratio fraction of that span); the old tool put them just above or below the
   median. Either way they are made up values, not data; confirm students will not read them as part of the data set
-  (Start over restores it). (4) The quartile note in "?" says a TI-84's 1-Var Stats uses the same rule as the course
+  (Start over restores it). (5) The histogram's last bin stops at the scale's maximum and holds it (bins otherwise hold their left edge), so a
+  value at the maximum is counted on the board; "?" says so. Confirm. (4) The quartile note in "?" says a TI-84's 1-Var Stats uses the same rule as the course
   and that some software interpolates; confirm the wording.

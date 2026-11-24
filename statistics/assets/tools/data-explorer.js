@@ -336,7 +336,7 @@
         g.signY = pad + 2; g.signH = g.phone ? (H < 380 ? 20 : 22) : cpt ? 24 : 26;
         g.stackTop = g.signY + g.signH + (g.phone ? (H < 380 ? 22 : 32) : cpt ? 30 : 40);
         g.boxH = g.phone ? (H < 380 ? 48 : 66) : cpt ? 70 : H < 560 ? 88 : 100;
-        var hh = g.phone ? (H < 380 ? 64 : clamp(Math.round(H * 0.17), 64, 96)) : clamp(Math.round(H * 0.22), 78, 150);
+        var hh = g.phone ? (H < 380 ? 64 : clamp(Math.round(H * 0.2), 64, 100)) : W < 1000 ? clamp(Math.round(H * 0.16), 80, 120) : clamp(Math.round(H * 0.22), 78, 150);
         g.PY = H - pad - 4 - hh - 6 - g.boxH - 6 - g.pt;
         g.boxTop = g.PY + g.pt + 6;
         g.histTop = g.boxTop + g.boxH + 6; g.histBot = H - pad - 4;
@@ -395,7 +395,7 @@
     }
 
     /* ---------------------------------------------------- levels: people with the same value stand on each other's shoulders */
-    var sc = 1, levelH = 22, pwD = null;
+    var sc = 1, scy = 1, levelH = 22, pwD = null;
     /* the people's size: the largest that keeps the stacks within about 80% of the room above the plank (worked out
        when nothing is moving, then grown or shrunk smoothly; while a stack grows past the room the figures shrink) */
     /* only people with the same value stand on each other's shoulders, so a stack's height is the count at that value
@@ -407,7 +407,7 @@
     function fitPw(){
       if(!G) return;
       var vals = S.P.filter(function(p){ return p.st !== 'go' && p.st !== 'gone'; }).map(function(p){ return p.tw ? p.tw.b : p.v; });
-      var room = (G.PY - G.stackTop) * 0.95, ppu = (G.r - G.l) / ((hi - lo) / st()), loW = 15, hiW = Math.max(loW, Math.min(G.phone ? 24 : 42, ppu * 1.8)), best = loW;
+      var room = (G.PY - G.stackTop) * 0.95, ppu = (G.r - G.l) / ((hi - lo) / st()), loW = 15, hiW = Math.max(loW, Math.min(G.phone ? 24 : 42, ppu * 3.3)), best = loW;
       for(var pw = hiW; pw >= loW; pw -= 1){ if(stackOf(pw, vals) * 2.26 * pw <= room){ best = pw; break; } }
       G.pw = best;
       if(pwD == null || calm()) pwD = best;
@@ -420,8 +420,11 @@
       });
       // the figures shrink when a column would reach the knob's room
       var room = G.PY - G.stackTop, full = pwNow / 10 * 22.6;
-      sc = Math.min(pwNow / 10, room / ((maxL + 1) * 22.6));
-      levelH = sc * 22.6;
+      // a stack taller than the room first makes the figures a little squatter (down to 70% of their height), keeping
+      // them at least 15 px wide; only past that do they shrink
+      var fit = room / ((maxL + 1) * 22.6), sx = pwNow / 10;
+      sc = Math.min(sx, fit / 0.7); scy = Math.min(sc, fit);
+      levelH = scy * 22.6;
       return full;
     }
     /* where a person's feet are, in the plank's (untilted) frame */
@@ -451,9 +454,12 @@
     function frame(){ raf = 0; var t = now(), dt = Math.min(64, t - tLast); tLast = t; step(t, dt); paint(); if(busy()) kick(); else settled(); }
     /* a mark eases toward its target, never faster than about 1.2 px a millisecond (no jumps on a long slide) */
     function chase(k, target, dt, tau, eps){
+      var v = Dr[k], upp = (hi - lo) / (G.r - G.l);
+      // a new target: the speed cap is 1.2 px a millisecond, or faster when the slide is long, so it lands within about 450 ms
+      if(TG[k] !== target){ VS[k] = Math.max(1.2, v == null ? 1.2 : Math.abs(target - v) / upp / 380); }
       TG[k] = target;
-      var v = Dr[k]; if(v == null || calm()){ Dr[k] = target; return; }
-      var d = (target - v) * (1 - Math.exp(-dt / tau)), cap = 1.2 * dt * (hi - lo) / (G.r - G.l);
+      if(v == null || calm()){ Dr[k] = target; return; }
+      var d = (target - v) * (1 - Math.exp(-dt / tau)), cap = (VS[k] || 1.2) * dt * upp;
       v += clamp(d, -cap, cap); if(Math.abs(target - v) < eps) v = target; Dr[k] = v;
     }
     function step(t, dt){
@@ -498,7 +504,7 @@
     /* The moving marks (flag, crate, slat, ropes, posts) are drawn where they are, sliding smoothly. A mark's number is
        shown only while it sits still (then it is exactly the drawn place); while it slides its label fades out (it keeps
        the number it left, faded, class is-moving) and its cause line pill shows "…" until it lands. */
-    var Dv = {}, Lv = {}, TG = {}, MKS = ['med', 'q1', 'q3', 'f0', 'f1', 'w0', 'w1'];
+    var Dv = {}, Lv = {}, TG = {}, VS = {}, MKS = ['med', 'q1', 'q3', 'f0', 'f1', 'w0', 'w1'];
     function mv(k){ return TG[k] != null && Dr[k] !== TG[k]; }
     function nm(k){ return mv(k) ? '…' : num(Dv[k], 2); }
     function shownDr(){ MKS.forEach(function(k){ Dv[k] = Dr[k]; if(!mv(k) || Lv[k] == null) Lv[k] = Dr[k]; }); }
@@ -512,7 +518,7 @@
       var drag = handle && handle.dragging();
       S.P.forEach(function(p){
         var f = [xv(p.d), G.PY - p.lv * levelH], dy = p.st === 'come' ? -(1 - easeOut(p.a)) * 36 : p.st === 'go' ? -(1 - p.a) * 30 : 0;
-        p.el.setAttribute('transform', 'translate(' + f[0].toFixed(1) + ' ' + (f[1] + dy).toFixed(1) + ') scale(' + sc.toFixed(3) + ')');
+        p.el.setAttribute('transform', 'translate(' + f[0].toFixed(1) + ' ' + (f[1] + dy).toFixed(1) + ') scale(' + sc.toFixed(3) + (scy !== sc ? ' ' + scy.toFixed(3) : '') + ')');
         var o = p.a < 1 ? p.a.toFixed(2) : ''; if(p.el.style.opacity !== o) p.el.style.opacity = o;
         var isSel = p === S.cur && (S.sel || drag), isOut = S.tab === 'box' && s && p.st === 'in' && (dval(p) < Dv.f0 - 1e-9 || dval(p) > Dv.f1 + 1e-9);
         p.out = isOut;
@@ -640,15 +646,23 @@
       paintHist(s);
     }
     var bars = [], barLabs = [];
+    /* the histogram's bins on the picture's scale: bins hold their left edge, except that the last bin stops at the
+       scale's maximum and holds it (so nothing falls past the end of the scale); the first starts at the minimum */
+    function hbins(xs, w){
+      var start = X.binStart(lo, w), nb = Math.max(1, Math.ceil((hi - start) / w - 1e-9)), counts = [], edges = [];
+      for(var j = 0; j < nb; j++){ counts.push(0); edges.push([Math.max(lo, M.round(start + j * w, 6)), Math.min(hi, M.round(start + (j + 1) * w, 6))]); }
+      xs.forEach(function(v){ var j = v >= hi - 1e-9 ? nb - 1 : Math.floor((v - start) / w + 1e-9); if(j >= 0 && j < nb) counts[j]++; });
+      return { counts: counts, edges: edges };
+    }
     function paintHist(s){
-      var B = X.bins(s.xs, X.binStart(lo, S.bin), S.bin), mx = Math.max.apply(null, B.counts.concat([1]));
+      var B = hbins(s.xs, S.bin), mx = Math.max.apply(null, B.counts.concat([1]));
       var fs = G.phone ? 11.5 : 12.5, top = G.histTop + (G.H < 380 ? 17 : G.phone ? 21 : 24) + fs + 12, base = G.histBot - 5;
       while(bars.length < B.counts.length){ bars.push(mk('rect', 'dx2-bar', null, gHist)); barLabs.push(mk('text', 'dx2-blab', null, gHist)); }
       var hb = LB.hbase || (LB.hbase = mk('line', 'dx2-hbase', null, gHist)); at(hb, { x1: G.l - 4, x2: G.r + 4, y1: base, y2: base });
       bars.forEach(function(r, j){
         var c = B.counts[j], lb = barLabs[j];
         if(j >= B.counts.length || !c){ hideEl(r); hideEl(lb); return; }
-        var a = B.edges[j][0], b = Math.min(B.edges[j][1], hi + S.bin), x0 = xv(a), x1 = xv(b), h = c / mx * (base - top), y = base - h;
+        var a = B.edges[j][0], b = B.edges[j][1], x0 = xv(a), x1 = xv(b), h = c / mx * (base - top), y = base - h;
         showEl(r); at(r, { x: x0 + 0.6, y: y, width: Math.max(0.6, x1 - x0 - 1.2), height: h, rx: 2 });
         if(x1 - x0 >= tw(String(c), fs, 800) + 6){ showEl(lb); at(lb, { x: (x0 + x1) / 2, y: y - 4, 'text-anchor': 'middle', style: 'font-size:' + fs + 'px' }); txt(lb, String(c)); } else hideEl(lb);
       });
@@ -736,7 +750,7 @@
     var handle = null;
     function knobAt(){
       var p = S.cur; if(!p || !G || p.st === 'gone') return null;
-      var x = xv(p.d), y = colTop(p) - 22;
+      var x = xv(p.d), y = Math.max(colTop(p) - 22, G.stackTop - 4);
       return rot([x, y]);
     }
     function makeHandle(){
@@ -815,7 +829,7 @@
     function add(){
       var s = drawnStats(), here = S.P.filter(function(p){ return p.st !== 'go'; }).length; if(!s || here >= 40) return;
       // a new value inside the middle half, spread by the golden ratio so new people do not pile on one spot
-      adds++; var v = snap(s.q1 + ((adds * 0.6180339887) % 1) * Math.max(s.iqr, 2 * st()));
+      adds++; var a0 = Math.max(lo, s.q1 - s.iqr / 2), a1 = Math.min(hi, s.q3 + s.iqr / 2), v = snap(a0 + ((adds * 0.6180339887) % 1) * Math.max(a1 - a0, 2 * st()));
       var p = person(v, !calm()); S.P.push(p);
       S.change = null; S.take = null; S.fresh = false; S.cur = p; S.sel = false; handle.value(v);
       tourDid('count');
@@ -951,7 +965,7 @@
     /* ---------------------------------------------------- the reference behind "?" */
     function refHtml(){
       var s = drawnStats(); if(!s) return;
-      var u = S.set.unit, srt = s.xs.slice().sort(function(a, b){ return a - b; }), B = X.bins(s.xs, X.binStart(lo, S.bin), S.bin);
+      var u = S.set.unit, srt = s.xs.slice().sort(function(a, b){ return a - b; }), B = hbins(s.xs, S.bin);
       var outs = s.outliers.length ? s.outliers.map(function(v){ return num(v, 2); }).join(', ') + ' ' + u : 'none';
       var h = '<p class="dx2-howref"><button type="button" class="tk2-how" data-how>Show me how</button> to use it, step by step.</p>';
       h += '<h3>What you are looking at</h3><p>' + esc(S.set.lead) + ' Each person stands at their value on a plank marked in ' + esc(u) + '; people with the same value stand on each other’s shoulders, like the dots of a dotplot, so a stack’s height is how many people have that value (people at nearby values stand beside them, overlapping).</p>';
@@ -961,13 +975,13 @@
       h += '<h3>Outliers: the 1.5 × IQR rule</h3><p>A value is an outlier when it is below Q1 − 1.5 × IQR = ' + esc(num(s.fences[0], 2)) + ' or above Q3 + 1.5 × IQR = ' + esc(num(s.fences[1], 2)) + ' (the fence posts). Here: ' + esc(outs) + '. The whiskers (the ropes) end at the most extreme values inside the fences (' + esc(num(s.whiskers[0], 2)) + ' and ' + esc(num(s.whiskers[1], 2)) + '); each outlier is its own dot.</p>';
       h += '<h3>Shape</h3><p>These ' + esc(S.set.what) + 's look ' + esc(s.shape.word) + '. In a skewed distribution the mean is pulled toward the long tail, away from the median. ' + esc(X.SHAPE_RULE) + ' (Skewness here: ' + esc(fx(s.g, 2)) + '.) A boxplot cannot show gaps or how many peaks there are: the people and the histogram can.</p>';
       h += '<h3>z-scores</h3><p>Tap a person to read their z-score, z = (value − mean) ÷ SD: how many standard deviations above (+) or below (−) the mean they are.</p>';
-      h += '<h3>Bins</h3><p>The histogram counts the people in each bin of ' + esc(num(S.bin, 2)) + ' ' + esc(u) + ' (a bin holds its left edge, not its right). Wide bins hide detail; narrow bins look ragged. Drag the small knob on the histogram to change them.</p>';
+      h += '<h3>Bins</h3><p>The histogram counts the people in each bin of ' + esc(num(S.bin, 2)) + ' ' + esc(u) + ' (a bin holds its left edge, not its right; the last bin stops at the scale’s end, ' + esc(num(hi, 2)) + ', and holds it, so it can be narrower than the others). Wide bins hide detail; narrow bins look ragged. Drag the small knob on the histogram to change them.</p>';
       h += '<h3>Every summary, from the people</h3><div class="table-wrap" tabindex="0" role="region" aria-label="Summary statistics"><table class="ls-tbl dx-tbl"><tbody>' +
         [['n', String(s.n)], ['Mean, x̄', fx(s.mean, 2)], ['Standard deviation, s', fx(s.sd, 2)], ['Minimum', num(s.min, 2)], ['Q1', num(s.q1, 2)], ['Median', num(s.med, 2)], ['Q3', num(s.q3, 2)], ['Maximum', num(s.max, 2)], ['Range', num(s.range, 2)], ['IQR', num(s.iqr, 2)], ['Fences', num(s.fences[0], 2) + ' and ' + num(s.fences[1], 2)], ['Outliers', s.outliers.length ? s.outliers.map(function(v){ return num(v, 2); }).join(', ') : 'none']]
           .map(function(r){ return '<tr><th scope="row">' + r[0] + '</th><td class="r">' + esc(r[1]) + '</td></tr>'; }).join('') + '</tbody></table></div>';
       h += '<h3>The values, in order</h3><p class="dx-vals">' + esc(srt.map(function(v){ return num(v, 2); }).join(', ')) + ' ' + esc(u) + '</p>';
       h += '<h3>Histogram counts</h3><div class="table-wrap" tabindex="0" role="region" aria-label="Histogram bin counts"><table class="ls-tbl dx-tbl"><thead><tr><th scope="col">Bin</th><th scope="col">Count</th></tr></thead><tbody>' +
-        B.counts.map(function(c, j){ return '<tr><td>' + esc(num(B.edges[j][0], 2) + ' to under ' + num(B.edges[j][1], 2)) + '</td><td class="r">' + c + '</td></tr>'; }).join('') + '</tbody></table></div>';
+        B.counts.map(function(c, j){ return '<tr><td>' + esc(num(B.edges[j][0], 2) + (j === B.counts.length - 1 ? ' to ' : ' to under ') + num(B.edges[j][1], 2)) + '</td><td class="r">' + c + '</td></tr>'; }).join('') + '</tbody></table></div>';
       h += '<h3>Keys</h3><p>Tab to the people, then the left and right arrows pick a person (their z-score or place against the fences shows under the picture); Tab again to the knob above them, whose arrows move them one ' + esc(S.set.unit.replace(/s$/, '')) + ' (Shift or Page Up and Down: ten). Delete takes the picked person away; Escape clears the pick.</p>';
       h += '<div class="dx2-about">' + (data.intro || '') + (data.howItWorks ? '<h3>' + esc(data.howItWorksTitle || 'How it works') + '</h3>' + data.howItWorks : '') + '</div>';
       if(ref._h !== h){ ref._h = h; ref.innerHTML = h; var hw = ref.querySelector('[data-how]'); if(hw) hw.addEventListener('click', function(){ startTour(); }); }
