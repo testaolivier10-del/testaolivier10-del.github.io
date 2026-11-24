@@ -343,6 +343,11 @@ emissions savings; LD50 read from a curve; biomagnification factors; TFR and rep
     with its own brief. Finishing touches before the merge (brief, "Shipped"): a three line oxygen card, "Over 60
     days:" before the cause line, "Before the bloom" and "Recovered" on far days, Watch it happen always from day 0,
     the runoff stream only on the model's runoff days. Still Premium; the lock screen is unchanged.
+19. (2026-11-24, `docs/tools-v2-apenv-age-structure-brief.md`) **Age structure, tools v2.** Explore is one screen: a
+    pyramid of rows of people over a town square; drag the mother along the children per woman track, a quiet life
+    expectancy knob; drawn from a stable population model with its own life table (`ApEnvMath.ageStructure.stable`),
+    so replacement moves with life expectancy. The stage chips, the transition chart and the readouts moved to "?" and
+    Test yourself (drills unchanged). Not merged until its independent review passes.
 
 ## 9. Open items for the owner
 
