@@ -513,3 +513,5 @@ in each tool's brief.
 | 2026-11-24 | AP Bio Descriptive statistics | Review round 1: both line halos drawn first, then the thick mean line, then the thin median line | Close lines show as blue rims around the amber | `drawStatic` |
 | 2026-11-24 | AP Bio Descriptive statistics | Review round 1: every number worked out from the heights to 0.1 cm as the clipboard lists them; lines and dots at the exact heights | The worked mean showed wrong arithmetic mid change | `paint` |
 | 2026-11-24 | AP Bio Descriptive statistics | Review round 1: phone knobs are 8 px dots with an invisible 44 px hit area | The knob hid the seed leaves | `descriptive-stats.css` |
+| 2026-11-24 | AP Bio Descriptive statistics | Recheck 1: sowing order 3.8, 7.6, 5.2, 4.4, 6.6, 4.9, 5.9, 5.5, 4.6, 6.2 (openings unchanged); Challenge 3 starts on 3 plants | The SE must fall with every plant added, and phones must have room to add | `explore.heights`, `fresh` |
+| 2026-11-24 | AP Bio Descriptive statistics | Recheck 1: a wide but short scene (1024 x 768) keeps a 150 px clipboard without the worked lines | The plants got only a 70 px strip | `layout` (`g.short`) |

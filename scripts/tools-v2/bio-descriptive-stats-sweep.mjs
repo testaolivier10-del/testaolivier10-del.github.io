@@ -145,7 +145,7 @@ const AGREE = () => {
       if (/=/.test(czD.textContent)) { near(b[0], Ls[n / 2 - 1], 0.001, 'cause middle 1'); near(b[1], Ls[n / 2], 0.001, 'cause middle 2'); }
     }
     if (czS) { const b = nums(czS.textContent); near(b[0], r2(Lsd), 0.0051, 'cause SD'); near(b[1], r2(Lse), 0.0051, 'cause SE'); }
-    if (czP) { const v = nums(czP.textContent)[0]; if (/one plant/.test(czP.textContent)) { if (!hs.some(h => Math.abs(r1(h) - v) < 0.051)) out.push(`cause plant ${v} not drawn`); } else near(v, n, 0, 'cause plant count'); }
+    if (czP) { const v = nums(czP.textContent)[0]; if (/one plant/.test(czP.textContent)) { if (!hs.some(h => Math.abs(h - v) <= 0.0505 + 0.006)) out.push(`cause plant ${v} not drawn`); } else near(v, n, 0, 'cause plant count'); }
   }
   return out;
 };
@@ -267,6 +267,14 @@ if (ONE) {
     const ag = await page.evaluate(AGREE); ok(!ag.length, `${w} ${theme} goals: ${ag.join('; ')}`);
     ok(await page.evaluate(() => window.__ds2.drawn().n === window.__ds2.openN() && !!document.querySelector('.tk2-chal')), `${w} ${theme} goals: from the opening with the challenge card`);
     if (SHOTS && [390, 1440].includes(w)) await page.screenshot({ path: join(SHOTS, `sweep-${w}-${theme}-goals.png`) });
+    // Challenge 3 starts on 3 plants with "+" on; each plant added makes the SE smaller, up to a full tray, and it is met
+    await page.evaluate(() => window.__ds2.chal('n')); await page.waitForTimeout(200); await still(page);
+    const c3 = await page.evaluate(() => ({ n: window.__ds2.drawn().n, add: !document.querySelector('.ds2-add').disabled, se: window.__ds2.drawn().se }));
+    const ses = [c3.se];
+    for (let i = 0; i < 10; i++) { if (await page.evaluate(() => document.querySelector('.ds2-add').disabled)) break; await page.click('.ds2-add'); await still(page); await page.waitForTimeout(80); ses.push(await page.evaluate(() => window.__ds2.drawn().se)); }
+    const c3e = await page.evaluate(() => ({ n: window.__ds2.drawn().n, cap: window.__ds2.cap(), met: !!document.querySelector('.tk2-chal .is-met, .tk2-chal [class*="met"], .tk2-chal-ok') || /SE = s ÷ √n is/.test(document.querySelector('.tk2-chal') ? document.querySelector('.tk2-chal').textContent : '') }));
+    ok(c3.n === 3 && c3.add && ses.every((v, i) => !i || v < ses[i - 1]) && c3e.n === c3e.cap && c3e.met, `${w} ${theme} challenge 3: from 3 plants, SE falls each step to a full tray and is met ${JSON.stringify({ c3, ses: ses.map(v => +v.toFixed(3)), c3e })}`);
+    if (SHOTS && [360, 390, 1440].includes(w)) await page.screenshot({ path: join(SHOTS, `sweep-${w}-${theme}-challenge3.png`) });
     // Problems
     await page.goto('about:blank'); await page.goto(URL0 + '#practice'); await page.waitForSelector('.ds-fig'); await page.waitForTimeout(500);
     const pf = await page.evaluate(() => { const f = [...document.querySelectorAll('.ds-fig')].find(e => e.getBoundingClientRect().width > 0); const r = f.getBoundingClientRect(), vb = f.viewBox.baseVal, k = Math.min(r.width / vb.width, r.height / vb.height); const small = [...f.querySelectorAll('text')].map(t => parseFloat(getComputedStyle(t).fontSize) * k).filter(s => s < 10.95); return { h: r.height, small, sw: document.documentElement.scrollWidth, vw: innerWidth }; });

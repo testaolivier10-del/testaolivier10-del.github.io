@@ -56,8 +56,9 @@ middle plant glows, and the same plants stand as dots on a plank that balances o
 - **Quiet controls, under the picture:** "− 7 plants +" (Add a plant sows the next seedling: it sprouts in its place
   in the row while the others make room; Remove one pulls the last one sown: it rises out of the soil and fades; 3 plants
   up to what the tray holds) and Start over.
-- **Opens** on 7 plants, 3.8, 4.4, 4.9, 5.2, 5.9, 6.6 and 7.6 cm: mean 5.49 cm, median 5.20 cm, SD 1.31, SE 0.50 (on a
-  phone that holds fewer, the first 5 sown: 3.8, 4.4, 5.2, 6.6, 7.6, mean 5.52, median 5.20). The two centres open
+- **Opens** on 7 plants, 3.8, 4.4, 4.9, 5.2, 5.9, 6.6 and 7.6 cm: mean 5.49 cm, median 5.20 cm, SD 1.31, SE 0.50 (sown in
+  the order 3.8, 7.6, 5.2, 4.4, 6.6, 4.9, 5.9, then 5.5, 4.6, 6.2; on a phone that holds fewer, the first 5 sown, the set
+  3.8, 4.4, 5.2, 6.6, 7.6, mean 5.52, median 5.20). The order makes the SE fall with every plant added from 3 to 10. The two centres open
   0.29 cm apart, so both lines show. The tallest plant to 14.0 cm: mean 6.40 cm, median stays 5.20 cm.
 - **Cause line** (`K.cause`): at rest "7 plants → mean 5.49 cm → median 5.20 cm → SD 1.31 · SE 0.50"; after a drag
   "one plant to 14.0 cm → mean 6.40 (was 5.49) → median stays 5.20 → SD 3.48 · SE 1.31"; after Add or Remove "8 plants
@@ -81,7 +82,9 @@ middle plant glows, and the same plants stand as dots on a plank that balances o
 - **Sizing:** the scene's height comes from the window: the window's height less what sits above the scene in the
   tool and the cause line with its buttons, so the plants (the main control) and the cause line show together at
   every width (390 × 844, 1024 × 768, 1280 × 800 included; phones 440 to 640 px, larger 380 to 820 px). The tray is
-  above and the clipboard below at every width (review round 1: side by side left bare paper on wide screens).
+  above and the clipboard below at every width (review round 1: side by side left bare paper on wide screens). A wide
+  but short scene (at least 900 px wide, under 540 px tall, as at 1024 × 768) keeps the clipboard 150 px tall (no worked
+  lines), so the plants get the height (recheck 1).
 - **Cue:** "Drag a plant taller" above the tallest plant, its arrow on that plant's knob, once per device; it covers
   no label or plant. "Show me how" (three pointers: a plant, the clipboard, the plant count) from the purpose line and
   from "?".
@@ -103,7 +106,7 @@ values, 2 worked lines, the plank's numbers (0 to 16), "median", "mean", and on 
      `descriptive-stats:<cid>:<part>`; `#practice` and `?seed=` open it). Its figure keeps the old dot plot with the
      ±1 SD band and ±1 SE bracket, now in Explore's colours (mean blue, median amber and solid, rose dots) and words of
      14 px in its viewBox (at least 11 px on a phone).
-  2. **Challenges** (the old three goals), on the Explore picture from its opening: drag one plant past 11 cm and see
+  2. **Challenges** (the old three goals), on the Explore picture from its opening (Challenge 3 from 3 plants): drag one plant past 11 cm and see
      which centre moves more; make the SD 0.3 cm or less by bringing the plants together; add plants until there are
      10 and watch SE shrink while the SD stays about the same. `#goals` opens it.
 
@@ -143,6 +146,8 @@ values, 2 worked lines, the plank's numbers (0 to 16), "median", "mean", and on 
 15. The tray above and the clipboard below at every width; a wide paper puts its words in a left column (review round 1).
 16. The opening heights changed so the mean and median open 0.29 cm apart (review round 1).
 17. Every number is worked out from the heights to 0.1 cm as the clipboard lists them (review round 1).
+18. The sowing order is 3.8, 7.6, 5.2, 4.4, 6.6, 4.9, 5.9, 5.5, 4.6, 6.2, so the SE falls with every plant added; Challenge 3 starts on 3 plants (recheck 1).
+19. A wide but short scene keeps a 150 px clipboard without the worked lines (recheck 1).
 
 ## Accuracy
 - The AP® Biology Equations and Formulas sheet: x̄ = (1 ÷ n) Σxᵢ; s = √(Σ(xᵢ − x̄)² ÷ (n − 1)); SE = s ÷ √n; median the
@@ -214,6 +219,20 @@ median labels read inward near an edge; S9 the brief's figures corrected (above 
 Checks after the fixes (speed rule, fix round): sweep at 360, 390 (87 each), 1024, 1280 and 1440 (85 each), light
 and dark, **429 passed, 0 failed**; frames **61 passed, 0 failed** (818 frames at 390 and 721 at 1440, 66 real touch
 taps at 360 and 390, the mid slide press); AP Bio tests, content check, `build-apbio --check`, `check-site`.
+
+## Recheck 1 (2026-11-24): BLOCK on one item, fixed
+`/home/claude/review-bio-desc/REVIEW.md` (Recheck 1). Every round 1 fix confirmed (taps 0 wrong at 360 to 768).
+1. **Challenge 3 on phones** opened on a full tray with "+" off, and with the old sowing order the SE rose from 3 to 5
+   plants. The sowing order is now 3.8, 7.6, 5.2, 4.4, 6.6, 4.9, 5.9, 5.5, 4.6, 6.2 (the first 5 and the first 7 are
+   the same sets, so both openings are unchanged); the SE falls with every plant added (3 to 5: 1.11, 0.83, 0.70; 5 to
+   10: 0.70 to 0.36, while the SD goes 1.92 to 1.14). Challenge 3's picture starts on 3 plants at every width. The
+   sweep checks it at every width: 3 plants with "+" on, the SE smaller at each step to a full tray, the challenge met.
+2. **Small plants at 1024 × 768.** A scene at least 900 px wide and under 540 px tall keeps a 150 px clipboard (words
+   and plank side by side, no worked lines, a smaller clip); the board gets about 270 px at 1024 × 768 (was 190).
+Integration round checks (2026-11-24): sweep at all ten widths, one process each, light and dark, at real window
+heights, **878 passed, 0 failed** (89 a width at 360 to 600, 87 at 768 to 1920; Challenge 3 checked at every width);
+frames **61 passed, 0 failed** (698 frames at 390 and 741 at 1440, 66 real touch taps at 360 and 390, 0 wrong, the mid
+slide press); AP Bio tests 74 pass, content check 0 failing, `build-apbio --check`, `check-site`, `check-weight`.
 
 ## Not done, and what I am not happy with
 - No real phone, no screen reader pass, no real students.

@@ -174,12 +174,14 @@
         // words in a column at the left and gives the plank the rest, so no paper or wall is left bare)
         var g = { W: Wd, H: Hd, big: Wd >= 600, wide: false };
         var pad = g.big ? 16 : 8, trayEnd;
-        g.clipH = g.big ? clamp(Hd * 0.34, 210, 260) : clamp(Hd * 0.37, 196, 232);
+        // a wide but short scene (1024 x 768) keeps a low clipboard, so the plants get the height
+        g.short = Wd >= 900 && Hd < 540;
+        g.clipH = g.short ? 150 : g.big ? clamp(Hd * 0.34, 210, 260) : clamp(Hd * 0.37, 196, 232);
         g.topH = Hd - g.clipH;
         g.benchH = 20; g.yB = g.topH - g.benchH;
         trayEnd = Wd - pad;
         var cw0 = Wd - 2 * pad;
-        g.cb = { x: (Wd - cw0) / 2, y: g.topH + 8, w: cw0, h: g.clipH - 14 };
+        g.cb = g.short ? { x: (Wd - cw0) / 2, y: g.topH + 5, w: cw0, h: g.clipH - 9 } : { x: (Wd - cw0) / 2, y: g.topH + 8, w: cw0, h: g.clipH - 14 };
         g.pad = pad; g.trayEnd = trayEnd;
         g.trayH = g.big ? 30 : 22;
         g.ySoil = g.yB + 4 - g.trayH + 3;
@@ -193,18 +195,18 @@
         // every plant's column is at least 44 px wide: a narrow tray holds fewer plants
         g.cap = clamp(Math.floor((g.tx1 - g.tx0) / 44), NMIN, NMAX);
         // the clipboard's paper and its plank (a number line in cm the dots sit on)
-        var c = g.cb, ins = g.big ? 14 : 10;
-        c.px = c.x + ins; c.py = c.y + (g.big ? 26 : 20); c.pw = c.w - 2 * ins; c.ph = c.h - (g.big ? 26 : 20) - ins;
+        var c = g.cb, ins = g.short ? 10 : g.big ? 14 : 10, band = g.short ? 18 : g.big ? 26 : 20;
+        c.px = c.x + ins; c.py = c.y + band; c.pw = c.w - 2 * ins; c.ph = c.h - band - ins;
         c.fs = g.big ? 15 : 12.5;
         c.plH = g.big ? 18 : 16;
         c.two = c.pw >= 640;
-        c.ly = c.py + c.ph - (g.big ? 44 : 36) - c.plH;
+        c.ly = c.py + c.ph - (g.big && !g.short ? 44 : 36) - c.plH;
         if(c.two){
           // the words in a column at the left (title, the heights in order, the mean and median worked out)
           c.colW = clamp(c.pw * 0.3, 290, 380); c.cx = c.px + c.colW / 2;
           c.l = c.px + c.colW + 34; c.r = c.px + c.pw - 22;
-          c.tY = c.py + 20; c.listY = c.py + 50; c.work = true; c.f1 = c.listY + 32; c.f2 = c.f1 + 26;
-          c.free = c.py + 8;
+          c.tY = c.py + (g.short ? 18 : 20); c.listY = c.py + (g.short ? 44 : 50); c.work = c.ph >= 125; c.f1 = c.listY + 32; c.f2 = c.f1 + 26;
+          c.free = c.py + (g.short ? 4 : 8);
         } else {
           c.colW = c.pw; c.cx = c.px + c.pw / 2;
           c.l = c.px + (g.big ? 22 : 14); c.r = c.px + c.pw - (g.big ? 22 : 14);
@@ -273,7 +275,7 @@
         f += '<rect class="ds2-cb" x="' + n1(c.x) + '" y="' + n1(c.y) + '" width="' + n1(c.w) + '" height="' + n1(c.h) + '" rx="10"/>';
         f += '<rect class="ds2-paper" x="' + n1(c.px) + '" y="' + n1(c.py) + '" width="' + n1(c.pw) + '" height="' + n1(c.ph) + '" rx="3"/>';
         var cw = Math.min(110, c.w * 0.3);
-        f += '<rect class="ds2-clip" x="' + n1(c.x + c.w / 2 - cw / 2) + '" y="' + n1(c.y + 4) + '" width="' + n1(cw) + '" height="' + (g.big ? 30 : 24) + '" rx="6"/><rect class="ds2-clip-hi" x="' + n1(c.x + c.w / 2 - cw / 2 + 8) + '" y="' + n1(c.y + 9) + '" width="' + n1(cw - 16) + '" height="4" rx="2"/>';
+        f += '<rect class="ds2-clip" x="' + n1(c.x + c.w / 2 - cw / 2) + '" y="' + n1(c.y + 4) + '" width="' + n1(cw) + '" height="' + (g.short ? 15 : g.big ? 30 : 24) + '" rx="6"/><rect class="ds2-clip-hi" x="' + n1(c.x + c.w / 2 - cw / 2 + 8) + '" y="' + n1(c.y + 9) + '" width="' + n1(cw - 16) + '" height="4" rx="2"/>';
         f += '<text class="ds2-ctitle" data-lab="ctitle" x="' + n1(c.cx) + '" y="' + n1(c.tY) + '" text-anchor="middle" style="font-size:' + c.fs + 'px">Each plant’s height (cm)</text>';
         // the plank: a wooden number line, a tick every cm and its numbers printed on it
         f += '<rect class="ds2-plank" x="' + n1(c.l - 10) + '" y="' + n1(c.ly) + '" width="' + n1(c.r - c.l + 20) + '" height="' + c.plH + '" rx="4" fill="url(#ds2-plank)"/>';
@@ -758,11 +760,11 @@
       }
 
       /* ---------------------------------------------------- the opening, Start over */
-      function build(){
+      function build(n){
         stopAll();
         P.forEach(drop); P = [];
-        St.opening = true;
-        for(var i = 0; i < openN(); i++) P.push(newPlant(i, POOL[i]));
+        St.opening = !n;
+        for(var i = 0; i < (n || openN()); i++) P.push(newPlant(i, POOL[i]));
         lastAct = null; sortRow(0); P.forEach(function(p){ p.tw = {}; }); paintN();
       }
       function reset(){
@@ -778,7 +780,8 @@
         lastAct = null; cause.take(null); paintN(); paintAll(); kick(); if(calm()){ stopAll(); fade(); }
         void was;
       }
-      function fresh(){ build(); lastWH = ''; layoutNow(true); settled(); }
+      // Challenge 3 (add plants until the tray is full) starts on the fewest plants, so adding is a real action
+      function fresh(){ var c = St.mode === 'quiz' && St.part === 'goals' && chal.current(); build(c && c.id === 'n' ? NMIN : 0); lastWH = ''; layoutNow(true); settled(); }
       // a button under the picture on a phone: bring the plants back into view so the change is seen
       function showPic(){ var r = sceneBox.getBoundingClientRect(); if(r.top < 0 && window.scrollBy) window.scrollBy({ top: r.top - 8, behavior: calm() ? 'auto' : 'smooth' }); }
       bAdd.addEventListener('click', function(){ hideCue(true); tourDid('n'); cause.take(null); showPic(); sow(); });
@@ -848,7 +851,7 @@
         set: function(hs){ stopAll(); St.opening = false; P.forEach(drop); P = hs.map(function(v, i){ return newPlant(i, v); }); sortRow(0); P.forEach(function(p){ p.tw = {}; }); lastAct = null; cause.take(null); paintN(); layoutNow(true); paint(); settled(); },
         open: function(){ fresh(); }, noCue: function(){ hideCue(true); }, sow: function(){ sow(); }, pull: function(){ pull(); }, reset: function(){ reset(); },
         drag: function(i, v){ var p = active()[i]; if(dragP !== p) begin(p); dragP = p; setH(p, v, true); paintAll(); }, end: function(){ dragP = null; sortRow(); kick(); },
-        stopAll: stopAll, fit: fitHeight, openN: function(){ return openN(); }, cap: function(){ return capN(); } };
+        stopAll: stopAll, fit: fitHeight, openN: function(){ return openN(); }, cap: function(){ return capN(); }, chal: function(id){ chal.show(id); } };
     }, { studio: { kit2: function(ctx){ return ctx.kit2; } } });
   }
   /* The page loads the kit (pages.json "kit2": true). A cached copy of the old page would not: fetch it then. */
