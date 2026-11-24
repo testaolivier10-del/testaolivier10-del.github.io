@@ -1,129 +1,16 @@
 /* Motion graphs (physics/assets/tools/motion-graphs.js). OWNED BY THIS TOOL
    ONLY. Loaded by the tool script itself (next to it), after phys-tools.css.
    The track, the cart and the stacked x, v, a graphs, light and dark. */
-.mg-card{gap:12px;}
-.mg-stage{display:flex;flex-direction:column;gap:6px;min-height:0;}
-.mg-scene-wrap{flex:none;}
-.mg-scene{width:100%;height:auto;display:block;touch-action:none;user-select:none;-webkit-user-select:none;}
-.mg-graphs-wrap{position:relative;min-height:0;border-radius:12px;}
-.mg-graphs-wrap:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
-.mg-graphs{width:100%;height:100%;display:block;touch-action:none;cursor:crosshair;user-select:none;-webkit-user-select:none;}
 
-/* The scene */
-.mg-bench{fill:var(--paper);}
-.mg-rail{fill:#8C969B;}
-.mg-rail-slot{fill:#5F696E;}
-.mg-bumper{fill:#3C4549;}
-.mg-tick{stroke:var(--muted);stroke-width:1;}
-.mg-tick.major{stroke:var(--ink);stroke-width:1.4;}
-.mg-tl{fill:var(--muted);font:700 11.5px var(--font-ui);font-variant-numeric:tabular-nums;}
-.mg-tl.zero{fill:var(--ink);font-weight:900;}
-.mg-axis-l{fill:var(--muted);font:700 11px var(--font-ui);}
-.mg-stand{fill:#7A858A;}
-.mg-det-body{fill:#2F3A40;}
-.mg-det-face{fill:#C9D3D8;}
-.mg-det-led{fill:#5A6268;}
-.mg-det-led.on{fill:#E0453A;}
-.mg-ping path{fill:none;stroke:var(--phys-s1);stroke-width:2;stroke-linecap:round;opacity:.55;}
-.mg-cart{cursor:grab;outline:none;}
-.mg-cart:active{cursor:grabbing;}
-.mg-hit{fill:transparent;}
-.mg-body{fill:#0B6FA4;stroke:#07527A;stroke-width:1.5;}
-.mg-stripe{fill:#FFFFFF;opacity:.35;}
-.mg-reflector{fill:#D9E2E6;stroke:#7A858A;stroke-width:1;}
-.mg-tyre{fill:#262D31;}
-.mg-hub{fill:#B8C2C7;}
-.mg-spokes line{stroke:#9AA5AA;stroke-width:1.6;stroke-linecap:round;}
-.mg-dot-l{stroke:var(--white);stroke-width:1;stroke-dasharray:2 2;opacity:.7;}
-.mg-dot{fill:#FFFFFF;stroke:#07527A;stroke-width:1.5;}
-.mg-cart:focus-visible .mg-body{stroke:var(--cink);stroke-width:4;}
-:root[data-theme="dark"] .mg-body{fill:#2C8FC9;stroke:#9DD3F2;}
-:root[data-theme="dark"] .mg-rail{fill:#6C767B;} :root[data-theme="dark"] .mg-bumper{fill:#AEB8BD;}
-:root[data-theme="dark"] .mg-det-body{fill:#5C6A72;} :root[data-theme="dark"] .mg-stand{fill:#8D989D;}
-
-/* The graphs */
-.mg-panel-bg{fill:var(--white);}
-.mg-panel-bg.is-target{fill:var(--ctint);}
-.mg-graphs .grid{stroke:var(--line);stroke-width:1;}
-.mg-graphs .zero{stroke:var(--ink);stroke-width:1.2;stroke-dasharray:none;opacity:.55;}
-.mg-glbl{font:900 12.5px var(--font-ui);}
-.mg-graphs .series{fill:none;stroke-width:2.6;}
-.mg-graphs .pt{stroke:var(--white);stroke-width:2;}
-.mg-target-l{fill:none;stroke:var(--cink);stroke-width:7;stroke-opacity:.28;stroke-dasharray:10 6;stroke-linecap:round;stroke-linejoin:round;}
 .mg-area{stroke:none;fill-opacity:.16;}
 .mg-area.s1{fill:var(--phys-s2);} .mg-area.s3{fill:var(--phys-s3);}
 .mg-fig .mg-area.s1{fill:var(--phys-s2);fill-opacity:.2;}
-.mg-cursor{stroke:var(--ink);stroke-width:1.4;stroke-dasharray:4 3;}
-.mg-tan{stroke:var(--ink);stroke-width:2;stroke-dasharray:6 4;opacity:.8;}
-.mg-cur-pt{fill:var(--white);stroke:var(--ink);stroke-width:2.4;}
-.mg-cur-t{fill:var(--ink);font:900 12px var(--font-ui);}
 .mg-hl{stroke:var(--cink);stroke-width:8;stroke-opacity:.3;stroke-linecap:round;}
-
-/* Controls */
-.mg-ctl{display:flex;flex-direction:column;gap:12px;}
-.mg-drive{display:flex;}
-.mg-card:not(.ls-root *) .mg-drive{gap:6px;padding:4px;border-radius:14px;background:var(--paper);border:var(--bw,2px) solid var(--line);width:max-content;max-width:100%;}
-.mg-drive .bt-mode.on,.mg-drive .bt-mode[aria-pressed="true"]{color:var(--cink);}
-.mg-panel{display:flex;flex-direction:column;gap:10px;}
-.mg-panel[hidden]{display:none;}
-.mg-target{margin:0;font:700 15px/1.45 var(--font-ui);}
-.mg-btns .bt-btn[hidden]{display:none;}
-.mg-cur:empty{display:none;}
-.mg-cur-h{margin:6px 0 4px;}
-.mg-why-list{margin:0;padding:0;list-style:none;display:grid;gap:8px;}
-.mg-why-list li{display:block;padding-left:22px;position:relative;line-height:1.5;}
-.mg-k{position:absolute;left:0;top:.35em;width:14px;height:4px;border-radius:2px;}
-.mg-k.s1{background:var(--phys-s1);} .mg-k.s2{background:var(--phys-s2);} .mg-k.s3{background:var(--phys-s3);}
-.mg-k.a{height:12px;top:.2em;opacity:.45;}
-.mg-k.s1.a{background:var(--phys-s2);}
-.mg-tbl td.r{text-align:right;font-variant-numeric:tabular-nums;}
-
-/* Outside the Tool Studio (no JS studio): a sensible stacked layout. */
-.mg-card .mg-graphs-wrap{aspect-ratio:auto;}
-
-/* Inside the Tool Studio: the scene on top, the graphs fill the rest. */
-.ls-root .mg-ls-stage{gap:4px;}
-.ls-root .mg-ls-stage .mg-stage{flex:1;min-height:0;}
-.ls-root .mg-ls-stage .mg-graphs-wrap{flex:1;min-height:180px;}
-.ls-root .mg-ls-dock .mg-drive{width:100%;}
-.ls-root .mg-ls-dock .mg-drive .bt-mode{flex:1;}
-.ls-root .mg-ls-dock .mg-p-drag .bt-cue{display:flex;}
-@media (max-width:999.98px){
-  .ls-root .mg-ls-stage .mg-graphs-wrap{min-height:200px;}
-  .ls-root .mg-ls-dock .bt-slider label{font-size:var(--ls-s);}
-}
 
 /* Test yourself figures */
 .mg-qfig .mg-fig{max-width:560px;}
 .cd-pics .mg-fig{max-width:100%;}
 
-/* The Tool Studio hides each course's breadcrumb; phys-crumb is not in its
-   list yet (shared fix reported), so this page hides it itself. */
-body.ls-on .phys-crumb{display:none;}
-.mg-ctl .bt-out{min-width:9.5ch;white-space:nowrap;}
-:root[data-theme="dark"] .mg-tyre{fill:#11161A;stroke:#AEB8BD;stroke-width:1.5;}
-:root[data-theme="dark"] .mg-bench{fill:var(--surface2,var(--paper));}
-.mg-pk{font-weight:900;color:var(--ink);font-style:italic;}
-@media (max-width:599.98px){
-  .ls-root .mg-ls-dock{gap:8px;}
-  .ls-root .mg-ls-dock .mg-ctl{gap:8px;}
-  .ls-root .mg-ls-dock .mg-panel{gap:4px;}
-  .ls-root .mg-ls-dock .bt-slider{gap:0;}
-  .ls-root .mg-ls-dock .bt-slider label{font-size:12.5px;}
-  .ls-root .mg-ls-dock .mg-drive .bt-mode{min-height:40px;}
-  .ls-root .mg-ls-stage .mg-graphs-wrap{min-height:120px;}
-  .ls-root .mg-ls-dock .mg-p-drag .bt-cue{font-size:14px;}
-}
-/* A phone: the stage keeps room for all three graphs; a tall dock scrolls. */
-@media (max-width:999.98px){
-  .ls-root .ls-stage:has(.mg-ls-stage){min-height:min(350px,48dvh);}
-  .ls-root:has(.mg-ls-stage) .ls-dock{max-height:max(250px,calc(100dvh - 56px - min(350px,48dvh) - 24px));}
-}
-.ls-root .mg-ls-dock .bt-slider{position:relative;}
-.ls-root .mg-ls-dock .bt-slider .bt-out{position:absolute;right:0;top:0;min-width:0;font-size:13px;line-height:1.2;}
-.ls-root .mg-ls-dock .bt-slider-row{gap:6px;}
-.mg-glbl{paint-order:stroke;stroke:var(--white);stroke-width:4px;stroke-linejoin:round;}
-.mg-cur-t{paint-order:stroke;stroke:var(--white);stroke-width:4px;stroke-linejoin:round;}
 .cd-pics .mg-fig .tick{font-size:10.5px;}
 .cd-pics .mg-fig .series{stroke-width:2.6;}
 .mg-sm-l{font-size:10.5px;}
@@ -149,26 +36,11 @@ body.ls-on .phys-crumb{display:none;}
   .ls-root .ls-drill-pics:has(.mg-fig) .cd-label{font-size:16px;margin:0 0 4px;}
 }
 
-/* First screen: the faint example run and the drag cue (before any motion). */
-.mg-graphs .series.mg-ghost{stroke-width:2.4;stroke-opacity:.32;stroke-dasharray:6 5;}
-.mg-ghost-n{fill:var(--muted);font:800 11px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:3px;stroke-linejoin:round;}
-.mg-ghost-hint text{fill:var(--cink);font:900 12.5px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:4px;stroke-linejoin:round;}
-.mg-ghost-hint text.sub{fill:var(--muted);font-weight:800;font-size:11.5px;}
-.mg-drag-cue path{fill:none;stroke:var(--cink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:3 4;}
-.mg-drag-cue path.hd{stroke-dasharray:none;}
-.mg-drag-cue text{fill:var(--cink);font:900 12px var(--font-ui);}
-@media (prefers-reduced-motion: no-preference){ .mg-drag-cue{animation:mg-nudge 1.6s ease-in-out infinite;} }
-@keyframes mg-nudge{0%,100%{transform:translateX(0);}50%{transform:translateX(5px);}}
-
 /* Phones (docs/tools-phone-pass.md): numbers and labels on the pictures at
    12.5 px or more; the graphs draw at their box's size, so these are on-screen
    sizes. A phone on its side has no room for 200 px of graphs under the
    track: they take what is left (each panel then labels only 0). */
 .ls-phone .mg-graphs .tick,.ls-phone .mg-fig .tick{font-size:13px;}
-.ls-phone .mg-tl,.ls-phone .mg-axis-l{font-size:12.5px;}
-.ls-phone .mg-ghost-n,.ls-phone .mg-ghost-hint text.sub{font-size:12.5px;}
-.ls-phone .mg-graphs .lbl,.ls-phone .mg-fig .lbl{font-size:13.5px;}
-@media (max-height:540px){ .ls-root.ls-phone .mg-ls-stage .mg-graphs-wrap{min-height:0;} }
 /* Pick the a-t graph on a phone: each choice uses its card's full width
    (the radio sits in the corner), about 160 px at 360 px, with 14.5-unit
    numbers (about 12 px on screen). */
@@ -177,3 +49,103 @@ body.ls-on .phys-crumb{display:none;}
 .ls-phone .cd-pics:has(.mg-fig) label{width:100%;}
 .ls-phone .cd-pics:has(.mg-fig) .cd-pic-n{padding-left:26px;min-height:20px;font-size:12px;line-height:20px;}
 .ls-phone .cd-pics .mg-fig .tick,.ls-phone .cd-pics .mg-fig .mg-sm-l{font-size:14.5px;}
+.mg-cur-pt{fill:var(--white);stroke:var(--ink);stroke-width:2.4;}
+
+/* ---------------------------------------------------------------- tools v2 Explore (.mg2) and the Match figure */
+.mg-root{--mg-x:#0072B2;--mg-x-ink:#005A8C;--mg-v:#D55E00;--mg-v-ink:#A34400;--mg-a:#009E73;--mg-a-ink:#00704F;
+  --mg2-wall1:#EEF2F5;--mg2-wall2:#E2E8EC;--mg2-tile:rgba(60,80,100,.07);--mg2-t1:#D9B98C;--mg2-t2:#BF9A68;--mg2-edge:#A68B66;
+  --mg2-al1:#E9EDF0;--mg2-al2:#B9C2C8;--mg2-al3:#8E989F;--mg2-al-ink:#5B656C;--mg2-tape:#FFF8DC;--mg2-tape-ink:#3B3220;
+  --mg2-cb1:#3E4A54;--mg2-cb2:#22292F;--mg2-deck:#7C8A95;--mg2-tyre:#1C2226;--mg2-hub:#C9D1D6;--mg2-det:#2F3A40;--mg2-det-f:#B7A26A;--mg2-det-m:#8E7B48;
+  --mg2-panel:#FFFFFF;--mg2-grid:rgba(30,45,60,.10);--mg2-ink:#1F2A33;}
+:root[data-theme="dark"] .mg-root{--mg-x:#56B4E9;--mg-x-ink:#8CCBF2;--mg-v:#FF8A3D;--mg-v-ink:#FFB07A;--mg-a:#3CCB9B;--mg-a-ink:#8BE3C8;
+  --mg2-wall1:#1D2630;--mg2-wall2:#18202A;--mg2-tile:rgba(200,220,240,.06);--mg2-t1:#7A6142;--mg2-t2:#5E4932;--mg2-edge:#3A3024;
+  --mg2-al1:#C3CAD0;--mg2-al2:#8D979E;--mg2-al3:#626C73;--mg2-al-ink:#2A3036;--mg2-tape:#EDE3C2;--mg2-tape-ink:#2B2416;
+  --mg2-cb1:#7E8E9B;--mg2-cb2:#4E5B66;--mg2-deck:#B5C1CA;--mg2-tyre:#0E1215;--mg2-hub:#9AA4AB;--mg2-det:#5C6A72;--mg2-det-f:#C9B27A;--mg2-det-m:#9C8754;
+  --mg2-panel:#141C25;--mg2-grid:rgba(200,220,240,.10);--mg2-ink:#E6EDF3;}
+.mg2{display:flex;flex-direction:column;gap:10px;min-height:0;flex:1 1 auto;}
+.mg2 [hidden]{display:none !important;}
+.mg2 .tk2-tabs{margin:0;align-self:flex-start;max-width:100%;}
+.mg2 .tk2-tabs.is-big .tk2-tab{flex:0 0 auto;}
+@media (max-width:420px){ .mg2 .tk2-tabs.is-big{gap:6px;} .mg2 .tk2-tabs.is-big .tk2-tab{padding:0 13px 0 9px;font-size:15px;gap:6px;} }
+.mg2-scene{position:relative;flex:1 1 auto;min-height:420px;border-radius:18px;overflow:hidden;background:var(--surface2);}
+@media (max-width:999.98px){ .mg2-scene{flex:none;min-height:0;} }
+@media (max-width:599.98px){ .mg2-scene{border-radius:14px;} .mg2{gap:8px;} }
+.mg2-scene.is-match{flex:none;min-height:0;border-radius:14px;}
+.mg2-svg,.cd-fig .mg2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;max-width:none;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+.mg2-scene.is-fade .mg2-svg{animation:mg2-fade .3s ease-out;}
+.mg2-scene.is-fadetr .mg2-tr,.mg2-scene.is-fadetr .mg2-area{animation:mg2-fade .3s ease-out;}
+@keyframes mg2-fade{from{opacity:.25;}to{opacity:1;}}
+.mg-root .mg2-wall1{stop-color:var(--mg2-wall1);} .mg-root .mg2-wall2{stop-color:var(--mg2-wall2);}
+.mg-root .mg2-t1{stop-color:var(--mg2-t1);} .mg-root .mg2-t2{stop-color:var(--mg2-t2);}
+.mg-root .mg2-al1{stop-color:var(--mg2-al1);} .mg-root .mg2-al2{stop-color:var(--mg2-al2);} .mg-root .mg2-al3{stop-color:var(--mg2-al3);}
+.mg-root .mg2-cb1{stop-color:var(--mg2-cb1);} .mg-root .mg2-cb2{stop-color:var(--mg2-cb2);}
+.mg2-tile{stroke:var(--mg2-tile);stroke-width:1;}
+.mg2-edge{fill:var(--mg2-edge);}
+.mg2-shadow{fill:#000;opacity:.14;}
+.mg2-rail{stroke:var(--mg2-al-ink);stroke-width:1;}
+.mg2-tape{fill:var(--mg2-tape);}
+.mg2-tick{stroke:var(--mg2-tape-ink);stroke-width:1;} .mg2-tick.big{stroke-width:1.5;}
+.mg2-tl{fill:var(--mg2-tape-ink);font-size:11px;font-weight:800;font-variant-numeric:tabular-nums;}
+.mg2-tl.zero{font-weight:900;}
+.mg2-stop{fill:var(--mg2-al-ink);}
+.mg2-clamp{fill:var(--mg2-al3);stroke:var(--mg2-al-ink);stroke-width:1;}
+.mg2-det-b{fill:var(--mg2-det);}
+.mg2-det-f{fill:var(--mg2-det-f);} .mg2-det-m{fill:var(--mg2-det-m);stroke:rgba(0,0,0,.25);stroke-width:1;}
+.mg2-led{fill:#5A6268;} .mg2-led.is-on{fill:#E0453A;}
+.mg2-ping path{fill:none;stroke:var(--mg-x);stroke-width:2;stroke-linecap:round;opacity:0;}
+@media (prefers-reduced-motion: no-preference){ .mg2-ping.is-on path{animation:mg2-ping .66s linear infinite;} }
+@keyframes mg2-ping{0%{opacity:0;}30%{opacity:.75;}100%{opacity:0;}}
+.mg2-xp{fill:var(--mg-x);}
+.mg2-body{stroke:#141A1E;stroke-width:1.2;}
+.mg2-deck{fill:var(--mg2-deck);opacity:.55;}
+.mg2-plunger{fill:var(--mg2-al2);stroke:var(--mg2-al-ink);stroke-width:.8;}
+.mg2-card{fill:#F4F6F7;stroke:var(--mg2-al-ink);stroke-width:.8;}
+.mg2-pin{fill:var(--mg-x);stroke:#fff;stroke-width:1.2;}
+.mg2-tyre{fill:var(--mg2-tyre);} .mg2-hub{fill:var(--mg2-hub);}
+.mg2-spk{stroke:var(--mg2-hub);stroke-width:1.4;stroke-linecap:round;}
+:root[data-theme="dark"] .mg2-tyre{stroke:#AEB8BD;stroke-width:1.2;}
+.mg2-arr{stroke:none;}
+.mg2-va{fill:var(--mg-v);} .mg2-aa{fill:var(--mg-a);}
+.mg2-al{font-size:13px;font-weight:900;font-style:italic;paint-order:stroke;stroke:var(--mg2-wall1);stroke-width:3px;stroke-linejoin:round;}
+.mg2-al.is-v{fill:var(--mg-v-ink);} .mg2-al.is-a{fill:var(--mg-a-ink);}
+.mg2-pbg{fill:var(--mg2-panel);}
+.mg2-pbg.is-target{fill:color-mix(in srgb, var(--mg2-panel) 88%, var(--cink));}
+.mg2-grid{stroke:var(--mg2-grid);stroke-width:1;}
+.mg2-zero{stroke:var(--mg2-ink);stroke-width:1.2;opacity:.5;}
+.mg2-axis{stroke:var(--mg2-ink);stroke-width:1.4;opacity:.8;}
+.mg2-tk{fill:var(--muted);font-size:11.5px;font-weight:800;font-variant-numeric:tabular-nums;}
+.mg2-tn{fill:var(--ink);}
+.mg2-tr{fill:none;stroke-width:2.8;stroke-linejoin:round;stroke-linecap:round;}
+.mg2-tr.s1{stroke:var(--mg-x);} .mg2-tr.s2{stroke:var(--mg-v);} .mg2-tr.s3{stroke:var(--mg-a);}
+.mg2-area{fill:var(--mg-x);opacity:.16;}
+.mg2-target{fill:none;stroke:var(--cink);stroke-width:9;stroke-opacity:.26;stroke-linecap:round;stroke-linejoin:round;}
+.mg2-tan{stroke-width:2;stroke-linecap:round;}
+.mg2-tan.is-v{stroke:var(--mg-v);} .mg2-tan.is-a{stroke:var(--mg-a);}
+.mg2-cur{stroke:var(--mg2-ink);stroke-width:1.4;opacity:.6;}
+.mg2-dot{stroke:var(--mg2-panel);stroke-width:2.2;}
+.mg2-dot.s1{fill:var(--mg-x);} .mg2-dot.s2{fill:var(--mg-v);} .mg2-dot.s3{fill:var(--mg-a);}
+.mg2-words text{font-size:12.5px;font-weight:900;paint-order:stroke;stroke:var(--mg2-panel);stroke-width:6px;stroke-linejoin:round;}
+.mg2-gn.s1{fill:var(--mg-x-ink);} .mg2-gn.s2{fill:var(--mg-v-ink);} .mg2-gn.s3{fill:var(--mg-a-ink);}
+.mg2-w.is-v{fill:var(--mg-v-ink);} .mg2-w.is-a{fill:var(--mg-a-ink);} .mg2-w.is-x{fill:var(--mg-x-ink);}
+.mg2-w.is-turn{fill:var(--ink);} .mg2-w.is-ex{fill:var(--muted);} .mg2-w.is-tg{fill:var(--cink);}
+@media (max-width:599.98px){ .mg2-words text{font-size:12px;} }
+.mg2-lines{display:flex;align-items:center;gap:6px 12px;flex-wrap:wrap;flex:none;min-height:50px;}
+.mg2-btns{display:flex;gap:8px;margin-left:auto;flex:none;}
+.mg2-btns .tk2-btn{min-height:40px;padding:0 14px;background:var(--white);color:var(--ink);box-shadow:inset 0 0 0 2px color-mix(in srgb, var(--ink) 18%, transparent);font:800 14px var(--font-ui);}
+.mg2 .tk2-cz.is-v{--cz:var(--mg-v);--cz-ink:var(--mg-v-ink);}
+.mg2 .tk2-cz.is-a{--cz:var(--mg-a);--cz-ink:var(--mg-a-ink);}
+.mg2 .tk2-cz.is-x{--cz:var(--mg-x);--cz-ink:var(--mg-x-ink);}
+.mg2 .tk2-cz.is-res{border-color:color-mix(in srgb, var(--ink) 30%, transparent);background:var(--white);color:var(--ink);}
+.mg2 .tk2-cz.is-turn{border-color:color-mix(in srgb, var(--ink) 30%, transparent);color:var(--ink);}
+.mg2 .tk2-scrub .tk2-cur{display:none;}
+.mg2-scene .tk2-scrub.is-rec .tk2-knob,.mg2-scene .tk2-scrub.is-rec .tk2-hit{display:none;}
+.mg2-ref .mg2-list{margin:0 0 10px;padding-left:20px;display:grid;gap:6px;}
+.mg2-tbl{width:100%;border-collapse:collapse;font:700 14px var(--font-ui);}
+.mg2-tbl th,.mg2-tbl td{padding:6px 4px;border-bottom:1px solid var(--line-soft);text-align:left;}
+.mg2-tbl td.r{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.mg2-mfig{margin:0;width:100%;}
+.ls-root .ls-drill-stage .mg2-mfig{flex:none;}
+:root[data-theme="dark"] .mg2-stop{fill:#C3CAD0;}
+
+.mg2-seam{stroke:var(--mg2-tile);stroke-width:1.5;}
+.mg2-skirt{fill:var(--mg2-edge);opacity:.35;}

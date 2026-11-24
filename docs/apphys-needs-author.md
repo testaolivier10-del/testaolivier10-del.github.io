@@ -200,3 +200,17 @@ Tools v2 rebuild (`docs/tools-v2-phys-torque-balance-brief.md`, 2026-11-23). For
   were built and checked after the change (`EXAM_NUMBERS`, form tests pass).
 - **"centre of mass" search alias** (launch): dropped; the site's spelling rule reads glossary aliases as
   visible text.
+
+## motion-graphs-v2: the rebuilt motion graphs tool (open, review)
+
+Tools v2 rebuild (`docs/tools-v2-phys-motion-graphs-brief.md`, 2026-11-24). For a physics teacher to confirm:
+- The track is 10 m (−5 m to +5 m) with the motion detector at one end, kept from the first version because the
+  Match targets and drills use those numbers. A classroom detector reads about 0.15 m to 3.5 m (Vernier Go Direct,
+  cart channel; 6 m for older models). "?" says so. Shorten the track (and rescale the targets) or keep it?
+- A hand drive's v and a are least squares slopes over ±0.2 s (v) and ±0.4 s (a) of positions taken every 0.05 s
+  (the first version used ±0.15 s and ±0.25 s). Real detector software smooths over a few points too; are these
+  windows a fair picture of what a lab detector shows?
+- At an end stop the cart stops dead: v drops to 0 at once and the a spike is not drawn (too narrow). A real cart
+  bounces or is caught by a magnet. Keep it as an idealised stop?
+- "turns" marks where v changes sign (a hand drive needs |v| over 0.12 m/s on each side first, so a pause is not
+  a turn). Fair, or should a pause followed by going back also be named?

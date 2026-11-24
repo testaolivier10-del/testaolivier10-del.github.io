@@ -148,7 +148,8 @@
    "desc": "Drive a cart along a track and watch its position, velocity and acceleration graphs draw live; read slopes and areas and match motions to graphs.",
    "blurb": "Drive a cart and watch x, v and a draw themselves; read slope and area.",
    "lede": "Drive a cart and watch its motion graphs draw themselves.",
-   "studio": true
+   "studio": true,
+   "kit2": true
   },
   {
    "slug": "lab-design",

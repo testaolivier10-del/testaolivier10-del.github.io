@@ -1,0 +1,187 @@
+# Tools v2: AP® Physics 1 Motion graphs (brief and build notes)
+
+Status file for the v2 rebuild of `physics/tools/motion-graphs.html` (free; rollout row 91, group P, wave 21, size
+restyle). Standard: `docs/tools-v2-standard.md`; plan: `docs/tools-v2-plans/phys-motion-graphs.md`. Branch
+`claude/tools-v2-phys-motion-graphs`, cut from `claude/tools-v2-all`. NOT merged: an independent review comes first.
+Decisions made for the owner are also one line each in `docs/tools-v2-owner-log.md`.
+
+## Files
+- `physics/assets/tools/motion-graphs.js` (rewritten Explore, Match the graph; the drill and its figures unchanged)
+  and `.css` (the old Explore rules gone; the Test yourself figure rules kept). Model
+  `physics/assets/tools/math/motion-graphs.js` unchanged.
+- `physics/data/pages.json`: `"kit2": true` on motion-graphs (the build adds the kit's two files to the page).
+- `physics/data/tools/motion-graphs.json`: only the intro and one "How it works" line reworded for the new names
+  (Drive it, Match the graph); targets and contexts unchanged.
+- `physics/assets/tools/phys-tools.js` (shared, small): the drill gets a `task` step kind (a step the tool grades
+  itself: `check(api) -> { blank, ok, note }`, `reveal(api)`) and contexts with `only: true` (offered only when
+  their kind is picked, never in "Any kind", so every `?seed=` link opens the same problem as before). No other
+  trainer uses either; their pages are byte-identical.
+- Sweep: `scripts/tools-v2/phys-motion-graphs-sweep.mjs` (`--frames`, `--perf`).
+
+## Research (rule 10): what exists and what we took
+Seen means the page itself was opened and read; text only means only a description could be read.
+
+| Source | How it works | Works | Confuses or is missing | What we took |
+|---|---|---|---|---|
+| PhET The Moving Man (sim pages and a teacher activity read, text only; the sim not run here) | Drag the man; position, velocity and acceleration plot live; or set x, v or a and let it run; playback | The student moves the thing and sees three graphs at once | The man has no velocity or acceleration arrows tied to the graphs' colors; three tabs split the quantities | Drive with the hand and three stacked graphs on one time axis; "Set v and a" as the second way to move it |
+| Vernier Graph Matching (experiment page read; Go Direct Motion Detector manual read for its range) | Walk in front of a real motion detector; match a position or velocity graph | The real detector and its sonar pulse; matching as a challenge | A real detector reads 0.15 m to 3.5 m (Go Direct, cart channel), so a 10 m run is not real | The detector drawn at the track's end, pinging while it measures; Match the graph in Test yourself; the range said in "?" and logged |
+| Desmos graph matching activities (known, text only) | Match a described motion to a graph | Matching is a quiz | Not a drive | Matching kept as a quiz (Test yourself) |
+
+What ours does better: the slope relations are drawn, not only named. At the time cursor the line touching the x
+graph is drawn in v's color (its slope is v), the line touching the v graph in a's color (its slope is a), and
+the area under v from 0 is shaded in x's color (it is Δx); the cart carries v and a arrows in those colors, and
+the cause line reads them off the drawn frame.
+
+## Two ways to move one cart (one idea: three views of one motion; the slope of each is the next)
+1. **Drive it** (opens here). Purpose: "Drive the cart and watch its three graphs draw." A dynamics cart on an
+   aluminum track with a meter tape (−5 m to +5 m) on a lab bench; a motion detector at the left end. Under it,
+   three stacked graphs (position x, velocity v, acceleration a) on one time axis (0 to 10 s). The landing shows an
+   example run already drawn (named "Example run", the cursor at 10 s). Main control: drag the cart (its knob or
+   the cart itself), or hold the left or right arrow key (Shift is slow). The first touch starts a 10 s recording:
+   the example's traces fade, the detector pings, the traces draw live. v and a are measured from the recorded
+   positions (least squares slopes over ±0.2 s and ±0.4 s, positions every 0.05 s, said in "?"). After the run the
+   takeaway: "Where x-t is steepest, the cart is fastest; where v-t is flat, a is zero." Drag along the graphs (the kit's
+   scrub, knob above the x graph, or its arrow keys) and the cart goes back to that moment; Replay plays the run
+   again. Cause line: "at 4.2 s: v +1.2 m/s + a −0.4 m/s² → slowing down" (speeding up, slowing down, steady to the
+   left or right, at rest, turning around; "Example, at 10.0 s:" on the example).
+2. **Set v and a**. Purpose: "Set v and a and see the motion they make." The same scene. Main control: the tip of
+   the cart's velocity arrow (v₀, −3 to 3 m/s) and of its acceleration arrow (a, −2 to 2 m/s²), 0.1 steps. Every
+   change redraws the whole exact run and its three graphs at once; letting go runs it in real time (the cursor
+   sweeps, the cart rolls, its arrows show v and a at each moment), then after a beat the cart fades back to its
+   start. While it runs, the acceleration arrow's tip rides with the cart: changing a then starts a new straight
+   piece on v-t from that moment (as the old tool did). Quiet control: drag the cart to choose its start (−3 to
+   3 m, 0.5 steps). "turns" names the top or bottom of the x graph where v crosses zero; "end stop" where the cart
+   reaches an end. Run replays; Stop stops. Cause line: "v₀ +1.5 m/s + a −0.3 m/s² → slows down → turns at 5.0 s"
+   (speeds up, speeds up from rest, steady, stays at rest; "end stop at 4.9 s"; after a change mid run,
+   "a +0.9 m/s² from 1.4 s" and the result for that piece).
+
+One color per idea, everywhere: x blue, v vermillion, a green (the physics series colors `--phys-s1` to `s3`,
+dark variants in dark mode): the traces, the arrows, the cursor's dots, the tangents, the area, the panel names
+and the cause line's pills.
+
+## What is on screen in Explore (1440, landing)
+Outside the picture: 2 tabs, the purpose line (8 words), "Show me how", the cause line (3 pills and a lead, or the
+takeaway), Replay (or Run), Start over. No side panel.
+On the picture, Drive it: the track with its 11 tape numbers, the detector, the cart and its knob, the position
+pointer, the v arrow and "v", "a = 0" (or the a arrow and "a"), 3 graph panels (each named, 3 numbers), the time
+axis (11 numbers and "t (s)"), 3 traces, the cursor with 3 dots, 2 tangents with "slope = v" and "slope = a", the
+area under v with "area = Δx", "turns", "Example run", the scrub's knob; the cue on a first visit. Set v and a: the
+same without the example and the scrub, with the 2 tip knobs and the quiet cart knob.
+
+## Explore against Test yourself (what moved; nothing dropped)
+| Old tool | Where it is now |
+|---|---|
+| Drive modes Drag, Set v and a, Match | Tabs "Drive it" and "Set v and a"; Match is Test yourself "Match the graph (drive the cart)" |
+| Drag the cart; hold the arrow keys | Drive it, the main control (same keys; Shift slow) |
+| Example run (a toggle) | The landing shows the example already drawn; Replay plays it; it fades when you drive |
+| Starting velocity, acceleration sliders | The tips of the cart's v and a arrows (Set v and a) |
+| Change a while it runs (a new segment) | Kept: the a tip rides with the cart during the run |
+| Start position slider (−4.5 to 4.5 m, in More) | The cart itself in Set v and a (quiet), −3 to 3 m so the longest arrows fit on the picture |
+| ▶ Run / ❚❚ Pause, Start over | Run (Stop while it runs), Start over; Drive it has Replay |
+| Tap or arrow along the graphs (time cursor) | The kit's scrub on the graphs (Drive it); the Set run sweeps the cursor itself |
+| Cursor readout: slopes, areas, Δx, Δv with numbers | Drawn at the cursor (tangents, area); every number in "?" "At the time cursor" |
+| Readings table (x, v, a, cursor), pills | The cause line and the "?" table |
+| Match: three graphs with the target on one | Match the graph shows the scene and only the target's graph (a phone's stage has room for one) |
+| Match: target, New target, score, best, where furthest off, record per run | Test yourself "Match the graph": a target picked per problem (New problem), Check scores it (80% or more is a match), best kept (`apphys_mg_best_<id>`), where furthest off, recorded once per problem as `motion-graphs:match:<target>` (the first Check), Show the answer drives the target |
+| Seven drills, ids `motion-graphs:<ctx>:<step>`, `?seed=`, `#quiz` | Unchanged (Match is never dealt by "Any kind") |
+| Bumper stop note, measured-data note | "?" |
+
+## Accuracy
+- Slope of x-t = v, slope of v-t = a, area under v-t = Δx, area under a-t = Δv: drawn at the cursor and checked
+  by the sweep on every state and frame (the tangents' pixel slopes equal the drawn v and a to 0.03; the area equals
+  the drawn Δx to the pixel on exact runs, within 0.35 m on a hand drive).
+- Right is +. Same signs of v and a: speeding up; opposite: slowing down (the CED's rule); a turn is where v
+  crosses zero, the top or bottom of x-t. Set v and a is exact (x = x₀ + v₀t + ½at², v = v₀ + at, the model's
+  `motion()`); turn time −v₀/a checked against the drawn x graph's extreme.
+- The end stop stops the cart dead (v to 0 at once; the a spike is too narrow to draw), as the old tool did.
+- Hand drives are measured, not exact: slightly bumpy and a little late, said in "?".
+- Open points for a physics teacher: `docs/apphys-needs-author.md`, "motion-graphs-v2".
+
+## Checks run (2026-11-24, first build)
+- Kept sweep `scripts/tools-v2/phys-motion-graphs-sweep.mjs`, one width per process, at 360, 390, 430, 600, 768, 820,
+  1024, 1280, 1440, 1920, light and real dark (`nremt_theme`, asserted): 20 runs, 460 states, about 8,960 checks,
+  0 failures. States: first visit cue per tab; Drive landing (example), mid recording by mouse, done (takeaway),
+  scrubbed, driving by keys (asserts the cart moved), replay, start over; Set landing, seven v₀ and a cases (end
+  stop, rest, from rest, steady, small, back and forth), start at 3 m, running, a changed mid run, back at start;
+  Test yourself, Match the graph, `?seed=` and `#quiz`. Asserts: nothing clipped, 4 px between words, no knob over
+  a word, no text under 11 px, the arrows, tangents' slopes, area, cart and cause line equal to the drawn dots,
+  "turns" over a drawn sign change, "turns at" at the drawn extreme, each tip's knob on its drawn arrow tip, the
+  drawing fills its box, fit at 390 × 844, 1024 × 768 and 1280 × 800 (main control, picture, cause line on screen,
+  no inner scroll), phone cause line at most two rows with one height per tab, the Match figure whole on screen.
+- Frames (`--frames`) at 390 light, 1440 light, 1024 dark: about 1,500 to 1,600 sampled frames each, 0 failures
+  (live drive with a fast drag and a reversal, recording after letting go, keys mid recording, replay, scrub during
+  replay, the example giving way to a new run, Set drags and run, keys then stop mid run, a changed mid run by a
+  drag to the end and the return, leaving for Test yourself mid run and mid recording stops everything, reduced
+  motion shows the end at once, a real touch drag from the scrolled page, Match: Check mid run asks to keep
+  driving, a score after a run, the record `motion-graphs:match:<target>` once, Show the answer drives the target
+  within 0.05 px).
+- Perf (`--perf`), CPU x4, a full drive drag, same run as the flagship (Water pollution's sacks). Quiet machine:
+  390 median 16.7 ms, p95 16.8 (flagship 50.0 / 100.1); 1440 median 16.7, p95 50.0 (flagship 33.4 / 66.7). With
+  other agents' sweeps running on the 2 cores, 1440 measured 33.2 / 66.7 (flagship 50.0 / 100.0).
+- `node --test scripts/test/apphys-*.test.mjs` 159 pass; `check-apphys-content --check` 0 failing; `build-apphys
+  --check` (motion-graphs page and its tool data differ from the collecting branch: the kit lines and the reworded
+  intro); `build-apcalc --check`, `build-apmacro --check`; `check-site` passes; `check-weight --check` (626 budgets in
+  range); `scripts/check-tool-use.mjs` with a local copy of its list: motion graphs sends one tool-open, tool-touch,
+  tool-mode, tool-use, nothing under automation. Torque balance's drill still opens by `#quiz` with no console error.
+- Free tool: no Premium card (unchanged). Preview: `/mnt/user-data/outputs/phys-motion-graphs-v2/index.html`; shots
+  in `shots/` (390, 768, 1024, 1440, light and dark, mid recording, mid run, Match).
+
+## Not happy with (for the reviewer)
+- Perf at 1440 is at the limit (p95 50 ms on a quiet machine, over it when the machine is busy; always at or under
+  the flagship's): the whole picture is one large svg repainted while the cart moves.
+- At 1024 × 768 the three graphs are about 60 px tall each so the whole tool fits the screen; readable, but small.
+- A hand drive's a graph is bumpy (it is measured, honestly); a jerky drag makes it swing past ±3 m/s² and off the
+  panel.
+- The cart is small next to the long track and the wide graphs (the track and the graphs are wider; the cart is
+  the biggest thing on the track).
+- The wall above the arrows is plain (room for the a tip's knob).
+- A Match problem's link (`?seed=`) opens a problem of any kind, since a link carries no kind (the old Match had no
+  link at all).
+
+## Review round 1 (2026-11-24, `/home/claude/review-phys-motion/REVIEW.md`, BLOCK): what changed
+- M1 the words at v = 0 read the drawn v around the cursor: "turning around" only where it changes sign; otherwise
+  "starting from rest", "stopping" or "at rest" (the Example at 0 s says "starting from rest"). The sweep asserts a
+  sign change around the cursor whenever it says "turning around".
+- M2 one a everywhere: a new v₀ or start keeps the run's pieces; a new a at the start replaces them; the a knob, the
+  a arrow, its aria text and the cause line all read the piece drawn now (stopped: the first). The cause line names
+  the pieces: "a −0.3, then +0.5 m/s² at 1.6 s". The sweep asserts the a knob's value equals the drawn arrow.
+- M3 the first visit cue goes when any run starts (Run, Replay, a let go).
+- M4 the Set landing is v₀ +2.0 m/s, a −0.4 m/s² (turns at 5.0 s, back at the start at 10 s), and each tip's knob
+  sits just past its arrow's tip (18 px), so a short arrow is never under its knob; a press within 18 px of the cart's
+  centre is zero. The arrow's name goes to the tail side (left at zero). The cue reads "Drag a tip" (fits 360 px).
+- M5 the takeaway and the tour: "the cart is fastest" where x-t is steepest (speed, not velocity).
+- M6 Match on a velocity target: "velocity above / below the target" (not a direction).
+- S(a) Match hides its problem code and link (a link carries no kind). S(b) Run becomes Pause, which holds the
+  moment (cart, arrows, tangents, area and words stay; the a tip still starts a new piece there), then Resume (logged).
+  S(c) the graph words have a 6 px halo. S(d) Match draws no tangents, area or their words. S(e) a hand drive's first
+  0.6 s reads "measuring" (a's window is not full). S(f) a turn and an end stop are both named ("turns at 5.0 s, end
+  stop at 8.8 s"). S(g) "slope = v" and "slope = a" have more places to sit (a short panel at t = 0). S(h) perf: with
+  the cached frames, 1440 p95 33.4 ms (flagship 83.3) in this round's run. S(i) a bigger cart on a desktop (7.5% of the
+  stage's width, up to 128 px) and the wall in panels with a skirting line. S(j) left as is (no force push).
+- The Match figure watches its stage's height (a phone's frame settles after it is placed), so it never runs under
+  the question.
+- Fix round: sweep at 360, 390, 1024, 1440, light and real dark, 0 failures (8 runs); frames at 390 light, 1440 light,
+  1024 dark, about 1,630 frames each, 0 failures (Show the answer within 0.1 px of the target); perf CPU x4: 390
+  16.7 / 16.8 ms (flagship 33.3 / 66.7), 1440 16.7 / 33.4 ms (flagship 50.0 / 83.3); `check-site`, `build-apphys
+  --check`, the motion graphs tests pass.
+
+## Recheck 1 (2026-11-24, BLOCK): what changed
+- R1 every change of a is a straight step: an exact run carries each boundary twice (same t, x and v; the old a, then
+  the new), so the cursor at a boundary reads the new piece (arrow, dot, knob, aria text and cause line agree, paused
+  too); the Example's steps are straight too. A change mid run starts at the unrounded cursor time.
+- R2 changes within 0.2 s of the newest piece's start fold into it (the last value, the first time); a piece equal
+  to the one before is dropped; a drag of the a tip while the cart runs holds the moment for the drag (one piece),
+  then the run goes on. The a pill names every piece ("a −0.4 m/s², +0.2 at 1.3 s, −0.7 at 1.8 s"); on a phone one
+  change reads "a −0.4, +0.2 m/s² at 1.3 s" and more are counted ("a −0.4 m/s², 2 changes"), so the cause line
+  keeps two rows.
+- R3 keys never start a run (a pointer let go still does; Enter on a tip runs it); a knob that hides while a run
+  plays hands the keyboard to the a tip (or to Pause / Run), never to the page.
+- Should fix: Match on a phone ends its time axis short of the stage's Enlarge button and writes "t (s)" on the left.
+- The sweep now checks a paused change at a boundary, three pieces (each a step straight up, none within 0.2 s, every
+  one named or counted), keys on the v₀ tip (no run, focus kept), Enter (runs, focus stays in the tool), and that the
+  Enlarge button covers no number of the Match graph.
+- Recheck 1 fix round: sweep at 360, 390, 1024, 1440, light and real dark (8 runs, 25 states each), 0 failures; frames
+  at 390 light, 1440 light, 1024 dark (about 1,630 frames each), 0 failures; AP Physics tests 159 pass; content check
+  0 failing; `build-apphys --check` and `check-site` pass.
+- Recheck 2 PASS (2026-11-24); its wording fix: on a phone more than one change reads "a −0.4 m/s², 2 changes" (no
+  "+" beside the cause line's own "+" signs).
