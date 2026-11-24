@@ -166,7 +166,8 @@
    "desc": "Fire a neuron: threshold, the all-or-none action potential, the refractory period, and what agonists, antagonists and reuptake inhibitors do at the synapse.",
    "blurb": "Fire an action potential and see what a drug does at the synapse.",
    "lede": "Push a neuron past threshold, then change what happens at the synapse.",
-   "studio": true
+   "studio": true,
+   "kit2": true
   },
   {
    "slug": "brain-map",

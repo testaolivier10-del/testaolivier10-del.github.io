@@ -10,8 +10,9 @@
    lines, draggable points, an animation loop) are in psy-plot.js
    (ApPsychPlot); math text is ApPsychTex (psy-math.js).
 
-     ApPsychTools.mount(slug, fn)   load the data; fn(app, data) when the tool
-                                  is live, else say which unit it arrives with
+     ApPsychTools.mount(slug, fn, opts)   load the data; fn(app, data, ctx) when the
+                                  tool is live, else say which unit it arrives with;
+                                  opts.studio.kit2: a tools v2 tool (studioKit2 below)
      Controls (real form elements, 44 px targets, visible values):
        slider({ id, label, min, max, step, value, unit, decimals, onInput })
          <input type=range> with its value shown and -/+ buttons
@@ -86,7 +87,8 @@
   function event(name, data){ try{ core() && core().event(name, data); }catch(e){} }
 
   /* ------------------------------------------------------- mounting */
-  function mount(slug, fn){
+  function mount(slug, fn, opts){
+    opts = opts || {};
     var app = document.getElementById('app');
     if(!app) return;
     var src = app.getAttribute('data-src');
@@ -104,7 +106,11 @@
       // data-studio on #app. modes() and drill() then place their parts in
       // the frame; a trainer's explore view places its own (o.studio).
       var studio = app.getAttribute('data-studio') && window.LevlStudio ? studioFrame(app, slug) : null;
-      fn(app, data);
+      var ctx = { studio: studio };
+      fn(app, data, ctx);
+      // tools v2 (docs/tools-v2-standard.md): a tool on the shared kit hands its stage over (studioKit2)
+      var so = opts.studio || {};
+      if(studio && so.kit2 && window.LevlKit2){ studioKit2(app, studio, slug, typeof so.kit2 === 'function' ? so.kit2(ctx) : so.kit2); return; }
       if(studio) studioRest(app, studio);
     }).catch(function(e){ try{ console.error(e); }catch(x){}
       app.innerHTML = '<p class="psy-soon" role="alert">The tool could not load. Check your connection and reload the page.</p>';
@@ -1071,8 +1077,68 @@
   /* The "head" line of an explain() box as plain caption html. */
   function sayHead(el){ var h = el && el.querySelector('.bt-say-h'); return h ? h.innerHTML : ''; }
 
+  /* studioKit2(app, s, slug, o): the tools v2 arrangement (docs/tools-v2-standard.md), this course layer's adapter
+     for the shared kit (assets/course/tool-kit2.js, loaded by a page with "kit2": true in psychology/data/pages.json;
+     first: the neuron, docs/tools-v2-neuron-brief.md). The same pattern as ApChemTools.studioKit2 and
+     ApBioTools.studioKit2. T.mount(slug, fn, { studio: { kit2: fn(ctx) -> o } }); the tool builds its own stage
+     with the kit and hands it over:
+       o.stage    element   the picture with its controls on it and the lines around it. EXPLORE shows it alone,
+                            full width (no side panel, nothing graded).
+       o.ref      element   the reference behind "?" (how it works, numbers, links).
+       o.parts    [{ value, label, group, stage: element, dock: element, task: { kicker, title, todo } | fn,
+                    own: true }]   TEST YOURSELF parts. own: the part placed itself in Test yourself (a T.drill built
+                            in a .bt-pane-quiz box inside #app puts its figure, steps and kind picker there).
+                            Otherwise the question goes in the side panel (dock) and a part with its own stage
+                            shows it in place of the picture. With more than one part, ONE dropdown on the stage
+                            ("What to practice") picks it.
+       o.onShow(mode, part) after every switch: mode 'explore' | 'quiz', part the Test yourself part or null.
+     Two modes only: Explore and Test yourself. ?seed=... and #quiz open Test yourself, as the old links did.
+     Returns { mode(), part(), go(mode, part) }; also at s.kit2. */
+  function studioKit2(app, s, slug, o){
+    var K = window.LevlKit2;
+    K.on(s);
+    var draft = app.querySelector(':scope > .bt-draft');
+    if(draft) s.add('about', draft);
+    var parts = (o.parts || []).slice(), quizOn = parts.length > 0, cur = { mode: 'explore', part: parts[0] ? parts[0].value : null };
+    var onPic = parts.some(function(p){ return !p.own && !p.stage; });
+    function partOf(v){ return parts.filter(function(p){ return p.value === v; })[0] || parts[0] || null; }
+    s.add('stage', o.stage, onPic ? { mode: 'explore quiz' } : quizOn ? { mode: 'explore' } : null);
+    if(o.ref) s.add('details', o.ref);
+    var stages = [], docks = [];
+    parts.forEach(function(p){
+      if(p.stage && stages.indexOf(p.stage) < 0){ stages.push(p.stage); s.add('stage', p.stage, { mode: 'quiz' }); }
+      if(p.dock && docks.indexOf(p.dock) < 0){ docks.push(p.dock); s.add('dock', p.dock, { mode: 'quiz' }); }
+    });
+    var pick = parts.length > 1 ? s.picker({ label: 'What to practice', value: cur.part, items: parts.map(function(p){ return { value: p.value, label: p.label }; }),
+      onChange: function(v){ show('quiz', v, true); } }, 'quiz') : null;
+    function show(mode, part, user){
+      var p = partOf(part), quiz = mode === 'quiz' && !!p;
+      cur = { mode: quiz ? 'quiz' : 'explore', part: p ? p.value : null };
+      if(s.mode() !== cur.mode) s.mode(cur.mode);
+      o.stage.hidden = quiz && (p.own || !!p.stage);
+      s.root.classList.toggle('tk2-qs', quiz && !p.own && !p.stage);
+      stages.forEach(function(el){ el.hidden = !(quiz && p.stage === el); });
+      docks.forEach(function(el){ el.hidden = !(quiz && p.dock === el); });
+      if(pick && quiz && pick.value() !== p.value) pick.value(p.value);
+      if(quiz && !p.own){ s.task(typeof p.task === 'function' ? p.task() : p.task || null, 'quiz'); s.caption('', 'quiz'); }
+      if(o.onShow) o.onShow(cur.mode, quiz ? cur.part : null);
+      if(user) event('appsych-tool-mode', { tool: slug, mode: quiz ? cur.part : 'explore' });
+    }
+    if(quizOn) s.modes({ items: [{ value: 'explore', label: 'Explore' }, { value: 'quiz', label: 'Test yourself' }], value: 'explore',
+      onChange: function(v){ show(v, cur.part, true); } });
+    // Whatever the tool left in #app goes behind "?".
+    Array.prototype.slice.call(app.children).forEach(function(k){ if(!k.classList.contains('bt-loading') && (k.children.length || k.textContent.trim())) s.add('details', k); });
+    app.hidden = true;
+    var start = { mode: 'explore', part: cur.part };
+    if(quizOn && (seedFromUrl() || /#quiz\b/.test(location.hash))) start = { mode: 'quiz', part: cur.part };
+    s.mode(start.mode);
+    show(start.mode, start.part, false);
+    s.kit2 = { mode: function(){ return cur.mode; }, part: function(){ return cur.part; }, go: function(m, p){ show(m, p == null ? cur.part : p, false); } };
+    return s.kit2;
+  }
+
   window.ApPsychTools = {
-    studioOf: studioOf, studioPane: studioPane, isStd: isStd, stagePick: stagePick, sayHead: sayHead, hintSlot: hintSlot,
+    studioOf: studioOf, studioPane: studioPane, isStd: isStd, studioKit2: studioKit2, stagePick: stagePick, sayHead: sayHead, hintSlot: hintSlot,
     modes: modes, reduced: reduced, cue: cue, moreHtml: moreHtml, explain: explain,
     esc: esc, F: F, nid: nid, mount: mount, frame: frame, kindPicker: kindPicker, keepGoing: keepGoing, slider: slider, choiceSelect: choiceSelect, announcer: announcer,
     plot: plot, niceMax: niceMax, niceStep: niceStep, dataTable: dataTable, wrapTables: wrapTables, box: box,

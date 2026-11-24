@@ -10,7 +10,10 @@
                    0.02 ms, for a stimulus o:
                      { mode: 'pulse' | 'pair' | 'held', S (mV of
                        depolarization), gap (ms, the second pulse of a pair),
-                       t0 (ms), dur (ms), rest, thresh, peak }
+                       t0 (ms), dur (ms), rest, thresh, peak, net }
+                   net: true lets S be negative (excitatory minus inhibitory
+                   input, tools v2 Explore): below zero the pulse pushes the
+                   membrane down, away from threshold.
                    Rest -70 mV, threshold -55 mV, peak +40 mV by default
                    (typical textbook values). A pulse depolarizes the
                    membrane by S mV and fades; if the membrane reaches
@@ -77,7 +80,7 @@
   function params(o){
     o = o || {};
     var P = { rest: o.rest == null ? REST : o.rest, thresh: o.thresh == null ? THRESH : o.thresh, peak: o.peak == null ? PEAK : o.peak };
-    P.mode = o.mode || 'pulse'; P.S = Math.max(0, +o.S || 0); P.gap = o.gap == null ? 3 : +o.gap;
+    P.mode = o.mode || 'pulse'; P.S = o.net ? (+o.S || 0) : Math.max(0, +o.S || 0); P.gap = o.gap == null ? 3 : +o.gap;
     P.t0 = o.t0 == null ? 2 : +o.t0; P.dur = o.dur == null ? 25 : +o.dur;
     return P;
   }
@@ -101,7 +104,8 @@
         V = base;
         for(var k = 0; k < live.length; k++) V += psp(ti - live[k].t, live[k].S);
         if(P.mode === 'held' && ti >= P.t0) V += P.S * (1 - Math.exp(-(ti - Math.max(driveFrom, P.t0)) / TAU_HELD));
-        if(V >= threshAt(since, P)){
+        // 1e-6: a push of exactly threshold minus rest reaches threshold, and so fires
+        if(V >= threshAt(since, P) - 1e-6){
           // fires: the all-or-none spike takes over from here
           last = ti; spikes.push(M.round(ti, 3)); since = 0; V = wave(0, P);
           live.forEach(function(x){ x.e.effect = 'spike'; });
@@ -111,6 +115,31 @@
       t.push(ti); v.push(V);
     }
     return { t: t, v: v, spikes: spikes, events: events, rest: P.rest, thresh: P.thresh, peak: P.peak, under: P.rest - 10, mode: P.mode, S: P.S, gap: P.gap, t0: P.t0, dur: P.dur, abs: ABS, rel: REL };
+  }
+  /* Conduction along the drawn axon (tools v2 Explore, tab 3 "Myelin"): NSEG stretches between the hillock and the
+     terminals, each myelinated (the signal jumps it, node to node: JUMP ms) or bare (the signal creeps along it:
+     CRAWL ms). A teaching model: real myelin speeds a signal far more (about 50 to 100 times, not 7.5); the ratio is
+     kept small so both can be watched. -> { at: [ms at each node, 0 = the hillock], total }. */
+  var NSEG = 6, JUMP = 0.12, CRAWL = 0.9;
+  function conduction(myel){
+    var at = [0], t = 0;
+    for(var i = 0; i < NSEG; i++){ t += (myel && myel[i] === false) ? CRAWL : JUMP; at.push(Math.round(t * 1000) / 1000); }
+    return { at: at, total: at[NSEG] };
+  }
+  /* Where the signal is t ms after it leaves the hillock: u from 0 (hillock) to 1 (terminals), and whether it is
+     jumping (inside a myelinated stretch, seen only at the nodes) or creeping (a bare stretch). null once it has
+     arrived. */
+  function travelAt(myel, t){
+    var c = conduction(myel);
+    if(t < 0) return null;
+    if(t >= c.total) return null;
+    for(var i = 0; i < NSEG; i++){
+      if(t < c.at[i + 1]){
+        var f = (t - c.at[i]) / (c.at[i + 1] - c.at[i]), bare = myel && myel[i] === false;
+        return { seg: i, f: f, bare: bare, u: (i + (bare ? f : (f < 0.5 ? 0 : 1))) / NSEG, uTrue: (i + f) / NSEG };
+      }
+    }
+    return null;
   }
   /* The smallest stimulus that fires a neuron at rest (mV): threshold minus rest. */
   function needed(o){ var P = params(o); return E({ fn: 'sub', args: [P.thresh, P.rest] }); }
@@ -400,7 +429,7 @@
   var GEN = { trace: genTrace, drug: genDrug, transmitter: genTransmitter, parts: genParts };
   M.register('neuron', {
     REST: REST, THRESH: THRESH, PEAK: PEAK, UNDER: UNDER, ABS: ABS, REL: REL, DT: DT,
-    simulate: simulate, wave: wave, threshAt: threshAt, needed: needed, rate: rate, series: series,
+    simulate: simulate, wave: wave, NSEG: NSEG, JUMP: JUMP, CRAWL: CRAWL, conduction: conduction, travelAt: travelAt, threshAt: threshAt, needed: needed, rate: rate, series: series,
     NT: NT, NT_KEYS: NT_KEYS, CLASSES: CLASSES, DRUGS: DRUGS, drugById: drugById, exampleOf: exampleOf,
     SYN: SYN, synapse: synapse, signalPct: signalPct,
     NT_CASES: NT_CASES, PARTS: PARTS, PART_CASES: PART_CASES,
