@@ -180,6 +180,7 @@ async function firstVisit() {
 
 /* ------------------------------------------------------------------ frames: numbers against the drawing */
 const frameCheck = () => {
+  const fadeL = document.querySelector('.nr2-fade'); if (fadeL) fadeL.innerHTML = '';   // a tab change's short cross fade is not the drawn frame
   const A = window.__nr2, f = A.F(), G = A.G(), N = A.N, S = A.S, out = [], t = f.t;
   const near = (a, b, tol) => Math.abs(a - b) <= tol;
   const cause = (document.querySelector('.nr2 .tk2-cause') || {}).textContent || '';
@@ -189,7 +190,7 @@ const frameCheck = () => {
     const on = document.querySelectorAll('.nr2-rec.is-on').length, want = Math.round(act * 8);
     const blocked = S.cls === 'antagonist' ? 6 : 0;
     if (on !== Math.min(want, 8 - blocked)) out.push(`t ${t.toFixed(2)}: ${on} receptors drawn active, the model says ${want}`);
-    const free = [...document.querySelectorAll('.nr2-ntm')].filter(e => !e.classList.contains('is-away') && e.getAttribute('r') && +e.getAttribute('cy') > G.tBot + 1 && +e.getAttribute('cy') < G.rTop - 1).length;
+    const free = document.querySelectorAll('.nr2-ntm.is-free').length;
     if (t >= 0.6 && Math.abs(free - Math.round(22 * cleft)) > 0) out.push(`t ${t.toFixed(2)}: ${free} molecules in the cleft, the model says ${Math.round(22 * cleft)}`);
     const hd = document.querySelector('.nr2-head.is-syn');
     if (t >= 0 && (!hd || !near(+hd.getAttribute('cy'), G.plot.Y(act), 0.6))) out.push(`t ${t.toFixed(2)}: the graph's head is not at ${act.toFixed(3)}`);

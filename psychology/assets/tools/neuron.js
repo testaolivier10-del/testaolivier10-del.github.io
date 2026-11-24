@@ -1,5 +1,5 @@
 /* The neuron, tools v2 (docs/tools-v2-neuron-brief.md; the standard: docs/tools-v2-standard.md). On the shared kit
-   (assets/course/tool-kit2.js) through the course adapter ApPsychTools.studioKit2 (psy-tools.js). The model is
+   (assets/course/tool-kit2.js) through the course adapter ApPsychTools.kit2 (psy-tools.js, from the brain map). The model is
    ApPsychMath.neuron (psychology/assets/tools/math/neuron.js); the content psychology/data/tools/neuron.json (served
    filtered as assets/tool-data/neuron.json).
 
@@ -491,7 +491,7 @@
       onInput: function(v){ view.preview = false; view.t = clamp(v, tMin(), tMax()); paint(); } });
 
     var CUE = { fire: { text: 'Drag the excitatory input', at: function(){ return G ? kPos(cE, G.kE) : [0, 0]; }, side: 'right' },
-      refr: { text: 'Drag the 2nd pulse', at: function(){ return G && G.plot ? [G.plot.X(T0 + S.gap), G.plot.stimY] : [0, 0]; }, side: 'above' },
+      refr: { text: (window.innerWidth || 1000) < 400 ? 'Drag it closer' : 'Drag the 2nd pulse', at: function(){ return G && G.plot ? [G.plot.X(T0 + S.gap), G.plot.stimY] : [0, 0]; }, side: 'above' },
       myel: { text: 'Tap the myelin', at: function(){ var i = G && G.ph ? 3 : 2; return G ? [G.segs[i][0] + (G.segs[i][1] - G.segs[i][0]) / 2, G.sy + G.myR] : [0, 0]; }, side: 'below' },
       syn: { text: 'Tap a drug', at: function(){ var i = G && G.ph ? 2 : 1; return G && G.drugs ? [G.drugs[i].x + G.drugs[i].w / 2, G.drugs[i].y + G.drugs[i].h] : [0, 0]; }, side: 'below' } };
     function kPos(c, tr){ var f = (c.value() - c.input.min) / (c.input.max - c.input.min); return [tr[0] + (tr[2] - tr[0]) * f, tr[1] + (tr[3] - tr[1]) * f]; }
@@ -541,18 +541,18 @@
       var fs = ph ? 12 : 13.5, fsS = ph ? 11.5 : 12.5, pad = ph ? 8 : 16;
       g.fs = fs; g.fsS = fsS; g.pad = pad;
       if(tab === 'syn') return geoSyn(g);
-      var gh = tab === 'myel' ? (ph ? 118 : 124) : ph ? 184 : clamp(H * 0.4, 196, 260);
+      var gh = tab === 'myel' ? (ph ? 118 : 124) : ph ? 176 : W < 900 ? 180 : clamp(H * 0.4, 196, 260);
       g.gTop = H - gh; g.nTop = pad; g.nBot = g.gTop - (ph ? 4 : 8);
       var nH = g.nBot - g.nTop;
       g.ctlW = tab === 'fire' ? (ph ? 112 : clamp(W * 0.13, 150, 200)) : 0;
-      g.rs = ph ? 21 : clamp(nH * 0.13, 24, 40);
+      g.rs = tab === 'myel' && !ph ? clamp(nH * 0.15, 24, 52) : ph ? 21 : clamp(nH * 0.13, 24, 40);
       g.sy = g.nTop + nH * (tab === 'myel' ? 0.5 : 0.64);
-      if(ph && tab !== 'myel'){ g.inY1 = g.nTop + 104; g.sy = g.inY1 + g.rs * 2.8 + 52; g.nBot = g.sy + g.rs * 2.3 + 52; g.gTop = g.nBot + 4; nH = g.nBot - g.nTop; }
+      if(ph && tab !== 'myel'){ g.inY1 = g.nTop + 104; g.sy = g.inY1 + g.rs * 2.8 + 52; g.nBot = g.sy + g.rs * 2.3 + 52; var room = H - gh - 4 - g.nBot; if(room > 0){ g.sy += room * 0.45; g.nBot += room; } g.gTop = g.nBot + 4; nH = g.nBot - g.nTop; }
       var reach = g.rs * (ph ? 2.2 : 2.5);
       g.sx = pad + g.ctlW + reach + g.rs * 0.5;
       g.termR = ph ? 40 : clamp(W * 0.065, 64, 104);
       g.ax0 = g.sx + g.rs * 1.45; g.ax1 = W - pad - g.termR;
-      g.axR = ph ? 3.2 : clamp(g.rs * 0.16, 4, 5.6); g.myR = g.axR * (tab === 'myel' ? (ph ? 3.4 : 3.2) : 2.3);
+      g.axR = ph ? 3.2 : clamp(g.rs * 0.16, 4, tab === 'myel' ? 7.5 : 5.6); g.myR = g.axR * (tab === 'myel' ? (ph ? 3.4 : 3.2) : 2.3);
       var nodeGap = ph ? 7 : 10, segW = (g.ax1 - g.ax0 - nodeGap * (N.NSEG + 1)) / N.NSEG;
       g.segs = []; for(var s = 0; s < N.NSEG; s++){ var a = g.ax0 + nodeGap + s * (segW + nodeGap); g.segs.push([a, a + segW]); }
       g.nodes = [g.ax0 + nodeGap / 2].concat(g.segs.map(function(q){ return q[1] + nodeGap / 2; }));
@@ -577,12 +577,12 @@
         g.bar = { x0: pad + (ph ? 12 : 22), x1: W - pad - (ph ? 12 : 22), y: g.gTop + (ph ? 72 : 76), max: N.NSEG * N.CRAWL + 0.2 };
       } else {
         var px0 = pad + (ph ? 42 : 46), px1 = W - pad - (ph ? 4 : 10), py0 = g.gTop + (ph ? 34 : 40), py1 = H - (ph ? 26 : 30);
-        var vLo = -122, vHi = 52, dur = DUR[tab];
+        var vLo = -138, vHi = 52, dur = DUR[tab];
         var P = { x0: px0, x1: px1, y0: py0, y1: py1, dur: dur, lo: vLo, hi: vHi };
         P.X = function(t){ return px0 + t / dur * (px1 - px0); };
         P.T = function(x){ return (x - px0) / (px1 - px0) * dur; };
         P.Y = function(v){ return py1 - (v - vLo) / (vHi - vLo) * (py1 - py0); };
-        P.stimY = P.Y(-103);
+        P.stimY = P.Y(-112);
         g.plot = P;
       }
       return g;
@@ -1082,7 +1082,7 @@
         for(var m = 0; m < MOL; m++){
           var tx = g.tl + 34 * z + mr() * (g.tw - 68 * z), ty = tBot + 7 * z + mr() * (g.cleft - 14 * z), sx0 = cx + (mr() - 0.5) * 16 * z;
           if(jit){ tx += Math.sin(view.clock / 400 + m * 1.3) * 2.2; ty += Math.cos(view.clock / 470 + m) * 1.8; }
-          if(m < inCleft) p.push('<circle class="nr2-ntm ' + ntc + '" cx="' + n1(sx0 + (tx - sx0) * u) + '" cy="' + n1(tBot + (ty - tBot) * u) + '" r="' + n1(3.4 * z) + '"/>');
+          if(m < inCleft) p.push('<circle class="nr2-ntm is-free ' + ntc + '" cx="' + n1(sx0 + (tx - sx0) * u) + '" cy="' + n1(tBot + (ty - tBot) * u) + '" r="' + n1(3.4 * z) + '"/>');
           else if(t > 0.4 && m < inCleft + 4) going.push([tx, ty, m]);
         }
         going.forEach(function(q){
@@ -1162,7 +1162,7 @@
         '<p class="bt-small">Sources: OpenStax Psychology 2e, 3.2 (threshold, all or none, nodes of Ranvier, reuptake, agonists and antagonists); OpenStax Biology 2e, 35.2 (excitatory and inhibitory potentials added at the axon hillock, sodium in and potassium out, saltatory conduction); the AP® Psychology course framework, topic 1.3.</p>' +
         '<p class="nr-notes">Notes for this topic: <a href="../notes/neural-firing.html">The Neuron and Neural Firing</a></p>';
     }
-    ref.addEventListener('click', function(e){ var b = e.target.closest('[data-how]'); if(!b) return; if(ctx.studio) try{ ctx.studio.close(); }catch(x){} if(S.mode !== 'explore' && ctx.studio && ctx.studio.kit2) ctx.studio.kit2.go('explore'); setTimeout(startTour, 60); });
+    ref.addEventListener('click', function(e){ var b = e.target.closest('[data-how]'); if(!b) return; if(ctx.studio && ctx.studio.close) try{ ctx.studio.close(); }catch(x){} if(S.mode !== 'explore' && ctx.go) ctx.go('explore'); setTimeout(startTour, 60); });
     refHtml();
 
     /* ---- modes, hiding, resizing */
@@ -1227,15 +1227,18 @@
   /* ------------------------------------------------------------ mount */
   function boot(){
     var K = window.LevlKit2;
-    T.mount('neuron', function(app, data, ctx){
-      var ex = explore2(app, data, ctx, K);
-      // Test yourself: the drills, built in a quiz box so the frame places them in Test yourself
-      var qz = document.createElement('div'); qz.className = 'bt-pane bt-pane-quiz';
-      app.appendChild(qz);
-      quiz(qz, data);
-      if(!ctx.studio){ app.insertBefore(ex.stage, app.firstChild); app.insertBefore(ex.ref, ex.stage.nextSibling); ex.start(); }
-      ctx.kit2 = { stage: ex.stage, ref: ex.ref, parts: [{ value: 'practice', label: 'Practice problems', own: true }], onShow: function(m){ ex.shown(m); } };
-    }, { studio: { kit2: function(ctx){ return ctx.kit2; } } });
+    T.mount('neuron', function(app, data){
+      // the course adapter (T.kit2, psy-tools.js): Explore is this stage, full width; Test yourself the drills
+      var ctx = { studio: null, go: null }, ex = null;
+      var md = T.kit2(app, { slug: 'neuron',
+        explore: function(host){
+          ex = explore2(app, data, ctx, K);
+          host.appendChild(ex.stage); host.appendChild(ex.ref);
+          return { stage: ex.stage, ref: ex.ref, shown: function(m){ ex.shown(m); }, ready: function(s){ ctx.studio = s; } };
+        },
+        quiz: function(host){ quiz(host, data); } });
+      ctx.go = function(m){ md.show(m, true); };
+    });
   }
   /* The page loads the kit (pages.json "kit2": true). A cached copy of the old page would not: fetch it then. */
   if(window.LevlKit2) boot();
