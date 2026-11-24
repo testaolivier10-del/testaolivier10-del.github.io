@@ -5,7 +5,8 @@
    complete randomization every unit gets treatment A half the time (within
    1 point over 40,000 assignments) and the estimate is unbiased; blocking
    and pairing balance the other variable exactly and cut the spread; a
-   person choosing, or an unblinded placebo effect, biases the estimate. */
+   person choosing, or an unblinded placebo effect, biases the estimate; the
+   Explore deal order (dealOrder) covers every unit once and follows the design. */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -92,4 +93,18 @@ test('design-randomizer: a person choosing confounds the estimate, and an unblin
   const sc = scene('memory'), U = model.units(sc);
   const blind = model.many(M.rng(9), U, 'cr', sc, 4000, {}), open = model.many(M.rng(9), U, 'cr', sc, 4000, { unblind: true });
   assert.ok(Math.abs(meanOf(open.diffs) - meanOf(blind.diffs) - sc.placebo) < 0.15, 'the unblinded shift is the placebo effect');
+});
+
+test('design-randomizer: the Explore deal order covers every unit once and follows the design', () => {
+  const { M, model } = runtime('design-randomizer');
+  for (const id of ['plants', 'memory']) {
+    const sc = scene(id), U = model.units(sc);
+    for (const d of model.DESIGNS) {
+      const r = M.rng(77), tr = model.assign(r, U, d, sc), o = model.dealOrder(r, U, tr, d);
+      assert.equal(JSON.stringify([...o].sort((a, b) => a - b)), JSON.stringify(U.map(u => u.i)), `${id} ${d}: every unit once`);
+      if (d === 'block') { const h = U.length / 2; assert.ok(o.slice(0, h).every(i => U[i].block === 1) && o.slice(h).every(i => U[i].block === 0), `${id}: one block, then the other`); }
+      if (d === 'pairs') for (let k = 0; k < o.length; k += 2) assert.equal(U[o[k]].pair, U[o[k + 1]].pair, `${id}: pair by pair`);
+      if (d === 'none') { const h = U.length / 2; assert.ok(o.slice(0, h).every(i => tr[i] === 'A'), `${id}: the chosen ones first`); }
+    }
+  }
 });

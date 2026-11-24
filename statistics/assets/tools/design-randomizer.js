@@ -1,317 +1,829 @@
-/* Design randomizer (simulator; docs/apstat-spec.md section 6). OWNED BY
-   THIS TOOL ONLY. The model is ApStatMath.designRandomizer (statistics/
-   assets/tools/math/design-randomizer.js); the frame is ApStatTools.modes on
-   the Tool Studio.
+/* Design randomizer, tools v2 (docs/tools-v2-stat-design-randomizer-brief.md; the standard: docs/tools-v2-standard.md),
+   on the shared kit (assets/course/tool-kit2.js) through the course adapter ApStatTools.studioKit2. OWNED BY THIS
+   TOOL ONLY. The model is ApStatMath.designRandomizer (statistics/assets/tools/math/design-randomizer.js). Styles:
+   design-randomizer.css.
 
-   Explore: an illustrated experiment (tomato seedlings on a greenhouse
-   bench, one row by the window; volunteers in a memory study, younger and
-   older). Pick a design (completely randomized, blocked, matched pairs, or
-   no random assignment), Randomize: each unit gets its treatment marker in
-   the order chance picks it, then the experiment runs (the plants grow to
-   their measured height, the volunteers show their scores). The estimate,
-   mean of A minus mean of B, lands on a dotplot with one row per design,
-   against the true effect built into the model. "Run 100" fills a row:
-   random assignment centers on the truth, blocks and pairs narrow it, a
-   person choosing shifts it (confounding), and in the memory study an
-   unblinded run shifts it by the placebo effect. Colors: treatment A in the
-   second series color, B in the first, estimates in the third.
-   Test yourself: ApStatTools.drill over the model's generate(). */
+   EXPLORE (free play, nothing graded, no side panel), one screen:
+     The experiment is drawn: 16 tomato seedlings in pots on two greenhouse benches (the back one sunny, by the window),
+     or 24 volunteers at tables in a memory study (younger in front, older behind). Pick a design on its card (the
+     cards are the row heads of the plot of estimates), then Randomize and run: a hand deals an A or B sticker onto
+     every unit in the order chance picks (inside each block for a block design, pair by pair for matched pairs; the
+     chooser's order when someone picks), then four weeks pass and the plants grow to their heights (the volunteers'
+     recall scores fill), and the estimate, mean of A minus mean of B, drops as a dot into its design's row, against
+     the true effect built into the model. Run 100 runs a hundred more (no dealing, the dots stream in). Blocks are
+     drawn as frames round each bench or age group, pairs as a shared tray or mat. On the memory study a quiet switch
+     turns blinding off (the not blind runs are hollow dots). Tap a unit to read it in the cause line.
+     Every count, the estimate and the cause line are read from the picture AS DRAWN in that frame: a sticker counts
+     once it is down, a plant's height is its drawn stem, a row's centre is the mean of the dots that have landed.
+   TEST YOURSELF (unchanged): the drill over the model's generate(), five kinds, records
+   design-randomizer:<context>:<step>; ?seed= and #quiz open it. */
 (function(){
   'use strict';
   var T = window.ApStatTools, M = window.ApStatMath, P = window.ApStatPlot;
   if(!T || !M || !M.designRandomizer) return;
-  var D = M.designRandomizer, esc = T.esc;
+  var D = M.designRandomizer, esc = T.esc, SLUG = 'design-randomizer', NS = 'http://www.w3.org/2000/svg';
+  var DES = ['cr', 'block', 'pairs', 'none'];
 
-  T.mount('design-randomizer', function(app, data){
-    var ex = null;
-    T.modes(app, { slug: 'design-randomizer',
-      explore: function(host){ ex = explore(host, data); },
-      quiz: function(host){ var ctxs = {}; (data.contexts || []).forEach(function(c){ ctxs[c.id] = c; });
-        function redraw(api){ var p = api.problem, ctx = ctxs[p.ctx], st = api.qs; if(!ctx) return; qfig(api.fig, p, ctx, st); }
-        T.drill(host, data, { slug: 'design-randomizer', noun: 'drill', generate: D.generate,
-        types: [{ value: 'design', label: 'Name the design' }, { value: 'variables', label: 'Variables and units' }, { value: 'scope', label: 'Cause and effect, or generalize?' }, { value: 'procedure', label: 'Random assignment, step by step' }, { value: 'confound', label: 'Confounding and blinding' }],
-        typeLabel: 'Kind of problem',
-        title: function(p){ return { design: 'Name the design', variables: 'Variables and units', scope: 'What can we conclude?', procedure: 'Random assignment', confound: 'Confounding and blinding' }[p.type] || 'Practice problem'; },
-        extra: function(el, p, api){ api.fig = el; api.qs = { done: {}, focus: null, yours: null }; redraw(api); },
-        onStepStart: function(st, api){ api.qs.focus = st.key; api.qs.yours = null; redraw(api); },
-        onTry: function(st, t, api){ if(t.right || st.kind !== 'choice') return; api.qs.yours = { key: st.key, text: String(st.options[t.value]).replace(/<[^>]+>/g, ''), k: t.value }; redraw(api); },
-        onStep: function(st, right, api){ api.qs.done[st.key] = true; api.qs.yours = null; redraw(api); },
-        method: function(st, p){
-          var H = { design: 'Ask two questions: were treatments imposed by the researchers (experiment) or did the units sort themselves (observational)? And was the randomizing done inside blocks or pairs?',
-            blockwhy: 'A block groups units that are alike in a variable that affects the response.', pairwhy: 'Pairs compare like with like.', conclude: 'Only random assignment supports cause and effect.',
-            purpose: 'Random assignment balances the other variables between the groups, on average.',
-            explanatory: 'The explanatory variable is what the researchers set: the treatments on the left of the picture.', response: 'The response is what is measured at the end, on the right of the picture.',
-            units: 'The experimental units are what the treatments are applied to: the icons at the top.', treatments: 'The treatments are the conditions the units get, including the comparison one.',
-            cause: 'Cause and effect needs random ASSIGNMENT (the columns of the table).', generalize: 'Generalizing needs random SAMPLING (the rows of the table).',
-            label: 'Every unit gets its own number.', generate: 'Say how many different numbers, from what range, and what to do with repeats.', assign: 'Say who gets each treatment, including everyone not chosen.',
-            why: 'Random assignment is about making the groups alike, so the treatment can be called the cause.',
-            confound: 'A confounding variable is linked to both the group a unit is in and the response.', blind: 'Who does not know the treatments: the subjects, the people measuring, or both?', blindwhy: 'Knowing the treatment can change behavior or judgment.' };
-          return H[st.key] || null;
-        } }); },
-      onShow: function(m){ if(m !== 'explore' && ex) ex.stop(); },
-      studio: { explore: function(pane, s){ ex.studio(pane, s); } } });
-  });
-
+  /* ----------------------------------------------------------- helpers */
   function fx(x, d){ return T.F(x, d == null ? 2 : d); }
+  function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
+  function n1(v){ return Math.round(v * 10) / 10; }
+  function now(){ return window.performance ? performance.now() : Date.now(); }
+  function mk(tag, cls, attrs, parent){ var e = document.createElementNS(NS, tag); if(cls) e.setAttribute('class', cls); if(attrs) for(var k in attrs) e.setAttribute(k, attrs[k]); if(parent) parent.appendChild(e); return e; }
+  function at(e, attrs){ for(var k in attrs){ var v = typeof attrs[k] === 'number' ? String(n1(attrs[k])) : attrs[k]; if(e.getAttribute(k) !== v) e.setAttribute(k, v); } }
+  function txt(e, s){ if(e.textContent !== s) e.textContent = s; }
+  function el(tag, cls, html){ var e = document.createElement(tag); if(cls) e.className = cls; if(html != null) e.innerHTML = html; return e; }
+  function easeIO(k){ return k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2; }
+  function easeOut(k){ return 1 - Math.pow(1 - k, 3); }
+  function cap(s){ s = String(s); return s.charAt(0).toUpperCase() + s.slice(1); }
+  var mctx = null, mCache = {}, FONT = 'Nunito, "Segoe UI", system-ui, sans-serif';
+  function tw(s, px, wt){
+    var k = (wt || 800) + '|' + px + '|' + s;
+    if(mCache[k] != null) return mCache[k];
+    if(!mctx){ var c = document.createElement('canvas'); mctx = c.getContext('2d'); }
+    mctx.font = (wt || 800) + ' ' + px + 'px ' + FONT;
+    return (mCache[k] = mctx.measureText(s).width);
+  }
   function hash(i, k){ var h = Math.imul(i + 1, 2654435761) ^ Math.imul(k + 7, 40503); h ^= h >>> 13; return Math.abs(h) % 997; }
 
-  /* ------------------------------------------------------- the scene */
-  function layout(sc, U){
-    var L = { at: [], blocks: [], pairs: [] }, bg = [];
-    if(sc.kind === 'plants'){
-      var W = 1000, cw = 118, x0 = (W - sc.cols * cw) / 2, shelf = [318, 612];
-      L.W = W; L.H = 660;
-      bg.push('<rect class="dr-wall" x="0" y="0" width="' + W + '" height="' + L.H + '"/>');
-      bg.push('<rect class="dr-window" x="40" y="14" width="' + (W - 80) + '" height="66" rx="8"/><path class="dr-mullion" d="M' + (W / 2) + ' 14 V 80 M 40 47 H ' + (W - 40) + '"/>');
-      bg.push('<circle class="dr-sun" cx="118" cy="47" r="20"/>');
-      bg.push('<path class="dr-light" d="M60 80 L ' + (W - 60) + ' 80 L ' + (W - 10) + ' ' + (shelf[0] + 4) + ' L 10 ' + (shelf[0] + 4) + ' Z"/>');
-      shelf.forEach(function(y, k){
-        bg.push('<rect class="dr-shelf" x="16" y="' + y + '" width="' + (W - 32) + '" height="14" rx="3"/><rect class="dr-leg" x="40" y="' + (y + 14) + '" width="12" height="' + (k ? 30 : 16) + '"/><rect class="dr-leg" x="' + (W - 52) + '" y="' + (y + 14) + '" width="12" height="' + (k ? 30 : 16) + '"/>');
-      });
-      U.forEach(function(u){ L.at.push({ x: x0 + u.col * cw, y: shelf[u.row] - 52, w: cw, h: 52, base: shelf[u.row] }); });
-      [1, 0].forEach(function(b){ var rows = U.filter(function(u){ return u.block === b; }), r0 = rows[0].row; L.blocks[b] = { x: x0 - 8, y: shelf[r0] - 250, w: sc.cols * cw + 16, h: 270, name: sc.lurk.names[b], ty: shelf[r0] - 228 }; });
-    } else {
-      var W2 = 1000, cw2 = 150, rh = 150, x2 = (W2 - sc.cols * cw2) / 2, top = 40;
-      L.W = W2; L.H = top + sc.rows * rh + 50;
-      bg.push('<rect class="dr-room" x="0" y="0" width="' + W2 + '" height="' + L.H + '"/>');
-      U.forEach(function(u){ L.at.push({ x: x2 + u.col * cw2, y: top + u.row * rh + (u.row >= sc.lurk.rows[0] ? 40 : 0), w: cw2, h: rh - 10 }); });
-      [0, 1].forEach(function(b){ var rows = U.filter(function(u){ return u.block === b; }), ys = rows.map(function(u){ return L.at[u.i].y; }); var y0 = Math.min.apply(null, ys), y1 = Math.max.apply(null, ys) + rh - 10; L.blocks[b] = { x: x2 - 10, y: y0 - 28, w: sc.cols * cw2 + 20, h: y1 - y0 + 34, name: sc.lurk.names[b], ty: y0 - 9 }; });
-    }
-    var pairs = {};
-    U.forEach(function(u){ (pairs[u.pair] = pairs[u.pair] || []).push(u.i); });
-    Object.keys(pairs).forEach(function(k){ var p = pairs[k], a = L.at[p[0]], b = L.at[p[1]]; L.pairs.push({ x: a.x + 8, y: (sc.kind === 'plants' ? a.base + 18 : a.y + a.h - 6), w: b.x + b.w - a.x - 16 }); });
-    L.bg = bg.join('');
-    return L;
-  }
-  /* grow: 0 (seedling) to 1 (the measured height); y the response or null */
-  function unitSvg(sc, u, a, tr, y, grow, lim, o){
-    var g = '<g class="dr-u' + (tr ? ' is-' + tr : '') + '" data-i="' + u.i + '">';
-    if(sc.kind === 'plants'){
-      var cx = a.x + a.w / 2, base = a.base, potT = base - 48;
-      var h0 = 34, h1 = y == null ? h0 : 44 + (y - lim[0]) / (lim[1] - lim[0]) * 170, h = h0 + (h1 - h0) * grow, top = potT - h;
-      var leaves = '', nL = Math.max(2, Math.round(h / 28));
-      for(var k = 0; k < nL; k++){
-        var ly = potT - (k + 0.7) * h / (nL + 0.4), side = k % 2 ? 1 : -1, len = 15 + Math.min(10, h / 14);
-        leaves += '<path class="dr-leaf" d="M' + cx + ' ' + ly.toFixed(1) + ' q ' + (side * len * 0.6).toFixed(1) + ' ' + (-len * 0.55).toFixed(1) + ' ' + (side * len).toFixed(1) + ' ' + (-len * 0.15).toFixed(1) + ' q ' + (-side * len * 0.45).toFixed(1) + ' ' + (len * 0.42).toFixed(1) + ' ' + (-side * len).toFixed(1) + ' ' + (len * 0.15).toFixed(1) + ' Z"/>';
-      }
-      var fruit = y != null && grow > 0.95 && h > 120 ? '<circle class="dr-fruit" cx="' + (cx + 9) + '" cy="' + (top + h * 0.38).toFixed(1) + '" r="6.5"/>' + (h > 170 ? '<circle class="dr-fruit" cx="' + (cx - 10) + '" cy="' + (top + h * 0.55).toFixed(1) + '" r="6"/>' : '') : '';
-      g += '<path class="dr-stem" d="M' + cx + ' ' + potT + ' V ' + top.toFixed(1) + '"/>' + leaves + '<path class="dr-leaf dr-tip" d="M' + cx + ' ' + (top + 2).toFixed(1) + ' q -9 -10 0 -16 q 9 6 0 16 Z"/>' + fruit +
-        '<path class="dr-pot" d="M' + (cx - 30) + ' ' + potT + ' h 60 l -7 46 h -46 Z"/><rect class="dr-rim" x="' + (cx - 33) + '" y="' + (potT - 4) + '" width="66" height="10" rx="3"/>';
-      if(tr) g += '<g class="dr-tag"><path class="dr-stake" d="M' + (cx + 22) + ' ' + (potT + 4) + ' V ' + (potT - 30) + '"/><rect x="' + (cx + 10) + '" y="' + (potT - 52) + '" width="24" height="22" rx="4"/><text x="' + (cx + 22) + '" y="' + (potT - 35.5) + '" text-anchor="middle">' + tr + '</text></g>';
-      if(y != null && grow > 0.95) g += '<text class="dr-val" x="' + cx + '" y="' + (base - 16) + '" text-anchor="middle">' + fx(y, sc.decimals) + '</text>';
-      g += '<text class="dr-lab" x="' + (a.x + 10) + '" y="' + (base - 4) + '">' + u.label + '</text>';
-    } else {
-      var cx2 = a.x + a.w / 2 - 16, b2 = a.y + a.h * 0.74, hy = b2 - 44, old = u.block === 1;
-      var skin = hash(u.i, 5) % 4, hair = old ? 'old' + (hash(u.i, 6) % 2) : String(hash(u.i, 6) % 4);
-      g += '<rect class="dr-chair" x="' + (cx2 - 38) + '" y="' + (b2 - 46) + '" width="76" height="56" rx="13"/>' +
-        '<path class="dr-shirt dr-shirt-' + (hash(u.i, 7) % 4) + '" d="M' + (cx2 - 30) + ' ' + b2 + ' Q ' + (cx2 - 30) + ' ' + (b2 - 32) + ' ' + cx2 + ' ' + (b2 - 32) + ' Q ' + (cx2 + 30) + ' ' + (b2 - 32) + ' ' + (cx2 + 30) + ' ' + b2 + ' Z"/>' +
-        '<circle class="dr-skin dr-skin-' + skin + '" cx="' + cx2 + '" cy="' + hy + '" r="18"/>' +
-        '<path class="dr-hair dr-hair-' + hair + '" d="M' + (cx2 - 18.7) + ' ' + (hy + 1) + ' A 18.7 18.7 0 0 1 ' + (cx2 + 18.7) + ' ' + (hy + 1) + ' Q ' + (cx2 + 6) + ' ' + (hy - (old ? 5 : 11)) + ' ' + (cx2 - 18.7) + ' ' + (hy + 1) + ' Z"/>' +
-        (old && hash(u.i, 8) % 2 ? '<path class="dr-glasses" d="M' + (cx2 - 13) + ' ' + (hy + 3) + ' h 9 M ' + (cx2 + 4) + ' ' + (hy + 3) + ' h 9 M ' + (cx2 - 4) + ' ' + (hy + 3) + ' h 8"/>' : '') +
-        '<rect class="dr-table" x="' + (cx2 - 44) + '" y="' + (b2 - 3) + '" width="88" height="14" rx="3"/>' +
-        '<text class="dr-age" x="' + cx2 + '" y="' + (b2 + 32) + '" text-anchor="middle">' + (u.age != null ? 'Age ' + u.age : '') + '</text>';
-      if(tr) g += '<g class="dr-tag dr-pill"><rect x="' + (cx2 + 34) + '" y="' + (b2 - 30) + '" width="44" height="24" rx="12"/><text x="' + (cx2 + 56) + '" y="' + (b2 - 13) + '" text-anchor="middle">' + tr + '</text></g>';
-      if(y != null && grow > 0.95) g += '<g class="dr-score"><rect x="' + (cx2 + 30) + '" y="' + (hy - 34) + '" width="46" height="28" rx="9"/><text x="' + (cx2 + 53) + '" y="' + (hy - 14) + '" text-anchor="middle">' + fx(y, 0) + '</text></g>';
-      g += '<text class="dr-lab" x="' + (a.x + 6) + '" y="' + (a.y + 18) + '">' + u.label + '</text>';
-    }
-    return g + '<rect class="dr-hit" x="' + a.x + '" y="' + a.y + '" width="' + a.w + '" height="' + a.h + '"/></g>';
-  }
-
-  /* --------------------------------------------- the dotplot of estimates */
-  function estSvg(rows, dom, truth, w, h, o){
-    var padL = 14, padR = 14, top = 18, axis = 40, W = Math.max(240, w), H = Math.max(110, h);
-    var pw = W - padL - padR, sx = function(v){ return padL + (v - dom[0]) / (dom[1] - dom[0]) * pw; };
-    var n = Math.max(1, rows.length), rh = (H - top - axis) / n, ticks = P.ticks(dom[0], dom[1], W < 420 ? 4 : 7), g = [];
-    ticks.forEach(function(t){ g.push('<line class="sl-grid dr-grid" x1="' + sx(t).toFixed(1) + '" x2="' + sx(t).toFixed(1) + '" y1="' + top + '" y2="' + (H - axis) + '"/><text class="dr-tick" x="' + sx(t).toFixed(1) + '" y="' + (H - axis + 15) + '" text-anchor="middle">' + esc(M.fmt(t, 4)) + '</text>'); });
-    if(dom[0] < 0 && dom[1] > 0) g.push('<line class="dr-zero" x1="' + sx(0).toFixed(1) + '" x2="' + sx(0).toFixed(1) + '" y1="' + top + '" y2="' + (H - axis) + '"/>');
-    g.push('<line class="dr-axis" x1="' + padL + '" x2="' + (W - padR) + '" y1="' + (H - axis) + '" y2="' + (H - axis) + '"/>');
-    if(!rows.length) g.push('<text class="dr-empty" x="' + (padL + pw * 0.22) + '" y="' + (top + (H - top - axis) / 2 + 5) + '" text-anchor="middle">' + esc(o.empty) + '</text>');
-    var bins = Math.max(24, Math.min(64, Math.round(pw / 8)));
-    rows.forEach(function(r, k){
-      var y0 = top + k * rh, base = y0 + rh - 5, cnt = {}, maxC = 1, bw = pw / bins;
-      var binOf = function(v){ return Math.max(0, Math.min(bins - 1, Math.floor((v - dom[0]) / (dom[1] - dom[0]) * bins))); };
-      r.vals.forEach(function(v){ var b = binOf(v); cnt[b] = (cnt[b] || 0) + 1; maxC = Math.max(maxC, cnt[b]); });
-      var rad = Math.max(1.4, Math.min(bw / 2 - 0.4, (rh - 18) / maxC / 2 - 0.2, 3.8)), step = Math.min(rad * 2 + 0.6, (rh - 18) / maxC), seen = {};
-      g.push('<text class="dr-rowt' + (r.key === o.cur ? ' is-cur' : '') + '" x="' + (padL + 2) + '" y="' + (y0 + 14) + '">' + esc(r.name) + ' <tspan class="dr-rown">' + r.vals.length + '</tspan></text>');
-      if(k) g.push('<line class="dr-rowsep" x1="' + padL + '" x2="' + (W - padR) + '" y1="' + y0 + '" y2="' + y0 + '"/>');
-      r.vals.forEach(function(v){ var b = binOf(v), lvl = seen[b] = (seen[b] || 0) + 1; g.push('<circle class="dr-dot" cx="' + (padL + (b + 0.5) * bw).toFixed(1) + '" cy="' + (base - rad - (lvl - 1) * step).toFixed(1) + '" r="' + rad.toFixed(2) + '"/>'); });
-      if(r.last != null && r.key === o.cur){ var bl = binOf(r.last); g.push('<circle class="dr-last" cx="' + (padL + (bl + 0.5) * bw).toFixed(1) + '" cy="' + (base - rad - (cnt[bl] - 1) * step).toFixed(1) + '" r="' + Math.max(4.4, rad + 1.6).toFixed(2) + '"/>'); }
-    });
-    var mx = sx(truth);
-    g.push('<line class="dr-truth" x1="' + mx.toFixed(1) + '" x2="' + mx.toFixed(1) + '" y1="' + (top - 2) + '" y2="' + (H - axis) + '"/><text class="dr-trutht" x="' + mx.toFixed(1) + '" y="' + (top - 6) + '" text-anchor="middle">true effect ' + esc(o.truth) + '</text>');
-    g.push('<text class="dr-axl" x="' + (padL + pw / 2) + '" y="' + (H - 6) + '" text-anchor="middle">' + esc(o.axis) + '</text>');
-    return '<svg class="dr-est" viewBox="0 0 ' + W + ' ' + H + '" width="' + W + '" height="' + H + '" role="img" aria-label="' + esc(o.label) + '">' + g.join('') + '</svg>';
-  }
-
-  /* --------------------------------------------------------- explore */
+  /* ========================================================= EXPLORE */
   function explore(host, data){
-    var scenes = (data.explore && data.explore.scenes) || [];
-    var LS = null, nid = T.nid('dr'), sc, U, L, lim, design = 'cr', blind = true, rows = {}, cur = null, anim = null, touched = false, sel = -1, dom = [0, 1];
-    var rng = M.rng(1000 + Math.floor(Math.random() * 9000));
-    function $(s){ return host.querySelector(s) || (LS ? LS.root.querySelector(s) : null); }
-    function seg(d){ return '<button type="button" data-d="' + d + '" aria-pressed="false"' + (d === 'none' ? ' aria-label="Not random: someone chooses"' : d === 'cr' ? ' aria-label="Completely randomized"' : '') + '>' + esc({ cr: 'Randomized', block: 'Blocked', pairs: 'Matched pairs', none: 'Someone chooses' }[d]) + '</button>'; }
-    host.innerHTML = '<section class="bt-problem dr-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Design randomizer</h2>' +
-      '<div class="sl-fig dr-fig"><div class="sl-scenebox dr-scenebox"></div><p class="dr-trkey" aria-hidden="true" hidden></p><div class="sl-side"><div class="sl-strip dr-strip" aria-hidden="true" hidden></div>' +
-      '<p class="sl-legend dr-legend" aria-hidden="true"><span class="dr-lg-t">True effect</span><span class="dr-lg-cur">This experiment</span><span class="dr-lg-dot">Other runs</span></p><div class="sl-meansbox dr-estbox"></div></div></div>' +
-      '<div class="sl-ctl dr-ctl"><div class="sl-seg dr-seg" role="group" aria-label="Design"><div class="ls-seg">' + ['cr', 'block', 'pairs'].map(seg).join('') + '</div>' +
-      '<div class="sl-seg-b"><span class="sl-seg-k" aria-hidden="true">Not random</span><div class="ls-seg">' + seg('none') + '</div></div></div>' +
-      '<div class="bt-buttons sl-btns"><button type="button" class="btn-press ls-pri dr-go">Randomize and run</button><button type="button" class="bt-btn dr-go100" aria-label="Run 100 experiments">Run 100</button></div></div>' +
-      '<div class="dr-say"></div>' +
-      T.moreHtml('<div class="dr-pick"></div><div class="bt-ctl dr-blind-c"><label class="sl-check"><input type="checkbox" class="dr-unblind"> The volunteers know which pill they took (not blind)</label></div><div class="bt-buttons"><button type="button" class="bt-btn dr-clear">Clear the dots</button></div>', 'experiment, blinding, clear') +
-      '<div class="dr-now"></div><div class="dr-table"></div><p class="sr-only dr-live" role="status" aria-live="polite"></p></section>';
-    var say = T.announcer($('.dr-live'));
-    var cue = T.cue('Pick a design, then Randomize and run.');
-    $('.dr-ctl').insertBefore(cue.el, $('.dr-ctl').firstChild);
-    var pick = T.choiceSelect({ label: 'Experiment', options: scenes.map(function(s, i){ return { value: i, label: s.name }; }), value: 0, onChange: function(v){ setScene(scenes[+v]); } });
-    $('.dr-pick').appendChild(pick.el);
-    host.querySelectorAll('.dr-seg button').forEach(function(b){ b.addEventListener('click', function(){ act(); stop(); design = b.getAttribute('data-d'); cur = null; sel = -1; syncSeg(); drawScene(); drawEst(); text(); }); });
-    $('.dr-go').addEventListener('click', function(){ act(); once(); });
-    $('.dr-go100').addEventListener('click', function(){ act(); hundred(); });
-    $('.dr-unblind').addEventListener('change', function(e){ act(); stop(); blind = !e.target.checked; cur = null; drawScene(); drawEst(); text(); });
-    $('.dr-clear').addEventListener('click', function(){ stop(); rows = {}; cur = null; drawScene(); drawEst(); text(); say('The dots are cleared.'); });
-    function act(){ if(!touched){ touched = true; cue.done(); } }
-    function key(){ return design + (sc.placebo && !blind ? '-u' : ''); }
-    function rowName(k){ var d = k.replace(/-u$/, ''); return D.SHORT[d] + (/-u$/.test(k) ? ', not blind' : ''); }
+    var K = window.LevlKit2, E = data.explore || {}, SCN = E.scenes || [];
+    var seed = 1000 + Math.floor(Math.random() * 9000), rng = M.rng(seed);
+    var S = { sc: null, U: null, design: 'cr', blind: true, mode: 'explore', sel: -1, took: {}, lastTake: null };
+    var run = null;          // the experiment on the bench: { tr, res, order, design, ub, t0, per, fast, dropped, done }
+    var rows = { cr: [], block: [], pairs: [], none: [] };   // dots: { v, ub, t0, dur, el, land, lvl, bin, last }
+    var drawn = { tag: [], h: [], g: 0, placed: 0, hand: null };
+    var raf = 0, GROW = 1150, FALL = 420;
+    function calm(){ return K.reduced() || !window.requestAnimationFrame; }
+    function sc(){ return S.sc; }
+    function people(){ return S.sc.kind === 'people'; }
+    function trueEff(){ return S.sc.effect; }
+    function unitOf(){ return S.sc.unitOf; }
+    function dname(d, wide){
+      if(d === 'none') return [sc().noneCard];
+      return wide ? { cr: ['Completely', 'randomized'], block: ['Randomized', 'block'], pairs: ['Matched pairs'] }[d] : [{ cr: 'Randomized', block: 'Blocked', pairs: 'Matched pairs' }[d]];
+    }
+    function dshort(d){ return d === 'none' ? sc().noneCard : { cr: 'Randomized', block: 'Blocked', pairs: 'Matched pairs' }[d]; }
+    function lurkWord(b){ return sc().lurkShort[b]; }
 
-    function setScene(s){
-      stop(); sc = s; U = D.units(sc); L = layout(sc, U); rows = {}; cur = null; sel = -1;
-      // the plant heights' scale and the estimate axis, from a quick look at
-      // what these units can do
-      var r0 = M.rng(31), all = [sc.effect];
-      [['cr', false], ['none', false], ['none', true], ['cr', true]].forEach(function(x){ if(x[1] && !sc.placebo) return; all = all.concat(D.many(r0, U, x[0], sc, 200, { unblind: x[1] }).diffs); });
-      var lo = Math.min.apply(null, all), hi = Math.max.apply(null, all), tk = P.ticks(lo, hi, 6), stp = tk.length > 1 ? tk[1] - tk[0] : 1;
-      dom = [Math.floor(lo / stp) * stp, Math.ceil(hi / stp) * stp];
-      var b0 = U.map(function(u){ return u.base; });
-      lim = [Math.min.apply(null, b0) - 2, Math.max.apply(null, b0) + sc.effect + (sc.placebo || 0) + 2];
-      var bc = $('.dr-blind-c'); if(bc) bc.hidden = !sc.placebo;
-      if(!sc.placebo) blind = true;
-      syncSeg(); drawScene(); drawEst(); text();
-      var sv = LS && LS.root.querySelector('.stat-ls-setup .ls-v'); if(sv) sv.textContent = sc.name;
+    /* ---------------------------------------------------- the stage */
+    var stage = el('div', 'dr3');
+    var head = K.head({ purpose: E.purpose || 'See where each design’s estimates land', how: { label: 'Show me how', onClick: function(){ startTour(); } } });
+    var pickWrap = el('label', 'dr3-pick'), pick = el('select', 'dr3-sel');
+    pickWrap.innerHTML = '<span class="dr3-pick-k">Experiment</span>';
+    pick.setAttribute('aria-label', 'Experiment');
+    pick.innerHTML = SCN.map(function(x, i){ return '<option value="' + i + '">' + esc(x.name) + '</option>'; }).join('');
+    pickWrap.appendChild(pick);
+    head.el.insertBefore(pickWrap, head.how);
+    stage.appendChild(head.el);
+    var sceneBox = el('div', 'dr3-scene');
+    sceneBox.innerHTML = '<svg class="dr3-svg" role="img" xmlns="' + NS + '" data-ls-text="keep"><defs></defs><g class="dr3-back"></g><g class="dr3-struct"></g><g class="dr3-units"></g><g class="dr3-selg"></g><g class="dr3-hand"></g><g class="dr3-plot"></g><g class="dr3-dots"></g><g class="dr3-labs"></g></svg>';
+    stage.appendChild(sceneBox);
+    var svg = sceneBox.querySelector('svg'), gBack = svg.querySelector('.dr3-back'), gStruct = svg.querySelector('.dr3-struct'), gUnits = svg.querySelector('.dr3-units'),
+      gSel = svg.querySelector('.dr3-selg'), gHand = svg.querySelector('.dr3-hand'), gPlot = svg.querySelector('.dr3-plot'), gDots = svg.querySelector('.dr3-dots'), gLabs = svg.querySelector('.dr3-labs');
+    var layer = K.layer(sceneBox);
+    // the units can be tapped: a box over the bench (the nearest drawn unit answers), a real focusable group for the keys
+    var pickBox = el('div', 'dr3-unitpick');
+    pickBox.tabIndex = 0; pickBox.setAttribute('role', 'group');
+    pickBox.setAttribute('aria-label', 'The experimental units. Left and right arrows pick one to read it; Escape clears.');
+    layer.el.appendChild(pickBox);
+    var goWrap = el('div', 'dr3-go'), bGo = el('button', 'tk2-btn tk2-btn-pri dr3-run', 'Randomize and run');
+    bGo.type = 'button'; goWrap.appendChild(bGo); layer.el.appendChild(goWrap);
+    var bBlind = el('button', 'dr3-blind'); bBlind.type = 'button';
+    layer.el.appendChild(bBlind);
+    var lines = el('div', 'dr3-lines'), cause = K.cause({ label: 'Why' });
+    var acts = el('div', 'dr3-acts');
+    acts.innerHTML = '<button type="button" class="tk2-btn dr3-100">Run 100</button><button type="button" class="tk2-link dr3-reset" hidden>Start over</button>';
+    var b100 = acts.querySelector('.dr3-100'), bReset = acts.querySelector('.dr3-reset');
+    lines.appendChild(cause.el); lines.appendChild(acts);
+    stage.appendChild(lines);
+    var live = el('p', 'tk2-sr'); live.setAttribute('aria-live', 'polite'); stage.appendChild(live);
+    var lastSaid = '';
+    function say(t){ if(!t || t === lastSaid) return; lastSaid = t; live.textContent = ''; setTimeout(function(){ live.textContent = t; }, 40); }
+    var ref = el('div', 'dr3-ref');
+
+    /* ---------------------------------------------------- geometry (picture units = CSS px of the scene) */
+    var G = null;
+    function layout(){
+      var W = sceneBox.clientWidth, H = sceneBox.clientHeight;
+      if(!W || !H) return null;
+      var g = { W: W, H: H, wide: W >= 900, phone: W < 600 }, pad = g.phone ? 8 : 14, gap = g.phone ? 8 : 14;
+      if(g.wide){ var sw = Math.round((W - 2 * pad - gap) * 0.6); g.R = { x: pad, y: pad, w: sw, h: H - 2 * pad }; g.P = { x: pad + sw + gap, y: pad, w: W - pad - (pad + sw + gap), h: H - 2 * pad }; }
+      else { var sh = Math.round((H - 2 * pad - gap) * (g.phone ? 0.6 : 0.58)); g.R = { x: pad, y: pad, w: W - 2 * pad, h: sh }; g.P = { x: pad, y: pad + sh + gap, w: W - 2 * pad, h: H - 2 * pad - gap - sh }; }
+      // the scene: a band at the top (the A and B key, Randomize and run), then the room
+      var R = g.R; R.band = 54; R.ry = R.y + R.band; R.rh = R.h - R.band;
+      R.floor = people() ? 44 : 0;
+      // the plot: a title row, four rows (each a card and its dots), the axis
+      var Pq = g.P; Pq.th = 28; Pq.axH = 50; Pq.top = Pq.y + Pq.th; Pq.bot = Pq.y + Pq.h - Pq.axH; Pq.rh = (Pq.bot - Pq.top) / 4;
+      Pq.cardW = g.phone ? 104 : g.wide ? 152 : 142;
+      Pq.longNames = Pq.rh >= 76 && !g.phone;
+      Pq.l = Pq.x + Pq.cardW + 18; Pq.r = Pq.x + Pq.w - 12;
+      Pq.rr = g.phone ? 2.7 : 3.6;
+      return g;
     }
-    function syncSeg(){ [host, LS && LS.root].forEach(function(r){ if(r) r.querySelectorAll('.dr-seg button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-d') === design)); }); }); }
-    function drawScene(shown, grow){
-      var box = $('.dr-scenebox'); if(!box) return;
-      var tr = cur ? cur.tr : null, y = cur && (grow == null || grow > 0) ? cur.res.y : null, on = {};
-      if(cur && shown != null) cur.order.slice(0, shown).forEach(function(i){ on[i] = true; });
-      var lab = sc.name + ': ' + U.length + ' ' + sc.units + (cur ? ', ' + U.filter(function(u){ return tr[u.i] === 'A'; }).length + ' given ' + sc.tA.toLowerCase() + ' and the rest ' + sc.tB.toLowerCase() : '') + '.';
-      var over = [];
-      if(design === 'block') L.blocks.forEach(function(b){ over.push('<rect class="dr-block" x="' + b.x + '" y="' + b.y + '" width="' + b.w + '" height="' + b.h + '" rx="12"/><text class="dr-block-t" x="' + (b.x + 12) + '" y="' + b.ty + '">Block: ' + esc(b.name) + '</text>'); });
-      else L.blocks.forEach(function(b){ over.push('<text class="dr-zone" x="' + (b.x + 12) + '" y="' + b.ty + '">' + esc(b.name) + '</text>'); });
-      if(design === 'pairs') L.pairs.forEach(function(p){ over.push('<path class="dr-pair" d="M' + p.x + ' ' + (p.y - 6) + ' v 6 h ' + p.w + ' v -6"/>'); });
-      box.innerHTML = '<svg class="dr-scene dr-' + sc.kind + '" viewBox="0 0 ' + L.W + ' ' + L.H + '" preserveAspectRatio="xMidYMid meet" role="img" aria-label="' + esc(lab) + '"><g aria-hidden="true">' + L.bg + over.join('') +
-        U.map(function(u){ var t = tr && (shown == null || on[u.i]) ? tr[u.i] : null; return unitSvg(sc, u, L.at[u.i], t, y ? y[u.i] : null, grow == null ? 1 : grow, lim, {}); }).join('') +
-        (sel > -1 ? '<rect class="dr-sel" x="' + (L.at[sel].x + 2) + '" y="' + (L.at[sel].y - (sc.kind === 'plants' ? 190 : 0)) + '" width="' + (L.at[sel].w - 4) + '" height="' + (L.at[sel].h + (sc.kind === 'plants' ? 190 : 0)) + '" rx="10"/>' : '') + '</g></svg>';
-      box.querySelector('svg').addEventListener('click', function(e){ var g = e.target.closest('.dr-u'); if(!g) return; act(); sel = +g.getAttribute('data-i'); drawScene(); text(); });
-      // The color key for treatments A and B (pots and chairs take the color).
-      var kk = $('.dr-trkey'); if(kk){ kk.hidden = !tr; kk.innerHTML = tr ? '<span class="dr-k-a">A: ' + esc(sc.tA) + '</span><span class="dr-k-b">B: ' + esc(sc.tB) + '</span>' : ''; }
+    var dom = [0, 1];
+    function xv(v){ var q = G.P; return q.l + (v - dom[0]) / (dom[1] - dom[0]) * (q.r - q.l); }
+    function vx(x){ var q = G.P; return dom[0] + (x - q.l) / (q.r - q.l) * (dom[1] - dom[0]); }
+
+    /* where each unit sits: plants on two benches, people at four tables */
+    var UG = [];   // per unit: { cx, base (soil or table top), w, top, kcm, ... }
+    var BG = {};   // benches or tables: { rows: [{ y0, y1, plank }], blocks: [rect], lab }
+    var cmMax = 40;
+    function unitGeo(){
+      var R = G.R, U = S.U, s = sc(); UG = []; BG = { rows: [] };
+      if(!people()){
+        var rul = G.phone ? 22 : 28, x0 = R.x + 8 + rul + 8, cw = (R.x + R.w - 8 - x0) / s.cols, hi = R.rh / s.rows, pk = G.phone ? 16 : 18;
+        var pw = Math.min(cw * 0.7, 58), ph = clamp(pw * 0.78, 17, 42);
+        for(var r = 0; r < s.rows; r++){ var y0 = R.ry + r * hi, plank = y0 + hi - pk - 6; BG.rows.push({ y0: y0, y1: y0 + hi, plank: plank, pk: pk }); }
+        var room = hi - pk - 6 - ph - 14;
+        BG.kcm = room / cmMax; BG.cw = cw; BG.x0 = x0; BG.rul = rul; BG.pw = pw; BG.ph = ph;
+        U.forEach(function(u){
+          var b = BG.rows[u.row], cx = x0 + (u.col + 0.5) * cw;
+          UG.push({ cx: cx, potTop: b.plank - ph, soil: b.plank - ph + 3, plank: b.plank, w: pw, ph: ph, cell: [x0 + u.col * cw, b.y0, cw, b.plank + b.pk - b.y0] });
+        });
+      } else {
+        var aisle = 14, top = R.ry + 4, avail = R.rh - R.floor - aisle - 4, rh = avail / s.rows, gut = 20, x0p = R.x + 6 + gut, cwp = (R.w - 12 - gut) / s.cols, tk = clamp(rh * 0.24, 14, 18);
+        for(var q = 0; q < s.rows; q++){ var yy = top + q * rh + (q >= s.lurk.rows[0] ? aisle : 0); BG.rows.push({ y0: yy, y1: yy + rh, plank: yy + rh - tk, pk: tk }); }
+        BG.cw = cwp; BG.x0 = x0p; BG.gut = gut; BG.tk = tk; BG.rhp = rh;
+        var hr = clamp(Math.min(cwp * 0.15, rh * 0.19), 6, 21);
+        U.forEach(function(u){
+          var b = BG.rows[u.row], cx = x0p + (u.col + 0.5) * cwp - cwp * 0.08;
+          var gh = clamp(rh * 0.62, 18, 64), gw = clamp(cwp * 0.11, 5, 9);
+          UG.push({ cx: cx, plank: b.plank, hr: hr, hy: b.plank - hr * 2.4, gx: cx + cwp * 0.3, gw: gw, gh: gh, cell: [x0p + u.col * cwp, b.y0, cwp, b.y1 - b.y0] });
+        });
+      }
     }
-    function drawEst(){
-      var box = $('.dr-estbox'); if(!box) return;
-      var fig = $('.dr-fig'), empty = !Object.keys(rows).length;
-      // pass 3: before the first run the greenhouse (or room) is the whole picture; the plot of
-      // estimates joins it when there is an estimate to put on it
-      if(fig){ fig.classList.toggle('is-empty', empty); var fr = fig.getBoundingClientRect(); fig.classList.toggle('is-wide', fr.width > 1.25 * fr.height && fr.width > 640); }
-      if(empty){ box.innerHTML = ''; strip(); if(LS){ LS.pills([], 'left', 'explore'); LS.pills([{ k: 'True', html: fx(sc.effect, 1), tone: 'ghost' }], 'right', 'explore'); } return; }
-      box.innerHTML = '';   // measure the box empty, so the old plot does not hold its size
-      var r = box.getBoundingClientRect(), w = Math.round(r.width) || 600, h = Math.round(r.height) || 150;
-      var order = []; D.DESIGNS.forEach(function(d){ order.push(d); order.push(d + '-u'); });
-      var list = order.filter(function(k){ return rows[k]; }).map(function(k){ return { key: k, name: rowName(k), vals: rows[k].vals, last: rows[k].last }; });
-      box.innerHTML = estSvg(list, dom, sc.effect, w, h, { cur: key(), truth: fx(sc.effect, 1) + ' ' + sc.unitOf, axis: 'Estimated effect: mean of A minus mean of B (' + sc.unitOf + ')', empty: 'Estimates land here',
-        label: list.length ? 'Dotplot of estimated effects by design: ' + list.map(function(x){ return x.name + ', ' + x.vals.length + ' runs centered at ' + fx(D.mean(x.vals)); }).join('; ') + '. True effect ' + fx(sc.effect) + '.' : 'No runs yet. The true effect is ' + fx(sc.effect) + ' ' + sc.unitOf + '.' });
-      strip();
-      if(LS){ LS.pills(cur ? [{ k: 'Estimate', html: fx(cur.res.diff, 1), tone: 'readout' }] : [], 'left', 'explore'); LS.pills([{ k: 'True', html: fx(sc.effect, 1), tone: 'ghost' }], 'right', 'explore'); }
+
+    /* ---------------------------------------------------- the static picture: room, benches or tables, the ruler */
+    var UE = [];   // per unit: its elements
+    function drawBack(){
+      gBack.textContent = ''; gStruct.textContent = ''; gUnits.textContent = ''; UE = [];
+      var R = G.R, s = sc();
+      mk('rect', 'dr3-panel', { x: R.x, y: R.y, width: R.w, height: R.h, rx: 14 }, gBack);
+      var clip = 'dr3clip' + Math.floor(Math.random() * 1e6), defs = svg.querySelector('defs');
+      defs.textContent = '';
+      var cp = mk('clipPath', null, { id: clip }, defs); mk('rect', null, { x: R.x, y: R.y, width: R.w, height: R.h, rx: 14 }, cp);
+      var gb = mk('g', null, { 'clip-path': 'url(#' + clip + ')' }, gBack);
+      mk('rect', 'dr3-band', { x: R.x, y: R.y, width: R.w, height: R.band }, gb);
+      if(!people()){
+        var b0 = BG.rows[0], b1 = BG.rows[1];
+        mk('rect', 'dr3-wall', { x: R.x, y: R.ry, width: R.w, height: R.rh }, gb);
+        // the window behind the back (sunny) bench: glass panes, the sky, the sun's path
+        var wy = R.ry + 6, wh = (b0.plank - R.ry) * 0.62, wx = R.x + 10, ww = R.w - 20;
+        mk('rect', 'dr3-sky', { x: wx, y: wy, width: ww, height: wh, rx: 6 }, gb);
+        BG.win = { x: wx, y: wy, w: ww, h: wh };
+        S.sunEl = mk('circle', 'dr3-sun', { cx: wx + ww * 0.82, cy: wy + wh * 0.38, r: clamp(wh * 0.16, 7, 18) }, gb);
+        var panes = Math.max(3, Math.round(ww / 120));
+        for(var p = 1; p < panes; p++) mk('rect', 'dr3-mull', { x: wx + ww * p / panes - 1.5, y: wy, width: 3, height: wh }, gb);
+        mk('rect', 'dr3-mull', { x: wx, y: wy + wh / 2 - 1.5, width: ww, height: 3 }, gb);
+        mk('rect', 'dr3-sill', { x: wx - 4, y: wy + wh - 2, width: ww + 8, height: 6, rx: 2 }, gb);
+        // sunlight falls on the back bench only
+        mk('path', 'dr3-beam', { d: 'M' + (wx + 6) + ' ' + (wy + wh) + ' L' + (wx + ww - 6) + ' ' + (wy + wh) + ' L' + (R.x + R.w) + ' ' + (b0.plank + b0.pk) + ' L' + R.x + ' ' + (b0.plank + b0.pk) + 'Z' }, gb);
+        mk('rect', 'dr3-shade', { x: R.x, y: b1.y0, width: R.w, height: R.y + R.h - b1.y0 }, gb);
+        BG.rows.forEach(function(b, r){
+          mk('rect', 'dr3-leg', { x: R.x + 22, y: b.plank + b.pk, width: 8, height: 6 }, gb);
+          mk('rect', 'dr3-leg', { x: R.x + R.w - 30, y: b.plank + b.pk, width: 8, height: 6 }, gb);
+          mk('rect', 'dr3-plank', { x: R.x + 6, y: b.plank, width: R.w - 12, height: b.pk, rx: 3 }, gb);
+          mk('rect', 'dr3-plank-top', { x: R.x + 6, y: b.plank, width: R.w - 12, height: 3, rx: 1.5 }, gb);
+          // the ruler post at the bench's left end (cm from the soil line)
+          var rx = R.x + 10, base = b.plank - BG.ph + 3;
+          mk('rect', 'dr3-ruler', { x: rx, y: base - cmMax * BG.kcm - 4, width: BG.rul, height: cmMax * BG.kcm + 4 + (b.plank - base), rx: 2 }, gb);
+          for(var c = 0; c <= cmMax; c += 5){
+            var yy = base - c * BG.kcm, big = c % 10 === 0;
+            mk('line', 'dr3-rtick', { x1: rx + BG.rul - (big ? 9 : 5), x2: rx + BG.rul, y1: yy, y2: yy }, gb);
+            if(big && c > 0 && (BG.kcm * 10 >= 22 || c % 20 === 0) && (c < cmMax || BG.kcm * 10 > 24)) mk('text', 'dr3-rnum', { x: rx + 3, y: yy + 4 }, gb).textContent = String(c);
+          }
+        });
+      } else {
+        mk('rect', 'dr3-room', { x: R.x, y: R.ry, width: R.w, height: R.rh }, gb);
+        mk('rect', 'dr3-floorband', { x: R.x, y: R.y + R.h - R.floor, width: R.w, height: R.floor }, gb);
+        // the aisle between the younger tables (front) and the older ones (behind)
+        var ay = BG.rows[s.lurk.rows[0]].y0 - 14;
+        mk('rect', 'dr3-aisle', { x: R.x, y: ay, width: R.w, height: 14 }, gb);
+        BG.rows.forEach(function(b){
+          mk('rect', 'dr3-table', { x: R.x + 6, y: b.plank, width: R.w - 12, height: b.pk, rx: 3 }, gb);
+          mk('rect', 'dr3-table-top', { x: R.x + 6, y: b.plank, width: R.w - 12, height: 3, rx: 1.5 }, gb);
+        });
+      }
+      // the labels printed on the benches or tables: which group sits there (the lurking variable)
+      BG.labs = [];
+      if(!people()) [0, 1].forEach(function(r){
+        var b = BG.rows[r], u = S.U.filter(function(x){ return x.row === r; })[0];
+        var t = mk('text', 'dr3-plab', { x: R.x + 10 + BG.rul + 10, y: b.plank + b.pk / 2 + 4 }, gb);
+        BG.labs.push({ el: t, block: u.block });
+      });
+      else [0, 1].forEach(function(bk){
+        var rs = BG.rows.filter(function(b, r){ return S.U.some(function(u){ return u.row === r && u.block === bk; }); });
+        var y0 = rs[0].y0 + 2, y1 = rs[rs.length - 1].plank + rs[rs.length - 1].pk, cx = R.x + 6 + BG.gut / 2;
+        mk('rect', 'dr3-gutter' + (bk ? ' is-old' : ''), { x: R.x + 6, y: y0, width: BG.gut - 4, height: y1 - y0, rx: 6 }, gb);
+        var t = mk('text', 'dr3-glab', { x: cx - 2, y: (y0 + y1) / 2, 'text-anchor': 'middle', transform: 'rotate(-90 ' + n1(cx - 2) + ' ' + n1((y0 + y1) / 2) + ')', dy: '4' }, gb);
+        BG.labs.push({ el: t, block: bk });
+      });
+      // the structure of each design: block frames, pair trays or mats (shown for that design only)
+      BG.frames = [0, 1].map(function(bk){
+        var rs = BG.rows.filter(function(b, r){ return S.U.some(function(u){ return u.row === r && u.block === bk; }); });
+        var y0 = Math.min.apply(null, rs.map(function(b){ return b.y0; })) + 2, y1 = Math.max.apply(null, rs.map(function(b){ return b.plank + b.pk; })) + 3;
+        var x0 = BG.x0 - (people() ? 4 : 6);
+        return mk('rect', 'dr3-frame', { x: x0, y: y0, width: R.x + R.w - 3 - x0, height: y1 - y0, rx: 10 }, gStruct);
+      });
+      var pairs = {};
+      S.U.forEach(function(u){ (pairs[u.pair] = pairs[u.pair] || []).push(u.i); });
+      BG.trays = Object.keys(pairs).map(function(k){
+        var p = pairs[k], a = UG[p[0]], b = UG[p[1]];
+        if(!people()) return mk('rect', 'dr3-tray', { x: a.cx - BG.pw / 2 - 4, y: a.plank - 4, width: b.cx - a.cx + BG.pw + 8, height: 6, rx: 3 }, gStruct);
+        return mk('rect', 'dr3-tray', { x: a.cell[0] + 7, y: a.plank - 2, width: (b.cell[0] + b.cell[2]) - a.cell[0] - 14, height: 5, rx: 2.5 }, gStruct);
+      });
+      // the units
+      S.U.forEach(function(u, i){
+        var a = UG[i], g = mk('g', 'dr3-u', null, gUnits), e = { g: g };
+        if(!people()){
+          e.stem = mk('path', 'dr3-stem', null, g);
+          e.leaves = []; for(var k = 0; k < 7; k++) e.leaves.push(mk('path', 'dr3-leaf', null, g));
+          e.tip = mk('path', 'dr3-leaf dr3-tip', null, g);
+          var pw = a.w, ph = a.ph;
+          mk('path', 'dr3-pot', { d: 'M' + (a.cx - pw / 2) + ' ' + a.potTop + ' h ' + pw + ' l ' + (-pw * 0.12) + ' ' + ph + ' h ' + (-pw * 0.76) + ' Z' }, g);
+          mk('rect', 'dr3-rim', { x: a.cx - pw / 2 - 2, y: a.potTop - 1, width: pw + 4, height: clamp(ph * 0.2, 4, 7), rx: 2 }, g);
+          mk('ellipse', 'dr3-soil', { cx: a.cx, cy: a.potTop + 1, rx: pw / 2 - 1, ry: 2.2 }, g);
+          var st = clamp(pw * 0.42, 15, 20);
+          e.tag = mk('g', 'dr3-tag', null, g); e.tagR = mk('rect', null, { x: a.cx - st / 2, y: a.potTop + ph * 0.45 - st / 2 + 1, width: st, height: st, rx: 3.5 }, e.tag);
+          e.tagT = mk('text', null, { x: a.cx, y: a.potTop + ph * 0.45 + 1 + st * 0.27, 'text-anchor': 'middle' }, e.tag);
+          e.tc = [a.cx, a.potTop + ph * 0.45 + 1]; e.st = st;
+        } else {
+          var hr = a.hr, cx = a.cx, hy = a.hy, old = u.block === 1, sk = hash(i, 5) % 4, hair = old ? 'o' + hash(i, 6) % 2 : String(hash(i, 6) % 4);
+          g.setAttribute('class', 'dr3-u dr3-p sk' + sk + ' hr' + hair);
+          mk('path', 'dr3-shirt dr3-sh' + hash(i, 7) % 4, { d: 'M' + (cx - hr * 1.7) + ' ' + a.plank + ' Q ' + (cx - hr * 1.7) + ' ' + (hy + hr * 1.25) + ' ' + cx + ' ' + (hy + hr * 1.2) + ' Q ' + (cx + hr * 1.7) + ' ' + (hy + hr * 1.25) + ' ' + (cx + hr * 1.7) + ' ' + a.plank + ' Z' }, g);
+          mk('circle', 'dr3-head', { cx: cx, cy: hy, r: hr }, g);
+          mk('path', 'dr3-hair', { d: 'M' + (cx - hr * 1.04) + ' ' + (hy + 1) + ' A ' + hr * 1.04 + ' ' + hr * 1.04 + ' 0 0 1 ' + (cx + hr * 1.04) + ' ' + (hy + 1) + ' Q ' + (cx + hr * 0.3) + ' ' + (hy - hr * (old ? 0.25 : 0.6)) + ' ' + (cx - hr * 1.04) + ' ' + (hy + 1) + ' Z' }, g);
+          if(old && hash(i, 8) % 2) mk('path', 'dr3-glasses', { d: 'M' + (cx - hr * 0.72) + ' ' + (hy + hr * 0.15) + ' h ' + hr * 0.5 + ' M ' + (cx + hr * 0.22) + ' ' + (hy + hr * 0.15) + ' h ' + hr * 0.5 + ' M ' + (cx - hr * 0.22) + ' ' + (hy + hr * 0.15) + ' h ' + hr * 0.44 }, g);
+          // the recall score: a gauge beside the person, filled to words out of 30
+          e.gO = mk('rect', 'dr3-gauge', { x: a.gx - a.gw / 2, y: (a.plank - a.gh).toFixed(2), width: a.gw, height: a.gh.toFixed(2), rx: 2 }, g);
+          e.gF = mk('rect', 'dr3-gfill', { x: a.gx - a.gw / 2, y: a.plank, width: a.gw, height: 0, rx: 2 }, g);
+          var st2 = clamp(BG.cw * 0.26, 15, 19);
+          e.tag = mk('g', 'dr3-tag', null, g); e.tagR = mk('rect', null, { x: cx - hr * 1.7 - st2 * 0.35, y: a.plank - st2 * 0.55, width: st2, height: st2, rx: 3.5 }, e.tag);
+          e.tagT = mk('text', null, { x: cx - hr * 1.7 - st2 * 0.35 + st2 / 2, y: a.plank - st2 * 0.55 + st2 * 0.5 + st2 * 0.27, 'text-anchor': 'middle' }, e.tag);
+          e.tc = [cx - hr * 1.7 - st2 * 0.35 + st2 / 2, a.plank - st2 * 0.05]; e.st = st2;
+          // the pill on the table in front of the person: alike when blind; the caffeine pill looks different when not
+          e.pill = mk('rect', 'dr3-pill', { x: cx - 6, y: a.plank + BG.tk / 2 - 3, width: 12, height: 6, rx: 3 }, g);
+        }
+        UE.push(e);
+      });
+      drawHand();
     }
-    function strip(){
-      var el = $('.dr-strip'); if(!el) return;
-      if(!cur){ el.hidden = true; el.innerHTML = ''; return; }
-      el.hidden = false;
-      var b = cur.res.bal, nb = U.filter(function(u){ return u.block === 1; }).length;
-      el.innerHTML = '<span class="sl-k">' + esc(sc.lurk.names[1]) + ' ' + esc(sc.units) + '</span><span class="sl-num dr-a">A: ' + b.A + '</span><span class="sl-num dr-b">B: ' + b.B + '</span><span class="sl-k">of ' + nb + '</span>' +
-        '<span class="sl-k">Means</span><span class="sl-num dr-a">A ' + fx(cur.res.meanA, 1) + '</span><span class="sl-num dr-b">B ' + fx(cur.res.meanB, 1) + '</span>';
+    /* the dealing hand: a sleeve, a hand pinching the sticker it is about to place */
+    var HE = null;
+    function drawHand(){
+      gHand.textContent = '';
+      var s = G.phone ? 0.85 : G.wide ? 1.3 : 1.1, g = mk('g', 'dr3-handg', { 'aria-hidden': 'true' }, gHand);
+      var inner = mk('g', null, { transform: 'scale(' + s + ')' }, g);
+      mk('path', 'dr3-sleeve', { d: 'M 6 -58 L 26 -58 L 22 -30 L 4 -30 Z' }, inner);
+      mk('path', 'dr3-palm', { d: 'M 2 -32 Q 0 -18 6 -10 L 12 -6 Q 18 -8 22 -16 L 24 -32 Z' }, inner);
+      mk('path', 'dr3-finger', { d: 'M 6 -12 Q 2 -4 4 2 Q 7 4 9 0 L 11 -8 Z' }, inner);
+      var t = mk('g', 'dr3-tag dr3-htag', null, inner);
+      mk('rect', null, { x: -3, y: -2, width: 17, height: 17, rx: 3.5 }, t);
+      var tt = mk('text', null, { x: 5.5, y: 10.6, 'text-anchor': 'middle' }, t);
+      HE = { g: g, tag: t, t: tt, s: s };
+      g.style.display = 'none';
     }
-    function add(k, v){ var r = rows[k] || (rows[k] = { vals: [], last: null }); r.vals.push(v); r.last = v; }
-    function experiment(){ var tr = D.assign(rng, U, design, sc), res = D.run(rng, U, tr, sc, { unblind: !!sc.placebo && !blind }); var order = M.shuffle(rng, U.map(function(u){ return u.i; })); return { tr: tr, res: res, order: order, key: key(), design: design }; }
-    function once(){
-      stop();
-      cur = experiment(); sel = -1;
-      var N = U.length;
-      if(T.reduced()){ add(cur.key, cur.res.diff); drawScene(); drawEst(); text(); return; }
-      var shown = 0, per = Math.min(0.07, 1.1 / N);
-      text(true);
-      anim = P.loop(function(dt, t){
-        if(t < N * per){ var k = Math.min(N, Math.floor(t / per) + 1); if(k !== shown){ shown = k; drawScene(k, 0); } return true; }
-        var g = Math.min(1, (t - N * per) / 0.9); drawScene(null, g < 0.05 ? 0.05 : g); return g < 1;
-      }, { onEnd: function(){ anim = null; add(cur.key, cur.res.diff); drawScene(); drawEst(); text(); } });
-      anim.start();
+
+    /* ---------------------------------------------------- the plot of estimates: cards, rows, the truth, the axis */
+    var PE = null, taps = [];
+    function drawPlot(){
+      gPlot.textContent = ''; gLabs.textContent = '';
+      var q = G.P, s = sc();
+      PE = { rows: [], cards: [] };
+      mk('rect', 'dr3-pbg', { x: q.x, y: q.y, width: q.w, height: q.h, rx: 14 }, gPlot);
+      PE.title = mk('text', 'dr3-ptitle', { x: q.x + 12, y: q.y + 19 }, gLabs); var t0 = 'Mean A − mean B (' + unitOf() + ')', t1 = t0 + ', one dot per run';
+      PE.title.textContent = tw(t1, 13.5, 900) + tw('not blind', 11.5, 800) + 48 <= q.w ? t1 : t0;
+      PE.ubKey = mk('g', 'dr3-ubkey', null, gLabs);
+      var kc = mk('circle', 'dr3-dot is-ub', { cx: 0, cy: -4, r: 4 }, PE.ubKey), kt = mk('text', 'dr3-ubk', { x: 8, y: 0 }, PE.ubKey); kt.textContent = 'not blind';
+      PE.ubKey.setAttribute('transform', 'translate(' + (q.x + q.w - 12 - tw('not blind', 11.5, 800) - 8) + ' ' + (q.y + 19) + ')');
+      DES.forEach(function(d, k){
+        var y0 = q.top + k * q.rh, base = y0 + q.rh - 9;
+        if(k) mk('line', 'dr3-rsep', { x1: q.x + 8, x2: q.x + q.w - 8, y1: y0, y2: y0 }, gPlot);
+        var card = mk('rect', 'dr3-card', { x: q.x + 6, y: y0 + 3, width: q.cardW, height: q.rh - 6, rx: 10 }, gPlot);
+        var names = dname(d, q.longNames), fs = G.phone ? 12.5 : 13.5;
+        while(fs > 11.5 && Math.max.apply(null, names.map(function(nm){ return tw(nm, fs, 900); })) > q.cardW - 18) fs -= 0.5;
+        var lh = Math.ceil(fs * 1.36) + 3;
+        var nl = names.length + (G.phone ? 0 : 1), cy = y0 + q.rh / 2 - (nl - 1) * lh / 2 + 4;
+        var tn = names.map(function(nm, j){ var t = mk('text', 'dr3-cname', { x: q.x + 16, y: cy + j * lh }, gLabs); t.textContent = nm; t.style.fontSize = fs + 'px'; return t; });
+        var cnt = mk('text', 'dr3-ccount', { x: q.x + 16, y: cy + names.length * lh }, gLabs);
+        if(G.phone) cnt.style.display = 'none';   // a phone's card has room for the name only; the count is in the cause line and "?"
+        var mark = mk('path', 'dr3-centre', null, gPlot);
+        PE.rows.push({ d: d, y0: y0, base: base, card: card, names: tn, cnt: cnt, mark: mark });
+      });
+      // the axis, its numbers and the truth
+      var ax = q.bot;
+      mk('line', 'dr3-axis', { x1: q.l - 4, x2: q.r + 4, y1: ax, y2: ax }, gPlot);
+      var tx = xv(trueEff());
+      PE.truth = mk('rect', 'dr3-truth', { x: tx - 1.25, y: q.top - 2, width: 2.5, height: ax - q.top + 27 }, gPlot);
+      var tl = 'true ' + fx(trueEff(), 1) + ' ' + unitOf(), tlw = tw(tl, 12.5, 900) + 16;
+      var pg = mk('g', 'dr3-tpill', null, gLabs), tx0 = clamp(tx - tlw / 2, q.l - 6, q.r + 6 - tlw);
+      mk('rect', null, { x: tx0, y: ax + 25, width: tlw, height: 20, rx: 10 }, pg);
+      mk('text', null, { x: tx0 + tlw / 2, y: ax + 39, 'text-anchor': 'middle' }, pg).textContent = tl;
+      var ticks = P && P.ticks ? P.ticks(dom[0], dom[1], G.phone ? 5 : 7) : [dom[0], dom[1]];
+      ticks.forEach(function(v){
+        var x = xv(v); if(x < q.l - 1 || x > q.r + 1) return;
+        mk('line', 'dr3-tick', { x1: x, x2: x, y1: ax, y2: ax + 4 }, gPlot);
+        var s2 = String(+v.toFixed(2)).replace(/^-/, '−'), w2 = tw(s2, 11.5, 700);
+        if(Math.abs(x - tx) < w2 / 2 + 4) return;   // the truth's own pill says that value
+        mk('text', 'dr3-tk', { x: x, y: ax + 17, 'text-anchor': 'middle' }, gLabs).textContent = s2;
+      });
+      // the cards are the design control: a tap button over each
+      taps.forEach(function(t){ t.el.remove(); });
+      taps = DES.map(function(d, k){
+        var rw = PE.rows[k];
+        var t = K.tap(layer, { key: k ? null : 'apstat-design-randomizer-card', label: 'Design: ' + (d === 'none' ? sc().noneCard + ' (no random assignment)' : { cr: 'completely randomized', block: 'randomized block', pairs: 'matched pairs' }[d]), box: [q.x + 6, rw.y0 + 3, q.cardW, q.rh - 6], pressed: d === S.design, chip: false, onClick: function(){ setDesign(d); } });
+        t.el.classList.add('dr3-ctap');
+        return t;
+      });
+      // the dots already run keep their values; their elements are made again
+      gDots.textContent = '';
+      DES.forEach(function(d){ rows[d].forEach(function(o){ o.el = null; o._k = null; }); });
+    }
+
+    /* ---------------------------------------------------- the dots */
+    function dotEl(o){ var e = mk('circle', 'dr3-dot' + (o.ub ? ' is-ub' : ''), { r: G.P.rr }, gDots); o.el = e; return e; }
+    function rowStack(d){
+      // place every landed dot of a row: bins of one dot width, stacked up from the row's base
+      var q = G.P, rw = PE.rows[DES.indexOf(d)], list = rows[d], rr = q.rr, bw = rr * 2 + 0.8, cnt = {}, maxC = 1;
+      list.forEach(function(o){ o.bin = Math.floor((xv(o.v) - q.l) / bw); });
+      list.forEach(function(o){ if(o.land){ cnt[o.bin] = (cnt[o.bin] || 0) + 1; maxC = Math.max(maxC, cnt[o.bin]); } });
+      var room = rw.base - (rw.y0 + 6) - rr * 2, stp = Math.min(rr * 2 + 0.6, room / Math.max(1, maxC - 1 + 0.001));
+      var seen = {};
+      list.forEach(function(o){ var lv = o.land ? (seen[o.bin] = (seen[o.bin] || 0) + 1) - 1 : (cnt[o.bin] || 0) + ((seen['f' + o.bin] = (seen['f' + o.bin] || 0) + 1) - 1); o.lvl = lv; o.ty = rw.base - rr - Math.min(lv, maxC + 2) * stp; });
+      return stp;
+    }
+
+    /* ---------------------------------------------------- the experiment */
+    function newRun(fast){
+      var tr = D.assign(rng, S.U, S.design, sc()), ub = !!sc().placebo && !S.blind;
+      var res = D.run(rng, S.U, tr, sc(), { unblind: ub });
+      var order = D.dealOrder(rng, S.U, tr, S.design);
+      return { tr: tr, res: res, order: order, design: S.design, ub: ub, fast: !!fast, dropped: false, done: false };
+    }
+    function addDot(v, ub, t0, dur, last){
+      var o = { v: v, ub: ub, t0: t0, dur: dur, land: dur <= 0, el: null, last: !!last };
+      rows[S.design].push(o);
+      return o;
+    }
+    function go(){
+      if(S.mode !== 'explore') return;
+      hideCue(true); tourDid('run');
+      finishRun(); S.sel = -1;
+      run = newRun(false);
+      var t = now(), N = S.U.length;
+      run.t0 = t; run.per = (people() ? 1500 : 1500) / N;
+      drawn.placed = 0; S.U.forEach(function(u, i){ drawn.tag[i] = null; });
+      fresh(false);
+      if(calm()){ run.dropped = true; run.done = true; run.dot = addDot(run.res.diff, run.ub, t, 0, true); fade(); markLast(run.dot); paint(now()); settled(); return; }
+      scrollIn();
+      kick();
     }
     function hundred(){
-      stop();
-      var last = null;
-      for(var j = 0; j < 100; j++){ last = experiment(); add(last.key, last.res.diff); }
-      cur = last; sel = -1; drawScene(); drawEst(); text();
-      say('100 experiments run. ' + summary(key()));
+      if(S.mode !== 'explore') return;
+      hideCue(true); tourDid('100');
+      finishRun(); S.sel = -1;
+      var t = now(), last = null, k;
+      for(k = 0; k < 100; k++){ last = newRun(true); var o = addDot(last.res.diff, last.ub, t + k * 13, calm() ? 0 : FALL, k === 99); if(k === 99) last.dot = o; }
+      run = last; run.dropped = true; run.done = true; run.t0 = t;
+      fade();
+      markLast(run.dot);
+      scrollIn();
+      if(calm()){ paint(now()); settled(); } else kick();
     }
-    function stop(){ if(anim){ anim.stop(); anim = null; if(cur){ add(cur.key, cur.res.diff); drawScene(); drawEst(); } } }
-    function summary(k){
-      var r = rows[k]; if(!r || r.vals.length < 2) return '';
-      var c = D.mean(r.vals), s = D.sd(r.vals), off = c - sc.effect;
-      return rowName(k) + ': ' + r.vals.length + ' estimates centered at ' + fx(c, 1) + ' (true ' + fx(sc.effect, 1) + '), SD ' + fx(s) + '. ' +
-        (r.vals.length >= 20 ? (Math.abs(off) > 3 * s / Math.sqrt(r.vals.length) && Math.abs(off) > 0.3 ? 'Centered ' + (off > 0 ? 'above' : 'below') + ' the true effect: ' + (/-u$/.test(k) ? 'the placebo effect is mixed in.' : 'confounded.') : 'Centered on the true effect.') : 'Run more to see the center.');
+    function markLast(o){ DES.forEach(function(d){ rows[d].forEach(function(x){ if(x !== o) x.last = false; }); }); if(o) o.last = true; }
+    /* a run in the middle of dealing or growing is dropped (a new bench comes in); a dot already falling lands */
+    function finishRun(){
+      if(run && !run.fast && !run.dropped){ run = null; }
+      DES.forEach(function(d){ rows[d].forEach(function(o){ o.land = true; }); });
+      if(run){ run.done = true; }
+      if(raf){ cancelAnimationFrame(raf); raf = 0; }
     }
-    function cap(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
-    function text(running){
-      var head, tail;
-      if(sel > -1){ var u = U[sel]; head = cap(sc.unit) + ' ' + u.label + ' (' + sc.lurk.names[u.block].toLowerCase() + (u.age != null ? ', age ' + u.age : '') + ')' + (cur ? ': ' + (cur.tr[sel] === 'A' ? sc.tA : sc.tB) + ', ' + fx(cur.res.y[sel], sc.decimals) + ' ' + sc.unitOf + '.' : '.'); tail = cur ? '' : 'Randomize to give it a treatment.'; }
-      else if(!cur){ head = U.length + ' ' + sc.units + ': ' + sc.tA + ' (A) or ' + sc.tB + ' (B)?'; tail = 'Pick a design, then randomize and run.'; }
-      else if(running){ head = 'Assigning treatments by chance…'; tail = ''; }
-      else { head = 'Estimated effect ' + fx(cur.res.diff, 1) + ' ' + sc.unitOf + ' (A ' + fx(cur.res.meanA, 1) + ', B ' + fx(cur.res.meanB, 1) + ').'; tail = rows[cur.key] && rows[cur.key].vals.length >= 20 ? summary(cur.key).split('. ').slice(-1)[0] : 'The true effect is ' + fx(sc.effect, 1) + '. Run 100 to see the pattern.'; }
-      T.explain($('.dr-say'), '<b>' + esc(head) + '</b> ' + esc(tail), why());
-      if(LS) LS.caption('<b>' + esc(head) + '</b> ' + esc(tail), 'explore');
-      nowBox(); tableBox();
-      if(!running) say(head + ' ' + tail);
+    function fresh(withFade){ if(withFade) fade(); }
+    function fade(){ sceneBox.classList.remove('is-fade'); void sceneBox.offsetWidth; sceneBox.classList.add('is-fade'); }
+    function scrollIn(){
+      var r = sceneBox.getBoundingClientRect();
+      if(r.top < 0 || r.top > (window.innerHeight || 800) * 0.5) try{ sceneBox.scrollIntoView({ block: 'start', behavior: calm() ? 'auto' : 'smooth' }); }catch(e){}
     }
-    function why(){
+
+    /* ---------------------------------------------------- one clock for every animation */
+    function busy(){ if(run && !run.done) return true; return DES.some(function(d){ return rows[d].some(function(o){ return !o.land; }); }); }
+    function kick(){ if(!raf && !calm()) raf = requestAnimationFrame(frame); }
+    function frame(){ raf = 0; var t = now(); step(t); paint(t); if(busy()) kick(); else settled(); }
+    function step(t){
+      if(run && !run.fast && !run.done){
+        var N = S.U.length, td = t - run.t0, tg0 = N * run.per + 220;
+        if(td >= tg0 + GROW + 120 && !run.dropped){ run.dropped = true; run.dot = addDot(run.res.diff, run.ub, t, FALL, true); markLast(run.dot); }
+        if(run.dropped && run.dot && run.dot.land) run.done = true;
+      }
+      DES.forEach(function(d){ rows[d].forEach(function(o){ if(!o.land && t >= o.t0 + o.dur) o.land = true; }); });
+    }
+
+    /* ---------------------------------------------------- paint: the picture from the state at time t */
+    function heightAt(i, g){ var s = sc(), y = run ? run.res.y[i] : null; var h0 = s.decimals === 0 ? 0 : 5; if(y == null) return h0; return h0 + (y - h0) * g; }
+    function paint(t){
+      if(!G) return;
+      var N = S.U.length, s = sc(), td = run && !run.fast && !run.done ? t - run.t0 : Infinity;
+      // the deal: stickers placed one by one, the hand travelling between them
+      var placed = !run ? 0 : run.fast || run.done ? N : Math.min(N, Math.floor(td / run.per));
+      var tg0 = run ? N * run.per + 220 : 0, g = !run ? 0 : run.fast || run.done ? 1 : clamp((td - tg0) / GROW, 0, 1);
+      g = easeIO(g);
+      drawn.placed = 0;
+      S.U.forEach(function(u, i){
+        var e = UE[i], k = run ? run.order.indexOf(i) : -1, on = run && k > -1 && k < placed, letter = on ? run.tr[i] : null;
+        var age = on && !(run.fast || run.done) ? clamp((td - (k + 1) * run.per) / 140, 0, 1) : 1;
+        if(on && age >= 1) drawn.placed++;
+        drawn.tag[i] = on && age >= 1 ? letter : null;
+        var cls = 'dr3-tag' + (letter ? ' is-' + letter : '');
+        if(e.tag.getAttribute('class') !== cls) e.tag.setAttribute('class', cls);
+        e.tag.style.display = on ? '' : 'none';
+        if(on){ txt(e.tagT, letter); var sc2 = 0.4 + 0.6 * easeOut(age); at(e.tag, { transform: sc2 >= 1 ? '' : 'translate(' + n1(e.tc[0] * (1 - sc2)) + ' ' + n1(e.tc[1] * (1 - sc2)) + ') scale(' + (Math.round(sc2 * 100) / 100) + ')' }); }
+        if(!people()) paintPlant(i, heightAt(i, g));
+        else paintPerson(i, run && g > 0 ? run.res.y[i] * g : null, on && run && run.ub && letter === 'A', on);
+        e.g.classList.toggle('is-sel', S.sel === i);
+      });
+      drawn.g = g;
+      // the hand
+      if(run && !run.fast && !run.done && placed < N){
+        var kk = placed, to = UE[run.order[kk]].tc, from = kk ? UE[run.order[kk - 1]].tc : [G.R.x + G.R.w - 30, G.R.y + 8];
+        var fr = clamp((td - kk * run.per) / (run.per * 0.8), 0, 1), e2 = easeIO(fr);
+        var hx = from[0] + (to[0] - from[0]) * e2, hy = from[1] + (to[1] - from[1]) * e2 - 6 * Math.sin(Math.PI * e2);
+        HE.g.style.display = '';
+        at(HE.g, { transform: 'translate(' + n1(hx - 5.5 * HE.s) + ' ' + n1(hy - 8 * HE.s) + ')' });
+        var nl = run.tr[run.order[kk]]; txt(HE.t, nl); var hc = 'dr3-tag dr3-htag is-' + nl; if(HE.tag.getAttribute('class') !== hc) HE.tag.setAttribute('class', hc);
+      } else HE.g.style.display = 'none';
+      // the sun crosses the window while the plants grow
+      if(S.sunEl && BG.win){ var w = BG.win, sx = run && !run.fast && !run.done && g > 0 ? w.x + w.w * (0.12 + 0.76 * g) : w.x + w.w * 0.82; at(S.sunEl, { cx: sx }); }
+      // the structure for the design in use
+      var d = S.design;
+      BG.frames.forEach(function(f){ f.classList.toggle('is-on', d === 'block'); });
+      BG.trays.forEach(function(f){ f.classList.toggle('is-on', d === 'pairs'); });
+      BG.labs.forEach(function(l, j){ txt(l.el, (d === 'block' ? 'Block ' + (j + 1) + ': ' : '') + (people() ? (l.block ? 'Older' : 'Younger') : (l.block ? 'Sunny row' : 'Shady row'))); });
+      paintSel();
+      paintDots(t);
+      words();
+    }
+    function paintPlant(i, hcm){
+      var e = UE[i], a = UG[i], hp = hcm * BG.kcm, base = a.soil, top = base - hp;
+      var dd = 'M' + n1(a.cx) + ' ' + base.toFixed(2) + ' V ' + top.toFixed(2); if(e.stem.getAttribute('d') !== dd) e.stem.setAttribute('d', dd);
+      e.hpx = hp;
+      var nL = clamp(Math.round(hp / 15), 1, 7), L = clamp(a.w * 0.34 + hp * 0.07, 6, 30);
+      e.leaves.forEach(function(lf, k){
+        if(k >= nL){ if(lf.style.display !== 'none') lf.style.display = 'none'; return; }
+        if(lf.style.display) lf.style.display = '';
+        var ly = base - (k + 0.7) * hp / (nL + 0.5), side = k % 2 ? 1 : -1, len = L * (1 - k * 0.06);
+        at(lf, { d: 'M' + n1(a.cx) + ' ' + n1(ly) + ' q ' + n1(side * len * 0.55) + ' ' + n1(-len * 0.55) + ' ' + n1(side * len) + ' ' + n1(-len * 0.12) + ' q ' + n1(-side * len * 0.45) + ' ' + n1(len * 0.42) + ' ' + n1(-side * len) + ' ' + n1(len * 0.12) + ' Z' });
+      });
+      var tl = clamp(L * 0.5, 4, 8);
+      at(e.tip, { d: 'M' + n1(a.cx) + ' ' + n1(top + 1) + ' q ' + n1(-tl) + ' ' + n1(-tl) + ' 0 ' + n1(-tl * 1.8) + ' q ' + n1(tl) + ' ' + n1(tl * 0.8) + ' 0 ' + n1(tl * 1.8) + ' Z' });
+      drawn.h[i] = hp / BG.kcm;
+    }
+    function paintPerson(i, words, knows, on){
+      var e = UE[i], a = UG[i];
+      e.gO.style.display = words == null ? 'none' : '';
+      var fh = words == null ? 0 : words / 30 * a.gh;
+      var fy = (a.plank - fh).toFixed(2), fhs = fh.toFixed(2); if(e.gF.getAttribute('height') !== fhs){ e.gF.setAttribute('y', fy); e.gF.setAttribute('height', fhs); }
+      e.gF.style.display = words == null ? 'none' : '';
+      drawn.h[i] = words == null ? null : fh / a.gh * 30;
+      var pc = 'dr3-pill' + (knows ? ' is-caf' : '');
+      if(e.pill.getAttribute('class') !== pc) e.pill.setAttribute('class', pc);
+      e.pill.style.display = on ? '' : 'none';
+    }
+    function paintSel(){
+      gSel.textContent = '';
+      if(S.sel < 0 || !UG[S.sel]) return;
+      var c = UG[S.sel].cell;
+      mk('rect', 'dr3-selb', { x: c[0] + 2, y: c[1] + 2, width: c[2] - 4, height: c[3] - 2, rx: 8 }, gSel);
+    }
+    function paintDots(t){
+      DES.forEach(function(d, k){
+        var rw = PE.rows[k], list = rows[d];
+        rowStack(d);
+        var top = rw.y0 + 4, nLand = 0, sum = 0;
+        list.forEach(function(o){
+          var e = o.el || dotEl(o), x = xv(o.v), y;
+          if(o.land){ y = o.ty; nLand++; sum += o.v; }
+          else { var f = clamp((t - o.t0) / o.dur, 0, 1); y = f <= 0 ? -100 : top + (o.ty - top) * easeIO(f); }
+          var k2 = n1(x) + '|' + n1(y) + '|' + o.last + '|' + (f <= 0 && !o.land);
+          if(o._k !== k2){ o._k = k2; at(e, { cx: x, cy: y }); e.style.display = !o.land && y < 0 ? 'none' : ''; e.classList.toggle('is-last', o.last && o.land); }
+        });
+        txt(rw.cnt, nLand === 1 ? '1 run' : nLand + ' runs');
+        rw.cntN = nLand;
+        rw.mean = nLand ? sum / nLand : null;
+        if(nLand >= 5){ var mx = xv(rw.mean); at(rw.mark, { d: 'M' + n1(mx) + ' ' + n1(rw.base + 1) + ' l -5 7 h 10 Z' }); rw.mark.style.display = ''; }
+        else rw.mark.style.display = 'none';
+        var on = d === S.design;
+        rw.card.classList.toggle('is-on', on);
+        rw.names.forEach(function(n){ n.classList.toggle('is-on', on); });
+        if(taps[k]) taps[k].pressed(on);
+      });
+      var anyUb = DES.some(function(d){ return rows[d].some(function(o){ return o.ub && o.land; }); });
+      PE.ubKey.style.display = anyUb ? '' : 'none';
+    }
+    /* a row's landed values (from the drawn dots) */
+    function landed(d){ return rows[d].filter(function(o){ return o.land; }); }
+    function rowStats(d, ubOnly){
+      var v = landed(d).filter(function(o){ return ubOnly == null || o.ub === ubOnly; }).map(function(o){ return o.v; });
+      if(!v.length) return null;
+      var m = D.mean(v); return { n: v.length, mean: m, sd: v.length > 1 ? D.sd(v) : 0 };
+    }
+
+    /* ---------------------------------------------------- the cause line, read from the picture */
+    function balance(){
+      // from the drawn stickers: how the second block (sunny pots, older volunteers) split between A and B
+      var a = 0, b = 0;
+      S.U.forEach(function(u, i){ if(u.block !== 1) return; if(drawn.tag[i] === 'A') a++; else if(drawn.tag[i] === 'B') b++; });
+      return { a: a, b: b };
+    }
+    function drawnEst(){
+      // mean A minus mean B of the heights or scores as drawn, once every sticker is down and the growth is done
+      if(!run || drawn.placed < S.U.length || drawn.g < 1) return null;
+      var A = [], B = [];
+      S.U.forEach(function(u, i){ var h = drawn.h[i]; if(h == null) return; (drawn.tag[i] === 'A' ? A : B).push(h); });
+      if(!A.length || !B.length) return null;
+      return D.mean(A) - D.mean(B);
+    }
+    function words(){
+      var s = sc(), N = S.U.length, parts = [], u;
+      if(S.sel > -1){
+        u = S.U[S.sel];
+        parts.push({ t: cap(s.unit) + ' ' + u.label, role: 'ink' });
+        parts.push({ t: (people() ? (u.block ? 'older' : 'younger') + ', age ' + u.age : (u.block ? 'sunny row' : 'shady row')), role: 'lurk' });
+        if(drawn.tag[S.sel]) parts.push({ t: drawn.tag[S.sel] + ': ' + (drawn.tag[S.sel] === 'A' ? s.tAs : s.tBs).toLowerCase(), role: drawn.tag[S.sel] === 'A' ? 'a' : 'b' });
+        if(drawnEst() != null && drawn.h[S.sel] != null) parts.push({ t: fx(drawn.h[S.sel], s.decimals) + ' ' + unitOf(), role: 'est' });
+        cause.set(parts); return;
+      }
+      var dn = dshort(S.design), bal = balance(), lw = lurkWord(1);
+      if(!run){
+        parts = S.design === 'none' ? [{ t: dn, role: 'des' }, { t: 'estimate: mean A − mean B', role: 'est' }] : [{ t: dn, role: 'des' }, { t: 'chance deals A and B', role: 'ink' }, { t: 'mean A − mean B', role: 'est' }];
+        if(take()) return;
+        cause.set(parts); return;
+      }
+      if(!run.fast && drawn.placed < N){ cause.set([{ t: dn, role: 'des' }, { t: (S.design === 'none' ? 'picked ' : 'dealt by chance ') + drawn.placed + ' of ' + N, role: 'ink' }]); return; }
+      var est = drawnEst(), rowN = (PE.rows[DES.indexOf(run.design)] || {}).cntN || 0;
+      parts.push({ t: dn, role: 'des' });
+      parts.push({ t: lw + ': ' + bal.a + ' A, ' + bal.b + ' B', role: 'lurk' });
+      if(est == null){ parts.push({ t: people() ? 'taking the test' : 'week ' + Math.max(1, Math.ceil(drawn.g * 4)), role: 'ink' }); cause.set(parts); return; }
+      if(busy()){ parts.push({ t: 'estimate ' + fx(est, 1) + ' ' + unitOf(), role: 'est' }); cause.set(parts); return; }
+      var st = rowStats(run.design);
+      if(run.fast || rowN >= 20){
+        var sub = st && run.ub !== undefined ? rowStats(run.design, run.ub) : st, bias = sub ? biased(sub) : 0;
+        if(take()) return;
+        cause.set([{ t: dn, role: 'des' }, { t: sub.n + ' runs' + (sc().placebo ? (run.ub ? ', not blind' : ', blind') : ''), role: 'ink' }, { t: 'centred ' + fx(sub.mean, 1) + ' ' + unitOf(), role: bias ? 'bias' : 'est' }, { t: 'true ' + fx(trueEff(), 1) + (bias ? ': biased' : ''), role: 'tru' }]);
+        return;
+      }
+      parts.push({ t: 'estimate ' + fx(est, 1) + ' ' + unitOf(), role: 'est' });
+      parts.push({ t: 'true ' + fx(trueEff(), 1), role: 'tru' });
+      if(take()) return;
+      cause.set(parts);
+    }
+    /* centred off the truth: more than three standard errors and a third of a unit */
+    function biased(st){ if(!st || st.n < 10) return 0; var off = st.mean - trueEff(); return Math.abs(off) > 3 * st.sd / Math.sqrt(st.n) && Math.abs(off) > 0.3 ? (off > 0 ? 1 : -1) : 0; }
+    /* the takeaway, once each, when the picture at rest shows it */
+    var shownTake = null;
+    function take(){
+      if(shownTake){ cause.take(shownTake); return true; }
+      return false;
+    }
+    function settled(){
+      if(!run || busy()) { words(); return; }
+      var s = sc(), d = run.design, st = rowStats(d, s.placebo ? run.ub : null), cr = rowStats('cr', s.placebo ? false : null), t = null, k = null;
+      if(st && st.n >= 20){
+        if(run.ub && st.n >= 20 && biased(st) > 0){ k = 'ub'; t = s.unblindTake; }
+        else if(d === 'none' && biased(st)){ k = 'none'; t = s.noneTake; }
+        else if(d === 'cr' && !biased(st)){ k = 'cr'; t = 'Random assignment centres the estimates on the true effect.'; }
+        else if((d === 'block' || d === 'pairs') && !biased(st) && cr && cr.n >= 20 && st.sd < cr.sd * 0.85){ k = d; t = d === 'block' ? 'Blocking by ' + s.lurk.what + ' makes the estimates vary less around the truth.' : 'Pairing similar ' + s.units + ' makes the estimates vary less around the truth.'; }
+      }
+      shownTake = null;
+      if(t && !S.took[s.id + ':' + k]){ S.took[s.id + ':' + k] = true; shownTake = t; }
+      words();
+      if(shownTake){ cause.take(shownTake); }
+      var est = drawnEst();
+      if(est != null) say(cause.text ? (shownTake || cause.text()) : '');
+      bReset.hidden = !DES.some(function(x){ return rows[x].length; });
+      refHtml();
+    }
+
+    /* ---------------------------------------------------- the controls */
+    function setDesign(d){
+      if(S.mode !== 'explore') return;
+      hideCue(true); tourDid('card');
+      if(d === S.design && !run) return;
+      finishRun(); run = null; shownTake = null; S.sel = -1;
+      S.design = d; fade(); paint(now()); settled();
+      say('Design: ' + dshort(d) + '.');
+    }
+    function setBlind(on){
+      finishRun(); run = null; shownTake = null; S.blind = on; fade(); syncBlind(); paint(now()); settled();
+      say(on ? 'Blind: the pills look alike.' : 'Not blind: the volunteers know which pill they took.');
+    }
+    function syncBlind(){
+      bBlind.hidden = !sc().placebo;
+      bBlind.setAttribute('aria-pressed', String(S.blind));
+      bBlind.innerHTML = '<span class="dr3-sw" aria-hidden="true"></span><span>' + (S.blind ? 'Blind' : 'Not blind') + '</span>';
+      bBlind.setAttribute('aria-label', 'Blind: the pills look alike and the volunteers do not know which one they took');
+    }
+    function domain(){
+      var r0 = M.rng(31), all = [trueEff()], s = sc();
+      DES.forEach(function(d){ [false, true].forEach(function(ub){ if(ub && !s.placebo) return; all = all.concat(D.many(r0, S.U, d, s, 120, { unblind: ub }).diffs); }); });
+      var lo = Math.min.apply(null, all), hi = Math.max.apply(null, all), tk = P && P.ticks ? P.ticks(lo, hi, 6) : [lo, hi], stp = tk.length > 1 ? tk[1] - tk[0] : 1;
+      dom = [Math.floor(lo / stp) * stp, Math.ceil(hi / stp) * stp];
+    }
+    function setScene(i){
+      finishRun(); run = null; shownTake = null; S.sel = -1;
+      S.sc = SCN[i] || SCN[0]; S.U = D.units(S.sc); S.blind = true;
+      DES.forEach(function(d){ rows[d] = []; });
+      var b0 = S.U.map(function(u){ return u.base; });
+      cmMax = people() ? 30 : Math.ceil((Math.max.apply(null, b0) + S.sc.effect + 4) / 5) * 5;
+      domain(); syncBlind();
+      drawn.tag = []; drawn.h = [];
+      if(G){ relayout(true); fade(); }
+      settled();
+    }
+    function startOver(){ finishRun(); run = null; shownTake = null; S.sel = -1; DES.forEach(function(d){ rows[d] = []; }); gDots.textContent = ''; fade(); paint(now()); settled(); say('Start over: no runs yet.'); }
+    function select(i, how){
+      S.sel = i == null ? -1 : i;
+      paint(now());
+      if(S.sel > -1) say(cause.text());
+    }
+
+    /* ---------------------------------------------------- the first visit cue (at Randomize and run) and "Show me how" */
+    var cueO = { key: 'apstat-design-randomizer', text: 'Start here', side: 'below',
+      at: function(){ var a = sceneBox.getBoundingClientRect(), b = bGo.getBoundingClientRect(), k = layer.scale() || 1; return [(b.left - a.left + b.width / 2) / k, (b.bottom - a.top + 4) / k]; } };
+    var cue = K.cue(layer, cueO);
+    function hideCue(used){ if(cue.active()) cue.hide(used); }
+    function cueShow(){ if(S.mode !== 'explore' || run || DES.some(function(d){ return rows[d].length; })) return; cue.show(); }
+    var tour = K.tour({ key: 'apstat-design-randomizer', label: 'Show me how', steps: [
+      { id: 'card', text: 'Pick a design on its card. Each card is a row for that design’s estimates.', target: function(){ return taps[0] ? taps[0].el : sceneBox; } },
+      { id: 'run', text: 'Randomize and run: chance deals A and B, the experiment runs, and its estimate drops into the row.', target: function(){ return bGo; } },
+      { id: '100', text: 'Run 100 to see where a design’s estimates centre and how much they spread.', target: function(){ return b100; } }],
+      onClose: function(had){ if(had) try{ head.how.focus({ preventScroll: true }); }catch(e){} } });
+    function tourDid(x){ if(tour.active()) tour.did(x); }
+    function startTour(){ if(S.mode !== 'explore') return; hideCue(false); tour.start(true); }
+
+    bGo.addEventListener('click', function(){ go(); });
+    b100.addEventListener('click', function(){ hundred(); });
+    bReset.addEventListener('click', function(){ startOver(); });
+    bBlind.addEventListener('click', function(){ hideCue(true); setBlind(!S.blind); });
+    pick.addEventListener('change', function(){ setScene(+pick.value); });
+    stage.addEventListener('keydown', function(e){ if(/^(Arrow|Page|Home|End)/.test(e.key)) hideCue(true); }, true);
+    // tap a unit: the nearest drawn unit under the finger answers
+    function nearestUnit(cx, cy){
+      var r = sceneBox.getBoundingClientRect(), k = layer.scale() || 1, x = (cx - r.left) / k, y = (cy - r.top) / k, best = -1, bd = Infinity;
+      UG.forEach(function(a, i){ var c = a.cell; if(x < c[0] || x > c[0] + c[2] || y < c[1] || y > c[1] + c[3] + 4) return; var dx = x - (c[0] + c[2] / 2), dy = y - (c[1] + c[3] / 2), dd = dx * dx + dy * dy; if(dd < bd){ bd = dd; best = i; } });
+      return best;
+    }
+    pickBox.addEventListener('click', function(e){ hideCue(true); var i = nearestUnit(e.clientX, e.clientY); select(i === S.sel ? -1 : i, 'tap'); });
+    pickBox.addEventListener('keydown', function(e){
+      var n = S.U.length;
+      if(e.key === 'ArrowRight' || e.key === 'ArrowDown'){ e.preventDefault(); select(S.sel < 0 ? 0 : (S.sel + 1) % n, 'key'); }
+      else if(e.key === 'ArrowLeft' || e.key === 'ArrowUp'){ e.preventDefault(); select(S.sel < 0 ? n - 1 : (S.sel - 1 + n) % n, 'key'); }
+      else if(e.key === 'Escape'){ select(-1, 'key'); }
+    });
+
+    /* ---------------------------------------------------- layout and full redraws */
+    function placeControls(){
+      var R = G.R, k = 1, bw = Math.min(tw('Randomize and run', G.phone ? 15 : 16, 900) + 40, R.w - 20);
+      goWrap.style.left = (R.x + R.w - 8 - bw) + 'px'; goWrap.style.top = (R.y + (R.band - 44) / 2) + 'px'; goWrap.style.width = bw + 'px';
+      if(sc().placebo){ bBlind.style.left = (R.x + 10) + 'px'; bBlind.style.top = (R.y + R.h - R.floor + (R.floor - 34) / 2) + 'px'; }
+      var r0 = BG.rows[0], rl = BG.rows[BG.rows.length - 1];
+      pickBox.style.left = (BG.x0 - 4) + 'px'; pickBox.style.top = r0.y0 + 'px'; pickBox.style.width = (R.x + R.w - BG.x0) + 'px'; pickBox.style.height = (rl.plank + rl.pk - r0.y0) + 'px';
+      if(cue.active()) cue.place();
+    }
+    var KEY = null;
+    function drawKey(){
+      // the A and B key in the band: a sticker and the treatment's name
+      var R = G.R, s = sc(), x = R.x + 10, y = R.y + R.band / 2, long = !G.phone, fsK = G.phone ? 12.5 : 13.5;
+      KEY = [];
+      // side by side when they fit beside the button, else one above the other
+      var bw = Math.min(tw('Randomize and run', G.phone ? 15 : 16, 900) + 40, R.w - 20), room = R.w - 8 - bw - 10 - 10;
+      var nA = long ? s.tA : s.tAs, nB = long ? s.tB : s.tBs, wide2 = 24 + tw(nA, fsK, 800) + (G.phone ? 12 : 18) + 24 + tw(nB, fsK, 800);
+      var stack = wide2 > room;
+      ['A', 'B'].forEach(function(L, j){
+        if(stack){ x = R.x + 10; y = R.y + R.band / 2 + (j ? 11 : -11); }
+        var name = long ? (L === 'A' ? s.tA : s.tB) : (L === 'A' ? s.tAs : s.tBs), g = mk('g', 'dr3-key', null, gLabs);
+        var tg = mk('g', 'dr3-tag is-' + L, null, g);
+        mk('rect', null, { x: x, y: y - 9, width: 18, height: 18, rx: 3.5 }, tg);
+        mk('text', null, { x: x + 9, y: y + 4.5, 'text-anchor': 'middle' }, tg).textContent = L;
+        var t = mk('text', 'dr3-keyt', { x: x + 24, y: y + 4.5 }, g); t.textContent = name;
+        KEY.push(g);
+        x += 24 + tw(name, fsK, 800) + (G.phone ? 12 : 18);
+      });
+    }
+    function relayout(force){
+      var g = layout(); if(!g) return;
+      var key = g.W + 'x' + g.H + ':' + sc().id;
+      if(!force && G && key === G.key) return;
+      g.key = key; G = g;
+      svg.setAttribute('viewBox', '0 0 ' + g.W + ' ' + g.H); svg.setAttribute('width', g.W); svg.setAttribute('height', g.H);
+      svg.setAttribute('aria-label', sc().name + ': ' + S.U.length + ' ' + sc().units + ' and a plot of the estimated effect for each design.');
+      unitGeo(); drawPlot(); drawBack(); drawKey();
+      placeControls();
+      paint(now());
+      if(busy()) kick();
+    }
+    function fitHeight(){
+      var vw = window.innerWidth || 1024, vh = window.innerHeight || 800;
+      if(vw >= 1000){ sceneBox.style.height = ''; return; }
+      var top = sceneBox.getBoundingClientRect().top + (window.scrollY || window.pageYOffset || 0);
+      var below = lines.offsetHeight || 120;
+      var hh = Math.round(vh - Math.min(top, vh * 0.32) - below - 18);
+      sceneBox.style.height = clamp(hh, vw < 600 ? (vh < 700 ? 360 : 440) : 560, vw < 600 ? 760 : 900) + 'px';
+    }
+    var roT = 0;
+    function onResize(){ clearTimeout(roT); roT = setTimeout(function(){ fitHeight(); relayout(); }, 40); }
+    try{ if(window.ResizeObserver){ new ResizeObserver(function(){ relayout(); }).observe(sceneBox); } }catch(e){}
+    window.addEventListener('resize', onResize);
+
+    /* ---------------------------------------------------- the reference behind "?" */
+    function refHtml(){
+      var s = sc(), d = S.design, N = S.U.length, A = s.tA.toLowerCase(), B = s.tB.toLowerCase();
       var HOW = {
-        cr: 'Chance alone splits the ' + U.length + ' ' + sc.units + ' in half: label them 1 to ' + U.length + ', pick ' + U.length / 2 + ' different random labels for ' + sc.tA.toLowerCase() + ', the rest get ' + sc.tB.toLowerCase() + '. ' + cap(sc.lurk.what) + ' ends up roughly balanced, but not exactly: that is why the estimates spread.',
-        block: 'Split by ' + sc.lurk.what + ' first (' + sc.lurk.names.join(' and ').toLowerCase() + '), then randomize half of each block to each treatment. ' + sc.blockWhy + ' The balance is exact every time, so the estimates vary less.',
-        pairs: 'Pair neighbors in the same block; a coin flip in each pair decides which one gets ' + sc.tA.toLowerCase() + '. ' + sc.pairWhy + ' Another form of matched pairs gives each unit both treatments, in random order.',
-        none: sc.none.note + ' ' + sc.noneWhy + ' Without random assignment there is no cause and effect conclusion.'
+        cr: 'Chance alone splits the ' + N + ' ' + s.units + ' in half: label them 1 to ' + N + ', pick ' + N / 2 + ' different random labels for ' + A + ', the rest get ' + B + '. ' + cap(s.lurk.what) + ' ends up roughly balanced, but not exactly: that is why the estimates spread.',
+        block: 'Split by ' + s.lurk.what + ' first (' + s.lurk.names.join(' and ').toLowerCase() + '), then randomly assign half of each block to each treatment. ' + s.blockWhy + ' The balance on ' + s.lurk.what + ' is exact every time, so the estimates vary less.',
+        pairs: 'Pair neighbours in the same block; in each pair a coin flip decides which one gets ' + A + '. ' + s.pairWhy + ' Another form of matched pairs gives each unit both treatments, in random order.',
+        none: s.none.note + ' ' + s.noneWhy + ' Without random assignment there is no cause and effect conclusion.'
       };
-      var w = '<p>' + esc(HOW[design]) + '</p><p><b>Reading the dots.</b> Each dot is one experiment’s estimate of the treatment effect. The dashed line is the true effect built into the simulation. Random assignment centers the dots on it (no bias); blocking and pairing make them hug it (less variability); a person choosing pushes them off it (confounding).</p>';
-      if(sc.placebo) w += '<p><b>Blinding.</b> ' + esc(sc.blindWhy) + ' Turn on "The volunteers know which pill they took" under ' + esc('Numbers & setup') + ' to see it.</p>';
-      w += '<p>Random assignment allows a cause and effect conclusion. Generalizing to a larger population needs random sampling, which these volunteers and plants did not have.</p>';
-      return w;
+      var h = '<p class="dr3-howref"><button type="button" class="tk2-how" data-how>Show me how</button> to use it, step by step.</p>';
+      h += '<h3>What you are looking at</h3><p><b>The experiment.</b> ' + esc(cap(s.count)) + ' are the experimental units. The explanatory variable is the treatment: <b>A</b>, ' + esc(A) + ', or <b>B</b>, ' + esc(B) + '. The response variable is ' + esc(s.response) + '. ' + (people() ? 'Age matters too: older volunteers recall fewer words whatever pill they take, so age can be confounded with the pill.' : 'Sunlight matters too: the pots on the back bench, by the window, grow taller whatever they are fed, so sunlight can be confounded with fertilizer.') + '</p>';
+      h += '<p><b>One dot, one experiment.</b> Each run assigns the treatments, measures every ' + esc(s.unit) + ', and computes the estimate: mean of A minus mean of B. Its dot drops into the row of the design used. The line marks the true effect built into this simulation (' + fx(trueEff(), 1) + ' ' + esc(unitOf()) + '); in a real study nobody knows it. The small triangle under a row marks the mean of its dots.</p>';
+      h += '<h3>This design: ' + esc(d === 'none' ? s.noneCard + ' (no random assignment)' : { cr: 'completely randomized', block: 'randomized block', pairs: 'matched pairs' }[d]) + '</h3><p>' + esc(HOW[d]) + '</p>';
+      h += '<p><b>Reading the rows.</b> Random assignment centres the dots on the true effect (no bias). Blocking and pairing make them hug it (less variability), because each comparison is made between similar units. Someone choosing pushes them off it: the effect of ' + esc(s.lurk.what) + ' is mixed in (confounding).</p>';
+      if(s.placebo) h += '<h3>Blinding</h3><p>' + esc(s.blindWhy) + ' The switch under the tables turns blinding off; runs that are not blind show as hollow dots in the same row.</p>';
+      h += '<h3>What a study like this allows</h3><p>Random assignment allows a cause and effect conclusion: the treatment caused the difference, for units like these. Generalizing to a larger population needs random sampling, which these ' + esc(s.units) + ' did not have: they were not chosen at random from all ' + (people() ? 'adults' : 'tomato plants') + '.</p>';
+      if(run && drawnEst() != null){
+        h += '<h3>This experiment</h3><div class="table-wrap" tabindex="0" role="region" aria-label="Each unit, its treatment and response"><table class="ls-tbl"><thead><tr><th scope="col">' + esc(cap(s.unit)) + '</th><th scope="col">' + esc(cap(s.lurk.what)) + '</th><th scope="col">Treatment</th><th scope="col">' + esc(cap(unitOf())) + '</th></tr></thead><tbody>' +
+          S.U.map(function(u){ return '<tr><th scope="row">' + u.label + '</th><td>' + esc(s.lurk.names[u.block]) + (u.age != null ? ' (' + u.age + ')' : '') + '</td><td>' + (run.tr[u.i] === 'A' ? 'A: ' + esc(s.tA) : 'B: ' + esc(s.tB)) + '</td><td class="r">' + fx(run.res.y[u.i], s.decimals) + '</td></tr>'; }).join('') + '</tbody></table></div>' +
+          '<p class="dr3-small">Mean of A ' + fx(run.res.meanA) + ', mean of B ' + fx(run.res.meanB) + ': estimate ' + fx(run.res.diff) + ' ' + esc(unitOf()) + '. True effect ' + fx(trueEff()) + '.</p>';
+      }
+      var any = DES.filter(function(x){ return landed(x).length; });
+      if(any.length){
+        var rowsH = [];
+        any.forEach(function(x){ [false, true].forEach(function(ub){ var st = rowStats(x, s.placebo ? ub : (ub ? undefined : null)); if(!s.placebo && ub) return; if(!st) return; rowsH.push('<tr' + (x === d ? ' class="hl"' : '') + '><th scope="row">' + esc(dshort(x)) + (s.placebo ? (ub ? ', not blind' : ', blind') : '') + '</th><td class="r">' + st.n + '</td><td class="r">' + fx(st.mean) + '</td><td class="r">' + (st.n > 1 ? fx(st.sd) : '') + '</td></tr>'); }); });
+        h += '<h3>Every design so far</h3><div class="table-wrap" tabindex="0" role="region" aria-label="Estimates by design"><table class="ls-tbl"><thead><tr><th scope="col">Design</th><th scope="col">Runs</th><th scope="col">Mean estimate</th><th scope="col">SD</th></tr></thead><tbody>' + rowsH.join('') + '</tbody></table></div>';
+      }
+      h += '<h3>Keys</h3><p>Each design card is a button. Tab to the ' + esc(s.units) + ', then the arrow keys pick one to read it in the line under the picture; Escape clears.</p>';
+      h += '<p class="dr3-small">Seed ' + seed + '. Run 100 skips the dealing and the growing and drops a hundred estimates at once. Changing the design, the blinding or the experiment starts a new bench; the dots stay until Start over or a new experiment.</p>';
+      h += '<div class="dr3-about">' + (data.intro || '') + (data.howItWorks ? '<h3>' + esc(data.howItWorksTitle || 'How it works') + '</h3>' + data.howItWorks : '') + '</div>';
+      if(ref._h !== h){ ref._h = h; ref.innerHTML = h; var hw = ref.querySelector('[data-how]'); if(hw) hw.addEventListener('click', function(){ startTour(); }); }
     }
-    function nowBox(){
-      var el = $('.dr-now'); if(!el) return;
-      if(!cur){ el.innerHTML = '<h3 class="ls-title-l">This experiment</h3><p class="bt-small">Not run yet.</p>'; return; }
-      var tr = cur.tr, y = cur.res.y;
-      el.innerHTML = '<h3 class="ls-title-l">This experiment: ' + esc(D.NAME[cur.design]) + '</h3>' +
-        '<div class="table-wrap" tabindex="0" role="region" aria-label="Each unit, its treatment and response"><table class="ls-tbl"><thead><tr><th scope="col">' + esc(cap(sc.unit)) + '</th><th scope="col">' + esc(cap(sc.lurk.what)) + '</th><th scope="col">Treatment</th><th scope="col">' + esc(cap(sc.unitOf)) + '</th></tr></thead><tbody>' +
-        U.map(function(u){ return '<tr><th scope="row">' + u.label + '</th><td>' + esc(sc.lurk.names[u.block]) + (u.age != null ? ' (' + u.age + ')' : '') + '</td><td>' + (tr[u.i] === 'A' ? 'A: ' + esc(sc.tA) : 'B: ' + esc(sc.tB)) + '</td><td class="r">' + fx(y[u.i], sc.decimals) + '</td></tr>'; }).join('') + '</tbody></table></div>' +
-        '<p class="bt-small">Mean of A ' + fx(cur.res.meanA) + ', mean of B ' + fx(cur.res.meanB) + ': estimate ' + fx(cur.res.diff) + ' ' + esc(sc.unitOf) + '. True effect ' + fx(sc.effect) + '.</p>';
+
+    function boot(){
+      fitHeight();
+      relayout(true);
+      settled();
+      setTimeout(function(){ fitHeight(); relayout(); cueShow(); }, 60);
     }
-    function tableBox(){
-      var el = $('.dr-table'); if(!el) return;
-      var ks = Object.keys(rows);
-      el.innerHTML = '<h3 class="ls-title-l">Every design so far</h3>' + (ks.length ? '<div class="table-wrap" tabindex="0" role="region" aria-label="Estimates by design"><table class="ls-tbl"><thead><tr><th scope="col">Design</th><th scope="col">Runs</th><th scope="col">Mean estimate</th><th scope="col">SD</th></tr></thead><tbody>' +
-        ks.map(function(k){ var r = rows[k]; return '<tr' + (k === key() ? ' class="hl"' : '') + '><th scope="row">' + esc(rowName(k)) + '</th><td class="r">' + r.vals.length + '</td><td class="r">' + fx(D.mean(r.vals)) + '</td><td class="r">' + (r.vals.length > 1 ? fx(D.sd(r.vals)) : '') + '</td></tr>'; }).join('') + '</tbody></table></div>' : '<p class="bt-small">No runs yet.</p>');
+    function finishAll(){
+      // leaving mid animation: the run on the bench finishes (its dot lands), every falling dot lands
+      if(run && !run.fast && !run.done){ if(!run.dropped){ run.dropped = true; run.dot = addDot(run.res.diff, run.ub, now(), 0, true); markLast(run.dot); } run.done = true; }
+      DES.forEach(function(d){ rows[d].forEach(function(o){ o.land = true; }); });
+      if(raf){ cancelAnimationFrame(raf); raf = 0; }
+      paint(now()); settled();
     }
-    function studio(pane, s){
-      LS = s;
-      var sp = T.studioPane(pane, s, { stage: [$('.dr-fig')], dock: [$('.dr-ctl')], setup: 'Experiment', moreLabel: 'Experiment, blinding and the dots', why: [$('.dr-say')], details: [$('.dr-now'), $('.dr-table')] });
-      sp.setup(sc.name);
-      syncSeg(); drawEst(); text();
-      var ab = document.createElement('div'); ab.className = 'ls-sec stat-about';
-      ab.innerHTML = (data.intro || '') + (data.howItWorks ? '<h3 class="ls-title-l">' + esc(data.howItWorksTitle || 'How it works') + '</h3>' + data.howItWorks : '');
-      s.add('about', ab, { mode: 'explore' });
-      if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.dr-go'), text: 'Randomize and run' });
-      watch();
+    function shown(m){
+      S.mode = m;
+      if(m !== 'explore'){ finishAll(); tour.stop(); hideCue(false); return; }
+      setTimeout(function(){ fitHeight(); relayout(true); cueShow(); }, 40);
     }
-    function watch(){ var el = $('.dr-estbox'); if(window.ResizeObserver && el){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(drawEst, 60); }).observe(el); } }
-    setScene(scenes[0]);
-    if(!window.LevlStudio) watch();
-    return { stop: function(){ if(anim){ anim.stop(); anim = null; } }, studio: studio };
+    S.sc = SCN[0]; S.U = D.units(S.sc);
+    setScene(0);
+    return {
+      kit2: function(pane, s){ boot(); return { stage: stage, ref: ref }; },
+      plain: function(){ host.appendChild(stage); host.appendChild(ref); boot(); },
+      shown: shown, stop: function(){ finishAll(); },
+      // for the sweep test only: window.ApStatDesignRandomizer when the test sets window.LevlToolTest before the page loads
+      _t: { S: S, run: function(){ return run; }, rows: rows, G: function(){ return G; }, drawn: drawn, UE: function(){ return UE; }, UG: function(){ return UG; }, BG: function(){ return BG; },
+        dom: function(){ return dom; }, xv: xv, vx: vx, busy: busy, go: go, hundred: hundred, setDesign: setDesign, setBlind: setBlind, setScene: function(i){ pick.value = String(i); setScene(i); },
+        select: select, startOver: startOver, cause: cause, drawnEst: drawnEst, kmode: function(m){ var b = document.querySelector('.bt-mode[data-m="' + m + '"]'); if(b) b.click(); }, finish: finishAll, relayout: relayout }
+    };
+  }
+
+  /* ========================================================= TEST YOURSELF (unchanged) */
+  function quiz(host, data){
+    var ctxs = {}; (data.contexts || []).forEach(function(c){ ctxs[c.id] = c; });
+    function redraw(api){ var p = api.problem, ctx = ctxs[p.ctx], st = api.qs; if(!ctx) return; qfig(api.fig, p, ctx, st); }
+    T.drill(host, data, { slug: 'design-randomizer', noun: 'drill', generate: D.generate,
+      types: [{ value: 'design', label: 'Name the design' }, { value: 'variables', label: 'Variables and units' }, { value: 'scope', label: 'Cause and effect, or generalize?' }, { value: 'procedure', label: 'Random assignment, step by step' }, { value: 'confound', label: 'Confounding and blinding' }],
+      typeLabel: 'Kind of problem',
+      title: function(p){ return { design: 'Name the design', variables: 'Variables and units', scope: 'What can we conclude?', procedure: 'Random assignment', confound: 'Confounding and blinding' }[p.type] || 'Practice problem'; },
+      extra: function(el, p, api){ api.fig = el; api.qs = { done: {}, focus: null, yours: null }; redraw(api); },
+      onStepStart: function(st, api){ api.qs.focus = st.key; api.qs.yours = null; redraw(api); },
+      onTry: function(st, t, api){ if(t.right || st.kind !== 'choice') return; api.qs.yours = { key: st.key, text: String(st.options[t.value]).replace(/<[^>]+>/g, ''), k: t.value }; redraw(api); },
+      onStep: function(st, right, api){ api.qs.done[st.key] = true; api.qs.yours = null; redraw(api); },
+      method: function(st, p){
+        var H = { design: 'Ask two questions: were treatments imposed by the researchers (experiment) or did the units sort themselves (observational)? And was the randomizing done inside blocks or pairs?',
+          blockwhy: 'A block groups units that are alike in a variable that affects the response.', pairwhy: 'Pairs compare like with like.', conclude: 'Only random assignment supports cause and effect.',
+          purpose: 'Random assignment balances the other variables between the groups, on average.',
+          explanatory: 'The explanatory variable is what the researchers set: the treatments on the left of the picture.', response: 'The response is what is measured at the end, on the right of the picture.',
+          units: 'The experimental units are what the treatments are applied to: the icons at the top.', treatments: 'The treatments are the conditions the units get, including the comparison one.',
+          cause: 'Cause and effect needs random ASSIGNMENT (the columns of the table).', generalize: 'Generalizing needs random SAMPLING (the rows of the table).',
+          label: 'Every unit gets its own number.', generate: 'Say how many different numbers, from what range, and what to do with repeats.', assign: 'Say who gets each treatment, including everyone not chosen.',
+          why: 'Random assignment is about making the groups alike, so the treatment can be called the cause.',
+          confound: 'A confounding variable is linked to both the group a unit is in and the response.', blind: 'Who does not know the treatments: the subjects, the people measuring, or both?', blindwhy: 'Knowing the treatment can change behavior or judgment.' };
+        return H[st.key] || null;
+      } });
   }
 
   /* The design diagram an FRQ asks for, drawn once the design is named (or
@@ -484,5 +996,25 @@
     }
     var cap = !done.label ? 'The ' + N + ' ' + ctx.units + ', not yet labeled.' : !done.generate ? 'Labeled 1 to ' + N + '.' : !done.assign ? h + ' different random labels (orange) get ' + ctx.tA + '.' : 'Orange: ' + ctx.tA + '. Blue: ' + ctx.tB + '. ' + h + ' each.';
     return '<figure class="dq-fig dq-proc"><svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(cap) + '">' + g.join('') + '</svg><figcaption class="bt-small">' + esc(cap) + '</figcaption>' + (Y ? '<p class="dr-ycap">Yours: “' + esc(Y.text) + '”</p>' : '') + '</figure>';
+  }
+
+  function boot(){
+    T.mount(SLUG, function(app, data){
+      var ex = null, kit = !!(window.LevlKit2 && window.LevlStudio && app.getAttribute('data-studio'));
+      T.modes(app, { slug: SLUG, labels: ['Explore', 'Test yourself'],
+        explore: function(host){ ex = explore(host, data); if(window.LevlToolTest) window.ApStatDesignRandomizer = ex._t; },
+        quiz: function(host){ quiz(host, data); },
+        onShow: function(m){ if(ex) ex.shown(m); },
+        studio: kit ? { kit2: function(pane, s){ return ex.kit2(pane, s); } } : {} });
+      // Without the frame (no Tool Studio, or no kit) the stage still works on its own, above Test yourself.
+      if(!kit || !T.studioOf(app)) ex.plain();
+    });
+  }
+  /* The page loads the kit (pages.json "kit2": true). A cached copy of the old page would not: fetch it then. */
+  if(window.LevlKit2) boot();
+  else {
+    var up = (window.ApStatBase || '../') + '../assets/course/';
+    var l = document.createElement('link'); l.rel = 'stylesheet'; l.href = up + 'tool-kit2.css'; document.head.appendChild(l);
+    var sc = document.createElement('script'); sc.src = up + 'tool-kit2.js'; sc.onload = boot; sc.onerror = boot; document.head.appendChild(sc);
   }
 })();

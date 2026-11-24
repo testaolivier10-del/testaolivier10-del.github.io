@@ -169,3 +169,16 @@ From `docs/apstat-reviews/tools.md`. Every drill key passed an independent SciPy
   sampling act, not the sample's members. (3) The takeaway is shortened to fit two rows on a phone: "Over many
   samples, about 95% of 95% intervals capture the true value." The full template sentence ("If we took many random
   samples of this size and built a 95% interval from each ...") stays in "?" and in Test yourself. Confirm.
+- **Design randomizer v2 (`design-randomizer-v2`, 2026-11-24, `docs/tools-v2-stat-design-randomizer-brief.md`).**
+  (1) The memory study's "no random assignment" case changed from "the volunteers choose their own pill" to "the
+  researcher hands the caffeine pills to the volunteers who seem most alert, mostly the younger ones; the pills still
+  look alike". Volunteers who choose their pill know which one they took, so the old scene could be shown "blind"
+  while it could not be; the Test yourself context `caffeine` still describes self-selection (an observational
+  comparison) and is unchanged. Confirm. (2) "Biased" in the cause line uses the old tool's rule: a row's mean is more
+  than three standard errors and 0.3 units from the true effect (a simulation check, not an AP test). (3) The
+  blocking and pairing takeaway says the estimates "vary less around the truth" and appears only when that row's SD is
+  under 85% of the completely randomized row's. Over 300 seeds of 100 runs each: plants, both takeaways show every
+  time (SD ratio at most 0.50); memory, pairing every time and blocking 253 of 300 (age's effect, 4 words, is small
+  next to the person to person spread). A completely randomized row was flagged "biased" 1 time in 300 (plants).
+  (4) Matched pairs here pair neighbours in the same row or age group (similar units), not one unit receiving both
+  treatments; "?" names the other form.

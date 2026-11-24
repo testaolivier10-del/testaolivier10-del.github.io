@@ -83,6 +83,22 @@
     U.forEach(function(u){ if(tr[u.i] === 'A'){ a.push(y[u.i]); if(u.block === 1) bal.A++; } else { b.push(y[u.i]); if(u.block === 1) bal.B++; } });
     return { y: y, meanA: mean(a), meanB: mean(b), diff: mean(a) - mean(b), bal: bal };
   }
+  /* dealOrder(r, U, tr, design) -> the order the markers are dealt in Explore (tools v2): every unit once.
+     Completely randomized: one chance order over all units. Block: the second block (sunny, older) first, chance
+     order inside each block. Pairs: pair by pair, chance order of pairs and inside each. No random assignment: the
+     chooser's order, every A first (the ones picked), then the rest. */
+  function dealOrder(r, U, tr, design){
+    var ids = U.map(function(u){ return u.i; });
+    if(design === 'block') return M.shuffle(r, ids.filter(function(i){ return U[i].block === 1; })).concat(M.shuffle(r, ids.filter(function(i){ return U[i].block === 0; })));
+    if(design === 'pairs'){
+      var pairs = {}, keys;
+      U.forEach(function(u){ (pairs[u.pair] = pairs[u.pair] || []).push(u.i); });
+      keys = M.shuffle(r, Object.keys(pairs));
+      var out = []; keys.forEach(function(k){ out = out.concat(M.shuffle(r, pairs[k])); }); return out;
+    }
+    if(design === 'none') return M.shuffle(r, ids.filter(function(i){ return tr[i] === 'A'; })).concat(M.shuffle(r, ids.filter(function(i){ return tr[i] !== 'A'; })));
+    return M.shuffle(r, ids);
+  }
   function many(r, U, design, sc, k, o){
     var diffs = [], bals = [];
     for(var j = 0; j < k; j++){ var tr = assign(r, U, design, sc), res = run(r, U, tr, sc, o); diffs.push(res.diff); bals.push(res.bal.A - res.bal.B); }
@@ -284,6 +300,6 @@
 
   M.register('designRandomizer', {
     DESIGNS: DESIGNS, NAME: NAME, SHORT: SHORT, TYPES: TYPES, D_NAME: D_NAME,
-    units: units, assign: assign, run: run, many: many, mean: mean, sd: sd, generate: generate
+    units: units, assign: assign, run: run, many: many, dealOrder: dealOrder, mean: mean, sd: sd, generate: generate
   });
 })();
