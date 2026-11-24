@@ -53,7 +53,7 @@ async function open(o) {
   page.on('pageerror', e => errs.push('PAGEERROR ' + e.message));
   await page.route(/^https?:\/\/(?!127\.0\.0\.1)/, r => r.abort());
   await page.route('**/assets/premium.js', r => r.fulfill({ body: PREMIUM, contentType: 'application/javascript' }));
-  await page.addInitScript(o2 => { try { if (o2.dark) localStorage.setItem('theme', 'dark'); if (!o2.cue) ['bal', 'ang', 'ine'].forEach(k => localStorage.setItem('tk2c:apphys-torque-balance-' + k, '1')); } catch (e) {} }, { dark: DARK, cue: !!o.cue });
+  await page.addInitScript(o2 => { try { if (o2.dark) localStorage.setItem('nremt_theme', 'dark'); if (!o2.cue) ['bal', 'ang', 'ine'].forEach(k => localStorage.setItem('tk2c:apphys-torque-balance-' + k, '1')); } catch (e) {} }, { dark: DARK, cue: !!o.cue });
   await page.goto(BASE + (o.path || '/physics/tools/torque-balance.html'), { waitUntil: 'load' });
   if (!o.path) { await page.waitForSelector('.tb2-svg .tb2-stick', { timeout: 15000 }); await page.waitForTimeout(500); }
   return { page, errs, ctx };
