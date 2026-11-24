@@ -1,6 +1,7 @@
 # Tools v2: AP® Environmental Science Age structure (brief and build notes)
 
-Status: built 2026-11-24 (first build); waiting for the independent review. NOT merged.
+Status: built 2026-11-24; review round 1 BLOCK (two "?" texts), fixed with every should fix the same day; waiting for
+the recheck. NOT merged.
 
 Status file for the v2 rebuild of `environmental-science/tools/age-structure.html` (Premium; rollout row 65, group P,
 wave 10). Plan: `docs/tools-v2-plans/apenv-age-structure.md`. Standard: `docs/tools-v2-standard.md`. Branch
@@ -34,7 +35,7 @@ population.
   cent of the population increase through 2054". "?" uses the 79% with its source and year.
 - Replacement above 2.1 where mortality is high: Espenshade, Guzman and Westoff (2003), Population Research and Policy
   Review (the journal page was blocked in this session; its press release was read: higher mortality and skewed sex
-  ratios raise it). The tool computes it from its own life table (2.1 at a life expectancy near 80, 2.4 at 60, 4.4 at
+  ratios raise it). The tool computes it from its own life table (2.1 at a life expectancy near 80, 2.4 at 60, 4.0 at
   30), so it never states a number it does not draw.
 - Growth = (CBR − CDR) / 10 in percent and the rule of 70: the course's recipes. In the model, CBR − CDR equals the
   stable growth rate exactly.
@@ -46,8 +47,9 @@ population.
 `ApEnvMath.ageStructure.stable(tfr, e0)` and `lifeTable(e0)` in `environmental-science/assets/tools/math/age-structure.js`
 (two new functions; the drills' `pyramid()` and everything else unchanged):
 - Life table: a Siler style hazard (child deaths falling fast with age, a background, an adult hazard doubling about
-  every 7 years) whose level is solved so the life expectancy at birth is exactly the one set. Deaths before age 5:
-  46% at e0 30, 17% at 55, 4% at 72, 0.3% at 85; close to the Coale and Demeny West tables (teaching model).
+  every 8 years). The child hazard is set so deaths before 5 follow a West model like level (38% at e0 30, 22% at 45,
+  9.5% at 60, 3% at 72, 0.9% at 80), then the adult level is solved so the life expectancy at birth is exactly the one
+  set (teaching model; recalibrated in review round 1).
 - Women live e0 + 2.5 years, men e0 − 2.5; 105 boys per 100 girls; births by the mother's age peak in her twenties
   (the drills' schedule).
 - Growth r from Lotka's equation; the shares are those of the stable population (no migration); CBR from births over
@@ -59,10 +61,12 @@ population.
 
 ## The design (Explore)
 - **Scene:** sky (two pale clouds) over a paved town square; on wide screens a lamp and a planter at each end of the
-  square, clear of the track. The pyramid stands on the square: 17 rows (0–4 to 80+), males left in blue, females right
+  square, clear of the track. The pyramid stands on the square: 19 rows (0–4 to 90+; the drills' open 80+ is split into 80–84, 85–89 and 90+ here),
+  males left in blue, females right
   in vermillion, each row a bar filled with small people side by side from the age spine outward (an SVG pattern
-  anchored at the spine, so the last person is cut where the share ends). One fixed scale: 15% of all people at each
-  end (the widest band anywhere in the ranges is 14.7%), with faint 5%, 10%, 15% grid lines and their ticks.
+  anchored at the spine, so the last person is cut where the share ends). One fixed scale: 11% of all people at each
+  end (the widest band anywhere in the ranges is 10.5%, the base at 7 children), with faint 5% and 10% grid lines and
+  their ticks.
 - **Main control:** the children per woman track on the square (1 to 7, step 0.1, ticks and numbers, caption
   "children per woman"). The mother stands on it at the rate with her knob at her feet (the kit's knob, `K.handle`);
   her children stand to her left, one per slot, the last cut at her position (a fraction is a part of a child). Drag
@@ -95,7 +99,8 @@ population.
 ### What is on screen in Explore (counted at 1440, opening state)
 Outside the picture: the purpose line (7 words: "How fertility today shapes a population's future"), "Show me how",
 the cause line (4 pills, 14 words). About 22 words, no other control.
-On the picture: the pyramid (17 rows of people, 17 age labels, "Males", "Females", 6 grid ticks), the growth pill, the
+On the picture: the pyramid (19 rows of people, 19 age labels, or every other one when rows are short, "Males",
+"Females", 4 grid ticks), the growth pill, the
 life expectancy label and knob, the square with the mother, 5 children, the track with 7 ticks, its numbers, the
 replacement mark and label, the caption and the knob's tag. No side panel.
 
@@ -134,7 +139,7 @@ replacement mark and label, the caption and the knob's tag. No side panel.
 ## Checks run (2026-11-24)
 - `node --test scripts/test/apenv-*.test.mjs`: 187 pass (one new model test: each life table has exactly its life
   expectancy, no growth at replacement, replacement falls as life expectancy rises, CBR − CDR = growth, the three
-  shapes, every band under the 15% scale). The build test's fixture copy of `pages.json` carries the new `"kit2"`.
+  shapes, every band under the 11% scale, deaths before 5 near 38% at 30 years). The build test's fixture copy of `pages.json` carries the new `"kit2"`.
   `check-apenv-content` (0 failing), `build-apenv --check`, `build-apcalc --check`, `build-apmacro --check`,
   `check-site` (no broken references), `check-weight --check` (all 626 budgets within range).
 - `check-tool-use` with a local, uncommitted copy of its list plus this tool: tool-open, tool-touch(explore),
@@ -168,10 +173,46 @@ replacement mark and label, the caption and the knob's tag. No side panel.
   state at 390, 768 and 1440 light, three in dark, the first visit, the takeaway, the full screen, Test yourself;
   `mid-*-a/b/c` are 180 ms, 430 ms and settled after a jump from 5 to 1.5 children and 60 to 80 years).
 
+## Review round 1 (2026-11-24): BLOCK, fixed
+Review: `/home/claude/review-apenv-age/REVIEW.md`. The model and the build held.
+- M1: under the "?" stage table, a line says its rates are today's for a country in that stage and Explore shows where
+  the same settings lead (stage 4's settle into a shrinking population). Stage 1's pair (6 children at 32 years cannot
+  give 0.2% growth) is in `docs/apenv-needs-author.md`.
+- M2: "?" says that where many children die (life expectancy under about 45) the shape alone does not tell growth.
+- S1: a press on the mother keeps the spot under the finger (`grabOff`); the sweep presses her without moving.
+- S2: she stands further right of her rate (0.32 of her height plus 3 px) and the children are drawn in front of her,
+  so a part of a child shows.
+- S3: a row within half a pixel of its target snaps there; time constants 0.045 s at the base to 0.25 s at the top, so
+  a change settles in about a second and the takeaway follows promptly.
+- S4: the mother and the children's cut follow the base row's eased rate (the knob stays instant), so key jumps and
+  taps walk her there; the sweep's agreement check reads her position from that rate.
+- S5: Explore's top band is split into 80–84, 85–89 and 90+ (19 rows; 85+ alone still reached 12.8%), the scale is 11%
+  (about 36% wider), grid lines at 5% and 10%.
+- S6: child deaths follow a West model like level (`Q5`): 38% before 5 at 30 years; replacement 4.0 at 30, 2.4 at 60,
+  2.1 at 80. Every text with the old values is updated.
+- S7: the first visit cue sits left of the mother at head height, clear of the replacement mark (now checked by the
+  sweep), the numbers and the age labels; it overlaps the heads of the children beside her until the first touch.
+- S8 and nits: performance re-timed below; Japan about 11% under 15 in the needs-author note; the drills' pyramid says
+  "Males" and "Females" (text only).
+- Fix round checks: see the end of this file.
+
 ## What I am not happy with
-- The fixed 15% scale makes the pyramid narrow at most settings, most of all on phones (about half the width at the
-  opening state); it is the price of widths that never lie between settings.
+- The pyramid now uses an 11% scale (19 rows); at the opening state it is still about two thirds of the stage width,
+  less on a phone.
 - Explore's stable shape and the drills' fitted pyramids differ for low fertility countries (Explore ages more); "?"
   and the About text say so, and it is in `docs/apenv-needs-author.md`.
 - The life expectancy drag at 1440 sits at the p95 limit under load (50.1 ms); the mother drag is well inside.
 - The lamps and planters on wide screens are plain; the square could carry more life without reading as data.
+
+## Fix round checks (review round 1, 2026-11-24)
+- Sweep at 360, 390, 1024 and 1440, light and dark: 38 states and 1090 checks each, 0 failures (new: a press on the mother
+  without moving keeps the rate; the cue clear of the replacement mark; mother and children read from the base row's
+  rate). 390 was run again after the last change (rows snap only once the row below has), 0 failures.
+- Frames at 390 and 1440, mouse and touch: 0 problems, and a change now settles in about a third of the frames it took
+  before (for example the fast drag 1 to 7 at 390: 46 frames, was 159).
+- Perf (CPU x4, machine load about 4 on 2 cores, the flagship in the same run): 390 px mother median 16.7 ms, p95 33.4;
+  life expectancy 16.7, 33.4; flagship 33.4, 83.3. 1440 px mother 16.7, 50.0; life expectancy 16.7, 33.4; flagship
+  49.9, 99.9.
+- `node --test scripts/test/apenv-*.test.mjs` 187 pass (the model test now checks deaths before 5 near 38% at 30 years,
+  replacement about 4.0, 2.4 and 2.1, 19 rows and the 11% scale), `check-apenv-content`, `build-apenv --check`,
+  `build-apcalc --check`, `build-apmacro --check`, `check-site`, `check-weight --check`: all clean.

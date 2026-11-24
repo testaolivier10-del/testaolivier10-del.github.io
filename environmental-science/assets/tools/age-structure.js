@@ -54,7 +54,7 @@
       if(!ph || i % 2 === 0) out.push(tx(cx, y + bh / 2 + 4, pyr.groups[i], 'ap-age' + (o.sel === i ? ' is-sel' : ''), 'middle'));
       out.push('<rect class="ap-hit" data-i="' + i + '" x="' + r1(x0) + '" y="' + r1(y) + '" width="' + r1(W) + '" height="' + r1(bh) + '"/>');
     }
-    out.push(tx(cx - lab / 2 - 4, top - 10, 'Male', 'ap-sex is-m', 'end'), tx(cx + lab / 2 + 4, top - 10, 'Female', 'ap-sex is-f', 'start'));
+    out.push(tx(cx - lab / 2 - 4, top - 10, 'Males', 'ap-sex is-m', 'end'), tx(cx + lab / 2 + 4, top - 10, 'Females', 'ap-sex is-f', 'start'));
     // The dependency groups as brackets at the left edge: under 15 and 65 and over.
     if(o.bands){
       var yb = function(i){ return H - bot - i * bh; }, bx = x0 + 6;
@@ -129,7 +129,9 @@
   var K = window.LevlKit2;
   var SVGNS = 'http://www.w3.org/2000/svg';
   var PURPOSE = 'How fertility today shapes a population’s future';
-  var SCALE = 15;   // % of all people at the end of each half: the widest band anywhere in the ranges is 14.7%
+  var SCALE = 11;   // % of all people at the end of each half: with the top split (80–84, 85–89, 90+) the widest band
+                    // anywhere in the ranges is 10.5% (the base at 7 children); one scale for every setting
+  var NB = 19;      // A.GROUPSX: 0–4 ... 75–79, 80–84, 85–89, 90+
   var TMIN = 1, TMAX = 7, EMIN = 30, EMAX = 85;
   function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
   function n1(v){ return (Math.round(v * 10) / 10).toFixed(1); }
@@ -183,8 +185,8 @@
 
   function explore(host, data){
     var S = { t: 5, e: 60, T: [], E: 60, mode: 'explore', side: 0, take: false };
-    for(var i0 = 0; i0 < 17; i0++) S.T.push(S.t);
-    var LS = null, nid = T.nid('agv'), G = null, raf = 0, lastT = 0, tour = null;
+    for(var i0 = 0; i0 < NB; i0++) S.T.push(S.t);
+    var grabOff = 0, LS = null, nid = T.nid('agv'), G = null, raf = 0, lastT = 0, tour = null;
     var stage = document.createElement('div'); stage.className = 'agv';
     var head = K.head({ purpose: PURPOSE, how: { label: 'Show me how', onClick: function(){ startTour(true); } } });
     stage.appendChild(head.el);
@@ -211,28 +213,28 @@
     /* what is drawn this frame: each row at the model's value for its own rate; the growth and the rates from the base row's */
     function drawn(){
       var male = [], female = [];
-      for(var i = 0; i < 17; i++){ var m = model(S.T[i], S.E); male.push(m.male[i]); female.push(m.female[i]); }
+      for(var i = 0; i < NB; i++){ var m = model(S.T[i], S.E); male.push(m.male[i]); female.push(m.female[i]); }
       var b = model(S.T[0], S.E);
-      return { groups: A.GROUPS, male: male, female: female, t: S.T[0], e: S.E, r: b.r, cbr: b.cbr, cdr: b.cdr, repl: b.repl };
+      return { groups: A.GROUPSX, male: male, female: female, t: S.T[0], e: S.E, r: b.r, cbr: b.cbr, cdr: b.cdr, repl: b.repl };
     }
 
     /* ---- controls on the picture */
     var cT = K.handle(layer, { key: 'apenv-age-tfr', label: 'Children per woman (total fertility rate)', value: S.t, min: TMIN, max: TMAX, step: 0.1, chip: false,
       at: function(v){ return G ? [G.x(v), G.yT] : [0, 0]; },
-      pick: function(x){ return G ? Math.round(clamp(G.v(x), TMIN, TMAX) * 10) / 10 : null; },
+      pick: function(x){ return G ? Math.round(clamp(G.v(x - grabOff), TMIN, TMAX) * 10) / 10 : null; },
       dir: function(){ return 0; },
       valuetext: function(v){ return n1(v) + ' children per woman'; },
       tag: function(v){ return n1(v); },
       tagSide: function(v){ if(!G) return 'right'; var w = tw(n1(v), 13, 900) + 18; return G.x(v) + 26 + w <= G.W - 6 ? 'right' : 'left'; },
       onStart: function(v){ S.side = Math.sign(v - model(S.t, S.e).repl); },
       onInput: function(v){ used(); S.t = v; kick(); tourDid('tfr'); },
-      onEnd: function(v){ var sd = Math.sign(v - model(S.t, S.e).repl); if(S.side && sd && sd !== S.side){ S.take = true; if(!moving() && shown) words(shown); } } });
+      onEnd: function(v){ grabOff = 0; var sd = Math.sign(v - model(S.t, S.e).repl); if(S.side && sd && sd !== S.side){ S.take = true; if(!moving() && shown) words(shown); } } });
     var cE = K.handle(layer, { label: 'Life expectancy at birth, in years', value: S.e, min: EMIN, max: EMAX, step: 1, quiet: true,
       at: function(v){ return G ? [G.ex(v), G.eY] : [0, 0]; },
       pick: function(x){ return G ? Math.round(clamp(G.ev(x), EMIN, EMAX)) : null; },
       valuetext: function(v){ return v + ' years'; },
       onInput: function(v){ used(); S.e = v; kick(); tourDid('life'); } });
-    var cue = K.cue(layer, { key: 'apenv-age-tfr', text: 'Drag the mother', side: 'left', at: function(){ return G ? [G.x(S.t) - 4, G.yT] : [0, 0]; } });
+    var cue = K.cue(layer, { key: 'apenv-age-tfr', text: 'Drag the mother', side: 'left', at: function(){ return G ? [G.momX(S.t) - G.momH * 0.32, G.yG - G.momH * 0.78] : [0, 0]; } });
     function used(){ if(cue.active()) cue.hide(true); }
     sceneBox.addEventListener('pointerdown', function(e){
       used();
@@ -240,7 +242,8 @@
       var r = svg.getBoundingClientRect(), k = r.width / G.W, x = (e.clientX - r.left) / k, y = (e.clientY - r.top) / k;
       // the mother, her children and the track: drag the rate from there; the life track: drag the life expectancy
       if(e.target.closest('.tk2-knob, .tk2-cue')) return;
-      if(y >= G.yG - G.momH - 4 && y <= G.yN + 6 && x >= G.x(0) - 20 && x <= G.x(TMAX) + G.momH * 0.5) cT.grab(e);
+      // a press on the mother keeps the spot under the finger (no jump); on the track or a child it moves her there
+      if(y >= G.yG - G.momH - 4 && y <= G.yN + 6 && x >= G.x(0) - 20 && x <= G.x(TMAX) + G.momH * 0.75){ grabOff = e.target.closest('.agv-mom') ? x - G.x(S.t) : 0; cT.grab(e); }
       else if(Math.abs(y - G.eY) <= 16 && x >= G.ex(EMIN) - 12 && x <= G.ex(EMAX) + 12) cE.grab(e);
     });
 
@@ -261,15 +264,15 @@
       g.plazaTop = g.yG - g.momH - 10;
       g.axisH = 18;
       g.rowTop = g.headH; g.rowBot = g.plazaTop - g.axisH;
-      g.pitch = (g.rowBot - g.rowTop) / 17;
+      g.pitch = (g.rowBot - g.rowTop) / NB;
       g.spine = Math.ceil(Math.max(tw('75–79', g.f.age, 800), tw('80+', g.f.age, 800))) + 14;
       g.cx = W / 2;
       g.hw = Math.min(W / 2 - g.spine / 2 - (ph ? 20 : 30), (g.rowBot - g.rowTop) * 1.9);
       g.sx = function(v){ return g.hw * v / SCALE; };
       // the children per woman track: one slot per child, centred under the pyramid
       // (on a phone the track sits a little left of centre, so the mother at 7 keeps a margin at the right edge)
-      var u = clamp((W - (ph ? 28 + g.momH * 0.3 : 80)) / 7.6, 38, 74);
-      g.u = u; g.x0 = W / 2 - 3.5 * u - (ph ? g.momH * 0.2 : 0);
+      var u = clamp((W - (ph ? 28 + g.momH * 0.6 : 80)) / 7.6, 38, 74);
+      g.u = u; g.x0 = W / 2 - 3.5 * u - (ph ? g.momH * 0.3 : 0);
       g.x = function(v){ return g.x0 + v * u; };
       g.v = function(x){ return (x - g.x0) / u; };
       // the life expectancy track, top right
@@ -279,7 +282,7 @@
       g.ev = function(x){ return EMIN + (x - g.eX0) / (g.eX1 - g.eX0) * (EMAX - EMIN); };
       g.sexY = g.headH - 8;
       // the mother stands just right of her rate, so the children (cut at the rate) are never behind her
-      g.momX = function(v){ return g.x(v) + g.momH * 0.22; };
+      g.momX = function(v){ return g.x(v) + g.momH * 0.32 + 3; };
       return g;
     }
 
@@ -308,12 +311,12 @@
         });
       }
       // the pyramid's grid: 5%, 10%, 15% each side, with ticks under the rows
-      [5, 10, 15].forEach(function(v){ [-1, 1].forEach(function(sg){ var xx = g.cx + sg * (g.spine / 2 + g.sx(v)); o.push('<path class="agv-grid" d="M' + n1(xx) + ' ' + n1(g.rowTop - 2) + 'V' + n1(g.rowBot + 3) + '"/>'); o.push('<text class="agv-tk" x="' + n1(xx) + '" y="' + n1(g.rowBot + 14) + '" text-anchor="middle" style="font-size:' + g.f.tick + 'px">' + v + '%</text>'); }); });
+      [5, 10].forEach(function(v){ [-1, 1].forEach(function(sg){ var xx = g.cx + sg * (g.spine / 2 + g.sx(v)); o.push('<path class="agv-grid" d="M' + n1(xx) + ' ' + n1(g.rowTop - 2) + 'V' + n1(g.rowBot + 3) + '"/>'); o.push('<text class="agv-tk" x="' + n1(xx) + '" y="' + n1(g.rowBot + 14) + '" text-anchor="middle" style="font-size:' + g.f.tick + 'px">' + v + '%</text>'); }); });
       // the spine: the age bands
       o.push('<rect class="agv-spine" x="' + n1(g.cx - g.spine / 2 + 2) + '" y="' + n1(g.rowTop - 1) + '" width="' + n1(g.spine - 4) + '" height="' + n1(g.rowBot - g.rowTop + 2) + '" rx="6"/>');
       // every band named when the rows are tall enough for the label and 4 px; else every other band (0–4, 10–14, ...)
       g.ageStep = g.pitch >= g.f.age * 1.36 + 4.5 ? 1 : 2;
-      for(var i = 0; i < 17; i += g.ageStep){ var yy = g.rowBot - (i + 0.5) * g.pitch; o.push('<text class="agv-age" x="' + n1(g.cx) + '" y="' + n1(yy + g.f.age * 0.36) + '" text-anchor="middle" style="font-size:' + g.f.age + 'px">' + A.GROUPS[i] + '</text>'); }
+      for(var i = 0; i < NB; i += g.ageStep){ var yy = g.rowBot - (i + 0.5) * g.pitch; o.push('<text class="agv-age" x="' + n1(g.cx) + '" y="' + n1(yy + g.f.age * 0.36) + '" text-anchor="middle" style="font-size:' + g.f.age + 'px">' + A.GROUPSX[i] + '</text>'); }
       o.push('<text class="agv-sex is-m" x="' + n1(g.cx - g.spine / 2 - 4) + '" y="' + n1(g.sexY) + '" text-anchor="end" style="font-size:' + g.f.sex + 'px">Males</text>');
       o.push('<text class="agv-sex is-f" x="' + n1(g.cx + g.spine / 2 + 4) + '" y="' + n1(g.sexY) + '" text-anchor="start" style="font-size:' + g.f.sex + 'px">Females</text>');
       // the children per woman track and its numbers
@@ -325,16 +328,16 @@
       gStatic.innerHTML = o.join('');
       // the rows: one rect per side per band (filled with rows of people), made once
       var r = [];
-      for(var j = 0; j < 17; j++){ var y0 = g.rowBot - (j + 1) * g.pitch + 1; r.push('<rect class="agv-row is-m" y="' + n1(y0) + '" height="' + n1(g.pitch - 2) + '" fill="url(#' + nid + '-m)"/><rect class="agv-row is-f" y="' + n1(y0) + '" height="' + n1(g.pitch - 2) + '" fill="url(#' + nid + '-f)"/>'); }
+      for(var j = 0; j < NB; j++){ var y0 = g.rowBot - (j + 1) * g.pitch + 1; r.push('<rect class="agv-row is-m" y="' + n1(y0) + '" height="' + n1(g.pitch - 2) + '" fill="url(#' + nid + '-m)"/><rect class="agv-row is-f" y="' + n1(y0) + '" height="' + n1(g.pitch - 2) + '" fill="url(#' + nid + '-f)"/>'); }
       gRows.innerHTML = r.join('');
       rowEls = [].slice.call(gRows.querySelectorAll('.agv-row'));
       // the dynamic layer: kids, the mother, the replacement mark, the numbers, the growth pill, the life label
-      gDyn.innerHTML = '<g class="agv-kids"></g><g class="agv-mom"></g><g class="agv-nums"></g><g class="agv-repl"></g><g class="agv-pill"></g><text class="agv-life" text-anchor="end"></text>';
+      gDyn.innerHTML = '<g class="agv-mom"></g><g class="agv-kids"></g><g class="agv-nums"></g><g class="agv-repl"></g><g class="agv-pill"></g><text class="agv-life" text-anchor="end"></text>';
     }
     /* one person per tile, side by side from the spine outward: a row is literally people (a part of a person at the
        end, so the width is exact) */
     function patternDef(sx, cls){
-      var g = G, h = g.pitch, w = Math.max(7, Math.min(h * 0.5, 13)), x0 = sx === 'm' ? g.cx - g.spine / 2 : g.cx + g.spine / 2, y0 = g.rowBot - 17 * h;
+      var g = G, h = g.pitch, w = Math.max(7, Math.min(h * 0.5, 13)), x0 = sx === 'm' ? g.cx - g.spine / 2 : g.cx + g.spine / 2, y0 = g.rowBot - NB * h;
       return '<pattern id="' + nid + '-' + sx + '" patternUnits="userSpaceOnUse" x="' + n1(x0) + '" y="' + n1(y0) + '" width="' + n1(w) + '" height="' + n1(h) + '">' +
         '<rect x="0" y="0" width="' + n1(w) + '" height="' + n1(h) + '" class="' + cls + '-bg"/>' +
         '<path class="' + cls + '" d="' + personPath(w * 0.06, 2.5, w * 0.88, h - 4.5) + '"/></pattern>';
@@ -346,7 +349,7 @@
     function paint(){
       if(!G) return;
       var g = G, d = drawn(); shown = d;
-      for(var i = 0; i < 17; i++){
+      for(var i = 0; i < NB; i++){
         var wm = g.sx(d.male[i]), wf = g.sx(d.female[i]), em = rowEls[2 * i], ef = rowEls[2 * i + 1];
         em.setAttribute('x', n1(g.cx - g.spine / 2 - wm)); em.setAttribute('width', n1(Math.max(0, wm)));
         ef.setAttribute('x', n1(g.cx + g.spine / 2)); ef.setAttribute('width', n1(Math.max(0, wf)));
@@ -355,7 +358,9 @@
     }
     var kidsKey = '', momKey = '';
     function paintSquare(d){
-      var g = G, t = S.t, kids = gDyn.querySelector('.agv-kids'), n = Math.ceil(t - 1e-9), xs = g.x(t);
+      // the mother and the children follow the base row's rate (eased; the knob itself is instant), so a key jump or a
+      // tap walks her there
+      var g = G, t = S.T[0], kids = gDyn.querySelector('.agv-kids'), n = Math.ceil(t - 1e-9), xs = g.x(t);
       // the children: slot k from x(k - 1) to x(k); the last only up to the mother (a part of a child for a fraction)
       var kk = n + '/' + g.W + '/' + g.H;
       if(kk !== kidsKey){
@@ -399,7 +404,7 @@
     }
 
     /* ---- the loop: each row eases to the rate, the base first, the rows above a little later */
-    function moving(){ if(Math.abs(S.E - S.e) > 1e-6) return true; for(var i = 0; i < 17; i++) if(Math.abs(S.T[i] - S.t) > 1e-6) return true; return false; }
+    function moving(){ if(Math.abs(S.E - S.e) > 1e-6) return true; for(var i = 0; i < NB; i++) if(Math.abs(S.T[i] - S.t) > 1e-6) return true; return false; }
     function kick(){
       var wasTake = S.take; S.take = false;
       if(K.reduced()){ settle(); flash(); paint(); return; }
@@ -407,13 +412,16 @@
       if(wasTake) words(shown || drawn());
       paintSquare(shown || drawn());
     }
-    function settle(){ for(var i = 0; i < 17; i++) S.T[i] = S.t; S.E = S.e; }
+    function settle(){ for(var i = 0; i < NB; i++) S.T[i] = S.t; S.E = S.e; }
     function flash(){ fade.classList.remove('is-on'); void fade.offsetWidth; fade.classList.add('is-on'); }
     function tick(ts){
       raf = 0;
       var dt = lastT ? Math.min(0.05, (ts - lastT) / 1000) : 0.016; lastT = ts;
-      for(var i = 0; i < 17; i++){
-        var tau = 0.05 + 0.022 * i, a = 1 - Math.exp(-dt / tau), v = S.T[i] + (S.t - S.T[i]) * a;
+      for(var i = 0; i < NB; i++){
+        var tau = 0.045 + 0.011 * i, a = 1 - Math.exp(-dt / tau), v = S.T[i] + (S.t - S.T[i]) * a;
+        // a row within half a pixel of where it is going is there (so the change settles in about a second); only once
+        // the row below is there, so no row ever runs ahead of the one below it
+        if(G && (i === 0 || S.T[i - 1] === S.t) && Math.abs(G.sx(model(Math.round(v * 1000) / 1000, S.E).male[i]) - G.sx(model(S.t, S.E).male[i])) < 0.5 && Math.abs(G.sx(model(Math.round(v * 1000) / 1000, S.E).female[i]) - G.sx(model(S.t, S.E).female[i])) < 0.5) v = S.t;
         // a thousandth: the memo's key, so the row drawn is exactly the model at S.T[i] (and always a step on)
         var q = Math.abs(S.t - v) < 0.015 ? S.t : Math.round(v * 1000) / 1000;
         if(q === S.T[i] && q !== S.t) q = Math.round((q + (S.t > q ? 0.001 : -0.001)) * 1000) / 1000;
@@ -469,15 +477,15 @@
     function refHtml(){
       var d = shown || drawn(), b = A.broad(d), gw = growthWords(d.r), dep = (b.young + b.old) / b.work * 100;
       var h = '<p class="agv-howref"><button type="button" class="tk2-how" data-how>Show me how</button> to use this screen.</p>' +
-        '<p><b>What the pyramid is.</b> Each row is one 5 year age group; its length is that group’s share of all the people (men left, women right; one scale for every setting, so the shapes compare). It shows where a fertility rate and a life expectancy lead once they have held for a long time, with no migration: the base is the newest children, and those children become the rows above. Real countries rarely sit at that shape: a country whose births fell recently still has the wide rows of its earlier, larger generations.</p>' +
+        '<p><b>What the pyramid is.</b> Each row is one 5 year age group (the top row is everyone 90 and over); its length is that group’s share of all the people (men left, women right; one scale for every setting, so the shapes compare). It shows where a fertility rate and a life expectancy lead once they have held for a long time, with no migration: the base is the newest children, and those children become the rows above. Real countries rarely sit at that shape: a country whose births fell recently still has the wide rows of its earlier, larger generations.</p>' +
         '<p><b>Now.</b> ' + n1(d.t) + ' children per woman, life expectancy ' + Math.round(d.e) + ' years: crude birth rate ' + n1(d.cbr) + ' and crude death rate ' + n1(d.cdr) + ' per 1,000 people a year.</p>' +
         '<p><b>Growth rate</b> = (CBR − CDR) / 10 = (' + n1(d.cbr) + ' − ' + n1(d.cdr) + ') / 10 = ' + (d.r < 0 ? '−' : '') + pc(Math.abs(d.r * 100)) + ' a year' + (gw.two ? '. <b>Rule of 70:</b> ' + (gw.dir > 0 ? 'doubling' : 'halving') + ' time = 70 / ' + (Math.round(Math.abs(d.r * 1000)) / 10).toFixed(1) + ' = ' + gw.two.replace(/^\w+ in /, '') : ' (no change to speak of)') + '.</p>' +
         '<p><b>Replacement level.</b> The children per woman that just replace the parents: about 2.1 where few children die (2 for the parents, a little more because some girls die before they have children and slightly more boys than girls are born). Where many children die it is higher: here, with a life expectancy of ' + Math.round(d.e) + ' years, it is ' + n1(d.repl) + '. Above it each generation of mothers is larger than the last (the base widens); below it, smaller.</p>' +
-        '<p><b>Reading the shape.</b> Expansive: a wide base that narrows fast (many children; fast growth ahead). Stable, also called stationary: about the same width up to middle age (births near replacement). Constrictive: a base narrower than the middle (births below replacement; the population ages and, without immigration, shrinks).</p>' +
+        '<p><b>Reading the shape.</b> Expansive: a wide base that narrows fast (many children; fast growth ahead). Stable, also called stationary: about the same width up to middle age (births near replacement). Constrictive: a base narrower than the middle (births below replacement; the population ages and, without immigration, shrinks). Where many children die (a life expectancy under about 45 years) the shape alone does not tell growth: the base is wide because of births, but so many children die that a wide base can still shrink, and a column can still be steady or shrinking; read the growth number.</p>' +
         '<p><b>Population momentum.</b> A wide base keeps a population growing for decades after births per woman fall to replacement: the many children already born grow up and have children of their own. The United Nations expects momentum to account for 79% of the world’s population increase through 2054 (World Population Prospects 2024).</p>' +
         '<p><b>Dependency.</b> Under 15: ' + pc(b.young) + '; 15 to 64: ' + pc(b.work) + '; 65 and over: ' + pc(b.old) + '. Dependency ratio = (under 15 + 65 and over) / (15 to 64) × 100 = ' + Math.round(dep) + ' dependents per 100 people of working age.</p>' +
         '<h3 class="ls-title-l">The four stages of the demographic transition</h3>' + T.dataTable(['Stage', 'Birth rate', 'Death rate', 'Children per woman', 'Life expectancy', 'What happens'], [1, 2, 3, 4].map(function(s){ var x = A.STAGES[s]; return [esc(x.name), x.cbr + ' per 1,000', x.cdr + ' per 1,000', String(x.tfr), x.e0 + ' years', esc(x.what + ' ' + x.why)]; }), 'Typical values for each stage') +
-        '<p class="bt-small">Some books add a stage 5: births fall below deaths and the population declines. The stage drills are in Test yourself.</p>' +
+        '<p class="bt-small">The birth and death rates in this table are a typical country in each stage today, while the stage is still changing. Explore shows where the same children per woman and life expectancy lead once they have held for a long time, so its rates differ (stage 4’s settings, for example, settle into a shrinking population). Some books add a stage 5: births fall below deaths and the population declines. The stage drills are in Test yourself.</p>' +
         '<h3 class="ls-title-l">The rows now (% of all people)</h3>' + T.dataTable(['Age', 'Males', 'Females'], d.groups.map(function(gp, i){ return [gp, pc(d.male[i]), pc(d.female[i])]; }).reverse(), 'Percent of the population in each age band') +
         '<p class="bt-small">How it is drawn: a stable population model. Survival to each age comes from a model life table with exactly the life expectancy set (women live 5 years longer than men, as the world average is about 5 years apart; 105 boys are born per 100 girls); births by the mother’s age peak in her twenties. The growth rate is the one at which those births and that survival keep the shape (Lotka’s equation), so birth rate minus death rate equals it exactly. A teaching model, not any one country. Each small figure in a row is a piece of the bar, not a set number of people.</p>';
       ref.innerHTML = h;

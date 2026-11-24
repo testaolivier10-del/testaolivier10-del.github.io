@@ -14,7 +14,8 @@
      - every text on the picture sits at least 4 px clear of every other and of the knob's tag, and none renders under
        11 px; the tag and the knobs never cover a text;
      - the pyramid (the thing acted on) is the largest object on the picture;
-     - every row's drawn width is the model's share at the one fixed scale (A.stable at the rate and life expectancy);
+     - every row's drawn width is the model's share at the one fixed scale (A.stable at the rate and life expectancy; 19
+       rows in Explore, the top split 80–84, 85–89, 90+);
      - the words agree with what is drawn: the growth pill, the replacement label, the cause line's rate, shape word
        and growth (or the takeaway), the children drawn (whole ones and the part) and the mother at the rate;
      - on a phone the cause line is at most two rows and keeps one height; no sideways scroll; no console errors;
@@ -84,11 +85,12 @@ const agreeSrc = `window.__agree = function(rest){
   const n1 = v => (Math.round(v * 10) / 10).toFixed(1);
   // every row at the model's value for the rate it holds (and at rest, the target)
   const w = X.rows();
-  for (let i = 0; i < 17; i++) {
+  const NB = w.length / 2;
+  for (let i = 0; i < NB; i++) {
     const m = A.stable(S.T[i], S.E), wm = G.sx(m.male[i]), wf = G.sx(m.female[i]);
     if (Math.abs(w[2 * i] - wm) > 0.11 || Math.abs(w[2 * i + 1] - wf) > 0.11) out.push('row ' + i + ' drawn ' + w[2 * i].toFixed(1) + '/' + w[2 * i + 1].toFixed(1) + ', model ' + wm.toFixed(1) + '/' + wf.toFixed(1));
   }
-  if (rest) { const t = A.stable(S.t, S.e); for (let i = 0; i < 17; i++) if (Math.abs(w[2 * i] - G.sx(t.male[i])) > 0.11 || Math.abs(w[2 * i + 1] - G.sx(t.female[i])) > 0.11) { out.push('at rest row ' + i + ' is not the target'); break; } }
+  if (rest) { const t = A.stable(S.t, S.e); for (let i = 0; i < NB; i++) if (Math.abs(w[2 * i] - G.sx(t.male[i])) > 0.11 || Math.abs(w[2 * i + 1] - G.sx(t.female[i])) > 0.11) { out.push('at rest row ' + i + ' is not the target'); break; } }
   const b = A.stable(S.T[0], S.E), gw = X.gw(b.r);
   const pill = document.querySelector('.agv-pill text').textContent;
   if (pill !== gw.pill) out.push('pill "' + pill + '", drawn "' + gw.pill + '"');
@@ -105,13 +107,14 @@ const agreeSrc = `window.__agree = function(rest){
     if (!ct.includes(gw.part)) out.push('cause line growth: ' + ct + ' vs ' + gw.part);
     if (gw.two && !ct.includes(gw.two)) out.push('cause line doubling: ' + ct + ' vs ' + gw.two);
   }
-  // the mother at the rate; whole children and a part of one up to her
+  // the mother at the base row's rate (eased; the knob is instant); whole children and a part of one up to her
+  const tb = S.T[0];
   const mt = document.querySelector('.agv-mom').getAttribute('transform'), mx = +mt.match(/translate\\(([-\\d.]+)/)[1];
-  if (Math.abs(mx - G.momX(S.t)) > 0.11) out.push('the mother is not at ' + S.t);
+  if (Math.abs(mx - G.momX(tb)) > 0.11) out.push('the mother is not at ' + tb);
   const kids = document.querySelectorAll('.agv-kids g[clip-path] > g').length;
-  if (kids !== Math.ceil(S.t - 1e-9)) out.push(kids + ' children drawn for ' + S.t);
+  if (kids !== Math.ceil(tb - 1e-9)) out.push(kids + ' children drawn for ' + tb);
   const cw = +document.querySelector('.agv-kclip').getAttribute('width');
-  if (Math.abs(cw - (G.x(S.t) - G.x(0) + 4)) > 0.11) out.push('the children are cut at the wrong place');
+  if (Math.abs(cw - (G.x(tb) - G.x(0) + 4)) > 0.11) out.push('the children are cut at the wrong place');
   const life = document.querySelector('.agv-life').textContent;
   if (life !== 'Life expectancy ' + Math.round(S.E) + ' years') out.push('life label "' + life + '" vs drawn ' + S.E);
   const vt = document.querySelector('.agv .tk2-handle:not(.is-quiet) .tk2-knob').getAttribute('aria-valuetext');
@@ -176,7 +179,7 @@ if (!FRAMES && !PERF) for (const w of WIDTHS) {
         const r = R(q), S = R(document.querySelector('.agv-scene')), out = [];
         if (r.left < S.left || r.right > S.right || r.top < S.top || r.bottom > S.bottom) out.push('the cue is clipped by the stage');
         if (parseFloat(getComputedStyle(q).fontSize) < 11) out.push('the cue text is under 11 px');
-        [...document.querySelectorAll('.agv-scene svg text, .agv-scene .tk2-dot, .agv-scene .tk2-tag, .agv-mom')].filter(e => e.getClientRects().length && !e.closest('[hidden]')).forEach(e => { const x = R(e); if (!(r.right <= x.left || x.right <= r.left || r.bottom <= x.top || x.bottom <= r.top)) out.push('the cue covers ' + (e.textContent || e.getAttribute('class')).toString().trim().slice(0, 24)); });
+        [...document.querySelectorAll('.agv-scene svg text, .agv-scene .tk2-dot, .agv-scene .tk2-tag, .agv-mom, .agv-rmark')].filter(e => e.getClientRects().length && !e.closest('[hidden]')).forEach(e => { const x = R(e); if (!(r.right <= x.left || x.right <= r.left || r.bottom <= x.top || x.bottom <= r.top)) out.push('the cue covers ' + (e.textContent || e.getAttribute('class')).toString().trim().slice(0, 24)); });
         return out; });
       states++; checks += 3; bad.forEach(m => fails.push(`${w} ${theme} first visit: ${m}`));
       if (SHOTS) await c.page.locator('.agv').screenshot({ path: join(SHOTS, `${W4(w)}-${theme}-0-first-visit.png`) });
@@ -211,8 +214,11 @@ if (!FRAMES && !PERF) for (const w of WIDTHS) {
     const ta = await c.page.evaluate(probe); ta.out.forEach(m => fails.push(`${w} ${theme} takeaway: ${m}`));
     checks++; if (w <= 640 && ta.causeH > Math.max(...causeH) + 1) fails.push(`${w} ${theme}: the takeaway is taller than the cause line (${ta.causeH} against ${Math.max(...causeH)})`);
     if (SHOTS && theme === 'light') await c.page.locator('.agv').screenshot({ path: join(SHOTS, `${W4(w)}-${theme}-takeaway.png`) });
-    // grabbing the mother herself drags the rate (the cue says "Drag the mother")
+    // a press on the mother without moving keeps the rate (no jump); then grabbing her drags the rate
     const mb = await c.page.locator('.agv-mom').boundingBox();
+    await c.page.mouse.move(mb.x + mb.width * 0.7, mb.y + mb.height * 0.4); await c.page.mouse.down(); await c.page.mouse.up(); await settle(c.page);
+    const t1 = await c.page.evaluate(() => window.__age.S().t); states++; checks++;
+    if (t1 !== tk.t) fails.push(`${w} ${theme}: pressing the mother moved the rate (${tk.t} to ${t1})`);
     await c.page.mouse.move(mb.x + mb.width / 2, mb.y + mb.height * 0.4); await c.page.mouse.down();
     await c.page.mouse.move(mb.x + mb.width / 2 + 80, mb.y + mb.height * 0.4, { steps: 6 }); await c.page.mouse.up(); await settle(c.page);
     const t2 = await c.page.evaluate(() => window.__age.S().t); states++; checks++;
@@ -246,7 +252,7 @@ if (FRAMES) for (const w of WIDTHS) {
         const S = X.S();
         // a row only holds rates the run passed through, and no row above leads the base
         S.T.forEach((t, i) => { if (t < F.lo - 1e-6 || t > F.hi + 1e-6) say('row ' + i + ' at rate ' + t.toFixed(3) + ' outside ' + F.lo + ' to ' + F.hi); });
-        if (F.order) for (let i = 1; i < 17; i++) { const a = Math.abs(S.T[i] - S.t), b = Math.abs(S.T[i - 1] - S.t); if (a + 1e-6 < b && Math.sign(S.T[i] - S.t) === Math.sign(S.T[i - 1] - S.t)) { say('row ' + i + ' leads the row below it'); break; } }
+        if (F.order) for (let i = 1; i < S.T.length; i++) { const a = Math.abs(S.T[i] - S.t), b = Math.abs(S.T[i - 1] - S.t); if (a + 1e-6 < b && Math.sign(S.T[i] - S.t) === Math.sign(S.T[i - 1] - S.t)) { say('row ' + i + ' leads the row below it'); break; } }
         requestAnimationFrame(loop);
       };
       window.__frStart = (lo, hi, order) => { Object.assign(window.__fr, { lo, hi, order: !!order, on: true }); requestAnimationFrame(loop); };
