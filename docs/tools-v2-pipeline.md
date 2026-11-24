@@ -40,7 +40,7 @@ States: building, review, fixing, recheck, PASS (waiting to integrate), integrat
 
 2026-11-19: `main` merged in after PR #228 (ochem frame cleanup: chipPicker, scrollChips and .ls-chips-hidden gone; the v2
 conformations, resonance and arrow pusher kept, kit2 kept). Ochem viewer 3d had `main` merged
-into it before integration (PR #228 rewrote `viewer-3d.js` and `viewer-3d.html` on main). Its sweep needs playwright 1.63 (`/opt/npm-tools`); the 1.49 under the repo's
+into it before integration (PR #228 rewrote `viewer-3d.js` and `viewer-3d.html` on main). Its sweep (and the reaction predictor's) needs playwright 1.63 (`/opt/npm-tools`); the 1.49 under the repo's
 `node_modules` fails `waitForFunction` under the page CSP (no unsafe-eval), so run it without that link.
 
 Owner 2026-11-19: the hidden legacy controls cleanup for the other 13 course kits (NREMT, A&P, Bio/Chem/Physics,
