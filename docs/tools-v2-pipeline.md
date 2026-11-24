@@ -36,6 +36,7 @@ States: building, review, fixing, recheck, PASS (waiting to integrate), integrat
 | NREMT flowcharts | claude/tools-v2-nremt-flowcharts | wt-nremt-flowcharts | integrated | fourth NREMT tool on `nremt-kit2.js`; Explore `nremt/assets/flow-explore.js` (two drawn calls); Read, Build it and Drill me are Test yourself |
 | NREMT body map | claude/tools-v2-nremt-body-map | wt-nremt-body-map | integrated | Explore `nremt/assets/body-map-v2.js` (The body, Burns); four additive hooks in `assets/body3d/viewer.js` (budget 17 KB); A&P 3D anatomy and lab practical still pass |
 | AP Bio chi square | claude/tools-v2-chi-square | wt-chi-square | integrated | choice chamber of pill bugs; kept sweep, frames, perf and interact scripts in `scripts/tools-v2/chi-square-*` |
+| AP Bio rates | claude/tools-v2-rates | wt-rates | integrated | three tabs (rate over time, at a moment, percent change); sweep `scripts/tools-v2/rates-sweep.mjs` (`--frames`, `--perf`) |
 | AP Psych brain map | claude/tools-v2-brain-map | wt-brain-map | review | first AP Psych tool on the kit: adapter `ApPsychTools.kit2`; `K.spots` `under`; kept sweep, frames and perf in `scripts/tools-v2/brain-map-*` |
 
 2026-11-19: `main` merged in after PR #228 (ochem frame cleanup: chipPicker, scrollChips and .ls-chips-hidden gone; the v2
@@ -55,4 +56,4 @@ Before the final merge:
 
 Next by use (rollout table):
 A&P anatomy 3d, NREMT scenario sim, Ochem reaction
-predictor, AP Bio rates (rollout rows 20 to 26).
+predictor (rollout rows 20 to 26).
