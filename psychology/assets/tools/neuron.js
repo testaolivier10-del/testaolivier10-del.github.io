@@ -594,7 +594,7 @@
         P.X = function(t){ return px0 + t / dur * (px1 - px0); };
         P.T = function(x){ return (x - px0) / (px1 - px0) * dur; };
         P.Y = function(v){ return py1 - (v - vLo) / (vHi - vLo) * (py1 - py0); };
-        P.stimY = P.Y(-115);
+        P.stimY = P.Y(-105);
         g.plot = P;
       }
       return g;
@@ -852,7 +852,8 @@
       var P = g.plot, p = [], fs = g.fsS, tab = g.tab;
       p.push(txt(g.pad + 2, g.gTop + (g.ph ? 20 : 24), g.ph ? 'Charge at the start of the axon (mV)' : 'Charge at the start of the axon (mV)', 'nr2-gt', 'start', g.fs));
       p.push('<rect class="nr2-plotbg" x="' + n1(P.x0) + '" y="' + n1(P.y0) + '" width="' + n1(P.x1 - P.x0) + '" height="' + n1(P.Y(-86) - P.y0) + '" rx="4"/>');
-      [40, 0, -70].forEach(function(v){ p.push('<line class="nr2-grid" x1="' + n1(P.x0) + '" x2="' + n1(P.x1) + '" y1="' + n1(P.Y(v)) + '" y2="' + n1(P.Y(v)) + '"/>' + txt(P.x0 - 6, P.Y(v) + 4, sgn(v), 'nr2-tk', 'end', fs)); });
+      // a short plot drops 0, so the ticks never touch
+      (P.Y(0) - P.Y(40) < 24 ? [40, -70] : [40, 0, -70]).forEach(function(v){ p.push('<line class="nr2-grid" x1="' + n1(P.x0) + '" x2="' + n1(P.x1) + '" y1="' + n1(P.Y(v)) + '" y2="' + n1(P.Y(v)) + '"/>' + txt(P.x0 - 6, P.Y(v) + 4, sgn(v), 'nr2-tk', 'end', fs)); });
       var step = tab === 'fire' ? 2 : 4;
       for(var t = 0; t <= P.dur + 1e-9; t += step){ var last = t + step > P.dur + 1e-9; p.push(txt(last ? P.X(t) + 6 : P.X(t), P.y1 + 18, last ? t + ' ms' : String(t), 'nr2-tk', last ? 'end' : 'middle', fs)); }
       p.push('<line class="nr2-thr" x1="' + n1(P.x0) + '" x2="' + n1(P.x1) + '" y1="' + n1(P.Y(N.THRESH)) + '" y2="' + n1(P.Y(N.THRESH)) + '"/>');
@@ -1039,7 +1040,7 @@
         var x = P.X(e.t), on = t >= e.t;
         if(g.tab === 'refr' && i === 1) return;
         p.push('<path class="nr2-stim' + (on ? ' is-on' : '') + '" d="M' + n1(x) + ' ' + n1(P.stimY - 8) + 'l-7 12h14z"/>');
-        p.push(g.tab === 'refr' ? txt(x - 11, P.stimY + 5, g.ph ? '1st' : '1st pulse', 'nr2-stim-t', 'end', fs) : txt(x + 11, P.stimY + 5, 'pulse', 'nr2-stim-t', 'start', fs));
+        p.push(g.tab === 'refr' ? txt(x - 11, P.stimY + 5, g.ph || x - P.x0 < 90 ? '1st' : '1st pulse', 'nr2-stim-t', 'end', fs) : txt(x + 11, P.stimY + 5, 'pulse', 'nr2-stim-t', 'start', fs));
       });
       if(g.tab === 'refr'){
         var x2 = P.X(r.events[1].t);

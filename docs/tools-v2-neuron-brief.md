@@ -179,3 +179,17 @@ Merged `claude/tools-v2-brain-map` again (4cb0572c, its colour fix). Its adapter
 Checks this round: sweep at 360, 390, 768, 1024 and 1440, light and dark (90 states each): 0 failures; frames at 390
 and 1440 (7650 and 7379 frames): 0 failures; AP Psych tests 153 pass; content check, `build-appsych --check`,
 `check-weight --check`: pass; `check-site`: OK.
+
+## Recheck 1 (2026-11-23: BLOCK on three small items; all round 1 fixes confirmed)
+- A. The "Which neurotransmitter?" figure is drawn neutral green until its step is answered (GABA's pink gave the
+  answer away); `figSvg` takes `neutral`.
+- B. The 2nd pulse's value sits beside its knob on the stimulus row (right of it below 6 ms, left from 6 ms), never on
+  the plot; it waits while the first visit cue shows.
+- C. Phones name "Reuptake" beside the right transporter, inside the terminal under the vesicles.
+- Should fix: "+40 mV spike" sits just above the peak (the plot top raised to +74 mV); "refractory" at the top of
+  its band; phone Myelin 272 px tall, the axon at the top with its names, the cue and the bar under it; the Synapse
+  graph pink for GABA; the crossed Na⁺ ions of a 2nd spike land apart from the 1st; the synapse graph's faint lines
+  drawn once per setting (with the ions and molecules already moved by attribute). A short plot drops its "0" tick.
+- The brain map's adapter round (local branch `claude/tools-v2-brain-map` at 68e0fd31: the kit loader inside
+  `ApPsychTools.kit2`, one `shown()` call) is merged; the neuron's own loader is gone and it calls `T.kit2` directly.
+  That branch was committed but not yet pushed when merged; its push brings the same commits.

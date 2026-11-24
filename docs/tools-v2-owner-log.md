@@ -412,3 +412,5 @@ in each tool's brief.
 | 2026-11-23 | AP Psych Neuron | Review round 1: phone Myelin shows a stub of dendrites and no input axon | The axon needs the width for 44 px targets | `geo()` |
 | 2026-11-23 | AP Psych Brain map | Review round 1: the split-brain person leans over a table that fills the stage; trays at a natural reach; the "Front" chip hidden where the head is drawn | Rule 12 (no empty bands, no stretched arms); the face shows the front | `splitLay`, `L.table` in `brain-map.js` |
 | 2026-11-23 | AP Psych Brain map | Review round 1: on phones the brain views crop to the brain | A larger brain and pins further apart on a small screen | `fit()` (`FW`, `FH`, `TX`, `TY`) |
+| 2026-11-23 | AP Psych Neuron | Recheck 1: the 2nd pulse's value waits while the first visit cue shows (as the Threshold value does) | The cue sits where the value would | `neuron.css` (`.is-cue`) |
+| 2026-11-23 | AP Psych Neuron | Recheck 1: the neurotransmitter drill's figure is drawn green for every transmitter until answered | Pink means GABA in Explore | `figSvg()` |
