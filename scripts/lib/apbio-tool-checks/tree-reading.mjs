@@ -67,6 +67,26 @@ export function check(data, map) {
       if (!t.outgroup || !names.includes(t.outgroup)) errs.push(`${w}: "outgroup" must be one of the taxa`);
     }
   }
+  // Explore (tools v2, docs/tools-v2-bio-tree-reading-brief.md): its trees, short names on the picture, the words
+  const ex = data.explore;
+  if (!ex) errs.push('"explore" block is required');
+  else {
+    if (!ex.purpose || !ex.purpose.anc || !ex.purpose.traits) errs.push('explore.purpose needs "anc" and "traits"');
+    if (!ex.takeRotate || !ex.takeTraits) errs.push('explore needs takeRotate and takeTraits');
+    for (const x of ex.trees || []) {
+      const t = data.trees.find(y => y.id === x.id);
+      if (!t || !t.read) { errs.push(`explore tree ${x.id} must be a tree to read`); continue; }
+      if (!x.chip) errs.push(`explore tree ${x.id} needs a chip name`);
+      // a tip's name on the picture: one or two words, at most 10 letters (seven tips share a phone's width)
+      for (const tx of t.taxa) { const s = tx.short || tx.name; if (s.length > 10 || s.split(' ').length > 2) errs.push(`${t.id}: "${s}" is too long for the picture (give it a short name)`); }
+    }
+    if (!(ex.trees || []).length) errs.push('explore.trees is empty');
+    for (const id of ex.traitTrees || []) {
+      const t = data.trees.find(y => y.id === id);
+      if (!t || !t.characters || !(ex.trees || []).some(x => x.id === id)) { errs.push(`explore trait tree ${id} needs a character table and must be in explore.trees`); continue; }
+      for (const c of t.characters) if (!c.short || c.short.split(' ').length > 3) errs.push(`${id}: character ${c.id} needs a short name of 1 to 3 words`);
+    }
+  }
   if (!data.trees.some(t => t.read && t.kind === 'dna')) errs.push('at least one DNA tree to read');
   if (data.trees.filter(t => t.build).length < 2) errs.push('at least two data sets to build from');
   // the stimulus tables, recomputed from the trees

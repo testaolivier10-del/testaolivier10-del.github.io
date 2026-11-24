@@ -470,13 +470,13 @@
           e.hit.setAttribute('cx', n1(q.x)); e.hit.setAttribute('cy', n1(q.y));
           e.knot.setAttribute('cx', n1(q.x)); e.knot.setAttribute('cy', n1(q.y)); e.knot.setAttribute('r', n1(rk));
           e.nn.setAttribute('x', n1(q.x)); e.nn.setAttribute('y', n1(q.y + G.fsN * 0.36)); e.nn.style.fontSize = G.fsN + 'px';
-          e.g.classList.toggle('is-m', !!isM && popF > 0.5);
+          e.g.classList.toggle('is-m', !!isM && V.pop > 0);
         });
         paintGlow(pos);
         paintTicks(pos);
         paintPill(pos);
-        placeKeys(pos);
-        if(cue.active()) cue.place();
+        // the keyboard buttons and the cue are placed once a change has settled (no layout reads mid animation)
+        if(!V.raf){ placeKeys(pos); if(cue.active()) cue.place(); }
       }
       /* the glow from each tapped tip down to their common ancestor (it grows from the tips), and the clade's tint */
       var glowK = {};
@@ -526,7 +526,7 @@
         });
         var lw = pick.lw, lh = pick.lh, x0 = pick.x0, y0 = pick.y0;
         var s = ease(V.pop), cx = x0 + lw / 2, cy = y0 + lh / 2;
-        e.setAttribute('opacity', s > 0.02 ? '1' : '0');
+        e.setAttribute('opacity', s > 0.02 ? '1' : '0'); e.classList.toggle('is-out', !gl.to);
         e.setAttribute('transform', 'translate(' + n1(cx) + ' ' + n1(cy) + ') scale(' + (0.4 + 0.6 * s).toFixed(3) + ') translate(' + n1(-cx) + ' ' + n1(-cy) + ')');
         var rc = e.querySelector('rect');
         rc.setAttribute('x', n1(x0)); rc.setAttribute('y', n1(y0)); rc.setAttribute('width', n1(lw)); rc.setAttribute('height', n1(lh));
@@ -599,7 +599,7 @@
           if(el.__br !== br){ el.__br = br; el.setAttribute('data-br', br); }
           var pts = climb(pos, br), q = along(pts, k.s), arrived = k.s >= 1;
           var op = k.leaving ? 1 - ease(k.out) : 1;
-          el.setAttribute('opacity', op.toFixed(2));
+          el.setAttribute('opacity', op.toFixed(2)); if(k.leaving) el.classList.add('is-leaving');
           var bead = el.querySelector('.tr2-bead'), bar = el.querySelector('.tr2-bar'), lab = el.querySelector('.tr2-tl');
           bead.setAttribute('cx', n1(q.x)); bead.setAttribute('cy', n1(q.y)); bead.setAttribute('opacity', arrived ? '0' : '1');
           var bw = G.ph ? 18 : 24, bh = G.ph ? 6 : 7;
@@ -698,7 +698,16 @@
         else settled();
       }
       function fade(){ sceneBox.classList.remove('is-fade'); void sceneBox.offsetWidth; sceneBox.classList.add('is-fade'); }
-      function settled(){ paint(); words(); keyLabels(); refHtml(); }
+      var idleT = 0;
+      function settled(){ paint(); words(); keyLabels(); clearTimeout(idleT); idleT = setTimeout(function(){ if(!V.raf){ refHtml(); svgLabel(); } }, 260); }
+      // the picture's own description, read from what is drawn
+      function svgLabel(){
+        if(!G) return;
+        var t = tree(), r = root(), al = 'A tree of ' + t.taxa.length + ' ' + word(t) + ', root at the bottom (the past), tips at the top (alive today). Tips from left to right: ' + ordered(r).map(function(x){ return taxon(t, x).name; }).join(', ') + '. Clades in brackets: ' + nested(t, r) + '.';
+        if(St.mode === 'explore' && St.tab === 'anc' && V.glow.m && V.pop >= 1) al += ' Tapped: ' + list(St.sel.map(function(x){ return taxon(t, x).name; })) + '; their most recent common ancestor is node ' + V.glow.m.id + '.';
+        if(St.mode === 'explore' && St.tab === 'traits'){ var on = St.traits[treeId()] || []; if(on.length) al += ' Traits placed: ' + on.map(function(c){ var ch = charOf(t, c), n = P.find(r, ch.has); return ch.name + ' on the branch leading to ' + nodeLabel(t, n); }).join('; ') + '.'; }
+        if(svg.getAttribute('aria-label') !== al) svg.setAttribute('aria-label', al);
+      }
 
       /* ---------------------------------------------------- acting on the picture */
       function tapTip(id, how){
@@ -733,7 +742,7 @@
         var t = tree(), msg = 'Node ' + id + ' rotated: its two branches swapped sides. Tips from left to right: ' + ordered(r).map(function(x){ return taxon(t, x).name; }).join(', ') + '. Every node keeps the same descendants.';
         if(calm()){ V.slot = to; V.swing = null; fade(); St.took = EX.takeRotate; settled(); say(msg); return; }
         V.swing = { t0: now(), dur: 300, from: from, to: to, moving: moving, after: function(){ St.took = EX.takeRotate; say(msg); } };
-        kick();
+        kick(); paint(); words(); keyLabels();
         if(how === 'key'){ var b = keys.querySelector('.tr2-key[data-node="' + id + '"]'); if(b) b.focus(); }
       }
       var tickId = 0;
@@ -746,7 +755,7 @@
         else { on.push(cid); V.ticks.push({ id: 'k' + (++tickId), cid: cid, s: 0, paint: 0, dur: climbDur(cid) }); }
         paintChips();
         if(calm()){ stopAll(); fade(); settled(); }
-        else { kick(); }
+        else { kick(); paint(); words(); }
         var c = charOf(tree(), cid);
         say(i >= 0 ? c.name + ' taken off the tree.' : c.name + ': it arose once, on the branch leading to ' + list(c.has.map(function(x){ return taxon(tree(), x).name; })) + ', and all of them inherit it.');
       }
@@ -942,7 +951,7 @@
         var to = targetSlots(), moving = {}; Object.keys(to).forEach(function(x){ if(Math.abs(to[x] - from[x]) > 0.01) moving[x] = 1; });
         if(calm()){ stopAll(); fade(); settled(); return; }
         V.swing = Object.keys(moving).length ? { t0: now(), dur: 360, from: from, to: to, moving: moving } : null;
-        kick();
+        kick(); paint(); words(); keyLabels();
       }
       bReset.addEventListener('click', function(){ showPic(); reset(); });
       // a button under the picture on a phone: bring the picture back into view so the change is seen

@@ -88,7 +88,7 @@
 .tr2-tick.is-num .tr2-tl rect{fill:var(--tr-trait);}
 .tr2-lead{fill:none;stroke:var(--tr-trait);stroke-width:2;}
 /* the keyboard path: a real button over each tip and node (the pointer acts on what is drawn) */
-.tr2-keys{position:absolute;inset:0;pointer-events:none;}
+.tk2-layer > .tr2-keys,.tr2-keys{position:absolute;inset:0;pointer-events:none;}
 .tr2-key{position:absolute;padding:0;margin:0;border:0;background:none;pointer-events:none;border-radius:12px;opacity:1;}
 .tr2-key.is-node{border-radius:50%;}
 .tr2-key:focus-visible{outline:3px solid var(--cink);outline-offset:1px;}

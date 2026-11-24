@@ -73,7 +73,7 @@ const ok = (c, msg) => { if (c) pass++; else fails.push(msg); };
 
 async function open(w, dark, opts = {}) {
   const browser = await chromium.launch({ executablePath: EXE });
-  const ctx = await browser.newContext({ viewport: { width: w, height: opts.h || VH[w] || 900 }, serviceWorkers: 'block', hasTouch: w < 500, reducedMotion: opts.reduced ? 'reduce' : 'no-preference' });
+  const ctx = await browser.newContext({ viewport: { width: w, height: opts.h || VH[w] || 900 }, serviceWorkers: 'block', hasTouch: !!opts.touch || w < 500, reducedMotion: opts.reduced ? 'reduce' : 'no-preference' });
   await ctx.route(u => !u.href.startsWith(`http://localhost:${PORT}`) && !u.href.startsWith('data:'), r => r.abort());
   // the tool is Premium: unlocked in this test only (never committed to the page)
   if (!opts.locked) await ctx.route(u => u.href.includes('/assets/premium.js'), async r => { const resp = await r.fetch(); const body = (await resp.text()).replace('function has(course) {', 'function has(course) { return true;'); await r.fulfill({ response: resp, body }); });
@@ -92,19 +92,21 @@ const still = (page) => until(page, () => !window.__tr2.busy());
 const AGREE = () => {
   const X = window.__tr2, P = X.P, r = X.root(), t = X.tree(), St = X.St, out = [];
   const num = (e, a) => +e.getAttribute(a);
+  // a limb's curve read from its path data (M x y C x1 y1 x2 y2 x y), sampled
+  const cub = (d) => { const v = (d.match(/-?\d+(?:\.\d+)?/g) || []).map(Number); const at = (t) => { const u = 1 - t; return { x: u * u * u * v[0] + 3 * u * u * t * v[2] + 3 * u * t * t * v[4] + t * t * t * v[6], y: u * u * u * v[1] + 3 * u * u * t * v[3] + 3 * u * t * t * v[5] + t * t * t * v[7] }; }; return at; };
   const knots = {}; document.querySelectorAll('.tr2-node').forEach(g => { const c = g.querySelector('.tr2-knot'); knots[g.getAttribute('data-node')] = { x: num(c, 'cx'), y: num(c, 'cy'), r: num(c, 'r'), m: g.classList.contains('is-m') }; });
   const pads = {}; document.querySelectorAll('.tr2-tip').forEach(g => { const p = g.querySelector('.tr2-pad'); pads[g.getAttribute('data-tip')] = { x: num(p, 'cx'), y: num(p, 'cy') - 1 }; });
   const at = (nd) => nd.kids.length ? knots[nd.id] : pads[nd.name];
   const name = (id) => { const x = t.taxa.find(y => y.id === id); return (x.short || x.name).toLowerCase(); };
   // every limb joins what is drawn: tips in the order the model has them, each knot over the middle of its children
   const xs = P.leaves(r).map(l => pads[l.name].x);
-  for (let i = 1; i < xs.length; i++) if (!(xs[i] > xs[i - 1])) out.push('tips not drawn in the model order');
+  if (!X.V.swing) for (let i = 1; i < xs.length; i++) if (!(xs[i] > xs[i - 1])) out.push('tips not drawn in the model order');
   P.internal(r).forEach(nd => { const m = nd.kids.reduce((s, k) => s + at(k).x, 0) / nd.kids.length; if (Math.abs(m - knots[nd.id].x) > 0.15) out.push(`knot ${nd.id} not over its children`); });
   const cause = document.querySelector('.tr2 .tk2-cause'), ctext = cause ? cause.textContent : '', take = cause && cause.classList.contains('is-take');
   if (St.mode === 'explore' && St.tab === 'anc') {
     const sel = [...document.querySelectorAll('.tr2-tip.is-sel')].map(g => g.getAttribute('data-tip')).sort();
     if (sel.join() !== St.sel.slice().sort().join()) out.push('tapped tips drawn differ from the taps');
-    const pill = document.querySelector('.tr2-pill'), pon = pill.getAttribute('opacity') === '1';
+    const pill = document.querySelector('.tr2-pill'), pon = pill.getAttribute('opacity') === '1' && !pill.classList.contains('is-out'), settled = !X.busy();
     const mk = Object.keys(knots).filter(k => knots[k].m);
     if (sel.length >= 2) {
       const m = P.mrca(r, sel), c = P.classify(r, sel);
@@ -124,10 +126,10 @@ const AGREE = () => {
         lit.forEach(e => { if (parseFloat(e.style.strokeDashoffset) > 0.001) out.push('a lit branch not fully lit while the pill shows'); });
         lit.forEach(e => {
           const k = e.getAttribute('data-k'), nd = P.nodes(r).find(n => (n.kids.length ? 'n' + n.id : 't' + n.name) === k), a = at(nd), p = knots[nd.parent.id];
-          const L = e.getTotalLength(), s = e.getPointAtLength(0), f = e.getPointAtLength(L);
-          if (Math.hypot(s.x - a.x, s.y - a.y) > 1.2 || Math.hypot(f.x - p.x, f.y - p.y) > 1.2) out.push(`glow ${k} does not join its drawn ends`);
+          const cv = cub(e.getAttribute('d')), s = cv(0), f = cv(1);
+          if (Math.hypot(s.x - a.x, s.y - a.y) > 1.2 || Math.hypot(f.x - p.x, f.y - p.y) > 1.2) out.push(`glow ${k} does not join its drawn ends (${[s.x, s.y, a.x, a.y, f.x, f.y, p.x, p.y].map(v => v.toFixed(1))})`);
         });
-        if (!take) {
+        if (!take && settled) {
           sel.forEach(id => { if (sel.length <= 3 && !ctext.includes(name(id))) out.push(`cause line lacks ${name(id)}`); });
           const mm = /common ancestor (\d+)/.exec(ctext); if (!mm || +mm[1] !== m.id) out.push(`cause line ancestor ${mm && mm[1]} vs ${m.id}`);
           const dn = /([\d.]+)% of DNA/.exec(ctext); if (dn && Math.abs(+dn[1] - P.distance(r, sel[0], sel[1])) > 0.051) out.push('DNA difference wrong');
@@ -135,13 +137,14 @@ const AGREE = () => {
           if (/(^|→)a clade/.test(ctext) && c.kind !== 'clade') out.push('says a clade for a non clade');
         }
       } else if (!take && /common ancestor \d/.test(ctext)) out.push('the cause line names the ancestor before the pill shows');
+      const cm = /common ancestor (\d+)/.exec(ctext); if (cm && !take && (!pon || +cm[1] !== m.id || mk.join() !== String(m.id))) out.push('the cause line names an ancestor the picture does not show');
     } else {
       if (pon) out.push('a pill with fewer than two tips');
       if (!take && /common ancestor \d/.test(ctext)) out.push('ancestor named with fewer than two tips');
     }
   }
   if (St.mode === 'explore' && St.tab === 'traits') {
-    const ticks = [...document.querySelectorAll('.tr2-tick')].filter(g => +g.getAttribute('opacity') > 0.99);
+    const ticks = [...document.querySelectorAll('.tr2-tick')].filter(g => !g.classList.contains('is-leaving'));
     const on = [...document.querySelectorAll('.tr2-chip[aria-pressed="true"]')].map(b => b.getAttribute('data-ch')).sort();
     if (ticks.map(g => g.getAttribute('data-cid')).sort().join() !== on.join()) out.push(`chips pressed ${on} vs ticks drawn ${ticks.map(g => g.getAttribute('data-cid'))}`);
     ticks.forEach(g => {
@@ -149,14 +152,16 @@ const AGREE = () => {
       if (g.getAttribute('data-br') !== c.has.slice().sort().join(',')) out.push(`${c.id} tick on the wrong branch`);
       if (b.getAttribute('opacity') !== '1') return;
       const x = num(b, 'x') + num(b, 'width') / 2, y = num(b, 'y') + num(b, 'height') / 2, h = document.querySelector(`.tr2-halo[data-k="${nd.kids.length ? 'n' + nd.id : 't' + nd.name}"]`);
-      let best = 1e9; const L = h.getTotalLength(); for (let i = 0; i <= 80; i++) { const p = h.getPointAtLength(L * i / 80); best = Math.min(best, Math.hypot(p.x - x, p.y - y)); }
+      let best = 1e9; const cv = cub(h.getAttribute('d')); for (let i = 0; i <= 200; i++) { const p = cv(i / 200); best = Math.min(best, Math.hypot(p.x - x, p.y - y)); }
       if (best > 2) out.push(`${c.id} tick ${best.toFixed(1)} px off its branch`);
     });
-    const rings = [...document.querySelectorAll('.tr2-tip')].filter(g => +g.querySelector('.tr2-ring').getAttribute('opacity') > 0.99).map(g => g.getAttribute('data-tip')).sort();
-    const nw = St.traits[t.id] && St.traits[t.id].length ? t.characters.find(x => x.id === St.traits[t.id][St.traits[t.id].length - 1]) : null;
-    if (nw && rings.join() !== nw.has.slice().sort().join()) out.push(`rings on ${rings}, want ${nw.has}`);
-    if (!nw && rings.length) out.push('rings with no trait');
-    if (nw && !take && !ctext.includes(nw.short)) out.push('cause line lacks the newest trait');
+    const rings = [...document.querySelectorAll('.tr2-tip')].filter(g => +g.querySelector('.tr2-ring').getAttribute('opacity') > 0).map(g => g.getAttribute('data-tip')).sort();
+    const arrived = ticks.filter(g => g.querySelector('.tr2-bar').getAttribute('opacity') === '1');
+    const nw = arrived.length ? t.characters.find(x => x.id === arrived[arrived.length - 1].getAttribute('data-cid')) : null;
+    if (rings.length && (!nw || rings.join() !== nw.has.slice().sort().join())) out.push(`rings on ${rings}, newest arrived trait ${nw && nw.id}`);
+    if (!X.busy() && nw && !rings.length) out.push('no rings for the newest trait');
+    if (nw && !take && !X.busy() && !ctext.includes(nw.short)) out.push('cause line lacks the newest trait');
+    t.characters.forEach(c => { if (ctext.includes(c.short) && !take && /inherit/.test(ctext) && (!nw || nw.id !== c.id) && ctext.indexOf(c.short) === 0) out.push(`cause line names ${c.id}, not the newest drawn`); });
   }
   return out;
 };
@@ -246,6 +251,15 @@ if (ONE) {
       if (SHOTS && (w === 390 || w === 768 || w === 1440 || w === 360 || w === 1024)) await page.screenshot({ path: `${SHOTS}/sweep-${w}-${dark ? 'dark' : 'light'}-${name}.png` });
     }
     if (w < 600) ok(heights.size <= 1, `${tag}: the cause line keeps one height (${[...heights]})`);
+    // "?" is filled on a fresh page and follows every change (this drawing, in words)
+    {
+      const fresh = await page.evaluate(() => { const X = window.__tr2; X.tab('anc'); X.setTree('vertebrates'); X.stopAll(); return 1; });
+      await page.waitForTimeout(400);
+      const r1 = await page.evaluate(() => { const X = window.__tr2, t = X.tree(), txt = document.querySelector('.tr2-ref-live').textContent; return { has: /Node 1 \(the root/.test(txt), order: txt.includes('Tips from left to right: ' + X.P.leaves(X.root()).map(l => t.taxa.find(x => x.id === l.name).name).join(', ')) }; });
+      await page.evaluate(() => { window.__tr2.rot(3); window.__tr2.stopAll(); }); await page.waitForTimeout(400);
+      const r2 = await page.evaluate(() => { const X = window.__tr2, t = X.tree(), txt = document.querySelector('.tr2-ref-live').textContent; return txt.includes('Tips from left to right: ' + X.P.leaves(X.root()).map(l => t.taxa.find(x => x.id === l.name).name).join(', ')); });
+      ok(r1.has && r1.order && r2 && fresh, `${tag}: "?" filled and follows a rotation (${JSON.stringify(r1)}, ${r2})`);
+    }
     // the cause line texts expected in two states
     await page.evaluate(() => { const X = window.__tr2; X.tab('anc'); X.setTree('vertebrates'); X.reset(); X.stopAll(); X.St.lastPair = X.St.prevPair = null; });
     await page.evaluate(() => { const X = window.__tr2; X.tap('frog'); X.tap('lizard'); X.stopAll(); X.tap('lizard'); X.tap('shark'); X.stopAll(); });
@@ -286,7 +300,7 @@ if (ONE) {
 }
 
 if (FRAMES) {
-  for (const w of [390, 1440]) {
+  for (const w of (process.argv.includes('--quick') ? [] : [390, 1440])) {
     const { browser, page, errs } = await open(w, false, { noCue: true });
     // watch every frame of an action: each frame runs AGREE plus the checks for that action
     const watch = async (src, extra, ms) => page.evaluate(async ([src, extra, ms, AG]) => {
@@ -297,12 +311,12 @@ if (FRAMES) {
       return { frames, bad: [...new Set(bad)].slice(0, 6) };
     }, [src, extra, ms, AGREE.toString()]);
     const reset = () => page.evaluate(() => { const X = window.__tr2; X.stopAll(); if (X.St.tab !== 'anc') X.tab('anc'); X.setTree('vertebrates'); X.reset(); X.stopAll(); X.St.lastPair = X.St.prevPair = null; });
-    const run = async (name, src, extra, ms = 500) => { await reset(); const r = await watch(src, extra, ms); ok(!r.bad.length && r.frames > 3, `${w} frames ${name} (${r.frames} frames): ${r.bad.join('; ')}`); return r.frames; };
+    const run = async (name, src, extra, ms = 500) => { await reset(); const r = await watch(src.toString(), extra, ms); ok(!r.bad.length && r.frames > 3, `${w} frames ${name} (${r.frames} frames): ${r.bad.join('; ')}`); return r.frames; };
     let total = 0;
     // the glow grows from the tips; the ancestor is named only once it is reached
     total += await run('glow', async (X) => { X.tap('frog'); X.tap('mouse'); }, ((X) => { const o = [], c = document.querySelector('.tr2 .tk2-cause').textContent, lit = [...document.querySelectorAll('.tr2-glow')].filter(e => e.getAttribute('opacity') === '1'); if (/common ancestor/.test(c) && /\d/.test(c) && lit.some(e => parseFloat(e.style.strokeDashoffset) > 0.001)) o.push('ancestor named before the glow reached it'); return o; }).toString());
     // a node swings: moving names hidden while they move, the pill and glow follow the knots (AGREE every frame)
-    total += await run('swing', async (X) => { X.tap('frog'); X.tap('lizard'); X.stopAll(); X.rot(4); }, ((X) => { const o = [], sw = X.V.swing; if (sw) document.querySelectorAll('.tr2-tip').forEach(g => { const id = g.getAttribute('data-tip'), op = g.querySelector('.tr2-name').getAttribute('opacity'); if (sw.moving[id] && op !== '0') o.push('a moving name shows mid swing'); if (!sw.moving[id] && op !== '1') o.push('a still name hidden'); }); return o; }).toString(), 400);
+    total += await run('swing', async (X) => { X.tap('frog'); X.tap('lizard'); X.stopAll(); X.rot(4); }, ((X) => { const o = [], sw = X.V.swing; if (sw && performance.now() - sw.t0 < sw.dur - 20) document.querySelectorAll('.tr2-tip').forEach(g => { const id = g.getAttribute('data-tip'), op = g.querySelector('.tr2-name').getAttribute('opacity'); if (sw.moving[id] && op !== '0') o.push('a moving name shows mid swing'); if (!sw.moving[id] && op !== '1') o.push('a still name hidden'); }); return o; }).toString(), 400);
     // fast reversed rotations
     total += await run('reversals', async (X) => { X.tap('shark'); X.tap('kangaroo'); X.stopAll(); X.rot(4); await new Promise(r => setTimeout(r, 90)); X.rot(4); await new Promise(r => setTimeout(r, 60)); X.rot(3); await new Promise(r => setTimeout(r, 40)); X.rot(1); }, null, 600);
     // a trait climbs: its label only once it has arrived; the rings and the cause line only once painted
@@ -336,7 +350,7 @@ if (FRAMES) {
     ok(await page.evaluate(() => /never changes/.test(document.querySelector('.tr2 .tk2-cause').textContent)), `${w}: rotation takeaway`);
     // real taps act on what is drawn under the finger: every organism, every name, every knot (and near it)
     for (const tw of (w === 390 ? [360, 390] : [w])) {
-      const { browser: b2, page: p2 } = await open(tw, false, { noCue: true });
+      const { browser: b2, page: p2 } = await open(tw, false, { noCue: true, touch: true });
       const pts = await p2.evaluate(() => {
         const out = [];
         document.querySelectorAll('.tr2-tip').forEach(g => { const id = g.getAttribute('data-tip'); out.push({ kind: 'tip', id, sel: '.tr2-org' }, { kind: 'tip', id, sel: '.tr2-nt' }); });
