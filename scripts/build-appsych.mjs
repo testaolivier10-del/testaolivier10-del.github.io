@@ -212,6 +212,8 @@ function build() {
     const body = `
 ${bodyOpen(` data-topic="${id}" data-unit="${ch.id}"`)}
 <div class="xshell">${crumbNav([{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_NAME, href: '../index.html' }, { name: ch.title, href: `../units/${ch.id}.html` }, { name: t.title }])}</div>
+<!-- ls:rail -->${tocBtn('Contents')}
+${courseRail(ch.id, '../')}<!-- /ls:rail -->
 <div class="xshell psy-ls cx-ls${parts.length > 1 ? ' psy-stepped' : ''}" data-course="appsych"${nx ? ` data-next-title="${esc(nx.title)}" data-next-unit="${nx.chapter}"${isFreeTopic(map, nx) ? ' data-next-free="1"' : ''}` : ''}>
   <aside class="psy-ls-rail psy-nav-ref" aria-label="Lesson parts">
     <p class="psy-ls-k cx-ls-k">${unitLabel(ch)} · ${esc(ch.title)}</p>
@@ -244,7 +246,7 @@ ${parts.map((p, i) => `  <section class="psy-part psy-step${i === 0 ? ' is-on' :
 ${STEP_FIRST_PAINT}
 ${footer(depth, `lesson:${id}`)}
 <script type="application/json" id="psy-page-data">${JSON.stringify(pageData).replace(/</g, '\\u003c')}</script>
-${tail({ depth, section: 'learn', extra: ['psy-questions.js', 'psy-lesson.js'], premium: true, site: ['course/lesson.js', 'course/read-toggle.js'] })}
+${tail({ depth, section: 'learn', extra: ['psy-questions.js', 'psy-lesson.js', 'psy-toc.js'], premium: true, site: ['course/lesson.js', 'course/read-toggle.js'] })}
 </body>
 </html>
 `;

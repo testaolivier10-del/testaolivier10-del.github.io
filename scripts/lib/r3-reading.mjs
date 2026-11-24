@@ -287,16 +287,60 @@ ${lede ? `<p class="lede">${lede}</p>` : ''}
    r3-reading.css draws the hero as the full width cover band with the course drawing, and the steps as
    the card over it. Idempotent. */
 export function r3Lesson(html, { key, rel }) {
-  if (/class="[^"]*\br3-lesson\b/.test(html)) return html;
+  if (/class="[^"]*\b(?:r3-lesson|ls-book)\b/.test(html)) return html;
   const up = '../'.repeat(Math.max(0, rel.split('/').length - 1));
   let out = html;
   const ap = out.match(/<main id="main" class="([a-z]+-ls-main[^"]*)"/);
-  if (ap) out = out.replace(ap[0], `<main id="main" class="${ap[1]} r3 r3-lesson" data-cover="${key}"`);
-  else {
+  if (ap) {
+    const booked = lessonBook(out, { key, rel, up, ap });
+    if (booked) return booked;
+    out = out.replace(ap[0], `<main id="main" class="${ap[1]} r3 r3-lesson" data-cover="${key}"`);
+  } else {
     const oc = out.match(/<div class="xshell lesson-shell"/);
     if (!oc) return html;
     out = out.replace(oc[0], `<div class="xshell lesson-shell r3 r3-lesson" data-cover="${key}"`);
   }
+  return withStyles(out, up);
+}
+
+/* A lesson inside the textbook (owner, 2026-11-24: "the toggle for learn and read should apply to the textbook as
+   a whole"). The A&P and AP® builders write the course contents rail between <!-- ls:rail --> marks; with it the
+   lesson gets the Learn tab's band and the textbook's card layout, so Interactive reads as the same book in
+   another mode: the breadcrumb moves into the band, the contents rail sits where the book has it (chapter heads
+   open the book at that chapter, which sends an Interactive reader on to its first lesson), and the lesson's own
+   step list moves under its title, where r3-reading.css draws it as a progress strip. The lesson scripts find
+   everything by class, so every element they use is still there. Without the marks: null, the older band. */
+function lessonBook(html, { key, rel, up, ap }) {
+  const railM = html.match(/<!-- ls:rail -->([\s\S]*?)<!-- \/ls:rail -->\s*/);
+  if (!railM) return null;
+  let out = html.replace(railM[0], '');
+  const shellM = out.match(/<div class="xshell ([a-z]+-ls cx-ls[^"]*)"/);
+  const asideM = out.match(/[ \t]*<aside class="[a-z]+-ls-rail[\s\S]*?<\/aside>\n?/);
+  if (!shellM || !asideM) return null;
+  const topic = rel.split('/').pop().replace(/\.html$/, '');
+  const rail = railM[1]
+    .replace(/<a class="tb-toc-modhead" href="[^"]*"(?: aria-current="page")?([^>]*)>([\s\S]*?data-toc-ch="([\w-]+)")/g, (m, rest, inner, ch) => `<a class="tb-toc-modhead" href="../learn.html#${ch}"${rest}>${inner}`)
+    .replace(new RegExp(`(<a class="tb-toc-topic)(" href="[^"]*" data-toc-t="${topic}")`), '$1 on$2 aria-current="page"');
+  let crumb = '';
+  const crumbM = out.match(/<div class="xshell">\s*(<nav class="[^"]*crumb[^"]*" aria-label="Breadcrumb">[\s\S]*?<\/nav>)\s*<\/div>\s*/);
+  if (crumbM) { crumb = crumbM[1]; out = out.replace(crumbM[0], ''); }
+  // the step list: out of the side column, under the lesson's title
+  out = out.replace(asideM[0], '');
+  const mainAt = out.indexOf(ap[0]);
+  const heroEnd = out.indexOf('</header>', mainAt);
+  if (mainAt < 0 || heroEnd < 0) return null;
+  out = out.slice(0, heroEnd + 9) + '\n' + asideM[0].replace(/\n$/, '') + out.slice(heroEnd + 9);
+  out = out.replace(ap[0], `<main id="main" class="${ap[1]} ls-main"`);
+  const band = learnBandHtml({ key, active: 'book', up, crumb, sub: '' })
+    .replace(/<nav class="lswitch"[\s\S]*?<\/nav>/, (m) => m.replace(/href="/g, 'href="../'));
+  const at = out.indexOf(shellM[0]);
+  const close = out.slice(at).match(/<\/main>\s*<\/div>/);
+  if (!close) return null;
+  const end = at + close.index + close[0].length;
+  out = out.slice(0, at) + band
+    + `<div class="tb-shell bk bk-book r3 r3-read lap ls-book" data-cover="${key}">\n${rail.trim()}\n<div class="tb-main ls-col">\n<div class="${shellM[1]}"`
+    + out.slice(at + shellM[0].length, end) + '\n</div>\n</div>' + out.slice(end);
+  if (!out.includes('assets/course/book.css')) out = out.replace('</head>', `<link rel="stylesheet" href="${up}assets/course/book.css">\n</head>`);
   return withStyles(out, up);
 }
 

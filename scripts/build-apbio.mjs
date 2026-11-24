@@ -181,6 +181,8 @@ function build() {
     const body = `
 ${bodyOpen(` data-topic="${id}" data-unit="${ch.id}"`)}
 <div class="xshell">${crumbNav([{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_NAME, href: '../index.html' }, { name: ch.title, href: `../units/${ch.id}.html` }, { name: t.title }])}</div>
+<!-- ls:rail -->${tocBtn('Contents')}
+${courseRail(ch.id, '../')}<!-- /ls:rail -->
 <div class="xshell bio-ls cx-ls${parts.length > 1 ? ' bio-stepped' : ''}" data-course="apbio"${nx ? ` data-next-title="${esc(nx.title)}" data-next-unit="${nx.chapter}"${isFreeTopic(map, nx) ? ' data-next-free="1"' : ''}` : ''}>
   <aside class="bio-ls-rail bio-nav-ref" aria-label="Lesson parts">
     <p class="bio-ls-k cx-ls-k">${unitLabel(ch)} · ${esc(ch.title)}</p>
@@ -213,7 +215,7 @@ ${parts.map((p, i) => `  <section class="bio-part bio-step${i === 0 ? ' is-on' :
 ${STEP_FIRST_PAINT}
 ${footer(depth, `lesson:${id}`)}
 <script type="application/json" id="bio-page-data">${JSON.stringify(pageData).replace(/</g, '\\u003c')}</script>
-${tail({ depth, section: 'learn', extra: ['bio-questions.js', 'bio-lesson.js'], premium: true, site: ['course/lesson.js', 'course/read-toggle.js'] })}
+${tail({ depth, section: 'learn', extra: ['bio-questions.js', 'bio-lesson.js', 'bio-toc.js'], premium: true, site: ['course/lesson.js', 'course/read-toggle.js'] })}
 </body>
 </html>
 `;

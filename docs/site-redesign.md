@@ -211,3 +211,13 @@ lists side by side (scripts/lib/pricing-section.mjs, splitSection), read from th
 A&P and ochem Learn panels were not changed (different markup).
 
 Follow-up, same day (owner): the "Pick up where you left off" banner is gone from the r3 course home hero, and the Read / Builds on / Leads to rows are gone from A&P interactive lessons. Reason: both were extra things to read before starting. The NREMT and Ochem resume banner (course-home.mjs) is unchanged.
+
+## Lessons inside the textbook (owner, 2026-11-24)
+
+The owner's brief: "the toggle for learn and read should apply to the textbook as a whole not just each unit or lesson", with the switch "right under contents".
+
+- Read | Interactive now sits under "Contents" in the contents rail on the textbook, notes pages and lessons (assets/course/read-toggle.js, `.rt-rail`). Where the rail is on screen the old pill in the page is hidden. On a phone the rail is a drawer, so the pill stays in the page.
+- A&P and AP lessons are drawn as the textbook: the Learn band, the course contents rail and one white card (scripts/lib/r3-reading.mjs `lessonBook`, styles at the end of assets/course/r3-reading.css). The builders write the rail between `<!-- ls:rail -->` marks. The lesson's own step list moves under its title as a progress strip, and "All steps" opens the named list. The lede, tags, "Back to the chapter" and "Read the notes" are hidden on lessons, because the rail and the switch do those jobs.
+- Lessons are still their own pages (lessons/<id>.html). The lesson scripts, Premium lock and progress are unchanged.
+- NREMT and Ochem lessons keep their own layout. Their textbooks get the switch under Contents.
+- check-weight: three lesson budgets raised for the band and rail (reasons in the file).

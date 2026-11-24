@@ -785,7 +785,9 @@ const BUDGETS = [
      10.4 KB. */
   /* 10.6 -> 10.8 (polish 2026-10-17, D2): the phone step toggle ("Step 1 of 11") and the
      lesson.css link, so a lesson starts on the first phone screen. Measured 10.7 KB. */
-  ['anatomy-physiology/lessons/heart-chambers-valves.html', 10.8],
+  /* 10.8 -> 12.5 (owner, 2026-11-24): a lesson now sits inside the textbook, so it carries the Learn band and
+     the course contents rail (every chapter, the open chapter's topics). Measured 12.3 KB. */
+  ['anatomy-physiology/lessons/heart-chambers-valves.html', 12.5],
   /* 19 -> 19.5 (audit 2026-10, W8): each figure's <picture> with its AVIF
      srcset (about 0.03 KB gzipped a figure) in exchange for AVIF images. */
   /* 19.5 -> 19.8 (redesign round 3, B4, docs/site-redesign.md): the notes page's cover band and its side
@@ -1268,7 +1270,8 @@ function weigh(pageRel) {
     // its prerequisite questions in the page (12.5 KB with Unit 1 published).
     /* Lesson 13 -> 14 (docs/video-lessons.md): the first lesson carries the video lesson
        card and its 12-chapter list, 0.6 KB gzipped; it measured 13.0 without it. */
-    BUDGETS.push([`bio/lessons/${id}.html`, 14], [`bio/notes/${id}.html`, 19.5]);
+    /* lessons 14 -> 15.5 (owner, 2026-11-24): the Learn band and contents rail on every lesson; measured 14.7 KB. */
+    BUDGETS.push([`bio/lessons/${id}.html`, 15.5], [`bio/notes/${id}.html`, 19.5]);
     const sheets = join(ROOT, 'bio', 'unit-sheets');
     const sheet = existsSync(sheets) ? readdirSync(sheets).filter((f) => f.endsWith('.html')).sort()[0] : null;
     if (sheet) BUDGETS.push([`bio/unit-sheets/${sheet}`, 12]);
@@ -1399,7 +1402,8 @@ function weigh(pageRel) {
     /* Lesson 15 -> 22 at launch (docs/apcalc-spec.md decision 12): the first lesson, math-functions,
        measured 21.6 KB, of which the MathML of its text and of its check questions (in the page data)
        is most; the median calculus lesson is 15.9 KB. */
-    BUDGETS.push([`calculus/lessons/${id}.html`, 22], [`calculus/notes/${id}.html`, 22]);
+    /* lessons 22 -> 24 (owner, 2026-11-24): the Learn band and contents rail on every lesson; measured 23.1 KB. */
+    BUDGETS.push([`calculus/lessons/${id}.html`, 24], [`calculus/notes/${id}.html`, 22]);
     const sheets = join(ROOT, 'calculus', 'unit-sheets');
     const sheet = existsSync(sheets) ? readdirSync(sheets).filter((f) => f.endsWith('.html')).sort()[0] : null;
     if (sheet) BUDGETS.push([`calculus/unit-sheets/${sheet}`, 14]);

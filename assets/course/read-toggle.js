@@ -61,6 +61,22 @@
     return el;
   }
 
+  /* The same switch under "Contents" in the contents rail (owner, 2026-11-24: one switch for the whole textbook,
+     not one per topic). Where the rail is on screen the pill in the page is hidden (r3-reading.css,
+     html.rt-has-rail); on a phone the rail is a drawer, so the pill stays. Null when the page has no rail. */
+  function railSwitch(read, inter){
+    var title = document.querySelector('.tb-rail .tb-rail-title');
+    if(!title || document.querySelector('.rt-rail')) return null;
+    var el = document.createElement('div');
+    el.className = 'rt-rail';
+    el.setAttribute('role', 'group');
+    el.setAttribute('aria-label', 'How to study the textbook');
+    el.innerHTML = read + inter;
+    title.parentNode.insertBefore(el, title.nextSibling);
+    document.documentElement.classList.add('rt-has-rail');
+    return el;
+  }
+
   /* ---- the textbook ---- */
   if(mode === 'book'){
     var main = document.querySelector('main.tb-main') || document.getElementById('main');
@@ -69,6 +85,7 @@
     var el = bar('', '<span class="rt-opt on" aria-current="true">Read</span>', '<span class="rt-slot"></span>');
     main.insertBefore(el, main.firstChild);
     var slot = el.querySelector('.rt-slot'), cap = el.querySelector('.rt-cap');
+    var rs = railSwitch('<span class="rt-opt on" aria-current="true">Read</span>', '<span class="rt-slot"></span>');
     var current = null;
 
     var sections = function(){
@@ -94,6 +111,7 @@
         slot.innerHTML = '<span class="rt-opt off" aria-disabled="true" title="This section has no interactive lesson yet">Interactive</span>';
         cap.textContent = s ? 'No interactive lesson for this section yet' : '';
       }
+      if(rs) rs.querySelector('.rt-slot').innerHTML = slot.innerHTML;
     };
     /* The section being read: the last one whose top has passed the reading line. The line is where a section
        lands when the contents or a link opens it (its scroll-margin-top), so a jump to a topic names that topic
@@ -171,10 +189,12 @@
       soon(); endsSoon();
     }).observe(main, { childList: true, subtree: true, attributes: true, attributeFilter: ['hidden'] });
 
-    el.addEventListener('click', function(e){
+    var chose = function(e){
       var a = e.target.closest('[data-rt-go]');
       if(a) save({ mode: 'lesson', href: open(current) ? a.getAttribute('href') : '' });
-    });
+    };
+    el.addEventListener('click', chose);
+    if(rs) rs.addEventListener('click', chose);
 
     /* Interactive was the last choice: open the lesson instead. A topic in the address is honoured (once its
        section is drawn); otherwise the last lesson. A reader who came back with Back stays here, and so does one
@@ -235,6 +255,7 @@
     var pill = nmain.querySelector('.bk-pillbar');
     if(pill) pill.hidden = true;
     nmain.insertBefore(nb, nmain.firstChild);
+    railSwitch('<span class="rt-opt on" aria-current="true">Read</span>', inter);
     return;
   }
 
@@ -264,9 +285,13 @@
     var hero = host.querySelector('header[class*="-ls-hero"], .hero');
     if(hero){ lb.classList.add('rt-inhero'); hero.insertBefore(lb, hero.firstChild); }
     else host.insertBefore(lb, host.firstChild);
-    lb.addEventListener('click', function(e){
+    var toRead = function(e){
       if(e.target.closest('[data-rt-go="read"]')) save({ mode: 'read', href: 'lessons/' + file + '.html' });
-    });
+    };
+    lb.addEventListener('click', toRead);
+    var lrs = railSwitch('<a class="rt-opt" href="' + esc(book) + '" data-rt-go="read" aria-label="Read: ' + esc(title || 'this topic') + ' in the textbook">Read</a>',
+      '<span class="rt-opt on" aria-current="true">Interactive</span>');
+    if(lrs) lrs.addEventListener('click', toRead);
 
     /* Ochem lessons end on "Builds on / Leads to": give them the same "Next lesson →" every other course's
        lesson ends with, the next topic in the course that has a lesson (audit 2026-11, A7). */

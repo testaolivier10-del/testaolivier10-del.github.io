@@ -227,6 +227,8 @@ function lessonPage(id) {
 <div class="xshell">
   ${crumbNav([{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_NAME, href: '../index.html' }, { name: ch.title, href: `../chapters/${ch.id}.html` }, { name: t.title }], depth)}
 </div>
+<!-- ls:rail -->${tocBtn('Contents')}
+${courseRail(ch.id, '../')}<!-- /ls:rail -->
 <div class="xshell anp-ls cx-ls${parts.length > 1 ? ' anp-stepped' : ''}" data-course="anp"${nxBuilt ? ` data-next-title="${esc(nx.title)}" data-next-unit="${nx.chapter}"` : ''}>
   <aside class="anp-ls-rail anp-nav-ref" aria-label="Lesson parts">
     <p class="anp-ls-k cx-ls-k">Chapter ${chapterNumber(ch.id)} · ${esc(ch.title)}</p>
@@ -257,7 +259,7 @@ ${STEP_FIRST_PAINT}
 ${footer(depth)}
 <script type="application/json" id="anp-page-data">${JSON.stringify(pageData).replace(/</g, '\\u003c')}</script>
 <script src="../../assets/report-question.js" defer></script>
-${tail({ depth, section: 'learn', extra: ['anp-questions.js', 'anp-lesson.js'], premium: true, site: ['course/lesson.js', 'course/read-toggle.js'] })}
+${tail({ depth, section: 'learn', extra: ['anp-questions.js', 'anp-lesson.js', 'anp-toc.js'], premium: true, site: ['course/lesson.js', 'course/read-toggle.js'] })}
 </body>
 </html>
 `;

@@ -223,6 +223,8 @@ function build() {
     const body = `
 ${bodyOpen(` data-topic="${id}" data-unit="${ch.id}"`)}
 <div class="xshell">${crumbNav([{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_NAME, href: '../index.html' }, { name: ch.title, href: `../units/${ch.id}.html` }, { name: t.title }])}</div>
+<!-- ls:rail -->${tocBtn('Contents')}
+${courseRail(ch.id, '../')}<!-- /ls:rail -->
 <div class="xshell pcalc-ls cx-ls${parts.length > 1 ? ' pcalc-stepped' : ''}" data-course="apprecalc"${nx ? ` data-next-title="${esc(nx.title)}" data-next-unit="${nx.chapter}"${isFreeTopic(map, nx) ? ' data-next-free="1"' : ''}` : ''}>
   <aside class="pcalc-ls-rail pcalc-nav-ref" aria-label="Lesson parts">
     <p class="pcalc-ls-k cx-ls-k">${unitLabel(ch)} · ${esc(ch.title)}</p>
@@ -256,7 +258,7 @@ ${parts.map((p, i) => `  <section class="pcalc-part pcalc-step${i === 0 ? ' is-o
 ${STEP_FIRST_PAINT}
 ${footer(depth, `lesson:${id}`)}
 <script type="application/json" id="pcalc-page-data">${JSON.stringify(pageData).replace(/</g, '\\u003c')}</script>
-${tail({ depth, section: 'learn', extra: ['pcalc-questions.js', 'pcalc-lesson.js'], premium: true, site: ['course/lesson.js', 'course/read-toggle.js'] })}
+${tail({ depth, section: 'learn', extra: ['pcalc-questions.js', 'pcalc-lesson.js', 'pcalc-toc.js'], premium: true, site: ['course/lesson.js', 'course/read-toggle.js'] })}
 </body>
 </html>
 `;

@@ -334,3 +334,48 @@ html.rt-leaving .tb-main{visibility:hidden}
 @media (min-width:901px){
   .cx-ls > aside{position:sticky;z-index:3;align-self:start;background:var(--white);border-radius:20px;box-shadow:0 0 0 1px var(--line),0 18px 40px -26px rgba(11,26,51,.35);padding:18px 14px 20px}
 }
+
+/* ---- Read | Interactive under "Contents", and lessons inside the textbook (owner, 2026-11-24) ----
+   One switch for the whole book: read-toggle.js draws .rt-rail under the rail's title. Where the rail is on
+   screen the pill in the page goes; on a phone the rail is a drawer, so the pill stays there.
+   A lesson page (.ls-book, scripts/lib/r3-reading.mjs lessonBook) is the book's own layout: Learn band, contents
+   rail, one white card. Its title is plain text on the card, and its step list is a progress strip under the
+   title that opens into the named steps. */
+.rt-rail{display:flex;gap:2px;margin:2px 0 14px;padding:4px;background:var(--white);border:1px solid var(--line);border-radius:999px;box-shadow:0 10px 24px -16px rgba(11,26,51,.45)}
+.rt-rail > .rt-opt,.rt-rail > .rt-slot{flex:1 1 0;min-width:0;justify-content:center}
+.rt-rail > .rt-slot{display:flex}
+.rt-rail > .rt-slot > .rt-opt{flex:1;justify-content:center}
+@media (min-width:901px){
+  html.rt-has-rail .rt-bar .rt-pill{display:none}
+  html.rt-has-rail .rt-bar.rt-inhero{margin:0}
+}
+.ls-book .cx-ls{display:block !important;width:auto;max-width:none;margin:0;padding:0}
+.ls-book .ls-main{display:block;min-width:0;margin:0;padding:0}
+.ls-book .ls-main > [class*="-ls-hero"]{position:static;background:none;box-shadow:none;clip-path:none;border:0;border-radius:0;margin:0;padding:0;color:var(--ink)}
+.ls-book .ls-main > [class*="-ls-hero"] .eyebrow{margin:0 0 8px;padding:0;border:0;background:none;white-space:normal;font:800 12.5px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--accent,var(--cink))}
+.ls-book .ls-main > [class*="-ls-hero"] h1{margin:0 0 6px !important;max-width:24ch;font:900 clamp(26px,2.6vw,34px)/1.1 var(--display) !important;letter-spacing:-.02em;color:var(--ink)}
+.ls-book .ls-main > [class*="-ls-hero"] .lede,.ls-book .ls-main > [class*="-ls-hero"] [class*="-tags"]{display:none}
+.ls-book .ls-main > [class*="-ls-hero"] .lpv{margin:14px 0 0;max-width:680px}
+.ls-book .ls-main > [class*="-ls-rail"]{position:relative;top:auto;width:auto;max-width:none;max-height:none;overflow:visible;margin:14px 0 26px;padding:0;background:none;border:0;border-radius:0;box-shadow:none}
+.ls-book [class*="-ls-rail"] .cx-ls-k,.ls-book [class*="-ls-rail"] [class*="-ls-links"],.ls-book [class*="-ls-rail"] .cx-ls-prog{display:none !important}
+.ls-book .cx-ls .cx-ls-toggle{display:flex !important;align-items:center;gap:12px;width:100%;min-height:32px;margin:0;padding:0;border:0;border-radius:8px;background:none;box-shadow:none;color:var(--ink);font:800 13.5px var(--font-ui);text-align:left;cursor:pointer}
+.ls-book .cx-ls-now{flex:1;min-width:0}
+.ls-book .cx-ls-all{flex:none;font:800 12.5px var(--font-ui);color:var(--muted)}
+.ls-book .cx-ls-all::after{content:"";display:inline-block;width:7px;height:7px;margin:0 2px 2px 8px;border:solid currentColor;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.ls-book .cx-ls-toggle[aria-expanded="true"] .cx-ls-all::after{transform:rotate(-135deg);margin-bottom:-2px}
+.ls-book .cx-ls .cx-ls-steps{list-style:none;margin:0 !important;padding:0}
+.ls-book .cx-ls .cx-ls-steps:not(.is-open){display:grid !important;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:4px}
+.ls-book .cx-ls .cx-ls-steps:not(.is-open) li{margin:0;padding:0;min-width:0}
+.ls-book .cx-ls .cx-ls-steps:not(.is-open) a{position:relative;display:block;height:24px;margin:0;padding:0;border:0;border-radius:0;background:none !important;box-shadow:none;overflow:hidden;font-size:0;color:transparent}
+.ls-book .cx-ls .cx-ls-steps:not(.is-open) a > *{display:none !important}
+.ls-book .cx-ls .cx-ls-steps:not(.is-open) a::before{content:"";position:absolute;left:0;right:0;top:9px;height:6px;border-radius:99px;background:var(--line)}
+.ls-book .cx-ls .cx-ls-steps:not(.is-open) .done a::before{background:var(--accent,var(--cink));opacity:.45}
+.ls-book .cx-ls .cx-ls-steps:not(.is-open) .current a::before{background:var(--accent,var(--cink))}
+.ls-book .cx-ls .cx-ls-steps:not(.is-open) a:focus-visible{outline:3px solid var(--accent,var(--cink));outline-offset:1px;border-radius:6px}
+.ls-book .cx-ls .cx-ls-steps.is-open{display:flex !important;flex-direction:column;gap:2px;margin-top:6px;padding:6px;border-radius:14px;background:var(--white);box-shadow:0 0 0 1px var(--line)}
+.ls-book .cx-ls .cx-ls-steps.is-open a{display:flex;align-items:center;gap:10px;padding:7px 8px;border-radius:10px;background:none;box-shadow:none;font:700 14px var(--font-ui);color:var(--ink);text-decoration:none}
+.ls-book .cx-ls .cx-ls-steps.is-open .t{display:inline !important}
+.ls-book .cx-ls .cx-ls-steps.is-open .current a{background:var(--ctint)}
+.ls-book .ls-main > [class*="-ls-card"]{margin:0;padding:0;background:none;border:0;border-radius:0;box-shadow:none}
+.ls-book .tb-toc-topic.on{color:var(--ink);font-weight:800}
+@media print{.rt-rail{display:none}}
