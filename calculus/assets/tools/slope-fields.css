@@ -113,7 +113,7 @@ body[data-app="tool-slope-fields"] .ls-caption math{display:inline-block;max-wid
 .ls-root .ls-drill .cd-num input{width:100%;min-height:52px;font-size:18px;}
 
 /* ============================================================== tools v2 Explore (docs/tools-v2-calc-slope-fields-brief.md)
-   A river seen from above on the exact grid. One colour per idea: the leaf and its start green, the slope (the
+   A river seen from above on the exact grid. One color per idea: the leaf and its start green, the slope (the
    streaks and the slope words) ink, the solution (the leaf's path) crimson, an equilibrium teal (the calm line), the
    formula's line purple, a domain that ends the warning red. Dark mode: a night river with the same ideas lighter. */
 .sf2{--sf-pt:#2F7D32;--sf-pt-ink:#1F5F22;--sf-sl:#3A4A5C;--sf-sl-ink:#22303F;--sf-path:#B0123A;--sf-path-ink:#8C1036;--sf-eq:#0E7C66;--sf-eq-ink:#0A5E4E;
@@ -148,7 +148,9 @@ body[data-app="tool-slope-fields"] .ls-caption math{display:inline-block;max-wid
 .sf2 .tk2-cz.is-path{--cz:var(--sf-path);--cz-ink:var(--sf-path-ink);}
 .sf2 .tk2-cz.is-eq{--cz:var(--sf-eq);--cz-ink:var(--sf-eq-ink);}
 .sf2 .tk2-cz.is-bad{--cz:var(--sf-bad);}
-@media (max-width:640px){ .sf2 .tk2-cause{min-height:72px;align-content:flex-start;} }
+/* one height for the chain and the takeaway, so the picture never jumps when one becomes the other (phones: the kit's) */
+@media (min-width:641px){ .sf2 .tk2-cause{min-height:84px;align-content:center;} }
+@media (min-width:1280px){ .sf2 .tk2-cause{min-height:46px;} }
 /* the leaf's knob: a clear ring around the leaf (the leaf is never hidden); still the kit's slider */
 .sf2 .tk2-handle.is-ring > .tk2-knob{width:48px;height:48px;margin:-24px 0 0 -24px;}
 .sf2 .tk2-handle.is-ring .tk2-dot,:root[data-theme="dark"] .sf2 .tk2-handle.is-ring .tk2-dot{width:42px;height:42px;background:transparent;

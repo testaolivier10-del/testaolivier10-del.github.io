@@ -2,7 +2,7 @@
    of calc-limit-explorer-sweep.mjs. Every equation at its landmark states (the start, the leaf in each corner, on an
    equilibrium, where the slope turns vertical, with the formula's line on, after the leaf has floated, k and the room
    at their ends), plus the first visit. At each width given, in the theme given (dark asserted). At each state:
-     - nothing drawn or labelled is clipped by the stage (labels, ticks, knobs, tags, the leaf, the mug, chip, cue);
+     - nothing drawn or labeled is clipped by the stage (labels, ticks, knobs, tags, the leaf, the mug, chip, cue);
      - no two labels or tags closer than 4 px; ticks clear of labels and tags; no rendered text under 11 px;
      - the water is the largest thing and at least 40% of the stage;
      - the picture is exact: every streak is at least 14 px long and has the slope f at its center; each calm line
@@ -224,9 +224,9 @@ if (FIT) {
         moved.add(F.leaf[0].toFixed(0) + ',' + F.leaf[1].toFixed(0));
         // the leaf is on the drawn curve, and turned along it
         let best = Infinity, bi = 0;
-        for (let i = 0; i + 1 < pts.length; i++) { const a = pts[i], b = pts[i + 1], dx = b[0] - a[0], dy = b[1] - a[1], L2 = dx * dx + dy * dy || 1, t = Math.max(0, Math.min(1, ((F.leaf[0] - a[0]) * dx + (F.leaf[1] - a[1]) * dy) / L2)), dd = Math.hypot(a[0] + dx * t - F.leaf[0], a[1] + dy * t - F.leaf[1]); if (dd < best) { best = dd; bi = i; } }
+        for (let i = 0; i + 1 < pts.length; i++) { const a = pts[i], b = pts[i + 1], dx = b[0] - a[0], dy = b[1] - a[1], L2 = dx * dx + dy * dy; if (L2 < 0.25) continue; const t = Math.max(0, Math.min(1, ((F.leaf[0] - a[0]) * dx + (F.leaf[1] - a[1]) * dy) / L2)), dd = Math.hypot(a[0] + dx * t - F.leaf[0], a[1] + dy * t - F.leaf[1]); if (dd < best) { best = dd; bi = i; } }
         if (F.op > 0.05 && best > 1.2) { bad++; if (bad < 4) fails.push(`${w} ${name}: the leaf is ${best.toFixed(1)} px off the drawn curve`); }
-        if (F.riding && pts.length > 2 && F.op > 0.9) { const a = pts[Math.max(0, bi - 2)], b = pts[Math.min(pts.length - 1, bi + 3)], ang = Math.atan2(b[1] - a[1], b[0] - a[0]) * 180 / Math.PI; let da = Math.abs(ang - F.leaf[2]) % 360; da = Math.min(da, 360 - da); if (da > 12) { bad++; if (bad < 4) fails.push(`${w} ${name}: the leaf is turned ${da.toFixed(0)}° off the curve`); } }
+        if (F.riding && pts.length > 2 && F.op > 0.9) { const a = pts[bi], b = pts[bi + 1], ang = Math.atan2(b[1] - a[1], b[0] - a[0]) * 180 / Math.PI; let da = Math.abs(ang - F.leaf[2]) % 180; da = Math.min(da, 180 - da); if (da > 12) { bad++; if (bad < 4) fails.push(`${w} ${name}: the leaf is turned ${da.toFixed(0)}° off the curve (leaf ${F.leaf.map(v => v.toFixed(1))}, segment ${bi} of ${pts.length}: ${a} to ${b})`); } }
         // the mug reads the drawn leaf
         if (F.mug != null && F.op > 0.05) { const Tl = F.y1 - (F.leaf[1] - F.T) / F.H * (F.y1 - F.y0); if (F.mug !== Math.round(Tl) + ' °C' && Math.abs(parseFloat(F.mug) - Tl) > 0.6) { bad++; if (bad < 4) fails.push(`${w} ${name}: the mug reads ${F.mug}, the leaf is at ${Tl.toFixed(1)}`); } }
         // the takeaway only once the leaf has arrived (never while it floats)
@@ -236,7 +236,7 @@ if (FIT) {
         if (!F.take && F.pills[0]) { const pm = F.pills[0].match(/\(([^,]+), ([^)]+)\)/); if (!pm || Math.abs(+pm[1].replace('−', '-') - F.x0) > 1e-6 || Math.abs(+pm[2].replace('−', '-') - F.yS) > 1e-6) { bad++; if (bad < 4) fails.push(`${w} ${name}: cause ${F.pills[0]} is not the start`); } }
       }
       if (/float/.test(name)) { checks += 2; if (moved.size < 6) fails.push(`${w} ${name}: no float seen (${moved.size} positions)`); if (!sawTake || !arrived) fails.push(`${w} ${name}: no takeaway after the float`); }
-      console.log(`${w} ${THEME} frames ${name}: ${fr.length} frames, ${bad} bad`);
+      console.log(`${w} ${THEME} frames ${name}: ${fr.length} frames (${fr.filter(F => F.riding).length} floating), ${bad} bad`);
       if (SHOTS) await shot(page, `${w}-${THEME}-frames-${name.replace(/\//g, 'over')}.png`);
     };
     for (const e of EQ) {

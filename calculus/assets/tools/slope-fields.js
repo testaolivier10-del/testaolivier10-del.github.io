@@ -348,6 +348,8 @@
       if(st.id === 'ky') return y > 0 === p.k > 0 ? { t: 'k ' + (p.k > 0 ? '> 0' : '< 0') + ', so it grows: doubles every ' + clean(S.halfLife(p.k)), s: 'doubles every ' + clean(S.halfLife(p.k)), role: 'path' }
         : { t: 'k ' + (p.k > 0 ? '> 0' : '< 0') + ', so it decays: halves every ' + clean(S.halfLife(p.k)), s: 'halves every ' + clean(S.halfLife(p.k)), role: 'path' };
       var ve = vertEnd(cv);
+      // on y = ±x the solution runs into (0, 0), where x / y is 0 / 0: undefined there, not vertical
+      if(ve.length && st.id === 'x/y' && Math.abs(Math.abs(st.y0) - Math.abs(st.x0)) < 1e-9) return { t: 'undefined at (0, 0), so the domain ends', s: 'domain ends', role: 'bad' };
       if(ve.length) return { t: 'vertical at x ≈ ' + ve.map(function(v){ return clean(v); }).join(' and ') + ', so the domain ends', s: 'domain ends', role: 'bad' };
       return null;
     }
@@ -371,16 +373,27 @@
     function takeaway(){
       var fm = formula();
       if(onEq()) return 'One starting point, one solution: the flat line ' + fm + '.';
-      if(!fm) return 'One starting point, one solution. y′ = x + y is not separable, so this one is traced, not solved.';
+      if(!fm) return 'One starting point, one solution (traced: y′ = x + y is not separable).';
       return 'One starting point, one solution: ' + fm + '.';
     }
+    /* the chain, as long as the line has room for: full (point, slope worked out, heading, where it goes), then
+       without the heading, then the short phone form. The line keeps one height (CSS), so the picture never jumps. */
+    var causeLvl = {};
     function words(cv){
-      var n = G && G.W < 600, m = fn.f(st.x0, st.y0), P0 = '(' + clean(st.x0) + ', ' + clean(st.y0) + ')';
-      var parts = [{ t: n ? P0 : 'at ' + P0, role: 'pt', say: 'at ' + P0 }, { t: n ? (st.id === 'cool' ? 'T′ ' : 'y′ ') + eqv(m) : slopeSub(st.x0, st.y0), role: 'sl', say: 'the slope is ' + clean(m) }];
-      var b = behave(cv);
-      if(!n) parts.push({ t: heading(m), role: 'sl' });
-      if(b) parts.push({ t: n ? b.s : b.t, role: b.role });
-      if(st.took) cause.take(st.took); else cause.set(parts);
+      if(st.took){ cause.take(st.took); return; }
+      var m = fn.f(st.x0, st.y0), P0 = '(' + clean(st.x0) + ', ' + clean(st.y0) + ')', b = behave(cv);
+      function chain(lv){
+        var n = lv >= 2, parts = [{ t: n ? P0 : 'at ' + P0, role: 'pt', say: 'at ' + P0 }, { t: n ? (st.id === 'cool' ? 'T′ ' : 'y′ ') + eqv(m) : slopeSub(st.x0, st.y0), role: 'sl', say: 'the slope is ' + clean(m) }];
+        if(lv === 0) parts.push({ t: heading(m), role: 'sl' });
+        if(b) parts.push({ t: n ? b.s : b.t, role: b.role });
+        return parts;
+      }
+      var key = (G ? G.W : 0) + st.id + (b ? b.role : '') + (isFinite(m) && m < 0 ? '-' : '+'), lv = G && G.W < 600 ? 2 : (causeLvl[key] || 0);
+      cause.set(chain(lv));
+      // too long for the room the line keeps (one row on a wide screen, two otherwise): take the shorter form
+      var room = window.innerWidth >= 1280 ? 46 : 84;
+      while(lv < 2 && cause.el.scrollHeight > room + 1){ lv++; cause.set(chain(lv)); }
+      causeLvl[key] = Math.max(causeLvl[key] || 0, lv);
     }
 
     /* ---------------------------------------------------- labels on the picture, placed clear of each other */
@@ -480,7 +493,11 @@
         }
       }
       marks.forEach(function(mk){ out.push(place(mk[2], 'sf2-cmark', [[mk[0] + 7, mk[1] - 7, 'start'], [mk[0] - 7, mk[1] - 7, 'end'], [mk[0] + 7, mk[1] + 16, 'start'], [mk[0] - 7, mk[1] + 16, 'end']], 12)); });
-      ends.forEach(function(p){ out.push(place('domain ends', 'sf2-cbad', [[p[0] + 9, p[1] - 8, 'start'], [p[0] - 9, p[1] - 8, 'end'], [p[0] + 9, p[1] + 18, 'start'], [p[0] - 9, p[1] + 18, 'end'], [p[0] - 12, p[1] + 5, 'end'], [p[0] + 12, p[1] + 5, 'start'], [p[0], p[1] + 24, 'middle'], [p[0], p[1] - 14, 'middle'], [p[0] - 9, p[1] + 34, 'end'], [p[0] + 9, p[1] + 34, 'start']], 12.5)); });
+      ends.forEach(function(p){
+        var c3 = [];
+        [10, 30, 50].forEach(function(r){ c3.push([p[0] + r, p[1] - 8, 'start'], [p[0] - r, p[1] - 8, 'end'], [p[0] + r, p[1] + 18, 'start'], [p[0] - r, p[1] + 18, 'end'], [p[0] - r - 2, p[1] + 5, 'end'], [p[0] + r + 2, p[1] + 5, 'start'], [p[0], p[1] + 14 + r, 'middle'], [p[0], p[1] - 4 - r, 'middle']); });
+        out.push(place('domain ends', 'sf2-cbad', c3, 12.5));
+      });
       // the axis names, on the bank
       // the axis names on the banks: x past the last tick (left of a knob that sits there), y turned up the left bank
       var xn = st.id === 'cool' ? 't (min)' : xv(), xw = textW(xn, 13), xe = A.R - 2;
@@ -548,7 +565,7 @@
       var cv = st.drawn || solution(), run = cv.fwd, len = [0];
       for(var i = 1; i < run.length; i++) len.push(len[i - 1] + Math.hypot(run[i][0] - run[i - 1][0], run[i][1] - run[i - 1][1]));
       var total = len[len.length - 1];
-      st.took = null;
+      if(st.took){ st.took = null; words(cv); }
       if(K.reduced() || total < 6){ st.took = takeaway(); draw(); say(st.took); refLater(); return; }
       var dur = cl(total / (G.W * 0.55), 0.8, 1.7) * 1000, t0 = performance.now();
       st.ride = { run: run, len: len, total: total, pos: null, t: 0 };
@@ -607,9 +624,10 @@
       },
       valuetext: function(){ return valueText(); },
       chipSide: function(){ var s0 = startPx(); return s0[1] > G.A.T + 70 ? 'up' : 'down'; },
-      onStart: function(){ userActs(); cancelRide(); clearTimeout(rideT); },
+      onStart: function(){ userActs(); cancelRide(); clearTimeout(rideT); st.ptr = H.dragging(); },
       onInput: function(v){ var p = dec(v); st.x0 = p[0]; st.y0 = p[1]; st.took = null; tourDid('drag'); draw(); refLater(); },
-      onEnd: function(){ floatLater(H.dragging() ? 0 : 320); } });
+      // a drop floats at once; arrow keys wait for a pause, so a run of presses is one float
+      onEnd: function(){ floatLater(st.ptr ? 0 : 320); st.ptr = false; } });
     H.el.classList.add('is-ring', 'sf2-h');
 
     /* presses on the water: the leaf comes to that spot and can be dragged on from there */
@@ -734,7 +752,7 @@
         (eqs.length && !kZero() ? '<p>' + esc(Y + ' = ' + eqs.map(function(v){ return clean(v); }).join(', ')) + ' is an equilibrium solution (every streak on it is flat), drawn as the calm line. Two solution curves never cross, so a solution above it stays above and one below stays below.' +
           (st.id === 'y-2' ? ' Here solutions move away from it on both sides (an unstable equilibrium).' : st.id === 'cool' ? ' Here solutions move toward it on both sides (a stable equilibrium): the coffee ends at room temperature.' : st.id === 'ky' ? (prm().k > 0 ? ' With k > 0 solutions move away from it.' : ' With k < 0 solutions move toward it.') : '') + '</p>' : '') +
         (kZero() ? '<p>With k = 0 the slope is 0 everywhere: every horizontal line is a solution.</p>' : '') +
-        (ve.length ? '<p>A solution is a function of ' + X + ', so it cannot turn back. Where the slope becomes vertical (on ' + esc(d.undefinedOn || '') + ', where ' + tex('\\frac{dy}{dx}') + ' is undefined), the solution\'s domain ends: the open circle.</p>' : '') +
+        (ve.length ? '<p>A solution is a function of ' + X + ', so it cannot turn back. Where the slope becomes vertical (on ' + esc(d.undefinedOn || '') + ', where ' + tex('\\frac{dy}{dx}') + ' is undefined), the solution\'s domain ends: the open circle.' + (st.id === 'x/y' && Math.abs(Math.abs(st.y0) - Math.abs(st.x0)) < 1e-9 ? ' On the lines y = x and y = −x the solution heads straight into (0, 0), where x / y is 0 / 0, so it stops there.' : '') + '</p>' : '') +
         (st.id === 'ky' && !kZero() ? '<p>The dots mark where the amount is ×2, ×4, … (or ×1/2, ×1/4, …) of the start: every ' + clean(S.halfLife(prm().k), 2) + ' units of time.</p>' : '') +
         (st.id === 'cool' ? '<p>The mug on the bank shows the temperature where the leaf is: it follows the leaf as it floats.</p>' : '') +
         '<h3 class="ls-title-l">Check with the formula</h3><p>' + (fm ? 'The particular solution through your point is ' + esc(fm) + '. "Check with the formula" draws it as a thin purple line: it sits on the traced curve to the pixel.' : 'This equation is not separable, so AB has no formula for it; the curve is traced numerically. "Check with the formula" draws the exact solution from outside AB (y = Ce^x − x − 1) to show they agree.') + '</p>' +
