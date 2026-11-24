@@ -162,7 +162,7 @@ with their tags ("6 cm", "18 cm"), and the landing times after a race.
 - M3 the first pill: "100 g, 30 cm from fulcrum", "100 g on the fulcrum", "fulcrum at 40 cm" after a fulcrum move.
 - M4 "stick's weight": a down arrow from the ⊕ with its name, placed clear of masses, the tilted stick, the curl
   arrows and the distance (a longer arrow when needed); the sweep asserts it whenever the fulcrum is off centre.
-- M5 the lever arm's name sits beside its line (the sweep asserts within 16 px; 30 px when the arm lies along the
+- M5 the lever arm's name sits beside its line (the sweep asserts within 16 px; 36 px when the arm lies along the
   tilted stick), clear of the line of action, the stick, the mass, the hand and the reading; the hand stays past the
   lever arm's foot (the string lengthens on a shallow pull); the Angle tab draws no curl arrows; a phone's pull stays
   25° or more from the stick.

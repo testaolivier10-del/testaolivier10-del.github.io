@@ -211,7 +211,8 @@
         var below = ang ? Math.max(drop + 24, 0.2 * p * Math.sin(STOP) + thick / 2 + str0 + bh + 10) : drop + thick / 2 + str0 + rows * bh + 10;
         below += 14;   // the fulcrum's quiet knob sits on the stand's base, just over the bench
         // above: the curl arrows and their two numbers; Angle: the spring scale and the hand, at the stick's left end
-        var above = ang ? Math.max(R + 40, 0.4 * p * Math.sin(STOP) + pullReach(ph, k) + 10) : Math.max(R + 40, drop + 26) + (ph ? 14 : 22);
+        // (on a slanted inward pull the string lengthens past the lever arm's foot: up to 0.2 p + 44 px high at 45°)
+        var above = ang ? Math.max(R + 40, 0.4 * p * Math.sin(STOP) + Math.max(pullReach(ph, k), 0.2 * p + 76 * pullScale(ph, k)) + 10) : Math.max(R + 40, drop + 26) + (ph ? 14 : 22);
         return { k: k, thick: thick, str0: str0, R: R, below: below, above: above, H: above + below + band, rows: rows };
       }
       var n = need(ppm);
@@ -650,7 +651,7 @@
           slH[w] = K.handle(layer, { key: w === 'B' ? 'apphys-tb-slider' : null, quiet: w === 'A', chip: false, label: 'Stand ' + w + ': sliders’ distance from the axle', value: s['d' + w], min: 4, max: 20, step: 1,
             at: function(){ return knobPt(i); }, dir: function(){ return armDir(i); },
             pick: function(x, y){ return pickSlider(i, x, y); },
-            valuetext: function(v){ return v + ' cm from the axle'; }, tag: function(v){ return st.ine.phase === 'race' || st.ine.phase === 'done' ? '' : v + ' cm'; }, tagSide: function(){ return 'up'; },
+            valuetext: function(v){ return v + ' cm from the axle'; }, tag: function(v){ return st.ine.phase === 'ready' ? v + ' cm' : ''; }, tagSide: function(){ return 'up'; },
             onStart: function(){ hideCue(true); tourDid('drag'); raceHold(); }, onInput: function(v){ s['d' + w] = v; raceHold(); changedIne(); }, onEnd: function(){ raceGoSoon(byPointer() ? 220 : 700); } });
         });
       }
