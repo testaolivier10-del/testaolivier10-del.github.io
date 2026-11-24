@@ -6,9 +6,9 @@
 wave 10 (APES, the rest).
 
 **The one idea:** the sun's uneven heating drives Earth's climate. Four lessons, four tabs, one idea each:
-1. Seasons: tilt, not distance, makes the seasons (CED 4.8).
-2. Winds: air rises at the equator and near 60°, sinks near 30° and the poles (4.6).
-3. Rain shadow: rising air cools and rains; sinking air warms and dries (4.7).
+1. Seasons: tilt, not distance, makes the seasons (CED 4.7).
+2. Winds: air rises at the equator and near 60°, sinks near 30° and the poles (4.5).
+3. Rain shadow: rising air cools and rains; sinking air warms and dries (4.8).
 4. El Niño: weaker trade winds let the warm water slosh east (4.9).
 
 **Research:**

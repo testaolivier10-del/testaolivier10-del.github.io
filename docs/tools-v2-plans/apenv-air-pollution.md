@@ -5,8 +5,8 @@
 `scripts/test/apenv-tool-air-pollution.test.mjs`. **Premium.** Rollout row 83, group P, wave 10.
 
 **The one idea:** pollutants are made and moved by what the air is doing. Two tabs, one idea each:
-1. Smog day: sunlight turns morning traffic exhaust into afternoon ozone (CED 7.2, 7.3; inversion 7.4).
-2. Acid rain: SO₂ and NOx make rain acidic, and the rock under a lake decides how much it hurts (8.x acid rain).
+1. Smog day: sunlight turns morning traffic exhaust into afternoon ozone (CED 7.2; inversion 7.3).
+2. Acid rain: SO₂ and NOx make rain acidic, and the rock under a lake decides how much it hurts (7.7).
 
 **Research:**
 - [Smog City (EPA AirNow and Sacramento AQMD), archived](https://webarchive.library.unt.edu/eot2008/20080916024845/http:/www.cabq.gov/airquality/smogcity.html):

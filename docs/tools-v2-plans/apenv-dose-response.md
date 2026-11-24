@@ -4,8 +4,8 @@
 `math/dose-response.js`, `dose-response.css`; data `data/tools/dose-response.json`; test
 `scripts/test/apenv-tool-dose-response.test.mjs`. **Premium.** Rollout row 66, group P, wave 10.
 
-**The one idea:** how much of a chemical reaches a body decides its harm. Three tabs, one idea each (CED 8.12,
-8.13; the authoring guide's trap: bioaccumulation and biomagnification are different):
+**The one idea:** how much of a chemical reaches a body decides its harm. Three tabs, one idea each (CED 8.8,
+8.12, 8.13; the authoring guide's trap: bioaccumulation and biomagnification are different):
 1. Dose: LD50 is the dose that kills half the test group; a lower LD50 means more toxic.
 2. Food chain: each step up a food chain concentrates a persistent chemical (biomagnification).
 3. One fish: one animal builds the chemical up over its life (bioaccumulation).

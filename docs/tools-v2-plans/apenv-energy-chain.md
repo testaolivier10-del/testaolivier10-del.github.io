@@ -6,9 +6,9 @@
 
 **The one idea:** energy is lost as heat at every conversion step, so the source and the number of steps decide how
 much reaches your outlet. Two tabs:
-1. Energy flow: follow 100 units from the fuel (or wind, sun, water) to the outlet (CED 6.1, 6.2 and the plant
-   topics).
-2. CO₂: the same electricity puts out very different CO₂ by source (6.x, 9.x; trap: natural gas is not zero
+1. Energy flow: follow 100 units from the fuel (or wind, sun, water) to the outlet (CED 6.5 to 6.12,
+   6.13).
+2. CO₂: the same electricity puts out very different CO₂ by source (6.5, 6.13, 9.4; trap: natural gas is not zero
    emissions).
 
 **Research:**

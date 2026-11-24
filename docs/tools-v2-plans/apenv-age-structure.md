@@ -4,7 +4,7 @@
 `math/age-structure.js`, `age-structure.css`; data `data/tools/age-structure.json`; test
 `scripts/test/apenv-tool-age-structure.test.mjs`. **Premium.** Rollout row 65, group P, wave 10. Twin of AP HuG
 Population lab (owner: they stay separate). Split of angles: this tool is fertility and its future; the HuG tool
-walks the demographic transition model through time (see `human-geography-population-lab.md`).
+walks the demographic transition model through time (see `aphug-population-lab.md`).
 
 **The one idea:** fertility sets the base of the pyramid, and the base becomes the future population. One screen,
 no tabs (CED 3.6, 3.7, 3.8).

@@ -5,10 +5,10 @@
 `scripts/test/apenv-tool-climate-change.test.mjs`. **Premium.** Rollout row 41, group P, wave 10.
 
 **The one idea:** the tool's own intro says it: two problems students mix up. Four tabs, one idea each:
-1. Greenhouse: more CO₂ traps more of the heat the ground sends up (CED 9.2, 9.4).
-2. Ozone layer: CFCs break ozone high up and let more UV through; CO₂ does not (9.1).
-3. Ocean pH: the ocean absorbs CO₂ and turns more acidic; shells get harder to build (9.6).
-4. Sea level: land ice and warmer water raise the sea; floating ice does not (9.5).
+1. Greenhouse: more CO₂ traps more of the heat the ground sends up (CED 9.3, 9.4).
+2. Ozone layer: CFCs break ozone high up and let more UV through; CO₂ does not (9.1, 9.2).
+3. Ocean pH: the ocean absorbs CO₂ and turns more acidic; shells get harder to build (9.7).
+4. Sea level: land ice and warmer water raise the sea; floating ice does not (9.5, 9.6).
 
 **Research:**
 - [PhET Greenhouse Effect](https://phet.colorado.edu/en/simulations/greenhouse-effect) (found through the PhET

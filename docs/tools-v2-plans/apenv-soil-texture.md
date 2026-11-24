@@ -5,8 +5,8 @@
 `scripts/test/apenv-tool-soil-texture.test.mjs`. **Premium.** Rollout row 57, group P, wave 10.
 
 **The one idea:** a soil's mix of sand, silt and clay names it and decides how water moves through it. Two tabs:
-1. Texture: drag the mix; the class name, the grains and the water change together (CED 4.2, 4.3).
-2. Horizons: soil forms in layers from the top down (4.1).
+1. Texture: drag the mix; the class name, the grains and the water change together (CED 4.3).
+2. Horizons: soil forms in layers from the top down (4.2).
 
 **Research:**
 - [USDA NRCS Soil texture calculator](https://www.nrcs.usda.gov/resources/data-and-reports/soil-texture-calculator):
