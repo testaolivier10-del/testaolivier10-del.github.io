@@ -5,7 +5,7 @@
 
    One idea: every part of the brain has a place and a job, and damage there shows the job.
    EXPLORE, three tabs, the picture is the control:
-     Outside      the left hemisphere seen from the left (front on the left): the four lobes in their colours, the
+     Outside      the left hemisphere seen from the left (front on the left): the four lobes in their colors, the
                   motor and touch strips, Broca's and Wernicke's areas, the auditory and visual cortex, the cerebellum,
                   pons and medulla. Tap any part (what is drawn under the finger, or its pin): its name opens on a card
                   beside it (K.spots), the cause line says what it does. "If damaged" grows a lesion on it and the
@@ -18,7 +18,7 @@
                   names it or not (speech is usually on the left) and the hand run by the hemisphere that has it
                   finds the object. Tap the corpus callosum to cut it (a person with it intact comes in instead of
                   healing it).
-   Every change is animated (a part's colour grows from where it was tapped, the lesion spreads, the signal travels);
+   Every change is animated (a part's color grows from where it was tapped, the lesion spreads, the signal travels);
    reduced motion gets a short cross fade and the result at once. Labels and the cause line read what is drawn.
    TEST YOURSELF: the step drill over the model's generate() (damage cases, methods and fMRI, split brain, one side
    of the body, name the structure), its records unchanged; its figures are drawn by the same art. */
@@ -343,7 +343,7 @@
       out.push(cbl(g, pid, false));
       out.push(fx('low'));
     }
-    // the cerebrum: tissue, lobe colours, effects, folds, rim shade, outline
+    // the cerebrum: tissue, lobe colors, effects, folds, rim shade, outline
     out.push('<path class="bm-tis" d="' + dOf(g.outline) + '" fill="url(#' + pid + 'tis)"/>');
     out.push('<g clip-path="url(#' + pid + 'out)">');
     Object.keys(LOBE).forEach(function(k){ if(g.reg[k]) out.push('<path class="bm-lobe bm-k-' + LOBE[k] + '" d="' + dOf(g.reg[k].poly) + '"/>'); });
@@ -389,7 +389,7 @@
     (o.labels || []).forEach(function(l){ out.push(tag(view, l.id, l.text, o.px || 0.6, !!o.mirror)); });
     return out.join('');
   }
-  /* Explore's moving layer, a second svg over the picture: the picked part's colour and edge, its lesion, and the
+  /* Explore's moving layer, a second svg over the picture: the picked part's color and edge, its lesion, and the
      body figure. Only this small layer repaints while something grows, never the folded brain under it. */
   function fxSvg(view, pid, o){
     var g = G[view], d = '<defs><clipPath id="' + pid + 'out"><path d="' + dOf(g.outline) + '"/></clipPath>';
@@ -508,7 +508,7 @@
       var t = L.tray[h];
       out.push('<rect class="sb-tray" x="' + t[0] + '" y="' + t[1] + '" width="' + t[2] + '" height="' + t[3] + '" rx="16"/>');
       var objs = (st.objects || B.OBJECTS).slice(0, 3), k = 0;
-      objs.forEach(function(ob){ out.push(objSvg(ob, t[0] + t[2] * (0.24 + 0.26 * k), t[1] + t[3] * ((L.tall ? 0.52 : 0.36) + (k % 2) * (L.tall ? 0.24 : 0.3)), Math.min(t[2], t[3]) * 0.17, 'sb-ob')); k++; });
+      objs.forEach(function(ob){ out.push(objSvg(ob, t[0] + t[2] * (0.24 + 0.26 * k), t[1] + t[3] * ((L.tall ? 0.3 : 0.36) + (k % 2) * (L.tall ? 0.22 : 0.3)), Math.min(t[2], t[3]) * 0.17, 'sb-ob')); k++; });
     });
     // motor paths: each hemisphere runs the hand on the opposite side (they cross low in the brainstem)
     ['left', 'right'].forEach(function(h){
@@ -561,7 +561,7 @@
     out.push(lab([L.speech[0], L.speech[1]], ['Speech'], 'middle', px, 'sb-lab is-sm', true));
     out.push('<path class="sb-lead" d="M500 ' + r1(L.cc[1] + L.cc[3] + 4) + 'V' + r1(L.cy + L.ry * 1.06) + '"/>');
     out.push('<g data-sb="cclab">' + lab([500, L.cy + L.ry * 1.06 + 10 / px], ['Corpus callosum'], 'middle', px, 'sb-lab is-pill', true, 'cclab-t') + '</g>');
-    var hy = L.tall ? function(t){ return t[1] + 12 / px; } : function(t){ return t[1] - 10 / px; };
+    var hy = L.tall ? function(t){ return t[1] + t[3] - 16 / px; } : function(t){ return t[1] - 10 / px; };
     out.push(lab([L.tray.left[0] + L.tray.left[2] / 2, hy(L.tray.left)], ['Left hand'], 'middle', px, 'sb-lab', false));
     out.push(lab([L.tray.right[0] + L.tray.right[2] / 2, hy(L.tray.right)], ['Right hand'], 'middle', px, 'sb-lab', false));
     return out.join('');
@@ -708,7 +708,7 @@
       spots[v] = sp;
       return sp;
     }
-    /* the selected part: its colour grows from the pin, its edge draws; damage spreads from the pin */
+    /* the selected part: its color grows from the pin, its edge draws; damage spreads from the pin */
     function paintSel(animate){
       Object.keys(anim).forEach(function(k){ cancelAnimationFrame(anim[k]); });
       anim = {};
@@ -1021,9 +1021,9 @@
           '<p class="ls-sub">Each flash uses the next word from: ' + esc(B.OBJECTS.join(', ')) + '. The trays hold the objects out of sight.</p>';
       } else {
         h += '<h3 class="ls-h">' + (view === 'outside' ? 'The outside: the left hemisphere, seen from the left' : 'The inside: the brain cut down the middle') + '</h3>' +
-          '<p>' + (view === 'outside' ? 'Front is on the left. The four lobes keep one colour each (frontal blue, parietal yellow, temporal green, occipital purple); language is drawn on the left, as it is for most people.' :
+          '<p>' + (view === 'outside' ? 'Front is on the left. The four lobes keep one color each (frontal blue, parietal yellow, temporal green, occipital purple); language is drawn on the left, as it is for most people.' :
             'Front is on the left: the inner surface of the right hemisphere after the brain is cut between the hemispheres. The hippocampus, amygdala and reward center are not on the cut surface: they lie deeper, to the side, and are drawn see-through where they would be.') + '</p>' +
-          '<p class="ls-sub">Areas work together in networks, and their borders vary from person to person: a colour marks where a job is mostly done, not the only place it happens. After damage, other areas can take over some jobs (plasticity), especially in children.</p>' +
+          '<p class="ls-sub">Areas work together in networks, and their borders vary from person to person: a color marks where a job is mostly done, not the only place it happens. After damage, other areas can take over some jobs (plasticity), especially in children.</p>' +
           '<h3 class="ls-h">Every structure</h3><p class="ls-sub">Lobes</p><ul class="bm-list">' + list('lobe') + '</ul><p class="ls-sub">Areas of the cortex</p><ul class="bm-list">' + list('area') + '</ul>' +
           '<p class="ls-sub">Below the cortex</p><ul class="bm-list">' + list('deep') + list('link') + '</ul><p class="ls-sub">Hindbrain and brainstem</p><ul class="bm-list">' + list('stem') + '</ul>' +
           '<h3 class="ls-h">What lights up during a task (fMRI)</h3><ul class="bm-list">' + B.ACTIVE.map(function(a){ return '<li>Participants ' + esc(a.task) + ': <b>' + esc(R[a.region].name) + '</b>' + (a.side ? ' (' + a.side + ' hemisphere)' : '') + '.</li>'; }).join('') + '</ul>' +
