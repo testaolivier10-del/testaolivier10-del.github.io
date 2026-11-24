@@ -189,7 +189,7 @@ const frameCheck = () => {
   const cause = (document.querySelector('.nr2 .tk2-cause') || {}).textContent || '';
   // the scrub's cursor and the drawn "now" line are one line
   const cur = document.querySelector('.nr2 .tk2-scrub .tk2-cur'), nowL = document.querySelector('.nr2-dyn .nr2-now');
-  if (cur && nowL && !cur.closest('[hidden]')) { const a = cur.getBoundingClientRect(), b = nowL.getBoundingClientRect(); if (Math.abs((a.left + a.right) / 2 - (b.left + b.right) / 2) > 1.5) out.push(`t ${t.toFixed(2)}: the scrub cursor and the drawn now line are ${Math.round((a.left + a.right) / 2 - (b.left + b.right) / 2)} px apart`); }
+  if (cur && getComputedStyle(cur).display !== 'none' && nowL && !cur.closest('[hidden]')) { const a = cur.getBoundingClientRect(), b = nowL.getBoundingClientRect(); if (Math.abs((a.left + a.right) / 2 - (b.left + b.right) / 2) > 1.5) out.push(`t ${t.toFixed(2)}: the scrub cursor and the drawn now line are ${Math.round((a.left + a.right) / 2 - (b.left + b.right) / 2)} px apart`); }
   // no label sits on a moving ion or molecule
   const pills = [...document.querySelectorAll('.nr2-dyn .nr2-pill rect')].map(e => e.getBoundingClientRect());
   [...document.querySelectorAll('.nr2-mov .nr2-ion circle, .nr2-mov circle.is-free')].forEach(c => { const r = c.getBoundingClientRect(); if (!r.width) return; const cx = (r.left + r.right) / 2, cy = (r.top + r.bottom) / 2; if (pills.some(b => cx > b.left - 1 && cx < b.right + 1 && cy > b.top - 1 && cy < b.bottom + 1)) out.push(`t ${t.toFixed(2)}: a label covers a moving ion or molecule`); });

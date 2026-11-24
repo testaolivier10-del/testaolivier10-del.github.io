@@ -415,7 +415,7 @@
     function setT(t, pre){
       view.t = clamp(t, tMin(), tMax());
       if(pre != null) view.preview = pre;
-      if(scrub) scrub.value(Math.round(view.t * 20) / 20);
+      if(scrub) scrub.value(Math.round(view.t * 100) / 100);
       paint();
     }
     function ended(){
@@ -493,7 +493,7 @@
       tp.el.classList.add('nr2-drug');
       return tp;
     });
-    scrub = K.scrub(sceneBox, { key: null, label: 'Time', min: -1, max: 22, step: 0.05, value: 0, knob: false,
+    scrub = K.scrub(sceneBox, { key: null, label: 'Time', min: -1, max: 22, step: 0.01, value: 0, knob: false,
       rect: [0, 0, 1, 1], valuetext: function(v){ return n1(v) + ' ms'; },
       onStart: function(){ if(player.playing()) player.stop(); playing = false; hideCue(true); },
       onInput: function(v){ view.preview = false; view.t = clamp(v, tMin(), tMax()); paint(); } });
@@ -934,7 +934,7 @@
       if(S.mode === 'explore' && !(wKey === 'take' && !playing && view.t >= tMax() - 1e-6)) syncWords(f);
       var al = altText(f);
       if(paint.al !== al){ paint.al = al; svg.setAttribute('aria-label', al); }
-      if(scrub){ var sv = Math.round(view.t * 20) / 20; if(+scrub.input.value !== sv) scrub.value(sv); }
+      if(scrub){ var sv = Math.round(view.t * 100) / 100; if(+scrub.input.value !== sv) scrub.value(sv); }
     }
     function chargeOf(V){ return clamp((V - N.REST) / (N.THRESH - N.REST), -1, 1); }
     function neuronDyn(g, f){

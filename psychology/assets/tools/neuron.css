@@ -288,3 +288,4 @@
 .nr2-isfig .nr2-calm{fill:url(#nr2f-calm);}
 .nr2-isfig .nr2-sterm{fill:url(#nr2f-term);}
 .nr2-isfig .nr2-rcv{fill:url(#nr2f-rcv);}
+.nr2 .tk2-scrub .tk2-cur{display:none;}   /* the drawn "now" line is the one cursor */
