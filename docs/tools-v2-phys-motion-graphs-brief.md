@@ -23,18 +23,18 @@ Seen means the page itself was opened and read; text only means only a descripti
 
 | Source | How it works | Works | Confuses or is missing | What we took |
 |---|---|---|---|---|
-| PhET The Moving Man (sim pages and a teacher activity read, text only; the sim not run here) | Drag the man; position, velocity and acceleration plot live; or set x, v or a and let it run; playback | The student moves the thing and sees three graphs at once | The man has no velocity or acceleration arrows tied to the graphs' colours; three tabs split the quantities | Drive with the hand and three stacked graphs on one time axis; "Set v and a" as the second way to move it |
+| PhET The Moving Man (sim pages and a teacher activity read, text only; the sim not run here) | Drag the man; position, velocity and acceleration plot live; or set x, v or a and let it run; playback | The student moves the thing and sees three graphs at once | The man has no velocity or acceleration arrows tied to the graphs' colors; three tabs split the quantities | Drive with the hand and three stacked graphs on one time axis; "Set v and a" as the second way to move it |
 | Vernier Graph Matching (experiment page read; Go Direct Motion Detector manual read for its range) | Walk in front of a real motion detector; match a position or velocity graph | The real detector and its sonar pulse; matching as a challenge | A real detector reads 0.15 m to 3.5 m (Go Direct, cart channel), so a 10 m run is not real | The detector drawn at the track's end, pinging while it measures; Match the graph in Test yourself; the range said in "?" and logged |
 | Desmos graph matching activities (known, text only) | Match a described motion to a graph | Matching is a quiz | Not a drive | Matching kept as a quiz (Test yourself) |
 
 What ours does better: the slope relations are drawn, not only named. At the time cursor the line touching the x
-graph is drawn in v's colour (its slope is v), the line touching the v graph in a's colour (its slope is a), and
-the area under v from 0 is shaded in x's colour (it is Δx); the cart carries v and a arrows in those colours, and
+graph is drawn in v's color (its slope is v), the line touching the v graph in a's color (its slope is a), and
+the area under v from 0 is shaded in x's color (it is Δx); the cart carries v and a arrows in those colors, and
 the cause line reads them off the drawn frame.
 
 ## Two ways to move one cart (one idea: three views of one motion; the slope of each is the next)
 1. **Drive it** (opens here). Purpose: "Drive the cart and watch its three graphs draw." A dynamics cart on an
-   aluminium track with a metre tape (−5 m to +5 m) on a lab bench; a motion detector at the left end. Under it,
+   aluminum track with a meter tape (−5 m to +5 m) on a lab bench; a motion detector at the left end. Under it,
    three stacked graphs (position x, velocity v, acceleration a) on one time axis (0 to 10 s). The landing shows an
    example run already drawn (named "Example run", the cursor at 10 s). Main control: drag the cart (its knob or
    the cart itself), or hold the left or right arrow key (Shift is slow). The first touch starts a 10 s recording:
@@ -55,7 +55,7 @@ the cause line reads them off the drawn frame.
    (speeds up, speeds up from rest, steady, stays at rest; "end stop at 4.9 s"; after a change mid run,
    "a +0.9 m/s² from 1.4 s" and the result for that piece).
 
-One colour per idea, everywhere: x blue, v vermillion, a green (the physics series colours `--phys-s1` to `s3`,
+One color per idea, everywhere: x blue, v vermillion, a green (the physics series colors `--phys-s1` to `s3`,
 dark variants in dark mode): the traces, the arrows, the cursor's dots, the tangents, the area, the panel names
 and the cause line's pills.
 

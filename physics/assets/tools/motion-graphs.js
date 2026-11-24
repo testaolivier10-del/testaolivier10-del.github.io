@@ -7,13 +7,13 @@
    1 Drive it. A dynamics cart on a 10 m track on a lab bench, a motion detector at the left end. Drag the cart (or
      hold the arrow keys): the detector records 10 s from the first touch and the x, v and a graphs under the track
      draw live; v and a are slopes measured from the recorded positions (as a real detector does). The cart carries
-     its v and a arrows, in the colours of their graphs. The landing shows an example run already drawn. After a run,
+     its v and a arrows, in the colors of their graphs. The landing shows an example run already drawn. After a run,
      drag along the graphs (the time cursor) and the cart goes back to that moment; Replay plays it again.
    2 Set v and a. Drag the tip of the cart's velocity arrow (v₀) and of its acceleration arrow (a): the whole run and
      its three graphs redraw at once (exact constant acceleration); let go and the cart runs it. The cart itself is
      a quiet control here: drag it to choose where it starts.
-   At the time cursor: the tangent to x-t (in v's colour, its slope is v), the tangent to v-t (in a's colour, its
-   slope is a) and the area under v-t from 0 (in x's colour, it is Δx); a turn is named where v crosses zero.
+   At the time cursor: the tangent to x-t (in v's color, its slope is v), the tangent to v-t (in a's color, its
+   slope is a) and the area under v-t from 0 (in x's color, it is Δx); a turn is named where v crosses zero.
    Every change is animated (the cart rolls, the graphs draw, the example fades, the cart fades back to its start
    after a run); every number and word is read from what is drawn on that frame.
 
@@ -203,7 +203,7 @@
       for(var yy = 22; yy < g.benchY - 4; yy += 22) p.push('<line class="mg2-tile" x1="0" x2="' + W + '" y1="' + yy + '" y2="' + yy + '"/>');
       p.push('<rect x="0" y="' + g.benchY + '" width="' + W + '" height="' + (g.sceneH - g.benchY) + '" fill="url(#' + gid + 't)"/>');
       p.push('<rect class="mg2-edge" x="0" y="' + (g.sceneH - 4) + '" width="' + W + '" height="4"/>');
-      // the track: an aluminium rail with a metre tape on its face, end stops
+      // the track: an aluminum rail with a meter tape on its face, end stops
       var r0 = X(TR.min) - g.cw / 2 - 8, r1 = X(TR.max) + g.cw / 2 + 8;
       p.push('<rect class="mg2-shadow" x="' + n1(r0 + 4) + '" y="' + (g.railTop + g.railH) + '" width="' + n1(r1 - r0 - 8) + '" height="4" rx="2"/>');
       p.push('<rect class="mg2-rail" x="' + n1(r0) + '" y="' + g.railTop + '" width="' + n1(r1 - r0) + '" height="' + g.railH + '" rx="3" fill="url(#' + gid + 'r)"/>');
@@ -224,7 +224,7 @@
       D.detF = [dx + g.detW, dy + dh / 2];
       // the sonar pulses (shown while the detector measures)
       p.push('<g class="mg2-ping" aria-hidden="true">' + [0, 1, 2].map(function(k){ return '<path class="mg2-pw" style="animation-delay:' + (k * 0.22).toFixed(2) + 's" d=""/>'; }).join('') + '</g>');
-      // the position pointer on the tape (x's colour)
+      // the position pointer on the tape (x's color)
       p.push('<path class="mg2-xp" d=""/>');
       // the cart (drawn at 0, moved by transform)
       var cw = g.cw, ch = g.ch, wr = g.wr, top = -ch - 2 * wr + 2;
@@ -764,14 +764,14 @@
         var s = L.series();
         if(!s){ cause.set([{ t: 'Drag the cart', role: 'ink' }]); cause.el.setAttribute('data-res', ''); return; }
         var va = L.nowVA(), d = describeText(va.v, va.a, !!s.exact);
-        cause.set([{ t: 'v ' + sg(va.v) + ' m/s', role: 'v', say: 'velocity ' + sg(va.v) + ' metres per second' }, { t: 'a ' + sg(va.a) + ' m/s²', role: 'a', join: '+', say: 'acceleration ' + sg(va.a) + ' metres per second squared' }, { t: d.t, role: 'res' }],
+        cause.set([{ t: 'v ' + sg(va.v) + ' m/s', role: 'v', say: 'velocity ' + sg(va.v) + ' meters per second' }, { t: 'a ' + sg(va.a) + ' m/s²', role: 'a', join: '+', say: 'acceleration ' + sg(va.a) + ' meters per second squared' }, { t: d.t, role: 'res' }],
           (s === L.example ? 'Example, ' : '') + 'at ' + F(va.t, 1) + ' s:');
         cause.el.setAttribute('data-res', d.k);
       } else {
         // the newest piece of the run: from v₀ at 0 s, or from the v at the moment a was changed mid run
         var se = st.set, run = se.run, last = se.segs[se.segs.length - 1], piece = last.t0 > 0;
         var v1 = piece ? +at(run, 'v', last.t0).toFixed(6) : se.v0;
-        var parts = [{ t: 'v₀ ' + sg(se.v0) + ' m/s', role: 'v', say: 'starting velocity ' + sg(se.v0) + ' metres per second' }, { t: 'a ' + sg(se.a) + ' m/s²' + (piece ? ' from ' + F(last.t0, 1) + ' s' : ''), role: 'a', join: '+', say: 'acceleration ' + sg(se.a) + ' metres per second squared' + (piece ? ' from ' + F(last.t0, 1) + ' seconds' : '') }];
+        var parts = [{ t: 'v₀ ' + sg(se.v0) + ' m/s', role: 'v', say: 'starting velocity ' + sg(se.v0) + ' meters per second' }, { t: 'a ' + sg(se.a) + ' m/s²' + (piece ? ' from ' + F(last.t0, 1) + ' s' : ''), role: 'a', join: '+', say: 'acceleration ' + sg(se.a) + ' meters per second squared' + (piece ? ' from ' + F(last.t0, 1) + ' seconds' : '') }];
         var tn = turnsOf(run, run.end, 0.01).filter(function(q){ return q.t >= last.t0 - 1e-9; })[0], res = '';
         if(Math.abs(v1) < 1e-9 && Math.abs(se.a) < 1e-9){ parts.push({ t: 'stays at rest', role: 'res' }); res = 'rest'; }
         else if(Math.abs(se.a) < 1e-9){ parts.push({ t: 'steady to the ' + (v1 > 0 ? 'right' : 'left'), role: 'res' }); res = 'const'; }
@@ -795,8 +795,8 @@
       '<h3 class="ls-title-l">' + esc(data.howItWorksTitle || 'How it works') + '</h3><div class="mg2-howit">' + (data.howItWorks || '') + '</div>' +
       '<h3 class="ls-title-l">At the time cursor</h3><div class="mg2-nums"></div>' +
       '<h3 class="ls-title-l">How this picture is drawn</h3><ul class="mg2-list">' +
-      '<li>Right is the + direction. x is where the cart’s centre is on the track’s tape; the track runs from −5 m to +5 m.</li>' +
-      '<li>At the time cursor: the line touching the x graph is drawn in v’s colour, because its slope is v; the line touching the v graph is drawn in a’s colour, because its slope is a; the shaded area under the v graph from 0 is Δx (below the axis it counts as negative).</li>' +
+      '<li>Right is the + direction. x is where the cart’s center is on the track’s tape; the track runs from −5 m to +5 m.</li>' +
+      '<li>At the time cursor: the line touching the x graph is drawn in v’s color, because its slope is v; the line touching the v graph is drawn in a’s color, because its slope is a; the shaded area under the v graph from 0 is Δx (below the axis it counts as negative).</li>' +
       '<li>Drive it: the detector records the cart’s position every frame. v and a are measured from those positions as a real detector does: least squares slopes over ±0.2 s for v and ±0.4 s for a, from positions taken every 0.05 s. So a hand drive gives a slightly bumpy, slightly late v and a, and slopes and areas agree only roughly. The newest point uses only the time before it.</li>' +
       '<li>Set v and a: the motion is exact, x = x₀ + v₀t + ½at² and v = v₀ + at. Change a while the cart runs (its arrow’s tip rides with the cart) and a new straight piece starts on v-t from that moment. “turns” marks where v crosses zero, the top or bottom of the x graph. At an end stop the cart stops dead: v drops to 0 at once, a spike on the a graph too narrow to draw.</li>' +
       '<li>The detector here reads the whole 10 m track. A classroom motion detector reads from about 0.15 m to 3.5 m (6 m for some), so a real track is shorter; the numbers here are kept as the problems use them.</li>' +
@@ -832,7 +832,7 @@
       var kr = function(sel){ var e = L.layer.el.querySelector(sel); return e ? e.getBoundingClientRect() : L.el.getBoundingClientRect(); };
       tours.drive = K.tour({ key: 'apphys-motion-graphs-drive', label: 'Show me how', steps: [
         { id: 'drag', text: 'Drag the cart along the track. The detector records 10 s and the graphs draw as you move.', target: function(){ return kr('.tk2-handle .tk2-knob'); } },
-        { id: 'slope', text: 'Steeper x graph, bigger v: the line touching x is in v’s colour because its slope is v.', target: function(){ var e = L.el.querySelector('.mg2-tan.is-v'); return e ? e.getBoundingClientRect() : L.el.getBoundingClientRect(); } },
+        { id: 'slope', text: 'Steeper x graph, bigger v: the line touching x is in v’s color because its slope is v.', target: function(){ var e = L.el.querySelector('.mg2-tan.is-v'); return e ? e.getBoundingClientRect() : L.el.getBoundingClientRect(); } },
         { id: 'scrub', text: 'After a run, drag along the graphs: the cart goes back to that moment.', target: function(){ var e = L.el.querySelector('.mg2-pbg'); return e ? e.getBoundingClientRect() : L.el.getBoundingClientRect(); } }] });
       tours.set = K.tour({ key: 'apphys-motion-graphs-set', label: 'Show me how', steps: [
         { id: 'drag', text: 'Drag the tip of the velocity arrow or the acceleration arrow. The whole run redraws.', target: function(){ return kr('.tk2-handle:not(.is-quiet) .tk2-knob'); } },
@@ -861,7 +861,7 @@
     // a phone that scrolls: a run started below the picture brings the picture into view
     runB.addEventListener('click', function(){ var r = L.el.getBoundingClientRect(); if(r.top < 0 || r.top > (window.innerHeight || 800) * 0.4) try{ L.el.scrollIntoView({ block: 'nearest', behavior: L.red() ? 'auto' : 'smooth' }); }catch(e){} });
 
-    // tests and the frame checks read the drawn state here (no behaviour hangs on it)
+    // tests and the frame checks read the drawn state here (no behavior hangs on it)
     stage.__mg = { lab: L, st: L.st };
     stage.setAttribute('data-tab', 'drive');
     paintButtons();
