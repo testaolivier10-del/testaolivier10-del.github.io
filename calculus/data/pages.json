@@ -205,7 +205,7 @@
    "topic": "riemann-sums",
    "name": "Riemann sums",
    "title": "Riemann Sums Trainer",
-   "desc": "Left, right, midpoint and trapezoidal sums as columns of water that fill a tank: more strips close in on the exact area, and over or under follows from rising, falling or bending. Functions and tables with unequal widths.",
+   "desc": "Left, right, midpoint and trapezoidal sums as columns of water that fill a tank: more strips close in on the exact area. Over or under, from graphs and tables.",
    "blurb": "Pour strips into a tank and watch the sum close in on the integral.",
    "lede": "Thinner strips: the sum closes in on the exact area.",
    "premium": "tools",

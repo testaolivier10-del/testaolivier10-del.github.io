@@ -212,3 +212,10 @@ All 2026-10-13, answered by the independent reviewers or fixed; kept here so nob
   The tool also says lim f(x) = −∞ from the left and ∞ from the right at x = 2 for 1/(x − 2) "to describe that, but
   the limit does not exist: ∞ is not a number", which follows the CED's use of ∞ for unbounded behaviour. Owner or a
   teacher to confirm both.
+
+- (2026-11-24, tools v2 Riemann sums) Explore draws every Riemann sum as glass columns of water pouring into a tank,
+  for the flows and also for the plain functions and the cyclist's table (a tank of meters). A column below the axis
+  drains the tank, so the tank shows the net signed amount, with a "start" line when the total can fall below where it
+  began. A teacher may find water a stretch for area under f(x) with no units, or for distance; the axis titles and "?"
+  say what each column is (width × height). The midpoint verdict reads "misses more than it adds" (net, since a
+  midpoint column is partly above and partly below a bending curve). Owner or a teacher to confirm.

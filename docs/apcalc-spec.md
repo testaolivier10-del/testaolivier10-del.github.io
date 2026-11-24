@@ -113,7 +113,7 @@ graph drawn from the function it claims to show; independent accuracy review.
 | `related-rates` | 4 | Animated scenes (sliding ladder, filling cone, shadow, expanding circle) with live rates and the chain of equations |
 | `motion-lab` | 4, 8 | Particle on a line: position, velocity, acceleration graphs; speeding up/slowing down; displacement vs total distance |
 | `curve-analyzer` | 5 | f, f′, f″ linked; sign charts; extrema and inflection with justification; candidates test; optimization scenes |
-| `riemann-sums` | 6 | Left, right, midpoint, trapezoid on functions and on tables with unequal widths; over/under estimates |
+| `riemann-sums` | 6 | Left, right, midpoint, trapezoid on functions and on tables with unequal widths; over/under estimates. Tools v2 (2026-11-24): Explore has two tabs, More strips (the strips as glass columns of water on the graph that pour into a tank with the exact amount as a line; a log knob 1 to 100; Fill one by one) and Over or under (the four sums; the rule in the cause line); the strip table, sigma sum and rules in "?"; Test yourself unchanged. `docs/tools-v2-calc-riemann-sums-brief.md` |
 | `accumulation` | 6, 8 | g(x) = ∫ f from a graph of f; area accumulating; FTC both parts; net change |
 | `slope-fields` | 7 | Draw slope fields, trace solution curves through a point, separation of variables, exponential models |
 | `area-volume` | 8 | Area between curves; volumes by discs/washers about a line and by cross sections, in 3D |
@@ -253,3 +253,4 @@ a tool's data file exists and its topic is published.
 - 2026-11-16 (tools frame F4): every tool uses the standard tool frame (stage dropdown, hint ladder, finished card) from its course kit; notes in `docs/tools-frame-notes/`.
 - 2026-11-18 (tools v2): the Tangent tracer is the first calculus tool on the shared kit, through the adapter `ApCalcTools.studioKit2` (`"kit2": true` in `data/pages.json`; the generator adds the kit's files to that page only). Brief: `docs/tools-v2-tangent-tracer-brief.md`. Not merged until the tools v2 rollout merges.
 - 2026-11-24 (tools v2): the Limit explorer is the second calculus tool on the shared kit (`"kit2": true`; the same adapter, the model `tools/math/limit-explorer.js` and the quiz unchanged). Brief: `docs/tools-v2-calc-limit-explorer-brief.md`. Not merged until the tools v2 rollout merges.
+- 2026-11-24 (tools v2): Riemann sums is the third calculus tool on the shared kit (`"kit2": true`; the same adapter, the model `tools/math/riemann-sums.js` and the quiz unchanged). Brief: `docs/tools-v2-calc-riemann-sums-brief.md`. Not merged until the tools v2 rollout merges.

@@ -6,7 +6,7 @@
    shared kit (assets/course/tool-kit2.js) through the adapter
    ApCalcTools.studioKit2. The strips are glass columns of water on the graph,
    a tank beside them holds their total, a thin line in the tank is the exact
-   amount; the gaps between the columns' tops and the curve are coloured
+   amount; the gaps between the columns' tops and the curve are colored
    (orange: counted extra, green: missed). Tab 1 "More strips": the strips'
    knob on the picture (1 to 100); the four sums a quiet switch; Fill one by
    one pours each column into the tank; tap a strip to read its term. Tab 2
@@ -193,7 +193,7 @@
       var it = x.it, c = { type: x.type, it: it, name: it.name };
       if(x.type === 'fn') c.nm = { f: 'f', v: 'x', amt: '', amtA: '', rateA: '', varA: '' };
       else c.nm = { f: it.rate || 'r', v: it.var || 't', amt: it.amtUnit, amtA: it.amtAbbr || ab(it.amtUnit), rateA: ab(it.rateUnit), varA: ab(it.varUnit), rateU: it.rateUnit, varU: it.varUnit };
-      if(x.type === 'table'){ c.xs = it.xs; c.ys = it.ys; c.a = it.xs[0]; c.b = it.xs[it.xs.length - 1]; c.f = null; c.exact = null; c.shape = { inc: null, conc: null }; c.midOk = R.midOk(it.xs); }
+      if(x.type === 'table'){ c.xs = it.xs; c.ys = it.ys; c.a = it.xs[0]; c.b = it.xs[it.xs.length - 1]; c.f = null; c.exact = null; c.shape = { inc: null, conc: null }; c.midOk = R.midOk(it.xs); c.trend = it.trend ? M.integral(M.fn(it.trend), c.a, c.b) : null; }
       else { c.f = M.fn(it.fn); c.a = it.a; c.b = it.b; c.exact = M.integral(c.f, c.a, c.b); c.shape = R.shape(c.f, c.a, c.b); c.midOk = true; }
       // the plot's heights: the curve (or the data) and 0
       var vals = [0];
@@ -227,6 +227,7 @@
     function geo(W, H){
       var g = { W: W, H: H, narrow: W < 600 };
       var segW = seg.offsetWidth || 300, segH = seg.offsetHeight || 36;
+      g.segW = segW; g.segH = segH;
       g.tankW = g.narrow ? clamp(W * 0.18, 62, 86) : clamp(W * 0.13, 110, 180);
       g.TX1 = W - (g.narrow ? 8 : 16); g.TX0 = g.TX1 - g.tankW;
       g.segX = g.narrow ? Math.round((W - segW) / 2) : 14; g.segY = 8;
@@ -374,7 +375,7 @@
       var ps = piecesFor(nOf(), S.kind), P = profOf(ps, S.kind), walls = ps.length ? [ps[0].x0].concat(ps.map(function(p){ return p.x1; })) : [];
       if(animate && S.to && S.drawn && !K.reduced()){
         var from = S.drawn.P;
-        if(from.length > 1400) from = S.to;
+        if(from.length > 420) from = S.to;   // a fast drag: start from the last strips, not a blend of many
         S.from = from; S.wFrom = S.wTo; S.e = 0;
       } else { S.from = null; S.e = 1; if(animate && S.to && K.reduced()) fade(); }
       S.to = P; S.wTo = walls; S.ps = ps; S.sel = -1;
@@ -468,20 +469,24 @@
     }
     /* where the tops are above (extra) or below (missed) the curve, from the drawn pixels: the biggest of each */
     function sliverInfo(sg){
-      var c = G.curve, best = { x: null, h: 0 }, bestM = { x: null, h: 0 }, ex = 0, mi = 0;
-      for(var i = 0; i < c.length; i++){
+      var c = G.curve, best = { x: null, h: 0 }, bestM = { x: null, h: 0 }, ex = 0, mi = 0, st = S.from ? 3 : 1;
+      for(var i = 0; i < c.length; i += st){
         var Yt = G.sy(valAt(sg, c[i][2], i ? -1 : 1)), d = c[i][1] - Yt;   // > 0: the top is above the curve on screen (extra)
-        if(d > 0.6){ ex += d; if(d > best.h) best = { X: c[i][0], h: d, y: (c[i][1] + Yt) / 2 }; }
-        else if(d < -0.6){ mi -= d; if(-d > bestM.h) bestM = { X: c[i][0], h: -d, y: (c[i][1] + Yt) / 2 }; }
+        if(d > 0.6){ ex += d * st; if(d > best.h) best = { X: c[i][0], h: d, y: (c[i][1] + Yt) / 2 }; }
+        else if(d < -0.6){ mi -= d * st; if(-d > bestM.h) bestM = { X: c[i][0], h: -d, y: (c[i][1] + Yt) / 2 }; }
       }
       return { extra: best, miss: bestM, exA: ex, miA: mi };
     }
     function labels(P, sg, sl, inTank){
       var g = G, nm = D.nm, cl = [];
-      // the controls on the picture keep their room
-      var sr = scene.getBoundingClientRect(), k = layer.scale() || 1;
-      [seg, knob && !knob.el.hidden ? knob.knob : null, knob && knob.el.querySelector('.tk2-tag:not([hidden])'), knob && knob.el.querySelector('.tk2-chip'), scene.querySelector('.tk2-cue')].forEach(function(x){
-        if(!x || !x.offsetWidth) return; var r = x.getBoundingClientRect(); cl.push([(r.left - sr.left) / k - 3, (r.top - sr.top) / k - 3, (r.right - sr.left) / k + 3, (r.bottom - sr.top) / k + 3]); });
+      // the controls on the picture keep their room (from the geometry, so a frame never waits for a layout read)
+      cl.push([g.segX - 3, g.segY - 3, g.segX + g.segW + 3, g.segY + g.segH + 3]);
+      if(knob && !isT()){
+        var n = nOf(), kx = railX(n), ky = g.railY, t = knob && cue2.active() && S.tab === 'ou' && g.narrow ? '' : tagOf(n), twd = tw(t, 13) + 18;
+        cl.push([kx - 25, ky - 25, kx + 25, ky + 25]);
+        if(t) cl.push(railX(n) - g.rx0 > 96 ? [kx - 28 - twd, ky - 13, kx - 24, ky + 13] : [kx + 24, ky - 13, kx + 28 + twd, ky + 13]);
+      }
+      if(ctlBoxes) cl = cl.concat(ctlBoxes);
       boxes = boxes.concat(cl);
       // the tank: its amount above it, and "exact" (and "start" when the tank can drain below where it began)
       var tx = g.TX0 + g.tankW / 2;
@@ -541,7 +546,6 @@
         key = JSON.stringify(parts);
         if(key !== wKey){ wKey = key; cause.set(parts); }
       }
-      if(knob) knob.place();
     }
     /* tab 2: the shape, what it does to this kind's tops, the verdict (the model's rule, R.verdict) */
     function verdictParts(phone){
@@ -581,7 +585,7 @@
         valuetext: function(v){ return tagOf(v); }, tag: function(v){ return S.tab === 'ou' && G && G.narrow && cue2.active() ? '' : tagOf(v); },
         tagSide: function(v){ return G && railX(v) - G.rx0 > 96 ? 'left' : 'right'; },
         chipSide: function(v){ return !G ? 'down' : railX(v) - G.rx0 > 96 ? 'right' : railX(v) - G.rx0 > 74 ? 'left' : 'up'; },
-        onStart: function(){ userActs(); hideCue(true); tourDid('drag'); },
+        onStart: function(){ userActs(); hideCue(true); tourDid('drag'); setTimeout(measureCtl, 0); },
         onInput: function(v){ setN(v); },
         onEnd: function(){ settleSoon(); } });
       knob.el.classList.add('rs2-knob');
@@ -647,12 +651,20 @@
       at: function(){ if(!G) return [0, 0]; if(S.tab === 'ou'){ var r = seg.getBoundingClientRect(), sr = scene.getBoundingClientRect(), kk = layer.scale() || 1; return [((r.left + r.right) / 2 - sr.left) / kk, (r.bottom - sr.top) / kk - 22]; } return [railX(nOf()), G.railY]; } };
     var cue = K.cue(layer, cueO);
     var cue2 = K.cue(layer, { key: 'apcalc-riemann-sums-2', text: 'Tap a sum', side: 'below', at: cueO.at });
+    /* the first-time chip and the cue: measured once when they appear or the picture is laid out (not every frame) */
+    var ctlBoxes = null;
+    function measureCtl(){
+      ctlBoxes = [];
+      var sr = scene.getBoundingClientRect(), k = layer.scale() || 1;
+      [knob && knob.el.querySelector('.tk2-chip'), scene.querySelector('.tk2-cue')].forEach(function(x){
+        if(!x || !x.offsetWidth) return; var r = x.getBoundingClientRect(); ctlBoxes.push([(r.left - sr.left) / k - 3, (r.top - sr.top) / k - 3, (r.right - sr.left) / k + 3, (r.bottom - sr.top) / k + 3]); });
+    }
     function cueShow(){
       if(!G || S.mode !== 'explore') return;
-      if(S.tab === 'n'){ cue2.hide(false); if(!isT() && cue.show()){ draw(); draw(); } }
-      else { cue.hide(false); if(cue2.show()){ knob.place(); draw(); draw(); } }
+      if(S.tab === 'n'){ cue2.hide(false); if(!isT() && cue.show()){ draw(); measureCtl(); draw(); } }
+      else { cue.hide(false); if(cue2.show()){ knob.place(); draw(); measureCtl(); draw(); } }
     }
-    function hideCue(used){ if(S.tab === 'n'){ if(cue.active()) cue.hide(used); } else if(cue2.active()) cue2.hide(used); }
+    function hideCue(used){ var was = cue.active() || cue2.active(); if(S.tab === 'n'){ if(cue.active()) cue.hide(used); } else if(cue2.active()) cue2.hide(used); if(was) setTimeout(measureCtl, 0); }
     stage.addEventListener('keydown', function(e){ if(/^(Arrow|Page|Home|End)/.test(e.key)) hideCue(true); }, true);
     var tour = K.tour({ key: 'apcalc-riemann-sums', label: 'Show me how', steps: [
       { id: 'drag', text: 'Drag the knob for more, thinner strips. The tank holds their total; the thin line is the exact amount.', target: function(){ return knob.knob; } },
@@ -673,7 +685,7 @@
       cue.hide(false); cue2.hide(false);
       S.tab = v; tabs.value(v); purpose(); change();
       stage.classList.toggle('is-ou', v === 'ou');
-      knobMode();
+      knobMode(); layout();
       target(true); refLater(); settleSoon();
       if(S.mode === 'explore') setTimeout(cueShow, 30);
       say((v === 'n' ? 'More strips. ' : 'Over or under. ') + cause.text());
@@ -749,16 +761,17 @@
       html += '<h3 class="ls-title-l">The ' + esc(R.NAME[kind]) + ', strip by strip</h3>' +
         (isTab ? '<p>The table fixes the subintervals: ' + (D.xs.length - 1) + ' of them, with widths ' + D.xs.slice(1).map(function(x, i){ return M.fmt(x - D.xs[i], 3); }).join(', ') + '. Each term uses its own width.</p>' : '<p>' + tr(dx) + '</p><p>' + tr(sig + ' = ' + M.fmt(sum, 6).replace('−', '-')) + '</p>') +
         '<div class="table-wrap" tabindex="0" role="region" aria-label="Every strip of the sum"><table class="ls-tbl rs-tbl"><caption class="sr-only">Every strip: width, height and term</caption><thead>' + head2 + '</thead><tbody>' + rows + '</tbody></table></div>' +
-        '<p class="bt-small">Total: ' + fmt(sum) + unit + '.' + (D.exact != null ? ' Exact (the definite integral, ' + esc(intText()) + '): ' + fmt(D.exact) + unit + '.' : '') + '</p>';
-      var all = R.KINDS.map(function(kk){ var q = piecesFor(n, kk); return q.length ? '<tr' + (kk === kind ? ' class="hl"' : '') + '><th scope="row">' + R.SHORT[kk] + '</th><td class="r">' + fmt(R.total(q)) + '</td>' + (D.exact != null ? '<td class="r">' + fmt(R.total(q) - D.exact) + '</td>' : '') + '</tr>' : ''; }).join('');
-      html += '<h3 class="ls-title-l">All four, side by side' + (isTab ? '' : ' (' + n + ' strips)') + '</h3><table class="ls-tbl"><caption class="sr-only">Left, right, midpoint and trapezoidal sums compared</caption><thead><tr><th scope="col">Sum</th><th scope="col">Value</th>' + (D.exact != null ? '<th scope="col">Minus exact</th>' : '') + '</tr></thead><tbody>' + all + '</tbody></table>' +
+        '<p class="bt-small">Total: ' + fmt(sum) + unit + '.' + (D.exact != null ? ' Exact (the definite integral, ' + esc(intText()) + '): ' + fmt(D.exact) + unit + '.' : '') +
+        (isTab && D.trend != null ? ' Area under one possible smooth ' + esc(nm.f) + ' through these points (not given; a table cannot know it): ' + fmt(D.trend) + unit + '.' : '') + '</p>';
+      var all = R.KINDS.map(function(kk){ var q = piecesFor(n, kk); return q.length ? '<tr' + (kk === kind ? ' class="hl"' : '') + '><th scope="row">' + R.SHORT[kk] + '</th><td class="r">' + fmt(R.total(q)) + '</td>' + (D.exact != null ? '<td class="r">' + fmt(R.total(q) - D.exact) + '</td>' : D.trend != null ? '<td class="r">' + fmt(R.total(q) - D.trend) + '</td>' : '') + '</tr>' : ''; }).join('');
+      html += '<h3 class="ls-title-l">All four, side by side' + (isTab ? '' : ' (' + n + ' strips)') + '</h3><table class="ls-tbl"><caption class="sr-only">Left, right, midpoint and trapezoidal sums compared</caption><thead><tr><th scope="col">Sum</th><th scope="col">Value</th>' + (D.exact != null ? '<th scope="col">Minus exact</th>' : D.trend != null ? '<th scope="col">Minus one possible ' + esc(nm.f) + '</th>' : '') + '</tr></thead><tbody>' + all + '</tbody></table>' +
         '<p class="bt-small">With equal widths the trapezoidal sum is the average of the left and right sums.' + (isTab ? ' A midpoint sum from a table needs an odd number of points, so the widths pair up and the middle value is given.' : '') + '</p>';
       html += '<h3 class="ls-title-l">Over or under</h3><ul>' +
         '<li><b>Left and right sums</b> follow increasing or decreasing. If ' + esc(nm.f) + ' is increasing on the whole interval, a left sum is an underestimate and a right sum an overestimate; decreasing, the other way round.</li>' +
         '<li><b>Midpoint and trapezoidal sums</b> follow concavity. If ' + esc(nm.f) + ' is concave up on the whole interval, each trapezoid’s top (a chord) lies above the curve, so the trapezoidal sum is an overestimate; a midpoint rectangle has the same area as the trapezoid under the tangent line at the midpoint, which lies below the curve, so the midpoint sum is an underestimate. Concave down, both turn round.</li>' +
         '<li>When ' + esc(nm.f) + ' changes direction (or concavity) on the interval, no rule fixes the side: the sum can land on either.</li>' +
         '<li>A table never shows concavity, and rising values only point to a side if the problem says ' + esc(nm.f) + ' is increasing (or decreasing) throughout.</li></ul>' +
-        '<p>On the picture the gap between each column’s top and the curve is coloured: <b class="rs2-kextra">orange</b> where the column counts extra area, <b class="rs2-kmiss">green</b> where it misses area. The sum minus the exact value is the orange area minus the green area.</p>' +
+        '<p>On the picture the gap between each column’s top and the curve is colored: <b class="rs2-kextra">orange</b> where the column counts extra area, <b class="rs2-kmiss">green</b> where it misses area. The sum minus the exact value is the orange area minus the green area.</p>' +
         (isTab ? '' : '<p>Doubling the strips cuts the error of a left or right sum to about half, and of a midpoint or trapezoidal sum to about a quarter. As the strips get thinner every sum closes in on the definite integral: the limit of the Riemann sums as n → ∞ is ' + esc(intText()) + '.</p>');
       if(S.cur.type !== 'fn') html += '<h3 class="ls-title-l">Units</h3><p>Each column is a width in ' + esc(nm.varU) + ' times a rate in ' + esc(nm.rateU) + ', so it holds ' + esc(nm.amt) + ': the sum is an amount, not a rate.</p>';
       html += '<h3 class="ls-title-l">Negative strips</h3><p>A column below the axis counts as negative: it drains the tank instead of filling it, so the sum is a net, signed amount (here the tank has a “start” line when that can happen).</p>' +
@@ -787,7 +800,7 @@
       svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.setAttribute('width', W); svg.setAttribute('height', H);
       G = geo(W, H); lastWH = W + 'x' + H;
       seg.style.left = G.segX + 'px'; seg.style.top = G.segY + 'px';
-      drawStatic(); if(!S.to) target(false); draw(); draw();
+      drawStatic(); if(!S.to) target(false); draw(); measureCtl(); draw();
       if(cue.active()) cue.place(); if(cue2.active()) cue2.place();
     }
     if(window.ResizeObserver){ var rt = 0; new ResizeObserver(function(){ var r = scene.getBoundingClientRect(); if(Math.round(r.width) + 'x' + Math.round(r.height) === lastWH) return; cancelAnimationFrame(rt); rt = requestAnimationFrame(layout); }).observe(scene); }
@@ -812,7 +825,13 @@
       setTimeout(function(){ layout(); settleSoon(); if(!tour.active() && !tour2.active()) cueShow(); }, 40);
     }
     return {
-      kit2: function(pane, s){ LS = s; boot(); return { stage: stage, ref: ref }; },
+      kit2: function(pane, s){
+        LS = s; boot();
+        // "?" opened over the stage: a running fill pauses (it goes on from there with the button)
+        var sh = s.root && s.root.querySelector('.ls-sheet');
+        if(window.MutationObserver && sh) new MutationObserver(function(){ if(!sh.hidden && fillP.playing()) fillP.stop(); }).observe(sh, { attributes: true, attributeFilter: ['hidden'] });
+        return { stage: stage, ref: ref };
+      },
       plain: function(){ host.appendChild(stage); host.appendChild(ref); boot(); },
       shown: shown, stop: stopAll, redraw: function(){ layout(); },
       // for the sweep test and the browser checks only: exposed as window.ApCalcRiemannSums only when the test sets

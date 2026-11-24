@@ -85,7 +85,7 @@
 .ls-root .ls-drill-stage .rs-qfig figcaption{padding-right:52px;}
 
 /* ============================================================ Explore, tools v2 (docs/tools-v2-calc-riemann-sums-brief.md)
-   One colour per idea: the water in the columns and the tank blue; a column below the axis (a negative term) reddish
+   One color per idea: the water in the columns and the tank blue; a column below the axis (a negative term) reddish
    purple; area a sum counts extra orange, area it misses green; the curve and "exact" ink. Lighter in dark mode. */
 .rs2{--rs-w0:#8DCDF2;--rs-w1:#3D97D0;--rs-wtop:#0B5E91;--rs-n0:#E2A5C8;--rs-n1:#B9578F;--rs-ntop:#7C2E5C;
   --rs-extra:#E07B00;--rs-extra-ink:#A55200;--rs-miss:#009E73;--rs-miss-ink:#00704F;--rs-sum-ink:#0B5E91;--rs-neg-ink:#8E3A6C;
