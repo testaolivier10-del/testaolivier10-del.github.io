@@ -48,6 +48,7 @@ States: building, review, fixing, recheck, PASS (waiting to integrate), integrat
 | AP Stats interval capture | claude/tools-v2-stat-ci-capture | wt-stat-ci | integrated | first AP Stats tool on the kit: adapter `ApStatTools.studioKit2`, `"kit2": true` for this page only; sweep `scripts/tools-v2/stat-ci-capture-sweep.mjs` (`--frames`, `--perf`) |
 | AP Physics 1 torque balance | claude/tools-v2-phys-torque-balance | wt-phys-torque | integrated | first physics tool on kit2: adapter `ApPhysTools.studioKit2` (Test yourself stays on the shared drill); sweep `scripts/tools-v2/phys-torque-balance-sweep.mjs` (`--frames`, `--perf`) |
 | AP Chem buffers | claude/tools-v2-chem-buffers | wt-chem-buffers | integrated | buffer and water beakers, droppers, meters from the drawn particles (`ApChemMath.bufferMeter`); drill as Test yourself (`placed` part); sweep `scripts/tools-v2/chem-buffers-sweep.mjs` (`--frames`, `--perf`) |
+| AP Precalc function lab | claude/tools-v2-pcalc-function-lab | wt-pcalc-fn | integrated | first AP Precalc tool on the kit: adapter `ApPrecalcTools.studioKit2`, `kit2` links in `build-apprecalc.mjs`; kept sweep, frames and perf `scripts/tools-v2/pcalc-function-lab-*.mjs` |
 
 2026-11-19: `main` merged in after PR #228 (ochem frame cleanup: chipPicker, scrollChips and .ls-chips-hidden gone; the v2
 conformations, resonance and arrow pusher kept, kit2 kept). Ochem viewer 3d had `main` merged
@@ -65,6 +66,9 @@ Before the final merge:
 - Time flowcharts after the glove polish on a quiet machine (p95 at CPU x4 was 66 to 133 ms under load).
 - Re-time the reaction predictor's single frames at a flask change on a quiet machine.
 - Test the A&P anatomy 3d frame rate on a real phone.
+- Re-time the Precalc function lab drags at 390 on a quiet machine (recheck 2 saw about 20 to 30% more script time
+  than round 0 under load, likely the leader search).
+- Re-time AP Chem buffers at 1440 and Q vs K piston drag on a quiet machine.
 - Time the scenario sim at 390 and 1440 on a quiet machine (under load its p95 swings above the
   flagship's; on the quiet machine in recheck 1 both were under 50 ms).
 - `node scripts/build-body-figures.mjs --check` reports "stale" on main, on tools-v2-all and on the scenario sim

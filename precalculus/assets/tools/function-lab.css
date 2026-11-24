@@ -113,3 +113,108 @@
 
 /* Review (tools-exams): in the drill figure a vertical or horizontal line is an asymptote (or a guide), never part of the graph: dashed. */
 .fl-figwrap .cd-marks line.cd-right{stroke-dasharray:7 5;}
+
+/* ===================================================== Explore, tools v2 (docs/tools-v2-pcalc-function-lab-brief.md)
+   A pegboard with a steel wire: the wire is g, a thin grey wire behind it is the parent f, the holes are the grid and
+   the painted lines the axes. The square pin (h, k) is the course green (moving); the round pin (a, b) vermillion
+   (stretching and flipping); the beads keep the key points' colours; the asymptotes are thin red threads. The old
+   rules above stay for Test yourself's figures. Light and dark. */
+.fl2,.fl2-ref{--fl2-move:var(--cink,#11592F);--fl2-move-ink:var(--cink,#11592F);--fl2-size:#D55E00;--fl2-size-ink:#A84800;--fl2-asym:#A83B2C;
+  --fl2-board:#D9B98C;--fl2-board2:#CBA675;--fl2-hole:#5A4128;--fl2-hole-l:#F3DFC0;--fl2-gridc:rgba(80,52,20,.10);--fl2-paint:#2A221A;--fl2-tick:#3B2E20;
+  --fl2-w0:#9A6B3C;--fl2-w1:#7A5028;--fl2-w2:#5E3B1B;--fl2-l0:rgba(255,248,232,.30);--fl2-l1:rgba(60,35,10,.10);
+  --fl2-wd:#26313C;--fl2-wm:#8D9AA7;--fl2-wh:#F4F7FA;--fl2-ws:rgba(45,25,5,.30);--fl2-par:#5D5852;--fl2-pars:rgba(45,25,5,.16);
+  --fl2-c0:#0072B2;--fl2-c1:#CC79A7;--fl2-c2:#B07800;--fl2-c3:#7A4F9E;--fl2-c4:#009E73;--fl2-lab:#FFFFFF;--fl2-labf:#F3EEE6;}
+.fl2{display:flex;flex-direction:column;gap:10px;min-height:0;flex:1 1 auto;}
+:root[data-theme="dark"] .fl2,:root[data-theme="dark"] .fl2-ref{--fl2-move:#7FE0A6;--fl2-move-ink:#9BE8B8;--fl2-size:#F29A5C;--fl2-size-ink:#F6B98C;--fl2-asym:#F08A78;
+  --fl2-board:#4A3826;--fl2-board2:#3E2E1F;--fl2-hole:#140D07;--fl2-hole-l:#7A6047;--fl2-gridc:rgba(255,230,190,.07);--fl2-paint:#F1E6D4;--fl2-tick:#EADCC6;
+  --fl2-w0:#4A321C;--fl2-w1:#3A2614;--fl2-w2:#2A1A0C;--fl2-l0:rgba(255,230,190,.08);--fl2-l1:rgba(0,0,0,.18);
+  --fl2-wd:#0C1116;--fl2-wm:#AEBBC8;--fl2-wh:#FFFFFF;--fl2-ws:rgba(0,0,0,.45);--fl2-par:#B9B2A6;--fl2-pars:rgba(0,0,0,.30);
+  --fl2-c0:#6CB8EC;--fl2-c1:#E7A5CA;--fl2-c2:#F0C04A;--fl2-c3:#C3A3E0;--fl2-c4:#5FD1AE;--fl2-lab:#1A2230;--fl2-labf:#262C35;}
+.fl2[hidden],.fl2 [hidden]{display:none !important;}
+.fl2 .tk2-head{gap:6px 12px;}
+.fl2-pick{display:inline-flex;align-items:center;gap:8px;flex:none;font:800 14px var(--font-ui);color:var(--muted);}
+.fl2-sel{min-height:38px;max-width:220px;padding:4px 30px 4px 10px;border:1.5px solid var(--line);border-radius:10px;background-color:var(--white);color:var(--ink);font:800 14px var(--font-ui);}
+.fl2-sel:focus-visible{outline:3px solid var(--cink);outline-offset:1px;}
+.fl2-scene{position:relative;flex:1 1 auto;min-height:380px;border-radius:16px;overflow:hidden;background:var(--fl2-w1);box-shadow:0 2px 4px rgba(40,25,10,.18),0 10px 26px rgba(40,25,10,.16);}
+.fl2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;touch-action:pan-y;}
+.fl2-bg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);pointer-events:none;user-select:none;-webkit-user-select:none;}
+.fl2-svg{will-change:transform;}
+.fl2-svg.is-fade .fl2-dyn,.fl2-svg.is-fade .fl2-labs{animation:fl2-fade .22s ease-out;}
+@keyframes fl2-fade{from{opacity:.25;}to{opacity:1;}}
+/* the stage fits the screen's height (the pins, the board and the cause line in view at once) */
+@media (max-width:999.98px){ .fl2-scene{flex:none;height:clamp(340px,calc(100vh - 340px),640px);height:clamp(340px,calc(100svh - 340px),640px);min-height:0;} }
+@media (max-width:640px){ .fl2-scene{border-radius:12px;height:clamp(330px,calc(100svh - 360px),560px);} .fl2{gap:8px;} .fl2-pick-k{display:none;} .fl2-sel{max-width:170px;font-size:13.5px;} }
+.fl2-lines{display:flex;align-items:center;justify-content:space-between;gap:6px 14px;flex-wrap:wrap;flex:none;}
+.fl2-acts{display:flex;align-items:center;gap:8px;flex:none;margin-left:auto;}
+.fl2-reset{min-height:36px;padding:0 12px;border:1.5px solid var(--line);border-radius:999px;background:var(--white);color:var(--ink);font:800 13.5px var(--font-ui);cursor:pointer;}
+.fl2-reset:hover{border-color:var(--cink);}
+.fl2-reset:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.fl2 .tk2-cz.is-move{--cz:var(--fl2-move);--cz-ink:var(--fl2-move-ink);}
+.fl2 .tk2-cz.is-size{--cz:var(--fl2-size);--cz-ink:var(--fl2-size-ink);}
+/* the pins: the square one (h, k) in the course green, the round one (a, b) in vermillion */
+.fl2 .fl2-hk .tk2-dot{border-radius:8px;}
+.fl2 .fl2-ab .tk2-dot{box-shadow:0 0 0 3px var(--fl2-size),0 3px 8px rgba(11,26,51,.32);color:var(--fl2-size-ink);}
+.fl2 .fl2-ab.is-focus .tk2-dot{box-shadow:0 0 0 3px var(--fl2-size),0 0 0 6px var(--white),0 0 0 9px var(--fl2-size);}
+.fl2 .fl2-ab .tk2-tag{background:var(--fl2-size-ink);}
+.fl2 .fl2-ab.is-new .tk2-dot::after{border-color:var(--fl2-size);}
+:root[data-theme="dark"] .fl2 .tk2-tag{color:#10170F;}
+:root[data-theme="dark"] .fl2 .fl2-ab .tk2-tag{color:#1B0E03;}
+/* the round pin waits, small and quiet, until the square pin has been used (one thing to touch first) */
+.fl2 .fl2-ab.is-wait .tk2-dot{width:22px;height:22px;box-shadow:0 0 0 2.5px color-mix(in srgb, var(--fl2-size) 75%, transparent),0 1px 3px rgba(11,26,51,.25);}
+.fl2 .fl2-ab.is-wait .tk2-ar{width:13px;height:13px;}
+.fl2 .fl2-ab.is-wait .tk2-dot::after,.fl2 .fl2-ab.is-wait .tk2-chip{display:none;}
+.fl2 .tk2-dot .tk2-ar{stroke-width:2.3;}
+/* the board */
+.fl2s-w0{stop-color:var(--fl2-w0);} .fl2s-w1{stop-color:var(--fl2-w1);} .fl2s-w2{stop-color:var(--fl2-w2);}
+.fl2s-l0{stop-color:var(--fl2-l0);} .fl2s-l1{stop-color:var(--fl2-l1);}
+.fl2-frame-hi{fill:none;stroke:rgba(255,235,200,.28);stroke-width:1;}
+.fl2-board{fill:var(--fl2-board);}
+.fl2-inset{fill:none;stroke:rgba(40,22,6,.45);stroke-width:1.5;}
+.fl2-grid{fill:none;stroke:var(--fl2-gridc);stroke-width:1;}
+.fl2-hole{fill:var(--fl2-hole);}
+.fl2-hole-l{fill:var(--fl2-hole-l);opacity:.75;}
+.fl2-axis{fill:none;stroke:var(--fl2-paint);stroke-width:2;stroke-opacity:.82;stroke-linecap:round;}
+.fl2-axhead{fill:var(--fl2-paint);fill-opacity:.82;}
+.fl2-tick{font:800 12px var(--font-ui);fill:var(--fl2-tick);font-variant-numeric:tabular-nums;paint-order:stroke;stroke:var(--fl2-board);stroke-width:3.5px;stroke-linejoin:round;}
+.fl2-axl{font:italic 900 14px var(--font-ui);fill:var(--fl2-tick);paint-order:stroke;stroke:var(--fl2-board);stroke-width:3.5px;}
+/* the wires: the parent thin and matte behind, g bright steel with a shadow on the board */
+.fl2-pshadow{fill:none;stroke:var(--fl2-pars);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;transform:translate(1.5px,2px);}
+.fl2-parent{fill:none;stroke:var(--fl2-par);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;}
+.fl2-wshadow{fill:none;stroke:var(--fl2-ws);stroke-width:6;stroke-linecap:round;stroke-linejoin:round;transform:translate(3px,4.5px);}
+.fl2-wire-d{fill:none;stroke:var(--fl2-wd);stroke-width:6;stroke-linecap:round;stroke-linejoin:round;}
+.fl2-wire-m{fill:none;stroke:var(--fl2-wm);stroke-width:3.6;stroke-linecap:round;stroke-linejoin:round;}
+.fl2-wire-m.is-old{stroke:var(--fl2-wd);stroke-width:5;}
+.fl2-wire-h{fill:none;stroke:var(--fl2-wh);stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:.85;transform:translate(-.6px,-.9px);}
+.fl2-asym-l{stroke:var(--fl2-asym);stroke-width:1.6;}
+.fl2-asym-s{stroke:var(--fl2-ws);stroke-width:1.4;opacity:.6;}
+/* beads on g and the matching points on f */
+:is(.fl2,.fl2-ref) .c0{--c:var(--fl2-c0);} :is(.fl2,.fl2-ref) .c1{--c:var(--fl2-c1);} :is(.fl2,.fl2-ref) .c2{--c:var(--fl2-c2);} :is(.fl2,.fl2-ref) .c3{--c:var(--fl2-c3);} :is(.fl2,.fl2-ref) .c4{--c:var(--fl2-c4);}
+.fl2-bead-b{fill:var(--c);stroke:var(--fl2-wd);stroke-width:1.4;}
+.fl2-bead-h{fill:#fff;opacity:.75;}
+.fl2-bead.is-open .fl2-bead-b{fill:var(--fl2-board);stroke:var(--c);stroke-width:2.6;}
+.fl2-bead.is-open .fl2-bead-h{display:none;}
+.fl2-pdot{fill:var(--c);stroke:var(--fl2-board);stroke-width:1.6;}
+.fl2-pdot.is-open{fill:var(--fl2-board);stroke:var(--c);stroke-width:2.2;}
+.fl2-arw line{stroke:var(--c);stroke-width:1.8;stroke-linecap:round;}
+.fl2-arw path{fill:var(--c);}
+.fl2-pinshadow{fill:rgba(40,22,6,.28);}
+:root[data-theme="dark"] .fl2-pinshadow{fill:rgba(0,0,0,.45);}
+/* labels on the board, on soft pills */
+.fl2-lab rect{fill:var(--fl2-lab);stroke:color-mix(in srgb, var(--fl2-wd) 45%, transparent);stroke-width:1.2;}
+.fl2-lab text{font:800 13.5px var(--font-ui);fill:var(--ink);text-anchor:middle;dominant-baseline:central;}
+.fl2-lab tspan.is-move{fill:var(--fl2-move-ink);font-weight:900;}
+.fl2-lab tspan.is-size{fill:var(--fl2-size-ink);font-weight:900;}
+.fl2-lab.is-f rect{fill:var(--fl2-labf);stroke:color-mix(in srgb, var(--fl2-par) 55%, transparent);}
+.fl2-lab.is-f text{fill:var(--muted);font-weight:800;}
+.fl2-lab.is-a rect{stroke:var(--fl2-asym);}
+.fl2-lab.is-a text{fill:var(--fl2-asym);font-size:12.5px;}
+@media (max-width:640px){ .fl2-lab text{font-size:12.5px;} .fl2-lab.is-a text{font-size:11.5px;} .fl2-tick{font-size:11.5px;} }
+/* "?" */
+.fl2-tbl td:first-child{white-space:nowrap;}
+.fl2-sw{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--c);vertical-align:-1px;box-shadow:0 0 0 1.5px var(--fl2-wd);}
+.fl2-ref .fl-feats dt{font-weight:800;}
+.fl2-lead{stroke:var(--fl2-wd);stroke-width:1.6;stroke-linecap:round;}
+.fl2-lab.is-f .fl2-lead{stroke:var(--fl2-par);}
+.fl2-lab.is-a .fl2-lead{display:none;}
+/* the pins follow the drawn wire every frame: no transition (the site's reduced-motion 0.01 ms one would leave a knob a frame behind) */
+.fl2 .tk2-handle .tk2-knob,.fl2 .tk2-handle .tk2-tag,.fl2 .tk2-handle .tk2-chip{transition:none !important;}

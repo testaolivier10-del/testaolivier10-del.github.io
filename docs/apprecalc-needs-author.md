@@ -473,3 +473,13 @@ Function lab's drill draws a horizontal asymptote labelled with its value only (
 `markSvg` label; rate of change asks for "the later rate minus the earlier one" (reworded from "go up by", which read
 oddly when the change is negative). Cosmetic; confirm or adjust.
 
+
+### tools-v2-function-lab-words: plain words in the Function lab's cause line (open, 2026-11-24)
+
+The v2 Explore (`docs/tools-v2-pcalc-function-lab-brief.md`) says what a free drag did in plain words: "a = 2 → twice
+as tall", "b = 0.5 → twice as wide", "a = −1.5 → flipped upside down, 1.5 times as tall", "b = −2 → flipped left to
+right, half as wide", "h = 2, k = −1 → every point right 2, down 1". Show the steps and "?" use the CED's terms
+(horizontal and vertical dilation by a factor of 1/|b| and |a|, reflection over the y-axis and the x-axis, translation).
+"Flipped upside down" in a drag is a reflection over y = k (and "left to right" over x = h), so the axis words would not
+match the picture there. Confirm the plain words are acceptable beside the CED terms, or give the wording to use. No
+calculus words are used.
