@@ -1,24 +1,22 @@
-/* Slope fields trainer (simulator; docs/apcalc-spec.md section 6). OWNED BY
-   THIS TOOL ONLY. The model is ApCalcMath.slopeFields
-   (calculus/assets/tools/math/slope-fields.js); axes and ticks come from
-   ApCalcPlot (calc-plot.js), math text from ApCalcTex (calc-math.js), the
-   frame from ApCalcTools.modes (Explore, then Test yourself) on the Tool
-   Studio.
+/* Slope fields, tools v2 (docs/tools-v2-calc-slope-fields-brief.md; the standard: docs/tools-v2-standard.md). On the
+   shared kit (assets/course/tool-kit2.js) through the course adapter ApCalcTools.studioKit2, after the Tangent tracer
+   and the Limit explorer. OWNED BY THIS TOOL ONLY. The model is ApCalcMath.slopeFields
+   (calculus/assets/tools/math/slope-fields.js, unchanged); tick values come from ApCalcPlot (calc-plot.js), math
+   text from ApCalcTex (calc-math.js). Styles: slope-fields.css.
 
-   Explore: the slope field of a gallery equation on the stage, a draggable
-   starting point whose solution curve is traced (adaptive Runge-Kutta) both
-   ways across the field, the exact particular solution dashed over it, tap
-   a grid point for its slope worked out. Dock: the equation chips, k for
-   growth/decay and cooling, "Exact solution" and "Start over". Why: what
-   the curve does and why. Details: the separation of variables through the
-   point, the numbers, the field density and T_a.
+   EXPLORE (free play, nothing graded, no side panel): a river seen from above on the exact grid. Every field segment
+   is a short current streak with the slope dy/dx at its center; an equilibrium solution is a calm line. The main
+   control is the leaf (the starting point; drag it, tap the water, or use the arrow keys): the solution through it
+   is drawn at once both ways, and when you let go the leaf floats forward along it to the edge. The equation picker
+   sits by "Show me how" (y - 2, xy, x / y, x + y, ky, cooling); k (and the room temperature for cooling) are quiet
+   knobs on the picture; "Check with the formula" draws the particular solution as a thin solid line. The cause line
+   (K.cause) works out the slope at the leaf and says where the solution goes; "?" holds the numbers, the separation
+   of variables through the point, why, and the keys.
 
-   Test yourself: ApCalcTools.drill with six kinds (slopes, match, sketch,
-   separate, concavity, exp). The sketch step is a choice step whose four
-   options (follows the field, wrong way, crosses an equilibrium, drifts
-   off) are hidden and set by the student's dragged curve through
-   ApCalcMath.slopeFields.sketchGrade, so the first try is recorded like any
-   other step and the feedback names the slip. */
+   TEST YOURSELF (unchanged): ApCalcTools.drill with six kinds (slopes, match, sketch, separate, concavity, exp). The
+   sketch step is a choice step whose four options (follows the field, wrong way, crosses an equilibrium, drifts off)
+   are hidden and set by the student's dragged curve through ApCalcMath.slopeFields.sketchGrade, so the first try is
+   recorded like any other step and the feedback names the slip. Records slope-fields:<context>:<step>. */
 (function(){
   'use strict';
   var T = window.ApCalcTools, M = window.ApCalcMath, P = window.ApCalcPlot;
@@ -95,213 +93,720 @@
     return { opts: o, el: g, set: set, rebind: rebind, get: function(){ return [x, y]; }, lock: function(v){ g.setAttribute('aria-disabled', v ? 'true' : 'false'); g.classList.toggle('is-locked', !!v); } };
   }
 
-  T.mount('slope-fields', function(app, data){
-    var ex = null;
-    T.modes(app, { slug: 'slope-fields', explore: function(h){ ex = explore(h, data); }, quiz: function(h){ quiz(h, data); },
-      studio: { explore: function(pane, s){ ex.studio(pane, s); } } });
-  });
+  /* ============================================================= explore (tools v2) */
+  /* docs/tools-v2-calc-slope-fields-brief.md. A river seen from above on the exact grid: every field segment is a short
+     current streak (its slope the segment's slope), an equilibrium solution is a calm line, and the student drops a
+     leaf: the solution through it is drawn at once, both ways, and on release the leaf floats forward along it. */
+  var uid = 0;
+  var KEY = 'apcalc-slope-fields';
+  var EQS = [
+    { id: 'y-2', label: 'y′ = y − 2' },
+    { id: 'xy', label: 'y′ = xy' },
+    { id: 'x/y', label: 'y′ = x / y' },
+    { id: 'x+y', label: 'y′ = x + y' },
+    { id: 'ky', label: 'y′ = ky, growth' },
+    { id: 'cool', label: 'Cooling coffee' }];
+  // where each equation starts in Explore (y − 2 starts above the calm line, so the leaf floats away from it)
+  var START = { 'y-2': [-2, 2.5], 'xy': [-2, 0.5], 'x/y': [1, 2], 'x+y': [-1, 1], 'ky': [0, 2], 'cool': [0, 90] };
+  function el(tag, cls){ var e = document.createElement(tag); if(cls) e.className = cls; return e; }
+  function cl(v, a, b){ return Math.max(a, Math.min(b, v)); }
+  function r1(v){ return Math.round(v * 10) / 10; }
+  function pn(v){ return v < 0 ? '(' + clean(v) + ')' : clean(v); }
+  /* "= 0.5" when two decimals are exact, "≈ 0.33" when they are not */
+  function eqv(m){ return (Math.abs(m - Math.round(m * 100) / 100) > 1e-9 ? '≈ ' : '= ') + clean(m); }
+  var MEAS = null, MW = {};
+  /* the drawn width of a label: measured once in a hidden svg text with the label's own font */
+  function textW(s, px){
+    var k = px + '|' + s; if(MW[k]) return MW[k];
+    if(!MEAS || !MEAS.isConnected){ var sv = document.createElementNS(NS, 'svg'); sv.setAttribute('class', 'calc-plot'); sv.setAttribute('aria-hidden', 'true'); sv.style.cssText = 'position:absolute;left:-9999px;top:0;width:10px;height:10px;visibility:hidden'; MEAS = document.createElementNS(NS, 'text'); MEAS.setAttribute('class', 'sf2-lab'); sv.appendChild(MEAS); document.body.appendChild(sv); }
+    MEAS.style.fontSize = px + 'px'; MEAS.textContent = s;
+    var w = MEAS.getComputedTextLength ? MEAS.getComputedTextLength() : 0;
+    if(!(w > 0)) return s.length * px * 0.62;
+    return (MW[k] = w + 2);
+  }
 
-  /* =========================================================== explore */
   function explore(host, data){
-    var id = 'x+y', d = S.de(id), params = {}, x0, y0, exactOn = true, density = 13, dEff = 13, sel = null, LS = null, touched = false, F = null, svg = null, H = null, view = null, fn = null;
+    var K = window.LevlKit2, nid = 'sf2-' + (++uid);
+    var params = {};
     S.GALLERY.forEach(function(g){ if(g.params) params[g.id] = JSON.parse(JSON.stringify(g.params)); });
-    var nid = T.nid('sf');
-    function $(q){ return host.querySelector(q) || (LS ? LS.root.querySelector(q) : null); }
-    var CHIP = { 'x+y': 'x + y', 'x/y': 'x / y', 'xy': 'xy', 'y-2': 'y − 2', 'ky': 'ky', 'cool': 'Cooling' };
-    host.innerHTML = '<section class="bt-problem sf-card" aria-labelledby="' + nid + '-h"><h2 id="' + nid + '-h" class="sr-only">Slope field explorer</h2>' +
-      '<div class="sf-fig"><p class="sf-eq"></p><div class="sf-plot"></div></div>' +
-      '<div class="sf-ctl"><div class="sf-chips ls-scroll" role="group" aria-label="Differential equation">' + S.GALLERY.map(function(g){ return '<button type="button" class="tchip sf-chip" data-id="' + g.id + '" aria-pressed="false">' + esc(CHIP[g.id]) + '</button>'; }).join('') + '</div>' +
-      '<div class="sf-k"></div><div class="bt-buttons sf-btns"><button type="button" class="bt-btn sf-exact" aria-pressed="true">Exact solution</button><button type="button" class="bt-btn sf-reset">Start over</button></div></div>' +
-      '<div class="sf-say"></div>' +
-      T.moreHtml('<div class="sf-more-b"></div><p class="bt-small">Keyboard: focus the starting point, then arrow keys move it (Shift moves faster); Enter shows the slope at that point.</p>', 'field density, room temperature') +
-      '<div class="sf-steps"></div><div class="sf-nums"></div><p class="sr-only sf-live"></p></section>';
-    var say = T.announcer($('.sf-live'));
-    var cue = T.cue('Drag the dot: the solution through it follows the segments. Tap any grid point to see its slope.');
-    $('.sf-ctl').insertBefore(cue.el, $('.sf-ctl').firstChild);
-    var kSl = null, taSl = null;
-    var dens = T.choiceSelect({ label: 'Field density', options: [{ value: 9, label: 'Sparse' }, { value: 13, label: 'Normal' }, { value: 19, label: 'Dense' }], value: 13, onChange: function(v){ density = +v; build(); } });
-    dens.el.classList.add('bt-inline');
-    $('.sf-more-b').appendChild(dens.el);
-    var taWrap = document.createElement('div'); taWrap.className = 'sf-ta'; $('.sf-more-b').appendChild(taWrap);
-    host.querySelectorAll('.sf-chip').forEach(function(b){ b.addEventListener('click', function(){ act(); pick(b.getAttribute('data-id')); }); });
-    $('.sf-exact').addEventListener('click', function(){ act(); exactOn = !exactOn; this.setAttribute('aria-pressed', String(exactOn)); update(); });
-    $('.sf-reset').addEventListener('click', function(){ act(); x0 = d.start[0]; y0 = d.start[1]; sel = null; if(H) H.set(x0, y0); update(); });
-    function act(){ if(!touched){ touched = true; cue.done(); } }
-    function fns(){ return S.fns(d, params[id]); }
-    function pick(nextId){
-      id = nextId; d = S.de(id); view = d.view; x0 = d.start[0]; y0 = d.start[1]; sel = null;
-      fn = fns();
-      host.querySelectorAll('.sf-chip').forEach(sync); if(LS) LS.root.querySelectorAll('.sf-chip').forEach(sync);
-      // k for growth/decay and cooling, in the dock; T_a in More options
-      var kw = $('.sf-k'); kw.innerHTML = ''; kSl = null;
-      if(d.model === 'exp') kSl = T.slider({ label: 'Growth constant k', min: -0.5, max: 0.5, step: 0.05, value: params.ky.k, decimals: 2, onInput: function(v){ act(); params.ky.k = v; fn = fns(); build(); } });
-      if(d.model === 'cool') kSl = T.slider({ label: 'Cooling constant k (per minute)', min: 0.02, max: 0.2, step: 0.01, value: params.cool.k, decimals: 2, onInput: function(v){ act(); params.cool.k = v; fn = fns(); build(); } });
-      if(kSl) kw.appendChild(kSl.el);
-      taWrap.innerHTML = ''; taSl = null;
-      if(d.model === 'cool'){ taSl = T.slider({ label: 'Room temperature T_a (°C)', min: 0, max: 40, step: 1, value: params.cool.Ta, decimals: 0, onInput: function(v){ params.cool.Ta = v; fn = fns(); build(); } }); taWrap.appendChild(taSl.el); }
-      $('.sf-eq').innerHTML = tex(eqTex(), { display: false });
-      build();
-    }
-    function sync(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-id') === id)); }
-    function eqTex(){
-      var p = params[id] || {};
-      if(id === 'ky') return '\\frac{dy}{dt} = ' + String(+p.k.toFixed(2)) + 'y';
-      if(id === 'cool') return '\\frac{dT}{dt} = -' + String(+p.k.toFixed(2)) + '(T - ' + p.Ta + ')';
-      return '\\frac{dy}{dx} = ' + d.tex;
-    }
-    /* A view with the same span across and up (x + y, x/y, xy, y − 2) is
-       widened along the longer side of the box, so one unit across is as
-       long as one unit up and a slope of 1 is drawn at 45 degrees. */
-    function squareView(v, w, h){
-      var sx = v.x[1] - v.x[0], sy = v.y[1] - v.y[0];
-      if(Math.abs(sx - sy) > 1e-9) return v;
-      var iw = w - 48, ih = h - 40, cx = (v.x[0] + v.x[1]) / 2, cy = (v.y[0] + v.y[1]) / 2;
-      var snap = function(c, half){ return [c - half, c + half]; };
-      if(iw > ih) return { x: snap(cx, sx / 2 * iw / ih), y: v.y.slice() };
-      return { x: v.x.slice(), y: snap(cy, sy / 2 * ih / iw) };
-    }
+    var st = { id: 'y-2', x0: START['y-2'][0], y0: START['y-2'][1], exact: false, mode: 'explore', ride: null, took: null, ready: false, drawn: null, fadeLeaf: null };
+    var G = null, LS = null, d = S.de(st.id), fn = S.fns(d, params[d.id]);
     function xv(){ return d.xv || 'x'; } function yv(){ return d.yv || 'y'; }
-    function clamp(x, y){
-      var sn = d.snap, X = Math.round(x / sn[0]) * sn[0], Y = Math.round(y / sn[1]) * sn[1];
-      X = Math.max(view.x[0], Math.min(view.x[1], +X.toFixed(6))); Y = Math.max(view.y[0], Math.min(view.y[1], +Y.toFixed(6)));
-      if(!isFinite(fn.f(X, Y))) Y = +(Y + sn[1]).toFixed(6); // x/y is undefined on y = 0
+    function prm(){ return params[st.id] || {}; }
+    function snap(){ return d.snap; }
+
+    /* ---------------------------------------------------- the stage */
+    var stage = el('div', 'sf2');
+    var head = K.head({ purpose: '', how: { label: 'Show me how', onClick: function(){ startTour(); } } });
+    var pickWrap = el('label', 'sf2-pick'), pick = el('select', 'sf2-sel');
+    pickWrap.innerHTML = '<span class="sf2-pick-k">Equation</span>';
+    pick.setAttribute('aria-label', 'Differential equation');
+    EQS.forEach(function(q){ var op = document.createElement('option'); op.value = q.id; op.textContent = q.label; pick.appendChild(op); });
+    pick.value = st.id;
+    pickWrap.appendChild(pick);
+    head.el.insertBefore(pickWrap, head.how);
+    stage.appendChild(head.el);
+    var scene = el('div', 'sf2-scene'); scene.id = nid + '-scene';
+    scene.innerHTML = '<svg class="sf2-svg calc-plot" role="img" aria-label="" xmlns="' + NS + '" data-ls-text="keep"><defs></defs><g class="sf2-static"></g><g class="sf2-fieldg"></g><g class="sf2-dyn"></g><g class="sf2-leafg"></g><g class="sf2-labs"></g></svg>';
+    stage.appendChild(scene);
+    var svg = scene.querySelector('svg'), defs = svg.querySelector('defs'), gS = svg.querySelector('.sf2-static'), gF = svg.querySelector('.sf2-fieldg'),
+      gD = svg.querySelector('.sf2-dyn'), gL = svg.querySelector('.sf2-leafg'), gT = svg.querySelector('.sf2-labs');
+    var layer = K.layer(scene);
+    var lines = el('div', 'sf2-lines'), cause = K.cause({ label: 'Why' });
+    lines.appendChild(cause.el);
+    var checkB = el('button', 'sf2-check'); checkB.type = 'button'; checkB.setAttribute('aria-pressed', 'false'); checkB.textContent = 'Check with the formula';
+    lines.appendChild(checkB);
+    stage.appendChild(lines);
+    var live = el('p', 'tk2-sr'); live.setAttribute('aria-live', 'polite'); stage.appendChild(live);
+    function say(t){ live.textContent = ''; setTimeout(function(){ live.textContent = t; }, 40); }
+
+    /* the leaf: one group, moved by its transform (never rebuilt while it floats) */
+    gL.innerHTML = '<g class="sf2-wake"><path d="M-17 -2 L-31 -9 M-17 2 L-31 9"/></g><g class="sf2-leaf"><path class="sf2-leaf-b" d="M-15 0 C-9 -8.5 7 -8.5 15 0 C7 8.5 -9 8.5 -15 0 Z"/><path class="sf2-leaf-r" d="M-13 0 L13 0 M-4 0 L1 -4.5 M3 0 L8 -3.5 M-4 0 L1 4.5 M3 0 L8 3.5"/><path class="sf2-leaf-s" d="M-15 0 L-20 1.5"/></g>' +
+      '<g class="sf2-leaf sf2-leaf2" opacity="0"><path class="sf2-leaf-b" d="M-15 0 C-9 -8.5 7 -8.5 15 0 C7 8.5 -9 8.5 -15 0 Z"/><path class="sf2-leaf-r" d="M-13 0 L13 0 M-4 0 L1 -4.5 M3 0 L8 -3.5 M-4 0 L1 4.5 M3 0 L8 3.5"/><path class="sf2-leaf-s" d="M-15 0 L-20 1.5"/></g>';
+    var leafE = gL.querySelector('.sf2-leaf'), leaf2 = gL.querySelector('.sf2-leaf2'), wake = gL.querySelector('.sf2-wake');
+
+    /* ---------------------------------------------------- geometry */
+    function hasK(){ return d.model === 'exp' || d.model === 'cool'; }
+    function geo(W, H){
+      var narrow = W < 560, g = { W: W, H: H, narrow: narrow };
+      var pl = narrow ? 52 : 60, pr = 24, pt = hasK() ? (narrow ? 52 : 56) : (narrow ? 32 : 34), pb = 30;
+      var L = pl, T = pt, R = W - pr, B = H - pb, iw = R - L, ih = B - T, v = d.view;
+      // equal spans across and up (every equation but the two models): one unit across is as long as one unit up
+      var sx = v.x[1] - v.x[0], sy = v.y[1] - v.y[0], x = v.x.slice(), y = v.y.slice();
+      if(Math.abs(sx - sy) < 1e-9 && !hasK()){
+        var cx = (x[0] + x[1]) / 2, cy = (y[0] + y[1]) / 2;
+        if(iw > ih) x = [cx - sx / 2 * iw / ih, cx + sx / 2 * iw / ih]; else y = [cy - sy / 2 * ih / iw, cy + sy / 2 * ih / iw];
+        // snap the window to the grid step so the start point's clamp stays on the 0.1 grid
+        x = [Math.ceil(x[0] * 10 - 1e-9) / 10, Math.floor(x[1] * 10 + 1e-9) / 10]; y = [Math.ceil(y[0] * 10 - 1e-9) / 10, Math.floor(y[1] * 10 + 1e-9) / 10];
+      }
+      g.view = { x: x, y: y };
+      g.A = { L: L, T: T, R: R, B: B, W: iw, H: ih,
+        sx: function(t){ return L + (t - x[0]) / (x[1] - x[0]) * iw; }, sy: function(t){ return T + (y[1] - t) / (y[1] - y[0]) * ih; },
+        ix: function(p){ return x[0] + (p - L) / iw * (x[1] - x[0]); }, iy: function(p){ return y[1] - (p - T) / ih * (y[1] - y[0]); } };
+      g.kx = iw / (x[1] - x[0]); g.ky = ih / (y[1] - y[0]);
+      // the field: about one streak every 44 px (36 on a phone), each at least 14 px long
+      var sp = narrow ? 32 : 44, stx = nice(sp / g.kx), sty = nice(sp / g.ky);
+      g.grid = { sx: stx, sy: sty, xs: steps(x, stx), ys: steps(y, sty) };
+      g.half = Math.max(7, 0.34 * Math.min(stx * g.kx, sty * g.ky));
+      return g;
+    }
+    /* a step of 1, 2, 2.5 or 5 times a power of ten, the nearest to raw */
+    function nice(raw){ var p = Math.pow(10, Math.floor(Math.log10(raw))), best = p; [1, 2, 2.5, 5, 10].forEach(function(m){ if(m * p <= raw * 1.15) best = m * p; }); return best; }
+    function steps(r, s){ var out = []; for(var t = Math.ceil(r[0] / s - 1e-9) * s; t <= r[1] + 1e-9; t += s) out.push(+t.toPrecision(12)); return out; }
+    function inView(x, y){ var v = G.view; return x >= v.x[0] - 1e-9 && x <= v.x[1] + 1e-9 && y >= v.y[0] - 1e-9 && y <= v.y[1] + 1e-9; }
+
+    /* ---------------------------------------------------- the start point, encoded for the kit's slider */
+    var OFF = 5000;
+    function enc(x, y){ var s = snap(); return (Math.round(x / s[0]) + OFF) + (Math.round(y / s[1]) + OFF) * 1e4; }
+    function dec(v){ var s = snap(), iy = Math.floor(v / 1e4 + 1e-9), ix = Math.round(v - iy * 1e4); return [+((ix - OFF) * s[0]).toFixed(6), +((iy - OFF) * s[1]).toFixed(6)]; }
+    /* the nearest allowed start point to (x, y): on the grid, in the window, never where the slope is undefined */
+    function fit(x, y, from){
+      var s = snap(), v = G.view;
+      var X = Math.round(x / s[0]) * s[0], Y = Math.round(y / s[1]) * s[1];
+      X = +cl(X, Math.ceil(v.x[0] / s[0] - 1e-9) * s[0], Math.floor(v.x[1] / s[0] + 1e-9) * s[0]).toFixed(6);
+      Y = +cl(Y, Math.ceil(v.y[0] / s[1] - 1e-9) * s[1], Math.floor(v.y[1] / s[1] + 1e-9) * s[1]).toFixed(6);
+      if(!isFinite(fn.f(X, Y))) Y = +(Y + (from != null && from < Y ? s[1] : from != null && from > Y ? -s[1] : (y >= Y ? s[1] : -s[1]))).toFixed(6);
       return [X, Y];
     }
-    /* The static layers (axes, field, equilibria) and the handle; redrawn
-       when the equation, k, T_a, density or the stage size changes. */
-    function build(){
-      var box = $('.sf-plot'), w = Math.max(280, Math.round(box.clientWidth || 520)), h = Math.max(240, Math.round(box.clientHeight || 0)) || Math.round(w * 0.8);
-      if(!LS || !box.clientHeight) h = Math.round(Math.min(w * 0.82, 560));
-      view = squareView(d.view, w, h);
-      var spec = { label: 'Slope field of ' + window.ApCalcTex.text(eqTex()) + ', with the solution curve through the starting point', width: w, height: h, x: view.x, y: view.y, xLabel: xv(), yLabel: yv() };
-      var base = P.svg(spec);
-      F = P.frame(spec);
-      var eqs = d.eq(params[id] || {}).filter(function(v){ return v >= view.y[0] && v <= view.y[1]; });
-      dEff = Math.round(density * Math.max(1, (w - 48) / 470));   // about the same spacing on a wide stage
-      var extra = fieldSvg(fn.f, view, F, dEff) +
-        eqs.map(function(v){ return '<line class="sf-eqline" x1="' + F.sx(view.x[0]) + '" x2="' + F.sx(view.x[1]) + '" y1="' + r2(F.sy(v)) + '" y2="' + r2(F.sy(v)) + '"/><text class="sf-eqlab" x="' + r2(F.sx(view.x[0]) + 30) + '" y="' + r2(F.sy(v) - 6) + '" text-anchor="start">' + esc(yv() + ' = ' + clean(v)) + ' (equilibrium)</text>'; }).join('') +
-        '<rect class="sf-hit" x="' + F.pad.l + '" y="' + F.pad.t + '" width="' + (F.w - F.pad.l - F.pad.r) + '" height="' + (F.h - F.pad.t - F.pad.b) + '"/>' +
-        '<g class="sf-dyn"></g>';
-      box.innerHTML = base.replace('</svg>', extra + '</svg>');
-      svg = box.querySelector('svg');
-      svg.setAttribute('role', 'group'); // it holds a draggable point (a slider), so it is not a plain image
-      svg.querySelector('.sf-hit').addEventListener('click', function(e){
-        var pt = svg.createSVGPoint(); pt.x = e.clientX; pt.y = e.clientY; var m = svg.getScreenCTM(), q = m ? pt.matrixTransform(m.inverse()) : pt;
-        var g = S.grid(view, dEff), X = F.ix(q.x), Y = F.iy(q.y);
-        var gx = g.xs.reduce(function(a, b){ return Math.abs(b - X) < Math.abs(a - X) ? b : a; }), gy = g.ys.reduce(function(a, b){ return Math.abs(b - Y) < Math.abs(a - Y) ? b : a; });
-        act(); sel = [gx, gy]; update(); announceSel();
-      });
-      if(H){ H.rebind(svg, F); H.opts.step = [d.snap[0], d.snap[1]]; update(); return; }
-      H = handle(svg, { x: x0, y: y0, F: F, step: [d.snap[0] * (id === 'cool' ? 1 : 1), d.snap[1]], clamp: clamp, label: function(x, y){ return 'Starting point, ' + xv() + ' = ' + clean(x) + ', ' + yv() + ' = ' + clean(y); },
-        onMove: function(x, y){ act(); x0 = x; y0 = y; schedule(); }, onEnd: function(){ sayCurve(); }, onEnter: function(x, y){ sel = [x, y]; update(); announceSel(); } });
-      update();
-    }
-    var raf = 0;
-    function schedule(){ if(raf) return; raf = (window.requestAnimationFrame || setTimeout)(function(){ raf = 0; update(); }); }
-    function update(){
-      if(!svg) return;
-      var sol = S.solve(fn.f, x0, y0, view), dyn = svg.querySelector('.sf-dyn'), parts = [];
-      var ex = d.exact ? d.exact(x0, y0, params[id]) : null;
-      parts.push('<path class="sf-sol" d="' + pathOf(sol.pts, F) + '"/>');
-      if(exactOn && ex){
-        var pts = [], n = 300;
-        for(var i = 0; i <= n; i++){ var x = view.x[0] + (view.x[1] - view.x[0]) * i / n; if(x < ex.lo || x > ex.hi){ pts.push([x, NaN]); continue; } var y = ex.fn(x); pts.push([x, y > view.y[1] + (view.y[1] - view.y[0]) || y < view.y[0] - (view.y[1] - view.y[0]) ? NaN : y]); }
-        parts.push('<path class="sf-exactc" d="' + pathOf(pts, F) + '"/>');
+    function startPx(){ return [G.A.sx(st.x0), G.A.sy(st.y0)]; }
+
+    /* ---------------------------------------------------- drawing: banks, water and grid (on a layout or a new equation) */
+    function drawStatic(){
+      var A = G.A, W = G.W, Ht = G.H, v = G.view, out = [];
+      defs.innerHTML = '<linearGradient id="' + nid + '-w" x1="0" y1="0" x2="0.35" y2="1"><stop offset="0" class="sf2s-w0"/><stop offset="0.55" class="sf2s-w1"/><stop offset="1" class="sf2s-w2"/></linearGradient>' +
+        '<linearGradient id="' + nid + '-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="sf2s-g0"/><stop offset="1" class="sf2s-g1"/></linearGradient>' +
+        '<radialGradient id="' + nid + '-sh" cx="0.3" cy="0.25" r="0.9"><stop offset="0" class="sf2s-sh0"/><stop offset="1" class="sf2s-sh1"/></radialGradient>' +
+        '<clipPath id="' + nid + '-c"><rect x="' + A.L + '" y="' + A.T + '" width="' + A.W + '" height="' + A.H + '"/></clipPath>';
+      // the banks: grass, a sandy edge at the water
+      out.push('<rect class="sf2-land" x="0" y="0" width="' + W + '" height="' + Ht + '" fill="url(#' + nid + '-g)"/>');
+      // grass tufts on the banks, kept off the tick numbers (a fixed scatter, so a redraw never shuffles them)
+      var tufts = '', peb = '', rnd = (function(){ var z = 7; return function(){ z = (z * 16807) % 2147483647; return z / 2147483647; }; })();
+      function bare(x, y){ return (x > A.L - 9 && x < A.R + 9 && y > A.T - 9 && y < A.B + 9) || (y > A.B + 4 && y < A.B + 25) || (x > A.L - 36 && x < A.L - 2 && y > A.T - 8 && y < A.B + 8) || (y < A.T - 6 && y > 2 && x < A.L + 60); }
+      for(var i = 0; i < Math.round(W * Ht / 700); i++){
+        var tx = rnd() * W, ty = 6 + rnd() * (Ht - 6);
+        if(bare(tx, ty)) continue;
+        tufts += 'M' + r1(tx) + ' ' + r1(ty) + 'l-2.5 -6M' + r1(tx) + ' ' + r1(ty) + 'l0.5 -7.5M' + r1(tx) + ' ' + r1(ty) + 'l3.5 -5';
       }
-      [sol.left, sol.right].forEach(function(e){
-        if(e.why !== 'vertical') return;
-        var p = e === sol.left ? sol.pts[0] : sol.pts[sol.pts.length - 1];
-        parts.push('<circle class="sf-end" cx="' + r2(F.sx(p[0])) + '" cy="' + r2(F.sy(p[1])) + '" r="5"/>');
+      out.push('<path class="sf2-tuft" d="' + tufts + '"/>');
+      // the sandy shore, a little wider than the water, with pebbles
+      out.push('<rect class="sf2-sand" x="' + (A.L - 7) + '" y="' + (A.T - 7) + '" width="' + (A.W + 14) + '" height="' + (A.H + 14) + '" rx="11"/>');
+      for(i = 0; i < Math.round((A.W + A.H) / 22); i++){
+        var u = rnd() * 2 * (A.W + A.H), px, py;
+        if(u < A.W){ px = A.L + u; py = A.T - 3.5; } else if(u < 2 * A.W){ px = A.L + u - A.W; py = A.B + 3.5; } else if(u < 2 * A.W + A.H){ px = A.L - 3.5; py = A.T + u - 2 * A.W; } else { px = A.R + 3.5; py = A.T + u - 2 * A.W - A.H; }
+        peb += '<ellipse cx="' + r1(px) + '" cy="' + r1(py) + '" rx="' + r1(1.2 + rnd() * 1.6) + '" ry="' + r1(0.9 + rnd() * 1.1) + '"/>';
+      }
+      out.push('<g class="sf2-peb">' + peb + '</g>');
+      // reeds at two corners of the water
+      var reeds = '';
+      [[A.R - 4, A.T - 4, -1], [A.L + 4, A.B + 3, 1]].forEach(function(c, j){
+        for(var r = 0; r < 5; r++){ var bx = c[0] + c[2] * (r * 4 - 2), hgt = 14 + ((r * 7 + j * 3) % 9); reeds += 'M' + r1(bx) + ' ' + r1(c[1] + 2) + 'q' + (c[2] * 2) + ' ' + (-hgt / 2) + ' ' + (c[2] * (1 + r % 2)) + ' ' + (-hgt); }
       });
-      // doubling / half-life marks for growth and decay
-      if(d.model === 'exp' && params.ky.k !== 0){
-        var Th = S.halfLife(params.ky.k), up = params.ky.k > 0;
-        for(var k = 1; k <= 6; k++){
-          var t = x0 + k * Th, yy = y0 * Math.pow(up ? 2 : 0.5, k);
-          if(t > view.x[1] || yy > view.y[1] || yy < (view.y[1] - view.y[0]) * 0.03) break;
-          parts.push('<circle class="sf-mark" cx="' + r2(F.sx(t)) + '" cy="' + r2(F.sy(yy)) + '" r="4"/><text class="sf-marklab" x="' + r2(F.sx(t) + 6) + '" y="' + r2(F.sy(yy) - 6) + '">' + (up ? '×' + Math.pow(2, k) : '×1/' + Math.pow(2, k)) + '</text>');
+      out.push('<path class="sf2-reed" d="' + reeds + '"/>');
+      out.push('<rect x="' + A.L + '" y="' + A.T + '" width="' + A.W + '" height="' + A.H + '" rx="5" fill="url(#' + nid + '-w)"/>');
+      out.push('<rect class="sf2-shine" x="' + A.L + '" y="' + A.T + '" width="' + A.W + '" height="' + A.H + '" rx="5" fill="url(#' + nid + '-sh)"/>');
+      // the exact grid on the water, and the axes where they cross it
+      var tx2 = P.ticks(v.x[0], v.x[1], Math.max(4, Math.round(A.W / (G.narrow ? 64 : 86)))), ty2 = P.ticks(v.y[0], v.y[1], Math.max(4, Math.round(A.H / 56)));
+      var gl = '';
+      tx2.forEach(function(t){ var X = r1(A.sx(t)); gl += 'M' + X + ' ' + A.T + 'V' + A.B; });
+      ty2.forEach(function(t){ var Y = r1(A.sy(t)); gl += 'M' + A.L + ' ' + Y + 'H' + A.R; });
+      out.push('<path class="sf2-grid" d="' + gl + '"/>');
+      var ax = '';
+      if(v.y[0] < 0 && v.y[1] > 0) ax += 'M' + A.L + ' ' + r1(A.sy(0)) + 'H' + A.R;
+      if(v.x[0] < 0 && v.x[1] > 0) ax += 'M' + r1(A.sx(0)) + ' ' + A.T + 'V' + A.B;
+      if(ax) out.push('<path class="sf2-axis" d="' + ax + '"/>');
+      // tick numbers on the banks
+      var tk = '';
+      G.tickXs = []; G.hid = '';
+      tx2.forEach(function(t){ var X = A.sx(t); if(X < A.L + 6 && t !== v.x[0]) return; G.tickXs.push([X, textW(clean(t), 12)]); tk += '<text class="is-x" x="' + r1(X) + '" y="' + (A.B + 19) + '" text-anchor="middle">' + clean(t) + '</text>'; });
+      ty2.forEach(function(t){ var Y = A.sy(t); if(Y > A.B - 4 && Y < A.B + 1 && v.x[0] < 0) return; tk += '<text x="' + (A.L - 8) + '" y="' + r1(Y + 4) + '" text-anchor="end">' + clean(t) + '</text>'; });
+      out.push('<g class="sf2-ticks">' + tk + '</g>');
+      gS.innerHTML = out.join('');
+      G.ticksX = tx2; G.ticksY = ty2;
+    }
+
+    /* ---------------------------------------------------- the field (a new equation, k, the room or the layout) */
+    function fieldPath(f){
+      var A = G.A, g = G.grid, h = G.half, dd = '';
+      g.xs.forEach(function(x){ var X = A.sx(x); if(X < A.L + h * 0.6 || X > A.R - h * 0.6) return; g.ys.forEach(function(y){
+        var Y = A.sy(y); if(Y < A.T + h * 0.6 || Y > A.B - h * 0.6) return;
+        var m = f(x, y), ux, uy;
+        if(isNaN(m)) return;                         // 0/0: no slope at all here
+        if(!isFinite(m)){ ux = 0; uy = 1; }           // vertical
+        else { var vx = G.kx, vy = m * G.ky, L = Math.sqrt(vx * vx + vy * vy); ux = vx / L; uy = vy / L; }
+        dd += 'M' + r1(X - ux * h) + ' ' + r1(Y + uy * h) + 'L' + r1(X + ux * h) + ' ' + r1(Y - uy * h);
+      }); });
+      return dd;
+    }
+    function eqList(){ return d.eq(prm()).filter(function(v){ return v >= G.view.y[0] - 1e-9 && v <= G.view.y[1] + 1e-9; }); }
+    function kZero(){ return d.model === 'exp' && Math.abs(prm().k) < 1e-12; }
+    function drawField(){
+      var A = G.A, out = ['<path class="sf2-field" d="' + fieldPath(fn.f) + '"/>'];
+      if(!kZero()) eqList().forEach(function(e){ var Y = r1(A.sy(e)); out.push('<path class="sf2-calm" d="M' + A.L + ' ' + Y + 'H' + A.R + '"/><path class="sf2-eqline" d="M' + A.L + ' ' + Y + 'H' + A.R + '"/>'); });
+      gF.innerHTML = out.join('');
+    }
+
+    /* ---------------------------------------------------- the solution through the start point */
+    function solution(){
+      var sol = S.solve(fn.f, st.x0, st.y0, G.view), A = G.A, pts = [];
+      sol.pts.forEach(function(p){ pts.push([A.sx(p[0]), A.sy(p[1]), p[0], p[1]]); });
+      // keep only the run through the start point that stays in the water (it stops at the edge, never leaves the picture)
+      var i0 = 0; for(var i = 0; i < sol.pts.length; i++) if(Math.abs(sol.pts[i][0] - st.x0) < 1e-12){ i0 = i; break; }
+      function inA(p){ return p[1] >= A.T - 0.5 && p[1] <= A.B + 0.5; }
+      function edge(a, b){ var yb = b[1] < A.T ? A.T : A.B, t = (yb - a[1]) / (b[1] - a[1]); return [a[0] + (b[0] - a[0]) * t, yb, a[2] + (b[2] - a[2]) * t, A.iy(yb)]; }
+      var fwd = [pts[i0]], back = [pts[i0]], fEnd = sol.right.why, bEnd = sol.left.why;
+      for(i = i0 + 1; i < pts.length; i++){ if(!inA(pts[i])){ fwd.push(edge(pts[i - 1], pts[i])); fEnd = 'edge'; break; } fwd.push(pts[i]); }
+      for(i = i0 - 1; i >= 0; i--){ if(!inA(pts[i])){ back.push(edge(pts[i + 1], pts[i])); bEnd = 'edge'; break; } back.push(pts[i]); }
+      return { fwd: fwd, back: back, fEnd: fEnd, bEnd: bEnd, sol: sol };
+    }
+    function pathD(run){ return 'M' + run.map(function(p){ return r1(p[0]) + ' ' + r1(p[1]); }).join('L'); }
+    function exactFn(){ return d.exact ? d.exact(st.x0, st.y0, prm()) : null; }
+    function exactPath(){
+      var ex = exactFn(); if(!ex) return '';
+      var A = G.A, dd = '', pen = false, n = Math.max(120, Math.round(A.W / 2));
+      for(var i = 0; i <= n; i++){
+        var x = G.view.x[0] + (G.view.x[1] - G.view.x[0]) * i / n;
+        var y = x >= ex.lo && x <= ex.hi ? ex.fn(x) : NaN;
+        if(!isFinite(y) || y > G.view.y[1] + (G.view.y[1] - G.view.y[0]) || y < G.view.y[0] - (G.view.y[1] - G.view.y[0])){ pen = false; continue; }
+        dd += (pen ? 'L' : 'M') + r1(A.sx(x)) + ' ' + r1(A.sy(y)); pen = true;
+      }
+      return dd;
+    }
+
+    /* ---------------------------------------------------- the words */
+    function onEq(){ if(kZero()) return true; return d.eq(prm()).some(function(e){ return Math.abs(e - st.y0) < 1e-9; }); }
+    function slopeSub(x, y){
+      var p = prm(), m = fn.f(x, y);
+      if(st.id === 'x+y') return 'y′ = ' + pn(x) + ' + ' + pn(y) + ' ' + eqv(m);
+      if(st.id === 'x/y') return 'y′ = ' + clean(x) + ' / ' + pn(y) + ' ' + eqv(m);
+      if(st.id === 'xy') return 'y′ = ' + pn(x) + ' · ' + pn(y) + ' ' + eqv(m);
+      if(st.id === 'y-2') return 'y′ = ' + clean(y) + ' − 2 ' + eqv(m);
+      if(st.id === 'ky') return 'y′ = ' + pn(p.k) + ' · ' + pn(y) + ' ' + eqv(m);
+      return 'T′ = −' + clean(p.k) + '(' + clean(y) + ' − ' + clean(p.Ta) + ') ' + eqv(m);
+    }
+    function heading(m){
+      if(Math.abs(m) < 1e-12) return 'level here';
+      var a = clean(Math.abs(m));
+      if(st.id === 'cool') return (m > 0 ? 'rising ' : 'falling ') + a + ' °C a minute';
+      if(st.id === 'ky') return (m > 0 ? 'rising ' : 'falling ') + a + ' per unit of t';
+      return 'heading ' + (m > 0 ? 'up ' : 'down ') + a + ' for 1 across';
+    }
+    function vertEnd(cv){
+      var e = [];
+      if(cv.fEnd === 'vertical') e.push(cv.fwd[cv.fwd.length - 1][2]);
+      if(cv.bEnd === 'vertical') e.push(cv.back[cv.back.length - 1][2]);
+      return e;
+    }
+    function behave(cv){
+      var p = prm(), y = st.y0;
+      if(onEq()){
+        var e = kZero() ? y : d.eq(p).filter(function(v){ return Math.abs(v - y) < 1e-9; })[0];
+        if(kZero()) return { t: 'k = 0, so it stays at ' + clean(y), s: 'stays at ' + clean(y), role: 'eq' };
+        return { t: 'on ' + yv() + ' = ' + clean(e) + ', so it stays at ' + clean(e), s: 'stays at ' + clean(e), role: 'eq' };
+      }
+      if(st.id === 'y-2') return { t: (y > 2 ? 'above 2' : 'below 2') + ', so it moves away from 2', s: 'away from 2', role: 'path' };
+      if(st.id === 'cool') return { t: (y > p.Ta ? 'above the room, so it falls toward ' : 'below the room, so it rises toward ') + clean(p.Ta), s: (y > p.Ta ? 'falls' : 'rises') + ' toward ' + clean(p.Ta), role: 'path' };
+      if(st.id === 'ky') return y > 0 === p.k > 0 ? { t: 'k ' + (p.k > 0 ? '> 0' : '< 0') + ', so it grows: doubles every ' + clean(S.halfLife(p.k)), s: 'doubles every ' + clean(S.halfLife(p.k)), role: 'path' }
+        : { t: 'k ' + (p.k > 0 ? '> 0' : '< 0') + ', so it decays: halves every ' + clean(S.halfLife(p.k)), s: 'halves every ' + clean(S.halfLife(p.k)), role: 'path' };
+      var ve = vertEnd(cv);
+      if(ve.length) return { t: 'vertical at x ≈ ' + ve.map(function(v){ return clean(v); }).join(' and ') + ', so the domain ends', s: 'domain ends', role: 'bad' };
+      return null;
+    }
+    function expo(x0){ return Math.abs(x0) < 1e-9 ? xv() : xv() + (x0 < 0 ? ' + ' : ' − ') + clean(Math.abs(x0)); }
+    function coef(c){ return Math.abs(Math.abs(c) - 1) < 1e-9 ? '' : clean(Math.abs(c)); }
+    /* the particular solution through the start point, in plain text (null when AB has no formula for it) */
+    function formula(){
+      var x0 = st.x0, y0 = st.y0, p = prm(), Y = yv();
+      if(onEq()) return Y + ' = ' + clean(kZero() ? y0 : d.eq(p).filter(function(v){ return Math.abs(v - y0) < 1e-9; })[0]);
+      if(st.id === 'y-2'){ var c = y0 - 2; return 'y = 2 ' + (c < 0 ? '− ' : '+ ') + coef(c) + 'e^(' + expo(x0) + ')'; }
+      if(st.id === 'xy') return 'y = ' + (y0 < 0 ? '−' : '') + coef(y0) + 'e^(' + (Math.abs(x0) < 1e-9 ? 'x²/2' : '(x² − ' + clean(x0 * x0) + ')/2') + ')';
+      if(st.id === 'ky') return 'y = ' + (y0 < 0 ? '−' : '') + coef(y0) + 'e^(' + clean(p.k) + (Math.abs(x0) < 1e-9 ? 't' : '(' + expo(x0) + ')') + ')';
+      if(st.id === 'cool'){ var g = y0 - p.Ta; return 'T = ' + clean(p.Ta) + (g < 0 ? ' − ' : ' + ') + coef(g) + 'e^(−' + clean(p.k) + (Math.abs(x0) < 1e-9 ? 't' : '(' + expo(x0) + ')') + ')'; }
+      if(st.id === 'x/y'){
+        var Kc = +(y0 * y0 - x0 * x0).toFixed(4);
+        if(Math.abs(Kc) < 1e-9) return 'y = ' + ((y0 > 0) === (x0 > 0) ? '' : '−') + 'x';
+        return 'y = ' + (y0 < 0 ? '−' : '') + '√(x² ' + (Kc > 0 ? '+ ' : '− ') + clean(Math.abs(Kc)) + ')';
+      }
+      return null;
+    }
+    function takeaway(){
+      var fm = formula();
+      if(onEq()) return 'One starting point, one solution: the flat line ' + fm + '.';
+      if(!fm) return 'One starting point, one solution. y′ = x + y is not separable, so this one is traced, not solved.';
+      return 'One starting point, one solution: ' + fm + '.';
+    }
+    function words(cv){
+      var n = G && G.W < 600, m = fn.f(st.x0, st.y0), P0 = '(' + clean(st.x0) + ', ' + clean(st.y0) + ')';
+      var parts = [{ t: n ? P0 : 'at ' + P0, role: 'pt', say: 'at ' + P0 }, { t: n ? (st.id === 'cool' ? 'T′ ' : 'y′ ') + eqv(m) : slopeSub(st.x0, st.y0), role: 'sl', say: 'the slope is ' + clean(m) }];
+      var b = behave(cv);
+      if(!n) parts.push({ t: heading(m), role: 'sl' });
+      if(b) parts.push({ t: n ? b.s : b.t, role: b.role });
+      if(st.took) cause.take(st.took); else cause.set(parts);
+    }
+
+    /* ---------------------------------------------------- labels on the picture, placed clear of each other */
+    var boxes = [];
+    function free(b){ for(var i = 0; i < boxes.length; i++){ var c = boxes[i]; if(b[0] < c[2] + 5 && c[0] < b[2] + 5 && b[1] < c[3] + 5 && c[1] < b[3] + 5) return false; } return true; }
+    function inside(b){ var A = G.A; return b[0] >= A.L + 3 && b[2] <= A.R - 3 && b[1] >= A.T + 3 && b[3] <= A.B - 3; }
+    function curveHit(b){
+      var cv = st.drawn, all = cv ? cv.fwd.concat(cv.back) : [];
+      for(var i = 0; i < all.length; i++){ var p = all[i]; if(p[0] > b[0] - 3 && p[0] < b[2] + 3 && p[1] > b[1] - 3 && p[1] < b[3] + 3) return true; }
+      return false;
+    }
+    /* cands: [[x, y, anchor]] (y the baseline); the first that is inside, clear and off the curve; else the first clear */
+    function place(text, cls, cands, px){
+      px = px || 13; var w = textW(text, px), h = px + 3, pick = null, i, b;
+      function boxOf(c){ var x0 = c[2] === 'end' ? c[0] - w : c[2] === 'middle' ? c[0] - w / 2 : c[0]; return [x0 - 2, c[1] - h + 3, x0 + w + 2, c[1] + 4]; }
+      for(i = 0; i < cands.length && !pick; i++){ b = boxOf(cands[i]); if(inside(b) && free(b) && !curveHit(b)) pick = cands[i]; }
+      for(i = 0; i < cands.length && !pick; i++){ b = boxOf(cands[i]); if(inside(b) && free(b)) pick = cands[i]; }
+      if(!pick) return '';
+      boxes.push(boxOf(pick));
+      return '<text class="sf2-lab ' + cls + '" x="' + r1(pick[0]) + '" y="' + r1(pick[1]) + '" text-anchor="' + (pick[2] || 'start') + '">' + esc(text) + '</text>';
+    }
+    function blockDom(e, pad){
+      if(!e || e.hidden || !e.offsetWidth || e.closest('[hidden]')) return;
+      // where it is going, not where a (reduced motion) transition still draws it
+      e.style.transition = 'none';
+      var r = e.getBoundingClientRect(), sr = scene.getBoundingClientRect(), k = layer.scale() || 1; pad = pad || 0;
+      e.style.transition = '';
+      boxes.push([(r.left - sr.left) / k - pad, (r.top - sr.top) / k - pad, (r.right - sr.left) / k + pad, (r.bottom - sr.top) / k + pad]);
+    }
+
+    /* ---------------------------------------------------- drawing what changes */
+    function draw(){
+      if(!G) return;
+      var A = G.A, cv = solution(), out = [], s0 = startPx();
+      st.drawn = cv;
+      out.push('<g clip-path="url(#' + nid + '-c)">');
+      out.push('<path class="sf2-solh" d="' + pathD(cv.back) + pathD(cv.fwd).replace(/^M/, 'M') + '"/>');
+      out.push('<path class="sf2-sol" d="' + pathD(cv.back) + pathD(cv.fwd) + '"/>');
+      if(st.exact){ var ep = exactPath(); if(ep) out.push('<path class="sf2-exact' + (st.exactIn ? ' is-in' : '') + '" d="' + ep + '"/>'); }
+      out.push('</g>');
+      // where the slope turns vertical the solution's domain ends: an open end
+      var ends = [];
+      if(cv.fEnd === 'vertical') ends.push(cv.fwd[cv.fwd.length - 1]);
+      if(cv.bEnd === 'vertical') ends.push(cv.back[cv.back.length - 1]);
+      ends.forEach(function(p){ out.push('<circle class="sf2-end" cx="' + r1(p[0]) + '" cy="' + r1(p[1]) + '" r="5"/>'); });
+      // growth and decay: where the amount doubles (or halves), forward from the start
+      var marks = [];
+      if(d.model === 'exp' && !kZero() && Math.abs(st.y0) > 1e-9){
+        var Th = S.halfLife(prm().k), up = prm().k > 0;
+        for(var k = 1; k <= 4; k++){
+          var t = st.x0 + k * Th, yy = st.y0 * Math.pow(up ? 2 : 0.5, k);
+          if(t > G.view.x[1] || yy > G.view.y[1] || yy < G.view.y[0] + (G.view.y[1] - G.view.y[0]) * 0.04) break;
+          marks.push([A.sx(t), A.sy(yy), up ? '×' + Math.pow(2, k) : '×1/' + Math.pow(2, k)]);
+          out.push('<circle class="sf2-mark" cx="' + r1(A.sx(t)) + '" cy="' + r1(A.sy(yy)) + '" r="4.5"/>');
         }
       }
-      // the tapped grid point: its segment, longer, and its slope
-      if(sel){
-        var m = fn.f(sel[0], sel[1]);
-        parts.push(segAt(fn.f, sel[0], sel[1], F, view, 26, 'sf-selseg') + '<circle class="sf-seldot" cx="' + r2(F.sx(sel[0])) + '" cy="' + r2(F.sy(sel[1])) + '" r="4"/>');
-        var tx = F.sx(sel[0]) + 10, ty = F.sy(sel[1]) - 12, right = tx > F.w - 110;
-        parts.push('<text class="sf-sellab" x="' + r2(right ? F.sx(sel[0]) - 10 : tx) + '" y="' + r2(Math.max(F.pad.t + 12, ty)) + '" text-anchor="' + (right ? 'end' : 'start') + '">slope ' + (isFinite(m) ? clean(m) : 'vertical') + '</text>');
-      }
-      dyn.innerHTML = parts.join('');
-      if(H){ if(svg.lastChild !== H.el) svg.appendChild(H.el); H.set(x0, y0); }
-      svg.setAttribute('aria-label', 'Slope field of ' + window.ApCalcTex.text(eqTex()) + '. ' + curveWords(sol));
-      words(sol, ex);
+      // the start point (the leaf rests on it)
+      out.push('<circle class="sf2-start" cx="' + r1(s0[0]) + '" cy="' + r1(s0[1]) + '" r="4"/>');
+      gD.innerHTML = out.join('');
+      placeLeaf();
+      H.place();
+      if(kD) kD.place(kTrack()); if(taD){ taD.place(taTrack()); taD.el.classList.toggle('is-low', prm().Ta < 9); }
+      labels(cv, marks, ends);
+      words(cv);
+      svg.setAttribute('aria-label', 'Slope field of ' + plainEq() + ', drawn as current streaks on a river, with the solution through (' + clean(st.x0) + ', ' + clean(st.y0) + ')' + (st.exact ? ' and the formula ' + (formula() || '') : '') + '.');
     }
-    function curveWords(sol){
-      var a = sol.pts[0], b = sol.pts[sol.pts.length - 1];
-      return 'The solution through (' + clean(x0) + ', ' + clean(y0) + ') runs from (' + clean(a[0]) + ', ' + clean(a[1]) + ') to (' + clean(b[0]) + ', ' + clean(b[1]) + ')' +
-        (sol.left.why === 'vertical' || sol.right.why === 'vertical' ? ', where its slope turns vertical' : '') + '.';
-    }
-    function sayCurve(){ say(curveWords(S.solve(fn.f, x0, y0, view)) + ' Slope at the point ' + clean(fn.f(x0, y0)) + '.'); }
-    function announceSel(){ if(!sel) return; var m = fn.f(sel[0], sel[1]); say('At (' + clean(sel[0]) + ', ' + clean(sel[1]) + ') the slope is ' + (isFinite(m) ? clean(m) : 'undefined: the segment is vertical') + '.', true); }
-    /* The one line, its reasoning (Why), the numbers and the separation (Details). */
-    function words(sol, ex){
-      var m = fn.f(x0, y0), v2 = fn.f2(x0, y0), P0 = '(' + clean(x0) + ', ' + clean(y0) + ')', X = xv(), Y = yv();
-      var eqs = d.eq(params[id] || {}), onEq = eqs.some(function(v){ return Math.abs(v - y0) < 1e-9; });
-      var vert = [sol.left, sol.right].filter(function(e){ return e.why === 'vertical'; });
-      var head;
-      if(sel){
-        var ms = fn.f(sel[0], sel[1]);
-        head = '<b>At (' + clean(sel[0]) + ', ' + clean(sel[1]) + '):</b> ' + (isFinite(ms) ? tex((id === 'ky' || id === 'cool' ? '\\frac{d' + Y + '}{dt}' : '\\frac{dy}{dx}') + ' = ' + d.at(sel[0], sel[1], params[id]) + ' = ' + String(+ms.toFixed(3))) : 'the slope is undefined (division by 0): the segment is vertical.');
-      } else if(onEq) head = '<b>On the equilibrium ' + Y + ' = ' + clean(y0) + '.</b> The slope is 0 all along it, so this solution is a flat line.';
-      else if(vert.length) head = '<b>Slope ' + clean(m) + ' at ' + P0 + '.</b> The solution stops at ' + X + ' ≈ ' + vert.map(function(e){ return clean(e.x, 3); }).join(' and ') + ', where its slope turns vertical.';
-      else head = '<b>Slope ' + clean(m) + ' at ' + P0 + '.</b> The curve is tangent to every segment it meets.';
-      var why = '<p>Each segment is drawn with the slope ' + tex('\\frac{d' + Y + '}{d' + X + '}') + ' at its center. A solution curve has exactly that slope wherever it goes, so it runs along the segments: from ' + P0 + ' it leaves with slope ' + clean(m) + '.</p>' +
-        (isFinite(v2) && !onEq ? '<p>' + tex('\\frac{d^2' + Y + '}{d' + X + '^2} = ' + (id === 'ky' ? 'k^2 y' : id === 'cool' ? 'k^2(T - T_a)' : d.f2tex)) + ' = ' + clean(v2, 3) + ' there, so the solution is concave ' + (v2 > 0 ? 'up' : v2 < 0 ? 'down' : '(neither way, at this point)') + ' at the point.</p>' : '') +
-        (eqs.length ? '<p>' + esc(Y + ' = ' + eqs.map(function(v){ return clean(v); }).join(', ')) + ' is an equilibrium solution (every segment on it is flat). Two solution curves never cross, so a solution above it stays above and one below stays below.</p>' : '') +
-        (vert.length ? '<p>A solution is a function of ' + X + ', so it cannot turn back. Where the slope becomes vertical (here on ' + esc(d.undefinedOn || '') + ', where ' + tex('\\frac{dy}{dx}') + ' is undefined), the solution\'s domain ends.</p>' : '') +
-        (d.note ? '<p>' + html(d.note) + '</p>' : '') +
-        (ex ? '<p>' + (exactOn ? 'The dashed curve is the exact solution from the formula; it sits on the traced curve.' : 'Turn on "Exact solution" to draw the formula over the traced curve.') + '</p>' : '');
-      T.explain($('.sf-say'), head, why);
-      // the separation of variables
-      var st = $('.sf-steps');
-      if(st){
-        var L = d.sep ? S.steps(id, x0, y0, params[id]) : [];
-        st.innerHTML = '<h3 class="ls-title-l">' + (d.sep ? 'Solve it: separation of variables through ' + esc(P0) : 'Solving it') + '</h3>' +
-          (d.sep ? '<ol class="ls-steps sf-sep">' + L.map(function(l){ return '<li><div class="sf-sepi"><span>' + html(l[0]) + '</span>' + (l[1] ? '<span class="sf-sepm">' + tex(l[1], { display: true }) + '</span>' : '') + '</div></li>'; }).join('') + '</ol>'
-            : '<p class="ls-sub">' + html(d.note || 'Not separable.') + '</p>');
+    function labels(cv, marks, ends){
+      var A = G.A, out = [];
+      boxes = [];
+      // knobs, their tags, the cue and the chip first: labels keep off them
+      [].slice.call(layer.el.querySelectorAll('.tk2-tag:not([hidden]), .tk2-cue, .tk2-chip')).forEach(function(e){ blockDom(e, 2); });
+      var nb = boxes.length; [].slice.call(layer.el.querySelectorAll('.tk2-knob')).forEach(function(e){ blockDom(e, 2); });
+      var knobBoxes = boxes.slice(nb);
+      var s0 = startPx(); boxes.push([s0[0] - 24, s0[1] - 24, s0[0] + 24, s0[1] + 24]);
+      if(st.ride){ var lp = st.ride.pos; if(lp) boxes.push([lp[0] - 18, lp[1] - 18, lp[0] + 18, lp[1] + 18]); }
+      ends.forEach(function(p){ boxes.push([p[0] - 2.5, p[1] - 2.5, p[0] + 2.5, p[1] + 2.5]); });
+      marks.forEach(function(mk){ boxes.push([mk[0] - 1.5, mk[1] - 1.5, mk[0] + 1.5, mk[1] + 1.5]); });
+      // the mug (cooling): its temperature is the leaf's
+      if(d.model === 'cool') out.push(mugSvg());
+      // the calm line
+      if(!kZero()) eqList().forEach(function(e){
+        var Y = A.sy(e), t = 'equilibrium ' + yv() + ' = ' + clean(e), c = [];
+        [0.03, 0.4, 0.7].forEach(function(f){ var X = A.L + 8 + (A.W - 16) * f; c.push([X, Y - 7, 'start'], [X, Y + 17, 'start']); });
+        out.push(place(t, 'sf2-ceq', c));
+      });
+      // the formula's line
+      if(st.exact){
+        var fm = formula(), ex = exactFn();
+        if(fm && ex){
+          var c2 = [];
+          [0.92, 0.85, 0.78, 0.7, 0.62, 0.55, 0.48, 0.4, 0.33, 0.26, 0.2, 0.14, 0.08, 0.03].forEach(function(f){
+            var x = G.view.x[0] + (G.view.x[1] - G.view.x[0]) * f, y = x >= ex.lo && x <= ex.hi ? ex.fn(x) : NaN; if(!isFinite(y)) return;
+            var X = A.sx(x), Y = A.sy(y); if(Y < A.T || Y > A.B) return;
+            c2.push([X + 8, Y + 18, 'start'], [X - 8, Y - 9, 'end'], [X - 8, Y + 18, 'end'], [X + 8, Y - 9, 'start'], [X + 14, Y + 4, 'start'], [X - 14, Y + 4, 'end'], [X, Y - 12, 'middle'], [X, Y + 22, 'middle']);
+          });
+          out.push(place(fm, 'sf2-cex', c2));
+        }
       }
-      var nm = $('.sf-nums');
-      if(nm){
-        var row = function(k, v){ return '<tr><th scope="row">' + k + '</th><td class="r">' + v + '</td></tr>'; };
-        var rows = row('Starting point', esc(P0)) + row('Slope ' + tex('\\frac{d' + Y + '}{d' + X + '}'), isFinite(m) ? clean(m, 3) : 'undefined') +
-          row('Second derivative', isFinite(v2) ? clean(v2, 3) : 'undefined') +
-          row('Curve drawn from', esc(X + ' = ' + clean(sol.left.x, 3) + (sol.left.why === 'vertical' ? ' (vertical slope)' : ' (edge)'))) +
-          row('Curve drawn to', esc(X + ' = ' + clean(sol.right.x, 3) + (sol.right.why === 'vertical' ? ' (vertical slope)' : ' (edge)')));
-        if(id === 'ky') rows += row('k', clean(params.ky.k)) + (params.ky.k ? row(params.ky.k > 0 ? 'Doubling time' : 'Half-life', clean(S.halfLife(params.ky.k), 3)) : '');
-        if(id === 'cool') rows += row('k, T_a', clean(params.cool.k) + ', ' + params.cool.Ta + ' °C') + row('Gap halves every', clean(S.halfLife(params.cool.k), 2) + ' min');
-        nm.innerHTML = '<h3 class="ls-title-l">The numbers</h3><table class="ls-tbl"><caption class="sr-only">The starting point and its solution</caption><tbody>' + rows + '</tbody></table>';
-      }
-      if(LS){
-        LS.caption(T.sayHead($('.sf-say')), 'explore');
-        var pl = [{ k: 'Slope', html: isFinite(m) ? clean(m) : '—', tone: 'readout' }];
-        if(isFinite(v2) && !onEq && v2 !== 0) pl.push({ html: v2 > 0 ? 'Concave up' : 'Concave down', tone: 'ghost' });
-        LS.pills(pl, 'left', 'explore');
-        var pr = [];
-        if(id === 'ky' && params.ky.k) pr.push({ k: params.ky.k > 0 ? 'Doubles every' : 'Half-life', html: clean(S.halfLife(params.ky.k), 2), tone: 'accent' });
-        else if(vert.length) pr.push({ html: 'Domain ends', tone: 'warn' });
-        else if(onEq) pr.push({ html: 'Equilibrium', tone: 'good' });
-        LS.pills(pr, 'right', 'explore');
+      marks.forEach(function(mk){ out.push(place(mk[2], 'sf2-cmark', [[mk[0] + 7, mk[1] - 7, 'start'], [mk[0] - 7, mk[1] - 7, 'end'], [mk[0] + 7, mk[1] + 16, 'start'], [mk[0] - 7, mk[1] + 16, 'end']], 12)); });
+      ends.forEach(function(p){ out.push(place('domain ends', 'sf2-cbad', [[p[0] + 9, p[1] - 8, 'start'], [p[0] - 9, p[1] - 8, 'end'], [p[0] + 9, p[1] + 18, 'start'], [p[0] - 9, p[1] + 18, 'end'], [p[0] - 12, p[1] + 5, 'end'], [p[0] + 12, p[1] + 5, 'start'], [p[0], p[1] + 24, 'middle'], [p[0], p[1] - 14, 'middle'], [p[0] - 9, p[1] + 34, 'end'], [p[0] + 9, p[1] + 34, 'start']], 12.5)); });
+      // the axis names, on the bank
+      // the axis names on the banks: x past the last tick (left of a knob that sits there), y turned up the left bank
+      var xn = st.id === 'cool' ? 't (min)' : xv(), xw = textW(xn, 13), xe = A.R - 2;
+      knobBoxes.forEach(function(b){ if(b[0] < xe + 2 && b[2] > xe - xw - 2 && b[1] < A.B + 24 && b[3] > A.B + 5) xe = Math.min(xe, b[0] - 6); });
+      out.push('<text class="sf2-axn" x="' + r1(xe) + '" y="' + (A.B + 19) + '" text-anchor="end">' + esc(xn) + '</text>');
+      var yn = st.id === 'cool' ? 'T (°C)' : yv();
+      out.push('<text class="sf2-axn" transform="translate(15 ' + r1(A.T + A.H / 2) + ') rotate(-90)" text-anchor="middle">' + esc(yn) + '</text>');
+      gT.innerHTML = out.join('');
+      // drop a tick number that would touch the x name
+      var hid = '';
+      (G.tickXs || []).forEach(function(t, i){ if(t[0] + t[1] / 2 > xe - xw - 6 && t[0] - t[1] / 2 < xe + 2) hid += i + ','; });
+      if(hid !== G.hid){ G.hid = hid; [].slice.call(gS.querySelectorAll('.sf2-ticks text.is-x')).forEach(function(t, i){ t.style.visibility = (',' + hid).indexOf(',' + i + ',') >= 0 ? 'hidden' : ''; }); }
+    }
+    /* the mug on the bank: its side reads the temperature where the leaf is drawn */
+    function mugSvg(){
+      var A = G.A, T = mugT(), y = A.T - 46, hot = cl((T - 20) / 70, 0, 1), s0 = startPx();
+      // at the right end of the bank, or left of the leaf's ring (or of a tag) when one is there
+      var xs = [A.R - 52, s0[0] - 26 - 58, A.R - 52 - 120, A.L + A.W * 0.5], x = xs[0];
+      for(var i = 0; i < xs.length; i++){ if(free([xs[i] - 2, y, xs[i] + 52, y + 38])){ x = xs[i]; break; } }
+      boxes.push([x - 2, y, x + 52, y + 38]);
+      return '<g class="sf2-mug" transform="translate(' + r1(x) + ' ' + r1(y) + ')"><path class="sf2-mug-h" d="M41 12 q9 0 9 9 t-9 9"/><rect class="sf2-mug-b" x="0" y="4" width="42" height="32" rx="5"/>' +
+        '<rect class="sf2-mug-t" x="3" y="7" width="36" height="5" rx="2" style="fill:' + mugColor(hot) + '"/>' +
+        '<text class="sf2-lab sf2-cmug" x="21" y="29" text-anchor="middle">' + esc(clean(T, 0) + ' °C') + '</text></g>';
+    }
+    function mugColor(h){ var a = [92, 140, 200], b = [214, 96, 46]; return 'rgb(' + a.map(function(v, i){ return Math.round(v + (b[i] - v) * h); }).join(',') + ')'; }
+    /* the temperature of the drawn leaf: read back from where it is drawn */
+    function mugT(){ var p = st.ride && st.ride.pos ? st.ride.pos : startPx(); return G.A.iy(p[1]); }
+    function updMug(){
+      if(d.model !== 'cool') return;
+      var t = gT.querySelector('.sf2-cmug'), tp = gT.querySelector('.sf2-mug-t'); if(!t) return;
+      var T = mugT(); t.textContent = clean(T, 0) + ' °C'; tp.style.fill = mugColor(cl((T - 20) / 70, 0, 1));
+    }
+    function plainEq(){ var p = prm(); return st.id === 'ky' ? 'y′ = ' + clean(p.k) + 'y' : st.id === 'cool' ? 'T′ = −' + clean(p.k) + '(T − ' + p.Ta + ')' : EQS.filter(function(q){ return q.id === st.id; })[0].label; }
+
+    /* ---------------------------------------------------- the leaf */
+    function angAt(run, i){
+      var a = run[Math.max(0, i - 1)], b = run[Math.min(run.length - 1, i + 1)];
+      return Math.atan2(b[1] - a[1], b[0] - a[0]) * 180 / Math.PI;
+    }
+    function leafAngle(x, y){
+      var m = fn.f(x, y);
+      if(!isFinite(m)) return -90;
+      return Math.atan2(-m * G.ky, G.kx) * 180 / Math.PI;
+    }
+    function placeLeaf(){
+      var s0 = startPx();
+      if(st.ride && st.ride.pos){
+        var p = st.ride.pos;
+        leafE.setAttribute('transform', 'translate(' + r1(p[0]) + ' ' + r1(p[1]) + ') rotate(' + r1(p[2]) + ')');
+        leafE.setAttribute('opacity', r1(st.ride.op == null ? 1 : st.ride.op));
+        wake.setAttribute('transform', 'translate(' + r1(p[0]) + ' ' + r1(p[1]) + ') rotate(' + r1(p[2]) + ')');
+        wake.setAttribute('opacity', st.ride.op == null ? '0.9' : '0');
+        leaf2.setAttribute('transform', 'translate(' + r1(s0[0]) + ' ' + r1(s0[1]) + ') rotate(' + r1(leafAngle(st.x0, st.y0)) + ')');
+        leaf2.setAttribute('opacity', r1(st.ride.op2 || 0));
+      } else {
+        leafE.setAttribute('transform', 'translate(' + r1(s0[0]) + ' ' + r1(s0[1]) + ') rotate(' + r1(leafAngle(st.x0, st.y0)) + ')');
+        leafE.setAttribute('opacity', '1'); wake.setAttribute('opacity', '0'); leaf2.setAttribute('opacity', '0');
       }
     }
-    function studio(pane, s){
-      LS = s;
-      var sp = T.studioPane(pane, s, { chips: { box: '.sf-chips', chip: '.sf-chip', label: 'Differential equation' }, stage: [$('.sf-fig')], dock: [$('.sf-ctl')], why: [$('.sf-say')], details: [$('.sf-nums'), $('.sf-steps')], moreLabel: 'Field density, room temperature' });
-      build();
-      if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.sf-handle'), text: 'Drag the starting point' });
-      if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(build, 60); }).observe($('.sf-plot')); }
-      sp.open();
+    /* float: the leaf drifts forward along the solution to the edge (about a second), then a new one settles at the start */
+    var raf = 0;
+    function float(){
+      cancelRide();
+      if(!G || st.mode !== 'explore' || stage.hidden) return;
+      var cv = st.drawn || solution(), run = cv.fwd, len = [0];
+      for(var i = 1; i < run.length; i++) len.push(len[i - 1] + Math.hypot(run[i][0] - run[i - 1][0], run[i][1] - run[i - 1][1]));
+      var total = len[len.length - 1];
+      st.took = null;
+      if(K.reduced() || total < 6){ st.took = takeaway(); draw(); say(st.took); refLater(); return; }
+      var dur = cl(total / (G.W * 0.55), 0.8, 1.7) * 1000, t0 = performance.now();
+      st.ride = { run: run, len: len, total: total, pos: null, t: 0 };
+      function at(s){
+        var j = 1; while(j < len.length - 1 && len[j] < s) j++;
+        var a = run[j - 1], b = run[j], u = len[j] > len[j - 1] ? (s - len[j - 1]) / (len[j] - len[j - 1]) : 0;
+        return [a[0] + (b[0] - a[0]) * u, a[1] + (b[1] - a[1]) * u, angAt(run, j)];
+      }
+      function step(now){
+        raf = 0;
+        if(!st.ride) return;
+        var t = (now - t0) / dur;
+        if(t < 1){
+          var e = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+          st.ride.pos = at(e * total); st.ride.op = null; st.ride.op2 = 0;
+        } else {
+          var u = cl((now - t0 - dur) / 320, 0, 1);
+          st.ride.pos = at(total); st.ride.op = 1 - u; st.ride.op2 = u;
+          if(u >= 1){ st.ride = null; st.took = takeaway(); placeLeaf(); updMug(); words(st.drawn); say(st.took); refLater(); return; }
+        }
+        placeLeaf(); updMug();
+        raf = requestAnimationFrame(step);
+      }
+      raf = requestAnimationFrame(step);
     }
-    pick('x+y');
-    if(!window.LevlStudio && window.ResizeObserver){ var t2 = null; new ResizeObserver(function(){ clearTimeout(t2); t2 = setTimeout(build, 80); }).observe($('.sf-plot')); }
-    return { studio: studio };
+    function cancelRide(){
+      if(raf){ cancelAnimationFrame(raf); raf = 0; }
+      if(st.ride){
+        // the floating leaf fades where it is drawn; the start keeps its own leaf
+        var p = st.ride.pos;
+        if(p && !K.reduced()){
+          var ghost = leafE.cloneNode(true); ghost.classList.add('sf2-fade'); gL.appendChild(ghost);
+          var an = ghost.animate ? ghost.animate([{ opacity: +(st.ride.op == null ? 1 : st.ride.op) }, { opacity: 0 }], { duration: 260, easing: 'ease-out' }) : null;
+          var gone = function(){ if(ghost.parentNode) ghost.parentNode.removeChild(ghost); };
+          if(an) an.onfinish = gone; setTimeout(gone, 400);
+        }
+        st.ride = null; placeLeaf(); updMug();
+      }
+    }
+    var rideT = 0;
+    function floatLater(ms){ clearTimeout(rideT); rideT = setTimeout(float, ms == null ? 260 : ms); }
+
+    /* ---------------------------------------------------- the main control: the leaf (a 2D point on the kit's slider) */
+    function valueText(){ var m = fn.f(st.x0, st.y0); return 'Leaf at ' + xv() + ' = ' + clean(st.x0) + ', ' + yv() + ' = ' + clean(st.y0) + '. Slope ' + (isFinite(m) ? clean(m) : 'undefined') + '. ' + (cause.text() || ''); }
+    var H = K.handle(layer, { key: KEY, label: 'Leaf: the starting point of the solution', value: enc(st.x0, st.y0), hint: 'Drag',
+      at: function(v){ if(!G) return null; var p = dec(v); return [G.A.sx(p[0]), G.A.sy(p[1])]; },
+      pick: function(x, y){ if(!G) return null; var p = fit(G.A.ix(x), G.A.iy(y)); return enc(p[0], p[1]); },
+      keys: function(v, k, big){
+        var p = dec(v), s = snap(), n = big ? 10 : 1, X = p[0], Y = p[1];
+        if(k === 'ArrowRight') X += s[0] * n; else if(k === 'ArrowLeft') X -= s[0] * n;
+        else if(k === 'ArrowUp') Y += s[1] * n; else if(k === 'ArrowDown') Y -= s[1] * n;
+        else if(k === 'PageUp') Y += s[1] * 10; else if(k === 'PageDown') Y -= s[1] * 10;
+        else if(k === 'Home') X = G.view.x[0]; else if(k === 'End') X = G.view.x[1];
+        else return null;
+        var q = fit(X, Y, p[1]); return enc(q[0], q[1]);
+      },
+      valuetext: function(){ return valueText(); },
+      chipSide: function(){ var s0 = startPx(); return s0[1] > G.A.T + 70 ? 'up' : 'down'; },
+      onStart: function(){ userActs(); cancelRide(); clearTimeout(rideT); },
+      onInput: function(v){ var p = dec(v); st.x0 = p[0]; st.y0 = p[1]; st.took = null; tourDid('drag'); draw(); refLater(); },
+      onEnd: function(){ floatLater(H.dragging() ? 0 : 320); } });
+    H.el.classList.add('is-ring', 'sf2-h');
+
+    /* presses on the water: the leaf comes to that spot and can be dragged on from there */
+    scene.addEventListener('pointerdown', function(e){
+      if(!G || e.target.closest('.tk2-knob, .tk2-cue, button, .tk2-drag')) return;
+      if(e.pointerType === 'mouse' && e.button !== 0) return;
+      var r = scene.getBoundingClientRect(), k = layer.scale() || 1, x = (e.clientX - r.left) / k, y = (e.clientY - r.top) / k, A = G.A;
+      if(x < A.L - 4 || x > A.R + 4 || y < A.T - 4 || y > A.B + 4) return;
+      hideCue(true); tourDid('tap');
+      H.grab(e);
+    });
+    stage.addEventListener('keydown', function(e){ if(/^(Arrow|Page|Home|End)/.test(e.key)) hideCue(true); }, true);
+
+    /* ---------------------------------------------------- k and the room (quiet knobs on the picture, only for the two models) */
+    var kD = null, taD = null;
+    // the k knob's tag must stay clear of the mug at the right end of the bank
+    function kTrack(){ var A = G.A, x0 = A.L + 26, w = cl(A.R - 150 - x0, 80, G.narrow ? 150 : 220), y = A.T - 26; return [x0, y, x0 + w, y]; }
+    function taTrack(){ var A = G.A; return [A.R - 2, A.sy(0), A.R - 2, A.sy(40)]; }
+    function mkKnobs(){
+      if(kD){ kD.el.remove(); kD = null; } if(taD){ taD.el.remove(); taD = null; }
+      if(!G || !hasK()) return;
+      var p = prm(), isExp = d.model === 'exp';
+      kD = K.drag(layer, { key: KEY + '-k', quiet: true, label: isExp ? 'Growth constant k' : 'Cooling constant k, per minute',
+        min: isExp ? -0.5 : 0.02, max: isExp ? 0.5 : 0.2, step: isExp ? 0.05 : 0.01, value: p.k, track: kTrack(),
+        valuetext: function(v){ return 'k = ' + clean(v); }, tag: function(v){ return 'k = ' + (isExp ? clean(v) : String(+(+v).toFixed(2))); }, tagSide: 'right',
+        onInput: function(v){ userActs(); cancelRide(); p.k = v; fn = S.fns(d, p); st.took = null; drawField(); draw(); refLater(); },
+        onEnd: function(){ floatLater(0); } });
+      kD.el.classList.add('sf2-k');
+      if(!isExp){
+        taD = K.drag(layer, { key: KEY + '-ta', quiet: true, label: 'Room temperature, °C', min: 0, max: 40, step: 1, value: p.Ta, track: taTrack(),
+          valuetext: function(v){ return 'room ' + v + ' °C'; }, tag: function(v){ return 'room ' + v + ' °C'; }, tagSide: 'left',
+          onInput: function(v){ userActs(); cancelRide(); p.Ta = v; fn = S.fns(d, p); st.took = null; drawField(); draw(); refLater(); },
+          onEnd: function(){ floatLater(0); } });
+        taD.el.classList.add('sf2-ta');
+      }
+    }
+
+    /* ---------------------------------------------------- a new equation: the streaks cross fade */
+    function fadeOut(nodes){
+      var g = document.createElementNS(NS, 'g'); g.setAttribute('class', 'sf2-fade');
+      nodes.forEach(function(n){ var c = n.cloneNode(true); c.removeAttribute('class'); c.setAttribute('class', n.getAttribute('class')); g.appendChild(c); });
+      svg.insertBefore(g, gL);
+      var done = function(){ if(g.parentNode) g.parentNode.removeChild(g); };
+      var an = g.animate ? g.animate([{ opacity: 1 }, { opacity: 0 }], { duration: K.reduced() ? 220 : 320, easing: 'ease-out' }) : null;
+      if(an) an.onfinish = done; setTimeout(done, 520);
+    }
+    function fadeIn(nodes){ nodes.forEach(function(n){ if(n.animate) n.animate([{ opacity: 0 }, { opacity: 1 }], { duration: K.reduced() ? 220 : 380, easing: 'ease-in' }); }); }
+    function setEq(id){
+      if(id === st.id) return;
+      cancelRide(); clearTimeout(rideT);
+      fadeOut([gF, gD]);
+      st.id = id; d = S.de(id); fn = S.fns(d, prm()); st.took = null;
+      st.x0 = START[id][0]; st.y0 = START[id][1];
+      layout(true);
+      H.value(enc(st.x0, st.y0));
+      draw();
+      fadeIn([gF, gD, gS]);
+      refLater(); say('Now ' + plainEq() + '. ' + cause.text());
+      floatLater(420);
+    }
+    pick.addEventListener('change', function(){ userActs(); setEq(pick.value); });
+
+    /* ---------------------------------------------------- Check with the formula */
+    checkB.addEventListener('click', function(){
+      userActs();
+      st.exact = !st.exact; checkB.setAttribute('aria-pressed', String(st.exact));
+      st.exactIn = st.exact && !K.reduced();
+      draw(); tourDid('check');
+      var ex = gD.querySelector('.sf2-exact');
+      if(ex && st.exactIn && ex.getTotalLength){ var L = ex.getTotalLength(); ex.style.strokeDasharray = L + ' ' + L; ex.style.strokeDashoffset = L; ex.getBoundingClientRect(); ex.style.transition = 'stroke-dashoffset .7s ease-out'; ex.style.strokeDashoffset = '0'; setTimeout(function(){ ex.style.strokeDasharray = ''; ex.style.strokeDashoffset = ''; ex.style.transition = ''; st.exactIn = false; }, 760); }
+      else st.exactIn = false;
+      if(!st.exact && !K.reduced()){ /* nothing to fade: the line goes with the next frame */ }
+      say(st.exact ? (formula() ? 'The formula ' + formula() + ' is drawn: it sits on the traced curve.' : 'This equation has no AB formula: it is traced only.') : 'Formula hidden.');
+      refLater();
+    });
+
+    /* ---------------------------------------------------- the cue and "Show me how" */
+    var touched = false;
+    function userActs(){ if(!touched){ touched = true; hideCue(true); } }
+    var cueO = { key: KEY, text: 'Drag the leaf', side: 'right',
+      at: function(){ if(!G) return [0, 0]; var s0 = startPx(); return cueO.side === 'right' ? [s0[0] + 26, s0[1]] : cueO.side === 'left' ? [s0[0] - 26, s0[1]] : [s0[0], s0[1] + 26]; } };
+    var cue = K.cue(layer, cueO);
+    function cueShow(){ if(!G) return; var s0 = startPx(); cueO.side = G.A.R - s0[0] > 170 ? 'right' : 'left'; if(cue.show()){ draw(); draw(); } }
+    function hideCue(used){ if(cue.active()){ cue.hide(used); if(G) draw(); } }
+    var tour = K.tour({ key: KEY, label: 'Show me how', steps: [
+      { id: 'drag', text: 'Drag the leaf. The solution through it follows the streaks both ways.', target: function(){ return H.knob; } },
+      { id: 'tap', text: 'Or tap the water: the leaf starts there, and the line below works out the slope.', target: function(){ return scene; } },
+      { id: 'check', text: 'Check with the formula draws the exact solution through your point.', target: function(){ return checkB; } }],
+      onClose: function(had){ if(had) try{ head.how.focus({ preventScroll: true }); }catch(e){} } });
+    function tourDid(x){ if(tour.active()) tour.did(x); }
+    function startTour(){ if(st.mode !== 'explore') return; hideCue(false); tour.start(true); }
+
+    /* ---------------------------------------------------- "?": the numbers, the separation, why */
+    var ref = el('div', 'ls-sec sf2-ref'), refT = null;
+    function refLater(){ clearTimeout(refT); refT = setTimeout(refHtml, H.dragging() || st.ride ? 300 : 60); }
+    function eqTex(){
+      var p = prm();
+      if(st.id === 'ky') return '\\frac{dy}{dt} = ' + String(+p.k.toFixed(2)) + 'y';
+      if(st.id === 'cool') return '\\frac{dT}{dt} = -' + String(+p.k.toFixed(2)) + '(T - ' + p.Ta + ')';
+      return '\\frac{dy}{dx} = ' + d.tex;
+    }
+    function refHtml(){
+      if(!G) return;
+      var cv = st.drawn || solution(), m = fn.f(st.x0, st.y0), v2 = fn.f2(st.x0, st.y0), X = xv(), Y = yv(), P0 = '(' + clean(st.x0) + ', ' + clean(st.y0) + ')';
+      var eqs = d.eq(prm()), on = onEq(), ve = vertEnd(cv), fm = formula();
+      var row = function(k, v){ return '<tr><th scope="row">' + k + '</th><td class="r">' + v + '</td></tr>'; };
+      var html = '<p class="sf2-howref"><button type="button" class="tk2-how" data-how>Show me how</button> to use it, step by step.</p>' +
+        '<h3 class="ls-title-l">' + esc(EQS.filter(function(q){ return q.id === st.id; })[0].label) + '</h3>' + tex(eqTex(), { display: true });
+      var rows = row('Starting point', esc(P0)) + row('Slope there', esc(isFinite(m) ? slopeSub(st.x0, st.y0).replace(/^[yT]′ = /, '') : 'undefined')) +
+        row('Second derivative', isFinite(v2) ? tex('\\frac{d^2' + Y + '}{d' + X + '^2} = ' + (st.id === 'ky' ? 'k^2 y' : st.id === 'cool' ? 'k^2(T - T_a)' : d.f2tex)) + ' = ' + clean(v2, 3) + (on ? '' : v2 > 0 ? ', concave up' : v2 < 0 ? ', concave down' : '') : 'undefined') +
+        row('Curve drawn from', esc(X + ' = ' + clean(cv.back[cv.back.length - 1][2], 3) + (cv.bEnd === 'vertical' ? ' (vertical slope)' : ' (edge)'))) +
+        row('Curve drawn to', esc(X + ' = ' + clean(cv.fwd[cv.fwd.length - 1][2], 3) + (cv.fEnd === 'vertical' ? ' (vertical slope)' : ' (edge)')));
+      if(st.id === 'ky') rows += row('k', clean(prm().k)) + (prm().k ? row(prm().k > 0 ? 'Doubling time' : 'Half-life', esc('ln 2 / ' + clean(Math.abs(prm().k)) + ' ≈ ' + clean(S.halfLife(prm().k), 3))) : '');
+      if(st.id === 'cool') rows += row('k, room', esc(clean(prm().k) + ' per minute, ' + prm().Ta + ' °C')) + row('The gap halves every', esc(clean(S.halfLife(prm().k), 2) + ' min'));
+      html += '<h3 class="ls-title-l">Your starting point</h3><table class="ls-tbl sf2-nums"><caption class="sr-only">The starting point and its solution</caption><tbody>' + rows + '</tbody></table>';
+      if(d.sep){
+        var L = S.steps(st.id, st.x0, st.y0, prm());
+        html += '<h3 class="ls-title-l">Solve it: separation of variables through ' + esc(P0) + '</h3><ol class="ls-steps sf-sep">' + L.map(function(l){ return '<li><div class="sf-sepi"><span>' + html2(l[0]) + '</span>' + (l[1] ? '<span class="sf-sepm">' + tex(l[1], { display: true }) + '</span>' : '') + '</div></li>'; }).join('') + '</ol>';
+      } else html += '<h3 class="ls-title-l">Solving it</h3><p>' + html2(d.note || 'Not separable.') + '</p>';
+      html += '<h3 class="ls-title-l">Why the curve does this</h3>' +
+        '<p>Each streak is drawn with the slope ' + tex('\\frac{d' + Y + '}{d' + X + '}') + ' at its center. A solution has exactly that slope wherever it goes, so it runs along the streaks: from ' + esc(P0) + ' it leaves with slope ' + (isFinite(m) ? clean(m) : 'undefined') + '. The leaf floats forward (to the right, as ' + X + ' grows); the curve is drawn both ways from your point.</p>' +
+        (eqs.length && !kZero() ? '<p>' + esc(Y + ' = ' + eqs.map(function(v){ return clean(v); }).join(', ')) + ' is an equilibrium solution (every streak on it is flat), drawn as the calm line. Two solution curves never cross, so a solution above it stays above and one below stays below.' +
+          (st.id === 'y-2' ? ' Here solutions move away from it on both sides (an unstable equilibrium).' : st.id === 'cool' ? ' Here solutions move toward it on both sides (a stable equilibrium): the coffee ends at room temperature.' : st.id === 'ky' ? (prm().k > 0 ? ' With k > 0 solutions move away from it.' : ' With k < 0 solutions move toward it.') : '') + '</p>' : '') +
+        (kZero() ? '<p>With k = 0 the slope is 0 everywhere: every horizontal line is a solution.</p>' : '') +
+        (ve.length ? '<p>A solution is a function of ' + X + ', so it cannot turn back. Where the slope becomes vertical (on ' + esc(d.undefinedOn || '') + ', where ' + tex('\\frac{dy}{dx}') + ' is undefined), the solution\'s domain ends: the open circle.</p>' : '') +
+        (st.id === 'ky' && !kZero() ? '<p>The dots mark where the amount is ×2, ×4, … (or ×1/2, ×1/4, …) of the start: every ' + clean(S.halfLife(prm().k), 2) + ' units of time.</p>' : '') +
+        (st.id === 'cool' ? '<p>The mug on the bank shows the temperature where the leaf is: it follows the leaf as it floats.</p>' : '') +
+        '<h3 class="ls-title-l">Check with the formula</h3><p>' + (fm ? 'The particular solution through your point is ' + esc(fm) + '. "Check with the formula" draws it as a thin purple line: it sits on the traced curve to the pixel.' : 'This equation is not separable, so AB has no formula for it; the curve is traced numerically. "Check with the formula" draws the exact solution from outside AB (y = Ce^x − x − 1) to show they agree.') + '</p>' +
+        '<p class="bt-small">How it is drawn: the water is the exact grid. Each streak has the same length on screen; their spacing is set by the size of your screen (about one every 44 px). The solution is traced numerically (an adaptive Runge-Kutta method, accurate to many decimal places) forward and backward from the point and stops at the edge of the water or where the slope turns vertical.' + (hasK() ? ' Drag the small knob on the bank to change k' + (st.id === 'cool' ? ', and the knob on the right edge to change the room temperature' : '') + '.' : '') + '</p>' +
+        '<details class="sf2-keys"><summary>Keyboard</summary><p class="bt-small">Tab to the leaf. Arrow keys move it one grid step (0.1' + (st.id === 'cool' ? ', 1 minute or 1 °C' : '') + '), Shift ten steps; Page Up and Page Down move it ten steps up or down; Home and End move it to the left and right edges. The leaf floats once you stop.</p></details>' +
+        '<p class="tool-about-n">Notes for this topic: <a href="../notes/sketching-slope-fields.html">Sketching slope fields</a>, <a href="../notes/reasoning-with-slope-fields.html">Reasoning with slope fields</a>, <a href="../notes/' + (st.id === 'ky' ? 'exponential-models' : st.id === 'cool' ? 'modeling-with-des' : 'separation-of-variables') + '.html">' + (st.id === 'ky' ? 'Exponential models' : st.id === 'cool' ? 'Modeling with differential equations' : 'Separation of variables') + '</a></p>';
+      ref.innerHTML = html;
+    }
+    function html2(s){ return window.ApCalcTex ? window.ApCalcTex.html(s) : esc(s); }
+    ref.addEventListener('click', function(e){ var b = e.target.closest('[data-how]'); if(!b) return; if(LS) LS.close(); setTimeout(startTour, 60); });
+
+    /* ---------------------------------------------------- layout */
+    var lastWH = '';
+    function layout(force){
+      if(stage.hidden || !stage.isConnected) return;
+      var r = scene.getBoundingClientRect(), W = Math.round(r.width), Hh = Math.round(r.height);
+      if(W < 200 || Hh < 200) return;
+      if(!force && W + 'x' + Hh === lastWH && G) return;
+      svg.setAttribute('viewBox', '0 0 ' + W + ' ' + Hh); svg.setAttribute('width', W); svg.setAttribute('height', Hh);
+      G = geo(W, Hh); lastWH = W + 'x' + Hh;
+      // the start point stays inside the (maybe narrower) window
+      var p = fit(st.x0, st.y0); st.x0 = p[0]; st.y0 = p[1];
+      mkKnobs();
+      drawStatic(); drawField();
+      H.value(enc(st.x0, st.y0));
+      draw(); draw();
+      if(cue.active()) cue.place();
+    }
+    if(window.ResizeObserver){ var rt = 0; new ResizeObserver(function(){ var r = scene.getBoundingClientRect(); if(Math.round(r.width) + 'x' + Math.round(r.height) === lastWH) return; cancelAnimationFrame(rt); rt = requestAnimationFrame(function(){ cancelRide(); layout(); }); }).observe(scene); }
+    else window.addEventListener('resize', function(){ layout(); });
+
+    function boot(){
+      st.ready = true;
+      head.purpose('A solution follows the slope at every point.');
+      layout(true); refHtml();
+      setTimeout(function(){ layout(true); refHtml(); if(st.mode === 'explore' && !tour.active()) cueShow(); }, 60);
+    }
+    function stopAll(){ cancelRide(); clearTimeout(rideT); tour.stop(); if(cue.active()) cue.hide(false); }
+    function shown(m){
+      st.mode = m;
+      if(m !== 'explore'){ stopAll(); return; }
+      setTimeout(function(){ layout(true); if(!tour.active()) cueShow(); }, 40);
+    }
+    return {
+      kit2: function(pane, s){ LS = s; boot(); return { stage: stage, ref: ref }; },
+      plain: function(){ host.appendChild(stage); host.appendChild(ref); boot(); },
+      shown: shown, stop: stopAll, redraw: function(){ layout(true); },
+      // for the sweep and the browser checks only: window.ApCalcSlopeFields exists only when a test sets
+      // window.LevlToolTest before the page loads (never in production)
+      _t: { st: st, G: function(){ return G; }, H: H, cause: cause, params: params, formula: formula, takeaway: takeaway, exactFn: exactFn,
+        setEq: function(id){ pick.value = id; pick.dispatchEvent(new Event('change')); },
+        set: function(x, y, ride){ clearTimeout(rideT); cancelRide(); var p = fit(x, y); H.value(enc(p[0], p[1]), true); if(ride) float(); },
+        setK: function(v){ clearTimeout(rideT); if(kD){ kD.value(v, true); } }, setTa: function(v){ clearTimeout(rideT); if(taD){ taD.value(v, true); } },
+        check: function(){ checkB.click(); }, float: float, riding: function(){ return !!st.ride; }, kD: function(){ return kD; }, taD: function(){ return taD; } }
+    };
+  }
+
+  /* ========================================================= mount */
+  function boot(){
+    T.mount('slope-fields', function(app, data){
+      var ex = null, kit = !!(window.LevlKit2 && window.LevlStudio && app.getAttribute('data-studio'));
+      var md = T.modes(app, { slug: 'slope-fields', labels: ['Explore', 'Test yourself'],
+        explore: function(h){ ex = explore(h, data); if(window.LevlToolTest) window.ApCalcSlopeFields = ex._t; },
+        quiz: function(h){ quiz(h, data); },
+        onShow: function(m){
+          if(ex) ex.shown(m);
+          setTimeout(function(){ if(m === 'explore' && ex) ex.redraw(); }, 30);
+        },
+        studio: kit ? { kit2: function(pane, s){ return ex.kit2(pane, s); } } : {} });
+      if(!kit || !T.studioOf(app)) ex.plain();
+      return md;
+    });
   }
 
   /* ===================================================== test yourself */
@@ -544,5 +1049,12 @@
       var fg = el.querySelector('.sf-qfig'); if(fg) fg.classList.toggle('is-clear', ph);
     }, 0.75);
     return { after: function(s){ done.push(s.key); overlay(); } };
+  }
+  /* The page loads the kit (pages.json "kit2": true). A cached copy of the old page would not: fetch it then. */
+  if(window.LevlKit2) boot();
+  else {
+    var up = (window.ApCalcBase || '../') + '../assets/course/';
+    var l = document.createElement('link'); l.rel = 'stylesheet'; l.href = up + 'tool-kit2.css'; document.head.appendChild(l);
+    var sc = document.createElement('script'); sc.src = up + 'tool-kit2.js'; sc.onload = boot; sc.onerror = boot; document.head.appendChild(sc);
   }
 })();

@@ -111,3 +111,97 @@ body[data-app="tool-slope-fields"] .ls-caption math{display:inline-block;max-wid
 :root[data-theme="dark"] .ls-root.ls-phone .calc-plot .sf-field line{stroke-opacity:.72;}
 /* bigger answer fields in Test yourself */
 .ls-root .ls-drill .cd-num input{width:100%;min-height:52px;font-size:18px;}
+
+/* ============================================================== tools v2 Explore (docs/tools-v2-calc-slope-fields-brief.md)
+   A river seen from above on the exact grid. One colour per idea: the leaf and its start green, the slope (the
+   streaks and the slope words) ink, the solution (the leaf's path) crimson, an equilibrium teal (the calm line), the
+   formula's line purple, a domain that ends the warning red. Dark mode: a night river with the same ideas lighter. */
+.sf2{--sf-pt:#2F7D32;--sf-pt-ink:#1F5F22;--sf-sl:#3A4A5C;--sf-sl-ink:#22303F;--sf-path:#B0123A;--sf-path-ink:#8C1036;--sf-eq:#0E7C66;--sf-eq-ink:#0A5E4E;
+  --sf-ex:#6B3FA0;--sf-ex-ink:#55307F;--sf-bad:#A83B2C;
+  --sf-w0:#9CC9E6;--sf-w1:#6FA9D2;--sf-w2:#4F8DBD;--sf-sh0:rgba(255,255,255,.28);--sf-sh1:rgba(255,255,255,0);--sf-g0:#B9D68E;--sf-g1:#93BC67;--sf-sand:#E6D3A3;
+  --sf-tuft:#6E9C48;--sf-streak:rgba(255,255,255,.88);--sf-grid:rgba(255,255,255,.22);--sf-axis:rgba(16,40,70,.55);--sf-tick:#2B3A2A;--sf-halo:rgba(255,255,255,.92);
+  --sf-leaf0:#5FAE3E;--sf-leaf1:#2F7D32;--sf-rib:#DDF2C8;--sf-lab-bg:rgba(255,255,255,.9);
+  display:flex;flex-direction:column;gap:10px;min-height:0;flex:1 1 auto;}
+:root[data-theme="dark"] .sf2{--sf-pt:#7FCB6A;--sf-pt-ink:#A9E39A;--sf-sl:#B8C6D6;--sf-sl-ink:#D8E2EE;--sf-path:#F590AC;--sf-path-ink:#F7B8CA;--sf-eq:#5FD4B4;--sf-eq-ink:#8FE6CE;
+  --sf-ex:#C9A8EE;--sf-ex-ink:#DCC6F4;--sf-bad:#E0705F;
+  --sf-w0:#1E4466;--sf-w1:#173856;--sf-w2:#102A43;--sf-sh0:rgba(160,200,240,.12);--sf-sh1:rgba(160,200,240,0);--sf-g0:#2E4A2A;--sf-g1:#243D22;--sf-sand:#5A5240;
+  --sf-tuft:#4D7339;--sf-streak:rgba(214,232,250,.78);--sf-grid:rgba(200,225,250,.12);--sf-axis:rgba(220,235,255,.55);--sf-tick:#D7E3CF;--sf-halo:rgba(10,24,40,.9);
+  --sf-leaf0:#6FBE4C;--sf-leaf1:#3C8F3A;--sf-rib:#D9F0C5;--sf-lab-bg:rgba(12,26,40,.88);}
+.sf2[hidden],.sf2 [hidden]{display:none !important;}
+.sf2 .tk2-head{gap:6px 12px;}
+.sf2-pick{display:inline-flex;align-items:center;gap:8px;flex:none;font:800 14px var(--font-ui);color:var(--muted);}
+.sf2-sel{min-height:38px;max-width:260px;padding:4px 30px 4px 10px;border:1.5px solid var(--line);border-radius:10px;background-color:var(--white);color:var(--ink);font:800 14px var(--font-ui);}
+.sf2-sel:focus-visible{outline:3px solid var(--cink);outline-offset:1px;}
+.sf2-scene{position:relative;flex:1 1 auto;min-height:360px;border-radius:18px;overflow:hidden;background:var(--surface2);}
+.sf2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;touch-action:pan-y;}
+@media (max-width:1023px){ .sf2-scene{flex:none;height:min(72vw,560px,calc(100svh - 250px));min-height:340px;} }
+@media (max-width:640px){ .sf2-scene{height:max(330px,min(112vw,520px,calc(100svh - 300px)));min-height:0;border-radius:14px;} .sf2{gap:8px;} .sf2-pick-k{display:none;} .sf2-sel{max-width:200px;font-size:13.5px;} }
+.sf2-lines{display:flex;align-items:center;justify-content:space-between;gap:6px 18px;flex-wrap:wrap;flex:none;}
+.sf2-check{flex:none;margin-left:auto;min-height:36px;padding:4px 14px;border:1.5px solid var(--sf-ex);border-radius:999px;background:var(--white);color:var(--sf-ex-ink);
+  font:800 13.5px var(--font-ui);white-space:nowrap;cursor:pointer;}
+.sf2-check:hover{background:color-mix(in srgb, var(--sf-ex) 10%, var(--white));}
+.sf2-check:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.sf2-check[aria-pressed="true"]{background:var(--sf-ex);color:var(--white);}
+:root[data-theme="dark"] .sf2-check[aria-pressed="true"]{color:#1A1024;}
+.sf2 .tk2-cz.is-pt{--cz:var(--sf-pt);--cz-ink:var(--sf-pt-ink);}
+.sf2 .tk2-cz.is-sl{--cz:var(--sf-sl);--cz-ink:var(--sf-sl-ink);}
+.sf2 .tk2-cz.is-path{--cz:var(--sf-path);--cz-ink:var(--sf-path-ink);}
+.sf2 .tk2-cz.is-eq{--cz:var(--sf-eq);--cz-ink:var(--sf-eq-ink);}
+.sf2 .tk2-cz.is-bad{--cz:var(--sf-bad);}
+@media (max-width:640px){ .sf2 .tk2-cause{min-height:72px;align-content:flex-start;} }
+/* the leaf's knob: a clear ring around the leaf (the leaf is never hidden); still the kit's slider */
+.sf2 .tk2-handle.is-ring > .tk2-knob{width:48px;height:48px;margin:-24px 0 0 -24px;}
+.sf2 .tk2-handle.is-ring .tk2-dot,:root[data-theme="dark"] .sf2 .tk2-handle.is-ring .tk2-dot{width:42px;height:42px;background:transparent;
+  box-shadow:0 0 0 3px var(--sf-pt),0 0 0 5px color-mix(in srgb, var(--white) 75%, transparent);}
+.sf2 .tk2-handle.is-ring .tk2-ar{display:none;}
+.sf2 .tk2-handle.is-ring .tk2-knob:hover .tk2-dot,.sf2 .tk2-handle.is-ring.is-drag .tk2-dot{transform:scale(1.06);}
+.sf2 .tk2-handle.is-ring.is-focus .tk2-dot{box-shadow:0 0 0 3px var(--cink),0 0 0 6px var(--white),0 0 0 9px var(--cink) !important;}
+.sf2 .tk2-handle.is-ring > .tk2-chip{transform:translate(-50%,28px);}
+.sf2 .tk2-handle.is-ring > .tk2-chip.is-up{transform:translate(-50%,calc(-100% - 28px));}
+.sf2 .tk2-handle.is-ring > .tk2-chip.is-down{transform:translate(-50%,28px);}
+.sf2 .sf2-k .tk2-tag,.sf2 .sf2-ta .tk2-tag{background:var(--sf-sl-ink);}
+:root[data-theme="dark"] .sf2 .sf2-k .tk2-tag,:root[data-theme="dark"] .sf2 .sf2-ta .tk2-tag{background:var(--sf-sl);color:#0E1722;}
+.sf2 .sf2-ta .tk2-tag{background:var(--sf-eq-ink);}
+:root[data-theme="dark"] .sf2 .sf2-ta .tk2-tag{background:var(--sf-eq);}
+/* the picture */
+.sf2s-w0{stop-color:var(--sf-w0);} .sf2s-w1{stop-color:var(--sf-w1);} .sf2s-w2{stop-color:var(--sf-w2);}
+.sf2s-sh0{stop-color:var(--sf-sh0);} .sf2s-sh1{stop-color:var(--sf-sh1);}
+.sf2s-g0{stop-color:var(--sf-g0);} .sf2s-g1{stop-color:var(--sf-g1);}
+.sf2-sand{fill:var(--sf-sand);}
+.sf2-tuft{fill:none;stroke:var(--sf-tuft);stroke-width:1.3;stroke-linecap:round;}
+.sf2-shine{pointer-events:none;}
+.sf2-grid{fill:none;stroke:var(--sf-grid);stroke-width:1;}
+.sf2-axis{fill:none;stroke:var(--sf-axis);stroke-width:1.5;}
+.sf2-svg .sf2-ticks text{font:700 12px var(--font-ui);fill:var(--sf-tick);}
+.sf2-svg .sf2-axn{font:800 13px var(--font-ui);fill:var(--sf-tick);font-style:italic;}
+.sf2-axin{fill:#FFFFFF;paint-order:stroke;stroke:rgba(16,40,70,.45);stroke-width:3px;stroke-linejoin:round;}
+.sf2-field{fill:none;stroke:var(--sf-streak);stroke-width:2.2;stroke-linecap:round;}
+.sf2-calm{fill:none;stroke:rgba(255,255,255,.28);stroke-width:12;}
+:root[data-theme="dark"] .sf2-calm{stroke:rgba(150,230,210,.12);}
+.sf2-eqline{fill:none;stroke:var(--sf-eq);stroke-width:2.6;}
+.sf2-solh{fill:none;stroke:var(--sf-halo);stroke-width:7;stroke-linejoin:round;stroke-linecap:round;}
+.sf2-sol{fill:none;stroke:var(--sf-path);stroke-width:3.2;stroke-linejoin:round;stroke-linecap:round;}
+.sf2-exact{fill:none;stroke:var(--sf-ex);stroke-width:1.6;stroke-linejoin:round;}
+.sf2-end{fill:var(--sf-halo);stroke:var(--sf-bad);stroke-width:2.5;}
+.sf2-mark{fill:var(--sf-path);stroke:var(--sf-halo);stroke-width:2;}
+.sf2-start{fill:var(--sf-pt);stroke:var(--sf-halo);stroke-width:1.5;}
+.sf2-leaf-b{fill:var(--sf-leaf0);stroke:var(--sf-leaf1);stroke-width:1.4;stroke-linejoin:round;}
+.sf2-leaf-r{fill:none;stroke:var(--sf-rib);stroke-width:1.1;stroke-linecap:round;}
+.sf2-leaf-s{fill:none;stroke:var(--sf-leaf1);stroke-width:1.6;stroke-linecap:round;}
+.sf2-wake path{fill:none;stroke:rgba(255,255,255,.75);stroke-width:1.6;stroke-linecap:round;}
+.sf2-leafg{pointer-events:none;}
+.sf2-fade{pointer-events:none;}
+.sf2-lab{font:800 13px var(--font-ui);paint-order:stroke;stroke:var(--sf-halo);stroke-width:4px;stroke-linejoin:round;}
+.sf2-svg .sf2-ceq{fill:var(--sf-eq-ink);} .sf2-svg .sf2-cex{fill:var(--sf-ex-ink);} .sf2-svg .sf2-cmark{fill:var(--sf-path-ink);font-size:12px;} .sf2-svg .sf2-cbad{fill:var(--sf-bad);font-size:12.5px;}
+.sf2-svg .sf2-lab.sf2-cmug{fill:#3B2F22;stroke:none;font-size:11.5px;}
+.sf2-mug-b{fill:#F4F1EA;stroke:#6B6352;stroke-width:1.3;}
+.sf2-mug-h{fill:none;stroke:#6B6352;stroke-width:2.6;}
+:root[data-theme="dark"] .sf2-mug-b{fill:#D9D4C8;}
+/* "?" */
+.sf2-ref .sf2-howref{margin:0 0 10px;}
+.sf2-nums td.r{text-align:right;}
+.sf2-peb ellipse{fill:#B8A57A;}
+:root[data-theme="dark"] .sf2-peb ellipse{fill:#7A6E55;}
+.sf2-reed{fill:none;stroke:#5E8A3A;stroke-width:2;stroke-linecap:round;}
+:root[data-theme="dark"] .sf2-reed{stroke:#5C8A44;}
+.sf2 .sf2-ta.is-low .tk2-tag{margin-top:-17px;}

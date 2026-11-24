@@ -229,11 +229,12 @@
    "topic": "sketching-slope-fields",
    "name": "Slope fields",
    "title": "Slope Field Trainer",
-   "desc": "Draw slope fields, trace a solution curve through a point, separate the variables and fit exponential models.",
-   "blurb": "Draw the field, trace a solution, then solve it exactly.",
-   "lede": "Trace a solution curve through a slope field.",
+   "desc": "Drop a leaf on a slope field drawn as a river: the solution through that point follows the streaks. Then separate the variables and fit exponential models.",
+   "blurb": "Drop a leaf on the field and watch the solution follow it.",
+   "lede": "Drop a leaf on the field and follow the solution through it.",
    "premium": "tools",
-   "studio": true
+   "studio": true,
+   "kit2": true
   },
   {
    "slug": "area-volume",
