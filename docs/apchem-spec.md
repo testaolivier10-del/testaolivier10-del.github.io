@@ -400,6 +400,13 @@ Chemistry science gets an independent accuracy check, as A&P and ochem do.
     drawn molecules, and a Q gauge beside the flask with K as a notch; sized from the screen height (review round 1). The drill is Test yourself, unchanged
     (ids, `?seed=`, `#quiz`). The adapter gains `placed: true` for a part that put itself in the frame. Data:
     `explore` in the tool's json, checked by its validator. Open: needs-author `ice-explore-n2o4`.
+31. (2026-11-24, tools v2; `docs/tools-v2-chem-q-vs-k-brief.md`, branch `claude/tools-v2-chem-q-vs-k`, not merged)
+    **Q vs K on the kit.** `q-vs-k` gets `"kit2": true`. Explore is one screen: a glass cylinder with a piston holding
+    countable particles (A + B ⇌ AB, K<sub>c</sub> 2.5; CaCO₃(s) ⇌ CaO(s) + CO₂(g), K<sub>p</sub> 0.22 at 800 °C), a tray
+    of cups (three gas particles or one lump per press; a tap on a particle takes three out), a dial with K as a notch and
+    an arrow under the equation, all read from what is drawn; the reaction runs event by event to the whole counts
+    nearest K; the piston 0.50 to 1.50 L. The drill is Test yourself, unchanged (ids, `?seed=`, `#quiz`). Data: `explore`
+    in the tool's json, checked by its validator. Open: needs-author `qk-explore`.
 
 ## 8. Open items for the owner
 

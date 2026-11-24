@@ -159,7 +159,7 @@
         else g.iw = Math.round(clamp(W * 0.27, 240, 430));
         // vertical: a band at the top (narrow: the plate and the dial), the knob over the piston's top place, the
         // cylinder, its foot, the bench with the tray
-        var benchH = g.narrow ? g.wh + 100 : 48, band = g.narrow ? Math.max(pm.h, 2 * g.gr + 26) + 14 : 0;
+        var benchH = g.narrow ? g.wh + 112 : 48, band = g.narrow ? Math.max(pm.h, 2 * g.gr + 26) + 14 : 0;
         g.stem = 30;
         g.yRim = Math.round(band + 22 + g.stem + 12);       // the open top of the glass
         g.lumpW = Math.round(clamp(g.iw / 8 - 6, 22, 40)); g.lumpH = Math.round(g.lumpW * 0.7);
@@ -220,7 +220,7 @@
               for(var col = 0; col < nc; col++){
                 // y as a fraction of the gas column (the piston squeezes the rows together; a small jitter keeps it gas)
                 var fy = rows === 1 ? 0.5 : ((mh * s / 2 + 4) + row * (hMin - mh * s - 8) / (rows - 1) + 4) / (hMin + 8);
-                list.push({ x: xs + off + col * cw + (rr() - 0.5) * gap * 0.6, fy: clamp(fy + (rr() - 0.5) * (rows > 1 ? 0.45 * gap / (hMin / (rows - 1)) * (hMin - mh * s - 8) / (hMin + 8) : 0), 0.04, 0.96), a: (rr() - 0.5) * 0.14 });
+                list.push({ x: xs + off + col * cw + (rr() - 0.5) * gap * 0.4, fy: clamp(fy + (rr() - 0.5) * (rows > 1 ? 0.3 * gap / (hMin / (rows - 1)) * (hMin - mh * s - 8) / (hMin + 8) : 0), 0.04, 0.96), a: (rr() - 0.5) * 0.1 });
               }
               void span;
             }
@@ -897,7 +897,7 @@
       // the one first visit cue: above the tray on a wide screen (over the bare wall), under it on a narrow one (so it
       // covers neither the cylinder nor a cup's name)
       var cue = K.cue(layer, { key: 'apchem-qk-tray', text: 'Drag B into the cylinder', side: window.innerWidth < 860 ? 'below' : 'above',
-        at: function(){ if(!G || !L.wells) return [0, 0]; var wl = L.wells[1]; return G.narrow ? [wl.x + wl.w / 2, wl.y + wl.h + 20] : [wl.x + wl.w / 2, wl.y - 12]; } });
+        at: function(){ if(!G || !L.wells) return [0, 0]; var wl = L.wells[1]; return G.narrow ? [wl.x + wl.w / 2, wl.y + wl.h + 16] : [wl.x + wl.w / 2, wl.y - 12]; } });
       function hideCue(used){ if(cue.active()) cue.hide(used); }
       stage.addEventListener('keydown', function(e){ if(sceneBox.contains(e.target) && /^(Arrow|Page|Home|End|Enter| |Delete)/.test(e.key)) hideCue(true); }, true);
       function rectOf(x, y, w, h){ var r0 = svg.getBoundingClientRect(), k = r0.width / G.W; return { left: r0.left + x * k, top: r0.top + y * k, right: r0.left + (x + w) * k, bottom: r0.top + (y + h) * k, width: w * k, height: h * k }; }
