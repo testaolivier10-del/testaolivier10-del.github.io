@@ -155,7 +155,10 @@ const probe = (o) => {
         const ext = xs.slice(Math.max(0, i - 3), i + 4).map(p => p[1]), y = xs[i][1];
         if (!(ext.every(q => q >= y - 0.3) || ext.every(q => q <= y + 0.3))) out.push('turns at ' + T + ' s is not the top or bottom of the drawn x graph');
       }
-      const want = Math.abs(se.v0) < 1e-9 && Math.abs(se.a) < 1e-9 ? 'rest' : Math.abs(se.a) < 1e-9 ? 'const' : Math.abs(se.v0) < 1e-9 ? 'up' : se.v0 * se.a > 0 ? 'up' : 'down';
+      // the newest piece of the run starts at its t0 with the drawn v there
+      const t0 = se.segs[se.segs.length - 1].t0, run = se.run; let v1 = se.v0;
+      if (t0 > 0) { const i = run.t.findIndex(tt => tt >= t0 - 1e-9); v1 = i <= 0 ? run.v[0] : run.v[i - 1] + (run.v[i] - run.v[i - 1]) * (t0 - run.t[i - 1]) / ((run.t[i] - run.t[i - 1]) || 1); v1 = +v1.toFixed(6); }
+      const want = Math.abs(v1) < 1e-9 && Math.abs(se.a) < 1e-9 ? 'rest' : Math.abs(se.a) < 1e-9 ? 'const' : Math.abs(v1) < 1e-9 ? 'up' : v1 * se.a > 0 ? 'up' : 'down';
       if (res.split(' ')[0] !== want) out.push(`Set result ${res} for v₀ ${se.v0}, a ${se.a}`);
     }
   }
@@ -246,6 +249,14 @@ async function runSweep(w, h) {
   const mr = await page.evaluate(probe, { dark: DARK, root: '.mg2-mfig' }).catch(e => ({ out: ['no Match figure: ' + e.message] }));
   states++; checks += 12; mr.out.filter(m => !/cause line/.test(m)).forEach(m => fails.push(`${w} Match: ${m}`));
   await shot(page, `${W4(w)}-3-match.png`);
+  // deep links: ?seed= opens that problem in Test yourself, #quiz opens Test yourself
+  for (const hash of ['?seed=424242', '#quiz']) {
+    const d = await open({ w, h, hash }); await d.page.waitForTimeout(1500);
+    const r = await d.page.evaluate(() => ({ mode: document.querySelector('.ls-root') ? document.querySelector('.ls-root').getAttribute('data-mode') : '', code: (document.querySelector('.bt-code b') || {}).textContent || '', step: !!document.querySelector('.cd-step') }));
+    checks += 2; if (r.mode !== 'quiz' || !r.step) fails.push(`${w} ${hash}: does not open Test yourself (${JSON.stringify(r)})`); if (hash[0] === '?' && r.code !== '424242') fails.push(`${w} ${hash}: problem code ${r.code}`);
+    if (d.errs.length) fails.push(`${w} ${hash}: console ${d.errs.join('|')}`);
+    await d.ctx.close();
+  }
   if (w <= 640) for (const t of ['drive', 'set']) { checks++; if (heights[t].size > 1) fails.push(`${w}: cause line height not constant in ${t}: ${[...heights[t]]}`); }
   checks++; if (errs.length) fails.push(`${w}: console ${errs.join('|')}`);
   await ctx.close();
