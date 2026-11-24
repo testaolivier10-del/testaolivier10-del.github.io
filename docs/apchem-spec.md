@@ -393,6 +393,13 @@ Chemistry science gets an independent accuracy check, as A&P and ochem do.
     problems, whose items, grading and record ids are unchanged. The grader's units are more forgiving for every
     chemistry question (g/ml, per, KJ, atmospheres, a stray full stop, a middle dot as the times sign; not ML,
     which is megalitre).
+30. (2026-11-23, tools v2; `docs/tools-v2-chem-ice-tables-brief.md`, branch `claude/tools-v2-chem-ice-tables`, not
+    merged) **ICE tables on the kit.** `ice-table-drills` gets `"kit2": true`. Explore is one screen: a sealed flask
+    of real molecules (H₂ + I₂, K<sub>c</sub> 54.3 at 430 °C; N₂O₄, K<sub>p</sub> 0.146 at 25 °C), x as a knob on a
+    rail under it, each step one reaction event drawn where it happens, the ICE table on a clipboard filled from the
+    drawn molecules, and a Q gauge on the flask's neck with K as a notch. The drill is Test yourself, unchanged
+    (ids, `?seed=`, `#quiz`). The adapter gains `placed: true` for a part that put itself in the frame. Data:
+    `explore` in the tool's json, checked by its validator. Open: needs-author `ice-explore-n2o4`.
 
 ## 8. Open items for the owner
 

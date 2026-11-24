@@ -265,13 +265,14 @@
     "tint": {
      "key": "I2",
      "color": "violet",
-     "why": "I₂ vapour is violet; H₂ and HI are colourless"
+     "why": "I₂ vapor is violet; H₂ and HI are colorless"
     },
     "gauge": [
      -2,
      3
     ],
-    "source": "Kc = 54.3 at 430 °C, as the drill's hydrogen-iodide context (docs/apchem-needs-author.md ice-hi-k)."
+    "source": "Kc = 54.3 at 430 °C, as the drill's hydrogen-iodide context (docs/apchem-needs-author.md ice-hi-k).",
+    "ref": "R. Chang, Chemistry, 9th ed., Example 14.9"
    },
    {
     "id": "n2o4",
@@ -301,13 +302,14 @@
     "tint": {
      "key": "NO2",
      "color": "brown",
-     "why": "NO₂ is brown; N₂O₄ is colourless"
+     "why": "NO₂ is brown; N₂O₄ is colorless"
     },
     "gauge": [
      -3,
      2
     ],
-    "source": "Kp = 0.146 at 298.15 K from NBS ΔG°f (NO₂ 51.31, N₂O₄ 97.89 kJ/mol), the same value as the Equilibrium and kinetics tool (chem/data/tools/equilibrium-kinetics.json). See docs/apchem-needs-author.md ice-explore-n2o4."
+    "source": "Kp = 0.146 at 298.15 K from NBS ΔG°f (NO₂ 51.31, N₂O₄ 97.89 kJ/mol), the same value as the Equilibrium and kinetics tool (chem/data/tools/equilibrium-kinetics.json). See docs/apchem-needs-author.md ice-explore-n2o4.",
+    "ref": "from standard Gibbs energies of formation, NBS tables: ΔG° = +4.73 kJ/mol"
    }
   ]
  }

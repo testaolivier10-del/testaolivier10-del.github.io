@@ -1,8 +1,8 @@
 /* ICE tables, tools v2 (chem/assets/tools/ice-table-drills.js; docs/tools-v2-chem-ice-tables-brief.md). Loaded only by
-   this page (chem/data/pages.json "kit2": true), after chem-tools.css. One colour per idea, everywhere (Okabe-Ito,
+   this page (chem/data/pages.json "kit2": true), after chem-tools.css. One color per idea, everywhere (Okabe-Ito,
    lighter in dark mode): x blue (the knob's rail, the cause line), Q vermillion (the needle, the Q value), K bluish
    green (the notch, the equilibrium row). The lab wall and bench are the Units and significant figures tool's, so the
-   course's tools look like one family. Atoms use the course's colours (chem-tools.css .pt-atom). */
+   course's tools look like one family. Atoms use the course's colors (chem-tools.css .pt-atom). */
 .ix2{--ix-x:#0072B2;--ix-x-ink:#005A8C;--ix-q:#D55E00;--ix-q-ink:#A64700;--ix-k:#009E73;--ix-k-ink:#00704F;
   --wall0:#EEF3F7;--wall1:#E2EAF0;--grout:#D3DDE5;--bn0:#D9D2C5;--bn1:#C4BBA9;--bn-edge:#A99F8E;--bn-ink:#4A4336;
   --glass:#8FA9BF;--gl0:rgba(255,255,255,.55);--gl1:rgba(214,230,242,.38);--paper:#FFFDF7;--ruled:#DCE6F2;--margin:#E8A3A3;--board:#B48A5A;--board-edge:#94703F;
@@ -22,13 +22,13 @@
 .ix2-lines{display:flex;align-items:center;justify-content:space-between;gap:6px 18px;flex-wrap:wrap;flex:none;}
 .ix2-again{flex:none;margin-left:auto;min-height:40px;padding:0 14px;font-size:14px;background:var(--white);color:var(--cink);box-shadow:inset 0 0 0 1.5px color-mix(in srgb, var(--cink) 45%, transparent);}
 :root[data-theme="dark"] .ix2-again{background:transparent;}
-/* cause line colours */
+/* cause line colors */
 .ix2 .tk2-cz.is-x{--cz:var(--ix-x);--cz-ink:var(--ix-x-ink);}
 .ix2 .tk2-cz.is-q{--cz:var(--ix-q);--cz-ink:var(--ix-q-ink);}
 .ix2 .tk2-cz.is-k{--cz:var(--ix-k);--cz-ink:var(--ix-k-ink);}
 .ix2 .tk2-cz.is-eq{--cz:var(--ix-k);--cz-ink:var(--ix-k-ink);}
 .ix2 .tk2-cz.is-ink{--cz:var(--ink);--cz-ink:var(--ink);}
-/* the knob on the x rail: the course's knob, its tag in the x colour */
+/* the knob on the x rail: the course's knob, its tag in the x color */
 .ix2 .tk2-drag .tk2-tag{background:var(--ix-x);}
 :root[data-theme="dark"] .ix2 .tk2-drag .tk2-tag{color:#0B1A24;}
 /* the lab: wall, bench */

@@ -2,7 +2,7 @@
    kit (assets/course/tool-kit2.js) through the course adapter ApChemTools.studioKit2 (chem-tools.js).
 
    THE ONE IDEA: a reaction runs forward by x until Q reaches K; the ICE table is that change written down.
-   EXPLORE: a sealed round bottom flask of gas on a lab bench (H₂ and violet I₂; or colourless N₂O₄ that browns as NO₂
+   EXPLORE: a sealed round bottom flask of gas on a lab bench (H₂ and violet I₂; or colorless N₂O₄ that browns as NO₂
    forms), the molecules drawn with their atoms, and a clipboard on the wall with the ICE table. The main control is x,
    a knob on a rail under the flask: every step of x is one reaction event, drawn where it happens (an H₂ and an I₂
    meet, swap partners and leave as two HI; an N₂O₄ splits into two NO₂), so the drawn counts ARE the table (one
@@ -12,7 +12,7 @@
    the cause line says the reverse reaction would bring it back. The data (chem/data/tools/ice-table-drills.json
    "explore") is checked by scripts/lib/apchem-tool-checks/ice-table-drills.mjs (a step lands Q within 2% of K, and the
    exact x rounds to that step).
-   Every number shown (table, Q, the knob's tag, the cause line, the needle, the gas colour) comes from the molecules
+   Every number shown (table, Q, the knob's tag, the cause line, the needle, the gas color) comes from the molecules
    DRAWN at that frame: a molecule counts once it has formed. Reduced motion: a short cross fade to the new state.
    TEST YOURSELF: the drill, unchanged (T.drill: Find K, Small K and the 5% check, Perfect square; ids
    "ice-table-drills:<context>:<step>", ?seed= and #quiz open it), with its typed table, live beaker and bar chart. */
@@ -56,7 +56,7 @@
       stage.appendChild(head.el);
       var sceneBox = document.createElement('div'); sceneBox.className = 'ix2-scene'; sceneBox.id = T.nid('ix2');
       // two layers: the still scene (the lab, the flask's glass, the gauge's face, the clipboard) and over it the moving
-      // parts on a canvas (the gas colour, the molecules, the glow of a reaction, the needle), so a moving molecule
+      // parts on a canvas (the gas color, the molecules, the glow of a reaction, the needle), so a moving molecule
       // changes no element and the page never restyles for it
       sceneBox.innerHTML = '<svg class="ix2-svg" role="img" xmlns="http://www.w3.org/2000/svg" data-ls-text="keep"></svg><canvas class="ix2-mov" aria-hidden="true"></canvas><svg class="ix2-front" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"></svg>';
       stage.appendChild(sceneBox);
@@ -110,9 +110,11 @@
           g.R = Math.round(Math.min((W - 92 - g.nw) / 2, g.compact ? 200 : W * 0.165, (620 - 146) / 2.9));
           g.H = Math.max(480, Math.round(2.9 * g.R + 146));
           g.yb = g.H - 112;
-          g.cx = Math.round(Math.max(g.R + 30, (W - g.nw - 30) / 2));
+          // the flask and the clipboard as one group in the middle of the wall
+          var gap = Math.round(clamp(W * 0.07, 50, 130)), left = Math.max(30, Math.round((W - (2 * g.R + gap + g.nw)) / 2));
+          g.cx = left + g.R;
           g.cy = g.yb - g.R - 4;
-          g.nx = W - 22 - g.nw;
+          g.nx = Math.min(W - 22 - g.nw, g.cx + g.R + gap);
           g.ny = Math.max(22, Math.round((g.yb - 16 - g.nh) / 2));
           g.railY = g.yb + 50;
         } else {
@@ -181,7 +183,7 @@
       /* ---- the canvas: atom sprites (the course's atom look: body, shade, highlight; no letters), drawn per frame */
       var CV = { ctx: null, dpr: 1, spr: {}, col: {}, fade: null };
       function cssVar(n){ return getComputedStyle(stage).getPropertyValue(n).trim(); }
-      function readColours(){
+      function readColors(){
         var dark = document.documentElement.getAttribute('data-theme') === 'dark';
         CV.col = { dark: dark, H: '#F4F6F8', I: '#8E4FB8', N: '#5677E0', O: '#EE5A4F', edge: dark ? 'rgba(0,0,0,.6)' : 'rgba(20,28,30,.55)',
           violet: cssVar('--violet') || '#8E4FB8', brown: cssVar('--brown') || '#9A4A16', q: cssVar('--ix-q') || '#D55E00', ink: getComputedStyle(stage).color || '#10161a' };
@@ -214,7 +216,7 @@
         // picture units from here on
         x.translate(-bx[0], -bx[1]);
         x.globalAlpha = alpha;
-        // the gas colour, inside the flask
+        // the gas color, inside the flask
         x.save(); x.clip(new Path2D(flaskPath())); x.globalAlpha = alpha * gasAlpha; x.fillStyle = r.tint.color === 'violet' ? CV.col.violet : CV.col.brown; x.fillRect(0, 0, G.W, G.yb); x.restore();
         x.globalAlpha = alpha;
         // the glow of each reaction under way, then the molecules (those forming are drawn by their events)
@@ -396,7 +398,7 @@
         BK.band.classList.toggle('is-on', at);
         if(BK.wE) BK.wE.textContent = at ? 'equilibrium' : 'at this x';
         svg.classList.toggle('is-eq', at);
-        // the gas colour from the drawn coloured molecules
+        // the gas color from the drawn colored molecules
         var ti = idx(r.tint.key), most = 0; for(var kk = 0; kk <= r.steps; kk++) most = Math.max(most, countsAt(r, kk)[ti]);
         gasTo = 0.08 + 0.5 * c[ti] / most; if(force && !prev) gasAlpha = gasTo;
         needle.to = angOf(q); if(needle.a == null) needle.a = needle.to;
@@ -546,7 +548,7 @@
         events = events.filter(function(e){ return !e.done; });
         // the needle eases to the drawn Q
         if(needle.to != null){ var d = needle.to - needle.a; needle.a = Math.abs(d) < 0.002 ? needle.to : needle.a + d * 0.22; }
-        // the gas colour eases to the drawn coloured molecules
+        // the gas color eases to the drawn colored molecules
         var dg = gasTo - gasAlpha; gasAlpha = Math.abs(dg) < 0.002 ? gasTo : gasAlpha + dg * 0.18;
         paintCanvas();
         var more = events.length || S.target !== logicalK() + pendingK() || (needle.to != null && needle.a !== needle.to) || gasAlpha !== gasTo || !!CV.fade;
@@ -602,7 +604,7 @@
         CV.box = bx; CV.dpr = Math.min(2, window.devicePixelRatio || 1);
         mov.style.left = bx[0] + 'px'; mov.style.top = bx[1] + 'px'; mov.style.width = (bx[2] - bx[0]) + 'px'; mov.style.height = (bx[3] - bx[1]) + 'px';
         mov.width = Math.round((bx[2] - bx[0]) * CV.dpr); mov.height = Math.round((bx[3] - bx[1]) * CV.dpr); CV.ctx = mov.getContext('2d');
-        CV.base = document.createElement('canvas'); CV.base.width = mov.width; CV.base.height = mov.height; CV.baseDirty = true; readColours();
+        CV.base = document.createElement('canvas'); CV.base.width = mov.width; CV.base.height = mov.height; CV.baseDirty = true; readColors();
         sceneBox.classList.toggle('is-narrow', G.compact);
         drawStatic();
         layoutAt(S.target);
@@ -657,12 +659,12 @@
         ref.innerHTML = '<p class="ix2-howref"><button type="button" class="tk2-how" data-how>Show me how</button> to use it, step by step.</p>' +
           '<h3 class="ls-title-l">The flask and the table</h3><p>Each step of x is one reaction event in the flask: ' + step + '. One molecule stands for ' + r.per + ' ' + u + ', so the table\'s numbers are the molecules you can count. I is what was put in; C is the change, written in x from the coefficients (reactants −, products +); E is I + C.</p>' +
           '<h3 class="ls-title-l">Q and K</h3><p>' + (r.K === 'Kp' ? 'K<sub>p</sub>' : 'K<sub>c</sub>') + ' = ' + expr + ' = ' + r.Kval + ' at ' + esc(r.T) + '. Q is the same expression with the amounts at this x. Q below K: the reaction still runs forward. Q above K: the reverse reaction runs until Q comes back down to K. At equilibrium Q = K, and that is the x an ICE problem solves for. K changes only with temperature; moving x changes Q, never K.</p>' +
-          '<p>Only gases and dissolved species go into K. A pure solid or a pure liquid is left out (its amount does not change its concentration). Both reactions here are all gas, so every species is in the expression. On the exam K is written without units.</p>' +
-          '<h3 class="ls-title-l">Why Q lands near K, not on it</h3><p>The flask holds whole molecules, so x moves in steps of ' + r.per + ' ' + u + '. The step nearest K is x = ' + fmt(x) + ' ' + u + ', where Q = ' + fmtQ(Qof(r, c)) + ' (within ' + Math.max(1, Math.round(100 * Math.abs(Qof(r, c) / r.Kval - 1))) + '% of K). Solved exactly, x = ' + fmt(exactX(r)) + ' ' + u + ', the same to three significant figures.</p>' +
+          '<p>Only gases and dissolved species go into K. A pure solid or a pure liquid is left out (adding more of it does not change its concentration). Both reactions here are all gas, so every species is in the expression. On the exam K is written without units.</p>' +
+          '<h3 class="ls-title-l">Why Q lands near K, not on it</h3><p>The flask holds whole molecules, so x moves in steps of ' + r.per + ' ' + u + '. The step nearest K is x = ' + fmt(x) + ' ' + u + ', where Q = ' + fmtQ(Qof(r, c)) + ' (within ' + Math.max(1, Math.round(100 * Math.abs(Qof(r, c) / r.Kval - 1))) + '% of K). Solved exactly, x = ' + M.fmt(exactX(r), 4) + ' ' + u + ', which is the drawn step to three significant figures.</p>' +
           '<h3 class="ls-title-l">When x is small: the 5% rule</h3><p>When K is small, x is small next to the starting amount, so you may write (' + fmt(i0) + ' − x) ≈ ' + fmt(i0) + ', solve, then check: if the change is more than 5% of the starting amount, the shortcut is not good enough and you solve the full equation (the quadratic formula). It does not apply here: x is ' + Math.round(100 * x * Math.abs(reac[0].nu) / i0) + '% of the starting ' + (r.K === 'Kp' ? 'P(' + reac[0].html + ')' : '[' + reac[0].html + ']') + '. Test yourself has small K problems with the 5% check.</p>' +
           '<h3 class="ls-title-l">K<sub>c</sub> and K<sub>p</sub></h3><p>H₂ + I₂ uses concentrations in mol/L (K<sub>c</sub>); N₂O₄ here uses partial pressures in atm (K<sub>p</sub>). The table works the same way with either. At a fixed volume and temperature a gas\'s partial pressure is proportional to its number of molecules, so one molecule stands for a fixed pressure.</p>' +
-          '<h3 class="ls-title-l">The colours</h3><p>I₂ vapour is violet and NO₂ is brown; H₂, HI and N₂O₄ are colourless, so the gas in the flask fades as I₂ is used up, or browns as NO₂ forms. Atoms: H white, I purple, N blue, O red. The flask\'s molecules are drawn still between reactions; in a real gas they never stop moving.</p>' +
-          '<h3 class="ls-title-l">The constants</h3><ul class="ix2-list">' + RX.map(function(z){ return '<li>' + esc(eqText(z)) + ': ' + (z.K === 'Kp' ? 'K<sub>p</sub>' : 'K<sub>c</sub>') + ' = ' + z.Kval + ' at ' + esc(z.T) + '. ' + esc(z.source.replace(/ See docs\/.*$/, '').replace(/ \(docs\/.*\)\.?$/, '.').replace(/, the same value as.*$/, '.').replace(/ \(chem\/data.*$/, '.')) + '</li>'; }).join('') + '</ul>' +
+          '<h3 class="ls-title-l">The colors</h3><p>I₂ vapor is violet and NO₂ is brown; H₂, HI and N₂O₄ are colorless, so the gas in the flask fades as I₂ is used up, or browns as NO₂ forms. Atoms: H white, I purple, N blue, O red. The flask\'s molecules are drawn still between reactions; in a real gas they never stop moving.</p>' +
+          '<h3 class="ls-title-l">The constants</h3><ul class="ix2-list">' + RX.map(function(z){ return '<li>' + esc(eqText(z)) + ': ' + (z.K === 'Kp' ? 'K<sub>p</sub>' : 'K<sub>c</sub>') + ' = ' + z.Kval + ' at ' + esc(z.T) + ' (' + esc(z.ref) + ').</li>'; }).join('') + '</ul>' +
           '<h3 class="ls-title-l">' + esc(data.howItWorksTitle || 'How Test yourself checks') + '</h3>' + T.wrapTables(data.howItWorks) +
           '<p class="bt-small">Notes: <a href="../notes/equilibrium-concentrations.html">Calculating equilibrium concentrations</a></p>';
       }
@@ -677,7 +679,9 @@
       var qz = document.createElement('div'); qz.className = 'bt-pane bt-pane-quiz ix2-quiz';
       app.appendChild(qz);
       quiz(qz, data, M);
-      var drillStage = ctx.studio ? ctx.studio.root.querySelector('.ls-drill-stage') : null, drillDock = qz.querySelector('.cd-problem');
+      var drillStage = ctx.studio ? ctx.studio.root.querySelector('.ls-drill-stage') : null, drillDock = ctx.studio ? ctx.studio.root.querySelector('.ls-drill') : qz.querySelector('.cd-problem');
+      // the drill's own About repeats the intro (it is in About once, with Explore's line, and its rules are in "?")
+      if(ctx.studio){ var dab = ctx.studio.root.querySelector('.bt-about'); if(dab) dab.remove(); }
       function shownMode(mode){
         var was = S.mode; S.mode = mode;
         tour.stop();
@@ -687,14 +691,14 @@
       }
       ctx.kit2 = { stage: stage, ref: ref, onShow: shownMode,
         parts: [{ value: 'quiz', label: 'Problems', placed: true, stage: drillStage, dock: drillDock }],
-        about: [(function(){ var d = document.createElement('div'); d.className = 'bt-intro'; d.innerHTML = data.intro; return d; })()],
+        about: [(function(){ var d = document.createElement('div'); d.className = 'bt-intro'; d.innerHTML = '<p><b>Explore:</b> drag x and watch the molecules in a sealed flask react one step at a time, while the ICE table, Q and the gauge follow what is drawn, until Q reaches K.</p><p><b>Test yourself:</b></p>' + data.intro; return d; })()],
         start: function(){ try{ if(/[?&#]seed=\d+/.test(location.search + location.hash) || /^#quiz\b/.test(location.hash)) return { mode: 'quiz', part: 'quiz' }; }catch(e){} return null; } };
       refHtml();
       if(!ctx.studio){ app.insertBefore(stage, app.firstChild); app.insertBefore(ref, stage.nextSibling); shownMode('explore'); }
       // the stage stops when it is hidden (another tab of the page, scrolled away mid change)
       if(window.IntersectionObserver) new IntersectionObserver(function(es){ es.forEach(function(en){ if(!en.isIntersecting && (busy() || raf) && S.mode === 'explore') snap(); }); }).observe(sceneBox);
       // the canvas follows the site's theme switch
-      if(window.MutationObserver) new MutationObserver(function(){ if(G){ readColours(); paintCanvas(); } }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+      if(window.MutationObserver) new MutationObserver(function(){ if(G){ readColors(); paintCanvas(); } }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
       document.addEventListener('visibilitychange', function(){ if(document.hidden && (busy() || raf)) snap(); });
       if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ if(G) layoutNow(true); });
       if(window.ResizeObserver){ var tm = null; new ResizeObserver(function(){ clearTimeout(tm); tm = setTimeout(function(){ layoutNow(); }, 50); }).observe(sceneBox); }
