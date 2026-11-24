@@ -158,7 +158,7 @@ Must fix:
 
 Should fix, all done or answered: the gas is scattered up and down by up to 0.45 of the room the piston gives over
 0.50 L, so it no longer sits in rows at 1.00 or 1.50 L (at 0.50 L it is packed as before); particles are larger (A atom
-at 390 about 14 px, 1024 about 18 px, 1920 about 29 px; the gap between molecules is half the largest atom, was 0.6);
+at 390 about 13.5 px, 1024 about 14.6 px, 1440 about 26 px, 1920 about 29 px; the gap between molecules is half the largest atom, was 0.6);
 the measured no event rates are below and in needs-author `qk-explore` (the piston stops are kept: owner log); "≈ K"
 no longer shows while particles are still going in or out (only the strict comparison then); `q-vs-k` is out of
 `BEAKER_TOOLS` (`live-beaker.js` no longer loads here); the long frames in a piston drag (up to 400 ms) came from stacked
@@ -182,6 +182,23 @@ page) and reduced motion ("added 3 B → ran forward → Q 2.57 → ≈ K 2.5").
 No whole event (the reviewer's seeded random walk of single changes): A + B about 16% of changes (single piston steps
 31%; 13% stop with Q more than 20% from K, and the cause line then says why); CaCO₃ about 16%, almost all because a solid
 ran out (correct chemistry).
+
+## Recheck 1 (2026-11-24): BLOCK on one item, fixed
+Review: `/home/claude/review-chem-qk/REVIEW.md` ("Recheck 1"). All round 1 must fixes held.
+- **Must fix: the cups' pictures spilled over the cups' names** (768, 1280, 1440, 1920) once the particles grew. A cup's
+  picture now takes the largest scale (at most the cylinder's) that fits inside the cup 4 px clear of its edges, and the
+  three particles sit side by side in a shallow V (the cups are wider than tall). The sweep now checks each cup's
+  picture (a canvas) is inside its cup and 4 px clear of every text.
+- Should fix, all done: the gas's scatter now comes from the row pitch (up to 0.48 of the room between rows beyond one
+  molecule's height and gap, and the same across in a row), so the rows are gone at 1.00 L on short wide cylinders too;
+  on a phone the first press of a visit scrolls the scene's top into view, gently (at once in reduced motion), when the
+  plate and the cause line are below the screen; a split by the wall stays inside the glass; `data-ls-text="keep"` is on
+  the scene only, so the tabs and the cause line get the Tool Studio's phone raise.
+- Checks: sweep at 360, 390, 768, 1024, 1440 and 1920, light and dark, each at its screen height: 6 runs of 36 states and
+  685 checks, 0 failures (the 1440 run was repeated once after its browser closed mid run); frames at 390 and 1440 (3833
+  and 3228 frames, 0 problems); perf at 390, CPU x4: taps median 16.7 ms, p95 16.8; piston median 16.7, p95 16.8, max 33
+  (flagship in the same run median 33.4, p95 100); AP Chem tests (99 pass), content check, build `--check` (AP Chem,
+  AP Calculus AB, AP Macroeconomics), `check-site`, `check-weight`.
 
 ## Not done, and what I am not happy with
 - No real phone, no screen reader pass, no students; no independent review yet.
