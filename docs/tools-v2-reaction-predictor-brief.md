@@ -279,3 +279,19 @@ Checks after the last change, with `origin/claude/tools-v2-all` merged in:
 - **Frames:** 6,240, 0 failures.
 - **Overlap scan:** no overlaps in any in-between frame of all 352 flasks.
 - **Tests and builds:** 105 unit tests pass; `build-tool-pages --check`, `check-weight --check` and `check-site` pass.
+
+## Recheck 2 (2026-11-24, PASS; its should fix items done before integration)
+- **Ring on a phone.** Bromocyclohexane has a new view: the most compact one that keeps every ball apart. A phone also
+  has no reserved row under the molecule; a name with no room beside its atom goes beside the title, or low in the
+  molecule's box where no ball is. At 360×740, with azide in aprotic solvent, C–C is 45 px (was 35) and the ring's
+  CH₂ letters show. The quarter turn is taken whenever it draws the molecule 4% bigger (was 12%).
+- **Short phones.** The stage minimum is 430 px. At 375×667 the cause line ends at 662, inside the 667 px screen. The
+  sweep's fold check now includes 375×667.
+- **The secondary carbon's "why" line** names the share it ends at ("about 19 times in 20 in all" at 95%).
+- **Frames at a change.** Products and card fits are cached per flask. After a live run the tray's drawings come a
+  frame after the end picture; a settled picture still draws its tray at once.
+- **Checks.**
+  - Sweep at 360, 390 and 1440, light and dark: 0 failures (86, 92 and 80 states).
+  - Frames script: 5,683 frames, 0 failures.
+  - No ball overlaps in any in-between frame of the 352 flasks.
+  - Unit tests: 105 pass. `build-tool-pages --check` passes.
