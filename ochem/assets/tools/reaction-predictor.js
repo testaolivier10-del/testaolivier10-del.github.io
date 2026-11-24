@@ -1597,7 +1597,7 @@
     labsEl.classList.remove('is-wait'); cause.el.classList.remove('is-wait');
     var quizHidden = MODE.mode === 'quiz' && MODE.part === 'call' && !quiz.revealed;
     // the tray's drawings a frame after the end picture, so the change's own frame stays light (recheck 2)
-    if(K.reduced() || !window.requestAnimationFrame) drawTray(c, p, !quizHidden);
+    if(K.reduced() || !window.requestAnimationFrame || (opts && opts.quiet)) drawTray(c, p, !quizHidden);
     else { drawTray(c, p, false); requestAnimationFrame(function(){ if(!run && S && !S.generic) drawTray(c, p, !quizHidden); }); }
     if(!quizHidden){
       cause.set(causeParts(c, p, true));
