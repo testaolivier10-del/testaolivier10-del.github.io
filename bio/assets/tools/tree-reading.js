@@ -20,7 +20,7 @@
    interaction, record tree-reading:build-<tree>:tree), Questions and the mini FRQ (ids unchanged). #place, #build,
    #questions and #frq open them. "?": how the model works, this drawing in words, the character table and the
    primates' DNA differences.
-   One colour per idea: tapped tips blue, the common ancestor and its clade amber, traits violet. Reduced motion:
+   One color per idea: tapped tips blue, the common ancestor and its clade amber, traits violet. Reduced motion:
    every change at once with a short cross fade. */
 /* AP® Biology, Phylogenetic tree reading (tools v2): the drawn organisms at the tips of the tree
    (docs/tools-v2-bio-tree-reading-brief.md). Pure strings, no DOM: window.ApBioTreeArt.
@@ -278,7 +278,7 @@
         var rootEl = stage.closest('.ls-root') || stage.parentNode, rt = rootEl ? rootEl.getBoundingClientRect() : null, sb = sceneBox.getBoundingClientRect();
         var above = rt ? clamp(sb.top - rt.top, 0, 280) : 60, below = lines.offsetHeight + 12;
         var bar = 0, tb = document.querySelector('.site-top, .lp-top, header.top'); if(tb){ var cs = getComputedStyle(tb); if(cs.position === 'sticky' || cs.position === 'fixed') bar = tb.offsetHeight; }
-        var phone = wd < 600, lo = phone ? 360 : 380, hi = phone ? 640 : 720;
+        var phone = wd < 600, lo = phone ? 360 : 380, hi = phone ? 640 : 800;
         var h = Math.round(clamp(vh - above - below - bar - 14, lo, hi));
         if(sceneBox.style.height !== h + 'px') sceneBox.style.height = h + 'px';
       }
@@ -288,9 +288,10 @@
       function chipRows(W, t){
         if(!(St.mode === 'explore' && St.tab === 'traits') || !t.characters) return 0;
         var fs = W < 600 ? 13 : 14, avail = W - 20, x = 0, rows = 1;
-        t.characters.forEach(function(c){ var w = tw(c.short || c.name, fs, 800) + (W < 600 ? 38 : 46); if(x && x + 8 + w > avail){ rows++; x = w; } else x += (x ? 8 : 0) + w; });
-        return rows;
+        t.characters.forEach(function(c){ var w = tw(c.short || c.name, fs, 800) + (W < 600 ? 42 : 50); if(x && x + 8 + w > avail){ rows++; x = w; } else x += (x ? 8 : 0) + w; });
+        return Math.max(rows, chipForce[W + '|' + t.id] || 0);
       }
+      var chipForce = {};   // rows the chips really took when the estimate was short (measured once per width and tree)
       function layout(){
         var W = sceneBox.clientWidth, H = sceneBox.clientHeight;
         if(!W || !H) return null;
@@ -314,7 +315,7 @@
         g.tipY = g.top + g.rows * g.nameH + 2 + g.S;
         g.rootY = g.groundY - (ph ? 22 : 30);
         g.rootX = null;
-        g.bw = ph ? 4 : 6.5;
+        g.bw = ph ? 4 : W > 1200 ? 7.5 : 6.5;
         // node heights: cladograms by how far a node is from its tips; the DNA tree drawn to scale
         var leaves = P.leaves(r), maxD = Math.max.apply(null, leaves.map(function(x){ return x.dist; })) || 1;
         function ht(nd){ return nd.kids.length ? 1 + Math.max.apply(null, nd.kids.map(ht)) : 0; }
@@ -987,6 +988,8 @@
         drawBg(); build(); E.ticks = {}; gTicks.innerHTML = '';
         if(!V.swing) snapSlots();
         placeChipBox();
+        // the chips wrapped to more rows than estimated: give the ground that many rows and lay out again
+        if(!chipBox.hidden && G.chipRows){ var ch = chipBox.offsetHeight, need = Math.round((ch + 6) / 50); if(need > G.chipRows){ chipForce[G.W + '|' + G.tid] = need; lastWH = ''; return layoutNow(true); } }
         paint(); words();
         if(cue.active()) cue.place(); if(cueT.active()) cueT.place();
       }
@@ -1011,7 +1014,7 @@
           '<p class="bt-small">A shared derived trait arose once, in the common ancestor of a clade, and every descendant inherits it (unless it is lost later). The outgroup branched off first: what it has is treated as the older state.</p>';
         if(t.kind === 'dna'){ var ids = t.taxa.map(function(x){ return x.id; }); h += '<h3 class="ls-title-l">DNA differences read from the tree</h3><p class="bt-small">Each value is the sum of the branch lengths between two tips, in ' + esc(t.unit) + '. The smallest difference marks the most recent common ancestor.</p>' +
           T.dataTable(['Taxon'].concat(t.taxa.map(function(x){ return esc(x.name); })), ids.map(function(a){ return [esc(taxon(t, a).name)].concat(ids.map(function(b){ return a === b ? '—' : F(P.distance(r, a, b), 1); })); }), 'Percent of DNA bases that differ'); }
-        h += '<h3 class="ls-title-l">Reading a tree</h3><ul class="bt-small"><li>Time runs from the root (the past) up to the tips; every tip is alive today, so no tip is the ancestor of another.</li><li>Two tips are closer kin when their most recent common ancestor is more recent (nearer the tips), not when they stand side by side.</li><li>Rotating a node swaps the order of its branches, like spinning a hanging mobile: the tips move, every node keeps the same descendants.</li><li>No tip is “more evolved”: the left and right of a tree mean nothing.</li></ul>';
+        h += '<h3 class="ls-title-l">Reading a tree</h3><ul class="bt-small"><li>Time runs from the root (the past) up to the tips; every tip is alive today, so no tip is the ancestor of another.</li><li>Two tips are closer kin when their most recent common ancestor is more recent (nearer the tips), not when they stand side by side.</li><li>Rotating a node swaps the order of its branches, like spinning a hanging mobile: the tips move, every node keeps the same descendants.</li><li>A clade is an ancestor and all of its descendants. A group that leaves some of them out, such as moss and fern without the seed plants, is not a clade (paraphyletic; such a group is sometimes called a grade).</li><li>No tip is “more evolved”: the left and right of a tree mean nothing. In a cladogram the heights of the branch points only show which split came first along each line, not dates; the primate tree is drawn to scale.</li></ul>';
         if(refLive.__h !== h){ refLive.__h = h; refLive.innerHTML = h; }
       }
 
@@ -1161,8 +1164,8 @@
 
       /* ---------------------------------------------------- a still drawing of a tree (Build a tree, the question drawings) */
       function still(t, r, W, title){
-        var leaves = P.leaves(r), n = leaves.length, col = (W - 16) / n, S = clamp(col * 0.7, 26, 52), fs = 12.5, nameRows = leaves.some(function(l){ return tw(nm(t, l.name), fs, 900) + 8 > col; }) ? 2 : 1;
-        var top = 6 + nameRows * (fs + 6), tipY = top + S, rootY = tipY + Math.max(120, (n - 1) * 34), H = rootY + 28, out = [], pos = {};
+        var leaves = P.leaves(r), n = leaves.length, col = (W - 16) / n, S = clamp(col * 0.7, 26, 52), fs = 15, nameRows = leaves.some(function(l){ return tw(nm(t, l.name), fs, 900) + 8 > col; }) ? 2 : 1;
+        var top = 6 + nameRows * (fs + 6), tipY = top + S, rootY = tipY + Math.max(140, (n - 1) * 40), H = rootY + 28, out = [], pos = {};
         function ht(nd){ return nd.kids.length ? 1 + Math.max.apply(null, nd.kids.map(ht)) : 0; }
         var H0 = ht(r) || 1, maxD = Math.max.apply(null, leaves.map(function(x){ return x.dist; })) || 1, dna = t.kind === 'dna';
         (function walk(nd){
@@ -1178,7 +1181,7 @@
           var pa = pos[keyOf(nd.parent)], w = 3 + 1.8 * Math.sqrt(nd.tips.length - 1) + (nd.kids.length ? 1.5 : 0);
           out.push('<path class="tr2-bark" d="' + limb(pa, q, w * 1.25 + 1, nd.kids.length ? w : 2.4) + '"/>');
         });
-        P.internal(r).forEach(function(nd){ var q = pos[keyOf(nd)]; out.push('<circle class="tr2-knot" cx="' + n1(q.x) + '" cy="' + n1(q.y) + '" r="8"/><text class="tr2-nn" x="' + n1(q.x) + '" y="' + n1(q.y + 4) + '" text-anchor="middle" style="font-size:11px">' + nd.id + '</text>'); });
+        P.internal(r).forEach(function(nd){ var q = pos[keyOf(nd)]; out.push('<circle class="tr2-knot" cx="' + n1(q.x) + '" cy="' + n1(q.y) + '" r="11"/><text class="tr2-nn" x="' + n1(q.x) + '" y="' + n1(q.y + 5.4) + '" text-anchor="middle" style="font-size:15px">' + nd.id + '</text>'); });
         leaves.forEach(function(l, i){
           var q = pos[keyOf(l)], row = nameRows === 2 ? i % 2 : 0, by = 6 + (nameRows - row) * (fs + 6) - 6;
           out.push(A.has(l.name) ? '<use href="#tr2-o-' + l.name + '" x="' + n1(q.x - S / 2) + '" y="' + n1(q.y - S) + '" width="' + n1(S) + '" height="' + n1(S) + '"/>' : '<circle class="tr2-disc" cx="' + n1(q.x) + '" cy="' + n1(q.y - S * 0.42) + '" r="' + n1(S * 0.36) + '"/><text class="tr2-dl" x="' + n1(q.x) + '" y="' + n1(q.y - S * 0.42 + S * 0.14) + '" text-anchor="middle" style="font-size:' + n1(S * 0.4) + 'px">' + esc(l.name) + '</text>');

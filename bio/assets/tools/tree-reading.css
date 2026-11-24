@@ -1,5 +1,5 @@
 /* Phylogenetic tree reading, tools v2 (bio/assets/tools/tree-reading.js; docs/tools-v2-bio-tree-reading-brief.md).
-   Loaded only by this page (bio/data/pages.json "kit2": true). One colour per idea everywhere (picture, cause line):
+   Loaded only by this page (bio/data/pages.json "kit2": true). One color per idea everywhere (picture, cause line):
    tapped tips blue, the common ancestor and its clade amber, traits violet; the tree is bark on a soft ground. */
 .tr2,.tr2-ref,.tr2-dock,.tr2-bstage,.tr-draw2,.ls-root{--tr-tip:#2F6FB0;--tr-tip-ink:#1F4F82;--tr-anc:#C26A00;--tr-anc-ink:#8A4A00;--tr-glow:#F2A93B;--tr-trait:#7B4FB8;--tr-trait-ink:#5A3592;
   --tr-sky0:#E6F1F4;--tr-hill0:#CFE3C6;--tr-hill1:#B6D49F;--tr-soil:#8A6744;--tr-turf:#6E9E45;--tr-peb:#6E5136;
@@ -29,7 +29,7 @@
 @container tr2 (max-width:1100px){ .tr2-lines .tk2-cause{flex-basis:100%;} .tr2-acts{margin-left:0;width:100%;justify-content:flex-start;} }
 @media (max-width:640px){ .tr2-lines .tk2-cause{flex-basis:100%;} .tr2-acts{margin-left:0;width:100%;} .tr2-tb{padding:0 10px;font-size:13.5px;} }
 @media (min-width:641px){ .tr2-lines .tk2-cause{min-height:62px;} }
-/* the cause line in the colours of the picture */
+/* the cause line in the colors of the picture */
 .tr2 .tk2-cz.is-tip{--cz:var(--tr-tip);--cz-ink:var(--tr-tip-ink);}
 .tr2 .tk2-cz.is-anc{--cz:var(--tr-anc);--cz-ink:var(--tr-anc-ink);}
 .tr2 .tk2-cz.is-trait{--cz:var(--tr-trait);--cz-ink:var(--tr-trait-ink);}
@@ -115,7 +115,7 @@
 .tr2-still{display:block;width:100%;max-width:600px;height:auto;font-family:var(--font-ui);}
 .tr2-still .tr2-nt{stroke-width:3px;}
 .tr-draw2{display:flex;flex-wrap:wrap;gap:12px;}
-.tr-draw2 figure{margin:0;flex:1 1 260px;max-width:440px;}
+.tr-draw2 figure{margin:0;flex:1 1 400px;max-width:440px;}
 .tr-draw2 figcaption{font-weight:800;margin-bottom:4px;}
 
 /* the organisms (ApBioTreeArt): flat tones, a soft outline */
