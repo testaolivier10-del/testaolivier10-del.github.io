@@ -721,6 +721,7 @@
       fxl.innerHTML = tf + fxSvg(view, 'bmf' + view, { px: px, bx: head ? Math.round(Math.min(1000 + off * 0.55, 1000 + off - 10 - 64 / px)) : 0 }) + '</g>';
       front.hidden = head;   // the face shows the front on a wide stage
       makeSpots(view);
+      if(cue && cue.active()) setTimeout(function(){ if(cue && cue.active()) requestAnimationFrame(makeCue); }, 40);
       svg.setAttribute('aria-label', view === 'outside' ? 'The left hemisphere seen from the left, front on the left: the four lobes, the motor and touch strips, the language areas, the cerebellum and the brainstem.' :
         'The brain cut down the middle, seen from the inside, front on the left: the corpus callosum, thalamus, hypothalamus, pituitary gland, brainstem and cerebellum, and the hippocampus, amygdala and reward center seen through the tissue.');
       paintSel(false);
@@ -1032,11 +1033,12 @@
         text = 'Tap any part';
         var open = sp.picked();
         sp.items.filter(function(it){ return it !== open; }).sort(function(a, b){ return Math.hypot(b.at[0][0] - open.at[0][0], b.at[0][1] - open.at[0][1]) - Math.hypot(a.at[0][0] - open.at[0][0], a.at[0][1] - open.at[0][1]); })
-          .forEach(function(it){ ['below', 'right', 'left'].forEach(function(sd){ cands.push([it.at[0], sd]); }); });
+          .forEach(function(it){ ['below', 'right', 'left'].forEach(function(sd){ cands.push([it.at[0], sd, it.id]); }); });
       }
       var R2 = function(e){ return e.getBoundingClientRect(); }, meet = function(a, b){ return a.left < b.right + 3 && a.right > b.left - 3 && a.top < b.bottom + 3 && a.bottom > b.top - 3; };
       for(var i = 0; i < cands.length; i++){
-        var c = K.cue(layer, { key: key, text: text, side: cands[i][1], at: (function(q){ return function(){ return q; }; })(cands[i][0]) });
+        // a pin's cue follows that pin when the frame changes (a rebuilt set of pins has new picture units)
+        var c = K.cue(layer, { key: key, text: text, side: cands[i][1], at: (function(q, id){ return function(){ var sp = id && spots[view], it = sp && sp.items.filter(function(x){ return x.id === id; })[0]; return it ? it.at[0] : q; }; })(cands[i][0], cands[i][2]) });
         if(!c.show()) return;
         var box = layer.el.querySelector('.tk2-cue'), r = box && R2(box), pr = R2(pic), bad = !r || r.left < pr.left || r.right > pr.right || r.top < pr.top || r.bottom > pr.bottom;
         if(!bad) [].forEach.call(layer.el.querySelectorAll('.tk2-spots:not([hidden]) .tk2-spot-pin, .tk2-spot-card:not([hidden]), .tk2-tap .tk2-badge'), function(e){ if(e.offsetParent !== null && meet(R2(e), r)) bad = true; });
@@ -1098,7 +1100,7 @@
       if(isSplit()){ if(ch) drawSplit(); }
       else { if(ch) drawBrain(); if(spots[view]) spots[view].place(); }
       // a new frame moves the pins in picture units: place the cue again from scratch, not just its old point
-      if(cue && cue.active()){ if(ch) makeCue(); else cue.place(); }
+      if(cue && cue.active()) makeCue();
       taps.forEach(function(t){ t.place(); });
     }
     function resized(){ clearTimeout(rz); rz = setTimeout(relayout, 60); }
@@ -1109,6 +1111,7 @@
       onScreen = m === 'explore';
       if(!onScreen){ var was = !!S.run; stopRun(false); if(S.field && (was || S.stage)) frameAt(S.field, S.cut, 9); hideCue(false); [tour, tourSplit].forEach(function(t){ if(t.active()) t.stop(); }); clearTimeout(ft); clearTimeout(rz); return; }
       setTimeout(function(){ relayout(); makeCue(); }, 40);
+      setTimeout(function(){ if(onScreen && cue && cue.active()) makeCue(); }, 700);   // once more when the page has settled
     }
     function ready(s){
       LS = s; setTab(tabV, false); refHtml();
