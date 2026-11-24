@@ -62,6 +62,48 @@ Owner steps for this change, in order:
    connect and their connection expires after 7 days.
 5. Supabase, Authentication, Rate Limits: raise emails per hour (the default is low for a class signing in at once).
 
+## Locked assignments, same questions, hand-picked questions (owner 2026-11-23)
+
+Owner: an assignment's settings are locked for students; it opens on the work itself, not on the Practice page's
+settings (that page is for studying on your own); timed work asks once more before the clock starts; a teacher
+chooses whether everyone gets the same questions; a teacher can assign a hard concept inside a topic.
+
+- **The bug behind it.** Since the Practice panel (2026-11-06) the AP® start card was drawn but hidden behind the
+  panel, so every `practice.html?la=` link showed the settings. `practice-panel.js` `watch()` now adds `is-class` to
+  the wrap while the card (`.lvr-card`) or its loading line is in the engine, which hides the panel
+  (`practice-panel.css`). An assignment this device does not know still falls back to the regular page with a note.
+- **No way into the settings.** "Practice on your own instead" is gone from the start card; "Not now" goes back to
+  My class (`./#class`).
+- **Second step for timed work only** (owner agreed: untimed practice stays one press). AP®: Start on the card turns
+  into "Start the clock now?" with Start now / Not yet (`intro()` in `class-run.js`; not asked when the clock is
+  already running). NREMT, ochem, A&P exams: the same question on the My class button (`data-lvx="sure"` in
+  `class-view.js`), because their exams start as the page opens.
+- **NREMT, ochem and A&P links start the work at once** (`LevlClassModel.href`, each page's `go=1` contract), with
+  the teacher's count and every assigned topic: A&P `practice.html?go=1&from=new&topics=&n=`, review `from=missed`;
+  ochem `practice.html?go=1&topics=&n=`, review `from=missed`; NREMT `practice.html?go=1&from=new&area=system:<area>&n=`;
+  exams `exams.html?go=1&...`. New: `topics=` (comma list) in `practice-panel.js` `parseSet`/`runOpts` and in
+  `ochem/assets/practice-page.js`. These courses still have no runner, so nothing stops a student from opening the
+  Practice page by hand; the teacher's numbers come from the topics answered, as before.
+- **Which questions** (`spec.controls.same`, `spec.controls.pick`; AP® courses, builder cell in Controls):
+  Same for everyone / Different for each student / I'll pick them (practice only). Not chosen: same for required,
+  timed or exam work, different for optional practice (`qmode()` in `teach.js`); an edited assignment keeps what it
+  was saved with, so older assignments stay "different". Review and mastery are always each student's own.
+  Runner: practice draws with `sameOrder(blocks, assignment id)`; an exam's draws run with `Math.random` swapped
+  for `seedRnd(assignment id)` during `begin()` (every draw happens before the questions load); `pick` serves
+  exactly the ticked bank questions (`pickBlocks`, a set's figure kept). Shuffle still changes the order per student.
+- **Concepts inside a topic.** Questions carry no tag below the topic (the index's `st` is the stimulus, not a
+  section), so "I'll pick them" is how a teacher targets one concept today: the builder lists the topic's
+  questions and the count each topic has. Real concept tags would be a content job per course (ochem already has
+  them for its own practice, `?concept=`).
+- Also fixed: `CLASS_DIRS` in `site-chrome.js` left out `human-geography`, so an AP® Human Geography class never
+  loaded the student side (My class, the summary push).
+- Checks: `scripts/class-browser/assign-ap.py` (all twelve AP® courses), `assign-other.py`, `assign-builder.py`;
+  unit tests in `class-run.test.mjs` and `class-model.test.mjs`. `run.py` and its two neighbours were already
+  failing on main (they wait for the pre-panel setup form); they now press Start through the second step but are
+  otherwise not repaired.
+- Open: A&P or ochem review with nothing missed lands on the Practice page with "Nothing to redo right now"; NREMT
+  practice still drills a whole area; same questions and hand-picking only on the AP® courses.
+
 ## Simplified pages (owner 2026-11-08)
 
 Owner asked to simplify the teacher interface while keeping every feature, approved the mockup ("LevlPrep teacher
@@ -147,7 +189,8 @@ and work like that mockup.
   release: 'now'|'after_due'|'after_submit', questions: [teacher question ids] }`. `class_mine` returns
   `extra_time` per class (multiplier). Controls run only on the ten AP® courses for now; the builder says so for
   NREMT, ochem and A&P, whose students do the work on the course's usual pages.
-- Student links (`class-student.js` `href`): every course uses `LevlClassModel.href` (table below). On the AP®
+- Student links (`class-student.js` `href`): every course uses `LevlClassModel.href` (table below; NREMT, ochem and
+  A&P links changed 2026-11-23, see "Locked assignments"). On the AP®
   courses practice, review, mastery and exam links also carry `la=<id>`, and review and mastery go to
   `practice.html?la=<id>`. FRQ links and all NREMT, ochem and A&P links stay plain.
 - Attempts on the student's device: `levlprep_class_att_v1 = { <aid>: { start, end, n, c, tabs, answers, graded } }`;

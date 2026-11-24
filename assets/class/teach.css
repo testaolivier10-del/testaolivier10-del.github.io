@@ -248,3 +248,6 @@ button.pp-go{width:100%;border:0;cursor:pointer}
   .tm-for{grid-template-columns:1fr}.tm-for>div+div{border-left:0;padding-left:0;border-top:1px solid var(--line-soft);padding-top:18px}
   .pp-grp.tm-2{grid-template-columns:1fr}
 }
+
+/* Which questions (owner 2026-11-23): the full row, so the hand-pick list has room for the question text. */
+.tm-2 .pp-cell.tm-wide{grid-column:1/-1}

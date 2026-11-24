@@ -27,9 +27,9 @@ test('find: the assignment and its class, in the cache or a bare list', () => {
 
 test('controls: time limit times extra time, defaults, bad values', () => {
   const c = R.controls(a1, cache.list[0]);
-  assert.deepEqual(plain(c), { timeLimit: 20, limitMs: 30 * MIN, extra: 1.5, shuffle: true, release: 'after_due', questions: ['7'] });
+  assert.deepEqual(plain(c), { timeLimit: 20, limitMs: 30 * MIN, extra: 1.5, shuffle: true, release: 'after_due', same: false, pick: [], questions: ['7'] });
   const d = R.controls({ spec: {} }, {});
-  assert.deepEqual(plain(d), { timeLimit: 0, limitMs: 0, extra: 1, shuffle: false, release: 'now', questions: [] });
+  assert.deepEqual(plain(d), { timeLimit: 0, limitMs: 0, extra: 1, shuffle: false, release: 'now', same: false, pick: [], questions: [] });
   assert.equal(R.controls({ spec: { controls: { release: 'whenever', timeLimit: -3 } } }, { extra_time: 'x' }).release, 'now');
   assert.equal(R.controls({ spec: { controls: { timeLimit: -3 } } }, { extra_time: 0 }).limitMs, 0);
 });
@@ -178,4 +178,30 @@ test('mastery progress', () => {
   const d = R.masteryState({ topics: ['t1'] }, () => 1, 10);
   assert.equal(d.target, 0.8); assert.equal(d.min, 10); assert.equal(d.met, true);
   assert.equal(R.masteryState({ topics: [] }, () => 1, 99).met, false);
+});
+
+test('same questions for everyone: one seed gives one order, whatever order the bank arrives in', () => {
+  const blocks = Array.from({ length: 30 }, (_, i) => ({ stimulus: null, items: [{ id: 'q' + String(i).padStart(2, '0') }], topic: 't', unit: 'u' }));
+  const ids = (bs) => bs.map((b) => b.items[0].id);
+  const a = ids(R.sameOrder(blocks, 'assignment-1')), b = ids(R.sameOrder(blocks.slice().reverse(), 'assignment-1'));
+  assert.deepEqual(a, b, 'two students, same set and order');
+  assert.equal(new Set(a).size, 30);
+  assert.notDeepEqual(a, ids(R.sameOrder(blocks, 'assignment-2')), 'another assignment draws differently');
+  assert.notDeepEqual(a, ids(blocks), 'not just the bank order');
+  const r1 = R.seedRnd('x'), r2 = R.seedRnd('x');
+  for (let i = 0; i < 5; i++) { const v = r1(); assert.equal(v, r2()); assert.ok(v >= 0 && v < 1); }
+  assert.equal(R.controls({ spec: { controls: { same: true, pick: [3, 'b'] } } }, {}).same, true);
+  assert.deepEqual(R.controls({ spec: { controls: { pick: [3, 'b'] } } }, {}).pick, ['3', 'b']);
+});
+
+test('hand-picked questions: only those, sets cut down to them, in the teacher’s order', () => {
+  const blocks = [
+    { stimulus: 's1', items: [{ id: 'a1' }, { id: 'a2' }, { id: 'a3' }], topic: 't', unit: 'u' },
+    { stimulus: null, items: [{ id: 'b1' }], topic: 't', unit: 'u' },
+    { stimulus: null, items: [{ id: 'c1' }], topic: 't', unit: 'u' },
+  ];
+  const out = R.pickBlocks(blocks, ['c1', 'a3', 'a1', 'gone']);
+  assert.equal(JSON.stringify(out.map((b) => b.items.map((q) => q.id))), JSON.stringify([['c1'], ['a1', 'a3']]));
+  assert.equal(out[1].stimulus, 's1', 'a picked question keeps its figure or data set');
+  assert.equal(blocks[0].items.length, 3, 'the bank is not changed');
 });

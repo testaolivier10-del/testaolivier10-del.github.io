@@ -29,6 +29,11 @@ ANSWER = """() => { const q = [...document.querySelectorAll('[data-qid]')].find(
   else if(i){ i.value = '1'; if(c){ c.disabled = false; c.click(); } } else if(c){ c.disabled = false; c.click(); }
   return q.getAttribute('data-qid'); }"""
 fails = 0
+def start(page):
+  """Presses Start, and Start now when timed work asks once more (owner 2026-11-23)."""
+  page.click('[data-lvr="start"]')
+  if page.query_selector('[data-sure]'): page.click('[data-sure]')
+
 def check(ok, m):
   global fails
   print(('PASS ' if ok else 'FAIL ') + m); fails += 0 if ok else 1
@@ -37,7 +42,7 @@ with sync_playwright() as p:
   ctx = br.new_context(viewport={'width': 1200, 'height': 900}); ctx.add_init_script(INIT)
   pg = ctx.new_page()
   pg.goto(BASE + '/bio/practice.html?la=h1', wait_until='networkidle')
-  pg.click('[data-lvr="start"]')
+  start(pg)
   for i in range(12):
     pg.wait_for_selector('[data-qid]', timeout=15000); pg.wait_for_timeout(200)
     if pg.query_selector('[data-qid="tq1"]:not(.is-answered)'):

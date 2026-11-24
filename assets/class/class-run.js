@@ -19,6 +19,10 @@
                 'after_submit': no right/wrong or explanations until the set is handed in.
                 'after_due': not until the due date has passed (no due date: after handing in).
                 A mastery assignment always gives feedback: it runs on what the student learns from it.
+     same       every student gets the same questions (owner 2026-11-23): a practice set is drawn by the
+                assignment's id, not by the student's own history, and an exam's draw is seeded the same
+                way. Off: each student's own draw (unseen first, then missed). Order still follows shuffle.
+     pick       bank question ids the teacher chose by hand (practice only): the set is exactly these.
      questions  teacher question ids, read through the RPC class_questions_for(p_assignment). Quiet when
                 the RPC is missing or fails: the set runs without them.
    Kinds: practice (spec.count questions in spec.topics or spec.unit), review (redo questions missed in the
@@ -58,7 +62,8 @@
     var c = (a && a.spec && a.spec.controls) || {}, x = +(cls && cls.extra_time);
     var extra = x > 0 && x < 10 ? x : 1, tl = +c.timeLimit > 0 ? +c.timeLimit : 0;
     return { timeLimit: tl, limitMs: tl ? Math.round(tl * 60000 * extra) : 0, extra: extra, shuffle: !!c.shuffle,
-             release: RELEASES[c.release] ? c.release : 'now', questions: Array.isArray(c.questions) ? c.questions.map(String) : [] };
+             release: RELEASES[c.release] ? c.release : 'now', same: !!c.same,
+             pick: Array.isArray(c.pick) ? c.pick.map(String) : [], questions: Array.isArray(c.questions) ? c.questions.map(String) : [] };
   }
   /* Feedback withheld while answering. */
   function held(kind, ctl){ return kind !== 'mastery' && ctl.release !== 'now'; }
@@ -159,6 +164,33 @@
     return rec;
   }
 
+  /* A seeded random source (mulberry32 over a string hash): the same seed gives the same draws on every device. */
+  function seedRnd(seed){
+    var h = 2166136261; seed = String(seed);
+    for(var i = 0; i < seed.length; i++){ h ^= seed.charCodeAt(i); h = Math.imul(h, 16777619); }
+    var a = h >>> 0;
+    return function(){ a = (a + 0x6D2B79F5) | 0; var t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+  }
+  /* The same order of blocks for every student: sorted by id first (so the bank's file order does not matter),
+     then shuffled by the seed. */
+  function sameOrder(blocks, seed){
+    var key = function(b){ return String(b.items && b.items[0] ? b.items[0].id : ''); };
+    var out = blocks.slice().sort(function(x, y){ return key(x) < key(y) ? -1 : key(x) > key(y) ? 1 : 0; }), rnd = seedRnd(seed);
+    for(var i = out.length - 1; i > 0; i--){ var j = Math.floor(rnd() * (i + 1)), t = out[i]; out[i] = out[j]; out[j] = t; }
+    return out;
+  }
+  /* The blocks that hold the hand-picked questions, cut down to those questions, in the teacher's order. */
+  function pickBlocks(blocks, ids){
+    var rank = {}; ids.forEach(function(id, i){ rank[id] = i; });
+    var out = [];
+    blocks.forEach(function(b){
+      var items = b.items.filter(function(q){ return String(q.id) in rank; });
+      if(items.length) out.push({ stimulus: b.stimulus, items: items, topic: b.topic, unit: b.unit });
+    });
+    var first = function(b){ return Math.min.apply(null, b.items.map(function(q){ return rank[String(q.id)]; })); };
+    return out.sort(function(x, y){ return first(x) - first(y); });
+  }
+
   /* Practice steps with the teacher's single questions: shuffled together, or the teacher's at the end. */
   function mixSteps(steps, items, shuffle, rnd){
     rnd = rnd || Math.random;
@@ -197,7 +229,7 @@
 
   var pure = { find: find, controls: controls, held: held, released: released, timed: timed, remaining: remaining, examK: examK, examBudget: examBudget, timeGone: timeGone, place: place,
                attStart: attStart, attAnswer: attAnswer, attTab: attTab, attEnd: attEnd, teacherItems: teacherItems,
-               mixSteps: mixSteps, mixFlat: mixFlat, answeredSince: answeredSince, masteryState: masteryState,
+               mixSteps: mixSteps, mixFlat: mixFlat, seedRnd: seedRnd, sameOrder: sameOrder, pickBlocks: pickBlocks, answeredSince: answeredSince, masteryState: masteryState,
                submitted: submitted, gradeTeacher: gradeTeacher };
   if(typeof module === 'object' && module.exports){ module.exports = pure; return; }
   if(root.LevlClassRun) return;
@@ -439,10 +471,12 @@
     var a = run.a, s = a.spec || {}, c = run.ctl, out = [];
     var topics = (s.topics || []).map(run.topicName);
     var where = topics.length ? topics.slice(0, 4).join(', ') + (topics.length > 4 ? ' and ' + (topics.length - 4) + ' more' : '') : '';
-    if(a.kind === 'practice') out.push(plural(s.count || 10, 'question') + (where ? ' from ' + esc(where) : ''));
+    if(a.kind === 'practice' && c.pick.length) out.push(plural(c.pick.length, 'question') + ' your teacher picked' + (where ? ' from ' + esc(where) : ''));
+    else if(a.kind === 'practice') out.push(plural(s.count || 10, 'question') + (where ? ' from ' + esc(where) : ''));
     else if(a.kind === 'review') out.push('Redo up to ' + plural(s.count || 25, 'question') + ' you missed' + (where ? ' in ' + esc(where) : ''));
     else if(a.kind === 'mastery'){ var m = run.mastery(); out.push('Keep going until every topic is at ' + pct(m.target) + ' mastery, with at least ' + plural(m.min, 'answer') + ': ' + esc(where)); }
     else if(a.kind === 'exam') out.push(s.unit ? 'A unit test' : 'A full practice exam');
+    if(c.pick.length || (c.same && (a.kind === 'practice' || a.kind === 'exam'))) out.push('Everyone in the class gets the same questions');
     if(run.items.length) out.push('Includes ' + plural(run.items.length, 'question') + ' written by your teacher');
     if(c.limitMs) out.push('Time limit: ' + mins(c.limitMs) + (c.extra !== 1 ? ' (your extra time included)' : '') + '. The clock starts when you press Start and keeps running if you leave or reload the page');
     else if(a.kind === 'exam') out.push('Timed at the exam\'s pace' + (c.extra !== 1 ? ', with your extra time (×' + c.extra + ')' : '') + '. The clock cannot be paused');
@@ -518,13 +552,26 @@
       '<ul class="lvr-list">' + describe(run, ad).map(function(x){ return '<li>' + x + '.</li>'; }).join('') + '</ul>' +
       '<p class="lvr-acts">' + (final || noExam ? '' : '<button type="button" class="btn-press ' + P + '-pr-start" data-lvr="start">' + startWord + '</button>') +
       (rel ? '<button type="button" class="' + (final ? 'btn-press' : 'btn-outline') + '" data-lvr="answers">See your answers</button>' : '') +
-      '<button type="button" class="btn-outline" data-lvr="own">Practice on your own instead</button></p>' +
+      '<a class="btn-outline" href="./#class">Not now</a></p>' +
       '<p class="lvr-note ' + P + '-pr-avail" role="status"></p><p class="lvr-note">Your teacher sees your work in this course only.</p></div>';
     var st = ad.app.querySelector('[data-lvr="start"]');
-    if(st) st.addEventListener('click', function(){ st.disabled = true; st.textContent = 'Loading questions…'; go(st); });
+    var fire = function(){ st.disabled = true; st.textContent = 'Loading questions…'; go(st); };
+    /* Timed work asks once more before the clock starts (owner 2026-11-23): a stray tap on Start should not
+       spend a timed attempt. Not asked when the clock is already running, or for untimed work. */
+    var fresh = !(r && r.start && !r.end), ask = st && fresh && timed(a.kind, run.ctl);
+    if(st) st.addEventListener('click', function(){
+      if(!ask) return fire();
+      var acts = st.parentNode;
+      var words = run.ctl.limitMs ? 'You get ' + mins(run.ctl.limitMs) + '. ' : '';
+      acts.innerHTML = '<span class="lvr-sure" role="alertdialog" aria-label="Start the clock?"><b>Start the clock now?</b> ' + words + 'It keeps running if you leave or close the page' + (a.kind === 'exam' ? ', and it cannot be paused' : '') + '.</span>' +
+        '<button type="button" class="btn-press ' + P + '-pr-start" data-lvr="start" data-sure="1">Start now</button><button type="button" class="btn-outline" data-lvr="wait">Not yet</button>';
+      var yes = acts.querySelector('[data-sure]');
+      yes.addEventListener('click', function(){ st = yes; fire(); });
+      acts.querySelector('[data-lvr="wait"]').addEventListener('click', function(){ intro(run, ad, go); });
+      yes.focus();
+    });
     var an = ad.app.querySelector('[data-lvr="answers"]');
     if(an) an.addEventListener('click', function(){ showAnswers(run, ad); });
-    ad.app.querySelector('[data-lvr="own"]').addEventListener('click', function(){ try{ history.replaceState(null, '', location.pathname); }catch(e){} ad.fallback(); });
     run.mountStrip();
     var h = ad.app.querySelector('h2'); if(h) h.focus();
   }
@@ -556,7 +603,12 @@
       ad.set(c); cfg.form = ''; cfg.section = '';
       if(sp.unit && ad.units().some(function(u){ return u.id === sp.unit; })){ cfg.kind = 'unit'; cfg.unit = sp.unit; } else cfg.kind = 'full';
       if(sp.count) cfg.len = sp.count;
-      ad.begin();
+      /* Same questions for everyone: the exam draws its questions (and its free responses) while begin() runs,
+         before anything loads, so those draws read a seeded source and Math.random is put back right after. */
+      if(!c.ctl.same){ ad.begin(); return; }
+      var real = Math.random;
+      Math.random = seedRnd(c.a.id);
+      try{ ad.begin(); } finally { Math.random = real; }
     };
     return ad;
   }
@@ -576,6 +628,8 @@
           var miss = {}; (ad.core.missed ? ad.core.missed() : []).forEach(function(id){ miss[id] = 1; });
           pool = ad.take(ad.order(ad.blocks.filter(function(b){ return inScope(b) && b.items.some(function(q){ return miss[q.id]; }); })), s.count || 25);
         } else if(a.kind === 'mastery') pool = ad.order(ad.blocks.filter(inScope));
+        else if(run.ctl.pick.length) pool = pickBlocks(ad.blocks, run.ctl.pick);
+        else if(run.ctl.same) pool = ad.take(sameOrder(ad.blocks.filter(inScope), a.id), s.count || 10);
         else pool = ad.take(ad.order(ad.blocks.filter(inScope)), s.count || 10);
         if(run.ctl.shuffle) pool = mixSteps(pool, [], true);
         var stubs = []; pool.forEach(function(b){ b.items.forEach(function(q){ stubs.push(q); }); });

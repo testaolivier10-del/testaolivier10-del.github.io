@@ -182,6 +182,8 @@
     var known = A.units ? A.units().map(function(u){ return u.id; }) : [];
     if(units.length) s.units = units.filter(function(u){ return has(known, u); });
     if(p.get('topic')){ s.topic = p.get('topic'); var t = A.topics([]).filter(function(x){ return x.id === s.topic; })[0]; if(t && !s.units.length) s.units = [t.unit]; if(!t) s.topic = ''; }
+    // topics=: several topics at once (a teacher's assignment, assets/class/class-model.js href).
+    s.topics = (p.get('topics') || '').split(',').filter(Boolean);
     if(p.get('practice') || p.get('core')) s.practice = p.get('practice') || p.get('core');
     var from = p.get('from') || ({ missed: 'missed', weak: 'weak', studied: 'studied', mistakes: 'missed', cumulative: 'studied' })[p.get('mode')] || '';
     if(has(C.from, from)) s.from = from;
@@ -700,6 +702,7 @@
       if(studied && !studied[x.topic]) return false;
       if(units.length && !has(units, ANP ? x.chapter : x.unit)) return false;
       if(topic && x.topic !== topic) return false;
+      if(s.topics && s.topics.length && !has(s.topics, x.topic)) return false;
       if(AP){
         if(!H.matches(x, { unit: '', topic: '', practice: prac, kind: s.qt || 'all', diff: s.diff })) return false;
       } else {
@@ -718,8 +721,10 @@
     var s = parseSet(URLP, defaultsOf('set'));
     if(URLP.get('from') === 'due') s.from = 'due';
     hook().then(function(H){
-      var ok = H.run(runOpts(s, H, current ? current.title + ' · ' + current.line : 'Practice'));
-      if(!ok){ wrap.classList.remove('is-go'); H.setup(); clean(); note('No questions match those settings yet. Loosen one of them.'); }
+      // A link with topics= is a teacher's assignment: the panel's own summary does not describe it.
+      var label = s.topics.length ? (s.from === 'missed' ? 'Assigned review' : 'Assigned practice' + (s.n ? ' · ' + s.n + ' questions' : '')) : current ? current.title + ' · ' + current.line : 'Practice';
+      var ok = H.run(runOpts(s, H, label));
+      if(!ok){ wrap.classList.remove('is-go'); H.setup(); clean(); note(s.from === 'missed' ? 'Nothing to redo right now: you have no missed questions here.' : 'No questions match those settings yet. Loosen one of them.'); }
       else startClock();
     });
   }
@@ -778,7 +783,17 @@
   }
 
   /* While a session or its results are up, the engine has the page and the card steps back. */
-  function watch(){ var r = running(); wrap.classList.toggle('is-run', r); if(r) wrap.classList.remove('is-go'); }
+  /* A teacher's assignment (?la=, assets/class/class-run.js) draws its own start card in the engine. The card stayed
+     hidden behind this panel, so students landed on the settings (owner 2026-11-23); now the panel steps back while
+     the card, or the wait for it, is up, and comes back if the assignment cannot be found. */
+  var CLASS = /[?&]la=/.test(location.search), classWait = CLASS;
+  function watch(){
+    var r = running(); wrap.classList.toggle('is-run', r); if(r) wrap.classList.remove('is-go');
+    if(!CLASS) return;
+    var card = !!engine && !!engine.querySelector('.lvr-card, .lvr-note');
+    if(card || r || (engine && engine.querySelector('form, .cx-card'))) classWait = false;
+    wrap.classList.toggle('is-class', !r && (card || classWait));
+  }
 
   /* ---------------------------------------------------------------- events */
   root.querySelector('.pp-tiles').addEventListener('click', function(e){
@@ -907,7 +922,7 @@
     W.addEventListener('storage', function(){ paintFree(); if(!running()) render(); });
     doc.addEventListener('visibilitychange', function(){ if(!doc.hidden){ paintFree(); if(!running()) render(); } });
     if(engine){
-      new MutationObserver(function(){ watch(); paintFree(); if(!running() && !wrap.classList.contains('is-go')) render(); }).observe(engine, { attributes: true, attributeFilter: ['data-view', 'hidden'], childList: fam !== 'nremt' });
+      new MutationObserver(function(){ watch(); paintFree(); if(!running() && !wrap.classList.contains('is-go') && !wrap.classList.contains('is-class')) render(); }).observe(engine, { attributes: true, attributeFilter: ['data-view', 'hidden'], childList: fam !== 'nremt' });
       var intro = doc.getElementById('introScreen');
       if(intro) new MutationObserver(watch).observe(intro, { attributes: true, attributeFilter: ['style'] });
     }

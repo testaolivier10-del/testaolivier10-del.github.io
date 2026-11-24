@@ -68,7 +68,10 @@
 
   /* ---- pieces ---- */
   function tag(kind, text){ return '<span class="lvx-tag is-' + kind + '">' + esc(text) + '</span>'; }
-  function btn(text, href, ghost){ return '<a class="lvx-btn' + (ghost ? ' is-ghost' : '') + '" href="' + esc(href) + '">' + esc(text) + '</a>'; }
+  function btn(text, href, ghost, sure){ return '<a class="lvx-btn' + (ghost ? ' is-ghost' : '') + '" href="' + esc(href) + '"' + (sure ? ' data-lvx="sure"' : '') + '>' + esc(text) + '</a>'; }
+  /* A timed exam outside the AP® courses starts the moment its page opens, so its button asks once more first
+     (owner 2026-11-23). The AP® courses ask on their own start card (assets/class/class-run.js). */
+  function sure(a){ return a.kind === 'exam' && !M().isAp(st.course); }
   function bar(p){ return '<div class="lvx-bar"><i style="width:' + Math.max(0, Math.min(100, p)) + '%"></i></div>'; }
   function scoreText(a, s, c){
     if(c && c.hide_scores) return '';   // the teacher keeps scores to themselves (Settings, Class details)
@@ -89,7 +92,7 @@
       if(s.late) t = tag('warn', 'Done, late');
       var sc = scoreText(a, s, c);
       meta = 'Finished ' + day(s.doneAt) + (s.late && a.due_at ? ', due ' + day(Date.parse(a.due_at)) : '') + (sc ? ' · <b>' + esc(sc) + '</b>' : '');
-      b = btn('Open again', S().href(a), true);
+      b = btn('Open again', S().href(a), true, sure(a));
     } else if(s.state === 'missing'){
       meta = 'Closed ' + (a.due_at ? day(Date.parse(a.due_at)) : '') + (a.kind === 'practice' || a.kind === 'review' ? ' · ' + s.answered + ' of ' + s.total + ' questions' : '');
       b = btn('Open', S().href(a), true);
@@ -103,7 +106,7 @@
       else if(a.kind === 'frq') meta += ' · you write it and send it to ' + esc(c.teacher || 'your teacher');
       if(a.kind !== 'exam' && a.kind !== 'frq') meta += topicsLine(a);
       var started = s.answered > 0;
-      b = btn(a.kind === 'frq' ? 'Start writing' : started ? 'Keep going' : 'Start', S().href(a), !o.primary);
+      b = btn(a.kind === 'frq' ? 'Start writing' : started ? 'Keep going' : 'Start', S().href(a), !o.primary, sure(a));
     }
     var showBar = (a.kind === 'practice' || a.kind === 'review') && s.state !== 'done' && s.state !== 'missing' && s.total;
     return '<div class="lvx-row' + (o.first ? ' is-first' : '') + '"><div class="lvx-main">' + t + '<p class="lvx-t">' + esc(a.title) + '</p><p class="lvx-m">' + meta + '</p>' +
@@ -150,7 +153,7 @@
     if(g.todo.length) out += card('Next up', row(m, g.todo[0], { primary: true, first: true }));
     var sug = '', rec = g.opt[0], weak = weakTopics(m)[0];
     if(rec) sug += '<div class="lvx-row is-first"><div class="lvx-main">' + tag('rec', (c.teacher || 'Your teacher') + ' recommends') + '<p class="lvx-t">' + esc(rec.a.title) + '</p><p class="lvx-m">' +
-      esc(KIND[rec.a.kind]) + topicsLine(rec.a) + '</p></div>' + btn(rec.s.answered ? 'Keep going' : 'Start', S().href(rec.a)) + '</div>';
+      esc(KIND[rec.a.kind]) + topicsLine(rec.a) + '</p></div>' + btn(rec.s.answered ? 'Keep going' : 'Start', S().href(rec.a), false, sure(rec.a)) + '</div>';
     if(weak) sug += '<div class="lvx-row' + (rec ? '' : ' is-first') + '"><div class="lvx-main">' + tag('res', 'From your results') + '<p class="lvx-t">' + esc(weak.name) + '</p><p class="lvx-m">You missed ' + weak.o.wrong +
       ' of the ' + weak.o.answered + ' questions you answered here</p></div>' + btn('Practice', M().topicHref(st.course, weak.id), true) + '</div>';
     if(sug) out += card('Practice to strengthen', '<p class="lvx-note">These do not change your class numbers.</p>' + sug);
@@ -267,6 +270,13 @@
       var t = e.target.closest && e.target.closest('[data-lvx]'); if(!t) return;
       var a = t.getAttribute('data-lvx');
       if(a === 'go'){ e.preventDefault(); go(t.getAttribute('data-view'), t.getAttribute('data-sub')); }
+      else if(a === 'sure'){
+        e.preventDefault();
+        var box = document.createElement('div'); box.className = 'lvx-sure'; box.setAttribute('role', 'alertdialog'); box.setAttribute('aria-label', 'Start the clock?');
+        box.innerHTML = '<p><b>Start the clock now?</b> This exam is timed and begins as soon as it opens.</p><div><a class="lvx-btn" href="' + esc(t.getAttribute('href')) + '">Start now</a><button type="button" class="lvx-btn is-ghost" data-lvx="wait">Not yet</button></div>';
+        t.hidden = true; t.parentNode.insertBefore(box, t.nextSibling); box.querySelector('a').focus();
+      }
+      else if(a === 'wait'){ var bx = t.closest('.lvx-sure'), was = bx.previousSibling; bx.remove(); if(was){ was.hidden = false; was.focus(); } }
       else if(a === 'older'){ var k = t.getAttribute('data-key'); st.older[k] = !st.older[k]; render(); }
       else if(a === 'leave'){
         if(!confirm('Leave this class? Your teacher will stop seeing your work in it.')) return;
