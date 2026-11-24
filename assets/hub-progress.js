@@ -37,7 +37,8 @@
 (function(){
   var XP_KEY = 'hub_xp_v1';
   var ACTIVITY_KEY = 'hub_activity_v1';
-  var MAX_DAYS = 180;
+  // A year and a bit: the Profile's streak grid shows up to 52 weeks and its "days studied" counts them (2026-11-23; was 180).
+  var MAX_DAYS = 400;
 
   /* Streak freezes. The day a student loses a twelve-day streak is very often
      the last day they open the site at all — the run was the reason to come

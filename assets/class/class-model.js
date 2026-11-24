@@ -396,7 +396,9 @@
     return out;
   }
 
-  var api = { COURSES: COURSES, ORDER: ORDER, isAp: isAp, curriculum: curriculum, summarize: summarize, href: href, topicHref: topicHref,
+  /* A course's whole record, not cut to the newest items as a summary is (the Profile's lifetime numbers). */
+  function raw(course, get, opts){ return (READ[course] || READ.ap)(course, get, opts || {}); }
+  var api = { COURSES: COURSES, ORDER: ORDER, isAp: isAp, curriculum: curriculum, summarize: summarize, raw: raw, href: href, topicHref: topicHref,
               bankUrl: bankUrl, bankItems: bankItems, whyUrl: whyUrl, rows: rows, topicMastery: topicMastery, unitMastery: unitMastery,
               overall: overall, lastActive: lastActive, answeredSince: answeredSince, status: status, itemStats: itemStats,
               flagCounts: flagCounts, DAY: DAY };
