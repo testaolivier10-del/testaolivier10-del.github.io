@@ -139,7 +139,7 @@ body.ls-on .stat-crumb{display:none;} /* Tool Studio hides the other courses' cr
 .dx2-plank-hi{fill:var(--dx-plank-hi);}
 .dx2-tick{stroke:var(--dx-plank-ink);stroke-width:1;opacity:.45;} .dx2-tick.is-big{opacity:.9;stroke-width:1.4;}
 .dx2-num{fill:var(--dx-plank-ink);font-weight:800;font-variant-numeric:tabular-nums;}
-.dx2-leg{fill:none;stroke:var(--dx-leg);stroke-width:5;stroke-linecap:round;stroke-linejoin:round;}
+.dx2-leg{fill:none;stroke:var(--dx-leg);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;}
 .dx2-wedge-b{fill:var(--dx-wedge);} .dx2-wedge-h{fill:var(--dx-wedge-hi);} .dx2-wedge-s{stroke:var(--dx-shadow);stroke-width:5;stroke-linecap:round;}
 .dx2-tri{fill:var(--dx-mean);stroke:var(--dx-halo);stroke-width:1;}
 .dx2-mpill rect{fill:var(--dx-pill);stroke:var(--dx-mean);stroke-width:2;}
@@ -183,3 +183,7 @@ body.ls-on .stat-crumb{display:none;} /* Tool Studio hides the other courses' cr
 .dx2-ref h3{font-size:1rem;margin:16px 0 4px;}
 .dx2-howref{margin:0 0 6px;}
 @media (prefers-reduced-motion: reduce){ .dx2-ring{transition:none;} }
+/* a mark's number fades while the mark slides and comes back when it lands */
+.dx2-clotht,.dx2-qlab,.dx2-sign{transition:opacity .12s;}
+.dx2-clotht.is-moving,.dx2-qlab.is-moving,.dx2-sign.is-moving{opacity:0;}
+@media (prefers-reduced-motion: reduce){ .dx2-clotht,.dx2-qlab,.dx2-sign{transition:none;} }

@@ -186,10 +186,20 @@ From `docs/apstat-reviews/tools.md`. Every drill key passed an independent SciPy
   and "?" names the other form (each unit gets both treatments). (5) When the researcher picks who gets caffeine,
   the researcher knows, so that study is at best single blind (the volunteers can still be kept from knowing); "?"
   says so for that design.
+
+- **Chi-square lab v2 (`chi-square-lab-v2`, 2026-11-24, `docs/tools-v2-stat-chi-square-lab-brief.md`).** (1) Chance
+  table draws a table with each row's total kept and the counts following the pooled column shares, for both designs;
+  for the independence study (one sample) that conditions on the row totals, a standard simplification. The takeaway
+  "About 95 in 100 land above 0.05" leans on the chi-square curve being a good fit (all expected counts at least 5);
+  with small expected counts the share differs. Confirm the wording. (2) The decision takeaway is short to fit two
+  phone rows: "p < 0.05: convincing evidence that lunch choice differs by school." (and "that age and news source are
+  associated", "that flowering differs by fertilizer"); the full four part conclusion stays in "?" and in Test
+  yourself. Confirm. (3) For the fertilizer experiment "?" adds that a rejection is evidence the fertilizer causes the
+  difference (random assignment); for the news sample it adds that an association is not cause and effect.
 - **Data explorer v2 (`data-explorer-v2`, 2026-11-24, `docs/tools-v2-stat-data-explorer-brief.md`).** (1) The mean is
   shown as the balance point of a plank resting on a wedge; the plank is treated as weightless ("?" says so), so the
-  people alone decide the balance, and while the wedge catches up the plank tips by an amount proportional to
-  n(x̄ − tip). A real seesaw's own weight would move its balance point; confirm the idealization is acceptable as
+  people alone decide the balance, and while the wedge catches up the plank tips by 420 × (x̄ − tip) ÷ the scale's range
+  degrees (at most 6): a picture of the sign of the turning effect, not a physics model. A real seesaw's own weight would move its balance point; confirm the idealization is acceptable as
   stated. (2) The shape word in "?" still comes from the stated skewness rule of thumb (`SHAPE_RULE`, see
   `tools-review` above); Explore no longer says the shape in the cause line. (3) New people added with "+" land
   inside the middle half (Q1 plus a golden ratio fraction of the IQR); the old tool put them just above or below the

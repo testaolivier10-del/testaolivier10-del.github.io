@@ -5,7 +5,7 @@
 
    EXPLORE (free play, nothing graded, no side panel), two tabs on one picture of the same people:
      1. Mean and median. Each value is a person standing on a long plank marked in the data's units (people at the
-        same place stand on each other's shoulders, like dots on a dotplot). The plank rests on a wedge: it balances
+        same value stand on each other's shoulders, like dots on a dotplot; neighbors overlap side by side). The plank rests on a wedge: it balances
         only when the wedge is under the mean, so when one person is dragged the plank tips and the wedge slides after
         the mean until it settles. A green flag stands at the median. Quiet: the mean ± 1 SD band.
      2. Outliers and the boxplot. The same people on a level board; under it the boxplot is drawn as a crate from Q1
@@ -331,11 +331,19 @@
         g.sdY = g.clothY + g.clothH + (g.phone ? 17 : 20);
         g.stackTop = g.sdY + 40;           // room for the knob above the highest column
       } else {
-        g.signY = pad + 2; g.signH = g.phone ? 22 : 26;
+        g.signY = pad + 2; g.signH = g.phone ? (H < 380 ? 20 : 22) : 26;
         var avail = H - 2 * pad - g.signH;
-        g.PY = g.signY + g.signH + Math.round(avail * (H < 380 ? 0.36 : g.phone ? 0.40 : H < 560 ? 0.36 : 0.42));
-        g.stackTop = g.signY + g.signH + 40;
-        g.boxTop = g.PY + g.pt + 6; g.boxH = H < 380 ? 66 : g.phone ? 82 : H < 560 ? 88 : 100;
+        g.stackTop = g.signY + g.signH + (g.phone ? (H < 380 ? 22 : 32) : 40);
+        if(g.phone){
+          // phones: the people get the room; the boxplot band and the histogram take what they need
+          g.boxH = H < 380 ? 48 : 66;
+          var hh = H < 380 ? 64 : clamp(Math.round(H * 0.17), 64, 96);
+          g.PY = H - pad - 4 - hh - 6 - g.boxH - 6 - g.pt;
+        } else {
+          g.PY = g.signY + g.signH + Math.round(avail * (H < 560 ? 0.36 : 0.42));
+          g.boxH = H < 560 ? 88 : 100;
+        }
+        g.boxTop = g.PY + g.pt + 6;
         g.histTop = g.boxTop + g.boxH + 6; g.histBot = H - pad - 4;
       }
       return g;
@@ -346,7 +354,7 @@
 
     /* ---------------------------------------------------- drawn state of the moving marks */
     var Dr = { f: null, med: null, q1: null, q3: null, f0: null, f1: null, w0: null, w1: null, sd: 0, sdA: 0, th: 0 };
-    function resetDrawn(){ var s = drawnStats(); if(!s) return; Dr.f = s.mean; Dr.med = s.med; Dr.q1 = s.q1; Dr.q3 = s.q3; Dr.f0 = s.fences[0]; Dr.f1 = s.fences[1]; Dr.w0 = s.whiskers[0]; Dr.w1 = s.whiskers[1]; Dr.th = 0; }
+    function resetDrawn(){ var s = drawnStats(); if(!s) return; Dr.f = s.mean; Dr.med = s.med; Dr.q1 = s.q1; Dr.q3 = s.q3; Dr.f0 = s.fences[0]; Dr.f1 = s.fences[1]; Dr.w0 = s.whiskers[0]; Dr.w1 = s.whiskers[1]; Dr.th = 0; TG = {}; Lv = {}; }
 
     /* ---------------------------------------------------- the background, the board, the wedge (rebuilt on a new size or tab) */
     function drawBack(){
@@ -387,34 +395,33 @@
       });
       if(S.tab === 'box'){
         // two short trestles hold the level board
-        [x0 + 16, x1 - 16].forEach(function(x){ mk('path', 'dx2-leg', { d: 'M' + (x - 8) + ' ' + (G.PY + G.pt + 8) + ' L ' + x + ' ' + (G.PY + G.pt - 2) + ' L ' + (x + 8) + ' ' + (G.PY + G.pt + 8) }, gBoard); });
+        [x0 + 18, x1 - 18].forEach(function(x){ var y0 = G.PY + G.pt - 1, y1 = G.PY + G.pt + 12; mk('path', 'dx2-leg', { d: 'M' + (x - 4) + ' ' + y0 + ' L ' + (x - 10) + ' ' + y1 + ' M' + (x + 4) + ' ' + y0 + ' L ' + (x + 10) + ' ' + y1 + ' M' + (x - 7.5) + ' ' + (y0 + 7) + ' H ' + (x + 7.5) }, gBoard); });
       }
     }
 
-    /* ---------------------------------------------------- levels: people at the same place stand on each other's shoulders */
+    /* ---------------------------------------------------- levels: people with the same value stand on each other's shoulders */
     var sc = 1, levelH = 22, pwD = null;
     /* the people's size: the largest that keeps the stacks within about 80% of the room above the plank (worked out
        when nothing is moving, then grown or shrunk smoothly; while a stack grows past the room the figures shrink) */
+    /* only people with the same value stand on each other's shoulders, so a stack's height is the count at that value
+       (neighbors at other values stand beside them, overlapping in depth) */
     function stackOf(pw, vals){
-      var xs = vals.map(xv).sort(function(a, b){ return a - b; }), rows = [], maxL = 0;
-      xs.forEach(function(x){ var L = 0; while(rows[L] && rows[L].some(function(q){ return Math.abs(q - x) < pw * 0.94; })) L++; (rows[L] = rows[L] || []).push(x); if(L > maxL) maxL = L; });
-      return maxL + 1;
+      var c = {}, mx = 1; vals.forEach(function(v){ var k = snap(v); c[k] = (c[k] || 0) + 1; if(c[k] > mx) mx = c[k]; });
+      return mx;
     }
     function fitPw(){
       if(!G) return;
       var vals = S.P.filter(function(p){ return p.st !== 'go' && p.st !== 'gone'; }).map(function(p){ return p.tw ? p.tw.b : p.v; });
-      var room = (G.PY - G.stackTop) * 0.8, hiW = G.phone ? 22 : 42, loW = G.phone ? 12 : 15, best = loW;
+      var room = (G.PY - G.stackTop) * 0.95, ppu = (G.r - G.l) / ((hi - lo) / st()), loW = 15, hiW = Math.max(loW, Math.min(G.phone ? 24 : 42, ppu * 1.8)), best = loW;
       for(var pw = hiW; pw >= loW; pw -= 1){ if(stackOf(pw, vals) * 2.26 * pw <= room){ best = pw; break; } }
       G.pw = best;
       if(pwD == null || calm()) pwD = best;
     }
     function levels(){
       var arr = S.P.filter(function(p){ return p.st !== 'gone'; }).slice().sort(function(a, b){ return a.d - b.d || a.id - b.id; });
-      var pwNow = pwD == null ? G.pw : pwD, gap = pwNow * 0.94, rows = [], maxL = 0;
-      arr.forEach(function(p){
-        var x = xv(p.d), L = 0;
-        while(rows[L] && rows[L].some(function(q){ return Math.abs(q - x) < gap; })) L++;
-        (rows[L] = rows[L] || []).push(x); p.lt = L; if(L > maxL) maxL = L;
+      var pwNow = pwD == null ? G.pw : pwD, at = {}, maxL = 0;
+      arr.slice().sort(function(a, b){ return a.id - b.id; }).forEach(function(p){
+        var k = snap(p.d), L = at[k] || 0; at[k] = L + 1; p.lt = L; if(L > maxL) maxL = L;
       });
       // the figures shrink when a column would reach the knob's room
       var room = G.PY - G.stackTop, full = pwNow / 10 * 22.6;
@@ -424,8 +431,8 @@
     }
     /* where a person's feet are, in the plank's (untilted) frame */
     function colTop(p){
-      var x = xv(p.d), top = p.lv;
-      S.P.forEach(function(q){ if(q.st === 'gone') return; if(Math.abs(xv(q.d) - x) < (pwD || G.pw) * 0.94 && q.lv > top) top = q.lv; });
+      var k = snap(p.d), top = p.lv;
+      S.P.forEach(function(q){ if(q.st === 'gone') return; if(snap(q.d) === k && q.lv > top) top = q.lv; });
       return G.PY - (top + 1) * levelH;
     }
     /* the tilt: rotate the plank's frame about the wedge's tip */
@@ -447,7 +454,13 @@
     }
     function kick(){ if(!raf && !calm()) { tLast = now(); raf = requestAnimationFrame(frame); } }
     function frame(){ raf = 0; var t = now(), dt = Math.min(64, t - tLast); tLast = t; step(t, dt); paint(); if(busy()) kick(); else settled(); }
-    function chase(k, target, dt, tau, eps){ var v = Dr[k]; if(v == null || calm()){ Dr[k] = target; return; } v += (target - v) * (1 - Math.exp(-dt / tau)); if(Math.abs(target - v) < eps) v = target; Dr[k] = v; }
+    /* a mark eases toward its target, never faster than about 1.2 px a millisecond (no jumps on a long slide) */
+    function chase(k, target, dt, tau, eps){
+      TG[k] = target;
+      var v = Dr[k]; if(v == null || calm()){ Dr[k] = target; return; }
+      var d = (target - v) * (1 - Math.exp(-dt / tau)), cap = 1.2 * dt * (hi - lo) / (G.r - G.l);
+      v += clamp(d, -cap, cap); if(Math.abs(target - v) < eps) v = target; Dr[k] = v;
+    }
     function step(t, dt){
       var c = calm();
       S.P.forEach(function(p){
@@ -466,7 +479,7 @@
         chase('f', s.mean, dt, TAU_F, eps);
         chase('med', s.med, dt, TAU_D, eps);
         Dr.sdA = c ? (S.sd ? 1 : 0) : Dr.sdA + ((S.sd ? 1 : 0) - Dr.sdA) * (1 - Math.exp(-dt / 90)); if(Math.abs(Dr.sdA - (S.sd ? 1 : 0)) < 0.01) Dr.sdA = S.sd ? 1 : 0;
-        // the plank tips toward the side the mean has moved to, until the wedge is under it again (torque about the tip ∝ n(mean − tip))
+        // the plank tips toward the side the mean has moved to, until the wedge is under it again (the angle is 420 × (mean − tip) ÷ the scale's range, at most 6 degrees: zero only with the tip under the mean)
         Dr.th = clamp(420 * (s.mean - Dr.f) / (hi - lo), -6, 6); if(Math.abs(Dr.th) < 0.01) Dr.th = 0;
       } else {
         Dr.th = 0;
@@ -487,12 +500,14 @@
     }
     function hideEl(e){ if(e && e.style.display !== 'none') e.style.display = 'none'; }
     function showEl(e){ if(e && e.style.display === 'none') e.style.display = ''; }
-    /* the moving marks are drawn at the numbers they show: a median or quartile of values on a step of 1 is a multiple
-       of 0.5 and a fence a multiple of 0.25, so while a mark slides it steps along that grid (its label always names the
-       place it is drawn) */
-    var Dv = {};
-    function grid(v, g){ return v == null ? v : Math.round(v / g) * g; }
-    function shownDr(){ var h = st() / 2, q = st() / 4; Dv.med = grid(Dr.med, h); Dv.q1 = grid(Dr.q1, h); Dv.q3 = grid(Dr.q3, h); Dv.f0 = grid(Dr.f0, q); Dv.f1 = grid(Dr.f1, q); Dv.w0 = grid(Dr.w0, st()); Dv.w1 = grid(Dr.w1, st()); }
+    /* The moving marks (flag, crate, slat, ropes, posts) are drawn where they are, sliding smoothly. A mark's number is
+       shown only while it sits still (then it is exactly the drawn place); while it slides its label fades out (it keeps
+       the number it left, faded, class is-moving) and its cause line pill shows "…" until it lands. */
+    var Dv = {}, Lv = {}, TG = {}, MKS = ['med', 'q1', 'q3', 'f0', 'f1', 'w0', 'w1'];
+    function mv(k){ return TG[k] != null && Dr[k] !== TG[k]; }
+    function nm(k){ return mv(k) ? '…' : num(Dv[k], 2); }
+    function shownDr(){ MKS.forEach(function(k){ Dv[k] = Dr[k]; if(!mv(k) || Lv[k] == null) Lv[k] = Dr[k]; }); }
+    function moving(e, on){ if(e && e.classList.contains('is-moving') !== on) e.classList.toggle('is-moving', on); }
     var lastCause = '';
     function paint(){
       if(!G) return;
@@ -531,11 +546,11 @@
       var fx0 = xv(Dv.med), pole = LB.pole || (LB.pole = mk('line', 'dx2-pole', null, gFlag));
       at(pole, { x1: fx0, x2: fx0, y1: G.clothY + 1, y2: G.PY + 1 });
       var knob = LB.knobf || (LB.knobf = mk('circle', 'dx2-polek', { r: 3 }, gFlag)); at(knob, { cx: fx0, cy: G.clothY });
-      var fsC = G.phone ? 12.5 : 14, tC = 'median ' + num(Dv.med, 2), wC = tw(tC, fsC, 900) + 18, right = fx0 + wC + 4 < W - 6;
+      var fsC = G.phone ? 12.5 : 14, tC = 'median ' + num(Lv.med, 2), wC = tw(tC, fsC, 900) + 18, right = fx0 + wC + 4 < W - 6;
       var cl = LB.cloth || (LB.cloth = mk('path', 'dx2-cloth', null, gFlag)), cx0 = right ? fx0 + 1 : fx0 - 1 - wC, ch = G.clothH;
       at(cl, { d: right ? 'M' + cx0.toFixed(1) + ' ' + G.clothY + ' H ' + (cx0 + wC).toFixed(1) + ' l -6 ' + (ch / 2) + ' l 6 ' + (ch / 2) + ' H ' + cx0.toFixed(1) + ' Z'
         : 'M' + (cx0 + wC).toFixed(1) + ' ' + G.clothY + ' H ' + cx0.toFixed(1) + ' l 6 ' + (ch / 2) + ' l -6 ' + (ch / 2) + ' H ' + (cx0 + wC).toFixed(1) + ' Z' });
-      var ct = lab('clothT', 'dx2-clotht', gFlag); at(ct, { x: (cx0 + wC / 2 + (right ? -3 : 3)).toFixed(1), y: (G.clothY + ch / 2 + fsC * 0.36).toFixed(1), 'text-anchor': 'middle', style: 'font-size:' + fsC + 'px' }); txt(ct, tC);
+      var ct = lab('clothT', 'dx2-clotht', gFlag); at(ct, { x: (cx0 + wC / 2 + (right ? -3 : 3)).toFixed(1), y: (G.clothY + ch / 2 + fsC * 0.36).toFixed(1), 'text-anchor': 'middle', style: 'font-size:' + fsC + 'px' }); txt(ct, tC); moving(ct, mv('med'));
       // the ± 1 SD band (quiet): from the mean as drawn, its width the SD as drawn
       if(Dr.sdA > 0.001 && s.sd > 0){
         showEl(gBand);
@@ -564,7 +579,7 @@
         var f = k ? Dv.f1 : Dv.f0, inside = f >= lo && f <= hi, x = xv(clamp(f, lo, hi));
         var post = LB['post' + k] || (LB['post' + k] = mk('rect', 'dx2-post', null, gPosts));
         if(inside){ showEl(post); at(post, { x: x - 2.5, y: G.signY + G.signH - 2, width: 5, height: G.PY + 1 - (G.signY + G.signH - 2), rx: 2 }); } else hideEl(post);
-        var t = inside ? 'fence ' + num(f, 2) : (k ? 'fence ' + num(f, 2) + ' →' : '← fence ' + num(f, 2));
+        var fl = k ? Lv.f1 : Lv.f0, t = fl >= lo && fl <= hi ? 'fence ' + num(fl, 2) : (k ? 'fence ' + num(fl, 2) + ' →' : '← fence ' + num(fl, 2));
         var w = tw(t, fs, 800) + 14, anchor = 'middle', px = x;
         if(!inside){ anchor = k ? 'end' : 'start'; px = k ? W - G.pad - 2 : G.pad + 2; }
         else if(x - w / 2 < G.pad + 2){ anchor = 'start'; px = G.pad + 2; }
@@ -579,7 +594,7 @@
         var a0 = bx(signs[0]), a1 = bx(signs[1]);
         if(a0[1] + 6 > a1[0]){ var mid = (a0[0] + a1[1]) / 2, need = signs[0].w + signs[1].w + 6, l0 = clamp(mid - need / 2, G.pad + 2, W - G.pad - 2 - need); signs[0].anchor = 'start'; signs[0].x = l0; signs[1].anchor = 'start'; signs[1].x = l0 + signs[0].w + 6; }
       }
-      [0, 1].forEach(function(k){ var q = signs[k], sg = pill('sign' + k, gPosts, 'dx2-sign'); setPill(sg, q.x, G.signY + G.signH / 2, q.t, fs, q.anchor, 7); });
+      [0, 1].forEach(function(k){ var q = signs[k], sg = pill('sign' + k, gPosts, 'dx2-sign'); setPill(sg, q.x, G.signY + G.signH / 2, q.t, fs, q.anchor, 7); moving(sg, mv(k ? 'f1' : 'f0')); });
       // the two signs never sit on each other (a narrow box): the upper one moves to the right
       // (they are at opposite ends of the box, so this only happens when both are off one edge, which cannot be)
       // the crate (box) from Q1 to Q3, the median slat, whisker ropes to stakes, outlier dots
@@ -603,13 +618,13 @@
       // labels: median over the crate, Q1 and Q3 under it, "outlier" beside the outlier dots
       var fsQ = G.phone ? 11.5 : 13, yTop = cy - bh / 2 - 7, yBot = cy + bh / 2 + fsQ + 4;
       var tm = lab('tmed', 'dx2-qlab is-med', gBoxp), tq1 = lab('tq1', 'dx2-qlab', gBoxp), tq3 = lab('tq3', 'dx2-qlab', gBoxp);
-      var sm = 'median ' + num(Dv.med, 2), wm = tw(sm, fsQ, 800);
-      at(tm, { x: clamp(xm, G.pad + wm / 2 + 2, W - G.pad - wm / 2 - 2), y: yTop, 'text-anchor': 'middle', style: 'font-size:' + fsQ + 'px' }); txt(tm, sm);
-      var s1 = 'Q1 ' + num(Dv.q1, 2), s3 = 'Q3 ' + num(Dv.q3, 2), w1 = tw(s1, fsQ, 800), w3 = tw(s3, fsQ, 800);
+      var sm = 'median ' + num(Lv.med, 2), wm = tw(sm, fsQ, 800);
+      at(tm, { x: clamp(xm, G.pad + wm / 2 + 2, W - G.pad - wm / 2 - 2), y: yTop, 'text-anchor': 'middle', style: 'font-size:' + fsQ + 'px' }); txt(tm, sm); moving(tm, mv('med'));
+      var s1 = 'Q1 ' + num(Lv.q1, 2), s3 = 'Q3 ' + num(Lv.q3, 2), w1 = tw(s1, fsQ, 800), w3 = tw(s3, fsQ, 800);
       var c1 = clamp(x1, G.pad + w1 / 2 + 2, W - G.pad - w1 / 2 - 2), c3 = clamp(x3, G.pad + w3 / 2 + 2, W - G.pad - w3 / 2 - 2);
       if(c3 - c1 < (w1 + w3) / 2 + 8){ var mid = (c1 + c3) / 2, need = (w1 + w3) / 2 + 8; c1 = mid - need / 2; c3 = mid + need / 2; }
-      at(tq1, { x: c1, y: yBot, 'text-anchor': 'middle', style: 'font-size:' + fsQ + 'px' }); txt(tq1, s1);
-      at(tq3, { x: c3, y: yBot, 'text-anchor': 'middle', style: 'font-size:' + fsQ + 'px' }); txt(tq3, s3);
+      at(tq1, { x: c1, y: yBot, 'text-anchor': 'middle', style: 'font-size:' + fsQ + 'px' }); txt(tq1, s1); moving(tq1, mv('q1'));
+      at(tq3, { x: c3, y: yBot, 'text-anchor': 'middle', style: 'font-size:' + fsQ + 'px' }); txt(tq3, s3); moving(tq3, mv('q3'));
       // "outlier" names each group of outlier dots, on the side away from the box
       var groups = []; outs.slice().sort(function(a, b){ return a - b; }).forEach(function(v){ var x = xv(v), g = groups[groups.length - 1]; if(g && x - g.x1 < 46 && (v > Dv.med) === g.hi) { g.x1 = x; g.n++; } else groups.push({ x0: x, x1: x, n: 1, hi: v > Dv.med }); });
       var ol = LB.ol || (LB.ol = []);
@@ -632,7 +647,7 @@
     var bars = [], barLabs = [];
     function paintHist(s){
       var B = X.bins(s.xs, X.binStart(lo, S.bin), S.bin), mx = Math.max.apply(null, B.counts.concat([1]));
-      var top = G.histTop + (G.phone ? 26 : 30), base = G.histBot - 6, fs = G.phone ? 11.5 : 12.5;
+      var top = G.histTop + (G.H < 380 ? 20 : G.phone ? 26 : 30), base = G.histBot - 5, fs = G.phone ? 11.5 : 12.5;
       while(bars.length < B.counts.length){ bars.push(mk('rect', 'dx2-bar', null, gHist)); barLabs.push(mk('text', 'dx2-blab', null, gHist)); }
       var hb = LB.hbase || (LB.hbase = mk('line', 'dx2-hbase', null, gHist)); at(hb, { x1: G.l - 4, x2: G.r + 4, y1: base, y2: base });
       bars.forEach(function(r, j){
@@ -645,7 +660,7 @@
       // phones: "Histogram" and the knob's own "bins of 5 min"; wider: the title names the bins, the knob says "bin width"
       var bt = binTrack(), bl = lab('binL', 'dx2-binl', gHist); at(bl, { x: bt[0] - 12, y: bt[1] + 4, 'text-anchor': 'end', style: 'font-size:' + fs + 'px' }); txt(bl, G.phone ? 'bins of ' + num(S.bin, 2) + ' ' + unit() : 'bin width');
       var t = lab('htitle', 'dx2-htitle', gHist), tt = G.phone ? 'Histogram' : 'Histogram, bins of ' + num(S.bin, 2) + ' ' + unit();
-      at(t, { x: G.l - 4, y: G.histTop + (G.phone ? 17 : 20), style: 'font-size:' + (G.phone ? 12 : 13.5) + 'px' }); txt(t, tt);
+      at(t, { x: G.l - 4, y: G.histTop + (G.H < 380 ? 14 : G.phone ? 17 : 20), style: 'font-size:' + (G.phone ? 12 : 13.5) + 'px' }); txt(t, tt);
     }
 
     /* ---------------------------------------------------- the words: cause line and takeaways, from the drawn state */
@@ -659,7 +674,7 @@
           var dm = s.mean - ch.b.mean, md = Dv.med - ch.b.med;
           parts.push({ t: num(ch.v0, 2) + ' → ' + num(dval(cp), 2) + ' ' + u, role: 'val' });
           parts.push({ t: 'mean ' + one(ch.b.mean) + ' → ' + one(s.mean), role: 'mean' });
-          parts.push({ t: Math.abs(md) < 1e-9 ? 'median stays ' + num(Dv.med, 2) : 'median ' + num(ch.b.med, 2) + ' → ' + num(Dv.med, 2), role: 'med' });
+          parts.push({ t: Math.abs(md) < 1e-9 ? 'median stays ' + nm('med') : 'median ' + num(ch.b.med, 2) + ' → ' + nm('med'), role: 'med' });
         } else if(S.sel && S.cur && S.cur.st === 'in'){
           var v = dval(S.cur), z = s.sd > 0 ? (v - s.mean) / s.sd : 0;
           parts.push({ t: num(v, 2) + ' ' + u, role: 'val' });
@@ -668,13 +683,13 @@
         } else {
           parts.push({ t: plural(n, noun(1), noun(n)), role: 'val' });
           parts.push({ t: 'mean ' + one(s.mean), role: 'mean' });
-          parts.push({ t: 'median ' + num(Dv.med, 2), role: 'med' });
+          parts.push({ t: 'median ' + nm('med'), role: 'med' });
           if(S.sd && Dr.sdA > 0.98) parts.push({ t: 'SD ' + one(s.sd), role: 'mean' });
         }
       } else {
         var outs = S.P.filter(function(p){ return p.out; }).map(dval).sort(function(a, b){ return a - b; });
         var f0 = Dv.f0, f1 = Dv.f1;
-        var where = function(v){ return v > f1 + 1e-9 ? { t: num(v, 2) + ' > Q3 + 1.5 × IQR = ' + num(f1, 2), out: true } : v < f0 - 1e-9 ? { t: num(v, 2) + ' < Q1 − 1.5 × IQR = ' + num(f0, 2), out: true } : { t: 'inside ' + num(f0, 2) + ' to ' + num(f1, 2), out: false }; };
+        var where = function(v){ return v > f1 + 1e-9 ? { t: num(v, 2) + ' > Q3 + 1.5 × IQR = ' + nm('f1'), out: true } : v < f0 - 1e-9 ? { t: num(v, 2) + ' < Q1 − 1.5 × IQR = ' + nm('f0'), out: true } : { t: 'inside ' + nm('f0') + ' to ' + nm('f1'), out: false }; };
         if(cp && dval(cp) !== ch.v0){
           var w = where(dval(cp));
           parts.push({ t: num(ch.v0, 2) + ' → ' + num(dval(cp), 2) + ' ' + u, role: 'val' });
@@ -686,9 +701,9 @@
           parts.push({ t: w2.t, role: 'fence' });
           parts.push({ t: w2.out ? 'outlier' : 'not an outlier', role: w2.out ? 'out' : 'box' });
         } else {
-          parts.push({ t: 'Q1 ' + num(Dv.q1, 2) + ' · Q3 ' + num(Dv.q3, 2), role: 'box' });
-          parts.push({ t: 'IQR ' + num(Dv.q3 - Dv.q1, 2), role: 'box' });
-          parts.push({ t: 'fences ' + num(f0, 2) + ' and ' + num(f1, 2), role: 'fence' });
+          parts.push({ t: 'Q1 ' + nm('q1') + ' · Q3 ' + nm('q3'), role: 'box' });
+          parts.push({ t: 'IQR ' + (mv('q1') || mv('q3') ? '…' : num(Dv.q3 - Dv.q1, 2)), role: 'box' });
+          parts.push({ t: 'fences ' + nm('f0') + ' and ' + nm('f1'), role: 'fence' });
           parts.push({ t: !outs.length ? 'no outliers' : outs.length === 1 ? '1 outlier: ' + num(outs[0], 2) : outs.length + ' outliers', role: 'out' });
         }
       }
@@ -733,9 +748,9 @@
       handle = K.handle(layer, { key: 'apstat-data-explorer-person', label: 'Drag the picked person', value: S.cur ? S.cur.v : 0, min: S.set.x[0], max: S.set.x[1], step: st(), chip: false,
         at: function(){ return knobAt(); },
         pick: function(x, y, v){
-          var q = rot([x, y], true);
+          // read on the level scale (the numbers under a resting plank), so a drop lands where the finger is
           if(press && !press.moved){ if(Math.abs(x - press.x0) < 4) return v; press.moved = true; }
-          return snap(vx(q[0]));
+          return snap(vx(x));
         },
         valuetext: function(v){ var p = S.cur; if(!p) return ''; var s = drawnStats(), out = S.tab === 'box' && p.out; return num(v, 2) + ' ' + S.set.unit + (out ? ', an outlier' : '') + (s ? '; mean ' + one(s.mean) + ', median ' + num(s.med, 2) : ''); },
         tag: function(v){ return (handle && handle.dragging() && press && press.moved) || (keyed && S.cur && S.cur.tw) ? num(S.cur ? dval(S.cur) : v, 2) + ' ' + unit() : ''; },
@@ -871,7 +886,7 @@
       tourDid('tab');
     }
     var binKnob = null;
-    function binTrack(){ var w = G.phone ? 96 : 150, y = G.histTop + (G.phone ? 13 : 16); return [G.r - w, y, G.r - 8, y]; }
+    function binTrack(){ var w = G.phone ? 96 : 150, y = G.histTop + (G.H < 380 ? 10 : G.phone ? 13 : 16); return [G.r - w, y, G.r - 8, y]; }
     function makeBin(){
       binKnob = K.drag(layer, { key: null, label: 'Histogram bin width', min: S.set.binMin, max: S.set.binMax, step: S.set.binStep, value: S.bin, quiet: true, track: G ? binTrack() : [0, 0, 10, 0],
         valuetext: function(v){ return 'bins of ' + num(v, 2) + ' ' + S.set.unit; },
@@ -944,7 +959,7 @@
       var u = S.set.unit, srt = s.xs.slice().sort(function(a, b){ return a - b; }), B = X.bins(s.xs, X.binStart(lo, S.bin), S.bin);
       var outs = s.outliers.length ? s.outliers.map(function(v){ return num(v, 2); }).join(', ') + ' ' + u : 'none';
       var h = '<p class="dx2-howref"><button type="button" class="tk2-how" data-how>Show me how</button> to use it, step by step.</p>';
-      h += '<h3>What you are looking at</h3><p>' + esc(S.set.lead) + ' Each person stands at their value on a plank marked in ' + esc(u) + '; people with the same value stand on each other’s shoulders, like the dots of a dotplot.</p>';
+      h += '<h3>What you are looking at</h3><p>' + esc(S.set.lead) + ' Each person stands at their value on a plank marked in ' + esc(u) + '; people with the same value stand on each other’s shoulders, like the dots of a dotplot, so a stack’s height is how many people have that value (people at nearby values stand beside them, overlapping).</p>';
       h += '<h3>Mean and median</h3><p>The <b>mean</b> (' + esc(fx(s.mean, 2)) + ' ' + esc(u) + ') adds every value and divides by n = ' + s.n + '. It is the <b>balance point</b>: the plank (drawn as if it weighed nothing, so only the people count) balances only when the wedge is under it, because the distances to the values on the left and on the right add up the same (the deviations from the mean sum to 0). Move one value and the mean moves by that change divided by n, so one far value pulls it. The <b>median</b> (' + esc(num(s.med, 2)) + ') is the middle of the ordered values' + (s.n % 2 ? ' (the ' + ((s.n + 1) / 2) + 'th)' : ' (the mean of the ' + (s.n / 2) + 'th and ' + (s.n / 2 + 1) + 'th)') + ': it only moves when a value crosses the middle. The median is <b>resistant</b>; the mean is not.</p>';
       h += '<h3>Spread: SD and IQR</h3><p>The sample standard deviation s = ' + esc(fx(s.sd, 2)) + ' ' + esc(u) + ' (squared distances from the mean, divided by n − 1, then the square root) uses every value: not resistant. The IQR = Q3 − Q1 = ' + esc(num(s.q3, 2)) + ' − ' + esc(num(s.q1, 2)) + ' = ' + esc(num(s.iqr, 2)) + ' is the width of the box, the middle half: resistant. The ± 1 SD switch shades the mean ± one SD.</p>';
       h += '<h3>Quartiles, the way AP® Statistics finds them</h3><p>Order the values. Q1 is the median of the lower half and Q3 the median of the upper half; when n is odd the median itself is left out of both halves. This is also what a TI-84’s 1-Var Stats gives. Some software uses other rules and can give slightly different quartiles.</p>';

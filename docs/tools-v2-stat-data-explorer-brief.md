@@ -4,8 +4,8 @@ Status file for the v2 rebuild of `statistics/tools/data-explorer.html` (rollout
 Plan: `docs/tools-v2-plans/stat-data-explorer.md`. Standard: `docs/tools-v2-standard.md`; builder rules:
 `docs/tools-v2-builder-brief.md`. Branch `claude/tools-v2-stat-data-explorer`, cut from `claude/tools-v2-all`.
 NOT merged: an independent review comes first. Decisions made for the owner are also one line each in
-`docs/tools-v2-owner-log.md`. The third AP® Statistics tool on the kit: it reuses `ApStatTools.studioKit2` and the
-`"kit2": true` page flag (spec decisions 19 to 21).
+`docs/tools-v2-owner-log.md`. The fourth AP® Statistics tool on the kit: it reuses `ApStatTools.studioKit2` and the
+`"kit2": true` page flag (spec decisions 19 to 22).
 
 ## The one main idea (two tabs)
 1. **Mean and median:** drag one value far out: the mean (the balance point) follows it, the median (the middle
@@ -37,7 +37,8 @@ crate under the same people, with fence posts standing on the plank, and rings e
 ## The design
 - **Tab 1, Mean and median.** A sky over a hill and grass; a long wooden plank across the whole picture with the
   values marked on its face (the last number carries the unit). Each value is a person standing at it; people at
-  the same place (within a person's width) stand on each other's shoulders, as dots on a dotplot. A gray stone wedge
+  the same value stand on each other's shoulders, as dots on a dotplot, so a stack's height is the count at that
+  value; people at nearby values stand beside them, overlapping in depth. A gray stone wedge
   under the plank; an orange triangle on the plank's underside at the mean, with "mean 17.8" in a pill on the grass
   under it. A green flag on a pole at the median ("median 15" on its cloth). Quiet: the ± 1 SD switch shades the band
   mean ± one SD behind the people with "−1 SD" and "+1 SD" at its ends.
@@ -55,8 +56,8 @@ crate under the same people, with fence posts standing on the plank, and rings e
 - **Under the cause line:** "− 20 students +" ("n = 20" on phones; 5 to 40 people), the ± 1 SD switch (tab 1), Start
   over. The data set picker sits beside "Show me how".
 - **Animates:** a drag moves the person with the finger; the mean mark follows at once, the wedge slides after it
-  (about a quarter second) and the plank tips by the imbalance about the wedge's tip (proportional to mean − tip,
-  at most 6 degrees) and settles level; the flag walks to the new median; people step up or down a level as the
+  (about a quarter second) and the plank tips by the imbalance about the wedge's tip (420 × (mean − tip) ÷ the scale's
+  range degrees, at most 6) and settles level; the flag walks to the new median; people step up or down a level as the
   stacks change. A key moves the person over 240 ms. Tab 2: the crate stretches, the slat, ropes, stakes and posts
   slide to their new values, rings and outlier dots fade in or out as a person crosses a post, bars grow. A new person
   drops in from above (520 ms); a removed one rises and fades (420 ms); Start over walks everyone back. The SD band
@@ -65,8 +66,7 @@ crate under the same people, with fence posts standing on the plank, and rings e
 - **Every number is read from the people as drawn:** a person counts once they have landed and stops counting as
   they start to leave; each counted person's value is their drawn x (to 0.1 px, as written) read back on the scale,
   to the data's step. The mean mark, the wedge's target, the tilt, the flag, the SD band, the crate, slat, ropes,
-  posts, rings, outlier dots, bars and every label and cause line pill come from those values in that frame; every
-  moving mark carries the number it is drawn at (the flag's cloth names the flag's own place).
+  posts, rings, outlier dots, bars and every label and cause line pill come from those values in that frame; a mark's number shows only while the mark is still (then it is exactly where the mark is drawn).
 - **Cause line:** tab 1 at rest "20 students → mean 17.8 → median 15" (and "→ SD 10.3" with the band on); after a
   drag "48 → 68 min → mean 17.8 → 18.8 → median stays 15"; a picked person "15 min → z = −0.05 → 0.05 SD below the
   mean". Tab 2 at rest "Q1 11 · Q3 21 → IQR 10 → fences −4 and 36 → 1 outlier: 48"; after a drag "35 → 40 min →
@@ -120,7 +120,8 @@ the picker, the stepper, the switch, Start over, Show me how.
 | Test yourself drill, figures, record ids, `?seed=`, `#quiz` | Unchanged |
 
 ## Decisions made for the owner (also in the owner log)
-1. The dots are people standing on a plank; equal values stand on each other's shoulders.
+1. The dots are people standing on a plank; only equal values stand on each other's shoulders (a stack's height is
+   its count); neighbors overlap side by side.
 2. The mean is a balance: the plank rests on a wedge that slides to the mean; the plank tips by the imbalance and
    settles (as if the plank weighed nothing).
 3. The median is a flag on a pole.
@@ -128,23 +129,34 @@ the picker, the stepper, the switch, Start over, Show me how.
 5. The boxplot is drawn as a crate, ropes, stakes; the fences as posts with signs standing on the plank (not
    through the boxplot); outliers ringed on the plank and as dots on the boxplot.
 6. Drag any person; the kit's knob rides above whoever was touched last; tap to pick (z-score or fences in the cause
-   line).
+   line). A drag is read on the level scale.
 7. The mean ± 1 SD band is a quiet switch under the cause line (tab 1 only); the fences are always on in tab 2 and
    off in tab 1.
-8. Add, Remove and Reset became a stepper and Start over; a new person lands inside the middle half (spread by the
+8. The mean is not drawn on the boxplot tab (orange means outlier there).
+9. Add, Remove and Reset became a stepper and Start over; a new person lands inside the middle half (spread by the
    golden ratio so they do not pile on one value).
-9. The shape words and every summary table moved to "?".
-10. Takeaways once each per data set, only when the drawn change shows them.
-11. On phones the stepper reads "n = 20" and the histogram's knob says "bins of 5 min".
+10. The shape words and every summary table moved to "?".
+11. After a drag the cause line names the mean and median before and after; the old SD and IQR before and after
+    moved (the IQR shows as the crate in tab 2; both are in "?").
+12. Takeaways once each per data set, only when the drawn change shows them.
+13. On phones the stepper reads "n = 20", the histogram's knob says "bins of 5 min" and the picker shows short names;
+    the boxplot and histogram bands are small fixed sizes so the people get the room.
+14. Delete or Backspace on the knob (or a picked person) removes that person, as the old dot keys did.
+15. People are sized to the room (at least 15 px wide, at most about 1.8 data steps wide), resized smoothly, never
+    during a drag.
+16. The flag, crate, slat, ropes and posts slide smoothly (at most about 1.2 px a millisecond); a mark's number fades
+    out while it slides and its cause line pill reads "…" until it lands.
 
 ## Accuracy
 - Every summary is `ApStatMath.dataExplorer.stats` over the drawn values (`ApStatDist.summary` underneath: AP quartile
   rule, sample SD with n − 1, 1.5 × IQR fences, whiskers to the last values inside). Hand checks of the three data
   sets: commute times (n 20) mean 17.75, median 15, Q1 11, Q3 21, IQR 10, fences −4 and 36, one high outlier 48
   (skewed right); quiz scores (n 18) median 42, Q1 38, Q3 45, fences 27.5 and 55.5, one low outlier 22 (skewed
-  left); pulse rates (n 22) median 70, Q1 67, Q3 74, fences 56.5 and 84.5, no outliers (roughly symmetric).
+  left); pulse rates (n 22) median 70, Q1 66, Q3 74, IQR 8, fences 54 and 86, no outliers (roughly symmetric).
 - The balance: Σ(xᵢ − x̄) = 0, so a weightless plank with equal people balances exactly at the mean; the tilt shown
-  while the wedge catches up is proportional to n(x̄ − tip), the turning effect about the tip. Said in "?".
+  while the wedge catches up is 420 × (x̄ − tip) ÷ the scale's range degrees (at most 6), so it has the sign of the
+  turning effect about the tip and is zero only with the tip under the mean; its size is a picture, not a physics
+  model. The balance is said in "?".
 - Histogram bins hold their left edge (`X.bins`), as before.
 - Open points: `docs/apstat-needs-author.md` "Data explorer v2".
 
@@ -191,11 +203,8 @@ the picker, the stepper, the switch, Start over, Show me how.
 - No real phone, no screen reader pass, no real students; the independent review is still to come.
 - On phones the people are small (about 15 px wide) and the commute data's stacks leave sky above them.
 - The mean is not drawn on the boxplot tab (one color per idea there: orange is the outlier).
-- The pointer's value under a tipped plank is read along the plank, so a drag released while the plank is still
-  tipping can land one unit from where the finger was over the flat scale.
 - People stacked on shoulders is a pictograph convention, not a realistic scene.
-- While a mark slides (a key press, Start over), the crate, slat, flag and posts step along the grid of numbers they
-  can take (0.5 for a quartile or median, 0.25 for a fence), so the label always names where the mark is drawn; at
-  1440 a long slide shows those steps.
-- The phone picture leaves sky above the commute stacks; the people are sized to fill about 80% of the room only up
-  to 22 px wide on a phone.
+- While a mark slides its number is hidden (faded, "…" in the cause line) for up to about half a second.
+- People at nearby values overlap side by side; on phones a crowd at 10 to 20 minutes reads as a row of overlapping
+  figures.
+- On a 375 x 667 phone the boxplot tab's histogram bars are short (about 25 px).

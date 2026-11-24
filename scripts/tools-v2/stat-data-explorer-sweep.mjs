@@ -110,17 +110,33 @@ const AGREE = () => {
   ppl.forEach(g => { if (g.style.opacity !== '') return; const m = /translate\(([-\d.]+) ([-\d.]+)\)/.exec(g.getAttribute('transform') || ''); if (!m) return; const v = snap(vx(+m[1])); vals.push(v); byEl.set(g, v); });
   if (vals.length < 2) return ['fewer than two people drawn'];
   const S = MX.stats(vals);
-  const cz = [...document.querySelectorAll('.dx2 .tk2-cause .tk2-cz')].map(e => e.textContent);
+  const cz = [...document.querySelectorAll('.dx2 .tk2-cause .tk2-cz')].map(e => e.textContent).filter(t => t.indexOf('…') < 0);
+  const still = (e) => !e.classList.contains('is-moving');
   const near = (a, b, tol, what) => { if (!(Math.abs(a - b) <= tol)) out.push(`${what}: ${(+a).toFixed(3)} vs ${(+b).toFixed(3)}`); };
   const pxTol = upp * 0.8 + 1e-6;
   const nLab = document.querySelector('.dx2-n').textContent, nn = nums(nLab);
   if (!busy && nn[0] !== vals.length) out.push(`count "${nLab}" vs ${vals.length} people`);
+  // a stack's height is the count at that value: the levels at each value are 0, 1, ..., count − 1
+  if (!busy) {
+    const lh = X.levelH(), byV = {};
+    byEl.forEach((v, g) => { const m = /translate\(([-\d.]+) ([-\d.]+)\)/.exec(g.getAttribute('transform')); (byV[v] = byV[v] || []).push(Math.round((G.PY - +m[2]) / lh)); });
+    Object.keys(byV).forEach(v => { const L = byV[v].sort((a, b) => a - b); if (L.some((l, i) => l !== i)) out.push(`value ${v}: ${L.length} people stand at levels ${L.join(',')}`); });
+  }
+  // no mark jumps: between two frames the flag, the crate's edges, the slat and the posts move at most 26 px
+  if (window.__fr) {
+    const key = tab + ':' + X.S.set.id + ':' + G.W + ':' + (window.__jumpReset || 0), xs = {};
+    const ax = (sel, a) => { const e = document.querySelector(sel); if (e && e.style.display !== 'none' && e.getBoundingClientRect().width) xs[sel + a] = +e.getAttribute(a); };
+    ax('.dx2-pole', 'x1'); ax('.dx2-crate', 'x'); ax('.dx2-mslat', 'x1'); document.querySelectorAll('.dx2-post').forEach((e, k) => { if (e.style.display !== 'none') xs['post' + k] = +e.getAttribute('x'); });
+    const c = document.querySelector('.dx2-crate'); if (c && c.getBoundingClientRect().width) xs.crateR = +c.getAttribute('x') + +c.getAttribute('width');
+    const pv = window.__marks; if (pv && pv.key === key) Object.keys(xs).forEach(k => { if (k in pv.xs && Math.abs(xs[k] - pv.xs[k]) > 26) out.push(`${k} jumped ${Math.abs(xs[k] - pv.xs[k]).toFixed(1)} px in one frame`); });
+    window.__marks = { key, xs };
+  }
   if (tab === 'mean') {
     const tri = document.querySelector('.dx2-tri'), tm = /^M([-\d.]+) /.exec(tri.getAttribute('d'));
     const vMean = vx(+tm[1] + 7); near(vMean, S.mean, pxTol, 'mean mark vs the people');
     const mt = document.querySelector('.dx2-mpill text').textContent; near(nums(mt)[0], S.mean, 0.051, `"${mt}" vs the people's mean`);
     const pole = document.querySelector('.dx2-pole'), vMed = vx(+pole.getAttribute('x1'));
-    const ct = document.querySelector('.dx2-clotht').textContent; near(nums(ct)[0], vMed, pxTol + 0.006, `flag "${ct}" vs its pole`);
+    const cte = document.querySelector('.dx2-clotht'), ct = cte.textContent; if (still(cte)) near(nums(ct)[0], vMed, pxTol + 0.006, `flag "${ct}" vs its pole`);
     if (!busy) near(nums(ct)[0], S.med, 0.006, `flag "${ct}" at rest vs the median`);
     // the tilt and the wedge
     const tr = document.querySelector('.dx2-tilt').getAttribute('transform') || '', rm = /rotate\(([-\d.]+) ([-\d.]+)/.exec(tr), th = rm ? +rm[1] : 0;
@@ -141,7 +157,7 @@ const AGREE = () => {
       if (/students|adults|people/.test(c0) && !/→/.test(c0)) { if (nums(c0)[0] !== vals.length) out.push(`cause "${c0}" vs ${vals.length} people`); }
       cz.forEach(t => {
         if (/^mean /.test(t)) { const n = nums(t); near(n[n.length - 1], S.mean, 0.051, `cause "${t}"`); }
-        if (/^median /.test(t)) { const n = nums(t); near(n[n.length - 1], nums(ct)[0], 0.006, `cause "${t}" vs the flag`); }
+        if (/^median /.test(t) && still(cte)) { const n = nums(t); near(n[n.length - 1], nums(ct)[0], 0.006, `cause "${t}" vs the flag`); }
         if (/^SD /.test(t)) near(nums(t)[0], S.sd, 0.051, `cause "${t}"`);
         if (/^z = /.test(t)) { const v = nums(c0)[0]; near(nums(t)[0], (v - S.mean) / S.sd, 0.006, `cause "${t}" for ${v}`); }
       });
@@ -151,12 +167,14 @@ const AGREE = () => {
     const vNum = (sel) => { const e = document.querySelector(sel); return e ? nums(e.textContent)[0] : NaN; };
     const crate = document.querySelector('.dx2-crate'), cq1 = vx(+crate.getAttribute('x')), cq3 = vx(+crate.getAttribute('x') + +crate.getAttribute('width'));
     const q1L = [...document.querySelectorAll('.dx2-qlab')].find(e => /^Q1/.test(e.textContent)), q3L = [...document.querySelectorAll('.dx2-qlab')].find(e => /^Q3/.test(e.textContent));
-    const q1 = nums(q1L.textContent)[1], q3 = nums(q3L.textContent)[1];
+    const q1 = still(q1L) ? nums(q1L.textContent)[1] : cq1, q3 = still(q3L) ? nums(q3L.textContent)[1] : cq3;
     near(q1, cq1, pxTol + 0.006, 'Q1 label vs the crate'); near(q3, cq3, pxTol * 1.5 + 0.006, 'Q3 label vs the crate');
-    const ml = vNum('.dx2-qlab.is-med'), ms = vx(+document.querySelector('.dx2-mslat').getAttribute('x1')); near(ml, ms, pxTol + 0.006, 'median label vs its slat');
+    const mle = document.querySelector('.dx2-qlab.is-med'), ms = vx(+document.querySelector('.dx2-mslat').getAttribute('x1')), ml = still(mle) ? vNum('.dx2-qlab.is-med') : ms; near(ml, ms, pxTol + 0.006, 'median label vs its slat');
     if (!busy) { near(q1, S.q1, 0.006, 'Q1 at rest'); near(q3, S.q3, 0.006, 'Q3 at rest'); near(ml, S.med, 0.006, 'median at rest'); }
     // posts and signs
-    const fen = [0, 1].map(k => { const sg = document.querySelectorAll('.dx2-sign')[k], t = sg.querySelector('text').textContent, f = nums(t)[0]; const post = document.querySelectorAll('.dx2-post')[k];
+    const fen = [0, 1].map(k => { const sg = document.querySelectorAll('.dx2-sign')[k], post = document.querySelectorAll('.dx2-post')[k];
+      if (!still(sg)) return post && post.style.display !== 'none' ? vx(+post.getAttribute('x') + 2.5) : (k ? X.Dr.f1 : X.Dr.f0);
+      const t = sg.querySelector('text').textContent, f = nums(t)[0];
       if (post && post.style.display !== 'none') near(vx(+post.getAttribute('x') + 2.5), f, pxTol + 0.006, `post vs its sign "${t}"`);
       else if (f >= lo && f <= hi) out.push(`sign "${t}" on the scale but no post`);
       return f; });
@@ -231,7 +249,10 @@ const LAYOUT = (phone) => {
   }));
   // the plank and its people are the largest part of the picture
   const area = s => { const e = document.querySelector(s); if (!e || !vis(e)) return 0; const r = e.getBoundingClientRect(); return r.width * r.height; };
-  const main = area('.dx2-tilt'); if (!(main > area('.dx2-boxp') && main > area('.dx2-hist'))) out.push('the plank and the people are not the largest part');
+  // the people (not their plank) are the largest drawing: against the boxplot and the histogram's bars
+  const union = (sel) => { let r = null; document.querySelectorAll(sel).forEach(e => { if (!vis(e)) return; const q = e.getBoundingClientRect(); r = r ? { l: Math.min(r.l, q.left), t: Math.min(r.t, q.top), r: Math.max(r.r, q.right), b: Math.max(r.b, q.bottom) } : { l: q.left, t: q.top, r: q.right, b: q.bottom }; }); return r ? (r.r - r.l) * (r.b - r.t) : 0; };
+  const main = area('.dx2-people'), bx = area('.dx2-boxp'), hb = union('.dx2-bar');
+  if (!(main > bx && main > hb)) out.push(`the people (${main | 0}) are not the largest part (boxplot ${bx | 0}, histogram bars ${hb | 0})`);
   const cz = document.querySelector('.dx2 .tk2-cause');
   if (phone && cz) { const h = cz.getBoundingClientRect().height; if (h > 74) out.push('cause line taller than two rows: ' + h); window.__czH = window.__czH || h; if (Math.abs(window.__czH - h) > 1) out.push(`cause line height changed ${window.__czH} -> ${h}`); }
   // "?" is filled and follows the people
@@ -267,6 +288,7 @@ if (ONE) {
       await still(page); await page.waitForTimeout(40);
       const lay = await X(LAYOUT, w < 600); lay.forEach(f => ok(false, `${tag} ${n}: ${f}`)); ok(!lay.length, '');
       const ag = await X(AGREE); ag.forEach(f => ok(false, `${tag} ${n}: ${f}`)); ok(!ag.length, '');
+      if (!/forty/.test(n)) { const pw = await X(() => { const b = [...document.querySelectorAll('.dx2-people .dx2-p .dx2-body')].map(e => e.getBoundingClientRect().width).sort((a, c) => a - c); return b[b.length >> 1] / 0.88; }); ok(pw >= 14.5, `${tag} ${n}: people drawn ${pw.toFixed(1)} px wide (under 15)`); }
       await shot(n);
     };
     const th = await X(() => document.documentElement.getAttribute('data-theme') === 'dark');
@@ -366,7 +388,8 @@ if (FRAMES) {
       await page.click('.dx2-reset'); await page.waitForTimeout(90);
       await X(() => window.ApStatDataExplorer.kmode('quiz')); await page.waitForTimeout(300);
       ok(await X(() => !window.ApStatDataExplorer.busy()), `${tag} leaving mid change left an animation running`);
-      await X(() => window.ApStatDataExplorer.kmode('explore')); await page.waitForTimeout(300);
+      // the change finished while hidden: the marks are simply there when Explore comes back (no jump check across it)
+      await X(() => { window.__jumpReset = (window.__jumpReset || 0) + 1; window.ApStatDataExplorer.kmode('explore'); }); await page.waitForTimeout(300);
       const r = await X(() => ({ n: window.ApStatDataExplorer.stats().n, busy: window.ApStatDataExplorer.busy() }));
       ok(r.n === 20 && !r.busy, `${tag} back in Explore: ${JSON.stringify(r)}`);
     });
