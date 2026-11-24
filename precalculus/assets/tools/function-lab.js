@@ -478,7 +478,8 @@
       if(Math.abs(q.a + 1) < 1e-9) r.push(['−', 'size']); else if(Math.abs(q.a - 1) > 1e-9) r.push([num(q.a), 'size'], ['·']);
       r.push(['f(']);
       var inner = [], hh = Math.abs(q.h) > 1e-9;
-      if(Math.abs(q.b - 1) > 1e-9){ inner.push([Math.abs(q.b + 1) < 1e-9 ? '−' : bText(q.b), 'size']); inner.push([hh ? '(' : '']); }
+      // a fraction for b goes in brackets, so (1/4)x never reads as 1/(4x)
+      if(Math.abs(q.b - 1) > 1e-9){ var bt = Math.abs(q.b + 1) < 1e-9 ? '−' : bText(q.b); if(bt.indexOf('/') > -1) bt = bt.charAt(0) === '−' ? '−(' + bt.slice(1) + ')' : '(' + bt + ')'; inner.push([bt, 'size']); inner.push([hh ? '(' : '']); }
       inner.push(['x']);
       if(hh) inner.push([q.h > 0 ? ' − ' : ' + '], [num(Math.abs(q.h)), 'move']);
       if(Math.abs(q.b - 1) > 1e-9 && hh) inner.push([')']);
@@ -644,6 +645,7 @@
           aw.lastChild.setAttribute('d', 'M' + r1(ex + ux * 2) + ' ' + r1(ey + uy * 2) + 'l' + r1(-ux * 7 - uy * 4) + ' ' + r1(-uy * 7 + ux * 4) + 'l' + r1(uy * 8) + ' ' + r1(-ux * 8) + 'z');
         } else aw.style.display = 'none';
       });
+      words();   // before the pins are placed, so their screen reader text reads this frame's cause line
       // the pins' shadows on the board
       [hkP, abP].forEach(function(p, i){ var e = E.pinS[i]; if(!p){ e.style.display = 'none'; return; } e.style.display = ''; e.setAttribute('cx', r1(p[0] + 5)); e.setAttribute('cy', r1(p[1] + 7)); });
       hk.place(); ab.place();
@@ -678,7 +680,6 @@
         if(bb) avoid.push(bb);
         g.style.opacity = MORPH ? mw : '';
       });
-      words();
       svg.setAttribute('aria-label', 'A pegboard: the graph of ' + gLabel().map(function(r){ return r[0]; }).join('') + ' as a steel wire, with the parent ' + PARENT_LAB[fam] + ' as a gray wire behind it' + (as.length ? ' and its asymptote' + (as.length > 1 ? 's' : '') : '') + '.');
       if(cueOn()) cue.place();
     }
