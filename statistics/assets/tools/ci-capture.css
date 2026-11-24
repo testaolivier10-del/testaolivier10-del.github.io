@@ -48,3 +48,122 @@
 .ci-pops{border:0;padding:0;margin:0 0 8px;display:grid;gap:6px;}
 .ci-pops legend{font:800 14px var(--font-ui);margin-bottom:4px;}
 .ci-pops .bt-radio,.ci-zopt{display:flex;gap:10px;align-items:center;min-height:44px;font-weight:700;}
+
+/* ---------------------------------------------------------------- tools v2 Explore (docs/tools-v2-stat-ci-capture-brief.md)
+   One colour per idea everywhere (picture, cause line, "?"): the population and its true value blue, the sample and its
+   statistic orange, an interval that captures green, one that misses vermillion (thicker and crossed), the level the
+   course ink. */
+.ci3,.ci3-ref{--ci-pop:#0072B2;--ci-pop-ink:#005A8C;--ci-samp:#E69F00;--ci-samp-ink:#8A5A00;--ci-samp-edge:#9C6A00;
+  --ci-hit:#009E73;--ci-hit-ink:#00704F;--ci-miss:#D55E00;--ci-miss-ink:#A84A00;--ci-grow:#7D8A88;
+  --ci-sky0:#CFE6F5;--ci-sky1:#EAF4FA;--ci-gr0:#9CCB6E;--ci-gr1:#7DB257;--ci-bld:#E7D9C4;--ci-roof:#B5644A;--ci-win:#8DB7D6;--ci-door:#8A5A3C;
+  --ci-tree:#6F5236;--ci-leaf:#6FAE4E;--ci-floor:#F3E9D2;--ci-ftick:#8C7A55;--ci-panel:#FFFFFF;--ci-panel-edge:#D8E0DE;
+  --ci-bd0:#FBFAF6;--ci-bd1:#F2EFE6;--ci-rule:#E6E1D3;--ci-peg0:#00507F;--ci-peg1:#3E9AD6;--ci-pegsh:rgba(0,0,0,.14);
+  --ci-shirt:#A9B1B5;--ci-legs:#4B5257;--ci-ink:#1F2328;--ci-sub:#55606A;--ci-pill:#FFFFFF;--ci-halo:rgba(255,255,255,.9);
+  --sk0:#F2D3B3;--sk1:#E0B48C;--sk2:#C48A5E;--sk3:#8D5A3B;--sk4:#5E3A24;--hr0:#3B2A1E;--hr1:#7A4A26;--hr2:#C9A15E;--hr3:#1E1A18;}
+:root[data-theme="dark"] .ci3,:root[data-theme="dark"] .ci3-ref{--ci-pop:#6CB8EC;--ci-pop-ink:#8FCBF2;--ci-samp:#F3C04F;--ci-samp-ink:#F6CF75;--ci-samp-edge:#C9962A;
+  --ci-hit:#4FD1AA;--ci-hit-ink:#7BE0C1;--ci-miss:#FF9A5C;--ci-miss-ink:#FFB385;--ci-grow:#8E9A98;
+  --ci-sky0:#1E3346;--ci-sky1:#2A4256;--ci-gr0:#3E6B34;--ci-gr1:#2F5428;--ci-bld:#5C5246;--ci-roof:#8A4A36;--ci-win:#E9D27A;--ci-door:#3B2A1E;
+  --ci-tree:#4A3A28;--ci-leaf:#3F7A33;--ci-floor:#4A4234;--ci-ftick:#C9B98F;--ci-panel:#1B1F23;--ci-panel-edge:#343B42;
+  --ci-bd0:#202428;--ci-bd1:#1A1E22;--ci-rule:#2C3238;--ci-peg0:#2F7FB8;--ci-peg1:#8CC8F0;--ci-pegsh:rgba(0,0,0,.4);
+  --ci-shirt:#7E878C;--ci-legs:#C9CED1;--ci-ink:#F1EDE6;--ci-sub:#B8C0C7;--ci-pill:#1B1D20;--ci-halo:rgba(20,22,25,.85);}
+.ci3{display:flex;flex-direction:column;gap:10px;min-height:0;flex:1 1 auto;}
+.ci3[hidden]{display:none;}
+.ci3 [hidden]{display:none !important;}
+.ci3-pick{display:inline-flex;align-items:center;gap:8px;font:800 13px var(--font-ui);color:var(--muted);}
+.ci3-sel{min-height:40px;max-width:240px;padding:0 30px 0 12px;border-radius:999px;border:1.5px solid var(--line);background:var(--white);color:var(--ink);font:800 14px var(--font-ui);}
+.ci3-sel:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.ci3-scene{position:relative;flex:1 1 auto;min-height:360px;border-radius:18px;overflow:hidden;background:var(--ci-bd1);}
+.ci3-scene.is-fade{animation:ci3fade .26s ease-out;}
+@keyframes ci3fade{from{opacity:.35;}to{opacity:1;}}
+.ci3-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+@media (max-width:999.98px){ .ci3-scene{flex:none;height:600px;} }
+@media (max-width:640px){ .ci3-scene{border-radius:14px;} .ci3{gap:8px;} .ci3-pick-k{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);} .ci3-sel{max-width:190px;font-size:13.5px;} }
+.ci3-lines{display:flex;align-items:center;justify-content:space-between;gap:6px 18px;flex-wrap:wrap;flex:none;}
+.ci3-acts{position:relative;display:flex;align-items:center;gap:6px 12px;flex:none;margin-left:auto;}
+.ci3-acts .tk2-cue{white-space:nowrap;}
+@media (max-width:1100px){ .ci3-lines .tk2-cause{flex-basis:100%;} .ci3-acts{margin-left:0;width:100%;} }
+@media (min-width:641px){ .ci3-lines .tk2-cause{min-height:62px;} }
+.ci3-rowpick{position:absolute;pointer-events:auto;cursor:pointer;border-radius:8px;}
+.ci3-rowpick:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+/* the cause line in the colours of the picture */
+.ci3 .tk2-cz.is-pop{--cz:var(--ci-pop);--cz-ink:var(--ci-pop-ink);}
+.ci3 .tk2-cz.is-samp{--cz:var(--ci-samp);--cz-ink:var(--ci-samp-ink);}
+.ci3 .tk2-cz.is-hit{--cz:var(--ci-hit);--cz-ink:var(--ci-hit-ink);}
+.ci3 .tk2-cz.is-miss{--cz:var(--ci-miss);--cz-ink:var(--ci-miss-ink);}
+.ci3 .tk2-cz.is-lev{--cz:var(--cink);--cz-ink:var(--cink);}
+.ci3 .ci3-kn .tk2-tag{background:var(--ci-pill);color:var(--ci-samp-ink);box-shadow:inset 0 0 0 2px var(--ci-samp);}
+/* the scene */
+.ci3s-sky0{stop-color:var(--ci-sky0);} .ci3s-sky1{stop-color:var(--ci-sky1);} .ci3s-gr0{stop-color:var(--ci-gr0);} .ci3s-gr1{stop-color:var(--ci-gr1);}
+.ci3s-bd0{stop-color:var(--ci-bd0);} .ci3s-bd1{stop-color:var(--ci-bd1);} .ci3s-peg0{stop-color:var(--ci-peg0);} .ci3s-peg1{stop-color:var(--ci-peg1);}
+.ci3-panel{fill:var(--ci-panel);stroke:var(--ci-panel-edge);stroke-width:1.2;}
+.ci3-board{stroke:var(--ci-panel-edge);stroke-width:1.2;}
+.ci3-bld{fill:var(--ci-bld);} .ci3-roof{fill:var(--ci-roof);} .ci3-win{fill:var(--ci-win);} .ci3-door{fill:var(--ci-door);}
+.ci3-tree{stroke:var(--ci-tree);stroke-width:3;stroke-linecap:round;} .ci3-leaf{fill:var(--ci-leaf);opacity:.9;}
+.ci3-floor{fill:var(--ci-floor);stroke:var(--ci-ftick);stroke-width:1;} .ci3-ftick{stroke:var(--ci-ftick);stroke-width:1.2;}
+.ci3-rule{stroke:var(--ci-rule);stroke-width:1;}
+.ci3-axis{stroke:var(--ci-ink);stroke-width:1.6;} .ci3-tick{stroke:var(--ci-ink);stroke-width:1.2;}
+.ci3-tk{fill:var(--ci-sub);font-weight:700;font-size:11.5px;font-variant-numeric:tabular-nums;}
+.ci3-axn{fill:var(--ci-sub);font-weight:800;font-size:11.5px;}
+.ci3-peg{stroke:none;} .ci3-pegsh{fill:var(--ci-pegsh);} .ci3-pegcap{fill:var(--ci-pop);stroke:var(--ci-panel);stroke-width:1.5;}
+/* people: a shirt, legs, a head and hair; the ones who say yes wear blue; scooped into a sample, an orange outline */
+.ci3-p{color:var(--ci-shirt);}
+.ci3-p.is-yes{color:var(--ci-pop);}
+.ci3-shirt{fill:currentColor;} .ci3-legs{stroke:var(--ci-legs);stroke-width:1.9;stroke-linecap:round;fill:none;}
+.ci3-head{fill:var(--sk);} .ci3-hair{fill:var(--hr);}
+.ci3-p.sk0{--sk:var(--sk0);} .ci3-p.sk1{--sk:var(--sk1);} .ci3-p.sk2{--sk:var(--sk2);} .ci3-p.sk3{--sk:var(--sk3);} .ci3-p.sk4{--sk:var(--sk4);}
+.ci3-p.hr0{--hr:var(--hr0);} .ci3-p.hr1{--hr:var(--hr1);} .ci3-p.hr2{--hr:var(--hr2);} .ci3-p.hr3{--hr:var(--hr3);}
+.ci3-p.is-scoop .ci3-shirt{stroke:var(--ci-samp);stroke-width:2.4;}
+.ci3-scoop{fill:color-mix(in srgb, var(--ci-samp) 14%, transparent);stroke:var(--ci-samp);stroke-width:2.5;}
+.ci3-mu{fill:var(--ci-pop);} .ci3-mut{fill:var(--ci-pop-ink);font-weight:900;font-size:13px;}
+.ci3-ptitle{fill:var(--ci-ink);font-weight:900;font-size:13.5px;paint-order:stroke;stroke:var(--ci-halo);stroke-width:4px;stroke-linejoin:round;}
+.ci3-pv{fill:var(--ci-pop-ink);}
+.ci3-nk{fill:var(--ci-ink);font-weight:800;font-size:12px;paint-order:stroke;stroke:var(--ci-halo);stroke-width:4px;stroke-linejoin:round;}
+/* the bundles in flight and the rings */
+.ci3-bh{fill:color-mix(in srgb, var(--ci-samp) 30%, transparent);stroke:var(--ci-samp);stroke-width:2;}
+.ci3-bd{fill:var(--ci-samp);}
+.ci3-ring{fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ci3-row.is-hit .ci3-ring{stroke:var(--ci-hit);}
+.ci3-row.is-miss .ci3-ring{stroke:var(--ci-miss);}
+.ci3-row.is-grow .ci3-ring{stroke:var(--ci-grow);}
+.ci3-x{fill:none;stroke:var(--ci-miss-ink);stroke-width:2;stroke-linecap:round;}
+.ci3-dot{fill:var(--ci-samp);stroke:var(--ci-samp-edge);stroke-width:.8;}
+.ci3-row.is-flip .ci3-ring{animation:ci3flip .42s ease-out;}
+@keyframes ci3flip{0%{stroke-width:7px;}100%{}}
+.ci3-row.is-sel .ci3-ring{stroke-width:5px !important;}
+.ci3-selband{fill:var(--ctint);stroke:var(--cink);stroke-width:1;}
+.ci3-cnt{font-weight:900;font-size:14px;} .ci3-cnt.is-hit{fill:var(--ci-hit-ink);} .ci3-cnt.is-miss{fill:var(--ci-miss-ink);} .ci3-cnt.is-none{fill:var(--ci-sub);}
+.ci3-tl{fill:var(--ci-sub);font-weight:800;font-size:11.5px;}
+.ci3-pill rect{fill:var(--ci-pill);stroke-width:2;} .ci3-pill text{font-weight:900;}
+.ci3-pill.is-pop rect{stroke:var(--ci-pop);} .ci3-pill.is-pop text{fill:var(--ci-pop-ink);}
+.ci3-pill.is-hit rect{stroke:var(--ci-hit);} .ci3-pill.is-hit text{fill:var(--ci-hit-ink);}
+/* the rate plot */
+.ci3-rtitle{fill:var(--ci-ink);font-weight:900;font-size:13px;}
+.ci3-rall{fill:var(--ci-sub);font-weight:800;font-size:12px;}
+.ci3-rgrid{stroke:var(--ci-rule);stroke-width:1;} .ci3-raxis{stroke:var(--ci-ink);stroke-width:1.4;}
+.ci3-diag{stroke:var(--cink);stroke-width:2;opacity:.55;}
+.ci3-diagt{fill:var(--cink);font-weight:800;font-size:11.5px;}
+.ci3-rdot{fill:var(--ci-hit);stroke:var(--ci-panel);stroke-width:2;}
+.ci3-rold{fill:var(--ci-panel);stroke:var(--ci-hit);stroke-width:2;}
+/* "?" */
+.ci3-ref h3{font:900 15px var(--font-ui);margin:16px 0 6px;}
+.ci3-ref .ci3-small{font-size:13px;color:var(--muted);}
+.ci3-ref .ci3-pv{color:var(--ci-pop-ink);}
+.ci3-zopt,.ci3-set label{display:flex;gap:10px;align-items:center;min-height:44px;font-weight:700;}
+.ci3-prange{width:100%;min-height:44px;}
+@media (prefers-reduced-motion: reduce){ .ci3-row.is-flip .ci3-ring{animation:none;} .ci3-scene.is-fade{animation:ci3fade .26s ease-out;} }
+.ci3-lv{fill:var(--cink);font-weight:900;font-size:15px;} .ci3-lvk{fill:var(--ci-sub);font-weight:800;font-size:13px;}
+@media (max-width:640px){ .ci3-lv{font-size:14px;} .ci3-cnt{font-size:13px;} }
+.ci3-nv{fill:var(--ci-samp-ink);font-weight:900;}
+.ci3-kn .tk2-dot{box-shadow:0 0 0 2.5px var(--ci-samp),0 1px 3px rgba(11,26,51,.25);}
+.ci3-nrail{stroke:color-mix(in srgb, var(--ci-samp) 70%, var(--ci-ink));stroke-width:3;stroke-linecap:round;opacity:.75;}
+.ci3-nnotch{stroke:color-mix(in srgb, var(--ci-samp) 70%, var(--ci-ink));stroke-width:1.6;opacity:.75;}
+.ci3-rv{fill:var(--ci-hit-ink);font-weight:900;font-size:13px;}
+/* the wide landing: Build on the empty board (review round 1, S9) */
+.ci3-boardgo{position:absolute;transform:translate(-50%,-50%);pointer-events:auto;z-index:3;}
+.ci3-boardgo .ci3-build{min-height:52px;padding:0 26px;font-size:17px;}
+.ci3-build.is-arrive{animation:ci3arrive .3s ease-out;}
+@keyframes ci3arrive{from{opacity:0;transform:scale(.92);}to{opacity:1;transform:none;}}
+@media (prefers-reduced-motion: reduce){ .ci3-build.is-arrive{animation:ci3fade .26s ease-out;} }
+/* the row under the cause line keeps Build's height while Build sits on the board, so the picture does not shrink
+   when it comes back (recheck 1) */
+.ci3-acts{min-height:44px;}

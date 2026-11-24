@@ -333,6 +333,13 @@ All grading is code; nothing is graded by an AI model. Formats in `docs/apstat-a
     Landing states: interval capture shows 20 intervals, sampling distributions 100 sample means. Phones: no stage text under
     11 px in the ten trainers. Independent accuracy review of the new hints and pictures: 9 findings, all applied.
 
+19. (2026-11-24, `docs/tools-v2-stat-ci-capture-brief.md`) **Tools v2: Interval capture is the first AP® Statistics tool on
+    the shared kit.** The course adapter is `ApStatTools.studioKit2` in `stat-tools.js` (the same pattern as
+    `ApCalcTools.studioKit2`); a tool opts in with `"kit2": true` in `statistics/data/pages.json`, and
+    `build-apstat.mjs` then writes the kit's two files into its page. Explore draws the population (a crowd), each
+    sample flying down into its interval, and a rate plot against the level; Test yourself (the drill and its record
+    ids) is unchanged. The other nine trainers are untouched.
+
 ## 9. Open items for the owner
 
 Before Phase 1 (built as proposed in Phase 0, each easy to change; decision 11):
