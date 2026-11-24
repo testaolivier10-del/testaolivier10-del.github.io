@@ -155,3 +155,6 @@
 @media (max-width:640px){ .ci3-lv{font-size:14px;} .ci3-cnt{font-size:13px;} }
 .ci3-nv{fill:var(--ci-samp-ink);font-weight:900;}
 .ci3-kn .tk2-dot{box-shadow:0 0 0 2.5px var(--ci-samp),0 1px 3px rgba(11,26,51,.25);}
+.ci3-nrail{stroke:color-mix(in srgb, var(--ci-samp) 70%, var(--ci-ink));stroke-width:3;stroke-linecap:round;opacity:.75;}
+.ci3-nnotch{stroke:color-mix(in srgb, var(--ci-samp) 70%, var(--ci-ink));stroke-width:1.6;opacity:.75;}
+.ci3-rv{fill:var(--ci-hit-ink);font-weight:900;font-size:13px;}

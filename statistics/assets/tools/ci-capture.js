@@ -164,15 +164,16 @@
         g.rate = { x: pad + pw + gap, y: pad, w: W - pad - (pad + pw + gap), h: th };
         g.st = { x: pad, y: pad + th + gap, w: W - 2 * pad, h: H - (pad + th + gap) - pad };
       } else {
-        var ph = clamp(H * 0.25, 128, 156), rh = clamp(H * 0.15, 84, 108);
-        g.pop = { x: pad, y: pad, w: W - 2 * pad, h: ph };
-        g.rate = { x: pad, y: H - pad - rh, w: W - 2 * pad, h: rh };
-        g.st = { x: pad, y: pad + ph + gap, w: W - 2 * pad, h: H - pad - rh - gap - (pad + ph + gap) };
+        // phones: the crowd and the rate plot side by side on top, the rings below
+        var ph = clamp(H * 0.29, 150, 184), pw2 = Math.round((W - 2 * pad - gap) * 0.6);
+        g.pop = { x: pad, y: pad, w: pw2, h: ph };
+        g.rate = { x: pad + pw2 + gap, y: pad, w: W - pad - (pad + pw2 + gap), h: ph };
+        g.st = { x: pad, y: pad + ph + gap, w: W - 2 * pad, h: H - (pad + ph + gap) - pad };
       }
       // the stack: a header (counts, the level knob), the rows, the axis
       var s = g.st;
       // the header is one band: the counts at the left, the level's value and its knob at the right
-      s.head = g.phone ? 52 : 60; s.axisH = g.phone ? 38 : 40;
+      s.head = g.phone ? 56 : 62; s.axisH = 46;
       s.l = s.x + (g.phone ? 12 : 22); s.r = s.x + s.w - (g.phone ? 12 : 22);
       s.top = s.y + s.head; s.bot = s.y + s.h - s.axisH;
       s.rowH = (s.bot - s.top) / 100;
@@ -186,11 +187,12 @@
       p.title = p.y + 20; p.cTop = p.y + (kind() === 'mean' ? 40 : 32); p.knobY = p.y + p.h - 22; p.cBot = p.knobY - (kind() === 'mean' ? 44 : 26);
       // the ground line: a proportion's crowd stands below the building, a mean's on its floor scale
       p.gy = kind() === 'prop' ? p.cTop + (g.phone ? 14 : clamp((p.cBot - p.cTop) * 0.22, 22, 52)) : p.cTop + (p.cBot - p.cTop) * 0.3;
-      p.nW = tw('Sample size n = 1000', 12.5, 800);
-      p.track = [Math.max(p.x + 12 + p.nW + 28, p.x + p.w * 0.45), p.knobY, p.x + p.w - (g.phone ? 26 : 32), p.knobY];
+      p.nW = tw(g.phone ? 'n = 1000' : 'Sample size n = 1000', 12.5, 800);
+      p.track = [Math.max(p.x + 12 + p.nW + 26, p.x + p.w * 0.45), p.knobY, p.x + p.w - (g.phone ? 20 : 32), p.knobY];
       // the rate plot
       var q = g.rate;
-      q.l = q.x + 40; q.r = q.x + q.w - 14; q.t = q.y + 30; q.b = q.y + q.h - 24;
+      q.two = g.phone || tw('Captured, at each level', 13, 900) + tw('100.0% of 20,000', 13, 900) + 34 > q.w;
+      q.l = q.x + (g.phone ? 36 : 40); q.r = q.x + q.w - (g.phone ? 10 : 14); q.t = q.y + (q.two ? 56 : 42); q.b = q.y + q.h - 24;
       return g;
     }
     function dom(){ var v = trueVal(), s = setup(), w;
@@ -308,7 +310,7 @@
     function drawFront(){
       var g = G, s = g.st, q = g.rate, p = g.pop, o = '', v = trueVal(), pegX = xs(v), ay = s.bot + 6;
       // axis ticks: never within reach of the peg's label
-      var pegLab = parText(), pegW = tw(pegLab, g.fs, 900) + 16;
+      var pegLab = parText(), pegW = tw(pegLab, g.fs, 900) + 16, axW = tw(kind() === 'prop' ? 'sample proportion p̂' : 'sample mean x̄', 11.5, 800);
       var ticks = P ? P.ticks(D0[0], D0[1], Math.max(3, Math.min(9, Math.round((s.r - s.l) / 80)))) : [D0[0], D0[1]];
       ticks.forEach(function(t){
         var xx = xs(t); if(xx < s.l - 1 || xx > s.r + 1) return;
@@ -317,6 +319,7 @@
         var lab = minus(String(+t.toPrecision(6))), lw = tw(lab, 11.5, 700);
         if(Math.abs(xx - pegX) < pegW / 2 + lw / 2 + 6) return;
         if(xx - lw / 2 < s.x + 4 || xx + lw / 2 > s.x + s.w - 4) return;
+        if(xx + lw / 2 > s.r - axW - 6) return;
         o += '<text class="ci3-tk" x="' + n1(xx) + '" y="' + n1(ay + 18) + '" text-anchor="middle">' + lab + '</text>';
       });
       // a proportion below 0 cannot happen: the axis shows where 0 is
@@ -329,32 +332,41 @@
       sLabs.innerHTML = '';
       Lb = {};
       Lb.peg = pill('ci3-pill is-pop', 'peg');
-      Lb.peg.set(pegLab, clamp(pegX, s.x + pegW / 2 + 4, s.x + s.w - pegW / 2 - 4), ay + 2, 'middle');
-      Lb.axName = mk('text', 'ci3-axn', { 'data-lab': 'axn', x: n1(s.r), y: n1(ay + 34), 'text-anchor': 'end' }, sLabs);
+      Lb.peg.set(pegLab, clamp(pegX, s.x + pegW / 2 + 4, s.x + s.w - pegW / 2 - 4), ay + 17, 'middle');
+      Lb.axName = mk('text', 'ci3-axn', { 'data-lab': 'axn', x: n1(s.r), y: n1(ay + 37), 'text-anchor': 'end' }, sLabs);
       txt(Lb.axName, kind() === 'prop' ? 'sample proportion p̂' : 'sample mean x̄');
       Lb.hit = mk('text', 'ci3-cnt is-hit', { 'data-lab': 'cnt', x: n1(s.l - (g.phone ? 4 : 8)), y: n1(s.y + 24) }, sLabs);
       Lb.miss = mk('text', 'ci3-cnt is-miss', { 'data-lab': 'cnt2', x: n1(s.l - (g.phone ? 4 : 8)), y: n1(s.y + 44) }, sLabs);
       Lb.lv = mk('text', 'ci3-lv', { 'data-lab': 'lv', x: n1(s.track[0] - 26), y: n1(s.knobY + 5), 'text-anchor': 'end' }, sLabs);
-      Lb.hit.setAttribute('y', n1(s.y + (g.phone ? 21 : 25))); Lb.miss.setAttribute('y', n1(s.y + (g.phone ? 40 : 46)));
+      Lb.hit.setAttribute('y', n1(s.y + (g.phone ? 19 : 22))); Lb.miss.setAttribute('y', n1(s.y + (g.phone ? 42 : 47)));
       // the population's title and its true value
       Lb.pt = mk('text', 'ci3-ptitle', { 'data-lab': 'ptitle', x: n1(p.x + 12), y: n1(p.title) }, sLabs);
-      Lb.pt.innerHTML = esc(S.pop.crowd || S.pop.name) + ': <tspan class="ci3-pv">' + esc(kind() === 'prop' ? pct(S.pTrue, 0) + ' ' + (S.pop.yes || 'yes') : 'mean ' + (S.pop.money ? '$' : '') + F(S.pop.mu, 0) + (S.pop.money ? '' : ' ' + (S.pop.unit || ''))) + '</tspan>';
+      var ptv = kind() === 'prop' ? pct(S.pTrue, 0) + ' ' + (S.pop.yes || 'yes') : 'mean ' + (S.pop.money ? '$' : '') + F(S.pop.mu, 0) + (S.pop.money || g.phone ? '' : ' ' + (S.pop.unit || ''));
+      var ptk = S.pop.crowd || S.pop.name;
+      // the title fits its panel: a shorter name when it would not
+      if(tw(ptk + ': ' + ptv, 13.5, 900) > p.w - 24) ptk = ptk.replace(/^All /, '');
+      if(tw(ptk + ': ' + ptv, 13.5, 900) > p.w - 24 && kind() === 'prop'){ ptv = pct(S.pTrue, 0) + ' ' + (S.pop.yes || 'yes').split(' ')[0]; }
+      Lb.pt.innerHTML = esc(ptk) + ': <tspan class="ci3-pv">' + esc(ptv) + '</tspan>';
       if(kind() === 'mean'){
         // μ on the floor scale
         var mx = px(S.pop.mu);
         var fy2 = p.cBot + 2, dd2 = popDom(), stp = S.pop.shape === 'skewed' ? 20 : 10, fl = '';
         Lb.mu = mk('path', 'ci3-mu', { d: 'M' + n1(mx) + ' ' + n1(fy2 + 9) + 'l-5.5 8h11z' }, sLabs);
         var muLab = 'μ', muW = tw(muLab, 13, 900);
-        Lb.mut = mk('text', 'ci3-mut', { 'data-lab': 'mut', x: n1(mx), y: n1(fy2 + 30), 'text-anchor': 'middle' }, sLabs);
+        Lb.mut = mk('text', 'ci3-mut', { 'data-lab': 'mut', x: n1(mx + 8), y: n1(fy2 + 22) }, sLabs);
         txt(Lb.mut, muLab);
-        for(var fv = Math.ceil(dd2[0] / stp) * stp; fv <= dd2[1]; fv += stp){ var fx = px(fv), lab = (S.pop.money ? '$' : '') + fv, lw2 = tw(lab, 11.5, 700); if(fx - lw2 / 2 < p.x + 4 || fx + lw2 / 2 > p.x + p.w - 4 || Math.abs(fx - mx) < lw2 / 2 + muW / 2 + 6) continue; fl += '<text class="ci3-tk" data-lab="ftk" x="' + n1(fx) + '" y="' + n1(fy2 + 22) + '" text-anchor="middle">' + lab + '</text>'; }
+        for(var fv = Math.ceil(dd2[0] / stp) * stp; fv <= dd2[1]; fv += stp){ var fx = px(fv), lab = (S.pop.money ? '$' : '') + fv, lw2 = tw(lab, 11.5, 700); if(fx - lw2 / 2 < p.x + 4 || fx + lw2 / 2 > p.x + p.w - 4 || (fx + lw2 / 2 > mx - 9 && fx - lw2 / 2 < mx + 8 + muW + 6)) continue; fl += '<text class="ci3-tk" data-lab="ftk" x="' + n1(fx) + '" y="' + n1(fy2 + 22) + '" text-anchor="middle">' + lab + '</text>'; }
         var fg = mk('g', null, null, sLabs); fg.innerHTML = fl;
       }
+      // the sample size rail: one notch for each n the knob can take
+      var tk = p.track, nn = ns().length, rail = '<line class="ci3-nrail" x1="' + n1(tk[0]) + '" x2="' + n1(tk[2]) + '" y1="' + n1(tk[1]) + '" y2="' + n1(tk[1]) + '"/>';
+      for(var ni = 0; ni < nn; ni++){ var nx = tk[0] + (tk[2] - tk[0]) * ni / (nn - 1); rail += '<line class="ci3-nnotch" x1="' + n1(nx) + '" x2="' + n1(nx) + '" y1="' + n1(tk[1] - 4) + '" y2="' + n1(tk[1] + 4) + '"/>'; }
+      var rg0 = mk('g', 'ci3-nr', null, sLabs); rg0.innerHTML = rail;
       Lb.nl = mk('text', 'ci3-nk', { 'data-lab': 'nk', x: n1(p.x + 12), y: n1(p.knobY + 4.5) }, sLabs);
-      Lb.nl.innerHTML = 'Sample size <tspan class="ci3-nv">n = ' + n() + '</tspan>';
+      Lb.nl.innerHTML = (g.phone ? '' : 'Sample size ') + '<tspan class="ci3-nv">n = ' + n() + '</tspan>';
       // the rate plot's axes
       var ro = '';
-      ro += '<text class="ci3-rtitle" data-lab="rt" x="' + n1(q.x + 12) + '" y="' + n1(q.y + 19) + '">Captured, at each level</text>';
+      ro += '<text class="ci3-rtitle" data-lab="rt" x="' + n1(q.x + (g.phone ? 10 : 12)) + '" y="' + n1(q.y + 19) + '">' + (g.phone ? 'Captured' : 'Captured, at each level') + '</text>';
       (g.phone ? [50, 100] : [50, 75, 100]).forEach(function(t){ var yy = rY(t); ro += '<line class="ci3-rgrid" x1="' + n1(q.l) + '" x2="' + n1(q.r) + '" y1="' + n1(yy) + '" y2="' + n1(yy) + '"/><text class="ci3-tk" data-lab="rtk" x="' + n1(q.l - 5) + '" y="' + n1(yy + 4) + '" text-anchor="end">' + t + '%</text>'; });
       [80, 90, 99].forEach(function(t){ var xx = rX(t); ro += '<line class="ci3-tick" x1="' + n1(xx) + '" x2="' + n1(xx) + '" y1="' + n1(q.b) + '" y2="' + n1(q.b + 4) + '"/><text class="ci3-tk" data-lab="rtk" x="' + n1(xx) + '" y="' + n1(q.b + 16) + '" text-anchor="middle">' + t + '%</text>'; });
       ro += '<line class="ci3-raxis" x1="' + n1(q.l) + '" x2="' + n1(q.r) + '" y1="' + n1(q.b) + '" y2="' + n1(q.b) + '"/>';
@@ -364,20 +376,25 @@
       txt(Lb.diag, 'rate = level');
       Lb.rdots = mk('g', 'ci3-rdots', null, sLabs);
       Lb.rdot = mk('circle', 'ci3-rdot', { r: 6 }, sLabs);
-      Lb.rval = pill('ci3-pill is-hit ci3-rval', 'rval');
-      Lb.rall = mk('text', 'ci3-rall', { 'data-lab': 'rall', x: n1(q.r), y: n1(q.y + 19), 'text-anchor': 'end' }, sLabs);
+      Lb.rall = G.rate.two ? mk('text', 'ci3-rall', { 'data-lab': 'rall', x: n1(q.x + 10), y: n1(q.y + 40) }, sLabs) : mk('text', 'ci3-rall', { 'data-lab': 'rall', x: n1(q.r), y: n1(q.y + 19), 'text-anchor': 'end' }, sLabs);
     }
     /* the line's name sits just under the line, where it is farthest from every dot */
     function placeDiag(dots){
-      var w = tw('rate = level', 11.5, 800), best = null, bd = -1;
-      [80, 84, 88, 92].forEach(function(L){
-        var ax = rX(L) + 2, ay = rY(L) + 16, x0 = ax, d = Infinity;
-        dots.forEach(function(p){ var dx = Math.max(x0 - 8 - p[0], 0, p[0] - (x0 + w + 8)), dy = Math.max(ay - 12 - p[1], 0, p[1] - (ay + 4)); d = Math.min(d, Math.hypot(dx, dy) + (dx === 0 && dy === 0 ? -100 : 0)); });
-        if(d > bd + 0.5){ bd = d; best = [ax, ay, 'start']; }
+      var w = tw('rate = level', 11.5, 800), q = G.rate, best = null, bd = -Infinity, cands = [];
+      // under the line: starting at a level and running right (the line climbs away), or ending at one (dropped by
+      // the line's height at the text's left end)
+      for(var L = 80; L <= 92; L += 2) cands.push([rX(L) + 2, rY(L) + 16]);
+      [99, 96].forEach(function(L){ var x0 = rX(L) - w - 2, Lx = 80 + (x0 - rX(80)) / (rX(99) - rX(80)) * 19; cands.push([x0, rY(Math.max(80, Lx)) + 16]); });
+      cands.forEach(function(c){
+        var x0 = c[0], ay = c[1], d = Infinity;
+        if(x0 < q.x + 6 || x0 + w > q.x + q.w - 6 || ay > q.b - 4) return;
+        dots.forEach(function(p){ var dx = Math.max(x0 - 8 - p[0], 0, p[0] - (x0 + w + 8)), dy = Math.max(ay - 12 - 8 - p[1], 0, p[1] - (ay + 4 + 8)); d = Math.min(d, Math.hypot(dx, dy) + (dx === 0 && dy === 0 ? -100 : 0)); });
+        if(d > bd + 0.5){ bd = d; best = [x0, ay]; }
       });
-      at(Lb.diag, { x: best[0], y: best[1], 'text-anchor': best[2] });
+      if(!best) best = [rX(80) + 2, rY(80) + 16];
+      at(Lb.diag, { x: best[0], y: best[1], 'text-anchor': 'start' });
     }
-    function rX(l){ var q = G.rate; return q.l + (l - 80) / 19 * (q.r - q.l - 4); }
+    function rX(l){ var q = G.rate; return q.l + 16 + (l - 80) / 19 * (q.r - q.l - 22); }
     function rY(c){ var q = G.rate; return q.b - (clamp(c, 50, 100) - 50) / 50 * (q.b - q.t); }
     function pill(cls, lab){
       var gg = mk('g', cls, { 'data-lab': lab }, sLabs), rr = mk('rect', null, { rx: 9 }, gg), t = mk('text', null, { 'text-anchor': 'middle' }, gg);
@@ -538,16 +555,15 @@
     function paintRate(dl){
       var landedAll = S.smps.length - (R.length - Dn.built);   // samples whose rings have landed
       var q = G.rate;
-      if(landedAll <= 0 || !R.length){ placeDiag([]); Lb.rdot.style.display = 'none'; Lb.rval.hide(); txt(Lb.rall, ''); if(Lb.rdots.innerHTML) Lb.rdots.innerHTML = ''; return; }
+      if(landedAll <= 0 || !R.length){ placeDiag([]); Lb.rdot.style.display = 'none'; txt(Lb.rall, ''); if(Lb.rdots.innerHTML) Lb.rdots.innerHTML = ''; return; }
       // the samples still in the air are not counted: the rate is the drawn rows plus every older sample
       var older = S.smps.length - R.length, cOld = older > 0 ? capOld(dCrit, older) : 0, rate = (cOld + Dn.hit) / (older + Dn.built) * 100;
       var x = rX(dl * 100), y = rY(rate);
       // the line's name sits under the line, at the end away from the current dot
-      placeDiag([[x, y]].concat(Object.keys(tried).map(function(k){ var L = +k, c = critOf(L); return [rX(L * 100), rY(capAt(c) / Math.max(1, S.smps.length) * 100)]; })));
       at(Lb.rdot, { cx: x, cy: y }); Lb.rdot.style.display = '';
-      var lab = F(rate, 1) + '%', lw = tw(lab, G.fs, 900) + 14, side = x + 12 + lw > q.r ? 'end' : 'start';
-      Lb.rval.set(lab, side === 'end' ? x - 12 : x + 12, y < q.t + 14 ? y + 16 : y - 14, side);
-      txt(Lb.rall, 'of ' + big(older + Dn.built));
+      Lb.rall.innerHTML = '<tspan class="ci3-rv">' + F(rate, 1) + '%</tspan> of ' + big(older + Dn.built);
+      placeDiag([[x, y]].concat(Dn.built === R.length ? Object.keys(tried).filter(function(k){ return Math.abs(+k - dl) >= 0.004; }).map(function(k){ var L = +k; return [rX(L * 100), rY(capAt(critOf(L)) / S.smps.length * 100)]; }) : []));
+
       // the levels tried, small: their rates with the same samples
       var key = '', dots = '';
       if(Dn.built === R.length){
@@ -649,7 +665,7 @@
     function build(more){
       if(!G) return;
       hideCue(true); tourDid('build');
-      if(S.smps.length >= MAXN){ say('That is ' + big(MAXN) + ' intervals, the most this page keeps. Start over to begin again.'); cause.take('That is ' + big(MAXN) + ' intervals, the most this page keeps: Start over to begin again.'); wKey = ''; return; }
+      if(S.smps.length >= MAXN){ say('That is ' + big(MAXN) + ' intervals, the most this page keeps. Start over to begin again.'); cause.take(big(MAXN) + ' intervals is the most this page keeps: Start over.'); wKey = ''; return; }
       stopAll();
       S.sel = -1; S.lastWhy = null; take = null;
       var s = setup(), fresh = C.batch(r, s, 100), first = !S.took.slow; S.took.slow = 1;
@@ -689,7 +705,6 @@
       take = null;
       if(!R.length){ levelTag(); paint(now()); return; }
       var c = critOf(L), t = now();
-      tried[L.toFixed(2)] = 1;
       crit0 = curCrit(t) || critOf(was); crit1 = c;
       if(how === 'drag' || calm()){ cDur = 0; crit0 = c; dCrit = c; }
       else { cT0 = t; cDur = 320; }
@@ -759,16 +774,17 @@
     function settled(){
       var d = Dn, L = Math.round(S.level * 100);
       if(!R.length){ refHtml(); return; }
+      tried[S.level.toFixed(2)] = 1;
       if(S.firstPending){
         S.firstPending = false;
         var w = lrWord(S.level);
-        if(!S.took.first){ S.took.first = 1; take = w === 'about' ? 'If we took many samples and built a ' + L + '% interval from each, about ' + L + '% would capture the true value.'
-          : 'Built this way, these intervals capture ' + parName() + ' ' + (w === 'below' ? 'less' : 'more') + ' often than ' + L + '% in the long run (see ? for why).'; }
+        if(!S.took.first){ S.took.first = 1; take = w === 'about' ? 'Over many samples, about ' + L + '% of ' + L + '% intervals capture the true value.'
+          : 'In the long run ' + (w === 'below' ? 'fewer' : 'more') + ' than ' + L + '% of these capture ' + parName() + ': see ? for why.'; }
       } else if(S.lastWhy && S.lastWhy.dir){
         var dir = S.lastWhy.dir;
         if(!S.took['lv' + dir]){ S.took['lv' + dir] = 1; take = dir > 0 ? 'A higher level makes every interval wider, so more of them capture ' + parName() + '.' : 'A lower level makes every interval narrower, so more of them miss ' + parName() + '.'; }
       } else if(S.lastWhy && S.lastWhy.n){
-        if(!S.took.n){ S.took.n = 1; take = 'A larger sample gives narrower intervals; about the same share capture ' + parName() + ' at the same level.'; if(/smaller/.test(S.lastWhy.t)) take = 'A smaller sample gives wider intervals; about the same share capture ' + parName() + ' at the same level.'; if(lrWord(S.level) !== 'about') take = null; }
+        if(!S.took.n){ S.took.n = 1; take = 'Larger samples, narrower intervals; about the same share still capture ' + parName() + '.'; if(/smaller/.test(S.lastWhy.t)) take = 'Smaller samples, wider intervals; about the same share still capture ' + parName() + '.'; if(lrWord(S.level) !== 'about') take = null; }
       }
       wKey = '';
       words(now());
@@ -798,10 +814,15 @@
 
     /* ---------------------------------------------------- the first visit cue (at the Build button) and "Show me how" */
     var cueO = { key: 'apstat-ci-capture', text: 'Start here', side: 'right',
-      at: function(){ var a = acts.getBoundingClientRect(), b = bBuild.getBoundingClientRect(); return [b.right - a.left, b.top - a.top + b.height / 2]; } };
+      at: function(){ var a = acts.getBoundingClientRect(), b = bBuild.getBoundingClientRect(); var k = actLayer.scale() || 1; return [(cueO.side === 'left' ? b.left - a.left - 4 : b.right - a.left + 4) / k, (b.top - a.top + b.height / 2) / k]; } };   // the layer reads its scale from the first svg inside (the cue's own icon)
     var cue = K.cue(actLayer, cueO);
     function hideCue(used){ if(cue.active()) cue.hide(used); acts.classList.remove('has-cue'); }
-    function cueShow(){ if(S.mode !== 'explore' || R.length) return; acts.classList.add('has-cue'); if(!cue.show()) acts.classList.remove('has-cue'); }
+    function cueShow(){
+      if(S.mode !== 'explore' || R.length) return;
+      // beside Build, on the side with room (right of it when the button starts its row, left of it when it ends one)
+      var a = acts.getBoundingClientRect(), b = bBuild.getBoundingClientRect();
+      cueO.side = a.right - b.right >= 180 ? 'right' : 'left';
+      acts.classList.add('has-cue'); if(!cue.show()) acts.classList.remove('has-cue'); }
     var tour = K.tour({ key: 'apstat-ci-capture', label: 'Show me how', steps: [
       { id: 'build', text: 'Build 100 intervals: 100 random samples from this population, one interval from each.', target: function(){ return bBuild; } },
       { id: 'level', text: 'Drag the level. The same samples rebuild their intervals, wider or narrower.', target: function(){ return kLevel.el.hidden ? bBuild : kLevel.el.querySelector('.tk2-knob'); } },
@@ -854,7 +875,7 @@
     }
     var roT = 0;
     function onResize(){ clearTimeout(roT); roT = setTimeout(function(){ fitHeight(); relayout(); }, 40); }
-    try{ if(window.ResizeObserver) new ResizeObserver(function(){ relayout(); }).observe(sceneBox); }catch(e){}
+    try{ if(window.ResizeObserver){ new ResizeObserver(function(){ relayout(); }).observe(sceneBox); new ResizeObserver(function(){ if(cue.active()) cue.place(); }).observe(bBuild); } }catch(e){}
     window.addEventListener('resize', onResize);
 
     /* ---------------------------------------------------- the reference behind "?" */
@@ -912,7 +933,7 @@
       // for the sweep test only: window.ApStatCiCapture when the test sets window.LevlToolTest before the page loads
       _t: { S: S, R: function(){ return R; }, G: function(){ return G; }, Dn: function(){ return Dn; }, D0: function(){ return D0; }, crit: function(){ return dCrit; }, xs: function(v){ return xs(v); },
         build: build, setLevel: function(v){ kLevel.value(v, true); }, setN: function(i){ kN.value(i, true); }, setPop: setPop, select: select, startOver: startOver,
-        busy: busy, cause: cause, longRun: longRun, kLevel: kLevel, kN: kN, crowd: function(){ return crowd; }, relayout: relayout, finish: function(){ stopAll(); paint(now()); settled(); } }
+        busy: busy, cause: cause, levelOf: levelOfCrit, rY: function(c){ return rY(c); }, go: function(m){ var b = document.querySelector('.bt-mode[data-m="' + m + '"]'); if(b) b.click(); }, longRun: longRun, kLevel: kLevel, kN: kN, crowd: function(){ return crowd; }, relayout: relayout, finish: function(){ stopAll(); paint(now()); settled(); } }
     };
   }
 
