@@ -531,6 +531,9 @@
       // the level knob (the drawn level shows on its tag while the rings catch up)
       var dl = dCrit ? levelOfCrit(dCrit) : S.level;
       Lb.dl = dl;
+      // while a key's change plays, the knob rides with the rings (the control and the picture never disagree)
+      if(cDur > 0 && t < cT0 + cDur && !dragging && kLevel.value() !== Math.round(dl * 100)) kLevel.value(Math.round(dl * 100));
+      else if(cDur > 0 && t >= cT0 + cDur && kLevel.value() !== Math.round(S.level * 100)) kLevel.value(Math.round(S.level * 100));
       var lvs = Math.round(dl * 100) + '%';
       if(Lb.lv && Lb._lvs !== lvs + g.phone){ Lb._lvs = lvs + g.phone; Lb.lv.innerHTML = g.phone ? lvs : '<tspan class="ci3-lvk">Level </tspan>' + lvs; }
       // the rate plot: the current level's capture rate over all intervals so far (drawn width), and the levels tried
@@ -722,6 +725,7 @@
       take = null; covCache = {};
       nTag();
       D0 = dom(); drawFront();
+      crit0 = crit1 = dCrit = critOf(S.level); cDur = 0;
       var had = R.length > 0;
       stopAll(); clearRows(true); resetSamples(); S.builds = had ? 1 : 0;
       if(had){ rebuildAfter(n() > was ? 'larger n, narrower' : 'smaller n, wider'); return; }
@@ -756,6 +760,7 @@
       resetSamples(); S.builds = 0; S.lastWhy = null; take = null; covCache = {};
       bBuild.textContent = 'Build 100 intervals'; bReset.hidden = true;
       CM = crowdModel(); D0 = dom();
+      crit0 = crit1 = dCrit = critOf(S.level); cDur = 0;
       relayout(true);
       levelKnob(false);
       fade();
@@ -800,6 +805,11 @@
       onInput: function(v){ setLevel(v / 100, dragging ? 'drag' : 'key'); } });
     kLevel.el.classList.add('ci3-klev');
     var dragging = false;
+    // a key steps from the level asked for, not from where the knob is while it rides with a change still playing
+    kLevel.input.addEventListener('keydown', function(e){
+      kLevel.input.value = String(Math.round(S.level * 100));
+      if(e.key === 'PageUp' || e.key === 'PageDown'){ e.preventDefault(); hideCue(true); kLevel.value(clamp(Math.round(S.level * 100) + (e.key === 'PageUp' ? 10 : -10), LV0, LV1), true); }
+    }, true);
     kLevel.el.addEventListener('pointerdown', function(){ dragging = true; }, true);
     window.addEventListener('pointerup', function(){ if(dragging){ dragging = false; } });
     window.addEventListener('pointercancel', function(){ dragging = false; });
@@ -881,11 +891,12 @@
     /* ---------------------------------------------------- the reference behind "?" */
     function refHtml(){
       var s = setup(), isP = s.kind === 'prop', L = pct(S.level, 0), cw = condWhy(), v = R[S.sel];
+      function art(t){ return (/^8/.test(t) ? 'an ' : 'a ') + t; }
       var rows = LEVELS.concat(LEVELS.indexOf(S.level) < 0 ? [S.level] : []).sort().map(function(Lv){ var c = critOf(Lv); return '<tr' + (Math.abs(Lv - S.level) < 1e-9 ? ' class="hl"' : '') + '><th scope="row">' + pct(Lv, 0) + '</th><td class="r">' + F(c, 3) + '</td><td class="r">' + (isFinite(longRun(Lv)) ? F(longRun(Lv), 1) + '%' : '') + '</td></tr>'; }).join('');
       var h = '<p class="ci3-howref"><button type="button" class="tk2-how" data-how>Show me how</button> to use it, step by step.</p>';
       h += '<h3>What you are looking at</h3><p><b>The population</b> (top): ' + (isP ? 'each figure stands for many ' + esc(S.pop.noun || 'people') + '; the blue ones ' + esc(S.pop.yes || 'say yes') + ', exactly ' + pct(S.pTrue, 0) + ' of the crowd, so the true proportion is ' + parText() + '.' : 'each figure stands for many ' + esc(S.pop.noun || 'people') + ', standing at their value on the floor scale, so the crowd has the population’s shape (' + (S.pop.shape === 'skewed' ? 'skewed right' : 'normal') + '); its mean is ' + parText() + '.') + '</p>';
-      h += '<p><b>One row, one sample.</b> Each row is a ' + L + ' confidence interval built from its own random sample of ' + s.n + '. The orange dot is that sample’s ' + (isP ? 'proportion p̂' : 'mean x̄') + '; the posts are its ends. The blue peg is the true ' + (isP ? 'proportion' : 'mean') + ', which in real life we never see. A green ring captures it; a vermillion one with a cross misses.</p>';
-      h += '<p><b>What ' + L + ' confident means.</b> The method captures the true value in about ' + L + ' of samples: if we took many random samples of this size and built a ' + L + ' interval from each, about ' + L + ' of the intervals would capture the true ' + (isP ? 'proportion' : 'mean') + '. Any one interval either captures it or misses; the ' + L + ' describes the method, not one interval. That is why the count in one batch of 100 wobbles (96, 93, 95) while the rate over many batches settles.</p>';
+      h += '<p><b>One row, one sample.</b> Each row is ' + art(L) + ' confidence interval built from its own random sample of ' + s.n + '. The orange dot is that sample’s ' + (isP ? 'proportion p̂' : 'mean x̄') + '; the posts are its ends. The blue peg is the true ' + (isP ? 'proportion' : 'mean') + ', which in real life we never see. A green ring captures it; a vermillion one with a cross misses.</p>';
+      h += '<p><b>What ' + L + ' confident means.</b> The method captures the true value in about ' + L + ' of samples: if we took many random samples of this size and built ' + art(L) + ' interval from each, about ' + L + ' of the intervals would capture the true ' + (isP ? 'proportion' : 'mean') + '. Any one interval either captures it or misses; the ' + L + ' describes the method, not one interval. That is why the count in one batch of 100 wobbles (96, 93, 95) while the rate over many batches settles.</p>';
       h += '<p><b>The margin of error</b> is critical value × standard error: ' + (isP ? th('$z^* \\sqrt{\\hat{p}(1 - \\hat{p})/n}$') : th(S.useZ ? '$z^* \\, s/\\sqrt{n}$' : '$t^* \\, s/\\sqrt{n}$ with $df = n - 1$')) + '. A higher level needs a larger critical value, so every interval gets wider and more of them capture the true value. A sample 4 times as large halves the standard error, so the intervals get about half as wide; the share that capture stays about the level.</p>';
       if(cw === 'counts') h += '<p><b>Why fewer capture here.</b> With n = ' + s.n + ' and p = ' + F(s.p, 2) + ', the expected ' + (s.n * s.p < 10 ? 'successes' : 'failures') + ' are ' + F(Math.min(s.n * s.p, s.n * (1 - s.p)), 1) + ', under 10: the large counts condition fails. The sampling distribution of p̂ is not close to normal (and a sample with p̂ = 0 gives an interval of width 0), so the z interval’s long run capture rate is ' + F(longRun(S.level), 1) + '%, not ' + L + '.</p>';
       if(cw === 'wobble') h += '<p><b>Why not exactly ' + L + '.</b> p̂ can only take the values 0, 1/n, 2/n, …, so the z interval’s long run capture rate wobbles around the level when n is small, even when the large counts condition holds: here it is ' + F(longRun(S.level), 1) + '%.</p>';
@@ -1020,8 +1031,12 @@
       out.push('<g class="ci-ytag"><text class="stat-yours-t" x="' + R + '" y="18" text-anchor="end">Yours: ' + T.F(Y.v, Y.key === 'df' ? 0 : 3) + '</text></g>');
     }
     var estKnown = p.type !== 'prop' || st.phat;
-    out.push('<circle class="ci-est" cx="' + x2(g.est).toFixed(1) + '" cy="' + y + '" r="6"/><text class="ci-lab ci-c-samp" x="' + x2(g.est).toFixed(1) + '" y="' + (y + 26) + '" text-anchor="middle">' + sym + (estKnown ? ' = ' + T.F(g.est, g.d) + unit : ', the sample proportion') + '</text>');
-    if(g.p0 != null){ var px = x2(g.p0); out.push('<line class="ci-claim" x1="' + px.toFixed(1) + '" x2="' + px.toFixed(1) + '" y1="' + (y - 40) + '" y2="' + (y + 40) + '"/><text class="ci-lab ci-c-miss" x="' + px.toFixed(1) + '" y="' + (y + 54) + '" text-anchor="middle">claim: ' + T.F(g.p0, 2) + '</text>'); }
+    // the estimate's label keeps clear of the claim's line (v2 review rule: labels never touch drawn lines)
+    var eLab = sym + (estKnown ? ' = ' + T.F(g.est, g.d) + unit : ', the sample proportion'), ex = x2(g.est), eAnch = 'middle', eHalf = eLab.length * 4.2 + 8;
+    if(g.p0 != null && Math.abs(x2(g.p0) - ex) < eHalf){ eAnch = x2(g.p0) > ex ? 'end' : 'start'; ex = x2(g.p0) + (x2(g.p0) > ex ? -8 : 8); }
+    out.push('<circle class="ci-est" cx="' + x2(g.est).toFixed(1) + '" cy="' + y + '" r="6"/><text class="ci-lab ci-c-samp" x="' + ex.toFixed(1) + '" y="' + (y + 26) + '" text-anchor="' + eAnch + '">' + eLab + '</text>');
+    // the claim: a line through the interval's row, its name above it (clear of the student's dashed interval below)
+    if(g.p0 != null){ var px = x2(g.p0); out.push('<line class="ci-claim" x1="' + px.toFixed(1) + '" x2="' + px.toFixed(1) + '" y1="' + (y - 34) + '" y2="' + (y + 34) + '"/><text class="ci-lab ci-c-miss" x="' + px.toFixed(1) + '" y="' + (y - 48) + '" text-anchor="middle">claim: ' + T.F(g.p0, 2) + '</text>'); }
     axis(a, b, x2, H - 34);
     el.innerHTML = '<figure class="ci-qfig"><svg class="ci-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(sym + (estKnown ? ' = ' + T.F(g.est, g.d) : ', the sample statistic') + (shownParts ? '; the interval from ' + T.F(lo2, g.d) + ' to ' + T.F(hi2, g.d) : '') + (g.p0 != null ? '; the claimed value ' + T.F(g.p0, 2) : '')) + '">' + out.join('') + '</svg></figure>';
     function axis(a0, b0, xf, yb){

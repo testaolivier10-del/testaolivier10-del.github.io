@@ -271,6 +271,9 @@ if (FRAMES) {
     const knob = async () => X(() => { const r = document.querySelector('.ci3-klev .tk2-knob').getBoundingClientRect(); return [r.x + r.width / 2, r.y + r.height / 2]; });
     await run('build', async () => { await page.click('.ci3-build'); });
     await run('keys on the level', async () => { await page.focus('.ci3-klev input'); for (let i = 0; i < 6; i++) { await page.keyboard.press('ArrowLeft'); await page.waitForTimeout(60); } await page.keyboard.press('Home'); await page.waitForTimeout(100); await page.keyboard.press('End'); });
+    { const lv = await X(() => window.ApStatCiCapture.S.level); ok(lv === 0.99, `${tag} End took the level to ${lv}`); }
+    await run('two quick keys', async () => { await page.focus('.ci3-klev input'); await page.keyboard.press('PageDown'); await page.waitForTimeout(40); await page.keyboard.press('ArrowLeft'); });
+    { const lv = await X(() => window.ApStatCiCapture.S.level); ok(lv === 0.88, `${tag} PageDown then ArrowLeft mid change: ${lv} (want 0.88)`); }
     await run('pointer drag out and back', async () => {
       const k = await knob(); await page.mouse.move(k[0], k[1]); await page.mouse.down();
       for (let i = 0; i <= 20; i++) { await page.mouse.move(k[0] - (w < 600 ? 120 : 360) * i / 20, k[1]); await page.waitForTimeout(16); }
