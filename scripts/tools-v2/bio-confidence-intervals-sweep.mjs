@@ -108,7 +108,8 @@ const AGREE = () => {
     shown.push({ m: num(mt), e: num(el), id });
   });
   if (shown.length < 2) return out;
-  const sdt = document.querySelector('.ci2-hsd .tk2-tag'); near(num(sdt.textContent), S[1].sd, 0.07, 'SD tag vs the shade plants');
+  const sdt = document.querySelector('.ci2-hsd .tk2-tag'), cueOn = !!document.querySelector('.ci2 .tk2-cue');
+  if (cueOn) { if (!sdt.hidden) out.push('SD tag shows under the cue'); } else near(num(sdt.textContent), S[1].sd, 0.07, 'SD tag vs the shade plants');
   // the knobs sit on what is drawn
   const sr = document.querySelector('.ci2-svg').getBoundingClientRect();
   const kc = (sel) => { const r = document.querySelector(sel + ' .tk2-knob').getBoundingClientRect(); return [r.left + r.width / 2 - sr.left, r.top + r.height / 2 - sr.top]; };
@@ -129,7 +130,7 @@ const AGREE = () => {
     near(num(cz[0]), Math.round((up.m - lo.m) * 10) / 10, 1e-9, 'cause: means apart');
     if (kind === 'ov') { near(num(cz[1]), ov, 1e-9, 'cause: overlap'); if (cz[2] !== 'may be chance') out.push('cause verdict ' + cz[2]); }
     if (kind === 'gap') { near(num(cz[1]), -ov, 1e-9, 'cause: gap'); if (cz[2] !== 'unlikely to be chance') out.push('cause verdict ' + cz[2]); }
-    if (kind === 'touch' && !/touch/.test(cz[1])) out.push('cause touch ' + cz[1]);
+    if (kind === 'touch' && (!/touch/.test(cz[1]) || cz[2] !== 'unlikely to be chance')) out.push('cause touch ' + cz[1] + ' / ' + cz[2]);   // touching is no overlap
   }
   return out;
 };
@@ -157,7 +158,11 @@ const GEO = () => {
   const kn = [...document.querySelectorAll('.ci2 .tk2-handle:not([hidden]) .tk2-knob')].map(k => k.getBoundingClientRect());
   if (kn.length === 2) { const d = Math.hypot(kn[0].x - kn[1].x, kn[0].y - kn[1].y); if (d < 30) out.push(`the two knobs ${Math.round(d)} px apart`); }
   const cue = document.querySelector('.ci2 .tk2-cue');
-  if (cue) { const r = cue.getBoundingClientRect(); lab.forEach(l => { const a = l[0]; if (a.left < r.right && a.right > r.left && a.top < r.bottom && a.bottom > r.top) out.push(`cue covers "${l[1]}"`); }); inside(r, scene, 'cue'); }
+  if (cue) {
+    const r = cue.getBoundingClientRect(); lab.forEach(l => { const a = l[0]; if (a.left < r.right && a.right > r.left && a.top < r.bottom && a.bottom > r.top) out.push(`cue covers "${l[1]}"`); }); inside(r, scene, 'cue');
+    // never on a plant's top or leaves, nor across a mean line
+    document.querySelectorAll('.ci2-pl .ci2-top, .ci2-mline').forEach(e => { const a = e.getBoundingClientRect(); if (a.width + a.height > 0 && a.left < r.right && a.right > r.left && a.top < r.bottom && a.bottom > r.top) out.push(`cue covers ${e.matches('.ci2-mline') ? 'a mean line' : 'a plant'}`); });
+  }
   document.querySelectorAll('.ci2 text, .ci2 .tk2-cz, .ci2 .tk2-purpose, .ci2 button, .ci2 .tk2-tag, .ci2 .ci2-nl').forEach(e => { if (!vis(e)) return; const fs = parseFloat(getComputedStyle(e).fontSize); if (fs < 11) out.push(`text ${fs}px "${e.textContent.slice(0, 16)}"`); });
   const area = (r) => r.width * r.height;
   [...st.children].forEach(c => { if (c.matches('.ci2-scene') || !vis(c)) return; if (area(c.getBoundingClientRect()) > area(scene)) out.push(`${c.className} bigger than the scene`); });
@@ -165,7 +170,7 @@ const GEO = () => {
   const cz = document.querySelector('.ci2 .tk2-cause'), cr = cz.getBoundingClientRect(), rows = new Set([...cz.querySelectorAll('.tk2-cz')].map(e => Math.round(e.getBoundingClientRect().top))).size;
   if (phone && rows > 2) out.push(`cause line ${rows} rows`);
   // plants stay plants: leaves at least 7 px
-  const lf = window.__ci2.G().leaf; if (lf < 7.9) out.push(`leaves ${lf} px`);
+  const lf = window.__ci2.G().leaf; if (lf < 10.9) out.push(`leaves ${lf} px`);
   return { out, causeH: Math.round(cr.height) };
 };
 
@@ -189,7 +194,7 @@ if (ONE) {
     ok(await page.evaluate(() => !!document.querySelector('.ci2 .tk2-cue')), `${w} ${theme}: the first visit cue shows`);
     const a0 = await page.evaluate(AGREE); ok(!a0.length, `${w} ${theme} first visit: ${a0.join('; ')}`);
     if (SHOTS && [390, 768, 1440].includes(w)) await page.screenshot({ path: join(SHOTS, `sweep-${w}-${theme}-00-first.png`), fullPage: w < 500 });
-    await page.evaluate(() => { localStorage.setItem('tk2c:apbio-ci', '1'); document.querySelector('.ci2 .tk2-cue')?.remove(); });
+    await page.evaluate(() => window.__ci2.noCue());
     const heights = new Set();
     for (const [name, s] of STATES) {
       await setState(page, s);
@@ -261,6 +266,19 @@ if (FRAMES) {
       for (let d = -40; d <= 60; d += 6) await page.mouse.move(k[0], k[1] + d);
       await page.mouse.up();
     });
+    // changing n changes only n: each tray's drawn mean and SD stay within 0.1 cm on every frame, and the verdict
+    // (overlap or not) changes at most once
+    async function steady(label, setup, act) {
+      await setup(); await still(page); await page.waitForTimeout(80);
+      await page.evaluate(() => { window.__ciS = { on: true, bad: [], flips: 0, last: null, n: 0 }; (function loop(){ const S = window.__ciS; if (!S.on) return; const X = window.__ci2, Mo = X.Mo(), d = X.drawn(), V = X.V(); S.n++;
+        d.forEach((s, g) => { if (s.n > 1) { if (Math.abs(s.mean - Mo[g].m) > 0.1) S.bad.push(`tray ${g} mean ${s.mean.toFixed(2)} vs ${Mo[g].m}`); if (Math.abs(s.sd - Mo[g].s) > 0.1) S.bad.push(`tray ${g} SD ${s.sd.toFixed(2)} vs ${Mo[g].s}`); } });
+        const ov = V ? V.kind === 'ov' : null; if (ov !== null && S.last !== null && ov !== S.last) S.flips++; if (ov !== null) S.last = ov; requestAnimationFrame(loop); })(); });
+      await act(); await page.waitForTimeout(60); await still(page); await page.waitForTimeout(60);
+      const r = await page.evaluate(() => { window.__ciS.on = false; return window.__ciS; });
+      ok(!r.bad.length && r.flips <= 1, `${w} only n changes, ${label}: ${r.bad.length} off of ${r.n} frames, ${r.flips} flips: ${r.bad.slice(0, 2).join(' | ')}`);
+    }
+    for (const [a, b] of [[5, 20], [20, 5], [5, 10], [10, 20], [20, 10], [10, 5]]) await steady(`${a} to ${b}`, async () => { await page.evaluate(() => window.__ci2.reset()); await still(page); if (a !== 5) { await page.click(`.ci2-nb[data-n="${a}"]`); await still(page); } }, async () => { await page.click(`.ci2-nb[data-n="${b}"]`); });
+    for (const [a, b] of [[5, 20], [20, 5], [10, 20]]) await steady(`${a} to ${b} after New sample`, async () => { await page.evaluate(() => window.__ci2.reset()); await still(page); if (a !== 5) { await page.click(`.ci2-nb[data-n="${a}"]`); await still(page); } await page.click('.ci2-new'); }, async () => { await page.click(`.ci2-nb[data-n="${b}"]`); });
     await watch('5 to 20 plants (they sprout)', async () => { await page.evaluate(() => window.__ci2.reset()); await still(page); await page.click('.ci2-nb[data-n="20"]'); });
     if (SHOTS) { await page.evaluate(() => window.__ci2.reset()); await still(page); await page.click('.ci2-nb[data-n="20"]'); await page.waitForTimeout(380); await page.screenshot({ path: join(SHOTS, `mid-${w}-sprout.png`), fullPage: w < 500 }); await still(page); }
     await watch('20 to 5 plants (they leave)', async () => { await page.click('.ci2-nb[data-n="5"]'); });

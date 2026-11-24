@@ -45,16 +45,16 @@ shorter as each plant is counted.
 - **Quiet controls:** a small knob on the tallest shade plant ("SD 4.0 cm"): drag it up and every plant moves away
   from the mean (the SD, 1.0 to 4.5 cm). Under the picture: "5 | 10 | 20 plants each" (new plants sprout one by one,
   extra ones shrink back into the soil; each tray keeps its mean and SD, so only n changes), "New sample" (new plants
-  from the same two populations grow to new heights: chance alone moves the means), "Start over".
+  from the same two populations grow to new heights: chance alone moves the means), "Start over". New plants sprout in groups of about five; each group keeps the tray's mean and SD exactly, so as each group is counted only n changes; fewer plants keep the subset whose mean and SD are already closest.
 - **Opens** on 5 plants a tray, means 10.0 and 16.0 cm, SD 4.0 cm each: ±3.6, overlap 1.2 cm, "may be chance".
   10 plants: ±2.5, 1.0 cm apart. 20 plants: ±1.8, 2.4 cm apart.
 - **Cause line** (`K.cause`): "means 6.0 cm apart → bars overlap by 1.2 cm → may be chance"; "→ bars 1.0 cm apart →
-  unlikely to be chance"; "→ bars just touch → too close to call". The overlap is worked out from the numbers as
+  unlikely to be chance"; "→ bars just touch → unlikely to be chance" (touching is still no overlap). The overlap is worked out from the numbers as
   shown (each mean and each ± to 0.1 cm), so it always adds up.
 - **Takeaways** (when the change settles, Explore only): 5 to 20 plants "Four times the plants, half the bar: SE = SD
   ÷ √n."; more plants turning overlap into a gap "More plants made the bars shorter, so the real difference shows.";
-  New sample at 5 "With 5 plants a tray, chance alone moves the means a lot." and at 20 "... a new sample hardly moves
-  the means."; more spread turning a gap into overlap "More spread, longer bars: the same difference is harder to see."
+  New sample at 5 "With 5 plants a tray, chance alone moves the means a lot." and at 20 "... a new sample moves the
+  means much less."; more spread turning a gap into overlap "More spread, longer bars: the same difference is harder to see."
 - **Every change is animated:** a key press or Start over grows or shrinks the plants (240 to 520 ms); more plants
   sprout from the soil one after another and the others slide over; fewer plants shrink back into the soil and fade
   while the rest slide; New sample grows each plant to its new height in a wave; the leaves resize with the spacing.
@@ -110,7 +110,7 @@ On the picture: 2 tray names, the board's numbers (5 to 30 and "cm"; 10, 20, 30 
 5. Changing n keeps each tray's mean and SD exactly (only n changes); New sample shows chance.
 6. Per group mean, SD and n sliders are left to Problems (each problem sets its own).
 7. The overlap amount is worked out from the shown numbers (to 0.1 cm), so the cause line adds up.
-8. "Just touch" (an overlap of 0.0 cm as shown) reads "too close to call".
+8. "Just touch" (an overlap of 0.0 cm as shown) counts as no overlap: "unlikely to be chance" (review round 1).
 9. Bars start at 0 cm (an honest bar graph); the clipboard's axis is fixed at 0 to 25 cm.
 10. The shade plants open taller (16.0 vs 10.0 cm): seedlings in shade stretch toward the light; said in "?".
 11. A fourth challenge: with 5 plants, chance alone flips the verdict.
@@ -126,7 +126,7 @@ On the picture: 2 tray names, the board's numbers (5 to 30 and "cm"; 10, 20, 30 
   bars may overlap a little and still differ at p < 0.05 (`ci-overlap` and `ci-overlap-rule` already open).
 - Heights are invented (said in "?"). Sample means and SDs are kept to 0.1 cm at rest: New sample draws plants from
   N(mean, SD) and rescales them to their own mean and SD rounded to 0.1 cm. Logged as `ci-explore-beans` in
-  `docs/apbio-needs-author.md`, with the "too close to call" wording and the shade taller convention.
+  `docs/apbio-needs-author.md`, with the "just touch" wording, the opening and the shade taller convention.
 
 ## What was built
 - `bio/assets/tools/confidence-intervals.js` (rewritten; the practice figure kept), `bio/assets/tools/confidence-intervals.css`
@@ -171,3 +171,24 @@ See the bottom of this file ("Final run").
   cause line carries the number.
 - The sprouting change at 1440 under CPU x4 reached p95 50 ms (the budget's edge) on a loaded machine.
 - The overlap tint sits between the two error bars only, so on narrow clipboards it is a short strip.
+
+## Review round 1 (2026-11-23): BLOCK, fixed
+`/home/claude/review-bio-ci/REVIEW.md`. Statistics, frame agreement, perf, touch, Test yourself and nothing dropped
+confirmed. Merged `claude/tools-v2-all` first (three append conflicts in the status docs, both sides kept).
+Must fix:
+1. **Just touching bars** now read "bars just touch → unlikely to be chance" (touching is no overlap; p about 0.01 to
+   0.02); the "?" bullet, the live line, owner log line 8 and `ci-explore-beans` say so.
+2. **Only n changes:** new plants sprout in groups (about five each, sharing one clock so a group is counted on one
+   frame) whose values have mean 0 and Σz² equal to their size, so the tray's mean and SD stay exact as each group
+   joins; fewer plants keep the subset (every subset tried) whose mean and SD are closest, then restandardize by a
+   hair. The frames run checks 5 to 20, 20 to 5, 5 to 10, 10 to 20, 20 to 10 and 10 to 5, from the opening and after
+   New sample: each tray's drawn mean and SD within 0.1 cm on every frame and the verdict changing at most once.
+3. **Phones:** the clipboard is taller and its plot uses more of the paper; the tint runs between the two bars'
+   centres, over the bars and under the error bars; the band's word sits on the band only when the band is the
+   word's height plus 8 px, else just over or under it; each ± sits beside its top cap on the outer side.
+4. **The cue** sits on the empty board above the tallest shade plant, pointing down at the knob; the SD tag waits
+   until it goes. The sweep fails a cue over any plant's top, a mean line or a label.
+Should fix: S1 the opening kept (the 10 plant gap stays 1.0 cm), the live "?" line says "by the course's rule" and
+points to the strict note; S2 leaves never under 11 px and resize over the whole sprouting; S3 "so" dropped from the
+spoken cause line; S4 "moves the means much less"; S5 the SD tag says "(max)" at its cap; S6 the brief's name in the
+data fixed.

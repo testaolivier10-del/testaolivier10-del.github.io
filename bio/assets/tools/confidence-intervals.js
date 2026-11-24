@@ -169,7 +169,7 @@
           g.cb = { x: Wd * 0.635, y: 18, w: Wd - pad - Wd * 0.635, h: g.yB + 6 - 18 };
           top0 = 0;
         } else {
-          g.clipH = g.big ? clamp(Hd * 0.46, 300, 340) : clamp(Wd * 0.72, 250, 290);
+          g.clipH = g.big ? clamp(Hd * 0.46, 300, 340) : clamp(Wd * 0.8, 270, 320);
           g.topH = Hd - g.clipH;
           g.benchH = 22; g.yB = g.topH - g.benchH;
           trayEnd = Wd - pad;
@@ -194,7 +194,7 @@
         c.px = c.x + ins; c.py = c.y + (g.big ? 26 : 20); c.pw = c.w - 2 * ins; c.ph = c.h - (g.big ? 26 : 20) - ins;
         c.fs = g.big ? 15 : 13;
         c.l = c.px + (g.big ? 46 : 34); c.r = c.px + c.pw - (g.big ? 16 : 10);
-        c.t = c.py + (g.big ? 60 : 60); c.b = c.py + c.ph - (g.big ? 56 : 50);
+        c.t = c.py + (g.big ? 60 : 44); c.b = c.py + c.ph - (g.big ? 56 : 46);
         c.cx = [c.l + (c.r - c.l) * 0.3, c.l + (c.r - c.l) * 0.72];
         c.bw = Math.min((c.r - c.l) * 0.24, 74); c.cap = Math.min(c.bw * 0.55, 26);
         c.y = c.y; c.ky = (c.b - c.t) / AMAX;
@@ -263,12 +263,12 @@
         var cw = Math.min(110, c.w * 0.36);
         f += '<rect class="ci2-clip" x="' + n1(c.x + c.w / 2 - cw / 2) + '" y="' + n1(c.y + 4) + '" width="' + n1(cw) + '" height="' + (g.big ? 30 : 24) + '" rx="6"/><rect class="ci2-clip-hi" x="' + n1(c.x + c.w / 2 - cw / 2 + 8) + '" y="' + n1(c.y + 9) + '" width="' + n1(cw - 16) + '" height="4" rx="2"/>';
         var title = 'Mean height ± 2 SE';
-        f += '<text class="ci2-ctitle" data-lab="ctitle" x="' + n1(c.px + c.pw / 2) + '" y="' + n1(c.py + (g.big ? 44 : 36)) + '" text-anchor="middle" style="font-size:' + c.fs + 'px">' + esc(title) + '</text>';
+        f += '<text class="ci2-ctitle" data-lab="ctitle" x="' + n1(c.px + c.pw / 2) + '" y="' + n1(c.py + (g.big ? 44 : 28)) + '" text-anchor="middle" style="font-size:' + c.fs + 'px">' + esc(title) + '</text>';
         for(var v = 0; v <= AMAX; v += 5){
           f += '<line class="ci2-grid" x1="' + n1(c.l) + '" x2="' + n1(c.r) + '" y1="' + n1(yA(v)) + '" y2="' + n1(yA(v)) + '"/>';
           f += '<text class="ci2-tick" data-lab="tick" x="' + n1(c.l - 6) + '" y="' + n1(yA(v) + 4) + '" text-anchor="end">' + v + '</text>';
         }
-        f += '<text class="ci2-tick is-unit" data-lab="tick" x="' + n1(c.l - 6) + '" y="' + n1(c.t - 12) + '" text-anchor="end">cm</text>';
+        f += '<text class="ci2-tick is-unit" data-lab="tick" x="' + n1(c.l - 6) + '" y="' + n1(c.t - 15) + '" text-anchor="end">cm</text>';
         f += '<line class="ci2-axis" x1="' + n1(c.l) + '" x2="' + n1(c.l) + '" y1="' + n1(c.t - 4) + '" y2="' + n1(c.b) + '"/><line class="ci2-axis" x1="' + n1(c.l) + '" x2="' + n1(c.r) + '" y1="' + n1(c.b) + '" y2="' + n1(c.b) + '"/>';
         [0, 1].forEach(function(i){ f += '<text class="ci2-bname is-' + GR[i].id + '" data-lab="bname" x="' + n1(c.cx[i]) + '" y="' + n1(c.b + 18) + '" text-anchor="middle">' + esc(GR[i].name) + '</text>'; });
         sFront.innerHTML = f;
@@ -276,14 +276,15 @@
         sLive.innerHTML = '';
         E = {};
         E.ml = [0, 1].map(function(i){ return { halo: mk('line', 'ci2-mhalo', null, sLive), line: mk('line', 'ci2-mline is-' + GR[i].id, null, sLive) }; });
-        E.band = mk('rect', 'ci2-band', null, sLive);
         E.bar = [0, 1].map(function(i){ return mk('rect', 'ci2-bar is-' + GR[i].id, null, sLive); });
+        E.band = mk('rect', 'ci2-band', null, sLive);   // over the bars, under the error bars
         E.err = [0, 1].map(function(){ return mk('path', 'ci2-err', null, sLive); });
         sLabs.innerHTML = '';
         E.pMean = pill('ci2-pill is-sun', 'mean');
         E.pBand = pill('ci2-pill is-band', 'band');
-        E.pE = [0, 1].map(function(i){ return mk('text', 'ci2-elab is-' + GR[i].id, { 'text-anchor': 'middle', 'data-lab': 'elab' }, sLabs); });
-        E.nl = [0, 1].map(function(i){ return mk('text', 'ci2-nlab', { 'text-anchor': 'middle', 'data-lab': 'nlab', x: n1(G.cb.cx[i]), y: n1(G.cb.b + (G.big ? 43 : 42)) }, sLabs); });
+        // each ± beside its error bar's top cap, on the outer side (the middle is the band's)
+        E.pE = [0, 1].map(function(i){ return mk('text', 'ci2-elab is-' + GR[i].id, { 'text-anchor': i ? 'start' : 'end', 'data-lab': 'elab' }, sLabs); });
+        E.nl = [0, 1].map(function(i){ return mk('text', 'ci2-nlab', { 'text-anchor': 'middle', 'data-lab': 'nlab', x: n1(G.cb.cx[i]), y: n1(G.cb.b + (G.big ? 43 : 41)) }, sLabs); });
       }
       var E = {}, LF = { v: null, tw: null };   // the leaf size, tweened when the number of plants changes
       function pill(cls, lab){
@@ -396,14 +397,17 @@
       /* slots: the final order, each { p: an existing plant or null, z }; the others leave */
       function morph(g, slots, o){
         o = o || {};
-        var n = slots.length, keep = slots.map(function(s){ return s.p; });
+        var n = slots.length, keep = slots.map(function(s){ return s.p; }), T0 = now();
         P[g].forEach(function(p){ if(p.st !== 'leave' && keep.indexOf(p) < 0){ p.st = 'leave'; twn(p, 'op', 0, 420); twn(p, 'h', 0, 420); if(calm()){ p.op = 0; p.h = 0; } } });
         slots.forEach(function(s, i){
           var fx = (i + 0.5) / n, p = s.p;
           if(!p){
             p = { g: g, id: ++uid, z: s.z, h: 0, x: fx, op: 1, st: 'sprout', tw: {} };
             P[g].push(p); if(G) plantEl(p);
-            twn(p, 'h', target(p), 620, (o.stagger || 45) * i);
+            // a group of new plants sprouts together and is counted together (it keeps the tray's mean and SD)
+            var dl = s.grp != null ? GD * s.grp : (o.stagger || 45) * i;
+            twn(p, 'h', target(p), 620, dl);
+            if(p.tw.h) p.tw.h.t0 = T0 + dl;   // one clock for the whole change: a group finishes on the same frame
             if(calm()){ p.h = target(p); p.st = 'grown'; }
           } else {
             p.z = s.z;
@@ -411,6 +415,28 @@
             twn(p, 'h', target(p), o.dur || 420, o.wave ? 22 * i : 0);
           }
         });
+      }
+      var GD = 380;   // ms between two groups of new plants
+      /* n values with mean 0 and Σz² = n (population SD 1), none beyond ±2.2: a group that keeps a standardized set standardized */
+      function zpop(n, r){
+        if(n === 1) return [0];
+        for(var t = 0; t < 80; t++){
+          var a = [], sm = 0, q = 0, i;
+          for(i = 0; i < n; i++){ a.push(r.normal(0, 1)); sm += a[i]; }
+          var m = sm / n; for(i = 0; i < n; i++) q += (a[i] - m) * (a[i] - m);
+          var sd = Math.sqrt(q / n); a = a.map(function(v){ return (v - m) / sd; });
+          if(a.every(function(v){ return Math.abs(v) <= 2.2; })) return a;
+        }
+        return a;
+      }
+      /* the indices of n values out of zs whose mean is nearest 0 and SD (n − 1) nearest 1 (every subset is tried) */
+      function bestSubset(zs, n){
+        var k = zs.length, best = null, bs = Infinity, pick = [];
+        (function rec(start, d, S, Q){
+          if(d === n){ var m = S / n, sd = Math.sqrt(Math.max(0, (Q - n * m * m) / (n - 1))), sc = Math.abs(m) + Math.abs(sd - 1); if(sc < bs){ bs = sc; best = pick.slice(); } return; }
+          for(var i = start; i <= k - (n - d); i++){ pick.push(i); rec(i + 1, d + 1, S + zs[i], Q + zs[i] * zs[i]); pick.pop(); }
+        })(0, 0, 0, 0);
+        return best;
       }
       function heightsOk(g, zs, m, s){ return zs.every(function(z){ var h = m + s * z; return h >= HLO && h <= HHI; }); }
       function restd(zs){ var st = statsOf(zs); return zs.map(function(z){ return (z - st.mean) / st.sd; }); }
@@ -421,16 +447,22 @@
         [0, 1].forEach(function(g){
           var a = active(g), k = a.length, slots;
           if(n > k){
-            // new plants chosen so the tray keeps its mean and SD exactly: only n changes
-            var j = n - k, d = Math.sqrt(j / (j - 1)), add = null;
-            for(var t = 0; t < 40; t++){ var u = zset(j, M.rng(7919 + 131 * (++draws))); add = u.map(function(v){ return v * d; }); if(heightsOk(g, add, Mo[g].m, Mo[g].s)) break; }
+            // new plants come in groups, each with mean 0 and Σz² equal to its size: the tray keeps its mean and SD
+            // exactly as each group is counted, so only n changes, on every frame
+            var j = n - k, ng = Math.max(1, Math.round(j / 5)), sizes = [], left = j;
+            for(var gi = 0; gi < ng; gi++){ var sz = Math.round(left / (ng - gi)); sizes.push(sz); left -= sz; }
+            var groups = sizes.map(function(sz){ var u = null; for(var t = 0; t < 60; t++){ u = zpop(sz, M.rng(7919 + 131 * (++draws))); if(heightsOk(g, u, Mo[g].m, Mo[g].s)) break; } return u; });
             slots = new Array(n);
             a.forEach(function(p, i){ slots[Math.min(n - 1, Math.round((i + 0.5) * n / k - 0.5))] = { p: p, z: p.z }; });
-            var q = 0; for(var i = 0; i < n; i++) if(!slots[i]) slots[i] = { p: null, z: add[q++] };
+            var q = 0, used = sizes.map(function(){ return 0; });
+            for(var i = 0; i < n; i++) if(!slots[i]){ var gq = q % ng; while(used[gq] >= sizes[gq]) gq = (gq + 1) % ng; slots[i] = { p: null, z: groups[gq][used[gq]++], grp: gq }; q++; }
+            St.sprout = (ng - 1) * GD + 620;
           } else {
-            var keepI = []; for(var i2 = 0; i2 < n; i2++) keepI.push(Math.round((i2 + 0.5) * k / n - 0.5));
-            var ks = keepI.map(function(i){ return a[i]; }), zs = restd(ks.map(function(p){ return p.z; }));
+            // the kept plants: the subset whose mean and SD are already closest to the tray's, so none jumps
+            var best = bestSubset(a.map(function(p){ return p.z; }), n);
+            var ks = best.map(function(i){ return a[i]; }), zs = restd(ks.map(function(p){ return p.z; }));
             slots = ks.map(function(p, i){ return { p: p, z: zs[i] }; });
+            St.sprout = 420;
           }
           morph(g, arrange(g, slots));
         });
@@ -495,7 +527,7 @@
         dir: function(){ return 90; },
         keys: function(v, key, big){ var st = big ? 0.5 : 0.1, lim = sdLim(); if(key === 'ArrowUp' || key === 'ArrowRight' || key === 'PageUp') return clamp(r1(v + (key === 'PageUp' ? 0.5 : st)), lim[0], lim[1]); if(key === 'ArrowDown' || key === 'ArrowLeft' || key === 'PageDown') return clamp(r1(v - (key === 'PageDown' ? 0.5 : st)), lim[0], lim[1]); if(key === 'Home') return lim[0]; if(key === 'End') return lim[1]; return null; },
         valuetext: function(){ var d = drawn[1]; return d && isFinite(d.sd) ? 'Shade plants, SD ' + F(r1(d.sd), 1) + ' ' + U : ''; },
-        tag: function(){ var d = drawn[1]; return d && isFinite(d.sd) ? 'SD ' + F(r1(d.sd), 1) + ' ' + U : ''; }, tagSide: function(){ return 'up'; },
+        tag: function(){ var d = drawn[1]; if(cue && cue.active()) return ''; return d && isFinite(d.sd) ? 'SD ' + F(r1(d.sd), 1) + ' ' + U + (Mo[1].s >= sdLim()[1] - 1e-9 ? ' (max)' : '') : ''; }, tagSide: function(){ return 'up'; },
         bounds: function(){ return G ? [G.tx[1] - 8, 0, G.W - 4, G.H] : null; },
         onStart: function(){ hideCue(true); lastAct = { kind: 'sd', was: verdictNow() }; },
         onEnd: function(){ kick(); },
@@ -528,7 +560,7 @@
             var ylo = yA(d.mean - d.e2), yhi = yA(d.mean + d.e2), cp = c.cap / 2;
             at(er, { d: 'M' + n1(cx) + ' ' + n1(yhi) + 'V' + n1(ylo) + 'M' + n1(cx - cp) + ' ' + n1(yhi) + 'h' + n1(c.cap) + 'M' + n1(cx - cp) + ' ' + n1(ylo) + 'h' + n1(c.cap) });
             er.style.display = '';
-            var et = E.pE[g]; txt(et, '±' + F(r1(d.e2), 1)); at(et, { x: cx, y: yhi - 7 }); et.style.display = '';
+            var et = E.pE[g]; txt(et, '±' + F(r1(d.e2), 1)); at(et, { x: g ? cx + cp + 5 : cx - cp - 5, y: yhi + 4.5 }); et.style.display = '';
           } else { er.style.display = 'none'; E.pE[g].style.display = 'none'; }
           txt(E.nl[g], 'n = ' + d.n);
         });
@@ -541,13 +573,14 @@
         if(V){
           var loHi = V.lo.x.mean + V.lo.x.e2, upLo = V.up.x.mean - V.up.x.e2, ya = yA(Math.max(loHi, upLo)), yb = yA(Math.min(loHi, upLo));
           if(V.kind === 'touch' || yb - ya < 1.5){ var ym = (ya + yb) / 2; ya = ym - 1; yb = ym + 1; }
-          var bx0 = c.cx[0] + c.cap / 2 + 4, bx1 = c.cx[1] - c.cap / 2 - 4;
+          var bx0 = c.cx[0], bx1 = c.cx[1];   // from one bar's centre to the other's
           at(E.band, { x: bx0, y: ya, width: bx1 - bx0, height: yb - ya, 'class': 'ci2-band is-' + V.kind }); E.band.style.display = '';
           E.pBand.g.setAttribute('class', 'ci2-pill is-' + V.kind);
           // the band's word: on the band, or just under or over it when a ± label is in the way (4 px clear)
           var word = V.kind === 'ov' ? 'overlap' : V.kind === 'gap' ? 'gap' : 'touch', fsb = G.big ? 13 : 12, wb = tw(word, fsb, 800) + 14, hb = fsb + 9, mx = (bx0 + bx1) / 2;
-          var boxes = [0, 1].map(function(g){ var d = drawn[g]; if(!(d.n > 1)) return null; var yy = yA(d.mean + d.e2) - 7, w2 = tw('±' + F(r1(d.e2), 1), 12.5, 900) / 2; return [c.cx[g] - w2, yy - 13, c.cx[g] + w2, yy + 4]; });
-          var cands = [(ya + yb) / 2, yb + hb / 2 + 4, ya - hb / 2 - 4], yw = cands[0];
+          var boxes = [0, 1].map(function(g){ var d = drawn[g]; if(!(d.n > 1)) return null; var yy = yA(d.mean + d.e2) + 4.5, w2 = tw('±' + F(r1(d.e2), 1), 12.5, 900), x0 = g ? c.cx[g] + c.cap / 2 + 5 : c.cx[g] - c.cap / 2 - 5 - w2; return [x0, yy - 13, x0 + w2, yy + 4]; });
+          // a band too thin for the word gets it just over or under it, never on it
+          var cands = (yb - ya >= hb + 8 ? [(ya + yb) / 2] : []).concat([ya - hb / 2 - 4, yb + hb / 2 + 4]), yw = cands[0];
           for(var ci = 0; ci < cands.length; ci++){
             var bb = [mx - wb / 2 - 4, cands[ci] - hb / 2 - 4, mx + wb / 2 + 4, cands[ci] + hb / 2 + 4];
             if(!boxes.some(function(q){ return q && q[0] < bb[2] && q[2] > bb[0] && q[1] < bb[3] && q[3] > bb[1]; })){ yw = cands[ci]; break; }
@@ -563,9 +596,10 @@
         if(cause.el.classList.contains('is-take')) return;
         if(!V){ cause.set([{ t: 'Growing', role: 'diff' }]); return; }
         var d = { t: 'means ' + F(V.diff, 1) + ' ' + U + ' apart', role: 'diff', say: 'The means are ' + F(V.diff, 1) + ' ' + U + ' apart' };
-        if(V.kind === 'ov') cause.set([d, { t: 'bars overlap by ' + F(V.ov, 1) + ' ' + U, role: 'ov', say: 'the error bars overlap by ' + F(V.ov, 1) + ' ' + U }, { t: 'may be chance', role: 'ov', say: 'so the difference may be due to chance' }]);
-        else if(V.kind === 'gap') cause.set([d, { t: 'bars ' + F(-V.ov, 1) + ' ' + U + ' apart', role: 'gap', say: 'the error bars are ' + F(-V.ov, 1) + ' ' + U + ' apart' }, { t: 'unlikely to be chance', role: 'gap', say: 'so the difference is unlikely to be due to chance' }]);
-        else cause.set([d, { t: 'bars just touch', role: 'touch', say: 'the error bars just touch' }, { t: 'too close to call', role: 'touch', say: 'too close to call from the picture' }]);
+        if(V.kind === 'ov') cause.set([d, { t: 'bars overlap by ' + F(V.ov, 1) + ' ' + U, role: 'ov', say: 'the error bars overlap by ' + F(V.ov, 1) + ' ' + U }, { t: 'may be chance', role: 'ov', say: 'the difference may be due to chance' }]);
+        else if(V.kind === 'gap') cause.set([d, { t: 'bars ' + F(-V.ov, 1) + ' ' + U + ' apart', role: 'gap', say: 'the error bars are ' + F(-V.ov, 1) + ' ' + U + ' apart' }, { t: 'unlikely to be chance', role: 'gap', say: 'the difference is unlikely to be due to chance' }]);
+        // just touching is still no overlap (here p is about 0.02): by the rule, unlikely to be chance
+        else cause.set([d, { t: 'bars just touch', role: 'touch', say: 'the error bars just touch, with no overlap' }, { t: 'unlikely to be chance', role: 'gap', say: 'the difference is unlikely to be due to chance' }]);
       }
 
       /* ---------------------------------------------------- settled: takeaways, challenges, live text, "?" */
@@ -574,24 +608,25 @@
         var V = lastV, msg = cause.text(), take = null, a = lastAct;
         if(a && V && St.mode === 'explore'){
           if(a.kind === 'n' && a.to === 4 * a.from) take = 'Four times the plants, half the bar: SE\u00a0=\u00a0SD\u00a0÷\u00a0√n.';
-          else if(a.kind === 'n' && a.was === 'ov' && V.kind === 'gap') take = 'More plants made the bars shorter, so the real difference shows.';
-          else if(a.kind === 'sample') take = St.n <= COUNTS[0] ? 'With ' + St.n + ' plants a tray, chance alone moves the means a lot.' : St.n >= COUNTS[COUNTS.length - 1] ? 'With ' + St.n + ' plants a tray, a new sample hardly moves the means.' : null;
-          else if(a.kind === 'sd' && a.was === 'gap' && V.kind === 'ov') take = 'More spread, longer bars: the same difference is harder to see.';
+          else if(a.kind === 'n' && a.was === 'ov' && V.kind !== 'ov') take = 'More plants made the bars shorter, so the real difference shows.';
+          else if(a.kind === 'sample') take = St.n <= COUNTS[0] ? 'With ' + St.n + ' plants a tray, chance alone moves the means a lot.' : St.n >= COUNTS[COUNTS.length - 1] ? 'With ' + St.n + ' plants a tray, a new sample moves the means much less.' : null;
+          else if(a.kind === 'sd' && a.was && a.was !== 'ov' && V.kind === 'ov') take = 'More spread, longer bars: the same difference is harder to see.';
         }
         if(take){ cause.take(take); msg += ' ' + take; }
         if(a && V){
-          goal('gap', a.kind === 'n' && V.kind === 'gap' && Mo[0].m === GR[0].mean && Mo[1].m === GR[1].mean, 'With ' + St.n + ' plants a tray the bars are <b>' + F(-V.ov, 1) + ' ' + esc(U) + ' apart</b>: the same means, but shorter bars, so the difference is <b>unlikely to be chance</b>.');
+          goal('gap', a.kind === 'n' && V.kind !== 'ov' && Mo[0].m === GR[0].mean && Mo[1].m === GR[1].mean, 'With ' + St.n + ' plants a tray the bars are <b>' + (V.ov < 0 ? F(-V.ov, 1) + ' ' + esc(U) + ' apart' : 'just touching') + '</b>: the same means, but shorter bars, so the difference is <b>unlikely to be chance</b>.');
           goal('sd', a.kind === 'sd' && V.kind === 'ov', 'SD ' + F(Mo[1].s, 1) + ' ' + esc(U) + ': more spread makes the Shade bar longer, and the bars <b>overlap</b> again.');
           if(a.kind === 'n' && a.to === 4 * a.from){ var s = Mo[1].s; goal('four', true, a.from + ' to ' + a.to + ' plants, <b>four times</b> as many: the Shade bar went from ±' + F(r1(2 * s / Math.sqrt(a.from)), 1) + ' to <b>±' + F(r1(2 * s / Math.sqrt(a.to)), 1) + '</b>, half as long, because SE = SD ÷ √n.'); }
-          goal('flip', a.kind === 'sample' && St.n === COUNTS[0] && a.was && a.was !== V.kind, 'Same trays, new plants, and the verdict changed to <b>' + (V.kind === 'gap' ? 'bars apart' : V.kind === 'ov' ? 'bars overlap' : 'bars touch') + '</b>. With 5 plants, chance alone can do that.');
+          goal('flip', a.kind === 'sample' && St.n === COUNTS[0] && a.was && (a.was === 'ov') !== (V.kind === 'ov'), 'Same trays, new plants, and the verdict changed to <b>' + (V.kind === 'gap' ? 'bars apart' : V.kind === 'ov' ? 'bars overlap' : 'bars just touch') + '</b>. With 5 plants, chance alone can do that.');
         }
         say(msg);
         refHtml();
       }
 
       /* ---------------------------------------------------- the first visit cue and "Show me how" */
-      var cue = K.cue(layer, { key: 'apbio-ci', text: EX.cue, side: 'left', at: function(){ return G && drawn[1] && isFinite(drawn[1].mean) ? [G.knobX - 26, yH(drawn[1].mean)] : [0, 0]; } });
-      function hideCue(used){ if(cue.active()) cue.hide(used); }
+      // the cue sits on the empty board above the shade plants, pointing down at the knob: never on a plant or the line
+      var cue = K.cue(layer, { key: 'apbio-ci', text: EX.cue, side: 'above', at: function(){ var t = tallest(); return G && t ? [G.knobX, yH(t.h) - 6] : [0, 0]; } });
+      function hideCue(used){ if(cue.active()){ cue.hide(used); hSd.place(); } }
       var tour = K.tour({ key: 'apbio-ci', label: 'Show me how', steps: [
         { id: 'mean', text: 'Drag the knob: every shade plant grows or shrinks. Their mean is the blue bar on the clipboard.', target: function(){ return hMean.knob; } },
         { id: 'clip', text: 'Each error bar reaches 2 SE above and below the mean. Overlap: the difference may be chance.', target: function(){ var r = sceneBox.getBoundingClientRect(); return G ? { left: r.left + G.cb.x, top: r.top + G.cb.y, width: G.cb.w, height: G.cb.h, right: r.left + G.cb.x + G.cb.w, bottom: r.top + G.cb.y + G.cb.h } : sceneBox; } },
@@ -609,7 +644,7 @@
         var V = lastV; if(!V) return;
         var rows = [0, 1].map(function(g){ var d = drawn[g], se = d.sd / Math.sqrt(d.n), m = r1(d.mean), e = r1(d.e2); return '<tr><th scope="row">' + esc(GR[g].name) + '</th><td>' + d.n + '</td><td>' + F(m, 1) + '</td><td>' + F(r1(d.sd), 1) + '</td><td>' + F(r1(d.sd), 1) + ' ÷ ' + F(Math.sqrt(d.n), 2) + ' = ' + F(se, 2) + '</td><td>' + F(m, 1) + ' ± ' + F(e, 1) + ' = ' + F(r1(m - e), 1) + ' to ' + F(r1(m + e), 1) + '</td></tr>'; }).join('');
         refLive.innerHTML = '<h3>This picture, worked out</h3><div class="bt-tablewrap"><table class="ci2-tab"><thead><tr><th scope="col">Tray</th><th scope="col">n</th><th scope="col">Mean (' + esc(U) + ')</th><th scope="col">SD</th><th scope="col">SE = SD ÷ √n</th><th scope="col">95% CI ≈ mean ± 2 SE</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
-          '<p>' + (V.kind === 'ov' ? 'The error bars overlap by ' + F(V.ov, 1) + ' ' + esc(U) + ', so the difference may be due to chance: the data do not show a real difference.' : V.kind === 'gap' ? 'The error bars are ' + F(-V.ov, 1) + ' ' + esc(U) + ' apart, so the difference is unlikely to be due to chance: it is likely a real difference.' : 'The error bars just touch: too close to call from the picture.') + '</p>';
+          '<p>' + (V.kind === 'ov' ? 'The error bars overlap by ' + F(V.ov, 1) + ' ' + esc(U) + '. By the course’s rule the data do not show a difference: it may be due to chance. (A formal test can still find one when bars overlap a little; see “Strictly speaking”.)' : V.kind === 'gap' ? 'The error bars are ' + F(-V.ov, 1) + ' ' + esc(U) + ' apart, so the difference is unlikely to be due to chance: it is likely a real difference.' : 'The error bars just touch: there is no overlap, so by the rule the difference is unlikely to be due to chance (bars like these that just touch give p of about 0.01 to 0.02).') + '</p>';
       }
 
       /* ---------------------------------------------------- Test yourself, "Challenges" */
@@ -667,11 +702,12 @@
         paint();
       }
       // the leaves: as big as the plants' spacing allows (fewer plants, bigger leaves), never under 7 px
-      function leafFor(instant){
+      function leafFor(instant, dur){
         if(!G) return;
-        var to = clamp(G.tw / Math.max(1, St.n) * 0.6, 8, G.wide ? 30 : G.big ? 24 : 16);
+        // never under 11 px: at 20 plants neighbouring leaves overlap, as real seedling leaves do
+        var to = clamp(G.tw / Math.max(1, St.n) * 0.6, 11, G.wide ? 30 : G.big ? 24 : 16);
         if(LF.v == null || instant || calm()){ LF.v = to; LF.tw = null; }
-        else if(Math.abs(to - LF.v) > 0.01) LF.tw = { from: LF.v, to: to, t0: now(), dur: 420 };
+        else if(Math.abs(to - LF.v) > 0.01) LF.tw = { from: LF.v, to: to, t0: now(), dur: dur || 420 };   // over the whole sprouting
         G.leaf = LF.v;
       }
 
@@ -696,7 +732,7 @@
         if(ex && saved){ restore(saved); saved = null; }
         cause.take(null); lastAct = null;
         if(goals && was !== 'goals'){ setTimeout(function(){ fresh(); }, 30); return; }
-        setTimeout(function(){ layoutNow(true); settled(); if(ex && !tour.active()){ if(cue.show()) cue.place(); } }, 30);
+        setTimeout(function(){ layoutNow(true); settled(); if(ex && !tour.active()){ if(cue.show()){ hSd.place(); cue.place(); } } }, 30);
       }
       ctx.kit2 = { stage: stage, ref: ref, othersLabel: 'On the picture',
         parts: [{ value: 'practice', label: 'Problems', practice: true },
@@ -713,11 +749,11 @@
       if(window.ResizeObserver){ var tm = null; new ResizeObserver(function(){ clearTimeout(tm); tm = setTimeout(function(){ if(busy()){ stopAll(); } layoutNow(false); settled(); }, 60); }).observe(sceneBox); }
       else window.addEventListener('resize', function(){ layoutNow(false); });
       // n changes the leaf size a little (fewer plants, bigger leaves): set it as the count changes
-      var setN0 = setN; setN = function(n, u){ setN0(n, u); leafFor(); kick(); };
+      var setN0 = setN; setN = function(n, u){ setN0(n, u); leafFor(false, St.sprout); kick(); };
       // for the sweep (scripts/tools-v2/bio-confidence-intervals-sweep.mjs): the drawn state and the geometry
       window.__ci2 = { G: function(){ return G; }, P: function(){ return P; }, Mo: function(){ return Mo; }, St: St, busy: busy, drawn: function(){ return drawn; }, V: function(){ return lastV; },
         set: function(o){ stopAll(); if(o.n && o.n !== St.n){ setN(o.n); stopAll(); } if(o.mean != null){ setMean(o.mean); } if(o.sd != null){ setSd(o.sd); } stopAll(); cause.take(null); lastAct = null; paint(); settled(); },
-        open: function(){ fresh(); }, setN: function(n){ setN(n); }, sample: function(){ newSample(); }, reset: function(){ reset(); },
+        open: function(){ fresh(); }, noCue: function(){ hideCue(true); }, setN: function(n){ setN(n); }, sample: function(){ newSample(); }, reset: function(){ reset(); },
         mean: function(v){ setMean(v); }, sd: function(v){ setSd(v); } };
     }, { studio: { kit2: function(ctx){ return ctx.kit2; } } });
   }
