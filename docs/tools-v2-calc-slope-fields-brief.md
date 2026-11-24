@@ -142,7 +142,33 @@ the k knob; cooling adds the k knob, the room knob and the mug.
 
 ## Checks run (2026-11-24)
 
-See the end of this file for the numbers of the final run.
+`node --test scripts/test/apcalc-*.test.mjs` (156 pass), `apcalcbc-*` (71 pass), `check-apcalc-content --check`,
+`build-apcalc --check` (333), `build-apcalcbc --check` (420), `build-apmacro --check` (203), `check-site`, `check-weight
+--check` all clean; `check-tool-use` with a local copy of the list (never the committed file): this page reports
+tool-open, tool-touch, tool-mode and tool-use as frame v2, nothing under automation.
+
+- Sweep (`calc-slope-fields-sweep.mjs`, one width per process): 68 states (every equation at its start, the four
+  corners, the formula on, after a float; on an equilibrium, vertical ends, k and the room at their ends) at each of
+  360, 390, 430, 600, 768, 820, 1024, 1280, 1440 and 1920, light and dark (dark asserted), plus a first visit at each:
+  1,360 states, 32,240 checks, 0 failures.
+- Fit (`--fit`) at 390x844, 1024x768, 1280x800, 375x667 and 360x740, for y − 2, cooling and growth: the leaf's knob,
+  the picture and the cause line in view at once, no inner scroll.
+- Frames (`--frames`) at 390 dark and 1440 light: every frame of a float on each equation, a new equation, the
+  formula drawing in and a real drag then float (about 2,570 frames): the leaf on the drawn curve and turned along it,
+  the mug reading the drawn leaf, the takeaway never while the leaf floats, the cause line's point the drawn start;
+  leaving for Test yourself mid float stops it.
+- Browser checks (`calc-slope-fields-interact.mjs`): 65 passing (real touch drag at 390, a tap on the water, keys with
+  aria-valuetext current, the float and its takeaway, the picker, k and the room dragged, Check with the formula, every
+  formula against the exact solution, "?" filled on a fresh page and following, the menu's Start over, reduced motion,
+  Test yourself by `?seed=7#quiz` with a wrong answer, Show the answer and the tries recorded as
+  `slope-fields:<context>:<step>`, the Premium card without a pass, no console errors), light and dark.
+- Perf at CPU x4 (`calc-slope-fields-perf.mjs`, load about 2, the flagship in the same run): 390: drag median 16.7 ms,
+  p95 16.8 ms (2.5 ms main thread a frame); float 16.7 / 16.7 ms; new equation 16.7 / 16.8 ms; k drag 16.7 / 16.8 ms.
+  1440: drag 16.7 / 33.4 ms (3.5 ms); float 16.7 / 16.8 ms; new equation 16.7 / 16.8 ms; k drag 16.7 / 33.4 ms (3.6
+  ms). Flagship 33.3 / 66.6 ms (390) and 33.3 / 83.2 ms (1440).
+
+Preview: `/mnt/user-data/outputs/calc-slope-fields-v2/index.html`, shots in `shots/` (sweep states at 360, 390, 768,
+1024 and 1440, light and dark; fit; frames; mid float).
 
 ## Not done, and what I am not happy with
 

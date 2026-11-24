@@ -707,6 +707,8 @@
       // on a phone the button is under the picture: bring the picture into view for the line drawing in
       var sr = scene.getBoundingClientRect(); if(sr.top < 0 || sr.bottom > window.innerHeight) try{ scene.scrollIntoView({ block: 'nearest', behavior: K.reduced() ? 'auto' : 'smooth' }); }catch(e){}
       st.exactIn = st.exact && !K.reduced();
+      // turned off: the line and its label fade out rather than vanish
+      if(!st.exact){ var gone = [gD.querySelector('g[clip-path]'), gT.querySelector('.sf2-cex')].filter(Boolean); if(gone.length) fadeOut(gone); }
       draw(); tourDid('check');
       var ex = gD.querySelector('.sf2-exact');
       if(ex && st.exactIn && ex.getTotalLength){ var L = ex.getTotalLength(); ex.style.strokeDasharray = L + ' ' + L; ex.style.strokeDashoffset = L; ex.getBoundingClientRect(); ex.style.transition = 'stroke-dashoffset .7s ease-out'; ex.style.strokeDashoffset = '0'; setTimeout(function(){ ex.style.strokeDasharray = ''; ex.style.strokeDashoffset = ''; ex.style.transition = ''; st.exactIn = false; }, 760); }
