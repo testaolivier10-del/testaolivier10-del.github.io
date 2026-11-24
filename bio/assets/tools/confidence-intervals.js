@@ -340,7 +340,7 @@
         if(Math.abs(p[key] - to) < 1e-9 && !p.tw[key]){ return; }
         p.tw[key] = { from: p[key], to: to, t0: now() + (delay || 0), dur: dur };
       }
-      function busy(){ if(LF.tw) return true; for(var g = 0; g < 2; g++) for(var i = 0; i < P[g].length; i++){ var p = P[g][i]; if(p.st !== 'grown') return true; for(var k in p.tw) return true; } return false; }
+      function busy(){ if(LF.tw || TT[0] || TT[1]) return true; for(var g = 0; g < 2; g++) for(var i = 0; i < P[g].length; i++){ var p = P[g][i]; if(p.st !== 'grown') return true; for(var k in p.tw) return true; } return false; }
       var raf = 0;
       // repaint now (a change just began): the plants' states and every label read from them stay in step
       function paintAll(){ if(!G) return; P.forEach(function(a){ a.forEach(function(p){ if(p.el) paintPlant(p); }); }); paint(); }
@@ -359,6 +359,7 @@
         raf = 0;
         var t = now();
         if(LF.tw){ var lf = clamp((t - LF.tw.t0) / LF.tw.dur, 0, 1); LF.v = LF.tw.from + (LF.tw.to - LF.tw.from) * ease(lf); if(lf >= 1){ LF.v = LF.tw.to; LF.tw = null; } if(G) G.leaf = LF.v; }
+        for(var g0 = 0; g0 < 2; g0++) if(TT[g0]) stepTT(g0, t);
         for(var g = 0; g < 2; g++){
           for(var i = P[g].length - 1; i >= 0; i--){
             var p = P[g][i]; step(p, t);
@@ -370,9 +371,20 @@
         if(busy() && !calm()) raf = requestAnimationFrame(frame);
         else settled();
       }
+      /* the tray tween of a reduction (see setN): z from z0 to z1, the whole tray rescaled to mean 0 and SD 1 each frame */
+      var TT = [null, null];
+      function stepTT(g, t){
+        var T = TT[g], f = clamp((t - T.t0) / T.dur, 0, 1), e = ease(f), N = T.a.length, q = 0;
+        var z = T.z0.map(function(v, i){ return v + (T.z1[i] - v) * e; });
+        z.forEach(function(v){ q += v * v; });
+        var k = Math.sqrt((N - 1) / q);
+        T.a.forEach(function(p, i){ p.z = z[i] * k; p.h = target(p); delete p.tw.h; });
+        if(f >= 1){ TT[g] = null; T.a.forEach(function(p, i){ p.z = T.z1[i] * Math.sqrt((N - 1) / T.z1.reduce(function(a, b){ return a + b * b; }, 0)); }); morph(g, T.slots); }
+      }
       // finish every change at once (leaving the stage, a new change on top of one still playing)
       function stopAll(){
         if(raf){ cancelAnimationFrame(raf); raf = 0; }
+        for(var g1 = 0; g1 < 2; g1++) if(TT[g1]) stepTT(g1, Infinity);
         if(LF.tw){ LF.v = LF.tw.to; LF.tw = null; if(G) G.leaf = LF.v; }
         for(var g = 0; g < 2; g++){
           for(var i = P[g].length - 1; i >= 0; i--){
@@ -418,8 +430,9 @@
       }
       var GD = 380;   // ms between two groups of new plants
       /* n values with mean 0 and Σz² = n (population SD 1), none beyond ±2.2: a group that keeps a standardized set standardized */
-      function zpop(n, r){
+      function zpop(n, r, given){
         if(n === 1) return [0];
+        if(given){ var gm = given.reduce(function(a, b){ return a + b; }, 0) / n, gq = given.reduce(function(a, b){ return a + (b - gm) * (b - gm); }, 0); var gs = Math.sqrt(gq / n) || 1; return given.map(function(v){ return (v - gm) / gs; }); }
         for(var t = 0; t < 80; t++){
           var a = [], sm = 0, q = 0, i;
           for(i = 0; i < n; i++){ a.push(r.normal(0, 1)); sm += a[i]; }
@@ -463,6 +476,16 @@
             var ks = best.map(function(i){ return a[i]; }), zs = restd(ks.map(function(p){ return p.z; }));
             slots = ks.map(function(p, i){ return { p: p, z: zs[i] }; });
             St.sprout = 420;
+            // too few subsets (10 to 5 after a new sample): the kept plants would move by more than a hair while counted.
+            // Then first every plant moves, all still counted, the whole tray rescaled each frame to keep its mean and SD;
+            // only then do the others leave
+            var off = ks.reduce(function(m, p, i){ return Math.max(m, Math.abs(zs[i] - p.z)); }, 0) * Mo[g].s;
+            if(off > 0.02 && !calm()){
+              var go = a.filter(function(p){ return ks.indexOf(p) < 0; }), zl = zpop(go.length, null, go.map(function(p){ return p.z; }));
+              TT[g] = { a: a, z0: a.map(function(p){ return p.z; }), z1: a.map(function(p){ var i = ks.indexOf(p); return i > -1 ? zs[i] : zl[go.indexOf(p)]; }), t0: now(), dur: 420, slots: arrange(g, slots) };
+              St.sprout = 840;
+              return;
+            }
           }
           morph(g, arrange(g, slots));
         });
@@ -589,7 +612,7 @@
         } else { E.band.style.display = 'none'; E.pBand.hide(); }
         paintCause(V);
         hMean.place(); hSd.place();
-        if(cue.active()) cue.place();
+        if(cue.active()) placeCue();
       }
       function paintCause(V){
         if(cause.el.classList.contains('is-take') && busy()) cause.take(null);
@@ -625,7 +648,15 @@
 
       /* ---------------------------------------------------- the first visit cue and "Show me how" */
       // the cue sits on the empty board above the shade plants, pointing down at the knob: never on a plant or the line
-      var cue = K.cue(layer, { key: 'apbio-ci', text: EX.cue, side: 'above', at: function(){ var t = tallest(); if(!G || !t) return [0, 0]; var half = tw(EX.cue, 15, 800) / 2 + 34, lim = (G.wide ? G.cb.x + 20 : G.W - 4) - half; return [Math.min(G.knobX, lim), yH(t.h) - 6]; } });   // on wide stages it stops short of the clipboard
+      // the cue sits on the empty board above the shade plants, its arrow straight above the mean knob: never on a plant,
+      // a line or the clipboard (the kit keeps the arrow on the point while it slides the bubble inside the picture)
+      var cue = K.cue(layer, { key: 'apbio-ci', text: EX.cue, side: 'above', at: function(){ var t = tallest(); return G && t ? [G.knobX, yH(t.h) - 6] : [0, 0]; } });
+      function placeCue(){
+        cue.place();
+        var b = sceneBox.querySelector('.tk2-cue'); if(!b || !G) return;
+        var r = b.getBoundingClientRect(), sr = sceneBox.getBoundingClientRect(), lim = sr.left + (G.wide ? G.cb.x + 20 : G.W - 4);
+        if(r.right > lim){ var dx = parseFloat(b.style.getPropertyValue('--tk2-cue-dx')) || 0; b.style.setProperty('--tk2-cue-dx', (dx - (r.right - lim)).toFixed(1) + 'px'); }
+      }
       function hideCue(used){ if(cue.active()){ cue.hide(used); hSd.place(); } }
       var tour = K.tour({ key: 'apbio-ci', label: 'Show me how', steps: [
         { id: 'mean', text: 'Drag the knob: every shade plant grows or shrinks. Their mean is the blue bar on the clipboard.', target: function(){ return hMean.knob; } },
@@ -732,7 +763,7 @@
         if(ex && saved){ restore(saved); saved = null; }
         cause.take(null); lastAct = null;
         if(goals && was !== 'goals'){ setTimeout(function(){ fresh(); }, 30); return; }
-        setTimeout(function(){ layoutNow(true); settled(); if(ex && !tour.active()){ if(cue.show()){ hSd.place(); cue.place(); } } }, 30);
+        setTimeout(function(){ layoutNow(true); settled(); if(ex && !tour.active()){ if(cue.show()){ hSd.place(); placeCue(); } } }, 30);
       }
       ctx.kit2 = { stage: stage, ref: ref, othersLabel: 'On the picture',
         parts: [{ value: 'practice', label: 'Problems', practice: true },

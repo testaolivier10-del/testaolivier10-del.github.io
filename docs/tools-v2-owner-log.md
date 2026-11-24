@@ -475,3 +475,5 @@ in each tool's brief.
 | 2026-11-23 | AP Bio Confidence intervals | Review round 1: leaves never under 11 px (they overlap at 20 plants) and resize over the whole sprouting | Plants read as plants, never pins | `leafFor` |
 | 2026-11-23 | AP Bio Confidence intervals | Review round 1: the SD tag says "(max)" when the spread is at its cap | Rule 8: an extreme says why it stops | `hSd` |
 | 2026-11-23 | AP Bio Confidence intervals | Review round 1: "a new sample moves the means much less" at 20 plants (was "hardly moves") | The means still move about 1 SD of their difference | `settled` |
+| 2026-11-23 | AP Bio Confidence intervals | Recheck 1: the first visit cue's arrow sits straight above the mean knob at every width (it pointed at the spread knob on phones) | One cue points at the first move | `placeCue` |
+| 2026-11-23 | AP Bio Confidence intervals | Recheck 1: a reduction whose kept plants would move more than 0.02 cm first moves every plant (all counted, the tray rescaled each frame), then the others leave | Only n changes, on every frame, also after New sample | `stepTT` |

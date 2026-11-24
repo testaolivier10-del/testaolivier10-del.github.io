@@ -196,3 +196,17 @@ Checks after the fixes (speed rule, fix round): sweep at 360 and 390 (81 each), 
 dark, **320 passed, 0 failed**; frames **65 passed, 0 failed** (1,152 frames at 390 and 1,315 at 1440, plus the
 eighteen "only n changes" runs); AP Bio tests 74 pass, content check 0 failing, `build-apbio --check`, `check-site`.
 The cue stops short of the clipboard on wide stages, so it never covers a tick number.
+
+## Recheck 1 (2026-11-23): BLOCK on one item, fixed
+1. **R1, the cue on phones pointed at the spread knob.** The cue's anchor is now the mean knob's x; the kit keeps the
+   arrow there while it slides the bubble inside the picture, and on wide stages the tool slides it further left so
+   it stays clear of the clipboard. The sweep now fails the first visit unless the arrow is above the mean knob and
+   within 12 px of it across.
+2. **Should fix, 10 to 5 after New sample.** When the best kept subset is more than 0.02 cm off, the change runs in
+   two steps: first every plant moves, all still counted, the kept ones to their final heights and the others among
+   themselves, the whole tray rescaled every frame so its mean and SD stay exact; then the others leave. The frames
+   run checks 10 to 5 after New sample four times (and 20 to 10, 20 to 5, 5 to 20, 10 to 20): every frame within
+   0.1 cm, at most one verdict change.
+Integration round checks: sweep at all ten widths, one process each, light and dark, **800 passed, 0 failed**;
+frames **75 passed, 0 failed** (1,097 frames at 390 and 1,169 at 1440, plus 28 "only n changes" runs); AP Bio tests
+74 pass, content check 0 failing, `build-apbio --check`, `check-site`.

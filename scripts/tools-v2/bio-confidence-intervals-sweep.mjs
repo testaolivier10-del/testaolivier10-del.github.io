@@ -160,6 +160,10 @@ const GEO = () => {
   const cue = document.querySelector('.ci2 .tk2-cue');
   if (cue) {
     const r = cue.getBoundingClientRect(); lab.forEach(l => { const a = l[0]; if (a.left < r.right && a.right > r.left && a.top < r.bottom && a.bottom > r.top) out.push(`cue covers "${l[1]}"`); }); inside(r, scene, 'cue');
+    // its arrow points at the mean knob (the thing to drag): straight above it, within 12 px across
+    const ar = cue.querySelector('.tk2-cue-ar').getBoundingClientRect(), km = document.querySelector('.ci2-hmean .tk2-knob').getBoundingClientRect();
+    const ax = ar.left + ar.width / 2, kx = km.left + km.width / 2;
+    if (Math.abs(ax - kx) > 12 || ar.top > km.top) out.push(`cue arrow ${Math.round(ax - kx)} px across from the mean knob`);
     // never on a plant's top or leaves, nor across a mean line
     document.querySelectorAll('.ci2-pl .ci2-top, .ci2-mline').forEach(e => { const a = e.getBoundingClientRect(); if (a.width + a.height > 0 && a.left < r.right && a.right > r.left && a.top < r.bottom && a.bottom > r.top) out.push(`cue covers ${e.matches('.ci2-mline') ? 'a mean line' : 'a plant'}`); });
   }
@@ -278,7 +282,7 @@ if (FRAMES) {
       ok(!r.bad.length && r.flips <= 1, `${w} only n changes, ${label}: ${r.bad.length} off of ${r.n} frames, ${r.flips} flips: ${r.bad.slice(0, 2).join(' | ')}`);
     }
     for (const [a, b] of [[5, 20], [20, 5], [5, 10], [10, 20], [20, 10], [10, 5]]) await steady(`${a} to ${b}`, async () => { await page.evaluate(() => window.__ci2.reset()); await still(page); if (a !== 5) { await page.click(`.ci2-nb[data-n="${a}"]`); await still(page); } }, async () => { await page.click(`.ci2-nb[data-n="${b}"]`); });
-    for (const [a, b] of [[5, 20], [20, 5], [10, 20]]) await steady(`${a} to ${b} after New sample`, async () => { await page.evaluate(() => window.__ci2.reset()); await still(page); if (a !== 5) { await page.click(`.ci2-nb[data-n="${a}"]`); await still(page); } await page.click('.ci2-new'); }, async () => { await page.click(`.ci2-nb[data-n="${b}"]`); });
+    for (const [a, b] of [[5, 20], [20, 5], [10, 20], [20, 10], [10, 5], [10, 5], [10, 5], [10, 5]]) await steady(`${a} to ${b} after New sample`, async () => { await page.evaluate(() => window.__ci2.reset()); await still(page); if (a !== 5) { await page.click(`.ci2-nb[data-n="${a}"]`); await still(page); } await page.click('.ci2-new'); }, async () => { await page.click(`.ci2-nb[data-n="${b}"]`); });
     await watch('5 to 20 plants (they sprout)', async () => { await page.evaluate(() => window.__ci2.reset()); await still(page); await page.click('.ci2-nb[data-n="20"]'); });
     if (SHOTS) { await page.evaluate(() => window.__ci2.reset()); await still(page); await page.click('.ci2-nb[data-n="20"]'); await page.waitForTimeout(380); await page.screenshot({ path: join(SHOTS, `mid-${w}-sprout.png`), fullPage: w < 500 }); await still(page); }
     await watch('20 to 5 plants (they leave)', async () => { await page.click('.ci2-nb[data-n="5"]'); });
