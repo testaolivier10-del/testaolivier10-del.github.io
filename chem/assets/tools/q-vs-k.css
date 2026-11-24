@@ -1,0 +1,95 @@
+/* Q vs K, tools v2 (chem/assets/tools/q-vs-k.js; docs/tools-v2-chem-q-vs-k-brief.md). Loaded only by this page
+   (chem/data/pages.json "kit2": true), after chem-tools.css. One color per idea, everywhere (Okabe-Ito, lighter in dark
+   mode): Q vermillion (the needle, the Q pill), K bluish green (the notch, the K pill), the way it runs blue (the arrow,
+   its pill). The lab wall and bench are the course's other v2 tools' (ICE tables, Units and significant figures).
+   Atoms use the course's colors (A light blue, B orange, C grey, O red). */
+.qk2{--qk-dir:#0072B2;--qk-dir-ink:#005A8C;--qk-q:#D55E00;--qk-q-ink:#A64700;--qk-k:#009E73;--qk-k-ink:#00704F;
+  --wall0:#EEF3F7;--wall1:#E2EAF0;--grout:#D3DDE5;--bn0:#D9D2C5;--bn1:#C4BBA9;--bn-edge:#A99F8E;--bn-ink:#4A4336;
+  --glass:#8FA9BF;--gl0:rgba(255,255,255,.6);--gl1:rgba(214,230,242,.42);--steel0:#8D99A5;--steel1:#E3E8ED;--card:#FFFDF7;
+  --tray:#B9C3CC;--tray-edge:#8E9AA6;--well:#F4F7FA;--dial:#FFFFFF;--foot:#55606B;--hot:#E8622C;
+  display:flex;flex-direction:column;gap:10px;min-height:0;flex:1 1 auto;}
+:root[data-theme="dark"] .qk2{--qk-dir:#56B4E9;--qk-dir-ink:#8CCBF2;--qk-q:#F08A4B;--qk-q-ink:#F6A878;--qk-k:#2FB88F;--qk-k-ink:#8BE3C8;
+  --wall0:#1E2A36;--wall1:#18232E;--grout:#24323F;--bn0:#33302B;--bn1:#262420;--bn-edge:#4A453D;--bn-ink:#D8D0C2;
+  --glass:#7F97AD;--gl0:rgba(140,170,195,.18);--gl1:rgba(80,110,140,.10);--steel0:#56616C;--steel1:#9AA6B2;--card:#2B323C;
+  --tray:#3A4550;--tray-edge:#56626E;--well:#24303B;--dial:#1E2833;--foot:#3B444D;--hot:#F07A45;}
+.qk2[hidden]{display:none;}
+.qk2 [hidden]{display:none !important;}
+.qk2 .tk2-tabs{margin:0;align-self:flex-start;max-width:100%;}
+.qk2-scene{position:relative;flex:none;border-radius:18px;overflow:hidden;background:var(--surface2);touch-action:manipulation;}
+.qk2-svg,.qk2-front{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;}
+.qk2-mov{position:absolute;display:block;pointer-events:none;} .qk2-front{pointer-events:none;}
+@media (max-width:640px){ .qk2-scene{border-radius:14px;} .qk2{gap:8px;} }
+.qk2-lines{display:flex;align-items:center;justify-content:space-between;gap:6px 18px;flex-wrap:wrap;flex:none;}
+.qk2-again{flex:none;margin-left:auto;min-height:40px;padding:0 14px;font-size:14px;background:var(--white);color:var(--cink);box-shadow:inset 0 0 0 1.5px color-mix(in srgb, var(--cink) 45%, transparent);}
+:root[data-theme="dark"] .qk2-again{background:transparent;}
+/* cause line colors */
+.qk2 .tk2-cz.is-act{--cz:var(--ink);--cz-ink:var(--ink);}
+.qk2 .tk2-cz.is-q{--cz:var(--qk-q);--cz-ink:var(--qk-q-ink);}
+.qk2 .tk2-cz.is-k{--cz:var(--qk-k);--cz-ink:var(--qk-k-ink);}
+.qk2 .tk2-cz.is-dir{--cz:var(--qk-dir);--cz-ink:var(--qk-dir-ink);}
+/* the lab */
+.qk2-wall{fill:url(#qk2g-wall);} .qk2s-wall0{stop-color:var(--wall0);} .qk2s-wall1{stop-color:var(--wall1);}
+.qk2-grout{stroke:var(--grout);stroke-width:1;fill:none;}
+.qk2-bench{fill:url(#qk2g-bench);} .qk2s-bn0{stop-color:var(--bn0);} .qk2s-bn1{stop-color:var(--bn1);}
+.qk2-benchedge{stroke:var(--bn-edge);stroke-width:1.5;fill:none;}
+.qk2-shadow{fill:#000;fill-opacity:.14;}
+.qk2-foot{fill:var(--foot);} .qk2-foot.is-hot{fill:color-mix(in srgb, var(--foot) 80%, var(--hot));}
+.qk2-heat{fill:url(#qk2g-heat);} .qk2s-ht0{stop-color:var(--hot);stop-opacity:.34;} .qk2s-ht1{stop-color:var(--hot);stop-opacity:0;}
+/* the cylinder */
+.qk2-glassbody{fill:url(#qk2g-glass);} .qk2s-gl0{stop-color:var(--gl0);} .qk2s-gl1{stop-color:var(--gl1);}
+.qk2-glassrim{fill:none;stroke:var(--glass);stroke-width:3;stroke-linejoin:round;}
+.qk2-shine{fill:none;stroke:#fff;stroke-opacity:.65;stroke-width:4;stroke-linecap:round;}
+:root[data-theme="dark"] .qk2-shine{stroke-opacity:.16;}
+.qk2-mark{stroke:var(--glass);stroke-width:2;}
+.qk2-tube{fill:none;stroke:var(--glass);stroke-width:3;stroke-linejoin:round;stroke-linecap:round;}
+.qk2-cock{fill:var(--steel0);}
+.qk2-cap{fill:url(#qk2g-steel);stroke:color-mix(in srgb, var(--steel0) 70%, #000);stroke-width:1;}
+.qk2s-st0{stop-color:var(--steel0);} .qk2s-st1{stop-color:var(--steel1);}
+.qk2-rod{fill:url(#qk2g-steel);} .qk2-handle{fill:url(#qk2g-steel);stroke:color-mix(in srgb, var(--steel0) 70%, #000);stroke-width:1;}
+.qk2-plate{fill:url(#qk2g-steel);stroke:color-mix(in srgb, var(--steel0) 70%, #000);stroke-width:1;}
+.qk2-seal{stroke:#2B2F33;stroke-width:3;stroke-opacity:.55;}
+/* the dial */
+.qk2-dialtube{fill:none;stroke:var(--glass);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;}
+.qk2-dial{fill:var(--dial);stroke:var(--ink);stroke-opacity:.55;stroke-width:1.6;}
+.qk2-tick{stroke:var(--ink);stroke-opacity:.55;stroke-width:1.4;}
+.qk2-knotch{stroke:var(--qk-k);stroke-width:5;stroke-linecap:round;}
+.qk2-klab{font:900 14px var(--font-ui);fill:var(--qk-k-ink);}
+.qk2-qlab{font:900 13px var(--font-ui);fill:var(--qk-q-ink);}
+.qk2-dlo,.qk2-dhi{font:700 11px var(--font-ui);fill:var(--muted);}
+/* the plate */
+.qk2-card{fill:var(--card);stroke:color-mix(in srgb, var(--ink) 18%, transparent);stroke-width:1;} .qk2-plateshadow{fill:#000;fill-opacity:.12;}
+.qk2-book text{font-family:var(--font-ui);fill:var(--ink);}
+.qk2-sub{font-size:.78em;}
+.qk2-eqn{font-weight:900;}
+.qk2-kline{font-weight:800;fill:var(--qk-k-ink) !important;}
+.qk2-key{font-weight:700;fill:var(--muted) !important;}
+.qk2-arrows path{transition:opacity .3s ease, stroke-width .3s ease;opacity:0;}
+.qk2-ar{fill:none;stroke:var(--qk-dir);stroke-width:var(--qk-aw, 4);stroke-linecap:round;} .qk2-arh{fill:var(--qk-dir);}
+.qk2-ar2{fill:none;stroke:var(--qk-k);stroke-width:2;} .qk2-arh2{fill:none;stroke:var(--qk-k);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.qk2-arrows[data-dir="fwd"] .is-fwd,.qk2-arrows[data-dir="rev"] .is-rev,.qk2-arrows[data-dir="eq"] .is-eq{opacity:1;}
+/* the tray and its cups (each a button: tap to add, drag to drop in) */
+.qk2-trayb{fill:var(--tray);stroke:var(--tray-edge);stroke-width:1.5;}
+.qk2-well{fill:var(--well);stroke:var(--tray-edge);stroke-width:1;}
+.qk2-wlab{font:900 15px var(--font-ui);fill:var(--ink);}
+.qk2-wellbtn{position:absolute;display:flex;align-items:center;justify-content:center;padding:0;margin:0;border:0;border-radius:10px;background:transparent;cursor:grab;touch-action:none;
+  box-shadow:inset 0 0 0 2px color-mix(in srgb, var(--qk-dir) 55%, transparent);transition:box-shadow .15s ease, transform .15s ease;}
+.qk2-wellbtn:hover{box-shadow:inset 0 0 0 3px var(--qk-dir);}
+.qk2-wellbtn:focus-visible{outline:3px solid var(--focus, var(--qk-dir));outline-offset:2px;}
+.qk2-wellbtn.is-press{transform:scale(.96);cursor:grabbing;}
+.qk2-wellbtn.is-full{box-shadow:inset 0 0 0 1.5px color-mix(in srgb, var(--ink) 20%, transparent);}
+.qk2-wellbtn.is-full .qk2-wellart{opacity:.45;}
+.qk2-wellbtn.is-nope{animation:qk2-nope .35s ease;}
+@keyframes qk2-nope{25%{transform:translateX(-4px);} 75%{transform:translateX(4px);}}
+.qk2-wellart{display:block;pointer-events:none;}
+.qk2-ghost{position:absolute;left:0;top:0;pointer-events:none;z-index:6;filter:drop-shadow(0 3px 4px rgba(0,0,0,.25));}
+/* the piston's knob: quiet, its tag in ink */
+.qk2 .tk2-drag .tk2-tag{background:#2B2F33;color:#fff;}
+:root[data-theme="dark"] .qk2 .tk2-drag .tk2-tag{background:#DDE4EA;color:#0B1A24;}
+@media (prefers-reduced-motion: reduce){ .qk2-arrows path{transition:none;} .qk2-wellbtn.is-nope{animation:none;} }
+/* "?" */
+.qk2-ref .qk2-list{padding-left:1.2em;}
+.qk2-howref{margin:0 0 6px;}
+.qk2-cable{fill:none;stroke:#2B2F33;stroke-opacity:.7;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;}
+:root[data-theme="dark"] .qk2-cable{stroke:#AAB4BE;stroke-opacity:.6;}
+.qk2-probe{fill:var(--steel0);}
+.qk2-needle path{fill:var(--qk-q);} .qk2-needle circle{fill:var(--ink);}

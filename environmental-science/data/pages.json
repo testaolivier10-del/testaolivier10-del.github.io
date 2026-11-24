@@ -184,6 +184,7 @@
    "blurb": "Build a population pyramid and read its future.",
    "lede": "Shape the pyramid, then predict the growth.",
    "studio": true,
+   "kit2": true,
    "premium": "tools"
   },
   {

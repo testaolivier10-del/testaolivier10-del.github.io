@@ -173,7 +173,7 @@
    "desc": "Calculate Q from concentrations, pressures or a particle picture, compare it with K, predict the shift and pick the justification that earns the point.",
    "blurb": "Q from numbers or particles, the direction of the shift, and the wording that earns the point.",
    "lede": "Change a mixture and see which way it shifts to reach equilibrium.",
-   "studio": true
+   "studio": true, "kit2": true
   },
   {
    "slug": "equilibrium-kinetics",
