@@ -53,6 +53,11 @@ review round: `docs/tools-v2-water-pollution-brief.md`, `docs/tools-v2-osmosis-b
      reports frame v2, run it with a local copy of the list. Do not redefine the kit's phone cause line height.
    - Run long sweeps one width per process (one process for all ten widths can pass ten minutes).
    Caught in reviews of the first twelve tools; check each before you hand in:
+   - Dark mode in a sweep: the site's theme key is `localStorage.nremt_theme` (see `assets/site-chrome.js`), not
+     `theme`. Assert the page is really dark before trusting a dark run (torque balance's first sweep was all light).
+   - Fit the stage to the screen's height: at 390x844, 1024x768 and 1280x800 the main control, the picture and the
+     cause line are all in view at once, with no inner scroll; and no bare wall on wide screens (ICE tables, torque).
+   - Count from drawn positions, never an internal flag (ICE tables' products appeared before they were counted).
    - Every number, rate word, bar, label and cause line is derived from what is DRAWN at that frame, not from the
      model's target value. Assert this frame by frame for every animated change, including reversals, fast drags,
      keyboard jumps and replays (osmosis, enzyme, energy flow, water potential all failed this first).
