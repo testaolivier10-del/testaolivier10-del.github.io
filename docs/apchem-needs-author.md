@@ -565,3 +565,23 @@ mmol. Points for a person:
    textbook convention; the CED itself only says a buffer works best when the ratio is near 1. Confirm the band.
 4. **Values.** K<sub>a</sub>(CH₃COOH) = 1.8 × 10⁻⁵ and K<sub>b</sub>(NH₃) = 1.8 × 10⁻⁵ (the drill's, unit8-values);
    K<sub>w</sub> = 1.0 × 10⁻¹⁴ at 25 °C. That both are 1.8 × 10⁻⁵ is true, not a typo.
+
+## qk-explore: the constants and the whole particles in the Q vs K Explore (open, 2026-11-24)
+
+The Q vs K tool's Explore (tools v2, `docs/tools-v2-chem-q-vs-k-brief.md`) draws two reactions in a cylinder with a
+piston. Points for a person:
+1. CaCO₃(s) ⇌ CaO(s) + CO₂(g) uses K<sub>p</sub> = P(CO₂) = 0.22 atm at 800 °C: the classic dissociation table gives
+   168 mm Hg (0.221 atm) and Baker 1962 (J. Chem. Soc. 464; log P(atm) = 7.079 − 8308/T) gives 0.218 atm. Textbook
+   problems quote other values (1.16, 1.2 atm at 800 °C appear in made-up problems); the 298 K NBS ΔH° and ΔS°
+   extrapolated give about 0.5 atm, which ignores the heat capacities. Confirm 0.22.
+2. A + B ⇌ AB with K<sub>c</sub> = 2.5 is made up, as the exam's particle diagrams are. Confirm a generic reaction is
+   right here (a real one would be, for example, PCl₃ + Cl₂ ⇌ PCl₅, with large molecules that crowd a phone).
+3. The cylinder holds whole particles, so the reaction runs one event at a time and stops at the counts nearest K
+   (within 20% of K at every volume from the start, checked). Measured in review round 1 by a seeded random walk of
+   single changes: A + B about 16% of changes run no whole event (single piston steps 31%; 13% stop with Q more than
+   20% from K), CaCO₃ about 16%, almost all because a solid ran out. The cause line then says why ("1 more AB
+   overshoots", "no CaCO₃ left"). A real mixture would shift by a fraction of a particle. Confirm this is an acceptable
+   teaching simplification; each press adds three particles of a gas so most changes run at least one event.
+4. CaCO₃ and CaO are drawn as lumps that turn into each other one formula unit per CO₂; the lumps stand for amounts of
+   solid, not single formula units of a crystal. "?" says pure solids are left out of Q because their concentration is
+   fixed.

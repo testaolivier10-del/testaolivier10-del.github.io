@@ -195,5 +195,105 @@
     }
    ]
   }
- ]
+ ],
+ "explore": {
+  "about": "Explore (tools v2, docs/tools-v2-chem-q-vs-k-brief.md): a glass cylinder with a piston. Each particle is per mol (A + B) or gives per atm at 1.00 L (CO2). Drops add 'drop' particles of a gas, or one lump of a solid. Volumes in L. n0: the starting counts, at equilibrium (the nearest whole counts to K). Checked by scripts/lib/apchem-tool-checks/q-vs-k.mjs.",
+  "volumes": [
+   0.5,
+   0.75,
+   1.0,
+   1.25,
+   1.5
+  ],
+  "V0": 1.0,
+  "drop": 3,
+  "reactions": [
+   {
+    "id": "ab",
+    "chip": "A + B",
+    "K": "Kc",
+    "Kval": 2.5,
+    "unit": "M",
+    "per": 0.05,
+    "perText": "1 particle = 0.050 mol",
+    "species": [
+     {
+      "key": "A",
+      "html": "A",
+      "nu": -1,
+      "phase": "g"
+     },
+     {
+      "key": "B",
+      "html": "B",
+      "nu": -1,
+      "phase": "g"
+     },
+     {
+      "key": "AB",
+      "html": "AB",
+      "nu": 1,
+      "phase": "g"
+     }
+    ],
+    "n0": [
+     8,
+     8,
+     8
+    ],
+    "cap": [
+     16,
+     16,
+     16
+    ],
+    "gasCap": 32,
+    "ref": "a made-up reaction, as on the exam's particle diagrams",
+    "tab": "A + B ⇌ AB"
+   },
+   {
+    "id": "caco3",
+    "chip": "CaCO₃",
+    "K": "Kp",
+    "Kval": 0.22,
+    "T": "800 °C",
+    "unit": "atm",
+    "per": 0.02,
+    "perText": "1 CO₂ = 0.020 atm at 1.00 L",
+    "species": [
+     {
+      "key": "CaCO3",
+      "html": "CaCO₃",
+      "nu": -1,
+      "phase": "s"
+     },
+     {
+      "key": "CaO",
+      "html": "CaO",
+      "nu": 1,
+      "phase": "s"
+     },
+     {
+      "key": "CO2",
+      "html": "CO₂",
+      "nu": 1,
+      "phase": "g"
+     }
+    ],
+    "n0": [
+     8,
+     5,
+     11
+    ],
+    "cap": [
+     16,
+     16,
+     26
+    ],
+    "gasCap": 26,
+    "solidCap": 16,
+    "ref": "the CO₂ dissociation pressure of calcite, 168 mm Hg (0.221 atm) at 800 °C; Baker 1962, J. Chem. Soc. 464, log P(atm) = 7.079 − 8308/T gives 0.218 atm",
+    "tab": "CaCO₃ ⇌ CaO + CO₂"
+   }
+  ]
+ }
 }
