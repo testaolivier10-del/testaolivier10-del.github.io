@@ -306,7 +306,7 @@
     function curE(){ return S.tab === 'point' ? S.P : INF; }
     function f(x){ return curE().f(x); }
     function dense(){ return S.tab === 'point' && !!S.P.dense; }
-    function dmax(){ var V = WIN[S.P.id], a = S.P.a; return +(Math.min(a - V.x[0], V.x[1] - a) - 0.05).toFixed(2); }
+    function dmax(){ var V = WIN[S.P.id], a = S.P.a; return Math.floor((Math.min(a - V.x[0], V.x[1] - a) - 0.05) * 10 + 1e-9) / 10; }
     function xOf(side){ return S.tab === 'point' ? S.P.a + side * (side < 0 ? S.dl : S.dr) : side * (side < 0 ? S.xl : S.xr); }
     function xmin(){ return G && G.xmin ? G.xmin : 3; }
     function xstart(){ return Math.max(3, xmin()); }
@@ -349,7 +349,7 @@
     /* ---------------------------------------------------- geometry */
     function geo(W, H){
       var narrow = W < 560, g = { W: W, H: H, narrow: narrow };
-      g.car = clamp(W * 0.04, 38, 54); g.rw = narrow ? 10 : 12; g.ringR = g.car * 0.57 + 4;
+      g.car = clamp(W * 0.04, 38, 54); g.rw = narrow ? 10 : 12; g.ringR = g.car * 0.62 + 4;
       var pl = narrow ? 36 : 44, pr = narrow ? 10 : 16, pt = 8, pb = 24, AW = W - pl - pr, AH = H - pt - pb;
       var padX = g.car + 16, padT = g.car * 0.3 + g.ringR + 40, padB = g.ringR + 44, V, kx, ky;
       if(S.tab === 'point'){
@@ -564,7 +564,7 @@
       // the corner farthest from a whose glass the road does not cross (else the farthest)
       function crosses(c){ for(var i = 0; i <= 16; i++){ var X = c[0] - R + 2 * R * i / 16, y = S.P.f(A.ix(X)); if(isFinite(y) && Math.abs(A.sy(y) - c[1]) < R + G.rw + 4) return true; } return false; }
       // and never over a car (where it is drawn in the main picture)
-      function covers(c){ return [-1, 1].some(function(sd){ var x = xOf(sd), y = clamp(A.sy(S.P.f(x)), A.T, A.B); return Math.hypot(A.sx(x) - c[0], y - c[1]) < R + G.ringR + G.car * 0.6; }); }
+      function covers(c){ return mainMarks().some(function(q){ return Math.hypot((q[0] + q[2]) / 2 - c[0], (q[1] + q[3]) / 2 - c[1]) < R + 16; }) || [-1, 1].some(function(sd){ var x = xOf(sd), y = clamp(A.sy(S.P.f(x)), A.T, A.B); return Math.hypot(A.sx(x) - c[0], y - c[1]) < R + G.ringR + G.car * 0.6; }); }
       function bad(c){ return covers(c) * 2 + crosses(c); }
       cands.sort(function(p, q){ return (bad(p) - bad(q)) || (Math.hypot(q[0] - Px, q[1] - Py) - Math.hypot(p[0] - Px, p[1] - Py)); });
       return { cx: cands[0][0], cy: cands[0][1], R: R };
@@ -617,6 +617,8 @@
       [cl, cr].forEach(function(c){ var X = Lm.sx(c.x), Y = Lm.sy(c.y); g.push('<circle class="le2-ndot ' + (c.side < 0 ? 'l' : 'r') + '" cx="' + r1(X) + '" cy="' + r1(clamp(Y, Lg.cy - R - 8, Lg.cy + R + 8)) + '" r="5.5"/>'); });
       g.push('</g>');
       g.push('<circle class="le2-lens-rim" cx="' + r1(Lg.cx) + '" cy="' + r1(Lg.cy) + '" r="' + r1(R) + '"/>');
+      LENS.map = Lm;
+      if(knobsInLens()) [-1, 1].forEach(function(sd){ var p = knobAt(sd), t = tagSideOf(sd); if(!p) return; block(p[0], p[1], 14); var b = tagBoxAt(sd, t, p[0], p[1], 26); boxes.push(grow(t === 'up' || t === 'down' ? slideIn(b) : b, 5)); });
       var mag = Lm.px / G.kx, mt = mag >= 100 ? commas(+mag.toPrecision(2)) : String(Math.max(2, Math.round(mag)));
       var zl = [];
       label(zl, 'zoom ×' + mt, 'le2-zoom', [[Lg.cx, Lg.cy + R + 19, 'middle'], [Lg.cx, Lg.cy - R - 9, 'middle'], [Lg.cx + R * 0.75, Lg.cy + R + 6, 'start'], [Lg.cx - R * 0.75, Lg.cy + R + 6, 'end']], A, 12.5);
@@ -647,10 +649,9 @@
       var A = G.A, o = [], cl = carGeo(-1), cr = carGeo(1), inL = knobsInLens(), e = curE();
       S.drawn = { cl: cl, cr: cr };
       blockCar(cl); blockCar(cr);
-      if(!inL){ block(cl.Rx, cl.Ry, cl.r + 2); block(cr.Rx, cr.Ry, cr.r + 2); boxes.push(tagBox(cl)); boxes.push(tagBox(cr)); }
+      if(!inL){ block(cl.Rx, cl.Ry, cl.r + 2); block(cr.Rx, cr.Ry, cr.r + 2); boxes.push(grow(tagBox(cl), 5)); boxes.push(grow(tagBox(cr), 5)); }
       if(cue.active()) cue.place();
       blockCue();
-      if(S.tab === 'point') placeFill(); else fillB.hidden = true;
       o.push('<g clip-path="url(#' + id + '-cA)">');
       if(S.tab === 'point'){
         var Xa = A.sx(e.a);
@@ -659,7 +660,7 @@
           var yL = e.at + (e.fill - e.at) * S.fillK, base = A.sy(Math.max(A.y[0], 0)), top = A.sy(yL), pk = 1 - S.fillK;
           if(pk > 0.01) o.push('<g style="opacity:' + pk.toFixed(2) + '"><line class="le2-post" x1="' + r1(Xa) + '" y1="' + r1(base) + '" x2="' + r1(Xa) + '" y2="' + r1(top + 6) + '"/><rect class="le2-post-b" x="' + r1(Xa - 7) + '" y="' + r1(base - 4) + '" width="14" height="5" rx="2"/><circle class="le2-glow" cx="' + r1(Xa) + '" cy="' + r1(top) + '" r="' + (G.rw * 0.5 + 8).toFixed(1) + '"/></g>');
           if(S.fillK < 1) o.push(ptOf(Xa, top, false));
-          block(Xa, top, 14);
+          block(Xa, top, 14); if(pk > 0.01) boxes.push([Xa - 6, top, Xa + 6, base]);
         }
         if(e.kind === 'removable'){
           var Ya = A.sy(e.left);
@@ -682,6 +683,7 @@
         if(c.out){ var up = c.out < 0, ay = up ? c.Ry - c.r - 4 : c.Ry + c.r + 4; o.push('<path class="le2-outar ' + (c.side < 0 ? 'l' : 'r') + '" d="M' + r1(c.Px) + ' ' + r1(ay) + 'L' + r1(c.Px) + ' ' + r1(ay + (up ? -10 : 10)) + '"/><path class="le2-outtip ' + (c.side < 0 ? 'l' : 'r') + '" d="' + arrowHead(c.Px, ay + (up ? -18 : 18), up ? -Math.PI / 2 : Math.PI / 2, 9) + '"/>'); block(c.Px, ay + (up ? -10 : 10), 12); }
       });
       if(S.tab === 'point' && (LENS.show > 0.01)) drawLens(o, cl, cr);
+      if(S.tab === 'point') placeFill(); else fillB.hidden = true;
       labels(o, cl, cr);
       gD.innerHTML = o.join('');
       S.labBoxes = labBoxes;
@@ -698,7 +700,6 @@
     /* Words on the picture (after the shapes, placed clear of them and of each other). */
     function labels(o, cl, cr){
       var A = G.A, e = curE(), sm = 12.5;
-      if(knobsInLens()) [-1, 1].forEach(function(sd){ var p = knobAt(sd), t = tagSideOf(sd); if(!p) return; block(p[0], p[1], 14); var b = tagBoxAt(sd, t, p[0], p[1], 26); boxes.push(t === 'up' || t === 'down' ? slideIn(b) : b); });
       if(S.tab === 'point'){
         var Xa = A.sx(e.a);
         if(e.kind === 'removable' && !e.dense && (S.fillK === 0 || S.fillK === 1)){
@@ -754,16 +755,27 @@
       if(!G) return 'up';
       var A = G.A, p = knobAt(side); if(!p) return 'up';
       if(knobsInLens()){
-        var order = side < 0 ? ['left', 'up', 'down', 'right'] : ['right', 'down', 'up', 'left'], keep = lensKeys();
-        var other = side < 0 ? null : (function(){ var q = knobAt(-1), sd = tagSideOf(-1), b0 = q ? tagBoxAt(-1, sd, q[0], q[1], 26) : null; return b0 ? (sd === 'up' || sd === 'down' ? slideIn(b0) : b0) : null; })();
+        var ql = knobAt(-1), qr = knobAt(1), lowL = ql && qr && ql[1] > qr[1] + 2, keep = lensKeys().concat(carBoxes(), mainMarks());
+        var order = side < 0 ? (lowL ? ['down', 'left', 'up', 'right'] : ['up', 'left', 'down', 'right']) : (lowL ? ['up', 'right', 'down', 'left'] : ['down', 'right', 'up', 'left']);
+        var other = side < 0 ? null : (function(){ var q = knobAt(-1), sd = tagSideOf(-1), b0 = q ? tagBoxAt(-1, sd, q[0], q[1], 26) : null; return b0 ? grow(sd === 'up' || sd === 'down' ? slideIn(b0) : b0, 5) : null; })();
         for(var i = 0; i < order.length; i++){ var b = tagBoxAt(side, order[i], p[0], p[1], 26); if(order[i] === 'up' || order[i] === 'down') b = slideIn(b); if(inside(b, A) && !keep.some(function(q){ return hitB(b, q); }) && !(other && hitB(b, other))) return order[i]; }
-        return side < 0 ? 'up' : 'down';
+        var hard = lensKeys().concat(carBoxes());
+        for(var j = 0; j < order.length; j++){ var b2 = tagBoxAt(side, order[j], p[0], p[1], 26); if(order[j] === 'up' || order[j] === 'down') b2 = slideIn(b2); if(inside(b2, A) && !(other && hitB(b2, other)) && !hard.some(function(q){ return hitB(b2, q); })) return order[j]; }
+        for(var m = 0; m < order.length; m++){ var b3 = tagBoxAt(side, order[m], p[0], p[1], 26); if(order[m] === 'up' || order[m] === 'down') b3 = slideIn(b3); if(inside(b3, A) && !(other && hitB(b3, other))) return order[m]; }
+        return order[0];
       }
       if(!S.drawn) return side < 0 ? 'up' : 'down';
       var c = side < 0 ? S.drawn.cl : S.drawn.cr, first = side < 0 ? (S.tab === 'point' ? 'up' : 'down') : (S.tab === 'point' ? 'down' : 'up'), second = first === 'up' ? 'down' : 'up';
       var b1 = slideIn(tagBoxAt(side, first, c.Rx, c.Ry, c.r + 6));
-      if(b1[1] >= A.T + 2 && b1[3] <= A.B - 2 && !(c.out && first === (c.out < 0 ? 'up' : 'down'))) return first;
-      return second;
+      var avoid = mainMarks().concat(carBoxes());
+      if(side > 0){ var ob = S.drawn.cl, ot = tagSideOf(-1); avoid.push(grow(slideIn(tagBoxAt(-1, ot, ob.Rx, ob.Ry, ob.r + 6)), 5)); }
+      function okB(b, sd){ return b[1] >= A.T + 2 && b[3] <= A.B - 2 && !(c.out && sd === (c.out < 0 ? 'up' : 'down')) && !avoid.some(function(q){ return hitB(b, q); }); }
+      if(okB(b1, first)) return first;
+      var b2 = slideIn(tagBoxAt(side, second, c.Rx, c.Ry, c.r + 6));
+      if(okB(b2, second)) return second;
+      var tagOnly = side > 0 ? avoid[avoid.length - 1] : null, inV = function(b){ return b[1] >= A.T + 2 && b[3] <= A.B - 2; };
+      if(tagOnly && hitB(b1, tagOnly) && inV(b2) && !hitB(b2, tagOnly)) return second;
+      return inV(b1) ? first : second;
     }
     /* the first-time chip goes where it covers no tag, label or mark */
     function chipSideOf(side){
@@ -779,10 +791,28 @@
       return opp[t];
     }
     function labelsFree(b){ return (S.labBoxes || []).every(function(q){ return !hitB(b, q); }); }
+    /* the marks on the road a tag must never cover: the hole, a jump's two ends, the lamp */
+    function mainMarks(){
+      if(S.tab !== 'point' || !G) return [];
+      var e = S.P, A = G.A, X = A.sx(e.a), out = [];
+      function at(y){ var Y = A.sy(y); out.push([X - 12, Y - 12, X + 12, Y + 12]); }
+      if(e.kind === 'removable') at(e.left);
+      if(e.kind === 'jump'){ at(e.left); at(e.f(e.a)); }
+      if(e.id === 'move') at(e.at + (e.fill - e.at) * S.fillK);
+      return out;
+    }
+    function grow(b, m){ return [b[0] - m, b[1] - m, b[2] + m, b[3] + m]; }
+    /* each car's body, as a box (the ring is round, the car inside it is not) */
+    function carBoxes(){
+      if(!S.drawn) return [];
+      return [S.drawn.cl, S.drawn.cr].map(function(c){ var L = G.car, ex = Math.abs(Math.sin(c.ang)) * L * 0.5; return [c.Cx - L * 0.6, c.Cy - L * 0.7 - G.rw / 2 - ex, c.Cx + L * 0.6, c.Cy + L * 0.2 + ex]; });
+    }
     function tagBox(c){ return slideIn(tagBoxAt(c.side, tagSideOf(c.side), c.Rx, c.Ry, c.r + 6)); }
     function tagText(side){
       if(!G || !S.ready) return '';
       var x = xOf(side), y = f(x);
+      // a phone shows the height alone (the pill's colour says which car; x is in its screen reader text and "?")
+      if(G.narrow) return S.tab === 'point' ? fmtY(y, dOf(side)) : fmtY2(y);
       return S.tab === 'point' ? 'f(' + fmtX(x, dOf(side)) + ') = ' + fmtY(y, dOf(side)) : 'f(' + fmtBig(x) + ') = ' + fmtY2(y);
     }
     function valueText(side){
@@ -851,6 +881,8 @@
     function glide(){ [hl, hr].forEach(function(h){ h.el.classList.add('is-glide'); }); setTimeout(function(){ [hl, hr].forEach(function(h){ h.el.classList.remove('is-glide'); }); }, 340); }
     function setVal(side, v){
       var direct = hl.dragging() || hr.dragging() || K.reduced();
+      var cv = S.tab === 'point' ? clampD(v) : clamp(v, xmin(), XMAX);
+      if(cv !== v){ v = cv; (side < 0 ? hl : hr).value(v); }
       if(S.tab === 'point'){ if(side < 0){ S.tl = v; if(direct) S.dl = v; } else { S.tr = v; if(direct) S.dr = v; } S.closeV = 0; close.paint(); }
       else { if(side < 0){ S.txl = v; if(direct) S.xl = v; } else { S.txr = v; if(direct) S.xr = v; } S.driveV = 0; drive.paint(); }
       tourDid(side < 0 ? 'drag' : 'right');
@@ -865,9 +897,11 @@
       fillB.textContent = S.filled ? 'Undo' : e.id === 'move' ? 'Move the point' : 'Fill the hole';
       fillB.setAttribute('aria-label', S.filled ? 'Undo: f(' + e.a + ') back to ' + (e.at == null ? 'not defined' : e.at) : e.id === 'move' ? 'Move the point to the limit: f(' + e.a + ') = ' + e.fill : 'Fill the hole: define f(' + e.a + ') = ' + e.fill);
       var k = layer.scale() || 1, w = (fillB.offsetWidth || 110) / k, h = (fillB.offsetHeight || 32) / k, Xa = A.sx(e.a), Ya = A.sy(e.left);
-      var cands = e.dense ? [[Xa - w / 2, A.B - h - 30], [Xa + 14, A.B - h - 30], [Xa - w - 14, A.B - h - 30]] : [[Xa - w / 2, Ya + 40], [Xa - w - 6, Ya + 56], [Xa + 6, Ya + 56], [Xa - w / 2, Ya + 72], [Xa - w / 2, Ya - h - 56], [Xa - w / 2, A.B - h - 30]];
+      var cands = e.dense ? [[Xa - w / 2, A.B - h - 30], [Xa + 14, A.B - h - 30], [Xa - w - 14, A.B - h - 30]] : (function(){ var c = []; [40, 70, 110].forEach(function(r){ [[0, 1], [-1, 1], [1, 1], [-1, 0], [1, 0], [0, -1], [-1, -1], [1, -1]].forEach(function(d){ c.push([Xa + d[0] * r - w / 2 + d[0] * w / 2, Ya + d[1] * r - h / 2 + d[1] * h / 2]); }); }); c.push([Xa - w / 2, A.B - h - 30]); return c; })();
       var at = cands[0];
-      for(var i = 0; i < cands.length; i++){ var b = [cands[i][0], cands[i][1], cands[i][0] + w, cands[i][1] + h]; if(inside(b, A) && free(b) && !roadHit(b)){ at = cands[i]; break; } }
+      var found = false, i, b;
+      for(i = 0; i < cands.length && !found; i++){ b = [cands[i][0], cands[i][1], cands[i][0] + w, cands[i][1] + h]; if(inside(b, A) && free(b) && !roadHit(b)){ at = cands[i]; found = true; } }
+      for(i = 0; i < cands.length && !found; i++){ b = [cands[i][0], cands[i][1], cands[i][0] + w, cands[i][1] + h]; if(inside(b, A) && free(b)){ at = cands[i]; found = true; } }
       at = [clamp(at[0], A.L + 4, A.R - w - 4), clamp(at[1], A.T + 4, A.B - h - 4)];
       boxes.push([at[0] - 2, at[1] - 2, at[0] + w + 2, at[1] + h + 2]);
       fillB.style.left = (at[0] * k).toFixed(1) + 'px'; fillB.style.top = (at[1] * k).toFixed(1) + 'px';
@@ -978,7 +1012,7 @@
       var dt = lastT ? Math.min(0.05, (t - lastT) / 1000) : 0.016; lastT = t;
       var red = K.reduced(), busy = false;
       if(red){ S.dl = S.tl; S.dr = S.tr; S.xl = S.txl; S.xr = S.txr; }
-      else ['dl', 'dr', 'xl', 'xr'].forEach(function(k){ if(easeLog(k, 't' + k, dt)) busy = true; });
+      else [['dl', 'tl'], ['dr', 'tr'], ['xl', 'txl'], ['xr', 'txr']].forEach(function(k){ if(easeLog(k[0], k[1], dt)) busy = true; });
       var ft = S.filled ? 1 : 0;
       if(S.fillK !== ft){
         if(red) S.fillK = ft; else { S.fillK = ft > S.fillK ? Math.min(1, S.fillK + dt / 0.6) : Math.max(0, S.fillK - dt / 0.45); busy = true; }
@@ -1054,9 +1088,9 @@
 
     /* ---------------------------------------------------- the first visit cue and "Show me how" */
     var cueO = { key: 'apcalc-limit-explorer', text: 'Drag the car toward x = 1', side: 'left',
-      at: function(){ if(!G || !S.drawn) return [0, 0]; var c = S.drawn.cl; return [c.Rx - c.r + 6, c.Ry]; } };
+      at: function(){ if(!G || !S.drawn) return [0, 0]; var c = S.drawn.cl; return cueO.side === 'left' ? [c.Rx - c.r + 6, c.Ry] : [c.Rx + c.r - 6, c.Ry]; } };
     var cue = K.cue(layer, cueO);
-    function cueShow(){ if(!G || !S.drawn) return; var c = S.drawn.cl; cueO.text = c.Rx - G.A.L > 300 ? 'Drag the car toward x = ' + S.P.a : 'Drag the car'; if(cue.show()) draw(); }
+    function cueShow(){ if(!G || !S.drawn) return; var c = S.drawn.cl, room = c.Rx - c.r - G.A.L; cueO.text = room > 300 ? 'Drag the car toward x = ' + S.P.a : 'Drag the car'; cueO.side = room > 190 ? 'left' : 'right'; if(cue.show()) draw(); }
     function blockCue(){
       var c = cue.active() && scene.querySelector('.tk2-cue'); if(!c) return;
       var r = c.getBoundingClientRect(), sr = scene.getBoundingClientRect(), k = layer.scale() || 1;
@@ -1190,7 +1224,7 @@
       // window.LevlToolTest before the page loads (never in production)
       _t: { S: S, LENS: LENS, G: function(){ return G; }, hl: hl, hr: hr, close: close, drive: drive, cause: cause, setTab: setTab,
         setCurve: function(idv){ pick.value = idv; pick.dispatchEvent(new Event('change')); },
-        set: function(side, v){ (side < 0 ? hl : hr).value(v, true); }, fill: function(){ fillB.click(); }, knobsInLens: knobsInLens }
+        set: function(side, v){ (side < 0 ? hl : hr).value(v, true); }, tagSideOf: tagSideOf, knobAt: knobAt, fill: function(){ fillB.click(); }, knobsInLens: knobsInLens }
     };
   }
 
