@@ -207,6 +207,7 @@
    "blurb": "See what 95% confident really means, one hundred intervals at a time.",
    "lede": "Build a hundred intervals and count how many capture the truth.",
    "studio": true,
+   "kit2": true,
    "premium": "tools"
   },
   {
