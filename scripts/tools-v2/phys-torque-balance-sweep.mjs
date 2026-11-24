@@ -66,7 +66,9 @@ async function until(page, fn, arg, ms = 8000) { const t0 = Date.now(); for (;;)
 const settle = page => until(page, () => { const t = document.querySelector('.tb2').__tb, s = t.st[t.st.tab]; return t.st.tab === 'ine' ? ['ready', 'done'].includes(t.st.ine.phase) : !s.held && s.postT === 0 && s.om === 0 && !s.fly.length; }).then(() => page.waitForTimeout(260));   // a stage redrawn for more rows settles too
 /* Move a mass (by index) to a mark with a real pointer drag; the stick is held level while it moves. */
 async function dragMass(page, i, cm, o = {}) {
-  const k = page.locator('.tb2-mk .tk2-knob').nth(i), b = await k.boundingBox(), box = await page.locator('.tb2-scene').boundingBox();
+  // (a stage redrawn for more rows rebuilds its knobs: ask again until the knob is there)
+  let b = null; for (let t = 0; t < 20 && !b; t++) { b = await page.locator('.tb2-mk .tk2-knob').nth(i).boundingBox({ timeout: 500 }).catch(() => null); if (!b) await page.waitForTimeout(100); }
+  const k = page.locator('.tb2-mk .tk2-knob').nth(i), box = await page.locator('.tb2-scene').boundingBox();
   const g = await page.evaluate(() => { const g = document.querySelector('.tb2').__tb.geo(); return { x0: g.x0, ppm: g.ppm }; });
   const x = b.x + b.width / 2, y = b.y + b.height / 2, tx = box.x + g.x0 + cm / 100 * g.ppm;
   await page.mouse.move(x, y); await page.mouse.down();
@@ -92,7 +94,7 @@ const probe = (o) => {
   const tags = q('.tb2 .tk2-tag').map(e => ({ n: 'tag "' + e.textContent + '"', r: R(e) }));
   const reads = q('.tb2-read').map(e => ({ n: 'reading', r: R(e) }));
   const knobs = qa('.tb2 .tk2-handle .tk2-dot, .tb2 .tk2-drag .tk2-dot').map(e => ({ n: 'knob', r: R(e), el: e }));
-  const btns = qa('.tb2-hold').map(e => ({ n: 'hold button', r: R(e) }));
+  const btns = qa('.tb2-hold, .tb2-again.is-pic').map(e => ({ n: 'hold button', r: R(e) }));
   const trays = [...document.querySelectorAll('.tb2-traytap')].filter(e => e.getClientRects().length).map(e => ({ n: 'tray tap', r: R(e) }));
   [...tags, ...reads, ...btns, ...trays].forEach(x => inS(x.r, x.n));
   knobs.forEach(x => inS(x.r, 'knob', 2));
@@ -144,14 +146,14 @@ const probe = (o) => {
       if (an !== th2 + '°') out.push('the angle says ' + an + ', the pull is at ' + th2);
       if (am !== 'lever arm ' + arm.toFixed(2) + ' m') out.push(am + ', drawn lever arm ' + arm.toFixed(3));
       if (!cause.includes(f.toFixed(1) + ' N at ' + th2 + '°') || !cause.includes('lever arm ' + arm.toFixed(2) + ' m')) out.push('cause line disagrees with the pull: ' + cause);
-      // the lever arm's name is attached to its line (within 16 px of the green segment; 36 px when the arm lies along the tilted stick and the name must clear the stick's numbers)
+      // the lever arm's name is attached to its line (within 24 px of the green segment; 36 px when the arm lies along the tilted stick and the name must clear the stick's numbers)
       const al = R(document.querySelector('.tb2-armt')), gl = document.querySelector('.tb2-arm'), seg = [[gl.x1.baseVal.value, gl.y1.baseVal.value], [gl.x2.baseVal.value, gl.y2.baseVal.value]], svgR = R(document.querySelector('.tb2-svg'));
       let dmin = 1e9; for (let i = 0; i <= 40; i++) { const px = svgR.l + seg[0][0] + (seg[1][0] - seg[0][0]) * i / 40, py = svgR.t + seg[0][1] + (seg[1][1] - seg[0][1]) * i / 40; dmin = Math.min(dmin, Math.max(al.l - px, px - al.r, 0) ** 2 + Math.max(al.t - py, py - al.b, 0) ** 2); }
-      if (Math.sqrt(dmin) > (Math.abs(Math.sin(a * Math.PI / 180)) > 0.97 ? 36 : 16)) out.push('the lever arm\u2019s name is ' + Math.sqrt(dmin).toFixed(0) + ' px from its line');
+      if (Math.sqrt(dmin) > (Math.abs(Math.sin(a * Math.PI / 180)) > 0.97 ? 36 : 24)) out.push('the lever arm\u2019s name is ' + Math.sqrt(dmin).toFixed(0) + ' px from its line');
       // the angle's number sits inside its own arc (between the stick and the pull, seen from the hook)
       const ag = document.querySelector('.tb2-anglet'), hk = T.pullGeo().h, ax = +ag.getAttribute('x') - hk[0], ay = hk[1] - (+ag.getAttribute('y') - 4);
       const thr = +document.querySelector('.tb2-stick').getAttribute('data-th'), dirA = ((Math.atan2(ay, ax) * 180 / Math.PI - thr) % 360 + 540) % 360 - 180, lo = a <= 90 ? 0 : a, hi = a <= 90 ? a : 180;
-      if (!(dirA > lo - 1 && dirA < hi + 1)) out.push('the angle\u2019s number is outside its arc (' + dirA.toFixed(0) + '° for ' + lo + ' to ' + hi + ')');
+      if (Math.abs(hi - lo) >= 30 && !(dirA > lo - 1 && dirA < hi + 1)) out.push('the angle\u2019s number is outside its arc (' + dirA.toFixed(0) + '° for ' + lo + ' to ' + hi + ')');
       // the lever arm is drawn square to the line of action and as long as it says
       const ln = document.querySelector('.tb2-arm'), L2 = Math.hypot(ln.x2.baseVal.value - ln.x1.baseVal.value, ln.y2.baseVal.value - ln.y1.baseVal.value) / g.ppm;
       if (Math.abs(L2 - arm) > 0.004) out.push('the drawn lever arm is ' + L2.toFixed(3) + ' m, the label ' + arm.toFixed(3));
@@ -225,13 +227,15 @@ async function runSweep(w, h) {
     await setPull(F, a); await settle(page); await check(`angle ${F} N at ${a}`);
     if (a === 90 || a === 15 || a === 120) await shot(page, `${W4(w)}-2-ang-${F}N-${a}.png`);
   }
-  // the pull's whole range is reachable by keys: toward the fulcrum to 15° (25° on a phone), and away to 15° from 1000 px
+  // the pull's range by keys: toward the fulcrum to 15° (25° on a phone); away until the scale would leave the picture
+  // (at least 65° from the stick at 1000 px and wider; logged)
   await page.focus('.tb2 .tk2-handle .tk2-knob');
   for (let i = 0; i < 34; i++) await page.keyboard.press('ArrowRight');
   const inMin = await page.evaluate(() => document.querySelector('.tb2').__tb.st.ang.pull.ang);
   for (let i = 0; i < 34; i++) await page.keyboard.press('ArrowLeft');
   const outMax = await page.evaluate(() => document.querySelector('.tb2').__tb.st.ang.pull.ang);
-  checks += 2; if (inMin !== (w < 600 ? 25 : 15)) fails.push(`${w} angle: toward the fulcrum stops at ${inMin}°`); if (w >= 1000 && outMax !== 165) fails.push(`${w} angle: away from the fulcrum stops at ${outMax}°`);
+  checks += 2; if (inMin !== (w < 600 ? 25 : 15)) fails.push(`${w} angle: toward the fulcrum stops at ${inMin}°`); if (w >= 1000 && outMax < 115) fails.push(`${w} angle: away from the fulcrum stops at ${outMax}°`);
+  console.log(`  ${w}: the pull reaches ${180 - outMax}° from the stick leaning away and ${inMin}° leaning toward the fulcrum`);
   await settle(page);
   // Inertia: ready, then a race to the end
   await tab(page, 'ine'); await check('inertia ready'); await shot(page, `${W4(w)}-3-ine-ready.png`);

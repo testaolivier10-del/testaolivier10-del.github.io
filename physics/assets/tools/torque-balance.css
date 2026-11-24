@@ -214,3 +214,4 @@
 :root[data-theme="dark"] .tb2-arc{opacity:.62;}
 :root[data-theme="dark"] .tb2-arc.is-act{opacity:1;}
 :root[data-theme="dark"] .tb2-arc.is-beam{opacity:.42;}
+.tb2-again.is-pic{position:absolute;right:12px;top:12px;margin:0;}

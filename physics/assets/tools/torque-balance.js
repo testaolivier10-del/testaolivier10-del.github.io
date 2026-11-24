@@ -198,7 +198,7 @@
     /* ---------------------------------------------------- geometry */
     var G = null, W = 640, H = 420, phone = false, built = '';
     function geoStick(W, Hin, tab, nrows){
-      var ph = W < 600, two = W < 1000, band = two ? 96 : 84, mx = ph ? 16 : Math.max(44, Math.round(W * 0.05));
+      var ph = W < 600, two = W < 1000, band = tab === 'ang' ? (ph ? 64 : 62) : two ? 96 : 84, mx = ph ? 16 : Math.max(44, Math.round(W * 0.05));
       var ppm = W - 2 * mx, ang = tab === 'ang';
       // the masses, the stick's thickness and the hooks' strings scale with the stick on a wide stage
       function kOf(p){ return ph ? 1 : clamp(p / 1000, 0.95, 1.25); }
@@ -208,18 +208,17 @@
         // Balance: room for one row of hanging masses, more only while masses actually hang one below another
         var rows = ang ? 1 : clamp(nrows || 1, 1, 3);
         // Angle: one mass at 20 cm from the fulcrum; the stick's ends still need to clear the bench
-        var below = ang ? Math.max(drop + 24, 0.2 * p * Math.sin(STOP) + thick / 2 + str0 + bh + 10) : drop + thick / 2 + str0 + rows * bh + 10;
+        var below = ang ? Math.max(drop + 24, 0.2 * p * Math.sin(STOP) + thick / 2 + str0 + bodySize(0.2, k).h + 10) : drop + thick / 2 + str0 + rows * bh + 10;
         below += 14;   // the fulcrum's quiet knob sits on the stand's base, just over the bench
         // above: the curl arrows and their two numbers; Angle: the spring scale and the hand, at the stick's left end
-        // (on a slanted inward pull the string lengthens past the lever arm's foot: up to 0.2 p + 44 px high at 45°)
-        var above = ang ? Math.max(R + 40, 0.4 * p * Math.sin(STOP) + Math.max(pullReach(ph, k), 0.2 * p + 76 * pullScale(ph, k)) + 10) : Math.max(R + 40, drop + 26) + (ph ? 14 : 22);
+        var above = ang ? Math.max(R + 40, 0.4 * p * Math.sin(STOP) + pullReach(ph, k) + 10) : Math.max(R + 40, drop + 26) + (ph ? 14 : 22);
         return { k: k, thick: thick, str0: str0, R: R, below: below, above: above, H: above + below + band, rows: rows };
       }
       var n = need(ppm);
       // a short stage gives up some of the stick's length (a desktop keeps the whole tool in view; a tablet, which
       // scrolls like a phone, gives up at most a fifth and then grows taller)
       var p0 = ppm;
-      if(!ph){ while(n.H > Hin && ppm > p0 * (two ? 0.8 : 0.3)){ ppm *= 0.97; n = need(ppm); } }
+      if(!ph){ while(n.H > Hin && ppm > p0 * (wide() ? 0.5 : 0.8)){ ppm *= 0.97; n = need(ppm); } }
       var Hh = ph ? Math.round(n.H) : Math.max(Hin, Math.ceil(n.H)), benchY = Hh - band;
       var py = benchY - n.below, x0 = Math.round((W - ppm) / 2);
       return { W: W, H: Hh, ph: ph, k: n.k, thick: n.thick, ppm: ppm, x0: x0, py: Math.round(py), benchY: benchY, band: band, two: two, R: Math.round(n.R), str0: n.str0, rows: n.rows };
@@ -519,8 +518,11 @@
       var p = s.pull, h = hookAt(s, p.x), a = p.ang / RAD + s.th, ux = Math.cos(a), uy = -Math.sin(a), sc = pullScale(G.ph, G.k);
       var fpx = 46 * sc, str = Math.round(72 * sc), body = Math.round(58 * sc), stretch = p.F * 8 * sc;
       // the hand (and its knob) stays past the lever arm's foot on the pull's line, so it never covers the lever arm
-      var tf = (px(s.pivot) - h[0]) * ux + (G.py - h[1]) * uy, need = tf + 44 * sc - (str + body + 26 * sc);
-      if(tf > 0 && need > 0) str += Math.round(need);
+      // the knob is on the pull's line, and so is the lever arm's foot: keep them apart along it
+      var tf = (px(s.pivot) - h[0]) * ux + (G.py - h[1]) * uy, Lh = str + body + FMAX / 2 * 8 * sc + 26 * sc, gapK = 38 * Math.max(1, sc);   // (the stretch's middle: the string never depends on F)
+      if(tf > 0 && Math.abs(Lh - tf) < gapK){ var sh2 = tf - gapK - Lh, ln2 = tf + gapK - Lh, sn2 = Math.abs(Math.sin(p.ang / RAD));
+        // longer when that rises no higher than a straight-up pull would (a shallow pull), else shorter if it can be
+        str = Math.round((tf + gapK) * sn2 <= Lh || str + sh2 < 8 * sc ? str + ln2 : str + sh2); }
       var top = str + body + stretch;   // the ring
       return { h: h, ux: ux, uy: uy, fpx: fpx, str: str, body: body, stretch: stretch, top: top, ring: [h[0] + ux * top, h[1] + uy * top], hand: [h[0] + ux * (top + 26 * sc), h[1] + uy * (top + 26 * sc)], sc: sc };
     }
@@ -547,10 +549,11 @@
       if(lift){ var nx0 = -uy, ny0 = ux; if(ny0 > 0){ nx0 = -nx0; ny0 = -ny0; } mid = [mid[0] + nx0 * lift, mid[1] + ny0 * lift]; }
       var rd = F(p.F, 1) + ' N';
       html += '<g class="tb2-read" transform="translate(' + n1(mid[0]) + ' ' + n1(mid[1]) + ')"><rect x="-' + (rw / 2) + '" y="-12" width="' + rw + '" height="24" rx="12"/><text x="0" y="5" text-anchor="middle">' + rd + '</text></g>';
-      // the angle between the stick and the pull at the hook
+      // the angle between the stick and the pull at the hook; its number on the arc's bisector, inside the arc (a wedge
+      // under 30° is too thin for it: then just past the arc's end, beside the pull)
       var sa = (p.ang <= 90 ? 0 : 180) + s.th * RAD, ea = p.ang + s.th * RAD, ar = G.ph ? 26 : 34;
       var q0 = [h[0] + ar * Math.cos(sa / RAD), h[1] - ar * Math.sin(sa / RAD)], q1 = [h[0] + ar * Math.cos(ea / RAD), h[1] - ar * Math.sin(ea / RAD)];
-      var th = p.ang <= 90 ? p.ang : 180 - p.ang, mida = (sa + ea) / 2, ra = Math.min(160, Math.max(ar + (G.ph ? 13 : 15), (G.thick / 2 + 17) / Math.sin(th / 2 / RAD))), tl = [h[0] + ra * Math.cos(mida / RAD), h[1] - ra * Math.sin(mida / RAD) + 4];
+      var th = p.ang <= 90 ? p.ang : 180 - p.ang, thin = th < 30, mida = thin ? ea + (p.ang <= 90 ? 13 : -13) : (sa + ea) / 2, ra = thin ? ar + 12 : Math.min(160, Math.max(ar + (G.ph ? 13 : 15), (G.thick / 2 + 17) / Math.sin(th / 2 / RAD))), tl = [h[0] + ra * Math.cos(mida / RAD), h[1] - ra * Math.sin(mida / RAD) + 4];
       html += '<path class="tb2-angle" d="M' + n1(q0[0]) + ' ' + n1(q0[1]) + 'A' + ar + ' ' + ar + ' 0 0 ' + (p.ang <= 90 ? 0 : 1) + ' ' + n1(q1[0]) + ' ' + n1(q1[1]) + '"/>' +
         '<text class="tb2-anglet" x="' + n1(tl[0]) + '" y="' + n1(tl[1]) + '" text-anchor="middle">' + Math.round(th) + '°</text>';
       if(D.pullHtml !== html){ D.pull.innerHTML = html; D.pullHtml = html; }
@@ -585,7 +588,7 @@
       // candidates, in order: beside the lever arm's middle (either side, just clear of it), then beside it nearer
       // either end, then past its foot along it (a very short arm); the first fully clear one wins
       var cands = [];
-      [1, 1.9].forEach(function(mul){ [0.5, 0.35, 0.65, 0.2, 0.8].forEach(function(f){ [-mul, mul].forEach(function(sd){
+      [1, 1.35, 1.9].forEach(function(mul){ [0.5, 0.35, 0.65, 0.2, 0.8, 0.9].forEach(function(f){ [-mul, mul].forEach(function(sd){
         var ox = -vy / vl * Math.sign(sd), oy = vx / vl * Math.sign(sd), gp = (hh * Math.abs(oy) + hw * Math.abs(ox) + 5) * Math.abs(sd);
         cands.push({ x: P[0] + vx * f + ox * gp, y: P[1] + vy * f + oy * gp, f: f });
       }); }); });
@@ -665,7 +668,7 @@
         Object.keys(HD).forEach(function(id){ HD[id].place(); });
         if(pullH) pullH.place();
         if(fulK){ var a = px(25), b = px(75), y = G.benchY - 5; fulK.place([a, y, b, y]); }
-        if(holdB){ holdB.style.left = (G.ph ? 8 : 14) + 'px'; holdB.style.top = n1(G.benchY + (G.two ? 44 : 20)) + 'px'; }
+        if(holdB){ holdB.style.left = (G.ph ? 8 : 14) + 'px'; holdB.style.top = n1(st.tab === 'ang' ? G.benchY + 10 : G.benchY + (G.two ? 44 : 20)) + 'px'; }
         trayB.forEach(function(t, i){ var p = trayPos(i), z = bodySize(0.5, G.k * p.sc), w = Math.max(44, z.w + 6); var th2 = Math.max(44, z.h + 10); t.place([p.x - w / 2, Math.min(p.y - 6, G.H - th2 - 1), w, th2]); t.el.disabled = st.bal.masses.length >= 4; });
       } else { if(slH.A) slH.A.place(); if(slH.B) slH.B.place(); }
       if(cue && cue.active()) cue.place();
@@ -1026,19 +1029,28 @@
       if(st.mode === 'explore') setTimeout(function(){ if(cue && !(tour && tour.active())) cue.show(); }, 30);
       if(user) T.event('apphys-tool-scene', { tool: 'torque-balance', scene: v });
     }
+    // a desktop screen (1000 px wide or more): the whole tool stays in view, the stage never grows
+    function wide(){ return (window.innerWidth || W) >= 1000 && W >= 600; }
     function rowsFor(){ return st.tab === 'bal' ? Math.max(1, st.bal.wantRows || 1) : 1; }
     function layout(){
       if(stage.hidden || !box.isConnected) return;
       var r = box.getBoundingClientRect();
       if(!r.width) return;
       W = Math.max(280, Math.round(r.width)); phone = W < 600;
+      // "Start over": on a wide stage in the picture's top right corner, so the cause line has its row to itself (and
+      // stays one row, on screen, at 1024 × 768); on a narrower one under the picture
+      var inPic = wide();
+      if(inPic && again.parentNode !== layer.el) layer.el.appendChild(again);
+      if(!inPic && again.parentNode !== lines) lines.appendChild(again);
+      again.classList.toggle('is-pic', inPic);
       if(phone){
         var need = st.tab === 'ine' ? geoIne(W, 0).H : geoStick(W, 0, st.tab, rowsFor()).H;
         box.style.height = need + 'px';
       } else {
         box.style.height = ''; box.style.minHeight = '';
-        // a tablet (it scrolls, like a phone) may grow the stage; a desktop keeps the whole tool in view
-        var r0 = box.getBoundingClientRect(), nd = st.tab === 'ine' || W >= 1000 ? 0 : geoStick(W, Math.max(300, Math.round(r0.height)), st.tab, rowsFor()).H;
+        // a tablet (it scrolls, like a phone) may grow the stage; a desktop keeps the whole tool in view, except while
+        // masses hang one below another and the stick cannot shrink further (then the page scrolls a little)
+        var r0 = box.getBoundingClientRect(), nd = st.tab === 'ine' || (wide() && rowsFor() < 2) ? 0 : geoStick(W, Math.max(300, Math.round(r0.height)), st.tab, rowsFor()).H;
         box.style.minHeight = nd > Math.round(r0.height) ? nd + 'px' : '';
       }
       r = box.getBoundingClientRect();
