@@ -692,9 +692,10 @@ These stay open:
   temperature), `rabbit-fur-temperature` (patch size), `vestigial-temperature` (larval food). Add a
   clause to each setup ("each tube gets the same amount of KOH ...") or give those options a
   `whyOptions` line.
-- **rates-tangent-estimate** (logged). The rates tool's draggable tangent shows a centered
-  difference between neighbouring data points ("rate ≈"), so near t = 0 it underestimates the
-  initial rate of a slowing reaction. Labelled "about"; confirm that is enough.
+- **rates-tangent-estimate** (logged; updated tools v2, 2026-11-19). The old tool's draggable tangent showed a
+  centered difference between neighbouring readings, so near t = 0 it underestimated the initial rate. The rebuilt
+  tool (Rate at a moment tab) uses the slope of a monotone cubic through the six readings (5.65 mL/min at 0 min,
+  more than the first minute's 4.90), still shown with "≈". Confirm an estimate from a smooth curve is acceptable.
 - **osmosis-explore-plant-cell** (logged, tools v2, 2026-11-17). The rebuilt Osmosis tool's Explore uses an
   idealized plant cell (cell sap 0.30 osmol/L, just full, ψp = 0 in the isotonic solution, wall stiffness 60 bar),
   so it is flaccid at 0.30 M, turgid below and plasmolyzed from the next stop up (0.35 M), as textbooks draw it.
@@ -752,3 +753,15 @@ These stay open:
   and 4.89% for four chambers (exact binomial and multinomial sums, review round 1); the tool says "about 1
   run in 20" and "?" gives these numbers. The opening (24 wet, 16 dry) is illustrative, not data. Teacher: confirm
   the wording and that a dark card over two chambers is an acceptable "dark" condition.
+- **rates-formula-sheet** (closed, tools v2 review round 1, 2026-11-19). `bio/data/notes/stats-rates.html` said rates
+  and percent change are "Both ... on the formula sheet". The current AP® Biology Equations and Formulas sheet (as
+  quoted by Cognito's "AP Biology formula sheet" page, read 2026-11-19; the College Board PDF link returned 404) lists
+  Rate = dY/dt (dY = amount of change, dt = change in time) under Rate and Growth and no percent change formula; the
+  older lab manual Appendix A agrees on both. Reworded in the notes ("A rate is on the formula sheet (written dY/dt);
+  percent change is not, so learn it.") and in the `stats-rates` lesson's formula line.
+- **rates-explore-catalase** (logged, tools v2, 2026-11-19). The rebuilt Rates tool's Explore draws invented
+  readings (0, 4.9, 8.3, 10.5, 12.0, 13.0 mL O₂ over 5 min) with four drawing conventions: the upside down
+  cylinder's numbers are printed to read the gas volume from the top; one bubble rises per 0.25 mL; the foam's
+  height follows the rate at that moment; a potato core's height is proportional to its mass (constant width). The
+  core snaps to whole percents of a 4.00 g start and ranges from −30% to +20%, the usual range for potato cores after
+  a day in water or sucrose. Confirm none of these misleads.

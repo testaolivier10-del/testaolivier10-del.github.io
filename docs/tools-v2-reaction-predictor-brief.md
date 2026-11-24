@@ -243,3 +243,39 @@ tables kept).
   `check-weight --check` pass; no conflict markers.
 - Still open (not blocking): single slow frames at a change; the desktop molecule is a little smaller than in round 0
   (the title and name rows take space).
+
+## Recheck 1 (2026-11-23, BLOCK on 2 items; both done, and the should fix items)
+1. **The whole result fits a phone's first screen.**
+   - The phone stage is now sized to the screen (`sizeStage()`): the screen height, less the stage's top, the cause
+     line and a gap, kept between 480 and 884 px. In Call the path the stage keeps its own height, because there the
+     question comes first.
+   - The phone bar has two rows: the substrate across the top, then the reagent with Protic | Aprotic and Heat. Play
+     it again sits at the right end of the title row.
+   - The tray is compact: 96 px on a phone and 104 px wide. Each card shows the product drawn on the left and the path,
+     share and bar on the right. A card too small for the drawing's letters (a long ether on a phone) shows the condensed
+     formula instead.
+   - The reagent waits closer, bromide drifts less, and the fit no longer counts the reagent's fading-in start.
+   - Measured after a run, the cards and the cause line end inside the viewport:
+     - 360×740: C–C 52 px, cause line 662 to 732;
+     - 390×844: 56 px, cause line 766 to 836;
+     - 430×932: 63 px.
+   - The sweep checks this at those three sizes.
+2. **The solvent leans E2 on every flask where E2 beats SN2.** This now covers 1-bromopropane + KOtBu, using the same
+   condition as `mixture()`. A scan of every two-path flask finds no solvent lean against its share shift.
+
+Should fix, all done:
+- **Rigid umbrella.** Each branch now turns rigidly about the alpha carbon. A back-face SN1 turns from the shape the
+  branch had before the cation flattened it. Every drawn beta H ends at 109.5° (unit tested). The views were searched
+  again over all flasks, including the in-between frames.
+- **Bromocyclohexane.** It starts at 90% E2. Where heat cannot move a split at the 95% top band (in aprotic solvent),
+  the verdict says so and "?" does not name heat as a reason.
+- **Desktop.** At 1440 the molecule is about 120 px per C–C, up from about 77. The title sits in the bar's row when
+  there is room (not while the first-visit cue is there), and the tray is compact.
+- **Charge badges.** A badge now moves to a clear direction when its slot would sit on another atom.
+
+Checks after the last change, with `origin/claude/tools-v2-all` merged in:
+- **Sweep:** all ten widths, one per process, light and dark, 0 failures. That is 86 states and 978 checks at
+  360, 390 and 430 (with the fold check), and 80 states and 960 checks elsewhere.
+- **Frames:** 6,240, 0 failures.
+- **Overlap scan:** no overlaps in any in-between frame of all 352 flasks.
+- **Tests and builds:** 105 unit tests pass; `build-tool-pages --check`, `check-weight --check` and `check-site` pass.
