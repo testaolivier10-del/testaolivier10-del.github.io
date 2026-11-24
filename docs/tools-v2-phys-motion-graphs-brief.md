@@ -98,9 +98,37 @@ same without the example and the scrub, with the 2 tip knobs and the quiet cart 
 - Open points for a physics teacher: `docs/apphys-needs-author.md`, "motion-graphs-v2".
 
 ## Checks run (2026-11-24, first build)
-Filled in below after the integration round.
+- Kept sweep `scripts/tools-v2/phys-motion-graphs-sweep.mjs`, one width per process, at 360, 390, 430, 600, 768, 820,
+  1024, 1280, 1440, 1920, light and real dark (`nremt_theme`, asserted): 20 runs, 460 states, about 8,960 checks,
+  0 failures. States: first visit cue per tab; Drive landing (example), mid recording by mouse, done (takeaway),
+  scrubbed, driving by keys (asserts the cart moved), replay, start over; Set landing, seven v₀ and a cases (end
+  stop, rest, from rest, steady, small, back and forth), start at 3 m, running, a changed mid run, back at start;
+  Test yourself, Match the graph, `?seed=` and `#quiz`. Asserts: nothing clipped, 4 px between words, no knob over
+  a word, no text under 11 px, the arrows, tangents' slopes, area, cart and cause line equal to the drawn dots,
+  "turns" over a drawn sign change, "turns at" at the drawn extreme, each tip's knob on its drawn arrow tip, the
+  drawing fills its box, fit at 390 × 844, 1024 × 768 and 1280 × 800 (main control, picture, cause line on screen,
+  no inner scroll), phone cause line at most two rows with one height per tab, the Match figure whole on screen.
+- Frames (`--frames`) at 390 light, 1440 light, 1024 dark: about 1,500 to 1,600 sampled frames each, 0 failures
+  (live drive with a fast drag and a reversal, recording after letting go, keys mid recording, replay, scrub during
+  replay, the example giving way to a new run, Set drags and run, keys then stop mid run, a changed mid run by a
+  drag to the end and the return, leaving for Test yourself mid run and mid recording stops everything, reduced
+  motion shows the end at once, a real touch drag from the scrolled page, Match: Check mid run asks to keep
+  driving, a score after a run, the record `motion-graphs:match:<target>` once, Show the answer drives the target
+  within 0.05 px).
+- Perf (`--perf`), CPU x4, a full drive drag, same run as the flagship (Water pollution's sacks). Quiet machine:
+  390 median 16.7 ms, p95 16.8 (flagship 50.0 / 100.1); 1440 median 16.7, p95 50.0 (flagship 33.4 / 66.7). With
+  other agents' sweeps running on the 2 cores, 1440 measured 33.2 / 66.7 (flagship 50.0 / 100.0).
+- `node --test scripts/test/apphys-*.test.mjs` 159 pass; `check-apphys-content --check` 0 failing; `build-apphys
+  --check` (motion-graphs page and its tool data differ from the collecting branch: the kit lines and the reworded
+  intro); `build-apcalc --check`, `build-apmacro --check`; `check-site` passes; `check-weight --check` (626 budgets in
+  range); `scripts/check-tool-use.mjs` with a local copy of its list: motion graphs sends one tool-open, tool-touch,
+  tool-mode, tool-use, nothing under automation. Torque balance's drill still opens by `#quiz` with no console error.
+- Free tool: no Premium card (unchanged). Preview: `/mnt/user-data/outputs/phys-motion-graphs-v2/index.html`; shots
+  in `shots/` (390, 768, 1024, 1440, light and dark, mid recording, mid run, Match).
 
 ## Not happy with (for the reviewer)
+- Perf at 1440 is at the limit (p95 50 ms on a quiet machine, over it when the machine is busy; always at or under
+  the flagship's): the whole picture is one large svg repainted while the cart moves.
 - At 1024 × 768 the three graphs are about 60 px tall each so the whole tool fits the screen; readable, but small.
 - A hand drive's a graph is bumpy (it is measured, honestly); a jerky drag makes it swing past ±3 m/s² and off the
   panel.
