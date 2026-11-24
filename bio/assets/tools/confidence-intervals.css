@@ -129,4 +129,6 @@
 .ls-root .ci-fig .ci-band.gap{fill:var(--ci-gap);fill-opacity:.2;}
 .ls-root .ci-fig .ci-bl.ov{fill:var(--ci-ov-ink);} .ls-root .ci-fig .ci-bl.gap{fill:var(--ci-gap-ink);}
 .ls-root .ci-fig .ci-mine{stroke-dasharray:none;}
-@media (max-width:640px){ .ls-root .ci-fig .tick,.ls-root .ci-fig .lbl,.ls-root .ci-fig .ci-v,.ls-root .ci-fig .ci-bl{font-size:14.4px;} }
+.sk-fig:has(> svg.ci2-pfig){flex:none;}
+.bt-stage-slot:has(svg.ci2-pfig),.ls-prac-stage:has(svg.ci2-pfig){flex:none;}
+.ci2-pfig .tick,.ci2-pfig .lbl,.ci2-pfig .ci-v{font-size:14px;} .ci2-pfig .ci-bl{font-size:14.6px;}

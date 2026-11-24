@@ -65,7 +65,7 @@
         else p.push('<line class="ci-mine" x1="' + (mx - 2) + '" x2="' + (mx + 8) + '" y1="' + (yl != null ? yl : yh).toFixed(1) + '" y2="' + (yl != null ? yl : yh).toFixed(1) + '"/>');
       }
     });
-    return { svg: '<svg class="bio-svg ci-fig" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(o.aria || '') + '">' + p.join('') + '</svg>', iv: iv, ov: ov };
+    return { svg: '<svg class="bio-svg ci-fig ci2-pfig" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(o.aria || '') + '">' + p.join('') + '</svg>', iv: iv, ov: ov };
   }
 
   function stage0(host, s){
@@ -168,7 +168,7 @@
           g.cb = { x: Wd * 0.635, y: 18, w: Wd - pad - Wd * 0.635, h: g.yB + 6 - 18 };
           top0 = 0;
         } else {
-          g.clipH = clamp(Wd * 0.68, 230, 270);
+          g.clipH = clamp(Wd * 0.72, 250, 290);
           g.topH = Hd - g.clipH;
           g.benchH = 22; g.yB = g.topH - g.benchH;
           trayEnd = Wd - pad;
@@ -185,14 +185,14 @@
         var gp = g.wide ? 30 : 14, mr = g.wide ? 34 : 26, x0 = pad + g.rw + 4;
         g.tw = (trayEnd - x0 - gp - mr) / 2;
         g.tx = [x0, x0 + g.tw + gp];
-        g.board = [pad, g.yTop - 8, trayEnd - pad, g.ySoil - g.yTop + 8];
+        g.board = [pad, g.yTop - 26, trayEnd - pad, g.ySoil - g.yTop + 26];
         g.knobX = g.tx[1] + g.tw + mr / 2;
         // the clipboard's paper and plot
         var c = g.cb, ins = g.wide ? 14 : 10;
         c.px = c.x + ins; c.py = c.y + (g.wide ? 26 : 20); c.pw = c.w - 2 * ins; c.ph = c.h - (g.wide ? 26 : 20) - ins;
         c.fs = g.wide ? 15 : 13;
         c.l = c.px + (g.wide ? 46 : 34); c.r = c.px + c.pw - (g.wide ? 16 : 10);
-        c.t = c.py + (g.wide ? 58 : 48); c.b = c.py + c.ph - (g.wide ? 46 : 40);
+        c.t = c.py + (g.wide ? 60 : 60); c.b = c.py + c.ph - (g.wide ? 56 : 50);
         c.cx = [c.l + (c.r - c.l) * 0.3, c.l + (c.r - c.l) * 0.72];
         c.bw = Math.min((c.r - c.l) * 0.24, 74); c.cap = Math.min(c.bw * 0.55, 26);
         c.y = c.y; c.ky = (c.b - c.t) / AMAX;
@@ -281,9 +281,9 @@
         E.pMean = pill('ci2-pill is-sun', 'mean');
         E.pBand = pill('ci2-pill is-band', 'band');
         E.pE = [0, 1].map(function(i){ return mk('text', 'ci2-elab is-' + GR[i].id, { 'text-anchor': 'middle', 'data-lab': 'elab' }, sLabs); });
-        E.nl = [0, 1].map(function(i){ return mk('text', 'ci2-nlab', { 'text-anchor': 'middle', 'data-lab': 'nlab', x: n1(G.cb.cx[i]), y: n1(G.cb.b + 34) }, sLabs); });
+        E.nl = [0, 1].map(function(i){ return mk('text', 'ci2-nlab', { 'text-anchor': 'middle', 'data-lab': 'nlab', x: n1(G.cb.cx[i]), y: n1(G.cb.b + (G.wide ? 43 : 42)) }, sLabs); });
       }
-      var E = {};
+      var E = {}, LF = { v: null, tw: null };   // the leaf size, tweened when the number of plants changes
       function pill(cls, lab){
         var g = mk('g', cls, { 'data-lab': lab }, sLabs), r = mk('rect', null, { rx: 9 }, g), t = mk('text', null, { 'text-anchor': 'middle' }, g);
         var o = { g: g, r: r, t: t, s: null,
@@ -337,7 +337,7 @@
         if(Math.abs(p[key] - to) < 1e-9 && !p.tw[key]){ return; }
         p.tw[key] = { from: p[key], to: to, t0: now() + (delay || 0), dur: dur };
       }
-      function busy(){ for(var g = 0; g < 2; g++) for(var i = 0; i < P[g].length; i++){ var p = P[g][i]; if(p.st !== 'grown') return true; for(var k in p.tw) return true; } return false; }
+      function busy(){ if(LF.tw) return true; for(var g = 0; g < 2; g++) for(var i = 0; i < P[g].length; i++){ var p = P[g][i]; if(p.st !== 'grown') return true; for(var k in p.tw) return true; } return false; }
       var raf = 0;
       function kick(){ if(calm()){ if(raf){ cancelAnimationFrame(raf); raf = 0; } frame(); fade(); return; } if(!raf) raf = requestAnimationFrame(frame); }
       function fade(){ sceneBox.classList.remove('is-fade'); void sceneBox.offsetWidth; sceneBox.classList.add('is-fade'); }
@@ -353,6 +353,7 @@
       function frame(){
         raf = 0;
         var t = now();
+        if(LF.tw){ var lf = clamp((t - LF.tw.t0) / LF.tw.dur, 0, 1); LF.v = LF.tw.from + (LF.tw.to - LF.tw.from) * ease(lf); if(lf >= 1){ LF.v = LF.tw.to; LF.tw = null; } if(G) G.leaf = LF.v; }
         for(var g = 0; g < 2; g++){
           for(var i = P[g].length - 1; i >= 0; i--){
             var p = P[g][i]; step(p, t);
@@ -367,6 +368,7 @@
       // finish every change at once (leaving the stage, a new change on top of one still playing)
       function stopAll(){
         if(raf){ cancelAnimationFrame(raf); raf = 0; }
+        if(LF.tw){ LF.v = LF.tw.to; LF.tw = null; if(G) G.leaf = LF.v; }
         for(var g = 0; g < 2; g++){
           for(var i = P[g].length - 1; i >= 0; i--){
             var p = P[g][i];
@@ -376,6 +378,7 @@
             if(G) paintPlant(p);
           }
         }
+        if(G) paint();
       }
 
       /* ---------------------------------------------------- changes to the model, each shown */
@@ -476,7 +479,7 @@
         dir: function(){ return 90; },
         keys: function(v, key, big){ var st = big ? 1 : 0.1, lim = meanLim(); if(key === 'ArrowUp' || key === 'ArrowRight') return clamp(r1(v + st), lim[0], lim[1]); if(key === 'ArrowDown' || key === 'ArrowLeft') return clamp(r1(v - st), lim[0], lim[1]); if(key === 'PageUp') return clamp(r1(v + 1), lim[0], lim[1]); if(key === 'PageDown') return clamp(r1(v - 1), lim[0], lim[1]); if(key === 'Home') return lim[0]; if(key === 'End') return lim[1]; return null; },
         valuetext: function(){ var d = drawn[1]; return d && isFinite(d.mean) ? 'Shade plants, mean ' + F(r1(d.mean), 1) + ' ' + U : ''; },
-        tag: function(){ var d = drawn[1]; return d && isFinite(d.mean) ? 'mean ' + F(r1(d.mean), 1) + ' ' + U : ''; }, tagSide: function(){ return 'down'; },
+        tag: function(){ var d = drawn[1]; return d && isFinite(d.mean) ? 'mean ' + F(r1(d.mean), 1) + ' ' + U : ''; }, tagSide: function(){ var d = drawn[1]; return G && d && isFinite(d.mean) && yH(d.mean) + 62 > G.ySoil - 3 ? 'left' : 'down'; },
         bounds: function(){ return G ? [G.tx[1], 0, G.W - 4, G.H] : null; },
         onStart: function(v){ hideCue(true); tourDid('mean'); if(before == null){ before = v; } lastAct = { kind: 'mean', was: verdictNow() }; },
         onEnd: function(){ kick(); },
@@ -534,7 +537,7 @@
         if(V){
           var loHi = V.lo.x.mean + V.lo.x.e2, upLo = V.up.x.mean - V.up.x.e2, ya = yA(Math.max(loHi, upLo)), yb = yA(Math.min(loHi, upLo));
           if(V.kind === 'touch' || yb - ya < 1.5){ var ym = (ya + yb) / 2; ya = ym - 1; yb = ym + 1; }
-          var bx0 = c.cx[0], bx1 = c.cx[1];
+          var bx0 = c.cx[0] + c.cap / 2 + 4, bx1 = c.cx[1] - c.cap / 2 - 4;
           at(E.band, { x: bx0, y: ya, width: bx1 - bx0, height: yb - ya, 'class': 'ci2-band is-' + V.kind }); E.band.style.display = '';
           E.pBand.g.setAttribute('class', 'ci2-pill is-' + V.kind);
           E.pBand.set(V.kind === 'ov' ? 'overlap' : V.kind === 'gap' ? 'gap' : 'touch', (bx0 + bx1) / 2, (ya + yb) / 2, 'middle');
@@ -558,7 +561,7 @@
         if(busy() || !G) return;
         var V = lastV, msg = cause.text(), take = null, a = lastAct;
         if(a && V && St.mode === 'explore'){
-          if(a.kind === 'n' && a.to === 4 * a.from) take = 'Four times the plants, half the bar: SE = SD ÷ √n.';
+          if(a.kind === 'n' && a.to === 4 * a.from) take = 'Four times the plants, half the bar: SE\u00a0=\u00a0SD\u00a0÷\u00a0√n.';
           else if(a.kind === 'n' && a.was === 'ov' && V.kind === 'gap') take = 'More plants made the bars shorter, so the real difference shows.';
           else if(a.kind === 'sample') take = St.n <= COUNTS[0] ? 'With ' + St.n + ' plants a tray, chance alone moves the means a lot.' : St.n >= COUNTS[COUNTS.length - 1] ? 'With ' + St.n + ' plants a tray, a new sample hardly moves the means.' : null;
           else if(a.kind === 'sd' && a.was === 'gap' && V.kind === 'ov') take = 'More spread, longer bars: the same difference is harder to see.';
@@ -629,7 +632,7 @@
           morph(g, slots, { dur: 520 });
         });
         lastAct = null; hMean.value(Mo[1].m); hSd.value(Mo[1].s); paintN(); cause.take(null);
-        kick();
+        leafFor(); kick();
       }
       function fresh(){ build(); lastWH = ''; layoutNow(true); settled(); }
       nBtns.forEach(function(b){ b.addEventListener('click', function(){ hideCue(true); tourDid('n'); cause.take(null); setN(+b.getAttribute('data-n'), true); }); });
@@ -644,14 +647,19 @@
         if(!sceneBox.clientWidth) return;
         lastWH = key;
         var g = layout(); if(!g) return;
-        var fewest = g.tw / COUNTS[COUNTS.length - 1];
-        g.leaf = clamp(fewest * 1.15, 7, g.wide ? 17 : 12) * (1 + 0.35 * clamp((COUNTS[COUNTS.length - 1] / Math.max(1, St.n) - 1) / 3, 0, 1));
-        G = g; svg.setAttribute('viewBox', '0 0 ' + g.W + ' ' + g.H);
+        G = g; leafFor(true); svg.setAttribute('viewBox', '0 0 ' + g.W + ' ' + g.H);
         drawStatic();
         P.forEach(function(a){ a.forEach(function(p){ if(!p.el || !p.el.parentNode) plantEl(p); p._c = {}; paintPlant(p); }); });
         paint();
       }
-      function leafFor(){ if(!G) return; var fewest = G.tw / COUNTS[COUNTS.length - 1]; G.leaf = clamp(fewest * 1.15, 7, G.wide ? 17 : 12) * (1 + 0.35 * clamp((COUNTS[COUNTS.length - 1] / Math.max(1, St.n) - 1) / 3, 0, 1)); }
+      // the leaves: as big as the plants' spacing allows (fewer plants, bigger leaves), never under 7 px
+      function leafFor(instant){
+        if(!G) return;
+        var to = clamp(G.tw / Math.max(1, St.n) * 0.6, 8, G.wide ? 30 : 16);
+        if(LF.v == null || instant || calm()){ LF.v = to; LF.tw = null; }
+        else if(Math.abs(to - LF.v) > 0.01) LF.tw = { from: LF.v, to: to, t0: now(), dur: 420 };
+        G.leaf = LF.v;
+      }
 
       /* ---------------------------------------------------- the two modes (the adapter calls this) */
       var saved = null;
@@ -674,7 +682,7 @@
         if(ex && saved){ restore(saved); saved = null; }
         cause.take(null); lastAct = null;
         if(goals && was !== 'goals'){ setTimeout(function(){ fresh(); }, 30); return; }
-        setTimeout(function(){ leafFor(); layoutNow(true); settled(); if(ex && !tour.active()){ if(cue.show()) cue.place(); } }, 30);
+        setTimeout(function(){ layoutNow(true); settled(); if(ex && !tour.active()){ if(cue.show()) cue.place(); } }, 30);
       }
       ctx.kit2 = { stage: stage, ref: ref, othersLabel: 'On the picture',
         parts: [{ value: 'practice', label: 'Problems', practice: true },
@@ -688,10 +696,10 @@
       if(window.IntersectionObserver) new IntersectionObserver(function(es){ es.forEach(function(en){ if(!en.isIntersecting && busy() && !hMean.dragging() && !hSd.dragging()){ stopAll(); paint(); settled(); } }); }).observe(sceneBox);
       document.addEventListener('visibilitychange', function(){ if(document.hidden && busy()){ stopAll(); paint(); settled(); } });
       if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ mCache = {}; lastWH = ''; layoutNow(true); });
-      if(window.ResizeObserver){ var tm = null; new ResizeObserver(function(){ clearTimeout(tm); tm = setTimeout(function(){ if(busy()){ stopAll(); } leafFor(); layoutNow(false); settled(); }, 60); }).observe(sceneBox); }
+      if(window.ResizeObserver){ var tm = null; new ResizeObserver(function(){ clearTimeout(tm); tm = setTimeout(function(){ if(busy()){ stopAll(); } layoutNow(false); settled(); }, 60); }).observe(sceneBox); }
       else window.addEventListener('resize', function(){ layoutNow(false); });
       // n changes the leaf size a little (fewer plants, bigger leaves): set it as the count changes
-      var setN0 = setN; setN = function(n, u){ setN0(n, u); var o = G && G.leaf; leafFor(); if(G && o !== G.leaf) P.forEach(function(a){ a.forEach(function(p){ p._c.t = null; }); }); kick(); };
+      var setN0 = setN; setN = function(n, u){ setN0(n, u); leafFor(); kick(); };
       // for the sweep (scripts/tools-v2/bio-confidence-intervals-sweep.mjs): the drawn state and the geometry
       window.__ci2 = { G: function(){ return G; }, P: function(){ return P; }, Mo: function(){ return Mo; }, St: St, busy: busy, drawn: function(){ return drawn; }, V: function(){ return lastV; },
         set: function(o){ stopAll(); if(o.n && o.n !== St.n){ setN(o.n); stopAll(); } if(o.mean != null){ setMean(o.mean); } if(o.sd != null){ setSd(o.sd); } stopAll(); cause.take(null); lastAct = null; paint(); settled(); },
