@@ -214,3 +214,37 @@ Preview: `/mnt/user-data/outputs/calc-riemann-sums-v2/index.html`, shots in `sho
 - On the cubic the tank is mostly empty (its fixed scale has to hold the one strip right sum, 18.75).
 - No real phone, no screen reader pass, no real students; GeoGebra and Math Insight were read as page text, applets
   not run; Desmos not fetched. The independent review is next.
+
+## Review round 1 (2026-11-24)
+
+The independent review (`/home/claude/review-calc-riemann/REVIEW.md`) blocked on four must fix items; all fixed:
+1. **The Fill takeaway's amount.** `fillEnd` now sets the fill to the last column, draws that frame, then takes the
+   number from `R.total(S.ps)`, so the sentence and the tank agree (the frames sweep asserts it).
+2. **A midpoint sum from a table.** `midOk` also requires each shared point to be the true middle of its pair, so
+   Midpoint is off for the inflow table (t = 0, 2, 5, 7, 12) as well as the cyclist, with the reason on the button;
+   "?" and the About text say so. Test yourself's table drills now make each midpoint pair equally wide (`genTable1`),
+   the unit test asserts a true midpoint table and the generated ones; record ids unchanged. Logged in the owner log
+   and `docs/apcalc-needs-author.md` (the shared `riemannTable` helper is left for a person to check).
+3. **The pour arc.** Removed. A column pours through a spout in the tank's left wall: a short solid stream inside the
+   tank down to the water; a negative column, and the tank emptying before a fill, run out of a tap at the foot. No
+   dashed shapes remain.
+4. **The chip at 360.** No chip on phones (the cue names the knob); on wider screens it drops below the knob near the
+   rail's ends and goes once any control is used.
+
+Should fix, done: the error has its unit ("under by 28.6 L"); the error regions are opaque, lighter orange and green,
+so nothing mixes into a color the legend lacks; the wave is 2 sin x on [0, 3π/2] (exact 2); "more missed than extra"
+/ "more extra than missed"; "a table can't show bending"; a light meniscus under each column's top, thicker glass
+walls, a wavy water surface in the tank, the spout and tap, numbered tank marks (0 and nice steps); phones get a
+shorter purpose line and the stage fits the picture and the cause line (Fill may sit just below), so the plot is about
+180 px tall at 375x667 (was 138); in tab 2 on phones the quiet knob waits until the "Tap a sum" cue goes. Not done:
+the cubic's tank keeps its fixed scale (logged).
+
+Checks after round 1: sweep 360, 390, 1024, 1440 light and dark (1,072 states, 23,280 checks, 0 failures); fit at
+390x844, 1024x768, 1280x800, 375x667 and 360x740 (0 failures); frames at 390 dark and 1440 light (1,944 checks, 0
+failures, the fill takeaway's amount equal to the tank's on every frame); browser checks 71 passing (Midpoint off for
+inflow, the fill takeaway "134.7 L"); AB 157 and BC 71 tests pass; content check, `build-apcalc`, `build-apcalcbc`,
+`build-apmacro --check`, `check-site` and `check-weight` clean. Perf at CPU x4 (load 4.7 to 5.0, flagship 33 to 50 ms
+median and 9.3 to 11.7 ms main thread in the same run): 390 knob drag 16.7 / 33.4 ms (4.3 ms a frame), End 16.7 / 50.0
+(4.1), Fill 16.7 / 33.4 (3.3); 1440 knob drag 16.8 / 50.0 (5.9), End 16.7 / 49.9 (3.7), Fill 100 columns 33.3 / 66.6
+(4.9), tab 2 16.7 / 33.3 (3.5).
+

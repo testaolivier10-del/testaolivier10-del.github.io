@@ -29,7 +29,12 @@ test('riemann-sums: sums match hand computation, on functions and on tables', ()
   assert.equal(R.total(R.tablePieces(xs, ys, 'left')), 2 * 12 + 3 * 20 + 2 * 25 + 5 * 28);
   assert.equal(R.total(R.tablePieces(xs, ys, 'right')), 2 * 20 + 3 * 25 + 2 * 28 + 5 * 33);
   assert.equal(R.total(R.tablePieces(xs, ys, 'trap')), (2 * 32 + 3 * 45 + 2 * 53 + 5 * 61) / 2);
-  assert.equal(R.total(R.tablePieces(xs, ys, 'mid')), 5 * 20 + 7 * 28);
+  // 2 is not the middle of [0, 5] and 7 not the middle of [5, 12]: no midpoint sum from this table
+  assert.equal(R.midOk(xs), false);
+  assert.equal(R.tablePieces(xs, ys, 'mid').length, 0);
+  // here 2 is the middle of [0, 4] and 7 the middle of [4, 10]: widths 4 and 6, heights at the midpoints
+  assert.equal(R.midOk([0, 2, 4, 7, 10]), true);
+  assert.equal(R.total(R.tablePieces([0, 2, 4, 7, 10], ys, 'mid')), 4 * 20 + 6 * 28);
   assert.equal(R.tablePieces([0, 1, 2, 3], [1, 2, 3, 4], 'mid').length, 0, 'a midpoint sum needs pairs');
   // the trapezoid is the average of left and right
   const f = M.fn('e^(-x) + sin(3x)');
@@ -106,4 +111,17 @@ test('riemann-sums: the validator catches planted mistakes', () => {
   const gen = R.generate;
   R.generate = (r, c, t) => { const p = gen(r, c, t); const s = p.steps.find(x => x.key === 'sum'); if (s) s.cell.answer += 1; return p; };
   try { assert.ok(check(clone(), map).some(e => /recomputed/.test(e))); } finally { R.generate = gen; }
+});
+
+test('riemann-sums: a midpoint sum from a generated table uses the true middle of each pair', () => {
+  let seen = 0;
+  for (const c of data.contexts.filter(x => (x.types || []).includes('table'))) for (let seed = 1; seed < 300; seed++) {
+    const p = R.generate(M.rng(seed), c, 'table');
+    if (p.figure.sumKind !== 'mid') continue;
+    const xs = p.figure.xs, ys = p.figure.ys, st = p.steps.find(s => s.key === 'sum');
+    assert.ok(R.midOk(xs), `seed ${seed}: ${xs.join(', ')} has a pair whose shared point is not its middle`);
+    assert.ok(near(st.cell.answer, (xs[2] - xs[0]) * ys[1] + (xs[4] - xs[2]) * ys[3]));
+    seen++;
+  }
+  assert.ok(seen > 10, 'too few midpoint tables generated');
 });

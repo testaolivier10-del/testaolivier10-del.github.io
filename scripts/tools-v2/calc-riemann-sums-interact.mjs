@@ -62,7 +62,7 @@ for (const theme of ['light', 'dark']) {
     await page.click('.rs2 .tk2-play'); await page.waitForTimeout(600);
     s = await S(page); ok(s.fill != null && s.fill < 4, `390 ${theme}: Fill did not start (${s.fill})`);
     await page.waitForTimeout(4200); s = await S(page);
-    ok(s.take && /Poured together, the 4 columns/.test(s.cause), `390 ${theme}: no takeaway after Fill: ${s.cause}`);
+    ok(s.take && /Poured together, the 4 columns hold 134\.7 L/.test(s.cause), `390 ${theme}: no takeaway after Fill (or a wrong amount): ${s.cause}`);
     ok(await page.evaluate(() => { const r = document.querySelector('.rs2-scene').getBoundingClientRect(); return r.top >= -1 && r.bottom <= innerHeight + 1; }), `390 ${theme}: the picture is not in view after Fill`);
     // a tap on the third column (its middle) reads its term
     const col = await page.evaluate(() => { const T = window.ApCalcRiemannSums, G = T.G(), p = T.S.ps[2], r = document.querySelector('.rs2-scene').getBoundingClientRect(); return [r.left + G.sx((p.x0 + p.x1) / 2), r.top + (G.sy(p.h) + G.y0) / 2]; });
@@ -100,6 +100,10 @@ for (const theme of ['light', 'dark']) {
     await page.selectOption('.rs2-sel', { label: 'A cyclist slowing down' }); await page.waitForTimeout(600);
     ok(await page.evaluate(() => window.ApCalcRiemannSums.knob().el.hidden), `1440 ${theme}: the knob shows for a table`);
     ok(await page.evaluate(() => document.querySelector('.rs2-seg [data-k="mid"]').disabled), `1440 ${theme}: midpoint is on for a six point table`);
+    // inflow (t = 0, 2, 5, 7, 12): 2 and 7 are not the middles of their pairs, so no midpoint sum either
+    await page.selectOption('.rs2-sel', { label: 'Inflow, unequal widths' }); await page.waitForTimeout(500);
+    ok(await page.evaluate(() => document.querySelector('.rs2-seg [data-k="mid"]').disabled), `1440 ${theme}: midpoint is on for the inflow table`);
+    await page.selectOption('.rs2-sel', { label: 'A cyclist slowing down' }); await page.waitForTimeout(500);
     await page.getByRole('tab', { name: /More strips/ }).click(); await page.waitForTimeout(500);
     s = await S(page); ok(/5 strips/.test(s.cause) && /table/.test(s.cause), `1440 ${theme}: the table's cause line: ${s.cause}`);
     ok(errs.length === 0, `1440 ${theme}: console: ${errs.join(' | ')}`);

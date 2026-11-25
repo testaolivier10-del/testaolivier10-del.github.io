@@ -1,6 +1,6 @@
 /* Riemann sums trainer (calculus/assets/tools/riemann-sums.js). OWNED BY THIS
    TOOL ONLY. Strip tones from the Okabe-Ito set the plots use: area above the
-   axis blue, below it vermillion (and a different outline, so colour is not
+   axis blue, below it vermillion (and a different outline, so color is not
    the only cue: the table in Details lists each term's sign). */
 .rs-card{display:grid;gap:14px;grid-template-columns:minmax(0,1fr);}
 .rs-fig{display:flex;gap:12px;align-items:stretch;min-width:0;}
@@ -88,11 +88,11 @@
    One color per idea: the water in the columns and the tank blue; a column below the axis (a negative term) reddish
    purple; area a sum counts extra orange, area it misses green; the curve and "exact" ink. Lighter in dark mode. */
 .rs2{--rs-w0:#8DCDF2;--rs-w1:#3D97D0;--rs-wtop:#0B5E91;--rs-n0:#E2A5C8;--rs-n1:#B9578F;--rs-ntop:#7C2E5C;
-  --rs-extra:#E07B00;--rs-extra-ink:#A55200;--rs-miss:#009E73;--rs-miss-ink:#00704F;--rs-sum-ink:#0B5E91;--rs-neg-ink:#8E3A6C;
+  --rs-extra:#E07B00;--rs-extra-ink:#A55200;--rs-miss:#009E73;--rs-miss-ink:#00704F;--rs-extra-f:#F2A65A;--rs-miss-f:#62C7A4;--rs-sum-ink:#0B5E91;--rs-neg-ink:#8E3A6C;
   --rs-sky0:#E3F0FA;--rs-sky1:#F8FBFE;--rs-grid:rgba(40,70,110,.12);--rs-glass:rgba(150,190,220,.16);--rs-glass-s:rgba(70,110,150,.55);--rs-rim:#6B7785;
   display:flex;flex-direction:column;gap:10px;min-height:0;flex:1 1 auto;}
 :root[data-theme="dark"] .rs2{--rs-w0:#5FB3E6;--rs-w1:#24689A;--rs-wtop:#A8DBF7;--rs-n0:#D68CB8;--rs-n1:#8A3F6C;--rs-ntop:#F0BFDC;
-  --rs-extra:#F29A3C;--rs-extra-ink:#F8BF80;--rs-miss:#3CC29A;--rs-miss-ink:#8FE0C4;--rs-sum-ink:#A8DBF7;--rs-neg-ink:#F0BFDC;
+  --rs-extra:#F29A3C;--rs-extra-ink:#F8BF80;--rs-miss:#3CC29A;--rs-miss-ink:#8FE0C4;--rs-extra-f:#B86A1E;--rs-miss-f:#23866A;--rs-sum-ink:#A8DBF7;--rs-neg-ink:#F0BFDC;
   --rs-sky0:#10233A;--rs-sky1:#18324D;--rs-grid:rgba(200,220,245,.11);--rs-glass:rgba(160,200,235,.10);--rs-glass-s:rgba(190,220,245,.5);--rs-rim:#9AA6B6;}
 .rs2[hidden],.rs2 [hidden]{display:none !important;}
 .rs2 .tk2-tabs{margin:0;align-self:flex-start;max-width:100%;}
@@ -149,20 +149,17 @@
 .rs2-svg .rs2-water{fill-opacity:.92;}
 .rs2-svg .rs2-water.is-neg{fill:var(--rs-n0);}
 .rs2-tops{fill:none;stroke:var(--rs-wtop);stroke-width:2;stroke-linejoin:round;}
-.rs2-walls{fill:none;stroke:var(--rs-wtop);stroke-width:1.2;stroke-opacity:.75;}
+.rs2-walls{fill:none;stroke:var(--rs-wtop);stroke-width:2.2;stroke-opacity:.7;}
 .rs2-btk{fill:none;stroke:var(--rs-wtop);stroke-width:1;stroke-opacity:.6;}
 .rs2-sl{stroke:none;pointer-events:none;}
-.rs2-sl.is-extra{fill:var(--rs-extra);fill-opacity:.62;}
-.rs2-sl.is-miss{fill:var(--rs-miss);fill-opacity:.5;}
-.rs2.is-ou .rs2-sl.is-extra{fill-opacity:.78;} .rs2.is-ou .rs2-sl.is-miss{fill-opacity:.66;}
+/* opaque, so an error region over a column never mixes into a color the legend lacks */
+.rs2-sl.is-extra{fill:var(--rs-extra-f);}
+.rs2-sl.is-miss{fill:var(--rs-miss-f);}
 .rs2-selp{fill:none;stroke:var(--ink);stroke-width:2.6;stroke-linejoin:round;}
 .rs2-curve{fill:none;stroke:var(--ink);stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round;}
 .rs2-dot{fill:var(--ink);stroke:var(--white);stroke-width:1.6;}
-.rs2-pour{fill:none;stroke:var(--rs-w1);stroke-width:5;stroke-linecap:round;stroke-dasharray:8 5;animation:rs2-pour .45s linear infinite;}
-.rs2-pour.is-neg{stroke:var(--rs-n1);}
-.rs2-drain{fill:none;stroke:var(--rs-w1);stroke-width:5;stroke-linecap:round;stroke-dasharray:8 5;animation:rs2-pour .45s linear infinite;}
-@keyframes rs2-pour{to{stroke-dashoffset:-13;}}
-@media (prefers-reduced-motion: reduce){ .rs2-pour,.rs2-drain{animation:none;} }
+.rs2-pour{fill:none;stroke:var(--rs-w1);stroke-width:4;stroke-linecap:round;}
+.rs2-drain{fill:none;stroke:var(--rs-w1);stroke-width:4;stroke-linecap:round;}
 .rs2-svg .rs2-tank-in{fill:var(--rs-glass);}
 .rs2-tank-foot{fill:var(--rs-rim);}
 .rs2-tw{fill-opacity:.9;}
@@ -184,3 +181,7 @@
 .rs2-tank-glint{fill:none;stroke:#FFFFFF;stroke-width:3;stroke-linecap:round;stroke-opacity:.45;}
 :root[data-theme="dark"] .rs2-tank-glint{stroke-opacity:.2;}
 .rs2.is-ou .rs2-knob .tk2-chip{display:none;}
+.rs2-spout{fill:none;stroke:var(--rs-rim);stroke-width:6;stroke-linecap:round;}
+.rs2-men{fill:none;stroke:#FFFFFF;stroke-width:1.6;stroke-linecap:round;stroke-opacity:.6;}
+:root[data-theme="dark"] .rs2-men{stroke-opacity:.35;}
+@media (max-width:640px){ .rs2 .rs2-knob .tk2-chip{display:none;} }

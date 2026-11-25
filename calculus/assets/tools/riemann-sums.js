@@ -96,6 +96,7 @@
   function sig2(x){ if(!x) return '0'; var d = clamp(1 - Math.floor(Math.log10(Math.abs(x))), 0, 8); return mn(x.toFixed(d)); }
   var ABBR = { minutes: 'min', seconds: 's', hours: 'h', 'liters per minute': 'L/min', 'meters per second': 'm/s', liters: 'L', meters: 'm' };
   function ab(u){ return ABBR[u] || u || ''; }
+  function piT(v){ var k = Math.round(v / (Math.PI / 2)); return ['0', 'π/2', 'π', '3π/2', '2π'][k] || mn(+v.toFixed(3)); }
   var SUB = { '0': '₀', '1': '₁', '2': '₂', '3': '₃', '4': '₄', '5': '₅', '6': '₆', '7': '₇', '8': '₈', '9': '₉', '-': '₋', '−': '₋' };
   var SUP = { '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴', '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹', '-': '⁻', '−': '⁻' };
   function scr(s, map){ s = String(s); for(var i = 0; i < s.length; i++) if(!map[s.charAt(i)]) return null; return s.split('').map(function(c){ return map[c]; }).join(''); }
@@ -219,7 +220,7 @@
     function intText(){
       var a = scr(String(D.a), SUB), b = scr(String(D.b), SUP), nm = D.nm;
       var body = nm.f + '(' + nm.v + ') d' + nm.v;
-      if(D.it.piX) return '∫ ' + body + ' from 0 to 2π';
+      if(D.it.piX) return '∫ ' + body + ' from 0 to ' + piT(D.b);
       return a && b ? '∫' + a + b + ' ' + body : '∫ ' + body + ' from ' + mn(D.a) + ' to ' + mn(D.b);
     }
 
@@ -231,10 +232,10 @@
       g.tankW = g.narrow ? clamp(W * 0.18, 62, 86) : clamp(W * 0.13, 110, 180);
       g.TX1 = W - (g.narrow ? 8 : 16); g.TX0 = g.TX1 - g.tankW;
       g.segX = g.narrow ? Math.round((W - segW) / 2) : 14; g.segY = 8;
-      if(g.narrow){ g.railY = g.segY + segH + 22; g.band = g.railY + 22; g.rx0 = 44; g.rx1 = W - 64; }
+      if(g.narrow){ g.railY = g.segY + segH + 23; g.band = g.railY + 20; g.rx0 = 44; g.rx1 = W - 64; }
       else { g.railY = g.segY + segH / 2; g.band = g.segY + segH + 10; g.rx0 = g.segX + segW + 70; g.rx1 = g.TX0 - 60; }
       g.L = g.narrow ? 46 : 58; g.R = g.TX0 - (g.narrow ? 12 : 26);
-      g.T = g.band + 30; g.B = H - (g.narrow ? 42 : 44);
+      g.T = g.band + (g.narrow ? 26 : 30); g.B = H - (g.narrow ? 42 : 44);
       var pad = (D.b - D.a) * 0.03;
       g.x = [D.a - pad, D.b + pad]; g.y = D.y;
       g.sx = function(x){ return g.L + (x - g.x[0]) / (g.x[1] - g.x[0]) * (g.R - g.L); };
@@ -242,7 +243,7 @@
       g.sy = function(y){ return g.B - (y - g.y[0]) / (g.y[1] - g.y[0]) * (g.B - g.T); };
       g.y0 = g.sy(0);
       // the tank: glass from T to B, its scale the curve's tank range
-      g.tT = g.T + 6; g.tB = g.B;
+      g.tT = g.T + 6; g.tB = g.B; g.spY = g.tT + 14;
       g.ty = function(v){ return g.tB - 6 - (v - D.tank[0]) / (D.tank[1] - D.tank[0]) * (g.tB - g.tT - 12); };
       return g;
     }
@@ -268,7 +269,7 @@
       // grid and ticks
       var xt = [], yt = [];
       if(isT()) xt = D.xs.map(function(x){ return { v: x, t: mn(x) }; });
-      else if(D.it.piX) xt = [0, 1, 2, 3, 4].map(function(k){ return { v: k * Math.PI / 2, t: ['0', 'π/2', 'π', '3π/2', '2π'][k] }; });
+      else if(D.it.piX) xt = [0, 1, 2, 3, 4].filter(function(k){ return k * Math.PI / 2 <= D.b + 1e-9; }).map(function(k){ return { v: k * Math.PI / 2, t: piT(k * Math.PI / 2) }; });
       else { var st = niceStep(D.b - D.a, g.narrow ? 4 : 8); for(var x = Math.ceil(D.a / st - 1e-9) * st; x <= D.b + 1e-9; x += st) xt.push({ v: x, t: mn(+x.toFixed(6)) }); }
       var ys = niceStep(g.y[1] - g.y[0], g.narrow ? 4 : 6);
       for(var y = Math.ceil(g.y[0] / ys - 1e-9) * ys; y <= g.y[1] + 1e-9; y += ys) yt.push({ v: y, t: mn(+y.toFixed(6)) });
@@ -301,11 +302,17 @@
         h.push('<text class="rs2-tnote" x="' + r1(g.narrow ? W / 2 : (g.rx0 + g.rx1) / 2) + '" y="' + r1(g.railY + 4) + '" text-anchor="middle">The table sets the strips: ' + (D.xs.length - 1) + ' widths</text>');
       }
       // the tank's glass and its foot
-      var tks = '';
-      for(var ti = 1; ti < 10; ti++){ var Yk = r1(g.tT + (g.tB - 4 - g.tT) * ti / 10); tks += 'M' + r1(g.TX1 - 5) + ' ' + Yk + 'h' + (ti === 5 ? -12 : -7); }
+      var tks = '', tst = niceStep(D.tank[1] - D.tank[0], 2);
+      for(var ti = 1; ti < 10; ti++){ var Yk = r1(g.tT + (g.tB - 4 - g.tT) * ti / 10); tks += 'M' + r1(g.TX1 - 5) + ' ' + Yk + 'h-6'; }
+      // numbered marks (0, then every nice step), so the level can be read without its label
+      G.tmarks = [];
+      for(var tv = Math.ceil(D.tank[0] / tst - 1e-9) * tst; tv <= D.tank[1] + 1e-9; tv += tst){ var Yv = g.ty(tv); if(Yv < g.tT + 8) continue; G.tmarks.push({ v: tv, y: Yv, t: mn(+tv.toPrecision(6)) }); tks += 'M' + r1(g.TX1 - 5) + ' ' + r1(Yv) + 'h-14'; }
       h.push('<g class="rs2-tank"><rect class="rs2-tank-in" x="' + r1(g.TX0 + 5) + '" y="' + r1(g.tT) + '" width="' + r1(g.tankW - 10) + '" height="' + r1(g.tB - g.tT - 4) + '" rx="6"/>' +
         '<path class="rs2-tank-tk" d="' + tks + '"/>' +
-        '<rect class="rs2-tank-foot" x="' + r1(g.TX0 - 2) + '" y="' + r1(g.tB - 4) + '" width="' + r1(g.tankW + 4) + '" height="6" rx="3"/></g>');
+        '<rect class="rs2-tank-foot" x="' + r1(g.TX0 - 2) + '" y="' + r1(g.tB - 4) + '" width="' + r1(g.tankW + 4) + '" height="6" rx="3"/>' +
+        // the spout through the left wall (where the columns pour in) and the tap at the foot (where it drains)
+        '<path class="rs2-spout" d="M' + r1(g.TX0 - (g.narrow ? 8 : 14)) + ' ' + r1(g.spY) + 'H' + r1(g.TX0 + 16) + '"/>' +
+        '<path class="rs2-spout" d="M' + r1(g.TX1 - 6) + ' ' + r1(g.tB - 12) + 'H' + r1(g.TX1 + 4) + '"/></g>');
       gS.innerHTML = h.join('');
       // the curve as pixel points (every 2 px), and the regions above and below it (the slivers are these, clipped)
       G.curve = null;
@@ -324,7 +331,7 @@
     var dyn = {};
     function buildDyn(){
       var parts = [['glass', 'path', 'rs2-glass', 'up'], ['glass-neg', 'path', 'rs2-glass is-neg', 'dn'], ['water', 'path', 'rs2-water', 'up'], ['water-neg', 'path', 'rs2-water is-neg', 'dn'],
-        ['shine', 'path', 'rs2-shine', 'up'], ['sl-extra', 'path', 'rs2-sl is-extra', 'cb'], ['sl-miss', 'path', 'rs2-sl is-miss', 'ca'], ['walls-from', 'path', 'rs2-walls'], ['walls', 'path', 'rs2-walls'], ['btk', 'path', 'rs2-btk'],
+        ['shine', 'path', 'rs2-shine', 'up'], ['men', 'path', 'rs2-men', 'up'], ['sl-extra', 'path', 'rs2-sl is-extra', 'cb'], ['sl-miss', 'path', 'rs2-sl is-miss', 'ca'], ['walls-from', 'path', 'rs2-walls'], ['walls', 'path', 'rs2-walls'], ['btk', 'path', 'rs2-btk'],
         ['tops', 'path', 'rs2-tops'], ['sel', 'path', 'rs2-selp'], ['curve', 'path', 'rs2-curve'], ['dots', 'g', 'rs2-dots'], ['pour', 'path', 'rs2-pour'],
         ['tw', 'rect', 'rs2-tw', 'tk'], ['tw-top', 'path', 'rs2-tw-top', 'tk'], ['start', 'line', 'rs2-start'], ['exact', 'line', 'rs2-exact'], ['drain', 'path', 'rs2-drain'], ['tank-glint', 'path', 'rs2-tank-glint'], ['tank-rim', 'rect', 'rs2-tank-rim']];
       gD.innerHTML = parts.map(function(p){ return '<' + p[1] + ' data-k="' + p[0] + '" class="' + p[2] + '"' + (p[3] ? ' clip-path="url(#' + id + '-' + p[3] + ')"' : '') + (p[1] === 'g' ? '></g>' : '/>'); }).join('');
@@ -359,7 +366,7 @@
         var c = cands[i], an = c[2] || 'middle', x0 = an === 'middle' ? c[0] - w / 2 : an === 'end' ? c[0] - w : c[0];
         var b = [x0 - 2, c[1] - hh + 3, x0 + w + 2, c[1] + 4];
         if(!keep && (b[0] < 2 || b[2] > G.W - 2 || b[1] < 2 || b[3] > G.H - 2)) continue;
-        var bb = [b[0] - 6, b[1] - 6, b[2] + 6, b[3] + 6];
+        var bb = [b[0] - 8, b[1] - 7, b[2] + 8, b[3] + 7];
         if(!keep && boxes.some(function(q){ return hitB(bb, q); })) continue;
         boxes.push(b);
         if(e.textContent !== text) e.textContent = text;
@@ -431,6 +438,10 @@
       if(aS > 0.05) S.ps.forEach(function(q){ var top = S.kind === 'trap' ? q.h0 : q.h, X = g.sx(q.x0) + Math.min(5, (g.sx(q.x1) - g.sx(q.x0)) * 0.12), Yt = g.sy(top);
         if(top > 0 && g.y0 - Yt > 14) sh += 'M' + r1(X) + ' ' + r1(g.y0 - 4) + 'V' + r1(Yt + 5); });
       dyn.shine.setAttribute('d', sh); dyn.shine.style.opacity = r1(aS * 10) / 10;
+      var mz = '';
+      if(aS > 0.05 && S.fill == null) S.ps.forEach(function(q){ var a = S.kind === 'trap' ? q.h0 : q.h, b = S.kind === 'trap' ? q.h1 : q.h, X0 = g.sx(q.x0) + 3, X1 = g.sx(q.x1) - 3;
+        if(a > 0 && b > 0 && X1 - X0 > 6 && g.y0 - g.sy(Math.max(a, b)) > 12) mz += 'M' + r1(X0) + ' ' + r1(g.sy(a) + 3.5) + 'L' + r1(X1) + ' ' + r1(g.sy(b) + 3.5); });
+      dyn.men.setAttribute('d', mz); dyn.men.style.opacity = r1(aS * 10) / 10;
       // thin strips: a small tick on the axis at every wall (the strips are still there)
       var bt = '';
       if(wallAlpha(S.wTo) < 1 && e > 0.5) S.wTo.forEach(function(x){ bt += 'M' + r1(g.sx(x)) + ' ' + r1(g.y0 - 3) + 'v6'; });
@@ -449,19 +460,24 @@
       var sp = S.sel >= 0 && !S.from && S.ps[S.sel] ? S.ps[S.sel] : null;
       dyn.sel.setAttribute('d', sp ? pathOf(profOf([sp], S.kind), true) : '');
       // the pour: a stream from the column being poured into the tank's mouth
+      // a column pouring in: a short solid stream from the spout in the tank's wall down to the water (never over the
+      // plot); a negative column, or the tank emptying before a fill, runs out of the tap at the tank's foot
+      var negPour = false;
       if(pourK >= 0){
-        var q = S.ps[pourK], hx = (q.x0 + q.x1) / 2, hy = S.kind === 'trap' ? (q.h0 + q.h1) / 2 : q.h, X0 = g.sx(hx), Y0 = Math.min(g.sy(hy), g.y0) - 2, X1 = g.TX0 + 14, Y1 = g.tT + 8, cy = Math.min(Y0, Y1) - 24;
-        // the stream arcs over to the tank's left wall, below its number, and falls inside to the water
-        dyn.pour.setAttribute('d', 'M' + r1(X0) + ' ' + r1(Y0) + 'Q' + r1(X0 + (X1 - X0) * 0.8) + ' ' + r1(cy) + ' ' + r1(X1) + ' ' + r1(Y1) + 'V' + r1(Math.max(Y1, g.ty(inTank))));
-        dyn.pour.classList.toggle('is-neg', hy < 0);
+        var q = S.ps[pourK], hy = S.kind === 'trap' ? (q.h0 + q.h1) / 2 : q.h;
+        negPour = q.area < 0;
+        dyn.pour.setAttribute('d', negPour ? '' : 'M' + r1(g.TX0 + 16) + ' ' + r1(g.spY + 3) + 'V' + r1(Math.max(g.spY + 6, g.ty(inTank))));
+        void hy;
       } else dyn.pour.setAttribute('d', '');
-      // the drain while the tank empties for a fill
-      dyn.drain.setAttribute('d', S.fill != null && S.fill < 0 && S.fill > -0.5 ? 'M' + r1(g.TX1 - 4) + ' ' + r1(g.tB - 12) + 'h10v' + r1(Math.max(6, g.H - g.tB)) : '');
+      var draining = negPour || (S.fill != null && S.fill < 0 && S.fill > -0.5);
+      dyn.drain.setAttribute('d', draining ? 'M' + r1(g.TX1 + 3) + ' ' + r1(g.tB - 9) + 'v' + r1(Math.max(4, Math.min(14, g.H - g.tB - 2))) : '');
       // the tank's water
       var ly = clamp(g.ty(inTank), g.tT, g.tB - 4), base = g.tB - 4;
       dyn.tw.setAttribute('x', r1(g.TX0 + 5)); dyn.tw.setAttribute('width', r1(g.tankW - 10));
       dyn.tw.setAttribute('y', r1(ly)); dyn.tw.setAttribute('height', r1(Math.max(0, base - ly)));
-      dyn['tw-top'].setAttribute('d', 'M' + r1(g.TX0 + 5) + ' ' + r1(ly) + 'H' + r1(g.TX1 - 5));
+      var ww = (g.tankW - 10) / 4, wv = 'M' + r1(g.TX0 + 5) + ' ' + r1(ly);
+      for(var wi = 0; wi < 4; wi++) wv += 'q' + r1(ww / 2) + ' ' + (wi % 2 ? 2.2 : -2.2) + ' ' + r1(ww) + ' 0';
+      dyn['tw-top'].setAttribute('d', wv);
       S.drawn = { P: P, total: total, inTank: inTank, sl: sl, ly: ly };
       labels(P, sg, sl, inTank);
       words();
@@ -481,8 +497,8 @@
       var g = G, nm = D.nm, cl = [];
       // the controls on the picture keep their room (from the geometry, so a frame never waits for a layout read)
       cl.push([g.segX - 3, g.segY - 3, g.segX + g.segW + 3, g.segY + g.segH + 3]);
-      if(knob && !isT()){
-        var n = nOf(), kx = railX(n), ky = g.railY, t = knob && cue2.active() && S.tab === 'ou' && g.narrow ? '' : tagOf(n), twd = tw(t, 13) + 18;
+      if(knob && !knob.el.hidden){
+        var n = nOf(), kx = railX(n), ky = g.railY, t = tagOf(n), twd = tw(t, 13) + 18;
         cl.push([kx - 25, ky - 25, kx + 25, ky + 25]);
         if(t) cl.push(railX(n) - g.rx0 > 96 ? [kx - 28 - twd, ky - 13, kx - 24, ky + 13] : [kx + 24, ky - 13, kx + 28 + twd, ky + 13]);
       }
@@ -493,6 +509,7 @@
       lab('tank', amt(inTank), 'rs2-cink rs2-big', [[tx, g.tT - 10]], 13.5, true);
       if(D.exact != null){ var ey = g.ty(D.exact), ly = S.drawn.ly; lab('exact', 'exact', 'rs2-cex', [[g.TX1 - 8, ey - 5, 'end'], [g.TX1 - 8, ey + 15, 'end']].filter(function(c){ return Math.abs(c[1] - 4 - ly) > 12; }), 11.5); }
       else lab('exact', null);
+      (g.tmarks || []).forEach(function(m, i){ lab('tm' + i, m.t, 'rs2-cmut', [[g.TX1 - 22, m.y + 4, 'end']], 11.5); });
       if(D.tank[0] < 0){ var s0 = g.ty(0); lab('start', 'start', 'rs2-cmut', [[g.TX0 + 9, s0 + 14, 'start'], [g.TX0 + 9, s0 - 5, 'start']], 11.5); } else lab('start', null);
       // the curve's name
       if(G.curve){
@@ -519,6 +536,7 @@
       var err = sum - D.exact, scale = Math.max(1, Math.abs(D.tank[1] - D.tank[0]));
       if(Math.abs(err) < 1e-9 * scale) return [{ t: 'equal to exact', role: 'ex' }];
       var by = Math.abs(err) >= 0.5 * Math.pow(10, -D.dec) ? fix(Math.abs(err), D.dec) : sig2(Math.abs(err));
+      by += D.nm.amtA ? ' ' + D.nm.amtA : '';
       return [{ t: (err > 0 ? 'over by ' : 'under by ') + by, role: err > 0 ? 'extra' : 'miss', say: (err > 0 ? 'over by ' : 'under by ') + by }];
     }
     var wKey = '';
@@ -553,14 +571,14 @@
       if(isT()){
         var ys = D.ys, up = ys.every(function(y, i){ return !i || y > ys[i - 1]; }), dn = ys.every(function(y, i){ return !i || y < ys[i - 1]; });
         if(lr && (up || dn)){ var over = (k === 'left') === dn; return [{ t: 'values ' + (up ? 'rise' : 'fall'), role: 'shape' }, { t: (phone ? '' : KW + ': ') + (over ? 'over' : 'under') + ' if ' + f + ' ' + (up ? 'rises' : 'falls') + ' throughout', role: over ? 'extra' : 'miss' }]; }
-        return [{ t: lr ? 'values go up and down' : 'a table shows no bending', role: 'shape' }, { t: 'over or under not known', role: 'ink' }];
+        return [{ t: lr ? 'values go up and down' : 'a table can\'t show bending', role: 'shape' }, { t: 'over or under not known', role: 'ink' }];
       }
       var vd = R.verdict(k, sh, f), parts;
       if(lr){
         if(sh.inc){ var o1 = vd.v === 'over'; parts = [{ t: f + ' ' + (sh.inc === 'up' ? 'increasing' : 'decreasing'), role: 'shape' }, { t: KW + ' tops ' + (o1 ? 'above' : 'below') + ' ' + f, role: o1 ? 'extra' : 'miss' }, { t: o1 ? 'overestimate' : 'underestimate', role: o1 ? 'extra' : 'miss' }]; }
         else parts = [{ t: f + ' changes direction', role: 'shape' }, { t: 'no rule for ' + KW, role: 'ink' }];
       } else {
-        if(sh.conc){ var o2 = vd.v === 'over'; parts = [{ t: f + ' concave ' + sh.conc, role: 'shape' }, { t: k === 'trap' ? (phone ? 'tops ' : 'trapezoid tops ') + (o2 ? 'above ' : 'below ') + f : (phone ? '' : 'midpoint ') + (o2 ? 'adds more than it misses' : 'misses more than it adds'), role: o2 ? 'extra' : 'miss' }, { t: o2 ? 'overestimate' : 'underestimate', role: o2 ? 'extra' : 'miss' }]; }
+        if(sh.conc){ var o2 = vd.v === 'over'; parts = [{ t: f + ' concave ' + sh.conc, role: 'shape' }, { t: k === 'trap' ? (phone ? 'tops ' : 'trapezoid tops ') + (o2 ? 'above ' : 'below ') + f : (phone ? '' : 'midpoint ') + (o2 ? 'more extra than missed' : 'more missed than extra'), role: o2 ? 'extra' : 'miss' }, { t: o2 ? 'overestimate' : 'underestimate', role: o2 ? 'extra' : 'miss' }]; }
         else parts = [{ t: f + ' changes concavity', role: 'shape' }, { t: 'no rule for ' + KW, role: 'ink' }];
       }
       if(!vd.v && D.exact != null){ var ep = errParts(sum, phone); if(ep.length) parts.push({ t: 'this time ' + ep[0].t, role: ep[0].role }); }
@@ -582,9 +600,9 @@
           if(key === 'Home') return 1; if(key === 'End') return 100;
           return null;
         },
-        valuetext: function(v){ return tagOf(v); }, tag: function(v){ return S.tab === 'ou' && G && G.narrow && cue2.active() ? '' : tagOf(v); },
+        valuetext: function(v){ return tagOf(v); }, tag: function(v){ return tagOf(v); },
         tagSide: function(v){ return G && railX(v) - G.rx0 > 96 ? 'left' : 'right'; },
-        chipSide: function(v){ return !G ? 'down' : railX(v) - G.rx0 > 96 ? 'right' : railX(v) - G.rx0 > 74 ? 'left' : 'up'; },
+        chipSide: function(v){ if(!G) return 'down'; var x = railX(v); return x - G.rx0 < 110 || G.rx1 - x < 110 ? 'down' : 'right'; },
         onStart: function(){ userActs(); hideCue(true); tourDid('drag'); setTimeout(measureCtl, 0); },
         onInput: function(v){ setN(v); },
         onEnd: function(){ settleSoon(); } });
@@ -601,7 +619,7 @@
       if(S.fill != null){ S.fill = null; S.refill = 0; }
       S.took = null; fillP.paint();
     }
-    function userActs(){ if(S.mode === 'explore') hideCue(true); }
+    function userActs(){ if(S.mode === 'explore') hideCue(true); if(knob){ knob.used(); setTimeout(measureCtl, 0); } }
 
     /* ---------------------------------------------------- the four sums */
     seg.addEventListener('click', function(e){
@@ -610,7 +628,7 @@
       var k = b.getAttribute('data-k'); if(k === S.kind) return;
       S.kind = k; change(); target(true); paintSeg(); settleSoon();
     });
-    function paintSeg(){ seg.querySelectorAll('button').forEach(function(b){ var k = b.getAttribute('data-k'); b.setAttribute('aria-pressed', String(k === S.kind)); b.disabled = k === 'mid' && !D.midOk; b.title = b.disabled ? 'A midpoint sum from a table needs an odd number of points, so the widths pair up.' : ''; }); }
+    function paintSeg(){ seg.querySelectorAll('button').forEach(function(b){ var k = b.getAttribute('data-k'); b.setAttribute('aria-pressed', String(k === S.kind)); b.disabled = k === 'mid' && !D.midOk; b.title = b.disabled ? 'A midpoint sum needs the value at the middle of each pair of widths; this table does not give it.' : ''; }); }
 
     /* ---------------------------------------------------- Fill one by one */
     function fillStart(){
@@ -622,8 +640,10 @@
       return true;
     }
     function fillEnd(){
-      var Dr = S.drawn, n = S.ps.length;
-      S.took = 'Poured together, the ' + n + ' column' + (n === 1 ? '' : 's') + ' hold ' + amt(Dr.inTank) + ': that is the ' + (isT() ? kindWord() + ' from the table' : kindWord() + (D.exact != null ? '. The exact amount is ' + amt(D.exact) : '')) + '.';
+      var n = S.ps.length;
+      // the last column is fully poured first, so the sentence and the tank show the same amount
+      S.fill = n; draw();
+      S.took = 'Poured together, the ' + n + ' column' + (n === 1 ? '' : 's') + ' hold ' + amt(R.total(S.ps)) + ': that is the ' + (isT() ? kindWord() + ' from the table' : kindWord() + (D.exact != null ? '. The exact amount is ' + amt(D.exact) : '')) + '.';
       wKey = ''; words(); say(S.took);
     }
     function scrollIn(){ var r = scene.getBoundingClientRect(); if(r.top < 0 || r.bottom > (window.innerHeight || 800)) try{ scene.scrollIntoView({ block: 'nearest', behavior: K.reduced() ? 'auto' : 'smooth' }); }catch(e){} }
@@ -662,9 +682,9 @@
     function cueShow(){
       if(!G || S.mode !== 'explore') return;
       if(S.tab === 'n'){ cue2.hide(false); if(!isT() && cue.show()){ draw(); measureCtl(); draw(); } }
-      else { cue.hide(false); if(cue2.show()){ knob.place(); draw(); measureCtl(); draw(); } }
+      else { cue.hide(false); if(cue2.show()){ knobMode(); draw(); measureCtl(); draw(); } }
     }
-    function hideCue(used){ var was = cue.active() || cue2.active(); if(S.tab === 'n'){ if(cue.active()) cue.hide(used); } else if(cue2.active()) cue2.hide(used); if(was) setTimeout(measureCtl, 0); }
+    function hideCue(used){ var was = cue.active() || cue2.active(); if(S.tab === 'n'){ if(cue.active()) cue.hide(used); } else if(cue2.active()) cue2.hide(used); if(was){ knobMode(); setTimeout(measureCtl, 0); } }
     stage.addEventListener('keydown', function(e){ if(/^(Arrow|Page|Home|End)/.test(e.key)) hideCue(true); }, true);
     var tour = K.tour({ key: 'apcalc-riemann-sums', label: 'Show me how', steps: [
       { id: 'drag', text: 'Drag the knob for more, thinner strips. The tank holds their total; the thin line is the exact amount.', target: function(){ return knob.knob; } },
@@ -679,7 +699,7 @@
     function startTour(){ if(S.mode !== 'explore') return; hideCue(false); (S.tab === 'n' && !isT() ? tour : tour2).start(true); }
 
     /* ---------------------------------------------------- tabs and curves */
-    function purpose(){ head.purpose(S.tab === 'n' ? 'Thinner strips: the sum closes in on the exact area.' : 'Rising, falling or bending decides over or under.'); }
+    function purpose(){ var ph = (window.innerWidth || 1024) < 600; head.purpose(S.tab === 'n' ? (ph ? 'Thinner strips close in on the area.' : 'Thinner strips: the sum closes in on the exact area.') : (ph ? 'Rising, falling or bending: over or under.' : 'Rising, falling or bending decides over or under.')); }
     function setTab(v){
       if(v === S.tab) return;
       cue.hide(false); cue2.hide(false);
@@ -692,7 +712,7 @@
     }
     function knobMode(){
       if(!knob) return;
-      knob.hide(isT());
+      knob.hide(isT() || (S.tab === 'ou' && G && G.narrow && cue2.active()));
       knob.el.classList.toggle('is-quiet', S.tab === 'ou');
       knob.value(nOf());
     }
@@ -752,7 +772,7 @@
     function refHtml(){
       var nm = D.nm, isTab = isT(), n = nOf(), ps = S.ps, kind = S.kind, unit = nm.amtA ? ' ' + esc(nm.amtA) : '', sum = R.total(ps);
       var html = '<p class="rs2-howref"><button type="button" class="tk2-how" data-how>Show me how</button> to use it, step by step.</p>';
-      html += '<h3 class="ls-title-l">' + esc(D.name) + '</h3>' + (isTab ? '' : tr(D.it.tex)) + (isTab ? '<p>A table of ' + esc(nm.f) + '(' + esc(nm.v) + ') in ' + esc(nm.rateU) + ', ' + esc(nm.v) + ' in ' + esc(nm.varU) + '.</p>' : '<p>From ' + esc(nm.v) + ' = ' + esc(mn(D.it.piX ? '0' : D.a)) + ' to ' + esc(D.it.piX ? '2π' : mn(D.b)) + (nm.varU ? ' ' + esc(nm.varU) : '') + '.</p>');
+      html += '<h3 class="ls-title-l">' + esc(D.name) + '</h3>' + (isTab ? '' : tr(D.it.tex)) + (isTab ? '<p>A table of ' + esc(nm.f) + '(' + esc(nm.v) + ') in ' + esc(nm.rateU) + ', ' + esc(nm.v) + ' in ' + esc(nm.varU) + '.</p>' : '<p>From ' + esc(nm.v) + ' = ' + esc(mn(D.it.piX ? '0' : D.a)) + ' to ' + esc(D.it.piX ? piT(D.b) : mn(D.b)) + (nm.varU ? ' ' + esc(nm.varU) : '') + '.</p>');
       var dx = isTab ? '' : '\\Delta ' + nm.v + ' = \\frac{' + M.fmt(D.b, 4).replace('−', '-') + ' - ' + M.fmt(D.a, 4).replace('−', '-').replace(/^-(.*)$/, '(-$1)') + '}{' + n + '} = ' + M.fmt((D.b - D.a) / n, 4).replace('−', '-');
       var sig = isTab ? '' : kind === 'trap' ? '\\sum_{i=1}^{' + n + '} \\frac{' + nm.f + '(' + nm.v + '_{i-1}) + ' + nm.f + '(' + nm.v + '_i)}{2}\\,\\Delta ' + nm.v
         : '\\sum_{i=1}^{' + n + '} ' + nm.f + '(' + (kind === 'left' ? nm.v + '_{i-1}' : kind === 'right' ? nm.v + '_i' : 'm_i') + ')\\,\\Delta ' + nm.v;
@@ -765,7 +785,7 @@
         (isTab && D.trend != null ? ' Area under one possible smooth ' + esc(nm.f) + ' through these points (not given; a table cannot know it): ' + fmt(D.trend) + unit + '.' : '') + '</p>';
       var all = R.KINDS.map(function(kk){ var q = piecesFor(n, kk); return q.length ? '<tr' + (kk === kind ? ' class="hl"' : '') + '><th scope="row">' + R.SHORT[kk] + '</th><td class="r">' + fmt(R.total(q)) + '</td>' + (D.exact != null ? '<td class="r">' + fmt(R.total(q) - D.exact) + '</td>' : D.trend != null ? '<td class="r">' + fmt(R.total(q) - D.trend) + '</td>' : '') + '</tr>' : ''; }).join('');
       html += '<h3 class="ls-title-l">All four, side by side' + (isTab ? '' : ' (' + n + ' strips)') + '</h3><table class="ls-tbl"><caption class="sr-only">Left, right, midpoint and trapezoidal sums compared</caption><thead><tr><th scope="col">Sum</th><th scope="col">Value</th>' + (D.exact != null ? '<th scope="col">Minus exact</th>' : D.trend != null ? '<th scope="col">Minus one possible ' + esc(nm.f) + '</th>' : '') + '</tr></thead><tbody>' + all + '</tbody></table>' +
-        '<p class="bt-small">With equal widths the trapezoidal sum is the average of the left and right sums.' + (isTab ? ' A midpoint sum from a table needs an odd number of points, so the widths pair up and the middle value is given.' : '') + '</p>';
+        '<p class="bt-small">With equal widths the trapezoidal sum is the average of the left and right sums.' + (isTab ? ' A midpoint sum from a table needs the value at the true middle of each pair of subintervals (each pair of widths equal); neither table here gives that, so Midpoint is off.' : '') + '</p>';
       html += '<h3 class="ls-title-l">Over or under</h3><ul>' +
         '<li><b>Left and right sums</b> follow increasing or decreasing. If ' + esc(nm.f) + ' is increasing on the whole interval, a left sum is an underestimate and a right sum an overestimate; decreasing, the other way round.</li>' +
         '<li><b>Midpoint and trapezoidal sums</b> follow concavity. If ' + esc(nm.f) + ' is concave up on the whole interval, each trapezoid’s top (a chord) lies above the curve, so the trapezoidal sum is an overestimate; a midpoint rectangle has the same area as the trapezoid under the tangent line at the midpoint, which lies below the curve, so the midpoint sum is an underestimate. Concave down, both turn round.</li>' +
@@ -788,7 +808,8 @@
       var vw = window.innerWidth || 1024, vh = window.innerHeight || 800;
       if(vw >= 1024){ scene.style.height = ''; return; }
       var top = scene.getBoundingClientRect().top + (window.scrollY || window.pageYOffset || 0);
-      var below = lines.offsetHeight || 90;
+      // on a phone the picture and the cause line share the screen; Fill one by one may sit just below
+      var below = vw < 600 ? (cause.el.offsetHeight || 84) + 6 : (lines.offsetHeight || 90);
       var hh = Math.round(vh - Math.min(top, vh * 0.4) - below - 14);
       scene.style.height = clamp(hh, vw < 600 ? 300 : 420, vw < 600 ? 640 : 760) + 'px';
     }

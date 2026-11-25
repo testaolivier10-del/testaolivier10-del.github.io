@@ -198,7 +198,8 @@ if (FIT) {
       let bad = 0;
       for (const F of fr) { checks++; const o2 = agree(F, `${w} ${name}`); if (o2.length) { bad++; if (bad < 4) fails.push(...o2); }
         if (F.take && /^With 100 strips/.test(F.takeText) && (F.from || F.nDrawn !== 100)) { bad++; fails.push(`${w} ${name}: the 100 strips takeaway before the picture shows them`); }
-        if (F.take && /^Poured together/.test(F.takeText) && F.fill != null && F.fill < F.nDrawn - 1e-6) { bad++; fails.push(`${w} ${name}: the fill takeaway before the last column is poured`); } }
+        if (F.take && /^Poured together/.test(F.takeText) && F.fill != null && F.fill < F.nDrawn - 1e-6) { bad++; fails.push(`${w} ${name}: the fill takeaway before the last column is poured`); }
+        if (F.take && /^Poured together/.test(F.takeText)) { const m = F.takeText.match(/hold (\S+)/), num = s => +String(s).replace(/−/g, '-').replace(/[^\d.\-]/g, ''); if (!m || num(m[1]) !== num(F.tankText)) { bad++; fails.push(`${w} ${name}: the fill takeaway says ${m && m[1]} but the tank shows ${F.tankText}`); } } }
       if (o.motion) { checks++; const ds = new Set(fr.map(F => F[o.motion].toFixed(3))); if (ds.size < 4) fails.push(`${w} ${name}: no motion seen (${ds.size} distinct values of ${o.motion})`); }
       console.log(`${w} ${THEME} frames ${name}: ${fr.length} frames, ${bad} bad`);
       if (SHOTS) await shot(page, `${w}-${THEME}-frames-${name}.png`);

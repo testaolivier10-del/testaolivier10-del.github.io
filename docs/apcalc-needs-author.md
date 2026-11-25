@@ -219,3 +219,12 @@ All 2026-10-13, answered by the independent reviewers or fixed; kept here so nob
   began. A teacher may find water a stretch for area under f(x) with no units, or for distance; the axis titles and "?"
   say what each column is (width × height). The midpoint verdict reads "misses more than it adds" (net, since a
   midpoint column is partly above and partly below a bending curve). Owner or a teacher to confirm.
+
+- (2026-11-24, tools v2 Riemann sums review) A midpoint sum from a table: the old rule accepted any odd number of
+  points and used each odd point as the "middle" (on t = 0, 2, 5, 7, 12 it called 5·r(2) + 7·r(7) a midpoint sum).
+  Fixed: `midOk` now also needs each shared point to be the true middle of its pair, so Midpoint is off for both
+  Explore tables, and the Test yourself table drills now make each midpoint pair equally wide (on main too; record
+  ids unchanged). Not changed: the shared helper `ApCalcMath.riemannTable(xs, ys, 'mid')` in `calc-tool-math.js`
+  still pairs subintervals without that check (its test uses [0, 1, 3], where 1 is not the middle of [0, 3]); check
+  whether any bank item relies on it.
+

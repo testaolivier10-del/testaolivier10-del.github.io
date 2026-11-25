@@ -20,7 +20,8 @@
                                                        ApCalcMath.riemann / riemannTable)
      shape(f, a, b) -> { inc: 'up'|'down'|null, conc: 'up'|'down'|null }
      verdict(kind, shape) -> { v: 'over'|'under'|null, why }   over/under and the reason
-     midOk(xs) -> whether a table allows a midpoint sum (an odd number of points)
+     midOk(xs) -> whether a table allows a midpoint sum (an odd number of points,
+                  each odd point the true middle of its pair of subintervals)
    Test yourself
      generate(rng, ctx, type?) -> { ctx, topic, type, text, steps, solution, figure?, table? }
        types: table (L/R/M/T from a table with unequal widths), overunder
@@ -57,7 +58,12 @@
     for(var i = 0; i + 1 < xs.length; i++) out.push(piece(xs[i], xs[i + 1], kind, f(xs[i]), f(xs[i + 1]), f((xs[i] + xs[i + 1]) / 2)));
     return out;
   }
-  function midOk(xs){ return xs.length >= 3 && xs.length % 2 === 1; }
+  function midOk(xs){
+    if(xs.length < 3 || xs.length % 2 !== 1) return false;
+    // a midpoint sum needs the value AT the middle of each wide subinterval, not just any point between
+    for(var i = 0; i + 2 < xs.length; i += 2) if(Math.abs(xs[i + 1] - (xs[i] + xs[i + 2]) / 2) > 1e-9 * Math.max(1, Math.abs(xs[i + 2] - xs[i]))) return false;
+    return true;
+  }
   function tablePieces(xs, ys, kind){
     var out = [], i;
     if(kind === 'mid'){
@@ -152,7 +158,13 @@
       y = trend === 'up' ? y + step : trend === 'down' ? y - step : (i % 2 ? y + step : y - Math.round(step / 2));
       y = Math.max(lo, Math.min(hi, y));
     }
-    var kind = r.pick(KINDS), ps = tablePieces(xs, ys, kind), S = total(ps);
+    var kind = r.pick(KINDS);
+    if(kind === 'mid'){
+      // a midpoint sum from a table: each pair of widths equal, so the shared point is the true middle
+      var tot = xs[n] - xs[0], h1 = Math.max(1, Math.min(tot / 2 - 1, Math.round((ws[0] + ws[1]) / 2))), h2 = (tot - 2 * h1) / 2;
+      ws = [h1, h1, h2, h2]; xs = cumul(ws, xs[0]);
+    }
+    var ps = tablePieces(xs, ys, kind), S = total(ps);
     var a = xs[0], b = xs[n], k = kind === 'mid' ? 2 : n, eqw = (b - a) / k;
     // the common-width slip: (b - a)/k times the heights a correct sum would use
     var equalW = ps.reduce(function(s, p){ return s + eqw * p.h; }, 0);
