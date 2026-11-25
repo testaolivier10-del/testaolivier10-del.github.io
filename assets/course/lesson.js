@@ -82,7 +82,40 @@
     });
   }
 
-  function boot(){ var s = document.querySelector('.cx-ls'); if(s) steps(s); }
+  /* 3. The one finish every course's lesson ends on (owner, 2026-11-24; the Organic Chemistry finish is the
+        standard): on the last step, "Lesson done", one button that names where it goes, and the tool for this
+        topic when the course has one. The course script still owns its own next link (hidden while this is on);
+        assets/course/path.js points .ls-next at the path's next stop when the student has a path. */
+  var CUBE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 20 7.5v9L12 21 4 16.5v-9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 12 20 7.5M12 12v9M12 12 4 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>';
+  function toolsFor(topic){
+    var list = null; for(var k in window) if(/^Ap\w+ToolList$/.test(k)){ list = window[k]; break; }
+    return (list || []).filter(function(t){ return t.live !== false && (t.topic === topic || (t.lessons || []).indexOf(topic) >= 0); });
+  }
+  function finish(){
+    var bar = document.querySelector('[class*="-ls-actions"], .nl-actions'); if(!bar) return;
+    var root = bar.closest('.cx-ls, .nl-shell') || document.body, box = null;
+    function draw(){
+      var a = bar.querySelector('a[class$="-ls-go"], a.nl-nextlesson'); if(!a) return;
+      if(!box){
+        if(a.hidden) return;   // drawn on the last step, once the course's scripts have run
+        var nl = document.querySelector('a.nl-next');
+        var title = (root.getAttribute('data-next-title') || (nl ? nl.textContent.replace(/\s*\u2192\s*$/, '') : '')).trim();
+        var tools = toolsFor(document.body.getAttribute('data-topic'));
+        box = document.createElement('div'); box.className = 'ls-fin';
+        box.innerHTML = '<div class="ls-done"><p class="ls-done__k">\u2713 Lesson done</p><a class="' + esc(a.className.replace('nl-nextlesson', '')) + ' ls-next" href="' + esc(a.getAttribute('href')) + '">' +
+          (title ? 'Next: ' + esc(title) + ' &rarr;' : a.innerHTML) + '</a></div>' +
+          (tools.length ? '<div class="tool-suggest"><span class="tool-suggest__k">Now go play with it</span><div class="tool-suggest__row">' + tools.map(function(t){
+            return '<a class="tool-suggest__link" href="../tools/' + esc(t.slug) + '.html">' + CUBE + esc(t.name) + '</a>'; }).join('') + '</div></div>' : '');
+        bar.parentNode.insertBefore(box, bar);
+        root.classList.add('ls-has-fin');
+      }
+      box.hidden = a.hidden;
+    }
+    new MutationObserver(draw).observe(bar, { attributes: true, childList: true, subtree: true, attributeFilter: ['hidden'] });
+    draw();
+  }
+
+  function boot(){ var s = document.querySelector('.cx-ls'); if(s) steps(s); finish(); }
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
   window.LevlLesson = { checked: checked };
 })();

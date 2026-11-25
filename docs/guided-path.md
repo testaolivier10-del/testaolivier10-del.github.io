@@ -153,3 +153,14 @@ suggestion (`ochem/assets/lesson-engine.js`), the "Next lesson" line under every
 keep them). A&P: the extra next-step box after "Lesson complete" is gone. AP lessons keep the share row and the
 "Question set for this topic" link under the step (not decided yet).
 
+## One lesson finish in every course (owner, 2026-11-24: "every course should have continuity in layout")
+The Organic Chemistry finish is the standard. `finish()` in `assets/course/lesson.js` (AP courses, A&P, NREMT) draws
+it on the last step: "Lesson done", one button that names where it goes ("Next: <title>", from the shell's
+`data-next-title`, NREMT from its `.nl-next` link), and "Now go play with it" with the tool whose `topic` is this
+lesson (`window.Ap*ToolList`; A&P and NREMT tools have no topic, so none shows). The course's own next link stays
+in the page, hidden while the finish is on, and `path.js` still points `.ls-next` at the path's next stop. Styles
+are in `assets/course/r3-reading.css`, which also hides the share row and "Question set for this topic" under AP
+lesson steps (`.cx-ls-end`, owner's call; still in the builders' HTML) and keeps Continue on the right on every
+step. Still different between courses: where Previous sits (top of the card in Organic Chemistry, bottom left
+elsewhere) and the look of the progress strip.
+

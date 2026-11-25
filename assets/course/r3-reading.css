@@ -400,6 +400,19 @@ html.rt-leaving .tb-main{visibility:hidden}
 /* The end of an interactive lesson (owner, 2026-11-24): nothing under each step but Continue; the related rows stay
    in the page for search and the notes link check, out of sight. The last step ends on one "next" button. */
 .ls-book .lesson-links.xshell{display:none}
+/* The same finish in every course (assets/course/lesson.js draws it for the AP courses, A&P and NREMT): the course's
+   own next link and the share row under the steps give way to it. */
+.ls-has-fin a[class$="-ls-go"],.ls-has-fin a.nl-nextlesson,.ls-has-fin a.nl-next,.cx-ls-end{display:none!important}
+/* Continue sits on the right in every course, also on a step with no hint (it slid left there). */
+[class$="-ls-hint"]:empty + [class$="-ls-go"]{margin-left:auto}
+.ls-fin[hidden]{display:none}
+.ls-fin .ls-next{margin-left:0;display:inline-flex;text-decoration:none}
+.cx-ls .tool-suggest{border:1px solid var(--line);border-radius:14px;background:var(--ctint,#F1EEFC);padding:14px 16px;margin:18px 0 0}
+.cx-ls .tool-suggest__k{display:block;font:900 10.5px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--cink,var(--ink));margin-bottom:7px}
+.cx-ls .tool-suggest__row{display:flex;flex-wrap:wrap;gap:8px}
+.cx-ls .tool-suggest__link{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font:800 13px var(--font-ui);color:var(--ink);background:var(--white);border:1px solid var(--line);border-radius:999px;padding:7px 14px;min-height:30px}
+.cx-ls .tool-suggest__link:hover{border-color:var(--cink,var(--ink))}
+.cx-ls .tool-suggest__link svg{width:16px;height:16px;flex:none}
 .ls-done{margin:22px 0 6px}
 .ls-done__k{font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--good-text,#1B7A4B);margin:0 0 8px}
 /* Ochem's lesson engine builds its own step rail (ochem/assets/step-back.js, .lesson-rail) as the shell's first
