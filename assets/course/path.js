@@ -307,7 +307,7 @@
   /* ---------- the course home: the side column and the path (course redesign r4, decision 2) ---------- */
   function metaHTML(){
     var dd = deadline(), n = dd ? daysTo(dd) : null, bits = [];
-    bits.push(S.mode === 'cram' ? modeLabel() : 'On my own');
+    bits.push(S.mode === 'cram' ? modeLabel() : 'Course order');
     if(dd && n != null && n >= 0) bits.push(S.mode === 'cram' ? (n === 0 ? 'Today' : n === 1 ? 'Tomorrow' : 'In ' + n + ' days') : 'Exam ' + new Date(dd + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
     var p = pace(); if(p) bits.push('about ' + p + ' min a day');
     return esc(bits.join(' · '));
@@ -349,9 +349,11 @@
     var h = $('#lpTitle'), sub = $('#lpSub');
     if(h) h.innerHTML = made ? 'Your <span>path</span> through ' + esc(D.name) : 'The <span>path</span> through ' + esc(D.name);
     if(sub) sub.textContent = !made ? 'Every lesson, skill, practice set and unit test, in course order.' : S.mode === 'cram' ? 'Built from your answers, around your test date.' : 'Built from your answers, in course order' + (deadline() ? ', around your exam date.' : '.');
+    /* The whole card is one button (owner, 2026-11-24, canvas Version C): "Make your path" before a path exists, "Edit path" after. */
+    var chev = '<svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M7 3l7 7-7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
     $('#lpSetup').innerHTML = made
-      ? '<div class="lp-card lp-mine"><div class="hd"><h3>Your path</h3><button type="button" class="lp-link" data-act="setup">Change</button></div><p class="lp-meta2">' + metaHTML() + '</p>' + cramLink() + '</div>' + bannersHTML()
-      : '';
+      ? '<button type="button" class="lp-card lp-pathbtn mine" data-act="setup"><span class="tx"><b>Your path</b><span class="sub">' + metaHTML() + '</span></span><span class="go">Edit path ' + chev + '</span></button>' + cramLink() + bannersHTML()
+      : '<button type="button" class="lp-card lp-pathbtn new" data-act="setup"><span class="tx"><b>Make your path</b><span class="sub">Pick how you are studying</span></span><span class="go" aria-hidden="true">' + chev + '</span></button>';
     $('#lpSel').innerHTML = selHTML(selStop());
     paintSticky();
     var mp = $('#lpMap'); if(mp){ mp.innerHTML = mapHTML(GS); mp.hidden = false; }

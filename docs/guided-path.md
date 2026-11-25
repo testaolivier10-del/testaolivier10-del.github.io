@@ -133,3 +133,10 @@ this", or "Mark done" on a path card, in a lesson, notes page or the textbook). 
 
 - 2026-11-06: Your path offers the AP® day by day cram plan (cram.html) from about 7 weeks before the exam and in
   exam review, and the phone's sticky button names the next stop (`paintSticky`). See docs/course-redesign-r4.md.
+
+## Home "Your path" card is one button (owner, 2026-11-24, canvas Version C)
+The old card ("Your path / On my own / Change") read like a label, and a student who skipped setup saw it without
+ever having made a path. Now the whole card is one button that opens the setup (`#lpSetup` in `renderHome`,
+`assets/course/path.js`; look in `assets/course/path.css`): before a path exists a navy "Make your path / Pick how you
+are studying" card with a gold arrow; after, a white "Your path" card with the summary line ("Course order · Exam
+Mar 14", plus the pace when there is one) and "Edit path ›". The day by day cram link and the banners sit under it.

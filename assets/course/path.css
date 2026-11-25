@@ -155,6 +155,20 @@ body[data-course="aphug"]{--lp-ac:#094953;--lp-ct:#E1F1F4;--lp-bg:#7A3310;--lp-b
 .lp-make h3{font:900 22px/1.15 var(--lp-dp);letter-spacing:-.02em;margin:0 0 6px;color:var(--ink)}
 .lp-make h3 span{color:var(--lp-ac)}
 .lp-make p{margin:0 0 14px;color:var(--muted);font:600 14.5px/1.45 var(--font-ui)}
+/* The "Your path" card is one button (owner 2026-11-24): navy "Make your path" before a path exists, white "Edit path" after. */
+#lpSetup .lp-pathbtn{display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;box-sizing:border-box;margin:0;text-align:left;cursor:pointer;font:inherit;min-height:44px;transition:transform .15s}
+#lpSetup .lp-pathbtn:hover{transform:translateY(-2px)}
+#lpSetup .lp-pathbtn:focus-visible{outline:3px solid var(--lp-ac);outline-offset:3px}
+#lpSetup .lp-pathbtn .tx{display:flex;flex-direction:column;gap:5px;min-width:0}
+#lpSetup .lp-pathbtn b{font:900 20px/1.15 var(--lp-dp);letter-spacing:-.02em}
+#lpSetup .lp-pathbtn .sub{font:600 15px/1.4 var(--font-ui)}
+#lpSetup .lp-pathbtn.new{background:#0B1A33;border-color:#0B1A33;color:#fff}
+#lpSetup .lp-pathbtn.new .sub{color:#C9D3E8}
+#lpSetup .lp-pathbtn.new .go{flex:0 0 40px;width:40px;height:40px;border-radius:50%;background:var(--gold);color:#0B1A33;display:grid;place-items:center}
+#lpSetup .lp-pathbtn.mine b{color:var(--ink)}
+#lpSetup .lp-pathbtn.mine .sub{color:var(--muted)}
+#lpSetup .lp-pathbtn.mine .go{display:inline-flex;align-items:center;gap:6px;flex:0 0 auto;white-space:nowrap;font:800 14.5px var(--font-ui);color:var(--lp-ac)}
+#lpSetup .lp-pathbtn.mine+.lp-cram,#lpSetup .lp-pathbtn.mine+.lp-banner{margin-top:12px}
 .lp-selc h3{font:900 25px/1.12 var(--lp-dp);letter-spacing:-.025em;margin:6px 0 12px;color:var(--ink)}
 .lp-selc .lp-k{color:var(--lp-ac)}
 .lp-selc .free{margin:-4px 0 12px;color:var(--muted);font:600 13.5px/1.4 var(--font-ui)}
