@@ -137,7 +137,8 @@
    "desc": "One data set as a dotplot, a histogram and a boxplot at once: drag a point and watch the mean and median, the SD and the IQR, and the outlier fences respond.",
    "blurb": "Drag a point and watch the mean, median and spread respond.",
    "lede": "Drag a value and watch every summary and graph respond.",
-   "studio": true
+   "studio": true,
+   "kit2": true
   },
   {
    "slug": "sampling-lab",

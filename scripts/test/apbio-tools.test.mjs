@@ -234,6 +234,9 @@ test('validators catch planted mistakes', async () => {
   assert.ok((await import('../lib/apbio-tool-checks/tree-reading.mjs')).check(tr2, null).some(e => /the trees give/.test(e)));
   const tr3 = data('tree-reading'); tr3.stimuli['tr-s1'].drawings.order2 = ['alga', 'moss', 'grass', 'fern', 'rose', 'pine'];
   assert.ok((await import('../lib/apbio-tool-checks/tree-reading.mjs')).check(tr3, null).some(e => /drawings/.test(e)));
+  const tr4 = data('tree-reading'); delete tr4.trees[0].characters[3].short; tr4.trees[2].taxa[1].short = 'Common chimpanzee';
+  const e4 = (await import('../lib/apbio-tool-checks/tree-reading.mjs')).check(tr4, null);
+  assert.ok(e4.some(e => /short name of 1 to 3 words/.test(e)) && e4.some(e => /too long for the picture/.test(e)));
   const ds = data('descriptive-stats'); ds.intro = 'Ready for AP tests';
   assert.ok((await import('../lib/apbio-tool-checks/descriptive-stats.mjs')).check(ds, null).some(e => /AP/.test(e)));
 });
