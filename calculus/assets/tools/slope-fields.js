@@ -104,7 +104,7 @@
     { id: 'xy', label: 'y′ = xy' },
     { id: 'x/y', label: 'y′ = x / y' },
     { id: 'x+y', label: 'y′ = x + y' },
-    { id: 'ky', label: 'y′ = ky, growth' },
+    { id: 'ky', label: 'y′ = ky, growth and decay' },
     { id: 'cool', label: 'Cooling coffee' }];
   // where each equation starts in Explore (y − 2 starts above the calm line, so the leaf floats away from it)
   var START = { 'y-2': [-2, 2.5], 'xy': [-2, 0.5], 'x/y': [1, 2], 'x+y': [-1, 1], 'ky': [0, 2], 'cool': [0, 90] };
@@ -114,6 +114,24 @@
   function pn(v){ return v < 0 ? '(' + clean(v) + ')' : clean(v); }
   /* "= 0.5" when two decimals are exact, "≈ 0.33" when they are not */
   function eqv(m){ return (Math.abs(m - Math.round(m * 100) / 100) > 1e-9 ? '≈ ' : '= ') + clean(m); }
+  /* "2 + 0.5e^(x + 2)" -> [["2 + 0.5e", false], ["x + 2", true]]: the exponent of every e^( … ) or e^x, parentheses
+     balanced, so it can be drawn as a superscript */
+  function supParts(sx){
+    var out = [], i = 0, buf = '';
+    while(i < sx.length){
+      if(sx.charAt(i) === '^' && i > 0){
+        if(buf) out.push([buf, false]); buf = '';
+        if(sx.charAt(i + 1) === '('){ var dpt = 0, j = i + 1; for(; j < sx.length; j++){ if(sx.charAt(j) === '(') dpt++; else if(sx.charAt(j) === ')'){ dpt--; if(!dpt) break; } } out.push([sx.slice(i + 2, j), true]); i = j + 1; }
+        else { out.push([sx.charAt(i + 1), true]); i += 2; }
+        continue;
+      }
+      buf += sx.charAt(i); i++;
+    }
+    if(buf) out.push([buf, false]);
+    return out;
+  }
+  function supHtml(sx){ return supParts(sx).map(function(p){ return p[1] ? '<sup>' + esc(p[0]) + '</sup>' : esc(p[0]); }).join(''); }
+  function supSvg(sx){ var up = false; return supParts(sx).map(function(p){ var t = '<tspan' + (p[1] ? ' class="sf2-sup" dy="-5"' : up ? ' dy="5"' : '') + '>' + esc(p[0]) + '</tspan>'; up = p[1]; return t; }).join(''); }
   var MEAS = null, MW = {};
   /* the drawn width of a label: measured once in a hidden svg text with the label's own font */
   function textW(s, px){
@@ -268,20 +286,23 @@
     /* ---------------------------------------------------- the field (a new equation, k, the room or the layout) */
     function fieldPath(f){
       var A = G.A, g = G.grid, h = G.half, dd = '';
+      G.segs = [];
       g.xs.forEach(function(x){ var X = A.sx(x); if(X < A.L + h * 0.6 || X > A.R - h * 0.6) return; g.ys.forEach(function(y){
         var Y = A.sy(y); if(Y < A.T + h * 0.6 || Y > A.B - h * 0.6) return;
         var m = f(x, y), ux, uy;
         if(isNaN(m)) return;                         // 0/0: no slope at all here
         if(!isFinite(m)){ ux = 0; uy = 1; }           // vertical
         else { var vx = G.kx, vy = m * G.ky, L = Math.sqrt(vx * vx + vy * vy); ux = vx / L; uy = vy / L; }
-        dd += 'M' + r1(X - ux * h) + ' ' + r1(Y + uy * h) + 'L' + r1(X + ux * h) + ' ' + r1(Y - uy * h);
+        var sg = 'M' + r1(X - ux * h) + ' ' + r1(Y + uy * h) + 'L' + r1(X + ux * h) + ' ' + r1(Y - uy * h);
+        G.segs.push([X - ux * h, Y - uy * h, X + ux * h, Y + uy * h, sg]); dd += sg;
       }); });
       return dd;
     }
     function eqList(){ return d.eq(prm()).filter(function(v){ return v >= G.view.y[0] - 1e-9 && v <= G.view.y[1] + 1e-9; }); }
     function kZero(){ return d.model === 'exp' && Math.abs(prm().k) < 1e-12; }
     function drawField(){
-      var A = G.A, out = ['<path class="sf2-field" d="' + fieldPath(fn.f) + '"/>'];
+      var A = G.A, fd = fieldPath(fn.f), out = ['<path class="sf2-field-u" d="' + fd + '"/><path class="sf2-field" d="' + fd + '"/>'];
+      G.skipKey = '';
       if(!kZero()) eqList().forEach(function(e){ var Y = r1(A.sy(e)); out.push('<path class="sf2-calm" d="M' + A.L + ' ' + Y + 'H' + A.R + '"/><path class="sf2-eqline" d="M' + A.L + ' ' + Y + 'H' + A.R + '"/>'); });
       gF.innerHTML = out.join('');
     }
@@ -297,6 +318,14 @@
       var fwd = [pts[i0]], back = [pts[i0]], fEnd = sol.right.why, bEnd = sol.left.why;
       for(i = i0 + 1; i < pts.length; i++){ if(!inA(pts[i])){ fwd.push(edge(pts[i - 1], pts[i])); fEnd = 'edge'; break; } fwd.push(pts[i]); }
       for(i = i0 - 1; i >= 0; i--){ if(!inA(pts[i])){ back.push(edge(pts[i + 1], pts[i])); bEnd = 'edge'; break; } back.push(pts[i]); }
+      // x / y on y = x or y = −x: the solution runs into (0, 0), where x / y is 0 / 0. The tracer can step over it, so
+      // each run is cut there and that end is marked (the solution is y = ±x on one side of the y axis only)
+      if(onDiag()){
+        var O = [A.sx(0), A.sy(0), 0, 0], sx0 = st.x0 > 0 ? 1 : -1;
+        var cut = function(run){ for(var j = 1; j < run.length; j++){ if(run[j][2] * sx0 <= 1e-9){ run.length = j; run.push(O); return true; } } return false; };
+        if(cut(fwd)) fEnd = 'undefined';
+        if(cut(back)) bEnd = 'undefined';
+      }
       return { fwd: fwd, back: back, fEnd: fEnd, bEnd: bEnd, sol: sol };
     }
     function pathD(run){ return 'M' + run.map(function(p){ return r1(p[0]) + ' ' + r1(p[1]); }).join('L'); }
@@ -331,10 +360,11 @@
       if(st.id === 'ky') return (m > 0 ? 'rising ' : 'falling ') + a + ' per unit of t';
       return 'heading ' + (m > 0 ? 'up ' : 'down ') + a + ' for 1 across';
     }
+    function onDiag(){ return st.id === 'x/y' && Math.abs(Math.abs(st.y0) - Math.abs(st.x0)) < 1e-9; }
     function vertEnd(cv){
       var e = [];
-      if(cv.fEnd === 'vertical') e.push(cv.fwd[cv.fwd.length - 1][2]);
-      if(cv.bEnd === 'vertical') e.push(cv.back[cv.back.length - 1][2]);
+      if(cv.fEnd === 'vertical' || cv.fEnd === 'undefined') e.push(cv.fwd[cv.fwd.length - 1][2]);
+      if(cv.bEnd === 'vertical' || cv.bEnd === 'undefined') e.push(cv.back[cv.back.length - 1][2]);
       return e;
     }
     function behave(cv){
@@ -350,14 +380,15 @@
         : { t: 'k ' + (p.k > 0 ? '> 0' : '< 0') + ', so it decays: halves every ' + clean(S.halfLife(p.k)), s: 'halves every ' + clean(S.halfLife(p.k)), role: 'path' };
       var ve = vertEnd(cv);
       // on y = ±x the solution runs into (0, 0), where x / y is 0 / 0: undefined there, not vertical
-      if(ve.length && st.id === 'x/y' && Math.abs(Math.abs(st.y0) - Math.abs(st.x0)) < 1e-9) return { t: 'undefined at (0, 0), so the domain ends', s: 'domain ends', role: 'bad' };
+      if(ve.length && onDiag()) return { t: 'undefined at (0, 0), so the domain ends', s: 'domain ends', role: 'bad' };
       if(ve.length) return { t: 'vertical at x ≈ ' + ve.map(function(v){ return clean(v); }).join(' and ') + ', so the domain ends', s: 'domain ends', role: 'bad' };
       return null;
     }
     function expo(x0){ return Math.abs(x0) < 1e-9 ? xv() : xv() + (x0 < 0 ? ' + ' : ' − ') + clean(Math.abs(x0)); }
     function coef(c){ return Math.abs(Math.abs(c) - 1) < 1e-9 ? '' : clean(Math.abs(c)); }
     /* the particular solution through the start point, in plain text (null when AB has no formula for it) */
-    function formula(){
+    function formula(){ var f = formula0(); return f && f.replace(/e\^\(([xt])\)/g, 'e^$1'); }
+    function formula0(){
       var x0 = st.x0, y0 = st.y0, p = prm(), Y = yv();
       if(onEq()) return Y + ' = ' + clean(kZero() ? y0 : d.eq(p).filter(function(v){ return Math.abs(v - y0) < 1e-9; })[0]);
       if(st.id === 'y-2'){ var c = y0 - 2; return 'y = 2 ' + (c < 0 ? '− ' : '+ ') + coef(c) + 'e^(' + expo(x0) + ')'; }
@@ -377,17 +408,21 @@
       var C = (st.y0 + st.x0 + 1) * Math.exp(-st.x0);
       return Math.abs(C) < 0.005 ? 'y = −x − 1' : 'y ≈ ' + (C < 0 ? '−' : '') + coef(+C.toFixed(2)) + 'e^x − x − 1';
     }
-    function takeaway(){
+    function takeaway(){ return takeParts().join(''); }
+    /* [lead, formula, end]: the formula is kept whole on one line and its exponent drawn as a superscript */
+    function takeParts(){
       var fm = formula();
-      if(onEq()) return 'One starting point, one solution: the flat line ' + fm + '.';
-      if(!fm) return 'One starting point, one solution (traced: y′ = x + y is not separable).';
-      return 'One starting point, one solution: ' + fm + '.';
+      if(onEq()) return ['One starting point, one solution: the flat line ', fm, '.'];
+      if(!fm) return ['One starting point, one solution (traced: y′ = x + y is not separable).', '', ''];
+      return ['One starting point, one solution: ', fm, onDiag() ? ', for x ' + (st.x0 > 0 ? '> 0' : '< 0') + '.' : '.'];
     }
+    // one span: the line is a flex row (with its bulb), so the words and the formula must be one item
+    function takeHtml(){ var p = takeParts(); return '<span class="sf2-take">' + esc(p[0]) + (p[1] ? '<span class="sf2-fm" data-plain="' + esc(p[1]) + '">' + supHtml(p[1]) + '</span>' : '') + esc(p[2]) + '</span>'; }
     /* the chain, as long as the line has room for: full (point, slope worked out, heading, where it goes), then
        without the heading, then the short phone form. The line keeps one height (CSS), so the picture never jumps. */
     var causeLvl = {};
     function words(cv){
-      if(st.took){ cause.take(st.took); return; }
+      if(st.took){ cause.take(st.took); cause.el.innerHTML = takeHtml(); return; }
       var m = fn.f(st.x0, st.y0), P0 = '(' + clean(st.x0) + ', ' + clean(st.y0) + ')', b = behave(cv);
       function chain(lv){
         var n = lv >= 2, parts = [{ t: n ? P0 : 'at ' + P0, role: 'pt', say: 'at ' + P0 }, { t: n ? (st.id === 'cool' ? 'T′ ' : 'y′ ') + eqv(m) : slopeSub(st.x0, st.y0), role: 'sl', say: 'the slope is ' + clean(m) }];
@@ -404,7 +439,7 @@
     }
 
     /* ---------------------------------------------------- labels on the picture, placed clear of each other */
-    var boxes = [];
+    var boxes = [], labBoxes = [];
     function free(b){ for(var i = 0; i < boxes.length; i++){ var c = boxes[i]; if(b[0] < c[2] + 5 && c[0] < b[2] + 5 && b[1] < c[3] + 5 && c[1] < b[3] + 5) return false; } return true; }
     function inside(b){ var A = G.A; return b[0] >= A.L + 3 && b[2] <= A.R - 3 && b[1] >= A.T + 3 && b[3] <= A.B - 3; }
     function curveHit(b){
@@ -414,13 +449,13 @@
     }
     /* cands: [[x, y, anchor]] (y the baseline); the first that is inside, clear and off the curve; else the first clear */
     function place(text, cls, cands, px){
-      px = px || 13; var w = textW(text, px), h = px + 3, pick = null, i, b;
+      px = px || 13; var sup = text.indexOf('^') > 0, w = textW(text, px), h = px + 3 + (sup ? 4 : 0), pick = null, i, b;
       function boxOf(c){ var x0 = c[2] === 'end' ? c[0] - w : c[2] === 'middle' ? c[0] - w / 2 : c[0]; return [x0 - 2, c[1] - h + 3, x0 + w + 2, c[1] + 4]; }
       for(i = 0; i < cands.length && !pick; i++){ b = boxOf(cands[i]); if(inside(b) && free(b) && !curveHit(b)) pick = cands[i]; }
       for(i = 0; i < cands.length && !pick; i++){ b = boxOf(cands[i]); if(inside(b) && free(b)) pick = cands[i]; }
       if(!pick) return '';
-      boxes.push(boxOf(pick));
-      return '<text class="sf2-lab ' + cls + '" x="' + r1(pick[0]) + '" y="' + r1(pick[1]) + '" text-anchor="' + (pick[2] || 'start') + '">' + esc(text) + '</text>';
+      boxes.push(boxOf(pick)); labBoxes.push(boxOf(pick));
+      return '<text class="sf2-lab ' + cls + '" data-plain="' + esc(text) + '" x="' + r1(pick[0]) + '" y="' + r1(pick[1]) + '" text-anchor="' + (pick[2] || 'start') + '">' + (sup ? supSvg(text) : esc(text)) + '</text>';
     }
     function blockDom(e, pad){
       if(!e || e.hidden || !e.offsetWidth || e.closest('[hidden]')) return;
@@ -443,8 +478,8 @@
       out.push('</g>');
       // where the slope turns vertical the solution's domain ends: an open end
       var ends = [];
-      if(cv.fEnd === 'vertical') ends.push(cv.fwd[cv.fwd.length - 1]);
-      if(cv.bEnd === 'vertical') ends.push(cv.back[cv.back.length - 1]);
+      if(cv.fEnd === 'vertical' || cv.fEnd === 'undefined') ends.push(cv.fwd[cv.fwd.length - 1]);
+      if(cv.bEnd === 'vertical' || cv.bEnd === 'undefined') ends.push(cv.back[cv.back.length - 1]);
       ends.forEach(function(p){ out.push('<circle class="sf2-end" cx="' + r1(p[0]) + '" cy="' + r1(p[1]) + '" r="5"/>'); });
       // growth and decay: where the amount doubles (or halves), forward from the start
       var marks = [];
@@ -470,7 +505,7 @@
     }
     function labels(cv, marks, ends){
       var A = G.A, out = [];
-      boxes = [];
+      boxes = []; labBoxes = [];
       // knobs, their tags, the cue and the chip first: labels keep off them
       [].slice.call(layer.el.querySelectorAll('.tk2-tag:not([hidden]), .tk2-cue, .tk2-chip')).forEach(function(e){ blockDom(e, 2); });
       var nb = boxes.length; [].slice.call(layer.el.querySelectorAll('.tk2-knob')).forEach(function(e){ blockDom(e, 2); });
@@ -515,11 +550,31 @@
       var yn = st.id === 'cool' ? 'T (°C)' : yv();
       out.push('<text class="sf2-axn" transform="translate(15 ' + r1(A.T + A.H / 2) + ') rotate(-90)" text-anchor="middle">' + esc(yn) + '</text>');
       gT.innerHTML = out.join('');
+      // no streak runs through a label on the water (its ends would read as decimal points)
+      var sk = labBoxes.map(function(b){ return b.map(Math.round).join(','); }).join(';');
+      if(sk !== G.skipKey && G.segs){
+        G.skipKey = sk;
+        var dd = G.segs.filter(function(q){ return !labBoxes.some(function(b){ var x0 = Math.min(q[0], q[2]) - 2, x1 = Math.max(q[0], q[2]) + 2, y0 = Math.min(q[1], q[3]) - 2, y1 = Math.max(q[1], q[3]) + 2; return x0 < b[2] && b[0] < x1 && y0 < b[3] && b[1] < y1; }); }).map(function(q){ return q[4]; }).join('');
+        [].slice.call(gF.querySelectorAll('.sf2-field, .sf2-field-u')).forEach(function(p){ p.setAttribute('d', dd); });
+      }
       // drop a tick number that would touch the x name, or that a knob covers (it would only peek out from under it)
       var hid = '', under = function(b){ return knobBoxes.some(function(k){ return b[0] < k[2] && k[0] < b[2] && b[1] < k[3] && k[1] < b[3]; }); };
       (G.tickXs || []).forEach(function(t, i){ if((t[0] + t[1] / 2 > xe - xw - 6 && t[0] - t[1] / 2 < xe + 2) || under([t[0] - t[1] / 2, A.B + 7, t[0] + t[1] / 2, A.B + 22])) hid += 'x' + i + ','; });
-      (G.tickYs || []).forEach(function(t, i){ if(under([A.L - 8 - t[1], t[0] - 6, A.L - 8, t[0] + 6])) hid += 'y' + i + ','; });
-      if(hid !== G.hid){ G.hid = hid; ['x', 'y'].forEach(function(ax){ [].slice.call(gS.querySelectorAll('.sf2-ticks text.is-' + ax)).forEach(function(t, i){ t.style.visibility = (',' + hid).indexOf(',' + ax + i + ',') >= 0 ? 'hidden' : ''; }); }); }
+      // a y tick number beside the leaf's ring moves out past it on the bank (kept, not hidden), unless the bank has no
+      // room there or the y name is in the way; then it is dropped
+      var ynB = [2, A.T + A.H / 2 - textW(yn, 13) / 2 - 4, 20, A.T + A.H / 2 + textW(yn, 13) / 2 + 4], moved = {};
+      (G.tickYs || []).forEach(function(t, i){
+        var bx = [A.L - 8 - t[1], t[0] - 6, A.L - 8, t[0] + 6];
+        if(!under(bx)) return;
+        var left = Math.min.apply(null, knobBoxes.filter(function(k){ return bx[0] < k[2] && k[0] < bx[2] && bx[1] < k[3] && k[1] < bx[3]; }).map(function(k){ return k[0]; })) - 3;
+        var nb = [left - t[1], t[0] - 6, left, t[0] + 6];
+        if(nb[0] >= 1 && !(nb[0] < ynB[2] && ynB[0] < nb[2] && nb[1] < ynB[3] && ynB[1] < nb[3])) moved[i] = r1(left); else hid += 'y' + i + ',';
+      });
+      var mk = hid + JSON.stringify(moved);
+      if(mk !== G.hid){ G.hid = mk; ['x', 'y'].forEach(function(ax){ [].slice.call(gS.querySelectorAll('.sf2-ticks text.is-' + ax)).forEach(function(t, i){
+        t.style.visibility = (',' + hid).indexOf(',' + ax + i + ',') >= 0 ? 'hidden' : '';
+        if(ax === 'y') t.setAttribute('x', moved[i] != null ? moved[i] : A.L - 8);
+      }); }); }
     }
     /* the mug on the bank: its side reads the temperature where the leaf is drawn */
     function mugSvg(){
@@ -688,13 +743,13 @@
     function setEq(id){
       if(id === st.id) return;
       cancelRide(); clearTimeout(rideT);
-      fadeOut([gF, gD]);
+      fadeOut([gF, gD, gT]);
       st.id = id; d = S.de(id); fn = S.fns(d, prm()); st.took = null;
       st.x0 = START[id][0]; st.y0 = START[id][1];
       layout(true);
       H.value(enc(st.x0, st.y0));
       draw();
-      fadeIn([gF, gD, gS]);
+      fadeIn([gF, gD, gT]);
       refLater(); say('Now ' + plainEq() + '. ' + cause.text());
       floatLater(420);
     }
@@ -752,13 +807,15 @@
         '<h3 class="ls-title-l">' + esc(EQS.filter(function(q){ return q.id === st.id; })[0].label) + '</h3>' + tex(eqTex(), { display: true });
       var rows = row('Starting point', esc(P0)) + row('Slope there', esc(isFinite(m) ? slopeSub(st.x0, st.y0).replace(/^[yT]′ = /, '') : 'undefined')) +
         row('Second derivative', isFinite(v2) ? tex('\\frac{d^2' + Y + '}{d' + X + '^2} = ' + (st.id === 'ky' ? 'k^2 y' : st.id === 'cool' ? 'k^2(T - T_a)' : d.f2tex)) + ' = ' + clean(v2, 3) + (on ? '' : v2 > 0 ? ', concave up' : v2 < 0 ? ', concave down' : '') : 'undefined') +
-        row('Curve drawn from', esc(X + ' = ' + clean(cv.back[cv.back.length - 1][2], 3) + (cv.bEnd === 'vertical' ? ' (vertical slope)' : ' (edge)'))) +
-        row('Curve drawn to', esc(X + ' = ' + clean(cv.fwd[cv.fwd.length - 1][2], 3) + (cv.fEnd === 'vertical' ? ' (vertical slope)' : ' (edge)')));
+        row('Curve drawn from', esc(X + ' = ' + clean(cv.back[cv.back.length - 1][2], 3) + (cv.bEnd === 'vertical' ? ' (vertical slope)' : cv.bEnd === 'undefined' ? ' (0 / 0 at the origin)' : ' (edge)'))) +
+        row('Curve drawn to', esc(X + ' = ' + clean(cv.fwd[cv.fwd.length - 1][2], 3) + (cv.fEnd === 'vertical' ? ' (vertical slope)' : cv.fEnd === 'undefined' ? ' (0 / 0 at the origin)' : ' (edge)')));
       if(st.id === 'ky') rows += row('k', clean(prm().k)) + (prm().k ? row(prm().k > 0 ? 'Doubling time' : 'Half-life', esc('ln 2 / ' + clean(Math.abs(prm().k)) + ' ≈ ' + clean(S.halfLife(prm().k), 3))) : '');
       if(st.id === 'cool') rows += row('k, room', esc(clean(prm().k) + ' per minute, ' + prm().Ta + ' °C')) + row('The gap halves every', esc(clean(S.halfLife(prm().k), 2) + ' min'));
       html += '<h3 class="ls-title-l">Your starting point</h3><table class="ls-tbl sf2-nums"><caption class="sr-only">The starting point and its solution</caption><tbody>' + rows + '</tbody></table>';
       if(d.sep){
         var L = S.steps(st.id, st.x0, st.y0, prm());
+        // y² = x² through the point: the branch is y = x or y = −x on the point's side of the y axis, not √(x²) = |x|
+        if(onDiag()){ var br = (st.y0 > 0) === (st.x0 > 0) ? 'x' : '-x'; L[L.length - 1] = ['Solve for $y$: $y^2 = x^2$, and the point (' + clean(st.x0) + ', ' + clean(st.y0) + ') picks the branch $y = ' + br + '$. It cannot pass through $(0, 0)$, where $\\frac{x}{y}$ is $\\frac{0}{0}$, so its domain is $x ' + (st.x0 > 0 ? '> 0' : '< 0') + '$.', 'y = ' + br + ',\\; x ' + (st.x0 > 0 ? '> 0' : '< 0')]; }
         html += '<h3 class="ls-title-l">Solve it: separation of variables through ' + esc(P0) + '</h3><ol class="ls-steps sf-sep">' + L.map(function(l){ return '<li><div class="sf-sepi"><span>' + html2(l[0]) + '</span>' + (l[1] ? '<span class="sf-sepm">' + tex(l[1], { display: true }) + '</span>' : '') + '</div></li>'; }).join('') + '</ol>';
       } else html += '<h3 class="ls-title-l">Solving it</h3><p>' + html2(d.note || 'Not separable.') + '</p>';
       html += '<h3 class="ls-title-l">Why the curve does this</h3>' +
@@ -769,7 +826,7 @@
         (ve.length ? '<p>A solution is a function of ' + X + ', so it cannot turn back. Where the slope becomes vertical (on ' + esc(d.undefinedOn || '') + ', where ' + tex('\\frac{dy}{dx}') + ' is undefined), the solution\'s domain ends: the open circle.' + (st.id === 'x/y' && Math.abs(Math.abs(st.y0) - Math.abs(st.x0)) < 1e-9 ? ' On the lines y = x and y = −x the solution heads straight into (0, 0), where x / y is 0 / 0, so it stops there.' : '') + '</p>' : '') +
         (st.id === 'ky' && !kZero() ? '<p>The dots mark where the amount is ×2, ×4, … (or ×1/2, ×1/4, …) of the start: every ' + clean(S.halfLife(prm().k), 2) + ' units of time.</p>' : '') +
         (st.id === 'cool' ? '<p>The mug on the bank shows the temperature where the leaf is: it follows the leaf as it floats.</p>' : '') +
-        '<h3 class="ls-title-l">Check with the formula</h3><p>' + (fm ? 'The particular solution through your point is ' + esc(fm) + '. "Check with the formula" draws it as a thin purple line: it sits on the traced curve to the pixel.' : 'This equation is not separable, so AB has no formula for it; the curve is traced numerically. "Check with the formula" draws the exact solution from outside AB (y = Ce^x − x − 1) to show they agree.') + '</p>' +
+        '<h3 class="ls-title-l">Check with the formula</h3><p>' + (fm ? 'The particular solution through your point is ' + supHtml(fm) + (onDiag() ? ', for x ' + (st.x0 > 0 ? '> 0' : '< 0') : '') + '. "Check with the formula" draws it as a thin purple line: it sits on the traced curve to the pixel.' : 'This equation is not separable, so AB has no formula for it; the curve is traced numerically. "Check with the formula" draws the exact solution from outside AB (y = Ce^x − x − 1) to show they agree.') + '</p>' +
         '<p class="bt-small">How it is drawn: the water is the exact grid. Each streak has the same length on screen; their spacing is set by the size of your screen (about one every 44 px). The solution is traced numerically (an adaptive Runge-Kutta method, accurate to many decimal places) forward and backward from the point and stops at the edge of the water or where the slope turns vertical.' + (hasK() ? ' Drag the small knob on the bank to change k' + (st.id === 'cool' ? ', and the knob on the right edge to change the room temperature' : '') + '.' : '') + '</p>' +
         '<details class="sf2-keys"><summary>Keyboard</summary><p class="bt-small">Tab to the leaf. Arrow keys move it one grid step (0.1' + (st.id === 'cool' ? ', 1 minute or 1 °C' : '') + '), Shift ten steps; Page Up and Page Down move it ten steps up or down; Home and End move it to the left and right edges. The leaf floats once you stop.</p></details>' +
         '<p class="tool-about-n">Notes for this topic: <a href="../notes/sketching-slope-fields.html">Sketching slope fields</a>, <a href="../notes/reasoning-with-slope-fields.html">Reasoning with slope fields</a>, <a href="../notes/' + (st.id === 'ky' ? 'exponential-models' : st.id === 'cool' ? 'modeling-with-des' : 'separation-of-variables') + '.html">' + (st.id === 'ky' ? 'Exponential models' : st.id === 'cool' ? 'Modeling with differential equations' : 'Separation of variables') + '</a></p>';

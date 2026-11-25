@@ -56,7 +56,7 @@ for (const theme of ['light', 'dark']) {
     if (SHOTS && theme === 'light') { await page.waitForTimeout(350); await page.locator('.sf2').screenshot({ path: join(SHOTS, '0390-light-mid-float.png') }); }
     await page.waitForTimeout(2200);
     s = await S(page);
-    ok(/One starting point, one solution: y = 2 \+ 1\.5e\^\(x\)\./.test(s.cause), `390 ${theme}: takeaway after the float: ${s.cause}`);
+    ok(/One starting point, one solution: y = 2 \+ 1\.5ex\./.test(s.cause) && (await page.getAttribute('.sf2 .tk2-cause .sf2-fm', 'data-plain')) === 'y = 2 + 1.5e^x', `390 ${theme}: takeaway after the float: ${s.cause}`);
     ok(s.ref.includes('(0, 3.5)'), `390 ${theme}: "?" did not follow the drag`);
     // a tap on the water moves the leaf there
     const tap = await at(page, 1, 1);
@@ -98,11 +98,11 @@ for (const theme of ['light', 'dark']) {
     ok(await page.evaluate(() => { const e = document.querySelector('.sf2-eqline'), A = window.ApCalcSlopeFields.G().A; return Math.abs(+e.getAttribute('d').split(' ')[1].replace(/H.*/, '') - A.sy(40)) < 0.6; }), `1440 ${theme}: the calm line did not move to 40`);
     await page.waitForTimeout(2600);
     await page.click('.sf2-check'); await page.waitForTimeout(900);
-    ok(await page.evaluate(() => !!document.querySelector('.sf2-exact') && document.querySelector('.sf2-cex').textContent === window.ApCalcSlopeFields.formula()), `1440 ${theme}: Check with the formula drew no labelled line`);
+    ok(await page.evaluate(() => !!document.querySelector('.sf2-exact') && document.querySelector('.sf2-cex').getAttribute('data-plain') === window.ApCalcSlopeFields.formula()), `1440 ${theme}: Check with the formula drew no labelled line`);
     // every formula the tool writes is the model's exact solution (many points, each equation)
     const bad = await page.evaluate(() => {
       const T = window.ApCalcSlopeFields, out = [], ids = ['y-2', 'xy', 'x/y', 'x+y', 'ky', 'cool'];
-      const js = f => f.replace(/^[yT] = /, '').replace(/−/g, '-').replace(/√\(/g, 'Math.sqrt(').replace(/e\^\(/g, 'Math.exp(').replace(/x²/g, '(x*x)').replace(/(\d)Math/g, '$1*Math').replace(/(\d)x/g, '$1*x').replace(/(\d)t/g, '$1*t').replace(/(\d)\(/g, '$1*(').replace(/\)\(/g, ')*(');
+      const js = f => f.replace(/^[yT] = /, '').replace(/−/g, '-').replace(/√\(/g, 'Math.sqrt(').replace(/e\^\(/g, 'Math.exp(').replace(/e\^([xt])/g, 'Math.exp($1)').replace(/x²/g, '(x*x)').replace(/(\d)Math/g, '$1*Math').replace(/(\d)x/g, '$1*x').replace(/(\d)t/g, '$1*t').replace(/(\d)\(/g, '$1*(').replace(/\)\(/g, ')*(');
       ids.forEach(id => {
         T.setEq(id); const v = T.G().view;
         for (let i = 0; i < 12; i++) {

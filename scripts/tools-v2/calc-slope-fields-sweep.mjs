@@ -145,11 +145,21 @@ const probe = () => {
     if (document.querySelectorAll('.sf2-end').length > [...document.querySelectorAll('.sf2-labs .sf2-cbad')].length) out.push('an open end without its "domain ends" label');
     if (/^(at )?\(/.test(pills[0]) === false) out.push('first pill is not the point');
   } else {
-    const fm = T.formula();
-    if (fm && !txt.includes(fm)) out.push('the takeaway does not give the formula ' + fm);
+    const fm = T.formula(), fe = causeEl.querySelector('.sf2-fm');
+    if (fm && (!fe || fe.getAttribute('data-plain') !== fm)) out.push('the takeaway does not give the formula ' + fm);
+    if (fe && fe.getBoundingClientRect().height > parseFloat(getComputedStyle(causeEl).fontSize) * 1.9) out.push('the takeaway breaks inside its formula');
   }
-  if (st.exact) { const fm = T.formula() || T.exactText(), lab = labs.find(a => a.e.classList.contains('sf2-cex')); if (fm && !lab) out.push('no label on the formula line'); if (lab && lab.e.textContent !== fm) out.push('formula label ' + lab.e.textContent + ' is not ' + fm); if (!document.querySelector('.sf2-exact')) out.push('no formula line'); }
+  if (st.exact) { const fm = T.formula() || T.exactText(), lab = labs.find(a => a.e.classList.contains('sf2-cex')); if (fm && !lab) out.push('no label on the formula line'); if (lab && lab.e.getAttribute('data-plain') !== fm) out.push('formula label ' + lab.e.textContent + ' is not ' + fm); if (!document.querySelector('.sf2-exact')) out.push('no formula line'); }
   if (st.id === 'cool') { const ml = labs.find(a => a.e.classList.contains('sf2-cmug')); if (!ml) out.push('no mug label'); else if (ml.e.textContent !== String(Math.round(A.iy(sy0))) + ' °C' && ml.e.textContent !== (+A.iy(sy0).toFixed(0)) + ' °C') out.push('the mug reads ' + ml.e.textContent + ', the leaf is at ' + A.iy(sy0).toFixed(1)); }
+  // x / y on y = ±x: the drawn solution stays on the start's side of the y axis and ends, open, at (0, 0)
+  if (st.id === 'x/y' && Math.abs(Math.abs(st.x0) - Math.abs(st.y0)) < 1e-9) {
+    if (pts.some(p => A.ix(p[0]) * Math.sign(st.x0) < -((G.view.x[1] - G.view.x[0]) / A.W))) out.push('the x / y solution crosses the y axis through (0, 0)');
+    const e0 = [...document.querySelectorAll('.sf2-end')].some(c => Math.abs(+c.getAttribute('cx') - A.sx(0)) < 0.8 && Math.abs(+c.getAttribute('cy') - A.sy(0)) < 0.8);
+    if (!e0) out.push('no open end at (0, 0) for x / y on y = ±x');
+  }
+  // no streak runs through a label on the water
+  const wl = labs.filter(a => a.e.closest('.sf2-labs') && !a.e.classList.contains('sf2-axn') && !a.e.classList.contains('sf2-cmug'));
+  segs.forEach(q => { const x0 = sc.l + Math.min(q[0], q[2]) * k, x1 = sc.l + Math.max(q[0], q[2]) * k, y0 = sc.t + Math.min(q[1], q[3]) * k, y1 = sc.t + Math.max(q[1], q[3]) * k; wl.forEach(a => { if (x0 < a.r.r && a.r.l < x1 && y0 < a.r.b && a.r.t < y1) out.push('a streak runs through ' + a.n); }); });
   if (document.querySelectorAll('.sf2-mark').length !== labs.filter(a => a.e.classList.contains('sf2-cmark')).length) out.push('a doubling mark without its label');
   const rows = new Set(q('.sf2 .tk2-cz').map(e => Math.round(R(e).t))).size;
   if (innerWidth <= 640 && rows > 2) out.push('cause line is ' + rows + ' rows: ' + txt);
@@ -172,7 +182,7 @@ for (const e of EQ) {
     [e + '-check', [['eq', e], ['check']]], [e + '-floated', [['eq', e], ['float']]], [e + '-checkfloat', [['eq', e], ['check'], ['at', 0.5, e === 'cool' ? 60 : e === 'ky' ? 4 : 1.2], ['float']]]);
 }
 STATES.push(['y-2-oneq', [['eq', 'y-2'], ['at', 0, 2]]], ['y-2-below', [['eq', 'y-2'], ['at', 1, 1]]], ['xy-oneq', [['eq', 'xy'], ['at', -1, 0]]], ['xy-neg', [['eq', 'xy'], ['at', 1, -0.5]]],
-  ['x/y-vert', [['eq', 'x/y'], ['at', 2, 1]]], ['x/y-vert2', [['eq', 'x/y'], ['at', -1.5, -0.5], ['check']]], ['x/y-axis', [['eq', 'x/y'], ['at', 1, 0]]], ['x/y-line', [['eq', 'x/y'], ['at', 1, 1], ['check']]],
+  ['x/y-vert', [['eq', 'x/y'], ['at', 2, 1]]], ['x/y-vert2', [['eq', 'x/y'], ['at', -1.5, -0.5], ['check']]], ['x/y-axis', [['eq', 'x/y'], ['at', 1, 0]]], ['x/y-line', [['eq', 'x/y'], ['at', 1, 1], ['check']]], ['x/y-11', [['eq', 'x/y'], ['at', 1, 1]]], ['x/y-m11', [['eq', 'x/y'], ['at', -1, 1], ['float']]], ['x/y-1m1', [['eq', 'x/y'], ['at', 1, -1], ['check']]],
   ['ky-kmax', [['eq', 'ky'], ['k', 0.5]]], ['ky-kneg', [['eq', 'ky'], ['k', -0.3], ['at', 0, 8]]], ['ky-kmin', [['eq', 'ky'], ['k', -0.5], ['at', 0, 9]]], ['ky-k0', [['eq', 'ky'], ['k', 0]]], ['ky-oneq', [['eq', 'ky'], ['at', 2, 0]]],
   ['cool-kmax', [['eq', 'cool'], ['k', 0.2]]], ['cool-kmin', [['eq', 'cool'], ['k', 0.02]]], ['cool-ta40', [['eq', 'cool'], ['ta', 40]]], ['cool-ta0', [['eq', 'cool'], ['ta', 0], ['check']]], ['cool-below', [['eq', 'cool'], ['at', 0, 5]]],
   ['cool-oneq', [['eq', 'cool'], ['at', 10, 20]]]);

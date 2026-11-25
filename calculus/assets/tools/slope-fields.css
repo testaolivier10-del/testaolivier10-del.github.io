@@ -118,7 +118,7 @@ body[data-app="tool-slope-fields"] .ls-caption math{display:inline-block;max-wid
    formula's line purple, a domain that ends the warning red. Dark mode: a night river with the same ideas lighter. */
 .sf2{--sf-pt:#2F7D32;--sf-pt-ink:#1F5F22;--sf-sl:#3A4A5C;--sf-sl-ink:#22303F;--sf-path:#B0123A;--sf-path-ink:#8C1036;--sf-eq:#0E7C66;--sf-eq-ink:#0A5E4E;
   --sf-ex:#6B3FA0;--sf-ex-ink:#55307F;--sf-bad:#A83B2C;
-  --sf-w0:#9CC9E6;--sf-w1:#6FA9D2;--sf-w2:#4F8DBD;--sf-sh0:rgba(255,255,255,.28);--sf-sh1:rgba(255,255,255,0);--sf-g0:#B9D68E;--sf-g1:#93BC67;--sf-sand:#E6D3A3;
+  --sf-w0:#7DB3DB;--sf-w1:#5E9BC9;--sf-w2:#4683B6;--sf-sh0:rgba(255,255,255,.16);--sf-sh1:rgba(255,255,255,0);--sf-g0:#B9D68E;--sf-g1:#93BC67;--sf-sand:#E6D3A3;
   --sf-tuft:#6E9C48;--sf-streak:rgba(255,255,255,.88);--sf-grid:rgba(255,255,255,.22);--sf-axis:rgba(16,40,70,.55);--sf-tick:#2B3A2A;--sf-halo:rgba(255,255,255,.92);
   --sf-leaf0:#5FAE3E;--sf-leaf1:#2F7D32;--sf-rib:#DDF2C8;--sf-lab-bg:rgba(255,255,255,.9);
   display:flex;flex-direction:column;gap:10px;min-height:0;flex:1 1 auto;}
@@ -135,7 +135,7 @@ body[data-app="tool-slope-fields"] .ls-caption math{display:inline-block;max-wid
 .sf2-scene{position:relative;flex:1 1 auto;min-height:360px;border-radius:18px;overflow:hidden;background:var(--surface2);}
 .sf2-svg{position:absolute;inset:0;display:block;width:100%;height:100%;font-family:var(--font-ui);user-select:none;-webkit-user-select:none;touch-action:pan-y;}
 @media (max-width:1023px){ .sf2-scene{flex:none;height:min(72vw,560px,calc(100svh - 250px));min-height:340px;} }
-@media (max-width:640px){ .sf2-scene{height:max(330px,min(112vw,520px,calc(100svh - 300px)));min-height:0;border-radius:14px;} .sf2{gap:8px;} .sf2-pick-k{display:none;} .sf2-sel{max-width:200px;font-size:13.5px;} }
+@media (max-width:640px){ .sf2-scene{height:max(330px,min(112vw,520px,calc(100svh - 300px)));min-height:0;border-radius:14px;} .sf2{gap:8px;} .sf2-pick-k{display:none;} .sf2-sel{max-width:250px;font-size:13.5px;} }
 .sf2-lines{display:flex;align-items:center;justify-content:space-between;gap:6px 18px;flex-wrap:wrap;flex:none;}
 .sf2-check{flex:none;margin-left:auto;min-height:36px;padding:4px 14px;border:1.5px solid var(--sf-ex);border-radius:999px;background:var(--white);color:var(--sf-ex-ink);
   font:800 13.5px var(--font-ui);white-space:nowrap;cursor:pointer;}
@@ -207,3 +207,11 @@ body[data-app="tool-slope-fields"] .ls-caption math{display:inline-block;max-wid
 .sf2-reed{fill:none;stroke:#5E8A3A;stroke-width:2;stroke-linecap:round;}
 :root[data-theme="dark"] .sf2-reed{stroke:#5C8A44;}
 .sf2 .sf2-ta.is-low .tk2-tag{margin-top:-17px;}
+/* review round 1: streaks carry a thin dark under stroke (contrast on the pale top of the water); the takeaway keeps
+   its formula on one line, exponents as superscripts; the same superscripts on the picture's labels */
+.sf2-field-u{fill:none;stroke:rgba(16,48,86,.5);stroke-width:4.4;stroke-linecap:round;}
+:root[data-theme="dark"] .sf2-field-u{stroke:none;}
+.sf2 .tk2-cause .sf2-fm{white-space:nowrap;}
+.sf2 .tk2-cause sup,.sf2-ref sup{font-size:.72em;line-height:0;}
+.sf2-svg .sf2-sup{font-size:11px;}
+.sf2 .tk2-cause .sf2-take{min-width:0;}

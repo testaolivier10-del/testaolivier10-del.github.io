@@ -178,3 +178,20 @@ Preview: `/mnt/user-data/outputs/calc-slope-fields-v2/index.html`, shots in `sho
 - With the leaf on the very top or bottom edge the ring reaches onto the bank.
 - Desmos could not be read here; GeoGebra and Ximera were read as text (applets not run).
 - No real phone, no screen reader pass, no real students; the independent review is next.
+
+## Review round 1 (2026-11-24)
+
+The independent review (`/home/claude/review-calc-slope/REVIEW.md`) blocked on one must fix; fixed:
+1. **y′ = x / y through the origin.** From (1, 1) or (−1, 1) the tracer stepped over (0, 0), so the curve crossed it
+   with no open end and "?" wrote y = √(x² + 0). Now `solution()` cuts each run where it reaches x = 0 on y = ±x and
+   marks that end "undefined" (open circle, "domain ends", the cause line "undefined at (0, 0), so the domain ends",
+   "?" rows "(0 / 0 at the origin)"); "?" ends the separation with "y = x, x > 0" (or −x, x < 0) and the takeaway adds
+   the domain. The sweep has (1, 1), (−1, 1) and (1, −1) and asserts no drawn point is across the y axis and an open
+   end sits at (0, 0).
+
+Should fix, all done: the takeaway is one span (the kit's line is a flex row) with the formula in a no wrap span and
+its exponent a superscript; labels on the water draw exponents as superscripts too (`data-plain` keeps the text); no
+streak runs through a placed label (the sweep checks); the picker reads "y′ = ky, growth and decay" (phones give the
+picker up to 250 px); a new equation fades the water and the labels only, never the banks; light streaks have a dark
+under stroke and the water's top is a step darker; a y tick number beside the leaf's ring moves out past it instead
+of hiding; e^(x) is e^x.
