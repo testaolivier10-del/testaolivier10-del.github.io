@@ -140,3 +140,16 @@ ever having made a path. Now the whole card is one button that opens the setup (
 `assets/course/path.js`; look in `assets/course/path.css`): before a path exists a navy "Make your path / Pick how you
 are studying" card with a gold arrow; after, a white "Your path" card with the summary line ("Course order · Exam
 Mar 14", plus the pace when there is one) and "Edit path ›". The day by day cram link and the banners sit under it.
+
+## The end of an interactive lesson is one button (owner, 2026-11-24)
+Under each step a lesson shows only Continue. The path card (`#lpEnd`) is no longer drawn on lesson pages (it stays
+on notes pages; the textbook's section cards are unchanged). On the last step the lesson's own next button is the one
+way on: with a path, `lessonNext` in `assets/course/path.js` points it at the path's next stop and names it ("Next:
+Bond polarity"); without one it is the next lesson in course order. NREMT keeps its own Next lesson (a chapter holds
+several lessons). Organic Chemistry: the engine's done box is "Lesson done" plus that one button and the tool
+suggestion (`ochem/assets/lesson-engine.js`), the "Next lesson" line under every step is gone
+(`assets/course/read-toggle.js`), and the Read / Builds on / Leads to rows are hidden on lesson pages in
+`assets/course/r3-reading.css` (still in the HTML for the notes link check and `build-leads-to.mjs`; mechanism pages
+keep them). A&P: the extra next-step box after "Lesson complete" is gone. AP lessons keep the share row and the
+"Question set for this topic" link under the step (not decided yet).
+
