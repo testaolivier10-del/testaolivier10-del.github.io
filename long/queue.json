@@ -353,6 +353,19 @@
    "thumb_c": "long/yt-stats-01-thumb-c.png",
    "review_blob": "a3be126e487a8b578b715ea0a4a5f96c1d298da7",
    "approved_blob": "a3be126e487a8b578b715ea0a4a5f96c1d298da7"
+  },
+  {
+   "id": "yt-orgo-03-hybridization",
+   "course": "orgo",
+   "topic_pages": [
+    "ochem/notes/hybridization.html"
+   ],
+   "title": "Hybridization: sp3, sp2 and sp Orbitals | Organic Chemistry",
+   "status": "building",
+   "added_on": "2026-11-25",
+   "date": "",
+   "youtube_id": "",
+   "note": "script audited 2026-11-25 (part 1 of the hybridization page; map entry split, part 2 is yt-orgo-03b); not voiced: Downloads folder not attached. Script in the Project at claude/levlprep-pipeline/long/o03_script.py"
   }
  ]
 }
