@@ -396,8 +396,23 @@
     if(a) return { el: a, before: true };
     var m = $('main'); return m ? { el: m, before: false } : null;
   }
+  /* An interactive lesson ends on one thing (owner, 2026-11-24): its own "next" button, and nothing under each step.
+     With a path that button goes to the path's next stop and names it; the path card stays on notes pages. */
+  function onLesson(){ return /\/lessons\/[^\/]+$/.test(location.pathname); }
+  function lessonNext(){
+    var t = PAGE_T; if(!t || !S.mode || !t.l || abs(t.l) !== location.pathname) return;   // NREMT: a chapter holds several lessons, its own Next lesson stands
+    var st = stops(), n = nowStop();
+    if(n && n.kind === 'topic' && n.id === t.id){ n = null; for(var i = 0; i < st.length; i++) if(st[i].kind === 'topic' && st[i].id === t.id){ n = st[i + 1] || null; break; } }
+    var url = n && stopUrl(n); if(!url) return;
+    var label = 'Next: ' + esc(n.kind === 'topic' ? tName(BY[n.id]) : n.title) + ' &rarr;';
+    $$('a.ls-next, a.nl-nextlesson, .ls-main a[class$="-ls-go"]').forEach(function(a){
+      if(a.getAttribute('data-lp') === url) return;
+      a.setAttribute('href', url); a.setAttribute('data-lp', url); a.innerHTML = label;
+    });
+  }
   function renderEnd(){
     var t = PAGE_T; if(!t || !S.mode) return;
+    if(onLesson()){ var ob = $('#lpEnd'); if(ob) ob.parentNode.removeChild(ob); lessonNext(); return; }
     var box = $('#lpEnd');
     if(!box){ var at = endAnchor(); if(!at) return; box = document.createElement('section'); box.id = 'lpEnd'; box.className = 'lp-endcard'; box.setAttribute('aria-label', 'Your path'); if(at.before) at.el.parentNode.insertBefore(box, at.el); else at.el.appendChild(box); }
     var st = stops(), here = -1; st.forEach(function(s, i){ if(s.kind === 'topic' && s.id === t.id) here = i; });
@@ -671,6 +686,7 @@
     window.addEventListener('storage', function(e){ if(!e.key || e.key === SK || e.key === D.progress || /ochem_|nremt_lessons/.test(e.key)){ S = load(); renderAll(); } });
     document.addEventListener(KEY + ':progress', function(){ renderAll(); });
     window.addEventListener(KEY + ':progress', function(){ renderAll(); });
+    if(PAGE_T && onLesson()){ var lq = false; new MutationObserver(function(){ if(lq) return; lq = true; setTimeout(function(){ lq = false; lessonNext(); }, 150); }).observe($('main') || document.body, { childList: true, subtree: true }); }
     if(PAGE_T){ var was = isF(PAGE_T.id); setInterval(function(){ readProgress(); var nowDone = isF(PAGE_T.id); if(nowDone !== was){ was = nowDone; renderEnd(); } }, 4000); }
     // The ochem textbook marks a section read on the page itself (no storage event in the same tab).
     if(BOOK) document.addEventListener('levl:bookread', function(){ readProgress(); renderBook(); });

@@ -292,21 +292,5 @@
     var lrs = railSwitch('<a class="rt-opt" href="' + esc(book) + '" data-rt-go="read" aria-label="Read: ' + esc(title || 'this topic') + ' in the textbook">Read</a>',
       '<span class="rt-opt on" aria-current="true">Interactive</span>');
     if(lrs) lrs.addEventListener('click', toRead);
-
-    /* Ochem lessons end on "Builds on / Leads to": give them the same "Next lesson →" every other course's
-       lesson ends with, the next topic in the course that has a lesson (audit 2026-11, A7). */
-    var OC = window.OchemCurriculum, rows = document.querySelector('nav.lesson-links');
-    if(OC && OC.MODULES && rows && !document.querySelector('.rt-nextlesson')){
-      var all = [], at = -1;
-      OC.MODULES.forEach(function(m){ m.topics.forEach(function(t){ if(t.href && /^lessons\//.test(t.href) && (!OC.hasLesson || OC.hasLesson(t))) all.push(t); }); });
-      all.forEach(function(t, i){ if(t.href === 'lessons/' + file + '.html') at = i; });
-      var nx = at >= 0 ? all[at + 1] : null;
-      if(nx){
-        var p = document.createElement('p');
-        p.className = 'rt-nextlesson';
-        p.innerHTML = '<a class="btn-press sm" href="' + esc(nx.href.replace(/^lessons\//, '')) + '">Next lesson &rarr;</a> <span>' + esc(nx.title) + '</span>';
-        rows.parentNode.insertBefore(p, rows);
-      }
-    }
   }
 })();

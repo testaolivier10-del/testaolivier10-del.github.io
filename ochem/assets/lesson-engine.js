@@ -166,7 +166,12 @@
        offers it without anyone reopening fifty-eight files (most have none). */
     function doneBoxHtml(){
       var suggest = window.OchemToolSuggest ? window.OchemToolSuggest.html(topicId, '../') : '';
-      return (window.LevlNextStep ? LevlNextStep('ochem', { topics: [topicId], also: [{ label: 'Back to the textbook', href: notesHref }] }) : '') + suggest;
+      // One "next" at the end of a lesson (owner 2026-11-24); path.js points it at the path's next stop.
+      var OC = window.OchemCurriculum, all = [], nx;
+      OC.MODULES.forEach(function(m){ m.topics.forEach(function(t){ if(/^lessons\//.test(t.href || '') && (!OC.hasLesson || OC.hasLesson(t))) all.push(t); }); });
+      all.forEach(function(t, i){ if(t.id === topicId) nx = all[i + 1]; });
+      return '<div class="ls-done"><p class="ls-done__k">\u2713 Lesson done</p><a class="btn-press ls-next" href="' +
+        (nx ? nx.href.slice(8) + '">Next: ' + nx.title.replace(/&/g, '&amp;').replace(/</g, '&lt;') + ' &rarr;' : notesHref + '">Back to the textbook') + '</a></div>' + suggest;
     }
 
     function advance(){ step++; render(); }

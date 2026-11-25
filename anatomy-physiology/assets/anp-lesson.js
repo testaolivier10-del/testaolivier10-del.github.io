@@ -140,8 +140,7 @@
           if(answered === total){
             var first = window.AnpCore && window.AnpCore.lessonComplete(topic);
             if(window.AnpCore) window.AnpCore.event('anp-session-finish', { mode: 'lesson', topic: topic, answered: total, correct: right });
-            chk.insertAdjacentHTML('afterend', '<p class="anp-done" role="status"><b>Lesson complete.</b> ' + right + ' of ' + total + ' right' + (first ? ', +40 XP' : '') + '.</p>' +
-              (window.LevlNextStep ? LevlNextStep('anp', { topics: [topic] }) : ''));
+            chk.insertAdjacentHTML('afterend', '<p class="anp-done" role="status"><b>Lesson complete.</b> ' + right + ' of ' + total + ' right' + (first ? ', +40 XP' : '') + '.</p>');
             // Sign in to keep it, or the Premium pitch when the next lesson is Premium (assets/course/lesson.js).
             if(window.LevlLesson) window.LevlLesson.checked(chk.parentNode.querySelector('.anp-done'));
           }
