@@ -69,6 +69,16 @@ Calc/BC/Precalc/Stats, APES/Psych, Macro/Micro/HuG; plan in `docs/tools-frame-20
 is folded into the final merge: do it on `claude/tools-v2-all` (after each course's rebuilds, to avoid conflicts),
 never straight to `main`. Nothing else goes live before the one final merge.
 
+## Paused (owner 2026-11-24, until the usage limit resets Monday 2026-11-30)
+
+48 of 145 done (water pollution live plus 47 on this branch). Resume from here:
+- AP Calc Riemann sums (`claude/tools-v2-calc-riemann-sums`, 8a15e2d4): round 1 fixes done; recheck 1 not done.
+- AP Calc slope fields (`claude/tools-v2-calc-slope-fields`, de40ec0c): round 1 fix round in progress, committed as WIP;
+  the builder must finish it (x / y cut at the origin, the should fixes, docs, fix-round sweep) before recheck 1.
+- AP Stats p-value explorer (`claude/tools-v2-stat-p-value-explorer`): just started, no work yet; start the build again.
+Reviews live in /home/claude/review-calc-riemann and /home/claude/review-calc-slope (may be gone after a machine reset;
+the review findings are summarised in each tool's brief once fixed).
+
 Before the final merge:
 - Time the skill sheets bleeding station's Blanket and Transport taps on a quiet machine or a real phone (p95 is
   above budget under load). If still over 50 ms, find the cause.
