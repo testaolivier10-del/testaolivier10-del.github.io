@@ -73,10 +73,12 @@
   "2026-11-18 chat (11:30am PT): repo attached with push access and the four LevlPrep scheduled tasks recreated with it. Media branch caught up from claude/levlprep-queue-unpushed-2026-11-10 to 2026-11-18 (and the 11-17 thumbs doc): lightning triage, dive reflex, tide car and bank run marked posted with youtube_ids; yt-phys-01 and yt-calc-01 posted; comments and drafts from 11-17 added; dive reflex thumbnail committed from the laptop (the version set in Studio). Nothing was posted or scheduled by this catch-up. Great smog stays scheduled for 2026-11-18 23:00Z.",
   "2026-11-18 midweek build rerun (about 11:30am to 5pm PT): analytics finished (TikTok, Umami, Search Console, brand search, test log, insights, search doc; message sent). w1118 Shorts built (book stacking AP Calc BC, diamond water paradox AP Micro, von Thunen AP HuG) with two fix rounds each, but fresh eyes stayed at 6 to 6.5 (bar 8), so none were sent or queued. Drafts kept on the media branch in drafts/w1118/ and code in pipeline/w1118. Queue is empty from 2026-11-19. Waiting on Olivier.",
   "2026-11-18 daily run (fired 6:27pm PT, late): push works again. Downloads folder not attached (desktop app window not available), so Buffer, YouTube ids, thumbnails, Studio steps and comments were skipped. Checkup: no failed LevlPrep runs. No approved Shorts and no long video due; queue empty from 2026-11-19 (w1118 drafts held). Great smog was scheduled for 2026-11-18 23:00Z.",
-  "2026-11-19 long build: Downloads folder not attached (desktop window unavailable); yt-stats-01 script audited and saved, voicing waits for the laptop."
+  "2026-11-19 long build: Downloads folder not attached (desktop window unavailable); yt-stats-01 script audited and saved, voicing waits for the laptop.",
+  "2026-11-25 midweek build (fired 9:19am PT): Downloads folder not attached (get_device_info connectedFolders empty; the access prompt could not be shown because the Claude desktop window was not available), so the YouTube and ElevenLabs keys could not be read. Done without keys: Supabase site numbers, TikTok Studio (great smog TT 5,055, 16.2% full), Umami, Search Console and the brand search; insights and search doc written (partial, no YouTube). Not done: YouTube API, test log rewrite, the 3 Shorts. Added to pending_reruns. Nothing posted or approved."
  ],
  "pending_reruns": [
-  "LevlPrep long video build"
+  "LevlPrep long video build",
+  "LevlPrep midweek build"
  ],
  "related_check_after": null,
  "comments_seen": [
