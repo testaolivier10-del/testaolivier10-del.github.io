@@ -1296,7 +1296,7 @@
   },
   {
    "id": "w1124-01-peppered-moth",
-   "status": "pending",
+   "status": "approved",
    "added_on": "2026-11-25",
    "date": null,
    "tiktok_caption": "The peppered moth: two moths on one tree, and a hungry bird is watching.\nWhich one would you bet on, the pale moth or the dark one?\nIn AP Biology this is natural selection: birds catch the moth that stands out, so when soot from the factories of Manchester darkened the trees, the dark moths lived to lay their eggs. In about fifty years nearly every moth in the city was dark.\nlevlprep.com\n#pepperedmoth #apbio #biology #evolution",
@@ -1315,11 +1315,13 @@
    "related_video": "YHDQJ0k3IFU",
    "related_set": false,
    "note": "approved by Olivier in chat 2026-11-24, scheduling asked 2026-11-25 (claude/levlprep-approved-unpushed-w1124.md); captions written by the daily run 2026-11-25",
-   "review_blob": "dfaf64032a0b742dce613a02702c0e9b643d110d"
+   "review_blob": "dfaf64032a0b742dce613a02702c0e9b643d110d",
+   "approved_on": "2026-11-24",
+   "approved_blob": "dfaf64032a0b742dce613a02702c0e9b643d110d"
   },
   {
    "id": "w1124-02-ball-feather",
-   "status": "pending",
+   "status": "approved",
    "added_on": "2026-11-25",
    "date": null,
    "tiktok_caption": "A bowling ball and a feather, dropped from the same height at the same moment.\nWhich one do you think hits the floor first?\nIn AP Physics 1 this is free fall: gravity pulls harder on the heavy ball, but the ball is also harder to speed up, and those two things cancel. With no air, everything falls at the same rate.\nlevlprep.com\n#bowlingball #apphysics #physics #gravity",
@@ -1338,11 +1340,13 @@
    "related_video": "-0o3V3bL6us",
    "related_set": false,
    "note": "approved by Olivier in chat 2026-11-24, scheduling asked 2026-11-25 (claude/levlprep-approved-unpushed-w1124.md); captions written by the daily run 2026-11-25",
-   "review_blob": "26be304d7d1f6a9f2ec09c342e2e944db49e3cac"
+   "review_blob": "26be304d7d1f6a9f2ec09c342e2e944db49e3cac",
+   "approved_on": "2026-11-24",
+   "approved_blob": "26be304d7d1f6a9f2ec09c342e2e944db49e3cac"
   },
   {
    "id": "w1124-03-greenland-africa",
-   "status": "pending",
+   "status": "approved",
    "added_on": "2026-11-25",
    "date": null,
    "tiktok_caption": "Greenland vs Africa: on a classroom map they look about the same size.\nWhich one did you think was bigger?\nIn AP Human Geography this is map projection: the Mercator map keeps compass directions as straight lines, so it has to stretch the land more and more toward the poles. Africa is actually about fourteen times bigger.\nlevlprep.com\n#greenland #aphug #geography #maps",
@@ -1361,7 +1365,9 @@
    "related_video": null,
    "related_set": false,
    "note": "approved by Olivier in chat 2026-11-24, scheduling asked 2026-11-25 (claude/levlprep-approved-unpushed-w1124.md); captions written by the daily run 2026-11-25",
-   "review_blob": "df707473d3f2d853b3363307f8366f1da7193818"
+   "review_blob": "df707473d3f2d853b3363307f8366f1da7193818",
+   "approved_on": "2026-11-24",
+   "approved_blob": "df707473d3f2d853b3363307f8366f1da7193818"
   }
  ]
 }
