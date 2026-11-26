@@ -449,6 +449,131 @@
           "Next: significant figures"
         ]
       ]
+    },
+    {
+      "id": "MJsVkLZk3IM",
+      "course": "apcalc",
+      "title": "Functions, Graphs and Exponent Rules for AP Calculus AB",
+      "seconds": 896,
+      "posted": "2026-11-16",
+      "pages": [
+        "calculus/notes/math-functions.html",
+        "calculus/lessons/math-functions.html",
+        "calculus/notes/math-exponent-rules.html",
+        "calculus/lessons/math-exponent-rules.html"
+      ],
+      "chapters": [
+        [
+          0,
+          "Start here"
+        ],
+        [
+          55,
+          "What a function is"
+        ],
+        [
+          243,
+          "Reading graphs and piecewise functions"
+        ],
+        [
+          403,
+          "Lines, composites and moving graphs"
+        ],
+        [
+          560,
+          "Exponent rules"
+        ],
+        [
+          829,
+          "Recap"
+        ],
+        [
+          861,
+          "Next: change at an instant"
+        ]
+      ]
+    },
+    {
+      "id": "-0o3V3bL6us",
+      "course": "apphys",
+      "title": "SI Units, Unit Conversions and Significant Figures | AP Physics 1",
+      "seconds": 766,
+      "posted": "2026-11-17",
+      "pages": [
+        "physics/notes/math-units.html",
+        "physics/lessons/math-units.html"
+      ],
+      "chapters": [
+        [
+          0,
+          "Start here"
+        ],
+        [
+          46,
+          "SI units and prefixes"
+        ],
+        [
+          229,
+          "Converting units"
+        ],
+        [
+          436,
+          "Scientific notation and significant figures"
+        ],
+        [
+          705,
+          "Recap"
+        ],
+        [
+          735,
+          "Next: scalars and vectors"
+        ]
+      ]
+    },
+    {
+      "id": "m0oeXe-0_C0",
+      "course": "apstat",
+      "title": "Intro to Statistics: Population, Sample and Variables | AP Statistics",
+      "seconds": 1052,
+      "posted": "2026-11-24",
+      "pages": [
+        "statistics/notes/intro-statistics.html",
+        "statistics/lessons/intro-statistics.html",
+        "statistics/notes/variables.html",
+        "statistics/lessons/variables.html",
+        "statistics/notes/math-fractions-percents.html",
+        "statistics/lessons/math-fractions-percents.html"
+      ],
+      "chapters": [
+        [
+          0,
+          "Start here"
+        ],
+        [
+          64,
+          "What statistics is for"
+        ],
+        [
+          350,
+          "Rows, columns and variables"
+        ],
+        [
+          580,
+          "Parameter or statistic"
+        ],
+        [
+          766,
+          "Parts of a whole"
+        ],
+        [
+          971,
+          "Recap"
+        ],
+        [
+          1004,
+          "Next: one categorical variable"
+        ]
+      ]
     }
   ]
 }
