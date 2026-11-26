@@ -1,0 +1,1368 @@
+1
+00:00:00,000 --> 00:00:03,280
+Ines is a sculptor, and tonight she's sketching
+
+2
+00:00:03,360 --> 00:00:06,715
+a heron in pencil, so the tip leaves a soft
+
+3
+00:00:06,795 --> 00:00:08,355
+gray line on the paper.
+
+4
+00:00:09,096 --> 00:00:11,736
+Then she picks up a scribe with a tiny diamond
+
+5
+00:00:11,776 --> 00:00:14,331
+at its tip, and she scratches that same
+
+6
+00:00:14,411 --> 00:00:16,971
+outline into a plate of hard steel.
+
+7
+00:00:17,771 --> 00:00:19,878
+She has one night to mark this heron and
+
+8
+00:00:19,958 --> 00:00:22,494
+cut it out, because the town unveils it
+
+9
+00:00:22,534 --> 00:00:24,364
+in the morning.
+
+10
+00:00:24,444 --> 00:00:27,434
+The gray in her pencil is mostly graphite,
+
+11
+00:00:27,514 --> 00:00:30,504
+and graphite is pure carbon.
+
+12
+00:00:30,624 --> 00:00:33,605
+Her diamond is pure carbon too.
+
+13
+00:00:33,685 --> 00:00:36,085
+So how can the same atom be soft enough
+
+14
+00:00:36,165 --> 00:00:37,845
+to rub off on paper...
+
+15
+00:00:37,925 --> 00:00:40,165
+and hard enough to scratch steel?
+
+16
+00:00:41,580 --> 00:00:43,140
+By the end of this video,
+
+17
+00:00:43,220 --> 00:00:45,620
+you'll look at almost any atom in a molecule
+
+18
+00:00:45,700 --> 00:00:49,260
+and name its hybridization in a few seconds.
+
+19
+00:00:49,380 --> 00:00:51,500
+Along the way, you'll see why carbon makes
+
+20
+00:00:51,580 --> 00:00:54,360
+four bonds, where double and triple bonds
+
+21
+00:00:54,440 --> 00:00:57,161
+come from, and what makes Ines's pencil
+
+22
+00:00:57,241 --> 00:01:00,501
+and her diamond so different.
+
+23
+00:01:00,581 --> 00:01:02,981
+So why does one little label deserve this
+
+24
+00:01:03,061 --> 00:01:05,061
+much attention?
+
+25
+00:01:05,141 --> 00:01:07,201
+Tell me an atom's hybridization,
+
+26
+00:01:07,241 --> 00:01:09,361
+and I can tell you which way its bonds point
+
+27
+00:01:09,441 --> 00:01:11,870
+and the angles between them.
+
+28
+00:01:11,924 --> 00:01:13,737
+I can also tell you whether that atom can
+
+29
+00:01:13,817 --> 00:01:16,917
+make a double bond or a triple bond.
+
+30
+00:01:16,997 --> 00:01:19,477
+You'll lean on hybridization in almost every
+
+31
+00:01:19,677 --> 00:01:22,037
+chapter of organic chemistry from here on.
+
+32
+00:01:25,837 --> 00:01:28,157
+We ended the last video with a problem.
+
+33
+00:01:28,872 --> 00:01:31,632
+Carbon's outer shell holds four electrons.
+
+34
+00:01:32,333 --> 00:01:34,909
+One pair fills the two s orbital,
+
+35
+00:01:34,989 --> 00:01:37,069
+and the other two electrons sit unpaired
+
+36
+00:01:37,149 --> 00:01:38,429
+in p orbitals.
+
+37
+00:01:39,109 --> 00:01:41,509
+An unpaired electron is what an atom uses
+
+38
+00:01:41,549 --> 00:01:44,625
+to make a bond, so carbon should make just
+
+39
+00:01:44,705 --> 00:01:47,005
+two bonds.
+
+40
+00:01:47,045 --> 00:01:48,890
+But then you look at methane,
+
+41
+00:01:48,970 --> 00:01:52,420
+which is one carbon holding four hydrogens.
+
+42
+00:01:52,500 --> 00:01:56,901
+It has four bonds, and all four are identical.
+
+43
+00:01:56,981 --> 00:01:59,301
+In this drawing, the solid wedge is a bond
+
+44
+00:01:59,381 --> 00:02:01,461
+coming toward you, and the striped one is
+
+45
+00:02:01,621 --> 00:02:03,791
+a bond going away.
+
+46
+00:02:03,831 --> 00:02:06,311
+Every pair of those bonds meets at the same
+
+47
+00:02:06,391 --> 00:02:08,551
+angle, which is one hundred nine point five
+
+48
+00:02:08,711 --> 00:02:10,551
+degrees.
+
+49
+00:02:10,631 --> 00:02:13,621
+So where did the two extra bonds come from,
+
+50
+00:02:13,701 --> 00:02:17,047
+and why do all four match?
+
+51
+00:02:17,087 --> 00:02:19,629
+The answer comes in two steps,
+
+52
+00:02:19,655 --> 00:02:22,984
+and the first step is called promotion.
+
+53
+00:02:23,010 --> 00:02:25,677
+An electron leaves the full two s orbital
+
+54
+00:02:25,757 --> 00:02:29,247
+and moves up into the empty p orbital.
+
+55
+00:02:29,287 --> 00:02:31,887
+Now carbon has four unpaired electrons,
+
+56
+00:02:31,927 --> 00:02:35,617
+with one in each of its four outer orbitals.
+
+57
+00:02:35,657 --> 00:02:38,753
+That move costs energy, but the two extra
+
+58
+00:02:38,793 --> 00:02:40,873
+bonds give back far more energy than the
+
+59
+00:02:40,913 --> 00:02:44,033
+move cost, so it's worth it every time carbon
+
+60
+00:02:44,073 --> 00:02:46,220
+bonds.
+
+61
+00:02:46,246 --> 00:02:47,873
+There's still a problem, though,
+
+62
+00:02:47,953 --> 00:02:51,153
+because those four orbitals aren't alike.
+
+63
+00:02:51,233 --> 00:02:53,233
+One is a round s orbital,
+
+64
+00:02:53,313 --> 00:02:55,993
+and three are p orbitals shaped like dumbbells,
+
+65
+00:02:56,033 --> 00:02:58,698
+set at right angles to each other.
+
+66
+00:02:58,738 --> 00:03:00,578
+If carbon bonded with them just as they
+
+67
+00:03:00,658 --> 00:03:03,058
+are, three bonds would sit ninety degrees
+
+68
+00:03:03,178 --> 00:03:05,138
+apart, and the fourth would be different
+
+69
+00:03:05,218 --> 00:03:07,013
+from the rest.
+
+70
+00:03:07,053 --> 00:03:09,480
+Methane doesn't look like that at all.
+
+71
+00:03:09,586 --> 00:03:11,724
+So this is the second step,
+
+72
+00:03:11,764 --> 00:03:14,685
+and you can think of it like mixing paint.
+
+73
+00:03:14,754 --> 00:03:17,234
+If you pour one can of red and three cans
+
+74
+00:03:17,314 --> 00:03:19,421
+of white into a tub and stir,
+
+75
+00:03:19,447 --> 00:03:21,287
+you can fill four cans again,
+
+76
+00:03:21,341 --> 00:03:24,939
+and now every can holds the same pink.
+
+77
+00:03:24,979 --> 00:03:27,112
+Carbon does that with its orbitals.
+
+78
+00:03:27,166 --> 00:03:29,539
+It mixes the one s orbital and the three
+
+79
+00:03:29,619 --> 00:03:32,339
+p orbitals into four new orbitals that are
+
+80
+00:03:32,419 --> 00:03:34,499
+all identical.
+
+81
+00:03:34,539 --> 00:03:36,592
+We call them hybrid orbitals,
+
+82
+00:03:36,646 --> 00:03:39,179
+and this kind is named sp³,
+
+83
+00:03:39,259 --> 00:03:42,219
+because it's made from one s and three p.
+
+84
+00:03:42,299 --> 00:03:45,955
+Four orbitals went in, and four came out.
+
+85
+00:03:45,995 --> 00:03:48,185
+Mixing changes their shape,
+
+86
+00:03:48,225 --> 00:03:51,650
+but it never changes how many there are.
+
+87
+00:03:51,690 --> 00:03:53,970
+Each hybrid has one big lobe,
+
+88
+00:03:54,010 --> 00:03:56,250
+and since every lobe holds electrons and
+
+89
+00:03:56,330 --> 00:03:57,983
+electrons repel each other,
+
+90
+00:03:58,037 --> 00:04:00,250
+the four lobes push as far apart as they
+
+91
+00:04:00,330 --> 00:04:01,850
+can.
+
+92
+00:04:01,930 --> 00:04:03,770
+That points them at the four corners of
+
+93
+00:04:03,930 --> 00:04:06,490
+a tetrahedron, a shape with four corners
+
+94
+00:04:06,610 --> 00:04:09,157
+and four triangle faces.
+
+95
+00:04:09,183 --> 00:04:11,970
+And the angle between any two of them is...
+
+96
+00:04:12,010 --> 00:04:14,450
+one hundred nine point five degrees,
+
+97
+00:04:14,490 --> 00:04:17,170
+which is exactly what methane shows.
+
+98
+00:04:17,210 --> 00:04:19,770
+Now we can look inside the diamond on Ines's
+
+99
+00:04:19,850 --> 00:04:21,450
+scribe.
+
+100
+00:04:21,570 --> 00:04:25,030
+Every carbon atom in it is sp³.
+
+101
+00:04:25,110 --> 00:04:27,750
+Each carbon uses its four hybrids to bond
+
+102
+00:04:27,870 --> 00:04:30,070
+to four more carbons, and each of those
+
+103
+00:04:30,150 --> 00:04:32,150
+carbons bonds to four more.
+
+104
+00:04:32,946 --> 00:04:35,586
+The pattern runs on in every direction with
+
+105
+00:04:35,666 --> 00:04:37,826
+strong bonds all the way through,
+
+106
+00:04:37,906 --> 00:04:39,986
+so there's no weak layer anywhere that could
+
+107
+00:04:40,066 --> 00:04:40,866
+slip.
+
+108
+00:04:41,506 --> 00:04:43,378
+That's why the diamond tip bites into the
+
+109
+00:04:43,458 --> 00:04:46,458
+steel, and the steel can't scratch it back.
+
+110
+00:04:47,958 --> 00:04:48,998
+Now it's your turn.
+
+111
+00:04:49,798 --> 00:04:52,278
+Suppose an atom mixes its s orbital with
+
+112
+00:04:52,358 --> 00:04:55,078
+only two of its three p orbitals.
+
+113
+00:04:55,158 --> 00:04:57,918
+How many hybrid orbitals does it get?
+
+114
+00:04:58,038 --> 00:05:00,318
+And how many p orbitals are left over,
+
+115
+00:05:00,398 --> 00:05:01,198
+unmixed?
+
+116
+00:05:08,441 --> 00:05:11,529
+One s plus two p gives three orbitals going
+
+117
+00:05:11,561 --> 00:05:14,161
+in, so three hybrids come out.
+
+118
+00:05:14,921 --> 00:05:17,401
+The atom started with three p orbitals and
+
+119
+00:05:17,481 --> 00:05:20,681
+it used two, so one p orbital is left over.
+
+120
+00:05:21,481 --> 00:05:24,228
+The trap is thinking that mixing uses orbitals
+
+121
+00:05:24,308 --> 00:05:27,188
+up, when the number going in always equals
+
+122
+00:05:27,228 --> 00:05:29,414
+the number coming out.
+
+123
+00:05:29,494 --> 00:05:31,894
+And that leftover p orbital is about to
+
+124
+00:05:32,054 --> 00:05:33,254
+matter a lot.
+
+125
+00:05:37,054 --> 00:05:39,294
+An atom doesn't have to mix all three of
+
+126
+00:05:39,374 --> 00:05:42,069
+its p orbitals, and you'll see in a minute
+
+127
+00:05:42,149 --> 00:05:44,544
+why it would hold one back.
+
+128
+00:05:44,624 --> 00:05:47,160
+When it mixes the s with two of them,
+
+129
+00:05:47,200 --> 00:05:49,975
+it gets three hybrids, and they're called
+
+130
+00:05:50,055 --> 00:05:52,055
+sp².
+
+131
+00:05:52,215 --> 00:05:54,680
+Those three lobes spread out flat,
+
+132
+00:05:54,760 --> 00:05:56,901
+one hundred twenty degrees apart,
+
+133
+00:05:56,981 --> 00:05:58,821
+like the blades of a ceiling fan.
+
+134
+00:05:59,536 --> 00:06:02,016
+The one leftover p orbital stands straight
+
+135
+00:06:02,096 --> 00:06:04,071
+up through that flat plane,
+
+136
+00:06:04,151 --> 00:06:06,711
+with one lobe above it and one below.
+
+137
+00:06:07,822 --> 00:06:10,382
+An atom can also mix the s with just one
+
+138
+00:06:10,462 --> 00:06:12,167
+p orbital.
+
+139
+00:06:12,247 --> 00:06:14,947
+Then it gets only a pair of hybrids,
+
+140
+00:06:14,987 --> 00:06:17,322
+and they're called plain sp,
+
+141
+00:06:17,402 --> 00:06:19,202
+with no number.
+
+142
+00:06:19,322 --> 00:06:21,442
+Those lobes get as far apart as they can
+
+143
+00:06:21,562 --> 00:06:23,993
+by pointing in opposite directions,
+
+144
+00:06:24,073 --> 00:06:27,013
+so the angle is one hundred eighty degrees,
+
+145
+00:06:27,053 --> 00:06:28,873
+a straight line.
+
+146
+00:06:28,953 --> 00:06:32,339
+This time two p orbitals are left over.
+
+147
+00:06:32,419 --> 00:06:34,699
+They stand at right angles to that line,
+
+148
+00:06:34,739 --> 00:06:36,899
+and at right angles to each other.
+
+149
+00:06:37,099 --> 00:06:39,779
+So what are the leftover p orbitals for?
+
+150
+00:06:40,489 --> 00:06:42,874
+We can see their job in ethene,
+
+151
+00:06:42,954 --> 00:06:45,492
+also called ethylene.
+
+152
+00:06:45,546 --> 00:06:48,079
+It's two carbons joined by a double bond,
+
+153
+00:06:48,239 --> 00:06:50,612
+meaning they share two pairs of electrons,
+
+154
+00:06:50,666 --> 00:06:54,399
+and each carbon also holds two hydrogens.
+
+155
+00:06:54,479 --> 00:06:57,610
+Both carbons are sp².
+
+156
+00:06:57,650 --> 00:06:59,970
+Each carbon points one hybrid straight at
+
+157
+00:07:00,010 --> 00:07:02,210
+the other carbon and its other two hybrids
+
+158
+00:07:02,290 --> 00:07:04,285
+at its hydrogens.
+
+159
+00:07:04,325 --> 00:07:06,485
+Where two orbitals overlap head on like
+
+160
+00:07:06,565 --> 00:07:09,365
+that, chemists call it a sigma bond,
+
+161
+00:07:09,445 --> 00:07:12,828
+and every single bond you've drawn is one.
+
+162
+00:07:12,965 --> 00:07:15,148
+The spot between the two carbons is now
+
+163
+00:07:15,588 --> 00:07:18,108
+taken, so the second bond has to form somewhere
+
+164
+00:07:18,188 --> 00:07:19,673
+else.
+
+165
+00:07:19,713 --> 00:07:22,806
+Each carbon still has its leftover p orbital,
+
+166
+00:07:22,860 --> 00:07:26,673
+and those two p orbitals stand side by side.
+
+167
+00:07:26,713 --> 00:07:29,593
+They overlap sideways, above and below the
+
+168
+00:07:29,953 --> 00:07:32,849
+plane, and that sideways overlap is called
+
+169
+00:07:33,009 --> 00:07:35,309
+a pi bond.
+
+170
+00:07:35,389 --> 00:07:38,429
+So a double bond is one sigma bond plus
+
+171
+00:07:38,509 --> 00:07:40,509
+one pi bond.
+
+172
+00:07:40,549 --> 00:07:43,509
+A triple bond is one sigma bond plus two
+
+173
+00:07:43,629 --> 00:07:47,259
+pi bonds, and every pi bond uses up one
+
+174
+00:07:47,339 --> 00:07:50,530
+unmixed p orbital on each atom.
+
+175
+00:07:50,570 --> 00:07:52,010
+You can read that rule backwards,
+
+176
+00:07:52,050 --> 00:07:53,415
+too.
+
+177
+00:07:53,455 --> 00:07:55,855
+A carbon with one double bond has to keep
+
+178
+00:07:55,935 --> 00:07:57,815
+one p orbital out of the mix,
+
+179
+00:07:57,855 --> 00:08:00,045
+so it's sp²...
+
+180
+00:08:00,085 --> 00:08:02,325
+and a carbon with a triple bond has to keep
+
+181
+00:08:02,405 --> 00:08:05,525
+two of them out, so it's plain sp.
+
+182
+00:08:05,605 --> 00:08:09,080
+This is the secret of Ines's pencil.
+
+183
+00:08:09,120 --> 00:08:13,136
+In graphite, every carbon is sp².
+
+184
+00:08:13,176 --> 00:08:15,256
+Each carbon is bonded to three neighbors
+
+185
+00:08:15,296 --> 00:08:17,283
+in a flat sheet of hexagons,
+
+186
+00:08:17,309 --> 00:08:19,951
+a lot like chicken wire, and the leftover
+
+187
+00:08:20,031 --> 00:08:22,671
+p orbitals overlap sideways across that
+
+188
+00:08:22,831 --> 00:08:24,397
+same sheet.
+
+189
+00:08:24,534 --> 00:08:27,694
+All the strong bonding stays inside a sheet,
+
+190
+00:08:27,734 --> 00:08:29,374
+so when the sheets stack up,
+
+191
+00:08:29,414 --> 00:08:31,494
+only weak attractions hold one sheet to
+
+192
+00:08:31,574 --> 00:08:33,100
+the next.
+
+193
+00:08:33,169 --> 00:08:35,809
+When she drags the tip across the paper,
+
+194
+00:08:35,889 --> 00:08:38,964
+thin flakes rub off and stay behind...
+
+195
+00:08:39,004 --> 00:08:43,325
+and those flakes are her gray line.
+
+196
+00:08:43,365 --> 00:08:45,540
+This one's for you to try.
+
+197
+00:08:45,620 --> 00:08:49,205
+A carbon atom is part of a triple bond.
+
+198
+00:08:49,285 --> 00:08:51,845
+What is its hybridization?
+
+199
+00:08:51,925 --> 00:08:55,445
+How many leftover p orbitals does it have?
+
+200
+00:08:55,525 --> 00:08:57,845
+And what angle do its bonds make?
+
+201
+00:09:05,145 --> 00:09:07,408
+A triple bond has two pi bonds,
+
+202
+00:09:07,528 --> 00:09:10,928
+and each pi bond uses up one unmixed p orbital,
+
+203
+00:09:11,008 --> 00:09:13,488
+so this carbon has two left over.
+
+204
+00:09:13,568 --> 00:09:16,048
+That leaves the s and one p to mix,
+
+205
+00:09:16,168 --> 00:09:19,308
+so the carbon is plain sp.
+
+206
+00:09:19,388 --> 00:09:22,028
+Its two hybrids point in opposite directions,
+
+207
+00:09:22,108 --> 00:09:25,548
+so the angle is one hundred eighty degrees.
+
+208
+00:09:25,628 --> 00:09:28,108
+Most people slip by seeing the word triple
+
+209
+00:09:28,188 --> 00:09:30,588
+and writing a three after the sp.
+
+210
+00:09:30,668 --> 00:09:32,588
+That little number counts the p orbitals
+
+211
+00:09:32,668 --> 00:09:35,228
+in the mix, and it doesn't count bonds.
+
+212
+00:09:39,028 --> 00:09:41,188
+You won't redo the mixing for every atom
+
+213
+00:09:41,268 --> 00:09:44,188
+you meet, because there's a shortcut,
+
+214
+00:09:44,308 --> 00:09:46,879
+and it's just counting.
+
+215
+00:09:46,959 --> 00:09:48,719
+You count the electron groups around the
+
+216
+00:09:48,799 --> 00:09:50,279
+atom.
+
+217
+00:09:50,359 --> 00:09:53,754
+A group can be a bond to a neighboring atom.
+
+218
+00:09:53,794 --> 00:09:55,754
+It can also be a lone pair,
+
+219
+00:09:55,834 --> 00:09:57,834
+meaning two electrons that the atom keeps
+
+220
+00:09:57,914 --> 00:09:59,700
+to itself.
+
+221
+00:09:59,740 --> 00:10:02,100
+And a double or triple bond is counted as
+
+222
+00:10:02,180 --> 00:10:03,940
+one group.
+
+223
+00:10:04,100 --> 00:10:06,675
+Only its sigma bond sits in a hybrid,
+
+224
+00:10:06,755 --> 00:10:08,995
+because the pi bonds are made from the leftover
+
+225
+00:10:09,075 --> 00:10:11,355
+p orbitals.
+
+226
+00:10:11,555 --> 00:10:13,945
+Then you read off the answer.
+
+227
+00:10:14,025 --> 00:10:15,385
+If you count four groups,
+
+228
+00:10:15,860 --> 00:10:18,591
+the atom is sp³.
+
+229
+00:10:18,711 --> 00:10:21,766
+With three groups, it's sp².
+
+230
+00:10:21,846 --> 00:10:23,826
+And with only a pair of groups,
+
+231
+00:10:23,866 --> 00:10:25,506
+it's plain sp.
+
+232
+00:10:26,222 --> 00:10:27,302
+Why does that work?
+
+233
+00:10:28,013 --> 00:10:30,813
+Every sigma bond and every lone pair needs
+
+234
+00:10:30,893 --> 00:10:33,238
+one hybrid orbital to sit in,
+
+235
+00:10:33,318 --> 00:10:35,398
+so the number of groups tells you how many
+
+236
+00:10:35,518 --> 00:10:38,719
+orbitals the atom had to mix.
+
+237
+00:10:38,759 --> 00:10:41,684
+We can test it on two molecules.
+
+238
+00:10:41,764 --> 00:10:44,564
+Methane's carbon has four bonds and no lone
+
+239
+00:10:44,644 --> 00:10:46,039
+pairs.
+
+240
+00:10:46,119 --> 00:10:50,315
+That's four groups, so it's sp³.
+
+241
+00:10:50,435 --> 00:10:53,275
+Carbon dioxide has one carbon with two double
+
+242
+00:10:53,315 --> 00:10:56,320
+bonds, one to each oxygen.
+
+243
+00:10:56,360 --> 00:10:58,240
+Each double bond counts once,
+
+244
+00:10:58,280 --> 00:11:00,760
+so the carbon has two groups and it's plain
+
+245
+00:11:00,920 --> 00:11:02,625
+sp.
+
+246
+00:11:02,745 --> 00:11:05,345
+That fits, because two pi bonds need two
+
+247
+00:11:05,465 --> 00:11:08,380
+leftover p orbitals, and the whole molecule
+
+248
+00:11:08,460 --> 00:11:10,020
+is a straight line.
+
+249
+00:11:10,060 --> 00:11:12,340
+Lone pairs are where most people slip,
+
+250
+00:11:12,380 --> 00:11:14,380
+and they show up on atoms like nitrogen
+
+251
+00:11:14,460 --> 00:11:16,780
+and oxygen, which mix their orbitals just
+
+252
+00:11:16,860 --> 00:11:18,926
+as carbon does.
+
+253
+00:11:18,966 --> 00:11:21,406
+In ammonia, nitrogen has three bonds to
+
+254
+00:11:21,566 --> 00:11:24,436
+hydrogen and one lone pair.
+
+255
+00:11:24,516 --> 00:11:26,796
+Three plus one is four groups,
+
+256
+00:11:26,836 --> 00:11:30,131
+so the nitrogen is sp³.
+
+257
+00:11:30,171 --> 00:11:33,291
+In water, oxygen has two bonds and two lone
+
+258
+00:11:33,371 --> 00:11:35,731
+pairs, which makes four groups again,
+
+259
+00:11:35,771 --> 00:11:39,461
+so water's oxygen is also sp³.
+
+260
+00:11:39,501 --> 00:11:41,061
+If you forgot the lone pairs,
+
+261
+00:11:41,101 --> 00:11:44,741
+you'd get the wrong answer for both of them.
+
+262
+00:11:44,861 --> 00:11:48,571
+This next detail confuses a lot of students.
+
+263
+00:11:48,651 --> 00:11:52,291
+Methane, ammonia and water are all sp³,
+
+264
+00:11:52,331 --> 00:11:54,811
+so in each one the four groups point toward
+
+265
+00:11:54,891 --> 00:11:57,612
+the corners of a tetrahedron.
+
+266
+00:11:57,652 --> 00:11:59,892
+But the three molecules don't have the same
+
+267
+00:11:59,972 --> 00:12:00,852
+shape.
+
+268
+00:12:00,932 --> 00:12:03,372
+Shape describes where the atoms are,
+
+269
+00:12:03,412 --> 00:12:05,772
+so it leaves the lone pairs out.
+
+270
+00:12:05,812 --> 00:12:07,705
+Methane is a tetrahedron,
+
+271
+00:12:07,759 --> 00:12:10,212
+ammonia is a shallow three sided pyramid
+
+272
+00:12:10,292 --> 00:12:13,867
+with nitrogen on top, and water is bent.
+
+273
+00:12:14,027 --> 00:12:16,587
+So hybridization counts every group,
+
+274
+00:12:16,667 --> 00:12:20,492
+and shape only shows the atoms.
+
+275
+00:12:20,532 --> 00:12:22,852
+Back in the workshop, Ines rolls her cutting
+
+276
+00:12:23,012 --> 00:12:25,317
+torch over to the steel.
+
+277
+00:12:25,357 --> 00:12:27,370
+One of its tanks holds acetylene,
+
+278
+00:12:27,424 --> 00:12:29,397
+which is two carbons joined by a triple
+
+279
+00:12:29,677 --> 00:12:33,348
+bond, with one hydrogen on each end.
+
+280
+00:12:33,388 --> 00:12:34,988
+If you count the groups on one of those
+
+281
+00:12:35,108 --> 00:12:37,468
+carbons, you find the bond to hydrogen and
+
+282
+00:12:37,548 --> 00:12:39,393
+the triple bond.
+
+283
+00:12:39,433 --> 00:12:41,913
+That makes two groups, so the carbon is
+
+284
+00:12:41,993 --> 00:12:44,148
+plain sp.
+
+285
+00:12:44,188 --> 00:12:45,668
+Both carbons are the same,
+
+286
+00:12:45,708 --> 00:12:49,468
+so all four atoms sit in one straight line.
+
+287
+00:12:49,668 --> 00:12:51,748
+She lights the torch, and the acetylene
+
+288
+00:12:51,828 --> 00:12:54,308
+burns in pure oxygen at more than three
+
+289
+00:12:54,548 --> 00:12:57,344
+thousand degrees Celsius.
+
+290
+00:12:57,424 --> 00:12:59,744
+That flame heats the steel until a jet of
+
+291
+00:12:59,824 --> 00:13:01,904
+oxygen can burn right through it,
+
+292
+00:13:02,064 --> 00:13:04,104
+along the line her diamond scratched.
+
+293
+00:13:05,604 --> 00:13:07,044
+It's your turn again.
+
+294
+00:13:07,124 --> 00:13:09,924
+In this molecule, a carbon with three hydrogens
+
+295
+00:13:10,004 --> 00:13:12,844
+is bonded to a second carbon.
+
+296
+00:13:12,964 --> 00:13:14,924
+That second carbon has a triple bond to
+
+297
+00:13:15,004 --> 00:13:17,484
+a nitrogen, and the nitrogen carries one
+
+298
+00:13:17,564 --> 00:13:19,549
+lone pair.
+
+299
+00:13:19,629 --> 00:13:21,909
+What is the hybridization of each carbon,
+
+300
+00:13:21,949 --> 00:13:23,229
+and of the nitrogen?
+
+301
+00:13:32,415 --> 00:13:34,975
+The first carbon has three bonds to hydrogen
+
+302
+00:13:35,135 --> 00:13:36,575
+and one bond to carbon.
+
+303
+00:13:37,336 --> 00:13:40,616
+That's four groups, so it's sp³.
+
+304
+00:13:41,416 --> 00:13:44,149
+The second carbon is plain sp,
+
+305
+00:13:44,229 --> 00:13:46,389
+because its single bond and its triple bond
+
+306
+00:13:46,549 --> 00:13:49,044
+make only two groups.
+
+307
+00:13:49,084 --> 00:13:51,284
+The nitrogen has the triple bond and one
+
+308
+00:13:51,364 --> 00:13:54,244
+lone pair, so it has two groups and it's
+
+309
+00:13:54,324 --> 00:13:55,364
+sp as well.
+
+310
+00:13:56,164 --> 00:13:58,271
+The trap is forgetting the lone pair on
+
+311
+00:13:58,351 --> 00:14:00,671
+the nitrogen, or counting the triple bond
+
+312
+00:14:00,751 --> 00:14:02,031
+as three groups.
+
+313
+00:14:05,831 --> 00:14:08,511
+We can put the whole idea in one picture.
+
+314
+00:14:09,247 --> 00:14:11,807
+Carbon promotes one electron and mixes its
+
+315
+00:14:11,967 --> 00:14:14,842
+orbitals, and what it mixes decides where
+
+316
+00:14:14,922 --> 00:14:16,922
+its groups point.
+
+317
+00:14:16,962 --> 00:14:18,442
+If you count four groups,
+
+318
+00:14:18,522 --> 00:14:21,362
+the atom is sp³.
+
+319
+00:14:21,442 --> 00:14:24,478
+Its groups point to the corners of a tetrahedron,
+
+320
+00:14:24,558 --> 00:14:27,403
+one hundred nine point five degrees apart,
+
+321
+00:14:27,443 --> 00:14:29,723
+and it keeps no p orbital back.
+
+322
+00:14:30,523 --> 00:14:32,683
+Three groups make it sp²,
+
+323
+00:14:32,723 --> 00:14:34,683
+so it's flat with angles of one hundred
+
+324
+00:14:34,843 --> 00:14:37,403
+twenty degrees, and it has one p orbital
+
+325
+00:14:37,523 --> 00:14:40,088
+left over for a pi bond.
+
+326
+00:14:40,128 --> 00:14:43,278
+And a pair of groups makes it plain sp,
+
+327
+00:14:43,358 --> 00:14:45,838
+a straight line at one hundred eighty degrees,
+
+328
+00:14:45,958 --> 00:14:48,798
+with two p orbitals left for two pi bonds.
+
+329
+00:14:52,598 --> 00:14:55,078
+By morning, the steel heron stands in the
+
+330
+00:14:55,238 --> 00:14:59,254
+town square, and Ines pulls the cover off.
+
+331
+00:14:59,334 --> 00:15:02,398
+Her pencil drew it, her diamond marked it,
+
+332
+00:15:02,452 --> 00:15:04,105
+and her flame cut it out.
+
+333
+00:15:04,840 --> 00:15:07,133
+Carbon was in all three tools,
+
+334
+00:15:07,187 --> 00:15:09,080
+and what made the soft pencil and the hard
+
+335
+00:15:09,320 --> 00:15:11,560
+diamond so different was how each carbon
+
+336
+00:15:11,640 --> 00:15:14,381
+atom had mixed its orbitals.
+
+337
+00:15:14,421 --> 00:15:16,061
+You'll find the notes and practice for this
+
+338
+00:15:16,261 --> 00:15:19,591
+topic, free, on levlprep.com.
+
+339
+00:15:19,671 --> 00:15:21,751
+And next time, we'll finish hybridization
+
+340
+00:15:21,871 --> 00:15:24,511
+with charged carbons, the one case where
+
+341
+00:15:24,591 --> 00:15:27,071
+the count misleads you, and what a hybrid's
+
+342
+00:15:27,191 --> 00:15:29,311
+makeup does to the length of a bond.
+
