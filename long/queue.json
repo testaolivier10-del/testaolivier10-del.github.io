@@ -371,9 +371,9 @@
     "ochem/notes/hybridization.html"
    ],
    "title": "Hybridization: sp3, sp2 and sp Orbitals | Organic Chemistry",
-   "status": "pending",
+   "status": "approved",
    "added_on": "2026-11-25",
-   "date": "",
+   "date": "2026-11-30",
    "youtube_id": "",
    "note": "Built 2026-11-26 (15:32, eleven_v4). The fresh eyes review held it as a draft (5.5; people shots 2 to 6), then Olivier approved it as it is in the build chat on 2026-11-26: \"The video is good and approved now\". His words outrank the review bar: do not rebuild. Part 1 of the hybridization page; part 2 is yt-orgo-03b.",
    "description_file": "long/yt-orgo-03-youtube.md",
@@ -383,13 +383,15 @@
    "thumb_c": "long/yt-orgo-03-thumb-c.png",
    "captions": "long/yt-orgo-03-captions.srt",
    "playlist": "Organic Chemistry | LevlPrep",
-   "approved_on": "",
+   "approved_on": "2026-11-26",
    "thumbnail_set": false,
    "playlist_added": false,
    "captions_set": false,
    "ab_test": false,
    "endscreen_set": false,
-   "pr_url": ""
+   "pr_url": "",
+   "review_blob": "3e2f3fb5f752a9f9f3cd7fdfcc3e2296b329777d",
+   "approved_blob": "3e2f3fb5f752a9f9f3cd7fdfcc3e2296b329777d"
   }
  ]
 }
