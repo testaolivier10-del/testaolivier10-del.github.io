@@ -356,7 +356,12 @@
    "thumb_b": "long/yt-stats-01-thumb-b.png",
    "thumb_c": "long/yt-stats-01-thumb-c.png",
    "review_blob": "a3be126e487a8b578b715ea0a4a5f96c1d298da7",
-   "approved_blob": "a3be126e487a8b578b715ea0a4a5f96c1d298da7"
+   "approved_blob": "a3be126e487a8b578b715ea0a4a5f96c1d298da7",
+   "thumbnail_set": true,
+   "playlist_added": true,
+   "captions_set": true,
+   "ab_test": false,
+   "endscreen_set": false
   },
   {
    "id": "yt-orgo-03-hybridization",
