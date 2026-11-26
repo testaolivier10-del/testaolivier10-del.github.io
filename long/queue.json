@@ -352,7 +352,7 @@
    "approved_on": "2026-11-24",
    "youtube_id": "m0oeXe-0_C0",
    "added_on": "2026-11-19",
-   "note": "uploaded 2026-11-24 through Composio YOUTUBE_MULTIPART_UPLOAD_VIDEO (Zapier was throttled). An earlier try with YOUTUBE_UPLOAD_VIDEO left a 'Processing abandoned' entry sK5cymqi4ng in Studio (not a real video).",
+   "note": "uploaded 2026-11-24 through Composio YOUTUBE_MULTIPART_UPLOAD_VIDEO (Zapier was throttled). An earlier try with YOUTUBE_UPLOAD_VIDEO left a 'Processing abandoned' entry sK5cymqi4ng in Studio (not a real video). 2026-11-25: Studio will not save anything on this video until the audience question (made for kids) is answered, so the thumbnail test and end screen wait for Olivier to choose 'No, it's not made for kids' and save.",
    "thumb_b": "long/yt-stats-01-thumb-b.png",
    "thumb_c": "long/yt-stats-01-thumb-c.png",
    "review_blob": "a3be126e487a8b578b715ea0a4a5f96c1d298da7",
