@@ -292,7 +292,7 @@
    "thumbnail_set": true,
    "playlist_added": true,
    "captions_set": true,
-   "pr_url": "",
+   "pr_url": "https://github.com/testaolivier10-del/testaolivier10-del.github.io/pull/235",
    "note": "2026-11-07: built and saved pending review (12:44, eleven_v4)",
    "thumb_b": "long/yt-phys-01-thumb-b.png",
    "thumb_c": "long/yt-phys-01-thumb-c.png",
@@ -327,7 +327,7 @@
    "captions_set": true,
    "ab_test": "running",
    "endscreen_set": true,
-   "pr_url": "",
+   "pr_url": "https://github.com/testaolivier10-del/testaolivier10-del.github.io/pull/235",
    "review_blob": "e7463bf8618ff56f21832a0867693f503b3c102d",
    "approved_blob": "e7463bf8618ff56f21832a0867693f503b3c102d",
    "endscreen_next": "best",
@@ -348,7 +348,7 @@
    "captions": "long/yt-stats-01-captions.srt",
    "playlist": "AP Statistics | LevlPrep",
    "date": "2026-11-24",
-   "status": "approved",
+   "status": "posted",
    "approved_on": "2026-11-24",
    "youtube_id": "m0oeXe-0_C0",
    "added_on": "2026-11-19",
@@ -361,7 +361,8 @@
    "playlist_added": true,
    "captions_set": true,
    "ab_test": false,
-   "endscreen_set": false
+   "endscreen_set": false,
+   "pr_url": "https://github.com/testaolivier10-del/testaolivier10-del.github.io/pull/235"
   },
   {
    "id": "yt-orgo-03-hybridization",
