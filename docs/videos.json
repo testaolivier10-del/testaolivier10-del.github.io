@@ -529,6 +529,51 @@
           "Next: scalars and vectors"
         ]
       ]
+    },
+    {
+      "id": "m0oeXe-0_C0",
+      "course": "apstat",
+      "title": "Intro to Statistics: Population, Sample and Variables | AP Statistics",
+      "seconds": 1052,
+      "posted": "2026-11-24",
+      "pages": [
+        "statistics/notes/intro-statistics.html",
+        "statistics/lessons/intro-statistics.html",
+        "statistics/notes/variables.html",
+        "statistics/lessons/variables.html",
+        "statistics/notes/math-fractions-percents.html",
+        "statistics/lessons/math-fractions-percents.html"
+      ],
+      "chapters": [
+        [
+          0,
+          "Start here"
+        ],
+        [
+          64,
+          "What statistics is for"
+        ],
+        [
+          350,
+          "Rows, columns and variables"
+        ],
+        [
+          580,
+          "Parameter or statistic"
+        ],
+        [
+          766,
+          "Parts of a whole"
+        ],
+        [
+          971,
+          "Recap"
+        ],
+        [
+          1004,
+          "Next: one categorical variable"
+        ]
+      ]
     }
   ]
 }
