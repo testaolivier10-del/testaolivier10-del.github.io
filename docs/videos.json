@@ -492,6 +492,43 @@
           "Next: change at an instant"
         ]
       ]
+    },
+    {
+      "id": "-0o3V3bL6us",
+      "course": "apphys",
+      "title": "SI Units, Unit Conversions and Significant Figures | AP Physics 1",
+      "seconds": 766,
+      "posted": "2026-11-17",
+      "pages": [
+        "physics/notes/math-units.html",
+        "physics/lessons/math-units.html"
+      ],
+      "chapters": [
+        [
+          0,
+          "Start here"
+        ],
+        [
+          46,
+          "SI units and prefixes"
+        ],
+        [
+          229,
+          "Converting units"
+        ],
+        [
+          436,
+          "Scientific notation and significant figures"
+        ],
+        [
+          705,
+          "Recap"
+        ],
+        [
+          735,
+          "Next: scalars and vectors"
+        ]
+      ]
     }
   ]
 }
