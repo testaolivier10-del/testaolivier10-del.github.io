@@ -449,6 +449,49 @@
           "Next: significant figures"
         ]
       ]
+    },
+    {
+      "id": "MJsVkLZk3IM",
+      "course": "apcalc",
+      "title": "Functions, Graphs and Exponent Rules for AP Calculus AB",
+      "seconds": 896,
+      "posted": "2026-11-16",
+      "pages": [
+        "calculus/notes/math-functions.html",
+        "calculus/lessons/math-functions.html",
+        "calculus/notes/math-exponent-rules.html",
+        "calculus/lessons/math-exponent-rules.html"
+      ],
+      "chapters": [
+        [
+          0,
+          "Start here"
+        ],
+        [
+          55,
+          "What a function is"
+        ],
+        [
+          243,
+          "Reading graphs and piecewise functions"
+        ],
+        [
+          403,
+          "Lines, composites and moving graphs"
+        ],
+        [
+          560,
+          "Exponent rules"
+        ],
+        [
+          829,
+          "Recap"
+        ],
+        [
+          861,
+          "Next: change at an instant"
+        ]
+      ]
     }
   ]
 }
