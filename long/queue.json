@@ -266,10 +266,12 @@
    "description_file": "long/yt-apchem-01-youtube.md",
    "thumb_b": "long/yt-apchem-01-thumb-b.png",
    "thumb_c": "long/yt-apchem-01-thumb-c.png",
-   "ab_test": false,
-   "endscreen_set": false,
+   "ab_test": "running",
+   "endscreen_set": true,
    "review_blob": "16b8f29b770d4176de8997c23e4c4f25bbb86795",
-   "approved_blob": "16b8f29b770d4176de8997c23e4c4f25bbb86795"
+   "approved_blob": "16b8f29b770d4176de8997c23e4c4f25bbb86795",
+   "ab_started": "2026-11-24",
+   "endscreen_next": "best"
   },
   {
    "id": "yt-phys-01-units-sig-figs",
@@ -294,11 +296,12 @@
    "note": "2026-11-07: built and saved pending review (12:44, eleven_v4)",
    "thumb_b": "long/yt-phys-01-thumb-b.png",
    "thumb_c": "long/yt-phys-01-thumb-c.png",
-   "ab_test": false,
+   "ab_test": "running",
    "endscreen_set": true,
    "review_blob": "3bff97851123e7b1b6d29adab1e97a35ab8c9549",
    "approved_blob": "3bff97851123e7b1b6d29adab1e97a35ab8c9549",
-   "endscreen_next": "best"
+   "endscreen_next": "best",
+   "ab_started": "2026-11-23"
   },
   {
    "id": "yt-calc-01-functions-exponents",
@@ -322,12 +325,13 @@
    "thumbnail_set": true,
    "playlist_added": true,
    "captions_set": true,
-   "ab_test": false,
+   "ab_test": "running",
    "endscreen_set": true,
    "pr_url": "",
    "review_blob": "e7463bf8618ff56f21832a0867693f503b3c102d",
    "approved_blob": "e7463bf8618ff56f21832a0867693f503b3c102d",
-   "endscreen_next": "best"
+   "endscreen_next": "best",
+   "ab_started": "2026-11-23"
   },
   {
    "id": "yt-stats-01-intro-variables",
