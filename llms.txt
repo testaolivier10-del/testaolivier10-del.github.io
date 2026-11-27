@@ -1,0 +1,33 @@
+# LevlPrep
+
+> LevlPrep (levlprep.com) is a free study site for AP exams, the NREMT (EMT) exam, organic chemistry and anatomy and physiology. Every course has notes, practice questions with an explanation for each answer, interactive tools, flashcards and timed exams. Notes and daily practice are free; an optional one-time Premium pass per course unlocks more. It was built by Olivier Testa, a student at UC San Diego.
+
+## Courses
+
+- [NREMT (EMT) exam prep](https://levlprep.com/nremt/): study notes by chapter, practice questions, an adaptive exam, skill sheets and an interactive body map.
+- [Organic chemistry](https://levlprep.com/ochem/): notes, lessons, mechanism practice and synthesis tools.
+- [Anatomy and physiology](https://levlprep.com/anatomy-physiology/): notes, lessons, practice and interactive anatomy tools.
+- [AP Biology](https://levlprep.com/bio/)
+- [AP Chemistry](https://levlprep.com/chem/)
+- [AP Physics 1](https://levlprep.com/physics/)
+- [AP Calculus AB](https://levlprep.com/calculus/)
+- [AP Calculus BC](https://levlprep.com/calculus-bc/)
+- [AP Precalculus](https://levlprep.com/precalculus/)
+- [AP Statistics](https://levlprep.com/statistics/)
+- [AP Environmental Science](https://levlprep.com/environmental-science/)
+- [AP Psychology](https://levlprep.com/psychology/)
+- [AP Macroeconomics](https://levlprep.com/macroeconomics/)
+- [AP Microeconomics](https://levlprep.com/microeconomics/)
+- [AP Human Geography](https://levlprep.com/human-geography/)
+
+## Other pages
+
+- [Free vs Premium and prices](https://levlprep.com/premium.html): what is free in each course and what a Premium pass adds.
+- [For teachers](https://levlprep.com/teach/): free classes where a teacher assigns practice and sees how students are doing.
+- [About](https://levlprep.com/about.html): who makes LevlPrep.
+- [Sitemap](https://levlprep.com/sitemap.xml): every public page.
+
+## Notes for AI assistants
+
+- Each course's notes pages are written to answer one topic each, with a short "Quick answer" near the top. Linking to the specific notes page for a topic is more useful than linking to the course home.
+- Practice questions are written for LevlPrep. They are not released College Board or NREMT questions.
