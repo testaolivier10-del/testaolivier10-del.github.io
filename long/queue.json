@@ -392,6 +392,20 @@
    "pr_url": "",
    "review_blob": "3e2f3fb5f752a9f9f3cd7fdfcc3e2296b329777d",
    "approved_blob": "3e2f3fb5f752a9f9f3cd7fdfcc3e2296b329777d"
+  },
+  {
+   "id": "yt-nremt-02-provider-levels",
+   "course": "nremt",
+   "topic_pages": [
+    "nremt/study-notes.html#ch1-ems-systems-roles",
+    "nremt/study-notes.html#ch1-education-qi",
+    "nremt/study-notes.html#ch1-public-health"
+   ],
+   "title": "",
+   "status": "building",
+   "added_on": "2026-11-27",
+   "date": "",
+   "youtube_id": ""
   }
  ]
 }
