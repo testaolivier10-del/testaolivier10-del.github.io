@@ -400,9 +400,9 @@
     "nremt/notes/introduction-to-ems.html"
    ],
    "title": "EMR, EMT, AEMT and Paramedic: EMS Provider Levels Explained | NREMT",
-   "status": "pending",
+   "status": "approved",
    "added_on": "2026-11-27",
-   "date": "",
+   "date": "2026-12-03",
    "youtube_id": "",
    "playlist": "NREMT Prep | LevlPrep",
    "note": "Built 2026-11-27 (12:57, eleven_v4). The fresh eyes review held it as a draft (6.5; people shots 5 to 7), then Olivier approved it as it is in the build chat on 2026-11-27: \"approved\". His words outrank the review bar: do not rebuild. Part 1 of map entry 2; part 2 is yt-nremt-02b.",
@@ -412,13 +412,15 @@
    "thumb_b": "long/yt-nremt-02-thumb-b.png",
    "thumb_c": "long/yt-nremt-02-thumb-c.png",
    "captions": "long/yt-nremt-02-captions.srt",
-   "approved_on": "",
+   "approved_on": "2026-11-27",
    "thumbnail_set": false,
    "playlist_added": false,
    "captions_set": false,
    "ab_test": false,
    "endscreen_set": false,
-   "pr_url": ""
+   "pr_url": "",
+   "review_blob": "cd76c211df1e5169448277430d7fff808e07cc77",
+   "approved_blob": "cd76c211df1e5169448277430d7fff808e07cc77"
   }
  ]
 }
