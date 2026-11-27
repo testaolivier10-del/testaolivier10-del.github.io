@@ -1,0 +1,97 @@
+# audited, not voiced
+# Audit log: see the end of this header (filled in after the audits).
+"""Script for long video NREMT 02: EMS provider levels, the EMT's responsibilities, medical direction, certification,
+quality improvement, public health and evidence based practice.
+Source: levlprep.com/nremt/notes/introduction-to-ems.html sections 1.4, 1.5 and 1.6. Builds on NREMT 01 (history, the
+system today, 911). Pilot format, premium standard, 2026-11-05 rules, SHORTS PARITY (2026-11-17), ship gates (2026-11-18),
+pacing rules (2026-11-24: natural tempo, aim for 15:00, over is fine).
+Story (runs through the whole video): Walt, 58, owns a small town hardware store and gets crushing chest pressure at his
+counter on a Saturday morning. Four trained people help him in twenty minutes: Deputy Ruiz (EMR, first on scene), Priya
+(EMT, the main person; the viewer is training for her job), her partner Marcus (AEMT) and Joan (paramedic, meets them on
+the way). The puzzle: Priya has aspirin in her bag. Is she allowed to give it, or does she have to ask someone first?
+Answer (chapter 3): a standing order (off line medical direction) covers the aspirin; helping with Walt's own
+nitroglycerin needs a radio call (on line) in her system. The oxygen she does NOT give is the evidence example.
+Each chapter: teaching, a story moment (story=True) where the idea happens, then a practice problem.
+{n} marks a visual cue. 'pause' = seconds for pause and try beats. «spoken|shown» respellings. energy = delivery note.
+"""
+ID = "yt-nremt-02-provider-levels"
+
+CHAPTERS = [
+ dict(id="intro", title="Start here", beats=[
+  dict(key="hook", story=True, energy="curious", vo="{1}Walt is fifty eight, and he's leaning on the counter of his hardware store, because his chest feels like something heavy is sitting on it. {2}In the next twenty minutes, four trained people are going to help him, and each of them is allowed to do something the one before was not. {3}Priya is one of them. She's an «E M T|EMT», and she has aspirin in her bag that could help Walt right now. {4}[curious] So is she allowed to just give it... or does she have to ask somebody first?"),
+  dict(key="promise", energy="warm", vo="By the end of this video, you'll know the four levels of «E M S|EMS» providers and what each one adds. {1}You'll know what an «E M T|EMT» is responsible for on every call, {2}who gives an «E M T|EMT» permission to treat a patient, {3}and how «E M S|EMS» keeps checking whether its own care really works."),
+  dict(key="why", energy="steady", vo="[curious] So why should you care about this before you've touched a single patient? {1}Everything you'll ever do as an «E M T|EMT» happens inside this system. {2}It decides what you're allowed to do, who you answer to, and how you keep your certification. {3}[warmly] The national exam asks about it too, and those questions get much easier once you see how the pieces fit."),
+ ]),
+ dict(id="levels", title="Four levels of training", beats=[
+  dict(key="l1", energy="steady", vo="We'll start with who shows up. {1}People who give care before the hospital in the United States are trained to one of four national levels. {2}Each level includes everything in the level below it and then adds more, so you can picture them as four steps on a staircase."),
+  dict(key="l2", energy="steady", vo="{1}The first step is the emergency medical responder, or «E M R|EMR». {2}An «E M R|EMR» is often the first trained person on scene, and many of them are police officers or firefighters. {3}They call in more help, and they give basic care for the problems that kill fastest. That means opening an airway, stopping heavy bleeding, and starting «C P R|CPR» with an automated defibrillator."),
+  dict(key="l3", energy="warm", vo="{1}The second step is the emergency medical technician, the «E M T|EMT», and that's the level you're training for. {2}In most places, it's the minimum certification for staffing an ambulance. {3}An «E M T|EMT» assesses the patient and gives basic medical and trauma care, which includes oxygen and a short list of medications. Then the «E M T|EMT» transports the patient to the hospital."),
+  dict(key="l4", energy="steady", vo="{1}The third step is the advanced «E M T|EMT», or «A E M T|AEMT». {2}An «A E M T|AEMT» does everything an «E M T|EMT» does and adds a few advanced skills. {3}They can start an «I V|IV», which is a line into a vein, or an «I O|IO», which is a line into a bone, so they can give fluids. They can also place certain advanced airway devices and give several more medications."),
+  dict(key="l5", energy="thoughtful", vo="{1}The top step is the paramedic, which is the highest level of care before the hospital. {2}A paramedic has all of the «E M T|EMT» and «A E M T|AEMT» skills. {3}[thoughtful] On top of those come advanced assessment and decision making, like reading a heart tracing and choosing from a much LONGER list of drugs."),
+  dict(key="l6", story=True, energy="warm", vo="{1}Those four steps are about to arrive at Walt's store. Deputy Ruiz gets there first. He's an «E M R|EMR», so he sits Walt down, keeps him calm, and sets a defibrillator within reach. {2}Priya's ambulance pulls up next. She tells Walt her name, and she starts her assessment while her partner Marcus, who's an «A E M T|AEMT», gets an «I V|IV» ready. {3}A paramedic named Joan is already driving out to meet them. {4}[warmly] So Walt gets four people at four levels, and each one hands him up to the next."),
+  dict(key="p1q", energy="curious", vo="[curious] Now it's your turn. {1}A patient needs an «I V|IV» started so she can get fluids. {2}What's the lowest level of provider who can start it? And which level is the usual minimum for staffing an ambulance?", pause=6),
+  dict(key="p1a", energy="warm", vo="The «I V|IV» belongs to the «A E M T|AEMT», because lines into a vein start at that third step. {1}The minimum for the ambulance is the «E M T|EMT». {2}[thoughtful] The trap is assuming that anyone on an ambulance can start an «I V|IV». An «E M T|EMT» gives important care, but that skill sits one step higher."),
+ ]),
+ dict(id="job", title="What an EMT is responsible for", beats=[
+  dict(key="j1", energy="serious", vo="So what is an «E M T|EMT» actually responsible for on a call? {1}The list has an order, and the order matters. {2}Your own safety comes first, and I know that can sound selfish. [serious] But an injured «E M T|EMT» can't help anybody, and now the scene has TWO patients. {3}Your crew comes next, then the patient, and then the bystanders."),
+  dict(key="j2", energy="steady", vo="{1}Once the scene is safe, assessment always comes before care, because you can't treat what you haven't found. {2}Care is followed by lifting and moving the patient safely, then by transport, and then by the transfer of care at the hospital. {3}You never leave a patient before that handoff is complete. And through all of it, you speak up for what the patient needs, which is called being the patient's advocate."),
+  dict(key="j3", energy="thoughtful", vo="{1}Running through that list isn't enough by itself, though, because the job also takes judgment. {2}Thinking like an «E M T|EMT» means you gather information from the scene, your assessment, and the patient, and then you put it together to decide. {3}When you don't have enough information to decide, you ask more questions or examine the patient further before you act."),
+  dict(key="j4", story=True, energy="thoughtful", vo="{1}Priya is doing exactly that with Walt. She asks about allergies and bleeding problems before she reaches for any medication, because a drug that helps one patient can hurt another. {2}Then she has to think about where he should go. The nearest hospital is eight minutes away, but it can't open a blocked artery in the heart. {3}A heart center that CAN is twenty five minutes away. {4}[thoughtful] The closest hospital isn't always the right one... so if this is a heart attack, the longer drive may be the better choice."),
+  dict(key="j5", energy="steady", vo="{1}The job asks a lot from the person doing it, too. An «E M T|EMT» has to be fit enough to lift and carry about a hundred twenty five pounds. {2}You need good eyesight, including color vision, since a change in the color of the skin or the lips is a real clue. {3}[warmly] A good «E M T|EMT» also stays calm under pressure, listens without judging, and treats every patient fairly."),
+  dict(key="p2q", energy="curious", vo="This one's for you to try. {1}You pull up to a car crash on a dark highway. The driver is slumped over the wheel, fuel is leaking, and traffic is still passing. {2}What's your first responsibility? And once you reach the driver, which comes first, assessment or care?", pause=6),
+  dict(key="p2a", energy="serious", vo="Your first responsibility is your own safety, so you deal with the traffic and the fuel before you go to the driver. {1}[serious] The trap is running straight to the patient, which is the instinct almost everyone has. {2}Then, when you reach him, you assess before you treat, because you can't treat what you haven't found."),
+ ]),
+ dict(id="behind", title="Who stands behind the EMT", beats=[
+  dict(key="m1", energy="curious", vo="[curious] That brings us back to the question from the start. Who says Priya can give Walt anything at all? {1}Every «E M S|EMS» system operates under the authority of a physician, who is called the Medical Director. {2}The Medical Director has the final responsibility for patient care in that system. They write the protocols, oversee the training, and help review the care. {3}So when an «E M T|EMT» treats a patient, that «E M T|EMT» is acting on the physician's authority."),
+  dict(key="m2", energy="steady", vo="{1}That authority reaches you in two ways, and together they're called medical direction. {2}The first is off line medical direction, which means standing orders. Those are written instructions that let you act WITHOUT calling anyone. {3}The second is on line medical direction, where you get an order in real time, by phone or radio, from a physician who's on duty."),
+  dict(key="m3", story=True, energy="warm", vo="{1}Here's how both of them look with Walt. Priya's protocol has a standing order for chest pain that might be coming from the heart. So once she's checked for allergies and bleeding, she hands him aspirin to chew. {2}She doesn't have to ask anyone... because the physician already gave that order in writing. {3}Walt also carries his own nitroglycerin tablets, and in Priya's system, the protocol says to call first. {4}So she gets a physician on the radio, reports what she's found, and hears the order before she helps him take one."),
+  dict(key="m4", energy="steady", vo="{1}Permission isn't the only thing standing behind you, because your certification has to stay current too. {2}National Registry certification renews every two years, and state periods vary from about two to four. {3}To renew, you complete continuing education, since «E M S|EMS» keeps changing. [warmly] Some of what you learn in class may even change before your course ends."),
+  dict(key="m5", energy="steady", vo="{1}The National Registry of «E M Ts|EMTs», or «N R E M T|NREMT», sets a national standard and registers all four levels. {2}To register as an «E M T|EMT», you pass its computer based knowledge exam, and your state or your training program verifies your hands on skills. {3}Being registered also helps with reciprocity, which means transferring your certification from one state to another."),
+  dict(key="m6", energy="steady", vo="{1}The last piece is quality improvement, or «Q I|QI». {2}«Q I|QI» is a system's continuous review of its own work, so that it can find problems and fix them. {3}You're part of it on every call. You write accurate, complete reports, you look honestly at your own performance, and you keep your equipment ready. {4}After Walt's call, Priya's report may be one of the charts the Medical Director reviews."),
+  dict(key="p3q", energy="curious", vo="[curious] It's your turn again. {1}Your protocol says that you may give naloxone to a patient with a suspected opioid overdose, and you don't need to call anyone. {2}Which kind of medical direction are you using? And if you radio a physician for an order instead, which kind is that?", pause=6),
+  dict(key="p3a", energy="thoughtful", vo="The naloxone is off line medical direction, because it's a standing order. {1}The radio call is on line medical direction, since the order comes from a physician in real time. {2}[thoughtful] The trap is thinking that off line means no doctor is involved. The physician IS involved. They just gave the order ahead of time, in writing."),
+ ]),
+ dict(id="beyond", title="EMS beyond the emergency", beats=[
+  dict(key="h1", energy="warm", vo="«E M S|EMS» doesn't only show up after something goes wrong. {1}Public health is the work of protecting the health of a whole population, with things like clean water and vaccination. {2}«E M S|EMS» is part of it, because crews are inside people's homes and neighborhoods every day. {3}An «E M T|EMT» might spot a loose rug that an older patient could trip on, or help run a car seat clinic."),
+  dict(key="h2", energy="steady", vo="{1}Call volumes work as an early warning, too. A sudden rise in overdose calls or flu calls tells health officials that something is spreading. {2}This wider role has a name. It's called mobile integrated health care, or community paramedicine."),
+  dict(key="h3", energy="thoughtful", vo="{1}The other half of this chapter is how «E M S|EMS» decides what good care IS. For a long time, a lot of care was based on tradition. {2}Evidence based practice means a treatment is supported by scientific evidence, and what counts is the patient's outcome. That means how the patient does in the long run, and not just whether they reach the hospital alive. {3}The strongest evidence comes from peer reviewed research, which other experts have checked before a journal publishes it."),
+  dict(key="h4", story=True, energy="thoughtful", vo="{1}Walt's call has a good example. For decades, nearly every patient with chest pain got oxygen, because it seemed like it could only help. {2}[thoughtful] Then researchers tested that idea... and they found that extra oxygen doesn't help a heart attack patient whose level is already normal, and that too much may even do harm. {3}The sensor on Walt's finger shows that his blood is carrying plenty of oxygen, so Priya doesn't give him any. {4}She isn't being careless. She's following the evidence."),
+  dict(key="p4q", energy="curious", vo="The last one is yours. {1}A study in a peer reviewed journal finds that a treatment your service has used for years doesn't improve how patients do. {2}Should the service keep using it because that's how it's always been done? And who helps decide?", pause=6),
+  dict(key="p4a", energy="warm", vo="The service shouldn't keep it just because of tradition. {1}The evidence gets reviewed together with the Medical Director, and the protocol changes if the evidence supports the change. {2}[warmly] The trap is trusting a habit over the evidence. What matters is the patient's outcome, and that's the whole reason the research gets done."),
+ ]),
+ dict(id="recap", title="The whole system in one picture", beats=[
+  dict(key="rc", energy="steady", vo="We can put the whole system in one picture. {1}There are four levels, «E M R|EMR», «E M T|EMT», «A E M T|AEMT», and paramedic, and each one adds to the level below. {2}On a call, your safety comes first, and assessment comes before care. {3}A physician called the Medical Director stands behind everything you do, through standing orders off line and real time orders on line. {4}[warmly] And the system keeps getting better through continuing education, quality improvement, and evidence."),
+ ]),
+ dict(id="outro", title="Next: standard precautions", beats=[
+  dict(key="end", story=True, energy="warm", vo="{1}Twenty minutes after that first call, Joan the paramedic reads Walt's heart tracing, and she warns the heart center that he's coming. {2}Four people at four levels took care of him, and a physician none of them saw stood behind every step. [softly] Walt goes home three days later. {3}You'll find the notes and practice for this topic, free, on «levl prep dot com|levlprep.com». {4}And next time, we'll cover how you protect yourself on the job, with standard precautions and protective equipment."),
+ ]),
+]
+
+import re
+_CAPS_KEEP = {'AP', 'EMT', 'EMR', 'AEMT', 'EMS', 'NREMT', 'IV', 'IO', 'CPR', 'QI', 'EMTs'}
+_MARK = re.compile(r"«([^|»]*)\|([^»]*)»")
+
+
+def clean(vo):
+    return re.sub(r"\s+", " ", re.sub(r"\{\d+\}", "", _MARK.sub(r"\1", vo))).strip()
+
+
+def _shown(src):
+    d = _MARK.sub(r"\2", re.sub(r"\[[^\]]+\]\s*", "", re.sub(r"\{\d+\}", "", src)))
+    d = re.sub(r"\b[A-Z]{2,}\b", lambda m: m.group(0) if m.group(0) in _CAPS_KEEP else m.group(0).lower(), d)
+    return re.sub(r"\s+", " ", d).strip()
+
+
+for _ch in CHAPTERS:
+    for _b in _ch["beats"]:
+        _b.setdefault("src", _b["vo"])
+        _b["disp"] = _shown(_b["src"])
+        _b["vo"] = _MARK.sub(r"\1", _b["src"])
+
+if __name__ == "__main__":
+    tot = 0; pz = 0; nb = 0
+    for ch in CHAPTERS:
+        n = sum(len(re.sub(r"\[[^\]]+\]\s*", "", clean(b["vo"]))) + 1 for b in ch["beats"])
+        pz += sum(b.get("pause", 0) for b in ch["beats"]); nb += len(ch["beats"])
+        tot += n; print(f'{ch["id"]:12s} {n:5d}')
+    print("total", tot, "chars", nb, "beats", pz, "s pauses")

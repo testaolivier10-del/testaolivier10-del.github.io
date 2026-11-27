@@ -397,15 +397,15 @@
    "id": "yt-nremt-02-provider-levels",
    "course": "nremt",
    "topic_pages": [
-    "nremt/study-notes.html#ch1-ems-systems-roles",
-    "nremt/study-notes.html#ch1-education-qi",
-    "nremt/study-notes.html#ch1-public-health"
+    "nremt/notes/introduction-to-ems.html"
    ],
-   "title": "",
+   "title": "EMR, EMT, AEMT and Paramedic: EMS Provider Levels Explained | NREMT",
    "status": "building",
    "added_on": "2026-11-27",
    "date": "",
-   "youtube_id": ""
+   "youtube_id": "",
+   "playlist": "NREMT Prep | LevlPrep",
+   "note": "Draft built 2026-11-27 (12:57, eleven_v4). HELD by the review bar as building, not pending: fresh eyes 6.5, people shots 5 to 7 (bar 8). Draft in drafts/long/yt-nremt-02-provider-levels/, build in pipeline/long/n02/, blockers in REVIEW.md there. Part 1 of map entry 2 (split; part 2 is yt-nremt-02b). Do not voice again. Waiting on Olivier."
   }
  ]
 }
