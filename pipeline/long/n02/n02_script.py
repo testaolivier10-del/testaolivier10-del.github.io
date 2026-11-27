@@ -1,4 +1,4 @@
-# audited, not voiced
+# audited, voiced 2026-11-27
 # Audit log (2026-11-27 long video build):
 # SPLIT: the coverage map entry (sections 1.4, 1.5, 1.6) ran to about 12,400 spoken characters (about 19 minutes at the
 #   2026-11-24 pacing), so it was split. This is part 1: provider levels, the EMT's responsibilities and traits, the
